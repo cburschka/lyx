@@ -150,12 +150,14 @@ unsigned char LyXText::transformChar(unsigned char c, Paragraph * par,
 		}
 
 	if (Encodings::is_arabic(next_char)) {
-		if (Encodings::is_arabic(prev_char))
+		if (Encodings::is_arabic(prev_char) &&
+			!Encodings::is_arabic_special(prev_char))
 			return Encodings::TransformChar(c, Encodings::FORM_MEDIAL);
 		else
 			return Encodings::TransformChar(c, Encodings::FORM_INITIAL);
 	} else {
-		if (Encodings::is_arabic(prev_char))
+		if (Encodings::is_arabic(prev_char) &&
+			!Encodings::is_arabic_special(prev_char))
 			return Encodings::TransformChar(c, Encodings::FORM_FINAL);
 		else
 			return Encodings::TransformChar(c, Encodings::FORM_ISOLATED);

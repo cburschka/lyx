@@ -90,6 +90,9 @@ public:
 	bool IsComposeChar_arabic(unsigned char c);
 	///
 	static
+	bool is_arabic_special(unsigned char c);
+	///
+	static
 	bool is_arabic(unsigned char c);
 	///
 	static
