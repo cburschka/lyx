@@ -1589,3 +1589,213 @@ LyXText * InsetTabular::getLyXText(BufferView * bv) const
 	return the_locking_inset->getLyXText(bv);
     return Inset::getLyXText(bv);
 }
+
+
+void InsetTabular::OpenLayoutDialog(BufferView * bv) const
+{
+    if (the_locking_inset) {
+	InsetTabular * i = static_cast<InsetTabular *>
+	    (the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE));
+	if (i) {
+	    i->OpenLayoutDialog(bv);
+	    return;
+	}
+    }
+    dialogs_ = bv->owner()->getDialogs();
+    dialogs_->showTabular(const_cast<InsetTabular *>(this));
+}
+
+//
+// functions returns:
+// 0 ... disabled
+// 1 ... enabled
+// 2 ... toggled on
+// 3 ... toggled off
+//
+int InsetTabular::getStatus(string what) const
+{
+    int action = LyXTabular::LAST_ACTION;
+    string argument;
+    int i;
+    
+    for(i=0; tabularFeatures[i].action != LyXTabular::LAST_ACTION; ++i) {
+	if (!strncmp(tabularFeatures[i].feature.c_str(), what.c_str(),
+		     tabularFeatures[i].feature.length())) {
+	    action = tabularFeatures[i].action;
+	    break;
+	}
+    }
+    if (action == LyXTabular::LAST_ACTION)
+	return 0;
+
+    argument = frontStrip(what.substr(tabularFeatures[i].feature.length()));
+
+    int sel_row_start, sel_row_end;
+    int dummy;
+    bool flag = true;
+
+    if (hasSelection()) {
+	int tmp;
+	sel_row_start = tabular->row_of_cell(sel_cell_start);
+	sel_row_end = tabular->row_of_cell(sel_cell_end);
+	if (sel_row_start > sel_row_end) {
+	    tmp = sel_row_start;
+	    sel_row_start = sel_row_end;
+	    sel_row_end = tmp;
+	}
+    } else {
+	sel_row_start = sel_row_end = tabular->row_of_cell(actcell);
+    }
+
+    switch (action) {
+    case LyXTabular::SET_PWIDTH:
+    case LyXTabular::SET_MPWIDTH:
+    case LyXTabular::SET_SPECIAL_COLUMN:
+    case LyXTabular::SET_SPECIAL_MULTI:
+	return 0;
+
+    case LyXTabular::APPEND_ROW:
+    case LyXTabular::APPEND_COLUMN:
+    case LyXTabular::DELETE_ROW:
+    case LyXTabular::DELETE_COLUMN:
+    case LyXTabular::SET_ALL_LINES:
+    case LyXTabular::UNSET_ALL_LINES:
+	return 1;
+
+    case LyXTabular::MULTICOLUMN:
+	if (tabular->IsMultiColumn(actcell))
+	    return 2;
+	return 3;
+
+    case LyXTabular::M_TOGGLE_LINE_TOP:
+	flag = false;
+    case LyXTabular::TOGGLE_LINE_TOP:
+	if (tabular->TopLine(actcell, flag))
+	    return 2;
+	return 3;
+    
+    case LyXTabular::M_TOGGLE_LINE_BOTTOM:
+	flag = false;
+    case LyXTabular::TOGGLE_LINE_BOTTOM:
+	if (tabular->BottomLine(actcell, flag))
+	    return 2;
+	return 3;
+		
+    case LyXTabular::M_TOGGLE_LINE_LEFT:
+	flag = false;
+    case LyXTabular::TOGGLE_LINE_LEFT:
+	if (tabular->LeftLine(actcell, flag))
+	    return 2;
+	return 3;
+
+    case LyXTabular::M_TOGGLE_LINE_RIGHT:
+	flag = false;
+    case LyXTabular::TOGGLE_LINE_RIGHT:
+	if (tabular->RightLine(actcell, flag))
+	    return 2;
+	return 3;
+
+    case LyXTabular::M_ALIGN_LEFT:
+	flag = false;
+    case LyXTabular::ALIGN_LEFT:
+	if (tabular->GetAlignment(actcell, flag) == LYX_ALIGN_LEFT)
+	    return 2;
+	return 3;
+
+    case LyXTabular::M_ALIGN_RIGHT:
+	flag = false;
+    case LyXTabular::ALIGN_RIGHT:
+	if (tabular->GetAlignment(actcell, flag) == LYX_ALIGN_RIGHT)
+	    return 2;
+	return 3;
+
+    case LyXTabular::M_ALIGN_CENTER:
+	flag = false;
+    case LyXTabular::ALIGN_CENTER:
+	if (tabular->GetAlignment(actcell, flag) == LYX_ALIGN_CENTER)
+	    return 2;
+	return 3;
+
+    case LyXTabular::M_VALIGN_TOP:
+	flag = false;
+    case LyXTabular::VALIGN_TOP:
+	if (tabular->GetVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_TOP)
+	    return 2;
+	return 3;
+
+    case LyXTabular::M_VALIGN_BOTTOM:
+	flag = false;
+    case LyXTabular::VALIGN_BOTTOM:
+	if (tabular->GetVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_BOTTOM)
+	    return 2;
+	return 3;
+
+    case LyXTabular::M_VALIGN_CENTER:
+	flag = false;
+    case LyXTabular::VALIGN_CENTER:
+	if (tabular->GetVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_CENTER)
+	    return 2;
+	return 3;
+
+    case LyXTabular::SET_LONGTABULAR:
+	if (tabular->IsLongTabular())
+	    return 2;
+	return 3;
+
+    case LyXTabular::UNSET_LONGTABULAR:
+	if (!tabular->IsLongTabular())
+	    return 2;
+	return 3;
+
+    case LyXTabular::SET_ROTATE_TABULAR:
+	if (tabular->GetRotateTabular())
+	    return 2;
+	return 3;
+
+    case LyXTabular::UNSET_ROTATE_TABULAR:
+	if (!tabular->GetRotateTabular())
+	    return 2;
+	return 3;
+
+    case LyXTabular::SET_ROTATE_CELL:
+	if (tabular->GetRotateCell(actcell))
+	    return 2;
+	return 3;
+
+    case LyXTabular::UNSET_ROTATE_CELL:
+	if (!tabular->GetRotateCell(actcell))
+	    return 2;
+	return 3;
+
+    case LyXTabular::SET_USEBOX:
+	if (strToInt(argument) == tabular->GetUsebox(actcell))
+	    return 2;
+	return 3;
+
+    case LyXTabular::SET_LTFIRSTHEAD:
+	if (tabular->GetRowOfLTHead(actcell, dummy))
+	    return 2;
+	return 3;
+
+    case LyXTabular::SET_LTHEAD:
+	if (tabular->GetRowOfLTHead(actcell, dummy))
+	    return 2;
+	return 3;
+
+    case LyXTabular::SET_LTFOOT:
+	if (tabular->GetRowOfLTFoot(actcell, dummy))
+	    return 2;
+	return 3;
+
+    case LyXTabular::SET_LTLASTFOOT:
+	if (tabular->GetRowOfLTFoot(actcell, dummy))
+	    return 2;
+	return 3;
+
+    case LyXTabular::SET_LTNEWPAGE:
+	if (tabular->GetLTNewPage(actcell))
+	    return 2;
+	return 3;
+    }
+    return 0;
+}

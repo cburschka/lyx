@@ -516,8 +516,10 @@ void LyXText::draw(BufferView * bview, Row const * row,
 //			tmpinset->update(bview, font, false);
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
 				       cleared);
-			if (status == CHANGED_IN_DRAW)
+			if (status == CHANGED_IN_DRAW) {
 				UpdateInset(bview, tmpinset);
+				status = CHANGED_IN_DRAW;
+			}
 		}
 		++vpos;
 
@@ -3952,7 +3954,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				w = inset_owner->width(bview, font);
 			else
 				w = ww;
-			pain.fillRectangle(x_offset,h, w, row_ptr->height()-h);
+			pain.fillRectangle(x_offset,y_offset+h, w, row_ptr->height()-h);
 		}
 		if (!inset_owner && !inset->display() && !inset->needFullRow())
 		{

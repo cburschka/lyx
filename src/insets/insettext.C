@@ -1282,9 +1282,8 @@ int InsetText::cx(BufferView * bv) const
 
 int InsetText::cy(BufferView * bv) const
 {
-    long int y_dummy = 0;
-    Row * tmprow = TEXT(bv)->GetRowNearY(y_dummy);
-    return TEXT(bv)->cursor.y() - tmprow->baseline();
+    LyXFont font;
+    return TEXT(bv)->cursor.y() - ascent(bv, font);
 }
 
 

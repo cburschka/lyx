@@ -427,6 +427,46 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = ! owner->view()->text->cursor.par()->table;
 		break;
 #endif
+	case LFUN_LAYOUT_TABULAR:
+		disable = true;
+		if (owner->view()->the_locking_inset) {
+			disable = (owner->view()->the_locking_inset->LyxCode() != Inset::TABULAR_CODE) &&
+				!owner->view()->the_locking_inset->GetFirstLockingInsetOfType(Inset::TABULAR_CODE);
+		}
+		break;
+
+	case LFUN_TABULAR_FEATURE:
+		disable = true;
+		if (owner->view()->the_locking_inset) {
+			int ret = 0;
+			if (owner->view()->the_locking_inset->LyxCode() == Inset::TABULAR_CODE) {
+				ret = static_cast<InsetTabular *>
+					(owner->view()->the_locking_inset)->
+					getStatus(argument);
+			} else if (owner->view()->the_locking_inset->GetFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
+				ret = static_cast<InsetTabular *>
+					(owner->view()->the_locking_inset->
+					GetFirstLockingInsetOfType(Inset::TABULAR_CODE))->
+					getStatus(argument);
+			}
+			switch(ret) {
+			case 0:
+				break;
+			case 1:
+				disable = false;
+				break;
+			case 2:
+				disable = false;
+				flag |= LyXFunc::ToggleOn;
+				break;
+			case 3:
+				disable = false;
+				flag |= LyXFunc::ToggleOff;
+				break;
+			}
+		}
+		break;
+
 	case LFUN_VC_REGISTER:
 		disable = buf->lyxvc.inUse();
 		break;
@@ -517,7 +557,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->hideCursor();
 
 	// We cannot use this function here
-	if (getStatus(action) & Disabled)
+	if (getStatus(ac) & Disabled)
 		goto exit_with_message;
 
 	commandshortcut.erase();
@@ -1288,6 +1328,21 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 		
+	case LFUN_LAYOUT_TABULAR:
+	    if (owner->view()->the_locking_inset) {
+		if (owner->view()->the_locking_inset->LyxCode()==Inset::TABULAR_CODE) {
+		    InsetTabular * inset = static_cast<InsetTabular *>
+			(owner->view()->the_locking_inset);
+		    inset->OpenLayoutDialog(owner->view());
+		} else if (owner->view()->the_locking_inset->
+			   GetFirstLockingInsetOfType(Inset::TABULAR_CODE)!=0) {
+		    InsetTabular * inset = static_cast<InsetTabular *>(
+			owner->view()->the_locking_inset->GetFirstLockingInsetOfType(Inset::TABULAR_CODE));
+		    inset->OpenLayoutDialog(owner->view());
+		}
+	    }
+	    break;
+
 	case LFUN_LAYOUT_PAPER:
 		MenuLayoutPaper();
 		break;

@@ -1528,6 +1528,8 @@ void LyXText::SetParagraph(BufferView * bview,
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
 	SetSelection();
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
+	if (inset_owner)
+	    bview->updateInset(inset_owner, true);
 }
 
 

@@ -1,3 +1,32 @@
+2000-08-01  Juergen Vigna  <jug@sad.it>
+
+	* src/commandtags.h: 
+	* src/LyXAction.C (init): added LFUN_LAYOUT_TABULAR and
+	LFUN_TABULAR_FEATURES.
+
+	* src/lyxfunc.C (getStatus): implemented LFUN_TABULAR_FEATURES and
+	LFUN_LAYOUT_TABULAR.
+
+	* src/insets/insettabular.C (getStatus): implemented helper function.
+
+	* lib/ui/default.ui: implemented edit-table-menu and layout-tabular.
+
+2000-07-31  Juergen Vigna  <jug@sad.it>
+
+	* src/text.C (draw): fixed screen update problem for text-insets.
+
+	* src/text2.C (SetParagrpah): call an update of the inset-owner when
+	something changed probably this has to be added in various other
+	functions too.
+
+	* src/insets/insettext.C (cy): fixed to give back the right cursor.y().
+
+2000-07-31  Baruch Even <baruch.even@writeme.com>
+
+	* src/frontends/xforms/RadioButtonGroup.C: Changed to use home-brew
+	templates to satisfy compaq cxx.
+
+
 2000-07-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/translator.h (equal_1st_in_pair::operator()): take

@@ -11,10 +11,6 @@ LYXDATADIRS = forms
 ETAGS_ARGS = --lang=c++
 libxforms_la_SOURCES = \
 	Dialogs.C \
-	FormCitation.C \
-	FormCitation.h \
-	form_citation.C \
-	form_citation.h \
 	FormCopyright.C \
 	FormCopyright.h \
 	form_copyright.C \
@@ -31,6 +27,14 @@ libxforms_la_SOURCES = \
 	FormPrint.h \
 	form_print.C \
 	form_print.h \
+	FormGraphics.C \
+	FormGraphics.h \
+	form_graphics.C \
+	form_graphics.h \
+	FormCitation.C \
+	FormCitation.h \
+	form_citation.C \
+	form_citation.h \
 	FormTabular.C \
 	FormTabular.h \
 	form_tabular.C \
