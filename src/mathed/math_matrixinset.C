@@ -514,7 +514,6 @@ void MathMatrixInset::mutate(short newtype)
 						if (!nonum_[r])
 							allnonum = false;
 					}
-					nonum_[0] = allnonum;
 
 					// set first non-empty label
 					string label;
@@ -524,9 +523,11 @@ void MathMatrixInset::mutate(short newtype)
 							break;
 						}
 					}
-					label_[0] = label;
 
 					glueall();
+
+					nonum_[0] = allnonum;
+					label_[0] = label;
 					mutate(newtype);
 					break;
 				}
