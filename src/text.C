@@ -93,10 +93,18 @@ void LyXText::top_y(int newy)
 	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
 
 	int y = newy;
-	anchor_row_ = getRowNearY(y);
+	Row * row = getRowNearY(y);
+
+	if (row == anchor_row_ && anchor_row_offset_ == newy - y) {
+		lyxerr[Debug::GUI] << "top_y to same value, skipping update" << endl;
+		return;
+	}
+
+	anchor_row_ = row;
 	anchor_row_offset_ = newy - y;
 	lyxerr[Debug::GUI] << "changing reference to row: " << anchor_row_
 	       << " offset: " << anchor_row_offset_ << endl;
+	postPaint(0);
 }
 
 
