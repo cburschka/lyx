@@ -18,7 +18,11 @@
 
 #include "Lsstream.h"
 
+#if defined(__GNUG__) && __GNUC__ == 2 && __GNUC_MINOR__ >= 95
+#include <cstdlib>
+#else
 #include <cmath>
+#endif
 
 namespace {
 // this is now here and in lyxgluelength.C

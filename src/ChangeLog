@@ -1,3 +1,10 @@
+2001-12-05  Allan Rae  <rae@lyx.org>
+
+	* lyxlength.C: Attempted a fix for the abs(int) header selection.
+	Works for 2.95.3, from what I understand of Garst's reports this should
+	work for other g++ versions.  We're screwed if the abs(int) definition
+	changed between bugfix releases of gcc.
+
 2001-12-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* text.C: fix chapter label offset !
