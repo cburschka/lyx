@@ -614,11 +614,14 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	string filename_  = params().filename;
 	bool const zipped = zippedFile(filename_);
 
-	if ((zipped && params().noUnzip) || buf->niceFile) {
+	if (zipped && params().noUnzip) {
 		lyxerr[Debug::GRAPHICS] << "don't unzip file or export latex"
 				    << filename_ << endl;
 		return filename_;
 	}
+	// only export latex without compiling the file
+	if (buf->niceFile)
+		return RemoveExtension(filename_);
 
 	// Enable these helper functions to find the file if it is stored as
 	// a relative path.

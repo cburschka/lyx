@@ -1,3 +1,8 @@
+2002-04-19  Herbert Voss  <voss@perce.de>
+
+	* insetgraphic.C (prepareFile): return filename without
+	extension if we only export without compiling
+
 2002-04-19  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (draw): call a fullRebreak on the row where we had a
