@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven 
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
@@ -40,39 +40,40 @@ ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 
 void ControlSpellchecker::setParams()
 {
-	if (!speller_) {
-		// create spell object
-		string tmp;
+	if (speller_)
+		return;
+	
+	// create spell object
+	string tmp;
 #ifdef USE_PSPELL
-		if (lyxrc.use_pspell) {
-			tmp = (lyxrc.isp_use_alt_lang) ?
-				lyxrc.isp_alt_lang : buffer()->params.language->code();
-
-			speller_ = new PSpell(buffer()->params, tmp);
-		} else {
+	if (lyxrc.use_pspell) {
+		tmp = (lyxrc.isp_use_alt_lang) ?
+			lyxrc.isp_alt_lang : buffer()->params.language->code();
+		
+		speller_ = new PSpell(buffer()->params, tmp);
+	} else {
 #endif
-			tmp = (lyxrc.isp_use_alt_lang) ?
-				lyxrc.isp_alt_lang : buffer()->params.language->lang();
-
-			speller_ = new ISpell(buffer()->params, tmp);
+		tmp = (lyxrc.isp_use_alt_lang) ?
+			lyxrc.isp_alt_lang : buffer()->params.language->lang();
+		
+		speller_ = new ISpell(buffer()->params, tmp);
 #ifdef USE_PSPELL
-		}
+	}
 #endif
-
-		if (lyxrc.isp_use_alt_lang) {
-			Language const * lang = languages.getLanguage(tmp);
-			if (lang)
-				rtl_ = lang->RightToLeft();
-		} else {
-			rtl_ = buffer()->params.language->RightToLeft();
-		}
-
-		if (!speller_->error().empty()) {
-			emergency_exit_ = true;
-			Alert::alert("The spellchecker has failed", speller_->error());
-			clearParams();
-			return;
-		}
+	
+	if (lyxrc.isp_use_alt_lang) {
+		Language const * lang = languages.getLanguage(tmp);
+		if (lang)
+			rtl_ = lang->RightToLeft();
+	} else {
+		rtl_ = buffer()->params.language->RightToLeft();
+	}
+	
+	if (!speller_->error().empty()) {
+		emergency_exit_ = true;
+		Alert::alert("The spellchecker has failed", speller_->error());
+		clearParams();
+		return;
 	}
 }
 
@@ -128,7 +129,7 @@ void ControlSpellchecker::replace(string const & replacement)
 {
 	bufferview()->replaceWord(replacement);
 	// fix up the count
- 	--count_;
+	--count_;
 	check();
 }
 

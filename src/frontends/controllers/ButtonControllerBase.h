@@ -29,8 +29,7 @@
  * This abstract base class stripped of xforms-specific code by
  * Angus Leeming <leeming@lyx.org>
  */
-class ButtonControllerBase : boost::noncopyable
-{
+class ButtonControllerBase : boost::noncopyable {
 public:
 	/** Constructor.
 	    The cancel/close label entries are _not_ managed within the class
@@ -70,7 +69,6 @@ public:
 	void valid(bool = true);
 	///
 	void invalid();
-
 protected:
 	///
 	string cancel_label_;

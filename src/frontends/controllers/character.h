@@ -24,45 +24,46 @@
 
 /** Functions of use to the character GUI controller and view */
 namespace frnt {
-	///
-	enum FONT_STATE {
-		///
-		IGNORE,
-		///
-		EMPH_TOGGLE,
-		///
-		UNDERBAR_TOGGLE,
-		///
-		NOUN_TOGGLE,
-		///
-		INHERIT
-	};
 
+///
+enum FONT_STATE {
 	///
-	typedef std::pair<string, LyXFont::FONT_FAMILY> FamilyPair;
+	IGNORE,
 	///
-	typedef std::pair<string, LyXFont::FONT_SERIES> SeriesPair;
+	EMPH_TOGGLE,
 	///
-	typedef std::pair<string, LyXFont::FONT_SHAPE>  ShapePair;
+	UNDERBAR_TOGGLE,
 	///
-	typedef std::pair<string, LyXFont::FONT_SIZE>   SizePair;
+	NOUN_TOGGLE,
 	///
-	typedef std::pair<string, FONT_STATE> BarPair;
-	///
-	typedef std::pair<string, LColor::color> ColorPair;
+	INHERIT
+};
 
-	///
-	std::vector<FamilyPair>   const getFamilyData();
-	///
-	std::vector<SeriesPair>   const getSeriesData();
-	///
-	std::vector<ShapePair>    const getShapeData();
-	///
-	std::vector<SizePair>     const getSizeData();
-	///
-	std::vector<BarPair>      const getBarData();
-	///
-	std::vector<ColorPair>    const getColorData();
+///
+typedef std::pair<string, LyXFont::FONT_FAMILY> FamilyPair;
+///
+typedef std::pair<string, LyXFont::FONT_SERIES> SeriesPair;
+///
+typedef std::pair<string, LyXFont::FONT_SHAPE>  ShapePair;
+///
+typedef std::pair<string, LyXFont::FONT_SIZE>   SizePair;
+///
+typedef std::pair<string, FONT_STATE> BarPair;
+///
+typedef std::pair<string, LColor::color> ColorPair;
+
+///
+std::vector<FamilyPair>   const getFamilyData();
+///
+std::vector<SeriesPair>   const getSeriesData();
+///
+std::vector<ShapePair>    const getShapeData();
+///
+std::vector<SizePair>     const getSizeData();
+///
+std::vector<BarPair>      const getBarData();
+///
+std::vector<ColorPair>    const getColorData();
 
 } // namespace frnt
 

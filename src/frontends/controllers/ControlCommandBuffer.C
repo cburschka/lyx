@@ -5,7 +5,7 @@
  *
  * \author Lars
  * \author Asger and Juergen
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -27,37 +27,37 @@ using std::vector;
 using std::back_inserter;
 using std::transform;
 using std::endl;
- 
+
 namespace {
- 
+
 struct prefix_p {
 	string p;
-	prefix_p(string const & s) 
+	prefix_p(string const & s)
 		: p(s) {}
 	bool operator()(string const & s) const {
 		return prefixIs(s, p);
 	}
 };
- 
+
 } // end of anon namespace
 
- 
+
 ControlCommandBuffer::ControlCommandBuffer(LyXFunc & lf)
 	: lyxfunc_(lf), history_pos_(history_.end())
 {
 	transform(lyxaction.func_begin(), lyxaction.func_end(),
-		back_inserter(commands_), lyx::firster()); 
+		back_inserter(commands_), lyx::firster());
 }
- 
-	
+
+
 string const ControlCommandBuffer::historyUp()
 {
 	if (history_pos_ == history_.begin())
-		return "";
+		return string();
 
 	return *(--history_pos_);
 }
- 
+
 
 string const ControlCommandBuffer::historyDown()
 {
@@ -70,7 +70,8 @@ string const ControlCommandBuffer::historyDown()
 }
 
 
-vector<string> const ControlCommandBuffer::completions(string const & prefix, string & new_prefix)
+vector<string> const
+ControlCommandBuffer::completions(string const & prefix, string & new_prefix)
 {
 	vector<string> comp;
 
@@ -102,17 +103,17 @@ vector<string> const ControlCommandBuffer::completions(string const & prefix, st
 		}
 		test += tmp[test.length()];
 	}
- 
+
 	new_prefix = test;
 	return comp;
 }
- 
+
 
 void ControlCommandBuffer::dispatch(string const & str)
 {
 	if (str.empty())
 		return;
- 
+
 	history_.push_back(str);
 	history_pos_ = history_.end();
 	lyxfunc_.dispatch(str, true);

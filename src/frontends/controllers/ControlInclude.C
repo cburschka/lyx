@@ -5,7 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -89,6 +89,6 @@ bool ControlInclude::fileExists(string const & file)
 
 	if (IsFileReadable(fileWithAbsPath))
 		return true;
-	
+
 	return false;
 }

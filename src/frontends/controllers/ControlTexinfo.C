@@ -33,7 +33,7 @@ namespace {
 string getFileList(ControlTexinfo::texFileSuffix type, bool withFullPath)
 {
 	switch (type) {
-	    case ControlTexinfo::bst: 
+	    case ControlTexinfo::bst:
 		return getTexFileList("bstFiles.lst", withFullPath);
 		break;
 	    case ControlTexinfo::cls:
@@ -45,8 +45,9 @@ string getFileList(ControlTexinfo::texFileSuffix type, bool withFullPath)
 	}
 	return string();
 }
- 
-}
+
+} // namespace anon
+
 
 ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)

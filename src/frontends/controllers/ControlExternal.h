@@ -44,7 +44,6 @@ public:
 	ExternalTemplate getTemplate(int) const;
 	///
 	string const Browse(string const &) const;
-
 private:
 	///
 	virtual void applyParamsToInset();

@@ -23,8 +23,7 @@
 
 /** A controller for Character dialogs.
  */
-class ControlCharacter : public ControlDialogBD
-{
+class ControlCharacter : public ControlDialogBD {
 public:
 	///
 	ControlCharacter(LyXView &, Dialogs &);

@@ -22,8 +22,7 @@
 
 /** A controller for TOC dialogs.
  */
-class ControlToc : public ControlCommand
-{
+class ControlToc : public ControlCommand {
 public:
 	///
 	ControlToc(LyXView &, Dialogs &);

@@ -29,11 +29,14 @@ class LyXView;
     pattern: *.ps etc.
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
-string const browseFile(LyXView *lv, string const & filename,
-			string const & title,
-			string const & pattern,
-			std::pair<string,string> const & dir1 = std::make_pair(string(), string()),
-			std::pair<string,string> const & dir2 = std::make_pair(string(), string()));
+string const
+browseFile(LyXView *lv, string const & filename,
+	   string const & title,
+	   string const & pattern,
+	   std::pair<string,string> const & dir1 =
+	   std::make_pair(string(), string()),
+	   std::pair<string,string> const & dir2 =
+	   std::make_pair(string(), string()));
 
 
 /* Wrapper around browseFile which tries to provide a filename
@@ -42,12 +45,15 @@ string const browseFile(LyXView *lv, string const & filename,
    of the form "../baz/foo.txt", an absolute path is returned. This is
    intended to be useful for insets which encapsulate files/
 */
-string const browseRelFile(LyXView *lv, string const & filename,
-			   string const & refpath,
-			   string const & title,
-			   string const & pattern,
-			   std::pair<string,string> const & dir1 = std::make_pair(string(), string()),
-			   std::pair<string,string> const & dir2 = std::make_pair(string(), string()));
+string const
+browseRelFile(LyXView *lv, string const & filename,
+	      string const & refpath,
+	      string const & title,
+	      string const & pattern,
+	      std::pair<string,string> const & dir1 =
+	      std::make_pair(string(), string()),
+	      std::pair<string,string> const & dir2 =
+	      std::make_pair(string(), string()));
 
 
 /// Returns a vector of units that can be used to create a valid LaTeX length.
@@ -58,7 +64,7 @@ std::vector<string> const getLatexUnits();
     vector<pair<A,B> >
 */
 
-namespace hide {
+namespace detail {
 
 template<class Pair>
 struct firster {
@@ -72,7 +78,7 @@ struct seconder {
 	second_type const & operator()(Pair const & p) { return p.second; }
 };
 
-}
+} // namespace detail
 
 ///
 template<class Pair>
@@ -81,7 +87,7 @@ getFirst(std::vector<Pair> const & pr)
 {
 	std::vector<typename Pair::first_type> tmp(pr.size());
 	std::transform(pr.begin(), pr.end(), tmp.begin(),
-		       hide::firster<Pair>());
+		       detail::firster<Pair>());
 	return tmp;
 }
 
@@ -92,7 +98,7 @@ getSecond(std::vector<Pair> const & pr)
 {
 	std::vector<typename Pair::second_type> tmp(pr.size());
 	std::transform(pr.begin(), pr.end(), tmp.begin(),
-		       hide::seconder<Pair>());
+		       detail::seconder<Pair>());
 	return tmp;
 }
 

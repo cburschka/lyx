@@ -30,9 +30,9 @@ public:
 	///
 	ControlLog(LyXView &, Dialogs &);
 	///
-	std::pair<Buffer::LogType, string> const & logfile()
-		{ return logfile_; }
-
+	std::pair<Buffer::LogType, string> const & logfile() {
+		return logfile_;
+	}
 private:
 	///
 	virtual void apply() {}

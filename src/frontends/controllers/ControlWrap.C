@@ -44,11 +44,6 @@ WrapParams const ControlWrap::getParams(InsetWrap const & inset)
 }
 
 
-WrapParams::WrapParams()
-	: placement("")
-{}
-
-
 WrapParams::WrapParams(InsetWrap const & inset)
 	: pageWidth(inset.pageWidth()),
 	  placement(inset.placement())

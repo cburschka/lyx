@@ -1,3 +1,9 @@
+2002-10-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QVCLog.C (update_contents): modify
+
+	* QPreamble.C (apply): modify
+
 2002-10-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* qfont_metrics.C (ascent): Fix returned value.
@@ -5,7 +11,7 @@
 2002-10-21  Philippe Elie  <phil.el@wanadoo.fr>
 
 	* QContentPane.h:
-	* QContentPane.C: implement wheelEvent	
+	* QContentPane.C: implement wheelEvent
 
 2002-10-20  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -15,7 +21,7 @@
 
 	* ui/QDelimiterDialog.ui: remove two huge XPMs that
 	  were accidentally built in
- 
+
 2002-10-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Toolbar_pimpl.C (setLayout): initialize i to 0, don't
@@ -95,7 +101,7 @@
 	* QAbout.C (build_dialog): fill the credits view in a bit more
 	elegant way
 
-	* almost all files: clean up formatting and indenting. 
+	* almost all files: clean up formatting and indenting.
 
 2002-10-19  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

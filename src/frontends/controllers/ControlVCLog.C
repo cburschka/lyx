@@ -16,18 +16,17 @@
 #endif
 
 #include "ControlVCLog.h"
-#include "Lsstream.h"
 #include "ButtonControllerBase.h"
 #include "buffer.h"
 #include "lyxrc.h"
 #include "gettext.h"
-
 
 #include "support/lyxlib.h"
 
 #include <fstream>
 
 using std::endl;
+using std::ostream;
 
 
 ControlVCLog::ControlVCLog(LyXView & lv, Dialogs & d)
@@ -41,17 +40,15 @@ string const ControlVCLog::getBufferFileName() const
 }
 
 
-stringstream & ControlVCLog::getVCLogFile(stringstream & ss) const
+void ControlVCLog::getVCLogFile(ostream & ss) const
 {
 	string const name = buffer()->lyxvc.getLogFile();
 
 	std::ifstream in(name.c_str());
 
-	bool found = (in.get());
+	bool found(false);
 
-	if (found) {
-		in.seekg(0, std::ios::beg); // rewind to the beginning
-
+	if (in) {
 		ss << in.rdbuf();
 		found = ss.good();
 	}
@@ -60,6 +57,4 @@ stringstream & ControlVCLog::getVCLogFile(stringstream & ss) const
 		ss << _("No version control log file found.") << endl;
 
 	lyx::unlink(name);
-
-	return ss;
 }

@@ -49,7 +49,8 @@ void QVCLog::update_contents()
 
 	dialog_->vclogTV->setText("");
 
-	stringstream ss;
+	ostringstream ss;
+	controller().getVCLogFile(ss);
 
-	dialog_->vclogTV->setText(controller().getVCLogFile(ss).str().c_str());
+	dialog_->vclogTV->setText(ss.str().c_str());
 }

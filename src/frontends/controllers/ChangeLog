@@ -1,3 +1,29 @@
+2002-10-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* tex_helpers.C (rescanTexStyles): don't pop p
+	(texhash): ditto
+
+	* ControlWrap.C (WrapParms): remove initialization of placement,
+	and move empty c-tor to .h class def.
+
+	* ControlVCLog.C (getVCLogFile): operator on std::ostream instead
+	of on stringsteam, return void. Get the file into the stream as
+	fast as possible.
+
+	* ControlPreamble.[Ch] (params): getter and setter for params_, make
+	params_ into a string, not just a pointer to string.
+
+	* ControlExternal.C (getTemplateNumber): put i into the for scope,
+	and use the sequence operator on the last for "parameter"
+	(getTemplate): use std::advance to advance the iterator.
+
+	* ControlAboutlyx.C (getCredits): Operate on s std::ostream
+	instead of on a stringstream, return void. Get the file into the
+	stream as fast as possible.
+	(getVersion): use ostringstream
+
+	* lots of files: ws changes, formatting fixes
+
 2002-10-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlCharacter.C (apply): setMinibuffer change

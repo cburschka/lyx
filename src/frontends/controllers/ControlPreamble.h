@@ -28,8 +28,9 @@ public:
 	ControlPreamble(LyXView &, Dialogs &);
 
 	///
-	string & params() const;
-
+	string const & params() const;
+	///
+	void params(string const & newparams);
 private:
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();
@@ -39,7 +40,7 @@ private:
 	virtual void clearParams();
 
 	///
-	string * params_;
+	string params_;
 };
 
 #endif // CONTROLPREAMBLE_H

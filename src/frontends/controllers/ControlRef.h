@@ -24,7 +24,6 @@ class ControlRef : public ControlCommand {
 public:
 	///
 	ControlRef(LyXView &, Dialogs &);
-
 	///
 	std::vector<string> const getLabelList(string const &) const;
 	///

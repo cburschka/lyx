@@ -40,6 +40,11 @@ using std::pair;
 using std::make_pair;
 using std::vector;
 
+// We need these in the file browser.
+extern string system_lyxdir;
+extern string user_lyxdir;
+
+
 ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetGraphics, InsetGraphicsParams>(lv, d)
 {}
@@ -72,11 +77,6 @@ void ControlGraphics::applyParamsToInset()
 
 void ControlGraphics::applyParamsNoInset()
 {}
-
-
-// We need these in the file browser.
-extern string system_lyxdir;
-extern string user_lyxdir;
 
 
 string const ControlGraphics::Browse(string const & in_name)

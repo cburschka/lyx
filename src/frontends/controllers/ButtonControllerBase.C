@@ -32,7 +32,8 @@ void ButtonControllerBase::ok()
 
 void ButtonControllerBase::input(ButtonPolicy::SMInput in)
 {
-	if (ButtonPolicy::SMI_NOOP == in) return;
+	if (ButtonPolicy::SMI_NOOP == in)
+		return;
 	bp().input(in);
 	refresh();
 }

@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Allan Rae
- * \author Angus Leeming 
+ * \author Angus Leeming
  * \author Baruch Even
  *
  * Full author contact details are available in file CREDITS
@@ -25,8 +25,7 @@
  *  be #included in the gui-frontend BC class, see e.g. xforms/xformsBC.C
  */
 template <class Button, class Widget>
-class GuiBC : public ButtonControllerBase
-{
+class GuiBC : public ButtonControllerBase {
 public:
 	///
 	GuiBC(string const & cancel, string const & close);
@@ -48,7 +47,6 @@ public:
 	void refresh();
 	/// Refresh the status of any widgets in the read_only list
 	void refreshReadOnly();
-
 private:
 	/// Enable/Disable a widget
 	virtual void setWidgetEnabled(Widget * obj, bool enable) = 0;
@@ -68,8 +66,7 @@ private:
 
 
 template <class BP, class GUIBC>
-class ButtonController: public GUIBC
-{
+class ButtonController: public GUIBC {
 public:
 	///
 	ButtonController(string const & = _("Cancel"),
@@ -78,7 +75,6 @@ public:
 	~ButtonController() {}
 	///
 	virtual ButtonPolicy & bp() { return bp_; }
-
 protected:
 	///
 	BP bp_;

@@ -18,7 +18,8 @@
 #endif
 
 #include "ControlDialog_impl.h"
-#include "Lsstream.h"
+
+#include "LString.h"
 
 /**
  * A controller for the Version Control log viewer.
@@ -27,11 +28,10 @@ class ControlVCLog : public ControlDialogBD {
 public:
 	///
 	ControlVCLog(LyXView &, Dialogs &);
-	/// get a stringstream containing the log file
-	stringstream & getVCLogFile(stringstream & ss) const;
+	/// put the log file into the ostream
+	void getVCLogFile(std::ostream & ss) const;
 	/// get the filename of the buffer
 	string const getBufferFileName() const;
-
 private:
 	///
 	virtual void apply() {}

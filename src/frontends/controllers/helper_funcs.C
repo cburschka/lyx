@@ -28,13 +28,14 @@ using std::pair;
 using std::vector;
 using std::make_pair;
 
+
 string const browseFile(LyXView * lv, string const & filename,
 			string const & title,
 			string const & pattern,
 			pair<string,string> const & dir1,
 			pair<string,string> const & dir2)
 {
-	string lastPath = ".";
+	string lastPath(".");
 	if (!filename.empty())
 		lastPath = OnlyPath(filename);
 
@@ -42,8 +43,9 @@ string const browseFile(LyXView * lv, string const & filename,
 
 	FileDialog::Result result;
 
-	while (1) {
-		result = fileDlg.Select(lastPath, pattern, OnlyFilename(filename));
+	while (true) {
+		result = fileDlg.Select(lastPath, pattern,
+					OnlyFilename(filename));
 
 		if (result.second.empty())
 			return result.second;
@@ -87,8 +89,8 @@ extern const char * stringFromUnit(int);
 vector<string> const getLatexUnits()
 {
 	vector<string> units;
-	const char * str;
-	for(int i=0; (str = stringFromUnit(i)); ++i)
+	char const * str;
+	for (int i = 0; (str = stringFromUnit(i)); ++i)
 	    units.push_back(str);
 
 	return units;

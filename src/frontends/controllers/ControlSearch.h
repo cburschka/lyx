@@ -33,7 +33,6 @@ public:
 	/// Replaces occurence of string
 	void replace(string const & search, string const & replace,
 		     bool casesensitive, bool matchword, bool all);
-
 private:
 	/// not needed.
 	virtual void apply() {}

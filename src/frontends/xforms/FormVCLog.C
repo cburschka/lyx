@@ -22,6 +22,7 @@
 #include "gettext.h"
 #include FORMS_H_LOCATION
 
+
 FormVCLog::FormVCLog()
 	: FormCB<ControlVCLog, FormBrowser>(_("Version Control Log"))
 {}
@@ -31,8 +32,9 @@ void FormVCLog::update()
 {
 	fl_clear_browser(dialog_->browser);
 
-	stringstream ss;
+	ostringstream ss;
+	controller().getVCLogFile(ss);
 
 	fl_add_browser_line(dialog_->browser,
-			    controller().getVCLogFile(ss).str().c_str());
+			    ss.str().c_str());
 }

@@ -270,8 +270,7 @@ private:
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
-class NoRepeatedApplyReadOnlyPolicy : public ButtonPolicy
-{
+class NoRepeatedApplyReadOnlyPolicy : public ButtonPolicy {
 public:
 	///
 	NoRepeatedApplyReadOnlyPolicy();

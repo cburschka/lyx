@@ -10,17 +10,22 @@
  */
 
 #include <config.h>
-#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "ControlAboutlyx.h"
-#include "Lsstream.h"
 #include "gettext.h"
-#include "support/filetools.h" // FileSearch
 #include "version.h"
+#include "Lsstream.h"
+
+#include "support/LOstream.h"
+#include "support/filetools.h" // FileSearch
+
+#include <fstream>
+
+using std::ostream;
 
 // needed for the browser
 extern string system_lyxdir;
@@ -32,7 +37,7 @@ ControlAboutlyx::ControlAboutlyx(LyXView & lv, Dialogs & d)
 {}
 
 
-stringstream & ControlAboutlyx::getCredits(stringstream & ss) const
+void ControlAboutlyx::getCredits(ostream & ss) const
 {
 	string const name = FileSearch(system_lyxdir, "CREDITS");
 
@@ -40,14 +45,9 @@ stringstream & ControlAboutlyx::getCredits(stringstream & ss) const
 
 	if (found) {
 		std::ifstream in(name.c_str());
-		found = (in.get());
 
-		if (found) {
-			in.seekg(0, std::ios::beg); // rewind to the beginning
-
-			ss << in.rdbuf();
-			found = (ss.good());
-		}
+		ss << in.rdbuf();
+		found = ss.good();
 	}
 
 	if (!found) {
@@ -55,8 +55,6 @@ stringstream & ControlAboutlyx::getCredits(stringstream & ss) const
 		   << _("Please install correctly to estimate the great\n")
 		   << _("amount of work other people have done for the LyX project.");
 	}
-
-	return ss;
 }
 
 
@@ -80,7 +78,7 @@ string const ControlAboutlyx::getDisclaimer() const
 
 string const ControlAboutlyx::getVersion() const
 {
-	stringstream ss;
+	ostringstream ss;
 
 	ss << _("LyX Version ")
 	   << lyx_version

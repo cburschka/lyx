@@ -117,6 +117,7 @@ void ControlParagraph::setParams()
 	ininset_ = par_->inInset();
 }
 
+
 void ControlParagraph::changedParagraph()
 {
 	/// get paragraph

@@ -47,7 +47,6 @@ class ControlERT : public ControlInset<InsetERT, ERTParams>  {
 public:
 	///
 	ControlERT(LyXView &, Dialogs &);
-
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();

@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  *
@@ -22,16 +22,14 @@ class Dialogs;
 class LyXView;
 
 
-class ControlDialogBD : public ControlDialog<ControlConnectBD>
-{
+class ControlDialogBD : public ControlDialog<ControlConnectBD> {
 public:
 	///
 	ControlDialogBD(LyXView &, Dialogs &);
 };
 
 
-class ControlDialogBI : public ControlDialog<ControlConnectBI>
-{
+class ControlDialogBI : public ControlDialog<ControlConnectBI> {
 public:
 	///
 	ControlDialogBI(LyXView &, Dialogs &);

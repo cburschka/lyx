@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  *
@@ -25,8 +25,7 @@ class Dialogs;
     The Base class will be either ControlConnectBI or ControlConnectBD.
  */
 template <class Base>
-class ControlDialog : public Base
-{
+class ControlDialog : public Base {
 public:
 	///
 	ControlDialog(LyXView &, Dialogs &);
@@ -35,7 +34,6 @@ public:
 	 *  Publicly accessible so that it can be invoked by the Dialogs class.
 	 */
 	virtual void show();
-
 protected:
 	/// Hide the dialog.
 	virtual void hide();
@@ -46,7 +44,6 @@ protected:
 	virtual void clearParams() {}
 	/// set the params before show or update
 	virtual void setParams() {}
-
 private:
 	/// is the dialog built ?
 	bool dialog_built_;

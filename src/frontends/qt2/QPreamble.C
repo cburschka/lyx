@@ -52,5 +52,5 @@ void QPreamble::update_contents()
 
 void QPreamble::apply()
 {
-	controller().params() = dialog_->preambleLE->text().latin1();
+	controller().params(dialog_->preambleLE->text().latin1());
 }

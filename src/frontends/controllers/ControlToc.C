@@ -23,6 +23,7 @@ using std::vector;
 
 class Buffer;
 
+
 ControlToc::ControlToc(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_TOC_INSERT)
 {}

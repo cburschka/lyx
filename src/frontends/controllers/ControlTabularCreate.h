@@ -31,7 +31,6 @@ public:
 
 	///
 	rowsCols & params();
-
 private:
 	/// Apply from dialog
 	virtual void apply();

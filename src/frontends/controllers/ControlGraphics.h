@@ -59,10 +59,12 @@ private:
 };
 
 namespace frnt {
-	/// The (tranlated) GUI string and it's LaTeX equivalent.
-	typedef std::pair<string, string> RotationOriginPair;
-	///
-	std::vector<RotationOriginPair> getRotationOriginData();
+
+/// The (tranlated) GUI string and it's LaTeX equivalent.
+typedef std::pair<string, string> RotationOriginPair;
+///
+std::vector<RotationOriginPair> getRotationOriginData();
+
 } // namespace frnt
 
 #endif // CONTROLGRAPHICS_H

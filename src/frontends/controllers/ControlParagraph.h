@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven 
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
@@ -25,8 +25,7 @@ class ParagraphParameters;
 
 /** A controller for Paragraph dialogs.
  */
-class ControlParagraph : public ControlDialogBD
-{
+class ControlParagraph : public ControlDialogBD {
 public:
 	///
 	ControlParagraph(LyXView &, Dialogs &);
@@ -42,7 +41,6 @@ public:
 	LyXAlignment alignPossible() const;
 	///
 	void changedParagraph();
-
 private:
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();

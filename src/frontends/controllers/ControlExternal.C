@@ -28,6 +28,7 @@
 
 using std::vector;
 
+
 ControlExternal::ControlExternal(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetExternal, InsetExternal::Params>(lv, d)
 {}
@@ -37,6 +38,7 @@ InsetExternal::Params const ControlExternal::getParams(string const &)
 {
 	return InsetExternal::Params();
 }
+
 
 InsetExternal::Params const
 ControlExternal::getParams(InsetExternal const & inset)
@@ -50,6 +52,7 @@ void ControlExternal::applyParamsToInset()
 	inset()->setFromParams(params());
 	bufferview()->updateInset(inset(), true);
 }
+
 
 void ControlExternal::editExternal()
 {
@@ -66,6 +69,7 @@ void ControlExternal::editExternal()
 	ie->editExternal();
 }
 
+
 void ControlExternal::viewExternal()
 {
 	view().apply();
@@ -77,6 +81,7 @@ void ControlExternal::viewExternal()
 	ie->viewExternal();
 }
 
+
 void ControlExternal::updateExternal()
 {
 	view().apply();
@@ -87,6 +92,7 @@ void ControlExternal::updateExternal()
 
 	ie->updateExternal();
 }
+
 
 vector<string> const ControlExternal::getTemplates() const
 {
@@ -105,15 +111,12 @@ vector<string> const ControlExternal::getTemplates() const
 
 int ControlExternal::getTemplateNumber(string const & name) const
 {
-	int i = 0;
-
 	ExternalTemplateManager::Templates::const_iterator i1, i2;
 	i1 = ExternalTemplateManager::get().getTemplates().begin();
 	i2 = ExternalTemplateManager::get().getTemplates().end();
-	for (; i1 != i2; ++i1) {
+	for (int i = 0; i1 != i2; ++i1, ++i) {
 		if (i1->second.lyxName == name)
 			return i;
-		++i;
 	}
 
 	// we can get here if a LyX document has a template not installed
@@ -124,10 +127,10 @@ int ControlExternal::getTemplateNumber(string const & name) const
 
 ExternalTemplate ControlExternal::getTemplate(int i) const
 {
-	ExternalTemplateManager::Templates::const_iterator i1;
-	i1 = ExternalTemplateManager::get().getTemplates().begin();
-	for (int n = 1; n < i; ++n)
-		++i1;
+	ExternalTemplateManager::Templates::const_iterator i1
+		= ExternalTemplateManager::get().getTemplates().begin();
+
+	std::advance(i1,  i);
 
 	return i1->second;
 }

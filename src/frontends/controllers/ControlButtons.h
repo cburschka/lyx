@@ -37,8 +37,7 @@ class ButtonControllerBase;
 
 /** Abstract base class for Controllers with a ButtonController.
  */
-class ControlButtons : boost::noncopyable
-{
+class ControlButtons : boost::noncopyable {
 public:
 	///
 	ControlButtons();
@@ -67,7 +66,6 @@ public:
 	void setView(ViewBase &);
 	///
 	void setButtonController(ButtonControllerBase &);
-
 protected:
 	///
 	ViewBase & view();
@@ -86,7 +84,6 @@ protected:
 	/** This flag can be set by one of the miriad the controller methods
 	    to ensure that the dialog is shut down. */
 	bool emergency_exit_;
-
 private:
 	///
 	bool is_closing_;

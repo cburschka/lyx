@@ -46,7 +46,7 @@ void FormPreamble::build()
 
 void FormPreamble::apply()
 {
-	controller().params() = fl_get_input(dialog_->input_preamble);
+	controller().params(fl_get_input(dialog_->input_preamble));
 }
 
 

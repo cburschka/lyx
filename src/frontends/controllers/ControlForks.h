@@ -37,7 +37,6 @@ public:
 	string const getCommand(pid_t) const;
 	///
 	void kill(pid_t);
-
 private:
 	///
 	virtual void apply();

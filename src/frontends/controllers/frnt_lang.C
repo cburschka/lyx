@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -26,10 +26,9 @@ namespace {
 
 struct Sorter {
 	bool operator()(frnt::LanguagePair const & lhs,
-			frnt::LanguagePair const & rhs) const
-        {
-                return lhs.first < rhs.first;
-        }
+			frnt::LanguagePair const & rhs) const {
+		return lhs.first < rhs.first;
+	}
 };
 
 } // namespace anon
@@ -44,8 +43,10 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 	vector<LanguagePair> langs(size);
 
 	if (character_dlg) {
-		langs[0].first = _("No change"); langs[0].second = "ignore";
-		langs[1].first = _("Reset");     langs[1].second = "reset";
+		langs[0].first = _("No change");
+		langs[0].second = "ignore";
+		langs[1].first = _("Reset");
+		langs[1].second = "reset";
 	}
 
 	vector<string>::size_type i = character_dlg ? 2 : 0;

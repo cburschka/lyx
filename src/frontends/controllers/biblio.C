@@ -31,8 +31,7 @@ using std::min;
 using std::vector;
 using std::sort;
 
-namespace biblio
-{
+namespace biblio {
 
 namespace {
 

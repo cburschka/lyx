@@ -46,8 +46,7 @@ class LyXFunc;
     kernel. It is meant to be used solely as the parent class to
     ControlConnectBI and ControlConnectBD.
 */
-class ControlConnectBase : public ControlButtons
-{
+class ControlConnectBase : public ControlButtons {
 public:
 	///
 	enum DocTypes {
@@ -66,7 +65,6 @@ public:
 	bool bufferIsReadonly() const;
 	///
 	DocTypes docType() const;
-
 protected:
 	/// True if the dialog depends on the buffer, else false.
 	virtual bool isBufferDependent() const = 0;
@@ -96,7 +94,6 @@ protected:
 	///
 	LyXFunc const & lyxfunc() const;
 
-
 	///
 	LyXView & lv_;
 	/// Contains the signals we have to connect to.
@@ -114,12 +111,10 @@ protected:
     an update() function which is also supported by the Restore button.
  */
 
-class ControlConnectBI : public ControlConnectBase
-{
+class ControlConnectBI : public ControlConnectBase {
 public:
 	///
 	ControlConnectBI(LyXView &, Dialogs &);
-
 protected:
 	///
 	virtual bool isBufferDependent() const { return false; }
@@ -131,12 +126,10 @@ protected:
 /** Base class to control connection/disconnection of signals with the LyX
     kernel for Buffer Dependent dialogs.
  */
-class ControlConnectBD : public ControlConnectBase
-{
+class ControlConnectBD : public ControlConnectBase {
 public:
 	///
 	ControlConnectBD(LyXView &, Dialogs &);
-
 protected:
 	///
 	virtual bool isBufferDependent() const { return true; }
@@ -144,7 +137,6 @@ protected:
 	virtual void connect();
 	/// Disconnect signals
 	virtual void disconnect();
-
 private:
 	/** Slot connected to update signal.
 	    Bool indicates if a buffer switch took place.

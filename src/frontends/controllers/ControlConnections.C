@@ -26,6 +26,7 @@
 
 #include <boost/bind.hpp>
 
+
 ControlConnectBase::ControlConnectBase(LyXView & lv, Dialogs & d)
 	: lv_(lv), d_(d)
 {}

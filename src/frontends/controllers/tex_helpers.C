@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Herbert Voss 
+ * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
  */
@@ -42,12 +42,12 @@ vector<string> listWithoutPath(vector<string> & dbase)
 {
 	vector<string>::iterator it = dbase.begin();
 	vector<string>::iterator end = dbase.end();
-	for (; it != end; ++it) 
+	for (; it != end; ++it)
 		*it = OnlyFilename(*it);
 	return dbase;
 }
 
-}
+} // namespace anon
 
 // build filelists of all availabe bst/cls/sty-files. done through
 // kpsewhich and an external script, saved in *Files.lst
@@ -58,7 +58,6 @@ void rescanTexStyles()
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
 			LibFileSearch("scripts", "TeXFiles.sh"));
-	p.pop();
 }
 
 
@@ -69,20 +68,20 @@ void texhash()
 
 	//path to texhash through system
 	Systemcall one;
-	one.startscript(Systemcall::Wait,"texhash"); 
-	p.pop();
+	one.startscript(Systemcall::Wait,"texhash");
 }
+
 
 string const getTexFileList(string const & filename, bool withFullPath)
 {
 	string const file = LibFileSearch("", filename);
 	if (file.empty())
 		return string();
- 
+
 	vector<string> dbase =
 		getVectorFromString(GetFileContents(file), "\n");
 
-	lyx::eliminate_duplicates(dbase); 
+	lyx::eliminate_duplicates(dbase);
 	string const str_out = withFullPath ?
 		getStringFromVector(dbase, "\n") :
 		getStringFromVector(listWithoutPath(dbase), "\n");
@@ -90,8 +89,7 @@ string const getTexFileList(string const & filename, bool withFullPath)
 }
 
 
-string const getListOfOptions(string const & classname,
-			    string const & type)
+string const getListOfOptions(string const & classname, string const & type)
 {
 	string const filename = getTexFileFromList(classname,type);
 	string optionList = string();
@@ -110,25 +108,28 @@ string const getListOfOptions(string const & classname,
 }
 
 
-string const getTexFileFromList(string const & file, 
+string const getTexFileFromList(string const & file,
 			    string const & type)
 {
 	string const file_ = (type == "cls") ? file + ".cls" : file + ".sty";
- 
+
 	lyxerr << "Search for classfile " << file_ << endl;
- 
-	string const lstfile = (type == "cls") ? "clsFiles.lst" : "styFiles.lst";
-	string const allClasses = GetFileContents(LibFileSearch(string(), lstfile));
+
+	string const lstfile =
+		((type == "cls") ? "clsFiles.lst" : "styFiles.lst");
+	string const allClasses = GetFileContents(LibFileSearch(string(),
+								lstfile));
 	int entries = 0;
 	string classfile = token(allClasses, '\n', entries);
 	int count = 0;
-	while ((!contains(classfile, file) || 
+	while ((!contains(classfile, file) ||
 		(OnlyFilename(classfile) != file)) &&
 		(++count < 1000)) {
 		classfile = token(allClasses, '\n', ++entries);
 	}
- 
+
 	// now we have filename with full path
 	lyxerr << "with full path: " << classfile << endl;
+
 	return classfile;
 }

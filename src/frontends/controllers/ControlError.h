@@ -23,12 +23,10 @@ class InsetError;
 
 /** A controller for LaTeX Error dialogs.
  */
-class ControlError : public ControlInset<InsetError, string>
-{
+class ControlError : public ControlInset<InsetError, string> {
 public:
 	///
 	ControlError(LyXView &, Dialogs &);
-
 private:
 	/// not needed.
 	virtual void applyParamsToInset() {}

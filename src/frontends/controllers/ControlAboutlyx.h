@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -18,8 +18,9 @@
 #endif
 
 #include "ControlDialog_impl.h"
-#include "Lsstream.h"
 #include "LString.h"
+
+#include <iosfwd>
 
 /** A controller for the About LyX dialogs.
  */
@@ -29,7 +30,7 @@ public:
 	ControlAboutlyx(LyXView &, Dialogs &);
 
 	///
-	stringstream & getCredits(stringstream &) const;
+	void getCredits(std::ostream &) const;
 
 	///
 	string const getCopyright() const;
@@ -42,8 +43,6 @@ public:
 
 	///
 	string const getVersion() const;
-
-
 private:
 	/// not needed.
 	virtual void apply() {}

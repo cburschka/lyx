@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -386,7 +386,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					ev->xbutton.y - ob->y,
 					x_button_state(key));
 			area->dispatch(cmd);
-			
+
 		}
 		break;
 #if FL_VERSION < 1 && FL_REVISION < 89

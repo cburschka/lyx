@@ -25,8 +25,7 @@
 
 
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d),
-	  params_(0)
+	: ControlDialogBD(lv, d)
 {}
 
 
@@ -43,22 +42,25 @@ void ControlPreamble::apply()
 }
 
 
-string & ControlPreamble::params() const
+string const & ControlPreamble::params() const
 {
-	lyx::Assert(params_);
-	return *params_;
+	return params_;
+}
+
+
+void ControlPreamble::params(string const & newparams)
+{
+	params_ = newparams;
 }
 
 
 void ControlPreamble::setParams()
 {
-	delete params_;
-	params_ = new string(buffer()->params.preamble);
+	params_ = buffer()->params.preamble;
 }
 
 
 void ControlPreamble::clearParams()
 {
-	delete params_;
-	params_ = 0;
+	params_.erase();
 }

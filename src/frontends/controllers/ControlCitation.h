@@ -21,8 +21,7 @@
 
 /** A controller for Citation dialogs.
  */
-class ControlCitation : public ControlCommand
-{
+class ControlCitation : public ControlCommand {
 public:
 	///
 	ControlCitation(LyXView &, Dialogs &);
@@ -36,9 +35,9 @@ public:
 	std::vector<string> const getCiteStrings(string const & key) const;
 
 	/// available CiteStyle-s (depends on availability of Natbib
-	static std::vector<biblio::CiteStyle> const & getCiteStyles()
-		{ return citeStyles_; }
-
+	static std::vector<biblio::CiteStyle> const & getCiteStyles() {
+		return citeStyles_;
+	}
 private:
 	/// create the InfoMap of keys and data
 	virtual void setDaughterParams();

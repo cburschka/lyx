@@ -47,7 +47,6 @@ public:
 
 	/// test if file exist
 	bool fileExists(string const & file);
-
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();
@@ -57,7 +56,9 @@ private:
 	virtual InsetInclude::Params const getParams(string const &)
 		{ return InsetInclude::Params(); }
 	/// get the parameters from the inset passed to showInset.
-	virtual InsetInclude::Params const getParams(InsetInclude const & inset)
-		{ return inset.params(); }
+	virtual InsetInclude::Params const
+	getParams(InsetInclude const & inset) {
+		return inset.params();
+	}
 };
 #endif // CONTROLINCLUDE_H

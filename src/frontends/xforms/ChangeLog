@@ -1,3 +1,13 @@
+2002-10-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* FormVCLog.C (update): modify, use ostringstream
+
+	* FormPreamble.C (apply): modify
+
+	* FormLog.C (update): modify
+
+	* FormAboutlyx.C (build): use ostringstream, modify
+
 2002-10-21  Angus Leeming  <leeming@lyx.org>
 
 	* xformsImage.C (rotate): pass ints to flimage_rotate, fixing compiler

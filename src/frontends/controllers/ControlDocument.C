@@ -49,6 +49,7 @@ void ControlDocument::showPreamble()
 {
 }
 
+
 BufferParams & ControlDocument::params()
 {
 	lyx::Assert(bp_.get());
@@ -90,6 +91,7 @@ void ControlDocument::setParams()
 	/// Set the buffer parameters
 	*bp_ = buffer()->params;
 }
+
 
 void ControlDocument::setLanguage()
 {
@@ -141,6 +143,7 @@ bool ControlDocument::classApply()
 	//lv_.view()->redoCurrentBuffer();
 	return true;
 }
+
 
 void ControlDocument::saveAsDefault()
 {

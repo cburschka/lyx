@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -12,6 +12,7 @@
 
 #include "ControlDialog_impl.h"
 #include "ControlDialog.tmpl"
+
 
 ControlDialogBD::ControlDialogBD(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBD>(lv, d)

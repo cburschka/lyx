@@ -87,4 +87,3 @@ void ControlButtons::setButtonController(ButtonControllerBase & bc)
 {
 	bc_ptr_ = &bc;
 }
-

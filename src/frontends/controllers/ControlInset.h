@@ -24,8 +24,7 @@
 class Inset;
 
 template <class Inset, class Params>
-class ControlInset : public ControlConnectBD
-{
+class ControlInset : public ControlConnectBD {
 public:
 	///
 	ControlInset(LyXView &, Dialogs &);
@@ -39,11 +38,9 @@ public:
 	void createInset(string const &);
 	/// Slot launching dialog to an existing inset.
 	void showInset(Inset *);
-
 protected:
 	/// Allow the daughter methods to access the inset.
 	Inset * inset() const;
-
 private:
 	/** These 7 methods are all that the individual daughter classes
 	    should need to instantiate. */
@@ -70,8 +67,6 @@ private:
 	 when the Apply button is pressed. E.g., doing this with the citation
 	 dialog allows multiple citiations to be inserted easily. */
 	virtual bool disconnectOnApply() { return false; }
-
-
 
 	/// Instantiation of ControlButtons virtual methods.
 
@@ -102,10 +97,8 @@ private:
 
 	/// is the dialog built ?
 	bool dialog_built_;
-
 };
 
 #include "ControlInset.tmpl"
 
 #endif // CONTROLINSET_H
-

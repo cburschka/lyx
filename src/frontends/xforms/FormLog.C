@@ -30,18 +30,13 @@ void FormLog::update()
 {
 	fl_clear_browser(dialog_->browser);
 
-	if (controller().logfile().first == Buffer::buildlog) {
-		fl_set_form_title(dialog_->form, _("Build log"));
-		if (!fl_load_browser(dialog_->browser,
-				     controller().logfile().second.c_str()))
-			fl_add_browser_line(dialog_->browser,
-					    _("No build log file found"));
-		return;
-	}
+	bool buildlog = (controller().logfile().first == Buffer::buildlog);
 
-	fl_set_form_title(dialog_->form, _("LaTeX Log"));
+	fl_set_form_title(dialog_->form,
+			  buildlog ? _("Build log") : _("LaTeX Log"));
 	if (!fl_load_browser(dialog_->browser,
 			     controller().logfile().second.c_str()))
 		fl_add_browser_line(dialog_->browser,
-				    _("No LaTeX log file found"));
+				    buildlog ? _("No build log file found")
+				    : _("No LaTeX log file found"));
 }

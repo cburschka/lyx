@@ -48,6 +48,7 @@ MinipageParams::MinipageParams()
 	: pos(InsetMinipage::top)
 {}
 
+
 MinipageParams::MinipageParams(InsetMinipage const & inset)
 	: pageWidth(inset.pageWidth()), pos(inset.pos())
 {}

@@ -34,7 +34,6 @@ public:
 	string const Browse(string const &);
 	///
 	PrinterParams & params() const;
-
 private:
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();

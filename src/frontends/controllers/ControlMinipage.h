@@ -49,7 +49,6 @@ class ControlMinipage : public ControlInset<InsetMinipage, MinipageParams>  {
 public:
 	///
 	ControlMinipage(LyXView &, Dialogs &);
-
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();

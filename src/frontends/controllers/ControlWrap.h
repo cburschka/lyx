@@ -27,7 +27,7 @@ class InsetWrap;
 ///
 struct WrapParams {
 	///
-	WrapParams();
+	WrapParams() {}
 	///
 	WrapParams(InsetWrap const &);
 	///

@@ -49,20 +49,17 @@ public:
 	 *  and the view
 	 */
 	void setController(ControlButtons & c) { controller_ptr_ = &c; }
-	
-	///
-	ControlButtons & getController()
-	{
-		lyx::Assert(controller_ptr_);
-		return *controller_ptr_;
-	}
-	///
-	ControlButtons const & getController() const
-	{
-		lyx::Assert(controller_ptr_);
-		return *controller_ptr_;
-	}
 
+	///
+	ControlButtons & getController() {
+		lyx::Assert(controller_ptr_);
+		return *controller_ptr_;
+	}
+	///
+	ControlButtons const & getController() const {
+		lyx::Assert(controller_ptr_);
+		return *controller_ptr_;
+	}
 protected:
 	/// We don't own this.
 	ControlButtons * controller_ptr_;

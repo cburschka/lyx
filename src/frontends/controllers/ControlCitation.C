@@ -20,6 +20,7 @@
 using std::vector;
 using std::pair;
 
+
 vector<biblio::CiteStyle> ControlCitation::citeStyles_;
 
 
@@ -40,7 +41,8 @@ void ControlCitation::setDaughterParams()
 
 	typedef std::map<string, string>::value_type InfoMapValue;
 
-	for (vector<pair<string,string> >::size_type i=0; i<blist.size(); ++i) {
+	for (vector<pair<string,string> >::size_type i = 0;
+	     i < blist.size(); ++i) {
 		bibkeysInfo_.insert(InfoMapValue(blist[i].first,
 						 blist[i].second));
 	}

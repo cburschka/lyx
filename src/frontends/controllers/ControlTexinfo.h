@@ -37,8 +37,6 @@ public:
 	void runTexhash() const;
 	/// read filecontents
 	string const getContents(texFileSuffix type, bool withPath) const;
-
-
 private:
 	///
 	virtual void apply() {}

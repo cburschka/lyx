@@ -21,7 +21,7 @@
 #include "WordLangTuple.h"
 
 class SpellBase;
- 
+
 /** A controller for Spellchecker dialogs.
  */
 class ControlSpellchecker : public ControlDialogBD {
@@ -62,9 +62,7 @@ public:
 	string getMessage() {
 		return message_;
 	}
-
 private:
-
 	/// set the params before show or update
 	void setParams();
 	/// clean-up on hide.

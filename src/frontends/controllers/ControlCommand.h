@@ -31,12 +31,12 @@
 /** The Inset dialog controller. Connects/disconnects signals, launches
     GUI-dependent View and returns the output from this View to the kernel.
  */
-class ControlCommand : public ControlInset<InsetCommand, InsetCommandParams>
+class ControlCommand
+	: public ControlInset<InsetCommand, InsetCommandParams>
 {
 public:
 	///
 	ControlCommand(LyXView &, Dialogs &, kb_action=LFUN_NOACTION);
-
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();

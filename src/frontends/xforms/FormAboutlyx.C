@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -56,9 +56,9 @@ void FormAboutlyx::build()
 
 	// create credits
 	credits_.reset(build_aboutlyx_credits(this));
-	stringstream ss;
-	fl_add_browser_line(credits_->browser_credits,
-			    controller().getCredits(ss).str().c_str());
+	ostringstream ss;
+	controller().getCredits(ss);
+	fl_add_browser_line(credits_->browser_credits, ss.str().c_str());
 
 	// stack tabs
 	fl_addto_tabfolder(dialog_->tabfolder,_("Copyright and Version"),

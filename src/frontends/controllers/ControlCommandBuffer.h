@@ -6,7 +6,7 @@
  *
  * \author Lars
  * \author Asger and Juergen
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -28,12 +28,12 @@ class LyXFunc;
  * ControlCommandBuffer
  *
  * This provides methods for the use of a toolkit's
- * minibuffer/command buffer 
+ * minibuffer/command buffer
  */
 class ControlCommandBuffer {
 public:
 	ControlCommandBuffer(LyXFunc & lf);
-	
+
 	/// return the previous history entry if any
 	string const historyUp();
 
@@ -41,23 +41,23 @@ public:
 	string const historyDown();
 
 	/// return the possible completions
-	std::vector<string> const completions(string const & prefix, string & new_prefix);
- 
+	std::vector<string> const completions(string const & prefix,
+					      string & new_prefix);
+
 	/// dispatch a command
 	void dispatch(string const & str);
- 
 private:
 	/// controlling lyxfunc
 	LyXFunc & lyxfunc_;
-	
+
 	/// available command names
 	std::vector<string> commands_;
- 
+
 	/// command history
 	std::vector<string> history_;
 
 	/// current position in command history
 	std::vector<string>::const_iterator history_pos_;
 };
- 
+
 #endif // CONTROLCOMMANDBUFFER_H
