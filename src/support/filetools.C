@@ -955,9 +955,9 @@ string const GetExtension(string const & name)
 //      ...static char *...
 // XWD	\000\000\000\151	(0x00006900) decimal 105
 //
-// GZIP	\037\213\010\010...	http://www.ietf.org/rfc/rfc1952.txt
+// GZIP	\037\213	http://www.ietf.org/rfc/rfc1952.txt
 // ZIP	PK...			http://www.halyava.ru/document/ind_arch.htm
-// Z	\037\177		UNIX compress
+// Z	\037\235		UNIX compress
 
 /// return the "extension" which belongs to the contents.
 /// for no knowing contents return the extension. Without
@@ -975,13 +975,13 @@ string const getExtFromContents(string const & filename)
 		return string();
 
 	// gnuzip
-	string const gzipStamp = "\037\213\010\010";
+	string const gzipStamp = "\037\213";
 
 	// PKZIP
 	string const zipStamp = "PK";
 
 	// compress
-	string const compressStamp = "\037\177";
+	string const compressStamp = "\037\235";
 
 	// Maximum strings to read
 	int const max_count = 50;

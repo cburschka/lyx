@@ -1,6 +1,11 @@
 2003-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* gzstream.h: new file
+	* filetools.C (getExtFromContents): correct magic for gzip and
+	compress.
+
+	* path_defines.[Ch]: move lyx_localedir out of anon namespace
+
+	* gzstream.h: new fileq
 
 	* gzstream.C: new file
 
