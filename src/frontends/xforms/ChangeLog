@@ -1,3 +1,13 @@
+2001-02-20  Edwin Leuven <leuven@fee.uva.nl>
+
+        * src/frontends/xforms/Dialogs.C: added preamble
+        * src/frontends/xforms/FormPreamble.C: added
+        * src/frontends/xforms/FormPreamble.h: added
+        * src/frontends/xforms/Makefile.am: added
+        * src/frontends/xforms/form_preamble.C: added
+        * src/frontends/xforms/form_preamble.h: added
+        * src/frontends/xforms/form_preamble.fd: added
+
 2001-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBase.h: moved noncopyable derivation to DialogBase.

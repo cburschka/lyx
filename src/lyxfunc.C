@@ -1300,7 +1300,7 @@ string const LyXFunc::Dispatch(int ac,
 	    break;
 
 	case LFUN_LAYOUT_PREAMBLE:
-		MenuLayoutPreamble();
+		owner->getDialogs()->showPreamble();
 		break;
 		
 	case LFUN_LAYOUT_SAVE_DEFAULT:

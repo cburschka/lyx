@@ -80,33 +80,3 @@ FD_form_character *create_form_form_character(void)
 }
 /*---------------------------------------*/
 
-FD_form_preamble *create_form_form_preamble(void)
-{
-  FL_OBJECT *obj;
-  FD_form_preamble *fdui = (FD_form_preamble *) fl_calloc(1, sizeof(FD_form_preamble));
-
-  fdui->form_preamble = fl_bgn_form(FL_NO_BOX, 380, 420);
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 380, 420, "");
-  fdui->button_ok = obj = fl_add_button(FL_NORMAL_BUTTON, 50, 380, 100, 30, idex(_("OK|#O")));fl_set_button_shortcut(obj, scex(_("OK|#O")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, PreambleOKCB, 0);
-  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 160, 380, 100, 30, idex(_("Apply|#A")));fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, PreambleApplyCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 270, 380, 100, 30, idex(_("Cancel|^[")));fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, PreambleCancelCB, 0);
-  fdui->input_preamble = obj = fl_add_input(FL_MULTILINE_INPUT, 10, 10, 360, 360, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
-  fl_end_form();
-
-  fdui->form_preamble->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-

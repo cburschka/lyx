@@ -68,6 +68,10 @@ libxforms_la_SOURCES = \
 	FormParagraph.h \
 	form_paragraph.C \
 	form_paragraph.h \
+	FormPreamble.C \
+	FormPreamble.h \
+	form_preamble.C \
+	form_preamble.h \
 	FormPreferences.C \
 	FormPreferences.h \
 	form_preferences.C \

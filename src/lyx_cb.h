@@ -46,10 +46,6 @@ void LayoutsCB(int sel, void *, Combox *);
 ///
 void MenuLayoutCharacter();
 ///
-bool UpdateLayoutPreamble(BufferView * bv);
-///
-void MenuLayoutPreamble();
-///
 void MenuLayoutSave(BufferView * bv);
 ///
 LyXFont const UserFreeFont(BufferParams const & params);

@@ -48,7 +48,6 @@
 using std::endl;
 
 FD_form_character * fd_form_character;
-FD_form_preamble * fd_form_preamble;
 FD_form_sendto * fd_form_sendto;
 FD_form_figure * fd_form_figure;
 Combox * combo_language;
@@ -325,11 +324,6 @@ void LyXGUI::create_forms()
 #endif
 		combo_language2->addto((*cit).second.lang());
 	}
-
-	// the preamble form
-	fd_form_preamble = create_form_form_preamble();
-	fl_set_form_atclose(fd_form_preamble->form_preamble,
-			    CancelCloseBoxCB, 0);
 
 	// the sendto form
 	fd_form_sendto = create_form_form_sendto();

@@ -54,7 +54,6 @@ extern Combox * combo_language2;
 extern BufferList bufferlist;
 extern void show_symbols_form();
 extern FD_form_character * fd_form_character;
-extern FD_form_preamble * fd_form_preamble;
 extern FD_form_figure * fd_form_figure;
 
 extern BufferView * current_view; // called too many times in this file...
@@ -595,58 +594,6 @@ void MenuLayoutCharacter()
 }
 
 
-bool UpdateLayoutPreamble(BufferView * bv)
-{
-	bool update = true;
-	if (!bv->available())
-		update = false;
-
-	if (update) {
-		fl_set_input(fd_form_preamble->input_preamble,
-			     bv->buffer()->params.preamble.c_str());
-
-		if (bv->buffer()->isReadonly()) {
-			fl_deactivate_object(fd_form_preamble->input_preamble);
-			fl_deactivate_object(fd_form_preamble->button_ok);
-			fl_deactivate_object(fd_form_preamble->button_apply);
-			fl_set_object_lcol(fd_form_preamble->button_ok, FL_INACTIVE);
-			fl_set_object_lcol(fd_form_preamble->button_apply, FL_INACTIVE);
-		} else {
-			fl_activate_object(fd_form_preamble->input_preamble);
-			fl_activate_object(fd_form_preamble->button_ok);
-			fl_activate_object(fd_form_preamble->button_apply);
-			fl_set_object_lcol(fd_form_preamble->button_ok, FL_BLACK);
-			fl_set_object_lcol(fd_form_preamble->button_apply, FL_BLACK);
-		}
-	} else if (fd_form_preamble->form_preamble->visible) {
-		fl_hide_form(fd_form_preamble->form_preamble);
-	}
-	return update;
-}
-
-
-void MenuLayoutPreamble()
-{
-	static int ow = -1, oh;
-
-	if (UpdateLayoutPreamble(current_view)) {
-		if (fd_form_preamble->form_preamble->visible) {
-			fl_raise_form(fd_form_preamble->form_preamble);
-		} else {
-			fl_show_form(fd_form_preamble->form_preamble,
-				     FL_PLACE_MOUSE | FL_FREE_SIZE,
-				     FL_TRANSIENT,
-				     _("LaTeX Preamble"));
-			if (ow < 0) {
-				ow = fd_form_preamble->form_preamble->w;
-				oh = fd_form_preamble->form_preamble->h;
-			}
-			fl_set_form_minsize(fd_form_preamble->form_preamble,
-					    ow, oh);
-		}
-	}
-}
-
 
 void MenuLayoutSave(BufferView * bv)
 {
@@ -784,35 +731,6 @@ void CharacterOKCB(FL_OBJECT * ob, long data)
 	CharacterCloseCB(ob, data);
 }
 
-
-/* callbacks for form form_preamble */
-
-extern "C"
-void PreambleCancelCB(FL_OBJECT *, long)
-{
-	fl_hide_form(fd_form_preamble->form_preamble);
-}
-
-
-extern "C"
-void PreambleApplyCB(FL_OBJECT *, long)
-{
-	if (!current_view->available())
-		return;
-	
-	current_view->buffer()->params.preamble = 
-		fl_get_input(fd_form_preamble->input_preamble);
-	current_view->buffer()->markDirty();
-	current_view->owner()->getMiniBuffer()->Set(_("LaTeX preamble set"));
-}
-
-   
-extern "C"
-void PreambleOKCB(FL_OBJECT * ob, long data)
-{
-	PreambleApplyCB(ob, data);
-	PreambleCancelCB(ob, data);
-}
 
 
 void Figure()

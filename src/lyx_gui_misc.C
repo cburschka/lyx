@@ -44,7 +44,6 @@ extern BufferView * current_view;
 extern FD_form_character * fd_form_character;
 extern FD_form_credits * fd_form_credits;
 extern FD_form_figure * fd_form_figure;
-extern FD_form_preamble * fd_form_preamble;
 extern FD_form_sendto * fd_form_sendto;
 extern FD_form_spell_check * fd_form_spell_check;
 extern FD_form_spell_options * fd_form_spell_options;
@@ -80,9 +79,6 @@ void RedrawAllBufferRelatedDialogs()
 	if (fd_form_figure->form_figure->visible) {
 		fl_redraw_form(fd_form_figure->form_figure);
 	}
-	if (fd_form_preamble->form_preamble->visible) {
-		fl_redraw_form(fd_form_preamble->form_preamble);
-	}
 	if (fd_form_sendto->form_sendto->visible) {
 		fl_redraw_form(fd_form_sendto->form_sendto);
 	}
@@ -117,9 +113,6 @@ void CloseAllBufferRelatedDialogs()
 	// if hiding an invisible form
 	if (fd_form_character->form_character->visible) {
 		fl_hide_form(fd_form_character->form_character);
-	}
-	if (fd_form_preamble->form_preamble->visible) {
-		fl_hide_form(fd_form_preamble->form_preamble);
 	}
 	if (fd_form_figure->form_figure->visible) {
 		fl_hide_form(fd_form_figure->form_figure);
@@ -164,9 +157,6 @@ void CloseAllBufferRelatedDialogs()
 // Again the Signal/Slot mechanism is tailor made for this task.
 void updateAllVisibleBufferRelatedDialogs(bool)
 {
-	if (fd_form_preamble->form_preamble->visible) {
-		UpdateLayoutPreamble(current_view);
-	}
 	if (current_view->buffer() &&  current_view->buffer()->isReadonly()) {
 		// a little crude perhaps but it works. ARRae
 		if (fd_form_character->form_character->visible) {
