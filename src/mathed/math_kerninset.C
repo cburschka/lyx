@@ -32,7 +32,7 @@ MathInset * MathKernInset::clone() const
 }
 
 
-void MathKernInset::metrics(MathMetricsInfo const & mi) const
+void MathKernInset::metrics(MathMetricsInfo const & /*mi*/) const
 {
 #ifdef WITH_WARNINGS
 #warning fix this once the interface to LyXLength has improved

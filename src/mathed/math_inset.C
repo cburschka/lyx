@@ -195,13 +195,17 @@ void MathInset::draw(Painter &, int, int) const
 
 void MathInset::metricsT(TextMetricsInfo const &) const
 {
+#ifdef WITH_WARNINGS
 	lyxerr << "MathInset::metricsT(Text) called directly!\n";
+#endif
 }
 
 
 void MathInset::drawT(TextPainter &, int, int) const
 {
+#ifdef WITH_WARNINGS
 	lyxerr << "MathInset::drawT(Text) called directly!\n";
+#endif
 }
 
 
