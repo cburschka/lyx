@@ -32,7 +32,7 @@ void FormShowFile::update()
 	// courier medium
 	fl_set_browser_fontstyle(dialog_->browser,FL_FIXED_STYLE);
 
-	string const title = "LyX: " + controller().getFileName();
+	string const title = controller().getFileName();
 	setTitle(title);
 
 	string const contents = controller().getFileContents();
