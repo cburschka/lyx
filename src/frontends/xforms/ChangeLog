@@ -2,6 +2,8 @@
 
 	* xformsImage.C (clip): fix crash caused by uint -> int nastiness.
 
+	* FormGraphics.C: use lyx::float_equal.
+
 2002-10-29  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* FormParagraph.[Ch]:

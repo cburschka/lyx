@@ -111,10 +111,10 @@ void FormGraphics::build()
 	fl_set_input_return(file_->input_height, FL_RETURN_CHANGED);
 
 	fl_set_input_maxchars(file_->input_filename, FILENAME_MAXCHARS);
-	fl_set_input_filter(file_->input_lyxscale, fl_unsigned_float_filter);
+	fl_set_input_filter(file_->input_lyxscale, fl_unsigned_int_filter);
 
-	// width default is scaling, thus unsigned integer input
-	fl_set_input_filter(file_->input_width, fl_unsigned_int_filter);
+	// width default is scaling: use unsigned float filter
+	fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);
 	fl_set_input_maxchars(file_->input_height, SIZE_MAXDIGITS);
 	
 	string const display_List =
@@ -433,7 +433,7 @@ void FormGraphics::update() {
 	}
 
 	// set width input fields according to scaling or width/height input
-	if (igp.scale) {
+	if (!lyx::float_equal(igp.scale, 0.0, 0.05)) {
 		fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);
 		fl_set_input_maxchars(file_->input_width, 0);
 		fl_set_input(file_->input_width, tostr(igp.scale).c_str());
@@ -449,7 +449,7 @@ void FormGraphics::update() {
 				igp.height, defaultUnit);
 
 	// disable height input in case of scaling
-	bool const disable_height = igp.scale != 0.0;
+	bool const disable_height = !lyx::float_equal(igp.scale, 0.0, 0.05);
 	setEnabled(file_->input_height, !disable_height);
 	setEnabled(file_->choice_height, !disable_height);
 	
@@ -582,7 +582,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		
 		// allow only integer intput for scaling; float otherwise
 		if (scaling) {
-			fl_set_input_filter(file_->input_width, fl_unsigned_int_filter);
+			fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);
 			fl_set_input_maxchars(file_->input_width, 0);
 		} else {
 			fl_set_input_filter(file_->input_width, NULL);
