@@ -45,6 +45,7 @@ void MathNestInset::getPos(idx_type idx, pos_type pos, int & x, int & y) const
 		x += 2;
 }
 
+
 void MathNestInset::substitute(MathMacro const & m)
 {
 	for (idx_type i = 0; i < nargs(); ++i)

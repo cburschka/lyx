@@ -123,20 +123,10 @@ void MathIterator::jump(difference_type i)
 }
 
 
-/*
-void MathIterator::shrink(size_type i)
+bool MathIterator::normal() const
 {
-	if (i < size())
-		erase(begin() + i, end());
+	return back().pos_ < cell().size();
 }
-
-
-void MathIterator::shrink(size_type i)
-{
-	if (i < size())
-		erase(begin() + i, end());
-}
-*/
 
 
 void MathIterator::shrink(size_type i)

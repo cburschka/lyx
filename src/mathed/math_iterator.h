@@ -50,6 +50,8 @@ public:
 	void goEnd();
 	/// read access to top most item
 	MathArray const & cell() const;
+	/// is this a non-end position
+	bool normal() const;
 	/// shrinks to at most i levels
 	void shrink(size_type i);
 
