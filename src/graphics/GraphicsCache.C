@@ -141,8 +141,9 @@ void GCache::changeDisplay(bool changed_background)
 GCache::CacheType::iterator
 GCache::find(InsetGraphics const & inset)
 {
-	CacheType::iterator it = cache->begin();
-	for (; it != cache->end(); ++it) {
+	CacheType::iterator it  = cache->begin();
+	CacheType::iterator end = cache->end();
+	for (; it != end; ++it) {
 		if (it->second->referencedBy(inset))
 			return it;
 	}
@@ -154,8 +155,9 @@ GCache::find(InsetGraphics const & inset)
 GCache::CacheType::const_iterator
 GCache::find(InsetGraphics const & inset) const
 {
-	CacheType::const_iterator it = cache->begin();
-	for (; it != cache->end(); ++it) {
+	CacheType::const_iterator it  = cache->begin();
+	CacheType::const_iterator end = cache->end();
+	for (; it != end; ++it) {
 		if (it->second->referencedBy(inset))
 			return it;
 	}

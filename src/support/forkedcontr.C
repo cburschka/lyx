@@ -45,7 +45,7 @@ ForkedcallsController & ForkedcallsController::get()
 
 ForkedcallsController::ForkedcallsController()
 {
-	timeout_ = new Timeout(100, Timeout::CONTINUOUS);
+	timeout_ = new Timeout(100, Timeout::ONETIME);
 	
 	timeout_->timeout
 		.connect(SigC::slot(this, &ForkedcallsController::timer));
@@ -143,8 +143,8 @@ void ForkedcallsController::timer()
 		}
 	}
 
-	if (forkedCalls.empty()) {
-		timeout_->stop();
+	if (!forkedCalls.empty()) {
+		timeout_->start();
 	}
 
 	if (start_size != forkedCalls.size())

@@ -1,3 +1,8 @@
+2002-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* forkedcontr.C: turn the timer off when their are no longer any
+	child processes running.
+
 2002-03-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* forkedcall.h: docy fix
