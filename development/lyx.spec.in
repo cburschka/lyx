@@ -94,7 +94,7 @@ fi
 texhash
 
 %files
-%attr(-,root,root)
+%defattr(-,root,root)
 %doc ABOUT-NLS ANNOUNCE COPYING 
 %doc README UPGRADING ChangeLog NEWS
 %doc lib/CREDITS README.reLyX
