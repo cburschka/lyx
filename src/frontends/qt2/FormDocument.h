@@ -30,7 +30,7 @@ class BufferParams;
 class LyXView;
 class Dialogs;
 
-/** This class provides an Qt2 implementation of the FormDocument Popup.
+/** This class provides an Qt2 implementation of the FormDocument dialog.
     The table-layout-form here changes values for latex-tabulars
     @author Kalle Dalheimer
  */
@@ -38,7 +38,6 @@ class FormDocument
   : public Qt2CB<ControlDocument, Qt2DB<FormDocumentDialogImpl> >
 {
 public:
-	/// #FormDocument x(Communicator ..., Popups ...);#
 	FormDocument(LyXView *, Dialogs *);
 private:
 	///
@@ -80,11 +79,11 @@ private:
 	virtual void build();
 // 	/// Filter the inputs
 // 	virtual bool input( FL_OBJECT *, long );
-	/// Update the popup.
+	/// Update the dialog.
 	virtual void update();
-	/// Apply from popup
+	/// Apply from dialog
 	virtual void apply();
-	/// Cancel from popup
+	/// Cancel from dialog
 	virtual void cancel();
 
 // 	///

@@ -8,7 +8,7 @@
  *
  * ======================================================
  *
- * \file ControlButton.C
+ * \file ControlButtons.C
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
@@ -18,16 +18,16 @@
 #pragma implementation
 #endif
 
-#include "ControlButton.h"
+#include "ControlButtons.h"
 
-void ControlButton::ApplyButton()
+void ControlButtons::ApplyButton()
 {
 	apply();
 	bc().apply();
 }
 
 
-void ControlButton::OKButton()
+void ControlButtons::OKButton()
 {
 	apply();
 	hide();
@@ -35,15 +35,15 @@ void ControlButton::OKButton()
 }
 
 
-void ControlButton::CancelButton()
+void ControlButtons::CancelButton()
 {
 	hide();
 	bc().cancel();
 }
 
 
-void ControlButton::RestoreButton()
+void ControlButtons::RestoreButton()
 {
 	update();
-	bc().undoAll();
+	bc().restore();
 }

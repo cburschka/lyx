@@ -12,7 +12,7 @@
 #include "form_browser.h"
 #include "xformsBC.h"
 
-FormBrowser::FormBrowser(ControlButton & c, string const & t)
+FormBrowser::FormBrowser(ControlButtons & c, string const & t)
 	: FormDB<FD_form_browser>(c, t)
 {}
 	
@@ -23,5 +23,4 @@ void FormBrowser::build()
 
 	// Manage the close button
 	bc().setCancel(dialog_->button_close);
-	bc().refresh();
 }

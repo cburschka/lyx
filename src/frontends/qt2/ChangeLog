@@ -1,3 +1,19 @@
+2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormCharacter.C:
+	* FormDocument.h:
+	* FormSearch.C:
+	* Dialogs.C: s/popup/dialog/
+
+	* qt2BC.h:
+	* qt2BC.C:
+	* FormCitation.C:
+	* FormDocument.C: s/UndoAll/Restore/
+
+	* Qt2Base.h:
+	* Qt2Base.C: s/ControlButton/ControlButtons/
+
+	
 2001-04-02  Kalle Dalheimer  <kalle@klaralvdalens-datakonsult.se>
 
 	* Makefile.am: Simplified Makefile.am

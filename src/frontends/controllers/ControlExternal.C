@@ -62,7 +62,7 @@ void ControlExternal::applyParamsToInset()
 void ControlExternal::editExternal()
 {
 	// fill the local, controller's copy of the Params struct with
-	// the contents of the popup's fields.
+	// the contents of the dialog's fields.
 	view().apply();
 
 	// Create a local copy of the inset and initialise it with this

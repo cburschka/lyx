@@ -28,7 +28,7 @@ struct FD_form_tabbed_paragraph;
 struct FD_form_paragraph_general;
 struct FD_form_paragraph_extra;
 
-/** This class provides an XForms implementation of the FormParagraph Popup.
+/** This class provides an XForms implementation of the FormParagraph dialog.
  *           @author Jürgen Vigna
  */
 class FormParagraph : public FormBaseBD {
@@ -41,11 +41,11 @@ private:
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xforms colours have been re-mapped). */
 	virtual void redraw();
-	/// Build the popup
+	/// Build the dialog
 	virtual void build();
-	/// Apply from popup
+	/// Apply from dialog
 	virtual void apply();
-	/// Update the popup.
+	/// Update the dialog
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual bool input(FL_OBJECT * ob, long);

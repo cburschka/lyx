@@ -11,13 +11,12 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
+#include <config.h>
 #include <algorithm>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
-#include <config.h>
 
 #include "ControlCitation.h"
 #include "buffer.h"

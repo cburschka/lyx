@@ -1,3 +1,12 @@
+2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: s/popup/dialog/
+
+	* FormUrl.C:
+	* GnomeBase.C:
+	* GnomeBase.h: s/ControlButton/ControlButtons/
+	s/UndoAll/Restore/
+	
 2001-04-02  Michael Koziarski  <michael@koziarski.org>
 
 	* FormCopyright.[Ch]: Reimplemented as an MVC dialog.

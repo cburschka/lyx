@@ -30,7 +30,7 @@ public:
 	FormMathsDeco(LyXView *, Dialogs *, FormMathsPanel const &);
 
 private:
-	/// Build the popup
+	/// Build the dialog
 	virtual void build();
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();
@@ -38,7 +38,7 @@ private:
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
-	// build the popup
+	// build the form
 	FD_form_maths_deco * build_maths_deco();
 	
 	// Real GUI implementation

@@ -1,16 +1,16 @@
 This directory provides the controllers that act as an interface between the
-LyX kernel and the GUI-specific implementations of each popup. It also
+LyX kernel and the GUI-specific implementations of each dialog. It also
 provides abstract base classes from which GUI-specific implemetations of the
-ButtonController and each separate popup should be derived (see
+ButtonController and each separate dialog should be derived (see
 ButtonControlBase.[Ch] and ViewBase.h respectively).
 
-The Controller connects the GUI-specific popup to any appropriate signals and
+The Controller connects the GUI-specific dialog to any appropriate signals and
 dispatches any changes in the data to the kernel. It has no knowledge of the
 actual instantiation of the GUI-dependent View and ButtonController, which
 should therefore be created elsewhere. Once created, the Controller will take
 care of their initialisation, management and, ultimately, destruction.
 
-This leaves the GUI-specific popup (and its author!) to worry only about the
+This leaves the GUI-specific dialog (and its author!) to worry only about the
 data that it has been created to input/modify.
 
 This concept has been instatiated for the Citation dialog only at the moment.
@@ -39,7 +39,7 @@ build) so:
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
-	bc().setUndoAll(dialog_->button_restore);
+	bc().setRestore(dialog_->button_restore);
 The button controller alters the state of the buttons (active/inactive). 
 xforms works by callbacks, so clicking on say the button_ok button
 causes a callback event to (see FormBase.C) 

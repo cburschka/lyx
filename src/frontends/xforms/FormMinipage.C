@@ -45,15 +45,13 @@ void FormMinipage::build()
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
-	bc().setUndoAll(dialog_->button_restore);
+	bc().setRestore(dialog_->button_restore);
 
 	bc().addReadOnly(dialog_->input_width);
 	bc().addReadOnly(dialog_->choice_width_units);
 	bc().addReadOnly(dialog_->radio_top);
 	bc().addReadOnly(dialog_->radio_middle);
 	bc().addReadOnly(dialog_->radio_bottom);
-
-	bc().refresh();
 }
 
 

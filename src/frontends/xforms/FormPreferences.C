@@ -175,8 +175,7 @@ void FormPreferences::build()
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
-	bc().setUndoAll(dialog_->button_restore);
-	bc().refresh();
+	bc().setRestore(dialog_->button_restore);
 
 	// build the tab folders
 	converters_tab_.reset(build_outer_tab());

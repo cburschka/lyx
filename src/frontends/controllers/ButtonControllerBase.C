@@ -53,9 +53,9 @@ void ButtonControllerBase::cancel()
 }
 
 
-void ButtonControllerBase::undoAll()
+void ButtonControllerBase::restore()
 {
-	input(ButtonPolicy::SMI_UNDO_ALL);
+	input(ButtonPolicy::SMI_RESTORE);
 }
 
 

@@ -35,7 +35,6 @@ void FormCredits::build()
 
 	// Manage the cancel/close button
 	bc().setCancel(dialog_->button_cancel);
-	bc().refresh();
 
 	std::stringstream ss;
 	fl_add_browser_line(dialog_->browser_credits, 

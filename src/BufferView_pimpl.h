@@ -134,8 +134,6 @@ private:
 	///
 	long current_scrollbar_value;
 	///
-	FL_OBJECT * figinset_canvas;
-	///
 	Timeout cursor_timeout;
         ///
 	int last_click_x;

@@ -1,3 +1,24 @@
+2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ButtonController.h:
+	* ButtonControllerBase.h:
+	* ButtonControllerBase.C:
+	* ButtonPolicies.h:
+	* ButtonPolicies.C:
+	* ControlButton.h:
+	* ControlButton.C:
+	* ControlButtons.h:
+	* ControlButtons.C:
+	* ControlConnections.h:
+	* ControlDialogs.h:
+	* ControlInset.h:
+	* ControlExternal.C:
+	* Makefile.am:
+	* README:
+	* ViewBase.h: s/ControlButton/ControlButtons/
+	s/popup/dialog/
+	s/UndoAll/Restore/ + associated
+
 2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlToc.[Ch]: new files; a controller for the TOC popup.

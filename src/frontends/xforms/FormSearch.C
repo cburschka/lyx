@@ -33,7 +33,6 @@ void FormSearch::build()
 	bc().addReadOnly(dialog_->input_replace);
 	bc().addReadOnly(dialog_->replace);
 	bc().addReadOnly(dialog_->replaceall);
-	bc().refresh();
 }
 
 

@@ -28,7 +28,7 @@
 #include <stdio.h>
 
 
-Qt2Base::Qt2Base(::ControlButton & c, QString const & t)
+Qt2Base::Qt2Base(ControlButtons & c, QString const & t)
 	: ViewBC<qt2BC>(c), title_(t)
 {}
 

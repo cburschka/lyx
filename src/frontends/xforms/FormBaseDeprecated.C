@@ -194,7 +194,7 @@ void FormBaseDeprecated::RestoreCB(FL_OBJECT * ob, long)
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
 	Assert(pre);
-	pre->bc().undoAll();
+	pre->bc().restore();
 	pre->restore();
 }
 

@@ -75,8 +75,6 @@ void FormMathsDelim::build()
 	bc().addReadOnly(dialog_->radio_right);
 	bc().addReadOnly(dialog_->radio_left);
 	bc().addReadOnly(dialog_->button_pix);
-
-	bc().refresh();
 }
 
 

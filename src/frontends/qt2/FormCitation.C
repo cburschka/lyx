@@ -80,7 +80,7 @@ void FormCitation::build()
     bc().setOK(dialog_->okPB);
     bc().setApply(dialog_->applyPB);
     bc().setCancel(dialog_->cancelPB);
-    bc().setUndoAll(dialog_->restorePB);
+    bc().setRestore(dialog_->restorePB);
 
     bc().addReadOnly(dialog_->addPB);
     bc().addReadOnly(dialog_->delPB);

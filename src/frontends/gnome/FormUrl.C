@@ -48,7 +48,7 @@ void FormUrl::build()
 	bc().setOK(ok_btn());
 	bc().setCancel(cancel_btn());
 	bc().setApply(apply_btn());
-	bc().setUndoAll(restore_btn());
+	bc().setRestore(restore_btn());
 
 	// Make sure everything is in the correct state.
 	bc().refresh();

@@ -64,7 +64,7 @@
 #include "FormMinipage.h"
 */
 
-// Signal enabling all visible popups to be redrawn if so desired.
+// Signal enabling all visible dialogs to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
 SigC::Signal0<void> Dialogs::redrawGUI;
 

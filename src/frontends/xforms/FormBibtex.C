@@ -36,7 +36,6 @@ void FormBibtex::build()
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setCancel(dialog_->button_cancel);
-	bc().refresh();
 
 	bc().addReadOnly(dialog_->database);
 	bc().addReadOnly(dialog_->style);

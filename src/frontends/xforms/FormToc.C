@@ -43,7 +43,6 @@ void FormToc::build()
 
         // Manage the cancel/close button
 	bc().setCancel(dialog_->button_cancel);
-	bc().refresh();
 }
 
 

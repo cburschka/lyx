@@ -30,7 +30,7 @@ public:
 	FormMathsSpace(LyXView *, Dialogs *, FormMathsPanel const &);
 
 private:
-	/// Build the popup
+	/// Build the dialog
 	virtual void build();
 	/// input handler
 	virtual bool input(FL_OBJECT *, long);
@@ -40,7 +40,7 @@ private:
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
-	// build the popup
+	// build the form
 	FD_form_maths_space * build_maths_space();
 	
 	// Real GUI implementation

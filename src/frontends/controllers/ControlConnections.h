@@ -14,16 +14,16 @@
  * ControlConnectBase, ControlConnectBI and ControlConnectBD.
  *
  * Together they control the connection/disconnection of signals with the LyX
- * kernel. Controllers of individual popups interacting with the kernel through
+ * kernel. Controllers of individual dialogs interacting with the kernel through
  * signals/slots will all be derived from ControlConnectBI or ControlConnectBD.
  *
- * A popup is classed as "Buffer Dependent" if its contents change with the
- * buffer (document). An example would be the Citation popup. Such a popup
+ * A dialog is classed as "Buffer Dependent" if its contents change with the
+ * buffer (document). An example would be the Citation dialog. Such a dialog
  * would be derived, therefore, from ControlConnectBD.
  *
- * Conversely, a popup is "Buffer Independent" if its contents do not change
- * when the buffer changes. An example would be the Copyright popup. Such a
- * popup, is therefore derived from ControlConnectBI.
+ * Conversely, a dialog is "Buffer Independent" if its contents do not change
+ * when the buffer changes. An example would be the Copyright dialog. Such a
+ * dialog is therefore derived from ControlConnectBI.
  *
  */
 
@@ -34,7 +34,7 @@
 #pragma interface
 #endif
 
-#include "ControlButton.h"
+#include "ControlButtons.h"
 
 class Dialogs;
 class LyXView;
@@ -43,7 +43,7 @@ class LyXView;
     kernel. It is meant to be used solely as the parent class to
     ControlConnectBI and ControlConnectBD.
 */
-class ControlConnectBase : public ControlButton
+class ControlConnectBase : public ControlButtons
 {
 public:
 	///

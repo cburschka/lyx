@@ -21,8 +21,7 @@
 #include "ControlCommand.h"
 #include "biblio.h" // biblio::InfoMap
 
-/** A controller for Citation dialogs. All citation-specific functionality
-    should go in here.
+/** A controller for Citation dialogs.
  */
 class ControlCitation : public ControlCommand
 {

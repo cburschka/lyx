@@ -68,8 +68,6 @@ void FormMathsMatrix::build()
 	bc().addReadOnly(dialog_->slider_columns);
 	bc().addReadOnly(dialog_->choice_valign);
 	bc().addReadOnly(dialog_->input_halign);
-
-	bc().refresh();
 }
 
 

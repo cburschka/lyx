@@ -41,7 +41,7 @@ private:
 	///
 	int GetIndex(FL_OBJECT *);
 
-	/// Build the popup
+	/// Build the dialog
 	virtual void build();
 	/// apply the data
 	virtual void apply();

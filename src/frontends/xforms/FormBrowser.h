@@ -25,7 +25,7 @@ struct FD_form_browser;
 class FormBrowser : public FormDB<FD_form_browser> {
 public:
 	///
-	FormBrowser(ControlButton &, string const &);
+	FormBrowser(ControlButtons &, string const &);
 
 private:
 	/// Build the dialog.

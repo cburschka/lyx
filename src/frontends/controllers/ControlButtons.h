@@ -7,14 +7,14 @@
  *
  * ======================================================
  *
- * \file ControlButton.h
+ * \file ControlButtonss.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- * ControlButton serves only to control the activation of the Ok, Apply, Cancel
- * and Restore buttons on the View popup.
+ * ControlButtons serves only to control the activation of the Ok, Apply, Cancel
+ * and Restore buttons on the View dialog.
  *
  * More generally, the class is part of a hierarchy of controller classes
- * that together connect the GUI-dependent popup to any appropriate
+ * that together connect the GUI-dependent dialog to any appropriate
  * signals and dispatches any changes to the kernel.
  *
  * These controllers have no knowledge of the actual instantiation of the
@@ -25,8 +25,8 @@
  * management and, ultimately, destruction.
  */
 
-#ifndef CONTROLBUTTON_H
-#define CONTROLBUTTON_H
+#ifndef CONTROLBUTTONS_H
+#define CONTROLBUTTONS_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -39,13 +39,13 @@ class ViewBase;
 
 /** Abstract base class for Controllers with a ButtonController.
  */
-class ControlButton : public DialogBase
+class ControlButtons : public DialogBase
 {
 public: // methods
 	///
-	ControlButton() {}
+	ControlButtons() {}
 	///
-	virtual ~ControlButton() {};
+	virtual ~ControlButtons() {};
 
 	/// These functions are called when the controlling buttons are pressed.
 	///
@@ -78,4 +78,4 @@ protected:
 
 #include "ViewBase.h"
 
-#endif // CONTROLBUTTON_H
+#endif // CONTROLBUTTONS_H

@@ -109,11 +109,11 @@ public:
 		///
 		CANCEL   = 4,
 		///
-		UNDO_ALL = 8
+		RESTORE = 8
 	};
 	///
 	static const Button ALL_BUTTONS =
-		Button(OKAY | APPLY | CANCEL | UNDO_ALL);
+		Button(OKAY | APPLY | CANCEL | RESTORE);
   
 	/** State machine inputs.
 	    All the policies so far have both CANCEL and HIDE always going to
@@ -124,28 +124,28 @@ public:
 	    HIDE are treated differently.
 	 */
 	enum SMInput {
-		///
+		/// the dialog contents are now valid
 		SMI_VALID = 0,
-		///
+		/// the dialog contents are now invalid
 		SMI_INVALID,
-		///
+		/// an apply-and-hide action has happened
 		SMI_OKAY,
-		///
+		/// an apply action has happened 
 		SMI_APPLY,
-		///
+		/// a cancel action has happened
 		SMI_CANCEL,
-		///
-		SMI_UNDO_ALL,
-		///
+		/// a restore action has happened
+		SMI_RESTORE,
+		/// the dialog has been hidden
 		SMI_HIDE,
-		///
+		/// the dialog contents are read-only
 		SMI_READ_ONLY,
-		///
+		/// the dialog contents can be modified
 		SMI_READ_WRITE,
-		///
+		/// the state of the dialog contents has not changed 
 		SMI_NOOP,
-		///
-		SMI_TOTAL	// not a real input
+		/// for internal use
+		SMI_TOTAL
 	};
 
 	/// Trigger a transition with this input.

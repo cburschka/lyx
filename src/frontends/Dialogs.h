@@ -61,13 +61,13 @@ public:
 	Dialogs(LyXView *);
 	//@}
 
-	/** Redraw all visible popups because, for example, the GUI colours
+	/** Redraw all visible dialogs because, for example, the GUI colours
 	    have been re-mapped. */
 	static SigC::Signal0<void> redrawGUI;
 
 	/**@name Global Hide and Update Signals */
 	//@{
-	/// Hide all visible popups
+	/// Hide all visible dialogs
 	SigC::Signal0<void> hideAll;
 	
 	/// Hide any dialogs that require a buffer for them to operate

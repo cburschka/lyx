@@ -37,7 +37,6 @@ void FormInclude::build()
 	// Manage the ok and cancel buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setCancel(dialog_->button_cancel);
-	bc().refresh();
 
 	bc().addReadOnly(dialog_->button_browse);
 	bc().addReadOnly(dialog_->check_verbatim);

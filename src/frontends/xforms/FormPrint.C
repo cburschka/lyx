@@ -54,7 +54,6 @@ void FormPrint::build()
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
-	bc().refresh();
 
 	// allow controlling of input and ok/apply (de)activation
 	fl_set_input_return(dialog_->input_printer,

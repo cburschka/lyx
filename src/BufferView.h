@@ -16,7 +16,6 @@
 #pragma interface
 #endif
 
-#include FORMS_H_LOCATION
 #include "LString.h"
 #include "undo.h"
 #include "commandtags.h"

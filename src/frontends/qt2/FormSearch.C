@@ -24,7 +24,7 @@ using Liason::setMinibuffer;
 FormSearch::FormSearch(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0), u_(0)
 {
-   // let the popup be shown
+   // let the dialog be shown
    // This is a permanent connection so we won't bother
    // storing a copy because we won't be disconnecting.
    d->showSearch.connect(SigC::slot(this, &FormSearch::show));

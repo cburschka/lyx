@@ -46,7 +46,7 @@ using SigC::slot;
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Document Layout")), fbullet(0)
 {
-    // let the popup be shown
+    // let the dialog be shown
     // This is a permanent connection so we won't bother
     // storing a copy because we won't be disconnecting.
     d->showLayoutDocument.connect(slot(this, &FormDocument::show));
@@ -84,8 +84,7 @@ void FormDocument::build()
     bc().setOK(dialog_->button_ok);
     bc().setApply(dialog_->button_apply);
     bc().setCancel(dialog_->button_cancel);
-    bc().setUndoAll(dialog_->button_restore);
-    bc().refresh();
+    bc().setRestore(dialog_->button_restore);
 
     // the document paper form
     paper_.reset(build_doc_paper());
@@ -245,7 +244,7 @@ void FormDocument::build()
 				 bullets_->form);
     if ((XpmVersion < 4) || (XpmVersion == 4 && XpmRevision < 7)) {
 	    lyxerr << _("Your version of libXpm is older than 4.7.\n"
-			"The `bullet' tab of the document popup "
+			"The `bullet' tab of the document dialog "
 			"has been disabled") << '\n';
 	fl_deactivate_object(fbullet);
 	fl_set_object_lcol(fbullet, FL_INACTIVE);

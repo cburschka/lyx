@@ -31,6 +31,11 @@ ControlVCLog::ControlVCLog(LyXView & lv, Dialogs & d)
 	d_.showVCLogFile.connect(slot(this, &ControlVCLog::show));
 }
 
+// FIXME: this is all wrong, getLogFile() actually creates a file
+// which we must unlink.
+
+// FIXME: I need to get the Buffer Filename for my window title, need
+// to add to params. 
 
 void ControlVCLog::setParams()
 {

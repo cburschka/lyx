@@ -35,7 +35,7 @@ using SigC::slot;
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Paragraph Layout"))
 {
-    // let the popup be shown
+    // let the dialog be shown
     // This is a permanent connection so we won't bother
     // storing a copy because we won't be disconnecting.
     d->showLayoutParagraph.connect(slot(this, &FormParagraph::show));
@@ -71,8 +71,7 @@ void FormParagraph::build()
     bc_.setOK(dialog_->button_ok);
     bc_.setApply(dialog_->button_apply);
     bc_.setCancel(dialog_->button_cancel);
-    bc_.setUndoAll(dialog_->button_restore);
-    bc_.refresh();
+    bc_.setRestore(dialog_->button_restore);
 
     // the general paragraph data form
     general_.reset(build_paragraph_general());

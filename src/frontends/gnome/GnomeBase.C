@@ -21,7 +21,7 @@
 
 #include <gnome--/dialog.h>
 
-GnomeBase::GnomeBase(ControlButton & c, 
+GnomeBase::GnomeBase(ControlButtons & c, 
 		string const & glade_file, string const & name)
 	: ViewBC<gnomeBC>(c)
 	, file_(glade_file), widget_name_(name), xml_(0)

@@ -62,7 +62,7 @@ private:
 	/// Pointer to the actual instantiation of the ButtonController.
 	virtual xformsBC & bc();
 	
-	/// Build the popup
+	/// Build the dialog
 	virtual void build();
 	/// input handler
 	virtual bool input(FL_OBJECT *, long);

@@ -1,3 +1,16 @@
+2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: s/popup/dialog/
+
+	* Form*.C:
+	* FormBase.h:
+	* FormBase.C: s/ControlButton/ControlButtons/
+	move bc().refresh() into base show() method
+
+	* Form*.C:
+	* FormBaseDeprecated.C:
+	s/UndoAll/restore/
+
 2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormMathsPanel.C (c-tor): set button controller cancel label to close.

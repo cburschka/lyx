@@ -52,7 +52,7 @@ vector<string> const ControlToc::getTypes() const
 	Buffer::Lists::const_iterator end = tmp.end();
 
 	for (; cit != end; ++cit) {
-		types.push_back(cit->first.c_str());
+		types.push_back(cit->first);
 	}
 
 	return types;

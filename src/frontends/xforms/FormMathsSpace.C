@@ -51,8 +51,6 @@ void FormMathsSpace::build()
 	bc().addReadOnly(dialog_->radio_negative);
 	bc().addReadOnly(dialog_->radio_quadratin);
 	bc().addReadOnly(dialog_->radio_twoquadratin);
-
-	bc().refresh();
 }
 
 

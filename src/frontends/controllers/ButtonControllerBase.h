@@ -56,7 +56,7 @@ public:
 	///
 	void cancel();
 	///
-	void undoAll();
+	void restore();
 	///
 	void hide();
 	///

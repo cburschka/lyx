@@ -105,7 +105,6 @@ void FormCharacter::build()
 	// Manage the ok, apply and cancel/close buttons
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);
-	bc().refresh();
 	bc().addReadOnly(dialog_->check_toggle_all);
 }
 

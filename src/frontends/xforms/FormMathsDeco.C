@@ -53,7 +53,6 @@ void FormMathsDeco::build()
 
 	bc().setCancel(dialog_->button_cancel);
 	bc().addReadOnly(dialog_->bmtable);
-	bc().refresh();
 }
 
 

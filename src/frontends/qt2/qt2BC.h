@@ -58,8 +58,8 @@ public:
 		cancel_ = obj;
 	}
 	///
-	void setUndoAll(QButton * obj) {
-		undo_all_ = obj;
+	void setRestore(QButton * obj) {
+		restore_ = obj;
 	}
 	///
 	void addReadOnly(QWidget * obj) {
@@ -82,7 +82,7 @@ private:
 	///
 	QButton * cancel_;
 	///
-	QButton * undo_all_;
+	QButton * restore_;
 	/// List of items to be deactivated when in one of the read-only states
 	std::list<QWidget *> read_only_;
 };

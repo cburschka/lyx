@@ -10,9 +10,9 @@
  * \file ControlInsets.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- * ControlInset is to be used as a parent class for popups that display and
+ * ControlInset is to be used as a parent class for dialogs that display and
  * can perhaps modify the contents of an individual inset. An example being the
- * ubiquitous Citation popup.
+ * ubiquitous Citation dialog.
  */
 
 #ifndef CONTROLINSET_H
@@ -65,7 +65,7 @@ private:
 
 
 	
-	/// Instantiation of ControlButton virtual methods.
+	/// Instantiation of ControlButtons virtual methods.
 
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();

@@ -25,11 +25,11 @@ public:
 	///
 	FormPreamble(ControlPreamble &);
 private:
-	/// Apply from popup
+	/// Apply from dialog 
 	virtual void apply();
-	/// Build the popup
+	/// Build the dialog
 	virtual void build();
-	/// Update the popup.
+	/// Update the dialog
 	virtual void update();
    
 	/// Fdesign generated method

@@ -40,8 +40,7 @@ void FormUrl::build()
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
-	bc().setUndoAll(dialog_->button_restore);
-	bc().refresh();
+	bc().setRestore(dialog_->button_restore);
 
 	bc().addReadOnly(dialog_->name);
 	bc().addReadOnly(dialog_->url);

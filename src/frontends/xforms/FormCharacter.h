@@ -37,10 +37,10 @@ public:
 	FormCharacter(ControlCharacter &);
 private:
 
-	/// Apply from popup
+	/// Apply from dialog
 	virtual void apply();
    
-	/// Build the popup
+	/// Build the dialog
 	virtual void build();
    
 	/// Nothing to update...

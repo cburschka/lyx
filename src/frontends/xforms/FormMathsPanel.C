@@ -158,7 +158,6 @@ void FormMathsPanel::build()
 	varsize_->addBitmap(14, 3, 5, varsz_width, varsz_height, varsz_bits);
 
 	bc().setCancel(dialog_->button_close);
-	bc().refresh();
 }
 
 bool FormMathsPanel::input(FL_OBJECT *, long data)

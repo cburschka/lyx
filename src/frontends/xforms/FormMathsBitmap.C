@@ -90,7 +90,6 @@ void FormMathsBitmap::build()
 	fl_end_form();
 
 	bc().setCancel(button_cancel);
-	bc().refresh();
 }
 
 

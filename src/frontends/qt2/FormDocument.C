@@ -64,7 +64,7 @@ void FormDocument::build()
     bc().setOK(dialog_->okPB);
     bc().setApply(dialog_->applyPB);
     bc().setCancel(dialog_->cancelPB);
-    bc().setUndoAll(dialog_->restorePB);
+    bc().setRestore(dialog_->restorePB);
     bc().refresh();
 
     // the document paper page

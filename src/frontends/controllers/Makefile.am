@@ -23,8 +23,8 @@ libcontrollers_la_SOURCES=\
 	ControlBibitem.h \
 	ControlBibtex.C \
 	ControlBibtex.h \
-	ControlButton.C \
-	ControlButton.h \
+	ControlButtons.C \
+	ControlButtons.h \
 	ControlCharacter.C \
 	ControlCharacter.h \
 	ControlCitation.C \

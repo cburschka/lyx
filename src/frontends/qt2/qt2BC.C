@@ -1,5 +1,5 @@
 /**
- * \file xformsBC.C
+ * \file qt2BC.C
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
@@ -19,7 +19,7 @@
 
 qt2BC::qt2BC(string const & cancel, string const & close)
 	: ButtonControllerBase(cancel, close),
-	  okay_(0), apply_(0), cancel_(0), undo_all_(0), read_only_()
+	  okay_(0), apply_(0), cancel_(0), restore_(0), read_only_()
 {}
 
 
@@ -39,11 +39,11 @@ void qt2BC::refresh()
 		    apply_->setEnabled( false );
 		}
 	}
-	if (undo_all_) {
-		if (bp().buttonStatus(ButtonPolicy::UNDO_ALL)) {
-		    undo_all_->setEnabled( true );
+	if (restore_) {
+		if (bp().buttonStatus(ButtonPolicy::RESTORE)) {
+		    restore_->setEnabled( true );
 		} else {
-		    undo_all_->setEnabled( false );
+		    restore_->setEnabled( false );
 		}
 	}
 	if (cancel_) {

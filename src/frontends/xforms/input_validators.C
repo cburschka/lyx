@@ -1,6 +1,6 @@
 /* input_validators.C
  * A collection of input filtering and validating functions for use in
- * XForms popups.  Mainly meant for filtering input boxes although may
+ * XForms dialogs.  Mainly meant for filtering input boxes although may
  * be extended to include other generally useful xforms-specific tools.
  */
 

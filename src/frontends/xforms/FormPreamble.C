@@ -36,7 +36,6 @@ void FormPreamble::build()
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
 	bc().addReadOnly(dialog_->input_preamble);
-	bc().refresh();
 }
 
 

@@ -32,7 +32,7 @@ public:
 	/// 
 	void setCancel(Button * obj) { cancel_ = obj; }
 	///
-	void setUndoAll(Button * obj) { undo_all_ = obj; }
+	void setRestore(Button * obj) { restore_ = obj; }
 	///
 	void addReadOnly(Widget * obj) { read_only_.push_back(obj); }
 	///
@@ -51,8 +51,8 @@ private:
 
 	Button * okay_;
 	Button * apply_;
-	Button * undo_all_;
 	Button * cancel_;
+	Button * restore_;
 	
 	typedef std::list<Widget *> Widgets;
 	Widgets read_only_;
@@ -62,7 +62,7 @@ private:
 template <class Button, class Widget>
 GuiBC<Button, Widget>::GuiBC(string const & cancel, string const & close)
 	: ButtonControllerBase(cancel, close)
-	, okay_(0), apply_(0), cancel_(0), undo_all_(0)
+	, okay_(0), apply_(0), restore_(0), cancel_(0)
 {}
 
 
@@ -77,9 +77,9 @@ void GuiBC<Button, Widget>::refresh()
 		bool const enabled = bp().buttonStatus(ButtonPolicy::APPLY);
 		setButtonEnabled(apply_, enabled);
 	}
-	if (undo_all_) {
-		bool const enabled = bp().buttonStatus(ButtonPolicy::UNDO_ALL);
-		setButtonEnabled(undo_all_, enabled);
+	if (restore_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::RESTORE);
+		setButtonEnabled(restore_, enabled);
 	}
 	if (cancel_) {
 		bool const enabled = bp().buttonStatus(ButtonPolicy::CANCEL);
