@@ -555,6 +555,15 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 		height -= rit->height();
 	pit->rows.clear();
 
+	// redo insets
+	InsetList::iterator ii = pit->insetlist.begin();
+	InsetList::iterator iend = pit->insetlist.end();
+	for (; ii != iend; ++ii) {
+		Dimension dim;
+		MetricsInfo mi(bv(), getFont(pit, ii->pos), 0);
+		ii->inset->metrics(mi, dim);
+	}
+
 	// rebreak the paragraph
 	for (pos_type z = 0; z < pit->size() + 1; ) {
 		Row row(z);
@@ -593,25 +602,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	height = 0;
 
 	//anchor_y_ = 0;
-
-	ParagraphList::iterator pit = ownerParagraphs().begin();
-	ParagraphList::iterator end = ownerParagraphs().end();
-
-	for (; pit != end; ++pit) {
-		pit->rows.clear();
-
-		InsetList::iterator ii = pit->insetlist.begin();
-		InsetList::iterator iend = pit->insetlist.end();
-		for (; ii != iend; ++ii) {
-			Dimension dim;
-			MetricsInfo m = mi;
-#warning FIXME: pos != 0
-			m.base.font = getFont(pit, 0);
-			ii->inset->metrics(m, dim);
-		}
-
-		redoParagraph(pit);
-	}
+	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
 
 	// final dimension
 	dim.asc = firstRow()->ascent_of_text();

@@ -999,21 +999,9 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 				if (par.isInset(pos)) {
 					InsetOld const * tmpinset = par.getInset(pos);
 					if (tmpinset) {
-#if 1 // this is needed for deep update on initialitation
-#warning inset->update FIXME
-						//tmpinset->update(bv());
-						LyXFont const tmpfont = getFont(pit, pos);
-						Dimension dim;
-						MetricsInfo mi(bv(), tmpfont, workWidth());
-						tmpinset->metrics(mi, dim);
-						maxwidth += dim.wid;
-						maxasc = max(maxasc, dim.asc);
-						maxdesc = max(maxdesc, dim.des);
-#else
 						maxwidth += tmpinset->width();
 						maxasc = max(maxasc, tmpinset->ascent());
 						maxdesc = max(maxdesc, tmpinset->descent());
-#endif
 					}
 				} else {
 					// Fall-back to normal case
@@ -1985,9 +1973,7 @@ void LyXText::backspace()
 				}
 
 				cursorLeft(bv());
-
-				// the layout things can change the height of a row !
-				setHeightOfRow(cursor.par(), cursorRow());
+				redoParagraph(cursor.par());
 				return;
 			}
 		}
