@@ -43,7 +43,11 @@ Known BUGS:
 		it is done in-place, into the same directory as the original image.
 		This needs to be fixed in the src/converter.C file
 		[ This is presumed to be fixed, needs testing.]
- 
+
+	* We do not dither or resize the image in a WYSIWYM way, we load it at
+		its original size and color, resizing is done in the final output,
+		but not in the LyX window.
+		
 TODO Before initial production release:
     * Replace insetfig everywhere
         * Read it's file format
