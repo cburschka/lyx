@@ -15,9 +15,6 @@
 #endif
 
 #include "inseterror.h"
-#ifndef USE_PAINTER
-#include "lyxdraw.h"
-#endif
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "Painter.h"
@@ -47,58 +44,30 @@ InsetError::~InsetError()
 }
 
 
-#ifdef USE_PAINTER
 int InsetError::ascent(Painter &, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
 	return efont.maxAscent() + 1;
 }
-#else
-int InsetError::Ascent(LyXFont const & font) const
-{
-	LyXFont efont;
-	efont.setSize(font.size()).decSize();
-	return efont.maxAscent()+1;
-}
-#endif
 
 
-#ifdef USE_PAINTER
 int InsetError::descent(Painter &, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
 	return efont.maxDescent() + 1;
 }
-#else
-int InsetError::Descent(LyXFont const & font) const
-{
-	LyXFont efont;
-	efont.setSize(font.size()).decSize();
-	return efont.maxDescent()+1;
-}
-#endif
 
 
-#ifdef USE_PAINTER
 int InsetError::width(Painter &, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
 	return 6 + efont.textWidth(_("Error"), strlen(_("Error")));
 }
-#else
-int InsetError::Width(LyXFont const & font) const
-{
-	LyXFont efont;
-	efont.setSize(font.size()).decSize();
-	return 6 + efont.textWidth(_("Error"), strlen(_("Error")));
-}
-#endif
 
 
-#ifdef USE_PAINTER
 void InsetError::draw(Painter & pain, LyXFont const & font,
 		      int baseline, float & x) const
 {
@@ -120,27 +89,7 @@ void InsetError::draw(Painter & pain, LyXFont const & font,
 
 	x +=  width(pain, font) - 1;
 }
-#else
-void InsetError::Draw(LyXFont font, LyXScreen & scr,
-		      int baseline, float & x)
-{
-	LyXFont efont;
-	efont.setSize(font.size()).decSize();
-	efont.setLatex(LyXFont::ON);
-   
-	// Draw as "Error" in a framed box
-	x += 1;
-	scr.fillRectangle(gc_lighted,
-			  int(x), baseline - Ascent(font)+1,
-			  Width(font)-2, Ascent(font)+ Descent(font)-2);
-	scr.drawRectangle(gc_foot,
-			  int(x), baseline-Ascent(font)+1,
-			  Width(font)-2, Ascent(font)+Descent(font)-2); 
-	scr.drawString(efont, _("Error"), baseline, int(x+2));
 
-	x +=  Width(font) - 1;
-}
-#endif
 
 void InsetError::Write(ostream &)
 {

@@ -35,7 +35,6 @@ public:
 	InsetFormulaMacro(string name, int na = 0, bool env = false);
 	///
 	~InsetFormulaMacro();
-#ifdef USE_PAINTER
 	///
 	int ascent(Painter &, LyXFont const &) const;
 	///
@@ -44,16 +43,6 @@ public:
 	int width(Painter &, LyXFont const &) const;
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
-#else
-	///
-	int Ascent(LyXFont const & font) const;
-	///
-	int Descent(LyXFont const & font) const;
-	///
-	int Width(LyXFont const & font) const;
-	///
-	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
-#endif
 	///
 	void Read(LyXLex & lex);
         ///

@@ -30,10 +30,6 @@
 #include "lyx_cb.h"
 #include "minibuffer.h"
 #include "BufferView.h"
-#include "lyxscreen.h"
-#ifndef USE_PAINTER
-#include "lyxdraw.h"
-#endif
 #include "lyxtext.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -45,16 +41,7 @@
 
 extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 
-#ifndef USE_PAINTER
-extern GC canvasGC, mathGC, mathLineGC, latexGC, cursorGC, mathFrameGC;
-#endif
-
 extern char * mathed_label;
-
-#ifdef MONO
-extern int mono_video;
-extern int fast_selection;
-#endif
 
 extern BufferView * current_view;
 extern char const * latex_special_chars;
@@ -150,13 +137,8 @@ LyXFont WhichFont(short type, int size)
 	break;
     }
 
-#ifdef USE_PAINTER
     if (type != LM_TC_TEXTRM) 
       f.setColor(LColor::math);
-#else
-    if (type != LM_TC_TEXTRM)
-	    f.setColor(LyXFont::MATH);
-#endif    
     return f;
 }
 
@@ -170,7 +152,7 @@ void mathed_init_fonts() //removed 'static' because DEC cxx does not
     Math_Fonts = new LyXFont[8]; //DEC cxx cannot initialize all fonts
 				 //at once (JMarc) rc
     for (int i = 0 ; i < 8 ; ++i){ 
-    	Math_Fonts[i] = LyXFont::ALL_SANE;
+    	Math_Fonts[i] = LyXFont(LyXFont::ALL_SANE);
     }
     Math_Fonts[0].setShape(LyXFont::ITALIC_SHAPE);
     
@@ -196,7 +178,7 @@ void mathed_init_fonts() //removed 'static' because DEC cxx does not
     MathedInset::df_width = f.width('I');    
 }
 
-#ifdef USE_PAINTER
+
 LyXFont mathed_get_font(short type, int size)
 {
 	LyXFont f = WhichFont(type, size);
@@ -205,24 +187,6 @@ LyXFont mathed_get_font(short type, int size)
 	}
 	return f;
 }
-#else
-void mathed_set_font(short type, int size)
-{
-    if (!canvasGC) {
-	    cursorGC = getGC(gc_thin_on_off_line);
-	    canvasGC = getGC(gc_lighted);
-	    latexGC =  getGC(gc_latex);
-	    mathLineGC = getGC(gc_math);
-	    mathFrameGC = getGC(gc_math_frame);
-    }
-    LyXFont f = WhichFont(type, size); 
-    if (type == LM_TC_TEX) {
-	f.setLatex(LyXFont::ON);
-	latexGC = f.getGC();
-    } else
-      mathGC = f.getGC();
-}
-#endif
 
 
 int mathed_string_width(short type, int size, byte const * s, int ls)
@@ -279,14 +243,12 @@ int mathed_char_height(short type, int size, byte c, int & asc, int & des)
 
 
 // In a near future maybe we use a better fonts renderer
-#ifdef USE_PAINTER
 void MathedInset::drawStr(Painter & pain, short type, int size,
 			  int x, int y, byte * s, int ls)
 {
 	string st;
 	if (MathIsBinary(type)) {
 		for (int i = 0; i < ls; ++i) {
-#warning What conversion should be done for s[i] here?
 			st += string(" ") + char(s[i]) + ' ';
 		}
 	} else {
@@ -295,27 +257,6 @@ void MathedInset::drawStr(Painter & pain, short type, int size,
 	LyXFont mf = mathed_get_font(type, size);
 	pain.text(x, y, st, mf);
 }
-#else
-void MathedInset::drawStr(short type, int siz, int x, int y, byte * s, int ls)
-{
-    mathed_set_font(type, siz);
-    byte sx[80];
-    if (MathIsBinary(type)) {
-	byte * ps = &sx[0];
-	for (int i = 0; i < ls && i < 75; ++i) {
-	    *(ps++) = ' ';
-	    *(ps++) = s[i];
-	    *(ps++) = ' ';
-	}
-	//    *ps = ' ';
-	ls *= 3;
-	s = &sx[0];
-    }
-    GC gc = (type == LM_TC_TEX) ? latexGC: mathGC;
-    XDrawString(fl_display, pm, gc, x, y, reinterpret_cast<char*>(s), ls);
-    XFlush(fl_display);
-}
-#endif
 
 
 InsetFormula::InsetFormula(bool display)
@@ -436,50 +377,26 @@ void InsetFormula::Read(LyXLex & lex)
 }
 
 
-#ifdef USE_PAINTER
 int InsetFormula::ascent(Painter &, LyXFont const &) const
 {
    return par->Ascent() + ((disp_flag) ? 8 : 1);
 }
-#else
-int InsetFormula::Ascent(LyXFont const &) const
-{
-   return par->Ascent() + ((disp_flag) ? 8 : 1);
-}
-#endif
 
 
-#ifdef USE_PAINTER
 int InsetFormula::descent(Painter &, LyXFont const &) const
 {
    return par->Descent() + ((disp_flag) ? 8 : 1);
 }
-#else
-int InsetFormula::Descent(LyXFont const &) const
-{
-   return par->Descent() + ((disp_flag) ? 8 : 1);
-}
-#endif
 
 
-#ifdef USE_PAINTER
 int InsetFormula::width(Painter &, LyXFont const & f) const
 {
     lfont_size = f.size();
     par->Metrics();
     return par->Width(); //+2;
 }
-#else
-int InsetFormula::Width(LyXFont const & f) const
-{
-    lfont_size = f.size();
-    par->Metrics();
-    return par->Width(); //+2;
-}
-#endif
 
 
-#ifdef USE_PAINTER
 void InsetFormula::draw(Painter & pain, LyXFont const &,
 			int baseline, float & x) const
 {
@@ -537,62 +454,6 @@ void InsetFormula::draw(Painter & pain, LyXFont const &,
 	}
 	cursor_visible = false;
 }
-#else
-void InsetFormula::Draw(LyXFont f, LyXScreen & scr, int baseline, float & x)
-{
-	// This is Alejandros domain so I'll use this
-	unsigned long pm = scr.getForeground();
-	
-   lfont_size = f.size();
-   mathed_set_font(LM_TC_TEXTRM, LM_ST_TEXT); // otherwise a segfault could occur
-                        // in some XDrawRectangles (i.e. matrix) (Matthias)   
-   if (mathcursor && mathcursor->GetPar() == par) { 
-       if (mathcursor->Selection()) {
-	   int n;
-	   XPoint * p = mathcursor->SelGetArea(n);
-	   XFillPolygon(fl_display, pm, getGC(gc_selection),
-			p, n, Nonconvex, CoordModeOrigin);
-       }
-       mathcursor->Draw(pm, int(x), baseline);
-   } else {
-//       par->Metrics();
-       par->setDrawable(pm);
-       par->Draw(int(x), baseline);
-   }
-   x += float(Width(f));
- 
-   if (par->GetType() == LM_OT_PARN || par->GetType() == LM_OT_MPARN) {
-       char s[80];
-       LyXFont  font = WhichFont(LM_TC_BF, par->size);
-       font.setLatex(LyXFont::OFF);
-      
-       if (par->GetType() == LM_OT_PARN) {
-	   if (!label.empty())
-	     sprintf(s, "(%s)", label.c_str());
-	   else
-	     sprintf(s, "(#)");
-	   font.drawString(s, pm, baseline, int(x+20));
-       } else 
-       if (par->GetType() == LM_OT_MPARN) {
-	   MathMatrixInset * mt = static_cast<MathMatrixInset*>(par);
-	   int y;
-	   MathedRowSt const* crow = mt->getRowSt();
-	   while (crow) {
-	       y = baseline + crow->getBaseline();
-	       if (crow->isNumbered()) {
-		   if (crow->getLabel())
-		     sprintf(s, "(%s)", crow->getLabel());
-		   else
-		     sprintf(s, "(#)");
-		   font.drawString(s, pm, y, int(x+20));
-	       }
-	       crow = crow->getNext();
-	   }
-       }
-   }
-   cursor_visible = false;
-}
-#endif
 
 
 void InsetFormula::Edit(int x, int y)
@@ -644,16 +505,16 @@ void InsetFormula::ToggleInsetCursor()
   if (!mathcursor)
     return;
 
-  int x, y, asc, desc;
+  int x, y;
   mathcursor->GetPos(x, y);
 //  x -= par->xo; 
   y -= par->yo; 
     LyXFont font = WhichFont(LM_TC_TEXTRM, LM_ST_TEXT);
-  asc = font.maxAscent();
-  desc = font.maxDescent();
+  int asc = font.maxAscent();
+  int desc = font.maxDescent();
   
   if (cursor_visible)
-    current_view->hideLockedInsetCursor(x, y, asc, desc);
+    current_view->hideLockedInsetCursor();
   else
     current_view->showLockedInsetCursor(x, y, asc, desc);
   cursor_visible = !cursor_visible;
@@ -864,10 +725,6 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
    static MathSpaceInset * sp= 0;
 
    HideInsetCursor();
-#ifdef MONO
-   if (mathcursor->Selection() && (fast_selection || mono_video))
-	   ToggleInsetSelection();
-#endif
 
     if (mathcursor->getLastCode() == LM_TC_TEX) { 
 	varcode = LM_TC_TEX;
@@ -1325,11 +1182,7 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
        && action != LFUN_BACKSPACE)
 	   UpdateLocal();
    if (sp && !space_on) sp = 0;
-   if (mathcursor->Selection() || (was_selection
-#ifdef MONO
-				   && !(fast_selection || mono_video)
-#endif
-	   ))
+   if (mathcursor->Selection() || was_selection)
        ToggleInsetSelection();
     
    if (result)
@@ -1341,7 +1194,6 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 }
 
 
-#ifdef USE_PAINTER
 void
 MathFuncInset::draw(Painter & pain, int x, int y)
 { 
@@ -1349,35 +1201,10 @@ MathFuncInset::draw(Painter & pain, int x, int y)
 		LyXFont font = WhichFont(LM_TC_TEXTRM, size);
 		font.setLatex(LyXFont::ON);
 	        x += (font.textWidth("I", 1) + 3) / 4;
-#ifdef MONO
-		if (mono_video) {
-			int a = font.maxAscent();
-			int d = font.maxDescent();
-			pain.fillRectangle(x, y - a, font.textWidth(name, strlen(name)), a + d);
-		}
-#endif
 		pain.text(x, y, name, font);
 	}
 }
-#else
-void
-MathFuncInset::Draw(int x, int y)
-{ 
-	if (name && name[0] > ' ') {
-		LyXFont  font = WhichFont(LM_TC_TEXTRM, size);
-		font.setLatex(LyXFont::ON);
-	        x += (font.textWidth("I", 1)+3)/4;
-		if (mono_video) {
-			int a = font.maxAscent(), d = font.maxDescent();
-			XFillRectangle (fl_display, pm, getGC(gc_copy),
-					x, y-a,
-					font.textWidth(name, strlen(name)), a+d);
-			XFlush(fl_display);
-		}
-		font.drawString(name, pm, y, x);
-	}
-}
-#endif
+
 
 void MathFuncInset::Metrics() 
 {

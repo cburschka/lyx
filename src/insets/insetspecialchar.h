@@ -40,7 +40,6 @@ public:
 	InsetSpecialChar() {}
 	///
 	InsetSpecialChar(Kind k);
-#ifdef USE_PAINTER
 	///
 	int ascent(Painter &, LyXFont const &) const;
 	///
@@ -49,16 +48,6 @@ public:
 	int width(Painter &, LyXFont const &) const;
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
-#else
-	///
-	int Ascent(LyXFont const & font) const;
-	///
-	int Descent(LyXFont const & font) const;
-	///
-	int Width(LyXFont const & font) const;
-	///
-	void Draw(LyXFont, LyXScreen & scr, int baseline, float & x);
-#endif
 	///
 	void Write(ostream &);
 	/// Will not be used when lyxf3

@@ -49,7 +49,6 @@ using std::ifstream;
 #include "LyXView.h"
 #include "lastfiles.h"
 #include "support/FileInfo.h"
-#include "lyxscreen.h"
 #include "debug.h"
 #include "support/syscall.h"
 #include "support/lyxlib.h"
@@ -187,8 +186,7 @@ void MenuLayoutSave();
 void ProhibitInput()
 {
 	input_prohibited = true;
-	if (current_view->getScreen())
-		current_view->getScreen()->HideCursor();
+	current_view->hideCursor();
 
 	static Cursor cursor;
 	static bool cursor_undefined = true;
@@ -1034,7 +1032,7 @@ void AutoSave()
 	// should probably be moved into BufferList (Lgb)
 	// Perfect target for a thread...
 {
-	if (!current_view->getScreen() || !current_view->available())
+	if (!current_view->available())
 		return;
 
 	if (current_view->buffer()->isBakClean()
@@ -1136,7 +1134,7 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 	string fname = f;
 	LyXFileDlg fileDlg;
  
-	if (!current_view->getScreen()) return;
+	if (!current_view->available()) return;
      
 	if (fname.empty()) {
 		ProhibitInput();
@@ -1172,7 +1170,7 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 	tmppar->InsertChar(tmppar->text.size() - 1, '\0');
 
 	// insert the string
-	current_view->getScreen()->HideCursor();
+	current_view->hideCursor();
 	
 	// clear the selection
 	current_view->beforeChange();
@@ -1247,7 +1245,7 @@ void MenuInsertRef()
 
 void MenuPasteSelection(char at)
 {
-	if (!current_view->getScreen())
+	if (!current_view->available())
 		return;
 
 	ascii_type = at;
@@ -1272,7 +1270,7 @@ void Foot(BufferView * bv)
 	
 	bv->owner()->getMiniBuffer()
 		->Set(_("Inserting Footnote..."));
-	bv->getScreen()->HideCursor();
+	bv->hideCursor();
 	bv->update(-2);
 	bv->text->InsertFootnoteEnvironment(LyXParagraph::FOOTNOTE);
 	bv->update(1);
@@ -1508,7 +1506,7 @@ inline void EnableParagraphLayout ()
 
 bool UpdateLayoutParagraph()
 {
-	if (!current_view->getScreen() || !current_view->available()) {
+	if (!current_view->available()) {
 		if (fd_form_paragraph->form_paragraph->visible) 
 			fl_hide_form(fd_form_paragraph->form_paragraph);
 		return false;
@@ -1732,7 +1730,7 @@ void EnableDocumentLayout ()
 
 bool UpdateLayoutDocument(BufferParams * params)
 {
-	if (!current_view->getScreen() || !current_view->available()) {
+	if (!current_view->available()) {
 		if (fd_form_document->form_document->visible) 
 			fl_hide_form(fd_form_document->form_document);
 		return false;
@@ -1906,8 +1904,7 @@ void MenuLayoutDocument()
 bool UpdateLayoutQuotes()
 {
 	bool update = true;
-	if (!current_view->getScreen()
-	    || !current_view->available()
+	if (!current_view->available()
 	    || current_view->buffer()->isReadonly())
 		update = false;
 	
@@ -1945,7 +1942,7 @@ void MenuLayoutQuotes()
 bool UpdateLayoutPreamble()
 {
 	bool update = true;
-	if (!current_view->getScreen() || ! current_view->available())
+	if (!current_view->available())
 		update = false;
 
 	if (update) {
@@ -1998,7 +1995,7 @@ void MenuLayoutPreamble()
 
 void MenuLayoutSave()
 {
-	if (!current_view->getScreen() || ! current_view->available())
+	if (!current_view->available())
 		return;
 
 	if (AskQuestion(_("Do you want to save the current settings"),
@@ -2134,7 +2131,7 @@ static
 void ToggleAndShow(BufferView * bv, LyXFont const & font)
 {
 	if (bv->available()) { 
-		bv->getScreen()->HideCursor();
+		bv->hideCursor();
 		bv->update(-2);
   		bv->text->ToggleFree(font, toggleall);
 		bv->update(1);
@@ -2147,7 +2144,7 @@ void Margin(BufferView * bv)
 {
 	if (bv->available()) {
 		bv->owner()->getMiniBuffer()->Set(_("Inserting margin note..."));
-		bv->getScreen()->HideCursor();
+		bv->hideCursor();
 		bv->update(-2);
 		bv->text->InsertFootnoteEnvironment(LyXParagraph::MARGIN);
 		bv->update(1);
@@ -2185,7 +2182,7 @@ void Melt(BufferView * bv)
 	if (!bv->available()) return;
 	
 	bv->owner()->getMiniBuffer()->Set(_("Melt"));
-	bv->getScreen()->HideCursor();
+	bv->hideCursor();
 	bv->beforeChange();
 	bv->update(-2);
 	bv->text->MeltFootnoteEnvironment();
@@ -2201,7 +2198,7 @@ void changeDepth(BufferView * bv, int decInc)
 {
 	if (!bv->available()) return;
 	
-	bv->getScreen()->HideCursor();
+	bv->hideCursor();
 	bv->update(-2);
 	if (decInc >= 0)
 		bv->text->IncDepth();
@@ -2284,7 +2281,6 @@ LyXFont UserFreeFont()
 	}
 
 	pos = fl_get_choice(fd_form_character->choice_color);
-#ifdef USE_PAINTER
 	switch(pos) {
 	case 1: font.setColor(LColor::ignore); break;
 	case 2: font.setColor(LColor::none); break;
@@ -2298,21 +2294,7 @@ LyXFont UserFreeFont()
 	case 10: font.setColor(LColor::yellow); break;
 	case 11: font.setColor(LColor::inherit); break;
 	}
-#else
-	switch(pos) {
-	case 1: font.setColor(LyXFont::IGNORE_COLOR); break;
-	case 2: font.setColor(LyXFont::NONE); break;
-	case 3: font.setColor(LyXFont::BLACK); break;
-	case 4: font.setColor(LyXFont::WHITE); break;
-	case 5: font.setColor(LyXFont::RED); break;
-	case 6: font.setColor(LyXFont::GREEN); break;
-	case 7: font.setColor(LyXFont::BLUE); break;
-	case 8: font.setColor(LyXFont::CYAN); break;
-	case 9: font.setColor(LyXFont::MAGENTA); break;
-	case 10: font.setColor(LyXFont::YELLOW); break;
-	case 11: font.setColor(LyXFont::INHERIT_COLOR); break;
-	}
-#endif
+
 	return font; 
 }
 
@@ -2643,7 +2625,7 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	if (lyxrc->rtl_support) {
 		current_view->text->SetCursor(current_view->text->cursor.par,
 					      current_view->text->cursor.pos);
-		current_view->SetState();
+		current_view->setState();
 	}
 
 	LyXTextClassList::ClassList::size_type new_class =
@@ -2870,7 +2852,7 @@ extern "C" void PreambleOKCB(FL_OBJECT * ob, long data)
 
 extern "C" void TableApplyCB(FL_OBJECT *, long)
 {
-	if (!current_view->getScreen())
+	if (!current_view->available())
 		return;
    
 	// check for tables in tables
@@ -2887,7 +2869,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 	int xsize = int(fl_get_slider_value(fd_form_table->slider_rows) + 0.5);
    
    
-	current_view->getScreen()->HideCursor();
+	current_view->hideCursor();
 	current_view->beforeChange();
 	current_view->update(-2);
    
@@ -2944,7 +2926,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
      
 	current_view->update(1);
 	current_view->owner()->getMiniBuffer()->Set(_("Table inserted"));
-	current_view->SetState();
+	current_view->setState();
 }
 
 
@@ -3164,7 +3146,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 		return;
 	}
 	
-	current_view->getScreen()->HideCursor();
+	current_view->hideCursor();
 	current_view->update(-2);
 	current_view->beforeChange();
       
@@ -3213,7 +3195,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	current_view->update(0);
 	current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 	current_view->text->UnFreezeUndo();
-	current_view->SetState();
+	current_view->setState();
 }
 
 
@@ -3579,7 +3561,7 @@ void UpdateInset(BufferView * bv, Inset * inset, bool mark_dirty)
   
 	/* first check the current buffer */
 	if (bv->available()) {
-		bv->getScreen()->HideCursor();
+		bv->hideCursor();
 		bv->update(-3);
 		if (bv->text->UpdateInset(inset)){
 			if (mark_dirty)

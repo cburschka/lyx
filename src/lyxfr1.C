@@ -25,7 +25,6 @@
 #include "lyxfr0.h"
 #include "lyxfr1.h"
 #include "lyxfunc.h"
-#include "lyxscreen.h"
 #include "debug.h"
 #include "lyxtext.h"
 #include "gettext.h"
@@ -138,7 +137,7 @@ void LyXFindReplace1::StartSearch()
 // routine (1999-01-11, dnaber)
 void LyXFindReplace1::SearchReplaceCB()
 {
-	if (!current_view->getScreen()) return;
+	if (!current_view->available()) return;
 	if (current_view->buffer()->isReadonly()) return;
 	
 	// CutSelection cannot cut a single space, so we have to stop
@@ -153,13 +152,13 @@ void LyXFindReplace1::SearchReplaceCB()
 	
 	string const replacestring = ReplaceString();
 
-	current_view->getScreen()->HideCursor();
+	current_view->hideCursor();
 	current_view->update(-2);
 
 	LyXText * ltCur = current_view->text;	
 	if (ltCur->selection) {
 		// clear the selection (if there is any) 
-		current_view->getScreen()->ToggleSelection(false);
+		current_view->toggleSelection(false);
 		current_view->text->
 			ReplaceSelectionWithString(replacestring.c_str());
 		current_view->text->
@@ -175,7 +174,7 @@ void LyXFindReplace1::SearchReplaceCB()
 // replaces all occurences of a string (1999-01-15, dnaber@mini.gt.owl.de)
 void LyXFindReplace1::SearchReplaceAllCB()
 {
-	if (!current_view->getScreen()) return;
+	if (!current_view->available()) return;
 	if (current_view->buffer()->isReadonly()) return;
 
 	// CutSelection cannot cut a single space, so we have to stop
@@ -190,7 +189,7 @@ void LyXFindReplace1::SearchReplaceAllCB()
 
 	string const replacestring = ReplaceString();
 
-	current_view->getScreen()->HideCursor();
+	current_view->hideCursor();
 
 	// start at top
 	current_view->text->ClearSelection();
@@ -202,7 +201,7 @@ void LyXFindReplace1::SearchReplaceAllCB()
 		ltCur = current_view->text;	
 		if (ltCur->selection) {
 			current_view->update(-2);
-			current_view->getScreen()->ToggleSelection(false);
+			current_view->toggleSelection(false);
 			current_view->text->
 				ReplaceSelectionWithString(replacestring.c_str());
 			current_view->text->
@@ -233,10 +232,10 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 	// store search direction
 	searchForward = fForward;
 	
-	if (!current_view->getScreen())
+	if (!current_view->available())
 		return false;
    
-	current_view->getScreen()->HideCursor();
+	current_view->hideCursor();
 	current_view->update(-2);
 	LyXText * ltCur = current_view->text;
 	if (ltCur->selection) 
@@ -252,12 +251,12 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 		current_view->update(-2);
 
 		// clear the selection (if there is any) 
-		current_view->getScreen()->ToggleSelection();
+		current_view->toggleSelection();
 		current_view->text->ClearSelection();
 
 		// set the new selection 
 		SetSelectionOverLenChars(current_view->text, iLenSelected);
-		current_view->getScreen()->ToggleSelection(false);
+		current_view->toggleSelection(false);
 		current_view->owner()->getMiniBuffer()->Set(_("Found."));
 		result = true;
 	} else {
@@ -267,7 +266,7 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 	}
 
 	if (current_view->focus())
-		current_view->getScreen()->ShowCursor();
+		current_view->showCursor();
 
 	return result;
 }

@@ -16,8 +16,6 @@
 #pragma interface
 #endif
 
-#define USE_PAINTER 1
-
 
 #include FORMS_H_LOCATION
 #include "lyxfont.h"

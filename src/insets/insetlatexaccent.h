@@ -33,7 +33,6 @@ public:
 	InsetLatexAccent(); 
 	///
 	InsetLatexAccent(string const & string);
-#ifdef USE_PAINTER
 	///
 	int ascent(Painter &, LyXFont const &) const;
 	///
@@ -42,29 +41,13 @@ public:
 	int width(Painter &, LyXFont const &) const;
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
-#else
-	///
-	int Ascent(LyXFont const & font) const;
-	///
-	int Descent(LyXFont const & font) const;
-	///
-	int Width(LyXFont const & font) const;
-	///
-	void Draw(LyXFont, LyXScreen & scr, int baseline, float & x);
-#endif
 	///
 	int Lbearing(LyXFont const & font) const;
 	///
 	int Rbearing(LyXFont const & font) const;
-#ifdef USE_PAINTER
 	///
 	bool DisplayISO8859_9(Painter &, LyXFont const & font,
 			      int baseline, float & x) const;
-#else
-	///
-	bool DisplayISO8859_9(LyXFont font, LyXScreen & scr,
-			      int baseline, float & x);
-#endif
 	///
 	void Write(ostream &);
 	///

@@ -22,6 +22,7 @@
 #include "minibuffer.h"
 #include "bufferlist.h"
 #include "support/FileInfo.h"
+#include "lyxscreen.h"
 
 extern BufferList bufferlist;
 
@@ -367,12 +368,12 @@ void BufferView::openStuff()
 {
 	if (available()) {
 		owner()->getMiniBuffer()->Set(_("Open/Close..."));
-		getScreen()->HideCursor();
+		hideCursor();
 		beforeChange();
 		update(-2);
 		text->OpenStuff();
 		update(0);
-		SetState();
+		setState();
 	}
 }
 
@@ -381,12 +382,12 @@ void BufferView::toggleFloat()
 {
 	if (available()) {
 		owner()->getMiniBuffer()->Set(_("Open/Close..."));
-		getScreen()->HideCursor();
+		hideCursor();
 		beforeChange();
 		update(-2);
 		text->ToggleFootnote();
 		update(0);
-		SetState();
+		setState();
 	}
 }
 
@@ -394,14 +395,14 @@ void BufferView::menuUndo()
 {
 	if (available()) {
 		owner()->getMiniBuffer()->Set(_("Undo"));
-		getScreen()->HideCursor();
+		hideCursor();
 		beforeChange();
 		update(-2);
 		if (!text->TextUndo())
 			owner()->getMiniBuffer()->Set(_("No further undo information"));
 		else
 			update(-1);
-		SetState();
+		setState();
 	}
 }
 
@@ -415,14 +416,14 @@ void BufferView::menuRedo()
    
 	if (available()) {
 		owner()->getMiniBuffer()->Set(_("Redo"));
-		getScreen()->HideCursor();
+		hideCursor();
 		beforeChange();
 		update(-2);
 		if (!text->TextRedo())
 			owner()->getMiniBuffer()->Set(_("No further redo information"));
 		else
 			update(-1);
-		SetState();
+		setState();
 	}
 }
 
@@ -430,7 +431,7 @@ void BufferView::menuRedo()
 void BufferView::hyphenationPoint()
 {
 	if (available()) {
-		getScreen()->HideCursor();
+		hideCursor();
 		update(-2);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
@@ -442,7 +443,7 @@ void BufferView::hyphenationPoint()
 void BufferView::ldots()
 {
 	if (available())  {
-		getScreen()->HideCursor();
+		hideCursor();
 		update(-2);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::LDOTS);
@@ -454,7 +455,7 @@ void BufferView::ldots()
 void BufferView::endOfSentenceDot()
 {
 	if (available()) {
-		getScreen()->HideCursor();
+		hideCursor();
 		update(-2);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
@@ -466,7 +467,7 @@ void BufferView::endOfSentenceDot()
 void BufferView::menuSeparator()
 {
 	if (available()) {
-		getScreen()->HideCursor();
+		hideCursor();
 		update(-2);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR);
@@ -478,7 +479,7 @@ void BufferView::menuSeparator()
 void BufferView::newline()
 {
 	if (available()) {
-		getScreen()->HideCursor();
+		hideCursor();
 		update(-2);
 		text->InsertChar(LyXParagraph::META_NEWLINE);
 		update(-1);
@@ -489,7 +490,7 @@ void BufferView::newline()
 void BufferView::protectedBlank()
 {
 	if (available()) {
-		getScreen()->HideCursor();
+		hideCursor();
 		update(-2);
 		text->InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
 		update(-1);
@@ -500,7 +501,7 @@ void BufferView::protectedBlank()
 void BufferView::hfill()
 {
 	if (available()) {
-		getScreen()->HideCursor();
+		hideCursor();
 		update(-2);
 		text->InsertChar(LyXParagraph::META_HFILL);
 		update(-1);
@@ -512,7 +513,7 @@ void BufferView::copyEnvironment()
 	if (available()) {
 		text->copyEnvironmentType();
 		// clear the selection, even if mark_set
-		getScreen()->ToggleSelection();
+		toggleSelection();
 		text->ClearSelection();
 		update(-2);
 		owner()->getMiniBuffer()->Set(_("Paragraph environment type copied"));
@@ -535,7 +536,7 @@ void BufferView::copy()
 	if (available()) {
 		text->CopySelection();
 		// clear the selection, even if mark_set
-		getScreen()->ToggleSelection();
+		toggleSelection();
 		text->ClearSelection();
 		update(-2);
 		owner()->getMiniBuffer()->Set(_("Copy"));
@@ -545,7 +546,7 @@ void BufferView::copy()
 void BufferView::cut()
 {
 	if (available()) {
-		getScreen()->HideCursor();
+		hideCursor();
 		update(-2);
 		text->CutSelection();
 		update(1);
@@ -559,9 +560,9 @@ void BufferView::paste()
 	if (!available()) return;
 	
 	owner()->getMiniBuffer()->Set(_("Paste"));
-	getScreen()->HideCursor();
+	hideCursor();
 	// clear the selection
-	getScreen()->ToggleSelection();
+	toggleSelection();
 	text->ClearSelection();
 	update(-2);
 	
@@ -570,7 +571,7 @@ void BufferView::paste()
 	update(1);
 	
 	// clear the selection 
-	getScreen()->ToggleSelection();
+	toggleSelection();
 	text->ClearSelection();
 	update(-2);
 }
@@ -578,9 +579,9 @@ void BufferView::paste()
 
 void BufferView::gotoNote()
 {
-	if (!getScreen()) return;
+	if (!available()) return;
    
-	getScreen()->HideCursor();
+	hideCursor();
 	beforeChange();
 	update(-2);
 	LyXCursor tmp;
@@ -637,10 +638,10 @@ void BufferView::selectLastWord()
 {
 	if (!available()) return;
    
-	getScreen()->HideCursor();
+	hideCursor();
 	beforeChange();
 	text->SelectSelectedWord();
-	getScreen()->ToggleSelection(false);
+	toggleSelection(false);
 	update(0);
 }
 
@@ -649,25 +650,27 @@ void BufferView::endOfSpellCheck()
 {
 	if (!available()) return;
    
-	getScreen()->HideCursor();
+	hideCursor();
 	beforeChange();
 	text->SelectSelectedWord();
 	text->ClearSelection();
 	update(0);
 }
+
+
 void BufferView::replaceWord(string const & replacestring)
 {
-	if (!getScreen()) return;
+	if (!available()) return;
 
-	getScreen()->HideCursor();
+	hideCursor();
 	update(-2);
    
 	/* clear the selection (if there is any) */ 
-	getScreen()->ToggleSelection(false);
+	toggleSelection(false);
 	update(-2);
    
 	/* clear the selection (if there is any) */ 
-	getScreen()->ToggleSelection(false);
+	toggleSelection(false);
 	text->ReplaceSelectionWithString(replacestring.c_str());
    
 	text->SetSelectionOverString(replacestring.c_str());
@@ -695,29 +698,27 @@ int BufferView::lockInset(UpdatableInset * inset)
 
 void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 {
-	if (the_locking_inset && getScreen()) {
+	if (the_locking_inset && available()) {
 		y += text->cursor.y;
-		getScreen()->ShowManualCursor(x, y,
+		screen->ShowManualCursor(x, y,
 					      asc, desc);
 	}
 }
 
 
-void BufferView::hideLockedInsetCursor(long x, long y, int asc, int desc)
+void BufferView::hideLockedInsetCursor()
 {
-	if (the_locking_inset && getScreen()) {
-		y += text->cursor.y;
-		getScreen()->HideManualCursor(x, y,
-					      asc, desc);
+	if (the_locking_inset && available()) {
+		screen->HideManualCursor();
 	}
 }
 
 
 void BufferView::fitLockedInsetCursor(long x, long y, int asc, int desc)
 {
-	if (the_locking_inset && getScreen()){
+	if (the_locking_inset && available()){
 		y += text->cursor.y;
-		if (getScreen()->FitManualCursor(x, y, asc, desc))
+		if (screen->FitManualCursor(x, y, asc, desc))
 			updateScrollbar();
 	}
 }

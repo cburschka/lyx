@@ -31,14 +31,6 @@
 #include "LColor.h"
 #include "Painter.h"
 
-#ifndef USE_PAINTER
-extern void mathed_set_font(short type, int style);
-#endif
-
-#ifndef USE_PAINTER
-extern GC canvasGC, mathGC, latexGC, cursorGC, mathFrameGC;
-#endif
-
 static LyxArrayBase * selarray = 0;
 
 inline bool IsAlpha(char c)
@@ -155,7 +147,6 @@ void MathedCursor::SetPar(MathParInset * p)
 }
 
 
-#ifdef USE_PAINTER
 void MathedCursor::draw(Painter & pain, int x, int y)
 {
 	//    lyxerr << "Cursor[" << x << " " << y << "] ";
@@ -171,27 +162,8 @@ void MathedCursor::draw(Painter & pain, int x, int y)
 	par->draw(pain, x, y);
 	cursor->Adjust();
 }
-#else
-void MathedCursor::Draw(long unsigned pm, int x, int y)
-{
-//    lyxerr << "Cursor[" << x << " " << y << "] ";
-    win = pm;    // win = (mathedCanvas) ? mathedCanvas: pm;
-    par->Metrics();
-    int w = par->Width()+2, a = par->Ascent()+1, h = par->Height()+1;
-    if (par->GetType() > LM_OT_PAR) { a += 4;  h += 8; }
-    
-   if (!canvasGC) mathed_set_font(LM_TC_VAR, 1);
-    //   XFillRectangle(fl_display, pm, canvasGC, x, y-a, w, h);
-    XDrawRectangle(fl_display, pm, mathFrameGC, x - 1, y - a, w, h);
-    XFlush(fl_display);
-    MathParInset::pm = pm;
-    par->Draw(x, y);
-    cursor->Adjust();
-}
-#endif
 
 
-#ifdef USE_PAINTER
 void MathedCursor::Redraw(Painter & pain)
 {  
 	lyxerr[Debug::MATHED] << "Mathed: Redrawing!" << endl;
@@ -205,21 +177,6 @@ void MathedCursor::Redraw(Painter & pain)
 			   LColor::mathbg);
 	par->draw(pain, x, y);
 }
-#else
-void MathedCursor::Redraw()
-{  
-	lyxerr[Debug::MATHED] << "Mathed: Redrawing!" << endl;
-   par->Metrics();
-   int w = par->Width(), h = par->Height();
-   int x, y;
-   par->GetXY(x, y);
-   mathed_set_font(LM_TC_VAR, 1);
-   XFillRectangle(fl_display, win, canvasGC, x, y-par->Ascent(), w, h);
-   XFlush(fl_display);
-    MathParInset::pm = win;
-   par->Draw(x, y);
-}
-#endif
 
 
 bool MathedCursor::Left(bool sel)
@@ -960,7 +917,6 @@ void MathedCursor::SelBalance()
 } 
 
 
-#ifdef USE_PAINTER
 void MathedCursor::SelGetArea(int ** xp, int ** yp, int & np)
 {   
     static int xpoint[10];
@@ -1028,67 +984,6 @@ void MathedCursor::SelGetArea(int ** xp, int ** yp, int & np)
 //      lyxerr << "XY[" << point[i].x << " " << point[i].y << "] ";
     
 }
-#else
-XPoint * MathedCursor::SelGetArea(int & np)
-{   
-    if (!selection) {
-	np = 0;
-	return 0;
-    }
-    
-    static XPoint point[10];
-    
-    // single row selection
-    int i = 0, x, y, a, d, xo, yo, x1, y1, a1, d1; //, p1, p2;
-
-    // Balance anchor and cursor
-    SelBalance();
- 
-    cursor->p->GetXY(xo, yo);
-    int w = cursor->p->Width();
-    cursor->GetPos(x1, y1);
-    cursor->getAD(a1, d1);
-    anchor->GetPos(x, y);
-    anchor->getAD(a, d);
-
-    point[i].x = x;
-    point[i++].y = y+d;
-    point[i].x = x;
-    point[i++].y = y-a;
-    
-    if (y != y1) {
-	point[i].x = xo + w;
-	point[i++].y = y - a;
-	if (x1 < xo + w) {
-	    point[i].x = xo + w;
-	    point[i++].y = y1 - a;
-	}
-    }
-	
-    point[i].x = x1;
-    point[i++].y = y1 - a;
-    point[i].x = x1;
-    point[i++].y = y1 + d;
-    
-    if (y != y1) {
-	point[i].x = xo;
-	point[i++].y = y1 + d;
-	if (x > xo) {
-	    point[i].x = xo;
-	    point[i++].y = y + d;
-	}
-    }
-    point[i].x = point[0].x;
-    point[i++].y = point[0].y;
-    np = i;
-//    lyxerr << "AN[" << x << " " << y << " " << x1 << " " << y1 << "] ";
-//    lyxerr << "MT[" << a << " " << d << " " << a1 << " " << d1 << "] ";
-//    for (i = 0; i < np; ++i)
-//      lyxerr << "XY[" << point[i].x << " " << point[i].y << "] ";
-    
-    return &point[0];
-}
-#endif
 
 
 void MathedCursor::setAccent(int ac)

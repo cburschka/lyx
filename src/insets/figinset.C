@@ -2,9 +2,6 @@
  *	figinset.C - part of LyX project
  */
 
-#ifdef MONO
-extern int	reverse_video;
-#endif
 extern long int background_pixels;
 
 /*  Rework of path-handling (Matthias 04.07.1996 )
@@ -60,9 +57,6 @@ using std::flush;
 #include "support/filetools.h"
 #include "LyXView.h" // just because of form_main
 #include "debug.h"
-#ifndef USE_PAINTER
-#include "lyxdraw.h"
-#endif
 #include "LaTeXFeatures.h"
 #include "lyxrc.h"
 #include "gettext.h"
@@ -647,31 +641,9 @@ static void runqueue()
 				break;
 			}
 
-#ifdef USE_PAINTER
-#ifdef MONO
-			if (reverse_video) {
-				sprintf(tbuf+1, " %ld %ld", WhitePixelOfScreen(
-					DefaultScreenOfDisplay(fl_display)),
-					fl_get_pixel(FL_BLACK));
-			} else {
-#endif
-				sprintf(tbuf+1, " %ld %ld", BlackPixelOfScreen(
-					DefaultScreenOfDisplay(fl_display)),
-					fl_get_pixel(FL_WHITE));
-#ifdef MONO
-			}
-#endif
-#else
-			if (reverse_video) {
-				sprintf(tbuf+1, " %ld %ld", WhitePixelOfScreen(
-					DefaultScreenOfDisplay(fl_display)),
-					background_pixels);
-			} else {
-				sprintf(tbuf+1, " %ld %ld", BlackPixelOfScreen(
-					DefaultScreenOfDisplay(fl_display)),
-					background_pixels);
-			}
-#endif
+			sprintf(tbuf+1, " %ld %ld", BlackPixelOfScreen(
+				DefaultScreenOfDisplay(fl_display)),
+				fl_get_pixel(FL_WHITE));
 
 			XChangeProperty(tempdisp, 
 					fl_get_canvas_id(figinset_canvas),
@@ -1058,46 +1030,24 @@ InsetFig::~InsetFig()
 }
 
 
-#ifdef USE_PAINTER
 int InsetFig::ascent(Painter &, LyXFont const &) const
 {
 	return hgh + 3;
 }
-#else
-int InsetFig::Ascent(LyXFont const &) const
-{
-	return hgh + 3;
-}
-#endif
 
 
-#ifdef USE_PAINTER
 int InsetFig::descent(Painter &, LyXFont const &) const
 {
 	return 1;
 }
-#else
-int InsetFig::Descent(LyXFont const &) const
-{
-	return 1;
-}
-#endif
 
 
-#ifdef USE_PAINTER
 int InsetFig::width(Painter &, LyXFont const &) const
 {
 	return wid + 2;
 }
-#else
-int InsetFig::Width(LyXFont const &) const
-{
-	return wid + 2;
-}
-#endif
 
 
-#ifdef USE_PAINTER
 void InsetFig::draw(Painter & pain, LyXFont const & f,
 		    int baseline, float & x) const
 {
@@ -1145,56 +1095,6 @@ void InsetFig::draw(Painter & pain, LyXFont const & f,
 	}
 	x += width(pain, font);    // ?
 }
-#else
-void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
-{
-	if (bitmap_waiting) getbitmaps();
-
-	// I wish that I didn't have to use this
-	// but the figinset code is so complicated so
-	// I don't want to fiddle with it now.
-	unsigned long pm = scr.getForeground();
-	
-	if (figure && figure->data && figure->data->bitmap &&
-	    !figure->data->reading && !figure->data->broken) {
-		// draw the bitmap
-		XCopyArea(fl_display, figure->data->bitmap, pm, local_gc_copy,
-			  0, 0, wid, hgh, int(x+1), baseline-hgh);
-		XFlush(fl_display);
-		if (flags & 4) XDrawRectangle(fl_display, pm, local_gc_copy,
-					      int(x), baseline - hgh - 1,
-					      wid+1, hgh+1);
-	} else {
-		char * msg = 0;
-		// draw frame
-		XDrawRectangle(fl_display, pm, local_gc_copy,
-			       int(x),
-			       baseline - hgh - 1, wid+1, hgh+1);
-		if (figure && figure->data) {
-			if (figure->data->broken)  msg = _("[render error]");
-			else if (figure->data->reading) msg = _("[rendering ... ]");
-		} else 
-			if (fname.empty()) msg = _("[no file]");
-			else if ((flags & 3) == 0) msg = _("[not displayed]");
-			else if (lyxrc->ps_command.empty()) msg = _("[no ghostscript]");
-
-		if (!msg) msg = _("[unknown error]");
-		
-		font.setFamily (LyXFont::SANS_FAMILY);
-		font.setSize (LyXFont::SIZE_FOOTNOTE);
-		string justname = OnlyFilename (fname);
-		font.drawString(justname, pm,
-				baseline - font.maxAscent() - 4,
-				int(x) + 8);
-		font.setSize (LyXFont::SIZE_TINY);
-		font.drawText (msg, strlen(msg), pm,
-			       baseline - 4,
-			       int(x) + 8);
-
-	}
-	x += Width(font);    // ?
-}
-#endif
 
 
 void InsetFig::Write(ostream & os)

@@ -33,7 +33,6 @@
 #include "lastfiles.h"
 #include "debug.h"
 #include "lyxrc.h"
-#include "lyxscreen.h"
 #include "lyxtext.h"
 #include "lyx_cb.h"
 #include "gettext.h"

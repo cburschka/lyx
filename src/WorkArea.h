@@ -30,10 +30,8 @@ public:
 	WorkArea(BufferView *, int xpos, int ypos, int width, int height);
 	///
 	~WorkArea();
-#ifdef USE_PAINTER
 	///
 	Painter & getPainter() { return painter_; }
-#endif
 	///
 	int workWidth() const { return work_area->w; }
 	///
@@ -112,10 +110,8 @@ private:
 	BufferView * owner;
 	/// The pixmap overlay on the workarea
 	Pixmap workareapixmap;
-#ifdef USE_PAINTER
 	///
 	Painter painter_;
-#endif
 	///
 	FL_OBJECT * figinset_canvas;
 };

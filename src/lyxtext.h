@@ -24,7 +24,7 @@
 
 class Buffer;
 class BufferParams;
-class LyXScreen;
+//class LyXScreen;
 class Row;
 class BufferView;
 
@@ -290,13 +290,8 @@ public:
 	  decide, wether it is selected text or not. This is a strange
 	  solution but faster.
 	 */
-#ifdef USE_PAINTER
 	void GetVisibleRow(int offset, 
 			   Row * row_ptr, long y);
-#else
-	void GetVisibleRow(LyXScreen & scr, int offset, 
-			   Row * row_ptr, long y);
-#endif
 					   
 	/* footnotes: */
 	///
@@ -555,17 +550,11 @@ private:
 	///
 	int SingleWidth(LyXParagraph * par,
 			LyXParagraph::size_type pos, char c) const;
-#ifdef USE_PAINTER
 	///
 	void draw(Row const * row,
 		  LyXParagraph::size_type & pos,
 		  int offset, float & x);
-#else
-	///
-	void Draw(Row const * row, LyXParagraph::size_type & pos,
-		  LyXScreen & scr,
-		  int offset, float & x);
-#endif
+
 	/// get the next breakpoint in a given paragraph
 	LyXParagraph::size_type NextBreakPoint(Row const * row,
 					       int width) const;

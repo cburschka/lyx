@@ -1068,7 +1068,7 @@ Row * LyXText::GetRowNearY(long & y) const
 void LyXText::ToggleFree(LyXFont const & font, bool toggleall)
 {
 	// If the mask is completely neutral, tell user
-	if (font == LyXFont(LyXFont::ALL_IGNORE)){
+	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
 		// Could only happen with user style
 		current_view->owner()->getMiniBuffer()
 			->Set(_("No font change defined. Use Character under"

@@ -70,10 +70,11 @@ inline void EnableParagraphExtra ()
 	fl_activate_object(fd_form_paragraph_extra->radio_pextra_startmp);
 }	
 
+
 bool UpdateParagraphExtra()
 {
 	bool update = false;
-	if (current_view->getScreen() && current_view->available()) {
+	if (current_view->available()) {
 		update = true;
 		LyXParagraph * par = current_view->text->cursor.par;
 
@@ -166,7 +167,7 @@ void ParagraphExtraOpen(FL_OBJECT *, long)
 
 void ParagraphExtraApplyCB(FL_OBJECT *, long)
 {
-	if (current_view->getScreen() && current_view->available()) {
+	if (current_view->available()) {
 		FD_form_paragraph_extra const * fd = fd_form_paragraph_extra;
 		char const * width = fl_get_input(fd->input_pextra_width);
 		char const * widthp = fl_get_input(fd->input_pextra_widthp);

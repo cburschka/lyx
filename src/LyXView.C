@@ -29,7 +29,6 @@
 #include "layout_forms.h"
 #include "intl.h"
 #include "lyxrc.h"
-#include "lyxscreen.h"
 #include "support/filetools.h"        // OnlyFilename()
 #include "layout.h"
 #include "lyxtext.h"
@@ -81,10 +80,10 @@ void LyXView::UpdateTimerCB(FL_OBJECT * ob, long)
 	LyXView * view = static_cast<LyXView*>(ob->u_vdata);
 	if (!view->view()->available()) 
 		return;
-	if (!view->view()->getScreen() || !updatetimer)
+	if (!updatetimer)
 		return;
 
-	view->view()->getScreen()->HideCursor();
+	view->view()->hideCursor();
 	view->view()->update(-2);
 
 	/* This update can happen, even when the work area has lost

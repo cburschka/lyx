@@ -4,7 +4,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright 1995 Matthias Ettrich
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.   
  *
  * ====================================================== */
 
@@ -14,8 +15,6 @@
 #ifdef __GNUG__
 #pragma interface
 #endif
-
-#define USE_PAINTER 1
 
 #include FORMS_H_LOCATION
 #include "LString.h"
@@ -151,38 +150,6 @@ public:
 		IGNORE
 	};
 
-#ifndef USE_PAINTER
-	///
-	enum FONT_COLOR {
-		///
-		NONE,
-		///
-		BLACK,
-		///
-		WHITE,
-		///
-		RED,
-		///
-		GREEN,
-		///
-		BLUE,
-		///
-		CYAN,
-		///
-		MAGENTA,
-		///
-		YELLOW,
-		///
-		MATH,
-		///
-		INSET,
-		///
-		INHERIT_COLOR,
-		///
-		IGNORE_COLOR
-	};
-#endif
-	
 	/// Trick to overload constructor and make it megafast
 	enum FONT_INIT1 {
 		///
@@ -245,13 +212,8 @@ public:
 	///
 	FONT_MISC_STATE latex() const;
 
-#ifdef USE_PAINTER
 	///
 	LColor::color color() const;
-#else
-	///
-	FONT_COLOR color() const;
-#endif
 
  	///
 	FONT_DIRECTION direction() const;
@@ -275,13 +237,8 @@ public:
 	LyXFont & setNoun(LyXFont::FONT_MISC_STATE n);
 	///
 	LyXFont & setLatex(LyXFont::FONT_MISC_STATE l);
-#ifdef USE_PAINTER
 	///
 	LyXFont & setColor(LColor::color c);
-#else
-	///
-	LyXFont & setColor(LyXFont::FONT_COLOR c);
-#endif
  	///
 	LyXFont & setDirection(LyXFont::FONT_DIRECTION d);
 
@@ -391,20 +348,14 @@ public:
 	///
 	int drawString(string const &, Pixmap pm, int baseline, int x) const;
 
-#ifdef USE_PAINTER
 	///
 	LColor::color realColor() const;
-#endif
 
 	///
 	XID getFontID() const {
 		return getXFontstruct()->fid;
 	}
 	
-#ifndef USE_PAINTER
-	///
-	GC getGC() const;
-#endif
 	///
 	friend inline
 	bool operator==(LyXFont const & font1, LyXFont const & font2) {
@@ -444,11 +395,7 @@ private:
 		FONT_SERIES series;
 		FONT_SHAPE shape;
 		FONT_SIZE size;
-#ifdef USE_PAINTER
 		LColor::color color;
-#else
-		FONT_COLOR color;
-#endif
 		FONT_MISC_STATE emph;
 		FONT_MISC_STATE underbar;
 		FONT_MISC_STATE noun;
@@ -553,11 +500,7 @@ private:
 		| ui32(MEDIUM_SERIES) << Ser_Pos
 		| ui32(UP_SHAPE) << Sha_Pos
 		| ui32(SIZE_NORMAL) << Siz_Pos
-#ifdef USE_PAINTER
 		| ui32(LColor::none) << Col_Pos
-#else
-		| ui32(NONE) << Col_Pos
-#endif
 		| ui32(OFF) << Emp_Pos
 		| ui32(OFF) << Und_Pos
 		| ui32(OFF) << Nou_Pos
@@ -569,11 +512,7 @@ private:
 		      | ui32(INHERIT_SERIES) << Ser_Pos
 		      | ui32(INHERIT_SHAPE) << Sha_Pos
 		      | ui32(INHERIT_SIZE) << Siz_Pos
-#ifdef USE_PAINTER
 		      | ui32(LColor::inherit) << Col_Pos
-#else
-		      | ui32(INHERIT_COLOR) << Col_Pos
-#endif
 		      | ui32(INHERIT) << Emp_Pos
 		      | ui32(INHERIT) << Und_Pos
 		      | ui32(INHERIT) << Nou_Pos
@@ -585,11 +524,7 @@ private:
 		      | ui32(IGNORE_SERIES) << Ser_Pos
 		      | ui32(IGNORE_SHAPE) << Sha_Pos
 		      | ui32(IGNORE_SIZE) << Siz_Pos
-#ifdef USE_PAINTER
 		      | ui32(LColor::ignore) << Col_Pos
-#else
-		      | ui32(IGNORE_COLOR) << Col_Pos
-#endif
 		      | ui32(IGNORE) << Emp_Pos
 		      | ui32(IGNORE) << Und_Pos
 		      | ui32(IGNORE) << Nou_Pos
@@ -707,19 +642,11 @@ LyXFont::FONT_MISC_STATE LyXFont::latex() const
 }
 
 
-#ifdef USE_PAINTER
 inline
 LColor::color LyXFont::color() const 
 {
 	return bits.color;
 }
-#else
-inline
-LyXFont::FONT_COLOR LyXFont::color() const 
-{
-	return bits.color;
-}
-#endif
 
 
 inline
@@ -791,21 +718,13 @@ LyXFont & LyXFont::setLatex(LyXFont::FONT_MISC_STATE l)
 }
 
 
-#ifdef USE_PAINTER
 inline
 LyXFont & LyXFont::setColor(LColor::color c)
 {
 	bits.color = c;
 	return *this;
 }
-#else
-inline
-LyXFont & LyXFont::setColor(LyXFont::FONT_COLOR c)
-{
-	bits.color = c;
-	return *this;
-}
-#endif
+
 
 inline
 LyXFont & LyXFont::setDirection(LyXFont::FONT_DIRECTION d)
@@ -866,17 +785,10 @@ inline LyXFont::FONT_MISC_STATE LyXFont::latex() const
 }
 
 
-#ifdef USE_PAINTER
 inline LColor::color LyXFont::color() const 
 {
 	return LColor::color((bits >> Col_Pos) & Col_Mask);
 }
-#else
-inline LyXFont::FONT_COLOR LyXFont::color() const
-{
-	return FONT_COLOR((bits >> Col_Pos) & Col_Mask);
-}
-#endif
 
 
 inline LyXFont::FONT_DIRECTION LyXFont::direction() const 
@@ -947,21 +859,13 @@ inline LyXFont & LyXFont::setLatex(LyXFont::FONT_MISC_STATE l)
 }
 
 
-#ifdef USE_PAINTER
 inline LyXFont & LyXFont::setColor(LColor::color c)
 {
 	bits &= ~(Col_Mask << Col_Pos);
 	bits |= ui32(c) << Col_Pos;
 	return *this;
 }
-#else
-inline LyXFont & LyXFont::setColor(LyXFont::FONT_COLOR c)
-{
-	bits &= ~(Col_Mask << Col_Pos);
-	bits |= ui32(c) << Col_Pos;
-	return *this;
-}
-#endif
+
 
 inline LyXFont & LyXFont::setDirection(LyXFont::FONT_DIRECTION d)
 {

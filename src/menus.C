@@ -39,7 +39,6 @@
 #include "bufferlist.h"
 #include "lyx_gui_misc.h"
 #include "minibuffer.h"
-#include "lyxscreen.h"
 #include "intl.h"
 #include "debug.h"
 #include "lyxrc.h"
@@ -1080,8 +1079,8 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	case 38: case 39: case 40: 
 	case 41: case 42: case 43:
 	case 44: 
-     		if (men->currentView()->available()){
-			men->currentView()->getScreen()->HideCursor();
+     		if (men->currentView()->available()) {
+			men->currentView()->hideCursor();
 			if (!men->currentView()->text->selection){
 				men->currentView()->beforeChange(); 
 				men->currentView()->update(-2);
@@ -1342,7 +1341,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 	fl_redraw_object(ob);
 
 	if (men->currentView()->available()){
-		men->currentView()->getScreen()->HideCursor();
+		men->currentView()->hideCursor();
 		switch (choice) {
 		case 1: tmpfunc->Dispatch(LFUN_FIGURE); break;
 		case 2: tmpfunc->Dispatch(LFUN_TABLE); break;

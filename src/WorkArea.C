@@ -59,10 +59,7 @@ extern "C" {
 
 
 WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
-	: owner(o), workareapixmap(0)
-#ifdef USE_PAINTER
-	, painter_(*this)
-#endif
+	: owner(o), workareapixmap(0), painter_(*this)
 {
 	fl_freeze_all_forms();
 
@@ -164,11 +161,10 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 
 	// Create the workarea pixmap
 	createPixmap(width - 15 - 2 * bw, height - 2 * bw);
-#ifdef USE_PAINTER
+
 	// setup the painter
 	painter_.setDisplay(fl_display);
 	painter_.setDrawable(workareapixmap);
-#endif
 	
 	// We add this object as late as possible to avoit problems
 	// with drawing.
@@ -227,10 +223,8 @@ void WorkArea::resize(int xpos, int ypos, int width, int height)
 	// Create the workarea pixmap
 	createPixmap(width - 15 - 2 * bw, height - 2 * bw);
 
-#ifdef USE_PAINTER
 	// reset the painter
 	painter_.setDrawable(workareapixmap);
-#endif
 	
 	// the free object
 	fl_set_object_geometry(work_area, xpos + bw, ypos + bw,
@@ -309,7 +303,7 @@ void WorkArea::up_cb(FL_OBJECT * ob, long)
 	if (ev2->type == ButtonPress || ev2->type == ButtonRelease) 
 		time = 0;
 	//area->up(time++, fl_get_button_numb(ob));
-	area->owner->UpCB(time++, fl_get_button_numb(ob));
+	area->owner->upCB(time++, fl_get_button_numb(ob));
 }
 
 
@@ -321,7 +315,7 @@ void WorkArea::down_cb(FL_OBJECT * ob, long)
 	if (ev2->type == ButtonPress || ev2->type == ButtonRelease)
 		time = 0;
 	//area->down(time++, fl_get_button_numb(ob));
-	area->owner->DownCB(time++, fl_get_button_numb(ob));
+	area->owner->downCB(time++, fl_get_button_numb(ob));
 }
 
 
@@ -331,7 +325,7 @@ void WorkArea::scroll_cb(FL_OBJECT * ob, long)
 	WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
 
 	//area->scroll(fl_get_slider_value(ob));
-	area->owner->ScrollCB(fl_get_slider_value(ob));
+	area->owner->scrollCB(fl_get_slider_value(ob));
 	waitForX();
 }
 
@@ -358,7 +352,6 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		lyxerr.debug() << "Workarea event: DRAW" << endl;
 		area->createPixmap(area->workWidth(), area->height());
 		Lgb_bug_find_hack = true;
-		//area->expose();
 		area->owner->workAreaExpose();
 		Lgb_bug_find_hack = false;
 		break;
@@ -366,10 +359,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		if (!ev) break;
 		// Should really have used xbutton.state
 		lyxerr.debug() << "Workarea event: PUSH" << endl;
-		//area->buttonPress(ev->xbutton.x - ob->x,
-		//		  ev->xbutton.y - ob->y,
-		//		  ev->xbutton.button);
-		area->owner->WorkAreaButtonPress(ev->xbutton.x - ob->x,
+		area->owner->workAreaButtonPress(ev->xbutton.x - ob->x,
 					   ev->xbutton.y - ob->y,
 					   ev->xbutton.button);
 		break; 
@@ -377,10 +367,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		if (!ev) break;
 		// Should really have used xbutton.state
 		lyxerr.debug() << "Workarea event: RELEASE" << endl;
-		//area->buttonRelease(ev->xbutton.x - ob->x,
-		//		    ev->xbutton.y - ob->y,
-		//		    ev->xbutton.button);
-		area->owner->WorkAreaButtonRelease(ev->xbutton.x - ob->x,
+		area->owner->workAreaButtonRelease(ev->xbutton.x - ob->x,
 					     ev->xbutton.y - ob->y,
 					     ev->xbutton.button);
 		break;
@@ -390,10 +377,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		    ev->xmotion.y != y_old ||
 		    fl_get_slider_value(area->scrollbar) != scrollbar_value_old) {
 			lyxerr.debug() << "Workarea event: MOUSE" << endl;
-			//area->motion(ev->xmotion.x - ob->x,
-			//	     ev->xmotion.y - ob->y,
-			//	     ev->xbutton.state);
-			area->owner->WorkAreaMotionNotify(ev->xmotion.x - ob->x,
+			area->owner->workAreaMotionNotify(ev->xmotion.x - ob->x,
 						    ev->xmotion.y - ob->y,
 						    ev->xbutton.state);
 		}
@@ -402,40 +386,29 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	//  case FL_KEYBOARD: WorkAreaKeyPress(ob, 0,0,0,ev,0); break;
 	case FL_FOCUS:
 		lyxerr.debug() << "Workarea event: FOCUS" << endl;
-		//area->focus();
 		break;
 	case FL_UNFOCUS:
 		lyxerr.debug() << "Workarea event: UNFOCUS" << endl;
-		//area->unfocus();
 		break;
 	case FL_ENTER:
 		lyxerr.debug() << "Workarea event: ENTER" << endl;
-		//area->enter();
 		break;
 	case FL_LEAVE:
 		lyxerr.debug() << "Workarea event: LEAVE" << endl;
-		//area->leave();
 		break;
 	case FL_DBLCLICK:
 		if (!ev) break;
 		lyxerr.debug() << "Workarea event: DBLCLICK" << endl;;
-		//area->doubleclick(ev->xbutton.x,
-		//		  ev->xbutton.y,
-		//		  ev->xbutton.button);
 		break;
 	case FL_TRPLCLICK:
 		if (!ev) break;
 		lyxerr.debug() << "Workarea event: TRPLCLICK" << endl;
-		//area->trippleclick(ev->xbutton.x,
-		//		   ev->xbutton.y,
-		//		   ev->xbutton.button);
 		break;
 	case FL_OTHER:
 		if (!ev) break;
 		if (ev->type == SelectionNotify) {
 			lyxerr.debug() << "Workarea event: SELECTION" << endl;
-			//area->selection(area->work_area->form->window, ev);
-			area->owner->WorkAreaSelectionNotify(area->work_area->form->window, ev);
+			area->owner->workAreaSelectionNotify(area->work_area->form->window, ev);
 		} else
 			lyxerr.debug() << "Workarea event: OTHER" << endl;
 

@@ -24,9 +24,6 @@
 #include "buffer.h"
 #include "support/lstrings.h"
 #include "Painter.h"
-#ifndef USE_PAINTER
-#include "lyxdraw.h"
-#endif
 
 /* Info, used for the Info boxes */
 
@@ -56,46 +53,24 @@ InsetInfo::~InsetInfo()
 }
 
 
-#ifdef USE_PAINTER
 int InsetInfo::ascent(Painter &, LyXFont const & font) const
 {
 	return font.maxAscent() + 1;
 }
-#else
-int InsetInfo::Ascent(LyXFont const & font) const
-{
-	return font.maxAscent() + 1;
-}
-#endif
 
 
-#ifdef USE_PAINTER
 int InsetInfo::descent(Painter &, LyXFont const & font) const
 {
 	return font.maxDescent() + 1;
 }
-#else
-int InsetInfo::Descent(LyXFont const & font) const
-{
-	return font.maxDescent() + 1;
-}
-#endif
 
 
-#ifdef USE_PAINTER
 int InsetInfo::width(Painter &, LyXFont const & font) const
 {
 	return 6 + font.textWidth(_("Note"), strlen(_("Note")));
 }
-#else
-int InsetInfo::Width(LyXFont const & font) const
-{
-	return 6 + font.textWidth(_("Note"), strlen(_("Note")));
-}
-#endif
 
 
-#ifdef USE_PAINTER
 void InsetInfo::draw(Painter & pain, LyXFont const & f,
 		     int baseline, float & x) const
 {
@@ -116,26 +91,6 @@ void InsetInfo::draw(Painter & pain, LyXFont const & f,
 	pain.text(int(x + 2), baseline, _("Note"), font);
 	x +=  width(pain, font) - 1;
 }
-#else
-void InsetInfo::Draw(LyXFont font, LyXScreen & scr,
-		     int baseline, float & x)
-{
-	/* Info-insets are never LaTeX, so just correct the font */
-	font.setLatex(LyXFont::OFF);
-
-	// Draw as "Note" in a yellow box
-	x += 1;
-	scr.fillRectangle(gc_note,
-			  int(x), baseline - Ascent(font)+1,
-			  Width(font)-2, Ascent(font)+Descent(font)-2);
-	scr.drawRectangle(gc_note_frame,
-			  int(x), baseline- Ascent(font)+1,
-			  Width(font)-2, Ascent(font)+Descent(font)-2);
-	
-	scr.drawString(font, _("Note"), baseline, int(x+2));
-	x +=  Width(font) - 1;
-}
-#endif
 
 
 void InsetInfo::Write(ostream & os)

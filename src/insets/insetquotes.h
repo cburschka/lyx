@@ -70,7 +70,6 @@ public:
 	/// Create the right quote inset after character c
 	InsetQuotes(char c, BufferParams const & params);
 
-#ifdef USE_PAINTER
 	///
 	int ascent(Painter &, LyXFont const &) const;
 	///
@@ -79,16 +78,6 @@ public:
 	int width(Painter &, LyXFont const &) const;
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
-#else
-	///
-	int Ascent(LyXFont const & font) const;
-	///
-	int Descent(LyXFont const & font) const;
-	///
-	int Width(LyXFont const & font) const;
-	///
-	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
-#endif
 	///
 	LyXFont ConvertFont(LyXFont font);
 	///

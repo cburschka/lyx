@@ -22,31 +22,31 @@ int PainterBase::dummy1 = 0;
 int PainterBase::dummy2 = 0;
 int PainterBase::dummy3 = 0;
 
-int PainterBase::paperMargin()
+int PainterBase::paperMargin() const
 {
 	return 20;
 }
 
 
-int PainterBase::paperWidth()
+int PainterBase::paperWidth() const
 {
 	return owner.workWidth();
 }
 
 
-int PainterBase::width(string const & s, LyXFont const & f)
+int PainterBase::width(string const & s, LyXFont const & f) const
 {
 	return f.stringWidth(s);
 }
 
 
-int PainterBase::width(char const * s, int l, LyXFont const & f)
+int PainterBase::width(char const * s, int l, LyXFont const & f) const
 {
 	return f.textWidth(s, l);
 }
 
 
-int PainterBase::width(char c, LyXFont const & f)
+int PainterBase::width(char c, LyXFont const & f) const
 {
 	return f.width(c);
 }

@@ -15,9 +15,6 @@
 #endif
 
 #include "insetcommand.h"
-#ifndef USE_PAINTER
-#include "lyxdraw.h"
-#endif
 #include "debug.h"
 #include "Painter.h"
 
@@ -33,64 +30,107 @@ InsetCommand::InsetCommand(string const & cmd, string const & arg,
 }
 
 
-#ifdef USE_PAINTER
-int InsetCommand::ascent(Painter &, LyXFont const & font) const
+int InsetCommand::ascent(Painter & pain, LyXFont const &) const
 {
+#if 1
+	LyXFont font(LyXFont::ALL_SANE);
+	font.decSize();
+	
+	int width, ascent, descent;
+        string s = getScreenLabel();
+	
+        if (Editable()) {
+		pain.buttonText(0, 0, s, font,
+				false, width, ascent, descent);
+	} else {
+		pain.rectText(0, 0, s, font,
+			      LColor::commandbg, LColor::commandframe,
+			      false, width, ascent, descent);
+	}
+	return ascent;
+#else
 	LyXFont f = font;
 	f.decSize();
 	return f.maxAscent() + 3;
-}
-#else
-int InsetCommand::Ascent(LyXFont const & font) const
-{
-	LyXFont f = font;
-	f.decSize();
-	return f.maxAscent() + 3;
-}
 #endif
+}
 
 
-#ifdef USE_PAINTER
-int InsetCommand::descent(Painter &, LyXFont const & font) const
+int InsetCommand::descent(Painter & pain, LyXFont const &) const
 {
+#if 1
+	LyXFont font(LyXFont::ALL_SANE);
+	font.decSize();
+	
+	int width, ascent, descent;
+        string s = getScreenLabel();
+	
+        if (Editable()) {
+		pain.buttonText(0, 0, s, font,
+				false, width, ascent, descent);
+	} else {
+		pain.rectText(0, 0, s, font,
+			      LColor::commandbg, LColor::commandframe,
+			      false, width, ascent, descent);
+	}
+	return descent;
+#else
 	LyXFont f = font;
 	f.decSize();
 	return f.maxDescent() + 3;
-}
-#else
-int InsetCommand::Descent(LyXFont const & font) const
-{
-	LyXFont f = font;
-	f.decSize();
-	return f.maxDescent() + 3;
-}
 #endif
+}
 
 
-#ifdef USE_PAINTER
-int InsetCommand::width(Painter &, LyXFont const & font) const
+int InsetCommand::width(Painter & pain, LyXFont const &) const
 {
+#if 1
+	LyXFont font(LyXFont::ALL_SANE);
+	font.decSize();
+	
+	int width, ascent, descent;
+        string s = getScreenLabel();
+	
+        if (Editable()) {
+		pain.buttonText(0, 0, s, font,
+				false, width, ascent, descent);
+	} else {
+		pain.rectText(0, 0, s, font,
+			      LColor::commandbg, LColor::commandframe,
+			      false, width, ascent, descent);
+	}
+	return width;
+#else
 	LyXFont f = font;
 	f.decSize();
 	string s = getScreenLabel();
 	return 10 + f.stringWidth(s);
-}
-#else
-int InsetCommand::Width(LyXFont const & font) const
-{
-	LyXFont f = font;
-	f.decSize();
-	string s = getScreenLabel();
-	return 10 + f.stringWidth(s);
-}
 #endif
+}
 
 
-#ifdef USE_PAINTER
-void InsetCommand::draw(Painter & pain, LyXFont const & font,
+void InsetCommand::draw(Painter & pain, LyXFont const &,
 			int baseline, float & x) const
 {
 	// Draw it as a box with the LaTeX text
+#if 1
+	LyXFont font(LyXFont::ALL_SANE);
+	font.setColor(LColor::command).decSize();
+
+	int width;
+	string s = getScreenLabel();
+
+	if (Editable()) {
+		pain.buttonText(int(x), baseline, s, font, true, width);
+	} else {
+		pain.rectText(int(x), baseline, s, font,
+			      LColor::commandbg, LColor::commandframe,
+			      true, width);
+	}
+
+	x += width;
+#else
+		
 	x += 3;
 
 	pain.fillRectangle(int(x), baseline - ascent(pain, font) + 1,
@@ -119,40 +159,8 @@ void InsetCommand::draw(Painter & pain, LyXFont const & font,
 	pain.text(int(x + 2), baseline, s, f);
 	
 	x +=  width(pain, font) - 3;
-}
-#else
-void InsetCommand::Draw(LyXFont font, LyXScreen & scr,
-		      int baseline, float & x)
-{
-	// Draw it as a box with the LaTeX text
-	x += 3;
-
-	scr.fillRectangle(gc_lighted,
-			  int(x), baseline - Ascent(font) + 1,
-			  Width(font) - 6,
-			  Ascent(font) + Descent(font)-2);
-        // Tell whether this slows down the drawing  (ale)
-	// lets draw editable and non-editable insets differently
-        if (Editable()) {
-		int y = baseline - Ascent(font)+1, w = Width(font)-6,
-			h = (Ascent(font)+Descent(font)-2);
-		scr.drawFrame(FL_UP_FRAME, int(x), y, w, h, FL_BLACK, -1);
-	} else {
-		scr.drawRectangle(gc_note_frame,
-				  int(x), baseline - Ascent(font)+1,
-				  Width(font)-6,
-				  Ascent(font)+Descent(font)-2); 
-	}
-        string s = getScreenLabel();
-       	LyXFont f = font;
-	f.decSize();
-	f.setColor(LyXFont::NONE);
-	f.setLatex(LyXFont::OFF);
-	scr.drawString(f, s, baseline, int(x+2));
-
-	x +=  Width(font) - 3;
-}
 #endif
+}
 
 
 // In lyxf3 this will be just LaTeX

@@ -16,19 +16,11 @@
 #pragma interface
 #endif
 
-#define USE_PAINTER 1
-
 #include "gettext.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
-#include "lyxscreen.h"
 
-//#define USE_PAINTER 1
-
-#ifdef USE_PAINTER
 class Painter;
-#endif
-
 class Buffer;
 struct LaTeXFeatures;
 
@@ -87,7 +79,6 @@ public:
 
 	///
 	virtual ~Inset() {}
-#ifdef USE_PAINTER
 	///
 	virtual int ascent(Painter &, LyXFont const &) const = 0;
 	///
@@ -97,17 +88,6 @@ public:
 	///
 	virtual void draw(Painter &, LyXFont const &,
 			  int baseline, float & x) const = 0;
-#else
-	///
-	virtual int Ascent(LyXFont const & font) const = 0;
-	///
-	virtual int Descent(LyXFont const & font) const = 0;
-	///
-	virtual int Width(LyXFont const & font) const = 0;
-	///
-	virtual void Draw(LyXFont font, LyXScreen & scr,
-			  int baseline, float & x) = 0;
-#endif
 	///
 	virtual LyXFont ConvertFont(LyXFont font);
 	/// what appears in the minibuffer when opening

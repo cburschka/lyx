@@ -22,9 +22,6 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
-#ifndef USE_PAINTER
-#include "lyxdraw.h"
-#endif
 #include "FontLoader.h"
 #include "support/lstrings.h"
 
@@ -65,13 +62,6 @@ string const GUIDirectionNames[5] =
 { N_("LTR"), N_("RTL"), N_("Toggle"), N_("Inherit"), N_("Ignore") };
 
 
-#ifndef USE_PAINTER
-string const GUIColorNames[13] = 
-{ N_("None"), N_("Black"), N_("White"), N_("Red"), N_("Green"), N_("Blue"),
-  N_("Cyan"), N_("Magenta"), 
-  N_("Yellow"), N_("Math"), N_("Inset"), N_("Inherit"), N_("Ignore") };
-#endif
-
 //
 // Strings used to read and write .lyx format files
 //
@@ -92,12 +82,6 @@ string const LyXSizeNames[14] =
 string const LyXMiscNames[12] = 
 { "off", "on", "toggle", "default", "error" };
 
-#ifndef USE_PAINTER
-string const LyXColorNames[13] = 
-{ "none", "black", "white", "red", "green", "blue", "cyan", "magenta", 
-  "yellow", "matherror", "inseterror", "default", "error" };
-#endif
-
 //
 // Strings used to write LaTeX files
 //
@@ -115,22 +99,12 @@ string const LaTeXSizeNames[14] =
 { "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
 
-#ifndef USE_PAINTER
-string const LaTeXColorNames[13] = 
-{ "none", "black", "white", "red", "green", "blue", "cyan", "magenta", 
-  "yellow", "error12", "error13", "error14", "error15" };
-#endif
-
 #ifdef NEW_BITS
 LyXFont::FontBits LyXFont::sane = { ROMAN_FAMILY,
 		  MEDIUM_SERIES,
 		  UP_SHAPE,
 		  SIZE_NORMAL,
-#ifdef USE_PAINTER
 		  LColor::none,
-#else
-		  NONE,
-#endif
 		  OFF,
 		  OFF,
 		  OFF,
@@ -141,11 +115,7 @@ LyXFont::FontBits LyXFont::inherit = { INHERIT_FAMILY,
 		      INHERIT_SERIES, 
 		      INHERIT_SHAPE, 
 		      INHERIT_SIZE,
-#ifdef USE_PAINTER
 		      LColor::inherit,
-#else
-		      INHERIT_COLOR,
-#endif
 		      INHERIT,
 		      INHERIT,
 		      INHERIT,
@@ -156,11 +126,7 @@ LyXFont::FontBits LyXFont::ignore = { IGNORE_FAMILY,
 		     IGNORE_SERIES,
 		     IGNORE_SHAPE,
 		     IGNORE_SIZE,
-#ifdef USE_PAINTER
 		     LColor::ignore,
-#else
-		     IGNORE_COLOR,
-#endif
 		     IGNORE,
 		     IGNORE,
 		     IGNORE,
@@ -312,17 +278,10 @@ void LyXFont::update(LyXFont const & newfont, bool toggleall)
 		setDirection(newfont.direction());
 	}
 
-#ifdef USE_PAINTER
 	if(newfont.color() == color() && toggleall)
 		setColor(LColor::inherit); // toggle 'back'
 	else if (newfont.color() != LColor::ignore)
 		setColor(newfont.color());
-#else
-	if(newfont.color() == color() && toggleall)
-		setColor(LyXFont::INHERIT_COLOR); // toggle 'back'
-	else if (newfont.color() != LyXFont::IGNORE_COLOR)
-		setColor(newfont.color());
-#endif
 }
 
 
@@ -345,13 +304,8 @@ void LyXFont::reduce(LyXFont const & tmplt)
 		setNoun(INHERIT);
 	if (latex() == tmplt.latex())
 		setLatex(INHERIT);
-#ifdef USE_PAINTER
 	if (color() == tmplt.color())
 		setColor(LColor::inherit);
-#else
-	if (color() == tmplt.color())
-		setColor(LyXFont::INHERIT_COLOR);
-#endif
 	if (direction() == tmplt.direction())
 		setDirection(INHERIT_DIR);
 }
@@ -391,15 +345,9 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt)
 	if (bits.latex == INHERIT) {
 		bits.latex = tmplt.bits.latex;
 	}
-#ifdef USE_PAINTER
 	if (bits.color == LColor::inherit) {
 		bits.color = tmplt.bits.color;
 	}
-#else
-	if (bits.color == INHERIT_COLOR) {
-		bits.color = tmplt.bits.color;
-	}
-#endif
 	if (bits.direction == INHERIT_DIR) {
 		bits.direction = tmplt.bits.direction;
 	}
@@ -454,19 +402,11 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt)
 			bits &= ~(Misc_Mask << Lat_Pos);
 			bits |= (tmplt.bits & Misc_Mask << Lat_Pos);
 		}
-#ifdef USE_PAINTER
 	if ((bits & (Col_Mask << Col_Pos)) == ui32(LColor::inherit) << Col_Pos)
 		{
 			bits &= ~(Col_Mask << Col_Pos);
 			bits |= (tmplt.bits & Col_Mask << Col_Pos);
 		}
-#else
-	if ((bits & (Col_Mask << Col_Pos)) == ui32(INHERIT_COLOR) << Col_Pos)
-		{
-			bits &= ~(Col_Mask << Col_Pos);
-			bits |= (tmplt.bits & Col_Mask << Col_Pos);
-		}
-#endif
 	if ((bits & (Dir_Mask << Dir_Pos)) == ui32(INHERIT_DIR) << Dir_Pos)
 		{
 			bits &= ~(Dir_Mask << Dir_Pos);
@@ -479,7 +419,6 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt)
 
 
 /// Is font resolved?
-#ifdef USE_PAINTER
 bool LyXFont::resolved() const
 {
 	return (family() != INHERIT_FAMILY && series() != INHERIT_SERIES &&
@@ -489,17 +428,6 @@ bool LyXFont::resolved() const
 		color() != LColor::inherit &&
 		direction() != INHERIT_DIR);
 }
-#else
-bool LyXFont::resolved() const
-{
-	return (family() != INHERIT_FAMILY && series() != INHERIT_SERIES &&
-		shape() != INHERIT_SHAPE && size() != INHERIT_SIZE &&
-		emph() != INHERIT && underbar() != INHERIT && 
-		noun() != INHERIT && latex() != INHERIT && 
-		color() != INHERIT_COLOR &&
-		direction() != INHERIT_DIR);
-}
-#endif
 
 
 /// Build GUI description of font state
@@ -514,13 +442,8 @@ string LyXFont::stateText() const
 		buf += string(_(GUIShapeNames[shape()].c_str())) + ", ";
 	if (size() != INHERIT_SIZE)
 		buf += string(_(GUISizeNames[size()].c_str())) + ", ";
-#ifdef USE_PAINTER
 	if (color() != LColor::inherit)
 		buf += lcolor.getGUIName(color()) + ", ";
-#else
-	if (color() != INHERIT_COLOR)
-		buf += string(_(GUIColorNames[color()].c_str())) + ", ";
-#endif
 	if (emph() != INHERIT)
 		buf += string(_("Emphasis ")) + _(GUIMiscNames[emph()].c_str()) + ", ";
 	if (underbar() != INHERIT)
@@ -617,18 +540,7 @@ LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 /// Sets color after LyX text format
 LyXFont & LyXFont::setLyXColor(string const & col)
 {
-#ifdef USE_PAINTER
 	setColor(lcolor.getFromLyXName(col));
-#else
-	string s = lowercase(col);
-	int i= 0;
-	while (s != LyXColorNames[i] && LyXColorNames[i] != "error") ++i;
-	if (s == LyXColorNames[i]) {
-		setColor(LyXFont::FONT_COLOR(i));
-	} else
-		lyxerr << "LyXFont::setLyXColor: Unknown Color `"
-		       << s << '\'' << endl;
-#endif
 	return *this;
 }
 
@@ -636,23 +548,11 @@ LyXFont & LyXFont::setLyXColor(string const & col)
 /// Sets size after GUI name
 LyXFont & LyXFont::setGUISize(string const & siz)
 {
-#ifdef USE_PAINTER
+#warning this might be wrong.
 	/// ??????
 	// this is how it was how it was done in the lyx repository...
 	// but this does not make sense.
 	setColor(lcolor.getFromGUIName(siz));
-#else
-	string s = lowercase(siz);
-	int i = 0;
-	while (!lGUISizeNames[i].empty() &&
-	       s != _(lGUISizeNames[i].c_str()))
-		++i;
-	if (s == _(lGUISizeNames[i].c_str())) {
-		setSize(LyXFont::FONT_SIZE(i));
-	} else
-		lyxerr << "LyXFont::setGUISize: Unknown Size `"
-		       << s << '\'' << endl;
-#endif
 	return *this;
 }
 
@@ -802,15 +702,9 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 		break;
 		}
 	}
-#ifdef USE_PAINTER
 	if (orgfont.color() != color()) {
 		os << "\\color " << lcolor.getLyXName(color()) << "\n";
 	}
-#else
-	if (orgfont.color() != color()) {
-		os << "\\color " << LyXColorNames[color()] << "\n";
-	}
-#endif
 	if (orgfont.direction() != direction()) {
 		switch (direction()) {
 		case RTL_DIR:	os << "\\direction rtl \n"; break;
@@ -877,7 +771,6 @@ int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base,
 		count += LaTeXShapeNames[f.shape()].length() + 2;
 		env = true; //We have opened a new environment
 	}
-#ifdef USE_PAINTER
 	if (f.color() != LColor::inherit) {
 		file += "\\textcolor{";
 		file += lcolor.getLaTeXName(f.color());
@@ -885,15 +778,6 @@ int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base,
 		count += lcolor.getLaTeXName(f.color()).length() + 13;
 		env = true; //We have opened a new environment
 	}
-#else
-	if (f.color() != INHERIT_COLOR) {
-		file += "\\textcolor{";
-		file += LaTeXColorNames[f.color()];
-		file += "}{";
-		count += LaTeXColorNames[f.color()].length() + 13;
-		env = true; //We have opened a new environment
-	}
-#endif
 	if (f.emph() == ON) {
 		file += "\\emph{";
 		count += 6;
@@ -966,19 +850,11 @@ int LyXFont::latexWriteEndChanges(string & file, LyXFont const & base,
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
-#ifdef USE_PAINTER
 	if (f.color() != LColor::inherit) {
 		file += '}';
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
-#else
-	if (f.color() != INHERIT_COLOR) {
-		file += '}';
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-#endif
 	if (f.emph() == ON) {
 		file += '}';
 		++count;
@@ -1006,7 +882,6 @@ int LyXFont::latexWriteEndChanges(string & file, LyXFont const & base,
 }
 
 
-#ifdef USE_PAINTER
 LColor::color LyXFont::realColor() const
 {
 	if (latex() == ON)
@@ -1015,7 +890,6 @@ LColor::color LyXFont::realColor() const
 		return LColor::foreground;
 	return color();
 }
-#endif
 
 
 // Convert logical attributes to concrete shape attribute
@@ -1033,29 +907,6 @@ LyXFont::FONT_SHAPE LyXFont::realShape() const
 		s = SMALLCAPS_SHAPE;
 	return s;
 }
-
-
-#ifndef USE_PAINTER
-GC LyXFont::getGC() const
-{
-	GC gc;
-	if (latex() == ON)
-		gc = ::getGC(gc_latex);
-	else {
-		if (color() == NONE)
-			gc = ::getGC(gc_copy);
-		else if (color() == MATH)
-			gc = ::getGC(gc_math);
-		else if (color() == INSET)
-			gc = ::getGC(gc_foot);
-		else
-			gc = ::GetColorGC(color());
-	}
-
-	XSetFont(fl_display, gc, getXFontstruct()->fid);
-	return gc;
-}
-#endif
 
 
 XFontStruct * LyXFont::getXFontstruct() const
@@ -1183,7 +1034,6 @@ int LyXFont::signedStringWidth(string const & s) const
 }
 
 
-#ifdef USE_PAINTER
 int LyXFont::drawText(char const * s, int n, Pixmap, 
 		      int, int x) const
 {
@@ -1229,53 +1079,6 @@ int LyXFont::drawText(char const * s, int n, Pixmap,
 		return x - sx;
 	}
 }
-#else
-int LyXFont::drawText(char const * s, int n, Pixmap pm, 
-		      int baseline, int x) const
-{
-	if (realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		XDrawString(fl_display,
-			    pm,
-			    getGC(),
-			    x, baseline,
-			    s, n);
-		XFlush(fl_display);
-		return XTextWidth(getXFontstruct(), s, n);
-
-	} else {
-		// emulate smallcaps since X doesn't support this
-		char c;
-		int sx = x;
-		LyXFont smallfont = *this;
-		smallfont.decSize();
-		smallfont.decSize();
-		smallfont.setShape(LyXFont::UP_SHAPE);
-		for (int i = 0; i < n; ++i) {
-			c = s[i];
-			if (islower(static_cast<unsigned char>(c))){
-				c = toupper(c);
-				XDrawString(fl_display,
-					    pm,
-					    smallfont.getGC(),
-					    x, baseline,
-					    &c, 1);
-				x += XTextWidth(smallfont.getXFontstruct(),
-						&c, 1);
-				XFlush(fl_display);
-			} else {
-				XDrawString(fl_display,
-					    pm,
-					    getGC(),
-					    x, baseline,
-					    &c, 1);
-				x += XTextWidth(getXFontstruct(), &c, 1);
-				XFlush(fl_display);
-			}
-		}
-		return x - sx;
-	}
-}
-#endif
 
 
 int LyXFont::drawString(string const & s, Pixmap pm, int baseline, int x) const

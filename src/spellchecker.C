@@ -526,7 +526,7 @@ void ShowSpellChecker()
 	int ret;
 
 	// Exit if we don't have a document open
-	if (!current_view->getScreen())
+	if (!current_view->available())
 		return;
 
 	if (fd_form_spell_check == 0) {

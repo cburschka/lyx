@@ -43,13 +43,8 @@ public:
 	~MathFuncInset();
 	///
 	MathedInset * Clone();
-#ifdef USE_PAINTER
 	///
 	void draw(Painter &, int, int);
-#else
-	///
-	void Draw(int, int);
-#endif
 	///
 	void Write(ostream &);
 	///
@@ -79,13 +74,8 @@ public:
 	~MathAccentInset();
 	///
 	MathedInset * Clone();
-#ifdef USE_PAINTER
 	///
 	void draw(Painter &, int, int);
-#else
-	///
-	void Draw(int, int);
-#endif
 	///
 	void Write(ostream &);
 	///
@@ -116,13 +106,8 @@ public:
 	MathDotsInset(char const *, int, short st = LM_ST_TEXT);
 	///
 	MathedInset * Clone();
-#ifdef USE_PAINTER
 	///
 	void draw(Painter &, int, int);
-#else
-	///
-	void Draw(int, int);
-#endif
 	///
 	void Write(ostream &);
 	///
@@ -142,13 +127,8 @@ public:
 	MathSpaceInset(int sp, short ot = LM_OT_SPACE, short st = LM_ST_TEXT);
 	///
 	MathedInset * Clone();
-#ifdef USE_PAINTER
 	///
 	void draw(Painter &, int, int);
-#else
-	///
-	void Draw(int, int);
-#endif
 	///
 	void Write(ostream &);
 	///
@@ -172,13 +152,8 @@ public:
 	MathBigopInset(char const *, int, short st = LM_ST_TEXT);
 	///
 	MathedInset * Clone();
-#ifdef USE_PAINTER
 	///
 	void draw(Painter &, int, int);
-#else
-	///
-	void Draw(int, int);
-#endif
 	///
 	void Write(ostream &);
 	///
@@ -206,12 +181,8 @@ public:
 	MathSqrtInset(short st = LM_ST_TEXT);
 	///
 	MathedInset * Clone();
-#ifdef USE_PAINTER
-	void draw(Painter &, int x, int baseline);
-#else
 	///
-	void Draw(int x, int baseline);
-#endif
+	void draw(Painter &, int x, int baseline);
 	///
 	void Write(ostream &);
 	///
@@ -235,13 +206,8 @@ public:
 	~MathFracInset();
 	///
 	MathedInset * Clone();
-#ifdef USE_PAINTER
 	///
 	void draw(Painter &, int x, int baseline);
-#else
-	///
-	void Draw(int x, int baseline);
-#endif
 	///
 	void Write(ostream &);
 	///
@@ -288,13 +254,8 @@ public:
 	MathDelimInset(int, int, short st = LM_ST_TEXT);
 	///
 	MathedInset * Clone();
-#ifdef USE_PAINTER
 	///
 	void draw(Painter &, int, int);
-#else
-	///
-	void Draw(int, int);
-#endif
 	///
 	void Write(ostream &);
 	///
@@ -316,13 +277,8 @@ public:
 	MathDecorationInset(int, short st = LM_ST_TEXT);
 	///
 	MathedInset * Clone();
-#ifdef USE_PAINTER
 	///
 	void draw(Painter &, int, int);
-#else
-	///
-	void Draw(int, int);
-#endif
 	///
 	void Write(ostream &);
 	///

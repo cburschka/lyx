@@ -462,9 +462,6 @@ void commandLineHelp()
                   "\t-dbg feature[,feature]...\n"
                   "                  select the features to debug.\n"
                   "                  Type `lyx -dbg' to see the list of features\n"
-		  "\t-Reverse        swaps foreground & background colors\n"
-		  "\t-Mono           runs LyX in black and white mode\n"
-		  "\t-FastSelection  use a fast routine for drawing selections\n\n"
 		  "Check the LyX man page for more options.") << endl;
 }
 

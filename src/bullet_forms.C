@@ -11,10 +11,6 @@
 #include "bmtable.h"
 #include "support/filetools.h"
 
-#ifdef MONO
-extern int mono_video;
-#endif
-
 FD_form_bullet *create_form_form_bullet(void)
 {
   FL_OBJECT *obj;
@@ -31,19 +27,9 @@ FD_form_bullet *create_form_form_bullet(void)
      fl_set_object_callback(obj, BulletBMTableCB, 0);
      fl_set_object_lcol(obj, FL_BLUE);
      fl_set_object_boxtype(obj, FL_UP_BOX);
-#ifdef MONO
-     if (mono_video) {
-        fl_set_bmtable_file(obj, 6, 6,
-                           LibFileSearch("images",
-                                         "standard.xbm").c_str());
-     } else {
-#endif
-        fl_set_bmtable_pixmap_file(obj, 6, 6,
-                                  LibFileSearch("images",
-                                                "standard.xpm").c_str());
-#ifdef MONO
-    }
-#endif
+     fl_set_bmtable_pixmap_file(obj, 6, 6,
+				LibFileSearch("images",
+					      "standard.xpm").c_str());
 
   fl_set_border_width(-1);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 95, 20, 255, 70, "");

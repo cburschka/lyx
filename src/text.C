@@ -24,37 +24,23 @@
 #include "gettext.h"
 #include "bufferparams.h"
 #include "buffer.h"
-#include "lyxscreen.h"
 #include "minibuffer.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "LyXView.h"
 #include "lyxrow.h"
 #include "Painter.h"
-#ifndef USE_PAINTER
-#include "lyxdraw.h"
-#endif
 
 using std::max;
 using std::min;
 
 static const int LYX_PAPER_MARGIN = 20;
 
-#ifdef MONO
-extern int mono_video;
-extern int reverse_video;
-extern int fast_selection;
-#endif
-
 extern BufferView * current_view;
 extern LyXRC * lyxrc;
 
 // ale070405
-#ifdef USE_PAINTER
 extern int bibitemMaxWidth(Painter &, LyXFont const &);
-#else
-extern int bibitemMaxWidth(LyXFont const &);
-#endif
 
 #define FIX_DOUBLE_SPACE 1
 
@@ -66,7 +52,6 @@ int LyXText::SingleWidth(LyXParagraph * par,
 }
 
 
-#ifdef USE_PAINTER
 int LyXText::SingleWidth(LyXParagraph * par,
 			 LyXParagraph::size_type pos, char c) const
 {
@@ -127,71 +112,6 @@ int LyXText::SingleWidth(LyXParagraph * par,
 		c = 'n';
 	return font.width(c);
 }
-#else
-int LyXText::SingleWidth(LyXParagraph * par,
-			 LyXParagraph::size_type pos, char c) const
-{
-	LyXFont font = GetFont(par, pos);
-
-	// The most common case is handled first (Asger)
-	if (IsPrintable(c)) {
-		return font.width(c);
-
-	} else if (IsHfillChar(c)) {
-		return 3;	/* Because of the representation
-				 * as vertical lines */
-
-	} else if (c == LyXParagraph::META_FOOTNOTE ||
-		   c == LyXParagraph::META_MARGIN ||
-		   c == LyXParagraph::META_FIG ||
-		   c == LyXParagraph::META_TAB ||
-		   c == LyXParagraph::META_WIDE_FIG ||
-		   c == LyXParagraph::META_WIDE_TAB ||
-		   c == LyXParagraph::META_ALGORITHM) 
-	{
-		string fs;
-		switch (c) {
-		case LyXParagraph::META_MARGIN:
-			fs = "margin";
-			break;
-		case LyXParagraph::META_FIG:
-			fs = "fig";
-			break;
-		case LyXParagraph::META_TAB:
-			fs = "tab";
-			break;
-		case LyXParagraph::META_ALGORITHM:
-			fs = "alg";
-			break;
-		case LyXParagraph::META_WIDE_FIG:
-			fs = "wide-fig";
-			break;
-		case LyXParagraph::META_WIDE_TAB:
-			fs = "wide-tab";
-			break;
-		case LyXParagraph::META_FOOTNOTE:
-			fs = "foot";
-			break;
-		}
-		font.decSize();
-		font.decSize();
-		return font.stringWidth(fs);
-	} 
-   
-	else if (c == LyXParagraph::META_INSET) {
-		Inset *tmpinset= par->GetInset(pos);
-		if (tmpinset)
-			return par->GetInset(pos)->Width(font);
-		else
-			return 0;
-
-	} else if (IsSeparatorChar(c))
-		c = ' ';
-	else if (IsNewlineChar(c))
-		c = 'n';
-	return font.width(c);
-}
-#endif
 
 
 // Returns the paragraph position of the last character in the specified row
@@ -365,7 +285,6 @@ void LyXText::ComputeBidiTablesFromTo(Row * row,
 }
 
 
-#ifdef USE_PAINTER
 void LyXText::draw(Row const * row,
 		   LyXParagraph::size_type & vpos,
 		   int offset, float & x)
@@ -382,7 +301,6 @@ void LyXText::draw(Row const * row,
 		int wid = font.width('n');
 		int asc = font.maxAscent();
 		int y = offset + row->baseline;
-#ifdef USE_PAINTER
 		int xp[3], yp[3];
 		
 		if (row->par->getLetterDirection(pos) == LYX_DIR_LEFT_TO_RIGHT) {
@@ -430,31 +348,6 @@ void LyXText::draw(Row const * row,
 			
 			pain.lines(xp, yp, 3, LColor::eolmarker);
 		}
-#else
-		XPoint p[3];
-		
-		if (row->par->getLetterDirection(pos) == LYX_DIR_LEFT_TO_RIGHT) {
-			p[0].x = int(x + wid*0.375); p[0].y = int(y - 0.875*asc*0.75);
-			p[1].x = int(x);	     p[1].y = int(y - 0.500*asc*0.75);
-			p[2].x = int(x + wid*0.375); p[2].y = int(y - 0.125*asc*0.75);
-			scr.drawLines(::getGC(gc_new_line), p, 3);
-		
-			p[0].x = int(x);	     p[0].y = int(y - 0.500*asc*0.75);
-			p[1].x = int(x + wid);	     p[1].y = int(y - 0.500*asc*0.75);
-			p[2].x = int(x + wid);	     p[2].y = int(y - asc*0.75);
-			scr.drawLines(::getGC(gc_new_line), p, 3);
-		} else {
-			p[0].x = int(x + wid*0.625); p[0].y = int(y - 0.875*asc*0.75);
-			p[1].x = int(x + wid);	     p[1].y = int(y - 0.500*asc*0.75);
-			p[2].x = int(x + wid*0.625); p[2].y = int(y - 0.125*asc*0.75);
-			scr.drawLines(::getGC(gc_new_line), p, 3);
-		
-			p[0].x = int(x + wid);	     p[0].y = int(y - 0.500*asc*0.75);
-			p[1].x = int(x);	     p[1].y = int(y - 0.500*asc*0.75);
-			p[2].x = int(x);	     p[2].y = int(y - asc*0.75);
-			scr.drawLines(::getGC(gc_new_line), p, 3);
-		}
-#endif
 		x += wid;
 		return;
 	}
@@ -516,7 +409,6 @@ void LyXText::draw(Row const * row,
 			  int(x), offset + row->baseline,
 			  LColor::footnote);
 
-	  
 		++vpos;
 		return;
 	} else if (c == LyXParagraph::META_INSET) {
@@ -556,19 +448,6 @@ void LyXText::draw(Row const * row,
 	}
 	float tmpx = x;
 
-#if 0
-	// If monochrome and LaTeX mode, provide reverse background
-	if (mono_video &&
-	    font.latex() == LyXFont::ON) {
-		int a = font.maxAscent();
-		int d = font.maxDescent();
-		scr.fillRectangle(gc_copy, int(tmpx),
-				  offset + row->baseline - a,
-				  font.textWidth(textstring.c_str(),
-						 textstring.length()), a + d);
-	}
-#endif
-
 	// Draw text and set the new x position
 	pain.text(int(x), offset + row->baseline, textstring, font);
 	x += pain.width(textstring, font);
@@ -584,170 +463,6 @@ void LyXText::draw(Row const * row,
 	// routines should go here. (Asger)
 	// Why shouldn't LyXFont::drawText handle it internally?
 }
-#else
-void LyXText::Draw(Row const * row, LyXParagraph::size_type & vpos,
-		   LyXScreen & scr, int offset, float & x)
-{
-	LyXParagraph::size_type pos = vis2log(vpos);
-	char c = row->par->GetChar(pos);
-
-	if (IsNewlineChar(c)) {
-		++vpos;
-		// Draw end-of-line marker
-
-		LyXFont font = GetFont(row->par, pos);
-		int asc = font.maxAscent();
-		int wid = font.width('n');
-		int y = (offset + row->baseline);
-		XPoint p[3];
-		if (row->par->getLetterDirection(pos) == LYX_DIR_LEFT_TO_RIGHT) {
-			p[0].x = int(x + wid*0.375); p[0].y = int(y - 0.875*asc*0.75);
-			p[1].x = int(x);	     p[1].y = int(y - 0.500*asc*0.75);
-			p[2].x = int(x + wid*0.375); p[2].y = int(y - 0.125*asc*0.75);
-			scr.drawLines(::getGC(gc_new_line), p, 3);
-		
-			p[0].x = int(x);	     p[0].y = int(y - 0.500*asc*0.75);
-			p[1].x = int(x + wid);	     p[1].y = int(y - 0.500*asc*0.75);
-			p[2].x = int(x + wid);	     p[2].y = int(y - asc*0.75);
-			scr.drawLines(::getGC(gc_new_line), p, 3);
-		} else {
-			p[0].x = int(x + wid*0.625); p[0].y = int(y - 0.875*asc*0.75);
-			p[1].x = int(x + wid);	     p[1].y = int(y - 0.500*asc*0.75);
-			p[2].x = int(x + wid*0.625); p[2].y = int(y - 0.125*asc*0.75);
-			scr.drawLines(::getGC(gc_new_line), p, 3);
-		
-			p[0].x = int(x + wid);	     p[0].y = int(y - 0.500*asc*0.75);
-			p[1].x = int(x);	     p[1].y = int(y - 0.500*asc*0.75);
-			p[2].x = int(x);	     p[2].y = int(y - asc*0.75);
-			scr.drawLines(::getGC(gc_new_line), p, 3);
-		}
-		x += wid;
-		return;
-	}
-
-	LyXFont font = GetFont(row->par, pos);
-	LyXFont font2 = font;
-
-	if (c == LyXParagraph::META_FOOTNOTE
-	    || c == LyXParagraph::META_MARGIN
-	    || c == LyXParagraph::META_FIG
-	    || c == LyXParagraph::META_TAB
-	    || c == LyXParagraph::META_WIDE_FIG
-	    || c == LyXParagraph::META_WIDE_TAB
-	    || c == LyXParagraph::META_ALGORITHM) {
-		string fs;
-		switch (c) {
-		case LyXParagraph::META_MARGIN:
-			fs = "margin";
-			// Draw a sign at the left margin! 
-			scr.drawText(font, "!", 1, offset + row->baseline,
-				     (LYX_PAPER_MARGIN - font.width('!'))/2);
-			break;
-		case LyXParagraph::META_FIG:
-			fs = "fig";
-			break;
-		case LyXParagraph::META_TAB:
-			fs = "tab";
-			break;
-		case LyXParagraph::META_ALGORITHM:
-			fs = "alg";
-			break;
-		case LyXParagraph::META_WIDE_FIG:
-			fs = "wide-fig";
-			break;
-		case LyXParagraph::META_WIDE_TAB:
-			fs = "wide-tab";
-			break;
-		case LyXParagraph::META_FOOTNOTE:
-			fs = "foot";
-			break;
-		}
-		font.decSize();
-		font.decSize();
-	  
-		// calculate the position of the footnotemark
-		int y = (row->baseline - font2.maxAscent() 
-			 + font.maxAscent());
-
-#ifdef USE_PAINTER
-		font.setColor(LColor::footnote);
-#else
-		font.setColor(LyXFont::RED);
-#endif
-
-		float tmpx = x;
-
-		// draw it and set new x position
-		x += scr.drawString(font, fs, offset + y, int(x));
-
-		scr.drawLine(gc_foot, offset + row->baseline,
-			     int(tmpx), int(x - tmpx));
-	  
-		++vpos;
-		return;
-	} else if (c == LyXParagraph::META_INSET) {
-		Inset * tmpinset = row->par->GetInset(pos);
-		if (tmpinset) 
-			tmpinset->Draw(font, scr, offset + row->baseline, x);
-		++vpos;
-		return;
-	}
-
-	/* usual characters, no insets */
-
-	// Collect character that we can draw in one command
-
-	// This is dirty, but fast. Notice that it will never be too small.
-	// For the record, I'll note that Microsoft Word has a limit
-	// of 768 here. We have none :-) (Asger)
-	// Ok. I am the first to admit that the use of std::string will be
-	// a tiny bit slower than using a POD char array. However, I claim
-	// that this slowdown is so small that it is close to inperceptive.
-	// So IMHO we should go with the easier and clearer implementation.
-	// And even if 1024 is a large number here it might overflow, string
-	// will only overflow if the machine is out of memory...
-	static string textstring;
-	textstring = c;
-	++vpos;
-
-	LyXParagraph::size_type last = RowLast(row);
-	
-	while (vpos <= last &&
-	       (pos = vis2log(vpos)) >= 0
-	       && static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
-	       && font2 == GetFont(row->par, pos)) {
-		textstring += c;
-		++vpos;
-	}
-	float tmpx = x;
-
-	// If monochrome and LaTeX mode, provide reverse background
-	if (mono_video &&
-	    font.latex() == LyXFont::ON) {
-		int a = font.maxAscent();
-		int d = font.maxDescent();
-		scr.fillRectangle(gc_copy, int(tmpx),
-				  offset + row->baseline - a,
-				  font.textWidth(textstring.c_str(),
-						 textstring.length()), a + d);
-	}
-
-	// Draw text and set the new x position
-	x += scr.drawText(font, textstring.c_str(), textstring.length(),
-			  offset + row->baseline, 
-			  int(x));
-	
-	// what about underbars?
-	if (font.underbar() == LyXFont::ON && font.latex() != LyXFont::ON) {
-		scr.drawLine(gc_copy, offset + row->baseline + 2,
-			     int(tmpx), int(x - tmpx));
-	}
-
-	// If we want ulem.sty support, drawing
-	// routines should go here. (Asger)
-	// Why shouldn't LyXFont::drawText handle it internally?
-}
-#endif
 
 
 // Returns the left beginning of the text. 
@@ -950,24 +665,15 @@ int LyXText::LeftMargin(Row const * row) const
 			BufferParams::PARSEP_INDENT))
 			x += textclasslist.TextClass(parameters->textclass)
 				.defaultfont().signedStringWidth(parindent);
-		else 
-			if (layout.labeltype == LABEL_BIBLIO) {
-				// ale970405 Right width for bibitems
-#ifdef USE_PAINTER
-				x += bibitemMaxWidth(owner_->painter(),
-						     textclasslist
-						     .TextClass(parameters
-								->textclass)
-						     .defaultfont());
-#else
-				x += bibitemMaxWidth(textclasslist
-						     .TextClass(parameters
-								->textclass)
-						     .defaultfont());
-#endif
-			}
+		else if (layout.labeltype == LABEL_BIBLIO) {
+		       	// ale970405 Right width for bibitems
+			x += bibitemMaxWidth(owner_->painter(),
+					     textclasslist
+					     .TextClass(parameters
+							->textclass)
+					     .defaultfont());
+		}
 	}
-	
 	return x;
 }
     
@@ -1450,7 +1156,6 @@ bool LyXText::HfillExpansion(Row const * row_ptr,
 }
 
 
-#ifdef USE_PAINTER
 void LyXText::SetHeightOfRow(Row * row_ptr) const
 {
     /* get the maximum ascent and the maximum descent */
@@ -1726,282 +1431,6 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
    
    height += row_ptr->height;
 }
-#else
-void LyXText::SetHeightOfRow(Row * row_ptr) const
-{
-    /* get the maximum ascent and the maximum descent */
-   int asc, maxasc, desc, maxdesc, pos_end, pos, labeladdon;
-   float layoutasc = 0;
-   float layoutdesc = 0;
-   float tmptop = 0;
-   LyXFont tmpfont;
-   Inset * tmpinset;
-
-   /* this must not happen before the currentrow for clear reasons.
-      so the trick is just to set the current row onto this row */
-   long unused_y;
-   GetRow(row_ptr->par, row_ptr->pos, unused_y);
-
-   /* ok , let us initialize the maxasc and maxdesc value. 
-    * This depends in LaTeX of the font of the last character
-    * in the paragraph. The hack below is necessary because
-    * of the possibility of open footnotes */
-
-   /* Correction: only the fontsize count. The other properties
-      are taken from the layoutfont. Nicer on the screen :) */
-   
-   LyXParagraph * par = row_ptr->par->LastPhysicalPar();
-   LyXParagraph * firstpar = row_ptr->par->FirstPhysicalPar();
-   
-   LyXLayout const & layout = textclasslist.Style(parameters->textclass, firstpar->GetLayout());
-   
-   LyXFont font = GetFont(par, par->Last()-1);
-   LyXFont::FONT_SIZE size = font.size();
-   font = GetFont(par, -1);
-   font.setSize(size);
-
-   LyXFont labelfont = GetFont(par, -2);
-
-   maxasc = int(font.maxAscent() *
-		   layout.spacing.getValue() *
-		   parameters->spacing.getValue());
-   maxdesc = int(font.maxDescent() *
-		    layout.spacing.getValue() *
-		    parameters->spacing.getValue());
-
-   pos_end = RowLast(row_ptr);
-   
-   labeladdon = 0;
-
-   // Check if any insets are larger
-   for (pos = row_ptr->pos; pos <= pos_end; ++pos) {
-      if (row_ptr->par->GetChar(pos) == LyXParagraph::META_INSET) {
-	 tmpfont = GetFont(row_ptr->par, pos);
-         tmpinset = row_ptr->par->GetInset(pos);
-         if (tmpinset) {
-            asc = tmpinset->Ascent(tmpfont);
-            desc = tmpinset->Descent(tmpfont);
-	    if (asc > maxasc) 
-	      maxasc = asc;
-	    if (desc > maxdesc)
-	      maxdesc = desc;
-	 }
-      }
-   }
-
-   // Check if any custom fonts are larger (Asger)
-   // This is not completely correct, but we can live with the small,
-   // cosmetic error for now.
-   LyXFont::FONT_SIZE maxsize = row_ptr->par->HighestFontInRange(row_ptr->pos,
-								 pos_end);
-   if (maxsize > font.size()) {
-	font.setSize(maxsize);
-
-	asc = font.maxAscent();
-	desc = font.maxDescent();
-	if (asc > maxasc) 
-		maxasc = asc;
-	if (desc > maxdesc)
-		maxdesc = desc;
-   }
-
-   /* table stuff -- begin*/
-   if (row_ptr->par->table){
-     // stretch the rows a bit
-      maxasc += 1;
-      maxdesc += 1;
-   }
-   /* table stuff -- end*/
-
-   // This is nicer with box insets:
-   ++maxasc;
-   ++maxdesc;
-
-   row_ptr->ascent_of_text = maxasc;
-   
-   /* is it a top line? */ 
-   if (row_ptr->pos == 0
-       && row_ptr->par == firstpar) {
-      
-      /* some parksips VERY EASY IMPLEMENTATION */ 
-      if (parameters->paragraph_separation == BufferParams::PARSEP_SKIP) {
-	 if (layout.isParagraph()
-	     && firstpar->GetDepth() == 0
-	     && firstpar->Previous())
-	    maxasc += parameters->getDefSkip().inPixels();
-	 else if (firstpar->Previous()
-		  && textclasslist.Style(parameters->textclass,
-			   firstpar->Previous()->GetLayout()).isParagraph()
-		  && firstpar->Previous()->GetDepth() == 0)
-	   // is it right to use defskip here too? (AS)
-	   maxasc += parameters->getDefSkip().inPixels();
-      }
-      
-      /* the paper margins */ 
-      if (!row_ptr->par->previous)
-      	 maxasc += LYX_PAPER_MARGIN;
-      
-      /* add the vertical spaces, that the user added */
-      if (firstpar->added_space_top.kind() != VSpace::NONE)
-      	 maxasc += int(firstpar->added_space_top.inPixels());
-      
-      /* do not forget the DTP-lines! 
-       * there height depends on the font of the nearest character */
-      if (firstpar->line_top)
-      	 maxasc += 2 * GetFont(firstpar, 0).ascent('x');
-      
-      /* and now the pagebreaks */ 
-      if (firstpar->pagebreak_top)
-      	 maxasc += 3 * DefaultHeight();
-      
-      /*  this is special code for the chapter, since the label of this
-       * layout is printed in an extra row */ 
-      if (layout.labeltype == LABEL_COUNTER_CHAPTER
-	  && parameters->secnumdepth>= 0) {
-	      labeladdon = int(labelfont.maxDescent() *
-				  layout.spacing.getValue() *
-				  parameters->spacing.getValue())
-		      + int(labelfont.maxAscent() *
-			       layout.spacing.getValue() *
-			       parameters->spacing.getValue());
-      }
-      
-      /* special code for the top label */ 
-      if ((layout.labeltype == LABEL_TOP_ENVIRONMENT
-	   || layout.labeltype == LABEL_BIBLIO
-	   || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
-	  && row_ptr->par->IsFirstInSequence()
-	  && !row_ptr->par->GetLabestring().empty()) {
-	 labeladdon = int(
-		 (labelfont.maxAscent() *
-		  layout.spacing.getValue() *
-		  parameters->spacing.getValue())
-		 +(labelfont.maxDescent() *
-		   layout.spacing.getValue() *
-		   parameters->spacing.getValue())
-		 + layout.topsep * DefaultHeight()
-		 + layout.labelbottomsep *  DefaultHeight());
-      }
-   
-      /* and now the layout spaces, for example before and after a section, 
-       * or between the items of a itemize or enumerate environment */ 
-      
-      if (!firstpar->pagebreak_top) {
-	 LyXParagraph *prev = row_ptr->par->Previous();
-	 if (prev)
-	    prev = row_ptr->par->DepthHook(row_ptr->par->GetDepth());
-	 if (prev && prev->GetLayout() == firstpar->GetLayout()
-	     && prev->GetDepth() == firstpar->GetDepth()
-	     && prev->GetLabelWidthString() == firstpar->GetLabelWidthString())
-	   {
-	      layoutasc = (layout.itemsep * DefaultHeight());
-	   }
-	 else if (row_ptr->previous) {
-	    tmptop = layout.topsep;
-	    
-	    if (row_ptr->previous->par->GetDepth() >= row_ptr->par->GetDepth())
-	       tmptop-= textclasslist.Style(parameters->textclass, row_ptr->previous->par->GetLayout()).bottomsep;
-	    
-	    if (tmptop > 0)
-	       layoutasc = (tmptop * DefaultHeight());
-	 }
-	 else if (row_ptr->par->line_top){
-	    tmptop = layout.topsep;
-	    
-	    if (tmptop > 0)
-	       layoutasc = (tmptop * DefaultHeight());
-	 }
-	 
-	 prev = row_ptr->par->DepthHook(row_ptr->par->GetDepth()-1);
-	 if (prev)  {
-	    maxasc += int(textclasslist.Style(parameters->textclass,
-					 prev->GetLayout()).parsep * DefaultHeight());
-	 }
-	 else {
-		if (firstpar->Previous()
-		    && firstpar->Previous()->GetDepth() == 0
-		    && firstpar->Previous()->GetLayout() != firstpar->GetLayout()) {
-		   /* avoid parsep */ 
-		}
-	    else if (firstpar->Previous()){
-	       maxasc += int(layout.parsep * DefaultHeight());
-	    }
-	 }
-      }
-   }
-   
-   /* is it a bottom line? */ 
-   if (row_ptr->par->ParFromPos(RowLast(row_ptr) + 1) == par
-       && (!row_ptr->next || row_ptr->next->par != row_ptr->par)) {     
-	  
-	  /* the paper margins */ 
-	  if (!par->next)
-	    maxdesc += LYX_PAPER_MARGIN;
-	
-	  /* add the vertical spaces, that the user added */
-	  if (firstpar->added_space_bottom.kind() != VSpace::NONE)
-	    maxdesc += int(firstpar->added_space_bottom.inPixels());
-	  
-	  /* do not forget the DTP-lines! 
-	   * there height depends on the font of the nearest character */
-	  if (firstpar->line_bottom)
-	    maxdesc += 2 * (GetFont(par, par->Last()-1).ascent('x'));
-	  
-	  /* and now the pagebreaks */
-	  if (firstpar->pagebreak_bottom)
-	    maxdesc += 3 * DefaultHeight();
-	  
-	  /* and now the layout spaces, for example before and after a section, 
-	   * or between the items of a itemize or enumerate environment */
-	  if (!firstpar->pagebreak_bottom && row_ptr->par->Next()) {
-	     LyXParagraph *nextpar = row_ptr->par->Next();
-	     LyXParagraph *comparepar = row_ptr->par;
-	     float usual = 0;
-	     float  unusual = 0;
-	     
-	     if (comparepar->GetDepth() > nextpar->GetDepth()) {
-		usual = (textclasslist.Style(parameters->textclass, comparepar->GetLayout()).bottomsep * DefaultHeight());
-		comparepar = comparepar->DepthHook(nextpar->GetDepth());
-		if (comparepar->GetLayout()!= nextpar->GetLayout()
-		    || nextpar->GetLabelWidthString() != 
-		    	comparepar->GetLabelWidthString())
-		  unusual = (textclasslist.Style(parameters->textclass, comparepar->GetLayout()).bottomsep * DefaultHeight());
-		
-		if (unusual > usual)
-		  layoutdesc = unusual;
-		else
-		  layoutdesc = usual;
-	     }
-	     else if (comparepar->GetDepth() ==  nextpar->GetDepth()) {
-		
-		if (comparepar->GetLayout()!= nextpar->GetLayout()
-		    || nextpar->GetLabelWidthString() != 
-			comparepar->GetLabelWidthString())
-		  layoutdesc = int(textclasslist.Style(parameters->textclass, comparepar->GetLayout()).bottomsep * DefaultHeight());
-	     }
-	  }
-       }
-   
-   /* incalculate the layout spaces */ 
-   maxasc += int(layoutasc * 2 / (2 + firstpar->GetDepth()));
-   maxdesc += int(layoutdesc * 2 / (2 + firstpar->GetDepth()));
-
-   /* table stuff -- begin*/
-   if (row_ptr->par->table){
-      maxasc += row_ptr->par->table->
-	AdditionalHeight(NumberOfCell(row_ptr->par, row_ptr->pos));
-   }
-   /* table stuff -- end*/
-   
-   /* calculate the new height of the text */ 
-   height -= row_ptr->height;
-   
-   row_ptr->height= maxasc+maxdesc+labeladdon;
-   row_ptr->baseline= maxasc+labeladdon;
-   
-   height += row_ptr->height;
-}
-#endif
 
 
 /* Appends the implicit specified paragraph behind the specified row,
@@ -4085,7 +3514,6 @@ void  LyXText::Backspace()
 }
 
 
-#ifdef USE_PAINTER
 void LyXText::GetVisibleRow(int offset, 
 			    Row * row_ptr, long y)
 {
@@ -4106,17 +3534,12 @@ void LyXText::GetVisibleRow(int offset,
 	}
 	PrepareToPrint(row_ptr, x, fill_separator,
 		       fill_hfill, fill_label_hfill);
-
+	
 	/* initialize the pixmap */
 	
 	pain.fillRectangle(0, offset, paperwidth, row_ptr->height);
 	
-	// check for NOT FAST SELECTION
-	if (
-#ifdef MONO
-		!fast_selection && !mono_video &&
-#endif
-		selection) {
+	if (selection) {
 		/* selection code */ 
 		if (sel_start_cursor.row == row_ptr &&
 		    sel_end_cursor.row == row_ptr) {
@@ -4131,34 +3554,34 @@ void LyXText::GetVisibleRow(int offset,
 						   row_ptr->height,
 						   LColor::selection);
 		} else if (sel_start_cursor.row == row_ptr) {
-		     if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			     pain.fillRectangle(sel_start_cursor.x, offset,
-						paperwidth - sel_start_cursor.x,
-						row_ptr->height,
-						LColor::selection);
-		     else
-			     pain.fillRectangle(0, offset,
-						sel_start_cursor.x,
-						row_ptr->height,
-						LColor::selection);
+			if (direction == LYX_DIR_LEFT_TO_RIGHT)
+				pain.fillRectangle(sel_start_cursor.x, offset,
+						   paperwidth - sel_start_cursor.x,
+						   row_ptr->height,
+						   LColor::selection);
+			else
+				pain.fillRectangle(0, offset,
+						   sel_start_cursor.x,
+						   row_ptr->height,
+						   LColor::selection);
 		} else if (sel_end_cursor.row == row_ptr) {
-		     if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			     pain.fillRectangle(0, offset,
-						sel_end_cursor.x,
-						row_ptr->height,
-						LColor::selection);
-		     else
-			     pain.fillRectangle(sel_end_cursor.x, offset,
-						paperwidth - sel_end_cursor.x,
-						row_ptr->height,
-						LColor::selection);
-
+			if (direction == LYX_DIR_LEFT_TO_RIGHT)
+				pain.fillRectangle(0, offset,
+						   sel_end_cursor.x,
+						   row_ptr->height,
+						   LColor::selection);
+			else
+				pain.fillRectangle(sel_end_cursor.x, offset,
+						   paperwidth - sel_end_cursor.x,
+						   row_ptr->height,
+						   LColor::selection);
+			
 		} else if (y > sel_start_cursor.y && y < sel_end_cursor.y) {
 			pain.fillRectangle(0, offset,
 					   paperwidth, row_ptr->height,
 					   LColor::selection);
 		}
-	} // end of NOT FAST SELECTION code
+	}
 	
 	if (row_ptr->par->appendix){
 		pain.line(1, offset,
@@ -4168,7 +3591,7 @@ void LyXText::GetVisibleRow(int offset,
 			  paperwidth - 2, offset + row_ptr->height,
 			  LColor::appendixline);
 	}
-
+	
 	if (row_ptr->par->pextra_type == LyXParagraph::PEXTRA_MINIPAGE) {
 		/* draw a marker at the left margin! */ 
 		LyXFont font = GetFont(row_ptr->par, 0);
@@ -4211,35 +3634,28 @@ void LyXText::GetVisibleRow(int offset,
 				fs = " foot";
 				break;
 			}
-
-#if 0
-			// Determine background color.
-			gc_type back = gc_lighted;
-			if (mono_video) {
-				back = gc_clear;
-			}
-#endif
+			
 			pain.fillRectangle(LYX_PAPER_MARGIN,
 					   offset + 1,
 					   box_x - LYX_PAPER_MARGIN,
 					   int(font.maxAscent()
 					       + font.maxDescent()),
 					   LColor::footnotebg);
-
+			
 			pain.line(LYX_PAPER_MARGIN, offset,
 				  paperwidth - LYX_PAPER_MARGIN, offset,
 				  LColor::footnoteframe);
-
+			
 			pain.text(LYX_PAPER_MARGIN,
 				  offset + int(font.maxAscent()) + 1,
 				  fs, font);
-
+			
 			pain.line(LYX_PAPER_MARGIN, offset,
 				  LYX_PAPER_MARGIN,
 				  offset + int(font.maxAscent()
 					       + font.maxDescent()),
 				  LColor::footnoteframe);
-
+			
 			pain.line(LYX_PAPER_MARGIN,
 				  offset + int(font.maxAscent()
 					       + font.maxDescent()) + 1,
@@ -4254,29 +3670,29 @@ void LyXText::GetVisibleRow(int offset,
 		pain.line(box_x, offset,
 			  box_x, offset + row_ptr->height,
 			  LColor::footnoteframe);
-
+		
 		pain.line(paperwidth - LYX_PAPER_MARGIN,
 			  offset,
 			  paperwidth - LYX_PAPER_MARGIN,
 			  offset + row_ptr->height,
 			  LColor::footnoteframe);
-	} else  {
-		if (row_ptr->previous &&
-		    row_ptr->previous->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
-			LyXFont font(LyXFont::ALL_SANE);
-			font.setSize(LyXFont::SIZE_FOOTNOTE);
-
-			int box_x = LYX_PAPER_MARGIN;
-			box_x += font.textWidth(" wide-tab ", 10);
-
-			pain.line(box_x, offset,
-				  paperwidth - LYX_PAPER_MARGIN,
-				  offset, LColor::footnote);
-		}
+	} else if (row_ptr->previous &&
+		   row_ptr->previous->par->footnoteflag
+		   == LyXParagraph::OPEN_FOOTNOTE) {
+		LyXFont font(LyXFont::ALL_SANE);
+		font.setSize(LyXFont::SIZE_FOOTNOTE);
+		
+		int box_x = LYX_PAPER_MARGIN;
+		box_x += font.textWidth(" wide-tab ", 10);
+		
+		pain.line(box_x, offset,
+			  paperwidth - LYX_PAPER_MARGIN,
+			  offset, LColor::footnote);
 	}
 	
-	LyXLayout const & layout = textclasslist.Style(parameters->textclass,
-					   row_ptr->par->GetLayout());
+	LyXLayout const & layout =
+		textclasslist.Style(parameters->textclass,
+				    row_ptr->par->GetLayout());
 	firstpar = row_ptr->par->FirstPhysicalPar();
 	
 	y_top = 0;
@@ -4286,13 +3702,13 @@ void LyXText::GetVisibleRow(int offset,
 	if (row_ptr->pos == 0
 	    && row_ptr->par == firstpar) {
 		
-		 /* start of appendix? */
+		/* start of appendix? */
 		if (row_ptr->par->start_of_appendix){
 			pain.line(1, offset,
 				  paperwidth - 2, offset,
 				  LColor::appendixline);
 		}
-
+		
 		/* think about the margins */ 
 		if (!row_ptr->previous)
 			y_top += LYX_PAPER_MARGIN;
@@ -4336,7 +3752,7 @@ void LyXText::GetVisibleRow(int offset,
 				y_top += parameters->getDefSkip().inPixels();
 			else if (firstpar->Previous()
 				 && textclasslist.Style(parameters->textclass,
-						   firstpar->Previous()->GetLayout()).latextype == LATEX_PARAGRAPH
+							firstpar->Previous()->GetLayout()).latextype == LATEX_PARAGRAPH
 				 && firstpar->Previous()->GetDepth() == 0)
 				// is it right to use defskip here, too? (AS) 
 				y_top += parameters->getDefSkip().inPixels();
@@ -4344,7 +3760,7 @@ void LyXText::GetVisibleRow(int offset,
 		
 		if (row_ptr->par->line_top) {      /* draw a top line  */
 			y_top +=  GetFont(row_ptr->par, 0).ascent('x');
-
+			
 			pain.line(0, offset + y_top,
 				  paperwidth, offset + y_top,
 				  LColor::topline,
@@ -4406,7 +3822,7 @@ void LyXText::GetVisibleRow(int offset,
 					string tmpstring = row_ptr->par->GetLabestring();
 					
 					maxdesc = int(font.maxDescent() * layout.spacing.getValue() * parameters->spacing.getValue()
-							 + (layout.labelbottomsep * DefaultHeight()));
+						      + (layout.labelbottomsep * DefaultHeight()));
 					
 					tmpx = x;
 					if (layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT){
@@ -4425,21 +3841,19 @@ void LyXText::GetVisibleRow(int offset,
 				}
 			}
 		}
-		if (layout.labeltype == LABEL_BIBLIO) { // ale970302
-			if (row_ptr->par->bibkey) {
-				font = GetFont(row_ptr->par, -1);
-				if (direction == LYX_DIR_LEFT_TO_RIGHT)
-					tmpx = x - font.stringWidth(layout.labelsep)
-						- row_ptr->par->bibkey->width(owner_->painter(), font);
-				else
-					tmpx = paperwidth - LeftMargin(row_ptr)
-						+ font.stringWidth(layout.labelsep);
-				row_ptr->par->bibkey->draw(owner_->painter(),
-							   font,
-							   offset + row_ptr->baseline, 
-							   tmpx);
-			}
-		} 
+		if (layout.labeltype == LABEL_BIBLIO && row_ptr->par->bibkey) {
+			font = GetFont(row_ptr->par, -1);
+			if (direction == LYX_DIR_LEFT_TO_RIGHT)
+				tmpx = x - font.stringWidth(layout.labelsep)
+					- row_ptr->par->bibkey->width(owner_->painter(), font);
+			else
+				tmpx = paperwidth - LeftMargin(row_ptr)
+					+ font.stringWidth(layout.labelsep);
+			row_ptr->par->bibkey->draw(owner_->painter(),
+						   font,
+						   offset + row_ptr->baseline, 
+						   tmpx);
+		}
 	}
 	
 	/* is it a last row? */
@@ -4523,16 +3937,16 @@ void LyXText::GetVisibleRow(int offset,
 				on_off = !row_ptr->par->table->BottomLine(cell);
 				if ((!on_off && !row_ptr->par->table->RowHasContRow(cell)) ||
 				    row_ptr->par->table->VeryLastRow(cell))
-
+					
 					pain.line(int(x_old),
 						  offset + y_bottom - 1,
 						  int(x),
 						  offset + y_bottom - 1,
 						  LColor::tableline,
 						  on_off ? Painter::line_onoffdash : Painter::line_solid);
-
+				
 				on_off = !row_ptr->par->table->LeftLine(cell);
-
+				
 				pain.line(int(x_old),
 					  offset + row_ptr->baseline - row_ptr->ascent_of_text,
 					  int(x_old),
@@ -4541,7 +3955,7 @@ void LyXText::GetVisibleRow(int offset,
 					  on_off ? Painter::line_onoffdash : Painter::line_solid);
 				
 				on_off = !row_ptr->par->table->RightLine(cell);
-
+				
 				pain.line(int(x) - row_ptr->par->table->AdditionalWidth(cell),
 					  offset + row_ptr->baseline - row_ptr->ascent_of_text,
 					  int(x) - row_ptr->par->table->AdditionalWidth(cell),
@@ -4550,7 +3964,7 @@ void LyXText::GetVisibleRow(int offset,
 					  on_off ? Painter::line_onoffdash : Painter::line_solid);
 				
 				x_old = x;
-                /* take care about the alignment and other spaces */
+				/* take care about the alignment and other spaces */
 				++cell;
 				x += row_ptr->par->table->GetBeginningOfTextInCell(cell);
 				if (row_ptr->par->table->IsFirstCell(cell))
@@ -4558,7 +3972,7 @@ void LyXText::GetVisibleRow(int offset,
 				++vpos;
 			} else if (row_ptr->par->IsHfill(pos)) {
 				x += 1;
-
+				
 				pain.line(int(x),
 					  offset + row_ptr->baseline - DefaultHeight() / 2,
 					  int(x),
@@ -4567,45 +3981,43 @@ void LyXText::GetVisibleRow(int offset,
 				
 				x += 2;
 				++vpos;
-			} else {
-				if (row_ptr->par->IsSeparator(pos)) {
-					tmpx = x;
-					x+= SingleWidth(row_ptr->par, pos);
-					/* -------> Only draw protected spaces when not in
-					 * free-spacing mode. */
-					if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
+			} else if (row_ptr->par->IsSeparator(pos)) {
+				tmpx = x;
+				x+= SingleWidth(row_ptr->par, pos);
+				/* -------> Only draw protected spaces when not in
+				 * free-spacing mode. */
+				if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
+					pain.line(int(tmpx),
+						  offset + row_ptr->baseline - 3,
+						  int(tmpx),
+						  offset + row_ptr->baseline - 1,
+						  LColor::vfillline);
+					
+					pain.line(int(tmpx),
+						  offset + row_ptr->baseline - 1,
+						  int(x - 2),
+						  offset + row_ptr->baseline - 1,
+						  LColor::vfillline);
+					
+					pain.line(int(x - 2),
+						  offset + row_ptr->baseline - 3,
+						  int(x - 2),
+						  offset + row_ptr->baseline - 1,
+						  LColor::vfillline);
+					
+					/* what about underbars? */
+					font = GetFont(row_ptr->par, pos); 
+					if (font.underbar() == LyXFont::ON
+					    && font.latex() != LyXFont::ON) {
 						pain.line(int(tmpx),
-							  offset + row_ptr->baseline - 3,
-							  int(tmpx),
-							  offset + row_ptr->baseline - 1,
-							  LColor::vfillline);
-						
-						pain.line(int(tmpx),
-							  offset + row_ptr->baseline - 1,
-							  int(x - 2),
-							  offset + row_ptr->baseline - 1,
-							  LColor::vfillline);
-						
-						pain.line(int(x - 2),
-							  offset + row_ptr->baseline - 3,
-							  int(x - 2),
-							  offset + row_ptr->baseline - 1,
-							  LColor::vfillline);
-						
-						/* what about underbars? */
-						font = GetFont(row_ptr->par, pos); 
-						if (font.underbar() == LyXFont::ON
-						    && font.latex() != LyXFont::ON) {
-							pain.line(int(tmpx),
-								  offset + row_ptr->baseline + 2,
-								  int(x - tmpx),
-								  offset + row_ptr->baseline + 2);
-						}
+							  offset + row_ptr->baseline + 2,
+							  int(x - tmpx),
+							  offset + row_ptr->baseline + 2);
 					}
-					++vpos;
-				} else
-					draw(row_ptr, vpos, offset, x);
-			}
+				}
+				++vpos;
+			} else
+				draw(row_ptr, vpos, offset, x);
 		}
 		
 		/* do not forget the very last cell. This has no NEWLINE so 
@@ -4616,7 +4028,7 @@ void LyXText::GetVisibleRow(int offset,
 			if ((!on_off ||
 			     !row_ptr->par->table->TopAlreadyDrawed(cell)) &&
 			    !row_ptr->par->table->IsContRow(cell))
-
+				
 				pain.line(int(x_old),
 					  offset + row_ptr->baseline - row_ptr->ascent_of_text,
 					  int(x),
@@ -4626,7 +4038,7 @@ void LyXText::GetVisibleRow(int offset,
 			on_off = !row_ptr->par->table->BottomLine(cell);
 			if ((!on_off && !row_ptr->par->table->RowHasContRow(cell)) ||
 			    row_ptr->par->table->VeryLastRow(cell))
-
+				
 				pain.line(int(x_old),
 					  offset + y_bottom - 1,
 					  int(x),
@@ -4635,7 +4047,7 @@ void LyXText::GetVisibleRow(int offset,
 					  on_off ? Painter::line_onoffdash : Painter::line_solid);
 			
 			on_off = !row_ptr->par->table->LeftLine(cell);
-
+			
 			pain.line(int(x_old),
 				  offset + row_ptr->baseline - row_ptr->ascent_of_text,
 				  int(x_old),
@@ -4644,7 +4056,7 @@ void LyXText::GetVisibleRow(int offset,
 				  on_off ? Painter::line_onoffdash : Painter::line_solid);
 			
 			on_off = !row_ptr->par->table->RightLine(cell);
-
+			
 			pain.line(int(x) - row_ptr->par->table->AdditionalWidth(cell),
 				  offset + row_ptr->baseline - row_ptr->ascent_of_text,
 				  int(x) - row_ptr->par->table->AdditionalWidth(cell),
@@ -4660,7 +4072,7 @@ void LyXText::GetVisibleRow(int offset,
 		    (main_body-1 > pos_end || 
 		     !row_ptr->par->IsLineSeparator(main_body-1)))
 			main_body = 0;
-
+		
 		while (vpos <= pos_end)  {
 			pos = vis2log(vpos);
 			if (main_body > 0 && pos == main_body-1) {
@@ -4668,7 +4080,7 @@ void LyXText::GetVisibleRow(int offset,
 					+ GetFont(row_ptr->par, -2).stringWidth(layout.labelsep)
 					- SingleWidth(row_ptr->par, main_body-1);
 			}
-
+			
 			if (row_ptr->par->IsHfill(pos)) {
 				x += 1;
 				pain.line(int(x),
@@ -4686,16 +4098,16 @@ void LyXText::GetVisibleRow(int offset,
 							  LColor::vfillline,
 							  Painter::line_onoffdash);
 						x += fill_hfill;
-                    } else {
-			    pain.line(int(x),
-				      offset + row_ptr->baseline - DefaultHeight() / 4,
-				      int(x + fill_label_hfill),
-				      offset + row_ptr->baseline - DefaultHeight() / 4,
-				      LColor::vfillline,
-				      Painter::line_onoffdash);
-			    
-			    x += fill_label_hfill;
-                    }
+					} else {
+						pain.line(int(x),
+							  offset + row_ptr->baseline - DefaultHeight() / 4,
+							  int(x + fill_label_hfill),
+							  offset + row_ptr->baseline - DefaultHeight() / 4,
+							  LColor::vfillline,
+							  Painter::line_onoffdash);
+						
+						x += fill_label_hfill;
+					}
 					pain.line(int(x),
 						  offset + row_ptr->baseline - DefaultHeight() / 2,
 						  int(x),
@@ -4704,690 +4116,50 @@ void LyXText::GetVisibleRow(int offset,
 				}
 				x += 2;
 				++vpos;
-			} else {
-				if (row_ptr->par->IsSeparator(pos)) {
-					tmpx = x;
-					x+= SingleWidth(row_ptr->par, pos);
-					if (pos >= main_body)
-						x+= fill_separator;
-					/* -------> Only draw protected spaces when not in
-					 * free-spacing mode. */
-					if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
-
-						pain.line(int(tmpx),
-							  offset + row_ptr->baseline - 3,
-							  int(tmpx),
-							  offset + row_ptr->baseline - 1,
-							  LColor::vfillline);
-						
-						pain.line(int(tmpx),
-							  offset + row_ptr->baseline - 1,
-							  int(x - 2),
-							  offset + row_ptr->baseline - 1,
-							  LColor::vfillline);
-
-						pain.line(int(x - 2),
-							  offset + row_ptr->baseline - 3,
-							  int(x - 2),
-							  offset + row_ptr->baseline - 1,
-							  LColor::vfillline);
-						
-						/* what about underbars? */
-						font = GetFont(row_ptr->par, pos); 
-						if (font.underbar() == LyXFont::ON
-						    && font.latex() != LyXFont::ON) {
-							pain.line(int(tmpx),
-								  offset + row_ptr->baseline + 2,
-								  int(x - tmpx),
-								  offset + row_ptr->baseline + 2);
-						}
-					}
-					++vpos;
-				} else
-					draw(row_ptr, vpos, offset, x);
-			}
-		}
-	}
-#if 0
-	// check for FAST SELECTION
-	if (fast_selection || mono_video) {
-		if (selection) {
-			
-			/* selection code */ 
-			if (sel_start_cursor.row == row_ptr && sel_end_cursor.row == row_ptr) {
-				scr.fillRectangle(gc_select, sel_start_cursor.x, offset,
-						  sel_end_cursor.x - sel_start_cursor.x,
-						  row_ptr->height); 
-			} else if (sel_start_cursor.row == row_ptr) {
-				scr.fillRectangle(gc_select, sel_start_cursor.x, offset,
-						  paperwidth - sel_start_cursor.x,
-						  row_ptr->height);
-			} else if (sel_end_cursor.row == row_ptr) {
-				scr.fillRectangle(gc_select, 0, offset,
-						  sel_end_cursor.x,
-						  row_ptr->height);
-			} else if (y > sel_start_cursor.y && y < sel_end_cursor.y) {
-				scr.fillRectangle(gc_select, 0, offset,
-						  paperwidth, row_ptr->height);
-				
-			}
-		}
-	}
-// end of FAST SELECTION code
-	/* thats it */
-#endif
-}
-#else
-void LyXText::GetVisibleRow(LyXScreen & scr, int offset, 
-			    Row * row_ptr, long y)
-{
-	/* returns a printed row */
-	LyXDirection direction = row_ptr->par->getParDirection();
-	LyXParagraph::size_type vpos, pos, pos_end;
-	float x, tmpx;
-	int y_top, y_bottom;
-	float fill_separator, fill_hfill, fill_label_hfill;
-	LyXParagraph * par, * firstpar;
-	LyXFont font;
-	int maxdesc;
-	if (row_ptr->height <= 0) {
-		lyxerr << "LYX_ERROR: row.height: " << row_ptr->height << endl;
-		return;
-	}
-	PrepareToPrint(row_ptr, x, fill_separator,
-		       fill_hfill, fill_label_hfill);
-
-	/* initialize the pixmap */
-	
-	scr.fillRectangle(gc_clear,
-			  0, offset, paperwidth, row_ptr->height);
-	// check for NOT FAST SELECTION
-	if (!fast_selection && !mono_video && selection) {
-		/* selection code */ 
-		if (sel_start_cursor.row == row_ptr &&
-		    sel_end_cursor.row == row_ptr) {
-		        if (sel_start_cursor.x < sel_end_cursor.x)
-			  scr.fillRectangle(gc_selection, sel_start_cursor.x,
-					  offset,
-					  sel_end_cursor.x - sel_start_cursor.x,
-					  row_ptr->height);
-			else
-			  scr.fillRectangle(gc_selection, sel_end_cursor.x,
-					  offset,
-					  sel_start_cursor.x - sel_end_cursor.x,
-					  row_ptr->height);
-		}
-		else if (sel_start_cursor.row == row_ptr) {
-		     if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			scr.fillRectangle(gc_selection, sel_start_cursor.x,
-					  offset,
-					  paperwidth - sel_start_cursor.x,
-					  row_ptr->height);
-		     else
-			scr.fillRectangle(gc_selection, 0, offset,
-					  sel_start_cursor.x, row_ptr->height);
-		} else if (sel_end_cursor.row == row_ptr) {
-		     if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			scr.fillRectangle(gc_selection, 0, offset,
-					  sel_end_cursor.x, row_ptr->height);
-		     else
-			scr.fillRectangle(gc_selection, sel_end_cursor.x,
-					  offset,
-					  paperwidth - sel_end_cursor.x,
-					  row_ptr->height);
-		} else if (y > sel_start_cursor.y && y < sel_end_cursor.y) {
-			scr.fillRectangle(gc_selection, 0, offset,
-					  paperwidth, row_ptr->height);
-			
-		}
-	} // end of NOT FAST SELECTION code
-	
-	if (row_ptr->par->appendix){
-	  scr.drawVerticalLine(gc_math, 1, offset, offset+row_ptr->height);
-	  scr.drawVerticalLine(gc_math, paperwidth-2 , offset, offset+row_ptr->height);
-	}
-
-	if (row_ptr->par->pextra_type == LyXParagraph::PEXTRA_MINIPAGE) {
-		/* draw a marker at the left margin! */ 
-		LyXFont font = GetFont(row_ptr->par, 0);
-		int asc = font.maxAscent();
-		int x = (LYX_PAPER_MARGIN - font.width('|')) / 2;
-		int y1 = (offset + row_ptr->baseline);
-		int y2 = (offset + row_ptr->baseline) - asc;
-
-		scr.drawVerticalLine(gc_minipage, x, y1, y2);
-	}       
-	if (row_ptr->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
-		LyXFont font(LyXFont::ALL_SANE);
-		font.setSize(LyXFont::SIZE_FOOTNOTE);
-#ifdef USE_PAINTER
-		font.setColor(LColor::footnote);
-#else
-		font.setColor(LyXFont::RED);
-#endif
-		
-		int box_x = LYX_PAPER_MARGIN;
-		box_x += font.textWidth(" wide-tab ", 10);
-		if (row_ptr->previous && 
-		    row_ptr->previous->par->footnoteflag != LyXParagraph::OPEN_FOOTNOTE){
-			string fs;
-			switch (row_ptr->par->footnotekind) {
-			case LyXParagraph::MARGIN:
-				fs = " margin";
-				break;
-			case LyXParagraph::FIG:
-				fs = " fig";
-				break;
-			case LyXParagraph::TAB:
-				fs = " tab";
-				break;
-			case LyXParagraph::WIDE_FIG:
-				fs = " wide-fig";
-				break;
-			case LyXParagraph::WIDE_TAB:
-				fs = " wide-tab";
-				break;
-			case LyXParagraph::ALGORITHM:
-				fs = " alg";
-				break;
-			case LyXParagraph::FOOTNOTE:
-				fs = " foot";
-				break;
-			}
-			
-			// Determine background color.
-			gc_type back = gc_lighted;
-			if (mono_video) {
-				back = gc_clear;
-			}
-			scr.fillRectangle(back, LYX_PAPER_MARGIN, offset+1,
-					  box_x - LYX_PAPER_MARGIN, 
-					  int(font.maxAscent())+
-					  int(font.maxDescent()));
-			
-			scr.drawLine(gc_foot,
-				     offset,
-				     LYX_PAPER_MARGIN,
-				     paperwidth - 2*LYX_PAPER_MARGIN);
-			
-			scr.drawString(font, fs,
-				       offset + int(font.maxAscent())+1,
-				       LYX_PAPER_MARGIN);
-			scr.drawVerticalLine(gc_foot,
-					     LYX_PAPER_MARGIN,
-					     offset,
-					     offset
-					     + int(font.maxAscent())+
-					     int(font.maxDescent()));
-			
-			scr.drawLine(gc_foot,
-				     offset
-				     + int(font.maxAscent())
-				     + int(font.maxDescent()) + 1,
-				     LYX_PAPER_MARGIN, box_x - LYX_PAPER_MARGIN); 
-		}
-		
-		/* draw the open floats in a red box */
-		scr.drawVerticalLine(gc_foot,
-				     box_x,
-				     offset,  offset + row_ptr->height);
-		
-		scr.drawVerticalLine(gc_foot,
-				     paperwidth - LYX_PAPER_MARGIN,
-				     offset,
-				     offset + row_ptr->height);
-					
-	} else  {
-		if (row_ptr->previous &&
-		    row_ptr->previous->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
-			LyXFont font(LyXFont::ALL_SANE);
-			font.setSize(LyXFont::SIZE_FOOTNOTE);
-
-			int box_x = LYX_PAPER_MARGIN;
-			box_x += font.textWidth(" wide-tab ", 10);
-			
-			scr.drawLine(gc_foot,
-				     offset,
-				     box_x,
-				     paperwidth - LYX_PAPER_MARGIN - box_x);
-		}
-	}
-	
-	LyXLayout const & layout = textclasslist.Style(parameters->textclass,
-					   row_ptr->par->GetLayout());
-	firstpar = row_ptr->par->FirstPhysicalPar();
-	
-	y_top = 0;
-	y_bottom = row_ptr->height;
-	
-	/* is it a first row? */ 
-	if (row_ptr->pos == 0
-	    && row_ptr->par == firstpar) {
-		
-		 /* start of appendix? */
-		if (row_ptr->par->start_of_appendix){
-		  scr.drawLine(gc_math, 
-			       offset,
-			       1, paperwidth-2);
-		}
-
-		/* think about the margins */ 
-		if (!row_ptr->previous)
-			y_top += LYX_PAPER_MARGIN;
-		
-		if (row_ptr->par->pagebreak_top){ /* draw a top pagebreak  */
-			scr.drawOnOffLine(offset + y_top + 2 * DefaultHeight(),
-					  0, paperwidth);
-			y_top += 3 * DefaultHeight();
-		}
-		
-		if (row_ptr->par->added_space_top.kind() == VSpace::VFILL) {
-			/* draw a vfill top  */
-			scr.drawLine(gc_fill, 
-				     offset + 2 + y_top,
-				     0, LYX_PAPER_MARGIN);
-			scr.drawLine(gc_fill,
-				     offset + y_top + 3 * DefaultHeight(),
-				     0, LYX_PAPER_MARGIN);
-			scr.drawVerticalOnOffLine(LYX_PAPER_MARGIN / 2, 
-						  offset + 2 + y_top,
-						  offset + y_top + 3 *
-						  DefaultHeight());
-			
-			y_top += 3 * DefaultHeight();
-		}
-		
-		/* think about user added space */ 
-		y_top += int(row_ptr->par->added_space_top.inPixels());
-		
-		/* think about the parskip */ 
-		/* some parskips VERY EASY IMPLEMENTATION */ 
-		if (parameters->paragraph_separation == BufferParams::PARSEP_SKIP) {
-			if (layout.latextype == LATEX_PARAGRAPH
-			    && firstpar->GetDepth() == 0
-			    && firstpar->Previous())
-				y_top += parameters->getDefSkip().inPixels();
-			else if (firstpar->Previous()
-				 && textclasslist.Style(parameters->textclass,
-						   firstpar->Previous()->GetLayout()).latextype == LATEX_PARAGRAPH
-				 && firstpar->Previous()->GetDepth() == 0)
-				// is it right to use defskip here, too? (AS) 
-				y_top += parameters->getDefSkip().inPixels();
-		}
-		
-		if (row_ptr->par->line_top) {      /* draw a top line  */
-			y_top +=  GetFont(row_ptr->par, 0).ascent('x');
-
-			scr.drawThickLine(offset + y_top,
-					  0, paperwidth);
-			y_top +=  GetFont(row_ptr->par, 0).ascent('x');
-		}
-		
-		/* should we print a label? */ 
-		if (layout.labeltype >= LABEL_STATIC
-		    && (layout.labeltype != LABEL_STATIC
-			|| layout.latextype != LATEX_ENVIRONMENT
-			|| row_ptr->par->IsFirstInSequence())) {
-			font = GetFont(row_ptr->par, -2);
-			if (!row_ptr->par->GetLabestring().empty()) {
+			} else if (row_ptr->par->IsSeparator(pos)) {
 				tmpx = x;
-				string tmpstring = row_ptr->par->GetLabestring();
-				
-				if (layout.labeltype == LABEL_COUNTER_CHAPTER) {
-					if (parameters->secnumdepth >= 0){
-						/* this is special code for the chapter layout. This is printed in
-						 * an extra row and has a pagebreak at the top. */
-						maxdesc = int(font.maxDescent() * layout.spacing.getValue() * parameters->spacing.getValue())
-							+ int(layout.parsep) * DefaultHeight();
-						if (direction == LYX_DIR_RIGHT_TO_LEFT)
-							tmpx = paperwidth - LeftMargin(row_ptr) - 
-								font.stringWidth(tmpstring);
-						scr.drawString(font, tmpstring,
-							       offset + row_ptr->baseline
-							       - row_ptr->ascent_of_text - maxdesc,
-							       int(tmpx));
-					}
-				} else {
-					if (direction == LYX_DIR_LEFT_TO_RIGHT)
-						tmpx = x - font.stringWidth(layout.labelsep)
-							- font.stringWidth(tmpstring);
-					else {
-						tmpx = paperwidth - LeftMargin(row_ptr)
-							+ font.stringWidth(layout.labelsep);
-						if (row_ptr->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)  {
-							LyXFont font(LyXFont::ALL_SANE);
-							font.setSize(LyXFont::SIZE_SMALL);
-							tmpx += font.textWidth("Mwide-figM", 10);
-						}
-					}
-					/* draw it! */
-					scr.drawString(font, tmpstring,
-						       offset + row_ptr->baseline, int(tmpx));
-				}
-			}
-			/* the labels at the top of an environment. More or less for bibliography */ 
-		} else if (layout.labeltype == LABEL_TOP_ENVIRONMENT ||
-			   layout.labeltype == LABEL_BIBLIO ||
-			   layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
-			if (row_ptr->par->IsFirstInSequence()) {
-				font = GetFont(row_ptr->par, -2);
-				if (!row_ptr->par->GetLabestring().empty()) {
-					string tmpstring = row_ptr->par->GetLabestring();
+				x+= SingleWidth(row_ptr->par, pos);
+				if (pos >= main_body)
+					x+= fill_separator;
+				/* -------> Only draw protected spaces when not in
+				 * free-spacing mode. */
+				if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
 					
-					maxdesc = int(font.maxDescent() * layout.spacing.getValue() * parameters->spacing.getValue()
-							 + (layout.labelbottomsep * DefaultHeight()));
+					pain.line(int(tmpx),
+						  offset + row_ptr->baseline - 3,
+						  int(tmpx),
+						  offset + row_ptr->baseline - 1,
+						  LColor::vfillline);
 					
-					tmpx = x;
-					if (layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT){
-						tmpx = ( ((direction == LYX_DIR_LEFT_TO_RIGHT)
-							  ? x : LeftMargin(row_ptr) )
-							 + paperwidth - RightMargin(row_ptr) ) / 2; 
-						tmpx -= (font.stringWidth(tmpstring)/2);
-					} else if (direction == LYX_DIR_RIGHT_TO_LEFT)
-						tmpx = paperwidth - LeftMargin(row_ptr) - 
-							font.stringWidth(tmpstring);
-
-					scr.drawString(font, tmpstring,
-						       offset + row_ptr->baseline
-						       - row_ptr->ascent_of_text - maxdesc,  
-						       int(tmpx));		    
-				}
-			}
-		}
-		if (layout.labeltype == LABEL_BIBLIO) { // ale970302
-			if (row_ptr->par->bibkey) {
-				font = GetFont(row_ptr->par, -1);
-				if (direction == LYX_DIR_LEFT_TO_RIGHT)
-					tmpx = x - font.stringWidth(layout.labelsep)
-						- row_ptr->par->bibkey->Width(font);
-				else
-					tmpx = paperwidth - LeftMargin(row_ptr)
-						+ font.stringWidth(layout.labelsep);
-				row_ptr->par->bibkey->Draw(font, scr,
-							   offset + row_ptr->baseline, 
-							   tmpx);
-			}
-		} 
-	}
-	
-	/* is it a last row? */
-	par = row_ptr->par->LastPhysicalPar();
-	if (row_ptr->par->ParFromPos(RowLast(row_ptr) + 1) == par
-	    && (!row_ptr->next || row_ptr->next->par != row_ptr->par)) {     
-		
-		/* think about the margins */ 
-		if (!row_ptr->next)
-			y_bottom -= LYX_PAPER_MARGIN;
-		
-		/* draw a bottom pagebreak */ 
-		if (firstpar->pagebreak_bottom) {
-			scr.drawOnOffLine(offset + y_bottom - 2 *
-					  DefaultHeight(),
-					  0, paperwidth);
-			y_bottom -= 3 * DefaultHeight();
-		}
-		
-		if (firstpar->added_space_bottom.kind() == VSpace::VFILL) {
-			/* draw a vfill bottom  */
-			scr.drawLine(gc_fill,
-				     offset + y_bottom - 3 * DefaultHeight(),
-				     0, LYX_PAPER_MARGIN);
-			scr.drawLine(gc_fill, offset + y_bottom - 2,
-				     0, LYX_PAPER_MARGIN);
-			scr.drawVerticalOnOffLine(LYX_PAPER_MARGIN / 2, 
-						  offset + y_bottom - 3 * DefaultHeight(),
-						  offset + y_bottom - 2
-				);	    
-			y_bottom -= 3* DefaultHeight();
-		}
-		
-		/* think about user added space */ 
-		y_bottom -= int(firstpar->added_space_bottom.inPixels());
-		
-		if (firstpar->line_bottom) {
-			/* draw a bottom line */
-			y_bottom -= GetFont(par, par->Last() - 1).ascent('x');
-
-			scr.drawThickLine(offset + y_bottom,
-					  0, paperwidth);	    
-			y_bottom -= GetFont(par, par->Last() - 1).ascent('x');
-		}
-	}
-	
-	/* draw the text in the pixmap */  
-	pos_end = RowLast(row_ptr);
-	
-	vpos = row_ptr->pos;
-	/* table stuff -- begin*/
-	if (row_ptr->par->table) {
-		bool on_off;
-		int cell = NumberOfCell(row_ptr->par, row_ptr->pos);
-		float x_old = x;
-		x += row_ptr->par->table->GetBeginningOfTextInCell(cell);
-		
-		while (vpos <= pos_end)  {
-			pos = vis2log(vpos);
-			if (row_ptr->par->IsNewline(pos)) {
-				
-				x = x_old + row_ptr->par->table->WidthOfColumn(cell);
-				/* draw the table lines, still very simple */
-				on_off = !row_ptr->par->table->TopLine(cell);
-				if ((!on_off ||
-				     !row_ptr->par->table->TopAlreadyDrawed(cell)) &&
-				    !row_ptr->par->table->IsContRow(cell))
-					scr.drawTableLine(offset + row_ptr->baseline -
-							  row_ptr->ascent_of_text,
-							  int(x_old), int(x - x_old), on_off);
-				on_off = !row_ptr->par->table->BottomLine(cell);
-				if ((!on_off && !row_ptr->par->table->RowHasContRow(cell)) ||
-				    row_ptr->par->table->VeryLastRow(cell))
-					scr.drawTableLine(offset + y_bottom - 1,
-							  int(x_old), int(x - x_old), on_off);
-				on_off = !row_ptr->par->table->LeftLine(cell);
-				
-				scr.drawVerticalTableLine(int(x_old), 
-							  offset + row_ptr->baseline -
-							  row_ptr->ascent_of_text,
-							  offset + y_bottom - 1,
-							  on_off);
-				on_off = !row_ptr->par->table->RightLine(cell);
-				
-				scr.drawVerticalTableLine(int(x) -
-							  row_ptr->par->table->AdditionalWidth(cell),
-							  offset + row_ptr->baseline -
-							  row_ptr->ascent_of_text,
-							  offset + y_bottom - 1,
-							  on_off);
-				x_old = x;
-                /* take care about the alignment and other spaces */
-				++cell;
-				x += row_ptr->par->table->GetBeginningOfTextInCell(cell);
-				if (row_ptr->par->table->IsFirstCell(cell))
-					--cell; // little hack, sorry
-				++vpos;
-			} else if (row_ptr->par->IsHfill(pos)) {
-				x += 1;
-				
-				scr.drawVerticalLine(gc_fill, int(x),  
-						     offset + row_ptr->baseline - DefaultHeight()/2, 
-						     offset + row_ptr->baseline);		
-				x += 2;
-				++vpos;
-			} else {
-				if (row_ptr->par->IsSeparator(pos)) {
-					tmpx = x;
-					x+= SingleWidth(row_ptr->par, pos);
-					/* -------> Only draw protected spaces when not in
-					 * free-spacing mode. */
-					if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
-						scr.drawVerticalLine(gc_fill, int(tmpx),
-								     offset + row_ptr->baseline - 3,
-								     offset + row_ptr->baseline - 1);
-						scr.drawLine(gc_fill,
-							     offset + row_ptr->baseline - 1,
-							     int(tmpx),
-							     int(x-tmpx-2));
-						scr.drawVerticalLine(gc_fill, int(x-2),
-								     offset + row_ptr->baseline - 3,
-								     offset + row_ptr->baseline - 1);			
-						/* what about underbars? */
-						font = GetFont(row_ptr->par, pos); 
-						if (font.underbar() == LyXFont::ON
-						    && font.latex() != LyXFont::ON) {
-							scr.drawLine(gc_copy,
-								     offset +
-								     row_ptr->baseline + 2,
-								     int(tmpx),
-								     int(x - tmpx));			    
-						}
+					pain.line(int(tmpx),
+						  offset + row_ptr->baseline - 1,
+						  int(x - 2),
+						  offset + row_ptr->baseline - 1,
+						  LColor::vfillline);
+					
+					pain.line(int(x - 2),
+						  offset + row_ptr->baseline - 3,
+						  int(x - 2),
+						  offset + row_ptr->baseline - 1,
+						  LColor::vfillline);
+					
+					/* what about underbars? */
+					font = GetFont(row_ptr->par, pos); 
+					if (font.underbar() == LyXFont::ON
+					    && font.latex() != LyXFont::ON) {
+						pain.line(int(tmpx),
+							  offset + row_ptr->baseline + 2,
+							  int(x - tmpx),
+							  offset + row_ptr->baseline + 2);
 					}
-					++vpos;
-				} else
-					Draw(row_ptr, vpos, scr, offset, x);
-			}
-		}
-		
-		/* do not forget the very last cell. This has no NEWLINE so 
-		 * ignored by the code above*/ 
-		if (cell == row_ptr->par->table->GetNumberOfCells()-1){
-			x = x_old + row_ptr->par->table->WidthOfColumn(cell);
-			on_off = !row_ptr->par->table->TopLine(cell);
-			if ((!on_off ||
-			     !row_ptr->par->table->TopAlreadyDrawed(cell)) &&
-			    !row_ptr->par->table->IsContRow(cell))
-				
-				scr.drawTableLine(offset + row_ptr->baseline -
-						  row_ptr->ascent_of_text,
-						  int(x_old), int(x - x_old), on_off);	    
-			on_off = !row_ptr->par->table->BottomLine(cell);
-			if ((!on_off && !row_ptr->par->table->RowHasContRow(cell)) ||
-			    row_ptr->par->table->VeryLastRow(cell))
-				
-				scr.drawTableLine(offset + y_bottom - 1,
-						  int(x_old), int(x - x_old), on_off);	    
-			on_off = !row_ptr->par->table->LeftLine(cell);
-			
-			scr.drawVerticalTableLine(int(x_old), 
-						  offset + row_ptr->baseline -
-						  row_ptr->ascent_of_text,
-						  offset + y_bottom - 1,
-						  on_off);	    
-			on_off = !row_ptr->par->table->RightLine(cell);
-			
-			scr.drawVerticalTableLine(int(x) -
-						  row_ptr->par->table->AdditionalWidth(cell),
-						  offset + row_ptr->baseline -
-						  row_ptr->ascent_of_text,
-						  offset + y_bottom - 1,
-						  on_off);	    
-		}
-	} else {
-		/* table stuff -- end*/
-		LyXParagraph::size_type main_body = 
-			BeginningOfMainBody(row_ptr->par);
-		if (main_body > 0 &&
-		    (main_body-1 > pos_end || 
-		     !row_ptr->par->IsLineSeparator(main_body-1)))
-			main_body = 0;
-
-		while (vpos <= pos_end)  {
-			pos = vis2log(vpos);
-			if (main_body > 0 && pos == main_body-1) {
-				x += fill_label_hfill
-					+ GetFont(row_ptr->par, -2).stringWidth(layout.labelsep)
-					- SingleWidth(row_ptr->par, main_body-1);
-			}
-
-			if (row_ptr->par->IsHfill(pos)) {
-				x += 1;
-				scr.drawVerticalLine(gc_fill, int(x),  
-						     offset + row_ptr->baseline - DefaultHeight()/2, 
-						     offset + row_ptr->baseline);		
-				if (HfillExpansion(row_ptr, pos)) {
-					if (pos >= main_body) {
-						scr.drawOnOffLine(offset + row_ptr->baseline -
-								  DefaultHeight()/4,
-								  int(x),
-								  int(fill_hfill));			
-						x += fill_hfill;
-                    } else {
-			    scr.drawOnOffLine(offset + row_ptr->baseline -
-					      DefaultHeight()/4,
-					      int(x),
-					      int(fill_label_hfill));
-			    x += fill_label_hfill;
-                    }
-					scr.drawVerticalLine(gc_fill, int(x),
-							     offset + row_ptr->baseline -
-							     DefaultHeight()/2, 
-							     offset + row_ptr->baseline);
 				}
-				x += 2;
 				++vpos;
-			} else {
-				if (row_ptr->par->IsSeparator(pos)) {
-					tmpx = x;
-					x+= SingleWidth(row_ptr->par, pos);
-					if (pos >= main_body)
-						x+= fill_separator;
-					/* -------> Only draw protected spaces when not in
-					 * free-spacing mode. */
-					if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
-						
-						scr.drawVerticalLine(gc_fill, int(tmpx),
-								     offset + row_ptr->baseline - 3,
-								     offset + row_ptr->baseline - 1);
-						scr.drawLine(gc_fill,
-							     offset + row_ptr->baseline - 1,
-							     int(tmpx),
-							     int(x-tmpx-2));
-						scr.drawVerticalLine(gc_fill, int(x-2),
-								     offset + row_ptr->baseline - 3,
-								     offset + row_ptr->baseline - 1);			
-						/* what about underbars? */
-						font = GetFont(row_ptr->par, pos); 
-						if (font.underbar() == LyXFont::ON
-						    && font.latex() != LyXFont::ON) {
-							scr.drawLine(gc_copy,
-					     offset + row_ptr->baseline + 2,
-								     int(tmpx),
-								     int(x - tmpx));
-						}
-					}
-					++vpos;
-				} else
-					Draw(row_ptr, vpos, scr, offset, x);
-			}
+			} else
+				draw(row_ptr, vpos, offset, x);
 		}
 	}
-	// check for FAST SELECTION
-	if (fast_selection || mono_video) {
-		if (selection) {
-			
-			/* selection code */ 
-			if (sel_start_cursor.row == row_ptr && sel_end_cursor.row == row_ptr) {
-				scr.fillRectangle(gc_select, sel_start_cursor.x, offset,
-						  sel_end_cursor.x - sel_start_cursor.x,
-						  row_ptr->height); 
-			} else if (sel_start_cursor.row == row_ptr) {
-				scr.fillRectangle(gc_select, sel_start_cursor.x, offset,
-						  paperwidth - sel_start_cursor.x,
-						  row_ptr->height);
-			} else if (sel_end_cursor.row == row_ptr) {
-				scr.fillRectangle(gc_select, 0, offset,
-						  sel_end_cursor.x,
-						  row_ptr->height);
-			} else if (y > sel_start_cursor.y && y < sel_end_cursor.y) {
-				scr.fillRectangle(gc_select, 0, offset,
-						  paperwidth, row_ptr->height);
-				
-			}
-		}
-	}
-// end of FAST SELECTION code
-	/* thats it */ 
 }
-#endif
+
 
 int LyXText::DefaultHeight() const
 {

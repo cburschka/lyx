@@ -11,10 +11,6 @@
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB + WriteAlert
 
-#ifdef MONO
-extern int mono_video;
-#endif
-
 extern BufferView * current_view;
 FD_form_bullet * fd_form_bullet;
 
@@ -26,15 +22,11 @@ static int current_bullet_depth;
 void bulletForm()
 {
 	if (!fd_form_bullet) {
-		if (
-#ifdef MONO
-			!mono_video &&
-#endif
-		    (XpmVersion < 4
-		        || (XpmVersion == 4 && XpmRevision < 7))) {
+		if ((XpmVersion < 4
+		     || (XpmVersion == 4 && XpmRevision < 7))) {
 			WriteAlert(_("Sorry, your libXpm is too old."),
 			_("This feature requires xpm-4.7 (a.k.a 3.4g) or newer."),
-			_("Try running LyX in mono mode (lyx  -Mono)."));
+			"");
 			return;
 		}
 		fd_form_bullet = create_form_form_bullet();
@@ -226,19 +218,9 @@ void BulletPanelCB(FL_OBJECT * /*ob*/, long data)
 			new_panel = "standard";
 			break;
 		}
-#ifdef MONO
-		if (mono_video) {
-			new_panel += ".xbm";
-			fl_set_bmtable_file(fd_form_bullet->bmtable_bullet_panel, 6, 6,
-			       LibFileSearch("images", new_panel.c_str()).c_str());
-		} else {
-#endif
-			new_panel += ".xpm";
-			fl_set_bmtable_pixmap_file(fd_form_bullet->bmtable_bullet_panel, 6, 6,
-			       LibFileSearch("images", new_panel.c_str()).c_str());
-#ifdef MONO
-		}
-#endif
+		new_panel += ".xpm";
+		fl_set_bmtable_pixmap_file(fd_form_bullet->bmtable_bullet_panel, 6, 6,
+					   LibFileSearch("images", new_panel.c_str()).c_str());
 		fl_redraw_object(fd_form_bullet->bmtable_bullet_panel);
 		fl_unfreeze_form(fd_form_bullet->form_bullet);
 	}

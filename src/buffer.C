@@ -217,7 +217,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 	bool the_end_read = false;
 
 	LyXParagraph * return_par = 0;
-	LyXFont font = LyXFont(LyXFont::ALL_INHERIT);
+	LyXFont font(LyXFont::ALL_INHERIT);
 
 	// If we are inserting, we cheat and get a token in advance
 	bool has_token = false;
@@ -3183,7 +3183,7 @@ int Buffer::runChktex()
 
 void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 {
-	LyXFont font1 =  LyXFont(LyXFont::ALL_INHERIT);
+	LyXFont font1(LyXFont::ALL_INHERIT);
 	LyXFont font2;
 	Inset * inset;
 	LyXParagraph::size_type i;

@@ -37,12 +37,8 @@ public:
 	~BufferView();
 	///
 	Buffer * buffer() const { return buffer_; }
-#ifdef USE_PAINTER
 	///
 	Painter & painter();
-#endif
-	///
-	WorkArea * getWorkArea() { return workarea; }
 	///
 	void buffer(Buffer * b);
 	///
@@ -75,11 +71,6 @@ public:
 	bool available() const;
 	///
 	LyXView * owner() const { return owner_; }
-	///
-	LyXScreen * getScreen() {
-		fl_set_timer(timer_cursor, 0.4);
-		return screen;
-	}
 	///
 	void beforeChange();
         ///
@@ -174,13 +165,24 @@ public:
 	///
 	void showLockedInsetCursor(long x, long y, int asc, int desc);
 	///
-	void hideLockedInsetCursor(long x, long y, int asc, int desc);
+	void hideLockedInsetCursor();
 	///
 	void fitLockedInsetCursor(long x, long y, int asc, int desc);
 	///
 	int unlockInset(UpdatableInset * inset);
 	///
 	void lockedInsetStoreUndo(Undo::undo_kind kind);
+	///
+	void showCursor();
+	///
+	void hideCursor();
+	///
+	void toggleSelection(bool = true);
+	///
+	void toggleToggle();
+	///
+	void center();
+	
 private:
 	friend class WorkArea;
 	
@@ -189,17 +191,17 @@ private:
 	///
 	void workAreaExpose();
 	///
-	void ScrollUpOnePage();
+	void scrollUpOnePage();
 	///
-	void ScrollDownOnePage();
+	void scrollDownOnePage();
 	///
 	void create_view();
 	///
 	Inset * checkInsetHit(int & x, int & y);
 	/// 
-	int ScrollUp(long time);
+	int scrollUp(long time);
 	///
-	int ScrollDown(long time);
+	int scrollDown(long time);
 
 public:
 	///
@@ -209,33 +211,27 @@ public:
 	///
 	bool active() const;
 	/// A callback for the up arrow in the scrollbar.
-	void UpCB(long time, int button);
+	void upCB(long time, int button);
 	/// A callback for the slider in the scrollbar.
-	void ScrollCB(double);
+	void scrollCB(double);
 	/// A callback for the down arrow in the scrollbar.
-	void DownCB(long time, int button);
+	void downCB(long time, int button);
 
 	///
-	static void CursorToggleCB(FL_OBJECT * ob, long);
-#if 0
-	/** Work area free object handler
-	 */
-	static int work_area_handler(FL_OBJECT *, int event,
-				     FL_Coord, FL_Coord, int key, void *xev);
-#endif
+	static void cursorToggleCB(FL_OBJECT * ob, long);
 
 	///
-	void SetState();
+	void setState();
 
 private:
 	///
-	void WorkAreaMotionNotify(int x, int y, unsigned int state);
+	void workAreaMotionNotify(int x, int y, unsigned int state);
 	///
-	void WorkAreaButtonPress(int x, int y, unsigned int button);
+	void workAreaButtonPress(int x, int y, unsigned int button);
 	///
-	void WorkAreaButtonRelease(int x, int y, unsigned int button);
+	void workAreaButtonRelease(int x, int y, unsigned int button);
 	///
-	void WorkAreaSelectionNotify(Window win, XEvent * event);
+	void workAreaSelectionNotify(Window win, XEvent * event);
 	///
 	LyXView * owner_;
 	///

@@ -1,3 +1,23 @@
+2000-02-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/Makefile.am: add missing direction.h
+
+	* src/PainterBase.h: made the width functions const.
+	
+	* lib/kbd/iso8859-1.cdef: fix a couple of entries and define some
+	missing ones.
+	
+	* src/insets/insetcommand.C (draw): draw Editable as buttons.
+
+	* src/insets/insetlatexaccent.C (draw): make the accents draw
+	better, at present this will only work well with iso8859-1.
+	
+	* several files: remove the old drawing code, now we use the new
+	painter only.
+
+	* several files: remove support for mono_video, reverse_video and
+	fast selection.
+
 2000-02-17  Juergen Vigna  <jug@sad.it>
 
 	* src/mathed/math_cursor.[Ch] (SelGetArea): Changed form int * to

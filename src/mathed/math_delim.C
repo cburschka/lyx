@@ -231,9 +231,6 @@ typedef float matriz_data[2][2];
 
 const matriz_data MATIDEN= { {1, 0}, {0, 1}};
 
-#ifndef USE_PAINTER
-extern void mathed_set_font(short type, int style);
-#endif
 extern int mathed_char_width(short type, int style, byte c);
 extern int mathed_char_height(short, int, byte, int&, int&);
 
@@ -290,13 +287,11 @@ void Matriz::transf(float xp, float yp, float &x, float &y)
    y = m[1][0]*xp + m[1][1]*yp;
 }
 
-#ifndef USE_PAINTER
-extern GC latexGC, mathGC, mathLineGC, cursorGC;
-#endif
 
-static int search_deco(int code)
+static
+int search_deco(int code)
 {
-   int i= 0;
+   int i = 0;
    
    while (math_deco_table[i].code &&  math_deco_table[i].code!= code) ++i;
    if (!math_deco_table[i].code) i = -1;
@@ -304,7 +299,6 @@ static int search_deco(int code)
 }
 
 
-#ifdef USE_PAINTER
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 {
 	Matriz mt, sqmt;
@@ -368,75 +362,8 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 		}
 	} while (code);
 }
-#else
-void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
-{
-   Matriz mt, sqmt;
-   XPoint p[32];
-   float xx, yy, x2, y2;
-   int i= 0, j, n;
-   
-   j = search_deco(code);   
-   if (j < 0) return;
-   
-   int r = math_deco_table[j].angle;
-   float * d = math_deco_table[j].data;
-   
-   if (h > 70 && (math_deco_table[j].code == int('(') || math_deco_table[j].code == int(')')))
-      d = parenthHigh;
-    
-   mt.rota(r);
-   mt.escala(w, h);
-   
-   n = (w < h) ? w: h;
-   sqmt.rota(r);
-   sqmt.escala(n, n);
-   if (r> 0 && r< 3) y += h;   
-   if (r>= 2) x += w;   
-   do {
-      code = int(d[i++]);
-      switch (code) {
-       case 0: break;
-       case 1: 
-       case 3:
-       {
-	  xx = d[i++]; yy = d[i++];
-	  x2 = d[i++]; y2 = d[i++];
-	  if (code == 3) 
-	    sqmt.transf(xx, yy, xx, yy);
-	  else
-	    mt.transf(xx, yy, xx, yy);
-	  mt.transf(x2, y2, x2, y2);
-	  XDrawLine(fl_display, win, mathGC, x + int(xx), y + int(yy),
-		    x + int(x2), y + int(y2));
-	  XFlush(fl_display);
-	  break;
-       }	 
-       case 2: 
-       case 4:
-       {
-	  n = int(d[i++]);
-	  for (j = 0; j < n; ++j) {
-	     xx = d[i++]; yy = d[i++];
-//	     lyxerr << " " << xx << " " << yy << " ";
-	     if (code == 4) 
-	       sqmt.transf(xx, yy, xx, yy);
-	     else
-	       mt.transf(xx, yy, xx, yy);
-	     p[j].x = x + int(xx);
-	     p[j].y = y + int(yy);
-	     //  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
-	  }
-	  XDrawLines(fl_display, win, mathLineGC, p, n, CoordModeOrigin);
-	  XFlush(fl_display);
-       }
-      }
-   } while (code);
-}
-#endif
 
 
-#ifdef USE_PAINTER
 void
 MathDelimInset::draw(Painter & pain, int x, int y)
 { 
@@ -457,29 +384,6 @@ MathDelimInset::draw(Painter & pain, int x, int y)
 	} else
 		mathed_draw_deco(pain, x, y-ascent, dw, Height(), right);
 }
-#else
-void
-MathDelimInset::Draw(int x, int y)
-{ 
-   xo = x;  yo = y; 
-   MathParInset::Draw(x+dw+2, y-dh); 
-   //int h= Height(), hg= descent-1;  
-
-   if (left == '.') {
-     XDrawLine(fl_display, pm, cursorGC, x+4, yo-ascent, x+4, yo+descent);
-     XFlush(fl_display);
-   }
-   else
-     mathed_draw_deco(pm, x, y-ascent, dw, Height(), left);
-   x += Width()-dw-2;
-   if (right == '.') {
-     XDrawLine(fl_display, pm, cursorGC, x+4, yo-ascent, x+4, yo+descent);
-     XFlush(fl_display);
-   }
-   else
-     mathed_draw_deco(pm, x, y-ascent, dw, Height(), right);
-}
-#endif
 
 
 void
@@ -499,21 +403,12 @@ MathDelimInset::Metrics()
 }
 
 
-#ifdef USE_PAINTER
 void
 MathDecorationInset::draw(Painter & pain, int x, int y)
 { 
    MathParInset::draw(pain, x + (width - dw) / 2, y);
    mathed_draw_deco(pain, x, y + dy, width, dh, deco);
 }
-#else
-void
-MathDecorationInset::Draw(int x, int y)
-{ 
-   MathParInset::Draw(x+(width-dw)/2, y);
-   mathed_draw_deco(pm, x, y+dy, width, dh, deco);
-}
-#endif
 
 
 void
@@ -538,7 +433,6 @@ MathDecorationInset::Metrics()
 }
 
 
-#ifdef USE_PAINTER
 void
 MathAccentInset::draw(Painter & pain, int x, int y)
 {
@@ -552,31 +446,6 @@ MathAccentInset::draw(Painter & pain, int x, int y)
     x += (code == LM_not) ? (width-dw) / 2 : 2;
     mathed_draw_deco(pain, x, y - dy, dw, dh, code);
 }
-#else
-void
-MathAccentInset::Draw(int x, int y)
-{
-    int dw = width-2;
-/*    char s[8];
-    mathed_set_font(fn, size);
-    if (MathIsBinary(fn)) {
-	s[0] = s[2] = ' '; 
-	s[1] = (char)c;
-	ns = 3;
-	dw = mathed_char_width(fn, size, c);
-    } else
-      s[0] = (char)c;
-*/
-    if (inset) {
-	inset->Draw(x, y);
-    } else {
-	drawStr(fn, size, x, y, &c, 1);
-	XFlush(fl_display);
-    }
-    x += (code == LM_not) ? (width-dw)/2: 2;
-    mathed_draw_deco(pm, x, y-dy, dw, dh, code);
-}
-#endif
 
 
 void
@@ -607,7 +476,6 @@ MathAccentInset::Metrics()
 }
 
 
-#ifdef USE_PAINTER
 void
 MathDotsInset::draw(Painter & pain, int x, int y)
 {
@@ -616,16 +484,6 @@ MathDotsInset::draw(Painter & pain, int x, int y)
    if (code != LM_vdots) --y;
    mathed_draw_deco(pain, x + 2, y - dh, width - 2, ascent, code);
 }
-#else
-void
-MathDotsInset::Draw(int x, int y)
-{
-   mathed_draw_deco(pm, x + 2, y - dh, width - 2, ascent, code);
-   if (code == LM_vdots || code == LM_ddots) ++x; 
-   if (code!= LM_vdots) --y;
-   mathed_draw_deco(pm, x + 2, y - dh, width - 2, ascent, code);
-}
-#endif
 
 
 void

@@ -8,8 +8,6 @@
  *
  * ======================================================*/
 
-#define USE_PAINTER 1
-
 #ifndef PAINTER_H
 #define PAINTER_H
 

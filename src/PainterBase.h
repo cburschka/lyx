@@ -20,7 +20,7 @@
 
 class WorkArea;
 class LyXFont;
-class LyXScreen;
+//class LyXScreen;
 
 /** A painter class to encapsulate all graphics parameters and operations
    
@@ -64,9 +64,9 @@ public:
 
 	/** Screen geometry */
 	///
-	int paperMargin();
+	int paperMargin() const;
 	///
-	int paperWidth();
+	int paperWidth() const;
 	
 	/**@Basic drawing routines */
 	/// Draw a line from point to point
@@ -163,14 +163,14 @@ public:
 	virtual PainterBase & text(int x, int y, char c, LyXFont const & f)=0;
 	
 	/// Get the width of text
-	int width(string const & s, LyXFont const & f);
+	int width(string const & s, LyXFont const & f) const;
 
 	/** Get the width of text
 	    This is just for fast width */
-	int width(char const * s, int l, LyXFont const & f);
+	int width(char const * s, int l, LyXFont const & f) const;
 
 	/// Get the width of text
-	int width(char c, LyXFont const & f);
+	int width(char c, LyXFont const & f) const;
 
 	/** Draws a string and encloses it inside a rectangle. Returns
 	    the size of the rectangle. If draw is false, we only calculate
@@ -192,9 +192,6 @@ public:
 			     int & width = PainterBase::dummy1,
 			     int & ascent = PainterBase::dummy2, 
 			     int & descent = PainterBase::dummy3);
-	/// This is preliminary
-	//BufferView const * getOwner() const {  return &owner; }
-
 private:
 	WorkArea & owner;
 };

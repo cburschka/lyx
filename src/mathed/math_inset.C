@@ -416,23 +416,16 @@ void MathMatrixInset::SetData(LyxArrayBase * a)
 }
 
 
-#ifdef USE_PAINTER
 void MathMatrixInset::draw(Painter & pain, int x, int baseline)
 {
     MathParInset::draw(pain, x, baseline);
 }
-#else
-void MathMatrixInset::Draw(int x, int baseline)
-{
-    MathParInset::Draw(x, baseline);
-}
-#endif
 
 
 void MathMatrixInset::Metrics()
 {
-    int i, hl, h= 0;
-    MathedRowSt * cprow= 0, * cxrow;
+    int i, hl, h = 0;
+    MathedRowSt * cprow= 0;
 
     if (!row) {
 //	lyxerr << " MIDA ";
@@ -441,7 +434,7 @@ void MathMatrixInset::Metrics()
     } 
     
     // Clean the arrays      
-    cxrow = row;
+    MathedRowSt * cxrow = row;
     while (cxrow) {   
 	for (i = 0; i <= nc; ++i) cxrow->w[i] = 0;
 	cxrow = cxrow->next;

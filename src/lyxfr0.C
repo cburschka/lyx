@@ -25,7 +25,6 @@
 #include "lyxfr0.h"
 #include "lyxfr1.h"
 #include "lyxfunc.h"
-#include "lyxscreen.h"
 #include "debug.h"
 #include "lyxtext.h"
 #include "gettext.h"

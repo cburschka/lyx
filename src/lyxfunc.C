@@ -54,7 +54,6 @@
 #include "support/syscall.h"
 #include "support/lstrings.h"
 #include "support/path.h"
-#include "lyxscreen.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
@@ -148,19 +147,19 @@ void LyXFunc::moveCursorUpdate(bool selecting)
 {
 	if (selecting || owner->view()->text->mark_set) {
 		owner->view()->text->SetSelection();
-		owner->view()->getScreen()->ToggleToggle();
+		owner->view()->toggleToggle();
 		owner->view()->update(0);
 	} else {
 		owner->view()->update(-2); // this IS necessary
 		// (Matthias) 
 	}
 
-	owner->view()->getScreen()->ShowCursor();
+	owner->view()->showCursor();
 	
 	/* ---> Everytime the cursor is moved, show the current font state. */
 	// should this too me moved out of this func?
 	//owner->getMiniBuffer()->Set(CurrentState());
-	owner->view()->SetState();
+	owner->view()->setState();
 }
 
 
@@ -453,9 +452,8 @@ string LyXFunc::Dispatch(int ac,
     
 	selection_possible = false;
 	
-	if (owner->view()->available() 
-	    && owner->view()->getScreen())
-		owner->view()->getScreen()->HideCursor();
+	if (owner->view()->available())
+		owner->view()->hideCursor();
 
 	// We cannot use this function here
 	if (getStatus(action) & Disabled)
@@ -594,7 +592,7 @@ string LyXFunc::Dispatch(int ac,
 
 			// ??? Needed ???
 			// clear the selection (if there is any) 
-			owner->view()->getScreen()->ToggleSelection();
+			owner->view()->toggleSelection();
 			owner->view()->text->ClearSelection();
 
 			// Move cursor so that successive C-s 's will not stand in place. 
@@ -606,19 +604,18 @@ string LyXFunc::Dispatch(int ac,
 			// ??? Needed ???
 			// set the new selection 
 			// SetSelectionOverLenChars(owner->view()->currentBuffer()->text, iLenSelected);
-			owner->view()->getScreen()->ToggleSelection(false);
+			owner->view()->toggleSelection(false);
 		} else 
 			LyXBell();	
 	 
 		// REMOVED : if (owner->view()->getWorkArea()->focus)
-		owner->view()->getScreen()->ShowCursor();
+		owner->view()->showCursor();
 	}
 	break;
 
 	case LFUN_PREFIX:
 	{
-		if (owner->view()->available()
-		    && owner->view()->getScreen()) {
+		if (owner->view()->available()) {
 			owner->view()->update(-2);
 		}
 		string buf;
@@ -661,6 +658,8 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_CENTER: // this is center and redraw.
+		owner->view()->center();
+#if 0
 		owner->view()->beforeChange();
 		if (owner->view()->text->cursor.y >
 		    owner->view()->getWorkArea()->height() / 2)
@@ -675,6 +674,7 @@ string LyXFunc::Dispatch(int ac,
 		}
 		owner->view()->update(0);
 		owner->view()->redraw();
+#endif
 		break;
 		
 	case LFUN_APPENDIX:
@@ -933,7 +933,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_TEX:
 		Tex();
-		owner->view()->SetState();
+		owner->view()->setState();
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
@@ -956,7 +956,7 @@ string LyXFunc::Dispatch(int ac,
 			}
 		else
 			Foot(owner->view()); 
-		owner->view()->SetState();
+		owner->view()->setState();
 		break;
 
 	case LFUN_MARGINMELT:
@@ -969,7 +969,7 @@ string LyXFunc::Dispatch(int ac,
 				Melt(owner->view());
 		} else
 			Margin(owner->view()); 
-		owner->view()->SetState();
+		owner->view()->setState();
 		break;
 		
 		// --- version control -------------------------------
@@ -1096,7 +1096,7 @@ string LyXFunc::Dispatch(int ac,
 		}
 
 		if (current_layout != layout.second) {
-			owner->view()->getScreen()->HideCursor();
+			owner->view()->hideCursor();
 			current_layout = layout.second;
 			owner->view()->update(-2);
 			owner->view()->text->
@@ -1153,7 +1153,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_RTL:
 	{
 		RTLCB();
-		owner->view()->SetState();
+		owner->view()->setState();
 		owner->getMiniBuffer()->Set(CurrentState());
 	}
 		break;
@@ -1309,7 +1309,6 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_LEFT:
 	{
-#ifdef USE_PAINTER
 		// This is soooo ugly. Isn`t it possible to make
 		// it simpler? (Lgb)
 		LyXText * txt = owner->view()->text;
@@ -1336,33 +1335,6 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
-#else
-		// This is soooo ugly. Isn`t it possible to make
-		// it simpler? (Lgb)
-		LyXText * txt = owner->view()->text;
-		LyXDirection direction = txt->cursor.par->getParDirection();
-		if(!txt->mark_set) owner->view()->beforeChange();
-		owner->view()->update(-2);
-		if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			txt->CursorLeft();
-		if (txt->cursor.pos < txt->cursor.par->Last()
-		    && txt->cursor.par->GetChar(txt->cursor.pos)
-		    == LyXParagraph::META_INSET
-		    && txt->cursor.par->GetInset(txt->cursor.pos)
-		    && txt->cursor.par->GetInset(txt->cursor.pos)->Editable() == 2) {
-			Inset * tmpinset = txt->cursor.par->GetInset(txt->cursor.pos);
-			setMessage(tmpinset->EditMessage());
-			tmpinset->Edit(tmpinset->Width(txt->GetFont(txt->cursor.par,
-								    txt->cursor.pos)), 0);
-			break;
-		}
-		if  (direction == LYX_DIR_RIGHT_TO_LEFT)
-			txt->CursorRight();
-
-		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState());
-#endif
 	}
 	break;
 		
@@ -1675,14 +1647,14 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->smallUpdate(1);
 			// It is possible to make it a lot faster still
 			// just comment out the lone below...
-			owner->view()->getScreen()->ShowCursor();
+			owner->view()->showCursor();
 		} else {
 			owner->view()->cut();
 		}
 		SetUpdateTimer();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
-		owner->view()->SetState();
+		owner->view()->setState();
 		break;
 
 	case LFUN_DELETE_SKIP:
@@ -1792,14 +1764,14 @@ string LyXFunc::Dispatch(int ac,
 				owner->view()->smallUpdate(1);
 				// It is possible to make it a lot faster still
 				// just comment out the lone below...
-				owner->view()->getScreen()->ShowCursor();
+				owner->view()->showCursor();
 			}
 		} else {
 			owner->view()->cut();
 		}
 		SetUpdateTimer();
 		owner->getMiniBuffer()->Set(CurrentState());
-		owner->view()->SetState();
+		owner->view()->setState();
 	}
 	break;
 
@@ -1843,7 +1815,7 @@ string LyXFunc::Dispatch(int ac,
 		SetUpdateTimer(0.01);
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
-		owner->view()->SetState();
+		owner->view()->setState();
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 	}
@@ -1856,7 +1828,7 @@ string LyXFunc::Dispatch(int ac,
 		SetUpdateTimer(0.01);
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
-		owner->view()->SetState();
+		owner->view()->setState();
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 	}
@@ -1889,7 +1861,7 @@ string LyXFunc::Dispatch(int ac,
 		}
 		SetUpdateTimer(0.01);
 		owner->view()->text->sel_cursor = cursor;
-		owner->view()->SetState();
+		owner->view()->setState();
 		owner->getMiniBuffer()->Set(CurrentState());
 	}
 	break;
@@ -2007,6 +1979,8 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->setCursorFromRow(row);
 
 		// Recenter screen
+		owner->view()->center();
+#if 0		
 		owner->view()->beforeChange();
 		if (owner->view()->text->cursor.y >
 		    owner->view()->getWorkArea()->height() / 2
@@ -2021,6 +1995,7 @@ string LyXFunc::Dispatch(int ac,
 		}
 		owner->view()->update(0);
 		owner->view()->redraw();
+#endif
 	}
 	break;
 
@@ -2386,7 +2361,7 @@ string LyXFunc::Dispatch(int ac,
 		}
 		owner->view()->text->InsertFootnoteEnvironment(kind);
 		owner->view()->update(1);
-		owner->view()->SetState();
+		owner->view()->setState();
 	}
 	break;
 	

@@ -227,28 +227,23 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 			lyxerr << "Could not get font. Using 'fixed'." << endl;
 			fs = XLoadQueryFont(fl_display, "fixed");
 		}
-	} else {
-		if (lyxerr.debugging(Debug::FONT)) {
-			// Tell user the font matching
-			LyXFont f;
-			f.setFamily(family);
-			f.setSeries(series);
-			f.setShape(shape);
-			f.setSize(size);
-			// The rest of the attributes are not interesting
-			f.setEmph(LyXFont::INHERIT);
-			f.setUnderbar(LyXFont::INHERIT);
-			f.setNoun(LyXFont::INHERIT);
-			f.setLatex(LyXFont::INHERIT);
-#ifdef USE_PAINTER
-			f.setColor(LColor::inherit);
-#else
-			f.setColor(LyXFont::INHERIT_COLOR);
-#endif
-			lyxerr << "Font '" << f.stateText() 
-			       << "' matched by\n" << font << endl;
-		}
+	} else if (lyxerr.debugging(Debug::FONT)) {
+		// Tell user the font matching
+		LyXFont f;
+		f.setFamily(family);
+		f.setSeries(series);
+		f.setShape(shape);
+		f.setSize(size);
+		// The rest of the attributes are not interesting
+		f.setEmph(LyXFont::INHERIT);
+		f.setUnderbar(LyXFont::INHERIT);
+		f.setNoun(LyXFont::INHERIT);
+		f.setLatex(LyXFont::INHERIT);
+		f.setColor(LColor::inherit);
+		lyxerr << "Font '" << f.stateText() 
+		       << "' matched by\n" << font << endl;
 	}
+
 	current_view->owner()->getMiniBuffer()->Reset();
 
 	fontstruct[family][series][shape][size] = fs;

@@ -12,7 +12,6 @@
 #include "vspace.h"
 #include "lyx_gui_misc.h"
 #include "BufferView.h"
-#include "lyxscreen.h"
 #include "gettext.h"
 #include "lyxtext.h"
 #include "layout.h"
@@ -40,7 +39,7 @@ static int extra_multicol_cursor_x;
 bool UpdateLayoutTable(int flag)
 {
     bool update = true;
-    if (!current_view->getScreen() || !current_view->available())
+    if (!current_view->available())
         update = false;
     
     if (update && current_view->text->cursor.par->table) {
@@ -420,7 +419,7 @@ void TableOptionsCB(FL_OBJECT * ob, long)
     } else
         return;
     if (current_view->available()) {
-        current_view->getScreen()->HideCursor();
+        current_view->hideCursor();
         if (!current_view->text->selection){
             current_view->beforeChange();
             current_view->update(-2);
@@ -471,7 +470,7 @@ void SetPWidthCB(FL_OBJECT * ob, long)
             return;
         }
         if (current_view->available()){
-            current_view->getScreen()->HideCursor();
+            current_view->hideCursor();
             if (!current_view->text->selection) {
                 current_view->beforeChange(); 
                 current_view->update(-2);
