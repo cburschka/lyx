@@ -26,8 +26,6 @@
 
 #include "support/lstrings.h"
 
-using std::endl;
-
 
 // Initialization of the counter for the inset id's,
 unsigned int Inset::inset_id = 0;

@@ -30,10 +30,10 @@ class LatexRunParams;
 class LyXText;
 class LyXLex;
 class Paragraph;
-class ParagraphList;
 class LyXCursor;
 class FuncRequest;
 class WordLangTuple;
+class ParagraphList;
 
 struct LaTeXFeatures;
 

@@ -46,7 +46,8 @@ public:
 	};
 
 	///
-	InsetSpace() {}
+	InsetSpace();
+
 	///
 	explicit
 	InsetSpace(Kind k);

@@ -174,6 +174,7 @@ string const bibitemWidest(Buffer const * buffer)
 
 	ParagraphList::const_iterator it = buffer->paragraphs.begin();
 	ParagraphList::const_iterator end = buffer->paragraphs.end();
+
 	for (; it != end; ++it) {
 		if (it->bibitem()) {
 			int const wx =

@@ -3,7 +3,7 @@
 #ifndef PARAGRAPH_LIST_H
 #define PARAGRAPH_LIST_H
 
-#define NO_STD_LIST 1
+//#define NO_STD_LIST 1
 
 #ifndef NO_STD_LIST
 
@@ -11,7 +11,11 @@
 
 #include <list>
 
-typedef std::list<Paragraph> ParagraphList;
+struct ParagraphList : public std::list<Paragraph>
+{
+};
+
+typedef std::pair<ParagraphList::iterator, int> PitPosPair;
 
 #else
 

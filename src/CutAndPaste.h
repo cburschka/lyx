@@ -59,7 +59,7 @@ int nrOfParagraphs();
 */
 int SwitchLayoutsBetweenClasses(lyx::textclass_type c1,
 				lyx::textclass_type c2,
-				ParagraphList & par, 
+				ParagraphList & par,
 				ErrorList &);
 ///
 bool checkPastePossible();

@@ -379,7 +379,7 @@ TeXEnvironment(Buffer const * buf,
 	do {
 		par = TeXOnePar(buf, paragraphs, par, os, texrow, runparams);
 
-		if (par != const_cast<ParagraphList&>(paragraphs).end()&& par->params().depth() > pit->params().depth()) {
+		if (par != const_cast<ParagraphList&>(paragraphs).end() && par->params().depth() > pit->params().depth()) {
 			    if (par->layout()->isParagraph()) {
 
 			    // Thinko!
@@ -610,13 +610,17 @@ TeXOnePar(Buffer const * buf,
 			texrow.newline();
 		}
 		break;
-	case LATEX_ENVIRONMENT:
+	case LATEX_ENVIRONMENT: {
 		// if its the last paragraph of the current environment
 		// skip it otherwise fall through
-		if (boost::next(pit) != const_cast<ParagraphList&>(paragraphs).end()
-		    && (boost::next(pit)->layout() != pit->layout()
-			|| boost::next(pit)->params().depth() != pit->params().depth()))
+		ParagraphList::iterator next = boost::next(pit);
+
+		if (next != const_cast<ParagraphList&>(paragraphs).end()
+		    && (next->layout() != pit->layout()
+			|| next->params().depth() != pit->params().depth()))
 			break;
+	}
+
 		// fall through possible
 	default:
 		// we don't need it for the last paragraph!!!

@@ -18,11 +18,11 @@
 #include "support/types.h"
 #include "changes.h"
 
-#include "ParagraphList.h"
 #include "LString.h"
 
 #include <boost/optional.hpp>
 
+class Buffer;
 class BufferParams;
 class BufferView;
 class Counters;
@@ -32,11 +32,12 @@ class LaTeXFeatures;
 class LatexRunParams;
 class ParagraphParameters;
 class TexRow;
+class ParagraphList;
 
 // Define this if you want to try out the new storage container for
 // paragraphs. (Lgb)
 // This is non working and far from finished.
-#define NO_STD_LIST 1
+//#define NO_STD_LIST 1
 
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph  {
@@ -337,6 +338,7 @@ inline bool isDeletedText(Paragraph const & par, lyx::pos_type pos)
 {
 	return par.lookupChange(pos) == Change::DELETED;
 }
+
 
 bool operator==(Paragraph const & lhs, Paragraph const & rhs);
 

@@ -29,6 +29,10 @@ using std::ostream;
 using std::max;
 
 
+InsetSpace::InsetSpace()
+{}
+
+
 InsetSpace::InsetSpace(Kind k)
 	: kind_(k)
 {}
