@@ -132,12 +132,7 @@ public:
 	bool parseSingleLyXformat2Token(LyXLex &, LyXParagraph *& par,
 					LyXParagraph *& return_par,
 					string const & token, int & pos,
-					char & depth, LyXFont &
-#ifndef NEW_INSETS
-					,LyXParagraph::footnote_flag &,
-					LyXParagraph::footnote_kind &
-#endif
-		);
+					char & depth, LyXFont &);
 private:
 	/// Parse a single inset.
 	void readInset(LyXLex &, LyXParagraph *& par, int & pos, LyXFont &);
@@ -324,20 +319,10 @@ public:
 	/// Used when typesetting to place errorboxes.
 	TexRow texrow;
 private:
-#ifndef NEW_INSETS
-        ///
-        void linuxDocHandleFootnote(std::ostream & os,
-				    LyXParagraph * & par, int depth);
-#endif
         ///
 	void DocBookHandleCaption(std::ostream & os, string & inner_tag,
 				  int depth, int desc_on,
 				  LyXParagraph * & par);
-#ifndef NEW_INSETS
-        ///
-	void DocBookHandleFootnote(std::ostream & os,
-				   LyXParagraph * & par, int depth);
-#endif
 	/// Open SGML/XML tag.
         void sgmlOpenTag(std::ostream & os, int depth,
 			 string const & latexname) const;
@@ -404,11 +389,7 @@ public:
 			if (par) {
 				++it;
 				if (it == par->inset_iterator_end()) {
-#ifndef NEW_INSETS
-					par = par->next_;
-#else
 					par = par->next();
-#endif
 					SetParagraph();
 				}
 			}
@@ -420,11 +401,7 @@ public:
 			if (par) {
 				++it;
 				if (it == par->inset_iterator_end()) {
-#ifndef NEW_INSETS
-					par = par->next_;
-#else
 					par = par->next();
-#endif
 					SetParagraph();
 				}
 			}

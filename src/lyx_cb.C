@@ -473,23 +473,13 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 	string label(arg);
 	ProhibitInput(bv);
 	if (label.empty()) {
-#ifndef NEW_INSETS
-		LyXParagraph * par =
-			bv->text->cursor.par()->FirstPhysicalPar();
-#else
 		LyXParagraph * par = bv->text->cursor.par();
-#endif
 		LyXLayout const * layout =
 			&textclasslist.Style(bv->buffer()->params.textclass,
 					     par->GetLayout());
 
-#ifndef NEW_INSETS
-		if (layout->latextype == LATEX_PARAGRAPH && par->previous_) {
-			LyXParagraph * par2 = par->previous_->FirstPhysicalPar();
-#else
 		if (layout->latextype == LATEX_PARAGRAPH && par->previous()) {
 			LyXParagraph * par2 = par->previous();
-#endif
 			LyXLayout const * layout2 =
 				&textclasslist.Style(bv->buffer()->params.textclass,
 						     par2->GetLayout());
@@ -501,25 +491,7 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 		string text = layout->latexname().substr(0, 3);
 		if (layout->latexname() == "theorem")
 			text = "thm"; // Create a correct prefix for prettyref
-#ifndef NEW_INSETS
-		if (par->footnoteflag==LyXParagraph::OPEN_FOOTNOTE)
-			switch (par->footnotekind) {
-			case LyXParagraph::FIG:
-			case LyXParagraph::WIDE_FIG:
-				text = "fig";
-				break;
-			case LyXParagraph::TAB:
-			case LyXParagraph::WIDE_TAB:
-				text = "tab";
-				break;
-			case LyXParagraph::ALGORITHM:
-				text = "alg";
-				break;
-			case LyXParagraph::FOOTNOTE:	
-			case LyXParagraph::MARGIN:
-				break;
-			}
-#endif
+
 		text += ":";
 		if (layout->latextype == LATEX_PARAGRAPH ||
 		    lyxrc.label_init_length < 0)

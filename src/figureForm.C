@@ -69,11 +69,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 	current_view->text->BreakParagraph(current_view);
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
-#ifndef NEW_INSETS
-	if (current_view->text->cursor.par()->Last()) {
-#else
 	if (current_view->text->cursor.par()->size()) {
-#endif
 		current_view->text->CursorLeft(current_view);
 	 
 		current_view->text->BreakParagraph(current_view);
@@ -83,10 +79,6 @@ void FigureApplyCB(FL_OBJECT *, long)
 	// The standard layout should always be numer 0;
 	current_view->text->SetLayout(current_view, 0);
 
-#ifndef NEW_INSETS
-	if (current_view->text->cursor.par()->footnoteflag == 
-	    LyXParagraph::NO_FOOTNOTE) {
-#endif
 		current_view->text->
 			SetParagraph(current_view, 0, 0,
 				     0, 0,
@@ -96,17 +88,6 @@ void FigureApplyCB(FL_OBJECT *, long)
 					     buffer->params.spacing.getValue(),
 					     LyXLength::CM),
 				     LYX_ALIGN_CENTER, string(), 0);
-#ifndef NEW_INSETS
-	} else {
-		current_view->text->SetParagraph(current_view, 0, 0,
-						 0, 0,
-						 VSpace(VSpace::NONE),
-						 VSpace(VSpace::NONE),
-						 LYX_ALIGN_CENTER, 
-						 string(),
-						 0);
-	}
-#endif
 	
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
       

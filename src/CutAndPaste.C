@@ -63,11 +63,7 @@ void DeleteBuffer()
 	
     while (buf) {
 		tmppar =  buf;
-#ifndef NEW_INSETS
-		buf = buf->next_;
-#else
 		buf = buf->next();
-#endif
 		delete tmppar;
     }
     buf = 0;
@@ -76,76 +72,6 @@ void DeleteBuffer()
 } // namespace anon
 
 
-#ifndef NEW_INSETS
-bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
-			       int start, int & end, char tc, bool doclear)
-{
-	if (!startpar || (start > startpar->Last()))
-		return false;
-	
-	DeleteBuffer();
-	
-	textclass = tc;
-	
-	if (!(*endpar) ||
-	    (startpar->ParFromPos(start) ==
-	     (*endpar)->ParFromPos(end))) {
-		// only within one paragraph
-		buf = new LyXParagraph;
-		LyXParagraph::size_type i = start;
-		if (end > startpar->Last())
-			end = startpar->Last();
-		for (; i < end; ++i) {
-			startpar->CopyIntoMinibuffer(*current_view->buffer(), start);
-			startpar->Erase(start);
-			
-			buf->InsertFromMinibuffer(buf->Last());
-		}
-		end = start - 1;
-	} else {
-		// more than one paragraph
-		(*endpar)->BreakParagraphConservative(current_view->buffer()->params,
-						      end);
-		*endpar = (*endpar)->next();
-		end = 0;
-		
-		startpar->BreakParagraphConservative(current_view->buffer()->params,
-						     start);
-		
-		// store the selection
-		buf = startpar->ParFromPos(start)->next_;
-		buf->previous(0);
-		(*endpar)->previous()->next(0);
-		
-		// cut the selection
-		startpar->ParFromPos(start)->next(*endpar);
-		
-		(*endpar)->previous(startpar->ParFromPos(start));
-		
-		// care about footnotes
-		if (buf->footnoteflag) {
-			LyXParagraph * tmppar = buf;
-			while (tmppar){
-				tmppar->footnoteflag = LyXParagraph::NO_FOOTNOTE;
-				tmppar = tmppar->next_;
-			}
-		}
-		
-		// the cut selection should begin with standard layout
-		buf->Clear(); 
-		
-		// paste the paragraphs again, if possible
-		if (doclear)
-			startpar->next()->StripLeadingSpaces(textclass);
-		if (startpar->FirstPhysicalPar()->HasSameLayout(startpar->next()) ||
-		    !startpar->next()->Last()) {
-			startpar->ParFromPos(start)->PasteParagraph(current_view->buffer()->params);
-			(*endpar) = startpar; // this because endpar gets deleted here!
-		}
-	}
-	return true;
-}
-#else
 bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 			       int start, int & end, char tc, bool doclear)
 {
@@ -206,72 +132,8 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 	}
 	return true;
 }
-#endif
 
 
-#ifndef NEW_INSETS
-bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
-				int start, int end, char tc)
-{
-	if (!startpar || (start > startpar->Last()))
-		return false;
-	
-	DeleteBuffer();
-	
-	textclass = tc;
-	
-	if (!(endpar) ||
-	    (startpar->ParFromPos(start) ==
-	     (endpar)->ParFromPos(end))) {
-		// only within one paragraph
-		buf = new LyXParagraph;
-		LyXParagraph::size_type i = start;
-		if (end > startpar->Last())
-			end = startpar->Last();
-		for (; i < end; ++i) {
-			startpar->CopyIntoMinibuffer(*current_view->buffer(),
-						     i);
-			buf->InsertFromMinibuffer(buf->Last());
-		}
-	} else {
-		// copy more than one paragraph
-		// clone the paragraphs within the selection
-		LyXParagraph * tmppar = startpar->ParFromPos(start);
-		buf = tmppar->Clone();
-		LyXParagraph * tmppar2 = buf;
-		
-		while (tmppar != endpar->ParFromPos(end)
-		       && tmppar->next_) {
-			tmppar = tmppar->next_;
-			tmppar2->next(tmppar->Clone());
-			tmppar2->next_->previous(tmppar2);
-			tmppar2 = tmppar2->next_;
-		}
-		tmppar2->next(0);
-		
-		// care about footnotes
-		if (buf->footnoteflag) {
-			tmppar = buf;
-			while (tmppar) {
-				tmppar->footnoteflag = LyXParagraph::NO_FOOTNOTE;
-				tmppar = tmppar->next_;
-			}
-		}
-		
-		// the buf paragraph is too big
-		LyXParagraph::size_type tmpi2 = startpar->PositionInParFromPos(start);
-		for (; tmpi2; --tmpi2)
-			buf->Erase(0);
-		
-		// now tmppar 2 is too big, delete all after end
-		tmpi2 = endpar->PositionInParFromPos(end);
-		while (tmppar2->size() > tmpi2) {
-			tmppar2->Erase(tmppar2->size() - 1);
-		}
-	}
-	return true;
-}
-#else
 bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 				int start, int end, char tc)
 {
@@ -322,131 +184,8 @@ bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 	}
 	return true;
 }
-#endif
 
 
-#ifndef NEW_INSETS
-bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
-				 int & pos, char tc)
-{
-	if (!checkPastePossible(*par))
-		return false;
-	
-	if (pos > (*par)->Last())
-		pos = (*par)->Last();
-	
-	LyXParagraph * tmpbuf;
-	LyXParagraph * tmppar = *par;
-	int tmppos = pos;
-	
-	// There are two cases: cutbuffer only one paragraph or many
-	if (!buf->next_) {
-		// only within a paragraph
-		tmpbuf = buf->Clone();
-		// Some provisions should be done here for checking
-		// if we are inserting at the beginning of a
-		// paragraph. If there are a space at the beginning
-		// of the text to insert and we are inserting at
-		// the beginning of the paragraph the space should
-		// be removed.
-		while (buf->size()) {
-			// This is an attempt to fix the
-		       	// "never insert a space at the
-		       	// beginning of a paragraph" problem.
-			if (!tmppos && buf->IsLineSeparator(0)) {
-				buf->Erase(0);
-			} else {
-				buf->CutIntoMinibuffer(current_view->buffer()->params, 0);
-				buf->Erase(0);
-				if (tmppar->InsertFromMinibuffer(tmppos))
-					++tmppos;
-			}
-		}
-		delete buf;
-		buf = tmpbuf;
-		*endpar = tmppar->next();
-		pos = tmppos;
-	} else {
-		// many paragraphs
-		
-		// make a copy of the simple cut_buffer
-		tmpbuf = buf;
-		LyXParagraph * simple_cut_clone = tmpbuf->Clone();
-		LyXParagraph * tmpbuf2 = simple_cut_clone;
-		if ((*par)->footnoteflag) {
-			tmpbuf->footnoteflag = (*par)->footnoteflag;
-			tmpbuf->footnotekind = (*par)->footnotekind;
-		}
-		while (tmpbuf->next_) {
-			tmpbuf = tmpbuf->next_;
-			tmpbuf2->next(tmpbuf->Clone());
-			tmpbuf2->next_->previous(tmpbuf2);
-			tmpbuf2 = tmpbuf2->next_;
-			if ((*par)->footnoteflag){
-				tmpbuf->footnoteflag = (*par)->footnoteflag;
-				tmpbuf->footnotekind = (*par)->footnotekind;
-			}
-		}
-		
-		// make sure there is no class difference
-		SwitchLayoutsBetweenClasses(textclass, tc, buf);
-		
-		// make the buf exactly the same layout than
-		// the cursor paragraph
-		buf->MakeSameLayout(*par);
-		
-		// find the end of the buffer
-		LyXParagraph * lastbuffer = buf;
-		while (lastbuffer->next())
-			lastbuffer = lastbuffer->next();
-		
-		bool paste_the_end = false;
-		
-		// open the paragraph for inserting the buf
-		// if necessary
-		if (((*par)->Last() > pos) || !(*par)->next()) {
-			(*par)->BreakParagraphConservative(current_view->buffer()->params,
-							   pos);
-			paste_the_end = true;
-		}
-		// set the end for redoing later
-		*endpar = (*par)->ParFromPos(pos)->next_->next();
-		
-		// paste it!
-		lastbuffer->ParFromPos(lastbuffer->Last())->next(
-			(*par)->ParFromPos(pos)->next_);
-		(*par)->ParFromPos(pos)->next()->previous(
-			lastbuffer->ParFromPos(lastbuffer->Last()));
-		
-		(*par)->ParFromPos(pos)->next(buf);
-		buf->previous((*par)->ParFromPos(pos));
-		
-		if ((*par)->ParFromPos(pos)->next() == lastbuffer)
-			lastbuffer = *par;
-		
-		(*par)->ParFromPos(pos)->PasteParagraph(current_view->buffer()->params);
-		// store the new cursor position
-		*par = lastbuffer;
-		pos = lastbuffer->Last();
-		// maybe some pasting
-		if (lastbuffer->next() && paste_the_end) {
-			if (lastbuffer->next()->HasSameLayout(lastbuffer)) {
-				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
-			} else if (!lastbuffer->next()->Last()) {
-				lastbuffer->next()->MakeSameLayout(lastbuffer);
-				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
-			} else if (!lastbuffer->Last()) {
-				lastbuffer->MakeSameLayout(lastbuffer->next_);
-				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
-			} else
-				lastbuffer->next()->StripLeadingSpaces(tc);
-		}
-		// restore the simple cut buffer
-		buf = simple_cut_clone;
-	}
-	return true;
-}
-#else
 bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 				 int & pos, char tc)
 {
@@ -558,7 +297,6 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	
 	return true;
 }
-#endif
 
 
 int CutAndPaste::nrOfParagraphs()
@@ -568,17 +306,10 @@ int CutAndPaste::nrOfParagraphs()
 
 	int n = 1;
 	LyXParagraph * tmppar = buf;
-#ifndef NEW_INSETS
-	while(tmppar->next_) {
-		++n;
-		tmppar = tmppar->next_;
-	}
-#else
 	while(tmppar->next()) {
 		++n;
 		tmppar = tmppar->next();
 	}
-#endif
 	return n;
 }
 
@@ -590,9 +321,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
     int ret = 0;
     if (!par || c1 == c2)
 		return ret;
-#ifndef NEW_INSETS
-    par = par->FirstPhysicalPar();
-#endif
+
     while (par) {
 		string name = textclasslist.NameOfLayout(c1, par->layout);
 		int lay = 0;
@@ -617,39 +346,15 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
 			InsetError * new_inset = new InsetError(s);
 			par->InsertInset(0, new_inset);
 		}
-#ifndef NEW_INSETS
-		par = par->next_;
-#else
 		par = par->next();
-#endif
     }
     return ret;
 }
 
 
-#ifndef NEW_INSETS
-bool CutAndPaste::checkPastePossible(LyXParagraph * par)
-#else
 bool CutAndPaste::checkPastePossible(LyXParagraph *)
-#endif
 {
     if (!buf) return false;
 
-#ifndef NEW_INSETS
-    // be carefull with footnotes in footnotes
-    if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		// check whether the cut_buffer includes a footnote
-		LyXParagraph * tmppar = buf;
-		while (tmppar && tmppar->footnoteflag == LyXParagraph::NO_FOOTNOTE)
-			tmppar = tmppar->next_;
-      
-		if (tmppar) {
-			WriteAlert(_("Impossible operation"),
-					   _("Can't paste float into float!"),
-					   _("Sorry."));
-			return false;
-		}
-    }
-#endif
     return true;
 }

@@ -21,9 +21,6 @@
 #include "insettext.h"
 #include "lyxfont.h"
 #include "LColor.h"
-#if 1 // NEW_INSETS
-#include "lyxparagraph.h"
-#endif
 
 class Painter;
 class LyXText;
@@ -160,9 +157,7 @@ protected:
 	LColor::color framecolor;
 	///
 	LyXFont labelfont;
-#ifdef NEW_INSETS
 public:
-#endif
 	///
 	InsetText inset;
 protected:

@@ -27,21 +27,6 @@
 #include "language.h"
 #include "gettext.h"
 
-#ifndef NEW_INSETS
-void Foot(BufferView * bv)
-{
-	if (!bv->available()) 
-		return;
-	
-	bv->owner()->getMiniBuffer()
-		->Set(_("Inserting Footnote..."));
-	bv->hideCursor();
-	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
-	bv->text->InsertFootnoteEnvironment(bv, LyXParagraph::FOOTNOTE);
-	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-}
-#endif
-
 
 void Emph(BufferView * bv)
 {
@@ -67,19 +52,6 @@ void Noun(BufferView * bv)
 }
 
 
-#ifndef NEW_INSETS
-void Margin(BufferView * bv)
-{
-	if (bv->available()) {
-		bv->owner()->message(_("Inserting margin note...");
-		bv->hideCursor();
-		bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
-		bv->text->InsertFootnoteEnvironment(bv, LyXParagraph::MARGIN);
-		bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-	}
-}
-#endif
-
 void Number(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
@@ -97,21 +69,6 @@ void Lang(BufferView * bv, string const & l)
 	} else
 		WriteAlert(_("Error! unknown language"),l);
 }
-
-
-#ifndef NEW_INSETS
-void Melt(BufferView * bv)
-{
-	if (!bv->available()) return;
-
-	bv->owner()->message(_("Melt"));
-	bv->hideCursor();
-	bv->beforeChange(bv->text);
-	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
-	bv->text->MeltFootnoteEnvironment(bv);
-	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-}
-#endif
 
 
 void Tex(BufferView * bv)

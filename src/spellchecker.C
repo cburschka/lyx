@@ -811,12 +811,6 @@ bool RunSpellChecker(BufferView * bv)
 	int newvalue;
 	FL_OBJECT * obj;
 
-#ifndef NEW_INSETS
-	// Open all floats
-        bv->allFloats(1, 0);
-        bv->allFloats(1, 1);
-#endif
-
 #ifdef USE_PSPELL
 	string tmp = (lyxrc.isp_use_alt_lang) ?
 	    lyxrc.isp_alt_lang : bv->buffer()->params.language->code();

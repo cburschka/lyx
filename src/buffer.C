@@ -33,7 +33,7 @@
 #endif
 
 #ifdef __GNUG__
-#pragma implementation "buffer.h"
+#pragma implementation
 #endif
 
 #include "buffer.h"
@@ -165,19 +165,11 @@ Buffer::~Buffer()
 	
 	LyXParagraph * par = paragraph;
 	LyXParagraph * tmppar;
-#ifndef NEW_INSETS
-	while (par) {
-		tmppar = par->next_;
-		delete par;
-		par = tmppar;
-	}
-#else
 	while (par) {
 		tmppar = par->next();
 		delete par;
 		par = tmppar;
 	}
-#endif
 	paragraph = 0;
 }
 
@@ -294,10 +286,6 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 {
 	int pos = 0;
 	char depth = 0; // signed or unsigned?
-#ifndef NEW_INSETS
-	LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
-	LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
-#endif
 	bool the_end_read = false;
 
 	LyXParagraph * return_par = 0;
@@ -341,10 +329,6 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			parseSingleLyXformat2Token(lex, par, return_par,
 						   pretoken, pos, depth,
 						   font
-#ifndef NEW_INSETS
-						   , footnoteflag,
-						   footnotekind
-#endif
 				);
 	}
    
@@ -370,20 +354,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				   LyXParagraph *& return_par,
 				   string const & token, int & pos,
 				   char & depth, LyXFont & font
-#ifndef NEW_INSETS
-				   , LyXParagraph::footnote_flag & footnoteflag,
-				   LyXParagraph::footnote_kind & footnotekind
-#endif
 	)
 {
 	bool the_end_read = false;
 #ifndef NO_PEXTRA_REALLY
-#ifdef NEW_INSETS
 	// This is super temporary but is needed to get the compability
 	// mode for minipages work correctly together with new tabulars.
 	static int call_depth = 0;
 	++call_depth;
-#endif
 	bool checkminipage = false;
 	static LyXParagraph * minipar = 0;
 	static LyXParagraph * parBeforeMinipage = 0;
@@ -403,40 +381,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->InsertInset(pos, inset, font);
 		++pos;
 	} else if (token == "\\layout") {
-#ifndef NEW_INSETS
-		if (!return_par) 
-			return_par = par;
-		else {
-			par->fitToSize();
-			par = new LyXParagraph(par);
-		}
-		pos = 0;
-		lex.EatLine();
-		string const layoutname = lex.GetString();
-		pair<bool, LyXTextClass::LayoutList::size_type> pp
-			= textclasslist.NumberOfLayout(params.textclass,
-						       layoutname);
-		if (pp.first) {
-			par->layout = pp.second;
-		} else { // layout not found
-			// use default layout "Standard" (0)
-			par->layout = 0;
-		}
-		// Test whether the layout is obsolete.
-		LyXLayout const & layout =
-			textclasslist.Style(params.textclass,
-					    par->layout); 
-		if (!layout.obsoleted_by().empty())
-			par->layout = 
-				textclasslist.NumberOfLayout(params.textclass, 
-							     layout.obsoleted_by()).second;
-		par->footnoteflag = footnoteflag;
-		par->footnotekind = footnotekind;
-		par->params.depth(depth);
-		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-		if (file_format < 216 && params.language->lang() == "hebrew")
-			font.setLanguage(default_language);
-#else
                 lex.EatLine();
                 string const layoutname = lex.GetString();
                 pair<bool, LyXTextClass::LayoutList::size_type> pp
@@ -527,34 +471,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 #if USE_CAPTION
                 }
 #endif
-#endif
-#ifndef NEW_INSETS
-	} else if (token == "\\end_float") {
-		if (!return_par) 
-			return_par = par;
-		else {
-			par->fitToSize();
-			par = new LyXParagraph(par);
-		}
-		footnotekind = LyXParagraph::FOOTNOTE;
-		footnoteflag = LyXParagraph::NO_FOOTNOTE;
-		pos = 0;
-		lex.EatLine();
-		par->layout = LYX_DUMMY_LAYOUT;
-		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-		if (file_format < 216 && params.language->lang() == "hebrew")
-			font.setLanguage(default_language);
-	} else if (token == "\\begin_float") {
-		int tmpret = lex.FindToken(string_footnotekinds);
-		if (tmpret == -1) ++tmpret;
-		if (tmpret != LYX_LAYOUT_DEFAULT) 
-			footnotekind = static_cast<LyXParagraph::footnote_kind>(tmpret); // bad
-		if (footnotekind == LyXParagraph::FOOTNOTE
-		    || footnotekind == LyXParagraph::MARGIN)
-			footnoteflag = LyXParagraph::CLOSED_FOOTNOTE;
-		else 
-			footnoteflag = LyXParagraph::OPEN_FOOTNOTE;
-#else
+
 	} else if (token == "\\begin_float") {
 		// This is the compability reader. It can be removed in
 		// LyX version 1.3.0. (Lgb)
@@ -628,7 +545,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		inset->Read(this, nylex);
 		par->InsertInset(pos, inset, font);
 		++pos;
-#endif
 	} else if (token == "\\begin_deeper") {
 		++depth;
 	} else if (token == "\\end_deeper") {
@@ -1586,9 +1502,6 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 	LyXFont font2;
 	Inset const * inset;
 	char c;
-#ifndef NEW_INSETS
-	LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
-#endif
 	char depth = 0;
 	int ltype = 0;
 	int ltype_depth = 0;
@@ -1597,29 +1510,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 
 	int noparbreak = 0;
 	int islatex = 0;
-#ifndef NEW_INSETS
-	if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE ||
-	    !par->previous_
-	    || par->previous()->footnoteflag == LyXParagraph::NO_FOOTNOTE) {
-		/* begins a footnote environment ? */ 
-		if (footnoteflag != par->footnoteflag) {
-			footnoteflag = par->footnoteflag;
-			if (footnoteflag) {
-				size_t const j = strlen(string_footnotekinds[par->footnotekind]) + 4;
-				if ((linelen > 0) &&
-				    ((currlinelen + j) > linelen)) {
-					buffer << "\n";
-					currlinelen = 0;
-				}
-				buffer << "(["
-				       << string_footnotekinds[par->footnotekind]
-				       << "] ";
-				currlinelen += j;
-			}
-		}
-#else
-		if (!par->previous()) {
-#endif
+	if (!par->previous()) {
 		/* begins or ends a deeper area ?*/ 
 		if (depth != par->params.depth()) {
 			if (par->params.depth() > depth) {
@@ -1673,23 +1564,12 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		
 		/* what about the alignment */ 
 	} else {
-#ifndef NEW_INSETS
-		/* dummy layout, that means a footnote ended */ 
-		footnoteflag = LyXParagraph::NO_FOOTNOTE;
-		buffer << ") ";
-		noparbreak = 1;
-#else
 		lyxerr << "Should this ever happen?" << endl;
-#endif
 	}
       
 	font1 = LyXFont(LyXFont::ALL_INHERIT, params.language);
 	for (LyXParagraph::size_type i = 0; i < par->size(); ++i) {
-		if (!i &&
-#ifndef NEW_INSETS
-		    !footnoteflag &&
-#endif
-		    !noparbreak) {
+		if (!i && !noparbreak) {
 			if (linelen > 0)
 				buffer << "\n\n";
 			for (char j = 0; j < depth; ++j)
@@ -2338,11 +2218,6 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 
 	// if only_body
 	while (par != endpar) {
-#ifndef NEW_INSETS
-		if (par->IsDummy())
-			lyxerr[Debug::LATEX] << "Error in latexParagraphs."
-					     << endl;
-#endif
 		LyXLayout const & layout =
 			textclasslist.Style(params.textclass,
 					    par->layout);
@@ -2364,23 +2239,10 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 		// ordinary \footnote{} generation
 		// flag this with ftcount
 		ftcount = -1;
-		if (layout.isEnvironment()
-#ifndef NEW_INSETS
-                    || par->params.pextraType() != LyXParagraph::PEXTRA_NONE
-#endif
-			) {
-			par = par->TeXEnvironment(this, params, ofs, texrow
-#ifndef NEW_INSETS
-						  ,ftnote, ft_texrow, ftcount
-#endif
-				);
+		if (layout.isEnvironment()) {
+			par = par->TeXEnvironment(this, params, ofs, texrow);
 		} else {
-			par = par->TeXOnePar(this, params, ofs, texrow, false
-#ifndef NEW_INSETS
-					     ,
-					     ftnote, ft_texrow, ftcount
-#endif
-				);
+			par = par->TeXOnePar(this, params, ofs, texrow, false);
 		}
 
 		// Write out what we've generated...
@@ -2518,12 +2380,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 				string const temp = "toc";
 				sgmlOpenTag(ofs, depth, temp);
 
-#ifndef NEW_INSETS
-				par = par->next_;
-				linuxDocHandleFootnote(ofs, par, depth);
-#else
 				par = par->next();
-#endif
 				continue;
 			}
 		}
@@ -2605,19 +2462,9 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			break;
 		}
 
-#ifndef NEW_INSETS
-		do {
-			SimpleLinuxDocOnePar(ofs, par, depth);
-			
-			par = par->next_;
-			linuxDocHandleFootnote(ofs, par, depth);
-		}
-		while(par && par->IsDummy());
-#else
 		SimpleLinuxDocOnePar(ofs, par, depth);
 
 		par = par->next();
-#endif
 
 		ofs << "\n";
 		// write closing SGML tags
@@ -2649,39 +2496,16 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 }
 
 
-#ifndef NEW_INSETS
-void Buffer::linuxDocHandleFootnote(ostream & os, LyXParagraph * & par,
-				    int depth)
-{
-	string const tag = "footnote";
-
-	while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		sgmlOpenTag(os, depth + 1, tag);
-		SimpleLinuxDocOnePar(os, par, 0, depth + 1);
-		sgmlCloseTag(os, depth + 1, tag);
-		par = par->next_;
-	}
-}
-#endif
-
-
 void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
 				  int depth, int desc_on,
 				  LyXParagraph * & par)
 {
 	LyXParagraph * tpar = par;
-#ifndef NEW_INSETS
-	while (tpar
-	       && (tpar->footnoteflag != LyXParagraph::NO_FOOTNOTE)
-	       && (tpar->layout != textclasslist.NumberOfLayout(params.textclass,
-							     "Caption").second))
-		tpar = tpar->next_;
-#else
 	while (tpar
 	       && (tpar->layout != textclasslist.NumberOfLayout(params.textclass,
 								"Caption").second))
 		tpar = tpar->next();
-#endif
+
 	if (tpar &&
 	    tpar->layout == textclasslist.NumberOfLayout(params.textclass,
 							 "Caption").second) {
@@ -2694,106 +2518,6 @@ void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
 			os << extra_par;
 	}
 }
-
-
-#ifndef NEW_INSETS
-void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
-				   int depth)
-{
-	string tag, inner_tag;
-	string tmp_par, extra_par;
-	bool inner_span = false;
-	int desc_on = 4;
-
-	// Someone should give this enum a proper name (Lgb)
-	enum SOME_ENUM {
-		NO_ONE,
-		FOOTNOTE_LIKE,
-		MARGIN_LIKE,
-		FIG_LIKE,
-		TAB_LIKE
-	};
-	SOME_ENUM last = NO_ONE;
-	SOME_ENUM present = FOOTNOTE_LIKE;
-
-	while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		if (last == present) {
-			if (inner_span) {
-				if (!tmp_par.empty()) {
-					os << tmp_par;
-					tmp_par.erase();
-					sgmlCloseTag(os, depth + 1, inner_tag);
-					sgmlOpenTag(os, depth + 1, inner_tag);
-				}
-			} else {
-				os << "\n";
-			}
-		} else {
-			os << tmp_par;
-			if (!inner_tag.empty()) sgmlCloseTag(os, depth + 1,
-							    inner_tag);
-			if (!extra_par.empty()) os << extra_par;
-			if (!tag.empty()) sgmlCloseTag(os, depth, tag);
-			extra_par.erase();
-
-			switch (par->footnotekind) {
-			case LyXParagraph::FOOTNOTE:
-			case LyXParagraph::ALGORITHM:
-				tag = "footnote";
-				inner_tag = "para";
-				present = FOOTNOTE_LIKE;
-				inner_span = true;
-				break;
-			case LyXParagraph::MARGIN:
-				tag = "sidebar";
-				inner_tag = "para";
-				present = MARGIN_LIKE;
-				inner_span = true;
-				break;
-			case LyXParagraph::FIG:
-			case LyXParagraph::WIDE_FIG:
-				tag = "figure";
-				inner_tag = "title";
-				present = FIG_LIKE;
-				inner_span = false;
-				break;
-			case LyXParagraph::TAB:
-			case LyXParagraph::WIDE_TAB:
-				tag = "table";
-				inner_tag = "title";
-				present = TAB_LIKE;
-				inner_span = false;
-				break;
-			}
-			sgmlOpenTag(os, depth, tag);
-			if ((present == TAB_LIKE) || (present == FIG_LIKE)) {
-				DocBookHandleCaption(os, inner_tag, depth,
-						     desc_on, par);
-				inner_tag.erase();
-			} else {
-				sgmlOpenTag(os, depth + 1, inner_tag);
-			}
-		}
-		// ignore all caption here, we processed them above!!!
-		if (par->layout != textclasslist
-		    .NumberOfLayout(params.textclass,
-				    "Caption").second) {
-			std::ostringstream ost;
-			SimpleDocBookOnePar(ost, extra_par, par,
-					    desc_on, depth + 2);
-			tmp_par += ost.str().c_str();
-		}
-		tmp_par = frontStrip(strip(tmp_par));
-
-		last = present;
-		par = par->next_;
-	}
-	os << tmp_par;
-	if (!inner_tag.empty()) sgmlCloseTag(os, depth + 1, inner_tag);
-	if (!extra_par.empty()) os << extra_par;
-	if (!tag.empty()) sgmlCloseTag(os, depth, tag);
-}
-#endif
 
 
 // checks, if newcol chars should be put into this line
@@ -3289,21 +3013,11 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			break;
 		}
 
-#ifndef NEW_INSETS
-		do {
-			string extra_par;
-			SimpleDocBookOnePar(ofs, extra_par, par, desc_on,
-					    depth + 1 + command_depth);
-			par = par->next_;
-			DocBookHandleFootnote(ofs, par,
-					      depth + 1 + command_depth);
-		} while(par && par->IsDummy());
-#else
 		string extra_par;
 		SimpleDocBookOnePar(ofs, extra_par, par, desc_on,
 				    depth + 1 + command_depth);
 		par = par->next();
-#endif
+
 		string end_tag;
 		// write closing SGML tags
 		switch (style.latextype) {
@@ -3536,11 +3250,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 		par->validate(features);
 
 		// and then the next paragraph
-#ifndef NEW_INSETS
-		par = par->next_;
-#else
 		par = par->next();
-#endif
 	}
 
 	// the bullet shapes are buffer level not paragraph level
@@ -3646,45 +3356,12 @@ Buffer::Lists const Buffer::getLists() const
 {
 	Lists l;
 	LyXParagraph * par = paragraph;
-#ifdef NEW_INSETS
 	bool found;
 	LyXTextClassList::size_type cap;
 	boost::tie(found, cap) = textclasslist
 		.NumberOfLayout(params.textclass, "Caption");
-#endif
 
 	while (par) {
-#ifndef NEW_INSETS
-		if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-			if (textclasslist.Style(params.textclass, 
-						par->GetLayout()).labeltype
-			    == LABEL_SENSITIVE) {
-				string type;
-				switch (par->footnotekind) {
-				case LyXParagraph::FIG:
-				case LyXParagraph::WIDE_FIG:
-					type = "LOF";
-					break;
-				case LyXParagraph::TAB:
-				case LyXParagraph::WIDE_TAB:
-					type = "LOT";
-					break;
-				case LyXParagraph::ALGORITHM:
-					type = "LOA";
-					break;
-				case LyXParagraph::FOOTNOTE:
-				case LyXParagraph::MARGIN:
-					break;
-				}
-				if (!type.empty()) {
-					SingleList & item = l[type];
-					string const str =
-						tostr(item.size()+1) + ". " + par->String(this, false);
-					item.push_back(TocItem(par, 0, str));
-				}
-			}
-		} else if (!par->IsDummy()) {
-#endif
 			char const labeltype =
 				textclasslist.Style(params.textclass, 
 						    par->GetLayout()).labeltype;
@@ -3698,7 +3375,6 @@ Buffer::Lists const Buffer::getLists() const
 						textclasslist.TextClass(params.textclass).maxcounter());
 				item.push_back(TocItem(par, depth, par->String(this, true)));
 			}
-#ifdef NEW_INSETS
 			// For each paragrph, traverse its insets and look for
 			// FLOAT_CODE
 			
@@ -3734,13 +3410,7 @@ Buffer::Lists const Buffer::getLists() const
 				lyxerr << "caption not found" << endl;
 			}
 			
-#endif
-#ifndef NEW_INSETS
-		}
-		par = par->next_;
-#else
 		par = par->next();
-#endif
 	}
 	return l;
 }
@@ -3763,11 +3433,7 @@ vector<pair<string, string> > const Buffer::getBibkeyList()
 		if (par->bibkey)
 			keys.push_back(pair<string, string>(par->bibkey->getContents(),
 							   par->String(this, false)));
-#ifndef NEW_INSETS
-		par = par->next_;
-#else
 		par = par->next();
-#endif
 	}
 
 	// Might be either using bibtex or a child has bibliography
@@ -3862,15 +3528,9 @@ void Buffer::resizeInsets(BufferView * bv)
 {
 	/// then remove all LyXText in text-insets
 	LyXParagraph * par = paragraph;
-#ifndef NEW_INSETS
-	for (; par; par = par->next_) {
-	    par->resizeInsetsLyXText(bv);
-	}
-#else
 	for (; par; par = par->next()) {
 	    par->resizeInsetsLyXText(bv);
 	}
-#endif
 }
 
 
@@ -3880,11 +3540,7 @@ void Buffer::ChangeLanguage(Language const * from, Language const * to)
 	LyXParagraph * par = paragraph;
 	while (par) {
 		par->ChangeLanguage(params, from, to);
-#ifndef NEW_INSETS
-		par = par->next_;
-#else
 		par = par->next();
-#endif
 	}
 }
 
@@ -3895,11 +3551,7 @@ bool Buffer::isMultiLingual()
 	while (par) {
 		if (par->isMultiLingual(params))
 			return true;
-#ifndef NEW_INSETS
-		par = par->next_;
-#else
 		par = par->next();
-#endif
 	}
 	return false;
 }
@@ -3911,11 +3563,7 @@ Buffer::inset_iterator::inset_iterator(LyXParagraph * paragraph,
 {
 	it = par->InsetIterator(pos);
 	if (it == par->inset_iterator_end()) {
-#ifndef NEW_INSETS
-		par = par->next_;
-#else
 		par = par->next();
-#endif
 		SetParagraph();
 	}
 }
@@ -3927,11 +3575,7 @@ void Buffer::inset_iterator::SetParagraph()
 		it = par->inset_iterator_begin();
 		if (it != par->inset_iterator_end())
 			return;
-#ifndef NEW_INSETS
-		par = par->next_;
-#else
 		par = par->next();
-#endif
 	}
 	//it = 0;
 	// We maintain an invariant that whenever par = 0 then it = 0

@@ -1,3 +1,43 @@
+2001-05-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* undo.C: remove !NEW_INSETS cruft
+
+2001-04-28  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C: remove !NEW_INSETS cruft
+
+	* text.C: remove !NEW_INSETS cruft
+
+	* tabular.C: remove !NEW_INSETS cruft
+
+	* spellchecker.C: remove !NEW_INSETS cruft
+
+	* lyxtext.h: remove !NEW_INSETS cruft
+
+	* lyxlex_pimpl.C: remove !NEW_INSETS cruft
+
+	* lyxfunc.C: remove !NEW_INSETS cruft
+
+	* lyxfind.C: remove !NEW_INSETS cruft
+
+	* lyx_cb.C: remove !NEW_INSETS cruft
+
+	* figureForm.C: remove  !NEW_INSETS cruft
+
+	* bufferview_funcs.[Ch]: remove !NEW_INSETS cruft
+
+	* buffer.[Ch]: remove !NEW_INSETS cruft
+
+	* ToolbarDefaults.C: remove !NEW_INSETS cruft
+
+	* CutAndPaste.C: remove !NEW_INSETS cruft
+
+	* BufferView_pimpl.C: remove !NEW_INSETS cruft
+
+	* BufferView2.C: remove !NEW_INSETS cruft
+
+	* BufferView.h: remove !NEW_INSETS cruft
+
 2001-05-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Lsstream.h: include LString.h before the sstream headers to

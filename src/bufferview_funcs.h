@@ -22,20 +22,12 @@ class BufferView;
 class LyXFont;
 class LyXText;
 
-#ifndef NEW_INSETS
-///
-extern void Foot(BufferView *);
-#endif
 ///
 extern void Emph(BufferView *);
 ///
 extern void Bold(BufferView *);
 ///
 extern void Noun(BufferView *);
-#ifndef NEW_INSETS
-///
-extern void Margin(BufferView *);
-#endif
 ///
 extern void Figure();
 ///
@@ -44,10 +36,6 @@ extern void Table();
 extern void Lang(BufferView *, string const &);
 ///
 extern void Number(BufferView *);
-#ifndef NEW_INSETS
-///
-extern void Melt(BufferView *);
-#endif
 ///
 extern void Tex(BufferView *);
 ///

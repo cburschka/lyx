@@ -156,10 +156,6 @@ public:
 	    Returns true if something was broken. */
         bool FullRebreak(BufferView *);
 
-#ifndef NEW_INSETS
-	///
-	LyXParagraph::footnote_flag GetFootnoteFlag(int row);
-#endif
 	///
 	Row * need_break_row;
 	///
@@ -338,29 +334,6 @@ public:
 	void GetVisibleRow(BufferView *, int y_offset, int x_offset,
 			   Row * row_ptr, int y, bool cleared=false);
 
-#ifndef NEW_INSETS
-	/* footnotes: */
-	///
-	void ToggleFootnote(BufferView *);
-	///
-	void OpenStuff(BufferView *);
-	///
-	void OpenFootnotes();
-	///
-	void OpenFootnote(BufferView *);
-	///
-	void CloseFootnotes();
-	///
-	void CloseFootnote(BufferView *);
-
-	/** turn the selection into a new environment. If there is no
-	  selection, create an empty environment
-	 */ 
-	void InsertFootnoteEnvironment(BufferView *,
-				       LyXParagraph::footnote_kind kind);
-	///
-	void MeltFootnoteEnvironment(BufferView *);
-#endif
 	///
 	void CutSelection(BufferView *, bool = true);
 	///
@@ -394,14 +367,7 @@ public:
 			  LyXAlignment align, 
 			  string labelwidthstring,
 			  bool noindent);
-#ifndef NO_PEXTRA
-	///
-	void SetParagraphExtraOpt(BufferView *, int type,
-				  string const & width,
-				  string const & widthp,
-				  int alignment, bool hfill,
-				  bool start_minipage);
-#endif
+
 	/* these things are for search and replace */
 
 	/** sets the selection over the number of characters of string,

@@ -25,12 +25,10 @@
 #include "buffer.h"
 #include "lyxtext.h"
 #include "xforms_helpers.h"
-#if 1
-#include "lyxparagraph.h"
-#endif
 
 using Liason::setMinibuffer;
 using SigC::slot;
+
 
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Paragraph Layout"))
@@ -104,25 +102,8 @@ void FormParagraph::build()
     bc_.addReadOnly (general_->check_noindent);
     bc_.addReadOnly (general_->input_labelwidth);
 
-#ifndef NO_PEXTRA
-    // the document class form
-    extra_.reset(build_paragraph_extra());
-
-    fl_set_input_return(extra_->input_pextra_width, FL_RETURN_CHANGED);
-    fl_set_input_return(extra_->input_pextra_widthp, FL_RETURN_CHANGED);
-
-    bc_.addReadOnly (extra_->radio_pextra_indent);
-    bc_.addReadOnly (extra_->radio_pextra_minipage);
-    bc_.addReadOnly (extra_->radio_pextra_floatflt);
-    bc_.addReadOnly (extra_->radio_pextra_hfill);
-    bc_.addReadOnly (extra_->radio_pextra_startmp);
-#endif
-    
     // now make them fit together
     fl_addto_tabfolder(dialog_->tabbed_folder,_("General"), general_->form);
-#ifndef NO_PEXTRA
-    fl_addto_tabfolder(dialog_->tabbed_folder,_("Extra"), extra_->form);
-#endif
 }
 
 
@@ -132,9 +113,6 @@ void FormParagraph::apply()
 	return;
 
     general_apply();
-#ifndef NO_PEXTRA
-    extra_apply();
-#endif
 
     lv_->view()->update(lv_->view()->text, 
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
@@ -149,9 +127,7 @@ void FormParagraph::update()
         return;
 
     general_update();
-#ifndef NO_PEXTRA
-    extra_update();
-#endif
+
     bc_.readOnly(lv_->buffer()->isReadonly());
 }
 
@@ -257,40 +233,6 @@ void FormParagraph::general_apply()
 }
 
 
-#ifndef NO_PEXTRA
-void FormParagraph::extra_apply()
-{
-    char const * width = fl_get_input(extra_->input_pextra_width);
-    char const * widthp = fl_get_input(extra_->input_pextra_widthp);
-    LyXText * text = lv_->view()->text;
-    int type = LyXParagraph::PEXTRA_NONE;
-    LyXParagraph::MINIPAGE_ALIGNMENT
-	alignment = LyXParagraph::MINIPAGE_ALIGN_TOP;
-    bool
-	hfill = false,
-	start_minipage = false;
-
-    if (fl_get_button(extra_->radio_pextra_indent)) {
-	type = LyXParagraph::PEXTRA_INDENT;
-    } else if (fl_get_button(extra_->radio_pextra_minipage)) {
-	type = LyXParagraph::PEXTRA_MINIPAGE;
-	hfill = fl_get_button(extra_->radio_pextra_hfill);
-	start_minipage = fl_get_button(extra_->radio_pextra_startmp);
-	if (fl_get_button(extra_->radio_pextra_top))
-	    alignment = LyXParagraph::MINIPAGE_ALIGN_TOP;
-	else if (fl_get_button(extra_->radio_pextra_middle))
-	    alignment = LyXParagraph::MINIPAGE_ALIGN_MIDDLE;
-	else if (fl_get_button(extra_->radio_pextra_bottom))
-	    alignment = LyXParagraph::MINIPAGE_ALIGN_BOTTOM;
-    } else if (fl_get_button(extra_->radio_pextra_floatflt)) {
-	type = LyXParagraph::PEXTRA_FLOATFLT;
-    }
-    text->SetParagraphExtraOpt(lv_->view(), type, width, widthp, alignment,
-			       hfill, start_minipage);
-}
-#endif
-
-
 void FormParagraph::general_update()
 {
     if (!general_.get())
@@ -331,21 +273,6 @@ void FormParagraph::general_update()
 	break;
     }
 
-#ifndef NEW_INSETS
-    fl_set_button(general_->check_lines_top,
-		  text->cursor.par()->FirstPhysicalPar()->params.lineTop());
-    
-    fl_set_button(general_->check_lines_bottom,
-		  text->cursor.par()->FirstPhysicalPar()->params.lineBottom());
-    
-    fl_set_button(general_->check_pagebreaks_top,
-		  text->cursor.par()->FirstPhysicalPar()->params.pagebreakTop());
-    
-    fl_set_button(general_->check_pagebreaks_bottom,
-		  text->cursor.par()->FirstPhysicalPar()->params.pagebreakBottom());
-    fl_set_button(general_->check_noindent,
-		  text->cursor.par()->FirstPhysicalPar()->params.noindent());
-#else
     fl_set_button(general_->check_lines_top,
 		  text->cursor.par()->params.lineTop());
     fl_set_button(general_->check_lines_bottom,
@@ -356,15 +283,10 @@ void FormParagraph::general_update()
 		  text->cursor.par()->params.pagebreakBottom());
     fl_set_button(general_->check_noindent,
 		  text->cursor.par()->params.noindent());
-#endif
+
     fl_set_input (general_->input_space_above, "");
 
-#ifndef NEW_INSETS
-    switch (text->cursor.par()->FirstPhysicalPar()->params.spaceTop().kind()) {
-#else
     switch (text->cursor.par()->params.spaceTop().kind()) {
-#endif
-
     case VSpace::NONE:
 	fl_set_choice (general_->choice_space_above, 1);
 	break;
@@ -385,29 +307,16 @@ void FormParagraph::general_update()
 	break;
     case VSpace::LENGTH:
 	fl_set_choice (general_->choice_space_above, 7);
-#ifndef NEW_INSETS
-	fl_set_input(general_->input_space_above, 
-		     text->cursor.par()->FirstPhysicalPar()->
-		     params.spaceTop().length().asString().c_str());
-#else
 	fl_set_input(general_->input_space_above, text->cursor.par()->
 		     params.spaceTop().length().asString().c_str());
-#endif
 	break;
     }
-#ifndef NEW_INSETS
-    fl_set_button(general_->check_space_above,
-		   text->cursor.par()->FirstPhysicalPar()->
-		   params.spaceTop().keep());
-    fl_set_input(general_->input_space_below, "");
-    switch (text->cursor.par()->FirstPhysicalPar()->
-	    params.spaceBottom().kind()) {
-#else
+    
     fl_set_button (general_->check_space_above,
 		   text->cursor.par()->params.spaceTop().keep());
     fl_set_input (general_->input_space_below, "");
+
     switch (text->cursor.par()->params.spaceBottom().kind()) {
-#endif
     case VSpace::NONE:
 	fl_set_choice (general_->choice_space_below, 1);
 	break;
@@ -428,29 +337,6 @@ void FormParagraph::general_update()
 	break;
     case VSpace::LENGTH:
 	fl_set_choice (general_->choice_space_below, 7);
-#ifndef NEW_INSETS
-	fl_set_input(general_->input_space_below, 
-		     text->cursor.par()->FirstPhysicalPar()->
-		     params.spaceBottom().length().asString().c_str());
-	break;
-    }
-    fl_set_button(general_->check_space_below,
-		   text->cursor.par()->FirstPhysicalPar()->
-		   params.spaceBottom().keep());
-    fl_set_button(general_->check_noindent,
-		  text->cursor.par()->FirstPhysicalPar()->params.noindent());
-
-    bool const enable = (!text->cursor.par()->FirstPhysicalPar()->InInset());
-
-    setEnabled(general_->check_pagebreaks_top,    enable);
-    setEnabled(general_->check_pagebreaks_bottom, enable);
-    
-    if (!enable) {
-	    fl_set_button(general_->check_pagebreaks_top, 0);
-	    fl_set_button(general_->check_pagebreaks_bottom, 0);
-    }
-
-#else
         fl_set_input(general_->input_space_below, text->cursor.par()->
 		     params.spaceBottom().length().asString().c_str());
 	break;
@@ -459,78 +345,7 @@ void FormParagraph::general_update()
 		   text->cursor.par()->params.spaceBottom().keep());
     fl_set_button(general_->check_noindent,
 		  text->cursor.par()->params.noindent());
-#endif
 }
-
-
-#ifndef NO_PEXTRA
-void FormParagraph::extra_update()
-{
-    if (!lv_->view()->available() || !extra_.get())
-        return;
-
-    LyXParagraph * par = lv_->view()->text->cursor.par();
-
-    setEnabled(extra_->input_pextra_width,  true);
-    setEnabled(extra_->input_pextra_widthp, true);
-
-    fl_set_input(extra_->input_pextra_width,
-		 par->params.pextraWidth().c_str());
-    fl_set_input(extra_->input_pextra_widthp,
-		 par->params.pextraWidthp().c_str());
-    switch (par->params.pextraAlignment()) {
-    case LyXParagraph::MINIPAGE_ALIGN_TOP:
-	fl_set_button(extra_->radio_pextra_top, 1);
-	break;
-    case LyXParagraph::MINIPAGE_ALIGN_MIDDLE:
-	fl_set_button(extra_->radio_pextra_middle, 1);
-	break;
-    case LyXParagraph::MINIPAGE_ALIGN_BOTTOM:
-	fl_set_button(extra_->radio_pextra_bottom, 1);
-	break;
-    }
-    fl_set_button(extra_->radio_pextra_hfill,
-		  par->params.pextraHfill());
-    fl_set_button(extra_->radio_pextra_startmp,
-		  par->params.pextraStartMinipage());
-    if (par->params.pextraType() == LyXParagraph::PEXTRA_INDENT) {
-	fl_set_button(extra_->radio_pextra_indent, 1);
-	fl_set_button(extra_->radio_pextra_minipage, 0);
-	fl_set_button(extra_->radio_pextra_floatflt, 0);
-	setEnabled(extra_->radio_pextra_top,    false);
-	setEnabled(extra_->radio_pextra_middle, false);
-	setEnabled(extra_->radio_pextra_bottom, false);
-	input(extra_->radio_pextra_indent, 0);
-    } else if (par->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE) {
-	fl_set_button(extra_->radio_pextra_indent, 0);
-	fl_set_button(extra_->radio_pextra_minipage, 1);
-	fl_set_button(extra_->radio_pextra_floatflt, 0);
-	setEnabled(extra_->radio_pextra_top,    true);
-	setEnabled(extra_->radio_pextra_middle, true);
-	setEnabled(extra_->radio_pextra_bottom, true);
-	input(extra_->radio_pextra_minipage, 0);
-    } else if (par->params.pextraType() == LyXParagraph::PEXTRA_FLOATFLT) {
-	fl_set_button(extra_->radio_pextra_indent, 0);
-	fl_set_button(extra_->radio_pextra_minipage, 0);
-	fl_set_button(extra_->radio_pextra_floatflt, 1);
-	setEnabled(extra_->radio_pextra_top,    false);
-	setEnabled(extra_->radio_pextra_middle, false);
-	setEnabled(extra_->radio_pextra_bottom, false);
-	input(extra_->radio_pextra_floatflt, 0);
-    } else {
-	fl_set_button(extra_->radio_pextra_indent, 0);
-	fl_set_button(extra_->radio_pextra_minipage, 0);
-	fl_set_button(extra_->radio_pextra_floatflt, 0);
-	setEnabled(extra_->input_pextra_width,  false);
-	setEnabled(extra_->input_pextra_widthp, false);
-	setEnabled(extra_->radio_pextra_top,    false);
-	setEnabled(extra_->radio_pextra_middle, false);
-	setEnabled(extra_->radio_pextra_bottom, false);
-	input(0, 0);
-    }
-    fl_hide_object(dialog_->text_warning);
-}
-#endif
 
 
 bool FormParagraph::input(FL_OBJECT * ob, long)
@@ -553,61 +368,6 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     if (fl_get_choice (general_->choice_space_below) != 7)
         fl_set_input (general_->input_space_below, "");
 
-#ifndef NO_PEXTRA
-    //
-    // then the extra form
-    //
-    if (ob == extra_->radio_pextra_indent) {
-	bool const enable = (fl_get_button(extra_->radio_pextra_indent) != 0);
-
-	if (enable) {
-	    fl_set_button(extra_->radio_pextra_minipage, 0);
-	    fl_set_button(extra_->radio_pextra_floatflt, 0);
-	}
-
-	setEnabled(extra_->input_pextra_width,  enable);
-	setEnabled(extra_->input_pextra_widthp, enable);
-
-	setEnabled(extra_->radio_pextra_top,     false);
-	setEnabled(extra_->radio_pextra_middle,  false);
-	setEnabled(extra_->radio_pextra_bottom,  false);
-	setEnabled(extra_->radio_pextra_hfill,   false);
-	setEnabled(extra_->radio_pextra_startmp, false);
-
-    } else if (ob == extra_->radio_pextra_minipage) {
-	bool const enable = (fl_get_button(extra_->radio_pextra_minipage) != 0);
-	
-	if (enable) {
-	    fl_set_button(extra_->radio_pextra_indent, 0);
-	    fl_set_button(extra_->radio_pextra_floatflt, 0);
-	}
-	
-	setEnabled(extra_->input_pextra_width,   enable);
-	setEnabled(extra_->input_pextra_widthp,  enable);
-	setEnabled(extra_->radio_pextra_top,     enable);
-	setEnabled(extra_->radio_pextra_middle,  enable);
-	setEnabled(extra_->radio_pextra_bottom,  enable);
-	setEnabled(extra_->radio_pextra_hfill,   enable);
-	setEnabled(extra_->radio_pextra_startmp, enable);
-    } else if (ob == extra_->radio_pextra_floatflt) {
-	bool const enable = (fl_get_button(extra_->radio_pextra_floatflt) != 0);
-	
-	if (enable) {
-	    fl_set_button(extra_->radio_pextra_indent, 0);
-	    fl_set_button(extra_->radio_pextra_minipage, 0);
-	}
-	
-	setEnabled(extra_->input_pextra_width,  enable);
-	setEnabled(extra_->input_pextra_widthp, enable);
-
-	setEnabled(extra_->radio_pextra_top,     false);
-	setEnabled(extra_->radio_pextra_middle,  false);
-	setEnabled(extra_->radio_pextra_bottom,  false);
-	setEnabled(extra_->radio_pextra_hfill,   false);
-	setEnabled(extra_->radio_pextra_startmp, false);
-    }
-#endif
-    
     //
     // first the general form
     //
@@ -634,44 +394,6 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
         }
     }
 
-#ifndef NO_PEXTRA
-    //
-    // then the extra form
-    //
-    int n = fl_get_button(extra_->radio_pextra_indent) +
-	fl_get_button(extra_->radio_pextra_minipage) +
-	fl_get_button(extra_->radio_pextra_floatflt);
-    string s1 = fl_get_input(extra_->input_pextra_width);
-    string s2 = fl_get_input(extra_->input_pextra_widthp);
-    if (!n) { // no button pressed both should be deactivated now
-	setEnabled(extra_->input_pextra_width,  false);
-	setEnabled(extra_->input_pextra_widthp, false);
-	fl_hide_object(dialog_->text_warning);
-    } else if (s1.empty() && s2.empty()) {
-	setEnabled(extra_->input_pextra_width,  true);
-	setEnabled(extra_->input_pextra_widthp, true);
-	fl_hide_object(dialog_->text_warning);
-	ret = false;
-    } else if (!s1.empty()) { // LyXLength parameter
-	setEnabled(extra_->input_pextra_width,  true);
-	setEnabled(extra_->input_pextra_widthp, false);
-	if (!isValidLength(s1)) {
-	    fl_set_object_label(dialog_->text_warning,
-			_("Warning: Invalid Length (valid example: 10mm)"));
-	    fl_show_object(dialog_->text_warning);
-	    ret = false;
-	}
-    } else { // !s2.empty() % parameter
-	setEnabled(extra_->input_pextra_width,  false);
-	setEnabled(extra_->input_pextra_widthp, true);
-	if ((lyx::atoi(s2) < 0 ) || (lyx::atoi(s2) > 100)) {
-	    ret = false;
-	    fl_set_object_label(dialog_->text_warning,
-			_("Warning: Invalid percent value (0-100)"));
-	    fl_show_object(dialog_->text_warning);
-	}
-    }
-#endif
     return ret;
 }
 

@@ -1,3 +1,13 @@
+2001-05-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettext.C: remvoe !NEW_INSETS cruft
+
+	* insettabular.C: remove !NEW_INSETS cruft
+
+	* insetcollapsable.h: remove !NEW_INSETS cruft
+
+	* insetbib.C: remove !NEW_INSETS cruft
+
 2001-04-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insettoc.C: hack to make listof algorithm work

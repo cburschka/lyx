@@ -42,21 +42,6 @@ bool IsInsetChar(char c) {
 }
 
 
-#ifndef NEW_INSETS
-///
-inline
-bool IsFloatChar(char c) {
-	return (c == LyXParagraph::META_FOOTNOTE
-		|| c == LyXParagraph::META_MARGIN
-		|| c == LyXParagraph::META_FIG
-		|| c == LyXParagraph::META_TAB
-		|| c == LyXParagraph::META_ALGORITHM
-		|| c == LyXParagraph::META_WIDE_FIG
-		|| c == LyXParagraph::META_WIDE_TAB);
-}
-#endif
-
-
 ///
 inline
 bool IsLineSeparatorChar(char c) {
@@ -124,9 +109,6 @@ bool IsWordChar(unsigned char c) {
 	return !( IsSeparatorChar( c )
 		  || IsKommaChar( c )
 		  || IsHfillChar( c )
-#ifndef NEW_INSETS
-		  || IsFloatChar( c )
-#endif
 		  || IsInsetChar( c ));
 }
 

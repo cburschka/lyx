@@ -20,10 +20,6 @@
 #include "lyxlex.h"
 #include "debug.h"
 #include "lyxlex.h"
-#if 1
-// only until we don't need access to the NEW_INSETS anymore
-#include "lyxparagraph.h"
-#endif
 
 using std::endl;
 
@@ -62,13 +58,9 @@ void ToolbarDefaults::init()
 	add(LFUN_FREE);
 	add(SEPARATOR);
 	
-#ifndef NEW_INSETS	
-	add(LFUN_FOOTMELT);
-	add(LFUN_MARGINMELT);
-#else
 	add(LFUN_INSET_FOOTNOTE);
 	add(LFUN_INSET_MARGINAL);
-#endif
+
 	add(LFUN_DEPTH);
 	add(SEPARATOR);
 

@@ -1475,10 +1475,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 
 	LyXParagraph * par = new LyXParagraph;
 	LyXParagraph * return_par = 0;
-#ifndef NEW_INSETS
-	LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
-	LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
-#endif
+
 	string tmptok;
 	int pos = 0;
 	char depth = 0;
@@ -1499,14 +1496,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		if (owner_->BufferOwner()->parseSingleLyXformat2Token(lex, par,
 															  return_par,
 															  token, pos,
-															  depth, font
-#ifndef NEW_INSETS
-															  ,
-															  footnoteflag,
-															  footnotekind
-#endif
-															  ))
-		{
+															  depth, font)) {
 			// the_end read
 			lex.pushToken(token);
 			break;
@@ -1524,12 +1514,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	InsetText * inset = GetCellInset(cell);
 	int row;
 
-#ifndef NEW_INSETS
-	for (int i = 0; i < par->Last(); ++i)
-#else
-	for (int i = 0; i < par->size(); ++i)
-#endif
-	{
+	for (int i = 0; i < par->size(); ++i) {
 		if (par->IsNewline(i)) {
 			++cell;
 			if (cell > GetNumberOfCells()) {
@@ -1558,11 +1543,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 			}
 		}
 		par->CopyIntoMinibuffer(*owner_->BufferOwner(), i);
-#ifndef NEW_INSETS
-		inset->par->InsertFromMinibuffer(inset->par->Last());
-#else
 		inset->par->InsertFromMinibuffer(inset->par->size());
-#endif
 	}
 	delete par;
 	Reinit();
@@ -2165,11 +2146,8 @@ int LyXTabular::Latex(Buffer const * buf,
 			InsetText * inset = GetCellInset(cell);
 
 			bool rtl = inset->par->isRightToLeftPar(buf->params) &&
-#ifndef NEW_INSETS
-				inset->par->Last() > 0 && GetPWidth(cell).empty();
-#else
-			inset->par->size() > 0 && GetPWidth(cell).empty();
-#endif
+					inset->par->size() > 0 && GetPWidth(cell).empty();
+
 			if (rtl)
 				os << "\\R{";
 			ret += inset->Latex(buf, os, fragile, fp);
@@ -2565,20 +2543,6 @@ std::vector<string> const LyXTabular::getLabelList() const
 }
 
 			
-#ifndef NEW_INSETS
-LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
-{
-	LyXParagraph * par = GetCellInset(cell)->par;
-
-	for (; par; par = par->next_) {
-		for (int i = 0; i < par->Last(); ++i) {
-			if (par->GetChar(i)	== LyXParagraph::META_NEWLINE)
-				return BOX_PARBOX;
-		}
-	}
-	return BOX_NONE;
-}
-#else
 LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 {
 	LyXParagraph * par = GetCellInset(cell)->par;
@@ -2591,7 +2555,7 @@ LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 	}
 	return BOX_NONE;
 }
-#endif
+
 /* Emacs:
  * Local variables:
  * tab-width: 4

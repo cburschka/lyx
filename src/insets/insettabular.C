@@ -941,14 +941,8 @@ InsetTabular::LocalDispatch(BufferView * bv,
 		if (!copySelection(bv))
 			break;
 		bv->text->SetUndo(bv->buffer(), Undo::DELETE,
-#ifndef NEW_INSETS
-				  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
-				  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
-#else
 				  bv->text->cursor.par()->previous(),
-				  bv->text->cursor.par()->next()
-#endif
-			);
+				  bv->text->cursor.par()->next());
 		cutSelection();
 		UpdateLocal(bv, INIT, true);
 		break;
@@ -1027,14 +1021,8 @@ InsetTabular::LocalDispatch(BufferView * bv,
 	case LFUN_PASTE:
 		if (hasPasteBuffer()) {
 			bv->text->SetUndo(bv->buffer(), Undo::INSERT,
-#ifndef NEW_INSETS
-					  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
-					  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
-#else
 					  bv->text->cursor.par()->previous(),
-					  bv->text->cursor.par()->next()
-#endif
-				);
+					  bv->text->cursor.par()->next());
 			pasteSelection(bv);
 			UpdateLocal(bv, INIT, true);
 			break;
@@ -1558,14 +1546,8 @@ void InsetTabular::TabularFeatures(BufferView * bv,
 		sel_row_start = sel_row_end = tabular->row_of_cell(actcell);
 	}
 	bv->text->SetUndo(bv->buffer(), Undo::FINISH,
-#ifndef NEW_INSETS
-			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
-			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
-#else
 			  bv->text->cursor.par()->previous(),
-			  bv->text->cursor.par()->next()
-#endif
-		);
+			  bv->text->cursor.par()->next());
 
 	int row = tabular->row_of_cell(actcell);
 	int column = tabular->column_of_cell(actcell);

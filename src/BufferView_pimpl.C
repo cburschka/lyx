@@ -807,73 +807,6 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		return;
 	}
 
-#ifndef NEW_INSETS
-	// check whether we want to open a float
-	if (bv_->text) {
-		bool hit = false;
-		char c = ' ';
-		if (bv_->text->cursor.pos() <
-		    bv_->text->cursor.par()->Last()) {
-			c = bv_->text->cursor.par()->
-				GetChar(bv_->text->cursor.pos());
-		}
-	       if(!bv_->text->selection)
-		if (c == LyXParagraph::META_FOOTNOTE
-		    || c == LyXParagraph::META_MARGIN
-		    || c == LyXParagraph::META_FIG
-		    || c == LyXParagraph::META_TAB
-		    || c == LyXParagraph::META_WIDE_FIG
-		    || c == LyXParagraph::META_WIDE_TAB
-                    || c == LyXParagraph::META_ALGORITHM){
-			hit = true;
-		} else
-			if (bv_->text->cursor.pos() - 1 >= 0) {
-			c = bv_->text->cursor.par()->
-				GetChar(bv_->text->cursor.pos() - 1);
-			if (c == LyXParagraph::META_FOOTNOTE
-			    || c == LyXParagraph::META_MARGIN
-			    || c == LyXParagraph::META_FIG
-			    || c == LyXParagraph::META_TAB
-			    || c == LyXParagraph::META_WIDE_FIG 
-			    || c == LyXParagraph::META_WIDE_TAB
-			    || c == LyXParagraph::META_ALGORITHM){
-				// We are one step too far to the right
-				bv_->text->CursorLeft(bv_);
-				hit = true;
-			}
-		}
-		if (hit == true) {
-			bv_->toggleFloat();
-			selection_possible = false;
-			return;
-		}
-	}
-	// Do we want to close a float? (click on the float-label)
-	if (bv_->text->cursor.row()->par()->footnoteflag == 
-	    LyXParagraph::OPEN_FOOTNOTE
-	    && bv_->text->cursor.row()->previous() &&
-	    bv_->text->cursor.row()->previous()->par()->
-	    footnoteflag != LyXParagraph::OPEN_FOOTNOTE){
-		LyXFont font(LyXFont::ALL_SANE);
-		font.setSize(LyXFont::SIZE_FOOTNOTE);
-
-		int box_x = 20; // LYX_PAPER_MARGIN;
-		box_x += lyxfont::width(" wide-tab ", font);
-
-		unsigned int screen_first = bv_->text->first;
-
-		if (x < box_x
-		    && y + screen_first > bv_->text->cursor.y() -
-		    bv_->text->cursor.row()->baseline()
-		    && y + screen_first < bv_->text->cursor.y() -
-		    bv_->text->cursor.row()->baseline()
-		    + lyxfont::maxAscent(font) * 1.2 + lyxfont::maxDescent(font) * 1.2) {
-			bv_->toggleFloat();
-			selection_possible = false;
-			return;
-		}
-	}
-#else
 	// check whether we want to open a float
 	if (bv_->text) {
 		bool hit = false;
@@ -892,7 +825,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			return;
 		}
 	}
-#endif
+
 	// Maybe we want to edit a bibitem ale970302
 	if (bv_->text->cursor.par()->bibkey && x < 20 + 
 	    bibitemMaxWidth(bv_, textclasslist.
@@ -923,11 +856,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 	text->SetCursor(bv_, cursor, cursor.par(),cursor.pos(),true);
 
 
-#ifndef NEW_INSETS
-	if (cursor.pos() < cursor.par()->Last()
-#else
 	if (cursor.pos() < cursor.par()->size()
-#endif
 	    && cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 	    && cursor.par()->GetInset(cursor.pos())
 	    && cursor.par()->GetInset(cursor.pos())->Editable()) {
@@ -1219,7 +1148,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (i >= saved_positions_num)
 		return;
 
-	string fname = saved_positions[i].filename;
+	string const fname = saved_positions[i].filename;
 
 	beforeChange(bv_->text);
 
@@ -1234,13 +1163,9 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (!par)
 		return;
 
-#ifndef NEW_INSETS
-	bv_->text->SetCursor(bv_, par,
-			     min(par->Last(), saved_positions[i].par_pos));
-#else
 	bv_->text->SetCursor(bv_, par,
 			     min(par->size(), saved_positions[i].par_pos));
-#endif
+
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
 	if (i > 0) {
 		string const str = _("Moved to bookmark") + ' ' + tostr(i);
@@ -1838,11 +1763,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(TEXT(bv_), BufferView::SELECT|BufferView::FITCUR);
 		if (is_rtl)
 			TEXT(bv_)->CursorLeft(bv_, false);
-#ifndef NEW_INSETS
-		if (TEXT(bv_)->cursor.pos() < TEXT(bv_)->cursor.par()->Last()
-#else
 		if (TEXT(bv_)->cursor.pos() < TEXT(bv_)->cursor.par()->size()
-#endif
 		    && TEXT(bv_)->cursor.par()->GetChar(TEXT(bv_)->cursor.pos())
 		    == LyXParagraph::META_INSET
 		    && TEXT(bv_)->cursor.par()->GetInset(TEXT(bv_)->cursor.pos())
@@ -1880,11 +1801,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (!is_rtl)
 			TEXT(bv_)->CursorLeft(bv_, false);
 		if ((is_rtl || cur != TEXT(bv_)->cursor) && // only if really moved!
-#ifndef NEW_INSETS
-		    TEXT(bv_)->cursor.pos() < TEXT(bv_)->cursor.par()->Last() &&
-#else
 		    TEXT(bv_)->cursor.pos() < TEXT(bv_)->cursor.par()->size() &&
-#endif
 		    (TEXT(bv_)->cursor.par()->GetChar(TEXT(bv_)->cursor.pos()) ==
 		     LyXParagraph::META_INSET) &&
 		    TEXT(bv_)->cursor.par()->GetInset(TEXT(bv_)->cursor.pos()) &&
@@ -2255,11 +2172,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		LyXCursor cursor = TEXT(bv_)->cursor;
 
 		if (!TEXT(bv_)->selection) {
-#ifndef NEW_INSETS
-			if (cursor.pos() == cursor.par()->Last()) {
-#else
 			if (cursor.pos() == cursor.par()->size()) {
-#endif
 				TEXT(bv_)->CursorRight(bv_);
 				cursor = TEXT(bv_)->cursor;
 				if (cursor.pos() == 0

@@ -968,12 +968,6 @@ string const LyXFunc::Dispatch(int ac,
 		}
 		break;
 		
-#ifndef NEW_INSETS
-	case LFUN_OPENSTUFF:
-		owner->view()->openStuff();
-		break;
-#endif
-		
 	case LFUN_HYPHENATION:
 		owner->view()->hyphenationPoint();
 		break;
@@ -1015,43 +1009,12 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->setState();
 		owner->showState();
 		break;
-#ifndef NEW_INSETS		
-	case LFUN_MELT:
-		Melt(owner->view());
-		break;
-#endif
+
 	case LFUN_RECONFIGURE:
 		Reconfigure(owner->view());
 		break;
-#ifndef NEW_INSETS
-	case LFUN_FOOTMELT:
-		if (owner->view()->available()
-		    && !TEXT()->selection
-		    && TEXT()->cursor.par()->footnoteflag
-		    != LyXParagraph::NO_FOOTNOTE)
-			{ // only melt footnotes with FOOTMELT, not margins etc
-				if (TEXT()->cursor.par()->footnotekind == LyXParagraph::FOOTNOTE)
-					Melt(owner->view());
-			}
-		else
-			Foot(owner->view()); 
-		owner->view()->setState();
-		break;
 
-	case LFUN_MARGINMELT:
-		if (owner->view()->available()
-		    && !TEXT()->selection
-		    && TEXT()->cursor.par()->footnoteflag
-		    != LyXParagraph::NO_FOOTNOTE) {
-			// only melt margins
-			if (TEXT()->cursor.par()->footnotekind == LyXParagraph::MARGIN)
-				Melt(owner->view());
-		} else
-			Margin(owner->view()); 
-		owner->view()->setState();
-		break;
-#endif
-#ifndef NEW_INSETS
+#if 0
 	case LFUN_FLOATSOPERATE:
 		if (argument == "openfoot")
 			owner->view()->allFloats(1,0);
@@ -1422,35 +1385,6 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 
-#ifndef NEW_INSETS
-	case LFUN_INSERTFOOTNOTE: 
-	{
-		LyXParagraph::footnote_kind kind;
-		if (argument == "footnote") {
-			kind = LyXParagraph::FOOTNOTE;
-		} else if (argument == "margin") {
-			kind = LyXParagraph::MARGIN;
-		} else if (argument == "figure") {
-			kind = LyXParagraph::FIG;
-		} else if (argument == "table") {
-			kind = LyXParagraph::TAB;
-		} else if (argument == "wide-fig") {
-			kind = LyXParagraph::WIDE_FIG;
-		} else if (argument == "wide-tab") {
-			kind = LyXParagraph::WIDE_TAB;
-		} else if (argument == "algorithm") {
-			kind = LyXParagraph::ALGORITHM;
-		} else {
-			setErrorMessage(N_("Unknown kind of footnote"));
-			break;
-		}
-		TEXT()->InsertFootnoteEnvironment(owner->view(), kind);
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		owner->view()->setState();
-	}
-	break;
-#endif
 	case LFUN_TOGGLECURSORFOLLOW:
 		lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
 		break;

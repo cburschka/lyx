@@ -31,17 +31,6 @@ Undo::Undo(undo_kind kind_arg,
 }
 
 
-#ifndef NEW_INSETS
-Undo::~Undo()
-{
-	LyXParagraph * tmppar;
-	while (par) {
-		tmppar = par;
-		par = par->next_;
-		delete tmppar;
-	}
-}
-#else
 Undo::~Undo()
 {
 	LyXParagraph * tmppar;
@@ -51,7 +40,6 @@ Undo::~Undo()
 		delete tmppar;
 	}
 }
-#endif
 
 
 UndoStack::UndoStack()

@@ -261,11 +261,7 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 			int const wx = par->bibkey->width(bv, font);
 			if (wx > w) w = wx;
 		}
-#ifndef NEW_INSETS
-		par = par->next_;
-#else
 		par = par->next();
-#endif
 	}
 	return w;
 }
@@ -290,11 +286,7 @@ string const bibitemWidest(Buffer const * buffer)
 				bkey = par->bibkey;
 			}
 		}
-#ifndef NEW_INSETS
-		par = par->next_;
-#else
 		par = par->next();
-#endif
 	}
     
 	if (bkey && !bkey->getBibLabel().empty())
