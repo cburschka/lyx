@@ -20,7 +20,7 @@
 
 struct InsetFloatParams {
 	///
-	InsetFloatParams() : placement("htbp"), wide(false) {}
+	InsetFloatParams() : wide(false) {}
 	///
 	void write(std::ostream & os) const;
 	///
