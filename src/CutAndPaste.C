@@ -670,6 +670,7 @@ void eraseSelection(LCursor & cur)
 	CursorSlice const & i1 = cur.selBegin();
 	CursorSlice const & i2 = cur.selEnd();
 	if (i1.inset().asMathInset()) {
+		cur.top() = i1;
 		if (i1.idx() == i2.idx()) {
 			i1.cell().erase(i1.pos(), i2.pos());
 		} else {
@@ -680,9 +681,9 @@ void eraseSelection(LCursor & cur)
 			for (InsetBase::row_type row = r1; row <= r2; ++row)
 				for (InsetBase::col_type col = c1; col <= c2; ++col)
 					p->cell(p->index(row, col)).clear();
+			// We've deleted the whole cell. Only pos 0 is valid.
+			cur.pos() = 0; 
 		}
-		cur.top() = i1;
-		cur.pos() = 0; // We've deleted the whole cell. Only pos 0 is valid.
 		cur.resetAnchor();
 	} else {
 		lyxerr << "can't erase this selection 1" << endl;

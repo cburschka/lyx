@@ -1,3 +1,9 @@
+2005-04-06  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* CutAndPaste.C (eraseSelection): more precise fix for bug 1654,
+	preventing inserted font, deco, delim insets jumping to start of
+	surrounding inset.
+
 2005-03-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (dispatch): translate message before sending it to the
