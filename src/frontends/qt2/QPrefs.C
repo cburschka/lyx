@@ -110,8 +110,8 @@ void QPrefs::apply()
 
 	QPrefUIModule * uimod(dialog_->uiModule); 
 
-	rc.bind_file = uimod->uiFileED->text().latin1();
-	rc.ui_file = uimod->bindFileED->text().latin1();
+	rc.ui_file = uimod->uiFileED->text().latin1();
+	rc.bind_file = uimod->bindFileED->text().latin1();
 	rc.cursor_follows_scrollbar = uimod->cursorFollowsCB->isChecked(); 
 	rc.wheel_jump = uimod->wheelMouseSB->value();
 	rc.autosave = uimod->autoSaveSB->value() * 60;
@@ -322,8 +322,8 @@ void QPrefs::update_contents()
 
 	QPrefUIModule * uimod(dialog_->uiModule); 
 
-	uimod->uiFileED->setText(rc.bind_file.c_str());
-	uimod->bindFileED->setText(rc.ui_file.c_str());
+	uimod->uiFileED->setText(rc.ui_file.c_str());
+	uimod->bindFileED->setText(rc.bind_file.c_str());
 	uimod->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar); 
 	uimod->wheelMouseSB->setValue(rc.wheel_jump);
 	// convert to minutes
