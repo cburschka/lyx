@@ -1,3 +1,33 @@
+2000-10-01  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lib/configure.m4
+	* lib/build-listerrors
+	* src/converter.C
+	* src/exporter.C: Add literate programming support to the export code
+
+	* src/buffer.C
+	* src/lyx_cb.C: Remove old literate code.
+
+	* src/lyxrc.[Ch]: Remove many obsolete (due to new export code)
+ 	variables.
+
+	* src/lyxfunc.C (getStatus): Use Exporter::IsExportable
+	* src/converter.C (View, Convert): Use QuoteName.
+
+	* src/insets/figinset.C (Preview): Use Formats::View.
+
+	* lib/configure.m4: Add sgml->dvi converter to lyxrc.default
+	
+2000-10-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfunc.C (Dispatch): move declaration of text variable at
+	the top of the function, because compaq cxx complains that the
+	"goto exit_with_message" when the function is disabled bypasses
+	its initialization.
+	(MenuNew): try a better fix for the generation of new file names.
+	This time, I used AddName() instead of AddPath(), hoping Juergen
+	will be happier :)
+
 2000-10-03  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/forms/form_preferences.fd:
@@ -238,7 +268,7 @@
 
 2000-09-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* several files: type canges to reduce the number of warnings and
+	* several files: type changes to reduce the number of warnings and
 	to unify type hangling a bit. Still much to do. 
 
 2000-09-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>

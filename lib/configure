@@ -225,9 +225,9 @@ PATH=${save_PATH}
 
 # Search something to process a literate document
 echo $ac_n "checking for a Literate programming processor""... $ac_c"
-echo "$ac_t""("noweave -delay -index")"
+echo "$ac_t""("noweave -delay -index \$\$FName > \$\$OutName")"
 LITERATE=
-for ac_prog in "noweave -delay -index"
+for ac_prog in "noweave -delay -index \$\$FName > \$\$OutName"
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog ; ac_word=$2
@@ -258,7 +258,7 @@ if test -z "$LITERATE" ; then
   LITERATE=none
 fi
 
-if test "$LITERATE" = "none"; then LITERATE_EXT="none"; else LITERATE_EXT=".nw"; fi
+if test "$LITERATE" = "none"; then LITERATE_EXT="none"; else LITERATE_EXT="nw"; fi
 
 # Search for a Postscript interpreter
 echo $ac_n "checking for a Postscript interpreter""... $ac_c"
@@ -716,10 +716,12 @@ fi
 case $LINUXDOC in
   sgml2lyx)
     linuxdoc_to_latex_command="sgml2latex \$\$FName"
+    linuxdoc_to_dvi_command="sgml2latex -o dvi \$\$FName"
     linuxdoc_to_html_command="sgml2html \$\$FName"
     linuxdoc_to_lyx_command="sgml2lyx";;
   none)
     linuxdoc_to_latex_command="none"
+    linuxdoc_to_dvi_command="none"
     linuxdoc_to_html_command="none"
     linuxdoc_to_lyx_command="none";;
 esac
@@ -950,21 +952,22 @@ cat >lyxrc.defaults <<EOF
 \\converter dvi ps "$dvi_to_ps_command" ""
 \\converter ps pdf "$ps_to_pdf_command" ""
 \\converter sgml tex "$linuxdoc_to_latex_command" ""
+\\converter sgml dvi "$linuxdoc_to_dvi_command" ""
 \\converter sgml html "$linuxdoc_to_html_command" ""
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
 \\converter tex html "$latex_to_html_command"
 	"originaldir,needaux"
+\\converter $LITERATE_EXT tex "$LITERATE" ""
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"
 \\viewer pdf "$PDF_VIEWER"
 \\viewer ps "$GHOSTVIEW -swap"
-\\viewer pspic "$GHOSTVIEW"
+\\viewer eps "$GHOSTVIEW"
 
 \\relyx_command "$RELYX"
 \\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
-\\literate_command "$LITERATE"
 \\literate_extension "$LITERATE_EXT"
 \\ps_command "$GS"
 \\ascii_roff_command "$ascii_roff_command"

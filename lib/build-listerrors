@@ -14,6 +14,6 @@ else
     lyx=lyx 
 fi
 
-$lyx --export tex examples/Literate.lyx
-mv examples/Literate.tex Literate.nw
+$lyx --export nw examples/Literate.lyx
+mv examples/Literate.nw Literate.nw
 notangle -Rbuild-script Literate.nw | sh

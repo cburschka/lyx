@@ -186,8 +186,8 @@ SEARCH_PROG([for reLyX LaTeX-to-LyX translator],RELYX,reLyX)
 PATH=${save_PATH}
 
 # Search something to process a literate document
-SEARCH_PROG([for a Literate programming processor],LITERATE,"noweave -delay -index")
-if test "$LITERATE" = "none"; then LITERATE_EXT="none"; else LITERATE_EXT=".nw"; fi
+SEARCH_PROG([for a Literate programming processor],LITERATE,"noweave -delay -index \$\$FName > \$\$OutName")
+if test "$LITERATE" = "none"; then LITERATE_EXT="none"; else LITERATE_EXT="nw"; fi
 
 # Search for a Postscript interpreter
 SEARCH_PROG([for a Postscript interpreter],GS, gs)
@@ -249,10 +249,12 @@ fi
 case $LINUXDOC in
   sgml2lyx)
     linuxdoc_to_latex_command="sgml2latex \$\$FName"
+    linuxdoc_to_dvi_command="sgml2latex -o dvi \$\$FName"
     linuxdoc_to_html_command="sgml2html \$\$FName"
     linuxdoc_to_lyx_command="sgml2lyx";;
   none)
     linuxdoc_to_latex_command="none"
+    linuxdoc_to_dvi_command="none"
     linuxdoc_to_html_command="none"
     linuxdoc_to_lyx_command="none";;
 esac
@@ -372,21 +374,22 @@ cat >lyxrc.defaults <<EOF
 \\converter dvi ps "$dvi_to_ps_command" ""
 \\converter ps pdf "$ps_to_pdf_command" ""
 \\converter sgml tex "$linuxdoc_to_latex_command" ""
+\\converter sgml dvi "$linuxdoc_to_dvi_command" ""
 \\converter sgml html "$linuxdoc_to_html_command" ""
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
 \\converter tex html "$latex_to_html_command"
 	"originaldir,needaux"
+\\converter $LITERATE_EXT tex "$LITERATE" ""
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"
 \\viewer pdf "$PDF_VIEWER"
 \\viewer ps "$GHOSTVIEW -swap"
-\\viewer pspic "$GHOSTVIEW"
+\\viewer eps "$GHOSTVIEW"
 
 \\relyx_command "$RELYX"
 \\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
-\\literate_command "$LITERATE"
 \\literate_extension "$LITERATE_EXT"
 \\ps_command "$GS"
 \\ascii_roff_command "$ascii_roff_command"
