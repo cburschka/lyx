@@ -21,13 +21,13 @@ using std::max;
 using std::min;
 
 Row::Row()
-	: pos_(0), fill_(0), height_(0), width_(0), y_(0),
+	: pos_(0), end_(0), fill_(0), height_(0), width_(0), y_(0),
 	  ascent_of_text_(0), baseline_(0)
 {}
 
 
-Row::Row(pos_type po)
-	: pos_(po), fill_(0), height_(0), width_(0), y_(0),
+Row::Row(pos_type pos)
+	: pos_(pos), end_(0), fill_(0), height_(0), width_(0), y_(0),
 	  ascent_of_text_(0), baseline_(0)
 {}
 
@@ -59,6 +59,18 @@ void Row::pos(pos_type p)
 pos_type Row::pos() const
 {
 	return pos_;
+}
+
+
+void Row::end(pos_type p)
+{
+	end_ = p;
+}
+
+
+pos_type Row::end() const
+{
+	return end_;
 }
 
 
@@ -141,6 +153,6 @@ void Row::dump(const char * s) const
 		<< " fill: " << fill_
 		<< " ascent_of_text: " << ascent_of_text_
 		<< " top_of_text: " << top_of_text_
-		<< " y: " << y_ << "\n";
+		<< " y: " << y_ << std::endl;
 }
 

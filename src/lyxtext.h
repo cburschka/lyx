@@ -402,9 +402,7 @@ public:
 	int singleWidth(ParagraphList::iterator pit, lyx::pos_type pos) const;
 	///
 	int singleWidth(ParagraphList::iterator pit,
-		lyx::pos_type pos, char c) const;
-	/// rebuild row cache
-	void rebuildRows(ParagraphList::iterator pit);
+		lyx::pos_type pos, char c, LyXFont const & Font) const;
 
 	/// return the color of the canvas
 	LColor::color backgroundColor() const;
@@ -450,8 +448,8 @@ private:
 	 */
 
 
-	/// return the pos value *before* which a row should break.
-	/// for example, the pos at which IsNewLine(pos) == true
+	/// sets row.end to the pos value *after* which a row should break.
+	/// for example, the pos after which isNewLine(pos) == true
 	lyx::pos_type rowBreakPoint(ParagraphList::iterator pit,
 		Row const & row) const;
 

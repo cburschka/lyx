@@ -1,4 +1,17 @@
 
+2003-08-22  André Pönitz  <poenitz@gmx.net>
+
+	* lyxrow.[Ch]: add  end_ member
+
+	* lyxrow_funcs.C: use LyXRow::end_
+
+	* lyxtext.h (singleWidth): add LyXFont parameter
+
+	* rowpainter.C:
+	* text2.C: adjust LyXText::singleWidth() calls
+
+	* text.C (redoParagraph): simplify row breaking logic
+
 2003-08-19  André Pönitz  <poenitz@gmx.net>
 
 	* funcrequest.C: initialize button_ member

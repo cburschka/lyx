@@ -152,7 +152,8 @@ int RowPainter::singleWidth(lyx::pos_type pos) const
 
 int RowPainter::singleWidth(lyx::pos_type pos, char c) const
 {
-	return text_.singleWidth(pit_, pos, c);
+	LyXFont const & font = text_.getFont(pit_, pos);
+	return text_.singleWidth(pit_, pos, c, font);
 }
 
 

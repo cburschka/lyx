@@ -550,32 +550,23 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 	RowList::iterator rit = pit->rows.begin();
 	RowList::iterator end = pit->rows.end();
 
-	// remove rows of paragraph
+	// remove rows of paragraph, keep track of height changes
 	for (int i = 0; rit != end; ++rit, ++i)
 		height -= rit->height();
-
 	pit->rows.clear();
 
 	// rebreak the paragraph
-	// insert a new row, starting at position 0
+	for (pos_type z = 0; z < pit->size() + 1; ) {
+		Row row(z);
+		z = rowBreakPoint(pit, row) + 1;
+		row.end(z);
+		pit->rows.push_back(row);
+	}
 
-	pos_type z = 0;
-	pit->rows.push_back(Row(z));
-	bool done = false;
-	while (!done) {
-		z = rowBreakPoint(pit, pit->rows.back());
-
-		RowList::iterator tmprow = boost::prior(pit->rows.end());
-
-		if (z >= pit->size())
-			done = true;
-		else {
-			++z;
-			pit->rows.push_back(Row(z));
-		}
-
-		tmprow->fill(fill(pit, tmprow, workWidth()));
-		setHeightOfRow(pit, tmprow);
+	// set height and fill of rows
+	for (rit = pit->rows.begin(); rit != end; ++rit) {
+		rit->fill(fill(pit, rit, workWidth()));
+		setHeightOfRow(pit, rit);
 	}
 
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
@@ -1666,23 +1657,25 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 {
 	// Get the row first.
 	ParagraphList::iterator pit;
-	RowList::iterator row = getRowNearY(y, pit);
+	RowList::iterator rit = getRowNearY(y, pit);
 	bool bound = false;
-	pos_type const column = getColumnNearX(pit, row, x, bound);
+	pos_type const column = getColumnNearX(pit, rit, x, bound);
 	cur.par(pit);
-	cur.pos(row->pos() + column);
+	cur.pos(rit->pos() + column);
 	cur.x(x);
-	cur.y(y + row->baseline());
+	cur.y(y + rit->baseline());
 
-//	if (beforeFullRowInset(*this, cur)) {
-//		pos_type const last = lastPrintablePos(*this, pit, row);
-//		RowList::iterator next_row = nextRow(row);
-//		cur.ix(int(getCursorX(pit, next_row, cur.pos(), last, bound)));
-//		cur.iy(y + row->height() + next_row->baseline());
-//	} else {
+	if (beforeFullRowInset(*this, cur)) {
+		pos_type const last = lastPrintablePos(*pit, rit);
+		RowList::iterator next_rit = rit;
+		ParagraphList::iterator next_pit = pit;
+		nextRow(next_pit, next_rit);
+		cur.ix(int(getCursorX(pit, next_rit, cur.pos(), last, bound)));
+		cur.iy(y + rit->height() + next_rit->baseline());
+	} else {
 		cur.iy(cur.y());
 		cur.ix(cur.x());
-//	}
+	}
 	cur.boundary(bound);
 }
 
@@ -1833,7 +1826,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	   There are still some small problems that can lead to
 	   double spaces stored in the document file or space at
 	   the beginning of paragraphs. This happens if you have
-	   the cursor betwenn to spaces and then save. Or if you
+	   the cursor between to spaces and then save. Or if you
 	   cut and paste and the selection have a space at the
 	   beginning and then save right after the paste. I am
 	   sure none of these are very hard to fix, but I will
@@ -1897,7 +1890,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	if (old_cursor.par()->empty() ||
 	    (old_cursor.par()->size() == 1 &&
 	     old_cursor.par()->isLineSeparator(0))) {
-		// ok, we will delete anything
+		// ok, we will delete something
 		LyXCursor tmpcursor;
 
 		deleted = true;

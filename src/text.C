@@ -192,17 +192,20 @@ int LyXText::singleWidth(ParagraphList::iterator pit, pos_type pos) const
 		return 0;
 
 	char const c = pit->getChar(pos);
-	return singleWidth(pit, pos, c);
+	LyXFont const & font = getFont(pit, pos);
+	return singleWidth(pit, pos, c, font);
 }
 
 
 int LyXText::singleWidth(ParagraphList::iterator pit,
-			 pos_type pos, char c) const
+			 pos_type pos, char c, LyXFont const & font) const
 {
-	if (pos >= pit->size())
+	if (pos >= pit->size()) {
+		lyxerr << "in singleWidth(), pos: " << pos << endl;
+		Assert(false);
 		return 0;
+	}
 
-	LyXFont const & font = getFont(pit, pos);
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
@@ -729,29 +732,9 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 			int left_margin = labelEnd(pit, row);
 			if (thiswidth + x < left_margin)
 				thiswidth = left_margin - x;
-			thiswidth += singleWidth(pit, i, c);
+			thiswidth += singleWidth(pit, i, c, font);
 		} else {
-			// Manual inlined optimised version of common case of "thiswidth = singleWidth(pit, i, c);"
-			if (IsPrintable(c)) {
-				if (pos > endPosOfFontSpan) {
-					// We need to get the next font
-					font = getFont(pit, i);
-					endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
-				}
-				if (! font.language()->RightToLeft()) {
-					thiswidth = font_metrics::width(c, font);
-				} else {
-					// Fall-back to normal case
-					thiswidth = singleWidth(pit, i, c);
-					// And flush font cache
-					endPosOfFontSpan = 0;
-				}
-			} else {
-				// Fall-back to normal case
-				thiswidth = singleWidth(pit, i, c);
-				// And flush font cache
-				endPosOfFontSpan = 0;
-			}
+			thiswidth = singleWidth(pit, i, c, font);
 		}
 
 		x += thiswidth;
@@ -860,30 +843,13 @@ int LyXText::fill(ParagraphList::iterator pit,
 				if (w < left_margin)
 					w = left_margin;
 			}
-			{ // Manual inlined an optimised version of the common case of "w += singleWidth(pit, i);"
-				char const c = pit->getChar(i);
-
-				if (IsPrintable(c)) {
-					if (i > endPosOfFontSpan) {
-						// We need to get the next font
-						font = getFont(pit, i);
-						endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
-					}
-					if (!font.language()->RightToLeft()) {
-						w += font_metrics::width(c, font);
-					} else {
-						// Fall-back to the normal case
-						w += singleWidth(pit, i, c);
-						// And flush font cache
-						endPosOfFontSpan = 0;
-					}
-				} else {
-					// Fall-back to the normal case
-					w += singleWidth(pit, i, c);
-					// And flush font cache
-					endPosOfFontSpan = 0;
-				}
+			char const c = pit->getChar(i);
+			if (IsPrintable(c) && i > endPosOfFontSpan) {
+				// We need to get the next font
+				font = getFont(pit, i);
+				endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 			}
+			w += singleWidth(pit, i, c, font); 
 			++i;
 		}
 	}
@@ -1020,7 +986,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 					maxwidth += font_metrics::width(c, font);
 				} else {
 					// Fall-back to normal case
-					maxwidth += singleWidth(pit, pos, c);
+					maxwidth += singleWidth(pit, pos, c, font);
 					// And flush font cache
 					endPosOfFontSpan = 0;
 				}
@@ -1047,7 +1013,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 					}
 				} else {
 					// Fall-back to normal case
-					maxwidth += singleWidth(pit, pos, c);
+					maxwidth += singleWidth(pit, pos, c, font);
 					// And flush font cache
 					endPosOfFontSpan = 0;
 				}

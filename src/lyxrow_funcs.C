@@ -4,18 +4,32 @@
 #include "lyxtext.h"
 #include "paragraph.h"
 #include "lyxlayout.h"
+#include "debug.h"
+
+#include "support/LAssert.h"
 
 #include <boost/next_prior.hpp>
 #include <algorithm>
 
 using lyx::pos_type;
+using lyx::support::Assert;
 
 using std::max;
 using std::min;
+using std::endl;
 
 
 bool isParEnd(Paragraph const & par, RowList::iterator rit)
 {
+#if 0
+	if ((boost::next(rit) == par.rows.end()) != (rit->end() >= par.size())) {
+		lyxerr << endl;
+		lyxerr << "broken row 1: end: " << rit->end() << " next: "
+			<< boost::next(rit)->pos() << endl;
+		lyxerr << endl;
+		Assert(false);
+	}
+#endif
 	return boost::next(rit) == par.rows.end();
 }
 
@@ -28,14 +42,20 @@ pos_type lastPos(Paragraph const & par, RowList::iterator rit)
 	if (isParEnd(par, rit))
 		return par.size() - 1;
 
+	if (1 && boost::next(rit)->pos() != rit->end()) {
+		lyxerr << endl;
+		lyxerr << "broken row 2: end: " << rit->end() << " next: "
+			<< boost::next(rit)->pos() << endl;
+		lyxerr << endl;
+		Assert(false);
+	}
 	return boost::next(rit)->pos() - 1;
 }
 
 
 namespace {
 
-bool nextRowIsAllInset(
-	Paragraph const & par, pos_type last)
+bool nextRowIsAllInset(Paragraph const & par, pos_type last)
 {
 	if (last + 1 >= par.size())
 		return false;

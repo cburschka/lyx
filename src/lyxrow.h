@@ -29,6 +29,10 @@ public:
 	///
 	lyx::pos_type pos() const;
 	///
+	void end(lyx::pos_type p);
+	///
+	lyx::pos_type end() const;
+	///
 	void fill(int f);
 	///
 	int fill() const;
@@ -61,8 +65,10 @@ public:
 	/// current debugging only
 	void dump(const char * = "") const;
 private:
-	///
+	/// first pos covered by this row
 	lyx::pos_type pos_;
+	/// one behind last pos covered by this row
+	lyx::pos_type end_;
 	/** what is missing to a full row. Can be negative.
 	  Needed for hfills, flushright, block etc. */
 	mutable int fill_;
