@@ -27,7 +27,6 @@ libqt2_la_OBJADD = \
 	../xforms/FormDocument.lo \
 	../xforms/FormIndex.lo \
 	../xforms/FormInset.lo \
-	../xforms/FormMinipage.lo \
 	../xforms/FormPreamble.lo \
 	../xforms/FormPreferences.lo \
 	../xforms/FormRef.lo \
@@ -77,4 +76,6 @@ libqt2_la_SOURCES = \
 	Qt2BC.C	\
 	Qt2BC.h	\
 	emptytable.C \
-	emptytable.h
+	emptytable.h \
+	lengthcombo.C \
+	lengthcombo.h

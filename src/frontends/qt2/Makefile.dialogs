@@ -14,6 +14,7 @@ DIALOGS = \
 	QInclude \
 	QIndex \
 	QLog \
+	QMinipage \
 	QParagraph \
 	QPrint \
 	QRef \
@@ -52,6 +53,8 @@ DIALOGSOURCES = \
 	QIndex.C QIndexDialog.C \
 	QLog.h QLogDialog.h \
 	QLog.C QLogDialog.C \
+	QMinipage.h QMinipageDialog.h \
+	QMinipage.C QMinipageDialog.C \
 	QParagraph.h QParagraphDialog.h \
 	QParagraph.C QParagraphDialog.C \
 	QPrint.h QPrintDialog.h \
@@ -87,6 +90,7 @@ MOCDIALOGS = \
 	QIncludeDialog_moc.C \
 	QIndexDialog_moc.C \
 	QLogDialog_moc.C \
+	QMinipageDialog_moc.C \
 	QParagraphDialog_moc.C \
 	QPrintDialog_moc.C \
 	QRefDialog_moc.C \
@@ -125,6 +129,8 @@ UIDIALOGS = \
 	QIndexDialogBase.C \
 	QLogDialogBase.h \
 	QLogDialogBase.C \
+	QMinipageDialogBase.h \
+	QMinipageDialogBase.C \
 	QParagraphDialogBase.h \
 	QParagraphDialogBase.C \
 	QPrintDialogBase.h \
@@ -158,6 +164,7 @@ UIMOCDIALOGS = \
 	QIncludeDialogBase_moc.C \
 	QIndexDialogBase_moc.C \
 	QLogDialogBase_moc.C \
+	QMinipageDialogBase_moc.C \
 	QParagraphDialogBase_moc.C \
 	QPrintDialogBase_moc.C \
 	QRefDialogBase_moc.C \
