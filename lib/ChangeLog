@@ -1,3 +1,10 @@
+2002-01-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* examples/mathed.lyx: a bit of a clean-up. Corrected the contents
+	of fonts-xlfd in the light of Dekel's suggestions.
+	This file still doesn't run LaTeX successfully without bolting the
+	lyxcode definition into the preamble but is otherwise Ok.
+
 2002-01-14  Panayotis "PAP" Papasotiriou  <papasot@physics.upatras.gr>
 
 	* layouts/kluwer.layout: remove caption layout

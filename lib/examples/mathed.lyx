@@ -43,10 +43,10 @@ m
 \align center 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="5" columns="1">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="5" columns="1">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -62,7 +62,7 @@ end{math}
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -78,7 +78,7 @@ frac{abc}{xyz}
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -90,7 +90,7 @@ frac{abc}{xyz} $
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -106,7 +106,7 @@ end{displaymath}
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="true" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -277,10 +277,11 @@ fonts-xlfd
  contains
 \layout LyX-Code
 
-cmmi10.pfb -bluesky-cmr-medium-i-normal--0-0-0-0-p-0-adobe-fontspecific
+cmr10.pfb -bluesky-cmr-medium-r-normal--0-0-0-0-m-0-adobe-fontspecific
 \layout LyX-Code
 
-cmsy10.pfb -bluesky-cmsy-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
+cmmi10.pfb -bluesky-cmmi-medium-i-normal--0-0-0-0-m-0-adobe-fontspecific
+  cmsy10.pfb -bluesky-cmsy-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
 \layout LyX-Code
 
 cmex10.pfb -bluesky-cmex-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
@@ -330,22 +331,50 @@ plcrv.pfa -adobe-lcrv-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
 
 Thereafter, you must tell X where to find this directory and the fonts therein.
  Type
-\newline 
+\layout LyX-Code
 
-\family typewriter 
 xset +fp LYX_XFONTS; xset fp rehash
-\newline 
+\layout Standard
 
-\family default 
 at the console, start LyX, load up this document and enjoy!
 \layout Section
 
-Math tables from Goossen et al.'s 
+Some example math tables
+\layout Standard
+
+If you've followed the instructions above successfully, then the following
+ tables from Goossen et al.'s 
 \begin_inset Quotes eld
 \end_inset 
 
 The LaTeX companion
 \begin_inset Quotes erd
+\end_inset 
+
+ should appear on the screen in all their glory.
+ Otherwise you'll have a 
+\emph on 
+lot
+\emph default 
+ of red text!
+\layout Standard
+
+
+\begin_inset ERT
+status Open
+
+\layout Standard
+
+\backslash 
+setcounter{table}{1}
+\layout Standard
+
+\backslash 
+renewcommand{
+\backslash 
+thetable}{8.
+\backslash 
+arabic{table}}
 \end_inset 
 
 
@@ -355,17 +384,14 @@ The LaTeX companion
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Math mode accents
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="2" columns="10">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="2" columns="10">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -376,7 +402,7 @@ Math mode accents
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -508,7 +534,7 @@ breve{a}
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -645,6 +671,9 @@ tilde{a}
 \end_inset 
 
 
+\layout Caption
+
+Math mode accents
 \end_inset 
 
 
@@ -654,17 +683,14 @@ tilde{a}
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Greek letters
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="11" columns="8">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="11" columns="8">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -673,7 +699,7 @@ Greek letters
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -771,7 +797,7 @@ delta
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -869,7 +895,7 @@ eta
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -967,7 +993,7 @@ kappa
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1065,7 +1091,7 @@ xi
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1159,7 +1185,7 @@ rho
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1257,7 +1283,7 @@ tau
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1355,7 +1381,7 @@ chi
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1433,7 +1459,7 @@ omega
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1531,7 +1557,7 @@ Lambda
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1629,7 +1655,7 @@ Upsilon
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1722,6 +1748,9 @@ Omega
 \end_inset 
 
 
+\layout Caption
+
+Greek letters
 \end_inset 
 
 
@@ -1731,17 +1760,14 @@ Omega
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Binary operation symbols
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="9" columns="8">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="9" columns="8">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -1750,7 +1776,7 @@ Binary operation symbols
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1848,7 +1874,7 @@ oplus
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -1946,7 +1972,7 @@ ominus
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -2044,7 +2070,7 @@ otimes
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -2142,7 +2168,7 @@ oslash
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -2240,7 +2266,7 @@ odot
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -2338,7 +2364,7 @@ bigcirc
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -2436,7 +2462,7 @@ dagger
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -2534,7 +2560,7 @@ ddagger
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -2637,6 +2663,9 @@ amalg
 \end_inset 
 
 
+\layout Caption
+
+Binary operation symbols
 \end_inset 
 
 
@@ -2646,17 +2675,14 @@ amalg
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Relation symbols
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="8" columns="10">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="8" columns="10">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -2667,7 +2693,7 @@ Relation symbols
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -2791,7 +2817,7 @@ prec
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -2913,7 +2939,7 @@ succeq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3035,7 +3061,7 @@ asymp
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3157,7 +3183,7 @@ bowtie
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3279,7 +3305,7 @@ sqsubset
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3401,7 +3427,7 @@ sqsupseteq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3523,7 +3549,7 @@ propto
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3644,6 +3670,9 @@ dashv
 \end_inset 
 
 
+\layout Caption
+
+Relation symbols
 \end_inset 
 
 
@@ -3653,24 +3682,21 @@ dashv
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Arrow symbols
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="10" columns="6">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="10" columns="6">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3744,7 +3770,7 @@ uparrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3818,7 +3844,7 @@ Uparrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3892,7 +3918,7 @@ downarrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -3966,7 +3992,7 @@ Downarrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4040,7 +4066,7 @@ updownarrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4114,7 +4140,7 @@ Updownarrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4188,7 +4214,7 @@ nearrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4262,7 +4288,7 @@ searrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4336,7 +4362,7 @@ swarrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4415,6 +4441,9 @@ nwarrow
 \end_inset 
 
 
+\layout Caption
+
+Arrow symbols
 \end_inset 
 
 
@@ -4424,17 +4453,14 @@ nwarrow
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Miscellaneous symbols
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="7" columns="10">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="7" columns="10">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -4445,7 +4471,7 @@ Miscellaneous symbols
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4567,7 +4593,7 @@ aleph
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4689,7 +4715,7 @@ emptyset
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4811,7 +4837,7 @@ triangle
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -4933,7 +4959,7 @@ neg
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -5055,7 +5081,7 @@ wp
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -5177,7 +5203,7 @@ spadesuit
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -5304,6 +5330,9 @@ partial
 \end_inset 
 
 
+\layout Caption
+
+Miscellaneous symbols
 \end_inset 
 
 
@@ -5313,17 +5342,14 @@ partial
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Variable-sized symbols
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="3" columns="10">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="3" columns="10">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -5334,7 +5360,7 @@ Variable-sized symbols
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -5456,7 +5482,7 @@ oint
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -5578,7 +5604,7 @@ bigwedge
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -5695,6 +5721,9 @@ biguplus
 \end_inset 
 
 
+\layout Caption
+
+Variable-sized symbols
 \end_inset 
 
 
@@ -5704,17 +5733,14 @@ biguplus
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Log-like symbols
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="4" columns="8">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="4" columns="8">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -5723,7 +5749,7 @@ Log-like symbols
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -5821,7 +5847,7 @@ Log-like symbols
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -5919,7 +5945,7 @@ Log-like symbols
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6017,7 +6043,7 @@ Log-like symbols
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6120,6 +6146,9 @@ Log-like symbols
 \end_inset 
 
 
+\layout Caption
+
+Log-like symbols
 \end_inset 
 
 
@@ -6129,17 +6158,14 @@ Log-like symbols
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Delimiters
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="5" columns="8">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="5" columns="8">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -6148,7 +6174,7 @@ Delimiters
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6246,7 +6272,7 @@ Downarrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6344,7 +6370,7 @@ Updownarrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6442,7 +6468,7 @@ rceil
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6538,7 +6564,7 @@ backslash
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6619,6 +6645,9 @@ backslash
 \end_inset 
 
 
+\layout Caption
+
+Delimiters
 \end_inset 
 
 
@@ -6628,17 +6657,14 @@ backslash
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-Large delimiters
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="2" columns="8">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="2" columns="8">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -6647,7 +6673,7 @@ Large delimiters
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6745,7 +6771,7 @@ lgroup
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6838,6 +6864,9 @@ bracevert
 \end_inset 
 
 
+\layout Caption
+
+Large delimiters
 \end_inset 
 
 
@@ -6847,22 +6876,19 @@ bracevert
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-LaTeX math constructs
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="6" columns="4">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="6" columns="4">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6912,7 +6938,7 @@ widehat{abc}
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -6962,7 +6988,7 @@ overrightarrow{abc}
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7012,7 +7038,7 @@ underline{abc}
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7062,7 +7088,7 @@ underbrace{abc}
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7114,7 +7140,7 @@ root3{abc}
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7167,6 +7193,9 @@ frac{abc}{xyz}
 \end_inset 
 
 
+\layout Caption
+
+LaTeX math constructs
 \end_inset 
 
 
@@ -7176,17 +7205,14 @@ frac{abc}{xyz}
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-AMS Greek and Hebrew
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="1" columns="10">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="1" columns="10">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -7197,7 +7223,7 @@ AMS Greek and Hebrew
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7324,6 +7350,9 @@ gimel
 \end_inset 
 
 
+\layout Caption
+
+AMS Greek and Hebrew
 \end_inset 
 
 
@@ -7333,17 +7362,14 @@ gimel
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-AMS delimiters
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="1" columns="8">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="1" columns="8">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
@@ -7352,7 +7378,7 @@ AMS delimiters
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7455,6 +7481,9 @@ lrcorner
 \end_inset 
 
 
+\layout Caption
+
+AMS delimiters
 \end_inset 
 
 
@@ -7464,24 +7493,21 @@ lrcorner
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-AMS arrows
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="11" columns="6">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="11" columns="6">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7555,7 +7581,7 @@ leftleftarrows
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7629,7 +7655,7 @@ twoheadleftarrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7703,7 +7729,7 @@ leftrightharpoons
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7777,7 +7803,7 @@ Lsh
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7851,7 +7877,7 @@ downharpoonleft
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7925,7 +7951,7 @@ rightrightarrows
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -7999,7 +8025,7 @@ rightleftarrows
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8073,7 +8099,7 @@ looparrowright
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8147,7 +8173,7 @@ circlearrowright
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8221,7 +8247,7 @@ upharpoonright
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8290,6 +8316,9 @@ rightsquigarrow
 \end_inset 
 
 
+\layout Caption
+
+AMS arrows
 \end_inset 
 
 
@@ -8299,24 +8328,21 @@ rightsquigarrow
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-AMS negated arrows
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="2" columns="6">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="2" columns="6">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8390,7 +8416,7 @@ nLeftarrow
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8469,6 +8495,9 @@ nLeftrightarrow
 \end_inset 
 
 
+\layout Caption
+
+AMS negated arrows
 \end_inset 
 
 
@@ -8478,24 +8507,21 @@ nLeftrightarrow
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-AMS binary relations
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="22" columns="6">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="22" columns="6">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8569,7 +8595,7 @@ eqslantless
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8643,7 +8669,7 @@ approxeq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8717,7 +8743,7 @@ lessgtr
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8791,7 +8817,7 @@ doteqdot
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8865,7 +8891,7 @@ backsim
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -8939,7 +8965,7 @@ Subset
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9013,7 +9039,7 @@ curlyeqprec
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9087,7 +9113,7 @@ vartriangleleft
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9161,7 +9187,7 @@ Vvdash
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9235,7 +9261,7 @@ bumpeq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9309,7 +9335,7 @@ geqslant
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9383,7 +9409,7 @@ gtrapprox
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9457,7 +9483,7 @@ gtrless
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9531,7 +9557,7 @@ eqcirc
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9605,7 +9631,7 @@ thicksim
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9679,7 +9705,7 @@ Supset
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9753,7 +9779,7 @@ curlyeqsucc
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9827,7 +9853,7 @@ vartriangleright
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9901,7 +9927,7 @@ shortmid
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -9975,7 +10001,7 @@ pitchfork
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10049,7 +10075,7 @@ therefore
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10128,6 +10154,9 @@ because
 \end_inset 
 
 
+\layout Caption
+
+AMS binary relations
 \end_inset 
 
 
@@ -10137,24 +10166,21 @@ because
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-AMS negated binary relations
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="17" columns="6">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="17" columns="6">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10228,7 +10254,7 @@ nleqslant
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10302,7 +10328,7 @@ lneqq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10376,7 +10402,7 @@ lnapprox
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10450,7 +10476,7 @@ precnsim
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10524,7 +10550,7 @@ nshortmid
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10598,7 +10624,7 @@ nvDash
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10672,7 +10698,7 @@ nsubseteq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10746,7 +10772,7 @@ subsetneqq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10820,7 +10846,7 @@ ngeq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10894,7 +10920,7 @@ gneq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -10968,7 +10994,7 @@ gnsim
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11042,7 +11068,7 @@ nsucceq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11116,7 +11142,7 @@ ncong
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11190,7 +11216,7 @@ nvDash
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11264,7 +11290,7 @@ ntrianglerighteq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11338,7 +11364,7 @@ supsetneq
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11417,6 +11443,9 @@ varsupsetneqq
 \end_inset 
 
 
+\layout Caption
+
+AMS negated binary relations
 \end_inset 
 
 
@@ -11426,24 +11455,21 @@ varsupsetneqq
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-AMS binary operators
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="8" columns="6">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="8" columns="6">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11517,7 +11543,7 @@ Cap
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11591,7 +11617,7 @@ veebar
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11665,7 +11691,7 @@ boxtimes
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11739,7 +11765,7 @@ divideontimes
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11813,7 +11839,7 @@ leftthreetimes
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11887,7 +11913,7 @@ curlyvee
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -11961,7 +11987,7 @@ circledcirc
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12030,6 +12056,9 @@ intercal
 \end_inset 
 
 
+\layout Caption
+
+AMS binary operators
 \end_inset 
 
 
@@ -12039,24 +12068,21 @@ intercal
 \begin_inset Float table
 placement H
 wide false
-collapsed false
+collapsed true
 
-\layout Caption
-
-AMS miscellaneous
 \layout Standard
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="9" columns="6">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<lyxtabular version="3" rows="9" columns="6">
+<features rotate="false" islongtable="false" firstHeadTopDL="false" firstHeadBottomDL="false" firstHeadEmpty="false" headTopDL="false" headBottomDL="false" footTopDL="false" footBottomDL="false" lastFootTopDL="false" lastFootBottomDL="false" lastFootEmpty="false">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="right" valignment="top" leftline="false" rightline="false" width="0pt" special="">
 <column alignment="left" valignment="top" leftline="false" rightline="false" width="0pt" special="">
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12130,7 +12156,7 @@ vartriangle
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12204,7 +12230,7 @@ lozenge
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12278,7 +12304,7 @@ measuredangle
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12352,7 +12378,7 @@ Finv
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12426,7 +12452,7 @@ backprime
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12500,7 +12526,7 @@ blacktriangledown
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12574,7 +12600,7 @@ bigstar
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12648,7 +12674,7 @@ eth
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
+<row topline="false" bottomline="false" endhead="false" endfirsthead="false" endfoot="false" endlastfoot="false" newpage="false">
 <cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="0pt" special="">
 \begin_inset Text
 
@@ -12717,6 +12743,9 @@ diagdown
 \end_inset 
 
 
+\layout Caption
+
+AMS miscellaneous
 \end_inset 
 
 
