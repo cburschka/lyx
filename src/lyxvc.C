@@ -4,29 +4,25 @@
 #pragma implementation
 #endif
 
+#include <unistd.h>
+
 #include FORMS_H_LOCATION
 #include "lyxvc.h"
+#include "vc-backend.h"
 #include "debug.h"
 #include "lyx_gui_misc.h"
-#include "bufferlist.h"
-#include "support/syscall.h"
-#include "support/path.h"
-#include "support/filetools.h"
-#include "support/FileInfo.h"
+#include "buffer.h"
 #include "gettext.h"
-#include "LyXView.h"
+#include "support/filetools.h"
 #include "lyxfunc.h"
-#include "latexoptions.h"
-
-extern BufferList bufferlist;
-extern void MenuWrite(Buffer *);
+#include "LyXView.h"
 
 
 LyXVC::LyXVC()
 {
-	backend = UNKNOWN_VCS;
-	_owner = 0;
+	vcs = 0;
 	browser = 0;
+	owner_ = 0;
 }
 
 
@@ -37,39 +33,27 @@ LyXVC::~LyXVC()
 			fl_hide_form(browser->LaTeXLog);
 		fl_free_form(browser->LaTeXLog);
 	}
+	if (vcs) {
+		delete vcs;
+	}
 }
 
 
 bool LyXVC::file_found_hook(string const & fn)
 {
-	string tmp(fn);
-	FileInfo f;
-	// Check if *,v exists.
-	tmp += ",v";
-	lyxerr[Debug::LYXVC] << "Checking if file is under vc: "
-			     << tmp << endl;
-	if (f.newFile(tmp).readable()) {
-		lyxerr[Debug::LYXVC] << "Yes it is under vc." << endl;
-		master = tmp;
-		backend = RCS_VCS;
-		scanMaster();
+	string found_file;
+	// Check if file is under RCS
+	if (!(found_file = RCS::find_file(fn)).empty()) {
+		vcs = new RCS(found_file);
+		vcs->owner(owner_);
 		return true;
-	} else {
-		// Check if RCS/*,v exists.
-		tmp = AddName(AddPath(OnlyPath(fn), "RCS"), fn);
-		tmp += ",v";
-		lyxerr[Debug::LYXVC] << "Checking if file is under vc: "
-				     << tmp << endl;
-		if (f.newFile(tmp).readable()) {
-			lyxerr[Debug::LYXVC] << "Yes it is under vc."<< endl;
-			master = tmp;
-			backend = RCS_VCS;
-			scanMaster();
-			return true;
-		}
 	}
-	// If either one, return true
-
+	// Check if file is under CVS
+	if (!(found_file = CVS::find_file(fn)).empty()) {
+		vcs = new CVS(found_file, fn);
+		vcs->owner(owner_);
+		return true;
+	}
 	// file is not under any VCS.
 	return false;
 }
@@ -82,98 +66,34 @@ bool LyXVC::file_not_found_hook(string const &)
 }
 
 
-void LyXVC::scanMaster()
+void LyXVC::buffer(Buffer * buf)
 {
-	lyxerr[Debug::LYXVC] << "LyXVC: This file is a VC file." << endl;
-
-	LyXLex lex(0, 0);
-	lex.setFile(master);
-
-	string token;
-	bool read_enough = false;
-	while (lex.IsOK() && !read_enough) {
-		lex.next();
-		token = lex.GetString();
-		
-		lyxerr[Debug::LYXVC] <<"LyXVC::scanMaster: current lex text: `"
-				     << token << "'" << endl;
-
-		if (token.empty())
-			continue;
-		else if (token == "head") {
-			// get version here
-			lex.next();
-			string tmv = strip(lex.GetString(), ';');
-			version = tmv;
-		} else if (contains(token, "access")
-			   || contains(token, "symbols")
-			   || contains(token, "strict")) {
-			// nothing
-		} else if (contains(token, "locks")) {
-			// get locker here
-			if (contains(token, ";")) {
-				locker = "Unlocked";
-				vcstat = UNLOCKED;
-				continue;
-			}
-			string tmpt, s1, s2;
-			do {
-				lex.next();
-				s1 = strip(tmpt = lex.GetString(), ';');
-				// tmp is now in the format <user>:<version>
-				s1 = split(s1, s2, ':');
-				// s2 is user, and s1 is version
-				if (s1 == version) {
-					locker = s2;
-					vcstat = LOCKED;
-					break;
-				}
-			} while (!contains(tmpt, ";"));
-			
-		} else if (token == "comment") {
-			// we don't need to read any further than this.
-			read_enough = true;
-		} else {
-			// unexpected
-			lyxerr[Debug::LYXVC]
-				<< "LyXVC::scanMaster(): unexpected token"
-				<< endl;
-		}
-	}
+	owner_ = buf;
 }
 
-
-void LyXVC::setBuffer(Buffer * buf)
-{
-	_owner = buf;
-}
-
-
-//
-// I will probably add some backend_xxxx functions later to perform the
-// version control system specific commands. Something like:
-// void backend_revert(<params>) {
-//        if (backend == "RCS") {
-//        } else if (backend == "CVS") {
-//        } else if (backend == "SCCS") {
-//        }
-//
-// But for 0.12 we will only support RCS.
-//
 
 void LyXVC::registrer()
 {
+	// it is very likely here that the vcs is not created yet...
+	// so... we use RCS as default, later this should perhaps be
+	// a lyxrc option.
+	if (!vcs) {
+		vcs = new RCS(owner_->getFileName());
+		vcs->owner(owner_);
+	}
+	
 	// If the document is changed, we might want to save it
-	if (!_owner->isLyxClean() && 
+	if (!vcs->owner()->isLyxClean() && 
 	    AskQuestion(_("Changes in document:"),
-			MakeDisplayPath(_owner->getFileName(),50),
+			MakeDisplayPath(vcs->owner()->getFileName(),50),
 			_("Save document and proceed?"))) {
-		MenuWrite(_owner);
+		vcs->owner()->getUser()->owner()
+			->getLyXFunc()->Dispatch(LFUN_MENUWRITE);
 	}
 
 	// Maybe the save fails, or we answered "no". In both cases,
 	// the document will be dirty, and we abort.
-	if (!_owner->isLyxClean()) {
+	if (!vcs->owner()->isLyxClean()) {
 		return;
 	}
 
@@ -185,56 +105,49 @@ void LyXVC::registrer()
 		WriteAlert(_("Info"), _("This document has NOT been registered."));
 		return;
 	}
-	string cmd = "ci -q -u -i -t-\"";
-	cmd += tmp;
-	cmd += "\" \"";
-	cmd += OnlyFilename(_owner->getFileName());
-	cmd += "\"";
-	doVCCommand(cmd);
-	_owner->getUser()->getOwner()->getLyXFunc()->Dispatch("buffer-reload");
+	
+	vcs->registrer(tmp);
 }
 
 
 void LyXVC::checkIn()
 {
 	// If the document is changed, we might want to save it
-	if (!_owner->isLyxClean() && 
+	if (!vcs->owner()->isLyxClean() && 
 	    AskQuestion(_("Changes in document:"),
-			MakeDisplayPath(_owner->getFileName(),50),
+			MakeDisplayPath(vcs->owner()->getFileName(),50),
 			_("Save document and proceed?"))) {
-		MenuWrite(_owner);
+		vcs->owner()->getUser()->owner()
+			->getLyXFunc()->Dispatch(LFUN_MENUWRITE);
 	}
 
 	// Maybe the save fails, or we answered "no". In both cases,
 	// the document will be dirty, and we abort.
-	if (!_owner->isLyxClean()) {
+	if (!vcs->owner()->isLyxClean()) {
 		return;
 	}
 
 	lyxerr[Debug::LYXVC] << "LyXVC: checkIn" << endl;
-	_owner->getUser()->getOwner()->getLyXFunc()->Dispatch(LFUN_MENUWRITE);
 	string tmp = askForText(_("LyX VC: Log Message"));
 	if (tmp.empty()) tmp = "(no log msg)";
-	doVCCommand("ci -q -u -m\"" + tmp + "\" \""
-		    + OnlyFilename(_owner->getFileName()) + "\"");
-	_owner->getUser()->getOwner()->getLyXFunc()->Dispatch("buffer-reload");
+
+	vcs->checkIn(tmp);
+	
 }
 
 
 void LyXVC::checkOut()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
-	if (!_owner->isLyxClean() 
+	if (!vcs->owner()->isLyxClean() 
 	    && !AskQuestion(_("Changes in document:"),
-			   MakeDisplayPath(_owner->getFileName(),50),
+			   MakeDisplayPath(vcs->owner()->getFileName(),50),
 			   _("Ignore changes and proceed with check out?"))) {
 		return;
 	}
 
-	_owner->markLyxClean();
-	doVCCommand("co -q -l \""
-		    + OnlyFilename(_owner->getFileName()) + "\"");
-	_owner->getUser()->getOwner()->getLyXFunc()->Dispatch("buffer-reload");
+	vcs->checkOut();
+	
 }
 
 
@@ -247,32 +160,27 @@ void LyXVC::revert()
 	if (AskQuestion(_("When you revert, you will loose all changes made"),
 			_("to the document since the last check in."),
 			_("Do you still want to do it?"))) {
-		
-		doVCCommand("co -f -u" + getVersion() + " \""
-			    + OnlyFilename(_owner->getFileName()) + "\"");
-		// We ignore changes and just reload!
-		_owner->markLyxClean();
-		_owner->getUser()->getOwner()->
-			getLyXFunc()->Dispatch("buffer-reload");
+
+		vcs->revert();
 	}
 }
 
 
 void LyXVC::undoLast()
 {
-	lyxerr[Debug::LYXVC] << "LyXVC: undoLast" << endl;
-	doVCCommand("rcs -o" + getVersion() + " \""
-		    + OnlyFilename(_owner->getFileName()) + "\"");
+	vcs->undoLast();
 }
 
 
 void LyXVC::toggleReadOnly()
 {
-	switch (vcstat) {
-	case UNLOCKED:
+	switch (vcs->stat()) {
+	case VCS::UNLOCKED:
+		lyxerr[Debug::LYXVC] << "LyXVC: toggle to locked" << endl;
 		checkOut();
 		break;
-	case LOCKED:
+	case VCS::LOCKED:
+		lyxerr[Debug::LYXVC] << "LyXVC: toggle to unlocked" << endl;
 		checkIn();
 		break;
 	}
@@ -281,22 +189,22 @@ void LyXVC::toggleReadOnly()
 
 bool LyXVC::inUse()
 {
-	if (!master.empty())
-		return true;
+	if (vcs) return true;
 	return false;
 }
 
 
-string const LyXVC::getVersion() const
+string const & LyXVC::version() const
 {
-	return version;
+	return vcs->version();
 }
 
 
-string const LyXVC::getLocker() const
+string const & LyXVC::locker() const
 {
-	return locker;
+	return vcs->locker();
 }
+
 
 // This is a hack anyway so I'll put it here in the mean time.
 void LyXVC::logClose(FL_OBJECT * obj, long)
@@ -354,14 +262,14 @@ void LyXVC::viewLog(string const & fil)
 
 	if (!fl_load_browser(browser->browser_latexlog, fil.c_str()))
 		fl_add_browser_line(browser->browser_latexlog,
-				    _("No RCS History!"));
+				    _("No VC History!"));
 	
 	if (browser->LaTeXLog->visible) {
 		fl_raise_form(browser->LaTeXLog);
 	} else {
 		fl_show_form(browser->LaTeXLog,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
-			     _("RCS History"));
+			     _("VC History"));
 		if (ow < 0) {
 			ow = browser->LaTeXLog->w;
 			oh = browser->LaTeXLog->h;
@@ -374,18 +282,7 @@ void LyXVC::viewLog(string const & fil)
 void LyXVC::showLog()
 {
 	string tmpf = tmpnam(0);
-	doVCCommand("rlog \""
-		    + OnlyFilename(_owner->getFileName()) + "\" > " + tmpf);
+	vcs->getLog(tmpf);
 	viewLog(tmpf);
 	unlink(tmpf.c_str());
-}
-
-
-int LyXVC::doVCCommand(string const & cmd)
-{
-	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
-        Systemcalls one;
-	Path p(_owner->filepath);
-	int ret = one.startscript(Systemcalls::System, cmd);
-	return ret;
 }

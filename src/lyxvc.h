@@ -1,7 +1,7 @@
 // -*- C++ -*-
 
-#ifndef _LYX_VC_H_
-#define _LYX_VC_H_
+#ifndef LYX_VC_H
+#define LYX_VC_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -10,22 +10,23 @@
 #include "LString.h"
 #include "latexoptions.h"
 
+class VCS;
 class Buffer;
 
-/** Version Control for LyX. This is the class giving the verison control
-features to LyX. It is
-  intended to support different kinds of version control, but at this point
-  we will only support RCS. Later CVS is a likely candidate for support.
-  The support in LyX is based loosely upon the version control in GNU Emacs,
-  but is not as extensive as that one. See examples/VC.lyx for a simple
-  tutorial and manual for the use of the version control system in LyX.
-
-  LyXVC use this algorithm when it searches for VC files:
-  for RCS it searches for <filename>,v and RCS/<filename>,v similar
-  should be done for CVS. By doing this there doesn't need to be any
-  special support for VC in the lyx format, and this is especially good
-  when the lyx format will be a subset of LaTeX.
-  */
+/** Version Control for LyX.
+    This is the class giving the verison control features to LyX. It is
+    intended to support different kinds of version control, but at this point
+    we will only support RCS. Later CVS is a likely candidate for support.
+    The support in LyX is based loosely upon the version control in GNU Emacs,
+    but is not as extensive as that one. See examples/VC.lyx for a simple
+    tutorial and manual for the use of the version control system in LyX.
+    
+    LyXVC use this algorithm when it searches for VC files:
+    for RCS it searches for <filename>,v and RCS/<filename>,v similar
+    should be done for CVS. By doing this there doesn't need to be any
+    special support for VC in the lyx format, and this is especially good
+    when the lyx format will be a subset of LaTeX.
+*/
 class LyXVC {
 public:
 	///
@@ -51,9 +52,7 @@ public:
 	static bool file_not_found_hook(string const & fn);
 
 	///
-	void scanMaster();
-	///
-	void setBuffer(Buffer*);
+	void buffer(Buffer *);
 
 	/// Register the document as an VC file.
 	void registrer();
@@ -83,60 +82,25 @@ public:
 	bool inUse();
 
 	/// Returns the version number.
-	string const getVersion() const;
+	string const & version() const;
 
 	/// Returns the userid of the person who has locked the doc.
-	string const getLocker() const;
+	string const & locker() const;
 
 	///
-	static void logClose(FL_OBJECT*, long);
+	static void logClose(FL_OBJECT *, long);
 	///
-	static void logUpdate(FL_OBJECT*, long);
+	static void logUpdate(FL_OBJECT *, long);
 protected:
 private:
 	///
-	int doVCCommand(string const&);
+	Buffer * owner_;
 	
-	/** The master VC file. For RCS this is *,v or RCS/ *,v. master should
-	  have full path.
-	  */
-	string master;
-
-	/** The version of the VC file. I am not sure if this can be a
-	string of if it must be a
-	  float/int. */
-	string version;
-
-	/// The user currently keeping the lock on the VC file.
-	string locker;
+	///
+	VCS * vcs;
 
 	///
-	enum VCStatus {
-		///
-		UNLOCKED,
-		///
-		LOCKED
-	};
-
-	/// The status of the VC controlled file.
-	VCStatus vcstat;
-
-	///	
-	enum Backend {
-		///
-		UNKNOWN_VCS,
-		///
-		RCS_VCS
-	};
-
-	/// The VC backend used. (so far this can only be RCS)
-	Backend backend;
-
-	/// The buffer using this VC
-	Buffer *_owner;
-
-	///
-	FD_LaTeXLog *browser; // FD_LaTeXLog is just a browser with a
+	FD_LaTeXLog * browser; // FD_LaTeXLog is just a browser with a
 	// close button. Unfortunately we can not use the standard callbacks.
 };
 

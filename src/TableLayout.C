@@ -43,21 +43,20 @@ bool UpdateLayoutTable(int flag)
     if (!current_view->getScreen() || !current_view->available())
         update = false;
     
-    if (update && current_view->currentBuffer()->text->cursor.par->table) {
+    if (update && current_view->buffer()->text->cursor.par->table) {
         int
             align,
-            cell,
             column,row;
         char
             buf[12];
         string
             pwidth, special;
     
-        LyXTable *table = current_view->currentBuffer()->text->cursor.par->table;
+        LyXTable * table = current_view->buffer()->text->cursor.par->table;
 
-        cell = current_view->currentBuffer()->text->
-            NumberOfCell(current_view->currentBuffer()->text->cursor.par, 
-                         current_view->currentBuffer()->text->cursor.pos);
+        int cell = current_view->buffer()->text->
+            NumberOfCell(current_view->buffer()->text->cursor.par, 
+                         current_view->buffer()->text->cursor.pos);
         ActCell = cell;
         column = table->column_of_cell(cell)+1;
         fl_set_object_label(fd_form_table_options->text_warning,"");
@@ -108,7 +107,7 @@ bool UpdateLayoutTable(int flag)
 	    fl_set_input_cursorpos(fd_form_table_extra->input_special_alignment,
 		    extra_col_cursor_x, 0); // restore the cursor
 	}
-        if (current_view->currentBuffer()->isReadonly()) 
+        if (current_view->buffer()->isReadonly()) 
             fl_deactivate_object(fd_form_table_extra->input_special_alignment);
         special = table->GetAlignSpecial(cell,LyXTable::SET_SPECIAL_MULTI);
         if (flag)
@@ -118,12 +117,12 @@ bool UpdateLayoutTable(int flag)
 	    fl_set_input_cursorpos(fd_form_table_extra->input_special_multialign,
 		    extra_multicol_cursor_x, 0); // restore the cursor
 	}
-        if (current_view->currentBuffer()->isReadonly()) 
+        if (current_view->buffer()->isReadonly()) 
             fl_deactivate_object(fd_form_table_extra->input_special_multialign);
         pwidth = table->GetPWidth(cell);
         if (flag)
             fl_set_input(fd_form_table_options->input_column_width,pwidth.c_str());
-        if (current_view->currentBuffer()->isReadonly()) 
+        if (current_view->buffer()->isReadonly()) 
             fl_deactivate_object(fd_form_table_options->input_column_width);
         if (!pwidth.empty()) {
             fl_activate_object(fd_form_table_options->radio_linebreak_cell);
@@ -264,7 +263,6 @@ void TableOptionsCB(FL_OBJECT *ob, long)
     LyXTable
         *table = 0;
     int
-        cell,
         s,
         num = 0;
     string
@@ -273,14 +271,14 @@ void TableOptionsCB(FL_OBJECT *ob, long)
 
     if (!current_view->available()
 	||
-	!(table = current_view->currentBuffer()->text->cursor.par->table)) 
+	!(table = current_view->buffer()->text->cursor.par->table)) 
       {
         MenuLayoutTable(0);
 	return;
       }
-    cell = current_view->currentBuffer()->text->
-        NumberOfCell(current_view->currentBuffer()->text->cursor.par, 
-                     current_view->currentBuffer()->text->cursor.pos);
+    int cell = current_view->buffer()->text->
+        NumberOfCell(current_view->buffer()->text->cursor.par, 
+                     current_view->buffer()->text->cursor.pos);
     if (ActCell != cell) {
         MenuLayoutTable(0);
         fl_set_object_label(fd_form_table_options->text_warning,
@@ -292,7 +290,7 @@ void TableOptionsCB(FL_OBJECT *ob, long)
     }
     // No point in processing directives that you can't do anything with
     // anyhow, so exit now if the buffer is read-only.
-    if (current_view->currentBuffer()->isReadonly()) {
+    if (current_view->buffer()->isReadonly()) {
       MenuLayoutTable(0);
       return;
     }
@@ -431,16 +429,16 @@ void TableOptionsCB(FL_OBJECT *ob, long)
         return;
     if (current_view->available()){
         current_view->getScreen()->HideCursor();
-        if (!current_view->currentBuffer()->text->selection){
+        if (!current_view->buffer()->text->selection){
             BeforeChange(); 
-            current_view->currentBuffer()->update(-2);
+            current_view->buffer()->update(-2);
         }
         if ((num == LyXTable::SET_SPECIAL_COLUMN) ||
             (num == LyXTable::SET_SPECIAL_MULTI))
-            current_view->currentBuffer()->text->TableFeatures(num,special);
+            current_view->buffer()->text->TableFeatures(num,special);
         else
-            current_view->currentBuffer()->text->TableFeatures(num);
-        current_view->currentBuffer()->update(1);
+            current_view->buffer()->text->TableFeatures(num);
+        current_view->buffer()->update(1);
     }
     if (num == LyXTable::DELETE_TABLE) {
 	fl_set_focus_object(fd_form_table_options->form_table_options,
@@ -483,12 +481,12 @@ void SetPWidthCB(FL_OBJECT *ob, long)
         }
         if (current_view->available()){
             current_view->getScreen()->HideCursor();
-            if (!current_view->currentBuffer()->text->selection){
+            if (!current_view->buffer()->text->selection){
                 BeforeChange(); 
-                current_view->currentBuffer()->update(-2);
+                current_view->buffer()->update(-2);
             }
-            current_view->currentBuffer()->text->TableFeatures(LyXTable::SET_PWIDTH,str);
-            current_view->currentBuffer()->update(1);
+            current_view->buffer()->text->TableFeatures(LyXTable::SET_PWIDTH,str);
+            current_view->buffer()->update(1);
         }
         MenuLayoutTable(0); // update for alignment
     }

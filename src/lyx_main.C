@@ -66,19 +66,19 @@ LyX::LyX(int * argc, char * argv[])
 	// Global bindings (this must be done as early as possible.) (Lgb)
 	toplevel_keymap = new kb_keymap;
 
-	lyxerr.debug() << "Initializing lyxrc" << endl;
+	lyxerr[Debug::INIT] << "Initializing lyxrc" << endl;
 	lyxrc = new LyXRC;
 
 	// Make the GUI object, and let it take care of the
 	// command line arguments that concerns it.
-	lyxerr.debug() << "Initializing LyXGUI..." << endl;
+	lyxerr[Debug::INIT] << "Initializing LyXGUI..." << endl;
 	lyxGUI = new LyXGUI(this, argc, argv, gui);
-	lyxerr.debug() << "Initializing LyXGUI...done" << endl;
+	lyxerr[Debug::INIT] << "Initializing LyXGUI...done" << endl;
 
 	// Initialization of LyX (reads lyxrc and more)
-	lyxerr.debug() << "Initializing LyX::init..." << endl;
+	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
 	init(argc, argv);
-	lyxerr.debug() << "Initializing LyX::init...done" << endl;
+	lyxerr[Debug::INIT] << "Initializing LyX::init...done" << endl;
 
 	lyxGUI->init();
 
@@ -87,13 +87,13 @@ LyX::LyX(int * argc, char * argv[])
 	// the only thing left on the command line should be
 	// filenames.
 	if ((*argc)==2) 
-		lyxerr.debug() << "Opening document..." << endl;
+		lyxerr[Debug::INFO] << "Opening document..." << endl;
 	else if ((*argc)>2)
-		lyxerr.debug() << "Opening documents..." << endl;
+		lyxerr[Debug::INFO] << "Opening documents..." << endl;
 
 	Buffer * last_loaded = 0;
 
-	for (int argi = (*argc) - 1; argi >= 1; argi--) {
+	for (int argi = (*argc) - 1; argi >= 1; --argi) {
 		Buffer * loadb = bufferlist.loadLyXFile(argv[argi]);
 		if (loadb != 0) {
 			last_loaded = loadb;
@@ -169,7 +169,7 @@ void LyX::init(int */*argc*/, char **argv)
 		       << _("If you have problems, try starting LyX with an absolute path.")
 		       << endl;
 	}
-	lyxerr.debug() << "Path of binary: " << binpath << endl;
+	lyxerr[Debug::INIT] << "Path of binary: " << binpath << endl;
 
 	//
 	// Determine system directory.
@@ -323,7 +323,7 @@ void LyX::init(int */*argc*/, char **argv)
 	Screen * scr=(DefaultScreenOfDisplay(fl_get_display()));
 	lyxrc->dpi = ((HeightOfScreen(scr)* 25.4 / HeightMMOfScreen(scr)) +
 		      (WidthOfScreen(scr)* 25.4 / WidthMMOfScreen(scr))) / 2;
-	lyxerr.debug() << "DPI setting detected to be "
+	lyxerr[Debug::INFO] << "DPI setting detected to be "
 		       << lyxrc->dpi+0.5 << endl;
 
 	//

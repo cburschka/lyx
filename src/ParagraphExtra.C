@@ -76,7 +76,7 @@ bool UpdateParagraphExtra()
     bool update = false;
     if (current_view->getScreen() && current_view->available()) {
         update = true;
-        LyXParagraph* par = current_view->currentBuffer()->text->cursor.par;
+        LyXParagraph * par = current_view->buffer()->text->cursor.par;
 
 	EnableParagraphExtra();
 
@@ -137,7 +137,7 @@ bool UpdateParagraphExtra()
     }
     fl_hide_object(fd_form_paragraph_extra->text_warning);
 
-    if (current_view->currentBuffer()->isReadonly()) {
+    if (current_view->buffer()->isReadonly()) {
       DisableParagraphExtra();
       fl_set_object_label(fd_form_paragraph_extra->text_warning,
 			  _("Document is read-only.  No changes to layout permitted."));
@@ -165,12 +165,10 @@ void ParagraphExtraOpen(FL_OBJECT *, long)
 void ParagraphExtraApplyCB(FL_OBJECT *, long)
 {
     if (current_view->getScreen() && current_view->available()) {
-        const FD_form_paragraph_extra* fd = fd_form_paragraph_extra;
-        const char
-            *width = fl_get_input(fd->input_pextra_width),
-            *widthp = fl_get_input(fd->input_pextra_widthp);
-        LyXText
-            *text = current_view->currentBuffer()->text;
+        FD_form_paragraph_extra const * fd = fd_form_paragraph_extra;
+        const char * width = fl_get_input(fd->input_pextra_width);
+        const char * widthp = fl_get_input(fd->input_pextra_widthp);
+        LyXText * text = current_view->buffer()->text;
         int type = PEXTRA_NONE;
 	int alignment = 0;
         bool
@@ -195,7 +193,7 @@ void ParagraphExtraApplyCB(FL_OBJECT *, long)
         }
         text->SetParagraphExtraOpt(type,width,widthp,alignment,hfill,
                                    start_minipage);
-	current_view->currentBuffer()->update(1);
+	current_view->buffer()->update(1);
 	minibuffer->Set(_("ParagraphExtra layout set"));
     }
     return;

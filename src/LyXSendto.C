@@ -52,7 +52,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
     string command = fl_get_input(fd_form_sendto->input_cmd);
     if (command.empty())
         return;
-    Buffer *buffer = current_view->currentBuffer();
+    Buffer * buffer = current_view->buffer();
     if (fl_get_button(fd_form_sendto->radio_ftype_dvi) ||
         fl_get_button(fd_form_sendto->radio_ftype_ps)) {
         ProhibitInput();

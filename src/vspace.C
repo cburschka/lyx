@@ -473,7 +473,7 @@ string VSpace::asLatexCommand() const
 	switch (kin) {
 	case NONE:      return string();
 	case DEFSKIP:   
-	  return current_view->currentBuffer()->params.getDefSkip().asLatexCommand();
+	  return current_view->buffer()->params.getDefSkip().asLatexCommand();
 	case SMALLSKIP: return kp ? "\\vspace*{\\smallskipamount}"
 				  : "\\smallskip{}";
 	case MEDSKIP:   return kp ? "\\vspace*{\\medskipamount}"
@@ -492,7 +492,7 @@ string VSpace::asLatexCommand() const
 int VSpace::inPixels() const
 {
 	// Height of a normal line in pixels (zoom factor considered)
-	int height = current_view->currentBuffer()->text->DefaultHeight(); // [pixels]
+	int height = current_view->buffer()->text->DefaultHeight(); // [pixels]
 
 	// Zoom factor specified by user in percent
 	float const zoom = lyxrc->zoom / 100.0; // [percent]
@@ -507,7 +507,7 @@ int VSpace::inPixels() const
 	case NONE: return 0;
 
 	case DEFSKIP:
-	  return current_view->currentBuffer()->params.getDefSkip().inPixels();
+	  return current_view->buffer()->params.getDefSkip().inPixels();
 
 	// This is how the skips are normally defined by
 	// LateX.  But there should be some way to change

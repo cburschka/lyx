@@ -454,7 +454,7 @@ void LyXParagraph::validate(LaTeXFeatures & features)
         if (layout.needprotect 
 	    && next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE)
 		features.NeedLyXFootnoteCode = true;
-        if ((current_view->currentBuffer()->params.paragraph_separation == LYX_PARSEP_INDENT) &&
+        if ((current_view->buffer()->params.paragraph_separation == LYX_PARSEP_INDENT) &&
             (pextra_type == PEXTRA_MINIPAGE))
 		features.NeedLyXMinipageIndent = true;
         if (table && table->NeedRotating())
@@ -3735,7 +3735,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 			case '°': case '±': case '²': case '³':  
 			case '×': case '÷': case '¹': case 'ª':
 			case 'º': case '¬': case 'µ':
-				if (current_view->currentBuffer()->params.inputenc == "latin1") {
+				if (current_view->buffer()->params.inputenc == "latin1") {
 					file += "\\ensuremath{";
 					file += c;
 					file += '}';
@@ -3806,7 +3806,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 				break;
 
 			case '£':
-				if (current_view->currentBuffer()->params.inputenc == "default") {
+				if (current_view->buffer()->params.inputenc == "default") {
 					file += "\\pounds{}";
 					column += 8;
 				} else {
@@ -4048,7 +4048,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(string & file, TexRow & texrow,
 		// flags when footnotetext should be appended to file.
         static bool minipage_open = false;
         static int minipage_open_depth = 0;
-	char par_sep = current_view->currentBuffer()->params.paragraph_separation;
+	char par_sep = current_view->buffer()->params.paragraph_separation;
     
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << this << endl;
 	if (IsDummy())
@@ -4347,7 +4347,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 		texrow.newline();
 	}
 	
-	BufferParams * params = &current_view->currentBuffer()->params;
+	BufferParams * params = &current_view->buffer()->params;
 	bool footer_in_body = true;
 	switch (footnotekind) {
 	case LyXParagraph::FOOTNOTE:

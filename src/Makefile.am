@@ -168,6 +168,8 @@ lyx_SOURCES = \
 	trans_mgr.C \
 	trans_mgr.h \
 	undo.h \
+	vc-backend.C \
+	vc-backend.h \
 	version.h \
 	vms_defines.h \
 	vspace.C \

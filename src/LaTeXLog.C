@@ -22,14 +22,14 @@ void ShowLatexLog()
 	bool use_build = false;
 	static int ow = -1, oh;
 
-	filename = current_view->currentBuffer()->getFileName();
+	filename = current_view->buffer()->getFileName();
 	if (!filename.empty()) {
 		fname = SpaceLess(ChangeExtension(filename, ".log", true));
 		bname = SpaceLess(ChangeExtension(filename,
 						  lyxrc->literate_extension + ".out", true));
 		path = OnlyPath(filename);
 		if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
-			path = current_view->currentBuffer()->tmppath;
+			path = current_view->buffer()->tmppath;
 		}
 		FileInfo f_fi(path + fname), b_fi(path + bname);
 		if (b_fi.exist())

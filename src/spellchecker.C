@@ -325,13 +325,13 @@ void create_ispell_pipe(string const & lang)
 			argv[argc++] = tmp;
 		}
 		if (lyxrc->isp_use_input_encoding &&
-        	    current_view->currentBuffer()->params.inputenc != "default") {
+        	    current_view->buffer()->params.inputenc != "default") {
 			tmp = new char[3];
 			string("-T").copy(tmp, 2); tmp[2] = '\0';
 			argv[argc++] = tmp; // Input encoding
-			tmp = new char[current_view->currentBuffer()->params.inputenc.length() + 1];
-			current_view->currentBuffer()->params.inputenc.copy(tmp, current_view->currentBuffer()->params.inputenc.length());
-			tmp[current_view->currentBuffer()->params.inputenc.length()] = '\0';
+			tmp = new char[current_view->buffer()->params.inputenc.length() + 1];
+			current_view->buffer()->params.inputenc.copy(tmp, current_view->buffer()->params.inputenc.length());
+			tmp[current_view->buffer()->params.inputenc.length()] = '\0';
 			argv[argc++] = tmp;
 		}
 
@@ -585,7 +585,7 @@ void ShowSpellChecker()
 			fl_set_object_lcol(fd_form_spell_check->input, FL_BLACK);
 			fl_set_object_lcol(fd_form_spell_check->browser, FL_BLACK);
 			// activate replace only if the file is not read-only
-			if (!current_view->currentBuffer()->isReadonly()) { 
+			if (!current_view->buffer()->isReadonly()) { 
 			  fl_activate_object(fd_form_spell_check->replace);
 			  fl_set_object_lcol(fd_form_spell_check->replace, FL_BLACK);
 			}
@@ -596,7 +596,7 @@ void ShowSpellChecker()
 			fl_set_object_lcol(fd_form_spell_check->options, FL_INACTIVE);
 			fl_set_object_lcol(fd_form_spell_check->start, FL_INACTIVE);
 
-			ret = RunSpellChecker(current_view->currentBuffer()->GetLanguage());
+			ret = RunSpellChecker(current_view->buffer()->GetLanguage());
 
 			// deactivate insert, accept, replace, and stop
 			fl_deactivate_object(fd_form_spell_check->insert);

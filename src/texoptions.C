@@ -31,9 +31,9 @@ void LaTeXOptionsOK(FL_OBJECT *ob, long data)
 void LaTeXOptionsApply(FL_OBJECT *, long)
 {
 	if (fl_get_button(fd_latex_options->accents))
-		current_view->currentBuffer()->params.allowAccents = true;
+		current_view->buffer()->params.allowAccents = true;
 	else
-		current_view->currentBuffer()->params.allowAccents = false;
+		current_view->buffer()->params.allowAccents = false;
 }
 
 void LaTeXOptionsCancel(FL_OBJECT *, long)

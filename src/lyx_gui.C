@@ -325,9 +325,9 @@ void LyXGUI::init()
 
 void LyXGUI::create_forms()
 {
-	lyxerr.debug() << "Initializing LyXView..." << endl;
+	lyxerr[Debug::INIT] << "Initializing LyXView..." << endl;
 	lyxViews = new LyXView(width, height);
-	lyxerr.debug() << "Initializing LyXView...done" << endl;
+	lyxerr[Debug::INIT] << "Initializing LyXView...done" << endl;
 
 	// From here down should be done by somebody else. (Lgb)
 
@@ -641,5 +641,5 @@ void LyXGUI::runTime()
 
 void LyXGUI::regBuf(Buffer *b)
 {
-	lyxViews->currentView()->setBuffer(b);
+	lyxViews->currentView()->buffer(b);
 }

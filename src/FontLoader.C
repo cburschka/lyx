@@ -196,14 +196,14 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 }
 
 /// Do load font
-XFontStruct* FontLoader::doLoad(LyXFont::FONT_FAMILY family, 
+XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family, 
 				LyXFont::FONT_SERIES series, 
 				LyXFont::FONT_SHAPE shape, 
 				LyXFont::FONT_SIZE size)
 {
 	getFontinfo(family,series,shape);
-	int fsize = (int) ( (lyxrc->font_sizes[size] * lyxrc->dpi * 
-				(lyxrc->zoom/100.0) ) / 72.27 + 0.5 );
+	int fsize = int( (lyxrc->font_sizes[size] * lyxrc->dpi * 
+			  (lyxrc->zoom/100.0) ) / 72.27 + 0.5 );
 
 	string font = fontinfo[family][series][shape]->getFontname(fsize);
 
@@ -216,10 +216,10 @@ XFontStruct* FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 	minibuffer->Store();
 	minibuffer->Set(_("Loading font into X-Server..."));
 
-	XFontStruct* fs = XLoadQueryFont(fl_display, font.c_str());
+	XFontStruct * fs = XLoadQueryFont(fl_display, font.c_str());
 
 	if (fs == 0) {
-		if (font=="fixed") {
+		if (font == "fixed") {
 			lyxerr << "We're doomed. Can't get 'fixed' font." << endl;
 		} else {
 			lyxerr << "Could not get font. Using 'fixed'." << endl;

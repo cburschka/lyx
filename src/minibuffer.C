@@ -30,20 +30,20 @@ extern string keyseqOptions(int l=190);
 extern string keyseqStr(int l=190);
 extern LyXAction lyxaction;
 
-void MiniBuffer::TimerCB(FL_OBJECT *, long tmp)
+void MiniBuffer::TimerCB(FL_OBJECT * ob, long)
 {
-	MiniBuffer *obj= (MiniBuffer*)tmp;
+	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);
 	obj->Init();
 }
 
-extern "C" void C_MiniBuffer_TimerCB(FL_OBJECT *ob, long data)
+extern "C" void C_MiniBuffer_TimerCB(FL_OBJECT * ob, long data)
 {
 	MiniBuffer::TimerCB(ob, data);
 }
 
-void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
+void MiniBuffer::ExecutingCB(FL_OBJECT * ob, long)
 {
-	MiniBuffer *obj = (MiniBuffer*)ob->u_vdata;
+	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);
 	lyxerr.debug() << "Getting ready to execute: " << obj->cur_cmd << endl;
 	fl_set_focus_object(obj->owner->getForm(),
 			    obj->owner->currentView()->getWorkArea());
@@ -68,7 +68,7 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 		       << "\nArg     : " << arg << endl;
 
 	// Dispatch only returns requested data for a few commands (ale)
-	string res=obj->owner->getLyXFunc()->Dispatch(function.c_str(),
+	string res = obj->owner->getLyXFunc()->Dispatch(function.c_str(),
 						       arg.c_str());
 	lyxerr.debug() << "Minibuffer Res: " << res << endl;
 	obj->shows_no_match = false;
@@ -76,19 +76,19 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 	return ;
 }
 
-extern "C" void C_MiniBuffer_ExecutingCB(FL_OBJECT *ob, long data)
+extern "C" void C_MiniBuffer_ExecutingCB(FL_OBJECT * ob, long data)
 {
 	MiniBuffer::TimerCB(ob, data);
 }
 
 // This is not as dirty as it seems, the hidden buttons removed by this
 // function were just kludges for an uncomplete keyboard callback (ale)
-int MiniBuffer::peek_event(FL_OBJECT *ob, int event, FL_Coord, FL_Coord,
+int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 			   int key, void */*xev*/)
 {
-	MiniBuffer *mini = (MiniBuffer*)ob->u_vdata;
+	MiniBuffer * mini = static_cast<MiniBuffer*>(ob->u_vdata);
 	
-	if (event==FL_KEYBOARD){
+	if (event == FL_KEYBOARD){
 		switch (key) {
 		case XK_Down:
 			mini->history_idx++;
@@ -105,7 +105,7 @@ int MiniBuffer::peek_event(FL_OBJECT *ob, int event, FL_Coord, FL_Coord,
 		case XK_Tab:
 		{
 			// complete or increment the command
-			const char *s = lyxaction.getApproxFuncName(fl_get_input(ob));
+			char const * s = lyxaction.getApproxFuncName(fl_get_input(ob));
 			if (s && s[0])
 				fl_set_input(ob, s);
 			return 1; 
@@ -130,9 +130,9 @@ int MiniBuffer::peek_event(FL_OBJECT *ob, int event, FL_Coord, FL_Coord,
 	return 0;
 }
 
-extern "C" int C_MiniBuffer_peek_event(FL_OBJECT *ob, int event, 
+extern "C" int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event, 
 				       FL_Coord, FL_Coord,
-				       int key, void *xev)
+				       int key, void * xev)
 {
 	return MiniBuffer::peek_event(ob,event,0,0,key,xev);
 }
@@ -146,10 +146,10 @@ void MiniBuffer::ExecCommand()
 }
 
 
-FL_OBJECT *MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
+FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
 			   FL_Coord w, FL_Coord h)
 {
-	FL_OBJECT *obj;
+	FL_OBJECT * obj;
 	
 	the_buffer = obj = fl_add_input(type,x,y,w,h,text.c_str());
         fl_set_object_boxtype(obj,FL_DOWN_BOX);
@@ -161,12 +161,13 @@ FL_OBJECT *MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
 
 	// To intercept Up, Down, Table for history
         fl_set_object_prehandler(obj, C_MiniBuffer_peek_event);
-        obj->u_vdata = (void*)this;
+        obj->u_vdata = this;
         obj->wantkey = FL_KEY_TAB;
 	
 	// timer
 	timer = fl_add_timer(FL_HIDDEN_TIMER, 0,0,0,0, "Timer");
-	fl_set_object_callback(timer, C_MiniBuffer_TimerCB, (long)this);
+	fl_set_object_callback(timer, C_MiniBuffer_TimerCB, 0);
+	timer->u_vdata = this;
 	fl_set_input(the_buffer, text.c_str());
 
 	return obj;
@@ -210,23 +211,23 @@ void MiniBuffer::Init()
 	// Else, show the buffer state.
 	else if (owner->currentView()->available()) {
 			string nicename =
-				MakeDisplayPath(owner->currentBuffer()->
+				MakeDisplayPath(owner->buffer()->
 						getFileName());
 			// Should we do this instead? (kindo like emacs)
 			// leaves more room for other information
 			text = "LyX: ";
 			text += nicename;
-			if (owner->currentBuffer()->lyxvc.inUse()) {
-				text += " [RCS:";
-				text += owner->currentBuffer()->lyxvc.getVersion();
+			if (owner->buffer()->lyxvc.inUse()) {
+				text += " [";
+				text += owner->buffer()->lyxvc.version();
 				text += ' ';
-				text += owner->currentBuffer()->lyxvc.getLocker();
-				if (owner->currentBuffer()->isReadonly())
+				text += owner->buffer()->lyxvc.locker();
+				if (owner->buffer()->isReadonly())
 					text += " (RO)";
 				text += ']';
-			} else if (owner->currentBuffer()->isReadonly())
+			} else if (owner->buffer()->isReadonly())
 				text += " [RO]";
-			if (!owner->currentBuffer()->isLyxClean())
+			if (!owner->buffer()->isLyxClean())
 				text += _(" (Changed)");
 	} else {
 		if (text != _("Welcome to LyX!")) // this is a hack

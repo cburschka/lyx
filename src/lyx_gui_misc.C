@@ -242,7 +242,7 @@ void updateAllVisibleBufferRelatedPopups()
 		RefUpdateCB(0,0);
 	}
 #endif
-	if (current_view->currentBuffer()->isReadonly()) {
+	if (current_view->buffer()->isReadonly()) {
 		// a little crude perhaps but it works. ARRae
 		if (fd_form_character->form_character->visible) {
 			fl_hide_form(fd_form_character->form_character);
@@ -410,6 +410,6 @@ void WarnReadonly()
 {
 	WriteAlert(_("Any changes will be ignored"),
 		   _("The document is read-only:"),
-		   current_view->currentBuffer()->getFileName());
+		   current_view->buffer()->getFileName());
 }
 

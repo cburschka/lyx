@@ -35,12 +35,12 @@ void InitLyXLookup(Display* display, Window window)
 	// This part could be done before opening display
 	setlocale(LC_CTYPE,"");
        	if (!XSupportsLocale()) {
-		lyxerr.debug("InitLyXLookup: X does not support this locale.");
+		lyxerr.debug() << "InitLyXLookup: X does not support this locale." << endl;
 		return;
 	} 
 	if (!XSetLocaleModifiers("")) {
-		lyxerr.debug("InitLyXLookup: Could not set modifiers "
-			     "for this locale.");
+		lyxerr.debug() << "InitLyXLookup: Could not set modifiers "
+			"for this locale." << endl;
 		return;
 	}
 
@@ -54,15 +54,15 @@ void InitLyXLookup(Display* display, Window window)
 			    0);
 		
 		if (!xic) {
-			lyxerr.debug("InitLyXLookup: could not create "
-				     "an input context");
+			lyxerr.debug() << "InitLyXLookup: could not create "
+				"an input context" << endl;
 			XCloseIM (xim);
 			xim = 0;
 		} 
 	}
 	else 
-		lyxerr.debug("InitLyXLookup: could not open "
-			     "an input method.");
+		lyxerr.debug() << "InitLyXLookup: could not open "
+			"an input method." << endl;
 
 }
 
@@ -152,8 +152,8 @@ int LyXLookupString(XEvent *event,
                         return 0;
 		}
 		if (event->type != KeyPress)
-			lyxerr <<"LyXLookupString: wrong event type" 
-				      +string(event->type));
+			lyxerr << "LyXLookupString: wrong event type" 
+			       <<  event->type << endl;
 		Status status_return;
 		
 		result =  XmbLookupString(xic, &event->xkey, buffer_return,
@@ -189,7 +189,8 @@ int LyXLookupString(XEvent *event,
 void CloseLyXLookup() 
 {
 	if (xic) {
-		lyxerr.debug("CloseLyXLookup: destroying input context");
+		lyxerr.debug() << "CloseLyXLookup: destroying input context"
+			       << endl;
 		XDestroyIC(xic);
 		XCloseIM(xim);
 	}

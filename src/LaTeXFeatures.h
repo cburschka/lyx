@@ -17,6 +17,8 @@
 #pragma interface
 #endif
 
+#include <vector>
+
 #include "LString.h"
 
 class BufferParams; 
@@ -31,10 +33,6 @@ class LyXTextClass;
 struct LaTeXFeatures {
 	///
 	LaTeXFeatures(int n) ;
-	///
-	~LaTeXFeatures() {
-		delete[] layout;
-	}
 	/// The packaes needed by the document
 	string getPackages(BufferParams const &params);
 	/// The macros definitions needed by the document
@@ -118,7 +116,7 @@ struct LaTeXFeatures {
 	
 	//@Man: Layouts
 	//@{
-	bool *layout;
+	vector<bool> layout;
 	//@}
 	
 	//@Man: Special features

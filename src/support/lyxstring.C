@@ -629,7 +629,8 @@ lyxstring & lyxstring::assign(iterator first, iterator last)
 lyxstring::const_reference lyxstring::operator[](size_type pos) const
 {
 	Assert(pos <= rep->sz); // OURS!
-	return pos == rep->sz ? '\0' : rep->s[pos];
+	static char helper = '\0';
+	return pos == rep->sz ? helper : rep->s[pos];
 }
 
 

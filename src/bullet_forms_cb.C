@@ -61,8 +61,8 @@ bool updateBulletForm()
 	}
 	if (!current_view->available()) {
 		update = false;
-	} else if (current_view->currentBuffer()->isReadonly()
-		   || current_view->currentBuffer()->isLinuxDoc()) {
+	} else if (current_view->buffer()->isReadonly()
+		   || current_view->buffer()->isLinuxDoc()) {
 		fl_deactivate_object (fd_form_bullet->button_ok);
 		fl_deactivate_object (fd_form_bullet->button_apply);
 		fl_set_object_lcol (fd_form_bullet->button_ok, FL_INACTIVE);
@@ -85,10 +85,10 @@ bool updateBulletForm()
 		// any settings that need doing each time
 		fl_set_button(fd_form_bullet->radio_bullet_depth_1, 1);
 		fl_set_input(fd_form_bullet->input_bullet_latex,
-		             current_view->currentBuffer()
+		             current_view->buffer()
 			     ->params.user_defined_bullets[0].c_str());
 		fl_set_choice(fd_form_bullet->choice_bullet_size,
-			      current_view->currentBuffer()
+			      current_view->buffer()
 			      ->params.user_defined_bullets[0].getSize() + 2);
 	} else {
 		if (fd_form_bullet->form_bullet->visible) {
@@ -110,15 +110,15 @@ void BulletOKCB(FL_OBJECT *ob, long data)
 
 void BulletApplyCB(FL_OBJECT * /*ob*/, long /*data*/ )
 {
-	/* update the bullet settings */
-	BufferParams & param = current_view->currentBuffer()->params;
+	// update the bullet settings
+	BufferParams & param = current_view->buffer()->params;
 
 	// a little bit of loop unrolling
 	param.user_defined_bullets[0] = param.temp_bullets[0];
 	param.user_defined_bullets[1] = param.temp_bullets[1];
 	param.user_defined_bullets[2] = param.temp_bullets[2];
 	param.user_defined_bullets[3] = param.temp_bullets[3];
-	current_view->currentBuffer()->markDirty();
+	current_view->buffer()->markDirty();
 }
 
 
@@ -126,7 +126,7 @@ void BulletCancelCB(FL_OBJECT * /*ob*/, long /*data*/ )
 {
 	fl_hide_form(fd_form_bullet->form_bullet);
 	// this avoids confusion when reopening
-	BufferParams & param = current_view->currentBuffer()->params;
+	BufferParams & param = current_view->buffer()->params;
 	param.temp_bullets[0] = param.user_defined_bullets[0];
 	param.temp_bullets[1] = param.user_defined_bullets[1];
 	param.temp_bullets[2] = param.user_defined_bullets[2];
@@ -136,8 +136,8 @@ void BulletCancelCB(FL_OBJECT * /*ob*/, long /*data*/ )
 
 void InputBulletLaTeXCB(FL_OBJECT *, long)
 {
-  /* fill-in code for callback */
-	BufferParams & param = current_view->currentBuffer()->params;
+	// fill-in code for callback
+	BufferParams & param = current_view->buffer()->params;
 
 	param.temp_bullets[current_bullet_depth].setText(
 		fl_get_input(fd_form_bullet->input_bullet_latex));
@@ -146,7 +146,7 @@ void InputBulletLaTeXCB(FL_OBJECT *, long)
 
 void ChoiceBulletSizeCB(FL_OBJECT * ob, long /*data*/ )
 {
-	BufferParams & param = current_view->currentBuffer()->params;
+	BufferParams & param = current_view->buffer()->params;
 
 	// convert from 1-6 range to -1-4 
 	param.temp_bullets[current_bullet_depth].setSize(fl_get_choice(ob) - 2);
@@ -155,7 +155,7 @@ void ChoiceBulletSizeCB(FL_OBJECT * ob, long /*data*/ )
 }
 
 
-void BulletDepthCB(FL_OBJECT *ob, long data)
+void BulletDepthCB(FL_OBJECT * ob, long data)
 {
 	/* Should I do the following:                                 */
 	/*  1. change to the panel that the current bullet belongs in */
@@ -165,7 +165,7 @@ void BulletDepthCB(FL_OBJECT *ob, long data)
 	/*                                                            */
 	/* I'm inclined to just go with 3 and 4 at the moment and     */
 	/* maybe try to support the others later                      */
-	BufferParams & param = current_view->currentBuffer()->params;
+	BufferParams & param = current_view->buffer()->params;
 
 	switch (fl_get_button_numb(ob)) {
 	case 3:
@@ -242,7 +242,7 @@ void BulletBMTableCB(FL_OBJECT *ob, long /*data*/ )
 	/* to that extracted from the current chosen position of the BMTable  */
 	/* Don't forget to free the button's old pixmap first.                */
 
-	BufferParams & param = current_view->currentBuffer()->params;
+	BufferParams & param = current_view->buffer()->params;
 	int bmtable_button = fl_get_bmtable(ob);
 
 	/* try to keep the button held down till another is pushed */

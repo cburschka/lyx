@@ -141,10 +141,10 @@ void SetSelectionOverLenChars(LyXText *lt, int len)
 void LyXFindReplace1::StartSearch()
 {
 	LyXFindReplace0::StartSearch();
-	SetReplaceEnabled(!current_view->currentBuffer()->isReadonly());
+	SetReplaceEnabled(!current_view->buffer()->isReadonly());
 	searchForward = true;
 	if (lsSearch.empty()) 
-		SetSearchString(GetSelectionOrWordAtCursor(current_view->currentBuffer()->text));
+		SetSearchString(GetSelectionOrWordAtCursor(current_view->buffer()->text));
 }	
 
 
@@ -155,7 +155,7 @@ void LyXFindReplace1::SearchReplaceCB()
 
 	if (!current_view->getScreen())
 		return;
-	if (current_view->currentBuffer()->isReadonly())
+	if (current_view->buffer()->isReadonly())
 	        return;
 	
 	// CutSelection cannot cut a single space, so we have to stop
@@ -171,17 +171,17 @@ void LyXFindReplace1::SearchReplaceCB()
 	string const replacestring = ReplaceString();
 
 	current_view->getScreen()->HideCursor();
-	current_view->currentBuffer()->update(-2);
+	current_view->buffer()->update(-2);
 
-	ltCur = current_view->currentBuffer()->text;	
+	ltCur = current_view->buffer()->text;	
 	if (ltCur->selection) {
 		// clear the selection (if there is any) 
 		current_view->getScreen()->ToggleSelection(false);
-		current_view->currentBuffer()->text->
+		current_view->buffer()->text->
 			ReplaceSelectionWithString(replacestring.c_str());
-		current_view->currentBuffer()->text->
+		current_view->buffer()->text->
 			SetSelectionOverString(replacestring.c_str());
-		current_view->currentBuffer()->update(1);
+		current_view->buffer()->update(1);
 	}
 	
 	// jump to next match:
@@ -196,7 +196,7 @@ void LyXFindReplace1::SearchReplaceAllCB()
 
 	if (!current_view->getScreen())
 		return;
-	if (current_view->currentBuffer()->isReadonly())
+	if (current_view->buffer()->isReadonly())
 	        return;
 
 	// CutSelection cannot cut a single space, so we have to stop
@@ -214,20 +214,20 @@ void LyXFindReplace1::SearchReplaceAllCB()
 	current_view->getScreen()->HideCursor();
 
 	// start at top
-	current_view->currentBuffer()->text->ClearSelection();
-	current_view->currentBuffer()->text->CursorTop();
+	current_view->buffer()->text->ClearSelection();
+	current_view->buffer()->text->CursorTop();
 
 	int replace_count = 0;
 	do {
-		ltCur = current_view->currentBuffer()->text;	
+		ltCur = current_view->buffer()->text;	
 		if (ltCur->selection) {
-			current_view->currentBuffer()->update(-2);
+			current_view->buffer()->update(-2);
 			current_view->getScreen()->ToggleSelection(false);
-			current_view->currentBuffer()->text->
+			current_view->buffer()->text->
 				ReplaceSelectionWithString(replacestring.c_str());
-			current_view->currentBuffer()->text->
+			current_view->buffer()->text->
 				SetSelectionOverString(replacestring.c_str());
-			current_view->currentBuffer()->update(1); 
+			current_view->buffer()->update(1); 
 			replace_count++;
 		}
 	} while( SearchCB(true) );
@@ -259,8 +259,8 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 		return(false);
    
 	current_view->getScreen()->HideCursor();
-	current_view->currentBuffer()->update(-2);
-	ltCur = current_view->currentBuffer()->text;
+	current_view->buffer()->update(-2);
+	ltCur = current_view->buffer()->text;
 	if (ltCur->selection) 
 		ltCur->cursor = fForward ? ltCur->sel_end_cursor :
                                                  ltCur->sel_start_cursor;
@@ -270,14 +270,14 @@ bool LyXFindReplace1::SearchCB(bool fForward)
    
 	if (!ValidSearchData() ||
 	    (fForward ? SearchForward(ltCur) : SearchBackward(ltCur))) {
-		current_view->currentBuffer()->update(-2);
+		current_view->buffer()->update(-2);
 
 		// clear the selection (if there is any) 
 		current_view->getScreen()->ToggleSelection();
-		current_view->currentBuffer()->text->ClearSelection();
+		current_view->buffer()->text->ClearSelection();
 
 		// set the new selection 
-		SetSelectionOverLenChars(current_view->currentBuffer()->text, iLenSelected);
+		SetSelectionOverLenChars(current_view->buffer()->text, iLenSelected);
 		current_view->getScreen()->ToggleSelection(false);
 		minibuffer->Set(_("Found."));
 		result = true;

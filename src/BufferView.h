@@ -30,11 +30,11 @@ public:
 	///
 	BufferView(LyXView *owner, int ,int ,int, int);
 	///
-	Buffer *currentBuffer() { return _buffer; }
+	Buffer * buffer() const { return buffer_; }
 	///
-	FL_OBJECT *getWorkArea() { return work_area; }
+	FL_OBJECT * getWorkArea() { return work_area; }
 	///
-	void setBuffer(Buffer *b);
+	void buffer(Buffer * b);
 	///
 	void resize();
 	///
@@ -58,9 +58,9 @@ public:
 	/// 
 	bool available() const;
 	///
-	LyXView *getOwner() { return _owner; }
+	LyXView * owner() const { return owner_; }
 	///
-	LyXScreen *getScreen()
+	LyXScreen * getScreen()
 	{
 		fl_set_timer(timer_cursor, 0.4);
 		return screen;
@@ -77,7 +77,7 @@ private:
 	///
 	void create_view(int, int, int, int);
 	///
-	Inset * checkInsetHit(int &x, int &y);
+	Inset * checkInsetHit(int & x, int & y);
 	/// 
 	int ScrollUp(long time);
 	///
@@ -89,46 +89,46 @@ private:
 
 public:
 	/// A callback for the up arrow in the scrollbar.
-	static void UpCB(FL_OBJECT *ob, long);
+	static void UpCB(FL_OBJECT * ob, long);
 
 	/// A callback for the slider in the scrollbar.
-	static void ScrollCB(FL_OBJECT *ob, long);
+	static void ScrollCB(FL_OBJECT * ob, long);
 
 	/// A callback for the down arrow in the scrollbar.
-	static void DownCB(FL_OBJECT *ob, long);
+	static void DownCB(FL_OBJECT * ob, long);
 
 	///
-	static void CursorToggleCB(FL_OBJECT *ob, long);
+	static void CursorToggleCB(FL_OBJECT * ob, long);
 	/** Work area free object handler
 	 */
 	static int work_area_handler(FL_OBJECT *, int event,
 				     FL_Coord, FL_Coord, int key, void *xev);
 private:
 	///
-	int WorkAreaMotionNotify(FL_OBJECT *ob,
+	int WorkAreaMotionNotify(FL_OBJECT * ob,
 				 Window win,
 				 int w, int h,
-				 XEvent *ev, void *d);
+				 XEvent * ev, void * d);
 	///
 	int WorkAreaSelectionNotify(FL_OBJECT *, Window win,
 				    int /*w*/, int /*h*/,
-				    XEvent *event, void */*d*/);
+				    XEvent * event, void * /*d*/);
 	///
-	int WorkAreaButtonPress(FL_OBJECT *ob,
+	int WorkAreaButtonPress(FL_OBJECT * ob,
 				Window win,
 				int w, int h,
-				XEvent *ev, void *d);
+				XEvent * ev, void * d);
 	///
-	int WorkAreaButtonRelease(FL_OBJECT *ob,
+	int WorkAreaButtonRelease(FL_OBJECT * ob,
 				  Window win,
 				  int w, int h,
-				  XEvent *ev, void *d);
+				  XEvent * ev, void * d);
 	///
-	LyXView *_owner;
+	LyXView * owner_;
 	///
-	Buffer *_buffer;
+	Buffer * buffer_;
 	///
-	LyXScreen *screen;
+	LyXScreen * screen;
 	///
 	long current_scrollbar_value;
 	///
@@ -138,17 +138,17 @@ private:
 	///
 	bool work_area_focus;
 	///
-	FL_OBJECT *work_area;
+	FL_OBJECT * work_area;
 	///
-	FL_OBJECT *figinset_canvas;
+	FL_OBJECT * figinset_canvas;
 	///
-	FL_OBJECT *scrollbar;
+	FL_OBJECT * scrollbar;
 	///
-	FL_OBJECT *button_down;
+	FL_OBJECT * button_down;
 	///
-	FL_OBJECT *button_up;
+	FL_OBJECT * button_up;
 	///
-	FL_OBJECT *timer_cursor;
+	FL_OBJECT * timer_cursor;
         ///
         BackStack backstack;
 	///

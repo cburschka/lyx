@@ -458,7 +458,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
 
-	Buffer * tmpbuffer = men->_view->currentBuffer();
+	Buffer * tmpbuffer = men->_view->buffer();
 	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	bool LinuxDoc = tmpbuffer->isLinuxDoc();
@@ -673,7 +673,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	case 18: // The first item with lastfiles.
 	default:
 		men->currentView()
-			->setBuffer(bufferlist
+			->buffer(bufferlist
 				    .loadLyXFile((*lastfiles)[choice - 18]));
 		break;
 	}
@@ -789,7 +789,7 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 	case 6: // The first item with lastfiles.
 	default:
 		men->currentView()
-			->setBuffer(bufferlist
+			->buffer(bufferlist
 				    .loadLyXFile((*lastfiles)[choice - 6]));
 		break;
 	}
@@ -810,7 +810,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
 
-	Buffer * tmpbuffer = men->_view->currentBuffer();
+	Buffer * tmpbuffer = men->_view->buffer();
 	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	// Floats & Insets submenu
@@ -1135,7 +1135,7 @@ void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
    
-	Buffer * tmpbuffer = men->_view->currentBuffer();
+	Buffer * tmpbuffer = men->_view->buffer();
 	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	int LayoutMenu = fl_newpup(FL_ObjWin(ob));
@@ -1225,7 +1225,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
  
-	Buffer * tmpbuffer = men->_view->currentBuffer();
+	Buffer * tmpbuffer = men->_view->buffer();
 	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	int SubInsertAscii = fl_defpup(FL_ObjWin(ob),
@@ -1428,7 +1428,7 @@ void Menus::ShowMathMenu(FL_OBJECT * ob, long)
 	fl_set_button(ob, 0);
 	fl_redraw_object(ob);
 
-	Buffer * tmpbuffer = men->_view->currentBuffer();
+	Buffer * tmpbuffer = men->_view->buffer();
 	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	int MathMenu = fl_defpup(FL_ObjWin(ob), 
@@ -1662,7 +1662,7 @@ void Menus::MenuDocu(string const & docname)
 	string fname = i18nLibFileSearch("doc", docname, "lyx");
 	_view->getMiniBuffer()->Set(_("Opening help file"),
 				    MakeDisplayPath(fname),"...");
-	currentView()->setBuffer(bufferlist.loadLyXFile(fname,false));
+	currentView()->buffer(bufferlist.loadLyXFile(fname,false));
 
 	if (docname == "Reference")
 		_view->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
@@ -1671,5 +1671,5 @@ void Menus::MenuDocu(string const & docname)
 
 void Menus::handleBufferMenu(int choice)
 {
-	currentView()->setBuffer(bufferlist.getBuffer(choice));
+	currentView()->buffer(bufferlist.getBuffer(choice));
 }

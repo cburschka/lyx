@@ -102,6 +102,7 @@ extern void FreeUpdateTimer();
 
 Buffer::Buffer(string const & file, LyXRC *lyxrc, bool ronly)
 {
+	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 	filename = file;
 	filepath = OnlyPath(file);
 	paragraph = 0;
@@ -115,8 +116,7 @@ Buffer::Buffer(string const & file, LyXRC *lyxrc, bool ronly)
 	read_only = ronly;
 	inset_slept = false;
 	users = 0;
-	lyxvc.setBuffer(this);
-	lyxerr.debug() << "Buffer::Buffer()" << endl;
+	lyxvc.buffer(this);
 	if (read_only || (lyxrc && lyxrc->use_tempdir)) {
 		tmppath = CreateBufferTmpDir();
 	} else tmppath.clear();
@@ -125,14 +125,14 @@ Buffer::Buffer(string const & file, LyXRC *lyxrc, bool ronly)
 
 Buffer::~Buffer()
 {
-	lyxerr.debug() << "Buffer::~Buffer()" << endl;
+	lyxerr[Debug::INFO] << "Buffer::~Buffer()" << endl;
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
 
 	// make sure that views using this buffer
 	// forgets it.
 	if (users)
-		users->setBuffer(0);
+		users->buffer(0);
 	
 	if (!tmppath.empty()) {
 		DestroyBufferTmpDir(tmppath);
@@ -169,7 +169,7 @@ bool Buffer::saveParamsAsDefaults()
 // Should work on a list
 void Buffer::updateTitles()
 {
-	if (users) users->getOwner()->updateWindowTitle();
+	if (users) users->owner()->updateWindowTitle();
 }
 
 
@@ -177,7 +177,7 @@ void Buffer::updateTitles()
 // Should work on a list
 void Buffer::resetAutosaveTimers()
 {
-	if (users) users->getOwner()->resetAutosaveTimer();
+	if (users) users->owner()->resetAutosaveTimer();
 }
 
 
@@ -3209,7 +3209,7 @@ int Buffer::runLaTeX()
 	}
 
 	Path p(path); // path to LaTeX file
-	users->getOwner()->getMiniBuffer()->Set(_("Running LaTeX..."));   
+	users->owner()->getMiniBuffer()->Set(_("Running LaTeX..."));   
 
 	// Remove all error insets
 	bool a = removeAutoInsets();
@@ -3221,14 +3221,15 @@ int Buffer::runLaTeX()
 	// do the LaTex run(s)
 	TeXErrors terr;
 	LaTeX latex(lyxrc->latex_command, name, filepath);
-	int res = latex.run(terr,users->getOwner()->getMiniBuffer()); // running latex
+	int res = latex.run(terr,
+			    users->owner()->getMiniBuffer()); // running latex
 
 	// check return value from latex.run().
 	if ((res & LaTeX::NO_LOGFILE)) {
 		WriteAlert(_("LaTeX did not work!"),
 			   _("Missing log file:"), name);
 	} else if ((res & LaTeX::ERRORS)) {
-		users->getOwner()->getMiniBuffer()->Set(_("Done"));
+		users->owner()->getMiniBuffer()->Set(_("Done"));
 		// Insert all errors as errors boxes
 		insertErrors(terr);
 		
@@ -3237,7 +3238,7 @@ int Buffer::runLaTeX()
 		// to view a dirty dvi too.
 	} else {
 		//no errors or any other things to think about so:
-		users->getOwner()->getMiniBuffer()->Set(_("Done"));
+		users->owner()->getMiniBuffer()->Set(_("Done"));
 		markDviClean();
 	}
 
@@ -3273,7 +3274,7 @@ int Buffer::runLiterate()
 	}
 
 	Path p(path); // path to Literate file
-	users->getOwner()->getMiniBuffer()->Set(_("Running Literate..."));   
+	users->owner()->getMiniBuffer()->Set(_("Running Literate..."));   
 
 	// Remove all error insets
 	bool a = removeAutoInsets();
@@ -3289,14 +3290,14 @@ int Buffer::runLiterate()
 			  lyxrc->literate_command, lyxrc->literate_error_filter,
 			  lyxrc->build_command, lyxrc->build_error_filter);
 	TeXErrors terr;
-	int res = literate.weave(terr, users->getOwner()->getMiniBuffer());
+	int res = literate.weave(terr, users->owner()->getMiniBuffer());
 
 	// check return value from literate.weave().
 	if ((res & Literate::NO_LOGFILE)) {
 		WriteAlert(_("Literate command did not work!"),
 			   _("Missing log file:"), name);
 	} else if ((res & Literate::ERRORS)) {
-		users->getOwner()->getMiniBuffer()->Set(_("Done"));
+		users->owner()->getMiniBuffer()->Set(_("Done"));
 		// Insert all errors as errors boxes
 		insertErrors(terr);
 		
@@ -3305,7 +3306,7 @@ int Buffer::runLiterate()
 		// to view a dirty dvi too.
 	} else {
 		//no errors or any other things to think about so:
-		users->getOwner()->getMiniBuffer()->Set(_("Done"));
+		users->owner()->getMiniBuffer()->Set(_("Done"));
 		markDviClean();
 	}
 
@@ -3341,7 +3342,7 @@ int Buffer::buildProgram()
         }
  
         Path p(path); // path to Literate file
-        users->getOwner()->getMiniBuffer()->Set(_("Building Program..."));   
+        users->owner()->getMiniBuffer()->Set(_("Building Program..."));   
  
         // Remove all error insets
         bool a = removeAutoInsets();
@@ -3357,14 +3358,14 @@ int Buffer::buildProgram()
 			  lyxrc->literate_command, lyxrc->literate_error_filter,
 			  lyxrc->build_command, lyxrc->build_error_filter);
         TeXErrors terr;
-        int res = literate.build(terr, users->getOwner()->getMiniBuffer());
+        int res = literate.build(terr, users->owner()->getMiniBuffer());
  
         // check return value from literate.build().
         if ((res & Literate::NO_LOGFILE)) {
                 WriteAlert(_("Build did not work!"),
                            _("Missing log file:"), name);
         } else if ((res & Literate::ERRORS)) {
-                users->getOwner()->getMiniBuffer()->Set(_("Done"));
+                users->owner()->getMiniBuffer()->Set(_("Done"));
                 // Insert all errors as errors boxes
                 insertErrors(terr);
                 
@@ -3372,7 +3373,7 @@ int Buffer::buildProgram()
                 // command run ends up with errors.
         } else {
                 //no errors or any other things to think about so:
-                users->getOwner()->getMiniBuffer()->Set(_("Done"));
+                users->owner()->getMiniBuffer()->Set(_("Done"));
                 markNwClean();
         }
  
@@ -3408,7 +3409,7 @@ int Buffer::runChktex()
 	}
 
 	Path p(path); // path to LaTeX file
-	users->getOwner()->getMiniBuffer()->Set(_("Running chktex..."));
+	users->owner()->getMiniBuffer()->Set(_("Running chktex..."));
 
 	// Remove all error insets
 	bool a = removeAutoInsets();
@@ -3673,7 +3674,7 @@ void Buffer::update(signed char f)
 {
 	if (!users) return;
 	
-	users->getOwner()->updateLayoutChoice();
+	users->owner()->updateLayoutChoice();
 
 	if (!text->selection && f > -3)
 		text->sel_cursor = text->cursor;
@@ -3690,7 +3691,7 @@ void Buffer::update(signed char f)
 	if (f==1 || f==-1) {
 		if (isLyxClean()) {
 			markDirty();
-			users->getOwner()->getMiniBuffer()->setTimer(4);
+			users->owner()->getMiniBuffer()->setTimer(4);
 		} else {
 			markDirty();
 		}

@@ -1807,8 +1807,8 @@ void LyXText::TableFeatures(int feature)
           return;
       }
       case LyXTable::DELETE_ROW:
-          if (current_view->currentBuffer()->the_locking_inset)
-              UnlockInset(current_view->currentBuffer()->the_locking_inset);
+          if (current_view->buffer()->the_locking_inset)
+              UnlockInset(current_view->buffer()->the_locking_inset);
           RemoveTableRow(&cursor);
           RedoParagraph();
           return;
@@ -1821,8 +1821,8 @@ void LyXText::TableFeatures(int feature)
 #endif
           int cell_org = actCell;
           int cell = 0;
-          if (current_view->currentBuffer()->the_locking_inset)
-              UnlockInset(current_view->currentBuffer()->the_locking_inset);
+          if (current_view->buffer()->the_locking_inset)
+              UnlockInset(current_view->buffer()->the_locking_inset);
           do {
               if (!pos || (cursor.par->IsNewline(pos-1))){
                   if (cursor.par->table->DeleteCellIfColumnIsDeleted(cell, cell_org)){

@@ -31,13 +31,13 @@ class Intl;
 ///
 struct  FD_form_main {
 	///
-	FL_FORM *form_main;
+	FL_FORM * form_main;
 	///
-	FL_OBJECT *timer_autosave;
+	FL_OBJECT * timer_autosave;
 	///
-	FL_OBJECT *timer_update;
+	FL_OBJECT * timer_update;
 	///
-	void *vdata;
+	void * vdata;
 	///
 	long ldata;
 };
@@ -70,7 +70,7 @@ public:
 	void redraw();
 
 	/// returns the buffer currently shown in the main form.
-	Buffer * currentBuffer(){ return bufferview->currentBuffer();}
+	Buffer * buffer() const { return bufferview->buffer(); }
 
 	///
 	BufferView * currentView() { return bufferview; }

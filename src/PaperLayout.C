@@ -112,7 +112,7 @@ bool UpdateLayoutPaper()
 		update = false;
 
 	if (update) {
-		BufferParams * params = &current_view->currentBuffer()->params;
+		BufferParams * params = &current_view->buffer()->params;
 
 		fl_set_choice(fd_form_paper->choice_papersize2,
 			      params->papersize2 + 1);
@@ -148,7 +148,7 @@ bool UpdateLayoutPaper()
 		fl_set_focus_object(fd_form_paper->form_paper,
 				    fd_form_paper->choice_papersize2);
 		fl_hide_object(fd_form_paper->text_warning);
-		if (current_view->currentBuffer()->isReadonly()) {
+		if (current_view->buffer()->isReadonly()) {
 			DisablePaperLayout();
 			fl_set_object_label(fd_form_paper->text_warning,
 					    _("Document is read-only."
@@ -184,7 +184,7 @@ void PaperApplyCB(FL_OBJECT *, long)
 	if (! current_view->available()) 
 		return;
 	
-	BufferParams * params = &current_view->currentBuffer()->params;
+	BufferParams * params = &current_view->buffer()->params;
 	
 	FD_form_paper const * fd = fd_form_paper;
     
@@ -204,9 +204,9 @@ void PaperApplyCB(FL_OBJECT *, long)
 	params->headheight = fl_get_input(fd->input_head_height);
 	params->headsep = fl_get_input(fd->input_head_sep);
 	params->footskip = fl_get_input(fd->input_foot_skip);
-	current_view->currentBuffer()->setPaperStuff();
+	current_view->buffer()->setPaperStuff();
 	minibuffer->Set(_("Paper layout set"));
-	current_view->currentBuffer()->markDirty();
+	current_view->buffer()->markDirty();
 	
 	return;
 }

@@ -236,7 +236,7 @@ extern "C" void C_Intl_DispatchCallback(FL_OBJECT *ob,long code)
 void Intl::InitKeyMapper(bool on)
 	/* initialize key mapper */
 {
-	lyxerr[Debug::KBMAP] << "Initializing key mappings..." << endl;
+	lyxerr[Debug::INIT] << "Initializing key mappings..." << endl;
 
 	if (prim_lang.empty() && sec_lang.empty())
 		keymapon = false; 

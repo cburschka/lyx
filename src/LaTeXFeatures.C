@@ -7,7 +7,7 @@
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 the LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -25,7 +25,8 @@
 
 extern LyXRC * lyxrc;
 
-LaTeXFeatures::LaTeXFeatures(int n) 
+LaTeXFeatures::LaTeXFeatures(int n)
+	: layout(n, false)
 {
 	// packages
 	color = false;
@@ -66,15 +67,10 @@ LaTeXFeatures::LaTeXFeatures(int n)
 	LyXParagraphIndent = false;
 	NeedLyXFootnoteCode = false;
 	NeedLyXMinipageIndent = false;
-
-	// layouts
-	layout = new bool[n];
-	for (int i = n; i--;) 
-		layout[i] = false;
 }
 
 
-string LaTeXFeatures::getPackages(BufferParams const &params)
+string LaTeXFeatures::getPackages(BufferParams const & params)
 {
 	string packages;
 	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
@@ -232,9 +228,10 @@ string LaTeXFeatures::getTClassPreamble(BufferParams const & params)
 	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
 	string tcpreamble = tclass.preamble();
 
-	for (LyXTextClass::LayoutList::const_iterator cit = tclass.begin();
-	     cit != tclass.end(); ++cit) {
-		tcpreamble += (*cit).preamble();
+	for (unsigned int i = 0; i < tclass.numLayouts(); ++i) {
+		if (layout[i]) {
+			tcpreamble += tclass[i].preamble();
+		}
 	}
 
 	return tcpreamble;

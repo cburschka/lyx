@@ -170,12 +170,12 @@ LyXFunc::~LyXFunc()
 inline
 void LyXFunc::moveCursorUpdate(bool selecting)
 {
-	if (selecting || owner->currentBuffer()->text->mark_set) {
-		owner->currentBuffer()->text->SetSelection();
+	if (selecting || owner->buffer()->text->mark_set) {
+		owner->buffer()->text->SetSelection();
 		owner->currentView()->getScreen()->ToggleToggle();
-		owner->currentBuffer()->update(0);
+		owner->buffer()->update(0);
 	} else {
-		owner->currentBuffer()->update(-2); // this IS necessary
+		owner->buffer()->update(-2); // this IS necessary
 		// (Matthias) 
 	}
 	owner->currentView()->getScreen()->ShowCursor();
@@ -217,10 +217,10 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 	
 	// this function should be used always [asierra060396]
 	if (owner->currentView()->available() &&
-	    owner->currentBuffer()->the_locking_inset &&
+	    owner->buffer()->the_locking_inset &&
 	    keysym_return == XK_Escape) {
-		UnlockInset(owner->currentBuffer()->the_locking_inset);
-		owner->currentBuffer()->text->CursorRight();
+		UnlockInset(owner->buffer()->the_locking_inset);
+		owner->buffer()->text->CursorRight();
 		return 0;
 	}
 
@@ -432,7 +432,7 @@ string LyXFunc::Dispatch(int ac,
         // Now that we know which action, if the buffer is RO let's check 
 	// whether the action is legal.  Alejandro 970603
         if (owner->currentView()->available() && 
-            owner->currentBuffer()->isReadonly() && 
+            owner->buffer()->isReadonly() && 
             lyxaction.isFuncRO(action)) {
 		setErrorMessage(N_("Document is read-only"));
 		lyxerr.debug() << "Error: Document is read-only." << endl;
@@ -442,7 +442,7 @@ string LyXFunc::Dispatch(int ac,
 	// If in math mode pass the control to
 	// the math inset [asierra060396]
 	if (owner->currentView()->available() &&
-	    owner->currentBuffer()->the_locking_inset) {
+	    owner->buffer()->the_locking_inset) {
 		if (action>1 || (action==LFUN_UNKNOWN_ACTION && keyseq.length>=-1)) {
 			if (action==LFUN_UNKNOWN_ACTION && argument.empty()) {
 				argument = keyseq.getiso();
@@ -451,32 +451,32 @@ string LyXFunc::Dispatch(int ac,
 		        if (action==LFUN_UNDO) {
 				int slx, sly;
 				UpdatableInset* inset =
-					owner->currentBuffer()->the_locking_inset;
+					owner->buffer()->the_locking_inset;
 				inset->GetCursorPos(slx, sly);
 				UnlockInset(inset);
 				MenuUndo();
-				inset = (UpdatableInset*)owner->currentBuffer()->text->cursor.par->GetInset(owner->currentBuffer()->text->cursor.pos);
+				inset = (UpdatableInset*)owner->buffer()->text->cursor.par->GetInset(owner->buffer()->text->cursor.pos);
 				if (inset) 
 					inset->Edit(slx, sly);
 				return string();
 			} else 
 				if (action==LFUN_REDO) {
 					int slx, sly;
-					UpdatableInset* inset = owner->currentBuffer()->the_locking_inset;
+					UpdatableInset* inset = owner->buffer()->the_locking_inset;
 					inset->GetCursorPos(slx, sly);
 					UnlockInset(inset);
 					MenuRedo();
-					inset = (UpdatableInset*)owner->currentBuffer()->text->cursor.par->GetInset(owner->currentBuffer()->text->cursor.pos);
+					inset = (UpdatableInset*)owner->buffer()->text->cursor.par->GetInset(owner->buffer()->text->cursor.pos);
 					if (inset)
 						inset->Edit(slx, sly);
 					return string();
 				} else
-					if (owner->currentBuffer()->the_locking_inset->LocalDispatch(action, argument.c_str()))
+					if (owner->buffer()->the_locking_inset->LocalDispatch(action, argument.c_str()))
 						return string();
 					else {
 						setMessage(N_("Text mode"));
 						if (action==LFUN_RIGHT || action==-1)
-							owner->currentBuffer()->text->CursorRight();
+							owner->buffer()->text->CursorRight();
 						if (action==LFUN_LEFT || action==LFUN_RIGHT)
 							return string();
 					}
@@ -486,8 +486,7 @@ string LyXFunc::Dispatch(int ac,
 	switch(action) {
 		// --- Misc -------------------------------------------
 	case LFUN_WORDFINDFORWARD  : 
-	case LFUN_WORDFINDBACKWARD : { 
-		LyXText *ltCur;
+	case LFUN_WORDFINDBACKWARD : {
 		static string last_search;
 		string searched_string;
 	    
@@ -498,7 +497,7 @@ string LyXFunc::Dispatch(int ac,
 			searched_string = last_search;
 		}
 
-		ltCur =	 owner->currentView()->currentBuffer()->text ;	 
+		LyXText * ltCur = owner->currentView()->buffer()->text ;
 
 		if (!searched_string.empty() &&
 		    (	 (action == LFUN_WORDFINDBACKWARD) ? 
@@ -507,17 +506,17 @@ string LyXFunc::Dispatch(int ac,
 			 )){
 
 			// ??? What is that ???
-			owner->currentView()->currentBuffer()->update(-2);
+			owner->currentView()->buffer()->update(-2);
 
 			// ??? Needed ???
 			// clear the selection (if there is any) 
 			owner->currentView()->getScreen()->ToggleSelection();
-			owner->currentView()->currentBuffer()->text->ClearSelection();
+			owner->currentView()->buffer()->text->ClearSelection();
 
 			// Move cursor so that successive C-s 's will not stand in place. 
 			if( action == LFUN_WORDFINDFORWARD ) 
-				owner->currentBuffer()->text->CursorRightOneWord();
-			owner->currentBuffer()->text->FinishUndo();
+				owner->buffer()->text->CursorRightOneWord();
+			owner->buffer()->text->FinishUndo();
 			moveCursorUpdate(false);
 
 			// ??? Needed ???
@@ -536,7 +535,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		if (owner->currentView()->available()
 		    && owner->currentView()->getScreen()) {
-			owner->currentBuffer()->update(-2);
+			owner->buffer()->update(-2);
 		}
 		char buf[100];
 		keyseq.print(buf,100, true);
@@ -569,33 +568,33 @@ string LyXFunc::Dispatch(int ac,
 	break;  
 
 	case LFUN_READ_ONLY_TOGGLE:
-		if (owner->currentBuffer()->lyxvc.inUse()) {
-			owner->currentBuffer()->lyxvc.toggleReadOnly();
+		if (owner->buffer()->lyxvc.inUse()) {
+			owner->buffer()->lyxvc.toggleReadOnly();
 		} else {
-			owner->currentBuffer()->setReadonly(
-				!owner->currentBuffer()->isReadonly());
+			owner->buffer()->setReadonly(
+				!owner->buffer()->isReadonly());
 		}
 		break;
 		
 	case LFUN_CENTER: // this is center and redraw.
 		BeforeChange();
-		if (owner->currentBuffer()->text->cursor.y >
+		if (owner->buffer()->text->cursor.y >
 		    owner->currentView()->getWorkArea()->h / 2)	{
 			owner->currentView()->getScreen()->
-				Draw(owner->currentBuffer()->text->cursor.y -
+				Draw(owner->buffer()->text->cursor.y -
 				     owner->currentView()->getWorkArea()->h/2);
 		} else { // <=
 			owner->currentView()->getScreen()->
 				Draw(0);
 		}
-		owner->currentBuffer()->update(0);
+		owner->buffer()->update(0);
 		owner->currentView()->redraw();
 		break;
 		
 	case LFUN_APPENDIX:
 		if (owner->currentView()->available()) {
-			owner->currentBuffer()->text->toggleAppendix();
-			owner->currentBuffer()->update(1);
+			owner->buffer()->text->toggleAppendix();
+			owner->buffer()->update(1);
 		}
 		break;
 
@@ -617,11 +616,11 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_MENUWRITE:
-		MenuWrite(owner->currentBuffer());
+		MenuWrite(owner->buffer());
 		break;
 		
 	case LFUN_MENUWRITEAS:
-		MenuWriteAs(owner->currentBuffer());
+		MenuWriteAs(owner->buffer());
 		break;
 		
 	case LFUN_MENURELOAD:
@@ -629,35 +628,35 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_PREVIEW:
-		MenuPreview(owner->currentBuffer());
+		MenuPreview(owner->buffer());
 		break;
 			
 	case LFUN_PREVIEWPS:
-		MenuPreviewPS(owner->currentBuffer());
+		MenuPreviewPS(owner->buffer());
 		break;
 		
 	case LFUN_RUNLATEX:
-		MenuRunLaTeX(owner->currentBuffer());
+		MenuRunLaTeX(owner->buffer());
 		break;
 		
         case LFUN_BUILDPROG:
-                MenuBuildProg(owner->currentBuffer());
+                MenuBuildProg(owner->buffer());
                 break;
                 
  	case LFUN_RUNCHKTEX:
-		MenuRunChktex(owner->currentBuffer());
+		MenuRunChktex(owner->buffer());
 		break;
 		
 	case LFUN_RUNDVIPS:
-		MenuRunDvips(owner->currentBuffer(), false);
+		MenuRunDvips(owner->buffer(), false);
 		break;
 		
 	case LFUN_MENUPRINT:
-		MenuPrint(owner->currentBuffer());
+		MenuPrint(owner->buffer());
 		break;
 		
 	case LFUN_FAX:
-		MenuFax(owner->currentBuffer());
+		MenuFax(owner->buffer());
 		break;
 			
 	case LFUN_EXPORT:
@@ -668,17 +667,17 @@ string LyXFunc::Dispatch(int ac,
 		// latex
 		if (extyp == "latex") {
 			// make sure that this buffer is not linuxdoc
-			MenuMakeLaTeX(owner->currentBuffer());
+			MenuMakeLaTeX(owner->buffer());
 		}
 		// linuxdoc
 		else if (extyp == "linuxdoc") {
 			// make sure that this buffer is not latex
-			MenuMakeLinuxDoc(owner->currentBuffer());
+			MenuMakeLinuxDoc(owner->buffer());
 		}
 		// docbook
 		else if (extyp == "docbook") {
 			// make sure that this buffer is not latex or linuxdoc
-			MenuMakeDocBook(owner->currentBuffer());
+			MenuMakeDocBook(owner->buffer());
 		}
 		// dvi
 		else if (extyp == "dvi") {
@@ -689,20 +688,20 @@ string LyXFunc::Dispatch(int ac,
 			// *.log and *.aux files also. (Asger)
 			bool flag = lyxrc->use_tempdir;
 			lyxrc->use_tempdir = false;
-			MenuRunLaTeX(owner->currentBuffer());
+			MenuRunLaTeX(owner->buffer());
 			lyxrc->use_tempdir = flag;
 		}
 		// postscript
 		else if (extyp == "postscript") {
 			// Start Print-dialog. Not as good as dvi... Bernhard.
-			MenuPrint(owner->currentBuffer());
+			MenuPrint(owner->buffer());
 			// Since the MenuPrint is a pop-up, we can't use
 			// the same trick as above. (Asger)
 			// MISSING: Move of ps-file :-(
 		}
 		// ascii
 		else if (extyp == "ascii") {
-			MenuMakeAscii(owner->currentBuffer());
+			MenuMakeAscii(owner->buffer());
 		}
 		else if (extyp == "custom") {
 			MenuSendto();
@@ -711,10 +710,10 @@ string LyXFunc::Dispatch(int ac,
 		// HTML
 		else if (extyp == "html" && lyxrc->html_command != "none") {
 			// First, create LaTeX file
-			MenuMakeLaTeX(owner->currentBuffer());
+			MenuMakeLaTeX(owner->buffer());
 
 			// And now, run the converter
-			string file = owner->currentBuffer()->getFileName();
+			string file = owner->buffer()->getFileName();
 			Path path(OnlyPath(file));
 			// the tex file name has to be correct for
 			// latex, but the html file name can be
@@ -791,8 +790,8 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_TOC_INSERT:
 	{
 		Inset *new_inset =
-			new InsetTOC(owner->currentBuffer());
-		owner->currentBuffer()->insertInset(new_inset,
+			new InsetTOC(owner->buffer());
+		owner->buffer()->insertInset(new_inset,
 						    "Standard", true);
 		break;
 	}
@@ -800,8 +799,8 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_LOF_INSERT:
 	{
 		Inset *new_inset =
-			new InsetLOF(owner->currentBuffer());
-		owner->currentBuffer()->insertInset(new_inset,
+			new InsetLOF(owner->buffer());
+		owner->buffer()->insertInset(new_inset,
 						    "Standard", true);
 		break;
 	}
@@ -809,8 +808,8 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_LOA_INSERT:
 	{
 		Inset *new_inset =
-			new InsetLOA(owner->currentBuffer());
-		owner->currentBuffer()->insertInset(new_inset,
+			new InsetLOA(owner->buffer());
+		owner->buffer()->insertInset(new_inset,
 						    "Standard", true);
 		break;
 	}
@@ -818,8 +817,8 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_LOT_INSERT:
 	{
 		Inset *new_inset =
-			new InsetLOT(owner->currentBuffer());
-		owner->currentBuffer()->insertInset(new_inset,
+			new InsetLOT(owner->buffer());
+		owner->buffer()->insertInset(new_inset,
 						    "Standard", true);
 		break;
 	}
@@ -881,7 +880,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_REMOVEERRORS:
-		if (owner->currentBuffer()->removeAutoInsets()) {
+		if (owner->buffer()->removeAutoInsets()) {
 			owner->currentView()->redraw();
 			owner->currentView()->fitCursor();
 			owner->currentView()->updateScrollbar();
@@ -946,11 +945,11 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_FOOTMELT:
 		if (owner->currentView()->available()
-		    && !owner->currentBuffer()->text->selection
-		    && owner->currentBuffer()->text->cursor.par->footnoteflag
+		    && !owner->buffer()->text->selection
+		    && owner->buffer()->text->cursor.par->footnoteflag
 		    != LyXParagraph::NO_FOOTNOTE)
 		{ // only melt footnotes with FOOTMELT, not margins etc
-		  if(owner->currentBuffer()->text->cursor.par->footnotekind == LyXParagraph::FOOTNOTE)
+		  if(owner->buffer()->text->cursor.par->footnotekind == LyXParagraph::FOOTNOTE)
 			MeltCB(ob,0);
 		}
 		else
@@ -959,11 +958,11 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_MARGINMELT:
 		if (owner->currentView()->available()
-		    && !owner->currentBuffer()->text->selection
-		    && owner->currentBuffer()->text->cursor.par->footnoteflag
+		    && !owner->buffer()->text->selection
+		    && owner->buffer()->text->cursor.par->footnoteflag
 		    != LyXParagraph::NO_FOOTNOTE)
 		{ // only melt margins
-		  if(owner->currentBuffer()->text->cursor.par->footnotekind == LyXParagraph::MARGIN)
+		  if(owner->buffer()->text->cursor.par->footnotekind == LyXParagraph::MARGIN)
 			MeltCB(ob,0);
 		}
 		else
@@ -973,42 +972,42 @@ string LyXFunc::Dispatch(int ac,
 		// --- version control -------------------------------
 	case LFUN_VC_REGISTER:
 	{
-		if (!owner->currentBuffer()->lyxvc.inUse())
-			owner->currentBuffer()->lyxvc.registrer();
+		if (!owner->buffer()->lyxvc.inUse())
+			owner->buffer()->lyxvc.registrer();
 	}
 	break;
 		
 	case LFUN_VC_CHECKIN:
 	{
-		if (owner->currentBuffer()->lyxvc.inUse()
-		    && !owner->currentBuffer()->isReadonly())
-			owner->currentBuffer()->lyxvc.checkIn();
+		if (owner->buffer()->lyxvc.inUse()
+		    && !owner->buffer()->isReadonly())
+			owner->buffer()->lyxvc.checkIn();
 	}
 	break;
 		
 	case LFUN_VC_CHECKOUT:
 	{
-		if (owner->currentBuffer()->lyxvc.inUse()
-		    && owner->currentBuffer()->isReadonly())
-			owner->currentBuffer()->lyxvc.checkOut();
+		if (owner->buffer()->lyxvc.inUse()
+		    && owner->buffer()->isReadonly())
+			owner->buffer()->lyxvc.checkOut();
 	}
 	break;
 	
 	case LFUN_VC_REVERT:
 	{
-		owner->currentBuffer()->lyxvc.revert();
+		owner->buffer()->lyxvc.revert();
 	}
 	break;
 		
 	case LFUN_VC_UNDO:
 	{
-		owner->currentBuffer()->lyxvc.undoLast();
+		owner->buffer()->lyxvc.undoLast();
 	}
 	break;
 		
 	case LFUN_VC_HISTORY:
 	{
-		owner->currentBuffer()->lyxvc.showLog();
+		owner->buffer()->lyxvc.showLog();
 		break;
 	}
 	
@@ -1021,7 +1020,7 @@ string LyXFunc::Dispatch(int ac,
 		// remember the previous buffer, not bufferlist.
 // 			if (owner->currentView()->available()){	  
 // 				BeforeChange();
-// 				owner->currentBuffer()->update(-2);
+// 				owner->buffer()->update(-2);
 // 			}
 // 			owner->currentView()->setBuffer(bufferlist.prev());
 
@@ -1049,12 +1048,12 @@ string LyXFunc::Dispatch(int ac,
 		Buffer * tmpbuf = 0;
 		tmpbuf = NewLyxFile(argument);
 		if (tmpbuf)
-			owner->currentView()->setBuffer(tmpbuf);
+			owner->currentView()->buffer(tmpbuf);
 	}
 		break;
 			
 	case LFUN_FILE_OPEN:
-		owner->currentView()->setBuffer(
+		owner->currentView()->buffer(
 			bufferlist.loadLyXFile(argument));
 		break;
 
@@ -1076,7 +1075,7 @@ string LyXFunc::Dispatch(int ac,
 
 		// Pretend we got the name instead.
 		Dispatch(int(LFUN_LAYOUT), 
-			 textclasslist.NameOfLayout(owner->currentBuffer()->
+			 textclasslist.NameOfLayout(owner->buffer()->
 					       text->parameters->
 					       textclass,
 					       sel).c_str());
@@ -1093,7 +1092,7 @@ string LyXFunc::Dispatch(int ac,
 		int layoutno = -1;
 		layoutno =
 			textclasslist.NumberOfLayout(owner->
-						currentBuffer()->
+						buffer()->
 						text->parameters->
 						textclass,
 						argument).second;
@@ -1108,14 +1107,14 @@ string LyXFunc::Dispatch(int ac,
 		if (current_layout != layoutno) {
 			owner->currentView()->getScreen()->HideCursor();
 			current_layout = layoutno;
-			owner->currentBuffer()->update(-2);
-			owner->currentBuffer()->text->
+			owner->buffer()->update(-2);
+			owner->buffer()->text->
 				SetLayout(layoutno);
 			owner->getToolbar()->combox->
-				select(owner->currentBuffer()->
+				select(owner->buffer()->
 				       text->cursor.par->
 				       GetLayout() + 1);
-			owner->currentBuffer()->update(1);
+			owner->buffer()->update(1);
 		}
 	}
 	break;
@@ -1201,26 +1200,26 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_UPCASE_WORD:
-		owner->currentBuffer()->update(-2);
+		owner->buffer()->update(-2);
 		FreeUpdateTimer();
-		owner->currentBuffer()->text->ChangeWordCase(LyXText::text_uppercase);
-		owner->currentBuffer()->update(1);
+		owner->buffer()->text->ChangeWordCase(LyXText::text_uppercase);
+		owner->buffer()->update(1);
 		SetUpdateTimer();
 		break;
 		
 	case LFUN_LOWCASE_WORD:
-		owner->currentBuffer()->update(-2);
+		owner->buffer()->update(-2);
 		FreeUpdateTimer();
-		owner->currentBuffer()->text->ChangeWordCase(LyXText::text_lowercase);
-		owner->currentBuffer()->update(1);
+		owner->buffer()->text->ChangeWordCase(LyXText::text_lowercase);
+		owner->buffer()->update(1);
 		SetUpdateTimer();
 		break;
 		
 	case LFUN_CAPITALIZE_WORD:
-		owner->currentBuffer()->update(-2);
+		owner->buffer()->update(-2);
 		FreeUpdateTimer();
-		owner->currentBuffer()->text->ChangeWordCase(LyXText::text_capitalization);
-		owner->currentBuffer()->update(1);
+		owner->buffer()->text->ChangeWordCase(LyXText::text_capitalization);
+		owner->buffer()->update(1);
 		SetUpdateTimer();
 		break;
 		
@@ -1266,7 +1265,7 @@ string LyXFunc::Dispatch(int ac,
 		
 		if (!label.empty()) {
 			owner->currentView()->savePosition();
-			owner->currentBuffer()->gotoLabel(label.c_str());
+			owner->buffer()->gotoLabel(label.c_str());
 		}
 	}
 	break;
@@ -1283,8 +1282,8 @@ string LyXFunc::Dispatch(int ac,
 		// --- Cursor Movements -----------------------------
 	case LFUN_RIGHT:
 	{
-		Buffer *tmpbuffer = owner->currentBuffer();
-		LyXText *tmptext = owner->currentBuffer()->text;
+		Buffer *tmpbuffer = owner->buffer();
+		LyXText *tmptext = owner->buffer()->text;
 		if(!tmptext->mark_set)
 			BeforeChange();
 		tmpbuffer->update(-2);
@@ -1299,7 +1298,7 @@ string LyXFunc::Dispatch(int ac,
 			break;
 		}
 		tmptext->CursorRight();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 	}
@@ -1309,9 +1308,9 @@ string LyXFunc::Dispatch(int ac,
 	{
 		// This is soooo ugly. Isn`t it possible to make
 		// it simpler? (Lgb)
-		LyXText *txt= owner->currentBuffer()->text;
+		LyXText *txt= owner->buffer()->text;
 		if(!txt->mark_set) BeforeChange();
-		owner->currentBuffer()->update(-2);
+		owner->buffer()->update(-2);
 		txt->CursorLeft();
 		if (txt->cursor.pos < txt->cursor.par->Last()
 		    && txt->cursor.par->GetChar(txt->cursor.pos)
@@ -1325,137 +1324,137 @@ string LyXFunc::Dispatch(int ac,
 			//			tmpinset->Edit(-1, 0);  // -1 means go rightmost
 			break;
 		}
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 	}
 	break;
 		
 	case LFUN_UP:
-		if(!owner->currentBuffer()->text->mark_set) BeforeChange();
-		owner->currentBuffer()->update(-3);
-		owner->currentBuffer()->text->CursorUp();
-		owner->currentBuffer()->text->FinishUndo();
+		if(!owner->buffer()->text->mark_set) BeforeChange();
+		owner->buffer()->update(-3);
+		owner->buffer()->text->CursorUp();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_DOWN:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-3);
-		owner->currentBuffer()->text->CursorDown();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-3);
+		owner->buffer()->text->CursorDown();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 
 	case LFUN_UP_PARAGRAPH:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-3);
-		owner->currentBuffer()->text->CursorUpParagraph();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-3);
+		owner->buffer()->text->CursorUpParagraph();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_DOWN_PARAGRAPH:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-3);
-		owner->currentBuffer()->text->CursorDownParagraph();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-3);
+		owner->buffer()->text->CursorDownParagraph();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_PRIOR:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-3);
+		owner->buffer()->update(-3);
 		owner->currentView()->cursorPrevious();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_NEXT:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-3);
+		owner->buffer()->update(-3);
 		owner->currentView()->cursorNext();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_HOME:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorHome();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorHome();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_END:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorEnd();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorEnd();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_TAB:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorTab();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorTab();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_WORDRIGHT:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorRightOneWord();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorRightOneWord();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_WORDLEFT:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorLeftOneWord();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorLeftOneWord();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_BEGINNINGBUF:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorTop();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorTop();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_ENDBUF:
-		if(!owner->currentBuffer()->text->mark_set)
+		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorBottom();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorBottom();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
@@ -1463,113 +1462,113 @@ string LyXFunc::Dispatch(int ac,
       
 		/* cursor selection ---------------------------- */
 	case LFUN_RIGHTSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorRight();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorRight();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_LEFTSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorLeft();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorLeft();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_UPSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorUp();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorUp();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_DOWNSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorDown();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorDown();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorUpParagraph();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorUpParagraph();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_DOWN_PARAGRAPHSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorDownParagraph();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorDownParagraph();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_PRIORSEL:
-		owner->currentBuffer()->update(-2);
+		owner->buffer()->update(-2);
 		owner->currentView()->cursorPrevious();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_NEXTSEL:
-		owner->currentBuffer()->update(-2);
+		owner->buffer()->update(-2);
 		owner->currentView()->cursorNext();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_HOMESEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorHome();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorHome();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_ENDSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorEnd();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorEnd();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_WORDRIGHTSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorRightOneWord();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorRightOneWord();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_WORDLEFTSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorLeftOneWord();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorLeftOneWord();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_BEGINNINGBUFSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorTop();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorTop();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_ENDBUFSEL:
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->CursorBottom();
-		owner->currentBuffer()->text->FinishUndo();
+		owner->buffer()->update(-2);
+		owner->buffer()->text->CursorBottom();
+		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
@@ -1577,7 +1576,7 @@ string LyXFunc::Dispatch(int ac,
 		// --- text changing commands ------------------------
 	case LFUN_BREAKLINE:
 		BeforeChange();
-		owner->currentBuffer()->text->InsertChar(LYX_META_NEWLINE);
+		owner->buffer()->text->InsertChar(LYX_META_NEWLINE);
 		SmallUpdate(1);
 		SetUpdateTimer(0.01);
 		moveCursorUpdate(false);
@@ -1585,7 +1584,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_PROTECTEDSPACE:
 		BeforeChange();
-		owner->currentBuffer()->text->
+		owner->buffer()->text->
 			InsertChar(LYX_META_PROTECTED_SEPARATOR);
 		SmallUpdate(1);
 		SetUpdateTimer();
@@ -1593,26 +1592,26 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_SETMARK:
-		if(owner->currentBuffer()->text->mark_set) {
+		if(owner->buffer()->text->mark_set) {
 			BeforeChange();
-			owner->currentBuffer()->update(0);
+			owner->buffer()->update(0);
 			setMessage(N_("Mark removed"));
 		} else {
 			BeforeChange();
-			owner->currentBuffer()->text->mark_set = 1;
-			owner->currentBuffer()->update(0);
+			owner->buffer()->text->mark_set = 1;
+			owner->buffer()->update(0);
 			setMessage(N_("Mark set"));
 		}
-		owner->currentBuffer()->text->sel_cursor =
-			owner->currentBuffer()->text->cursor;
+		owner->buffer()->text->sel_cursor =
+			owner->buffer()->text->cursor;
 		break;
 		
 	case LFUN_DELETE:
 		FreeUpdateTimer();
-		if (!owner->currentBuffer()->text->selection) {
-			owner->currentBuffer()->text->Delete();
-			owner->currentBuffer()->text->sel_cursor =
-				owner->currentBuffer()->text->cursor;
+		if (!owner->buffer()->text->selection) {
+			owner->buffer()->text->Delete();
+			owner->buffer()->text->sel_cursor =
+				owner->buffer()->text->cursor;
 			SmallUpdate(1);
 			// It is possible to make it a lot faster still
 			// just comment out the lone below...
@@ -1627,17 +1626,17 @@ string LyXFunc::Dispatch(int ac,
 	{
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		
-		LyXCursor cursor = owner->currentBuffer()->text->cursor;
+		LyXCursor cursor = owner->buffer()->text->cursor;
 
 		FreeUpdateTimer();
-		if (!owner->currentBuffer()->text->selection) {
+		if (!owner->buffer()->text->selection) {
 			if (cursor.pos == cursor.par->Last()) {
-				owner->currentBuffer()->text->CursorRight();
-				cursor = owner->currentBuffer()->text->cursor;
+				owner->buffer()->text->CursorRight();
+				cursor = owner->buffer()->text->cursor;
 				if (cursor.pos == 0
 				    && !(cursor.par->added_space_top 
 					 == VSpace (VSpace::NONE))) {
-					owner->currentBuffer()->text->SetParagraph
+					owner->buffer()->text->SetParagraph
 						(cursor.par->line_top,
 						 cursor.par->line_bottom,
 						 cursor.par->pagebreak_top, 
@@ -1646,19 +1645,19 @@ string LyXFunc::Dispatch(int ac,
 						 cursor.par->added_space_bottom,
 						 cursor.par->align, 
 						 cursor.par->labelwidthstring, 0);
-					owner->currentBuffer()->text->CursorLeft();
-					owner->currentBuffer()->update (1);
+					owner->buffer()->text->CursorLeft();
+					owner->buffer()->update (1);
 				} else {
-					owner->currentBuffer()->text->CursorLeft();
-					owner->currentBuffer()->text->Delete();
-					owner->currentBuffer()->text->sel_cursor =
-						owner->currentBuffer()->text->cursor;
+					owner->buffer()->text->CursorLeft();
+					owner->buffer()->text->Delete();
+					owner->buffer()->text->sel_cursor =
+						owner->buffer()->text->cursor;
 					SmallUpdate(1);
 				}
 			} else {
-				owner->currentBuffer()->text->Delete();
-				owner->currentBuffer()->text->sel_cursor =
-					owner->currentBuffer()->text->cursor;
+				owner->buffer()->text->Delete();
+				owner->buffer()->text->sel_cursor =
+					owner->buffer()->text->cursor;
 				SmallUpdate(1);
 			}
 		} else {
@@ -1670,20 +1669,20 @@ string LyXFunc::Dispatch(int ac,
 
 	/* -------> Delete word forward. */
 	case LFUN_DELETE_WORD_FORWARD:
-		owner->currentBuffer()->update(-2);
+		owner->buffer()->update(-2);
 		FreeUpdateTimer();
-		owner->currentBuffer()->text->DeleteWordForward();
-		owner->currentBuffer()->update( 1 );
+		owner->buffer()->text->DeleteWordForward();
+		owner->buffer()->update( 1 );
 		SetUpdateTimer();
 		moveCursorUpdate(false);
 		break;
 
 		/* -------> Delete word backward. */
 	case LFUN_DELETE_WORD_BACKWARD:
-		owner->currentBuffer()->update(-2);
+		owner->buffer()->update(-2);
 		FreeUpdateTimer();
-		owner->currentBuffer()->text->DeleteWordBackward();
-		owner->currentBuffer()->update( 1 );
+		owner->buffer()->text->DeleteWordBackward();
+		owner->buffer()->update( 1 );
 		SetUpdateTimer();
 		moveCursorUpdate(false);
 		break;
@@ -1691,9 +1690,9 @@ string LyXFunc::Dispatch(int ac,
 		/* -------> Kill to end of line. */
 	case LFUN_DELETE_LINE_FORWARD:
 		FreeUpdateTimer();
-		owner->currentBuffer()->update(-2);
-		owner->currentBuffer()->text->DeleteLineForward();
-		owner->currentBuffer()->update( 1 );
+		owner->buffer()->update(-2);
+		owner->buffer()->text->DeleteLineForward();
+		owner->buffer()->update( 1 );
 		SetUpdateTimer();
 		moveCursorUpdate(false);
 		break;
@@ -1701,30 +1700,30 @@ string LyXFunc::Dispatch(int ac,
 		/* -------> Set mark off. */
 	case LFUN_MARK_OFF:
 		BeforeChange();
-		owner->currentBuffer()->update(0);
-		owner->currentBuffer()->text->sel_cursor =
-			owner->currentBuffer()->text->cursor;
+		owner->buffer()->update(0);
+		owner->buffer()->text->sel_cursor =
+			owner->buffer()->text->cursor;
 		setMessage(N_("Mark off"));
 		break;
 
 		/* -------> Set mark on. */
 	case LFUN_MARK_ON:
 		BeforeChange();
-		owner->currentBuffer()->text->mark_set = 1;
-		owner->currentBuffer()->update( 0 );
-		owner->currentBuffer()->text->sel_cursor =
-			owner->currentBuffer()->text->cursor;
+		owner->buffer()->text->mark_set = 1;
+		owner->buffer()->update( 0 );
+		owner->buffer()->text->sel_cursor =
+			owner->buffer()->text->cursor;
 		setMessage(N_("Mark on"));
 		break;
 		
 	case LFUN_BACKSPACE:
 	{
 		FreeUpdateTimer();
-		if (!owner->currentBuffer()->text->selection) {
+		if (!owner->buffer()->text->selection) {
 			if (owner->getIntl()->getTrans()->backspace()) {
-				owner->currentBuffer()->text->Backspace();
-				owner->currentBuffer()->text->sel_cursor =
-					owner->currentBuffer()->text->cursor;
+				owner->buffer()->text->Backspace();
+				owner->buffer()->text->sel_cursor =
+					owner->buffer()->text->cursor;
 				SmallUpdate(1);
 				// It is possible to make it a lot faster still
 				// just comment out the lone below...
@@ -1741,14 +1740,14 @@ string LyXFunc::Dispatch(int ac,
 	{
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		
-		LyXCursor cursor = owner->currentBuffer()->text->cursor;
+		LyXCursor cursor = owner->buffer()->text->cursor;
 		
 		FreeUpdateTimer();
-		if (!owner->currentBuffer()->text->selection) {
+		if (!owner->buffer()->text->selection) {
 			if (cursor.pos == 0 
 			    && !(cursor.par->added_space_top 
 				 == VSpace (VSpace::NONE))) {
-				owner->currentBuffer()->text->SetParagraph 
+				owner->buffer()->text->SetParagraph 
 					(cursor.par->line_top,      
 					 cursor.par->line_bottom,
 					 cursor.par->pagebreak_top, 
@@ -1756,10 +1755,10 @@ string LyXFunc::Dispatch(int ac,
 					 VSpace(VSpace::NONE), cursor.par->added_space_bottom,
 					 cursor.par->align, 
 					 cursor.par->labelwidthstring, 0);
-				owner->currentBuffer()->update (1);
+				owner->buffer()->update (1);
 			} else {
-				owner->currentBuffer()->text->Backspace();
-				owner->currentBuffer()->text->sel_cursor 
+				owner->buffer()->text->Backspace();
+				owner->buffer()->text->sel_cursor 
 					= cursor;
 				SmallUpdate (1);
 			}
@@ -1772,22 +1771,22 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_BREAKPARAGRAPH:
 	{
 		BeforeChange();
-		owner->currentBuffer()->text->BreakParagraph(0);
+		owner->buffer()->text->BreakParagraph(0);
 		SmallUpdate(1);
 		SetUpdateTimer(0.01);
-		owner->currentBuffer()->text->sel_cursor =
-			owner->currentBuffer()->text->cursor;
+		owner->buffer()->text->sel_cursor =
+			owner->buffer()->text->cursor;
 		break;
 	}
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	{
 		BeforeChange();
-		owner->currentBuffer()->text->BreakParagraph(1);
+		owner->buffer()->text->BreakParagraph(1);
 		SmallUpdate(1);
 		SetUpdateTimer(0.01);
-		owner->currentBuffer()->text->sel_cursor =
-			owner->currentBuffer()->text->cursor;
+		owner->buffer()->text->sel_cursor =
+			owner->buffer()->text->cursor;
 		break;
 	}
 	
@@ -1797,12 +1796,12 @@ string LyXFunc::Dispatch(int ac,
 		// indentation and add a "defskip" at the top.
 		// Otherwise, do the same as LFUN_BREAKPARAGRAPH.
 		
-		LyXCursor cursor = owner->currentBuffer()->text->cursor;
+		LyXCursor cursor = owner->buffer()->text->cursor;
 		
 		BeforeChange();
 		if (cursor.pos == 0) {
 			if (cursor.par->added_space_top == VSpace(VSpace::NONE)) {
-				owner->currentBuffer()->text->SetParagraph
+				owner->buffer()->text->SetParagraph
 					(cursor.par->line_top,      
 					 cursor.par->line_bottom,
 					 cursor.par->pagebreak_top, 
@@ -1810,21 +1809,21 @@ string LyXFunc::Dispatch(int ac,
 					 VSpace(VSpace::DEFSKIP), cursor.par->added_space_bottom,
 					 cursor.par->align, 
 					 cursor.par->labelwidthstring, 1);
-				owner->currentBuffer()->update(1);
+				owner->buffer()->update(1);
 			} 
 		}
 		else {
-			owner->currentBuffer()->text->BreakParagraph(0);
+			owner->buffer()->text->BreakParagraph(0);
 			SmallUpdate(1);
 		}
 		SetUpdateTimer(0.01);
-		owner->currentBuffer()->text->sel_cursor = cursor;
+		owner->buffer()->text->sel_cursor = cursor;
 	}
 	break;
 	
 	case LFUN_QUOTE:
 		BeforeChange();
-		owner->currentBuffer()->text->InsertChar('\"');  // This " matches the single quote in the code
+		owner->buffer()->text->InsertChar('\"');  // This " matches the single quote in the code
 		SmallUpdate(1);
 		SetUpdateTimer();
                 moveCursorUpdate(false);
@@ -1838,7 +1837,7 @@ string LyXFunc::Dispatch(int ac,
 			new_inset = new InsetUrl("htmlurl", "", "");
 		else
 			new_inset = new InsetUrl("url", "", "");
-		owner->currentBuffer()->insertInset(new_inset);
+		owner->buffer()->insertInset(new_inset);
 		new_inset->Edit(0, 0);
 	}
 	break;
@@ -1849,13 +1848,13 @@ string LyXFunc::Dispatch(int ac,
 	{
 #ifdef NEW_TEXT
 		LyXParagraph::size_type pos =
-		  owner->currentBuffer()->text->cursor.pos;
-		if(pos < owner->currentBuffer()->text->cursor.par->size())
+		  owner->buffer()->text->cursor.pos;
+		if(pos < owner->buffer()->text->cursor.par->size())
 #else
-		int pos = owner->currentBuffer()->text->cursor.pos;
-		if(pos < owner->currentBuffer()->text->cursor.par->last)
+		int pos = owner->buffer()->text->cursor.pos;
+		if(pos < owner->buffer()->text->cursor.par->last)
 #endif
-			dispatch_buffer = owner->currentBuffer()->text->
+			dispatch_buffer = owner->buffer()->text->
 				cursor.par->text[pos];
 		else
 			dispatch_buffer = "EOF";
@@ -1864,8 +1863,8 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_GETXY:
 		dispatch_buffer = 
-			 tostr(owner->currentBuffer()->text->cursor.x) + ' '
-			+ tostr(owner->currentBuffer()->text->cursor.y);
+			 tostr(owner->buffer()->text->cursor.x) + ' '
+			+ tostr(owner->buffer()->text->cursor.y);
 		break;
 		
 	case LFUN_SETXY:
@@ -1873,18 +1872,18 @@ string LyXFunc::Dispatch(int ac,
 		int  x;
 		long y;
 		sscanf(argument.c_str(), " %d %ld", &x, &y);
-		owner->currentBuffer()->text->SetCursorFromCoordinates(x, y);
+		owner->buffer()->text->SetCursorFromCoordinates(x, y);
 	}
 	break;
 	
 	case LFUN_GETLAYOUT:
 		dispatch_buffer =  
-			tostr(owner->currentBuffer()->text->cursor.par->layout);
+			tostr(owner->buffer()->text->cursor.par->layout);
 		break;
 			
 	case LFUN_GETFONT:
 	{
-		LyXFont *font = &(owner->currentBuffer()->text->current_font);
+		LyXFont *font = &(owner->buffer()->text->current_font);
                 if(font->shape() == LyXFont::ITALIC_SHAPE)
 			dispatch_buffer = 'E';
                 else if(font->shape() == LyXFont::SMALLCAPS_SHAPE)
@@ -1897,7 +1896,7 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_GETLATEX:
 	{
-		LyXFont *font = &(owner->currentBuffer()->text->current_font);
+		LyXFont *font = &(owner->buffer()->text->current_font);
                 if(font->latex() == LyXFont::ON)
 			dispatch_buffer = 'L';
                 else
@@ -1906,9 +1905,9 @@ string LyXFunc::Dispatch(int ac,
 	break;
 
 	case LFUN_GETNAME:
-		setMessage(owner->currentBuffer()->getFileName());
+		setMessage(owner->buffer()->getFileName());
 		lyxerr.debug() << "FNAME["
-			       << owner->currentBuffer()->getFileName()
+			       << owner->buffer()->getFileName()
 			       << "] " << endl;
 		break;
 		
@@ -1932,25 +1931,25 @@ string LyXFunc::Dispatch(int ac,
 
 		// Either change buffer or load the file
 		if (bufferlist.exists(s))
-		        owner->currentView()->setBuffer(bufferlist.getBuffer(s));
+		        owner->currentView()->buffer(bufferlist.getBuffer(s));
 		else
-		        owner->currentView()->setBuffer(bufferlist.loadLyXFile(s));
+		        owner->currentView()->buffer(bufferlist.loadLyXFile(s));
 
 		// Set the cursor  
-		owner->currentBuffer()->setCursorFromRow(row);
+		owner->buffer()->setCursorFromRow(row);
 
 		// Recenter screen
 		BeforeChange();
-		if (owner->currentBuffer()->text->cursor.y >
+		if (owner->buffer()->text->cursor.y >
 		    owner->currentView()->getWorkArea()->h / 2)	{
 			owner->currentView()->getScreen()->
-				Draw(owner->currentBuffer()->text->cursor.y -
+				Draw(owner->buffer()->text->cursor.y -
 				     owner->currentView()->getWorkArea()->h/2);
 		} else { // <=
 			owner->currentView()->getScreen()->
 				Draw(0);
 		}
-		owner->currentBuffer()->update(0);
+		owner->buffer()->update(0);
 		owner->currentView()->redraw();
 	}
 	break;
@@ -1992,7 +1991,7 @@ string LyXFunc::Dispatch(int ac,
 		
 		owner->getIntl()->getTrans()->
 			deadkey(c, get_accent(action).accent, 
-				owner->currentBuffer()->text);
+				owner->buffer()->text);
 		
 		// Need to reset, in case the minibuffer calls these
 		// actions
@@ -2002,8 +2001,8 @@ string LyXFunc::Dispatch(int ac,
 		// copied verbatim from do_accent_char
 		SmallUpdate(1);
 		SetUpdateTimer();
-		owner->currentBuffer()->text->sel_cursor = 
-			owner->currentBuffer()->text->cursor;
+		owner->buffer()->text->sel_cursor = 
+			owner->buffer()->text->cursor;
 	}   
 	break;
 	
@@ -2051,7 +2050,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INSERT_INSET_LATEX:
 	{
 		Inset *new_inset = new InsetLatex(argument);
-		owner->currentBuffer()->insertInset(new_inset);
+		owner->buffer()->insertInset(new_inset);
 	}
 	break;
 
@@ -2084,9 +2083,9 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INSERT_MATRIX:
 	{ 	   
 		if (owner->currentView()->available()) { 
-			owner->currentBuffer()->
+			owner->buffer()->
 				open_new_inset(new InsetFormula(false));
-			owner->currentBuffer()->
+			owner->buffer()->
 				the_locking_inset->LocalDispatch(action, argument.c_str());
 		}
 	}	   
@@ -2101,7 +2100,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_MATH_DISPLAY:
 	{
 		if (owner->currentView()->available())
-			owner->currentBuffer()->open_new_inset(new InsetFormula(true));
+			owner->buffer()->open_new_inset(new InsetFormula(true));
 		break;
 	}
 		    
@@ -2114,7 +2113,7 @@ string LyXFunc::Dispatch(int ac,
 		        else {
 			    string s1 = token(s, ' ', 1);
 			    int na = s1.empty() ? 0: atoi(s1.c_str());
-			    owner->currentBuffer()->
+			    owner->buffer()->
 			      open_new_inset(new InsetFormulaMacro(token(s, ' ', 0), na));
 			}
 		}
@@ -2125,7 +2124,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		
 		if (owner->currentView()->available())
-			owner->currentBuffer()->open_new_inset(new InsetFormula);
+			owner->buffer()->open_new_inset(new InsetFormula);
 		setMessage(N_("Math editor mode"));
 	}
 	break;
@@ -2150,9 +2149,9 @@ string LyXFunc::Dispatch(int ac,
 				new_inset->setOptions(token(lsarg, '|', 1));
 			} else
 				new_inset->setContents(lsarg);
-			owner->currentBuffer()->insertInset(new_inset);
+			owner->buffer()->insertInset(new_inset);
 		} else {
-			owner->currentBuffer()->insertInset(new_inset);
+			owner->buffer()->insertInset(new_inset);
 			new_inset->Edit(0,0);
 		}
 	}
@@ -2170,9 +2169,9 @@ string LyXFunc::Dispatch(int ac,
 		InsetBibtex *new_inset 
 			= new InsetBibtex(token(lsarg, ' ', 0),
 					  bibstyle,
-					  owner->currentBuffer());
+					  owner->buffer());
 		
-		owner->currentBuffer()->insertInset(new_inset);
+		owner->buffer()->insertInset(new_inset);
 		if (lsarg.empty()) {
 			new_inset->Edit(0,0);
 		}
@@ -2217,7 +2216,7 @@ string LyXFunc::Dispatch(int ac,
 		if (!argument.empty()) {
   			string lsarg(argument);
 			new_inset->setContents(lsarg);
-			owner->currentBuffer()->insertInset(new_inset);
+			owner->buffer()->insertInset(new_inset);
 		} else {
 		  //reh 98/09/21
 		  //get the current word for an argument
@@ -2227,11 +2226,11 @@ string LyXFunc::Dispatch(int ac,
 
 #ifdef NEW_TEXT
 		  LyXParagraph::size_type lastpos =
-			  owner->currentBuffer()->text->cursor.pos - 1;
+			  owner->buffer()->text->cursor.pos - 1;
 		  // If this can't happen, let's make sure that it really don't
-		  Assert(owner->currentBuffer()->text->cursor.pos - 1 >= 0);
+		  Assert(owner->buffer()->text->cursor.pos - 1 >= 0);
 #else
-		  int lastpos =owner->currentBuffer()->text->cursor.pos - 1;
+		  int lastpos =owner->buffer()->text->cursor.pos - 1;
 		  //this shouldn't happen, but let's be careful
 		  if (lastpos < 0) lastpos=0;
 #endif
@@ -2239,7 +2238,7 @@ string LyXFunc::Dispatch(int ac,
 		  // note that this must be done before 
 		  // inserting the inset, or the inset will break
 		  // the word
-		  string curstring(owner->currentBuffer()
+		  string curstring(owner->buffer()
 				   ->text->cursor.par->GetWord(lastpos));
 
 		  //make the new inset and write the current word into it
@@ -2256,36 +2255,36 @@ string LyXFunc::Dispatch(int ac,
 
 		      // move the cursor to the returned value of lastpos
 		      // but only for the auto-insert
-		      owner->currentBuffer()->text->cursor.pos=lastpos;
+		      owner->buffer()->text->cursor.pos=lastpos;
 		  }
 
 		  //put the new inset into the buffer.
 		  // there should be some way of knowing the user
 		  //cancelled & avoiding this, but i don't know how
-		  owner->currentBuffer()->insertInset(new_inset);
+		  owner->buffer()->insertInset(new_inset);
 		}
 	}
 	break;
 
 	case LFUN_INDEX_PRINT:
 	{
-		Inset *new_inset = new InsetPrintIndex(owner->currentBuffer());
-		owner->currentBuffer()->insertInset(new_inset, "Standard", true);
+		Inset *new_inset = new InsetPrintIndex(owner->buffer());
+		owner->buffer()->insertInset(new_inset, "Standard", true);
 	}
 	break;
 
 	case LFUN_PARENTINSERT:
 	{
 		lyxerr << "arg " << argument << endl;
-		Inset *new_inset = new InsetParent(argument, owner->currentBuffer());
-		owner->currentBuffer()->insertInset(new_inset, "Standard", true);
+		Inset *new_inset = new InsetParent(argument, owner->buffer());
+		owner->buffer()->insertInset(new_inset, "Standard", true);
 	}
 	break;
 
 	case LFUN_CHILDINSERT:
 	{
-		Inset *new_inset = new InsetInclude(argument,owner->currentBuffer());
-		owner->currentBuffer()->insertInset(new_inset, "Standard", true);
+		Inset *new_inset = new InsetInclude(argument,owner->buffer());
+		owner->buffer()->insertInset(new_inset, "Standard", true);
 		new_inset->Edit(0,0);
 	}
 	break;
@@ -2293,14 +2292,14 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_CHILDOPEN:
 	{
 		string filename = MakeAbsPath(argument, 
-					       OnlyPath(owner->currentBuffer()->getFileName()));
+					       OnlyPath(owner->buffer()->getFileName()));
 		setMessage(N_("Opening child document ") +
 			   MakeDisplayPath(filename) + "...");
 		owner->currentView()->savePosition();
 		if (bufferlist.exists(filename))
-		  owner->currentView()->setBuffer(bufferlist.getBuffer(filename));
+		  owner->currentView()->buffer(bufferlist.getBuffer(filename));
 		else
-		  owner->currentView()->setBuffer(bufferlist.loadLyXFile(filename));
+		  owner->currentView()->buffer(bufferlist.loadLyXFile(filename));
 	}
 	break;
 
@@ -2329,8 +2328,8 @@ string LyXFunc::Dispatch(int ac,
 			setErrorMessage(N_("Unknown kind of footnote"));
 			break;
 		}
-		owner->currentBuffer()->text->InsertFootnoteEnvironment(kind);
-		owner->currentBuffer()->update(1);
+		owner->buffer()->text->InsertFootnoteEnvironment(kind);
+		owner->buffer()->update(1);
 	}
 	break;
 	
@@ -2361,21 +2360,21 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_SELFINSERT:
 	{
 		for (string::size_type i = 0; i < argument.length(); ++i) {
-			owner->currentBuffer()->text->InsertChar(argument[i]);
+			owner->buffer()->text->InsertChar(argument[i]);
 			// This needs to be in the loop, or else we
 			// won't break lines correctly. (Asger)
 			SmallUpdate(1);
 		}
 		SetUpdateTimer();
-		owner->currentBuffer()->text->sel_cursor =
-			owner->currentBuffer()->text->cursor;
+		owner->buffer()->text->sel_cursor =
+			owner->buffer()->text->cursor;
 		moveCursorUpdate(false);
 	}
 	break;
 
 	case LFUN_UNKNOWN_ACTION:
 	{
-		if (owner->currentBuffer()->isReadonly()) {
+		if (owner->buffer()->isReadonly()) {
 			LyXBell();
 			setErrorMessage(N_("Document is read only"));
 			break;
@@ -2390,9 +2389,9 @@ string LyXFunc::Dispatch(int ac,
 			 * true (on). */
 		
 			if ( lyxrc->auto_region_delete ) {
-				if (owner->currentBuffer()->text->selection){
-					owner->currentBuffer()->text->CutSelection(false);
-					owner->currentBuffer()->update(-1);
+				if (owner->buffer()->text->selection){
+					owner->buffer()->text->CutSelection(false);
+					owner->buffer()->update(-1);
 				}
 			}
 			
@@ -2400,16 +2399,16 @@ string LyXFunc::Dispatch(int ac,
 			for (string::size_type i = 0; i < argument.length(); ++i) {
 				if (greek_kb_flag) {
 					if (!math_insert_greek(argument[i]))
-						owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->currentBuffer()->text);
+						owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->buffer()->text);
 				} else
-					owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->currentBuffer()->text);
+					owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->buffer()->text);
 			}
 			
 			SmallUpdate(1);
 			SetUpdateTimer();
 
-			owner->currentBuffer()->text->sel_cursor =
-				owner->currentBuffer()->text->cursor;
+			owner->buffer()->text->sel_cursor =
+				owner->buffer()->text->cursor;
 			moveCursorUpdate(false);
 			return string();
 		} else {
@@ -2460,7 +2459,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	LyXFileDlg fileDlg;
 
 	if (owner->currentView()->available()) {
-		string trypath = owner->currentBuffer()->filepath;
+		string trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -2498,7 +2497,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 				return;
 			break;
 		case 2: // No: switch to the open document
-			owner->currentView()->setBuffer(bufferlist.getBuffer(s));
+			owner->currentView()->buffer(bufferlist.getBuffer(s));
 			return;
 		case 3: // Cancel: Do nothing
 			owner->getMiniBuffer()->Set(_("Canceled."));
@@ -2517,7 +2516,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			owner->getMiniBuffer()->Set(_("Opening document"), 
 						    MakeDisplayPath(s), "...");
 			XFlush(fl_display);
-			owner->currentView()->setBuffer(
+			owner->currentView()->buffer(
 				bufferlist.loadLyXFile(s));
 			owner->getMiniBuffer()->Set(_("Document"),
 						    MakeDisplayPath(s),
@@ -2539,7 +2538,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
   
 	// find a free buffer
 	lyxerr.debug() << "Find a free buffer." << endl;
-	owner->currentView()->setBuffer(bufferlist.newFile(s,templname));
+	owner->currentView()->buffer(bufferlist.newFile(s,templname));
 }
 
 
@@ -2549,7 +2548,7 @@ void LyXFunc::MenuOpen()
 	LyXFileDlg fileDlg;
   
 	if (owner->currentView()->available()) {
-		string trypath = owner->currentBuffer()->filepath;
+		string trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -2581,7 +2580,7 @@ void LyXFunc::MenuOpen()
 				    MakeDisplayPath(filename), "...");
 	Buffer * openbuf = bufferlist.loadLyXFile(filename);
 	if (openbuf) {
-		owner->currentView()->setBuffer(openbuf);
+		owner->currentView()->buffer(openbuf);
 		owner->getMiniBuffer()->Set(_("Document"),
 					    MakeDisplayPath(filename),
 					    _("opened."));
@@ -2598,7 +2597,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 	LyXFileDlg fileDlg;
   
 	if (owner->currentView()->available()) {
-		string trypath = owner->currentBuffer()->filepath;
+		string trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -2637,7 +2636,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 				return;
 			break;
 		case 2: // No: switch to the open document
-			owner->currentView()->setBuffer(bufferlist.getBuffer(s));
+			owner->currentView()->buffer(bufferlist.getBuffer(s));
 			return;
 		case 3: // Cancel: Do nothing
 			owner->getMiniBuffer()->Set(_("Canceled."));
@@ -2654,7 +2653,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 		return;
 	}
 
-	owner->currentView()->setBuffer(bufferlist.newFile(s,string()));
+	owner->currentView()->buffer(bufferlist.newFile(s,string()));
 	owner->getMiniBuffer()->Set(_("Importing ASCII file"),
 				    MakeDisplayPath(filename), "...");
 	// Insert ASCII file
@@ -2671,7 +2670,7 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 	LyXFileDlg fileDlg;
   
 	if (owner->currentView()->available()) {
-		string trypath = owner->currentBuffer()->filepath;
+		string trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -2716,7 +2715,7 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 				return;
 			break;
 		case 2: // No: switch to the open document
-			owner->currentView()->setBuffer(
+			owner->currentView()->buffer(
 				bufferlist.getBuffer(LyXfilename));
 			return;
 		case 3: // Cancel: Do nothing
@@ -2748,7 +2747,7 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 		openbuf = myImport.run();
 	}
 	if (openbuf) {
-		owner->currentView()->setBuffer(openbuf);
+		owner->currentView()->buffer(openbuf);
 		owner->getMiniBuffer()->Set(isnoweb ?
 					    _("Noweb file ") : _("LateX file "),
 					    MakeDisplayPath(filename),
@@ -2772,7 +2771,7 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 		LyXFileDlg fileDlg;
 
 		if (owner->currentView()->available()) {
-			string trypath = owner->currentBuffer()->filepath;
+			string trypath = owner->buffer()->filepath;
 			// If directory is writeable, use this as default.
 			if (IsDirWriteable(trypath) == 1)
 				initpath = trypath;
@@ -2803,7 +2802,7 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 	// Inserts document
 	owner->getMiniBuffer()->Set(_("Inserting document"),
 				    MakeDisplayPath(filename), "...");
-	bool res = owner->currentBuffer()->insertLyXFile(filename);
+	bool res = owner->buffer()->insertLyXFile(filename);
 	if (res) {
 		owner->getMiniBuffer()->Set(_("Document"),
 					    MakeDisplayPath(filename),
@@ -2817,15 +2816,15 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 
 void LyXFunc::reloadBuffer()
 {
-	string fn = owner->currentBuffer()->getFileName();
-	if (bufferlist.close(owner->currentBuffer()))
-		owner->currentView()->setBuffer(bufferlist.loadLyXFile(fn));
+	string fn = owner->buffer()->getFileName();
+	if (bufferlist.close(owner->buffer()))
+		owner->currentView()->buffer(bufferlist.loadLyXFile(fn));
 }
 
 
 void LyXFunc::CloseBuffer()
 {
-	if (bufferlist.close(owner->currentBuffer()) && !quitting) {
+	if (bufferlist.close(owner->buffer()) && !quitting) {
 		if (bufferlist.empty()) {
 			// need this otherwise SEGV may occur while trying to
 			// set variables that don't exist
@@ -2833,7 +2832,7 @@ void LyXFunc::CloseBuffer()
 			CloseAllBufferRelatedPopups();
 		}
 		else {
-			owner->currentView()->setBuffer(bufferlist.first());
+			owner->currentView()->buffer(bufferlist.first());
 		}
 	}
 }
@@ -2843,7 +2842,7 @@ Inset * LyXFunc::getInsetByCode(Inset::Code code)
 {
 	bool found = false;
 	Inset * inset = 0;
-	LyXCursor cursor = owner->currentBuffer()->text->cursor;
+	LyXCursor cursor = owner->buffer()->text->cursor;
 #ifdef NEW_TEXT
 	LyXParagraph::size_type pos = cursor.pos;
 #else
