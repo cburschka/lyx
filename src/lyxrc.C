@@ -1947,11 +1947,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_DOCUMENTPATH:
-		str = _("The default path for your documents.  An empty value selects the directory LyX was started from.");
+		str = _("The default path for your documents. An empty value selects the directory LyX was started from.");
 		break;
 
 	case RC_TEMPLATEPATH:
-		str = _("The path that LyX will set when offering to choose a template.  An empty value selects the directory LyX was started from.");
+		str = _("The path that LyX will set when offering to choose a template. An empty value selects the directory LyX was started from.");
 		break;
 
 	case RC_TEMPDIRPATH:

@@ -1,5 +1,7 @@
 2002-12-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* input_validators.C (fl_print_range_filter): remove extra space
+
 	* Menubar_pimpl.C (create_submenu): do not query the status of a
 	submenu either.
 

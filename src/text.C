@@ -1921,9 +1921,9 @@ void LyXText::insertChar(BufferView * bview, char c)
 			static bool sent_space_message = false;
 			if (!sent_space_message) {
 				if (cursor.pos() == 0)
-					bview->owner()->message(_("You cannot insert a space at the beginning of a paragraph.  Please read the Tutorial."));
+					bview->owner()->message(_("You cannot insert a space at the beginning of a paragraph. Please read the Tutorial."));
 				else
-					bview->owner()->message(_("You cannot type two spaces this way.  Please read the Tutorial."));
+					bview->owner()->message(_("You cannot type two spaces this way. Please read the Tutorial."));
 				sent_space_message = true;
 			}
 			charInserted();

@@ -123,8 +123,8 @@ void fl_print_range_filter(FL_OBJECT * ob,
 		pages = split (pages, piece, ',') ;
 		piece = trim(piece);
 		if (!stringOnlyContains (piece, "0123456789-")) {
-			Alert::alert(_("ERROR!  Unable to print!"),
-				   _("Check 'range of pages'!"));
+			Alert::alert(_("ERROR! Unable to print!"),
+				   _("Check `range of pages'!"));
 			return;
 		}
 		if (piece.find('-') == string::npos) { // not found

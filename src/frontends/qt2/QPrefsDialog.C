@@ -569,7 +569,7 @@ void QPrefsDialog::select_backupdir()
 
 void QPrefsDialog::select_workingdir()
 {
-	string file(form_->controller().browse(fromqstr(pathsModule->workingDirED->text()), _("Selection a documents directory")));
+	string file(form_->controller().browse(fromqstr(pathsModule->workingDirED->text()), _("Select a document directory")));
 	if (!file.empty())
 		pathsModule->workingDirED->setText(toqstr(file));
 }
