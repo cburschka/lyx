@@ -1,3 +1,10 @@
+2001-11-20  Allan Rae  <rae@lyx.org>
+
+	* paragraph.C (insertFromMinibuffer): Fix for inset related crashes.
+	Now need Inset*::checkInsertChar() to return true for appropriate
+	cases so that the characters in the minibuffer will actually be
+	inserted.
+
 2001-11-15  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text.C: change the order of the includes.

@@ -452,15 +452,17 @@ void Paragraph::cutIntoMinibuffer(BufferParams const & bparams,
 
 bool Paragraph::insertFromMinibuffer(Paragraph::size_type pos)
 {
-	if ((minibuffer_char == Paragraph::META_INSET) &&
-	    !insetAllowed(minibuffer_inset->lyxCode()))
-		return false;
-	if (minibuffer_char == Paragraph::META_INSET)
+	if (minibuffer_char == Paragraph::META_INSET) {
+		if (!insetAllowed(minibuffer_inset->lyxCode())) {
+			return false;
+		}
 		insertInset(pos, minibuffer_inset, minibuffer_font);
-	else {
+	} else {
 		LyXFont f = minibuffer_font;
-		if (checkInsertChar(f))
-			insertChar(pos, minibuffer_char, f);
+		if (!checkInsertChar(f)) {
+			return false;
+		}
+		insertChar(pos, minibuffer_char, f);
 	}
 	return true;
 }
