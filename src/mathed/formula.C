@@ -175,7 +175,7 @@ int InsetFormula::docbook(Buffer const * buf, ostream & os, bool) const
 	ms <<    "]]>";
 	ms <<   ETag("alt");
 	ms <<   MTag("math");
-	ms <<    par_.nucleus();
+	ms <<    par_;
 	ms <<   ETag("math");
 	ms << ETag("equation");
 	return ms.line() + res;

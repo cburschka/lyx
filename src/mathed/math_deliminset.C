@@ -132,10 +132,7 @@ bool MathDelimInset::isAbs() const
 void MathDelimInset::maplize(MapleStream & os) const
 {
 	if (isAbs()) {
-		bool mat =
-			cell(0).size() == 1 && cell(0).begin()->nucleus()
-					&& cell(0).begin()->nucleus()->asMatrixInset();
-		if (mat)
+		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
 			os << "linalg[det](" << cell(0) << ")";
 		else
 			os << "abs(" << cell(0) << ")";
@@ -147,10 +144,7 @@ void MathDelimInset::maplize(MapleStream & os) const
 void MathDelimInset::mathematicize(MathematicaStream & os) const
 {
 	if (isAbs()) {
-		bool mat =
-			cell(0).size() == 1 && cell(0).begin()->nucleus()
-					&& cell(0).begin()->nucleus()->asMatrixInset();
-		if (mat)
+		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
 			os << "Det" << cell(0) << ']';
 		else
 			os << "Abs[" << cell(0) << ']';

@@ -12,6 +12,7 @@
 
 class MathArray;
 class MathInset;
+class MathAtom;
 
 
 //
@@ -58,7 +59,7 @@ private:
 };
 
 ///
-MathMLStream & operator<<(MathMLStream &, MathInset const *);
+MathMLStream & operator<<(MathMLStream &, MathAtom const &);
 ///
 MathMLStream & operator<<(MathMLStream &, MathArray const &);
 ///
@@ -88,7 +89,7 @@ private:
 };
 
 ///
-NormalStream & operator<<(NormalStream &, MathInset const *);
+NormalStream & operator<<(NormalStream &, MathAtom const &);
 ///
 NormalStream & operator<<(NormalStream &, MathArray const &);
 ///
@@ -119,7 +120,7 @@ private:
 
 
 ///
-MapleStream & operator<<(MapleStream &, MathInset const *);
+MapleStream & operator<<(MapleStream &, MathAtom const &);
 ///
 MapleStream & operator<<(MapleStream &, MathArray const &);
 ///
@@ -148,7 +149,7 @@ private:
 
 
 ///
-MathematicaStream & operator<<(MathematicaStream &, MathInset const *);
+MathematicaStream & operator<<(MathematicaStream &, MathAtom const &);
 ///
 MathematicaStream & operator<<(MathematicaStream &, MathArray const &);
 ///
@@ -176,7 +177,7 @@ private:
 };
 
 ///
-OctaveStream & operator<<(OctaveStream &, MathInset const *);
+OctaveStream & operator<<(OctaveStream &, MathAtom const &);
 ///
 OctaveStream & operator<<(OctaveStream &, MathArray const &);
 ///
@@ -224,7 +225,7 @@ private:
 };
 
 ///
-WriteStream & operator<<(WriteStream &, MathInset const *);
+WriteStream & operator<<(WriteStream &, MathAtom const &);
 ///
 WriteStream & operator<<(WriteStream &, MathArray const &);
 ///

@@ -293,7 +293,6 @@ public:
 	virtual string name() const;
 };
 
-std::ostream & operator<<(std::ostream &, MathInset const &);
 std::ostream & operator<<(std::ostream &, MathAtom const &);
 
 string asString(MathArray const & ar);

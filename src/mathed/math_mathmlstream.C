@@ -3,7 +3,6 @@
 #include "math_mathmlstream.h"
 #include "math_inset.h"
 #include "math_extern.h"
-#include "debug.h"
 #include "support/lyxalgo.h"
 
 
@@ -16,12 +15,9 @@ MathMLStream::MathMLStream(ostream & os)
 {}
 
 
-MathMLStream & operator<<(MathMLStream & ms, MathInset const * p)
+MathMLStream & operator<<(MathMLStream & ms, MathAtom const & at)
 {
-	if (p)
-		p->mathmlize(ms);
-	else
-		lyxerr << "operator<<(MathMLStream, NULL) called\n";
+	at->mathmlize(ms);
 	return ms;
 }
 
@@ -78,12 +74,9 @@ void MathMLStream::cr()
 //////////////////////////////////////////////////////////////////////
 
 
-MapleStream & operator<<(MapleStream & ms, MathInset const * p)
+MapleStream & operator<<(MapleStream & ms, MathAtom const & at)
 {
-	if (p)
-		p->maplize(ms);
-	else
-		lyxerr << "operator<<(MapleStream, NULL) called\n";
+	at->maplize(ms);
 	return ms;
 }
 
@@ -119,12 +112,9 @@ MapleStream & operator<<(MapleStream & ms, int i)
 //////////////////////////////////////////////////////////////////////
 
 
-MathematicaStream & operator<<(MathematicaStream & ms, MathInset const * p)
+MathematicaStream & operator<<(MathematicaStream & ms, MathAtom const & at)
 {
-	if (p)
-		p->mathematicize(ms);
-	else
-		lyxerr << "operator<<(MathematicaStream, NULL) called\n";
+	at->mathematicize(ms);
 	return ms;
 }
 
@@ -161,12 +151,9 @@ MathematicaStream & operator<<(MathematicaStream & ms, int i)
 //////////////////////////////////////////////////////////////////////
 
 
-OctaveStream & operator<<(OctaveStream & ns, MathInset const * p)
+OctaveStream & operator<<(OctaveStream & ns, MathAtom const & at)
 {
-	if (p)
-		p->octavize(ns);
-	else
-		lyxerr << "operator<<(OctaveStream, NULL) called\n";
+	at->octavize(ns);
 	return ns;
 }
 
@@ -202,12 +189,9 @@ OctaveStream & operator<<(OctaveStream & ns, int i)
 //////////////////////////////////////////////////////////////////////
 
 
-NormalStream & operator<<(NormalStream & ns, MathInset const * p)
+NormalStream & operator<<(NormalStream & ns, MathAtom const & at)
 {
-	if (p)
-		p->normalize(ns);
-	else
-		lyxerr << "operator<<(NormalStream, NULL) called\n";
+	at->normalize(ns);
 	return ns;
 }
 
@@ -260,12 +244,9 @@ void WriteStream::addlines(unsigned int n)
 }
 
 
-WriteStream & operator<<(WriteStream & ws, MathInset const * p)
+WriteStream & operator<<(WriteStream & ws, MathAtom const & at)
 {
-	if (p)
-		p->write(ws);
-	else
-		lyxerr << "operator<<(WriteStream, NULL) called\n";
+	at->write(ws);
 	return ws;
 }
 
@@ -288,10 +269,8 @@ WriteStream & operator<<(WriteStream & ws, char const * s)
 WriteStream & operator<<(WriteStream & ws, char c)
 {
 	ws.os() << c;
-	if (c == '\n') {
-		lyxerr << "writing a newline\n";
+	if (c == '\n')
 		ws.addlines(1);
-	}
 	return ws;
 }
 

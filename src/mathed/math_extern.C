@@ -865,7 +865,7 @@ void mathmlize(MathArray const & dat, MathMLStream & os)
 	if (ar.size() == 0)
 		os << "<mrow/>";
 	else if (ar.size() == 1)
-		os << ar.begin()->nucleus();
+		os << ar.front();
 	else {
 		os << MTag("mrow");
 		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)

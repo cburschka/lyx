@@ -105,7 +105,7 @@ void MathArray::dump2() const
 {
 	NormalStream ns(lyxerr);
 	for (const_iterator it = begin(); it != end(); ++it)
-		ns << it->nucleus() << ' ';
+		ns << *it << ' ';
 }
 
 
@@ -113,15 +113,14 @@ void MathArray::dump() const
 {
 	NormalStream ns(lyxerr);
 	for (const_iterator it = begin(); it != end(); ++it)
-		ns << "<" << it->nucleus() << ">";
+		ns << "<" << *it << ">";
 }
 
 
 void MathArray::validate(LaTeXFeatures & features) const
 {
 	for (const_iterator it = begin(); it != end(); ++it)
-		if (it->nucleus())
-			it->nucleus()->validate(features);
+		(*it)->validate(features);
 }
 
 
@@ -137,7 +136,7 @@ bool MathArray::matchpart(MathArray const & ar, pos_type pos) const
 		return false;
 	const_iterator it = begin() + pos;
 	for (const_iterator jt = ar.begin(); jt != ar.end(); ++jt, ++it)
-		if (!jt->nucleus()->match(it->nucleus()))
+		if (!(*jt)->match(it->nucleus()))
 			return false;
 	return true;
 }

@@ -47,18 +47,8 @@ int MathInset::height() const
 
 ostream & operator<<(ostream & os, MathAtom const & at)
 {
-	if (at.nucleus())
-		os << *(at.nucleus());
-	else
-		os << "(nil)";
-	return os;
-}
-
-
-ostream & operator<<(ostream & os, MathInset const & inset)
-{
 	WriteStream wi(os, false, false);
-	inset.write(wi);
+	at->write(wi);
 	return os;
 }
 
