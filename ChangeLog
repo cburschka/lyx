@@ -1,3 +1,8 @@
+2001-03-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/frontends/xforms/FormCitation.C (apply): Do not put space
+ 	between multiple keys.
+
 2001-03-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfont.C (update): don't honor toggleall for font size.

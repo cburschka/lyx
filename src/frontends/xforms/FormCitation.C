@@ -473,7 +473,7 @@ void FormCitation::apply()
 
 	string contents;
 	for (unsigned int i = 0; i < citekeys.size(); ++i) {
-		if (i > 0) contents += ", ";
+		if (i > 0) contents += ",";
 		contents += citekeys[i];
 	}
 
