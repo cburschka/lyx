@@ -248,12 +248,7 @@ AC_LANG_PUSH(C)
 AC_CHECK_FUNCS(memmove memset strchr mkfifo mkstemp mktemp)
 AC_LANG_POP(C)
 
-dnl Until this is fixed in autoconf we provide our own version
 AC_FUNC_SELECT_ARGTYPES
-
-dnl check whether we have to work around solaris broken putenv()
-LYX_FUNC_PUTENV_ARGTYPE
-
 
 ### Some information on what just happened
 real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`

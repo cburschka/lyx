@@ -255,10 +255,6 @@ AC_LANG_CPLUSPLUS
 dnl Until this is fixed in autoconf we provide our own version
 LYX_FUNC_SELECT_ARGTYPES
 
-dnl check whether we have to work around solaris broken putenv()
-LYX_FUNC_PUTENV_ARGTYPE
-
-
 LYX_CHECK_DECL_HDRS(mkstemp,[unistd.h stdlib.h])
 
 ### Some information on what just happened

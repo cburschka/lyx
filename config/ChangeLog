@@ -1,3 +1,13 @@
+2003-02-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* xforms.m4 (LYX_PATH_XPM): move here from lyxinclude.m4
+
+	* lyxinclude.m4 (LYX_FUNC_PUTENV_ARGTYPE): remove, not used
+	anymore 
+
+	* configure.in: 
+	* configure.ac: do not call LYX_FUNC_PUTENV_ARGTYPE
+
 2003-02-21  André Pönitz <poenitz@gmx.net>
 
 	* configure.ac, configure.in: removed check for setenv and putenv

@@ -1,5 +1,57 @@
 dnl some macros to test for xforms-related functionality  -*- sh -*-
 
+dnl Usage LYX_PATH_XPM: Checks for xpm library and header
+AC_DEFUN(LYX_PATH_XPM,[
+### Check for Xpm library
+AC_CHECK_LIB(Xpm, XpmCreateBufferFromImage, XPM_LIB="-lXpm",
+	[LYX_LIB_ERROR(libXpm,Xpm)])
+AC_SUBST(XPM_LIB)
+### Check for Xpm headers
+lyx_cv_xpm_h_location="<xpm.h>"
+AC_CHECK_HEADER(X11/xpm.h,[
+  ac_cv_header_xpm_h=yes
+  lyx_cv_xpm_h_location="<X11/xpm.h>"],[
+AC_CHECK_HEADER(xpm.h,[],[
+LYX_LIB_ERROR(xpm.h,Xpm)])])
+AC_DEFINE_UNQUOTED(XPM_H_LOCATION,$lyx_cv_xpm_h_location,
+  [define this to the location of xpm.h to be used with #include, e.g. <xpm.h>])
+
+### Test for the header version
+if test $ac_cv_header_xpm_h = yes; then
+  AC_CACHE_CHECK([xpm header version],lyx_cv_xpmversion,
+  [ cat > conftest.$ac_ext <<EOF
+#line __oline__ "configure"
+#include "confdefs.h"
+
+#include XPM_H_LOCATION
+"%%%"lyx_cv_xpmv=XpmVersion;lyx_cv_xpmr=XpmRevision"%%%"
+EOF
+    eval `(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
+      grep '^"%%%"'  2>/dev/null | \
+      sed -e 's/^"%%%"\(.*\)"%%%"/\1/' -e 's/ //g'`
+    case "$lyx_cv_xpmr" in
+changequote(,)
+     [0-9]) lyxxpmr_alpha=`echo $lyx_cv_xpmr |tr 123456789 abcdefghi`
+	    lyxxpmv_alpha=" (aka 3.$lyx_cv_xpmv$lyxxpmr_alpha)";;
+changequote([,])
+	 *) ;;
+    esac
+    lyx_cv_xpmversion="$lyx_cv_xpmv.$lyx_cv_xpmr$lyxxpmv_alpha"
+    rm -f conftest*])
+  XPM_VERSION=${lyx_cv_xpmversion}
+  case "$lyx_cv_xpmr" in
+changequote(,)
+	[789]|[0-9][0-9]*) ;;
+changequote([,])
+	*) LYX_WARNING([Version $lyx_cv_xpmversion of the Xpm library is a bit old.
+   If you experience strange crashes with LyX, try to upgrade
+   to at least version 4.7 (aka 3.4g).
+   If you have installed a newer version of the library, check whether you
+   have an old xpm.h header file in your include path.]);;
+  esac
+fi])
+
+
 dnl Usage LYX_PATH_XFORMS: Checks for xforms library and flags
 dnl   If it is found, the variable XFORMS_LIB is set to the relevant -l flags,
 dnl and FORMS_H_LOCATION / FLIMAGE_H_LOCATION is also set
