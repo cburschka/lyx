@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "lyx_main.h"
 #include "gettext.h"
 #include "support/os.h"
@@ -28,6 +29,10 @@ int main(int argc, char * argv[])
 #ifdef HAVE_IOS
 	std::ios_base::sync_with_stdio(false);
 #endif
+	// To avoid ordering of global object problems with some
+	// stdlibs we do the initialization here, but still as
+	// early as possible.
+	lyxerr.rdbuf(std::cerr.rdbuf());
 
 	os::init(&argc, &argv);
 

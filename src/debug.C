@@ -123,4 +123,4 @@ void lyx_debug_trait::showTags(ostream & os)
 	os.flush();
 }
 
-LyXErr lyxerr(std::cerr.rdbuf());
+LyXErr lyxerr;

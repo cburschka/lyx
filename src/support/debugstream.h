@@ -44,6 +44,10 @@ public:
 	typedef dtrait debug;
 	typedef typename debug::type Type;
 
+	basic_debugstream()
+		: std::basic_ostream<charT, traits>(0), dt(debug::NONE)
+	{}
+
 	/// Constructor, sets the debug level to t.
 	explicit basic_debugstream(std::basic_streambuf<charT, traits> * buf)
 		: std::basic_ostream<charT, traits>(buf), dt(debug::NONE)

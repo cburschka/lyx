@@ -1,3 +1,8 @@
+2003-11-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* debugstream.h: add a default constructor that does not setup a
+	streambuf here.
+
 2003-10-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* socktools.C: honor CXX_GLOBAL_CSTD
