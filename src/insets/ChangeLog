@@ -1,3 +1,8 @@
+2002-10-14  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (localDispatch): remove double setUndo in Cut/Delete/
+	Backspace functions which confused the Undo handling.
+
 2002-10-09  Angus Leeming  <leeming@lyx.org>
 
 	* insetcite.[Ch] (setLoadingBuffer): new method, invoked by

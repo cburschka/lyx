@@ -46,10 +46,15 @@ What's new
 
 - fix bug with handling of EPSI files (this was a new bug in 1.2.1)
 
+- fix crash with undo
+
 - fix lockup when changing the layout of several paragraphs at the
   same time (and the layout of the first paragraph is already correct)
 
 - fix bug with graphics files which name contain a '.'
+
+- fix bug in the xforms image loader, where images would be cropped by
+  a couple pixels
 
 - when a viewer has not been found (set to "none"), remove the
   corresponding View menu entry
@@ -72,9 +77,14 @@ What's new
 - fix drawing problem when a line of text contains both left-to-right
   and right-to-left text
 
+- ignore bugs matches of scalable fonts
+
 - when loading a font fails, show the name of the said font
 
 - harmonize the behavior of delete and backspace in main text,
   insettext, and tabulars, i.e. don't put stuff into the clipboard
 
 - add missing autoconf file xforms.m4
+
+- fix compilation problem (missing <wchar.h>) on some BSD systems
+  (including Mac OS X)
