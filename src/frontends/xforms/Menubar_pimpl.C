@@ -90,6 +90,10 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
 }
 
 
+Menubar::Pimpl::~Pimpl()
+{}
+
+
 void Menubar::Pimpl::makeMenubar(Menu const & menu)
 {
 	FL_FORM * form = owner_->getForm();
@@ -417,3 +421,15 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 	fl_set_tabstop(default_tabstop);
 
 }
+
+
+Menubar::Pimpl::ItemInfo::ItemInfo
+	(Menubar::Pimpl * p, MenuItem const * i, FL_OBJECT * o)
+	: pimpl_(p), obj_(o)
+{
+	item_.reset(i);
+}
+
+
+Menubar::Pimpl::ItemInfo::~ItemInfo()
+{}

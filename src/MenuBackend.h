@@ -72,9 +72,7 @@ public:
 	MenuItem(Kind kind,
 		 string const & label,
 		 int action,
-		 bool optional = false)
-		: kind_(kind), label_(label),
-		  action_(action), submenuname_(), optional_(optional) {}
+		 bool optional = false);
 
 	/// This one is just to please boost::shared_ptr<>
 	~MenuItem();
@@ -97,7 +95,7 @@ public:
 	///
 	Menu * submenu() const { return submenu_.get(); }
 	///
-	void submenu(Menu * menu) { submenu_.reset(menu); }
+	void submenu(Menu * menu);
 
 private:
 	//friend class MenuBackend;

@@ -39,6 +39,8 @@ struct Menubar::Pimpl {
 public:
 	///
 	Pimpl(LyXView *, MenuBackend const &);
+	///
+	~Pimpl();
 
 	/// update the state of the menuitems
 	void update();
@@ -62,7 +64,7 @@ private:
 			   std::vector<int> & smn, bool & all_disabled);
 
 	//
-	void makeMenubar(Menu const &menu);
+	void makeMenubar(Menu const & menu);
 
 	///
 	XFormsView * owner_;
@@ -72,9 +74,8 @@ private:
 	struct ItemInfo {
 		///
 		ItemInfo(Menubar::Pimpl * p, MenuItem const * i,
-			 FL_OBJECT * o)
-
-			: pimpl_(p), obj_(o) { item_.reset(i); }
+			 FL_OBJECT * o);
+		~ItemInfo();
 		///
 		Menubar::Pimpl * pimpl_;
 		///
