@@ -61,7 +61,7 @@ public:
 	/// the current font
 	LyXFont real_current_font;
 	/// our buffer's default layout font
-	//LyXFont defaultfont_;
+	LyXFont defaultfont_;
 private:
 	/** the 'anchor' row: the position of this row remains constant
 	 *  with respect to the top of the screen

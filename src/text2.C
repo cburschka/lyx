@@ -156,7 +156,7 @@ LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 
 	// Realize with the fonts of lesser depth.
 	tmpfont.realize(outerFont(pit, ownerParagraphs()));
-	//tmpfont.realize(defaultfont_);
+	tmpfont.realize(defaultfont_);
 
 	return tmpfont;
 }
@@ -173,7 +173,7 @@ LyXFont LyXText::getLayoutFont(ParagraphList::iterator pit) const
 	LyXFont font = layout->font;
 	// Realize with the fonts of lesser depth.
 	font.realize(outerFont(pit, ownerParagraphs()));
-	//font.realize(defaultfont_);
+	font.realize(defaultfont_);
 
 	return font;
 }
@@ -190,7 +190,7 @@ LyXFont LyXText::getLabelFont(ParagraphList::iterator pit) const
 	LyXFont font = layout->labelfont;
 	// Realize with the fonts of lesser depth.
 	font.realize(outerFont(pit, ownerParagraphs()));
-	//font.realize(defaultfont_);
+	font.realize(defaultfont_);
 
 	return font;
 }
@@ -243,7 +243,7 @@ void LyXText::setCharFont(
 		}
 	}
 
-	//layoutfont.realize(defaultfont_);
+	layoutfont.realize(defaultfont_);
 
 	// Now, reduce font against full layout font
 	font.reduce(layoutfont);
