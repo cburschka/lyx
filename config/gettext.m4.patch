@@ -1,0 +1,16 @@
+--- /usr/share/aclocal/gettext.m4	Thu Sep 23 05:05:24 1999
++++ gettext.m4	Sat Jan  8 04:12:49 2000
+@@ -227,7 +227,12 @@
+      else
+        AC_MSG_CHECKING(for catalogs to be installed)
+        NEW_LINGUAS=
+-       for lang in ${LINGUAS=$ALL_LINGUAS}; do
++dnl ============== Fix is here! ======================
++dnl Some sh do not like substitution in bounds of for loops
++dnl    for lang in ${LINGUAS=$ALL_LINGUAS}; do
++    tmplinguas=${LINGUAS=$ALL_LINGUAS}
++    for lang in ${tmplinguas}; do
++dnl ==== end of fix
+          case "$ALL_LINGUAS" in
+           *$lang*) NEW_LINGUAS="$NEW_LINGUAS $lang" ;;
+          esac
