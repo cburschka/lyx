@@ -1,3 +1,7 @@
+2004-10-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_hullinset.C (mutate): fix endless loop for unknown types
+
 2004-09-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* formula.C (ascii): do not output extraneous spaces
