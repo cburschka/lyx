@@ -66,10 +66,9 @@ InsetLabel::priv_dispatch(FuncRequest const & cmd,
 
 	switch (cmd.action) {
 
-	case LFUN_INSET_EDIT:
+	case LFUN_MOUSE_RELEASE:
 		InsetCommandMailer("label", *this).showDialog(bv);
 		return DispatchResult(true, true);
-		break;
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;

@@ -61,12 +61,11 @@ void InsetPrintIndex::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-DispatchResult
-InsetIndex::priv_dispatch(FuncRequest const & cmd,
-			  idx_type & idx, pos_type & pos)
+DispatchResult InsetIndex::priv_dispatch(FuncRequest const & cmd,
+	idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
-		case LFUN_INSET_EDIT:
+		case LFUN_MOUSE_RELEASE:
 			InsetCommandMailer("index", *this).showDialog(cmd.view());
 			return DispatchResult(true, true);
 

@@ -34,8 +34,6 @@
 class InsetBranch : public InsetCollapsable {
 public:
 	///
-
-
 	InsetBranch(BufferParams const &, std::string const &);
 	/// Copy constructor
 	InsetBranch(InsetBranch const &);

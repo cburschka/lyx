@@ -274,13 +274,59 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 }
 
 
-void InsetCollapsable::edit(BufferView * bv, int index)
+void InsetCollapsable::edit(BufferView * bv, bool left)
 {
 	lyxerr << "InsetCollapsable: edit" << endl;
 	if (!bv->lockInset(this))
-		lyxerr << "InsetCollapsable: can't lock index " << index << endl;
-	inset.dispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
+		lyxerr << "InsetCollapsable: can't lock" << endl;
+	inset.edit(bv, left);
 	first_after_edit = true;
+}
+
+/*
+	if (!cmd.argument.empty()) {
+		UpdatableInset::edit(
+		if (collapsed_) {
+			lyxerr << "branch collapsed_" << endl;
+			collapsed_ = false;
+			if (bv->lockInset(this)) {
+				bv->updateInset(this);
+				bv->buffer()->markDirty();
+				inset.dispatch(cmd);
+				first_after_edit = true;
+			}
+		} else {
+			lyxerr << "branch not collapsed_" << endl;
+			if (bv->lockInset(this))
+				inset.dispatch(cmd);
+		}
+		return;
+	}
+	UpdatableInset::edit(cmd, idx, pos);
+*/
+
+
+void InsetCollapsable::edit(BufferView * bv, int x, int y)
+{
+	if (collapsed_) {
+		collapsed_ = false;
+		// set this only here as it should be recollapsed only if
+		// it was already collapsed!
+		first_after_edit = true;
+		if (!bv->lockInset(this))
+			return;
+		bv->updateInset(this);
+		bv->buffer()->markDirty();
+		inset.edit(bv, x, y);
+	} else {
+		if (!bv->lockInset(this))
+			return;
+		if (y <= button_dim.y2)
+			inset.edit(bv, x, 0);
+		else
+			inset.edit(bv, x,
+				ascent() + y - (height_collapsed() + inset.ascent()));
+	}
 }
 
 
@@ -292,57 +338,6 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 	//	<< cmd.action << " '" << cmd.argument << "'\n";
 	BufferView * bv = cmd.view();
 	switch (cmd.action) {
-		case LFUN_INSET_EDIT: {
-			if (!cmd.argument.empty()) {
-				UpdatableInset::priv_dispatch(cmd, idx, pos);
-				if (collapsed_) {
-					lyxerr << "branch collapsed_" << endl;
-					collapsed_ = false;
-					if (bv->lockInset(this)) {
-						bv->updateInset(this);
-						bv->buffer()->markDirty();
-						inset.dispatch(cmd);
-						first_after_edit = true;
-					}
-				} else {
-					lyxerr << "branch not collapsed_" << endl;
-					if (bv->lockInset(this))
-						inset.dispatch(cmd);
-				}
-				return DispatchResult(true, true);
-			}
-
-#ifdef WITH_WARNINGS
-#warning Fix this properly in BufferView_pimpl::workAreaButtonRelease
-#endif
-			if (cmd.button() == mouse_button::button3)
-				return DispatchResult(true, true);
-
-			UpdatableInset::priv_dispatch(cmd, idx, pos);
-
-			if (collapsed_) {
-				collapsed_ = false;
-				// set this only here as it should be recollapsed only if
-				// it was already collapsed!
-				first_after_edit = true;
-				if (!bv->lockInset(this))
-					return DispatchResult(true, true);
-				bv->updateInset(this);
-				bv->buffer()->markDirty();
-				inset.dispatch(cmd);
-			} else {
-				if (!bv->lockInset(this))
-					return DispatchResult(true, true);
-				if (cmd.y <= button_dim.y2) {
-					FuncRequest cmd1 = cmd;
-					cmd1.y = 0;
-					inset.dispatch(cmd1);
-				} else
-					inset.dispatch(adjustCommand(cmd));
-			}
-			return DispatchResult(true, true);
-		}
-
 		case LFUN_MOUSE_PRESS:
 			if (!collapsed_ && cmd.y > button_dim.y2)
 				inset.dispatch(adjustCommand(cmd));
@@ -359,8 +354,6 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 
 		default:
 			DispatchResult const result = inset.dispatch(cmd);
-			if (result.val() >= FINISHED)
-				bv->unlockInset(this);
 			first_after_edit = false;
 			return result;
 	}

@@ -35,3 +35,13 @@ InsetBase::priv_dispatch(FuncRequest const &, idx_type &, pos_type &)
 {
 	return DispatchResult(false);
 }
+
+
+void InsetBase::edit(BufferView *, bool)
+{}
+
+
+void InsetBase::edit(BufferView * bv, int, int)
+{
+	edit(bv, true);
+}

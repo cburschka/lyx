@@ -108,11 +108,8 @@ void InsetText::init()
 	for (; pit != end; ++pit)
 		pit->setInsetOwner(this);
 	text_.paragraphs_ = &paragraphs;
-	top_y = 0;
 
 	locked = false;
-	inset_par = -1;
-	inset_pos = 0;
 	inset_x = 0;
 	inset_y = 0;
 	no_selection = true;
@@ -267,13 +264,8 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		x += scroll();
 
 	top_baseline = y;
-	top_y = y - dim_.asc;
-
-	if (the_locking_inset
-		  && text_.cursor.par() == inset_par && cpos() == inset_pos) {
-		inset_x = cx() - x;
-		inset_y = cy();
-	}
+	inset_x = cx() - x;
+	inset_y = cy();
 
 	x += TEXT_TO_INSET_OFFSET;
 
@@ -353,9 +345,8 @@ void InsetText::lockInset(BufferView * bv)
 {
 	locked = true;
 	the_locking_inset = 0;
-	inset_pos = inset_x = inset_y = 0;
+	inset_x = inset_y = 0;
 	inset_boundary = false;
-	inset_par =  -1;
 	old_par = -1;
 	text_.setCursorIntern(0, 0);
 	text_.clearSelection();
@@ -376,8 +367,6 @@ void InsetText::lockInset(BufferView * /*bv*/, UpdatableInset * inset)
 	the_locking_inset = inset;
 	inset_x = cx() - top_x;
 	inset_y = cy();
-	inset_pos = cpos();
-	inset_par = text_.cursor.par();
 	inset_boundary = cboundary();
 }
 
@@ -418,13 +407,8 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	}
 
 	if (the_locking_inset && the_locking_inset == inset) {
-		if (text_.cursor.par() == inset_par && cpos() == inset_pos) {
-			lyxerr[Debug::INSETS] << "OK" << endl;
-			inset_x = cx() - top_x;
-			inset_y = cy();
-		} else {
-			lyxerr[Debug::INSETS] << "cursor.pos != inset_pos" << endl;
-		}
+		inset_x = cx() - top_x;
+		inset_y = cy();
 	} else if (the_locking_inset) {
 		lyxerr[Debug::INSETS] << "MAYBE" << endl;
 		return the_locking_inset->lockInsetInInset(bv, inset);
@@ -547,7 +531,6 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 	no_selection = true;
 	if (the_locking_inset) {
 		DispatchResult const res = the_locking_inset->dispatch(cmd1);
-
 		return res.dispatched();
 	}
 
@@ -591,6 +574,87 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
+void InsetText::edit(BufferView * bv, bool left)
+{
+	if (!bv->lockInset(this)) {
+		lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+		return;
+	}
+
+	locked = true;
+	the_locking_inset = 0;
+	inset_x = 0;
+	inset_y = 0;
+	inset_boundary = false;
+	old_par = -1;
+
+	if (left)
+		text_.setCursorIntern(0, 0);
+	else
+		text_.setCursor(paragraphs.size() - 1, paragraphs.back().size());
+
+	// If the inset is empty set the language of the current font to the
+	// language to the surronding text (if different).
+	if (paragraphs.begin()->empty() &&
+			paragraphs.size() == 1 &&
+			bv->getParentLanguage(this) != text_.current_font.language())
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setLanguage(bv->getParentLanguage(this));
+		setFont(bv, font, false);
+	}
+
+	updateLocal(bv, false);
+	// Tell the paragraph dialog that we've entered an insettext.
+	bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
+}
+
+
+void InsetText::edit(BufferView * bv, int x, int y)
+{
+	if (!bv->lockInset(this)) {
+		lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+		return;
+	}
+
+	locked = true;
+	the_locking_inset = 0;
+	inset_x = 0;
+	inset_y = 0;
+	inset_boundary = false;
+	old_par = -1;
+
+	int tmp_y = (y < 0) ? 0 : y;
+	// we put here -1 and not button as now the button in the
+	// edit call should not be needed we will fix this in 1.3.x
+	// cycle hopefully (Jug 20020509)
+	// FIXME: GUII I've changed this to none: probably WRONG
+	if (!checkAndActivateInset(bv, x, tmp_y)) {
+		text_.setCursorFromCoordinates(x, y + dim_.asc);
+		text_.cursor.x(text_.cursor.x());
+		bv->x_target(text_.cursor.x());
+	}
+
+	text_.clearSelection();
+	finishUndo();
+
+	// If the inset is empty set the language of the current font to the
+	// language to the surronding text (if different).
+	if (paragraphs.begin()->empty() &&
+			paragraphs.size() == 1 &&
+			bv->getParentLanguage(this) != text_.current_font.language())
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setLanguage(bv->getParentLanguage(this));
+		setFont(bv, font, false);
+	}
+
+	updateLocal(bv, false);
+	// Tell the paragraph dialog that we've entered an insettext.
+	bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
+}
+
+
 DispatchResult
 InsetText::priv_dispatch(FuncRequest const & cmd,
 			 idx_type & idx, pos_type & pos)
@@ -599,62 +663,6 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 	setViewCache(bv);
 
 	switch (cmd.action) {
-	case LFUN_INSET_EDIT: {
-		UpdatableInset::priv_dispatch(cmd, idx, pos);
-
-		if (!bv->lockInset(this)) {
-			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
-			return DispatchResult(true, true);
-		}
-
-		locked = true;
-		the_locking_inset = 0;
-		inset_pos = 0;
-		inset_x = 0;
-		inset_y = 0;
-		inset_boundary = false;
-		inset_par = -1;
-		old_par = -1;
-
-
-		if (cmd.argument.size()) {
-			if (cmd.argument == "left")
-				text_.setCursorIntern(0, 0);
-			else
-				text_.setCursor(paragraphs.size() - 1, paragraphs.back().size());
-		} else {
-			int tmp_y = (cmd.y < 0) ? 0 : cmd.y;
-			// we put here -1 and not button as now the button in the
-			// edit call should not be needed we will fix this in 1.3.x
-			// cycle hopefully (Jug 20020509)
-			// FIXME: GUII I've changed this to none: probably WRONG
-			if (!checkAndActivateInset(bv, cmd.x, tmp_y, mouse_button::none)) {
-				text_.setCursorFromCoordinates(cmd.x, cmd.y + dim_.asc);
-				text_.cursor.x(text_.cursor.x());
-				bv->x_target(text_.cursor.x());
-			}
-		}
-
-		text_.clearSelection();
-		finishUndo();
-
-		// If the inset is empty set the language of the current font to the
-		// language to the surronding text (if different).
-		if (paragraphs.begin()->empty() &&
-		    paragraphs.size() == 1 &&
-		    bv->getParentLanguage(this) != text_.current_font.language())
-		{
-			LyXFont font(LyXFont::ALL_IGNORE);
-			font.setLanguage(bv->getParentLanguage(this));
-			setFont(bv, font, false);
-		}
-
-		updateLocal(bv, false);
-		// Tell the paragraph dialog that we've entered an insettext.
-		bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-		return DispatchResult(true, true);
-	}
-
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cmd);
 		return DispatchResult(true, true);
@@ -1193,7 +1201,6 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 		return;
 	}
 
-
 	if (text_.selection.set())
 		text_.recUndo(text_.cursor.par());
 
@@ -1221,8 +1228,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 	InsetOld * inset = cpar()->getInset(cpos());
 	if (!isHighlyEditableInset(inset))
 		return false;
-	FuncRequest cmd(bv, LFUN_INSET_EDIT, front ? "left" : "right");
-	inset->dispatch(cmd);
+	inset->edit(bv, front);
 	if (!the_locking_inset)
 		return false;
 	updateLocal(bv, false);
@@ -1230,21 +1236,14 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 }
 
 
-bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
-				      mouse_button::state button)
+bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y)
 {
 	int dummyx = x;
 	int dummyy = y + dim_.asc;
 	InsetOld * inset = getLyXText(bv)->checkInsetHit(dummyx, dummyy);
-	// we only do the edit() call if the inset was hit by the mouse
-	// or if it is a highly editable inset. So we should call this
-	// function from our own edit with button < 0.
-	// FIXME: GUII jbl. I've changed this to ::none for now which is probably
-	// WRONG
-	if (button == mouse_button::none && !isHighlyEditableInset(inset))
-		return false;
-
 	if (!inset)
+		return false;
+	if (!isHighlyEditableInset(inset))
 		return false;
 	if (x < 0)
 		x = dim_.wid;
@@ -1252,8 +1251,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 		y = dim_.des;
 	inset_x = cx() - top_x;
 	inset_y = cy();
-	FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
-	inset->dispatch(cmd);
+	inset->edit(bv, x - inset_x, y - inset_y);
 	if (!the_locking_inset)
 		return false;
 	updateLocal(bv, false);

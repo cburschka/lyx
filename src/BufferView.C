@@ -547,6 +547,18 @@ int BufferView::workHeight() const
 }
 
 
+LCursor & BufferView::cursor()
+{
+	return pimpl_->cursor_;
+}
+
+
+LCursor const & BufferView::cursor() const
+{
+	return pimpl_->cursor_;
+}
+
+
 void BufferView::x_target(int x)
 {
 	x_target_ = x;

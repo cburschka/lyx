@@ -458,13 +458,18 @@ InsetExternal::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
-	case LFUN_INSET_EDIT:
 		InsetExternalMailer(*this).showDialog(cmd.view());
 		return DispatchResult(true, true);
 
 	default:
 		return DispatchResult(false);
 	}
+}
+
+
+void InsetExternal::edit(BufferView * bv, bool)
+{
+	InsetExternalMailer(*this).showDialog(bv);
 }
 
 

@@ -53,6 +53,11 @@ public:
 	DispatchResult
 	dispatch(FuncRequest const & cmd);
 
+	/// cursor enters
+	virtual void edit(BufferView * bv, bool left);
+	/// cursor enters
+	virtual void edit(BufferView * bv, int x, int y);
+
 	/// compute the size of the object returned in dim
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache

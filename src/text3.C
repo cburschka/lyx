@@ -20,6 +20,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "factory.h"
@@ -376,8 +377,8 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 		}
 		if (bv->insertInset(inset)) {
 			if (edit) {
-				FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
-				inset->dispatch(cmd);
+				inset->edit(bv, true);
+				bv->cursor().push(inset, inset->getText(0));
 			}
 			if (gotsel && pastesel)
 				bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
@@ -594,8 +595,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		    && isHighlyEditableInset(cursorPar()->getInset(cursor.pos()))) {
 			InsetOld * tmpinset = cursorPar()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
-			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "right" : "left");
-			tmpinset->dispatch(cmd1);
+			tmpinset->edit(bv, !is_rtl);
+			bv->cursor().push(tmpinset, tmpinset->getText(0));
 			break;
 		}
 		if (!is_rtl)
@@ -619,8 +620,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		    isHighlyEditableInset(cursorPar()->getInset(cursor.pos()))) {
 			InsetOld * tmpinset = cursorPar()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
-			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "left" : "right");
-			tmpinset->dispatch(cmd1);
+			tmpinset->edit(bv, is_rtl);
+			bv->cursor().push(tmpinset, tmpinset->getText(0));
 			break;
 		}
 		if (is_rtl)

@@ -140,6 +140,8 @@ public:
 	void setParams(InsetExternalParams const &, Buffer const &);
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
+	///
+	void edit(BufferView * bv, bool);
 
 protected:
 	///

@@ -180,6 +180,11 @@ public:
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 	///
+	void edit(BufferView *, bool);
+	///
+	void edit(BufferView *, int, int);
+
+	///
 	int numParagraphs() const { return 1; }
 	///
 	mutable ParagraphList paragraphs;
@@ -221,14 +226,13 @@ private:
 	///
 	DispatchResult moveUp(BufferView *);
 	///
-        DispatchResult moveDown(BufferView *);
+	DispatchResult moveDown(BufferView *);
 	///
 	void setCharFont(Buffer const &, int pos, LyXFont const & font);
 	///
 	bool checkAndActivateInset(BufferView * bv, bool front);
 	///
-	bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
-				   mouse_button::state button = mouse_button::none);
+	bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0);
 	///
 	void removeNewlines();
 	///
@@ -261,12 +265,6 @@ private:
 	int frame_color_;
 	///
 	mutable bool locked;
-	///
-	mutable int top_y;
-	///
-	lyx::paroffset_type inset_par;
-	///
-	lyx::pos_type inset_pos;
 	///
 	bool inset_boundary;
 	///

@@ -2560,7 +2560,7 @@ int LyXTabular::getCellFromInset(InsetOld const * inset) const
 		return -1;
 	}
 
-	for (int cell = getNumberOfCells(); cell >= 0; --cell)
+	for (int cell = 0, n = getNumberOfCells(); cell < n; ++cell)
 		if (&getCellInset(cell) == inset) {
 			lyxerr[Debug::INSETTEXT] << "LyXTabular::getCellFromInset: "
 				<< "cell=" << cell << endl;
@@ -2568,7 +2568,8 @@ int LyXTabular::getCellFromInset(InsetOld const * inset) const
 		}
 
 	// We should have found a cell at this point
-	lyxerr << "LyXTabular::getCellFromInset: Cell not found!" << endl;
+	lyxerr << "LyXTabular::getCellFromInset: Cell of inset "
+		<< inset << " not found!" << endl;
 	return -1;
 }
 

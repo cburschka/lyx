@@ -49,7 +49,7 @@ InsetUrl::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
-		case LFUN_INSET_EDIT:
+		case LFUN_MOUSE_PRESS:
 			InsetCommandMailer("url", *this).showDialog(cmd.view());
 			return DispatchResult(true, true);
 		default:

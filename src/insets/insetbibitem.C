@@ -65,7 +65,7 @@ InsetBibitem::priv_dispatch(FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 
-	case LFUN_INSET_EDIT:
+	case LFUN_MOUSE_PRESS:
 		InsetCommandMailer("bibitem", *this).showDialog(cmd.view());
 		return DispatchResult(true, true);
 

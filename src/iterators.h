@@ -56,8 +56,6 @@ public:
 	///
 	size_t size() const;
 	///
-	void asCursor(Cursor & cursor) const;
-	///
 	friend
 	bool operator==(ParIterator const & iter1, ParIterator const & iter2);
 	///

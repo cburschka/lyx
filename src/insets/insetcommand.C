@@ -108,7 +108,8 @@ InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
-		return dispatch(FuncRequest(cmd.view(), LFUN_INSET_EDIT));
+		edit(cmd.view(), true);
+		return DispatchResult(true);
 
 	default:
 		return DispatchResult(false);

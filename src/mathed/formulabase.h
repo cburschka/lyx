@@ -81,6 +81,10 @@ public:
 	bool display() const;
 	// return the selection as std::string
 	std::string selectionAsString() const;
+	///
+	void edit(BufferView * bv, bool);
+	///
+	void edit(BufferView * bv, int, int);
 protected:
 	/// To allow transparent use of math editing functions
 	virtual

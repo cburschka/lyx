@@ -210,7 +210,6 @@ InsetGraphics::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetGraphicsMailer(*this).updateDialog(cmd.view());
 		return DispatchResult(true, true);
 
-	case LFUN_INSET_EDIT:
 	case LFUN_MOUSE_RELEASE:
 		InsetGraphicsMailer(*this).showDialog(cmd.view());
 		return DispatchResult(true, true);
@@ -218,6 +217,12 @@ InsetGraphics::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	default:
 		return DispatchResult(false);
 	}
+}
+
+
+void InsetGraphics::edit(BufferView * bv, bool)
+{
+	InsetGraphicsMailer(*this).showDialog(bv);
 }
 
 

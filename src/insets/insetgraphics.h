@@ -77,6 +77,8 @@ public:
 	InsetGraphicsParams const & params() const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	void edit(BufferView * bv, bool);
 protected:
 	///
 	virtual

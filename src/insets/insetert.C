@@ -424,34 +424,30 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 }
 
 
+void InsetERT::edit(BufferView * bv, bool left)
+{
+	if (status_ == Inlined) {
+		if (!bv->lockInset(this))
+			return;
+		inset.edit(bv, left);
+	} else {
+		InsetCollapsable::edit(bv, left);
+	}
+	set_latex_font(bv);
+	updateStatus(bv);
+}
+
+
 DispatchResult
 InsetERT::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)
 {
-	DispatchResult result = DispatchResult(false);
 	BufferView * bv = cmd.view();
 
-	if (inset.paragraphs.begin()->empty()) {
+	if (inset.paragraphs.begin()->empty())
 		set_latex_font(bv);
-	}
 
 	switch (cmd.action) {
-
-	case LFUN_INSET_EDIT:
-		if (cmd.button() == mouse_button::button3)
-			break;
-		if (status_ == Inlined) {
-			if (!bv->lockInset(this))
-				break;
-			result = inset.dispatch(cmd);
-		} else {
-			// Is the following line correct? Ab
-			open(bv);
-			result = InsetCollapsable::priv_dispatch(cmd, idx, pos);
-		}
-		set_latex_font(bv);
-		updateStatus(bv);
-		break;
 
 	case LFUN_INSET_MODIFY: {
 		InsetERT::ERTStatus status_;
@@ -467,35 +463,25 @@ InsetERT::priv_dispatch(FuncRequest const & cmd,
 		 */
 		inset.getLyXText(cmd.view())->fullRebreak();
 		bv->updateInset(this);
-		result = DispatchResult(true, true);
+		return DispatchResult(true, true);
 	}
-	break;
 
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cmd);
-		result = DispatchResult(true, true);
-		break;
+		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_MOTION:
 		lfunMouseMotion(cmd);
-		result = DispatchResult(true, true);
-		break;
+		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 		lfunMouseRelease(cmd);
-		result = DispatchResult(true, true);
-		break;
+		return DispatchResult(true, true);
 
 	case LFUN_LAYOUT:
 		bv->owner()->setLayout(inset.paragraphs.begin()->layout()->name());
-		result = DispatchResult(true);
-		break;
+		return DispatchResult(true);
 
-	default:
-		result = InsetCollapsable::priv_dispatch(cmd, idx, pos);
-	}
-
-	switch (cmd.action) {
 	case LFUN_BREAKPARAGRAPH:
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	case LFUN_BACKSPACE:
@@ -505,12 +491,11 @@ InsetERT::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_DELETE_LINE_FORWARD:
 	case LFUN_CUT:
 		set_latex_font(bv);
-		break;
+		return DispatchResult(false);
 
 	default:
-		break;
+		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}
-	return result;
 }
 
 

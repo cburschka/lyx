@@ -19,6 +19,7 @@
 #define BUFFERVIEW_PIMPL_H
 
 #include "BufferView.h"
+#include "cursor.h"
 #include "errorlist.h"
 
 #include "insets/inset.h"
@@ -43,7 +44,7 @@ class FuncRequest;
 ///
 struct BufferView::Pimpl : public boost::signals::trackable {
 	///
-	Pimpl(BufferView * i, LyXView * o,
+	Pimpl(BufferView * bv, LyXView * owner,
 	      int xpos, int ypos, int width, int height);
 	///
 	Painter & painter() const;
@@ -196,5 +197,7 @@ private:
 	void MenuInsertLyXFile(std::string const & filen);
 	/// our workarea
 	WorkArea & workarea() const;
+	///
+	LCursor cursor_;
 };
 #endif // BUFFERVIEW_PIMPL_H

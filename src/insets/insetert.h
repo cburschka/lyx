@@ -131,6 +131,8 @@ private:
 	void set_latex_font(BufferView *);
 	/// update status on button
 	void updateStatus(BufferView *, bool = false) const;
+	///
+	void edit(BufferView * bv, bool left);
 
 	///
 	mutable ERTStatus status_;

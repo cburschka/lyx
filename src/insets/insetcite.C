@@ -311,10 +311,11 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 
 DispatchResult
 InsetCitation::priv_dispatch(FuncRequest const & cmd,
-			     idx_type & idx, pos_type & pos)
+			    idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
-	case LFUN_INSET_EDIT:
+
+	case LFUN_MOUSE_PRESS:
 		InsetCommandMailer("citation", *this).showDialog(cmd.view());
 		return DispatchResult(true, true);
 
@@ -322,7 +323,7 @@ InsetCitation::priv_dispatch(FuncRequest const & cmd,
 		return InsetCommand::priv_dispatch(cmd, idx, pos);
 	}
 }
-
+		
 
 int InsetCitation::ascii(Buffer const & buffer, ostream & os, int) const
 {

@@ -27,12 +27,14 @@ class ErrorList;
 class FuncRequest;
 class InsetOld;
 class Language;
+class LCursor;
 class LyXText;
 class LyXScreen;
 class LyXView;
 class Painter;
 class TeXErrors;
 class UpdatableInset;
+
 
 /**
  * A buffer view encapsulates a view onto a particular
@@ -199,6 +201,11 @@ public:
 	void BufferView::x_target(int x);
 	/// return target x position of cursor
 	int BufferView::x_target() const;
+
+	/// access to cursor
+	LCursor & cursor();
+	/// access to cursor
+	LCursor const & cursor() const;
 
 private:
 	/// Set the current locking inset

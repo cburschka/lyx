@@ -145,11 +145,6 @@ InsetNote::priv_dispatch(FuncRequest const & cmd,
 		return DispatchResult(true, true);
 	}
 
-	case LFUN_INSET_EDIT:
-		if (cmd.button() == mouse_button::button3)
-			return DispatchResult(false);
-		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
-
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetNoteMailer("note", *this).updateDialog(bv);
 		return DispatchResult(true, true);

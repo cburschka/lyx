@@ -193,14 +193,16 @@ public:
 
 	/// set the owning buffer
 	void buffer(Buffer * buf);
+	/// lock cell with given index
+	void edit(BufferView * bv, bool);
+	///
+	void edit(BufferView * bv, int, int);
 protected:
 	///
 	virtual
 	DispatchResult
 	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
-	/// lock cell with given index
-	void edit(BufferView * bv, int index);
 	///
 	void lfunMousePress(FuncRequest const &);
 	///
@@ -253,7 +255,6 @@ private:
 	}
 	///
 	bool activateCellInset(BufferView *, int x = 0, int y = 0,
-			       mouse_button::state button = mouse_button::none,
 			       bool behind = false);
 	///
 	bool insetHit(BufferView * bv, int x, int y) const;

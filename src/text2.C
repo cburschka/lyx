@@ -27,6 +27,7 @@
 #include "BufferView.h"
 #include "Bullet.h"
 #include "counters.h"
+#include "cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "dispatchresult.h"
@@ -1629,8 +1630,8 @@ void LyXText::cursorUp(bool selecting)
 		y -= topy;
 		InsetOld * inset_hit = checkInsetHit(x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
-			inset_hit->dispatch(
-				FuncRequest(bv(), LFUN_INSET_EDIT, x, y - (y2 - y1), mouse_button::none));
+			inset_hit->edit(bv(), x, y - (y2 - y1));
+			bv()->cursor().push(inset_hit, inset_hit->getText(0));
 		}
 	}
 #else
@@ -1657,8 +1658,8 @@ void LyXText::cursorDown(bool selecting)
 		y -= topy;
 		InsetOld * inset_hit = checkInsetHit(x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
-			FuncRequest cmd(bv(), LFUN_INSET_EDIT, x, y - (y2 - y1), mouse_button::none);
-			inset_hit->dispatch(cmd);
+			bv()->cursor().push(inset_hit, inset_hit->getText(0));
+			inset_hit->edit(bv(), x, y - (y2 - y1));
 		}
 	}
 #else

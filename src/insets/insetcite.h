@@ -40,8 +40,6 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	DispatchResult localDispatch(FuncRequest const & cmd);
-	///
 	void validate(LaTeXFeatures &) const;
 protected:
 	///

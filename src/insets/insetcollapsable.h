@@ -153,14 +153,16 @@ protected:
 	void setCollapsed(bool) const;
 	///
 	Box const & buttonDim() const;
+	///
+	void edit(BufferView *, bool);
+	///
+	void edit(BufferView *, int, int);
 
 private:
 	///
 	void lfunMouseRelease(FuncRequest const &);
 	///
 	FuncRequest adjustCommand(FuncRequest const &);
-	///
-	void edit(BufferView *, int index);
 
 public:
 	///

@@ -12,11 +12,10 @@
 #ifndef INSETNOTE_H
 #define INSETNOTE_H
 
-
 #include "insetcollapsable.h"
 
 
- struct InsetNoteParams {
+struct InsetNoteParams {
 	///
 	void write(std::ostream & os) const;
 	///

@@ -240,8 +240,6 @@ public:
 	/// return the cursor if we own one otherwise giv'em just the
 	/// BufferView cursor to work with.
 	virtual LyXCursor const & cursor(BufferView * bview) const;
-	/// lock cell with given index
-	virtual void edit(BufferView *, int /*index*/) {}
 
 	/// used to toggle insets
 	// is the inset open?

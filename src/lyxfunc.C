@@ -882,11 +882,9 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		view()->hideCursor();
 
 #if 1
-	{
-		Cursor cursor;
-		buildCursor(cursor, *view());
+	if (0) {
 		DispatchResult result =
-			cursor.dispatch(FuncRequest(func, view()));
+			view()->cursor().dispatch(FuncRequest(func, view()));
 
 		if (result.dispatched()) {
 			if (result.update()) {
@@ -1411,8 +1409,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 		LyXText * lt = view()->getLyXText();
 		if (par->inInset()) {
-			FuncRequest cmd(view(), LFUN_INSET_EDIT, "left");
-			par.inset()->dispatch(cmd);
+			par.inset()->edit(view(), true);
 			lt = par->inInset()->getLyXText(view());
 		}
 

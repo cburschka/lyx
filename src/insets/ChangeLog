@@ -1,3 +1,22 @@
+2003-11-04  André Pönitz  <poenitz@gmx.net>
+
+	* inset.h (edit): move locking code from dispatch() to edit()
+
+	* insetbase.[Ch]:
+	* insetbibitem.C:
+	* insetbranch.[Ch]:
+	* insetcite.[Ch]:
+	* insetcollapsable.[Ch]:
+	* insetcommand.C:
+	* insetert.[Ch]:
+	* insetexternal.[Ch]:
+	* insetgraphics.[Ch]:
+	* insetindex.[Ch]:
+	* insetlabel.C:
+	* insetnote.[Ch]:
+	* insetref.C:
+	* insettabular.[Ch]:
+	* insettext.[Ch]: adjust
 
 2003-11-04  Alfredo Braunstein  <abraunst@libero.it>
 

@@ -29,10 +29,16 @@ class LyXText;
  * The cursor class describes the position of a cursor within a document.
  */
 
-class CursorItem : public TextCursor {
+class CursorItem {
 public:
 	///
 	CursorItem() : inset_(0), text_(0), idx_(0), par_(0), pos_(0) {}
+	///
+	CursorItem(InsetOld * inset, LyXText * text)
+		: inset_(inset), text_(text), idx_(0), par_(0), pos_(0)
+	{}
+	///
+	friend std::ostream & operator<<(std::ostream &, CursorItem const &);
 public:
 	///
 	InsetOld * inset_;
@@ -47,21 +53,27 @@ public:
 };
 
 
-class Cursor {
+class LCursor {
 public:
 	///
-	Cursor() {}
+	LCursor(BufferView * bv);
 	///
 	DispatchResult dispatch(FuncRequest const & cmd);
+	///
+	void push(InsetOld *, LyXText *);
+	///
+	void pop();
+	///
+	InsetOld * innerInset() const;
+	///
+	LyXText * innerText() const;
+	///
+	friend std::ostream & operator<<(std::ostream &, LCursor const &);
 public:
-	/// mainly used as stack, bnut wee need random access
+	/// mainly used as stack, but wee need random access
 	std::vector<CursorItem> data_;
+	///
+	BufferView * bv_;
 };
-
-/// build cursor from current cursor in view
-void buildCursor(Cursor & cursor, BufferView & bv);
-
-/// build cursor from (x,y) coordinates
-void buildCursor(Cursor & cursor, BufferView & bv, int x, int y);
 
 #endif // LYXCURSOR_H

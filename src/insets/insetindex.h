@@ -38,11 +38,9 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    LatexRunParams const &) const;
-protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
+	DispatchResult priv_dispatch(FuncRequest const & cmd,
+		idx_type & idx, pos_type & pos);
 };
 
 

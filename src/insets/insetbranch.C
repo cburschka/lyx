@@ -131,7 +131,8 @@ InsetBranch::priv_dispatch(FuncRequest const & cmd,
 		bv->updateInset(this);
 		return DispatchResult(true, true);
 	}
-	case LFUN_INSET_EDIT:
+
+	case LFUN_MOUSE_PRESS:
 		if (cmd.button() != mouse_button::button3)
 			return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 		return DispatchResult(false);
@@ -142,10 +143,11 @@ InsetBranch::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-		    InsetBranchMailer("branch", *this).showDialog(bv);
+			InsetBranchMailer("branch", *this).showDialog(bv);
 			return DispatchResult(true);
 		}
-		// fallthrough:
+		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
+		
 	default:
 		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}

@@ -67,7 +67,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 		delete new_inset;
 		return false;
 	}
-	new_inset->dispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
+	new_inset->edit(bv, true);
 	return true;
 }
 
@@ -317,6 +317,34 @@ DispatchResult InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
+void InsetFormulaBase::edit(BufferView * bv, bool left)
+{
+	lyxerr << "Called FormulaBase::edit" << endl;
+	if (!bv->lockInset(this))
+		lyxerr << "Cannot lock math inset in edit call!" << endl;
+	releaseMathCursor(bv);
+	mathcursor = new MathCursor(this, left);
+	// if that is removed, we won't get the magenta box when entering an
+	// inset for the first time
+	bv->updateInset(this);
+}
+
+
+void InsetFormulaBase::edit(BufferView * bv, int x, int y)
+{
+	lyxerr << "Called FormulaBase::EDIT with '" << x << ' ' << y << "'" << endl;
+	if (!bv->lockInset(this))
+		lyxerr << "Cannot lock math inset in edit call!" << endl;
+	releaseMathCursor(bv);
+	mathcursor = new MathCursor(this, true);
+	//metrics(bv);
+	mathcursor->setPos(x + xo_, y + yo_);
+	// if that is removed, we won't get the magenta box when entering an
+	// inset for the first time
+	bv->updateInset(this);
+}
+
+
 DispatchResult
 InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 				idx_type &, pos_type &)
@@ -333,24 +361,6 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	bool remove_inset = false;
 
 	switch (cmd.action) {
-		case LFUN_INSET_EDIT:
-			lyxerr << "Called EDIT with '" << cmd.argument << "'" << endl;
-			if (!bv->lockInset(this))
-				lyxerr << "Cannot lock math inset in edit call!" << endl;
-			releaseMathCursor(bv);
-			if (!cmd.argument.empty()) {
-				mathcursor = new MathCursor(this, cmd.argument == "left");
-				//metrics(bv);
-			} else {
-				mathcursor = new MathCursor(this, true);
-				//metrics(bv);
-				mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
-			}
-			// if that is removed, we won't get the magenta box when entering an
-			// inset for the first time
-			bv->updateInset(this);
-			return DispatchResult(true, true);
-
 		case LFUN_MOUSE_PRESS:
 			//lyxerr << "Mouse single press" << endl;
 			return lfunMousePress(cmd);

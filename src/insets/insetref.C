@@ -51,7 +51,7 @@ InsetRef::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
-	case LFUN_INSET_EDIT:
+	case LFUN_MOUSE_PRESS:
 		// Eventually trigger dialog with button 3 not 1
 		if (cmd.button() == mouse_button::button3)
 			cmd.view()->owner()->
