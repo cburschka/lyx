@@ -275,7 +275,9 @@ lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
 		string const tmp = readBB_from_PSFile(filename.absFilename());
 		lyxerr[Debug::GRAPHICS] << "BB_from_File: " << tmp << std::endl;
 		if (!tmp.empty()) {
-#warning why not convert to unsigned int? (Lgb)
+#ifdef WITH_WARNINGS
+# warning why not convert to unsigned int? (Lgb)
+#endif
 			unsigned int const bb_orig_xl = convert<int>(token(tmp, ' ', 0));
 			unsigned int const bb_orig_yb = convert<int>(token(tmp, ' ', 1));
 
