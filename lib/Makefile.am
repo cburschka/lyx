@@ -58,7 +58,10 @@ install-xfonts:
 	  ln -f -s `kpsewhich $$i` $(DESTDIR)$(pkgdatadir)/xfonts/$$i ; \
 	done ; \
 	$(INSTALL_DATA) xfonts/fonts.dir $(DESTDIR)$(pkgdatadir)/xfonts/fonts.dir ; \
-	$(INSTALL_DATA) xfonts/fonts.scale $(DESTDIR)$(pkgdatadir)/xfonts/fonts.scale
+	$(INSTALL_DATA) xfonts/fonts.scale $(DESTDIR)$(pkgdatadir)/xfonts/fonts.scale ; \
+	if test -f xfonts/PSres.upr ; then \
+	  $(INSTALL_DATA) xfonts/PSres.upr $(DESTDIR)$(pkgdatadir)/xfonts/PSres.upr ; \
+	fi
 
 uninstall-xfonts:
 	rm -rf $(DESTDIR)$(pkgdatadir)/xfonts

@@ -1,3 +1,8 @@
+2003-11-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (install-xfonts): 
+	* configure.m4: create a resource list file for Display Postscript
+
 2003-11-03  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/convertDefault.sh: Do not use 'cut' when checking whether

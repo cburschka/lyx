@@ -603,6 +603,8 @@ if test ! $num = 0 ; then
   echo $num >xfonts/fonts.scale
   cat xfonts/tmpfonts >>xfonts/fonts.scale
   cp xfonts/fonts.scale xfonts/fonts.dir
+  # create a resource list file for Display Postscript
+  (cd xfonts ; rm -f PSres.upr ; makepsres -q) || true
 fi
 rm -f xfonts/tmpfonts
 
