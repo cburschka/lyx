@@ -390,7 +390,7 @@ BufferParams const & LaTeXFeatures::bufferParams() const
 }
 
 
-void LaTeXFeatures::getFloatDefinitions(ostream & os) const
+void LaTeXFeatures::getFloatDefinitions(std::ostream & os) const
 {
 	// Here we will output the code to create the needed float styles.
 	// We will try to do this as minimal as possible.

@@ -2406,6 +2406,9 @@ void LyXText::changeCase(BufferView * bview, LyXText::TextCase action)
 	setUndo(bview->buffer(), Undo::FINISH,
 		from.par()->previous(), to.par()->next()); 
 
+#if 1
+	changeRegionCase(bview, to, from, action);
+#else
 	while(from != to) {
 		unsigned char c = from.par()->getChar(from.pos());
 		if (!IsInsetChar(c) && !IsHfillChar(c)) {
@@ -2433,6 +2436,49 @@ void LyXText::changeCase(BufferView * bview, LyXText::TextCase action)
 	if (to.row() != from.row()) {
 		refresh_y = from.y() - from.row()->baseline();
 		refresh_row = from.row();
+		status = LyXText::NEED_MORE_REFRESH;
+	}
+#endif
+}
+
+
+void LyXText::changeRegionCase(BufferView * bview,
+			       LyXCursor const & from,
+			       LyXCursor const & to,
+			       LyXText::TextCase action)
+{
+	setUndo(bview->buffer(), Undo::FINISH,
+		from.par()->previous(), to.par()->next());
+
+	LyXCursor tmp(from);
+	
+	while(tmp != to) {
+		unsigned char c = tmp.par()->getChar(tmp.pos());
+		if (!IsInsetChar(c) && !IsHfillChar(c)) {
+			switch (action) {
+			case text_lowercase:
+				c = tolower(c);
+				break;
+			case text_capitalization:
+				c = toupper(c);
+				action = text_lowercase;
+				break;
+			case text_uppercase:
+				c = toupper(c);
+				break;
+			}
+		}
+		tmp.par()->setChar(tmp.pos(), c);
+		checkParagraph(bview, tmp.par(), tmp.pos());
+		tmp.pos(tmp.pos() + 1);
+		if (tmp.pos() >= tmp.par()->size()) {
+			tmp.par(tmp.par()->next());
+			tmp.pos(0);
+		}
+	}
+	if (to.row() != tmp.row()) {
+		refresh_y = tmp.y() - tmp.row()->baseline();
+		refresh_row = tmp.row();
 		status = LyXText::NEED_MORE_REFRESH;
 	}
 }

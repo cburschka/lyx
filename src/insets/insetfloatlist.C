@@ -29,7 +29,7 @@ Inset::Code InsetFloatList::LyxCode() const
 }
 
 
-void InsetFloatList::Write(Buffer const *, ostream & os) const
+void InsetFloatList::Write(Buffer const *, std::ostream & os) const
 {
 	os << "FloatList " << float_type << "\n";
 }
@@ -68,7 +68,7 @@ void InsetFloatList::Edit(BufferView *, int, int, unsigned int)
 }
 
 
-int InsetFloatList::Latex(Buffer const *, ostream & os, bool, bool) const
+int InsetFloatList::Latex(Buffer const *, std::ostream & os, bool, bool) const
 {
 	FloatList::const_iterator cit = floatList[float_type];
 

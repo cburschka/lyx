@@ -4,6 +4,8 @@
 #pragma implementation
 #endif
 
+#include <functional>
+
 #include "math_scriptinset.h"
 #include "LColor.h"
 #include "Painter.h"
@@ -31,11 +33,11 @@ void MathScriptInset::Metrics(MathStyles st)
 {
 	MathInset::Metrics(st);
 	size_    = st;
-	width_   = max(xcell(0).width(), xcell(1).width()) + 2; 
+	width_   = std::max(xcell(0).width(), xcell(1).width()) + 2; 
 	if (up())
-		ascent_  = max(ascent_, xcell(0).height() + 9);
+		ascent_  = std::max(ascent_, xcell(0).height() + 9);
 	if (down())
-		descent_ = max(descent_, xcell(1).height());
+		descent_ = std::max(descent_, xcell(1).height());
 }
 
 

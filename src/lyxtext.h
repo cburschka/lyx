@@ -354,6 +354,11 @@ public:
 	/// Change the case of the word at cursor position.
 	void changeCase(BufferView *, TextCase action);
 	///
+	void LyXText::changeRegionCase(BufferView * bview,
+				       LyXCursor const & from,
+				       LyXCursor const & to,
+				       LyXText::TextCase action);
+	///
 	void transposeChars(BufferView const &);
 	
 	/** returns a printed row in a pixmap. The y value is needed to

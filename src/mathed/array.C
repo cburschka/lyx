@@ -96,7 +96,7 @@ MathInset * MathArray::GetInset(int pos) const
 	if (!isInset(pos))
 		return 0;
 	MathInset * p;
-	memcpy(&p, bf_.begin() + pos + 1, sizeof(p));
+	memcpy(&p, &bf_[0] + pos + 1, sizeof(p));
 	return p;
 }
 

@@ -1,3 +1,8 @@
+2001-06-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insetfloatlist.C (Write): std:: qualify ostream
+	(Latex): ditto
+
 2001-06-26  The LyX Project  <lyx@violet.home.sad.it>
 
 	* figinset.C:

@@ -17,6 +17,8 @@
 #pragma implementation
 #endif
 
+#include <functional>
+
 #include "math_root.h"
 #include "support/LOstream.h"
 #include "Painter.h"
@@ -36,8 +38,8 @@ void MathRootInset::Metrics(MathStyles st)
 {
 	MathInset::Metrics(st);
 	size_    = st;
-	ascent_  = max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
-	descent_ = max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
+	ascent_  = std::max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
+	descent_ = std::max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
 	width_   = xcell(0).width() + xcell(1).width() + 10;
 }
 
@@ -62,7 +64,7 @@ void MathRootInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathRootInset::Write(ostream & os, bool fragile) const
+void MathRootInset::Write(std::ostream & os, bool fragile) const
 {
 	os << "\\sqrt[";
 	cell(0).Write(os, fragile);  
@@ -72,7 +74,7 @@ void MathRootInset::Write(ostream & os, bool fragile) const
 }
 
 
-void MathRootInset::WriteNormal(ostream & os) const
+void MathRootInset::WriteNormal(std::ostream & os) const
 {
 	os << "[root ";
 	cell(1).WriteNormal(os);  

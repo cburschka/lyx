@@ -1,3 +1,7 @@
+2001-06-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* LaTeXFeatures.C (getFloatDefinitions): std:: qualify ostream
+
 2001-06-27  Juergen Vigna  <jug@sad.it>
 
 	* text.C (cursorLeftOneWord): changed to return the cursor and added

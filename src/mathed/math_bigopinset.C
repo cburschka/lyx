@@ -1,5 +1,7 @@
 #include <config.h>
 
+#include <functional>
+
 #include "math_bigopinset.h"
 #include "LColor.h"
 #include "Painter.h"
@@ -73,10 +75,10 @@ void MathBigopInset::Metrics(MathStyles st)
 	if (hasLimits()) {
 		ascent_  = asc + xcell(0).height() + 2;
 		descent_ = des + xcell(1).height() + 2;
-		width_   = max(width_, wid);
+		width_   = std::max(width_, wid);
 	} else {
-		ascent_  = max(ascent_, asc);
-		descent_ = max(descent_, des);
+		ascent_  = std::max(ascent_, asc);
+		descent_ = std::max(descent_, des);
 		width_  += wid;
 	}
 

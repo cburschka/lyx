@@ -5,6 +5,7 @@
 #endif
 
 #include "math_sizeinset.h"
+#include "support/LOstream.h"
 
 
 MathSizeInset::MathSizeInset(MathStyles st)
@@ -12,6 +13,7 @@ MathSizeInset::MathSizeInset(MathStyles st)
 {
 	name_ = verbose();
 }
+
 
 char const * MathSizeInset::verbose() const
 {
@@ -27,6 +29,7 @@ char const * MathSizeInset::verbose() const
 	}
 	return "unknownstyle";
 }
+
 
 MathInset * MathSizeInset::Clone() const
 {

@@ -4,6 +4,8 @@
 #pragma implementation
 #endif
 
+#include <functional>
+
 #include "math_fracinset.h"
 #include "LColor.h"
 #include "Painter.h"
@@ -30,7 +32,7 @@ void MathFracInset::Metrics(MathStyles st)
 	xcell(0).Metrics(st);
 	xcell(1).Metrics(st);
 	size_    = st;
-	width_   = max(xcell(0).width(), xcell(1).width()) + 4; 
+	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 
 	ascent_  = xcell(0).height() + 4 + 5;
 	descent_ = xcell(1).height() + 4 - 5; 
 }

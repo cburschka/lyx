@@ -127,7 +127,7 @@ void Paragraph::Pimpl::insertInset(Paragraph::size_type pos,
 					     search_inset, matchIT());
 	if (it != owner_->insetlist.end() && (*it).pos == pos) {
 		lyxerr << "ERROR (Paragraph::InsertInset): "
-			"there is an inset in position: " << pos << endl;
+			"there is an inset in position: " << pos << std::endl;
 	} else {
 		owner_->insetlist.insert(it, InsetTable(pos, inset));
 	}
@@ -198,10 +198,10 @@ void Paragraph::Pimpl::erase(Paragraph::size_type pos)
 }
 
 
-void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
-				   Paragraph::size_type const i,
-				   int & column, LyXFont const & font,
-				   LyXLayout const & style)
+void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
+				       Paragraph::size_type const i,
+				       int & column, LyXFont const & font,
+				       LyXLayout const & style)
 {
 	if (column > tex_code_break_column
 	    && i 
@@ -249,7 +249,8 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 
 void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     BufferParams const & bparams,
-					     ostream & os, TexRow & texrow,
+					     std::ostream & os,
+					     TexRow & texrow,
 					     bool moving_arg,
 					     LyXFont & font,
 					     LyXFont & running_font,
@@ -517,9 +518,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 
 Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
 					BufferParams const & bparams,
-					ostream & os, TexRow & texrow)
+					std::ostream & os, TexRow & texrow)
 {
-	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << endl;
+	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << std::endl;
 	Paragraph * par = owner_;
 
 	while (par && par->params().depth() == owner_->params().depth()) {
@@ -532,7 +533,7 @@ Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
 					     os, texrow, false);
 		}
 	}
-	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << endl;
+	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << std::endl;
 
 	return par;
 }

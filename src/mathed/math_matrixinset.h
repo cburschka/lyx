@@ -2,6 +2,8 @@
 #ifndef MATH_MATRIXINSET_H
 #define MATH_MATRIXINSET_H
 
+#include <vector>
+
 #include "math_grid.h"
 
 #ifdef __GNUG__
@@ -47,7 +49,7 @@ public:
 	///
 	bool ams() const;
 	///
-	vector<string> const getLabelList() const;
+	std::vector<string> const getLabelList() const;
 	///
 	void Validate(LaTeXFeatures & features);
 

@@ -1,3 +1,29 @@
+2001-06-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* math_sizeinset.C: include support/LOstream.h
+
+	* math_scriptinset.C (Metrics): std:: qualify max
+
+	* math_root.C (Metrics): std:: qualify max
+	(Write): std:: qualify ostream
+	(WriteNormal): ditto
+
+	* math_matrixinset.C (getLabelList): std:: qualify vector
+	include vector
+	(Metrics): std:: qualify max
+	(header_write): std:: qualify ostream
+	(footer_write): ditto
+
+	* math_macrotemplate.C (Write): std:: qualify ostream
+
+	* math_bigopinset.C (Metrics): std:: qualify max, and include
+	functional 
+
+	* math_matrixinset.h: include vector and std:: qualify it.
+
+	* array.C (GetInset): get a pointer to the first element of bf_
+	not an iterator.
+
 2001-06-25  The LyX Project  <Asger>
 
 	* math_scriptinset.C: Fix for entering with cursor up/down.

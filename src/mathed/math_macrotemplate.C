@@ -25,10 +25,12 @@ MathMacroTemplate * MathMacroTemplate::Clone() const
 	return new MathMacroTemplate(*this);
 }
 
+
 int MathMacroTemplate::numargs() const
 {
 	return numargs_;
 }
+
 
 void MathMacroTemplate::numargs(int numargs)
 {
@@ -36,7 +38,7 @@ void MathMacroTemplate::numargs(int numargs)
 }
 
 
-void MathMacroTemplate::Write(ostream & os, bool fragile) const
+void MathMacroTemplate::Write(std::ostream & os, bool fragile) const
 {
 	os << "\n\\newcommand{\\" << name_ << "}";
 
@@ -66,4 +68,3 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y)
 	xcell(0).draw(pain, x + 2, y + 1);
 	pain.rectangle(x, y - ascent(), width(), height(), LColor::blue);
 }
-

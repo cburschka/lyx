@@ -4,6 +4,9 @@
 #pragma implementation
 #endif
 
+#include <vector>
+#include <functional>
+
 #include "math_matrixinset.h"
 #include "debug.h"
 #include "support/LOstream.h"
@@ -15,7 +18,7 @@ LyXFont WhichFont(short type, int size);
 
 namespace {
 
-string getAlign(short int type, int cols)
+string const getAlign(short int type, int cols)
 {
 	string align;
 	switch (type) {
@@ -41,10 +44,11 @@ string getAlign(short int type, int cols)
 }
 
 
-string star(bool n)
+string const star(bool n)
 {
 	return n ? "" : "*";
 }
+
 
 int getCols(short int type)
 {
@@ -99,7 +103,7 @@ void MathMatrixInset::Metrics(MathStyles st)
 	if (numberedType()) {
 		int l = 0;
 		for (int row = 0; row < nrows(); ++row)
-			l = max(l, mathed_string_width(LM_TC_TEXTRM, size(), nicelabel(row)));
+			l = std::max(l, mathed_string_width(LM_TC_TEXTRM, size(), nicelabel(row)));
 
 		if (l)
 			width_ += 30 + l;
@@ -187,7 +191,7 @@ bool MathMatrixInset::display() const
 }
 
 
-vector<string> const MathMatrixInset::getLabelList() const
+std::vector<string> const MathMatrixInset::getLabelList() const
 {
 	std::vector<string> res;
 	for (int row = 0; row < nrows(); ++row)
@@ -253,7 +257,7 @@ void MathMatrixInset::Validate1(LaTeXFeatures & features)
 */
 
 
-void MathMatrixInset::header_write(ostream & os) const
+void MathMatrixInset::header_write(std::ostream & os) const
 {
 	bool n = numberedType();
 
@@ -285,7 +289,7 @@ void MathMatrixInset::header_write(ostream & os) const
 }
 
 
-void MathMatrixInset::footer_write(ostream & os) const
+void MathMatrixInset::footer_write(std::ostream & os) const
 {
 	bool n = numberedType();
 
