@@ -1,5 +1,13 @@
 2001-03-12  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* lyx_cb.C: readd using std::ios.
+
+	* buffer.C: add using std::map.
+
+	* BufferView_pimpl.C: add using std::vector.
+
+	* ShareContainer.h: add std:: to swap.
+
 	* buffer.h: add some typedefs
 	* buffer.C (getLists): use them
 	(getLists): renamed from getTocList.

@@ -107,6 +107,7 @@ using std::endl;
 using std::pair;
 using std::make_pair;
 using std::vector;
+using std::map;
 using std::max;
 using std::set;
 

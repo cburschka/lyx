@@ -39,6 +39,7 @@ using std::vector;
 using std::ifstream;
 using std::copy;
 using std::endl;
+using std::ios;
 using std::back_inserter;
 using std::istream_iterator;
 using std::pair;

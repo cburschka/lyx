@@ -46,7 +46,7 @@ public:
 			// move it forward - optimization
 			// makes the next find faster.
 			if (it != params.begin())
-				swap(*it, *(it - 1));
+				std::swap(*it, *(it - 1));
 		}
 		return tmp;
 	}
