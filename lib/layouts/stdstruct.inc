@@ -25,11 +25,9 @@ Style Abstract
 	LabelType             Centered_Top_Environment
 	LabelString           Abstract
 	LabelBottomSep    0.5
-
 	Font 
 	  Size                Small
 	EndFont
-
 	LabelFont 
 	  Series              Bold
 	  Size                Large
@@ -53,7 +51,6 @@ Style Bibliography
 	LabelType             Bibliography
 	LabelString           References
 	LabelBottomSep    0.7
-
 	LabelFont 
 	  Series              Bold
 	  Size                Larger

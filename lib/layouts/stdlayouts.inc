@@ -42,8 +42,8 @@ End
 
 
 Style Verse
-# LaTeX type is first dynamic because of LaTeX implementation.
-# In LyX this does not make sense.
+	# LaTeX type is first dynamic because of LaTeX implementation.
+	# In LyX this does not make sense.
 	LatexType             Environment
 	LatexName             verse
 	Margin                First_Dynamic
@@ -73,8 +73,9 @@ Style Caption
 	LabelType             Sensitive
 	LabelString   Caption
 	OptionalArgs          1
-
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
+
+

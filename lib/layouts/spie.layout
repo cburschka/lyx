@@ -5,17 +5,13 @@
 # to be used with the spie.cls LaTex-style available at
 # http://public.lanl.gov/kmh/spie/
 
-# Input general definitions
 Input stdclass.inc
+Input numarticle.inc
 
-# no pagenumbers by default
-PageStyle empty
-
-# There are no chapters in an article.
 NoStyle Chapter
 NoStyle Chapter*
 
-MaxCounter              Counter_Section
+PageStyle               empty
 SecNumDepth             3
 TocDepth                3
 
@@ -86,9 +82,10 @@ Style Abstract
 	EndFont
 End
 
+
 Style Acknowledgments
 	CopyStyle             Abstract
-#  NextNoIndent                 1
+#  NextNoIndent          1
 #  LatexType             Command
 	LatexName             acknowledgments
 	LabelString           ACKNOWLEDGMENTS

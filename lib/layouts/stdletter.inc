@@ -2,20 +2,10 @@
 # Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
 # Heavily modifed and enhanced by several developers.
 
-# General textclass parameters
+
 Columns                 1
 Sides                   1
 PageStyle               Empty
-
-# This is just to show how to declare the default font.
-# The defaults are exactly those shown here.
-DefaultFont
-	Family                Roman
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 None
-EndFont
 
 
 Style Standard
@@ -70,7 +60,6 @@ Style Opening
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Opening:
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -92,7 +81,6 @@ Style Signature
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Signature:
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -102,24 +90,10 @@ End
 
 
 Style Closing
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Signature
 	LatexName             closing
 	LeftMargin            Signature::xx
-	LabelSep              xx
-	TopSep                0.4
-	BottomSep             0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Closing:
-
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               red
-	EndFont
 End
 
 
@@ -140,51 +114,26 @@ End
 
 
 Style encl
-	Margin                Static
-	LatexType             Command
+	CopyStyle             cc
 	LatexName             encl
 	LeftMargin            encl:xx
-	LabelSep              xx
-	TopSep                0.4
-	BottomSep             0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           encl:
 	Spacing               Other 1.5
 End
 
 
 Style Location
-	Margin                Static
-	LatexType             Command
+	CopyStyle             encl  
 	LatexName             location
 	LeftMargin            Location:xx
-	LabelSep              xx
-	TopSep                0.4
-	BottomSep             0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Location:
-	Spacing               Other 1.5
 End
 
 
 Style Telephone
-	Margin                Static
-	LatexType             Command
+	CopyStyle             encl
 	LatexName             telephone
 	LeftMargin            Telephone:xx
-	LabelSep              xx
-	TopSep                0.4
-	BottomSep             0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Telephone:
-	Spacing               Other 1.5
 End
+

@@ -4,9 +4,9 @@
 # Heavily modifed and enhanced by several developers.
 
 # This include files contains all non numbered versions of the
-# sectionning-related commands that are useful for article-like
+# sectioning-related commands that are useful for article-like
 # document classes, but not for letters. It should be Input after
-# modying the style of the regular sectionning layouts.
+# modifying the style of the regular sectioning layouts.
 
 
 Style Part*

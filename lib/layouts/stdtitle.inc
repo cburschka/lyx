@@ -21,7 +21,6 @@ Style Title
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-
 	Font 
 	  Size                Largest
 	EndFont
@@ -41,7 +40,6 @@ Style Author
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-
 	Font 
 	  Size                Large
 	EndFont
@@ -61,7 +59,6 @@ Style Date
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-
 	Font 
 	  Size                Large
 	EndFont

@@ -20,9 +20,10 @@
 # (jog) ?
 #
 # see www.springer.de/author/tex/help-journals.html for class files
-#
-# The standard Springer Journal sections
+
+
 Input svjour.inc
+
 
 ClassOptions
 	Other         jog
@@ -45,7 +46,6 @@ Style Abstract
 	AlignPossible         Block, Left
 	LabelType             Top_Environment
 	LabelString           Abstract. 
-
 	LabelFont 
 	  Series              Bold
 	EndFont

@@ -15,12 +15,11 @@
 # work done by MV in 2000.
 #
 # see www.springer.de/author/tex/help-journals.html for class files
-#
-# General textclass parameters
+
+
 Columns                 2
 Sides                   1
 PageStyle               Plain
-MaxCounter              Counter_Section
 
 
 Style Standard
@@ -36,6 +35,15 @@ End
 
 
 Input stdsections.inc
+Input numarticle.inc
+Input stdstarsections.inc
+Input stdlayouts.inc
+Input stdlists.inc
+
+NoStyle Part
+NoStyle Part*
+NoStyle Chapter
+NoStyle Chapter*
 
 
 Style Section
@@ -83,19 +91,6 @@ Style Subparagraph
 End
 
 
-Input stdstarsections.inc
-
-# Remove the ones that we do not want
-NoStyle         Part
-NoStyle         Part*
-NoStyle         Chapter
-NoStyle         Chapter*
-
-# Some standard things
-Input stdlayouts.inc
-Input stdlists.inc
-
-
 Style Headnote
 	Margin                Static
 	LatexType             Command
@@ -112,13 +107,11 @@ Style Headnote
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Headnote (optional): "
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               Red
 	EndFont
-
 End
 
 
@@ -145,7 +138,6 @@ Style Title
 	LabelType             No_Label
 	Fill_Top              1
 	Fill_Bottom           1
-
 	Font 
 	  Family              Sans
 	  Series              Bold
@@ -168,13 +160,13 @@ Style Subtitle
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Large
 	EndFont
 End
+
 
 Style Running_LaTeX_Title
 	CopyStyle             Headnote
@@ -198,7 +190,6 @@ Style Author
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-
 	Font 
 	  Series              Bold
 	  Shape               Italic
@@ -227,12 +218,11 @@ Style Institute
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-
 	Font 
 	  Size                Small
 	EndFont
-
 End
+
 
 Style Date
 	CopyStyle             Institute
@@ -240,13 +230,13 @@ Style Date
 End
 
 
-# Correspondence address style definition
 Style Mail
 	CopyStyle             Headnote
 	LatexName             mail    
 	LeftMargin            "Corr Author:xx."
 	LabelString           "Corr Author: "
 End
+
 
 Style Offprints
 	CopyStyle             Headnote
@@ -271,7 +261,6 @@ Style Abstract
 	AlignPossible         Block, Left
 	LabelType             Top_Environment
 	LabelString           Abstract. 
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -293,7 +282,6 @@ Style  Keywords
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           "Key words: " 
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -315,16 +303,15 @@ Style Acknowledgements
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Acknowledgements. 
-
 	Font 
 	  Size                Small
 	EndFont
-
 	LabelFont 
 	  Shape               Italic
 	  Size                Small
 	EndFont
 End 
+
 
 Style Acknowledgement
 	CopyStyle             Acknowledgements
@@ -349,13 +336,11 @@ Style Bibliography
 	LabelType             Bibliography
 	LabelString           References 
 	LabelBottomSep        0.7
-
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Mathematics-like definitions:
 
 Style Claim
 	Margin                First_Dynamic
@@ -372,7 +357,6 @@ Style Claim
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Claim. 
-
 	LabelFont 
 	  Shape               Italic
 	EndFont
@@ -390,11 +374,9 @@ Style Corollary
 	CopyStyle             Claim
 	LatexName             corollary
 	LabelString           "Corollary #. " 
-
 	Font 
 	  Shape               Italic
 	EndFont
-
 	LabelFont 
 	  Shape               Up
 	  Series              Bold
@@ -420,14 +402,10 @@ Style Exercise
 	CopyStyle             Claim
 	LatexName             exercise
 	LabelString           "Exercise #. "
-
-	# font & label font definition
-
 	LabelFont 
 	  Shape               Up
 	  Series              Bold
 	EndFont
-
 End
 
 
@@ -499,7 +477,3 @@ Style Theorem
 	LatexName             theorem
 	LabelString           "Theorem #. "
 End
-
-
-#Finally a few older definitions for compatibility
-Input obsolete.inc
