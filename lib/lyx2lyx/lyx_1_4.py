@@ -27,6 +27,19 @@ from sys import stdin
 from string import replace, split, find, strip, join
 
 ##
+# Remove \color default
+#
+def remove_color_default(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, "\\color default", i)
+        if i == -1:
+            return
+        lines[i] = replace(lines[i], "\\color default",
+                           "\\color inherit")
+
+
+##
 # Add \end_header
 #
 def add_end_header(header):
@@ -1352,7 +1365,8 @@ def revert_paperpackage(header, opt):
 def convert(header, body, opt):
     if opt.format < 223:
         insert_tracking_changes(header)
-	add_end_header(header)
+        add_end_header(header)
+        remove_color_default(body)
 	convert_spaces(body)
 	convert_bibtex(body)
 	remove_insetparent(body)
