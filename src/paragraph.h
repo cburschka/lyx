@@ -20,6 +20,7 @@
 #include "insets/inset.h" // Just for Inset::Code
 
 #include "support/types.h"
+#include "changes.h"
 
 #include "LString.h"
 
@@ -165,6 +166,36 @@ public:
 	///
 	Paragraph const * next() const;
 
+	/// initialise tracking for this par
+	void trackChanges(Change::Type = Change::UNCHANGED);
+ 
+	/// stop tracking
+	void untrackChanges();
+ 
+	/// set entire paragraph to new text for change tracking
+	void cleanChanges();
+ 
+	/// look up change type at given pos
+	Change::Type lookupChange(lyx::pos_type pos) const;
+ 
+	/// look up change at given pos
+	Change const lookupChangeFull(lyx::pos_type pos) const;
+ 
+	/// is there a change within the given range ?
+	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
+
+	/// is there a non-addition in this range ?
+	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
+ 
+	/// accept change
+	void acceptChange(lyx::pos_type start, lyx::pos_type end);
+
+	/// reject change
+	void rejectChange(lyx::pos_type start, lyx::pos_type end);
+ 
+	/// mark whole par as erased
+	void markErased();
+ 
 	///
 	void previous(Paragraph *);
 	///
@@ -197,9 +228,13 @@ public:
 	depth_type getMaxDepthAfter() const;
 	///
 	void applyLayout(LyXLayout_ptr const & new_layout);
-	///
+ 
+	/// erase the char at the given position
 	void erase(lyx::pos_type pos);
-	/** Get unistantiated font setting. Returns the difference
+	/// erase the given range. Returns true if actually erased.
+	bool erase(lyx::pos_type start, lyx::pos_type end);
+ 
+	/** Get uninstantiated font setting. Returns the difference
 	    between the characters font and the layoutfont.
 	    This is what is stored in the fonttable
 	*/
@@ -234,13 +269,13 @@ public:
 	///
 	void insertChar(lyx::pos_type pos, value_type c);
 	///
-	void insertChar(lyx::pos_type pos, value_type c, LyXFont const &);
+	void insertChar(lyx::pos_type pos, value_type c, LyXFont const &, Change change = Change(Change::INSERTED));
 	///
 	bool checkInsertChar(LyXFont &);
 	///
 	void insertInset(lyx::pos_type pos, Inset * inset);
 	///
-	void insertInset(lyx::pos_type pos, Inset * inset, LyXFont const &);
+	void insertInset(lyx::pos_type pos, Inset * inset, LyXFont const &, Change change = Change(Change::INSERTED));
 	///
 	bool insetAllowed(Inset::Code code);
 	///
@@ -294,6 +329,9 @@ public:
 	///
 	//Counters & counters();
 
+	friend void breakParagraph(BufferParams const & bparams,
+                    Paragraph * par, lyx::pos_type pos, int flag);
+ 
 private:
 	///
 	LyXLayout_ptr layout_;
@@ -312,4 +350,16 @@ private:
 	Pimpl * pimpl_;
 };
 
-#endif
+ 
+inline bool isInsertedText(Paragraph const * par, lyx::pos_type pos)
+{
+	return par->lookupChange(pos) == Change::INSERTED;
+}
+ 
+ 
+inline bool isDeletedText(Paragraph const * par, lyx::pos_type pos)
+{
+	return par->lookupChange(pos) == Change::DELETED;
+}
+ 
+#endif // PARAGRAPH_H

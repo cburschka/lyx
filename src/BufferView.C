@@ -29,6 +29,7 @@
 #include "lyxlex.h"
 #include "lyxtext.h"
 #include "undo_funcs.h"
+#include "changes.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -154,6 +155,12 @@ bool BufferView::available() const
 }
 
 
+Change const BufferView::getCurrentChange()
+{
+	return pimpl_->getCurrentChange();
+}
+
+ 
 void BufferView::beforeChange(LyXText * text)
 {
 	pimpl_->beforeChange(text);
@@ -664,7 +671,7 @@ void BufferView::replaceWord(string const & replacestring)
 	toggleSelection(false);
 	tt->replaceSelectionWithString(this, replacestring);
 
-	tt->setSelectionOverString(this, replacestring);
+	tt->setSelectionRange(this, replacestring.length());
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {

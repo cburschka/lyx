@@ -37,6 +37,10 @@
 #include "FormBrowser.h"
 #include "forms/form_browser.h"
 
+#include "ControlChanges.h"
+#include "FormChanges.h"
+#include "forms/form_changes.h"
+ 
 #include "ControlCharacter.h"
 #include "FormCharacter.h"
 #include "forms/form_character.h"
@@ -170,6 +174,9 @@ BibitemDialog;
 typedef GUI<ControlBibtex, FormBibtex, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 BibtexDialog;
 
+typedef GUI<ControlChanges, FormChanges, NoRepeatedApplyReadOnlyPolicy, xformsBC>
+ChangesDialog;
+ 
 typedef GUI<ControlCharacter, FormCharacter, OkApplyCancelReadOnlyPolicy, xformsBC>
 CharacterDialog;
 
@@ -270,8 +277,9 @@ struct Dialogs::Impl {
 
 	AboutlyxDialog      aboutlyx;
 	BibitemDialog       bibitem;
-	BibtexDialog        bibtex;
-	CharacterDialog     character;
+        BibtexDialog        bibtex;
+	ChangesDialog       changes;
+        CharacterDialog     character;
 	CitationDialog      citation;
 	DocumentDialog      document;
 	ErrorDialog         error;

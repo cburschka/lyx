@@ -66,6 +66,9 @@ public:
 	/// set global formats
 	void setFormats(Formats const & form);
 
+	/// reset the details for the current author for all buffers
+	void setCurrentAuthor();
+
 private:
 	/// get current lyxrc
 	virtual void setParams();

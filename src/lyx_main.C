@@ -447,7 +447,7 @@ void LyX::init(bool gui)
 	// If there is a preferences file we read that instead
 	// of the old lyxrc file.
 	if (!readRcFile("preferences"))
-	    readRcFile("lyxrc");
+		readRcFile("lyxrc");
 
 	readEncodingsFile("encodings");
 	readLanguagesFile("languages");

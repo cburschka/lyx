@@ -1171,7 +1171,7 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		setUndo(bv, Undo::DELETE,
 			bv->text->cursor.par(),
 			bv->text->cursor.par()->next());
-		cutSelection();
+		cutSelection(bv->buffer()->params);
 		updateLocal(bv, INIT, true);
 		break;
 	case LFUN_COPY:
@@ -2577,13 +2577,14 @@ bool InsetTabular::pasteSelection(BufferView * bv)
 			*(tabular->GetCellInset(n2)) = *(paste_tabular->GetCellInset(n1));
 			tabular->GetCellInset(n2)->setOwner(this);
 			tabular->GetCellInset(n2)->deleteLyXText(bv);
+			tabular->GetCellInset(n2)->markNew();
 		}
 	}
 	return true;
 }
 
 
-bool InsetTabular::cutSelection()
+bool InsetTabular::cutSelection(BufferParams const & bp)
 {
 	if (!hasSelection())
 		return false;
@@ -2606,7 +2607,7 @@ bool InsetTabular::cutSelection()
 	}
 	for (int i = sel_row_start; i <= sel_row_end; ++i) {
 		for (int j = sel_col_start; j <= sel_col_end; ++j) {
-			tabular->GetCellInset(tabular->GetCellNumber(i, j))->clear();
+			tabular->GetCellInset(tabular->GetCellNumber(i, j))->clear(bp.tracking_changes);
 		}
 	}
 	return true;
@@ -2788,6 +2789,46 @@ void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 }
 
 
+void InsetTabular::markErased()
+{
+	int cell = 0;
+ 
+	while (!tabular->IsLastCell(cell)) {
+		++cell;
+		InsetText * inset = tabular->GetCellInset(cell);
+		inset->markErased();
+	}
+}
+
+ 
+bool InsetTabular::nextChange(BufferView * bv, lyx::pos_type & length)
+{
+	if (the_locking_inset) {
+		if (the_locking_inset->nextChange(bv, length)) {
+			updateLocal(bv, CELL, false);
+			return true;
+		}
+		if (tabular->IsLastCell(actcell))
+			return false;
+		++actcell;
+	}
+	InsetText * inset = tabular->GetCellInset(actcell);
+	if (inset->nextChange(bv, length)) {
+		updateLocal(bv, FULL, false);
+		return true;
+	}
+	while (!tabular->IsLastCell(actcell)) {
+		++actcell;
+		inset = tabular->GetCellInset(actcell);
+		if (inset->nextChange(bv, length)) {
+			updateLocal(bv, FULL, false);
+			return true;
+		}
+	}
+	return false;
+}
+
+
 bool InsetTabular::searchForward(BufferView * bv, string const & str,
 				 bool cs, bool mw)
 {
@@ -2911,12 +2952,14 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 		ocol = actcol;
 		row = actrow;
 	}
+
 	string::size_type op = 0;
 	int cells = loctab->GetNumberOfCells();
 	p = 0;
 	cols = ocol;
 	rows = loctab->rows();
 	int const columns = loctab->columns();
+ 
 	while ((cell < cells) && (p < len) && (row < rows) &&
 	       (p = buf.find_first_of("\t\n", p)) != string::npos)
 	{

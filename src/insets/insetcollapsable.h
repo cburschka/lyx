@@ -169,7 +169,7 @@ public:
 	///
 	void close(BufferView *) const;
 	///
-	bool allowSpellcheck() { return inset.allowSpellcheck(); }
+	bool allowSpellcheck() const { return inset.allowSpellcheck(); }
 	///
 	WordLangTuple const
 	selectNextWordToSpellcheck(BufferView *, float &) const;
@@ -181,6 +181,11 @@ public:
 	void toggleSelection(BufferView * bv, bool kill_selection) {
 		inset.toggleSelection(bv, kill_selection);
 	}
+ 
+	void markErased();
+ 
+	bool nextChange(BufferView * bv, lyx::pos_type & length);
+
 	///
 	bool searchForward(BufferView * bv, string const & str,
 			   bool = true, bool = false);

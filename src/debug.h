@@ -72,7 +72,9 @@ struct Debug {
 		///
 		INSETTEXT  = (1 << 20),
 		///
-		GRAPHICS   = (1 << 21)
+		GRAPHICS   = (1 << 21),
+		/// change tracking
+		CHANGES    = (1 << 22)
 	};
 	///
 	static type const ANY;

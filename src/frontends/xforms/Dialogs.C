@@ -48,6 +48,7 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	: aboutlyx(lv, d),
 	  bibitem(lv, d),
 	  bibtex(lv, d),
+	  changes(lv, d),
 	  character(lv, d),
 	  citation(lv, d),
 	  document(lv, d),

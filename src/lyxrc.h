@@ -1,13 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxrc.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef LYXRC_H
 #define LYXRC_H
@@ -127,6 +125,8 @@ enum LyXRCTags {
 #ifdef USE_PSPELL
 	RC_USE_PSPELL,
 #endif
+	RC_USER_NAME,
+	RC_USER_EMAIL,
 	RC_LAST
 };
 
@@ -357,6 +357,10 @@ enum LyXRCTags {
 	bool preview_hashed_labels;
 	///
 	float preview_scale_factor;
+	/// user name
+	string user_name;
+	/// user email
+	string user_email;
 
 private:
 	/// Is a bind file already (or currently) read?

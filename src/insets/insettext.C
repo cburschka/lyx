@@ -146,6 +146,8 @@ InsetText::InsetText(BufferParams const & bp)
 {
 	paragraphs.set(new Paragraph);
 	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
+	if (bp.tracking_changes)
+		paragraphs.begin()->trackChanges();
 	init();
 }
 
@@ -208,8 +210,18 @@ InsetText::~InsetText()
 }
 
 
-void InsetText::clear()
+void InsetText::clear(bool just_mark_erased)
 {
+	if (just_mark_erased) {
+		ParagraphList::iterator it = paragraphs.begin();
+		ParagraphList::iterator end = paragraphs.end();
+		for (; it != end; ++it) {
+			it->markErased();
+		}
+		need_update = FULL;
+		return;
+	}
+ 
 	// This is a gross hack...
 	LyXLayout_ptr old_layout = paragraphs.begin()->layout();
 
@@ -255,8 +267,11 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 	Paragraph::depth_type depth = 0;
 	LyXFont font(LyXFont::ALL_INHERIT);
 
-	clear();
+	clear(false);
 
+	if (buf->params.tracking_changes)
+		paragraphs.begin()->trackChanges();
+ 
 	while (lex.isOK()) {
 		lex.nextToken();
 		token = lex.getString();
@@ -2129,9 +2144,24 @@ void InsetText::setParagraphData(Paragraph * p, bool same_id)
 }
 
 
+void InsetText::markNew(bool track_changes)
+{
+	ParagraphList::iterator pit = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.end();
+	for (; pit != pend; ++pit) {
+		if (track_changes) {
+			pit->trackChanges();
+		} else {
+			// no-op when not tracking
+			pit->cleanChanges();
+		}
+	}
+}
+
+ 
 void InsetText::setText(string const & data, LyXFont const & font)
 {
-	clear();
+	clear(false);
 	for (unsigned int i = 0; i < data.length(); ++i)
 		paragraphs.begin()->insertChar(i, data[i], font);
 	reinitLyXText();
@@ -2659,6 +2689,36 @@ void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 }
 
 
+bool InsetText::nextChange(BufferView * bv, lyx::pos_type & length)
+{
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
+	if (the_locking_inset) {
+		if (the_locking_inset->nextChange(bv, length))
+			return true;
+		lt->cursorRight(bv, true);
+	}
+	lyxfind::SearchResult result =
+		lyxfind::findNextChange(bv, lt, length);
+
+	if (result == lyxfind::SR_FOUND) {
+		LyXCursor cur = lt->cursor;
+		bv->unlockInset(bv->theLockingInset());
+		if (bv->lockInset(this))
+			locked = true;
+		lt->cursor = cur;
+		lt->setSelectionRange(bv, length);
+		updateLocal(bv, SELECTION, false);
+	}
+	if (clear)
+		lt = 0;
+	return result != lyxfind::SR_NOT_FOUND;
+}
+
+ 
 bool InsetText::searchForward(BufferView * bv, string const & str,
 			      bool cs, bool mw)
 {
@@ -2681,7 +2741,7 @@ bool InsetText::searchForward(BufferView * bv, string const & str,
 		if (bv->lockInset(this))
 			locked = true;
 		lt->cursor = cur;
-		lt->setSelectionOverString(bv, str);
+		lt->setSelectionRange(bv, str.length());
 		updateLocal(bv, SELECTION, false);
 	}
 	if (clear)
@@ -2716,7 +2776,7 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 		if (bv->lockInset(this))
 			locked = true;
 		lt->cursor = cur;
-		lt->setSelectionOverString(bv, str);
+		lt->setSelectionRange(bv, str.length());
 		updateLocal(bv, SELECTION, false);
 	}
 	if (clear)
@@ -2776,12 +2836,16 @@ void InsetText::appendParagraphs(BufferParams const & bparams,
 	Paragraph * buf;
 	Paragraph * tmpbuf = newpar;
 	Paragraph * lastbuffer = buf = new Paragraph(*tmpbuf, false);
+	if (bparams.tracking_changes)
+		buf->cleanChanges();
 
 	while (tmpbuf->next()) {
 		tmpbuf = tmpbuf->next();
 		lastbuffer->next(new Paragraph(*tmpbuf, false));
 		lastbuffer->next()->previous(lastbuffer);
 		lastbuffer = lastbuffer->next();
+		if (bparams.tracking_changes)
+			lastbuffer->cleanChanges();
 	}
 	lastbuffer = &*(paragraphs.begin());
 	while (lastbuffer->next())

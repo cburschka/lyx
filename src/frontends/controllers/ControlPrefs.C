@@ -20,6 +20,7 @@
 #include "ViewBase.h"
 
 #include "frontends/LyXView.h"
+#include "bufferlist.h"
 #include "helper_funcs.h"
 #include "gettext.h"
 #include "support/filetools.h"
@@ -29,6 +30,7 @@
 
 extern string system_lyxdir;
 extern string user_lyxdir;
+extern BufferList bufferlist;
 
 using std::endl;
 using std::pair;
@@ -152,4 +154,10 @@ void ControlPrefs::setConverters(Converters const & conv)
 void ControlPrefs::setFormats(Formats const & form)
 {
 	formats = form;
+}
+
+
+void ControlPrefs::setCurrentAuthor()
+{
+	bufferlist.setCurrentAuthor(rc_.user_name, rc_.user_email);
 }

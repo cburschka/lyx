@@ -3,7 +3,7 @@ Magic: 13000
 Internal Form Definition File
     (do not change)
 
-Number of forms: 14
+Number of forms: 15
 Unit of measure: FL_COORD_PIXEL
 SnapGrid: 5
 
@@ -1222,6 +1222,66 @@ name: choice_display
 callback: C_FormBaseInputCB
 argument: 0
 
+=============== FORM ===============
+Name: form_preferences_identity
+Width: 450
+Height: 350
+Number of Objects: 3
+
+--------------------
+class: FL_BOX
+type: FLAT_BOX
+box: 0 0 450 350
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label:
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name:
+callback:
+argument:
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 125 25 220 35
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Real name : |#R
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_user_name
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 125 80 220 35
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Email address : |#E
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_user_email
+callback: C_FormBaseInputCB
+argument: 0
+ 
 =============== FORM ===============
 Name: form_preferences_spelloptions
 Width: 450

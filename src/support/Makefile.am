@@ -43,6 +43,8 @@ libsupport_la_SOURCES = \
 	lyxfunctional.h \
 	lyxlib.h \
 	lyxmanip.h \
+	lyxtime.C \
+	lyxtime.h \
 	$(LYXSTRING) lyxsum.C \
 	mkdir.C \
 	nt_defines.h \
@@ -58,6 +60,8 @@ libsupport_la_SOURCES = \
 	sstream.h \
 	systemcall.C \
 	systemcall.h \
+	userinfo.C \
+	userinfo.h \
 	tempname.C \
 	textutils.h \
 	translator.h \

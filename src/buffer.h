@@ -26,6 +26,7 @@
 #include "texrow.h"
 #include "ParagraphList.h"
 #include "paragraph.h"
+#include "author.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -302,7 +303,14 @@ public:
 
 	/// Used when typesetting to place errorboxes.
 	TexRow texrow;
+
+	/// the author list for the document
+	AuthorList & authors();
+
 private:
+	/// the author list
+	AuthorList authorlist;
+
 	/// is save needed
 	mutable bool lyx_clean;
 

@@ -83,6 +83,18 @@ unsigned short Row::ascent_of_text() const
 }
 
 
+void Row::top_of_text(unsigned int top)
+{
+	top_of_text_ = top;
+}
+
+ 
+unsigned int Row::top_of_text() const
+{
+	return top_of_text_;
+}
+
+ 
 void Row::baseline(unsigned int b)
 {
 	baseline_ = b;

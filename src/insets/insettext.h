@@ -82,8 +82,8 @@ public:
 	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	InsetText & operator=(InsetText const & it);
-	///
-	void clear();
+	/// empty inset to empty par, or just mark as erased
+	void clear(bool just_mark_erased);
 	///
 	void read(Buffer const *, LyXLex &);
 	///
@@ -220,7 +220,7 @@ public:
 	///
 	void paragraph(Paragraph *);
 	///
-	bool allowSpellcheck() { return true; }
+	bool allowSpellcheck() const { return true; }
 	///
 	WordLangTuple const
 	selectNextWordToSpellcheck(BufferView *, float & value) const;
@@ -228,6 +228,20 @@ public:
 	void selectSelectedWord(BufferView *);
 	///
 	void toggleSelection(BufferView *, bool kill_selection);
+ 
+	/// mark as erased for change tracking
+	void markErased() { clear(true); };
+	/**
+	 * Mark as new. Used when pasting in tabular, and adding rows
+	 * or columns. Note that pasting will ensure that tracking already
+	 * happens, and this just resets the changes for the copied text,
+	 * whereas for row/col add, we need to start tracking changes
+	 * for the (empty) paragraph contained.
+	 */
+	void markNew(bool track_changes = false);
+	/// find next change
+	bool nextChange(BufferView *, lyx::pos_type & length);
+ 
 	///
 	bool searchForward(BufferView *, string const &,
 			   bool = true, bool = false);
@@ -238,8 +252,9 @@ public:
 	bool checkInsertChar(LyXFont &);
 	///
 	void getDrawFont(LyXFont &) const;
-	///
-	void appendParagraphs(BufferParams const & bparams, Paragraph *);
+	/// append text onto the existing text
+	void appendParagraphs(BufferParams const & bp, Paragraph *);
+ 
 	///
 	void addPreview(grfx::PreviewLoader &) const;
 

@@ -87,6 +87,8 @@ lyx_SOURCES = \
 	ToolbarDefaults.C \
 	ToolbarDefaults.h \
 	WordLangTuple.h \
+	author.C \
+	author.h \
 	boost.C \
 	boost-inst.C \
 	box.h \
@@ -100,6 +102,8 @@ lyx_SOURCES = \
 	bufferparams.h \
 	bufferview_funcs.C \
 	bufferview_funcs.h \
+	changes.C \
+	changes.h \
 	chset.C \
 	chset.h \
 	commandtags.h \

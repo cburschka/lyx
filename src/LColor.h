@@ -137,6 +137,12 @@ public:
 		added_space,
 		/// Appendix line color
 		appendixline,
+		/// changebar color
+		changebar,
+		/// strike-out color
+		strikeout,
+		/// added text color
+		newtext,
 		/// Top and bottom line color
 		topline,
 		/// Table line color

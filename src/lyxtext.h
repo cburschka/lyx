@@ -281,6 +281,12 @@ public:
 	/// returns the inset at cursor (if it exists), 0 otherwise
 	Inset * getInset() const;
 
+	/// accept selected change
+	void acceptChange(BufferView * bv);
+
+	/// reject selected change 
+	void rejectChange(BufferView * bv);
+ 
 	/** 'selects" the next word, where the cursor is not in
 	 and returns this word as string. THe cursor will be moved
 	 to the beginning of this word.
@@ -408,10 +414,11 @@ public:
 
 	/* these things are for search and replace */
 
-	/** sets the selection over the number of characters of string,
-	  no check!!
-	  */
-	void setSelectionOverString(BufferView *, string const & str);
+	/**
+	 * Sets the selection from the current cursor position to length
+	 * characters to the right. No safety checks.
+	 */
+	void setSelectionRange(BufferView *, lyx::pos_type length);
 
 	/** simple replacing. The font of the first selected character
 	  is used
@@ -574,6 +581,9 @@ private:
 	/// paint the selection background
 	void paintRowSelection(DrawRowParams & p);
 
+	/// paint change bar
+	void paintChangeBar(DrawRowParams & p);
+ 
 	/// paint appendix marker
 	void paintRowAppendix(DrawRowParams & p);
 

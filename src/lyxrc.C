@@ -1,12 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxrc.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
- *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 
@@ -27,6 +25,8 @@
 #include "intl.h"
 #include "support/path.h"
 #include "support/filetools.h"
+#include "support/LAssert.h"
+#include "support/userinfo.h"
 #include "converter.h"
 #include "gettext.h"
 #include "lyxlex.h"
@@ -148,6 +148,8 @@ keyword_item lyxrcTags[] = {
 	{ "\\use_pspell", LyXRC::RC_USE_PSPELL },
 #endif
 	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
+	{ "\\user_email", LyXRC::RC_USER_EMAIL },
+	{ "\\user_name", LyXRC::RC_USER_NAME },
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
 	{ "\\viewer" ,LyXRC::RC_VIEWER},
 	{ "\\wheel_jump", LyXRC::RC_WHEEL_JUMP }
@@ -264,6 +266,13 @@ void LyXRC::setDefaults() {
 	// should be moved from the LyXRC class).
 	use_gui = true;
 	pdf_mode = false;
+ 
+	user_name = lyx::user_name();
+	
+	user_email = lyx::user_email();
+
+	if (user_email.empty())
+		user_email = _("email address unknown");
 }
 
 
@@ -1094,6 +1103,16 @@ int LyXRC::read(string const & filename)
 			}
 			break;
 
+		case RC_USER_NAME:
+			if (lexrc.next())
+				user_name = lexrc.getString();
+			break;
+
+		case RC_USER_EMAIL:
+			if (lexrc.next())
+				user_email = lexrc.getString();
+			break;
+ 
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1260,6 +1279,12 @@ void LyXRC::output(ostream & os) const
 			os << "\\label_init_length " << label_init_length
 			   << '\n';
 		}
+
+	case RC_USER_NAME:
+		os << "\\user_name \"" << user_name << "\"\n";
+
+	case RC_USER_EMAIL:
+		os << "\\user_email " << user_email << "\n";
 
 	case RC_SHOW_BANNER:
 		if (show_banner != system_lyxrc.show_banner) {
@@ -1798,6 +1823,7 @@ void LyXRC::output(ostream & os) const
 			if (!converters.getConverter(cit->from, cit->to))
 				os << "\\converter \"" << cit->from
 				   << "\" \"" << cit->to << "\" \"\" \"\"\n";
+
 	}
 	os.flush();
 }

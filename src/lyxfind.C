@@ -16,8 +16,10 @@
 #include "debug.h"
 #include "gettext.h"
 #include "insets/insettext.h"
+#include "changes.h"
 
 using lyx::pos_type;
+using std::endl;
 
 namespace lyxfind {
 
@@ -97,7 +99,7 @@ int LyXReplace(BufferView * bv,
 			bv->update(text, BufferView::SELECT|BufferView::FITCUR);
 			bv->toggleSelection(false);
 			text->replaceSelectionWithString(bv, replacestr);
-			text->setSelectionOverString(bv, replacestr);
+			text->setSelectionRange(bv, replacestr.length());
 			bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			++replace_count;
 		}
@@ -156,7 +158,7 @@ bool LyXFind(BufferView * bv,
 	if (result == SR_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->setSelectionOverString(bv, searchstr);
+		text->setSelectionRange(bv, searchstr.length());
 		bv->toggleSelection(false);
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
 	} else if (result == SR_NOT_FOUND) {
@@ -312,4 +314,128 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 	}
 }
 
+ 
+SearchResult nextChange(BufferView * bv, LyXText * text, pos_type & length)
+{
+	Paragraph * par = text->cursor.par();
+	pos_type pos = text->cursor.pos();
+	Paragraph * prev_par = par;
+	UpdatableInset * inset;
+
+	while (par) {
+		if ((!par->size() || pos != par->size())
+			&& par->lookupChange(pos) != Change::UNCHANGED)
+			break;
+
+		if (par->isInset(pos) &&
+			(inset = (UpdatableInset *)par->getInset(pos)) &&
+			(inset->isTextInset())) {
+			if (inset->nextChange(bv, length))
+				return SR_FOUND_NOUPDATE;
+		}
+
+		++pos;
+
+		if (pos >= par->size()) {
+			prev_par = par;
+			par = par->next();
+			pos = 0;
+		}
+	}
+
+	if (par) {
+		text->setCursor(bv, par, pos);
+		Change orig_change = par->lookupChangeFull(pos);
+		pos_type end = pos;
+
+		for (; end != par->size(); ++end) {
+			Change change = par->lookupChangeFull(end);
+			if (change != orig_change) {
+				// slight UI optimisation: for replacements, we get
+				// text like : _old_new. Consider that as one change.
+				if (!(orig_change.type == Change::DELETED &&
+					change.type == Change::INSERTED))
+					break;
+			}
+		}
+		length = end - pos;
+		return SR_FOUND;
+	} else {
+		// make sure we end up at the end of the text,
+		// not the start point of the last search
+		text->setCursor(bv, prev_par, prev_par->size());
+		return SR_NOT_FOUND;
+	}
+}
+ 
+ 
+SearchResult findNextChange(BufferView * bv, LyXText * text, pos_type & length)
+{
+	if (text->selection.set())
+		text->cursor = text->selection.end;
+
+	bv->toggleSelection();
+	text->clearSelection();
+
+	return nextChange(bv, text, length);
+}
+
+
+bool findNextChange(BufferView * bv)
+{
+	if (!bv->available())
+		return false;
+
+	bv->hideCursor();
+	bv->update(bv->getLyXText(), BufferView::SELECT | BufferView::FITCUR);
+
+	pos_type length;
+ 
+	if (bv->theLockingInset()) {
+		bool found = bv->theLockingInset()->nextChange(bv, length);
+ 
+		// We found the stuff inside the inset so we don't have to
+		// do anything as the inset did all the update for us!
+		if (found)
+			return true;
+ 
+		// We now are in the main text but if we did a forward
+		// search we have to put the cursor behind the inset.
+		bv->text->cursorRight(bv, true);
+	}
+	// If we arrive here we are in the main text again so we
+	// just start searching from the root LyXText at the position
+	// we are!
+	LyXText * text = bv->text;
+
+	if (text->selection.set())
+		text->cursor = text->selection.end;
+
+	bv->toggleSelection();
+	text->clearSelection();
+	
+	SearchResult result = nextChange(bv, text, length);
+
+	lyxerr << "Result is " << result << endl;
+ 
+	bool found = true;
+ 
+	// If we found the cursor inside an inset we will get back
+	// SR_FOUND_NOUPDATE and we don't have to do anything as the
+	// inset did it already.
+	if (result == SR_FOUND) {
+		bv->unlockInset(bv->theLockingInset());
+		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+		text->setSelectionRange(bv, length);
+		bv->toggleSelection(false);
+		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+	} else if (result == SR_NOT_FOUND) {
+		bv->unlockInset(bv->theLockingInset());
+		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+		found = false;
+	}
+
+	return found;
+}
+ 
 } // end lyxfind namespace

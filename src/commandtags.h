@@ -290,6 +290,12 @@ enum kb_action {
 	LFUN_MOUSE_TRIPLE,             // André 9 Aug 2002
 	LFUN_EDIT,                      // André 16 Aug 2002
 	LFUN_INSET_WRAP,                // Dekel 7 Apr 2002
+	LFUN_TRACK_CHANGES,             // Levon 20021001 (cool date !)
+	LFUN_MERGE_CHANGES,             // Levon 20021016
+	LFUN_ACCEPT_CHANGE,             // Levon 20021016
+	LFUN_REJECT_CHANGE,             // Levon 20021016
+	LFUN_ACCEPT_ALL_CHANGES,        // Levon 20021016
+	LFUN_REJECT_ALL_CHANGES,        // Levon 20021016
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

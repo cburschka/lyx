@@ -37,6 +37,12 @@ void Dialogs::showBibtex(InsetCommand * ic)
 }
 
 
+void Dialogs::showMergeChanges()
+{
+	pimpl_->changes.controller().show();
+}
+
+ 
 void Dialogs::showCharacter()
 {
 	pimpl_->character.controller().show();

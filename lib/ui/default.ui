@@ -80,6 +80,7 @@ Menuset
 	Item "Check TeX|h" "buffer-chktex"
 	Item "Remove All Error Boxes|E" "error-remove-all"
 	Item "Open/Close float|l" "inset-toggle"
+	Submenu "Change tracking|h" "edit_change"
 	Separator
 	Item "Preferences...|P" "dialog-preferences"
 	Item "Reconfigure|R" "reconfigure"
@@ -292,6 +293,12 @@ Menuset
 	Item "ASCII as Paragraphs...|P" "file-insert-ascii-para"
     End
 
+    Menu "edit_change"
+	Item "Track changes|T" "track-changes"
+	Item "Merge changes ...|M" "merge-changes"
+	Item "Accept all changes|A" "accept-all-changes"
+	Item "Reject all changes|R" "reject-all-changes"
+    End
 #
 # LAYOUT MENU
 #

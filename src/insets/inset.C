@@ -361,6 +361,14 @@ UpdatableInset::selectNextWordToSpellcheck(BufferView *bv, float & value) const
 }
 
 
+bool UpdatableInset::nextChange(BufferView * bv, lyx::pos_type &)
+{
+	// we have to unlock ourself in this function by default!
+	bv->unlockInset(const_cast<UpdatableInset *>(this));
+	return false;
+}
+
+ 
 bool UpdatableInset::searchForward(BufferView * bv, string const &,
 				   bool, bool)
 {

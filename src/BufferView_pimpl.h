@@ -23,6 +23,7 @@
 #pragma interface
 #endif
 
+class Change;
 class LyXView;
 class WorkArea;
 class LyXScreen;
@@ -74,6 +75,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void cursorToggle();
 	///
 	bool available() const;
+	/// get the change at the cursor position
+	Change const getCurrentChange();
 	///
 	void beforeChange(LyXText *);
 	///
@@ -103,6 +106,9 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	bool dispatch(FuncRequest const & ev);
 private:
+	/// track changes for the document
+	void trackChanges();
+
 	///
 	friend class BufferView;
 

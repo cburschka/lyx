@@ -63,6 +63,7 @@ class LyXLex;
 class Painter;
 class BufferView;
 class Buffer;
+class BufferParams;
 class Paragraph;
 
 class InsetTabular : public UpdatableInset {
@@ -208,7 +209,7 @@ public:
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
-	bool allowSpellcheck() { return true; }
+	bool allowSpellcheck() const { return true; }
 	///
 	WordLangTuple const
 	selectNextWordToSpellcheck(BufferView *, float & value) const;
@@ -216,6 +217,11 @@ public:
 	void selectSelectedWord(BufferView *);
 	///
 	void toggleSelection(BufferView *, bool kill_selection);
+
+	void markErased();
+
+	/// find next change
+	bool nextChange(BufferView *, lyx::pos_type & length);
 	///
 	bool searchForward(BufferView *, string const &,
 			   bool = true, bool = false);
@@ -316,7 +322,7 @@ private:
 	///
 	bool pasteSelection(BufferView *);
 	///
-	bool cutSelection();
+	bool cutSelection(BufferParams const & bp);
 	///
 	bool isRightToLeft(BufferView *);
 	///

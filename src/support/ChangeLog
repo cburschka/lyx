@@ -1,3 +1,13 @@
+2003-02-08  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* lyxtime.h:
+	* lyxtime.C: add typedef for time_t, add current_time
+
+	* Makefile.am:
+	* userinfo.h:
+	* userinfo.C: add
+
 2002-12-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* filetools.C (getExtFromContents): remove detection of epsi

@@ -214,6 +214,8 @@ public:
 	bool use_natbib;
 	///
 	bool use_numerical_citations;
+	/// revision tracking for this buffer ?
+	bool tracking_changes;
 	/// Time ago we agreed that this was a buffer property [ale990407]
 	string parentname;
 private:

@@ -25,6 +25,8 @@
 #include "language.h"
 #include "gettext.h"
 #include "ParagraphParameters.h"
+#include "author.h"
+#include "changes.h"
 
 #include "frontends/Alert.h"
 
@@ -148,12 +150,30 @@ string const currentState(BufferView * bv)
 	ostringstream state;
 
 	if (!bv->available())
-		return "";
+		return string();
 
-	// I think we should only show changes from the default
-	// font. (Asger)
 	LyXText * text = bv->getLyXText();
 	Buffer * buffer = bv->buffer();
+	LyXCursor const & c(text->cursor);
+
+	bool const show_change = buffer->params.tracking_changes
+		&& c.pos() != c.par()->size()
+		&& c.par()->lookupChange(c.pos()) != Change::UNCHANGED;
+
+	if (show_change) {
+		Change change(c.par()->lookupChangeFull(c.pos()));
+		Author const & a(bv->buffer()->authors().get(change.author));
+		state << _("Change: ") << a.name();
+		if (!a.email().empty()) {
+			state << " (" << a.email() << ")";
+		}
+		if (change.changetime)
+			state << _(" at ") << ctime(&change.changetime);
+		state << " : ";
+	}
+ 
+	// I think we should only show changes from the default
+	// font. (Asger)
 	LyXFont font = text->real_current_font;
 	LyXFont const & defaultfont =
 		buffer->params.getLyXTextClass().defaultfont();

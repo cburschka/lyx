@@ -351,6 +351,10 @@ int InsetERT::latex(Buffer const *, ostream & os, bool /*fragile*/,
 	while (par) {
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
+			// ignore all struck out text
+			if (isDeletedText(par, i))
+				continue;
+ 
 			Paragraph::value_type c = par->getChar(i);
 			switch (c) {
 			case Paragraph::META_NEWLINE:

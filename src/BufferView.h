@@ -21,6 +21,7 @@
 
 #include <boost/utility.hpp>
 
+class Change;
 class LyXView;
 class LyXText;
 class TeXErrors;
@@ -107,6 +108,9 @@ public:
 	void restorePosition(unsigned int i);
 	/// does the given bookmark have a saved position ?
 	bool isSavedPosition(unsigned int i);
+ 
+	/// return the current change at the cursor
+	Change const getCurrentChange();
 
 	/**
 	 * This holds the mapping between buffer paragraphs and screen rows.

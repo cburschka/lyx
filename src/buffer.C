@@ -45,6 +45,7 @@
 #include "lyxtextclasslist.h"
 #include "sgml.h"
 #include "paragraph_funcs.h"
+#include "author.h"
 
 #include "frontends/LyXView.h"
 
@@ -97,6 +98,7 @@
 #include "support/FileInfo.h"
 #include "support/lyxmanip.h"
 #include "support/lyxalgo.h" // for lyx::count
+#include "support/lyxtime.h"
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
@@ -148,7 +150,7 @@ extern BufferList bufferlist;
 
 namespace {
 
-const int LYX_FORMAT = 221;
+const int LYX_FORMAT = 222;
 
 } // namespace anon
 
@@ -165,6 +167,9 @@ Buffer::Buffer(string const & file, bool ronly)
 	} else {
 		tmppath.erase();
 	}
+
+	// set initial author
+	authorlist.record(Author(lyxrc.user_name, lyxrc.user_email)); 
 }
 
 
@@ -245,6 +250,12 @@ void Buffer::setReadonly(bool flag)
 }
 
 
+AuthorList & Buffer::authors()
+{
+	return authorlist;
+}
+
+
 /// Update window titles of all users
 // Should work on a list
 void Buffer::updateTitles() const
@@ -282,6 +293,7 @@ string last_inset_read;
 #endif
 int unknown_layouts;
 int unknown_tokens;
+vector<int> author_ids;
 
 } // anon
 
@@ -298,6 +310,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 {
 	unknown_layouts = 0;
 	unknown_tokens = 0;
+	author_ids.clear();
 
 	int pos = 0;
 	Paragraph::depth_type depth = 0;
@@ -390,6 +403,13 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 }
 
 
+namespace {
+	// This stuff is, in the traditional LyX terminology, Super UGLY
+	// but this code is too b0rken to admit of a better solution yet
+	Change current_change;
+};
+ 
+
 bool
 Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				   Paragraph *& first_par,
@@ -408,7 +428,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	if (token[0] != '\\') {
 		for (string::const_iterator cit = token.begin();
 		     cit != token.end(); ++cit) {
-			par->insertChar(pos, (*cit), font);
+			par->insertChar(pos, (*cit), font, current_change);
 			++pos;
 		}
 	} else if (token == "\\layout") {
@@ -498,6 +518,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			else {
 				par = new Paragraph(par);
 				par->layout(params.getLyXTextClass().defaultLayout());
+				if (params.tracking_changes)
+					par->trackChanges();
 			}
 			pos = 0;
 			par->layout(params.getLyXTextClass()[layoutname]);
@@ -576,9 +598,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				lex.next();
 				string const next_token = lex.getString();
 				if (next_token == "\\-") {
-					par->insertChar(pos, '-', font);
+					par->insertChar(pos, '-', font, current_change);
 				} else if (next_token == "~") {
-					par->insertChar(pos, ' ', font);
+					par->insertChar(pos, ' ', font, current_change);
 				} else {
 					lex.printError("Token `$$Token' "
 						       "is in free space "
@@ -589,16 +611,16 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		} else {
 			Inset * inset = new InsetSpecialChar;
 			inset->read(this, lex);
-			par->insertInset(pos, inset, font);
+			par->insertInset(pos, inset, font, current_change);
 		}
 		++pos;
 	} else if (token == "\\i") {
 		Inset * inset = new InsetLatexAccent;
 		inset->read(this, lex);
-		par->insertInset(pos, inset, font);
+		par->insertInset(pos, inset, font, current_change);
 		++pos;
 	} else if (token == "\\backslash") {
-		par->insertChar(pos, '\\', font);
+		par->insertChar(pos, '\\', font, current_change);
 		++pos;
 	} else if (token == "\\begin_deeper") {
 		++depth;
@@ -756,6 +778,21 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\use_numerical_citations") {
 		lex.nextToken();
 		params.use_numerical_citations = lex.getInteger();
+	} else if (token == "\\tracking_changes") {
+		lex.nextToken();
+		params.tracking_changes = lex.getInteger();
+		// mark the first paragraph
+		if (params.tracking_changes)
+			par->trackChanges();
+	} else if (token == "\\author") {
+		lex.nextToken();
+		istringstream ss(lex.getString());
+		Author a;
+		ss >> a;
+		int aid(authorlist.record(a)); 
+		lyxerr << "aid is " << aid << endl;
+		lyxerr << "listed aid is " << author_ids.size() << endl;
+		author_ids.push_back(authorlist.record(a));
 	} else if (token == "\\paperorientation") {
 		int tmpret = lex.findToken(string_orientation);
 		if (tmpret == -1)
@@ -929,16 +966,37 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->params().labelWidthString(lex.getString());
 		// do not delete this token, it is still needed!
 	} else if (token == "\\newline") {
-		par->insertChar(pos, Paragraph::META_NEWLINE, font);
+		par->insertChar(pos, Paragraph::META_NEWLINE, font, current_change);
 		++pos;
 	} else if (token == "\\LyXTable") {
 		Inset * inset = new InsetTabular(*this);
 		inset->read(this, lex);
-		par->insertInset(pos, inset, font);
+		par->insertInset(pos, inset, font, current_change);
 		++pos;
 	} else if (token == "\\hfill") {
-		par->insertChar(pos, Paragraph::META_HFILL, font);
+		par->insertChar(pos, Paragraph::META_HFILL, font, current_change);
 		++pos;
+	} else if (token == "\\change_unchanged") {
+		// Hack ! Needed for empty paragraphs :/
+		if (!pos)
+			par->cleanChanges();
+		current_change = Change(Change::UNCHANGED);
+	} else if (token == "\\change_inserted") {
+		lex.nextToken();
+		istringstream istr(lex.getString());
+		int aid;
+		lyx::time_type ct;
+		istr >> aid;
+		istr >> ct;
+		current_change = Change(Change::INSERTED, author_ids[aid], ct);
+	} else if (token == "\\change_deleted") {
+		lex.nextToken();
+		istringstream istr(lex.getString());
+		int aid;
+		lyx::time_type ct;
+		istr >> aid;
+		istr >> ct;
+		current_change = Change(Change::DELETED, author_ids[aid], ct);
 	} else if (token == "\\bibitem") {  // ale970302
 		if (!par->bibkey) {
 			InsetCommandParams p("bibitem", "dummy");
@@ -1005,13 +1063,13 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 		} else if (*cit == '\t') {
 			if (!layout->free_spacing && !par->isFreeSpacing()) {
 				// tabs are like spaces here
-				par->insertChar(pos, ' ', font);
+				par->insertChar(pos, ' ', font, current_change);
 				++pos;
 				space_inserted = true;
 			} else {
 				const pos_type nb = 8 - pos % 8;
 				for (pos_type a = 0; a < nb ; ++a) {
-					par->insertChar(pos, ' ', font);
+					par->insertChar(pos, ' ', font, current_change);
 					++pos;
 				}
 				space_inserted = true;
@@ -1155,7 +1213,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 	}
 
 	if (inset) {
-		par->insertInset(pos, inset, font);
+		par->insertInset(pos, inset, font, current_change);
 		++pos;
 	}
 }
@@ -1356,6 +1414,15 @@ bool Buffer::writeFile(string const & fname) const
 	// now write out the buffer paramters.
 	params.writeFile(ofs);
 
+	// if we're tracking, list all possible authors
+	if (params.tracking_changes) {
+		AuthorList::Authors::const_iterator it = authorlist.begin();
+		AuthorList::Authors::const_iterator end = authorlist.end();
+		for (; it != end; ++it) {
+			ofs << "\\author " << it->second << "\n";
+		}
+	}
+ 
 	Paragraph::depth_type depth = 0;
 
 	// this will write out all the paragraphs
@@ -2095,6 +2162,15 @@ void Buffer::makeLaTeXFile(ostream & os,
 		}
 
 		preamble += "\\makeatother\n";
+
+		// dvipost settings come after everything else
+		if (params.tracking_changes) {
+			preamble += "\\dvipostlayout\n";
+			preamble += "\\dvipost{osstart color push Red}\n";
+			preamble += "\\dvipost{osend color pop}\n";
+			preamble += "\\dvipost{cbstart color push Blue}\n";
+			preamble += "\\dvipost{cbend color pop} \n";
+		}
 
 		os << preamble;
 
@@ -3113,6 +3189,11 @@ void Buffer::validate(LaTeXFeatures & features) const
 {
 	LyXTextClass const & tclass = params.getLyXTextClass();
 
+	if (params.tracking_changes) {
+		features.require("dvipost");
+		features.require("color");
+	}
+ 
 	// AMS Style is at document level
 	if (params.use_amsmath || tclass.provides(LyXTextClass::amsmath))
 		features.require("amsmath");

@@ -24,7 +24,7 @@ class LyXTextClass;
 ///
 class CutAndPaste {
 public:
-	///
+	/// realcut == false is we actually want a delete
 	static
 	bool cutSelection(Paragraph * startpar, Paragraph ** endpar,
 			  int start, int & end, char tc, bool doclear = false,

@@ -270,7 +270,9 @@ void LyXTabular::AppendRow(BufferParams const & bp, int cell)
 	cell_info = c_info;
 	++row;
 	for (int j = 0; j < columns_; ++j) {
-		cell_info[row][j].inset.clear();
+		cell_info[row][j].inset.clear(false);
+		if (bp.tracking_changes)
+			cell_info[row][j].inset.markNew(true);
 	}
 #endif
 	Reinit();
@@ -321,8 +323,9 @@ void LyXTabular::AppendColumn(BufferParams const & bp, int cell)
 	cell_info = c_info;
 	//++column;
 	for (int i = 0; i < rows_; ++i) {
-		//cell_info[i][column].inset.clear();
-		cell_info[i][column + 1].inset.clear();
+		cell_info[i][column + 1].inset.clear(false);
+		if (bp.tracking_changes)
+			cell_info[i][column + 1].inset.markNew(true);
 	}
 	Reinit();
 }
@@ -1555,7 +1558,7 @@ void LyXTabular::SetMultiColumn(Buffer const * buffer, int cell, int number)
 		cellinfo_of_cell(cell+i)->multicolumn = CELL_PART_OF_MULTICOLUMN;
 		cellinfo_of_cell(cell)->inset.appendParagraphs(buffer->params,
 			cellinfo_of_cell(cell+i)->inset.paragraph());
-		cellinfo_of_cell(cell+i)->inset.clear();
+		cellinfo_of_cell(cell+i)->inset.clear(false);
 	}
 #else
 	for (number--; number > 0; --number) {

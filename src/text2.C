@@ -1493,7 +1493,8 @@ void LyXText::cutSelection(BufferView * bview, bool doclear, bool realcut)
 
 	// cutSelection can invalidate the cursor so we need to set
 	// it anew. (Lgb)
-	cursor = selection.start;
+	// we prefer the end for when tracking changes
+	cursor = selection.end;
 
 	// need a valid cursor. (Lgb)
 	clearSelection();
@@ -1557,14 +1558,13 @@ void LyXText::pasteSelection(BufferView * bview)
 }
 
 
-// sets the selection over the number of characters of string, no check!!
-void LyXText::setSelectionOverString(BufferView * bview, string const & str)
+void LyXText::setSelectionRange(BufferView * bview, lyx::pos_type length)
 {
-	if (str.empty())
+	if (!length)
 		return;
 
 	selection.cursor = cursor;
-	for (string::size_type i = 0; i < str.length(); ++i)
+	while (length--)
 		cursorRight(bview);
 	setSelection(bview);
 }
@@ -1801,7 +1801,11 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 
 	pos_type last = rowLastPrintable(old_row);
 
-	if (pos > last + 1) {
+	// None of these should happen, but we're scaredy-cats
+	if (pos > par->size()) {
+		pos = 0;
+		cur.pos(0);
+	} else if (pos > last + 1) {
 		// This shouldn't happen.
 		pos = last + 1;
 		cur.pos(pos);

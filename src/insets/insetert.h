@@ -105,7 +105,7 @@ public:
 	///
 	void close(BufferView *) const;
 	///
-	bool allowSpellcheck() { return false; }
+	bool allowSpellcheck() const { return false; }
 
 	WordLangTuple const
 	selectNextWordToSpellcheck(BufferView *, float &) const;

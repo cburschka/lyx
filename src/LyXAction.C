@@ -413,6 +413,12 @@ void LyXAction::init()
 		{ LFUN_FORKS_KILL, "kill-forks",
 		  N_("Kill the forked process with this PID"), NoBuffer },
 		{ LFUN_TOOLTIPS_TOGGLE, "toggle-tooltips", "", NoBuffer },
+		{ LFUN_TRACK_CHANGES, "track-changes", N_("Begin tracking changes"), Noop },
+		{ LFUN_MERGE_CHANGES, "merge-changes", N_("Merge changes"), Noop },
+		{ LFUN_ACCEPT_CHANGE, "accept-change", N_("Accept selected change"), Noop },
+		{ LFUN_REJECT_CHANGE, "reject-change", N_("Reject selected change"), Noop },
+		{ LFUN_ACCEPT_ALL_CHANGES, "accept-all-changes", N_("Accept all changes"), Noop },
+		{ LFUN_REJECT_ALL_CHANGES, "reject-all-changes", N_("Reject all changes"), Noop }, 
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

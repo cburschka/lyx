@@ -28,6 +28,7 @@
 #include "encoding.h"
 #include "ParameterStruct.h"
 #include "gettext.h"
+#include "changes.h"
 
 #include "insets/insetbib.h"
 #include "insets/insetoptarg.h"
@@ -42,6 +43,7 @@
 #include <algorithm>
 #include <fstream>
 #include <csignal>
+#include <ctime>
 
 using std::ostream;
 using std::endl;
@@ -242,6 +244,9 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 
 	LyXFont font1(LyXFont::ALL_INHERIT, bparams.language);
 
+	Change running_change = Change(Change::UNCHANGED);
+	lyx::time_type const curtime(lyx::current_time());
+ 
 	int column = 0;
 	for (pos_type i = 0; i < size(); ++i) {
 		if (!i) {
@@ -249,6 +254,10 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 			column = 0;
 		}
 
+		Change change = pimpl_->lookupChangeFull(i);
+		Changes::lyxMarkChange(os, column, curtime, running_change, change);
+		running_change = change;
+ 
 		// Write font changes
 		LyXFont font2 = getFontSettings(bparams, i);
 		if (font2 != font1) {
@@ -312,6 +321,15 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 			break;
 		}
 	}
+
+	// to make reading work properly
+	if (!size()) {
+		running_change = pimpl_->lookupChange(0);
+		Changes::lyxMarkChange(os, column, curtime,
+			Change(Change::UNCHANGED), running_change);
+	}
+	Changes::lyxMarkChange(os, column, curtime,
+		running_change, Change(Change::UNCHANGED)); 
 }
 
 
@@ -389,6 +407,12 @@ void Paragraph::erase(pos_type pos)
 }
 
 
+bool Paragraph::erase(pos_type start, pos_type end)
+{
+	return pimpl_->erase(start, end);
+}
+
+ 
 bool Paragraph::checkInsertChar(LyXFont & font)
 {
 	if (pimpl_->inset_owner)
@@ -405,9 +429,9 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c)
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-			   LyXFont const & font)
+			   LyXFont const & font, Change change)
 {
-	pimpl_->insertChar(pos, c, font);
+	pimpl_->insertChar(pos, c, font, change);
 }
 
 
@@ -418,9 +442,9 @@ void Paragraph::insertInset(pos_type pos, Inset * inset)
 }
 
 
-void Paragraph::insertInset(pos_type pos, Inset * inset, LyXFont const & font)
+void Paragraph::insertInset(pos_type pos, Inset * inset, LyXFont const & font, Change change)
 {
-	pimpl_->insertInset(pos, inset, font);
+	pimpl_->insertInset(pos, inset, font, change);
 }
 
 
@@ -736,7 +760,7 @@ int Paragraph::stripLeadingSpaces()
 
 	int i = 0;
 	while (!empty() && (isNewline(0) || isLineSeparator(0))) {
-		erase(0);
+		pimpl_->eraseIntern(0);
 		++i;
 	}
 
@@ -1358,6 +1382,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	// Do we have an open font change?
 	bool open_font = false;
 
+	Change::Type running_change = Change::UNCHANGED;
+ 
 	texrow.start(this, 0);
 
 	// if the paragraph is empty, the loop will not be entered at all
@@ -1444,7 +1470,12 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			running_font = font;
 			open_font = true;
 		}
-
+ 
+		Change::Type change = pimpl_->lookupChange(i);
+ 
+		column += Changes::latexMarkChange(os, running_change, change);
+		running_change = change;
+ 
 		if (c == Paragraph::META_NEWLINE) {
 			// newlines are handled differently here than
 			// the default in SimpleTeXSpecialChars().
@@ -1474,10 +1505,14 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 						      os, texrow, moving_arg,
 						      font, running_font,
 						      basefont, open_font,
+						      running_change,
 						      *style, i, column, c);
 		}
 	}
 
+	column += Changes::latexMarkChange(os,
+			running_change, Change::UNCHANGED);
+ 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
 #ifdef FIXED_LANGUAGE_END_DETECTION
@@ -1808,6 +1843,68 @@ void Paragraph::setContentsFromPar(Paragraph * par)
 }
 
 
+void Paragraph::trackChanges(Change::Type type)
+{
+	pimpl_->trackChanges(type);
+}
+
+ 
+void Paragraph::untrackChanges()
+{
+	pimpl_->untrackChanges();
+}
+
+
+void Paragraph::cleanChanges()
+{
+	pimpl_->cleanChanges();
+}
+
+ 
+Change::Type Paragraph::lookupChange(lyx::pos_type pos) const
+{
+	lyx::Assert(!size() || pos < size());
+	return pimpl_->lookupChange(pos);
+}
+
+ 
+Change const Paragraph::lookupChangeFull(lyx::pos_type pos) const
+{
+	lyx::Assert(!size() || pos < size());
+	return pimpl_->lookupChangeFull(pos);
+}
+
+ 
+bool Paragraph::isChanged(pos_type start, pos_type end) const
+{
+	return pimpl_->isChanged(start, end);
+}
+
+
+bool Paragraph::isChangeEdited(pos_type start, pos_type end) const
+{
+	return pimpl_->isChangeEdited(start, end);
+}
+
+ 
+void Paragraph::markErased()
+{
+	pimpl_->markErased();
+}
+
+ 
+void Paragraph::acceptChange(pos_type start, pos_type end)
+{
+	return pimpl_->acceptChange(start, end);
+}
+
+ 
+void Paragraph::rejectChange(pos_type start, pos_type end)
+{
+	return pimpl_->rejectChange(start, end);
+}
+
+ 
 lyx::pos_type Paragraph::size() const
 {
 	return pimpl_->size();

@@ -462,6 +462,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		disable =  !view()->
 			isSavedPosition(strToUnsignedInt(ev.argument));
 		break;
+	case LFUN_MERGE_CHANGES:
+	case LFUN_ACCEPT_CHANGE:
+	case LFUN_REJECT_CHANGE:
+	case LFUN_ACCEPT_ALL_CHANGES:
+	case LFUN_REJECT_ALL_CHANGES:
+		disable = !buf->params.tracking_changes;
+		break;
 	case LFUN_INSET_TOGGLE: {
 		LyXText * lt = view()->getLyXText();
 		disable = !(isEditableInset(lt->getInset())
@@ -623,6 +630,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		// the other ones (is that a good idea?)
 		if (ev.argument == buf->fileName())
 			flag.setOnOff(true);
+		break;
+	case LFUN_TRACK_CHANGES:
+		flag.setOnOff(buf->params.tracking_changes);
 		break;
 	default:
 		break;

@@ -41,6 +41,7 @@ struct FD_preferences_inputs_misc;
 struct FD_preferences_interface;
 struct FD_preferences_language;
 struct FD_preferences_lnf_misc;
+struct FD_preferences_identity;
 struct FD_preferences_inner_tab;
 struct FD_preferences_outputs_misc;
 struct FD_preferences_paths;
@@ -336,6 +337,29 @@ private:
 	///
 	friend class LnFmisc;
 
+	class Identity {
+	public:
+		///
+		Identity(FormPreferences &  p);
+		///
+		FD_preferences_identity const * dialog();
+		///
+		void apply(LyXRC & rc) const;
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		void update(LyXRC const & rc);
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		boost::scoped_ptr<FD_preferences_identity> dialog_;
+	};
+	friend class Identity;
+ 
 	///
 	class OutputsMisc {
 	public:
@@ -484,6 +508,8 @@ private:
 	Language language_;
 	///
 	LnFmisc lnf_misc_;
+	///
+	Identity identity_;
 	///
 	OutputsMisc outputs_misc_;
 	///

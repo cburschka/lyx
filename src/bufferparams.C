@@ -54,6 +54,7 @@ BufferParams::BufferParams()
 	use_amsmath = false;
 	use_natbib = false;
 	use_numerical_citations = false;
+	tracking_changes = false;
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
@@ -178,6 +179,8 @@ void BufferParams::writeFile(ostream & os) const
 			}
 		}
 	}
+
+	os << "\\tracking_changes " << tracking_changes << "\n";
 }
 
 

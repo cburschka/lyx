@@ -11,6 +11,7 @@ SRCS =  form_aboutlyx.fd \
 	form_bibitem.fd \
 	form_bibtex.fd \
 	form_browser.fd \
+	form_changes.fd \
 	form_character.fd \
 	form_citation.fd \
 	form_document.fd \

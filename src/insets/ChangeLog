@@ -1,3 +1,20 @@
+2003-02-08  John Levon  <levon@movementarian.org>
+
+	* inset.h:
+	* inset.C:
+	* insetcollapsable.h:
+	* insetcollapsable.C:
+	* insettabular.h:
+	* insettabular.C:
+	* insettext.h:
+	* insettext.C:
+	  add nextChange(). Make allowSpellcheck() const. Add markErased().
+
+	* insetert.C: ignore deleted text
+
+	* insettabular.C: make sure to keep change  tracking working
+	  properly.
+
 2003-01-20  Michael Schmitt <michael.schmitt@teststep.org>
 
 	* insetert.C:

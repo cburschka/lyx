@@ -1,3 +1,18 @@
+2003-02-08  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* forms/Makefile.am:
+	* forms/form_changes.fd:
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h:
+	* FormChanges.h:
+	* FormChanges.C: add changes dialog
+
+	* FormPreferences.h:
+	* FormPreferences.C:
+	* forms/form_preferences.fd: add Identity prefs
+	
 2003-01-31  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* FormDocument.C:

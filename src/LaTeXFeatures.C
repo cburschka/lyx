@@ -174,10 +174,11 @@ char const * simplefeatures[] = {
 	"varioref",
 	"prettyref",
 	"float",
-	"wasy"
+	"wasy",
+	"dvipost"
 };
 
-const int nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
+int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
 
 }
 
@@ -210,10 +211,11 @@ string const LaTeXFeatures::getPackages() const
 	// color.sty
 	if (isRequired("color")) {
 		if (params.graphicsDriver == "default")
-			packages << "\\usepackage{color}\n";
+			packages << "\\usepackage[usenames]{color}\n";
 		else
 			packages << "\\usepackage["
 				 << params.graphicsDriver
+				 << ",usenames"
 				 << "]{color}\n";
 	}
 

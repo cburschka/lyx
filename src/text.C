@@ -50,7 +50,12 @@ using lyx::pos_type;
 
 namespace {
 
+/// top, right, bottom pixel margin
 int const PAPER_MARGIN = 20;
+/// margin for changebar
+int const CHANGEBAR_MARGIN = 10;
+/// left margin
+int const LEFT_MARGIN = PAPER_MARGIN + CHANGEBAR_MARGIN;
 
 } // namespace anon
 
@@ -245,6 +250,9 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 // Returns the paragraph position of the last character in the specified row
 pos_type LyXText::rowLast(Row const * row) const
 {
+	if (!row->par()->size())
+		return 0;
+ 
 	if (!row->next() || row->next()->par() != row->par()) {
 		return row->par()->size() - 1;
 	} else {
@@ -260,8 +268,8 @@ pos_type LyXText::rowLastPrintable(Row const * row) const
 	Inset * ins;
 	// we have to consider a space on the last position in this case!
 	if (row->next() && row->par() == row->next()->par() &&
-	    row->next()->par()->getChar(last+1) == Paragraph::META_INSET &&
-	    (ins=row->next()->par()->getInset(last+1)) &&
+	    row->next()->par()->getChar(last + 1) == Paragraph::META_INSET &&
+	    (ins=row->next()->par()->getInset(last + 1)) &&
 	    (ins->needFullRow() || ins->display()))
 	{
 		ignore_the_space_on_the_last_position = false;
@@ -533,7 +541,7 @@ void LyXText::drawForeignMark(DrawRowParams & p, float const orig_x, LyXFont con
 	if (orig_font.language() == p.bv->buffer()->params.language)
 		return;
 
-	int const y = p.yo + p.row->height() - 1;
+	int const y = p.yo + p.row->baseline() + 1;
 	p.pain->line(int(orig_x), y, int(p.x), y, LColor::language);
 }
 
@@ -609,7 +617,7 @@ void LyXText::drawChars(DrawRowParams & p, pos_type & vpos,
 {
 	pos_type pos = vis2log(vpos);
 	pos_type const last = rowLastPrintable(p.row);
-	LyXFont const & orig_font = getFont(p.bv->buffer(), p.row->par(), pos);
+	LyXFont orig_font(getFont(p.bv->buffer(), p.row->par(), pos));
 
 	// first character
 	string str;
@@ -618,6 +626,10 @@ void LyXText::drawChars(DrawRowParams & p, pos_type & vpos,
 		unsigned char c = str[0];
 		str[0] = transformChar(c, p.row->par(), pos);
 	}
+ 
+	bool prev_struckout(isDeletedText(p.row->par(), pos));
+	bool prev_newtext(isInsertedText(p.row->par(), pos));
+ 
 	++vpos;
 
 	// collect as much similar chars as we can
@@ -627,6 +639,12 @@ void LyXText::drawChars(DrawRowParams & p, pos_type & vpos,
 		if (!IsPrintableNonspace(c))
 			break;
 
+		if (prev_struckout != isDeletedText(p.row->par(), pos))
+			break;
+ 
+		if (prev_newtext != isInsertedText(p.row->par(), pos))
+			break;
+ 
 		if (arabic && Encodings::IsComposeChar_arabic(c))
 			break;
 		if (hebrew && Encodings::IsComposeChar_hebrew(c))
@@ -639,6 +657,12 @@ void LyXText::drawChars(DrawRowParams & p, pos_type & vpos,
 			c = transformChar(c, p.row->par(), pos);
 		str += c;
 		++vpos;
+	}
+
+	if (prev_struckout) {
+		orig_font.setColor(LColor::strikeout);
+	} else if (prev_newtext) {
+		orig_font.setColor(LColor::newtext);
 	}
 
 	// Draw text and set the new x position
@@ -702,7 +726,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 	if ((row->par()->getChar(row->pos()) == Paragraph::META_INSET) &&
 		(ins=row->par()->getInset(row->pos())) &&
 		(ins->needFullRow() || ins->display()))
-		return PAPER_MARGIN;
+		return LEFT_MARGIN;
 
 	LyXTextClass const & tclass =
 		bview->buffer()->params.getLyXTextClass();
@@ -710,7 +734,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 
 	string parindent = layout->parindent;
 
-	int x = PAPER_MARGIN;
+	int x = LEFT_MARGIN;
 
 	x += font_metrics::signedWidth(tclass.leftmargin(), tclass.defaultfont());
 
@@ -1312,8 +1336,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 
 	LyXLayout_ptr const & layout = firstpar->layout();
 
-	// as max get the first character of this row then it can increes but not
-	// decrees the height. Just some point to start with so we don't have to
+	// as max get the first character of this row then it can increase but not
+	// decrease the height. Just some point to start with so we don't have to
 	// do the assignment below too often.
 	LyXFont font = getFont(bview->buffer(), par, row_ptr->pos());
 	LyXFont::FONT_SIZE const tmpsize = font.size();
@@ -1578,6 +1602,9 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	row_ptr->baseline(maxasc + labeladdon);
 
 	height += row_ptr->height();
+ 
+	row_ptr->top_of_text(row_ptr->baseline() - font_metrics::maxAscent(font));
+
 	float x = 0;
 	if (layout->margintype != MARGIN_RIGHT_ADDRESS_BOX) {
 		float dummy;
@@ -1722,6 +1749,11 @@ void LyXText::breakAgainOneRow(BufferView * bview, Row * row)
 
 void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 {
+	// allow only if at start or end, or all previous is new text
+	if (cursor.pos() && cursor.pos() != cursor.par()->size()
+		&& cursor.par()->isChangeEdited(0, cursor.pos()))
+		return;
+
 	LyXTextClass const & tclass =
 		bview->buffer()->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = cursor.par()->layout();
@@ -2386,6 +2418,48 @@ bool LyXText::selectWordWhenUnderCursor(BufferView * bview,
 }
 
 
+void LyXText::acceptChange(BufferView * bv)
+{
+	if (!selection.set() && cursor.par()->size())
+		return;
+
+	bv->hideCursor();
+ 
+	if (selection.start.par() == selection.end.par()) {
+		LyXCursor & startc = selection.start;
+		LyXCursor & endc = selection.end;
+		setUndo(bv, Undo::INSERT, startc.par(), startc.par()->next());
+		startc.par()->acceptChange(startc.pos(), endc.pos());
+		finishUndo();
+		clearSelection();
+		redoParagraphs(bv, startc, startc.par()->next());
+		setCursorIntern(bv, startc.par(), 0);
+	}
+#warning handle multi par selection
+}
+
+
+void LyXText::rejectChange(BufferView * bv)
+{
+	if (!selection.set() && cursor.par()->size())
+		return;
+ 
+	bv->hideCursor();
+ 
+	if (selection.start.par() == selection.end.par()) {
+		LyXCursor & startc = selection.start;
+		LyXCursor & endc = selection.end;
+		setUndo(bv, Undo::INSERT, startc.par(), startc.par()->next());
+		startc.par()->rejectChange(startc.pos(), endc.pos());
+		finishUndo();
+		clearSelection();
+		redoParagraphs(bv, startc, startc.par()->next());
+		setCursorIntern(bv, startc.par(), 0);
+	}
+#warning handle multi par selection
+}
+
+ 
 // This function is only used by the spellchecker for NextWord().
 // It doesn't handle LYX_ACCENTs and probably never will.
 WordLangTuple const
@@ -2419,24 +2493,32 @@ LyXText::selectNextWordToSpellcheck(BufferView * bview, float & value) const
 	}
 
 	// Now, skip until we have real text (will jump paragraphs)
-	while ((cursor.par()->size() > cursor.pos()
-	       && (!cursor.par()->isLetter(cursor.pos()))
-	       && (!cursor.par()->isInset(cursor.pos()) ||
-			   !cursor.par()->getInset(cursor.pos())->allowSpellcheck()))
-	       || (cursor.par()->size() == cursor.pos()
-		   && cursor.par()->next()))
-	{
-		if (cursor.pos() == cursor.par()->size()) {
-			cursor.par(cursor.par()->next());
-			cursor.pos(0);
-		} else
-			cursor.pos(cursor.pos() + 1);
-	}
+	while (1) {
+		Paragraph * cpar(cursor.par());
+		pos_type const cpos(cursor.pos());
+ 
+		if (cpos == cpar->size()) {
+			if (cpar->next()) {
+				cursor.par(cpar->next());
+				cursor.pos(0);
+				continue;
+			}
+			break;
+		}
 
+		bool const is_bad_inset(cpar->isInset(cpos)
+			&& !cpar->getInset(cpos)->allowSpellcheck()); 
+ 
+		if (cpar->isLetter(cpos) && !isDeletedText(cpar, cpos)
+			&& !is_bad_inset)
+			break;
+ 
+		cursor.pos(cpos + 1);
+	}
+ 
 	// now check if we hit an inset so it has to be a inset containing text!
 	if (cursor.pos() < cursor.par()->size() &&
-	    cursor.par()->isInset(cursor.pos()))
-	{
+	    cursor.par()->isInset(cursor.pos())) {
 		// lock the inset!
 		cursor.par()->getInset(cursor.pos())->edit(bview);
 		// now call us again to do the above trick
@@ -2459,7 +2541,8 @@ LyXText::selectNextWordToSpellcheck(BufferView * bview, float & value) const
 	// and find the end of the word (insets like optional hyphens
 	// and ligature break are part of a word)
 	while (cursor.pos() < cursor.par()->size()
-	       && (cursor.par()->isLetter(cursor.pos())))
+	       && cursor.par()->isLetter(cursor.pos())
+	       && !isDeletedText(cursor.par(), cursor.pos()))
 		cursor.pos(cursor.pos() + 1);
 
 	// Finally, we copy the word to a string and return it
@@ -2624,6 +2707,7 @@ void LyXText::changeRegionCase(BufferView * bview,
 				break;
 			}
 		}
+#warning changes
 		par->setChar(pos, c);
 		checkParagraph(bview, par, pos);
 
@@ -2646,24 +2730,32 @@ void LyXText::transposeChars(BufferView & bview)
 	pos_type tmppos = cursor.pos();
 
 	// First decide if it is possible to transpose at all
+ 
+	if (tmppos == 0 || tmppos == tmppar->size())
+		return;
 
-	// We are at the beginning of a paragraph.
-	if (tmppos == 0) return;
-
-	// We are at the end of a paragraph.
-	if (tmppos == tmppar->size() - 1) return;
+	if (isDeletedText(tmppar, tmppos - 1)
+		|| isDeletedText(tmppar, tmppos))
+		return;
 
 	unsigned char c1 = tmppar->getChar(tmppos);
 	unsigned char c2 = tmppar->getChar(tmppos - 1);
 
-	if (c1 != Paragraph::META_INSET
-	    && c2 != Paragraph::META_INSET) {
-		tmppar->setChar(tmppos, c2);
-		tmppar->setChar(tmppos - 1, c1);
-	}
 	// We should have an implementation that handles insets
 	// as well, but that will have to come later. (Lgb)
-	checkParagraph(const_cast<BufferView*>(&bview), tmppar, tmppos);
+	if (c1 == Paragraph::META_INSET || c2 == Paragraph::META_INSET) 
+		return;
+ 
+	bool const erased = tmppar->erase(tmppos - 1, tmppos + 1);
+	pos_type const ipos(erased ? tmppos - 1 : tmppos + 1);
+
+	tmppar->insertChar(ipos, c1);
+	tmppar->insertChar(ipos + 1, c2);
+
+	/* fugly */
+	BufferView * bv(const_cast<BufferView*>(&bview));
+ 
+	checkParagraph(bv, tmppar, tmppos);
 }
 
 
@@ -2717,6 +2809,10 @@ void LyXText::backspace(BufferView * bview)
 		// The cursor is at the beginning of a paragraph,
 		// so the the backspace will collapse two paragraphs into one.
 
+		// but it's not allowed unless it's new
+		if (cursor.par()->isChangeEdited(0, cursor.par()->size()))
+			return;
+ 
 		// we may paste some paragraphs
 
 		// is it an empty paragraph?
@@ -3188,6 +3284,23 @@ void LyXText::paintRowSelection(DrawRowParams & p)
 }
 
 
+void LyXText::paintChangeBar(DrawRowParams & p)
+{
+	pos_type const start = p.row->pos();
+	pos_type const end = rowLastPrintable(p.row);
+
+	if (!p.row->par()->isChanged(start, end)) 
+		return;
+ 
+	int const height = (p.row->next()
+		? p.row->height() + p.row->next()->top_of_text() 
+		: p.row->baseline());
+ 
+	p.pain->fillRectangle(4, p.yo, 5,
+		height, LColor::changebar); 
+}
+
+ 
 void LyXText::paintRowAppendix(DrawRowParams & p)
 {
 	// FIXME: can be just p.width ?
@@ -3216,7 +3329,10 @@ void LyXText::paintRowDepthBar(DrawRowParams & p)
 		next_depth = p.row->next()->par()->getDepth();
 
 	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
-		int const x = (PAPER_MARGIN / 5) * i + p.xo;
+		int x = (PAPER_MARGIN / 5) * i + p.xo;
+		// only consider the changebar space if we're drawing outer left
+		if (!p.xo)
+			x += CHANGEBAR_MARGIN;
 		int const h = p.yo + p.row->height() - 1 - (i - next_depth - 1) * 3;
 
 		p.pain->line(x, p.yo, x, h, LColor::depthbar);
@@ -3572,7 +3688,7 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		LyXFont const font = getLabelFont(buffer, par);
 		int const size = int(0.75 * font_metrics::maxAscent(font));
 		int const y = (p.yo + p.row->baseline()) - size;
-		int x = is_rtl ? PAPER_MARGIN : ww - PAPER_MARGIN - size;
+		int x = is_rtl ? LEFT_MARGIN : ww - PAPER_MARGIN - size;
 
 		if (p.row->fill() <= size)
 			x += (size - p.row->fill() + 1) * (is_rtl ? -1 : 1);
@@ -3622,16 +3738,42 @@ void LyXText::paintRowText(DrawRowParams & p)
 
 	LyXLayout_ptr const & layout = par->layout();
 
+	bool running_strikeout = false;
+	bool is_struckout = false;
+	float last_strikeout_x = 0.0;
+ 
 	pos_type vpos = p.row->pos();
 	while (vpos <= last) {
 		if (p.x > p.bv->workWidth())
 			break;
 		pos_type pos = vis2log(vpos);
+ 
 		if (p.x + singleWidth(p.bv, par, pos) < 0) {
 			p.x += singleWidth(p.bv, par, pos);
 			++vpos;
 			continue;
 		}
+ 
+		is_struckout = isDeletedText(par, pos);
+
+		if (is_struckout && !running_strikeout) {
+			running_strikeout = true;
+			last_strikeout_x = p.x;
+		}
+ 
+		bool const highly_editable_inset = par->isInset(pos)
+			&& isHighlyEditableInset(par->getInset(pos));
+
+		// if we reach the end of a struck out range, paint it
+		// we also don't paint across things like tables
+		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
+			int const middle = p.yo + p.row->top_of_text()
+				+ ((p.row->baseline() - p.row->top_of_text()) / 2);
+			p.pain->line(int(last_strikeout_x), middle, int(p.x), middle,
+				LColor::strikeout, Painter::line_solid, Painter::line_thin);
+			running_strikeout = false;
+		}
+ 
 		if (main_body > 0 && pos == main_body - 1) {
 			int const lwidth = font_metrics::width(layout->labelsep,
 				getLabelFont(buffer, par));
@@ -3681,6 +3823,15 @@ void LyXText::paintRowText(DrawRowParams & p)
 				break;
 		}
 	}
+ 
+	// if we reach the end of a struck out range, paint it
+	if (running_strikeout) {
+		int const middle = p.yo + p.row->top_of_text()
+			+ ((p.row->baseline() - p.row->top_of_text()) / 2);
+		p.pain->line(int(last_strikeout_x), middle, int(p.x), middle,
+			LColor::strikeout, Painter::line_solid, Painter::line_thin);
+		running_strikeout = false;
+	}
 }
 
 
@@ -3725,6 +3876,9 @@ void LyXText::getVisibleRow(BufferView * bv, int y_offset, int x_offset,
 	// environment depth brackets
 	paintRowDepthBar(p);
 
+	// changebar
+	paintChangeBar(p);
+ 
 	// draw any stuff wanted for a first row of a paragraph
 	if (!row->pos()) {
 		paintFirstRow(p);
@@ -3778,6 +3932,12 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 	     !row->par()->isLineSeparator(main_body - 1)))
 		main_body = 0;
 
+	// check for empty row
+	if (!row->par()->size()) {
+		x = int(tmpx);
+		return 0;
+	}
+ 
 	while (vc <= last && tmpx <= x) {
 		c = vis2log(vc);
 		last_tmpx = tmpx;
@@ -3822,9 +3982,7 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 		: false; // If lastrow is false, we don't need to compute
 			 // the value of rtl.
 
-	if (row->pos() > last)  // Row is empty?
-		c = row->pos();
-	else if (lastrow &&
+	if (lastrow &&
 		 ((rtl &&  left_side && vc == row->pos() && x < tmpx - 5) ||
 		   (!rtl && !left_side && vc == last + 1   && x > tmpx + 5)))
 		c = last + 1;

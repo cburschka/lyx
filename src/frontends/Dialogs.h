@@ -126,6 +126,8 @@ public:
 	void showLogFile();
 	/// display the top-level maths panel
 	void showMathPanel();
+	/// show the merge changes dialog
+	void showMergeChanges();
 	///
 	void showMinipage(InsetMinipage *);
 	///

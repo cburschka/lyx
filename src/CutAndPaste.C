@@ -14,7 +14,6 @@
 #endif
 
 #include "CutAndPaste.h"
-//#include "debug.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "paragraph.h"
@@ -26,11 +25,13 @@
 #include "lyxtextclasslist.h"
 #include "undo_funcs.h"
 #include "paragraph_funcs.h"
+#include "debug.h"
 
 #include "insets/inseterror.h"
 
 #include "BoostFormat.h"
 
+using std::endl;
 using std::pair;
 using lyx::pos_type;
 using lyx::textclass_type;
@@ -58,6 +59,7 @@ extern BufferView * current_view;
 
 namespace {
 
+// FIXME: stupid name 
 Paragraph * buf = 0;
 textclass_type textclass = 0;
 
@@ -90,81 +92,93 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 	if (!startpar || (start > startpar->size()))
 		return false;
 
-	if (realcut)
-		DeleteBuffer();
-
-	textclass = tc;
-
-	if (!(*endpar) || startpar == (*endpar)) {
-		// only within one paragraph
-		if (realcut) {
-			buf = new Paragraph;
-			buf->layout(startpar->layout());
-		}
-		pos_type i = start;
-		if (end > startpar->size())
-			end = startpar->size();
-		for (; i < end; ++i) {
-			if (realcut)
-				startpar->copyIntoMinibuffer(*current_view->buffer(),
-							     start);
-			startpar->erase(start);
-			if (realcut)
-				buf->insertFromMinibuffer(buf->size());
-		}
-		end = start - 1;
-	} else {
-		// more than one paragraph
-		breakParagraphConservative(current_view->buffer()->params,
-					   *endpar,
-					   end);
-		*endpar = (*endpar)->next();
-		end = 0;
-
-		breakParagraphConservative(current_view->buffer()->params,
-					   startpar,
-					   start);
-
-		// store the selection
-		if (realcut) {
-			buf = startpar->next();
-			buf->previous(0);
-		} else {
-			startpar->next()->previous(0);
-		}
-		(*endpar)->previous()->next(0);
-
-		// cut the selection
-		startpar->next(*endpar);
-
-		(*endpar)->previous(startpar);
-
-		// the cut selection should begin with standard layout
-		if (realcut) {
-			buf->params().clear();
-			buf->bibkey = 0;
-			buf->layout(current_view->buffer()->params.getLyXTextClass().defaultLayout());
-		}
-
-		// paste the paragraphs again, if possible
-		if (doclear)
-			startpar->next()->stripLeadingSpaces();
-		if (startpar->hasSameLayout(startpar->next()) ||
-		    startpar->next()->empty()) {
-			mergeParagraph(current_view->buffer()->params, startpar);
-			(*endpar) = startpar; // this because endpar gets deleted here!
-		}
-		// this paragraph's are of noone's owner!
-		Paragraph * p = buf;
-		while (p) {
-			p->setInsetOwner(0);
-			p = p->next();
-		}
+	if (realcut) {
+		copySelection(startpar, *endpar, start, end, tc);
 	}
+
+	if (!endpar || startpar == *endpar) {
+		if (startpar->erase(start, end)) {
+			// Some chars were erased, go to start to be safe
+			end = start;
+		}
+		return true;
+	}
+ 
+	bool actually_erased = false;
+ 
+	// clear end/begin fragments of the first/last par in selection
+	actually_erased |= (startpar)->erase(start, startpar->size());
+	if ((*endpar)->erase(0, end)) {
+		actually_erased = true; 
+		end = 0;
+	}
+ 
+	// Loop through the deleted pars if any, erasing as needed
+ 
+	Paragraph * pit = startpar->next();
+ 
+	while (1) {
+		// *endpar can be 0
+		if (!pit)
+			break;
+ 
+		Paragraph * next = pit->next();
+ 
+		// "erase" the contents of the par
+		if (pit != *endpar) {
+			actually_erased |= pit->erase(0, pit->size());
+
+			// remove the par if it's now empty
+			if (actually_erased) {
+				pit->previous()->next(pit->next());
+				if (next) {
+					next->previous(pit->previous());
+				}
+				lyxerr << "deleting pit " << pit << endl;
+	 
+				delete pit;
+			}
+		}
+ 
+		if (pit == *endpar)
+			break;
+ 
+		pit = next;
+	}
+
+#if 0 // FIXME: why for cut but not copy ? 
+	// the cut selection should begin with standard layout
+	if (realcut) {
+		buf->params().clear();
+		buf->bibkey = 0;
+		buf->layout(textclasslist[buffer->params.textclass].defaultLayoutName());
+	}
+#endif 
+
+	if (!startpar->next())
+		return true;
+ 
+	Buffer * buffer = current_view->buffer();
+
+	if (doclear) {
+		startpar->next()->stripLeadingSpaces();
+	}
+
+	if (!actually_erased)
+		return true;
+ 
+	// paste the paragraphs again, if possible
+	if (startpar->hasSameLayout(startpar->next()) ||
+	    startpar->next()->empty()) {
+		mergeParagraph(buffer->params, startpar);
+		// this because endpar gets deleted here!
+		(*endpar) = startpar;
+	}
+
 	return true;
 }
 
-
+ 
 bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 				int start, int end, char tc)
 {
@@ -192,6 +206,7 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 		Paragraph * tmppar = startpar;
 		buf = new Paragraph(*tmppar, false);
 		Paragraph * tmppar2 = buf;
+		tmppar2->cleanChanges();
 
 		while (tmppar != endpar
 		       && tmppar->next()) {
@@ -199,6 +214,8 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 			tmppar2->next(new Paragraph(*tmppar, false));
 			tmppar2->next()->previous(tmppar2);
 			tmppar2 = tmppar2->next();
+			// reset change info
+			tmppar2->cleanChanges();
 		}
 		tmppar2->next(0);
 
@@ -349,9 +366,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// if necessary
 		if (((*par)->size() > pos) || !(*par)->next()) {
 			breakParagraphConservative(
-				current_view->buffer()->params,
-				*par,
-				pos);
+				current_view->buffer()->params, *par, pos);
 			paste_the_end = true;
 		}
 		// set the end for redoing later
@@ -375,10 +390,10 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		if (lastbuffer->next() && paste_the_end) {
 			if (lastbuffer->next()->hasSameLayout(lastbuffer)) {
 				mergeParagraph(current_view->buffer()->params, lastbuffer);
-			} else if (lastbuffer->next()->empty()) {
+			} else if (!lastbuffer->next()->size()) {
 				lastbuffer->next()->makeSameLayout(lastbuffer);
 				mergeParagraph(current_view->buffer()->params, lastbuffer);
-			} else if (lastbuffer->empty()) {
+			} else if (!lastbuffer->size()) {
 				lastbuffer->makeSameLayout(lastbuffer->next());
 				mergeParagraph(current_view->buffer()->params, lastbuffer);
 			} else

@@ -1,3 +1,95 @@
+2003-02-08  John Levon  <levon@movementarian.org>
+
+	* lyxfind.C:
+	* lyxtext.h:
+	* text2.C:
+	* BufferView.C: change setSelectionOverString() to setSelectionRange()
+	  and pass the size in explicitly
+	
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C:
+	* BufferView.h:
+	* BufferView.C: add getCurrentChange()
+
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C: handle change lfuns
+
+	* CutAndPaste.C: merge the cut and copy code. Rework the cut code
+	  for changes. Mark pasted paragraphs as new.
+
+	* support/lyxtime.h:
+	* support/lyxtime.C:
+	* DepTable.C: abstract time_t as lyx::time_type
+
+	* LColor.h:
+	* LColor.C: add colours for new text, deleted text, changebars
+
+	* LaTeXFeatures.C: add dvipost as a simple feature. Make the color
+	  package use "usenames" option.
+
+	* commandtags.h:
+	* lyxfunc.C:
+	* LyXAction.C: add change lfuns
+
+	* Makefile.am:
+	* author.h:
+	* author.C: author handling
+
+	* buffer.h:
+	* buffer.C: add a per-buffer author list, with first entry as
+	  current author. Handle new .lyx tokens for change tracking. Output
+	  author list to .lyx file. Output dvipost stuff to .tex preamble.
+	  Bump lyx format to 222.
+
+	* bufferlist.h:
+	* bufferlist.C: add setCurrentAuthor() to reset current author details
+	  in all buffers.
+
+	* bufferparams.h:
+	* bufferparams.C: add param for tracking
+
+	* bufferview_funcs.C: output change info in minibuffer
+
+	* Makefile.am:
+	* changes.h:
+	* changes.C: add change-tracking structure
+
+	* debug.h:
+	* debug.C: add CHANGES debug flag
+
+	* lyxfind.h:
+	* lyxfind.C: add code for finding the next change piece
+
+	* lyxrc.h:
+	* lyxrc.C: add user_name and user_email
+
+	* lyxrow.h:
+	* lyxrow.C: add a metric for the top of the text line
+
+	* lyxtext.h:
+	* text.C: implement accept/rejectChange()
+
+	* lyxtext.h:
+	* text.C: paint changebars. Paint new/deleted text in the chosen colours.
+	  Strike through deleted text.
+
+	* paragraph.h:
+	* paragraph.C:
+	* paragraph_pimpl.h:
+	* paragraph_pimpl.C: output change markers in .lyx and .tex. Pass in the current change
+	  to the insert functions. Rework erase to mark text as deleted, adding
+	  an eraseIntern() and a range-based erase(). Implement
+	  per-paragraph change lookup and accept/reject.
+
+	* paragraph_funcs.C: Fixup paste for change tracking.
+
+	* tabular.C: mark added row/columns as new.
+
+	* text.C: fix rowLast() to never return -1. Don't allow spellchecking of deleted
+	  text. Track transpose changes. Don't allow paragraph break or merge where appropriate.
+
+	* text2.C: leave cursor at end of selection after a cut.
+
 2003-02-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* text.C (getLengthMarkerHeight): 

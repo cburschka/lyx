@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "paragraph_funcs.h"
+#include "paragraph_pimpl.h"
 #include "buffer.h"
 #include "ParagraphParameters.h"
 #include "lyxtextclasslist.h"
@@ -34,6 +35,9 @@ void breakParagraph(BufferParams const & bparams,
 	// remember to set the inset_owner
 	tmp->setInsetOwner(par->inInset());
 
+	if (bparams.tracking_changes)
+		tmp->trackChanges();
+ 
 	// this is an idea for a more userfriendly layout handling, I will
 	// see what the users say
 
@@ -73,13 +77,17 @@ void breakParagraph(BufferParams const & bparams,
 		pos_type pos_end = par->size() - 1;
 		pos_type i = pos;
 		pos_type j = pos;
+
 		for (; i <= pos_end; ++i) {
+			Change::Type change(par->lookupChange(i));
 			par->cutIntoMinibuffer(bparams, i);
-			if (tmp->insertFromMinibuffer(j - pos))
+			if (tmp->insertFromMinibuffer(j - pos)) {
+				tmp->pimpl_->setChange(j - pos, change);
 				++j;
+			}
 		}
 		for (i = pos_end; i >= pos; --i) {
-			par->erase(i);
+			par->pimpl_->eraseIntern(i);
 		}
 	}
 
@@ -101,6 +109,15 @@ void breakParagraph(BufferParams const & bparams,
 		par->layout(tmp->layout());
 		par->setLabelWidthString(tmp->params().labelWidthString());
 		par->params().depth(tmp->params().depth());
+	}
+
+	// subtle, but needed to get empty pars working right
+	if (bparams.tracking_changes) {
+		if (!par->size()) {
+			par->cleanChanges();
+		} else if (!tmp->size()) {
+			tmp->cleanChanges();
+		}
 	}
 }
 

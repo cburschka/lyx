@@ -569,3 +569,13 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 
 	return b;
 }
+
+
+void BufferList::setCurrentAuthor(string const & name, string const & email)
+{
+	BufferStorage::iterator it = bstore.begin();
+	BufferStorage::iterator end = bstore.end();
+	for (; it != end; ++it) {
+		(*it)->authors().record(0, Author(name, email));
+	}
+}

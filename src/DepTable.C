@@ -24,6 +24,7 @@
 #include "support/lyxlib.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/lyxtime.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -79,7 +80,7 @@ void DepTable::insert(string const & fi, bool upd)
 void DepTable::update()
 {
 	lyxerr[Debug::DEPEND] << "Updating DepTable..." << endl;
-	time_t start_time = time(0);
+	lyx::time_type const start_time = lyx::current_time();
 
 	DepList::iterator itr = deplist.begin();
 	while (itr != deplist.end()) {
@@ -114,7 +115,7 @@ void DepTable::update()
 		}
 		++itr;
 	}
-	time_t time_sec = time(0) - start_time;
+	lyx::time_type const time_sec = lyx::current_time() - start_time;
 	lyxerr[Debug::DEPEND] << "Finished updating DepTable ("
 		<< time_sec << " sec)." << endl;
 }

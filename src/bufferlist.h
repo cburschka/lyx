@@ -160,6 +160,10 @@ public:
 	Buffer * getBuffer(string const &);
 	/// returns a pointer to the buffer with the given number.
 	Buffer * getBuffer(unsigned int);
+
+	/// reset current author for all buffers
+	void setCurrentAuthor(string const & name, string const & email);
+
 private:
 	/// ask to save a buffer on quit
 	bool qwriteOne(Buffer * buf, string const & fname,

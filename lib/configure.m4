@@ -199,7 +199,7 @@ fi
 rm -f chklatex.ltx chklatex.log])dnl
 dnl
 # Search LaTeX2e
-SEARCH_PROG([for a LaTeX2e program],LATEX,latex latex2e,CHECKLATEX2E,dnl
+SEARCH_PROG([for a LaTeX2e program],LATEX,pplatex latex2e latex,CHECKLATEX2E,dnl
   [lyx_check_config=no])
 latex_to_dvi=$LATEX
 test -z "$latex_to_dvi" && latex_to_dvi="none"

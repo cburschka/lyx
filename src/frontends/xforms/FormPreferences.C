@@ -36,6 +36,7 @@
 #include "LColor.h"
 #include "Lsstream.h"
 #include "funcrequest.h"
+#include "author.h"
 
 #include "support/lyxfunctional.h"
 #include "support/lyxmanip.h"
@@ -97,8 +98,9 @@ FormPreferences::FormPreferences()
 	: base_class(_("Preferences"), false),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this),
-	  lnf_misc_(*this), outputs_misc_(*this), paths_(*this),
-	  printer_(*this), screen_fonts_(*this), spelloptions_(*this)
+	  lnf_misc_(*this), identity_(*this), outputs_misc_(*this),
+	  paths_(*this), printer_(*this), screen_fonts_(*this),
+	  spelloptions_(*this)
 {
 }
 
@@ -175,6 +177,7 @@ void FormPreferences::build()
 	interface_.build();
 	language_.build();
 	lnf_misc_.build();
+	identity_.build();
 	outputs_misc_.build();
 	paths_.build();
 	printer_.build();
@@ -212,6 +215,9 @@ void FormPreferences::build()
 	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
 			   _("Misc"),
 			   lnf_misc_.dialog()->form);
+	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
+			   _("Identity"),
+			   identity_.dialog()->form);
 
 	// then build converters
 	fl_addto_tabfolder(converters_tab_->tabfolder_inner,
@@ -277,6 +283,7 @@ void FormPreferences::apply()
 	interface_.apply(rc);
 	language_.apply(rc);
 	lnf_misc_.apply(rc);
+	identity_.apply(rc);
 	outputs_misc_.apply(rc);
 	paths_.apply(rc);
 	printer_.apply(rc);
@@ -371,6 +378,7 @@ void FormPreferences::update()
 	interface_.update(rc);
 	language_.update(rc);
 	lnf_misc_.update(rc);
+	identity_.update(rc);
 	outputs_misc_.update(rc);
 	paths_.update(rc);
 	printer_.update(rc);
@@ -1421,6 +1429,40 @@ bool FormPreferences::Formats::Input()
 
 	fl_unfreeze_form(dialog_->form);
 	return false;
+}
+
+
+FormPreferences::Identity::Identity(FormPreferences & p)
+	: parent_(p)
+{}
+
+
+FD_preferences_identity const * FormPreferences::Identity::dialog()
+{
+	return dialog_.get();
+}
+
+
+void FormPreferences::Identity::apply(LyXRC & rc) const
+{
+	rc.user_name = fl_get_input(dialog_->input_user_name);
+	rc.user_email = fl_get_input(dialog_->input_user_email);
+	parent_.controller().setCurrentAuthor();
+}
+
+
+void FormPreferences::Identity::build()
+{
+	dialog_.reset(build_preferences_identity(&parent_));
+	fl_set_input_return(dialog_->input_user_name, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_user_email, FL_RETURN_CHANGED);
+}
+
+
+void FormPreferences::Identity::update(LyXRC const & rc)
+{
+	fl_set_input(dialog_->input_user_name, rc.user_name.c_str());
+	fl_set_input(dialog_->input_user_email, rc.user_email.c_str());
 }
 
 

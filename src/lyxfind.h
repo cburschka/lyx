@@ -7,6 +7,7 @@
 #endif
 
 #include "LString.h"
+#include "support/types.h"
 
 class BufferView;
 class LyXText;
@@ -49,5 +50,13 @@ SearchResult LyXFind(BufferView *, LyXText * text,
 		     string const & searchstr, bool forward,
 		     bool casesens = true, bool matchwrd = false);
 
+/// find the next change in the buffer
+bool findNextChange(BufferView * bv);
+ 
+SearchResult findNextChange(BufferView * bv, LyXText * text, lyx::pos_type & length);
+ 
+SearchResult nextChange(BufferView * bv, LyXText * text, lyx::pos_type & length);
+ 
 } // end namespace LyXFind
-#endif
+ 
+#endif // LYXFIND_H

@@ -41,6 +41,8 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "funcrequest.h"
+#include "iterators.h"
+#include "lyxfind.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -624,6 +626,21 @@ bool BufferView::Pimpl::available() const
 }
 
 
+Change const BufferView::Pimpl::getCurrentChange()
+{
+	if (!bv_->buffer()->params.tracking_changes) 
+		return Change(Change::UNCHANGED);
+
+	LyXText * t(bv_->getLyXText());
+ 
+	if (!t->selection.set())
+		return Change(Change::UNCHANGED);
+ 
+	LyXCursor const & cur(t->selection.start);
+	return cur.par()->lookupChangeFull(cur.pos());
+}
+
+
 void BufferView::Pimpl::beforeChange(LyXText * text)
 {
 	toggleSelection();
@@ -912,6 +929,43 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 #endif
 		owner_->message(STRCONV(str.str()));
 	}
+}
+
+
+void BufferView::Pimpl::trackChanges()
+{
+	Buffer * buf(bv_->buffer());
+	bool const tracking(buf->params.tracking_changes);
+
+	if (!tracking) {
+		ParIterator const end = buf->par_iterator_end();
+		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it) {
+			(*it)->trackChanges();
+		}
+		buf->params.tracking_changes = true;
+
+		// we cannot allow undos beyond the freeze point
+		buf->undostack.clear();
+	} else {
+		bv_->update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
+		bv_->text->setCursor(bv_, &(*buf->paragraphs.begin()), 0);
+#warning changes FIXME 
+		//moveCursorUpdate(false);
+
+		bool found = lyxfind::findNextChange(bv_);
+		if (found) {
+			owner_->getDialogs().showMergeChanges();
+			return;
+		}
+
+		ParIterator const end = buf->par_iterator_end();
+		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it) {
+			(*it)->untrackChanges();
+		}
+		buf->params.tracking_changes = false;
+	}
+ 
+	buf->redostack.clear();
 }
 
 
@@ -1249,6 +1303,56 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 		break;
 
+	case LFUN_TRACK_CHANGES:
+		trackChanges();
+		break;
+ 
+	case LFUN_MERGE_CHANGES:
+		owner_->getDialogs().showMergeChanges();
+		break;
+ 
+	case LFUN_ACCEPT_ALL_CHANGES: {
+		bv_->update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
+		bv_->text->setCursor(bv_, &(*bv_->buffer()->paragraphs.begin()), 0);
+#warning FIXME changes 
+		//moveCursorUpdate(false);
+
+		while (lyxfind::findNextChange(bv_)) {
+			bv_->getLyXText()->acceptChange(bv_);
+		}
+		update(bv_->text,
+			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
+		break;
+	}
+ 
+	case LFUN_REJECT_ALL_CHANGES: {
+		bv_->update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
+		bv_->text->setCursor(bv_, &(*bv_->buffer()->paragraphs.begin()), 0);
+#warning FIXME changes 
+		//moveCursorUpdate(false);
+
+		while (lyxfind::findNextChange(bv_)) {
+			bv_->getLyXText()->rejectChange(bv_);
+		}
+		update(bv_->text,
+			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
+		break;
+	}
+ 
+	case LFUN_ACCEPT_CHANGE: {
+		bv_->getLyXText()->acceptChange(bv_);
+		update(bv_->text,
+			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
+		break;
+	}
+
+	case LFUN_REJECT_CHANGE: {
+		bv_->getLyXText()->rejectChange(bv_);
+		update(bv_->text,
+			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
+		break;
+	}
+ 
 	case LFUN_UNKNOWN_ACTION:
 		ev.errorMessage(N_("Unknown function!"));
 		break;

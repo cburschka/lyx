@@ -23,6 +23,7 @@
 #include "LString.h"
 #include "LColor.h"
 #include "frontends/mouse_state.h"
+#include "support/types.h"
 
 class LyXFont;
 class BufferView;
@@ -335,7 +336,7 @@ public:
 	///
 	// needed for spellchecking text
 	///
-	virtual bool allowSpellcheck() { return false; }
+	virtual bool allowSpellcheck() const { return false; }
 
 	// should this inset be handled like a normal charater
 	virtual bool isChar() const { return false; }
@@ -361,6 +362,9 @@ public:
 	   minipage somewhere, it will be the width of this minipage */
 	virtual int latexTextWidth(BufferView *) const;
 
+	/// mark the inset contents as erased (for change tracking)
+	virtual void markErased() {}
+ 
 	/** Adds a LaTeX snippet to the Preview Loader for transformation
 	 *  into a bitmap image. Does not start the laoding process.
 	 *
@@ -519,16 +523,20 @@ public:
 	///
 	// needed for spellchecking text
 	///
-	virtual bool allowSpellcheck() { return false; }
+	virtual bool allowSpellcheck() const { return false; }
 	///
 	virtual WordLangTuple const
 	selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///
-	virtual void selectSelectedWord(BufferView *) { return; }
+	virtual void selectSelectedWord(BufferView *) {}
 	///
 	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {
 		return;
 	}
+
+	/// find the next change in the inset
+	virtual bool nextChange(BufferView * bv, lyx::pos_type & length);
+ 
 	///
 	// needed for search/replace functionality
 	///

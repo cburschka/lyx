@@ -53,6 +53,10 @@ public:
 	///
 	unsigned short ascent_of_text() const;
 	///
+	void top_of_text(unsigned int top);
+	///
+	unsigned int top_of_text() const;
+	///
 	void baseline(unsigned int b);
 	///
 	unsigned int baseline() const;
@@ -76,8 +80,10 @@ private:
 	unsigned short height_;
 	///
 	unsigned int width_;
-	///
+	/// ascent from baseline including prelude space
 	unsigned short ascent_of_text_;
+	/// the top of the real text in the row
+	unsigned int top_of_text_;
 	///
 	unsigned int baseline_;
 	///

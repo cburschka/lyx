@@ -74,12 +74,16 @@ Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner, bool same_ids)
 		id_ = p.id_;
 	else
 		id_ = paragraph_id++;
+
+	if (p.tracking())
+		changes_.reset(new Changes(*p.changes_.get()));
 }
 
 
 void Paragraph::Pimpl::clear()
 {
 	text.clear();
+#warning changes ? 
 }
 
 
@@ -87,9 +91,169 @@ void Paragraph::Pimpl::setContentsFromPar(Paragraph const * par)
 {
 	lyx::Assert(par);
 	text = par->pimpl_->text;
+	if (par->pimpl_->tracking()) {
+		changes_.reset(new Changes(*(par->pimpl_->changes_.get())));
+	}
 }
 
 
+void Paragraph::Pimpl::trackChanges(Change::Type type)
+{
+	if (tracking()) {
+		lyxerr[Debug::CHANGES] << "already tracking for par " << id_ << endl;
+		return;
+	}
+ 
+	lyxerr[Debug::CHANGES] << "track changes for par "
+		<< id_ << " type " << type << endl;
+	changes_.reset(new Changes(type));
+	changes_->set(type, 0, size());
+}
+
+ 
+void Paragraph::Pimpl::untrackChanges()
+{
+	changes_.reset(0);
+}
+
+ 
+void Paragraph::Pimpl::cleanChanges()
+{
+	// if we're not tracking, we don't want to reset...
+	if (!tracking())
+		return;
+
+	changes_.reset(new Changes(Change::INSERTED));
+	changes_->set(Change::INSERTED, 0, size());
+}
+
+ 
+bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
+{
+	if (!tracking())
+		return false;
+
+	return changes_->isChange(start, end);
+}
+
+
+bool Paragraph::Pimpl::isChangeEdited(pos_type start, pos_type end) const
+{
+	if (!tracking())
+		return false;
+
+	return changes_->isChangeEdited(start, end);
+}
+
+ 
+void Paragraph::Pimpl::setChange(pos_type pos, Change::Type type)
+{
+	if (!tracking())
+		return;
+
+	changes_->set(type, pos);
+}
+
+ 
+Change::Type Paragraph::Pimpl::lookupChange(pos_type pos) const
+{
+	if (!tracking())
+		return Change::UNCHANGED;
+
+	return changes_->lookup(pos);
+}
+ 
+
+Change const Paragraph::Pimpl::lookupChangeFull(pos_type pos) const
+{
+	if (!tracking())
+		return Change(Change::UNCHANGED);
+
+	return changes_->lookupFull(pos);
+}
+ 
+ 
+void Paragraph::Pimpl::markErased()
+{
+	lyx::Assert(tracking());
+
+	// FIXME: we should actually remove INSERTED chars.
+	// difficult because owning insettexts/tabulars need
+	// to update themselves when rows etc. change
+	changes_->set(Change::DELETED, 0, size());
+	changes_->reset(Change::DELETED);
+}
+
+ 
+void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
+{
+	if (!tracking())
+		return;
+ 
+	if (!size()) {
+		changes_.reset(new Changes(Change::UNCHANGED));
+		return;
+	}
+ 
+	lyxerr << "acceptchange" << endl; 
+	pos_type i = start;
+
+	for (; i < end; ++i) {
+		switch (lookupChange(i)) {
+			case Change::UNCHANGED:
+				break;
+
+			case Change::INSERTED:
+				changes_->set(Change::UNCHANGED, i);
+				break;
+
+			case Change::DELETED:
+				eraseIntern(i);
+				changes_->erase(i);
+				--end;
+				--i;
+				break;
+		}
+	}
+
+	lyxerr << "endacceptchange" << endl; 
+	changes_->reset(Change::UNCHANGED);
+}
+
+
+void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
+{
+	if (!tracking())
+		return;
+ 
+	if (!size()) {
+		changes_.reset(new Changes(Change::UNCHANGED));
+		return;
+	}
+ 
+	pos_type i = start;
+
+	for (; i < end; ++i) {
+		switch (lookupChange(i)) {
+			case Change::UNCHANGED:
+				break;
+
+			case Change::INSERTED:
+				eraseIntern(i);
+				changes_->erase(i);
+				--end;
+				--i;
+				break;
+
+			case Change::DELETED:
+				changes_->set(Change::UNCHANGED, i);
+				break;
+		}
+	}
+	changes_->reset(Change::UNCHANGED);
+}
+
+ 
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
 	// This is in the critical path for loading!
@@ -109,14 +273,19 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 
 void Paragraph::Pimpl::setChar(pos_type pos, value_type c)
 {
+#warning changes
 	text[pos] = c;
 }
 
 
 void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
-				  LyXFont const & font)
+				  LyXFont const & font, Change change)
 {
 	lyx::Assert(pos <= size());
+
+	if (tracking()) {
+		changes_->record(change, pos);
+	}
 
 	// This is actually very common when parsing buffers (and
 	// maybe inserting ascii text)
@@ -147,12 +316,12 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 
 
 void Paragraph::Pimpl::insertInset(pos_type pos,
-				   Inset * inset, LyXFont const & font)
+				   Inset * inset, LyXFont const & font, Change change)
 {
 	lyx::Assert(inset);
 	lyx::Assert(pos <= size());
 
-	insertChar(pos, META_INSET, font);
+	insertChar(pos, META_INSET, font, change);
 	lyx::Assert(text[pos] == META_INSET);
 
 	// Add a new entry in the insetlist.
@@ -164,9 +333,31 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 }
 
 
-void Paragraph::Pimpl::erase(pos_type pos)
+bool Paragraph::Pimpl::erasePos(pos_type pos)
 {
 	lyx::Assert(pos < size());
+
+	if (tracking()) {
+		Change::Type changetype(changes_->lookup(pos));
+		changes_->record(Change(Change::DELETED), pos);
+
+		// only allow the actual removal if it was /new/ text
+		if (changetype != Change::INSERTED) {
+			if (text[pos] == Paragraph::META_INSET) { 
+				Inset * i(owner_->getInset(pos));
+				i->markErased();
+			}
+			return false;
+		}
+	}
+
+	eraseIntern(pos);
+	return true;
+}
+
+ 
+void Paragraph::Pimpl::eraseIntern(pos_type pos)
+{
 	// if it is an inset, delete the inset entry
 	if (text[pos] == Paragraph::META_INSET) {
 		owner_->insetlist.erase(pos);
@@ -209,6 +400,30 @@ void Paragraph::Pimpl::erase(pos_type pos)
 }
 
 
+void Paragraph::Pimpl::erase(pos_type pos)
+{
+	erasePos(pos);
+}
+
+ 
+bool Paragraph::Pimpl::erase(pos_type start, pos_type end)
+{
+	pos_type i = start;
+	pos_type count = end - start;
+	bool any_erased = false;
+
+	while (count) {
+		if (!erasePos(i)) {
+			++i;
+		} else {
+			any_erased = true;
+		} 
+		--count;
+	}
+	return any_erased;
+}
+
+ 
 void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 				       pos_type const i,
 				       unsigned int & column,
@@ -269,7 +484,7 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 	return true;
 }
 
-
+ 
 void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     BufferParams const & bparams,
 					     ostream & os,
@@ -279,6 +494,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     LyXFont & running_font,
 					     LyXFont & basefont,
 					     bool & open_font,
+					     Change::Type & running_change,
 					     LyXLayout const & style,
 					     pos_type & i,
 					     unsigned int & column,
@@ -294,17 +510,27 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 	switch (c) {
 	case Paragraph::META_INSET: {
 		Inset * inset = owner_->getInset(i);
-		if (inset) {
-			bool close = false;
-			int const len = os.tellp();
-			//ostream::pos_type const len = os.tellp();
-			if ((inset->lyxCode() == Inset::GRAPHICS_CODE
-			     || inset->lyxCode() == Inset::MATH_CODE
-			     || inset->lyxCode() == Inset::URL_CODE)
-			    && running_font.isRightToLeft()) {
-				os << "\\L{";
-				close = true;
-			}
+
+		// FIXME: remove this check
+		if (!inset)
+			break;
+ 
+		if (inset->isTextInset()) {
+			column += Changes::latexMarkChange(os, running_change,
+				Change::UNCHANGED);
+			running_change = Change::UNCHANGED;
+		}
+ 
+		bool close = false;
+		int const len = os.tellp();
+		//ostream::pos_type const len = os.tellp();
+		if ((inset->lyxCode() == Inset::GRAPHICS_CODE
+		     || inset->lyxCode() == Inset::MATH_CODE
+		     || inset->lyxCode() == Inset::URL_CODE)
+		    && running_font.isRightToLeft()) {
+			os << "\\L{";
+			close = true;
+		}
 
 #ifdef WITH_WARNINGS
 #warning Bug: we can have an empty font change here!
@@ -312,32 +538,31 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 // right now, which means stupid latex code like \textsf{}. AFAIK,
 // this does not harm dvi output. A minor bug, thus (JMarc)
 #endif
-			// some insets cannot be inside a font change command
-			if (open_font && inset->noFontChange()) {
-				column +=running_font.
-					latexWriteEndChanges(os,
-							     basefont,
-							     basefont);
-				open_font = false;
-				basefont = owner_->getLayoutFont(bparams);
-				running_font = basefont;
+		// some insets cannot be inside a font change command
+		if (open_font && inset->noFontChange()) {
+			column +=running_font.
+				latexWriteEndChanges(os,
+						     basefont,
+						     basefont);
+			open_font = false;
+			basefont = owner_->getLayoutFont(bparams);
+			running_font = basefont;
+		}
+
+		int tmp = inset->latex(buf, os, moving_arg,
+				       style.free_spacing);
+
+		if (close)
+			os << '}';
+
+		if (tmp) {
+			for (int j = 0; j < tmp; ++j) {
+				texrow.newline();
 			}
-
-			int tmp = inset->latex(buf, os, moving_arg,
-					       style.free_spacing);
-
-			if (close)
-				os << '}';
-
-			if (tmp) {
-				for (int j = 0; j < tmp; ++j) {
-					texrow.newline();
-				}
-				texrow.start(owner_, i + 1);
-				column = 0;
-			} else {
-				column += int(os.tellp()) - len;
-			}
+			texrow.start(owner_, i + 1);
+			column = 0;
+		} else {
+			column += int(os.tellp()) - len;
 		}
 	}
 	break;

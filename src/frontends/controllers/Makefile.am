@@ -31,6 +31,8 @@ libcontrollers_la_SOURCES= \
 	ControlButtons.h \
 	ControlCharacter.C \
 	ControlCharacter.h \
+	ControlChanges.C \
+	ControlChanges.h \
 	ControlCitation.C \
 	ControlCitation.h \
 	ControlCommand.C \
