@@ -1043,7 +1043,7 @@ string const getExtFromContents(string const & filename)
 			break;
 		}
 
-		getline(ifs, str);
+		std::getline(ifs, str);
 		lyxerr[Debug::GRAPHICS] << "Scanstring: " << str << endl;
 
 		string const stamp = str.substr(0,2);
@@ -1052,25 +1052,26 @@ string const getExtFromContents(string const & filename)
 			// information is saved in the first bytes of the file!
 			// also some graphic formats which save the information
 			// in the first line, too.
-			if (prefixIs(str, gzipStamp))
+			if (prefixIs(str, gzipStamp)) {
 				format =  "gzip";
 
-			else if (stamp == zipStamp)
+			} else if (stamp == zipStamp) {
 				format =  "zip";
 
-			else if (stamp == compressStamp)
+			} else if (stamp == compressStamp) {
 				format =  "compress";
 
 			// the graphics part
-			else if (stamp == "BM")
+			} else if (stamp == "BM") {
 				format =  "bmp";
 
-			else if (stamp == "\001\332")
+			} else if (stamp == "\001\332") {
 				format =  "sgi";
+
 			// PBM family
 			// Don't need to use str.at(0), str.at(1) because
 			// we already know that str.size() >= 2
-			else if (str[0] == 'P') {
+			} else if (str[0] == 'P') {
 				switch (str[1]) {
 				case '1':
 				case '4':
@@ -1085,21 +1086,27 @@ string const getExtFromContents(string const & filename)
 					format =  "ppm";
 				}
 				break;
+
+			} else if ((stamp == "II") || (stamp == "MM")) {
+				format =  "tiff";
+
+			} else if (str == "%TGIF") {
+				format =  "tgif";
+
+			} else if (prefixIs(str,"GIF")) {
+				format =  "gif";
+
+			} else if (str.size() > 3) {
+				int const c = ((str[0] << 24) & (str[1] << 16) &
+					       (str[2] << 8)  & str[3]);
+				if (c == 105) {
+					format =  "xwd";
+				}
 			}
-			if (stamp == "\001\332")
-			    format =  "sgi";
-			else if ((stamp == "II") || (stamp == "MM"))
-			    format =  "tiff";
-			else if (str == "%TGIF")
-			    format =  "tgif";
-			else if (prefixIs(str,"GIF"))
-			    format =  "gif";
-			else if (str.size() > 3)	// get long
-			    if (((str[0] << 24) + (str[1] << 16) +
-				(str[2] << 8) + str[3]) == 105)
-				format =  "xwd";
+			
 			firstLine = false;
 		}
+
 		if (!format.empty())
 		    break;
 		else if (contains(str,"EPSF"))
@@ -1344,3 +1351,30 @@ void removeAutosaveFile(string const & filename)
 		}
 	}
 }
+
+
+string const readBB_from_PSFile(string const & file)
+{
+	// in a (e)ps-file it's an entry like %%BoundingBox:23 45 321 345
+	// It seems that every command in the header has an own line,
+	// getline() should work for all files.
+	// On the other hand some plot programs write the bb at the
+	// end of the file. Than we have in the header:
+	// %%BoundingBox: (atend)
+	// In this case we must check the end.
+	string const file_ = zippedFile(file) ?	
+		string(unzipFile(file)) : string(file);
+	string const format = getExtFromContents(file_);
+	if (format != "eps" && format != "ps")
+		return string();
+
+	std::ifstream is(file_.c_str());
+	while (is) {
+		string s;
+		std::getline(is,s);
+		if (contains(s,"%%BoundingBox:") && !contains(s,"atend")) 
+			return (frontStrip(s.substr(14)));
+	}
+	return string();
+}
+

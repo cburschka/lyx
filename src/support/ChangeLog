@@ -1,3 +1,13 @@
+2002-04-08  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* filetools.C (getExtFromContents): re-format a little and remove
+	replicated "sgi" entry.
+
+2002-04-07  Herbert Voss  <voss@perce.de>
+
+	* filetools.[Ch]: add readBB_from_PSFile() to make bb available
+	for the lyx-view in graphics (moved from ControlGraphics)
+
 2002-04-07  Herbert Voss  <voss@perce.de>
 
 	* filetools.C: fix bug for eps. scans now a whole line

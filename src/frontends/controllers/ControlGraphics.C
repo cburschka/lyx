@@ -104,37 +104,7 @@ string const ControlGraphics::Browse(string const & in_name)
 
 string const ControlGraphics::readBB(string const & file)
 {
-	// in a file it's an entry like %%BoundingBox:23 45 321 345
-	// The first number can following without a space, so we have
-	// to be a little careful.
-	// On the other hand some plot programs write the bb at the
-	// end of the file. Than we have in the header:
-	// %%BoundingBox: (atend)
-	// In this case we must check the end.
-	string file_ = MakeAbsPath(file, lv_.buffer()->filePath());
-	if (zippedFile(file_))
-		file_ = unzipFile(file_);
-
-	string const format = getExtFromContents(file_);
-	if (format != "eps" && format != "ps")
-		return string();
-
-	std::ifstream is(file_.c_str());
-	while (is) {
-		string s;
-		is >> s;
-		if (contains(s,"%%BoundingBox:")) {
-			string a, b, c, d;
-			is >> a >> b >> c >> d;
-			if (is && !contains(a,"atend")) { // bb at the end?
-				if (s != "%%BoundingBox:")
-				    return (s.substr(14)+" "+a+" "+b+" "+c+" ");
-				else
-				    return (a+" "+b+" "+c+" "+d+" ");
-			}
-		}
-	}
-	return string();
+	return readBB_from_PSFile(MakeAbsPath(file, lv_.buffer()->filePath()));
 }
 
 

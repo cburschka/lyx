@@ -206,5 +206,8 @@ string const findtexfile(string const & fil, string const & format);
 /// remove the autosave-file and give a Message if it can't be done
 void removeAutosaveFile(string const & filename);
 
+/// read the BoundingBox entry from a ps/eps/pdf-file
+string const readBB_from_PSFile(string const & file);
+
 
 #endif
