@@ -107,8 +107,6 @@ public:
 		mathmacrobg,
 		/// Math inset frame color
 		mathframe,
-		/// Math cursor color
-		mathcursor,
 		/// Math line color
 		mathline,
 

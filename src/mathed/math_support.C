@@ -400,7 +400,7 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 {
 	if (name == ".") {
 		pi.pain.line(x + w/2, y, x + w/2, y + h,
-			  LColor::mathcursor, Painter::line_onoffdash);
+			  LColor::cursor, Painter::line_onoffdash);
 		return;
 	}
 
