@@ -688,6 +688,47 @@ InsetBibitem * Paragraph::bibitem() const
 }
 
 
+namespace {
+
+/* paragraphs inside floats need different alignment tags to avoid
+unwanted space */
+
+bool noTrivlistCentering(UpdatableInset const * inset)
+{
+	if (inset && inset->owner()) {
+		InsetOld::Code const code = inset->owner()->lyxCode();
+		return code == InsetOld::FLOAT_CODE ||
+			code == InsetOld::WRAP_CODE;
+	}
+	return false;
+}
+
+
+string correction(string const & orig)
+{
+	if (orig == "flushleft")
+		return "raggedright";
+	if (orig == "flushright")
+		return "raggedleft";
+	if (orig == "center")
+		return "centering";
+	return orig;
+}
+
+
+string const corrected_env(string const & suffix, string const & env,
+			   UpdatableInset const * inset)
+{
+	string output = suffix + "{";
+	if (noTrivlistCentering(inset))
+		output += correction(env);
+	else
+		output += env;
+	return output + "}";
+}
+ 
+} // namespace anon
+
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::startTeXParParams(BufferParams const & bparams,
@@ -722,28 +763,33 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_LAYOUT:
 	case LYX_ALIGN_SPECIAL:
 		break;
-	case LYX_ALIGN_LEFT:
-		if (getParLanguage(bparams)->babel() != "hebrew") {
-			os << "\\begin{flushleft}";
-			column += 17;
-		} else {
-			os << "\\begin{flushright}";
-			column += 18;
-		}
+	case LYX_ALIGN_LEFT: {
+		string output;
+		UpdatableInset const * const inset = pimpl_->inset_owner;
+		if (getParLanguage(bparams)->babel() != "hebrew")
+			output = corrected_env("\\begin", "flushleft", inset);
+		else
+			output = corrected_env("\\begin", "flushright", inset);
+		os << output;
+		column += output.size();
 		break;
-	case LYX_ALIGN_RIGHT:
-		if (getParLanguage(bparams)->babel() != "hebrew") {
-			os << "\\begin{flushright}";
-			column += 18;
-		} else {
-			os << "\\begin{flushleft}";
-			column += 17;
-		}
+	} case LYX_ALIGN_RIGHT: {
+		string output;
+		UpdatableInset const * const inset = pimpl_->inset_owner;
+		if (getParLanguage(bparams)->babel() != "hebrew")
+			output = corrected_env("\\begin", "flushright", inset);
+		else
+			output = corrected_env("\\begin", "flushleft", inset);
+		os << output;
+		column += output.size();
 		break;
-	case LYX_ALIGN_CENTER:
-		os << "\\begin{center}";
-		column += 14;
+	} case LYX_ALIGN_CENTER: {
+		string output;
+		output = corrected_env("\\begin", "center", pimpl_->inset_owner);
+		os << output;
+		column += output.size();
 		break;
+	}
 	}
 
 	return column;
@@ -778,29 +824,35 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_LAYOUT:
 	case LYX_ALIGN_SPECIAL:
 		break;
-	case LYX_ALIGN_LEFT:
-		if (getParLanguage(bparams)->babel() != "hebrew") {
-			os << "\\end{flushleft}";
-			column = 15;
-		} else {
-			os << "\\end{flushright}";
-			column = 16;
-		}
+	case LYX_ALIGN_LEFT: {
+		string output;
+		UpdatableInset const * const inset = pimpl_->inset_owner;
+		if (getParLanguage(bparams)->babel() != "hebrew")
+			output = corrected_env("\\par\\end", "flushleft", inset);
+		else
+			output = corrected_env("\\par\\end", "flushright", inset);
+		os << output;
+		column += output.size();
 		break;
-	case LYX_ALIGN_RIGHT:
-		if (getParLanguage(bparams)->babel() != "hebrew") {
-			os << "\\end{flushright}";
-			column+= 16;
-		} else {
-			os << "\\end{flushleft}";
-			column = 15;
-		}
+	} case LYX_ALIGN_RIGHT: {
+		string output;
+		UpdatableInset const * const inset = pimpl_->inset_owner;
+		if (getParLanguage(bparams)->babel() != "hebrew")
+			output = corrected_env("\\par\\end", "flushright", inset);
+		else
+			output = corrected_env("\\par\\end", "flushleft", inset);
+		os << output;
+		column += output.size();
 		break;
-	case LYX_ALIGN_CENTER:
-		os << "\\end{center}";
-		column = 12;
+	} case LYX_ALIGN_CENTER: {
+		string output;
+		output = corrected_env("\\par\\end", "center", pimpl_->inset_owner);
+		os << output;
+		column += output.size();
 		break;
 	}
+	}
+
 	return column;
 }
 
