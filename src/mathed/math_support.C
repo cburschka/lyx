@@ -778,15 +778,6 @@ char const * latex_mathspace[] = {
 };
 
 
-char const * latex_mathstyle[] = {
-	"textstyle", "displaystyle", "scriptstyle", "scriptscriptstyle" 
-};
-
-kb_action latex_mathfontcmds[] = {
-	LFUN_BOLD, LFUN_EMPH, LFUN_ROMAN, LFUN_CODE, LFUN_SANS,
-	LFUN_ITAL, LFUN_NOUN, LFUN_FRAK, LFUN_FREE, LFUN_DEFAULT
-};
-
 
 char const * math_font_name(MathTextCodes code)
 {

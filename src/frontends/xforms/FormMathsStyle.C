@@ -18,9 +18,23 @@
 
 #include "FormMathsStyle.h"
 #include "form_maths_style.h"
+#include "bmtable.h"
 
-extern char * latex_mathstyle[];
-extern kb_action latex_mathfontcmds[];
+#include "style.xbm"
+#include "font.xbm"
+
+#include "debug.h"
+
+char const * latex_mathstyle[] = {
+	"displaystyle", "textstyle", "scriptstyle", "scriptscriptstyle"
+};
+
+kb_action latex_mathfontcmds[] = {
+	LFUN_BOLD, LFUN_SANS, LFUN_ROMAN, LFUN_ITAL, LFUN_CODE,
+	LFUN_NOUN, LFUN_FRAK, LFUN_EMPH, LFUN_FREE, LFUN_DEFAULT
+};
+
+
 
 FormMathsStyle::FormMathsStyle(LyXView * lv, Dialogs * d,
 			       FormMathsPanel const & p)
@@ -41,44 +55,48 @@ void FormMathsStyle::build()
 {
 	dialog_.reset(build_maths_style());
 
-	fl_set_button(dialog_->radio_text, 1);
-	style_ = 1;
+	fl_set_bmtable_data(dialog_->bmtable_style1, 1, 1,
+					style1_width, style1_height, style1_bits);
+	fl_set_bmtable_maxitems(dialog_->bmtable_style1, 1);
+	bc().addReadOnly(dialog_->bmtable_style1);
 
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
+	fl_set_bmtable_data(dialog_->bmtable_style2, 1, 3,
+					style2_width, style2_height, style2_bits);
+	fl_set_bmtable_maxitems(dialog_->bmtable_style2, 3);
+	bc().addReadOnly(dialog_->bmtable_style2);
+
+	fl_set_bmtable_data(dialog_->bmtable_font1, 1, 5,
+					font1_width, font1_height, font1_bits);
+	fl_set_bmtable_maxitems(dialog_->bmtable_font1, 5);
+	bc().addReadOnly(dialog_->bmtable_font1);
+
+	fl_set_bmtable_data(dialog_->bmtable_font2, 1, 3,
+					font2_width, font2_height, font2_bits);
+	fl_set_bmtable_maxitems(dialog_->bmtable_font2, 3);
+	bc().addReadOnly(dialog_->bmtable_font2);
+
 	bc().setCancel(dialog_->button_cancel);
-
-	bc().addReadOnly(dialog_->radio_display);
-	bc().addReadOnly(dialog_->radio_text);
-	bc().addReadOnly(dialog_->radio_script);
-	bc().addReadOnly(dialog_->radio_scriptscript);
-	bc().addReadOnly(dialog_->radio_bold);
-	bc().addReadOnly(dialog_->radio_calligraphic);
-	bc().addReadOnly(dialog_->radio_roman);
-	bc().addReadOnly(dialog_->radio_typewriter);
-	bc().addReadOnly(dialog_->radio_sans);
-	bc().addReadOnly(dialog_->radio_italic);
-	bc().addReadOnly(dialog_->radio_bbbold);
-	bc().addReadOnly(dialog_->radio_fraktur);
-	bc().addReadOnly(dialog_->radio_textrm);
-	bc().addReadOnly(dialog_->radio_normal);
-}
+	}
 
 
 void FormMathsStyle::apply()
 {
-	if ( (style_ >= 0) && (style_ < 4) )
+	if ((style_ >= 0) && (style_ < 4)) 
 		parent_.insertSymbol(latex_mathstyle[style_]);
 	else
+	if ((style_ >= 4) && (style_ < 14)) 
 		parent_.dispatchFunc(latex_mathfontcmds[style_ - 4]);
 }
 
-bool FormMathsStyle::input(FL_OBJECT *, long data)
+bool FormMathsStyle::input(FL_OBJECT * ob, long data)
 {
-	style_ = -1;
- 
-	if (data >= 0 && data < 14) {
-		style_ = short(data);
-	}
+	style_ = fl_get_bmtable(ob);
+	if (style_ < 0) return false;
+	//if (ob == dialog_->bmtable_style1) style_ += 0; 
+	if (ob == dialog_->bmtable_style2) style_ += 1;
+	if (ob == dialog_->bmtable_font1)  style_ += 4;
+	if (ob == dialog_->bmtable_font2)  style_ += 9;
+	if (data >= 12) style_ = short(data);
+	apply();
 	return true;
 }

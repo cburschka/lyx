@@ -39,19 +39,16 @@ void FormMathsSpace::build()
 {
 	dialog_.reset(build_maths_space());
 
-	fl_set_button(dialog_->radio_thin, 1);
-	space_ = 1;
+	space_ = -1;
 
-	bc().setOK(dialog_->button_ok);
-	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
 
-	bc().addReadOnly(dialog_->radio_thin);
-	bc().addReadOnly(dialog_->radio_medium);
-	bc().addReadOnly(dialog_->radio_thick);
-	bc().addReadOnly(dialog_->radio_negative);
-	bc().addReadOnly(dialog_->radio_quadratin);
-	bc().addReadOnly(dialog_->radio_twoquadratin);
+	bc().addReadOnly(dialog_->button_thin);
+	bc().addReadOnly(dialog_->button_medium);
+	bc().addReadOnly(dialog_->button_thick);
+	bc().addReadOnly(dialog_->button_negative);
+	bc().addReadOnly(dialog_->button_quadratin);
+	bc().addReadOnly(dialog_->button_twoquadratin);
 }
 
 
@@ -67,6 +64,7 @@ bool FormMathsSpace::input(FL_OBJECT *, long data)
  
 	if (data >= 0 && data < 6) {
 		space_ = short(data);
+	apply();
 	}
 	return true;
 }

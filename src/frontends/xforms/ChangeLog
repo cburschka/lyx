@@ -1,3 +1,18 @@
+2002-01-28  Martin Vermeer <martin.vermeer@hut.fi>
+
+	* FormMathsSpace.[Ch]:
+	* forms/form_maths_space.fd:
+	Changed the "Space" subpanel of the math panel into one of
+	ordinary buttons rather than radio buttons. They are now
+	self-applying so OK and Apply could go.
+
+2002-01-28  Martin Vermeer <martin.vermeer@hut.fi>
+
+	* FormMathsStyle.[Ch]:
+	* forms/form_maths_style.fd:
+	Patched to use button arrays. Buttons are self-applying, saving
+	one keystroke and the OK and Apply buttons.
+
 2002-01-27  Herbert Voss  <voss@lyx.org>
 
 	* FormGraphic.[Ch]: 
