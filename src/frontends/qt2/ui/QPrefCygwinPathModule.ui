@@ -1,0 +1,78 @@
+<!DOCTYPE UI><UI>
+<class>QPrefCygwinPathModule</class>
+<include location="global">config.h</include>
+<include location="local">qt_helpers.h</include>
+<widget>
+    <class>QWidget</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QPrefCygwinPathModule</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>275</width>
+            <height>91</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Cygwin Paths</string>
+    </property>
+    <spacer>
+        <property>
+            <name>name</name>
+            <cstring>Spacer1</cstring>
+        </property>
+        <property stdset="1">
+            <name>orientation</name>
+            <enum>Vertical</enum>
+        </property>
+        <property stdset="1">
+            <name>sizeType</name>
+            <enum>Expanding</enum>
+        </property>
+        <property>
+            <name>sizeHint</name>
+            <size>
+                <width>20</width>
+                <height>20</height>
+            </size>
+        </property>
+    </spacer>
+    <widget>
+        <class>QCheckBox</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>pathCB</cstring>
+        </property>
+        <property stdset="1">
+            <name>enabled</name>
+            <bool>true</bool>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>260</width>
+                <height>26</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>&amp;Use Cygwin-style paths</string>
+        </property>
+        <property>
+            <name>toolTip</name>
+            <string></string>
+        </property>
+        <property>
+            <name>whatsThis</name>
+            <string>Select if LyX should output Cygwin-style paths rather than Windows-style paths. Useful if you're using the Cygwin teTeX rather than a native Windows MikTeX. Note, however, that you'll need to write shell script wrappers for all your converters.</string>
+        </property>
+    </widget>
+</widget>
+</UI>

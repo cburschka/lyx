@@ -1,3 +1,14 @@
+2005-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* lyxrc.C (read): use LyXRC::cygwin_path_fix to set the value of
+	os::cygwin_path_fix.
+	(write): output LyXRC::cygwin_path_fix as necessary.
+
+2005-01-02  Kayvan Sylvan  <kayvan@sylvan.com>
+
+	* lyxrc.h:
+	* lyxrc.C (read): Added RC_CYGWIN_PATH_FIX, cygwin_path_fix.
+
 2005-01-12  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (init): set the PATH variable to include the

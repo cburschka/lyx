@@ -1,3 +1,14 @@
+2005-01-02  Kayvan Sylvan  <kayvan@sylvan.com>
+
+	* os_win32.C (external_path): Check the new cygwin_path_fix_ bool
+	before translating external paths to Win32 paths.
+
+2005-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* os.h, os_os2.C, os_unix.C, os_win32.C (cygwin_path_fix): new
+	function flagging whether LyX should output native Win32 paths
+	or cygwin paths. Obviously operative only under Cygwin.
+
 2005-01-13  Angus Leeming  <leeming@lyx.org>
 
 	* package.C.in: use "%n$s" rather than "%n%" for n=1,2,3... when
@@ -39,7 +50,7 @@
 
 	* Makefile.am: remove path_defines.{C.in,h}. Add package.{C.in,h}.
 
-	* filetools.C[Ch] (GetEnvPath): remove.
+	* filetools.[Ch] (GetEnvPath): remove.
 	(getEnvPath): replacement. Returns a vector<string> of paths.
 
 	* filetools.C:

@@ -60,6 +60,12 @@ char const * popen_read_mode();
  */
 char path_separator();
 
+/** If @c use_cygwin_paths is true, LyX will output cygwin style paths
+ *  rather than native Win32 ones. Obviously, this option is used only
+ *  under Cygwin.
+ */
+void cygwin_path_fix(bool use_cygwin_paths);
+
 } // namespace os
 } // namespace support
 } // namespace lyx

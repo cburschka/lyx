@@ -25,6 +25,9 @@
 #include "ui/QPrefLatexModule.h"
 #include "ui/QPrefScreenFontsModule.h"
 #include "ui/QPrefColorsModule.h"
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#include "ui/QPrefCygwinPathModule.h"
+#endif
 #include "ui/QPrefDisplayModule.h"
 #include "ui/QPrefPathsModule.h"
 #include "ui/QPrefSpellcheckerModule.h"
@@ -74,6 +77,9 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	latexModule = new QPrefLatexModule(this);
 	screenfontsModule = new QPrefScreenFontsModule(this);
 	colorsModule = new QPrefColorsModule(this);
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	cygwinpathModule = new QPrefCygwinPathModule(this);
+#endif
 	displayModule = new QPrefDisplayModule(this);
 	pathsModule = new QPrefPathsModule(this);
 	spellcheckerModule = new QPrefSpellcheckerModule(this);
@@ -103,6 +109,9 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	prefsPS->addPanel(asciiModule, _("ASCII"), op);
 	prefsPS->addPanel(dateModule, _("Date format"), op);
 	prefsPS->addPanel(latexModule, _("LaTeX"), op);
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	prefsPS->addPanel(cygwinpathModule, _("Paths"), op);
+#endif
 	prefsPS->addPanel(printerModule, _("Printer"), op);
 
 	prefsPS->addPanel(identityModule, _("Identity"));
@@ -222,6 +231,9 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(asciiModule->asciiLinelengthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(asciiModule->asciiRoffED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(dateModule->DateED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	connect(cygwinpathModule->pathCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+#endif
 	connect(latexModule->latexEncodingED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexChecktexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexBibtexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));

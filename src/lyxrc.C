@@ -33,9 +33,10 @@
 
 #include "graphics/GraphicsTypes.h"
 
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/convert.h"
+#include "support/os.h"
 #include "support/userinfo.h"
 
 using lyx::support::ascii_lowercase;
@@ -44,6 +45,8 @@ using lyx::support::ExpandPath;
 using lyx::support::GetEnv;
 using lyx::support::LibFileSearch;
 using lyx::support::token;
+
+namespace os = lyx::support::os;
 
 using std::cout;
 using std::endl;
@@ -76,6 +79,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\custom_export_command", LyXRC::RC_CUSTOM_EXPORT_COMMAND },
 	{ "\\custom_export_format", LyXRC::RC_CUSTOM_EXPORT_FORMAT },
+	{ "\\cygwin_path_fix_needed", LyXRC::RC_CYGWIN_PATH_FIX },
 	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
@@ -264,8 +268,7 @@ void LyXRC::setDefaults() {
 	language_command_local = "\\foreignlanguage{$$lang}{";
 	default_language = "english";
 	show_banner = true;
-
-	//
+	cygwin_path_fix = false;
 	date_insert_format = "%A, %e %B %Y";
 	cursor_follows_scrollbar = false;
 	dialogs_iconify_with_main = false;
@@ -388,6 +391,13 @@ int LyXRC::read(LyXLex & lexrc)
 			}
 			break;
 
+		case RC_CYGWIN_PATH_FIX:
+			if (lexrc.next()) {
+				cygwin_path_fix = lexrc.getBool();
+				os::cygwin_path_fix(cygwin_path_fix);
+ 			}
+ 			break;
+ 
 		case RC_KBMAP_PRIMARY:
 			if (lexrc.next()) {
 				string const kmap(lexrc.getString());
@@ -1295,6 +1305,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		if (ignore_system_lyxrc ||
 		    use_kbmap != system_lyxrc.use_kbmap) {
 			os << "\\kbmap " << convert<string>(use_kbmap) << '\n';
+		}
+
+	case RC_CYGWIN_PATH_FIX:
+		if (ignore_system_lyxrc ||
+		    cygwin_path_fix != system_lyxrc.cygwin_path_fix) {
+			os << "\\cygwin_path_fix_needed "
+			   << convert<string>(cygwin_path_fix) << '\n';
 		}
 	case RC_KBMAP_PRIMARY:
 		if (ignore_system_lyxrc ||

@@ -87,10 +87,15 @@ shell_type shell()
 	return UNIX;
 }
 
+
 char path_separator()
 {
 	return ':';
 }
+
+
+void cygwin_path_fix(bool)
+{}
 
 } // namespace os
 } // namespace support

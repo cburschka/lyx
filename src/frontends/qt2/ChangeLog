@@ -1,3 +1,16 @@
+2005-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.dialogs: add QPrefCygwinPathModule.ui.
+
+	* ui/QPrefCygwinPathModule.ui: new file. Defines a pane containing
+	only a check box "Use Cygwin paths".
+
+	* QPrefs.C (apply, update_contents): code to get/set the value
+	of the Cygwin check box. Compiled only under Cygwin.
+
+	* QPrefsDialog.[Ch]: code to add teh Cygwin paths module to the
+	dialog.
+
 2005-01-10  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.C: use support/package.h to provide the paths to the

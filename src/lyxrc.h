@@ -133,6 +133,7 @@ enum LyXRCTags {
 	RC_USER_NAME,
 	RC_USER_EMAIL,
 	RC_INDEX_COMMAND,
+	RC_CYGWIN_PATH_FIX,
 	RC_LAST
 };
 
@@ -374,6 +375,8 @@ public:
 	std::string user_name;
 	/// user email
 	std::string user_email;
+	///
+	bool cygwin_path_fix;
 };
 
 

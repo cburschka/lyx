@@ -2072,6 +2072,10 @@ void FormPreferences::OutputsMisc::apply(LyXRC & rc) const
 	rc.index_command = getString(dialog_->input_index);
 	rc.view_dvi_paper_option = getString(dialog_->input_paperoption);
 	rc.auto_reset_options = fl_get_button(dialog_->check_autoreset_classopt);
+
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	rc.cygwin_path_fix = fl_get_button(dialog_->check_cygwin_path);
+#endif
 }
 
 
@@ -2089,6 +2093,11 @@ void FormPreferences::OutputsMisc::build()
 	fl_set_input_return(dialog_->input_index,        FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_paperoption,  FL_RETURN_CHANGED);
 
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#else
+	setEnabled(dialog_->check_cygwin_path, false);
+#endif
+
 	fl_addto_choice(dialog_->choice_default_papersize,
 			_(" default | US letter | US legal "
 			  "| US executive | A3 | A4 | A5 | B5 ").c_str());
@@ -2103,6 +2112,9 @@ void FormPreferences::OutputsMisc::build()
 	setPrehandler(dialog_->input_index);
 	setPrehandler(dialog_->input_paperoption);
 	setPrehandler(dialog_->check_autoreset_classopt);
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	setPrehandler(dialog_->check_cygwin_path);
+#endif
 }
 
 
@@ -2127,6 +2139,14 @@ FormPreferences::OutputsMisc::feedback(FL_OBJECT const * const ob) const
 		return LyXRC::getDescription(LyXRC::RC_VIEWDVI_PAPEROPTION);
 	if (ob == dialog_->check_autoreset_classopt)
 		return LyXRC::getDescription(LyXRC::RC_AUTORESET_OPTIONS);
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	if (ob == dialog_->check_cygwin_path)
+		return _("Select if LyX should output Cygwin-style paths "
+			 "rather than Windows-style paths. Useful if you're "
+			 "using the Cygwin teTeX rather than a native Windows "
+			 "MikTeX. Note, however, that you'll need to write "
+			 "shell script wrappers for all your converters.");
+#endif
 	return string();
 }
 
@@ -2151,7 +2171,9 @@ void FormPreferences::OutputsMisc::update(LyXRC const & rc)
 		     rc.view_dvi_paper_option.c_str());
 	fl_set_button(dialog_->check_autoreset_classopt,
 		      rc.auto_reset_options);
-
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	fl_set_button(dialog_->check_cygwin_path, rc.cygwin_path_fix);
+#endif
 }
 
 

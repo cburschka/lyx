@@ -208,6 +208,10 @@ char path_separator()
 	return ';';
 }
 
+
+void cygwin_path_fix(bool)
+{}
+
 } // namespace os
 } // namespace support
 } // namespace lyx

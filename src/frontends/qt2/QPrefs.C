@@ -23,6 +23,9 @@
 #include "ui/QPrefLatexModule.h"
 #include "ui/QPrefScreenFontsModule.h"
 #include "ui/QPrefColorsModule.h"
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#include "ui/QPrefCygwinPathModule.h"	
+#endif
 #include "ui/QPrefDisplayModule.h"
 #include "ui/QPrefPathsModule.h"
 #include "ui/QPrefSpellcheckerModule.h"
@@ -185,6 +188,10 @@ void QPrefs::apply()
 
 	rc.date_insert_format = fromqstr(datemod->DateED->text());
 
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
+	rc.cygwin_path_fix = cygwinmod->pathCB->isChecked();
+#endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
 
@@ -505,6 +512,10 @@ void QPrefs::update_contents()
 
 	datemod->DateED->setText(toqstr(rc.date_insert_format));
 
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	QPrefCygwinPathModule * cygwinmod(dialog_->cygwinpathModule);
+	cygwinmod->pathCB->setChecked(rc.cygwin_path_fix);
+#endif
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
 

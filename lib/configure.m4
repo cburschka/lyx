@@ -174,6 +174,7 @@ if test ! -r "${srcdir}"/chkconfig.ltx ; then
 fi
 
 #### Adjust PATH for Win32 (Cygwin)
+use_cygwin_path_fix=''
 case `uname -s` in
    CYGWIN*)
      tmpfname="/tmp/x$$.ltx";
@@ -188,8 +189,10 @@ case `uname -s` in
        echo "configure: cygwin detected; path correction"
        srcdir=`cygpath -w "${srcdir}" | tr '\\\\' /`
        echo "srcdir=${srcdir}"
+       use_cygwin_path_fix='true'
      else
        echo "configure: cygwin detected; path correction is not needed"
+       use_cygwin_path_fix='false'
      fi
      ;;
 esac
@@ -658,6 +661,11 @@ cat >>$outfile <<EOF
 $rc_entries
 \\font_encoding "$chk_fontenc"
 EOF
+
+if [ "x$use_cygwin_path_fix" != "x" ]
+then
+  echo "\\cygwin_path_fix_needed $use_cygwin_path_fix" >> $outfile
+fi
 
 ######## X FONTS
 # create a fonts.dir file to make X fonts available to LyX
