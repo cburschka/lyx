@@ -24,6 +24,7 @@
 
 #include "GError.h"
 #include "GERT.h"
+#include "GLog.h"
 #include "GPreamble.h"
 #include "GTabularCreate.h"
 #include "GUrl.h"
@@ -48,6 +49,8 @@ Dialogs::Dialogs(LyXView * lv)
 	    NoRepeatedApplyReadOnlyPolicy, gnomeBC>(*lv, *this));
 	add(new GUI<ControlTabularCreate, GTabularCreate,
 	    OkApplyCancelReadOnlyPolicy, gnomeBC>(*lv, *this));
+	add(new GUI<ControlLog, GLog,
+		    OkCancelPolicy, gnomeBC>(*lv, *this));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

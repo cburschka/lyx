@@ -50,23 +50,18 @@ class GnomeFrontendHandler(ContentHandler):
         
     def startElement(self, name, attrs):
         self.elemstack.append(name)
+        if name == "widget" and rn.search(attrs["id"]):
+                self.TODO.append(widget(attrs["class"], 
+                                        re.sub("^r_", "", attrs["id"])))
     
     def endElement(self, name):
         self.elemstack.pop()
 
-        if name == "widget":
-            self.currclass = ""
         
     def characters(self, data):
 
         elem = self.elemstack[-1]
 
-        if elem == "class":
-            self.currclass = data
-        elif elem == "name":
-            if rn.search(data):
-                self.TODO.append(widget(self.currclass,
-                                        re.sub("^r_", "", data)))
     def widgets(self):
         return self.TODO
 

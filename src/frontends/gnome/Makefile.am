@@ -72,6 +72,8 @@ libgnome_la_SOURCES = \
 	GError.h \
 	GERT.C \
 	GERT.h \
+	GLog.C \
+	GLog.h \
 	GPreamble.C \
 	GPreamble.h \
 	GTabularCreate.C \
