@@ -36,6 +36,8 @@ public:
 	void metrics(MathMetricsInfo const &) const;
 	/// identifies BoxInsets
 	MathBoxInset * asBoxInset() { return this; }
+	///
+	bool isHyperActive() const { return 1; }
 
 private:
 	/// unimplemented

@@ -243,6 +243,9 @@ bool MathCursor::isInside(MathInset const * p) const
 
 bool MathCursor::openable(MathAtom const & t, bool sel) const
 {
+	if (t->isHyperActive())
+		return true;
+
 	if (!t->isActive())
 		return false;
 
@@ -304,6 +307,9 @@ bool MathCursor::left(bool sel)
 	lastcode_ = LM_TC_VAR;
 
 	if (hasPrevAtom() && openable(prevAtom(), sel)) {
+		if (prevAtom()->isHyperActive()) {
+			lyxerr << "entering hyperactive inset\n";
+		}
 		pushRight(prevAtom());
 		return true;
 	} 
@@ -324,6 +330,9 @@ bool MathCursor::right(bool sel)
 	lastcode_ = LM_TC_VAR;
 
 	if (hasNextAtom() && openable(nextAtom(), sel)) {
+		if (nextAtom()->isHyperActive()) {
+			lyxerr << "entering hyperactive inset\n";
+		}
 		pushLeft(nextAtom());
 		return true;
 	}

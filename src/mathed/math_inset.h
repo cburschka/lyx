@@ -222,6 +222,8 @@ public:
 	virtual bool isScriptable() const { return false; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
+	/// identifies insets from the outer world
+	virtual bool isHyperActive() const { return 0; }
 	///
 	virtual bool isRelOp() const { return false; }
 	///

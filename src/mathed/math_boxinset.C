@@ -70,7 +70,6 @@ void MathBoxInset::metrics(MathMetricsInfo const & st) const
 void MathBoxInset::draw(Painter & pain, int x, int y) const
 {
 	float fx = x + 2;
-
 	if (text_ && mi_.view)
 		text_->draw(mi_.view, mi_.font, y, fx, false);
 	if (mathcursor && mathcursor->isInside(this))
