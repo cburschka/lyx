@@ -1,3 +1,14 @@
+2003-09-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* output_latex.C (TeXEnvironment): make sure that there is a line
+	break before \end{foo} for the last paragraph of a document
+	(TeXOnePar): if the paragraph is at the end of the document (or
+	inset) and the language has to be reset, then make sure that the
+	line break is _before_ the language command, not after (fixes bug
+	1225); also make sure that the language reset command is the first
+	thing after the paragraph (to ensure proper nesting of
+	environments and thus fix bug 1404)
+
 2004-04-21  John Levon  <levon@movementarian.org>
 
 	* ToolbarBackend.h:
