@@ -17,6 +17,8 @@
 #pragma implementation
 #endif
 
+#include <sys/types.h> // needed by <sys/select.h> at least on freebsd
+
 #ifdef HAVE_SYS_SELECT_H
 # ifdef HAVE_STRINGS_H
    // <strings.h> is needed at least on AIX because FD_ZERO uses bzero().
