@@ -36,7 +36,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.6\n"
-"POT-Creation-Date: 2001-07-25 21:54+0200\n"
+"POT-Creation-Date: 2001-07-25 22:56+0200\n"
 "PO-Revision-Date: 2001-05-03 22:51+03:00\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@saunalahti.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -2007,7 +2007,8 @@ msgstr "Kerronta"
 msgid "Notation"
 msgstr "Merkint‰tapa"
 
-#: src/ext_l10n.h:333
+#: src/ext_l10n.h:333 src/insets/insetinfo.C:86 src/insets/insetinfo.C:106
+#: src/insets/insetinfo.C:236
 msgid "Note"
 msgstr "Muistiinpano"
 
@@ -2484,9 +2485,7 @@ msgstr "Allekirjoitus"
 msgid "Uppertitleback"
 msgstr "Yl‰tunnisteteksti"
 
-#. tooltips
-#: src/ext_l10n.h:458 src/frontends/kde/urldlg.C:59
-#: src/frontends/kde/urldlg.C:60
+#: src/ext_l10n.h:458
 msgid "URL"
 msgstr "URL"
 
@@ -2715,18 +2714,6 @@ msgstr "Usorbian"
 msgid "Welsh"
 msgstr "Wales"
 
-#: src/figureForm.C:38
-msgid "Insert Figure"
-msgstr "Lis‰‰ kuva"
-
-#: src/figureForm.C:54
-msgid "Inserting figure..."
-msgstr "Lis‰t‰‰n kuva..."
-
-#: src/figureForm.C:58 src/figureForm.C:99
-msgid "Figure inserted"
-msgstr "Kuva lis‰tty"
-
 #: src/figure_form.C:27
 msgid "EPS file|#E"
 msgstr "EPS-tied.|#."
@@ -2839,8 +2826,7 @@ msgstr "N‰yt‰"
 msgid "Height"
 msgstr "Korkeus"
 
-#: src/figure_form.C:89 src/frontends/kde/dlg/paraextradlgdata.C:75
-#: src/frontends/xforms/form_graphics.C:44
+#: src/figure_form.C:89 src/frontends/xforms/form_graphics.C:44
 #: src/frontends/xforms/form_minipage.C:28
 #: src/frontends/xforms/form_paragraph.C:219
 msgid "Width"
@@ -2904,9 +2890,21 @@ msgstr "EPS-tiedosto (*.eps, *.ps)|#E"
 msgid "Inlined EPS (*.eps, *.ps)|#I"
 msgstr "Inline-EPS (*.eps, *.ps)|#i"
 
-#: src/figure_form.C:175 src/frontends/kde/dlg/paraextradlgdata.C:58
+#: src/figure_form.C:175
 msgid "Type"
 msgstr "Tyyppi"
+
+#: src/figureForm.C:38
+msgid "Insert Figure"
+msgstr "Lis‰‰ kuva"
+
+#: src/figureForm.C:54
+msgid "Inserting figure..."
+msgstr "Lis‰t‰‰n kuva..."
+
+#: src/figureForm.C:58 src/figureForm.C:99
+msgid "Figure inserted"
+msgstr "Kuva lis‰tty"
 
 #: src/FontLoader.C:253
 msgid "Loading font into X-Server..."
@@ -3024,8 +3022,7 @@ msgstr "Pienempi"
 msgid "Small"
 msgstr "Pieni"
 
-#: src/frontends/controllers/character.C:104
-#: src/frontends/kde/paraextradlg.C:23 src/lyxfont.C:55
+#: src/frontends/controllers/character.C:104 src/lyxfont.C:55
 msgid "Normal"
 msgstr "Normaali"
 
@@ -3419,31 +3416,23 @@ msgid " Reference: "
 msgstr " Viite: "
 
 #: src/frontends/gnome/FormToc.C:99 src/frontends/gnome/FormToc.C:166
-#: src/frontends/kde/FormToc.C:165 src/frontends/kde/FormToc.C:166
-#: src/frontends/kde/tocdlg.C:25 src/frontends/qt2/FormToc.C:170
-#: src/frontends/qt2/FormToc.C:171 src/frontends/xforms/FormToc.C:34
-#: src/insets/insettoc.C:22
+#: src/frontends/qt2/FormToc.C:170 src/frontends/qt2/FormToc.C:171
+#: src/frontends/xforms/FormToc.C:34 src/insets/insettoc.C:22
 msgid "Table of Contents"
 msgstr "Sis‰llysluettelo"
 
 #: src/frontends/gnome/FormToc.C:103 src/frontends/gnome/FormToc.C:172
-#: src/frontends/kde/FormToc.C:170 src/frontends/kde/FormToc.C:171
-#: src/frontends/kde/tocdlg.C:26 src/frontends/qt2/FormToc.C:175
-#: src/frontends/qt2/FormToc.C:176
+#: src/frontends/qt2/FormToc.C:175 src/frontends/qt2/FormToc.C:176
 msgid "List of Figures"
 msgstr "Kuvat"
 
 #: src/frontends/gnome/FormToc.C:107 src/frontends/gnome/FormToc.C:184
-#: src/frontends/kde/FormToc.C:175 src/frontends/kde/FormToc.C:176
-#: src/frontends/kde/tocdlg.C:27 src/frontends/qt2/FormToc.C:180
-#: src/frontends/qt2/FormToc.C:181
+#: src/frontends/qt2/FormToc.C:180 src/frontends/qt2/FormToc.C:181
 msgid "List of Tables"
 msgstr "Taulukot"
 
 #: src/frontends/gnome/FormToc.C:111 src/frontends/gnome/FormToc.C:178
-#: src/frontends/kde/FormToc.C:180 src/frontends/kde/FormToc.C:181
-#: src/frontends/kde/tocdlg.C:28 src/frontends/qt2/FormToc.C:185
-#: src/frontends/qt2/FormToc.C:186
+#: src/frontends/qt2/FormToc.C:185 src/frontends/qt2/FormToc.C:186
 msgid "List of Algorithms"
 msgstr "Algoritmit"
 
@@ -3459,1227 +3448,18 @@ msgstr "P‰ivit‰"
 msgid "<No Name>"
 msgstr "<Ei nime‰>"
 
-#. tooltips
-#: src/frontends/kde/citationdlg.C:24
-#, fuzzy
-msgid "Add reference to current citation"
-msgstr "_Lis‰‰ uusi l‰hdeviite"
-
-#: src/frontends/kde/citationdlg.C:25
-msgid "Remove reference from current citation"
-msgstr ""
-
-#: src/frontends/kde/citationdlg.C:26
-#, fuzzy
-msgid "Move reference before"
-msgstr "Tallenna asetukset"
-
-#: src/frontends/kde/citationdlg.C:27
-#, fuzzy
-msgid "Move reference after"
-msgstr "Tallenna asetukset"
-
-#: src/frontends/kde/citationdlg.C:28
-#, fuzzy
-msgid "Text to add after references"
-msgstr "Viitteen j‰lkeen tuleva teksti"
-
-#: src/frontends/kde/citationdlg.C:29
-#, fuzzy
-msgid "Reference details"
-msgstr "Viite"
-
-#: src/frontends/kde/citationdlg.C:30
-#, fuzzy
-msgid "Search through references"
-msgstr "Lis‰‰ viite"
-
-#: src/frontends/kde/citationdlg.C:31
-#, fuzzy
-msgid "Available references"
-msgstr "Mahdolliset viitteet"
-
-#: src/frontends/kde/citationdlg.C:32
-#, fuzzy
-msgid "Current chosen references"
-msgstr "Lis‰‰ viite"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:40
-#: src/frontends/kde/dlg/docdlgdata.C:39
-#: src/frontends/kde/dlg/indexdlgdata.C:68
-#: src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:81
-#: src/frontends/kde/urldlg.C:49
-msgid "&OK"
-msgstr "&OK"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:57
-#: src/frontends/kde/dlg/docdlgdata.C:90
-#: src/frontends/kde/dlg/indexdlgdata.C:85
-#: src/frontends/kde/dlg/paradlgdata.C:90
-#: src/frontends/kde/dlg/printdlgdata.C:133
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:57 src/frontends/kde/docdlg.C:210
-#: src/frontends/kde/refdlg.C:87 src/frontends/kde/urldlg.C:55
-#: src/frontends/qt2/FormRef.C:206 src/frontends/qt2/paragraphdlgimpl.C:49
-msgid "&Cancel"
-msgstr "&Peru"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:74
-#: src/frontends/kde/dlg/docdlgdata.C:56
-#: src/frontends/kde/dlg/paradlgdata.C:56
-msgid "&Apply"
-msgstr "&Toteuta"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:91
-#: src/frontends/kde/dlg/docdlgdata.C:73
-#: src/frontends/kde/dlg/paradlgdata.C:73
-msgid "&Restore"
-msgstr "Pala&uta"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:155
-msgid "&Down"
-msgstr "&Alas"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:172
-msgid "&Remove"
-msgstr "&Poista"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:189
-msgid "&Up"
-msgstr "&Ylˆs"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:206
-msgid "&Add"
-msgstr "&Lis‰‰"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:227
-#, fuzzy
-msgid "Text after : "
-msgstr "Seuraava teksti"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:271
-#, fuzzy
-msgid "&Search"
-msgstr "Etsi"
-
-#. FIXME
-#: src/frontends/kde/dlg/copyrightdlgdata.C:39
-#: src/frontends/kde/dlg/logdlgdata.C:39 src/frontends/kde/docdlg.C:210
-#: src/frontends/kde/tocdlg.C:45 src/frontends/qt2/FormRef.C:204
-#: src/frontends/qt2/paragraphdlgimpl.C:49
-msgid "&Close"
-msgstr "Sul&je"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:45
-#, fuzzy
-msgid "Float Placement"
-msgstr "Irrallisten sijoitus:|#s"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:108
-msgid "Ignore LaTeX placement rules"
-msgstr ""
-
-#: src/frontends/kde/dlg/docextradlgdata.C:126
-#, fuzzy
-msgid "Section number depth :"
-msgstr "Otsikkotasojen lkm."
-
-#: src/frontends/kde/dlg/docextradlgdata.C:143
-#, fuzzy
-msgid "Table of Contents depth :"
-msgstr "Sis‰llysluettelotasojen lkm."
-
-#: src/frontends/kde/dlg/docextradlgdata.C:160
-msgid "PostScript driver :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docextradlgdata.C:223
-#, fuzzy
-msgid "Use AMS Math"
-msgstr "K‰yt‰ pakettia AMS Math|#M"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:241
-#, fuzzy
-msgid "First try :"
-msgstr "Ensimm. tekij‰"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:258
-#: src/frontends/kde/dlg/docextradlgdata.C:275
-#: src/frontends/kde/dlg/docextradlgdata.C:292
-#, fuzzy
-msgid "then :"
-msgstr "Muu ("
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:46
-msgid "Headers and Footers"
-msgstr ""
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:62
-#: src/frontends/xforms/form_document.C:99
-msgid "Margins"
-msgstr "Reunukset"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:78
-#: src/frontends/xforms/FormDocument.C:241
-msgid "Paper"
-msgstr "Sivu"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:94
-#: src/frontends/xforms/form_document.C:114
-msgid "Orientation"
-msgstr "Asento"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:111
-#, fuzzy
-msgid "Paper size :"
-msgstr "paperikoko"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:187
-#, fuzzy
-msgid "Margins :"
-msgstr "Reunukset"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:204
-#, fuzzy
-msgid "Width :"
-msgstr "Leveys"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:221
-#, fuzzy
-msgid "Height :"
-msgstr "Korkeus"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:238
-#, fuzzy
-msgid "Top :"
-msgstr "&Yl‰"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:255
-#, fuzzy
-msgid "Bottom :"
-msgstr "&Ala"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:272
-#, fuzzy
-msgid "Left :"
-msgstr "Vasen"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:289
-#, fuzzy
-msgid "Right :"
-msgstr "Oikea"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:306
-#, fuzzy
-msgid "Header height :"
-msgstr "Sivuots. kork.:|#S"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:323
-#, fuzzy
-msgid "Header separation :"
-msgstr "Kappalev‰li"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:340
-#, fuzzy
-msgid "Footer skip :"
-msgstr "Alaviitev‰li:"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:402
-#, fuzzy
-msgid "Portrait"
-msgstr "Pysty|#y"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:415
-#, fuzzy
-msgid "Landscape"
-msgstr "vaaka"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:44
-#, fuzzy
-msgid "Language :"
-msgstr "Kieli:"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:74
-#, fuzzy
-msgid "Encoding :"
-msgstr "Merkistˆ"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:104
-#, fuzzy
-msgid "Quote style :"
-msgstr "Lainausmerkit    "
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:45
-#, fuzzy
-msgid "Paragraph spacing"
-msgstr "Osakappale"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:61
-#, fuzzy
-msgid "Font size :"
-msgstr "Kirjainkoko:|#o"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:78
-#, fuzzy
-msgid "Font family :"
-msgstr "Tyyli:|#t"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:95
-#, fuzzy
-msgid "Page style :"
-msgstr "Sivuotsikkotyyli:|#S"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:112
-#, fuzzy
-msgid "Document class :"
-msgstr "Asiakirjat"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:177
-msgid "Two-sided"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:190
-msgid "Two column pages"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:208
-msgid "Inter-line spacing :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:225
-#, fuzzy
-msgid "Extra options :"
-msgstr "Lis‰asetukset"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:242
-msgid "Default paragraph spacing :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:259
-#, fuzzy
-msgid "Size :"
-msgstr "Koko:|#o"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:276
-msgid "Shrink :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:293
-#, fuzzy
-msgid "Stretch :"
-msgstr "Katu"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:387
-#, fuzzy
-msgid "Add space"
-msgstr "Osoiteosa"
-
-#: src/frontends/kde/dlg/indexdlgdata.C:42
-msgid "Keyword:"
-msgstr "Avainsana:"
-
-#: src/frontends/kde/dlg/lengthentry.C:35 src/frontends/kde/paraextradlg.C:29
-msgid "Centimetres"
-msgstr "Senttimetri‰"
-
-#: src/frontends/kde/dlg/lengthentry.C:36 src/frontends/kde/paraextradlg.C:30
-msgid "Inches"
-msgstr "Tuumaa"
-
-#: src/frontends/kde/dlg/lengthentry.C:37
-#, fuzzy
-msgid "Points"
-msgstr "Tulosta"
-
-#: src/frontends/kde/dlg/lengthentry.C:38 src/frontends/kde/paraextradlg.C:32
-msgid "Millimetres"
-msgstr "Millimetri‰"
-
-#: src/frontends/kde/dlg/lengthentry.C:39 src/frontends/kde/paraextradlg.C:33
-msgid "Picas"
-msgstr "Picaa"
-
-#: src/frontends/kde/dlg/lengthentry.C:40 src/frontends/kde/paraextradlg.C:34
-msgid "ex units"
-msgstr "ex-yksikkˆ‰"
-
-#: src/frontends/kde/dlg/lengthentry.C:41 src/frontends/kde/paraextradlg.C:35
-msgid "em units"
-msgstr "em-yksikkˆ‰"
-
-#: src/frontends/kde/dlg/lengthentry.C:42
-#, fuzzy
-msgid "Scaled points"
-msgstr "Cicero-pistett‰"
-
-#: src/frontends/kde/dlg/lengthentry.C:43
-#, fuzzy
-msgid "Big/PS points"
-msgstr "Big/PS-pistett‰ (1/72 tuumaa)"
-
-#: src/frontends/kde/dlg/lengthentry.C:44 src/frontends/kde/paraextradlg.C:38
-msgid "Didot points"
-msgstr "Didot-pistett‰"
-
-#: src/frontends/kde/dlg/lengthentry.C:45 src/frontends/kde/paraextradlg.C:39
-msgid "Cicero points"
-msgstr "Cicero-pistett‰"
-
-#: src/frontends/kde/dlg/logdlgdata.C:56 src/frontends/kde/refdlg.C:76
-#: src/frontends/kde/tocdlg.C:40
-msgid "&Update"
-msgstr "&P‰ivit‰"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:39
-#: src/frontends/kde/dlg/parabelowdlgdata.C:39
-msgid "Page break"
-msgstr "Sivunvaihto"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:52
-#: src/frontends/kde/dlg/parabelowdlgdata.C:52
-msgid "Keep space when at top of page"
-msgstr "S‰ilyt‰ v‰li sivun yl‰laidassa"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:70
-#: src/frontends/kde/dlg/parabelowdlgdata.C:70
-msgid "Extra Space"
-msgstr "Lis‰v‰li"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:101
-#: src/frontends/kde/dlg/parabelowdlgdata.C:101
-#, fuzzy
-msgid "Size"
-msgstr "Koko|#K"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:118
-#: src/frontends/kde/dlg/parabelowdlgdata.C:118
-#, fuzzy
-msgid "Stretch"
-msgstr "Katu"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:135
-#: src/frontends/kde/dlg/parabelowdlgdata.C:135
-#, fuzzy
-msgid "Shrink"
-msgstr "Serbia"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:118
-#: src/frontends/xforms/form_minipage.C:31
-#: src/frontends/xforms/form_paragraph.C:149
-#: src/frontends/xforms/form_paragraph.C:223
-msgid "Alignment"
-msgstr "Tasaus"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:130
-msgid "&Top"
-msgstr "&Yl‰"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:143
-msgid "&Middle"
-msgstr "&Keski"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:156
-msgid "&Bottom"
-msgstr "&Ala"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:169
-msgid "&HFill between minipage paragraphs"
-msgstr "&Vaakat‰yttˆ pienoissivukappaleiden v‰liss‰"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:182
-msgid "&Start new minipage"
-msgstr "&Aloita uusi pienoissivu"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:61
-msgid "Draw line above paragraph"
-msgstr "Piirr‰ viiva kappaleen ylle"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:74
-msgid "Draw line below paragraph"
-msgstr "Piirr‰ viiva kappaleen alle"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:87
-msgid "Don't indent paragraph"
-msgstr "ƒl‰ sisenn‰ kappaletta"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:105
-msgid "Label width"
-msgstr "Nimikeleveys"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:135
-#, fuzzy
-msgid "Justification"
-msgstr "Mukauttaminen|M"
-
-#: src/frontends/kde/dlg/printdlgdata.C:42
-msgid "Pages"
-msgstr "Sivut"
-
-#: src/frontends/kde/dlg/printdlgdata.C:73
-#: src/frontends/xforms/form_print.C:135
-msgid "Copies"
-msgstr "Kopiot"
-
-#: src/frontends/kde/dlg/printdlgdata.C:88
-#: src/frontends/xforms/form_print.C:138
-msgid "Print to"
-msgstr "Kohde"
-
-#: src/frontends/kde/dlg/printdlgdata.C:116
-msgid "&Print"
-msgstr "&Tulosta"
-
-#: src/frontends/kde/dlg/printdlgdata.C:149
-msgid "&All pages"
-msgstr "&Kaikki sivut"
-
-#: src/frontends/kde/dlg/printdlgdata.C:162
-msgid "&Odd pages"
-msgstr "&Parittomat sivut"
-
-#: src/frontends/kde/dlg/printdlgdata.C:175
-msgid "&Even pages"
-msgstr "&Parilliset sivut"
-
-#: src/frontends/kde/dlg/printdlgdata.C:214
-msgid "&Reverse order"
-msgstr "&K‰‰nteinen j‰rjestys"
-
-#: src/frontends/kde/dlg/printdlgdata.C:241
-msgid "Co&llate"
-msgstr "&J‰rjestetty"
-
-#: src/frontends/kde/dlg/printdlgdata.C:258
-msgid "From"
-msgstr "Alkaen"
-
-#: src/frontends/kde/dlg/printdlgdata.C:274
-msgid "To"
-msgstr "P‰‰ttyen"
-
-#: src/frontends/kde/dlg/printdlgdata.C:286
-msgid "&Printer"
-msgstr "&Tulostin"
-
-#: src/frontends/kde/dlg/printdlgdata.C:299
-msgid "&File"
-msgstr "&Tiedosto"
-
-#: src/frontends/kde/dlg/printdlgdata.C:339
-msgid "&Browse"
-msgstr "&Selaa"
-
-#: src/frontends/kde/dlg/printdlgdata.C:359
-msgid "Count"
-msgstr "M‰‰r‰"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:40
-msgid "&Insert"
-msgstr "&Lis‰‰"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:87
-#: src/frontends/xforms/form_maths_matrix.C:28
-#: src/frontends/xforms/form_tabular_create.C:49
-msgid "Rows"
-msgstr "Rivej‰"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:104
-#: src/frontends/xforms/form_tabular_create.C:45
-msgid "Columns"
-msgstr "Sarakkeita"
-
-#: src/frontends/kde/docdlg.C:44
-#, fuzzy
-msgid "&Settings"
-msgstr "Kappale"
-
-#: src/frontends/kde/docdlg.C:45
-msgid "&Extra"
-msgstr "&Lis‰"
-
-#: src/frontends/kde/docdlg.C:46
-msgid "&Geometry"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:47
-#, fuzzy
-msgid "&Language"
-msgstr "Kieli"
-
-#: src/frontends/kde/docdlg.C:48
-#, fuzzy
-msgid "&Bullets"
-msgstr "Merkit"
-
-#. the document language page
-#: src/frontends/kde/docdlg.C:56 src/frontends/kde/docdlg.C:68
-#: src/frontends/kde/docdlg.C:121 src/frontends/kde/docdlg.C:133
-#: src/frontends/kde/docdlg.C:144 src/frontends/qt2/FormDocument.C:116
-#: src/frontends/qt2/FormDocument.C:124 src/frontends/qt2/FormDocument.C:152
-#: src/frontends/qt2/FormDocument.C:194 src/frontends/qt2/FormDocument.C:569
-#: src/frontends/qt2/FormDocument.C:573
-#, fuzzy
-msgid "default"
-msgstr "Oletus"
-
-#: src/frontends/kde/docdlg.C:57 src/frontends/qt2/FormDocument.C:125
-#, fuzzy
-msgid "empty"
-msgstr "Syvyys"
-
-#: src/frontends/kde/docdlg.C:58 src/frontends/qt2/FormDocument.C:126
-#, fuzzy
-msgid "plain"
-msgstr "Erotus"
-
-#: src/frontends/kde/docdlg.C:59 src/frontends/qt2/FormDocument.C:127
-#, fuzzy
-msgid "headings"
-msgstr "K‰yttˆliittym‰n k‰sittely"
-
-#: src/frontends/kde/docdlg.C:60 src/frontends/qt2/FormDocument.C:128
-msgid "fancy"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:69
-#, fuzzy
-msgid "10 point"
-msgstr "KL osoitin"
-
-#: src/frontends/kde/docdlg.C:70
-#, fuzzy
-msgid "11 point"
-msgstr "KL osoitin"
-
-#: src/frontends/kde/docdlg.C:71
-#, fuzzy
-msgid "12 point"
-msgstr "KL osoitin"
-
-#: src/frontends/kde/docdlg.C:74
-#, fuzzy
-msgid "single"
-msgstr "Yksink."
-
-#: src/frontends/kde/docdlg.C:75
-#, fuzzy
-msgid "1 1/2 spacing"
-msgstr "Erotus"
-
-#: src/frontends/kde/docdlg.C:76
-#, fuzzy
-msgid "double"
-msgstr "Kaksink."
-
-#: src/frontends/kde/docdlg.C:77 src/frontends/kde/docdlg.C:86
-#: src/frontends/kde/docdlg.C:593 src/frontends/kde/docdlg.C:601
-#: src/frontends/kde/docdlg.C:611
-#, fuzzy
-msgid "custom"
-msgstr "Asiakas"
-
-#: src/frontends/kde/docdlg.C:83 src/frontends/qt2/FormDocument.C:198
-#: src/frontends/xforms/form_preferences.C:173
-msgid "small"
-msgstr "pieni"
-
-#: src/frontends/kde/docdlg.C:84
-#, fuzzy
-msgid "medium"
-msgstr "Keskivahva"
-
-#: src/frontends/kde/docdlg.C:85
-msgid "big"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:95 src/frontends/kde/docdlg.C:100
-#: src/frontends/kde/docdlg.C:105 src/frontends/kde/docdlg.C:110
-#: src/frontends/kde/docdlg.C:375 src/frontends/kde/docdlg.C:580
-#, fuzzy
-msgid "Here"
-msgstr "Heprea"
-
-#: src/frontends/kde/docdlg.C:96 src/frontends/kde/docdlg.C:101
-#: src/frontends/kde/docdlg.C:106 src/frontends/kde/docdlg.C:111
-#: src/frontends/kde/docdlg.C:376 src/frontends/kde/docdlg.C:582
-#, fuzzy
-msgid "Bottom of page"
-msgstr "alaosa"
-
-#: src/frontends/kde/docdlg.C:97 src/frontends/kde/docdlg.C:102
-#: src/frontends/kde/docdlg.C:107 src/frontends/kde/docdlg.C:112
-#: src/frontends/kde/docdlg.C:377 src/frontends/kde/docdlg.C:584
-#, fuzzy
-msgid "Top of page"
-msgstr "% sivusta"
-
-#: src/frontends/kde/docdlg.C:98 src/frontends/kde/docdlg.C:103
-#: src/frontends/kde/docdlg.C:108 src/frontends/kde/docdlg.C:113
-#: src/frontends/kde/docdlg.C:378 src/frontends/kde/docdlg.C:586
-#, fuzzy
-msgid "Separate page"
-msgstr "&Aloita uusi pienoissivu"
-
-#: src/frontends/kde/docdlg.C:99 src/frontends/kde/docdlg.C:104
-#: src/frontends/kde/docdlg.C:109 src/frontends/kde/docdlg.C:114
-#: src/frontends/kde/docdlg.C:356 src/frontends/kde/docdlg.C:357
-#: src/frontends/kde/docdlg.C:358 src/frontends/kde/docdlg.C:359
-#, fuzzy
-msgid "Not set"
-msgstr "Muistiinpano"
-
-#: src/frontends/kde/docdlg.C:122
-#, fuzzy
-msgid "US letter"
-msgstr "Kirje"
-
-#: src/frontends/kde/docdlg.C:123
-msgid "US legal"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:124
-msgid "US executive"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:134
-msgid "A4 small margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:135
-msgid "A4 very small margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:136
-msgid "A4 very wide margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:145 src/frontends/qt2/FormDocument.C:153
-#, fuzzy
-msgid "auto"
-msgstr "-"
-
-#: src/frontends/kde/docdlg.C:146 src/frontends/qt2/FormDocument.C:154
-#, fuzzy
-msgid "latin1"
-msgstr "Kuvateksti"
-
-#: src/frontends/kde/docdlg.C:147 src/frontends/qt2/FormDocument.C:155
-#, fuzzy
-msgid "latin2"
-msgstr "Kuvateksti"
-
-#: src/frontends/kde/docdlg.C:148 src/frontends/qt2/FormDocument.C:156
-#, fuzzy
-msgid "latin5"
-msgstr "Kuvateksti"
-
-#: src/frontends/kde/docdlg.C:149 src/frontends/qt2/FormDocument.C:157
-#, fuzzy
-msgid "latin9"
-msgstr "Kuvateksti"
-
-#: src/frontends/kde/docdlg.C:150 src/frontends/qt2/FormDocument.C:158
-msgid "koi8-r"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:151 src/frontends/qt2/FormDocument.C:159
-msgid "koi8-u"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:152 src/frontends/qt2/FormDocument.C:160
-msgid "cp866"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:153 src/frontends/qt2/FormDocument.C:161
-msgid "cp1251"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:154 src/frontends/qt2/FormDocument.C:162
-msgid "iso88595"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:157
-#, fuzzy
-msgid "`text'"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:158 src/frontends/qt2/FormDocument.C:169
-#, fuzzy
-msgid "``text''"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:159
-#, fuzzy
-msgid "'text'"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:160 src/frontends/qt2/FormDocument.C:170
-#, fuzzy
-msgid "''text''"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:161
-#, fuzzy
-msgid ",text`"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:162 src/frontends/qt2/FormDocument.C:171
-#, fuzzy
-msgid ",,text``"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:163
-#, fuzzy
-msgid ",text'"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:164 src/frontends/qt2/FormDocument.C:172
-#, fuzzy
-msgid ",,text''"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:165
-#, fuzzy
-msgid "<text>"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:166 src/frontends/qt2/FormDocument.C:173
-#, fuzzy
-msgid "´textª"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:167
-#, fuzzy
-msgid ">text<"
-msgstr "teksti"
-
-#: src/frontends/kde/docdlg.C:168 src/frontends/qt2/FormDocument.C:174
-#, fuzzy
-msgid "ªtext´"
-msgstr "teksti"
-
-#. FIXME: bullets
-#: src/frontends/kde/docdlg.C:173
-msgid "Specify header + footer style etc"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:174
-msgid ""
-"Add spacing between paragraphs rather\n"
-" than indenting"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:175
-msgid "Custom line spacing in line units"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:176
-msgid "Additional LaTeX options"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:177 src/frontends/kde/docdlg.C:178
-#: src/frontends/kde/docdlg.C:179 src/frontends/kde/docdlg.C:180
-msgid ""
-"Specify preferred order for\n"
-"placing floats"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:181
-msgid ""
-"Tell LaTeX to ignore usual rules\n"
-" for float placement"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:182
-msgid "How far in the (sub)sections are numbered"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:183
-#, fuzzy
-msgid "How detailed the Table of Contents is"
-msgstr "Ei sis‰llysluetteloa%i"
-
-#: src/frontends/kde/docdlg.C:184
-msgid "Program to produce PostScript output"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:185 src/frontends/kde/docdlg.C:186
-#: src/frontends/kde/docdlg.C:187 src/frontends/kde/docdlg.C:188
-#: src/frontends/kde/paraextradlg.C:43 src/frontends/kde/paraextradlg.C:44
-#: src/frontends/kde/parageneraldlg.C:59 src/frontends/kde/refdlg.C:97
-msgid "FIXME please !"
-msgstr ""
-
-#: src/frontends/kde/FileDialog.C:49 src/frontends/qt2/FileDialog.C:43
+#: src/frontends/qt2/FileDialog.C:43
 msgid "*|All files"
 msgstr ""
-
-#: src/frontends/kde/FormCitation.C:53 src/frontends/qt2/FormCitation.C:47
-#: src/frontends/xforms/FormCitation.C:100
-msgid "Citation"
-msgstr "L‰hdeviite"
-
-#: src/frontends/kde/FormCitation.C:290
-#, fuzzy
-msgid "Key not found."
-msgstr "Merkistˆ‰ ei lˆydy!"
-
-#: src/frontends/kde/FormCopyright.C:26
-msgid "LyX: Copyright and Warranty"
-msgstr "LyX: Tekij‰noikeus ja takuu"
-
-#: src/frontends/kde/FormDocument.C:68 src/frontends/qt2/FormDocument.C:230
-#: src/frontends/xforms/FormDocument.C:274
-msgid "Document layout set"
-msgstr "Asiakirjatyyli asetettu"
-
-#: src/frontends/kde/FormDocument.C:75
-#, fuzzy
-msgid "LyX: Document Options"
-msgstr "Avoimia asiakirjoja ei ole!"
-
-#. successfully loaded
-#: src/frontends/kde/FormDocument.C:93 src/frontends/qt2/FormDocument.C:348
-#: src/frontends/xforms/FormDocument.C:388
-msgid "Converting document to new document class..."
-msgstr "Asiakirja muuntuu toiseen asiakirjaluokkaan sopivaksi..."
-
-#: src/frontends/kde/FormIndex.C:25 src/frontends/qt2/FormIndex.C:106
-msgid "LyX: Index"
-msgstr "LyX: Hakemisto"
-
-#: src/frontends/kde/FormLog.C:31 src/frontends/xforms/FormLog.C:27
-#, fuzzy
-msgid "Build log"
-msgstr "Build-ohjelma"
-
-#: src/frontends/kde/FormLog.C:33
-#, fuzzy
-msgid "LaTeX log"
-msgstr "LaTeX Lokitiedosto"
-
-#: src/frontends/kde/FormLog.C:40 src/frontends/xforms/FormLog.C:31
-#, fuzzy
-msgid "No build log file found"
-msgstr "LaTeXin lokitiedostoa ei ole"
-
-#: src/frontends/kde/FormLog.C:42 src/frontends/xforms/FormLog.C:39
-msgid "No LaTeX log file found"
-msgstr "LaTeXin lokitiedostoa ei ole"
-
-#: src/frontends/kde/FormLog.C:58
-#, fuzzy
-msgid "LyX: LaTeX Log"
-msgstr "LaTeX Lokitiedosto"
-
-#: src/frontends/kde/FormParagraph.C:194 src/frontends/qt2/FormParagraph.C:174
-#: src/frontends/xforms/FormParagraph.C:162
-msgid "Paragraph layout set"
-msgstr "Kappaletyyli asetettu"
-
-#: src/frontends/kde/FormParagraph.C:202 src/frontends/qt2/FormParagraph.C:182
-msgid "LyX: Paragraph Options"
-msgstr "LyX: Kappaleen asetukset"
-
-#: src/frontends/kde/FormPrint.C:30 src/frontends/qt2/FormPrint.C:104
-msgid "LyX: Print"
-msgstr "LyX: Tulosta"
-
-#: src/frontends/kde/FormRef.C:32 src/frontends/qt2/FormRef.C:252
-msgid "LyX: Cross Reference"
-msgstr "LyX: Viite"
-
-#: src/frontends/kde/FormRef.C:61 src/frontends/kde/refdlg.C:71
-#: src/frontends/qt2/FormRef.C:116 src/frontends/qt2/FormRef.C:127
-#: src/frontends/qt2/FormRef.C:187
-msgid "&Goto reference"
-msgstr "&Siirry viitteeseen"
-
-#: src/frontends/kde/FormRef.C:63
-#, fuzzy
-msgid "Jump to selected reference"
-msgstr " Viite: Valitse viite "
-
-#: src/frontends/kde/FormTabularCreate.C:26
-#: src/frontends/qt2/FormTabularCreate.C:48
-msgid "LyX: Insert Table"
-msgstr "LyX: Lis‰‰ taulukko"
-
-#: src/frontends/kde/FormToc.C:249 src/frontends/qt2/FormToc.C:248
-msgid "LyX: Table of Contents"
-msgstr "LyX: Sis‰llysluettelo"
-
-#: src/frontends/kde/FormUrl.C:45 src/frontends/qt2/FormUrl.C:123
-msgid "LyX: Url"
-msgstr "LyX: URL"
-
-#: src/frontends/kde/FormVCLog.C:37
-#, fuzzy
-msgid "No version control log file found"
-msgstr "LaTeXin lokitiedostoa ei ole"
-
-#: src/frontends/kde/FormVCLog.C:56
-#, fuzzy
-msgid "LyX: Version Control Log"
-msgstr "Versiohallinta|r"
-
-#. tooltips
-#: src/frontends/kde/indexdlg.C:24 src/frontends/kde/indexdlg.C:25
-msgid "Index entry"
-msgstr "Hakemistoviite"
-
-#: src/frontends/kde/paradlg.C:31
-msgid "&General"
-msgstr "&Yleinen"
-
-#. FIXME: should be cleverer here
-#: src/frontends/kde/paradlg.C:90 src/frontends/qt2/paragraphdlgimpl.C:56
-#: src/paragraph.C:1028
-msgid "Senseless with this layout!"
-msgstr "J‰rjetˆnt‰ t‰ll‰ kappaletyylill‰!"
-
-#: src/frontends/kde/paraextradlg.C:24
-msgid "Indented paragraph"
-msgstr "Sisennetty kappale"
-
-#: src/frontends/kde/paraextradlg.C:25
-msgid "Minipage"
-msgstr "Pienoissivu"
-
-#: src/frontends/kde/paraextradlg.C:26
-msgid "Wrap text around floats (floatflt)"
-msgstr "Teksti kiert‰‰ irralliset osat (floatflt)"
-
-#: src/frontends/kde/paraextradlg.C:31
-msgid "Points (1/72.27 inch)"
-msgstr "Pisteit‰ (1/72.27 tuumaa)"
-
-#: src/frontends/kde/paraextradlg.C:36
-msgid "Scaled points (1/65536 pt)"
-msgstr "Skaalattua pistett‰ (1/65536 pt)"
-
-#: src/frontends/kde/paraextradlg.C:37
-msgid "Big/PS points (1/72 inch)"
-msgstr "Big/PS-pistett‰ (1/72 tuumaa)"
-
-#: src/frontends/kde/paraextradlg.C:40
-msgid "Percent of column"
-msgstr "Prosenttia palstasta"
-
-#: src/frontends/kde/parageneraldlg.C:27
-msgid "&Spacing Above"
-msgstr "V‰li &yll‰"
-
-#: src/frontends/kde/parageneraldlg.C:28
-msgid "Spacing &Below"
-msgstr "V‰li &alla"
-
-#: src/frontends/kde/parageneraldlg.C:33 src/frontends/kde/parageneraldlg.C:42
-#: src/frontends/qt2/FormDocument.C:84
-msgid "None"
-msgstr "Ei mik‰‰n"
-
-#: src/frontends/kde/parageneraldlg.C:34 src/frontends/kde/parageneraldlg.C:43
-msgid "Defskip"
-msgstr "Oletusv‰li"
-
-#: src/frontends/kde/parageneraldlg.C:35 src/frontends/kde/parageneraldlg.C:44
-msgid "Small skip"
-msgstr "Pieni v‰li"
-
-#: src/frontends/kde/parageneraldlg.C:36 src/frontends/kde/parageneraldlg.C:45
-msgid "Medium skip"
-msgstr "Keskisuuri v‰li"
-
-#: src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:46
-msgid "Big skip"
-msgstr "Suuri v‰li"
-
-#: src/frontends/kde/parageneraldlg.C:38 src/frontends/kde/parageneraldlg.C:47
-msgid "VFill"
-msgstr "Vaakat‰yttˆ"
-
-#: src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:48
-#: src/frontends/qt2/FormDocument.C:73
-#, fuzzy
-msgid "Custom"
-msgstr "Asiakas"
-
-#: src/frontends/kde/parageneraldlg.C:51
-msgid "Block"
-msgstr "Molemmat"
-
-#: src/frontends/kde/parageneraldlg.C:52
-#, fuzzy
-msgid "Centered"
-msgstr "Keskit‰"
-
-#: src/frontends/kde/parageneraldlg.C:53
-msgid "Left"
-msgstr "Vasen"
-
-#: src/frontends/kde/parageneraldlg.C:54
-msgid "Right"
-msgstr "Oikea"
-
-#: src/frontends/kde/parageneraldlg.C:57
-#, fuzzy
-msgid "Alignment of current paragraph"
-msgstr "Valitse seuraava kappale"
-
-#: src/frontends/kde/parageneraldlg.C:58
-#, fuzzy
-msgid "No indent on first line of paragraph"
-msgstr "ƒl‰ sisenn‰ kappaletta"
-
-#: src/frontends/kde/parageneraldlg.C:61
-#, fuzzy
-msgid "New page above this paragraph"
-msgstr "Piirr‰ viiva kappaleen ylle"
-
-#: src/frontends/kde/parageneraldlg.C:62
-msgid "Don't hug margin if at top of page"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:63
-#, fuzzy
-msgid "Size of extra space above paragraph"
-msgstr "Piirr‰ viiva kappaleen ylle"
-
-#: src/frontends/kde/parageneraldlg.C:64 src/frontends/kde/parageneraldlg.C:70
-msgid "Maximum extra space that can be added"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:65 src/frontends/kde/parageneraldlg.C:71
-msgid "Minimum space required"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:67
-#, fuzzy
-msgid "New page below this paragraph"
-msgstr "Piirr‰ viiva kappaleen alle"
-
-#: src/frontends/kde/parageneraldlg.C:68
-#, fuzzy
-msgid "Don't hug margin if at bottom of page"
-msgstr "S‰ilyt‰ v‰li sivun alalaidassa"
-
-#: src/frontends/kde/parageneraldlg.C:69
-#, fuzzy
-msgid "Size of extra space below paragraph"
-msgstr "Piirr‰ viiva kappaleen alle"
-
-#: src/frontends/kde/printdlg.C:28
-msgid "Print every page"
-msgstr "Tulosta joka sivu"
-
-#: src/frontends/kde/printdlg.C:29
-msgid "Print odd-numbered pages only"
-msgstr "Tulosta vain parittomat sivut"
-
-#: src/frontends/kde/printdlg.C:30
-msgid "Print even-numbered pages only"
-msgstr "Tulosta vain parilliset sivut"
-
-#: src/frontends/kde/printdlg.C:31
-msgid "Print from page number"
-msgstr "Tulosta tietyst‰ sivusta alkaen"
-
-#: src/frontends/kde/printdlg.C:32
-msgid "Print to page number"
-msgstr "Tulosta tiettyyn sivuun asti"
-
-#: src/frontends/kde/printdlg.C:33
-msgid "Print in reverse order (last page first)"
-msgstr "Tulosta k‰‰nteisess‰ j‰rjestyksess‰ (viimeinen sivu ensin)"
-
-#: src/frontends/kde/printdlg.C:34
-msgid "Number of copies to print"
-msgstr "Tulostettavien kopioiden m‰‰r‰"
-
-#: src/frontends/kde/printdlg.C:35
-msgid "Collate multiple copies"
-msgstr "J‰rjest‰ kopiot"
-
-#: src/frontends/kde/printdlg.C:36
-msgid "Printer name"
-msgstr "Tulostimen nimi"
-
-#: src/frontends/kde/printdlg.C:37
-#, fuzzy
-msgid "Output filename (PostScript)"
-msgstr "Tulostiedoston nimi"
-
-#: src/frontends/kde/printdlg.C:38
-msgid "Select output filename"
-msgstr "Anna tulostiedoston nimi"
-
-#: src/frontends/kde/refdlg.C:28
-msgid "Available References"
-msgstr "Mahdolliset viitteet"
-
-#: src/frontends/kde/refdlg.C:43 src/frontends/kde/urldlg.C:36
-msgid "Name :"
-msgstr "Nimi :"
-
-#: src/frontends/kde/refdlg.C:49
-msgid "Reference :"
-msgstr "Viite :"
-
-#: src/frontends/kde/refdlg.C:55
-msgid "Sort"
-msgstr "J‰rjest‰"
-
-#: src/frontends/kde/refdlg.C:65
-msgid "Reference Type"
-msgstr "Viitetyyppi"
-
-#. tooltips
-#: src/frontends/kde/refdlg.C:93
-msgid "Reference as it appears in output"
-msgstr "Viite sellaisena kuin se on tulosteessa"
-
-#: src/frontends/kde/refdlg.C:94
-msgid "Sort references in alphabetical order ?"
-msgstr "Haluatko j‰rjest‰‰ viitteet aakkosj‰rjestykseen?"
-
-#: src/frontends/kde/refdlg.C:95
-msgid "Update list of references shown"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:96
-#, fuzzy
-msgid "Jump to reference in document"
-msgstr "Siirry asiakirjan loppuun"
-
-#: src/frontends/kde/tabcreatedlg.C:27
-#: src/frontends/qt2/tabularcreatedlgimpl.C:34
-msgid "Drag with left mouse button to resize"
-msgstr ""
-
-#: src/frontends/kde/tocdlg.C:54
-msgid "Depth"
-msgstr "Syvyys"
-
-#: src/frontends/kde/urldlg.C:30
-msgid "Url :"
-msgstr "URL :"
-
-#: src/frontends/kde/urldlg.C:42
-msgid "Generate hyperlink"
-msgstr "Luo hyperlinkki"
-
-#: src/frontends/kde/urldlg.C:61 src/frontends/kde/urldlg.C:62
-msgid "Name associated with the URL"
-msgstr "URL:‰‰n liittyv‰ nimi"
-
-#: src/frontends/kde/urldlg.C:63
-msgid "Output as a hyperlink ?"
-msgstr "Tuota hyperlinkki?"
 
 #: src/frontends/qt2/FormCharacter.C:64
 #, fuzzy
 msgid "Character Options"
 msgstr "Merkkityyli"
+
+#: src/frontends/qt2/FormCitation.C:47 src/frontends/xforms/FormCitation.C:100
+msgid "Citation"
+msgstr "L‰hdeviite"
 
 #: src/frontends/qt2/FormCredits.C:33 src/frontends/xforms/FormAboutlyx.C:70
 msgid "Credits"
@@ -4693,6 +3473,11 @@ msgstr "Asiakirjan tyylipohja"
 #: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:584
 msgid "Default"
 msgstr "Oletus"
+
+#: src/frontends/qt2/FormDocument.C:73
+#, fuzzy
+msgid "Custom"
+msgstr "Asiakas"
 
 #: src/frontends/qt2/FormDocument.C:74
 #, fuzzy
@@ -4731,6 +3516,10 @@ msgstr ""
 msgid "B5"
 msgstr ""
 
+#: src/frontends/qt2/FormDocument.C:84
+msgid "None"
+msgstr "Ei mik‰‰n"
+
 #: src/frontends/qt2/FormDocument.C:85
 msgid "A4 small Margins (only portrait)"
 msgstr ""
@@ -4753,6 +3542,14 @@ msgstr "Puolikas"
 msgid "Other"
 msgstr "Muu ("
 
+#. the document language page
+#: src/frontends/qt2/FormDocument.C:116 src/frontends/qt2/FormDocument.C:124
+#: src/frontends/qt2/FormDocument.C:152 src/frontends/qt2/FormDocument.C:194
+#: src/frontends/qt2/FormDocument.C:569 src/frontends/qt2/FormDocument.C:573
+#, fuzzy
+msgid "default"
+msgstr "Oletus"
+
 #: src/frontends/qt2/FormDocument.C:117
 msgid "10"
 msgstr ""
@@ -4764,6 +3561,25 @@ msgstr "1|#1"
 
 #: src/frontends/qt2/FormDocument.C:119
 msgid "12"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:125
+#, fuzzy
+msgid "empty"
+msgstr "Syvyys"
+
+#: src/frontends/qt2/FormDocument.C:126
+#, fuzzy
+msgid "plain"
+msgstr "Erotus"
+
+#: src/frontends/qt2/FormDocument.C:127
+#, fuzzy
+msgid "headings"
+msgstr "K‰yttˆliittym‰n k‰sittely"
+
+#: src/frontends/qt2/FormDocument.C:128
+msgid "fancy"
 msgstr ""
 
 #: src/frontends/qt2/FormDocument.C:130
@@ -4785,6 +3601,81 @@ msgstr "Suuri v‰li"
 msgid "Length"
 msgstr "Pituus"
 
+#: src/frontends/qt2/FormDocument.C:153
+#, fuzzy
+msgid "auto"
+msgstr "-"
+
+#: src/frontends/qt2/FormDocument.C:154
+#, fuzzy
+msgid "latin1"
+msgstr "Kuvateksti"
+
+#: src/frontends/qt2/FormDocument.C:155
+#, fuzzy
+msgid "latin2"
+msgstr "Kuvateksti"
+
+#: src/frontends/qt2/FormDocument.C:156
+#, fuzzy
+msgid "latin5"
+msgstr "Kuvateksti"
+
+#: src/frontends/qt2/FormDocument.C:157
+#, fuzzy
+msgid "latin9"
+msgstr "Kuvateksti"
+
+#: src/frontends/qt2/FormDocument.C:158
+msgid "koi8-r"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:159
+msgid "koi8-u"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:160
+msgid "cp866"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:161
+msgid "cp1251"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:162
+msgid "iso88595"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:169
+#, fuzzy
+msgid "``text''"
+msgstr "teksti"
+
+#: src/frontends/qt2/FormDocument.C:170
+#, fuzzy
+msgid "''text''"
+msgstr "teksti"
+
+#: src/frontends/qt2/FormDocument.C:171
+#, fuzzy
+msgid ",,text``"
+msgstr "teksti"
+
+#: src/frontends/qt2/FormDocument.C:172
+#, fuzzy
+msgid ",,text''"
+msgstr "teksti"
+
+#: src/frontends/qt2/FormDocument.C:173
+#, fuzzy
+msgid "´textª"
+msgstr "teksti"
+
+#: src/frontends/qt2/FormDocument.C:174
+#, fuzzy
+msgid "ªtext´"
+msgstr "teksti"
+
 #: src/frontends/qt2/FormDocument.C:195
 #: src/frontends/xforms/form_preferences.C:167
 msgid "tiny"
@@ -4799,6 +3690,11 @@ msgstr "skripti"
 #: src/frontends/xforms/form_preferences.C:140
 msgid "footnote"
 msgstr "alaviite"
+
+#: src/frontends/qt2/FormDocument.C:198
+#: src/frontends/xforms/form_preferences.C:173
+msgid "small"
+msgstr "pieni"
 
 #: src/frontends/qt2/FormDocument.C:199
 #: src/frontends/xforms/form_preferences.C:152
@@ -4818,6 +3714,16 @@ msgstr ""
 #: src/frontends/xforms/form_preferences.C:149
 msgid "huge"
 msgstr "valtava"
+
+#: src/frontends/qt2/FormDocument.C:230
+#: src/frontends/xforms/FormDocument.C:274
+msgid "Document layout set"
+msgstr "Asiakirjatyyli asetettu"
+
+#: src/frontends/qt2/FormDocument.C:348
+#: src/frontends/xforms/FormDocument.C:388
+msgid "Converting document to new document class..."
+msgstr "Asiakirja muuntuu toiseen asiakirjaluokkaan sopivaksi..."
 
 #: src/frontends/qt2/FormDocument.C:355
 #: src/frontends/xforms/FormDocument.C:395
@@ -4874,6 +3780,19 @@ msgstr "vaihtuvat valitun asiakirjaluokan oletusarvoiksi?"
 msgid "Unable to switch to new document class."
 msgstr "En voi vaihtaa uuteen asiakirjaluokkaan"
 
+#: src/frontends/qt2/FormIndex.C:106
+msgid "LyX: Index"
+msgstr "LyX: Hakemisto"
+
+#: src/frontends/qt2/FormParagraph.C:174
+#: src/frontends/xforms/FormParagraph.C:162
+msgid "Paragraph layout set"
+msgstr "Kappaletyyli asetettu"
+
+#: src/frontends/qt2/FormParagraph.C:182
+msgid "LyX: Paragraph Options"
+msgstr "LyX: Kappaleen asetukset"
+
 #. FIXME: should have a utility class for this
 #: src/frontends/qt2/FormPrint.C:92
 msgid ""
@@ -4891,14 +3810,56 @@ msgstr "Tarkista, ett‰ parametrit ovat oikein\n"
 msgid "LyX: Print Error"
 msgstr "LyX: Tulostusvirhe"
 
+#: src/frontends/qt2/FormPrint.C:104
+msgid "LyX: Print"
+msgstr "LyX: Tulosta"
+
 #: src/frontends/qt2/FormRef.C:111
 msgid "&Go back"
 msgstr "&Palaa"
+
+#: src/frontends/qt2/FormRef.C:116 src/frontends/qt2/FormRef.C:127
+#: src/frontends/qt2/FormRef.C:187
+msgid "&Goto reference"
+msgstr "&Siirry viitteeseen"
+
+#: src/frontends/qt2/FormRef.C:204 src/frontends/qt2/paragraphdlgimpl.C:49
+msgid "&Close"
+msgstr "Sul&je"
+
+#: src/frontends/qt2/FormRef.C:206 src/frontends/qt2/paragraphdlgimpl.C:49
+msgid "&Cancel"
+msgstr "&Peru"
+
+#: src/frontends/qt2/FormRef.C:252
+msgid "LyX: Cross Reference"
+msgstr "LyX: Viite"
 
 #: src/frontends/qt2/FormSearch.C:47
 #, fuzzy
 msgid "Find and Replace"
 msgstr "Etsi tai korvaa"
+
+#: src/frontends/qt2/FormTabularCreate.C:48
+msgid "LyX: Insert Table"
+msgstr "LyX: Lis‰‰ taulukko"
+
+#: src/frontends/qt2/FormToc.C:248
+msgid "LyX: Table of Contents"
+msgstr "LyX: Sis‰llysluettelo"
+
+#: src/frontends/qt2/FormUrl.C:123
+msgid "LyX: Url"
+msgstr "LyX: URL"
+
+#. FIXME: should be cleverer here
+#: src/frontends/qt2/paragraphdlgimpl.C:56 src/paragraph.C:1028
+msgid "Senseless with this layout!"
+msgstr "J‰rjetˆnt‰ t‰ll‰ kappaletyylill‰!"
+
+#: src/frontends/qt2/tabularcreatedlgimpl.C:34
+msgid "Drag with left mouse button to resize"
+msgstr ""
 
 #: src/frontends/xforms/combox.C:505
 msgid "Done"
@@ -4907,21 +3868,6 @@ msgstr "Valmis"
 #: src/frontends/xforms/FileDialog.C:59
 msgid "*"
 msgstr ""
-
-#: src/frontends/xforms/FormAboutlyx.C:28
-msgid "About LyX"
-msgstr ""
-
-#. stack tabs
-#: src/frontends/xforms/FormAboutlyx.C:66
-#, fuzzy
-msgid "Copyright and Version"
-msgstr "Tekij‰noikeus ja takuu"
-
-#: src/frontends/xforms/FormAboutlyx.C:68
-#, fuzzy
-msgid "License and Warranty"
-msgstr "Tekij‰noikeus ja takuu"
 
 #: src/frontends/xforms/FormMathsBitmap.C:79
 #: src/frontends/xforms/form_aboutlyx.C:29
@@ -4938,10 +3884,20 @@ msgstr "Sulje|^["
 msgid "Text"
 msgstr "teksti"
 
-#: src/frontends/xforms/FormBibitem.C:25
+#: src/frontends/xforms/FormAboutlyx.C:28
+msgid "About LyX"
+msgstr ""
+
+#. stack tabs
+#: src/frontends/xforms/FormAboutlyx.C:66
 #, fuzzy
-msgid "Bibliography Entry"
-msgstr "L‰hdeviitteet"
+msgid "Copyright and Version"
+msgstr "Tekij‰noikeus ja takuu"
+
+#: src/frontends/xforms/FormAboutlyx.C:68
+#, fuzzy
+msgid "License and Warranty"
+msgstr "Tekij‰noikeus ja takuu"
 
 #: src/frontends/xforms/form_bibitem.C:29
 msgid "Key:|#K"
@@ -4951,10 +3907,10 @@ msgstr "Avain:|#A"
 msgid "Label:|#L"
 msgstr "Nimike:|#N"
 
-#: src/frontends/xforms/FormBibtex.C:25
+#: src/frontends/xforms/FormBibitem.C:25
 #, fuzzy
-msgid "BibTeX Database"
-msgstr "Tietokanta:"
+msgid "Bibliography Entry"
+msgstr "L‰hdeviitteet"
 
 #: src/frontends/xforms/form_bibtex.C:29
 #, fuzzy
@@ -4966,6 +3922,11 @@ msgstr "Tietokanta:"
 msgid "Style:|#S"
 msgstr "Tyyli:  "
 
+#: src/frontends/xforms/FormBibtex.C:25
+#, fuzzy
+msgid "BibTeX Database"
+msgstr "Tietokanta:"
+
 #: src/frontends/xforms/form_browser.C:31 src/frontends/xforms/form_error.C:31
 #: src/frontends/xforms/form_toc.C:48
 #, fuzzy
@@ -4975,11 +3936,6 @@ msgstr "Sulje|#S^[^M"
 #: src/frontends/xforms/form_browser.C:39
 msgid "Update|#Uu"
 msgstr "P‰ivit‰|#Pp"
-
-#: src/frontends/xforms/FormCharacter.C:34
-#, fuzzy
-msgid "Character Layout"
-msgstr "Merkkityyli"
 
 #: src/frontends/xforms/form_character.C:33
 msgid "Family:|#F"
@@ -5027,10 +3983,10 @@ msgstr "Koko alueeseen vaikuttavat"
 msgid "These are always toggled"
 msgstr "Alueen asetuksia muuttavat"
 
-#: src/frontends/xforms/FormCitation.C:399
+#: src/frontends/xforms/FormCharacter.C:34
 #, fuzzy
-msgid "Not yet supported"
-msgstr "\"Tee uudelleen\" ei viel‰ toimi matematiikkatilassa"
+msgid "Character Layout"
+msgstr "Merkkityyli"
 
 #: src/frontends/xforms/form_citation.C:29
 msgid "Inset keys|#I"
@@ -5131,68 +4087,10 @@ msgstr "Seuraava teksti|#Ss"
 msgid "Restore|#R"
 msgstr "Palauta|#u"
 
-#: src/frontends/xforms/FormDocument.C:92
-msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-msgstr ""
-" Oletus | Oma | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | "
-"B5 "
-
-#: src/frontends/xforms/FormDocument.C:95
-msgid ""
-" None | A4 small Margins (only portrait) | A4 very small Margins (only "
-"portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Ei mit‰‰n | A4 kapeat marginaalit (vain pysty) | A4 hyvin kapeat "
-"marginaalit (vain pysty) | A4 hyvin leve‰t marginaalit (vain pysty) "
-
-#: src/frontends/xforms/FormDocument.C:146
-msgid " Single | OneHalf | Double | Other "
-msgstr " Yksinkertainen | Puolitoista | Kaksinkertainen | Muu "
-
-#: src/frontends/xforms/FormDocument.C:154
-msgid " Smallskip | Medskip | Bigskip | Length "
-msgstr " Pieni | Keski | Suuri | Annettu pituus "
-
-#: src/frontends/xforms/FormDocument.C:198
-msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | ´textª | ªtext´ "
-msgstr ""
-" ``teksti'' | ''teksti'' | ,,teksti`` | ,,teksti'' | ´tekstiª | ªteksti´ "
-
-#: src/frontends/xforms/FormDocument.C:216
-msgid " Author-year | Numerical "
-msgstr ""
-
-#: src/frontends/xforms/FormDocument.C:229
-msgid ""
-" default | tiny | script | footnote | small | normal | large | Large | LARGE "
-"| huge | Huge"
-msgstr ""
-" oletus | pikkuruinen | skripti | alaviite | pieni | normaali | suuri | "
-"suurempi | suurin | valtava | valtavampi"
-
-#: src/frontends/xforms/FormDocument.C:243
-#: src/frontends/xforms/FormPreferences.C:272
-msgid "Language"
-msgstr "Kieli"
-
-#: src/frontends/xforms/FormDocument.C:245
-msgid "Extra"
-msgstr "Lis‰"
-
-#: src/frontends/xforms/FormDocument.C:247
-msgid "Bullets"
-msgstr "Merkit"
-
-#: src/frontends/xforms/FormDocument.C:250
+#: src/frontends/xforms/FormCitation.C:399
 #, fuzzy
-msgid ""
-"Your version of libXpm is older than 4.7.\n"
-"The `bullet' tab of the document dialog has been disabled"
-msgstr ""
-"libXpm-versiosi on vanhempi kuin 4.7.\n"
-"Merkit-sivu asiakirjan asetuksista on pois k‰ytˆst‰."
+msgid "Not yet supported"
+msgstr "\"Tee uudelleen\" ei viel‰ toimi matematiikkatilassa"
 
 #: src/frontends/xforms/form_document.C:31
 #: src/frontends/xforms/form_paragraph.C:314
@@ -5204,9 +4102,17 @@ msgstr "Asetussivut"
 msgid "Special:|#S"
 msgstr "Erikois:|#E"
 
+#: src/frontends/xforms/form_document.C:99
+msgid "Margins"
+msgstr "Reunukset"
+
 #: src/frontends/xforms/form_document.C:103
 msgid "Foot/Head Margins"
 msgstr "Sivuotsikkotila"
+
+#: src/frontends/xforms/form_document.C:114
+msgid "Orientation"
+msgstr "Asento"
 
 #: src/frontends/xforms/form_document.C:121
 msgid "Portrait|#o"
@@ -5434,14 +4340,76 @@ msgstr "Ding 4|#g"
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
+#: src/frontends/xforms/FormDocument.C:92
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+" Oletus | Oma | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | "
+"B5 "
+
+#: src/frontends/xforms/FormDocument.C:95
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+" Ei mit‰‰n | A4 kapeat marginaalit (vain pysty) | A4 hyvin kapeat "
+"marginaalit (vain pysty) | A4 hyvin leve‰t marginaalit (vain pysty) "
+
+#: src/frontends/xforms/FormDocument.C:146
+msgid " Single | OneHalf | Double | Other "
+msgstr " Yksinkertainen | Puolitoista | Kaksinkertainen | Muu "
+
+#: src/frontends/xforms/FormDocument.C:154
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Pieni | Keski | Suuri | Annettu pituus "
+
+#: src/frontends/xforms/FormDocument.C:198
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | ´textª | ªtext´ "
+msgstr ""
+" ``teksti'' | ''teksti'' | ,,teksti`` | ,,teksti'' | ´tekstiª | ªteksti´ "
+
+#: src/frontends/xforms/FormDocument.C:216
+msgid " Author-year | Numerical "
+msgstr ""
+
+#: src/frontends/xforms/FormDocument.C:229
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+" oletus | pikkuruinen | skripti | alaviite | pieni | normaali | suuri | "
+"suurempi | suurin | valtava | valtavampi"
+
+#: src/frontends/xforms/FormDocument.C:241
+msgid "Paper"
+msgstr "Sivu"
+
+#: src/frontends/xforms/FormDocument.C:243
+#: src/frontends/xforms/FormPreferences.C:272
+msgid "Language"
+msgstr "Kieli"
+
+#: src/frontends/xforms/FormDocument.C:245
+msgid "Extra"
+msgstr "Lis‰"
+
+#: src/frontends/xforms/FormDocument.C:247
+msgid "Bullets"
+msgstr "Merkit"
+
+#: src/frontends/xforms/FormDocument.C:250
+#, fuzzy
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document dialog has been disabled"
+msgstr ""
+"libXpm-versiosi on vanhempi kuin 4.7.\n"
+"Merkit-sivu asiakirjan asetuksista on pois k‰ytˆst‰."
+
 #: src/frontends/xforms/FormError.C:30
 msgid "LaTeX Error"
 msgstr "LaTeX-virhe"
-
-#: src/frontends/xforms/FormExternal.C:33
-#, fuzzy
-msgid "Edit external file"
-msgstr "Ulkoinen osion tiedosto"
 
 #: src/frontends/xforms/form_external.C:29
 msgid "Template|#t"
@@ -5477,9 +4445,10 @@ msgstr "&Toteuta"
 msgid "Cancel|#C^["
 msgstr "Peru|#P^["
 
-#: src/frontends/xforms/FormFiledialog.C:203
-msgid "Warning! Couldn't open directory."
-msgstr "Varoitus! Hakemistoa ei voitu avata."
+#: src/frontends/xforms/FormExternal.C:33
+#, fuzzy
+msgid "Edit external file"
+msgstr "Ulkoinen osion tiedosto"
 
 #: src/frontends/xforms/form_filedialog.C:34
 msgid "Directory:|#D"
@@ -5508,6 +4477,10 @@ msgstr "K‰ytt‰j‰1|#1"
 #: src/frontends/xforms/form_filedialog.C:83
 msgid "User2|#2"
 msgstr "K‰ytt‰j‰2|#2"
+
+#: src/frontends/xforms/FormFiledialog.C:203
+msgid "Warning! Couldn't open directory."
+msgstr "Varoitus! Hakemistoa ei voitu avata."
 
 #: src/frontends/xforms/form_graphics.C:33
 msgid "Graphics File|#F"
@@ -5581,11 +4554,6 @@ msgstr "P‰ivit‰|#i"
 msgid "Ok"
 msgstr "OK"
 
-#: src/frontends/xforms/FormInclude.C:29
-#, fuzzy
-msgid "Include file"
-msgstr "Sis‰llyt‰ tiedosto|y"
-
 #: src/frontends/xforms/form_include.C:37
 msgid "Don't typeset|#D"
 msgstr "ƒl‰ lado|#d"
@@ -5614,17 +4582,36 @@ msgstr "K‰yt‰ syˆtett‰|#y"
 msgid "Use include|#U"
 msgstr "K‰yt‰ sis‰llytyst‰|#i"
 
-#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:49
-msgid "Index"
-msgstr "Hakusana"
+#: src/frontends/xforms/FormInclude.C:29
+#, fuzzy
+msgid "Include file"
+msgstr "Sis‰llyt‰ tiedosto|y"
 
 #: src/frontends/xforms/form_index.C:29
 msgid "Keyword|#K"
 msgstr "Avainsana|#A"
 
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:49
+msgid "Index"
+msgstr "Hakusana"
+
 #: src/frontends/xforms/FormLog.C:18 src/frontends/xforms/FormLog.C:35
 msgid "LaTeX Log"
 msgstr "LaTeX Lokitiedosto"
+
+#: src/frontends/xforms/FormLog.C:27
+#, fuzzy
+msgid "Build log"
+msgstr "Build-ohjelma"
+
+#: src/frontends/xforms/FormLog.C:31
+#, fuzzy
+msgid "No build log file found"
+msgstr "LaTeXin lokitiedostoa ei ole"
+
+#: src/frontends/xforms/FormLog.C:39
+msgid "No LaTeX log file found"
+msgstr "LaTeXin lokitiedostoa ei ole"
 
 #: src/frontends/xforms/FormMathsBitmap.C:42
 #, fuzzy
@@ -5636,11 +4623,6 @@ msgstr "Matthias"
 msgid "Maths Decorations"
 msgstr "Koristus"
 
-#: src/frontends/xforms/FormMathsDelim.C:45
-#, fuzzy
-msgid "Maths Delimiters"
-msgstr "Rajaus"
-
 #: src/frontends/xforms/form_maths_delim.C:35
 #: src/frontends/xforms/form_paragraph.C:90
 msgid "Right|#R"
@@ -5650,14 +4632,15 @@ msgstr "Oikea|#O"
 msgid "Left|#L"
 msgstr "Vasen|#V"
 
-#: src/frontends/xforms/FormMathsMatrix.C:47
+#: src/frontends/xforms/FormMathsDelim.C:45
 #, fuzzy
-msgid "Maths Matrix"
-msgstr "Matriisi"
+msgid "Maths Delimiters"
+msgstr "Rajaus"
 
-#: src/frontends/xforms/FormMathsMatrix.C:63
-msgid "Top | Center | Bottom"
-msgstr " Yl‰ | Keski | Ala"
+#: src/frontends/xforms/form_maths_matrix.C:28
+#: src/frontends/xforms/form_tabular_create.C:49
+msgid "Rows"
+msgstr "Rivej‰"
 
 #: src/frontends/xforms/form_maths_matrix.C:35
 msgid "Columns "
@@ -5675,10 +4658,14 @@ msgstr "Vaakatasaus|#V"
 msgid "OK  "
 msgstr "OK  "
 
-#: src/frontends/xforms/FormMathsPanel.C:57
+#: src/frontends/xforms/FormMathsMatrix.C:47
 #, fuzzy
-msgid "Maths Panel"
-msgstr "Matematiikkapaneeli"
+msgid "Maths Matrix"
+msgstr "Matriisi"
+
+#: src/frontends/xforms/FormMathsMatrix.C:63
+msgid "Top | Center | Bottom"
+msgstr " Yl‰ | Keski | Ala"
 
 #: src/frontends/xforms/form_maths_panel.C:28
 msgid "Close "
@@ -5711,10 +4698,10 @@ msgstr "S  Ú"
 msgid "Misc"
 msgstr "Sekal."
 
-#: src/frontends/xforms/FormMathsSpace.C:25
+#: src/frontends/xforms/FormMathsPanel.C:57
 #, fuzzy
-msgid "Maths Spacing"
-msgstr "Erotus"
+msgid "Maths Panel"
+msgstr "Matematiikkapaneeli"
 
 #: src/frontends/xforms/form_maths_space.C:31
 msgid "Thin|#T"
@@ -5744,10 +4731,16 @@ msgstr "2Quadratin|#2"
 msgid "OK "
 msgstr "OK "
 
-#: src/frontends/xforms/FormMinipage.C:31
+#: src/frontends/xforms/FormMathsSpace.C:25
 #, fuzzy
-msgid "Minipage Options"
-msgstr "pienoissivurivi"
+msgid "Maths Spacing"
+msgstr "Erotus"
+
+#: src/frontends/xforms/form_minipage.C:31
+#: src/frontends/xforms/form_paragraph.C:149
+#: src/frontends/xforms/form_paragraph.C:223
+msgid "Alignment"
+msgstr "Tasaus"
 
 #: src/frontends/xforms/form_minipage.C:42
 #: src/frontends/xforms/form_paragraph.C:230
@@ -5764,26 +4757,10 @@ msgstr "Keski|#e"
 msgid "Bottom|#B"
 msgstr "Alareuna|#A"
 
-#: src/frontends/xforms/FormParagraph.C:36
-msgid "Paragraph Layout"
-msgstr "Kappaleen tyyli"
-
-#: src/frontends/xforms/FormParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:123
-msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr " Ei | Oletus | Pieni | Keski | Suuri | Pystyt‰yttˆ | Annettu pituus "
-
-#. now make them fit together
-#: src/frontends/xforms/FormParagraph.C:148
-msgid "General"
-msgstr "Yleinen"
-
-#: src/frontends/xforms/FormParagraph.C:437
-#: src/frontends/xforms/FormTabular.C:375
-#: src/frontends/xforms/FormTabular.C:387
-#: src/frontends/xforms/FormTabular.C:399
-msgid "Warning: Invalid Length (valid example: 10mm)"
-msgstr "Varoitus: Kelvoton pituus (sopiva esim.: 10mm)"
+#: src/frontends/xforms/FormMinipage.C:31
+#, fuzzy
+msgid "Minipage Options"
+msgstr "pienoissivurivi"
 
 #: src/frontends/xforms/form_paragraph.C:40
 msgid "Label Width:|#d"
@@ -5888,329 +4865,35 @@ msgstr "Pienoissivu|#P"
 msgid "Floatflt|#F"
 msgstr "floatflt|#f"
 
-#: src/frontends/xforms/FormPreamble.C:24
-#, fuzzy
-msgid "LaTeX preamble"
-msgstr "LaTeX-aloitusosa"
+#: src/frontends/xforms/FormParagraph.C:36
+msgid "Paragraph Layout"
+msgstr "Kappaleen tyyli"
+
+#: src/frontends/xforms/FormParagraph.C:120
+#: src/frontends/xforms/FormParagraph.C:123
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr " Ei | Oletus | Pieni | Keski | Suuri | Pystyt‰yttˆ | Annettu pituus "
+
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:148
+msgid "General"
+msgstr "Yleinen"
+
+#: src/frontends/xforms/FormParagraph.C:437
+#: src/frontends/xforms/FormTabular.C:375
+#: src/frontends/xforms/FormTabular.C:387
+#: src/frontends/xforms/FormTabular.C:399
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Varoitus: Kelvoton pituus (sopiva esim.: 10mm)"
 
 #: src/frontends/xforms/form_preamble.C:29 src/lyx_gui_misc.C:220
 msgid "OK|#O"
 msgstr "OK|#O"
 
-#: src/frontends/xforms/FormPreferences.C:71
-msgid "Preferences"
-msgstr "Asetukset"
-
-#: src/frontends/xforms/FormPreferences.C:212
-msgid "Look & Feel"
-msgstr "K‰yttˆtuntuma"
-
-#: src/frontends/xforms/FormPreferences.C:215
-msgid "Lang Opts"
-msgstr "Kielivalinnat"
-
-#: src/frontends/xforms/FormPreferences.C:218
-#: src/frontends/xforms/FormPreferences.C:247
-msgid "Converters"
-msgstr "Muuntimet"
-
-#: src/frontends/xforms/FormPreferences.C:221
-msgid "Inputs"
-msgstr "Syˆte"
-
-#: src/frontends/xforms/FormPreferences.C:224
-msgid "Outputs"
-msgstr "Tuloste"
-
-#: src/frontends/xforms/FormPreferences.C:230
-msgid "Screen Fonts"
-msgstr "N‰yttˆkirjasimet"
-
-#: src/frontends/xforms/FormPreferences.C:233
-msgid "Interface"
-msgstr "K‰yttˆliittym‰"
-
-#: src/frontends/xforms/FormPreferences.C:236
-msgid "Colors"
-msgstr "V‰rit"
-
-#: src/frontends/xforms/FormPreferences.C:244
-msgid "Formats"
-msgstr "Muodot"
-
-#: src/frontends/xforms/FormPreferences.C:253
-msgid "Paths"
-msgstr "Polut"
-
-#: src/frontends/xforms/FormPreferences.C:261
-msgid "Printer"
-msgstr "Tulostin"
-
-#: src/frontends/xforms/FormPreferences.C:269
-msgid "Spell checker"
-msgstr "Oikoluin"
-
-#: src/frontends/xforms/FormPreferences.C:528
-msgid "LyX objects that can be assigned a color."
-msgstr "LyX-osat, joiden v‰ri‰ voi muuttaa."
-
-#: src/frontends/xforms/FormPreferences.C:531
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Muuta LyXin osan v‰ri‰. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi "
-"muutoksen k‰yttˆˆn."
-
-#: src/frontends/xforms/FormPreferences.C:539
-msgid "Find a new color."
-msgstr "Valitse uusi v‰ri."
-
-#: src/frontends/xforms/FormPreferences.C:542
-msgid "Toggle between RGB and HSV color spaces."
-msgstr "M‰‰rit‰, annetaanko v‰ri RGB- vai HSV-muodossa."
-
-#: src/frontends/xforms/FormPreferences.C:724
-msgid "GUI background"
-msgstr "KL tausta"
-
-#: src/frontends/xforms/FormPreferences.C:730
-msgid "GUI text"
-msgstr "KL teksti"
-
-#: src/frontends/xforms/FormPreferences.C:739
-msgid "GUI selection"
-msgstr "KL valinta"
-
-#: src/frontends/xforms/FormPreferences.C:745
-msgid "GUI pointer"
-msgstr "KL osoitin"
-
-#: src/frontends/xforms/FormPreferences.C:875
-msgid "HSV"
-msgstr "HSV"
-
-#: src/frontends/xforms/FormPreferences.C:907
-msgid "RGB"
-msgstr "RGB"
-
-#: src/frontends/xforms/FormPreferences.C:988
-msgid "All the currently defined converters known to LyX."
-msgstr "Kaikki LyXin t‰ll‰ hetkell‰ tuntemat muuntimet."
-
-#: src/frontends/xforms/FormPreferences.C:990
-msgid "Convert \"from\" this format"
-msgstr "Muunna t‰m‰ muoto joksikin muuksi"
-
-#: src/frontends/xforms/FormPreferences.C:992
-msgid "Convert \"to\" this format"
-msgstr "Muunna jokin muu muoto t‰ksi"
-
-#: src/frontends/xforms/FormPreferences.C:994
-msgid ""
-"The conversion command. $$i is the input file name, $$b is the file name "
-"without its extension and $$o is the name of the output file."
-msgstr ""
-"Muuntokomento. $$i on syˆtetiedoston nimi, $$b on sama ilman p‰‰tett‰ ja $$o "
-"on tulostetiedoston nimi."
-
-#: src/frontends/xforms/FormPreferences.C:996
-msgid "Flags that control the converter behavior"
-msgstr "Asetukset, jotka vaikuttavat muuntimen toimintaan."
-
-#: src/frontends/xforms/FormPreferences.C:998
-msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
-msgstr ""
-"Poista valittu muunnin luettelosta. Huom.: paina \"Toteuta\" tai "
-"\"Tallenna\" ottaaksesi muutoksen k‰yttˆˆn."
-
-#: src/frontends/xforms/FormPreferences.C:1000
-#: src/frontends/xforms/FormPreferences.C:1265
-msgid "Add"
-msgstr "Lis‰‰"
-
-#: src/frontends/xforms/FormPreferences.C:1001
-msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
-msgstr ""
-"Lis‰‰ valittu muunnin luetteloon. Huom.: paina \"Toteuta\" tai \"Tallenna\" "
-"ottaaksesi muutoksen k‰yttˆˆn."
-
-#: src/frontends/xforms/FormPreferences.C:1003
-msgid ""
-"Modify the contents of the current converter. Note: you must then \"Apply\" "
-"the change."
-msgstr ""
-"Muuta valitun muuntimen asetuksia. Huom.: paina \"Toteuta\" tai \"Tallenna\" "
-"ottaaksesi muutoksen k‰yttˆˆn."
-
-#: src/frontends/xforms/FormPreferences.C:1095
-#: src/frontends/xforms/FormPreferences.C:1096
-#: src/frontends/xforms/FormPreferences.C:1134
-#: src/frontends/xforms/FormPreferences.C:1136
-#: src/frontends/xforms/FormPreferences.C:1364
-#: src/frontends/xforms/FormPreferences.C:1365
-#: src/frontends/xforms/FormPreferences.C:1408
-#: src/frontends/xforms/FormPreferences.C:1410
-#: src/frontends/xforms/form_preferences.C:522
-msgid "Modify|#M"
-msgstr "Muuta|#M"
-
-#: src/frontends/xforms/FormPreferences.C:1126
-#: src/frontends/xforms/FormPreferences.C:1128
-#: src/frontends/xforms/FormPreferences.C:1399
-#: src/frontends/xforms/FormPreferences.C:1401
-#: src/frontends/xforms/form_preferences.C:625
-#: src/frontends/xforms/form_preferences.C:712
-msgid "Add|#A"
-msgstr "Lis‰‰|#L"
-
-#: src/frontends/xforms/FormPreferences.C:1251
-msgid "All the currently defined formats known to LyX."
-msgstr "Kaikki LyXin t‰ll‰ hetkell‰ tuntemat tiedostomuodot."
-
-#: src/frontends/xforms/FormPreferences.C:1253
-msgid "The format identifier."
-msgstr "Tiedostomuodon tunniste."
-
-#: src/frontends/xforms/FormPreferences.C:1255
-msgid "The format name as it will appear in the menus."
-msgstr "Tiedostomuoto sellaisena kuin se n‰kyy valikoissa."
-
-#: src/frontends/xforms/FormPreferences.C:1257
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-"Pikan‰pp‰in. K‰yt‰ kirjainta, joka on n‰yttˆnimess‰. Kirjainkoko merkitsee."
-
-#: src/frontends/xforms/FormPreferences.C:1259
-msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr "K‰ytet‰‰n tiedoston tunnistamiseen. Esim. ps, pdf, tex."
-
-#: src/frontends/xforms/FormPreferences.C:1261
-msgid "The command used to launch the viewer application."
-msgstr "Komento, joka k‰ynnist‰‰ katseluohjelman."
-
-#: src/frontends/xforms/FormPreferences.C:1263
-msgid ""
-"Remove the current format from the list of available formats. Note: you must "
-"then \"Apply\" the change."
-msgstr ""
-"Poista valittu tiedostomuoto luettelosta. Huom.: paina \"Toteuta\" tai "
-"\"Tallenna\" ottaaksesi muutoksen k‰yttˆˆn."
-
-#: src/frontends/xforms/FormPreferences.C:1266
-msgid ""
-"Add the current format to the list of available formats. Note: you must then "
-"\"Apply\" the change."
-msgstr ""
-"Lis‰‰ nykyinen tiedostomuoto luetteloon. Huom.: paina \"Toteuta\" tai "
-"\"Tallenna\" ottaaksesi muutoksen k‰yttˆˆn."
-
-#: src/frontends/xforms/FormPreferences.C:1268
-msgid ""
-"Modify the contents of the current format. Note: you must then \"Apply\" the "
-"change."
-msgstr ""
-"Muuta valitun tiedostomuodon asetuksia. Huom.: paina \"Toteuta\" tai "
-"\"Tallenna\" ottaaksesi muutoksen k‰yttˆˆn."
-
-#: src/frontends/xforms/FormPreferences.C:1380
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Ei voi poistaa tiedostomuotoa, jota jokin muunnin k‰ytt‰‰. Poista muunnin "
-"ensin."
-
-#: src/frontends/xforms/FormPreferences.C:1550
-msgid "Sys Bind"
-msgstr "J‰rjestelm‰n"
-
-#: src/frontends/xforms/FormPreferences.C:1554
-msgid "User Bind"
-msgstr "K‰ytt‰j‰n"
-
-#: src/frontends/xforms/FormPreferences.C:1558
-msgid "Bind file"
-msgstr "Pikan‰pp‰intiedosto"
-
-#: src/frontends/xforms/FormPreferences.C:1562
-msgid "Sys UI"
-msgstr "J‰rjestelm‰n"
-
-#: src/frontends/xforms/FormPreferences.C:1566
-msgid "User UI"
-msgstr "K‰ytt‰j‰n"
-
-#: src/frontends/xforms/FormPreferences.C:1570
-msgid "UI file"
-msgstr "K‰yttˆliittym‰tiedosto"
-
-#: src/frontends/xforms/FormPreferences.C:1758
-#: src/frontends/xforms/FormPreferences.C:1766
-msgid "Key maps"
-msgstr "N‰pp‰inkartat"
-
-#: src/frontends/xforms/FormPreferences.C:1762
-#: src/frontends/xforms/FormPreferences.C:1770
-msgid "Keyboard map"
-msgstr "N‰pp‰inkartta"
-
-#: src/frontends/xforms/FormPreferences.C:1956
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr " oletus | US letter | legal | executive | A3 | A4 | A5 | B5 "
-
-#: src/frontends/xforms/FormPreferences.C:2191
-msgid "Default path"
-msgstr "Oletushakemisto"
-
-#: src/frontends/xforms/FormPreferences.C:2196
-msgid "Template path"
-msgstr "Mallien hakemisto"
-
-#: src/frontends/xforms/FormPreferences.C:2201
-msgid "Temp dir"
-msgstr "V‰liaikainen hak."
-
-#: src/frontends/xforms/FormPreferences.C:2205
-msgid "User"
-msgstr "K‰ytt‰j‰"
-
-#: src/frontends/xforms/FormPreferences.C:2208
-msgid "Lastfiles"
-msgstr "Viimeisimm‰t tiedostot"
-
-#: src/frontends/xforms/FormPreferences.C:2212
-msgid "Backup path"
-msgstr "Varmuuskopiot"
-
-#: src/frontends/xforms/FormPreferences.C:2217
-msgid "LyX Server pipes"
-msgstr "LyX-palvelimen putket"
-
-#: src/frontends/xforms/FormPreferences.C:2671
-msgid "Fonts must be positive!"
-msgstr "Kirjasinten t‰ytyy olla positiivisia!"
-
-#: src/frontends/xforms/FormPreferences.C:2694
-msgid ""
-"Fonts must be input in the order tiny > script> footnote > small > normal > "
-"large > larger > largest > huge > huger."
-msgstr ""
-"Kirjasimet t‰ytyy antaa j‰rjestyksess‰ pikkuruinen > skripti > alaviite > "
-"pieni > tavallinen > suuri > suurempi > suurin > valtava > valtavampi."
-
-#: src/frontends/xforms/FormPreferences.C:2816
-msgid " none | ispell | aspell "
-msgstr " ei mik‰‰n | ispell | aspell "
-
-#: src/frontends/xforms/FormPreferences.C:2907
-msgid "Personal dictionary"
-msgstr "K‰ytt‰j‰n sanasto"
-
-#: src/frontends/xforms/FormPreferences.C:2963
-msgid "WARNING!"
-msgstr "Varoitus!"
+#: src/frontends/xforms/FormPreamble.C:24
+#, fuzzy
+msgid "LaTeX preamble"
+msgstr "LaTeX-aloitusosa"
 
 #: src/LyXAction.C:145 src/frontends/xforms/form_preferences.C:46
 msgid "Save"
@@ -6364,6 +5047,18 @@ msgstr "G|#G"
 msgid "LyX objects|#L"
 msgstr "LyXin osat|#L"
 
+#: src/frontends/xforms/FormPreferences.C:1095
+#: src/frontends/xforms/FormPreferences.C:1096
+#: src/frontends/xforms/FormPreferences.C:1134
+#: src/frontends/xforms/FormPreferences.C:1136
+#: src/frontends/xforms/FormPreferences.C:1364
+#: src/frontends/xforms/FormPreferences.C:1365
+#: src/frontends/xforms/FormPreferences.C:1408
+#: src/frontends/xforms/FormPreferences.C:1410
+#: src/frontends/xforms/form_preferences.C:522
+msgid "Modify|#M"
+msgstr "Muuta|#M"
+
 #: src/frontends/xforms/form_preferences.C:529
 msgid "S|#S"
 msgstr "S|#S"
@@ -6396,6 +5091,15 @@ msgstr "Kaikki muuntimet|#K"
 #: src/frontends/xforms/form_preferences.C:705
 msgid "Delete|#D"
 msgstr "Poista|#o"
+
+#: src/frontends/xforms/FormPreferences.C:1126
+#: src/frontends/xforms/FormPreferences.C:1128
+#: src/frontends/xforms/FormPreferences.C:1399
+#: src/frontends/xforms/FormPreferences.C:1401
+#: src/frontends/xforms/form_preferences.C:625
+#: src/frontends/xforms/form_preferences.C:712
+msgid "Add|#A"
+msgstr "Lis‰‰|#L"
 
 #: src/frontends/xforms/form_preferences.C:632
 msgid "Converter|#C"
@@ -6608,10 +5312,299 @@ msgstr "LyXServerin putki|#S"
 msgid "Temp dir|#d"
 msgstr "V‰liaikainen|#l"
 
-#: src/LyXAction.C:129 src/LyXAction.C:136 src/frontends/xforms/FormPrint.C:44
-#: src/frontends/xforms/form_print.C:129
-msgid "Print"
-msgstr "Tulosta"
+#: src/frontends/xforms/FormPreferences.C:71
+msgid "Preferences"
+msgstr "Asetukset"
+
+#: src/frontends/xforms/FormPreferences.C:212
+msgid "Look & Feel"
+msgstr "K‰yttˆtuntuma"
+
+#: src/frontends/xforms/FormPreferences.C:215
+msgid "Lang Opts"
+msgstr "Kielivalinnat"
+
+#: src/frontends/xforms/FormPreferences.C:218
+#: src/frontends/xforms/FormPreferences.C:247
+msgid "Converters"
+msgstr "Muuntimet"
+
+#: src/frontends/xforms/FormPreferences.C:221
+msgid "Inputs"
+msgstr "Syˆte"
+
+#: src/frontends/xforms/FormPreferences.C:224
+msgid "Outputs"
+msgstr "Tuloste"
+
+#: src/frontends/xforms/FormPreferences.C:230
+msgid "Screen Fonts"
+msgstr "N‰yttˆkirjasimet"
+
+#: src/frontends/xforms/FormPreferences.C:233
+msgid "Interface"
+msgstr "K‰yttˆliittym‰"
+
+#: src/frontends/xforms/FormPreferences.C:236
+msgid "Colors"
+msgstr "V‰rit"
+
+#: src/frontends/xforms/FormPreferences.C:244
+msgid "Formats"
+msgstr "Muodot"
+
+#: src/frontends/xforms/FormPreferences.C:253
+msgid "Paths"
+msgstr "Polut"
+
+#: src/frontends/xforms/FormPreferences.C:261
+msgid "Printer"
+msgstr "Tulostin"
+
+#: src/frontends/xforms/FormPreferences.C:269
+msgid "Spell checker"
+msgstr "Oikoluin"
+
+#: src/frontends/xforms/FormPreferences.C:528
+msgid "LyX objects that can be assigned a color."
+msgstr "LyX-osat, joiden v‰ri‰ voi muuttaa."
+
+#: src/frontends/xforms/FormPreferences.C:531
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+"Muuta LyXin osan v‰ri‰. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi "
+"muutoksen k‰yttˆˆn."
+
+#: src/frontends/xforms/FormPreferences.C:539
+msgid "Find a new color."
+msgstr "Valitse uusi v‰ri."
+
+#: src/frontends/xforms/FormPreferences.C:542
+msgid "Toggle between RGB and HSV color spaces."
+msgstr "M‰‰rit‰, annetaanko v‰ri RGB- vai HSV-muodossa."
+
+#: src/frontends/xforms/FormPreferences.C:724
+msgid "GUI background"
+msgstr "KL tausta"
+
+#: src/frontends/xforms/FormPreferences.C:730
+msgid "GUI text"
+msgstr "KL teksti"
+
+#: src/frontends/xforms/FormPreferences.C:739
+msgid "GUI selection"
+msgstr "KL valinta"
+
+#: src/frontends/xforms/FormPreferences.C:745
+msgid "GUI pointer"
+msgstr "KL osoitin"
+
+#: src/frontends/xforms/FormPreferences.C:875
+msgid "HSV"
+msgstr "HSV"
+
+#: src/frontends/xforms/FormPreferences.C:907
+msgid "RGB"
+msgstr "RGB"
+
+#: src/frontends/xforms/FormPreferences.C:988
+msgid "All the currently defined converters known to LyX."
+msgstr "Kaikki LyXin t‰ll‰ hetkell‰ tuntemat muuntimet."
+
+#: src/frontends/xforms/FormPreferences.C:990
+msgid "Convert \"from\" this format"
+msgstr "Muunna t‰m‰ muoto joksikin muuksi"
+
+#: src/frontends/xforms/FormPreferences.C:992
+msgid "Convert \"to\" this format"
+msgstr "Muunna jokin muu muoto t‰ksi"
+
+#: src/frontends/xforms/FormPreferences.C:994
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+"Muuntokomento. $$i on syˆtetiedoston nimi, $$b on sama ilman p‰‰tett‰ ja $$o "
+"on tulostetiedoston nimi."
+
+#: src/frontends/xforms/FormPreferences.C:996
+msgid "Flags that control the converter behavior"
+msgstr "Asetukset, jotka vaikuttavat muuntimen toimintaan."
+
+#: src/frontends/xforms/FormPreferences.C:998
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+"Poista valittu muunnin luettelosta. Huom.: paina \"Toteuta\" tai "
+"\"Tallenna\" ottaaksesi muutoksen k‰yttˆˆn."
+
+#: src/frontends/xforms/FormPreferences.C:1000
+#: src/frontends/xforms/FormPreferences.C:1265
+msgid "Add"
+msgstr "Lis‰‰"
+
+#: src/frontends/xforms/FormPreferences.C:1001
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+"Lis‰‰ valittu muunnin luetteloon. Huom.: paina \"Toteuta\" tai \"Tallenna\" "
+"ottaaksesi muutoksen k‰yttˆˆn."
+
+#: src/frontends/xforms/FormPreferences.C:1003
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+"Muuta valitun muuntimen asetuksia. Huom.: paina \"Toteuta\" tai \"Tallenna\" "
+"ottaaksesi muutoksen k‰yttˆˆn."
+
+#: src/frontends/xforms/FormPreferences.C:1251
+msgid "All the currently defined formats known to LyX."
+msgstr "Kaikki LyXin t‰ll‰ hetkell‰ tuntemat tiedostomuodot."
+
+#: src/frontends/xforms/FormPreferences.C:1253
+msgid "The format identifier."
+msgstr "Tiedostomuodon tunniste."
+
+#: src/frontends/xforms/FormPreferences.C:1255
+msgid "The format name as it will appear in the menus."
+msgstr "Tiedostomuoto sellaisena kuin se n‰kyy valikoissa."
+
+#: src/frontends/xforms/FormPreferences.C:1257
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr ""
+"Pikan‰pp‰in. K‰yt‰ kirjainta, joka on n‰yttˆnimess‰. Kirjainkoko merkitsee."
+
+#: src/frontends/xforms/FormPreferences.C:1259
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr "K‰ytet‰‰n tiedoston tunnistamiseen. Esim. ps, pdf, tex."
+
+#: src/frontends/xforms/FormPreferences.C:1261
+msgid "The command used to launch the viewer application."
+msgstr "Komento, joka k‰ynnist‰‰ katseluohjelman."
+
+#: src/frontends/xforms/FormPreferences.C:1263
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+"Poista valittu tiedostomuoto luettelosta. Huom.: paina \"Toteuta\" tai "
+"\"Tallenna\" ottaaksesi muutoksen k‰yttˆˆn."
+
+#: src/frontends/xforms/FormPreferences.C:1266
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+"Lis‰‰ nykyinen tiedostomuoto luetteloon. Huom.: paina \"Toteuta\" tai "
+"\"Tallenna\" ottaaksesi muutoksen k‰yttˆˆn."
+
+#: src/frontends/xforms/FormPreferences.C:1268
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+"Muuta valitun tiedostomuodon asetuksia. Huom.: paina \"Toteuta\" tai "
+"\"Tallenna\" ottaaksesi muutoksen k‰yttˆˆn."
+
+#: src/frontends/xforms/FormPreferences.C:1380
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+"Ei voi poistaa tiedostomuotoa, jota jokin muunnin k‰ytt‰‰. Poista muunnin "
+"ensin."
+
+#: src/frontends/xforms/FormPreferences.C:1550
+msgid "Sys Bind"
+msgstr "J‰rjestelm‰n"
+
+#: src/frontends/xforms/FormPreferences.C:1554
+msgid "User Bind"
+msgstr "K‰ytt‰j‰n"
+
+#: src/frontends/xforms/FormPreferences.C:1558
+msgid "Bind file"
+msgstr "Pikan‰pp‰intiedosto"
+
+#: src/frontends/xforms/FormPreferences.C:1562
+msgid "Sys UI"
+msgstr "J‰rjestelm‰n"
+
+#: src/frontends/xforms/FormPreferences.C:1566
+msgid "User UI"
+msgstr "K‰ytt‰j‰n"
+
+#: src/frontends/xforms/FormPreferences.C:1570
+msgid "UI file"
+msgstr "K‰yttˆliittym‰tiedosto"
+
+#: src/frontends/xforms/FormPreferences.C:1758
+#: src/frontends/xforms/FormPreferences.C:1766
+msgid "Key maps"
+msgstr "N‰pp‰inkartat"
+
+#: src/frontends/xforms/FormPreferences.C:1762
+#: src/frontends/xforms/FormPreferences.C:1770
+msgid "Keyboard map"
+msgstr "N‰pp‰inkartta"
+
+#: src/frontends/xforms/FormPreferences.C:1956
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr " oletus | US letter | legal | executive | A3 | A4 | A5 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2191
+msgid "Default path"
+msgstr "Oletushakemisto"
+
+#: src/frontends/xforms/FormPreferences.C:2196
+msgid "Template path"
+msgstr "Mallien hakemisto"
+
+#: src/frontends/xforms/FormPreferences.C:2201
+msgid "Temp dir"
+msgstr "V‰liaikainen hak."
+
+#: src/frontends/xforms/FormPreferences.C:2205
+msgid "User"
+msgstr "K‰ytt‰j‰"
+
+#: src/frontends/xforms/FormPreferences.C:2208
+msgid "Lastfiles"
+msgstr "Viimeisimm‰t tiedostot"
+
+#: src/frontends/xforms/FormPreferences.C:2212
+msgid "Backup path"
+msgstr "Varmuuskopiot"
+
+#: src/frontends/xforms/FormPreferences.C:2217
+msgid "LyX Server pipes"
+msgstr "LyX-palvelimen putket"
+
+#: src/frontends/xforms/FormPreferences.C:2671
+msgid "Fonts must be positive!"
+msgstr "Kirjasinten t‰ytyy olla positiivisia!"
+
+#: src/frontends/xforms/FormPreferences.C:2694
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+"Kirjasimet t‰ytyy antaa j‰rjestyksess‰ pikkuruinen > skripti > alaviite > "
+"pieni > tavallinen > suuri > suurempi > suurin > valtava > valtavampi."
+
+#: src/frontends/xforms/FormPreferences.C:2816
+msgid " none | ispell | aspell "
+msgstr " ei mik‰‰n | ispell | aspell "
+
+#: src/frontends/xforms/FormPreferences.C:2907
+msgid "Personal dictionary"
+msgstr "K‰ytt‰j‰n sanasto"
+
+#: src/frontends/xforms/FormPreferences.C:2963
+msgid "WARNING!"
+msgstr "Varoitus!"
 
 #: src/frontends/xforms/form_print.C:37
 msgid "Printer|#P"
@@ -6653,9 +5646,22 @@ msgstr "J‰rjestetty|J"
 msgid "to"
 msgstr "-"
 
+#: src/LyXAction.C:129 src/LyXAction.C:136 src/frontends/xforms/FormPrint.C:44
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
+msgstr "Tulosta"
+
 #: src/frontends/xforms/form_print.C:132
 msgid "Order"
 msgstr "Sivuj‰rj."
+
+#: src/frontends/xforms/form_print.C:135
+msgid "Copies"
+msgstr "Kopiot"
+
+#: src/frontends/xforms/form_print.C:138
+msgid "Print to"
+msgstr "Kohde"
 
 #: src/frontends/xforms/form_ref.C:40
 msgid "Sort|#S"
@@ -6676,11 +5682,6 @@ msgstr "Viitetyyppi|#e"
 #: src/frontends/xforms/form_ref.C:65
 msgid "Goto reference|#G"
 msgstr "Siirry viitteeseen|#S"
-
-#: src/frontends/xforms/FormSearch.C:23
-#, fuzzy
-msgid "LyX: Find and Replace"
-msgstr "Etsi tai korvaa"
 
 #: src/frontends/xforms/form_search.C:31
 msgid "Find|#n"
@@ -6716,10 +5717,10 @@ msgstr "Koko sana|#S#s"
 msgid "Replace All|#A#a"
 msgstr "Korvaa kaikki|#A#a"
 
-#: src/frontends/xforms/FormSpellchecker.C:24
+#: src/frontends/xforms/FormSearch.C:23
 #, fuzzy
-msgid "LyX: Spellchecker"
-msgstr "Oikoluku"
+msgid "LyX: Find and Replace"
+msgstr "Etsi tai korvaa"
 
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
@@ -6772,29 +5773,10 @@ msgstr "100 %"
 msgid "Replace word|#R"
 msgstr "Korvaa sana|#R"
 
-#: src/frontends/xforms/FormTabular.C:31
-msgid "Tabular Layout"
-msgstr "Taulukon asettelu"
-
-#: src/frontends/xforms/FormTabular.C:117
-msgid "Tabular"
-msgstr "Taulukko"
-
-#: src/frontends/xforms/FormTabular.C:119
-msgid "Column/Row"
-msgstr "Sarake/Rivi"
-
-#: src/frontends/xforms/FormTabular.C:121
-msgid "Cell"
-msgstr "Solu"
-
-#: src/frontends/xforms/FormTabular.C:123
-msgid "LongTable"
-msgstr "Pitk‰ taulukko"
-
-#: src/frontends/xforms/FormTabular.C:361
-msgid "Warning: Wrong Cursor position, updated window"
-msgstr "Varoitus: Kohdistin oli v‰‰r‰ss‰ paikassa, ikkuna p‰ivitettiin"
+#: src/frontends/xforms/FormSpellchecker.C:24
+#, fuzzy
+msgid "LyX: Spellchecker"
+msgstr "Oikoluku"
 
 #: src/frontends/xforms/form_tabular.C:71
 msgid "Append Column|#A"
@@ -6955,22 +5937,46 @@ msgstr "Alaotsikko"
 msgid "Special"
 msgstr "Erikois"
 
+#: src/frontends/xforms/FormTabular.C:31
+msgid "Tabular Layout"
+msgstr "Taulukon asettelu"
+
+#: src/frontends/xforms/FormTabular.C:117
+msgid "Tabular"
+msgstr "Taulukko"
+
+#: src/frontends/xforms/FormTabular.C:119
+msgid "Column/Row"
+msgstr "Sarake/Rivi"
+
+#: src/frontends/xforms/FormTabular.C:121
+msgid "Cell"
+msgstr "Solu"
+
+#: src/frontends/xforms/FormTabular.C:123
+msgid "LongTable"
+msgstr "Pitk‰ taulukko"
+
+#: src/frontends/xforms/FormTabular.C:361
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Varoitus: Kohdistin oli v‰‰r‰ss‰ paikassa, ikkuna p‰ivitettiin"
+
+#: src/frontends/xforms/form_tabular_create.C:45
+msgid "Columns"
+msgstr "Sarakkeita"
+
 #: src/frontends/xforms/FormTabularCreate.C:29
 msgid "Insert Tabular"
 msgstr "Lis‰‰ taulukko"
-
-#: src/frontends/xforms/FormToc.C:100
-#, fuzzy
-msgid "*** No Lists ***"
-msgstr "*** Ei asiakirjaa ***"
 
 #: src/frontends/xforms/form_toc.C:40
 msgid "Type|#T"
 msgstr "Tyyppi|#T"
 
-#: src/frontends/xforms/FormUrl.C:28
-msgid "Url"
-msgstr "URL"
+#: src/frontends/xforms/FormToc.C:100
+#, fuzzy
+msgid "*** No Lists ***"
+msgstr "*** Ei asiakirjaa ***"
 
 #: src/frontends/xforms/form_url.C:29
 msgid "URL|#U"
@@ -6983,6 +5989,10 @@ msgstr "Nimi|#N"
 #: src/frontends/xforms/form_url.C:47
 msgid "HTML type|#H"
 msgstr "HTML-tyyppi:|#H"
+
+#: src/frontends/xforms/FormUrl.C:28
+msgid "Url"
+msgstr "URL"
 
 #: src/frontends/xforms/FormVCLog.C:20
 #, fuzzy
@@ -7185,12 +6195,12 @@ msgstr ""
 msgid "External"
 msgstr "Ulkoinen"
 
-#: src/insets/insetfloat.C:102 src/insets/insetfloat.C:292
-#: src/insets/insetfloat.C:297
+#: src/insets/insetfloat.C:102 src/insets/insetfloat.C:296
+#: src/insets/insetfloat.C:301
 msgid "float:"
 msgstr "irrallinen:"
 
-#: src/insets/insetfloat.C:187
+#: src/insets/insetfloat.C:191
 msgid "Opened Float Inset"
 msgstr "Irrallinen osio avattu"
 
@@ -7248,6 +6258,14 @@ msgstr "Sis‰llyt‰"
 #: src/insets/insetindex.C:21
 msgid "Idx"
 msgstr "Hakusana"
+
+#: src/insets/insetinfo.C:202
+msgid "Opened note"
+msgstr "Muistiinpano avattu"
+
+#: src/insets/insetinfo.C:221 src/insets/insetinfo.C:226
+msgid "Close|#C^["
+msgstr "Sulje|#j^["
 
 #: src/insets/insetlabel.C:52 src/mathed/formula.C:216
 msgid "Enter label:"
@@ -9332,6 +8350,620 @@ msgstr "Sivunvaihto (yl‰)"
 msgid "Page Break (bottom)"
 msgstr "Sivunvaihto (ala)"
 
+#, fuzzy
+#~ msgid "Add reference to current citation"
+#~ msgstr "_Lis‰‰ uusi l‰hdeviite"
+
+#, fuzzy
+#~ msgid "Move reference before"
+#~ msgstr "Tallenna asetukset"
+
+#, fuzzy
+#~ msgid "Move reference after"
+#~ msgstr "Tallenna asetukset"
+
+#, fuzzy
+#~ msgid "Text to add after references"
+#~ msgstr "Viitteen j‰lkeen tuleva teksti"
+
+#, fuzzy
+#~ msgid "Reference details"
+#~ msgstr "Viite"
+
+#, fuzzy
+#~ msgid "Search through references"
+#~ msgstr "Lis‰‰ viite"
+
+#, fuzzy
+#~ msgid "Available references"
+#~ msgstr "Mahdolliset viitteet"
+
+#, fuzzy
+#~ msgid "Current chosen references"
+#~ msgstr "Lis‰‰ viite"
+
+#~ msgid "&OK"
+#~ msgstr "&OK"
+
+#~ msgid "&Apply"
+#~ msgstr "&Toteuta"
+
+#~ msgid "&Restore"
+#~ msgstr "Pala&uta"
+
+#~ msgid "&Down"
+#~ msgstr "&Alas"
+
+#~ msgid "&Remove"
+#~ msgstr "&Poista"
+
+#~ msgid "&Up"
+#~ msgstr "&Ylˆs"
+
+#~ msgid "&Add"
+#~ msgstr "&Lis‰‰"
+
+#, fuzzy
+#~ msgid "Text after : "
+#~ msgstr "Seuraava teksti"
+
+#, fuzzy
+#~ msgid "&Search"
+#~ msgstr "Etsi"
+
+#, fuzzy
+#~ msgid "Float Placement"
+#~ msgstr "Irrallisten sijoitus:|#s"
+
+#, fuzzy
+#~ msgid "Section number depth :"
+#~ msgstr "Otsikkotasojen lkm."
+
+#, fuzzy
+#~ msgid "Table of Contents depth :"
+#~ msgstr "Sis‰llysluettelotasojen lkm."
+
+#, fuzzy
+#~ msgid "Use AMS Math"
+#~ msgstr "K‰yt‰ pakettia AMS Math|#M"
+
+#, fuzzy
+#~ msgid "First try :"
+#~ msgstr "Ensimm. tekij‰"
+
+#, fuzzy
+#~ msgid "then :"
+#~ msgstr "Muu ("
+
+#, fuzzy
+#~ msgid "Paper size :"
+#~ msgstr "paperikoko"
+
+#, fuzzy
+#~ msgid "Margins :"
+#~ msgstr "Reunukset"
+
+#, fuzzy
+#~ msgid "Width :"
+#~ msgstr "Leveys"
+
+#, fuzzy
+#~ msgid "Height :"
+#~ msgstr "Korkeus"
+
+#, fuzzy
+#~ msgid "Top :"
+#~ msgstr "&Yl‰"
+
+#, fuzzy
+#~ msgid "Bottom :"
+#~ msgstr "&Ala"
+
+#, fuzzy
+#~ msgid "Left :"
+#~ msgstr "Vasen"
+
+#, fuzzy
+#~ msgid "Right :"
+#~ msgstr "Oikea"
+
+#, fuzzy
+#~ msgid "Header height :"
+#~ msgstr "Sivuots. kork.:|#S"
+
+#, fuzzy
+#~ msgid "Header separation :"
+#~ msgstr "Kappalev‰li"
+
+#, fuzzy
+#~ msgid "Footer skip :"
+#~ msgstr "Alaviitev‰li:"
+
+#, fuzzy
+#~ msgid "Portrait"
+#~ msgstr "Pysty|#y"
+
+#, fuzzy
+#~ msgid "Landscape"
+#~ msgstr "vaaka"
+
+#, fuzzy
+#~ msgid "Language :"
+#~ msgstr "Kieli:"
+
+#, fuzzy
+#~ msgid "Encoding :"
+#~ msgstr "Merkistˆ"
+
+#, fuzzy
+#~ msgid "Quote style :"
+#~ msgstr "Lainausmerkit    "
+
+#, fuzzy
+#~ msgid "Paragraph spacing"
+#~ msgstr "Osakappale"
+
+#, fuzzy
+#~ msgid "Font size :"
+#~ msgstr "Kirjainkoko:|#o"
+
+#, fuzzy
+#~ msgid "Font family :"
+#~ msgstr "Tyyli:|#t"
+
+#, fuzzy
+#~ msgid "Page style :"
+#~ msgstr "Sivuotsikkotyyli:|#S"
+
+#, fuzzy
+#~ msgid "Document class :"
+#~ msgstr "Asiakirjat"
+
+#, fuzzy
+#~ msgid "Extra options :"
+#~ msgstr "Lis‰asetukset"
+
+#, fuzzy
+#~ msgid "Size :"
+#~ msgstr "Koko:|#o"
+
+#, fuzzy
+#~ msgid "Stretch :"
+#~ msgstr "Katu"
+
+#, fuzzy
+#~ msgid "Add space"
+#~ msgstr "Osoiteosa"
+
+#~ msgid "Keyword:"
+#~ msgstr "Avainsana:"
+
+#~ msgid "Centimetres"
+#~ msgstr "Senttimetri‰"
+
+#~ msgid "Inches"
+#~ msgstr "Tuumaa"
+
+#, fuzzy
+#~ msgid "Points"
+#~ msgstr "Tulosta"
+
+#~ msgid "Millimetres"
+#~ msgstr "Millimetri‰"
+
+#~ msgid "Picas"
+#~ msgstr "Picaa"
+
+#~ msgid "ex units"
+#~ msgstr "ex-yksikkˆ‰"
+
+#~ msgid "em units"
+#~ msgstr "em-yksikkˆ‰"
+
+#, fuzzy
+#~ msgid "Scaled points"
+#~ msgstr "Cicero-pistett‰"
+
+#, fuzzy
+#~ msgid "Big/PS points"
+#~ msgstr "Big/PS-pistett‰ (1/72 tuumaa)"
+
+#~ msgid "Didot points"
+#~ msgstr "Didot-pistett‰"
+
+#~ msgid "Cicero points"
+#~ msgstr "Cicero-pistett‰"
+
+#~ msgid "&Update"
+#~ msgstr "&P‰ivit‰"
+
+#~ msgid "Page break"
+#~ msgstr "Sivunvaihto"
+
+#~ msgid "Keep space when at top of page"
+#~ msgstr "S‰ilyt‰ v‰li sivun yl‰laidassa"
+
+#~ msgid "Extra Space"
+#~ msgstr "Lis‰v‰li"
+
+#, fuzzy
+#~ msgid "Size"
+#~ msgstr "Koko|#K"
+
+#, fuzzy
+#~ msgid "Stretch"
+#~ msgstr "Katu"
+
+#, fuzzy
+#~ msgid "Shrink"
+#~ msgstr "Serbia"
+
+#~ msgid "&Top"
+#~ msgstr "&Yl‰"
+
+#~ msgid "&Middle"
+#~ msgstr "&Keski"
+
+#~ msgid "&Bottom"
+#~ msgstr "&Ala"
+
+#~ msgid "&HFill between minipage paragraphs"
+#~ msgstr "&Vaakat‰yttˆ pienoissivukappaleiden v‰liss‰"
+
+#~ msgid "&Start new minipage"
+#~ msgstr "&Aloita uusi pienoissivu"
+
+#~ msgid "Draw line above paragraph"
+#~ msgstr "Piirr‰ viiva kappaleen ylle"
+
+#~ msgid "Draw line below paragraph"
+#~ msgstr "Piirr‰ viiva kappaleen alle"
+
+#~ msgid "Don't indent paragraph"
+#~ msgstr "ƒl‰ sisenn‰ kappaletta"
+
+#~ msgid "Label width"
+#~ msgstr "Nimikeleveys"
+
+#, fuzzy
+#~ msgid "Justification"
+#~ msgstr "Mukauttaminen|M"
+
+#~ msgid "Pages"
+#~ msgstr "Sivut"
+
+#~ msgid "&Print"
+#~ msgstr "&Tulosta"
+
+#~ msgid "&All pages"
+#~ msgstr "&Kaikki sivut"
+
+#~ msgid "&Odd pages"
+#~ msgstr "&Parittomat sivut"
+
+#~ msgid "&Even pages"
+#~ msgstr "&Parilliset sivut"
+
+#~ msgid "&Reverse order"
+#~ msgstr "&K‰‰nteinen j‰rjestys"
+
+#~ msgid "Co&llate"
+#~ msgstr "&J‰rjestetty"
+
+#~ msgid "From"
+#~ msgstr "Alkaen"
+
+#~ msgid "To"
+#~ msgstr "P‰‰ttyen"
+
+#~ msgid "&Printer"
+#~ msgstr "&Tulostin"
+
+#~ msgid "&File"
+#~ msgstr "&Tiedosto"
+
+#~ msgid "&Browse"
+#~ msgstr "&Selaa"
+
+#~ msgid "Count"
+#~ msgstr "M‰‰r‰"
+
+#~ msgid "&Insert"
+#~ msgstr "&Lis‰‰"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Kappale"
+
+#~ msgid "&Extra"
+#~ msgstr "&Lis‰"
+
+#, fuzzy
+#~ msgid "&Language"
+#~ msgstr "Kieli"
+
+#, fuzzy
+#~ msgid "&Bullets"
+#~ msgstr "Merkit"
+
+#, fuzzy
+#~ msgid "10 point"
+#~ msgstr "KL osoitin"
+
+#, fuzzy
+#~ msgid "11 point"
+#~ msgstr "KL osoitin"
+
+#, fuzzy
+#~ msgid "12 point"
+#~ msgstr "KL osoitin"
+
+#, fuzzy
+#~ msgid "single"
+#~ msgstr "Yksink."
+
+#, fuzzy
+#~ msgid "1 1/2 spacing"
+#~ msgstr "Erotus"
+
+#, fuzzy
+#~ msgid "double"
+#~ msgstr "Kaksink."
+
+#, fuzzy
+#~ msgid "custom"
+#~ msgstr "Asiakas"
+
+#, fuzzy
+#~ msgid "medium"
+#~ msgstr "Keskivahva"
+
+#, fuzzy
+#~ msgid "Here"
+#~ msgstr "Heprea"
+
+#, fuzzy
+#~ msgid "Bottom of page"
+#~ msgstr "alaosa"
+
+#, fuzzy
+#~ msgid "Top of page"
+#~ msgstr "% sivusta"
+
+#, fuzzy
+#~ msgid "Separate page"
+#~ msgstr "&Aloita uusi pienoissivu"
+
+#, fuzzy
+#~ msgid "Not set"
+#~ msgstr "Muistiinpano"
+
+#, fuzzy
+#~ msgid "US letter"
+#~ msgstr "Kirje"
+
+#, fuzzy
+#~ msgid "`text'"
+#~ msgstr "teksti"
+
+#, fuzzy
+#~ msgid "'text'"
+#~ msgstr "teksti"
+
+#, fuzzy
+#~ msgid ",text`"
+#~ msgstr "teksti"
+
+#, fuzzy
+#~ msgid ",text'"
+#~ msgstr "teksti"
+
+#, fuzzy
+#~ msgid "<text>"
+#~ msgstr "teksti"
+
+#, fuzzy
+#~ msgid ">text<"
+#~ msgstr "teksti"
+
+#, fuzzy
+#~ msgid "How detailed the Table of Contents is"
+#~ msgstr "Ei sis‰llysluetteloa%i"
+
+#, fuzzy
+#~ msgid "Key not found."
+#~ msgstr "Merkistˆ‰ ei lˆydy!"
+
+#~ msgid "LyX: Copyright and Warranty"
+#~ msgstr "LyX: Tekij‰noikeus ja takuu"
+
+#, fuzzy
+#~ msgid "LyX: Document Options"
+#~ msgstr "Avoimia asiakirjoja ei ole!"
+
+#, fuzzy
+#~ msgid "LaTeX log"
+#~ msgstr "LaTeX Lokitiedosto"
+
+#, fuzzy
+#~ msgid "LyX: LaTeX Log"
+#~ msgstr "LaTeX Lokitiedosto"
+
+#, fuzzy
+#~ msgid "Jump to selected reference"
+#~ msgstr " Viite: Valitse viite "
+
+#, fuzzy
+#~ msgid "No version control log file found"
+#~ msgstr "LaTeXin lokitiedostoa ei ole"
+
+#, fuzzy
+#~ msgid "LyX: Version Control Log"
+#~ msgstr "Versiohallinta|r"
+
+#~ msgid "Index entry"
+#~ msgstr "Hakemistoviite"
+
+#~ msgid "&General"
+#~ msgstr "&Yleinen"
+
+#~ msgid "Indented paragraph"
+#~ msgstr "Sisennetty kappale"
+
+#~ msgid "Minipage"
+#~ msgstr "Pienoissivu"
+
+#~ msgid "Wrap text around floats (floatflt)"
+#~ msgstr "Teksti kiert‰‰ irralliset osat (floatflt)"
+
+#~ msgid "Points (1/72.27 inch)"
+#~ msgstr "Pisteit‰ (1/72.27 tuumaa)"
+
+#~ msgid "Scaled points (1/65536 pt)"
+#~ msgstr "Skaalattua pistett‰ (1/65536 pt)"
+
+#~ msgid "Big/PS points (1/72 inch)"
+#~ msgstr "Big/PS-pistett‰ (1/72 tuumaa)"
+
+#~ msgid "Percent of column"
+#~ msgstr "Prosenttia palstasta"
+
+#~ msgid "&Spacing Above"
+#~ msgstr "V‰li &yll‰"
+
+#~ msgid "Spacing &Below"
+#~ msgstr "V‰li &alla"
+
+#~ msgid "Defskip"
+#~ msgstr "Oletusv‰li"
+
+#~ msgid "Small skip"
+#~ msgstr "Pieni v‰li"
+
+#~ msgid "Medium skip"
+#~ msgstr "Keskisuuri v‰li"
+
+#~ msgid "Big skip"
+#~ msgstr "Suuri v‰li"
+
+#~ msgid "VFill"
+#~ msgstr "Vaakat‰yttˆ"
+
+#~ msgid "Block"
+#~ msgstr "Molemmat"
+
+#, fuzzy
+#~ msgid "Centered"
+#~ msgstr "Keskit‰"
+
+#~ msgid "Left"
+#~ msgstr "Vasen"
+
+#~ msgid "Right"
+#~ msgstr "Oikea"
+
+#, fuzzy
+#~ msgid "Alignment of current paragraph"
+#~ msgstr "Valitse seuraava kappale"
+
+#, fuzzy
+#~ msgid "No indent on first line of paragraph"
+#~ msgstr "ƒl‰ sisenn‰ kappaletta"
+
+#, fuzzy
+#~ msgid "New page above this paragraph"
+#~ msgstr "Piirr‰ viiva kappaleen ylle"
+
+#, fuzzy
+#~ msgid "Size of extra space above paragraph"
+#~ msgstr "Piirr‰ viiva kappaleen ylle"
+
+#, fuzzy
+#~ msgid "New page below this paragraph"
+#~ msgstr "Piirr‰ viiva kappaleen alle"
+
+#, fuzzy
+#~ msgid "Don't hug margin if at bottom of page"
+#~ msgstr "S‰ilyt‰ v‰li sivun alalaidassa"
+
+#, fuzzy
+#~ msgid "Size of extra space below paragraph"
+#~ msgstr "Piirr‰ viiva kappaleen alle"
+
+#~ msgid "Print every page"
+#~ msgstr "Tulosta joka sivu"
+
+#~ msgid "Print odd-numbered pages only"
+#~ msgstr "Tulosta vain parittomat sivut"
+
+#~ msgid "Print even-numbered pages only"
+#~ msgstr "Tulosta vain parilliset sivut"
+
+#~ msgid "Print from page number"
+#~ msgstr "Tulosta tietyst‰ sivusta alkaen"
+
+#~ msgid "Print to page number"
+#~ msgstr "Tulosta tiettyyn sivuun asti"
+
+#~ msgid "Print in reverse order (last page first)"
+#~ msgstr "Tulosta k‰‰nteisess‰ j‰rjestyksess‰ (viimeinen sivu ensin)"
+
+#~ msgid "Number of copies to print"
+#~ msgstr "Tulostettavien kopioiden m‰‰r‰"
+
+#~ msgid "Collate multiple copies"
+#~ msgstr "J‰rjest‰ kopiot"
+
+#~ msgid "Printer name"
+#~ msgstr "Tulostimen nimi"
+
+#, fuzzy
+#~ msgid "Output filename (PostScript)"
+#~ msgstr "Tulostiedoston nimi"
+
+#~ msgid "Select output filename"
+#~ msgstr "Anna tulostiedoston nimi"
+
+#~ msgid "Available References"
+#~ msgstr "Mahdolliset viitteet"
+
+#~ msgid "Name :"
+#~ msgstr "Nimi :"
+
+#~ msgid "Reference :"
+#~ msgstr "Viite :"
+
+#~ msgid "Sort"
+#~ msgstr "J‰rjest‰"
+
+#~ msgid "Reference Type"
+#~ msgstr "Viitetyyppi"
+
+#~ msgid "Reference as it appears in output"
+#~ msgstr "Viite sellaisena kuin se on tulosteessa"
+
+#~ msgid "Sort references in alphabetical order ?"
+#~ msgstr "Haluatko j‰rjest‰‰ viitteet aakkosj‰rjestykseen?"
+
+#, fuzzy
+#~ msgid "Jump to reference in document"
+#~ msgstr "Siirry asiakirjan loppuun"
+
+#~ msgid "Depth"
+#~ msgstr "Syvyys"
+
+#~ msgid "Url :"
+#~ msgstr "URL :"
+
+#~ msgid "Generate hyperlink"
+#~ msgstr "Luo hyperlinkki"
+
+#~ msgid "Name associated with the URL"
+#~ msgstr "URL:‰‰n liittyv‰ nimi"
+
+#~ msgid "Output as a hyperlink ?"
+#~ msgstr "Tuota hyperlinkki?"
+
 #~ msgid "Warning: need lyxformat %.2f but found %.2f"
 #~ msgstr ""
 #~ "Varoitus: tarvitsee LyX-tiedostomuodon %.2f, mutta lˆysi muodon %.2f"
@@ -9573,9 +9205,6 @@ msgstr "Sivunvaihto (ala)"
 #~ msgstr ""
 #~ " Viite | Sivu | Sanallinen viite | Sanallinen sivuviite | Hieno viite "
 
-#~ msgid "Close|#C^["
-#~ msgstr "Sulje|#j^["
-
 #~ msgid " TOC | LOF | LOT | LOA "
 #~ msgstr " Sis‰llys | Kuvat | Taulukot | Algoritmit"
 
@@ -9623,9 +9252,6 @@ msgstr "Sivunvaihto (ala)"
 
 #~ msgid "Select Child Document"
 #~ msgstr "Valitse lapsiasiakirja"
-
-#~ msgid "Opened note"
-#~ msgstr "Muistiinpano avattu"
 
 #~ msgid "other..."
 #~ msgstr "muu..."

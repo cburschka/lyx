@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.6fix1\n"
-"POT-Creation-Date: 2001-07-25 21:54+0200\n"
+"POT-Creation-Date: 2001-07-25 22:56+0200\n"
 "PO-Revision-Date: 2001-04-17 12:19+02:00\n"
 "Last-Translator: Iñaki Larrañaga<>\n"
 "Language-Team: Euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -1978,7 +1978,8 @@ msgstr "Ipuia"
 msgid "Notation"
 msgstr "Oharra"
 
-#: src/ext_l10n.h:333
+#: src/ext_l10n.h:333 src/insets/insetinfo.C:86 src/insets/insetinfo.C:106
+#: src/insets/insetinfo.C:236
 msgid "Note"
 msgstr "Oharra"
 
@@ -2455,9 +2456,7 @@ msgstr ""
 msgid "Uppertitleback"
 msgstr "GoiIzenburuAtzea"
 
-#. tooltips
-#: src/ext_l10n.h:458 src/frontends/kde/urldlg.C:59
-#: src/frontends/kde/urldlg.C:60
+#: src/ext_l10n.h:458
 msgid "URL"
 msgstr "URL"
 
@@ -2689,18 +2688,6 @@ msgstr "Usorbiera"
 msgid "Welsh"
 msgstr "Welshera"
 
-#: src/figureForm.C:38
-msgid "Insert Figure"
-msgstr "Irudia Sartu"
-
-#: src/figureForm.C:54
-msgid "Inserting figure..."
-msgstr "Irudia Sartzen..."
-
-#: src/figureForm.C:58 src/figureForm.C:99
-msgid "Figure inserted"
-msgstr "Irudia Sartuta"
-
 #: src/figure_form.C:27
 msgid "EPS file|#E"
 msgstr "EPS fitxategia|#E"
@@ -2813,8 +2800,7 @@ msgstr "Bistaratu"
 msgid "Height"
 msgstr "Altuera"
 
-#: src/figure_form.C:89 src/frontends/kde/dlg/paraextradlgdata.C:75
-#: src/frontends/xforms/form_graphics.C:44
+#: src/figure_form.C:89 src/frontends/xforms/form_graphics.C:44
 #: src/frontends/xforms/form_minipage.C:28
 #: src/frontends/xforms/form_paragraph.C:219
 msgid "Width"
@@ -2878,9 +2864,21 @@ msgstr "Enkapsulatutako Postscript (*.eps, *.ps)|#E"
 msgid "Inlined EPS (*.eps, *.ps)|#I"
 msgstr "Lerrokatutako EPS (*.eps, *.ps)|#L"
 
-#: src/figure_form.C:175 src/frontends/kde/dlg/paraextradlgdata.C:58
+#: src/figure_form.C:175
 msgid "Type"
 msgstr "Hizkia"
+
+#: src/figureForm.C:38
+msgid "Insert Figure"
+msgstr "Irudia Sartu"
+
+#: src/figureForm.C:54
+msgid "Inserting figure..."
+msgstr "Irudia Sartzen..."
+
+#: src/figureForm.C:58 src/figureForm.C:99
+msgid "Figure inserted"
+msgstr "Irudia Sartuta"
 
 #: src/FontLoader.C:253
 msgid "Loading font into X-Server..."
@@ -2998,8 +2996,7 @@ msgstr "Txikiago"
 msgid "Small"
 msgstr "Txikia"
 
-#: src/frontends/controllers/character.C:104
-#: src/frontends/kde/paraextradlg.C:23 src/lyxfont.C:55
+#: src/frontends/controllers/character.C:104 src/lyxfont.C:55
 msgid "Normal"
 msgstr "Ohizkoa"
 
@@ -3399,31 +3396,23 @@ msgid " Reference: "
 msgstr "Erreferentzia: "
 
 #: src/frontends/gnome/FormToc.C:99 src/frontends/gnome/FormToc.C:166
-#: src/frontends/kde/FormToc.C:165 src/frontends/kde/FormToc.C:166
-#: src/frontends/kde/tocdlg.C:25 src/frontends/qt2/FormToc.C:170
-#: src/frontends/qt2/FormToc.C:171 src/frontends/xforms/FormToc.C:34
-#: src/insets/insettoc.C:22
+#: src/frontends/qt2/FormToc.C:170 src/frontends/qt2/FormToc.C:171
+#: src/frontends/xforms/FormToc.C:34 src/insets/insettoc.C:22
 msgid "Table of Contents"
 msgstr "Aurkibide Orokorra"
 
 #: src/frontends/gnome/FormToc.C:103 src/frontends/gnome/FormToc.C:172
-#: src/frontends/kde/FormToc.C:170 src/frontends/kde/FormToc.C:171
-#: src/frontends/kde/tocdlg.C:26 src/frontends/qt2/FormToc.C:175
-#: src/frontends/qt2/FormToc.C:176
+#: src/frontends/qt2/FormToc.C:175 src/frontends/qt2/FormToc.C:176
 msgid "List of Figures"
 msgstr "Irudien Zerrenda"
 
 #: src/frontends/gnome/FormToc.C:107 src/frontends/gnome/FormToc.C:184
-#: src/frontends/kde/FormToc.C:175 src/frontends/kde/FormToc.C:176
-#: src/frontends/kde/tocdlg.C:27 src/frontends/qt2/FormToc.C:180
-#: src/frontends/qt2/FormToc.C:181
+#: src/frontends/qt2/FormToc.C:180 src/frontends/qt2/FormToc.C:181
 msgid "List of Tables"
 msgstr "Taulen Zerrenda"
 
 #: src/frontends/gnome/FormToc.C:111 src/frontends/gnome/FormToc.C:178
-#: src/frontends/kde/FormToc.C:180 src/frontends/kde/FormToc.C:181
-#: src/frontends/kde/tocdlg.C:28 src/frontends/qt2/FormToc.C:185
-#: src/frontends/qt2/FormToc.C:186
+#: src/frontends/qt2/FormToc.C:185 src/frontends/qt2/FormToc.C:186
 msgid "List of Algorithms"
 msgstr "Algoritmoen Zerrenda"
 
@@ -3439,1226 +3428,18 @@ msgstr "Berriztatu"
 msgid "<No Name>"
 msgstr "<Izenik Ez>"
 
-#. tooltips
-#: src/frontends/kde/citationdlg.C:24
-#, fuzzy
-msgid "Add reference to current citation"
-msgstr "_Aipamen berria sartu"
-
-#: src/frontends/kde/citationdlg.C:25
-msgid "Remove reference from current citation"
-msgstr ""
-
-#: src/frontends/kde/citationdlg.C:26
-#, fuzzy
-msgid "Move reference before"
-msgstr "Lehentasunak Gorde"
-
-#: src/frontends/kde/citationdlg.C:27
-#, fuzzy
-msgid "Move reference after"
-msgstr "Lehentasunak Gorde"
-
-#: src/frontends/kde/citationdlg.C:28
-#, fuzzy
-msgid "Text to add after references"
-msgstr "Testua, aipamenaren ondoren kokatzeko"
-
-#: src/frontends/kde/citationdlg.C:29
-#, fuzzy
-msgid "Reference details"
-msgstr "Erreferentzi sarrera"
-
-#: src/frontends/kde/citationdlg.C:30
-#, fuzzy
-msgid "Search through references"
-msgstr "Gurutzatutako erreferentzia Sartu"
-
-#: src/frontends/kde/citationdlg.C:31
-#, fuzzy
-msgid "Available references"
-msgstr "Erreferentzi Eskuragarriak"
-
-#: src/frontends/kde/citationdlg.C:32
-#, fuzzy
-msgid "Current chosen references"
-msgstr "Gurutzatutako erreferentzia Sartu"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:40
-#: src/frontends/kde/dlg/docdlgdata.C:39
-#: src/frontends/kde/dlg/indexdlgdata.C:68
-#: src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:81
-#: src/frontends/kde/urldlg.C:49
-msgid "&OK"
-msgstr "&Onartu"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:57
-#: src/frontends/kde/dlg/docdlgdata.C:90
-#: src/frontends/kde/dlg/indexdlgdata.C:85
-#: src/frontends/kde/dlg/paradlgdata.C:90
-#: src/frontends/kde/dlg/printdlgdata.C:133
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:57 src/frontends/kde/docdlg.C:210
-#: src/frontends/kde/refdlg.C:87 src/frontends/kde/urldlg.C:55
-#: src/frontends/qt2/FormRef.C:206 src/frontends/qt2/paragraphdlgimpl.C:49
-msgid "&Cancel"
-msgstr "&Etsi"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:74
-#: src/frontends/kde/dlg/docdlgdata.C:56
-#: src/frontends/kde/dlg/paradlgdata.C:56
-msgid "&Apply"
-msgstr "&Eragin"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:91
-#: src/frontends/kde/dlg/docdlgdata.C:73
-#: src/frontends/kde/dlg/paradlgdata.C:73
-msgid "&Restore"
-msgstr "&Berrezarri"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:155
-msgid "&Down"
-msgstr "&Behera"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:172
-msgid "&Remove"
-msgstr "&Ezabatu"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:189
-msgid "&Up"
-msgstr "&Gora"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:206
-msgid "&Add"
-msgstr "&Gehitu"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:227
-#, fuzzy
-msgid "Text after : "
-msgstr "Testu ondoren"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:271
-#, fuzzy
-msgid "&Search"
-msgstr "Aurkitu"
-
-#. FIXME
-#: src/frontends/kde/dlg/copyrightdlgdata.C:39
-#: src/frontends/kde/dlg/logdlgdata.C:39 src/frontends/kde/docdlg.C:210
-#: src/frontends/kde/tocdlg.C:45 src/frontends/qt2/FormRef.C:204
-#: src/frontends/qt2/paragraphdlgimpl.C:49
-msgid "&Close"
-msgstr "&Itxi"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:45
-#, fuzzy
-msgid "Float Placement"
-msgstr "Mugikorren Kokapena:|#M"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:108
-msgid "Ignore LaTeX placement rules"
-msgstr ""
-
-#: src/frontends/kde/dlg/docextradlgdata.C:126
-#, fuzzy
-msgid "Section number depth :"
-msgstr "Atal zenbaki sakonera"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:143
-#, fuzzy
-msgid "Table of Contents depth :"
-msgstr "Aurkibideko sakonera"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:160
-msgid "PostScript driver :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docextradlgdata.C:223
-#, fuzzy
-msgid "Use AMS Math"
-msgstr "AMS Matematika erabili|#A"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:241
-#, fuzzy
-msgid "First try :"
-msgstr "Lehen Egilea"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:258
-#: src/frontends/kde/dlg/docextradlgdata.C:275
-#: src/frontends/kde/dlg/docextradlgdata.C:292
-#, fuzzy
-msgid "then :"
-msgstr "Beste ("
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:46
-msgid "Headers and Footers"
-msgstr ""
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:62
-#: src/frontends/xforms/form_document.C:99
-msgid "Margins"
-msgstr "Margenak"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:78
-#: src/frontends/xforms/FormDocument.C:241
-msgid "Paper"
-msgstr "Orria"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:94
-#: src/frontends/xforms/form_document.C:114
-msgid "Orientation"
-msgstr "Norabidea"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:111
-#, fuzzy
-msgid "Paper size :"
-msgstr "orriaren neurria"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:187
-#, fuzzy
-msgid "Margins :"
-msgstr "Margenak"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:204
-#, fuzzy
-msgid "Width :"
-msgstr "Zabalera"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:221
-#, fuzzy
-msgid "Height :"
-msgstr "Altuera"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:238
-#, fuzzy
-msgid "Top :"
-msgstr "&Goikaldea"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:255
-#, fuzzy
-msgid "Bottom :"
-msgstr "&Azpikaldea"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:272
-#, fuzzy
-msgid "Left :"
-msgstr "Ezker"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:289
-#, fuzzy
-msgid "Right :"
-msgstr "Eskuin"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:306
-#, fuzzy
-msgid "Header height :"
-msgstr "Altuera:|#u"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:323
-#, fuzzy
-msgid "Header separation :"
-msgstr "Banaketa"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:340
-#, fuzzy
-msgid "Footer skip :"
-msgstr "Oin ohar jauzia:|#j"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:402
-#, fuzzy
-msgid "Portrait"
-msgstr "Goitibehera|#e"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:415
-#, fuzzy
-msgid "Landscape"
-msgstr "zeharretaka"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:44
-#, fuzzy
-msgid "Language :"
-msgstr "Hizkuntza:"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:74
-#, fuzzy
-msgid "Encoding :"
-msgstr "Kodeaketa"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:104
-#, fuzzy
-msgid "Quote style :"
-msgstr "Komila Itxura    "
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:45
-#, fuzzy
-msgid "Paragraph spacing"
-msgstr "Parrafoa"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:61
-#, fuzzy
-msgid "Font size :"
-msgstr "Hizki Neurria:|#u"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:78
-#, fuzzy
-msgid "Font family :"
-msgstr "Senidea:|#n"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:95
-#, fuzzy
-msgid "Page style :"
-msgstr "Orri itxura:|#O"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:112
-#, fuzzy
-msgid "Document class :"
-msgstr "Idazkiak"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:177
-msgid "Two-sided"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:190
-msgid "Two column pages"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:208
-msgid "Inter-line spacing :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:225
-#, fuzzy
-msgid "Extra options :"
-msgstr "Aukera Gehiago"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:242
-msgid "Default paragraph spacing :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:259
-#, fuzzy
-msgid "Size :"
-msgstr "Neurria:|#N"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:276
-msgid "Shrink :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:293
-#, fuzzy
-msgid "Stretch :"
-msgstr "Kalea"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:387
-#, fuzzy
-msgid "Add space"
-msgstr "Atala Gehitu"
-
-#: src/frontends/kde/dlg/indexdlgdata.C:42
-msgid "Keyword:"
-msgstr "Giltza:"
-
-#: src/frontends/kde/dlg/lengthentry.C:35 src/frontends/kde/paraextradlg.C:29
-msgid "Centimetres"
-msgstr "Zentimetroak"
-
-#: src/frontends/kde/dlg/lengthentry.C:36 src/frontends/kde/paraextradlg.C:30
-msgid "Inches"
-msgstr "Atzak"
-
-#: src/frontends/kde/dlg/lengthentry.C:37
-#, fuzzy
-msgid "Points"
-msgstr "Inprimatu"
-
-#: src/frontends/kde/dlg/lengthentry.C:38 src/frontends/kde/paraextradlg.C:32
-msgid "Millimetres"
-msgstr "Milimetroak"
-
-#: src/frontends/kde/dlg/lengthentry.C:39 src/frontends/kde/paraextradlg.C:33
-msgid "Picas"
-msgstr "Pikak"
-
-#: src/frontends/kde/dlg/lengthentry.C:40 src/frontends/kde/paraextradlg.C:34
-msgid "ex units"
-msgstr "neurriz kanpo"
-
-#: src/frontends/kde/dlg/lengthentry.C:41 src/frontends/kde/paraextradlg.C:35
-msgid "em units"
-msgstr "em neurrietan"
-
-#: src/frontends/kde/dlg/lengthentry.C:42
-#, fuzzy
-msgid "Scaled points"
-msgstr "Cicero puntuak"
-
-#: src/frontends/kde/dlg/lengthentry.C:43
-#, fuzzy
-msgid "Big/PS points"
-msgstr "Haundia/PS puntuak (1/72 atz)"
-
-#: src/frontends/kde/dlg/lengthentry.C:44 src/frontends/kde/paraextradlg.C:38
-msgid "Didot points"
-msgstr "Didot puntuak"
-
-#: src/frontends/kde/dlg/lengthentry.C:45 src/frontends/kde/paraextradlg.C:39
-msgid "Cicero points"
-msgstr "Cicero puntuak"
-
-#: src/frontends/kde/dlg/logdlgdata.C:56 src/frontends/kde/refdlg.C:76
-#: src/frontends/kde/tocdlg.C:40
-msgid "&Update"
-msgstr "&Eguneratu"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:39
-#: src/frontends/kde/dlg/parabelowdlgdata.C:39
-msgid "Page break"
-msgstr "Orri Jauzia"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:52
-#: src/frontends/kde/dlg/parabelowdlgdata.C:52
-msgid "Keep space when at top of page"
-msgstr "Orriaren goikaldean hutsunea eduki"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:70
-#: src/frontends/kde/dlg/parabelowdlgdata.C:70
-msgid "Extra Space"
-msgstr "Hutsune Gehiago"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:101
-#: src/frontends/kde/dlg/parabelowdlgdata.C:101
-#, fuzzy
-msgid "Size"
-msgstr "Neurria|#N"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:118
-#: src/frontends/kde/dlg/parabelowdlgdata.C:118
-#, fuzzy
-msgid "Stretch"
-msgstr "Kalea"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:135
-#: src/frontends/kde/dlg/parabelowdlgdata.C:135
-msgid "Shrink"
-msgstr ""
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:118
-#: src/frontends/xforms/form_minipage.C:31
-#: src/frontends/xforms/form_paragraph.C:149
-#: src/frontends/xforms/form_paragraph.C:223
-msgid "Alignment"
-msgstr "Lerrokaketa"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:130
-msgid "&Top"
-msgstr "&Goikaldea"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:143
-msgid "&Middle"
-msgstr "&Erdia"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:156
-msgid "&Bottom"
-msgstr "&Azpikaldea"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:169
-msgid "&HFill between minipage paragraphs"
-msgstr "&HBetegarri Orri-ttipiko parrafoen artean"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:182
-msgid "&Start new minipage"
-msgstr "&Orri-ttipi berria Hasi"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:61
-msgid "Draw line above paragraph"
-msgstr "Parrafo gainean lerroa marraztu"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:74
-msgid "Draw line below paragraph"
-msgstr "Parrafo azpian lerroa marraztu"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:87
-msgid "Don't indent paragraph"
-msgstr "Parrafoa ez sangratu"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:105
-msgid "Label width"
-msgstr "Txartel zabaleroa"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:135
-#, fuzzy
-msgid "Justification"
-msgstr "Egokitzaketa|E"
-
-#: src/frontends/kde/dlg/printdlgdata.C:42
-msgid "Pages"
-msgstr "Orriak"
-
-#: src/frontends/kde/dlg/printdlgdata.C:73
-#: src/frontends/xforms/form_print.C:135
-msgid "Copies"
-msgstr "Kopiak"
-
-#: src/frontends/kde/dlg/printdlgdata.C:88
-#: src/frontends/xforms/form_print.C:138
-msgid "Print to"
-msgstr "Inprimatu"
-
-#: src/frontends/kde/dlg/printdlgdata.C:116
-msgid "&Print"
-msgstr "&Inprimatu"
-
-#: src/frontends/kde/dlg/printdlgdata.C:149
-msgid "&All pages"
-msgstr "&Orrialde Guztiak"
-
-#: src/frontends/kde/dlg/printdlgdata.C:162
-msgid "&Odd pages"
-msgstr "&Orrialde bakoitiak"
-
-#: src/frontends/kde/dlg/printdlgdata.C:175
-msgid "&Even pages"
-msgstr "&Orrialde Bikoitiak"
-
-#: src/frontends/kde/dlg/printdlgdata.C:214
-msgid "&Reverse order"
-msgstr "&Alderantzizko antolaketa"
-
-#: src/frontends/kde/dlg/printdlgdata.C:241
-msgid "Co&llate"
-msgstr "Erkatu"
-
-#: src/frontends/kde/dlg/printdlgdata.C:258
-msgid "From"
-msgstr "Nondik"
-
-#: src/frontends/kde/dlg/printdlgdata.C:274
-msgid "To"
-msgstr "Nora"
-
-#: src/frontends/kde/dlg/printdlgdata.C:286
-msgid "&Printer"
-msgstr "&Inprimagailua"
-
-#: src/frontends/kde/dlg/printdlgdata.C:299
-msgid "&File"
-msgstr "&Fitxategia"
-
-#: src/frontends/kde/dlg/printdlgdata.C:339
-msgid "&Browse"
-msgstr "&Arakatu"
-
-#: src/frontends/kde/dlg/printdlgdata.C:359
-msgid "Count"
-msgstr "Zenbatu"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:40
-msgid "&Insert"
-msgstr "&Sartu"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:87
-#: src/frontends/xforms/form_maths_matrix.C:28
-#: src/frontends/xforms/form_tabular_create.C:49
-msgid "Rows"
-msgstr "Lerroak"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:104
-#: src/frontends/xforms/form_tabular_create.C:45
-msgid "Columns"
-msgstr "Zutabeak"
-
-#: src/frontends/kde/docdlg.C:44
-#, fuzzy
-msgid "&Settings"
-msgstr "Atala"
-
-#: src/frontends/kde/docdlg.C:45
-msgid "&Extra"
-msgstr "&Bestekoa"
-
-#: src/frontends/kde/docdlg.C:46
-msgid "&Geometry"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:47
-#, fuzzy
-msgid "&Language"
-msgstr "Hizkuntza"
-
-#: src/frontends/kde/docdlg.C:48
-#, fuzzy
-msgid "&Bullets"
-msgstr "Pinportak"
-
-#. the document language page
-#: src/frontends/kde/docdlg.C:56 src/frontends/kde/docdlg.C:68
-#: src/frontends/kde/docdlg.C:121 src/frontends/kde/docdlg.C:133
-#: src/frontends/kde/docdlg.C:144 src/frontends/qt2/FormDocument.C:116
-#: src/frontends/qt2/FormDocument.C:124 src/frontends/qt2/FormDocument.C:152
-#: src/frontends/qt2/FormDocument.C:194 src/frontends/qt2/FormDocument.C:569
-#: src/frontends/qt2/FormDocument.C:573
-#, fuzzy
-msgid "default"
-msgstr "Jatorrizkoa"
-
-#: src/frontends/kde/docdlg.C:57 src/frontends/qt2/FormDocument.C:125
-#, fuzzy
-msgid "empty"
-msgstr "Sakonera"
-
-#: src/frontends/kde/docdlg.C:58 src/frontends/qt2/FormDocument.C:126
-#, fuzzy
-msgid "plain"
-msgstr "Gertaera Laua"
-
-#: src/frontends/kde/docdlg.C:59 src/frontends/qt2/FormDocument.C:127
-#, fuzzy
-msgid "headings"
-msgstr "GUI erabiltzen"
-
-#: src/frontends/kde/docdlg.C:60 src/frontends/qt2/FormDocument.C:128
-msgid "fancy"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:69
-#, fuzzy
-msgid "10 point"
-msgstr "GUI gezia"
-
-#: src/frontends/kde/docdlg.C:70
-#, fuzzy
-msgid "11 point"
-msgstr "GUI gezia"
-
-#: src/frontends/kde/docdlg.C:71
-#, fuzzy
-msgid "12 point"
-msgstr "GUI gezia"
-
-#: src/frontends/kde/docdlg.C:74
-#, fuzzy
-msgid "single"
-msgstr "Bakarra"
-
-#: src/frontends/kde/docdlg.C:75
-#, fuzzy
-msgid "1 1/2 spacing"
-msgstr "Hutsunea"
-
-#: src/frontends/kde/docdlg.C:76
-#, fuzzy
-msgid "double"
-msgstr "Bikoitza"
-
-#: src/frontends/kde/docdlg.C:77 src/frontends/kde/docdlg.C:86
-#: src/frontends/kde/docdlg.C:593 src/frontends/kde/docdlg.C:601
-#: src/frontends/kde/docdlg.C:611
-#, fuzzy
-msgid "custom"
-msgstr "Bezeroa"
-
-#: src/frontends/kde/docdlg.C:83 src/frontends/qt2/FormDocument.C:198
-#: src/frontends/xforms/form_preferences.C:173
-msgid "small"
-msgstr "txikia"
-
-#: src/frontends/kde/docdlg.C:84
-#, fuzzy
-msgid "medium"
-msgstr "Erdia"
-
-#: src/frontends/kde/docdlg.C:85
-msgid "big"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:95 src/frontends/kde/docdlg.C:100
-#: src/frontends/kde/docdlg.C:105 src/frontends/kde/docdlg.C:110
-#: src/frontends/kde/docdlg.C:375 src/frontends/kde/docdlg.C:580
-#, fuzzy
-msgid "Here"
-msgstr "Hebreokera"
-
-#: src/frontends/kde/docdlg.C:96 src/frontends/kde/docdlg.C:101
-#: src/frontends/kde/docdlg.C:106 src/frontends/kde/docdlg.C:111
-#: src/frontends/kde/docdlg.C:376 src/frontends/kde/docdlg.C:582
-#, fuzzy
-msgid "Bottom of page"
-msgstr "azpikaldea"
-
-#: src/frontends/kde/docdlg.C:97 src/frontends/kde/docdlg.C:102
-#: src/frontends/kde/docdlg.C:107 src/frontends/kde/docdlg.C:112
-#: src/frontends/kde/docdlg.C:377 src/frontends/kde/docdlg.C:584
-#, fuzzy
-msgid "Top of page"
-msgstr "% Orriarena"
-
-#: src/frontends/kde/docdlg.C:98 src/frontends/kde/docdlg.C:103
-#: src/frontends/kde/docdlg.C:108 src/frontends/kde/docdlg.C:113
-#: src/frontends/kde/docdlg.C:378 src/frontends/kde/docdlg.C:586
-#, fuzzy
-msgid "Separate page"
-msgstr "&Orri-ttipi berria Hasi"
-
-#: src/frontends/kde/docdlg.C:99 src/frontends/kde/docdlg.C:104
-#: src/frontends/kde/docdlg.C:109 src/frontends/kde/docdlg.C:114
-#: src/frontends/kde/docdlg.C:356 src/frontends/kde/docdlg.C:357
-#: src/frontends/kde/docdlg.C:358 src/frontends/kde/docdlg.C:359
-#, fuzzy
-msgid "Not set"
-msgstr "Oharra"
-
-#: src/frontends/kde/docdlg.C:122
-#, fuzzy
-msgid "US letter"
-msgstr "Gutuna"
-
-#: src/frontends/kde/docdlg.C:123
-msgid "US legal"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:124
-msgid "US executive"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:134
-msgid "A4 small margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:135
-msgid "A4 very small margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:136
-msgid "A4 very wide margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:145 src/frontends/qt2/FormDocument.C:153
-#, fuzzy
-msgid "auto"
-msgstr "nora"
-
-#: src/frontends/kde/docdlg.C:146 src/frontends/qt2/FormDocument.C:154
-#, fuzzy
-msgid "latin1"
-msgstr "Azalpena"
-
-#: src/frontends/kde/docdlg.C:147 src/frontends/qt2/FormDocument.C:155
-#, fuzzy
-msgid "latin2"
-msgstr "Azalpena"
-
-#: src/frontends/kde/docdlg.C:148 src/frontends/qt2/FormDocument.C:156
-#, fuzzy
-msgid "latin5"
-msgstr "Azalpena"
-
-#: src/frontends/kde/docdlg.C:149 src/frontends/qt2/FormDocument.C:157
-#, fuzzy
-msgid "latin9"
-msgstr "Azalpena"
-
-#: src/frontends/kde/docdlg.C:150 src/frontends/qt2/FormDocument.C:158
-msgid "koi8-r"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:151 src/frontends/qt2/FormDocument.C:159
-msgid "koi8-u"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:152 src/frontends/qt2/FormDocument.C:160
-msgid "cp866"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:153 src/frontends/qt2/FormDocument.C:161
-msgid "cp1251"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:154 src/frontends/qt2/FormDocument.C:162
-msgid "iso88595"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:157
-#, fuzzy
-msgid "`text'"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:158 src/frontends/qt2/FormDocument.C:169
-#, fuzzy
-msgid "``text''"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:159
-#, fuzzy
-msgid "'text'"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:160 src/frontends/qt2/FormDocument.C:170
-#, fuzzy
-msgid "''text''"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:161
-#, fuzzy
-msgid ",text`"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:162 src/frontends/qt2/FormDocument.C:171
-#, fuzzy
-msgid ",,text``"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:163
-#, fuzzy
-msgid ",text'"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:164 src/frontends/qt2/FormDocument.C:172
-#, fuzzy
-msgid ",,text''"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:165
-#, fuzzy
-msgid "<text>"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:166 src/frontends/qt2/FormDocument.C:173
-#, fuzzy
-msgid "«text»"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:167
-#, fuzzy
-msgid ">text<"
-msgstr "testua"
-
-#: src/frontends/kde/docdlg.C:168 src/frontends/qt2/FormDocument.C:174
-#, fuzzy
-msgid "»text«"
-msgstr "testua"
-
-#. FIXME: bullets
-#: src/frontends/kde/docdlg.C:173
-msgid "Specify header + footer style etc"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:174
-msgid ""
-"Add spacing between paragraphs rather\n"
-" than indenting"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:175
-msgid "Custom line spacing in line units"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:176
-msgid "Additional LaTeX options"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:177 src/frontends/kde/docdlg.C:178
-#: src/frontends/kde/docdlg.C:179 src/frontends/kde/docdlg.C:180
-msgid ""
-"Specify preferred order for\n"
-"placing floats"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:181
-msgid ""
-"Tell LaTeX to ignore usual rules\n"
-" for float placement"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:182
-msgid "How far in the (sub)sections are numbered"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:183
-#, fuzzy
-msgid "How detailed the Table of Contents is"
-msgstr "Aurkibide Orokorrik Ez%i"
-
-#: src/frontends/kde/docdlg.C:184
-msgid "Program to produce PostScript output"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:185 src/frontends/kde/docdlg.C:186
-#: src/frontends/kde/docdlg.C:187 src/frontends/kde/docdlg.C:188
-#: src/frontends/kde/paraextradlg.C:43 src/frontends/kde/paraextradlg.C:44
-#: src/frontends/kde/parageneraldlg.C:59 src/frontends/kde/refdlg.C:97
-msgid "FIXME please !"
-msgstr ""
-
-#: src/frontends/kde/FileDialog.C:49 src/frontends/qt2/FileDialog.C:43
+#: src/frontends/qt2/FileDialog.C:43
 msgid "*|All files"
 msgstr ""
-
-#: src/frontends/kde/FormCitation.C:53 src/frontends/qt2/FormCitation.C:47
-#: src/frontends/xforms/FormCitation.C:100
-msgid "Citation"
-msgstr "Aipamena"
-
-#: src/frontends/kde/FormCitation.C:290
-#, fuzzy
-msgid "Key not found."
-msgstr "Hizki-jokorik ez da aurkitu!"
-
-#: src/frontends/kde/FormCopyright.C:26
-msgid "LyX: Copyright and Warranty"
-msgstr "LyX: Copyright eta Garantia"
-
-#: src/frontends/kde/FormDocument.C:68 src/frontends/qt2/FormDocument.C:230
-#: src/frontends/xforms/FormDocument.C:274
-msgid "Document layout set"
-msgstr "Idazkiaren aurkezpena ezarria"
-
-#: src/frontends/kde/FormDocument.C:75
-#, fuzzy
-msgid "LyX: Document Options"
-msgstr "Irekitako Idazkirik ez dago!"
-
-#. successfully loaded
-#: src/frontends/kde/FormDocument.C:93 src/frontends/qt2/FormDocument.C:348
-#: src/frontends/xforms/FormDocument.C:388
-msgid "Converting document to new document class..."
-msgstr "Idazkia idazki mota berrira bihurtzen..."
-
-#: src/frontends/kde/FormIndex.C:25 src/frontends/qt2/FormIndex.C:106
-msgid "LyX: Index"
-msgstr "LyX: Erroldaketa"
-
-#: src/frontends/kde/FormLog.C:31 src/frontends/xforms/FormLog.C:27
-#, fuzzy
-msgid "Build log"
-msgstr "Programa Eraiki"
-
-#: src/frontends/kde/FormLog.C:33
-#, fuzzy
-msgid "LaTeX log"
-msgstr "LaTeX-en Erregistro Artxiboa"
-
-#: src/frontends/kde/FormLog.C:40 src/frontends/xforms/FormLog.C:31
-#, fuzzy
-msgid "No build log file found"
-msgstr "LaTeX-en Erregistro Artxiboarik ez da aurkitu"
-
-#: src/frontends/kde/FormLog.C:42 src/frontends/xforms/FormLog.C:39
-msgid "No LaTeX log file found"
-msgstr "LaTeX-en Erregistro Artxiboarik ez da aurkitu"
-
-#: src/frontends/kde/FormLog.C:58
-#, fuzzy
-msgid "LyX: LaTeX Log"
-msgstr "LaTeX-en Erregistro Artxiboa"
-
-#: src/frontends/kde/FormParagraph.C:194 src/frontends/qt2/FormParagraph.C:174
-#: src/frontends/xforms/FormParagraph.C:162
-msgid "Paragraph layout set"
-msgstr "Parrafoaren aurkezpena ezarria"
-
-#: src/frontends/kde/FormParagraph.C:202 src/frontends/qt2/FormParagraph.C:182
-msgid "LyX: Paragraph Options"
-msgstr "LyX: Parrafoen Aukerak"
-
-#: src/frontends/kde/FormPrint.C:30 src/frontends/qt2/FormPrint.C:104
-msgid "LyX: Print"
-msgstr "LyX: Inprimatu"
-
-#: src/frontends/kde/FormRef.C:32 src/frontends/qt2/FormRef.C:252
-msgid "LyX: Cross Reference"
-msgstr "LyX: Gurutzatutako Erreferentzia"
-
-#: src/frontends/kde/FormRef.C:61 src/frontends/kde/refdlg.C:71
-#: src/frontends/qt2/FormRef.C:116 src/frontends/qt2/FormRef.C:127
-#: src/frontends/qt2/FormRef.C:187
-msgid "&Goto reference"
-msgstr "&Erreferentzira Joan"
-
-#: src/frontends/kde/FormRef.C:63
-#, fuzzy
-msgid "Jump to selected reference"
-msgstr " Erreferentzia: Erreferentzia hautatu "
-
-#: src/frontends/kde/FormTabularCreate.C:26
-#: src/frontends/qt2/FormTabularCreate.C:48
-msgid "LyX: Insert Table"
-msgstr "LyX: Taula Sartu"
-
-#: src/frontends/kde/FormToc.C:249 src/frontends/qt2/FormToc.C:248
-msgid "LyX: Table of Contents"
-msgstr "LyX: Aurkibide Orokorra"
-
-#: src/frontends/kde/FormUrl.C:45 src/frontends/qt2/FormUrl.C:123
-msgid "LyX: Url"
-msgstr "LyX: Url"
-
-#: src/frontends/kde/FormVCLog.C:37
-#, fuzzy
-msgid "No version control log file found"
-msgstr "LaTeX-en Erregistro Artxiboarik ez da aurkitu"
-
-#: src/frontends/kde/FormVCLog.C:56
-#, fuzzy
-msgid "LyX: Version Control Log"
-msgstr "Bertsio Kontrola|r"
-
-#. tooltips
-#: src/frontends/kde/indexdlg.C:24 src/frontends/kde/indexdlg.C:25
-msgid "Index entry"
-msgstr "Sartu Errolda"
-
-#: src/frontends/kde/paradlg.C:31
-msgid "&General"
-msgstr "&Orokorra"
-
-#. FIXME: should be cleverer here
-#: src/frontends/kde/paradlg.C:90 src/frontends/qt2/paragraphdlgimpl.C:56
-#: src/paragraph.C:1028
-msgid "Senseless with this layout!"
-msgstr "Aurkezpen hau zentzugabea da!"
-
-#: src/frontends/kde/paraextradlg.C:24
-msgid "Indented paragraph"
-msgstr "Sangratutako Parrafoa"
-
-#: src/frontends/kde/paraextradlg.C:25
-msgid "Minipage"
-msgstr "Orri-ttipia"
-
-#: src/frontends/kde/paraextradlg.C:26
-msgid "Wrap text around floats (floatflt)"
-msgstr "Testua mugikorren inguruan jarri (floatflt)"
-
-#: src/frontends/kde/paraextradlg.C:31
-msgid "Points (1/72.27 inch)"
-msgstr "Puntoak (1/72.27 atz)"
-
-#: src/frontends/kde/paraextradlg.C:36
-msgid "Scaled points (1/65536 pt)"
-msgstr "Neurriratutako puntuak (1/65536 pt)"
-
-#: src/frontends/kde/paraextradlg.C:37
-msgid "Big/PS points (1/72 inch)"
-msgstr "Haundia/PS puntuak (1/72 atz)"
-
-#: src/frontends/kde/paraextradlg.C:40
-msgid "Percent of column"
-msgstr "Zutabeen ehunekoa"
-
-#: src/frontends/kde/parageneraldlg.C:27
-msgid "&Spacing Above"
-msgstr "&Goiko Hutsunea"
-
-#: src/frontends/kde/parageneraldlg.C:28
-msgid "Spacing &Below"
-msgstr "&Azpiko Hutsunea"
-
-#: src/frontends/kde/parageneraldlg.C:33 src/frontends/kde/parageneraldlg.C:42
-#: src/frontends/qt2/FormDocument.C:84
-msgid "None"
-msgstr "Ezer Ez"
-
-#: src/frontends/kde/parageneraldlg.C:34 src/frontends/kde/parageneraldlg.C:43
-msgid "Defskip"
-msgstr "Jauziaren Ezaugarria"
-
-#: src/frontends/kde/parageneraldlg.C:35 src/frontends/kde/parageneraldlg.C:44
-msgid "Small skip"
-msgstr "Jauzi txikia"
-
-#: src/frontends/kde/parageneraldlg.C:36 src/frontends/kde/parageneraldlg.C:45
-msgid "Medium skip"
-msgstr "Jauzi Erdia"
-
-#: src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:46
-msgid "Big skip"
-msgstr "Jauzi Haundia"
-
-#: src/frontends/kde/parageneraldlg.C:38 src/frontends/kde/parageneraldlg.C:47
-msgid "VFill"
-msgstr "GoibeherakoBetegarria"
-
-#: src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:48
-#: src/frontends/qt2/FormDocument.C:73
-#, fuzzy
-msgid "Custom"
-msgstr "Bezeroa"
-
-#: src/frontends/kde/parageneraldlg.C:51
-msgid "Block"
-msgstr "Tangulua"
-
-#: src/frontends/kde/parageneraldlg.C:52
-#, fuzzy
-msgid "Centered"
-msgstr "Erdigunea"
-
-#: src/frontends/kde/parageneraldlg.C:53
-msgid "Left"
-msgstr "Ezker"
-
-#: src/frontends/kde/parageneraldlg.C:54
-msgid "Right"
-msgstr "Eskuin"
-
-#: src/frontends/kde/parageneraldlg.C:57
-#, fuzzy
-msgid "Alignment of current paragraph"
-msgstr "Ondorengo parrafoa aukeratu"
-
-#: src/frontends/kde/parageneraldlg.C:58
-#, fuzzy
-msgid "No indent on first line of paragraph"
-msgstr "Parrafoa ez sangratu"
-
-#: src/frontends/kde/parageneraldlg.C:61
-#, fuzzy
-msgid "New page above this paragraph"
-msgstr "Parrafo gainean lerroa marraztu"
-
-#: src/frontends/kde/parageneraldlg.C:62
-msgid "Don't hug margin if at top of page"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:63
-#, fuzzy
-msgid "Size of extra space above paragraph"
-msgstr "Parrafo gainean lerroa marraztu"
-
-#: src/frontends/kde/parageneraldlg.C:64 src/frontends/kde/parageneraldlg.C:70
-msgid "Maximum extra space that can be added"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:65 src/frontends/kde/parageneraldlg.C:71
-msgid "Minimum space required"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:67
-#, fuzzy
-msgid "New page below this paragraph"
-msgstr "Parrafo azpian lerroa marraztu"
-
-#: src/frontends/kde/parageneraldlg.C:68
-#, fuzzy
-msgid "Don't hug margin if at bottom of page"
-msgstr "Orriaren azpikaldean hutsunea eduki"
-
-#: src/frontends/kde/parageneraldlg.C:69
-#, fuzzy
-msgid "Size of extra space below paragraph"
-msgstr "Parrafo azpian lerroa marraztu"
-
-#: src/frontends/kde/printdlg.C:28
-msgid "Print every page"
-msgstr "Orri guztiak inprimatu"
-
-#: src/frontends/kde/printdlg.C:29
-msgid "Print odd-numbered pages only"
-msgstr "Orrialde bakoitiarrak soilik inprimatu"
-
-#: src/frontends/kde/printdlg.C:30
-msgid "Print even-numbered pages only"
-msgstr "Orri bikoitiarrak soilik inprimatu"
-
-#: src/frontends/kde/printdlg.C:31
-msgid "Print from page number"
-msgstr "Orri zenbakitik inprimatu"
-
-#: src/frontends/kde/printdlg.C:32
-msgid "Print to page number"
-msgstr "Orri zenbakirarte inprimatu"
-
-#: src/frontends/kde/printdlg.C:33
-msgid "Print in reverse order (last page first)"
-msgstr "Alderantziz inprimatu (azken orrialdea lehendabizi)"
-
-#: src/frontends/kde/printdlg.C:34
-msgid "Number of copies to print"
-msgstr "Inprimatzeko Kopien zenbakia"
-
-#: src/frontends/kde/printdlg.C:35
-msgid "Collate multiple copies"
-msgstr "Hainbat kopia eman"
-
-#: src/frontends/kde/printdlg.C:36
-msgid "Printer name"
-msgstr "Inprimagailuaren izena"
-
-#: src/frontends/kde/printdlg.C:37
-#, fuzzy
-msgid "Output filename (PostScript)"
-msgstr "Irteerako fitxategiaren izena"
-
-#: src/frontends/kde/printdlg.C:38
-msgid "Select output filename"
-msgstr "Irteerako fitxategi izena hautatu"
-
-#: src/frontends/kde/refdlg.C:28
-msgid "Available References"
-msgstr "Erreferentzi Eskuragarriak"
-
-#: src/frontends/kde/refdlg.C:43 src/frontends/kde/urldlg.C:36
-msgid "Name :"
-msgstr "Izena :"
-
-#: src/frontends/kde/refdlg.C:49
-msgid "Reference :"
-msgstr "Erreferentzia :"
-
-#: src/frontends/kde/refdlg.C:55
-msgid "Sort"
-msgstr "Sailkatu"
-
-#: src/frontends/kde/refdlg.C:65
-msgid "Reference Type"
-msgstr "Erreferentzi Mota"
-
-#. tooltips
-#: src/frontends/kde/refdlg.C:93
-msgid "Reference as it appears in output"
-msgstr "Irteeran ageri den bezala erreferentziatu"
-
-#: src/frontends/kde/refdlg.C:94
-msgid "Sort references in alphabetical order ?"
-msgstr "Erreferentziak alfabetikoki sailkatu?"
-
-#: src/frontends/kde/refdlg.C:95
-msgid "Update list of references shown"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:96
-#, fuzzy
-msgid "Jump to reference in document"
-msgstr "Idazki bukaerara joan "
-
-#: src/frontends/kde/tabcreatedlg.C:27
-#: src/frontends/qt2/tabularcreatedlgimpl.C:34
-msgid "Drag with left mouse button to resize"
-msgstr ""
-
-#: src/frontends/kde/tocdlg.C:54
-msgid "Depth"
-msgstr "Sakonera"
-
-#: src/frontends/kde/urldlg.C:30
-msgid "Url :"
-msgstr "Url : "
-
-#: src/frontends/kde/urldlg.C:42
-msgid "Generate hyperlink"
-msgstr "Hiperloturak sortu"
-
-#: src/frontends/kde/urldlg.C:61 src/frontends/kde/urldlg.C:62
-msgid "Name associated with the URL"
-msgstr "URL-arekin elkarturiko izena"
-
-#: src/frontends/kde/urldlg.C:63
-msgid "Output as a hyperlink ?"
-msgstr "Hiperlotura erako irteera?"
 
 #: src/frontends/qt2/FormCharacter.C:64
 #, fuzzy
 msgid "Character Options"
 msgstr "Hizki Itxura"
+
+#: src/frontends/qt2/FormCitation.C:47 src/frontends/xforms/FormCitation.C:100
+msgid "Citation"
+msgstr "Aipamena"
 
 #: src/frontends/qt2/FormCredits.C:33 src/frontends/xforms/FormAboutlyx.C:70
 msgid "Credits"
@@ -4672,6 +3453,11 @@ msgstr "Idazki Aurkezpena"
 #: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:584
 msgid "Default"
 msgstr "Jatorrizkoa"
+
+#: src/frontends/qt2/FormDocument.C:73
+#, fuzzy
+msgid "Custom"
+msgstr "Bezeroa"
 
 #: src/frontends/qt2/FormDocument.C:74
 #, fuzzy
@@ -4710,6 +3496,10 @@ msgstr ""
 msgid "B5"
 msgstr ""
 
+#: src/frontends/qt2/FormDocument.C:84
+msgid "None"
+msgstr "Ezer Ez"
+
 #: src/frontends/qt2/FormDocument.C:85
 msgid "A4 small Margins (only portrait)"
 msgstr ""
@@ -4732,6 +3522,14 @@ msgstr "Bat'erdi"
 msgid "Other"
 msgstr "Beste ("
 
+#. the document language page
+#: src/frontends/qt2/FormDocument.C:116 src/frontends/qt2/FormDocument.C:124
+#: src/frontends/qt2/FormDocument.C:152 src/frontends/qt2/FormDocument.C:194
+#: src/frontends/qt2/FormDocument.C:569 src/frontends/qt2/FormDocument.C:573
+#, fuzzy
+msgid "default"
+msgstr "Jatorrizkoa"
+
 #: src/frontends/qt2/FormDocument.C:117
 msgid "10"
 msgstr ""
@@ -4743,6 +3541,25 @@ msgstr "1|#1"
 
 #: src/frontends/qt2/FormDocument.C:119
 msgid "12"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:125
+#, fuzzy
+msgid "empty"
+msgstr "Sakonera"
+
+#: src/frontends/qt2/FormDocument.C:126
+#, fuzzy
+msgid "plain"
+msgstr "Gertaera Laua"
+
+#: src/frontends/qt2/FormDocument.C:127
+#, fuzzy
+msgid "headings"
+msgstr "GUI erabiltzen"
+
+#: src/frontends/qt2/FormDocument.C:128
+msgid "fancy"
 msgstr ""
 
 #: src/frontends/qt2/FormDocument.C:130
@@ -4764,6 +3581,81 @@ msgstr "Jauzi Haundia"
 msgid "Length"
 msgstr "Luzera"
 
+#: src/frontends/qt2/FormDocument.C:153
+#, fuzzy
+msgid "auto"
+msgstr "nora"
+
+#: src/frontends/qt2/FormDocument.C:154
+#, fuzzy
+msgid "latin1"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/FormDocument.C:155
+#, fuzzy
+msgid "latin2"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/FormDocument.C:156
+#, fuzzy
+msgid "latin5"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/FormDocument.C:157
+#, fuzzy
+msgid "latin9"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/FormDocument.C:158
+msgid "koi8-r"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:159
+msgid "koi8-u"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:160
+msgid "cp866"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:161
+msgid "cp1251"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:162
+msgid "iso88595"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:169
+#, fuzzy
+msgid "``text''"
+msgstr "testua"
+
+#: src/frontends/qt2/FormDocument.C:170
+#, fuzzy
+msgid "''text''"
+msgstr "testua"
+
+#: src/frontends/qt2/FormDocument.C:171
+#, fuzzy
+msgid ",,text``"
+msgstr "testua"
+
+#: src/frontends/qt2/FormDocument.C:172
+#, fuzzy
+msgid ",,text''"
+msgstr "testua"
+
+#: src/frontends/qt2/FormDocument.C:173
+#, fuzzy
+msgid "«text»"
+msgstr "testua"
+
+#: src/frontends/qt2/FormDocument.C:174
+#, fuzzy
+msgid "»text«"
+msgstr "testua"
+
 #: src/frontends/qt2/FormDocument.C:195
 #: src/frontends/xforms/form_preferences.C:167
 msgid "tiny"
@@ -4778,6 +3670,11 @@ msgstr "indizea"
 #: src/frontends/xforms/form_preferences.C:140
 msgid "footnote"
 msgstr "oin oharra"
+
+#: src/frontends/qt2/FormDocument.C:198
+#: src/frontends/xforms/form_preferences.C:173
+msgid "small"
+msgstr "txikia"
 
 #: src/frontends/qt2/FormDocument.C:199
 #: src/frontends/xforms/form_preferences.C:152
@@ -4797,6 +3694,16 @@ msgstr ""
 #: src/frontends/xforms/form_preferences.C:149
 msgid "huge"
 msgstr "erraldoia"
+
+#: src/frontends/qt2/FormDocument.C:230
+#: src/frontends/xforms/FormDocument.C:274
+msgid "Document layout set"
+msgstr "Idazkiaren aurkezpena ezarria"
+
+#: src/frontends/qt2/FormDocument.C:348
+#: src/frontends/xforms/FormDocument.C:388
+msgid "Converting document to new document class..."
+msgstr "Idazkia idazki mota berrira bihurtzen..."
 
 #: src/frontends/qt2/FormDocument.C:355
 #: src/frontends/xforms/FormDocument.C:395
@@ -4853,6 +3760,19 @@ msgstr "idazki mota honetako jatorrizko balioentzat?"
 msgid "Unable to switch to new document class."
 msgstr "Idazki mota berrira ezin aldatu"
 
+#: src/frontends/qt2/FormIndex.C:106
+msgid "LyX: Index"
+msgstr "LyX: Erroldaketa"
+
+#: src/frontends/qt2/FormParagraph.C:174
+#: src/frontends/xforms/FormParagraph.C:162
+msgid "Paragraph layout set"
+msgstr "Parrafoaren aurkezpena ezarria"
+
+#: src/frontends/qt2/FormParagraph.C:182
+msgid "LyX: Paragraph Options"
+msgstr "LyX: Parrafoen Aukerak"
+
 #. FIXME: should have a utility class for this
 #: src/frontends/qt2/FormPrint.C:92
 msgid ""
@@ -4870,14 +3790,56 @@ msgstr "Parametroak zuzen daudela egiaztatu\n"
 msgid "LyX: Print Error"
 msgstr "LyX: Imprimaketa Akatsa"
 
+#: src/frontends/qt2/FormPrint.C:104
+msgid "LyX: Print"
+msgstr "LyX: Inprimatu"
+
 #: src/frontends/qt2/FormRef.C:111
 msgid "&Go back"
 msgstr "&Atzera Joan"
+
+#: src/frontends/qt2/FormRef.C:116 src/frontends/qt2/FormRef.C:127
+#: src/frontends/qt2/FormRef.C:187
+msgid "&Goto reference"
+msgstr "&Erreferentzira Joan"
+
+#: src/frontends/qt2/FormRef.C:204 src/frontends/qt2/paragraphdlgimpl.C:49
+msgid "&Close"
+msgstr "&Itxi"
+
+#: src/frontends/qt2/FormRef.C:206 src/frontends/qt2/paragraphdlgimpl.C:49
+msgid "&Cancel"
+msgstr "&Etsi"
+
+#: src/frontends/qt2/FormRef.C:252
+msgid "LyX: Cross Reference"
+msgstr "LyX: Gurutzatutako Erreferentzia"
 
 #: src/frontends/qt2/FormSearch.C:47
 #, fuzzy
 msgid "Find and Replace"
 msgstr "Bilatu eta Ordezkatu"
+
+#: src/frontends/qt2/FormTabularCreate.C:48
+msgid "LyX: Insert Table"
+msgstr "LyX: Taula Sartu"
+
+#: src/frontends/qt2/FormToc.C:248
+msgid "LyX: Table of Contents"
+msgstr "LyX: Aurkibide Orokorra"
+
+#: src/frontends/qt2/FormUrl.C:123
+msgid "LyX: Url"
+msgstr "LyX: Url"
+
+#. FIXME: should be cleverer here
+#: src/frontends/qt2/paragraphdlgimpl.C:56 src/paragraph.C:1028
+msgid "Senseless with this layout!"
+msgstr "Aurkezpen hau zentzugabea da!"
+
+#: src/frontends/qt2/tabularcreatedlgimpl.C:34
+msgid "Drag with left mouse button to resize"
+msgstr ""
 
 #: src/frontends/xforms/combox.C:505
 msgid "Done"
@@ -4886,21 +3848,6 @@ msgstr "Eginda"
 #: src/frontends/xforms/FileDialog.C:59
 msgid "*"
 msgstr ""
-
-#: src/frontends/xforms/FormAboutlyx.C:28
-msgid "About LyX"
-msgstr ""
-
-#. stack tabs
-#: src/frontends/xforms/FormAboutlyx.C:66
-#, fuzzy
-msgid "Copyright and Version"
-msgstr "Copyright eta Garantia"
-
-#: src/frontends/xforms/FormAboutlyx.C:68
-#, fuzzy
-msgid "License and Warranty"
-msgstr "Copyright eta Garantia"
 
 #: src/frontends/xforms/FormMathsBitmap.C:79
 #: src/frontends/xforms/form_aboutlyx.C:29
@@ -4917,10 +3864,20 @@ msgstr "Itxi|^["
 msgid "Text"
 msgstr "testua"
 
-#: src/frontends/xforms/FormBibitem.C:25
+#: src/frontends/xforms/FormAboutlyx.C:28
+msgid "About LyX"
+msgstr ""
+
+#. stack tabs
+#: src/frontends/xforms/FormAboutlyx.C:66
 #, fuzzy
-msgid "Bibliography Entry"
-msgstr "Bibliografia"
+msgid "Copyright and Version"
+msgstr "Copyright eta Garantia"
+
+#: src/frontends/xforms/FormAboutlyx.C:68
+#, fuzzy
+msgid "License and Warranty"
+msgstr "Copyright eta Garantia"
 
 #: src/frontends/xforms/form_bibitem.C:29
 msgid "Key:|#K"
@@ -4930,10 +3887,10 @@ msgstr "Giltza:|#G"
 msgid "Label:|#L"
 msgstr "Txartela:|#E"
 
-#: src/frontends/xforms/FormBibtex.C:25
+#: src/frontends/xforms/FormBibitem.C:25
 #, fuzzy
-msgid "BibTeX Database"
-msgstr "Datu Basea:"
+msgid "Bibliography Entry"
+msgstr "Bibliografia"
 
 #: src/frontends/xforms/form_bibtex.C:29
 #, fuzzy
@@ -4945,6 +3902,11 @@ msgstr "Datu Basea:"
 msgid "Style:|#S"
 msgstr "Itxura"
 
+#: src/frontends/xforms/FormBibtex.C:25
+#, fuzzy
+msgid "BibTeX Database"
+msgstr "Datu Basea:"
+
 #: src/frontends/xforms/form_browser.C:31 src/frontends/xforms/form_error.C:31
 #: src/frontends/xforms/form_toc.C:48
 #, fuzzy
@@ -4954,11 +3916,6 @@ msgstr "Itxi|#I^["
 #: src/frontends/xforms/form_browser.C:39
 msgid "Update|#Uu"
 msgstr "Eguneratu|#Ee"
-
-#: src/frontends/xforms/FormCharacter.C:34
-#, fuzzy
-msgid "Character Layout"
-msgstr "Hizki Itxura"
 
 #: src/frontends/xforms/form_character.C:33
 msgid "Family:|#F"
@@ -5006,10 +3963,10 @@ msgstr "Hauek Inoiz ez dira txandatzen"
 msgid "These are always toggled"
 msgstr "Hauek beti bihurtzen dira"
 
-#: src/frontends/xforms/FormCitation.C:399
+#: src/frontends/xforms/FormCharacter.C:34
 #, fuzzy
-msgid "Not yet supported"
-msgstr "Matematika eran Berregin oraindik ez dabil"
+msgid "Character Layout"
+msgstr "Hizki Itxura"
 
 #: src/frontends/xforms/form_citation.C:29
 msgid "Inset keys|#I"
@@ -5111,68 +4068,10 @@ msgstr "Testu ondoren|#e"
 msgid "Restore|#R"
 msgstr "Berrezarri|#r"
 
-#: src/frontends/xforms/FormDocument.C:92
-msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-msgstr ""
-" Jatorrizkoa | Egokitua |USgutuna| USlegala | USexekutibo | A3 | A4 | A5 | "
-"B3 | B4 | B5 "
-
-#: src/frontends/xforms/FormDocument.C:95
-msgid ""
-" None | A4 small Margins (only portrait) | A4 very small Margins (only "
-"portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Batez | A4 margen txikia (argazkia soilik) | A4 margen oso txikia (argazkia "
-"soilik) | A4 margen zabalak (argazkiak soilik) "
-
-#: src/frontends/xforms/FormDocument.C:146
-msgid " Single | OneHalf | Double | Other "
-msgstr "Bakarra | Bat eta erdi | Bikoitza | Bestea "
-
-#: src/frontends/xforms/FormDocument.C:154
-msgid " Smallskip | Medskip | Bigskip | Length "
-msgstr " Jauzi txikia  | Erdi jauzia | Jauzi handia | Luzera "
-
-#: src/frontends/xforms/FormDocument.C:198
-msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr ""
-" ``testua'' | ''testua'' | ,,testua`` | ,,testua'' | «testua» | »testua« "
-
-#: src/frontends/xforms/FormDocument.C:216
-msgid " Author-year | Numerical "
-msgstr ""
-
-#: src/frontends/xforms/FormDocument.C:229
-msgid ""
-" default | tiny | script | footnote | small | normal | large | Large | LARGE "
-"| huge | Huge"
-msgstr ""
-" jatorrizkoa | ttipia | indizea | oin oharra | txikia | arrunta  | handia | "
-"Handia | Galanta | Egundokoa | Erraldoia"
-
-#: src/frontends/xforms/FormDocument.C:243
-#: src/frontends/xforms/FormPreferences.C:272
-msgid "Language"
-msgstr "Hizkuntza"
-
-#: src/frontends/xforms/FormDocument.C:245
-msgid "Extra"
-msgstr "Bestelakoak"
-
-#: src/frontends/xforms/FormDocument.C:247
-msgid "Bullets"
-msgstr "Pinportak"
-
-#: src/frontends/xforms/FormDocument.C:250
+#: src/frontends/xforms/FormCitation.C:399
 #, fuzzy
-msgid ""
-"Your version of libXpm is older than 4.7.\n"
-"The `bullet' tab of the document dialog has been disabled"
-msgstr ""
-"libXpm-ren bertsioa 4.7 baino zaharragoa daukazu.\n"
-"Idazkiko 'pinportak' erabilkaitz bihurtu dira."
+msgid "Not yet supported"
+msgstr "Matematika eran Berregin oraindik ez dabil"
 
 #: src/frontends/xforms/form_document.C:31
 #: src/frontends/xforms/form_paragraph.C:314
@@ -5184,9 +4083,17 @@ msgstr ""
 msgid "Special:|#S"
 msgstr "Bereziak:|#B"
 
+#: src/frontends/xforms/form_document.C:99
+msgid "Margins"
+msgstr "Margenak"
+
 #: src/frontends/xforms/form_document.C:103
 msgid "Foot/Head Margins"
 msgstr "Oin/Buruko Margenak"
+
+#: src/frontends/xforms/form_document.C:114
+msgid "Orientation"
+msgstr "Norabidea"
 
 #: src/frontends/xforms/form_document.C:121
 msgid "Portrait|#o"
@@ -5414,14 +4321,76 @@ msgstr "Ding 4|#g"
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
+#: src/frontends/xforms/FormDocument.C:92
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+" Jatorrizkoa | Egokitua |USgutuna| USlegala | USexekutibo | A3 | A4 | A5 | "
+"B3 | B4 | B5 "
+
+#: src/frontends/xforms/FormDocument.C:95
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+" Batez | A4 margen txikia (argazkia soilik) | A4 margen oso txikia (argazkia "
+"soilik) | A4 margen zabalak (argazkiak soilik) "
+
+#: src/frontends/xforms/FormDocument.C:146
+msgid " Single | OneHalf | Double | Other "
+msgstr "Bakarra | Bat eta erdi | Bikoitza | Bestea "
+
+#: src/frontends/xforms/FormDocument.C:154
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Jauzi txikia  | Erdi jauzia | Jauzi handia | Luzera "
+
+#: src/frontends/xforms/FormDocument.C:198
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+msgstr ""
+" ``testua'' | ''testua'' | ,,testua`` | ,,testua'' | «testua» | »testua« "
+
+#: src/frontends/xforms/FormDocument.C:216
+msgid " Author-year | Numerical "
+msgstr ""
+
+#: src/frontends/xforms/FormDocument.C:229
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+" jatorrizkoa | ttipia | indizea | oin oharra | txikia | arrunta  | handia | "
+"Handia | Galanta | Egundokoa | Erraldoia"
+
+#: src/frontends/xforms/FormDocument.C:241
+msgid "Paper"
+msgstr "Orria"
+
+#: src/frontends/xforms/FormDocument.C:243
+#: src/frontends/xforms/FormPreferences.C:272
+msgid "Language"
+msgstr "Hizkuntza"
+
+#: src/frontends/xforms/FormDocument.C:245
+msgid "Extra"
+msgstr "Bestelakoak"
+
+#: src/frontends/xforms/FormDocument.C:247
+msgid "Bullets"
+msgstr "Pinportak"
+
+#: src/frontends/xforms/FormDocument.C:250
+#, fuzzy
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document dialog has been disabled"
+msgstr ""
+"libXpm-ren bertsioa 4.7 baino zaharragoa daukazu.\n"
+"Idazkiko 'pinportak' erabilkaitz bihurtu dira."
+
 #: src/frontends/xforms/FormError.C:30
 msgid "LaTeX Error"
 msgstr "LaTeX-eko Akatsa"
-
-#: src/frontends/xforms/FormExternal.C:33
-#, fuzzy
-msgid "Edit external file"
-msgstr "Kanpo fitxategi multzoa"
 
 #: src/frontends/xforms/form_external.C:29
 msgid "Template|#t"
@@ -5457,9 +4426,10 @@ msgstr "&Eragin"
 msgid "Cancel|#C^["
 msgstr "Etsi¦#t^["
 
-#: src/frontends/xforms/FormFiledialog.C:203
-msgid "Warning! Couldn't open directory."
-msgstr "Oharra! Direktorioa ezin ireki."
+#: src/frontends/xforms/FormExternal.C:33
+#, fuzzy
+msgid "Edit external file"
+msgstr "Kanpo fitxategi multzoa"
 
 #: src/frontends/xforms/form_filedialog.C:34
 msgid "Directory:|#D"
@@ -5488,6 +4458,10 @@ msgstr "Erabiltzaile1|#1"
 #: src/frontends/xforms/form_filedialog.C:83
 msgid "User2|#2"
 msgstr "Erabiltzaile2|#2"
+
+#: src/frontends/xforms/FormFiledialog.C:203
+msgid "Warning! Couldn't open directory."
+msgstr "Oharra! Direktorioa ezin ireki."
 
 #: src/frontends/xforms/form_graphics.C:33
 msgid "Graphics File|#F"
@@ -5561,11 +4535,6 @@ msgstr "Eguneratu|#E"
 msgid "Ok"
 msgstr "Onartu"
 
-#: src/frontends/xforms/FormInclude.C:29
-#, fuzzy
-msgid "Include file"
-msgstr "Fitxategia Barneratu|B"
-
 #: src/frontends/xforms/form_include.C:37
 msgid "Don't typeset|#D"
 msgstr "Hizki motarik ez|#H"
@@ -5594,17 +4563,36 @@ msgstr "Sarrera erabili|#S"
 msgid "Use include|#U"
 msgstr "Barneratua erabili|#B"
 
-#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:49
-msgid "Index"
-msgstr "Errolda"
+#: src/frontends/xforms/FormInclude.C:29
+#, fuzzy
+msgid "Include file"
+msgstr "Fitxategia Barneratu|B"
 
 #: src/frontends/xforms/form_index.C:29
 msgid "Keyword|#K"
 msgstr "Giltza|#G"
 
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:49
+msgid "Index"
+msgstr "Errolda"
+
 #: src/frontends/xforms/FormLog.C:18 src/frontends/xforms/FormLog.C:35
 msgid "LaTeX Log"
 msgstr "LaTeX-en Erregistro Artxiboa"
+
+#: src/frontends/xforms/FormLog.C:27
+#, fuzzy
+msgid "Build log"
+msgstr "Programa Eraiki"
+
+#: src/frontends/xforms/FormLog.C:31
+#, fuzzy
+msgid "No build log file found"
+msgstr "LaTeX-en Erregistro Artxiboarik ez da aurkitu"
+
+#: src/frontends/xforms/FormLog.C:39
+msgid "No LaTeX log file found"
+msgstr "LaTeX-en Erregistro Artxiboarik ez da aurkitu"
 
 #: src/frontends/xforms/FormMathsBitmap.C:42
 #, fuzzy
@@ -5616,11 +4604,6 @@ msgstr "Matthias"
 msgid "Maths Decorations"
 msgstr "Apaingarria"
 
-#: src/frontends/xforms/FormMathsDelim.C:45
-#, fuzzy
-msgid "Maths Delimiters"
-msgstr "Mugatzailea"
-
 #: src/frontends/xforms/form_maths_delim.C:35
 #: src/frontends/xforms/form_paragraph.C:90
 msgid "Right|#R"
@@ -5630,14 +4613,15 @@ msgstr "Eskuin|#s"
 msgid "Left|#L"
 msgstr "Ezker|#L"
 
-#: src/frontends/xforms/FormMathsMatrix.C:47
+#: src/frontends/xforms/FormMathsDelim.C:45
 #, fuzzy
-msgid "Maths Matrix"
-msgstr "Matrizea"
+msgid "Maths Delimiters"
+msgstr "Mugatzailea"
 
-#: src/frontends/xforms/FormMathsMatrix.C:63
-msgid "Top | Center | Bottom"
-msgstr "Goratua | Erdiratua | Azpiratu"
+#: src/frontends/xforms/form_maths_matrix.C:28
+#: src/frontends/xforms/form_tabular_create.C:49
+msgid "Rows"
+msgstr "Lerroak"
 
 #: src/frontends/xforms/form_maths_matrix.C:35
 msgid "Columns "
@@ -5655,10 +4639,14 @@ msgstr "Zeharretako lerrokaketa|#H"
 msgid "OK  "
 msgstr "Ongi  "
 
-#: src/frontends/xforms/FormMathsPanel.C:57
+#: src/frontends/xforms/FormMathsMatrix.C:47
 #, fuzzy
-msgid "Maths Panel"
-msgstr "Matematika Arbela"
+msgid "Maths Matrix"
+msgstr "Matrizea"
+
+#: src/frontends/xforms/FormMathsMatrix.C:63
+msgid "Top | Center | Bottom"
+msgstr "Goratua | Erdiratua | Azpiratu"
 
 #: src/frontends/xforms/form_maths_panel.C:28
 msgid "Close "
@@ -5691,10 +4679,10 @@ msgstr "S  ò"
 msgid "Misc"
 msgstr "Batzuk"
 
-#: src/frontends/xforms/FormMathsSpace.C:25
+#: src/frontends/xforms/FormMathsPanel.C:57
 #, fuzzy
-msgid "Maths Spacing"
-msgstr "Hutsunea"
+msgid "Maths Panel"
+msgstr "Matematika Arbela"
 
 #: src/frontends/xforms/form_maths_space.C:31
 msgid "Thin|#T"
@@ -5724,10 +4712,16 @@ msgstr "2.Laukitxoa|#2"
 msgid "OK "
 msgstr "Ongi "
 
-#: src/frontends/xforms/FormMinipage.C:31
+#: src/frontends/xforms/FormMathsSpace.C:25
 #, fuzzy
-msgid "Minipage Options"
-msgstr "orritxo lerroa"
+msgid "Maths Spacing"
+msgstr "Hutsunea"
+
+#: src/frontends/xforms/form_minipage.C:31
+#: src/frontends/xforms/form_paragraph.C:149
+#: src/frontends/xforms/form_paragraph.C:223
+msgid "Alignment"
+msgstr "Lerrokaketa"
 
 #: src/frontends/xforms/form_minipage.C:42
 #: src/frontends/xforms/form_paragraph.C:230
@@ -5744,28 +4738,10 @@ msgstr "Erdikalde|#d"
 msgid "Bottom|#B"
 msgstr "Azpikalde|#A"
 
-#: src/frontends/xforms/FormParagraph.C:36
-msgid "Paragraph Layout"
-msgstr "Parrafoaren Itxura"
-
-#: src/frontends/xforms/FormParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:123
-msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr ""
-" Batez | Ezarritako jauzia | Jauzi txikia| Erdi Jauzia | Jauzi Handia | "
-"GoitiBeherako Betegarria | Luzera "
-
-#. now make them fit together
-#: src/frontends/xforms/FormParagraph.C:148
-msgid "General"
-msgstr "Orokorra"
-
-#: src/frontends/xforms/FormParagraph.C:437
-#: src/frontends/xforms/FormTabular.C:375
-#: src/frontends/xforms/FormTabular.C:387
-#: src/frontends/xforms/FormTabular.C:399
-msgid "Warning: Invalid Length (valid example: 10mm)"
-msgstr "Oharra: Luzera Okerra (adibide zuzena: 10mm)"
+#: src/frontends/xforms/FormMinipage.C:31
+#, fuzzy
+msgid "Minipage Options"
+msgstr "orritxo lerroa"
 
 #: src/frontends/xforms/form_paragraph.C:40
 msgid "Label Width:|#d"
@@ -5870,332 +4846,37 @@ msgstr "Orritxoa|#M"
 msgid "Floatflt|#F"
 msgstr "Mugikorra:|#F"
 
-#: src/frontends/xforms/FormPreamble.C:24
-#, fuzzy
-msgid "LaTeX preamble"
-msgstr "LaTeX Aurre-Esana"
+#: src/frontends/xforms/FormParagraph.C:36
+msgid "Paragraph Layout"
+msgstr "Parrafoaren Itxura"
+
+#: src/frontends/xforms/FormParagraph.C:120
+#: src/frontends/xforms/FormParagraph.C:123
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr ""
+" Batez | Ezarritako jauzia | Jauzi txikia| Erdi Jauzia | Jauzi Handia | "
+"GoitiBeherako Betegarria | Luzera "
+
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:148
+msgid "General"
+msgstr "Orokorra"
+
+#: src/frontends/xforms/FormParagraph.C:437
+#: src/frontends/xforms/FormTabular.C:375
+#: src/frontends/xforms/FormTabular.C:387
+#: src/frontends/xforms/FormTabular.C:399
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Oharra: Luzera Okerra (adibide zuzena: 10mm)"
 
 #: src/frontends/xforms/form_preamble.C:29 src/lyx_gui_misc.C:220
 msgid "OK|#O"
 msgstr "Ongi|#O"
 
-#: src/frontends/xforms/FormPreferences.C:71
-msgid "Preferences"
-msgstr "Lehentasuna"
-
-#: src/frontends/xforms/FormPreferences.C:212
-msgid "Look & Feel"
-msgstr "Itxura eta Izakera"
-
-#: src/frontends/xforms/FormPreferences.C:215
-msgid "Lang Opts"
-msgstr "Hizkuntz Aukerak"
-
-#: src/frontends/xforms/FormPreferences.C:218
-#: src/frontends/xforms/FormPreferences.C:247
-msgid "Converters"
-msgstr "Bihurtzaileak"
-
-#: src/frontends/xforms/FormPreferences.C:221
-msgid "Inputs"
-msgstr "Sarrerak"
-
-#: src/frontends/xforms/FormPreferences.C:224
-msgid "Outputs"
-msgstr "Irteerak"
-
-#: src/frontends/xforms/FormPreferences.C:230
-msgid "Screen Fonts"
-msgstr "Pantailako Hizkimotak"
-
-#: src/frontends/xforms/FormPreferences.C:233
-msgid "Interface"
-msgstr "Interfasea"
-
-#: src/frontends/xforms/FormPreferences.C:236
-msgid "Colors"
-msgstr "Koloreak"
-
-#: src/frontends/xforms/FormPreferences.C:244
-msgid "Formats"
-msgstr "Egiturak"
-
-#: src/frontends/xforms/FormPreferences.C:253
-msgid "Paths"
-msgstr "Ibilbideak"
-
-#: src/frontends/xforms/FormPreferences.C:261
-msgid "Printer"
-msgstr "Inprimagailua"
-
-#: src/frontends/xforms/FormPreferences.C:269
-msgid "Spell checker"
-msgstr "Zuzentzailea"
-
-#: src/frontends/xforms/FormPreferences.C:528
-msgid "LyX objects that can be assigned a color."
-msgstr "Kolorea ezar diezazkieken LyX-eko objetuak."
-
-#: src/frontends/xforms/FormPreferences.C:531
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"LyX-eko objetuaren kolorea aldatu. Oharra: gero, aldaketa \"Eragin\" zaztatu "
-"behar duzu."
-
-#: src/frontends/xforms/FormPreferences.C:539
-msgid "Find a new color."
-msgstr "Kolore berri bat aurkitu."
-
-#: src/frontends/xforms/FormPreferences.C:542
-msgid "Toggle between RGB and HSV color spaces."
-msgstr "RGB eta HSV kolore guneen artean txandatu."
-
-#: src/frontends/xforms/FormPreferences.C:724
-msgid "GUI background"
-msgstr "GUI atzeirudia"
-
-#: src/frontends/xforms/FormPreferences.C:730
-msgid "GUI text"
-msgstr "GUI testua"
-
-#: src/frontends/xforms/FormPreferences.C:739
-msgid "GUI selection"
-msgstr "GUI hautaketa"
-
-#: src/frontends/xforms/FormPreferences.C:745
-msgid "GUI pointer"
-msgstr "GUI gezia"
-
-#: src/frontends/xforms/FormPreferences.C:875
-msgid "HSV"
-msgstr "HSV"
-
-#: src/frontends/xforms/FormPreferences.C:907
-msgid "RGB"
-msgstr "RGB"
-
-#: src/frontends/xforms/FormPreferences.C:988
-msgid "All the currently defined converters known to LyX."
-msgstr "Gaur egun LyX-ek ezagutzen dituen bihurtzaile guztiak."
-
-#: src/frontends/xforms/FormPreferences.C:990
-msgid "Convert \"from\" this format"
-msgstr "Egitura \"honetatik\" bihurtu"
-
-#: src/frontends/xforms/FormPreferences.C:992
-msgid "Convert \"to\" this format"
-msgstr "Egitura \"honetara\" bihurtu"
-
-#: src/frontends/xforms/FormPreferences.C:994
-msgid ""
-"The conversion command. $$i is the input file name, $$b is the file name "
-"without its extension and $$o is the name of the output file."
-msgstr ""
-"Bihurketa agindua. $$i sarrerako fitxategiaren izena da, $$b luzapenik \n"
-"gabeko fitxategiaren izena da, eta $$o irteerako fitxategiaren izena da."
-
-#: src/frontends/xforms/FormPreferences.C:996
-msgid "Flags that control the converter behavior"
-msgstr "Bihurtzailearen izakera bideratzen duten Zotzak"
-
-#: src/frontends/xforms/FormPreferences.C:998
-msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
-msgstr ""
-"Bihurtzaile eskuragarrien zerrendatik oraingo bihurtzailea ezabatu. \n"
-"Oharra: aldaketa onartzeko \"Eragin\" zaztatu."
-
-#: src/frontends/xforms/FormPreferences.C:1000
-#: src/frontends/xforms/FormPreferences.C:1265
-msgid "Add"
-msgstr "Gehitu"
-
-#: src/frontends/xforms/FormPreferences.C:1001
-msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
-msgstr ""
-"Bihurtzaile eskuragarrien zerrendan oraingo bihurtzailea gehitu. Oharra: \n"
-"aldaketa onartzeko \"Eragin\" zaztatu."
-
-#: src/frontends/xforms/FormPreferences.C:1003
-msgid ""
-"Modify the contents of the current converter. Note: you must then \"Apply\" "
-"the change."
-msgstr ""
-"Oraingo bihurtzailearen edukinak (gaiak) aldatu. Oharra: aldaketa onartzeko "
-"\"Eragin\" \n"
-"zaztatu."
-
-#: src/frontends/xforms/FormPreferences.C:1095
-#: src/frontends/xforms/FormPreferences.C:1096
-#: src/frontends/xforms/FormPreferences.C:1134
-#: src/frontends/xforms/FormPreferences.C:1136
-#: src/frontends/xforms/FormPreferences.C:1364
-#: src/frontends/xforms/FormPreferences.C:1365
-#: src/frontends/xforms/FormPreferences.C:1408
-#: src/frontends/xforms/FormPreferences.C:1410
-#: src/frontends/xforms/form_preferences.C:522
-msgid "Modify|#M"
-msgstr "Eraldatu|#E"
-
-#: src/frontends/xforms/FormPreferences.C:1126
-#: src/frontends/xforms/FormPreferences.C:1128
-#: src/frontends/xforms/FormPreferences.C:1399
-#: src/frontends/xforms/FormPreferences.C:1401
-#: src/frontends/xforms/form_preferences.C:625
-#: src/frontends/xforms/form_preferences.C:712
-msgid "Add|#A"
-msgstr "Gehitu|#G"
-
-#: src/frontends/xforms/FormPreferences.C:1251
-msgid "All the currently defined formats known to LyX."
-msgstr "Gaur egun LyX-ek ezagutzen dituen egitura guztiak."
-
-#: src/frontends/xforms/FormPreferences.C:1253
-msgid "The format identifier."
-msgstr "Egituraren izendatzailea."
-
-#: src/frontends/xforms/FormPreferences.C:1255
-msgid "The format name as it will appear in the menus."
-msgstr "Egituraren izena era berdinean aukera zerrendatan agertuko da."
-
-#: src/frontends/xforms/FormPreferences.C:1257
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-"Teklatu bizkortzailea. GUI izenean hizki bat erabili. Hizki larri eta xumeak "
-"ezberditzen ditu."
-
-#: src/frontends/xforms/FormPreferences.C:1259
-msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr "Fitxategia ezagutzeko erabilia. Adbz. ps, pdf, tex."
-
-#: src/frontends/xforms/FormPreferences.C:1261
-msgid "The command used to launch the viewer application."
-msgstr "Ikuskaria (programa) abiatzeko erabili den agindua."
-
-#: src/frontends/xforms/FormPreferences.C:1263
-msgid ""
-"Remove the current format from the list of available formats. Note: you must "
-"then \"Apply\" the change."
-msgstr ""
-"Egitura eskuragarrien zerrendatik oraingo egitura ezabatu. Oharra: \n"
-"aldaketa \"Eragin\" behar duzu."
-
-#: src/frontends/xforms/FormPreferences.C:1266
-msgid ""
-"Add the current format to the list of available formats. Note: you must then "
-"\"Apply\" the change."
-msgstr ""
-"Egitura eskuragarrien zerrendan oraingo egitura gehitu. Oharra: aldaketa \n"
-"\"Eragin\" behar duzu."
-
-#: src/frontends/xforms/FormPreferences.C:1268
-msgid ""
-"Modify the contents of the current format. Note: you must then \"Apply\" the "
-"change."
-msgstr ""
-"Oraingo egituraren edukina aldatu. Oharra: aldaketa \n"
-"\"Eragin\" behar duzu."
-
-#: src/frontends/xforms/FormPreferences.C:1380
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Bihurtzaileak erabilitako egitura ezin ezabatu. Lehendabizi \n"
-"bihurtzailea ezabatu."
-
-#: src/frontends/xforms/FormPreferences.C:1550
-msgid "Sys Bind"
-msgstr "Sis. Bateratu"
-
-#: src/frontends/xforms/FormPreferences.C:1554
-msgid "User Bind"
-msgstr "Erabiltzailearen bateraketa"
-
-#: src/frontends/xforms/FormPreferences.C:1558
-msgid "Bind file"
-msgstr "Bateratu fitxategia"
-
-#: src/frontends/xforms/FormPreferences.C:1562
-msgid "Sys UI"
-msgstr "Sis. UI"
-
-#: src/frontends/xforms/FormPreferences.C:1566
-msgid "User UI"
-msgstr "Erabiltzailearen Erabiltzaile Interfasea"
-
-#: src/frontends/xforms/FormPreferences.C:1570
-msgid "UI file"
-msgstr "Erabiltzaile Interfaseatu fitxategia"
-
-#: src/frontends/xforms/FormPreferences.C:1758
-#: src/frontends/xforms/FormPreferences.C:1766
-msgid "Key maps"
-msgstr "Teklatu mapa"
-
-#: src/frontends/xforms/FormPreferences.C:1762
-#: src/frontends/xforms/FormPreferences.C:1770
-msgid "Keyboard map"
-msgstr "Teklatu mapa"
-
-#: src/frontends/xforms/FormPreferences.C:1956
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr " jatorrizkoa | US gutuna | legala | exekutiboa | A3 | A4 | A5 | B5 "
-
-#: src/frontends/xforms/FormPreferences.C:2191
-msgid "Default path"
-msgstr "Jatorrizko ibilbidea"
-
-#: src/frontends/xforms/FormPreferences.C:2196
-msgid "Template path"
-msgstr "Ereduaren ibilbidea"
-
-#: src/frontends/xforms/FormPreferences.C:2201
-msgid "Temp dir"
-msgstr "Aldibateko direktorioa"
-
-#: src/frontends/xforms/FormPreferences.C:2205
-msgid "User"
-msgstr "Erabiltzailea"
-
-#: src/frontends/xforms/FormPreferences.C:2208
-msgid "Lastfiles"
-msgstr "Azken fitxategia"
-
-#: src/frontends/xforms/FormPreferences.C:2212
-msgid "Backup path"
-msgstr "Babes kopiaren ibilbidea"
-
-#: src/frontends/xforms/FormPreferences.C:2217
-msgid "LyX Server pipes"
-msgstr "LyX Zerbitzariaren tutuak"
-
-#: src/frontends/xforms/FormPreferences.C:2671
-msgid "Fonts must be positive!"
-msgstr "Hizkimotak positiboak izan behar dute!"
-
-#: src/frontends/xforms/FormPreferences.C:2694
-msgid ""
-"Fonts must be input in the order tiny > script> footnote > small > normal > "
-"large > larger > largest > huge > huger."
-msgstr ""
-"Hizkimotak era honetan antolatuta sartu behar dira:  ttipia > indizea > \n"
-"oin oharra > txikia > arrunta  > handia > galanta > egundokoa > \n"
-"erraldoia > izutzekoa."
-
-#: src/frontends/xforms/FormPreferences.C:2816
-msgid " none | ispell | aspell "
-msgstr " ezer | ispell | aspell"
-
-#: src/frontends/xforms/FormPreferences.C:2907
-msgid "Personal dictionary"
-msgstr "Erabiltzailearen hiztegia"
-
-#: src/frontends/xforms/FormPreferences.C:2963
-msgid "WARNING!"
-msgstr "ADI!"
+#: src/frontends/xforms/FormPreamble.C:24
+#, fuzzy
+msgid "LaTeX preamble"
+msgstr "LaTeX Aurre-Esana"
 
 #: src/LyXAction.C:145 src/frontends/xforms/form_preferences.C:46
 msgid "Save"
@@ -6349,6 +5030,18 @@ msgstr "G|#G"
 msgid "LyX objects|#L"
 msgstr "LyX gauzak(object)|#L"
 
+#: src/frontends/xforms/FormPreferences.C:1095
+#: src/frontends/xforms/FormPreferences.C:1096
+#: src/frontends/xforms/FormPreferences.C:1134
+#: src/frontends/xforms/FormPreferences.C:1136
+#: src/frontends/xforms/FormPreferences.C:1364
+#: src/frontends/xforms/FormPreferences.C:1365
+#: src/frontends/xforms/FormPreferences.C:1408
+#: src/frontends/xforms/FormPreferences.C:1410
+#: src/frontends/xforms/form_preferences.C:522
+msgid "Modify|#M"
+msgstr "Eraldatu|#E"
+
 #: src/frontends/xforms/form_preferences.C:529
 msgid "S|#S"
 msgstr "S|#S"
@@ -6381,6 +5074,15 @@ msgstr "Bihurtzaile guztiak|#g"
 #: src/frontends/xforms/form_preferences.C:705
 msgid "Delete|#D"
 msgstr "Ezabatu|#E"
+
+#: src/frontends/xforms/FormPreferences.C:1126
+#: src/frontends/xforms/FormPreferences.C:1128
+#: src/frontends/xforms/FormPreferences.C:1399
+#: src/frontends/xforms/FormPreferences.C:1401
+#: src/frontends/xforms/form_preferences.C:625
+#: src/frontends/xforms/form_preferences.C:712
+msgid "Add|#A"
+msgstr "Gehitu|#G"
 
 #: src/frontends/xforms/form_preferences.C:632
 msgid "Converter|#C"
@@ -6593,10 +5295,302 @@ msgstr "LyX-Zerbitzariaren tutua|#z"
 msgid "Temp dir|#d"
 msgstr "Aldibateko direktorioa|#d"
 
-#: src/LyXAction.C:129 src/LyXAction.C:136 src/frontends/xforms/FormPrint.C:44
-#: src/frontends/xforms/form_print.C:129
-msgid "Print"
-msgstr "Inprimatu"
+#: src/frontends/xforms/FormPreferences.C:71
+msgid "Preferences"
+msgstr "Lehentasuna"
+
+#: src/frontends/xforms/FormPreferences.C:212
+msgid "Look & Feel"
+msgstr "Itxura eta Izakera"
+
+#: src/frontends/xforms/FormPreferences.C:215
+msgid "Lang Opts"
+msgstr "Hizkuntz Aukerak"
+
+#: src/frontends/xforms/FormPreferences.C:218
+#: src/frontends/xforms/FormPreferences.C:247
+msgid "Converters"
+msgstr "Bihurtzaileak"
+
+#: src/frontends/xforms/FormPreferences.C:221
+msgid "Inputs"
+msgstr "Sarrerak"
+
+#: src/frontends/xforms/FormPreferences.C:224
+msgid "Outputs"
+msgstr "Irteerak"
+
+#: src/frontends/xforms/FormPreferences.C:230
+msgid "Screen Fonts"
+msgstr "Pantailako Hizkimotak"
+
+#: src/frontends/xforms/FormPreferences.C:233
+msgid "Interface"
+msgstr "Interfasea"
+
+#: src/frontends/xforms/FormPreferences.C:236
+msgid "Colors"
+msgstr "Koloreak"
+
+#: src/frontends/xforms/FormPreferences.C:244
+msgid "Formats"
+msgstr "Egiturak"
+
+#: src/frontends/xforms/FormPreferences.C:253
+msgid "Paths"
+msgstr "Ibilbideak"
+
+#: src/frontends/xforms/FormPreferences.C:261
+msgid "Printer"
+msgstr "Inprimagailua"
+
+#: src/frontends/xforms/FormPreferences.C:269
+msgid "Spell checker"
+msgstr "Zuzentzailea"
+
+#: src/frontends/xforms/FormPreferences.C:528
+msgid "LyX objects that can be assigned a color."
+msgstr "Kolorea ezar diezazkieken LyX-eko objetuak."
+
+#: src/frontends/xforms/FormPreferences.C:531
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+"LyX-eko objetuaren kolorea aldatu. Oharra: gero, aldaketa \"Eragin\" zaztatu "
+"behar duzu."
+
+#: src/frontends/xforms/FormPreferences.C:539
+msgid "Find a new color."
+msgstr "Kolore berri bat aurkitu."
+
+#: src/frontends/xforms/FormPreferences.C:542
+msgid "Toggle between RGB and HSV color spaces."
+msgstr "RGB eta HSV kolore guneen artean txandatu."
+
+#: src/frontends/xforms/FormPreferences.C:724
+msgid "GUI background"
+msgstr "GUI atzeirudia"
+
+#: src/frontends/xforms/FormPreferences.C:730
+msgid "GUI text"
+msgstr "GUI testua"
+
+#: src/frontends/xforms/FormPreferences.C:739
+msgid "GUI selection"
+msgstr "GUI hautaketa"
+
+#: src/frontends/xforms/FormPreferences.C:745
+msgid "GUI pointer"
+msgstr "GUI gezia"
+
+#: src/frontends/xforms/FormPreferences.C:875
+msgid "HSV"
+msgstr "HSV"
+
+#: src/frontends/xforms/FormPreferences.C:907
+msgid "RGB"
+msgstr "RGB"
+
+#: src/frontends/xforms/FormPreferences.C:988
+msgid "All the currently defined converters known to LyX."
+msgstr "Gaur egun LyX-ek ezagutzen dituen bihurtzaile guztiak."
+
+#: src/frontends/xforms/FormPreferences.C:990
+msgid "Convert \"from\" this format"
+msgstr "Egitura \"honetatik\" bihurtu"
+
+#: src/frontends/xforms/FormPreferences.C:992
+msgid "Convert \"to\" this format"
+msgstr "Egitura \"honetara\" bihurtu"
+
+#: src/frontends/xforms/FormPreferences.C:994
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+"Bihurketa agindua. $$i sarrerako fitxategiaren izena da, $$b luzapenik \n"
+"gabeko fitxategiaren izena da, eta $$o irteerako fitxategiaren izena da."
+
+#: src/frontends/xforms/FormPreferences.C:996
+msgid "Flags that control the converter behavior"
+msgstr "Bihurtzailearen izakera bideratzen duten Zotzak"
+
+#: src/frontends/xforms/FormPreferences.C:998
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+"Bihurtzaile eskuragarrien zerrendatik oraingo bihurtzailea ezabatu. \n"
+"Oharra: aldaketa onartzeko \"Eragin\" zaztatu."
+
+#: src/frontends/xforms/FormPreferences.C:1000
+#: src/frontends/xforms/FormPreferences.C:1265
+msgid "Add"
+msgstr "Gehitu"
+
+#: src/frontends/xforms/FormPreferences.C:1001
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+"Bihurtzaile eskuragarrien zerrendan oraingo bihurtzailea gehitu. Oharra: \n"
+"aldaketa onartzeko \"Eragin\" zaztatu."
+
+#: src/frontends/xforms/FormPreferences.C:1003
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+"Oraingo bihurtzailearen edukinak (gaiak) aldatu. Oharra: aldaketa onartzeko "
+"\"Eragin\" \n"
+"zaztatu."
+
+#: src/frontends/xforms/FormPreferences.C:1251
+msgid "All the currently defined formats known to LyX."
+msgstr "Gaur egun LyX-ek ezagutzen dituen egitura guztiak."
+
+#: src/frontends/xforms/FormPreferences.C:1253
+msgid "The format identifier."
+msgstr "Egituraren izendatzailea."
+
+#: src/frontends/xforms/FormPreferences.C:1255
+msgid "The format name as it will appear in the menus."
+msgstr "Egituraren izena era berdinean aukera zerrendatan agertuko da."
+
+#: src/frontends/xforms/FormPreferences.C:1257
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr ""
+"Teklatu bizkortzailea. GUI izenean hizki bat erabili. Hizki larri eta xumeak "
+"ezberditzen ditu."
+
+#: src/frontends/xforms/FormPreferences.C:1259
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr "Fitxategia ezagutzeko erabilia. Adbz. ps, pdf, tex."
+
+#: src/frontends/xforms/FormPreferences.C:1261
+msgid "The command used to launch the viewer application."
+msgstr "Ikuskaria (programa) abiatzeko erabili den agindua."
+
+#: src/frontends/xforms/FormPreferences.C:1263
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+"Egitura eskuragarrien zerrendatik oraingo egitura ezabatu. Oharra: \n"
+"aldaketa \"Eragin\" behar duzu."
+
+#: src/frontends/xforms/FormPreferences.C:1266
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+"Egitura eskuragarrien zerrendan oraingo egitura gehitu. Oharra: aldaketa \n"
+"\"Eragin\" behar duzu."
+
+#: src/frontends/xforms/FormPreferences.C:1268
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+"Oraingo egituraren edukina aldatu. Oharra: aldaketa \n"
+"\"Eragin\" behar duzu."
+
+#: src/frontends/xforms/FormPreferences.C:1380
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+"Bihurtzaileak erabilitako egitura ezin ezabatu. Lehendabizi \n"
+"bihurtzailea ezabatu."
+
+#: src/frontends/xforms/FormPreferences.C:1550
+msgid "Sys Bind"
+msgstr "Sis. Bateratu"
+
+#: src/frontends/xforms/FormPreferences.C:1554
+msgid "User Bind"
+msgstr "Erabiltzailearen bateraketa"
+
+#: src/frontends/xforms/FormPreferences.C:1558
+msgid "Bind file"
+msgstr "Bateratu fitxategia"
+
+#: src/frontends/xforms/FormPreferences.C:1562
+msgid "Sys UI"
+msgstr "Sis. UI"
+
+#: src/frontends/xforms/FormPreferences.C:1566
+msgid "User UI"
+msgstr "Erabiltzailearen Erabiltzaile Interfasea"
+
+#: src/frontends/xforms/FormPreferences.C:1570
+msgid "UI file"
+msgstr "Erabiltzaile Interfaseatu fitxategia"
+
+#: src/frontends/xforms/FormPreferences.C:1758
+#: src/frontends/xforms/FormPreferences.C:1766
+msgid "Key maps"
+msgstr "Teklatu mapa"
+
+#: src/frontends/xforms/FormPreferences.C:1762
+#: src/frontends/xforms/FormPreferences.C:1770
+msgid "Keyboard map"
+msgstr "Teklatu mapa"
+
+#: src/frontends/xforms/FormPreferences.C:1956
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr " jatorrizkoa | US gutuna | legala | exekutiboa | A3 | A4 | A5 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2191
+msgid "Default path"
+msgstr "Jatorrizko ibilbidea"
+
+#: src/frontends/xforms/FormPreferences.C:2196
+msgid "Template path"
+msgstr "Ereduaren ibilbidea"
+
+#: src/frontends/xforms/FormPreferences.C:2201
+msgid "Temp dir"
+msgstr "Aldibateko direktorioa"
+
+#: src/frontends/xforms/FormPreferences.C:2205
+msgid "User"
+msgstr "Erabiltzailea"
+
+#: src/frontends/xforms/FormPreferences.C:2208
+msgid "Lastfiles"
+msgstr "Azken fitxategia"
+
+#: src/frontends/xforms/FormPreferences.C:2212
+msgid "Backup path"
+msgstr "Babes kopiaren ibilbidea"
+
+#: src/frontends/xforms/FormPreferences.C:2217
+msgid "LyX Server pipes"
+msgstr "LyX Zerbitzariaren tutuak"
+
+#: src/frontends/xforms/FormPreferences.C:2671
+msgid "Fonts must be positive!"
+msgstr "Hizkimotak positiboak izan behar dute!"
+
+#: src/frontends/xforms/FormPreferences.C:2694
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+"Hizkimotak era honetan antolatuta sartu behar dira:  ttipia > indizea > \n"
+"oin oharra > txikia > arrunta  > handia > galanta > egundokoa > \n"
+"erraldoia > izutzekoa."
+
+#: src/frontends/xforms/FormPreferences.C:2816
+msgid " none | ispell | aspell "
+msgstr " ezer | ispell | aspell"
+
+#: src/frontends/xforms/FormPreferences.C:2907
+msgid "Personal dictionary"
+msgstr "Erabiltzailearen hiztegia"
+
+#: src/frontends/xforms/FormPreferences.C:2963
+msgid "WARNING!"
+msgstr "ADI!"
 
 #: src/frontends/xforms/form_print.C:37
 msgid "Printer|#P"
@@ -6638,9 +5632,22 @@ msgstr "Tartekatuta|#C"
 msgid "to"
 msgstr "nora"
 
+#: src/LyXAction.C:129 src/LyXAction.C:136 src/frontends/xforms/FormPrint.C:44
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
+msgstr "Inprimatu"
+
 #: src/frontends/xforms/form_print.C:132
 msgid "Order"
 msgstr "Antolatu"
+
+#: src/frontends/xforms/form_print.C:135
+msgid "Copies"
+msgstr "Kopiak"
+
+#: src/frontends/xforms/form_print.C:138
+msgid "Print to"
+msgstr "Inprimatu"
 
 #: src/frontends/xforms/form_ref.C:40
 msgid "Sort|#S"
@@ -6661,11 +5668,6 @@ msgstr "Erreferentzi mota|#r"
 #: src/frontends/xforms/form_ref.C:65
 msgid "Goto reference|#G"
 msgstr "Erreferentzira Joan|#J"
-
-#: src/frontends/xforms/FormSearch.C:23
-#, fuzzy
-msgid "LyX: Find and Replace"
-msgstr "Bilatu eta Ordezkatu"
 
 #: src/frontends/xforms/form_search.C:31
 msgid "Find|#n"
@@ -6701,10 +5703,10 @@ msgstr "Hitz batura|#b#b"
 msgid "Replace All|#A#a"
 msgstr "Guztiak Ord.|#G#g"
 
-#: src/frontends/xforms/FormSpellchecker.C:24
+#: src/frontends/xforms/FormSearch.C:23
 #, fuzzy
-msgid "LyX: Spellchecker"
-msgstr "Zuzentzailea"
+msgid "LyX: Find and Replace"
+msgstr "Bilatu eta Ordezkatu"
 
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
@@ -6757,29 +5759,10 @@ msgstr "100 %"
 msgid "Replace word|#R"
 msgstr "Hitza Ordezkatu|#R"
 
-#: src/frontends/xforms/FormTabular.C:31
-msgid "Tabular Layout"
-msgstr "Tabaulaketa Itxura"
-
-#: src/frontends/xforms/FormTabular.C:117
-msgid "Tabular"
-msgstr "Tabulaketa"
-
-#: src/frontends/xforms/FormTabular.C:119
-msgid "Column/Row"
-msgstr "Zutabea/Lerroaa"
-
-#: src/frontends/xforms/FormTabular.C:121
-msgid "Cell"
-msgstr "Gela"
-
-#: src/frontends/xforms/FormTabular.C:123
-msgid "LongTable"
-msgstr "Taula-Luzea"
-
-#: src/frontends/xforms/FormTabular.C:361
-msgid "Warning: Wrong Cursor position, updated window"
-msgstr "Oharra: Kurtsora kokapen okerra, eguneratutako lehioa"
+#: src/frontends/xforms/FormSpellchecker.C:24
+#, fuzzy
+msgid "LyX: Spellchecker"
+msgstr "Zuzentzailea"
 
 #: src/frontends/xforms/form_tabular.C:71
 msgid "Append Column|#A"
@@ -6940,22 +5923,46 @@ msgstr "Oina"
 msgid "Special"
 msgstr "Berezia"
 
+#: src/frontends/xforms/FormTabular.C:31
+msgid "Tabular Layout"
+msgstr "Tabaulaketa Itxura"
+
+#: src/frontends/xforms/FormTabular.C:117
+msgid "Tabular"
+msgstr "Tabulaketa"
+
+#: src/frontends/xforms/FormTabular.C:119
+msgid "Column/Row"
+msgstr "Zutabea/Lerroaa"
+
+#: src/frontends/xforms/FormTabular.C:121
+msgid "Cell"
+msgstr "Gela"
+
+#: src/frontends/xforms/FormTabular.C:123
+msgid "LongTable"
+msgstr "Taula-Luzea"
+
+#: src/frontends/xforms/FormTabular.C:361
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Oharra: Kurtsora kokapen okerra, eguneratutako lehioa"
+
+#: src/frontends/xforms/form_tabular_create.C:45
+msgid "Columns"
+msgstr "Zutabeak"
+
 #: src/frontends/xforms/FormTabularCreate.C:29
 msgid "Insert Tabular"
 msgstr "Tabulaketa Sartu"
-
-#: src/frontends/xforms/FormToc.C:100
-#, fuzzy
-msgid "*** No Lists ***"
-msgstr "*** Idazkirik Ez Dago ***"
 
 #: src/frontends/xforms/form_toc.C:40
 msgid "Type|#T"
 msgstr "Mota:|#M"
 
-#: src/frontends/xforms/FormUrl.C:28
-msgid "Url"
-msgstr "Url"
+#: src/frontends/xforms/FormToc.C:100
+#, fuzzy
+msgid "*** No Lists ***"
+msgstr "*** Idazkirik Ez Dago ***"
 
 #: src/frontends/xforms/form_url.C:29
 msgid "URL|#U"
@@ -6968,6 +5975,10 @@ msgstr "Izena|#I"
 #: src/frontends/xforms/form_url.C:47
 msgid "HTML type|#H"
 msgstr "HTML mota|#H"
+
+#: src/frontends/xforms/FormUrl.C:28
+msgid "Url"
+msgstr "Url"
 
 #: src/frontends/xforms/FormVCLog.C:20
 #, fuzzy
@@ -7170,12 +6181,12 @@ msgstr ""
 msgid "External"
 msgstr "Kanpo"
 
-#: src/insets/insetfloat.C:102 src/insets/insetfloat.C:292
-#: src/insets/insetfloat.C:297
+#: src/insets/insetfloat.C:102 src/insets/insetfloat.C:296
+#: src/insets/insetfloat.C:301
 msgid "float:"
 msgstr "mugikorrak:"
 
-#: src/insets/insetfloat.C:187
+#: src/insets/insetfloat.C:191
 msgid "Opened Float Inset"
 msgstr "Multzo Mugikorra Irekita"
 
@@ -7233,6 +6244,14 @@ msgstr "Barneratu"
 #: src/insets/insetindex.C:21
 msgid "Idx"
 msgstr "Aurkibidea"
+
+#: src/insets/insetinfo.C:202
+msgid "Opened note"
+msgstr "Oharra irekita"
+
+#: src/insets/insetinfo.C:221 src/insets/insetinfo.C:226
+msgid "Close|#C^["
+msgstr "Itxi|#I^["
 
 #: src/insets/insetlabel.C:52 src/mathed/formula.C:216
 msgid "Enter label:"
@@ -9332,6 +8351,616 @@ msgstr "Orri Jauzia (goikaldea)"
 msgid "Page Break (bottom)"
 msgstr "Orri Jauzia (azpikaldea)"
 
+#, fuzzy
+#~ msgid "Add reference to current citation"
+#~ msgstr "_Aipamen berria sartu"
+
+#, fuzzy
+#~ msgid "Move reference before"
+#~ msgstr "Lehentasunak Gorde"
+
+#, fuzzy
+#~ msgid "Move reference after"
+#~ msgstr "Lehentasunak Gorde"
+
+#, fuzzy
+#~ msgid "Text to add after references"
+#~ msgstr "Testua, aipamenaren ondoren kokatzeko"
+
+#, fuzzy
+#~ msgid "Reference details"
+#~ msgstr "Erreferentzi sarrera"
+
+#, fuzzy
+#~ msgid "Search through references"
+#~ msgstr "Gurutzatutako erreferentzia Sartu"
+
+#, fuzzy
+#~ msgid "Available references"
+#~ msgstr "Erreferentzi Eskuragarriak"
+
+#, fuzzy
+#~ msgid "Current chosen references"
+#~ msgstr "Gurutzatutako erreferentzia Sartu"
+
+#~ msgid "&OK"
+#~ msgstr "&Onartu"
+
+#~ msgid "&Apply"
+#~ msgstr "&Eragin"
+
+#~ msgid "&Restore"
+#~ msgstr "&Berrezarri"
+
+#~ msgid "&Down"
+#~ msgstr "&Behera"
+
+#~ msgid "&Remove"
+#~ msgstr "&Ezabatu"
+
+#~ msgid "&Up"
+#~ msgstr "&Gora"
+
+#~ msgid "&Add"
+#~ msgstr "&Gehitu"
+
+#, fuzzy
+#~ msgid "Text after : "
+#~ msgstr "Testu ondoren"
+
+#, fuzzy
+#~ msgid "&Search"
+#~ msgstr "Aurkitu"
+
+#, fuzzy
+#~ msgid "Float Placement"
+#~ msgstr "Mugikorren Kokapena:|#M"
+
+#, fuzzy
+#~ msgid "Section number depth :"
+#~ msgstr "Atal zenbaki sakonera"
+
+#, fuzzy
+#~ msgid "Table of Contents depth :"
+#~ msgstr "Aurkibideko sakonera"
+
+#, fuzzy
+#~ msgid "Use AMS Math"
+#~ msgstr "AMS Matematika erabili|#A"
+
+#, fuzzy
+#~ msgid "First try :"
+#~ msgstr "Lehen Egilea"
+
+#, fuzzy
+#~ msgid "then :"
+#~ msgstr "Beste ("
+
+#, fuzzy
+#~ msgid "Paper size :"
+#~ msgstr "orriaren neurria"
+
+#, fuzzy
+#~ msgid "Margins :"
+#~ msgstr "Margenak"
+
+#, fuzzy
+#~ msgid "Width :"
+#~ msgstr "Zabalera"
+
+#, fuzzy
+#~ msgid "Height :"
+#~ msgstr "Altuera"
+
+#, fuzzy
+#~ msgid "Top :"
+#~ msgstr "&Goikaldea"
+
+#, fuzzy
+#~ msgid "Bottom :"
+#~ msgstr "&Azpikaldea"
+
+#, fuzzy
+#~ msgid "Left :"
+#~ msgstr "Ezker"
+
+#, fuzzy
+#~ msgid "Right :"
+#~ msgstr "Eskuin"
+
+#, fuzzy
+#~ msgid "Header height :"
+#~ msgstr "Altuera:|#u"
+
+#, fuzzy
+#~ msgid "Header separation :"
+#~ msgstr "Banaketa"
+
+#, fuzzy
+#~ msgid "Footer skip :"
+#~ msgstr "Oin ohar jauzia:|#j"
+
+#, fuzzy
+#~ msgid "Portrait"
+#~ msgstr "Goitibehera|#e"
+
+#, fuzzy
+#~ msgid "Landscape"
+#~ msgstr "zeharretaka"
+
+#, fuzzy
+#~ msgid "Language :"
+#~ msgstr "Hizkuntza:"
+
+#, fuzzy
+#~ msgid "Encoding :"
+#~ msgstr "Kodeaketa"
+
+#, fuzzy
+#~ msgid "Quote style :"
+#~ msgstr "Komila Itxura    "
+
+#, fuzzy
+#~ msgid "Paragraph spacing"
+#~ msgstr "Parrafoa"
+
+#, fuzzy
+#~ msgid "Font size :"
+#~ msgstr "Hizki Neurria:|#u"
+
+#, fuzzy
+#~ msgid "Font family :"
+#~ msgstr "Senidea:|#n"
+
+#, fuzzy
+#~ msgid "Page style :"
+#~ msgstr "Orri itxura:|#O"
+
+#, fuzzy
+#~ msgid "Document class :"
+#~ msgstr "Idazkiak"
+
+#, fuzzy
+#~ msgid "Extra options :"
+#~ msgstr "Aukera Gehiago"
+
+#, fuzzy
+#~ msgid "Size :"
+#~ msgstr "Neurria:|#N"
+
+#, fuzzy
+#~ msgid "Stretch :"
+#~ msgstr "Kalea"
+
+#, fuzzy
+#~ msgid "Add space"
+#~ msgstr "Atala Gehitu"
+
+#~ msgid "Keyword:"
+#~ msgstr "Giltza:"
+
+#~ msgid "Centimetres"
+#~ msgstr "Zentimetroak"
+
+#~ msgid "Inches"
+#~ msgstr "Atzak"
+
+#, fuzzy
+#~ msgid "Points"
+#~ msgstr "Inprimatu"
+
+#~ msgid "Millimetres"
+#~ msgstr "Milimetroak"
+
+#~ msgid "Picas"
+#~ msgstr "Pikak"
+
+#~ msgid "ex units"
+#~ msgstr "neurriz kanpo"
+
+#~ msgid "em units"
+#~ msgstr "em neurrietan"
+
+#, fuzzy
+#~ msgid "Scaled points"
+#~ msgstr "Cicero puntuak"
+
+#, fuzzy
+#~ msgid "Big/PS points"
+#~ msgstr "Haundia/PS puntuak (1/72 atz)"
+
+#~ msgid "Didot points"
+#~ msgstr "Didot puntuak"
+
+#~ msgid "Cicero points"
+#~ msgstr "Cicero puntuak"
+
+#~ msgid "&Update"
+#~ msgstr "&Eguneratu"
+
+#~ msgid "Page break"
+#~ msgstr "Orri Jauzia"
+
+#~ msgid "Keep space when at top of page"
+#~ msgstr "Orriaren goikaldean hutsunea eduki"
+
+#~ msgid "Extra Space"
+#~ msgstr "Hutsune Gehiago"
+
+#, fuzzy
+#~ msgid "Size"
+#~ msgstr "Neurria|#N"
+
+#, fuzzy
+#~ msgid "Stretch"
+#~ msgstr "Kalea"
+
+#~ msgid "&Top"
+#~ msgstr "&Goikaldea"
+
+#~ msgid "&Middle"
+#~ msgstr "&Erdia"
+
+#~ msgid "&Bottom"
+#~ msgstr "&Azpikaldea"
+
+#~ msgid "&HFill between minipage paragraphs"
+#~ msgstr "&HBetegarri Orri-ttipiko parrafoen artean"
+
+#~ msgid "&Start new minipage"
+#~ msgstr "&Orri-ttipi berria Hasi"
+
+#~ msgid "Draw line above paragraph"
+#~ msgstr "Parrafo gainean lerroa marraztu"
+
+#~ msgid "Draw line below paragraph"
+#~ msgstr "Parrafo azpian lerroa marraztu"
+
+#~ msgid "Don't indent paragraph"
+#~ msgstr "Parrafoa ez sangratu"
+
+#~ msgid "Label width"
+#~ msgstr "Txartel zabaleroa"
+
+#, fuzzy
+#~ msgid "Justification"
+#~ msgstr "Egokitzaketa|E"
+
+#~ msgid "Pages"
+#~ msgstr "Orriak"
+
+#~ msgid "&Print"
+#~ msgstr "&Inprimatu"
+
+#~ msgid "&All pages"
+#~ msgstr "&Orrialde Guztiak"
+
+#~ msgid "&Odd pages"
+#~ msgstr "&Orrialde bakoitiak"
+
+#~ msgid "&Even pages"
+#~ msgstr "&Orrialde Bikoitiak"
+
+#~ msgid "&Reverse order"
+#~ msgstr "&Alderantzizko antolaketa"
+
+#~ msgid "Co&llate"
+#~ msgstr "Erkatu"
+
+#~ msgid "From"
+#~ msgstr "Nondik"
+
+#~ msgid "To"
+#~ msgstr "Nora"
+
+#~ msgid "&Printer"
+#~ msgstr "&Inprimagailua"
+
+#~ msgid "&File"
+#~ msgstr "&Fitxategia"
+
+#~ msgid "&Browse"
+#~ msgstr "&Arakatu"
+
+#~ msgid "Count"
+#~ msgstr "Zenbatu"
+
+#~ msgid "&Insert"
+#~ msgstr "&Sartu"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Atala"
+
+#~ msgid "&Extra"
+#~ msgstr "&Bestekoa"
+
+#, fuzzy
+#~ msgid "&Language"
+#~ msgstr "Hizkuntza"
+
+#, fuzzy
+#~ msgid "&Bullets"
+#~ msgstr "Pinportak"
+
+#, fuzzy
+#~ msgid "10 point"
+#~ msgstr "GUI gezia"
+
+#, fuzzy
+#~ msgid "11 point"
+#~ msgstr "GUI gezia"
+
+#, fuzzy
+#~ msgid "12 point"
+#~ msgstr "GUI gezia"
+
+#, fuzzy
+#~ msgid "single"
+#~ msgstr "Bakarra"
+
+#, fuzzy
+#~ msgid "1 1/2 spacing"
+#~ msgstr "Hutsunea"
+
+#, fuzzy
+#~ msgid "double"
+#~ msgstr "Bikoitza"
+
+#, fuzzy
+#~ msgid "custom"
+#~ msgstr "Bezeroa"
+
+#, fuzzy
+#~ msgid "medium"
+#~ msgstr "Erdia"
+
+#, fuzzy
+#~ msgid "Here"
+#~ msgstr "Hebreokera"
+
+#, fuzzy
+#~ msgid "Bottom of page"
+#~ msgstr "azpikaldea"
+
+#, fuzzy
+#~ msgid "Top of page"
+#~ msgstr "% Orriarena"
+
+#, fuzzy
+#~ msgid "Separate page"
+#~ msgstr "&Orri-ttipi berria Hasi"
+
+#, fuzzy
+#~ msgid "Not set"
+#~ msgstr "Oharra"
+
+#, fuzzy
+#~ msgid "US letter"
+#~ msgstr "Gutuna"
+
+#, fuzzy
+#~ msgid "`text'"
+#~ msgstr "testua"
+
+#, fuzzy
+#~ msgid "'text'"
+#~ msgstr "testua"
+
+#, fuzzy
+#~ msgid ",text`"
+#~ msgstr "testua"
+
+#, fuzzy
+#~ msgid ",text'"
+#~ msgstr "testua"
+
+#, fuzzy
+#~ msgid "<text>"
+#~ msgstr "testua"
+
+#, fuzzy
+#~ msgid ">text<"
+#~ msgstr "testua"
+
+#, fuzzy
+#~ msgid "How detailed the Table of Contents is"
+#~ msgstr "Aurkibide Orokorrik Ez%i"
+
+#, fuzzy
+#~ msgid "Key not found."
+#~ msgstr "Hizki-jokorik ez da aurkitu!"
+
+#~ msgid "LyX: Copyright and Warranty"
+#~ msgstr "LyX: Copyright eta Garantia"
+
+#, fuzzy
+#~ msgid "LyX: Document Options"
+#~ msgstr "Irekitako Idazkirik ez dago!"
+
+#, fuzzy
+#~ msgid "LaTeX log"
+#~ msgstr "LaTeX-en Erregistro Artxiboa"
+
+#, fuzzy
+#~ msgid "LyX: LaTeX Log"
+#~ msgstr "LaTeX-en Erregistro Artxiboa"
+
+#, fuzzy
+#~ msgid "Jump to selected reference"
+#~ msgstr " Erreferentzia: Erreferentzia hautatu "
+
+#, fuzzy
+#~ msgid "No version control log file found"
+#~ msgstr "LaTeX-en Erregistro Artxiboarik ez da aurkitu"
+
+#, fuzzy
+#~ msgid "LyX: Version Control Log"
+#~ msgstr "Bertsio Kontrola|r"
+
+#~ msgid "Index entry"
+#~ msgstr "Sartu Errolda"
+
+#~ msgid "&General"
+#~ msgstr "&Orokorra"
+
+#~ msgid "Indented paragraph"
+#~ msgstr "Sangratutako Parrafoa"
+
+#~ msgid "Minipage"
+#~ msgstr "Orri-ttipia"
+
+#~ msgid "Wrap text around floats (floatflt)"
+#~ msgstr "Testua mugikorren inguruan jarri (floatflt)"
+
+#~ msgid "Points (1/72.27 inch)"
+#~ msgstr "Puntoak (1/72.27 atz)"
+
+#~ msgid "Scaled points (1/65536 pt)"
+#~ msgstr "Neurriratutako puntuak (1/65536 pt)"
+
+#~ msgid "Big/PS points (1/72 inch)"
+#~ msgstr "Haundia/PS puntuak (1/72 atz)"
+
+#~ msgid "Percent of column"
+#~ msgstr "Zutabeen ehunekoa"
+
+#~ msgid "&Spacing Above"
+#~ msgstr "&Goiko Hutsunea"
+
+#~ msgid "Spacing &Below"
+#~ msgstr "&Azpiko Hutsunea"
+
+#~ msgid "Defskip"
+#~ msgstr "Jauziaren Ezaugarria"
+
+#~ msgid "Small skip"
+#~ msgstr "Jauzi txikia"
+
+#~ msgid "Medium skip"
+#~ msgstr "Jauzi Erdia"
+
+#~ msgid "Big skip"
+#~ msgstr "Jauzi Haundia"
+
+#~ msgid "VFill"
+#~ msgstr "GoibeherakoBetegarria"
+
+#~ msgid "Block"
+#~ msgstr "Tangulua"
+
+#, fuzzy
+#~ msgid "Centered"
+#~ msgstr "Erdigunea"
+
+#~ msgid "Left"
+#~ msgstr "Ezker"
+
+#~ msgid "Right"
+#~ msgstr "Eskuin"
+
+#, fuzzy
+#~ msgid "Alignment of current paragraph"
+#~ msgstr "Ondorengo parrafoa aukeratu"
+
+#, fuzzy
+#~ msgid "No indent on first line of paragraph"
+#~ msgstr "Parrafoa ez sangratu"
+
+#, fuzzy
+#~ msgid "New page above this paragraph"
+#~ msgstr "Parrafo gainean lerroa marraztu"
+
+#, fuzzy
+#~ msgid "Size of extra space above paragraph"
+#~ msgstr "Parrafo gainean lerroa marraztu"
+
+#, fuzzy
+#~ msgid "New page below this paragraph"
+#~ msgstr "Parrafo azpian lerroa marraztu"
+
+#, fuzzy
+#~ msgid "Don't hug margin if at bottom of page"
+#~ msgstr "Orriaren azpikaldean hutsunea eduki"
+
+#, fuzzy
+#~ msgid "Size of extra space below paragraph"
+#~ msgstr "Parrafo azpian lerroa marraztu"
+
+#~ msgid "Print every page"
+#~ msgstr "Orri guztiak inprimatu"
+
+#~ msgid "Print odd-numbered pages only"
+#~ msgstr "Orrialde bakoitiarrak soilik inprimatu"
+
+#~ msgid "Print even-numbered pages only"
+#~ msgstr "Orri bikoitiarrak soilik inprimatu"
+
+#~ msgid "Print from page number"
+#~ msgstr "Orri zenbakitik inprimatu"
+
+#~ msgid "Print to page number"
+#~ msgstr "Orri zenbakirarte inprimatu"
+
+#~ msgid "Print in reverse order (last page first)"
+#~ msgstr "Alderantziz inprimatu (azken orrialdea lehendabizi)"
+
+#~ msgid "Number of copies to print"
+#~ msgstr "Inprimatzeko Kopien zenbakia"
+
+#~ msgid "Collate multiple copies"
+#~ msgstr "Hainbat kopia eman"
+
+#~ msgid "Printer name"
+#~ msgstr "Inprimagailuaren izena"
+
+#, fuzzy
+#~ msgid "Output filename (PostScript)"
+#~ msgstr "Irteerako fitxategiaren izena"
+
+#~ msgid "Select output filename"
+#~ msgstr "Irteerako fitxategi izena hautatu"
+
+#~ msgid "Available References"
+#~ msgstr "Erreferentzi Eskuragarriak"
+
+#~ msgid "Name :"
+#~ msgstr "Izena :"
+
+#~ msgid "Reference :"
+#~ msgstr "Erreferentzia :"
+
+#~ msgid "Sort"
+#~ msgstr "Sailkatu"
+
+#~ msgid "Reference Type"
+#~ msgstr "Erreferentzi Mota"
+
+#~ msgid "Reference as it appears in output"
+#~ msgstr "Irteeran ageri den bezala erreferentziatu"
+
+#~ msgid "Sort references in alphabetical order ?"
+#~ msgstr "Erreferentziak alfabetikoki sailkatu?"
+
+#, fuzzy
+#~ msgid "Jump to reference in document"
+#~ msgstr "Idazki bukaerara joan "
+
+#~ msgid "Depth"
+#~ msgstr "Sakonera"
+
+#~ msgid "Url :"
+#~ msgstr "Url : "
+
+#~ msgid "Generate hyperlink"
+#~ msgstr "Hiperloturak sortu"
+
+#~ msgid "Name associated with the URL"
+#~ msgstr "URL-arekin elkarturiko izena"
+
+#~ msgid "Output as a hyperlink ?"
+#~ msgstr "Hiperlotura erako irteera?"
+
 #~ msgid "Warning: need lyxformat %.2f but found %.2f"
 #~ msgstr "Oharra: LyX-egituradun %.2f behar baina %.2f aurkitu da"
 
@@ -9816,9 +9445,6 @@ msgstr "Orri Jauzia (azpikaldea)"
 #~ msgid " Ref | Page | TextRef | TextPage | PrettyRef "
 #~ msgstr " Erref | Orria | Testu Erref | Testu Orria | Erref Polita "
 
-#~ msgid "Close|#C^["
-#~ msgstr "Itxi|#I^["
-
 #~ msgid " TOC | LOF | LOT | LOA "
 #~ msgstr "AO | IZ | TZ | AZ "
 
@@ -9869,9 +9495,6 @@ msgstr "Orri Jauzia (azpikaldea)"
 
 #~ msgid "Select Child Document"
 #~ msgstr "Idazki Semea Aukeratu"
-
-#~ msgid "Opened note"
-#~ msgstr "Oharra irekita"
 
 #~ msgid "other..."
 #~ msgstr "beste..."

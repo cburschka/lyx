@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6fix1\n"
-"POT-Creation-Date: 2001-07-25 21:54+0200\n"
+"POT-Creation-Date: 2001-07-25 22:56+0200\n"
 "PO-Revision-Date: 2001-02-15 \n"
 "Last-Translator: Zrubecz László <zrubi@k2.jozsef.kando.hu>\n"
 "Language-Team: Magyar <magyar@lists.linux.hu>\n"
@@ -1982,7 +1982,8 @@ msgstr ""
 msgid "Notation"
 msgstr ""
 
-#: src/ext_l10n.h:333
+#: src/ext_l10n.h:333 src/insets/insetinfo.C:86 src/insets/insetinfo.C:106
+#: src/insets/insetinfo.C:236
 msgid "Note"
 msgstr "Megjegyzés"
 
@@ -2457,9 +2458,7 @@ msgstr ""
 msgid "Uppertitleback"
 msgstr ""
 
-#. tooltips
-#: src/ext_l10n.h:458 src/frontends/kde/urldlg.C:59
-#: src/frontends/kde/urldlg.C:60
+#: src/ext_l10n.h:458
 msgid "URL"
 msgstr "URL"
 
@@ -2689,18 +2688,6 @@ msgstr ""
 msgid "Welsh"
 msgstr ""
 
-#: src/figureForm.C:38
-msgid "Insert Figure"
-msgstr "Ábra beillesztése"
-
-#: src/figureForm.C:54
-msgid "Inserting figure..."
-msgstr "Ábra beillesztése..."
-
-#: src/figureForm.C:58 src/figureForm.C:99
-msgid "Figure inserted"
-msgstr "Ábra beillesztve"
-
 #: src/figure_form.C:27
 msgid "EPS file|#E"
 msgstr "EPS fájl|#E"
@@ -2814,8 +2801,7 @@ msgstr "Nézet"
 msgid "Height"
 msgstr "Magasság"
 
-#: src/figure_form.C:89 src/frontends/kde/dlg/paraextradlgdata.C:75
-#: src/frontends/xforms/form_graphics.C:44
+#: src/figure_form.C:89 src/frontends/xforms/form_graphics.C:44
 #: src/frontends/xforms/form_minipage.C:28
 #: src/frontends/xforms/form_paragraph.C:219
 msgid "Width"
@@ -2879,9 +2865,21 @@ msgstr "Elkülönítve (*.eps, *.ps)|#E"
 msgid "Inlined EPS (*.eps, *.ps)|#I"
 msgstr "A szövegbe ágyazva (*.eps, *.ps)|#S"
 
-#: src/figure_form.C:175 src/frontends/kde/dlg/paraextradlgdata.C:58
+#: src/figure_form.C:175
 msgid "Type"
 msgstr "Típus"
+
+#: src/figureForm.C:38
+msgid "Insert Figure"
+msgstr "Ábra beillesztése"
+
+#: src/figureForm.C:54
+msgid "Inserting figure..."
+msgstr "Ábra beillesztése..."
+
+#: src/figureForm.C:58 src/figureForm.C:99
+msgid "Figure inserted"
+msgstr "Ábra beillesztve"
 
 #: src/FontLoader.C:253
 msgid "Loading font into X-Server..."
@@ -2998,8 +2996,7 @@ msgstr "Kisebb"
 msgid "Small"
 msgstr "Kicsi"
 
-#: src/frontends/controllers/character.C:104
-#: src/frontends/kde/paraextradlg.C:23 src/lyxfont.C:55
+#: src/frontends/controllers/character.C:104 src/lyxfont.C:55
 msgid "Normal"
 msgstr "Normál"
 
@@ -3379,31 +3376,23 @@ msgid " Reference: "
 msgstr " Hivatkozás:"
 
 #: src/frontends/gnome/FormToc.C:99 src/frontends/gnome/FormToc.C:166
-#: src/frontends/kde/FormToc.C:165 src/frontends/kde/FormToc.C:166
-#: src/frontends/kde/tocdlg.C:25 src/frontends/qt2/FormToc.C:170
-#: src/frontends/qt2/FormToc.C:171 src/frontends/xforms/FormToc.C:34
-#: src/insets/insettoc.C:22
+#: src/frontends/qt2/FormToc.C:170 src/frontends/qt2/FormToc.C:171
+#: src/frontends/xforms/FormToc.C:34 src/insets/insettoc.C:22
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
 #: src/frontends/gnome/FormToc.C:103 src/frontends/gnome/FormToc.C:172
-#: src/frontends/kde/FormToc.C:170 src/frontends/kde/FormToc.C:171
-#: src/frontends/kde/tocdlg.C:26 src/frontends/qt2/FormToc.C:175
-#: src/frontends/qt2/FormToc.C:176
+#: src/frontends/qt2/FormToc.C:175 src/frontends/qt2/FormToc.C:176
 msgid "List of Figures"
 msgstr "Ábrák jegyzéke"
 
 #: src/frontends/gnome/FormToc.C:107 src/frontends/gnome/FormToc.C:184
-#: src/frontends/kde/FormToc.C:175 src/frontends/kde/FormToc.C:176
-#: src/frontends/kde/tocdlg.C:27 src/frontends/qt2/FormToc.C:180
-#: src/frontends/qt2/FormToc.C:181
+#: src/frontends/qt2/FormToc.C:180 src/frontends/qt2/FormToc.C:181
 msgid "List of Tables"
 msgstr "Táblázatok jegyzéke"
 
 #: src/frontends/gnome/FormToc.C:111 src/frontends/gnome/FormToc.C:178
-#: src/frontends/kde/FormToc.C:180 src/frontends/kde/FormToc.C:181
-#: src/frontends/kde/tocdlg.C:28 src/frontends/qt2/FormToc.C:185
-#: src/frontends/qt2/FormToc.C:186
+#: src/frontends/qt2/FormToc.C:185 src/frontends/qt2/FormToc.C:186
 msgid "List of Algorithms"
 msgstr "Algoritmusok jegyzéke"
 
@@ -3419,1218 +3408,18 @@ msgstr "Frissít"
 msgid "<No Name>"
 msgstr "<Nincs Név>"
 
-#. tooltips
-#: src/frontends/kde/citationdlg.C:24
-msgid "Add reference to current citation"
-msgstr ""
-
-#: src/frontends/kde/citationdlg.C:25
-msgid "Remove reference from current citation"
-msgstr ""
-
-#: src/frontends/kde/citationdlg.C:26
-#, fuzzy
-msgid "Move reference before"
-msgstr "Beállítások mentése"
-
-#: src/frontends/kde/citationdlg.C:27
-#, fuzzy
-msgid "Move reference after"
-msgstr "Beállítások mentése"
-
-#: src/frontends/kde/citationdlg.C:28
-msgid "Text to add after references"
-msgstr ""
-
-#: src/frontends/kde/citationdlg.C:29
-#, fuzzy
-msgid "Reference details"
-msgstr "Hivatkozások"
-
-#: src/frontends/kde/citationdlg.C:30
-#, fuzzy
-msgid "Search through references"
-msgstr "Kereszthivatkozás beillesztése"
-
-#: src/frontends/kde/citationdlg.C:31
-#, fuzzy
-msgid "Available references"
-msgstr "Beállítások mentése"
-
-#: src/frontends/kde/citationdlg.C:32
-#, fuzzy
-msgid "Current chosen references"
-msgstr "Kereszthivatkozás beillesztése"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:40
-#: src/frontends/kde/dlg/docdlgdata.C:39
-#: src/frontends/kde/dlg/indexdlgdata.C:68
-#: src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:81
-#: src/frontends/kde/urldlg.C:49
-msgid "&OK"
-msgstr "&OK"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:57
-#: src/frontends/kde/dlg/docdlgdata.C:90
-#: src/frontends/kde/dlg/indexdlgdata.C:85
-#: src/frontends/kde/dlg/paradlgdata.C:90
-#: src/frontends/kde/dlg/printdlgdata.C:133
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:57 src/frontends/kde/docdlg.C:210
-#: src/frontends/kde/refdlg.C:87 src/frontends/kde/urldlg.C:55
-#: src/frontends/qt2/FormRef.C:206 src/frontends/qt2/paragraphdlgimpl.C:49
-msgid "&Cancel"
-msgstr "&Mégsem"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:74
-#: src/frontends/kde/dlg/docdlgdata.C:56
-#: src/frontends/kde/dlg/paradlgdata.C:56
-msgid "&Apply"
-msgstr "&Alkalmaz"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:91
-#: src/frontends/kde/dlg/docdlgdata.C:73
-#: src/frontends/kde/dlg/paradlgdata.C:73
-msgid "&Restore"
-msgstr "&Visszaállít"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:155
-msgid "&Down"
-msgstr ""
-
-#: src/frontends/kde/dlg/citationdlgdata.C:172
-msgid "&Remove"
-msgstr "&Mozgat"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:189
-msgid "&Up"
-msgstr "&Fel"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:206
-msgid "&Add"
-msgstr ""
-
-#: src/frontends/kde/dlg/citationdlgdata.C:227
-msgid "Text after : "
-msgstr ""
-
-#: src/frontends/kde/dlg/citationdlgdata.C:271
-#, fuzzy
-msgid "&Search"
-msgstr "Keres"
-
-#. FIXME
-#: src/frontends/kde/dlg/copyrightdlgdata.C:39
-#: src/frontends/kde/dlg/logdlgdata.C:39 src/frontends/kde/docdlg.C:210
-#: src/frontends/kde/tocdlg.C:45 src/frontends/qt2/FormRef.C:204
-#: src/frontends/qt2/paragraphdlgimpl.C:49
-msgid "&Close"
-msgstr "&Bezár"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:45
-#, fuzzy
-msgid "Float Placement"
-msgstr "Lebegõ obj.|#j"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:108
-msgid "Ignore LaTeX placement rules"
-msgstr ""
-
-#: src/frontends/kde/dlg/docextradlgdata.C:126
-#, fuzzy
-msgid "Section number depth :"
-msgstr "Részek számozása"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:143
-#, fuzzy
-msgid "Table of Contents depth :"
-msgstr "A Tartalomjegyzékben"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:160
-msgid "PostScript driver :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docextradlgdata.C:223
-#, fuzzy
-msgid "Use AMS Math"
-msgstr "AMS Math használata|#M"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:241
-#, fuzzy
-msgid "First try :"
-msgstr "Eredeti szerzõ"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:258
-#: src/frontends/kde/dlg/docextradlgdata.C:275
-#: src/frontends/kde/dlg/docextradlgdata.C:292
-#, fuzzy
-msgid "then :"
-msgstr "Adott ("
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:46
-msgid "Headers and Footers"
-msgstr ""
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:62
-#: src/frontends/xforms/form_document.C:99
-msgid "Margins"
-msgstr "Margók"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:78
-#: src/frontends/xforms/FormDocument.C:241
-msgid "Paper"
-msgstr "Papír"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:94
-#: src/frontends/xforms/form_document.C:114
-msgid "Orientation"
-msgstr "Oldaltípus"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:111
-#, fuzzy
-msgid "Paper size :"
-msgstr "papírméret"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:187
-#, fuzzy
-msgid "Margins :"
-msgstr "Margók"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:204
-#, fuzzy
-msgid "Width :"
-msgstr "Szélesség"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:221
-#, fuzzy
-msgid "Height :"
-msgstr "Magasság"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:238
-#, fuzzy
-msgid "Top :"
-msgstr "Felsõ:|#e"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:255
-#, fuzzy
-msgid "Bottom :"
-msgstr "Alsó:|#s"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:272
-#, fuzzy
-msgid "Left :"
-msgstr "Balra"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:289
-#, fuzzy
-msgid "Right :"
-msgstr "Jobbra"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:306
-#, fuzzy
-msgid "Header height :"
-msgstr "Fejléc mag.:|#c"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:323
-#, fuzzy
-msgid "Header separation :"
-msgstr "Szétválasztás"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:340
-#, fuzzy
-msgid "Footer skip :"
-msgstr "Lábléc mag.|#v"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:402
-#, fuzzy
-msgid "Portrait"
-msgstr "Álló|#l"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:415
-#, fuzzy
-msgid "Landscape"
-msgstr "Fekvõ|#F"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:44
-#, fuzzy
-msgid "Language :"
-msgstr "Nyelv:"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:74
-#, fuzzy
-msgid "Encoding :"
-msgstr "Kódolás"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:104
-#, fuzzy
-msgid "Quote style :"
-msgstr "Idézõjel stílus"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:45
-#, fuzzy
-msgid "Paragraph spacing"
-msgstr "Bekezdés"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:61
-#, fuzzy
-msgid "Font size :"
-msgstr "Betûméret:|#r"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:78
-#, fuzzy
-msgid "Font family :"
-msgstr "Család:|#C"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:95
-#, fuzzy
-msgid "Page style :"
-msgstr "Oldal stílusa:|#d"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:112
-#, fuzzy
-msgid "Document class :"
-msgstr "Dokumentumok"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:177
-msgid "Two-sided"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:190
-msgid "Two column pages"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:208
-msgid "Inter-line spacing :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:225
-#, fuzzy
-msgid "Extra options :"
-msgstr "Egyéb beállítások"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:242
-msgid "Default paragraph spacing :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:259
-#, fuzzy
-msgid "Size :"
-msgstr "Méret:|#M"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:276
-msgid "Shrink :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:293
-msgid "Stretch :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:387
-#, fuzzy
-msgid "Add space"
-msgstr "páratlan oldalak"
-
-#: src/frontends/kde/dlg/indexdlgdata.C:42
-msgid "Keyword:"
-msgstr "Kulcsszó:"
-
-#: src/frontends/kde/dlg/lengthentry.C:35 src/frontends/kde/paraextradlg.C:29
-msgid "Centimetres"
-msgstr ""
-
-#: src/frontends/kde/dlg/lengthentry.C:36 src/frontends/kde/paraextradlg.C:30
-msgid "Inches"
-msgstr ""
-
-#: src/frontends/kde/dlg/lengthentry.C:37
-#, fuzzy
-msgid "Points"
-msgstr "Nyomtat"
-
-#: src/frontends/kde/dlg/lengthentry.C:38 src/frontends/kde/paraextradlg.C:32
-msgid "Millimetres"
-msgstr ""
-
-#: src/frontends/kde/dlg/lengthentry.C:39 src/frontends/kde/paraextradlg.C:33
-msgid "Picas"
-msgstr ""
-
-#: src/frontends/kde/dlg/lengthentry.C:40 src/frontends/kde/paraextradlg.C:34
-msgid "ex units"
-msgstr ""
-
-#: src/frontends/kde/dlg/lengthentry.C:41 src/frontends/kde/paraextradlg.C:35
-msgid "em units"
-msgstr ""
-
-#: src/frontends/kde/dlg/lengthentry.C:42
-#, fuzzy
-msgid "Scaled points"
-msgstr "Képernyõ"
-
-#: src/frontends/kde/dlg/lengthentry.C:43
-msgid "Big/PS points"
-msgstr ""
-
-#: src/frontends/kde/dlg/lengthentry.C:44 src/frontends/kde/paraextradlg.C:38
-msgid "Didot points"
-msgstr ""
-
-#: src/frontends/kde/dlg/lengthentry.C:45 src/frontends/kde/paraextradlg.C:39
-msgid "Cicero points"
-msgstr ""
-
-#: src/frontends/kde/dlg/logdlgdata.C:56 src/frontends/kde/refdlg.C:76
-#: src/frontends/kde/tocdlg.C:40
-msgid "&Update"
-msgstr "&Frissít"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:39
-#: src/frontends/kde/dlg/parabelowdlgdata.C:39
-msgid "Page break"
-msgstr "Új oldal"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:52
-#: src/frontends/kde/dlg/parabelowdlgdata.C:52
-msgid "Keep space when at top of page"
-msgstr ""
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:70
-#: src/frontends/kde/dlg/parabelowdlgdata.C:70
-msgid "Extra Space"
-msgstr "Extra Szóköz"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:101
-#: src/frontends/kde/dlg/parabelowdlgdata.C:101
-#, fuzzy
-msgid "Size"
-msgstr "Méret|#r"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:118
-#: src/frontends/kde/dlg/parabelowdlgdata.C:118
-#, fuzzy
-msgid "Stretch"
-msgstr "Francia"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:135
-#: src/frontends/kde/dlg/parabelowdlgdata.C:135
-#, fuzzy
-msgid "Shrink"
-msgstr "Amerikai"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:118
-#: src/frontends/xforms/form_minipage.C:31
-#: src/frontends/xforms/form_paragraph.C:149
-#: src/frontends/xforms/form_paragraph.C:223
-msgid "Alignment"
-msgstr "Igazítás"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:130
-msgid "&Top"
-msgstr ""
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:143
-msgid "&Middle"
-msgstr ""
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:156
-msgid "&Bottom"
-msgstr ""
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:169
-msgid "&HFill between minipage paragraphs"
-msgstr ""
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:182
-msgid "&Start new minipage"
-msgstr ""
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:61
-msgid "Draw line above paragraph"
-msgstr ""
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:74
-msgid "Draw line below paragraph"
-msgstr ""
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:87
-msgid "Don't indent paragraph"
-msgstr ""
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:105
-msgid "Label width"
-msgstr ""
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:135
-#, fuzzy
-msgid "Justification"
-msgstr "Testreszabás|s"
-
-#: src/frontends/kde/dlg/printdlgdata.C:42
-msgid "Pages"
-msgstr "Oldalak"
-
-#: src/frontends/kde/dlg/printdlgdata.C:73
-#: src/frontends/xforms/form_print.C:135
-msgid "Copies"
-msgstr "Másolatok"
-
-#: src/frontends/kde/dlg/printdlgdata.C:88
-#: src/frontends/xforms/form_print.C:138
-msgid "Print to"
-msgstr "Hová:"
-
-#: src/frontends/kde/dlg/printdlgdata.C:116
-msgid "&Print"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:149
-msgid "&All pages"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:162
-msgid "&Odd pages"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:175
-msgid "&Even pages"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:214
-msgid "&Reverse order"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:241
-msgid "Co&llate"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:258
-msgid "From"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:274
-msgid "To"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:286
-msgid "&Printer"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:299
-msgid "&File"
-msgstr "&Fájl"
-
-#: src/frontends/kde/dlg/printdlgdata.C:339
-msgid "&Browse"
-msgstr ""
-
-#: src/frontends/kde/dlg/printdlgdata.C:359
-msgid "Count"
-msgstr "Darab"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:40
-msgid "&Insert"
-msgstr ""
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:87
-#: src/frontends/xforms/form_maths_matrix.C:28
-#: src/frontends/xforms/form_tabular_create.C:49
-msgid "Rows"
-msgstr "Sorok"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:104
-#: src/frontends/xforms/form_tabular_create.C:45
-msgid "Columns"
-msgstr "Oszlopok"
-
-#: src/frontends/kde/docdlg.C:44
-#, fuzzy
-msgid "&Settings"
-msgstr "Rész"
-
-#: src/frontends/kde/docdlg.C:45
-msgid "&Extra"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:46
-msgid "&Geometry"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:47
-#, fuzzy
-msgid "&Language"
-msgstr "Nyelv"
-
-#: src/frontends/kde/docdlg.C:48
-#, fuzzy
-msgid "&Bullets"
-msgstr "Jelek"
-
-#. the document language page
-#: src/frontends/kde/docdlg.C:56 src/frontends/kde/docdlg.C:68
-#: src/frontends/kde/docdlg.C:121 src/frontends/kde/docdlg.C:133
-#: src/frontends/kde/docdlg.C:144 src/frontends/qt2/FormDocument.C:116
-#: src/frontends/qt2/FormDocument.C:124 src/frontends/qt2/FormDocument.C:152
-#: src/frontends/qt2/FormDocument.C:194 src/frontends/qt2/FormDocument.C:569
-#: src/frontends/qt2/FormDocument.C:573
-#, fuzzy
-msgid "default"
-msgstr "Alapérték"
-
-#: src/frontends/kde/docdlg.C:57 src/frontends/qt2/FormDocument.C:125
-msgid "empty"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:58 src/frontends/qt2/FormDocument.C:126
-#, fuzzy
-msgid "plain"
-msgstr "Kihagyás"
-
-#: src/frontends/kde/docdlg.C:59 src/frontends/qt2/FormDocument.C:127
-#, fuzzy
-msgid "headings"
-msgstr "Grafikus felület (GUI) kezelés"
-
-#: src/frontends/kde/docdlg.C:60 src/frontends/qt2/FormDocument.C:128
-msgid "fancy"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:69
-#, fuzzy
-msgid "10 point"
-msgstr "GUI mutató"
-
-#: src/frontends/kde/docdlg.C:70
-#, fuzzy
-msgid "11 point"
-msgstr "GUI mutató"
-
-#: src/frontends/kde/docdlg.C:71
-#, fuzzy
-msgid "12 point"
-msgstr "GUI mutató"
-
-#: src/frontends/kde/docdlg.C:74
-#, fuzzy
-msgid "single"
-msgstr "Szimpla"
-
-#: src/frontends/kde/docdlg.C:75
-#, fuzzy
-msgid "1 1/2 spacing"
-msgstr "Kihagyás"
-
-#: src/frontends/kde/docdlg.C:76
-#, fuzzy
-msgid "double"
-msgstr "Dupla"
-
-#: src/frontends/kde/docdlg.C:77 src/frontends/kde/docdlg.C:86
-#: src/frontends/kde/docdlg.C:593 src/frontends/kde/docdlg.C:601
-#: src/frontends/kde/docdlg.C:611
-#, fuzzy
-msgid "custom"
-msgstr "Ügyfél"
-
-#: src/frontends/kde/docdlg.C:83 src/frontends/qt2/FormDocument.C:198
-#: src/frontends/xforms/form_preferences.C:173
-msgid "small"
-msgstr "kicsi"
-
-#: src/frontends/kde/docdlg.C:84
-#, fuzzy
-msgid "medium"
-msgstr "Közepes"
-
-#: src/frontends/kde/docdlg.C:85
-msgid "big"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:95 src/frontends/kde/docdlg.C:100
-#: src/frontends/kde/docdlg.C:105 src/frontends/kde/docdlg.C:110
-#: src/frontends/kde/docdlg.C:375 src/frontends/kde/docdlg.C:580
-#, fuzzy
-msgid "Here"
-msgstr "Héber"
-
-#: src/frontends/kde/docdlg.C:96 src/frontends/kde/docdlg.C:101
-#: src/frontends/kde/docdlg.C:106 src/frontends/kde/docdlg.C:111
-#: src/frontends/kde/docdlg.C:376 src/frontends/kde/docdlg.C:582
-#, fuzzy
-msgid "Bottom of page"
-msgstr "% az oldalnak"
-
-#: src/frontends/kde/docdlg.C:97 src/frontends/kde/docdlg.C:102
-#: src/frontends/kde/docdlg.C:107 src/frontends/kde/docdlg.C:112
-#: src/frontends/kde/docdlg.C:377 src/frontends/kde/docdlg.C:584
-#, fuzzy
-msgid "Top of page"
-msgstr "% az oldalnak"
-
-#: src/frontends/kde/docdlg.C:98 src/frontends/kde/docdlg.C:103
-#: src/frontends/kde/docdlg.C:108 src/frontends/kde/docdlg.C:113
-#: src/frontends/kde/docdlg.C:378 src/frontends/kde/docdlg.C:586
-#, fuzzy
-msgid "Separate page"
-msgstr "Sablonok könyvtára"
-
-#: src/frontends/kde/docdlg.C:99 src/frontends/kde/docdlg.C:104
-#: src/frontends/kde/docdlg.C:109 src/frontends/kde/docdlg.C:114
-#: src/frontends/kde/docdlg.C:356 src/frontends/kde/docdlg.C:357
-#: src/frontends/kde/docdlg.C:358 src/frontends/kde/docdlg.C:359
-#, fuzzy
-msgid "Not set"
-msgstr "Megjegyzés"
-
-#: src/frontends/kde/docdlg.C:122
-#, fuzzy
-msgid "US letter"
-msgstr "Levél"
-
-#: src/frontends/kde/docdlg.C:123
-msgid "US legal"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:124
-msgid "US executive"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:134
-msgid "A4 small margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:135
-msgid "A4 very small margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:136
-msgid "A4 very wide margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:145 src/frontends/qt2/FormDocument.C:153
-#, fuzzy
-msgid "auto"
-msgstr "-"
-
-#: src/frontends/kde/docdlg.C:146 src/frontends/qt2/FormDocument.C:154
-#, fuzzy
-msgid "latin1"
-msgstr "apró"
-
-#: src/frontends/kde/docdlg.C:147 src/frontends/qt2/FormDocument.C:155
-#, fuzzy
-msgid "latin2"
-msgstr "apró"
-
-#: src/frontends/kde/docdlg.C:148 src/frontends/qt2/FormDocument.C:156
-#, fuzzy
-msgid "latin5"
-msgstr "apró"
-
-#: src/frontends/kde/docdlg.C:149 src/frontends/qt2/FormDocument.C:157
-#, fuzzy
-msgid "latin9"
-msgstr "apró"
-
-#: src/frontends/kde/docdlg.C:150 src/frontends/qt2/FormDocument.C:158
-msgid "koi8-r"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:151 src/frontends/qt2/FormDocument.C:159
-msgid "koi8-u"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:152 src/frontends/qt2/FormDocument.C:160
-msgid "cp866"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:153 src/frontends/qt2/FormDocument.C:161
-msgid "cp1251"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:154 src/frontends/qt2/FormDocument.C:162
-msgid "iso88595"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:157
-#, fuzzy
-msgid "`text'"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:158 src/frontends/qt2/FormDocument.C:169
-#, fuzzy
-msgid "``text''"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:159
-#, fuzzy
-msgid "'text'"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:160 src/frontends/qt2/FormDocument.C:170
-#, fuzzy
-msgid "''text''"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:161
-#, fuzzy
-msgid ",text`"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:162 src/frontends/qt2/FormDocument.C:171
-#, fuzzy
-msgid ",,text``"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:163
-#, fuzzy
-msgid ",text'"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:164 src/frontends/qt2/FormDocument.C:172
-#, fuzzy
-msgid ",,text''"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:165
-#, fuzzy
-msgid "<text>"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:166 src/frontends/qt2/FormDocument.C:173
-#, fuzzy
-msgid "«text»"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:167
-#, fuzzy
-msgid ">text<"
-msgstr "szöveg"
-
-#: src/frontends/kde/docdlg.C:168 src/frontends/qt2/FormDocument.C:174
-#, fuzzy
-msgid "»text«"
-msgstr "szöveg"
-
-#. FIXME: bullets
-#: src/frontends/kde/docdlg.C:173
-msgid "Specify header + footer style etc"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:174
-msgid ""
-"Add spacing between paragraphs rather\n"
-" than indenting"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:175
-msgid "Custom line spacing in line units"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:176
-msgid "Additional LaTeX options"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:177 src/frontends/kde/docdlg.C:178
-#: src/frontends/kde/docdlg.C:179 src/frontends/kde/docdlg.C:180
-msgid ""
-"Specify preferred order for\n"
-"placing floats"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:181
-msgid ""
-"Tell LaTeX to ignore usual rules\n"
-" for float placement"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:182
-msgid "How far in the (sub)sections are numbered"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:183
-#, fuzzy
-msgid "How detailed the Table of Contents is"
-msgstr "Nincs tartalomjegyzék%i"
-
-#: src/frontends/kde/docdlg.C:184
-msgid "Program to produce PostScript output"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:185 src/frontends/kde/docdlg.C:186
-#: src/frontends/kde/docdlg.C:187 src/frontends/kde/docdlg.C:188
-#: src/frontends/kde/paraextradlg.C:43 src/frontends/kde/paraextradlg.C:44
-#: src/frontends/kde/parageneraldlg.C:59 src/frontends/kde/refdlg.C:97
-msgid "FIXME please !"
-msgstr ""
-
-#: src/frontends/kde/FileDialog.C:49 src/frontends/qt2/FileDialog.C:43
+#: src/frontends/qt2/FileDialog.C:43
 msgid "*|All files"
-msgstr ""
-
-#: src/frontends/kde/FormCitation.C:53 src/frontends/qt2/FormCitation.C:47
-#: src/frontends/xforms/FormCitation.C:100
-msgid "Citation"
-msgstr "Irodalomra hivatkozás"
-
-#: src/frontends/kde/FormCitation.C:290
-#, fuzzy
-msgid "Key not found."
-msgstr "A betûkészlet nem található!"
-
-#: src/frontends/kde/FormCopyright.C:26
-msgid "LyX: Copyright and Warranty"
-msgstr ""
-
-#: src/frontends/kde/FormDocument.C:68 src/frontends/qt2/FormDocument.C:230
-#: src/frontends/xforms/FormDocument.C:274
-msgid "Document layout set"
-msgstr "Dokumentum formátuma beállítva"
-
-#: src/frontends/kde/FormDocument.C:75
-#, fuzzy
-msgid "LyX: Document Options"
-msgstr "Nincs nyitva dokumentum!"
-
-#. successfully loaded
-#: src/frontends/kde/FormDocument.C:93 src/frontends/qt2/FormDocument.C:348
-#: src/frontends/xforms/FormDocument.C:388
-msgid "Converting document to new document class..."
-msgstr "Dokumentum átalakítása új dokumentum osztályba..."
-
-#: src/frontends/kde/FormIndex.C:25 src/frontends/qt2/FormIndex.C:106
-msgid "LyX: Index"
-msgstr ""
-
-#: src/frontends/kde/FormLog.C:31 src/frontends/xforms/FormLog.C:27
-msgid "Build log"
-msgstr ""
-
-#: src/frontends/kde/FormLog.C:33
-#, fuzzy
-msgid "LaTeX log"
-msgstr "LaTeX napló"
-
-#: src/frontends/kde/FormLog.C:40 src/frontends/xforms/FormLog.C:31
-#, fuzzy
-msgid "No build log file found"
-msgstr "Nem találtam LaTeX log fájlt"
-
-#: src/frontends/kde/FormLog.C:42 src/frontends/xforms/FormLog.C:39
-msgid "No LaTeX log file found"
-msgstr "Nem találtam LaTeX log fájlt"
-
-#: src/frontends/kde/FormLog.C:58
-#, fuzzy
-msgid "LyX: LaTeX Log"
-msgstr "LaTeX napló"
-
-#: src/frontends/kde/FormParagraph.C:194 src/frontends/qt2/FormParagraph.C:174
-#: src/frontends/xforms/FormParagraph.C:162
-msgid "Paragraph layout set"
-msgstr "Bekezdés stílusa beállítva"
-
-#: src/frontends/kde/FormParagraph.C:202 src/frontends/qt2/FormParagraph.C:182
-msgid "LyX: Paragraph Options"
-msgstr ""
-
-#: src/frontends/kde/FormPrint.C:30 src/frontends/qt2/FormPrint.C:104
-msgid "LyX: Print"
-msgstr ""
-
-#: src/frontends/kde/FormRef.C:32 src/frontends/qt2/FormRef.C:252
-msgid "LyX: Cross Reference"
-msgstr ""
-
-#: src/frontends/kde/FormRef.C:61 src/frontends/kde/refdlg.C:71
-#: src/frontends/qt2/FormRef.C:116 src/frontends/qt2/FormRef.C:127
-#: src/frontends/qt2/FormRef.C:187
-msgid "&Goto reference"
-msgstr ""
-
-#: src/frontends/kde/FormRef.C:63
-#, fuzzy
-msgid "Jump to selected reference"
-msgstr "Hivatkozásra ugrás"
-
-#: src/frontends/kde/FormTabularCreate.C:26
-#: src/frontends/qt2/FormTabularCreate.C:48
-msgid "LyX: Insert Table"
-msgstr ""
-
-#: src/frontends/kde/FormToc.C:249 src/frontends/qt2/FormToc.C:248
-msgid "LyX: Table of Contents"
-msgstr ""
-
-#: src/frontends/kde/FormUrl.C:45 src/frontends/qt2/FormUrl.C:123
-msgid "LyX: Url"
-msgstr ""
-
-#: src/frontends/kde/FormVCLog.C:37
-#, fuzzy
-msgid "No version control log file found"
-msgstr "Nem találtam LaTeX log fájlt"
-
-#: src/frontends/kde/FormVCLog.C:56
-#, fuzzy
-msgid "LyX: Version Control Log"
-msgstr "LyX verziószám: "
-
-#. tooltips
-#: src/frontends/kde/indexdlg.C:24 src/frontends/kde/indexdlg.C:25
-msgid "Index entry"
-msgstr ""
-
-#: src/frontends/kde/paradlg.C:31
-msgid "&General"
-msgstr ""
-
-#. FIXME: should be cleverer here
-#: src/frontends/kde/paradlg.C:90 src/frontends/qt2/paragraphdlgimpl.C:56
-#: src/paragraph.C:1028
-msgid "Senseless with this layout!"
-msgstr "Értelmetlen ezzel a formátummal!"
-
-#: src/frontends/kde/paraextradlg.C:24
-msgid "Indented paragraph"
-msgstr ""
-
-#: src/frontends/kde/paraextradlg.C:25
-msgid "Minipage"
-msgstr ""
-
-#: src/frontends/kde/paraextradlg.C:26
-msgid "Wrap text around floats (floatflt)"
-msgstr ""
-
-#: src/frontends/kde/paraextradlg.C:31
-msgid "Points (1/72.27 inch)"
-msgstr ""
-
-#: src/frontends/kde/paraextradlg.C:36
-msgid "Scaled points (1/65536 pt)"
-msgstr ""
-
-#: src/frontends/kde/paraextradlg.C:37
-msgid "Big/PS points (1/72 inch)"
-msgstr ""
-
-#: src/frontends/kde/paraextradlg.C:40
-msgid "Percent of column"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:27
-msgid "&Spacing Above"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:28
-msgid "Spacing &Below"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:33 src/frontends/kde/parageneraldlg.C:42
-#: src/frontends/qt2/FormDocument.C:84
-msgid "None"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:34 src/frontends/kde/parageneraldlg.C:43
-msgid "Defskip"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:35 src/frontends/kde/parageneraldlg.C:44
-msgid "Small skip"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:36 src/frontends/kde/parageneraldlg.C:45
-msgid "Medium skip"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:46
-msgid "Big skip"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:38 src/frontends/kde/parageneraldlg.C:47
-msgid "VFill"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:48
-#: src/frontends/qt2/FormDocument.C:73
-#, fuzzy
-msgid "Custom"
-msgstr "Ügyfél"
-
-#: src/frontends/kde/parageneraldlg.C:51
-msgid "Block"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:52
-#, fuzzy
-msgid "Centered"
-msgstr "Középre"
-
-#: src/frontends/kde/parageneraldlg.C:53
-msgid "Left"
-msgstr "Balra"
-
-#: src/frontends/kde/parageneraldlg.C:54
-msgid "Right"
-msgstr "Jobbra"
-
-#: src/frontends/kde/parageneraldlg.C:57
-#, fuzzy
-msgid "Alignment of current paragraph"
-msgstr "Következõ bekezdés kiválasztása"
-
-#: src/frontends/kde/parageneraldlg.C:58
-#, fuzzy
-msgid "No indent on first line of paragraph"
-msgstr "Nem tartalmazhat egynél több bekezdést!"
-
-#: src/frontends/kde/parageneraldlg.C:61
-#, fuzzy
-msgid "New page above this paragraph"
-msgstr "Elõzõ bekezdés választása"
-
-#: src/frontends/kde/parageneraldlg.C:62
-msgid "Don't hug margin if at top of page"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:63
-#, fuzzy
-msgid "Size of extra space above paragraph"
-msgstr "Elõzõ bekezdés választása"
-
-#: src/frontends/kde/parageneraldlg.C:64 src/frontends/kde/parageneraldlg.C:70
-msgid "Maximum extra space that can be added"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:65 src/frontends/kde/parageneraldlg.C:71
-msgid "Minimum space required"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:67
-#, fuzzy
-msgid "New page below this paragraph"
-msgstr "Következõ bekezdés kiválasztása"
-
-#: src/frontends/kde/parageneraldlg.C:68
-msgid "Don't hug margin if at bottom of page"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:69
-#, fuzzy
-msgid "Size of extra space below paragraph"
-msgstr "Elõzõ bekezdés választása"
-
-#: src/frontends/kde/printdlg.C:28
-msgid "Print every page"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:29
-msgid "Print odd-numbered pages only"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:30
-msgid "Print even-numbered pages only"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:31
-msgid "Print from page number"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:32
-msgid "Print to page number"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:33
-msgid "Print in reverse order (last page first)"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:34
-msgid "Number of copies to print"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:35
-msgid "Collate multiple copies"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:36
-msgid "Printer name"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:37
-msgid "Output filename (PostScript)"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:38
-msgid "Select output filename"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:28
-msgid "Available References"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:43 src/frontends/kde/urldlg.C:36
-msgid "Name :"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:49
-msgid "Reference :"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:55
-msgid "Sort"
-msgstr "Rendezés"
-
-#: src/frontends/kde/refdlg.C:65
-msgid "Reference Type"
-msgstr ""
-
-#. tooltips
-#: src/frontends/kde/refdlg.C:93
-msgid "Reference as it appears in output"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:94
-msgid "Sort references in alphabetical order ?"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:95
-msgid "Update list of references shown"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:96
-#, fuzzy
-msgid "Jump to reference in document"
-msgstr "Ugrás a dokumentum végére"
-
-#: src/frontends/kde/tabcreatedlg.C:27
-#: src/frontends/qt2/tabularcreatedlgimpl.C:34
-msgid "Drag with left mouse button to resize"
-msgstr ""
-
-#: src/frontends/kde/tocdlg.C:54
-msgid "Depth"
-msgstr ""
-
-#: src/frontends/kde/urldlg.C:30
-msgid "Url :"
-msgstr ""
-
-#: src/frontends/kde/urldlg.C:42
-msgid "Generate hyperlink"
-msgstr ""
-
-#: src/frontends/kde/urldlg.C:61 src/frontends/kde/urldlg.C:62
-msgid "Name associated with the URL"
-msgstr ""
-
-#: src/frontends/kde/urldlg.C:63
-msgid "Output as a hyperlink ?"
 msgstr ""
 
 #: src/frontends/qt2/FormCharacter.C:64
 #, fuzzy
 msgid "Character Options"
 msgstr "Betûtípus"
+
+#: src/frontends/qt2/FormCitation.C:47 src/frontends/xforms/FormCitation.C:100
+msgid "Citation"
+msgstr "Irodalomra hivatkozás"
 
 #: src/frontends/qt2/FormCredits.C:33 src/frontends/xforms/FormAboutlyx.C:70
 msgid "Credits"
@@ -4644,6 +3433,11 @@ msgstr "Dokumentum formátum"
 #: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:584
 msgid "Default"
 msgstr "Alapérték"
+
+#: src/frontends/qt2/FormDocument.C:73
+#, fuzzy
+msgid "Custom"
+msgstr "Ügyfél"
 
 #: src/frontends/qt2/FormDocument.C:74
 #, fuzzy
@@ -4682,6 +3476,10 @@ msgstr ""
 msgid "B5"
 msgstr ""
 
+#: src/frontends/qt2/FormDocument.C:84
+msgid "None"
+msgstr ""
+
 #: src/frontends/qt2/FormDocument.C:85
 msgid "A4 small Margins (only portrait)"
 msgstr ""
@@ -4704,6 +3502,14 @@ msgstr "Másfeles"
 msgid "Other"
 msgstr "Adott ("
 
+#. the document language page
+#: src/frontends/qt2/FormDocument.C:116 src/frontends/qt2/FormDocument.C:124
+#: src/frontends/qt2/FormDocument.C:152 src/frontends/qt2/FormDocument.C:194
+#: src/frontends/qt2/FormDocument.C:569 src/frontends/qt2/FormDocument.C:573
+#, fuzzy
+msgid "default"
+msgstr "Alapérték"
+
 #: src/frontends/qt2/FormDocument.C:117
 msgid "10"
 msgstr ""
@@ -4714,6 +3520,24 @@ msgstr ""
 
 #: src/frontends/qt2/FormDocument.C:119
 msgid "12"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:125
+msgid "empty"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:126
+#, fuzzy
+msgid "plain"
+msgstr "Kihagyás"
+
+#: src/frontends/qt2/FormDocument.C:127
+#, fuzzy
+msgid "headings"
+msgstr "Grafikus felület (GUI) kezelés"
+
+#: src/frontends/qt2/FormDocument.C:128
+msgid "fancy"
 msgstr ""
 
 #: src/frontends/qt2/FormDocument.C:130
@@ -4734,6 +3558,81 @@ msgstr ""
 msgid "Length"
 msgstr ""
 
+#: src/frontends/qt2/FormDocument.C:153
+#, fuzzy
+msgid "auto"
+msgstr "-"
+
+#: src/frontends/qt2/FormDocument.C:154
+#, fuzzy
+msgid "latin1"
+msgstr "apró"
+
+#: src/frontends/qt2/FormDocument.C:155
+#, fuzzy
+msgid "latin2"
+msgstr "apró"
+
+#: src/frontends/qt2/FormDocument.C:156
+#, fuzzy
+msgid "latin5"
+msgstr "apró"
+
+#: src/frontends/qt2/FormDocument.C:157
+#, fuzzy
+msgid "latin9"
+msgstr "apró"
+
+#: src/frontends/qt2/FormDocument.C:158
+msgid "koi8-r"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:159
+msgid "koi8-u"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:160
+msgid "cp866"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:161
+msgid "cp1251"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:162
+msgid "iso88595"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:169
+#, fuzzy
+msgid "``text''"
+msgstr "szöveg"
+
+#: src/frontends/qt2/FormDocument.C:170
+#, fuzzy
+msgid "''text''"
+msgstr "szöveg"
+
+#: src/frontends/qt2/FormDocument.C:171
+#, fuzzy
+msgid ",,text``"
+msgstr "szöveg"
+
+#: src/frontends/qt2/FormDocument.C:172
+#, fuzzy
+msgid ",,text''"
+msgstr "szöveg"
+
+#: src/frontends/qt2/FormDocument.C:173
+#, fuzzy
+msgid "«text»"
+msgstr "szöveg"
+
+#: src/frontends/qt2/FormDocument.C:174
+#, fuzzy
+msgid "»text«"
+msgstr "szöveg"
+
 #: src/frontends/qt2/FormDocument.C:195
 #: src/frontends/xforms/form_preferences.C:167
 msgid "tiny"
@@ -4748,6 +3647,11 @@ msgstr "kézirás"
 #: src/frontends/xforms/form_preferences.C:140
 msgid "footnote"
 msgstr "lábjegyzet"
+
+#: src/frontends/qt2/FormDocument.C:198
+#: src/frontends/xforms/form_preferences.C:173
+msgid "small"
+msgstr "kicsi"
 
 #: src/frontends/qt2/FormDocument.C:199
 #: src/frontends/xforms/form_preferences.C:152
@@ -4767,6 +3671,16 @@ msgstr ""
 #: src/frontends/xforms/form_preferences.C:149
 msgid "huge"
 msgstr "óriás"
+
+#: src/frontends/qt2/FormDocument.C:230
+#: src/frontends/xforms/FormDocument.C:274
+msgid "Document layout set"
+msgstr "Dokumentum formátuma beállítva"
+
+#: src/frontends/qt2/FormDocument.C:348
+#: src/frontends/xforms/FormDocument.C:388
+msgid "Converting document to new document class..."
+msgstr "Dokumentum átalakítása új dokumentum osztályba..."
 
 #: src/frontends/qt2/FormDocument.C:355
 #: src/frontends/xforms/FormDocument.C:395
@@ -4823,6 +3737,19 @@ msgstr " dokumentum osztály alapértelmezésére?"
 msgid "Unable to switch to new document class."
 msgstr "Nem lehet az új dokumentum-osztályra váltani."
 
+#: src/frontends/qt2/FormIndex.C:106
+msgid "LyX: Index"
+msgstr ""
+
+#: src/frontends/qt2/FormParagraph.C:174
+#: src/frontends/xforms/FormParagraph.C:162
+msgid "Paragraph layout set"
+msgstr "Bekezdés stílusa beállítva"
+
+#: src/frontends/qt2/FormParagraph.C:182
+msgid "LyX: Paragraph Options"
+msgstr ""
+
 #. FIXME: should have a utility class for this
 #: src/frontends/qt2/FormPrint.C:92
 msgid ""
@@ -4838,14 +3765,56 @@ msgstr ""
 msgid "LyX: Print Error"
 msgstr ""
 
+#: src/frontends/qt2/FormPrint.C:104
+msgid "LyX: Print"
+msgstr ""
+
 #: src/frontends/qt2/FormRef.C:111
 msgid "&Go back"
+msgstr ""
+
+#: src/frontends/qt2/FormRef.C:116 src/frontends/qt2/FormRef.C:127
+#: src/frontends/qt2/FormRef.C:187
+msgid "&Goto reference"
+msgstr ""
+
+#: src/frontends/qt2/FormRef.C:204 src/frontends/qt2/paragraphdlgimpl.C:49
+msgid "&Close"
+msgstr "&Bezár"
+
+#: src/frontends/qt2/FormRef.C:206 src/frontends/qt2/paragraphdlgimpl.C:49
+msgid "&Cancel"
+msgstr "&Mégsem"
+
+#: src/frontends/qt2/FormRef.C:252
+msgid "LyX: Cross Reference"
 msgstr ""
 
 #: src/frontends/qt2/FormSearch.C:47
 #, fuzzy
 msgid "Find and Replace"
 msgstr "Keres és Cserél"
+
+#: src/frontends/qt2/FormTabularCreate.C:48
+msgid "LyX: Insert Table"
+msgstr ""
+
+#: src/frontends/qt2/FormToc.C:248
+msgid "LyX: Table of Contents"
+msgstr ""
+
+#: src/frontends/qt2/FormUrl.C:123
+msgid "LyX: Url"
+msgstr ""
+
+#. FIXME: should be cleverer here
+#: src/frontends/qt2/paragraphdlgimpl.C:56 src/paragraph.C:1028
+msgid "Senseless with this layout!"
+msgstr "Értelmetlen ezzel a formátummal!"
+
+#: src/frontends/qt2/tabularcreatedlgimpl.C:34
+msgid "Drag with left mouse button to resize"
+msgstr ""
 
 #: src/frontends/xforms/combox.C:505
 msgid "Done"
@@ -4854,21 +3823,6 @@ msgstr "Kész"
 #: src/frontends/xforms/FileDialog.C:59
 msgid "*"
 msgstr ""
-
-#: src/frontends/xforms/FormAboutlyx.C:28
-msgid "About LyX"
-msgstr ""
-
-#. stack tabs
-#: src/frontends/xforms/FormAboutlyx.C:66
-#, fuzzy
-msgid "Copyright and Version"
-msgstr "Szerzõi jog és Garancia"
-
-#: src/frontends/xforms/FormAboutlyx.C:68
-#, fuzzy
-msgid "License and Warranty"
-msgstr "Szerzõi jog és Garancia"
 
 #: src/frontends/xforms/FormMathsBitmap.C:79
 #: src/frontends/xforms/form_aboutlyx.C:29
@@ -4885,10 +3839,20 @@ msgstr "Bezár|^["
 msgid "Text"
 msgstr "szöveg"
 
-#: src/frontends/xforms/FormBibitem.C:25
+#: src/frontends/xforms/FormAboutlyx.C:28
+msgid "About LyX"
+msgstr ""
+
+#. stack tabs
+#: src/frontends/xforms/FormAboutlyx.C:66
 #, fuzzy
-msgid "Bibliography Entry"
-msgstr "Irodalomjegyzék"
+msgid "Copyright and Version"
+msgstr "Szerzõi jog és Garancia"
+
+#: src/frontends/xforms/FormAboutlyx.C:68
+#, fuzzy
+msgid "License and Warranty"
+msgstr "Szerzõi jog és Garancia"
 
 #: src/frontends/xforms/form_bibitem.C:29
 msgid "Key:|#K"
@@ -4898,10 +3862,10 @@ msgstr "Kulcsszó:|#K"
 msgid "Label:|#L"
 msgstr "Címke:|#C"
 
-#: src/frontends/xforms/FormBibtex.C:25
+#: src/frontends/xforms/FormBibitem.C:25
 #, fuzzy
-msgid "BibTeX Database"
-msgstr "Adatbázis:"
+msgid "Bibliography Entry"
+msgstr "Irodalomjegyzék"
 
 #: src/frontends/xforms/form_bibtex.C:29
 #, fuzzy
@@ -4913,6 +3877,11 @@ msgstr "Adatbázis:"
 msgid "Style:|#S"
 msgstr "Stílus"
 
+#: src/frontends/xforms/FormBibtex.C:25
+#, fuzzy
+msgid "BibTeX Database"
+msgstr "Adatbázis:"
+
 #: src/frontends/xforms/form_browser.C:31 src/frontends/xforms/form_error.C:31
 #: src/frontends/xforms/form_toc.C:48
 #, fuzzy
@@ -4922,11 +3891,6 @@ msgstr "Bezár|#B^[^M"
 #: src/frontends/xforms/form_browser.C:39
 msgid "Update|#Uu"
 msgstr "Frissít|#Ff"
-
-#: src/frontends/xforms/FormCharacter.C:34
-#, fuzzy
-msgid "Character Layout"
-msgstr "Betûtípus"
 
 #: src/frontends/xforms/form_character.C:33
 msgid "Family:|#F"
@@ -4974,10 +3938,10 @@ msgstr "Ezeket sosem váltsa"
 msgid "These are always toggled"
 msgstr "Ezeket mindíg váltsa"
 
-#: src/frontends/xforms/FormCitation.C:399
+#: src/frontends/xforms/FormCharacter.C:34
 #, fuzzy
-msgid "Not yet supported"
-msgstr "Az 'újra' még nem támogatott az egyenletszekesztõben"
+msgid "Character Layout"
+msgstr "Betûtípus"
 
 #: src/frontends/xforms/form_citation.C:29
 msgid "Inset keys|#I"
@@ -5077,67 +4041,10 @@ msgstr ""
 msgid "Restore|#R"
 msgstr "Visszaállít|#V"
 
-#: src/frontends/xforms/FormDocument.C:92
-msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-msgstr ""
-" Alapérték | Egyedi | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-
-#: src/frontends/xforms/FormDocument.C:95
-msgid ""
-" None | A4 small Margins (only portrait) | A4 very small Margins (only "
-"portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Nincs | A4 kis margók (csak álló) | A4 nagyon kis margók (csak álló) | A4 "
-"nagyon széles margók (csak álló) "
-
-#: src/frontends/xforms/FormDocument.C:146
-msgid " Single | OneHalf | Double | Other "
-msgstr " Szimpla | Másfeles | Dupla | Egyéb "
-
-#: src/frontends/xforms/FormDocument.C:154
-msgid " Smallskip | Medskip | Bigskip | Length "
-msgstr " Kicsi | Közepes | Nagy | Adott: "
-
-#: src/frontends/xforms/FormDocument.C:198
-msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-
-#: src/frontends/xforms/FormDocument.C:216
-msgid " Author-year | Numerical "
-msgstr ""
-
-#: src/frontends/xforms/FormDocument.C:229
-msgid ""
-" default | tiny | script | footnote | small | normal | large | Large | LARGE "
-"| huge | Huge"
-msgstr ""
-" alapérték | apró | kézírás | lábjegyzet | kicsi | normál |nagy | Nagy | "
-"NAGY | óriási | Óriási"
-
-#: src/frontends/xforms/FormDocument.C:243
-#: src/frontends/xforms/FormPreferences.C:272
-msgid "Language"
-msgstr "Nyelv"
-
-#: src/frontends/xforms/FormDocument.C:245
-msgid "Extra"
-msgstr "Extra"
-
-#: src/frontends/xforms/FormDocument.C:247
-msgid "Bullets"
-msgstr "Jelek"
-
-#: src/frontends/xforms/FormDocument.C:250
+#: src/frontends/xforms/FormCitation.C:399
 #, fuzzy
-msgid ""
-"Your version of libXpm is older than 4.7.\n"
-"The `bullet' tab of the document dialog has been disabled"
-msgstr ""
-"Az ön libXpm verziója kisebb mint 4.7.\n"
-"Így a 'Jelek' rész ki lett kapcsolva"
+msgid "Not yet supported"
+msgstr "Az 'újra' még nem támogatott az egyenletszekesztõben"
 
 #: src/frontends/xforms/form_document.C:31
 #: src/frontends/xforms/form_paragraph.C:314
@@ -5149,9 +4056,17 @@ msgstr ""
 msgid "Special:|#S"
 msgstr "Egyéb:|#g"
 
+#: src/frontends/xforms/form_document.C:99
+msgid "Margins"
+msgstr "Margók"
+
 #: src/frontends/xforms/form_document.C:103
 msgid "Foot/Head Margins"
 msgstr "Láb/Fej margók"
+
+#: src/frontends/xforms/form_document.C:114
+msgid "Orientation"
+msgstr "Oldaltípus"
 
 #: src/frontends/xforms/form_document.C:121
 msgid "Portrait|#o"
@@ -5379,13 +4294,75 @@ msgstr ""
 msgid "Ding 1|#D"
 msgstr ""
 
+#: src/frontends/xforms/FormDocument.C:92
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+" Alapérték | Egyedi | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+
+#: src/frontends/xforms/FormDocument.C:95
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+" Nincs | A4 kis margók (csak álló) | A4 nagyon kis margók (csak álló) | A4 "
+"nagyon széles margók (csak álló) "
+
+#: src/frontends/xforms/FormDocument.C:146
+msgid " Single | OneHalf | Double | Other "
+msgstr " Szimpla | Másfeles | Dupla | Egyéb "
+
+#: src/frontends/xforms/FormDocument.C:154
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Kicsi | Közepes | Nagy | Adott: "
+
+#: src/frontends/xforms/FormDocument.C:198
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+
+#: src/frontends/xforms/FormDocument.C:216
+msgid " Author-year | Numerical "
+msgstr ""
+
+#: src/frontends/xforms/FormDocument.C:229
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+" alapérték | apró | kézírás | lábjegyzet | kicsi | normál |nagy | Nagy | "
+"NAGY | óriási | Óriási"
+
+#: src/frontends/xforms/FormDocument.C:241
+msgid "Paper"
+msgstr "Papír"
+
+#: src/frontends/xforms/FormDocument.C:243
+#: src/frontends/xforms/FormPreferences.C:272
+msgid "Language"
+msgstr "Nyelv"
+
+#: src/frontends/xforms/FormDocument.C:245
+msgid "Extra"
+msgstr "Extra"
+
+#: src/frontends/xforms/FormDocument.C:247
+msgid "Bullets"
+msgstr "Jelek"
+
+#: src/frontends/xforms/FormDocument.C:250
+#, fuzzy
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document dialog has been disabled"
+msgstr ""
+"Az ön libXpm verziója kisebb mint 4.7.\n"
+"Így a 'Jelek' rész ki lett kapcsolva"
+
 #: src/frontends/xforms/FormError.C:30
 msgid "LaTeX Error"
 msgstr "LaTeX Hiba"
-
-#: src/frontends/xforms/FormExternal.C:33
-msgid "Edit external file"
-msgstr ""
 
 #: src/frontends/xforms/form_external.C:29
 msgid "Template|#t"
@@ -5421,9 +4398,9 @@ msgstr "&Alkalmaz"
 msgid "Cancel|#C^["
 msgstr "Mégsem|#M^["
 
-#: src/frontends/xforms/FormFiledialog.C:203
-msgid "Warning! Couldn't open directory."
-msgstr "Figyelem! A könytárat nem sikerült megnyitni."
+#: src/frontends/xforms/FormExternal.C:33
+msgid "Edit external file"
+msgstr ""
 
 #: src/frontends/xforms/form_filedialog.C:34
 msgid "Directory:|#D"
@@ -5452,6 +4429,10 @@ msgstr ""
 #: src/frontends/xforms/form_filedialog.C:83
 msgid "User2|#2"
 msgstr ""
+
+#: src/frontends/xforms/FormFiledialog.C:203
+msgid "Warning! Couldn't open directory."
+msgstr "Figyelem! A könytárat nem sikerült megnyitni."
 
 #: src/frontends/xforms/form_graphics.C:33
 msgid "Graphics File|#F"
@@ -5525,11 +4506,6 @@ msgstr "Frissít|#F"
 msgid "Ok"
 msgstr "Ok"
 
-#: src/frontends/xforms/FormInclude.C:29
-#, fuzzy
-msgid "Include file"
-msgstr "Fájl beillesztése új oldalra"
-
 #: src/frontends/xforms/form_include.C:37
 #, fuzzy
 msgid "Don't typeset|#D"
@@ -5560,17 +4536,35 @@ msgstr "Folytatólagosan|#t"
 msgid "Use include|#U"
 msgstr "Új oldalon kezdve|#o"
 
-#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:49
-msgid "Index"
-msgstr "Tárgymutató"
+#: src/frontends/xforms/FormInclude.C:29
+#, fuzzy
+msgid "Include file"
+msgstr "Fájl beillesztése új oldalra"
 
 #: src/frontends/xforms/form_index.C:29
 msgid "Keyword|#K"
 msgstr "Kulcsszó|#K"
 
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:49
+msgid "Index"
+msgstr "Tárgymutató"
+
 #: src/frontends/xforms/FormLog.C:18 src/frontends/xforms/FormLog.C:35
 msgid "LaTeX Log"
 msgstr "LaTeX napló"
+
+#: src/frontends/xforms/FormLog.C:27
+msgid "Build log"
+msgstr ""
+
+#: src/frontends/xforms/FormLog.C:31
+#, fuzzy
+msgid "No build log file found"
+msgstr "Nem találtam LaTeX log fájlt"
+
+#: src/frontends/xforms/FormLog.C:39
+msgid "No LaTeX log file found"
+msgstr "Nem találtam LaTeX log fájlt"
 
 #: src/frontends/xforms/FormMathsBitmap.C:42
 #, fuzzy
@@ -5581,11 +4575,6 @@ msgstr "Matthias"
 msgid "Maths Decorations"
 msgstr ""
 
-#: src/frontends/xforms/FormMathsDelim.C:45
-#, fuzzy
-msgid "Maths Delimiters"
-msgstr "Zárójel"
-
 #: src/frontends/xforms/form_maths_delim.C:35
 #: src/frontends/xforms/form_paragraph.C:90
 msgid "Right|#R"
@@ -5595,14 +4584,15 @@ msgstr "Jobbra|#J"
 msgid "Left|#L"
 msgstr "Bal|#B"
 
-#: src/frontends/xforms/FormMathsMatrix.C:47
+#: src/frontends/xforms/FormMathsDelim.C:45
 #, fuzzy
-msgid "Maths Matrix"
-msgstr "Mátrix"
+msgid "Maths Delimiters"
+msgstr "Zárójel"
 
-#: src/frontends/xforms/FormMathsMatrix.C:63
-msgid "Top | Center | Bottom"
-msgstr "Fel | Középre | Le"
+#: src/frontends/xforms/form_maths_matrix.C:28
+#: src/frontends/xforms/form_tabular_create.C:49
+msgid "Rows"
+msgstr "Sorok"
 
 #: src/frontends/xforms/form_maths_matrix.C:35
 msgid "Columns "
@@ -5620,10 +4610,14 @@ msgstr "Vízszintes igazítás|#V"
 msgid "OK  "
 msgstr "OK  "
 
-#: src/frontends/xforms/FormMathsPanel.C:57
+#: src/frontends/xforms/FormMathsMatrix.C:47
 #, fuzzy
-msgid "Maths Panel"
-msgstr "Képletszerkesztõ"
+msgid "Maths Matrix"
+msgstr "Mátrix"
+
+#: src/frontends/xforms/FormMathsMatrix.C:63
+msgid "Top | Center | Bottom"
+msgstr "Fel | Középre | Le"
 
 #: src/frontends/xforms/form_maths_panel.C:28
 msgid "Close "
@@ -5656,10 +4650,10 @@ msgstr "S  ò"
 msgid "Misc"
 msgstr "Egyéb"
 
-#: src/frontends/xforms/FormMathsSpace.C:25
+#: src/frontends/xforms/FormMathsPanel.C:57
 #, fuzzy
-msgid "Maths Spacing"
-msgstr "Kihagyás"
+msgid "Maths Panel"
+msgstr "Képletszerkesztõ"
 
 #: src/frontends/xforms/form_maths_space.C:31
 msgid "Thin|#T"
@@ -5689,10 +4683,16 @@ msgstr "Nyolcszoros|#y"
 msgid "OK "
 msgstr "OK "
 
-#: src/frontends/xforms/FormMinipage.C:31
+#: src/frontends/xforms/FormMathsSpace.C:25
 #, fuzzy
-msgid "Minipage Options"
-msgstr "minilap vonal"
+msgid "Maths Spacing"
+msgstr "Kihagyás"
+
+#: src/frontends/xforms/form_minipage.C:31
+#: src/frontends/xforms/form_paragraph.C:149
+#: src/frontends/xforms/form_paragraph.C:223
+msgid "Alignment"
+msgstr "Igazítás"
 
 #: src/frontends/xforms/form_minipage.C:42
 #: src/frontends/xforms/form_paragraph.C:230
@@ -5709,26 +4709,10 @@ msgstr "Közép|#z"
 msgid "Bottom|#B"
 msgstr "Le|#L"
 
-#: src/frontends/xforms/FormParagraph.C:36
-msgid "Paragraph Layout"
-msgstr "Bekezdés formátuma"
-
-#: src/frontends/xforms/FormParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:123
-msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr " Nincs | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-
-#. now make them fit together
-#: src/frontends/xforms/FormParagraph.C:148
-msgid "General"
-msgstr "Általános"
-
-#: src/frontends/xforms/FormParagraph.C:437
-#: src/frontends/xforms/FormTabular.C:375
-#: src/frontends/xforms/FormTabular.C:387
-#: src/frontends/xforms/FormTabular.C:399
-msgid "Warning: Invalid Length (valid example: 10mm)"
-msgstr "Figyelem: Érvénytelen méret (helyes pl.: 10mm)"
+#: src/frontends/xforms/FormMinipage.C:31
+#, fuzzy
+msgid "Minipage Options"
+msgstr "minilap vonal"
 
 #: src/frontends/xforms/form_paragraph.C:40
 msgid "Label Width:|#d"
@@ -5833,328 +4817,35 @@ msgstr "Minilap|#n"
 msgid "Floatflt|#F"
 msgstr "Úszókép|#k"
 
-#: src/frontends/xforms/FormPreamble.C:24
-#, fuzzy
-msgid "LaTeX preamble"
-msgstr "Bevezetõ LaTeX parancsok"
+#: src/frontends/xforms/FormParagraph.C:36
+msgid "Paragraph Layout"
+msgstr "Bekezdés formátuma"
+
+#: src/frontends/xforms/FormParagraph.C:120
+#: src/frontends/xforms/FormParagraph.C:123
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr " Nincs | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:148
+msgid "General"
+msgstr "Általános"
+
+#: src/frontends/xforms/FormParagraph.C:437
+#: src/frontends/xforms/FormTabular.C:375
+#: src/frontends/xforms/FormTabular.C:387
+#: src/frontends/xforms/FormTabular.C:399
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Figyelem: Érvénytelen méret (helyes pl.: 10mm)"
 
 #: src/frontends/xforms/form_preamble.C:29 src/lyx_gui_misc.C:220
 msgid "OK|#O"
 msgstr "OK|#O"
 
-#: src/frontends/xforms/FormPreferences.C:71
-msgid "Preferences"
-msgstr "Beállítások"
-
-#: src/frontends/xforms/FormPreferences.C:212
-msgid "Look & Feel"
-msgstr "Megjelenés"
-
-#: src/frontends/xforms/FormPreferences.C:215
-msgid "Lang Opts"
-msgstr "Nyelvi beállítások"
-
-#: src/frontends/xforms/FormPreferences.C:218
-#: src/frontends/xforms/FormPreferences.C:247
-msgid "Converters"
-msgstr "Átalakítók"
-
-#: src/frontends/xforms/FormPreferences.C:221
-msgid "Inputs"
-msgstr "Bemenetek"
-
-#: src/frontends/xforms/FormPreferences.C:224
-msgid "Outputs"
-msgstr "Kimenetek"
-
-#: src/frontends/xforms/FormPreferences.C:230
-msgid "Screen Fonts"
-msgstr "Képernyõ"
-
-#: src/frontends/xforms/FormPreferences.C:233
-msgid "Interface"
-msgstr "Kezelõfelület"
-
-#: src/frontends/xforms/FormPreferences.C:236
-msgid "Colors"
-msgstr "Színek"
-
-#: src/frontends/xforms/FormPreferences.C:244
-msgid "Formats"
-msgstr "Formátumok"
-
-#: src/frontends/xforms/FormPreferences.C:253
-msgid "Paths"
-msgstr "Útvonalak"
-
-#: src/frontends/xforms/FormPreferences.C:261
-msgid "Printer"
-msgstr "Nyomtató"
-
-#: src/frontends/xforms/FormPreferences.C:269
-msgid "Spell checker"
-msgstr "Helyesírás-ellenõrzõ"
-
-#: src/frontends/xforms/FormPreferences.C:528
-msgid "LyX objects that can be assigned a color."
-msgstr "LyX objektumok, amikhez színt lehet rendelni."
-
-#: src/frontends/xforms/FormPreferences.C:531
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Módósítja a LyX objektum színét. Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
-
-#: src/frontends/xforms/FormPreferences.C:539
-msgid "Find a new color."
-msgstr "Új szín keresése."
-
-#: src/frontends/xforms/FormPreferences.C:542
-msgid "Toggle between RGB and HSV color spaces."
-msgstr "Váltás RGB és HSV színpaletta között."
-
-#: src/frontends/xforms/FormPreferences.C:724
-msgid "GUI background"
-msgstr "GUI háttér"
-
-#: src/frontends/xforms/FormPreferences.C:730
-msgid "GUI text"
-msgstr "GUI szöveg"
-
-#: src/frontends/xforms/FormPreferences.C:739
-msgid "GUI selection"
-msgstr "GUI kijelölés"
-
-#: src/frontends/xforms/FormPreferences.C:745
-msgid "GUI pointer"
-msgstr "GUI mutató"
-
-#: src/frontends/xforms/FormPreferences.C:875
-msgid "HSV"
-msgstr "HSV"
-
-#: src/frontends/xforms/FormPreferences.C:907
-msgid "RGB"
-msgstr "RGB"
-
-#: src/frontends/xforms/FormPreferences.C:988
-msgid "All the currently defined converters known to LyX."
-msgstr "A LyX által definiált összes átalakító"
-
-#: src/frontends/xforms/FormPreferences.C:990
-msgid "Convert \"from\" this format"
-msgstr "A forrás fájl formátuma"
-
-#: src/frontends/xforms/FormPreferences.C:992
-msgid "Convert \"to\" this format"
-msgstr "A kívánt formátum"
-
-#: src/frontends/xforms/FormPreferences.C:994
-msgid ""
-"The conversion command. $$i is the input file name, $$b is the file name "
-"without its extension and $$o is the name of the output file."
-msgstr ""
-"Az átalakító parancs. A $$i jelenti a forrás fájl nevét, a $$b a "
-"fájlnévkiterjesztés nélkül és a $$o jelenti a célfájl nevét"
-
-#: src/frontends/xforms/FormPreferences.C:996
-msgid "Flags that control the converter behavior"
-msgstr "Kapcsolók, amik befolyásolják az átalakító viselkedését"
-
-#: src/frontends/xforms/FormPreferences.C:998
-msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
-msgstr ""
-"Törli az aktuális átalakítót. Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
-
-#: src/frontends/xforms/FormPreferences.C:1000
-#: src/frontends/xforms/FormPreferences.C:1265
-msgid "Add"
-msgstr "Hozzáad"
-
-#: src/frontends/xforms/FormPreferences.C:1001
-msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
-msgstr ""
-"Hozzáadja az aktuális átalakítót.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
-
-#: src/frontends/xforms/FormPreferences.C:1003
-msgid ""
-"Modify the contents of the current converter. Note: you must then \"Apply\" "
-"the change."
-msgstr ""
-"Módosítja az aktuális átalakítót.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
-
-#: src/frontends/xforms/FormPreferences.C:1095
-#: src/frontends/xforms/FormPreferences.C:1096
-#: src/frontends/xforms/FormPreferences.C:1134
-#: src/frontends/xforms/FormPreferences.C:1136
-#: src/frontends/xforms/FormPreferences.C:1364
-#: src/frontends/xforms/FormPreferences.C:1365
-#: src/frontends/xforms/FormPreferences.C:1408
-#: src/frontends/xforms/FormPreferences.C:1410
-#: src/frontends/xforms/form_preferences.C:522
-msgid "Modify|#M"
-msgstr "Módosít|#M"
-
-#: src/frontends/xforms/FormPreferences.C:1126
-#: src/frontends/xforms/FormPreferences.C:1128
-#: src/frontends/xforms/FormPreferences.C:1399
-#: src/frontends/xforms/FormPreferences.C:1401
-#: src/frontends/xforms/form_preferences.C:625
-#: src/frontends/xforms/form_preferences.C:712
-msgid "Add|#A"
-msgstr "Hozzáad|#a"
-
-#: src/frontends/xforms/FormPreferences.C:1251
-msgid "All the currently defined formats known to LyX."
-msgstr "A LyX által definiált összes formátum."
-
-#: src/frontends/xforms/FormPreferences.C:1253
-msgid "The format identifier."
-msgstr "A formátum azonosítója."
-
-#: src/frontends/xforms/FormPreferences.C:1255
-msgid "The format name as it will appear in the menus."
-msgstr "A formátum neve, ahogy megjelenik a menükben."
-
-#: src/frontends/xforms/FormPreferences.C:1257
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr "A gyorsbillentyû. Használjon egy betût a GUI névbõl."
-
-#: src/frontends/xforms/FormPreferences.C:1259
-msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr "A szokásos fájl kiterjesztés. Pl.: ps, pdf, tex."
-
-#: src/frontends/xforms/FormPreferences.C:1261
-msgid "The command used to launch the viewer application."
-msgstr "A nézegetõt elindító parancs."
-
-#: src/frontends/xforms/FormPreferences.C:1263
-msgid ""
-"Remove the current format from the list of available formats. Note: you must "
-"then \"Apply\" the change."
-msgstr ""
-"Törli az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
-
-#: src/frontends/xforms/FormPreferences.C:1266
-msgid ""
-"Add the current format to the list of available formats. Note: you must then "
-"\"Apply\" the change."
-msgstr ""
-"Hozzáadja az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
-
-#: src/frontends/xforms/FormPreferences.C:1268
-msgid ""
-"Modify the contents of the current format. Note: you must then \"Apply\" the "
-"change."
-msgstr ""
-"Módosítja az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
-
-#: src/frontends/xforms/FormPreferences.C:1380
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Nem lehet olyan formátumaot eltávolítani, amit egy átalakító használ. "
-"Elõször törölje az átalakítót."
-
-#: src/frontends/xforms/FormPreferences.C:1550
-msgid "Sys Bind"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1554
-msgid "User Bind"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1558
-msgid "Bind file"
-msgstr "Bind fájl"
-
-#: src/frontends/xforms/FormPreferences.C:1562
-msgid "Sys UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1566
-msgid "User UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1570
-msgid "UI file"
-msgstr "UI fájl"
-
-#: src/frontends/xforms/FormPreferences.C:1758
-#: src/frontends/xforms/FormPreferences.C:1766
-msgid "Key maps"
-msgstr "Kiosztások"
-
-#: src/frontends/xforms/FormPreferences.C:1762
-#: src/frontends/xforms/FormPreferences.C:1770
-msgid "Keyboard map"
-msgstr "Billentyûzet kiosztás"
-
-#: src/frontends/xforms/FormPreferences.C:1956
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr " alapérték | US letter | legal | executive | A3 | A4 | A5 | B5 "
-
-#: src/frontends/xforms/FormPreferences.C:2191
-msgid "Default path"
-msgstr "Alapértelmezett könyvtár"
-
-#: src/frontends/xforms/FormPreferences.C:2196
-msgid "Template path"
-msgstr "Sablonok könyvtára"
-
-#: src/frontends/xforms/FormPreferences.C:2201
-msgid "Temp dir"
-msgstr "Temp könyvtár"
-
-#: src/frontends/xforms/FormPreferences.C:2205
-msgid "User"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2208
-msgid "Lastfiles"
-msgstr "Utoljára megnyitott"
-
-#: src/frontends/xforms/FormPreferences.C:2212
-msgid "Backup path"
-msgstr "Biztonsági mentés"
-
-#: src/frontends/xforms/FormPreferences.C:2217
-msgid "LyX Server pipes"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2671
-msgid "Fonts must be positive!"
-msgstr "A betûméretnek nagyobbnak kell lennie 0 -nál!"
-
-#: src/frontends/xforms/FormPreferences.C:2694
-msgid ""
-"Fonts must be input in the order tiny > script> footnote > small > normal > "
-"large > larger > largest > huge > huger."
-msgstr ""
-"A betûméreteknek a következõ sorrendben kell növekedniük:apró > kézírás > "
-"lábjegyzet > kicsi > normál > nagy > nagyobb > legnagyobb > óriás > hatalmas."
-
-#: src/frontends/xforms/FormPreferences.C:2816
-msgid " none | ispell | aspell "
-msgstr "nincs | ispell | aspell "
-
-#: src/frontends/xforms/FormPreferences.C:2907
-msgid "Personal dictionary"
-msgstr "Saját szótár"
-
-#: src/frontends/xforms/FormPreferences.C:2963
-msgid "WARNING!"
-msgstr "FIGYELEM!"
+#: src/frontends/xforms/FormPreamble.C:24
+#, fuzzy
+msgid "LaTeX preamble"
+msgstr "Bevezetõ LaTeX parancsok"
 
 #: src/LyXAction.C:145 src/frontends/xforms/form_preferences.C:46
 msgid "Save"
@@ -6309,6 +5000,18 @@ msgstr "G|#G"
 msgid "LyX objects|#L"
 msgstr "LyX objektumok|#L"
 
+#: src/frontends/xforms/FormPreferences.C:1095
+#: src/frontends/xforms/FormPreferences.C:1096
+#: src/frontends/xforms/FormPreferences.C:1134
+#: src/frontends/xforms/FormPreferences.C:1136
+#: src/frontends/xforms/FormPreferences.C:1364
+#: src/frontends/xforms/FormPreferences.C:1365
+#: src/frontends/xforms/FormPreferences.C:1408
+#: src/frontends/xforms/FormPreferences.C:1410
+#: src/frontends/xforms/form_preferences.C:522
+msgid "Modify|#M"
+msgstr "Módosít|#M"
+
 #: src/frontends/xforms/form_preferences.C:529
 msgid "S|#S"
 msgstr "S|#S"
@@ -6341,6 +5044,15 @@ msgstr "Az összes átalakító"
 #: src/frontends/xforms/form_preferences.C:705
 msgid "Delete|#D"
 msgstr "Töröl|#T"
+
+#: src/frontends/xforms/FormPreferences.C:1126
+#: src/frontends/xforms/FormPreferences.C:1128
+#: src/frontends/xforms/FormPreferences.C:1399
+#: src/frontends/xforms/FormPreferences.C:1401
+#: src/frontends/xforms/form_preferences.C:625
+#: src/frontends/xforms/form_preferences.C:712
+msgid "Add|#A"
+msgstr "Hozzáad|#a"
 
 #: src/frontends/xforms/form_preferences.C:632
 msgid "Converter|#C"
@@ -6553,10 +5265,298 @@ msgstr ""
 msgid "Temp dir|#d"
 msgstr "Temp könyvtár|#r"
 
-#: src/LyXAction.C:129 src/LyXAction.C:136 src/frontends/xforms/FormPrint.C:44
-#: src/frontends/xforms/form_print.C:129
-msgid "Print"
-msgstr "Nyomtat"
+#: src/frontends/xforms/FormPreferences.C:71
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: src/frontends/xforms/FormPreferences.C:212
+msgid "Look & Feel"
+msgstr "Megjelenés"
+
+#: src/frontends/xforms/FormPreferences.C:215
+msgid "Lang Opts"
+msgstr "Nyelvi beállítások"
+
+#: src/frontends/xforms/FormPreferences.C:218
+#: src/frontends/xforms/FormPreferences.C:247
+msgid "Converters"
+msgstr "Átalakítók"
+
+#: src/frontends/xforms/FormPreferences.C:221
+msgid "Inputs"
+msgstr "Bemenetek"
+
+#: src/frontends/xforms/FormPreferences.C:224
+msgid "Outputs"
+msgstr "Kimenetek"
+
+#: src/frontends/xforms/FormPreferences.C:230
+msgid "Screen Fonts"
+msgstr "Képernyõ"
+
+#: src/frontends/xforms/FormPreferences.C:233
+msgid "Interface"
+msgstr "Kezelõfelület"
+
+#: src/frontends/xforms/FormPreferences.C:236
+msgid "Colors"
+msgstr "Színek"
+
+#: src/frontends/xforms/FormPreferences.C:244
+msgid "Formats"
+msgstr "Formátumok"
+
+#: src/frontends/xforms/FormPreferences.C:253
+msgid "Paths"
+msgstr "Útvonalak"
+
+#: src/frontends/xforms/FormPreferences.C:261
+msgid "Printer"
+msgstr "Nyomtató"
+
+#: src/frontends/xforms/FormPreferences.C:269
+msgid "Spell checker"
+msgstr "Helyesírás-ellenõrzõ"
+
+#: src/frontends/xforms/FormPreferences.C:528
+msgid "LyX objects that can be assigned a color."
+msgstr "LyX objektumok, amikhez színt lehet rendelni."
+
+#: src/frontends/xforms/FormPreferences.C:531
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+"Módósítja a LyX objektum színét. Figyelem! ne felejtse \"Alkalmazni\" a "
+"módosításokat."
+
+#: src/frontends/xforms/FormPreferences.C:539
+msgid "Find a new color."
+msgstr "Új szín keresése."
+
+#: src/frontends/xforms/FormPreferences.C:542
+msgid "Toggle between RGB and HSV color spaces."
+msgstr "Váltás RGB és HSV színpaletta között."
+
+#: src/frontends/xforms/FormPreferences.C:724
+msgid "GUI background"
+msgstr "GUI háttér"
+
+#: src/frontends/xforms/FormPreferences.C:730
+msgid "GUI text"
+msgstr "GUI szöveg"
+
+#: src/frontends/xforms/FormPreferences.C:739
+msgid "GUI selection"
+msgstr "GUI kijelölés"
+
+#: src/frontends/xforms/FormPreferences.C:745
+msgid "GUI pointer"
+msgstr "GUI mutató"
+
+#: src/frontends/xforms/FormPreferences.C:875
+msgid "HSV"
+msgstr "HSV"
+
+#: src/frontends/xforms/FormPreferences.C:907
+msgid "RGB"
+msgstr "RGB"
+
+#: src/frontends/xforms/FormPreferences.C:988
+msgid "All the currently defined converters known to LyX."
+msgstr "A LyX által definiált összes átalakító"
+
+#: src/frontends/xforms/FormPreferences.C:990
+msgid "Convert \"from\" this format"
+msgstr "A forrás fájl formátuma"
+
+#: src/frontends/xforms/FormPreferences.C:992
+msgid "Convert \"to\" this format"
+msgstr "A kívánt formátum"
+
+#: src/frontends/xforms/FormPreferences.C:994
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+"Az átalakító parancs. A $$i jelenti a forrás fájl nevét, a $$b a "
+"fájlnévkiterjesztés nélkül és a $$o jelenti a célfájl nevét"
+
+#: src/frontends/xforms/FormPreferences.C:996
+msgid "Flags that control the converter behavior"
+msgstr "Kapcsolók, amik befolyásolják az átalakító viselkedését"
+
+#: src/frontends/xforms/FormPreferences.C:998
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+"Törli az aktuális átalakítót. Figyelem! ne felejtse \"Alkalmazni\" a "
+"módosításokat."
+
+#: src/frontends/xforms/FormPreferences.C:1000
+#: src/frontends/xforms/FormPreferences.C:1265
+msgid "Add"
+msgstr "Hozzáad"
+
+#: src/frontends/xforms/FormPreferences.C:1001
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+"Hozzáadja az aktuális átalakítót.Figyelem! ne felejtse \"Alkalmazni\" a "
+"módosításokat."
+
+#: src/frontends/xforms/FormPreferences.C:1003
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+"Módosítja az aktuális átalakítót.Figyelem! ne felejtse \"Alkalmazni\" a "
+"módosításokat."
+
+#: src/frontends/xforms/FormPreferences.C:1251
+msgid "All the currently defined formats known to LyX."
+msgstr "A LyX által definiált összes formátum."
+
+#: src/frontends/xforms/FormPreferences.C:1253
+msgid "The format identifier."
+msgstr "A formátum azonosítója."
+
+#: src/frontends/xforms/FormPreferences.C:1255
+msgid "The format name as it will appear in the menus."
+msgstr "A formátum neve, ahogy megjelenik a menükben."
+
+#: src/frontends/xforms/FormPreferences.C:1257
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr "A gyorsbillentyû. Használjon egy betût a GUI névbõl."
+
+#: src/frontends/xforms/FormPreferences.C:1259
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr "A szokásos fájl kiterjesztés. Pl.: ps, pdf, tex."
+
+#: src/frontends/xforms/FormPreferences.C:1261
+msgid "The command used to launch the viewer application."
+msgstr "A nézegetõt elindító parancs."
+
+#: src/frontends/xforms/FormPreferences.C:1263
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+"Törli az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a "
+"módosításokat."
+
+#: src/frontends/xforms/FormPreferences.C:1266
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+"Hozzáadja az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a "
+"módosításokat."
+
+#: src/frontends/xforms/FormPreferences.C:1268
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+"Módosítja az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a "
+"módosításokat."
+
+#: src/frontends/xforms/FormPreferences.C:1380
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+"Nem lehet olyan formátumaot eltávolítani, amit egy átalakító használ. "
+"Elõször törölje az átalakítót."
+
+#: src/frontends/xforms/FormPreferences.C:1550
+msgid "Sys Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1554
+msgid "User Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1558
+msgid "Bind file"
+msgstr "Bind fájl"
+
+#: src/frontends/xforms/FormPreferences.C:1562
+msgid "Sys UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1566
+msgid "User UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1570
+msgid "UI file"
+msgstr "UI fájl"
+
+#: src/frontends/xforms/FormPreferences.C:1758
+#: src/frontends/xforms/FormPreferences.C:1766
+msgid "Key maps"
+msgstr "Kiosztások"
+
+#: src/frontends/xforms/FormPreferences.C:1762
+#: src/frontends/xforms/FormPreferences.C:1770
+msgid "Keyboard map"
+msgstr "Billentyûzet kiosztás"
+
+#: src/frontends/xforms/FormPreferences.C:1956
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr " alapérték | US letter | legal | executive | A3 | A4 | A5 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2191
+msgid "Default path"
+msgstr "Alapértelmezett könyvtár"
+
+#: src/frontends/xforms/FormPreferences.C:2196
+msgid "Template path"
+msgstr "Sablonok könyvtára"
+
+#: src/frontends/xforms/FormPreferences.C:2201
+msgid "Temp dir"
+msgstr "Temp könyvtár"
+
+#: src/frontends/xforms/FormPreferences.C:2205
+msgid "User"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2208
+msgid "Lastfiles"
+msgstr "Utoljára megnyitott"
+
+#: src/frontends/xforms/FormPreferences.C:2212
+msgid "Backup path"
+msgstr "Biztonsági mentés"
+
+#: src/frontends/xforms/FormPreferences.C:2217
+msgid "LyX Server pipes"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2671
+msgid "Fonts must be positive!"
+msgstr "A betûméretnek nagyobbnak kell lennie 0 -nál!"
+
+#: src/frontends/xforms/FormPreferences.C:2694
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+"A betûméreteknek a következõ sorrendben kell növekedniük:apró > kézírás > "
+"lábjegyzet > kicsi > normál > nagy > nagyobb > legnagyobb > óriás > hatalmas."
+
+#: src/frontends/xforms/FormPreferences.C:2816
+msgid " none | ispell | aspell "
+msgstr "nincs | ispell | aspell "
+
+#: src/frontends/xforms/FormPreferences.C:2907
+msgid "Personal dictionary"
+msgstr "Saját szótár"
+
+#: src/frontends/xforms/FormPreferences.C:2963
+msgid "WARNING!"
+msgstr "FIGYELEM!"
 
 #: src/frontends/xforms/form_print.C:37
 msgid "Printer|#P"
@@ -6598,9 +5598,22 @@ msgstr ""
 msgid "to"
 msgstr "-"
 
+#: src/LyXAction.C:129 src/LyXAction.C:136 src/frontends/xforms/FormPrint.C:44
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
+msgstr "Nyomtat"
+
 #: src/frontends/xforms/form_print.C:132
 msgid "Order"
 msgstr "Sorrend"
+
+#: src/frontends/xforms/form_print.C:135
+msgid "Copies"
+msgstr "Másolatok"
+
+#: src/frontends/xforms/form_print.C:138
+msgid "Print to"
+msgstr "Hová:"
 
 #: src/frontends/xforms/form_ref.C:40
 msgid "Sort|#S"
@@ -6621,11 +5634,6 @@ msgstr "Hivatkozás típusa|#H"
 #: src/frontends/xforms/form_ref.C:65
 msgid "Goto reference|#G"
 msgstr "Hivatkozásra ugrás|#u"
-
-#: src/frontends/xforms/FormSearch.C:23
-#, fuzzy
-msgid "LyX: Find and Replace"
-msgstr "Keres és Cserél"
 
 #: src/frontends/xforms/form_search.C:31
 msgid "Find|#n"
@@ -6659,10 +5667,10 @@ msgstr "Egész szó|#g"
 msgid "Replace All|#A#a"
 msgstr "Mindet|#M "
 
-#: src/frontends/xforms/FormSpellchecker.C:24
+#: src/frontends/xforms/FormSearch.C:23
 #, fuzzy
-msgid "LyX: Spellchecker"
-msgstr "Helyesírás-ellenõrzõ"
+msgid "LyX: Find and Replace"
+msgstr "Keres és Cserél"
 
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
@@ -6715,29 +5723,10 @@ msgstr "100 %"
 msgid "Replace word|#R"
 msgstr "A szó javítása|#j"
 
-#: src/frontends/xforms/FormTabular.C:31
-msgid "Tabular Layout"
-msgstr "Táblázat formátum"
-
-#: src/frontends/xforms/FormTabular.C:117
-msgid "Tabular"
-msgstr "Táblázat"
-
-#: src/frontends/xforms/FormTabular.C:119
-msgid "Column/Row"
-msgstr "Oszlop/Sor"
-
-#: src/frontends/xforms/FormTabular.C:121
-msgid "Cell"
-msgstr "Cella"
-
-#: src/frontends/xforms/FormTabular.C:123
-msgid "LongTable"
-msgstr ""
-
-#: src/frontends/xforms/FormTabular.C:361
-msgid "Warning: Wrong Cursor position, updated window"
-msgstr "Figyelem: Rossz kurzorpozíció, az ablak frissítve"
+#: src/frontends/xforms/FormSpellchecker.C:24
+#, fuzzy
+msgid "LyX: Spellchecker"
+msgstr "Helyesírás-ellenõrzõ"
 
 #: src/frontends/xforms/form_tabular.C:71
 msgid "Append Column|#A"
@@ -6898,22 +5887,46 @@ msgstr "Lábléc"
 msgid "Special"
 msgstr "Különleges"
 
+#: src/frontends/xforms/FormTabular.C:31
+msgid "Tabular Layout"
+msgstr "Táblázat formátum"
+
+#: src/frontends/xforms/FormTabular.C:117
+msgid "Tabular"
+msgstr "Táblázat"
+
+#: src/frontends/xforms/FormTabular.C:119
+msgid "Column/Row"
+msgstr "Oszlop/Sor"
+
+#: src/frontends/xforms/FormTabular.C:121
+msgid "Cell"
+msgstr "Cella"
+
+#: src/frontends/xforms/FormTabular.C:123
+msgid "LongTable"
+msgstr ""
+
+#: src/frontends/xforms/FormTabular.C:361
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Figyelem: Rossz kurzorpozíció, az ablak frissítve"
+
+#: src/frontends/xforms/form_tabular_create.C:45
+msgid "Columns"
+msgstr "Oszlopok"
+
 #: src/frontends/xforms/FormTabularCreate.C:29
 msgid "Insert Tabular"
 msgstr "Táblázat beillesztése"
-
-#: src/frontends/xforms/FormToc.C:100
-#, fuzzy
-msgid "*** No Lists ***"
-msgstr "*** Nincs Dokumentum ***"
 
 #: src/frontends/xforms/form_toc.C:40
 msgid "Type|#T"
 msgstr "Típus"
 
-#: src/frontends/xforms/FormUrl.C:28
-msgid "Url"
-msgstr "Url"
+#: src/frontends/xforms/FormToc.C:100
+#, fuzzy
+msgid "*** No Lists ***"
+msgstr "*** Nincs Dokumentum ***"
 
 #: src/frontends/xforms/form_url.C:29
 msgid "URL|#U"
@@ -6926,6 +5939,10 @@ msgstr "Név|#N"
 #: src/frontends/xforms/form_url.C:47
 msgid "HTML type|#H"
 msgstr "HTML típus|#H"
+
+#: src/frontends/xforms/FormUrl.C:28
+msgid "Url"
+msgstr "Url"
 
 #: src/frontends/xforms/FormVCLog.C:20
 msgid "Version Control Log"
@@ -7127,12 +6144,12 @@ msgstr ""
 msgid "External"
 msgstr ""
 
-#: src/insets/insetfloat.C:102 src/insets/insetfloat.C:292
-#: src/insets/insetfloat.C:297
+#: src/insets/insetfloat.C:102 src/insets/insetfloat.C:296
+#: src/insets/insetfloat.C:301
 msgid "float:"
 msgstr ""
 
-#: src/insets/insetfloat.C:187
+#: src/insets/insetfloat.C:191
 msgid "Opened Float Inset"
 msgstr ""
 
@@ -7190,6 +6207,14 @@ msgstr "Fájl beillesztése új oldalra"
 #: src/insets/insetindex.C:21
 msgid "Idx"
 msgstr ""
+
+#: src/insets/insetinfo.C:202
+msgid "Opened note"
+msgstr "Megnyitott megjegyzés"
+
+#: src/insets/insetinfo.C:221 src/insets/insetinfo.C:226
+msgid "Close|#C^["
+msgstr "Bezár|#z^["
 
 #: src/insets/insetlabel.C:52 src/mathed/formula.C:216
 msgid "Enter label:"
@@ -9242,6 +8267,379 @@ msgstr "Oldaltörés (fent)"
 msgid "Page Break (bottom)"
 msgstr "Oldaltörés (lent)"
 
+#, fuzzy
+#~ msgid "Move reference before"
+#~ msgstr "Beállítások mentése"
+
+#, fuzzy
+#~ msgid "Move reference after"
+#~ msgstr "Beállítások mentése"
+
+#, fuzzy
+#~ msgid "Reference details"
+#~ msgstr "Hivatkozások"
+
+#, fuzzy
+#~ msgid "Search through references"
+#~ msgstr "Kereszthivatkozás beillesztése"
+
+#, fuzzy
+#~ msgid "Available references"
+#~ msgstr "Beállítások mentése"
+
+#, fuzzy
+#~ msgid "Current chosen references"
+#~ msgstr "Kereszthivatkozás beillesztése"
+
+#~ msgid "&OK"
+#~ msgstr "&OK"
+
+#~ msgid "&Apply"
+#~ msgstr "&Alkalmaz"
+
+#~ msgid "&Restore"
+#~ msgstr "&Visszaállít"
+
+#~ msgid "&Remove"
+#~ msgstr "&Mozgat"
+
+#~ msgid "&Up"
+#~ msgstr "&Fel"
+
+#, fuzzy
+#~ msgid "&Search"
+#~ msgstr "Keres"
+
+#, fuzzy
+#~ msgid "Float Placement"
+#~ msgstr "Lebegõ obj.|#j"
+
+#, fuzzy
+#~ msgid "Section number depth :"
+#~ msgstr "Részek számozása"
+
+#, fuzzy
+#~ msgid "Table of Contents depth :"
+#~ msgstr "A Tartalomjegyzékben"
+
+#, fuzzy
+#~ msgid "Use AMS Math"
+#~ msgstr "AMS Math használata|#M"
+
+#, fuzzy
+#~ msgid "First try :"
+#~ msgstr "Eredeti szerzõ"
+
+#, fuzzy
+#~ msgid "then :"
+#~ msgstr "Adott ("
+
+#, fuzzy
+#~ msgid "Paper size :"
+#~ msgstr "papírméret"
+
+#, fuzzy
+#~ msgid "Margins :"
+#~ msgstr "Margók"
+
+#, fuzzy
+#~ msgid "Width :"
+#~ msgstr "Szélesség"
+
+#, fuzzy
+#~ msgid "Height :"
+#~ msgstr "Magasság"
+
+#, fuzzy
+#~ msgid "Top :"
+#~ msgstr "Felsõ:|#e"
+
+#, fuzzy
+#~ msgid "Bottom :"
+#~ msgstr "Alsó:|#s"
+
+#, fuzzy
+#~ msgid "Left :"
+#~ msgstr "Balra"
+
+#, fuzzy
+#~ msgid "Right :"
+#~ msgstr "Jobbra"
+
+#, fuzzy
+#~ msgid "Header height :"
+#~ msgstr "Fejléc mag.:|#c"
+
+#, fuzzy
+#~ msgid "Header separation :"
+#~ msgstr "Szétválasztás"
+
+#, fuzzy
+#~ msgid "Footer skip :"
+#~ msgstr "Lábléc mag.|#v"
+
+#, fuzzy
+#~ msgid "Portrait"
+#~ msgstr "Álló|#l"
+
+#, fuzzy
+#~ msgid "Landscape"
+#~ msgstr "Fekvõ|#F"
+
+#, fuzzy
+#~ msgid "Language :"
+#~ msgstr "Nyelv:"
+
+#, fuzzy
+#~ msgid "Encoding :"
+#~ msgstr "Kódolás"
+
+#, fuzzy
+#~ msgid "Quote style :"
+#~ msgstr "Idézõjel stílus"
+
+#, fuzzy
+#~ msgid "Paragraph spacing"
+#~ msgstr "Bekezdés"
+
+#, fuzzy
+#~ msgid "Font size :"
+#~ msgstr "Betûméret:|#r"
+
+#, fuzzy
+#~ msgid "Font family :"
+#~ msgstr "Család:|#C"
+
+#, fuzzy
+#~ msgid "Page style :"
+#~ msgstr "Oldal stílusa:|#d"
+
+#, fuzzy
+#~ msgid "Document class :"
+#~ msgstr "Dokumentumok"
+
+#, fuzzy
+#~ msgid "Extra options :"
+#~ msgstr "Egyéb beállítások"
+
+#, fuzzy
+#~ msgid "Size :"
+#~ msgstr "Méret:|#M"
+
+#, fuzzy
+#~ msgid "Add space"
+#~ msgstr "páratlan oldalak"
+
+#~ msgid "Keyword:"
+#~ msgstr "Kulcsszó:"
+
+#, fuzzy
+#~ msgid "Points"
+#~ msgstr "Nyomtat"
+
+#, fuzzy
+#~ msgid "Scaled points"
+#~ msgstr "Képernyõ"
+
+#~ msgid "&Update"
+#~ msgstr "&Frissít"
+
+#~ msgid "Page break"
+#~ msgstr "Új oldal"
+
+#~ msgid "Extra Space"
+#~ msgstr "Extra Szóköz"
+
+#, fuzzy
+#~ msgid "Size"
+#~ msgstr "Méret|#r"
+
+#, fuzzy
+#~ msgid "Stretch"
+#~ msgstr "Francia"
+
+#, fuzzy
+#~ msgid "Shrink"
+#~ msgstr "Amerikai"
+
+#, fuzzy
+#~ msgid "Justification"
+#~ msgstr "Testreszabás|s"
+
+#~ msgid "Pages"
+#~ msgstr "Oldalak"
+
+#~ msgid "&File"
+#~ msgstr "&Fájl"
+
+#~ msgid "Count"
+#~ msgstr "Darab"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Rész"
+
+#, fuzzy
+#~ msgid "&Language"
+#~ msgstr "Nyelv"
+
+#, fuzzy
+#~ msgid "&Bullets"
+#~ msgstr "Jelek"
+
+#, fuzzy
+#~ msgid "10 point"
+#~ msgstr "GUI mutató"
+
+#, fuzzy
+#~ msgid "11 point"
+#~ msgstr "GUI mutató"
+
+#, fuzzy
+#~ msgid "12 point"
+#~ msgstr "GUI mutató"
+
+#, fuzzy
+#~ msgid "single"
+#~ msgstr "Szimpla"
+
+#, fuzzy
+#~ msgid "1 1/2 spacing"
+#~ msgstr "Kihagyás"
+
+#, fuzzy
+#~ msgid "double"
+#~ msgstr "Dupla"
+
+#, fuzzy
+#~ msgid "custom"
+#~ msgstr "Ügyfél"
+
+#, fuzzy
+#~ msgid "medium"
+#~ msgstr "Közepes"
+
+#, fuzzy
+#~ msgid "Here"
+#~ msgstr "Héber"
+
+#, fuzzy
+#~ msgid "Bottom of page"
+#~ msgstr "% az oldalnak"
+
+#, fuzzy
+#~ msgid "Top of page"
+#~ msgstr "% az oldalnak"
+
+#, fuzzy
+#~ msgid "Separate page"
+#~ msgstr "Sablonok könyvtára"
+
+#, fuzzy
+#~ msgid "Not set"
+#~ msgstr "Megjegyzés"
+
+#, fuzzy
+#~ msgid "US letter"
+#~ msgstr "Levél"
+
+#, fuzzy
+#~ msgid "`text'"
+#~ msgstr "szöveg"
+
+#, fuzzy
+#~ msgid "'text'"
+#~ msgstr "szöveg"
+
+#, fuzzy
+#~ msgid ",text`"
+#~ msgstr "szöveg"
+
+#, fuzzy
+#~ msgid ",text'"
+#~ msgstr "szöveg"
+
+#, fuzzy
+#~ msgid "<text>"
+#~ msgstr "szöveg"
+
+#, fuzzy
+#~ msgid ">text<"
+#~ msgstr "szöveg"
+
+#, fuzzy
+#~ msgid "How detailed the Table of Contents is"
+#~ msgstr "Nincs tartalomjegyzék%i"
+
+#, fuzzy
+#~ msgid "Key not found."
+#~ msgstr "A betûkészlet nem található!"
+
+#, fuzzy
+#~ msgid "LyX: Document Options"
+#~ msgstr "Nincs nyitva dokumentum!"
+
+#, fuzzy
+#~ msgid "LaTeX log"
+#~ msgstr "LaTeX napló"
+
+#, fuzzy
+#~ msgid "LyX: LaTeX Log"
+#~ msgstr "LaTeX napló"
+
+#, fuzzy
+#~ msgid "Jump to selected reference"
+#~ msgstr "Hivatkozásra ugrás"
+
+#, fuzzy
+#~ msgid "No version control log file found"
+#~ msgstr "Nem találtam LaTeX log fájlt"
+
+#, fuzzy
+#~ msgid "LyX: Version Control Log"
+#~ msgstr "LyX verziószám: "
+
+#, fuzzy
+#~ msgid "Centered"
+#~ msgstr "Középre"
+
+#~ msgid "Left"
+#~ msgstr "Balra"
+
+#~ msgid "Right"
+#~ msgstr "Jobbra"
+
+#, fuzzy
+#~ msgid "Alignment of current paragraph"
+#~ msgstr "Következõ bekezdés kiválasztása"
+
+#, fuzzy
+#~ msgid "No indent on first line of paragraph"
+#~ msgstr "Nem tartalmazhat egynél több bekezdést!"
+
+#, fuzzy
+#~ msgid "New page above this paragraph"
+#~ msgstr "Elõzõ bekezdés választása"
+
+#, fuzzy
+#~ msgid "Size of extra space above paragraph"
+#~ msgstr "Elõzõ bekezdés választása"
+
+#, fuzzy
+#~ msgid "New page below this paragraph"
+#~ msgstr "Következõ bekezdés kiválasztása"
+
+#, fuzzy
+#~ msgid "Size of extra space below paragraph"
+#~ msgstr "Elõzõ bekezdés választása"
+
+#~ msgid "Sort"
+#~ msgstr "Rendezés"
+
+#, fuzzy
+#~ msgid "Jump to reference in document"
+#~ msgstr "Ugrás a dokumentum végére"
+
 #~ msgid "Warning: need lyxformat %.2f but found %.2f"
 #~ msgstr "Figyelem: szükséges lyx-formátum %.2f, de %.2f -et találtam"
 
@@ -9386,9 +8784,6 @@ msgstr "Oldaltörés (lent)"
 #~ msgid " Ref | Page | TextRef | TextPage | PrettyRef "
 #~ msgstr " Hiv | Oldal | TextRef | TextPage | PrettyRef "
 
-#~ msgid "Close|#C^["
-#~ msgstr "Bezár|#z^["
-
 #~ msgid "List of Figures%m"
 #~ msgstr "Ábrák jegyzéke%m"
 
@@ -9418,9 +8813,6 @@ msgstr "Oldaltörés (lent)"
 
 #~ msgid "Select Child Document"
 #~ msgstr "'Gyerek' dokumentum választása"
-
-#~ msgid "Opened note"
-#~ msgstr "Megnyitott megjegyzés"
 
 #~ msgid "other..."
 #~ msgstr "egyéb..."

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.3\n"
-"POT-Creation-Date: 2001-07-25 21:54+0200\n"
+"POT-Creation-Date: 2001-07-25 22:56+0200\n"
 "PO-Revision-Date: 2000-12-27 12:45+0200\n"
 "Last-Translator: Claudiu Costin <claudiuc@geocities.com>\n"
 "Language-Team: Romanian <ro-kde@egroups.com>\n"
@@ -1987,7 +1987,8 @@ msgstr "Narativ"
 msgid "Notation"
 msgstr "Notaþie"
 
-#: src/ext_l10n.h:333
+#: src/ext_l10n.h:333 src/insets/insetinfo.C:86 src/insets/insetinfo.C:106
+#: src/insets/insetinfo.C:236
 msgid "Note"
 msgstr "Notã"
 
@@ -2463,9 +2464,7 @@ msgstr "Unterschrift"
 msgid "Uppertitleback"
 msgstr ""
 
-#. tooltips
-#: src/ext_l10n.h:458 src/frontends/kde/urldlg.C:59
-#: src/frontends/kde/urldlg.C:60
+#: src/ext_l10n.h:458
 msgid "URL"
 msgstr "URL"
 
@@ -2698,18 +2697,6 @@ msgstr "Usorbian"
 msgid "Welsh"
 msgstr "Welsh"
 
-#: src/figureForm.C:38
-msgid "Insert Figure"
-msgstr "Insereazã figurã"
-
-#: src/figureForm.C:54
-msgid "Inserting figure..."
-msgstr "Inserez figurã..."
-
-#: src/figureForm.C:58 src/figureForm.C:99
-msgid "Figure inserted"
-msgstr "Figura a fost inseratã"
-
 #: src/figure_form.C:27
 msgid "EPS file|#E"
 msgstr "Fiºier EPS|#E"
@@ -2823,8 +2810,7 @@ msgstr "Afiºare"
 msgid "Height"
 msgstr "Înãlþime"
 
-#: src/figure_form.C:89 src/frontends/kde/dlg/paraextradlgdata.C:75
-#: src/frontends/xforms/form_graphics.C:44
+#: src/figure_form.C:89 src/frontends/xforms/form_graphics.C:44
 #: src/frontends/xforms/form_minipage.C:28
 #: src/frontends/xforms/form_paragraph.C:219
 msgid "Width"
@@ -2890,9 +2876,21 @@ msgstr "Postscript încapsulat (*.eps, *.ps)|#P"
 msgid "Inlined EPS (*.eps, *.ps)|#I"
 msgstr "EPS în linie (*.eps, *.ps)|#E"
 
-#: src/figure_form.C:175 src/frontends/kde/dlg/paraextradlgdata.C:58
+#: src/figure_form.C:175
 msgid "Type"
 msgstr "Tip"
+
+#: src/figureForm.C:38
+msgid "Insert Figure"
+msgstr "Insereazã figurã"
+
+#: src/figureForm.C:54
+msgid "Inserting figure..."
+msgstr "Inserez figurã..."
+
+#: src/figureForm.C:58 src/figureForm.C:99
+msgid "Figure inserted"
+msgstr "Figura a fost inseratã"
 
 #: src/FontLoader.C:253
 msgid "Loading font into X-Server..."
@@ -3013,8 +3011,7 @@ msgstr "Smaller"
 msgid "Small"
 msgstr "Small"
 
-#: src/frontends/controllers/character.C:104
-#: src/frontends/kde/paraextradlg.C:23 src/lyxfont.C:55
+#: src/frontends/controllers/character.C:104 src/lyxfont.C:55
 msgid "Normal"
 msgstr "Normal"
 
@@ -3413,31 +3410,23 @@ msgid " Reference: "
 msgstr " Rreferinþã: "
 
 #: src/frontends/gnome/FormToc.C:99 src/frontends/gnome/FormToc.C:166
-#: src/frontends/kde/FormToc.C:165 src/frontends/kde/FormToc.C:166
-#: src/frontends/kde/tocdlg.C:25 src/frontends/qt2/FormToc.C:170
-#: src/frontends/qt2/FormToc.C:171 src/frontends/xforms/FormToc.C:34
-#: src/insets/insettoc.C:22
+#: src/frontends/qt2/FormToc.C:170 src/frontends/qt2/FormToc.C:171
+#: src/frontends/xforms/FormToc.C:34 src/insets/insettoc.C:22
 msgid "Table of Contents"
 msgstr "Cuprins"
 
 #: src/frontends/gnome/FormToc.C:103 src/frontends/gnome/FormToc.C:172
-#: src/frontends/kde/FormToc.C:170 src/frontends/kde/FormToc.C:171
-#: src/frontends/kde/tocdlg.C:26 src/frontends/qt2/FormToc.C:175
-#: src/frontends/qt2/FormToc.C:176
+#: src/frontends/qt2/FormToc.C:175 src/frontends/qt2/FormToc.C:176
 msgid "List of Figures"
 msgstr "Lista de figuri"
 
 #: src/frontends/gnome/FormToc.C:107 src/frontends/gnome/FormToc.C:184
-#: src/frontends/kde/FormToc.C:175 src/frontends/kde/FormToc.C:176
-#: src/frontends/kde/tocdlg.C:27 src/frontends/qt2/FormToc.C:180
-#: src/frontends/qt2/FormToc.C:181
+#: src/frontends/qt2/FormToc.C:180 src/frontends/qt2/FormToc.C:181
 msgid "List of Tables"
 msgstr "Lista de tabele"
 
 #: src/frontends/gnome/FormToc.C:111 src/frontends/gnome/FormToc.C:178
-#: src/frontends/kde/FormToc.C:180 src/frontends/kde/FormToc.C:181
-#: src/frontends/kde/tocdlg.C:28 src/frontends/qt2/FormToc.C:185
-#: src/frontends/qt2/FormToc.C:186
+#: src/frontends/qt2/FormToc.C:185 src/frontends/qt2/FormToc.C:186
 msgid "List of Algorithms"
 msgstr "Lista de algoritmi"
 
@@ -3453,1233 +3442,18 @@ msgstr "Actualizeazã"
 msgid "<No Name>"
 msgstr "<Fãrã nume>"
 
-#. tooltips
-#: src/frontends/kde/citationdlg.C:24
-#, fuzzy
-msgid "Add reference to current citation"
-msgstr "_Adaugã citare nouã"
-
-#: src/frontends/kde/citationdlg.C:25
-msgid "Remove reference from current citation"
-msgstr ""
-
-#: src/frontends/kde/citationdlg.C:26
-#, fuzzy
-msgid "Move reference before"
-msgstr "&Insereazã referinþã"
-
-#: src/frontends/kde/citationdlg.C:27
-#, fuzzy
-msgid "Move reference after"
-msgstr "&Insereazã referinþã"
-
-#: src/frontends/kde/citationdlg.C:28
-#, fuzzy
-msgid "Text to add after references"
-msgstr "Text de pus dupã citare"
-
-#: src/frontends/kde/citationdlg.C:29
-#, fuzzy
-msgid "Reference details"
-msgstr "Intrare referinþã"
-
-#: src/frontends/kde/citationdlg.C:30
-#, fuzzy
-msgid "Search through references"
-msgstr "Insereazã referinþã încruciºatã"
-
-#: src/frontends/kde/citationdlg.C:31
-#, fuzzy
-msgid "Available references"
-msgstr "Referinþe disponibile"
-
-#: src/frontends/kde/citationdlg.C:32
-#, fuzzy
-msgid "Current chosen references"
-msgstr "Insereazã referinþã încruciºatã"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:40
-#: src/frontends/kde/dlg/docdlgdata.C:39
-#: src/frontends/kde/dlg/indexdlgdata.C:68
-#: src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:81
-#: src/frontends/kde/urldlg.C:49
-msgid "&OK"
-msgstr "&OK"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:57
-#: src/frontends/kde/dlg/docdlgdata.C:90
-#: src/frontends/kde/dlg/indexdlgdata.C:85
-#: src/frontends/kde/dlg/paradlgdata.C:90
-#: src/frontends/kde/dlg/printdlgdata.C:133
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:57 src/frontends/kde/docdlg.C:210
-#: src/frontends/kde/refdlg.C:87 src/frontends/kde/urldlg.C:55
-#: src/frontends/qt2/FormRef.C:206 src/frontends/qt2/paragraphdlgimpl.C:49
-msgid "&Cancel"
-msgstr "&Renunþã"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:74
-#: src/frontends/kde/dlg/docdlgdata.C:56
-#: src/frontends/kde/dlg/paradlgdata.C:56
-msgid "&Apply"
-msgstr "&Aplicã"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:91
-#: src/frontends/kde/dlg/docdlgdata.C:73
-#: src/frontends/kde/dlg/paradlgdata.C:73
-msgid "&Restore"
-msgstr "&Reface"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:155
-msgid "&Down"
-msgstr "J&os"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:172
-msgid "&Remove"
-msgstr "ª&terge"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:189
-msgid "&Up"
-msgstr "S&us"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:206
-msgid "&Add"
-msgstr "&Adaugã"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:227
-#, fuzzy
-msgid "Text after : "
-msgstr "Text dupã"
-
-#: src/frontends/kde/dlg/citationdlgdata.C:271
-#, fuzzy
-msgid "&Search"
-msgstr "Cautã"
-
-#. FIXME
-#: src/frontends/kde/dlg/copyrightdlgdata.C:39
-#: src/frontends/kde/dlg/logdlgdata.C:39 src/frontends/kde/docdlg.C:210
-#: src/frontends/kde/tocdlg.C:45 src/frontends/qt2/FormRef.C:204
-#: src/frontends/qt2/paragraphdlgimpl.C:49
-msgid "&Close"
-msgstr "În&chide"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:45
-#, fuzzy
-msgid "Float Placement"
-msgstr "Poziþionare flotante:|#L"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:108
-msgid "Ignore LaTeX placement rules"
-msgstr ""
-
-#: src/frontends/kde/dlg/docextradlgdata.C:126
-#, fuzzy
-msgid "Section number depth :"
-msgstr "Adîncimea numerelor secþionale"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:143
-#, fuzzy
-msgid "Table of Contents depth :"
-msgstr "Adîncimea cuprinsului"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:160
-msgid "PostScript driver :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docextradlgdata.C:223
-#, fuzzy
-msgid "Use AMS Math"
-msgstr "Stil matematic AMS|#M"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:241
-#, fuzzy
-msgid "First try :"
-msgstr "FirstAuthor"
-
-#: src/frontends/kde/dlg/docextradlgdata.C:258
-#: src/frontends/kde/dlg/docextradlgdata.C:275
-#: src/frontends/kde/dlg/docextradlgdata.C:292
-#, fuzzy
-msgid "then :"
-msgstr "Altul ("
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:46
-msgid "Headers and Footers"
-msgstr ""
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:62
-#: src/frontends/xforms/form_document.C:99
-msgid "Margins"
-msgstr "Margini"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:78
-#: src/frontends/xforms/FormDocument.C:241
-msgid "Paper"
-msgstr "Hîrtie"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:94
-#: src/frontends/xforms/form_document.C:114
-msgid "Orientation"
-msgstr "Orientare"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:111
-#, fuzzy
-msgid "Paper size :"
-msgstr "mãrime foaie"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:187
-#, fuzzy
-msgid "Margins :"
-msgstr "Margini"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:204
-#, fuzzy
-msgid "Width :"
-msgstr "Lãþime"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:221
-#, fuzzy
-msgid "Height :"
-msgstr "Înãlþime"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:238
-#, fuzzy
-msgid "Top :"
-msgstr "&Sus"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:255
-#, fuzzy
-msgid "Bottom :"
-msgstr "&Jos"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:272
-#, fuzzy
-msgid "Left :"
-msgstr "Stînga"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:289
-#, fuzzy
-msgid "Right :"
-msgstr "Dreapta"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:306
-#, fuzzy
-msgid "Header height :"
-msgstr "Înãlþime antet:|#a"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:323
-#, fuzzy
-msgid "Header separation :"
-msgstr "Separaþia"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:340
-#, fuzzy
-msgid "Footer skip :"
-msgstr "Separare subsol:|#u"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:402
-#, fuzzy
-msgid "Portrait"
-msgstr "Portret|#o"
-
-#: src/frontends/kde/dlg/docgeometrydlgdata.C:415
-#, fuzzy
-msgid "Landscape"
-msgstr "peisaj"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:44
-#, fuzzy
-msgid "Language :"
-msgstr "Limbaj:"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:74
-#, fuzzy
-msgid "Encoding :"
-msgstr "Codificarea"
-
-#: src/frontends/kde/dlg/doclanguagedlgdata.C:104
-#, fuzzy
-msgid "Quote style :"
-msgstr "Stil citare   "
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:45
-#, fuzzy
-msgid "Paragraph spacing"
-msgstr "Paragraf"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:61
-#, fuzzy
-msgid "Font size :"
-msgstr "Mãrimea fontului:|#O"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:78
-#, fuzzy
-msgid "Font family :"
-msgstr "Familia:|#F"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:95
-#, fuzzy
-msgid "Page style :"
-msgstr "Stil de paginã:|#p"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:112
-#, fuzzy
-msgid "Document class :"
-msgstr "Documente"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:177
-msgid "Two-sided"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:190
-msgid "Two column pages"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:208
-msgid "Inter-line spacing :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:225
-#, fuzzy
-msgid "Extra options :"
-msgstr "Opþiuni suplimentare"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:242
-msgid "Default paragraph spacing :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:259
-#, fuzzy
-msgid "Size :"
-msgstr "Mãrime:|#e"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:276
-msgid "Shrink :"
-msgstr ""
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:293
-#, fuzzy
-msgid "Stretch :"
-msgstr "Stradã"
-
-#: src/frontends/kde/dlg/docsettingsdlgdata.C:387
-#, fuzzy
-msgid "Add space"
-msgstr "Addsec"
-
-#: src/frontends/kde/dlg/indexdlgdata.C:42
-msgid "Keyword:"
-msgstr "Cuvînt cheie:"
-
-#: src/frontends/kde/dlg/lengthentry.C:35 src/frontends/kde/paraextradlg.C:29
-msgid "Centimetres"
-msgstr "Centimetri"
-
-#: src/frontends/kde/dlg/lengthentry.C:36 src/frontends/kde/paraextradlg.C:30
-msgid "Inches"
-msgstr "Inci"
-
-#: src/frontends/kde/dlg/lengthentry.C:37
-#, fuzzy
-msgid "Points"
-msgstr "Tipãreºte"
-
-#: src/frontends/kde/dlg/lengthentry.C:38 src/frontends/kde/paraextradlg.C:32
-msgid "Millimetres"
-msgstr "Milimetri"
-
-#: src/frontends/kde/dlg/lengthentry.C:39 src/frontends/kde/paraextradlg.C:33
-msgid "Picas"
-msgstr "Picas"
-
-#: src/frontends/kde/dlg/lengthentry.C:40 src/frontends/kde/paraextradlg.C:34
-msgid "ex units"
-msgstr "unitãþi ex"
-
-#: src/frontends/kde/dlg/lengthentry.C:41 src/frontends/kde/paraextradlg.C:35
-msgid "em units"
-msgstr "unitãþi em"
-
-#: src/frontends/kde/dlg/lengthentry.C:42
-#, fuzzy
-msgid "Scaled points"
-msgstr "Puncte cicero"
-
-#: src/frontends/kde/dlg/lengthentry.C:43
-#, fuzzy
-msgid "Big/PS points"
-msgstr "Puncte mari/PS (1/72 inch)"
-
-#: src/frontends/kde/dlg/lengthentry.C:44 src/frontends/kde/paraextradlg.C:38
-msgid "Didot points"
-msgstr "Puncte didot"
-
-#: src/frontends/kde/dlg/lengthentry.C:45 src/frontends/kde/paraextradlg.C:39
-msgid "Cicero points"
-msgstr "Puncte cicero"
-
-#: src/frontends/kde/dlg/logdlgdata.C:56 src/frontends/kde/refdlg.C:76
-#: src/frontends/kde/tocdlg.C:40
-msgid "&Update"
-msgstr "&Actualizeazã"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:39
-#: src/frontends/kde/dlg/parabelowdlgdata.C:39
-msgid "Page break"
-msgstr "Rupere de paginã"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:52
-#: src/frontends/kde/dlg/parabelowdlgdata.C:52
-msgid "Keep space when at top of page"
-msgstr ""
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:70
-#: src/frontends/kde/dlg/parabelowdlgdata.C:70
-msgid "Extra Space"
-msgstr "Spaþiu suplimentar"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:101
-#: src/frontends/kde/dlg/parabelowdlgdata.C:101
-#, fuzzy
-msgid "Size"
-msgstr "Mãrime|#z"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:118
-#: src/frontends/kde/dlg/parabelowdlgdata.C:118
-#, fuzzy
-msgid "Stretch"
-msgstr "Stradã"
-
-#: src/frontends/kde/dlg/paraabovedlgdata.C:135
-#: src/frontends/kde/dlg/parabelowdlgdata.C:135
-msgid "Shrink"
-msgstr ""
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:118
-#: src/frontends/xforms/form_minipage.C:31
-#: src/frontends/xforms/form_paragraph.C:149
-#: src/frontends/xforms/form_paragraph.C:223
-msgid "Alignment"
-msgstr "Alinierea"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:130
-msgid "&Top"
-msgstr "&Sus"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:143
-msgid "&Middle"
-msgstr "&Mijloc"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:156
-msgid "&Bottom"
-msgstr "&Jos"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:169
-msgid "&HFill between minipage paragraphs"
-msgstr "&HFill între paragrafe minipaginã"
-
-#: src/frontends/kde/dlg/paraextradlgdata.C:182
-msgid "&Start new minipage"
-msgstr "Începe &minipaginã nouã"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:61
-msgid "Draw line above paragraph"
-msgstr "Deseneazã linie deasupra paragrafului"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:74
-msgid "Draw line below paragraph"
-msgstr "Deseneazã linie sub paragraf"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:87
-msgid "Don't indent paragraph"
-msgstr "Nu indenteazã paragraful"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:105
-msgid "Label width"
-msgstr "Etichetã cu"
-
-#: src/frontends/kde/dlg/parageneraldlgdata.C:135
-#, fuzzy
-msgid "Justification"
-msgstr "Personalizare|P"
-
-#: src/frontends/kde/dlg/printdlgdata.C:42
-msgid "Pages"
-msgstr "Pagini"
-
-#: src/frontends/kde/dlg/printdlgdata.C:73
-#: src/frontends/xforms/form_print.C:135
-msgid "Copies"
-msgstr "Copii"
-
-#: src/frontends/kde/dlg/printdlgdata.C:88
-#: src/frontends/xforms/form_print.C:138
-msgid "Print to"
-msgstr "Tipãreºte la"
-
-#: src/frontends/kde/dlg/printdlgdata.C:116
-msgid "&Print"
-msgstr "&Tipãreºte"
-
-#: src/frontends/kde/dlg/printdlgdata.C:149
-msgid "&All pages"
-msgstr "&Toate paginile"
-
-#: src/frontends/kde/dlg/printdlgdata.C:162
-msgid "&Odd pages"
-msgstr "Pagini &impare"
-
-#: src/frontends/kde/dlg/printdlgdata.C:175
-msgid "&Even pages"
-msgstr "Pagini &pare"
-
-#: src/frontends/kde/dlg/printdlgdata.C:214
-msgid "&Reverse order"
-msgstr "&Ordine inversã"
-
-#: src/frontends/kde/dlg/printdlgdata.C:241
-#, fuzzy
-msgid "Co&llate"
-msgstr "Format "
-
-#: src/frontends/kde/dlg/printdlgdata.C:258
-msgid "From"
-msgstr "De la"
-
-#: src/frontends/kde/dlg/printdlgdata.C:274
-msgid "To"
-msgstr "Pînã la"
-
-#: src/frontends/kde/dlg/printdlgdata.C:286
-msgid "&Printer"
-msgstr "&Imprimantã"
-
-#: src/frontends/kde/dlg/printdlgdata.C:299
-msgid "&File"
-msgstr "&Fiºier"
-
-#: src/frontends/kde/dlg/printdlgdata.C:339
-msgid "&Browse"
-msgstr "&Rãsfoieºte"
-
-#: src/frontends/kde/dlg/printdlgdata.C:359
-msgid "Count"
-msgstr "Numãr"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:40
-#, fuzzy
-msgid "&Insert"
-msgstr "Inserare|I"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:87
-#: src/frontends/xforms/form_maths_matrix.C:28
-#: src/frontends/xforms/form_tabular_create.C:49
-msgid "Rows"
-msgstr "Linii"
-
-#: src/frontends/kde/dlg/tabcreatedlgdata.C:104
-#: src/frontends/xforms/form_tabular_create.C:45
-msgid "Columns"
-msgstr "Coloane"
-
-#: src/frontends/kde/docdlg.C:44
-#, fuzzy
-msgid "&Settings"
-msgstr "Secþiune"
-
-#: src/frontends/kde/docdlg.C:45
-msgid "&Extra"
-msgstr "&Extra"
-
-#: src/frontends/kde/docdlg.C:46
-msgid "&Geometry"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:47
-#, fuzzy
-msgid "&Language"
-msgstr "Limbaj"
-
-#: src/frontends/kde/docdlg.C:48
-#, fuzzy
-msgid "&Bullets"
-msgstr "Markeri"
-
-#. the document language page
-#: src/frontends/kde/docdlg.C:56 src/frontends/kde/docdlg.C:68
-#: src/frontends/kde/docdlg.C:121 src/frontends/kde/docdlg.C:133
-#: src/frontends/kde/docdlg.C:144 src/frontends/qt2/FormDocument.C:116
-#: src/frontends/qt2/FormDocument.C:124 src/frontends/qt2/FormDocument.C:152
-#: src/frontends/qt2/FormDocument.C:194 src/frontends/qt2/FormDocument.C:569
-#: src/frontends/qt2/FormDocument.C:573
-#, fuzzy
-msgid "default"
-msgstr "Implicit"
-
-#: src/frontends/kde/docdlg.C:57 src/frontends/qt2/FormDocument.C:125
-#, fuzzy
-msgid "empty"
-msgstr "Adîncime"
-
-#: src/frontends/kde/docdlg.C:58 src/frontends/qt2/FormDocument.C:126
-#, fuzzy
-msgid "plain"
-msgstr "Faptã simplã"
-
-#: src/frontends/kde/docdlg.C:59 src/frontends/qt2/FormDocument.C:127
-#, fuzzy
-msgid "headings"
-msgstr "AntetSlide"
-
-#: src/frontends/kde/docdlg.C:60 src/frontends/qt2/FormDocument.C:128
-msgid "fancy"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:69
-#, fuzzy
-msgid "10 point"
-msgstr "la imprimantã"
-
-#: src/frontends/kde/docdlg.C:70
-#, fuzzy
-msgid "11 point"
-msgstr "la imprimantã"
-
-#: src/frontends/kde/docdlg.C:71
-#, fuzzy
-msgid "12 point"
-msgstr "la imprimantã"
-
-#: src/frontends/kde/docdlg.C:74
-#, fuzzy
-msgid "single"
-msgstr "Simplu"
-
-#: src/frontends/kde/docdlg.C:75
-#, fuzzy
-msgid "1 1/2 spacing"
-msgstr "Spaþiere"
-
-#: src/frontends/kde/docdlg.C:76
-#, fuzzy
-msgid "double"
-msgstr "Dublu"
-
-#: src/frontends/kde/docdlg.C:77 src/frontends/kde/docdlg.C:86
-#: src/frontends/kde/docdlg.C:593 src/frontends/kde/docdlg.C:601
-#: src/frontends/kde/docdlg.C:611
-#, fuzzy
-msgid "custom"
-msgstr "Customer"
-
-#: src/frontends/kde/docdlg.C:83 src/frontends/qt2/FormDocument.C:198
-#: src/frontends/xforms/form_preferences.C:173
-msgid "small"
-msgstr "small"
-
-#: src/frontends/kde/docdlg.C:84
-#, fuzzy
-msgid "medium"
-msgstr "Mediu"
-
-#: src/frontends/kde/docdlg.C:85
-msgid "big"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:95 src/frontends/kde/docdlg.C:100
-#: src/frontends/kde/docdlg.C:105 src/frontends/kde/docdlg.C:110
-#: src/frontends/kde/docdlg.C:375 src/frontends/kde/docdlg.C:580
-#, fuzzy
-msgid "Here"
-msgstr "Israelian"
-
-# format
-#: src/frontends/kde/docdlg.C:96 src/frontends/kde/docdlg.C:101
-#: src/frontends/kde/docdlg.C:106 src/frontends/kde/docdlg.C:111
-#: src/frontends/kde/docdlg.C:376 src/frontends/kde/docdlg.C:582
-#, fuzzy
-msgid "Bottom of page"
-msgstr "% din paginã"
-
-# format
-#: src/frontends/kde/docdlg.C:97 src/frontends/kde/docdlg.C:102
-#: src/frontends/kde/docdlg.C:107 src/frontends/kde/docdlg.C:112
-#: src/frontends/kde/docdlg.C:377 src/frontends/kde/docdlg.C:584
-#, fuzzy
-msgid "Top of page"
-msgstr "% din paginã"
-
-#: src/frontends/kde/docdlg.C:98 src/frontends/kde/docdlg.C:103
-#: src/frontends/kde/docdlg.C:108 src/frontends/kde/docdlg.C:113
-#: src/frontends/kde/docdlg.C:378 src/frontends/kde/docdlg.C:586
-#, fuzzy
-msgid "Separate page"
-msgstr "Începe &minipaginã nouã"
-
-#: src/frontends/kde/docdlg.C:99 src/frontends/kde/docdlg.C:104
-#: src/frontends/kde/docdlg.C:109 src/frontends/kde/docdlg.C:114
-#: src/frontends/kde/docdlg.C:356 src/frontends/kde/docdlg.C:357
-#: src/frontends/kde/docdlg.C:358 src/frontends/kde/docdlg.C:359
-#, fuzzy
-msgid "Not set"
-msgstr "Notã"
-
-#: src/frontends/kde/docdlg.C:122
-#, fuzzy
-msgid "US letter"
-msgstr "Letter"
-
-#: src/frontends/kde/docdlg.C:123
-msgid "US legal"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:124
-msgid "US executive"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:134
-msgid "A4 small margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:135
-msgid "A4 very small margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:136
-msgid "A4 very wide margins"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:145 src/frontends/qt2/FormDocument.C:153
-#, fuzzy
-msgid "auto"
-msgstr "Author"
-
-#: src/frontends/kde/docdlg.C:146 src/frontends/qt2/FormDocument.C:154
-#, fuzzy
-msgid "latin1"
-msgstr "Titlu"
-
-#: src/frontends/kde/docdlg.C:147 src/frontends/qt2/FormDocument.C:155
-#, fuzzy
-msgid "latin2"
-msgstr "Titlu"
-
-#: src/frontends/kde/docdlg.C:148 src/frontends/qt2/FormDocument.C:156
-#, fuzzy
-msgid "latin5"
-msgstr "Titlu"
-
-#: src/frontends/kde/docdlg.C:149 src/frontends/qt2/FormDocument.C:157
-#, fuzzy
-msgid "latin9"
-msgstr "Titlu"
-
-#: src/frontends/kde/docdlg.C:150 src/frontends/qt2/FormDocument.C:158
-msgid "koi8-r"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:151 src/frontends/qt2/FormDocument.C:159
-msgid "koi8-u"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:152 src/frontends/qt2/FormDocument.C:160
-msgid "cp866"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:153 src/frontends/qt2/FormDocument.C:161
-msgid "cp1251"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:154 src/frontends/qt2/FormDocument.C:162
-msgid "iso88595"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:157
-#, fuzzy
-msgid "`text'"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:158 src/frontends/qt2/FormDocument.C:169
-#, fuzzy
-msgid "``text''"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:159
-#, fuzzy
-msgid "'text'"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:160 src/frontends/qt2/FormDocument.C:170
-#, fuzzy
-msgid "''text''"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:161
-#, fuzzy
-msgid ",text`"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:162 src/frontends/qt2/FormDocument.C:171
-#, fuzzy
-msgid ",,text``"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:163
-#, fuzzy
-msgid ",text'"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:164 src/frontends/qt2/FormDocument.C:172
-#, fuzzy
-msgid ",,text''"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:165
-#, fuzzy
-msgid "<text>"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:166 src/frontends/qt2/FormDocument.C:173
-#, fuzzy
-msgid "«text»"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:167
-#, fuzzy
-msgid ">text<"
-msgstr "Format "
-
-#: src/frontends/kde/docdlg.C:168 src/frontends/qt2/FormDocument.C:174
-#, fuzzy
-msgid "»text«"
-msgstr "Format "
-
-#. FIXME: bullets
-#: src/frontends/kde/docdlg.C:173
-msgid "Specify header + footer style etc"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:174
-msgid ""
-"Add spacing between paragraphs rather\n"
-" than indenting"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:175
-msgid "Custom line spacing in line units"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:176
-msgid "Additional LaTeX options"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:177 src/frontends/kde/docdlg.C:178
-#: src/frontends/kde/docdlg.C:179 src/frontends/kde/docdlg.C:180
-msgid ""
-"Specify preferred order for\n"
-"placing floats"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:181
-msgid ""
-"Tell LaTeX to ignore usual rules\n"
-" for float placement"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:182
-msgid "How far in the (sub)sections are numbered"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:183
-#, fuzzy
-msgid "How detailed the Table of Contents is"
-msgstr "Cuprins"
-
-#: src/frontends/kde/docdlg.C:184
-msgid "Program to produce PostScript output"
-msgstr ""
-
-#: src/frontends/kde/docdlg.C:185 src/frontends/kde/docdlg.C:186
-#: src/frontends/kde/docdlg.C:187 src/frontends/kde/docdlg.C:188
-#: src/frontends/kde/paraextradlg.C:43 src/frontends/kde/paraextradlg.C:44
-#: src/frontends/kde/parageneraldlg.C:59 src/frontends/kde/refdlg.C:97
-msgid "FIXME please !"
-msgstr ""
-
-#: src/frontends/kde/FileDialog.C:49 src/frontends/qt2/FileDialog.C:43
+#: src/frontends/qt2/FileDialog.C:43
 msgid "*|All files"
 msgstr ""
-
-#: src/frontends/kde/FormCitation.C:53 src/frontends/qt2/FormCitation.C:47
-#: src/frontends/xforms/FormCitation.C:100
-msgid "Citation"
-msgstr "Citare"
-
-#: src/frontends/kde/FormCitation.C:290
-#, fuzzy
-msgid "Key not found."
-msgstr "Nu am gãsit setul de caractere!"
-
-#: src/frontends/kde/FormCopyright.C:26
-msgid "LyX: Copyright and Warranty"
-msgstr "LyX: Drepturi de autor ºi garanþia"
-
-#: src/frontends/kde/FormDocument.C:68 src/frontends/qt2/FormDocument.C:230
-#: src/frontends/xforms/FormDocument.C:274
-msgid "Document layout set"
-msgstr "Am setat formatul de document"
-
-#: src/frontends/kde/FormDocument.C:75
-#, fuzzy
-msgid "LyX: Document Options"
-msgstr "Nici un document deschis!%t"
-
-#. successfully loaded
-#: src/frontends/kde/FormDocument.C:93 src/frontends/qt2/FormDocument.C:348
-#: src/frontends/xforms/FormDocument.C:388
-msgid "Converting document to new document class..."
-msgstr "Convertesc documentul la o nouã clasã de document..."
-
-#: src/frontends/kde/FormIndex.C:25 src/frontends/qt2/FormIndex.C:106
-msgid "LyX: Index"
-msgstr "LyX: Index"
-
-#: src/frontends/kde/FormLog.C:31 src/frontends/xforms/FormLog.C:27
-#, fuzzy
-msgid "Build log"
-msgstr "Construieºte program"
-
-#: src/frontends/kde/FormLog.C:33
-#, fuzzy
-msgid "LaTeX log"
-msgstr "Jurnal LaTeX"
-
-#: src/frontends/kde/FormLog.C:40 src/frontends/xforms/FormLog.C:31
-#, fuzzy
-msgid "No build log file found"
-msgstr "Nu am gãsit fiºierul."
-
-#: src/frontends/kde/FormLog.C:42 src/frontends/xforms/FormLog.C:39
-#, fuzzy
-msgid "No LaTeX log file found"
-msgstr "Nu am gãsit fiºierul."
-
-#: src/frontends/kde/FormLog.C:58
-#, fuzzy
-msgid "LyX: LaTeX Log"
-msgstr "Jurnal LaTeX"
-
-#: src/frontends/kde/FormParagraph.C:194 src/frontends/qt2/FormParagraph.C:174
-#: src/frontends/xforms/FormParagraph.C:162
-msgid "Paragraph layout set"
-msgstr "Am setat formatul de paragraf"
-
-#: src/frontends/kde/FormParagraph.C:202 src/frontends/qt2/FormParagraph.C:182
-msgid "LyX: Paragraph Options"
-msgstr "LyX: Opþiuni paragraf"
-
-#: src/frontends/kde/FormPrint.C:30 src/frontends/qt2/FormPrint.C:104
-msgid "LyX: Print"
-msgstr "LyX: Tipãrire"
-
-#: src/frontends/kde/FormRef.C:32 src/frontends/qt2/FormRef.C:252
-msgid "LyX: Cross Reference"
-msgstr "LyX: Referinþã încruciºatã"
-
-#: src/frontends/kde/FormRef.C:61 src/frontends/kde/refdlg.C:71
-#: src/frontends/qt2/FormRef.C:116 src/frontends/qt2/FormRef.C:127
-#: src/frontends/qt2/FormRef.C:187
-msgid "&Goto reference"
-msgstr "Du-te la &referinþã"
-
-#: src/frontends/kde/FormRef.C:63
-#, fuzzy
-msgid "Jump to selected reference"
-msgstr " Referinþã: Selectare referinþã "
-
-#: src/frontends/kde/FormTabularCreate.C:26
-#: src/frontends/qt2/FormTabularCreate.C:48
-#, fuzzy
-msgid "LyX: Insert Table"
-msgstr "Insereazã tabel"
-
-#: src/frontends/kde/FormToc.C:249 src/frontends/qt2/FormToc.C:248
-msgid "LyX: Table of Contents"
-msgstr "LyX: Cuprins"
-
-#: src/frontends/kde/FormUrl.C:45 src/frontends/qt2/FormUrl.C:123
-msgid "LyX: Url"
-msgstr "LyX: URL"
-
-#: src/frontends/kde/FormVCLog.C:37
-#, fuzzy
-msgid "No version control log file found"
-msgstr "Nu am gãsit fiºierul."
-
-#: src/frontends/kde/FormVCLog.C:56
-#, fuzzy
-msgid "LyX: Version Control Log"
-msgstr "Controlul versiunii|v"
-
-#. tooltips
-#: src/frontends/kde/indexdlg.C:24 src/frontends/kde/indexdlg.C:25
-msgid "Index entry"
-msgstr "Înregistrare index"
-
-#: src/frontends/kde/paradlg.C:31
-msgid "&General"
-msgstr "&General"
-
-#. FIXME: should be cleverer here
-#: src/frontends/kde/paradlg.C:90 src/frontends/qt2/paragraphdlgimpl.C:56
-#: src/paragraph.C:1028
-msgid "Senseless with this layout!"
-msgstr "Fãrã sens pentru acest format!"
-
-#: src/frontends/kde/paraextradlg.C:24
-msgid "Indented paragraph"
-msgstr "Paragraf indentat"
-
-#: src/frontends/kde/paraextradlg.C:25
-msgid "Minipage"
-msgstr "Minipaginã"
-
-#: src/frontends/kde/paraextradlg.C:26
-msgid "Wrap text around floats (floatflt)"
-msgstr "Aranjeazã textul în jurul flotantelor (floatflt)"
-
-#: src/frontends/kde/paraextradlg.C:31
-msgid "Points (1/72.27 inch)"
-msgstr "Puncte (1/72.27 inch)"
-
-#: src/frontends/kde/paraextradlg.C:36
-msgid "Scaled points (1/65536 pt)"
-msgstr "Puncte scalate (1/65536 pt)"
-
-#: src/frontends/kde/paraextradlg.C:37
-msgid "Big/PS points (1/72 inch)"
-msgstr "Puncte mari/PS (1/72 inch)"
-
-#: src/frontends/kde/paraextradlg.C:40
-msgid "Percent of column"
-msgstr "Procente din coloanã"
-
-#: src/frontends/kde/parageneraldlg.C:27
-#, fuzzy
-msgid "&Spacing Above"
-msgstr "Spaþiere deasupra"
-
-#: src/frontends/kde/parageneraldlg.C:28
-#, fuzzy
-msgid "Spacing &Below"
-msgstr "Spaþiere dedesubt"
-
-#: src/frontends/kde/parageneraldlg.C:33 src/frontends/kde/parageneraldlg.C:42
-#: src/frontends/qt2/FormDocument.C:84
-msgid "None"
-msgstr "Nimic"
-
-#: src/frontends/kde/parageneraldlg.C:34 src/frontends/kde/parageneraldlg.C:43
-msgid "Defskip"
-msgstr "Defskip"
-
-#: src/frontends/kde/parageneraldlg.C:35 src/frontends/kde/parageneraldlg.C:44
-msgid "Small skip"
-msgstr "Small skip"
-
-#: src/frontends/kde/parageneraldlg.C:36 src/frontends/kde/parageneraldlg.C:45
-msgid "Medium skip"
-msgstr "Medium skip"
-
-#: src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:46
-msgid "Big skip"
-msgstr "Big skip"
-
-#: src/frontends/kde/parageneraldlg.C:38 src/frontends/kde/parageneraldlg.C:47
-msgid "VFill"
-msgstr "VFill"
-
-#: src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:48
-#: src/frontends/qt2/FormDocument.C:73
-#, fuzzy
-msgid "Custom"
-msgstr "Customer"
-
-#: src/frontends/kde/parageneraldlg.C:51
-msgid "Block"
-msgstr "Bloc"
-
-#: src/frontends/kde/parageneraldlg.C:52
-#, fuzzy
-msgid "Centered"
-msgstr "Centrat"
-
-#: src/frontends/kde/parageneraldlg.C:53
-msgid "Left"
-msgstr "Stînga"
-
-#: src/frontends/kde/parageneraldlg.C:54
-msgid "Right"
-msgstr "Dreapta"
-
-#: src/frontends/kde/parageneraldlg.C:57
-#, fuzzy
-msgid "Alignment of current paragraph"
-msgstr "Selecteazã urmãtorul paragraf"
-
-#: src/frontends/kde/parageneraldlg.C:58
-#, fuzzy
-msgid "No indent on first line of paragraph"
-msgstr "Nu indenteazã paragraful"
-
-#: src/frontends/kde/parageneraldlg.C:61
-#, fuzzy
-msgid "New page above this paragraph"
-msgstr "Deseneazã linie deasupra paragrafului"
-
-#: src/frontends/kde/parageneraldlg.C:62
-msgid "Don't hug margin if at top of page"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:63
-#, fuzzy
-msgid "Size of extra space above paragraph"
-msgstr "Deseneazã linie deasupra paragrafului"
-
-#: src/frontends/kde/parageneraldlg.C:64 src/frontends/kde/parageneraldlg.C:70
-msgid "Maximum extra space that can be added"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:65 src/frontends/kde/parageneraldlg.C:71
-msgid "Minimum space required"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:67
-#, fuzzy
-msgid "New page below this paragraph"
-msgstr "Deseneazã linie sub paragraf"
-
-#: src/frontends/kde/parageneraldlg.C:68
-msgid "Don't hug margin if at bottom of page"
-msgstr ""
-
-#: src/frontends/kde/parageneraldlg.C:69
-#, fuzzy
-msgid "Size of extra space below paragraph"
-msgstr "Deseneazã linie sub paragraf"
-
-#: src/frontends/kde/printdlg.C:28
-msgid "Print every page"
-msgstr "Tipãreºte fiecare paginã"
-
-#: src/frontends/kde/printdlg.C:29
-msgid "Print odd-numbered pages only"
-msgstr "Tipãreºte numai paginile impare"
-
-#: src/frontends/kde/printdlg.C:30
-msgid "Print even-numbered pages only"
-msgstr "Tipãreºte numai paginile pare"
-
-#: src/frontends/kde/printdlg.C:31
-msgid "Print from page number"
-msgstr "Tipãreºte de la pagina"
-
-#: src/frontends/kde/printdlg.C:32
-msgid "Print to page number"
-msgstr "Tipãreºte pînã la pagina"
-
-#: src/frontends/kde/printdlg.C:33
-msgid "Print in reverse order (last page first)"
-msgstr "Tipãreºte în ordine inversã"
-
-#: src/frontends/kde/printdlg.C:34
-msgid "Number of copies to print"
-msgstr "Numãrul de copii de tipãrit"
-
-#: src/frontends/kde/printdlg.C:35
-msgid "Collate multiple copies"
-msgstr ""
-
-#: src/frontends/kde/printdlg.C:36
-msgid "Printer name"
-msgstr "Nume imprimantã"
-
-#: src/frontends/kde/printdlg.C:37
-#, fuzzy
-msgid "Output filename (PostScript)"
-msgstr "Fiºier de ieºire"
-
-#: src/frontends/kde/printdlg.C:38
-msgid "Select output filename"
-msgstr "Selectaþi fiºierul de ieºire"
-
-#: src/frontends/kde/refdlg.C:28
-msgid "Available References"
-msgstr "Referinþe disponibile"
-
-#: src/frontends/kde/refdlg.C:43 src/frontends/kde/urldlg.C:36
-msgid "Name :"
-msgstr "Nume :"
-
-#: src/frontends/kde/refdlg.C:49
-msgid "Reference :"
-msgstr "Referinþã :"
-
-#: src/frontends/kde/refdlg.C:55
-msgid "Sort"
-msgstr "Sorteazã"
-
-#: src/frontends/kde/refdlg.C:65
-msgid "Reference Type"
-msgstr "Tip referinþã"
-
-#. tooltips
-#: src/frontends/kde/refdlg.C:93
-msgid "Reference as it appears in output"
-msgstr "Referinþã aºa cum apare la tipãrire"
-
-#: src/frontends/kde/refdlg.C:94
-msgid "Sort references in alphabetical order ?"
-msgstr "Sortez referinþele în ordine alfabeticã ?"
-
-#: src/frontends/kde/refdlg.C:95
-msgid "Update list of references shown"
-msgstr ""
-
-#: src/frontends/kde/refdlg.C:96
-#, fuzzy
-msgid "Jump to reference in document"
-msgstr "Salt la sfîrºitul documentului"
-
-#: src/frontends/kde/tabcreatedlg.C:27
-#: src/frontends/qt2/tabularcreatedlgimpl.C:34
-msgid "Drag with left mouse button to resize"
-msgstr ""
-
-#: src/frontends/kde/tocdlg.C:54
-msgid "Depth"
-msgstr "Adîncime"
-
-#: src/frontends/kde/urldlg.C:30
-msgid "Url :"
-msgstr "URL:"
-
-#: src/frontends/kde/urldlg.C:42
-msgid "Generate hyperlink"
-msgstr "Genereazã hiperlink"
-
-#: src/frontends/kde/urldlg.C:61 src/frontends/kde/urldlg.C:62
-msgid "Name associated with the URL"
-msgstr "Nume asociat cu URL-ul"
-
-#: src/frontends/kde/urldlg.C:63
-msgid "Output as a hyperlink ?"
-msgstr "Tipãresc ca hiperlink?"
 
 #: src/frontends/qt2/FormCharacter.C:64
 #, fuzzy
 msgid "Character Options"
 msgstr "Stil caractere"
+
+#: src/frontends/qt2/FormCitation.C:47 src/frontends/xforms/FormCitation.C:100
+msgid "Citation"
+msgstr "Citare"
 
 #: src/frontends/qt2/FormCredits.C:33 src/frontends/xforms/FormAboutlyx.C:70
 msgid "Credits"
@@ -4693,6 +3467,11 @@ msgstr "Structurã document"
 #: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:584
 msgid "Default"
 msgstr "Implicit"
+
+#: src/frontends/qt2/FormDocument.C:73
+#, fuzzy
+msgid "Custom"
+msgstr "Customer"
 
 #: src/frontends/qt2/FormDocument.C:74
 #, fuzzy
@@ -4731,6 +3510,10 @@ msgstr ""
 msgid "B5"
 msgstr ""
 
+#: src/frontends/qt2/FormDocument.C:84
+msgid "None"
+msgstr "Nimic"
+
 #: src/frontends/qt2/FormDocument.C:85
 msgid "A4 small Margins (only portrait)"
 msgstr ""
@@ -4753,6 +3536,14 @@ msgstr "O jumãtate"
 msgid "Other"
 msgstr "Altul ("
 
+#. the document language page
+#: src/frontends/qt2/FormDocument.C:116 src/frontends/qt2/FormDocument.C:124
+#: src/frontends/qt2/FormDocument.C:152 src/frontends/qt2/FormDocument.C:194
+#: src/frontends/qt2/FormDocument.C:569 src/frontends/qt2/FormDocument.C:573
+#, fuzzy
+msgid "default"
+msgstr "Implicit"
+
 #: src/frontends/qt2/FormDocument.C:117
 msgid "10"
 msgstr ""
@@ -4764,6 +3555,25 @@ msgstr "1|#1"
 
 #: src/frontends/qt2/FormDocument.C:119
 msgid "12"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:125
+#, fuzzy
+msgid "empty"
+msgstr "Adîncime"
+
+#: src/frontends/qt2/FormDocument.C:126
+#, fuzzy
+msgid "plain"
+msgstr "Faptã simplã"
+
+#: src/frontends/qt2/FormDocument.C:127
+#, fuzzy
+msgid "headings"
+msgstr "AntetSlide"
+
+#: src/frontends/qt2/FormDocument.C:128
+msgid "fancy"
 msgstr ""
 
 #: src/frontends/qt2/FormDocument.C:130
@@ -4785,6 +3595,81 @@ msgstr "Big skip"
 msgid "Length"
 msgstr "Lungime"
 
+#: src/frontends/qt2/FormDocument.C:153
+#, fuzzy
+msgid "auto"
+msgstr "Author"
+
+#: src/frontends/qt2/FormDocument.C:154
+#, fuzzy
+msgid "latin1"
+msgstr "Titlu"
+
+#: src/frontends/qt2/FormDocument.C:155
+#, fuzzy
+msgid "latin2"
+msgstr "Titlu"
+
+#: src/frontends/qt2/FormDocument.C:156
+#, fuzzy
+msgid "latin5"
+msgstr "Titlu"
+
+#: src/frontends/qt2/FormDocument.C:157
+#, fuzzy
+msgid "latin9"
+msgstr "Titlu"
+
+#: src/frontends/qt2/FormDocument.C:158
+msgid "koi8-r"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:159
+msgid "koi8-u"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:160
+msgid "cp866"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:161
+msgid "cp1251"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:162
+msgid "iso88595"
+msgstr ""
+
+#: src/frontends/qt2/FormDocument.C:169
+#, fuzzy
+msgid "``text''"
+msgstr "Format "
+
+#: src/frontends/qt2/FormDocument.C:170
+#, fuzzy
+msgid "''text''"
+msgstr "Format "
+
+#: src/frontends/qt2/FormDocument.C:171
+#, fuzzy
+msgid ",,text``"
+msgstr "Format "
+
+#: src/frontends/qt2/FormDocument.C:172
+#, fuzzy
+msgid ",,text''"
+msgstr "Format "
+
+#: src/frontends/qt2/FormDocument.C:173
+#, fuzzy
+msgid "«text»"
+msgstr "Format "
+
+#: src/frontends/qt2/FormDocument.C:174
+#, fuzzy
+msgid "»text«"
+msgstr "Format "
+
 #: src/frontends/qt2/FormDocument.C:195
 #: src/frontends/xforms/form_preferences.C:167
 msgid "tiny"
@@ -4799,6 +3684,11 @@ msgstr "script"
 #: src/frontends/xforms/form_preferences.C:140
 msgid "footnote"
 msgstr "notã subsol"
+
+#: src/frontends/qt2/FormDocument.C:198
+#: src/frontends/xforms/form_preferences.C:173
+msgid "small"
+msgstr "small"
 
 #: src/frontends/qt2/FormDocument.C:199
 #: src/frontends/xforms/form_preferences.C:152
@@ -4818,6 +3708,16 @@ msgstr ""
 #: src/frontends/xforms/form_preferences.C:149
 msgid "huge"
 msgstr "huge"
+
+#: src/frontends/qt2/FormDocument.C:230
+#: src/frontends/xforms/FormDocument.C:274
+msgid "Document layout set"
+msgstr "Am setat formatul de document"
+
+#: src/frontends/qt2/FormDocument.C:348
+#: src/frontends/xforms/FormDocument.C:388
+msgid "Converting document to new document class..."
+msgstr "Convertesc documentul la o nouã clasã de document..."
 
 #: src/frontends/qt2/FormDocument.C:355
 #: src/frontends/xforms/FormDocument.C:395
@@ -4874,6 +3774,19 @@ msgstr "setãrile implicite pentru aceastã clasã de document?"
 msgid "Unable to switch to new document class."
 msgstr "Nu pot comuta la noua clasã de document."
 
+#: src/frontends/qt2/FormIndex.C:106
+msgid "LyX: Index"
+msgstr "LyX: Index"
+
+#: src/frontends/qt2/FormParagraph.C:174
+#: src/frontends/xforms/FormParagraph.C:162
+msgid "Paragraph layout set"
+msgstr "Am setat formatul de paragraf"
+
+#: src/frontends/qt2/FormParagraph.C:182
+msgid "LyX: Paragraph Options"
+msgstr "LyX: Opþiuni paragraf"
+
 #. FIXME: should have a utility class for this
 #: src/frontends/qt2/FormPrint.C:92
 msgid ""
@@ -4891,14 +3804,57 @@ msgstr "Verificaþi dacã parametrii sînt corecþi.\n"
 msgid "LyX: Print Error"
 msgstr "LyX: Eroare tipãrire"
 
+#: src/frontends/qt2/FormPrint.C:104
+msgid "LyX: Print"
+msgstr "LyX: Tipãrire"
+
 #: src/frontends/qt2/FormRef.C:111
 msgid "&Go back"
 msgstr "Du-te în&apoi"
+
+#: src/frontends/qt2/FormRef.C:116 src/frontends/qt2/FormRef.C:127
+#: src/frontends/qt2/FormRef.C:187
+msgid "&Goto reference"
+msgstr "Du-te la &referinþã"
+
+#: src/frontends/qt2/FormRef.C:204 src/frontends/qt2/paragraphdlgimpl.C:49
+msgid "&Close"
+msgstr "În&chide"
+
+#: src/frontends/qt2/FormRef.C:206 src/frontends/qt2/paragraphdlgimpl.C:49
+msgid "&Cancel"
+msgstr "&Renunþã"
+
+#: src/frontends/qt2/FormRef.C:252
+msgid "LyX: Cross Reference"
+msgstr "LyX: Referinþã încruciºatã"
 
 #: src/frontends/qt2/FormSearch.C:47
 #, fuzzy
 msgid "Find and Replace"
 msgstr "Înlocuieºte"
+
+#: src/frontends/qt2/FormTabularCreate.C:48
+#, fuzzy
+msgid "LyX: Insert Table"
+msgstr "Insereazã tabel"
+
+#: src/frontends/qt2/FormToc.C:248
+msgid "LyX: Table of Contents"
+msgstr "LyX: Cuprins"
+
+#: src/frontends/qt2/FormUrl.C:123
+msgid "LyX: Url"
+msgstr "LyX: URL"
+
+#. FIXME: should be cleverer here
+#: src/frontends/qt2/paragraphdlgimpl.C:56 src/paragraph.C:1028
+msgid "Senseless with this layout!"
+msgstr "Fãrã sens pentru acest format!"
+
+#: src/frontends/qt2/tabularcreatedlgimpl.C:34
+msgid "Drag with left mouse button to resize"
+msgstr ""
 
 #: src/frontends/xforms/combox.C:505
 msgid "Done"
@@ -4907,21 +3863,6 @@ msgstr "Gata"
 #: src/frontends/xforms/FileDialog.C:59
 msgid "*"
 msgstr ""
-
-#: src/frontends/xforms/FormAboutlyx.C:28
-msgid "About LyX"
-msgstr ""
-
-#. stack tabs
-#: src/frontends/xforms/FormAboutlyx.C:66
-#, fuzzy
-msgid "Copyright and Version"
-msgstr "Drepturi de autor ºi garanþia"
-
-#: src/frontends/xforms/FormAboutlyx.C:68
-#, fuzzy
-msgid "License and Warranty"
-msgstr "Drepturi de autor ºi garanþia"
 
 #: src/frontends/xforms/FormMathsBitmap.C:79
 #: src/frontends/xforms/form_aboutlyx.C:29
@@ -4938,10 +3879,20 @@ msgstr "Închide|^["
 msgid "Text"
 msgstr "Format "
 
-#: src/frontends/xforms/FormBibitem.C:25
+#: src/frontends/xforms/FormAboutlyx.C:28
+msgid "About LyX"
+msgstr ""
+
+#. stack tabs
+#: src/frontends/xforms/FormAboutlyx.C:66
 #, fuzzy
-msgid "Bibliography Entry"
-msgstr "Bibliografie"
+msgid "Copyright and Version"
+msgstr "Drepturi de autor ºi garanþia"
+
+#: src/frontends/xforms/FormAboutlyx.C:68
+#, fuzzy
+msgid "License and Warranty"
+msgstr "Drepturi de autor ºi garanþia"
 
 #: src/frontends/xforms/form_bibitem.C:29
 msgid "Key:|#K"
@@ -4951,10 +3902,10 @@ msgstr "Tastã:|#T"
 msgid "Label:|#L"
 msgstr "Etichetã:|#E"
 
-#: src/frontends/xforms/FormBibtex.C:25
+#: src/frontends/xforms/FormBibitem.C:25
 #, fuzzy
-msgid "BibTeX Database"
-msgstr "Baza de date:"
+msgid "Bibliography Entry"
+msgstr "Bibliografie"
 
 #: src/frontends/xforms/form_bibtex.C:29
 #, fuzzy
@@ -4966,6 +3917,11 @@ msgstr "Baza de date:"
 msgid "Style:|#S"
 msgstr "Stil"
 
+#: src/frontends/xforms/FormBibtex.C:25
+#, fuzzy
+msgid "BibTeX Database"
+msgstr "Baza de date:"
+
 #: src/frontends/xforms/form_browser.C:31 src/frontends/xforms/form_error.C:31
 #: src/frontends/xforms/form_toc.C:48
 #, fuzzy
@@ -4975,11 +3931,6 @@ msgstr "Închide|#C^[^M"
 #: src/frontends/xforms/form_browser.C:39
 msgid "Update|#Uu"
 msgstr "Actualizeazã|#Uu"
-
-#: src/frontends/xforms/FormCharacter.C:34
-#, fuzzy
-msgid "Character Layout"
-msgstr "Stil caractere"
 
 #: src/frontends/xforms/form_character.C:33
 msgid "Family:|#F"
@@ -5027,10 +3978,10 @@ msgstr "Acestea nu vor niciodatã comutate"
 msgid "These are always toggled"
 msgstr "Acestea sînt întotdeauna comutate"
 
-#: src/frontends/xforms/FormCitation.C:399
+#: src/frontends/xforms/FormCharacter.C:34
 #, fuzzy
-msgid "Not yet supported"
-msgstr "Operaþia de re-facere nu este suportatã încã în modul matematic"
+msgid "Character Layout"
+msgstr "Stil caractere"
 
 #: src/frontends/xforms/form_citation.C:29
 #, fuzzy
@@ -5137,67 +4088,10 @@ msgstr "Text dupã|#d"
 msgid "Restore|#R"
 msgstr "Restaureazã|#R"
 
-#: src/frontends/xforms/FormDocument.C:92
-msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-msgstr ""
-" Implicit | Personalizat | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
-"B3 | B4 | B5 "
-
-#: src/frontends/xforms/FormDocument.C:95
-msgid ""
-" None | A4 small Margins (only portrait) | A4 very small Margins (only "
-"portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Nimic | A4 margini mici (numai portret) | A4 margini foarte mici (numai "
-"portret) | A4 margini foarte mari (numai portret) "
-
-#: src/frontends/xforms/FormDocument.C:146
-msgid " Single | OneHalf | Double | Other "
-msgstr " Simplã | Unul ºi jumãtate | Double | Alta "
-
-#: src/frontends/xforms/FormDocument.C:154
-msgid " Smallskip | Medskip | Bigskip | Length "
-msgstr " Smallskip | Medskip | Bigskip | Lungime "
-
-#: src/frontends/xforms/FormDocument.C:198
-msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-
-#: src/frontends/xforms/FormDocument.C:216
-msgid " Author-year | Numerical "
-msgstr ""
-
-#: src/frontends/xforms/FormDocument.C:229
-msgid ""
-" default | tiny | script | footnote | small | normal | large | Large | LARGE "
-"| huge | Huge"
-msgstr ""
-" implicit | tiny | script | notã subsol | small | normal | large | Large | "
-"LARGE | huge | Huge"
-
-#: src/frontends/xforms/FormDocument.C:243
-#: src/frontends/xforms/FormPreferences.C:272
-msgid "Language"
-msgstr "Limbaj"
-
-#: src/frontends/xforms/FormDocument.C:245
-msgid "Extra"
-msgstr "Extra"
-
-#: src/frontends/xforms/FormDocument.C:247
-msgid "Bullets"
-msgstr "Markeri"
-
-#: src/frontends/xforms/FormDocument.C:250
+#: src/frontends/xforms/FormCitation.C:399
 #, fuzzy
-msgid ""
-"Your version of libXpm is older than 4.7.\n"
-"The `bullet' tab of the document dialog has been disabled"
-msgstr ""
-"Versiunea dumneavoastrã de libXpm este mai veche decît 4.7.\n"
-"Subfereastra `bullet' a documentului a fost dezactivatã."
+msgid "Not yet supported"
+msgstr "Operaþia de re-facere nu este suportatã încã în modul matematic"
 
 #: src/frontends/xforms/form_document.C:31
 #: src/frontends/xforms/form_paragraph.C:314
@@ -5209,9 +4103,17 @@ msgstr "Director tabular"
 msgid "Special:|#S"
 msgstr "Special:|#S"
 
+#: src/frontends/xforms/form_document.C:99
+msgid "Margins"
+msgstr "Margini"
+
 #: src/frontends/xforms/form_document.C:103
 msgid "Foot/Head Margins"
 msgstr "Margini antet/subsol"
+
+#: src/frontends/xforms/form_document.C:114
+msgid "Orientation"
+msgstr "Orientare"
 
 #: src/frontends/xforms/form_document.C:121
 msgid "Portrait|#o"
@@ -5440,14 +4342,75 @@ msgstr "Ding 4|#g"
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
+#: src/frontends/xforms/FormDocument.C:92
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+" Implicit | Personalizat | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
+"B3 | B4 | B5 "
+
+#: src/frontends/xforms/FormDocument.C:95
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+" Nimic | A4 margini mici (numai portret) | A4 margini foarte mici (numai "
+"portret) | A4 margini foarte mari (numai portret) "
+
+#: src/frontends/xforms/FormDocument.C:146
+msgid " Single | OneHalf | Double | Other "
+msgstr " Simplã | Unul ºi jumãtate | Double | Alta "
+
+#: src/frontends/xforms/FormDocument.C:154
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Smallskip | Medskip | Bigskip | Lungime "
+
+#: src/frontends/xforms/FormDocument.C:198
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+
+#: src/frontends/xforms/FormDocument.C:216
+msgid " Author-year | Numerical "
+msgstr ""
+
+#: src/frontends/xforms/FormDocument.C:229
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+" implicit | tiny | script | notã subsol | small | normal | large | Large | "
+"LARGE | huge | Huge"
+
+#: src/frontends/xforms/FormDocument.C:241
+msgid "Paper"
+msgstr "Hîrtie"
+
+#: src/frontends/xforms/FormDocument.C:243
+#: src/frontends/xforms/FormPreferences.C:272
+msgid "Language"
+msgstr "Limbaj"
+
+#: src/frontends/xforms/FormDocument.C:245
+msgid "Extra"
+msgstr "Extra"
+
+#: src/frontends/xforms/FormDocument.C:247
+msgid "Bullets"
+msgstr "Markeri"
+
+#: src/frontends/xforms/FormDocument.C:250
+#, fuzzy
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document dialog has been disabled"
+msgstr ""
+"Versiunea dumneavoastrã de libXpm este mai veche decît 4.7.\n"
+"Subfereastra `bullet' a documentului a fost dezactivatã."
+
 #: src/frontends/xforms/FormError.C:30
 msgid "LaTeX Error"
 msgstr "Eroare de LaTeX"
-
-#: src/frontends/xforms/FormExternal.C:33
-#, fuzzy
-msgid "Edit external file"
-msgstr "Insereazã lista index"
 
 #: src/frontends/xforms/form_external.C:29
 #, fuzzy
@@ -5487,9 +4450,10 @@ msgstr "&Aplicã"
 msgid "Cancel|#C^["
 msgstr "Renunþã|#R^["
 
-#: src/frontends/xforms/FormFiledialog.C:203
-msgid "Warning! Couldn't open directory."
-msgstr "Eroare! Nu pot deschide directorul."
+#: src/frontends/xforms/FormExternal.C:33
+#, fuzzy
+msgid "Edit external file"
+msgstr "Insereazã lista index"
 
 #: src/frontends/xforms/form_filedialog.C:34
 msgid "Directory:|#D"
@@ -5518,6 +4482,10 @@ msgstr "Utilizator1|#1"
 #: src/frontends/xforms/form_filedialog.C:83
 msgid "User2|#2"
 msgstr "Utilizator2|#2"
+
+#: src/frontends/xforms/FormFiledialog.C:203
+msgid "Warning! Couldn't open directory."
+msgstr "Eroare! Nu pot deschide directorul."
 
 #: src/frontends/xforms/form_graphics.C:33
 msgid "Graphics File|#F"
@@ -5593,11 +4561,6 @@ msgstr "Actualizeazã|#a"
 msgid "Ok"
 msgstr "OK"
 
-#: src/frontends/xforms/FormInclude.C:29
-#, fuzzy
-msgid "Include file"
-msgstr "Includere"
-
 #: src/frontends/xforms/form_include.C:37
 msgid "Don't typeset|#D"
 msgstr "Nu tipografiazã|#t"
@@ -5626,17 +4589,37 @@ msgstr "Utilizeazã intrare|#i"
 msgid "Use include|#U"
 msgstr "Utilizeazã includere|#u"
 
-#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:49
-msgid "Index"
-msgstr "Index"
+#: src/frontends/xforms/FormInclude.C:29
+#, fuzzy
+msgid "Include file"
+msgstr "Includere"
 
 #: src/frontends/xforms/form_index.C:29
 msgid "Keyword|#K"
 msgstr "Cuvînt cheie|#C"
 
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:49
+msgid "Index"
+msgstr "Index"
+
 #: src/frontends/xforms/FormLog.C:18 src/frontends/xforms/FormLog.C:35
 msgid "LaTeX Log"
 msgstr "Jurnal LaTeX"
+
+#: src/frontends/xforms/FormLog.C:27
+#, fuzzy
+msgid "Build log"
+msgstr "Construieºte program"
+
+#: src/frontends/xforms/FormLog.C:31
+#, fuzzy
+msgid "No build log file found"
+msgstr "Nu am gãsit fiºierul."
+
+#: src/frontends/xforms/FormLog.C:39
+#, fuzzy
+msgid "No LaTeX log file found"
+msgstr "Nu am gãsit fiºierul."
 
 #: src/frontends/xforms/FormMathsBitmap.C:42
 #, fuzzy
@@ -5648,11 +4631,6 @@ msgstr "Unitãþi matematice"
 msgid "Maths Decorations"
 msgstr "Decoraþie"
 
-#: src/frontends/xforms/FormMathsDelim.C:45
-#, fuzzy
-msgid "Maths Delimiters"
-msgstr "Delimitator"
-
 #: src/frontends/xforms/form_maths_delim.C:35
 #: src/frontends/xforms/form_paragraph.C:90
 msgid "Right|#R"
@@ -5662,14 +4640,15 @@ msgstr "Dreapta|#D"
 msgid "Left|#L"
 msgstr "Stînga|#S"
 
-#: src/frontends/xforms/FormMathsMatrix.C:47
+#: src/frontends/xforms/FormMathsDelim.C:45
 #, fuzzy
-msgid "Maths Matrix"
-msgstr "Matrice"
+msgid "Maths Delimiters"
+msgstr "Delimitator"
 
-#: src/frontends/xforms/FormMathsMatrix.C:63
-msgid "Top | Center | Bottom"
-msgstr ""
+#: src/frontends/xforms/form_maths_matrix.C:28
+#: src/frontends/xforms/form_tabular_create.C:49
+msgid "Rows"
+msgstr "Linii"
 
 #: src/frontends/xforms/form_maths_matrix.C:35
 #, fuzzy
@@ -5690,10 +4669,14 @@ msgstr "Orizontal"
 msgid "OK  "
 msgstr ""
 
-#: src/frontends/xforms/FormMathsPanel.C:57
+#: src/frontends/xforms/FormMathsMatrix.C:47
 #, fuzzy
-msgid "Maths Panel"
-msgstr "Mod matematic"
+msgid "Maths Matrix"
+msgstr "Matrice"
+
+#: src/frontends/xforms/FormMathsMatrix.C:63
+msgid "Top | Center | Bottom"
+msgstr ""
 
 #: src/frontends/xforms/form_maths_panel.C:28
 #, fuzzy
@@ -5727,10 +4710,10 @@ msgstr ""
 msgid "Misc"
 msgstr "Diverse"
 
-#: src/frontends/xforms/FormMathsSpace.C:25
+#: src/frontends/xforms/FormMathsPanel.C:57
 #, fuzzy
-msgid "Maths Spacing"
-msgstr "Spaþiere"
+msgid "Maths Panel"
+msgstr "Mod matematic"
 
 #: src/frontends/xforms/form_maths_space.C:31
 #, fuzzy
@@ -5764,10 +4747,16 @@ msgstr ""
 msgid "OK "
 msgstr ""
 
-#: src/frontends/xforms/FormMinipage.C:31
+#: src/frontends/xforms/FormMathsSpace.C:25
 #, fuzzy
-msgid "Minipage Options"
-msgstr "Minipaginã"
+msgid "Maths Spacing"
+msgstr "Spaþiere"
+
+#: src/frontends/xforms/form_minipage.C:31
+#: src/frontends/xforms/form_paragraph.C:149
+#: src/frontends/xforms/form_paragraph.C:223
+msgid "Alignment"
+msgstr "Alinierea"
 
 #: src/frontends/xforms/form_minipage.C:42
 #: src/frontends/xforms/form_paragraph.C:230
@@ -5784,26 +4773,10 @@ msgstr "Mijloc|#m"
 msgid "Bottom|#B"
 msgstr "Jos|#o"
 
-#: src/frontends/xforms/FormParagraph.C:36
-msgid "Paragraph Layout"
-msgstr "Formatare paragraf"
-
-#: src/frontends/xforms/FormParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:123
-msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr " Nimic | Defskip | Smallskip | Medskip | Bigskip | VFill | Lungime "
-
-#. now make them fit together
-#: src/frontends/xforms/FormParagraph.C:148
-msgid "General"
-msgstr "General"
-
-#: src/frontends/xforms/FormParagraph.C:437
-#: src/frontends/xforms/FormTabular.C:375
-#: src/frontends/xforms/FormTabular.C:387
-#: src/frontends/xforms/FormTabular.C:399
-msgid "Warning: Invalid Length (valid example: 10mm)"
-msgstr "Atenþie: Lungime eronatã (exemplu valid: 10mm)"
+#: src/frontends/xforms/FormMinipage.C:31
+#, fuzzy
+msgid "Minipage Options"
+msgstr "Minipaginã"
 
 #: src/frontends/xforms/form_paragraph.C:40
 msgid "Label Width:|#d"
@@ -5908,327 +4881,35 @@ msgstr "Minipaginã|#M"
 msgid "Floatflt|#F"
 msgstr "Floatflt|#F"
 
-#: src/frontends/xforms/FormPreamble.C:24
-#, fuzzy
-msgid "LaTeX preamble"
-msgstr "Preambul LaTeX"
+#: src/frontends/xforms/FormParagraph.C:36
+msgid "Paragraph Layout"
+msgstr "Formatare paragraf"
+
+#: src/frontends/xforms/FormParagraph.C:120
+#: src/frontends/xforms/FormParagraph.C:123
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr " Nimic | Defskip | Smallskip | Medskip | Bigskip | VFill | Lungime "
+
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:148
+msgid "General"
+msgstr "General"
+
+#: src/frontends/xforms/FormParagraph.C:437
+#: src/frontends/xforms/FormTabular.C:375
+#: src/frontends/xforms/FormTabular.C:387
+#: src/frontends/xforms/FormTabular.C:399
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Atenþie: Lungime eronatã (exemplu valid: 10mm)"
 
 #: src/frontends/xforms/form_preamble.C:29 src/lyx_gui_misc.C:220
 msgid "OK|#O"
 msgstr "OK|#O"
 
-#: src/frontends/xforms/FormPreferences.C:71
-msgid "Preferences"
-msgstr "Preferinþe"
-
-#: src/frontends/xforms/FormPreferences.C:212
+#: src/frontends/xforms/FormPreamble.C:24
 #, fuzzy
-msgid "Look & Feel"
-msgstr "Aspect"
-
-#: src/frontends/xforms/FormPreferences.C:215
-msgid "Lang Opts"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:218
-#: src/frontends/xforms/FormPreferences.C:247
-msgid "Converters"
-msgstr "Convertoare"
-
-#: src/frontends/xforms/FormPreferences.C:221
-msgid "Inputs"
-msgstr "Intrãri"
-
-#: src/frontends/xforms/FormPreferences.C:224
-msgid "Outputs"
-msgstr "Ieºiri"
-
-#: src/frontends/xforms/FormPreferences.C:230
-msgid "Screen Fonts"
-msgstr "Fonturi ecran"
-
-#: src/frontends/xforms/FormPreferences.C:233
-msgid "Interface"
-msgstr "Interfaþã"
-
-#: src/frontends/xforms/FormPreferences.C:236
-msgid "Colors"
-msgstr "Culori"
-
-#: src/frontends/xforms/FormPreferences.C:244
-msgid "Formats"
-msgstr "Formate"
-
-#: src/frontends/xforms/FormPreferences.C:253
-msgid "Paths"
-msgstr "Cãi"
-
-#: src/frontends/xforms/FormPreferences.C:261
-msgid "Printer"
-msgstr "Imprimantã"
-
-#: src/frontends/xforms/FormPreferences.C:269
-msgid "Spell checker"
-msgstr "Verificator ortografic"
-
-#: src/frontends/xforms/FormPreferences.C:528
-msgid "LyX objects that can be assigned a color."
-msgstr "Obiecte LyX cãrora li se poate atribui o culoare."
-
-#: src/frontends/xforms/FormPreferences.C:531
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:539
-msgid "Find a new color."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:542
-msgid "Toggle between RGB and HSV color spaces."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:724
-msgid "GUI background"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:730
-msgid "GUI text"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:739
-#, fuzzy
-msgid "GUI selection"
-msgstr "Decoraþie"
-
-#: src/frontends/xforms/FormPreferences.C:745
-#, fuzzy
-msgid "GUI pointer"
-msgstr "la imprimantã"
-
-#: src/frontends/xforms/FormPreferences.C:875
-msgid "HSV"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:907
-msgid "RGB"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:988
-msgid "All the currently defined converters known to LyX."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:990
-msgid "Convert \"from\" this format"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:992
-msgid "Convert \"to\" this format"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:994
-msgid ""
-"The conversion command. $$i is the input file name, $$b is the file name "
-"without its extension and $$o is the name of the output file."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:996
-msgid "Flags that control the converter behavior"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:998
-msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1000
-#: src/frontends/xforms/FormPreferences.C:1265
-#, fuzzy
-msgid "Add"
-msgstr "&Adaugã"
-
-#: src/frontends/xforms/FormPreferences.C:1001
-msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1003
-msgid ""
-"Modify the contents of the current converter. Note: you must then \"Apply\" "
-"the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1095
-#: src/frontends/xforms/FormPreferences.C:1096
-#: src/frontends/xforms/FormPreferences.C:1134
-#: src/frontends/xforms/FormPreferences.C:1136
-#: src/frontends/xforms/FormPreferences.C:1364
-#: src/frontends/xforms/FormPreferences.C:1365
-#: src/frontends/xforms/FormPreferences.C:1408
-#: src/frontends/xforms/FormPreferences.C:1410
-#: src/frontends/xforms/form_preferences.C:522
-msgid "Modify|#M"
-msgstr "Modificã|#M"
-
-#: src/frontends/xforms/FormPreferences.C:1126
-#: src/frontends/xforms/FormPreferences.C:1128
-#: src/frontends/xforms/FormPreferences.C:1399
-#: src/frontends/xforms/FormPreferences.C:1401
-#: src/frontends/xforms/form_preferences.C:625
-#: src/frontends/xforms/form_preferences.C:712
-msgid "Add|#A"
-msgstr "Adaugã|#A"
-
-#: src/frontends/xforms/FormPreferences.C:1251
-msgid "All the currently defined formats known to LyX."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1253
-msgid "The format identifier."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1255
-#, fuzzy
-msgid "The format name as it will appear in the menus."
-msgstr "Referinþã aºa cum apare la tipãrire"
-
-#: src/frontends/xforms/FormPreferences.C:1257
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1259
-msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1261
-msgid "The command used to launch the viewer application."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1263
-msgid ""
-"Remove the current format from the list of available formats. Note: you must "
-"then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1266
-msgid ""
-"Add the current format to the list of available formats. Note: you must then "
-"\"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1268
-msgid ""
-"Modify the contents of the current format. Note: you must then \"Apply\" the "
-"change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1380
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1550
-msgid "Sys Bind"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1554
-#, fuzzy
-msgid "User Bind"
-msgstr "Ghidul utilizatorului|G"
-
-#: src/frontends/xforms/FormPreferences.C:1558
-#, fuzzy
-msgid "Bind file"
-msgstr "Fiºier asocieri|#a"
-
-#: src/frontends/xforms/FormPreferences.C:1562
-msgid "Sys UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1566
-msgid "User UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1570
-#, fuzzy
-msgid "UI file"
-msgstr "[nu existã fiºier]"
-
-#: src/frontends/xforms/FormPreferences.C:1758
-#: src/frontends/xforms/FormPreferences.C:1766
-#, fuzzy
-msgid "Key maps"
-msgstr "Mapare taste"
-
-#: src/frontends/xforms/FormPreferences.C:1762
-#: src/frontends/xforms/FormPreferences.C:1770
-#, fuzzy
-msgid "Keyboard map"
-msgstr "Cuvînt cheie"
-
-#: src/frontends/xforms/FormPreferences.C:1956
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr " implicit | US letter | legal | executive | A3 | A4 | A5 | B5 "
-
-#: src/frontends/xforms/FormPreferences.C:2191
-#, fuzzy
-msgid "Default path"
-msgstr "Implicit"
-
-#: src/frontends/xforms/FormPreferences.C:2196
-#, fuzzy
-msgid "Template path"
-msgstr "Modele"
-
-#: src/frontends/xforms/FormPreferences.C:2201
-msgid "Temp dir"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2205
-#, fuzzy
-msgid "User"
-msgstr "Utilizator1|#1"
-
-#: src/frontends/xforms/FormPreferences.C:2208
-#, fuzzy
-msgid "Lastfiles"
-msgstr "Listã de slide-uri"
-
-#: src/frontends/xforms/FormPreferences.C:2212
-msgid "Backup path"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2217
-#, fuzzy
-msgid "LyX Server pipes"
-msgstr "Conducã server LyX|#s"
-
-#: src/frontends/xforms/FormPreferences.C:2671
-msgid "Fonts must be positive!"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2694
-#, fuzzy
-msgid ""
-"Fonts must be input in the order tiny > script> footnote > small > normal > "
-"large > larger > largest > huge > huger."
-msgstr ""
-" implicit | tiny | script | notã subsol | small | normal | large | Large | "
-"LARGE | huge | Huge"
-
-#: src/frontends/xforms/FormPreferences.C:2816
-msgid " none | ispell | aspell "
-msgstr " nimic | ispell | aspell "
-
-#: src/frontends/xforms/FormPreferences.C:2907
-#, fuzzy
-msgid "Personal dictionary"
-msgstr "Utilizeazã dicþionar personal"
-
-#: src/frontends/xforms/FormPreferences.C:2963
-msgid "WARNING!"
-msgstr ""
+msgid "LaTeX preamble"
+msgstr "Preambul LaTeX"
 
 #: src/LyXAction.C:145 src/frontends/xforms/form_preferences.C:46
 msgid "Save"
@@ -6386,6 +5067,18 @@ msgstr "G|#G"
 msgid "LyX objects|#L"
 msgstr "Obiecte LyX|#O"
 
+#: src/frontends/xforms/FormPreferences.C:1095
+#: src/frontends/xforms/FormPreferences.C:1096
+#: src/frontends/xforms/FormPreferences.C:1134
+#: src/frontends/xforms/FormPreferences.C:1136
+#: src/frontends/xforms/FormPreferences.C:1364
+#: src/frontends/xforms/FormPreferences.C:1365
+#: src/frontends/xforms/FormPreferences.C:1408
+#: src/frontends/xforms/FormPreferences.C:1410
+#: src/frontends/xforms/form_preferences.C:522
+msgid "Modify|#M"
+msgstr "Modificã|#M"
+
 #: src/frontends/xforms/form_preferences.C:529
 #, fuzzy
 msgid "S|#S"
@@ -6421,6 +5114,15 @@ msgstr "Toate convertoarele|#T"
 #: src/frontends/xforms/form_preferences.C:705
 msgid "Delete|#D"
 msgstr "ªterge|#t"
+
+#: src/frontends/xforms/FormPreferences.C:1126
+#: src/frontends/xforms/FormPreferences.C:1128
+#: src/frontends/xforms/FormPreferences.C:1399
+#: src/frontends/xforms/FormPreferences.C:1401
+#: src/frontends/xforms/form_preferences.C:625
+#: src/frontends/xforms/form_preferences.C:712
+msgid "Add|#A"
+msgstr "Adaugã|#A"
 
 #: src/frontends/xforms/form_preferences.C:632
 msgid "Converter|#C"
@@ -6635,10 +5337,297 @@ msgstr "Conducã server LyX|#s"
 msgid "Temp dir|#d"
 msgstr "Director temporar|#t"
 
-#: src/LyXAction.C:129 src/LyXAction.C:136 src/frontends/xforms/FormPrint.C:44
-#: src/frontends/xforms/form_print.C:129
-msgid "Print"
-msgstr "Tipãreºte"
+#: src/frontends/xforms/FormPreferences.C:71
+msgid "Preferences"
+msgstr "Preferinþe"
+
+#: src/frontends/xforms/FormPreferences.C:212
+#, fuzzy
+msgid "Look & Feel"
+msgstr "Aspect"
+
+#: src/frontends/xforms/FormPreferences.C:215
+msgid "Lang Opts"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:218
+#: src/frontends/xforms/FormPreferences.C:247
+msgid "Converters"
+msgstr "Convertoare"
+
+#: src/frontends/xforms/FormPreferences.C:221
+msgid "Inputs"
+msgstr "Intrãri"
+
+#: src/frontends/xforms/FormPreferences.C:224
+msgid "Outputs"
+msgstr "Ieºiri"
+
+#: src/frontends/xforms/FormPreferences.C:230
+msgid "Screen Fonts"
+msgstr "Fonturi ecran"
+
+#: src/frontends/xforms/FormPreferences.C:233
+msgid "Interface"
+msgstr "Interfaþã"
+
+#: src/frontends/xforms/FormPreferences.C:236
+msgid "Colors"
+msgstr "Culori"
+
+#: src/frontends/xforms/FormPreferences.C:244
+msgid "Formats"
+msgstr "Formate"
+
+#: src/frontends/xforms/FormPreferences.C:253
+msgid "Paths"
+msgstr "Cãi"
+
+#: src/frontends/xforms/FormPreferences.C:261
+msgid "Printer"
+msgstr "Imprimantã"
+
+#: src/frontends/xforms/FormPreferences.C:269
+msgid "Spell checker"
+msgstr "Verificator ortografic"
+
+#: src/frontends/xforms/FormPreferences.C:528
+msgid "LyX objects that can be assigned a color."
+msgstr "Obiecte LyX cãrora li se poate atribui o culoare."
+
+#: src/frontends/xforms/FormPreferences.C:531
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:539
+msgid "Find a new color."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:542
+msgid "Toggle between RGB and HSV color spaces."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:724
+msgid "GUI background"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:730
+msgid "GUI text"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:739
+#, fuzzy
+msgid "GUI selection"
+msgstr "Decoraþie"
+
+#: src/frontends/xforms/FormPreferences.C:745
+#, fuzzy
+msgid "GUI pointer"
+msgstr "la imprimantã"
+
+#: src/frontends/xforms/FormPreferences.C:875
+msgid "HSV"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:907
+msgid "RGB"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:988
+msgid "All the currently defined converters known to LyX."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:990
+msgid "Convert \"from\" this format"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:992
+msgid "Convert \"to\" this format"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:994
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:996
+msgid "Flags that control the converter behavior"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:998
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1000
+#: src/frontends/xforms/FormPreferences.C:1265
+#, fuzzy
+msgid "Add"
+msgstr "&Adaugã"
+
+#: src/frontends/xforms/FormPreferences.C:1001
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1003
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1251
+msgid "All the currently defined formats known to LyX."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1253
+msgid "The format identifier."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1255
+#, fuzzy
+msgid "The format name as it will appear in the menus."
+msgstr "Referinþã aºa cum apare la tipãrire"
+
+#: src/frontends/xforms/FormPreferences.C:1257
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1259
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1261
+msgid "The command used to launch the viewer application."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1263
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1266
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1268
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1380
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1550
+msgid "Sys Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1554
+#, fuzzy
+msgid "User Bind"
+msgstr "Ghidul utilizatorului|G"
+
+#: src/frontends/xforms/FormPreferences.C:1558
+#, fuzzy
+msgid "Bind file"
+msgstr "Fiºier asocieri|#a"
+
+#: src/frontends/xforms/FormPreferences.C:1562
+msgid "Sys UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1566
+msgid "User UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1570
+#, fuzzy
+msgid "UI file"
+msgstr "[nu existã fiºier]"
+
+#: src/frontends/xforms/FormPreferences.C:1758
+#: src/frontends/xforms/FormPreferences.C:1766
+#, fuzzy
+msgid "Key maps"
+msgstr "Mapare taste"
+
+#: src/frontends/xforms/FormPreferences.C:1762
+#: src/frontends/xforms/FormPreferences.C:1770
+#, fuzzy
+msgid "Keyboard map"
+msgstr "Cuvînt cheie"
+
+#: src/frontends/xforms/FormPreferences.C:1956
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr " implicit | US letter | legal | executive | A3 | A4 | A5 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2191
+#, fuzzy
+msgid "Default path"
+msgstr "Implicit"
+
+#: src/frontends/xforms/FormPreferences.C:2196
+#, fuzzy
+msgid "Template path"
+msgstr "Modele"
+
+#: src/frontends/xforms/FormPreferences.C:2201
+msgid "Temp dir"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2205
+#, fuzzy
+msgid "User"
+msgstr "Utilizator1|#1"
+
+#: src/frontends/xforms/FormPreferences.C:2208
+#, fuzzy
+msgid "Lastfiles"
+msgstr "Listã de slide-uri"
+
+#: src/frontends/xforms/FormPreferences.C:2212
+msgid "Backup path"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2217
+#, fuzzy
+msgid "LyX Server pipes"
+msgstr "Conducã server LyX|#s"
+
+#: src/frontends/xforms/FormPreferences.C:2671
+msgid "Fonts must be positive!"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2694
+#, fuzzy
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+" implicit | tiny | script | notã subsol | small | normal | large | Large | "
+"LARGE | huge | Huge"
+
+#: src/frontends/xforms/FormPreferences.C:2816
+msgid " none | ispell | aspell "
+msgstr " nimic | ispell | aspell "
+
+#: src/frontends/xforms/FormPreferences.C:2907
+#, fuzzy
+msgid "Personal dictionary"
+msgstr "Utilizeazã dicþionar personal"
+
+#: src/frontends/xforms/FormPreferences.C:2963
+msgid "WARNING!"
+msgstr ""
 
 #: src/frontends/xforms/form_print.C:37
 msgid "Printer|#P"
@@ -6681,9 +5670,22 @@ msgstr "Comandã:|#C"
 msgid "to"
 msgstr ""
 
+#: src/LyXAction.C:129 src/LyXAction.C:136 src/frontends/xforms/FormPrint.C:44
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
+msgstr "Tipãreºte"
+
 #: src/frontends/xforms/form_print.C:132
 msgid "Order"
 msgstr "Ordine"
+
+#: src/frontends/xforms/form_print.C:135
+msgid "Copies"
+msgstr "Copii"
+
+#: src/frontends/xforms/form_print.C:138
+msgid "Print to"
+msgstr "Tipãreºte la"
 
 #: src/frontends/xforms/form_ref.C:40
 #, fuzzy
@@ -6709,11 +5711,6 @@ msgstr "Du-te la referinþa|#d"
 #, fuzzy
 msgid "Goto reference|#G"
 msgstr "Du-te la referinþa|#d"
-
-#: src/frontends/xforms/FormSearch.C:23
-#, fuzzy
-msgid "LyX: Find and Replace"
-msgstr "Înlocuieºte"
 
 #: src/frontends/xforms/form_search.C:31
 msgid "Find|#n"
@@ -6749,10 +5746,10 @@ msgstr "Numai cuvinte|#c#C"
 msgid "Replace All|#A#a"
 msgstr "Înlocuieºte toate|#o#O"
 
-#: src/frontends/xforms/FormSpellchecker.C:24
+#: src/frontends/xforms/FormSearch.C:23
 #, fuzzy
-msgid "LyX: Spellchecker"
-msgstr "Ortografia"
+msgid "LyX: Find and Replace"
+msgstr "Înlocuieºte"
 
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
@@ -6805,33 +5802,10 @@ msgstr "100 %"
 msgid "Replace word|#R"
 msgstr "Înlocuieºte cuvîntul|#R"
 
-#: src/frontends/xforms/FormTabular.C:31
+#: src/frontends/xforms/FormSpellchecker.C:24
 #, fuzzy
-msgid "Tabular Layout"
-msgstr "Format tabel"
-
-#: src/frontends/xforms/FormTabular.C:117
-msgid "Tabular"
-msgstr "Tabular"
-
-#: src/frontends/xforms/FormTabular.C:119
-#, fuzzy
-msgid "Column/Row"
-msgstr "Coloanã"
-
-#: src/frontends/xforms/FormTabular.C:121
-#, fuzzy
-msgid "Cell"
-msgstr "Renunþã"
-
-#: src/frontends/xforms/FormTabular.C:123
-#, fuzzy
-msgid "LongTable"
-msgstr "Tabel lung"
-
-#: src/frontends/xforms/FormTabular.C:361
-msgid "Warning: Wrong Cursor position, updated window"
-msgstr "Avertizare: Poziþie cursor incorectã; fereastrã actualizatã"
+msgid "LyX: Spellchecker"
+msgstr "Ortografia"
 
 #: src/frontends/xforms/form_tabular.C:71
 msgid "Append Column|#A"
@@ -7016,24 +5990,52 @@ msgstr "Subsol"
 msgid "Special"
 msgstr "Special:|#S"
 
+#: src/frontends/xforms/FormTabular.C:31
+#, fuzzy
+msgid "Tabular Layout"
+msgstr "Format tabel"
+
+#: src/frontends/xforms/FormTabular.C:117
+msgid "Tabular"
+msgstr "Tabular"
+
+#: src/frontends/xforms/FormTabular.C:119
+#, fuzzy
+msgid "Column/Row"
+msgstr "Coloanã"
+
+#: src/frontends/xforms/FormTabular.C:121
+#, fuzzy
+msgid "Cell"
+msgstr "Renunþã"
+
+#: src/frontends/xforms/FormTabular.C:123
+#, fuzzy
+msgid "LongTable"
+msgstr "Tabel lung"
+
+#: src/frontends/xforms/FormTabular.C:361
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Avertizare: Poziþie cursor incorectã; fereastrã actualizatã"
+
+#: src/frontends/xforms/form_tabular_create.C:45
+msgid "Columns"
+msgstr "Coloane"
+
 #: src/frontends/xforms/FormTabularCreate.C:29
 #, fuzzy
 msgid "Insert Tabular"
 msgstr "Insereazã tabel"
-
-#: src/frontends/xforms/FormToc.C:100
-#, fuzzy
-msgid "*** No Lists ***"
-msgstr "*** Nu existã document ***"
 
 #: src/frontends/xforms/form_toc.C:40
 #, fuzzy
 msgid "Type|#T"
 msgstr "Tip:|#T"
 
-#: src/frontends/xforms/FormUrl.C:28
-msgid "Url"
-msgstr "Url"
+#: src/frontends/xforms/FormToc.C:100
+#, fuzzy
+msgid "*** No Lists ***"
+msgstr "*** Nu existã document ***"
 
 #: src/frontends/xforms/form_url.C:29
 #, fuzzy
@@ -7047,6 +6049,10 @@ msgstr "Nume|#N"
 #: src/frontends/xforms/form_url.C:47
 msgid "HTML type|#H"
 msgstr "Tip HTML|#H"
+
+#: src/frontends/xforms/FormUrl.C:28
+msgid "Url"
+msgstr "Url"
 
 #: src/frontends/xforms/FormVCLog.C:20
 #, fuzzy
@@ -7263,13 +6269,13 @@ msgstr ""
 msgid "External"
 msgstr "Extra|#X"
 
-#: src/insets/insetfloat.C:102 src/insets/insetfloat.C:292
-#: src/insets/insetfloat.C:297
+#: src/insets/insetfloat.C:102 src/insets/insetfloat.C:296
+#: src/insets/insetfloat.C:301
 #, fuzzy
 msgid "float:"
 msgstr "Subsol"
 
-#: src/insets/insetfloat.C:187
+#: src/insets/insetfloat.C:191
 #, fuzzy
 msgid "Opened Float Inset"
 msgstr "Inset deschis"
@@ -7333,6 +6339,14 @@ msgstr "Includere"
 #: src/insets/insetindex.C:21
 msgid "Idx"
 msgstr "Idx"
+
+#: src/insets/insetinfo.C:202
+msgid "Opened note"
+msgstr "Notã deschisã"
+
+#: src/insets/insetinfo.C:221 src/insets/insetinfo.C:226
+msgid "Close|#C^["
+msgstr "Închide|#C^["
 
 #: src/insets/insetlabel.C:52 src/mathed/formula.C:216
 #, fuzzy
@@ -9410,6 +8424,612 @@ msgstr "Ruperi de paginã"
 msgid "Page Break (bottom)"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Add reference to current citation"
+#~ msgstr "_Adaugã citare nouã"
+
+#, fuzzy
+#~ msgid "Move reference before"
+#~ msgstr "&Insereazã referinþã"
+
+#, fuzzy
+#~ msgid "Move reference after"
+#~ msgstr "&Insereazã referinþã"
+
+#, fuzzy
+#~ msgid "Text to add after references"
+#~ msgstr "Text de pus dupã citare"
+
+#, fuzzy
+#~ msgid "Reference details"
+#~ msgstr "Intrare referinþã"
+
+#, fuzzy
+#~ msgid "Search through references"
+#~ msgstr "Insereazã referinþã încruciºatã"
+
+#, fuzzy
+#~ msgid "Available references"
+#~ msgstr "Referinþe disponibile"
+
+#, fuzzy
+#~ msgid "Current chosen references"
+#~ msgstr "Insereazã referinþã încruciºatã"
+
+#~ msgid "&OK"
+#~ msgstr "&OK"
+
+#~ msgid "&Apply"
+#~ msgstr "&Aplicã"
+
+#~ msgid "&Restore"
+#~ msgstr "&Reface"
+
+#~ msgid "&Down"
+#~ msgstr "J&os"
+
+#~ msgid "&Remove"
+#~ msgstr "ª&terge"
+
+#~ msgid "&Up"
+#~ msgstr "S&us"
+
+#~ msgid "&Add"
+#~ msgstr "&Adaugã"
+
+#, fuzzy
+#~ msgid "Text after : "
+#~ msgstr "Text dupã"
+
+#, fuzzy
+#~ msgid "&Search"
+#~ msgstr "Cautã"
+
+#, fuzzy
+#~ msgid "Float Placement"
+#~ msgstr "Poziþionare flotante:|#L"
+
+#, fuzzy
+#~ msgid "Section number depth :"
+#~ msgstr "Adîncimea numerelor secþionale"
+
+#, fuzzy
+#~ msgid "Table of Contents depth :"
+#~ msgstr "Adîncimea cuprinsului"
+
+#, fuzzy
+#~ msgid "Use AMS Math"
+#~ msgstr "Stil matematic AMS|#M"
+
+#, fuzzy
+#~ msgid "First try :"
+#~ msgstr "FirstAuthor"
+
+#, fuzzy
+#~ msgid "then :"
+#~ msgstr "Altul ("
+
+#, fuzzy
+#~ msgid "Paper size :"
+#~ msgstr "mãrime foaie"
+
+#, fuzzy
+#~ msgid "Margins :"
+#~ msgstr "Margini"
+
+#, fuzzy
+#~ msgid "Width :"
+#~ msgstr "Lãþime"
+
+#, fuzzy
+#~ msgid "Height :"
+#~ msgstr "Înãlþime"
+
+#, fuzzy
+#~ msgid "Top :"
+#~ msgstr "&Sus"
+
+#, fuzzy
+#~ msgid "Bottom :"
+#~ msgstr "&Jos"
+
+#, fuzzy
+#~ msgid "Left :"
+#~ msgstr "Stînga"
+
+#, fuzzy
+#~ msgid "Right :"
+#~ msgstr "Dreapta"
+
+#, fuzzy
+#~ msgid "Header height :"
+#~ msgstr "Înãlþime antet:|#a"
+
+#, fuzzy
+#~ msgid "Header separation :"
+#~ msgstr "Separaþia"
+
+#, fuzzy
+#~ msgid "Footer skip :"
+#~ msgstr "Separare subsol:|#u"
+
+#, fuzzy
+#~ msgid "Portrait"
+#~ msgstr "Portret|#o"
+
+#, fuzzy
+#~ msgid "Landscape"
+#~ msgstr "peisaj"
+
+#, fuzzy
+#~ msgid "Language :"
+#~ msgstr "Limbaj:"
+
+#, fuzzy
+#~ msgid "Encoding :"
+#~ msgstr "Codificarea"
+
+#, fuzzy
+#~ msgid "Quote style :"
+#~ msgstr "Stil citare   "
+
+#, fuzzy
+#~ msgid "Paragraph spacing"
+#~ msgstr "Paragraf"
+
+#, fuzzy
+#~ msgid "Font size :"
+#~ msgstr "Mãrimea fontului:|#O"
+
+#, fuzzy
+#~ msgid "Font family :"
+#~ msgstr "Familia:|#F"
+
+#, fuzzy
+#~ msgid "Page style :"
+#~ msgstr "Stil de paginã:|#p"
+
+#, fuzzy
+#~ msgid "Document class :"
+#~ msgstr "Documente"
+
+#, fuzzy
+#~ msgid "Extra options :"
+#~ msgstr "Opþiuni suplimentare"
+
+#, fuzzy
+#~ msgid "Size :"
+#~ msgstr "Mãrime:|#e"
+
+#, fuzzy
+#~ msgid "Stretch :"
+#~ msgstr "Stradã"
+
+#, fuzzy
+#~ msgid "Add space"
+#~ msgstr "Addsec"
+
+#~ msgid "Keyword:"
+#~ msgstr "Cuvînt cheie:"
+
+#~ msgid "Centimetres"
+#~ msgstr "Centimetri"
+
+#~ msgid "Inches"
+#~ msgstr "Inci"
+
+#, fuzzy
+#~ msgid "Points"
+#~ msgstr "Tipãreºte"
+
+#~ msgid "Millimetres"
+#~ msgstr "Milimetri"
+
+#~ msgid "Picas"
+#~ msgstr "Picas"
+
+#~ msgid "ex units"
+#~ msgstr "unitãþi ex"
+
+#~ msgid "em units"
+#~ msgstr "unitãþi em"
+
+#, fuzzy
+#~ msgid "Scaled points"
+#~ msgstr "Puncte cicero"
+
+#, fuzzy
+#~ msgid "Big/PS points"
+#~ msgstr "Puncte mari/PS (1/72 inch)"
+
+#~ msgid "Didot points"
+#~ msgstr "Puncte didot"
+
+#~ msgid "Cicero points"
+#~ msgstr "Puncte cicero"
+
+#~ msgid "&Update"
+#~ msgstr "&Actualizeazã"
+
+#~ msgid "Page break"
+#~ msgstr "Rupere de paginã"
+
+#~ msgid "Extra Space"
+#~ msgstr "Spaþiu suplimentar"
+
+#, fuzzy
+#~ msgid "Size"
+#~ msgstr "Mãrime|#z"
+
+#, fuzzy
+#~ msgid "Stretch"
+#~ msgstr "Stradã"
+
+#~ msgid "&Top"
+#~ msgstr "&Sus"
+
+#~ msgid "&Middle"
+#~ msgstr "&Mijloc"
+
+#~ msgid "&Bottom"
+#~ msgstr "&Jos"
+
+#~ msgid "&HFill between minipage paragraphs"
+#~ msgstr "&HFill între paragrafe minipaginã"
+
+#~ msgid "&Start new minipage"
+#~ msgstr "Începe &minipaginã nouã"
+
+#~ msgid "Draw line above paragraph"
+#~ msgstr "Deseneazã linie deasupra paragrafului"
+
+#~ msgid "Draw line below paragraph"
+#~ msgstr "Deseneazã linie sub paragraf"
+
+#~ msgid "Don't indent paragraph"
+#~ msgstr "Nu indenteazã paragraful"
+
+#~ msgid "Label width"
+#~ msgstr "Etichetã cu"
+
+#, fuzzy
+#~ msgid "Justification"
+#~ msgstr "Personalizare|P"
+
+#~ msgid "Pages"
+#~ msgstr "Pagini"
+
+#~ msgid "&Print"
+#~ msgstr "&Tipãreºte"
+
+#~ msgid "&All pages"
+#~ msgstr "&Toate paginile"
+
+#~ msgid "&Odd pages"
+#~ msgstr "Pagini &impare"
+
+#~ msgid "&Even pages"
+#~ msgstr "Pagini &pare"
+
+#~ msgid "&Reverse order"
+#~ msgstr "&Ordine inversã"
+
+#, fuzzy
+#~ msgid "Co&llate"
+#~ msgstr "Format "
+
+#~ msgid "From"
+#~ msgstr "De la"
+
+#~ msgid "To"
+#~ msgstr "Pînã la"
+
+#~ msgid "&Printer"
+#~ msgstr "&Imprimantã"
+
+#~ msgid "&File"
+#~ msgstr "&Fiºier"
+
+#~ msgid "&Browse"
+#~ msgstr "&Rãsfoieºte"
+
+#~ msgid "Count"
+#~ msgstr "Numãr"
+
+#, fuzzy
+#~ msgid "&Insert"
+#~ msgstr "Inserare|I"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Secþiune"
+
+#~ msgid "&Extra"
+#~ msgstr "&Extra"
+
+#, fuzzy
+#~ msgid "&Language"
+#~ msgstr "Limbaj"
+
+#, fuzzy
+#~ msgid "&Bullets"
+#~ msgstr "Markeri"
+
+#, fuzzy
+#~ msgid "10 point"
+#~ msgstr "la imprimantã"
+
+#, fuzzy
+#~ msgid "11 point"
+#~ msgstr "la imprimantã"
+
+#, fuzzy
+#~ msgid "12 point"
+#~ msgstr "la imprimantã"
+
+#, fuzzy
+#~ msgid "single"
+#~ msgstr "Simplu"
+
+#, fuzzy
+#~ msgid "1 1/2 spacing"
+#~ msgstr "Spaþiere"
+
+#, fuzzy
+#~ msgid "double"
+#~ msgstr "Dublu"
+
+#, fuzzy
+#~ msgid "custom"
+#~ msgstr "Customer"
+
+#, fuzzy
+#~ msgid "medium"
+#~ msgstr "Mediu"
+
+#, fuzzy
+#~ msgid "Here"
+#~ msgstr "Israelian"
+
+# format
+#, fuzzy
+#~ msgid "Bottom of page"
+#~ msgstr "% din paginã"
+
+# format
+#, fuzzy
+#~ msgid "Top of page"
+#~ msgstr "% din paginã"
+
+#, fuzzy
+#~ msgid "Separate page"
+#~ msgstr "Începe &minipaginã nouã"
+
+#, fuzzy
+#~ msgid "Not set"
+#~ msgstr "Notã"
+
+#, fuzzy
+#~ msgid "US letter"
+#~ msgstr "Letter"
+
+#, fuzzy
+#~ msgid "`text'"
+#~ msgstr "Format "
+
+#, fuzzy
+#~ msgid "'text'"
+#~ msgstr "Format "
+
+#, fuzzy
+#~ msgid ",text`"
+#~ msgstr "Format "
+
+#, fuzzy
+#~ msgid ",text'"
+#~ msgstr "Format "
+
+#, fuzzy
+#~ msgid "<text>"
+#~ msgstr "Format "
+
+#, fuzzy
+#~ msgid ">text<"
+#~ msgstr "Format "
+
+#, fuzzy
+#~ msgid "How detailed the Table of Contents is"
+#~ msgstr "Cuprins"
+
+#, fuzzy
+#~ msgid "Key not found."
+#~ msgstr "Nu am gãsit setul de caractere!"
+
+#~ msgid "LyX: Copyright and Warranty"
+#~ msgstr "LyX: Drepturi de autor ºi garanþia"
+
+#, fuzzy
+#~ msgid "LyX: Document Options"
+#~ msgstr "Nici un document deschis!%t"
+
+#, fuzzy
+#~ msgid "LaTeX log"
+#~ msgstr "Jurnal LaTeX"
+
+#, fuzzy
+#~ msgid "LyX: LaTeX Log"
+#~ msgstr "Jurnal LaTeX"
+
+#, fuzzy
+#~ msgid "Jump to selected reference"
+#~ msgstr " Referinþã: Selectare referinþã "
+
+#, fuzzy
+#~ msgid "No version control log file found"
+#~ msgstr "Nu am gãsit fiºierul."
+
+#, fuzzy
+#~ msgid "LyX: Version Control Log"
+#~ msgstr "Controlul versiunii|v"
+
+#~ msgid "Index entry"
+#~ msgstr "Înregistrare index"
+
+#~ msgid "&General"
+#~ msgstr "&General"
+
+#~ msgid "Indented paragraph"
+#~ msgstr "Paragraf indentat"
+
+#~ msgid "Minipage"
+#~ msgstr "Minipaginã"
+
+#~ msgid "Wrap text around floats (floatflt)"
+#~ msgstr "Aranjeazã textul în jurul flotantelor (floatflt)"
+
+#~ msgid "Points (1/72.27 inch)"
+#~ msgstr "Puncte (1/72.27 inch)"
+
+#~ msgid "Scaled points (1/65536 pt)"
+#~ msgstr "Puncte scalate (1/65536 pt)"
+
+#~ msgid "Big/PS points (1/72 inch)"
+#~ msgstr "Puncte mari/PS (1/72 inch)"
+
+#~ msgid "Percent of column"
+#~ msgstr "Procente din coloanã"
+
+#, fuzzy
+#~ msgid "&Spacing Above"
+#~ msgstr "Spaþiere deasupra"
+
+#, fuzzy
+#~ msgid "Spacing &Below"
+#~ msgstr "Spaþiere dedesubt"
+
+#~ msgid "Defskip"
+#~ msgstr "Defskip"
+
+#~ msgid "Small skip"
+#~ msgstr "Small skip"
+
+#~ msgid "Medium skip"
+#~ msgstr "Medium skip"
+
+#~ msgid "Big skip"
+#~ msgstr "Big skip"
+
+#~ msgid "VFill"
+#~ msgstr "VFill"
+
+#~ msgid "Block"
+#~ msgstr "Bloc"
+
+#, fuzzy
+#~ msgid "Centered"
+#~ msgstr "Centrat"
+
+#~ msgid "Left"
+#~ msgstr "Stînga"
+
+#~ msgid "Right"
+#~ msgstr "Dreapta"
+
+#, fuzzy
+#~ msgid "Alignment of current paragraph"
+#~ msgstr "Selecteazã urmãtorul paragraf"
+
+#, fuzzy
+#~ msgid "No indent on first line of paragraph"
+#~ msgstr "Nu indenteazã paragraful"
+
+#, fuzzy
+#~ msgid "New page above this paragraph"
+#~ msgstr "Deseneazã linie deasupra paragrafului"
+
+#, fuzzy
+#~ msgid "Size of extra space above paragraph"
+#~ msgstr "Deseneazã linie deasupra paragrafului"
+
+#, fuzzy
+#~ msgid "New page below this paragraph"
+#~ msgstr "Deseneazã linie sub paragraf"
+
+#, fuzzy
+#~ msgid "Size of extra space below paragraph"
+#~ msgstr "Deseneazã linie sub paragraf"
+
+#~ msgid "Print every page"
+#~ msgstr "Tipãreºte fiecare paginã"
+
+#~ msgid "Print odd-numbered pages only"
+#~ msgstr "Tipãreºte numai paginile impare"
+
+#~ msgid "Print even-numbered pages only"
+#~ msgstr "Tipãreºte numai paginile pare"
+
+#~ msgid "Print from page number"
+#~ msgstr "Tipãreºte de la pagina"
+
+#~ msgid "Print to page number"
+#~ msgstr "Tipãreºte pînã la pagina"
+
+#~ msgid "Print in reverse order (last page first)"
+#~ msgstr "Tipãreºte în ordine inversã"
+
+#~ msgid "Number of copies to print"
+#~ msgstr "Numãrul de copii de tipãrit"
+
+#~ msgid "Printer name"
+#~ msgstr "Nume imprimantã"
+
+#, fuzzy
+#~ msgid "Output filename (PostScript)"
+#~ msgstr "Fiºier de ieºire"
+
+#~ msgid "Select output filename"
+#~ msgstr "Selectaþi fiºierul de ieºire"
+
+#~ msgid "Available References"
+#~ msgstr "Referinþe disponibile"
+
+#~ msgid "Name :"
+#~ msgstr "Nume :"
+
+#~ msgid "Reference :"
+#~ msgstr "Referinþã :"
+
+#~ msgid "Sort"
+#~ msgstr "Sorteazã"
+
+#~ msgid "Reference Type"
+#~ msgstr "Tip referinþã"
+
+#~ msgid "Reference as it appears in output"
+#~ msgstr "Referinþã aºa cum apare la tipãrire"
+
+#~ msgid "Sort references in alphabetical order ?"
+#~ msgstr "Sortez referinþele în ordine alfabeticã ?"
+
+#, fuzzy
+#~ msgid "Jump to reference in document"
+#~ msgstr "Salt la sfîrºitul documentului"
+
+#~ msgid "Depth"
+#~ msgstr "Adîncime"
+
+#~ msgid "Url :"
+#~ msgstr "URL:"
+
+#~ msgid "Generate hyperlink"
+#~ msgstr "Genereazã hiperlink"
+
+#~ msgid "Name associated with the URL"
+#~ msgstr "Nume asociat cu URL-ul"
+
+#~ msgid "Output as a hyperlink ?"
+#~ msgstr "Tipãresc ca hiperlink?"
+
 #~ msgid "File `"
 #~ msgstr "Fiºierul \""
 
@@ -9616,12 +9236,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No Table of Contents%i"
 #~ msgstr "Cuprins"
-
-#~ msgid "Opened note"
-#~ msgstr "Notã deschisã"
-
-#~ msgid "Close|#C^["
-#~ msgstr "Închide|#C^["
 
 #, fuzzy
 #~ msgid "latex"
