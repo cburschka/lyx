@@ -835,13 +835,13 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 		} else if (*cit == '\t') {
 			if (!layout->free_spacing && !par->isFreeSpacing()) {
 				// tabs are like spaces here
-				par->insertChar(pos, ' ', font, current_change);
+				par->insertChar(pos, ' ', font);
 				++pos;
 				space_inserted = true;
 			} else {
 				const pos_type nb = 8 - pos % 8;
 				for (pos_type a = 0; a < nb ; ++a) {
-					par->insertChar(pos, ' ', font, current_change);
+					par->insertChar(pos, ' ', font);
 					++pos;
 				}
 				space_inserted = true;
