@@ -25,7 +25,7 @@
 #include "filetools.h"
 #include "lyx_gui_misc.h"
 #include "FileInfo.h"
-#include "pathstack.h"        // I know it's OS/2 specific (SMiyata)
+#include "support/path.h"        // I know it's OS/2 specific (SMiyata)
 #include "gettext.h"
 #include "LAssert.h"
 

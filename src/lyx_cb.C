@@ -42,7 +42,7 @@
 #include "combox.h"
 #include "bufferlist.h"
 #include "support/filetools.h"
-#include "pathstack.h"
+#include "support/path.h"
 #include "filedlg.h"
 #include "lyx_gui_misc.h"
 #include "LyXView.h" // only because of form_main
@@ -549,9 +549,8 @@ int MakeDVIOutput(Buffer *buffer)
 		path = buffer->tmppath;
 	}
 	if (!buffer->isDviClean()) {
-		PathPush(path);
+		Path p(path);
 		ret = MenuRunLaTeX(buffer);
-		PathPop();
 	}
 	return ret;
 }
@@ -581,7 +580,7 @@ bool RunScript(Buffer *buffer, bool wait,
 	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
-	PathPush(path);
+	Path p(path);
 
 	cmd = command + ' ' + SpaceLess(name);
 	Systemcalls one;
@@ -622,7 +621,6 @@ bool RunScript(Buffer *buffer, bool wait,
 		result = one.startscript(wait ? Systemcalls::Wait
 					: Systemcalls::DontWait, cmd);
 	}
-	PathPop();
 	return (result==0);
 }
 
@@ -706,10 +704,9 @@ bool MenuRunDvips(Buffer *buffer, bool wait=false)
         if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
-        PathPush(path);
+        Path p(path);
 	bool ret = RunScript(buffer, wait, command);
 	AllowInput();
-        PathPop();
 	return ret;
 }
 
@@ -734,9 +731,8 @@ bool MenuPreviewPS(Buffer *buffer)
         if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
-        PathPush(path);
+        Path p(path);
 	bool ret = RunScript(buffer, false, lyxrc->view_ps_command, ps);
-        PathPop();
 	AllowInput();
 	return ret;
 }
@@ -758,7 +754,7 @@ void MenuFax(Buffer *buffer)
 	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
-	PathPush(path);
+	Path p(path);
 	if (!lyxrc->fax_program.empty()) {
 		string help2 = lyxrc->fax_program;
                 subst(help2, "$$FName",ps);
@@ -766,7 +762,6 @@ void MenuFax(Buffer *buffer)
                 Systemcalls one(Systemcalls::System, help2);
 	} else
 		send_fax(ps,lyxrc->fax_command);
-	PathPop();
 }
 
 
@@ -824,11 +819,10 @@ bool MenuPreview(Buffer *buffer)
         if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
-        PathPush(path);
+        Path p(path);
 	// Run dvi-viewer
 	string command = lyxrc->view_dvi_command + paper ;
 	bool ret = RunScript(buffer, false, command);
-        PathPop();
 	return ret;
 }
 
@@ -1254,7 +1248,7 @@ int RunLinuxDoc(int flag, string const & filename)
 	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = current_view->currentBuffer()->tmppath;
 	}
-	PathPush (path);
+	Path p(path);
 	
 	if (flag != -1) {
 		if (!current_view->available())
@@ -1300,7 +1294,6 @@ int RunLinuxDoc(int flag, string const & filename)
 		break;
 	}
 	
-	PathPop();
 	AllowInput();
 
         current_view->currentBuffer()->redraw();
@@ -1326,7 +1319,7 @@ int RunDocBook(int flag, string const & filename)
 	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = current_view->currentBuffer()->tmppath;
 	}
-	PathPush (path);
+	Path p(path);
 
 	if (!current_view->available())
 		return 0;
@@ -1357,7 +1350,6 @@ int RunDocBook(int flag, string const & filename)
 		break;
 	}
 	
-	PathPop();
 	AllowInput();
 
         current_view->currentBuffer()->redraw();
@@ -3391,7 +3383,7 @@ void PrintApplyCB(FL_OBJECT *, long)
         if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
-        PathPush(path);
+        Path p(path);
 
 	bool result;
 	if (!lyxrc->print_spool_command.empty() && 
@@ -3406,7 +3398,6 @@ void PrintApplyCB(FL_OBJECT *, long)
 		}
         } else
 		result = RunScript(buffer, false, command);
-        PathPop();
 
 	if (!result)
 		WriteAlert(_("Error:"),
@@ -3561,10 +3552,10 @@ void Reconfigure()
 	minibuffer->Set(_("Running configure..."));
 
 	// Run configure in user lyx directory
-	PathPush(user_lyxdir);
+	Path p(user_lyxdir);
 	Systemcalls one(Systemcalls::System, 
                           AddName(system_lyxdir,"configure"));
-	PathPop();
+	p.pop();
 	minibuffer->Set(_("Reloading configuration..."));
 	lyxrc->Read(LibFileSearch(string(), "lyxrc.defaults"));
 	WriteAlert(_("The system has been reconfigured."), 

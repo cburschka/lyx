@@ -10,7 +10,7 @@
 #include "lyx_gui_misc.h"
 #include "bufferlist.h"
 #include "support/syscall.h"
-#include "pathstack.h"
+#include "support/path.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 #include "gettext.h"
@@ -385,8 +385,7 @@ int LyXVC::doVCCommand(string const & cmd)
 {
 	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
         Systemcalls one;
-	PathPush(_owner->filepath);
+	Path p(_owner->filepath);
 	int ret = one.startscript(Systemcalls::System, cmd);
-	PathPop();
 	return ret;
 }

@@ -28,7 +28,7 @@
 #include "support/lyxlib.h"
 #include "support/syscall.h"
 #include "support/syscontr.h"
-#include "pathstack.h"
+#include "support/path.h"
 #include "bufferlist.h"
 #include "minibuffer.h"
 #include "gettext.h"
@@ -682,7 +682,7 @@ void LaTeX::deplog(DepTable & head)
 		//     found in the same dir
 		//     as the .lyx file and
 		//     should be inserted.
-		PathPush(path);
+		Path p(path);
 		if (FileInfo(foundfile).exist()) {
 			lyxerr << "LyX Strange: this should actually never"
 				" happen anymore, this it should be"
@@ -691,10 +691,8 @@ void LaTeX::deplog(DepTable & head)
 			lyxerr[Debug::LATEX] << "Same Directory file: " 
 					     << foundfile << endl;
 			head.insert(foundfile);
-			PathPop();
 			continue;
 		}
-		PathPop();
 		
 		lyxerr[Debug::LATEX]
 			<< "Not a file or we are unable to find it."

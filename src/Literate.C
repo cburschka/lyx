@@ -26,7 +26,7 @@
 #include "support/lyxlib.h"
 #include "support/syscall.h"
 #include "support/syscontr.h"
-#include "pathstack.h"
+#include "support/path.h"
 #include "bufferlist.h"
 #include "minibuffer.h"
 #include "gettext.h"

@@ -1,5 +1,17 @@
 1999-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/LaTeXLog.C (ShowLatexLog): reordered som statements so that
+	Path would fit in more nicely.
+
+	* all files that used to use pathstack: uses now Path instead.
+	This change was a lot easier than expected.
+	
+	* src/support/path.h: new file
+
+	* src/support/Makefile.am (libsupport_a_SOURCES): added path.h
+
+	* src/Makefile.am (lyx_SOURCES): removed pathstack.[Ch]
+
 	* src/support/lyxstring.C (getline): Default arg was given for
 	para 3. removed.
 

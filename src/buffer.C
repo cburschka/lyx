@@ -63,7 +63,7 @@
 #include "insets/insetspecialchar.h"
 #include "insets/figinset.h"
 #include "support/filetools.h"
-#include "pathstack.h"
+#include "support/path.h"
 #include "LaTeX.h"
 #include "Literate.h"
 #include "Chktex.h"
@@ -3132,7 +3132,7 @@ int Buffer::runLaTeX()
 		path = tmppath;	 
 	}
 
-	PathPush(path); // path to LaTeX file
+	Path p(path); // path to LaTeX file
 	users->getOwner()->getMiniBuffer()->Set(_("Running LaTeX..."));   
 
 	// Remove all error insets
@@ -3179,7 +3179,6 @@ int Buffer::runLaTeX()
                 users->updateScrollbar();
         }
         AllowInput();
-        PathPop(); // path to LaTeX file
  
         return latex.getNumErrors();
 }
@@ -3203,7 +3202,7 @@ int Buffer::runLiterate()
 		path = tmppath;	 
 	}
 
-	PathPush(path); // path to Literate file
+	Path p(path); // path to Literate file
 	users->getOwner()->getMiniBuffer()->Set(_("Running Literate..."));   
 
 	// Remove all error insets
@@ -3248,7 +3247,6 @@ int Buffer::runLiterate()
                 users->updateScrollbar();
         }
         AllowInput();
-        PathPop(); // path to LaTeX file
  
         return literate.getNumErrors();
 }
@@ -3272,7 +3270,7 @@ int Buffer::buildProgram()
                 path = tmppath;  
         }
  
-        PathPush(path); // path to Literate file
+        Path p(path); // path to Literate file
         users->getOwner()->getMiniBuffer()->Set(_("Building Program..."));   
  
         // Remove all error insets
@@ -3316,7 +3314,6 @@ int Buffer::buildProgram()
 		users->updateScrollbar();
 	}
 	AllowInput();
-	PathPop(); // path to LaTeX file
 
 	return literate.getNumErrors();
 }
@@ -3340,7 +3337,7 @@ int Buffer::runChktex()
 		path = tmppath;	 
 	}
 
-	PathPush(path); // path to LaTeX file
+	Path p(path); // path to LaTeX file
 	users->getOwner()->getMiniBuffer()->Set(_("Running chktex..."));
 
 	// Remove all error insets
@@ -3372,7 +3369,6 @@ int Buffer::runChktex()
 		users->updateScrollbar();
 	}
 	AllowInput();
-	PathPop(); // path to LaTeX file
 
 	return res;
 }

@@ -22,7 +22,7 @@
 #include "lyx_main.h"
 #include "intl.h"
 #include "tex-strings.h"
-#include "pathstack.h"
+#include "support/path.h"
 #include "support/filetools.h"
 #include "lyxtext.h"
 

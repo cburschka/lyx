@@ -17,6 +17,7 @@ libsupport_a_SOURCES = \
 	lyxstring.C \
 	lyxstring.h \
 	lyxsum.C \
+	path.h \
 	syscall.C \
 	syscall.h \
 	syscontr.C \

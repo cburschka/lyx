@@ -18,7 +18,7 @@
 #include "lyx_gui.h"
 #include "lyx_gui_misc.h"
 #include "lyxrc.h"
-#include "pathstack.h"
+#include "support/path.h"
 #include "support/filetools.h"
 #include "bufferlist.h"
 #include "debug.h"
@@ -411,9 +411,8 @@ void LyX::queryUserLyXDir()
 	}
 
 	// Run configure in user lyx directory
-	PathPush(user_lyxdir);
+	Path p(user_lyxdir);
 	system(AddName(system_lyxdir,"configure").c_str());
-	PathPop();
 	lyxerr << "LyX: " << _("Done!") << endl;
 }
 

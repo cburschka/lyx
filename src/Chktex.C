@@ -27,7 +27,7 @@
 #include "debug.h"
 #include "support/syscall.h"
 #include "support/syscontr.h"
-#include "pathstack.h"
+#include "support/path.h"
 #include "gettext.h"
 
 /*

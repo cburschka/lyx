@@ -232,6 +232,7 @@ int BitmapMenu::GetIndex(FL_OBJECT* ob)
    return -1;
 }
 
+extern "C" {
 int peek_event(FL_FORM * /*form*/, void *xev)
 {
    if (BitmapMenu::active==0)
@@ -256,6 +257,7 @@ int peek_event(FL_FORM * /*form*/, void *xev)
       return 1;
    }
    return 0;  
+}
 }
 
 static void math_cb(FL_OBJECT* ob, long data)

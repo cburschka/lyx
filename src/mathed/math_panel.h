@@ -35,6 +35,10 @@ enum  {
 ///
 typedef FL_OBJECT* FL_OBJECTP;
 
+extern "C" {
+   int peek_event(FL_FORM *, void *);
+}
+
 /// Class to manage bitmap menu bars
 class BitmapMenu {
   ///

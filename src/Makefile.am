@@ -140,8 +140,6 @@ lyx_SOURCES = \
 	os2_defines.h \
 	os2_errortable.h \
 	paragraph.C \
-	pathstack.C \
-	pathstack.h \
 	print_form.C \
 	print_form.h \
 	screen.C \

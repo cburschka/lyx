@@ -6,7 +6,7 @@
 #include "lyxrc.h"
 #include "LString.h"
 #include "support/filetools.h"
-#include "pathstack.h"
+#include "support/path.h"
 #include "buffer.h"
 #include "lyx_gui_misc.h"
 #include "support/syscall.h"
@@ -82,7 +82,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
     if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
         path = buffer->tmppath;
     }
-    PathPush(path);
+    Path p(path);
     // save the .lyx file in tmp_dir if this filetype is requested
     if (fl_get_button(fd_form_sendto->radio_ftype_lyx))
         buffer->writeFile(fname,true);
@@ -94,7 +94,6 @@ void SendtoApplyCB(FL_OBJECT *, long)
     if (fl_get_button(fd_form_sendto->radio_ftype_ascii))
         buffer->writeFileAscii(fname, lyxrc->ascii_linelen);
     Systemcalls one(Systemcalls::System, command);    
-    PathPop();
 }
 
 void SendtoCancelCB(FL_OBJECT *, long)
