@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -25,6 +25,7 @@
 #include <qpushbutton.h>
 
 typedef Qt2CB<ControlTabularCreate, Qt2DB<QTabularCreateDialog> > base_class;
+
 
 QTabularCreate::QTabularCreate()
 	: base_class(_("Insert table"))

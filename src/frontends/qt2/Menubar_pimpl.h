@@ -35,7 +35,7 @@ public:
 	void openByName(string const &);
 
 	/// update the state of the menuitems - not needed
-	void update() {};
+	void update() {}
 
 	/// return the owning view
 	QtView * view() { return owner_; }

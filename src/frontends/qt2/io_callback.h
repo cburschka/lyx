@@ -36,10 +36,8 @@ class io_callback : public QObject {
 public:
 	/// connect a read ready notification for fd to the LyXComm
 	io_callback(int fd, LyXComm * comm);
-
 public slots:
 	void data_received();
-
 private:
 	/// our notifier
 	boost::scoped_ptr<QSocketNotifier> sn_;

@@ -31,10 +31,8 @@ public:
 	friend class QGraphicsDialog;
 	///
 	QGraphics();
-
 protected:
 	virtual bool isValid();
-
 private:
 	/// Apply changes
 	virtual void apply();

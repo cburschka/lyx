@@ -2,13 +2,14 @@
  * \file QBrowseBox.C
  *
  * Original file taken from klyx 0.10 sources:
- * $Id: QBrowseBox.C,v 1.5 2002/10/17 13:31:04 leeming Exp $
+ * $Id: QBrowseBox.C,v 1.6 2002/10/20 01:48:27 larsbj Exp $
  *
  * \author Kalle Dalheimer ?
  *
  * Full author contact details are available in file CREDITS
  */
 
+#include <config.h>
 
 #include <qstring.h>
 #include <qpixmap.h>
@@ -19,10 +20,10 @@
 #include <qstyle.h>
 #include <qimage.h>
 
-#include <stdio.h>
-#include <math.h>
-
 #include "QBrowseBox.h"
+
+#include <cstdio>
+#include <cmath>
 
 
 QBrowseBox::QBrowseBox(int rows, int cols)
@@ -182,19 +183,19 @@ void QBrowseBox::paintCell(QPainter * painter, int row, int col)
 	if (activecell_.x() == row && activecell_.y() == col) {
 		if (ispixmap)
 			qDrawShadeRect(painter, 0, 0, cellWidth(),
-			               cellHeight(), colorGroup(), false, 1);
+				       cellHeight(), colorGroup(), false, 1);
 		else
 			qDrawShadePanel(painter, 0, 0, cellWidth(),
-			                cellHeight(), colorGroup(), false, 1);
+					cellHeight(), colorGroup(), false, 1);
 	} else {
 		qDrawPlainRect(painter, 0, 0, cellWidth(),
-		               cellHeight(), colorGroup().background(), 1);
+			       cellHeight(), colorGroup().background(), 1);
 	}
 
 	if (!texts_[coordsToIndex(row, col)].isEmpty()) {
 		painter->drawText(0, 0, cellWidth(),
-		                  cellHeight(), AlignLeft,
-		                  texts_[coordsToIndex(row, col)]);
+				  cellHeight(), AlignLeft,
+				  texts_[coordsToIndex(row, col)]);
 	}
 	painter->setClipping(false);
 }
@@ -290,4 +291,3 @@ void QBrowseBox::moveDown()
 	updateCell(x, activecell_.y());
 	updateCell(activecell_.x(), activecell_.y());
 }
-

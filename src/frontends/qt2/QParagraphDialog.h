@@ -21,17 +21,14 @@
 
 class QParagraph;
 
-class QParagraphDialog : public QParagraphDialogBase
-{
+class QParagraphDialog : public QParagraphDialogBase {
 	Q_OBJECT
 public:
 	QParagraphDialog(QParagraph * form);
-
 protected:
 	void closeEvent (QCloseEvent * e);
 private:
 	QParagraph * form_;
-
 protected slots:
 	void change_adaptor();
 	void enableAbove(int);

@@ -26,6 +26,7 @@
 
 typedef Qt2CB<ControlERT, Qt2DB<QERTDialog> > base_class;
 
+
 QERT::QERT()
 	: base_class(_("LaTeX ERT"))
 {
@@ -43,12 +44,14 @@ void QERT::build_dialog()
 
 void QERT::apply()
 {
+	ERTParams & params = controller().params();
+
 	if (dialog_->openRB->isChecked())
-		controller().params().status = InsetERT::Open;
+		params.status = InsetERT::Open;
 	else if (dialog_->inlineRB->isChecked())
-		controller().params().status = InsetERT::Inlined;
+		params.status = InsetERT::Inlined;
 	else
-		controller().params().status = InsetERT::Collapsed;
+		params.status = InsetERT::Collapsed;
 }
 
 

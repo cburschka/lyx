@@ -20,15 +20,12 @@
 
 class QShowFile;
 
-class QShowFileDialog : public QShowFileDialogBase
-{ Q_OBJECT
-
+class QShowFileDialog : public QShowFileDialogBase {
+	Q_OBJECT
 public:
 	QShowFileDialog(QShowFile * form);
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QShowFile * form_;
 };

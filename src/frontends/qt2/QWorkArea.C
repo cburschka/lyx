@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -22,23 +22,23 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 
-#include <cmath>
-#include <cctype>
-
 #include "QWorkArea.h"
- 
+
 #include <qapplication.h>
-#include <qevent.h> 
+#include <qevent.h>
 #include <qpainter.h>
 #include <qmainwindow.h>
 #include <qlayout.h>
 #include <qclipboard.h>
- 
+
+#include <cmath>
+#include <cctype>
+
 using std::endl;
 using std::abs;
 using std::hex;
 
- 
+
 QWorkArea::QWorkArea(int, int, int, int)
 	: WorkArea(), QWidget(qApp->mainWidget()), painter_(*this)
 {
@@ -46,9 +46,9 @@ QWorkArea::QWorkArea(int, int, int, int)
 	content_ = new QContentPane(this);
 
 	(static_cast<QMainWindow*>(qApp->mainWidget()))->setCentralWidget(this);
- 
+
 	setFocusProxy(content_);
- 
+
 	content_->show();
 
 	content_->setBackgroundColor(lcolor.getX11Name(LColor::background).c_str());
@@ -56,7 +56,7 @@ QWorkArea::QWorkArea(int, int, int, int)
 	QHBoxLayout * vl = new QHBoxLayout(this);
 	vl->addWidget(content_, 5);
 	vl->addWidget(scrollbar_, 0);
- 
+
 	show();
 }
 
@@ -70,10 +70,9 @@ void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 {
 	// do what cursor movement does (some grey)
 	h += height() / 4;
- 
-	int max = h - height();
-	if (max < 0)
-		max = 0;
+
+	int max = std::max(0, h - height());
+
 	scrollbar_->setRange(0, max);
 	scrollbar_->setValue(pos);
 	scrollbar_->setLineStep(line_h);
@@ -86,16 +85,16 @@ void QWorkArea::haveSelection(bool) const
 	// not possible in Qt !
 }
 
- 
-string const QWorkArea::getClipboard() const 
+
+string const QWorkArea::getClipboard() const
 {
-	QString str = QApplication::clipboard()->text(); 
+	QString str = QApplication::clipboard()->text();
 	if (str.isNull())
 		return string();
 	return str.latin1();
 }
 
-	
+
 void QWorkArea::putClipboard(string const & str) const
 {
 	QApplication::clipboard()->setText(str.c_str());

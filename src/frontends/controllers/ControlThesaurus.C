@@ -19,10 +19,7 @@
 #include "gettext.h"
 #include "lyxfind.h"
 
-#include "frontends/Liason.h"
-
-
-using Liason::setMinibuffer;
+#include "frontends/LyXView.h"
 
 
 ControlThesaurus::ControlThesaurus(LyXView & lv, Dialogs & d)
@@ -50,9 +47,9 @@ void ControlThesaurus::replace(string const & newstr)
 	oldstr_ = newstr;
 
 	if (replace_count == 0)
-		setMinibuffer(&lv_, _("String not found!"));
+		lv_.message(_("String not found!"));
 	else
-		setMinibuffer(&lv_, _("String has been replaced."));
+		lv_.message(_("String has been replaced."));
 }
 
 

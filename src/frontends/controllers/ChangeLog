@@ -1,3 +1,13 @@
+2002-10-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ControlCharacter.C (apply): setMinibuffer change
+	* ControlDocument.C (apply): ditto
+	(classApply): ditto
+	* ControlThesaurus.C (replace): ditto
+	* ControlSearch.C (find): ditto
+	(replace): ditto
+	* ControlPreamble.C (apply): ditto
+	* ControlParagraph.C (apply): ditto
 
 2002-10-14  André Pönitz <poenitz@gmx.net>
 
@@ -8,7 +18,7 @@
 	* ControlDocument.h:
 	* ControlDocument.C:
 	* Makefile.am: New document parameters controller
-	
+
 2002-09-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (INCLUDES): loose SIGC_INCLUDES

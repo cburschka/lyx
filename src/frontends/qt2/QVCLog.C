@@ -3,22 +3,22 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
-#include "Lsstream.h"
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
+#include "Lsstream.h"
 #include "gettext.h"
 #include "LyXView.h"
 #include "ControlVCLog.h"
- 
+
 #include "QVCLog.h"
 #include "QVCLogDialog.h"
 #include "Qt2BC.h"
@@ -27,6 +27,7 @@
 #include <qpushbutton.h>
 
 typedef Qt2CB<ControlVCLog, Qt2DB<QVCLogDialog> > base_class;
+
 
 QVCLog::QVCLog()
 	: base_class(_("VCLog"))

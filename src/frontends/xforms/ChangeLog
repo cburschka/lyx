@@ -1,3 +1,11 @@
+2002-10-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* XLyXKeySym.h: rename private var keysym to keysym_, add accessor
+	function keysym().
+
+	* FormDocument.C (class_apply): setMessage change
+	(apply): ditto
+
 2002-10-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Menubar_pimpl.C (create_submenu): do not create a "More..."
@@ -38,7 +46,7 @@
 2002-10-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* xforms_helpers.C (formatted): fix small typo, spotted by Rob
-	Lahaye 
+	Lahaye
 
 2002-10-08  Dekel Tsur  <dekelts@tau.ac.il>
 

@@ -29,8 +29,6 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 
-#include <functional>
-
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
@@ -38,15 +36,19 @@
 #include <qtabwidget.h>
 #include <qbuttongroup.h>
 
+#include <functional>
+
 using std::vector;
 using std::bind2nd;
 using std::remove_if;
 
 typedef Qt2CB<ControlParagraph, Qt2DB<QParagraphDialog> > base_class;
 
+
 QParagraph::QParagraph()
 	: base_class(_("Paragraph Layout"))
 {}
+
 
 void QParagraph::build_dialog()
 {
@@ -56,8 +58,9 @@ void QParagraph::build_dialog()
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
 	units_ = getLatexUnits();
-	vector<string>::iterator del = remove_if(units_.begin(), units_.end(),
-						 bind2nd(contains_functor(), "%"));
+	vector<string>::iterator del =
+		remove_if(units_.begin(), units_.end(),
+			  bind2nd(contains_functor(), "%"));
 	units_.erase(del, units_.end());
 
 	for (vector<string>::const_iterator it = units_.begin();
@@ -73,6 +76,7 @@ void QParagraph::build_dialog()
 	bc().setRestore(dialog_->restorePB);
 	bc().addReadOnly(dialog_->paragraphTab);
 }
+
 
 namespace {
 
@@ -123,12 +127,15 @@ VSpace setVSpaceFromWidgets(int spacing,
 
 } // namespace anon
 
+
 void QParagraph::apply()
 {
-	/* SPACING ABOVE */
+	ParagraphParameters & params = controller().params();
+
+	// SPACING ABOVE
 	// If a vspace kind is "Length" but there's no text in
 	// the input field, reset the kind to "None".
-	if (dialog_->spacingAbove->currentItem()==5
+	if (dialog_->spacingAbove->currentItem() == 5
 	    && dialog_->valueAbove->text().isEmpty())
 		dialog_->spacingAbove->setCurrentItem(0);
 
@@ -138,11 +145,10 @@ void QParagraph::apply()
 				     string(dialog_->unitAbove->currentText()),
 				     dialog_->keepAbove->isChecked());
 
+	params.spaceTop(space_top);
 
-	controller().params().spaceTop(space_top);
-
-	/* SPACING BELOW */
-	if (dialog_->spacingBelow->currentItem()==5
+	// SPACING BELOW
+	if (dialog_->spacingBelow->currentItem() == 5
 	    && dialog_->valueBelow->text().isEmpty())
 		dialog_->spacingBelow->setCurrentItem(0);
 
@@ -152,9 +158,9 @@ void QParagraph::apply()
 			     string(dialog_->unitBelow->currentText()),
 			     dialog_->keepBelow->isChecked());
 
-	controller().params().spaceBottom(space_bottom);
+	params.spaceBottom(space_bottom);
 
-	/* alignment */
+	// alignment
 	LyXAlignment align;
 	switch (dialog_->align->currentItem()) {
 	case 0:
@@ -172,9 +178,9 @@ void QParagraph::apply()
 	default:
 		align = LYX_ALIGN_BLOCK;
 	}
-	controller().params().align(align);
+	params.align(align);
 
-	/* get spacing */
+	// get spacing
 	Spacing::Space linespacing = Spacing::Default;
 	string other;
 	switch (dialog_->linespacing->currentItem()) {
@@ -197,19 +203,20 @@ void QParagraph::apply()
 	}
 
 	Spacing const spacing(linespacing, other);
-	controller().params().spacing(spacing);
+	params.spacing(spacing);
 
-	/* lines and pagebreaks */
-	controller().params().lineTop(dialog_->lineAbove->isChecked());
-	controller().params().lineBottom(dialog_->lineBelow->isChecked());
-	controller().params().pagebreakTop(dialog_->pagebreakAbove->isChecked());
-	controller().params().pagebreakBottom(dialog_->pagebreakBelow->isChecked());
-	/* label width */
-	controller().params().labelWidthString(string(dialog_->labelWidth->text()));
-	/* indendation */
-	controller().params().noindent(dialog_->noindent->isChecked());
+	// lines and pagebreaks
+	params.lineTop(dialog_->lineAbove->isChecked());
+	params.lineBottom(dialog_->lineBelow->isChecked());
+	params.pagebreakTop(dialog_->pagebreakAbove->isChecked());
+	params.pagebreakBottom(dialog_->pagebreakBelow->isChecked());
+	// label width
+	params.labelWidthString(string(dialog_->labelWidth->text()));
+	// indendation
+	params.noindent(dialog_->noindent->isChecked());
 
 }
+
 
 namespace {
 
@@ -248,23 +255,27 @@ void setWidgetsFromVSpace(VSpace const & space,
 		value->setEnabled(true);
 		unit->setEnabled(true);
 		string length = space.length().asString();
-		string const default_unit = (lyxrc.default_papersize>3) ? "cm" : "in";
+		string const default_unit =
+			(lyxrc.default_papersize > 3) ? "cm" : "in";
 		string supplied_unit = default_unit;
 		LyXLength len(length);
-		if ((isValidLength(length) || isStrDbl(length)) && !len.zero()) {
+		if ((isValidLength(length)
+		     || isStrDbl(length)) && !len.zero()) {
 			ostringstream buffer;
 			buffer << len.value();
 			length = buffer.str();
-			supplied_unit = subst(stringFromUnit(len.unit()),"%","%%");
+			supplied_unit = subst(stringFromUnit(len.unit()),
+					      "%", "%%");
 		}
+
 		int unit_item = 0;
 		int i = 0;
 		for (vector<string>::const_iterator it = units_.begin();
 		     it != units_.end(); ++it) {
-			if (*it==default_unit) {
+			if (*it == default_unit) {
 				unit_item = i;
 			}
-			if (*it==supplied_unit) {
+			if (*it == supplied_unit) {
 				unit_item = i;
 				break;
 			}
@@ -280,17 +291,20 @@ void setWidgetsFromVSpace(VSpace const & space,
 
 } // namespace anon
 
+
 void QParagraph::update_contents()
 {
-	/* label width */
-	string labelwidth = controller().params().labelWidthString();
+	ParagraphParameters const & params = controller().params();
+
+	// label width
+	string const & labelwidth = params.labelWidthString();
 	dialog_->labelWidth->setText(labelwidth.c_str());
 	dialog_->labelwidthGB->setEnabled(
 		labelwidth != _("Senseless with this layout!"));
 
-	/* alignment */
+	// alignment
 	int i;
-	switch (controller().params().align()) {
+	switch (params.align()) {
 	case LYX_ALIGN_LEFT:
 		i = 1;
 		break;
@@ -314,16 +328,16 @@ void QParagraph::update_contents()
 	dialog_->pagebreakAbove->setEnabled(!ininset);
 	dialog_->pagebreakBelow->setEnabled(!ininset);
 
-	/* lines, pagebreaks and indent */
-	dialog_->lineAbove->setChecked(controller().params().lineTop());
-	dialog_->lineBelow->setChecked(controller().params().lineBottom());
-	dialog_->pagebreakAbove->setChecked(controller().params().pagebreakTop());
-	dialog_->pagebreakBelow->setChecked(controller().params().pagebreakBottom());
-	dialog_->noindent->setChecked(controller().params().noindent());
+	// lines, pagebreaks and indent
+	dialog_->lineAbove->setChecked(params.lineTop());
+	dialog_->lineBelow->setChecked(params.lineBottom());
+	dialog_->pagebreakAbove->setChecked(params.pagebreakTop());
+	dialog_->pagebreakBelow->setChecked(params.pagebreakBottom());
+	dialog_->noindent->setChecked(params.noindent());
 
-	/* linespacing */
+	// linespacing
 	int linespacing;
-	Spacing const space = controller().params().spacing();
+	Spacing const & space = params.spacing();
 	switch (space.getSpace()) {
 	case Spacing::Single:
 		linespacing = 1;
@@ -351,20 +365,20 @@ void QParagraph::update_contents()
 		dialog_->linespacingValue->setEnabled(false);
 	}
 
-	/* vspace top */
-	setWidgetsFromVSpace(controller().params().spaceTop(),
+	// vspace top
+	setWidgetsFromVSpace(params.spaceTop(),
 			     dialog_->spacingAbove,
 			     dialog_->valueAbove,
 			     dialog_->unitAbove,
 			     dialog_->keepAbove,units_);
 
-	/* vspace bottom */
-	setWidgetsFromVSpace(controller().params().spaceBottom(),
+	// vspace bottom
+	setWidgetsFromVSpace(params.spaceBottom(),
 			     dialog_->spacingBelow,
 			     dialog_->valueBelow,
 			     dialog_->unitBelow,
 			     dialog_->keepBelow,units_);
 
-	/* no indent */
-	dialog_->noindent->setChecked(controller().params().noindent());
+	// no indent
+	dialog_->noindent->setChecked(params.noindent());
 }

@@ -45,13 +45,14 @@ public:
 	 * This relies on user to use the right encoding.
 	 */
 	virtual char getISOEncoded() const = 0;
-
-	/**
-	 * We need to be able to equality compare these for the
-	 * sake of the keymap business.
-	 */
-	virtual bool operator==(LyXKeySym const & k) const = 0;
 };
+
+
+/**
+ * We need to be able to equality compare these for the
+ * sake of the keymap business.
+ */
+bool operator==(LyXKeySym const & k1, LyXKeySym const & k1);
 
 typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 

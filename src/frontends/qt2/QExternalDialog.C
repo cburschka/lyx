@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -16,7 +16,7 @@
 
 #include "gettext.h"
 #include "ControlExternal.h"
- 
+
 #include <qwidget.h>
 #include <qpushbutton.h>
 #include <qfiledialog.h>
@@ -26,6 +26,7 @@
 
 #include "QExternalDialog.h"
 #include "QExternal.h"
+
 
 QExternalDialog::QExternalDialog(QExternal * form)
 	: QExternalDialogBase(0, 0, false, 0),
@@ -44,7 +45,7 @@ void QExternalDialog::show()
 	fileED->setFocus();
 }
 
- 
+
 void QExternalDialog::change_adaptor()
 {
 	form_->changed();
@@ -81,8 +82,11 @@ void QExternalDialog::updateClicked()
 
 void QExternalDialog::browseClicked()
 {
-	QString file = QFileDialog::getOpenFileName(QString::null,
-		_("External material (*)"), this, 0, _("Select external material"));
+	QString file =
+		QFileDialog::getOpenFileName(QString::null,
+					     _("External material (*)"),
+					     this, 0,
+					     _("Select external material"));
 	if (!file.isNull()) {
 		fileED->setText(file.latin1());
 		form_->changed();

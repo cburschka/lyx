@@ -20,15 +20,12 @@
 
 class QError;
 
-class QErrorDialog : public QErrorDialogBase
-{ Q_OBJECT
-
+class QErrorDialog : public QErrorDialogBase {
+	Q_OBJECT
 public:
 	QErrorDialog(QError * form);
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QError * form_;
 };

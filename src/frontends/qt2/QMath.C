@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -15,29 +15,33 @@
 #endif
 
 #include "debug.h"
- 
+
 #include "commandtags.h"
 #include "funcrequest.h"
 #include "LyXView.h"
 #include "BufferView.h"
- 
+
 #include "QMathDialog.h"
 #include "QMath.h"
 
 #include "iconpalette.h"
 
-// FIXME temporary HACK ! 
+// needless to say, this can't last for long
+extern BufferView * current_view;
+
+
+// FIXME temporary HACK !
 void createMathPanel()
 {
-	static QMath * dialog = 0; 
+	static QMath * dialog = 0;
 	if (!dialog) {
-		dialog = new QMath();
+		dialog = new QMath;
 		dialog->build_dialog();
 	}
 	dialog->do_show();
 }
- 
- 
+
+
 QMath::QMath()
 {
 }
@@ -47,16 +51,13 @@ void QMath::do_show()
 {
 	dialog_->show();
 }
- 
- 
+
+
 void QMath::build_dialog()
 {
 	dialog_ = new QMathDialog(this);
 }
 
- 
-// needless to say, this can't last for long
-extern BufferView * current_view;
 
 void QMath::subscript()
 {
@@ -74,7 +75,7 @@ void QMath::insert(string const & name)
 {
 	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + name));
 }
- 
+
 
 void QMath::insertCubeRoot()
 {
@@ -89,13 +90,13 @@ void QMath::insertMatrix()
 	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATRIX, "2 2"));
 }
 
- 
+
 void QMath::insertDelim(string const & str)
 {
 	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DELIM, str));
 }
 
- 
+
 void QMath::toggleDisplay()
 {
 	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DISPLAY));

@@ -3,8 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjornes 
- * \author John Levon 
+ * \author Lars Gullik Bjornes
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -29,36 +29,39 @@
 #include "frontends/Menubar.h"
 #include "frontends/Dialogs.h"
 #include "frontends/Timeout.h"
- 
+
 #include <boost/bind.hpp>
- 
+
 #include "QtView.h"
 #include "qfont_loader.h"
 #include "QCommandBuffer.h"
- 
+
 #include <qapplication.h>
 #include <qpixmap.h>
 #include <qmenubar.h>
 #include <qstatusbar.h>
- 
+
 using std::endl;
 
 namespace {
-	int const idle_timer_value = 3000;
-}
- 
+
+int const idle_timer_value = 3000;
+
+} // namespace anon
+
 // FIXME: this has to go away
 BufferView * current_view;
 
 qfont_loader fontloader;
 
+
 QtView::QtView(unsigned int width, unsigned int height)
 	: QMainWindow(), LyXView()
 {
 	resize(width, height);
- 
+
 	qApp->setMainWidget(this);
- 
+
 	bufferview_.reset(new BufferView(this, 0, 0, width, height));
 	::current_view = bufferview_.get();
 
@@ -66,19 +69,19 @@ QtView::QtView(unsigned int width, unsigned int height)
 	toolbar_.reset(new Toolbar(this, 0, 0, toolbardefaults));
 
 	statusBar()->setSizeGripEnabled(false);
- 
+
 	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
 	connect(&idle_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
- 
-	idle_timer_.start(idle_timer_value); 
- 
+
+	idle_timer_.start(idle_timer_value);
+
 	focus_command_buffer.connect(boost::bind(&QtView::focus_command_widget, this));
- 
+
 	commandbuffer_ = new QCommandBuffer(this, *controlcommand_);
- 
+
 	addToolBar(commandbuffer_, Bottom, true);
- 
-        //  assign an icon to main form
+
+	//  assign an icon to main form
 	string const iconname = LibFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty())
 		setIcon(QPixmap(iconname.c_str()));
@@ -95,12 +98,12 @@ QtView::~QtView()
 
 void QtView::message(string const & str)
 {
-	statusBar()->message(str.c_str()); 
+	statusBar()->message(str.c_str());
 	idle_timer_.stop();
 	idle_timer_.start(idle_timer_value);
 }
 
- 
+
 void QtView::focus_command_widget()
 {
 	commandbuffer_->focus_command();
@@ -112,25 +115,25 @@ void QtView::update_view_state_qt()
 	statusBar()->message(currentState(view().get()).c_str());
 }
 
- 
+
 void QtView::update_view_state()
 {
 	statusBar()->message(currentState(view().get()).c_str());
 }
 
- 
+
 void QtView::activated(int id)
 {
 	getLyXFunc().dispatch(id, true);
 }
- 
- 
+
+
 void QtView::closeEvent(QCloseEvent *)
 {
 	QuitLyX();
 }
 
- 
+
 void QtView::show(int x, int y, string const & title)
 {
 	move(x, y);

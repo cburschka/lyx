@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -13,8 +13,6 @@
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
-#include <vector>
 
 #include "ControlExternal.h"
 #include "gettext.h"
@@ -27,8 +25,11 @@
 #include "QExternalDialog.h"
 #include "QExternal.h"
 #include "Qt2BC.h"
- 
+
+#include <vector>
+
 typedef Qt2CB<ControlExternal, Qt2DB<QExternalDialog> > base_class;
+
 
 QExternal::QExternal()
 	: base_class(_("External"))
@@ -64,26 +65,28 @@ void QExternal::update_contents()
 	dialog_->paramsED->setText(params.parameters.c_str());
 
 	dialog_->externalCO->setCurrentItem(controller().getTemplateNumber(params.templ.lyxName));
-	dialog_->externalTV->setText(controller().params().templ.helpText.c_str());
+	dialog_->externalTV->setText(params.templ.helpText.c_str());
 	isValid();
 }
 
 
 string const & QExternal::helpText()
 {
-	controller().params().templ = controller().getTemplate(dialog_->externalCO->currentItem() + 1);
-	return controller().params().templ.helpText;
+	InsetExternal::Params & params = controller().params();
+
+	params.templ = controller().getTemplate(dialog_->externalCO->currentItem() + 1);
+	return params.templ.helpText;
 }
 
 
 void QExternal::apply()
 {
-	controller().params().filename =
-		string(dialog_->fileED->text().latin1());
-	controller().params().parameters =
-		string(dialog_->paramsED->text().latin1());
+	InsetExternal::Params & params = controller().params();
 
-	controller().params().templ = controller().getTemplate(dialog_->externalCO->currentItem() + 1);
+	params.filename = dialog_->fileED->text().latin1();
+	params.parameters = dialog_->paramsED->text().latin1();
+
+	params.templ = controller().getTemplate(dialog_->externalCO->currentItem() + 1);
 }
 
 

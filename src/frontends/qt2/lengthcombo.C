@@ -20,6 +20,7 @@
 
 #include <qwhatsthis.h>
 
+
 LengthCombo::LengthCombo(QWidget * parent, char * name)
 	: QComboBox(parent, name)
 {

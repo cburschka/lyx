@@ -20,18 +20,14 @@
 
 class QMinipage;
 
-class QMinipageDialog : public QMinipageDialogBase
-{ Q_OBJECT
-
+class QMinipageDialog : public QMinipageDialogBase {
+	Q_OBJECT
 public:
 	QMinipageDialog(QMinipage * form);
-
 protected slots:
 	virtual void change_adaptor();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QMinipage * form_;
 };

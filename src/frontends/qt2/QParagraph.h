@@ -24,14 +24,13 @@ class ControlParagraph;
 class QParagraphDialog;
 
 
-class QParagraph :
-	public Qt2CB<ControlParagraph, Qt2DB<QParagraphDialog> >
+class QParagraph
+	: public Qt2CB<ControlParagraph, Qt2DB<QParagraphDialog> >
 {
+public:
 	friend class QParagraphDialog;
 
-public:
 	QParagraph();
-
 private:
 	/// Apply changes
 	virtual void apply();

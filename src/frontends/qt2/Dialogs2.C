@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Allan Rae
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -17,6 +17,7 @@
 #endif
 
 #include "Dialogs_impl.h"
+
 
 void Dialogs::showAboutlyx()
 {
@@ -215,11 +216,11 @@ void Dialogs::showSpellchecker()
 }
 
 
-void Dialogs::showTabular(InsetTabular * it)
+void Dialogs::showTabular(InsetTabular *)
 {}
 
 
-void Dialogs::updateTabular(InsetTabular * it)
+void Dialogs::updateTabular(InsetTabular *)
 {}
 
 

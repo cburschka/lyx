@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven 
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
@@ -26,6 +26,7 @@
 #include <qcheckbox.h>
 
 typedef Qt2CB<ControlFloat, Qt2DB<QFloatDialog> > base_class;
+
 
 QFloat::QFloat()
 	: base_class(_("Float Settings"))
@@ -63,7 +64,9 @@ void QFloat::update_contents()
 	bool force = false;
 	bool here_definitely = false;
 
-	string const placement(controller().params().placement);
+	FloatParams const & params = controller().params();
+
+	string const & placement = params.placement;
 
 	if (placement.empty()) {
 		def_placement = true;
@@ -86,7 +89,7 @@ void QFloat::update_contents()
 			here = true;
 		}
 	}
- 
+
 	dialog_->defaultsCB->setChecked(def_placement);
 	dialog_->topCB->setChecked(top);
 	dialog_->bottomCB->setChecked(bottom);
@@ -95,25 +98,27 @@ void QFloat::update_contents()
 	dialog_->ignoreCB->setChecked(force);
 	dialog_->ignoreCB->setEnabled(top || bottom || page || here);
 	dialog_->heredefinitelyCB->setChecked(here_definitely);
- 
-	if (controller().params().wide) {
+
+	if (params.wide) {
 		dialog_->herepossiblyCB->setChecked(false);
 		dialog_->bottomCB->setChecked(false);
 	}
- 
-	dialog_->spanCB->setChecked(controller().params().wide);
+
+	dialog_->spanCB->setChecked(params.wide);
 }
 
- 
+
 void QFloat::apply()
 {
-	controller().params().wide = dialog_->spanCB->isChecked(); 
+	FloatParams & params = controller().params();
+
+	params.wide = dialog_->spanCB->isChecked();
 
 	if (dialog_->defaultsCB->isChecked()) {
-		controller().params().placement = "";
+		params.placement.erase();
 		return;
 	}
- 
+
 	string placement;
 
 	if (dialog_->heredefinitelyCB->isChecked()) {
@@ -135,5 +140,5 @@ void QFloat::apply()
 			placement += "h";
 		}
 	}
-	controller().params().placement = placement;
+	params.placement = placement;
 }

@@ -3,13 +3,12 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
-#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -27,7 +26,9 @@
 #include <qcheckbox.h>
 #include <qcombobox.h>
 
+
 typedef Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > base_class;
+
 
 QSearch::QSearch()
 	: base_class(_("Search"))
@@ -52,7 +53,8 @@ void QSearch::build_dialog()
 }
 
 
-void QSearch::find(string const & str, bool casesens, bool words, bool backwards)
+void QSearch::find(string const & str, bool casesens,
+		   bool words, bool backwards)
 {
 	controller().find(str, casesens, words, !backwards);
 }

@@ -3,13 +3,12 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
-#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -18,6 +17,7 @@
 #include "LyXView.h"
 #include "gettext.h"
 #include "ControlLog.h"
+#include "Lsstream.h"
 
 #include <qtextview.h>
 #include <qpushbutton.h>
@@ -25,6 +25,8 @@
 #include "QLogDialog.h"
 #include "QLog.h"
 #include "Qt2BC.h"
+
+#include <fstream>
 
 using std::ifstream;
 using std::getline;
@@ -47,7 +49,8 @@ void QLog::build_dialog()
 
 void QLog::update_contents()
 {
-	std::pair<Buffer::LogType, string> const logfile = controller().logfile();
+	std::pair<Buffer::LogType, string> const & logfile =
+		controller().logfile();
 
 	if (logfile.first == Buffer::buildlog)
 		dialog_->setCaption(_("Build log"));
@@ -65,11 +68,8 @@ void QLog::update_contents()
 		return;
 	}
 
-	string text;
-	string line;
+	ostringstream ost;
+	ost << ifstr.rdbuf();
 
-	while (getline(ifstr, line))
-		text += line + "\n";
-
-	dialog_->logTV->setText(text.c_str());
+	dialog_->logTV->setText(ost.str().c_str());
 }

@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -19,8 +19,10 @@
 #include "ControlBibtex.h"
 #include "gettext.h"
 #include "debug.h"
+
 #include "support/filetools.h" // ChangeExtension
 #include "support/lstrings.h" // getVectorFromString
+
 #include <qlineedit.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
@@ -34,6 +36,7 @@
 using std::vector;
 
 typedef Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> > base_class;
+
 
 QBibtex::QBibtex()
 	: base_class(_("BibTeX"))
@@ -82,7 +85,7 @@ void QBibtex::update_contents()
 		if (contains(bibstyle,','))
 			bibstyle = split(bibstyle, bibtotoc, ',');
 		else
-			bibstyle = "";
+			bibstyle.erase();
 	} else
 		dialog_->bibtocCB->setChecked(false);
 
@@ -91,7 +94,7 @@ void QBibtex::update_contents()
 		controller().getBibStyles(),"\n");
 	for (vector<string>::const_iterator it = str.begin();
 		it != str.end(); ++it) {
-		dialog_->styleCB->insertItem(ChangeExtension(*it,"").c_str());
+		dialog_->styleCB->insertItem(ChangeExtension(*it, "").c_str());
 	}
 	dialog_->styleCB->insertItem(bibstyle.c_str(),0);
 }

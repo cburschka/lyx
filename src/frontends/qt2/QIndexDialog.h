@@ -20,20 +20,16 @@
 
 class QIndex;
 
-class QIndexDialog : public QIndexDialogBase
-{ Q_OBJECT
-
+class QIndexDialog : public QIndexDialogBase {
+	Q_OBJECT
 public:
 	QIndexDialog(QIndex * form);
 
 	virtual void show();
-
 protected slots:
 	virtual void change_adaptor();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QIndex * form_;
 };

@@ -17,9 +17,7 @@
 class QCommandEdit : public QLineEdit {
 	Q_OBJECT
 public:
-
 	QCommandEdit(QWidget * parent);
-
 signals:
 	/// cancel
 	void escapePressed();
@@ -32,7 +30,6 @@ signals:
 
 	/// complete
 	void rightPressed();
-
 protected:
 	virtual void keyPressEvent(QKeyEvent * e);
 };

@@ -21,7 +21,7 @@
 #include "buffer.h"
 #include "gettext.h"
 
-#include "frontends/Liason.h"
+#include "frontends/LyXView.h"
 
 
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
@@ -39,7 +39,7 @@ void ControlPreamble::apply()
 
 	buffer()->params.preamble = params();
 	buffer()->markDirty();
-	Liason::setMinibuffer(&lv_, _("LaTeX preamble set"));
+	lv_.message(_("LaTeX preamble set"));
 }
 
 

@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -14,11 +14,8 @@
 #pragma implementation
 #endif
 
-#include <iostream>
-#include <boost/scoped_array.hpp>
- 
 #include "font_metrics.h"
-#include "support/lstrings.h" 
+#include "support/lstrings.h"
 #include "lyxrc.h"
 #include "debug.h"
 #include "LyXView.h"
@@ -29,17 +26,22 @@
 #include "qfont_loader.h"
 #include "QLPainter.h"
 #include "QLImage.h"
- 
+
+#include <boost/scoped_array.hpp>
+
 #include <qpainter.h>
-#include <qbrush.h> 
+#include <qbrush.h>
 #include <qcolor.h>
 
+#include <iostream>
+
 using std::endl;
+
 
 QLPainter::QLPainter(QWorkArea & qwa)
 	: Painter(), owner_(qwa), paint_check_(0)
 {
-	qp_.reset(new QPainter());
+	qp_.reset(new QPainter);
 }
 
 
@@ -49,7 +51,7 @@ void QLPainter::start()
 		qp_->begin(owner_.getPixmap());
 }
 
- 
+
 void QLPainter::end()
 {
 	if (paint_check_ == 0) {
@@ -59,7 +61,7 @@ void QLPainter::end()
 	}
 }
 
- 
+
 int QLPainter::paperWidth() const
 {
 	return owner_.workWidth();
@@ -71,29 +73,29 @@ int QLPainter::paperHeight() const
 	return owner_.workHeight();
 }
 
- 
-QPainter & QLPainter::setPen(LColor::color c, 
+
+QPainter & QLPainter::setPen(LColor::color c,
 	Painter::line_style ls, Painter::line_width lw)
 {
 	QPen pen = qp_->pen();
- 
+
 	pen.setColor(lcolor.getX11Name(c).c_str());
- 
+
 	switch (ls) {
 		case line_solid: pen.setStyle(QPen::SolidLine); break;
 		case line_onoffdash: pen.setStyle(QPen::DotLine); break;
 	}
- 
+
 	switch (lw) {
 		case line_thin: pen.setWidth(0); break;
 		case line_thick: pen.setWidth(3); break;
 	}
- 
+
 	qp_->setPen(pen);
 	return *qp_;
 }
- 
- 
+
+
 Painter & QLPainter::point(int x, int y, LColor::color c)
 {
 	setPen(c).drawPoint(x, y);
@@ -101,7 +103,7 @@ Painter & QLPainter::point(int x, int y, LColor::color c)
 }
 
 
-Painter & QLPainter::line(int x1, int y1, 
+Painter & QLPainter::line(int x1, int y1,
 	int x2, int y2,
 	LColor::color col,
 	line_style ls,
@@ -112,7 +114,7 @@ Painter & QLPainter::line(int x1, int y1,
 }
 
 
-Painter & QLPainter::lines(int const * xp, int const * yp, 
+Painter & QLPainter::lines(int const * xp, int const * yp,
 	int np,
 	LColor::color col,
 	line_style ls,
@@ -123,9 +125,7 @@ Painter & QLPainter::lines(int const * xp, int const * yp,
 	// Must use new as np is not known at compile time.
 	boost::scoped_array<QCOORD> points(new QCOORD[np * 2]);
 
-	int j = 0;
- 
-	for (int i = 0; i < np; ++i) {
+	for (int i = 0, j = 0; i < np; ++i) {
 		points[j++] = xp[i];
 		points[j++] = yp[i];
 	}
@@ -136,51 +136,50 @@ Painter & QLPainter::lines(int const * xp, int const * yp,
 }
 
 
-Painter & QLPainter::rectangle(int x, int y, 
+Painter & QLPainter::rectangle(int x, int y,
 	int w, int h,
 	LColor::color col,
 	line_style ls,
 	line_width lw)
 {
-	//lyxerr << "rectangle " << x<<","<<y << " " <<w<<","<<h<<endl; 
+	//lyxerr << "rectangle " << x<<","<<y << " " <<w<<","<<h<<endl;
 	setPen(col, ls, lw).drawRect(x, y, w, h);
 	return *this;
 }
 
 
-Painter & QLPainter::fillRectangle(int x, int y, 
+Painter & QLPainter::fillRectangle(int x, int y,
 	int w, int h,
 	LColor::color col)
 {
-	//lyxerr << "fillRectangle " << x<<","<<y << " " <<w<<","<<h<<endl; 
+	//lyxerr << "fillRectangle " << x<<","<<y << " " <<w<<","<<h<<endl;
 	qp_->fillRect(x, y, w, h, QColor(lcolor.getX11Name(col).c_str()));
 	return *this;
 }
 
 
-Painter & QLPainter::fillPolygon(int const * xp, int const * yp, 
+Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
 	int np, LColor::color col)
 {
 	// Must use new as np is not known at compile time.
 	boost::scoped_array<QCOORD> points(new QCOORD[np * 2]);
 
-	//if (1) return *this; 
-	int j = 0;
- 
-	for (int i = 0; i < np; ++i) {
+	//if (1) return *this;
+
+	for (int i = 0, j = 0; i < np; ++i) {
 		points[j++] = xp[i];
 		points[j++] = yp[i];
 	}
 
 	setPen(col);
-	qp_->setBrush(lcolor.getX11Name(col).c_str()); 
+	qp_->setBrush(lcolor.getX11Name(col).c_str());
 	qp_->drawPolygon(QPointArray(np, points.get()));
 	qp_->setBrush(Qt::NoBrush);
 
 	return *this;
 }
 
- 
+
 Painter & QLPainter::arc(int x, int y,
 	unsigned int w, unsigned int h,
 	int a1, int a2, LColor::color col)
@@ -188,13 +187,13 @@ Painter & QLPainter::arc(int x, int y,
 	lyxerr[Debug::GUI] << "arc: " << x<<","<<y
 		<< " " << w<<","<<h << ", angles "
 		<< a1 << " - " << a2 << endl;
-	// LyX usings 1/64ths degree, Qt usings 1/16th 
+	// LyX usings 1/64ths degree, Qt usings 1/16th
 	setPen(col).drawArc(x, y, w, h, a1 / 4, a2 / 4);
-        return *this;
+	return *this;
 }
 
- 
-Painter & QLPainter::image(int x, int y, 
+
+Painter & QLPainter::image(int x, int y,
 	int w, int h,
 	grfx::Image const & i)
 {
@@ -203,14 +202,14 @@ Painter & QLPainter::image(int x, int y,
 }
 
 
-Painter & QLPainter::text(int x, int y, 
+Painter & QLPainter::text(int x, int y,
 	string const & s, LyXFont const & f)
 {
 	return text(x, y, s.data(), s.length(), f);
 }
 
 
-Painter & QLPainter::text(int x, int y, 
+Painter & QLPainter::text(int x, int y,
 	char c, LyXFont const & f)
 {
 	char s[2] = { c, '\0' };
@@ -228,7 +227,7 @@ void QLPainter::smallCapsText(int x, int y,
 	QFont const & qsmallfont = fontloader.get(smallfont);
 	QFontMetrics const & qfontm = QFontMetrics(qfont);
 	QFontMetrics const & qsmallfontm = QFontMetrics(qsmallfont);
- 
+
 	int tmpx = x;
 	size_t ls = s.length();
 	for (size_t i = 0; i < ls; ++i) {
@@ -245,8 +244,8 @@ void QLPainter::smallCapsText(int x, int y,
 	}
 }
 
- 
-Painter & QLPainter::text(int x, int y, 
+
+Painter & QLPainter::text(int x, int y,
 	char const * s, size_t ls,
 	LyXFont const & f)
 {
@@ -263,7 +262,7 @@ Painter & QLPainter::text(int x, int y,
 		str[i] = QChar(encoding->ucs(s[i]));
 	// HACK: QT3 refuses to show single compose characters
 	if (ls = 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
-		str = ' '+str;
+		str = ' ' + str;
 #else
 	for (size_t i = 0; i < ls; ++i)
 		str += QChar(encoding->ucs(s[i]));
@@ -285,6 +284,6 @@ Painter & QLPainter::text(int x, int y,
 	if (f.underbar() == LyXFont::ON) {
 		underline(f, x, y, font_metrics::width(s, ls, f));
 	}
-	
+
 	return *this;
 }

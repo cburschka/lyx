@@ -33,7 +33,6 @@
 #include "lyxrc.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "Liason.h"
 #include "CutAndPaste.h"
 #include "bufferview_funcs.h"
 #include "xforms_helpers.h"
@@ -54,9 +53,8 @@
 #include <functional>
 
 using std::bind2nd;
-
-using Liason::setMinibuffer;
 using std::vector;
+
 
 FormDocument::FormDocument(LyXView & lv, Dialogs & d)
 	: FormBaseBD(lv, d, _("Document Layout")),
@@ -358,7 +356,7 @@ void FormDocument::apply()
 		lv_.view()->redoCurrentBuffer();
 	}
 	lv_.buffer()->markDirty();
-	setMinibuffer(&lv_, _("Document layout set"));
+	lv_.message(_("Document layout set"));
 }
 
 
@@ -752,7 +750,7 @@ bool FormDocument::class_apply()
 		if (textclasslist[params.textclass].load()) {
 			// successfully loaded
 			redo = true;
-			setMinibuffer(&lv_, _("Converting document to new document class..."));
+			lv_.message(_("Converting document to new document class..."));
 			int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
 				old_class, params.textclass,
 				&*(lv_.buffer()->paragraphs.begin()),

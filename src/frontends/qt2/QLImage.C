@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -46,7 +46,7 @@ Image::ImagePtr QLImage::newImage()
 Image::FormatList QLImage::loadableFormats()
 {
 	static FormatList fmts;
- 
+
 	if (!fmts.empty())
 		return fmts;
 
@@ -58,14 +58,14 @@ Image::FormatList QLImage::loadableFormats()
 		<< "\nThe image loader can load the following directly:\n";
 
 	QStrList qt_formats = QImageIO::inputFormats();
- 
+
 	QStrListIterator it(qt_formats);
 
 	for (; it.current(); ++it) {
 	   lyxerr[Debug::GRAPHICS] << it.current() << endl;
 
 		string ext = lowercase(it.current());
-	 
+
 		// special case
 		if (ext == "jpeg")
 			ext = "jpg";
@@ -99,7 +99,8 @@ QLImage::QLImage()
 
 
 QLImage::QLImage(QLImage const & other)
-	: Image(other), pixmap_(other.pixmap_), xformed_pixmap_(other.xformed_pixmap_)
+	: Image(other), pixmap_(other.pixmap_),
+	  xformed_pixmap_(other.xformed_pixmap_)
 {
 }
 
@@ -142,11 +143,11 @@ void QLImage::load(string const & filename)
 		finishedLoading(false);
 		return;
 	}
-	lyxerr[Debug::GRAPHICS] << "just Loaded." << endl; 
+	lyxerr[Debug::GRAPHICS] << "just Loaded." << endl;
 	xformed_pixmap_ = pixmap_;
 	lyxerr[Debug::GRAPHICS] << "pixmap isNull " << pixmap_.isNull()
 		<< " xformed_pixmap_ isNull " << xformed_pixmap_.isNull() << endl;
-	finishedLoading(true); 
+	finishedLoading(true);
 }
 
 
@@ -158,9 +159,9 @@ bool QLImage::setPixmap(Params const & params)
 		return false;
 
 	lyxerr[Debug::GRAPHICS] << "setPixmap()" << endl;
- 
+
 // FIXME
-#if 0  
+#if 0
 	int color_key;
 	switch (params.display) {
 	case MonochromeDisplay:
@@ -187,7 +188,7 @@ bool QLImage::setPixmap(Params const & params)
 		flimage_replace_pixel(image_, image_->fill_color, fill);
 		image_->fill_color = fill;
 	}
-#endif 
+#endif
 
 	return true;
 }
@@ -239,7 +240,7 @@ void QLImage::rotate(Params const & params)
 	// degree units.
 
 	lyxerr[Debug::GRAPHICS] << "rotating image by " << params.angle << " degrees" << endl;
- 
+
 	QWMatrix m;
 	m.rotate(-params.angle);
 	xformed_pixmap_ = xformed_pixmap_.xForm(m);

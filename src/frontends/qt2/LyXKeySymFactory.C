@@ -9,7 +9,7 @@
  */
 
 #include <config.h>
- 
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -24,5 +24,5 @@ LyXKeySym * create()
 {
 	return new QLyXKeySym();
 }
- 
-}
+
+} // namespace LyXKeySymFactory

@@ -19,11 +19,9 @@
 #include "gettext.h"
 #include "lyxfind.h"
 
-#include "frontends/Liason.h"
+#include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
-
-using Liason::setMinibuffer;
 
 
 ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
@@ -39,7 +37,7 @@ void ControlSearch::find(string const & search,
 					    matchword);
 
 	if (!found)
-		setMinibuffer(&lv_, _("String not found!"));
+		lv_.message(_("String not found!"));
 }
 
 
@@ -56,14 +54,14 @@ void ControlSearch::replace(string const & search, string const & replace,
 				    matchword, all, once);
 
 	if (replace_count == 0) {
-		setMinibuffer(&lv_, _("String not found!"));
+		lv_.message(_("String not found!"));
 	} else {
 		if (replace_count == 1) {
-			setMinibuffer(&lv_, _("String has been replaced."));
+			lv_.message(_("String has been replaced."));
 		} else {
 			string str = tostr(replace_count);
 			str += _(" strings have been replaced.");
-			setMinibuffer(&lv_, str.c_str());
+			lv_.message(str.c_str());
 		}
 	}
 }

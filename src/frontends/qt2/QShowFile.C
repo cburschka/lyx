@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -20,11 +20,12 @@
 #include "QShowFile.h"
 #include "QShowFileDialog.h"
 #include "Qt2BC.h"
- 
+
 #include <qtextview.h>
 #include <qpushbutton.h>
 
 typedef Qt2CB<ControlShowFile, Qt2DB<QShowFileDialog> > base_class;
+
 
 QShowFile::QShowFile()
 	: base_class(_("ShowFile"))

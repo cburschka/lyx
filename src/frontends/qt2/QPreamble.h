@@ -30,7 +30,6 @@ public:
 	friend class QPreambleDialog;
 	///
 	QPreamble();
-
 private:
 	/// Apply changes
 	virtual void apply();

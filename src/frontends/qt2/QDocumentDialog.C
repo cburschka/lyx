@@ -51,9 +51,11 @@
 #include <qcheckbox.h>
 #include <qspinbox.h>
 #include "lengthcombo.h"
-/* 
- *  Constructs a DocumentDialog which is a child of 'parent', with the 
- *  name 'name' and widget flags set to 'f' 
+
+
+/*
+ *  Constructs a DocumentDialog which is a child of 'parent', with the
+ *  name 'name' and widget flags set to 'f'
  *
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
@@ -69,7 +71,7 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 		form, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
-	
+
 	moduleLB->clear();
 	moduleLB->insertItem( _("Layout"), LAYOUT );
 	moduleLB->insertItem( _("Packages"), PACKAGES );
@@ -101,7 +103,7 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 	moduleStack->addWidget(numberingModule,NUMBERING);
 	moduleStack->addWidget(biblioModule,BIBLIOGRAPHY);
 	moduleStack->addWidget(preambleModule,PREAMBLE);
-	
+
 	moduleStack->raiseWidget(LAYOUT);
 
 	//QPixmap image("standard.xpm");
@@ -112,7 +114,7 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 	f.setWeight( QFont::Bold );
 	titleL->setFont( f );
 	setTitle(LAYOUT);
-	
+
 	/* preamble */
 	connect( preambleModule->preambleMLE, SIGNAL( textChanged() ),
 		 this , SLOT( change_adaptor() ) );
@@ -177,18 +179,18 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 		 this , SLOT( change_adaptor() ) );
 	connect( layoutModule->skipLengthCO, SIGNAL( activated(int) ),
 		 this , SLOT( change_adaptor() ) );
-	
+
 	connect( layoutModule->classCO, SIGNAL( activated(int) ),
 		 this , SLOT( classChanged() ) );
 	connect( layoutModule->skipCO, SIGNAL( activated(int) ),
 		 this , SLOT( setSkip(int) ) );
 	connect( layoutModule->skipRB, SIGNAL( toggled(bool) ),
 		 this , SLOT( enableSkip(bool) ) );
-	
+
 	/* margins */
 	connect( marginsModule->marginCO, SIGNAL( activated(int) ),
 		 this , SLOT( setCustomMargins(int) ) );
-	
+
 	connect( marginsModule->marginCO, SIGNAL( activated(int) ),
 		 this , SLOT( change_adaptor() ) );
 	connect( marginsModule->topLE, SIGNAL( textChanged(const QString&) ),
@@ -219,7 +221,7 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 		 this , SLOT( change_adaptor() ) );
 	connect( marginsModule->footskipUnit, SIGNAL( activated(int) ),
 		 this , SLOT( change_adaptor() ) );
-	
+
 	/* paper */
 	connect( paperModule->papersizeCO, SIGNAL( activated(int) ),
 		 this , SLOT( setMargins(int) ) );
@@ -227,7 +229,7 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 		 this , SLOT( setCustomPapersize(int) ) );
 	connect( paperModule->papersizeCO, SIGNAL( activated(int) ),
 		 this , SLOT( setCustomPapersize(int) ) );
-	
+
 	connect( paperModule->papersizeCO, SIGNAL( activated(int) ),
 		 this , SLOT( change_adaptor() ) );
 	connect( paperModule->paperheightLE, SIGNAL( textChanged(const QString&) ),
@@ -246,8 +248,9 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 		 this , SLOT( change_adaptor() ) );
 	connect( paperModule->facingPagesCB, SIGNAL( toggled(bool) ),
 		 this , SLOT( change_adaptor() ) );
-	
+
 }
+
 
 void QDocumentDialog::showPreamble()
 {
@@ -256,7 +259,8 @@ void QDocumentDialog::showPreamble()
 	QDocumentDialogBase::show();
 }
 
-/*  
+
+/*
  *  Destroys the object and frees any allocated resources
  */
 QDocumentDialog::~QDocumentDialog()
@@ -264,7 +268,8 @@ QDocumentDialog::~QDocumentDialog()
     // no need to delete child widgets, Qt does it all for us
 }
 
-/* 
+
+/*
  * public slot
  */
 
@@ -301,32 +306,37 @@ void QDocumentDialog::setTitle(int item)
 	}
 }
 
-/* 
+
+/*
  * public slot
  */
 void QDocumentDialog::saveDocDefault()
 {}
 
-/* 
+
+/*
  * public slot
  */
 void QDocumentDialog::restore()
 {
-    qWarning( "DocumentDialog::restore() not yet implemented!" ); 
+    qWarning( "DocumentDialog::restore() not yet implemented!" );
 }
 
-/* 
+
+/*
  * public slot
  */
 void QDocumentDialog::useClassDefaults()
 {
-    qWarning( "DocumentDialog::useClassDefaults() not yet implemented!" ); 
+    qWarning( "DocumentDialog::useClassDefaults() not yet implemented!" );
 }
+
 
 void QDocumentDialog::change_adaptor()
 {
 	form_->changed();
 }
+
 
 void QDocumentDialog::closeEvent(QCloseEvent * e)
 {
@@ -334,17 +344,20 @@ void QDocumentDialog::closeEvent(QCloseEvent * e)
 	e->accept();
 }
 
+
 void QDocumentDialog::setLSpacing(int item)
 {
-	packagesModule->lspacingLE->setEnabled(item==3);
+	packagesModule->lspacingLE->setEnabled(item == 3);
 }
+
 
 void QDocumentDialog::setSkip(int item)
 {
-	bool enable = (item==3);
+	bool enable = (item == 3);
 	layoutModule->skipLE->setEnabled(enable);
 	layoutModule->skipLengthCO->setEnabled(enable);
 }
+
 
 void QDocumentDialog::enableSkip(bool skip)
 {
@@ -355,6 +368,7 @@ void QDocumentDialog::enableSkip(bool skip)
 		setSkip(layoutModule->skipCO->currentItem());
 }
 
+
 void QDocumentDialog::setMargins(int papersize)
 {
 	QStringList a4only;
@@ -362,7 +376,7 @@ void QDocumentDialog::setMargins(int papersize)
 	a4only << _("Small Margins") << _( "Very small Margins")
 	       << _("Very wide Margins ");
 	normal << _("Default") << _("Custom");
-	
+
 	int olditem = marginsModule->marginCO->currentItem();
 	marginsModule->marginCO->clear();
 	marginsModule->marginCO->insertStringList(normal);
@@ -376,8 +390,8 @@ void QDocumentDialog::setMargins(int papersize)
 
 void QDocumentDialog::setCustomPapersize(int papersize)
 {
-	bool const custom = (papersize==1);
-	
+	bool const custom = (papersize == 1);
+
 	paperModule->paperwidthL->setEnabled(custom);
 	paperModule->paperwidthLE->setEnabled(custom);
 	paperModule->paperwidthUnitCO->setEnabled(custom);
@@ -390,8 +404,8 @@ void QDocumentDialog::setCustomPapersize(int papersize)
 
 void QDocumentDialog::setCustomMargins(int margin)
 {
-	bool const custom = (margin==1);
-	
+	bool const custom = (margin == 1);
+
 	marginsModule->topL->setEnabled(custom);
 	marginsModule->topLE->setEnabled(custom);
 	marginsModule->topUnit->setEnabled(custom);
@@ -422,11 +436,12 @@ void QDocumentDialog::setCustomMargins(int margin)
 
 }
 
+
 void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 {
 	layoutModule->fontsizeCO->clear();
 	layoutModule->fontsizeCO->insertItem("default");
-	
+
 	for (int n=0; !token(items,'|',n).empty(); ++n)
 		layoutModule->fontsizeCO->
 			insertItem(token(items,'|',n).c_str());
@@ -438,6 +453,7 @@ void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 		}
 	}
 }
+
 
 void QDocumentDialog::updatePagestyle(string const & items, string const & sel)
 {
@@ -456,14 +472,13 @@ void QDocumentDialog::updatePagestyle(string const & items, string const & sel)
 	}
 }
 
+
 void QDocumentDialog::classChanged()
 {
 	updateFontsize(form_->controller().textClass().opt_fontsize(),
 		       form_->controller().params().fontsize);
-	
+
 	updatePagestyle(form_->controller().textClass().opt_pagestyle(),
 			form_->controller().params().pagestyle);
-	
+
 }
-
-

@@ -24,14 +24,13 @@ class ControlRef;
 class QRefDialog;
 
 
-class QRef :
-	public Qt2CB<ControlRef, Qt2DB<QRefDialog> >
+class QRef
+	: public Qt2CB<ControlRef, Qt2DB<QRefDialog> >
 {
+public:
 	friend class QRefDialog;
 
-public:
 	QRef();
-
 private:
 	/// apply changes
 	virtual void apply();

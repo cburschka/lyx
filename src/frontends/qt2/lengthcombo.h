@@ -33,10 +33,8 @@ public:
 
 	/// get the current item
 	LyXLength::UNIT currentLengthItem() const;
-
 protected slots:
 	virtual void has_activated(int index);
-
 signals:
 	/// the current selection has changed
 	void selectionChanged(LyXLength::UNIT unit);

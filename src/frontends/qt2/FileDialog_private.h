@@ -27,11 +27,10 @@ class LyXFileDialog : public QFileDialog
 	Q_OBJECT
 public:
 	LyXFileDialog(string const & p, string const & m, string const & t,
-		FileDialog::Button const & b1, FileDialog::Button const & b2);
-
+		      FileDialog::Button const & b1,
+		      FileDialog::Button const & b2);
 public slots:
 	void buttonClicked();
-
 private:
 	QToolButton * b1_;
 	string b1_dir_;

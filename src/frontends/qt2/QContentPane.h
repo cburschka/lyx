@@ -19,6 +19,7 @@
 #include <qwidget.h>
 #include <qevent.h>
 #include <qpixmap.h>
+
 #include <boost/scoped_ptr.hpp>
 
 class QWorkArea;
@@ -43,18 +44,17 @@ struct double_click {
 		state(e->button()), active(true) {}
 };
 
+
 /**
  * Widget for actually drawing the document on
  */
 class QContentPane : public QWidget {
 	Q_OBJECT
-
 public:
 	QContentPane(QWorkArea * parent);
 
 	/// return the backing pixmap
 	QPixmap * pixmap() const { return pixmap_.get(); }
-
 protected:
 	/// repaint part of the widget
 	void paintEvent(QPaintEvent * e);
@@ -72,12 +72,10 @@ protected:
 
 	/// key press
 	void keyPressEvent(QKeyEvent * e);
-
 public slots:
 	void doubleClickTimeout();
 
 	void scrollBarChanged(int);
-
 private:
 	/// owning widget
 	QWorkArea * wa_;

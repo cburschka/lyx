@@ -15,7 +15,7 @@
 #pragma implementation
 #endif
 
-#include <gettext.h>
+#include "gettext.h"
 
 #include "support/lstrings.h"
 
@@ -25,6 +25,7 @@
 #include <qpushbutton.h>
 #include <qspinbox.h>
 #include "emptytable.h"
+
 
 QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
 	: QTabularCreateDialogBase(0, 0, false, 0),

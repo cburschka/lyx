@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -14,8 +14,7 @@
 #pragma implementation
 #endif
 
-#include <fstream>
-
+#include "Lsstream.h"
 #include "support/lyxlib.h"
 #include "support/forkedcall.h"
 #include "support/filetools.h"
@@ -29,6 +28,8 @@
 #include <qpushbutton.h>
 #include <qmultilineedit.h>
 #include <qinputdialog.h>
+
+#include <fstream>
 
 using std::getline;
 
@@ -63,7 +64,7 @@ void QPreambleDialog::editClicked()
 	// find an editor
 	string editor = GetEnv("EDITOR");
 	if (editor.empty()) {
-		static string lastentry = "";
+		static string lastentry;
 		editor = QInputDialog::getText(
 			_("Enter editor program"), _("Editor"), QLineEdit::Normal,
 			lastentry.c_str()).latin1();
@@ -101,14 +102,12 @@ void QPreambleDialog::editClicked()
 		return;
 	}
 
-	string newtext;
-	string line;
+	ostringstream newtext;
+	newtext << in.rdbuf();
 
-	while (getline(in, line)) {
-		newtext += line + "\n";
-	}
-
+	// close the files before we delete the file
 	in.close();
+
 	lyx::unlink(filename);
-	preambleLE->setText(newtext.c_str());
+	preambleLE->setText(newtext.str().c_str());
 }

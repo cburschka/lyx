@@ -20,19 +20,16 @@
 
 class QTexinfo;
 
-class QTexinfoDialog : public QTexinfoDialogBase
-{ Q_OBJECT
-
+class QTexinfoDialog : public QTexinfoDialogBase {
+	Q_OBJECT
 public:
 	QTexinfoDialog(QTexinfo * form);
-
 protected slots:
 	virtual void change_adaptor();
 	virtual void rescanClicked();
 	virtual void viewClicked();
 	virtual void update();
 	virtual void enableViewPB();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

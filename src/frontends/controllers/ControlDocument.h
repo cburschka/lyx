@@ -32,6 +32,7 @@ class ControlDocument : public ControlDialogBD {
 public:
 	///
 	ControlDocument(LyXView &, Dialogs &);
+	///
 	~ControlDocument();
 	/// show latex preamble
 	void showPreamble();
@@ -43,9 +44,8 @@ public:
 	BufferParams & params();
 	///
 	void saveAsDefault();
-        ///
-        bool classApply();
-   
+	///
+	bool classApply();
 private:
 	/// apply settings
 	void apply();
@@ -56,5 +56,3 @@ private:
 };
 
 #endif // CONTROLDOCUMENT_H
-
-

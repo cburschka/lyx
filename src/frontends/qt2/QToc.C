@@ -101,33 +101,33 @@ void QToc::updateToc(int newdepth)
 	dialog_->tocLV->setUpdatesEnabled(false);
 
 	int curdepth = 0;
-	stack< pair< QListViewItem *, QListViewItem *> > istack;
-	QListViewItem *last = 0;
-	QListViewItem *parent = 0;
-	QListViewItem *item;
+	stack<pair<QListViewItem *, QListViewItem *> > istack;
+	QListViewItem * last = 0;
+	QListViewItem * parent = 0;
+	QListViewItem * item;
 
-	// Yes, it is this ugly. Two reasons - root items must have a QListView parent,
-	// rather than QListViewItem; and the TOC can move in and out an arbitrary number
-	// of levels
+	// Yes, it is this ugly. Two reasons - root items must have
+	// a QListView parent, rather than QListViewItem; and the
+	// TOC can move in and out an arbitrary number of levels
 
 	for (toc::Toc::const_iterator iter = toclist.begin();
-		iter != toclist.end(); ++iter) {
+	     iter != toclist.end(); ++iter) {
 		if (iter->depth == curdepth) {
 			// insert it after the last one we processed
 			if (!parent)
-				item = (last) ? (new QListViewItem(dialog_->tocLV,last)) : (new QListViewItem(dialog_->tocLV));
+				item = (last ? new QListViewItem(dialog_->tocLV,last) : new QListViewItem(dialog_->tocLV));
 			else
-				item = (last) ? (new QListViewItem(parent,last)) : (new QListViewItem(parent));
+				item = (last ? new QListViewItem(parent,last) : new QListViewItem(parent));
 		} else if (iter->depth > curdepth) {
 			int diff = iter->depth - curdepth;
 			// first save old parent and last
 			while (diff--)
 				istack.push(pair< QListViewItem *, QListViewItem * >(parent,last));
-			item = (last) ? (new QListViewItem(last)) : (new QListViewItem(dialog_->tocLV));
+			item = (last ? new QListViewItem(last) : new QListViewItem(dialog_->tocLV));
 			parent = last;
 		} else {
 			int diff = curdepth - iter->depth;
-			pair< QListViewItem *, QListViewItem * > top;
+			pair<QListViewItem *, QListViewItem * > top;
 			// restore context
 			while (diff--) {
 				top = istack.top();
@@ -137,14 +137,20 @@ void QToc::updateToc(int newdepth)
 			last = top.second;
 			// insert it after the last one we processed
 			if (!parent)
-				item = (last) ? (new QListViewItem(dialog_->tocLV,last)) : (new QListViewItem(dialog_->tocLV));
+				item = (last ? new QListViewItem(dialog_->tocLV,last) : new QListViewItem(dialog_->tocLV));
 			else
-				item = (last) ? (new QListViewItem(parent,last)) : (new QListViewItem(parent));
+				item = (last ? new QListViewItem(parent,last) : new QListViewItem(parent));
 		}
 
-		lyxerr[Debug::GUI] << "Table of contents" << endl << "Added item " << iter->str.c_str()
-			<< " at depth " << iter->depth << ", previous sibling \"" << (last ? last->text(0).latin1() : "0")
-			<< "\", parent \"" << (parent ? parent->text(0).latin1() : "0") << "\"" << endl;
+		lyxerr[Debug::GUI]
+			<< "Table of contents\n"
+			<< "Added item " << iter->str.c_str()
+			<< " at depth " << iter->depth
+			<< ", previous sibling \""
+			<< (last ? last->text(0).latin1() : "0")
+			<< "\", parent \""
+			<< (parent ? parent->text(0).latin1() : "0") << "\""
+			<< endl;
 		item->setText(0,iter->str.c_str());
 		item->setOpen(iter->depth < depth_);
 		curdepth = iter->depth;

@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -23,8 +23,9 @@
 #include "QErrorDialog.h"
 #include "QError.h"
 #include "Qt2BC.h"
- 
+
 typedef Qt2CB<ControlError, Qt2DB<QErrorDialog> > base_class;
+
 
 QError::QError()
 	: base_class(_("LaTeX Error"))

@@ -28,15 +28,13 @@ class Qt2BC;
 
 /** This class is an Qt2 GUI base class.
  */
-class Qt2Base : public QObject, public ViewBase
-{
+class Qt2Base : public QObject, public ViewBase {
 	Q_OBJECT
 public:
 	///
 	Qt2Base(QString const &);
 	///
 	virtual ~Qt2Base() {}
-
 protected:
 	/// build the actual dialog
 	virtual void build_dialog() = 0;
@@ -58,7 +56,6 @@ protected:
 
 	/// are we updating ?
 	bool updating_;
-
 protected slots:
 	// dialog closed from WM
 	void slotWMHide();
@@ -74,7 +71,6 @@ protected slots:
 
 	// Close button clicked
 	void slotClose();
-
 private:
 	/// Pointer to the actual instantiation of xform's form
 	virtual QDialog * form() const = 0;
@@ -86,8 +82,7 @@ private:
 
 
 template <class Dialog>
-class Qt2DB: public Qt2Base
-{
+class Qt2DB: public Qt2Base {
 protected:
 	Qt2DB(QString const &);
 

@@ -25,6 +25,7 @@
 #include <qlineedit.h>
 #include <qlabel.h>
 
+
 QSearchDialog::QSearchDialog(QSearch * form)
 	: QSearchDialogBase(0, 0, false, 0),
 	form_(form)
@@ -41,7 +42,7 @@ void QSearchDialog::show()
 	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
 }
 
- 
+
 void QSearchDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

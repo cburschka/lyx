@@ -23,8 +23,7 @@
 
 namespace grfx {
 
-class QLImage : public Image
-{
+class QLImage : public Image {
 public:
 	/// Access to this class is through this static method.
 	static ImagePtr newImage();
@@ -71,7 +70,6 @@ public:
 
 	/// Scale the image using params.
 	virtual void scale(Params const & params);
-
 private:
 	/// Access to the class is through newImage() and clone.
 	QLImage();

@@ -21,17 +21,15 @@
 class ControlBibtex;
 class QBibtexDialog;
 
-class QBibtex :
-	public Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> >
+class QBibtex
+	: public Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> >
 {
+public:
 	friend class QBibtexDialog;
 
-public:
 	QBibtex();
-
 protected:
 	virtual bool isValid();
-
 private:
 	/// Apply changes
 	virtual void apply();

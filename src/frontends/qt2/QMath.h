@@ -20,8 +20,7 @@
 
 class QMathDialog;
 
-class QMath
-{
+class QMath {
 public:
 	friend class QMathDialog;
 
@@ -53,7 +52,6 @@ public:
 
 	/// switch between display and inline
 	void toggleDisplay();
-
 private:
 	/// Apply changes
 	virtual void apply() {}

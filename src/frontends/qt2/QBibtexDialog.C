@@ -14,7 +14,6 @@
 #pragma implementation
 #endif
 
-#include <vector>
 #include "ControlBibtex.h"
 #include "gettext.h"
 #include "debug.h"
@@ -31,6 +30,9 @@
 
 #include "QBibtexDialog.h"
 #include "QBibtex.h"
+
+#include <vector>
+
 
 QBibtexDialog::QBibtexDialog(QBibtex * form)
 	: QBibtexDialogBase(0, 0, false, 0),
@@ -90,7 +92,7 @@ void QBibtexDialog::deletePressed()
 }
 
 
-void QBibtexDialog::styleChanged(const QString & sel)
+void QBibtexDialog::styleChanged(QString const & sel)
 {
 	styleCB->insertItem(sel,0);
 }

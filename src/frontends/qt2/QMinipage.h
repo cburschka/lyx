@@ -30,7 +30,6 @@ public:
 	friend class QMinipageDialog;
 	///
 	QMinipage();
-
 private:
 	/// Apply changes
 	virtual void apply();

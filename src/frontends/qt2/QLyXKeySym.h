@@ -56,9 +56,10 @@ public:
 	 * This relies on user to use the right encoding.
 	 */
 	virtual char getISOEncoded() const;
-
-	virtual bool operator==(LyXKeySym const & k) const;
-
+	///
+	int key() const {
+		return key_;
+	}
 private:
 	/// the Qt sym value
 	int key_;

@@ -28,19 +28,21 @@
 
 
 namespace {
-	/// return the Qt form of the label
-	string const getLabel(string const & str) {
-		string label;
-		string sc(split(str, label, '|'));
-		if (sc.length() < 2)
-			return label;
-		string::size_type pos = label.find(sc[1]);
-		if (pos == string::npos)
-			return label;
-		label.insert(pos, "&");
+
+/// return the Qt form of the label
+string const getLabel(string const & str) {
+	string label;
+	string sc(split(str, label, '|'));
+	if (sc.length() < 2)
 		return label;
-	}
+	string::size_type pos = label.find(sc[1]);
+	if (pos == string::npos)
+		return label;
+	label.insert(pos, "&");
+	return label;
 }
+
+} // namespace anon
 
 
 LyXFileDialog::LyXFileDialog(string const & p, string const & m,

@@ -23,20 +23,17 @@ class QSearch;
 class QCloseEvent;
 class QComboBox;
 
-class QSearchDialog : public QSearchDialogBase
-{ Q_OBJECT
-
+class QSearchDialog : public QSearchDialogBase {
+	Q_OBJECT
 public:
 	QSearchDialog(QSearch * form);
 
 	virtual void show();
-
 protected slots:
 	void findChanged();
 	void findClicked();
 	void replaceClicked();
 	void replaceallClicked();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

@@ -38,11 +38,9 @@ public:
 	void reset();
 	/// is the timer running ?
 	bool running() const;
-
 protected:
 	/// slot
 	virtual void timerEvent(QTimerEvent *);
-
 private:
 	/// the owning timer
 	Timeout * owner_;

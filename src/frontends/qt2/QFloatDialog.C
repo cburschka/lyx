@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven 
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
@@ -23,7 +23,8 @@
 
 #include "QFloatDialog.h"
 #include "QFloat.h"
- 
+
+
 QFloatDialog::QFloatDialog(QFloat * form)
 	: QFloatDialogBase(0, 0, false, 0),
 	form_(form)
@@ -60,7 +61,7 @@ void QFloatDialog::tbhpClicked()
 	allow |= herepossiblyCB->isChecked();
 	ignoreCB->setEnabled(allow);
 }
- 
+
 
 void QFloatDialog::heredefinitelyClicked()
 {
@@ -80,13 +81,13 @@ void QFloatDialog::spanClicked()
 	bool const span(spanCB->isChecked());
 
 	if (!defaultsCB->isChecked()) {
-	 	herepossiblyCB->setEnabled(!span);
-	 	heredefinitelyCB->setEnabled(!span);
+		herepossiblyCB->setEnabled(!span);
+		heredefinitelyCB->setEnabled(!span);
 	}
 
 	if (!span)
 		return;
- 
+
 	herepossiblyCB->setChecked(false);
 	heredefinitelyCB->setChecked(false);
 }

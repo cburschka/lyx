@@ -39,7 +39,7 @@ public:
 
 	/// Is this a modifier key only?
 	virtual bool isModifier() const;
-	
+
 	virtual string getSymbolName() const;
 
 	/**
@@ -49,10 +49,12 @@ public:
 	 */
 	virtual char getISOEncoded() const;
 
-	virtual bool operator==(LyXKeySym const & k) const;
-
+	///
+	unsigned int keysym() const {
+		return keysym_;
+	}
 private:
-	unsigned int keysym;
+	unsigned int keysym_;
 };
 
 #endif // XLYXKEYSYM_H

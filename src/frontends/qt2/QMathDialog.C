@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -17,14 +17,14 @@
 #include "support/filetools.h"
 #include "gettext.h"
 #include "debug.h"
- 
+
 #include "QMathDialog.h"
 #include "QMath.h"
 
 #include "ControlMath.h"
 #include "iconpalette.h"
 #include "QDelimiterDialog.h"
- 
+
 #include <qapplication.h>
 #include <qwidgetstack.h>
 #include <qcombobox.h>
@@ -35,11 +35,12 @@
 #include <qlayout.h>
 #include <qpopupmenu.h>
 #include <qcursor.h>
- 
+
 using std::min;
 using std::max;
 using std::endl;
- 
+
+
 class QScrollViewSingle : public QScrollView {
 public:
 	QScrollViewSingle(QWidget * p)
@@ -50,53 +51,54 @@ public:
 		setBackgroundMode(PaletteBackground);
 		viewport()->setBackgroundMode(PaletteBackground);
 	}
- 
+
 	void setChild(QWidget * w) {
-		w_ = w; 
+		w_ = w;
 		setMinimumWidth(verticalScrollBar()->width() + w_->width() + 4);
 		addChild(w_);
 	}
-
 protected:
 	virtual void resizeEvent(QResizeEvent * e) {
 		QScrollView::resizeEvent(e);
 		if (!w_)
 			return;
- 
+
 		w_->resize(viewport()->width(), w_->height());
 		// force the resize to get accurate scrollbars
 		qApp->processEvents();
 		resizeContents(w_->width(), w_->height());
 	}
-
 private:
-	QWidget * w_; 
+	QWidget * w_;
 };
- 
-namespace { 
-	char const ** panels[] = {
-		latex_bop, latex_varsz, latex_brel, latex_greek, latex_arrow,
-		latex_dots, latex_deco, latex_misc, latex_ams_ops,
-		latex_ams_rel, latex_ams_nrel, latex_ams_arrows,
-		latex_ams_misc
-	};
-	int const nr_panels = sizeof(panels)/sizeof(panels[0]);
+
+namespace {
+
+char const ** panels[] = {
+	latex_bop, latex_varsz, latex_brel, latex_greek, latex_arrow,
+	latex_dots, latex_deco, latex_misc, latex_ams_ops,
+	latex_ams_rel, latex_ams_nrel, latex_ams_arrows,
+	latex_ams_misc
+};
+
+int const nr_panels = sizeof(panels)/sizeof(panels[0]);
 
 bool panel_initialised[nr_panels];
-}
- 
- 
+
+} // namespace anon
+
+
 QMathDialog::QMathDialog(QMath * form)
 	: QMathDialogBase(0, 0, false, 0),
 	form_(form)
 {
-	connect(symbolsCO, SIGNAL(activated(int)), symbolsWS, SLOT(raiseWidget(int))); 
+	connect(symbolsCO, SIGNAL(activated(int)), symbolsWS, SLOT(raiseWidget(int)));
 
 	for (int i = 0; *function_names[i]; ++i) {
 		functionsLB->insertItem(function_names[i]);
 	}
- 
-	for (int i = 0; i < nr_panels; ++i) { 
+
+	for (int i = 0; i < nr_panels; ++i) {
 		QScrollViewSingle * view = new QScrollViewSingle(symbolsWS);
 		symbolsWS->addWidget(view, i);
 	}
@@ -105,17 +107,17 @@ QMathDialog::QMathDialog(QMath * form)
 	symbolsWS->raiseWidget(0);
 	addPanel(0);
 	panel_initialised[0] = true;
- 
+
 	connect(symbolsWS, SIGNAL(aboutToShow(int)), this, SLOT(showingPanel(int)));
- 
+
 	QPopupMenu * m = new QPopupMenu(spacePB);
 	m->setCaption(_("LyX: Insert space"));
 	m->insertTearOffHandle();
-	m->insertItem(_("Thin space	\\,"), 1); 
-	m->insertItem(_("Medium space	\\:"), 2); 
-	m->insertItem(_("Thick space	\\;"), 3); 
-	m->insertItem(_("Quadratin space	\\quad"), 4); 
-	m->insertItem(_("Double quadratin space	\\qquad"), 5); 
+	m->insertItem(_("Thin space	\\,"), 1);
+	m->insertItem(_("Medium space	\\:"), 2);
+	m->insertItem(_("Thick space	\\;"), 3);
+	m->insertItem(_("Quadratin space	\\quad"), 4);
+	m->insertItem(_("Double quadratin space	\\qquad"), 5);
 	m->insertItem(_("Negative space	\\!"), 6);
 	connect(m, SIGNAL(activated(int)), this, SLOT(insertSpace(int)));
 	spacePB->setPopup(m);
@@ -126,7 +128,7 @@ QMathDialog::QMathDialog(QMath * form)
 	m->insertItem(_("Square root	\\sqrt"), 1);
 	m->insertItem(_("Cube root	\\root"), 2);
 	m->insertItem(_("Other root	\\root"), 3);
-	connect(m, SIGNAL(activated(int)), this, SLOT(insertRoot(int))); 
+	connect(m, SIGNAL(activated(int)), this, SLOT(insertRoot(int)));
 	sqrtPB->setPopup(m);
 
 	m = new QPopupMenu(stylePB);
@@ -163,13 +165,13 @@ void QMathDialog::showingPanel(int num)
 
 	addPanel(num);
 
-	// Qt needs to catch up. Dunno why. 
+	// Qt needs to catch up. Dunno why.
 	qApp->processEvents();
- 
+
 	panel_initialised[num] = true;
 }
 
- 
+
 IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 {
 	IconPalette * p = new IconPalette(parent);
@@ -178,11 +180,11 @@ IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 		p->add(QPixmap(xpm_name.c_str()), entries[i], string("\\") + entries[i]);
 	}
 	connect(p, SIGNAL(button_clicked(string)), this, SLOT(symbol_clicked(string)));
- 
+
 	return p;
 }
 
- 
+
 void QMathDialog::addPanel(int num)
 {
 	QScrollViewSingle * view = static_cast<QScrollViewSingle*>(symbolsWS->visibleWidget());
@@ -190,64 +192,64 @@ void QMathDialog::addPanel(int num)
 	view->setChild(p);
 }
 
- 
-void QMathDialog::symbol_clicked(string str)
+
+void QMathDialog::symbol_clicked(string const & str)
 {
 	form_->insert(str);
 }
 
- 
+
 void QMathDialog::fracClicked()
 {
 	form_->insert("frac");
 }
- 
+
 
 void QMathDialog::delimiterClicked()
 {
-	// FIXME: leak 
+	// FIXME: leak
 	QDelimiterDialog * d = new QDelimiterDialog(form_);
 	d->show();
 }
 
- 
+
 void QMathDialog::expandClicked()
 {
 	int const id = symbolsWS->id(symbolsWS->visibleWidget());
 	IconPalette * p = makePanel(0, panels[id]);
-	string s = "LyX: "; 
+	string s = "LyX: ";
 	s += symbolsCO->text(id).latin1();
 	p->setCaption(s.c_str());
 	p->resize(40 * 5, p->height());
 	p->show();
 	p->setMaximumSize(p->width(), p->height());
 }
- 
- 
+
+
 void QMathDialog::functionSelected(const QString & str)
 {
-	form_->insert(str.latin1()); 
+	form_->insert(str.latin1());
 }
 
- 
+
 void QMathDialog::matrixClicked()
 {
 	form_->insertMatrix();
 }
 
- 
+
 void QMathDialog::equationClicked()
 {
 	form_->toggleDisplay();
 }
 
- 
+
 void QMathDialog::subscriptClicked()
 {
 	form_->subscript();
 }
 
- 
+
 void QMathDialog::superscriptClicked()
 {
 	form_->superscript();
@@ -268,7 +270,7 @@ void QMathDialog::insertSpace(int id)
 	form_->insert(str);
 }
 
- 
+
 void QMathDialog::insertRoot(int id)
 {
 	switch (id) {
@@ -284,7 +286,7 @@ void QMathDialog::insertRoot(int id)
 	}
 }
 
- 
+
 void QMathDialog::insertStyle(int id)
 {
 	string str;
@@ -293,11 +295,11 @@ void QMathDialog::insertStyle(int id)
 		case 2: str = "textstyle"; break;
 		case 3: str = "scriptstyle"; break;
 		case 4: str = "scriptscriptstyle"; break;
-	} 
+	}
 	form_->insert(str);
 }
 
- 
+
 void QMathDialog::insertFont(int id)
 {
 	string str;

@@ -20,19 +20,14 @@
 
 class QBibitem;
 
-class QBibitemDialog : public QBibitemDialogBase
-{ Q_OBJECT
-
+class QBibitemDialog : public QBibitemDialogBase {
+	Q_OBJECT
 public:
 	QBibitemDialog(QBibitem * form);
-
 protected slots:
 	virtual void change_adaptor();
-
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QBibitem * form_;
 };

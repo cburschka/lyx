@@ -24,21 +24,21 @@
 using std::endl;
 
 XLyXKeySym::XLyXKeySym()
-	: LyXKeySym(), keysym(NoSymbol)
+	: LyXKeySym(), keysym_(NoSymbol)
 {
 }
- 
+
 
 void XLyXKeySym::initFromKeySym(KeySym ks)
 {
-	keysym = ks;
+	keysym_ = ks;
 }
- 
+
 
 void XLyXKeySym::init(string const & symbolname)
 {
-	keysym = XStringToKeysym(symbolname.c_str());
-	if (keysym == NoSymbol) {
+	keysym_ = XStringToKeysym(symbolname.c_str());
+	if (keysym_ == NoSymbol) {
 		lyxerr[Debug::KBMAP]
 			<< "XLyXKeySym.C: No such keysym: "
 			<< symbolname << endl;
@@ -48,7 +48,7 @@ void XLyXKeySym::init(string const & symbolname)
 
 bool XLyXKeySym::isOK() const
 {
-	return keysym != NoSymbol;
+	return keysym_ != NoSymbol;
 }
 
 
@@ -57,25 +57,25 @@ bool XLyXKeySym::isModifier() const
 	// Can we be sure that this will work for all X Window
 	// implementations? (Lgb)
 	// Perhaps all of them should be explictly mentioned?
-	return ((keysym >= XK_Shift_L && keysym <= XK_Hyper_R)
-	    || keysym == XK_Mode_switch || keysym == 0x0);
+	return ((keysym_ >= XK_Shift_L && keysym_ <= XK_Hyper_R)
+	    || keysym_ == XK_Mode_switch || keysym_ == 0x0);
 }
 
 
 string XLyXKeySym::getSymbolName() const
 {
-	char * name = XKeysymToString(keysym);
+	char * name = XKeysymToString(keysym_);
 	return name ? name : string();
 }
 
- 
+
 char XLyXKeySym::getISOEncoded() const
 {
-	if (keysym == NoSymbol) {
+	if (keysym_ == NoSymbol) {
 		return 0;
 	}
 
-	unsigned int c = keysym;
+	unsigned int c = keysym_;
 
 	switch (c & 0x0000FF00) {
 		// latin 1 byte 3 = 0
@@ -102,12 +102,9 @@ char XLyXKeySym::getISOEncoded() const
 	return c;
 }
 
- 
-bool XLyXKeySym::operator==(LyXKeySym const & k) const
+
+bool operator==(LyXKeySym const & k1, LyXKeySym const & k2)
 {
-	// This is dangerous! Ideally, we should use dynamic_cast instead,
-	// but on the other hand, we are sure that we will always get
-	// the right type, because we decide at compile time which
-	// frontend we use. (Asger)
-	return keysym == static_cast<XLyXKeySym const &>(k).keysym;
+	return static_cast<XLyXKeySym const &>(k1).keysym()
+		== static_cast<XLyXKeySym const &>(k2).keysym();
 }

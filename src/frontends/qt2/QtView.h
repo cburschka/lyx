@@ -52,18 +52,15 @@ public:
 
 	/// display a status message
 	virtual void message(string const & str);
-
 public slots:
 	/// menu item has been selected
 	void activated(int id);
 
 	/// idle timeout
 	void update_view_state_qt();
-
 protected:
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	/// focus the command buffer widget
 	void focus_command_widget();

@@ -20,7 +20,8 @@
  * A simple widget for a quick "preview" in TabularCreateDialog
  */
 
-const unsigned int cellsize = 20;
+unsigned int const cellsize = 20;
+
 
 EmptyTable::EmptyTable(QWidget * parent, const char * name)
 	: QtTableView(parent, name, WRepaintNoErase)
@@ -32,13 +33,14 @@ EmptyTable::EmptyTable(QWidget * parent, const char * name)
 	setTableFlags(Tbl_autoScrollBars);
 }
 
+
 QSize EmptyTable::sizeHint() const
 {
 	return QSize(cellsize * numCols(), cellsize * numRows());
 }
 
 
-void EmptyTable::paintCell(QPainter *p, int row, int col)
+void EmptyTable::paintCell(QPainter * p, int row, int col)
 {
 	int const x2 = cellWidth(col) - 1;
 	int const y2 = cellHeight(row) - 1;
@@ -49,7 +51,7 @@ void EmptyTable::paintCell(QPainter *p, int row, int col)
 
 	if (row + 1 != numRows() || col + 1 != numCols())
 		return;
- 
+
 	// draw handle
 	int const step = cellsize / 5;
 	int const space = 4;
@@ -63,6 +65,7 @@ void EmptyTable::paintCell(QPainter *p, int row, int col)
 		ey -= step;
 	}
 }
+
 
 void EmptyTable::setNumberColumns(int nr_cols)
 {
@@ -78,6 +81,7 @@ void EmptyTable::setNumberColumns(int nr_cols)
 	emit colsChanged(nr_cols);
 }
 
+
 void EmptyTable::setNumberRows(int nr_rows)
 {
 	if (nr_rows < 1)
@@ -91,6 +95,7 @@ void EmptyTable::setNumberRows(int nr_rows)
 	update();
 	emit rowsChanged(nr_rows);
 }
+
 
 void EmptyTable::mouseMoveEvent(QMouseEvent *ev)
 {

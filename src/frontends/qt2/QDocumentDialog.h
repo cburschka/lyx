@@ -33,34 +33,27 @@
 
 class QDocument;
 
-class QDocumentDialog : public QDocumentDialogBase
-{ 
+class QDocumentDialog : public QDocumentDialogBase {
 	Q_OBJECT
-
 public:
-	
-	QDocumentDialog( QDocument * );
-	
+	friend class QDocument;
+
+	QDocumentDialog(QDocument *);
+
 	~QDocumentDialog();
 
 	void showPreamble();
-	
-	friend class QDocument;
 
-	void updateFontsize(string const & , string const & );
-	
-	void updatePagestyle(string const & , string const & );
- 	
+	void updateFontsize(string const & , string const &);
+
+	void updatePagestyle(string const & , string const &);
 public slots:
-
 	void setTitle(int);
 	void change_adaptor();
 	void saveDocDefault();
 	void restore();
 	void useClassDefaults();
-
 protected slots:
-
 	void setLSpacing(int);
 	void setMargins(int);
 	void setCustomPapersize(int);
@@ -68,11 +61,8 @@ protected slots:
 	void setSkip(int);
 	void enableSkip(bool);
 	void classChanged();
-	
 protected:
-    
     void closeEvent(QCloseEvent * e);
-
 private:
 	enum Module {
 		LAYOUT,
@@ -85,7 +75,7 @@ private:
 		BIBLIOGRAPHY,
 		PREAMBLE
 	};
-	
+
 	ClassModuleBase * layoutModule;
 	PackagesModuleBase * packagesModule;
 	PaperModuleBase * paperModule;

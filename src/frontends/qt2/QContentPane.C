@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -24,11 +24,11 @@
 #include <qpainter.h>
 #include <qtimer.h>
 #include <qapplication.h>
- 
+
 using std::endl;
 
 namespace {
- 
+
 /// return the LyX key state from Qt's
 key_modifier::state q_key_state(Qt::ButtonState state)
 {
@@ -41,6 +41,7 @@ key_modifier::state q_key_state(Qt::ButtonState state)
 		k |= key_modifier::alt;
 	return k;
 }
+
 
 /// return the LyX mouse button state from Qt's
 mouse_button::state q_button_state(Qt::ButtonState button)
@@ -61,8 +62,8 @@ mouse_button::state q_button_state(Qt::ButtonState button)
 	}
 	return b;
 }
- 
- 
+
+
 /// return the LyX mouse button state from Qt's
 mouse_button::state q_motion_state(Qt::ButtonState state)
 {
@@ -77,28 +78,28 @@ mouse_button::state q_motion_state(Qt::ButtonState state)
 }
 
 } // namespace anon
- 
+
 
 QContentPane::QContentPane(QWorkArea * parent)
-	: QWidget(parent, "content_pane", WRepaintNoErase), 
+	: QWidget(parent, "content_pane", WRepaintNoErase),
 	wa_(parent)
 {
 	setFocusPolicy(QWidget::WheelFocus);
 	setFocus();
 
 	// stupid moc strikes again
-	connect(wa_->scrollbar_, SIGNAL(valueChanged(int)), 
+	connect(wa_->scrollbar_, SIGNAL(valueChanged(int)),
 		this, SLOT(scrollBarChanged(int)));
- 
+
 }
 
 
 void QContentPane::scrollBarChanged(int val)
 {
-	wa_->scrollDocView(val); 
+	wa_->scrollDocView(val);
 }
- 
- 
+
+
 void QContentPane::mousePressEvent(QMouseEvent * e)
 {
 	if (dc_event_.active && dc_event_ == *e) {
@@ -109,21 +110,21 @@ void QContentPane::mousePressEvent(QMouseEvent * e)
 		wa_->dispatch(cmd);
 		return;
 	}
- 
-	FuncRequest cmd
-		(LFUN_MOUSE_PRESS, e->x(), e->y(), q_button_state(e->button()));
+
+	FuncRequest cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
+			q_button_state(e->button()));
 	wa_->dispatch(cmd);
 }
 
 
 void QContentPane::mouseReleaseEvent(QMouseEvent * e)
 {
-	FuncRequest cmd
-		(LFUN_MOUSE_RELEASE, e->x(), e->y(), q_button_state(e->button()));
+	FuncRequest cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
+			q_button_state(e->button()));
 	wa_->dispatch(cmd);
 }
 
- 
+
 void QContentPane::mouseMoveEvent(QMouseEvent * e)
 {
 	FuncRequest cmd
@@ -142,14 +143,14 @@ void QContentPane::keyPressEvent(QKeyEvent * e)
 	wa_->workAreaKeyPress(LyXKeySymPtr(sym), q_key_state(e->state()));
 }
 
- 
+
 void QContentPane::doubleClickTimeout()
 {
 	if (!dc_event_.active)
 		return;
 
 	dc_event_.active = false;
- 
+
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
 		dc_event_.x, dc_event_.y,
 		q_button_state(dc_event_.state));
@@ -165,8 +166,8 @@ void QContentPane::mouseDoubleClickEvent(QMouseEvent * e)
 	QTimer::singleShot(int(QApplication::doubleClickInterval() / 1.5),
 		this, SLOT(doubleClickTimeout()));
 }
- 
- 
+
+
 void QContentPane::resizeEvent(QResizeEvent *)
 {
 	if (!pixmap_.get()) {
@@ -177,7 +178,7 @@ void QContentPane::resizeEvent(QResizeEvent *)
 	wa_->workAreaResize();
 }
 
- 
+
 void QContentPane::paintEvent(QPaintEvent * e)
 {
 	if (!pixmap_.get()) {
@@ -187,11 +188,11 @@ void QContentPane::paintEvent(QPaintEvent * e)
 	}
 
 	QRect r(e->rect());
- 
-	lyxerr[Debug::GUI] << "repainting " << r.x() 
-		<< "," << r.y() << " " << r.width() 
+
+	lyxerr[Debug::GUI] << "repainting " << r.x()
+		<< "," << r.y() << " " << r.width()
 		<< "," << r.height() << endl;
 	QPainter q(this);
 	q.drawPixmap(QPoint(r.x(), r.y()),
-		*pixmap_.get(), r); 
+		*pixmap_.get(), r);
 }

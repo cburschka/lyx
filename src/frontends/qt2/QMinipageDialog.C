@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -14,8 +14,6 @@
 #pragma implementation
 #endif
 
-#include <vector>
-
 #include "ControlMinipage.h"
 
 #include "QMinipage.h"
@@ -24,6 +22,9 @@
 #include <qpushbutton.h>
 #include <qtextview.h>
 #include "lengthcombo.h"
+
+#include <vector>
+
 
 QMinipageDialog::QMinipageDialog(QMinipage * form)
 	: QMinipageDialogBase(0, 0, false, 0),

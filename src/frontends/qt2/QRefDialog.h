@@ -21,23 +21,19 @@
 
 class QRef;
 
-class QRefDialog : public QRefDialogBase
-{ Q_OBJECT
-
+class QRefDialog : public QRefDialogBase {
+	Q_OBJECT
 public:
 	QRefDialog(QRef * form);
-
 public slots:
 	void changed_adaptor();
 	void gotoClicked();
-	void refHighlighted(const QString &);
-	void refSelected(const QString &);
+	void refHighlighted(QString const &);
+	void refSelected(QString const &);
 	void sortToggled(bool);
 	void updateClicked();
-
 protected:
 	void closeEvent(QCloseEvent * e);
-
 private:
 	QRef * form_;
 };

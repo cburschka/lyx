@@ -31,7 +31,6 @@ public:
 	friend class QPrintDialog;
 	///
 	QPrint();
-
 private:
 	/// Apply changes
 	virtual void apply();

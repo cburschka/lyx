@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -29,9 +29,11 @@
 using std::pair;
 using std::make_pair;
 
+
 void alert_pimpl(string const & s1, string const & s2, string const & s3)
 {
-	QMessageBox::warning(0, "LyX", (s1 + "\n" + "\n" + s2 + "\n" + s3).c_str());
+	QMessageBox::warning(0, "LyX",
+			     (s1 + "\n" + "\n" + s2 + "\n" + s3).c_str());
 }
 
 
@@ -49,7 +51,8 @@ int askConfirmation_pimpl(string const & s1, string const & s2, string const & s
 }
 
 
-pair<bool, string> const askForText_pimpl(string const & msg, string const & dflt)
+pair<bool, string> const
+askForText_pimpl(string const & msg, string const & dflt)
 {
 	string title = _("LyX: ");
 	title += msg;

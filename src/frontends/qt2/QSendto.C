@@ -32,6 +32,7 @@ using std::vector;
 
 typedef Qt2CB<ControlSendto, Qt2DB<QSendtoDialog> > base_class;
 
+
 QSendto::QSendto()
 	: base_class(_("Send document to command"))
 {
@@ -76,6 +77,7 @@ void QSendto::update_contents()
 	dialog_->commandCO->insertItem(controller().getCommand().c_str());
 }
 
+
 void QSendto::apply()
 {
 	int const line(dialog_->formatLB->currentItem());
@@ -89,13 +91,14 @@ void QSendto::apply()
 	controller().setCommand(cmd);
 }
 
+
 bool QSendto::isValid()
 {
 	int const line(dialog_->formatLB->currentItem());
 
 	if (line < 0 || line > dialog_->formatLB->count())
 		return false;
-	
+
 	else return dialog_->formatLB->count() != 0 &&
 		!string(dialog_->commandCO->currentText()).empty();
 }

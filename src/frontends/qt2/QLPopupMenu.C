@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -17,49 +17,49 @@
 #include "MenuBackend.h"
 #include "lyxfunc.h"
 #include "debug.h"
- 
+
 #include "QtView.h"
- 
+
 #include "QLPopupMenu.h"
 
 #include "support/lstrings.h"
 
 using std::pair;
 using std::make_pair;
- 
+
 namespace {
- 
+
 string const getLabel(MenuItem const & mi)
 {
 	string const shortcut = mi.shortcut();
-	string label = mi.label();
+	string label = subst(mi.label(), "&", "&&");
 
-	label = subst(label, "&", "&&");
- 
 	if (shortcut.empty())
 		return label;
- 
+
 	string::size_type pos = label.find(shortcut);
 	if (pos == string::npos)
 		return label;
 	label.insert(pos, "&");
- 
+
 	return label;
 }
 
-} 
+} // namespace anon
 
 
-pair<int, QLPopupMenu *> createMenu(QMenuData * parent, MenuItem const * item, Menubar::Pimpl * owner, bool is_toplevel)
+pair<int, QLPopupMenu *>
+createMenu(QMenuData * parent, MenuItem const * item, Menubar::Pimpl * owner, bool is_toplevel)
 {
 	// FIXME: leaks ??
 	QLPopupMenu * pm = new QLPopupMenu(owner, item->submenuname(), is_toplevel);
 	int id = parent->insertItem(getLabel(*item).c_str(), pm);
 	return make_pair(id, pm);
 }
- 
- 
-QLPopupMenu::QLPopupMenu(Menubar::Pimpl * owner, string const & name, bool toplevel)
+
+
+QLPopupMenu::QLPopupMenu(Menubar::Pimpl * owner,
+			 string const & name, bool toplevel)
 	: owner_(owner), name_(name)
 {
 	if (toplevel)
@@ -67,27 +67,29 @@ QLPopupMenu::QLPopupMenu(Menubar::Pimpl * owner, string const & name, bool tople
 	connect(this, SIGNAL(activated(int)),
 		owner_->view(), SLOT(activated(int)));
 }
- 
+
 
 bool QLPopupMenu::disabled(Menu * menu)
 {
 	bool disable = true;
- 
+
 	Menu::const_iterator m = menu->begin();
 	Menu::const_iterator end = menu->end();
 	for (; m != end; ++m) {
-		if (m->kind() == MenuItem::Submenu && !disabled(m->submenu())) {
+		if (m->kind() == MenuItem::Submenu
+		    && !disabled(m->submenu())) {
 			disable = false;
 		} else {
 			FuncStatus const status =
-				owner_->view()->getLyXFunc().getStatus(m->action());
+				owner_->view()->getLyXFunc()
+				.getStatus(m->action());
 			if (!status.disabled())
 				disable = false;
 		}
 	}
 	return disable;
 }
- 
+
 
 void QLPopupMenu::populate(Menu * menu)
 {
@@ -112,12 +114,12 @@ void QLPopupMenu::populate(Menu * menu)
 	}
 }
 
- 
+
 void QLPopupMenu::showing()
 {
 	clear();
 	Menu tomenu;
 	Menu const frommenu = owner_->backend().getMenu(name_);
 	owner_->backend().expand(frommenu, tomenu, owner_->view()->buffer());
-	populate(&tomenu); 
+	populate(&tomenu);
 }

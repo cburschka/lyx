@@ -46,7 +46,6 @@ public:
 	QFontMetrics const & metrics(LyXFont const & f) {
 		return getfontinfo(f)->metrics;
 	}
-
 private:
 	/// hold info about a particular font
 	struct font_info {

@@ -30,10 +30,9 @@ public:
 	friend class QVCLogDialog;
 	///
 	QVCLog();
-
 private:
 	/// Apply changes
-	virtual void apply() {};
+	virtual void apply() {}
 	/// update
 	virtual void update_contents();
 	/// build the dialog

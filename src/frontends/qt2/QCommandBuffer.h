@@ -26,12 +26,10 @@ class ControlCommandBuffer;
 class QCommandBuffer : public QToolBar {
 	Q_OBJECT
 public:
-
 	QCommandBuffer(QtView * view, ControlCommandBuffer & control);
 
 	/// focus the edit widget
 	void focus_command();
-
 public slots:
 	/// cancel command compose
 	void cancel();
@@ -40,12 +38,11 @@ public slots:
 	/// tab-complete
 	void complete();
 	/// select-complete
-	void complete_selected(const QString & str);
+	void complete_selected(QString const & str);
 	/// up
 	void up();
 	/// down
 	void down();
-
 private:
 	/// owning view
 	QtView * view_;

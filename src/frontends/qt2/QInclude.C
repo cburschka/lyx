@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -17,7 +17,7 @@
 #include "ControlInclude.h"
 #include "gettext.h"
 #include "debug.h"
- 
+
 #include "QIncludeDialog.h"
 #include "QInclude.h"
 #include "Qt2BC.h"
@@ -27,7 +27,9 @@
 #include <qcheckbox.h>
 #include <qcombobox.h>
 
+
 typedef Qt2CB<ControlInclude, Qt2DB<QIncludeDialog> > base_class;
+
 
 QInclude::QInclude()
 	: base_class(_("Include"))
@@ -50,9 +52,11 @@ void QInclude::build_dialog()
 
 void QInclude::update_contents()
 {
-	dialog_->filenameED->setText(controller().params().cparams.getContents().c_str());
+	InsetInclude::Params const & params = controller().params();
 
-	string const cmdname = controller().params().cparams.getCmdName();
+	dialog_->filenameED->setText(params.cparams.getContents().c_str());
+
+	string const & cmdname = params.cparams.getCmdName();
 
 	dialog_->visiblespaceCB->setChecked(false);
 	dialog_->visiblespaceCB->setEnabled(false);
@@ -71,19 +75,20 @@ void QInclude::update_contents()
 
 void QInclude::apply()
 {
-	controller().params().cparams.
-		setContents(dialog_->filenameED->text().latin1());
+	InsetInclude::Params & params = controller().params();
+
+	params.cparams.setContents(dialog_->filenameED->text().latin1());
 
 	int const item = dialog_->typeCO->currentItem();
 	if (item == 0)
-		controller().params().flag = InsetInclude::INPUT;
+		params.flag = InsetInclude::INPUT;
 	else if (item == 1)
-		controller().params().flag = InsetInclude::INCLUDE;
+		params.flag = InsetInclude::INCLUDE;
 	else {
 		if (dialog_->visiblespaceCB->isChecked())
-			controller().params().flag = InsetInclude::VERBAST;
+			params.flag = InsetInclude::VERBAST;
 		else
-			controller().params().flag = InsetInclude::VERB;
+			params.flag = InsetInclude::VERB;
 	}
 }
 
@@ -93,9 +98,9 @@ void QInclude::browse()
 	ControlInclude::Type type;
 
 	int const item = dialog_->typeCO->currentItem();
-	if (item==0)
+	if (item == 0)
 		type = ControlInclude::INPUT;
-	else if (item==1)
+	else if (item == 1)
 		type = ControlInclude::INCLUDE;
 	else
 		type = ControlInclude::VERBATIM;

@@ -20,18 +20,14 @@
 
 class QVCLog;
 
-class QVCLogDialog : public QVCLogDialogBase
-{ Q_OBJECT
-
+class QVCLogDialog : public QVCLogDialogBase {
+	Q_OBJECT
 public:
 	QVCLogDialog(QVCLog * form);
-
 protected slots:
 	virtual void updateClicked();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QVCLog * form_;
 };

@@ -17,6 +17,7 @@
 #endif
 
 #include "Qt2Base.h"
+
 #include <vector>
 
 class ControlSendto;
@@ -33,10 +34,8 @@ public:
 	friend class QSendtoDialog;
 	///
 	QSendto();
-
 protected:
 	virtual bool isValid();
-
 private:
 	/// Apply from dialog
 	virtual void apply();

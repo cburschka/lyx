@@ -20,12 +20,10 @@
 
 class QSpellchecker;
 
-class QSpellcheckerDialog : public QSpellcheckerDialogBase
-{ Q_OBJECT
-
+class QSpellcheckerDialog : public QSpellcheckerDialogBase {
+	Q_OBJECT
 public:
 	QSpellcheckerDialog(QSpellchecker * form);
-
 protected slots:
 	virtual void stop();
 	virtual void acceptClicked();
@@ -35,7 +33,6 @@ protected slots:
 	virtual void ignoreClicked();
 	virtual void suggestionChanged(const QString &);
 	virtual void replaceChanged(const QString &);
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

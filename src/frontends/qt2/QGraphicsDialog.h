@@ -20,22 +20,18 @@
 
 class QGraphics;
 
-class QGraphicsDialog : public QGraphicsDialogBase
-{ Q_OBJECT
-
+class QGraphicsDialog : public QGraphicsDialogBase {
+	Q_OBJECT
 public:
 	QGraphicsDialog(QGraphics * form);
 
 	virtual void show();
-
 protected slots:
 	virtual void change_adaptor();
 	virtual void browse_clicked();
 	virtual void get_clicked();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QGraphics * form_;
 };

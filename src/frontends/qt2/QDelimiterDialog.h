@@ -23,21 +23,16 @@ class QMath;
 class IconPalette;
 class QLabel;
 
-class QDelimiterDialog : public QDelimiterDialogBase
-{
+class QDelimiterDialog : public QDelimiterDialogBase {
 	Q_OBJECT
-
 public:
 	QDelimiterDialog(QMath * form);
-
 public slots:
 	void ldelim_clicked(string str);
 	void rdelim_clicked(string str);
 	void insertClicked();
-
 protected:
 	//needed ? virtual void closeEvent(QCloseEvent * e);
-
 private:
 	void set_label(QLabel * label, string const & str);
 

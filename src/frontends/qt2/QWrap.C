@@ -24,12 +24,13 @@
 #include "QWrapDialog.h"
 #include "Qt2BC.h"
 #include "lengthcombo.h"
- 
+
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
 
 typedef Qt2CB<ControlWrap, Qt2DB<QWrapDialog> > base_class;
+
 
 QWrap::QWrap()
 	: base_class(_("Wrap Options"))
@@ -59,47 +60,53 @@ void QWrap::apply()
 	if (string(dialog_->widthED->text().latin1()).empty())
 		unit = LyXLength::UNIT_NONE;
 
-	controller().params().pageWidth = LyXLength(value, unit);
+	WrapParams & params = controller().params();
+
+	params.pageWidth = LyXLength(value, unit);
 
 	switch (dialog_->valignCO->currentItem()) {
 	case 0:
-		controller().params().placement.erase();
+		params.placement.erase();
 		break;
 	case 1:
-		controller().params().placement = "l";
+		params.placement = "l";
 		break;
 	case 2:
-		controller().params().placement = "r";
+		params.placement = "r";
 		break;
 	case 3:
-		controller().params().placement = "p";
+		params.placement = "p";
 		break;
 	}
 }
 
 
 namespace {
-	string const numtostr(double val) {
-		string a(tostr(val));
-		if (a == "0")
-			a = "";
-		return a;
-	}
+
+string const numtostr(double val) {
+	string a(tostr(val));
+	if (a == "0")
+		a.erase();
+	return a;
+}
+
 } // namespace anon
 
 
 void QWrap::update_contents()
 {
-	LyXLength len(controller().params().pageWidth);
+	WrapParams & params = controller().params();
+
+	LyXLength len(params.pageWidth);
 	dialog_->widthED->setText(numtostr(len.value()).c_str());
 	dialog_->unitsLC->setCurrentItem(len.unit());
 
 	int item = 0;
-	if (controller().params().placement == "l")
+	if (params.placement == "l")
 		item = 1;
-	else if (controller().params().placement == "r")
+	else if (params.placement == "r")
 		item = 2;
-	else if (controller().params().placement == "p")
+	else if (params.placement == "p")
 		item = 3;
 
 	dialog_->valignCO->setCurrentItem(item);

@@ -17,7 +17,7 @@
 #include "ControlUrl.h"
 #include "debug.h"
 #include "gettext.h"
- 
+
 #include "QURL.h"
 #include "QURLDialog.h"
 #include "Qt2BC.h"
@@ -27,6 +27,7 @@
 #include <qlineedit.h>
 
 typedef Qt2CB<ControlUrl, Qt2DB<QURLDialog> > base_class;
+
 
 QURL::QURL()
 	: base_class(_("URL"))
@@ -48,21 +49,25 @@ void QURL::build_dialog()
 
 void QURL::update_contents()
 {
-	dialog_->urlED->setText(controller().params().getContents().c_str());
-	dialog_->nameED->setText(controller().params().getOptions().c_str());
-	dialog_->hyperlinkCB->setChecked(controller().params().getCmdName() != "url");
+	InsetCommandParams const & params = controller().params();
+
+	dialog_->urlED->setText(params.getContents().c_str());
+	dialog_->nameED->setText(params.getOptions().c_str());
+	dialog_->hyperlinkCB->setChecked(params.getCmdName() != "url");
 }
 
 
 void QURL::apply()
 {
-	controller().params().setContents(dialog_->urlED->text().latin1());
-	controller().params().setOptions(dialog_->nameED->text().latin1());
+	InsetCommandParams & params = controller().params();
+
+	params.setContents(dialog_->urlED->text().latin1());
+	params.setOptions(dialog_->nameED->text().latin1());
 
 	if (dialog_->hyperlinkCB->isChecked())
-		controller().params().setCmdName("htmlurl");
+		params.setCmdName("htmlurl");
 	else
-		controller().params().setCmdName("url");
+		params.setCmdName("url");
 }
 
 

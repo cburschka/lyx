@@ -34,6 +34,7 @@ using std::vector;
 
 typedef Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> > base_class;
 
+
 QCharacter::QCharacter()
 	: base_class(_("Character"))
 {
@@ -56,6 +57,7 @@ void QCharacter::build_dialog()
 		cit != family.end(); ++cit) {
 		dialog_->familyCO->insertItem(cit->first.c_str(), -1);
 	}
+
 	for (vector<SeriesPair>::const_iterator cit = series.begin();
 		cit != series.end(); ++cit) {
 		dialog_->seriesCO->insertItem(cit->first.c_str(), -1);
@@ -117,27 +119,34 @@ int findPos2nd(vector<std::pair<A,B> > const & vec, B const & val)
 
 void QCharacter::update_contents()
 {
-	dialog_->familyCO->setCurrentItem(findPos2nd(family, controller().getFamily()));
-	dialog_->seriesCO->setCurrentItem(findPos2nd(series, controller().getSeries()));
-	dialog_->shapeCO->setCurrentItem(findPos2nd(shape, controller().getShape()));
-	dialog_->sizeCO->setCurrentItem(findPos2nd(size, controller().getSize()));
-	dialog_->miscCO->setCurrentItem(findPos2nd(bar, controller().getBar()));
-	dialog_->colorCO->setCurrentItem(findPos2nd(color, controller().getColor()));
-	dialog_->langCO->setCurrentItem(findPos2nd(language, controller().getLanguage()));
+	ControlCharacter const & ctrl = controller();
 
-	dialog_->toggleallCB->setChecked(controller().getToggleAll());
+	dialog_->familyCO->setCurrentItem(findPos2nd(family,
+						     ctrl.getFamily()));
+	dialog_->seriesCO->setCurrentItem(findPos2nd(series,
+						     ctrl.getSeries()));
+	dialog_->shapeCO->setCurrentItem(findPos2nd(shape, ctrl.getShape()));
+	dialog_->sizeCO->setCurrentItem(findPos2nd(size, ctrl.getSize()));
+	dialog_->miscCO->setCurrentItem(findPos2nd(bar, ctrl.getBar()));
+	dialog_->colorCO->setCurrentItem(findPos2nd(color, ctrl.getColor()));
+	dialog_->langCO->setCurrentItem(findPos2nd(language,
+						   ctrl.getLanguage()));
+
+	dialog_->toggleallCB->setChecked(ctrl.getToggleAll());
 }
 
 
 void QCharacter::apply()
 {
-	controller().setFamily(family[dialog_->familyCO->currentItem()].second);
-	controller().setSeries(series[dialog_->seriesCO->currentItem()].second);
-	controller().setShape(shape[dialog_->shapeCO->currentItem()].second);
-	controller().setSize(size[dialog_->sizeCO->currentItem()].second);
-	controller().setBar(bar[dialog_->miscCO->currentItem()].second);
-	controller().setColor(color[dialog_->colorCO->currentItem()].second);
-	controller().setLanguage(language[dialog_->langCO->currentItem()].second);
+	ControlCharacter & ctrl = controller();
 
-	controller().setToggleAll(dialog_->toggleallCB->isChecked());
+	ctrl.setFamily(family[dialog_->familyCO->currentItem()].second);
+	ctrl.setSeries(series[dialog_->seriesCO->currentItem()].second);
+	ctrl.setShape(shape[dialog_->shapeCO->currentItem()].second);
+	ctrl.setSize(size[dialog_->sizeCO->currentItem()].second);
+	ctrl.setBar(bar[dialog_->miscCO->currentItem()].second);
+	ctrl.setColor(color[dialog_->colorCO->currentItem()].second);
+	ctrl.setLanguage(language[dialog_->langCO->currentItem()].second);
+
+	ctrl.setToggleAll(dialog_->toggleallCB->isChecked());
 }

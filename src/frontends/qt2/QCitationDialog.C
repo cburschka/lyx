@@ -36,6 +36,7 @@ using std::vector;
 using std::find;
 using std::max;
 
+
 QCitationDialog::QCitationDialog(QCitation * form)
 	: QCitationDialogBase(0, 0, false, 0),
 	form_(form)

@@ -21,17 +21,15 @@
 class ControlExternal;
 class QExternalDialog;
 
-class QExternal :
-	public Qt2CB<ControlExternal, Qt2DB<QExternalDialog> >
+class QExternal
+	: public Qt2CB<ControlExternal, Qt2DB<QExternalDialog> >
 {
+public:
 	friend class QExternalDialog;
 
-public:
 	QExternal();
-
 protected:
 	virtual bool isValid();
-
 private:
 	/// Apply changes
 	virtual void apply();

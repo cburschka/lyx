@@ -23,17 +23,16 @@ class ControlSpellchecker;
 class QSpellcheckerDialog;
 
 
-class QSpellchecker :
-	public Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> >
+class QSpellchecker
+	: public Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> >
 {
+public:
 	friend class QSpellcheckerDialog;
 
-public:
 	QSpellchecker();
 
 	/// update from controller
 	void partialUpdate(int id);
-
 private:
 	void stop();
 	void accept();
@@ -43,7 +42,7 @@ private:
 	void spellcheck();
 
 	/// Apply changes
-	virtual void apply() {};
+	virtual void apply() {}
 	/// update
 	virtual void update_contents();
 	/// build the dialog

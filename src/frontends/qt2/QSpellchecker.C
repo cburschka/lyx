@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -28,6 +28,7 @@
 #include <qcombobox.h>
 
 typedef Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> > base_class;
+
 
 QSpellchecker::QSpellchecker()
 	: base_class(_("Spellchecker"))
@@ -111,7 +112,9 @@ void QSpellchecker::partialUpdate(int id)
 	case 2:
 		dialog_->spellcheckPB->setEnabled(true);
 		hide();
-		QMessageBox::information(0, _("Spellcheck complete"), controller().getMessage().c_str() , _("OK"));
+		QMessageBox::information(0, _("Spellcheck complete"),
+					 controller().getMessage().c_str(),
+					 _("OK"));
 		break;
 	}
 }

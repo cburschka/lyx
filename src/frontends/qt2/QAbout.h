@@ -26,7 +26,6 @@ class QAbout
 {
 public:
 	QAbout();
-
 private:
 	/// not needed
 	virtual void apply() {}

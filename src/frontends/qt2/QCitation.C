@@ -3,8 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
- * \author Kalle Dalheimer 
+ * \author Angus Leeming
+ * \author Kalle Dalheimer
  *
  * Full author contact details are available in file CREDITS
  */
@@ -43,6 +43,7 @@ using std::vector;
 
 typedef Qt2CB<ControlCitation, Qt2DB<QCitationDialog> > base_class;
 
+
 QCitation::QCitation()
 	: base_class(_("Citation"))
 {}
@@ -63,7 +64,7 @@ void QCitation::apply()
 	controller().params().setCmdName(command);
 	controller().params().setContents(getStringFromVector(citekeys));
 
-	string const after  = dialog_->textAfterED->text().latin1();
+	string const after = dialog_->textAfterED->text().latin1();
 	controller().params().setOptions(after);
 }
 
@@ -174,7 +175,7 @@ void QCitation::update_contents()
 }
 
 
-void QCitation::updateBrowser(QListBox* browser,
+void QCitation::updateBrowser(QListBox * browser,
 				  vector<string> const & keys) const
 {
 	browser->clear();

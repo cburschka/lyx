@@ -119,7 +119,6 @@ public:
 	/// draw a char at position x, y (y is the baseline)
 	virtual Painter & text(int x, int y,
 		char c, LyXFont const & f);
-
 private:
 	/// draw small caps text
 	void smallCapsText(int x, int y,

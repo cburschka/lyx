@@ -49,6 +49,8 @@ bool q_is_modifier(int qkey)
  */
 int string_to_qkey(string const & str)
 {
+	// FIX! (Lgb)
+	
 	if (str == "Escape") return Qt::Key_Escape;
 	if (str == "Tab") return Qt::Key_Tab;
 	if (str == "BackSpace") return Qt::Key_BackSpace;

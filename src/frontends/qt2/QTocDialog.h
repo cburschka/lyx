@@ -20,22 +20,18 @@
 
 class QToc;
 
-class QTocDialog : public QTocDialogBase
-{ Q_OBJECT
-
+class QTocDialog : public QTocDialogBase {
+	Q_OBJECT
 public:
 	QTocDialog(QToc * form);
 	~QTocDialog();
-
 public slots:
 	void activate_adaptor(int);
 	void depth_adaptor(int);
 	void select_adaptor(QListViewItem *);
 	void update_adaptor();
-
 protected:
 	void closeEvent(QCloseEvent * e);
-
 private:
 	QToc * form_;
 };

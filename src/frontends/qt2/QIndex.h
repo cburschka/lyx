@@ -26,14 +26,12 @@ class QIndexDialog;
 class QIndex :
 	public Qt2CB<ControlIndex, Qt2DB<QIndexDialog> >
 {
+public:
 	friend class QIndexDialog;
 
-public:
 	QIndex();
-
 protected:
 	virtual bool isValid();
-
 private:
 	/// Apply changes
 	virtual void apply();

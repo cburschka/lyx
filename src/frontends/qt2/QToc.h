@@ -27,10 +27,9 @@ class QToc :
 	public Qt2CB<ControlToc, Qt2DB<QTocDialog> >
 {
 public:
-	QToc();
-
 	friend class QTocDialog;
 
+	QToc();
 private:
 	/// update the listview
 	void updateToc(int newdepth);
@@ -44,7 +43,7 @@ private:
 	/// set the depth
 	void set_depth(int depth);
 
-	virtual void apply() {};
+	virtual void apply() {}
 
 	/// update dialog
 	virtual void update_contents();

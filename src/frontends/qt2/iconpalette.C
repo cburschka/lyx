@@ -15,7 +15,7 @@
 #endif
 
 #include "debug.h"
- 
+
 #include "iconpalette.h"
 
 #include <qlayout.h>
@@ -27,9 +27,10 @@ using std::endl;
 using std::make_pair;
 using std::vector;
 using std::max;
- 
+
 int const button_size = 40;
- 
+
+
 IconPalette::IconPalette(QWidget * parent, char const * name)
 	: QWidget(parent, name), maxcol_(-1)
 {
@@ -47,7 +48,7 @@ void IconPalette::add(QPixmap const & pixmap, string name, string tooltip)
 	p->setFixedSize(button_size, button_size);
 	p->setPixmap(pixmap);
 	QToolTip::add(p, tooltip.c_str());
-	connect(p, SIGNAL(clicked()), this, SLOT(clicked())); 
+	connect(p, SIGNAL(clicked()), this, SLOT(clicked()));
 	buttons_.push_back(make_pair(p, name));
 }
 
@@ -68,12 +69,12 @@ void IconPalette::clicked()
 void IconPalette::resizeEvent(QResizeEvent * e)
 {
 	QWidget::resizeEvent(e);
- 
+
 	lyxerr[Debug::GUI] << "resize panel to "
 		<< e->size().width() << "," << e->size().height() << endl;
- 
+
 	int maxcol = e->size().width() / button_size;
- 
+
 	if (!layout_->isEmpty() && maxcol == maxcol_)
 		return;
 
@@ -84,17 +85,17 @@ void IconPalette::resizeEvent(QResizeEvent * e)
 
 	lyxerr[Debug::GUI] << "Laying out " << buttons_.size() << " widgets in a "
 		<< cols << "x" << rows << " grid." << endl;
- 
+
 	setUpdatesEnabled(false);
- 
+
 	// clear layout
 	QLayoutIterator lit = layout_->iterator();
 	while (lit.current()) {
 		lit.takeCurrent();
 	}
-		 
+
 	layout_->invalidate();
- 
+
 	vector<Button>::const_iterator it(buttons_.begin());
 	vector<Button>::const_iterator const end(buttons_.end());
 
@@ -108,11 +109,11 @@ void IconPalette::resizeEvent(QResizeEvent * e)
 	}
 
 out:
- 
+
 	resize(cols * button_size, rows * button_size);
 
 	maxcol_ = cols;
- 
+
 	setUpdatesEnabled(true);
 	update();
 }

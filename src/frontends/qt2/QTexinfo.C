@@ -3,14 +3,12 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven 
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
-
-#include <vector>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -24,7 +22,7 @@
 #include "helper_funcs.h"
 
 #include "support/lstrings.h"
- 
+
 #include <qlistbox.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
@@ -33,9 +31,9 @@ using std::vector;
 
 typedef Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> > base_class;
 
+
 QTexinfo::QTexinfo()
 	: base_class(_("LaTeX Information")), warningPosted(false), activeStyle(ControlTexinfo::cls)
-
 {
 }
 
@@ -53,9 +51,9 @@ void QTexinfo::build_dialog()
 void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
 	string const fstr =  controller().getContents(whichStyle, true);
-	
+
 	switch (whichStyle) {
-	    case ControlTexinfo::bst: 
+	    case ControlTexinfo::bst:
 		bst_ = getVectorFromString(fstr, "\n");
 		break;
 	    case ControlTexinfo::cls:
@@ -84,9 +82,3 @@ void QTexinfo::updateStyles()
 {
 	updateStyles(activeStyle);
 }
-
-
-
-
-
-

@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven 
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
@@ -14,8 +14,6 @@
 #pragma implementation
 #endif
 
-#include <vector>
-
 #include "LString.h"
 
 #include "ControlTexinfo.h"
@@ -25,6 +23,9 @@
 #include <qlistbox.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
+
+#include <vector>
+
 
 QTexinfoDialog::QTexinfoDialog(QTexinfo * form)
 	: QTexinfoDialogBase(0, 0, false, 0),
@@ -47,6 +48,7 @@ void QTexinfoDialog::closeEvent(QCloseEvent * e)
 	e->accept();
 }
 
+
 void QTexinfoDialog::rescanClicked()
 {
 	// build new *Files.lst
@@ -54,6 +56,7 @@ void QTexinfoDialog::rescanClicked()
 	form_->updateStyles();
 	enableViewPB();
 }
+
 
 void QTexinfoDialog::viewClicked()
 {
@@ -73,12 +76,13 @@ void QTexinfoDialog::viewClicked()
 	default:
 		break;
 	}
-	
+
 	// a valid entry?
 	if (!sel.empty()) {
 		form_->controller().viewFile(sel.c_str());
 	}
 }
+
 
 void QTexinfoDialog::update()
 {
@@ -95,14 +99,12 @@ void QTexinfoDialog::update()
 	default:
 		break;
 	}
-	
+
 	enableViewPB();
 }
 
+
 void QTexinfoDialog::enableViewPB()
 {
-	viewPB->setEnabled(fileList->currentItem()>-1);
+	viewPB->setEnabled(fileList->currentItem() > -1);
 }
-
-
-

@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -24,10 +24,7 @@
 #include "gettext.h"
 #include "language.h"
 
-#include "frontends/Liason.h"
 #include "frontends/LyXView.h"
-
-using Liason::setMinibuffer;
 
 
 ControlCharacter::ControlCharacter(LyXView & lv, Dialogs & d)
@@ -68,7 +65,7 @@ void ControlCharacter::apply()
 	toggleAndShow(bufferview(), *(font_.get()), toggleall_);
 	lv_.view_state_changed();
 	buffer()->markDirty();
-	setMinibuffer(&lv_, _("Character set"));
+	lv_.message(_("Character set"));
 }
 
 

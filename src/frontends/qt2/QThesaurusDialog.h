@@ -21,24 +21,20 @@
 class QThesaurus;
 class QListViewItem;
 
-class QThesaurusDialog : public QThesaurusDialogBase
-{ Q_OBJECT
-
+class QThesaurusDialog : public QThesaurusDialogBase {
+	Q_OBJECT
 public:
 	QThesaurusDialog(QThesaurus * form);
 
 	void updateLists();
-
 protected slots:
 	virtual void change_adaptor();
 	virtual void entryChanged();
 	virtual void replaceClicked();
 	virtual void selectionChanged(QListViewItem *);
 	virtual void selectionClicked(QListViewItem *);
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QThesaurus * form_;
 };

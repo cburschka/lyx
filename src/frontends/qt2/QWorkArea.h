@@ -34,10 +34,8 @@
  * Hopefully soon we can just use QScrollView ...
  */
 class QWorkArea : public WorkArea, public QWidget {
-
-	friend class QContentPane;
-
 public:
+	friend class QContentPane;
 
 	QWorkArea(int x, int y, int w, int h);
 
@@ -63,7 +61,6 @@ public:
 
 	/// get the content pane widget
 	QWidget * getContent() const { return content_; }
-
 private:
 	/// scroll bar
 	QScrollBar * scrollbar_;

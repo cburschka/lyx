@@ -38,14 +38,13 @@ class QTempListBox : public QListBox {
 public:
 	QTempListBox()
 		: QListBox(0, 0,
-		WType_Modal | WType_Popup | WDestructiveClose) {
+			   WType_Modal | WType_Popup | WDestructiveClose) {
 		setHScrollBarMode(AlwaysOff);
 	}
-
 protected:
 	void mouseReleaseEvent(QMouseEvent * e) {
 		if (e->x() < 0 || e->y() < 0
-			|| e->x() > width() || e->y() > height()) {
+		    || e->x() > width() || e->y() > height()) {
 			hide();
 		} else {
 			emit selected(currentText());
@@ -61,7 +60,8 @@ protected:
 	}
 };
 
-}
+} // end of anon
+
 
 QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
 	: QToolBar(view), view_(view), controller_(control)
@@ -70,11 +70,8 @@ QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
 
 	QPixmap qp(LibFileSearch("images", "unknown", "xpm").c_str());
 
-	QToolButton * upb = new QToolButton(qp, _("Up"), "", this, SLOT(up()), this);
-	upb->show();
-
-	QToolButton * downb = new QToolButton(qp, _("Down"), "", this, SLOT(down()), this);
-	downb->show();
+	(new QToolButton(qp, _("Up"), "", this, SLOT(up()), this))->show();
+	(new QToolButton(qp, _("Down"), "", this, SLOT(down()), this))->show();
 
 	edit_ = new QCommandEdit(this);
 	edit_->setMinimumSize(edit_->sizeHint());
@@ -132,7 +129,7 @@ void QCommandBuffer::complete()
 
 	edit_->setText(new_input.c_str());
 
-	QTempListBox * list = new QTempListBox();
+	QTempListBox * list = new QTempListBox;
 
 	// For some reason the scrollview's contents are larger
 	// than the number of actual items...
@@ -147,9 +144,9 @@ void QCommandBuffer::complete()
 
 	list->resize(list->sizeHint());
 	QPoint pos(edit_->mapToGlobal(QPoint(0, 0)));
-	int y = pos.y() - list->height();
-	if (y < 0)
-		y = 0;
+
+	int y = std::max(0, pos.y() - list->height());
+
 	list->move(pos.x(), y);
 
 	connect(list, SIGNAL(selected(const QString &)),
@@ -160,7 +157,7 @@ void QCommandBuffer::complete()
 }
 
 
-void QCommandBuffer::complete_selected(const QString & str)
+void QCommandBuffer::complete_selected(QString const & str)
 {
 	edit_->setText(str + " ");
 	QWidget const * widget = static_cast<QWidget const *>(sender());
@@ -170,7 +167,7 @@ void QCommandBuffer::complete_selected(const QString & str)
 
 void QCommandBuffer::up()
 {
-	string const input = edit_->text().latin1();
+	string const input(edit_->text().latin1());
 	string const h(controller_.historyUp());
 
 	if (h.empty()) {
@@ -183,7 +180,7 @@ void QCommandBuffer::up()
 
 void QCommandBuffer::down()
 {
-	string const input = edit_->text().latin1();
+	string const input(edit_->text().latin1());
 	string const h(controller_.historyDown());
 
 	if (h.empty()) {

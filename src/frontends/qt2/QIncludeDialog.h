@@ -20,25 +20,21 @@
 
 class QInclude;
 
-class QIncludeDialog : public QIncludeDialogBase
-{ Q_OBJECT
-
+class QIncludeDialog : public QIncludeDialogBase {
+	Q_OBJECT
 public:
 	QIncludeDialog(QInclude * form);
 
 	void updateLists();
 
 	virtual void show();
-
 protected slots:
 	virtual void change_adaptor();
 	virtual void loadClicked();
 	virtual void browseClicked();
 	virtual void typeChanged(int v);
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QInclude * form_;
 };

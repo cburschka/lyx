@@ -18,6 +18,7 @@
 #include "lyxserver.h"
 #include "io_callback.h"
 
+
 io_callback::io_callback(int fd, LyXComm * comm)
 	: comm_(comm)
 {

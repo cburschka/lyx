@@ -63,7 +63,7 @@ QPixmap getIconPixmap(int action)
 
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Full icon name is `"
-				       << fullname << "'" << endl;
+				   << fullname << "'" << endl;
 		return QPixmap(fullname.c_str());
 	}
 
@@ -71,7 +71,7 @@ QPixmap getIconPixmap(int action)
 	fullname = LibFileSearch("images", "unknown", "xpm");
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Using default `unknown' icon"
-				       << endl;
+				   << endl;
 	}
 	return QPixmap(fullname.c_str());
 }
@@ -161,9 +161,8 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 
 	string const & name = _(tc[layout]->name());
 
-	int i;
-
-	for (i = 0; i < combo_->count(); ++i) {
+	int i = 0;
+	for (; i < combo_->count(); ++i) {
 		if (name == combo_->text(i).latin1())
 			break;
 	}

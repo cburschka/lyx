@@ -29,12 +29,15 @@ using std::make_pair;
 using std::pair;
 using std::endl;
 
+
 struct FileDialog::Private {
 	Button b1;
 	Button b2;
 };
 
-FileDialog::FileDialog(LyXView *lv, string const & t, kb_action s, Button b1, Button b2)
+
+FileDialog::FileDialog(LyXView * lv, string const & t,
+		       kb_action s, Button b1, Button b2)
 	: private_(new FileDialog::Private), lv_(lv), title_(t), success_(s)
 {
 	private_->b1 = b1;
@@ -48,14 +51,18 @@ FileDialog::~FileDialog()
 }
 
 
-FileDialog::Result const FileDialog::Select(string const & path, string const & mask, string const & suggested)
+FileDialog::Result const FileDialog::Select(string const & path,
+					    string const & mask,
+					    string const & suggested)
 {
-	string filter = mask;
+	string filter(mask);
 	if (mask.empty())
 		filter = _("*|All files");
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
-	lyxerr[Debug::GUI] << "Select with path \"" << path << "\", mask \"" << filter << "\", suggested \"" << suggested << endl;
+	lyxerr[Debug::GUI] << "Select with path \"" << path
+			   << "\", mask \"" << filter
+			   << "\", suggested \"" << suggested << endl;
 
 	dlg.setMode(QFileDialog::AnyFile);
 

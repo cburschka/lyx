@@ -28,6 +28,7 @@
 
 using std::endl;
 
+
 qfont_loader::qfont_loader()
 {
 }

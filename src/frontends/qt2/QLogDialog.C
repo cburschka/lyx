@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -14,16 +14,17 @@
 #pragma implementation
 #endif
 
-#include <vector>
-
 #include "LyXView.h"
 #include "ControlLog.h"
 
 #include <qpushbutton.h>
 #include <qtextview.h>
- 
+
 #include "QLogDialog.h"
 #include "QLog.h"
+
+#include <vector>
+
 
 QLogDialog::QLogDialog(QLog * form)
 	: QLogDialogBase(0, 0, false, 0),

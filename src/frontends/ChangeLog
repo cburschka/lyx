@@ -1,3 +1,11 @@
+2002-10-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* LyXKeySym.h: move operator== out of class. Separate
+	implementations for xforms and qt.
+
+	* Liason.[Ch]: get rid of setMinibuffer, where used call message
+	directly through LyXView::message instead.
+
 2002-09-25  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C: doxygen fix.

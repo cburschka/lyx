@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
@@ -32,8 +32,10 @@
 #include <qpushbutton.h>
 
 // FIXME FIXME QPrintDialog is getting destructed twice !!!!
- 
+
+
 typedef Qt2CB<ControlPrint, Qt2DB<QPrintDialog> > base_class;
+
 
 QPrint::QPrint()
 	: base_class(_("Print"))
@@ -57,7 +59,7 @@ void QPrint::update_contents()
 	// only reset params if a different buffer
 	if (!pp.file_name.empty() && pp.file_name == dialog_->fileED->text().latin1())
 		return;
- 
+
 	dialog_->printerED->setText(pp.printer_name.c_str());
 	dialog_->fileED->setText(pp.file_name.c_str());
 
@@ -68,19 +70,19 @@ void QPrint::update_contents()
 	dialog_->reverseCB->setChecked(pp.reverse_order);
 
 	dialog_->copiesSB->setValue(pp.count_copies);
- 
+
 	dialog_->oddCB->setChecked(pp.odd_pages);
 	dialog_->evenCB->setChecked(pp.even_pages);
- 
+
 	dialog_->collateCB->setChecked(pp.sorted_copies);
- 
+
 	if (pp.all_pages) {
 		dialog_->allRB->setChecked(true);
 		return;
 	}
 
 	dialog_->rangeRB->setChecked(true);
- 
+
 	QString s;
 	s.setNum(pp.from_page);
 	dialog_->fromED->setText(s);
@@ -98,9 +100,9 @@ void QPrint::apply()
 	PrinterParams const pp(t,
 		dialog_->printerED->text().latin1(),
 		dialog_->fileED->text().latin1(),
-		dialog_->allRB->isChecked(), 
+		dialog_->allRB->isChecked(),
 		dialog_->fromED->text().toUInt(),
-		dialog_->toED->text().toUInt(), 
+		dialog_->toED->text().toUInt(),
 		dialog_->oddCB->isChecked(),
 		dialog_->evenCB->isChecked(),
 		dialog_->copiesSB->text().toUInt(),

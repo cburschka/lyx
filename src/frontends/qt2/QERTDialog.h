@@ -20,18 +20,14 @@
 
 class QERT;
 
-class QERTDialog : public QERTDialogBase
-{ Q_OBJECT
-
+class QERTDialog : public QERTDialogBase {
+	Q_OBJECT
 public:
 	QERTDialog(QERT * form);
-
 protected slots:
 	virtual void change_adaptor();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QERT * form_;
 };

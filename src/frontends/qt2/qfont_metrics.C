@@ -4,13 +4,12 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
-
 
 #ifdef __GNUG__
 #pragma implementation "frontends/font_metrics.h"
@@ -26,11 +25,15 @@
 #include <qfontmetrics.h>
 #include <qfont.h>
 
+
 namespace {
-	QFontMetrics const & metrics(LyXFont const & f) {
-		return fontloader.metrics(f);
-	}
+
+QFontMetrics const & metrics(LyXFont const & f)
+{
+	return fontloader.metrics(f);
 }
+
+} // namespace anon
 
 
 namespace font_metrics {

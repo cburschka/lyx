@@ -30,14 +30,16 @@
 #include "support/lstrings.h" // frontStrip, strip
 #include "gettext.h"
 #include "insets/insetref.h"
- 
+
 using std::find;
 using std::max;
 using std::sort;
 using std::vector;
 using std::endl;
 
+
 typedef Qt2CB<ControlRef, Qt2DB<QRefDialog> > base_class;
+
 
 QRef::QRef()
 	: base_class(_("Cross Reference")),
@@ -63,19 +65,21 @@ void QRef::build_dialog()
 
 void QRef::update_contents()
 {
-	dialog_->referenceED->setText(controller().params().getContents().c_str());
+	InsetCommandParams const & params = controller().params();
 
-	dialog_->nameED->setText(controller().params().getOptions().c_str());
+	dialog_->referenceED->setText(params.getContents().c_str());
+
+	dialog_->nameED->setText(params.getOptions().c_str());
 	dialog_->nameED->setReadOnly(!nameAllowed() && !readOnly());
 
-	dialog_->typeCO->setCurrentItem(InsetRef::getType(controller().params().getCmdName()));
+	dialog_->typeCO->setCurrentItem(InsetRef::getType(params.getCmdName()));
 	dialog_->typeCO->setEnabled(!typeAllowed() && !readOnly());
 	if (!typeAllowed())
 		dialog_->typeCO->setCurrentItem(0);
 
 	dialog_->sortCB->setChecked(sort_);
 
-	/* insert buffer list */
+	// insert buffer list
 	dialog_->bufferCO->clear();
 	vector<string> const buffers = controller().getBufferList();
 	for (vector<string>::const_iterator it = buffers.begin();
@@ -83,16 +87,18 @@ void QRef::update_contents()
 		dialog_->bufferCO->insertItem(it->c_str());
 	}
 	dialog_->bufferCO->setCurrentItem(controller().getBufferNum());
-	
+
 	updateRefs();
 }
 
 
 void QRef::apply()
 {
-	controller().params().setCmdName(InsetRef::getName(dialog_->typeCO->currentItem()));
-	controller().params().setContents(dialog_->referenceED->text().latin1());
-	controller().params().setOptions(dialog_->nameED->text().latin1());
+	InsetCommandParams & params = controller().params();
+
+	params.setCmdName(InsetRef::getName(dialog_->typeCO->currentItem()));
+	params.setContents(dialog_->referenceED->text().latin1());
+	params.setOptions(dialog_->nameED->text().latin1());
 }
 
 
@@ -149,7 +155,7 @@ void QRef::redoRefs()
 
 	// need this because Qt will send a highlight() here for
 	// the first item inserted
-	string tmp(dialog_->referenceED->text());
+	string const tmp(dialog_->referenceED->text());
 
 	for (std::vector<string>::const_iterator iter = refs_.begin();
 		iter != refs_.end(); ++iter) {

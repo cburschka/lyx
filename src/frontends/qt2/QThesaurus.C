@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -25,6 +25,7 @@
 #include <qlistbox.h>
 
 typedef Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> > base_class;
+
 
 QThesaurus::QThesaurus()
 	: base_class(_("Thesaurus"))

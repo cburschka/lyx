@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -24,12 +24,13 @@
 #include "QMinipageDialog.h"
 #include "Qt2BC.h"
 #include "lengthcombo.h"
- 
+
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
 
 typedef Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> > base_class;
+
 
 QMinipage::QMinipage()
 	: base_class(_("Minipage"))
@@ -54,52 +55,63 @@ void QMinipage::build_dialog()
 
 void QMinipage::apply()
 {
-	double value = strToDbl(dialog_->widthED->text().latin1());
+	double const value = strToDbl(dialog_->widthED->text().latin1());
 	LyXLength::UNIT unit = dialog_->unitsLC->currentLengthItem();
 	if (string(dialog_->widthED->text().latin1()).empty())
 		unit = LyXLength::UNIT_NONE;
 
-	controller().params().pageWidth = LyXLength(value, unit);
+	MinipageParams & params = controller().params();
+
+	params.pageWidth = LyXLength(value, unit);
 
 	switch (dialog_->valignCO->currentItem()) {
 	case 0:
-		controller().params().pos = InsetMinipage::top;
+		params.pos = InsetMinipage::top;
 		break;
 	case 1:
-		controller().params().pos = InsetMinipage::center;
+		params.pos = InsetMinipage::center;
 		break;
 	case 2:
-		controller().params().pos = InsetMinipage::bottom;
+		params.pos = InsetMinipage::bottom;
 		break;
 	}
 }
 
 
 namespace {
-	string const numtostr(double val) {
-		string a(tostr(val));
-		if (a == "0")
-			a = "";
-		return a;
-	}
+
+string const numtostr(double val)
+{
+	string a(tostr(val));
+	if (a == "0")
+		a.erase();
+	return a;
+}
+
 } // namespace anon
 
 
 void QMinipage::update_contents()
 {
-	LyXLength len(controller().params().pageWidth);
+	MinipageParams const & params = controller().params();
+
+	LyXLength len(params.pageWidth);
 	dialog_->widthED->setText(numtostr(len.value()).c_str());
 	dialog_->unitsLC->setCurrentItem(len.unit());
-	lyxerr << "width " << numtostr(len.value()).c_str() << " units " << len.unit() << std::endl;
+	lyxerr << "width " << numtostr(len.value())
+	       << " units " << len.unit() << std::endl;
 
 	int item = 0;
-	switch (controller().params().pos) {
-		case InsetMinipage::center:
-			item = 1;
-			break;
-		case InsetMinipage::bottom:
-			item = 2;
-			break;
+	switch (params.pos) {
+	case InsetMinipage::top:
+		item = 0;
+		break;
+	case InsetMinipage::center:
+		item = 1;
+		break;
+	case InsetMinipage::bottom:
+		item = 2;
+		break;
 	}
 	dialog_->valignCO->setCurrentItem(item);
 }

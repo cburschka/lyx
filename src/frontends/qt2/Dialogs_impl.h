@@ -223,20 +223,20 @@ WrapDialog;
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
-        AboutlyxDialog      aboutlyx;
+	AboutlyxDialog      aboutlyx;
 	BibitemDialog       bibitem;
-        BibtexDialog        bibtex;
-        CharacterDialog     character;
+	BibtexDialog        bibtex;
+	CharacterDialog     character;
 	CitationDialog      citation;
 	DocumentDialog      document;
-        ErrorDialog         error;
+	ErrorDialog         error;
 	ERTDialog           ert;
-        ExternalDialog      external;
+	ExternalDialog      external;
 	FileDialog          file;
-        FloatDialog         floats;
-        GraphicsDialog      graphics;
+	FloatDialog         floats;
+	GraphicsDialog      graphics;
 	IncludeDialog       include;
-        IndexDialog         index;
+	IndexDialog         index;
 	LogFileDialog       logfile;
 	MinipageDialog      minipage;
 	ParagraphDialog     paragraph;

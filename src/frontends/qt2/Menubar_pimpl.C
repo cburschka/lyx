@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-#include <algorithm>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -34,12 +32,15 @@
 #include <qmenubar.h>
 #include <qcursor.h>
 
+#include <algorithm>
+
 using std::endl;
 using std::vector;
 using std::max;
 using std::min;
 using std::for_each;
 using std::pair;
+
 
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 	: owner_(static_cast<QtView*>(view)), menubackend_(mbe)

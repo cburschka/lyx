@@ -3,8 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
- * \author Edwin Leuven 
+ * \author John Levon
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
@@ -42,6 +42,7 @@
 
 
 typedef Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > base_class;
+
 
 QGraphics::QGraphics()
 	: base_class(_("Graphics"))
@@ -103,15 +104,19 @@ void QGraphics::update_contents()
 	string unit = "cm";
 	switch (lyxrc.default_papersize) {
 		case BufferParams::PAPER_DEFAULT: break;
-	
+
 		case BufferParams::PAPER_USLETTER:
 		case BufferParams::PAPER_LEGALPAPER:
-		case BufferParams::PAPER_EXECUTIVEPAPER: unit = "in"; break;
-	
+		case BufferParams::PAPER_EXECUTIVEPAPER:
+			unit = "in";
+			break;
+
 		case BufferParams::PAPER_A3PAPER:
 		case BufferParams::PAPER_A4PAPER:
 		case BufferParams::PAPER_A5PAPER:
-		case BufferParams::PAPER_B5PAPER: unit = "cm"; break;
+		case BufferParams::PAPER_B5PAPER:
+			unit = "cm";
+			break;
 	}
 
 	dialog_->filename->setText(igp.filename.c_str());
@@ -148,7 +153,7 @@ void QGraphics::update_contents()
 	dialog_->subfigure->setChecked(igp.subcaption);
 	dialog_->subcaption->setText(igp.subcaptionText.c_str());
 
-	int item;
+	int item = 0;
 	switch (igp.display) {
 		case grfx::DefaultDisplay: item = 0; break;
 		case grfx::MonochromeDisplay: item = 1; break;
@@ -187,7 +192,7 @@ void QGraphics::apply()
 	igp.filename = dialog_->filename->text();
 
 	if (!controller().bbChanged) {
-		igp.bb = string();
+		igp.bb.erase();
 	} else {
 		string bb;
 		string lbX(dialog_->lbX->text());
@@ -230,7 +235,7 @@ void QGraphics::apply()
 
 	if (!dialog_->displayCB->isChecked())
 		igp.display = grfx::NoDisplay;
- 
+
 	string value(dialog_->width->text());
 	igp.width = LyXLength(strToDbl(value), dialog_->widthUnit->currentLengthItem());
 	value = string(dialog_->height->text());
@@ -239,7 +244,7 @@ void QGraphics::apply()
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
 
 	igp.noUnzip = dialog_->unzipCB->isChecked();
- 
+
 	igp.lyxscale = strToInt(string(dialog_->displayscale->text()));
 
 	igp.rotateAngle = strToDbl(string(dialog_->angle->text()));
@@ -251,7 +256,7 @@ void QGraphics::apply()
 	if ((dialog_->origin->currentItem()) > 0)
 		igp.rotateOrigin = dialog_->origin->currentText();
 	else
-	    igp.rotateOrigin = string();
+	    igp.rotateOrigin.erase();
 
 	igp.special = dialog_->latexoptions->text();
 }
@@ -284,6 +289,6 @@ void QGraphics::get()
 
 bool QGraphics::isValid()
 {
-	// FIXME: we need more here. 
+	// FIXME: we need more here.
 	return !string(dialog_->filename->text().latin1()).empty();
 }

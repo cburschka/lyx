@@ -28,27 +28,23 @@ class EmptyTable : public QtTableView {
 public:
 	EmptyTable(QWidget * parent = 0, const char * name = 0);
 
-	~EmptyTable() {};
+	~EmptyTable() {}
 
 	virtual QSize sizeHint() const;
-
 public slots:
 	/// set the number of columns in the table and emit colsChanged() signal
 	void setNumberColumns(int nr_cols);
 	/// set the number of rows in the table and emit rowsChanged() signal
 	void setNumberRows(int nr_rows);
-
 signals:
 	/// the number of columns changed
 	void colsChanged(int);
 	/// the number of rows changed
 	void rowsChanged(int);
-
 protected:
 	/// fill in a cell
 	virtual void paintCell(class QPainter *, int, int);
 	virtual void mouseMoveEvent(QMouseEvent *);
-
 private:
 	/// number of current columns
 	unsigned int cols;

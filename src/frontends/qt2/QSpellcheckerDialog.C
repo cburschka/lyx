@@ -23,6 +23,7 @@
 #include <qlistbox.h>
 #include <qcombobox.h>
 
+
 QSpellcheckerDialog::QSpellcheckerDialog(QSpellchecker * form)
 	: QSpellcheckerDialogBase(0, 0, false, 0),
 	form_(form)
@@ -68,7 +69,7 @@ void QSpellcheckerDialog::ignoreClicked()
 }
 
 
-void QSpellcheckerDialog::suggestionChanged(const QString & str)
+void QSpellcheckerDialog::suggestionChanged(QString const & str)
 {
 	if (replaceCO->count() != 0)
 		replaceCO->changeItem(str, 0);
@@ -79,7 +80,7 @@ void QSpellcheckerDialog::suggestionChanged(const QString & str)
 }
 
 
-void QSpellcheckerDialog::replaceChanged(const QString & str)
+void QSpellcheckerDialog::replaceChanged(QString const & str)
 {
 	if (suggestionsLB->currentText() == str)
 		return;

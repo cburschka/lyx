@@ -25,6 +25,7 @@
 #include "ControlButtons.h"
 #include "support/LAssert.h"
 
+
 Qt2Base::Qt2Base(QString const & t)
 	: ViewBase(), updating_(false), title_(t)
 {}

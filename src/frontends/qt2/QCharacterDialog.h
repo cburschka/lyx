@@ -26,18 +26,14 @@
 
 class LyXFont;
 
-class QCharacterDialog : public QCharacterDialogBase
-{ Q_OBJECT
-
+class QCharacterDialog : public QCharacterDialogBase {
+	Q_OBJECT
 public:
 	QCharacterDialog(QCharacter * form);
-
 protected:
 	void closeEvent(QCloseEvent * e);
-
 private:
 	QCharacter * form_;
-
 protected slots:
 	void change_adaptor();
 };

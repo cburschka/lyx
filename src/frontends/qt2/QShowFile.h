@@ -22,17 +22,16 @@ class ControlShowFile;
 class QShowFileDialog;
 
 
-class QShowFile :
-	public Qt2CB<ControlShowFile, Qt2DB<QShowFileDialog> >
+class QShowFile
+	: public Qt2CB<ControlShowFile, Qt2DB<QShowFileDialog> >
 {
+public:
 	friend class QShowFileDialog;
 
-public:
 	QShowFile();
-
 private:
 	/// Apply changes
-	virtual void apply() {};
+	virtual void apply() {}
 	/// update
 	virtual void update_contents();
 	/// build the dialog

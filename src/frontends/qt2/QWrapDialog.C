@@ -14,8 +14,6 @@
 #pragma implementation
 #endif
 
-#include <vector>
-
 #include "ControlWrap.h"
 
 #include "QWrap.h"
@@ -24,6 +22,9 @@
 #include <qpushbutton.h>
 #include <qtextview.h>
 #include "lengthcombo.h"
+
+#include <vector>
+
 
 QWrapDialog::QWrapDialog(QWrap * form)
 	: QWrapDialogBase(0, 0, false, 0),

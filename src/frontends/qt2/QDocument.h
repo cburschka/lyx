@@ -31,9 +31,9 @@ class QDocument
 {
 public:
 	///
-	QDocument();
-	///
 	friend class QDocumentDialog;
+	///
+	QDocument();
 private:
 	/// Apply changes
 	void apply();

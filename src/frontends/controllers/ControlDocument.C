@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven 
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
@@ -29,14 +29,11 @@
 #include "lyxtextclasslist.h"
 #include "CutAndPaste.h"
 
-#include "frontends/Liason.h"
 #include "frontends/LyXView.h"
 #include "frontends/Alert.h"
 
 #include "support/lstrings.h"
 #include "support/filetools.h"
-
-using Liason::setMinibuffer;
 
 
 ControlDocument::ControlDocument(LyXView & lv, Dialogs & d)
@@ -58,27 +55,30 @@ BufferParams & ControlDocument::params()
 	return *bp_;
 }
 
+
 LyXTextClass ControlDocument::textClass()
 {
 	return textclasslist[bp_->textclass];
 }
 
-	
+
 void ControlDocument::apply()
 {
 	if (!bufferIsAvailable())
 		return;
-   
+
 	setLanguage();
-	bool succes = classApply();
-        lv_.view()->redoCurrentBuffer();
-	
+
+	// FIXME: do we need to use return value from classApply() here? (Lgb)
+	classApply();
+	lv_.view()->redoCurrentBuffer();
+
 	view().apply();
 	buffer()->params = *bp_;
 
 	buffer()->markDirty();
-	
-	Liason::setMinibuffer(&lv_, _("Document Settings Applied"));
+
+	lv_.message(_("Document Settings Applied"));
 }
 
 
@@ -86,7 +86,7 @@ void ControlDocument::setParams()
 {
 	if (!bp_.get())
 		bp_.reset(new BufferParams());
-	
+
 	/// Set the buffer parameters
 	*bp_ = buffer()->params;
 }
@@ -95,7 +95,7 @@ void ControlDocument::setLanguage()
 {
 	Language const * oldL = buffer()->params.language;
 	Language const * newL = bp_->language;
-	
+
 	if (oldL != newL
 	    && oldL->RightToLeft() == newL->RightToLeft()
 	    && !lv_.buffer()->isMultiLingual())
@@ -105,7 +105,7 @@ void ControlDocument::setLanguage()
 
 bool ControlDocument::classApply()
 {
-	BufferParams &params = lv_.buffer()->params;
+	BufferParams & params = lv_.buffer()->params;
 	unsigned int const old_class = bp_->textclass;
 	// exit if nothing changes
 	if (params.textclass == old_class)
@@ -120,10 +120,9 @@ bool ControlDocument::classApply()
 			     _("Reverting to original document class."));
 		return false;
 	}
-	
+
 	// successfully loaded
-	Liason::setMinibuffer(&lv_,
-			      _("Converting document to new document class..."));
+	lv_.message(_("Converting document to new document class..."));
 	int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
 		old_class, params.textclass,
 		&*(lv_.buffer()->paragraphs.begin()),
@@ -146,7 +145,7 @@ bool ControlDocument::classApply()
 void ControlDocument::saveAsDefault()
 {
 	lv_.buffer()->params.preamble = bp_->preamble;
-	
+
 	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
 				     "defaults.lyx");
 	Buffer defaults(fname);
@@ -156,7 +155,7 @@ void ControlDocument::saveAsDefault()
 	Paragraph * par = new Paragraph;
 	par->layout(params().getLyXTextClass().defaultLayout());
 	defaults.paragraphs.set(par);
-	
+
 	defaults.writeFile(defaults.fileName());
 
 }

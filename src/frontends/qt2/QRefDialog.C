@@ -3,8 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Kalle Dalheimer 
- * \author John Levon 
+ * \author Kalle Dalheimer
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -20,11 +20,12 @@
 
 #include "QRef.h"
 #include "QRefDialog.h"
- 
+
 #include <qpushbutton.h>
 #include <qlineedit.h>
 #include <qcombobox.h>
 #include <qlistbox.h>
+
 
 QRefDialog::QRefDialog(QRef * form)
 	: QRefDialogBase(0, 0, false, 0),

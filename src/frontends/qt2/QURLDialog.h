@@ -20,21 +20,17 @@
 
 class QURL;
 
-class QURLDialog : public QURLDialogBase
-{ Q_OBJECT
-
+class QURLDialog : public QURLDialogBase {
+	Q_OBJECT
 public:
 	QURLDialog(QURL * form);
 	~QURLDialog();
 
 	virtual void show();
-
 public slots:
 	void changed_adaptor();
-
 protected:
 	void closeEvent(QCloseEvent *);
-
 private:
 	QURL * form_;
 };

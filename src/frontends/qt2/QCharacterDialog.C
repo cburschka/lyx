@@ -21,6 +21,7 @@
 #include <qpushbutton.h>
 #include <qgroupbox.h>
 
+
 QCharacterDialog::QCharacterDialog(QCharacter * form)
 	: QCharacterDialogBase(0, 0, false, 0),
 	form_(form)

@@ -87,7 +87,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		command += tostr(pp.count_copies);
 		command += ' ';
 	}
-	
+
 	if (pp.reverse_order) {
 		command += lyxrc.print_reverse_flag + ' ';
 	}
@@ -152,13 +152,6 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 	lyxerr[Debug::LATEX] << "printBuffer: \"" << command << "\"\n";
 
 	return res == 0;
-}
-
-
-void setMinibuffer(LyXView * lv, string const & msg)
-{
-	lyx::Assert(lv);
-	lv->message(msg);
 }
 
 } // namespace Liason

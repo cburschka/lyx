@@ -20,13 +20,10 @@
 
 class QBibtex;
 
-class QBibtexDialog : public QBibtexDialogBase
-{
+class QBibtexDialog : public QBibtexDialogBase {
 	Q_OBJECT
-
 public:
 	QBibtexDialog(QBibtex * form);
-
 protected slots:
 	virtual void change_adaptor();
 	virtual void browsePressed();
@@ -34,10 +31,8 @@ protected slots:
 	virtual void deletePressed();
 	virtual void styleChanged(const QString &);
 	virtual void databaseChanged();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QBibtex * form_;
 };

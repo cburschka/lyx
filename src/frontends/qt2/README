@@ -83,3 +83,23 @@ Thesaurus	John		Done
 Toc		Kalle		Waiting to be updated
 Url		Kalle		Done
 VCLog		John		Done
+
+
+Stuff to be aware of
+--------------------
+
+The connect statement in Qt is a macro and its arguments does not follow
+the C++ standard as it should. Using the construct "Type const &" as
+argument will lead to runtime-errors, use "const Type &" instead.
+
+ex.
+
+--right--
+
+	connect(list, SIGNAL(selected(const QString &)),
+		this, SLOT(complete_selected(const QString &)));
+
+--wrong--
+
+	connect(list, SIGNAL(selected(QString const &)),
+		this, SLOT(complete_selected(QString const &)));

@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven 
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
@@ -26,11 +26,9 @@
 #include "lyxtext.h"
 #include "ParagraphParameters.h"
 
-#include "frontends/Liason.h"
+#include "frontends/LyXView.h"
 
 #include "support/LAssert.h"
-
-using Liason::setMinibuffer;
 
 
 ControlParagraph::ControlParagraph(LyXView & lv, Dialogs & d)
@@ -89,7 +87,7 @@ void ControlParagraph::apply()
 
 	buffer()->markDirty();
 
-	setMinibuffer(&lv_, _("Paragraph layout set"));
+	lv_.message(_("Paragraph layout set"));
 }
 
 

@@ -31,21 +31,19 @@ public:
 	friend class QSearchDialog;
 	///
 	QSearch();
-
 private:
 	/// Apply changes
-	virtual void apply() {};
+	virtual void apply() {}
 	/// update
-	virtual void update_contents() {};
+	virtual void update_contents() {}
 	/// build the dialog
 	virtual void build_dialog();
 
-
-	void find(string const & str, bool casesens, bool words, bool backwards);
+	void find(string const & str, bool casesens,
+		  bool words, bool backwards);
 
 	void replace(string const & findstr, string const & replacestr,
 		bool casesens, bool words, bool all);
-
 };
 
 #endif // QSEARCH_H

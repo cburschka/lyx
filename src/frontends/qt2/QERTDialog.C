@@ -19,6 +19,7 @@
 
 #include <qpushbutton.h>
 
+
 QERTDialog::QERTDialog(QERT * form)
 	: QERTDialogBase(0, 0, false, 0),
 	form_(form)

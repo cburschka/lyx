@@ -1,3 +1,84 @@
+2002-10-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Toolbar_pimpl.C (setLayout): initialize i to 0, don't
+	reinitialize.
+
+	* README: add a comment about the strange moc behaviour.
+
+	* QWrap.C (apply): local ref to params
+	(update_contents): ditto
+	(numtostr): use erase to clear string
+
+	* QWorkArea.C (setScrollbarParams): use explicit std::max
+
+	* QURL.C (update_contents): local ref to params
+	(apply): ditto
+
+	* QRef.C (update_contents): local ref to params
+	(apply): ditto
+
+	* QPreambleDialog.C (editClicked): no need to explicitly
+	initialize an std::string.
+	(editClicked): read file with smaller overhead.
+
+	* QParagraph.C (apply): local ref to params
+	(update_contents): ditto
+
+	* QMinipage.C (apply): local ref to params
+	(update_contents): ditto
+	(update_contents): handle InsetMinipage::top in switch
+
+	* QMath.C (createMathPanel): use "new Type" not "new Type()"
+
+	* QLyXKeySym.h: adda key_ accessor key().
+
+	* QLyXKeySym.C (operator=): out of class version.
+
+	* QLog.C (update_contents): use a simpler and faster way to fill
+	the log dialog.
+
+	* QLPopupMenu.C (getLabel): use subst directly on mi.label()
+
+	* QLPainter.C (QLPainter): use "new Type" not "new Type()"
+	(lines): put int i inside for scope
+	(fillPolygon): put j insize for scope
+
+	* QInclude.C (update_contents): local ref to params
+	(apply): ditto
+
+	* QGraphics.C (update_contents): initialize item to 0
+	(apply): use erase to clear string
+
+	* QFloat.C (update_contents): local ref to params
+	(apply): ditto
+
+	* QExternal.C (update_contents): local ref to params
+	(helpText): ditto
+	(apply): ditto
+
+	* QERT.C (apply): local reference to params
+
+	* QDocument.C (apply): have a local reference to the params
+	(update_contents): ditto
+
+	* QCommandEdit.C: add missing include config.h
+
+	* QCommandBuffer.C (QCommandBuffer): call method directly on
+	unnamed pointer objects.
+	(complete): use "new Type", not "new Type()"
+	(complete): use explict std::max
+
+	* QCharacter.C (update_contents): use a local reference as
+	controller cache
+	(apply): ditto
+
+	* QBibtex.C (update_contents): use erase to clear a string.
+
+	* QAbout.C (build_dialog): fill the credits view in a bit more
+	elegant way
+
+	* almost all files: clean up formatting and indenting. 
+
 2002-10-19  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* qfont_loader.C (update): move loop vars into for scopes.

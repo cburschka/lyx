@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -26,4 +26,4 @@ LyXScreen * create(WorkArea & owner)
 	return new QScreen(static_cast<QWorkArea &>(owner));
 }
 
-}
+} // namespace LyXScreenFactory

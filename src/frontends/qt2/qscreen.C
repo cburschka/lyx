@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -15,9 +15,9 @@
 #endif
 
 #include <algorithm>
-#include <iostream> 
+#include <iostream>
 
-#include "LColor.h" 
+#include "LColor.h"
 #include "QWorkArea.h"
 #include "qscreen.h"
 #include "lyxtext.h"
@@ -27,7 +27,7 @@
 #include "debug.h"
 
 #include <qapplication.h>
- 
+
 using std::endl;
 using std::max;
 using std::min;
@@ -37,15 +37,12 @@ namespace {
 /// copy some horizontal regions about inside a pixmap
 void copyInPixmap(QPixmap * p, int dest_y, int src_y, int src_w, int src_h)
 {
-	bitBlt(p,
-		0, dest_y,   // dest x,y
-		p, 0, src_y, // source x, y
-		src_w, src_h // source w, h
-		);
+	// bitBlt(dest, dest_x, dest_y, source, src_x, src_y, src_w, src_h)
+	bitBlt(p, 0, dest_y, p, 0, src_y, src_w, src_h);
 }
- 
+
 } // namespace anon
- 
+
 
 QScreen::QScreen(QWorkArea & o)
 	: LyXScreen(), owner_(o)
@@ -57,15 +54,15 @@ QScreen::~QScreen()
 {
 }
 
- 
+
 void QScreen::showManualCursor(LyXText const * text, int x, int y,
 				 int asc, int desc, Cursor_Shape shape)
 {
 	if (!qApp->focusWidget())
 		return;
- 
+
 	string const focusname(qApp->focusWidget()->name());
- 
+
 	// Probably a hack
 	if (focusname != "content_pane")
 		return;
@@ -74,9 +71,9 @@ void QScreen::showManualCursor(LyXText const * text, int x, int y,
 	int const y_tmp = min(y - text->first_y + desc, owner_.height());
 
 	// secure against very strange situations
-	// which would be when .... ? 
+	// which would be when .... ?
 	int const y2 = max(y_tmp, y1);
-	
+
 	if (y2 > 0 && y1 < owner_.height()) {
 		cursor_h_ = y2 - y1 + 1;
 		cursor_y_ = y1;
@@ -96,18 +93,18 @@ void QScreen::showManualCursor(LyXText const * text, int x, int y,
 			break;
 		}
 
-		if (!nocursor_pixmap_.get() 
+		if (!nocursor_pixmap_.get()
 			|| cursor_w_ != nocursor_pixmap_->width()
 			|| cursor_h_ != nocursor_pixmap_->height()) {
 			nocursor_pixmap_.reset(new QPixmap(cursor_w_, cursor_h_));
 		}
- 
+
 		owner_.getPainter().start();
 
-		// save old area 
+		// save old area
 		bitBlt(nocursor_pixmap_.get(), 0, 0, owner_.getPixmap(),
 			cursor_x_, cursor_y_, cursor_w_, cursor_h_);
- 
+
 		owner_.getPainter().line(x, y1, x, y2);
 		switch (shape) {
 		case BAR_SHAPE:
@@ -120,12 +117,12 @@ void QScreen::showManualCursor(LyXText const * text, int x, int y,
 				cursor_w_ - 1, rectangle_h, LColor::cursor);
 			break;
 		}
- 
+
 		owner_.getPainter().end();
- 
+
 		owner_.getContent()->repaint(
 			cursor_x_, cursor_y_,
-			cursor_w_, cursor_h_); 
+			cursor_w_, cursor_h_);
 
 	}
 	cursor_visible_ = true;
@@ -134,32 +131,32 @@ void QScreen::showManualCursor(LyXText const * text, int x, int y,
 
 void QScreen::hideCursor()
 {
-	if (!cursor_visible_) 
+	if (!cursor_visible_)
 		return;
 
-	bitBlt(owner_.getPixmap(), cursor_x_, cursor_y_, 
+	bitBlt(owner_.getPixmap(), cursor_x_, cursor_y_,
 		nocursor_pixmap_.get(), 0, 0, cursor_w_, cursor_h_);
- 
+
 	owner_.getContent()->repaint(
 		cursor_x_, cursor_y_,
-		cursor_w_, cursor_h_); 
- 
+		cursor_w_, cursor_h_);
+
 	cursor_visible_ = false;
 }
 
- 
+
 void QScreen::repaint()
 {
 	QWidget * content(owner_.getContent());
 	content->repaint(0, 0, content->width(), content->height());
 }
 
- 
+
 void QScreen::expose(int x, int y, int w, int h)
 {
 	lyxerr[Debug::GUI] << "expose " << w << "x" << h
 		<< "+" << x << "+" << y << endl;
- 
+
 	owner_.getContent()->update(x, y, w, h);
 }
 
@@ -167,9 +164,9 @@ void QScreen::expose(int x, int y, int w, int h)
 void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 {
 	QPixmap * p(owner_.getPixmap());
- 
+
 	owner_.getPainter().start();
- 
+
 	if (cursor_visible_) hideCursor();
 
 	int const old_first = text->first_y;
@@ -178,7 +175,7 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 
 	// If you want to fix the warning below, fix it so it
 	// actually scrolls properly. Hint: a cast won't do.
- 
+
 	// is any optimization possible?
 	if (y - old_first < owner_.workHeight()
 	    && old_first - y < owner_.workHeight()) {
@@ -194,10 +191,10 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 			expose(0, owner_.height() - src_y, owner_.workWidth(), src_y);
 		}
 	} else {
-		lyxerr[Debug::GUI] << "dumb full redraw" << endl; 
+		lyxerr[Debug::GUI] << "dumb full redraw" << endl;
 		drawFromTo(text, bv, 0, owner_.height(), 0, 0, internal);
 		repaint();
 	}
- 
+
 	owner_.getPainter().end();
 }

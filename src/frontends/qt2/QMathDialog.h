@@ -25,20 +25,18 @@ class IconPalette;
 class QMathDialog : public QMathDialogBase
 {
 	Q_OBJECT
-
 public:
 	QMathDialog(QMath * form);
-
 public slots:
 	virtual void delimiterClicked();
 	virtual void expandClicked();
 	virtual void fracClicked();
-	virtual void functionSelected(const QString &);
+	virtual void functionSelected(QString const &);
 	virtual void matrixClicked();
 	virtual void subscriptClicked();
 	virtual void superscriptClicked();
 	virtual void equationClicked();
-	void symbol_clicked(string str);
+	void symbol_clicked(string const & str);
 	void insertSpace(int id);
 	void insertRoot(int id);
 	void insertStyle(int id);
@@ -46,10 +44,8 @@ public slots:
 
 	/// about to show a symbol panel
 	void showingPanel(int);
-
 protected:
 	//needed ? virtual void closeEvent(QCloseEvent * e);
-
 private:
 	/// make a symbol panel
 	IconPalette * makePanel(QWidget * parent, char const ** entries);

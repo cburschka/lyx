@@ -48,8 +48,8 @@
 #include "io_callback.h"
 
 #include <qapplication.h>
-#include <qwidget.h> 
-#include <qpaintdevicemetrics.h> 
+#include <qwidget.h>
+#include <qpaintdevicemetrics.h>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
@@ -64,16 +64,20 @@ extern BufferList bufferlist;
 namespace {
 
 float getDPI()
-{ 
+{
 	QWidget w;
 	QPaintDeviceMetrics pdm(&w);
 	return 0.5 * (pdm.logicalDpiX() + pdm.logicalDpiY());
 }
 
-}
+map<int, io_callback *> io_callbacks;
+
+} // namespace anon
+
 
 // FIXME: wrong place !
 LyXServer * lyxserver;
+
 
 void lyx_gui::parse_init(int & argc, char * argv[])
 {
@@ -166,11 +170,6 @@ void lyx_gui::update_fonts()
 bool lyx_gui::font_available(LyXFont const & font)
 {
 	return fontloader.available(font);
-}
-
-
-namespace {
-	map<int, io_callback *> io_callbacks;
 }
 
 

@@ -52,8 +52,6 @@ namespace Liason {
 	PrinterParams getPrinterParams(Buffer *);
 	/// print the current buffer
 	bool printBuffer(Buffer *, PrinterParams const &);
-	/// set the minibuffer
-	void setMinibuffer(LyXView *, string const & msg);
 	//@}
 
 } // namespace Liason

@@ -22,6 +22,7 @@
 #include "controllers/frnt_lang.h"
 
 #include "LString.h"
+
 #include <vector>
 
 
@@ -29,14 +30,13 @@ class ControlCharacter;
 class QCharacterDialog;
 
 
-class QCharacter :
-	public Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> >
+class QCharacter
+	: public Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> >
 {
+public:
 	friend class QCharacterDialog;
 
-public:
 	QCharacter();
-
 private:
 	/// Apply changes
 	virtual void apply();

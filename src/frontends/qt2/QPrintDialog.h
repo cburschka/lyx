@@ -21,12 +21,10 @@
 
 class QPrint;
 
-class QPrintDialog : public QPrintDialogBase
-{ Q_OBJECT
-
+class QPrintDialog : public QPrintDialogBase {
+	Q_OBJECT
 public:
 	QPrintDialog(QPrint * f);
-
 protected slots:
 	virtual void change_adaptor();
 	virtual void browseClicked();
@@ -34,7 +32,6 @@ protected slots:
 	virtual void copiesChanged(int);
 	virtual void printerChanged();
 	virtual void pagerangeChanged();
-
 private:
 	QPrint * form_;
 };

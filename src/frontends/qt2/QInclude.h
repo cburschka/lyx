@@ -30,10 +30,8 @@ public:
 	friend class QIncludeDialog;
 	///
 	QInclude();
-
 protected:
 	virtual bool isValid();
-
 private:
 	/// Apply changes
 	virtual void apply();

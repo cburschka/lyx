@@ -3,13 +3,12 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
-#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -18,7 +17,7 @@
 #include "gettext.h"
 #include "LyXView.h"
 #include "ControlPreamble.h"
- 
+
 #include "QPreamble.h"
 #include "QPreambleDialog.h"
 #include "Qt2BC.h"
@@ -27,6 +26,7 @@
 #include <qpushbutton.h>
 
 typedef Qt2CB<ControlPreamble, Qt2DB<QPreambleDialog> > base_class;
+
 
 QPreamble::QPreamble()
 	: base_class(_("LaTeX Preamble"))

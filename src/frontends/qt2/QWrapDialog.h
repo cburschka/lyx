@@ -20,18 +20,14 @@
 
 class QWrap;
 
-class QWrapDialog : public QWrapDialogBase
-{ Q_OBJECT
-
+class QWrapDialog : public QWrapDialogBase {
+	Q_OBJECT
 public:
 	QWrapDialog(QWrap * form);
-
 protected slots:
 	virtual void change_adaptor();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QWrap * form_;
 };

@@ -24,14 +24,13 @@ class ControlCitation;
 class QCitationDialog;
 
 
-class QCitation : public Qt2CB<ControlCitation, Qt2DB<QCitationDialog> >
+class QCitation
+	: public Qt2CB<ControlCitation, Qt2DB<QCitationDialog> >
 {
-	friend class QCitationDialog;
-
 public:
+	friend class QCitationDialog;
 	///
 	QCitation();
-
 private:
 	///
 	enum State {

@@ -29,12 +29,10 @@ class QButton;
     the activation policy and which buttons correspond to which output of the
     state machine.
 */
-class Qt2BC : public GuiBC<QButton, QWidget>
-{
+class Qt2BC : public GuiBC<QButton, QWidget> {
 public:
 	///
 	Qt2BC(string const &, string const &);
-
 private:
 	/// Updates the button sensitivity (enabled/disabled)
 	void setButtonEnabled(QButton *, bool enabled);

@@ -20,21 +20,16 @@
 
 class QSendto;
 
-class QSendtoDialog : public QSendtoDialogBase
-{
+class QSendtoDialog : public QSendtoDialogBase {
 	Q_OBJECT
-
 public:
 	QSendtoDialog(QSendto * form);
-
 protected slots:
 	virtual void changed_adaptor();
-	virtual void slotFormatHighlighted(const QString&) {};
-	virtual void slotFormatSelected(const QString&) {};
-
+	virtual void slotFormatHighlighted(const QString&) {}
+	virtual void slotFormatSelected(const QString&) {}
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QSendto * form_;
 };

@@ -21,13 +21,11 @@
 
 class QCitation;
 
-class QCitationDialog : public QCitationDialogBase
-{ Q_OBJECT
-
+class QCitationDialog : public QCitationDialogBase {
+	Q_OBJECT
 public:
 	QCitationDialog(QCitation * form);
 	~QCitationDialog();
-
 protected slots:
 	virtual void slotBibHighlighted(int sel);
 	virtual void slotBibSelected(int sel);
@@ -39,10 +37,8 @@ protected slots:
 	virtual void slotPreviousClicked();
 	virtual void slotNextClicked();
 	virtual void changed_adaptor();
-
 private:
 	void doFind(biblio::Direction dir);
-
 private:
 	QCitation * form_;
 };

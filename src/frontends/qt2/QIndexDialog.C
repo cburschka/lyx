@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -18,10 +18,11 @@
 
 #include "QIndex.h"
 #include "QIndexDialog.h"
- 
+
 #include <qpushbutton.h>
 #include <qlineedit.h>
 #include <qwhatsthis.h>
+
 
 QIndexDialog::QIndexDialog(QIndex * form)
 	: QIndexDialogBase(0, 0, false, 0),
@@ -51,11 +52,11 @@ QIndexDialog::QIndexDialog(QIndex * form)
 
 void QIndexDialog::show()
 {
-	QIndexDialogBase::show(); 
+	QIndexDialogBase::show();
 	keywordED->setFocus();
 }
 
- 
+
 void QIndexDialog::change_adaptor()
 {
 	form_->changed();

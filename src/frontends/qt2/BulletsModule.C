@@ -22,52 +22,53 @@
 #include "ui/BulletsModuleBase.h"
 #include "QBrowseBox.h"
 
-BulletsModule::BulletsModule( QWidget* parent,  const char* name, WFlags fl )
+
+BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
 	: BulletsModuleBase(parent, name, fl)
 {
-   standard = new QBrowseBox(6,6);
-   standard->insertItem(QPixmap("standard.xpm"));
+	standard = new QBrowseBox(6, 6);
+	standard->insertItem(QPixmap("standard.xpm"));
 
-   maths = new QBrowseBox(6,6);
-   maths->insertItem(QPixmap("amssymb.xpm"));
+	maths = new QBrowseBox(6, 6);
+	maths->insertItem(QPixmap("amssymb.xpm"));
 
-   QPopupMenu * pm = new QPopupMenu();
-   
-   QPopupMenu * pm1 = new QPopupMenu(pm);
-   pm1->insertItem(standard);
+	QPopupMenu * pm = new QPopupMenu;
 
-   QPopupMenu * pm2 = new QPopupMenu(pm);
-   pm2->insertItem(maths);
-   
-   
-   pm->insertItem("Standard",pm1);
-   pm->insertItem("Maths",pm2);
-   pm->insertItem("Ding 1");
-   pm->insertItem("Ding 2");
-   pm->insertItem("Ding 3");
-   pm->insertItem("Ding 4");
-   
-   setbullet1TB->setPopup(pm); 
+	QPopupMenu * pm1 = new QPopupMenu(pm);
+	pm1->insertItem(standard);
 
-   connect( standard, SIGNAL( selected(int,int) ),
-		 this , SLOT( checkThis(int,int) ) );
-   
+	QPopupMenu * pm2 = new QPopupMenu(pm);
+	pm2->insertItem(maths);
+
+	pm->insertItem("Standard", pm1);
+	pm->insertItem("Maths", pm2);
+	pm->insertItem("Ding 1");
+	pm->insertItem("Ding 2");
+	pm->insertItem("Ding 3");
+	pm->insertItem("Ding 4");
+
+	setbullet1TB->setPopup(pm);
+
+	connect(standard, SIGNAL(selected(int, int)),
+		this, SLOT(checkThis(int, int)));
+
 }
+
 
 BulletsModule::~BulletsModule()
 {
-   delete standard;
-   delete maths;
-     
+	delete standard;
+	delete maths;
 }
+
 
 void BulletsModule::setLevel1()
 {
-   qWarning("no setLevel1() yet");
+	qWarning("no setLevel1() yet");
 }
+
 
 void BulletsModule::checkThis(int x, int y)
 {
-   qWarning("Check, x: %d y: %d ",x,y);
+	qWarning("Check, x: %d y: %d ", x, y);
 }
-

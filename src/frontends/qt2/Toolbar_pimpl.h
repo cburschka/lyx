@@ -31,16 +31,15 @@ class QLComboBox;
 class ToolbarProxy;
 
 struct Toolbar::Pimpl {
-
+public:
 	friend class ToolbarProxy;
 
-public:
 	Pimpl(LyXView * o, int x, int y);
 
 	~Pimpl();
 
 	/// add a new button to the toolbar.
-    	void add(int action);
+	void add(int action);
 
 	/// update the state of the icons
 	void update();
@@ -53,7 +52,6 @@ public:
 	void openLayoutList();
 	/// Erase the layout list
 	void clearLayoutList();
-
 private:
 	void changed_layout(string const & sel);
 
@@ -70,18 +68,15 @@ private:
 	typedef std::map<QToolButton *, int> ButtonMap;
 
 	ButtonMap map_;
-
 };
 
 
 // moc is mind-numbingly stupid
 class ToolbarProxy : public QObject {
 	Q_OBJECT
-
 public:
 	ToolbarProxy(Toolbar::Pimpl & owner)
-		: owner_(owner) { };
-
+		: owner_(owner) {}
 public slots:
 
 	void layout_selected(const QString & str) {
@@ -94,7 +89,6 @@ public slots:
 			static_cast<QToolButton const *>(sender()))
 		);
 	}
-
 private:
 	Toolbar::Pimpl & owner_;
 };

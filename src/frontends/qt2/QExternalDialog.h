@@ -20,14 +20,12 @@
 
 class QExternal;
 
-class QExternalDialog : public QExternalDialogBase
-{ Q_OBJECT
-
+class QExternalDialog : public QExternalDialogBase {
+	Q_OBJECT
 public:
 	QExternalDialog(QExternal * form);
 
 	virtual void show();
-
 protected slots:
 	virtual void change_adaptor();
 	virtual void editClicked();
@@ -35,10 +33,8 @@ protected slots:
 	virtual void updateClicked();
 	virtual void browseClicked();
 	virtual void templateChanged();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QExternal * form_;
 };

@@ -21,16 +21,13 @@
 
 class QTabularCreate;
 
-class QTabularCreateDialog : public QTabularCreateDialogBase
-{ Q_OBJECT
-
+class QTabularCreateDialog : public QTabularCreateDialogBase {
+	Q_OBJECT
 public:
 	QTabularCreateDialog(QTabularCreate * form);
-
 protected slots:
 	virtual void columnsChanged(int);
 	virtual void rowsChanged(int);
-
 private:
 	QTabularCreate * form_;
 };

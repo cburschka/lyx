@@ -20,21 +20,17 @@
 
 class QFloat;
 
-class QFloatDialog : public QFloatDialogBase
-{ Q_OBJECT
-
+class QFloatDialog : public QFloatDialogBase {
+	Q_OBJECT
 public:
 	QFloatDialog(QFloat * form);
-
 protected slots:
 	virtual void change_adaptor();
 	virtual void tbhpClicked();
 	virtual void heredefinitelyClicked();
 	virtual void spanClicked();
-
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QFloat * form_;
 };

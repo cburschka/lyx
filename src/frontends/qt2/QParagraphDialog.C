@@ -27,6 +27,7 @@
 
 using std::vector;
 
+
 QParagraphDialog::QParagraphDialog(QParagraph * form)
 	: QParagraphDialogBase(0, 0, false, 0),
 	form_(form)
@@ -45,6 +46,7 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 	//valueBelow->setValidator(new QDoubleValidator(valueBelow));
 }
 
+
 void QParagraphDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -57,6 +59,7 @@ void QParagraphDialog::change_adaptor()
 	form_->changed();
 }
 
+
 void QParagraphDialog::enableAbove(int)
 {
 	bool const enable = spacingAbove->currentItem()==6;
@@ -65,12 +68,14 @@ void QParagraphDialog::enableAbove(int)
 
 }
 
+
 void QParagraphDialog::enableBelow(int)
 {
 	bool const enable = spacingBelow->currentItem()==6;
 	valueBelow->setEnabled(enable);
 	unitBelow->setEnabled(enable);
 }
+
 
 void QParagraphDialog::enableLinespacingValue(int)
 {

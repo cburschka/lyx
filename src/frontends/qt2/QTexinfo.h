@@ -20,6 +20,8 @@
 
 #include "ControlTexinfo.h"
 
+#include <vector>
+
 class QTexinfoDialog;
 
 ///
@@ -33,9 +35,9 @@ public:
 	QTexinfo();
 private:
 	/// Apply changes
-	virtual void apply() { };
+	virtual void apply() {}
 	/// update (do we need this?)
-	virtual void update_contents() {};
+	virtual void update_contents() {}
 	/// build the dialog
 	virtual void build_dialog();
 	///

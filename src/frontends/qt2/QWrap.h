@@ -26,11 +26,9 @@ class QWrap
 	: public Qt2CB<ControlWrap, Qt2DB<QWrapDialog> >
 {
 public:
-
 	friend class QWrapDialog;
 
 	QWrap();
-
 private:
 	/// Apply changes
 	virtual void apply();

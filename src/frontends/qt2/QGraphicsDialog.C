@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -13,8 +13,6 @@
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
-#include <vector>
 
 #include "ControlGraphics.h"
 #include "debug.h"
@@ -27,6 +25,9 @@
 
 #include "QGraphicsDialog.h"
 #include "QGraphics.h"
+
+#include <vector>
+
 
 QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	: QGraphicsDialogBase(0, 0, false, 0),
@@ -44,12 +45,12 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 
 
 void QGraphicsDialog::show()
-{ 
+{
 	QGraphicsDialogBase::show();
 	filename->setFocus();
 }
 
- 
+
 void QGraphicsDialog::change_adaptor()
 {
 	form_->changed();

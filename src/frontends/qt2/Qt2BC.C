@@ -3,8 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Allan Rae 
- * \author Angus Leeming 
+ * \author Allan Rae
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -20,6 +20,7 @@
 
 #include <qbutton.h>
 #include <qlineedit.h>
+
 
 Qt2BC::Qt2BC(string const & cancel, string const & close)
 	: GuiBC<QButton, QWidget>(cancel, close)
