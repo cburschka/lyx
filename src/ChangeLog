@@ -1,3 +1,9 @@
+2003-02-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* bufferparams.C (writeLaTeX): add a std:here
+
+	* buffer.C: and remove a using directive there
+
 2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* buffer.C (makeLaTeXFile): move the code that generates the

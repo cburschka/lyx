@@ -309,7 +309,8 @@ void BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 
 		// Create a list with all the input encodings used
 		// in the document
-		set<string> encodings = features.getEncodingSet(doc_encoding);
+		std::set<string> encodings =
+			features.getEncodingSet(doc_encoding);
 
 		os << "\\usepackage[";
 		std::copy(encodings.begin(), encodings.end(),

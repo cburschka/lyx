@@ -131,7 +131,6 @@ using std::make_pair;
 using std::vector;
 using std::map;
 using std::max;
-using std::set;
 using std::stack;
 using std::list;
 using std::for_each;
