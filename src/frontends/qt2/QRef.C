@@ -100,7 +100,7 @@ void QRef::setGoBack()
  
 void QRef::setGotoRef()
 {
-	dialog_->gotoPB->setText(_("&Go to reference"));
+	dialog_->gotoPB->setText(_("&Goto"));
 	QToolTip::remove(dialog_->gotoPB);
 	QToolTip::add(dialog_->gotoPB, _("Go to reference"));
 }
