@@ -1,3 +1,4 @@
+# translation of lyx.1.3.5-2.po to Basque
 # translation of lyx.1.3.4.po to basque
 # translation of lyx.1.3.3.eu.new.po to basque
 # translation of cvs-lyx.eu2.po to basque
@@ -10,11 +11,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx.1.3.4\n"
+"Project-Id-Version: lyx.1.3.5-2\n"
 "POT-Creation-Date: 2004-09-10 12:25+0200\n"
-"PO-Revision-Date: 2004-02-19 19:25+0100\n"
+"PO-Revision-Date: 2004-09-13 22:15+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
-"Language-Team: basque <itzulpena@euskalgnu.org>\n"
+"Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3732,8 +3733,7 @@ msgstr "DVI ikustailearen paper-tamaina aukerak:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-"DVI ikustaile batzuen paper-tamaina ezartzeko hautazko bandera (-paper)"
+msgstr "DVI ikustaile batzuen paper-tamaina ezartzeko hautazko bandera (-paper)"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
 msgid "CheckTeX start options and flags"
@@ -4196,8 +4196,7 @@ msgstr "&Esportatu formatua:"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Prozesatu komando honekin aldatutako artxibategia ($$FName= fitxategi-izena)"
+msgstr "Prozesatu komando honekin aldatutako artxibategia ($$FName= fitxategi-izena)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4531,8 +4530,7 @@ msgid "&View"
 msgstr "&Ikusi"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Erakutsi markatutako fitxategi-edukia. Fitxategia bide-izenarekin erakusten "
 "bada soilik."
@@ -6443,7 +6441,7 @@ msgstr "Hebreera"
 
 #: ../lib/languages:35
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandiera"
 
 #: ../lib/languages:36
 msgid "Irish"
@@ -6458,13 +6456,12 @@ msgid "Kazakh"
 msgstr "Kazakhera"
 
 #: ../lib/languages:39
-#, fuzzy
 msgid "Latvian"
-msgstr "Kokapena"
+msgstr "Letoniera"
 
 #: ../lib/languages:40
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lituaniera"
 
 #: ../lib/languages:41
 msgid "Lsorbian"
@@ -8331,8 +8328,7 @@ msgstr "Abisua!"
 msgid ""
 "The file was created with a newer version of LyX. This is likely to cause "
 "problems."
-msgstr ""
-"Dokumentua LyX bertsio berriagoarekin sortu da. Horrek arazoak sor ditzake."
+msgstr "Dokumentua LyX bertsio berriagoarekin sortu da. Horrek arazoak sor ditzake."
 
 #. "\\lyxformat" not found
 #: src/buffer.C:1219 src/buffer.C:1227 src/buffer.C:1241 src/buffer.C:1273
@@ -8342,8 +8338,7 @@ msgstr "ERROREA!"
 
 #: src/buffer.C:1220
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"LyX egitura zaharreko fitxategia aurkitu da. Irakurtzeko erabili  LyX 0.10.x!"
+msgstr "LyX egitura zaharreko fitxategia aurkitu da. Irakurtzeko erabili  LyX 0.10.x!"
 
 #: src/buffer.C:1228
 msgid "Can't find conversion script."
@@ -8644,7 +8639,6 @@ msgid "GUI handling"
 msgstr "GUI erabilera"
 
 #: src/debug.C:43
-#, fuzzy
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex gramatika-aztertzailea"
 
@@ -8771,8 +8765,7 @@ msgstr "Mesedez, ongi instalatu \n"
 
 #: src/frontends/controllers/ControlAboutlyx.C:56
 msgid "amount of work other people have done for the LyX project."
-msgstr ""
-"beste pertsona batzuek LyX proiektuan eginiko lan ikaragarria eskertzeko."
+msgstr "beste pertsona batzuek LyX proiektuan eginiko lan ikaragarria eskertzeko."
 
 #: src/frontends/controllers/ControlAboutlyx.C:63
 msgid ""
@@ -9993,17 +9986,14 @@ msgstr ""
 "\", ez \"van Gogh\"). Erabilgarria esaldi hasieretan (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:208
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
 msgstr ""
 "Aukerako testua, zitazio-erreferentzi aurretik agertzen dena, adib. \"ikus "
 "<Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:211
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
-msgstr ""
-"Aukerako testua, zitazio-erreferentzi ondoren agertzen dena, adib. \"12 oo.\""
+msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgstr "Aukerako testua, zitazio-erreferentzi ondoren agertzen dena, adib. \"12 oo.\""
 
 #: src/frontends/xforms/FormCitation.C:214
 msgid "Search your database (all fields will be searched)."
@@ -10047,8 +10037,7 @@ msgstr " Ezer ez| Txikiak | Oso txikiak | Oso zabalak "
 
 #: src/frontends/xforms/FormDocument.C:293
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr ""
-" ``testua'' | ''testua'' | ,,testua`` | ,,testua'' | <<testua>> | >>testua<< "
+msgstr " ``testua'' | ''testua'' | ,,testua`` | ,,testua'' | <<testua>> | >>testua<< "
 
 #: src/frontends/xforms/FormDocument.C:318
 msgid " Author-year | Numerical "
@@ -10156,8 +10145,7 @@ msgid "Add all processes to the list of processes to kill."
 msgstr "Gehitu prozesu guztiak hiltzeko prozesuen zerrendara."
 
 #: src/frontends/xforms/FormForks.C:74
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
+msgid "Add the currently selected child process to the list of processes to kill."
 msgstr "Gehitu unean hautatutako haur-prozesua hiltzeko prozesuen zerrendara."
 
 #: src/frontends/xforms/FormForks.C:77
@@ -10477,8 +10465,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX objektuak kolorea eslei dakiokenak."
 
 #: src/frontends/xforms/FormPreferences.C:543
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Aldatu LyX objektuen kolorea. Oharra: ondoren aldaketa \"Aplikatu\" behar "
 "duzu."
@@ -10628,8 +10615,7 @@ msgstr "Monokromoa|Gris-eskala|Kolorea|Ez erakutsi"
 
 #: src/frontends/xforms/FormPreferences.C:1976
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" Lehenetsia | US gutuna | US legala | US exekutiboa | A3 | A4 | A5 | B5"
+msgstr " Lehenetsia | US gutuna | US legala | US exekutiboa | A3 | A4 | A5 | B5"
 
 #: src/frontends/xforms/FormPreferences.C:2217
 msgid "Default path"
@@ -10802,10 +10788,8 @@ msgstr "Bilatu gorantz."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
-msgid ""
-"Export the buffer to this format before running the command below on it."
-msgstr ""
-"Esportatu bufferra formatu honetara beheko komandoa exekutatu aurretik."
+msgid "Export the buffer to this format before running the command below on it."
+msgstr "Esportatu bufferra formatu honetara beheko komandoa exekutatu aurretik."
 
 #: src/frontends/xforms/FormSendto.C:52
 msgid ""
@@ -10901,8 +10885,7 @@ msgstr "Erakutsi bide-izen osoa edo edo fitxategi-izena soilik."
 
 #: src/frontends/xforms/FormTexinfo.C:58
 msgid "Runs the script \"TexFiles.sh\" to build new file lists."
-msgstr ""
-"Exekutatu  \"TexFiles.sh\" script-a fitxategi-zerrenda berria eraikitzeko."
+msgstr "Exekutatu  \"TexFiles.sh\" script-a fitxategi-zerrenda berria eraikitzeko."
 
 #: src/frontends/xforms/FormTexinfo.C:61
 msgid "Double click to view contents of file."
@@ -11656,8 +11639,7 @@ msgstr "Saiatu komandoaren '-sysdir' parametroarekin edo "
 
 #: src/lyx_main.C:359
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
-msgstr ""
-"ezarri inguruneko LYX_DIR_11x aldagaia  `chkconfig.ltx' fitxategia daukan "
+msgstr "ezarri inguruneko LYX_DIR_11x aldagaia  `chkconfig.ltx' fitxategia daukan "
 
 #: src/lyx_main.C:361
 msgid "containing the file `chkconfig.ltx'."
@@ -11815,13 +11797,11 @@ msgstr "Agindua falta da, --execute aukeraren atzetik"
 
 #: src/lyx_main.C:901
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr ""
-"Fitxategi mota falta, --export aukeraren atzetik [adibidez latex, ps...]"
+msgstr "Fitxategi mota falta, --export aukeraren atzetik [adibidez latex, ps...]"
 
 #: src/lyx_main.C:913
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr ""
-"Fitxategi mota falta, --import aukeraren atzetik [adibidez latex, ps...]"
+msgstr "Fitxategi mota falta, --import aukeraren atzetik [adibidez latex, ps...]"
 
 #: src/lyx_main.C:918
 msgid "Missing filename for --import"
@@ -11993,8 +11973,7 @@ msgstr "Huts egin du "
 
 #: src/lyxfunc.C:1494
 msgid " failed - color is undefined or may not be redefined"
-msgstr ""
-" kolorea ezartzean - kolorea definitu gabe dago edo ezin da berriz definitu"
+msgstr " kolorea ezartzean - kolorea definitu gabe dago edo ezin da berriz definitu"
 
 #: src/lyxfunc.C:1644
 msgid "Select template file"
@@ -12090,8 +12069,7 @@ msgstr ""
 
 #: src/lyxrc.C:1840
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
-msgstr ""
-"Inprimatzeko zure programarik gustokoena, adibidez, \"dvips\", \"dvilj4\"."
+msgstr "Inprimatzeko zure programarik gustokoena, adibidez, \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:1844
 msgid "The option to print only even pages."
@@ -12149,8 +12127,7 @@ msgstr ""
 
 #: src/lyxrc.C:1892
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr ""
-"Inprimatze-programak sortutako fitxategiaren luzapena, normalean \".ps\"."
+msgstr "Inprimatze-programak sortutako fitxategiaren luzapena, normalean \".ps\"."
 
 #: src/lyxrc.C:1896
 msgid ""
@@ -12219,8 +12196,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Menu/popup-etako letra-tipoen kodeketa."
 
 #: src/lyxrc.C:1946
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Automatikoki gordetzeko birtartea (segundutan). 0 ipiniz gero ez da "
 "automatikoki gordeko."
@@ -12378,8 +12354,7 @@ msgstr ""
 "lehenetsi gisa."
 
 #: src/lyxrc.C:2041
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Zehaztu aukerako hiztegi pertsonalaren fitxategia. Adbz.  \".ispell_english"
 "\"."
@@ -12440,8 +12415,7 @@ msgstr ""
 "jatorrizko fitxategiaren direktorio berean gordeko du babes-kopia."
 
 #: src/lyxrc.C:2078
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Hautatu eskuinetik-ezkerrerako hizkuntzen (adib. arabiera, hebreeera) "
 "euskarria gaitzeko."
@@ -12482,14 +12456,11 @@ msgstr ""
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr ""
-"Hautatu dokumentuaren hasieran hizkuntza aldatzeko komandoa beharrezkoa bada."
+msgstr "Hautatu dokumentuaren hasieran hizkuntza aldatzeko komandoa beharrezkoa bada."
 
 #: src/lyxrc.C:2102
-msgid ""
-"Select if a language switching command is needed at the end of the document."
-msgstr ""
-"Hautatu dokumentuaren amaieran hizkuntza aldatzeko komandoa beharrezkoa bada."
+msgid "Select if a language switching command is needed at the end of the document."
+msgstr "Hautatu dokumentuaren amaieran hizkuntza aldatzeko komandoa beharrezkoa bada."
 
 #: src/lyxrc.C:2106
 msgid ""
@@ -12540,13 +12511,11 @@ msgstr "Hitz kopuru maximoa, etiketa berri bateko katearen hasieraketarako."
 
 #: src/lyxrc.C:2148
 msgid "Shows a typeset preview of things such as math"
-msgstr ""
-"Gauzen konposaketaren aurrebista erakusten du, matematikarena bezalakoa."
+msgstr "Gauzen konposaketaren aurrebista erakusten du, matematikarena bezalakoa."
 
 #: src/lyxrc.C:2152
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr ""
-"Aurrebistako ekuazioek \"(#)\" motako etiketak dituzte, zenbakien ordez."
+msgstr "Aurrebistako ekuazioek \"(#)\" motako etiketak dituzte, zenbakien ordez."
 
 #: src/lyxrc.C:2156
 msgid "Scale the preview size to suit."
@@ -12696,8 +12665,7 @@ msgstr "Lortu LyX-en (< 1.1.x) bertsio zaharkituago bat bihurketarako!"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"Paragrafo baten hasieran ezin duzu zuriune bat sartu. Irakurri Tutoretza."
+msgstr "Paragrafo baten hasieran ezin duzu zuriune bat sartu. Irakurri Tutoretza."
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -12771,3 +12739,4 @@ msgstr "Marka ezarrita"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-eko 'layout' funtzioak argumentu bat behar du."
+

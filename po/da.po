@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "POT-Creation-Date: 2004-09-10 12:25+0200\n"
-"PO-Revision-Date: 2004-03-20 11:37+0100\n"
+"PO-Revision-Date: 2004-09-10 16:36+0200\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.3.1\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -3479,8 +3480,7 @@ msgstr "&roff-kommando:"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
-msgstr ""
-"Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
+msgstr "Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
@@ -4529,8 +4529,7 @@ msgid "&View"
 msgstr "V&is"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis indhold af markeret fil. Kun mulig når filerne er vist i stien"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -6439,7 +6438,7 @@ msgstr "Hebraisk"
 
 #: ../lib/languages:35
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandsk"
 
 #: ../lib/languages:36
 msgid "Irish"
@@ -6454,13 +6453,12 @@ msgid "Kazakh"
 msgstr "Kazaksk"
 
 #: ../lib/languages:39
-#, fuzzy
 msgid "Latvian"
-msgstr "Placering"
+msgstr "Lettisk"
 
 #: ../lib/languages:40
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litauisk"
 
 #: ../lib/languages:41
 msgid "Lsorbian"
@@ -8666,7 +8664,6 @@ msgid "GUI handling"
 msgstr "Brugerflade"
 
 #: src/debug.C:43
-#, fuzzy
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex-grammatikfortolker"
 
@@ -10015,16 +10012,12 @@ msgstr ""
 "ikke \"van Gogh\"). Nyttigt i begyndelsen af sætninger (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:208
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr ""
-"Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
+msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgstr "Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:211
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
-msgstr ""
-"Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
+msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgstr "Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
 
 #: src/frontends/xforms/FormCitation.C:214
 msgid "Search your database (all fields will be searched)."
@@ -10064,8 +10057,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:243
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
+msgstr " Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
 
 #: src/frontends/xforms/FormDocument.C:293
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
@@ -10177,10 +10169,8 @@ msgid "Add all processes to the list of processes to kill."
 msgstr "Tilføj alle processer til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:74
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
-msgstr ""
-"Tilføj den valgte underproces til listen over processer, der skal dræbes."
+msgid "Add the currently selected child process to the list of processes to kill."
+msgstr "Tilføj den valgte underproces til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:77
 msgid "Remove the currently selected item from the list of processes to kill."
@@ -10500,10 +10490,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX-objekter, der kan få tilknyttet en farve."
 
 #: src/frontends/xforms/FormPreferences.C:543
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:551
 msgid "Find a new color."
@@ -10821,8 +10809,7 @@ msgstr "Søg baglæns."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Eksportér dokumentet i dette format, før nedenstående kommando udføres på "
 "den."
@@ -12097,8 +12084,7 @@ msgstr ""
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
+msgstr "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
 
 #: src/lyxrc.C:1840
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -12114,8 +12100,7 @@ msgstr "Om kun ulige sider skal udskrives."
 
 #: src/lyxrc.C:1852
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
+msgstr "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
 #: src/lyxrc.C:1856
 msgid "The option for specifying the number of copies to print."
@@ -12155,8 +12140,7 @@ msgstr "Få LyX til at give navnet på målprinteren til din udskriftskommando."
 
 #: src/lyxrc.C:1888
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
+msgstr "Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
 
 #: src/lyxrc.C:1892
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -12206,13 +12190,11 @@ msgstr ""
 
 #: src/lyxrc.C:1917
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
+msgstr "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
 #: src/lyxrc.C:1923
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
+msgstr "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
 #: src/lyxrc.C:1927
 msgid "The bold font in the dialogs."
@@ -12231,10 +12213,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
 #: src/lyxrc.C:1946
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
 #: src/lyxrc.C:1950
 msgid ""
@@ -12384,8 +12364,7 @@ msgid ""
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
 #: src/lyxrc.C:2041
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
 #: src/lyxrc.C:2046
@@ -12443,8 +12422,7 @@ msgstr ""
 "samme mappe, som den originale fil."
 
 #: src/lyxrc.C:2078
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
@@ -12467,8 +12445,7 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
+msgstr "Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
 
 #: src/lyxrc.C:2094
 msgid ""
@@ -12485,8 +12462,7 @@ msgid ""
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
 #: src/lyxrc.C:2102
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
 #: src/lyxrc.C:2106
@@ -12532,8 +12508,7 @@ msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
 #: src/lyxrc.C:2144
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
+msgstr "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
 #: src/lyxrc.C:2148
 msgid "Shows a typeset preview of things such as math"
@@ -12697,8 +12672,7 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
+msgstr "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
 #: src/text.C:3363
 msgid "Page Break (top)"
@@ -13278,3 +13252,4 @@ msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
 #~ msgid "Canceled"
 #~ msgstr "Annulleret"
+
