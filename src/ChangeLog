@@ -1,5 +1,9 @@
 2003-03-29  John Levon  <levon@movementarian.org>
 
+	* lyxfunc.C: safety check for C-r (revert)
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
 	* bufferlist.h:
 	* bufferlist.C: several UI fixes using Alert::prompt.
 	Fix the pointless looping quit code. Fix stupid revert

@@ -1023,9 +1023,23 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		WriteAs(view(), owner->buffer(), argument);
 		break;
 
-	case LFUN_MENURELOAD:
-		view()->reload();
+	case LFUN_MENURELOAD: {
+		string const file = MakeDisplayPath(view()->buffer()->fileName(), 20);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Any changes will be lost. Are you sure you want to revert to the saved version of the document %1$s?"));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("Any changes will be lost. Are you sure you want to revert to the saved version of the document");
+		text += file + _("?");
+#endif
+		int const ret = Alert::prompt(_("Revert to saved document?"),
+			text, 1, _("&Revert"), _("&Cancel"));
+
+		if (ret == 0)
+			view()->reload();
 		break;
+	}
 
 	case LFUN_UPDATE:
 		Exporter::Export(owner->buffer(), argument, true);

@@ -558,12 +558,12 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		}
 
 #if USE_BOOST_FORMAT
-		boost::format fmt(_("The document %1$s does not yet exist. Do you want to create a new document?"));
+		boost::format fmt(_("The document %1$s does not yet exist.\n\nDo you want to create a new document?"));
 		fmt % file;
 		string text = fmt.str();
 #else
 		string text = _("The document ");
-		text += file + _(" does not yet exist. Do you want to create a new document?");
+		text += file + _(" does not yet exist.\n\nDo you want to create a new document?");
 #endif
 		int const ret = Alert::prompt(_("Create new document?"),
 			text, 0, _("&Create"), _("Cancel"));
