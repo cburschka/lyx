@@ -454,7 +454,7 @@ void MathMatrixInset::mutate(short newtype)
 	switch (GetType()) {
 		case LM_OT_SIMPLE:
 			SetType(LM_OT_EQUATION);
-			numbered(false);
+			numbered(0, false);
 			mutate(newtype);
 			break;
 

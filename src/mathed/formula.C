@@ -268,10 +268,8 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x;
 			int y;
 			mathcursor->GetPos(x, y);
-			if (par()->GetType() == LM_OT_SIMPLE) {
+			if (par()->GetType() == LM_OT_SIMPLE)
 				par()->mutate(LM_OT_EQUATION);
-				par()->numbered(0, false);
-			}
 			else
 				par()->mutate(LM_OT_SIMPLE);
 			mathcursor->SetPos(x, y);
