@@ -23,8 +23,7 @@
 #include <gtk--/button.h>
 
 FormTabularCreate::FormTabularCreate(ControlTabularCreate & c)
-	: FormCB<ControlTabularCreate>(c, "diainserttabular.glade", 
-                                      "DiaInsertTabular")
+	: FormCB<ControlTabularCreate>(c, "FormTabularCreate")
 {}
 
 
@@ -59,50 +58,42 @@ void FormTabularCreate::build()
 
 void FormTabularCreate::apply()
 {
-	unsigned int ysize = (unsigned int)(rows_spin()->get_value_as_int());
-	unsigned int xsize = (unsigned int)(columns_spin()->get_value_as_int());
+	unsigned int ysize = (unsigned int)(rows()->get_value_as_int());
+	unsigned int xsize = (unsigned int)(cols()->get_value_as_int());
 
 	controller().params() = std::make_pair(xsize, ysize);
 }
 
 
 void FormTabularCreate::update()
-{
-}
+{}
 
 
 bool FormTabularCreate::validate() const
 {
-	// Always valid! (not really so, needs fixing).
-	return true;
+	return ( rows()->get_value_as_int() > 0 ) && 
+	       ( cols()->get_value_as_int() > 0 );
 }
 
 
-Gtk::SpinButton * FormTabularCreate::rows_spin() const
+Gtk::Button * FormTabularCreate::ok_btn() const 
 {
-	return getWidget<Gtk::SpinButton>("tabular_spin_rows");
+        return getWidget<Gtk::Button>("r_ok_btn");
 }
-
-
-Gtk::SpinButton * FormTabularCreate::columns_spin() const
+Gtk::Button * FormTabularCreate::apply_btn() const 
 {
-	return getWidget<Gtk::SpinButton>("tabular_spin_columns");
+        return getWidget<Gtk::Button>("r_apply_btn");
 }
-
-
-Gtk::Button * FormTabularCreate::ok_btn() const
+Gtk::Button * FormTabularCreate::cancel_btn() const 
 {
-	return getWidget<Gtk::Button>("button_ok");
+        return getWidget<Gtk::Button>("r_cancel_btn");
 }
-
-
-Gtk::Button * FormTabularCreate::cancel_btn() const
+Gtk::SpinButton * FormTabularCreate::rows() const 
 {
-	return getWidget<Gtk::Button>("button_cancel");
+        return getWidget<Gtk::SpinButton>("r_rows");
 }
-
-
-Gtk::Button * FormTabularCreate::apply_btn() const
+Gtk::SpinButton * FormTabularCreate::cols() const 
 {
-	return getWidget<Gtk::Button>("button_apply");
+        return getWidget<Gtk::SpinButton>("r_cols");
 }
+

@@ -21,9 +21,9 @@
 #include <gnome--/dialog.h>
 
 GnomeBase::GnomeBase(ControlButtons & c, 
-		string const & glade_file, string const & name)
+		 string const & name)
 	: ViewBC<gnomeBC>(c)
-	, file_(glade_file), widget_name_(name), xml_(0)
+	, file_(name + ".glade"), widget_name_(name), xml_(0)
 	, dialog_(0)
 {}
 	
@@ -71,6 +71,35 @@ void GnomeBase::hide()
 		dialog_->hide();
 }
 
+bool GnomeBase::validate()
+{
+	return true;
+}
+
+void GnomeBase::OKClicked() 
+{ 
+	OKButton(); 
+}
+
+void GnomeBase::CancelClicked() 
+{ 
+	CancelButton(); 
+}
+
+void GnomeBase::ApplyClicked() 
+{ 
+	ApplyButton(); 
+}
+
+void GnomeBase::RestoreClicked() 
+{ 
+	RestoreButton(); 
+}
+
+void GnomeBase::InputChanged() 
+{ 
+	bc().valid(validate()); 
+}
 
 Gnome::Dialog * GnomeBase::dialog()
 {

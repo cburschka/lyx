@@ -33,7 +33,7 @@ class Dialog;
 class GnomeBase : public ViewBC<gnomeBC>, public SigC::Object {
 public:
 	/// 
-	GnomeBase(ControlButtons & c, string const & glade_file, string const & name);
+	GnomeBase(ControlButtons & c,  string const & name);
 	///
 	virtual ~GnomeBase();
 
@@ -49,9 +49,20 @@ protected:
 	void show();
 	/// Hide the dialog.
 	void hide();
-	
 	/// Build the dialog. Also connects signals and prepares it for work.
 	virtual void build() = 0;
+	/// Dialog is valid
+	virtual bool validate();
+	/// Default OK behaviour
+	virtual void OKClicked();
+	/// Default Cancel behaviour
+	virtual void CancelClicked();
+	/// Default Restore behaviour
+	virtual void RestoreClicked();
+	/// Default apply behaviour
+	virtual void ApplyClicked();
+	/// Default changed input behaviour
+	virtual void InputChanged();
 
 private:
 	/// Loads the glade file to memory.
@@ -93,14 +104,14 @@ T* GnomeBase::getWidget(char const * name) const
 template <class Controller>
 class FormCB : public GnomeBase {
 public:
-	FormCB(Controller & c, string const & file, string const & name);
+	FormCB(Controller & c, string const & name);
 protected:
 	Controller & controller();
 };
 
 template <class Controller>
-FormCB<Controller>::FormCB(Controller & c, string const & file, string const & name)
-	: GnomeBase(c, file, name)
+FormCB<Controller>::FormCB(Controller & c,  string const & name)
+	: GnomeBase(c, name)
 {}
 
 template <class Controller>

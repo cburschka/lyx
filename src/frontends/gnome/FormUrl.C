@@ -22,7 +22,7 @@
 #include <gtk--/checkbutton.h>
 
 FormUrl::FormUrl(ControlUrl & c)
-	: FormCB<ControlUrl>(c, "diainserturl.glade", "DiaInsertUrl")
+	: FormCB<ControlUrl>(c, "FormUrl")
 {}
 
 
@@ -53,7 +53,7 @@ void FormUrl::build()
 	bc().refresh();
 	
 	// Manage the read-only aware widgets.
-	bc().addReadOnly(html());
+	bc().addReadOnly(html_cb());
 	bc().addReadOnly(name());
 	bc().addReadOnly(url());
 }
@@ -64,7 +64,7 @@ void FormUrl::connect_signals()
 	// Get notifications on input change
 	slot_url_ = url()->changed.connect(SigC::slot(this, &FormUrl::InputChanged));
 	slot_name_ = name()->changed.connect(SigC::slot(this, &FormUrl::InputChanged));
-	slot_html_ = html()->toggled.connect(SigC::slot(this, &FormUrl::InputChanged));
+	slot_html_ = html_cb()->toggled.connect(SigC::slot(this, &FormUrl::InputChanged));
 }
 
 
@@ -78,14 +78,16 @@ void FormUrl::disconnect_signals()
 
 void FormUrl::apply()
 {
+	disconnect_signals();
 	controller().params().setContents(url()->get_text());
 	controller().params().setOptions(name()->get_text());
 
 	string cmdname("url");
-	if (html()->get_active())
+	if (html_cb()->get_active())
 		cmdname = "htmlurl";
 
 	controller().params().setCmdName(cmdname);
+	connect_signals();
 }
 
 
@@ -99,7 +101,7 @@ void FormUrl::update()
 	url()->set_text(controller().params().getContents());
 	name()->set_text(controller().params().getOptions());
 
-	html()->set_active("url" != controller().params().getCmdName());
+	html_cb()->set_active("url" != controller().params().getCmdName());
 
 	// Reconnect the signals.
 	connect_signals();
@@ -108,46 +110,36 @@ void FormUrl::update()
 
 bool FormUrl::validate() const
 {
-	// Always valid! (not really so, needs fixing).
-	return true;
+	return !url()->get_text().empty() && !name()->get_text().empty();
 }
 
-
-Gtk::Entry * FormUrl::url() const
+Gtk::Button * FormUrl::restore_btn() const 
 {
-	return getWidget<Gtk::Entry>("url");
+        return getWidget<Gtk::Button>("r_restore_btn");
 }
-
-Gtk::Entry * FormUrl::name() const
+Gtk::Button * FormUrl::ok_btn() const 
 {
-	return getWidget<Gtk::Entry>("name");
+        return getWidget<Gtk::Button>("r_ok_btn");
 }
-
-Gtk::CheckButton * FormUrl::html() const
+Gtk::Button * FormUrl::apply_btn() const 
 {
-	return getWidget<Gtk::CheckButton>("html_type");
+        return getWidget<Gtk::Button>("r_apply_btn");
 }
-
-
-Gtk::Button * FormUrl::ok_btn() const
+Gtk::Button * FormUrl::cancel_btn() const 
 {
-	return getWidget<Gtk::Button>("button_ok");
+        return getWidget<Gtk::Button>("r_cancel_btn");
 }
-
-
-Gtk::Button * FormUrl::cancel_btn() const
+Gtk::Entry * FormUrl::url() const 
 {
-	return getWidget<Gtk::Button>("button_cancel");
+        return getWidget<Gtk::Entry>("r_url");
 }
-
-
-Gtk::Button * FormUrl::apply_btn() const
+Gtk::Entry * FormUrl::name() const 
 {
-	return getWidget<Gtk::Button>("button_apply");
+        return getWidget<Gtk::Entry>("r_name");
 }
-
-
-Gtk::Button * FormUrl::restore_btn() const
+Gtk::CheckButton * FormUrl::html_cb() const 
 {
-	return getWidget<Gtk::Button>("button_restore");
+        return getWidget<Gtk::CheckButton>("r_html_cb");
 }
+
+

@@ -7,6 +7,36 @@
 	frontend, so I've removed the LyXGnomified and menubar code.  The
 	menubar wasn't working properly anyway.
 
+2002-01-12  Michael A. Koziarski  <michael@koziarski.com>
+
+	* various:  Cleaned out the old stuff, standardised the new
+	stuff. 
+	* GnomeBase.C
+	* GnomeBase.h: Changed the constructor to take one argument.  The
+	dialog name.  The path and name of the glade files can be
+	calculated from there.  These two now provide default validate() &
+	*Clicked functions.
+	* FormUrl.C
+	* FormUrl.h
+	* FormError.C
+	* FormError.h
+	* FormTabularCreate.C
+	* FormTabularCreate.h: updated them to use the new system.
+	Removed Local inline *Clicked functions as they're now in the base
+	class. 
+	* README: new, brief outline of what I'm doing here.
+	* accessors.py: Described in README, generates the accessor
+	functions from the glade file.
+
+2002-01-12  Michael A. Koziarski  <michael@koziarski.com>
+
+	* Menubar_pimpl.C
+	* Menubar_pimpl.h
+	* mainapp.h
+	* mainapp.C: Removed,  We should behave similarly to the qt2
+	frontend, so I've removed the LyXGnomified and menubar code.  The
+	menubar wasn't working properly anyway.
+
 2002-01-08  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* Menubar_pimpl.C (composeUIInfo): 

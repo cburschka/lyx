@@ -22,17 +22,17 @@
 #include <gtk--/text.h>
 
 FormError::FormError(ControlError & c)
-	: FormCB<ControlError>(c, "diaerror.glade", "DiaError")
+	: FormCB<ControlError>(c, "FormError")
 {}
 
 
 void FormError::build()
 {
 	// Connect the buttons.
-	close_btn()->clicked.connect(SigC::slot(this, &FormError::CloseClicked));
+	button_close()->clicked.connect(SigC::slot(this, &FormError::CloseClicked));
 
 	// Manage the buttons state
-	bc().setCancel(close_btn());
+	bc().setCancel(button_close());
 
 	// Make sure everything is in the correct state.
 	bc().refresh();
@@ -44,14 +44,12 @@ void FormError::update()
 	textarea()->insert(controller().params());
 }
 
-
-Gtk::Button * FormError::close_btn() const
+Gtk::Button * FormError::button_close() const 
 {
-	return getWidget<Gtk::Button>("button_close");
+        return getWidget<Gtk::Button>("r_button_close");
 }
 
-
-Gtk::Text * FormError::textarea() const
+Gtk::Text * FormError::textarea() const 
 {
-	return getWidget<Gtk::Text>("textarea");
+        return getWidget<Gtk::Text>("r_textarea");
 }
