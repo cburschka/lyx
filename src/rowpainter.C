@@ -405,7 +405,7 @@ void RowPainter::paintSelection()
 	RowList::iterator endrow = endpit->getRow(cur.selEnd().pos());
 	int const h = row_.height();
 
-	int const row_y = pit_->y + row_.y_offset();
+	int const row_y = text_.yo_ + pit_->y + row_.y_offset();
 
 	bool const sel_starts_here = startpit == pit_ && startrow == rit_;
 	bool const sel_ends_here   = endpit == pit_ && endrow == rit_;
