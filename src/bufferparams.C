@@ -191,7 +191,7 @@ void BufferParams::useClassDefaults() {
 
 void BufferParams::readPreamble(LyXLex & lex)
 {
-	if (lex.GetString() != "\\begin_preamble")
+	if (lex.getString() != "\\begin_preamble")
 		lyxerr << "Error (BufferParams::readPreamble):"
 			"consistency check failed." << endl;
 
@@ -203,7 +203,7 @@ void BufferParams::readLanguage(LyXLex & lex)
 {
 	if (!lex.next()) return;
 	
-	string const tmptok = lex.GetString();
+	string const tmptok = lex.getString();
 
 	// check if tmptok is part of tex_babel in tex-defs.h
 	language = languages.getLanguage(tmptok);
@@ -221,7 +221,7 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 {
 	if (!lex.next()) return;
 	
-	string const tmptok = lex.GetString();
+	string const tmptok = lex.getString();
 	// check if tmptok is part of tex_graphics in tex_defs.h
 	int n = 0;
 	while (true) {

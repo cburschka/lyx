@@ -308,19 +308,19 @@ void Encodings::read(string const & filename)
 
 	LyXLex lex(encodingtags, et_last - 1);
 	lex.setFile(filename);
-	while (lex.IsOK()) {
+	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case et_encoding:
 		{
 			lex.next();
-			string name = lex.GetString();
+			string const name = lex.getString();
 			lex.next();
-			string latexname = lex.GetString();
+			string const latexname = lex.getString();
 			lyxerr[Debug::INIT] << "Reading encoding " << name << endl;
 			Uchar table[256];
 			for (unsigned int i = 0; i < 256; ++i) {
 				lex.next();
-				string tmp = lex.GetString();
+				string const tmp = lex.getString();
 				table[i] = ::strtol(tmp.c_str(), 0 , 16);
 			}
 			encodinglist[name] = Encoding(name, latexname, table);

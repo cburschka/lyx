@@ -45,28 +45,33 @@ void Languages::read(string const & filename)
 {
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
-	while (lex.IsOK()) {
-		string lang, babel, display, encoding_str, code, latex_options;
+	while (lex.isOK()) {
+		string lang;
+		string babel;
+		string display;
+		string encoding_str;
+		string code;
+		string latex_options;
 		bool rtl = false;
 
 		if (lex.next())
-			lang = lex.GetString();
+			lang = lex.getString();
 		else
 			break;
 		lyxerr[Debug::INIT] << "Reading language " << lang << endl;
 
 		if (lex.next())
-			babel = lex.GetString();
+			babel = lex.getString();
 		if (lex.next())
-			display = lex.GetString();
+			display = lex.getString();
 		if (lex.next())
-			rtl = lex.GetBool();
+			rtl = lex.getBool();
 		if (lex.next())
-			encoding_str = lex.GetString();
+			encoding_str = lex.getString();
 		if (lex.next())
-			code = lex.GetString();
+			code = lex.getString();
 		if (lex.next())
-			latex_options = lex.GetString();
+			latex_options = lex.getString();
 
 		Encoding const * encoding = encodings.getEncoding(encoding_str);
 		if (!encoding) {

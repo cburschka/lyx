@@ -650,9 +650,9 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 {
 	bool error = false;
 	bool finished = false;
-	while (!finished && lex.IsOK() && !error) {
+	while (!finished && lex.isOK() && !error) {
 		lex.next();
-		string const tok = lowercase(lex.GetString());
+		string const tok = lowercase(lex.getString());
 
 		if (tok.empty()) {
 			continue;
@@ -660,23 +660,23 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			finished = true;
 		} else if (tok == "family") {
 			lex.next();
-			string const ttok = lex.GetString();
+			string const ttok = lex.getString();
 			setLyXFamily(ttok);
 		} else if (tok == "series") {
 			lex.next();
-			string const ttok = lex.GetString();
+			string const ttok = lex.getString();
 			setLyXSeries(ttok);
 		} else if (tok == "shape") {
 			lex.next();
-			string const ttok = lex.GetString();
+			string const ttok = lex.getString();
 			setLyXShape(ttok);
 		} else if (tok == "size") {
 			lex.next();
-			string const ttok = lex.GetString();
+			string const ttok = lex.getString();
 			setLyXSize(ttok);
 		} else if (tok == "misc") {
 			lex.next();
-			string const ttok = lowercase(lex.GetString());
+			string const ttok = lowercase(lex.getString());
 
 			if (ttok == "no_bar") {
 				setUnderbar(OFF);
@@ -695,7 +695,7 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			}
 		} else if (tok == "color") {
 			lex.next();
-			string const ttok = lex.GetString();
+			string const ttok = lex.getString();
 			setLyXColor(ttok);
 		} else {
 			lex.printError("Unknown tag `$$Token'");

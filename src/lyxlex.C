@@ -39,7 +39,7 @@ LyXLex::~LyXLex()
 }
 
 
-bool LyXLex::IsOK() const
+bool LyXLex::isOK() const
 {
 	return pimpl_->is.good();
 }
@@ -51,7 +51,7 @@ void LyXLex::setLineNo(int l)
 }
 
 
-int LyXLex::GetLineNo() const
+int LyXLex::getLineNo() const
 {
 	return pimpl_->lineno;
 }
@@ -116,10 +116,10 @@ int LyXLex::lex()
 }
 
 
-int LyXLex::GetInteger() const
+int LyXLex::getInteger() const
 {
-	if (isStrInt(pimpl_->GetString()))
-		return strToInt(pimpl_->GetString());
+	if (isStrInt(pimpl_->getString()))
+		return strToInt(pimpl_->getString());
 	else {
 		pimpl_->printError("Bad integer `$$Token'");
 		return -1;
@@ -127,12 +127,12 @@ int LyXLex::GetInteger() const
 }
 
 
-float LyXLex::GetFloat() const
+float LyXLex::getFloat() const
 {
 	// replace comma with dot in case the file was written with
 	// the wrong locale (should be rare, but is easy enough to
 	// avoid). 
-	string str = subst(pimpl_->GetString(), ",", ".");
+	string str = subst(pimpl_->getString(), ",", ".");
 	if (isStrDbl(str))
 		return strToDbl(str);
 	else {
@@ -142,9 +142,9 @@ float LyXLex::GetFloat() const
 }
 
 
-string const LyXLex::GetString() const
+string const LyXLex::getString() const
 {
-	return pimpl_->GetString();
+	return pimpl_->getString();
 }
 
 
@@ -156,20 +156,20 @@ string const LyXLex::getLongString(string const & endtoken)
 	string str, prefix;
 	bool firstline = true;
 
-	while (IsOK()) {
-		if (!EatLine())
+	while (isOK()) {
+		if (!eatLine())
 			// blank line in the file being read
 			continue;
 		
-		string const token = frontStrip(strip(GetString()), " \t");
+		string const token = frontStrip(strip(getString()), " \t");
 		
 		lyxerr[Debug::PARSER] << "LongString: `"
-				      << GetString() << '\'' << endl;
+				      << getString() << '\'' << endl;
 
 		// We do a case independent comparison, like search_kw
 		// does.
                 if (compare_no_case(token, endtoken) != 0) {
-			string tmpstr = GetString();
+			string tmpstr = getString();
 			if (firstline) {
 				unsigned int i = 0;
 				while(i < tmpstr.length()
@@ -191,14 +191,14 @@ string const LyXLex::getLongString(string const & endtoken)
 		else // token == endtoken
 			break;
 	}
-	if (!IsOK())
+	if (!isOK())
 		printError("Long string not ended by `" + endtoken + '\'');
 
 	return str;
 }
 
 
-bool LyXLex::GetBool() const
+bool LyXLex::getBool() const
 {
 	if (compare(pimpl_->buff, "true") == 0)
 		return true;
@@ -208,9 +208,9 @@ bool LyXLex::GetBool() const
 }
 
 
-bool LyXLex::EatLine()
+bool LyXLex::eatLine()
 {
-	return pimpl_->EatLine();
+	return pimpl_->eatLine();
 }
 
 
@@ -232,7 +232,7 @@ void LyXLex::pushToken(string const & pt)
 }
 
 
-int LyXLex::FindToken(char const * str[])
+int LyXLex::findToken(char const * str[])
 {  
    int i = -1;
    
@@ -250,7 +250,7 @@ int LyXLex::FindToken(char const * str[])
 }
 
 
-int LyXLex::CheckToken(char const * str[], int print_error)
+int LyXLex::checkToken(char const * str[], int print_error)
 {  
    int i = -1;
    

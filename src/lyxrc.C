@@ -283,11 +283,11 @@ int LyXRC::read(string const & filename)
 		lexrc.printTable(lyxerr);
 	
 	lexrc.setFile(filename);
-	if (!lexrc.IsOK()) return -2;
+	if (!lexrc.isOK()) return -2;
 	
 	lyxerr[Debug::LYXRC] << "Reading '" << filename << "'..." << endl;
 	
-	while (lexrc.IsOK()) {
+	while (lexrc.isOK()) {
 		// By using two switches we take advantage of the compiler
 		// telling us if we have missed a LyXRCTags element in
 		// the second switch.
@@ -309,7 +309,7 @@ int LyXRC::read(string const & filename)
 		        if (lexrc.next()) {
 				string const tmp =
 					LibFileSearch(string(),
-						      lexrc.GetString()); 
+						      lexrc.getString()); 
 				if (read(tmp)) {
 					lexrc.printError("Error reading "
 							 "included file: "+tmp);
@@ -318,7 +318,7 @@ int LyXRC::read(string const & filename)
 			break;
 		case RC_BINDFILE:                     // RVDK_PATCH_5
 			if (lexrc.next()) {
-				string const tmp(lexrc.GetString());
+				string const tmp(lexrc.getString());
 				if (hasBindFile)
 					// We are already in the
 					// "actually read bind file"
@@ -334,28 +334,28 @@ int LyXRC::read(string const & filename)
 			
 		case RC_UIFILE: 
 			if (lexrc.next()) {
-				ui_file = lexrc.GetString();
+				ui_file = lexrc.getString();
 			}
 			break;
 			
 		case RC_EXIT_CONFIRMATION:
 			if (lexrc.next())
-				exit_confirmation = lexrc.GetBool();
+				exit_confirmation = lexrc.getBool();
 			break;
 			
 		case RC_DISPLAY_SHORTCUTS:
 			if (lexrc.next())
-				display_shortcuts = lexrc.GetBool();
+				display_shortcuts = lexrc.getBool();
 			break;
 			
 		case RC_KBMAP:
 			if (lexrc.next())
-				use_kbmap = lexrc.GetBool();
+				use_kbmap = lexrc.getBool();
 			break;
 			
 		case RC_KBMAP_PRIMARY:
 			if (lexrc.next()) {
-				string const kmap(lexrc.GetString());
+				string const kmap(lexrc.getString());
 				if (kmap.empty()) {
 					// nothing
 				} else if (!LibFileSearch("kbd", kmap, 
@@ -368,7 +368,7 @@ int LyXRC::read(string const & filename)
 			
 		case RC_KBMAP_SECONDARY:
 			if (lexrc.next()) {
-				string const kmap(lexrc.GetString());
+				string const kmap(lexrc.getString());
 				if (kmap.empty()) {
 					// nothing
 				} else if (!LibFileSearch("kbd", kmap, 
@@ -381,113 +381,113 @@ int LyXRC::read(string const & filename)
 			
 		case RC_FONT_ENCODING:
 			if (lexrc.next())
-				fontenc = lexrc.GetString();
+				fontenc = lexrc.getString();
 			break;
 			
 		case RC_PRINTER:
 			if (lexrc.next())
-				printer = lexrc.GetString();
+				printer = lexrc.getString();
 			break;
 			
 		case RC_PRINT_COMMAND:
 			if (lexrc.next())
-				print_command = lexrc.GetString();
+				print_command = lexrc.getString();
 			break;
 			
 		case RC_PRINTEVENPAGEFLAG:
 			if (lexrc.next())
-				print_evenpage_flag = lexrc.GetString();
+				print_evenpage_flag = lexrc.getString();
 			break;
 			
 		case RC_PRINTODDPAGEFLAG:
 			if (lexrc.next())
-				print_oddpage_flag = lexrc.GetString();
+				print_oddpage_flag = lexrc.getString();
 			break;
 			
 		case RC_PRINTPAGERANGEFLAG:
 			if (lexrc.next())
-				print_pagerange_flag = lexrc.GetString();
+				print_pagerange_flag = lexrc.getString();
 			break;
 			
 		case RC_PRINTCOPIESFLAG:
 			if (lexrc.next())
-				print_copies_flag = lexrc.GetString();
+				print_copies_flag = lexrc.getString();
 			break;
 			
 		case RC_PRINTCOLLCOPIESFLAG:
 			if (lexrc.next())
-				print_collcopies_flag = lexrc.GetString();
+				print_collcopies_flag = lexrc.getString();
 			break;
 			
 		case RC_PRINTREVERSEFLAG:
 			if (lexrc.next())
-				print_reverse_flag = lexrc.GetString();
+				print_reverse_flag = lexrc.getString();
 			break;
 			
 		case RC_PRINTLANDSCAPEFLAG:
 			if (lexrc.next())
-				print_landscape_flag = lexrc.GetString();
+				print_landscape_flag = lexrc.getString();
 			break;
 			
 		case RC_PRINTTOPRINTER:
 			if (lexrc.next())
-				print_to_printer = lexrc.GetString();
+				print_to_printer = lexrc.getString();
 			break;
 			
 		case RC_PRINT_ADAPTOUTPUT:
 			if (lexrc.next())
-				print_adapt_output = lexrc.GetBool();
+				print_adapt_output = lexrc.getBool();
 			break;
 			
 		case RC_PRINTTOFILE:
 			if (lexrc.next())
-				print_to_file = lexrc.GetString();
+				print_to_file = lexrc.getString();
 			break;
 			
 		case RC_PRINTFILEEXTENSION:
 			if (lexrc.next())
-				print_file_extension = lexrc.GetString();
+				print_file_extension = lexrc.getString();
 			break;
 			
 		case RC_PRINTEXSTRAOPTIONS:
 			if (lexrc.next())
-				print_extra_options = lexrc.GetString();
+				print_extra_options = lexrc.getString();
 			break;
 			
 		case RC_PRINTSPOOL_COMMAND:
 			if (lexrc.next())
-				print_spool_command = lexrc.GetString();
+				print_spool_command = lexrc.getString();
 			break;
 			
 		case RC_PRINTSPOOL_PRINTERPREFIX:
 			if (lexrc.next())
-				print_spool_printerprefix = lexrc.GetString();
+				print_spool_printerprefix = lexrc.getString();
 			break;
 			
                 case RC_PRINTPAPERDIMENSIONFLAG:
 			if (lexrc.next())
-				print_paper_dimension_flag = lexrc.GetString();
+				print_paper_dimension_flag = lexrc.getString();
 			break;
 			
                 case RC_PRINTPAPERFLAG:
 			if (lexrc.next())
-				print_paper_flag = lexrc.GetString();
+				print_paper_flag = lexrc.getString();
 			break;
 			
 		case RC_CUSTOM_EXPORT_COMMAND:
 			if (lexrc.next())
-				custom_export_command = lexrc.GetString();
+				custom_export_command = lexrc.getString();
 			break;
 			
 		case RC_CUSTOM_EXPORT_FORMAT:
 			if (lexrc.next())
-				custom_export_format = lexrc.GetString();
+				custom_export_format = lexrc.getString();
 			break;
 
 		case RC_DEFAULT_PAPERSIZE:
                         if (lexrc.next()) {
 			        string const size =
-					lowercase(lexrc.GetString());
+					lowercase(lexrc.getString());
 				if (size == "usletter")
 				        default_papersize =
 						BufferParams::PAPER_USLETTER;
@@ -514,150 +514,150 @@ int LyXRC::read(string const & filename)
 
 		case RC_VIEWDVI_PAPEROPTION:
 			if (lexrc.next())
-				view_dvi_paper_option = lexrc.GetString();
+				view_dvi_paper_option = lexrc.getString();
 			else 
 				view_dvi_paper_option = "";
 			break;
 
 		case RC_PS_COMMAND:
 			if (lexrc.next())
-				ps_command = lexrc.GetString();
+				ps_command = lexrc.getString();
 			break;
 			
 		case RC_CHKTEX_COMMAND:
 			if (lexrc.next())
-				chktex_command = lexrc.GetString();
+				chktex_command = lexrc.getString();
 			break;
 			
 		case RC_SCREEN_DPI:
 			if (lexrc.next())
-				dpi = lexrc.GetInteger();
+				dpi = lexrc.getInteger();
 			break;
 			
 		case RC_SCREEN_ZOOM:
 			if (lexrc.next())
-				zoom = lexrc.GetInteger();
+				zoom = lexrc.getInteger();
 			break;
 
 		case RC_WHEEL_JUMP:
 			if (lexrc.next())
-				wheel_jump = lexrc.GetInteger();
+				wheel_jump = lexrc.getInteger();
 			break;
 			
 		case RC_SCREEN_FONT_SIZES:
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_TINY] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_SCRIPT] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_FOOTNOTE] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_SMALL] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_NORMAL] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_LARGE] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_LARGER] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_LARGEST] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_HUGE] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			if (lexrc.next())
 				font_sizes[LyXFont::SIZE_HUGER] =
-					lexrc.GetFloat();
+					lexrc.getFloat();
 			break;
 			
                 case RC_SCREEN_FONT_SCALABLE:
                         if (lexrc.next())
-                                use_scalable_fonts = lexrc.GetBool();
+                                use_scalable_fonts = lexrc.getBool();
 			break;
 			
 		case RC_AUTOSAVE:
 			if (lexrc.next())
-				autosave = lexrc.GetInteger();
+				autosave = lexrc.getInteger();
 			break;
 			
 		case RC_DOCUMENTPATH:
 			if (lexrc.next()) {
-				document_path = ExpandPath(lexrc.GetString());
+				document_path = ExpandPath(lexrc.getString());
 			}
 			break;
 			
 		case RC_TEMPLATEPATH:
 			if (lexrc.next())
-				template_path = ExpandPath(lexrc.GetString());
+				template_path = ExpandPath(lexrc.getString());
 			break;
 			
 		case RC_TEMPDIRPATH:
 			if (lexrc.next())
-				tempdir_path = ExpandPath(lexrc.GetString());
+				tempdir_path = ExpandPath(lexrc.getString());
 			break;
 			
 		case RC_USETEMPDIR:
 			if (lexrc.next())
-				use_tempdir = lexrc.GetBool();
+				use_tempdir = lexrc.getBool();
 			break;
 			
 		case RC_LASTFILES:
 			if (lexrc.next())
-				lastfiles = ExpandPath(lexrc.GetString());
+				lastfiles = ExpandPath(lexrc.getString());
 			break;
 			
                 case RC_NUMLASTFILES:
                         if (lexrc.next())
-                                num_lastfiles = lexrc.GetInteger();
+                                num_lastfiles = lexrc.getInteger();
 			break;
 			
                 case RC_CHECKLASTFILES:
                         if (lexrc.next())
-                                check_lastfiles = lexrc.GetBool();
+                                check_lastfiles = lexrc.getBool();
 			break;
 			
 		case RC_SCREEN_FONT_ROMAN:
 			if (lexrc.next())
-				roman_font_name = lexrc.GetString();
+				roman_font_name = lexrc.getString();
 			break;
 			
 		case RC_SCREEN_FONT_SANS:
 			if (lexrc.next())
-				sans_font_name = lexrc.GetString();
+				sans_font_name = lexrc.getString();
 			break;
 			
 		case RC_SCREEN_FONT_TYPEWRITER:
 			if (lexrc.next())
-				typewriter_font_name = lexrc.GetString();
+				typewriter_font_name = lexrc.getString();
 			break;
 			
 		case RC_SCREEN_FONT_MENU:
 			if (lexrc.next())
-				menu_font_name = lexrc.GetString();
+				menu_font_name = lexrc.getString();
 			break;
 			
 		case RC_SCREEN_FONT_POPUP:
 			if (lexrc.next())
-				popup_font_name = lexrc.GetString();
+				popup_font_name = lexrc.getString();
 			break;
 			
 		case RC_SCREEN_FONT_ENCODING:
 			if (lexrc.next()) {
-				font_norm = lexrc.GetString();
+				font_norm = lexrc.getString();
 				set_font_norm_type();
 			}
 			break;
 
 		case RC_SCREEN_FONT_ENCODING_MENU:
 			if (lexrc.next())
-				font_norm_menu = lexrc.GetString();
+				font_norm_menu = lexrc.getString();
 			break;
 
 		case RC_SET_COLOR:
@@ -665,14 +665,14 @@ int LyXRC::read(string const & filename)
 			string lyx_name, x11_name;
 
 			if (lexrc.next())  {
-				lyx_name = lexrc.GetString();
+				lyx_name = lexrc.getString();
 			} else {
 				lexrc.printError("Missing color tag.");
 				break;
 			}
 			
 			if (lexrc.next()) {
-				x11_name = lexrc.GetString();
+				x11_name = lexrc.getString();
 			} else {
 				lexrc.printError("Missing color name for color : `$$Token'");
 				break;
@@ -687,7 +687,7 @@ int LyXRC::read(string const & filename)
 		case RC_AUTOREGIONDELETE:
 			// Auto region delete defaults to true
 		        if (lexrc.next())
-		        	auto_region_delete = lexrc.GetBool();
+		        	auto_region_delete = lexrc.getBool();
 			break;
 			
 		case RC_BIND:
@@ -702,14 +702,14 @@ int LyXRC::read(string const & filename)
 			string seq, cmd;
 			
 			if (lexrc.next()) {
-				seq = lexrc.GetString();
+				seq = lexrc.getString();
 			} else {
 				lexrc.printError("RC_BIND: Missing key sequence");
 				break;
 			}
 			
 			if (lexrc.next(true)) {
-				cmd = lexrc.GetString();
+				cmd = lexrc.getString();
 			} else {
 				lexrc.printError("RC_BIND: missing command");
 				break;
@@ -738,145 +738,145 @@ int LyXRC::read(string const & filename)
 		}
 		case RC_OVERRIDE_X_DEADKEYS:
 			if (lexrc.next())
-				override_x_deadkeys = lexrc.GetBool();
+				override_x_deadkeys = lexrc.getBool();
 			break;
 
 		case RC_SERVERPIPE:
 			if (lexrc.next())
-				lyxpipes = ExpandPath(lexrc.GetString());
+				lyxpipes = ExpandPath(lexrc.getString());
 			break;
 			
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
 			if (lexrc.next())
-				cursor_follows_scrollbar = lexrc.GetBool();
+				cursor_follows_scrollbar = lexrc.getBool();
 			break;
 
 		case RC_ASCIIROFF_COMMAND:
  			if (lexrc.next())
-				ascii_roff_command = lexrc.GetString();
+				ascii_roff_command = lexrc.getString();
 			break;
 		case RC_ASCII_LINELEN:
 			if (lexrc.next())
-				ascii_linelen = lexrc.GetInteger();
+				ascii_linelen = lexrc.getInteger();
 			break;
 			// Spellchecker settings:
 #ifdef USE_PSPELL
 		case RC_USE_PSPELL:
 			if (lexrc.next())
-				use_pspell = lexrc.GetBool();
+				use_pspell = lexrc.getBool();
 			break;
 #endif
 		case RC_SPELL_COMMAND:
 			if (lexrc.next())
-				isp_command = lexrc.GetString();
+				isp_command = lexrc.getString();
 			break;
 		case RC_ACCEPT_COMPOUND:
 			if (lexrc.next())
-				isp_accept_compound = lexrc.GetBool();
+				isp_accept_compound = lexrc.getBool();
 			break;
 		case RC_USE_INP_ENC:
 			if (lexrc.next())
-				isp_use_input_encoding = lexrc.GetBool();
+				isp_use_input_encoding = lexrc.getBool();
 			break;
 		case RC_USE_ALT_LANG:
 			if (lexrc.next())
-				isp_use_alt_lang = lexrc.GetBool();
+				isp_use_alt_lang = lexrc.getBool();
 			break;
 		case RC_USE_PERS_DICT:
 			if (lexrc.next())
-				isp_use_pers_dict = lexrc.GetBool();
+				isp_use_pers_dict = lexrc.getBool();
 			break;
 		case RC_USE_ESC_CHARS:
 			if (lexrc.next())
-				isp_use_esc_chars = lexrc.GetBool();
+				isp_use_esc_chars = lexrc.getBool();
 			break;
 		case RC_ALT_LANG:
 			if (lexrc.next())
-				isp_alt_lang = lexrc.GetString();
+				isp_alt_lang = lexrc.getString();
 			break;
 		case RC_PERS_DICT:
 			if (lexrc.next())
-				isp_pers_dict = lexrc.GetString();
+				isp_pers_dict = lexrc.getString();
 			break;
 		case RC_ESC_CHARS:
 			if (lexrc.next())
-				isp_esc_chars = lexrc.GetString();
+				isp_esc_chars = lexrc.getString();
 			break;
 		case RC_MAKE_BACKUP:
 		        if (lexrc.next())
-		                make_backup = lexrc.GetBool();
+		                make_backup = lexrc.getBool();
 			break;
 		case RC_BACKUPDIR_PATH:
 			if (lexrc.next())
-				backupdir_path = ExpandPath(lexrc.GetString());
+				backupdir_path = ExpandPath(lexrc.getString());
 			break;
 		case RC_DATE_INSERT_FORMAT:
 			if (lexrc.next())
-				date_insert_format = lexrc.GetString();
+				date_insert_format = lexrc.getString();
 			break;
 		case RC_LANGUAGE_PACKAGE:
 			if (lexrc.next())
-				language_package = lexrc.GetString();
+				language_package = lexrc.getString();
 			break;
 		case RC_LANGUAGE_AUTO_BEGIN:
 			if (lexrc.next())
-				language_auto_begin = lexrc.GetBool();
+				language_auto_begin = lexrc.getBool();
 			break;
 		case RC_LANGUAGE_AUTO_END:
 			if (lexrc.next())
-				language_auto_end = lexrc.GetBool();
+				language_auto_end = lexrc.getBool();
 			break;
 		case RC_LANGUAGE_GLOBAL_OPTIONS:
 			if (lexrc.next())
-				language_global_options = lexrc.GetBool();
+				language_global_options = lexrc.getBool();
 			break;
 		case RC_LANGUAGE_USE_BABEL:
 			if (lexrc.next())
-				language_use_babel = lexrc.GetBool();
+				language_use_babel = lexrc.getBool();
 			break;
 		case RC_LANGUAGE_COMMAND_BEGIN:
 			if (lexrc.next())
-				language_command_begin = lexrc.GetString();
+				language_command_begin = lexrc.getString();
 			break;
 		case RC_LANGUAGE_COMMAND_END:
 			if (lexrc.next())
-				language_command_end = lexrc.GetString();
+				language_command_end = lexrc.getString();
 			break;
 		case RC_LANGUAGE_COMMAND_LOCAL:
 			if (lexrc.next())
-				language_command_local = lexrc.GetString();
+				language_command_local = lexrc.getString();
 			break;
 		case RC_RTL_SUPPORT:
 			if (lexrc.next())
-				rtl_support = lexrc.GetBool();
+				rtl_support = lexrc.getBool();
 			break;
 		case RC_AUTO_NUMBER:
 			if (lexrc.next())
-				auto_number = lexrc.GetBool();
+				auto_number = lexrc.getBool();
 			break;
 		case RC_MARK_FOREIGN_LANGUAGE:
 			if (lexrc.next())
-				mark_foreign_language = lexrc.GetBool();
+				mark_foreign_language = lexrc.getBool();
 			break;
 		case RC_SHOW_BANNER:
 			if (lexrc.next())
-				show_banner = lexrc.GetBool();
+				show_banner = lexrc.getBool();
 			break;
 			
 		case RC_NEW_ASK_FILENAME:
 			if (lexrc.next())
-				new_ask_filename = lexrc.GetBool();
+				new_ask_filename = lexrc.getBool();
 			break;
 		case RC_CONVERTER: {
 			string from, to, command, flags;
 			if (lexrc.next())
-				from = lexrc.GetString();
+				from = lexrc.getString();
 			if (lexrc.next())
-				to = lexrc.GetString();
+				to = lexrc.getString();
 			if (lexrc.next())
-				command = lexrc.GetString();
+				command = lexrc.getString();
 			if (lexrc.next())
-				flags = lexrc.GetString();
+				flags = lexrc.getString();
 			if (command.empty() || command == "none")
 				converters.erase(from, to);
 			else
@@ -886,22 +886,22 @@ int LyXRC::read(string const & filename)
 		case RC_VIEWER: {
 			string format, command;
 			if (lexrc.next())
-				format = lexrc.GetString();
+				format = lexrc.getString();
 			if (lexrc.next())
-				command = lexrc.GetString();
+				command = lexrc.getString();
 			formats.setViewer(format, command);
 			break;
 		}
 		case RC_FORMAT: {
 			string format, extension, prettyname, shortcut;
 			if (lexrc.next())
-				format = lexrc.GetString();
+				format = lexrc.getString();
 			if (lexrc.next())
-				extension = lexrc.GetString();
+				extension = lexrc.getString();
 			if (lexrc.next())
-				prettyname = lexrc.GetString();
+				prettyname = lexrc.getString();
 			if (lexrc.next())
-				shortcut = lexrc.GetString();
+				shortcut = lexrc.getString();
 			if (prettyname.empty()) {
 				if (converters.formatIsUsed(format))
 					lyxerr << "Can't delete format "
@@ -916,12 +916,12 @@ int LyXRC::read(string const & filename)
 		}
 		case RC_DEFAULT_LANGUAGE:
 			if (lexrc.next())
-				default_language = lexrc.GetString();
+				default_language = lexrc.getString();
 			break;
 
 		case RC_LABEL_INIT_LENGTH:
 			if (lexrc.next())
-				label_init_length = lexrc.GetInteger();
+				label_init_length = lexrc.getInteger();
 			break;
 
 		case RC_LAST: break; // this is just a dummy

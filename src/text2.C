@@ -2525,20 +2525,6 @@ LyXText::text_status LyXText::status() const
 
 void LyXText::status(BufferView * bview, LyXText::text_status st) const
 {
-#if 0
-	if ((status_ != NEED_MORE_REFRESH)
-	    || (status_ == NEED_MORE_REFRESH)
-	    && (st != NEED_VERY_LITTLE_REFRESH)) {
-		status_ = st;
-		if (inset_owner && st != UNCHANGED) {
-			bview->text->status(bview, NEED_VERY_LITTLE_REFRESH);
-		}
-	}
-#else
-#warning Please tell what the intention is here. (Lgb)
-	// The above does not make any sense, I changed it to what is here,
-	// but it still does not make much sense. (Lgb)
-#warning Sure have a look now! (Jug)
 	// well as much as I know && binds more then || so the above and the
 	// below are identical (this for your known use of parentesis!)
 	// Now some explanation:
@@ -2566,5 +2552,4 @@ void LyXText::status(BufferView * bview, LyXText::text_status st) const
 			}
 		}
 	}
-#endif
 }

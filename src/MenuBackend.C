@@ -141,16 +141,16 @@ Menu & Menu::read(LyXLex & lex)
 	bool quit = false;
 	bool optional = false;
 
-	while (lex.IsOK() && !quit) {
+	while (lex.isOK() && !quit) {
 		switch (lex.lex()) {
 		case md_optitem:
 			optional = true;
 			// fallback to md_item
 		case md_item: {
 			lex.next(true);
-			string const name = _(lex.GetString());
+			string const name = _(lex.getString());
 			lex.next(true);
-			string const command = lex.GetString();
+			string const command = lex.getString();
 			add(MenuItem(MenuItem::Command, name, 
 				     command, optional));
 			optional = false;
@@ -199,9 +199,9 @@ Menu & Menu::read(LyXLex & lex)
 			
 		case md_submenu: {
 			lex.next(true);
-			string mlabel = _(lex.GetString());
+			string const mlabel = _(lex.getString());
 			lex.next(true);
-			string mname = lex.GetString();
+			string const mname = lex.getString();
 			add(MenuItem(MenuItem::Submenu, mlabel, mname));
 			break;
 		}
@@ -432,9 +432,10 @@ void MenuBackend::read(LyXLex & lex)
 	};
 
 	//consistency check
-	if (compare_no_case(lex.GetString(), "menuset"))
+	if (compare_no_case(lex.getString(), "menuset")) {
 		lyxerr << "Menubackend::read: ERROR wrong token:`"
-		       << lex.GetString() << '\'' << endl;
+		       << lex.getString() << '\'' << endl;
+	}
 
 	lex.pushTable(menutags, md_last - 1);
 	if (lyxerr.debugging(Debug::PARSER))
@@ -443,14 +444,14 @@ void MenuBackend::read(LyXLex & lex)
 	bool quit = false;
 	bool menubar = false;
 
-	while (lex.IsOK() && !quit) {
+	while (lex.isOK() && !quit) {
 		switch (lex.lex()) {
 		case md_menubar: 
 			menubar = true;
 			// fallback to md_menu
 		case md_menu: {
 			lex.next(true);
-			string name = lex.GetString();
+			string const name = lex.getString();
 			if (hasMenu(name)) {
 				if (getMenu(name).menubar() == menubar) {
 					getMenu(name).read(lex);

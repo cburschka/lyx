@@ -17,22 +17,16 @@
 #include "lyxcursor.h"
 
 
-LyXCursor::LyXCursor() : par_(0), pos_(0), boundary_(false),
-			 x_(0), x_fix_(0), y_(0), row_(0)
-{
-}
+LyXCursor::LyXCursor()
+	: par_(0), pos_(0), boundary_(false),
+	  x_(0), x_fix_(0), y_(0), row_(0)
+{}
 
 
 void LyXCursor::par(Paragraph * p) 
 {
 	par_ = p;
 }
-
-
-//Paragraph * LyXCursor::par()
-//{
-//	return par_;
-//}
 
 
 Paragraph * LyXCursor::par() const
@@ -104,12 +98,6 @@ void LyXCursor::row(Row * r)
 {
 	row_ = r;
 }
-
-
-//Row * LyXCursor::row()
-//{
-//	return row_;
-//}
 
 
 Row * LyXCursor::row() const

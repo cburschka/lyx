@@ -49,7 +49,7 @@ public:
 	};
 
 	/// file is open and end of file is not reached
-	bool IsOK() const;
+	bool isOK() const;
 	/// return true if able to open file, else false
 	bool setFile(string const & filename);
 	///
@@ -78,16 +78,16 @@ public:
 	void pushToken(string const &);
 	
 	/// 
-	int GetLineNo() const;
+	int getLineNo() const;
 	
 	///
-	int GetInteger() const;
+	int getInteger() const;
 	///
-	bool GetBool() const;
+	bool getBool() const;
 	///
-	float GetFloat() const;
+	float getFloat() const;
 	///
-	string const GetString() const;
+	string const getString() const;
 	
 	/** Get a long string, ended by the tag `endtag'.
 	    This string can span several lines. The first line
@@ -99,11 +99,11 @@ public:
 	string const getLongString(string const & endtag);
 	
 	///
-	bool EatLine();
+	bool eatLine();
 	///
-	int FindToken(char const * str[]);
+	int findToken(char const * str[]);
 	///
-	int CheckToken(char const * str[], int print_error);
+	int checkToken(char const * str[], int print_error);
 
 	///
 	string const text() const;

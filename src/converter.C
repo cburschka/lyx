@@ -282,7 +282,6 @@ private:
 };
 
 
-#warning why is a pointer returned and not a const reference? (Lgb)
 Converter const * Converters::getConverter(string const & from,
 					    string const & to)
 {

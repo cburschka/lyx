@@ -95,13 +95,13 @@ struct keyword_item toolTags[TO_LAST - 1] = {
 void ToolbarDefaults::read(LyXLex & lex) 
 {
 	//consistency check
-	if (compare_no_case(lex.GetString(), "toolbar"))
+	if (compare_no_case(lex.getString(), "toolbar")) {
 		lyxerr << "Toolbar::read: ERROR wrong token:`"
-		       << lex.GetString() << '\'' << endl;
+		       << lex.getString() << '\'' << endl;
+	}
 
 	defaults.clear();
 	
-	string func;
 	bool quit = false;
 	
 	lex.pushTable(toolTags, TO_LAST - 1);
@@ -109,11 +109,11 @@ void ToolbarDefaults::read(LyXLex & lex)
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
 
-	while (lex.IsOK() && !quit) {
+	while (lex.isOK() && !quit) {
 		switch (lex.lex()) {
 		case TO_ADD:
 			if (lex.next(true)) {
-				func = lex.GetString();
+				string const func = lex.getString();
 				lyxerr[Debug::PARSER]
 					<< "Toolbar::read TO_ADD func: `"
 					<< func << "'" << endl;

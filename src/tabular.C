@@ -1497,9 +1497,9 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	LyXFont font(LyXFont::ALL_INHERIT);
 	font.setLanguage(owner_->bufferOwner()->getLanguage());
 
-	while (lex.IsOK()) {
+	while (lex.isOK()) {
 		lex.nextToken();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		if (token.empty())
 			continue;
 		if (token == "\\layout"

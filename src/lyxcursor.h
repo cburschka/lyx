@@ -28,8 +28,6 @@ public:
 	///
 	void par(Paragraph * p);
 	///
-	//Paragraph * par();
-	///
 	Paragraph * par() const;
 	///
 	void pos(Paragraph::size_type p);
@@ -53,8 +51,6 @@ public:
 	int y() const;
 	///
 	void row(Row * r);
-	///
-	//Row * row();
 	///
 	Row * row() const;
 private:

@@ -356,7 +356,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			       << keysym << "]" << endl;
 		}
 
-#if FL_REVISION < 89
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 		if (keysym == NoSymbol) {
 			lyxerr[Debug::KEY]
 				<< "Empty kdb action (probably composing)"
@@ -396,7 +396,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				//}
 		}
 		
-#endif	
+#endif
 		unsigned int const ret_state = xke->state;
 
 		// If you have a better way to handle "wild-output" of

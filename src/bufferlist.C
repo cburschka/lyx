@@ -449,7 +449,7 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 		bool templateok = false;
 		LyXLex lex(0, 0);
 		lex.setFile(tname);
-		if (lex.IsOK()) {
+		if (lex.isOK()) {
 			if (b->readFile(lex)) {
 				templateok = true;
 			}

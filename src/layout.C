@@ -189,7 +189,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 	bool finished = false;
 	lexrc.pushTable(layoutTags, LT_INTITLE);
 	// parse style section
-	while (!finished && lexrc.IsOK() && !error) {
+	while (!finished && lexrc.isOK() && !error) {
 		int le = lexrc.lex();
 		// See comment in lyxrc.C.
 		switch (le) {
@@ -209,9 +209,9 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_COPYSTYLE:     // initialize with a known style
 		        if (lexrc.next()) {
-				if (tclass.hasLayout(lexrc.GetString())) {
-					string tmpname = name_;
-					this->operator= (tclass.GetLayout(lexrc.GetString()));
+				if (tclass.hasLayout(lexrc.getString())) {
+					string const tmpname = name_;
+					this->operator= (tclass.GetLayout(lexrc.getString()));
 					name_ = tmpname;
 				} else {
 					lexrc.printError("Cannot copy known "
@@ -222,12 +222,12 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_OBSOLETEDBY:     // replace with a known style
 		        if (lexrc.next()) {
-				if (tclass.hasLayout(lexrc.GetString())) {
-					string tmpname = name_;
-					this->operator= (tclass.GetLayout(lexrc.GetString()));
+				if (tclass.hasLayout(lexrc.getString())) {
+					string const tmpname = name_;
+					this->operator= (tclass.GetLayout(lexrc.getString()));
 					name_ = tmpname;
 					if (obsoleted_by().empty())
-					  obsoleted_by_ = lexrc.GetString();
+						obsoleted_by_ = lexrc.getString();
 				} else {
 					lexrc.printError("Cannot replace with" 
 							 " unknown style "
@@ -245,15 +245,15 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_INTITLE:
-			intitle = lexrc.next() && lexrc.GetInteger();
+			intitle = lexrc.next() && lexrc.getInteger();
 			break;
 			
 		case LT_NEED_PROTECT:
-			needprotect = lexrc.next() && lexrc.GetInteger();
+			needprotect = lexrc.next() && lexrc.getInteger();
 			break;
 			
 		case LT_KEEPEMPTY:
-			keepempty = lexrc.next() && lexrc.GetInteger();
+			keepempty = lexrc.next() && lexrc.getInteger();
 			break;
 
 		case LT_FONT:
@@ -270,7 +270,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_NEXTNOINDENT:	// Indent next paragraph?
-			if (lexrc.next() && lexrc.GetInteger())
+			if (lexrc.next() && lexrc.getInteger())
 				nextnoindent = true;
 			else
 				nextnoindent = false;
@@ -278,12 +278,12 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_LATEXNAME:
 		        if (lexrc.next())
-		                latexname_ = lexrc.GetString();
+		                latexname_ = lexrc.getString();
 			break;
                         
 		case LT_LATEXPARAM:
 			if (lexrc.next())
-				latexparam_ = lexrc.GetString();
+				latexparam_ = lexrc.getString();
 			break;
 
 		case LT_PREAMBLE:
@@ -300,73 +300,73 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			
 		case LT_LEFTMARGIN:	// left margin type
 		        if (lexrc.next())
-				leftmargin = lexrc.GetString();
+				leftmargin = lexrc.getString();
 			break;			
 
 		case LT_RIGHTMARGIN:	// right margin type
 			if (lexrc.next())
-				rightmargin = lexrc.GetString();
+				rightmargin = lexrc.getString();
 			break;
 
 		case LT_LABELINDENT:	// label indenting flag
 			if (lexrc.next())
-				labelindent = lexrc.GetString();
+				labelindent = lexrc.getString();
 			break;
 
 		case LT_PARINDENT:	// paragraph indent. flag
 			if (lexrc.next())
-				parindent = lexrc.GetString();
+				parindent = lexrc.getString();
 			break;
 
 		case LT_PARSKIP:	// paragraph skip size
 			if (lexrc.next())
-				parskip = lexrc.GetFloat();
+				parskip = lexrc.getFloat();
 			break;
 
 		case LT_ITEMSEP:	// item separation size
 			if (lexrc.next())
-				itemsep = lexrc.GetFloat();
+				itemsep = lexrc.getFloat();
 			break;
 
 		case LT_TOPSEP:		// top separation size
 			if (lexrc.next())
-				topsep = lexrc.GetFloat();
+				topsep = lexrc.getFloat();
 			break;
 
 		case LT_BOTTOMSEP:	// bottom separation size
 			if (lexrc.next())
-				bottomsep = lexrc.GetFloat();
+				bottomsep = lexrc.getFloat();
 			break;
 
 		case LT_LABEL_BOTTOMSEP: // label bottom separation size
 			if (lexrc.next())
-				labelbottomsep = lexrc.GetFloat();
+				labelbottomsep = lexrc.getFloat();
 			break;
 
 		case LT_LABELSEP:	// label separator
 			if (lexrc.next()) {
-				labelsep = subst(lexrc.GetString(), 'x', ' ');
+				labelsep = subst(lexrc.getString(), 'x', ' ');
 			}
 			break;
 
 		case LT_PARSEP:		// par. separation size
 			if (lexrc.next())
-				parsep = lexrc.GetFloat();
+				parsep = lexrc.getFloat();
 			break;
 
 		case LT_FILL_TOP:	// fill top flag
 			if (lexrc.next())
-				fill_top = lexrc.GetInteger();
+				fill_top = lexrc.getInteger();
 			break;
 
 		case LT_FILL_BOTTOM:	// fill bottom flag
 			if (lexrc.next())
-				fill_bottom = lexrc.GetInteger();
+				fill_bottom = lexrc.getInteger();
 			break;
 
 		case LT_NEWLINE:	// newlines allowed?
 			if (lexrc.next())
-				newline_allowed = lexrc.GetInteger();
+				newline_allowed = lexrc.getInteger();
 			break;
 
 		case LT_ALIGN:		// paragraph align
@@ -378,27 +378,27 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_LABELSTRING:	// label string definition
 			if (lexrc.next())
-				labelstring_ = lexrc.GetString();
+				labelstring_ = lexrc.getString();
 			break;
 
 		case LT_ENDLABELSTRING:	// endlabel string definition
 			if (lexrc.next())
-				endlabelstring_ = lexrc.GetString();
+				endlabelstring_ = lexrc.getString();
 			break;
 
 		case LT_LABELSTRING_APPENDIX: // label string appendix definition
 			if (lexrc.next())
-				labelstring_appendix_ = lexrc.GetString();
+				labelstring_appendix_ = lexrc.getString();
 			break;
 
 		case LT_FREE_SPACING:	// Allow for free spacing.
 			if (lexrc.next())
-				free_spacing = lexrc.GetInteger();
+				free_spacing = lexrc.getInteger();
 			break;
 
 		case LT_PASS_THRU:	// Allow for pass thru.
 			if (lexrc.next())
-				pass_thru = lexrc.GetInteger();
+				pass_thru = lexrc.getInteger();
 			break;
 
 		case LT_SPACING: // setspace.sty
@@ -470,7 +470,7 @@ void LyXLayout::readAlignPossible(LyXLex & lexrc)
 
 	lexrc.pushTable(alignTags, AT_LAYOUT);
 	alignpossible = LYX_ALIGN_NONE;
-	int lineno = lexrc.GetLineNo();
+	int lineno = lexrc.getLineNo();
 	do {
 		int le = lexrc.lex();
 		switch (le) {
@@ -496,7 +496,7 @@ void LyXLayout::readAlignPossible(LyXLex & lexrc)
 			alignpossible |= LYX_ALIGN_LAYOUT;
 			break;
 		}
-	} while (lineno == lexrc.GetLineNo());
+	} while (lineno == lexrc.getLineNo());
 	lexrc.popTable();
 }
 
@@ -743,7 +743,7 @@ void LyXLayout::readSpacing(LyXLex & lexrc)
 		break;
 	case ST_OTHER:
 		lexrc.next();
-		spacing.set(Spacing::Other, lexrc.GetFloat());
+		spacing.set(Spacing::Other, lexrc.getFloat());
 		break;
 	}
 }
@@ -845,10 +845,10 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 	bool error = false;
 
         lexrc.setFile(filename);
-	if (!lexrc.IsOK()) error = true; 
+	if (!lexrc.isOK()) error = true; 
 
 	// parsing
-	while (lexrc.IsOK() && !error) {
+	while (lexrc.isOK() && !error) {
 		int le = lexrc.lex();
 		switch (le) {
 		case LyXLex::LEX_FEOF:
@@ -868,7 +868,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		case TC_INPUT: // Include file
 		        if (lexrc.next()) {
 		        	string tmp = LibFileSearch("layouts",
-							    lexrc.GetString(), 
+							    lexrc.getString(), 
 							    "layout");
 				
 				if (Read(tmp, true)) {
@@ -881,7 +881,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_STYLE:
 			if (lexrc.next()) {
-				string name = subst(lexrc.GetString(),
+				string name = subst(lexrc.getString(),
 						    '_', ' ');
 				if (hasLayout(name)) {
 					LyXLayout & lay = GetLayout(name);
@@ -901,7 +901,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_NOSTYLE:
 			if (lexrc.next()) {
-				string style = subst(lexrc.GetString(),
+				string const style = subst(lexrc.getString(),
 						     '_', ' ');
 				if (!delete_layout(style))
 					lexrc.printError("Cannot delete style"
@@ -911,12 +911,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_COLUMNS:
 			if (lexrc.next())
-				columns_ = lexrc.GetInteger();
+				columns_ = lexrc.getInteger();
 			break;
 			
 		case TC_SIDES:
 			if (lexrc.next()) {
-				switch (lexrc.GetInteger()) {
+				switch (lexrc.getInteger()) {
 				case 1: sides_ = OneSide; break;
 				case 2: sides_ = TwoSides; break;
 				default:
@@ -931,7 +931,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			
 		case TC_PAGESTYLE:
 		        lexrc.next();
-			pagestyle_ = strip(lexrc.GetString());
+			pagestyle_ = strip(lexrc.getString());
 			break;
 			
 		case TC_DEFAULTFONT:
@@ -950,12 +950,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_SECNUMDEPTH:
 			lexrc.next();
-			secnumdepth_ = lexrc.GetInteger();
+			secnumdepth_ = lexrc.getInteger();
 			break;
 
 		case TC_TOCDEPTH:
 			lexrc.next();
-			tocdepth_ = lexrc.GetInteger();
+			tocdepth_ = lexrc.getInteger();
 			break;
 
 			// First step to support options 
@@ -968,28 +968,28 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			break;
 
 		case TC_PROVIDESAMSMATH:
-			if (lexrc.next() && lexrc.GetInteger())
+			if (lexrc.next() && lexrc.getInteger())
 				provides_ |= amsmath;
 			break;
 
 		case TC_PROVIDESMAKEIDX:
-			if (lexrc.next() && lexrc.GetInteger())
+			if (lexrc.next() && lexrc.getInteger())
 				provides_ |= makeidx;
 			break;
 
 		case TC_PROVIDESURL:
-			if (lexrc.next() && lexrc.GetInteger())
+			if (lexrc.next() && lexrc.getInteger())
 				provides_ = url;
 			break;
 
 		case TC_LEFTMARGIN:	// left margin type
 		        if (lexrc.next())
-				leftmargin_ = lexrc.GetString();
+				leftmargin_ = lexrc.getString();
 			break;			
 
 		case TC_RIGHTMARGIN:	// right margin type
 			if (lexrc.next())
-				rightmargin_ = lexrc.GetString();
+				rightmargin_ = lexrc.getString();
 			break;
 		}
 	}	
@@ -1129,7 +1129,7 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 
 	lexrc.pushTable(classOptionsTags, CO_END);
 	bool getout = false;
-	while (!getout && lexrc.IsOK()) {
+	while (!getout && lexrc.isOK()) {
 		int le = lexrc.lex();
 		switch (le) {
 		case LyXLex::LEX_UNDEF:
@@ -1140,15 +1140,15 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 		switch (static_cast<ClassOptionsTags>(le)) {
 		case CO_FONTSIZE:
 			lexrc.next();
-			opt_fontsize_ = strip(lexrc.GetString());
+			opt_fontsize_ = strip(lexrc.getString());
 			break;
 		case CO_PAGESTYLE:
 			lexrc.next();
-			opt_pagestyle_ = strip(lexrc.GetString()); 
+			opt_pagestyle_ = strip(lexrc.getString()); 
 			break;
 		case CO_OTHER:
 			lexrc.next();
-			options_ = lexrc.GetString();
+			options_ = lexrc.getString();
 			break;
 		case CO_END:
 			getout = true;
@@ -1373,32 +1373,32 @@ bool LyXTextClassList::Read ()
 		       << real_file << endl;
 	}
 	
-	if (!lex.IsOK()) {
+	if (!lex.isOK()) {
 		lyxerr << "LyXTextClassList::Read: unable to open "
 			"textclass file  `" << MakeDisplayPath(real_file, 1000)
 		       << "'\nCheck your installation. LyX can't continue."
 		       << endl;
  		return false;
 	}
+
 	bool finished = false;
-	string fname, clname, desc;
 	// Parse config-file
 	lyxerr[Debug::TCLASS] << "Starting parsing of textclass.lst" << endl;
-	while (lex.IsOK() && !finished) {
+	while (lex.isOK() && !finished) {
 		lyxerr[Debug::TCLASS] << "\tline by line" << endl;
 		switch (lex.lex()) {
 		case LyXLex::LEX_FEOF:
 			finished = true;
 			break;
 		default:
-			fname = lex.GetString();
+			string const fname = lex.getString();
 			lyxerr[Debug::TCLASS] << "Fname: " << fname << endl;
 			if (lex.next()) {
-				clname = lex.GetString();
+				string const clname = lex.getString();
 				lyxerr[Debug::TCLASS]
 					<< "Clname: " << clname << endl;
 				if (lex.next()) {
-					      desc = lex.GetString();
+					      string const desc = lex.getString();
 					      lyxerr[Debug::TCLASS]
 						      << "Desc: " << desc << endl;
 					      // This code is run when we have

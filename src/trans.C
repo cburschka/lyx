@@ -225,7 +225,7 @@ int Trans::Load(LyXLex & lex)
 {
 	bool error = false;
 
-	while (lex.IsOK() && !error) {
+	while (lex.isOK() && !error) {
 		switch (lex.lex()) {
 		case KMOD:
 		{
@@ -238,7 +238,7 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 			
-			string const keys = lex.GetString();
+			string const keys = lex.getString();
 
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
@@ -247,7 +247,7 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 
-			tex_accent accent = getkeymod(lex.GetString());
+			tex_accent accent = getkeymod(lex.getString());
 
 			if (accent == TEX_NOACCENT)
 				return -1;
@@ -263,7 +263,7 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 
-			string const allowed = lex.GetString();
+			string const allowed = lex.getString();
 			AddDeadkey(accent, keys /*, allowed*/);
 #else
 			AddDeadkey(accent, keys);
@@ -340,7 +340,7 @@ int Trans::Load(LyXLex & lex)
 			}
 			string allowed;
 			if (lex.next()) {
-				allowed = lex.GetString();
+				allowed = lex.getString();
 				lyxerr[Debug::KBMAP] << "allowed: "
 						     << allowed << endl;
 			} else {
@@ -388,7 +388,7 @@ int Trans::Load(LyXLex & lex)
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "\t`" << lex.text() << "'"
 					       << endl;
-				accent = getkeymod(lex.GetString());
+				accent = getkeymod(lex.getString());
 			} else
 				return -1;
 

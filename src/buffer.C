@@ -340,9 +340,9 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 		markDirty();
 		// We don't want to adopt the parameters from the
 		// document we insert, so we skip until the text begins:
-		while (lex.IsOK()) {
+		while (lex.isOK()) {
 			lex.nextToken();
-			string const pretoken = lex.GetString();
+			string const pretoken = lex.getString();
 			if (pretoken == "\\layout") {
 				lex.pushToken(pretoken);
 				break;
@@ -350,9 +350,9 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 		}
 	}
 
-	while (lex.IsOK()) {
+	while (lex.isOK()) {
 		lex.nextToken();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 
 		if (token.empty()) continue;
 
@@ -449,8 +449,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// Do the insetert.
 		insertErtContents(par, pos, font);
 #endif
-                lex.EatLine();
-                string const layoutname = lex.GetString();
+                lex.eatLine();
+                string const layoutname = lex.getString();
                 pair<bool, LyXTextClass::LayoutList::size_type> pp
                         = textclasslist.NumberOfLayout(params.textclass,
                                                        layoutname);
@@ -560,7 +560,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// This is the compability reader. It can be removed in
 		// LyX version 1.3.0. (Lgb)
 		lex.next();
-		string const tmptok = lex.GetString();
+		string const tmptok = lex.getString();
 		//lyxerr << "old float: " << tmptok << endl;
 		
 		Inset * inset = 0;
@@ -612,7 +612,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// This _is_ a hack! (Lgb)
 		while (true) {
 			lex.next();
-			string const tmp = lex.GetString();
+			string const tmp = lex.getString();
 			if (tmp == "\\end_deeper") {
 				//lyxerr << "\\end_deeper caught!" << endl;
 				if (!depth) {
@@ -652,15 +652,15 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\begin_preamble") {
 		params.readPreamble(lex);
 	} else if (token == "\\textclass") {
-		lex.EatLine();
+		lex.eatLine();
 		pair<bool, LyXTextClassList::size_type> pp = 
-			textclasslist.NumberOfClass(lex.GetString());
+			textclasslist.NumberOfClass(lex.getString());
 		if (pp.first) {
 			params.textclass = pp.second;
 		} else {
 			WriteAlert(string(_("Textclass error")), 
 				string(_("The document uses an unknown textclass \"")) + 
-				lex.GetString() + string("\"."),
+				lex.getString() + string("\"."),
 				string(_("LyX will not be able to produce output correctly.")));
 			params.textclass = 0;
 		}
@@ -677,20 +677,20 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			params.textclass = 0;
 		}
 	} else if (token == "\\options") {
-		lex.EatLine();
-		params.options = lex.GetString();
+		lex.eatLine();
+		params.options = lex.getString();
 	} else if (token == "\\language") {
 		params.readLanguage(lex);    
 	} else if (token == "\\fontencoding") {
-		lex.EatLine();
+		lex.eatLine();
 	} else if (token == "\\inputencoding") {
-		lex.EatLine();
-		params.inputenc = lex.GetString();
+		lex.eatLine();
+		params.inputenc = lex.getString();
 	} else if (token == "\\graphics") {
 		params.readGraphicsDriver(lex);
 	} else if (token == "\\fontscheme") {
-		lex.EatLine();
-		params.fonts = lex.GetString();
+		lex.eatLine();
+		params.fonts = lex.getString();
 	} else if (token == "\\noindent") {
 		par->params().noindent(true);
 	} else if (token == "\\fill_top") {
@@ -708,21 +708,21 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\start_of_appendix") {
 		par->params().startOfAppendix(true);
 	} else if (token == "\\paragraph_separation") {
-		int tmpret = lex.FindToken(string_paragraph_separation);
+		int tmpret = lex.findToken(string_paragraph_separation);
 		if (tmpret == -1) ++tmpret;
 		if (tmpret != LYX_LAYOUT_DEFAULT) 
 			params.paragraph_separation =
 				static_cast<BufferParams::PARSEP>(tmpret);
 	} else if (token == "\\defskip") {
 		lex.nextToken();
-		params.defskip = VSpace(lex.GetString());
+		params.defskip = VSpace(lex.getString());
 	} else if (token == "\\epsfig") { // obsolete
 		// Indeed it is obsolete, but we HAVE to be backwards
 		// compatible until 0.14, because otherwise all figures
 		// in existing documents are irretrivably lost. (Asger)
 		params.readGraphicsDriver(lex);
 	} else if (token == "\\quotes_language") {
-		int tmpret = lex.FindToken(string_quotes_language);
+		int tmpret = lex.findToken(string_quotes_language);
 		if (tmpret == -1) ++tmpret;
 		if (tmpret != LYX_LAYOUT_DEFAULT) {
 			InsetQuotes::quote_language tmpl = 
@@ -751,7 +751,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 	} else if (token == "\\quotes_times") {
 		lex.nextToken();
-		switch (lex.GetInteger()) {
+		switch (lex.getInteger()) {
 		case 1: 
 			params.quotes_times = InsetQuotes::SingleQ; 
 			break;
@@ -760,13 +760,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			break;
 		}
 	} else if (token == "\\papersize") {
-		int tmpret = lex.FindToken(string_papersize);
+		int tmpret = lex.findToken(string_papersize);
 		if (tmpret == -1)
 			++tmpret;
 		else
 			params.papersize2 = tmpret;
 	} else if (token == "\\paperpackage") {
-		int tmpret = lex.FindToken(string_paperpackages);
+		int tmpret = lex.findToken(string_paperpackages);
 		if (tmpret == -1) {
 			++tmpret;
 			params.paperpackage = BufferParams::PACKAGE_NONE;
@@ -774,81 +774,81 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			params.paperpackage = tmpret;
 	} else if (token == "\\use_geometry") {
 		lex.nextToken();
-		params.use_geometry = lex.GetInteger();
+		params.use_geometry = lex.getInteger();
 	} else if (token == "\\use_amsmath") {
 		lex.nextToken();
-		params.use_amsmath = lex.GetInteger();
+		params.use_amsmath = lex.getInteger();
 	} else if (token == "\\use_natbib") {
 		lex.nextToken();
-		params.use_natbib = lex.GetInteger();
+		params.use_natbib = lex.getInteger();
 	} else if (token == "\\use_numerical_citations") {
 		lex.nextToken();
-		params.use_numerical_citations = lex.GetInteger();
+		params.use_numerical_citations = lex.getInteger();
 	} else if (token == "\\paperorientation") {
-		int tmpret = lex.FindToken(string_orientation);
+		int tmpret = lex.findToken(string_orientation);
 		if (tmpret == -1) ++tmpret;
 		if (tmpret != LYX_LAYOUT_DEFAULT) 
 			params.orientation = static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
 	} else if (token == "\\paperwidth") {
 		lex.next();
-		params.paperwidth = lex.GetString();
+		params.paperwidth = lex.getString();
 	} else if (token == "\\paperheight") {
 		lex.next();
-		params.paperheight = lex.GetString();
+		params.paperheight = lex.getString();
 	} else if (token == "\\leftmargin") {
 		lex.next();
-		params.leftmargin = lex.GetString();
+		params.leftmargin = lex.getString();
 	} else if (token == "\\topmargin") {
 		lex.next();
-		params.topmargin = lex.GetString();
+		params.topmargin = lex.getString();
 	} else if (token == "\\rightmargin") {
 		lex.next();
-		params.rightmargin = lex.GetString();
+		params.rightmargin = lex.getString();
 	} else if (token == "\\bottommargin") {
 		lex.next();
-		params.bottommargin = lex.GetString();
+		params.bottommargin = lex.getString();
 	} else if (token == "\\headheight") {
 		lex.next();
-		params.headheight = lex.GetString();
+		params.headheight = lex.getString();
 	} else if (token == "\\headsep") {
 		lex.next();
-		params.headsep = lex.GetString();
+		params.headsep = lex.getString();
 	} else if (token == "\\footskip") {
 		lex.next();
-		params.footskip = lex.GetString();
+		params.footskip = lex.getString();
 	} else if (token == "\\paperfontsize") {
 		lex.nextToken();
-		params.fontsize = strip(lex.GetString());
+		params.fontsize = strip(lex.getString());
 	} else if (token == "\\papercolumns") {
 		lex.nextToken();
-		params.columns = lex.GetInteger();
+		params.columns = lex.getInteger();
 	} else if (token == "\\papersides") {
 		lex.nextToken();
-		switch (lex.GetInteger()) {
+		switch (lex.getInteger()) {
 		default:
 		case 1: params.sides = LyXTextClass::OneSide; break;
 		case 2: params.sides = LyXTextClass::TwoSides; break;
 		}
 	} else if (token == "\\paperpagestyle") {
 		lex.nextToken();
-		params.pagestyle = strip(lex.GetString());
+		params.pagestyle = strip(lex.getString());
 	} else if (token == "\\bullet") {
 		lex.nextToken();
-		int const index = lex.GetInteger();
+		int const index = lex.getInteger();
 		lex.nextToken();
-		int temp_int = lex.GetInteger();
+		int temp_int = lex.getInteger();
 		params.user_defined_bullets[index].setFont(temp_int);
 		params.temp_bullets[index].setFont(temp_int);
 		lex.nextToken();
-		temp_int = lex.GetInteger();
+		temp_int = lex.getInteger();
 		params.user_defined_bullets[index].setCharacter(temp_int);
 		params.temp_bullets[index].setCharacter(temp_int);
 		lex.nextToken();
-		temp_int = lex.GetInteger();
+		temp_int = lex.getInteger();
 		params.user_defined_bullets[index].setSize(temp_int);
 		params.temp_bullets[index].setSize(temp_int);
 		lex.nextToken();
-		string const temp_str = lex.GetString();
+		string const temp_str = lex.getString();
 		if (temp_str != "\\end_bullet") {
 				// this element isn't really necessary for
 				// parsing but is easier for humans
@@ -859,9 +859,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 	} else if (token == "\\bulletLaTeX") {
 		lex.nextToken();
-		int const index = lex.GetInteger();
+		int const index = lex.getInteger();
 		lex.next();
-		string temp_str = lex.GetString();
+		string temp_str = lex.getString();
 		string sum_str;
 		while (temp_str != "\\end_bullet") {
 				// this loop structure is needed when user
@@ -872,19 +872,19 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				// therefore needs to be read in turn
 			sum_str += temp_str;
 			lex.next();
-			temp_str = lex.GetString();
+			temp_str = lex.getString();
 		}
 		params.user_defined_bullets[index].setText(sum_str);
 		params.temp_bullets[index].setText(sum_str);
 	} else if (token == "\\secnumdepth") {
 		lex.nextToken();
-		params.secnumdepth = lex.GetInteger();
+		params.secnumdepth = lex.getInteger();
 	} else if (token == "\\tocdepth") {
 		lex.nextToken();
-		params.tocdepth = lex.GetInteger();
+		params.tocdepth = lex.getInteger();
 	} else if (token == "\\spacing") {
 		lex.next();
-		string const tmp = strip(lex.GetString());
+		string const tmp = strip(lex.getString());
 		Spacing::Space tmp_space = Spacing::Default;
 		float tmp_val = 0.0;
 		if (tmp == "single") {
@@ -896,7 +896,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		} else if (tmp == "other") {
 			lex.next();
 			tmp_space = Spacing::Other;
-			tmp_val = lex.GetFloat();
+			tmp_val = lex.getFloat();
 		} else {
 			lex.printError("Unknown spacing token: '$$Token'");
 		}
@@ -909,7 +909,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 	} else if (token == "\\paragraph_spacing") {
 		lex.next();
-		string const tmp = strip(lex.GetString());
+		string const tmp = strip(lex.getString());
 		if (tmp == "single") {
 			par->params().spacing(Spacing(Spacing::Single));
 		} else if (tmp == "onehalf") {
@@ -919,29 +919,29 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		} else if (tmp == "other") {
 			lex.next();
 			par->params().spacing(Spacing(Spacing::Other,
-					 lex.GetFloat()));
+					 lex.getFloat()));
 		} else {
 			lex.printError("Unknown spacing token: '$$Token'");
 		}
 	} else if (token == "\\float_placement") {
 		lex.nextToken();
-		params.float_placement = lex.GetString();
+		params.float_placement = lex.getString();
 	} else if (token == "\\family") { 
 		lex.next();
-		font.setLyXFamily(lex.GetString());
+		font.setLyXFamily(lex.getString());
 	} else if (token == "\\series") {
 		lex.next();
-		font.setLyXSeries(lex.GetString());
+		font.setLyXSeries(lex.getString());
 	} else if (token == "\\shape") {
 		lex.next();
-		font.setLyXShape(lex.GetString());
+		font.setLyXShape(lex.getString());
 	} else if (token == "\\size") {
 		lex.next();
-		font.setLyXSize(lex.GetString());
+		font.setLyXSize(lex.getString());
 #ifndef NO_COMPABILITY
 	} else if (token == "\\latex") {
 		lex.next();
-		string const tok = lex.GetString();
+		string const tok = lex.getString();
 		if (tok == "no_latex") {
 			// Do the insetert.
 			insertErtContents(par, pos, font);
@@ -957,7 +957,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 	} else if (token == "\\lang") {
 		lex.next();
-		string const tok = lex.GetString();
+		string const tok = lex.getString();
 		Language const * lang = languages.getLanguage(tok);
 		if (lang) {
 			font.setLanguage(lang);
@@ -967,13 +967,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 	} else if (token == "\\numeric") {
 		lex.next();
-		font.setNumber(font.setLyXMisc(lex.GetString()));
+		font.setNumber(font.setLyXMisc(lex.getString()));
 	} else if (token == "\\emph") {
 		lex.next();
-		font.setEmph(font.setLyXMisc(lex.GetString()));
+		font.setEmph(font.setLyXMisc(lex.getString()));
 	} else if (token == "\\bar") {
 		lex.next();
-		string const tok = lex.GetString();
+		string const tok = lex.getString();
 		// This is dirty, but gone with LyX3. (Asger)
 		if (tok == "under")
 			font.setUnderbar(LyXFont::ON);
@@ -986,12 +986,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				       "`$$Token'");
 	} else if (token == "\\noun") {
 		lex.next();
-		font.setNoun(font.setLyXMisc(lex.GetString()));
+		font.setNoun(font.setLyXMisc(lex.getString()));
 	} else if (token == "\\color") {
 		lex.next();
-		font.setLyXColor(lex.GetString());
+		font.setLyXColor(lex.getString());
 	} else if (token == "\\align") {
-		int tmpret = lex.FindToken(string_align);
+		int tmpret = lex.findToken(string_align);
 		if (tmpret == -1) ++tmpret;
 		if (tmpret != LYX_LAYOUT_DEFAULT) { // tmpret != 99 ???
 			int const tmpret2 = int(pow(2.0, tmpret));
@@ -1000,35 +1000,35 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 	} else if (token == "\\added_space_top") {
 		lex.nextToken();
-		par->params().spaceTop(VSpace(lex.GetString()));
+		par->params().spaceTop(VSpace(lex.getString()));
 	} else if (token == "\\added_space_bottom") {
 		lex.nextToken();
-		par->params().spaceBottom(VSpace(lex.GetString()));
+		par->params().spaceBottom(VSpace(lex.getString()));
 #ifndef NO_COMPABILITY
 #ifndef NO_PEXTRA_REALLY
 	} else if (token == "\\pextra_type") {
 		lex.nextToken();
-		par->params().pextraType(lex.GetInteger());
+		par->params().pextraType(lex.getInteger());
 	} else if (token == "\\pextra_width") {
 		lex.nextToken();
-		par->params().pextraWidth(lex.GetString());
+		par->params().pextraWidth(lex.getString());
 	} else if (token == "\\pextra_widthp") {
 		lex.nextToken();
-		par->params().pextraWidthp(lex.GetString());
+		par->params().pextraWidthp(lex.getString());
 	} else if (token == "\\pextra_alignment") {
 		lex.nextToken();
-		par->params().pextraAlignment(lex.GetInteger());
+		par->params().pextraAlignment(lex.getInteger());
 	} else if (token == "\\pextra_hfill") {
 		lex.nextToken();
-		par->params().pextraHfill(lex.GetInteger());
+		par->params().pextraHfill(lex.getInteger());
 	} else if (token == "\\pextra_start_minipage") {
 		lex.nextToken();
-		par->params().pextraStartMinipage(lex.GetInteger());
+		par->params().pextraStartMinipage(lex.getInteger());
 #endif
 #endif
 	} else if (token == "\\labelwidthstring") {
-		lex.EatLine();
-		par->params().labelWidthString(lex.GetString());
+		lex.eatLine();
+		par->params().labelWidthString(lex.getString());
 		// do not delete this token, it is still needed!
 	} else if (token == "\\end_inset") {
 		lyxerr << "Solitary \\end_inset. Missing \\begin_inset?.\n"
@@ -1057,9 +1057,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 		// Insets don't make sense in a free-spacing context! ---Kayvan
 		if (layout.free_spacing) {
-			if (lex.IsOK()) {
+			if (lex.isOK()) {
 				lex.next();
-				string next_token = lex.GetString();
+				string next_token = lex.getString();
 				if (next_token == "\\-") {
 					par->insertChar(pos, '-', font);
 				} else if (next_token == "\\protected_separator"
@@ -1386,7 +1386,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 		       int & pos, LyXFont & font)
 {
 	// consistency check
-	if (lex.GetString() != "\\begin_inset") {
+	if (lex.getString() != "\\begin_inset") {
 		lyxerr << "Buffer::readInset: Consistency check failed."
 		       << endl;
 	}
@@ -1394,7 +1394,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 	Inset * inset = 0;
 
 	lex.next();
-	string const tmptok = lex.GetString();
+	string const tmptok = lex.getString();
 	last_inset_read = tmptok;
 
 	// test the different insets
@@ -1483,7 +1483,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetMinipage;
 		} else if (tmptok == "Float") {
 			lex.next();
-			string tmptok = lex.GetString();
+			string tmptok = lex.getString();
 			inset = new InsetFloat(tmptok);
 #if 0
 		} else if (tmptok == "List") {
@@ -1509,12 +1509,12 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 
 bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 {
-	if (lex.IsOK()) {
+	if (lex.isOK()) {
 		lex.next();
-		string const token(lex.GetString());
+		string const token(lex.getString());
 		if (token == "\\lyxformat") { // the first token _must_ be...
-			lex.EatLine();
-			string tmp_format = lex.GetString();
+			lex.eatLine();
+			string tmp_format = lex.getString();
 			//lyxerr << "LyX Format: `" << tmp_format << "'" << endl;
 			// if present remove ".," from string.
 			string::size_type dot = tmp_format.find_first_of(".,");
@@ -2815,7 +2815,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 	LyXFont::FONT_SHAPE  shape_type  = LyXFont::UP_SHAPE;
 	bool is_em = false;
 
-	stack < PAR_TAG > tag_state;
+	stack<PAR_TAG> tag_state;
 	// parsing main loop
 	for (Paragraph::size_type i = 0; i < par->size(); ++i) {
 

@@ -40,7 +40,7 @@ LyXLex::Pimpl::Pimpl(keyword_item * tab, int num)
 }
 
 
-string const LyXLex::Pimpl::GetString() const
+string const LyXLex::Pimpl::getString() const
 {
 	return string(buff);
 }
@@ -48,7 +48,7 @@ string const LyXLex::Pimpl::GetString() const
 
 void LyXLex::Pimpl::printError(string const & message) const
 {
-	string const tmpmsg = subst(message, "$$Token", GetString());
+	string const tmpmsg = subst(message, "$$Token", getString());
 	lyxerr << "LyX: " << tmpmsg << " [around line " << lineno
 	       << " of file " << MakeDisplayPath(name) << ']' << endl;
 }
@@ -393,7 +393,7 @@ int LyXLex::Pimpl::lex()
 }
 
 	
-bool LyXLex::Pimpl::EatLine()
+bool LyXLex::Pimpl::eatLine()
 {
 	int i = 0;
 	unsigned char c = '\0';

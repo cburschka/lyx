@@ -24,7 +24,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	///
 	Pimpl(keyword_item * tab, int num);
 	///
-	string const GetString() const;
+	string const getString() const;
 	///
 	void printError(string const & message) const;
 	///
@@ -46,7 +46,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	///
 	int lex();
 	///
-	bool EatLine();
+	bool eatLine();
 	///
 	bool nextToken();
 	///
