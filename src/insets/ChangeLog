@@ -72,9 +72,9 @@
 
 2004-10-26  Angus Leeming  <leeming@lyx.org>
 
-	* ExternalSupport.C (updateExternal):
-	* insetgraphics.C (copyFileIfNeeded): use the new Movers to move external
-	files to the temp directory.
+	* ExternalSupport.C (updateExternal): 
+	* insetgraphics.C (copyFileIfNeeded): use the new Movers to move
+	external files to the temp directory.
 
 2004-10-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
@@ -88,8 +88,8 @@
 
 2004-10-23  José Matos  <jamatos@lyx.org>
 
-	* insettext.C (docbook): rearrange arguments, due to change in the upper
-	code.
+	* insettext.C (docbook): rearrange arguments, due to change in the
+	upper code.
 
 2004-10-23  André Pönitz  <poenitz@gmx.net>
 
@@ -748,7 +748,8 @@
 	* insettext.[Ch]:
 	* insetvspace.[Ch]:
 	* insetwrap.[Ch]:
-	* updatableinset.[Ch]: Adjust to IU changes (see comment in src/Changelog)
+	* updatableinset.[Ch]: Adjust to IU changes (see comment in
+	src/Changelog)
 
 2004-01-15  André Pönitz  <poenitz@gmx.net>
 
@@ -1083,8 +1084,8 @@
 
 2003-11-20  Angus Leeming  <leeming@lyx.org>
 
-	* insetcharstyle.C (latex, linuxdoc, docbook, plaintext): squash warnings
-	about unused parameters.
+	* insetcharstyle.C (latex, linuxdoc, docbook, plaintext): squash
+	warnings about unused parameters.
 
 	* insetcollapsable.C (open):
 	* insettabular.C (pasteSelection):
@@ -1140,7 +1141,9 @@
 
 	* inset.h: remove Inset::id_
 
-	* inset.h: top_x -> xo_, top_baseline -> yo_ to unify with mathed/*.[Ch]
+	* inset.h: top_x -> xo_, top_baseline -> yo_ to unify with
+	mathed/*.[Ch]
+
 	* *.[Ch]: adjust
 
 2003-11-10  André Pönitz  <poenitz@gmx.net>
@@ -1776,8 +1779,9 @@
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
-	* insetinclude.C (localDispatch): ensure that params_.masterFilename_ is
-	set before trying to generate a preview, else we trigger an assert.
+	* insetinclude.C (localDispatch): ensure that
+	params_.masterFilename_ is set before trying to generate a
+	preview, else we trigger an assert.
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
@@ -1785,12 +1789,14 @@
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
-	* insetcollapsable.[Ch]: make all member variables, except for 'inset', private.
+	* insetcollapsable.[Ch]: make all member variables, except for
+	'inset', private.
 
-	* insetert.C (init): use InsetCollapsable::setLabelFont rather than access
-	labelfont directly.
-	(read, updateStatus, lfunMouseRelease, status, showInsetDialog): use
-	InsetCollapsable::setCollapsed, isOpen rather than access collapsed_ directly.
+	* insetert.C (init): use InsetCollapsable::setLabelFont rather
+	than access labelfont directly.
+	(read, updateStatus, lfunMouseRelease, status, showInsetDialog):
+	use InsetCollapsable::setCollapsed, isOpen rather than access
+	collapsed_ directly.
 
 	* insetminipage.C (metrics):
 	* insetnote.C (metrics):
@@ -1827,8 +1833,8 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
 	* insettext.[Ch] (frameColor): new accessor function.
-	(frame_color_): stored as an int, allows us to remove #include "LColor.h" from
-	insettext.h
+	(frame_color_): stored as an int, allows us to remove #include
+	"LColor.h" from insettext.h
 
 	* insetbranch.C:
 	* insettabular.C:
@@ -1840,7 +1846,8 @@
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
-	* insetenv.C (constructor): use accessor functions to access InsetText variables.
+	* insetenv.C (constructor): use accessor functions to access
+	InsetText variables.
 
 	* insettext.h: rename autoBreakRows as autoBreakRows_. Make private.
 	rename frame_color as frame_color_. Make private.
@@ -1849,8 +1856,8 @@
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
-	* inset.h: store background_color_ as an int, not as an LColor::color to
-	get LColor.h out of the header file.
+	* inset.h: store background_color_ as an int, not as an
+	LColor::color to get LColor.h out of the header file.
 
 	* inset.C:
 	* insetlatexaccent.C:
@@ -1862,8 +1869,8 @@
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
-	* renderers.C:	LyXFont::setColor no longer return a LyXFont &, so cannot string
-	calls together.
+	* renderers.C: LyXFont::setColor no longer return a LyXFont &, so
+	cannot string calls together.
 
 2003-09-15  Angus Leeming  <leeming@lyx.org>
 
@@ -1952,7 +1959,8 @@
 	Make use of the new Debug::EXTERNAL flag.
 
 	* insetexternal.C: make use of the new Debug::EXTERNAL flag.
-	(validate): Small change due to the changed storage of preamble snippets.
+	(validate): Small change due to the changed storage of preamble
+	snippets.
 
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
@@ -2544,8 +2552,8 @@
 
 2003-06-10  Angus Leeming  <leeming@lyx.org>
 
-	* graphicinset.[Ch] (view): removed the publicly accessible function to set
-	the cache.
+	* graphicinset.[Ch] (view): removed the publicly accessible
+	function to set the cache.
 
 	* insetexternal.[Ch]: move tempname_ into the Params struct.
 	(Params d-tor): new function, to clean-up this temp file.
@@ -2588,9 +2596,10 @@
 
 	* graphicinset.C (draw): add a comment for the #if 0 block.
 
-	* insetexternal.h: remove Params::parameters variable.
-	* insetexternal.C (read, write): rewrite to output new ExternalInset format
-	and read it back making full use of LyXLex.
+	* insetexternal.h: remove Params::parameters variable. 
+
+	* insetexternal.C (read, write): rewrite to output new ExternalInset
+	format and read it back making full use of LyXLex.
 
 2003-06-04  André Pönitz  <poenitz@gmx.net>
 
@@ -2607,9 +2616,11 @@
 
 	* graphicinset.C (update): bug fix. Set the params before calling the
 	loader.
-	* graphicinset.[Ch] (view): new method. A bit of a fudge to set the
-	BufferView cache to enable the InsetExternal::editCommand to be invoked
-	from the frontends. Would not be needed if this were dispatched properly.
+
+	* graphicinset.[Ch] (view): new method. A bit of a fudge to set
+	the BufferView cache to enable the InsetExternal::editCommand to
+	be invoked from the frontends. Would not be needed if this were
+	dispatched properly.
 	(old_ascent_): variable removed.
 
 	* insetexternal.[Ch]: large clean-up to use the converter mechanism to
@@ -3732,7 +3743,8 @@
 	* insetert.C:
 	* insetgraphics.C:
 	* insettabular.C:
-	* insettext.C: Use error messages with identical spelling and punctuation
+	* insettext.C: Use error messages with identical spelling and
+	punctuation
 
 2003-01-12  Michael Schmitt <michael.schmitt@teststep.org>
 
@@ -3745,8 +3757,8 @@
 
 2003-01-06  Michael Schmitt <Michael.Schmitt@teststep.org>
 
-	* insettext.C: fix inconsistent usage of spaces, colons, capitalization,
-	and the like.
+	* insettext.C: fix inconsistent usage of spaces, colons,
+	capitalization, and the like.
 
 2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -3799,8 +3811,8 @@
 
 2002-11-21  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* insettabular.C (tabularFeatures): Support for block alignment in fixed width
-	columns.
+	* insettabular.C (tabularFeatures): Support for block alignment in
+	fixed width columns.
 
 2002-11-20  Juergen Vigna  <jug@sad.it>
 
@@ -4061,9 +4073,8 @@
 	* insettabular.C:
 	* insettext.C:
 	* insettoc.C:
-	* inseturl.C:
-	changes due to the changed LyXView interface that now returns references
-	to member variables not pointers.
+	* inseturl.C: changes due to the changed LyXView interface that
+	now returns references to member variables not pointers.
 
 2002-08-13  Angus Leeming  <leeming@lyx.org>
 
@@ -4082,7 +4093,8 @@
 
 2002-08-12  Angus Leeming  <leeming@lyx.org>
 
-	* insetgraphicsParams.C: fix reading of lyxsize_type in 1.2.0 documents.
+	* insetgraphicsParams.C: fix reading of lyxsize_type in 1.2.0
+	documents.
 
 2002-08-12  Juergen Vigna  <jug@sad.it>
 
@@ -4432,9 +4444,10 @@
 2002-06-07  Angus Leeming  <leeming@lyx.org>
 
 	Fixes needed to compile with Compaq cxx 6.5.
-	* insetexternal.C:
-	all c-library variables have been moved into namespace std.
-	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
+	* insetexternal.C: all c-library variables have been moved into
+	namespace std. Wrap using std::xyz declarations inside a #ifndef
+	CXX_GLOBAL_CSTD block. 
 
 2002-06-05  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
@@ -5163,7 +5176,8 @@
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetexternal.C Changes due to the renaming of support/syscall.[Ch]
-	as support/systemcall.[Ch] and of class Systemcalls as class SystemCall.
+	as support/systemcall.[Ch] and of class Systemcalls as class
+	SystemCall.
 
 2002-02-18  José Matos  <jamatos@fep.up.pt>
 
@@ -6163,17 +6177,18 @@
 
 	* insetgraphicsParams.h:
 	* insetgraphicsParams.C:
-	* insetgraphics.C: Added horizontal scale option, it actually scales both
-	directions since it keeps image proportions.
+	* insetgraphics.C: Added horizontal scale option, it actually
+	scales both directions since it keeps image proportions.
 
 	* insetgraphics.C: Fixed EPS detection to be non-hacky.
 
 2001-07-29  Baruch Even  <baruch@lyx.org>
 
-	* insetgraphics.C (decideOutputImageFormat): when doing postscript output
-	convert PNG/GIF/JPG to EPS, assume the rest are EPS already.
+	* insetgraphics.C (decideOutputImageFormat): when doing postscript
+	output convert PNG/GIF/JPG to EPS, assume the rest are EPS already.
 
-	HACKY! Will need to add an EPS detection routine like old InsetFig does!
+	HACKY! Will need to add an EPS detection routine like old InsetFig
+	does!
 
 2001-07-29  Baruch Even  <baruch@lyx.org>
 
@@ -6214,15 +6229,16 @@
 
 2001-07-26  Baruch Even  <baruch@lyx.org>
 
-	* insetgraphics.C (draw): changed casting to be in one place rather than
-	all over the function.
+	* insetgraphics.C (draw): changed casting to be in one place
+	rather than all over the function.
 
 	* insetgraphics.h:
 	* insetgraphics.C (read): Added compatibility reads of InsetFig.
 
 	* insetgraphicsParams.h:
 	* insetgraphicsParams.C:
-	* insetgraphics.C: Removed inline option and changed rotateAngle to float.
+	* insetgraphics.C: Removed inline option and changed rotateAngle
+	to float.
 
 2001-07-28  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
@@ -7240,8 +7256,8 @@
 
 2001-02-21  Baruch Even  <baruch@ev-en.org>
 
-	* insetgraphics.[Ch]: Changed to use boost::shared_ptr<GraphicsCacheItem>
-	instead of GraphicsCacheItem *.
+	* insetgraphics.[Ch]: Changed to use
+	boost::shared_ptr<GraphicsCacheItem> instead of GraphicsCacheItem *.
 
 2001-02-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -7360,14 +7376,14 @@
 
 2001-01-21  Baruch Even  <baruch@ev-en.org>
 
-	* insetgraphics.C: Added Docbook support. Added Automatic image conversion
-	to EPS or PNG when needed (support bitmap graphics).
+	* insetgraphics.C: Added Docbook support. Added Automatic image
+	conversion to EPS or PNG when needed (support bitmap graphics).
 
 2000-11-02  Baruch Even  <baruch@ev-en.org>
 
 	* insetgraphics.C:
-	* insetgraphiscParams.C: Some cleaning up, changing from std::endl to '\n'
-	and removal of commented out code.
+	* insetgraphiscParams.C: Some cleaning up, changing from std::endl
+	to '\n' and removal of commented out code.
 
 2001-01-31  Dekel Tsur  <dekelts@tau.ac.il>
 
