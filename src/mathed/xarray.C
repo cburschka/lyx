@@ -59,12 +59,14 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 }
 
 
-int MathXArray::pos2x(size_type targetpos) const
+int MathXArray::pos2x(size_type targetpos, bool inner) const
 {
 	int x = 0;
 	targetpos = std::min(targetpos, data_.size());
 	for (size_type pos = 0; pos < targetpos; ++pos) 
-		x += width(pos);
+		x += width(pos);	
+	if (inner)
+		x += innerwidth(targetpos);
 	return x;
 }
 
@@ -88,6 +90,13 @@ int MathXArray::width(size_type pos) const
 {
 	MathAtom const * t = data_.at(pos);
 	return t ? t->width() : 0;
+}
+
+
+int MathXArray::innerwidth(size_type pos) const
+{
+	MathAtom const * t = data_.at(pos);
+	return t ? t->nwid() : 0;
 }
 
 

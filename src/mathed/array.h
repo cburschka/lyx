@@ -80,6 +80,8 @@ public:
 	///
 	void push_back(MathArray const &);
 	///
+	void push_back(MathAtom const &);
+	///
 	void pop_back();
 	///
 	MathAtom & back();

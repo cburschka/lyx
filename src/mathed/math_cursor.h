@@ -45,6 +45,9 @@ struct MathCursorPos {
 	MathInset::idx_type idx_;
 	/// cell position
 	MathInset::pos_type pos_;
+	/// faked position "inside an atom"
+	bool inner_;
+
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
 	/// returns cell corresponding to this position
@@ -53,6 +56,9 @@ struct MathCursorPos {
 	MathXArray & xcell() const;
 	/// returns xcell corresponding to this position
 	MathXArray & xcell(MathInset::idx_type idx) const;
+
+	/// returns atom corresponding to this position
+	MathAtom * at() const;
 };
 
 /// 
@@ -101,18 +107,6 @@ public:
 	void first();
 	/// Put the cursor in the last position
 	void last();
-	/// moves cursor position one cell to the left
-	bool posLeft();
-	/// moves cursor position one cell to the right
-	bool posRight();
-	/// moves cursor index one cell to the left
-	bool idxLeft();
-	/// moves cursor index one cell to the right
-	bool idxRight();
-	/// moves position somehow up
-	bool goUp();
-	/// moves position somehow down
-	bool goDown();
 	///
 	void idxNext();
 	///
@@ -123,6 +117,7 @@ public:
 	void plainInsert(MathInset * p);
 	///
 	void niceInsert(MathInset * p);
+
 	///
 	void delLine();
 	/// This is in pixels from (maybe?) the top of inset
@@ -135,6 +130,8 @@ public:
 	MathArrayInset * enclosingArray(idx_type &) const;
 	///
 	InsetFormulaBase const * formula();
+	///
+	bool inner() const;
 	///
 	pos_type pos() const;
 	///
@@ -261,15 +258,33 @@ public:
 	MathScriptInset * prevScriptInset() const;
 	///
 	MathSpaceInset * prevSpaceInset() const;
+
 private:
+	/// moves cursor position one cell to the left
+	bool posLeft();
+	/// moves cursor position one cell to the right
+	bool posRight();
+	/// moves cursor index one cell to the left
+	bool idxLeft();
+	/// moves cursor index one cell to the right
+	bool idxRight();
+	/// moves position somehow up
+	bool goUp();
+	/// moves position somehow down
+	bool goDown();
+	/// glue adjacent atoms if possible
+	void glueAdjacentAtoms();
+
 	///
 	string macroName() const;
 	///
-	void insert(char, MathTextCodes t = LM_TC_MIN);
+	void insert(char, MathTextCodes t);
 	/// can we enter the inset? 
 	bool openable(MathInset *, bool selection) const;
 	/// can the setPos routine enter that inset?
 	MathInset * positionable(MathAtom *, int x, int y) const;
+	/// write access to "inner" flag
+	bool & inner();
 	/// write access to cursor cell position
 	pos_type & pos();
 	/// write access to cursor cell index

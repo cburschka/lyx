@@ -1,4 +1,12 @@
 
+2001-10-10  André Pönitz  <poenitz@gmx.net>
+
+	* math_cursor.C: introduce dummy "inner" position "between"
+	nucleus and scripts for smoother cursor movement
+
+	* math_cursor.C: use red dot to indicate empty nucleus
+
+
 2001-10-02  André Pönitz  <poenitz@gmx.net>
 
 	* math_cursor.C: leave red backslash as visual clue

@@ -58,8 +58,21 @@ struct Selection
 		MathCursorPos i1;
 		MathCursorPos i2;
 		cursor.getSelection(i1, i2); 
-		if (i1.idx_ == i2.idx_)
-			data_.push_back(MathArray(i1.cell(), i1.pos_, i2.pos_));
+		if (i1.idx_ == i2.idx_) {
+			MathArray ar;
+			if (i1.inner_) {
+				ar.push_back(*i1.at());
+				ar.back().removeNucleus();
+				++i1.pos_;
+			}
+			ar.push_back(MathArray(i1.cell(), i1.pos_, i2.pos_));
+			if (i2.inner_) {
+				ar.push_back(*i2.at());
+				ar.back().removeUp();
+				ar.back().removeDown();
+			}
+			data_.push_back(ar);
+		}
 		else {
 			std::vector<MathInset::idx_type> indices =
 				i1.par_->idxBetween(i1.idx_, i2.idx_);
@@ -73,10 +86,21 @@ struct Selection
 		MathCursorPos i1;
 		MathCursorPos i2;
 		cursor.getSelection(i1, i2); 
-		if (i1.idx_ == i2.idx_)
+		if (i1.idx_ == i2.idx_) {
+			if (i1.inner_) {
+				i1.inner_ = false;
+				i1.at()->removeUp();
+				i1.at()->removeDown();
+				++i1.pos_;
+			}
+			if (i2.inner_) {
+				i2.inner_ = false;
+				i2.at()->removeNucleus();
+			}
 			i1.cell().erase(i1.pos_, i2.pos_);
-		else {
-			std::vector<MathInset::idx_type> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
+		} else {
+			std::vector<MathInset::idx_type> indices =
+				i1.par_->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
 				i1.cell(indices[i]).erase();
 		}
@@ -113,7 +137,7 @@ Selection theSelection;
 std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
 {
 	os << "(par: " << p.par_ << " idx: " << p.idx_
-	   << " pos: " << p.pos_ << ")";
+	   << " pos: " << p.pos_ << " inner: " << p.inner_ << ")";
 	return os;
 }
 #endif
@@ -131,7 +155,8 @@ MathCursor::MathCursor(InsetFormulaBase * formula)
 void MathCursor::pushLeft(MathInset * par)
 {
 	MathCursorPos p;
-	p.par_ = par;
+	p.par_   = par;
+	p.inner_ = false;
 	par->idxFirst(p.idx_, p.pos_);
 	Cursor_.push_back(p);
 }
@@ -141,7 +166,8 @@ void MathCursor::pushRight(MathInset * par)
 {
 	posLeft();
 	MathCursorPos p;
-	p.par_ = par;
+	p.par_   = par;
+	p.inner_ = false;
 	par->idxLast(p.idx_, p.pos_);
 	Cursor_.push_back(p);
 }
@@ -274,18 +300,39 @@ MathInset * MathCursor::positionable(MathAtom * t, int x, int y) const
 
 bool MathCursor::posLeft()
 {
+	if (inner()) {
+		inner() = false;
+		return true;
+	}
+
 	if (pos() == 0)
 		return false;
+
 	--pos();
+
+	if (nextAtom()->hasInner())
+		inner() = true;
+
 	return true;
 }
 
 
 bool MathCursor::posRight()
 {
+	if (inner()) {
+		++pos();
+		inner() = false;
+		return true;
+	}
+
 	if (pos() == size())
 		return false;
-	++pos();
+
+	if (nextAtom()->hasInner())
+		inner() = true;
+	else 
+		++pos();
+
 	return true;
 }
 
@@ -367,7 +414,7 @@ void MathCursor::setPos(int x, int y)
 			int x1 = x - ar.xo();
 			int y1 = y - ar.yo();
 			MathXArray::size_type c  = ar.x2pos(x1);
-			int xx = abs(x1 - ar.pos2x(c));
+			int xx = abs(x1 - ar.pos2x(c, false));
 			int yy = abs(y1);
 			//lyxerr << "idx: " << i << " xx: " << xx << " yy: " << yy
 			//	<< " c: " << c  << " xo: " << ar.xo() << "\n";
@@ -420,11 +467,32 @@ void MathCursor::plainErase()
 }
 
 
+void MathCursor::plainInsert(MathInset * p)
+{
+	if (inner()) {
+		array().insert(pos(), p);
+		++pos();
+		swap(prevAtom()->nucleus(), nextAtom()->nucleus());
+		return;
+	}
+
+	MathAtom * n = nextAtom();
+
+	if (n && !n->nucleus()) {
+		n->nucleus() = p;
+		inner() = true;
+		return;
+	}
+
+	array().insert(pos(), p); // this invalidates the pointer!
+	++pos();
+}
+
+
 void MathCursor::insert(char c, MathTextCodes t)
 {
 	//lyxerr << "inserting '" << c << "'\n";
-	array().insert(pos(), new MathCharInset(c, t));
-	posRight();
+	plainInsert(new MathCharInset(c, t));
 }
 
 
@@ -432,16 +500,14 @@ void MathCursor::insert(MathInset * p)
 {
 	macroModeClose();
 
-	if (selection_) {
+	if (p && selection_) {
 		if (p->nargs())
 			selCut();
 		else
 			selDel();
 	}
 
-	array().insert(pos(), p); // this invalidates the pointer!
-	p = array().at(pos())->nucleus();
-	posRight();
+	plainInsert(p);
 }
 
 
@@ -476,25 +542,63 @@ void MathCursor::insert(MathArray const & ar)
 }
 
 
+void MathCursor::glueAdjacentAtoms()
+{
+	MathAtom * p = prevAtom();
+	if (!p)
+		return;
+
+	MathAtom * n = nextAtom();
+	if (!n)
+		return;
+
+	if (p->up() && n->up())
+		return;
+
+	if (p->down() && n->down())
+		return;
+
+	// move everything to the previous atom
+	if (n->up())
+		swap(p->up(), n->up());
+
+	if (n->down())
+		swap(p->down(), n->down());
+	
+	plainErase();
+	--pos();
+	inner() = nextAtom()->hasInner();
+}
+
+
 void MathCursor::backspace()
 {
-	if (posLeft()) {
-		erase();
+	if (inner()) {
+		nextAtom()->removeNucleus();
+		inner() = false;
+		glueAdjacentAtoms();
 		return;
 	}
 
-	if (size()) {
-		pullArg(false);
+	if (pos() == 0) {
+		if (size())
+			pullArg(false);
+		return;
+	}	
+
+	if (prevAtom()->hasInner()) {
+		--pos();
+		inner() = true;
 		return;
 	}
 
-	erase();
+	--pos();
+	plainErase();
 }
 
 
 void MathCursor::erase()
 {
-	dump("erase 1");
 	if (inMacroMode())
 		return;
 
@@ -504,7 +608,7 @@ void MathCursor::erase()
 	}
 
 	// delete empty cells if necessary
-	if (pos() == 0 && array().empty()) {
+	if (array().empty()) {
 		bool popit;
 		bool removeit;
 		par()->idxDelete(idx(), popit, removeit);
@@ -513,42 +617,30 @@ void MathCursor::erase()
 		return;
 	}
 
-	if (pos() == size())
+	MathAtom * n = nextAtom();
+
+	if (!n)
 		return;
 
-	// delete nucleus, keep scripts if possible
-	MathAtom * p = prevAtom();
-	MathAtom * n = nextAtom();
-	if (pos() > 0) {
-		bool need_parans = (p->up() && n->up()) || (p->down() && n->down());
-		if (need_parans) {
-			// need empty block
-			insert('{', LM_TC_TEX);
-			insert('}', LM_TC_TEX);
-			p = prevAtom();
-			n = nextAtom();
-		}
-		// move indices to the left
+	if (inner()) {
 		if (n->up())
-			swap(p->up(), n->up());
-		if (n->down())
-			swap(p->down(), n->down());
-		plainErase();
+			n->removeUp();
+		else if (n->down())
+			n->removeDown();
+		if (!n->up() && !n->down()) {
+			++pos();
+			inner() = false;
+		}
 		return;
 	}
 
-	// pos == 0 now
-	if (n->up() || n->down()) {
-		insert('{', LM_TC_TEX);
-		insert('}', LM_TC_TEX);
-		p = prevAtom();
-		n = nextAtom();
-		swap(p->up(), n->up());
-		swap(p->down(), n->down());
+	if (n->hasInner()) {
+		n->removeNucleus();
+		inner() = true;
+		return;
 	}
 
 	plainErase();
-	dump("erase 2");
 }
 
 
@@ -741,9 +833,9 @@ void MathCursor::drawSelection(Painter & pain) const
 
 	if (i1.idx_ == i2.idx_) {
 		MathXArray & c = i1.xcell();
-		int x1 = c.xo() + c.pos2x(i1.pos_);
+		int x1 = c.xo() + c.pos2x(i1.pos_, i1.inner_);
 		int y1 = c.yo() - c.ascent();
-		int x2 = c.xo() + c.pos2x(i2.pos_);
+		int x2 = c.xo() + c.pos2x(i2.pos_, i2.inner_);
 		int y2 = c.yo() + c.descent();
 		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
@@ -811,7 +903,7 @@ void MathCursor::getPos(int & x, int & y)
 #ifdef WITH_WARNINGS
 #warning This should probably take cellXOffset and cellYOffset into account
 #endif
-	x = xarray().xo() + xarray().pos2x(pos());
+	x = xarray().xo() + xarray().pos2x(pos(), inner());
 	y = xarray().yo();
 }
 
@@ -849,6 +941,18 @@ MathCursor::pos_type MathCursor::pos() const
 MathCursor::pos_type & MathCursor::pos()
 {
 	return cursor().pos_;
+}
+
+
+bool MathCursor::inner() const
+{
+	return cursor().inner_;
+}
+
+
+bool & MathCursor::inner()
+{
+	return cursor().inner_;
 }
 
 
@@ -1132,7 +1236,7 @@ int MathCursor::cellYOffset() const
 
 int MathCursor::xpos() const
 {
-	return cellXOffset() + xarray().pos2x(pos());
+	return cellXOffset() + xarray().pos2x(pos(), inner());
 }
 
 
@@ -1281,12 +1385,12 @@ void MathCursor::interpret(string const & s)
 	// we got just a single char now
 
 	if (c == '^' || c == '_') {
-		bool const up = (s[0] == '^');
-		selCut();	
-		if (!prevInset()) {
-			insert('{', LM_TC_TEX);
-			insert('}', LM_TC_TEX);
-		}
+		const bool up = (s[0] == '^');
+		selCut();
+		if (inner())
+			++pos();
+		if (!prevAtom())
+			insert(0);
 		MathInset * par = prevAtom()->ensure(up);
 		pushRight(par);
 		selPaste();
@@ -1324,7 +1428,12 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
-	if (lastcode_ != LM_TC_TEX && strchr("#$%{}", c)) {
+	if (lastcode_ != LM_TC_TEX && strchr("{}", c)) {
+		insert(c, LM_TC_TEX);
+		return;
+	}
+
+	if (lastcode_ != LM_TC_TEX && strchr("#$%", c)) {
 		insert(new MathSpecialCharInset(c));	
 		lastcode_ = LM_TC_VAR;
 		return;
@@ -1343,8 +1452,9 @@ void MathCursor::interpret(string const & s)
 				macroModeClose();
 				lastcode_ = LM_TC_VAR;
 			}
-			else if (isalpha(c))
+			else if (isalpha(c)) {
 				insert(c, LM_TC_TEX);
+			}
 			else {
 				macroModeClose();
 				lastcode_ = LM_TC_VAR;
@@ -1390,7 +1500,7 @@ void MathCursor::interpret(string const & s)
 	}
 
 	// no special circumstances, so insert the character without any fuss
-	insert(c);
+	insert(c, LM_TC_MIN);
 }
 
 
@@ -1437,6 +1547,12 @@ MathXArray & MathCursorPos::xcell(MathCursor::idx_type idx) const
 MathXArray & MathCursorPos::xcell() const
 {
 	return par_->xcell(idx_);
+}
+
+
+MathAtom * MathCursorPos::at() const
+{
+	return cell().at(pos_);
 }
 
 

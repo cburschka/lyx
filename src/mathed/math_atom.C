@@ -266,8 +266,8 @@ int MathAtom::dx1() const
 
 int MathAtom::dxx() const
 {
-	lyx::Assert(nucleus());
-	return hasLimits() ? (width() - nwid()) / 2 : 0;
+	//lyx::Assert(nucleus());
+	return hasLimits() ?  (width() - nwid()) / 2 : 0;
 }
 
 
@@ -305,7 +305,9 @@ int MathAtom::width() const
 
 int MathAtom::nwid() const
 {
-	return nucleus() ? nucleus()->width() : 0;
+	return nucleus() ?
+		nucleus()->width() :
+		mathed_char_width(LM_TC_TEX, LM_ST_TEXT, '.');
 }
 
 
@@ -329,6 +331,8 @@ void MathAtom::draw(Painter & pain, int x, int y) const
 	yo(y);
 	if (nucleus())
 		nucleus()->draw(pain, x + dxx(), y);
+	else
+		drawStr(pain, LM_TC_TEX, LM_ST_TEXT, x + dxx(), y, ".");
 	if (up())
 		up()->draw(pain, x + dx1(), y - dy1());
 	if (down())
@@ -370,6 +374,12 @@ bool MathAtom::hasLimits() const
 }
 
 
+bool MathAtom::hasInner() const
+{
+	return nucleus_ && (script_[0] || script_[1]);
+}
+
+
 void MathAtom::substitute(MathMacro const & m)
 {
 	if (nucleus())
@@ -388,4 +398,25 @@ void MathAtom::removeEmptyScripts()
 			delete script_[i];
 			script_[i] = 0;
 		}
+}
+
+
+void MathAtom::removeNucleus()
+{
+	delete nucleus_;
+	nucleus_ = 0;
+}
+
+
+void MathAtom::removeUp()
+{
+	delete script_[1];
+	script_[1] = 0;
+}
+
+
+void MathAtom::removeDown()
+{
+	delete script_[0];
+	script_[0] = 0;
 }

@@ -31,11 +31,13 @@ public:
 	///
 	int yo() const { return yo_; }
 	///
-	int pos2x(size_type pos) const;
+	int pos2x(size_type pos, bool inner) const;
 	///
 	size_type x2pos(int pos) const;
 	///
 	int width(size_type pos) const;
+	///
+	int innerwidth(size_type pos) const;
 
 	///
 	int ascent() const { return ascent_; }

@@ -56,9 +56,15 @@ void MathArray::insert(size_type pos, MathArray const & array)
 }
 
 
+void MathArray::push_back(MathAtom const & t)
+{	
+	bf_.push_back(t);
+}
+
+
 void MathArray::push_back(MathInset * p)
 {	
-	insert(size(), p);
+	bf_.push_back(MathAtom(p));
 }
 
 
@@ -149,6 +155,8 @@ string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 		return s;
 
 	for (MathTextCodes c = p->code(); it != end; ++it) {
+		if (!it->nucleus())
+			break;
 		p = it->nucleus()->asCharInset();
 		if (!p || it->up() || it->down() || p->code() != c)
 			break;
@@ -161,8 +169,10 @@ string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 void MathArray::write(ostream & os, bool fragile) const
 {
 	for (const_iterator it = begin(); it != end(); ++it) {
-		MathCharInset const * p = it->nucleus()->asCharInset();
-		if (p && !it->up() && !it->down()) {
+		if (it->nucleus() && it->nucleus()->asCharInset()
+				&& !it->up() && !it->down())
+		{
+			MathCharInset const * p = it->nucleus()->asCharInset();
 			// special handling for character sequences with the same code
 			string s = charSequence(it, end());
 			p->writeHeader(os);

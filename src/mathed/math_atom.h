@@ -86,6 +86,12 @@ public:
 	MathScriptInset * ensure(bool up);
 	/// delete subscript array if empty
 	void removeEmptyScripts();
+	/// delete nucleus
+	void removeNucleus();
+	/// delete superscript
+	void removeUp();
+	/// delete subscript
+	void removeDown();
 	/// can we add a super- or subscript?
 	virtual bool allows(bool up) const { return script_[up] == 0; }
 	/// can we add a super- or subscript?
@@ -96,6 +102,8 @@ public:
 	int limits() const { return limits_; }
 	///
 	bool hasLimits() const;
+	/// true if we have an "inner" position
+	bool hasInner() const;
 	/// returns superscript
 	MathScriptInset * up() const;
 	/// returns subscript
@@ -107,11 +115,15 @@ public:
 	///
 	MathInset * nucleus() const { return nucleus_; }
 	///
+	MathInset * & nucleus() { return nucleus_; }
+	///
 	void substitute(const MathMacro &);
 	///
 	void write(std::ostream &, bool) const;
 	///
 	void writeNormal(std::ostream &) const;
+	/// returns width of nucleus if any
+	int nwid() const;
 
 protected:
 	/// possible subscript (index 0) and superscript (index 1)
@@ -137,14 +149,12 @@ private:
 	int dy0() const;
 	/// returns y offset for subscript
 	int dy1() const;
+	/// returns x offset for main part
+	int dxx() const;
 	/// returns x offset for superscript
 	int dx0() const;
 	/// returns x offset for subscript
 	int dx1() const;
-	/// returns x offset for main part
-	int dxx() const;
-	/// returns width of nucleus if any
-	int nwid() const;
 	/// returns ascent of nucleus if any
 	int nasc() const;
 	/// returns descent of nucleus if any
