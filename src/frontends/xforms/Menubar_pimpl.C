@@ -381,7 +381,6 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 			label = limit_string_length(label);
 			label += "%x" + tostr(action + action_offset);
 			fl_addtopup(menu2, label.c_str());
-			lyxerr << "[" << cit->first << "] " << label << endl;
 		}
 		string const m = cit->first + "%m";
 		fl_addtopup(menu, m.c_str(), menu2);
