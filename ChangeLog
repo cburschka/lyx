@@ -1,5 +1,15 @@
 1999-12-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/broken_const.h, config/hack-gcc, config/README: removed
+	
+	* configure.in: remove --with-gcc-hack option; do not call
+	LYX_CXX_STL_STACK 
+
+	* INSTALL: remove documentation of --with-broken-const and
+	--with-gcc-hack
+	
+	* acconfig.h: remove all trace of BROKEN_CONST define
+
 	* src/buffer.C (makeDocBookFile): update version number in output
 	file. 
 	(SimpleDocBookOnePar): fix an assert when trying to a character

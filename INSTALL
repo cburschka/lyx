@@ -194,13 +194,6 @@ desperate cases:
     latex.  This detection is automatically disabled if latex cannot be found. 
     If you find that you have to use this flag, please report it as a bug.
 
-  o --with-broken-const attempts to fix a bug in gcc 2.7.[012] (see the
-    section 'Problems').
-
-  o ---with-gcc-hack which provide a wrapper around gcc that tries to
-    compile without optimization after a compilation failed (see the
-    section 'Problems').
-
   o --without-liberty suppresses the detection of the -liberty library
     (see the section 'Problems').
 
@@ -332,9 +325,7 @@ notify us.
     more comments) and in lyxrc.C under Linux/Alpha or DEC OSF/1.  In
     both cases, the solution is to recompile the offending file
     without optimization and resume the compilation process with
-    'make'.  To make things simpler, you can use the option
-    --with-gcc-hack of configure that will do that for you
-    automatically.  
+    'make'.    
 
   o According to David Sundqvist <David_Sundqvist@vd.volvo.se>, some
     changes are needed to compile with aCC on HP-UX 10.20. These are the
@@ -347,40 +338,10 @@ notify us.
     LIBS = -lforms -lXpm  -lSM -lICE -lc -lm -lX11 -lCsup # must link with Csup
     LDFLAGS = -L/opt/aCC/lib # perhaps not needed. 
 
-  o There is a bug in gcc 2.7.[012] in the handling of const which can
-    cause various unpredictable problems.  If you experience weird
-    crashes with a LyX compiled by gcc 2.7.[012], try to configure
-    with the --with-broken-const flag and recompile.  If this improves
-    things, please report it to the mailing list.  Note that this 
-    compiler bug is fixed in gcc 2.7.2.1 and in several Linux 
-    distributions of gcc 2.7.[012].
-
-    This bug is currently not autodetected, but any code to do so
-    would be welcome.  A patch for gcc 2.7.2 is as follows:
-
-*** clean-ss-951203/expr.c      Sun Nov 26 08:18:07 1995
---- ss-951203/expr.c    Mon Dec  4 11:41:18 1995
-*************** expand_expr (exp, target, tmode, modifie
-*** 4582,4587 ****
-           through a pointer to const does not mean that the value there can
-           never change.  Languages where it can never change should
-           also set TREE_STATIC.  */
-!       RTX_UNCHANGING_P (temp) = TREE_READONLY (exp) | TREE_STATIC (exp);
-        return temp;
-        }
---- 4582,4588 ----
-           through a pointer to const does not mean that the value there can
-           never change.  Languages where it can never change should
-           also set TREE_STATIC.  */
-!       RTX_UNCHANGING_P (temp) = TREE_READONLY (exp) & TREE_STATIC (exp);
-        return temp;
-        }
-
 
   o On Digital Unix with gcc, you can get warnings like
 
 warning, LyXFamilyNames not found in original or external symbol tables, value defaults to 0
-warning, LyXSeriesNames not found in original or external symbol tables, value de
 
     These concern symbols beginning with an uppercase letter and seems
     to be harmless. Similarly, the compilation can end with the

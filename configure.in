@@ -65,7 +65,9 @@ AM_PROG_LIBTOOL
 LYX_CXX_MUTABLE
 LYX_CXX_PARTIAL
 LYX_CXX_EXPLICIT
-LYX_CXX_STL_STACK
+dnl we do not use stl stack, or at least not on gcc 2.7, which was the 
+dnl cause for this test. 
+dnl LYX_CXX_STL_STACK
 LYX_CXX_STL_STRING
 LYX_CXX_NAMESPACES
 LYX_CXX_CHEADERS
@@ -79,16 +81,6 @@ dnl by testing these we check if it is ok to have
 dnl -lc and -lm as args to the compiler
 AC_CHECK_LIB(m, sin)
 AC_CHECK_LIB(c, fopen)
-
-# A hack to work around gcc compiler errors
-AC_ARG_WITH(gcc-hack,[  --with-gcc-hack         add a wrapper around gcc])
-if test "x$with_gcc_hack" = xyes ; then
-  CXX_COMMAND='${top_srcdir}/config/hack-gcc ${CXX}'
-  lyx_flags="$lyx_flags gcc-hack"
-else
-  CXX_COMMAND='${CXX}'
-fi
-AC_SUBST(CXX_COMMAND)
 
 ### Add extra directories to check for libraries.
 LYX_WITH_DIR([extra-lib],[extra library directory],extra_lib, NONE)

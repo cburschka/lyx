@@ -17,9 +17,6 @@
 
 @TOP@
 
-/* Define to work around a bug with const handling in gcc 2.7.[012] */
-#undef BROKEN_CONST
-
 /* Define on SunOS 4 and SCO, were some functions are missing from the headers */
 #undef BROKEN_HEADERS
 
@@ -107,28 +104,6 @@ extern "C"
 #endif
 char * strerror(int n);
 #endif
-
-/*
-#ifndef HAVE_bool
-#define bool int
-#define true 1
-#define false 0
-#endif
-*/
-
-/*
-#if SIZEOF_VOID_P == SIZEOF_INT
-# define PTR_AS_INT(p) int(p)
-#else
-# define PTR_AS_INT(p) long(p)
-#endif
-*/
-
-/* do we need this anymore?*/
-#ifdef BROKEN_CONST
-#include <string.h>
-#include "broken_const.h"
-#endif  
 
 #ifdef BROKEN_HEADERS
 #include "broken_headers.h"
