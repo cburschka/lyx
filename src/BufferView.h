@@ -30,7 +30,7 @@ class WorkArea;
 class Language;
 
 ///
-class BufferView : public boost::noncopyable {
+class BufferView : boost::noncopyable {
 public:
 	///
 	enum UpdateCodes {

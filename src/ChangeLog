@@ -1,3 +1,8 @@
+2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* BufferView.C: whitespace change
+	* BufferView.h: inherit privately from noncopyable
+
 2001-04-16  Allan Rae  <rae@lyx.org>
 
 	* tabular-old.C (l_getline): 
