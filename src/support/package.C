@@ -145,7 +145,7 @@ Package::Package(string const & command_line_arg0,
 		<< "\tdocument_dir " << document_dir() << '\n'
 		<< "\ttemp_dir " << temp_dir() << '\n'
 		<< "\thome_dir " << home_dir() << '\n'
-		<< "<\\package>\n" << std::endl;
+		<< "</package>\n" << std::endl;
 }
 
 
@@ -351,11 +351,10 @@ string const get_binary_path(string const & exe)
 	std::vector<string>::const_iterator it = path.begin();
 	std::vector<string>::const_iterator const end = path.end();
 	for (; it != end; ++it) {
-		if (!os::is_absolute_path(*it))
-			// Someone is playing silly buggers.
-			continue;
+		// This will do nothing if *it is already absolute.
+		string const exe_dir = MakeAbsPath(*it);
 
-		string const exe_path = AddName(*it, exe_name);
+		string const exe_path = AddName(exe_dir, exe_name);
 		if (lyx::FileInfo(exe_path, true).isOK())
 			return exe_path;
 	}
