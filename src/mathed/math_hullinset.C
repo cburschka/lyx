@@ -116,8 +116,6 @@ namespace {
 MathHullInset::MathHullInset()
 	: MathGridInset(1, 1), type_("none"), nonum_(1), label_(1)
 {
-	// This is needed as long the math parser is not re-entrant
-	initMath();
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
 	//lyxerr << "sizeof MathCharInset: " << sizeof(MathCharInset) << endl;
@@ -902,7 +900,6 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 /////////////////////////////////////////////////////////////////////
 
-#include "formulamacro.h"
 #include "math_arrayinset.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
@@ -912,12 +909,10 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 #include "bufferview_funcs.h"
 #include "lyxtext.h"
-#include "undo.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 
-#include "support/std_sstream.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
@@ -975,8 +970,8 @@ void MathHullInset::handleFont2(LCursor & cur, string const & arg)
 
 void MathHullInset::edit(LCursor & cur, bool left)
 {
-	lyxerr << "MathHullInset: edit left/right" << endl;
 	cur.push(*this);
+	left ? idxFirst(cur) : idxLast(cur);
 }
 
 
@@ -1039,20 +1034,11 @@ InsetBase::Code MathHullInset::lyxCode() const
 /////////////////////////////////////////////////////////////////////
 
 
-#if 1
-bool MathHullInset::searchForward(BufferView *, string const &, bool, bool)
-{
-	return false;
-}
-
-#else
+#if 0
 bool MathHullInset::searchForward(BufferView * bv, string const & str,
 				     bool, bool)
 {
-	return false;
-#ifdef WITH_WARNINGS
-#warning pretty ugly
-#endif
+#warning completely broken
 	static MathHullInset * lastformula = 0;
 	static CursorBase current = DocIterator(ibegin(nucleus()));
 	static MathArray ar;
@@ -1087,15 +1073,6 @@ bool MathHullInset::searchForward(BufferView * bv, string const & str,
 	return false;
 }
 #endif
-
-
-bool MathHullInset::searchBackward(BufferView * bv, string const & what,
-				      bool a, bool b)
-{
-	lyxerr[Debug::MATHED]
-		<< "searching backward not implemented in mathed" << endl;
-	return searchForward(bv, what, a, b);
-}
 
 
 void MathHullInset::write(Buffer const &, std::ostream & os) const

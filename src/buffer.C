@@ -54,6 +54,10 @@
 #include "insets/insetinclude.h"
 #include "insets/insettext.h"
 
+#include "mathed/math_macrotemplate.h"
+#include "mathed/math_macrotable.h"
+#include "mathed/math_support.h"
+
 #include "frontends/Alert.h"
 
 #include "graphics/Previews.h"
@@ -116,6 +120,7 @@ using std::make_pair;
 
 using std::ifstream;
 using std::ios;
+using std::map;
 using std::ostream;
 using std::ostringstream;
 using std::ofstream;
@@ -179,6 +184,9 @@ struct Buffer::Impl
 
 	/// our LyXText that should be wrapped in an InsetText
 	InsetText inset;
+
+	///
+	MacroTable macros;
 };
 
 
@@ -1474,4 +1482,46 @@ Buffer const * Buffer::getMasterBuffer() const
 	}
 
 	return this;
+}
+
+
+MacroData const & Buffer::getMacro(std::string const & name) const
+{
+	return pimpl_->macros.get(name);
+}
+
+
+bool Buffer::hasMacro(string const & name) const
+{
+	return pimpl_->macros.has(name);
+}
+
+
+void Buffer::insertMacro(string const & name, MacroData const & data)
+{
+	pimpl_->macros.insert(name, data);
+}
+
+
+void Buffer::buildMacros()
+{
+	// Start with global table.
+	pimpl_->macros = MacroTable::globalMacros();
+
+	// Now add our own.
+	ParagraphList & pars = text().paragraphs();
+	for (size_t i = 0, n = pars.size(); i != n; ++i) {
+		//lyxerr << "searching main par " << i
+		//	<< " for macro definitions" << std::endl;
+		InsetList::iterator it = pars[i].insetlist.begin();
+		InsetList::iterator end = pars[i].insetlist.end();
+		for ( ; it != end; ++it) {
+			//lyxerr << "found inset code " << it->inset->lyxCode() << std::endl;
+			if (it->inset->lyxCode() == InsetBase::MATHMACRO_CODE) {
+				MathMacroTemplate & mac
+					= static_cast<MathMacroTemplate &>(*it->inset);
+				insertMacro(mac.name(), mac.asMacroData());
+			}
+		}
+	}
 }

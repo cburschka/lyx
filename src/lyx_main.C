@@ -38,6 +38,8 @@
 #include "MenuBackend.h"
 #include "ToolbarBackend.h"
 
+#include "mathed/math_inset.h"
+
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"
@@ -71,7 +73,8 @@ using lyx::support::setLyxPaths;
 using lyx::support::system_lyxdir;
 using lyx::support::user_lyxdir;
 
-namespace os = lyx::support::os;
+using lyx::support::os::getTmpDir;
+using lyx::support::os::setTmpDir;
 
 using std::endl;
 using std::string;
@@ -203,6 +206,8 @@ void LyX::priv_exec(int & argc, char * argv[])
 
 	if (want_gui)
 		lyx_gui::parse_lyxrc();
+
+	initMath();
 
 	vector<string> files;
 
@@ -397,8 +402,8 @@ void LyX::init(bool gui)
 	if (lyxerr.debugging(Debug::LYXRC))
 		lyxrc.print();
 
-	os::setTmpDir(createLyXTmpDir(lyxrc.tempdir_path));
-	if (os::getTmpDir().empty()) {
+	setTmpDir(createLyXTmpDir(lyxrc.tempdir_path));
+	if (getTmpDir().empty()) {
 		Alert::error(_("Could not create temporary directory"),
 		             bformat(_("Could not create a temporary directory in\n"
 		                       "%1$s. Make sure that this\n"
@@ -413,7 +418,7 @@ void LyX::init(bool gui)
 	}
 
 	if (lyxerr.debugging(Debug::INIT)) {
-		lyxerr << "LyX tmp dir: `" << os::getTmpDir() << '\'' << endl;
+		lyxerr << "LyX tmp dir: `" << getTmpDir() << '\'' << endl;
 	}
 
 	lyxerr[Debug::INIT] << "Reading lastfiles `"

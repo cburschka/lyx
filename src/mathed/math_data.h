@@ -20,7 +20,6 @@
 #include "math_atom.h"
 #include "dimension.h"
 
-class MathMacro;
 class LaTeXFeatures;
 class ReplaceData;
 class MetricsInfo;
@@ -78,9 +77,9 @@ public:
 	///
 	void dump2() const;
 	///
-	void substitute(MathMacro const & macro);
-	///
 	void replace(ReplaceData &);
+	///
+	void substitute(MathArray const & m);
 
 	/// looks for exact match
 	bool match(MathArray const & ar) const;

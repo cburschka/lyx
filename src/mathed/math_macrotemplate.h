@@ -14,15 +14,9 @@
 #define MATH_MACROTEMPLATE_H
 
 #include "math_data.h"
+#include "math_macrotable.h"
 #include "math_nestinset.h"
 
-#include <string>
-
-
-class MathMacro;
-
-
-//class MathMacroTemplate : public MathInset, boost::noncopyable
 
 /// This class contains the macro definition.
 class MathMacroTemplate : public MathNestInset {
@@ -30,12 +24,22 @@ public:
 	///
 	MathMacroTemplate();
 	///
-	MathMacroTemplate(std::string const & name, int nargs, std::string const & type,
-		MathArray const & = MathArray(), MathArray const & = MathArray());
+	MathMacroTemplate(std::string const & name, int nargs,
+		std::string const & type,
+		MathArray const & = MathArray(),
+		MathArray const & = MathArray());
 	///
 	explicit MathMacroTemplate(std::istream & is);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
+	///
+	void edit(LCursor & cur, bool left);
+	///
+	EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	///
+	void read(Buffer const &, LyXLex & lex);
+	///
+	void write(Buffer const &, std::ostream & os) const;
 	///
 	void write(WriteStream & os) const;
 	/// Number of arguments
@@ -45,14 +49,22 @@ public:
 	///
 	std::string name() const;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	MacroData asMacroData() const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// identifies macro templates
 	MathMacroTemplate * asMacroTemplate() { return this; }
 	/// identifies macro templates
 	MathMacroTemplate const * asMacroTemplate() const { return this; }
+	///
+	InsetBase::Code lyxCode() const { return MATHMACRO_CODE; }
+
 private:
+	/// prefix in inset
+	std::string prefix() const;
+
 	///
 	int numargs_;
 	///

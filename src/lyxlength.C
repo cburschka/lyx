@@ -52,45 +52,41 @@ LyXLength::LyXLength(string const & data)
 
 string const LyXLength::asString() const
 {
-	ostringstream buffer;
-	buffer << val_ << unit_name[unit_]; // setw?
-	return buffer.str();
+	ostringstream os;
+	os << val_ << unit_name[unit_]; // setw?
+	return os.str();
 }
 
 
 string const LyXLength::asLatexString() const
 {
-	ostringstream buffer;
+	char buffer[80];
 	switch (unit_) {
 	case PTW:
-	    buffer << abs(static_cast<int>(val_/100)) << '.'
-		   << abs(static_cast<int>(val_)%100) << "\\textwidth";
-	    break;
-	case PCW:
-	    buffer << abs(static_cast<int>(val_/100)) << '.'
-		   << abs(static_cast<int>(val_)%100) << "\\columnwidth";
-	    break;
-	case PPW:
-	    buffer << abs(static_cast<int>(val_/100)) << '.'
-		   << abs(static_cast<int>(val_)%100) << "\\paperwidth";
-	    break;
-	case PLW:
-	    buffer << abs(static_cast<int>(val_/100)) << '.'
-		   << abs(static_cast<int>(val_)%100) << "\\linewidth";
-	    break;
-	case PPH:
-	    buffer << abs(static_cast<int>(val_/100)) << '.'
-		   << abs(static_cast<int>(val_)%100) << "\\paperheight";
-	    break;
-	case PTH:
-	    buffer << abs(static_cast<int>(val_/100)) << '.'
-		   << abs(static_cast<int>(val_)%100) << "\\textheight";
-	    break;
+		snprintf(buffer, 78, "%.2f\\textwidth", val_/100.0);
+		break;                    
+	case PCW:                   
+		snprintf(buffer, 78, "%.2f\\columnwidth", val_/100.0);
+		break;                    
+	case PPW:                   
+		snprintf(buffer, 78, "%.2f\\paperwidth", val_/100.0);
+		break;                    
+	case PLW:                   
+		snprintf(buffer, 78, "%.2f\\linewidth", val_/100.0);
+		break;                    
+	case PPH:                   
+		snprintf(buffer, 78, "%.2f\\paperheight", val_/100.0);
+		break;                    
+	case PTH:                   
+		snprintf(buffer, 78, "%.2f\\textheight", val_/100.0);
+		break;
 	default:
-	    buffer << val_ << unit_name[unit_]; // setw?
-	    break;
+		snprintf(buffer, 78, "%f%s", val_, unit_name[unit_]);
+	  break;
 	}
-	return buffer.str();
+	// paranoia
+	buffer[79] = 0;
+	return buffer;
 }
 
 

@@ -10,11 +10,15 @@
 
 #include <config.h>
 
-#include "metricsinfo.h"
-#include "mathed/math_support.h"
-#include "frontends/Painter.h"
 #include "BufferView.h"
 #include "LColor.h"
+#include "metricsinfo.h"
+
+#include "mathed/math_support.h"
+
+#include "frontends/Painter.h"
+
+#include <boost/assert.hpp>
 
 using std::string;
 
@@ -23,7 +27,6 @@ MetricsBase::MetricsBase()
 	: bv(0), font(), style(LM_ST_TEXT), fontname("mathnormal"),
 	  textwidth(0)
 {}
-
 
 
 MetricsBase::MetricsBase(BufferView * b, LyXFont const & f, int w)
@@ -43,8 +46,8 @@ MetricsInfo::MetricsInfo(BufferView * bv, LyXFont const & font, int textwidth)
 
 
 
-PainterInfo::PainterInfo(BufferView * bv, Painter & pa)
-	: pain(pa)
+PainterInfo::PainterInfo(BufferView * bv, Painter & painter)
+	: pain(painter)
 {
 	base.bv = bv;
 }

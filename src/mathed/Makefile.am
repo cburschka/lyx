@@ -7,8 +7,6 @@ INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 libmathed_la_SOURCES = \
 	textpainter.C \
 	textpainter.h \
-	formulamacro.C \
-	formulamacro.h \
 	math_amsarrayinset.C \
 	math_amsarrayinset.h \
 	math_arrayinset.C \

@@ -22,7 +22,7 @@ using std::auto_ptr;
 
 
 MathMacroArgument::MathMacroArgument(int n)
-	: MathNestInset(1), number_(n), expanded_(false)
+	: number_(n)
 {
 	if (n < 1 || n > 9) {
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
@@ -48,20 +48,14 @@ void MathMacroArgument::write(WriteStream & os) const
 
 void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (expanded_)
-		cell(0).metrics(mi, dim_);
-	else
-		mathed_string_dim(mi.base.font, str_, dim_);
+	mathed_string_dim(mi.base.font, str_, dim_);
 	dim = dim_;
 }
 
 
 void MathMacroArgument::draw(PainterInfo & pi, int x, int y) const
 {
-	if (expanded_)
-		cell(0).draw(pi, x, y);
-	else
-		drawStrRed(pi, x, y, str_);
+	drawStrRed(pi, x, y, str_);
 	setPosCache(pi, x, y);
 }
 
@@ -69,11 +63,4 @@ void MathMacroArgument::draw(PainterInfo & pi, int x, int y) const
 void MathMacroArgument::normalize(NormalStream & os) const
 {
 	os << "[macroarg " << str_ << "] ";
-}
-
-
-void MathMacroArgument::substitute(MathMacro const & m)
-{
-	cell(0) = m.cell(number_ - 1);
-	expanded_ = true;
 }

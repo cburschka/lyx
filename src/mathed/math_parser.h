@@ -54,4 +54,6 @@ void mathed_parse_cell(MathArray & ar, std::string const &);
 /// ... a stream
 void mathed_parse_cell(MathArray & ar, std::istream &);
 
+void initParser();
+
 #endif

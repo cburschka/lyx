@@ -13,24 +13,24 @@
 #ifndef MATHMACROARGUMENT_H
 #define MATHMACROARGUMENT_H
 
-#include "math_nestinset.h"
+#include "math_diminset.h"
 
 
 /// A macro argument.
-class MathMacroArgument : public MathNestInset {
+class MathMacroArgument : public MathDimInset {
 public:
 	///
 	explicit MathMacroArgument(int);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
-	bool isActive() const { return false; }
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	void substitute(MathMacro const & macro);
+	int number() const { return number_; }
+	///
+	InsetBase::Code lyxCode() const { return MATHMACROARG_CODE; }
 
 	///
 	void normalize(NormalStream &) const;
@@ -42,8 +42,6 @@ private:
 	int number_;
 	///
 	char str_[3];
-	///
-	bool expanded_;
 };
 
 #endif

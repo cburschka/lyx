@@ -37,6 +37,7 @@
 #include "math_makeboxinset.h"
 #include "math_oversetinset.h"
 #include "math_parboxinset.h"
+#include "math_parser.h"
 #include "math_rootinset.h"
 #include "math_sizeinset.h"
 #include "math_spaceinset.h"
@@ -139,9 +140,8 @@ void initSymbols()
 
 		// special case of pre-defined macros
 		if (line.size() > 8 && line.substr(0, 5) == "\\def\\") {
-			//lyxerr << "defining: '" << line << '\'' << endl;
-			istringstream is(line);
-			MathMacroTable::create(MathAtom(new MathMacroTemplate(is)));
+			//lyxerr << "macro definition: '" << line << '\'' << endl;
+			MacroTable::globalMacros().insert(line);
 			continue;
 		}
 
@@ -218,6 +218,7 @@ void initMath()
 {
 	static bool initialized = false;
 	if (!initialized) {
+		initParser();
 		initSymbols();
 		initialized = true;
 	}
@@ -235,7 +236,7 @@ latexkeys const * in_word_set(string const & str)
 
 MathAtom createMathInset(string const & s)
 {
-	//lyxerr << "creating inset with name: '" << s << '\'' << endl;;
+	//lyxerr << "creating inset with name: '" << s << '\'' << endl;
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		string const & inset = l->inset;
@@ -319,11 +320,7 @@ MathAtom createMathInset(string const & s)
 	if (s == "dfrac")
 		return MathAtom(new MathDfracInset);
 
-	if (MathMacroTable::has(s))
-		return MathAtom(new MathMacro(s));
-
-	//lyxerr << "creating inset 2 with name: '" << s << '\'' << endl;
-	return MathAtom(new MathUnknownInset(s));
+	return MathAtom(new MathMacro(s));
 }
 
 

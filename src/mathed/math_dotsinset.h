@@ -23,7 +23,7 @@ public:
 	///
 	explicit MathDotsInset(latexkeys const * l);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

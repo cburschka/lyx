@@ -32,8 +32,6 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
 	void drawSelection(PainterInfo & pi, int x, int y) const;
-	/// appends itself with macro arguments substituted
-	void substitute(MathMacro const & macro);
 	/// identifies NestInsets
 	MathNestInset * asNestInset() { return this; }
 	/// identifies NestInsets

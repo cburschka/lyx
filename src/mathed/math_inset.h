@@ -34,6 +34,7 @@ inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 class OutputParams;
 class MathArrayInset;
 class MathAMSArrayInset;
+class MathBraceInset;
 class MathCharInset;
 class MathDelimInset;
 class MathFracInset;
@@ -80,8 +81,6 @@ public:
 	/// this is overridden in math text insets (i.e. mbox)
 	bool inMathed() const { return true; }
 
-	/// substitutes macro arguments if necessary
-	virtual void substitute(MathMacro const & macro);
 	/// the ascent of the inset above the baseline
 	/// compute the size of the object for text based drawing
 	virtual void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
@@ -98,6 +97,7 @@ public:
 	virtual MathAMSArrayInset const * asAMSArrayInset() const { return 0; }
 	virtual MathArrayInset          * asArrayInset()          { return 0; }
 	virtual MathArrayInset const    * asArrayInset() const    { return 0; }
+	virtual MathBraceInset const    * asBraceInset() const    { return 0; }
 	virtual MathCharInset const     * asCharInset() const     { return 0; }
 	virtual MathDelimInset          * asDelimInset()          { return 0; }
 	virtual MathDelimInset const    * asDelimInset() const    { return 0; }
@@ -109,6 +109,8 @@ public:
 	virtual MathGridInset const     * asGridInset() const     { return 0; }
 	virtual MathHullInset           * asHullInset()           { return 0; }
 	virtual MathHullInset const     * asHullInset() const     { return 0; }
+	virtual MathMacro               * asMacro()               { return 0; }
+	virtual MathMacro const         * asMacro() const         { return 0; }
 	virtual MathMacroTemplate       * asMacroTemplate()       { return 0; }
 	virtual MathMacroTemplate const * asMacroTemplate() const { return 0; }
 	virtual MathMatrixInset const   * asMatrixInset() const   { return 0; }

@@ -39,7 +39,7 @@ class LyXText;
 class LyXVC;
 class LaTeXFeatures;
 class Language;
-class Messages;
+class MacroData;
 class OutputParams;
 class ParagraphList;
 class ParConstIterator;
@@ -307,6 +307,18 @@ public:
 	LyXText & text() const;
 	///
 	InsetBase & inset() const;
+
+	//
+	// Macro handling
+	//
+	///
+	void buildMacros();
+	///
+	bool hasMacro(std::string const & name) const;
+	///
+	MacroData const & getMacro(std::string const & name) const;
+	///
+	void insertMacro(std::string const & name, MacroData const & data);
 
 private:
 	/** Inserts a file into a document

@@ -53,7 +53,7 @@
 #include "insets/insetvspace.h"
 #include "insets/insetwrap.h"
 
-#include "mathed/formulamacro.h"
+#include "mathed/math_macrotemplate.h"
 #include "mathed/math_hullinset.h"
 
 #include "frontends/Dialogs.h"
@@ -403,7 +403,7 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (tmptok == "External") {
 			inset.reset(new InsetExternal);
 		} else if (tmptok == "FormulaMacro") {
-			inset.reset(new InsetFormulaMacro);
+			inset.reset(new MathMacroTemplate);
 		} else if (tmptok == "Formula") {
 			inset.reset(new MathHullInset);
 		} else if (tmptok == "Graphics") {

@@ -99,13 +99,6 @@ void MathNestInset::getCursorPos(CursorSlice const & cur,
 }
 
 
-void MathNestInset::substitute(MathMacro const & m)
-{
-	for (idx_type i = 0; i < nargs(); ++i)
-		cell(i).substitute(m);
-}
-
-
 void MathNestInset::metrics(MetricsInfo const & mi) const
 {
 	MetricsInfo m = mi;
@@ -193,10 +186,8 @@ void MathNestInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
+void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "MathNestInset::drawing selection: "
-	//	<< " x: " << x << " y: " << y << endl;
 	// this should use the x/y values given, not the cached values
 	LCursor & cur = pi.base.bv->cursor();
 	if (!cur.selection())
@@ -214,6 +205,9 @@ void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
 		int x2 = c.xo() + c.pos2x(s2.pos());
 		int y2 = c.yo() + c.descent();
 		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
+	lyxerr << "MathNestInset::drawing selection 3: "
+		<< " x1: " << x1 << " x2: " << x2
+		<< " y1: " << y1 << " y2: " << y2 << endl; 
 	} else {
 		for (idx_type i = 0; i < nargs(); ++i) {
 			if (idxBetween(i, s1.idx(), s2.idx())) {

@@ -16,7 +16,6 @@
 #include "math_support.h"
 #include "dimension.h"
 
-
 using std::string;
 using std::auto_ptr;
 
@@ -55,7 +54,9 @@ void MathKernInset::draw(PainterInfo &, int, int) const
 
 void MathKernInset::write(WriteStream & os) const
 {
-	os << "\\kern" << wid_.asLatexString() << ' ';
+#warning this crashs on startup!
+	//os << "\\kern" << wid_.asLatexString() << ' ';
+	os << "\\kern0mm ";
 }
 
 

@@ -14,13 +14,13 @@
 #include "math_macro.h"
 #include "math_support.h"
 #include "math_extern.h"
-#include "math_macrotable.h"
-#include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
+
+#include "buffer.h"
 #include "cursor.h"
 #include "debug.h"
+#include "BufferView.h"
 #include "LaTeXFeatures.h"
-
 
 using std::string;
 using std::max;
@@ -28,17 +28,10 @@ using std::auto_ptr;
 using std::endl;
 
 
+
 MathMacro::MathMacro(string const & name)
-	: MathNestInset(MathMacroTable::provide(name)->asMacroTemplate()->numargs()),
-		tmplate_(MathMacroTable::provide(name))
+	: name_(name)
 {}
-
-
-MathMacro::MathMacro(MathMacro const & m)
-	: MathNestInset(m),
-		tmplate_(m.tmplate_) // don't copy 'expanded_'!
-{}
-
 
 
 auto_ptr<InsetBase> MathMacro::clone() const
@@ -49,136 +42,54 @@ auto_ptr<InsetBase> MathMacro::clone() const
 
 string MathMacro::name() const
 {
-	return tmplate_->asMacroTemplate()->name();
+	return name_;
 }
 
 
-bool MathMacro::defining() const
+void MathMacro::setExpansion(MathArray const & exp, MathArray const & arg) const
 {
-	return false;
-	//return mathcursor->formula()->getInsetName() == name();
-}
-
-
-void MathMacro::expand() const
-{
-	expanded_ = tmplate_->cell(tmplate_->cell(1).empty() ? 0 : 1);
+	expanded_ = exp;
+	args_ = arg;
 }
 
 
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	augmentFont(font_, "lyxtex");
-	mi_ = mi;
+	LyXFont font = mi.base.font;
+	augmentFont(font, "lyxtex");
+	mathed_string_dim(font, "\\" + name(), dim);
+	dim_ = dim;
+}
 
-	if (defining()) {
 
-		mathed_string_dim(font_, name(), dim);
-
-	} else if (editing(mi.base.bv)) {
-
-		expand();
-		expanded_.metrics(mi, dim);
-		metricsMarkers(dim);
-
-		dim.wid += mathed_string_width(font_, name()) + 10;
-
-		int ww = mathed_string_width(font_, "#1: ");
-
-		for (idx_type i = 0; i < nargs(); ++i) {
-			MathArray const & c = cell(i);
-			c.metrics(mi);
-			dim.wid  = max(dim.wid, c.width() + ww);
-			dim.des += c.height() + 10;
-		}
-
-	} else {
-
-		expand();
-		expanded_.substitute(*this);
-		expanded_.metrics(mi, dim);
-
-	}
-
+void MathMacro::metricsExpanded(MetricsInfo & mi, Dimension & dim) const
+{
+	args_.metrics(mi);
+	expanded_.metrics(mi, dim);
+	dim.wid -= args_.size() ? args_.width() : 0;
 	dim_ = dim;
 }
 
 
 void MathMacro::draw(PainterInfo & pi, int x, int y) const
 {
-	metrics(mi_, dim_);
-
-	LyXFont texfont;
-	augmentFont(texfont, "lyxtex");
-
-	if (defining()) {
-		drawStr(pi, texfont, x, y, name());
-		return;
-	}
-
-	if (editing(pi.base.bv)) {
-		int h = y - dim_.ascent() + 2 + expanded_.ascent();
-		drawStr(pi, font_, x + 3, h, name());
-
-		int const w = mathed_string_width(font_, name());
-		expanded_.draw(pi, x + w + 12, h);
-		h += expanded_.descent();
-
-		Dimension ldim;
-		mathed_string_dim(font_, "#1: ", ldim);
-
-		for (idx_type i = 0; i < nargs(); ++i) {
-			MathArray const & c = cell(i);
-			h += max(c.ascent(), ldim.asc) + 5;
-			c.draw(pi, x + ldim.wid, h);
-			char str[] = "#1:";
-			str[1] += static_cast<char>(i);
-			drawStr(pi, texfont, x + 3, h, str);
-			h += max(c.descent(), ldim.des) + 5;
-		}
-		return;
-	}
-
-	expanded_.draw(pi, x, y);
+	LyXFont font = pi.base.font;
+	augmentFont(font, "lyxtex");
+	drawStr(pi, font, x, y, "\\" + name());
 	setPosCache(pi, x, y);
 }
 
 
-void MathMacro::dump() const
+void MathMacro::drawExpanded(PainterInfo & pi, int x, int y) const
 {
-	MathMacroTable::dump();
-	lyxerr << "\n macro: '" << this << "'\n"
-	       << " name: '" << name() << "'\n"
-	       << " template: '";
-	WriteStream wi(lyxerr);
-	tmplate_->write(wi);
-	lyxerr << "'" << endl;
+	expanded_.draw(pi, x, y);
+	drawMarkers2(pi, x, y);
 }
 
 
-bool MathMacro::idxUpDown(LCursor & cur, bool up) const
+int MathMacro::widthExpanded() const
 {
-	if (up) {
-		if (!MathNestInset::idxLeft(cur))
-			return false;
-	} else {
-		if (!MathNestInset::idxRight(cur))
-			return false;
-	}
-	cur.pos() = cur.cell().x2pos(cur.x_target());
-	return true;
-}
-
-
-bool MathMacro::idxLeft(LCursor &) const
-{
-	return false;
-}
-
-
-bool MathMacro::idxRight(LCursor &) const
-{
-	return false;
+	return expanded_.width();
 }
 
 
@@ -186,7 +97,6 @@ void MathMacro::validate(LaTeXFeatures & features) const
 {
 	if (name() == "binom" || name() == "mathcircumflex")
 		features.require(name());
-	//MathInset::validate(features);
 }
 
 
@@ -213,8 +123,9 @@ void MathMacro::octave(OctaveStream & os) const
 
 void MathMacro::updateExpansion() const
 {
-	expand();
-	expanded_.substitute(*this);
+#warning FIXME
+	//expand();
+	//expanded_.substitute(*this);
 }
 
 
@@ -227,4 +138,5 @@ void MathMacro::infoize(std::ostream & os) const
 void MathMacro::infoize2(std::ostream & os) const
 {
 	os << "Macro: " << name();
+
 }

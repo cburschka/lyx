@@ -1589,14 +1589,12 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 void LyXText::Delete(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	// just move to the right, if we had success make a backspace
-	CursorSlice sl = cur.top();
-	cursorRight(cur);
-	if (sl != cur.top()) {
-		recordUndo(cur, Undo::DELETE, cur.par(),
-		           max(par_type(0), cur.par() - 1));
+	if (cur.pos() != cur.lastpos()) {
+		recordUndo(cur, Undo::DELETE, cur.par());
+		setCursorIntern(cur, cur.par(), cur.pos() + 1, false, cur.boundary());
 		backspace(cur);
 	}
+	// should we do anything in an else branch?
 }
 
 

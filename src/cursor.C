@@ -38,6 +38,8 @@
 #include "mathed/math_data.h"
 #include "mathed/math_support.h"
 #include "mathed/math_inset.h"
+#include "mathed/math_braceinset.h"
+#include "mathed/math_macrotable.h"
 
 #include "support/limited_stack.h"
 #include "support/std_sstream.h"
@@ -525,8 +527,9 @@ void LCursor::selHandle(bool sel)
 {
 	//lyxerr << "LCursor::selHandle" << endl;
 	if (sel == selection()) {
-		if (!sel)
-			noUpdate();
+#warning Alfredo: This is too strong (Andre)
+		//if (!sel)
+		//	noUpdate();
 		return;
 	}
 	
@@ -867,7 +870,12 @@ void LCursor::macroModeClose()
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
-	niceInsert(createMathInset(name));
+	plainInsert(createMathInset(name));	
+	if (buffer().hasMacro(name)) {
+		MacroData const & tmpl = buffer().getMacro(name);
+		for (int i = 0; i < tmpl.numargs(); ++i)
+			cell().insert(pos(), MathAtom(new MathBraceInset));
+	}
 }
 
 

@@ -147,31 +147,6 @@ enum {
 };
 
 
-void catInit()
-{
-	fill(theCatcode, theCatcode + 256, catOther);
-	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
-	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
-
-	theCatcode[int('\\')] = catEscape;
-	theCatcode[int('{')]  = catBegin;
-	theCatcode[int('}')]  = catEnd;
-	theCatcode[int('$')]  = catMath;
-	theCatcode[int('&')]  = catAlign;
-	theCatcode[int('\n')] = catNewline;
-	theCatcode[int('#')]  = catParameter;
-	theCatcode[int('^')]  = catSuper;
-	theCatcode[int('_')]  = catSub;
-	theCatcode[int(0x7f)] = catIgnore;
-	theCatcode[int(' ')]  = catSpace;
-	theCatcode[int('\t')] = catSpace;
-	theCatcode[int('\r')] = catNewline;
-	theCatcode[int('~')]  = catActive;
-	theCatcode[int('%')]  = catComment;
-}
-
-
-
 //
 // Helper class for parsing
 //
@@ -415,13 +390,6 @@ void Parser::tokenize(istream & is)
 
 void Parser::tokenize(string const & buffer)
 {
-	static bool init_done = false;
-
-	if (!init_done) {
-		catInit();
-		init_done = true;
-	}
-
 	istringstream is(buffer.c_str(), ios::in | ios::binary);
 
 	char c;
@@ -1291,3 +1259,30 @@ void mathed_parse_normal(MathGridInset & grid, string const & str)
 	istringstream is(str.c_str());
 	Parser(is).parse1(grid, 0, MathInset::MATH_MODE, false);
 }
+
+
+void initParser()
+{
+	fill(theCatcode, theCatcode + 256, catOther);
+	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
+	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
+
+	theCatcode[int('\\')] = catEscape;
+	theCatcode[int('{')]  = catBegin;
+	theCatcode[int('}')]  = catEnd;
+	theCatcode[int('$')]  = catMath;
+	theCatcode[int('&')]  = catAlign;
+	theCatcode[int('\n')] = catNewline;
+	theCatcode[int('#')]  = catParameter;
+	theCatcode[int('^')]  = catSuper;
+	theCatcode[int('_')]  = catSub;
+	theCatcode[int(0x7f)] = catIgnore;
+	theCatcode[int(' ')]  = catSpace;
+	theCatcode[int('\t')] = catSpace;
+	theCatcode[int('\r')] = catNewline;
+	theCatcode[int('~')]  = catActive;
+	theCatcode[int('%')]  = catComment;
+}
+
+
+

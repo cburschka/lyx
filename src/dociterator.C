@@ -27,9 +27,15 @@
 using std::endl;
 
 
-//we could be able to get rid of this if only every BufferView were
-//associated to a buffer on construction
-DocIterator::DocIterator() : inset_(0)
+// We could be able to get rid of this if only every BufferView were
+// associated to a buffer on construction.
+DocIterator::DocIterator()
+	: inset_(0)
+{}
+
+
+DocIterator::DocIterator(InsetBase & inset)
+	: inset_(&inset)
 {}
 
 
@@ -45,10 +51,6 @@ DocIterator doc_iterator_end(InsetBase & inset)
 {
 	return DocIterator(inset);
 }
-
-
-DocIterator::DocIterator(InsetBase & inset) : inset_(&inset)
-{}
 
 
 InsetBase * DocIterator::nextInset()
@@ -103,7 +105,7 @@ MathAtom & DocIterator::prevAtom()
 MathAtom const & DocIterator::nextAtom() const
 {
 	BOOST_ASSERT(!empty());
-	lyxerr << "lastpos: " << lastpos() << " next atom:\n" << *this << endl;
+	//lyxerr << "lastpos: " << lastpos() << " next atom:\n" << *this << endl;
 	BOOST_ASSERT(pos() < lastpos());
 	return cell()[pos()];
 }
@@ -112,7 +114,7 @@ MathAtom const & DocIterator::nextAtom() const
 MathAtom & DocIterator::nextAtom()
 {
 	BOOST_ASSERT(!empty());
-	lyxerr << "lastpos: " << lastpos() << " next atom:\n" << *this << endl;
+	//lyxerr << "lastpos: " << lastpos() << " next atom:\n" << *this << endl;
 	BOOST_ASSERT(pos() < lastpos());
 	return cell()[pos()];
 }

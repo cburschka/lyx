@@ -306,7 +306,7 @@ void Paragraph::insertInset(pos_type pos, InsetBase * inset,
 
 bool Paragraph::insetAllowed(InsetOld_code code)
 {
-	return pimpl_->inset_owner->insetAllowed(code);
+	return !pimpl_->inset_owner || pimpl_->inset_owner->insetAllowed(code);
 }
 
 

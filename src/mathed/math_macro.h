@@ -13,41 +13,38 @@
 #ifndef MATH_MACRO_H
 #define MATH_MACRO_H
 
-#include "math_data.h"
 #include "math_nestinset.h"
-#include "metricsinfo.h"
-
-
-class MathMacroTemplate;
+#include "math_data.h"
 
 
 /// This class contains the data for a macro.
-class MathMacro : public MathNestInset {
+class MathMacro : public MathDimInset {
 public:
 	/// A macro can be built from an existing template
 	explicit MathMacro(std::string const &);
 	///
-	MathMacro(MathMacro const &);
+	std::auto_ptr<InsetBase> clone() const;
+	///
+	MathMacro * asMacro() { return this; }
+	///
+	MathMacro const * asMacro() const { return this; }
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
+	void drawExpanded(PainterInfo & pi, int x, int y) const;
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	void metricsExpanded(MetricsInfo & mi, Dimension & dim) const;
 	///
-	void dump() const;
-
+	int widthExpanded() const;
 	///
-	bool idxUpDown(LCursor & cur, bool up) const;
+	std::string name() const;
 	///
-	bool idxLeft(LCursor & cur) const;
-	///
-	bool idxRight(LCursor & cur) const;
+	void setExpansion(MathArray const & exp, MathArray const & args) const;
 
 	///
 	void validate(LaTeXFeatures &) const;
-	///
-	bool isMacro() const { return true; }
 
 	///
 	void maple(MapleStream &) const;
@@ -62,24 +59,14 @@ public:
 
 private:
 	///
-	void operator=(MathMacro const &);
-	///
-	std::string name() const;
-	///
-	bool defining() const;
-	///
 	void updateExpansion() const;
-	///
-	void expand() const;
 
 	///
-	MathAtom & tmplate_;
+	std::string name_;
 	///
 	mutable MathArray expanded_;
 	///
-	mutable MetricsInfo mi_;
-	///
-	mutable LyXFont font_;
+	mutable MathArray args_;
 };
 
 

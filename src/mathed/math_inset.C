@@ -21,10 +21,9 @@ using std::ostream;
 using std::endl;
 
 
-MathArray dummyCell;
-
 MathArray & MathInset::cell(idx_type)
 {
+	static MathArray dummyCell;
 	lyxerr << "I don't have a cell 1" << endl;
 	return dummyCell;
 }
@@ -32,14 +31,10 @@ MathArray & MathInset::cell(idx_type)
 
 MathArray const & MathInset::cell(idx_type) const
 {
+	static MathArray dummyCell;
 	lyxerr << "I don't have a cell 2" << endl;
 	return dummyCell;
 }
-
-
-void MathInset::substitute(MathMacro const &)
-{}
-
 
 
 void MathInset::dump() const

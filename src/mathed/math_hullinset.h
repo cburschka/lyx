@@ -156,16 +156,6 @@ public:
 	virtual std::string const editMessage() const;
 	///
 	virtual void getCursorDim(int &, int &) const;
-
-	/// To allow transparent use of math editing functions
-	//virtual void status(FuncRequest &);
-
-	///
-	virtual bool searchForward(BufferView *, std::string const &,
-				   bool = true, bool = false);
-	///
-	virtual bool searchBackward(BufferView *, std::string const &,
-				    bool = true, bool = false);
 	///
 	virtual bool isTextInset() const { return true; }
 	///
@@ -173,7 +163,7 @@ public:
 	///
 	virtual void revealCodes(LCursor & cur) const;
 	///
-	virtual EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	void edit(LCursor & cur, bool left);
 	///

@@ -294,9 +294,7 @@ public:
 		///
 		VSPACE_CODE,
 		///
-		MATHGRID_CODE,
-		///
-		MATHHULL_CODE
+		MATHMACROARG_CODE
 	};
 
 	/** returns the Code corresponding to the \c name.

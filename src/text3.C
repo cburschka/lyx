@@ -57,7 +57,7 @@
 #include "support/std_sstream.h"
 
 #include "mathed/math_hullinset.h"
-#include "mathed/formulamacro.h"
+#include "mathed/math_macrotemplate.h"
 
 #include <clocale>
 
@@ -158,8 +158,9 @@ namespace {
 				cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 				cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
 			} else {
-				cur.insert(new InsetFormulaMacro(sel));
-				cur.dispatch(FuncRequest(LFUN_RIGHT));
+				cur.insert(new MathMacroTemplate);
+				//cur.dispatch(FuncRequest(LFUN_RIGHT));
+				//cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
 			}
 		}
 		cur.message(N_("Math editor mode"));
@@ -1312,8 +1313,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			int const nargs = s1.empty() ? 0 : atoi(s1);
 			string const s2 = token(s, ' ', 2);
 			string const type = s2.empty() ? "newcommand" : s2;
-			cur.insert(new InsetFormulaMacro(token(s, ' ', 0), nargs, s2));
-			cur.nextInset()->edit(cur, true);
+			cur.insert(new MathMacroTemplate(token(s, ' ', 0), nargs, s2));
+			//cur.nextInset()->edit(cur, true);
 		}
 		break;
 

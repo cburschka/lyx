@@ -13,11 +13,17 @@
 #include "math_data.h"
 #include "math_fontinset.h"
 #include "math_scriptinset.h"
+#include "math_macro.h"
+#include "math_macrotable.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
 #include "math_replace.h"
-#include "debug.h"
+
 #include "LColor.h"
+#include "BufferView.h"
+#include "buffer.h"
+#include "cursor.h"
+#include "debug.h"
 
 #include "frontends/Painter.h"
 
@@ -27,6 +33,8 @@ using std::abs;
 using std::endl;
 using std::min;
 using std::ostringstream;
+using std::string;
+using std::vector;
 
 
 MathArray::MathArray()
@@ -37,13 +45,6 @@ MathArray::MathArray()
 MathArray::MathArray(const_iterator from, const_iterator to)
 	: base_type(from, to), xo_(0), yo_(0), clean_(false), drawn_(false)
 {}
-
-
-void MathArray::substitute(MathMacro const & m)
-{
-	for (iterator it = begin(); it != end(); ++it)
-		it->nucleus()->substitute(m);
-}
 
 
 MathAtom & MathArray::operator[](pos_type pos)
@@ -217,6 +218,23 @@ void MathArray::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+namespace {
+
+bool isInside(DocIterator const & it, MathArray const & ar, 
+	lyx::pos_type p1, lyx::pos_type p2)
+{
+	for (size_t i = 0; i != it.size(); ++i) {
+		CursorSlice const & sl = it[i];
+		if (sl.inset().inMathed() && &sl.cell() == &ar)
+			return p1 <= sl.pos() && sl.pos() < p2;
+	}
+	return false;
+}
+
+}
+
+
+
 void MathArray::metrics(MetricsInfo & mi) const
 {
 	//if (clean_)
@@ -226,14 +244,36 @@ void MathArray::metrics(MetricsInfo & mi) const
 
 	mathed_char_dim(mi.base.font, 'I', dim_);
 
-	if (!empty()) {
-		dim_.wid = 0;
-		Dimension d;
-		for (const_iterator it = begin(), et = end(); it != et; ++it) {
-			(*it)->metrics(mi, d);
-			dim_ += d;
-			//it->width_ = d.wid;
+	if (empty())
+		return;
+
+	dim_.wid = 0;
+	Dimension d;
+	BufferView & bv  = *mi.base.bv;
+	Buffer const & buf = *bv.buffer();
+	for (size_t i = 0, n = size(); i != n; ++i) {
+		MathAtom const & at = operator[](i);
+		MathMacro const * mac = at->asMacro();
+		if (mac && buf.hasMacro(mac->name())) {
+			MacroData const & tmpl = buf.getMacro(mac->name());
+			int numargs = tmpl.numargs();
+			if (i + numargs > n)
+				numargs = n - i - 1;
+			lyxerr << "metrics:found macro: " << mac->name()
+				<< " numargs: " << numargs << endl;
+			if (!isInside(bv.cursor(), *this, i + 1, i + numargs + 1)) {
+				MathArray args(begin() + i + 1, begin() + i + numargs + 1);
+				MathArray exp;
+				tmpl.expand(args, exp);
+				mac->setExpansion(exp, args);
+				mac->metricsExpanded(mi, d);
+				dim_.wid += mac->widthExpanded();
+				i += numargs;
+				continue;
+			}
 		}
+		at->metrics(mi, d);
+		dim_ += d;
 	}
 }
 
@@ -248,24 +288,39 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 	yo_    = y;
 	drawn_ = true;
 
-	if (y + descent() <= 0)                   // don't draw above the workarea
-		return;
-	if (y - ascent() >= pi.pain.paperHeight())   // don't draw below the workarea
-		return;
-	if (x + width() <= 0)                     // don't draw left of workarea
-		return;
-	if (x >= pi.pain.paperWidth())              // don't draw right of workarea
-		return;
-
 	if (empty()) {
 		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);
 		return;
 	}
 
-	for (const_iterator it = begin(), et = end(); it != et; ++it) {
-		(*it)->drawSelection(pi, x, y);
-		(*it)->draw(pi, x, y);
-		x += (*it)->width();
+	// don't draw outside the workarea
+	if (y + descent() <= 0
+		|| y - ascent() >= pi.pain.paperHeight()
+		|| x + width() <= 0
+		|| x >= pi.pain.paperWidth())
+		return;
+
+	BufferView & bv  = *pi.base.bv;
+	Buffer const & buf = *bv.buffer();
+	for (size_t i = 0, n = size(); i != n; ++i) {
+		MathAtom const & at = operator[](i);
+		// special macro handling
+		MathMacro const * mac = at->asMacro();
+		if (mac && buf.hasMacro(mac->name())) {
+			MacroData const & tmpl = buf.getMacro(mac->name());
+			int numargs = tmpl.numargs();
+			if (i + numargs > n)
+				numargs = n - i - 1;
+			if (!isInside(bv.cursor(), *this, i + 1, i + numargs + 1)) {
+				mac->drawExpanded(pi, x, y);
+				x += mac->widthExpanded();
+				i += numargs;
+				continue;
+			}
+		}
+		at->drawSelection(pi, x, y);
+		at->draw(pi, x, y);
+		x += at->width();
 	}
 }
 

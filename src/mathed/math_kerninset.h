@@ -28,7 +28,7 @@ public:
 	///
 	explicit MathKernInset(std::string const & wid);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

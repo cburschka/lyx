@@ -84,8 +84,7 @@ TranslatorMap const build_translator()
 		InsetName("box", InsetBase::BOX_CODE),
 		InsetName("charstyle", InsetBase::CHARSTYLE_CODE),
 		InsetName("vspace", InsetBase::VSPACE_CODE),
-		InsetName("mathgrid", InsetBase::MATHGRID_CODE),
-		InsetName("mathhull", InsetBase::MATHHULL_CODE)
+		InsetName("mathmacroarg", InsetBase::MATHMACROARG_CODE),
 	};
 
 	std::size_t const insetnames_size =

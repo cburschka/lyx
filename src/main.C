@@ -14,6 +14,7 @@
 #include "debug.h"
 #include "lyx_main.h"
 #include "gettext.h"
+
 #include "support/os.h"
 
 #ifdef HAVE_IOS
