@@ -136,8 +136,6 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.ascii_linelen;
-	ExportData exportdata;
-	runparams.exportdata = &exportdata;
 	vector<string> backends = Backends(*buffer);
 	if (find(backends.begin(), backends.end(), format) == backends.end()) {
 		for (vector<string>::const_iterator it = backends.begin();
@@ -200,7 +198,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		                              formats.extension(format));
 		// We need to copy referenced files (e. g. included graphics
 		// if format == "dvi") to the result dir.
-		vector<ExportedFile> const files = exportdata.externalFiles(format);
+		vector<ExportedFile> const files =
+			runparams.exportdata->externalFiles(format);
 		string const dest = OnlyPath(result_file);
 		CopyStatus status = SUCCESS;
 		for (vector<ExportedFile>::const_iterator it = files.begin();

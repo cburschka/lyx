@@ -1,3 +1,18 @@
+2004-06-02  Angus Leeming  <leeming@lyx.org>
+
+	Fix crash caused by dereferencing null pointer 'exportdata' in
+	OutputParams by creating a new ExportData variable on the heap,
+	storing it in a boost::shared_ptr.
+	The crash was triggered when generating an Instant Preview
+	of an external inset.
+
+	* Makefile.am: add outputparams.C
+
+	* outputparams.[Ch]: store exportdata as a shared_ptr<Exportdata>.
+	(c-tor): allocate memory to it.
+
+	* exporter.C (c-tor): associated changes.
+
 2004-06-01  Angus Leeming  <leeming@lyx.org>
 
 	* output_linuxdoc.C (linuxdocParagraphs): Check that the paragraph

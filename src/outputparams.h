@@ -13,6 +13,7 @@
 #define OUTPUTPARAMS_H
 
 #include "support/types.h"
+#include <boost/shared_ptr.hpp>
 
 
 class ExportData;
@@ -26,11 +27,8 @@ struct OutputParams {
 		XML
 	};
 
-	OutputParams()
-		: flavor(LATEX), nice(false), moving_arg(false),
-		  free_spacing(false), use_babel(false),
-		  mixed_content(false), linelen(0), exportdata(0)
-	{}
+	OutputParams();
+	~OutputParams();
 
 	/** The latex that we export depends occasionally on what is to
 	    compile the file.
@@ -60,7 +58,7 @@ struct OutputParams {
 	bool use_babel;
 
 	/** Used for docbook to see if inside a region of mixed content.
-	    In that case all the white spaces are significant and can not appear
+	    In that case all the white spaces are significant and cannot appear
 	    at the begin or end.
 	*/
 	bool mixed_content;
@@ -73,7 +71,7 @@ struct OutputParams {
 	    This is a hack: Make it possible to add stuff to constant
 	    OutputParams instances.
 	*/
-	ExportData *exportdata;
+	boost::shared_ptr<ExportData> exportdata;
 };
 
-#endif // LATEXRUNPARAMS_H
+#endif // NOT OUTPUTPARAMS_H

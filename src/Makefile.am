@@ -225,6 +225,7 @@ lyx_SOURCES = \
 	metricsinfo.h \
 	output.C \
 	output.h \
+	outputparams.C \
 	outputparams.h \
 	output_docbook.C \
 	output_docbook.h \
