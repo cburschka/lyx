@@ -80,6 +80,12 @@ void MathSqrtInset::maplize(MapleStream & os) const
 }
 
 
+void MathSqrtInset::octavize(OctaveStream & os) const
+{
+	os << "sqrt(" << cell(0) << ')';
+}
+
+
 void MathSqrtInset::mathmlize(MathMLStream & os) const
 {
 	os << MTag("msqrt") << cell(0) << ETag("msqrt");

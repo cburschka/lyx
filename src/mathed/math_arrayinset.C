@@ -55,7 +55,7 @@ MathArrayInset::MathArrayInset(string const & name, string const & str)
 	for (col_type col = 1; col < dat[0].size(); ++col)
 		addCol(0);
 	for (row_type row = 0; row < dat.size(); ++row)
-		for (col_type col = 0; col < dat[row].size(); ++col)
+		for (col_type col = 0; col < dat[0].size(); ++col)
 			mathed_parse_cell(cell(index(row, col)), dat[row][col]);
 }
 
