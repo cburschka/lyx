@@ -23,7 +23,7 @@ void GXpmBtnTbl::GXpmBtn::setXpm(XpmData xpm)
 	pixmap_ = Gdk::Pixmap::create_from_xpm(clrmap,
 					       mask_,
 					       xpm);
-	Gtk::Image * image = SigC::manage(new Gtk::Image(pixmap_, mask_));
+	Gtk::Image * image = Gtk::manage(new Gtk::Image(pixmap_, mask_));
 	image->show();
 	add(*image);
 }
@@ -34,7 +34,8 @@ void GXpmBtnTbl::GXpmBtn::setXpm(Glib::RefPtr<Gdk::Pixmap> pixmap,
 {
 	pixmap_ = pixmap;
 	mask_ = mask;
-	Gtk::Image * image = SigC::manage(new Gtk::Image(pixmap_, mask_));
+	Gtk::Image * image =
+		Gtk::manage(new Gtk::Image(pixmap_, mask_));
 	image->show();
 	add(*image);
 }
@@ -74,7 +75,7 @@ void GXpmBtnTbl::construct()
 			GXpmBtn * btn = &btns_[index(row, col)];
 			btn->setRow(row);
 			btn->setCol(col);
-			btn->signalClicked().connect(signalClicked_.slot());
+			btn->signalClicked().connect(signalClicked_);
 			btn->show();
 			attach(*btn, col, col + 1,  row, row + 1);
 		}
@@ -162,15 +163,12 @@ void GXpmBtnTbl::on_realize()
 
 void buttonSetXpm(Gtk::Button * btn, char const ** xpm)
 {
-	Glib::RefPtr<Gdk::Bitmap> mask;
-
 	Glib::RefPtr<Gdk::Colormap> clrmap = btn->get_colormap();
 
+	Glib::RefPtr<Gdk::Bitmap> mask;
 	Glib::RefPtr<Gdk::Pixmap> pixmap =
-		Gdk::Pixmap::create_from_xpm(clrmap,
-					     mask,
-					     xpm);
-	Gtk::Image * image = SigC::manage(new Gtk::Image(pixmap, mask));
+		Gdk::Pixmap::create_from_xpm(clrmap, mask, xpm);
+	Gtk::Image * image = Gtk::manage(new Gtk::Image(pixmap, mask));
 	image->show();
 	btn->add(*image);
 }

@@ -26,14 +26,14 @@
  * connected/read.
  *
  */
-class io_callback : public SigC::Object {
+class io_callback : public sigc::trackable {
 public:
 	/// connect a connection notification from the LyXServerSocket
 	io_callback(int fd, boost::function<void()> func);
 private:
         bool data_received(Glib::IOCondition);
 	/// our notifier
-	SigC::Connection conn_;
+	sigc::connection conn_;
 	/// The callback function
 	boost::function<void()> func_;
 };

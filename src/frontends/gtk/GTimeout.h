@@ -24,7 +24,7 @@ namespace frontend {
  * This class executes the callback when the timeout expires
  * using Gtk mechanisms
  */
-class GTimeout : public Timeout::Impl, public SigC::Object {
+class GTimeout : public Timeout::Impl, public sigc::trackable {
 public:
 	///
 	GTimeout(Timeout & owner_);
@@ -40,8 +40,8 @@ public:
 	bool timeoutEvent();
 private:
 	/// Timer connection
-	SigC::Connection conn_;
-	/// Used for running as SigC::Connection::connected() isn't const
+	sigc::connection conn_;
+	/// Used for running as sigc::connection::connected() isn't const
 	bool running_;
 };
 

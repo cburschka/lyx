@@ -85,7 +85,7 @@ GMenubar::GMenubar(LyXView * lyxView, MenuBackend const & /*menuBackend*/) :
 				labelTrans(i->label(), i->shortcut()),
 				*gmenu));
 		menubar_.items().back().signal_activate().connect(
-			SigC::bind(SigC::slot(*this, &GMenubar::onSubMenuActivate), &(*i),
+			sigc::bind(sigc::mem_fun(*this, &GMenubar::onSubMenuActivate), &(*i),
 				   &menubar_.items().back()));
 		mainMenuNames_.push_back(i->submenuname());
 	}
@@ -173,7 +173,7 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 					labelTrans(i->label(), i->shortcut()),
 					*gmenu_new));
 			gmenu->items().back().signal_activate().connect(
-				SigC::bind(SigC::slot(*this, &GMenubar::onSubMenuActivate),
+				sigc::bind(sigc::mem_fun(*this, &GMenubar::onSubMenuActivate),
 					   &(*i),
 					   &gmenu->items().back()));
 			if (submenuDisabled(&(*i)))
@@ -206,7 +206,7 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 			}
 			Gtk::MenuItem & item = gmenu->items().back();
 			item.signal_activate().connect(
-				SigC::bind(SigC::slot(*this, &GMenubar::onCommandActivate),
+				sigc::bind(sigc::mem_fun(*this, &GMenubar::onCommandActivate),
 					   &(*i), &item));
 			if (!flag.enabled())
 				item.set_sensitive(false);

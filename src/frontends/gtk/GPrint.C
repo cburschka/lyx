@@ -150,22 +150,23 @@ void GPrint::doBuild()
 	Gtk::Button * apply;
 	xml_->get_widget("PrintButton", ok);
 	xml_->get_widget("CancelButton", cancel);
+
 	setOK(ok);
 	setCancel(cancel);
 
 	Gtk::Button * browse;
 	xml_->get_widget("Browse", browse);
-	browse->signal_clicked().connect(SigC::slot(*this, &GPrint::onBrowse));
+	browse->signal_clicked().connect(sigc::mem_fun(*this, &GPrint::onBrowse));
 
-	fileEntry_->signal_changed().connect(SigC::bind(SigC::slot(*this, &GPrint::onTargetEdit), fileEntry_));
-	printerEntry_->signal_changed().connect(SigC::bind(SigC::slot(*this, &GPrint::onTargetEdit), printerEntry_));
-	fromEntry_->signal_changed().connect(SigC::slot(*this, &GPrint::onFromToEdit));
-	toEntry_->signal_changed().connect(SigC::slot(*this, &GPrint::onFromToEdit));
-	printer_->signal_toggled().connect(SigC::slot(*this, &GPrint::updateUI));
-	file_->signal_toggled().connect(SigC::slot(*this, &GPrint::updateUI));
-	all_->signal_toggled().connect(SigC::slot(*this, &GPrint::updateUI));
-	fromTo_->signal_toggled().connect(SigC::slot(*this, &GPrint::updateUI));
-	number_->signal_changed().connect(SigC::slot(*this, &GPrint::updateUI));
+	fileEntry_->signal_changed().connect(sigc::bind(sigc::mem_fun(*this, &GPrint::onTargetEdit), fileEntry_));
+	printerEntry_->signal_changed().connect(sigc::bind(sigc::mem_fun(*this, &GPrint::onTargetEdit), printerEntry_));
+	fromEntry_->signal_changed().connect(sigc::mem_fun(*this, &GPrint::onFromToEdit));
+	toEntry_->signal_changed().connect(sigc::mem_fun(*this, &GPrint::onFromToEdit));
+	printer_->signal_toggled().connect(sigc::mem_fun(*this, &GPrint::updateUI));
+	file_->signal_toggled().connect(sigc::mem_fun(*this, &GPrint::updateUI));
+	all_->signal_toggled().connect(sigc::mem_fun(*this, &GPrint::updateUI));
+	fromTo_->signal_toggled().connect(sigc::mem_fun(*this, &GPrint::updateUI));
+	number_->signal_changed().connect(sigc::mem_fun(*this, &GPrint::updateUI));
 
 	controller().initialiseParams("");
 	update();

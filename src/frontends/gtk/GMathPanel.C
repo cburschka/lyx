@@ -114,10 +114,10 @@ void GMathPanel::doBuild()
 	setCancel(close);
 
 	tableUp_.signalClicked().connect(
-		SigC::slot(*this, &GMathPanel::onTableUpClicked));
+		sigc::mem_fun(*this, &GMathPanel::onTableUpClicked));
 	tableUp_.show();
 	tableDown_.signalClicked().connect(
-		SigC::slot(*this, &GMathPanel::onTableDownClicked));
+		sigc::mem_fun(*this, &GMathPanel::onTableDownClicked));
 	tableDown_.show();
 
 	xml_->get_widget("Vbox", vbox);
@@ -132,7 +132,7 @@ void GMathPanel::doBuild()
 	functions_->append_column("Functions", listCol_);
 	listSel_ = functions_->get_selection();
 	listSel_->signal_changed().connect(
-		SigC::slot(*this, &GMathPanel::onFunctionSelected));
+		sigc::mem_fun(*this, &GMathPanel::onFunctionSelected));
 	for (int i = 0; i < nr_function_names; ++i)
 		(*listStore_->append())[listCol_] =
 			Glib::locale_to_utf8(function_names[i]);

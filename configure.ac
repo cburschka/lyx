@@ -192,13 +192,13 @@ for frontend in $FRONTENDS ; do
   dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
   dnl	;;
     gtk)
-	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.0 libglademm-2.0)
+	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.4 libglademm-2.4)
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-gtk\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS gtk"
 	  RPM_FRONTEND="gtk"
-	  RPM_FRONTEND_DEPS='gtkmm >= 2.2.0'
-	  GTKMM_VERSION=`pkg-config --modversion gtkmm-2.0`
-	  LIBGLADEMM_VERSION=`pkg-config --modversion libglademm-2.0`
+	  RPM_FRONTEND_DEPS='gtkmm >= 2.4.0'
+	  GTKMM_VERSION=`pkg-config --modversion gtkmm-2.4`
+	  LIBGLADEMM_VERSION=`pkg-config --modversion libglademm-2.4`
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   GTK Frontend:\n\
     libgtkmm version:\t\t${GTKMM_VERSION}\n\

@@ -48,13 +48,13 @@ void GSearch::doBuild()
 	xml_->get_widget("SearchBackwards", backwardscheck);
 
 	findnextbutton->signal_clicked().connect(
-		SigC::slot(*this, &GSearch::onFindNext));
+		sigc::mem_fun(*this, &GSearch::onFindNext));
 	replacebutton->signal_clicked().connect(
-		SigC::slot(*this, &GSearch::onReplace));
+		sigc::mem_fun(*this, &GSearch::onReplace));
 	replaceallbutton->signal_clicked().connect(
-		SigC::slot(*this, &GSearch::onReplaceAll));
+		sigc::mem_fun(*this, &GSearch::onReplaceAll));
 	findentry->signal_changed().connect(
-		SigC::slot(*this,&GSearch::onFindEntryChanged));
+		sigc::mem_fun(*this,&GSearch::onFindEntryChanged));
 
 	bcview().addReadOnly(replaceentry);
 	bcview().addReadOnly(replacebutton);

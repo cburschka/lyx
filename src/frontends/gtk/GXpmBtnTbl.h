@@ -12,14 +12,14 @@
 #ifndef XPM_BTN_TBL_H
 #define XPM_BTN_TBL_H
 
-#include <boost/scoped_array.hpp>
+#include <gtkmm.h>
 
+#include <boost/scoped_array.hpp>
 
 class GXpmBtnTbl : public Gtk::Table {
 public:
 	typedef char const ** XpmData;
-	typedef SigC::Signal2<void, int, int> SigType;
-
+	typedef sigc::signal<void, int, int> SigType;
 	struct XbmData {
 		unsigned char const* data_;
 		int width_;
@@ -31,8 +31,7 @@ public:
 	public:
 		GXpmBtn() : row_(-1), col_(-1)
 		{
-			signal_clicked().connect(
-				SigC::slot(*this,
+			signal_clicked().connect(sigc::mem_fun(*this,
 					   &GXpmBtn::onButtonClicked));
 		}
 		void setRow(int row) { row_ = row; }
@@ -79,7 +78,7 @@ private:
 	int rows_;
 	int cols_;
 	boost::scoped_array<GXpmBtn> btns_;
-	const XbmData * xbm_;
+	XbmData const * xbm_;
 	SigType signalClicked_;
 };
 

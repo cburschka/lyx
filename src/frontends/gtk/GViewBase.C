@@ -44,7 +44,7 @@ void GViewBase::build()
 	if (!iconName.empty())
 		window()->set_icon_from_file(iconName);
 	window()->signal_delete_event().connect(
-		SigC::slot(*this, &GViewBase::onDeleteEvent));
+		sigc::mem_fun(*this, &GViewBase::onDeleteEvent));
 	window()->set_title(Glib::locale_to_utf8(getTitle()));
 }
 
@@ -74,7 +74,7 @@ void GViewBase::setCancel(Gtk::Button * cancel)
 {
 	bcview().setCancel(cancel);
 	cancel->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onCancel));
+		sigc::mem_fun(*this, &GViewBase::onCancel));
 }
 
 
@@ -82,7 +82,7 @@ void GViewBase::setApply(Gtk::Button * apply)
 {
 	bcview().setApply(apply);
 	apply->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onApply));
+		sigc::mem_fun(*this, &GViewBase::onApply));
 }
 
 
@@ -90,7 +90,7 @@ void GViewBase::setOK(Gtk::Button * ok)
 {
 	bcview().setOK(ok);
 	ok->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onOK));
+		sigc::mem_fun(*this, &GViewBase::onOK));
 }
 
 
@@ -98,7 +98,7 @@ void GViewBase::setRestore(Gtk::Button * restore)
 {
 	bcview().setRestore(restore);
 	restore->signal_clicked().connect(
-		SigC::slot(*this, &GViewBase::onRestore));
+		sigc::mem_fun(*this, &GViewBase::onRestore));
 }
 
 

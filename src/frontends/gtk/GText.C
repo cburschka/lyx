@@ -67,7 +67,7 @@ void GText::doBuild()
 	setRestore(restore);
 	bcview().addReadOnly(entry_);
 	entry_->signal_changed().connect(
-		SigC::slot(*this, &GText::onEntryChanged));
+		sigc::mem_fun(*this, &GText::onEntryChanged));
 }
 
 

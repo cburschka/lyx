@@ -37,8 +37,8 @@ string translateShortcut(string const & str)
 void warning_pimpl(string const &, string const & message)
 {
 	Gtk::MessageDialog dlg(Glib::locale_to_utf8(message),
-			       Gtk::MESSAGE_WARNING,
-			       Gtk::BUTTONS_CLOSE, true, true);
+			       true, Gtk::MESSAGE_WARNING,
+			       Gtk::BUTTONS_CLOSE, true);
 	dlg.run();
 }
 
@@ -46,8 +46,8 @@ void warning_pimpl(string const &, string const & message)
 void error_pimpl(string const &, string const & message)
 {
 	Gtk::MessageDialog dlg(Glib::locale_to_utf8(message),
-			       Gtk::MESSAGE_ERROR,
-			       Gtk::BUTTONS_CLOSE, true, true);
+			       true, Gtk::MESSAGE_ERROR,
+			       Gtk::BUTTONS_CLOSE, true);
 	dlg.run();
 }
 
@@ -55,8 +55,8 @@ void error_pimpl(string const &, string const & message)
 void information_pimpl(string const &, string const & message)
 {
 	Gtk::MessageDialog dlg(Glib::locale_to_utf8(message),
-			       Gtk::MESSAGE_INFO,
-			       Gtk::BUTTONS_CLOSE, true, true);
+			       true, Gtk::MESSAGE_INFO,
+			       Gtk::BUTTONS_CLOSE, true);
 	dlg.run();
 }
 
@@ -71,8 +71,8 @@ int prompt_pimpl(string const &, string const & question,
 	if (!b3.empty())
 		gb3 = Glib::locale_to_utf8(translateShortcut(b3));
 	Gtk::MessageDialog dlg(Glib::locale_to_utf8(question),
-			       Gtk::MESSAGE_QUESTION,
-			       Gtk::BUTTONS_NONE, true, true);
+			       true, Gtk::MESSAGE_QUESTION,
+			       Gtk::BUTTONS_NONE, true);
 	dlg.add_button(gb1, 0);
 	dlg.add_button(gb2, 1);
 	if (!b3.empty())
@@ -86,9 +86,9 @@ std::pair<bool, string> const askForText_pimpl(string const & msg,
 					       string const & dflt)
 {
 	Gtk::MessageDialog dlg(Glib::locale_to_utf8(msg),
-			       Gtk::MESSAGE_QUESTION,
+			       true, Gtk::MESSAGE_QUESTION,
 			       Gtk::BUTTONS_OK_CANCEL,
-			       true, true);
+			       true);
 	Gtk::Entry entry;
 	entry.set_text(Glib::locale_to_utf8(dflt));
 	entry.set_position(-1);

@@ -51,7 +51,7 @@ void GTimeout::start()
 	}
 
 	conn_ = Glib::signal_timeout().connect(
-			 SigC::slot(*this, &GTimeout::timeoutEvent),
+			 sigc::mem_fun(*this, &GTimeout::timeoutEvent),
 			 timeout_ms()
 			);
 	running_ = true;

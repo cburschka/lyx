@@ -55,7 +55,7 @@ private:
 };
 
 
-class GWorkArea : public WorkArea, public SigC::Object {
+class GWorkArea : public WorkArea, public sigc::trackable {
 public:
 	GWorkArea(LyXView & owner, int width, int height);
 	~GWorkArea();

@@ -12,10 +12,11 @@
 #ifndef FILE_DIALOG_PRIVATE_H
 #define FILE_DIALOG_PRIVATE_H
 
-#include <gtkmm.h>
 #include "frontends/FileDialog.h"
 
-class FileDialog::Private : public SigC::Object {
+#include <gtkmm.h>
+
+class FileDialog::Private : public sigc::trackable {
 public:
 	Private(std::string const & title,
 		kb_action action,

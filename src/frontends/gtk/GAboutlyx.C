@@ -173,7 +173,7 @@ void GAboutlyx::doBuild()
 	Gtk::Button * btn;
 	xml_->get_widget("close_button", btn);
 	setCancel(btn);
-	//btn->signal_clicked().connect(SigC::slot(*this, &GViewBase::onCancel));
+	//btn->signal_clicked().connect(sigc::mem_fun(*this, &GViewBase::onCancel));
 }
 
 } // namespace frontend

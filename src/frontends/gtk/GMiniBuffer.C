@@ -34,14 +34,14 @@ GMiniBuffer::GMiniBuffer(GView * view, ControlCommandBuffer & control) :
 	listView_.set_model(listStore_);
 	listView_.append_column("Completions", listCol_);
 	listView_.signal_key_press_event().connect(
-		SigC::slot(*this, &GMiniBuffer::onListKeyPress));
+		sigc::mem_fun(*this, &GMiniBuffer::onListKeyPress));
 	listView_.signal_focus_in_event().connect(
-		SigC::slot(*this, &GMiniBuffer::onListFocusIn));
+		sigc::mem_fun(*this, &GMiniBuffer::onListFocusIn));
 	listView_.signal_focus_out_event().connect(
-		SigC::slot(*this, &GMiniBuffer::onFocusOut));
+		sigc::mem_fun(*this, &GMiniBuffer::onFocusOut));
 	listSel_ = listView_.get_selection();
 	listSel_->signal_changed().connect(
-		SigC::slot(*this, &GMiniBuffer::onSelected));
+		sigc::mem_fun(*this, &GMiniBuffer::onSelected));
 
 	listView_.show();
 	scrolledWindow_.set_policy(Gtk::POLICY_AUTOMATIC,
@@ -53,13 +53,13 @@ GMiniBuffer::GMiniBuffer(GView * view, ControlCommandBuffer & control) :
 		Gtk::Box_Helpers::Element(scrolledWindow_,Gtk::PACK_SHRINK));
 
 	entry_.signal_key_press_event().connect(
-		SigC::slot(*this, &GMiniBuffer::onKeyPress));
+		sigc::mem_fun(*this, &GMiniBuffer::onKeyPress));
 	entry_.signal_focus_in_event().connect(
-		SigC::slot(*this, &GMiniBuffer::onFocusIn));
+		sigc::mem_fun(*this, &GMiniBuffer::onFocusIn));
 	entry_.signal_focus_out_event().connect(
-		SigC::slot(*this, &GMiniBuffer::onFocusOut));
+		sigc::mem_fun(*this, &GMiniBuffer::onFocusOut));
 	entry_.signal_activate().connect(
-		SigC::slot(*this, &GMiniBuffer::onCommit));
+		sigc::mem_fun(*this, &GMiniBuffer::onCommit));
 	entry_.show();
 
 	view_->getBox(GView::Bottom).children().push_back(

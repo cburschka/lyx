@@ -79,17 +79,19 @@ GLayoutBox::GLayoutBox(LyXView & owner,
 	combo_.get_entry()->unset_flags(Gtk::CAN_FOCUS | Gtk::CAN_DEFAULT);
 	comboClear(combo_);
 
-	combo_.get_entry()->signal_changed().connect(
-		SigC::slot(*this,
-			   &GLayoutBox::selected));
+ 	combo_.get_entry()->signal_changed().connect(
+		sigc::mem_fun(*this,&GLayoutBox::selected));
 
 	combo_.show();
-	toolbar.tools().push_back(Gtk::Toolbar_Helpers::Element(combo_));
-	toolbar.tools().back().get_widget()->set_data(
+
+	combo_.set_data(
 		gToolData,
 		reinterpret_cast<void*>(&const_cast<FuncRequest &>(func)));
+		
+	Gtk::ToolItem * toolitem = Gtk::manage(new Gtk::ToolItem);
+	toolitem->add(combo_);
+	toolbar.insert(*toolitem,-1);
 }
-
 
 void GLayoutBox::set(string const & layout)
 {
@@ -188,6 +190,7 @@ GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 		add(it->first, it->second);
 
 	toolbar_.set_toolbar_style(Gtk::TOOLBAR_ICONS);
+	toolbar_.show_all();
 
 	GView::Position const position = getPosition(tbb.flags);
 
@@ -196,50 +199,53 @@ GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 
 	owner_.getBox(position).children().push_back(
 		Gtk::Box_Helpers::Element(toolbar_, Gtk::PACK_SHRINK));
+		
+	tooltips_.enable();
 }
-
 
 void GToolbar::add(FuncRequest const & func, string const & tooltip)
 {
-	switch (func.action) {
-	case ToolbarBackend::SEPARATOR:
-		toolbar_.tools().push_back(Gtk::Toolbar_Helpers::Space());
-		break;
-	case ToolbarBackend::MINIBUFFER:
-		// Not supported yet.
-		break;
-	case ToolbarBackend::LAYOUTS:
-	{
-		layout_.reset(new GLayoutBox(owner_, toolbar_, func));
-		break;
+ 	switch (func.action) {
+	case ToolbarBackend::SEPARATOR: {
+		Gtk::SeparatorToolItem * space =
+			Gtk::manage(new Gtk::SeparatorToolItem);
+		toolbar_.insert(*space,-1);
+ 		break;
 	}
-	default:
+
+ 	case ToolbarBackend::MINIBUFFER:
+ 		// Not supported yet.
+ 		break;
+
+	case ToolbarBackend::LAYOUTS: {
+		layout_.reset(new GLayoutBox(owner_, toolbar_, func));
+ 		break;
+ 	}
+
+	default: {
 		Glib::ustring xpmName =
 			Glib::locale_to_utf8(toolbarbackend.getIcon(func));
 		Glib::ustring tip = Glib::locale_to_utf8(tooltip);
+		Gtk::ToolButton * toolbutton;
 		if (xpmName.size() == 0) {
-			toolbar_.tools().push_back(
-				Gtk::Toolbar_Helpers::ButtonElem(
-					"",
-					SigC::bind(SigC::slot(*this, &GToolbar::clicked),
-						   FuncRequest(func)),
-					tip));
+			toolbutton = Gtk::manage(new Gtk::ToolButton);
 		} else {
-			Gtk::Image * image =
-				Gtk::manage(new Gtk::Image(xpmName));
+			Gtk::Image * image = Gtk::manage(new Gtk::Image(xpmName));
 			image->show();
-			toolbar_.tools().push_back(
-				Gtk::Toolbar_Helpers::ButtonElem(
-					"",
-					*image,
-					SigC::bind(SigC::slot(*this, &GToolbar::clicked),
-						   FuncRequest(func)),
-					tip));
+			toolbutton = Gtk::manage(new Gtk::ToolButton(*image));
 		}
-		toolbar_.tools().back().get_content()->set_data(
-			gToolData,
+		// This code is putting a function reference into the GObject data field
+		// named gToolData.  That's how we know how to update the status of the 
+		// toolitem later.
+		toolbutton->set_data(gToolData,
 			reinterpret_cast<void*>(&const_cast<FuncRequest &>(func)));
+		tooltips_.set_tip(*toolbutton, tip, tip);
+		toolbutton->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this,
+			&GToolbar::clicked), FuncRequest(func)));		
+		toolbar_.insert(*toolbutton,-1);
 		break;
+	}
+
 	}
 }
 
@@ -264,40 +270,17 @@ void GToolbar::show(bool)
 
 void GToolbar::update()
 {
-	Gtk::Toolbar_Helpers::ToolList::iterator it =
-		toolbar_.tools().begin();
-	Gtk::Toolbar_Helpers::ToolList::iterator const end =
-		toolbar_.tools().end();
+	int items = toolbar_.get_n_items();
 
-	for (; it != end; ++it) {
-		Gtk::Widget * widget;
-		switch (it->get_type()) {
-		case Gtk::TOOLBAR_CHILD_WIDGET:
-			widget = it->get_widget();
-			break;
-		case Gtk::TOOLBAR_CHILD_SPACE:
-			continue;
-		default:
-			widget = it->get_content();
+	for (int i = 0; i < items; ++i) {
+		Gtk::ToolItem * item = toolbar_.get_nth_item(i);
+
+		FuncRequest const * func = reinterpret_cast<FuncRequest *>(
+			item->get_data(gToolData));
+		if (func) {
+			FuncStatus const status = owner_.getLyXFunc().getStatus(*func);
+			item->set_sensitive(status.enabled());
 		}
-
-		FuncRequest const & func = *reinterpret_cast<FuncRequest *>(
-			widget->get_data(gToolData));
-
-		if (func.action == int(ToolbarBackend::LAYOUTS))
-			continue;
-
-		FuncStatus const status = owner_.getLyXFunc().getStatus(func);
-		bool sensitive = status.enabled();
-		widget->set_sensitive(sensitive);
-		if (it->get_type() != Gtk::TOOLBAR_CHILD_BUTTON)
-			return;
-		if (status.onoff(true))
-			static_cast<Gtk::Button*>(widget)->
-				set_relief(Gtk::RELIEF_NORMAL);
-		if (status.onoff(false))
-			static_cast<Gtk::Button*>(widget)->
-				set_relief(Gtk::RELIEF_NONE);
 	}
 }
 

@@ -21,7 +21,7 @@ class LyXView;
 namespace lyx {
 namespace frontend {
 
-class GMenubar : public Menubar, public SigC::Object {
+class GMenubar : public Menubar, public sigc::trackable {
 public:
 	GMenubar(LyXView *, MenuBackend const &);
 	~GMenubar();

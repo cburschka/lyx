@@ -20,7 +20,7 @@ namespace frontend {
 
 class ControlCommandBuffer;
 
-class GMiniBuffer : public SigC::Object {
+class GMiniBuffer : public sigc::trackable {
 public:
 	GMiniBuffer(GView * view, ControlCommandBuffer & control);
 	~GMiniBuffer();

@@ -54,9 +54,9 @@ void GUrl::doBuild()
 	bcview().addReadOnly(htmlType_);
 
 	url_->signal_changed().connect(
-		SigC::slot(*this, &GUrl::onEntryChanged));
+		sigc::mem_fun(*this, &GUrl::onEntryChanged));
 	name_->signal_changed().connect(
-		SigC::slot(*this, &GUrl::onEntryChanged));
+		sigc::mem_fun(*this, &GUrl::onEntryChanged));
 }
 
 

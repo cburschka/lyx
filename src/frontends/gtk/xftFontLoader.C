@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include <gtkmm.h>
 #include "xftFontLoader.h"
 #include "FontInfo.h"
 #include "gettext.h"
@@ -24,7 +25,6 @@
 #include "support/systemcall.h"
 #include "support/filetools.h"
 
-#include <gtkmm.h>
 
 #include <X11/Xft/Xft.h>
 

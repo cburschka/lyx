@@ -22,7 +22,7 @@
 namespace lyx {
 namespace frontend {
 
-class GViewBase : public Dialog::View, public SigC::Object {
+class GViewBase : public Dialog::View, public sigc::trackable {
 public:
 	GViewBase(Dialog &, std::string const &, bool allowResize);
 	virtual ~GViewBase();
@@ -84,8 +84,7 @@ const Gtk::Window * GViewDB<Dialog>::window() const
 }
 
 
-class GViewGladeB : public GViewBase
-{
+class GViewGladeB : public GViewBase {
 protected:
 	GViewGladeB(Dialog & parent, std::string const & t, bool allowResize);
 	virtual Gtk::Window const * window() const;

@@ -28,9 +28,9 @@ FileDialog::Private::Private(string const & title,
 	fileSelection_.get_button_area()->children().push_back(
 		Gtk::Box_Helpers::Element(button2_));
 	button1_.signal_clicked().connect(
-		SigC::slot(*this, &FileDialog::Private::onButton1Clicked));
+		sigc::mem_fun(*this, &FileDialog::Private::onButton1Clicked));
 	button2_.signal_clicked().connect(
-	SigC::slot(*this, &FileDialog::Private::onButton2Clicked));
+	sigc::mem_fun(*this, &FileDialog::Private::onButton2Clicked));
 	if (!b1.first.empty() && !b1.second.empty()) {
 		string::size_type pos = b1.first.find('|');
 		button1_.set_label(

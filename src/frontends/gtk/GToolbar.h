@@ -24,7 +24,7 @@ namespace frontend {
 
 class GView;
 
-class GLayoutBox: public LayoutBox, public SigC::Object {
+class GLayoutBox: public LayoutBox, public sigc::trackable {
 public:
 	GLayoutBox(LyXView &, Gtk::Toolbar &, FuncRequest const &);
 
@@ -48,7 +48,7 @@ private:
 };
 
 
-class GToolbar : public Toolbar, public SigC::Object {
+class GToolbar : public Toolbar, public sigc::trackable {
 public:
 	GToolbar(ToolbarBackend::Toolbar const &, LyXView &);
 	void add(FuncRequest const & func, std::string const & tooltip);
@@ -61,6 +61,7 @@ private:
 
 	GView & owner_;
 	Gtk::Toolbar toolbar_;
+	Gtk::Tooltips tooltips_;
 	boost::scoped_ptr<GLayoutBox> layout_;
 };
 

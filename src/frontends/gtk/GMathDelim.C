@@ -123,7 +123,7 @@ void GMathDelim::doBuild()
 	rightSel_ = 1;
 	xml_->get_widget("Box", box);
 	delimTbl_.signalClicked().connect(
-		SigC::slot(*this, &GMathDelim::onDelimTblClicked));
+		sigc::mem_fun(*this, &GMathDelim::onDelimTblClicked));
 	delimTbl_.show();
 	box->children().push_back(
 		Gtk::Box_Helpers::Element(delimTbl_));
@@ -133,11 +133,11 @@ void GMathDelim::doBuild()
 	bcview().addReadOnly(both_);
 	bcview().addReadOnly(demo_);
 	left_->signal_clicked().connect(
-		SigC::slot(*this, &GMathDelim::onRadioClicked));
+		sigc::mem_fun(*this, &GMathDelim::onRadioClicked));
 	right_->signal_clicked().connect(
-		SigC::slot(*this, &GMathDelim::onRadioClicked));
+		sigc::mem_fun(*this, &GMathDelim::onRadioClicked));
 	both_->signal_clicked().connect(
-		SigC::slot(*this, &GMathDelim::onRadioClicked));
+		sigc::mem_fun(*this, &GMathDelim::onRadioClicked));
 }
 
 
@@ -147,7 +147,7 @@ void GMathDelim::setDemoPixmap()
 	pixmap_ = Gdk::Pixmap::create_from_xpm(demo_->get_colormap(),
 					       mask_,
 					       delim0);
-	image = SigC::manage(new Gtk::Image(pixmap_, mask_));
+	image = Gtk::manage(new Gtk::Image(pixmap_, mask_));
 	image->show();
 	demo_->add(*image);
 	gcMask_ = Gdk::GC::create(mask_);

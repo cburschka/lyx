@@ -160,22 +160,22 @@ GWorkArea::GWorkArea(LyXView & owner, int width, int height)
 			     Gdk::BUTTON_PRESS_MASK | Gdk::BUTTON_RELEASE_MASK |
 			     Gdk::KEY_PRESS_MASK | Gdk::BUTTON1_MOTION_MASK);
 	workArea_.signal_expose_event().connect(
-		SigC::slot(*this, &GWorkArea::onExpose));
+		sigc::mem_fun(*this, &GWorkArea::onExpose));
 	workArea_.signal_configure_event().connect(
-		SigC::slot(*this, &GWorkArea::onConfigure));
+		sigc::mem_fun(*this, &GWorkArea::onConfigure));
 	workArea_.signal_button_press_event().connect(
-		SigC::slot(*this, &GWorkArea::onButtonPress));
+		sigc::mem_fun(*this, &GWorkArea::onButtonPress));
 	workArea_.signal_button_release_event().connect(
-		SigC::slot(*this, &GWorkArea::onButtonRelease));
+		sigc::mem_fun(*this, &GWorkArea::onButtonRelease));
 	workArea_.signal_key_press_event().connect(
-		SigC::slot(*this, &GWorkArea::onKeyPress));
+		sigc::mem_fun(*this, &GWorkArea::onKeyPress));
 	workArea_.signal_motion_notify_event().connect(
-		SigC::slot(*this, &GWorkArea::onMotionNotify));
+		sigc::mem_fun(*this, &GWorkArea::onMotionNotify));
 	workArea_.show();
 	vscrollbar_.get_adjustment()->signal_value_changed().connect(
-		SigC::slot(*this, &GWorkArea::onScroll));
+		sigc::mem_fun(*this, &GWorkArea::onScroll));
 	workArea_.signal_scroll_event().connect(
-		SigC::slot(*this, &GWorkArea::onScrollWheel));
+		sigc::mem_fun(*this, &GWorkArea::onScrollWheel));
 	vscrollbar_.show();
 	hbox_.children().push_back(Gtk::Box_Helpers::Element(workArea_));
 	hbox_.children().push_back(
@@ -469,9 +469,9 @@ void GWorkArea::haveSelection(bool toHave) const
 		std::vector<Gtk::TargetEntry> listTargets;
 		listTargets.push_back(Gtk::TargetEntry("UTF8_STRING"));
 		clipboard->set(listTargets,
-			       SigC::slot(const_cast<GWorkArea&>(*this),
+			       sigc::mem_fun(const_cast<GWorkArea&>(*this),
 					  &GWorkArea::onClipboardGet),
-			       SigC::slot(const_cast<GWorkArea&>(*this),
+			       sigc::mem_fun(const_cast<GWorkArea&>(*this),
 					  &GWorkArea::onClipboardClear));
 	}
 }
