@@ -1,3 +1,8 @@
+2004-05-17  Angus Leeming  <leeming@lyx.org>
+
+	* insetcommand.C (priv_dispatch): act on receipt of LFUN_INSET_REFRESH
+	to force the button label to be re-generated.
+
 2004-05-14  José Matos  <jamatos@lyx.org>
 
 	* insetlabel (docbook): do not ouput label, for the moment.

@@ -101,6 +101,10 @@ int InsetCommand::docbook(Buffer const &, ostream &,
 void InsetCommand::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
+	case LFUN_INSET_REFRESH:
+		set_label_ = false;
+		break;
+
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(mailer_name_, cmd.argument, p);

@@ -1313,6 +1313,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		}
 
 		case LFUN_BUFFERPARAMS_APPLY: {
+			biblio::CiteEngine const engine =
+				owner->buffer()->params().cite_engine;
+
 			istringstream ss(argument);
 			LyXLex lex(0,0);
 			lex.setStream(ss);
@@ -1325,6 +1328,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 				       << (unknown_tokens == 1 ? "" : "s")
 				       << endl;
 			}
+			if (engine == owner->buffer()->params().cite_engine)
+				break;
+
+			LCursor & cur = view()->cursor();
+			FuncRequest fr(LFUN_INSET_REFRESH);
+
+			InsetBase & inset = owner->buffer()->inset();
+			InsetIterator it  = inset_iterator_begin(inset);
+			InsetIterator const end = inset_iterator_end(inset);
+			for (; it != end; ++it)
+				if (it->lyxCode() == InsetBase::CITE_CODE)
+					it->dispatch(cur, fr);
 			break;
 		}
 

@@ -349,6 +349,7 @@ enum kb_action {
 	// 265
 	LFUN_LYXRC_APPLY,
 	LFUN_GRAPHICS_EDIT,
+	LFUN_INSET_REFRESH,
 
 	LFUN_LASTACTION                  // end of the table
 };
