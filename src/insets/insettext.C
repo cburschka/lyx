@@ -1929,7 +1929,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		do_resize = bv;
 		return;
 	}
-	do_resize = false;
+	do_resize = 0;
 //	lyxerr << "InsetText::resizeLyXText\n";
 	if (!par->next() && !par->size()) // no data, resize not neccessary!
 		return;
@@ -1977,7 +1977,7 @@ void InsetText::reinitLyXText() const
 		return;
 	}
 	do_reinit = false;
-	do_resize = false;
+	do_resize = 0;
 //	lyxerr << "InsetText::reinitLyXText\n";
 	for(Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
 		lyx::Assert(it->second.text.get());
