@@ -16,15 +16,7 @@
 #include <cstring>
 #include <cctype>
 
-#if 0
-#ifdef HAVE_SSTREAM
-#include <sstream>
-#else
-#include <strstream>
-#endif
-#else
 #include "Lsstream.h"
-#endif
 
 #include "LString.h"
 
@@ -78,23 +70,12 @@ template<typename T>
 inline
 string const tostr(T const & t) 
 {
-//#ifdef HAVE_SSTREAM
 	std::ostringstream ostr;
 	ostr << t;
 	return ostr.str().c_str();
 	// We need to use the .c_str since we sometimes are using
 	// our own string class and that is not compatible with
 	// basic_string<char>. (of course we don't want this later)
-//#else
-	// The buf is probably a bit large, but if we want to be safer
-	// we should leave it this big. As compiler/libs gets updated
-	// this part of the code will cease to be used and we loose
-	// nothing.
-//	char buf[2048]; // a bit too large perhaps?
-//	ostrstream ostr(buf, sizeof(buf));
-//	ostr << t << '\0';
-//	return buf;
-//#endif
 }
 
 

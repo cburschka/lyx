@@ -194,20 +194,11 @@ static inline
 string unique_id() {
 	static unsigned int seed=1000;
 
-//#ifdef HAVE_SSTREAM
 	std::ostringstream ost;
 	ost << "file" << ++seed;
 
 	// Needed if we use lyxstring.
 	return ost.str().c_str();
-//#else
-//	char ctmp[16];
-//	ostrstream ost(ctmp,16);
-//	ost << "file" << ++seed << '\0';
-//
-//	// Needed if we use lyxstring.
-//	return ost.str();
-//#endif
 }
 
 

@@ -14,18 +14,7 @@
 #pragma implementation
 #endif
 
-#if 0
-#ifdef HAVE_SSTREAM
-#include <sstream>
-using std::istringstream;
-using std::ostringstream;
-#else
-#include <strstream>
-#endif
-#else
 #include "Lsstream.h"
-#endif
-
 #include "Spacing.h"
 #include "LString.h"
 
@@ -67,11 +56,7 @@ void Spacing::set(Spacing::Space sp, float val)
 void Spacing::set(Spacing::Space sp, string const & val)
 {
 	float fval;
-//#ifdef HAVE_SSTREAM
 	istringstream istr(val);
-//#else
-//	istrstream istr(val.c_str());
-//#endif
 	istr >> fval;
 	set(sp, fval);
 }
@@ -105,22 +90,12 @@ string const Spacing::writeEnvirBegin() const
 	case Double:
 		return "\\begin{doublespace}";
 	case Other:
-//#ifdef HAVE_SSTREAM
 	{
 		ostringstream ost;
 		ost << "\\begin{spacing}{"
 		    << getValue() << "}";
 		return ost.str().c_str();
 	}
-//#else
-//	{
-//		char tmp[512];
-//		ostrstream ost(tmp, 512);
-//		ost << "\\begin{spacing}{"
-//		    << getValue() << "}\0";
-//		return ost.str();
-//	}
-//#endif
 	}
 	return string();
 }

@@ -20,7 +20,6 @@
 #include <list>
 
 #include "insets/lyxinset.h"
-#include "table.h"
 #include "vspace.h"
 #include "layout.h"
 #include "support/block.h"

@@ -3219,18 +3219,10 @@ void LyXParagraph::SimpleDocBookOneTablePar(Buffer const * buffer,
 				column = 0;
 		} else if (c == LyXParagraph::META_INSET) {
 			inset = GetInset(i);
-//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
 			inset->DocBook(buffer, ost);
 			string tmp_out = ost.str().c_str();
-//#else
-//			ostrstream ost;
-//			inset->DocBook(buffer, ost);
-//			ost << '\0';
-//			char * ctmp = ost.str();
-//			string tmp_out(ctmp);
-//			delete [] ctmp;
-//#endif
+
 			//
 			// This code needs some explanation:
 			// Two insets are treated specially
@@ -3392,19 +3384,10 @@ void LyXParagraph::DocBookContTableRows(Buffer const * buffer,
 			}
 			if (c == LyXParagraph::META_INSET) {
 				inset = GetInset(i);
-//#ifdef HAVE_SSTREAM
 				std::ostringstream ost;
 				inset->DocBook(buffer, ost);
 				string tmp_out = ost.str().c_str();
-//#else
-//				ostrstream ost;
-//				inset->DocBook(buffer, ost);
-//				ost << '\0';
-//				char * ctmp = ost.str();
-//				string tmp_out(ctmp);
-//				delete [] ctmp;
-//#endif
-				//
+
 				// This code needs some explanation:
 				// Two insets are treated specially
 				//   label if it is the first element in a
@@ -4297,11 +4280,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 		// process footnotes > depth 0 or in environments separately
 		// NOTE: Currently don't support footnotes within footnotes
 		//       even though that is possible using the \footnotemark
-//#ifdef HAVE_SSTREAM
 		std::ostringstream dummy;
-//#else
-//		ostrstream dummy;
-//#endif
 		TexRow dummy_texrow;
 		int dummy_count = 0;
 		do {
@@ -4673,14 +4652,8 @@ string const LyXParagraph::String(Buffer const * buffer, bool label)
 			s += c;
 		else if (c == META_INSET &&
 			 GetInset(i)->LyxCode() == Inset::MATH_CODE) {
-//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
 			GetInset(i)->Ascii(buffer, ost);
-//#else
-//			ostrstream ost;
-//			GetInset(i)->Ascii(buffer, ost);
-//			ost << '\0';
-//#endif
 			s += subst(ost.str(),'\n',' ');
 		}
 	}
@@ -4732,14 +4705,8 @@ string const LyXParagraph::String(Buffer const * buffer,
 		if (IsPrintable(c))
 			s += c;
 		else if (c == META_INSET) {
-//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
 			GetInset(i)->Ascii(buffer, ost);
-//#else
-//			ostrstream ost;
-//			GetInset(i)->Ascii(buffer, ost);
-//			ost << '\0';
-//#endif
 			s += ost.str();
 		}
 #ifndef NEW_TABULAR

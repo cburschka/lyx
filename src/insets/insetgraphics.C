@@ -424,11 +424,7 @@ int InsetGraphics::Latex(Buffer const *buf, ostream & os,
 	// Calculate the options part of the command, we must do it to a string
 	// stream since we might have a trailing comma that we would like to remove
 	// before writing it to the output stream.
-//#ifdef HAVE_SSTREAM
 	std::ostringstream options;
-//#else
-//	ostrstream options;
-//#endif 
 
 	formatResize(options, "width", params.widthResize, params.widthSize);
 	formatResize(options, "height", params.heightResize, params.heightSize);
@@ -544,14 +540,7 @@ int InsetGraphics::Latex(Buffer const *buf, ostream & os,
 	}
 #endif 
 
-//#ifdef HAVE_SSTREAM
 	string opts(options.str().c_str());
-//#else
-//	options << '\0';
-//	char * tmp = options.str();
-//	string opts(tmp);
-//	delete [] tmp;
-//#endif 
 	opts = strip(opts, ',');
 
 

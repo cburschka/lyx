@@ -13,9 +13,9 @@
 #include <cctype>
 #include <algorithm>
 
-#ifdef __GNUG__
-#pragma implementation "table.h"
-#endif
+//#ifdef __GNUG__
+//#pragma implementation "table.h"
+//#endif
 
 #include "layout.h"
 #include "lyxparagraph.h"
@@ -3302,11 +3302,8 @@ string const LyXText::SelectNextWord(BufferView * bview,
 	// Start the selection from here
 	sel_cursor = cursor;
 
-//#ifdef HAVE_SSTREAM
 	std::ostringstream latex;
-//#else
-//	ostrstream latex;
-//#endif
+
 	// and find the end of the word 
 	// (optional hyphens are part of a word)
 	while (cursor.pos() < cursor.par()->Last()
@@ -3314,18 +3311,10 @@ string const LyXText::SelectNextWord(BufferView * bview,
 	           || (cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 		       && cursor.par()->GetInset(cursor.pos()) != 0
 		       && cursor.par()->GetInset(cursor.pos())->Latex(bview->buffer(), latex, false, false) == 0
-//#ifdef HAVE_SSTREAM
 		       && latex.str() == "\\-"
-//#else
-//		       && latex.str() // protect against null pointers	       
-//		       && string(latex.str(), 3) == "\\-" // this is not nice at all
-//#endif
 			   ))
 		cursor.pos(cursor.pos() + 1);
 
-//#ifndef HAVE_SSTREAM
-//	delete [] latex.str();
-//#endif
 	// Finally, we copy the word to a string and return it
 	string str;
 	if (sel_cursor.pos() < cursor.pos()) {
@@ -3348,11 +3337,7 @@ void LyXText::SelectSelectedWord(BufferView * bview)
 	// set the sel cursor
 	sel_cursor = cursor;
 
-//#ifdef HAVE_SSTREAM
 	std::ostringstream latex;
-//#else
-//	ostrstream latex;
-//#endif
 	
 	// now find the end of the word
 	while (cursor.pos() < cursor.par()->Last()
@@ -3360,17 +3345,10 @@ void LyXText::SelectSelectedWord(BufferView * bview)
 	           || (cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 		       && cursor.par()->GetInset(cursor.pos()) != 0
 		       && cursor.par()->GetInset(cursor.pos())->Latex(bview->buffer(), latex, false, false) == 0
-//#ifdef HAVE_SSTREAM
 		       && latex.str() == "\\-"
-//#else
-//		       && string(latex.str(), 3) == "\\-"
-//#endif
 			   )))
 		cursor.pos(cursor.pos() + 1);
 	
-//#ifndef HAVE_SSTREAM
-//	delete [] latex.str();
-//#endif
 	SetCursor(bview, cursor.par(), cursor.pos());
 	
 	// finally set the selection

@@ -15,16 +15,7 @@
 
 #include <config.h>
 
-#if 0
-#ifdef HAVE_SSTREAM
-#include <sstream>
-using std::istringstream;
-#else
-#include <strstream>
-#endif
-#else
 #include "Lsstream.h"
-#endif
 
 #ifdef __GNUG__
 #pragma implementation "formula.h"
@@ -833,11 +824,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
     case LFUN_SETXY:
       {
 	 int x, y, x1, y1;
-//#ifdef HAVE_SSTREAM
 	 istringstream ist(arg.c_str());
-//#else
-//	 istrstream ist(arg.c_str());
-//#endif
 	 ist >> x >> y;
 	 par->GetXY(x1, y1);
 	 mathcursor->SetPos(x1 + x, y1 + y);

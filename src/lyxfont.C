@@ -383,12 +383,7 @@ bool LyXFont::resolved() const
 /// Build GUI description of font state
 string const LyXFont::stateText(BufferParams * params) const
 {
-//#ifdef HAVE_SSTREAM
 	std::ostringstream ost;
-//#else
-//	char str[1024];
-//	ostrstream ost(str, 1024);
-//#endif
 	if (family() != INHERIT_FAMILY)
 		ost << _(GUIFamilyNames[family()]) << ", ";
 	if (series() != INHERIT_SERIES)
@@ -414,12 +409,8 @@ string const LyXFont::stateText(BufferParams * params) const
 	if (!params || (language() != params->language_info &&
 			language()->lang() != "default"))
 		ost << _("Language: ") << _(language()->display().c_str());
-//#ifdef HAVE_SSTREAM
+
 	string buf(ost.str().c_str());
-//#else
-//	ost << '\0';
-//	string buf(ost.str());
-//#endif
 	buf = strip(buf, ' ');
 	buf = strip(buf, ',');
 	return buf;

@@ -1832,11 +1832,8 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 					par->labelstring.erase();
 			}
 
-//#ifdef HAVE_SSTREAM
 			std::ostringstream s;
-//#else
-//			ostrstream s;
-//#endif
+
 			if (!par->appendix) {
 				switch (2 * LABEL_COUNTER_CHAPTER -
 					textclass.maxcounter() + i) {
@@ -1959,16 +1956,10 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 					break;
 				}
 			}
-//#ifdef HAVE_SSTREAM
+
 			par->labelstring += s.str().c_str();
 			// We really want to remove the c_str as soon as
 			// possible...
-//#else
-//			s << '\0';
-//			char * tmps = s.str();
-//			par->labelstring += tmps;
-//			delete [] tmps;
-//#endif
 			
 			for (i++; i < 10; ++i) {
 				// reset the following counters
@@ -1983,11 +1974,8 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 			par->incCounter(i + par->enumdepth);
 			int number = par->getCounter(i + par->enumdepth);
 
-//#ifdef HAVE_SSTREAM
 			std::ostringstream s;
-//#else
-//			ostrstream s;
-//#endif
+
 			switch (par->enumdepth) {
 			case 1:
 				if (par->isRightToLeftPar(buf->params))
@@ -2020,15 +2008,9 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 					s << number << '.';
 				break;
 			}
-//#ifdef HAVE_SSTREAM
+
 			par->labelstring = s.str().c_str();
 			// we really want to get rid of that c_str()
-//#else
-//			s << '\0';
-//			char * tmps = s.str();
-//			par->labelstring = tmps;
-//			delete [] tmps;
-//#endif
 
 			for (i += par->enumdepth + 1; i < 10; ++i)
 				par->setCounter(i, 0);  /* reset the following counters  */

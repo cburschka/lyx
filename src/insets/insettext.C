@@ -925,11 +925,7 @@ InsetText::LocalDispatch(BufferView * bv,
 		    cur_value = par->spacing.getValue();
 	    }
 	    		
-//#ifdef HAVE_SSTREAM
 	    std::istringstream istr(arg.c_str());
-//#else
-//	    istrstream istr(arg.c_str());
-//#endif
 	    string tmp;
 	    istr >> tmp;
 	    Spacing::Space new_spacing = cur_spacing;

@@ -104,9 +104,7 @@ using std::pair;
 using std::vector;
 using std::max;
 using std::set;
-//#ifdef HAVE_SSTREAM
 using std::istringstream;
-//#endif
 
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
@@ -465,11 +463,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		old_float += "\n\\end_inset\n";
 		//lyxerr << "float body: " << old_float << endl;
 
-//#ifdef HAVE_SSTREAM
 		istringstream istr(old_float);
-//#else
-//		istrstream istr(old_float.c_str());
-//#endif
 		
 		LyXLex nylex(0, 0);
 		nylex.setStream(istr);
@@ -1443,19 +1437,9 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 				c = par->GetChar(i);
 				if (c == LyXParagraph::META_INSET) {
 					if ((inset = par->GetInset(i))) {
-//#ifdef HAVE_SSTREAM
 						std::ostringstream ost;
 						inset->Ascii(this, ost);
 						h += ost.str().length();
-//#else
-//						ostrstream ost;
-//						inset->Ascii(this, ost);
-//						ost << '\0';
-//						char * tmp = ost.str();
-//						string tstr(tmp);
-//						h += tstr.length();
-//						delete [] tmp;
-//#endif
 					}
 				} else if (c == LyXParagraph::META_NEWLINE) {
 					if (clen[j] < h)
@@ -2150,24 +2134,12 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 {
 	bool was_title = false;
 	bool already_title = false;
-//#ifdef HAVE_SSTREAM
 	std::ostringstream ftnote;
-//#else
-//	char * tmpholder = 0;
-//#endif
 	TexRow ft_texrow;
 	int ftcount = 0;
 
 	// if only_body
 	while (par != endpar) {
-//#ifndef HAVE_SSTREAM
-//		ostrstream ftnote;
-//		if (tmpholder) {
-//			ftnote << tmpholder;
-//			delete [] tmpholder;
-//			tmpholder = 0;
-//		}
-//#endif
 #ifndef NEW_INSETS
 		if (par->IsDummy())
 			lyxerr[Debug::LATEX] << "Error in latexParagraphs."
@@ -2219,26 +2191,14 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 			}
 			ofs << ftnote.str();
 			texrow += ft_texrow;
-//#ifdef HAVE_SSTREAM
+
 			// The extra .c_str() is needed when we use
 			// lyxstring instead of the STL string class. 
 			ftnote.str(string().c_str());
-//#else
-//			delete [] ftnote.str();
-//#endif
 			ft_texrow.reset();
 			ftcount = 0;
 		}
-//#ifndef HAVE_SSTREAM
-//		else {
-//			// I hate strstreams
-//			tmpholder = ftnote.str();
-//		}
-//#endif
 	}
-//#ifndef HAVE_SSTREAM
-//	delete [] tmpholder;
-//#endif
 	// It might be that we only have a title in this document
 	if (was_title && !already_title) {
 		ofs << "\\maketitle\n";
@@ -2612,21 +2572,10 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 		if (par->layout != textclasslist
 		    .NumberOfLayout(params.textclass,
 				    "Caption").second) {
-//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
-//#else
-//			ostrstream ost;
-//#endif
 			SimpleDocBookOnePar(ost, extra_par, par,
 					    desc_on, depth + 2);
-//#ifdef HAVE_SSTREAM
 			tmp_par += ost.str().c_str();
-//#else
-//			ost << '\0';
-//			char * ctmp = ost.str();
-//			tmp_par += ctmp;
-//			delete [] ctmp;
-//#endif
 		}
 		tmp_par = frontStrip(strip(tmp_par));
 
@@ -3263,18 +3212,10 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 
 		if (c == LyXParagraph::META_INSET) {
 			Inset * inset = par->GetInset(i);
-//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
 			inset->DocBook(this, ost);
 			string tmp_out = ost.str().c_str();
-//#else
-//			ostrstream ost;
-//			inset->DocBook(this, ost);
-//			ost << '\0';
-//			char * ctmp = ost.str();
-//			string tmp_out(ctmp);
-//			delete [] ctmp;
-//#endif
+
 			//
 			// This code needs some explanation:
 			// Two insets are treated specially

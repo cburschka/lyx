@@ -14,15 +14,7 @@
 
 #include <config.h>
 
-#if 0
-#ifdef HAVE_SSTREAM
-#include <sstream>
-#else
-#include <strstream>
-#endif
-#else
 #include "Lsstream.h"
-#endif
 
 #include FORMS_H_LOCATION
 
@@ -156,16 +148,9 @@ void delim_cb(FL_OBJECT *, long data)
     case MM_APPLY:
     case MM_OK:
       {
-//#ifdef HAVE_SSTREAM
 	      std::ostringstream ost;
 	      ost << delim_code[left] << ' ' << delim_code[right];
 	      lyxfunc->Dispatch(LFUN_MATH_DELIM, ost.str().c_str());
-//#else
-//	      char s[80];
-//	      ostrstream ost(s, 80);
-//	      ost << delim_code[left] << ' ' << delim_code[right] << '\0';
-//	      lyxfunc->Dispatch(LFUN_MATH_DELIM, ost.str());
-//#endif
 	      if (data == MM_APPLY) break;
       }
     case MM_CLOSE: fl_hide_form(fd_delim->delim); break;
@@ -215,16 +200,9 @@ void matrix_cb(FL_OBJECT *, long data)
 	 int nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
 	 int ny = int(fl_get_slider_value(fd_matrix->rows)+0.5);
 	 if (data == MM_OK) fl_hide_form(fd_matrix->matrix);
-//#ifdef HAVE_SSTREAM
 	 std::ostringstream ost;
 	 ost << nx << ' ' << ny << ' ' << c << sh;
 	 lyxfunc->Dispatch(LFUN_INSERT_MATRIX, ost.str().c_str());
-//#else
-//	 char s[80];
-//	 ostrstream ost(s, 80);
-//	 ost << nx << ' ' << ny << ' ' << c << sh << '\0';
-//	 lyxfunc->Dispatch(LFUN_INSERT_MATRIX, ost.str());
-//#endif
 	 break;
       }
     case MM_CLOSE: fl_hide_form(fd_matrix->matrix); break;

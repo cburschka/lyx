@@ -10,16 +10,7 @@
 
 #include <config.h>
 
-#if 0
-#ifdef HAVE_SSTREAM
-#include <sstream>
-using std::istringstream;
-#else
-#include <strstream>
-#endif
-#else
 #include "Lsstream.h"
-#endif
 
 #include <time.h>
 #include <locale.h>
@@ -2226,11 +2217,8 @@ string const LyXFunc::Dispatch(int ac,
 			cur_value = par->spacing.getValue();
 		}
 		
-//#ifdef HAVE_SSTREAM
 		istringstream istr(argument);
-//#else
-//		istrstream istr(argument.c_str());
-//#endif
+
 		string tmp;
 		istr >> tmp;
 		Spacing::Space new_spacing = cur_spacing;
@@ -2528,11 +2516,7 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_GOTO_PARAGRAPH:
 	{
-//#ifdef HAVE_SSTREAM
                 istringstream istr(argument);
-//#else
-//                istrstream istr(argument.c_str());
-//#endif
 
 		int id;
 		istr >> id;

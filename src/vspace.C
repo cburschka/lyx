@@ -288,16 +288,9 @@ LyXLength::LyXLength(string const & data)
 
 string const LyXLength::asString() const
 {
-//#ifdef HAVE_SSTREAM
 	std::ostringstream buffer;
 	buffer << val << unit_name[uni]; // setw?
 	return buffer.str().c_str();
-//#else
-//	char tbuf[20];
-//	ostrstream buffer(tbuf, 20);
-//	buffer << val << unit_name[uni] << '\0'; // setw?
-//	return buffer.str();
-//#endif
 }
 
 
@@ -323,12 +316,8 @@ LyXGlueLength::LyXGlueLength (string const & data)
 
 string const LyXGlueLength::asString() const
 {
-//#ifdef HAVE_SSTREAM
 	std::ostringstream buffer;
-//#else
-//	char tbuf[20];
-//	ostrstream buffer(tbuf, 20);
-//#endif
+
 	if (plus_val != 0.0)
 		if (minus_val != 0.0)
 			if ((uni == plus_uni) && (uni == minus_uni))
@@ -374,23 +363,14 @@ string const LyXGlueLength::asString() const
 				       << unit_name[minus_uni];
 		else
 			buffer << val << unit_name[uni];
-//#ifdef HAVE_SSTREAM
+
 	return buffer.str().c_str();
-//#else
-//	buffer << '\0';
-//	return buffer.str();
-//#endif
 }
 
 
 string const LyXGlueLength::asLatexString() const
 {
-//#ifdef HAVE_SSTREAM
 	std::ostringstream buffer;
-//#else
-//	char tbuf[40];
-//	ostrstream buffer(tbuf, 40);
-//#endif
 
 	if (plus_val != 0.0)
 		if (minus_val != 0.0)
@@ -410,12 +390,8 @@ string const LyXGlueLength::asLatexString() const
 			       << minus_val << unit_name[minus_uni];
 		else
 			buffer << val << unit_name[uni];
-//#ifdef HAVE_SSTREAM
+
 	return buffer.str().c_str();
-//#else
-//	buffer << '\0';
-//	return buffer.str();
-//#endif
 }
 
 
