@@ -133,7 +133,7 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 	string const format = getExtFromContents(filename);
 
 	if (format == "gzip" || format == "zip" || format == "compress") {
-		lyxerr << "lyxlex: compressed" << endl;
+		lyxerr[Debug::LYXLEX] << "lyxlex: compressed" << endl;
 
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
@@ -147,7 +147,7 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 		lineno = 0;
 		return gz__.is_open() && is.good();
 	} else {
-		lyxerr << "lyxlex: UNcompressed" << endl;
+		lyxerr[Debug::LYXLEX] << "lyxlex: UNcompressed" << endl;
 
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for

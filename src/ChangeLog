@@ -1,3 +1,6 @@
+2003-10-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lyxlex_pimpl.C (setFile): put debug messages into Debug::LYXLEX.
 
 2003-10-09  André Pönitz  <poenitz@gmx.net>
 
@@ -28,7 +31,7 @@
 	different item depths for itemize.
 
 	* paragraph.C (Paragraph): remove initialization of enumdepth
-	(operator=): ditto 
+	(operator=): ditto
 
 	* paragraph.h: get rid of enumdepth, and use itemdepth both for
 	enumerate and itemize. Change the type of itemdepth to signed char.
