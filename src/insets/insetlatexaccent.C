@@ -422,15 +422,19 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			drawAccent(pi, x2, baseline, '~');
 			break;
 
-		case UNDERBAR:     // underbar 0x5F
-			pi.pain.text(x2 - font_metrics::center(0x5F, font), baseline,
-				  char(0x5F), font);
+		case UNDERBAR: {
+			char const underbar(0x5F);
+			pi.pain.text(x2 - font_metrics::center(underbar, font),
+				     baseline, underbar, font);
 			break;
+		}
 
-		case CEDILLA:
-			pi.pain.text(x2  - font_metrics::center(0xB8, font), baseline,
-				  char(0xB8), font);
+		case CEDILLA: {
+			char const cedilla(0xB8);
+			pi.pain.text(x2  - font_metrics::center(cedilla, font),
+				     baseline, cedilla, font);
 			break;
+		}
 
 		case UNDERDOT:
 			pi.pain.text(x2  - font_metrics::center('.', font),

@@ -1,3 +1,8 @@
+2005-02-14  Angus Leeming  <leeming@lyx.org>
+
+	* insetlatexaccent.C (draw): squash a couple of MSVC warnings
+	about "truncation of constant value".
+
 2005-02-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C (latex): Remove line continuation '%\n' (bug xxx,
