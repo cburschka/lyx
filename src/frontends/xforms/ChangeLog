@@ -1,3 +1,17 @@
+2003-01-15  Angus Leeming  <leeming@lyx.org>
+
+	* forms/form_graphics.fd: s/Ok/OK/ consistent with all other dialogs.
+
+	* form_character.fd:
+	* form_error.fd:
+	* form_external.fd:
+	* form_maths_panel.fd:
+	* form_maths_space.fd:
+	* form_maths_style.fd:
+	* form_spellchecker.fd:
+	* form_thesaurus.fd: Cancel/Close have Escape and occasionally Return
+	as accelerators only.
+
 2003-01-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* FileDialog.C: implement opendir [bug 824], fix mask.
