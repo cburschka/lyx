@@ -13,6 +13,10 @@
 
 #include "ControlMath.h"
 
+#include "support/lstrings.h"
+#include "support/filetools.h"
+#include "debug.h" 
+
 char const * function_names[] = {
 	"arccos", "arcsin", "arctan", "arg", "bmod",
 	"cos", "cosh", "cot", "coth", "csc", "deg",
@@ -197,3 +201,53 @@ char const * latex_ams_ops[] = {
 };
 
 int const nr_latex_ams_ops = sizeof(latex_ams_ops) / sizeof(char const *);
+
+ 
+string const find_xpm(string const & name)
+{
+	string xpm_name = subst(name, ' ', '_');
+	if (xpm_name == "(") xpm_name = "lparen";
+	else if (xpm_name == ")") xpm_name = "rparen";
+	else if (xpm_name == "[") xpm_name = "lbracket";
+	else if (xpm_name == "]") xpm_name = "rbracket";
+	else if (xpm_name == "{") xpm_name = "lbrace";
+	else if (xpm_name == "}") xpm_name = "rbrace";
+	else if (xpm_name == "|") xpm_name = "bars";
+	else if (xpm_name == "Bumpeq") xpm_name = "bumpeq2";
+	else if (xpm_name == "Cap") xpm_name = "cap2";
+	else if (xpm_name == "Cup") xpm_name = "cup2";
+	else if (xpm_name == "Delta") xpm_name = "delta2";
+	else if (xpm_name == "Downarrow") xpm_name = "downarrow2";
+	else if (xpm_name == "Gamma") xpm_name = "gamma2";
+	else if (xpm_name == "Lambda") xpm_name = "lambda2";
+	else if (xpm_name == "Leftarrow") xpm_name = "leftarrow2";
+	else if (xpm_name == "Leftrightarrow") xpm_name = "leftrightarrow2";
+	else if (xpm_name == "Longleftarrow") xpm_name = "longleftarrow2";
+	else if (xpm_name == "Longleftrightarrow") xpm_name = "longleftrightarrow2";
+	else if (xpm_name == "Longrightarrow") xpm_name = "longrightarrow2";
+	else if (xpm_name == "nLeftarrow") xpm_name = "nleftarrow2";
+	else if (xpm_name == "nLeftrightarrow") xpm_name = "nleftrightarrow2";
+	else if (xpm_name == "nRightarrow") xpm_name = "nrightarrow2";
+	else if (xpm_name == "nvDash") xpm_name = "nvdash2";
+	else if (xpm_name == "nVDash") xpm_name = "nvdash3";
+	else if (xpm_name == "Omega") xpm_name = "omega2";
+	else if (xpm_name == "Phi") xpm_name = "phi2";
+	else if (xpm_name == "Pi") xpm_name = "pi2";
+	else if (xpm_name == "Psi") xpm_name = "psi2";
+	else if (xpm_name == "Rightarrow") xpm_name = "rightarrow2";
+	else if (xpm_name == "Sigma") xpm_name = "sigma2";
+	else if (xpm_name == "Subset") xpm_name = "subset2";
+	else if (xpm_name == "Supset") xpm_name = "supset2";
+	else if (xpm_name == "Theta") xpm_name = "theta2";
+	else if (xpm_name == "Uparrow") xpm_name = "uparrow2";
+	else if (xpm_name == "Updownarrow") xpm_name = "updownarrow2";
+	else if (xpm_name == "Upsilon") xpm_name = "upsilon2";
+	else if (xpm_name == "vDash") xpm_name = "vdash2";
+	else if (xpm_name == "Vdash") xpm_name = "vdash3";
+	else if (xpm_name == "Xi") xpm_name = "xi2";
+
+	lyxerr[Debug::GUI] << "Looking for math XPM called \""
+		<< xpm_name << "\"" << std::endl; 
+ 
+	return LibFileSearch("images/math/", xpm_name, "xpm");
+}

@@ -30,6 +30,7 @@
 
 #include "QtView.h"
 
+#include "ControlMath.h" 
 #include "Toolbar_pimpl.h"
 
 #include <boost/tuple/tuple.hpp>
@@ -47,19 +48,20 @@ QPixmap getIconPixmap(int action)
 {
 	FuncRequest f = lyxaction.retrieveActionArg(action);
 
-	string xpm_name;
-
+	string fullname;
+ 
 	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
-		xpm_name = "math/" + subst(f.argument.substr(1), ' ', '_');
+		fullname = find_xpm(f.argument.substr(1));
 	} else {
 		string const name = lyxaction.getActionName(f.action);
+		string xpm_name(name);
+
 		if (!f.argument.empty())
 			xpm_name = subst(name + ' ' + f.argument, ' ','_');
-		else
-			xpm_name = name;
+ 
+		fullname = LibFileSearch("images", xpm_name, "xpm");
 	}
 
-	string fullname = LibFileSearch("images", xpm_name, "xpm");
 
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Full icon name is `"
@@ -67,7 +69,7 @@ QPixmap getIconPixmap(int action)
 		return QPixmap(fullname.c_str());
 	}
 
-	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
+	lyxerr << "Unable to find icon `" << fullname << "'" << endl;
 	fullname = LibFileSearch("images", "unknown", "xpm");
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Using default `unknown' icon"

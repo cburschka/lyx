@@ -13,6 +13,8 @@
 #ifndef CONTROL_MATH_H
 #define CONTROL_MATH_H
 
+#include "LString.h"
+ 
 extern char const * function_names[];
 extern int const nr_function_names;
 extern char const * latex_arrow[];
@@ -42,4 +44,10 @@ extern int const nr_latex_ams_nrel;
 extern char const * latex_ams_ops[];
 extern int const nr_latex_ams_ops;
 
+/**
+ * Return the mangled XPM filename of the given
+ * math symbol.
+ */
+string const find_xpm(string const & name);
+ 
 #endif /* CONTROL_MATH_H */

@@ -19,6 +19,7 @@
 #include "debug.h"
 
 #include "QMath.h"
+#include "ControlMath.h"
 #include "QDelimiterDialog.h"
 
 #include "iconpalette.h"
@@ -80,19 +81,18 @@ QDelimiterDialog::QDelimiterDialog(QMath * form)
 	setCaption(_("LyX: Delimiters"));
 
 	for (int i = 0; *delim[i]; ++i) {
-		string xpm_name = LibFileSearch("images/math/", delim[i], "xpm");
-		leftIP->add(QPixmap(xpm_name.c_str()), delim[i], delim[i]);
+		string xpm(find_xpm(delim[i]));
+		leftIP->add(QPixmap(xpm.c_str()), delim[i], delim[i]);
+		rightIP->add(QPixmap(xpm.c_str()), delim[i], delim[i]);
 	}
-	leftIP->add(QPixmap(LibFileSearch("images/math/", "empty", "xpm").c_str()), "empty", "empty");
+ 
+	string empty_xpm(find_xpm("empty"));
+ 
+	leftIP->add(QPixmap(empty_xpm.c_str()), "empty", "empty");
+	rightIP->add(QPixmap(empty_xpm.c_str()), "empty", "empty");
 	connect(leftIP, SIGNAL(button_clicked(string const &)), this, SLOT(ldelim_clicked(string const &)));
-	ldelim_clicked("(");
-
-	for (int i = 0; *delim[i]; ++i) {
-		string xpm_name = LibFileSearch("images/math/", delim[i], "xpm");
-		rightIP->add(QPixmap(xpm_name.c_str()), delim[i], delim[i]);
-	}
-	rightIP->add(QPixmap(LibFileSearch("images/math/", "empty", "xpm").c_str()), "empty", "empty");
 	connect(rightIP, SIGNAL(button_clicked(string const &)), this, SLOT(rdelim_clicked(string const &)));
+	ldelim_clicked("(");
 	rdelim_clicked(")");
 }
 
@@ -105,9 +105,8 @@ void QDelimiterDialog::insertClicked()
 
 void QDelimiterDialog::set_label(QLabel * label, string const & str)
 {
-	string xpm_name = LibFileSearch("images/math/", str, "xpm");
 	label->setUpdatesEnabled(false);
-	label->setPixmap(QPixmap(xpm_name.c_str()));
+	label->setPixmap(QPixmap(find_xpm(str).c_str()));
 	label->setUpdatesEnabled(true);
 	label->update();
 }

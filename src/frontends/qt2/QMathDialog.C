@@ -180,8 +180,7 @@ IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 {
 	IconPalette * p = new IconPalette(parent);
 	for (int i = 0; *entries[i]; ++i) {
-		string xpm_name = LibFileSearch("images/math/", entries[i], "xpm");
-		p->add(QPixmap(xpm_name.c_str()), entries[i], string("\\") + entries[i]);
+		p->add(QPixmap(find_xpm(entries[i]).c_str()), entries[i], string("\\") + entries[i]);
 	}
 	connect(p, SIGNAL(button_clicked(string const &)), this, SLOT(symbol_clicked(string const &)));
 

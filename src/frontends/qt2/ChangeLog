@@ -1,5 +1,11 @@
 2002-11-20  John Levon  <levon@movementarian.org>
 
+	* Toolbar_pimpl.C:
+	* QDelimiterDialog.C:
+	* QMathDialog.C: use find_xpm to mangle name
+ 
+2002-11-20  John Levon  <levon@movementarian.org>
+
 	* QDelimiterDialog.h:
 	* QDelimiterDialog.C: fix delimiter connect()
  
