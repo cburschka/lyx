@@ -18,7 +18,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathStyles st);
+	//void metrics(MathStyles st);
 	///
 	void draw(Painter &, int x, int baseline);
 	///
@@ -27,10 +27,18 @@ public:
 	void writeNormal(std::ostream &) const;
 	///
 	void substitute(MathArray & array, MathMacro const & macro) const;
+	/// 
+	int ascent() const;
+	///
+	int descent() const;
+	///
+	int width() const;
 
 private:
 	/// A number between 1 and 9
 	int number_;
+	///
+	char str_[3];
 };
 
 #endif

@@ -2,12 +2,12 @@
 #ifndef MATH_SYMBOLINSET_H
 #define MATH_SYMBOLINSET_H
 
-#include "math_inset.h"
+#include "math_diminset.h"
 
 struct latexkeys;
 
 /// big operators
-class MathSymbolInset : public MathInset {
+class MathSymbolInset : public MathDimInset {
 public:
 	///
 	explicit MathSymbolInset(latexkeys const *);
@@ -23,6 +23,7 @@ public:
 	void draw(Painter &, int, int);
 	///
 	bool isScriptable() const { return true; }
+
 private:
 	///
 	latexkeys const * sym_;

@@ -513,7 +513,7 @@ static init_deco_table idt;
 
 } // namespace anon
 
-void mathed_char_dim (MathTextCodes type, MathStyles size, unsigned char c,
+void mathed_char_dim(MathTextCodes type, MathStyles size, unsigned char c,
 	int & asc, int & des, int & wid)
 {
 	LyXFont const font = WhichFont(type, size);
@@ -530,6 +530,27 @@ int mathed_char_height(MathTextCodes type, MathStyles size, unsigned char c,
 	asc = lyxfont::ascent(c, font);
 	return asc + des;
 }
+
+
+int mathed_char_height(MathTextCodes type, MathStyles size, unsigned char c)
+{
+	int asc;
+	int des;
+	return mathed_char_height(type, size, c, asc, des);
+}
+
+int mathed_char_ascent(MathTextCodes type, MathStyles size, unsigned char c)
+{
+	LyXFont const font = WhichFont(type, size);
+	return lyxfont::ascent(c, font);
+}
+
+int mathed_char_descent(MathTextCodes type, MathStyles size, unsigned char c)
+{
+	LyXFont const font = WhichFont(type, size);
+	return lyxfont::descent(c, font);
+}
+
 
 
 int mathed_char_width(MathTextCodes type, MathStyles size, unsigned char c)

@@ -17,6 +17,9 @@ MathMacroArgument::MathMacroArgument(int n)
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
 			<< n << std::endl;
 	}
+	str_[0] = '#';
+	str_[1] = '0' + n;
+	str_[2] = '\0';
 }
 
 
@@ -28,18 +31,25 @@ MathInset * MathMacroArgument::clone() const
 
 void MathMacroArgument::draw(Painter & pain, int x, int y)
 {
-	char str[] = "#0";
-	str[1] += number_; 
-	drawStr(pain, LM_TC_TEX, size(), x, y, str);
+	drawStr(pain, LM_TC_TEX, size(), x, y, str_);
 }
 
 
-void MathMacroArgument::metrics(MathStyles st)
+int MathMacroArgument::ascent() const
 {
-	char str[] = "#0";
-	str[1] += number_; 
-	size_ = st;
-	mathed_string_dim(LM_TC_TEX, size(), str, ascent_, descent_, width_);
+	return mathed_char_ascent(LM_TC_TEX, size(), 'I');
+}
+
+
+int MathMacroArgument::descent() const
+{
+	return mathed_char_descent(LM_TC_TEX, size(), 'I');
+}
+
+
+int MathMacroArgument::width() const
+{
+	return mathed_string_width(LM_TC_TEX, size(), str_);
 }
 
 

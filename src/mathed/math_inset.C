@@ -27,32 +27,13 @@ int MathInset::workwidth;
 
 
 MathInset::MathInset(string const & name)
-	: name_(name), width_(0), ascent_(0), descent_(0),
-		size_(LM_ST_DISPLAY), code_(LM_TC_MIN), xo_(0), yo_(0)
+	: name_(name), size_(LM_ST_DISPLAY), code_(LM_TC_MIN), xo_(0), yo_(0)
 {}
-
-
-int MathInset::ascent() const
-{
-	return ascent_;
-}
-
-
-int MathInset::descent() const
-{
-	return descent_;
-}
-
-
-int MathInset::width() const
-{
-	return width_;
-}
 
 
 int MathInset::height() const
 {
-	return ascent_ + descent_;
+	return ascent() + descent();
 }
 
 
@@ -285,7 +266,7 @@ void MathInset::push_back(unsigned char, MathTextCodes)
 }
 
 
-void MathInset::push_back(MathInset * p)
+void MathInset::push_back(MathInset *)
 {
 	lyxerr << "can't push without a cell\n";
 }
@@ -295,9 +276,9 @@ bool MathInset::covers(int x, int y) const
 {
 	return
 		x >= xo_ &&
-		x <= xo_ + width_ &&
-		y >= yo_ - ascent_ &&
-		y <= yo_ + descent_;
+		x <= xo_ + width() &&
+		y >= yo_ - ascent() &&
+		y <= yo_ + descent();
 }
 
 
@@ -323,4 +304,10 @@ MathTextCodes MathInset::code() const
 void MathInset::code(MathTextCodes t)
 {
 	code_ = t;
+}
+
+
+void MathInset::metrics(MathStyles st)
+{
+	size_ = st;
 }

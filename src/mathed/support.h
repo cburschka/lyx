@@ -15,9 +15,11 @@ extern char const * latex_mathspace[];
 
 int mathed_char_height(MathTextCodes type, MathStyles size, unsigned char c,
 	int & asc, int & des);
-int mathed_char_width(MathTextCodes type, MathStyles size, unsigned char c);
 void mathed_char_dim(MathTextCodes type, MathStyles size, unsigned char c,
 	int & asc, int & des, int & wid);
+int mathed_char_width(MathTextCodes type, MathStyles size, unsigned char c);
+int mathed_char_ascent(MathTextCodes type, MathStyles size, unsigned char c);
+int mathed_char_descent(MathTextCodes type, MathStyles size, unsigned char c);
 
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code);
 
@@ -25,7 +27,10 @@ void mathed_string_dim(MathTextCodes type, MathStyles size, string const & s,
   int & asc, int & des, int & wid);
 int mathed_string_height(MathTextCodes type, MathStyles size, string const & s,
   int & asc, int & des);
+
 int mathed_string_width(MathTextCodes type, MathStyles size, string const & s);
+int mathed_string_ascent(MathTextCodes type, MathStyles size, string const & s);
+int mathed_string_descent(MathTextCodes type, MathStyles size, string const & s);
 
 bool MathIsInset(MathTextCodes x);
 bool MathIsAlphaFont(MathTextCodes x);

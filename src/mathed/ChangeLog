@@ -8,6 +8,14 @@
 	*	formula*.[Ch]: seperation of the "pimpl" MathInset * into
 	MathMatrixInset * and MathMacroTemplate * to save a few casts
 
+	* all over the place: everything is an inset now
+
+	* math_nestinset.[Ch]: new abstract base class for insets containing
+	other insets.
+
+	* math_diminset.[Ch]: new abstract base class for insets that need
+	the width_/ascent_/descent_ cache
+
 2001-07-25  André Pönitz  <poenitz@gmx.net>
 	
 	* formulabase.C: re-enable 'space enlargement' feature

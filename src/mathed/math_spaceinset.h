@@ -2,7 +2,7 @@
 #ifndef MATH_SPACEINSET_H
 #define MATH_SPACEINSET_H
 
-#include "math_inset.h"
+#include "math_diminset.h"
 #include "math_defs.h"
 
 #ifdef __GNUG__
@@ -10,7 +10,7 @@
 #endif
 
 /// Smart spaces
-class MathSpaceInset : public MathInset {
+class MathSpaceInset : public MathDimInset {
 public:
 	///
 	explicit MathSpaceInset(int sp);

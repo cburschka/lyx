@@ -5,7 +5,7 @@
 #pragma interface
 #endif
 
-#include "math_inset.h"
+#include "math_diminset.h"
 
 /** Abstract base class for all math objects that conatin nested items.
 */
@@ -13,7 +13,7 @@
 
 class LaTeXFeatures;
 
-class MathNestInset : public MathInset {
+class MathNestInset : public MathDimInset {
 public: 
 	///
 	explicit MathNestInset(int na = 0, string const & nm = string());

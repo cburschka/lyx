@@ -2,7 +2,7 @@
 #ifndef MATH_DOTSINSET_H
 #define MATH_DOTSINSET_H
 
-#include "math_inset.h"
+#include "math_diminset.h"
 #include "math_defs.h"
 
 #ifdef __GNUG__
@@ -12,7 +12,7 @@
 struct latexkeys;
 
 /// The different kinds of ellipsis
-class MathDotsInset : public MathInset {
+class MathDotsInset : public MathDimInset {
 public:
 	///
 	explicit MathDotsInset(latexkeys const *);

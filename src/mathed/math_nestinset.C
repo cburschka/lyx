@@ -7,8 +7,10 @@
 
 
 MathNestInset::MathNestInset(int nargs, string const & name)
-	: MathInset(name), cells_(nargs)
-{}
+	: MathDimInset(), cells_(nargs)
+{
+	name_ = name;
+}
 
 
 int MathNestInset::nargs() const

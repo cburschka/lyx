@@ -60,13 +60,13 @@ public:
 	/// appends itself with macro arguments substituted
 	virtual void substitute(MathArray & array, MathMacro const & macro) const;
 	/// compute the size of the object, sets ascend_, descend_ and width_
-	virtual void metrics(MathStyles st) = 0;
+	virtual void metrics(MathStyles st);
 	/// 
-	virtual int ascent() const;
+	virtual int ascent() const = 0;
 	///
-	virtual int descent() const;
+	virtual int descent() const = 0;
 	///
-	virtual int width() const;
+	virtual int width() const = 0;
 	///
 	virtual int height() const;
 	///
@@ -203,13 +203,7 @@ public:
 protected:
 	/// usually the LaTeX name of the thingy
 	string name_;
-	/// the width of this inset as computed by metrics()
-	int width_;
-	/// 
-	int ascent_;
 	///
-	int descent_;
-	/// 
 	void size(MathStyles s);
 	/// the used font size
 	MathStyles size_;
