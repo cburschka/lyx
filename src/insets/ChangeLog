@@ -1,3 +1,7 @@
+2002-04-22  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (insetUnlock): code was uninitialized in some situations.
+
 2002-04-19  Herbert Voss  <voss@perce.de>
 
 	* insetgraphic.C (prepareFile): return filename without

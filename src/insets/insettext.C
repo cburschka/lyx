@@ -783,7 +783,7 @@ void InsetText::insetUnlock(BufferView * bv)
 	hideInsetCursor(bv);
 	no_selection = true;
 	locked = false;
-	int code;
+	int code = NONE;
 #if 0
 	if (drawFrame_ == LOCKED)
 		code = CURSOR|CLEAR_FRAME;
@@ -817,7 +817,8 @@ void InsetText::insetUnlock(BufferView * bv)
 #if 0
 	updateLocal(bv, code, false);
 #else
-	setUpdateStatus(bv, code);
+	if (code != NONE)
+		setUpdateStatus(bv, code);
 #endif
 }
 
