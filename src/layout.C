@@ -1431,7 +1431,7 @@ bool LyXTextClassList::Read ()
 		lyxerr << "LyXTextClassList::Read: no textclasses found!"
 		       << endl;
 		WriteAlert(_("LyX wasn't able to find any layout description!"),
-			   _("Check the contents of  the file \"textclass.lst\""),
+			   _("Check the contents of the file \"textclass.lst\""),
 			   _("Sorry, has to exit :-("));
 		return false;
 	}

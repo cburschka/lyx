@@ -358,7 +358,7 @@ void AutoSave(BufferView * bv)
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1)
-					bv->owner()->message(_("Autosave Failed!"));
+					bv->owner()->message(_("Autosave failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...

@@ -19,7 +19,7 @@ string const InsetFloatList::getScreenLabel(Buffer const *) const
 		string const res = guiName + _(" List");
 		return res;
 	}
-	return _("ERROR nonexistant float type!");
+	return _("ERROR: Nonexistent float type!");
 }
 
 

@@ -1839,8 +1839,8 @@ void LyXText::pasteSelection(BufferView * bview)
 
 	Paragraph * endpar;
 	Paragraph * actpar = cursor.par();
-
 	int pos = cursor.pos();
+
 	CutAndPaste::pasteSelection(&actpar, &endpar, pos,
 				    bview->buffer()->params.textclass);
     
@@ -1849,9 +1849,7 @@ void LyXText::pasteSelection(BufferView * bview)
 	setCursor(bview, cursor.par(), cursor.pos());
 	clearSelection();
    
-	selection.cursor = cursor;
 	setCursor(bview, actpar, pos);
-	setSelection(bview);
 	updateCounters(bview, cursor.row());
 }
 

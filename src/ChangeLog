@@ -1,3 +1,13 @@
+2001-09-20  Michael Schmitt  <Michael.Schmitt@teststep.org>
+
+	* several files: fix typos in user-visible strings
+
+2001-09-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text2.C (pasteSelection): do not set the selection, since it
+	will be cleared later. Actually, the intent was to fix the way the
+	selection was set, but I figured rmoving the code was just as good.
+
 2001-09-19  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FontLoader.C (available): Check if font is available without

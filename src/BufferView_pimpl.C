@@ -2738,7 +2738,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (floatList.typeExist(argument)) {
 			insertAndEditInset(new InsetFloat(argument));
 		} else {
-			lyxerr << "Non-existant float type: "
+			lyxerr << "Non-existent float type: "
 			       << argument << endl;
 		}
 		break;
@@ -2754,7 +2754,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			else
 				delete new_inset;
 		} else {
-			lyxerr << "Non-existant float type: "
+			lyxerr << "Non-existent float type: "
 			       << argument << endl;
 		}
 		

@@ -231,7 +231,7 @@ void BufferView::menuUndo()
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (!textUndo(this))
-			owner()->message(_("No forther undo information"));
+			owner()->message(_("No further undo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		setState();
