@@ -1,3 +1,8 @@
+2004-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: instead of the previous code (which does not
+	work), just add xforms to the list of frontends if gtk is specified
+
 2004-07-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* configure.ac: add code that some xforms tests are run only once
