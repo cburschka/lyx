@@ -17,6 +17,7 @@
 
 #include "texparser.h"
 
+using std::count_if;
 using std::cout;
 using std::cerr;
 using std::endl;
@@ -37,6 +38,8 @@ namespace {
 
 char const OPEN = '<';
 char const CLOSE = '>';
+char const TAB = '\001';
+char const LINE = '\002';
 
 const char * known_languages[] = { "austrian", "babel", "bahasa",
 "basque", "breton", "bulgarian", "catalan", "croatian", "czech", "danish",
@@ -233,7 +236,7 @@ void handle_par(ostream & os)
 		return;
 	os << "\n\\layout ";
 	string s = curr_env();
-	if (s == "document") {
+	if (s == "document" || s == "table") {
 		os << "Standard\n\n";
 		return;
 	}
@@ -287,6 +290,29 @@ void handle_table(Parser &, ostream &)
 string wrap(string const & cmd, string const & str)
 {
 	return OPEN + cmd + ' ' + str + CLOSE;
+}
+
+
+vector<string> extract_col_align(string const & s)
+{
+	vector<string> res;
+	for (size_t i = 0; i < s.size(); ++i) {
+		switch (s[i]) {
+			case 'c':
+				res.push_back("center");
+				break;
+			case 'l':
+				res.push_back("left");
+				break;
+			case 'r':
+				res.push_back("right");
+				break;
+			default:
+				res.push_back("right");
+				break;
+		}
+	}
+	return res;
 }
 
 
@@ -457,19 +483,19 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				handle_ert(os, "}");
 		}
 
-		else if (t.cat() == catAlign) 
-			os << t.character();
-
-/*
-			++cellcol;
-			//cerr << " column now " << cellcol << " max: " << grid.ncols() << "\n";
-			if (cellcol == grid.ncols()) {
-				//cerr << "adding column " << cellcol << "\n";
-				grid.addCol(cellcol - 1);
-			}
-			cell = &grid.cell(grid.index(cellrow, cellcol));
+		else if (t.cat() == catAlign) {
+			if (mode == MATH_MODE)
+				os << t.character();
+			else
+				os << TAB;
 		}
-*/
+
+		else if (t.cs() == "tabularnewline") {
+			if (mode == MATH_MODE)
+				os << t.asInput();
+			else
+				os << LINE;
+		}
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
 			//cerr << "finished reading option\n";
@@ -549,16 +575,66 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				begin_inset(os, "Formula ");	
 				os << "\\begin{" << name << "}";
 				parse(p, os, FLAG_END, MATH_MODE);
+				os << "\\end{" << name << "}";
+				end_inset(os);	
+			} else if (name == "tabular") {
+				begin_inset(os, "Tabular \n");
+				string colopts = p.verbatimItem();
+				vector<string> colalign = extract_col_align(colopts);
+				ostringstream ss;
+				parse(p, ss, FLAG_END, mode);
+				vector<string> lines;
+				split(ss.str(), lines, LINE);
+				const size_t cols = colalign.size();
+				const size_t rows = lines.size();
+				os << "<lyxtabular version=\"3\" rows=\"" << rows
+				   << "\" columns=\"" << cols << "\">\n"
+				   << "<features>\n";
+				for (size_t c = 0; c < cols; ++c)
+					os << "<column alignment=\"" << colalign[c] << "\""
+					   << " valignment=\"top\""
+					   << " width=\"0pt\""
+					   << ">\n";
+				for (size_t r = 0; r < rows; ++r) {
+					vector<string> cells;
+					split(lines[r], cells, TAB);
+					while (cells.size() < cols)
+						cells.push_back(string());
+					//os << "<row bottomline=\"true\">\n";
+					os << "<row>\n";
+					for (size_t c = 0; c < cols; ++c) {
+						os << "<cell alignment=\"center\""
+						   << " valignment=\"top\""
+						   << " topline=\"true\""
+						   << " leftline=\"true\""
+						   << " usebox=\"none\""
+						   << ">";
+						begin_inset(os, "Text");
+						os << "\n\n\\layout Standard\n\n";
+						os << cells[c];
+						end_inset(os);
+						os << "</cell>\n";
+					}
+					os << "</row>\n";
+				}
+				os << "</lyxtabular>\n";
+				end_inset(os);	
 			} else if (name == "table") {
-				handle_table(p, os);
+				begin_inset(os, "Float table\n");	
+				os << "wide false\n"
+				   << "collapsed false\n"
+				   << "\n"
+				   << "\\layout Standard\n";
 				parse(p, os, FLAG_END, mode);
+				end_inset(os);	
 			} else if (name == "thebibliography") {
 				p.verbatimItem(); // swallow next arg
-				handle_table(p, os);
 				parse(p, os, FLAG_END, mode);
+				os << "\n\\layout Standard\n\n";
 			} else if (mode == MATH_MODE) {
 				os << "\\begin{" << name << "}";
 				parse(p, os, FLAG_END, mode);
+				os << "\\end{" << name << "}";
 			} else {
 				parse(p, os, FLAG_END, mode);
 			}
@@ -572,13 +648,6 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 					p.error("\\end{" + name + "} does not match \\begin{"
 						+ curr_env() + "}");
 				active_environments.pop();
-				if (is_math_env(name)) {
-					os << "\\end{" << name << "}";
-					end_inset(os);	
-				} else if (mode == MATH_MODE) {
-					os << "\\end{" << name << "}";
-				} else
-					os << "\n\\layout Standard\n\n";
 				return;
 			}
 			p.error("found 'end' unexpectedly");
