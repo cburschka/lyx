@@ -16,7 +16,6 @@
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macroarg.h"
-#include "math_notinset.h"
 #include "math_parboxinset.h"
 #include "math_rootinset.h"
 #include "math_sizeinset.h"
@@ -199,8 +198,6 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathFracInset);
 	if (s == "atop")
 		return MathAtom(new MathFracInset(true));
-	if (s == "not")
-		return MathAtom(new MathNotInset);
 	if (s == "lefteqn")
 		return MathAtom(new MathLefteqnInset);
 

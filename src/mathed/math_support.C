@@ -302,7 +302,6 @@ named_deco_struct deco_table[] = {
 	{"check",          angle,      1 },
 	{"breve",          parenth,    1 },
 	{"vec",            arrow,      3 },
-	{"not",            slash,      0 },
 	{"mathring",       ring,       0 },
 
 	// Dots
