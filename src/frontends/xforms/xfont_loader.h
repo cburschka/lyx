@@ -27,13 +27,13 @@ intelligent guesses about matching font size, and it tries different tags
 itself in order to match the font loading demands.  Later, I plan to extend
 this with support for T1Lib, probably via a new class building on this.
 (Asger) */
-class FontLoader {
+class xfont_loader {
 public:
 	///
-	FontLoader();
+	xfont_loader();
 
 	///
-	~FontLoader();
+	~xfont_loader();
 
 	/// Update fonts after zoom, dpi, font names, or norm change
 	void update();
@@ -77,6 +77,6 @@ private:
 };
 
 ///
-extern FontLoader fontloader;
+extern xfont_loader fontloader;
 
 #endif

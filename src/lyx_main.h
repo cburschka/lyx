@@ -1,16 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
-* ======================================================
-*
-*           LyX, The Document Processor
-*
-*           Copyright 1995 Matthias Ettrich
-*           Copyright 1995-2001 The LyX Team.
-*
-* ====================================================== */
-
-/* This is the declaration of the LyX class, there should only
- * exist _one_ instance of this in the application. */
+/**
+ * \file lyx_main.h
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author unknown
+ */
 
 #ifndef LYX_MAIN_H
 #define LYX_MAIN_H
@@ -32,27 +27,20 @@ class LastFiles;
 class Buffer;
 class kb_keymap;
 
-///
-extern string system_lyxdir;
+
 ///
 extern string user_lyxdir;
+///
+extern string system_lyxdir;
 ///
 extern string system_tempdir;
 ///
 extern boost::scoped_ptr<LastFiles> lastfiles;
-/* we should hopefully be able to move this
- * inside the LyX class */
 
 
-/**
-  This is the main LyX object it encapsulates most of the other objects.
-*/
 class LyX : boost::noncopyable {
 public:
-	/// the only allowed constructor
-	LyX(int * argc, char * argv[]); // constructor
-	/// Always is useful a destructor
-	~LyX();
+	LyX(int * argc, char * argv[]);
 
 	/// in the case of failure
 	static void emergencyCleanup();

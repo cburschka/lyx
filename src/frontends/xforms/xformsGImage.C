@@ -17,7 +17,6 @@
 #include "LColor.h"
 #include "converter.h"              // formats
 #include "debug.h"
-#include "frontends/GUIRunTime.h"   // x11Display, x11Screen
 #include "support/LAssert.h"
 #include "support/lyxfunctional.h"  // compare_memfun
 
@@ -127,7 +126,7 @@ xformsGImage::~xformsGImage()
 	if (image_)
 		flimage_free(image_);
 	if (pixmap_)
-		XFreePixmap(GUIRunTime::x11Display(), pixmap_);
+		XFreePixmap(fl_get_display(), pixmap_);
 }
 
 
@@ -197,7 +196,7 @@ bool xformsGImage::setPixmap(GParams const & params)
 	if (!image_ || params.display == GParams::NONE)
 		return false;
 
-	Display * display = GUIRunTime::x11Display();
+	Display * display = fl_get_display();
 
 	if (pixmap_ && pixmap_status_ == PIXMAP_SUCCESS)
 		XFreePixmap(display, pixmap_);
@@ -230,7 +229,7 @@ bool xformsGImage::setPixmap(GParams const & params)
 	}
 
 	image_->xdisplay = display;
-	Screen * screen  = ScreenOfDisplay(display, GUIRunTime::x11Screen());
+	Screen * screen  = ScreenOfDisplay(display, fl_screen);
 
 	pixmap_ = flimage_to_pixmap(image_, XRootWindowOfScreen(screen));
 	pixmap_status_ = pixmap_ ? PIXMAP_SUCCESS : PIXMAP_FAILED;
@@ -436,8 +435,8 @@ unsigned int packedcolor(LColor::color c)
 {
 	string const x11color = lcolor.getX11Name(c);
 
-	Display * display = GUIRunTime::x11Display();
-	Colormap cmap     = GUIRunTime::x11Colormap();
+	Display * display = fl_get_display();
+	Colormap cmap     = fl_state[fl_get_vclass()].colormap;
 	XColor xcol;
 	XColor ccol;
 	if (XLookupColor(display, cmap, x11color.c_str(), &xcol, &ccol) == 0)

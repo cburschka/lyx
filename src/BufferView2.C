@@ -576,7 +576,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 				? LScreen::REVERSED_L_SHAPE
 				: LScreen::L_SHAPE;
 		y += cursor.iy() + theLockingInset()->insetInInsetY();
-		pimpl_->screen_->showManualCursor(text, x, y, asc, desc,
+		screen().showManualCursor(text, x, y, asc, desc,
 						  shape);
 	}
 }
@@ -585,7 +585,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 void BufferView::hideLockedInsetCursor()
 {
 	if (theLockingInset() && available()) {
-		pimpl_->screen_->hideCursor();
+		screen().hideCursor();
 	}
 }
 
@@ -594,7 +594,7 @@ bool BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 {
 	if (theLockingInset() && available()) {
 		y += text->cursor.iy() + theLockingInset()->insetInInsetY();
-		if (pimpl_->screen_->fitManualCursor(text, this, x, y, asc, desc)) {
+		if (screen().fitManualCursor(text, this, x, y, asc, desc)) {
 			updateScrollbar();
 			return true;
 		}

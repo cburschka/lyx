@@ -13,6 +13,7 @@
 #include "lyx_main.h"
 #include "gettext.h"
 #include "LString.h"
+#include "lyx_gui.h"
 #include "support/filetools.h"
 #include "support/os.h"
 #include "frontends/GUIRunTime.h"

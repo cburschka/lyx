@@ -1,15 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file Menubar.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file is Copyright 1996-2001
- *           Lars Gullik Bjønnes
- *
- * ====================================================== */
+ * \author Lars Gullik Bjønnes
+ */
 
 #ifndef MENUBAR_H
 #define MENUBAR_H
@@ -23,9 +19,10 @@
 class LyXView;
 class MenuBackend;
 
-/** The LyX GUI independent menubar class
-  The GUI interface is implemented in the corresponding Menubar_pimpl class.
-  */
+/**
+ * The LyX GUI independent menubar class
+ * The GUI interface is implemented in the corresponding Menubar_pimpl class.
+ */
 class Menubar {
 public:
 	///
@@ -49,4 +46,4 @@ private:
 	///
 	Pimpl * pimpl_;
 };
-#endif
+#endif // MENUBAR_H

@@ -1,6 +1,19 @@
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.h:
+	* BufferView_pimpl.C:
+	* BufferView.h:
+	* BufferView.C: make painter() const,
+	  remove dead code
+ 
+	* BufferView2.C: use screen() accessor
+ 
+	* lyx_main.h:
+	* lyx_main.C: some minor cleanup
+ 
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.h:
 	* BufferView_pimpl.C: remove enter/leaveView,
 	  use workHeight()
  

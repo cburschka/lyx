@@ -7,6 +7,7 @@
  * \author Lars Gullik Bjønnes
  * \author John Levon
  */
+ 
 #ifndef TIMEOUT_H
 #define TIMEOUT_H
 
@@ -21,12 +22,10 @@
  */
 class Timeout {
 public:
-	///
+	/// the timeout type
 	enum Type {
-		/// one-shot timer
-		ONETIME,
-		/// repeating
-		CONTINUOUS
+		ONETIME, //< one-shot timer
+		CONTINUOUS //< repeating
 	};
 	///
 	Timeout(unsigned int msec, Type = ONETIME);

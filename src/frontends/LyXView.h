@@ -1,7 +1,15 @@
 // -*- C++ -*-
+/**
+ * \file LyXView.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Lars Gullik Bjornes <larsbj@lyx.org>
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
-#ifndef LYXVIEW_BASE_H
-#define LYXVIEW_BASE_H
+#ifndef LYXVIEW_H
+#define LYXVIEW_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -12,6 +20,7 @@
 #include "support/types.h"
 
 #include <boost/utility.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
 class Buffer;
@@ -23,9 +32,22 @@ class Menubar;
 class BufferView;
 class Dialogs;
 class LyXFunc;
+class LyXFont;
 class Timeout;
 
-///
+/**
+ * LyXView - main LyX window
+ *
+ * This class represents the main LyX window and provides
+ * accessor functions to its content.
+ *
+ * The eventual intention is that LyX will support a number
+ * of containing LyXViews. Currently a lot of code still
+ * relies on there being a single top-level view.
+ *
+ * Additionally we would like to support multiple views
+ * in a single LyXView.
+ */
 class LyXView : public boost::signals::trackable, boost::noncopyable {
 public:
 	///
@@ -50,7 +72,7 @@ public:
 	///
 	BufferView * view() const;
 
-	/// return a pointer to the toolbar
+	/// return the toolbar for this view
 	Toolbar * getToolbar() const;
 
 	/// sets the layout in the toolbar layout combox
@@ -71,7 +93,7 @@ public:
 	///
 	void messagePop();
 
-	///
+	/// return the menubar for this view
 	Menubar * getMenubar() const;
 
 	///
@@ -80,8 +102,8 @@ public:
 	///
 	Intl * getIntl() const;
 
-	///
-	Dialogs * getDialogs() { return dialogs_; }
+	/// get access to the dialogs
+	Dialogs * getDialogs() { return dialogs_.get(); }
 
 	///
 	void updateLayoutChoice();
@@ -98,35 +120,51 @@ public:
 	virtual void prohibitInput() const = 0;
 	///
 	virtual void allowInput() const = 0;
+ 
 protected:
-	///
-	Menubar * menubar;
-	///
-	Toolbar * toolbar;
-	/** This is supposed to be a pointer or a list of pointers to the
-	   BufferViews currently being shown in the LyXView. So far
-	   this is not used, but that should change pretty soon. (Lgb) */
-	BufferView * bufferview;
-	///
-	MiniBuffer * minibuffer;
-	///
-	Intl * intl;
-	///
-	Timeout * autosave_timeout;
-	/// A callback
+	/// view of a buffer. Eventually there will be several.
+	boost::scoped_ptr<BufferView> bufferview_;
+
+	/// view's menubar
+	boost::scoped_ptr<Menubar> menubar_;
+	/// view's toolbar
+	boost::scoped_ptr<Toolbar> toolbar_;
+	/// view's minibuffer
+	boost::scoped_ptr<MiniBuffer> minibuffer_;
+
+	/// keyboard mapping object
+	boost::scoped_ptr<Intl> intl_;
+
+	/// auto-saving of buffers
+	boost::scoped_ptr<Timeout> autosave_timeout_;
+
+	/// called on timeout
 	void AutoSave();
-	///
+
+	/// FIXME: GUII - toolbar property
 	void invalidateLayoutChoice();
+
 private:
-	///
-	LyXFunc * lyxfunc;
-	///
-	Dialogs * dialogs_;
-	///
-	virtual void setWindowTitle(string const &, string const &) = 0;
-	/** The last textclass layout list in the layout choice selector
-	  This should probably be moved to the toolbar, but for now it's
-	here. (Asger) */
-	int last_textclass;
+	/**
+	 * setWindowTitle - set title of window
+	 * @param t main window title
+	 * @param it iconified (short) title
+	 */
+	virtual void setWindowTitle(string const & t, string const & it) = 0;
+
+	/// our function handler
+	boost::scoped_ptr<LyXFunc> lyxfunc_;
+	/// dialogs for this view
+	boost::scoped_ptr<Dialogs> dialogs_;
+
+	/**
+	 * The last textclass layout list in the layout choice selector
+	 * This should probably be moved to the toolbar, but for now it's
+	 * here. (Asger)
+	 *
+	 * FIXME: GUII
+	 */
+	int last_textclass_;
 };
-#endif
+
+#endif // LYXVIEW_H

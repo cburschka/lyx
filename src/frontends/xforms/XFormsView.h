@@ -21,15 +21,15 @@
 #include "frontends/LyXView.h"
 
 /**
-  This class is the form containing the view of the buffer. The actual buffer
-  view is supposed (at least IMHO) to be another class, that shows its output
-  in one or more LyXView's.
+ * XFormsView - xforms implementation of LyXView
+ *
+ * xforms-private implementation of the main LyX window.
  */
 class XFormsView : public LyXView {
 public:
-	/// constructor
+	/// create a main window of the given dimensions
 	XFormsView(int w, int h);
-	/// destructor
+
 	~XFormsView();
 	/// Where to place the form.
 	virtual void setPosition(int, int);
@@ -37,23 +37,29 @@ public:
 	virtual void show(int, int, string const & t = string("LyX"));
 	/// init (should probably be removed later) (Lgb)
 	virtual void init();
-	/// Redraw the main form.
-	virtual void redraw();
-	/// returns a pointer to the form.
+	/// get the xforms main form
 	FL_FORM * getForm() const;
+	/// redraw the main form.
+	virtual void redraw();
 	///
 	virtual void prohibitInput() const;
 	///
 	virtual void allowInput() const;
-	/** This callback is run when a close event is sent from the
-	  window manager. */
+
+	/// callback for close event from window manager
 	static int atCloseMainFormCB(FL_FORM *, void *);
+
 private:
-	/// pass the title, and the iconified title
-	virtual void setWindowTitle(string const &, string const &);
+	/**
+	 * setWindowTitle - set title of window
+	 * @param t main window title
+	 * @param it iconified (short) title
+	 */
+	virtual void setWindowTitle(string const & t, string const & it); 
+ 
 	/// makes the main form.
 	void create_form_form_main(int width, int height);
-	/// A pointer to the form.
-	FL_FORM * form_;
+	/// the main form.
+	boost::scoped_ptr<FL_FORM> form_;
 };
 #endif

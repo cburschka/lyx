@@ -134,28 +134,23 @@ extern "C" {
 }
 
 
-WorkArea::WorkArea(int xpos, int ypos, int width, int height)
+WorkArea::WorkArea(int x, int y, int w, int h)
 	: splash_(0), splash_text_(0), workareapixmap(0), painter_(*this)
 {
 	fl_freeze_all_forms();
 
-	if (lyxerr.debugging(Debug::WORKAREA))
-		lyxerr << "Creating work area: +"
-		       << xpos << '+' << ypos << ' '
-		       << width << 'x' << height << endl;
 	//
 	FL_OBJECT * obj;
-	int const bw = int(abs(fl_get_border_width()));
 
 	// a box
 	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "\tbackground box: +"
-		       << xpos << '+' << ypos << ' '
-		       << width - 15 << 'x' << height << endl;
+		       << x << '+' << y << ' '
+		       << w - 15 << 'x' << h << endl;
 	backgroundbox = obj = fl_add_box(FL_BORDER_BOX,
-					 xpos, ypos,
-					 width - 15,
-					 height,"");
+					 x, y,
+					 w - 15,
+					 h,"");
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 
@@ -166,8 +161,8 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 	if (!splash_file.empty()) {
 		int const splash_w = 425;
 		int const splash_h = 290;
-		int const splash_x = xpos + (width - 15 - splash_w) / 2;
-		int const splash_y = ypos + (height - splash_h) / 2;
+		int const splash_x = x + (w - 15 - splash_w) / 2;
+		int const splash_y = y + (h - splash_h) / 2;
 		splash_ = obj =
 			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
 					    splash_x, splash_y,
@@ -190,13 +185,9 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
 	}
 
-	//
-	// THE SCROLLBAR
-	//
-
 	scrollbar = obj = fl_add_scrollbar(FL_VERT_SCROLLBAR,
-					   xpos + width - 15,
-					   ypos, 17, height, "");
+					   x + w - 15,
+					   y, 17, h, "");
 	fl_set_object_boxtype(obj, FL_UP_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
@@ -207,21 +198,23 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 	///
 	/// The free object
 
+	int const bw = int(abs(fl_get_border_width()));
+
 	// Create the workarea pixmap
-	createPixmap(width - 15 - 2 * bw, height - 2 * bw);
+	createPixmap(w - 15 - 2 * bw, h - 2 * bw);
 
 	// We add this object as late as possible to avoit problems
 	// with drawing.
 	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "\tfree object: +"
-		       << xpos + bw << '+' << ypos + bw << ' '
-		       << width - 15 - 2 * bw << 'x'
-		       << height - 2 * bw << endl;
+		       << x + bw << '+' << y + bw << ' '
+		       << w - 15 - 2 * bw << 'x'
+		       << h - 2 * bw << endl;
 
 	work_area = obj = fl_add_free(FL_ALL_FREE,
-				      xpos + bw, ypos + bw,
-				      width - 15 - 2 * bw, // scrollbarwidth
-				      height - 2 * bw, "",
+				      x + bw, y + bw,
+				      w - 15 - 2 * bw, // scrollbarwidth
+				      h - 2 * bw, "",
 				      C_WorkArea_work_area_handler);
 	obj->wantkey = FL_KEY_ALL;
 	obj->u_vdata = this; /* This is how we pass the WorkArea

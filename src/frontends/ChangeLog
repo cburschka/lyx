@@ -1,5 +1,13 @@
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
+	* Menubar.C:
+	* Timeout.h:
+	* Toolbar.C:
+	* LyXView.h:
+	* LyXView.C: some cleanup, prefer scoped_ptr 
+ 
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
 	* screen.C:
 	* Painter.C: use workHeight()
 

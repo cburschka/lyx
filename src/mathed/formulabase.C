@@ -56,7 +56,6 @@
 using std::endl;
 using std::ostream;
 using std::vector;
-
 using std::abs;
 
 MathCursor * mathcursor = 0;

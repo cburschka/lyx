@@ -1,17 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file Toolbar.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file is Copyright 1996-1998
- *           Lars Gullik Bjønnes
- *
- * ====================================================== */
-
-//  Added pseudo-action handling, asierra 180296
+ * \author Lars Gullik Bjønnes <larsbj@lyx.org>
+ */
 
 #include <config.h>
 

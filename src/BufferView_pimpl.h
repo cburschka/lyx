@@ -1,13 +1,20 @@
 // -*- C++ -*-
+/**
+ * \file BufferView_pimpl.h
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author various
+ */
 
 #ifndef BUFFERVIEW_PIMPL_H
 #define BUFFERVIEW_PIMPL_H
 
 #include "BufferView.h"
 #include "commandtags.h"
-#include "frontends/mouse_state.h"
-#include "frontends/key_state.h"
 #include "frontends/Timeout.h"
+#include "frontends/key_state.h"
+#include "frontends/mouse_state.h"
 #include "box.h"
 #include "insets/insetspecialchar.h"
 #include "support/types.h"
@@ -32,7 +39,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	Pimpl(BufferView * i, LyXView * o,
 	      int xpos, int ypos, int width, int height);
 	///
-	Painter & painter();
+	Painter & painter() const;
 	/// return the work area for this bview
 	WorkArea & workarea() const;
 	/// return the screen for this bview
@@ -107,12 +114,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	bool isSavedPosition(unsigned int i);
 	///
 	void setState();
-#if 0
-	///
-	void insetSleep();
-	///
-	void insetWakeup();
-#endif
 	///
 	void insetUnlock();
 	///
@@ -208,7 +209,5 @@ private:
 	Inset * getInsetByCode(Inset::Code code);
 	///
 	void MenuInsertLyXFile(string const & filen);
-	///
-	bool inset_slept;
 };
 #endif

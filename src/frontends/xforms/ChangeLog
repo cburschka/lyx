@@ -1,5 +1,19 @@
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
+	* xformsGImage.C:
+	* FontInfo.h:
+	* FontInfo.C: some cleanup
+ 
+	* XWorkArea.C: 
+	* XFormsView.h:
+	* XFormsView.C: some minor cleanup, use of
+	  scoped_ptr
+
+	* xfont_loader.h:
+	* xfont_loader.C: rename
+
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
 	* XWorkArea.h:
 	* XWorkArea.C: use workHeight(), remove enter/leaveView
  

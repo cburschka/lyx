@@ -1,12 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file BufferView.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author unknown
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
 #include <config.h>
 
@@ -54,7 +53,7 @@ LyXView * BufferView::owner() const
 }
 
 
-Painter & BufferView::painter()
+Painter & BufferView::painter() const
 {
 	return pimpl_->painter();
 }
@@ -178,19 +177,6 @@ void BufferView::setState()
 {
 	pimpl_->setState();
 }
-
-#if 0
-void BufferView::insetSleep()
-{
-	pimpl_->insetSleep();
-}
-
-
-void BufferView::insetWakeup()
-{
-	pimpl_->insetWakeup();
-}
-#endif
 
 
 void BufferView::insetUnlock()

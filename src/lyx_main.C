@@ -180,12 +180,6 @@ LyX::LyX(int * argc, char * argv[])
 }
 
 
-// A destructor is always necessary  (asierra-970604)
-LyX::~LyX()
-{
-}
-
-
 extern "C" {
 
 static

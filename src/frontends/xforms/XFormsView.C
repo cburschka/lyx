@@ -57,11 +57,11 @@ XFormsView::XFormsView(int width, int height)
 	: LyXView()
 {
 	create_form_form_main(width, height);
-	fl_set_form_atclose(form_, C_XFormsView_atCloseMainFormCB, 0);
+	fl_set_form_atclose(getForm(), C_XFormsView_atCloseMainFormCB, 0);
 
 	// Connect the minibuffer signals
-	minibuffer->stringReady.connect(boost::bind(&LyXFunc::miniDispatch, getLyXFunc(), _1));
-	minibuffer->timeout.connect(boost::bind(&LyXFunc::initMiniBuffer, getLyXFunc()));
+	minibuffer_->stringReady.connect(boost::bind(&LyXFunc::miniDispatch, getLyXFunc(), _1));
+	minibuffer_->timeout.connect(boost::bind(&LyXFunc::initMiniBuffer, getLyXFunc()));
 
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
@@ -74,14 +74,14 @@ XFormsView::~XFormsView() {}
 /// Redraw the main form.
 void XFormsView::redraw() {
 	lyxerr[Debug::INFO] << "XFormsView::redraw()" << endl;
-	fl_redraw_form(form_);
+	fl_redraw_form(getForm());
 	getMiniBuffer()->redraw();
 }
 
 
 FL_FORM * XFormsView::getForm() const
 {
-	return form_;
+	return form_.get();
 }
 
 
@@ -95,17 +95,17 @@ int XFormsView::atCloseMainFormCB(FL_FORM *, void *)
 
 void XFormsView::setPosition(int x, int y)
 {
-	fl_set_form_position(form_, x, y);
+	fl_set_form_position(getForm(), x, y);
 }
 
 
 void XFormsView::show(int place, int border, string const & title)
 {
-	fl_set_form_minsize(form_, form_->w, form_->h);
-	fl_show_form(form_, place, border, title.c_str());
+	fl_set_form_minsize(getForm(), getForm()->w, getForm()->h);
+	fl_show_form(getForm(), place, border, title.c_str());
 	getLyXFunc()->initMiniBuffer();
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
-	InitLyXLookup(fl_get_display(), form_->window);
+	InitLyXLookup(fl_get_display(), getForm()->window);
 #endif
 }
 
@@ -120,8 +120,8 @@ void XFormsView::create_form_form_main(int width, int height)
 	 */
 {
 	// the main form
-	form_ = fl_bgn_form(FL_NO_BOX, width, height);
-	form_->u_vdata = this;
+	form_.reset(fl_bgn_form(FL_NO_BOX, width, height));
+	getForm()->u_vdata = this;
 	FL_OBJECT * obj = fl_add_box(FL_FLAT_BOX, 0, 0, width, height, "");
 	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 
@@ -129,47 +129,23 @@ void XFormsView::create_form_form_main(int width, int height)
 	int const air = 2;
 	int const bw = abs(fl_get_border_width());
 
-	//
-	// THE MENUBAR
-	//
-	menubar = new Menubar(this, menubackend);
+	menubar_.reset(new Menubar(this, menubackend));
 
-	//
-	// TOOLBAR
-	//
-
-	toolbar = new Toolbar(this, air, 30 + air + bw, toolbardefaults);
-
-	// Setup the toolbar
-	toolbar->set(true);
-
-	//
-	// WORKAREA
-	//
+	toolbar_.reset(new Toolbar(this, air, 30 + air + bw, toolbardefaults));
+	toolbar_->set(true);
 
 	int const ywork = 60 + 2 * air + bw;
 	int const workheight = height - ywork - (25 + 2 * air);
 
-	::current_view = bufferview = new BufferView(this, air, ywork,
-						     width - 3 * air,
-						     workheight);
+	bufferview_.reset(new BufferView(this, air, ywork,
+		width - 3 * air, workheight));
+	::current_view = bufferview_.get();
 
-	//
-	// MINIBUFFER
-	//
+	minibuffer_.reset(new MiniBuffer(this, air, height - (25 + air),
+		width - (2 * air), 25));
 
-	minibuffer = new MiniBuffer(this, air, height - (25 + air),
-				    width - (2 * air), 25);
-
-	//
-	// TIMERS
-	//
-
-	autosave_timeout->timeout.connect(boost::bind(&XFormsView::AutoSave, this));
-
-	//
-	// Misc
-	//
+	// FIXME: why do this in xforms/ ?
+	autosave_timeout_->timeout.connect(boost::bind(&XFormsView::AutoSave, this));
 
 	//  assign an icon to main form
 	string iconname = LibFileSearch("images", "lyx", "xpm");
@@ -184,15 +160,15 @@ void XFormsView::create_form_form_main(int width, int height)
 					   0,
 					   0,
 					   0); // this leaks
-		fl_set_form_icon(form_, lyx_p, lyx_mask);
+		fl_set_form_icon(getForm(), lyx_p, lyx_mask);
 	}
 
 	// set min size
-	fl_set_form_minsize(form_, 50, 50);
+	fl_set_form_minsize(getForm(), 50, 50);
 
 	fl_end_form();
 
-	minibuffer->dd_init();
+	minibuffer_->dd_init();
 }
 
 
@@ -205,17 +181,17 @@ void XFormsView::init()
 
 	// Start autosave timer
 	if (lyxrc.autosave) {
-		autosave_timeout->setTimeout(lyxrc.autosave * 1000);
-		autosave_timeout->start();
+		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
+		autosave_timeout_->start();
 	}
 
-	intl->InitKeyMapper(lyxrc.use_kbmap);
+	intl_->InitKeyMapper(lyxrc.use_kbmap);
 }
 
 
 void XFormsView::setWindowTitle(string const & title, string const & icon_title)
 {
-	fl_set_form_title(form_, title.c_str());
+	fl_set_form_title(getForm(), title.c_str());
 	fl_winicontitle(form_->window, icon_title.c_str());
 }
 

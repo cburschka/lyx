@@ -8,7 +8,7 @@
  *
  * ======================================================
  *
- * \file ControlButtonss.h
+ * \file ControlButtons.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
  * ControlButtons serves only to control the activation of the Ok, Apply, Cancel

@@ -1,12 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file LyXView.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author Lars Gullik Bjornes
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
 #include <config.h>
 
@@ -14,7 +13,7 @@
 #pragma implementation
 #endif
 
-#include "frontends/LyXView.h"
+#include "LyXView.h"
 #include "minibuffer.h"
 #include "debug.h"
 #include "intl.h"
@@ -22,10 +21,11 @@
 #include "lyxtext.h"
 #include "buffer.h"
 #include "MenuBackend.h"
-#include "bufferview_funcs.h" // CurrentState()
 #include "gettext.h"
 #include "lyxfunc.h"
+#include "lyx_cb.h"
 #include "BufferView.h"
+#include "bufferview_funcs.h"
 #include "lyxtextclasslist.h"
 
 #include "frontends/Dialogs.h"
@@ -33,7 +33,7 @@
 #include "frontends/Timeout.h"
 #include "frontends/Menubar.h"
 
-#include "support/filetools.h"        // OnlyFilename()
+#include "support/filetools.h" // OnlyFilename()
 
 #include <boost/bind.hpp>
 
@@ -51,28 +51,20 @@ string current_layout;
 LyXView::LyXView()
 {
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
-	lyxfunc = new LyXFunc(this);
 
-	intl = new Intl;
+	lyxfunc_.reset(new LyXFunc(this));
+	intl_.reset(new Intl);
 
 	// Give the timeout some default sensible value.
-	autosave_timeout = new Timeout(5000);
+	autosave_timeout_.reset(new Timeout(5000));
 
-	dialogs_ = new Dialogs(this);
+	dialogs_.reset(new Dialogs(this));
 	Dialogs::redrawGUI.connect(boost::bind(&LyXView::redraw, this));
 }
 
 
 LyXView::~LyXView()
 {
-	delete menubar;
-	delete toolbar;
-	delete bufferview;
-	delete minibuffer;
-	delete lyxfunc;
-	delete intl;
-	delete autosave_timeout;
-	delete dialogs_;
 }
 
 
@@ -82,91 +74,90 @@ void LyXView::resize()
 }
 
 
-/// returns the buffer currently shown in the main form.
 Buffer * LyXView::buffer() const
 {
-	return bufferview->buffer();
+	return bufferview_->buffer();
 }
 
 
 BufferView * LyXView::view() const
 {
-	return bufferview;
+	return bufferview_.get();
 }
 
 
 Toolbar * LyXView::getToolbar() const
 {
-	return toolbar;
+	return toolbar_.get();
 }
 
 
 void LyXView::setLayout(string const & layout)
 {
-	toolbar->setLayout(layout);
+	toolbar_->setLayout(layout);
 }
 
 
 void LyXView::updateToolbar()
 {
-	toolbar->update();
+	toolbar_->update();
 }
 
 
 LyXFunc * LyXView::getLyXFunc() const
 {
-	return lyxfunc;
+	return lyxfunc_.get();
 }
 
 
 MiniBuffer * LyXView::getMiniBuffer() const
 {
-	return minibuffer;
+	return minibuffer_.get();
 }
 
 
 void LyXView::message(string const & str)
 {
-	minibuffer->message(str);
+	minibuffer_->message(str);
 }
 
 
 void LyXView::messagePush(string const & str)
 {
-	minibuffer->messagePush(str);
+	minibuffer_->messagePush(str);
 }
 
 
 void LyXView::messagePop()
 {
-	minibuffer->messagePop();
+	minibuffer_->messagePop();
 }
 
 
 Menubar * LyXView::getMenubar() const
 {
-	return menubar;
+	return menubar_.get();
 }
 
 
 void LyXView::updateMenubar()
 {
-	if ((!view() || !view()->buffer())
-	    && menubackend.hasMenu("main_nobuffer"))
-		menubar->set("main_nobuffer");
-	else
-		menubar->set("main");
-	menubar->update();
+	if (!view()->buffer() && menubackend.hasMenu("main_nobuffer")) {
+		menubar_->set("main_nobuffer");
+	} else {
+		menubar_->set("main");
+	}
+
+	menubar_->update();
 }
 
 
 Intl * LyXView::getIntl() const
 {
-	return intl;
+	return intl_.get();
 }
 
 
-// Callback for autosave timer
 void LyXView::AutoSave()
 {
 	lyxerr[Debug::INFO] << "Running AutoSave()" << endl;
@@ -175,49 +166,46 @@ void LyXView::AutoSave()
 }
 
 
-/// Reset autosave timer
 void LyXView::resetAutosaveTimer()
 {
 	if (lyxrc.autosave)
-		autosave_timeout->restart();
+		autosave_timeout_->restart();
 }
 
 
 void LyXView::invalidateLayoutChoice()
 {
-	last_textclass = -1;
+	last_textclass_ = -1;
 }
 
 
 void LyXView::updateLayoutChoice()
 {
-	// This has a side-effect that the layouts are not showed when no
-	// document is loaded.
-	if (!view() || !view()->buffer()) {
-		toolbar->clearLayoutList();
+	// don't show any layouts without a buffer
+	if (!view()->buffer()) {
+		toolbar_->clearLayoutList();
 		return;
 	}
 
-	// Update the layout display
-	if (last_textclass != int(buffer()->params.textclass)) {
-		toolbar->updateLayoutList(true);
-		last_textclass = int(buffer()->params.textclass);
-		current_layout = textclasslist[last_textclass].defaultLayoutName();
+	// update the layout display
+	if (last_textclass_ != int(buffer()->params.textclass)) {
+		toolbar_->updateLayoutList(true);
+		last_textclass_ = int(buffer()->params.textclass);
+		current_layout = textclasslist[last_textclass_].defaultLayoutName();
 	} else {
-		toolbar->updateLayoutList(false);
+		toolbar_->updateLayoutList(false);
 	}
 
 	string const & layout =
-		bufferview->getLyXText()->cursor.par()->layout();
+		bufferview_->getLyXText()->cursor.par()->layout();
 
 	if (layout != current_layout) {
-		toolbar->setLayout(layout);
+		toolbar_->setLayout(layout);
 		current_layout = layout;
 	}
 }
 
 
-// Updates the title of the window with the filename of the current document
 void LyXView::updateWindowTitle()
 {
 	static string last_title = "LyX";
@@ -229,13 +217,14 @@ void LyXView::updateWindowTitle()
 		if (!cur_title.empty()) {
 			title += ": " + MakeDisplayPath(cur_title, 30);
 			if (!buffer()->isLyxClean())
-				title += _(" (Changed)");
+				title += _(" (changed)");
 			if (buffer()->isReadonly())
 				title += _(" (read only)");
-			/* Show only the filename if it's available. */
+			// Show only the filename if it's available
 			icon_title = OnlyFilename(cur_title);
 		}
 	}
+
 	if (title != last_title) {
 		setWindowTitle(title, icon_title);
 		last_title = title;

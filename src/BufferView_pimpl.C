@@ -1,3 +1,11 @@
+/**
+ * \file BufferView_pimpl.C
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author various
+ */
+
 #include <config.h>
 
 #ifdef __GNUG__
@@ -30,7 +38,6 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "lyxtextclasslist.h"
-
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -68,6 +75,7 @@
 
 #include <boost/bind.hpp>
 
+#include <cstdio>
 #include <ctime>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -136,7 +144,7 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	     int xpos, int ypos, int width, int height)
 	: bv_(b), owner_(o), buffer_(0),
 	  current_scrollbar_value(0), cursor_timeout(400),
-	  using_xterm_cursor(false), inset_slept(false)
+	  using_xterm_cursor(false)
 {
 	workarea_.reset(new WorkArea(xpos, ypos, width, height));
 	screen_.reset(new LScreen(workarea()));
@@ -181,7 +189,7 @@ LScreen & BufferView::Pimpl::screen() const
 }
 
 
-Painter & BufferView::Pimpl::painter()
+Painter & BufferView::Pimpl::painter() const
 {
 	return workarea().getPainter();
 }
@@ -192,9 +200,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView ("
 			    << b << ")" << endl;
 	if (buffer_) {
-#if 0
-		insetSleep();
-#endif
 		buffer_->delUser(bv_);
 
 		// Put the old text into the TextCache, but
@@ -236,9 +241,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		// require bv_->text.
 		owner_->getDialogs()->updateBufferDependent(true);
 		redraw();
-#if 0
-		insetWakeup();
-#endif
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
 		owner_->updateMenubar();
@@ -573,6 +575,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, mouse_button::state s
 		int inset_x = font.isVisibleRightToLeft()
 			? cursor.ix() - width : cursor.ix();
 		int start_x = inset_x + bv_->theLockingInset()->scroll();
+
 		bv_->theLockingInset()->
 			insetMotionNotify(bv_,
 					  x - start_x,
@@ -588,9 +591,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, mouse_button::state s
 		return;
 
 	screen().hideCursor();
-#if 0
-	int y_before = bv_->text->cursor.y();
-#endif
+
 	Row * cursorrow = bv_->text->cursor.row();
 	bv_->text->setCursorFromCoordinates(bv_, x, y + bv_->text->first_y);
 #if 0
@@ -627,7 +628,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	if (!buffer_)
 		return;
 
-	// ok ok, this is a hack.
+	// ok ok, this is a hack (for xforms)
 
 	if (button == mouse_button::button4) {
 		scrollUp(lyxrc.wheel_jump);
@@ -664,7 +665,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		   otherwise give the event to the inset */
 		if (inset_hit == bv_->theLockingInset()) {
 			bv_->theLockingInset()->
-				insetButtonPress(bv_,xpos, ypos,button);
+				insetButtonPress(bv_, xpos, ypos, button);
 			return;
 		} else {
 			bv_->unlockInset(bv_->theLockingInset());
@@ -1256,11 +1257,13 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 			  - bv_->text->first_y
 			  + bv_->theLockingInset()->insetInInsetY());
 	}
+
 	text->getRowNearY(y);
 
 	Row * cursorrow = text->cursor.row();
 	text->setCursorFromCoordinates(bv_, text->cursor.x_fix(), y); // + workarea().workHeight());
 	finishUndo();
+
 	int new_y;
 	if (cursorrow == bv_->text->cursor.row()) {
 		// we have a row which is higher than the workarea so we leave the
@@ -1381,35 +1384,12 @@ void BufferView::Pimpl::setState()
 }
 
 
-#if 0
-void BufferView::Pimpl::insetSleep()
-{
-	if (bv_->theLockingInset() && !inset_slept) {
-		bv_->theLockingInset()->getCursorPos(bv_, bv_->slx, bv_->sly);
-		bv_->theLockingInset()->insetUnlock(bv_);
-		inset_slept = true;
-	}
-}
-
-
-void BufferView::Pimpl::insetWakeup()
-{
-	if (bv_->theLockingInset() && inset_slept) {
-		bv_->theLockingInset()->edit(bv_, bv_->slx, bv_->sly, 0);
-		inset_slept = false;
-	}
-}
-#endif
-
-
 void BufferView::Pimpl::insetUnlock()
 {
 	if (bv_->theLockingInset()) {
-		if (!inset_slept)
-			bv_->theLockingInset()->insetUnlock(bv_);
+		bv_->theLockingInset()->insetUnlock(bv_);
 		bv_->theLockingInset(0);
 		finishUndo();
-		inset_slept = false;
 	}
 }
 
@@ -1530,7 +1510,7 @@ void BufferView::Pimpl::moveCursorUpdate(bool selecting, bool fitcur)
 
 	if (!lt->selection.set())
 		workarea().haveSelection(false);
-
+	
 	/* ---> Everytime the cursor is moved, show the current font state. */
 	// should this too me moved out of this func?
 	//owner->showState();
@@ -2030,7 +2010,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		// This is soooo ugly. Isn`t it possible to make
 		// it simpler? (Lgb)
 		LyXText * lt = bv_->getLyXText();
-		bool is_rtl = lt->cursor.par()->isRightToLeftPar(buffer_->params);
+		bool const is_rtl = lt->cursor.par()->isRightToLeftPar(buffer_->params);
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);

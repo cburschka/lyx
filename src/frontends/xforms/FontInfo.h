@@ -1,13 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file FontInfo.h
+ * Copyright 1997-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1997 Asger Alstrup
- *           and the LyX Team.
- *
- * ====================================================== */
+ * \author Asger Alstrup
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
 #ifndef FONTINFO_H
 #define FONTINFO_H

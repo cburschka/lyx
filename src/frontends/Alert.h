@@ -38,4 +38,4 @@ askForText(string const & msg,
 
 }
 
-#endif
+#endif // LYX_ALERT_H

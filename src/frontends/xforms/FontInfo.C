@@ -1,12 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file FontInfo.C
+ * Copyright 1997-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *	    Copyright 1997 Asger Alstrup
- *           and the LyX Team.
- *
- * ====================================================== */
+ * \author Asger Alstrup
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
 #include <config.h>
 
@@ -21,13 +20,12 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
-#include "frontends/GUIRunTime.h"
-
 #include <cmath>	// abs()
 
 using std::endl;
 using std::abs;
 
+#include FORMS_H_LOCATION
 
 /// Load font close to this size
 string const FontInfo::getFontname(int size)
@@ -119,7 +117,7 @@ void FontInfo::query()
 
 	char ** list = 0;
 	if (lyxrc.use_gui)
-		list = XListFonts(GUIRunTime::x11Display(), pattern.c_str(),
+		list = XListFonts(fl_get_display(), pattern.c_str(),
 				  100, &matches);
 
 	if (list == 0) {

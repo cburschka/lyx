@@ -30,18 +30,18 @@ extern BufferView * current_view;
 
 
 // The global fontloader
-FontLoader fontloader;
+xfont_loader fontloader;
 
 
 // Initialize font loader
-FontLoader::FontLoader()
+xfont_loader::xfont_loader()
 {
 	reset();
 }
 
 
 // Destroy font loader
-FontLoader::~FontLoader()
+xfont_loader::~xfont_loader()
 {
 	unload();
 }
@@ -50,14 +50,14 @@ FontLoader::~FontLoader()
 // Update fonts after zoom, dpi, font names, or norm change
 // For now, we just ditch all fonts we have. Later, we should
 // reuse the ones that are already loaded.
-void FontLoader::update()
+void xfont_loader::update()
 {
 	unload();
 }
 
 
 // Reset font loader
-void FontLoader::reset()
+void xfont_loader::reset()
 {
 	// Clear font infos, font structs and font metrics
 	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
@@ -72,7 +72,7 @@ void FontLoader::reset()
 
 
 // Unload all fonts
-void FontLoader::unload()
+void xfont_loader::unload()
 {
 	// Unload all fonts
 	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
@@ -95,7 +95,7 @@ void FontLoader::unload()
 // Get font info
 /* Takes care of finding which font that can match the given request. Tries
 different alternatives. */
-void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
+void xfont_loader::getFontinfo(LyXFont::FONT_FAMILY family,
 			     LyXFont::FONT_SERIES series,
 			     LyXFont::FONT_SHAPE shape)
 {
@@ -259,7 +259,7 @@ bool dummyXFontStructisGood = false;
 } // namespace anon
 
 /// Do load font
-XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
+XFontStruct * xfont_loader::doLoad(LyXFont::FONT_FAMILY family,
 				LyXFont::FONT_SERIES series,
 				LyXFont::FONT_SHAPE shape,
 				LyXFont::FONT_SIZE size)
@@ -326,7 +326,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 }
 
 
-bool FontLoader::available(LyXFont const & f)
+bool xfont_loader::available(LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return false;
