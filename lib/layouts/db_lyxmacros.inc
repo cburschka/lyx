@@ -10,7 +10,7 @@ Input lyxmacros.inc
 Style Code
 	CopyStyle             LyX-Code
 	LatexType             Environment
-	LatexName             programlisting
+	LatexName             screen
 	InnerTag              CDATA
 	PassThru              1
 End
