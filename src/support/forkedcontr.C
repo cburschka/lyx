@@ -83,8 +83,9 @@ void ForkedcallsController::timer()
 {
 	ListType::size_type start_size = forkedCalls.size();
 
-	for (ListType::iterator it = forkedCalls.begin();
-	     it != forkedCalls.end(); ++it) {
+	ListType::iterator it  = forkedCalls.begin();
+	ListType::iterator end = forkedCalls.end();
+	while (it != end) {
 		ForkedProcess * actCall = *it;
 
 		pid_t pid = actCall->pid();
@@ -133,12 +134,10 @@ void ForkedcallsController::timer()
 			// Emit signal and remove the item from the list
 			actCall->emitSignal();
 			delete actCall;
-			// erase returns the next iterator, so decrement it
-			// to continue the loop.
-			ListType::iterator prev = it;
-			--prev;
-			forkedCalls.erase(it);
-			it = prev;
+			// erase returns the next element in the list
+			it = forkedCalls.erase(it);
+		} else {
+			++it;
 		}
 	}
 
