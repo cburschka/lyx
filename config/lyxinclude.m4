@@ -207,9 +207,7 @@ dnl Check the version of g++
       2.95.2)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
       2.95.*)  CXXFLAGS="-g $lyx_opt -fno-exceptions";;
       2.96*)  CXXFLAGS="-g $lyx_opt -fno-exceptions";;
-      2.97*)   CXXFLAGS="-g $lyx_opt -fvtable-thunks -fno-builtin -ffunction-sections -fdata-sections"
-	       CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE=1";;
-      3.0*)    CXXFLAGS="-g $lyx_opt -fvtable-thunks -fno-builtin -ffunction-sections -fdata-sections";;
+      3.0*)    CXXFLAGS="-g $lyx_opt";;
       *2.91.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
       *)       CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
     esac

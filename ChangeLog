@@ -1,3 +1,23 @@
+2001-06-24  The LyX Project  <jug@sad.it>
+
+	* src/lyxlex_pimpl.C (compare_tags): use compare_ascii_no_case instead
+	of compare_no_case
+
+	* src/support/lstrings.C (compare_ascii_no_case): version of
+	compare_no_case which only considers case of ascii characters
+
+	* src/support/lyxstring.C (replace): a new version of replace(),
+	to help with compatibility with <sstream> in gcc 2.95.3.
+
+2001-06-24  The LyX Project  <Asger>
+
+	* src/insets/insettabular.C (getMaxWidth): We cache a mapping from
+	inset to cell in order to speed this method up.
+
+2001-06-23  The LyX Project  <jug@sad.it>
+
+	* lib/templates/dinbrief.lyx: remove obsolete \cursor statement
+
 2001-06-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/tex/cv.cls:

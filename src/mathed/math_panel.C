@@ -241,7 +241,7 @@ void deco_cb(FL_OBJECT *, long data)
     case MM_APPLY:
     case MM_OK:
       { 
-	 int i = fl_get_bmtable(fd_deco->menu);
+	 unsigned int i = fl_get_bmtable(fd_deco->menu);
 	 // ideally the callback should not be called if the index is
 	 // greater than the maxitem of the bmtable, but I do not know
 	 // how to enforce that (JMarc)

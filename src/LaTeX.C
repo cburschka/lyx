@@ -607,7 +607,7 @@ void LaTeX::deplog(DepTable & head)
 	// files used by the LaTeX run. The files are then entered into the
 	// dependency file.
 
-	string logfile = OnlyFilename(ChangeExtension(file, ".log"));
+	string const logfile = OnlyFilename(ChangeExtension(file, ".log"));
 
 	LRegex reg1("\\)* *\\(([^ )]+).*");
 	LRegex reg2("File: ([^ ]+).*");

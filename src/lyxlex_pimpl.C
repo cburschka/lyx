@@ -22,7 +22,7 @@ struct compare_tags {
 	// used by lower_bound, sort and sorted
 	inline
 	int operator()(keyword_item const & a, keyword_item const & b) const {
-		return compare_no_case(a.tag, b.tag) < 0;
+		return compare_ascii_no_case(a.tag, b.tag) < 0;
 	}
 };
 // } // end of anon namespace
