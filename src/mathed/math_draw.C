@@ -142,7 +142,6 @@ MathParInset::Metrics()
 {
     byte cx;
     byte cxp = 0;
-    string s;
     int ls;
     int asc = df_asc;
     int des = 0;
@@ -163,7 +162,7 @@ MathParInset::Metrics()
     while (data.OK()) {
 	cx = data.GetChar();      
 	if (cx >= ' ') {
-	    s = reinterpret_cast<char *>(data.GetString(ls));
+	    string s = data.GetString();
 	    mathed_string_height(data.FCode(), size, s, asc, des);
 	    if (asc > ascent) ascent = asc;
 	    if (des > descent) descent = des;
