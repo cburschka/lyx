@@ -356,10 +356,10 @@ bool setLyxPaths()
 		// default behaviour
 		if (user_lyxdir_.empty())
 			if (inOSXBundle)
-				user_lyxdir_ = AddPath(GetEnvPath("HOME"),
+				user_lyxdir_ = AddPath(os::homepath(),
 						       "Library/Preferences/LyX");
 			else
-				user_lyxdir_ = AddPath(GetEnvPath("HOME"),
+				user_lyxdir_ = AddPath(os::homepath(),
 						       string(".") + PACKAGE);
 		explicit_userdir = false;
 	}

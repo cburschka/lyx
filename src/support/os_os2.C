@@ -30,6 +30,9 @@ namespace {
 string binpath_;
 string binname_;
 string tmpdir_;
+string homepath_;
+string nulldev_;
+
 os::shell_type shell_ = os::UNIX;
 unsigned long cp_ = 0;
 
@@ -86,6 +89,10 @@ void init(int argc, char * argv[])
 	// CPList[1] == system default codepage, the rest are auxilary.
 	// Once cp_ is correctly set, you can call other routines.
 	cp_ = CPList[1];
+
+	tmpdir_ = "/tmp";
+	homepath_ = GetEnvPath("HOME");
+	nulldev_ = "null";
 }
 
 
@@ -217,13 +224,13 @@ char const * popen_read_mode()
 }
 
 
-string binpath()
+string const & binpath()
 {
 	return binpath_;
 }
 
 
-string binname()
+string const & binname()
 {
 	return binname_;
 }
@@ -235,9 +242,21 @@ void setTmpDir(string const & p)
 }
 
 
-string getTmpDir()
+string const & getTmpDir()
 {
 	return tmpdir_;
+}
+
+
+string const & homepath()
+{
+	return homepath_;
+}
+
+
+string const & nulldev()
+{
+	return nulldev_;
 }
 
 

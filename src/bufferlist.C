@@ -27,6 +27,7 @@
 #include "frontends/Alert.h"
 
 #include "support/filetools.h"
+#include "support/os.h"
 
 #include <boost/bind.hpp>
 
@@ -55,6 +56,7 @@ using std::vector;
 using std::back_inserter;
 using std::transform;
 
+namespace os = lyx::support::os;
 
 BufferList::BufferList()
 {}
@@ -309,7 +311,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	}
 
 	// 2) In HOME directory.
-	string s = AddName(GetEnvPath("HOME"), buf->fileName());
+	string s = AddName(os::homepath(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {

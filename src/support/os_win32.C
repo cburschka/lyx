@@ -32,6 +32,8 @@ namespace {
 string binpath_;
 string binname_;
 string tmpdir_;
+string homepath_;
+string nulldev_;
 
 }
 
@@ -65,6 +67,16 @@ void init(int /* argc */, char * argv[])
 	if (suffixIs(tmp, "/.libs/"))
 		tmp.erase(tmp.length()-6, string::npos);
 	binpath_ = tmp;
+
+#ifdef __CYGWIN__
+	tmpdir_ = "/tmp";
+	homepath_ = GetEnvPath("HOME");
+	nulldev_ = "/dev/null";
+#else
+	tmpdir_ = string();
+	homepath_ = GetEnvPath("HOMEDRIVE") + GetEnvPath("HOMEPATH");
+	nulldev_ = "nul";
+#endif
 }
 
 
@@ -190,9 +202,25 @@ string getTmpDir()
 }
 
 
+string const & homepath()
+{
+	return homepath_;
+}
+
+
+string const & nulldev()
+{
+	return nulldev_;
+}
+
+
 shell_type shell()
 {
+#ifdef __CYGWIN__
 	return UNIX;
+#else
+	return CMD_EXE;
+#endif
 }
 
 } // namespace os

@@ -25,6 +25,7 @@
 #include "support/globbing.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/os.h"
 #include "support/tostr.h"
 
 #include "lyx_forms.h"
@@ -82,6 +83,7 @@ using std::map;
 using std::vector;
 
 using namespace lyx::frontend;
+namespace os = lyx::support::os;
 
 namespace {
 
@@ -617,7 +619,7 @@ void FileDialog::Private::FileDlgCB(FL_OBJECT *, long arg)
 		break;
 
 	case 11: // home
-		current_dlg_->SetDirectory(GetEnvPath("HOME"));
+		current_dlg_->SetDirectory(os::homepath());
 		current_dlg_->SetFilters(fl_get_input(file_dlg_form_->PatBox));
 		current_dlg_->Reread();
 		break;

@@ -25,6 +25,8 @@ namespace {
 string binpath_;
 string binname_;
 string tmpdir_;
+string homepath_;
+string nulldev_;
 
 }
 
@@ -55,6 +57,10 @@ void init(int /*argc*/, char * argv[])
 	if (suffixIs(tmp, "/.libs/"))
 		tmp.erase(tmp.length() - 6, string::npos);
 	binpath_ = tmp;
+
+	tmpdir_ = "/tmp";
+	homepath_ = GetEnvPath("HOME");
+	nulldev_ = "/dev/null";
 }
 
 
@@ -120,13 +126,13 @@ char const * popen_read_mode()
 }
 
 
-string binpath()
+string const & binpath()
 {
 	return binpath_;
 }
 
 
-string binname()
+string const & binname()
 {
 	return binname_;
 }
@@ -138,9 +144,21 @@ void setTmpDir(string const & p)
 }
 
 
-string getTmpDir()
+string const & getTmpDir()
 {
 	return tmpdir_;
+}
+
+
+string const & homepath()
+{
+	return homepath_;
+}
+
+
+string const & nulldev()
+{
+	return nulldev_;
 }
 
 

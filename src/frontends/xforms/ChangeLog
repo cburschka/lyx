@@ -1,3 +1,8 @@
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
+	* FormFiledialog.C: (FileDlgCB): use os::homepath(), not
+	GetEnvPath("HOME").
+
 2004-12-05  Angus Leeming  <leeming@lyx.org>
 
 	* pch.h: s@<X11/forms.h>@"lyx_forms.h"@

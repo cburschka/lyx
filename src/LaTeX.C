@@ -384,11 +384,7 @@ int LaTeX::run(TeXErrors & terr)
 
 int LaTeX::startscript()
 {
-#ifndef __EMX__
-	string tmp = cmd + ' ' + QuoteName(file) + " > /dev/null";
-#else // cmd.exe (OS/2) causes SYS0003 error at "/dev/null"
-	string tmp = cmd + ' ' + file + " > nul";
-#endif
+	string tmp = cmd + ' ' + QuoteName(file) + " > " + os::nulldev();
 	Systemcall one;
 	return one.startscript(Systemcall::Wait, tmp);
 }

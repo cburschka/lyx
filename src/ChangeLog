@@ -1,5 +1,13 @@
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
+	* LaTeX.C: (startscript): use os::nulldev() rather than "/dev/null".
+
+	* bufferlist.C (emergencyWrite):
+	* lyx_main.C (queryUserLyXDir): use os::homepath(), not
+	GetEnvPath("HOME").
+
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
 	* main.C: (main): no longer pass pointers to os::init.
 
 2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>

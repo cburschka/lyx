@@ -77,6 +77,8 @@ using lyx::support::user_lyxdir;
 using lyx::support::os::getTmpDir;
 using lyx::support::os::setTmpDir;
 
+namespace os = lyx::support::os;
+
 using std::endl;
 using std::string;
 using std::vector;
@@ -552,7 +554,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 
 	if (!createDirectory(user_lyxdir(), 0755)) {
 		// Failed, let's use $HOME instead.
-		user_lyxdir(GetEnvPath("HOME"));
+		user_lyxdir(os::homepath());
 		lyxerr << bformat(_("Failed. Will use %1$s instead."),
 			user_lyxdir()) << endl;
 		return;

@@ -690,7 +690,7 @@ string const ExpandPath(string const & path)
 		return getcwd() + '/' + RTemp;
 	}
 	if (Temp == "~") {
-		return GetEnvPath("HOME") + '/' + RTemp;
+		return os::homepath() + '/' + RTemp;
 	}
 	if (Temp == "..") {
 		return MakeAbsPath(copy);
@@ -1111,7 +1111,7 @@ string const MakeDisplayPath(string const & path, unsigned int threshold)
 {
 	string str = path;
 
-	string const home(GetEnvPath("HOME"));
+	string const home(os::homepath());
 
 	// replace /home/blah with ~/
 	if (prefixIs(str, home))
