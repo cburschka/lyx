@@ -2371,9 +2371,8 @@ int LyXTabular::asciiPrintCell(Buffer const * buf, ostream & os,
 		break;
 	}
 
-	os << string(len1, ' ')
-	   << sstr.str()
-	   << string(len2, ' ');
+	os << string(len1, ' ') << sstr.str() << string(len2, ' ');
+
 	if (RightLine(cell))
 		os << " |";
 	else
