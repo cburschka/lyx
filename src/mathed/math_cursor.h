@@ -126,7 +126,7 @@ public:
 	///
 	MathTextCodes getLastCode() const;
 	///
-	int idx() const { return idx_; }
+	int idx() const { return cursor_.idx_; }
 	///
 	void idxNext();
 	///
@@ -153,16 +153,9 @@ public:
 	bool macro_mode;
 	
 	// Selection stuff
-	///
+	/// do we currently select
 	bool selection;
-	///
-	int anchor_;
-	///
-	int cursor_;
-	///
-	int idx_;
-	///
-	MathInset	* par_;
+
 	///
 	InsetFormulaBase * const formula_;
 	///
@@ -186,13 +179,24 @@ public:
 private:
 	/// Description of a position 
 	struct MathIter {
+		/// inset
 		MathInset * par_;
+		/// cell inset
 		int idx_;
-		int cursor_;
+		///
+		int pos_;
 	};
 
-	/// MathPath
+	/// path of positions the cursor had to go if it were leving each inset
 	std::vector<MathIter> path_;
+
+	/// reference to the last item of the path
+	MathIter anchor_;
+	///
+	MathIter cursor_;
+	///
+	int path_idx_;
+
 
 	///  
 	int last() const;

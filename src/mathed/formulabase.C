@@ -580,7 +580,10 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			bv->updateInset(this, true);
 			break;
 		}
-		mathcursor->plainLeft();
+		if (mathcursor->InMacroMode())
+			mathcursor->Left();
+		else
+			mathcursor->plainLeft();
 		// fall through...
 
 	case LFUN_DELETE:
