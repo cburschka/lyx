@@ -75,10 +75,10 @@ int InsetOptArg::latexOptional(Buffer const & buf, ostream & os,
 			       OutputParams const & runparams) const
 {
 	ostringstream ss;
-	InsetText::latex(buf, ss, runparams);
+	int ret = InsetText::latex(buf, ss, runparams);
 	string str = ss.str();
 	if (str.find(']') != string::npos)
 		str = '{' + str + '}';
 	os << '[' << str << ']';
-	return str.length() + 2;
+	return ret;
 }

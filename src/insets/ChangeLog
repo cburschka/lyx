@@ -1,3 +1,8 @@
+2004-11-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetoptarg.C (latexOptional): return number of lines instead of
+	number of characters
+
 2004-11-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insettabular.[Ch] (string2params): Don't pretend to return the

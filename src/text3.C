@@ -1594,7 +1594,8 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_INSET_OPTARG:
-		enable = cur.paragraph().layout()->optionalargs;
+		enable = numberOfOptArgs(cur.paragraph()) 
+			< cur.paragraph().layout()->optionalargs;
 		break;
 
 	case LFUN_APPENDIX:

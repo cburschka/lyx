@@ -195,18 +195,22 @@ TeXEnvironment(Buffer const & buf,
 }
 
 
-InsetOptArg * optArgInset(Paragraph const & par)
+int latexOptArgInsets(Buffer const & buf, Paragraph const & par, 
+		      ostream & os, OutputParams const & runparams, int number)
 {
-	// Find the entry.
+	int lines = 0;
+	
 	InsetList::const_iterator it = par.insetlist.begin();
 	InsetList::const_iterator end = par.insetlist.end();
-	for (; it != end; ++it) {
-		InsetBase * ins = it->inset;
-		if (ins->lyxCode() == InsetBase::OPTARG_CODE) {
-			return static_cast<InsetOptArg *>(ins);
+	for (; it != end && number > 0 ; ++it) {
+		if (it->inset->lyxCode() == InsetBase::OPTARG_CODE) {
+			InsetOptArg * ins = 
+				static_cast<InsetOptArg *>(it->inset);
+			lines += ins->latexOptional(buf, os, runparams);
+			--number;
 		}
 	}
-	return 0;
+	return lines;
 }
 
 
@@ -308,10 +312,13 @@ TeXOnePar(Buffer const & buf,
 		os << '\\' << style->latexname();
 
 		// Separate handling of optional argument inset.
-		if (style->optionalargs == 1) {
-			InsetOptArg * it = optArgInset(*pit);
-			if (it)
-				it->latexOptional(buf, os, runparams);
+		if (style->optionalargs > 0) {
+			int ret = latexOptArgInsets(buf, *pit, os, runparams, 
+						    style->optionalargs);
+			while (ret > 0) {
+				texrow.newline();
+				--ret;
+			}
 		}
 		else
 			os << style->latexparam();

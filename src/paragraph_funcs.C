@@ -353,3 +353,20 @@ void getParsInRange(ParagraphList & pars, int ystart, int yend,
 	for (end = beg ; end != endpar && pars[end].y <= yend; ++end)
 		;
 }
+
+
+/// return the number of InsetOptArg in a paragraph
+int numberOfOptArgs(Paragraph const & par)
+{
+	int num = 0;
+	
+	InsetList::const_iterator it = par.insetlist.begin();
+	InsetList::const_iterator end = par.insetlist.end();
+	for (; it != end ; ++it) {
+		if (it->inset->lyxCode() == InsetBase::OPTARG_CODE) 
+			++num;
+	}
+	return num;
+}
+
+

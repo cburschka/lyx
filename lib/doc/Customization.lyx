@@ -5846,6 +5846,21 @@ LatexName
 
 \family typewriter 
 \series medium 
+OptionalArgs
+\family default 
+\series default 
+ [
+\family typewriter 
+int=0
+\family default 
+] The number of optional arguments that can be used with this layout.
+ This is useful for things like section headings, and only makes sense with
+ LaTeX.
+\layout Description
+
+
+\family typewriter 
+\series medium 
 Margin
 \family default 
 \series default 

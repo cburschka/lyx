@@ -67,4 +67,8 @@ void getParsInRange(ParagraphList & plist,
 				lyx::par_type & beg,
 				lyx::par_type & end);
 
+/// return the number of InsetOptArg in a paragraph
+int numberOfOptArgs(Paragraph const & par);
+
+
 #endif // PARAGRAPH_FUNCS_H
