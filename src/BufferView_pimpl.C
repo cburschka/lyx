@@ -355,7 +355,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 
 bool BufferView::Pimpl::fitCursor()
 {
-	lyxerr << "BufferView::Pimpl::fitCursor." << endl;
 	if (screen().fitCursor(bv_)) {
 		updateScrollbar();
 		return true;

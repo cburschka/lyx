@@ -92,19 +92,15 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 		// remove one level of cursor
 		switch (res.val()) {
 			case FINISHED:
-				pop(i);
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 				break;
 			case FINISHED_RIGHT:
-				pop(i);
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 				break;
 			case FINISHED_UP:
-				pop(i);
 				cmd = FuncRequest(LFUN_FINISHED_UP);
 				break;
 			case FINISHED_DOWN:
-				pop(i);
 				cmd = FuncRequest(LFUN_FINISHED_DOWN);
 				break;
 			default:
@@ -112,7 +108,9 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 				break;
 		}
 	}
-	lyxerr << "trying to dispatch to main text " << bv_->text() << endl;
+	current_ = 0;
+	lyxerr << "trying to dispatch to main text " << bv_->text()
+		<< " with cursor: " << *this << endl;
 	DispatchResult res = bv_->text()->dispatch(*this, cmd);
 	lyxerr << "   result: " << res.val() << endl;
 	return res;
@@ -131,24 +129,18 @@ void LCursor::push(InsetBase * inset)
 
 void LCursor::pop(int depth)
 {
-	//lyxerr << "LCursor::pop() to depth " << depth << endl;
-	while (int(cursor_.size()) > depth)
+	while (int(cursor_.size()) > depth + 1)
 		pop();
+	lyxerr << "LCursor::pop() result: " << *this << endl;
 }
 
 
 void LCursor::pop()
 {
-	BOOST_ASSERT(!cursor_.empty());
-	//lyxerr << "LCursor::pop() a level" << endl;
-	if (cursor_.size() <= 1)
-		lyxerr << "### TRYING TO POP FROM EMPTY CURSOR" << endl;
-	else {
-		cursor_.pop_back();
-		anchor_.pop_back();
-		current_ = cursor_.size() - 1;
-	}
-	//lyxerr << "LCursor::pop() current now: " << current_ << endl;
+	BOOST_ASSERT(cursor_.size() >= 1);
+	cursor_.pop_back();
+	anchor_.pop_back();
+	current_ = cursor_.size() - 1;
 }
 
 

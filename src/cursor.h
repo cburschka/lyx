@@ -82,6 +82,8 @@ public:
 	CursorSlice const & current() const;
 	/// how many nested insets do we have?
 	size_t depth() const { return cursor_.size(); }
+	/// depth of current slice
+	int currentDepth() const { return current_; }
 
 	//
 	// selection

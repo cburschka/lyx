@@ -1464,24 +1464,32 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_FINISHED_LEFT:
-		lyxerr << "swallow LFUN_FINISHED_LEFT" << endl;
+		lyxerr << "handle LFUN_FINISHED_LEFT" << endl;
+		cur.pop(cur.currentDepth());
+		cur.bv().cursor() = cur;
 		if (rtl())
 			cursorLeft(true);
 		break;
 
 	case LFUN_FINISHED_RIGHT:
-		lyxerr << "swallow LFUN_FINISHED_RIGHT" << endl;
+		lyxerr << "handle LFUN_FINISHED_RIGHT" << endl;
+		cur.pop(cur.currentDepth());
+		cur.bv().cursor() = cur;
 		if (!rtl())
 			cursorRight(true);
 		break;
 
 	case LFUN_FINISHED_UP:
-		lyxerr << "swallow LFUN_FINISHED_UP" << endl;
+		lyxerr << "handle LFUN_FINISHED_UP" << endl;
+		cur.pop(cur.currentDepth());
+		cur.bv().cursor() = cur;
 		cursorUp(true);
 		break;
 
 	case LFUN_FINISHED_DOWN:
-		lyxerr << "swallow LFUN_FINISHED_DOWN" << endl;
+		lyxerr << "handle LFUN_FINISHED_DOWN" << endl;
+		cur.pop(cur.currentDepth());
+		cur.bv().cursor() = cur;
 		cursorDown(true);
 		break;
 

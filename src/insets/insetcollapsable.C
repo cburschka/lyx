@@ -63,20 +63,19 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 
 void InsetCollapsable::write(Buffer const & buf, ostream & os) const
 {
-	string st;
-
+	os << "status ";
 	switch (status_) {
 	case Open:
-		st = "open";
+		os << "open";
 		break;
 	case Collapsed:
-		st = "collapsed";
+		os << "collapsed";
 		break;
 	case Inlined:
-		st = "inlined";
+		os << "inlined";
 		break;
 	}
-	os << "status " << st << "\n";
+	os << "\n";
 	inset.text_.write(buf, os);
 }
 
@@ -170,12 +169,11 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	} else {
 		Dimension dimc;
 		dimension_collapsed(dimc);
-
 		int const aa  = ascent();
-		button_dim.x1 = 0;
-		button_dim.x2 = dimc.width();
-		button_dim.y1 = -aa;
-		button_dim.y2 = -aa + dimc.height();
+		button_dim.x1 = x + 0;
+		button_dim.x2 = x + dimc.width();
+		button_dim.y1 = y - aa;
+		button_dim.y2 = y - aa + dimc.height();
 
 		draw_collapsed(pi, x, y);
 		if (status_ == Open) {
@@ -219,6 +217,8 @@ InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 		if (hitButton(cmd)) {
 			lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 			setStatus(Collapsed);
+			// drop one level
+			cur.bv().cursor() = cur;
 			return DispatchResult(false, FINISHED_RIGHT);
 		}
 		lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
@@ -227,7 +227,8 @@ InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 	case Inlined:
 		return inset.dispatch(cur, cmd);
 	}
-
+	BOOST_ASSERT(false);
+	// shut up compiler
 	return DispatchResult(true, true);
 }
 

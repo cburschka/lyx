@@ -210,6 +210,7 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 
 DispatchResult InsetERT::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
+	lyxerr << "\nInsetERT::priv_dispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {

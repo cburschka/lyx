@@ -89,7 +89,7 @@ int InsetOld::scroll(bool recursive) const
 
 void InsetOld::setPosCache(PainterInfo const &, int x, int y) const
 {
-	lyxerr << "InsetOld:: position cache to " << x << " " << y << std::endl;
+	//lyxerr << "InsetOld:: position cache to " << x << " " << y << std::endl;
 	xo_ = x;
 	yo_ = y;
 }
