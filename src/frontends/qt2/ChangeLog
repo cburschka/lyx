@@ -1,6 +1,14 @@
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
+	* QCharacter.[Ch]:
+	* QCharacterDialog.[Ch]:
+	* ui/QcharacterDialog.ui: make work again,
+	  add auto-apply feature
+ 
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
 	* Makefile.am:
 	* Makefile.dialogs:
 	* QBibitem.[Ch]:

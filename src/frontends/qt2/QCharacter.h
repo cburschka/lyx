@@ -1,61 +1,50 @@
 // -*- C++ -*-
 /**
  * \file QCharacter.h
- * Copyright 2001 The LyX Team.
- * See the file COPYING.
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
  *
- * \author Edwin Leuven
+ * \author Edwin Leuven, leuven@fee.uva.nl
+ * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
 #ifndef QCHARACTER_H
 #define QCHARACTER_H
 
-#include "DialogBase.h"
+#include <config.h>
+#include <vector>
+ 
+#include "LString.h" 
+#include "Qt2Base.h"
+#include "controllers/character.h" 
+ 
 
-class LyXView;
-class Dialogs;
+class ControlCharacter;
 class QCharacterDialog;
 
-class QCharacter : public DialogBase {
-public:
-	///
-	QCharacter(LyXView *, Dialogs *);
-	///
-	~QCharacter();
+class QCharacter :
+	public Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> > 
+{
+	friend class QCharacterDialog;
+ 
+public: 
+	QCharacter(ControlCharacter &);
 
-	/// Apply changes.
-	void apply();
-	/// Close connections.
-	void close();
-
-private:
-
-	/// Show the dialog.
-	void show();
-	/// Hide the dialog.
-	void hide();
-	/// Update the dialog.
-	void update(bool switched = false);
-
-	/// Real GUI implementation.
-	QCharacterDialog * dialog_;
-
-	/// the LyXView we belong to.
-	LyXView * lv_;
-
-	/** Which Dialogs do we belong to?
-	 *  Used so we can get at the signals we have to connect to.
-	 */
-	Dialogs * d_;
-
-	/// is the buffer readonly?
-	bool readonly;
-
-	/// Hide connection.
-	SigC::Connection h_;
-
-	/// Update connection.
-	SigC::Connection u_;
+private: 
+	/// Apply changes
+	virtual void apply();
+	/// update
+	virtual void update_contents();
+	/// build the dialog
+	virtual void build_dialog();
+ 
+	std::vector<character::FamilyPair> family;
+	std::vector<character::SeriesPair> series;
+	std::vector<character::ShapePair>  shape;
+	std::vector<character::SizePair>   size;
+	std::vector<character::BarPair>    bar;
+	std::vector<character::ColorPair>  color;
+	std::vector<string> language;
 };
 
 #endif // QCHARACTER_H

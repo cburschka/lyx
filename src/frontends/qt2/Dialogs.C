@@ -15,6 +15,7 @@
 #include "QAboutDialog.h"
 #include "QBibitemDialog.h"
 #include "QBibtexDialog.h"
+#include "QCharacterDialog.h"
 #include "QCitationDialog.h"
 #include "QIndexDialog.h"
 #include "QRefDialog.h"
@@ -44,6 +45,7 @@
 #include "controllers/ControlAboutlyx.h"
 #include "controllers/ControlBibitem.h"
 #include "controllers/ControlBibtex.h"
+#include "controllers/ControlCharacter.h"
 #include "controllers/ControlCitation.h"
 #include "controllers/ControlIndex.h"
 #include "controllers/ControlRef.h"
@@ -51,7 +53,6 @@
 #include "controllers/ControlUrl.h" 
 #if 0
 #include "controllers/ControlButtons.h"
-#include "controllers/ControlCharacter.h"
 #include "controllers/ControlCitation.h"
 #include "controllers/ControlERT.h"
 #include "controllers/ControlError.h"
@@ -88,6 +89,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIAboutlyx<QAbout, Qt2BC>(*lv, *this));
 	add(new GUIBibitem<QBibitem, Qt2BC>(*lv, *this));
 	add(new GUIBibtex<QBibtex, Qt2BC>(*lv, *this));
+	add(new GUICharacter<QCharacter, Qt2BC>(*lv, *this));
 	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
