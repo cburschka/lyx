@@ -34,6 +34,13 @@ class FormBase : public ViewBC<xformsBC>
 {
 public:
 	///
+	enum TooltipLevel {
+		NO_TOOLTIP,
+		MINIMAL_TOOLTIP,
+		VERBOSE_TOOLTIP
+	};
+
+	///
 	FormBase(ControlButtons &, string const &, bool allowResize);
 	///
 	virtual ~FormBase() {}
@@ -44,10 +51,9 @@ public:
 	/// feedback callback function, invoked only by C_FormBasePrehandler
 	void FeedbackCB(FL_OBJECT *, int event);
 
-#if FL_REVISION < 89
-	/// invoked only by TooltipTimerCB
-	string const getTooltipCB(FL_OBJECT *);
-#endif
+	/** Return the tooltip dependent on the value of tooltip_level_
+	    Invoked only by setTooltipHandler and by TooltipTimerCB */
+	string const getTooltip(FL_OBJECT *) const;
 
 protected:
 	/// Build the dialog
@@ -56,6 +62,9 @@ protected:
 	void hide();
 	/// Create the dialog if necessary, update it and display it.
 	void show();
+
+	/// Set's how verbose the tooltips are going to be
+	void setTooltipLevel(TooltipLevel level);
 
 	/// Prepare the way to produce a tooltip when the mouse is over ob.
 	void setTooltipHandler(FL_OBJECT * ob);
@@ -83,10 +92,13 @@ private:
 	    that the xform colors have been re-mapped). */
 	virtual void redraw();
 
-	///
-	virtual string const getTooltip(FL_OBJECT *) { return string(); }
+	/// These methods can be overridden in the daughter classes.
+	virtual string const getMinimalTooltip(FL_OBJECT *) const
+		{ return string(); }
+	virtual string const getVerboseTooltip(FL_OBJECT *) const
+		{ return string(); }
 
-	/// post feedback for ob. Defaults to nothing
+	/// Post feedback for ob. Defaults to nothing
 	virtual void feedback(FL_OBJECT * /* ob */) {}
 	/// clear the feedback message
 	virtual void clear_feedback() {}
@@ -106,6 +118,8 @@ private:
 #if FL_REVISION < 89
 	FL_OBJECT * tooltip_timer_;
 #endif
+	/// How verbose are the tooltips?
+	TooltipLevel tooltip_level_;
 };
 
 

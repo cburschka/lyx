@@ -20,6 +20,7 @@
 #include "FormBase.h"
 #include "xformsBC.h"
 #include "support/LAssert.h"
+#include "xforms_helpers.h" // formatted
 
 #if FL_REVISION < 89
 
@@ -65,7 +66,7 @@ static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
 
 FormBase::FormBase(ControlButtons & c, string const & t, bool allowResize)
 	: ViewBC<xformsBC>(c), minw_(0), minh_(0), allow_resize_(allowResize),
-	  title_(t), warning_posted_(false)
+	  title_(t), warning_posted_(false), tooltip_level_(VERBOSE_TOOLTIP)
 
 {
 #if FL_REVISION < 89
@@ -198,6 +199,36 @@ void FormBase::setTooltipHandler(FL_OBJECT * ob)
 }
 
 
+string const FormBase::getTooltip(FL_OBJECT * ob) const
+{
+	lyx::Assert(ob);
+
+	switch (tooltip_level_) {
+	case VERBOSE_TOOLTIP: 
+	{
+		string str = getVerboseTooltip(ob);
+		if (!str.empty())
+			return formatted(_(str), 400);
+		// else, fall through
+	}
+	
+	case MINIMAL_TOOLTIP:
+		return getMinimalTooltip(ob);
+		
+	case NO_TOOLTIP:
+	default:
+		return string();
+	}
+	
+}
+		
+
+void FormBase::setTooltipLevel(TooltipLevel level)
+{
+	tooltip_level_ = level;
+}
+
+
 void FormBase::setPrehandler(FL_OBJECT * ob)
 {
 	lyx::Assert(ob);
@@ -209,16 +240,6 @@ void FormBase::setWarningPosted(bool warning)
 {
 	warning_posted_ = warning;
 }
-
-
-#if FL_REVISION < 89
-
-string const FormBase::getTooltipCB(FL_OBJECT * ob)
-{
-	return getTooltip(ob);
-}
-
-#endif // FL_REVISION < 89
 
 
 namespace {
@@ -317,7 +338,7 @@ void TooltipTimerCB(FL_OBJECT * timer, long data)
 	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
 	lyx::Assert(ob && ob->form);
 
-	string const help = GetForm(timer)->getTooltipCB(ob);
+	string const help = GetForm(timer)->getTooltip(ob);
 	if (help.empty())
 		return;
 

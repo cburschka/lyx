@@ -182,16 +182,9 @@ void FormBibtex::apply()
 	}
 }
 
-void FormBibtex::clear_feedback()
-{
-	fl_set_object_label(dialog_->text_info, "");
-	fl_redraw_object(dialog_->text_info);
-}
 
-void FormBibtex::feedback(FL_OBJECT * ob)
+string const FormBibtex::getVerboseTooltip(FL_OBJECT * ob) const
 {
-	lyx::Assert(ob);
-
 	string str;
 
 	if (ob == dialog_->database) {
@@ -210,9 +203,5 @@ void FormBibtex::feedback(FL_OBJECT * ob)
 		str = _("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default).");
 	}
 
-	str = formatted(_(str), dialog_->text_info->w-10, FL_SMALL_SIZE);
-
-	fl_set_object_label(dialog_->text_info, str.c_str());
-	fl_set_object_lsize(dialog_->text_info, FL_SMALL_SIZE);
-	fl_redraw_object(dialog_->text_info);
+	return str;
 }

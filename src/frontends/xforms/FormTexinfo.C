@@ -115,14 +115,7 @@ void FormTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 }
 
 
-void FormTexinfo::clear_feedback()
-{
-	fl_set_object_label(dialog_->message, "");
-	fl_redraw_object(dialog_->message);
-}
-
-
-string const FormTexinfo::getTooltip(FL_OBJECT * ob)
+string const FormTexinfo::getMinimalTooltip(FL_OBJECT * ob) const
 {
 	string str;
 
@@ -152,10 +145,9 @@ string const FormTexinfo::getTooltip(FL_OBJECT * ob)
 	return str;
 }
 
-void FormTexinfo::feedback(FL_OBJECT * ob)
-{
-	lyx::Assert(ob);
 
+string const FormTexinfo::getVerboseTooltip(FL_OBJECT * ob) const
+{
 	string str;
 
 	if (ob == dialog_->radio_cls) {
@@ -181,9 +173,5 @@ void FormTexinfo::feedback(FL_OBJECT * ob)
 
 	}
 
-	str = formatted(_(str), dialog_->message->w-10, FL_SMALL_SIZE);
-
-	fl_set_object_label(dialog_->message, str.c_str());
-	fl_set_object_lsize(dialog_->message, FL_SMALL_SIZE);
-	fl_redraw_object(dialog_->message);
+	return str;
 }

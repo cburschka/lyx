@@ -1,3 +1,18 @@
+2002-02-06  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.[Ch]: can now chose the verbosity of the tooltip through
+	a new method setTooltipLevel(). In turn this determines which of the
+	new virtual methods, getVerboseTooltip() or getMinimalTooltip() gets
+	called from getTooltip.
+	No need for a "message" widget at the bottom of every dialog, therefore.
+	If retained, this "message" widget can be used to display "warnings",
+	pure and simple.
+
+	* FormBibtex.[Ch]:
+	* FormCitation.[Ch]:
+	* FormTexinfo.[Ch]: altered appropriately. Still need to be reshaped,
+	to lose the "message" widget and to gain a "tooltip level" choice.
+
 2002-02-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* forms/form_graphics.fd: Tiny tweek to make the Restore, Ok, Apply,

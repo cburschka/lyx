@@ -494,7 +494,8 @@ void FormCitation::setCiteButtons(State status) const
 	setEnabled(dialog_->button_down, activate_down);
 }
 
-string const FormCitation::getTooltip(FL_OBJECT * ob)
+
+string const FormCitation::getMinimalTooltip(FL_OBJECT * ob) const
 {
 	string str;
 
@@ -544,16 +545,9 @@ string const FormCitation::getTooltip(FL_OBJECT * ob)
 	return str;
 }
 
-void FormCitation::clear_feedback()
-{
-	fl_set_object_label(dialog_->text_info, "");
-	fl_redraw_object(dialog_->text_info);
-}
 
-void FormCitation::feedback(FL_OBJECT * ob)
+string const FormCitation::getVerboseTooltip(FL_OBJECT * ob) const
 {
-	lyx::Assert(ob);
-
 	string str;
 
 	if (ob == dialog_->button_add) {
@@ -602,9 +596,5 @@ void FormCitation::feedback(FL_OBJECT * ob)
 		str = N_("Activate if you want to enter Regular Expressions.");
 	}
 
-	str = formatted(_(str), dialog_->text_info->w-10, FL_SMALL_SIZE);
-
-	fl_set_object_label(dialog_->text_info, str.c_str());
-	fl_set_object_lsize(dialog_->text_info, FL_SMALL_SIZE);
-	fl_redraw_object(dialog_->text_info);
+	return str;
 }
