@@ -59,4 +59,8 @@ private:
 	static int key_counter;
 };
 
+
+/// Return the widest label in the Bibliography.
+std::string const bibitemWidest(Buffer const &);
+
 #endif // INSET_BIBITEM_H

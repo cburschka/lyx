@@ -25,20 +25,16 @@
 #include "texrow.h"
 #include "vspace.h"
 
+#include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"
 
 #include "support/lstrings.h"
-
-#ifdef HAVE_LOCALE
-#endif
 
 using lyx::support::subst;
 
 using std::endl;
 using std::ostream;
 using std::string;
-
-extern string bibitemWidest(Buffer const &);
 
 
 namespace {
