@@ -248,7 +248,8 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 		// toolitem later.
 		toolbutton->set_data(gToolData,
 			reinterpret_cast<void*>(&const_cast<FuncRequest &>(func)));
-		tooltips_.set_tip(*toolbutton, tip, tip);
+
+		toolbutton->set_tooltip(tooltips_,tip);
 		toolbutton->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this,
 			&GToolbar::clicked), FuncRequest(func)));
 		toolbar_.append(*toolbutton);
