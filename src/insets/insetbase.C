@@ -237,18 +237,18 @@ void InsetBase::getCursorPos(LCursor const &, int & x, int & y) const
 }
 
 
-void InsetBase::metricsMarkers(Dimension & dim, int) const
+void InsetBase::metricsMarkers(Dimension & dim, int framesize) const
 {
-	dim.wid += 2;
-	dim.asc += 1;
+	dim.wid += 2 * framesize;
+	dim.asc += framesize;
 }
 
 
-void InsetBase::metricsMarkers2(Dimension & dim, int) const
+void InsetBase::metricsMarkers2(Dimension & dim, int framesize) const
 {
-	dim.wid += 2;
-	dim.asc += 1;
-	dim.des += 1;
+	dim.wid += 2 * framesize;
+	dim.asc += framesize;
+	dim.des += framesize;
 }
 
 
