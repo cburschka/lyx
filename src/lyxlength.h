@@ -70,9 +70,7 @@ public:
 	/// return the on-screen size of this length of an image
 	int inBP() const;
 
-	/** If "data" is valid, the length represented by it is
-	  stored into "result", if that is not 0. */
-	friend bool isValidLength(string const & data, LyXLength * result = 0);
+	friend bool isValidLength(string const & data, LyXLength * result);
 
 private:
 	///
@@ -85,8 +83,9 @@ private:
 bool operator==(LyXLength const & l1, LyXLength const & l2);
 ///
 bool operator!=(LyXLength const & l1, LyXLength const & l2);
-///
-bool isValidLength(string const & data, LyXLength * result);
+/** If "data" is valid, the length represented by it is
+    stored into "result", if that is not 0. */
+bool isValidLength(string const & data, LyXLength * result = 0);
 /// return the name of the given unit number
 char const * stringFromUnit(int unit);
 

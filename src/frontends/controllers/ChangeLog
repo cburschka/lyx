@@ -1,3 +1,9 @@
+2003-03-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ControlDialog.tmpl (show): qualify emergency_exit_ with this->
+	(update): ditto
+	(hide): ditto
+
 2003-03-26  Angus Leeming  <leeming@lyx.org>
 
 	* ControlThesaurus.[Ch]: rewrite to use the Dialog-based scheme.
@@ -187,7 +193,7 @@
 	* ControlConnections.C: temporary renaming of Dialogs::signals.
 
 	* Makefile.am: add new files.
-	
+
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
 	* ControlBibtex.C (Browse):
@@ -198,7 +204,7 @@
 	browse, browsedir):
 	* ControlPrint.C (Browse):
 	don't pass a LyXView & to browseFile et al.
-	* helper_funcs.[Ch] (browseFile, browseRelFile, browseDir): 
+	* helper_funcs.[Ch] (browseFile, browseRelFile, browseDir):
 	don't pass a LyXView & to fileDlg.
 
 2003-02-17  John Levon  <levon@movementarian.org>
@@ -246,7 +252,7 @@
 2003-01-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* helper_funcs.[Ch]: implement browseDir (browse directory) [bug 824]
-	
+
 	* ControlPrefs.[Ch]: implement browsedir for the use of use browseDir.
 
 2002-12-02  Lars Gullik Bjønnes  <larsbj@gullik.net>

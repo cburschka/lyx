@@ -48,11 +48,8 @@ public:
 	///
 	string const asLatexString() const;
 
-
-	/** If "data" is valid, the length represented by it is
-	  stored into "result", if that is not 0. */
 	friend bool isValidGlueLength(string const & data,
-				      LyXGlueLength* result = 0);
+				      LyXGlueLength* result);
 
 private:
 	/// the normal vlaue
@@ -67,7 +64,8 @@ private:
 bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2);
 ///
 bool operator!=(LyXGlueLength const & l1, LyXGlueLength const & l2);
-///
-bool isValidGlueLength(string const & data, LyXGlueLength * result);
+/** If "data" is valid, the length represented by it is
+    stored into "result", if that is not 0. */
+bool isValidGlueLength(string const & data, LyXGlueLength * result = 0);
 
 #endif // LYXGLUELENGTH_H

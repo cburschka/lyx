@@ -2318,7 +2318,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 				}
 				setHeightOfRow(refresh_row);
 			}
-
 		} else {
 			Row * nextrow = old_cursor.row()->next();
 			const_cast<LyXText *>(this)->postPaint(

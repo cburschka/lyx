@@ -1,5 +1,11 @@
 2003-03-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* lyxgluelength.h (isValidGlueLength): add default arg on
+	parameter 2. Remove default arg from friend in class.
+
+	* lyxlength.h (isValidLength): add default arg on parameter 2.
+	Remove default arg from friend in class.
+
 	* text2.C (LyXText): adjust, initialize refresh_row.
 	(init): adjust
 	(removeRow): adjust
