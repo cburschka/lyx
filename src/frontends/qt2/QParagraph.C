@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlParagraph.h"
 #include "QParagraph.h"
 #include "QParagraphDialog.h"
@@ -24,6 +23,7 @@
 #include "vspace.h"
 
 #include "support/lstrings.h"
+#include "support/tostr.h"
 #include "support/LAssert.h"
 
 #include <qcombobox.h>
@@ -258,9 +258,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 		LyXLength len(length);
 		if ((isValidLength(length)
 		     || isStrDbl(length)) && !len.zero()) {
-			ostringstream buffer;
-			buffer << len.value();
-			length = buffer.str();
+			length = tostr(len.value());
 			supplied_unit = subst(stringFromUnit(len.unit()),
 					      "%", "%%");
 		}

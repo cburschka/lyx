@@ -12,11 +12,11 @@
 
 #include <config.h>
 
-
 #include "QtLyXView.h"
 #include "ControlGraphics.h"
 #include "controllers/helper_funcs.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "insets/insetgraphicsParams.h"

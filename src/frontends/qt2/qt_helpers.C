@@ -10,8 +10,7 @@
 
 #include <config.h>
 
-
-#include "support/lstrings.h"
+#include "support/tostr.h"
 #include "gettext.h"
 #include "qt_helpers.h"
 

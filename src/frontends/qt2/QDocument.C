@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "qt_helpers.h"
 
 #include "ControlDocument.h"
@@ -24,7 +23,7 @@
 #include "frnt_lang.h"
 #include "lyxrc.h" // defaultUnit
 #include "tex-strings.h" // tex_graphics
-#include "support/lstrings.h" // tostr()
+#include "support/tostr.h"
 #include "support/filetools.h" // LibFileSearch()
 #include "support/BoostFormat.h"
 #include "lyxtextclasslist.h"

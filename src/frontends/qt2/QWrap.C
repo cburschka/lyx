@@ -12,6 +12,7 @@
 
 #include "debug.h"
 #include "qt_helpers.h"
+#include "support/tostr.h"
 #include "support/lstrings.h"
 #include "LyXView.h"
 #include "ControlWrap.h"

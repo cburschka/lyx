@@ -12,11 +12,11 @@
 
 #include <config.h>
 
-
 #include "ControlTabular.h"
 #include "insets/insettabular.h"
 #include "qt_helpers.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
 #include "lyxrc.h"
 
 #include "QTabularDialog.h"

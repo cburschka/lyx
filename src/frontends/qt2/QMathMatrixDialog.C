@@ -10,10 +10,10 @@
 
 #include <config.h>
 
-
 #include "qt_helpers.h"
 
 #include "support/lstrings.h"
+#include "Lsstream.h"
 
 #include "QMath.h"
 #include "QMathMatrixDialog.h"
@@ -36,7 +36,7 @@ QMathMatrixDialog::QMathMatrixDialog(QMath * form)
 {
 	setCaption(qt_("LyX: Insert Matrix"));
 
-	table->setMinimumSize(100,100);
+	table->setMinimumSize(100, 100);
 	rowsSB->setValue(2);
 	columnsSB->setValue(2);
 	valignCO->setCurrentItem(1);
