@@ -1,3 +1,11 @@
+2000-06-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* INSTALL: remove obsolete entry in "problems" section.
+
+	* lib/examples/sl_*.lyx: update of the slovenian examples.
+
+	* src/support/FileInfo.[Ch] (getBlockSize): remove.
+
 2000-06-23  Juergen Vigna  <jug@sad.it>
 
 	* src/lyxtext.h: added a 'cleared' flag to draw() function.
@@ -45,10 +53,10 @@
 
 2000-06-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* src/Timeout.[Ch]: Change to use signals instead of callbacks. 
+	* src/Timeout.[Ch]: Change to use signals instead of callbacks.
 	* src/LyXView.h (struct FD_form_main): remove, LyXView inherits
 	from SigC::Object
-	(form_main_): remove
+	(form_main_): remove
 	
 	* src/LyXView.C (LyXView_AutosaveTimerCB): remove 
 	(create_form_form_main): remove FD_form_main stuff, connect to

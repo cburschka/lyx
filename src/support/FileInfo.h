@@ -48,9 +48,6 @@ public:
 	/// File protection mode
 	mode_t getMode() const;
 
-	/// Get "preferred" block size for efficient file system I/O
-	long getBlockSize() const;
-	
 	/// Constructs standard mode string (ls style)
 	void modeString(char * szString) const;
 	

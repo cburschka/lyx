@@ -336,14 +336,6 @@ notify us.
     The option --without-liberty disable the detection of -liberty.  It
     is meant for debugging purpose only.
 
-  o There are several known bugs in gcc 2.7.xx that cause compiler
-    errors.  This is in particular the case in spellchecker.C under
-    HP-UX 9.05 (ask Bernhard Iselborn <biselbor@rhrk.uni-kl.de> for
-    more comments) and in lyxrc.C under Linux/Alpha or DEC OSF/1.  In
-    both cases, the solution is to recompile the offending file
-    without optimization and resume the compilation process with
-    'make'.    
-
   o According to David Sundqvist <David_Sundqvist@vd.volvo.se>, some
     changes are needed to compile with aCC on HP-UX 10.20. These are the
     relevant changes in the makefile (with comments tagged on):  

@@ -192,17 +192,6 @@ mode_t FileInfo::getMode() const
 }
 
 
-long FileInfo::getBlockSize() const
-{
-#ifndef __EMX__
-	return buf.st_blksize; /* Preferred I/O block size */
-#else
-#warning May be fixed in 0.13 (SMiyata)
-	return 512; /* Assume HPFS */
-#endif
-}
-
-
 // should not be in FileInfo
 void FileInfo::modeString(char * szString) const
 {
