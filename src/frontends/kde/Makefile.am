@@ -2,14 +2,41 @@ AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libkde.la
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
-	${SIGC_CFLAGS} ${FRONTEND_INCLUDES}
+	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} -I${top_srcdir}/src/frontends/xforms
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	formcopyrightdialog_moc.C
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
+libkde_la_OBJADD = \
+        ../xforms/FormCitation.lo \
+        ../xforms/form_citation.lo \
+        ../xforms/FormCommand.lo \
+        ../xforms/FormDocument.lo \
+        ../xforms/form_document.lo \
+        ../xforms/FormGraphics.lo \
+        ../xforms/form_graphics.lo \
+        ../xforms/FormIndex.lo \
+        ../xforms/form_index.lo \
+        ../xforms/FormPreferences.lo \
+        ../xforms/form_preferences.lo \
+	../xforms/FormPrint.lo \
+	../xforms/form_print.lo \
+        ../xforms/FormRef.lo \
+        ../xforms/form_ref.lo \
+        ../xforms/FormTabular.lo \
+        ../xforms/form_tabular.lo \
+        ../xforms/FormToc.lo \
+        ../xforms/form_toc.lo \
+	../xforms/FormUrl.lo \
+	../xforms/form_url.lo \
+        ../xforms/input_validators.lo \
+        ../xforms/RadioButtonGroup.lo \
+        ../xforms/Toolbar_pimpl.lo \
+	../xforms/Menubar_pimpl.lo
+
 LIBS=
-LDFLAGS=
+LDFLAGS= $(libkde_la_OBJADD)
 LYXDATADIRS = dlg
 ETAGS_ARGS = --lang=c++
 libkde_la_SOURCES = \

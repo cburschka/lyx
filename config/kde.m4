@@ -686,13 +686,33 @@ else
   kde_includes=""
 fi
 
+AC_ARG_WITH(kde-dir,
+    [  --with-kde-dir          where the KDE root is ],
+    [
+       ac_kde_includes="$withval"/include
+       ac_kde_libraries="$withval"/lib
+    ])
+ 
+AC_ARG_WITH(kde-includes,
+    [  --with-kde-includes     where the KDE includes are. ],
+    [
+       ac_kde_includes="$withval"
+    ])
+ 
+AC_ARG_WITH(kde-libraries,
+    [  --with-kde-libraries    where the KDE library is installed.],
+    [
+       ac_kde_libraries="$withval"
+    ])
+ 
 AC_CACHE_VAL(ac_cv_have_kde,
 [#try to guess kde locations
 
 if test -z "$1"; then
 
-kde_incdirs="$ac_kde_includes /usr/lib/kde/include /usr/local/kde/include /usr/kde/include /usr/include/kde /usr/include /opt/kde/include $x_includes $qt_includes"
+kde_incdirs="/usr/lib/kde/include /usr/local/kde/include /usr/kde/include /usr/include/kde /usr/include /opt/kde/include $x_includes $qt_includes"
 test -n "$KDEDIR" && kde_incdirs="$KDEDIR/include $KDEDIR $kde_incdirs"
+kde_incdirs="$ac_kde_includes $kde_incdirs"
 AC_FIND_FILE(ksock.h, $kde_incdirs, kde_incdir)
 ac_kde_includes="$kde_incdir"
 
@@ -702,8 +722,9 @@ in the prefix, you've chosen, are no kde headers installed. This will fail.
 So, check this please and use another prefix!])
 fi
 
-kde_libdirs="$ac_kde_libraries /usr/lib/kde/lib /usr/local/kde/lib /usr/kde/lib /usr/lib/kde /usr/lib /usr/X11R6/lib /opt/kde/lib /usr/X11R6/kde/lib"
+kde_libdirs="/usr/lib/kde/lib /usr/local/kde/lib /usr/kde/lib /usr/lib/kde /usr/lib /usr/X11R6/lib /opt/kde/lib /usr/X11R6/kde/lib"
 test -n "$KDEDIR" && kde_libdirs="$KDEDIR/lib $KDEDIR $kde_libdirs"
+kde_libdirs="$ac_kde_libraries $kde_libdirs"
 AC_FIND_FILE(libkdecore.la, $kde_libdirs, kde_libdir)
 ac_kde_libraries="$kde_libdir"
 
@@ -712,7 +733,6 @@ AC_MSG_ERROR([
 in the prefix, you've chosen $ac_kde_libraries, are no kde libraries installed. This will fail.
 So, check this please and use another prefix!])
 fi
-ac_kde_libraries="$kde_libdir"
 
 if test "$ac_kde_includes" = NO || test "$ac_kde_libraries" = NO; then
   ac_cv_have_kde="have_kde=no"
@@ -775,59 +795,8 @@ fi
 AC_SUBST(KDE_LDFLAGS)
 AC_SUBST(KDE_INCLUDES)
 
-KDE_CHECK_EXTRA_LIBS
-
 AC_SUBST(all_includes)
 AC_SUBST(all_libraries)
-
-])
-
-AC_DEFUN(KDE_CHECK_EXTRA_LIBS,
-[
-AC_MSG_CHECKING(for extra includes)
-AC_ARG_WITH(extra-includes, [  --with-extra-includes   adds non standard include paths], 
-  kde_use_extra_includes="$withval",
-  kde_use_extra_includes=NONE
-)
-if test -n "$kde_use_extra_includes" && \
-   test "$kde_use_extra_includes" != "NONE"; then
-
-   ac_save_ifs=$IFS
-   IFS=':'
-   for dir in $kde_use_extra_includes; do
-     all_includes="$all_includes -I$dir"
-     USER_INCLUDES="$USER_INCLUDES -I$dir"
-   done
-   IFS=$ac_save_ifs
-   kde_use_extra_includes="added"
-else
-   kde_use_extra_includes="no"
-fi
-
-AC_MSG_RESULT($kde_use_extra_includes)
-
-AC_MSG_CHECKING(for extra libs)
-AC_ARG_WITH(extra-libs, [  --with-extra-libs       adds non standard library paths], 
-  kde_use_extra_libs=$withval,
-  kde_use_extra_libs=NONE
-)
-if test -n "$kde_use_extra_libs" && \
-   test "$kde_use_extra_libs" != "NONE"; then
-
-   ac_save_ifs=$IFS
-   IFS=':'
-   for dir in $kde_use_extra_libs; do
-     all_libraries="$all_libraries -L$dir"
-     KDE_EXTRA_RPATH="$KDE_EXTRA_RPATH -rpath $dir"
-     USER_LDFLAGS="$USER_LDFLAGS -L$dir"
-   done
-   IFS=$ac_save_ifs
-   kde_use_extra_libs="added"
-else
-   kde_use_extra_libs="no"
-fi
-
-AC_MSG_RESULT($kde_use_extra_libs)
 
 ])
 
@@ -1420,7 +1389,6 @@ AC_DEFUN(KDE_DO_IT_ALL,
 [
 AC_PREFIX_DEFAULT(${KDEDIR:-/usr/local/kde})
 KDE_PROG_LIBTOOL
-AM_KDE_WITH_NLS
 AC_PATH_KDE
 ])
 
@@ -1449,52 +1417,6 @@ AC_SUBST(KDE_EXTRA_RPATH)
 AC_SUBST(KDE_RPATH)
 AC_MSG_RESULT($USE_RPATH)
 ])
-
-dnl This is a merge of some macros out of the gettext aclocal.m4
-dnl since we don't need anything, I took the things we need
-AC_DEFUN(AM_KDE_WITH_NLS,
-  [AC_MSG_CHECKING([whether NLS is requested])
-    AC_LANG_CPLUSPLUS
-    dnl Default is enabled NLS
-    AC_ARG_ENABLE(nls,
-      [  --disable-nls           do not use Native Language Support],
-      USE_NLS=$enableval, USE_NLS=yes)
-    AC_MSG_RESULT($USE_NLS)
-    AC_SUBST(USE_NLS)
-
-    dnl If we use NLS figure out what method
-    if test "$USE_NLS" = "yes"; then
-      AC_DEFINE(ENABLE_NLS)
-
-      AM_PATH_PROG_WITH_TEST_KDE(MSGFMT, msgfmt, 
-         [test -n "`$ac_dir/$ac_word --version 2>&1 | grep 'GNU gettext'`"], msgfmt)
-      AC_PATH_PROG(GMSGFMT, gmsgfmt, $MSGFMT)
-
-      if test -z "`$MSGFMT --version 2>&1 | grep 'GNU gettext'`"; then
-        AC_MSG_RESULT([found msgfmt program is not GNU msgfmt; ignore it])
-        msgfmt=":"
-      fi
-      AC_SUBST(MSGFMT)
-
-      AM_PATH_PROG_WITH_TEST_KDE(XGETTEXT, xgettext,
-	[test -z "`$ac_dir/$ac_word -h 2>&1 | grep '(HELP)'`"], :)
-
-      dnl Test whether we really found GNU xgettext.
-      if test "$XGETTEXT" != ":"; then
-	dnl If it is no GNU xgettext we define it as : so that the
-	dnl Makefiles still can work.
-	if $XGETTEXT --omit-header /dev/null 2> /dev/null; then
-	  : ;
-	else
-	  AC_MSG_RESULT(
-	    [found xgettext programs is not GNU xgettext; ignore it])
-	  XGETTEXT=":"
-	fi
-      fi
-     AC_SUBST(XGETTEXT)
-    fi
-
-  ])
 
 # Search path for a program which passes the given test.
 # Ulrich Drepper <drepper@cygnus.com>, 1996.
@@ -1586,7 +1508,6 @@ AC_DEFUN(AM_KDE_GNU_GETTEXT,
    AC_REQUIRE([AC_TYPE_SIZE_T])dnl
    AC_REQUIRE([AC_FUNC_ALLOCA])dnl
    AC_REQUIRE([AC_FUNC_MMAP])dnl
-   AC_REQUIRE([AM_KDE_WITH_NLS])dnl
    AC_CHECK_HEADERS([argz.h limits.h locale.h nl_types.h malloc.h string.h \
 unistd.h values.h alloca.h])
    AC_CHECK_FUNCS([getcwd munmap putenv setenv setlocale strchr strcasecmp \

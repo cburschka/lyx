@@ -1,5 +1,14 @@
 2000-08-14  Juergen Vigna  <jug@sad.it>
 
+	* src/frontends/kde/Dialogs.C (Dialogs): added missing dialogs.
+
+	* config/kde.m4: addes some features
+
+	* src/frontends/kde/Makefile.am (libkde_la_OBJADD): modified to 
+	include missing xforms dialogs.
+
+	* src/Timeout.h: a hack to be able to compile with qt/kde.
+
 	* sigc++/.cvsignore: added acinclude.m4
 
 	* lib/.cvsignore: added listerros

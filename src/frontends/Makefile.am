@@ -6,7 +6,7 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 # here.
 SUBDIRS = xforms @FRONTEND@
 ETAGS_ARGS = --lang=c++
-INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/@FRONTEND@ -I${srcdir}/xfroms ${SIGC_CFLAGS}
+INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/@FRONTEND@ -I${srcdir}/xforms ${SIGC_CFLAGS}
 LIBS =
 noinst_LTLIBRARIES = libfrontends.la
 libfrontends_la_SOURCES=\

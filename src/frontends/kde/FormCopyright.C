@@ -15,18 +15,20 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <config.h>
+
+#include "Dialogs.h"
 #include "FormCopyright.h"
 #include "formcopyrightdialog.h"
-#include "Dialogs.h"
+#include "gettext.h"
 
-FormCopyright::FormCopyright(LyXFunc *c, Dialogs *d)
-	: dialog_(0), lf_(c), d_(d), h_(0)
+FormCopyright::FormCopyright(LyXView *v, Dialogs *d)
+	: dialog_(0), lv_(v), d_(d), h_(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
 	d->showCopyright.connect(slot(this, &FormCopyright::show));
-	dialog_ = 0;
 }
 
 FormCopyright::~FormCopyright()
@@ -37,7 +39,7 @@ FormCopyright::~FormCopyright()
 void FormCopyright::show()
 {
 	if (!dialog_)
-		dialog_ = new FormCopyrightDialog(0, "Copyright and Warranty",
+		dialog_ = new FormCopyrightDialog(0, _("Copyright and Warranty"),
 						  false);
 	if (!dialog_->isVisible())
 		h_ = d_->hideAll.connect(slot(this, &FormCopyright::hide));

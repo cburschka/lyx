@@ -12,11 +12,20 @@
 #ifndef TIMEOUT_H
 #define TIMEOUT_H
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include <sigc++/signal_system.h>
+/* ugly hack to prevent Qt's '#define emit ...' from 
+ * screwing us up below - jbl 2000/8/10 
+ */
+#ifdef KDEGUI
+#undef emit
+#endif
+
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Signal0;

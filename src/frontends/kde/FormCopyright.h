@@ -19,18 +19,18 @@
 #define FORMCOPYRIGHT_H
 
 #include "DialogBase.h"
-
+#include "support/utility.hpp"
 
 class Dialogs;
-class LyXFunc;
+class LyXView;
 class FormCopyrightDialog;
 
 /**
   @author Jürgen Vigna
   */
-class FormCopyright : public DialogBase  {
+class FormCopyright : public DialogBase, public noncopyable {
 public: 
-	FormCopyright(LyXFunc *, Dialogs *);
+	FormCopyright(LyXView *, Dialogs *);
 	~FormCopyright();
 
 private: 
@@ -47,13 +47,13 @@ private:
 	    We could modify Dialogs to have a visible LyXFunc* instead and
 	    save a couple of bytes per dialog.
 	*/
-	LyXFunc * lf_;
+	LyXView * lv_;
 	/** Which Dialogs do we belong to?
 	    Used so we can get at the signals we have to connect to.
 	*/
 	Dialogs * d_;
 	/// Hide connection.
-	SigC::Connection h_;
+	Connection h_;
 };
 
 #endif
