@@ -52,6 +52,7 @@ libqt2_la_SOURCES = \
 	emptytable.C \
 	emptytable.h \
 	guiapi.C \
+	io_callback.h \
 	lengthcombo.C \
 	lengthcombo.h \
 	lyx_gui.C \

@@ -1,5 +1,10 @@
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
+	* io_callback.h:
+	* lyx_gui.C: make set_read_callback() work
+ 
+2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
+
 	* lyx_gui.C: add set_read_callback()
  
 	* Makefile.am: 

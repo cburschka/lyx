@@ -25,9 +25,10 @@ nodist_libqt2moc_la_SOURCES = \
 	QContentPane_moc.C \
 	Qt2Base_moc.C \
 	QtView_moc.C \
+	io_callback_moc.C \
 	$(MOCDIALOGS)
 
 libqt2moc.la: $(libqt2moc_la_OBJECTS) $(libqt2moc_la_DEPENDENCIES)
-
+ 
 %_moc.C: ../%.h
 	$(MOC) -o $@ $<

@@ -38,6 +38,7 @@
 #include "QtView.h"
 #include "QLImage.h"
 #include "qfont_loader.h"
+#include "io_callback.h" 
  
 #include <qapplication.h>
  
@@ -146,5 +147,6 @@ bool lyx_gui::font_available(LyXFont const & font)
 
 void lyx_gui::set_read_callback(int fd, LyXComm * comm)
 {
-	// FIXME 
+	// FIXME: "leak"
+	new io_callback(fd, comm);
 }
