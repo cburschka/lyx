@@ -13,15 +13,15 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>240</width>
-            <height>102</height>
+            <width>264</width>
+            <height>133</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Display insets</string>
     </property>
-    <vbox>
+    <grid>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -30,11 +30,11 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget>
+        <widget row="0"  column="0" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout1</cstring>
+                <cstring>Layout3</cstring>
             </property>
             <grid>
                 <property stdset="1">
@@ -45,6 +45,46 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>displayGraphicsLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Display &amp;Graphics:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>displayGraphicsCO</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QComboBox</class>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>Off</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>No math</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>On</string>
+                        </property>
+                    </item>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>instantPreviewCO</cstring>
+                    </property>
+                </widget>
                 <widget row="0"  column="1" >
                     <class>QComboBox</class>
                     <item>
@@ -76,35 +116,24 @@
                         <cstring>displayGraphicsCO</cstring>
                     </property>
                 </widget>
-                <widget row="0"  column="0" >
+                <widget row="1"  column="0" >
                     <class>QLabel</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>displayGraphicsLA</cstring>
+                        <cstring>instantPreviewLA</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Display &amp;Graphics:</string>
+                        <string>Instant &amp;Preview:</string>
                     </property>
                     <property>
                         <name>buddy</name>
-                        <cstring>displayGraphicsCO</cstring>
+                        <cstring>instantPreviewCO</cstring>
                     </property>
                 </widget>
             </grid>
         </widget>
-        <widget>
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>previewCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Instant &amp;preview</string>
-            </property>
-        </widget>
-        <spacer>
+        <spacer row="1"  column="0" >
             <property>
                 <name>name</name>
                 <cstring>Spacer1</cstring>
@@ -125,6 +154,6 @@
                 </size>
             </property>
         </spacer>
-    </vbox>
+    </grid>
 </widget>
 </UI>

@@ -353,7 +353,7 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	owner_->updateLayoutChoice();
 	owner_->updateWindowTitle();
 
-	if (lyx::graphics::Previews::activated() && buffer_)
+	if (buffer_ && lyx::graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
 

@@ -883,10 +883,10 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 25 30 30
+box: 300 20 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -902,10 +902,10 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 75 30 30
+box: 300 60 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -921,10 +921,10 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 130 30 30
+box: 300 100 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -940,7 +940,7 @@ argument: 0
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 310 190 115 30
+box: 300 260 115 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_TOP
@@ -962,7 +962,7 @@ argument: 0
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 310 115 115 30
+box: 80 260 115 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_TOP
@@ -982,39 +982,38 @@ argument: 0
   sstep: 1
 
 --------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 15 185 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Instant Preview|#P
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_preview_latex
-callback: C_FormDialogView_InputCB
-argument: 0
-	value: 1
-
---------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 305 40 130 30
+box: 300 150 130 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_TOP
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Graphics display:|#G
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: choice_display
+name: choice_graphics_display
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 300 200 130 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Instant Preview:|#p
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_NoGravity FL_NoGravity
+name: choice_instant_preview
 callback: C_FormDialogView_InputCB
 argument: 0
 

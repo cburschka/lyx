@@ -1,3 +1,10 @@
+2004-04-19  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (setBuffer): changed preview interface.
+
+	* lyxrc.[Ch] (preview): no longer a bool. Now an enum with three
+	possible values.
+
 2004-04-19  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C:

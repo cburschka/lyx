@@ -24,7 +24,7 @@
 namespace lyx {
 namespace graphics {
 
-bool Previews::activated()
+LyXRC_PreviewStatus Previews::status()
 {
 	return lyxrc.preview;
 }

@@ -26,6 +26,7 @@
 
 class Buffer;
 class BufferView;
+class LyXRC_PreviewStatus;
 class MetricsInfo;
 class PainterInfo;
 
@@ -41,8 +42,8 @@ class PreviewLoader;
 
 class RenderPreview : public RenderBase, public boost::signals::trackable {
 public:
-	/// a wrapper for Previews::activated()
-	static bool activated();
+	/// a wrapper for Previews::status()
+	static LyXRC_PreviewStatus status();
 
 	RenderPreview(InsetBase const *);
 	RenderPreview(RenderPreview const &, InsetBase const *);

@@ -1,5 +1,11 @@
 2004-04-19  Angus Leeming  <leeming@lyx.org>
 
+	* insetexternal.C:
+	* insetinclude.C:
+	* render_preview.[Ch]: changes due to changes to LyXRC::preview.
+
+2004-04-19  Angus Leeming  <leeming@lyx.org>
+
 	* insetexternal.C (priv_dispatch): remove unnecessary invocation of
 	BufferView::update.
 	(add_preview): renamed as add_preview_and_start_loading. Invoke

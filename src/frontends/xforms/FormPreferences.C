@@ -1607,7 +1607,19 @@ void FormPreferences::LnFmisc::apply(LyXRC & rc) const
 		fl_get_button(dialog_->check_cursor_follows_scrollbar);
 	rc.dialogs_iconify_with_main =
 		fl_get_button(dialog_->check_dialogs_iconify_with_main);
-	rc.preview = fl_get_button(dialog_->check_preview_latex);
+
+	switch (fl_get_choice(dialog_->choice_instant_preview)) {
+	case 1:
+		rc.preview = LyXRC::PREVIEW_OFF;
+		break;
+	case 2:
+		rc.preview = LyXRC::PREVIEW_NO_MATH;
+		break;
+	case 3:
+		rc.preview = LyXRC::PREVIEW_ON;
+		break;
+	}
+	
 	rc.autosave = static_cast<unsigned int>
 		(fl_get_counter_value(dialog_->counter_autosave));
 	rc.wheel_jump = static_cast<unsigned int>
@@ -1615,7 +1627,7 @@ void FormPreferences::LnFmisc::apply(LyXRC & rc) const
 
 	// See FIXME below
 	// lyx::graphics::DisplayType old_value = rc.display_graphics;
-	switch (fl_get_choice(dialog_->choice_display)) {
+	switch (fl_get_choice(dialog_->choice_graphics_display)) {
 	case 4:
 		rc.display_graphics = lyx::graphics::NoDisplay;
 		break;
@@ -1660,11 +1672,14 @@ void FormPreferences::LnFmisc::build()
 	setPrehandler(dialog_->counter_autosave);
 	setPrehandler(dialog_->check_cursor_follows_scrollbar);
 	setPrehandler(dialog_->check_dialogs_iconify_with_main);
-	setPrehandler(dialog_->check_preview_latex);
+	setPrehandler(dialog_->choice_instant_preview);
 	setPrehandler(dialog_->counter_wm_jump);
 
-	fl_addto_choice(dialog_->choice_display,
+	fl_addto_choice(dialog_->choice_graphics_display,
 			_("Monochrome|Grayscale|Color|Do not display").c_str());
+
+	fl_addto_choice(dialog_->choice_instant_preview,
+			_("Off|No math|On").c_str());
 }
 
 
@@ -1677,13 +1692,13 @@ FormPreferences::LnFmisc::feedback(FL_OBJECT const * const ob) const
 		return LyXRC::getDescription(LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR);
 	if (ob == dialog_->check_dialogs_iconify_with_main)
 		return LyXRC::getDescription(LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN);
-	if (ob == dialog_->check_preview_latex)
+	if (ob == dialog_->choice_instant_preview)
 		return LyXRC::getDescription(LyXRC::RC_PREVIEW);
 	if (ob == dialog_->counter_autosave)
 		return LyXRC::getDescription(LyXRC::RC_AUTOSAVE);
 	if (ob == dialog_->counter_wm_jump)
 		return LyXRC::getDescription(LyXRC::RC_WHEEL_JUMP);
-	if (ob == dialog_->choice_display)
+	if (ob == dialog_->choice_graphics_display)
 		return LyXRC::getDescription(LyXRC::RC_DISPLAY_GRAPHICS);
 	return string();
 }
@@ -1697,26 +1712,37 @@ void FormPreferences::LnFmisc::update(LyXRC const & rc)
 		      rc.cursor_follows_scrollbar);
 	fl_set_button(dialog_->check_dialogs_iconify_with_main,
 		      rc.dialogs_iconify_with_main);
-	fl_set_button(dialog_->check_preview_latex,
-		      rc.preview);
+
+	switch (rc.preview) {
+	case LyXRC::PREVIEW_OFF:
+		fl_set_choice(dialog_->choice_instant_preview, 1);
+		break;
+	case LyXRC::PREVIEW_NO_MATH:
+		fl_set_choice(dialog_->choice_instant_preview, 2);
+		break;
+	case LyXRC::PREVIEW_ON:
+		fl_set_choice(dialog_->choice_instant_preview, 3);
+		break;
+	}
+
 	fl_set_counter_value(dialog_->counter_autosave, rc.autosave);
 	fl_set_counter_value(dialog_->counter_wm_jump, rc.wheel_jump);
 
 	switch (rc.display_graphics) {
 	case lyx::graphics::NoDisplay:
-		fl_set_choice(dialog_->choice_display, 4);
+		fl_set_choice(dialog_->choice_graphics_display, 4);
 		break;
 	case lyx::graphics::ColorDisplay:
-		fl_set_choice(dialog_->choice_display, 3);
+		fl_set_choice(dialog_->choice_graphics_display, 3);
 		break;
 	case lyx::graphics::GrayscaleDisplay:
-		fl_set_choice(dialog_->choice_display, 2);
+		fl_set_choice(dialog_->choice_graphics_display, 2);
 		break;
 	case lyx::graphics::MonochromeDisplay:
-		fl_set_choice(dialog_->choice_display, 1);
+		fl_set_choice(dialog_->choice_graphics_display, 1);
 		break;
 	default:
-		fl_set_choice(dialog_->choice_display, 3);
+		fl_set_choice(dialog_->choice_graphics_display, 3);
 		break;
 	}
 }

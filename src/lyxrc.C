@@ -265,7 +265,7 @@ void LyXRC::setDefaults() {
 	cursor_follows_scrollbar = false;
 	dialogs_iconify_with_main = false;
 	label_init_length = 3;
-	preview = false;
+	preview = PREVIEW_OFF;
 	preview_hashed_labels  = false;
 	preview_scale_factor = 0.9;
 
@@ -1064,7 +1064,18 @@ int LyXRC::read(LyXLex & lexrc)
 
 		case RC_PREVIEW:
 			if (lexrc.next()) {
-				preview = lexrc.getBool();
+				string const tmp = lexrc.getString();
+				if (tmp == "true" || tmp == "on")
+					preview = PREVIEW_ON;
+				else if (tmp == "no_math")
+					preview = PREVIEW_NO_MATH;
+				else {
+					preview = PREVIEW_OFF;
+					if (tmp != "false" && tmp != "off")
+						lyxerr << "Unrecognized "
+							"preview status \""
+						       << tmp << '\n' << endl;
+				}
 			}
 			break;
 
@@ -1286,7 +1297,19 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_PREVIEW:
 		if (ignore_system_lyxrc ||
 		    preview != system_lyxrc.preview) {
-			os << "\\preview " << tostr(preview) << '\n';
+			string status;
+			switch (preview) {
+			case PREVIEW_ON:
+				status = "on";
+				break;
+			case PREVIEW_NO_MATH:
+				status = "no_math";
+				break;
+			case PREVIEW_OFF:
+				status = "off";
+				break;
+			}
+			os << "\\preview " << status << '\n';
 		}
 
 	case RC_PREVIEW_HASHED_LABELS:

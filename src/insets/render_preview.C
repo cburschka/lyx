@@ -19,6 +19,7 @@
 #include "gettext.h"
 #include "LColor.h"
 #include "lyx_main.h"
+#include "lyxrc.h"
 #include "metricsinfo.h"
 
 #include "frontends/font_metrics.h"
@@ -39,9 +40,9 @@ namespace graphics = lyx::graphics;
 namespace support  = lyx::support;
 
 
-bool RenderPreview::activated()
+LyXRC_PreviewStatus RenderPreview::status()
 {
-	return graphics::Previews::activated();
+	return graphics::Previews::status();
 }
 
 
@@ -162,7 +163,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 
 void RenderPreview::startLoading(Buffer const & buffer) const
 {
-	if (!activated() && !snippet_.empty())
+	if (status() == LyXRC::PREVIEW_OFF || snippet_.empty())
 		return;
 
 	graphics::Previews & previews = graphics::Previews::get();
@@ -175,7 +176,7 @@ void RenderPreview::startLoading(Buffer const & buffer) const
 void RenderPreview::addPreview(string const & latex_snippet,
 			       Buffer const & buffer)
 {
-	if (!activated())
+	if (status() == LyXRC::PREVIEW_OFF)
 		return;
 
 	graphics::Previews & previews = graphics::Previews::get();
@@ -187,7 +188,7 @@ void RenderPreview::addPreview(string const & latex_snippet,
 void RenderPreview::addPreview(string const & latex_snippet,
 			       graphics::PreviewLoader & ploader)
 {
-	if (!activated())
+	if (status() == LyXRC::PREVIEW_OFF)
 		return;
 
 	snippet_ = support::trim(latex_snippet);

@@ -181,15 +181,25 @@ void QPrefs::apply()
 
 	QPrefDisplayModule * displaymod(dialog_->displayModule);
 
-	rc.preview = displaymod->previewCB->isChecked();
-
+	switch (displaymod->instantPreviewCO->currentItem()) {
+	case 0:
+		rc.preview = LyXRC::PREVIEW_OFF;
+		break;
+	case 1:
+		rc.preview = LyXRC::PREVIEW_NO_MATH;
+		break;
+	case 2:
+		rc.preview = LyXRC::PREVIEW_ON;
+		break;
+	}
+	
 	lyx::graphics::DisplayType dtype(lyx::graphics::ColorDisplay);
 
 	switch (displaymod->displayGraphicsCO->currentItem()) {
-		case 3:	dtype = lyx::graphics::NoDisplay; break;
-		case 2:	dtype = lyx::graphics::ColorDisplay; break;
-		case 1: dtype = lyx::graphics::GrayscaleDisplay;	break;
-		case 0: dtype = lyx::graphics::MonochromeDisplay; break;
+	case 3:	dtype = lyx::graphics::NoDisplay; break;
+	case 2:	dtype = lyx::graphics::ColorDisplay; break;
+	case 1: dtype = lyx::graphics::GrayscaleDisplay;	break;
+	case 0: dtype = lyx::graphics::MonochromeDisplay; break;
 	}
 	rc.display_graphics = dtype;
 
@@ -490,8 +500,18 @@ void QPrefs::update_contents()
 
 	QPrefDisplayModule * displaymod(dialog_->displayModule);
 
-	displaymod->previewCB->setChecked(rc.preview);
-
+	switch (rc.preview) {
+	case LyXRC::PREVIEW_OFF:
+		displaymod->instantPreviewCO->setCurrentItem(0);
+		break;
+	case LyXRC::PREVIEW_NO_MATH :
+		displaymod->instantPreviewCO->setCurrentItem(1);
+		break;
+	case LyXRC::PREVIEW_ON :
+		displaymod->instantPreviewCO->setCurrentItem(2);
+		break;
+	}
+	
 	int item = 2;
 
 	switch (rc.display_graphics) {

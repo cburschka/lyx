@@ -503,7 +503,7 @@ RenderType getRenderType(InsetExternalParams const & p)
 		return RENDERBUTTON;
 
 	if (p.display == external::PreviewDisplay) {
-		if (RenderPreview::activated())
+		if (RenderPreview::status() != LyXRC::PREVIEW_OFF)
 			return RENDERPREVIEW;
 		return RENDERBUTTON;
 	}
@@ -779,7 +779,7 @@ void add_preview_and_start_loading(RenderMonitoredPreview & renderer,
 {
 	InsetExternalParams const & params = inset.params();
 
-	if (RenderPreview::activated() &&
+	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
 	    preview_wanted(params)) {
 		renderer.setAbsFile(params.filename.absFilename());
 		string const snippet = latex_string(inset, buffer);

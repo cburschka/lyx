@@ -206,7 +206,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(latexModule->latexAutoresetCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexDviPaperED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexPaperSizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(displayModule->previewCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(displayModule->instantPreviewCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(displayModule->displayGraphicsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(pathsModule->workingDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(pathsModule->templateDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));

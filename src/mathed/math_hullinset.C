@@ -232,7 +232,8 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	BOOST_ASSERT(mi.base.bv && mi.base.bv->buffer());
 
 	bool use_preview = false;
-	if (!editing(mi.base.bv) && RenderPreview::activated()) {
+	if (!editing(mi.base.bv) &&
+	    RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		lyx::graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(*mi.base.bv->buffer());
 		use_preview = pimage && pimage->image();
@@ -285,7 +286,8 @@ void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 	BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
 
 	bool use_preview = false;
-	if (!editing(pi.base.bv) && RenderPreview::activated()) {
+	if (!editing(pi.base.bv) &&
+	    RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		lyx::graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(*pi.base.bv->buffer());
 		use_preview = pimage && pimage->image();
@@ -364,7 +366,7 @@ void MathHullInset::addPreview(lyx::graphics::PreviewLoader & ploader) const
 
 void MathHullInset::notifyCursorLeaves(LCursor & cur)
 {
-	if (!RenderPreview::activated())
+	if (RenderPreview::status() != LyXRC::PREVIEW_ON)
 		return;
 
 	Buffer const & buffer = cur.buffer();

@@ -19,6 +19,7 @@
 #include <boost/scoped_ptr.hpp>
 
 class Buffer;
+class LyXRC_PreviewStatus;
 
 namespace lyx {
 namespace graphics {
@@ -28,7 +29,7 @@ class PreviewLoader;
 class Previews : boost::noncopyable {
 public:
 	/// a wrapper for lyxrc.preview
-	static bool activated();
+	static LyXRC_PreviewStatus status();
 
 	/// This is a singleton class. Get the instance.
 	static Previews & get();

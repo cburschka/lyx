@@ -355,7 +355,13 @@ public:
 	///
 	bool show_banner;
 	///
-	bool preview;
+	enum PreviewStatus {
+		PREVIEW_OFF,
+		PREVIEW_NO_MATH,
+		PREVIEW_ON
+	};
+	///
+	PreviewStatus preview;
 	///
 	bool preview_hashed_labels;
 	///
@@ -365,6 +371,19 @@ public:
 	/// user email
 	std::string user_email;
 };
+
+
+/** \c LyXRC_PreviewStatus is a wrapper for LyXRC::PreviewStatus.
+ *  It can be forward-declared and passed as a function argument without
+ *  having to expose lyxrc.h.
+ */
+class LyXRC_PreviewStatus {
+        LyXRC::PreviewStatus val_;
+public:
+	LyXRC_PreviewStatus(LyXRC::PreviewStatus val) : val_(val) {}
+        operator LyXRC::PreviewStatus() const{ return val_; }
+};
+
 
 ///
 extern LyXRC lyxrc;
