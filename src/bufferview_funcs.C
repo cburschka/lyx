@@ -368,8 +368,14 @@ string const currentState(BufferView * bv)
 	state << _(", Position: ") << text->cursor.pos();
 	RowList::iterator rit = text->cursorRow();
 	state << bformat(_(", Row b:%1$d e:%2$d"), rit->pos(), rit->end());
-	state << _(", Inset: ") <<
-		(text->cursor.par()->inInset() ? text->cursor.par()->inInset()->id() : -1);
+	state << _(", Inset: ");
+	InsetOld * inset = text->cursor.par()->inInset();
+	if (inset)
+		state << inset << " id: " << inset->id()
+		      << " text: " << inset->getLyXText(bv, true)
+						<< " owner: " << inset->owner();
+	else 
+		state << -1;
 #endif
 	return state.str();
 }

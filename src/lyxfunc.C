@@ -27,6 +27,7 @@
 #include "bufferlist.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "encoding.h"
 #include "exporter.h"
@@ -890,6 +891,18 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	if (view()->available())
 		view()->hideCursor();
+
+#if 1
+	{
+		Cursor cursor;
+		buildCursor(cursor, *view());
+		if (cursor.dispatch(FuncRequest(ev, view())) == DISPATCHED) {
+			lyxerr << "dispatched by Cursor::dispatch()\n";
+			goto exit_with_message;
+		}
+	}
+#endif
+
 
 	if (view()->available() && view()->theLockingInset()) {
 		InsetOld::RESULT result;

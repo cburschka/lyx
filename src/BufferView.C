@@ -492,7 +492,8 @@ int BufferView::unlockInset(UpdatableInset * inset)
 		dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 		finishUndo();
 		return 0;
-	} else if (inset && theLockingInset() &&
+	}
+	if (inset && theLockingInset() &&
 		   theLockingInset()->unlockInsetInInset(this, inset)) {
 		// Tell the paragraph dialog that we changed paragraph
 		dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));

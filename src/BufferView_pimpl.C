@@ -23,6 +23,7 @@
 #include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "bufferparams.h"
+#include "cursor.h"
 #include "debug.h"
 #include "factory.h"
 #include "FloatList.h"
@@ -456,8 +457,8 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	}
 
 #warning does not help much
-	bv_->text->redoParagraphs(bv_->text->ownerParagraphs().begin(),
-		bv_->text->ownerParagraphs().end());
+	//bv_->text->redoParagraphs(bv_->text->ownerParagraphs().begin(),
+	//	bv_->text->ownerParagraphs().end());
 
 	if (par != bv_->text->ownerParagraphs().end()) {
 		bv_->text->selection.set(true);
@@ -1323,7 +1324,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		ev.errorMessage(N_("Unknown function!"));
 		break;
 
-	default:
+	default:	
 		return bv_->getLyXText()->dispatch(FuncRequest(ev, bv_));
 	} // end of switch
 
