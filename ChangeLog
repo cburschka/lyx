@@ -1,3 +1,10 @@
+2000-10-31  Juergen Vigna  <jug@sad.it>
+
+	* src/WorkArea.C (work_area_handler): honor xforms 0.88 defines.
+
+	* src/insets/insettabular.C (ActivateCellInset): passed the wrong
+	xposition to the Edit call.
+
 2000-10-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/trans.C (AddDeadkey): cast explicitly to char.

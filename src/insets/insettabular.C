@@ -1056,7 +1056,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
     int lx = tabular->GetWidthOfColumn(actcell) -
 	tabular->GetAdditionalWidth(actcell);
 #warning Jürgen, can you rewrite this to _not_ use the sequencing operator. (Lgb)
-#if 1
+#if 0
     for(; !tabular->IsLastCellInRow(actcell) && (lx < x);
 	++actcell,lx += tabular->GetWidthOfColumn(actcell) +
 	    tabular->GetAdditionalWidth(actcell - 1));
@@ -1588,7 +1588,7 @@ bool InsetTabular::ActivateCellInset(BufferView * bv, int x, int y, int button,
     }
     inset_x = cursor.x() - top_x + tabular->GetBeginningOfTextInCell(actcell);
     inset_y = cursor.y();
-    inset->Edit(bv, x, y - inset_y, button);
+    inset->Edit(bv, x - inset_x, y - inset_y, button);
     if (!the_locking_inset)
 	return false;
     UpdateLocal(bv, CELL, false);

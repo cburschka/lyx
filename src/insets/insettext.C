@@ -628,6 +628,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    inset_par = cpar(bv);
 	    uinset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
 	    uinset->Edit(bv, x - inset_x, y - inset_y, 0);
+	    TEXT(bv)->ClearSelection();
 	    if (the_locking_inset) {
 		UpdateLocal(bv, CURSOR_PAR, false);
 	    }
@@ -1269,11 +1270,12 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
     inset->setOwner(this);
     HideInsetCursor(bv);
     TEXT(bv)->InsertInset(bv, inset);
+    if ((cpar(bv)->GetChar(cpos(bv)) != LyXParagraph::META_INSET) ||
+	(cpar(bv)->GetInset(cpos(bv)) != inset))
+	TEXT(bv)->CursorLeft(bv);
     TEXT(bv)->selection = 0;
-    TEXT(bv)->CursorLeft(bv);
     bv->fitCursor(TEXT(bv));
     UpdateLocal(bv, CURSOR_PAR, true);
-//    inset->Edit(bv, 0, 0, 0);
     ShowInsetCursor(bv);
     return true;
 }

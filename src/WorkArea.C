@@ -309,7 +309,11 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				      ev->xbutton.y - ob->y,
 				      ev->xbutton.button);
 		break;
+#if FL_REVISION < 89
+	case FL_MOUSE:
+#else
 	case FL_DRAG:
+#endif
 		if (!ev || ! area->scrollbar) break;
 		if (ev->xmotion.x != x_old ||
 		    ev->xmotion.y != y_old ||
@@ -321,7 +325,11 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					     ev->xbutton.state);
 		}
 		break;
+#if FL_REVISION < 89
+	case FL_KEYBOARD:
+#else
 	case FL_KEYPRESS:
+#endif
 	{
 		lyxerr[Debug::KEY] << "Workarea event: KEYBOARD" << endl;
 		
@@ -408,10 +416,13 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		area->workAreaKeyPress(ret_key, ret_state);
 	}
 	break;
+
+#if FL_REVISION >= 89
 	case FL_KEYRELEASE:
 		lyxerr << "Workarea event: KEYRELEASE" << endl;
 		break;
-		
+#endif
+
 	case FL_FOCUS:
 		lyxerr[Debug::GUI] << "Workarea event: FOCUS" << endl;
 		area->workAreaFocus();
