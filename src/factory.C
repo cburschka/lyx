@@ -28,6 +28,7 @@
 
 #include <cstdio>
 
+using std::endl;
 
 Inset * createInset(FuncRequest const & cmd)
 {

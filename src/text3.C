@@ -40,6 +40,8 @@
 #include <clocale>
 
 using std::endl;
+using std::find;
+using std::vector;
 
 extern string current_layout;
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);

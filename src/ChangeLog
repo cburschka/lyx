@@ -3,6 +3,10 @@
 	* BufferView_pimpl.h: qualified name is not allowed in member
 	declaration: WorkArea & Pimpl::workarea() const;
 
+	* factory.C: added using std::endl directive.
+
+	* text3.C: added using std::find and std::vector directives.
+
 2002-08-29  André Pönitz <poenitz@gmx.net>
 
 	* lyxtext.h:
