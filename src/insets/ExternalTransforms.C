@@ -45,8 +45,13 @@ void ExtraData::set(string const & id, string const & data)
 
 bool ResizeData::no_resize() const
 {
-	return float_equal(scale, 0.0, 0.05) &&
-		width.zero() && height.zero();
+	return !usingScale() && width.zero() && height.zero();
+}
+
+
+bool ResizeData::usingScale() const
+{
+	return !float_equal(scale, 0.0, 0.05);
 }
 
 
@@ -90,15 +95,27 @@ string const ResizeLatexCommand::front_impl() const
 		return string();
 
         std::ostringstream os;
-	if (!float_equal(data.scale, 0.0, 0.05)) {
+	if (data.usingScale()) {
 		double const scl = data.scale / 100.0;
 		os << "\\scalebox{" << scl << "}{" << scl << "}{";
 	} else {
+		string width  = "!";
+		string height = "!";
+		if (data.keepAspectRatio) {
+			if (data.width.inPixels(10) > data.height.inPixels(10))
+				width = data.width.asLatexString();
+			else
+				height = data.height.asLatexString();
+		} else {
+			if (!data.width.zero())
+				width = data.width.asLatexString();
+			if (!data.height.zero())
+				height = data.height.asLatexString();
+		}
+		
 		os << "\\resizebox{"
-		   << (data.width.zero()  ?
-		       "!" : data.width.asLatexString()) << "}{"
-		   << (data.height.zero() ?
-		       "!" : data.height.asLatexString()) << "}{";
+		   << width << "}{"
+		   << height << "}{";
 	}
 	return os.str();
 }
@@ -210,7 +227,7 @@ string const ResizeLatexOption::option_impl() const
 		return string();
 
         std::ostringstream os;
-	if (!float_equal(data.scale, 0.0, 0.05)) {
+	if (data.usingScale()) {
 		if (!float_equal(data.scale, 100.0, 0.05))
 			os << "scale=" << data.scale / 100.0 << ',';
 		return os.str();

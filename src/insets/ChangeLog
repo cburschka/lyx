@@ -1,3 +1,10 @@
+2003-12-04  Angus Leeming  <leeming@lyx.org>
+
+	* insetexternal.C (draw): update the xo_, yo_ cache.
+
+	* ExternalTransforms.[Ch] (ResizeData): add a usingScale member function.
+	(RotationDataType): new helper struct wrapping the
+	RotationData::OriginType enum.
 
 2003-12-03  André Pönitz  <poenitz@gmx.net>
 

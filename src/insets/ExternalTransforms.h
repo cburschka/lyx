@@ -59,6 +59,8 @@ public:
 	ResizeData() : scale(0), keepAspectRatio(false) {}
 	bool no_resize() const;
 
+	bool usingScale() const;
+
 	float scale;
 	LyXLength width;
 	LyXLength height;
@@ -97,6 +99,18 @@ public:
 private:
 	double angle_;
 	OriginType origin_;
+};
+
+
+/** \c RotationDataType is a wrapper for RotationData::OriginType
+ *  It can be forward-declared and passed as a function argument without
+ *  having to expose this header file.
+ */
+class RotationDataType {
+	RotationData::OriginType val_;
+public:
+	RotationDataType(RotationData::OriginType val) : val_(val) {}
+	operator RotationData::OriginType() const { return val_; }
 };
 
 
