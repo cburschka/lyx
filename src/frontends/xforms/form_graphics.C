@@ -90,22 +90,26 @@ FD_form_graphics * FormGraphics::build_graphics()
     fdui->radio_display_monochrome = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 80, 98, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
     fl_set_button(obj, 1);
   {
     char const * const dummy = N_("in Grayscale|#G");
     fdui->radio_display_grayscale = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 110, 98, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   {
     char const * const dummy = N_("in Color|#C");
     fdui->radio_display_color = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 140, 98, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   {
     char const * const dummy = N_("Don't display|#D");
     fdui->radio_no_display = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 295, 170, 98, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   fl_end_group();
 
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 250, 240, 50, _("Rotate"));

@@ -58,6 +58,8 @@ void FormGraphics::build()
 	                      FL_RETURN_CHANGED);
 	fl_set_input_return (dialog_->input_rotate_angle,
 	                      FL_RETURN_CHANGED);
+	fl_set_input_return (dialog_->input_subcaption,
+	                      FL_RETURN_CHANGED);
 
 	// Set the maximum characters that can be written in the input texts.
 	fl_set_input_maxchars(dialog_->input_width, WIDTH_MAXDIGITS);

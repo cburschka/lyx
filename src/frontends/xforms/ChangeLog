@@ -4,6 +4,10 @@
 	Author-Year/Numerical citation choice only if the natbib checkbox is
 	active.
 
+	* FormGraphics.C:
+	* forms/form_graphics.fd: add callbacks to a few widgets that didn't
+	have them, so enabling the Ok, Apply buttons appropriately.
+
 2001-09-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* forms/form_paragraph.fd: cosmetics (renamed "Label Width" to "Longest

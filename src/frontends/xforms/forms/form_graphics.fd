@@ -443,8 +443,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_display_monochrome
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 	value: 1
 
 --------------------
@@ -462,8 +462,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_display_grayscale
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -480,8 +480,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_display_color
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -498,8 +498,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_no_display
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_END_GROUP
