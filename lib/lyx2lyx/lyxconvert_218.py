@@ -155,24 +155,20 @@ def remove_oldminipage(lines):
 	i = i+1
 
 def is_empty(lines):
-    for line in lines:
-	line = line[:-1]
-	if line != " "*len(line):
-	    return 0
-    return 1
+    return filter(is_nonempty_line, lines) == []
 
 font_rexp =  re.compile(r"\\(family|series|shape|size|emph|numeric|bar|noun)")
 ert_rexp = re.compile(r"\\begin_inset|.*\\SpecialChar")
 spchar_rexp = re.compile(r"(.*)(\\SpecialChar.*)")
+ert_begin = ["\\begin_inset ERT",
+	     "status Collapsed",
+	     "",
+	     "\\layout Standard"]
 
 def remove_oldert(lines):
-    ert_begin = ["\\begin_inset ERT",
-		 "status Collapsed",
-		 "",
-		 "\\layout Standard"]
     i = 0
     while 1:
-	i = find_token(lines, "\\latex latex", i)
+	i = find_tokens(lines, ["\\latex latex", "\\layout LaTeX"], i)
 	if i == -1:
 	    break
 	j = find_tokens(lines, ["\\latex default", "\\layout", "\\end_float"],
@@ -186,6 +182,10 @@ def remove_oldert(lines):
 	# We need to remove insets, special chars & font commands from ERT text
 	new = []
 	new2 = []
+	if check_token(lines[i], "\\layout LaTeX"):
+	    new = ["\layout Standard", "", ""]
+	    # We have a problem with classes in which Standard is not the default layout!
+
 	k = i+1
 	while 1:
 	    k2 = find_re(lines, ert_rexp, k, j)
@@ -229,7 +229,38 @@ def remove_oldert(lines):
 	lines[i:j+1] = new
 	i = i+1
 
+def is_ert_paragraph(lines, i):
+    i = find_nonempty_line(lines, i+1)
+    if not check_token(lines[i], "\\begin_inset ERT"):
+	return 0
+    j = find_token(lines, "\\end_inset", i)
+    k = find_nonempty_line(lines, j+1)
+    return check_token(lines[k], "\\layout")
 
+def combine_ert(lines):
+    i = 0
+    while 1:
+	i = find_token(lines, "\\begin_inset ERT", i)
+	if i == -1:
+	    break
+	j = find_token_backwards(lines,"\\layout", i-1)
+	count = 0
+	text = []
+	while is_ert_paragraph(lines, j):
+
+	    count = count+1
+	    i2 = find_token(lines, "\\layout", j+1)
+	    k = find_token(lines, "\\end_inset", i2+1)
+	    text = text+lines[i2:k]
+	    j = find_token(lines, "\\layout", k+1)
+	    if j == -1:
+		break
+
+	if count >= 2:
+	    lines[i+1:k] = text
+
+	i = i+1
+	
 oldunits = ["pt", "cm", "in", "text%", "col%"]
 
 def get_length(lines, name, start, end):
@@ -316,6 +347,7 @@ def convert(header, body):
 
     change_preamble(header)
     remove_oldert(body)
+    combine_ert(body)
     remove_oldminipage(body)
     remove_oldfloat(body, language)
     remove_figinset(body)

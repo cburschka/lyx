@@ -64,7 +64,19 @@ def get_value(lines, token, start, end = 0):
     if i == -1:
 	return ""
     return string.split(lines[i])[1]
-    
+
+def is_nonempty_line(line):
+    line = line[:-1]
+    return line != " "*len(line)
+
+def find_nonempty_line(lines, start, end = 0):
+    if end == 0:
+	end = len(lines)
+    for i in xrange(start, end):
+	if is_nonempty_line(lines[i]):
+	    return i
+    return -1
+
 def set_format(lines, number):
     i = find_token(lines, "\\lyxformat", 0)
     lines[i] = "\\lyxformat %s" % number
