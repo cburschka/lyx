@@ -6,10 +6,14 @@ Quick compilation guide
 
 These four steps will compile, test and install LyX:
 
+	0) Linux users beware: if compiling the Qt frontend, you need
+           qt and qt-devel packages of the same version to compile LyX. 
+
 	1) ./configure
 	   configures LyX to your system. By default, LyX configures
            the xforms frontend, use --with-frontend=qt to build a Qt
-           version.
+           version. You may have to set 
+           --with-qt-dir=<path-to-your-qt-installation> to succeed.
 
 	2) make
 	   compiles the program.
