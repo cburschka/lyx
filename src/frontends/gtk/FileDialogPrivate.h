@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Huang Ying
+ * \author John Spray
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -22,23 +23,20 @@ public:
 		kb_action action,
 		FileDialog::Button b1, FileDialog::Button b2);
 	FileDialog::Result const open(std::string const & path,
-				      lyx::support::FileFilterList const & filters,
-				      std::string const & suggested);
+		lyx::support::FileFilterList const & filters,
+		std::string const & suggested);
 	FileDialog::Result const opendir(std::string const & path,
-					 std::string const & suggested);
-
+		std::string const & suggested);
 	FileDialog::Result const save(std::string const & path,
-				      lyx::support::FileFilterList const & filters,
-				      std::string const & suggested);
+		lyx::support::FileFilterList const & filters,
+		std::string const & suggested);
+
+	FileDialog::Result const showChooser(std::string const & path,
+		lyx::support::FileFilterList const & filters,
+		std::string const & suggested);
 
 private:
-	void onButton1Clicked();
-	void onButton2Clicked();
-	Gtk::FileSelection fileSelection_;
-	Gtk::Button button1_;
-	Gtk::Button button2_;
-	std::string dir1_;
-	std::string dir2_;
+	Gtk::FileChooserDialog fileChooser_;
 	kb_action action_;
 };
 

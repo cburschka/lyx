@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Huang Ying
+ * \author John Spray
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -17,82 +18,43 @@
 
 #include "FileDialogPrivate.h"
 
-using std::string;
+#include "support/filefilterlist.h"
+#include "debug.h"
 
+using std::string;
 
 FileDialog::Private::Private(string const & title,
 			     kb_action action,
 			     FileDialog::Button /*b1*/,
 			     FileDialog::Button /*b2*/) :
-	action_(action)
+	action_(action),
+	fileChooser_("You shouldn't see this", Gtk::FILE_CHOOSER_ACTION_OPEN)
 {
-	fileSelection_.set_title(title);
-/*	fileSelection_.get_button_area()->children().push_back(
-		Gtk::Box_Helpers::Element(button1_));
-	fileSelection_.get_button_area()->children().push_back(
-		Gtk::Box_Helpers::Element(button2_));
-	button1_.signal_clicked().connect(
-		sigc::mem_fun(*this, &FileDialog::Private::onButton1Clicked));
-	button2_.signal_clicked().connect(
-	sigc::mem_fun(*this, &FileDialog::Private::onButton2Clicked));
-	if (!b1.first.empty() && !b1.second.empty()) {
-		string::size_type pos = b1.first.find('|');
-		button1_.set_label(
-			Glib::locale_to_utf8(b1.first.substr(0, pos)));
-		dir1_ = b1.second;
-		button1_.show();
-	}
-	if (!b2.first.empty() && !b2.second.empty()) {
-		string::size_type pos = b2.first.find('|');
-		button2_.set_label(
-			Glib::locale_to_utf8(b2.first.substr(0, pos)));
-		dir2_ = b2.second;
-		button2_.show();
-	}*/
-}
-
-
-void FileDialog::Private::onButton1Clicked()
-{
-	fileSelection_.set_filename(dir1_);
-}
-
-
-void FileDialog::Private::onButton2Clicked()
-{
-	fileSelection_.set_filename(dir2_);
+	fileChooser_.set_title(title);
 }
 
 
 FileDialog::Result const
 FileDialog::Private::open(string const & path,
-			  lyx::support::FileFilterList const & /*filters*/,
-			  string const & /*suggested*/)
+			  lyx::support::FileFilterList const & filters,
+			  string const & suggested)
 {
-	fileSelection_.set_filename(path);
-	fileSelection_.get_file_list()->get_parent()->show();
-	Result result;
-	result.first = FileDialog::Chosen;
-	if (fileSelection_.run() == Gtk::RESPONSE_OK)
-		result.second = fileSelection_.get_filename();
-	else
-		result.second = string();
-	return result;
+	fileChooser_.set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
+  fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+  fileChooser_.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
+
+	return showChooser(path, filters, suggested);
 }
 
 
 FileDialog::Result const FileDialog::Private::opendir(string const & path,
-						      string const & /*suggested*/)
+						      string const & suggested)
 {
-	fileSelection_.set_filename(path);
-	fileSelection_.get_file_list()->get_parent()->hide();
-	Result result;
-	result.first = FileDialog::Chosen;
-	if (fileSelection_.run() == Gtk::RESPONSE_OK)
-		result.second = fileSelection_.get_filename();
-	else
-		result.second = string();
-	return result;
+	fileChooser_.set_action(Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
+  fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+  fileChooser_.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
+
+	return showChooser(path, lyx::support::FileFilterList(), suggested);
 }
 
 
@@ -100,5 +62,45 @@ FileDialog::Result const FileDialog::Private::save(string const & path,
 						   lyx::support::FileFilterList const & filters,
 						   string const & suggested)
 {
-	return open(path, filters, suggested);
+	fileChooser_.set_action(Gtk::FILE_CHOOSER_ACTION_SAVE);
+  fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+  fileChooser_.add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_OK);
+
+	return showChooser(path, filters, suggested);
+}
+
+
+FileDialog::Result const FileDialog::Private::showChooser(string const & path,
+			  lyx::support::FileFilterList const & filters,
+			  string const & suggested)
+{
+	lyxerr[Debug::GUI] << "File Dialog with path \"" << path
+			   << "\", mask \"" << filters.as_string()
+			   << "\", suggested \"" << suggested << '"\n';
+
+	for (lyx::support::FileFilterList::size_type i = 0; i < filters.size(); ++i) {
+		typedef lyx::support::FileFilterList::Filter::glob_iterator glob_iterator;
+		glob_iterator it = filters[i].begin();
+		glob_iterator const end = filters[i].end();
+		if (it == end)
+			continue;
+
+		Gtk::FileFilter filter;
+		filter.set_name(filters[i].description());
+		for (; it != end; ++it)
+			filter.add_pattern(*it);
+
+		fileChooser_.add_filter(filter);
+	}
+
+	if (!path.empty())
+		fileChooser_.set_filename(path);
+	fileChooser_.set_default_response(Gtk::RESPONSE_OK);
+	Result result;
+	result.first = FileDialog::Chosen;
+	if (fileChooser_.run() == Gtk::RESPONSE_OK)
+		result.second = fileChooser_.get_filename();
+	else
+		result.second = string();
+	return result;
 }
