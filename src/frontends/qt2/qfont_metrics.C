@@ -28,9 +28,9 @@ namespace {
 	}
 }
 
- 
+
 namespace font_metrics {
- 
+
 int maxAscent(LyXFont const & f)
 {
 	return metrics(f).ascent();
@@ -59,7 +59,8 @@ int descent(char c, LyXFont const & f)
 
 int lbearing(char c, LyXFont const & f)
 {
-	lyxerr << "lb of " << c << " is " << metrics(f).leftBearing(c) << endl; 
+	lyxerr << "lb of " << c << " is " << metrics(f).leftBearing(c)
+	       << std::endl;
 	return metrics(f).leftBearing(c);
 }
 
@@ -67,8 +68,8 @@ int lbearing(char c, LyXFont const & f)
 int rbearing(char c, LyXFont const & f)
 {
 	QFontMetrics const & m(metrics(f));
- 
-	// Qt rbearing is from the right edge of the char's width(). 
+
+	// Qt rbearing is from the right edge of the char's width().
 	return (m.width(c) - m.rightBearing(c));
 }
 
@@ -80,7 +81,7 @@ int width(char const * s, size_t ls, LyXFont const & f)
 	}
 
 	// handle small caps ourselves ...
- 
+
 	LyXFont smallfont(f);
 	smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 
@@ -111,13 +112,13 @@ int signedWidth(string const & s, LyXFont const & f)
 
 void rectText(string const & str, LyXFont const & f,
 	int & w,
-	int & ascent, 
+	int & ascent,
 	int & descent)
 {
 	QFontMetrics const & m(metrics(f));
- 
+
 	static int const d = 2;
- 
+
 	w = width(str, f) + d * 2 + 2;
 	ascent = m.ascent() + d;
 	descent = m.descent() + d;
@@ -126,14 +127,14 @@ void rectText(string const & str, LyXFont const & f,
 
 
 void buttonText(string const & str, LyXFont const & f,
-	int & w, 
-	int & ascent, 
+	int & w,
+	int & ascent,
 	int & descent)
 {
 	QFontMetrics const & m(metrics(f));
- 
+
 	static int const d = 3;
-	
+
 	w = width(str, f) + d * 2 + 2;
 	ascent = m.ascent() + d;
 	descent = m.descent() + d;

@@ -18,6 +18,8 @@
 #pragma interface
 #endif
 
+class QMathDialog;
+
 class QMath
 {
 public:
@@ -54,9 +56,9 @@ public:
  
 private:
 	/// Apply changes
-	virtual void apply() {};
+	virtual void apply() {}
 	/// update
-	virtual void update_contents() {};
+	virtual void update_contents() {}
 
 	// FIXME: temp 
 	QMathDialog * dialog_; 
