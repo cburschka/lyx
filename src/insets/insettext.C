@@ -784,6 +784,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 					return true;
 				}
 				if ((*it)->getInsetFromID(id)) {
+					getLyXText(bv)->setCursorIntern(bv, p, it.getPos());
 					lockInset(bv, static_cast<UpdatableInset *>(*it));
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
@@ -814,7 +815,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 
 
 bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
-				   bool lr)
+                                   bool lr)
 {
 	if (!the_locking_inset)
 		return false;
@@ -1810,19 +1811,21 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 			return the_locking_inset->insertInset(bv, inset);
 		return false;
 	}
-	inset->setOwner(this);
-	hideInsetCursor(bv);
-
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
 		clear = true;
 	}
+	setUndo(bv, Undo::FINISH, lt->cursor.par(), lt->cursor.par()->next());
+	freezeUndo();
+	inset->setOwner(this);
+	hideInsetCursor(bv);
 	lt->insertInset(bv, inset);
 	bv->fitCursor();
 	if (clear)
 		lt = 0;
 	updateLocal(bv, CURSOR_PAR|CURSOR, true);
+	unFreezeUndo();
 	return true;
 }
 

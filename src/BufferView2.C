@@ -437,6 +437,7 @@ bool BufferView::lockInset(UpdatableInset * inset)
 				par->inset_iterator_end();
 			for (; it != end; ++it) {
 				if ((*it) == inset) {
+					text->setCursorIntern(this, par, it.getPos());
 					theLockingInset(inset);
 					return true;
 				}

@@ -1684,8 +1684,8 @@ void LyXText::insertInset(BufferView * bview, Inset * inset)
 {
 	if (!cursor.par()->insetAllowed(inset->lyxCode()))
 		return;
-	setUndo(bview, Undo::INSERT,
-		cursor.par(), cursor.par()->next());
+	// I don't know if this is necessary here (Jug 20020102)
+	setUndo(bview, Undo::INSERT, cursor.par(), cursor.par()->next());
 	cursor.par()->insertInset(cursor.pos(), inset);
 	// Just to rebreak and refresh correctly.
 	// The character will not be inserted a second time

@@ -1,3 +1,12 @@
+2002-01-04  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (lockInsetInInset): forgot to set a cursor.
+
+2002-01-02  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (insertInset): make the correct undo informations on
+	inserting new insets.
+
 2001-12-31  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insettabular.C: correct single-cell select vertically

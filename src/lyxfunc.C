@@ -930,7 +930,6 @@ string const LyXFunc::dispatch(int ac,
 	case LFUN_ESCAPE:
 	{
 		if (!owner->view()->available()) break;
-		
 		// this function should be used always [asierra060396]
 		UpdatableInset * tli =
 			owner->view()->theLockingInset();
@@ -947,6 +946,7 @@ string const LyXFunc::dispatch(int ac,
 							lock,
 							true);
 			}
+			finishUndo();
 		}
 	}
 	break;
