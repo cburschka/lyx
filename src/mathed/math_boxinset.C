@@ -38,6 +38,12 @@ MathInset * MathBoxInset::clone() const
 }
 
 
+UpdatableInset * MathBoxInset::asHyperActiveInset() const
+{
+	return text_;
+}
+
+
 void MathBoxInset::write(MathWriteInfo & os) const
 {
 	os << "\\" << name_ << "{" << cell(0) << "}";
@@ -75,4 +81,11 @@ void MathBoxInset::draw(Painter & pain, int x, int y) const
 	if (mathcursor && mathcursor->isInside(this))
 		pain.rectangle(x, y - ascent(), xcell(0).width(), height(),
 			LColor::mathframe);
+}
+
+
+void MathBoxInset::edit(BufferView * bv, int x, int y, unsigned int button)
+{
+	if (text_)
+		text_->edit(bv, x, y, button);
 }

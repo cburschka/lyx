@@ -232,6 +232,12 @@ void MathCursor::dump(char const *) const {}
 #endif
 
 
+UpdatableInset * MathCursor::asHyperActiveInset() const
+{
+	return par()->asHyperActiveInset();
+}
+
+
 bool MathCursor::isInside(MathInset const * p) const
 {
 	for (unsigned i = 0; i < Cursor_.size(); ++i) 
@@ -332,6 +338,9 @@ bool MathCursor::right(bool sel)
 	if (hasNextAtom() && openable(nextAtom(), sel)) {
 		if (nextAtom()->isHyperActive()) {
 			lyxerr << "entering hyperactive inset\n";
+			int x, y;
+			getPos(x, y);
+			nextAtom()->edit(formula()->view(), x, y, 0);
 		}
 		pushLeft(nextAtom());
 		return true;

@@ -10,6 +10,7 @@
 #endif
 
 class InsetText;
+class UpdatableInset;
 class BufferView;
 class Buffer;
 class LyXFont;
@@ -38,6 +39,10 @@ public:
 	MathBoxInset * asBoxInset() { return this; }
 	///
 	bool isHyperActive() const { return 1; }
+	///
+	void edit(BufferView * bv, int x, int y, unsigned int button);
+	/// identifies hyperactive insets
+	UpdatableInset * asHyperActiveInset() const;
 
 private:
 	/// unimplemented

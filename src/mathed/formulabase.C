@@ -319,6 +319,11 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	if (!mathcursor) 
 		return UNDISPATCHED;
 
+	if (mathcursor->asHyperActiveInset()) {
+		lyxerr << " uurr.... getting dificult now\n";
+		return mathcursor->asHyperActiveInset()->localDispatch(bv, action, arg);
+	}
+
 	RESULT result      = DISPATCHED;
 	bool sel           = false;
 	bool was_macro     = mathcursor->inMacroMode();

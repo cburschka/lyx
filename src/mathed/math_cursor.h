@@ -197,6 +197,8 @@ public:
 
 	/// Make sure cursor position is valid
 	void normalize() const;
+	///
+	UpdatableInset * asHyperActiveInset() const;
 
 	/// enter a MathInset 
 	void push(MathAtom & par);

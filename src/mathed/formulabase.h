@@ -101,6 +101,8 @@ public:
 	int xo() const { return xo_; }
 	///
 	int yo() const { return yo_; }
+	///
+	BufferView * view() const { return view_; }
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);

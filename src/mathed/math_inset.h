@@ -50,6 +50,8 @@ class MathMacroTemplate;
 
 class LaTeXFeatures;
 class Buffer;
+class BufferView;
+class UpdatableInset;
 
 
 struct MathWriteInfo {
@@ -217,6 +219,8 @@ public:
 	virtual MathBoxInset * asBoxInset() { return 0; }
 	/// identifies macro templates
 	virtual MathMacroTemplate * asMacroTemplate() { return 0; }
+	/// identifies hyperactive insets
+	virtual UpdatableInset * asHyperActiveInset() const { return 0; }
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
@@ -238,6 +242,8 @@ public:
 
 	///
 	virtual void dump() const;
+	///
+	virtual void edit(BufferView *, int, int, unsigned int) {}
 
 	///
 	virtual void validate(LaTeXFeatures & features) const;
