@@ -47,7 +47,10 @@ void InsetLatexAccent::checkContents()
 {
         candisp = false;
 
-	if (contents.empty() || contents.length() < 2) return;
+	if (contents.empty() || contents.length() < 2) {
+		lyxerr[Debug::KEY] << "Cannot decode: " << contents << endl;
+		return;
+	}
 
 	// REMOVE IN 0.13
 	// Dirty Hack for backward compability. remove in 0.13 (Lgb)
@@ -87,7 +90,10 @@ void InsetLatexAccent::checkContents()
 			contents = tmp;
 		}
 	}
-        if (contents[0] != '\\') return; // demand that first char is a '\\'
+        if (contents[0] != '\\') { // demand that first char is a '\\'
+		lyxerr[Debug::KEY] << "Cannot decode: " << contents << endl;
+		return;
+	}
 
 	lyxerr[Debug::KEY] << "Decode: " << contents << endl;
 
