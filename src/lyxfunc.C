@@ -90,8 +90,6 @@
 #include "support/path.h"
 #include "support/lyxfunctional.h"
 
-#include <boost/tuple/tuple.hpp>
-
 #include <ctime>
 #include <clocale>
 #include <cstdlib>
@@ -118,9 +116,6 @@ extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 extern tex_accent_struct get_accent(kb_action action);
 
 extern void ShowLatexLog();
-
-
-/* === globals =========================================================== */
 
 
 LyXFunc::LyXFunc(LyXView * o)
@@ -274,10 +269,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 
 FuncStatus LyXFunc::getStatus(int ac) const
 {
-	kb_action action;
-	string arg;
-	boost::tie(action, arg) = lyxaction.retrieveActionArg(ac);
-	return getStatus(FuncRequest(view(), action, arg));
+	return getStatus(lyxaction.retrieveActionArg(ac));
 }
 
 
@@ -703,10 +695,7 @@ void LyXFunc::dispatch(string const & s, bool verbose)
 
 void LyXFunc::dispatch(int ac, bool verbose)
 {
-	kb_action action;
-	string arg;
-	boost::tie(action, arg) = lyxaction.retrieveActionArg(ac);
-	dispatch(FuncRequest(view(), action, arg), verbose);
+	dispatch(lyxaction.retrieveActionArg(ac), verbose);
 }
 
 
@@ -1872,5 +1861,6 @@ string const LyXFunc::view_status_message()
 
 BufferView * LyXFunc::view() const
 {
+	lyx::Assert(owner);
 	return owner->view().get();
 }

@@ -251,14 +251,11 @@ extern "C" {
 void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 {
 	string xpm_name;
-
-	kb_action act;
-	string arg;
-	boost::tie(act, arg) = lyxaction.retrieveActionArg(action);
+	FuncRequest ev = lyxaction.retrieveActionArg(action);
  
-	string const name = lyxaction.getActionName(act);
-	if (!arg.empty())
-		xpm_name = subst(name + ' ' + arg, ' ','_');
+	string const name = lyxaction.getActionName(ev.action);
+	if (!ev.argument.empty())
+		xpm_name = subst(name + ' ' + ev.argument, ' ','_');
 	else
 		xpm_name = name;
 
@@ -271,8 +268,8 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 		return;
 	}
 
-	if (act == LFUN_INSERT_MATH && !arg.empty()) {
-		char const ** pixmap = get_pixmap_from_symbol(arg.c_str(),
+	if (ev.action == LFUN_INSERT_MATH && !ev.argument.empty()) {
+		char const ** pixmap = get_pixmap_from_symbol(ev.argument.c_str(),
 							      buttonwidth,
 							      height);
 		if (pixmap) {

@@ -72,7 +72,7 @@ public:
 	 * Given a pseudo-action, return the real action and
 	 * associated argument
 	 */
-	std::pair<kb_action, string> retrieveActionArg(int pseudo) const;
+	FuncRequest retrieveActionArg(int pseudo) const;
 
 	/// Search for an existent pseudoaction, return -1 if it doesn't exist.
 	int searchActionArg(kb_action action, string const & arg) const;

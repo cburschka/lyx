@@ -16,8 +16,6 @@
 #include "gettext.h"
 #include "support/lstrings.h"
 
-#include <boost/tuple/tuple.hpp>
- 
 using std::ostream;
 using std::endl;
 using std::pair;
@@ -492,10 +490,10 @@ int LyXAction::getPseudoAction(kb_action action, string const & arg)
 }
 
 
-pair<kb_action, string> LyXAction::retrieveActionArg(int pseudo) const
+FuncRequest LyXAction::retrieveActionArg(int pseudo) const
 {
 	if (!isPseudoAction(pseudo))
-		return make_pair(static_cast<kb_action>(pseudo), string());
+		return FuncRequest(static_cast<kb_action>(pseudo));
 
 	pseudo_map::const_iterator pit = lyx_pseudo_map.find(pseudo);
 
@@ -503,11 +501,11 @@ pair<kb_action, string> LyXAction::retrieveActionArg(int pseudo) const
 		lyxerr[Debug::ACTION] << "Found the pseudoaction: ["
 				      << pit->second.action << '|'
 				      << pit->second.argument << "]\n";
-		return make_pair(pit->second.action, pit->second.argument);
+		return pit->second;
 	} else {
 		lyxerr << "Lyx Error: Unrecognized pseudo-action "
 			<< pseudo << endl;
-		return make_pair(LFUN_UNKNOWN_ACTION, string());
+		return FuncRequest(LFUN_UNKNOWN_ACTION);
 	}
 }
 
@@ -537,36 +535,28 @@ int LyXAction::LookupFunc(string const & func)
 
 string const LyXAction::getActionName(int action) const
 {
-	kb_action ac;
-	string arg;
-	boost::tie(ac, arg) = retrieveActionArg(action);
- 
-	if (!arg.empty())
-		arg.insert(0, " ");
+	FuncRequest ev = retrieveActionArg(action);
+	if (!ev.argument.empty())
+		ev.argument.insert(0, " ");
 
-	info_map::const_iterator iit = lyx_info_map.find(ac);
+	info_map::const_iterator iit = lyx_info_map.find(ev.action);
 
-	if (iit != lyx_info_map.end()) {
-		string ret(iit->second.name);
-		ret += arg;
-		return ret;
-	} else
-		return string();
+	if (iit != lyx_info_map.end())
+		return iit->second.name + ev.argument;
+	return string();
 }
 
 
 string const LyXAction::helpText(int pseudoaction) const
 {
-	kb_action action;
-	string arg;
-	boost::tie(action, arg) = retrieveActionArg(pseudoaction);
+	FuncRequest ev = retrieveActionArg(pseudoaction);
 
 	string help;
  
-	info_map::const_iterator ici = lyx_info_map.find(action);
+	info_map::const_iterator ici = lyx_info_map.find(ev.action);
 	if (ici != lyx_info_map.end()) {
 		if (lyxerr.debugging(Debug::ACTION)) {
-			lyxerr << "Action: " << action << '\n';
+			lyxerr << "Action: " << ev.action << '\n';
 			lyxerr << "   name: "
 			       << ici->second.name << '\n';
 			lyxerr << " attrib: "
@@ -581,9 +571,9 @@ string const LyXAction::helpText(int pseudoaction) const
 
 	if (help.empty()) {
 		help = _("No description available!");
-	} else if (!arg.empty()) {
+	} else if (!ev.argument.empty()) {
 		help += ' ';
-		help += arg;
+		help += ev.argument;
 	}
 
 	return help;
