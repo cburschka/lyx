@@ -354,11 +354,14 @@ bool lyx_gui::font_available(LyXFont const & font)
 }
 
 namespace {
-	void C_read_callback(int, void * data)
-	{
-		LyXComm * comm = static_cast<LyXComm *>(data); 
-		comm->read_ready();
-	}
+
+extern "C"
+void C_read_callback(int, void * data)
+{
+	LyXComm * comm = static_cast<LyXComm *>(data); 
+	comm->read_ready();
+}
+
 }
 
 void lyx_gui::set_read_callback(int fd, LyXComm * comm)

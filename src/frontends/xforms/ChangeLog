@@ -1,3 +1,7 @@
+2002-07-14  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (C_read_callback): give it extern "C" linkage.
+
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: add set_read_callback()
