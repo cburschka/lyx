@@ -75,8 +75,6 @@ public:
 		/// "better" conversion to bool
 		operator void *() const;
 		///
-		MathedRowStruct & operator*();
-		///
 		MathedRowStruct * operator->();
 		///
 		MathedRowStruct const * operator->() const;
@@ -115,10 +113,6 @@ public:
 //private:
 	///
 	std::vector<MathedRowStruct> data_;
-
-private:
-	// currently unimplemented just to make sure it's not used
-	void operator=(MathedRowContainer const &); // unimplemented
 };
 
 #endif

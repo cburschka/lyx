@@ -37,9 +37,7 @@ public:
 	int GetRows() const;
 	///
 	virtual bool isMatrix() const;
-	
-	/// Use this to manage the extra information independently of paragraph
-	MathedRowContainer & getRowSt();
+
 private:
 	///  Number of columns & rows
 	int nc_;
@@ -52,8 +50,6 @@ private:
 	///
 	//std::vector<char> h_align;
 	string h_align_; // a vector would perhaps be more correct
-	/// Vertical structure
-	MathedRowContainer row_;
 };
 
 
@@ -77,10 +73,4 @@ bool MathMatrixInset::isMatrix() const
 	return true;
 }
 	
-
-inline
-MathedRowContainer & MathMatrixInset::getRowSt()
-{
-	return row_;
-}
 #endif

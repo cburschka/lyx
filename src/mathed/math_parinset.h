@@ -67,7 +67,7 @@ public:
 	///
 	virtual void SetStyle(short);
 	///
-	virtual MathedRowContainer & getRowSt();
+	MathedRowContainer & getRowSt();
 	///
 	virtual bool Permit(short f) const;
 	///
@@ -85,6 +85,8 @@ protected:
 	void xo(int tx);
 	///
 	void yo(int ty);
+	///
+	MathedRowContainer row_;
 private:
 	/// Cursor start position
 	int xo_;

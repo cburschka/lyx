@@ -1,3 +1,9 @@
+2001-03-16  André Pönitz  <poenitz@htwm.de>
+
+	* math_matrixinset.h:
+	* math_parinset.[Ch]:
+	* math_rowst.[Ch]: move MathedRowContainer::row_ to the base
+      
 2001-03-13  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
@@ -14,8 +20,8 @@
 
 2001-03-15  André Pönitz  <poenitz@htwm.de>
 
-	* math_cursor.C: fix bug (cursor was leaving two insets at a time instead
-	   of one)
+	* math_cursor.C: fix bug (cursor was leaving two insets at a time
+	   instead of one)
 
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 

@@ -23,8 +23,7 @@ extern int number_of_newlines;
 
 MathedRowContainer & MathParInset::getRowSt()
 {
-	static MathedRowContainer dummy;
-	return dummy;
+	return row_;
 }
 
 

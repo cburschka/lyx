@@ -145,12 +145,6 @@ MathedRowContainer::iterator::operator void *() const
 	return (void *)(st_ && pos_ < st_->size());
 }
 
-MathedRowStruct & MathedRowContainer::iterator::operator*()
-{
-	Assert(st_);
-	return st_->data_[pos_];
-}
-
 MathedRowStruct * MathedRowContainer::iterator::operator->()
 {
 	Assert(st_);
