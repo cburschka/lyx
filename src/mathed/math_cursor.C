@@ -98,7 +98,7 @@ struct Selection
 
 	void paste(MathCursor & cursor) const
 	{
-		cursor.cursor().cell().push_back(glue());
+		cursor.insert(glue());
 	}
 
 	// glues selection to one cell
