@@ -67,7 +67,7 @@ private:
 	///
 	string batch_command;
 	///
-	struct sigaction act_;
+	// struct sigaction act_; // seems to be unused
 	//@}
 	/**@name Private Members */
 	//@{
