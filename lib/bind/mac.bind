@@ -1,0 +1,191 @@
+# This file is part of
+# ==================================================================
+#
+#                  LyX, the High Level Word Processor
+# 
+#         Copyright (C) 1995-1997 Asger Alstrup & The LyX Team
+#
+# ==================================================================
+
+#
+# This is Mac OS X (aqua) flavour bind file, based on 
+# bindings found in the Mac world.
+# 
+#
+# DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
+# with every new install of LyX and your changes will be lost. 
+# Instead, customize a copy of this file placed in 
+# ~/.lyx/bind/mac-1.3.x.bind
+#
+# Happy tuning!
+
+# Free bindings:
+
+#\bind "C-h"
+#\bind "C-j"
+#\bind "C-y"
+
+
+###
+
+\bind "C-n"			"buffer-new"
+\bind "C-S-N"			"buffer-new-template"
+\bind "C-o"			"file-open"
+\bind "C-r"			"buffer-reload"
+\bind "C-w"			"buffer-close"
+\bind "C-s"			"buffer-write"
+\bind "C-S-S"			"buffer-write-as"
+\bind "C-p"			"buffer-print" 
+\bind "C-d"			"buffer-view dvi"	# 'd' for dvi
+\bind "C-t"			"buffer-view pdf"
+\bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
+\bind "C-S-T"			"buffer-update pdf"
+\bind "C-q"			"lyx-quit"
+
+\bind "C-b"			"font-bold"
+\bind "C-e"			"font-emph"
+\bind "C-k"			"font-noun"		# 'k' for capitals
+\bind "C-u"			"font-underline"
+\bind "C-S-P"			"font-code"		# 'P' for program
+
+\bind "C-m"			"math-mode"
+\bind "C-S-M"			"math-display"
+
+\bind "C-f"			"find-replace"
+\bind "C-g"			"error-next"
+\bind "C-i"			"inset-toggle"		# 'i' for Inset
+
+\bind "C-c"			"copy"
+\bind "C-x"			"cut"
+\bind "C-v"			"paste"
+
+\bind "C-S-C"			"layout-copy"
+\bind "C-S-V"			"layout-paste"
+
+\bind "C-z"			"undo"
+\bind "C-S-Z"			"redo"
+
+\bind "~S-C-quotedbl"		"self-insert \""
+\bind "C-minus"			"hyphenation-point-insert"
+\bind "M-S-Right"		"depth-increment"
+\bind "M-S-Left"		"depth-decrement"
+\bind "M-space"		"protected-space-insert"
+#\bind "C-S-L"			"ligature-break-insert"
+\bind "C-l"			"ert-insert"		# 'l' for LaTeX
+
+#bind "F1"			"help"			# Not yet implemented!
+#bind "C-F1"			"help-context"		# Not yet implemented!
+\bind "F2"			"buffer-write"
+\bind "F3"			"file-open"
+\bind "C-F4"			"buffer-close"
+\bind "F5"			"screen-recenter"
+\bind "M-F4"			"lyx-quit"
+\bind "F7"			"spellchecker"
+\bind "S-F7"			"thesaurus-entry"
+
+\bind "M-x"			"command-execute"
+
+#
+# Motion group
+#
+
+\bind "M-Right"			"word-forward"
+\bind "M-Left"			"word-backward"
+\bind "M-Up"			"paragraph-up"
+\bind "M-Down"			"paragraph-down"
+\bind "C-Up"			"buffer-begin"
+\bind "C-Down"			"buffer-end"
+\bind "C-Right"         "line-end"
+\bind "C-Left"          "line-begin"
+
+\bind "C-~S-greater"		"reference-goto"
+\bind "C-~S-less" 		"bookmark-goto 0"
+
+
+#
+# Motion + select group
+#
+
+\bind "S-Right"			"forward-select"
+\bind "S-Left"			"backward-select"
+\bind "S-Up"			"up-select"
+\bind "S-Down"			"down-select"
+\bind "S-M-Right"		"word-forward-select"
+\bind "S-M-Left"		"word-backward-select"
+\bind "S-M-Up"			"paragraph-up-select"
+\bind "S-M-Down"		"paragraph-down-select"
+\bind "S-C-Left"			"line-begin-select"
+\bind "S-C-Right"			"line-end-select"               
+\bind "S-Prior"			"screen-up-select"
+\bind "S-Next"			"screen-down-select"
+\bind "S-C-Up"		"buffer-begin-select"
+\bind "S-C-Down"			"buffer-end-select"
+\bind "C-Insert"		"copy"
+\bind "S-Insert"		"paste"
+\bind "S-Delete"		"cut"
+
+# Numeric keypad (if Shift+KP_XXX does not switch the NumLock state)
+\bind "S-KP_Right"              "forward-select"
+\bind "S-KP_Left"               "backward-select"
+\bind "S-KP_Up"                 "up-select"
+\bind "S-KP_Down"               "down-select"
+\bind "S-M-KP_Right"            "word-forward-select"
+\bind "S-M-KP_Left"             "word-backward-select"
+\bind "S-M-KP_Up"               "paragraph-up-select"
+\bind "S-M-KP_Down"             "paragraph-down-select"
+\bind "S-KP_Home"               "line-begin-select"
+\bind "S-KP_End"                "line-end-select"               
+\bind "S-KP_Prior"              "screen-up-select"
+\bind "S-KP_Next"               "screen-down-select"
+\bind "S-C-KP_Home"             "buffer-begin-select"
+\bind "S-C-KP_End"              "buffer-end-select"
+\bind "S-C-KP_Prior"            "buffer-begin-select"
+\bind "S-C-KP_Next"             "buffer-end-select"
+\bind "C-KP_Insert"             "copy"
+\bind "S-KP_Insert"             "paste"
+\bind "S-KP_Delete"             "cut"
+
+#
+# bookmarks
+#
+
+\bind "C-~S-1"			"bookmark-goto 1"
+\bind "C-~S-2"			"bookmark-goto 2"
+\bind "C-~S-3"			"bookmark-goto 3"
+
+\bind "C-M-~S-1"		"bookmark-save 1"
+\bind "C-M-~S-2"		"bookmark-save 2"
+\bind "C-M-~S-3"		"bookmark-save 3"
+
+
+
+#
+# Edit group
+#
+
+\bind "M-Delete"		"word-delete-forward"
+\bind "M-BackSpace"		"word-delete-backward"
+\bind "M-Return"		"break-paragraph-keep-layout"
+\bind "C-Return"		"break-line"
+#\bind "C-k"			"line-delete-forward"
+\bind "C-period"		"end-of-sentence-period-insert"
+\bind "M-period"		"dots-insert"
+\bind "Escape"			"cancel"
+#\bind "F9"			"meta-prefix"
+
+
+# LyX menu
+\bind "C-comma"			"dialog-preferences"
+
+# Other
+\bind "C-a"             "command-sequence buffer-begin ; buffer-end-select"
+
+
+
+# Include menu and math bindings
+
+\bind_file menus.bind
+\bind_file math.bind
+\bind_file latinkeys.bind
+\bind_file cyrkeys.bind
+\bind_file greekkeys.bind
