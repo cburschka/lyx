@@ -1,3 +1,8 @@
+2000-02-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insettoc.[Ch] (LinuxDoc, DocBook): mark the methods
+	as const.
+
 2000-02-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* WorkArea, Painter, LyXScreen: Fixed the crash that occured on

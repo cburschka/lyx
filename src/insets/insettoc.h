@@ -44,9 +44,9 @@ public:
 	///
 	Inset::Code LyxCode() const { return Inset::TOC_CODE; }
 	///
-	int Linuxdoc(string & file);
+	int Linuxdoc(string & file) const;
 	///
-	int DocBook(string & file);
+	int DocBook(string & file) const;
 private:
 	///
 	Buffer * owner;
