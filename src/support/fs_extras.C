@@ -32,6 +32,11 @@ bool is_readable(path const & ph)
 #ifdef BOOST_POSIX
 	return ::access(ph.string().c_str(), R_OK) == 0;
 #endif
+#ifdef BOOST_WINDOWS
+	DWORD const attr = ::GetFileAttributes(ph.string().c_str());
+	return attr != INVALID_FILE_ATTRIBUTES &&
+		(attr & FILE_ATTRIBUTE_DIRECTORY) != FILE_ATTRIBUTE_DIRECTORY;
+#endif
 }
 
 
@@ -40,6 +45,16 @@ bool is_writable(path const & ph)
 #ifdef BOOST_POSIX
 	return ::access(ph.string().c_str(), W_OK) == 0;
 #endif
+#ifdef BOOST_WINDOWS
+	DWORD const attr = ::GetFileAttributes(ph.string().c_str());
+	if (attr != INVALID_FILE_ATTRIBUTES &&
+	    (attr & FILE_ATTRIBUTE_READONLY) != 0) {
+		// Read-only - no write access
+		return false;
+	}
+	return attr != INVALID_FILE_ATTRIBUTES &&
+		(attr & FILE_ATTRIBUTE_DIRECTORY) != FILE_ATTRIBUTE_DIRECTORY;
+#endif
 }
 
 
@@ -47,6 +62,11 @@ bool is_readonly(path const & ph)
 {
 #ifdef BOOST_POSIX
 	return is_readable(ph) && !is_writable(ph);
+#endif
+#ifdef BOOST_WINDOWS
+	DWORD const attr = ::GetFileAttributes(ph.string().c_str());
+        return (attr != INVALID_FILE_ATTRIBUTES
+                && (attr & FILE_ATTRIBUTE_READONLY));
 #endif
 }
 
@@ -116,8 +136,16 @@ void copy_file(path const & source, path const & target, bool noclobber)
 				source, target,
 				fs::detail::system_error_code()));
 #endif
+#ifdef BOOST_WINDOWS
+	if (::CopyFile(source.string().c_str(), target.string().c_str(), !noclobber) == 0) {
+		boost::throw_exception(
+			filesystem_error(
+				"boost::filesystem::copy_file",
+				source, target,
+				fs::detail::system_error_code()));
+	}
+#endif
 }
-
 
 }
 }

@@ -1,3 +1,7 @@
+2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* fs_extras.C: add changes from Asgers Win32 patch.
+
 2005-01-31  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 
 	* chdir.C (chdir):
@@ -9,12 +13,12 @@
 
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
-	* Makefile.am (libsupport_la_SOURCES): remove rmdir.C 
+	* Makefile.am (libsupport_la_SOURCES): remove rmdir.C
 
 	* rmdir.C: delete file
 
 	* lyxlib.h: remove rmdir decl
-	
+
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* .cvsignore: add package.C

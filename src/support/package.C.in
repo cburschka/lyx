@@ -662,7 +662,7 @@ bool check_env_var_dir(string const & dir,
 		// translation.
 		string const fmt =
 		_("Invalid %1$s environment variable.\n%2$s is not a directory.");
-		
+
 		lyxerr << bformat(fmt, env_var, dir)
 		       << std::endl;
 	}
