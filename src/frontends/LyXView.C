@@ -191,4 +191,3 @@ void LyXView::dispatch(FuncRequest const & req)
 	r.setView(view().get());
 	getLyXFunc().dispatch(r);
 }
-10
