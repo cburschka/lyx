@@ -35,11 +35,12 @@ You will need to have both an Xforms library and Xpm library to compile
 LyX.  It is imperative that you have the correct versions of these 
 libraries, and their associated header files.
 
-As of LyX version 1.1.5, you will need to have Xforms library and header
-version 0.88 or 0.89.  Version 0.88 is a stable release and the
-recommended version.  On some systems, such as linux ELF, there are shared 
-library versions of the Xforms library, which require an installation step 
-to configure the system.
+As of LyX version 1.1.5, you will need to have Xforms library and
+header version 0.88 or 0.89.  Version 0.88 is a stable release and the
+recommended version, but 0.89.6 seems to be work very well too.  On
+some systems, such as linux ELF, there are shared library versions of
+the Xforms library, which require an installation step to configure
+the system.
 
 Xforms is available (free) only in binary format, source code is not
 available.  If it is not available for your machine, contact the Xforms

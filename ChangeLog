@@ -1,3 +1,11 @@
+2001-07-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/kbsequence.C (getiso): handle latin[23489] characters.
+
+	* INSTALL: 
+	* config/lyxinclude.m4 (LYX_PATH_XFORMS): do not warn against
+	xforms 0.89.6
+
 2001-07-05  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* LaTeX.C (scanLogFile): Parse rerun messages from latex packages.
