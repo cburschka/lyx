@@ -1,12 +1,11 @@
-#This file was created by <roman> Wed May 26 23:43:16 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 2.15
 \textclass article
 \language slovene
 \inputencoding latin2
 \fontscheme default
 \graphics dvips
-\paperfontsize 12
+\paperfontsize default
 \spacing single 
 \papersize letterpaper
 \paperpackage a4
@@ -48,40 +47,40 @@ Avtor: Fe LyX
 \layout Standard
 
 Kazalo
-\begin_inset Info Namig: Fino bi bilo, èe nam ne bi bilo treba roèno dobesedno
-vpisovati vsebinskega kazala.
+\begin_inset Info Namig: Fino bi bilo, èe nam ne bi bilo treba roèno
+dobesedno vpisovati vsebinskega kazala.
 \end_inset 
 
 
 \layout Standard
 
 1.
- Osnovna filozofija..................1
+ Temeljna filozofija..................1
 \layout Standard
 
-1.1 Kako to poène LyX...............1
+1.1 Kako se stvari loteva LyX...............1
 \layout Standard
 
 1.2 Zakaj je LyX bolj¹i................1
 \layout Standard
 
 2.
- Odlike LyX-a
+ Odlike LyXa
 \layout Standard
 
 3.
- Nerodni poskusi uporabe veè zadev LyX-a
+ Nerodni poskusi uporabe LyXa
 \layout Standard
 
 4.
- Matematiène zadeve
+ Matematiène zadev¹èine
 \layout Standard
 
 ---------------------------------------------------
 \layout Standard
 
 1.
- Osnovna filozofija
+ Temeljna filozofija
 \begin_inset Info Namig: naslovi razdelkov (angl. Section) bi verjetno
 morali bolj izstopati.
 \end_inset 
@@ -89,22 +88,22 @@ morali bolj izstopati.
 
 \layout Standard
 
-Osnovna filozofija LyX-a je ta, da bi morali skrbeti za vsebino tega, kar
- pi¹ete, ne za obliko.
+Temeljna filozofija LyXa je, da naj bi se posveèali vsebini tistega, o èemer
+ pi¹emo, ne obliki.
 \layout Standard
 
-1.1 Kako to poène LyX
+1.1 Kako se stvari loteva LyX
 \layout Standard
 
-LyX uporablja LaTeX, sistem za pripravo spisov, ki ga je leta 1985 zasnoval
- Leslie Lamport.
- LaTeX pa je zgrajen na stavnem jeziku, imenovanem TeX, ki ga je leta 1984
+LyX uporablja LaTeX, sistem za pripravljanje spisov, ki ga je leta 1985
+ zasnoval Leslie Lamport.
+ LaTeX pa temelji na stavnem jeziku, imenovanem TeX, ki ga je leta 1984
  ustvaril Donald Knuth.
- LaTeX je zasnovan na podobni filozofiji kot LyX.
- Leslie Lamport je nekoè rekel (glejte vir [1])
-\begin_inset Info Namig: Verjetno ta NAVZKRI®NI SKLIC ne bi smel biti
-"vne¹en". Kaj, èe naredimo Lamportovo knjigo za drugo
-postavko spiska literature?
+ Filozofija LaTeXa je podobna filozofiji LyXa.
+ Leslie Lamport je nekoè rekel (glej vir [1])
+\begin_inset Info Namig: Verjetno ta NAVZKRI®NI SKLIC ne bi smel
+biti "vne¹en". Kaj, èe naredimo Lamportovo knjigo
+za drugo postavko spiska literature?
 \end_inset 
 
 :
@@ -114,16 +113,15 @@ postavko spiska literature?
 \begin_inset Quotes gld
 \end_inset 
 
-Funkcija tipografskega oblikovanja je pomagati bralcu, da razume avtorjeve
- ideje.
- Èe naj bo spis lahek za branje, mora njegova vizualna struktura odsevati
- njegovo logièno strukturo.
+Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
+ Da bi bilo spis lahko brati, mora njegova zunanja podoba odsevati njegovo
+ logièno zgradbo.
  Navedki in raèunalni¹ki programi, ki so logièno razlièni strukturni elementi,
- bi morali biti vizualno razloèljivi drug od drugega ...
- Ker LaTeX ne more razumeti va¹e poezije, morate eksplicitno oznaèiti logièno
- strukturo z vnosom posebnih ukazov ...
- Ko pi¹ete va¹ spis, bi se morali ukvarjati z njegovo logièno strukturo
- in ne z njegovo vizualno pojavo.
+ bi se morali med seboj na pogled razlikovati...
+ Ker LaTeX ne more razumeti va¹e poezije, morate izrecno oznaèiti logièno
+ strukturo z vnosom posebnih ukazov...
+ Med pisanjem bi se morali ukvarjati z logièno zgradbo spisa, ne pa z njegovo
+ zunanjo podobo.
 \begin_inset Quotes grd
 \end_inset 
 
@@ -137,71 +135,71 @@ Funkcija tipografskega oblikovanja je pomagati bralcu, da razume avtorjeve
 1.2 Zakaj je LyX bolj¹i
 \layout Standard
 
-LyX je lahko uporaben veè ljudem kot LaTeX.
- Precej la¾je se ga je nauèiti, saj se vam ni treba nauèiti LaTeX-a (ki
- je praktièno programski jezik).
- LyX je pravzaprav kot ostali urejevalniki besedil tipa 
+LyX je uporaben za veè ljudi kot LaTeX.
+ Precej la¾je se ga je nauèiti, saj ni treba znati LaTeXa (ki je praktièno
+ programski jezik).
+ LyX je pravzaprav tak kot drugi urejevalniki besedil tipa 
 \begin_inset Quotes gld
 \end_inset 
 
-kar vidi¹ to dobi¹
+to, kar vidi¹, to tudi dobi¹
 \begin_inset Quotes grd
 \end_inset 
 
-, le da je LyX tipa 
+, le da je vrste 
 \begin_inset Quotes gld
 \end_inset 
 
-kar vidi¹ to misli¹
+to, kar vidi¹, to tudi misli¹
 \begin_inset Quotes grd
 \end_inset 
 
 .
- Na ta naèin kombinira preprostost uporabe urejevalnikov besedil z moèjo
- LaTeX-a.
+ Tako zdru¾uje preprostost uporabe urejevalnikov besedil z moèjo LaTeXa.
  To je Dobra Stvar.
  Tudi datoteèni format je neodvisen od platforme.
  Najbolj¹e od vsega pa je, da je PROST!
 \layout Standard
 
 2.
- Odlike LyX-a
+ Odlike LyXa
 \layout Standard
 
-LyX ima mnoge odlike, ki olaj¹ajo pisanje spisov.
- (Navsezadnje, zakaj bi ga sicer ¾eleli uporabljati?
-\begin_inset Info Namig: Ta oklepajski stavek je videti bolje kot opomba v nogi.
+LyX ima ¹tevilne odlike, ki nam olaj¹ajo pisanje spisov.
+ (Navsezadnje, le zakaj bi ga drugaèe sploh ¾eleli uporabljati?
+\begin_inset Info Namig: Ta stavek v oklepaju je videti bolje kot
+opomba v nogi.
 \end_inset 
 
-) ZELO VZNEMIRJEN
+) ZELO ME VESELI, 
 \begin_inset Info Namig: Poudarite!
 \end_inset 
 
- sem, da lahko govorim o tem.
- Tukaj je seznam le nekaterih.
+ da lahko pi¹em o tem.
+ Omenimo le dve odliki LyXa:
 \layout Standard
 
-* LyX skrbi za robove in ¹tevilèenje opomb v nogi namesto vas.
+* Namesto vas skrbi za robove in ¹tevilèi opombe v nogi.
 \layout Standard
 
-* Z LyX-om postane pisanje in urejanje matematiènih obrazcev preprosto.
+* Olaj¹a pisanje in urejanje matematiènih obrazcev.
 \layout Standard
 
-Za bolj filozofsko diskusijo o tem zakaj je LyX bolj¹i od drugih urejevalnikov
- besedil glejte razdelek 1.2, ki ga lahko najdete na strani 1.
-\begin_inset Info Namig: Verjetno ta NAVZKRI®NA SKLICEVANJA ne bi smela
-biti "zakodirana". Kaj, èe spremenimo ¹tevilke razdelkov?
+Bolj filozofsko razpravo o tem, zakaj je LyX bolj¹i od drugih urejevalnikov
+ besedil, pa boste na¹li v razdelku 1.2 na strani 1.
+\begin_inset Info Namig: Verjetno ta NAVZKRI®NA SKLICEVANJA
+ne bi smela biti "zakodirana". Kaj, èe spremenimo
+¹tevilke razdelkov?
 \end_inset 
 
 
 \layout Standard
 
 3.
- Nerodni poskusi uporabe veè zadev LyX-a
+ Nerodni poskusi uporabe LyXa
 \layout Standard
 
-Zadnjiè sem napisal program.
- Videti je bil takole.
+Zadnjiè sem napisal program, podoben spodnjemu:
 \layout Standard
 
 5 REM MOJ STRA©NI PROGRAM
@@ -225,8 +223,8 @@ STRA©EN SEM!
 
 \layout Standard
 
-Po vsem tem znanstvenem razmi¹ljanju sem se zaèel poèutiti bolj umetni¹ko,
- zato sem napisal tale haiku
+Po tem uèenem razmi¹ljanju me je nenadoma preplavilo bolj umetni¹ko razpolo¾enje
+ in napisal sem tale haiku
 \layout Standard
 
 LyX je zares èudovit
@@ -244,7 +242,7 @@ znana tudi kot VERZI (angl. Verse).
 \layout Standard
 
 4.
- Matematiène zadeve
+ Matematiène zadev¹èine
 \begin_inset Info Namig: Te matematiène stvari bi morale biti izpisane
 v matematiènem naèinu!
 \end_inset 
@@ -252,16 +250,16 @@ v matematiènem naèinu!
 
 \layout Standard
 
-Moja najljub¹a enaèba je re¹itev kvadratne enaèbe.
+Najbolj so mi pri srcu enaèbe za re¹itev kvadratne enaèbe.
  Èe je ax^2+bx+c=0 (en.
  1), potem je x= -b + ali minus kvadratni koren od b^2-4ac vse skupaj ulomljeno
  z 2a (en.
  2).
 \layout Standard
 
-Druga priljubljena enaèba predstavlja osnovo matematiène analize: izraz
- f'(x) je definiran kot limita izraza f(x+deltax) - f(x) ulomljenega z deltax,
- ko gredo ¹tevila deltax proti niè (en.
+Druga priljubljena enaèba je temelj matematiène analize: izraz f'(x) je
+ definiran kot limita izraza f(x+deltax) - f(x) ulomljenega z deltax, ko
+ gredo ¹tevila deltax proti niè (en.
  3).
 \layout Standard
 
@@ -272,6 +270,6 @@ LITERATURA
 \layout Standard
 
 [1] Lamport, Leslie.
- LaTeX: A Document Preparation System.
- Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+ LaTeX: A Document Preparation System; Addison-Wesley, Reading, Massachusetts,
+ druga izdaja, 1994.
 \the_end

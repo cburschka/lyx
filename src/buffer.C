@@ -12,15 +12,6 @@
  * ====================================================== 
  */
 
-// Change Log:
-// =========== 
-// 23/03/98   Heinrich Bauer (heinrich.bauer@t-mobil.de)
-// Spots marked "changed Heinrich Bauer, 23/03/98" modified due to the
-// following bug: dvi file export did not work after printing (or previewing)
-// and vice versa as long as the same file was concerned. This happened
-// every time the LyX-file was left unchanged between the two actions mentioned
-// above.
-
 #include <config.h>
 
 #include <fstream>
@@ -120,8 +111,6 @@ Buffer::Buffer(string const & file, bool ronly)
 	paragraph = 0;
 	lyx_clean = true;
 	bak_clean = true;
-	dvi_clean_orgd = false;  // Heinrich Bauer, 23/03/98
-	dvi_clean_tmpd = false;  // Heinrich Bauer, 23/03/98
 	dep_clean = 0;
 	read_only = ronly;
 	users = 0;
@@ -3263,7 +3252,6 @@ int Buffer::runLaTeX()
 
 	// Always generate the LaTeX file
 	makeLaTeXFile(name, org_path, false);
-	markDviDirty();
 
 	// do the LaTex run(s)
 	TeXErrors terr;
@@ -3288,7 +3276,6 @@ int Buffer::runLaTeX()
 	} else {
 		//no errors or any other things to think about so:
 		users->owner()->getMiniBuffer()->Set(_("Done"));
-		markDviClean();
 	}
 
 	// if we removed error insets before we ran LaTeX or if we inserted
@@ -3327,13 +3314,10 @@ int Buffer::runLiterate()
 	users->owner()->getMiniBuffer()->Set(_("Running Literate..."));   
 
 	// Remove all error insets
-	bool a = users->removeAutoInsets();
+	bool removedErrorInsets = users->removeAutoInsets();
 
 	// generate the Literate file if necessary
-	if (!isDviClean() || a) {
-		makeLaTeXFile(lit_name, org_path, false);
-		markDviDirty();
-	}
+	makeLaTeXFile(lit_name, org_path, false);
 
 	string latex_command = lyxrc.pdf_mode ?
 		lyxrc.pdflatex_command : lyxrc.latex_command;
@@ -3359,12 +3343,11 @@ int Buffer::runLiterate()
 	} else {
 		//no errors or any other things to think about so:
 		users->owner()->getMiniBuffer()->Set(_("Done"));
-		markDviClean();
 	}
 
 	// if we removed error insets before we ran LaTeX or if we inserted
 	// error insets after we ran LaTeX this must be run:
-        if (a || (res & Literate::ERRORS)){
+        if (removedErrorInsets || (res & Literate::ERRORS)){
                 users->redraw();
                 users->fitCursor();
                 //users->updateScrollbar();
@@ -3398,10 +3381,10 @@ int Buffer::buildProgram()
         users->owner()->getMiniBuffer()->Set(_("Building Program..."));   
  
         // Remove all error insets
-        bool a = users->removeAutoInsets();
+        bool removedErrorInsets = users->removeAutoInsets();
  
         // generate the LaTeX file if necessary
-        if (!isNwClean() || a) {
+        if (!isNwClean() || removedErrorInsets) {
                 makeLaTeXFile(lit_name, org_path, false);
                 markNwDirty();
         }
@@ -3435,7 +3418,7 @@ int Buffer::buildProgram()
         // if we removed error insets before we ran Literate/Build or
 	// if we inserted error insets after we ran Literate/Build this
 	// must be run:
-	if (a || (res & Literate::ERRORS)){
+	if (removedErrorInsets || (res & Literate::ERRORS)){
 		users->redraw();
 		users->fitCursor();
 		//users->updateScrollbar();
@@ -3468,13 +3451,10 @@ int Buffer::runChktex()
 	users->owner()->getMiniBuffer()->Set(_("Running chktex..."));
 
 	// Remove all error insets
-	bool a = users->removeAutoInsets();
+	bool removedErrorInsets = users->removeAutoInsets();
 
 	// Generate the LaTeX file if neccessary
-	if (!isDviClean() || a) {
-		makeLaTeXFile(name, org_path, false);
-		markDviDirty();
-	}
+	makeLaTeXFile(name, org_path, false);
 
 	TeXErrors terr;
 	Chktex chktex(lyxrc.chktex_command, name, filepath);
@@ -3490,7 +3470,7 @@ int Buffer::runChktex()
 
 	// if we removed error insets before we ran chktex or if we inserted
 	// error insets after we ran chktex, this must be run:
-	if (a || res){
+	if (removedErrorInsets || res){
 		users->redraw();
 		users->fitCursor();
 		//users->updateScrollbar();
@@ -3625,36 +3605,6 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 #endif
 
 	
-/// changed Heinrich Bauer, 23/03/98
-bool Buffer::isDviClean() const
-{
-  if (lyxrc.use_tempdir)
-    return dvi_clean_tmpd;
-  else
-    return dvi_clean_orgd;
-}
-
- 
-/// changed Heinrich Bauer, 23/03/98
-void Buffer::markDviClean()
-{
-  if (lyxrc.use_tempdir)
-    dvi_clean_tmpd = true;
-  else
-    dvi_clean_orgd = true;
-}
-
-
-/// changed Heinrich Bauer, 23/03/98
-void Buffer::markDviDirty()
-{
-  if (lyxrc.use_tempdir)
-    dvi_clean_tmpd = false;
-  else
-    dvi_clean_orgd = false;
-}
-
-
 void Buffer::validate(LaTeXFeatures & features) const
 {
 	LyXParagraph * par = paragraph;

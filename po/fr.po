@@ -94,6 +94,12 @@
 # J'ai traduit Include par inclure et input par incorporer, en espérant 
 # que la différence sémantique entre les 2 soit + forte que les 2 termes
 # anglais. Mais après réflexion je suis d'un avis mitigé. 
+#-------------------------------------------------------------------------
+# JPC 20 Juin 2000
+# correction confusion entre One/Two de Pagination et One/Two de Colonnes
+# dans Layout->Document (!)
+# correction menu d'accès aux documents d'aide
+# raccourcissement titre "Base de données" tronqué dans la fenêtre
 
 msgid ""
 msgstr ""
@@ -1156,9 +1162,10 @@ msgstr "Entrée bibliographique"
 msgid "BibTeX Generated References"
 msgstr "Références engendrées par BibTeX"
 
+# contrainte de longueur
 #: src/insets/insetbib.C:441
 msgid "Database:"
-msgstr "Base de données :"
+msgstr "B. de don. :"
 
 #: src/insets/insetbib.C:442
 msgid "Style:  "
@@ -1672,11 +1679,11 @@ msgstr "Encodage :|#D"
 
 #: src/layout_forms.C:103
 msgid "One|#n"
-msgstr "Un|#n"
+msgstr "Recto seul|#n"
 
 #: src/layout_forms.C:107
 msgid "Two|#T"
-msgstr "Deux|#T"
+msgstr "Recto/verso|#t"
 
 # contrainte de longueur
 #: src/layout_forms.C:113
@@ -1685,11 +1692,11 @@ msgstr "Pagin."
 
 #: src/layout_forms.C:127
 msgid "One|#e"
-msgstr "Recto seul"
+msgstr "Une"
 
 #: src/layout_forms.C:131
 msgid "Two|#w"
-msgstr "Recto/verso"
+msgstr "Deux"
 
 # contrainte de longueur
 #: src/layout_forms.C:137
@@ -5169,7 +5176,7 @@ msgid ""
 "Warranty...|Credits...|Version..."
 msgstr ""
 "Introduction|Manuel d'apprentissage|Manuel utilisateur|Options "
-"avancées|Personnalisation|Manuel de référence|FAQ|Table des matières|Bogues "
+"avancées|Personnalisation|Manuel de référence|FAQ|Plans des documents|Bogues "
 "répertoriés|Configuration LaTeX%l|Copyright et "
 "garantie...|Crédits...|Version..."
 

@@ -1,3 +1,18 @@
+2000-06-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* INSTALL: remove obsolete entry in "problems" section.
+
+	* lib/examples/sl_*.lyx: update of the slovenian examples.
+
+2000-06-21  Baruch Even <baruch.even@writeme.com>
+
+	* src/buffer.[Ch]: remove isDviClean() and friends, which are now
+	useless and cause problems.
+
+2000-06-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/text2.C (PasteSelection): fix possible crash in cut and paste.
+
 2000-06-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/text.C (SelectNextWord): protect against null pointers with

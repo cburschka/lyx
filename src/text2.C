@@ -2665,9 +2665,9 @@ void LyXText::PasteSelection()
 
     LyXParagraph *endpar;
     LyXParagraph *actpar = cursor.par;
-    int endpos = cursor.pos;
+    int pos = cursor.pos;
 
-    cap.pasteSelection(&actpar, &endpar, endpos, buffer->params.textclass);
+    cap.pasteSelection(&actpar, &endpar, pos, buffer->params.textclass);
 
     RedoParagraphs(cursor, endpar);
     
@@ -2675,7 +2675,7 @@ void LyXText::PasteSelection()
     ClearSelection();
    
     sel_cursor = cursor;
-    SetCursor(actpar, endpos);
+    SetCursor(actpar, pos);
     SetSelection();
     UpdateCounters(cursor.row);
 }
