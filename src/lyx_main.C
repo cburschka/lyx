@@ -167,17 +167,15 @@ LyX::LyX(int & argc, char * argv[])
 			}
 		}
 
-		bool success = false;
-
 		// try to dispatch to last loaded buffer first
-		if (last_loaded)
-			last_loaded->dispatch(batch_command, &success);
-		else
-			lyxerr << _("Batch command specified but no "
-				    "file loaded. Exiting.") << endl;
-
-		QuitLyX();
-		exit(!success);
+		if (last_loaded) {
+			bool success = false;
+			if (last_loaded->dispatch(batch_command, &success)) {
+				QuitLyX();
+				exit(!success);
+			}
+		} 
+		files.clear(); // the files are already loaded
 	}
 
 	lyx_gui::start(batch_command, files);
