@@ -1,3 +1,13 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* insetbib.[Ch]: removed, to be replaced by insetbibitem.[Ch] and
+	insetbibtex.[Ch]:
+
+	* Makefile.am: replace insetbib.[Ch] with insetbibitem.[Ch] and
+	insetbibtex.[Ch].
+
+	* inset.h: change BIBKEY_CODE to BIBITEM_CODE.
+
 2003-02-21  Allan Rae  <rae@lyx.org>
 
 	* insetinclude.C (loadIfNeeded): ensure loading also works when
