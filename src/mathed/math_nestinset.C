@@ -72,7 +72,7 @@ MathArray const & MathNestInset::cell(idx_type i) const
 void MathNestInset::getCursorPos(CursorSlice const & cur,
 	int & x, int & y) const
 {
-	BOOST_ASSERT(cur.inset() == const_cast<MathNestInset *>(this));
+	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
 	MathArray const & ar = cur.cell();
 	x = ar.xo() + ar.pos2x(cur.pos());
 	y = ar.yo();
@@ -99,7 +99,7 @@ void MathNestInset::metrics(MetricsInfo const & mi) const
 
 bool MathNestInset::idxNext(LCursor & cur) const
 {
-	BOOST_ASSERT(cur.inset() == const_cast<MathNestInset *>(this));
+	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
 	if (cur.idx() == cur.lastidx())
 		return false;
 	++cur.idx();
@@ -116,7 +116,7 @@ bool MathNestInset::idxRight(LCursor & cur) const
 
 bool MathNestInset::idxPrev(LCursor & cur) const
 {
-	BOOST_ASSERT(cur.inset() == const_cast<MathNestInset *>(this));
+	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
 	if (cur.idx() == 0)
 		return false;
 	--cur.idx();
@@ -133,7 +133,7 @@ bool MathNestInset::idxLeft(LCursor & cur) const
 
 bool MathNestInset::idxFirst(LCursor & cur) const
 {
-	BOOST_ASSERT(cur.inset() == const_cast<MathNestInset *>(this));
+	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
 	if (nargs() == 0)
 		return false;
 	cur.idx() = 0;
@@ -144,7 +144,7 @@ bool MathNestInset::idxFirst(LCursor & cur) const
 
 bool MathNestInset::idxLast(LCursor & cur) const
 {
-	BOOST_ASSERT(cur.inset() == const_cast<MathNestInset *>(this));
+	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
 	if (nargs() == 0)
 		return false;
 	cur.idx() = cur.lastidx();
@@ -155,7 +155,7 @@ bool MathNestInset::idxLast(LCursor & cur) const
 
 bool MathNestInset::idxHome(LCursor & cur) const
 {
-	BOOST_ASSERT(cur.inset() ==  const_cast<MathNestInset *>(this));
+	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
 	if (cur.pos() == 0)
 		return false;
 	cur.pos() = 0;
@@ -165,7 +165,7 @@ bool MathNestInset::idxHome(LCursor & cur) const
 
 bool MathNestInset::idxEnd(LCursor & cur) const
 {
-	BOOST_ASSERT(cur.inset() ==  const_cast<MathNestInset *>(this));
+	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
 	if (cur.lastpos() == cur.lastpos())
 		return false;
 	cur.pos() = cur.lastpos();
@@ -202,7 +202,7 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 	LCursor & cur = pi.base.bv->cursor();
 	if (!cur.selection())
 		return;
-	if (cur.inset() != const_cast<MathNestInset *>(this))
+	if (!ptr_cmp(cur.inset(), this))
 		return;
 	CursorSlice & s1 = cur.selBegin();
 	CursorSlice & s2 = cur.selEnd();

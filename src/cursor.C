@@ -860,7 +860,7 @@ bool LCursor::openable(MathAtom const & t)
 	// we can't move into anything new during selection
 	if (depth() == anchor_.size())
 		return false;
-	if (t.nucleus() != anchor_[depth()].inset())
+	if (!ptr_cmp(t.nucleus(), anchor_[depth()].inset()))
 		return false;
 
 	return true;

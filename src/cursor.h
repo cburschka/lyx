@@ -33,6 +33,17 @@ class PainterInfo;
 class MathUnknownInset;
 class MathGridInset;
 
+
+// only needed for gcc 2.95, remove when support terminated
+
+
+template <typename A, typename B>
+bool ptr_cmp(A const * a, B const * b)
+{
+return a == b;
+}
+
+
 // this is used for traversing math insets
 typedef std::vector<CursorSlice> CursorBase;
 /// move on one step
