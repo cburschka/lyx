@@ -331,7 +331,7 @@ dispatch_result InsetCitation::localDispatch(FuncRequest const & cmd)
 		// buffer but doing some real work.
 		setLoadingBuffer(cmd.view()->buffer(), false);
 		InsetCommandMailer("citation", *this).showDialog(cmd.view());
-		break;
+		return DISPATCHED;
 
 	default:
 		return InsetCommand::localDispatch(cmd);
@@ -341,14 +341,10 @@ dispatch_result InsetCitation::localDispatch(FuncRequest const & cmd)
 
 int InsetCitation::ascii(Buffer const * buffer, ostream & os, int) const
 {
-	string label;
-
 	if (cache.params == params() && cache.style == getStyle(buffer))
-		label = cache.generated_label;
+		os << cache.generated_label;
 	else
-		label = generateLabel(buffer);
-
-	os << label;
+		os << generateLabel(buffer);
 	return 0;
 }
 
