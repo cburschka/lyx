@@ -1,3 +1,8 @@
+2002-09-22  John Levon  <levon@movementarian.org>
+
+	* qlkey.h: make Key_Unknown a modifier, to handle
+	  Norbert's Alt Gr
+ 
 2002-09-17  John Levon  <levon@movementarian.org>
 
 	* QLPainter.C: use dots for dashes because Qt sucks

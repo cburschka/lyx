@@ -20,7 +20,6 @@
  */
 bool q_is_modifier(int qkey)
 {
-	lyxerr[Debug::GUI] << "check modifier " << qkey << std::endl;
 	switch (qkey) {
 		case Qt::Key_Hyper_L:
 		case Qt::Key_Hyper_R:
@@ -30,6 +29,10 @@ bool q_is_modifier(int qkey)
 		case Qt::Key_Control:
 		case Qt::Key_Meta:
 		case Qt::Key_Alt:
+			return true;
+
+		// AltGr becomes Key_Unknown on at least one keyboard
+		case Qt::Key_Unknown: 
 			return true;
 	}
 	return false;
