@@ -15,6 +15,7 @@
 #include "Dialogs.h"
 #include "FormBase.h"
 #include "xformsBC.h"
+#include "xforms_resize.h"
 #include "GUIRunTime.h"
 #include "Tooltips.h"
 #include "support/LAssert.h"
@@ -65,6 +66,10 @@ void FormBase::show()
 	// use minw_ to flag whether the dialog has ever been shown
 	// (Needed now that build() is/should be called from the controller)
 	if (minw_ == 0) {
+		double const scale = scale_to_fit_tabs(form());
+		if (scale > 1.001)
+			scale_form(form(), scale);
+
 		bc().refresh();
 
 		// work around dumb xforms sizing bug

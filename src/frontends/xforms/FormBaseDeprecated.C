@@ -15,6 +15,7 @@
 #include "Dialogs.h"
 #include "FormBaseDeprecated.h"
 #include "xformsBC.h"
+#include "xforms_resize.h"
 #include "GUIRunTime.h"
 #include "Tooltips.h"
 #include "LyXView.h"
@@ -82,6 +83,10 @@ void FormBaseDeprecated::show()
 {
 	if (!form()) {
 		build();
+
+		double const scale = scale_to_fit_tabs(form());
+		if (scale > 1.001)
+			scale_form(form(), scale);
 
 		bc().refresh();
 

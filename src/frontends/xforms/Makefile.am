@@ -210,6 +210,8 @@ libxforms_la_SOURCES = \
 	Tooltips.h \
 	xforms_helpers.C \
 	xforms_helpers.h \
+	xforms_resize.C \
+	xforms_resize.h \
 	$(XFORMSGIMAGE) xformsBC.C \
 	xformsBC.h
 

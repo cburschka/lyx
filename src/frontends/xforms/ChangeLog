@@ -1,3 +1,15 @@
+2002-05-06  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.C (show):
+	* FormBaseDeprecated.C (show): having built the dialog, ensure that the
+	tabs of any tabbed-folders are sufficiently lengthened to be displayed
+	whole. This is more than just cosmetic as it will prevent crashes
+	when a partly displayed tab is selected (xforms < 0.9999).
+
+	* xforms_resize.[Ch]: new files doing the grunt work of ascertaining
+	by how much a dialog should be scaled to show its tabs fully (should
+	it have a tabfolder).
+
 2002-05-08  Garst Reese  <reese@isn.net>
 
 	* FormMathsDeco.C: fix offset to normal size decos.
