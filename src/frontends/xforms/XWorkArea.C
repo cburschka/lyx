@@ -332,7 +332,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 {
 	static int x_old = -1;
 	static int y_old = -1;
-	static long scrollbar_value_old = -1;
+	static double scrollbar_value_old = -1.0;
 
 	XEvent * ev = static_cast<XEvent*>(xev);
 	XWorkArea * area = static_cast<XWorkArea*>(ob->u_vdata);
