@@ -8,7 +8,7 @@
 #endif
 
 #include "LString.h"
-#include "latexoptions.h"
+#include "log_form.h"
 
 class VCS;
 class Buffer;

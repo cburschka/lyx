@@ -76,6 +76,8 @@ lyx_SOURCES = \
 	ToolbarDefaults.h \
 	UpdateInset.C \
 	UpdateInset.h \
+	Variables.C \
+	Variables.h \
 	WorkArea.C \
 	WorkArea.h \
 	bibforms.h \
@@ -128,12 +130,12 @@ lyx_SOURCES = \
 	language.h \
 	lastfiles.C \
 	lastfiles.h \
-	latexoptions.C \
-	latexoptions.h \
 	layout.C \
 	layout.h \
 	layout_forms.C \
 	layout_forms.h \
+	log_form.C \
+	log_form.h \
 	lyx.C \
 	lyx.h \
 	lyx_cb.C \
@@ -202,7 +204,6 @@ lyx_SOURCES = \
 	tex-defs.h \
 	tex-strings.C \
 	tex-strings.h \
-	texoptions.C \
 	texrow.C \
 	texrow.h \
 	text.C \

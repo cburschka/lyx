@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include FORMS_H_LOCATION
 #include "buffer.h"
-#include "latexoptions.h"
+#include "log_form.h"
 #include "lyx_main.h"
 #include "LString.h"
 #include "support/FileInfo.h"

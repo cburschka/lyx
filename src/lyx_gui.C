@@ -29,7 +29,7 @@
 #include "print_form.h"
 #include "tex-strings.h"
 #include "lyx_main.h"
-#include "latexoptions.h"
+#include "log_form.h"
 #include "debug.h"
 #include "version.h"
 #include "LyXView.h"
@@ -67,8 +67,7 @@ FD_form_figure * fd_form_figure;
 FD_form_screen * fd_form_screen;
 FD_form_toc * fd_form_toc;
 FD_form_ref * fd_form_ref;
-FD_LaTeXOptions * fd_latex_options; // from latexoptions.h
-FD_LaTeXLog * fd_latex_log; // from latexoptions.h
+FD_LaTeXLog * fd_latex_log; // from log_form.h
 Combox * combo_language;
 Combox * combo_language2;
 
@@ -558,11 +557,6 @@ void LyXGUI::create_forms()
 	fl_set_form_atclose(fd_form_ref->form_ref, CancelCloseBoxCB, 0);
 	fl_set_form_minsize(fd_form_ref->form_ref, fd_form_ref->form_ref->w,
 			    fd_form_ref->form_ref->h);
-
-	// the latex options form
-	fd_latex_options = create_form_LaTeXOptions();
-	fl_set_form_atclose(fd_latex_options->LaTeXOptions,
-			    CancelCloseBoxCB, 0);
 
 	// the latex log form
 	fd_latex_log = create_form_LaTeXLog();

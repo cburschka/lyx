@@ -150,7 +150,7 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 	kmod_list_[accent] = new kmod_list_decl;
 	kmod_list_[accent]->data = keys;
 	kmod_list_[accent]->accent = accent;
-	if (allowed == "all") { 
+	if (allowed == "native") { 
 		kmod_list_[accent]->allowed= lyx_accent_table[accent].native;
 	} else { 
 		kmod_list_[accent]->allowed = allowed;

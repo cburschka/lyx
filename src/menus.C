@@ -69,7 +69,6 @@ extern BufferList bufferlist;
 extern void MenuLayoutSave();
 extern void ShowCredits();
 extern void show_symbols_form(LyXFunc *);
-extern void LaTeXOptions(BufferView *);
 
 // A bunch of wrappers
 
@@ -1979,17 +1978,15 @@ void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 	int OptionsMenu = fl_defpup(FL_ObjWin(ob),
 				    _("Screen Fonts..."
 				      "|Spellchecker Options..."
-				      "|Keyboard..."
-				      "|LaTeX...%l"
+				      "|Keyboard...%l"
 				      "|Reconfigure"
 				      "|Preferences"));
 
 	fl_setpup_shortcut(OptionsMenu, 1, scex(_("OM|Ff#f#F")));
 	fl_setpup_shortcut(OptionsMenu, 2, scex(_("OM|Ss#s#S")));
 	fl_setpup_shortcut(OptionsMenu, 3, scex(_("OM|Kk#k#K")));
-	fl_setpup_shortcut(OptionsMenu, 4, scex(_("OM|Ll#l#L")));
-	fl_setpup_shortcut(OptionsMenu, 5, scex(_("OM|Rr#r#R")));
-	fl_setpup_shortcut(OptionsMenu, 6, scex(_("OM|Pp#p#P")));
+	fl_setpup_shortcut(OptionsMenu, 4, scex(_("OM|Rr#r#R")));
+	fl_setpup_shortcut(OptionsMenu, 5, scex(_("OM|Pp#p#P")));
 
 	if(lyxrc.isp_command == "none") 
 		fl_setpup_mode(OptionsMenu, 2, FL_PUP_GREY);
@@ -2007,9 +2004,8 @@ void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 	case 1: men->ScreenOptions(); break;
 	case 2: SpellCheckerOptions(); break;      
 	case 3: men->_view->getIntl()->MenuKeymap(); break;
-	case 4: LaTeXOptions(men->_view->view()); break;
-	case 5: tmpfunc->Dispatch(LFUN_RECONFIGURE); break;
-	case 6: men->_view->getDialogs()->showPreferences(); break;
+	case 4: tmpfunc->Dispatch(LFUN_RECONFIGURE); break;
+	case 5: men->_view->getDialogs()->showPreferences(); break;
 	default: break;
 	}   
 	fl_freepup(OptionsMenu);

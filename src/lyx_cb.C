@@ -73,7 +73,6 @@ extern FD_form_figure * fd_form_figure;
 extern FD_form_screen * fd_form_screen;
 extern FD_form_toc * fd_form_toc;
 extern FD_form_ref * fd_form_ref;
-extern FD_LaTeXOptions * fd_latex_options;
 extern FD_form_bullet * fd_form_bullet;
 
 extern BufferView * current_view; // called too many times in this file...
@@ -2813,24 +2812,6 @@ extern "C" void ScreenOKCB(FL_OBJECT * ob, long data)
 {
 	ScreenCancelCB(ob, data);
 	ScreenApplyCB(ob, data);
-}
-
-
-void LaTeXOptions(BufferView * bv)
-{
-	if (!bv->available())
-		return;
-
-	fl_set_button(fd_latex_options->accents,
-		      int(bv->buffer()->params.allowAccents));
-	
-	if (fd_latex_options->LaTeXOptions->visible) {
-		fl_raise_form(fd_latex_options->LaTeXOptions);
-	} else {
-		fl_show_form(fd_latex_options->LaTeXOptions,
-			     FL_PLACE_MOUSE, FL_FULLBORDER,
-			     _("LaTeX Options"));
-	}
 }
 
 

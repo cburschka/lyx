@@ -85,8 +85,7 @@ string TransDeadkeyState::normalkey(char c, char * trans)
 	}
 	if (l == 0) {
 		// Not an exception. Check if it allowed
-		if (current_view->buffer()->params.allowAccents == true ||
-		    countChar(deadkey_info_.allowed, c) > 0) {
+		if (countChar(deadkey_info_.allowed, c) > 0) {
 			res = DoAccent(c, deadkey_info_.accent);
 		} else {
 			// Not allowed

@@ -1,3 +1,33 @@
+2000-07-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/Variables.[Ch]: new files. Intended to be used for language
+	specific strings (like \chaptername) and filename substitution in
+	commands. 
+
+	* src/trans.C (AddDeadkey): replace keyword "all" with "native" in
+	kmap files.
+	* lib/kbd/american.kmap: update
+
+	* src/trans_mgr.C (normalkey): do not test allowAccent anymore.
+
+	* src/bufferparams.[Ch]: remove member allowAccents.
+
+	* src/menus.C (ShowOptionsMenu): remove the LaTeX entry.
+
+	* src/LaTeXLog.C: use the log_form.h header.
+	* src/lyx_gui.C: ditto.
+	* src/lyx_gui_misc.C: ditto.
+	* src/lyxvc.h: ditto.
+
+	* forms/log_form.fd: new file, created from latexoptions.fd. I
+	kept the log popup and nuked the options form.
+
+	* src/{la,}texoptions.[Ch]: removed.
+	* src/lyx_cb.C (LaTeXOptions): ditto
+
+	* src/lyx_gui.C (create_forms): do not handle the
+	fd_latex_options form. 
+
 2000-07-18  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insetfloat.C (InsetFloat): use setInsetName to set the

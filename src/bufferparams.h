@@ -204,8 +204,6 @@ public:
 	void readLanguage(LyXLex &);
 	///
 	void readGraphicsDriver(LyXLex &);
-	/// do we allow accents on all chars in this buffer
-	bool allowAccents;
 	///
         bool use_amsmath;
 	/// Time ago we agreed that this was a buffer property [ale990407]

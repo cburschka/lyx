@@ -62,7 +62,6 @@ BufferParams::BufferParams()
 		user_defined_bullets[iter] = temp_bullets[iter] 
 			                   = ITEMIZE_DEFAULTS[iter];
 	}
-	allowAccents = false;
 }
 
 

@@ -20,7 +20,7 @@
 #include "form1.h"
 #include "gettext.h"
 #include "include_form.h"
-#include "latexoptions.h"
+#include "log_form.h"
 #include "layout_forms.h"
 #include "lyx.h"
 #include "lyx_cb.h"
