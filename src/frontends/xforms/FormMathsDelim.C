@@ -21,7 +21,6 @@
 #include "LyXView.h"
 #include "bmtable.h"
 #include "debug.h"
-#include "mathed/symbol_def.h"
 #include "support/lstrings.h"
 #include "lyxfunc.h"
 
@@ -32,11 +31,11 @@ static int const delim_rversion[] = {
 	1,1,3,3,4,5,7,7,9,9,10,11,
 	13,13,14,15,16,17,19,19,20,21,22,23 };
  
-static int delim_values[] = {
-	'(', ')', LM_lceil,  LM_rceil,  LM_uparrow,  LM_Uparrow,
-	'[', ']', LM_lfloor,  LM_rfloor,  LM_updownarrow, LM_Updownarrow,
-	'{', '}',  '/', LM_backslash,  LM_downarrow,  LM_Downarrow,
-	LM_langle,  LM_rangle, '|', LM_Vert, '.', 0
+static char const * delim_values[] = {
+	"(", ")", "lceil",  "rceil",  "uparrow",  "Uparrow",
+	"[", "]", "lfloor", "rfloor", "updownarrow", "Updownarrow",
+	"{", "}",  "/", "\\",  "downarrow",  "Downarrow",
+	"langle",  "rangle", "|", "Vert", ".", 0
 };
 
 using std::endl;
