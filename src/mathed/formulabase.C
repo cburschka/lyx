@@ -57,6 +57,9 @@ namespace {
 // local global
 int first_x;
 int first_y;
+int hack_x;
+int hack_y;
+int hack_button;
 
 
 void handleFont(BufferView * bv, MathTextCodes t) 
@@ -130,9 +133,16 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
 	//lyxerr << "edit: " << x  << " " << y << " button: " << button << "\n";
-	if (!mathcursor)
+	if (!mathcursor) {
 		mathcursor = new MathCursor(this, x == 0);
-	metrics(bv);
+		metrics(bv);
+		// handle ignored click
+		if (hack_x || hack_y) {
+			insetButtonPress(bv, hack_x, hack_y, hack_button);
+			hack_x = hack_y = 0;
+		}
+	} else
+		metrics(bv);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this, false);
@@ -257,6 +267,14 @@ void InsetFormulaBase::insetButtonRelease(BufferView * bv,
 void InsetFormulaBase::insetButtonPress(BufferView * bv,
 					int x, int y, int button)
 {
+	// hack to cope with mouseclick that comes before the call to edit()
+	if (!mathcursor) {
+		hack_x = x;
+		hack_y = y;
+		hack_button = button;
+		return;
+	}
+
 	//lyxerr << "insetButtonPress: " << x + xo_ << " " << y + yo_
 	//	<< " but: " << button << "\n";
 	switch (button) {
