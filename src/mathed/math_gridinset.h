@@ -87,6 +87,8 @@ public:
 	MathGridInset(col_type m, row_type n);
 	///
 	MathGridInset(col_type m, row_type n, char valign, string const & halign);
+	/// Ensures that the dialog is closed.
+	~MathGridInset();
 	///
 	MathInset * clone() const;
 	///

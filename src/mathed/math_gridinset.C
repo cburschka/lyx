@@ -138,6 +138,13 @@ MathGridInset::MathGridInset(col_type m, row_type n, char v, string const & h)
 }
 
 
+MathGridInset::~MathGridInset()
+{
+	GridInsetMailer mailer(*this);
+	mailer.hideDialog();
+}
+
+
 MathInset * MathGridInset::clone() const
 {
 	return new MathGridInset(*this);
@@ -1002,7 +1009,7 @@ dispatch_result MathGridInset::dispatch
 				write(ws);
 				GridInsetMailer mailer(*this);
 				lyxerr << "mailer " << mailer.name() << " active\n";
-				mailer.showDialog();
+				mailer.showDialog(cmd.view());
 				return DISPATCHED;
 			}
 			break;
@@ -1010,7 +1017,7 @@ dispatch_result MathGridInset::dispatch
 
 		case LFUN_INSET_DIALOG_UPDATE: {
 			GridInsetMailer mailer(*this);
-			mailer.updateDialog();
+			mailer.updateDialog(cmd.view());
 			break;
 		}
 

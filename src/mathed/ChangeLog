@@ -1,3 +1,7 @@
+2003-03-10  Angus Leeming  <leeming@lyx.org>
+
+	* math_gridinset.[Ch] (d-tor): added to ensure that the tabular
+	dialog is hidden when the inset is deleted and the two are connected.
 
 2003-03-05  Ling Li <ling@caltech.edu>
 
