@@ -12,7 +12,7 @@
 
 FD_form_tabular_create::~FD_form_tabular_create()
 {
-  if (form->visible ) fl_hide_form( form );
+  if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 

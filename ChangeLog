@@ -1,3 +1,12 @@
+2000-11-07  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/FormPreferences.C (feedback): make sure
+	ob isn't 0 before using it.  See comments in function.
+
+	* src/frontends/xforms/forms/fdfixc.sed: tiny spacing fix.
+
+	* src/frontends/xforms/form_*.C: regenerated
+
 2000-11-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/LaTeX.C (deplog): change reg1 to handle (/.../.../fil.sty)

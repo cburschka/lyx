@@ -14,7 +14,7 @@
 
 FD_form_tabbed_document::~FD_form_tabbed_document()
 {
-  if (form->visible ) fl_hide_form( form );
+  if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -56,7 +56,7 @@ FD_form_tabbed_document * FormDocument::build_tabbed_document()
 
 FD_form_doc_paper::~FD_form_doc_paper()
 {
-  if (form->visible ) fl_hide_form( form );
+  if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -177,7 +177,7 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
 
 FD_form_doc_class::~FD_form_doc_class()
 {
-  if (form->visible ) fl_hide_form( form );
+  if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -286,7 +286,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
 
 FD_form_doc_language::~FD_form_doc_language()
 {
-  if (form->visible ) fl_hide_form( form );
+  if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -336,7 +336,7 @@ FD_form_doc_language * FormDocument::build_doc_language()
 
 FD_form_doc_options::~FD_form_doc_options()
 {
-  if (form->visible ) fl_hide_form( form );
+  if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -380,7 +380,7 @@ FD_form_doc_options * FormDocument::build_doc_options()
 
 FD_form_doc_bullet::~FD_form_doc_bullet()
 {
-  if (form->visible ) fl_hide_form( form );
+  if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 

@@ -12,7 +12,7 @@
 
 FD_form_error::~FD_form_error()
 {
-  if (form->visible ) fl_hide_form( form );
+  if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 

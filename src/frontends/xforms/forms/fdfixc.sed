@@ -8,7 +8,7 @@ s/\(.*\) \*create_form_form[^ ]*/\1::~\1()/p
 /\(.*\)::~\(.*\)()/{
 i\
 {\
-  if( form->visible ) fl_hide_form( form );\
+  if ( form->visible ) fl_hide_form( form );\
   fl_free_form( form );\
 }\
 \

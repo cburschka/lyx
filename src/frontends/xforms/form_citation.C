@@ -12,7 +12,7 @@
 
 FD_form_citation::~FD_form_citation()
 {
-  if (form->visible ) fl_hide_form( form );
+  if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 

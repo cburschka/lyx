@@ -261,6 +261,14 @@ void FormPreferences::apply()
 
 void FormPreferences::feedback( FL_OBJECT * ob )
 {
+	// Angus, do you really want to allow ob to be 0?
+	// You set this in feedbackPost.  Why?
+	if (!ob) return;  // stop a segfault below.
+	// an alternative to the above is to check feedbackObj in
+	// FeedbackCB and not call this function at all.  But that's a 
+	// matter of deciding who should be checking the parameters for this
+	// function.
+
 	string str;
 
 	if (ob->form->fdui == colours_) {
