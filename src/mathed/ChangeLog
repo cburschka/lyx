@@ -1,3 +1,7 @@
+2001-08-13  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* math_parser.C (lexArg): remove default argument from the .C file
+	as it causes DEC cxx to complain about a redefinition.
 
 2001-08-13  André Pönitz  <poenitz@gmx.net>
 

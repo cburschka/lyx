@@ -259,7 +259,7 @@ unsigned char Parser::getuchar()
 }
 
 
-string Parser::lexArg(unsigned char lf, bool accept_spaces = false)
+string Parser::lexArg(unsigned char lf, bool accept_spaces)
 {
 	string result;
 	unsigned char c = 0;

@@ -669,6 +669,10 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 }
 
 
+bool isBinaryOp(char c)
+{
+	return true; 
+}
 
 // In a near future maybe we use a better fonts renderer
 void drawStr(Painter & pain, MathTextCodes type, MathStyles siz,
