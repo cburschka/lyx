@@ -1,3 +1,8 @@
+2003-03-17  John Levon  <levon@movementarian.org>
+
+	* text.C (rowBreakPoint): remove attempt to fix displayed
+	math insets inside a manual label
+
 2003-03-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxtext.h: remove BufferView* as first arg from almost all class

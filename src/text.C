@@ -710,12 +710,8 @@ namespace {
 pos_type addressBreakPoint(pos_type i, Paragraph * par)
 {
 	for (; i < par->size(); ++i) {
-		if (par->isNewline(i)) {
+		if (par->isNewline(i))
 			return i;
-		} else if (par->isInset(i) && par->getInset(i)->display()) {
-			// FIXME: what are we doing modifying stuff here !
-			par->getInset(i)->display(false);
-		}
 	}
 
 	return par->size();
@@ -787,22 +783,14 @@ LyXText::rowBreakPoint(Row const & row) const
 		chunkwidth += thiswidth;
 
 		Inset * in = par->isInset(i) ? par->getInset(i) : 0;
-		bool display = (in && (in->display() || in->needFullRow()));
-
-		// check whether a Display() inset is valid here.
-		// If not, change it to non-display. FIXME:
-		// we should not be modifying things at this
-		// point !
-		if (in && in->display() && (layout->isCommand() ||
-		    (layout->labeltype == LABEL_MANUAL && i < body_pos)))
-			in->display(false);
+		bool fullrow = (in && (in->display() || in->needFullRow()));
 
 		// break before a character that will fall off
 		// the right of the row
 		if (x >= width) {
 			// if no break before or we are at an inset
 			// that will take up a row, break here
-			if (point == last || display || chunkwidth >= (width - left)) {
+			if (point == last || fullrow || chunkwidth >= (width - left)) {
 				if (pos < i)
 					point = i - 1;
 				else
@@ -820,7 +808,7 @@ LyXText::rowBreakPoint(Row const & row) const
 			continue;
 		}
 
-		if (!display)
+		if (!fullrow)
 			continue;
 
 		// full row insets start at a new row
