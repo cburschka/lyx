@@ -1,3 +1,7 @@
+2003-07-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* xfont_loader.C (addFontPath): condition message to Debug::FONT
+
 2003-05-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* forms/Makefile.am (EXTRA_DIST): do not forget to distribute

@@ -54,12 +54,13 @@ void addFontPath()
 		char ** p = XGetFontPath(w.x11Display(), &n);
 		if (std::find(p, p + n, dir) != p + n)
 			return;
-		lyxerr << "Adding " << dir << " to the font path.\n";
+		lyxerr[Debug::FONT] << "Adding " << dir 
+				    << " to the font path." << endl;
 		string const command = "xset fp+ " + dir;
 		Systemcall s;
 		if (!s.startscript(Systemcall::Wait, command))
 			return;
-		lyxerr << "Unable to add font path.\n";
+		lyxerr << "Unable to add font path." << endl;
 	}
 #endif
 }
