@@ -178,73 +178,72 @@ MathParInset::Metrics()
 	while (data.OK()) {
 		cx = data.GetChar();      
 		if (cx >= ' ') {
-			string s = data.GetString();
+			string const s = data.GetString();
 			mathed_string_height(data.fcode(),
 					     size(), s, asc, des);
 			if (asc > ascent) ascent = asc;
 			if (des > descent) descent = des;
 			limits = false;
 			mathed_char_height(LM_TC_CONST, size(), 'y', asc, des);
-		} else
-			if (MathIsInset(cx)) {
-				MathedInset * p = data.GetInset();
-				p->SetStyle(size());   
-				p->Metrics();
-				if (cx == LM_TC_UP) {
-					asc += (limits) ? p->Height() + 4: p->Ascent() + 
-						((p->Descent()>asc) ? p->Descent() - asc + 4: 0);
-				} else
-					if (cx == LM_TC_DOWN) {
-						des += ((limits) ? p->Height() + 4: p->Height() - p->Ascent() / 2);
-					} else {
-						asc = p->Ascent();
-						des = p->Descent();
-					}
-				if (asc > ascent) ascent = asc;
-				if (des > descent) descent = des;
-				if (cx!= LM_TC_UP && cx!= LM_TC_DOWN)
-					limits = p->GetLimits();
-				data.Next();
-			} else 
-				if (cx == LM_TC_TAB) {
-					int x, y;
-					data.GetIncPos(x, y);
-					if (data.IsFirst() || cxp == LM_TC_TAB || cxp == LM_TC_CR) {
-						if (ascent<df_asc) ascent = df_asc;
-						tb = x;
-					}
-					data.setTab(x-tb, tab);
+		} else if (MathIsInset(cx)) {
+			MathedInset * p = data.GetInset();
+			p->SetStyle(size());   
+			p->Metrics();
+			if (cx == LM_TC_UP) {
+				asc += (limits) ? p->Height() + 4: p->Ascent() + 
+					((p->Descent()>asc) ? p->Descent() - asc + 4: 0);
+			} else if (cx == LM_TC_DOWN) {
+				des += (limits ? p->Height() + 4 : p->Height() - p->Ascent() / 2);
+			} else {
+				asc = p->Ascent();
+				des = p->Descent();
+			}
+			if (asc > ascent) ascent = asc;
+			if (des > descent) descent = des;
+			if (cx!= LM_TC_UP && cx!= LM_TC_DOWN)
+				limits = p->GetLimits();
+			data.Next();
+		} else 	if (cx == LM_TC_TAB) {
+			int x;
+			int y;
+			data.GetIncPos(x, y);
+			if (data.IsFirst() || cxp == LM_TC_TAB || cxp == LM_TC_CR) {
+				if (ascent < df_asc) ascent = df_asc;
+				tb = x;
+			}
+			data.setTab(x - tb, tab);
+			tb = x;
+			++tab;
+			limits = false;                   
+			data.Next();
+		} else if (cx == LM_TC_CR) {
+			if (tb > 0) {
+				int x;
+				int y;
+				data.GetIncPos(x, y);
+				if (data.IsFirst() || cxp == LM_TC_TAB || cxp == LM_TC_CR) {
+					if (ascent < df_asc) ascent = df_asc;
 					tb = x;
-					++tab;
-					limits = false;                   
-					data.Next();
-				} else
-					if (cx == LM_TC_CR) {
-						if (tb > 0) {
-							int x, y;
-							data.GetIncPos(x, y);
-							if (data.IsFirst() || cxp == LM_TC_TAB || cxp == LM_TC_CR) {
-								if (ascent<df_asc) ascent = df_asc;
-								tb = x;
-							} 
-							data.setTab(x - tb, tab);
-						} else //if (GetColumns() == 1) 
-							{
-								int x, y;
-								data.GetIncPos(x, y);
-								data.setTab(x, tab);
-								if (ascent<df_asc) ascent = df_asc;
-							} 
-						tb = tab = 0;
-						data.subMetrics(ascent, descent);
-						ascent = df_asc;   
-						descent = 0;
-						data.Next();
-					} else {
-						lyxerr << "Mathed Error: Unrecognized code[" << cx
-						       << "]" << endl;
-						break;
-					}       
+				} 
+				data.setTab(x - tb, tab);
+			} else //if (GetColumns() == 1) 
+				{
+					int x;
+					int y;
+					data.GetIncPos(x, y);
+					data.setTab(x, tab);
+					if (ascent < df_asc) ascent = df_asc;
+				} 
+			tb = tab = 0;
+			data.subMetrics(ascent, descent);
+			ascent = df_asc;
+			descent = 0;
+			data.Next();
+		} else {
+			lyxerr << "Mathed Error: Unrecognized code[" << cx
+			       << "]" << endl;
+			break;
+		}       
 		cxp = cx;
 	}
 	data.GetIncPos(width, ls);
