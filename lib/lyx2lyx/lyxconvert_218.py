@@ -266,14 +266,14 @@ def remove_oldert(lines):
 		break
 
 	new = new+new2
-	if not check_token(lines[j], "\\latex default"):
+	if not check_token(lines[j], "\\latex "):
 	    new = new+[""]+[lines[j]]
 	lines[i:j+1] = new
 	i = i+1
 
     i = 0
     while 1:
-	i = find_token(lines, "\\latex default", i)
+	i = find_token(lines, "\\latex ", i)
 	if i == -1:
 	    break
 	del lines[i]
