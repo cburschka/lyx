@@ -39,7 +39,7 @@ public:
 	///
 	string const editMessage() const;
 	///
-	void InsetFoot::validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 };
 
 #endif

@@ -23,6 +23,8 @@ class UpdatableInset;
 #include <vector>
 #include <boost/utility.hpp>
 
+#include "LString.h"
+
 /** A class to hold all the buffers in a structure
   The point of this class is to hide from bufferlist what kind
   of structure the buffers are stored in. Should be no concern for

@@ -1059,6 +1059,39 @@ void LyXText::toggleFree(BufferView * bview,
 }
 
 
+string
+LyXText::getStringToIndex(BufferView * bview)
+{
+	string idxstring;
+	
+	// Try implicit word selection
+	// If there is a change in the language the implicit word selection 
+	// is disabled.
+	LyXCursor resetCursor = cursor;
+	bool implicitSelection = selectWordWhenUnderCursor(bview, PREVIOUS_WORD);
+
+	if (!selection.set()) {
+		bview->owner()->message(_("Nothing to index!"));
+		return string();
+	}
+	if (selection.start.par() != selection.end.par()) {
+		bview->owner()->message(_("Cannot index more than one paragraph!"));
+		return string();
+	}
+
+	idxstring = selectionAsString(bview->buffer());
+	
+	// Implicit selections are cleared afterwards
+	//and cursor is set to the original position.
+	if (implicitSelection) {
+		clearSelection(bview);
+		cursor = resetCursor;
+		setCursor(bview, cursor.par(), cursor.pos());
+		selection.cursor = cursor;
+	}
+	return idxstring;
+}
+
 Paragraph::size_type
 LyXText::beginningOfMainBody(Buffer const * buf,
 			     Paragraph const * par) const

@@ -19,6 +19,7 @@
 #include "support/translator.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
+#include "support/LOstream.h"
 
 #include "support/LAssert.h"
 

@@ -9,6 +9,7 @@ src/converter.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
+src/ext_l10n.h
 src/figureForm.C
 src/figure_form.C
 src/FontLoader.C
@@ -24,6 +25,7 @@ src/frontends/controllers/ControlPreamble.C
 src/frontends/controllers/ControlPrint.C
 src/frontends/controllers/ControlSearch.C
 src/frontends/controllers/ControlSpellchecker.C
+src/frontends/controllers/ControlThesaurus.C
 src/frontends/controllers/helper_funcs.C
 src/frontends/gnome/FormCitation.C
 src/frontends/gnome/FormIndex.C

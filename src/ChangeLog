@@ -1,3 +1,17 @@
+2001-07-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* BufferView_pimpl.C (Dispatch): improve handling of
+	LFUN_INDEX_INSERT_LAST and LFUN_INDEX_CREATE
+
+	* commandtags.h: #include lyxfont.h here temporarily to avoid
+	keybinding bug.
+
+	* bufferlist.h: include LString.h here.
+
+2001-07-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text2.C (getStringToIndex): new method.
+
 2001-07-29  Asger Alstrup Nielsen  <alstrup@alstrup>
 
 	* *: Reduced header file dependencies all over.

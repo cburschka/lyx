@@ -2984,19 +2984,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		LyXText * lt = bv_->getLyXText();
 		
 		if (argument.empty()) {
-			// Get word or selection
-			lt->selectWordWhenUnderCursor(bv_, LyXText::PREVIOUS_WORD);
-			
-			if (!lt->selection.set()) {
-				owner_->message(_("Nothing to index!"));
+			string const idxstring(bv_->getLyXText()->getStringToIndex(bv_));
+			if (!idxstring.empty()) 
+				p.setContents(idxstring);
+			else
 				break;
-			}
-			if (lt->selection.start.par() != lt->selection.end.par()) {
-				owner_->message(_("Cannot index more than one paragraph!"));
-				break;
-			}
-			
-			p.setContents(lt->selectionAsString(buffer_));
 		} else {
 			p.setContents(argument);
 		}
@@ -3020,26 +3012,18 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		    
 	case LFUN_INDEX_INSERT_LAST:
 	{
-		LyXText * lt = bv_->getLyXText();
-		// Get word or selection
-		lt->selectWordWhenUnderCursor(bv_, LyXText::PREVIOUS_WORD);
-
-		if (!lt->selection.set()) {
-			owner_->message(_("Nothing to index!"));
-			break;
+		string const idxstring(bv_->getLyXText()->getStringToIndex(bv_));
+		if (!idxstring.empty()) {
+			owner_->message(_("Word `")
+					+ idxstring + _(("' indexed.")));
+			InsetCommandParams p("index", idxstring);
+			InsetIndex * inset = new InsetIndex(p);
+			
+			if (!insertInset(inset))
+				delete inset;
+			else
+				updateInset(inset, true);
 		}
-		if (lt->selection.start.par() != lt->selection.end.par()) {
-			owner_->message(_("Cannot index more than one paragraph!"));
-			break;
-		}
-		
-		InsetCommandParams p("index", lt->selectionAsString(buffer_));
-		InsetIndex * inset = new InsetIndex(p);
-
-		if (!insertInset(inset))
-			delete inset;
-		else
-			updateInset(inset, true);
 	}
 	break;
 

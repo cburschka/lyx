@@ -31,6 +31,7 @@
 #include "lyx_gui_misc.h" // WriteAlert
 #include "gettext.h"
 #include "BufferView.h"
+#include "support/LAssert.h"
 
 using Liason::printBuffer;
 using Liason::getPrinterParams;

@@ -150,6 +150,9 @@ public:
 	
 	///
 	void toggleFree(BufferView *, LyXFont const &, bool toggleall = false);
+
+	///
+	string getStringToIndex(BufferView *);
 	
 	/** recalculates the heights of all previous rows of the
 	    specified paragraph.  needed, if the last characters font

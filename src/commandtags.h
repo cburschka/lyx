@@ -12,6 +12,9 @@
 
 #include <iosfwd>
 
+// this will not be needed anymore when NO_LATEX is the default.
+#include "lyxfont.h"
+
 /** These are all the lyxfunctions (as enums).
     Please add new functions at the end of the enum, right
     before LFUN_LASTACTION.

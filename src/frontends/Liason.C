@@ -21,6 +21,7 @@
 #include "lyxrc.h"
 #include "PrinterParams.h"
 #include "lyx_gui_misc.h"
+#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
 #include "support/path.h"
