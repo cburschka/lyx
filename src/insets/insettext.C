@@ -1312,6 +1312,25 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 	return lines;
 }
 
+int InsetText::linuxdoc(Buffer const * buf, ostream & os) const
+{
+	ParagraphList::iterator pit = const_cast<ParagraphList&>(paragraphs).begin();
+	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
+
+	// There is a confusion between the empty paragraph and the default paragraph
+	// The default paragraph is <p></p>, the empty paragraph is *empty*
+	// Since none of the floats of linuxdoc accepts standard paragraphs 
+	// I disable them. I don't expect problems. (jamatos 2003/07/27)
+	for (; pit != pend; ++pit) {
+		const string name = pit->layout()->latexname();
+		if (name != "p")
+			sgml::openTag(os, 1, 0, name);
+		buf->simpleLinuxDocOnePar(os, pit, 0);
+		if (name != "p")
+			sgml::closeTag(os, 1, 0, name);
+	}
+	return 0;
+}
 
 int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {

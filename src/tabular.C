@@ -2201,6 +2201,47 @@ int LyXTabular::latex(Buffer const * buf, ostream & os,
 }
 
 
+int LyXTabular::linuxdoc(Buffer const * buf, ostream & os) const
+{
+	os << "<tabular ca=\"";
+	for (int i = 0; i < columns_; ++i) {
+		switch (column_info[i].alignment) {
+		case LYX_ALIGN_LEFT:
+			os << 'l';
+			break;
+		case LYX_ALIGN_RIGHT:
+			os << 'r';
+			break;
+		default:
+			os << 'c';
+			break;
+		}
+	}
+	os << "\">\n";
+	int cell = 0;
+	int ret = 0;
+	for (int i = 0; i < rows_; ++i) {
+		for (int j = 0; j < columns_; ++j) {
+			if (isPartOfMultiColumn(i, j))
+				continue;
+			InsetText & inset = getCellInset(cell);
+	
+			ret += inset.linuxdoc(buf, os);
+
+			if (isLastCellInRow(cell)) {
+				os << "@\n";
+				++ret;
+			} else {
+				os << "|";
+			}
+			++cell;
+		}
+	}
+	os << "</tabular>\n";
+	return ret;
+}
+
+
 int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
 {
 	int ret = 0;

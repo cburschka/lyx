@@ -1,5 +1,9 @@
 2003-07-27  José Matos  <jamatos@fep.up.pt>
 
+	* tabular.[Ch] (linuxdoc): add support for tables and figures (linuxdoc).
+
+2003-07-27  José Matos  <jamatos@fep.up.pt>
+
 	* buffer.[Ch] (makeLaTeXFile): changed name of arguments for
 	consistency in both functions.
 	* bufferlist.C (updateIncludedTeXfiles): change client to comply.

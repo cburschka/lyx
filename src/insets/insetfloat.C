@@ -316,6 +316,43 @@ int InsetFloat::latex(Buffer const * buf, ostream & os,
 }
 
 
+int InsetFloat::linuxdoc(Buffer const * buf, ostream & os) const
+{
+	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	string const tmptype =  params_.type;
+	// Figure out the float placement to use.
+	// From lowest to highest:
+	// - float default placement
+	// - document wide default placement
+	// - specific float placement
+	// This is the same as latex, as linuxdoc is modeled after latex.
+
+	string placement;
+	string const buf_placement = buf->params.float_placement;
+	string const def_placement = floats.defaultPlacement(params_.type);
+	if (!params_.placement.empty()
+	    && params_.placement != def_placement) {
+		placement = params_.placement;
+	} else if (params_.placement.empty()
+		   && !buf_placement.empty()
+		   && buf_placement != def_placement) {
+		placement = buf_placement;
+	}
+
+	os << "\n<" << tmptype ;
+	// We only output placement if different from the def_placement.
+	if (!placement.empty()) {
+		os << " loc=\"" << placement << '"';
+	}
+	os << ">";
+
+	int const i = inset.linuxdoc(buf, os);
+	os << "</" << tmptype << ">\n";
+
+	return i;
+}
+
+
 int InsetFloat::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
 	os << '<' << params_.type << '>';

@@ -12,6 +12,7 @@ OutputType              linuxdoc
 DefaultStyle            Standard
 
 Input stdcounters.inc
+Input stdfloats.inc
 
 # Standard style definition
 Style Standard
@@ -382,4 +383,25 @@ Style SGML
 	LabelType             No_Label
 	FreeSpacing           1
 	PassThru              1
+End
+
+# Caption style definition
+Style Caption
+	Margin                First_Dynamic
+	LatexType             Paragraph
+	LatexName             caption
+	NeedProtect           1
+	LabelSep              xx
+	ParSkip               0.4
+	TopSep                0.5
+	Align                 Center
+	AlignPossible         Center
+	LabelType             Sensitive
+	LabelString		Caption
+	OptionalArgs          1
+
+	# label font definition
+	LabelFont 
+	  Series              Bold
+	EndFont
 End

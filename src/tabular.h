@@ -280,6 +280,8 @@ public:
 	///
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;
+	//
+	int linuxdoc(Buffer const * buf, std::ostream & os) const;
 	///
 	int docbook(Buffer const * buf, std::ostream & os, bool mixcont) const;
 	///

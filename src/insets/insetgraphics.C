@@ -550,9 +550,14 @@ int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetGraphics::linuxdoc(Buffer const *, ostream &) const
+int InsetGraphics::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	// No graphics in LinuxDoc output. Should check how/what to add.
+	string const file_name = buf->niceFile ?
+				params().filename.relFilename(buf->filePath()):
+	  			params().filename.absFilename();
+
+	os << "<eps file=\"" << file_name << "\">\n";
+	os << "<img src=\"" << file_name << "\">";
 	return 0;
 }
 

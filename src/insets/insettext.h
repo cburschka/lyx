@@ -114,7 +114,7 @@ public:
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const { return 0; }
+	int linuxdoc(Buffer const *, std::ostream &) const ;
 	///
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const ;
 	///

@@ -1,5 +1,12 @@
 2003-07-27  José Matos  <jamatos@fep.up.pt>
 
+	* insetfloat.[Ch] (linuxdoc):
+	* insetgraphics.C (linuxdoc):
+	* insettabular.C (linuxdoc):
+	* insettext.[Ch] (linuxdoc): add support for tables and figures (linuxdoc).
+
+2003-07-27  José Matos  <jamatos@fep.up.pt>
+
 	* insetinclude (latex): comply with makeLaTeXFile argument change.
 
 2003-07-26  Asger Alstrup  <alstrup@local>
