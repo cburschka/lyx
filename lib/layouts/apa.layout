@@ -209,9 +209,28 @@ Style Note
   EndFont
 End
 
-Style Acknowledgments
-  LatexName	acknowledgments
+Style Acknowledgements
+  LatexName	acknowledgements
   LatexType	Command
+  Font
+    Size	Small
+  EndFont
+  Margin	Dynamic
+  LeftMargin	MMN
+  RightMargin	MMN
+  Align		Block
+  AlignPossible	Block, Left, Right, Center
+  Labeltype	Static
+  LabelString	"Acknowledgements: "
+  Labelsep	M
+  LabelFont
+    Series	Bold
+    Size	Small
+  EndFont
+End
+
+Style Acknowledgments
+  ObsoletedBy	Acknowledgements
 End
 
 Style ThickLine
