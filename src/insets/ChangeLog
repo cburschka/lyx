@@ -1,3 +1,7 @@
+2002-06-13  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* insetquotes.C: change lyxfont::draw to font_metrics::draw
+	
 2002-06-12  Vitaly Lipatov  <LAV@VL3143.spb.edu>
 
 	* insetquotes.C (draw): fix drawing of double quotes

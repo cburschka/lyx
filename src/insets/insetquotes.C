@@ -234,7 +234,7 @@ void InsetQuotes::draw(BufferView * bv, LyXFont const & font,
 
 	if (text.length() == 2 && text[0] == text[1]) {
 		bv->painter().text(int(x), baseline, text[0], font);
-		int x2 = int(x + lyxfont::width(',', font));
+		int x2 = int(x + font_metrics::width(',', font));
 		bv->painter().text(x2, baseline, text[0], font);
 	} else
 		bv->painter().text(int(x), baseline, text, font);
