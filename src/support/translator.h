@@ -49,12 +49,12 @@ public:
 	
 	/// Find the mapping for the first argument
 	T2 const & find(T1 const & first) const {
-		Assert(!map.empty());
+		lyx::Assert(!map.empty());
 		
 		// For explanation see the next find() function.
 		Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
-				     equal_1st_in_pair<T1, T2>(first)
+				     lyx::equal_1st_in_pair<T1, T2>(first)
 				);
 		
 		if (it != map.end()) {
@@ -66,7 +66,7 @@ public:
 	
 	/// Find the mapping for the second argument
 	T1 const & find(T2 const & second) const {
-		Assert(!map.empty());
+		lyx::Assert(!map.empty());
 		
 		// The idea is as follows:
 		// find_if() will try to compare the data in the vector with
@@ -81,7 +81,7 @@ public:
 		// equal_to( select2nd(pair) , second)
 		Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
-				     equal_2nd_in_pair<T1, T2>(second)
+				     lyx::equal_2nd_in_pair<T1, T2>(second)
 				);
 		
 		if (it != map.end())

@@ -985,7 +985,7 @@ bool BufferView::ChangeCitationsIfUnique(string const & from, string const & to)
 
 	vector<pair<string,string> > keys = buffer()->getBibkeyList();	
 	if (count_if(keys.begin(), keys.end(), 
-		     equal_1st_in_pair<string,string>(from)) 
+		     lyx::equal_1st_in_pair<string,string>(from)) 
 	    > 1)
 		return false;
 

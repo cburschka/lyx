@@ -94,22 +94,23 @@ struct PrinterParams {
 #ifdef ENABLE_ASSERTIONS
 			if (!from_page.empty()) {
 				// Assert(from_page == number or empty)
-				Assert(containsOnly(from_page, "1234567890"));
+				lyx::Assert(containsOnly(from_page,
+							 "1234567890"));
 			}
 			if (to_page) {
 				// Assert(to_page == empty
 				//        or number iff from_page set)
-				Assert(!from_page.empty());
+				lyx::Assert(!from_page.empty());
 			}
 			switch (target) {
 			case PRINTER:
 //  				Assert(!printer_name.empty());
 				break;
 			case FILE:
-				Assert(!file_name.empty());
+				lyx::Assert(!file_name.empty());
 				break;
 			default:
-				Assert(false);
+				lyx::Assert(false);
 				break;
 			}
 			switch (which_pages) {
@@ -118,7 +119,7 @@ struct PrinterParams {
 			case EVEN:
 				break;
 			default:
-				Assert(false);
+				lyx::Assert(false);
 				break;
 			}
 #endif

@@ -602,7 +602,7 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 	}
 
 	// Paranoia check
-	Assert(item->kind() == MenuItem::Submenu);
+	lyx::Assert(item->kind() == MenuItem::Submenu);
 	
 	// set tabstop length
 	fl_set_tabstop(menu_tabstop);

@@ -4,11 +4,11 @@
 
 #include "support/lyxlib.h"
 
-//namespace LyX {
+extern void emergencySave();
+
+namespace lyx {
 
 #ifdef ENABLE_ASSERTIONS
-
-extern void emergencySave();
 
 /** Live assertion.
     This is a debug tool to ensure that the assertion holds. If it don't hole
@@ -36,5 +36,6 @@ void Assert(A /*assertion*/) {}
 
 #endif /* ENABLE_ASSERTIONS */
 
-//} // end of namespace LyX
+} // end of namespace LyX
+
 #endif /* LASSERT_H */

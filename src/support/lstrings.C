@@ -231,7 +231,7 @@ string const uppercase(string const & a)
 
 bool prefixIs(string const & a, char const * pre)
 {
-	Assert(pre);
+	lyx::Assert(pre);
 	
 	size_t const l = strlen(pre);
 	string::size_type const alen = a.length();
@@ -279,7 +279,7 @@ bool suffixIs(string const & a, char c)
 
 bool suffixIs(string const & a, char const * suf)
 {
-	Assert(suf);
+	lyx::Assert(suf);
 	
 	size_t const suflen = strlen(suf);
 	string::size_type const alen = a.length();
@@ -322,7 +322,7 @@ bool suffixIs(string const & a, string const & suf)
 
 bool contains(char const * a, string const & b)
 {
-	Assert(a);
+	lyx::Assert(a);
 	string const at(a);
 	return contains(at, b);
 }
@@ -330,7 +330,7 @@ bool contains(char const * a, string const & b)
 
 bool contains(string const & a, char const * b)
 {
-	Assert(b);
+	lyx::Assert(b);
 	string const bt(b);
 	return contains(a, bt);
 }
@@ -354,7 +354,7 @@ bool contains(string const & a, char b)
 
 bool contains(char const * a, char const * b)
 {
-	Assert(a && b);
+	lyx::Assert(a && b);
 	string const at(a);
 	string const bt(b);
 	return contains(at, bt);
@@ -363,7 +363,7 @@ bool contains(char const * a, char const * b)
 
 bool containsOnly(string const & s, char const * cset)
 {
-	Assert(cset);
+	lyx::Assert(cset);
 	
 	return s.find_first_not_of(cset) == string::npos;
 }
@@ -377,7 +377,7 @@ bool containsOnly(string const & s, string const & cset)
 
 bool containsOnly(char const * s, char const * cset)
 {
-	Assert(s && cset);
+	lyx::Assert(s && cset);
 	
 	return string(s).find_first_not_of(cset) == string::npos;
 }
@@ -385,7 +385,7 @@ bool containsOnly(char const * s, char const * cset)
 
 bool containsOnly(char const * s, string const & cset)
 {
-	Assert(s);
+	lyx::Assert(s);
 	
 	return string(s).find_first_not_of(cset) == string::npos;
 }
@@ -475,7 +475,7 @@ string const subst(string const & a, char oldchar, char newchar)
 string const subst(string const & a,
 	     char const * oldstr, string const & newstr)
 {
-	Assert(oldstr);
+	lyx::Assert(oldstr);
 	
 	string lstr(a);
 	string::size_type i = 0;
@@ -527,7 +527,7 @@ string const strip(string const & a, char c)
 
 string const frontStrip(string const & a, char const * p)
 {
-	Assert(p);
+	lyx::Assert(p);
 	
 	if (a.empty() || !*p) return a;
 	string tmp(a);

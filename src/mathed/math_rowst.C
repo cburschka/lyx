@@ -100,19 +100,19 @@ bool MathedRowContainer::empty() const
 
 void MathedRowContainer::insert(iterator const & it)
 {
-	Assert(it.st_ == this);
+	lyx::Assert(it.st_ == this);
 	data_.insert(data_.begin() + it.pos_, MathedRowStruct());
 }
 		
 void MathedRowContainer::erase(iterator & it)
 {
-	Assert(it.st_ == this);
+	lyx::Assert(it.st_ == this);
 	data_.erase(data_.begin() + it.pos_);
 }
 
 MathedRowStruct & MathedRowContainer::back()
 {
-	Assert(data_.size());
+	lyx::Assert(data_.size());
 	return data_.back();
 }
 
@@ -148,25 +148,25 @@ MathedRowContainer::iterator::operator void *() const
 
 MathedRowStruct * MathedRowContainer::iterator::operator->()
 {
-	Assert(st_);
+	lyx::Assert(st_);
 	return &st_->data_[pos_];
 }
 
 MathedRowStruct const * MathedRowContainer::iterator::operator->() const
 {
-	Assert(st_);
+	lyx::Assert(st_);
 	return &st_->data_[pos_];
 }
 
 void MathedRowContainer::iterator::operator++()
 {
-	Assert(st_);
+	lyx::Assert(st_);
 	++pos_;
 }
 
 bool MathedRowContainer::iterator::is_last() const
 {
-	Assert(st_);
+	lyx::Assert(st_);
 	return pos_ == st_->size() - 1;
 }
 

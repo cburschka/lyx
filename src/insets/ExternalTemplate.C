@@ -256,7 +256,7 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 		default:
 			lex.printError("ExternalTemplate::readTemplate: "
 				       "Wrong tag: $$Token");
-			Assert(false);
+			lyx::Assert(false);
 			break;
 		}
 	}

@@ -196,6 +196,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	if (!owner())
 		x += static_cast<float>(scroll());
 #endif
+
 	if (!cleared && (inset.need_update == InsetText::FULL ||
 			 inset.need_update == InsetText::INIT ||
 			 top_x != int(x) ||
@@ -208,11 +209,11 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 		bv->text->status = LyXText::CHANGED_IN_DRAW;
 		return;
 #else
-		int w =  owner() ? width(bv, f) : pain.paperWidth();
+		int w = owner() ? width(bv, f) : pain.paperWidth();
 		int h = ascent(bv, f) + descent(bv, f);
 		int const tx = (needFullRow() && !owner()) ? 0 : int(x);
 		int const ty = max(0, baseline - ascent(bv, f));
-		
+
 		if ((ty + h) > pain.paperHeight())
 			h = pain.paperHeight();
 		if ((top_x + w) > pain.paperWidth())
@@ -402,7 +403,7 @@ bool InsetCollapsable::UnlockInsetInInset(BufferView * bv, UpdatableInset * in,
 		bv->unlockInset(this);
 		return true;
 	}
-	bool ret = inset.UnlockInsetInInset(bv, in, lr);
+	bool const ret = inset.UnlockInsetInInset(bv, in, lr);
 	return ret;
 }
 
@@ -499,6 +500,7 @@ bool InsetCollapsable::nodraw() const
 {
 	return inset.nodraw();
 }
+
 
 int InsetCollapsable::scroll(bool recursive) const
 {

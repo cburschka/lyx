@@ -73,11 +73,12 @@ GraphicsCacheItem::imageConverted(int retval)
 
 
 namespace {
+
 string const findTargetFormat(string const & from)
 {
 	typedef ImageLoader::FormatList FormatList;
 	FormatList formats = ImageLoaderXPM().loadableFormats();
-	Assert(formats.size() > 0); // There must be a format to load from.
+	lyx::Assert(formats.size() > 0); // There must be a format to load from.
 	
 	FormatList::const_iterator iter = formats.begin();
 	FormatList::const_iterator end  = formats.end();

@@ -226,10 +226,10 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 	if (nodraw())
 		return;
 	if (bv->text->status == LyXText::CHANGED_IN_DRAW)
-		return;
+			return;
 
 //	lyxerr << "InsetTabular::draw(" << need_update << ")\n";
-
+	
 	Painter & pain = bv->painter();
 	int i;
 	int j;
@@ -2315,6 +2315,7 @@ bool InsetTabular::nodraw() const
 	return UpdatableInset::nodraw();
 }
 
+
 int InsetTabular::scroll(bool recursive) const
 {
 	int sx = UpdatableInset::scroll(false);
@@ -2324,6 +2325,7 @@ int InsetTabular::scroll(bool recursive) const
 
 	return sx;
 }
+
 
 bool InsetTabular::doClearArea() const
 {

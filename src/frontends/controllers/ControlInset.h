@@ -189,7 +189,7 @@ void ControlInset<Inset, Params>::apply()
 template <class Inset, class Params>
 Params & ControlInset<Inset, Params>::params() const
 {
-	Assert(params_);
+	lyx::Assert(params_);
 	return *params_;
 }
 
@@ -197,7 +197,7 @@ Params & ControlInset<Inset, Params>::params() const
 template <class Inset, class Params>
 Inset * ControlInset<Inset, Params>::inset() const
 {
-	Assert(inset_);
+	lyx::Assert(inset_);
 	return inset_;
 }
 

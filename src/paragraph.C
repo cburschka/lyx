@@ -524,7 +524,7 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 		return;
 	}
 #else
-	Assert(pos < size());
+	lyx::Assert(pos < size());
 #endif
 #ifndef NEW_INSETS
 	if (pos < size()) { // last is free for insertation, but should be empty
@@ -618,7 +618,7 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
 		return;
 	}
 #else
-	Assert(pos <= size());
+	lyx::Assert(pos <= size());
 #endif
 	text.insert(text.begin() + pos, c);
 
@@ -653,7 +653,7 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 			       Inset * inset, LyXFont const & font)
 {
-	Assert(inset);
+	lyx::Assert(inset);
 	
 #ifndef NEW_INSETS
 	// > because last is the next unused position, and you can 
@@ -670,11 +670,11 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 		return;
 	}
 #else
-	Assert(pos <= size());
+	lyx::Assert(pos <= size());
 #endif
 	
 	InsertChar(pos, META_INSET, font);
-	Assert(text[pos] == META_INSET);
+	lyx::Assert(text[pos] == META_INSET);
 	
 	// Add a new entry in the inset table.
 	InsetTable search_inset(pos, 0);
@@ -717,7 +717,7 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 		return 0;
 	}
 #else
-	Assert(pos < size());
+	lyx::Assert(pos < size());
 #endif
 	// Find the inset.
 	InsetTable search_inset(pos, 0);
@@ -756,7 +756,7 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 		return 0;
 	}
 #else
-	Assert(pos < size());
+	lyx::Assert(pos < size());
 #endif
 	// Find the inset.
 	InsetTable search_inset(pos, 0);
@@ -820,7 +820,7 @@ LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
 LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
 					    LyXParagraph::size_type pos) const
 {
-	Assert(pos <= size());
+	lyx::Assert(pos <= size());
 	FontTable search_font(pos, LyXFont());
 	FontList::const_iterator cit = lower_bound(fontlist.begin(),
 						   fontlist.end(),
@@ -941,7 +941,7 @@ LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos,
 LyXParagraph::value_type
 LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 {
-	Assert(pos >= 0);
+	lyx::Assert(pos >= 0);
 	
 	if (pos < size()) {
 		return text[pos];
@@ -958,7 +958,7 @@ LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 				"position does not exist."
 			       << pos << " (" << static_cast<int>(pos)
 			       << ")\n";
-			Assert(false);
+			lyx::Assert(false);
 		}
 		return '\0';
 	} else {
@@ -991,7 +991,7 @@ LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 //LyXParagraph::value_type
 //LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 //{
-//	Assert(pos <= size());
+//	lyx::Assert(pos <= size());
 //	if (!size() || pos == size()) return '\0';
 //	
 //	return text[pos];
@@ -1044,7 +1044,7 @@ LyXParagraph::GetUChar(BufferParams const & bparams,
 // return an string of the current word, and the end of the word in lastpos.
 string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 {
-	Assert(lastpos >= 0);
+	lyx::Assert(lastpos >= 0);
 
 	// the current word is defined as starting at the first character
 	// from the immediate left of lastpospos which meets the definition
@@ -1160,7 +1160,7 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 		return;
 	}
 #else
-	Assert(pos <= size());
+	lyx::Assert(pos <= size());
 #endif
 
 	// First, reduce font against layout/label font

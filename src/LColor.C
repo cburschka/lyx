@@ -169,7 +169,7 @@ void LColor::setColor(LColor::color col, string const & x11name)
 		return;
 	}
 	lyxerr << "LyX internal error: color and such.\n";
-	Assert(false);
+	lyx::Assert(false);
 }
 
 

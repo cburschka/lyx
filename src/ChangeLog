@@ -1,3 +1,31 @@
+2001-04-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxparagraph.h (size): move up int file
+	(GetLayout): ditto
+
+	* adjust all uses of Assert to lyx::Assert.
+
+	* BufferView2.C (ChangeCitationsIfUnique): adjust for
+	lyxfunctional in namespace lyx
+	* layout.C (hasLayout): ditto
+	(GetLayout): ditto
+	(GetLayout): ditto
+	(delete_layout): ditto
+	(NumberOfClass): ditto
+	* converter.C (GetFormat): ditto
+	(GetNumber): ditto
+	(Add): ditto
+	(Delete): ditto
+	(SetViewer): ditto
+	* bufferlist.C (getFileNames): ditto
+	(emergencyWriteAll): ditto
+	(exists): ditto
+	(getBuffer): ditto
+	* MenuBackend.C (hasSubmenu): ditto
+	(hasMenu): ditto
+	(getMenu): ditto
+	* BufferView_pimpl.C (getInsetByCode): ditto
+
 2001-04-18  Juergen Vigna  <jug@sad.it>
 
 	* vspace.C (asLatexString): fixed the 100% problem.

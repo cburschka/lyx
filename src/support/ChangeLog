@@ -1,3 +1,10 @@
+2001-04-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* LAssert.h (Assert): put into namespace lyx
+
+	* lyxfunctional.h: put into namespace lyx
+	* translator.h: adjust
+
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxalgo.h: put into namespace lyx, add firster and copy_if

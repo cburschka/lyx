@@ -151,6 +151,7 @@ void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
     }
 #ifdef WITH_WARNINGS
 #warning Remove me before final 1.2.0 (Jug)
+#warning Can we please remove this as soon as possible? (Lgb)
 #endif
     // this is only for compatibility to the intermediate format and should
     // vanish till the final 1.2.0!

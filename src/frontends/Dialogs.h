@@ -175,7 +175,7 @@ private:
 
 inline void Dialogs::add(DialogBase * ptr)
 {
-	Assert(ptr);
+	lyx::Assert(ptr);
 	dialogs_.push_back(db_ptr(ptr));
 }
 

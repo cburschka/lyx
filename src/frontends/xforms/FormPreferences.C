@@ -296,7 +296,7 @@ void FormPreferences::apply()
 
 void FormPreferences::feedback(FL_OBJECT * ob)
 {
-	Assert(ob);
+	lyx::Assert(ob);
 
 	string str;
 
@@ -335,7 +335,7 @@ void FormPreferences::feedback(FL_OBJECT * ob)
 
 bool FormPreferences::input(FL_OBJECT * ob, long)
 {
-	Assert(ob);
+	lyx::Assert(ob);
 	
 	// whatever checks you need to ensure the user hasn't entered
 	// some totally ridiculous value somewhere.  Change activate to suit.
@@ -3000,7 +3000,7 @@ int FormPreferences::FeedbackCB(FL_OBJECT * ob, int event,
 	// Note that the return value is important in the pre-emptive handler.
 	// Don't return anything other than 0.
 
-	Assert(ob);
+	lyx::Assert(ob);
 	// Don't Assert this one, as it can happen quite reasonably when things
 	// are being deleted in the d-tor.
 	//Assert(ob->form);
@@ -3016,7 +3016,7 @@ int FormPreferences::FeedbackCB(FL_OBJECT * ob, int event,
 // preemptive handler for feedback messages
 void FormPreferences::Feedback(FL_OBJECT * ob, int event)
 {
-	Assert(ob);
+	lyx::Assert(ob);
 
 	switch (event) {
 	case FL_ENTER:
@@ -3037,6 +3037,6 @@ void FormPreferences::Feedback(FL_OBJECT * ob, int event)
 
 void FormPreferences::setPreHandler(FL_OBJECT * ob)
 {
-	Assert(ob);
+	lyx::Assert(ob);
 	fl_set_object_prehandler(ob, C_FormPreferencesFeedbackCB);
 }

@@ -43,7 +43,7 @@ void ControlPreamble::apply()
 
 string & ControlPreamble::params() const
 {
-	Assert(params_);
+	lyx::Assert(params_);
 	return *params_;
 }
 

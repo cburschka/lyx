@@ -33,7 +33,7 @@ LyXImage::~LyXImage()
 Pixmap
 LyXImage::getPixmap() const
 {
-	Assert(pixmapInitialized);
+	lyx::Assert(pixmapInitialized);
 		
 	return pixmap_;
 }

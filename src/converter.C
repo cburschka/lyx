@@ -86,7 +86,7 @@ Format const * Formats::GetFormat(string const & name) const
 {
 	FormatList::const_iterator cit =
 		find_if(formatlist.begin(), formatlist.end(),
-			compare_memfun(&Format::name, name));
+			lyx::compare_memfun(&Format::name, name));
 	if (cit != formatlist.end())
 		return &(*cit);
 	else
@@ -98,7 +98,7 @@ int Formats::GetNumber(string const & name) const
 {
 	FormatList::const_iterator cit =
 		find_if(formatlist.begin(), formatlist.end(),
-			compare_memfun(&Format::name, name));
+			lyx::compare_memfun(&Format::name, name));
 	if (cit != formatlist.end())
 		return cit - formatlist.begin();
 	else
@@ -118,7 +118,7 @@ void Formats::Add(string const & name, string const & extension,
 {
 	FormatList::iterator it = 
 		find_if(formatlist.begin(), formatlist.end(),
-			compare_memfun(&Format::name, name));
+			lyx::compare_memfun(&Format::name, name));
 	if (it == formatlist.end())
 		formatlist.push_back(Format(name, extension, prettyname,
 					    shortcut, ""));
@@ -133,7 +133,7 @@ void Formats::Delete(string const & name)
 {
 	FormatList::iterator it = 
 		find_if(formatlist.begin(), formatlist.end(),
-			compare_memfun(&Format::name, name));
+			lyx::compare_memfun(&Format::name, name));
 	if (it != formatlist.end())
 		formatlist.erase(it);
 }
@@ -150,7 +150,7 @@ void Formats::SetViewer(string const & name, string const & command)
 	Add(name);
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
-			compare_memfun(&Format::name, name));
+			lyx::compare_memfun(&Format::name, name));
 	if (it != formatlist.end())
 		it->setViewer(command);
 }

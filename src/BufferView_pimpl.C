@@ -252,7 +252,7 @@ void BufferView::Pimpl::redraw()
 
 bool BufferView::Pimpl::fitCursor(LyXText * text)
 {
-	Assert(screen_.get());
+	lyx::Assert(screen_.get());
  
 	bool ret = screen_->FitCursor(text, bv_);
 	if (ret)
@@ -1432,7 +1432,7 @@ Inset * BufferView::Pimpl::getInsetByCode(Inset::Code code)
 		find_if(Buffer::inset_iterator(
 			cursor.par(), cursor.pos()),
 			buffer_->inset_iterator_end(),
-			compare_memfun(&Inset::LyxCode, code)
+			lyx::compare_memfun(&Inset::LyxCode, code)
 			);
 	return it != buffer_->inset_iterator_end() ? (*it) : 0;
 }

@@ -158,7 +158,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 
 void setMinibuffer(LyXView * lv, string const & msg)
 {
-	Assert(lv);
+	lyx::Assert(lv);
 	lv->message(msg);
 }
 

@@ -101,7 +101,7 @@ namespace {
 
 FormBase * GetForm(FL_OBJECT * ob)
 {
-	Assert(ob && ob->form && ob->form->u_vdata);
+	lyx::Assert(ob && ob->form && ob->form->u_vdata);
 	FormBase * pre = static_cast<FormBase *>(ob->form->u_vdata);
 	return pre;
 }
@@ -109,10 +109,11 @@ FormBase * GetForm(FL_OBJECT * ob)
 } // namespace anon
 
 
-extern "C" int C_FormBaseWMHideCB(FL_FORM * form, void *)
+extern "C"
+int C_FormBaseWMHideCB(FL_FORM * form, void *)
 {
 	// Close the dialog cleanly, even if the WM is used to do so.
-	Assert(form && form->u_vdata);
+	lyx::Assert(form && form->u_vdata);
 	FormBase * pre = static_cast<FormBase *>(form->u_vdata);
 	pre->CancelButton();
 	return FL_CANCEL;

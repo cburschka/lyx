@@ -54,6 +54,7 @@ extern BufferView * current_view;
 
 void BufferStorage::release(Buffer * buf)
 {
+	lyx::Assert(buf);
 	Container::iterator it = find(container.begin(), container.end(), buf);
 	if (it != container.end()) {
 		// Make sure that we don't store a LyXText in
@@ -168,6 +169,8 @@ void BufferList::resize()
 
 bool BufferList::close(Buffer * buf)
 {
+	lyx::Assert(buf);
+	
 	// CHECK
 	// Trace back why we need to use buf->getUser here.
 	// Perhaps slight rewrite is in order? (Lgb)
@@ -223,7 +226,7 @@ vector<string> const BufferList::getFileNames() const
 {
 	vector<string> nvec;
 	std::copy(bstore.begin(), bstore.end(),
-		  back_inserter_fun(nvec, &Buffer::fileName));
+		  lyx::back_inserter_fun(nvec, &Buffer::fileName));
 	return nvec;
 }
 
@@ -244,7 +247,9 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 
 int BufferList::unlockInset(UpdatableInset * inset)
 {
-	if (!inset) return 1;
+	lyx::Assert(inset);
+	
+	//if (!inset) return 1;
 	for (BufferStorage::iterator it = bstore.begin();
 	     it != bstore.end(); ++it) {
 		if ((*it)->getUser()
@@ -276,12 +281,14 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 void BufferList::emergencyWriteAll()
 {
 	for_each(bstore.begin(), bstore.end(),
-		 class_fun(*this, &BufferList::emergencyWrite));
+		 lyx::class_fun(*this, &BufferList::emergencyWrite));
 }
 
 
 void BufferList::emergencyWrite(Buffer * buf) 
 {
+	assert(buf); // use c assert to avoid a loop
+	
 	// No need to save if the buffer has not changed.
 	if (buf->isLyxClean()) return;
 	
@@ -405,12 +412,15 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 bool BufferList::exists(string const & s) const
 {
 	return find_if(bstore.begin(), bstore.end(),
-		       compare_memfun(&Buffer::fileName, s)) != bstore.end();
+		       lyx::compare_memfun(&Buffer::fileName, s))
+		!= bstore.end();
 }
 
 
 bool BufferList::isLoaded(Buffer const * b) const
 {
+	lyx::Assert(b);
+	
 	BufferStorage::const_iterator cit =
 		find(bstore.begin(), bstore.end(), b);
 	return cit != bstore.end();
@@ -421,7 +431,7 @@ Buffer * BufferList::getBuffer(string const & s)
 {
 	BufferStorage::iterator it =
 		find_if(bstore.begin(), bstore.end(),
-			compare_memfun(&Buffer::fileName, s));
+			lyx::compare_memfun(&Buffer::fileName, s));
 	return it != bstore.end() ? (*it) : 0;
 }
 

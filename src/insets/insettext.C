@@ -385,6 +385,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 #ifdef WITH_WARNINGS
 #warning Jürgen, why is this a block of its own? (Lgb)
 #warning because you told me to define variables only in local context (Jug)!
+#warning then make it a function/method of its own. (Lgb)
 #endif
 	{
 	int y = 0;
@@ -1546,10 +1547,8 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 				      int button)
 {
-	int dummyx, dummyy;
-
-	dummyx = x = x - drawTextXOffset;
-	dummyy = y + insetAscent;
+	int dummyx = x = x - drawTextXOffset;
+	int dummyy = y + insetAscent;
 	Inset * inset = bv->checkInsetHit(TEXT(bv), dummyx, dummyy, button);
 
 	if (inset) {
@@ -1864,12 +1863,14 @@ void InsetText::removeNewlines()
 	}
 }
 
+		
 bool InsetText::nodraw() const
 {
 	if (the_locking_inset)
 		return the_locking_inset->nodraw();
 	return UpdatableInset::nodraw();
 }
+
 
 int InsetText::scroll(bool recursive) const
 {
@@ -1880,6 +1881,7 @@ int InsetText::scroll(bool recursive) const
 
 	return sx;
 }
+
 
 bool InsetText::doClearArea() const
 {

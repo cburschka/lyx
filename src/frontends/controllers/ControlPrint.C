@@ -57,7 +57,7 @@ void ControlPrint::apply()
 
 PrinterParams & ControlPrint::params() const
 {
-	Assert(params_);
+	lyx::Assert(params_);
 	return *params_;
 }
 

@@ -56,17 +56,17 @@ protected:
 #ifdef ENABLE_ASSERTIONS
 	///
 	void testInvariant() const {
-		Assert(font >= MIN);
-		Assert(font < FONTMAX);
-		Assert(character >= MIN);
-		Assert(character < CHARMAX);
-		Assert(size >= MIN);
-		Assert(size < SIZEMAX);
-		Assert(user_text >= -1);
-		Assert(user_text <= 1);
+		lyx::Assert(font >= MIN);
+		lyx::Assert(font < FONTMAX);
+		lyx::Assert(character >= MIN);
+		lyx::Assert(character < CHARMAX);
+		lyx::Assert(size >= MIN);
+		lyx::Assert(size < SIZEMAX);
+		lyx::Assert(user_text >= -1);
+		lyx::Assert(user_text <= 1);
 		// now some relational/operational tests
 		if (user_text == 1) {
-			Assert(font == -1 && (character == -1 && size == -1));
+			lyx::Assert(font == -1 && (character == -1 && size == -1));
 		       	//        Assert(!text.empty()); // this isn't necessarily an error
 		}
 		//      else if (user_text == -1) {

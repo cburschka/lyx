@@ -18,7 +18,7 @@ class UpdateInset {
 public:
 	///
 	void push(Inset * inset) {
-		Assert(inset);
+		lyx::Assert(inset);
 		insetqueue.push(inset);
 	}
 	///

@@ -67,7 +67,7 @@ vector<string> const getKeys(InfoMap const & map)
 
 string const getInfo(InfoMap const & map, string const & key)
 {
-	Assert(!map.empty());
+	lyx::Assert(!map.empty());
 
 	string result;
 

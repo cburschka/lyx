@@ -239,7 +239,6 @@ public:
 			return scx;
 		return 0;
 	}
-
 protected:
 	///
 	mutable int top_x;
@@ -308,10 +307,8 @@ public:
 		return b ? DISPATCHED : FINISHED;
 	}
 
-
 	///
 	UpdatableInset() : cursor_visible_(false), block_drawing_(false) {}
-
 	///
 	virtual EDITABLE Editable() const;
 	
@@ -384,7 +381,6 @@ public:
 	virtual bool nodraw() const {
 		return block_drawing_;
 	}
-
 protected:
 	///
 	void toggleCursorVisible() const {

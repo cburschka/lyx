@@ -55,7 +55,7 @@ FL_FORM * FormMathsBitmap::form() const
 
 void FormMathsBitmap::build()
 {
-	Assert(bitmaps_.size() > 0);
+	lyx::Assert(bitmaps_.size() > 0);
 
 	h_+= 50; // Allow room for a Close button
 

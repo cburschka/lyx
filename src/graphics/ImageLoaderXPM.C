@@ -86,7 +86,7 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 	}
 	
 	// This should have been set by the XpmReadFileToPixmap call!
-	Assert(attrib.valuemask & XpmSize);
+	lyx::Assert(attrib.valuemask & XpmSize);
 
 	setImage(new LyXImage(pixmap, attrib.width, attrib.height));
 

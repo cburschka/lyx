@@ -21,18 +21,20 @@
 #include "form_splash.h"
 #include "support/LAssert.h"
 
-extern "C" int C_FormSplashCloseCB(FL_FORM * form, void *)
+extern "C"
+int C_FormSplashCloseCB(FL_FORM * form, void *)
 {
-	Assert(form && form->u_vdata);
+	lyx::Assert(form && form->u_vdata);
 	FormSplash * pre = static_cast<FormSplash *>(form->u_vdata);
 	pre->Hide();
 	return FL_CANCEL;
 }
 
 
-extern "C" void C_FormSplashCB(FL_OBJECT * ob, long)
+extern "C"
+void C_FormSplashCB(FL_OBJECT * ob, long)
 {
-	Assert(ob && ob->form && ob->form->u_vdata);
+	lyx::Assert(ob && ob->form && ob->form->u_vdata);
 	FormSplash * pre = static_cast<FormSplash*>(ob->form->u_vdata);
 	pre->Hide();
 }

@@ -644,12 +644,19 @@ public:
 };
 
 
+inline
+LyXParagraph::size_type LyXParagraph::size() const
+{
+	return text.size();
+}
+
+
 #ifdef NEW_INSETS
 inline
 LyXParagraph::value_type
 LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 {
-	Assert(pos <= size());
+	lyx::Assert(pos <= size());
 	// This is stronger, and I belive that this is the assertion
 	// that we should really use. (Lgb)
 	//Assert(pos < size());
@@ -676,6 +683,17 @@ void  LyXParagraph::id(int id_arg)
 
 
 inline
+LyXTextClass::size_type LyXParagraph::GetLayout() const
+{
+#ifndef NEW_INSETS
+	return FirstPhysicalPar()->layout;
+#else
+	return layout;
+#endif
+}
+
+
+inline
 bool LyXParagraph::IsFirstInSequence() const
 {
 	LyXParagraph const * dhook = DepthHook(GetDepth());
@@ -689,13 +707,6 @@ inline
 Inset * LyXParagraph::InInset()
 {
 	return inset_owner;
-}
-
-
-inline
-LyXParagraph::size_type LyXParagraph::size() const
-{
-	return text.size();
 }
 
 
@@ -731,17 +742,6 @@ inline
 void LyXParagraph::SetChar(size_type pos, value_type c)
 {
 	text[pos] = c;
-}
-
-
-inline
-LyXTextClass::size_type LyXParagraph::GetLayout() const
-{
-#ifndef NEW_INSETS
-	return FirstPhysicalPar()->layout;
-#else
-	return layout;
-#endif
 }
 
 

@@ -145,7 +145,7 @@ MathParInset * MathMacroTemplate::getMacroPar(int i) const
 	if (i >= 0 && i < nargs_) {
 		MathParInset * p = const_cast<MathParInset *>
 		        (static_cast<MathParInset const *>(&args_[i]));
-		Assert(p);
+		lyx::Assert(p);
 		return p;
 	} else 
 		return 0;

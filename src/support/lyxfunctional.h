@@ -12,7 +12,7 @@
 
 #include <iterator>
 
-//namespace lyx {
+namespace lyx {
 
 
 template<class R, class C, class A>
@@ -251,6 +251,5 @@ private:
 	T2 const & value_;
 };
 
-
-// }  // end of namespace lyx
+}  // end of namespace lyx
 #endif

@@ -56,7 +56,7 @@ FormBaseDeprecated::FormBaseDeprecated(LyXView * lv, Dialogs * d,
 				       string const & t)
 	: lv_(lv), d_(d), h_(0), r_(0), title_(t), minw_(0), minh_(0)
 {
-	Assert(lv && d);
+	lyx::Assert(lv && d);
 }
 
 
@@ -133,12 +133,12 @@ void FormBaseDeprecated::hide()
 
 int FormBaseDeprecated::WMHideCB(FL_FORM * form, void *)
 {
-	Assert(form);
+	lyx::Assert(form);
 	// Ensure that the signals (u and h) are disconnected even if the
 	// window manager is used to close the dialog.
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(form->u_vdata);
-	Assert(pre);
+	lyx::Assert(pre);
 	pre->hide();
 	pre->bc().hide();
 	return FL_CANCEL;
@@ -147,10 +147,10 @@ int FormBaseDeprecated::WMHideCB(FL_FORM * form, void *)
 
 void FormBaseDeprecated::ApplyCB(FL_OBJECT * ob, long)
 {
-	Assert(ob && ob->form);
+	lyx::Assert(ob && ob->form);
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	Assert(pre);
+	lyx::Assert(pre);
 	pre->apply();
 	pre->bc().apply();
 }
@@ -158,10 +158,10 @@ void FormBaseDeprecated::ApplyCB(FL_OBJECT * ob, long)
 
 void FormBaseDeprecated::OKCB(FL_OBJECT * ob, long)
 {
-	Assert(ob && ob->form);
+	lyx::Assert(ob && ob->form);
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	Assert(pre);
+	lyx::Assert(pre);
 	pre->ok();
 	pre->bc().ok();
 }
@@ -169,10 +169,10 @@ void FormBaseDeprecated::OKCB(FL_OBJECT * ob, long)
 
 void FormBaseDeprecated::CancelCB(FL_OBJECT * ob, long)
 {
-	Assert(ob && ob->form);
+	lyx::Assert(ob && ob->form);
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	Assert(pre);
+	lyx::Assert(pre);
 	pre->cancel();
 	pre->bc().cancel();
 }
@@ -180,20 +180,20 @@ void FormBaseDeprecated::CancelCB(FL_OBJECT * ob, long)
 
 void FormBaseDeprecated::InputCB(FL_OBJECT * ob, long data)
 {
-	Assert(ob && ob->form);
+	lyx::Assert(ob && ob->form);
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	Assert(pre);
+	lyx::Assert(pre);
 	pre->bc().valid(pre->input(ob, data));
 }
 
 
 void FormBaseDeprecated::RestoreCB(FL_OBJECT * ob, long)
 {
-	Assert(ob && ob->form);
+	lyx::Assert(ob && ob->form);
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	Assert(pre);
+	lyx::Assert(pre);
 	pre->bc().restore();
 	pre->restore();
 }

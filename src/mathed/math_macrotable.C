@@ -42,7 +42,7 @@ MathMacroTable::getTemplate(string const & name) const
 void
 MathMacroTable::addTemplate(boost::shared_ptr<MathMacroTemplate> const & m)
 {
-	Assert(m.get());
+	lyx::Assert(m.get());
 	macro_table[m->GetName()] = m;
 }
 

@@ -38,7 +38,7 @@ MathParInset * MathedXIter::getPar() const
 
 MathedRowContainer & MathedXIter::container()
 {
-	Assert(p_);
+	lyx::Assert(p_);
 	return p_->getRowSt();
 }
 

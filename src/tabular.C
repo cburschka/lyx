@@ -118,7 +118,7 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 	// If this and lt is not of the same size we have a serious bug
 	// So then it is ok to throw an exception, or for now
 	// call abort()
-	Assert(rows_ == lt.rows_ && columns_ == lt.columns_);
+	lyx::Assert(rows_ == lt.rows_ && columns_ == lt.columns_);
 
 	cell_info = lt.cell_info;
 	row_info = lt.row_info;
@@ -156,7 +156,7 @@ LyXTabular * LyXTabular::Clone(InsetTabular * inset)
 }
 
 
-/* activates all lines and sets all widths to 0 */ 
+/* activates all lines and sets all widths to 0 */
 void LyXTabular::Init(int rows_arg, int columns_arg, LyXTabular const * lt)
 {
 	rows_ = rows_arg;
@@ -169,7 +169,7 @@ void LyXTabular::Init(int rows_arg, int columns_arg, LyXTabular const * lt)
 		operator=(*lt);
 		return;
 	}
-
+	
 	int cellno = 0;
 	for (int i = 0; i < rows_; ++i) {
 		for (int j = 0; j < columns_; ++j) {
@@ -480,7 +480,7 @@ int LyXTabular::GetAdditionalHeight(int row) const
 {
 	if (!row || row >= rows_)
 		return 0;
-
+	
 	bool top = true;
 	bool bottom = true;
 

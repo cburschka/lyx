@@ -180,9 +180,10 @@ public:
 	bool LeftAlreadyDrawed(int cell) const;
 	///
 	bool IsLastRow(int cell) const;
-	
+
 	///
 	int GetAdditionalHeight(int row) const;
+
 	///
 	int GetAdditionalWidth(int cell) const;
 	
@@ -490,7 +491,7 @@ private:
 	int endlastfoot;
 	///
 	InsetTabular * owner_;
-   
+
 	///
 	void Init(int columns_arg, int rows_arg, LyXTabular const * lt = 0);
 	///

@@ -25,12 +25,13 @@
 static char h_align_str[80] = "c";
 static char v_align_c[] = "tcb";
 
-extern "C" int C_FormMathsMatrixAlignFilter(FL_OBJECT * ob, char const *,
+extern "C"
+int C_FormMathsMatrixAlignFilter(FL_OBJECT * ob, char const *,
 					    char const * cur, int c)
 {
-	Assert(ob);
+	lyx::Assert(ob);
 	FormMathsMatrix * pre = static_cast<FormMathsMatrix *>(ob->u_vdata);
-	Assert(pre);
+	lyx::Assert(pre);
 	return pre->AlignFilter(cur, c);
 }
 

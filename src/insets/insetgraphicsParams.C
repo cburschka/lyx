@@ -146,34 +146,34 @@ void InsetGraphicsParams::testInvariant() const
 	// Filename might be empty (when the dialog is first created).
 	// Assert(!filename.empty());
 
-	Assert(display == COLOR ||
+	lyx::Assert(display == COLOR ||
 	       display == MONOCHROME ||
 	       display == GRAYSCALE ||
 	       display == NONE
 	      );
 
-	Assert(widthResize == DEFAULT_SIZE ||
+	lyx::Assert(widthResize == DEFAULT_SIZE ||
 	       widthResize == CM ||
 	       widthResize == INCH ||
 	       widthResize == PERCENT_PAGE ||
 	       widthResize == PERCENT_COLUMN
 	      );
 
-	Assert(heightResize == DEFAULT_SIZE ||
+	lyx::Assert(heightResize == DEFAULT_SIZE ||
 	       heightResize == CM ||
 	       heightResize == INCH ||
 	       heightResize == PERCENT_PAGE
 	      );
 
-	Assert(widthSize >= 0.0);
-	Assert(heightSize >= 0.0);
+	lyx::Assert(widthSize >= 0.0);
+	lyx::Assert(heightSize >= 0.0);
 
 	// Angle is in degrees and ranges -360 < angle < 360
 	// The reason for this is that in latex there is a meaning for the
 	// different angles and they are not necessarliy interchangeable,
 	// it depends on the rotation origin.
-	Assert(rotateAngle < 360);
-	Assert(rotateAngle > -360);
+	lyx::Assert(rotateAngle < 360);
+	lyx::Assert(rotateAngle > -360);
 
 }
 

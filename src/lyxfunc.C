@@ -747,7 +747,7 @@ string const LyXFunc::Dispatch(int ac,
 		}
 	}
 
-	Assert(action != LFUN_SELECT_FILE_SYNC);
+	lyx::Assert(action != LFUN_SELECT_FILE_SYNC);
 
 	switch (action) {
 		// --- Misc -------------------------------------------
@@ -813,7 +813,7 @@ string const LyXFunc::Dispatch(int ac,
 		std::transform(lyxaction.func_begin(), lyxaction.func_end(),
 			       std::back_inserter(allCmds), lyx::firster());
 		static std::vector<string> hist;
-		owner->getMiniBuffer()->getString(MiniBuffer::nospaces,
+		owner->getMiniBuffer()->getString(MiniBuffer::spaces,
 						  allCmds, hist);
 	}
 	break;

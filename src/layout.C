@@ -1152,7 +1152,7 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 bool LyXTextClass::hasLayout(string const & name) const
 {
 	return find_if(layoutlist.begin(), layoutlist.end(),
-		       compare_memfun(&LyXLayout::name, name))
+		       lyx::compare_memfun(&LyXLayout::name, name))
 		!= layoutlist.end();
 }
 
@@ -1162,8 +1162,8 @@ LyXLayout const & LyXTextClass::GetLayout (string const & name) const
 	LayoutList::const_iterator cit =
 		find_if(layoutlist.begin(),
 			layoutlist.end(),
-			compare_memfun(&LyXLayout::name, name));
-	Assert(cit != layoutlist.end()); // we require the name to exist
+			lyx::compare_memfun(&LyXLayout::name, name));
+	lyx::Assert(cit != layoutlist.end()); // we require the name to exist
 	return (*cit);
 }
 
@@ -1173,8 +1173,8 @@ LyXLayout & LyXTextClass::GetLayout(string const & name)
 	LayoutList::iterator it =
 		find_if(layoutlist.begin(),
 			layoutlist.end(),
-			compare_memfun(&LyXLayout::name, name));
-	Assert(it != layoutlist.end()); // we require the name to exist
+			lyx::compare_memfun(&LyXLayout::name, name));
+	lyx::Assert(it != layoutlist.end()); // we require the name to exist
 	return (*it);
 }
 
@@ -1183,7 +1183,7 @@ bool LyXTextClass::delete_layout(string const & name)
 {
 	LayoutList::iterator it =
 		remove_if(layoutlist.begin(), layoutlist.end(),
-			  compare_memfun(&LyXLayout::name, name));
+			  lyx::compare_memfun(&LyXLayout::name, name));
 	LayoutList::iterator end = layoutlist.end();
 	bool const ret = (it != end);
 	layoutlist.erase(it, end);
@@ -1218,7 +1218,7 @@ LyXTextClassList::NumberOfClass(string const & textclass) const
 {
 	ClassList::const_iterator cit =
 		find_if(classlist.begin(), classlist.end(),
-			compare_memfun(&LyXTextClass::name, textclass));
+			lyx::compare_memfun(&LyXTextClass::name, textclass));
 	return cit != classlist.end() ?
 		make_pair(true, size_type(cit - classlist.begin())) :
 		make_pair(false, size_type(0));
@@ -1274,7 +1274,7 @@ LyXTextClassList::NameOfClass(LyXTextClassList::size_type number) const
 	if (classlist.size() == 0) {
 		return dummy;
 	}
-	Assert(number < classlist.size());
+	lyx::Assert(number < classlist.size());
 	return classlist[number].name();
 }
 
@@ -1288,7 +1288,7 @@ LyXTextClassList::LatexnameOfClass(LyXTextClassList::size_type number) const
 	if (classlist.size() == 0) {
 		return dummy;
 	}
-	Assert(number < classlist.size());
+	lyx::Assert(number < classlist.size());
 	return classlist[number].latexname();
 }
 
@@ -1301,7 +1301,7 @@ LyXTextClassList::DescOfClass(LyXTextClassList::size_type number) const
 	if (classlist.size() == 0) {
 		return dummy;
 	}
-	Assert(number < classlist.size());
+	lyx::Assert(number < classlist.size());
 	return classlist[number].description();
 }
 

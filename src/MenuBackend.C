@@ -334,7 +334,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 bool Menu::hasSubmenu(string const & name) const
 {
 	return find_if(begin(), end(),
-		       compare_memfun(&MenuItem::submenu, name)) != end();
+		       lyx::compare_memfun(&MenuItem::submenu, name)) != end();
 }
 
 
@@ -469,23 +469,24 @@ void MenuBackend::add(Menu const & menu)
 bool MenuBackend::hasMenu(string const & name) const
 {
 	return find_if(begin(), end(),
-		       compare_memfun(&Menu::name, name)) != end();
+		       lyx::compare_memfun(&Menu::name, name)) != end();
 }
 
 
 Menu const & MenuBackend::getMenu(string const & name) const
 {
 	const_iterator cit = find_if(begin(), end(),
-				     compare_memfun(&Menu::name, name));
-	Assert(cit != end());
+				     lyx::compare_memfun(&Menu::name, name));
+	lyx::Assert(cit != end());
 	return (*cit);
 }
 
 
 Menu & MenuBackend::getMenu(string const & name)
 {
-	MenuList::iterator it = find_if(menulist_.begin(), menulist_.end(),
-					compare_memfun(&Menu::name, name));
-	Assert(it != menulist_.end());
+	MenuList::iterator it =
+		find_if(menulist_.begin(), menulist_.end(),
+			lyx::compare_memfun(&Menu::name, name));
+	lyx::Assert(it != menulist_.end());
 	return (*it);
 }
