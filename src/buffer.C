@@ -521,6 +521,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			pos = 0;
 			if (pp.first) {
 				par->layout = pp.second;
+#ifndef NO_COMPABILITY
+			} else if (ert_comp.active) {
+				par->layout = 0;
+#endif
 			} else {
 				// layout not found
 				// use default layout "Standard" (0)
@@ -568,34 +572,41 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		
 		if (tmptok == "footnote") {
 			inset = new InsetFoot;
+			old_float << "collapsed true\n";
 		} else if (tmptok == "margin") {
 			inset = new InsetMarginal;
+			old_float << "collapsed true\n";
 		} else if (tmptok == "fig") {
 			inset = new InsetFloat("figure");
 			old_float << "placement htbp\n"
-				  << "wide false\n";
+				  << "wide false\n"
+				  << "collapsed false\n";
 		} else if (tmptok == "tab") {
 			inset = new InsetFloat("table");
 			old_float << "placement htbp\n"
-				  << "wide false\n";
+				  << "wide false\n"
+				  << "collapsed false\n";
 		} else if (tmptok == "alg") {
 			inset = new InsetFloat("algorithm");
 			old_float << "placement htbp\n"
-				  << "wide false\n";
+				  << "wide false\n"
+				  << "collapsed false\n";
 		} else if (tmptok == "wide-fig") {
 			inset = new InsetFloat("figure");
 			//InsetFloat * tmp = new InsetFloat("figure");
 			//tmp->wide(true);
 			//inset = tmp;
 			old_float << "placement htbp\n"
-				  << "wide true\n";
+				  << "wide true\n"
+				  << "collapsed false\n";
 		} else if (tmptok == "wide-tab") {
 			inset = new InsetFloat("table");
 			//InsetFloat * tmp = new InsetFloat("table");
 			//tmp->wide(true);
 			//inset = tmp;
 			old_float << "placement htbp\n"
-				  << "wide true\n";
+				  << "wide true\n"
+				  << "collapsed false\n";
 		}
 
 		if (!inset) {
@@ -604,8 +615,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 			return false; // no end read yet
 		}
-		
-		old_float << "collapsed true\n";
 
 		// Here we need to check for \end_deeper and handle that
 		// before we do the footnote parsing.
