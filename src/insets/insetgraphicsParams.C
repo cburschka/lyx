@@ -251,11 +251,8 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
 		draft = true;
 	} else if (token == "display") {
 		lex.next();
-		if (IsFileReadable(filename)) {
-			string const type = lex.getString();
-			display = displayTranslator.find(type);
-		} else
-			display = NONE;
+		string const type = lex.getString();
+		display = displayTranslator.find(type);
 	} else if (token == "subcaption") {
 		subcaption = true;
 	} else if (token == "subcaptionText") {

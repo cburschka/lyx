@@ -650,7 +650,13 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	if (params().filename.empty()) {
 		os  << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
 			<< _("empty figure path") << "}\n";
-		return 1; // One end of line marker added to the stream.
+		return 1; // One end-of-line marker added to the stream.
+	}
+	// Ditto if the file is not there.
+	if (!IsFileReadable(MakeAbsPath(params().filename, buf->filePath()))) {
+		os  << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
+		    << _("file not found") << "}\n";
+		return 1; // One end-of-line marker added to the stream.
 	}
 	// These variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
