@@ -94,7 +94,7 @@ void FormCommand::createInset(string const & arg)
 	}
 
 	params.setFromString(arg);
-	if ( !arg.empty() )
+	if (! (params.getContents().empty() && params.getOptions().empty()) )
 		bc_.valid(); // so that the user can press Ok
 	show();
 }
