@@ -34,7 +34,9 @@ PanelStack::PanelStack(QWidget * parent, const char * name)
 	list_->setVScrollBarMode(QScrollView::AlwaysOff);
 	list_->addColumn("");
 	list_->setColumnWidthMode(0, QListView::Maximum);
+#if QT_VERSION >= 300
 	list_->setResizeMode(QListView::AllColumns);
+#endif
 	list_->setRootIsDecorated(true);
 
 	connect(list_, SIGNAL(currentChanged(QListViewItem*)),
@@ -94,7 +96,7 @@ void PanelStack::addPanel(QWidget * panel, string const & name, string const & p
 	item->setSelectable(true);
 
 	widget_map_[item] = panel;
-	stack_->addWidget(panel);
+	stack_->addWidget(panel, -1);
 	stack_->setMinimumSize(panel->minimumSize());
 	resize(sizeHint());
 }
