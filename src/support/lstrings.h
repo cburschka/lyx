@@ -49,6 +49,12 @@ bool isStrInt(string const & str);
 int strToInt(string const & str);
 
 ///
+bool isStrDbl(string const & str);
+
+///
+double strToDbl(string const & str);
+
+///
 string lowercase(string const &);
 
 ///

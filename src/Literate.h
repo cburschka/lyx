@@ -34,10 +34,10 @@ public:
         int build(TeXErrors &, MiniBuffer *);
 private:
         ///
-        int scanLiterateLogFile();
+        int scanLiterateLogFile(TeXErrors & terr);
 
         ///
-        int scanBuildLogFile();
+        int scanBuildLogFile(TeXErrors & terr);
 
         ///
         string litfile;

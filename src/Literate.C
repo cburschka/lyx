@@ -66,13 +66,13 @@ int Literate::weave(TeXErrors & terr, MiniBuffer * minib)
         ret1 = one.startscript(Systemcalls::System, tmp1);
         ret2 = two.startscript(Systemcalls::System, tmp2);
         lyxerr.debug() << "LITERATE {" << tmp1 << "} {" << tmp2 << "}" << endl;
-	scanres = scanLiterateLogFile();
+	scanres = scanLiterateLogFile(terr);
 	if (scanres & Literate::ERRORS) return scanres; // return on literate error
 	return run(terr, minib);
 }
 
 
-int Literate::build(TeXErrors & /*terr*/, MiniBuffer * minib)
+int Literate::build(TeXErrors & terr, MiniBuffer * minib)
         // We know that this function will only be run if the lyx buffer
         // has been changed. 
 {
@@ -95,66 +95,156 @@ int Literate::build(TeXErrors & /*terr*/, MiniBuffer * minib)
         tmp2 = build_filter + " < " + litfile + ".out" + " > " + litfile + ".log";
         ret1 = one.startscript(Systemcalls::System, tmp1);
         ret2 = two.startscript(Systemcalls::System, tmp2);
-        scanres = scanBuildLogFile();
+        scanres = scanBuildLogFile(terr);
         lyxerr[Debug::LATEX] << "Done." << endl;
 
         return scanres;
 }
 
 
-int Literate::scanLiterateLogFile()
+int Literate::scanLiterateLogFile(TeXErrors & terr)
 {
-        string token;
-        int retval = NO_ERRORS;
-        
         string tmp = litfile + ".log";
         
-        ifstream ifs(tmp.c_str());
+	int last_line = -1;
+	int line_count = 1;
+	int retval = NO_ERRORS;
+	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
+	ifstream ifs(tmp.c_str());
+
+	string token;
 	while (getline(ifs, token)) {
-                lyxerr[Debug::LATEX] << token << endl;
-                
-                if (prefixIs(token, "Build Warning:")) {
-                        // Here shall we handle different
-                        // types of warnings
-                        retval |= LATEX_WARNING;
-                        lyxerr[Debug::LATEX] << "Build Warning." << endl;
-                } else if (prefixIs(token, "! Build Error:")) {
-                        // Here shall we handle different
-                        // types of errors
-                        retval |= LATEX_ERROR;
-                        lyxerr[Debug::LATEX] << "Build Error." << endl;
-                        // this is not correct yet
-                        ++num_errors;
-                }
-        }       
-        return retval;
+		lyxerr[Debug::LATEX] << "Log line: " << token << endl;
+		
+		if (token.empty())
+			continue;
+
+		if (prefixIs(token, "! ")) {
+			// Ok, we have something that looks like a TeX Error
+			// but what do we really have.
+
+			// Just get the error description:
+			string desc(token, 2);
+			if (contains(token, "Build Error:"))
+				retval |= LATEX_ERROR;
+			// get the next line
+			string tmp;
+			int count = 0;
+			do {
+				if (!getline(ifs, tmp))
+					break;
+				if (++count > 10)
+					break;
+			} while (!prefixIs(tmp, "l."));
+			if (prefixIs(tmp, "l.")) {
+				// we have a build error
+				retval |=  TEX_ERROR;
+				// get the line number:
+				int line = 0;
+				sscanf(tmp.c_str(), "l.%d", &line);
+				// get the rest of the message:
+				string errstr(tmp, tmp.find(' '));
+				errstr += '\n';
+				getline(ifs, tmp);
+				while (!contains(errstr, "l.")
+				       && !tmp.empty()
+				       && !prefixIs(tmp, "! ")
+				       && !contains(tmp, " ...")) {
+					errstr += tmp;
+					errstr += "\n";
+					getline(ifs, tmp);
+				}
+				lyxerr[Debug::LATEX]
+					<< "line: " << line << '\n'
+					<< "Desc: " << desc << '\n'
+					<< "Text: " << errstr << endl;
+				if (line == last_line)
+					++line_count;
+				else {
+					line_count = 1;
+					last_line = line;
+				}
+				if (line_count <= 5) {
+					terr.insertError(line, desc, errstr);
+					++num_errors;
+				}
+			}
+		}
+	}
+	lyxerr[Debug::LATEX] << "Log line: " << token << endl;
+	return retval;
 }
 
 
-int Literate::scanBuildLogFile()
+int Literate::scanBuildLogFile(TeXErrors & terr)
 {
-        string token;
-        int retval = NO_ERRORS;
- 
         string tmp = litfile + ".log";
         
-        ifstream ifs(tmp.c_str());
+	int last_line = -1;
+	int line_count = 1;
+	int retval = NO_ERRORS;
+	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
+	ifstream ifs(tmp.c_str());
+
+	string token;
 	while (getline(ifs, token)) {
-                lyxerr[Debug::LATEX] << token << endl;
-                
-                if (prefixIs(token, "Build Warning:")) {
-                        // Here shall we handle different
-                        // types of warnings
-                        retval |= LATEX_WARNING;
-                        lyxerr[Debug::LATEX] << "Build Warning." << endl;
-                } else if (prefixIs(token, "! Build Error:")) {
-                        // Here shall we handle different
-                        // types of errors
-                        retval |= LATEX_ERROR;
-                        lyxerr[Debug::LATEX] << "Build Error." << endl;
-                        // this is not correct yet
-                        ++num_errors;
-                }
-        }       
-        return retval;
+		lyxerr[Debug::LATEX] << "Log line: " << token << endl;
+		
+		if (token.empty())
+			continue;
+
+		if (prefixIs(token, "! ")) {
+			// Ok, we have something that looks like a TeX Error
+			// but what do we really have.
+
+			// Just get the error description:
+			string desc(token, 2);
+			if (contains(token, "Build Error:"))
+				retval |= LATEX_ERROR;
+			// get the next line
+			string tmp;
+			int count = 0;
+			do {
+				if (!getline(ifs, tmp))
+					break;
+				if (++count > 10)
+					break;
+			} while (!prefixIs(tmp, "l."));
+			if (prefixIs(tmp, "l.")) {
+				// we have a build error
+				retval |=  TEX_ERROR;
+				// get the line number:
+				int line = 0;
+				sscanf(tmp.c_str(), "l.%d", &line);
+				// get the rest of the message:
+				string errstr(tmp, tmp.find(' '));
+				errstr += '\n';
+				getline(ifs, tmp);
+				while (!contains(errstr, "l.")
+				       && !tmp.empty()
+				       && !prefixIs(tmp, "! ")
+				       && !contains(tmp, " ...")) {
+					errstr += tmp;
+					errstr += "\n";
+					getline(ifs, tmp);
+				}
+				lyxerr[Debug::LATEX]
+					<< "line: " << line << '\n'
+					<< "Desc: " << desc << '\n'
+					<< "Text: " << errstr << endl;
+				if (line == last_line)
+					++line_count;
+				else {
+					line_count = 1;
+					last_line = line;
+				}
+				if (line_count <= 5) {
+					terr.insertError(line, desc, errstr);
+					++num_errors;
+				}
+			}
+		}
+	}
+	lyxerr[Debug::LATEX] << "Log line: " << token << endl;
+	return retval;
 }

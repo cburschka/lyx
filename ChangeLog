@@ -1,3 +1,12 @@
+2000-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/lstrings.[Ch]: add isStrDbl and StrToDbl that I
+	forgot earlier :(
+
+2000-10-04  Edmar Wienskoski Jr <edmar-w-jr@technologist.com>
+
+	* src/Literate.[Ch]: fix parsing of LaTeX errors.
+
 2000-09-29  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/paragraph.C (TeXFootnote): Fixed bug with LTR table floats.

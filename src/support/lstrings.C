@@ -95,6 +95,49 @@ int  strToInt(string const & str)
 }
 
 
+bool isStrDbl(string const & str)
+{
+	if (str.empty()) return false;
+	
+	// Remove leading and trailing white space chars.
+	string const tmpstr = frontStrip(strip(str, ' '), ' ');
+	if (tmpstr.empty()) return false;
+	//	if (1 < tmpstr.count('.')) return false;
+
+	string::const_iterator cit = tmpstr.begin();
+	bool found_dot(false);
+	if ( (*cit) == '-') ++cit;
+	string::const_iterator end = tmpstr.end();
+	for (; cit != end; ++cit) {
+		if (!isdigit((*cit))
+		    && '.' != (*cit)) {
+			return false;
+		}
+		if ('.' == (*cit)) {
+			if (found_dot) {
+				return false;
+			} else {
+				found_dot = true;
+			}
+		}
+	}
+	return true;
+}
+
+
+double strToDbl(string const & str)
+{
+	if (isStrDbl(str)) {
+		// Remove leading and trailing white space chars.
+		string const tmpstr = frontStrip(strip(str, ' '), ' ');
+		// Do the conversion proper.
+		return ::atof(tmpstr.c_str());
+	} else {
+		return 0.0;
+	}
+}
+
+
 string lowercase(string const & a)
 {
 	string tmp(a);
