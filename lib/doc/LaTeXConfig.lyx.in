@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 225
+\lyxformat 228
 \textclass article
 \language english
 \inputencoding default
@@ -80,7 +80,7 @@ Found
  item is no) and you need its functionality, you can grab it at your nearest
  CTAN ftp site
 \begin_inset Foot
-collapsed true
+status collapsed
 
 \begin_layout Standard
 
@@ -173,7 +173,7 @@ econfigure
 \family default 
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
 \begin_layout Standard
 
@@ -237,7 +237,7 @@ The LaTeX version that LyX will use is:
 \family default 
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
 \begin_layout Standard
 
@@ -1133,12 +1133,12 @@ g-brief-de
 
 \begin_layout Subsection
 
-g-brief2-en
+g-brief2
 \end_layout
 
 \begin_layout Description
 
-Found: @chk_g-brief2-en@
+Found: @chk_g-brief2@
 \end_layout
 
 \begin_layout Description
@@ -1154,33 +1154,9 @@ Notes: The document class
 \family sans 
 g-brief2
 \family default 
- can be used to type commercial letters with a nice outfit. It's the successor of g-brief, its better configurable, but not backward compatible to g-brief.
-\end_layout
-
-\begin_layout Subsection
-
-g-brief2-de
-\end_layout
-
-\begin_layout Description
-
-Found: @chk_g-brief2-de@
-\end_layout
-
-\begin_layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/contrib/supported/g-brief/
-\end_layout
-
-\begin_layout Description
-
-Notes: The document class 
-\family sans 
-g-brief2-de
-\family default 
- is the same as the above g-brief2-en only with german labels. Best for german letters.
+ can be used to type commercial letters with a nice outfit.
+ It's the successor of g-brief, its better configurable, but not backward
+ compatible to g-brief.
 \end_layout
 
 \begin_layout Subsection
@@ -2149,7 +2125,7 @@ script
 \family default 
 
 \begin_inset Foot
-collapsed true
+status collapsed
 
 \begin_layout Standard
 
