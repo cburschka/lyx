@@ -596,7 +596,8 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 
     int tmp_x = x - drawTextXOffset;
     int tmp_y = y + insetAscent;
-    Inset * inset = bv->checkInsetHit(TEXT(bv), tmp_x, tmp_y, button);
+    Inset * inset = bv->checkInsetHit(TEXT(bv), tmp_x, tmp_y-TEXT(bv)->first,
+				      button);
 
     HideInsetCursor(bv);
     if (the_locking_inset) {
@@ -628,7 +629,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    inset_par = cpar(bv);
 	    uinset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
 	    uinset->Edit(bv, x - inset_x, y - inset_y, 0);
-	    TEXT(bv)->ClearSelection();
+//	    TEXT(bv)->ClearSelection();
 	    if (the_locking_inset) {
 		UpdateLocal(bv, CURSOR_PAR, false);
 	    }
@@ -806,6 +807,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	    }
 	}
 	UpdateLocal(bv, CURSOR_PAR, true);
+	result=DISPATCHED_NOUPDATE;
 	break;
         // --- Cursor Movements ---------------------------------------------
     case LFUN_RIGHTSEL:

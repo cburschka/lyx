@@ -545,8 +545,10 @@ bool InsetTabular::UpdateInsetInInset(BufferView * bv, Inset * inset)
 {
     if (!the_locking_inset)
 	return false;
-    if (the_locking_inset != inset)
-	return the_locking_inset->UpdateInsetInInset(bv, inset);
+    if (the_locking_inset != inset) {
+	if (!the_locking_inset->UpdateInsetInInset(bv, inset))
+	    return false;
+    }
     UpdateLocal(bv, CELL, false);
     return true;
 }

@@ -1,3 +1,18 @@
+2000-11-02  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (LocalDispatch): return a DISPATCHED_NOUPDATE
+	on char insertion as it has already be updated by bv->updateInset().
+
+	* src/insets/insettabular.C (UpdateInsetInInset): update the inset
+	if an inset inside was updated.
+
+	* lib/configure.cmd: commented out fax-search code 
+
+2000-11-01  Yves Bastide  <stid@acm.org>
+
+	* src/tabular.C (OldFormatRead): set tabular language to the
+	document's one.
+
 2000-11-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/reLyX/MakePreamble.pm (translate_preamble): fix reading of

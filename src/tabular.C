@@ -1392,6 +1392,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
     int pos = 0;
     char depth = 0;
     LyXFont font(LyXFont::ALL_SANE);
+    font.setLanguage(owner_->BufferOwner()->GetLanguage());
 
     while (lex.IsOK()) {
         lex.nextToken();

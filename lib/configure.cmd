@@ -213,6 +213,7 @@ rc=lineout(lyxrc_defaults,'\view_pspic_command "'GHOSTVIEW'"')
 rc=lineout(lyxrc_defaults,'\ascii_roff_command "groff -t -ms -Tlatin1"')
 rc=lineout(lyxrc_defaults,'\chktex_command "'CHKTEX'"')
 rc=lineout(lyxrc_defaults,'\spell_command "'SPELL'"')
+/*
 if \(''=SysSearchPath('PATH','fsend.exe')) then
 do
   rc=lineout(X11ROOT'\XFree86\bin\fsend2.cmd','/*A wrapper for fsend.exe*/')
@@ -223,6 +224,7 @@ do
   rc=lineout(X11ROOT'\XFree86\bin\fsend2.cmd')
   rc=lineout(lyxrc_defaults,'\fax_command "fsend2 -p'"'$$Phone' -i'$$FName' -d'$$Name' -m'$$Comment'"'"')
 end
+*/
 if \(''=SysSearchPath('PATH','lp.exe')) then
 do
   rc=lineout(lyxrc_defaults,'\print_spool_command "lp"')
