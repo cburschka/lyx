@@ -1,5 +1,19 @@
 2003-06-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text3.C (cursorNext): add tmp var
+
+	* text2.C (updateCounters): for function calling out of for clause
+	(replaceSelectionWithString): ditto
+	(insertStringAsParagraphs): ditto
+	(getColumnNearX): add tmp var
+	(setCursorFromCoordinates): add tmp var
+	(cursorDownParagraph): add tmp var
+	(deleteEmptyParagraphMechanism): add tmp var
+
+	* text.C (insertChar): add tmp var
+
+	* rowpainter.C (paintDepthBar): add tmp var
+
 	* CutAndPaste.C (availableSelections): potentially check all
 	paragraphs in a cut to fill the shown strings.
 

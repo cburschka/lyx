@@ -1,3 +1,17 @@
+2003-06-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (update): simplify
+	(updateLocal): remove commented code
+	(insetUnlock): simplify
+	(lockInset): simplify
+	(updateInsetInInset): simplify
+	(localDispatch): simplify
+	(setFont): simplify
+	(resizeLyXText): simplify
+	(collapseParagraphs): simplify
+
+	* insetert.C (get_new_label): simplify
+
 2003-06-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* insettext.C (localDispatch): handle arg to LFUN_PASTE, call

@@ -452,8 +452,10 @@ void RowPainter::paintDepthBar()
 	if (row_ != text_.rows().begin())
 		prev_depth = boost::prior(row_)->par()->getDepth();
 	Paragraph::depth_type next_depth = 0;
-	if (boost::next(row_) != text_.rows().end())
-		next_depth = boost::next(row_)->par()->getDepth();
+
+	RowList::iterator next_row = boost::next(row_);
+	if (next_row != text_.rows().end())
+		next_depth = next_row->par()->getDepth();
 
 	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
 		int x = (PAPER_MARGIN / 5) * i + xo_;

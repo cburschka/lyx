@@ -1243,14 +1243,16 @@ void LyXText::updateCounters()
 	// CHECK if this is really needed. (Lgb)
 	bv()->buffer()->params.getLyXTextClass().counters().reset();
 
-	for (; pit != ownerParagraphs().end(); ++pit) {
+	ParagraphList::iterator beg = ownerParagraphs().begin();
+	ParagraphList::iterator end = ownerParagraphs().end();
+	for (; pit != end; ++pit) {
 		while (rowit->par() != pit)
 			++rowit;
 
 		string const oldLabel = pit->params().labelString();
 
 		size_t maxdepth = 0;
-		if (pit != ownerParagraphs().begin())
+		if (pit != beg)
 			maxdepth = boost::prior(pit)->getMaxDepthAfter();
 
 		if (pit->params().depth() > maxdepth)
@@ -1458,7 +1460,9 @@ void LyXText::replaceSelectionWithString(string const & str)
 				  selection.start.pos());
 
 	// Insert the new string
-	for (string::const_iterator cit = str.begin(); cit != str.end(); ++cit) {
+	string::const_iterator cit = str.begin();
+	string::const_iterator end = str.end();
+	for (; cit != end; ++cit) {
 		selection.end.par()->insertChar(pos, (*cit), font);
 		++pos;
 	}
@@ -1498,7 +1502,9 @@ void LyXText::insertStringAsParagraphs(string const & str)
 {
 	string linestr(str);
 	bool newline_inserted = false;
-	for (string::size_type i = 0; i < linestr.length(); ++i) {
+	string::size_type const siz = linestr.length();
+
+	for (string::size_type i = 0; i < siz; ++i) {
 		if (linestr[i] == '\n') {
 			if (newline_inserted) {
 				// we know that \r will be ignored by
@@ -1920,9 +1926,12 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 	boundary = false;
 	// This (rtl_support test) is not needed, but gives
 	// some speedup if rtl_support=false
+	RowList::iterator next_rit = boost::next(rit);
+
 	bool const lastrow = lyxrc.rtl_support &&
-		(boost::next(rit) == rowlist_.end() ||
-		 boost::next(rit)->par() != rit_par);
+		(next_rit == rowlist_.end() ||
+		 next_rit->par() != rit_par);
+
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
 	bool const rtl = (lastrow)
@@ -1977,10 +1986,12 @@ namespace {
 	 * and the next row is filled by an inset that spans an entire
 	 * row.
 	 */
-	bool beforeFullRowInset(LyXText & lt, LyXCursor const & cur) {
+	bool beforeFullRowInset(LyXText & lt, LyXCursor const & cur)
+	{
 		RowList::iterator row = cur.row();
 		if (boost::next(row) == lt.rows().end())
 			return false;
+
 		Row const & next = *boost::next(row);
 
 		if (next.pos() != cur.pos() || next.par() != cur.par())
@@ -1989,9 +2000,11 @@ namespace {
 		if (cur.pos() == cur.par()->size()
 		    || !cur.par()->isInset(cur.pos()))
 			return false;
+
 		Inset const * inset = cur.par()->getInset(cur.pos());
 		if (inset->needFullRow() || inset->display())
 			return true;
+
 		return false;
 	}
 }
@@ -2011,11 +2024,13 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	cur.row(row);
 
 	if (beforeFullRowInset(*this, cur)) {
-		pos_type last = lastPrintablePos(*this, row);
-		float x = getCursorX(boost::next(row), cur.pos(), last, bound);
+		pos_type const last = lastPrintablePos(*this, row);
+		RowList::iterator next_row = boost::next(row);
+
+		float x = getCursorX(next_row, cur.pos(), last, bound);
 		cur.ix(int(x));
-		cur.iy(y + row->height() + boost::next(row)->baseline());
-		cur.irow(boost::next(row));
+		cur.iy(y + row->height() + next_row->baseline());
+		cur.irow(next_row);
 	} else {
 		cur.iy(cur.y());
 		cur.ix(cur.x());
@@ -2121,10 +2136,13 @@ void LyXText::cursorUpParagraph()
 
 void LyXText::cursorDownParagraph()
 {
-	if (boost::next(cursor.par()) != ownerParagraphs().end()) {
-		setCursor(boost::next(cursor.par()), 0);
+	ParagraphList::iterator par = cursor.par();
+	ParagraphList::iterator next_par = boost::next(par);
+
+	if (next_par != ownerParagraphs().end()) {
+		setCursor(next_par, 0);
 	} else {
-		setCursor(cursor.par(), cursor.par()->size());
+		setCursor(par, par->size());
 	}
 }
 
@@ -2276,8 +2294,9 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			 * the parindent that can occur or dissappear.
 			 * The next row can change its height, if
 			 * there is another layout before */
-			if (boost::next(prevrow) != rows().end()) {
-				breakAgain(boost::next(prevrow));
+			RowList::iterator tmprit = boost::next(prevrow);
+			if (tmprit != rows().end()) {
+				breakAgain(tmprit);
 				updateCounters();
 			}
 			setHeightOfRow(prevrow);

@@ -519,8 +519,7 @@ string const InsetERT::get_new_label() const
 		la += inset.paragraphs.begin()->getChar(j);
 		++i;
 	}
-	if (boost::next(inset.paragraphs.begin()) != inset.paragraphs.end() ||
-	    (i > 0 && j < p_siz)) {
+	if (p_siz > 1 || (i > 0 && j < p_siz)) {
 		la += "...";
 	}
 	if (la.empty()) {

@@ -1731,9 +1731,10 @@ void LyXText::insertChar(char c)
 				  false, cursor.boundary());
 			// cursor MUST be in row now.
 
-			if (boost::next(row) != rows().end() &&
-			    boost::next(row)->par() == row->par())
-				need_break_row = boost::next(row);
+			RowList::iterator next_row = boost::next(row);
+			if (next_row != rows().end() &&
+			    next_row->par() == row->par())
+				need_break_row = next_row;
 			else
 				need_break_row = rows().end();
 
@@ -1757,13 +1758,18 @@ void LyXText::insertChar(char c)
 	if (c == Paragraph::META_INSET || row->fill() < 0) {
 		postPaint(y);
 		breakAgainOneRow(row);
+
+		RowList::iterator next_row = boost::next(row);
+
 		// will the cursor be in another row now?
 		if (lastPos(*this, row) <= cursor.pos() + 1 &&
-		    boost::next(row) != rows().end()) {
-			if (boost::next(row) != rows().end() &&
-			    boost::next(row)->par() == row->par())
+		    next_row != rows().end()) {
+			if (next_row != rows().end() &&
+			    next_row->par() == row->par()) {
 				// this should always be true
 				++row;
+			}
+
 			breakAgainOneRow(row);
 		}
 		current_font = rawtmpfont;
@@ -1775,9 +1781,12 @@ void LyXText::insertChar(char c)
 		    != cursor.boundary())
 			setCursor(cursor.par(), cursor.pos(), false,
 			  !cursor.boundary());
-		if (boost::next(row) != rows().end() &&
-		    boost::next(row)->par() == row->par())
-			need_break_row = boost::next(row);
+
+		next_row = boost::next(row);
+
+		if (next_row != rows().end() &&
+		    next_row->par() == row->par())
+			need_break_row = next_row;
 		else
 			need_break_row = rows().end();
 	} else {

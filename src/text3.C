@@ -343,10 +343,11 @@ void LyXText::cursorNext()
 		}
 	}
 	bv()->screen().draw(bv()->text, bv(), new_y);
-	if (boost::next(cursor.row()) != rows().end()) {
+
+	RowList::iterator next_row = boost::next(cursor.row());
+	if (next_row != rows().end()) {
 		LyXCursor cur;
-		setCursor(cur, boost::next(cursor.row())->par(),
-			  boost::next(cursor.row())->pos(), false);
+		setCursor(cur, next_row->par(), next_row->pos(), false);
 		if (cur.y() < top_y() + bv()->workHeight()) {
 			cursorDown(true);
 		}
