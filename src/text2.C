@@ -325,9 +325,11 @@ void LyXText::insertParagraph(ParagraphList::iterator pit,
 
 Inset * LyXText::getInset() const
 {
-	if (cursor.pos() < cursor.par()->size()
-		   && cursor.par()->isInset(cursor.pos())) {
-		return cursor.par()->getInset(cursor.pos());
+	ParagraphList::iterator pit = cursor.par();
+	pos_type const pos = cursor.pos();
+
+	if (pos < pit->size() && pit->isInset(pos)) {
+		return pit->getInset(pos);
 	}
 	return 0;
 }
@@ -369,9 +371,10 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const & buf,
 					    Paragraph & par)
 {
 	LyXLayout_ptr const & layout = par.layout();
+	pos_type const psize = par.size();
 
 	LyXFont layoutfont;
-	for (pos_type pos = 0; pos < par.size(); ++pos) {
+	for (pos_type pos = 0; pos < psize; ++pos) {
 		if (pos < par.beginningOfBody())
 			layoutfont = layout->labelfont;
 		else
@@ -391,15 +394,14 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 {
 	ParagraphList::iterator endpit = boost::next(send_cur.par());
 	ParagraphList::iterator undoendpit = endpit;
+	ParagraphList::iterator pars_end = ownerParagraphs().end();
 
-	if (endpit != ownerParagraphs().end() &&
-	    endpit->getDepth()) {
-		while (endpit != ownerParagraphs().end() &&
-		       endpit->getDepth()) {
+	if (endpit != pars_end && endpit->getDepth()) {
+		while (endpit != pars_end && endpit->getDepth()) {
 			++endpit;
 			undoendpit = endpit;
 		}
-	} else if (endpit != ownerParagraphs().end()) {
+	} else if (endpit != pars_end) {
 		// because of parindents etc.
 		++endpit;
 	}
@@ -737,9 +739,12 @@ void LyXText::fullRebreak()
 		init(bv());
 		return;
 	}
-	if (need_break_row != rows().end()) {
+
+	RowList::iterator rows_end = rows().end();
+
+	if (need_break_row != rows_end) {
 		breakAgain(need_break_row);
-		need_break_row = rows().end();
+		need_break_row = rows_end;
 		return;
 	}
 }
@@ -830,15 +835,9 @@ string const LyXText::selectionAsString(Buffer const * buffer,
 	result += startpit->asString(buffer, startpos, startpit->size(), label) + "\n\n";
 
 	// The paragraphs in between (if any)
-#warning FIXME Why isnt ParagraphList::iterator used here?
-	// as loop variable.
-	LyXCursor tmpcur(selection.start);
-	tmpcur.par(boost::next(tmpcur.par()));
-	while (tmpcur.par() != endpit) {
-		result += tmpcur.par()->asString(buffer, 0,
-						 tmpcur.par()->size(),
-						 label) + "\n\n";
-		tmpcur.par(boost::next(tmpcur.par()));
+	ParagraphList::iterator pit = boost::next(startpit);
+	for (; pit != endpit; ++pit) {
+		result += pit->asString(buffer, 0, pit->size(), label) + "\n\n";
 	}
 
 	// Last paragraph in selection
@@ -869,24 +868,22 @@ void LyXText::cursorEnd()
 {
 	if (cursor.par()->empty())
 		return;
-#warning FIXME
-// There is a lot of unneeded recalculation going on here:
-//   - boost::next(curosr.row())
-//   - lastPost(*this, cursor.row())
 
-	if (boost::next(cursor.row()) == rows().end()
-	    || boost::next(cursor.row())->par() != cursor.row()->par()) {
-		setCursor(cursor.par(), lastPos(*this, cursor.row()) + 1);
+	RowList::iterator rit = cursor.row();
+	RowList::iterator next_rit = boost::next(rit);
+	ParagraphList::iterator pit = rit->par();
+	pos_type last_pos = lastPos(*this, rit);
+
+	if (next_rit == rows().end() || next_rit->par() != pit) {
+		++last_pos;
 	} else {
-		if (!cursor.par()->empty() &&
-		    (cursor.par()->getChar(lastPos(*this, cursor.row())) == ' '
-		     || cursor.par()->isNewline(lastPos(*this, cursor.row())))) {
-			setCursor(cursor.par(), lastPos(*this, cursor.row()));
-		} else {
-			setCursor(cursor.par(),
-				  lastPos(*this, cursor.row()) + 1);
+		if (pit->empty() ||
+		    (pit->getChar(last_pos) != ' ' && !pit->isNewline(last_pos))) {
+			++last_pos;
 		}
 	}
+
+	setCursor(pit, last_pos);
 }
 
 
@@ -993,15 +990,14 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 	// make sure that the depth behind the selection are restored, too
 	ParagraphList::iterator endpit = boost::next(selection.end.par());
 	ParagraphList::iterator undoendpit = endpit;
+	ParagraphList::iterator pars_end = ownerParagraphs().end();
 
-	if (endpit != ownerParagraphs().end() && endpit->getDepth()) {
-		while (endpit != ownerParagraphs().end() &&
-		       endpit->getDepth()) {
+	if (endpit != pars_end && endpit->getDepth()) {
+		while (endpit != pars_end && endpit->getDepth()) {
 			++endpit;
 			undoendpit = endpit;
 		}
-	}
-	else if (endpit != ownerParagraphs().end()) {
+	} else if (endpit!= pars_end) {
 		// because of parindents etc.
 		++endpit;
 	}
@@ -1014,27 +1010,31 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 	while (tmppit != boost::prior(selection.start.par())) {
 		setCursor(tmppit, 0);
 		postPaint(cursor.y() - cursor.row()->baseline());
-		cursor.par()->params().lineTop(line_top);
-		cursor.par()->params().lineBottom(line_bottom);
-		cursor.par()->params().pagebreakTop(pagebreak_top);
-		cursor.par()->params().pagebreakBottom(pagebreak_bottom);
-		cursor.par()->params().spaceTop(space_top);
-		cursor.par()->params().spaceBottom(space_bottom);
-		cursor.par()->params().spacing(spacing);
+
+		ParagraphList::iterator pit = cursor.par();
+		ParagraphParameters & params = pit->params();
+
+		params.lineTop(line_top);
+		params.lineBottom(line_bottom);
+		params.pagebreakTop(pagebreak_top);
+		params.pagebreakBottom(pagebreak_bottom);
+		params.spaceTop(space_top);
+		params.spaceBottom(space_bottom);
+		params.spacing(spacing);
 		// does the layout allow the new alignment?
-		LyXLayout_ptr const & layout = cursor.par()->layout();
+		LyXLayout_ptr const & layout = pit->layout();
 
 		if (align == LYX_ALIGN_LAYOUT)
 			align = layout->align;
 		if (align & layout->alignpossible) {
 			if (align == layout->align)
-				cursor.par()->params().align(LYX_ALIGN_LAYOUT);
+				params.align(LYX_ALIGN_LAYOUT);
 			else
-				cursor.par()->params().align(align);
+				params.align(align);
 		}
-		cursor.par()->setLabelWidthString(labelwidthstring);
-		cursor.par()->params().noindent(noindent);
-		tmppit = boost::prior(cursor.par());
+		pit->setLabelWidthString(labelwidthstring);
+		params.noindent(noindent);
+		tmppit = boost::prior(pit);
 	}
 
 	redoParagraphs(selection.start, endpit);
@@ -1257,7 +1257,7 @@ void LyXText::updateCounters()
 	// CHECK if this is really needed. (Lgb)
 	bv()->buffer()->params.getLyXTextClass().counters().reset();
 
-	while (pit != ownerParagraphs().end()) {
+	for (; pit != ownerParagraphs().end(); ++pit) {
 		while (rowit->par() != pit)
 			++rowit;
 
@@ -1279,8 +1279,6 @@ void LyXText::updateCounters()
 			removeParagraph(rowit);
 			appendParagraph(rowit);
 		}
-
-		++pit;
 	}
 }
 
@@ -1344,15 +1342,14 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// make sure that the depth behind the selection are restored, too
 	ParagraphList::iterator endpit = boost::next(selection.end.par());
 	ParagraphList::iterator undoendpit = endpit;
+	ParagraphList::iterator pars_end = ownerParagraphs().end();
 
-	if (endpit != ownerParagraphs().end() &&
-	    endpit->getDepth()) {
-		while (endpit != ownerParagraphs().end() &&
-		       endpit->getDepth()) {
+	if (endpit != pars_end && endpit->getDepth()) {
+		while (endpit != pars_end && endpit->getDepth()) {
 			++endpit;
 			undoendpit = endpit;
 		}
-	} else if (endpit != ownerParagraphs().end()) {
+	} else if (endpit != pars_end) {
 		// because of parindents etc.
 		++endpit;
 	}
@@ -1641,15 +1638,13 @@ bool LyXText::updateInset(Inset * inset)
 
 	ParagraphList::iterator par = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
-
-	do {
+	for (; par != end; ++par) {
 		pos = par->getPositionOfInset(inset);
 		if (pos != -1) {
 			checkParagraph(par, pos);
 			return true;
 		}
-		++par;
-	} while (par != end);
+	};
 
 	return false;
 }
@@ -1755,13 +1750,15 @@ float LyXText::getCursorX(RowList::iterator rit,
 	prepareToPrint(rit, x, fill_separator, fill_hfill,
 		       fill_label_hfill);
 
-	if (last < rit->pos())
-		cursor_vpos = rit->pos();
+	ParagraphList::iterator rit_par = rit->par();
+	pos_type const rit_pos = rit->pos();
+
+	if (last < rit_pos)
+		cursor_vpos = rit_pos;
 	else if (pos > last && !boundary)
-		cursor_vpos = (rit->par()->isRightToLeftPar(bv()->buffer()->params))
-			? rit->pos() : last + 1;
-	else if (pos > rit->pos() &&
-		 (pos > last || boundary))
+		cursor_vpos = (rit_par->isRightToLeftPar(bv()->buffer()->params))
+			? rit_pos : last + 1;
+	else if (pos > rit_pos && (pos > last || boundary))
 		/// Place cursor after char at (logical) position pos - 1
 		cursor_vpos = (bidi_level(pos - 1) % 2 == 0)
 			? log2vis(pos - 1) + 1 : log2vis(pos - 1);
@@ -1770,36 +1767,34 @@ float LyXText::getCursorX(RowList::iterator rit,
 		cursor_vpos = (bidi_level(pos) % 2 == 0)
 			? log2vis(pos) : log2vis(pos) + 1;
 
-	pos_type body_pos = rit->par()->beginningOfBody();
+	pos_type body_pos = rit_par->beginningOfBody();
 	if ((body_pos > 0) &&
-	    ((body_pos - 1 > last) ||
-	     !rit->par()->isLineSeparator(body_pos - 1)))
+	    ((body_pos - 1 > last) || !rit_par->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
-	for (pos_type vpos = rit->pos(); vpos < cursor_vpos; ++vpos) {
+	for (pos_type vpos = rit_pos; vpos < cursor_vpos; ++vpos) {
 		pos_type pos = vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
 			x += fill_label_hfill +
 				font_metrics::width(
-					rit->par()->layout()->labelsep,
-					getLabelFont(bv()->buffer(),
-						     rit->par()));
-			if (rit->par()->isLineSeparator(body_pos - 1))
-				x -= singleWidth(rit->par(), body_pos - 1);
+					rit_par->layout()->labelsep,
+					getLabelFont(bv()->buffer(), rit_par));
+			if (rit_par->isLineSeparator(body_pos - 1))
+				x -= singleWidth(rit_par, body_pos - 1);
 		}
 
 		if (hfillExpansion(*this, rit, pos)) {
-			x += singleWidth(rit->par(), pos);
+			x += singleWidth(rit_par, pos);
 			if (pos >= body_pos)
 				x += fill_hfill;
 			else
 				x += fill_label_hfill;
-		} else if (rit->par()->isSeparator(pos)) {
-			x += singleWidth(rit->par(), pos);
+		} else if (rit_par->isSeparator(pos)) {
+			x += singleWidth(rit_par, pos);
 			if (pos >= body_pos)
 				x += fill_separator;
 		} else
-			x += singleWidth(rit->par(), pos);
+			x += singleWidth(rit_par, pos);
 	}
 	return x;
 }
@@ -1843,32 +1838,34 @@ void LyXText::setCursorIntern(ParagraphList::iterator pit,
 void LyXText::setCurrentFont()
 {
 	pos_type pos = cursor.pos();
+	ParagraphList::iterator pit = cursor.par();
+
 	if (cursor.boundary() && pos > 0)
 		--pos;
 
 	if (pos > 0) {
-		if (pos == cursor.par()->size())
+		if (pos == pit->size())
 			--pos;
 		else // potentional bug... BUG (Lgb)
-			if (cursor.par()->isSeparator(pos)) {
+			if (pit->isSeparator(pos)) {
 				if (pos > cursor.row()->pos() &&
 				    bidi_level(pos) % 2 ==
 				    bidi_level(pos - 1) % 2)
 					--pos;
-				else if (pos + 1 < cursor.par()->size())
+				else if (pos + 1 < pit->size())
 					++pos;
 			}
 	}
 
 	current_font =
-		cursor.par()->getFontSettings(bv()->buffer()->params, pos);
-	real_current_font = getFont(bv()->buffer(), cursor.par(), pos);
+		pit->getFontSettings(bv()->buffer()->params, pos);
+	real_current_font = getFont(bv()->buffer(), pit, pos);
 
-	if (cursor.pos() == cursor.par()->size() &&
-	    isBoundary(bv()->buffer(), *cursor.par(), cursor.pos()) &&
+	if (cursor.pos() == pit->size() &&
+	    isBoundary(bv()->buffer(), *pit, cursor.pos()) &&
 	    !cursor.boundary()) {
 		Language const * lang =
-			cursor.par()->getParLanguage(bv()->buffer()->params);
+			pit->getParLanguage(bv()->buffer()->params);
 		current_font.setLanguage(lang);
 		current_font.setNumber(LyXFont::OFF);
 		real_current_font.setLanguage(lang);
@@ -1894,20 +1891,21 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 	pos_type last = lastPrintablePos(*this, rit);
 	pos_type c = 0;
 
+	ParagraphList::iterator rit_par = rit->par();
 	LyXLayout_ptr const & layout = rit->par()->layout();
 
 	bool left_side = false;
 
-	pos_type body_pos = rit->par()->beginningOfBody();
+	pos_type body_pos = rit_par->beginningOfBody();
 	float last_tmpx = tmpx;
 
 	if (body_pos > 0 &&
 	    (body_pos - 1 > last ||
-	     !rit->par()->isLineSeparator(body_pos - 1)))
+	     !rit_par->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
 	// check for empty row
-	if (!rit->par()->size()) {
+	if (!rit_par->size()) {
 		x = int(tmpx);
 		return 0;
 	}
@@ -1918,23 +1916,23 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 		if (body_pos > 0 && c == body_pos - 1) {
 			tmpx += fill_label_hfill +
 				font_metrics::width(layout->labelsep,
-					       getLabelFont(bv()->buffer(), &*rit->par()));
-			if (rit->par()->isLineSeparator(body_pos - 1))
-				tmpx -= singleWidth(rit->par(), body_pos - 1);
+					       getLabelFont(bv()->buffer(), &*rit_par));
+			if (rit_par->isLineSeparator(body_pos - 1))
+				tmpx -= singleWidth(rit_par, body_pos - 1);
 		}
 
 		if (hfillExpansion(*this, rit, c)) {
-			tmpx += singleWidth(rit->par(), c);
+			tmpx += singleWidth(rit_par, c);
 			if (c >= body_pos)
 				tmpx += fill_hfill;
 			else
 				tmpx += fill_label_hfill;
-		} else if (rit->par()->isSeparator(c)) {
-			tmpx += singleWidth(rit->par(), c);
+		} else if (rit_par->isSeparator(c)) {
+			tmpx += singleWidth(rit_par, c);
 			if (c >= body_pos)
 				tmpx+= fill_separator;
 		} else {
-			tmpx += singleWidth(rit->par(), c);
+			tmpx += singleWidth(rit_par, c);
 		}
 		++vc;
 	}
@@ -1952,11 +1950,11 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 	// some speedup if rtl_support=false
 	bool const lastrow = lyxrc.rtl_support &&
 		(boost::next(rit) == rowlist_.end() ||
-		 boost::next(rit)->par() != rit->par());
+		 boost::next(rit)->par() != rit_par);
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
 	bool const rtl = (lastrow)
-		? rit->par()->isRightToLeftPar(bv()->buffer()->params)
+		? rit_par->isRightToLeftPar(bv()->buffer()->params)
 		: false;
 	if (lastrow &&
 		 ((rtl &&  left_side && vc == rit->pos() && x < tmpx - 5) ||
@@ -1971,16 +1969,16 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 		bool const rtl = (bidi_level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = isBoundary(bv()->buffer(), *rit->par(), c);
+			boundary = isBoundary(bv()->buffer(), *rit_par, c);
 		}
 	}
 
 	if (rit->pos() <= last && c > last
-	    && rit->par()->isNewline(last)) {
+	    && rit_par->isNewline(last)) {
 		if (bidi_level(last) % 2 == 0)
-			tmpx -= singleWidth(rit->par(), last);
+			tmpx -= singleWidth(rit_par, last);
 		else
-			tmpx += singleWidth(rit->par(), last);
+			tmpx += singleWidth(rit_par, last);
 		c = last;
 	}
 

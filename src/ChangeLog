@@ -1,3 +1,21 @@
+2003-04-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (getInset): temp vars for cursor.par() and cursor.pos()
+	(makeFontEntriesLayoutSpecific): temp var for par.size()
+	(setLayout): temp var for ownerParagraphs().end()
+	(fullRebreak): temp var for rows().end()
+	(selectionAsString): temp var for boost::next(startpit), realize
+	that the while really is a regular for loop.
+	(cursorEnd): temp vars for cursor.row(), lastPos ++, only call
+	setCursor in one place.
+	(setParagraph): temp vr for ownerParagraphs().end()
+	(updateCounters): make the while loop a for loop
+	(cutSelection): temp var for ownerParagraphs().end()
+	(updateInset): make the do {} while() a regular for loop
+	(getCursorX): use temp vars
+	(setCurrentFont): use temp vars
+	(getColumnNearX): use temp vars
+
 2003-04-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text.C (transformChar): use temp var for getChar
