@@ -158,7 +158,8 @@ char const * MathHullInset::standardFont() const
 
 void MathHullInset::metrics(MathMetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, standardFont());
+	MathFontSetChanger dummy1(mi.base, standardFont());
+	MathStyleChanger dummy2(mi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 
 	// let the cells adjust themselves
 	MathGridInset::metrics(mi);
@@ -192,7 +193,8 @@ void MathHullInset::metrics(MathMetricsInfo & mi) const
 
 void MathHullInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy(pi.base, standardFont());
+	MathFontSetChanger dummy1(pi.base, standardFont());
+	MathStyleChanger dummy2(pi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 	MathGridInset::draw(pi, x + 1, y);
 
 	if (numberedType()) {

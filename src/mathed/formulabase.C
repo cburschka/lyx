@@ -154,7 +154,6 @@ void InsetFormulaBase::metrics(BufferView * bv) const
 	if (bv)
 		view_ = bv->owner()->view();
 	MathMetricsInfo mi;
-	//mi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 	mi.base.style = LM_ST_TEXT;
 	mi.base.font  = font_;
 	mi.base.font.setColor(LColor::math);
