@@ -11,20 +11,19 @@
    Download the GPL-licensed MacOSX Qt 3.1.2 library source code from
    <ftp://ftp.lyx.org/pub/lyx/contrib/qt-mac-free-3.1.2.sit>.  Untar
    the .tar.gz file in a convenient directory in /usr/local/src or
-   /usr/local, open a terminal, cd to the Qt source directory, apply
-   the patch development/MacOSX/qt.patch, and:
+   /usr/local, open a terminal, cd to the Qt source directory, then:
 
+     cd src
      setenv QTDIR `pwd` 
+     patch -p0 < lyx-src-directory/development/MacOSX/qt.patch
+     cd ..
      sudo gcc_select 2 
-     ./configure -static 
+     ./configure -static   [for Panther, use "./configure -static -lresolv"]
      make 
-     sudo gcc_select 3 
+ 
+   Using the same terminal session you used to build the Qt libraries,
+   cd to the top of the LyX source hierarchy. Then:
 
-   Using the same terminal session you used to build the Qt libraries
-   (or if you start a new terminal, set the QTDIR environment variable
-   as above), cd to the top of the LyX source hierarchy. Then:
-
-     setenv CXX g++2
      setenv LDFLAGS "-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
      ./configure --with-frontend=qt --without-x --datadir=/Applications/LyX.app/Contents/Resources --bindir=/Applications/LyX.app/Contents/MacOS --mandir=/Applications/LyX.app/Contents/Resources/man
      make
@@ -34,6 +33,7 @@
 
      make install
      rm /Applications/LyX.app/Contents/Resources/LyX/images/lyx.xpm
+     sudo gcc_select 3 
 
    For information on configuring LyX/Mac, please see the howto at
    <http://www.18james.com/lyx_on_aqua.html>. The binary installation
