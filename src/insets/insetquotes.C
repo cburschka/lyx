@@ -230,7 +230,7 @@ void InsetQuotes::Read(Buffer const *, LyXLex & lex)
 int InsetQuotes::Latex(Buffer const * buf, ostream & os,
 		       bool /*fragile*/, bool) const
 {
-	string doclang = buf->GetLanguage();
+	string doclang = buf->GetLanguage()->lang();
 	int quoteind = quote_index[side][language];
 	string qstr;
 	
@@ -291,7 +291,7 @@ void InsetQuotes::Validate(LaTeXFeatures & features) const
 {
 	char type = quote_char[quote_index[side][language]];
 
-	if (features.bufferParams().language == "default" 
+	if (features.bufferParams().language->lang() == "default" 
 	    && lyxrc.fontenc != "T1") {
 		if (times == InsetQuotes::SingleQ) 
 			switch (type) {

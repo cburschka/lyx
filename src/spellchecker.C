@@ -395,7 +395,7 @@ void init_spell_checker(BufferParams const & params, string const & lang)
 		if (lyxrc.isp_use_input_encoding &&
 		    params.inputenc != "default") {
 			string enc = (params.inputenc == "auto")
-				? params.language_info->encoding()->LatexName()
+				? params.language->encoding()->LatexName()
 				: params.inputenc;
 			string::size_type n = enc.length();
 			tmp = new char[3];
@@ -806,20 +806,18 @@ bool RunSpellChecker(BufferView * bv)
 
 #ifdef USE_PSPELL
 	string tmp = (lyxrc.isp_use_alt_lang) ?
-	    lyxrc.isp_alt_lang : bv->buffer()->params.language_info->code();
+	    lyxrc.isp_alt_lang : bv->buffer()->params.language->code();
 #else
 	string tmp = (lyxrc.isp_use_alt_lang) ?
-	    lyxrc.isp_alt_lang : bv->buffer()->GetLanguage();
+	    lyxrc.isp_alt_lang : bv->buffer()->params.language->lang();
 #endif
-#warning This is not good we should find a way to identify a rtl-language in a more general way. Please have a look Dekel! (Jug)
-// For now I'll change this to a bit more general solution but
-// Please comment on this if you don't like it. We probaly need
-// anoter flag something like lyxrc.isp_use_alt_lang_rtl (true/false)!
-	bool rtl;
-	if (lyxrc.isp_use_alt_lang)
-	    rtl = (tmp == "hebrew" || tmp == "arabic");
-	else
-	    rtl = bv->buffer()->params.language_info->RightToLeft();
+	bool rtl = false;
+	if (lyxrc.isp_use_alt_lang) {
+		Language const * lang = languages.getLanguage(tmp);
+		if (lang)
+			rtl = lang->RightToLeft();
+	} else
+	    rtl = bv->buffer()->params.language->RightToLeft();
 
 	int oldval = 0;  /* used for updating slider only when needed */
 	float newval = 0.0;

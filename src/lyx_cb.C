@@ -736,9 +736,9 @@ LyXFont const UserFreeFont(BufferParams const & params)
 	if (choice == 1)
 		font.setLanguage(ignore_language);
 	else if (choice == 2)
-		font.setLanguage(params.language_info);
+		font.setLanguage(params.language);
 	else
-		font.setLanguage(&languages[combo_language2->getline()]);
+		font.setLanguage(languages.getLanguage(combo_language2->getline()));
 
 	return font; 
 }

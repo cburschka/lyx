@@ -117,9 +117,9 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 			font2.setShape(LyXFont::UP_SHAPE);
 			font = &font2;
 #endif
-			encoding = &symbol_encoding;
+			encoding = encodings.symbol_encoding();
 		}
-		for (int i = 0; i < n; ++i) {
+		for (size_t i = 0; i < n; ++i) {
 			Uchar c = encoding->ucs(s[i]);
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
@@ -137,7 +137,7 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 		char c;
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
-		for (int i = 0; i < n; ++i) {
+		for (size_t i = 0; i < n; ++i) {
 			c = s[i];
 			// when islower is a macro, the cast is needed (JMarc)
 			if (islower(static_cast<unsigned char>(c))) {

@@ -870,7 +870,7 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 			layoutfont = GetFont(bview->buffer(), cursor.par(),-1);
 		// Update current font
 		real_current_font.update(font,
-					 bview->buffer()->params.language_info,
+					 bview->buffer()->params.language,
 					 toggleall);
 
 		// Reduce to implicit settings
@@ -914,7 +914,7 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 			LyXFont newfont = GetFont(bview->buffer(), 
 						  cursor.par(), cursor.pos());
 			newfont.update(font,
-				       bview->buffer()->params.language_info,
+				       bview->buffer()->params.language,
 				       toggleall);
 			SetCharFont(bview->buffer(),
 				    cursor.par(), cursor.pos(), newfont);

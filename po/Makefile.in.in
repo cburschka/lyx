@@ -114,6 +114,7 @@ $(top_srcdir)/src/ext_l10n.h: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/l
 		awk '{printf "_(\"%s\");\n", $$0}' > $@
 	cat $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc | grep -i -E "[ ]*style .+$$" | \
 		cut -d ' ' -f 2 | sort | uniq | awk '{printf "_(\"%s\");\n", $$0}' >> $@
+	awk -F '"' '$2 {printf "_(\"%s\");\n", $2}' < $(top_srcdir)/lib/languages >> $@
 
 install: install-exec install-data
 install-exec:

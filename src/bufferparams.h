@@ -174,9 +174,7 @@ public:
 	///
 	int tocdepth;
 	///
-	string language;
-	///
-	Language const * language_info;
+	Language const * language;
 	///
 	string inputenc;
 	///

@@ -74,6 +74,10 @@ private:
         bool ReadRcFile(string const & name);
 	/// Read the ui file `name'
 	void ReadUIFile(string const & name);
+	/// Read the languages file `name'
+	void ReadLangugesFile(string const & name);
+	/// Read the encodings file `name'
+	void ReadEncodingsFile(string const & name);
         ///
 	bool easyParse(int * argc, char * argv[]);
 };

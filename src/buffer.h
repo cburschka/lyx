@@ -38,6 +38,7 @@ class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
 class auto_mem_buffer;
+class Language;
 
 ///
 struct DEPCLEAN {
@@ -176,7 +177,7 @@ public:
 			     bool nice, bool only_body = false);
 
 	/// returns the main language for the buffer (document)
-	string const GetLanguage() const {
+	Language const * GetLanguage() const {
 		return params.language;
 	}
 	

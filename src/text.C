@@ -57,7 +57,7 @@ int LyXText::workWidth(BufferView * bview) const
 unsigned char LyXText::TransformChar(unsigned char c, LyXParagraph * par,
 			LyXParagraph::size_type pos) const
 {
-	if (!Encoding::is_arabic(c))
+	if (!Encodings::is_arabic(c))
 		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && isdigit(c))
 			return c + (0xb0 - '0');
 		else
@@ -66,21 +66,21 @@ unsigned char LyXText::TransformChar(unsigned char c, LyXParagraph * par,
 	unsigned char prev_char = pos > 0 ? par->GetChar(pos-1) : ' ';
 	unsigned char next_char = ' ';
 	for (LyXParagraph::size_type i = pos+1; i < par->Last(); ++i)
-		if (!Encoding::IsComposeChar_arabic(par->GetChar(i))) {
+		if (!Encodings::IsComposeChar_arabic(par->GetChar(i))) {
 			next_char = par->GetChar(i);
 			break;
 		}
 
-	if (Encoding::is_arabic(next_char)) {
-		if (Encoding::is_arabic(prev_char))
-			return Encoding::TransformChar(c, Encoding::FORM_MEDIAL);
+	if (Encodings::is_arabic(next_char)) {
+		if (Encodings::is_arabic(prev_char))
+			return Encodings::TransformChar(c, Encodings::FORM_MEDIAL);
 		else
-			return Encoding::TransformChar(c, Encoding::FORM_INITIAL);
+			return Encodings::TransformChar(c, Encodings::FORM_INITIAL);
 	} else {
-		if (Encoding::is_arabic(prev_char))
-			return Encoding::TransformChar(c, Encoding::FORM_FINAL);
+		if (Encodings::is_arabic(prev_char))
+			return Encodings::TransformChar(c, Encodings::FORM_FINAL);
 		else
-			return Encoding::TransformChar(c, Encoding::FORM_ISOLATED);
+			return Encodings::TransformChar(c, Encodings::FORM_ISOLATED);
 	}
 }
 
@@ -128,12 +128,12 @@ int LyXText::SingleWidth(BufferView * bview, LyXParagraph * par,
 			if (font.language()->lang() == "arabic" &&
 			    (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
 			     lyxrc.font_norm_type == LyXRC::ISO_10646_1))
-				if (Encoding::IsComposeChar_arabic(c))
+				if (Encodings::IsComposeChar_arabic(c))
 					return 0;
 				else
 					c = TransformChar(c, par, pos);
 			else if (font.language()->lang() == "hebrew" &&
-				 Encoding::IsComposeChar_hebrew(c))
+				 Encodings::IsComposeChar_hebrew(c))
 				return 0;
 		}
 		return lyxfont::width(c, font);
@@ -512,7 +512,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		++vpos;
 
 		if (lyxrc.mark_foreign_language &&
-		    font.language() != bview->buffer()->params.language_info) {
+		    font.language() != bview->buffer()->params.language) {
 			int y = offset + row->height() - 1;
 			pain.line(int(tmpx), y, int(x), y,
 				  LColor::language);
@@ -541,12 +541,12 @@ void LyXText::draw(BufferView * bview, Row const * row,
 	LyXParagraph::size_type last = RowLastPrintable(row);
 
 	if (font.language()->lang() == "hebrew") {
-		if (Encoding::IsComposeChar_hebrew(c)) {
+		if (Encodings::IsComposeChar_hebrew(c)) {
 			int width = lyxfont::width(c, font2);
 			int dx = 0;
 			for (LyXParagraph::size_type i = pos-1; i >= 0; --i) {
 				c = row->par()->GetChar(i);
-				if (!Encoding::IsComposeChar_hebrew(c)) {
+				if (!Encodings::IsComposeChar_hebrew(c)) {
 					if (IsPrintableNonspace(c)) {
 						int width2 = SingleWidth(bview, row->par(), i, c);
 						dx = (c == 'ø' || c == 'ã') // dalet / resh
@@ -562,7 +562,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 			while (vpos <= last &&
 			       (pos = vis2log(vpos)) >= 0
 			       && IsPrintableNonspace(c = row->par()->GetChar(pos))
-			       && !Encoding::IsComposeChar_hebrew(c)
+			       && !Encodings::IsComposeChar_hebrew(c)
 			       && font2 == GetFont(bview->buffer(), row->par(), pos)) {
 				textstring += c;
 				++vpos;
@@ -575,14 +575,14 @@ void LyXText::draw(BufferView * bview, Row const * row,
 	} else if (font.language()->lang() == "arabic" &&
 		   (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
 		    lyxrc.font_norm_type == LyXRC::ISO_10646_1)) {
-		if (Encoding::IsComposeChar_arabic(c)) {
+		if (Encodings::IsComposeChar_arabic(c)) {
 			c = TransformChar(c, row->par(), pos);
 			textstring = c;
 			int width = lyxfont::width(c, font2);
 			int dx = 0;
 			for (LyXParagraph::size_type i = pos-1; i >= 0; --i) {
 				c = row->par()->GetChar(i);
-				if (!Encoding::IsComposeChar_arabic(c)) {
+				if (!Encodings::IsComposeChar_arabic(c)) {
 					if (IsPrintableNonspace(c)) {
 						int width2 = SingleWidth(bview, row->par(), i, c);
 						dx = (width2 - width) / 2;
@@ -598,7 +598,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 			while (vpos <= last &&
 			       (pos = vis2log(vpos)) >= 0
 			       && IsPrintableNonspace(c = row->par()->GetChar(pos))
-			       && !Encoding::IsComposeChar_arabic(c)
+			       && !Encodings::IsComposeChar_arabic(c)
 			       && font2 == GetFont(bview->buffer(), row->par(), pos)) {
 				c = TransformChar(c, row->par(), pos);
 				textstring += c;
@@ -623,7 +623,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 	}
 
 	if (lyxrc.mark_foreign_language &&
-	    font.language() != bview->buffer()->params.language_info) {
+	    font.language() != bview->buffer()->params.language) {
 		int y = offset + row->height() - 1;
 		pain.line(int(tmpx), y, int(x), y,
 			  LColor::language);

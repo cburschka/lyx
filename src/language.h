@@ -71,30 +71,36 @@ private:
 	string code_;
 };
 
-#if 0
-///
-bool operator==(Language const & l1, Language const & l2) 
+class Languages
 {
-	return l1.lang == l2.lang
-		&& l1.display_ == l2.display_
-		&& l1.RightToLeft_ == l2.RightToLeft_
-		&& l1.encoding_ == l2.encoding_;
-}
+public:
+	///
+	typedef std::map<string, Language> LanguageList;
+	///
+	typedef LanguageList::const_iterator const_iterator;
+	///
+	void read(string const & filename);
+	///
+	void setDefaults();
+	///
+	Language const * getLanguage(string const & language) const;
+	///
+	const_iterator begin() const {
+                return languagelist.begin();
+        }
+        ///
+        const_iterator end() const {
+                return languagelist.end();
+        }
+	///
+	
+private:
+	///
+	LanguageList languagelist;
+};
 
-///
-bool operator!=(Language const l1, Language const & l2)
-{
-	return !(l1 == l2);
-
-}
-#endif
-///
-typedef std::map<string, Language> Languages;
-///
 extern Languages languages;
-///
 extern Language const * default_language;
-///
 extern Language const *ignore_language;
 
 #endif

@@ -50,8 +50,7 @@ BufferParams::BufferParams()
         use_amsmath = false;
 	secnumdepth = 3;
 	tocdepth = 3;
-	language = default_language->lang();
-	language_info = default_language;
+	language = default_language;
 	fonts = "default";
 	inputenc = "auto";
 	graphicsDriver = "default";
@@ -88,7 +87,7 @@ void BufferParams::writeFile(ostream & os) const
 	}
    
 	/* then the text parameters */
-	os << "\\language " << language
+	os << "\\language " << language->lang()
 	   << "\n\\inputencoding " << inputenc
 	   << "\n\\fontscheme " << fonts
 	   << "\n\\graphics " << graphicsDriver << '\n';
@@ -202,21 +201,14 @@ void BufferParams::readLanguage(LyXLex & lex)
 	string tmptok = lex.GetString();
 
 	// check if tmptok is part of tex_babel in tex-defs.h
-	Languages::iterator lit = languages.find(tmptok);
-	if (lit != languages.end()) {
-		// found it
-		language = tmptok;
-		language_info = &(*lit).second;
-	} else {
-		// not found
-		language = default_language->lang();
-		language_info = default_language;
-		if (tmptok != "default") {
-			lyxerr << "Warning: language `"
-			       << tmptok << "' not recognized!\n"
-			       << "         Setting language to `default'."
-			       << endl;
-		}
+	language = languages.getLanguage(tmptok);
+	if (!language) {
+		// Language tmptok was not found
+		language = default_language;
+		lyxerr << "Warning: language `"
+		       << tmptok << "' not recognized!\n"
+		       << "         Setting language to `" << language->lang()
+		       << "'." << endl;
 	}
 }
 

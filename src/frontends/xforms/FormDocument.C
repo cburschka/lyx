@@ -139,7 +139,7 @@ void FormDocument::build()
     obj = class_->choice_doc_class;
     fl_addto_form(class_->form);
     combo_doc_class = new Combox(FL_COMBOX_DROPLIST);
-    combo_doc_class->add(obj->x, obj->y, obj->w, obj->h, 200);
+    combo_doc_class->add(obj->x, obj->y, obj->w, obj->h, 400);
     combo_doc_class->shortcut("#C",1);
     combo_doc_class->setcallback(ComboInputCB, this);
     fl_end_form();
@@ -197,7 +197,7 @@ void FormDocument::build()
     obj = language_->choice_language;
     fl_addto_form(language_->form);
     combo_language = new Combox(FL_COMBOX_DROPLIST);
-    combo_language->add(obj->x, obj->y, obj->w, obj->h, 200);
+    combo_language->add(obj->x, obj->y, obj->w, obj->h, 400);
     combo_language->shortcut("#L",1);
     combo_language->setcallback(ComboInputCB, this);
     fl_end_form();
@@ -205,7 +205,7 @@ void FormDocument::build()
 #ifdef DO_USE_DEFAULT_LANGUAGE
     combo_language->addto("default");
 #endif
-    for(Languages::iterator cit = languages.begin();
+    for(Languages::const_iterator cit = languages.begin();
 	cit != languages.end(); ++cit) {
 	combo_language->addto((*cit).second.lang().c_str());
     }
@@ -556,14 +556,10 @@ bool FormDocument::language_apply()
     else
 	params.quotes_times = InsetQuotes::DoubleQ;
 
-    Language const * old_language = params.language_info;
-    params.language = combo_language->getline();
-    Languages::iterator lit = languages.find(params.language);
-
-    Language const * new_language;
-    if (lit != languages.end()) 
-	new_language = &(*lit).second;
-    else
+    Language const * old_language = params.language;
+    Language const * new_language = 
+	    languages.getLanguage(combo_language->getline());
+    if (!new_language)
 	new_language = default_language;
 
     if (old_language != new_language
@@ -573,7 +569,7 @@ bool FormDocument::language_apply()
     if (old_language != new_language) {
 	redo = true;
     }
-    params.language_info = new_language;
+    params.language = new_language;
     params.inputenc = fl_get_choice_text(language_->choice_inputenc);
 
     return redo;
@@ -716,7 +712,7 @@ void FormDocument::language_update(BufferParams const & params)
     if (!language_)
         return;
 
-    combo_language->select_text(params.language.c_str());
+    combo_language->select_text(params.language->lang().c_str());
     fl_set_choice_text(language_->choice_inputenc, params.inputenc.c_str());
     fl_set_choice(language_->choice_quotes_language, params.quotes_language + 1);
     fl_set_button(language_->radio_single, 0);

@@ -246,8 +246,8 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 	bool the_end_read = false;
 
 	LyXParagraph * return_par = 0;
-	LyXFont font(LyXFont::ALL_INHERIT, params.language_info);
-	if (format < 2.16 && params.language == "hebrew")
+	LyXFont font(LyXFont::ALL_INHERIT, params.language);
+	if (format < 2.16 && params.language->lang() == "hebrew")
 		font.setLanguage(default_language);
 
 	// If we are inserting, we cheat and get a token in advance
@@ -363,8 +363,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->footnotekind = footnotekind;
 #endif
 		par->depth = depth;
-		font = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
-		if (format < 2.16 && params.language == "hebrew")
+		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+		if (format < 2.16 && params.language->lang() == "hebrew")
 			font.setLanguage(default_language);
 #ifndef NEW_INSETS
 	} else if (token == "\\end_float") {
@@ -379,8 +379,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		pos = 0;
 		lex.EatLine();
 		par->layout = LYX_DUMMY_LAYOUT;
-		font = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
-		if (format < 2.16 && params.language == "hebrew")
+		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+		if (format < 2.16 && params.language->lang() == "hebrew")
 			font.setLanguage(default_language);
 	} else if (token == "\\begin_float") {
 		int tmpret = lex.FindToken(string_footnotekinds);
@@ -771,11 +771,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 	} else if (token == "\\lang") {
 		lex.next();
 		string const tok = lex.GetString();
-		Languages::iterator lit = languages.find(tok);
-		if (lit != languages.end()) {
-			font.setLanguage(&(*lit).second);
+		Language const * lang = languages.getLanguage(tok);
+		if (lang) {
+			font.setLanguage(lang);
 		} else {
-			font.setLanguage(params.language_info);
+			font.setLanguage(params.language);
 			lex.printError("Unknown language `$$Token'");
 		}
 	} else if (token == "\\numeric") {
@@ -1363,7 +1363,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 		}
       
 		LyXFont font1 =
-			LyXFont(LyXFont::ALL_INHERIT, params.language_info);
+			LyXFont(LyXFont::ALL_INHERIT, params.language);
                 actcell = 0;
 		for (i = 0, actpos = 1; i < par->size(); ++i, ++actpos) {
 			if (!i && !footnoteflag && !noparbreak){
@@ -1571,7 +1571,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 #endif
 	}
       
-	font1 = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
+	font1 = LyXFont(LyXFont::ALL_INHERIT, params.language);
 	for (LyXParagraph::size_type i = 0; i < par->size(); ++i) {
 		if (!i && !footnoteflag && !noparbreak){
 			if (linelen > 0)
@@ -1831,17 +1831,21 @@ void Buffer::makeLaTeXFile(string const & fname,
 		
 		// language should be a parameter to \documentclass
 		bool use_babel = false;
-		if (params.language_info->lang() == "hebrew") // This seems necessary
+		if (params.language->babel() == "hebrew") // This seems necessary
 			features.UsedLanguages.insert(default_language);
-		if (params.language != "default" ||
+#ifdef DO_USE_DEFAULT_LANGUAGE
+		if (params.language->lang() != "default" ||
 		    !features.UsedLanguages.empty() ) {
+#endif
 			use_babel = true;
 			for (LaTeXFeatures::LanguageList::const_iterator cit =
 				     features.UsedLanguages.begin();
 			     cit != features.UsedLanguages.end(); ++cit)
-				options += (*cit)->lang() + ",";
-			options += params.language_info->lang() + ',';
+				options += (*cit)->babel() + ",";
+			options += params.language->babel() + ',';
+#ifdef DO_USE_DEFAULT_LANGUAGE
 		}
+#endif
 
 		// the user-defined options
 		if (!params.options.empty()) {
@@ -1873,7 +1877,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 		if (params.inputenc == "auto") {
 			string const doc_encoding =
-				params.language_info->encoding()->LatexName();
+				params.language->encoding()->LatexName();
 
 			// Create a list with all the input encodings used 
 			// in the document
@@ -2141,9 +2145,13 @@ void Buffer::makeLaTeXFile(string const & fname,
 		texrow.newline();
 	} // only_body
 	lyxerr.debug() << "preamble finished, now the body." << endl;
-	if (!lyxrc.language_auto_begin && params.language != "default") {
+#ifdef DO_USE_DEFAULT_LANGUAGE
+	if (!lyxrc.language_auto_begin && params.language->lang() != "default") {
+#else
+	if (!lyxrc.language_auto_begin) {
+#endif
 		ofs << subst(lyxrc.language_command_begin, "$$lang",
-			     params.language)
+			     params.language->babel())
 		    << endl;
 		texrow.newline();
 	}
@@ -2154,9 +2162,13 @@ void Buffer::makeLaTeXFile(string const & fname,
 	ofs << endl;
 	texrow.newline();
 
-	if (!lyxrc.language_auto_end && params.language != "default") {
+#ifdef DO_USE_DEFAULT_LANGUAGE
+	if (!lyxrc.language_auto_end && params.language->lang() != "default") {
+#else
+		if (!lyxrc.language_auto_end) {
+#endif
 		ofs << subst(lyxrc.language_command_end, "$$lang",
-			     params.language)
+			     params.language->babel())
 		    << endl;
 		texrow.newline();
 	}

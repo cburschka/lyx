@@ -146,8 +146,8 @@ string const LaTeXFeatures::getPackages()
 	// makeidx.sty
 	if (makeidx) {
 		if (! tclass.provides(LyXTextClass::makeidx)
-		    && params.language != "french") // french provides
-						    // \index !
+		    && params.language->babel() != "french") // french provides
+						             // \index !
 			packages += "\\usepackage{makeidx}\n";
 		packages += "\\makeindex\n";
 	}

@@ -1,3 +1,41 @@
+2000-10-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/Makefile.am (pkgdata_DATA): add encoding and languages
+
+	* src/tabular.h: add a few std:: qualifiers.
+
+	* src/encoding.C: add using directive.
+	* src/language.C: ditto.
+
+	* src/insets/insetquotes.C (Validate): use languages->lang()
+	instead of only language.
+
+2000-10-07  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lib/languages: New file.
+
+	* lib/encodings: New file.
+
+	* src/language.C (Languages): New class.
+ 	(read): New method. Reads the languages from the 'languages' file.
+
+	* src/encoding.C (Encodings): New class.
+	(read): New method. Reads the encodings from the 'encodings' file.
+
+	* src/lyx_main.C (init): Call to LyXSetStyle() after languages
+	initialization.
+
+	* src/bufferparams.h and a lot of files: Deleted the member language,
+	and renamed language_info to language
+
+	* src/buffer.C (makeLaTeXFile): Use babel() instead of lang()
+	* src/lyxfont.C (latexWriteStartChanges): ditto.
+	* src/paragraph.C (validate,TeXOnePar): ditto.
+	
+	* src/lyxfont.C (update): Restored deleted code.
+
+	* src/frontends/xforms/FormDocument.C (build): Made the combox taller
+
 2000-10-10  Angus Leeming <a.leeming@ic.ac.uk>
 
        * src/BufferView_pimpl.C (buffer): cleaned up a little.
@@ -28,6 +66,7 @@
        *current_view->buffer(). This will change later, but this patch is way
        big enough already!
 
+>>>>>>> 1.592
 2000-10-09  Juergen Vigna  <jug@sad.it>
 
 	* src/text.C (GetRow): small fix.

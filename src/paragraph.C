@@ -242,7 +242,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 	if (bibkey)
 		bibkey->Write(buf, os);
 
-	LyXFont font1(LyXFont::ALL_INHERIT, params.language_info);
+	LyXFont font1(LyXFont::ALL_INHERIT, params.language);
 
 	int column = 0;
 	for (size_type i = 0; i < size(); ++i) {
@@ -342,7 +342,7 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 	features.layout[GetLayout()] = true;
 
 	// then the fonts
-	Language const * doc_language = params.language_info;
+	Language const * doc_language = params.language;
 	
 	for (FontList::const_iterator cit = fontlist.begin();
 	     cit != fontlist.end(); ++cit) {
@@ -368,10 +368,10 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 		}
 
 		Language const * language = (*cit).font.language();
-		if (language != doc_language) {
+		if (language->babel() != doc_language->babel()) {
 			features.UsedLanguages.insert(language);
 			lyxerr[Debug::LATEX] << "Found language "
-					     << language->lang() << endl;
+					     << language->babel() << endl;
 		}
 	}
 
@@ -2262,12 +2262,13 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	}
 
 	Language const * language = getParLanguage(bparams);
-	Language const * doc_language = bparams.language_info;
+	Language const * doc_language = bparams.language;
 	Language const * previous_language = previous
 		? previous->getParLanguage(bparams) : doc_language;
-	if (language != doc_language && language != previous_language) {
+	if (language->babel() != doc_language->babel() &&
+	    language->babel() != previous_language->babel()) {
 		os << subst(lyxrc.language_command_begin, "$$lang",
-			    language->lang())
+			    language->babel())
 		   << endl;
 		texrow.newline();
 	}
@@ -2375,15 +2376,15 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 		os << "{\\" << font.latexSize() << " \\par}";
 	}
 
-	if (language != doc_language &&
+	if (language->babel() != doc_language->babel() &&
 	    (!par
 #ifndef NEW_INSETS
 	     || (footnoteflag != NO_FOOTNOTE && par->footnoteflag != footnoteflag)
 #endif
-	     || par->getParLanguage(bparams) != language)) {
+	     || par->getParLanguage(bparams)->babel() != language->babel())) {
 		os << endl 
 		   << subst(lyxrc.language_command_end, "$$lang",
-			    doc_language->lang());
+			    doc_language->babel());
 	}
 	
 	switch (style.latextype) {
@@ -2547,7 +2548,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 			case LYX_ALIGN_SPECIAL:
 				break;
 			case LYX_ALIGN_LEFT:
-				if (getParLanguage(bparams)->lang() != "hebrew") {
+				if (getParLanguage(bparams)->babel() != "hebrew") {
 					os << "\\raggedright ";
 					column+= 13;
 				} else {
@@ -2556,7 +2557,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 				}
 				break;
 			case LYX_ALIGN_RIGHT:
-				if (getParLanguage(bparams)->lang() != "hebrew") {
+				if (getParLanguage(bparams)->babel() != "hebrew") {
 					os << "\\raggedleft ";
 					column+= 12;
 				} else {
@@ -3866,15 +3867,19 @@ LyXParagraph::getParLanguage(BufferParams const & bparams) const
 	else
 #endif
 	if (size() > 0) {
+#ifdef DO_USE_DEFAULT_LANGUAGE
 		Language const * lang = GetFirstFontSettings().language();
 
-		if (lang->lang() == default_language->lang())
-			return bparams.language_info;
+		if (lang->lang() == "default")
+			return bparams.language;
 		return lang;
+#else
+		return GetFirstFontSettings().language();
+#endif
 	} else if (previous)
 		return previous->getParLanguage(bparams);
-
-		return bparams.language_info;
+	else
+		return bparams.language;
 }
 
 
@@ -3900,7 +3905,7 @@ void LyXParagraph::ChangeLanguage(BufferParams const & bparams,
 
 bool LyXParagraph::isMultiLingual(BufferParams const & bparams)
 {
-	Language const * doc_language =	bparams.language_info;
+	Language const * doc_language =	bparams.language;
 	for (FontList::const_iterator cit = fontlist.begin();
 	     cit != fontlist.end(); ++cit)
 		if ((*cit).font.language() != doc_language)

@@ -283,13 +283,13 @@ public:
     // helper function for Latex returns number of newlines
     ///
     int AsciiTopHLine(std::ostream &, int row,
-		      vector<unsigned int> const &) const;
+		      std::vector<unsigned int> const &) const;
     ///
     int AsciiBottomHLine(std::ostream &, int row,
-			 vector<unsigned int> const &) const;
+			 std::vector<unsigned int> const &) const;
     ///
     int AsciiPrintCell(Buffer const *, std::ostream &, int cell, int row,
-		       int column, vector<unsigned int> const &) const;
+		       int column, std::vector<unsigned int> const &) const;
     ///
     int Ascii(Buffer const *, std::ostream &) const;
     ///

@@ -38,6 +38,7 @@
 #include "MenuBackend.h"
 #include "ToolbarDefaults.h"
 #include "lyxlex.h"
+#include "encoding.h"
 
 using std::endl;
 
@@ -366,13 +367,6 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	queryUserLyXDir(explicit_userdir);
 
 	//
-	// Load the layouts first
-	//
-
-	lyxerr[Debug::INIT] << "Reading layouts..." << endl;
-	LyXSetStyle();
-
-	//
 	// Shine up lyxrc defaults
 	//
 
@@ -409,6 +403,15 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	// of the old lyxrc file.
 	if (!ReadRcFile("preferences"))
 	    ReadRcFile("lyxrc");
+
+	// Read encodings
+	ReadEncodingsFile("encodings");
+	// Read languages
+	ReadLangugesFile("languages");
+
+	// Load the layouts
+	lyxerr[Debug::INIT] << "Reading layouts..." << endl;
+	LyXSetStyle();
 
 	// Ensure that we have really read a bind file, so that LyX is
 	// usable.
@@ -612,6 +615,7 @@ void LyX::ReadUIFile(string const & name)
 
 	if (ui_path.empty()) {
 	  	lyxerr[Debug::INIT] << "Could not find " << name << endl;
+		menubackend.defaults();
 		return;
 	}
 	
@@ -643,6 +647,35 @@ void LyX::ReadUIFile(string const & name)
 			break;
 		}
 	}
+}
+
+
+// Read the languages file `name'
+void LyX::ReadLangugesFile(string const & name)
+{
+	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
+
+	string lang_path = LibFileSearch(string(), name);
+	if (lang_path.empty()) {
+		lyxerr[Debug::INIT] << "Could not find " << name << endl;
+		languages.setDefaults();
+		return;
+	}
+	languages.read(lang_path);
+}
+
+
+// Read the encodings file `name'
+void LyX::ReadEncodingsFile(string const & name)
+{
+	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
+
+	string enc_path = LibFileSearch(string(), name);
+	if (enc_path.empty()) {
+		lyxerr[Debug::INIT] << "Could not find " << name << endl;
+		return;
+	}
+	encodings.read(enc_path);
 }
 
 

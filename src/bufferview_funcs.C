@@ -92,9 +92,9 @@ void Number(BufferView * bv)
 void Lang(BufferView * bv, string const & l)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
-	Languages::iterator lit = languages.find(l);
-	if (lit != languages.end()) {
-		font.setLanguage(&(*lit).second);
+	Language const * lang = languages.getLanguage(l);
+	if (lang) {
+		font.setLanguage(lang);
 		ToggleAndShow(bv, font);
 	} else
 		WriteAlert(_("Error! unknown language"),l);

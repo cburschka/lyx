@@ -329,7 +329,7 @@ void LyXGUI::create_forms()
 	// build up the combox entries
 	combo_language2->addto(_("No change"));
 	combo_language2->addto(_("Reset"));
-	for(Languages::iterator cit = languages.begin();
+	for(Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	    if ((*cit).second.lang() != "default")

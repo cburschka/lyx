@@ -292,7 +292,10 @@ void LyXFont::update(LyXFont const & newfont,
 
 	setNumber(setMisc(newfont.number(), number()));
 	if (newfont.language() == language() && toggleall)
-		setLanguage(document_language);
+		if (language() == document_language)
+			setLanguage(default_language);
+		else
+			setLanguage(document_language);
 	else if (newfont.language() != ignore_language)
 		setLanguage(newfont.language());
 
@@ -404,11 +407,10 @@ string const LyXFont::stateText(BufferParams * params) const
 		ost << _("Latex ") << _(GUIMiscNames[latex()]) << ", ";
 	if (bits == inherit)
 		ost << _("Default") << ", ";
-	if (!params || (language() != params->language_info))
+	if (!params || (language() != params->language))
 		ost << _("Language: ") << _(language()->display().c_str()) << ", ";
 	if (number() != OFF)
 		ost << _("  Number ") << _(GUIMiscNames[number()]);
-
 
 	string buf(ost.str().c_str());
 	buf = strip(buf, ' ');
@@ -676,7 +678,8 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 	int count = 0;
 	bool env = false;
 
-	if (language() != base.language() && language() != prev.language()) {
+	if (language()->babel() != base.language()->babel() &&
+	    language()->babel() != prev.language()->babel()) {
 		if (isRightToLeft() != prev.isRightToLeft()) {
 			if (isRightToLeft()) {
 				os << "\\R{";
@@ -688,7 +691,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 		} else {
 			string tmp = '{' + 
 				subst(lyxrc.language_command_begin,
-				      "$$lang", language()->lang());
+				      "$$lang", language()->babel());
 			os << tmp;
 			count += tmp.length();
 		}

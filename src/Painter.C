@@ -283,9 +283,9 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 			font2.setShape(LyXFont::UP_SHAPE);
 			font = &font2;
 #endif
-			encoding = &symbol_encoding;
+			encoding = encodings.symbol_encoding();
 		}
-		for (int i = 0; i < ls; ++i) {
+		for (size_t i = 0; i < ls; ++i) {
 			Uchar c = encoding->ucs(s[i]);
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
@@ -310,7 +310,7 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		char c;
 		int tmpx = x;
-		for(int i = 0; i < ls; ++i) {
+		for(size_t i = 0; i < ls; ++i) {
 			c = s[i];
 			if (islower(static_cast<unsigned char>(c))) {
 				c = toupper(c);

@@ -26,6 +26,52 @@ typedef unsigned short int Uchar;
 class Encoding {
 public:
 	///
+	Encoding() {}
+	///
+	Encoding(string const & n, string const & l, Uchar const * e)
+		: Name_(n), LatexName_(l) {
+		for (int i = 0; i < 256; ++i)
+			encoding_table[i] = e[i];
+	}
+	///
+	string const & Name() const {
+		return Name_;
+	}
+	///
+	string const & LatexName() const {
+		return LatexName_;
+	}
+	///
+	Uchar ucs(unsigned char c) const {
+		return encoding_table[c];
+	}
+private:
+	///
+	string Name_;
+	///
+	string LatexName_;
+	///
+	Uchar encoding_table[256];
+};
+
+extern Encoding symbol_encoding;
+
+class Encodings {
+public:
+	///
+	typedef std::map<string, Encoding> EncodingList;
+	///
+	Encodings();
+	///
+	void read(string const & filename);
+	///
+	Encoding const * getEncoding(string const & encoding) const;
+	///
+	Encoding const * symbol_encoding() {
+		return &symbol_encoding_;
+	}
+
+	///
 	enum Letter_Form {
 		///
 		FORM_ISOLATED,
@@ -36,17 +82,6 @@ public:
 		///
 		FORM_MEDIAL
 	};
-	///
-	Encoding(string const & l, Uchar const * e)
-		: LatexName_(l) , encoding_table(e) {}
-	///
-	string const & LatexName() const {
-		return LatexName_;
-	}
-	///
-	Uchar ucs(unsigned char c) const {
-		return encoding_table[c];
-	}
 	///
 	static
 	bool IsComposeChar_hebrew(unsigned char c);
@@ -59,32 +94,14 @@ public:
 	///
 	static
 	unsigned char TransformChar(unsigned char c, Letter_Form form);
+
 private:
 	///
-	string LatexName_;
+	EncodingList encodinglist;
 	///
-	Uchar const * encoding_table;
+	Encoding symbol_encoding_;
 };
 
-///
-extern Encoding iso8859_1;
-///
-extern Encoding iso8859_2;
-///
-extern Encoding iso8859_3;
-///
-extern Encoding iso8859_4;
-///
-extern Encoding iso8859_6;
-///
-extern Encoding iso8859_7;
-///
-extern Encoding iso8859_9;
-///
-extern Encoding cp1255;
-///
-extern Encoding koi8;
-///
-extern Encoding symbol_encoding;
+extern Encodings encodings;
 
 #endif
