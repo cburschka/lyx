@@ -70,7 +70,7 @@ pair<bool, int> const CharacterSet::encodeString(string const & str) const
 	Cdef::const_iterator cit = map_.find(str);
 	if (cit != map_.end()) {
 		ret =  true;
-		val = (*cit).second;
+		val = cit->second;
 	}
 	lyxerr[Debug::KBMAP] << "   "
 			     << (ret ? "yes we" : "no we don't")

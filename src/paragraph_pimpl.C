@@ -102,7 +102,7 @@ void Paragraph::Pimpl::insertChar(Paragraph::size_type pos,
 						      fontlist.end(),
 						      search_font, matchFT());
 	     it != fontlist.end(); ++it)
-		(*it).pos((*it).pos() + 1);
+		it->pos(it->pos() + 1);
    
 	// Update the inset table.
 	InsetTable search_inset(pos, 0);
@@ -110,7 +110,7 @@ void Paragraph::Pimpl::insertChar(Paragraph::size_type pos,
 						       owner_->insetlist.end(),
 						       search_inset, matchIT());
 	     it != owner_->insetlist.end(); ++it)
-		++(*it).pos;
+		++it->pos;
 
 	owner_->setFont(pos, font);
 }
@@ -130,7 +130,7 @@ void Paragraph::Pimpl::insertInset(Paragraph::size_type pos,
 	InsetList::iterator it = std::lower_bound(owner_->insetlist.begin(),
 						  owner_->insetlist.end(),
 						  search_inset, matchIT());
-	if (it != owner_->insetlist.end() && (*it).pos == pos) {
+	if (it != owner_->insetlist.end() && it->pos == pos) {
 		lyxerr << "ERROR (Paragraph::InsertInset): "
 			"there is an inset in position: " << pos << std::endl;
 	} else {
@@ -153,8 +153,8 @@ void Paragraph::Pimpl::erase(Paragraph::size_type pos)
 			std::lower_bound(owner_->insetlist.begin(),
 					 owner_->insetlist.end(),
 					 search_inset, matchIT());
-		if (it != owner_->insetlist.end() && (*it).pos == pos) {
-			delete (*it).inset;
+		if (it != owner_->insetlist.end() && it->pos == pos) {
+			delete it->inset;
 			owner_->insetlist.erase(it);
 		}
 	}
@@ -168,10 +168,10 @@ void Paragraph::Pimpl::erase(Paragraph::size_type pos)
 		std::lower_bound(fontlist.begin(),
 			    fontlist.end(),
 			    search_font, matchFT());
-	if (it != fontlist.end() && (*it).pos() == pos &&
+	if (it != fontlist.end() && it->pos() == pos &&
 	    (pos == 0 || 
 	     (it != fontlist.begin() 
-	      && (*(it - 1)).pos() == pos - 1))) {
+	      && boost::prior(it)->pos() == pos - 1))) {
 		// If it is a multi-character font
 		// entry, we just make it smaller
 		// (see update below), otherwise we
@@ -189,7 +189,7 @@ void Paragraph::Pimpl::erase(Paragraph::size_type pos)
 	// Update all other entries.
 	FontList::iterator fend = fontlist.end();
 	for (; it != fend; ++it)
-		(*it).pos((*it).pos() - 1);
+		it->pos(it->pos() - 1);
 	
 	// Update the inset table.
 	InsetTable search_inset(pos, 0);
@@ -199,7 +199,7 @@ void Paragraph::Pimpl::erase(Paragraph::size_type pos)
 				      lend,
 				      search_inset, matchIT());
 	     it != lend; ++it)
-		--(*it).pos;
+		--it->pos;
 }
 
 

@@ -456,9 +456,9 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 		return LFUN_UNKNOWN_ACTION;
 	}
 
-	arg_item::const_iterator aci = (*pit).second.find(arg);
+	arg_item::const_iterator aci = pit->second.find(arg);
 
-	if (aci == (*pit).second.end()) {
+	if (aci == pit->second.end()) {
 		// the action does not have any pseudoactions with this arg
 		lyxerr[Debug::ACTION] 
 			<< "Action " << action
@@ -470,9 +470,9 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 	// pseudo action exist
 	lyxerr[Debug::ACTION] << "Pseudoaction exist[" 
 			      << action << '|' 
-			      << arg << "] = " << (*aci).second << endl;
+			      << arg << "] = " << aci->second << endl;
 
-	return (*aci).second;
+	return aci->second;
 }
 
 
@@ -496,7 +496,7 @@ int LyXAction::getPseudoAction(kb_action action, string const & arg) const
 	// get the arg_item map
 	arg_map::iterator ami = lyx_arg_map.find(action);
 	// put the new pseudo function in it
-	(*ami).second[arg] = pseudo_counter;
+	ami->second[arg] = pseudo_counter;
 
 	lyxerr[Debug::ACTION] << "Creating new pseudoaction "
 			      << pseudo_counter << " for [" << action
@@ -516,10 +516,10 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 
 	if (pit != lyx_pseudo_map.end()) {
 		lyxerr[Debug::ACTION] << "Found the pseudoaction: ["
-				      << (*pit).second.action << '|'
-				      << (*pit).second.arg << '\n';
-		arg = (*pit).second.arg;
-		return (*pit).second.action;
+				      << pit->second.action << '|'
+				      << pit->second.arg << '\n';
+		arg = pit->second.arg;
+		return pit->second.action;
 	} else {
 		lyxerr << "Lyx Error: Unrecognized pseudo-action\n";
 		return LFUN_UNKNOWN_ACTION;
@@ -542,10 +542,10 @@ int LyXAction::LookupFunc(string const & func) const
 
 	if (!argstr.empty() && fit != lyx_func_map.end()) {
 		// might be pseudo (or create one)
-		return getPseudoAction((*fit).second, argstr);
+		return getPseudoAction(fit->second, argstr);
 	}
 
-	return fit != lyx_func_map.end() ? (*fit).second : LFUN_UNKNOWN_ACTION;
+	return fit != lyx_func_map.end() ? fit->second : LFUN_UNKNOWN_ACTION;
 }
 
 
@@ -570,14 +570,14 @@ int LyXAction::getApproxFunc(string const & func) const
  			lyx_func_map.lower_bound(func);
 		
  		if (fit != lyx_func_map.end()) {
-			action =  (*fit).second;
+			action =  fit->second;
 		}
 	} else {  // Go get the next function
 	 	func_map::const_iterator fit = 
  			lyx_func_map.upper_bound(func);
 		
  		if (fit != lyx_func_map.end()) {
-			action =  (*fit).second;
+			action =  fit->second;
 		}
 	}
 	
@@ -606,7 +606,7 @@ string const LyXAction::getActionName(int action) const
 	info_map::const_iterator iit = lyx_info_map.find(ac);
 
 	if (iit != lyx_info_map.end()) {
-		string ret((*iit).second.name);
+		string ret(iit->second.name);
 		ret += arg;
 		return ret;
 	} else 
@@ -631,15 +631,15 @@ string const LyXAction::helpText(int pseudoaction) const
 		if (lyxerr.debugging(Debug::ACTION)) {
 			lyxerr << "Action: " << action << '\n';
 			lyxerr << "   name: "
-			       << (*ici).second.name << '\n';
+			       << ici->second.name << '\n';
 			lyxerr << " attrib: "
-			       << (*ici).second.attrib << '\n';
+			       << ici->second.attrib << '\n';
 			lyxerr << "   help: "
-			       << (*ici).second.helpText << '\n';
+			       << ici->second.helpText << '\n';
 		}
-		help = (*ici).second.helpText;
+		help = ici->second.helpText;
 		// if the is no help text use the name of the func instead.
-		if (help.empty()) help = (*ici).second.name;
+		if (help.empty()) help = ici->second.name;
 	}
 
 	if (help.empty()) {
@@ -659,7 +659,7 @@ bool LyXAction::funcHasFlag(kb_action action,
 	info_map::const_iterator ici = lyx_info_map.find(action);
 
 	if (ici != lyx_info_map.end()) {
-		return (*ici).second.attrib & flag;
+		return ici->second.attrib & flag;
 	} else {
 		// it really should exist, but...
 		lyxerr << "LyXAction::funcHasFlag: "

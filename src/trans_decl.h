@@ -11,6 +11,7 @@ struct Keyexc {
 	char c;
 	/// exception data
 	string data;
+	///
 	Keyexc * next;
 	/// Combination with another deadkey
 	bool combined;
@@ -27,8 +28,10 @@ struct KmodInfo {
 	string data;
 	///
 	tex_accent accent;
+#if 0
 	///
 	string allowed;
+#endif
 	///
 	KmodException exception_list;
 	///

@@ -266,7 +266,7 @@ PainterBase & Painter::image(int x, int y, int w, int h, LyXImage const * image)
 
 PainterBase & Painter::text(int x, int y, string const & s, LyXFont const & f)
 {
-	return text(x, y, s.c_str(), s.length(), f);
+	return text(x, y, s.data(), s.length(), f);
 }
 
 

@@ -137,10 +137,10 @@ void BufferView::insertErrors(TeXErrors & terr)
 	for (TeXErrors::Errors::const_iterator cit = terr.begin();
 	     cit != terr.end();
 	     ++cit) {
-		string const desctext((*cit).error_desc);
-		string const errortext((*cit).error_text);
+		string const desctext(cit->error_desc);
+		string const errortext(cit->error_text);
 		string const msgtxt = desctext + '\n' + errortext;
-		int const errorrow = (*cit).error_in_line;
+		int const errorrow = cit->error_in_line;
 
 		// Insert error string for row number
 		int tmpid = -1; 

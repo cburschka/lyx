@@ -75,7 +75,7 @@ LyXText * TextCache::findFit(Buffer * b, int p)
 	Cache::iterator it = find_if(cache.begin(), cache.end(),
 				     text_fits(b, p));
 	if (it != cache.end()) {
-		LyXText * tmp = (*it).second.second;
+		LyXText * tmp = it->second.second;
 		cache.erase(it);
 		return tmp;
 	}

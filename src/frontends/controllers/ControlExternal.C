@@ -141,7 +141,7 @@ ExternalTemplate ControlExternal::getTemplate(int i) const
 	for (int n = 1; n < i; ++n)
 		++i1;
 
-	return (*i1).second;
+	return i1->second;
 }
 
 

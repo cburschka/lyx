@@ -1,4 +1,10 @@
-<<<<<<< ChangeLog
+2001-07-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* FormFiledialog.C: (*it). -> it->
+	* Toolbar_pimpl.C: ditto
+	* RadioButtonGroup.C: ditto
+	* FormPreferences.C: ditto
+
 2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* GUIRunTime.C (x11Display): 
@@ -6,7 +12,6 @@
 	(x11Colormap): 
 	(x11VisualDepth): new methods
 
-=======
 2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormDocument.C (class_apply): call CutAndPaste::'s staitc method
@@ -17,7 +22,6 @@
 
 	* GUIRunTime.C (createMainView): implement
 
->>>>>>> 1.104
 2001-06-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormCharacter.C:

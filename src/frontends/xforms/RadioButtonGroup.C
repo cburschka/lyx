@@ -72,7 +72,7 @@ void RadioButtonGroup::setButton(int value)
 		<< endl;
 	}
 	else {
-		fl_set_button((*it).first, 1);
+		fl_set_button(it->first, 1);
 	}
 
 }
@@ -94,7 +94,7 @@ int RadioButtonGroup::getButton()
 
 	// If such a button was found, return its value.
 	if (it != map.end()) {
-		return (*it).second;
+		return it->second;
 	}
 
 	lyxerr << "BUG: No radio button found to be active." << endl;

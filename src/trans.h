@@ -69,9 +69,13 @@ private:
 	typedef KmodInfo kmod_list_decl;
 	///
 	typedef KmodException keyexc;
-    
+#if 0
 	///
 	void AddDeadkey(tex_accent, string const &, string const &);
+#else
+	///
+	void AddDeadkey(tex_accent, string const &);
+#endif
 	///
 	void FreeKeymap();
 	///

@@ -117,19 +117,19 @@ int kb_keymap::lookup(unsigned int key,
 
 	for (Table::const_iterator cit = table.begin();
 	     cit != table.end(); ++cit) {
-		unsigned int const msk1 = (*cit).mod & 0xffff;
-		unsigned int const msk0 = ((*cit).mod >> 16) & 0xffff;
-		if ((*cit).code == key && (mod & ~msk0) == msk1) {
+		unsigned int const msk1 = cit->mod & 0xffff;
+		unsigned int const msk0 = (cit->mod >> 16) & 0xffff;
+		if (cit->code == key && (mod & ~msk0) == msk1) {
 			// math found:
-			if ((*cit).table.get()) {
+			if (cit->table.get()) {
 				// this is a prefix key - set new map
-				seq->curmap = (*cit).table.get();
+				seq->curmap = cit->table.get();
 				return 0;
 			} else {
 				// final key - reset map
 				seq->curmap = seq->stdmap;
 				seq->delseq();
-				return (*cit).action;
+				return cit->action;
 			}
 		}
 	}
@@ -181,7 +181,7 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 	if (table.size() != 0) { // without this I get strange crashes
 		Table::iterator end = table.end();
 	for (Table::iterator it = table.begin(); it != end; ++it) {
-		if (code == (*it).code && modmsk == (*it).mod) {
+		if (code == it->code && modmsk == it->mod) {
 			// overwrite binding
 			if (idx + 1 == seq->length) {
 				string buf;
@@ -191,12 +191,12 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 					<< buf
 					<< "' is overriding old binding..."
 					<< endl;
-				if ((*it).table.get()) {
-					(*it).table.reset(0);
+				if (it->table.get()) {
+					it->table.reset(0);
 				}
-				(*it).action = action;
+				it->action = action;
 				return 0;
-			} else if (!(*it).table.get()) {
+			} else if (!it->table.get()) {
 				string buf;
 				seq->print(buf, true);
 				lyxerr << "Error: New binding for '" << buf
@@ -204,23 +204,23 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 				       << endl;
 				return -1;
 			} else {
-				return (*it).table->defkey(seq, action,
-							   idx + 1);
+				return it->table->defkey(seq, action,
+							 idx + 1);
 			}
 		}
 	}
 	}
 	
 	Table::iterator newone = table.insert(table.end(), kb_key());
-	(*newone).code = code;
-	(*newone).mod = modmsk;
+	newone->code = code;
+	newone->mod = modmsk;
 	if (idx + 1 == seq->length) {
-		(*newone).action = action;
-		(*newone).table.reset(0);
+		newone->action = action;
+		newone->table.reset(0);
 		return 0;
 	} else {
-		(*newone).table.reset(new kb_keymap);
-		return (*newone).table->defkey(seq, action, idx + 1);
+		newone->table.reset(new kb_keymap);
+		return newone->table->defkey(seq, action, idx + 1);
 	}
 }
 
@@ -242,12 +242,12 @@ string const kb_keymap::findbinding(int act, string const & prefix) const
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin();
 	    cit != end; ++cit) {
-		if ((*cit).table.get()) {
-			res += (*cit).table->findbinding(act,
-							 prefix
-							 + keyname((*cit))
-							 + " ");
-		} else if ((*cit).action == act) {
+		if (cit->table.get()) {
+			res += cit->table->findbinding(act,
+						       prefix
+						       + keyname((*cit))
+						       + " ");
+		} else if (cit->action == act) {
 			res += "[";
 			res += prefix + keyname((*cit));
 			res += "] ";

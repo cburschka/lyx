@@ -251,7 +251,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 {
 	for (const_iterator cit = begin();
 	     cit != end() ; ++cit) {
-		switch ((*cit).kind()) {
+		switch (cit->kind()) {
 		case MenuItem::Lastfiles: {
 			int ii = 1;
 			LastFiles::const_iterator lfit = lastfiles->begin();
@@ -305,7 +305,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			Formats formats;
 			
 			kb_action action;
-			switch ((*cit).kind()) {
+			switch (cit->kind()) {
 			case MenuItem::ImportFormats:
 				formats = Importer::GetImportableFormats();
 				action = LFUN_IMPORT;
@@ -331,7 +331,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				if ((*fit)->dummy())
 					continue;
 				string label = (*fit)->prettyname();
-				if ((*cit).kind() == MenuItem::ImportFormats)
+				if (cit->kind() == MenuItem::ImportFormats)
 					if ((*fit)->name() == "text")
 						label = _("Ascii text as lines");
 					else if ((*fit)->name() == "textparagraph")

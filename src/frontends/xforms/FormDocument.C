@@ -139,7 +139,7 @@ void FormDocument::build()
     for (LyXTextClassList::const_iterator cit = textclasslist.begin();
 	 cit != textclasslist.end(); ++cit)
     {
-	combo_doc_class->addto((*cit).description());
+	combo_doc_class->addto(cit->description());
     }
 
     fl_addto_choice(class_->choice_doc_spacing,
@@ -191,7 +191,7 @@ void FormDocument::build()
 
     for (Languages::const_iterator cit = languages.begin();
 	cit != languages.end(); ++cit) {
-	combo_language->addto((*cit).second.lang());
+	combo_language->addto(cit->second.lang());
     }
 
     fl_addto_choice(language_->choice_quotes_language,

@@ -56,7 +56,7 @@ struct lyxfont {
 	static
 	int width(string const & s, LyXFont const & f) {
 		if (s.empty()) return 0;
-		return width(s.c_str(), s.length(), f);
+		return width(s.data(), s.length(), f);
 	}
 	///
 	//static

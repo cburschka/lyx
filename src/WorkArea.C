@@ -525,5 +525,5 @@ void WorkArea::putClipboard(string const & s) const
 	static string hold;
 	hold = s;
 	
-	fl_stuff_clipboard(work_area, 0, hold.c_str(), hold.size(), 0);
+	fl_stuff_clipboard(work_area, 0, hold.data(), hold.size(), 0);
 }

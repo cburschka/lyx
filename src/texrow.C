@@ -84,13 +84,13 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 		// same pos.
 		for (; kit != end; ++kit) {
 			if (&(*kit) != &(*cit)
-			    && (*kit).id() == (*cit).id()
-			    && (*kit).pos() >= (*cit).pos())
-				(*kit).pos((*kit).pos() + 1);
+			    && kit->id() == cit->id()
+			    && kit->pos() >= cit->pos())
+				kit->pos(kit->pos() + 1);
 		}
 #endif
-		id = (*cit).id();
-		pos = (*cit).pos();
+		id = cit->id();
+		pos = cit->pos();
 		return true;
 	}
 	id = -1;
@@ -109,16 +109,16 @@ void TexRow::increasePos(int id, int pos) const
 	RowList::iterator kit = rowlist.begin();
 	RowList::iterator end = rowlist.end();
 	for (; kit != end; ++kit) {
-		if (id == (*kit).id()
-		    && pos < (*kit).pos()) {
-			(*kit).pos((*kit).pos() + 1);
+		if (id == kit->id()
+		    && pos < kit->pos()) {
+			kit->pos(kit->pos() + 1);
 			lyxerr[Debug::INFO]
 				<< "TeXRow::increasePos: ideally this "
 				"should never happen..." << endl;
 		}
 		// When verified to work this clause should be deleted.
-		if (id == (*kit).id()
-		    && pos == (*kit).pos()) {
+		if (id == kit->id()
+		    && pos == kit->pos()) {
 			lyxerr[Debug::INFO]
 				<< "TexRow::increasePos: this should happen "
 				"maximum one time for each run of "

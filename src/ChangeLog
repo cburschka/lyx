@@ -1,3 +1,38 @@
+2001-07-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* trans_decl.h: remove allowed from KmodInfo
+
+	* trans.[Ch] (AddDeakkey): change prototype to not have allowd.
+	remove allowed code 
+	(Load): adjust
+
+	* paragraph_pimpl.C (erase): use boost::prior
+
+	* Painter.C (text): use data() instead of c_str() when length is
+	also provided.
+	* WorkArea.C (putClipboard): ditto
+	* font.h (width): ditto
+
+	* BufferView2.C: use it-> instead of (*it). for iterators
+	* texrow.C: ditto
+	* paragraph_pimpl.C: ditto
+	* paragraph.C: ditto
+	* minibuffer.C: ditto
+	* language.C: ditto
+	* kbmap.C: ditto
+	* encoding.C: ditto
+	* counters.C: ditto
+	* converter.C: ditto
+	* chset.C: ditto
+	* Variables.C: ditto
+	* TextCache.C: ditto
+	* MenuBackend.C: ditto
+	* LyXAction.C: ditto
+	* LColor.C: ditto
+	* FloatList.C: ditto
+	* DepTable.C: ditto
+	* ColorHandler.C (LyXColorHandler): ditto
+
 2001-07-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* BufferView_pimpl.C (Dispatch): handle LFUN_OPENSTUFF.

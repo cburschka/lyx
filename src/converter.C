@@ -699,7 +699,7 @@ bool Converters::Move(string const & from, string const & to, bool copy)
 	     it != files.end(); ++it)
 		if (prefixIs(*it, base)) {
 			string from2 = path + *it;
-			string to2 = to_base + (*it).substr(base.length());
+			string to2 = to_base + it->substr(base.length());
 			to2 = ChangeExtension(to2, to_extension);
 			lyxerr[Debug::FILES] << "moving " << from2 
 					     << " to " << to2 << endl;

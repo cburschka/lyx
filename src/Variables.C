@@ -32,7 +32,7 @@ string const Variables::get(string const & var) const
 {
 	Vars::const_iterator cit = vars_.find(var);
 	if (cit != vars_.end()) 
-		return (*cit).second;
+		return cit->second;
 	else 
 		return string();
 }

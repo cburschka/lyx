@@ -201,6 +201,7 @@ Menuset
 	Item "Note...|N" "note-insert"
 	Submenu "Lists & TOC|O" "insert_toc"
 	Separator
+	Item "TeX|T" "ert-insert"
 	Item "Minipage|p" "minipage-insert"
 	Item "Graphics...|G" "figure-insert"
 	Item "Tabular Material...|b" "dialog-tabular-insert"
@@ -365,7 +366,8 @@ Toolbar
     Icon "font-noun"
     Icon "font-free"
     Separator
-    Icon "tex-mode"
+#    Icon "tex-mode"
+    Icon "ert-insert"
     Icon "math-mode"
     Separator
     Icon "footnote-insert"

@@ -92,7 +92,7 @@ public:
 			add(ID);
 			return users[ID];
 		}
-		return (*cit).second;
+		return cit->second;
 	}
 private:
 	///
@@ -143,7 +143,7 @@ string const & GroupCache::find(gid_t ID) const
 		add(ID);
 		return groups[ID];
 	}
-	return (*cit).second;
+	return cit->second;
 }
 
 
@@ -341,7 +341,7 @@ void FileDialog::Private::Reread()
 	// Add them to directory box
 	for (DirEntries::const_iterator cit = direntries.begin();
 	     cit != direntries.end(); ++cit) {
-		string const temp = line + (*cit).pszDisplayed;
+		string const temp = line + cit->pszDisplayed;
 		fl_add_browser_line(pFileDlgForm->List, temp.c_str());
 	}
 	fl_set_browser_topline(pFileDlgForm->List, iDepth);
@@ -452,7 +452,7 @@ void FileDialog::Private::SetButton(int iIndex, string const & pszName,
 		*pTemp = pszPath;
 	} else {
 		fl_hide_object(pObject);
-		(*pTemp).erase();
+		pTemp->erase();
 	}
 }
 

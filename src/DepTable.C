@@ -49,11 +49,11 @@ void DepTable::update()
 	for (DepList::iterator itr = deplist.begin();
 	    itr != deplist.end();
 	    ++itr) {
-		unsigned long const one = (*itr).second.second;
-		unsigned long const two = lyx::sum((*itr).first);
-		(*itr).second = make_pair(one, two);
+		unsigned long const one = itr->second.second;
+		unsigned long const two = lyx::sum(itr->first);
+		itr->second = make_pair(one, two);
 		if (lyxerr.debugging(Debug::DEPEND)) {
-			lyxerr << "Update dep: " << (*itr).first << " "
+			lyxerr << "Update dep: " << itr->first << " "
 			       << one << " " << two;
 			if (one != two)
 				lyxerr << " +";
@@ -68,7 +68,7 @@ bool DepTable::sumchange() const
 	for (DepList::const_iterator cit = deplist.begin();
 	     cit != deplist.end();
 	     ++cit) {
-		if ((*cit).second.first != (*cit).second.second) return true;
+		if ((*cit).second.first != cit->second.second) return true;
 	}
 	return false;
 }
@@ -80,8 +80,8 @@ bool DepTable::haschanged(string const & f) const
 	string fil = MakeAbsPath(f);
 	DepList::const_iterator cit = deplist.find(fil);
 	if (cit != deplist.end()) {
-		if ((*cit).second.first != (*cit).second.second
-		    && (*cit).second.second != 0)
+		if (cit->second.first != cit->second.second
+		    && cit->second.second != 0)
 			return true;
 	}
 	return false;
@@ -93,8 +93,8 @@ bool DepTable::extchanged(string const & ext) const
 	for (DepList::const_iterator cit = deplist.begin();
 	     cit != deplist.end();
 	     ++cit) {
-		if (suffixIs((*cit).first, ext)) {
-			if ((*cit).second.first != (*cit).second.second)
+		if (suffixIs(cit->first, ext)) {
+			if (cit->second.first != cit->second.second)
 				return true;
 		}
 	}
@@ -116,8 +116,8 @@ void DepTable::remove_files_with_extension(string const & suf)
 	// we want const_iterator (Lgb)
 	for (DepList::iterator cit = deplist.begin();
 	     cit != deplist.end(); ++cit) {
-		if (!suffixIs((*cit).first, suf))
-			tmp[(*cit).first] = (*cit).second;
+		if (!suffixIs(cit->first, suf))
+			tmp[cit->first] = cit->second;
 	}
 	deplist.swap(tmp);
 }
@@ -130,13 +130,13 @@ void DepTable::write(string const & f) const
 	     cit != deplist.end(); ++cit) {
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Write dep: "
-			       << (*cit).first << " "
-			       << (*cit).second.first << " "
-			       << (*cit).second.second << endl;
+			       << cit->first << " "
+			       << cit->second.first << " "
+			       << cit->second.second << endl;
 		}
-		ofs << (*cit).first << " "
-		    << (*cit).second.first << " "
-		    << (*cit).second.second << endl;
+		ofs << cit->first << " "
+		    << cit->second.first << " "
+		    << cit->second.second << endl;
 	}
 }
 

@@ -67,7 +67,7 @@ string const FloatList::defaultPlacement(string const & t) const
 {
 	List::const_iterator cit = list.find(t);
 	if (cit != list.end())
-		return (*cit).second.placement();
+		return cit->second.placement();
 	return string();
 }
 
@@ -84,7 +84,7 @@ Floating const & FloatList::getType(string const & t) const
 	// I wish we could use exceptions
 	List::const_iterator cit = list.find(t);
 	if (cit != list.end())
-		return (*cit).second;
+		return cit->second;
 #ifdef HAVE_EXCEPTIONS
 	throw UnknownFloatType(t);
 #else

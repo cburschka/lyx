@@ -133,11 +133,11 @@ int InsetExternal::write(string const & format,
 	
 	if (et.automaticProduction) {
 		executeCommand(doSubstitution(buf,
-					      (*cit).second.updateCommand),
+					      cit->second.updateCommand),
 			       buf);
 	}
 	
-	os << doSubstitution(buf, (*cit).second.product);
+	os << doSubstitution(buf, cit->second.product);
 	return 0; // CHECK  (FIXME check what ? - jbl)
 }
 
@@ -176,11 +176,11 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	if (cit == et.formats.end())
 		return;
 	
-	if (!(*cit).second.requirement.empty()) {
-		features.require((*cit).second.requirement);
+	if (!cit->second.requirement.empty()) {
+		features.require(cit->second.requirement);
 	}
-	if (!(*cit).second.preamble.empty()) {
-		features.externalPreambles += (*cit).second.preamble + "\n";
+	if (!cit->second.preamble.empty()) {
+		features.externalPreambles += cit->second.preamble + "\n";
 	}
 }
 
@@ -267,7 +267,7 @@ void InsetExternal::updateExternal() const
 		return;
 	
 	executeCommand(doSubstitution(view_->buffer(),
-				      (*cit).second.updateCommand),
+				      cit->second.updateCommand),
 		       view_->buffer());
 }
 

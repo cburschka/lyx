@@ -371,9 +371,9 @@ public:
 			return *this;
 		}
 		///
-		Inset * operator*() { return (*it).inset; }
+		Inset * operator*() { return it->inset; }
 		///
-		size_type getPos() const {return (*it).pos; }
+		size_type getPos() const {return it->pos; }
 		///
 		bool operator==(inset_iterator const & iter) const {
 			return it == iter.it;

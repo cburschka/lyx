@@ -410,12 +410,12 @@ void FormPreferences::Colors::apply()
 	for (vector<XformsColor>::const_iterator cit = xformsColorDB.begin();
 	     cit != xformsColorDB.end(); ++cit) {
 		RGBColor col;
-		fl_getmcolor((*cit).colorID, &col.r, &col.g, &col.b);
-		if (col != (*cit).color()) {
+		fl_getmcolor(cit->colorID, &col.r, &col.g, &col.b);
+		if (col != cit->color()) {
 			modifiedXformsPrefs = true;
-			if ((*cit).colorID == FL_BLACK)
+			if (cit->colorID == FL_BLACK)
 				modifiedText = true;
-			if ((*cit).colorID == FL_COL1)
+			if (cit->colorID == FL_COL1)
 				modifiedBackground = true;
 		}
 	}
@@ -424,14 +424,13 @@ void FormPreferences::Colors::apply()
 		for (vector<XformsColor>::const_iterator cit =
 			     xformsColorDB.begin(); 
 		     cit != xformsColorDB.end(); ++cit) {
-			fl_mapcolor((*cit).colorID,
-				    (*cit).r, (*cit).g, (*cit).b);
+			fl_mapcolor(cit->colorID, cit->r, cit->g, cit->b);
 
-			if (modifiedText && (*cit).colorID == FL_BLACK) {
+			if (modifiedText && cit->colorID == FL_BLACK) {
 				AdjustVal(FL_INACTIVE, FL_BLACK, 0.5);
 			}
 
-			if (modifiedBackground && (*cit).colorID == FL_COL1) {
+			if (modifiedBackground && cit->colorID == FL_COL1) {
 				AdjustVal(FL_MCOL,      FL_COL1, 0.1);
 				AdjustVal(FL_TOP_BCOL,  FL_COL1, 0.1);
 				AdjustVal(FL_LEFT_BCOL, FL_COL1, 0.1);
@@ -440,9 +439,9 @@ void FormPreferences::Colors::apply()
 				AdjustVal(FL_BOTTOM_BCOL, FL_COL1, -0.5);
 			}
 
-			if ((*cit).colorID == GUI_COLOR_CURSOR) {
+			if (cit->colorID == GUI_COLOR_CURSOR) {
 				fl_mapcolor(GUI_COLOR_CURSOR,
-					    (*cit).r, (*cit).g, (*cit).b);
+					    cit->r, cit->g, cit->b);
 				fl_set_cursor_color(FL_DEFAULT_CURSOR,
 						    GUI_COLOR_CURSOR, FL_WHITE);
 			}
@@ -453,11 +452,11 @@ void FormPreferences::Colors::apply()
 	// Now do the same for the LyX LColors...
 	for (vector<NamedColor>::const_iterator cit = lyxColorDB.begin();
 	     cit != lyxColorDB.end(); ++cit) {
-		LColor::color lc = lcolor.getFromGUIName((*cit).getname());
+		LColor::color lc = lcolor.getFromGUIName(cit->getname());
 		if (lc == LColor::inherit) continue;
 
 		// Create a valid X11 name of the form "#rrggbb"
-		string const hexname = X11hexname((*cit).color());
+		string const hexname = X11hexname(cit->color());
 		
 		if (lcolor.getX11Name(lc) != hexname) {
 			lyxerr[Debug::GUI]
@@ -816,11 +815,11 @@ void FormPreferences::Colors::LoadBrowserLyX()
 	fl_clear_browser(colbr);
 	for (vector<XformsColor>::const_iterator cit = xformsColorDB.begin();
 	     cit != xformsColorDB.end(); ++cit) {
-		fl_addto_browser(colbr, (*cit).getname().c_str());
+		fl_addto_browser(colbr, cit->getname().c_str());
 	}
 	for (vector<NamedColor>::const_iterator cit = lyxColorDB.begin();
 	     cit != lyxColorDB.end(); ++cit) {
-		fl_addto_browser(colbr, (*cit).getname().c_str());
+		fl_addto_browser(colbr, cit->getname().c_str());
 	}
 
 	// just to be safe...
@@ -1046,8 +1045,8 @@ void FormPreferences::Converters::UpdateBrowser()
 	fl_clear_browser(dialog_->browser_all);
 	for (::Converters::const_iterator cit = local_converters.begin();
 	     cit != local_converters.end(); ++cit) {
-		string const name = (*cit).From->prettyname() + " -> "
-			+ (*cit).To->prettyname();
+		string const name = cit->From->prettyname() + " -> "
+			+ cit->To->prettyname();
 		fl_addto_browser(dialog_->browser_all, name.c_str());
 	}
 	Input();
@@ -1190,7 +1189,7 @@ void FormPreferences::Converters::UpdateChoices() const
 			choice += " | ";
 		else
 			choice += " ";
-		choice += (*cit).prettyname();
+		choice += cit->prettyname();
 	}
 	choice += " ";
 
@@ -1313,7 +1312,7 @@ void FormPreferences::Formats::UpdateBrowser()
 	for (::Formats::const_iterator cit = local_formats.begin();
 	     cit != local_formats.end(); ++cit)
 		fl_addto_browser(dialog_->browser_all,
-				 (*cit).prettyname().c_str());
+				 cit->prettyname().c_str());
 
 	Input();
 	fl_unfreeze_form(dialog_->form);
@@ -1669,7 +1668,7 @@ void FormPreferences::Language::build()
 
 	for (Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
-		combo_default_lang->addto((*cit).second.lang());
+		combo_default_lang->addto(cit->second.lang());
 	}
 
 	fl_end_form();

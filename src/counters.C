@@ -65,7 +65,7 @@ Counters::~Counters()
 	for (CounterList::iterator it = counterList.begin();
 	     it != counterList.end();
 	     ++it)
-		delete (*it).second;
+		delete it->second;
 }
 
 
@@ -100,8 +100,8 @@ void Counters::newCounter(string const & newc, string const & oldc)
 	}
 
 	Counter * tmp = new Counter;
-	(*it).second->onstep.connect(SigC::slot(tmp,
-					 &Counter::reset));
+	it->second->onstep.connect(SigC::slot(tmp,
+					      &Counter::reset));
 	counterList[newc] = tmp;
 }
 
@@ -113,7 +113,7 @@ void Counters::set(string const & ctr, int val)
 		lyxerr << "Counter does not exist." << endl;
 		return;
 	}
-	(*it).second->set(val);
+	it->second->set(val);
 }
 
 
@@ -124,7 +124,7 @@ void Counters::addto(string const & ctr, int val)
 		lyxerr << "Counter does not exist." << endl;
 		return;
 	}
-	(*it).second->addto(val);
+	it->second->addto(val);
 }
 
 
@@ -135,7 +135,7 @@ int Counters::value(string const & ctr) const
 		lyxerr << "Counter does not exist." << endl;
 		return 0;
 	}
-	return (*cit).second->value();
+	return cit->second->value();
 }
 
 
@@ -146,5 +146,5 @@ void Counters::step(string const & ctr)
 		lyxerr << "Counter does not exist." << endl;
 		return;
 	}
-	(*it).second->step();
+	it->second->step();
 }

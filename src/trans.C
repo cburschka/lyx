@@ -1,7 +1,7 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation "trans.h"
+#pragma implementation
 #endif
 
 #include "LyXView.h"
@@ -139,8 +139,12 @@ struct keyword_item kmapTags[K_LAST - 1] = {
 tex_accent getkeymod(string const &);
 
 
+#if 0
 void Trans::AddDeadkey(tex_accent accent, string const & keys,
 		       string const & allowed)
+#else
+void Trans::AddDeadkey(tex_accent accent, string const & keys)
+#endif
 {
 	if (kmod_list_[accent]) {
 		FreeException(kmod_list_[accent]->exception_list);
@@ -156,7 +160,9 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 		kmod_list_[accent]->allowed= lyx_accent_table[accent].native;
 	} else {
 #endif
+#if 0
 		kmod_list_[accent]->allowed = allowed;
+#endif
 #if 0
 	}
 #endif
@@ -194,7 +200,7 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 			
-			string keys = lex.GetString();
+			string const keys = lex.GetString();
 
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
@@ -208,6 +214,10 @@ int Trans::Load(LyXLex & lex)
 			if (accent == TEX_NOACCENT)
 				return -1;
 
+#if 1
+#warning This code should be removed...
+			// But we need to fix up all the kmap files first
+			// so that this field is not present anymore.
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "allowed\t`" << lex.text()
@@ -215,9 +225,11 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 
-			string allowed = lex.GetString();
-
-			AddDeadkey(accent, keys, allowed);
+			string const allowed = lex.GetString();
+			AddDeadkey(accent, keys /*, allowed*/);
+#else
+			AddDeadkey(accent, keys);
+#endif
 			break;
 		}	
 		case KCOMB: {

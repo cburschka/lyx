@@ -95,7 +95,7 @@ Language const * Languages::getLanguage(string const & language) const
 {
        	const_iterator it = languagelist.find(language);
 	if (it != languagelist.end())
-		return &(*it).second;
+		return &it->second;
 	else
 		return 0;
 }

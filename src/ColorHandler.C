@@ -50,7 +50,7 @@ LyXColorHandler::~LyXColorHandler()
 	// Iterate over the line cache and Free the GCs
 	for (LineGCCache::iterator lit = lineGCcache.begin();
 	     lit != lineGCcache.end(); ++lit) {
-		XFreeGC(display, (*lit).second);
+		XFreeGC(display, lit->second);
 	}
 }
 

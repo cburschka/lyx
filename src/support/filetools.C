@@ -226,7 +226,7 @@ vector<string> const DirList(string const & dir, string const & ext)
 	   vector<string> dirlist;
 	   directory_iterator dit("dir");
 	   while (dit != directory_iterator()) {
-	           string fil = (*dit).filename;
+	           string fil = dit->filename;
 		   if (prefixIs(fil, extension)) {
 		           dirlist.push_back(fil);
 		   }

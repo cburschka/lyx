@@ -116,7 +116,7 @@ string const LColor::getGUIName(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end())
-		return _((*ici).second.guiname);
+		return _(ici->second.guiname);
 
 	return "none";
 }
@@ -126,7 +126,7 @@ string const LColor::getX11Name(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end()) 
-		return (*ici).second.x11name;
+		return ici->second.x11name;
 
 	lyxerr << "LyX internal error: Missing color"
 		" entry in LColor.C for " << int(c) << '\n';
@@ -139,7 +139,7 @@ string const LColor::getLaTeXName(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end())
-		return (*ici).second.latexname;
+		return ici->second.latexname;
 	return "black";
 }
 
@@ -148,7 +148,7 @@ string const LColor::getLyXName(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end())
-		return (*ici).second.lyxname;
+		return ici->second.lyxname;
 	return "black";
 }
 
@@ -157,7 +157,7 @@ void LColor::setColor(LColor::color col, string const & x11name)
 {
 	InfoTab::iterator iti = infotab.find(col);
 	if (iti != infotab.end()) {
-		(*iti).second.x11name = x11name;
+		iti->second.x11name = x11name;
 		return;
 	}
 	lyxerr << "LyX internal error: color and such.\n";
@@ -186,8 +186,8 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 	InfoTab::const_iterator ici = infotab.begin();
 	InfoTab::const_iterator end = infotab.end();
 	for (; ici != end; ++ici) {
-		if (!compare_no_case(_((*ici).second.guiname), guiname))
-			return (*ici).first;
+		if (!compare_no_case(_(ici->second.guiname), guiname))
+			return ici->first;
 	}
 	return LColor::inherit;
 }
@@ -199,8 +199,8 @@ LColor::color LColor::getFromLyXName(string const & lyxname) const
 	InfoTab::const_iterator ici = infotab.begin();
 	InfoTab::const_iterator end = infotab.end();
 	for (; ici != end; ++ici) {
-		if (!compare_no_case((*ici).second.lyxname, lyxname))
-			return (*ici).first;
+		if (!compare_no_case(ici->second.lyxname, lyxname))
+			return ici->first;
 	}
 	return LColor::inherit;
 }

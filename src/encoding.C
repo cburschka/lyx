@@ -277,7 +277,7 @@ Encoding const * Encodings::getEncoding(string const & encoding) const
 {
        	EncodingList::const_iterator it = encodinglist.find(encoding);
 	if (it != encodinglist.end())
-		return &(*it).second;
+		return &it->second;
 	else
 		return 0;
 }

@@ -103,7 +103,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				stored_set(input);
 				fl_set_input(ob, _("[End of history]"));
 			} else {
-				fl_set_input(ob, (*hist_iter).c_str());
+				fl_set_input(ob, hist_iter->c_str());
 			}
 			return 1; 
 		case XK_Up:
@@ -113,7 +113,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				fl_set_input(ob, _("[Beginning of history]"));
 			} else {
 				--hist_iter;
-				fl_set_input(ob, (*hist_iter).c_str());
+				fl_set_input(ob, hist_iter->c_str());
 			}
 			return 1; 
 		case 9:

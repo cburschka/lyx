@@ -237,10 +237,10 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 		LyXTextClass::const_iterator end = tc.end();
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != end; ++cit) {
-			if ((*cit).obsoleted_by().empty())
-				combox->addline(_((*cit).name()));
+			if (cit->obsoleted_by().empty())
+				combox->addline(_(cit->name()));
 			else
-				combox->addline("@N" + _((*cit).name()));
+				combox->addline("@N" + _(cit->name()));
 		}
 	}
 	// we need to do this.

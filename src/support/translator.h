@@ -58,7 +58,7 @@ public:
 				);
 		
 		if (it != map.end()) {
-			return (*it).second;
+			return it->second;
 		} else {
 			return default_t2;
 		}
@@ -85,7 +85,7 @@ public:
 				);
 		
 		if (it != map.end())
-			return (*it).first;
+			return it->first;
 		else {
 			return default_t1;
 		}

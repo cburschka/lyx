@@ -1870,8 +1870,8 @@ void InsetText::paragraph(Paragraph * p)
 #if 0
 	// we now have to update/redraw all instances
 	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit) {
-		delete (*cit).second;
-		(*cit).second = 0;
+		delete cit->second;
+		cit->second = 0;
 	}
 #endif
 	// redraw myself when asked for
