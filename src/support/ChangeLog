@@ -1,3 +1,8 @@
+2004-12-16  Angus Leeming  <leeming@lyx.org>
+
+	* mkdir.C: move the HAVE_MKDIR conditional code out of config.h
+	and into here.
+
 2004-12-15  Angus Leeming  <leeming@lyx.org>
 
 	* FileInfo.[Ch] (getNumberOfLinks): removed.
