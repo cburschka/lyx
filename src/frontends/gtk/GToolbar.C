@@ -224,7 +224,7 @@ void GToolbar::update()
 void GToolbar::setLayout(string const & layout)
 {
 	LyXTextClass const & tc =
-		view_->buffer()->params.getLyXTextClass();
+		view_->buffer()->params().getLyXTextClass();
 	internal_ = true;
 	combo_.get_entry()->set_text(tc[layout]->name());
 	internal_ = false;
@@ -234,7 +234,7 @@ void GToolbar::setLayout(string const & layout)
 void GToolbar::updateLayoutList()
 {
 	LyXTextClass const & tc =
-		view_->buffer()->params.getLyXTextClass();
+		view_->buffer()->params().getLyXTextClass();
 	LyXTextClass::const_iterator end = tc.end();
 	std::vector<Glib::ustring> strings;
 	for (LyXTextClass::const_iterator cit = tc.begin();
