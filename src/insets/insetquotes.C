@@ -109,8 +109,7 @@ void InsetQuotes::getPosition(char c)
 {
 	// Decide whether left or right
 	switch (c) {
-	case ' ': case '(':
-	// FIXME: what about '['? (jspitzm)
+	case ' ': case '(': case '[':
 		side_ = LeftQ;   // left quote
 		break;
 	default:
