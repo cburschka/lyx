@@ -54,34 +54,16 @@
 using SigC::slot;
 
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d)
+	: ControlDialog<ControlConnectBD>(lv, d),
+	  rtl_(false), newval_(0.0), oldval_(0), newvalue_(0), count_(0),
+	  stop_(false), result_(SpellBase::ISP_UNKNOWN), speller_(0)
 {
 	d_.showSpellchecker.connect(SigC::slot(this, &ControlSpellchecker::show));
-
-	rtl_ = false;
-	word_ = "";
-	newval_ = 0.0;
-	oldval_ = 0;
-	newvalue_ = 0;
-	count_ = 0;
-	message_ = "";
-	stop_ = false;
-	result_ = SpellBase::ISP_UNKNOWN;
-	speller_ = 0;
-	
 }
 
 
-ControlSpellchecker::~ControlSpellchecker()
+void ControlSpellchecker::setParams()
 {
-}
-
-
-void ControlSpellchecker::show()
-{
-	if (isBufferDependent() && !lv_.view()->available())
-		return;
-
 	if (!speller_) {
 		// create spell object
 		string tmp;
@@ -111,24 +93,12 @@ void ControlSpellchecker::show()
 		
 		if (speller_->error() != 0) {
 			message_ = speller_->error();
+			// show error message
 			view().partialUpdate(2);
-			hide();
+			clearParams();
 			return;
 		}
 	}
-
-	bc().readOnly(isReadonly());
-	view().show();
-}
-
-
-void ControlSpellchecker::hide()
-{
-	delete speller_;
-	speller_ = 0;
-
-	disconnect();
-	view().hide();
 }
 
 
@@ -139,13 +109,14 @@ void ControlSpellchecker::check()
 	
 	while (result_!=SpellBase::ISP_MISSED && !stop_) {
 		word_ = lv_.view()->nextWord(newval_);
+		
 		if (word_.empty()) {
-			quit();
+			clearParams();
 			break;
 		}
 		
 		++count_;
-		
+
 		// Update slider if and only if value has changed
 		newvalue_ = int(100.0*newval_);
 		if (newvalue_!= oldval_) {
@@ -154,7 +125,7 @@ void ControlSpellchecker::check()
 			view().partialUpdate(0);
 		}
 		
-		if (!speller_->alive()) quit();
+		if (!speller_->alive()) clearParams();
 		
 		result_ = speller_->check(word_);
 	}
@@ -223,32 +194,36 @@ void ControlSpellchecker::ignoreAll()
 void ControlSpellchecker::stop()
 {
 	stop_ = true;
+	lv_.view()->endOfSpellCheck();
 }
 
 
-void ControlSpellchecker::quit()
+void ControlSpellchecker::clearParams()
 {
+	if (!speller_) return;
+	
 	if (speller_->alive()) {
 		speller_->close();
 		message_ = tostr(count_);
 		if (count_ != 1) {
 			message_ += _(" words checked.");
+
 		} else {
 			message_ += _(" word checked.");
 		}
 		message_ = "\n" + message_;
 		message_ = _("Spellchecking completed! ") + message_;
+
 	} else {
 		speller_->cleanUp();
 		message_ = _("The spell checker has died for some reason.\n"
-				  "Maybe it has been killed.");
+			     "Maybe it has been killed.");
 	}
-
+	
+	delete speller_;
+	
 	lv_.view()->endOfSpellCheck();
 
-	// hide dialog, disconnect and delete speller
-	hide();
-	
 	// show closing message
 	view().partialUpdate(2);
 
@@ -262,6 +237,7 @@ void ControlSpellchecker::quit()
 	message_ = "";
 	stop_ = false;
 	result_ = SpellBase::ISP_UNKNOWN;
+	speller_ = 0;
 }
 
 
@@ -269,5 +245,3 @@ void ControlSpellchecker::options()
 {
 	lv_.getDialogs()->showSpellcheckerPreferences();
 }
-
-

@@ -13,6 +13,7 @@
 #endif
 
 #include "xformsBC.h"
+#include "xforms_helpers.h"
 #include "ControlSpellchecker.h"
 #include "FormSpellchecker.h"
 #include "form_spellchecker.h"
@@ -36,6 +37,7 @@ void FormSpellchecker::build()
 	bc().addReadOnly(dialog_->ignore);
 	bc().addReadOnly(dialog_->start);
 	bc().addReadOnly(dialog_->stop);
+	bc().addReadOnly(dialog_->browser);
 }
 
 void FormSpellchecker::update()
@@ -45,9 +47,15 @@ void FormSpellchecker::update()
 	fl_set_object_label(dialog_->text, w.c_str());
 	fl_clear_browser(dialog_->browser);
 	fl_set_slider_value(dialog_->slider, 0);
-	clickline_ = -1 ;
 }
 
+void FormSpellchecker::hide()
+{
+	clickline_ = -1;
+	
+	if (form() && form()->visible)
+		fl_hide_form(form());
+}
 
 ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long)
 {
@@ -56,16 +64,16 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long)
 		controller().replace(tmp);
 	} else if (obj == dialog_->start) {
 		controller().check();
-		fl_deactivate_object(dialog_->start);
-		fl_set_object_lcol(dialog_->start, FL_INACTIVE);
+		stop(false);
+	} else if (obj == dialog_->stop) {
+		controller().stop();
+		stop(true);
 	} else if (obj == dialog_->ignore) {
 		controller().check();
 	} else if (obj == dialog_->accept) {
 		controller().ignoreAll();
 	} else if (obj == dialog_->insert) {
 		controller().insert();
-	} else if (obj == dialog_->done) {
-		controller().quit();
 	} else if (obj == dialog_->options) {
 		controller().options();
 	} else if (obj == dialog_->browser) {
@@ -84,22 +92,30 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long)
 
 void FormSpellchecker::partialUpdate(int id)
 {
-	// set suggestions
-	if (id==0) {
-		// set progress bar (always)
+	switch (id) {
+	case 0:
+		// set progress bar
 		fl_set_slider_value(dialog_->slider,
 				    controller().getProgress());
-	} else if (id==1) {
+		break;
+	case 1:
+	{
+		// set suggestions
 		string w = controller().getWord();
 		fl_set_input(dialog_->input, w.c_str());
 		fl_set_object_label(dialog_->text, w.c_str());
 		fl_clear_browser(dialog_->browser);
-		while (!(w = controller().getSuggestion()).empty() ) {
+		while ( !(w = controller().getSuggestion()).empty() ) {
 			fl_add_browser_line(dialog_->browser, w.c_str());
 		}
-	} else if (id==2) {
-		fl_show_messages(controller().getMessage().c_str());
 	}
+		break;
+	case 2:
+		// show exit message
+		fl_show_messages(controller().getMessage().c_str());
+		hide();
+	}
+	
 }
 
 		
@@ -108,7 +124,14 @@ void FormSpellchecker::showMessage(const char * msg)
 	fl_show_message(msg, "", "");
 }
 
-// note there is a button accept in session
-// it is not clear whether this is ingoreall or replaceall
-
-
+void FormSpellchecker::stop(bool stop)
+{
+	setEnabled(dialog_->start, stop);
+	setEnabled(dialog_->replace, !stop);
+	setEnabled(dialog_->ignore, !stop);
+	setEnabled(dialog_->accept, !stop);
+	setEnabled(dialog_->insert, !stop);
+	setEnabled(dialog_->stop, !stop);
+	setEnabled(dialog_->browser, !stop);
+	setEnabled(dialog_->input, !stop);
+}

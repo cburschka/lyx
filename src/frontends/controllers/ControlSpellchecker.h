@@ -29,9 +29,6 @@ public:
 	///
 	ControlSpellchecker(LyXView &, Dialogs &);
 
-	///
-	~ControlSpellchecker();
-
 	/// replace word with replacement
 	void replace(string const &);
 
@@ -44,9 +41,6 @@ public:
 	/// ignore all occurances of word
 	void ignoreAll();
 	
-	/// quit spellchecker
-	void quit();
-
 	/// stop checking
 	void stop();
 
@@ -75,10 +69,9 @@ public:
 private:
 	
 	/// set the params before show or update
-	void show();
-
+	void setParams();
 	/// clean-up on hide.
-	void hide();
+	void clearParams();
 
 	/// not needed.
 	virtual void apply() {}
@@ -112,5 +105,3 @@ private:
 };
 
 #endif // CONTROLSPELLCHECKER_H
-
-

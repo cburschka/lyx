@@ -74,19 +74,13 @@ extern void sigchldchecker(pid_t pid, int * status);
 
 
 PSpell::PSpell() 
+	: els(0), sc(0), spell_error_object(0), flag(ISP_UNKNOWN)
 {
-	els = 0;
-	sc = 0;
-	spell_error_object = 0;
-	flag = ISP_UNKNOWN;
 }
 
 PSpell::PSpell(BufferParams const & params, string const & lang)
+	: els(0), sc(0), spell_error_object(0), flag(ISP_UNKNOWN)
 {
-	els = 0;
-	sc = 0;
-	spell_error_object = 0;
-	flag = ISP_UNKNOWN;
 	initialize(params, lang);
 }
 
@@ -102,9 +96,7 @@ PSpell::~PSpell()
 void PSpell::initialize(BufferParams const &, string const & lang)
 {
 	PspellConfig * config = new_pspell_config();
-	string code;
-	split(lang, code, '_');
-	config->replace("language-tag", code.c_str());
+	config->replace("language-tag", lang.c_str());
 	spell_error_object = new_pspell_manager(config);
 	if (pspell_error_number(spell_error_object) != 0) {
 		error_ = pspell_error_message(spell_error_object);

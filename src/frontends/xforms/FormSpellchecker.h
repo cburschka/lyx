@@ -28,19 +28,24 @@ public:
    
 private:
 	/// not needed.
-	virtual void apply() {}
+	void apply() {}
 	/// Build the dialog
-	virtual void build();
-	/// not needed.
-	virtual void update();
+	void build();
+	/// 
+	void update();
+	/// 
+	void hide();
 
-	/// update progress bar and suggestions
+	/// enable/disable widgets when start/stop
+	void stop(bool);
+	
+	/// update progress bar, set suggestions, exit message
 	void partialUpdate(int);
 
 	/// show an error message
 	void showMessage(const char * msg);
 
-	/// line clicked in browser, necessart for double clicking
+	/// line clicked in browser, necessary for double clicking
 	int clickline_;
 	
 	/// Filter the inputs

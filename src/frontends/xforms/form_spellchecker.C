@@ -34,9 +34,10 @@ FD_form_spellchecker * FormSpellchecker::build_spellchecker()
   fdui->input = obj = fl_add_input(FL_NORMAL_INPUT, 80, 40, 220, 30, _("Replace"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->browser = obj = fl_add_browser(FL_SELECT_BROWSER, 80, 70, 220, 150, _("Near\nMisses"));
+  fdui->browser = obj = fl_add_browser(FL_SELECT_BROWSER, 80, 70, 220, 150, _("Suggestions"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Spellchecker Options...|#O");
     fdui->options = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 210, 220, 30, idex(_(dummy)));
@@ -85,7 +86,7 @@ FD_form_spellchecker * FormSpellchecker::build_spellchecker()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   // xgettext:no-c-format
   obj = fl_add_box(FL_NO_BOX, 10, 250, 50, 20, _("0 %"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
