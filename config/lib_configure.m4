@@ -244,6 +244,14 @@ case $LPR in
    *) :;; # leave to empty values
 esac
 
+# Search for a latex to html converter
+SEARCH_PROG([for an HTML converter], TOHTML, tth latex2html hevea)
+case $TOHTML in
+	tth) html_command="tth -t '\$\$Fname'";;
+ latex2html) html_command="latex2html -no_subdir -split 0 -show_section_numbers '\$\$FName'";;
+      hevea) html_command="hevea -s '\$\$FName'";;
+esac
+
 #### Explore the LaTeX configuration
 MSG_CHECKING(LaTeX configuration)
 # First, remove the files that we want to re-create
@@ -326,6 +334,7 @@ cat >lyxrc.defaults <<EOF
 \\chktex_command "$chktex_command"
 \\spell_command "$SPELL"
 \\fax_command "$fax_command"
+\\html_command "$html_command"
 \\print_spool_command "$print_spool_command"
 \\print_spool_printerprefix "$print_spool_printerprefix"
 \\font_encoding "$chk_fontenc"

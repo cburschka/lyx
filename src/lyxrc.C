@@ -120,7 +120,7 @@ enum _LyXRCTags {
 	RC_EXIT_CONFIRMATION,
 	RC_DISPLAY_SHORTCUTS,
 	RC_RELYX_COMMAND,
-	RC_TTH_COMMAND,
+	RC_HTML_COMMAND,
 	RC_LAST	
 };
 
@@ -151,6 +151,7 @@ static keyword_item lyxrcTags[] = {
 	{ "\\fax_command", RC_FAX_COMMAND },
 	{ "\\fax_program", RC_FAXPROGRAM },
 	{ "\\font_encoding", RC_FONT_ENCODING },
+	{ "\\html_command", RC_HTML_COMMAND },
 	{ "\\input", RC_INPUT },
 	{ "\\kbmap", RC_KBMAP },
 	{ "\\kbmap_primary", RC_KBMAP_PRIMARY },
@@ -199,7 +200,6 @@ static keyword_item lyxrcTags[] = {
 	{ "\\spell_command", RC_SPELL_COMMAND },
 	{ "\\tempdir_path", RC_TEMPDIRPATH },
 	{ "\\template_path", RC_TEMPLATEPATH },
-	{ "\\tth_command", RC_TTH_COMMAND },
 	{ "\\use_alt_language", RC_USE_ALT_LANG },
 	{ "\\use_escape_chars", RC_USE_ESC_CHARS },
 	{ "\\use_input_encoding", RC_USE_INP_ENC },
@@ -256,7 +256,7 @@ LyXRC::LyXRC()
 	default_papersize = PAPER_USLETTER;
 	custom_export_format = "ps";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
-	tth_command = "tth -t";
+	html_command = "tth -t";
 	fontenc = "default";
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
@@ -564,9 +564,9 @@ int LyXRC::Read(string const &filename)
 				chktex_command = lexrc.GetString();
 			break;
 
-		case RC_TTH_COMMAND:
+		case RC_HTML_COMMAND:
 			if (lexrc.next())
-				tth_command = lexrc.GetString();
+				html_command = lexrc.GetString();
 			break;
 
 		case RC_SCREEN_DPI:

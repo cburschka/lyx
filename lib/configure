@@ -562,6 +562,47 @@ case $LPR in
    *) :;; # leave to empty values
 esac
 
+# Search for a latex to html converter
+echo $ac_n "checking for an HTML converter""... $ac_c"
+echo "$ac_t"""
+TOHTML=
+for ac_prog in tth latex2html hevea
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      TOHTML="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$TOHTML"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$TOHTML" && break
+fi
+done
+
+if test -z "$TOHTML" ; then
+  TOHTML=none
+fi
+
+case $TOHTML in
+	tth) html_command='tth -t $$FNname';;
+ latex2html) html_command='latex2html -no_subdir -split 0  -show_section_numbers $$FName';;
+      hevea) html_command='hevea -s $$FName -o $$OutName';;
+esac
+
 #### Explore the LaTeX configuration
 echo $ac_n "checking LaTeX configuration""... $ac_c"
 # First, remove the files that we want to re-create
@@ -656,6 +697,7 @@ cat >lyxrc.defaults <<EOF
 \\chktex_command "$chktex_command"
 \\spell_command "$SPELL"
 \\fax_command "$fax_command"
+\\html_command "$html_command"
 \\print_spool_command "$print_spool_command"
 \\print_spool_printerprefix "$print_spool_printerprefix"
 \\font_encoding "$chk_fontenc"

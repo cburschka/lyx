@@ -890,9 +890,8 @@ lyxstring::size_type lyxstring::find(value_type const * ptr, size_type i,
 				 size_type n) const
 {
 	Assert(ptr);
-	if (!rep->sz || !*ptr) return npos;
+	if (!rep->sz || !*ptr || i >= rep->sz) return npos;
 	
-	Assert(i < rep->sz);
 	TestlyxstringInvariant(this);
 
 	// What is "n" here? is it the number of value_types to use in ptr
@@ -932,9 +931,8 @@ lyxstring::size_type lyxstring::find(value_type const * s, size_type i) const
 
 lyxstring::size_type lyxstring::find(value_type c, size_type i) const
 {
-	if (!rep->sz) return npos;
+	if (!rep->sz || i >= rep->sz) return npos;
 
-	Assert(i < rep->sz);
 	TestlyxstringInvariant(this);
 
         for (size_type t = 0; t + i < length(); ++t) {

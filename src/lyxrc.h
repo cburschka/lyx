@@ -98,8 +98,8 @@ public:
         LYX_PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
 	string chktex_command;
-	/// command to run tth incl. options
-	string tth_command;
+	/// command to run an html converter incl. options
+	string html_command;
 	///
 	string sgml_extra_options;
 	///

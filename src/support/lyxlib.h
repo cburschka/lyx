@@ -56,7 +56,7 @@ struct lyx {
 		return ::_getcwd2(buffer, size);
 #endif
 	};
-	static chdir(const char * name) {
+	static int chdir(const char * name) {
 #ifndef __EMX__
 		return ::chdir(name);
 #else

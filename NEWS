@@ -1,12 +1,17 @@
 What's new in LyX version 1.1.2?
 --------------------------------
 
-LyX 1.1.2 is a minor upgrade to 1.1.1, only a couple of semi-serious
-bugs have been fixed:
+LyX 1.1.2 is a minor upgrade to 1.1.1, only one new feature has been added:
 
-	- a bug that casued a crash in lyxstring::find
+- the export to html feature has been extended to use other programs.
+  Currently, tth, latex2html and hevea are supported. Note that the
+  variable \tth_command has been renamed to \html_command in lyxrc.
 
-	- the annoying '-' vs. '_' bug.
+Moreover, a couple of semi-serious bugs have been fixed:
+
+- a bug that caused a crash in lyxstring::find
+
+- the annoying '-' vs. '_' bug.
 
 Also the cheaders files was missing from the 1.1.1 distribution, that
 has also been fixed.

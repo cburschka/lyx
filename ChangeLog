@@ -1,3 +1,30 @@
+1999-11-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/lyxstring.C (find): remove bogus assertion in the
+	two versions of find where this has not been done yet.
+
+	* src/support/lyxlib.h: add missing int return type to
+	lyx::chdir(). 
+
+	* src/menus.C (ShowFileMenu): disable exporting to html if no
+	html export command is present.
+
+	* config/lib_configure.m4: add a test for an HTML converter. The
+	programs checked for are, in this order: tth, latex2html and
+	hevea. 
+
+	* lib/configure: generated from config/lib_configure.m4.
+
+	* src/lyxfunc.C (Dispatch): update and improve the execution of an
+	html converter. The parameters are now passed through $$FName and
+	$$OutName, instead of standard input/output.
+
+	* src/lyxrc.{C,h}: rename \tth_command to \html_command.
+
+	* lib/lyxrc.example: update description of \html_command. 
+	add "quotes" around \screen_font_xxx font setting examples to help
+	people who use fonts with spaces in their names.
+
 1999-11-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Distribution files: updates for v1.1.2

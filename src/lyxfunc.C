@@ -60,6 +60,7 @@
 #include "ImportNoweb.h"
 #include "support/syscall.h"
 #include "support/lstrings.h"
+#include "support/path.h"
 
 extern bool cursor_follows_scrollbar;
 
@@ -706,28 +707,34 @@ string LyXFunc::Dispatch(int ac,
 			break;
 		}
 		// HTML
-		else if (extyp == "html") {
+		else if (extyp == "html" && lyxrc->html_command != "none") {
 			// First, create LaTeX file
 			MenuMakeLaTeX(owner->currentBuffer());
 
-			// And now, run tth
+			// And now, run the converter
 			string file = owner->currentBuffer()->getFileName();
-			file = ChangeExtension(file, ".tex", false);
+			Path path(OnlyPath(file));
+			// the tex file name has to be correct for
+			// latex, but the html file name can be
+			// anything.
 			string result = ChangeExtension(file, ".html", false);
-			string tmp = lyxrc->tth_command + " < " + file 
-			    + " > " + result ;
+			file = ChangeExtension(SpaceLess(file), ".tex", false);
+			string tmp = lyxrc->html_command;
+			tmp = subst(tmp, "$$FName", file);
+			tmp = subst(tmp, "$$OutName", result);
 			Systemcalls one;
 			int res = one.startscript(Systemcalls::System, tmp);
 			if (res == 0) {
-				setMessage(string(
-				  _("Document exported as HTML to file: ")) + result);
+				setMessage(_("Document exported as HTML to file `")
+					   + MakeDisplayPath(result) +'\'');
 			} else {
-				setErrorMessage(string(
-				  _("An unexpected error occured while converting document to HTML in file:")) + result);
+				setErrorMessage(_("Unable to convert to HTML the file `")
+						+ MakeDisplayPath(file) 
+						+ '\'');
 			}
 		}
 		else {
-			setErrorMessage(string(_("Unknown export type: "))
+			setErrorMessage(_("Unknown export type: ")
 					+ extyp);
 		}
 	}

@@ -572,6 +572,12 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 		fl_setpup_mode(SubFileExport, 41, FL_PUP_GREY);
 		fl_setpup_mode(SubFileExport, 42, FL_PUP_GREY);
 	}
+
+	if (lyxrc->html_command == "none") {
+		// Disable export HTML
+		fl_setpup_mode(SubFileExport, 44, FL_PUP_GREY);
+	}
+
 	// xgettext:no-c-format
 	fl_addtopup(FileMenu,_("|Import%m"), SubFileImport);
 	// xgettext:no-c-format

@@ -119,10 +119,17 @@
 # Example: use this to ignore warnings about using "\ldots" instead of "..."
 #\chktex_command "chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38"
 
-# Define which program to use to run "tth", the LaTeX to HTML converter
-# You should include options. The default is "tth -t"
-# Example: use this to let math be italic
-#\tth_command "tth -t -i"
+# Define which program to use to translate latex to HTML.
+# You should include options. The default is autodetected: the programs 
+# checked are tth, latex2html and hevea, and the default command lines
+# used are:  
+#\html_command "tth -t '$$Fname'"
+#\html_command "latex2html -no_subdir -split 0 -show_section_numbers '$$FName'"
+#\html_command "hevea -s '$$FName'"
+# The variable name $$FName is replaced with the name of the .tex
+# file, and $$OutName is replaced with the name of the html file.
+# Example: use this to let math be italic with tth.
+#\html_command "tth -t -i $$FName"
 
 # If you want to pass extra flags to the LinuxDoc sgml scripts, insert them
 # here. 
@@ -206,12 +213,12 @@
 
 # The screen fonts used to display the text while editing
 # The defaults are:
-#\screen_font_roman -*-times
-#\screen_font_sans -*-helvetica
-#\screen_font_typewriter -*-courier
+#\screen_font_roman "-*-times"
+#\screen_font_sans "-*-helvetica"
+#\screen_font_typewriter "-*-courier"
 
 # For some, this font looks better:
-#\screen_font_roman -*-utopia
+#\screen_font_roman "-*-utopia"
 
 # Allow the use of scalable screen fonts? Default is true.
 # If you choose "false", LyX will use the closest existing size for a match.
@@ -227,12 +234,12 @@
 # The font for popups. It is set to 
 #    <font_popup>-*-*-*-?-*-*-*-*-<font_encoding>.
 # The default  is:
-#\screen_font_popup -*-helvetica-medium-r
+#\screen_font_popup "-*-helvetica-medium-r"
 
 # The font for menus (and groups titles in popups). It is set to 
 #    <font_menu>-*-*-*-?-*-*-*-*-<font_encoding>.
 # The default  is:
-#\screen_font_menu -*-helvetica-bold-r
+#\screen_font_menu "-*-helvetica-bold-r"
 
 # The font sizes used for calculating the scaling of the screen fonts.
 # You should only have to change these if the fonts on your screen look bad,
