@@ -6,7 +6,7 @@
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single
+\spacing single 
 \papersize Default
 \paperpackage a4
 \use_geometry 0
@@ -88,15 +88,14 @@ Saj smo omenili, da bi morali prebrati dokumentacijo, kajne?
 Izhod LyXa je videti èudovit! Izberite 
 \family sans 
 \bar under 
-D
+O
 \bar default 
-atoteka\SpecialChar \menuseparator
-Glej\SpecialChar ~
+gled\SpecialChar \menuseparator
 
 \bar under 
-d
+D
 \bar default 
-vi
+VI
 \family default 
  in se o tem preprièajte sami.
 \layout Enumerate
@@ -143,11 +142,19 @@ rilagoditev
 .
 \layout Enumerate
 
-Domaèa stran LyXa je 
+Domaèa stran LyXa je
 \family typewriter 
-www.lyx.org
+\lang english
+ 
+\begin_inset LatexCommand \url{http://www.lyx.org/}
+
+\end_inset 
+
+
 \family default 
 .
+
+\lang slovene
  Pouèite se o LyXu, prijavite se na dopisne sezname o njem, podajte se na
  grafièno odpravo po njem in podobno.
 \the_end
