@@ -15,6 +15,10 @@
 # Invocation:
 #    postats.sh po_files > "pathToWebPages"/i18n.php3
 
+# modifiy this when you change version
+lyx_version=1.3.1cvs
+lyx_branch=BRANCH_1_3_X
+
 
 warning () {
 	echo $* 1>&2
@@ -197,7 +201,7 @@ usort (\$podata, "cmp");
 
 <p>
 	The following table details the current state of the translations of the
-	LyX GUI for the LyX stable branch (currently 1.3.1cvs).
+	LyX GUI for the LyX stable branch (currently $lyx_version).
 	Unfortunately, only a few languages are well-supported. The LyX team may,
 	therefore, decide to exclude some of the translations from a formal
 	release in order not to confuse the user with a strongly mixed-language
@@ -236,8 +240,8 @@ while (list(\$foo,\$info) = each(\$podata)) {
 	} else {
 		\$style="style='background:#AA3333'";
 	}
-
-	print "<td \$style>" . \$lang[\$info['langcode']] . "</td>";
+	print "<td \$style>" ;
+	print "<a href=\"http://www.lyx.org/cgi-bin/viewcvs.cgi/*checkout*/lyx-devel/po/" . \$info['langcode'] . ".po?only_with_tag=$lyx_branch\">" . \$lang[\$info['langcode']] . "</td>";
 
 	print "<td \$style align=\"right\">" . \$info['msg_tr'] . "</td>";
 

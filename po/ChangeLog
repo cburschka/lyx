@@ -1,3 +1,10 @@
+2003-02-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* postats.sh: add an hyperlink from the language name to the
+	corresponding po file; make version number and branch variables.
+
+	* *.po: remerge
+
 2003-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* POTFILES.in: * Makefile.in.in: use a plain sort instead of "sort
