@@ -133,7 +133,6 @@ enum {
 	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
 	FLAG_BRACK_END  = 1 << 4,  //  next closing bracket ends the parsing process
-	FLAG_NEWLINE    = 1 << 6,  //  next \\\\ ends the parsing process
 	FLAG_ITEM       = 1 << 7,  //  read a (possibly braced token)
 	FLAG_BLOCK      = 1 << 8,  //  next block ends the parsing process
 	FLAG_LEAVE      = 1 << 9   //  leave the loop at the end
@@ -763,9 +762,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			add(array, t.character(), code);
 		
 		//
-		// codesequences
+		// control sequences
 		//	
-		else if (t.cs() == "protect") 
+		else if (t.cs() == "protect")
+			// ignore \\protect, will be re-added during output 
 			;
 
 		else if (t.cs() == "end")
@@ -779,10 +779,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cs() == "\\") {
 			curr_skip_ = getArg('[', ']');
-			if (flags & FLAG_NEWLINE)
-				return;
-			lyxerr[Debug::MATHED]
-					<< "found newline unexpectedly, array: '" << array << "'\n";
+			lyxerr << "found newline unexpectedly, array: '" << array << "'\n";
 			array.push_back(createMathInset("\\"));
 		}
 	

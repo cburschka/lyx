@@ -60,6 +60,7 @@ int sel_x;
 int sel_y;
 bool sel_flag;
 
+
 void handleFont(BufferView * bv, MathTextCodes t) 
 {
 	if (mathcursor->selection())
@@ -77,24 +78,12 @@ void handleAccent(BufferView * bv, string const & name)
 
 bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 {
-	LyXText * lt = bv->getLyXText();
-	
-	bv->beforeChange(lt);
-	finishUndo();
 	if (!bv->insertInset(new_inset)) {
 		delete new_inset;
 		return false;
 	}
 	new_inset->edit(bv, 0, 0, 0);
 	return true;
-}
-
-
-// returns the nearest enclosing grid
-MathArrayInset * matrixpar(MathInset::idx_type & idx)
-{
-	idx = 0;
-	return mathcursor ? mathcursor->enclosingArray(idx) : 0; 
 }
 
 
@@ -444,7 +433,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_PASTE:
 		if (was_macro)
 			mathcursor->macroModeClose();
-		bv->lockedInsetStoreUndo(Undo::INSERT);
+		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->selPaste();
 		updateLocal(bv, true);
 		break;
@@ -498,7 +487,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_MATH_LIMITS:
-		bv->lockedInsetStoreUndo(Undo::INSERT);
+		bv->lockedInsetStoreUndo(Undo::EDIT);
 		if (mathcursor->toggleLimits())
 			updateLocal(bv, true);
 		break;
@@ -506,7 +495,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_SIZE:
 #if 0
 		if (!arg.empty()) {
-			bv->lockedInsetStoreUndo(Undo::INSERT);
+			bv->lockedInsetStoreUndo(Undo::EDIT);
 			mathcursor->setSize(arg);
 			updateLocal(bv, true);
 		}
@@ -515,7 +504,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_INSERT_MATRIX:
 		if (!arg.empty()) {
-			bv->lockedInsetStoreUndo(Undo::INSERT);
+			bv->lockedInsetStoreUndo(Undo::EDIT);
 			mathcursor->interpret("matrix " + arg);
 			updateLocal(bv, true);
 		}
@@ -531,7 +520,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_MATH_DELIM:
 	{
-		bv->lockedInsetStoreUndo(Undo::INSERT);
 		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
 		string ls;
 		string rs;
@@ -549,7 +537,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_PROTECTEDSPACE:
 		//lyxerr << " called LFUN_PROTECTEDSPACE\n";
-		bv->lockedInsetStoreUndo(Undo::INSERT);
+		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->insert(MathAtom(new MathSpaceInset(1)));
 		updateLocal(bv, true);
 		break;
@@ -560,78 +548,28 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 
 	case LFUN_MATH_HALIGN:
-	{
-		bv->lockedInsetStoreUndo(Undo::INSERT);
-		lyxerr << "handling halign '" << arg << "'\n";
-		MathInset::idx_type idx;
-		MathArrayInset * p = matrixpar(idx);
-		if (!p)
-			break; 
-		p->halign(arg.size() ? arg[0] : 'c', p->col(idx));
-		updateLocal(bv, true);
-		break;
-	}
-
 	case LFUN_MATH_VALIGN:
-	{
-		bv->lockedInsetStoreUndo(Undo::INSERT);
-		lyxerr << "handling valign '" << arg << "'\n";
-		MathInset::idx_type idx;
-		MathArrayInset * p = matrixpar(idx);
-		if (!p)
-			break; 
-		p->valign(arg.size() ? arg[0] : 'c');
-		updateLocal(bv, true);
-		break;
-	}
-
 	case LFUN_MATH_ROW_INSERT:
-	{
-		bv->lockedInsetStoreUndo(Undo::INSERT);
-		MathInset::idx_type idx;
-		MathArrayInset * p = matrixpar(idx);
-		lyxerr << " calling LFUN_MATH_ROW_INSERT on " << p << endl;
-		if (!p)
-			break; 
-		p->addRow(p->row(idx));
-		updateLocal(bv, true);
-		break;
-	}
-
 	case LFUN_MATH_ROW_DELETE:
-	{
-		bv->lockedInsetStoreUndo(Undo::INSERT);
-		MathInset::idx_type idx;
-		MathArrayInset * p = matrixpar(idx);
-		lyxerr << " calling LFUN_MATH_ROW_DELETE on " << p << endl;
-		if (!p)
-			break; 
-		p->delRow(p->row(idx));
-		updateLocal(bv, true);
-		break;
-	}
-
 	case LFUN_MATH_COLUMN_INSERT:
-	{
-		bv->lockedInsetStoreUndo(Undo::INSERT);
-		MathInset::idx_type idx;
-		MathArrayInset * p = matrixpar(idx);
-		if (!p)
-			break; 
-		p->addCol(p->col(idx));
-		updateLocal(bv, true);
-		break;
-	}
-
 	case LFUN_MATH_COLUMN_DELETE:
 	{
-		bv->lockedInsetStoreUndo(Undo::INSERT);
-		MathInset::idx_type idx;
-		MathArrayInset * p = matrixpar(idx);
-		if (!p)
-			break; 
-		p->delCol(p->col(idx));
-		updateLocal(bv, true);
+		MathInset::idx_type idx = 0;
+		MathArrayInset * p = mathcursor ? mathcursor->enclosingArray(idx) : 0;
+		if (p) {
+			bv->lockedInsetStoreUndo(Undo::EDIT);
+			char al = arg.size() ? arg[0] : 'c';
+			switch (action) {
+				case LFUN_MATH_HALIGN: p->halign(al, p->col(idx)); break;
+				case LFUN_MATH_VALIGN: p->valign(al); break;
+				case LFUN_MATH_ROW_INSERT: p->addRow(p->row(idx)); break;
+				case LFUN_MATH_ROW_DELETE: p->delRow(p->row(idx)); break;
+				case LFUN_MATH_COLUMN_INSERT: p->addCol(p->col(idx)); break;
+				case LFUN_MATH_COLUMN_DELETE: p->delCol(p->col(idx)); break;
+				default: ;
+			}
+			updateLocal(bv, true);
+		}
 		break;
 	}
 
@@ -648,7 +586,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_INSERT_MATH:
 	case LFUN_SELFINSERT:
 		if (!arg.empty()) {
-			bv->lockedInsetStoreUndo(Undo::INSERT);
+			bv->lockedInsetStoreUndo(Undo::EDIT);
 			mathcursor->interpret(arg);
 			updateLocal(bv, true);
 		}
