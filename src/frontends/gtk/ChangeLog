@@ -1,3 +1,8 @@
+2004-11-29  John Spray  <spray_john@users.sourceforge.net>
+
+	* GToolbar.C: Make layouts combobox not expand to full height 
+		of toolbar, it looks more like a combobox this way.
+
 2004-11-26  John Spray  <spray_john@users.sourceforge.net>
 	
 	* FileDialogPrivate.[Ch]: use Gtk::FileChooser, add 

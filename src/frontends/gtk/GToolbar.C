@@ -79,15 +79,15 @@ GLayoutBox::GLayoutBox(LyXView & owner,
 	// causes the first update()
 	combo_.set_size_request(130,-1);
 
-
 	combo_.set_data(
 		gToolData,
 		reinterpret_cast<void*>(&const_cast<FuncRequest &>(func)));
 
-	combo_.show();
+	Gtk::VBox * vbox = Gtk::manage(new Gtk::VBox);
+	vbox->pack_end(combo_, Gtk::PACK_EXPAND_PADDING);
 
 	Gtk::ToolItem * toolitem = Gtk::manage(new Gtk::ToolItem);
-	toolitem->add(combo_);
+	toolitem->add(*vbox);
 	toolbar.append(*toolitem);
 }
 
