@@ -1,3 +1,18 @@
+1999-10-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* acinclude.m4 (LYX_CXX_CHEADERS): New macro. Checks whether the
+	C++ compiler provides wrappers for C headers and use our alternate
+	version otherwise.
+
+	* configure.in: use LYX_CXX_CHEADERS.
+
+	* src/cheader/: new directory, populated with cname headers from
+	libstdc++-2.8.1. They are a bit old, but probably good enough for
+	what we want (support compilers who lack them).
+	
+	* src/insets/Makefile.am, src/mathed/Makefile.am: remove src/support
+	from includes. It turns out is was stupid.
+ 
 1999-10-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* lib/Makefile.am (install-data-local): forgot a ';'
