@@ -12,7 +12,7 @@
 #include "frontends/Timeout.h"
 #include "glib.h" // for gint
 
-#include <sigc++/signal_system.h>
+#include <sigc++/sigc++.h>
 
 #ifdef __GNUG__
 #pragma interface
@@ -38,7 +38,7 @@ public:
 
 public:
 	/// The timeout signal, this gets called when the timeout passed.
-	gint timeoutEvent();
+	bool timeoutEvent();
 private:
 	/// the owning timer
 	Timeout * owner_;

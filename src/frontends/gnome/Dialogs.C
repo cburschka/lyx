@@ -14,19 +14,22 @@
 #pragma implementation
 #endif
 
-#include "gettext.h"
 
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
-#include "gnomeBC.h"
-#include "Tooltips.h"
-#include "GUI.h"
 
-#include "GUrl.h"
+#include "GUI.h"
+#include "gnomeBC.h"
+
+#include "frontends/LyXView.h"
+
 #include "GError.h"
-#include "GTabularCreate.h"
 #include "GERT.h"
 #include "GPreamble.h"
+#include "GTabularCreate.h"
+#include "GUrl.h"
+
+
+#include "Tooltips.h"
 
 bool Dialogs::tooltipsEnabled()
 {
@@ -34,15 +37,21 @@ bool Dialogs::tooltipsEnabled()
 }
 Dialogs::Dialogs(LyXView * lv)
 {
-	add(new GUIUrl<GUrl, gnomeBC>(*lv, *this));
-	add(new GUIError<GError, gnomeBC>(*lv, *this));
-	add(new GUITabularCreate<GTabularCreate, gnomeBC>(*lv, *this));
-	add(new GUIERT<GERT, gnomeBC>(*lv, *this));
-	add(new GUIPreamble<GPreamble, gnomeBC>(*lv, *this));
+
+	add(new GUI<ControlError,GErrorDialog, 
+	    OkCancelPolicy, gnomeBC>(*lv, *this));
+	add(new GUI<ControlERT, GERT,
+	    NoRepeatedApplyReadOnlyPolicy, gnomeBC>(*lv, *this));
+	add(new GUI<ControlUrl, GUrl,
+	    NoRepeatedApplyReadOnlyPolicy, gnomeBC>(*lv,*this));
+	add(new GUI<ControlPreamble, GPreamble,
+	    NoRepeatedApplyReadOnlyPolicy, gnomeBC>(*lv, *this));
+	add(new GUI<ControlTabularCreate, GTabularCreate,
+	    OkApplyCancelReadOnlyPolicy, gnomeBC>(*lv, *this));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
-	hideAll.connect(hideBufferDependent.slot());
+	hideAll.connect(hideBufferDependent);
 }
 
 /*****************************************************************************

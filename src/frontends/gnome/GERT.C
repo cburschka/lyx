@@ -18,8 +18,8 @@
 #include "gnomeBC.h"
 #include "GERT.h"
 
-#include <gtk--/radiobutton.h>
-#include <gtk--/button.h>
+#include <gtkmm/radiobutton.h>
+#include <gtkmm/button.h>
 
 GERT::GERT(ControlERT & c)
 	: FormCB<ControlERT>(c, "GERT")
@@ -33,9 +33,9 @@ GERT::~GERT()
 void GERT::build()
 {
 	// Connect the buttons.
-	ok_btn()->clicked.connect(SigC::slot(this, &GERT::OKClicked));
-	cancel_btn()->clicked.connect(SigC::slot(this, &GERT::CancelClicked));
-	apply_btn()->clicked.connect(SigC::slot(this, &GERT::ApplyClicked));
+	ok_btn()->signal_clicked().connect(SigC::slot(*this, &GERT::OKClicked));
+	cancel_btn()->signal_clicked().connect(SigC::slot(*this, &GERT::CancelClicked));
+	apply_btn()->signal_clicked().connect(SigC::slot(*this, &GERT::ApplyClicked));
 
 	// Manage the buttons state
 	bc().setOK(ok_btn());
@@ -55,9 +55,9 @@ void GERT::build()
 
 void GERT::connect_signals()
 {
-	slot_open = open()->clicked.connect(SigC::slot(this, &GERT::InputChanged));
-	slot_collapsed = collapsed()->clicked.connect(SigC::slot(this, &GERT::InputChanged));
-	slot_inlined = inlined()->clicked.connect(SigC::slot(this, &GERT::InputChanged));
+	slot_open = open()->signal_clicked().connect(SigC::slot(*this, &GERT::InputChanged));
+	slot_collapsed = collapsed()->signal_clicked().connect(SigC::slot(*this, &GERT::InputChanged));
+	slot_inlined = inlined()->signal_clicked().connect(SigC::slot(*this, &GERT::InputChanged));
 }
 
 

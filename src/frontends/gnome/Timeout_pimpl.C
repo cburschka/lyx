@@ -13,7 +13,7 @@
 #pragma implementation
 #endif
 
-#include <gnome--/main.h>
+#include <gtkmm/main.h>
 #include "Timeout_pimpl.h"
 #include "debug.h"
 
@@ -41,8 +41,8 @@ void Timeout::Pimpl::start()
 		stop();
 	}
 
-	conn_ = Gnome::Main::timeout.connect(
-			 SigC::slot(this, &Timeout::Pimpl::timeoutEvent),
+	conn_ = Gtk::Main::signal_timeout().connect(
+			 SigC::slot(*this, &Timeout::Pimpl::timeoutEvent),
 			 owner_->timeout_ms
 			);
 	running_ = true;
@@ -56,8 +56,8 @@ void Timeout::Pimpl::stop()
 }
 
 
-gint Timeout::Pimpl::timeoutEvent()
+bool Timeout::Pimpl::timeoutEvent()
 {
 	owner_->emit();
-	return 0; // discontinue emitting timeouts.
+	return false; // discontinue emitting timeouts.
 }

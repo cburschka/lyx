@@ -19,8 +19,8 @@
 #include "gnomeBC.h"
 #include "GTabularCreate.h"
 
-#include <gtk--/spinbutton.h>
-#include <gtk--/button.h>
+#include <gtkmm/spinbutton.h>
+#include <gtkmm/button.h>
 
 GTabularCreate::GTabularCreate(ControlTabularCreate & c)
 	: FormCB<ControlTabularCreate>(c, "GTabularCreate")
@@ -34,11 +34,11 @@ GTabularCreate::~GTabularCreate()
 void GTabularCreate::build()
 {
 	// Connect the buttons.
-	ok_btn()->clicked.connect(SigC::slot(this, 
+	ok_btn()->signal_clicked().connect(SigC::slot(*this, 
 	                                 &GTabularCreate::OKClicked));
-	cancel_btn()->clicked.connect(SigC::slot(this, 
+	cancel_btn()->signal_clicked().connect(SigC::slot(*this, 
 	                                 &GTabularCreate::CancelClicked));
-	apply_btn()->clicked.connect(SigC::slot(this, 
+	apply_btn()->signal_clicked().connect(SigC::slot(*this, 
                                      &GTabularCreate::ApplyClicked));
 	
 	// Manage the buttons state

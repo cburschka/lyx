@@ -18,8 +18,8 @@
 #include "gnomeBC.h"
 #include "GPreamble.h"
 
-#include <gtk--/text.h>
-#include <gtk--/button.h>
+#include <gtkmm/textview.h>
+#include <gtkmm/button.h>
 
 GPreamble::GPreamble(ControlPreamble & c)
 	: FormCB<ControlPreamble>(c, "GPreamble")
@@ -33,9 +33,9 @@ GPreamble::~GPreamble()
 void GPreamble::build()
 {
 	// Connect the buttons.
-	ok_btn()->clicked.connect(SigC::slot(this, &GPreamble::OKClicked));
-	cancel_btn()->clicked.connect(SigC::slot(this, &GPreamble::CancelClicked));
-	apply_btn()->clicked.connect(SigC::slot(this, &GPreamble::ApplyClicked));
+	ok_btn()->signal_clicked().connect(SigC::slot(*this, &GPreamble::OKClicked));
+	cancel_btn()->signal_clicked().connect(SigC::slot(*this, &GPreamble::CancelClicked));
+	apply_btn()->signal_clicked().connect(SigC::slot(*this, &GPreamble::ApplyClicked));
 	// Manage the buttons state
 	bc().setOK(ok_btn());
 	bc().setCancel(cancel_btn());
@@ -45,22 +45,24 @@ void GPreamble::build()
 
 void GPreamble::apply()
 {
-	controller().params() = preamble()->get_chars(0,-1);
+	controller().params() = preamble()->get_buffer()->get_text(preamble()->get_buffer()->get_start_iter(),
+								   preamble()->get_buffer()->get_end_iter(),
+								   false);
 }
 
 
 void GPreamble::update()
 {
 	disconnect_signals();
-	preamble()->set_point(0);
-	preamble()->forward_delete(preamble()->get_length());
-	preamble()->insert(controller().params());
+	preamble()->get_buffer()->set_text(controller().params());
 	connect_signals();
 }
 
 void GPreamble::connect_signals()
 {
-	slot_preamble_ = preamble()->changed.connect(SigC::slot(this, &GPreamble::InputChanged));
+	slot_preamble_ = preamble()->
+		get_buffer()->
+		signal_changed().connect(SigC::slot(*this, &GPreamble::InputChanged));
 }
 
 void GPreamble::disconnect_signals() 
@@ -80,7 +82,7 @@ Gtk::Button * GPreamble::cancel_btn() const
 {
         return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::Text * GPreamble::preamble() const 
+Gtk::TextView * GPreamble::preamble() const 
 {
-        return getWidget<Gtk::Text>("r_preamble");
+        return getWidget<Gtk::TextView>("r_preamble");
 }

@@ -19,18 +19,20 @@
 #include "gnomeBC.h"
 #include "GError.h"
 
-#include <gtk--/button.h>
-#include <gtk--/text.h>
+#include <gtkmm/button.h>
+#include <gtkmm/textview.h>
 
-GError::GError(ControlError & c)
+GErrorDialog::GErrorDialog(ControlError & c)
 	: FormCB<ControlError>(c, "GError")
 {}
 
 
-void GError::build()
+void GErrorDialog::build()
 {
 	// Connect the buttons.
-	button_close()->clicked.connect(SigC::slot(this, &GError::CloseClicked));
+	button_close()->signal_clicked().connect(
+		SigC::slot(*this, &GErrorDialog::CloseClicked)
+		);
 
 	// Manage the buttons state
 	bc().setCancel(button_close());
@@ -40,17 +42,17 @@ void GError::build()
 }
 
 
-void GError::update()
+void GErrorDialog::update()
 {
-	textarea()->insert(controller().params());
+	textarea()->get_buffer()->set_text(controller().params());
 }
 
-Gtk::Button * GError::button_close() const 
+Gtk::Button * GErrorDialog::button_close() const 
 {
         return getWidget<Gtk::Button>("r_button_close");
 }
 
-Gtk::Text * GError::textarea() const 
+Gtk::TextView * GErrorDialog::textarea() const 
 {
-        return getWidget<Gtk::Text>("r_textarea");
+        return getWidget<Gtk::TextView>("r_textarea");
 }

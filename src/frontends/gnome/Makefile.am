@@ -6,7 +6,7 @@ INCLUDES = $(FRONTEND_INCLUDES) -I$(top_srcdir)/src/ \
 	-I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/src/frontends/xforms \
 	-I$(top_srcdir)/src/frontends/controllers \
-	$(SIGC_CFLAGS) $(BOOST_INCLUDES)
+	$(BOOST_INCLUDES)
 
 if USE_BASIC_IMAGE_LOADER
 else
@@ -19,9 +19,14 @@ xforms_objects = \
 	../xforms/bmtable.lo \
 	../xforms/combox.lo \
 	../xforms/Color.lo \
+	../xforms/ColorHandler.lo \
 	../xforms/DropDown.lo \
 	../xforms/FeedbackController.lo \
+	../xforms/FileDialog.lo \
+	../xforms/FontInfo.lo \
 	../xforms/FormBaseDeprecated.lo \
+	../xforms/FormFiledialog.lo \
+	../xforms/form_filedialog.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDeco.lo \
 	../xforms/form_maths_deco.lo \
@@ -35,12 +40,19 @@ xforms_objects = \
 	../xforms/form_maths_space.lo \
 	../xforms/FormMathsStyle.lo \
 	../xforms/form_maths_style.lo \
+	../xforms/lyxlookup.lo \
 	../xforms/MathsSymbols.lo \
 	../xforms/Menubar_pimpl.lo \
 	../xforms/Toolbar_pimpl.lo \
 	../xforms/Tooltips.lo \
+	../xforms/xfont_loader.lo \
+	../xforms/xfont_metrics.lo \
 	../xforms/xforms_helpers.lo \
-	../xforms/xformsBC.lo $(XFORMSGIMAGE)
+	../xforms/xforms_resize.lo \
+	../xforms/xformsBC.lo \
+	../xforms/XFormsView.lo \
+	../xforms/XPainter.lo \
+	../xforms/XWorkArea.lo $(XFORMSGIMAGE)
 
 libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)
 
@@ -56,17 +68,16 @@ xforms.lo: $(xforms_objects)
 
 libgnome_la_SOURCES = \
 	Dialogs.C \
-	FileDialog.C \
 	GError.C \
 	GError.h \
-	GTabularCreate.C \
-	GTabularCreate.h \
-	GUrl.C \
-	GUrl.h \
 	GERT.C \
 	GERT.h \
 	GPreamble.C \
 	GPreamble.h \
+	GTabularCreate.C \
+	GTabularCreate.h \
+	GUrl.C \
+	GUrl.h \
 	gnome_helpers.C \
 	gnome_helpers.h \
 	GnomeBase.C \
@@ -75,10 +86,10 @@ libgnome_la_SOURCES = \
 	gnomeBC.h \
 	GUIRunTime.C \
 	pixbutton.h \
-	support.c \
-	support.h \
 	Timeout_pimpl.C \
 	Timeout_pimpl.h
+
+
 
 # Trying to make things a litte more tidy. -- Koz-2002-01-11
 #	mainapp.C \

@@ -22,7 +22,8 @@
 #include "GnomeBase.h"
 
 namespace Gtk {
-class SpinButton;
+	class SpinButton;
+	class Button;
 }
 
 /**

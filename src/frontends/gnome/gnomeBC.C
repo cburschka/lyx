@@ -6,8 +6,9 @@
 
 #include "gnomeBC.h"
 #include "ButtonController.tmpl"
-#include "gtk--/widget.h"
-#include "gtk--/button.h"
+
+#include <gtkmm/widget.h>
+#include <gtkmm/button.h>
 
 gnomeBC::gnomeBC(string const & cancel, string const & close)
 	: GuiBC<Gtk::Button, Gtk::Widget>(cancel, close)

@@ -1,3 +1,33 @@
+2002-06-02  Michael A. Koziarski  <michael@koziarski.com>
+
+        == Gtkmm2 upgrade ==
+	
+	* dialogs/*: Updated to glade-2 format.
+	* Dialogs.C: add() calls updated
+	* GError.C
+	* GError.h
+	* GERT.C
+	* GERT.h
+	* GPreamble.C
+	* GPreamble.h
+	* GTabularCreate.C
+	* GTabularCreate.h
+	* GUIRunTime.C
+	* GUrl.C
+	* GUrl.h: updated for gtkmm2
+	* GnomeBase.C
+	* GnomeBase.h: updated for gtkmm2 and libglademm.
+	* gnome_helpers.C
+	* gnome_helpers.h: Cruft removed.  Blasted X.h #defines #undef'd
+	* Timeout_pimpl.C
+	* Timeout_pimpl.h
+	* GUIRuntime.C: fix up the references to Gnome::* to use Gtk::*,
+	slight other changes required
+	* Makefile.am: all neccessary changes, mostly including stuff
+	that's been moved into src/frontends/xforms
+
+
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FileDialog.C: LyXView moved into frontends/

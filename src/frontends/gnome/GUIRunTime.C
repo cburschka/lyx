@@ -14,12 +14,14 @@
 #endif
 
 #include FORMS_H_LOCATION
-
+#include "gnome_helpers.h"
 #include "GUIRunTime.h"
 #include "debug.h"
 
-#include <gnome--/main.h>
-#include <glade/glade.h>
+#include <gtkmm/main.h>
+#include <libglademm/xml.h>
+
+#include <boost/bind.hpp>
 
 // For now we use the xforms image loader if we can.
 // In the future, this will be replaced by a gnome equivalent.
@@ -31,13 +33,6 @@
 
 using std::endl;
 
-// I keep these here so that it will be processed as early in
-// the compilation process as possible.
-#if !defined(FL_REVISION) || FL_REVISION < 88 || FL_VERSION != 0
-#error LyX will not compile with this version of XForms.\
-       Please get version 0.89.\
-       If you want to try to compile anyway, delete this test in src/frontends/gnome/GUIRunTime.C.
-#endif
 
 extern bool finished;
 
@@ -48,7 +43,7 @@ int const xforms_include_version = FL_INCLUDE_VERSION;
 } // namespace anon
 
 
-int GUIRunTime::initApplication(int &, char * argv[])
+int GUIRunTime::initApplication(int & argc , char * argv[])
 {
 	// Check the XForms version in the forms.h header against
 	// the one in the libforms. If they don't match quit the
@@ -79,16 +74,15 @@ int GUIRunTime::initApplication(int &, char * argv[])
 	// lyx_gui, the same place as xforms does the same. (Lgb)
 	string app_id(PACKAGE);
 	string app_version(VERSION);
-	static Gnome::Main  a(app_id, app_version, 1, argv);
-	glade_gnome_init(); // Initialize the glade library.
+	new Gtk::Main (argc, argv);
 
 	return 0;
 }
 
 void GUIRunTime::processEvents()
 {
-	while (Gnome::Main::instance()->events_pending())
-		Gnome::Main::instance()->iteration(FALSE);
+	while (Gtk::Main::events_pending())
+		Gtk::Main::iteration(false);
 }
 
 
@@ -141,16 +135,15 @@ LyXView * GUIRunTime::createMainView(int w, int h)
 void GUIRunTime::initialiseGraphics()
 {
 	using namespace grfx;
-	using SigC::slot;
 
 #if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
 	// connect the image loader based on the xforms library
-	GImage::newImage.connect(slot(&xformsGImage::newImage));
-	GImage::loadableFormats.connect(slot(&xformsGImage::loadableFormats));
+	GImage::newImage.connect(boost::bind(&xformsGImage::newImage));
+	GImage::loadableFormats.connect(boost::bind(&xformsGImage::loadableFormats));
 #else
 	// connect the image loader based on the XPM library
-	GImage::newImage.connect(slot(&GImageXPM::newImage));
-	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
+	GImage::newImage.connect(boost::bind(&GImageXPM::newImage));
+	GImage::loadableFormats.connect(boost::bind(&GImageXPM::loadableFormats));
 #endif
 }
 

@@ -17,13 +17,17 @@
 #pragma interface
 #endif
 
-#include "ViewBase.h"
-#include "gnomeBC.h"
-#include <sigc++/signal_system.h>
 #include "gnome_helpers.h"
 
-namespace Gnome {
-class Dialog;
+#include <sigc++/sigc++.h>
+#include <libglademm/xml.h>
+
+#include "ViewBase.h"
+#include "gnomeBC.h"
+
+
+namespace Gtk {
+	class Dialog;
 };
 
 /**
@@ -40,10 +44,10 @@ public:
 protected:
 	/// Get the widget named 'name' from the xml representation.
 	template <class T>
-	T* getWidget(char const * name) const;
+	T* getWidget(const string & name) const;
 
 	/// Get the dialog we use.
-	Gnome::Dialog * dialog();
+	Gtk::Dialog * dialog();
 
 	/// Show the dialog.
 	void show();
@@ -66,29 +70,27 @@ protected:
 
 private:
 	/// Loads the glade file to memory.
-	void loadXML() const;
+	void loadXML();
 
 	/// The glade file name
 	const string file_;
 	/// The widget name
 	const string widget_name_;
 	/// The XML representation of the dialogs.
-	mutable GladeXML * xml_;
+	Glib::RefPtr<Gnome::Glade::Xml>  xml_;
 
 	/** The dialog we work with, since it is managed by libglade, we do not
 	 *  need to delete it or destroy it, it will be destroyed with the rest
 	 *  of the libglade GladeXML structure.
 	 */
-	Gnome::Dialog * dialog_;
+	Gtk::Dialog * dialog_;
 };
 
 
 template <class T>
-T* GnomeBase::getWidget(char const * name) const
+T* GnomeBase::getWidget(const string & name) const
 {
-	if (xml_ == 0)
-		loadXML();
-	return getWidgetPtr<T>(xml_, name);
+	return dynamic_cast<T*>(xml_->get_widget(name));
 }
 
 /**

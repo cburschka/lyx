@@ -19,8 +19,9 @@
 #include "gnomeBC.h"
 #include "GUrl.h"
 
-#include <gtk--/entry.h>
-#include <gtk--/checkbutton.h>
+#include <gtkmm/entry.h>
+#include <gtkmm/checkbutton.h>
+#include <gtkmm/button.h>
 
 GUrl::GUrl(ControlUrl & c)
 	: FormCB<ControlUrl>(c, "GUrl")
@@ -34,10 +35,10 @@ GUrl::~GUrl()
 void GUrl::build()
 {
 	// Connect the buttons.
-	ok_btn()->clicked.connect(SigC::slot(this, &GUrl::OKClicked));
-	cancel_btn()->clicked.connect(SigC::slot(this, &GUrl::CancelClicked));
-	apply_btn()->clicked.connect(SigC::slot(this, &GUrl::ApplyClicked));
-	restore_btn()->clicked.connect(SigC::slot(this, &GUrl::RestoreClicked));
+	ok_btn()->signal_clicked().connect(SigC::slot(*this, &GUrl::OKClicked));
+	cancel_btn()->signal_clicked().connect(SigC::slot(*this, &GUrl::CancelClicked));
+	apply_btn()->signal_clicked().connect(SigC::slot(*this, &GUrl::ApplyClicked));
+	restore_btn()->signal_clicked().connect(SigC::slot(*this, &GUrl::RestoreClicked));
 
 	// Manage the buttons state
 	bc().setOK(ok_btn());
@@ -58,9 +59,9 @@ void GUrl::build()
 void GUrl::connect_signals()
 {
 	// Get notifications on input change
-	slot_url_ = url()->changed.connect(SigC::slot(this, &GUrl::InputChanged));
-	slot_name_ = name()->changed.connect(SigC::slot(this, &GUrl::InputChanged));
-	slot_html_ = html_cb()->toggled.connect(SigC::slot(this, &GUrl::InputChanged));
+	slot_url_ = url()->signal_changed().connect(SigC::slot(*this, &GUrl::InputChanged));
+	slot_name_ = name()->signal_changed().connect(SigC::slot(*this, &GUrl::InputChanged));
+	slot_html_ = html_cb()->signal_toggled().connect(SigC::slot(*this, &GUrl::InputChanged));
 }
 
 
