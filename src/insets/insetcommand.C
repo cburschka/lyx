@@ -57,9 +57,7 @@ void InsetCommand::draw(PainterInfo & pi, int x, int y) const
 
 void InsetCommand::setParams(InsetCommandParams const & p)
 {
-	p_.setCmdName(p.getCmdName());
-	p_.setContents(p.getContents());
-	p_.setOptions(p.getOptions());
+	p_ = p;
 	set_label_ = false;
 }
 

@@ -1,5 +1,9 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
+	* insetcommand.C (setParams): use the params' copy constructor.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
 	* insetinsetbase.h (getLabelList):
 	* insetinsetcollapsable.[Ch] (getLabelList):
 	* insetinsetinclude.[Ch] (getLabelList):

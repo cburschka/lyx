@@ -31,9 +31,7 @@ bool ControlCommand::initialiseParams(string const & data)
 
 void ControlCommand::clearParams()
 {
-	params_.setCmdName(string());
-	params_.setOptions(string());
-	params_.setContents(string());
+	params_ = InsetCommandParams();
 }
 
 
