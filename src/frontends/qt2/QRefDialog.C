@@ -59,7 +59,7 @@ void QRefDialog::refHighlighted(const QString & sel)
 }
 
  
-void QRefDialog::refSelected(const QString & sel)
+void QRefDialog::refSelected(const QString &)
 {
 	form_->gotoRef();
 }

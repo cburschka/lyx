@@ -7,7 +7,7 @@
  */
 
 #include <config.h>
-
+ 
 #include "ControlSpellchecker.h"
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
