@@ -1182,9 +1182,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			+ " " + lex.text()  + "\n";
 
 		InsetError * new_inset = new InsetError(s);
-		par->insertInset(pos, new_inset);
-		par->setFont(pos, LyXFont(LyXFont::ALL_INHERIT,
-					  params.language));
+		par->insertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT,
+							 params.language));
 
 #ifndef NO_COMPABILITY
 		}
@@ -2981,8 +2980,8 @@ void Buffer::sgmlError(Paragraph * par, int pos,
 {
 	// insert an error marker in text
 	InsetError * new_inset = new InsetError(message);
-	par->insertInset(pos, new_inset);
-	par->setFont(pos, LyXFont(LyXFont::ALL_INHERIT, params.language));
+	par->insertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT, 
+						 params.language));
 }
 
 
