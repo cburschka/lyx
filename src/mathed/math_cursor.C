@@ -573,6 +573,7 @@ bool MathCursor::up(bool sel)
 			MathAtom & p = prevAtom();
 			if (p->asScriptInset() && p->asScriptInset()->hasUp()) {
 				pushRight(p);
+				idx() = 1;
 				pos() = size();
 				return true;
 			}
@@ -582,6 +583,7 @@ bool MathCursor::up(bool sel)
 			MathAtom & n = nextAtom();
 			if (n->asScriptInset() && n->asScriptInset()->hasUp()) {
 				pushLeft(n);
+				idx() = 1;
 				pos() = 0;
 				return true;
 			}
@@ -604,6 +606,7 @@ bool MathCursor::down(bool sel)
 			MathAtom & p = prevAtom();
 			if (p->asScriptInset() && p->asScriptInset()->hasDown()) {
 				pushRight(p);
+				idx() = 0;
 				pos() = size();
 				return true;
 			}
@@ -613,6 +616,7 @@ bool MathCursor::down(bool sel)
 			MathAtom & n = nextAtom();
 			if (n->asScriptInset() && n->asScriptInset()->hasDown()) {
 				pushLeft(n);
+				idx() = 0;
 				pos() = 0;
 				return true;
 			}
@@ -1369,14 +1373,14 @@ void MathCursor::interpret(char c)
 	if (isalpha(c) && (lastcode_ == LM_TC_GREEK || lastcode_ == LM_TC_GREEK1)) {
 		static char const greekl[][26] =
 			{"alpha", "beta", "chi", "delta", "epsilon", "phi",
-			 "gamma", "eta", "iota", "iota", "kappa", "lambda", "mu",
-			 "nu", "omikron", "pi", "omega", "rho", "sigma",
-			 "tau", "upsilon", "theta", "omega", "xi", "upsilon", "zeta"};
+			 "gamma", "eta", "iota", "epsilon", "kappa", "lambda", "mu",
+			 "nu", "omikron", "pi", "vartheta", "rho", "sigma",
+			 "tau", "upsilon", "theta", "omega", "xi", "varphi", "zeta"};
 		static char const greeku[][26] =
-			{"Alpha", "Beta", "Chi", "Delta", "Epsilon", "Phi",
-			 "Gamma", "Eta", "Iota", "Iota", "Kappa", "Lambda", "Mu",
-			 "Nu", "Omikron", "Pi", "Omega", "Rho", "Sigma", "Tau",
-			 "Upsilon", "Theta", "Omega", "xi", "Upsilon", "Zeta"};
+			{"Alpha", "Beta", "chi", "Delta", "varepsilon", "Phi",
+			 "Gamma", "Eta", "Iota", "Epsilon", "Kappa", "Lambda", "Mu",
+			 "Nu", "Omikron", "Pi", "vartheta", "varrho", "Sigma", "varsigma",
+			 "Upsilon", "Theta", "Omega", "Xi", "Varphi", "Zeta"};
 	
 		latexkeys const * l = 0;	
 		if ('a' <= c && c <= 'z')
