@@ -42,6 +42,31 @@ public:
 	/// set a parameter
 	void set(LyXTabular::Feature, string const & arg = string());
 
+	/// borders
+	void toggleTopLine();
+	void toggleBottomLine();
+	void toggleLeftLine();
+	void toggleRightLine();
+
+	void setSpecial(string const & special);
+
+	void setWidth(string const & width);
+
+	void toggleMultiColumn();
+
+	void rotateTabular(bool yes);
+	void rotateCell(bool yes);
+
+	enum HALIGN { LEFT, RIGHT, CENTER, BLOCK };
+
+	void halign(HALIGN h);
+
+	enum VALIGN { TOP, VCENTER, BOTTOM };
+
+	void valign(VALIGN h);
+
+	void longTabular(bool yes);
+
 private:
 	///
 	int active_cell_;

@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>463</width>
+            <width>480</width>
             <height>383</height>
         </rect>
     </property>
@@ -262,7 +262,7 @@
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
-                                    <string>Dele&amp;te</string>
+                                    <string>Delete</string>
                                 </property>
                                 <property stdset="1">
                                     <name>autoDefault</name>
@@ -435,7 +435,7 @@
                                 </property>
                                 <property>
                                     <name>toolTip</name>
-                                    <string>Rotate the table by 90°</string>
+                                    <string>Rotate the table by 90 degrees</string>
                                 </property>
                             </widget>
                             <widget>
@@ -450,7 +450,7 @@
                                 </property>
                                 <property>
                                     <name>toolTip</name>
-                                    <string>Rotate this cell by 90°</string>
+                                    <string>Rotate this cell by 90 degrees</string>
                                 </property>
                             </widget>
                         </vbox>
@@ -1420,18 +1420,6 @@
         <slot>borderUnset_clicked()</slot>
     </connection>
     <connection>
-        <sender>rotateTabularCB</sender>
-        <signal>stateChanged(int)</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>rotateTabular_checked(int)</slot>
-    </connection>
-    <connection>
-        <sender>rotateCellCB</sender>
-        <signal>stateChanged(int)</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>rotateCell_checked(int)</slot>
-    </connection>
-    <connection>
         <sender>longTabularCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>longtableGB</receiver>
@@ -1466,12 +1454,6 @@
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
         <slot>multicolumn_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>longTabularCB</sender>
-        <signal>stateChanged(int)</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>longTabular_changed(int)</slot>
     </connection>
     <connection>
         <sender>newpageCB</sender>
@@ -1611,43 +1593,61 @@
         <receiver>QTabularDialogBase</receiver>
         <slot>leftBorder_changed()</slot>
     </connection>
+    <connection>
+        <sender>rotateTabularCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>rotateTabular()</slot>
+    </connection>
+    <connection>
+        <sender>rotateCellCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>rotateCell()</slot>
+    </connection>
+    <connection>
+        <sender>longTabularCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTabularDialogBase</receiver>
+        <slot>longTabular()</slot>
+    </connection>
     <slot access="protected">borderSet_clicked()</slot>
     <slot access="protected">borderUnset_clicked()</slot>
     <slot access="protected">border_toggled()</slot>
+    <slot access="protected">bottomBorder_changed()</slot>
     <slot access="protected">change_adaptor()</slot>
+    <slot access="protected">close_clicked()</slot>
     <slot access="protected">columnAppend_clicked()</slot>
     <slot access="protected">columnDelete_clicked()</slot>
     <slot access="protected">hAlign_changed(int)</slot>
-    <slot access="protected">vAlign_changed(int)</slot>
-    <slot access="protected">rotateTabular_checked(int)</slot>
-    <slot access="protected">rotateCell_checked(int)</slot>
-    <slot access="protected">multicolumn_clicked()</slot>
-    <slot access="protected">rowAppend_clicked()</slot>
-    <slot access="protected">rowDelete_clicked()</slot>
     <slot access="protected">leftBorder_changed()</slot>
-    <slot access="protected">rightBorder_changed()</slot>
-    <slot access="protected">topBorder_changed()</slot>
-    <slot access="protected">bottomBorder_changed()</slot>
-    <slot access="protected">longTabular_changed(int)</slot>
-    <slot access="protected">ltNewpage_clicked()</slot>
-    <slot access="protected">ltHeaderStatus_clicked()</slot>
-    <slot access="protected">ltHeaderBorderAbove_clicked()</slot>
-    <slot access="protected">ltHeaderBorderBelow_clicked()</slot>
-    <slot access="protected">ltFirstHeaderStatus_clicked()</slot>
     <slot access="protected">ltFirstHeaderBorderAbove_clicked()</slot>
     <slot access="protected">ltFirstHeaderBorderBelow_clicked()</slot>
     <slot access="protected">ltFirstHeaderEmpty_clicked()</slot>
-    <slot access="protected">ltFooterStatus_clicked()</slot>
+    <slot access="protected">ltFirstHeaderStatus_clicked()</slot>
     <slot access="protected">ltFooterBorderAbove_clicked()</slot>
     <slot access="protected">ltFooterBorderBelow_clicked()</slot>
-    <slot access="protected">ltLastFooterStatus_clicked()</slot>
+    <slot access="protected">ltFooterStatus_clicked()</slot>
+    <slot access="protected">ltHeaderBorderAbove_clicked()</slot>
+    <slot access="protected">ltHeaderBorderBelow_clicked()</slot>
+    <slot access="protected">ltHeaderStatus_clicked()</slot>
     <slot access="protected">ltLastFooterBorderAbove_clicked()</slot>
     <slot access="protected">ltLastFooterBorderBelow_clicked()</slot>
     <slot access="protected">ltLastFooterEmpty_clicked()</slot>
-    <slot access="protected">specialAlignment_changed()</slot>
-    <slot access="protected">width_changed()</slot>
-    <slot access="protected">close_clicked()</slot>
+    <slot access="protected">ltLastFooterStatus_clicked()</slot>
+    <slot access="protected">ltNewpage_clicked()</slot>
+    <slot access="protected">multicolumn_clicked()</slot>
+    <slot access="public">longTabular()</slot>
+    <slot access="protected">rightBorder_changed()</slot>
+    <slot access="protected">rotateCell()</slot>
+    <slot access="protected">rotateTabular()</slot>
+    <slot access="protected">rowAppend_clicked()</slot>
+    <slot access="protected">rowDelete_clicked()</slot>
     <slot access="public">setEnabled(bool)</slot>
+    <slot access="protected">specialAlignment_changed()</slot>
+    <slot access="protected">topBorder_changed()</slot>
+    <slot access="protected">vAlign_changed(int)</slot>
+    <slot access="protected">width_changed()</slot>
 </connections>
 <tabstops>
     <tabstop>TabWidget</tabstop>

@@ -39,13 +39,13 @@ protected slots:
 	virtual void topBorder_changed();
 	virtual void bottomBorder_changed();
 	virtual void multicolumn_clicked();
-	virtual void rotateTabular_checked(int state);
-	virtual void rotateCell_checked(int state);
+	virtual void rotateTabular();
+	virtual void rotateCell();
 	virtual void hAlign_changed(int align);
 	virtual void vAlign_changed(int align);
 	virtual void specialAlignment_changed();
 	virtual void width_changed();
-	virtual void longTabular_changed(int state);
+	virtual void longTabular();
 	virtual void ltNewpage_clicked();
 	virtual void ltHeaderStatus_clicked();
 	virtual void ltHeaderBorderAbove_clicked();

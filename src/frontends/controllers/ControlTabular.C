@@ -18,6 +18,7 @@
 #include "support/LAssert.h"
 
 
+
 ControlTabular::ControlTabular(Dialog & parent)
 	: Dialog::Controller(parent), active_cell_(-1)
 {}
@@ -69,4 +70,152 @@ void ControlTabular::set(LyXTabular::Feature f, string const & arg)
 bool ControlTabular::useMetricUnits() const
 {
 	return lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER;
+}
+
+
+void ControlTabular::toggleTopLine()
+{
+	if (tabular().IsMultiColumn(getActiveCell()))
+		set(LyXTabular::M_TOGGLE_LINE_TOP);
+	else
+		set(LyXTabular::TOGGLE_LINE_TOP);
+}
+
+
+void ControlTabular::toggleBottomLine()
+{
+	if (tabular().IsMultiColumn(getActiveCell()))
+		set(LyXTabular::M_TOGGLE_LINE_BOTTOM);
+	else
+		set(LyXTabular::TOGGLE_LINE_BOTTOM);
+}
+
+
+void ControlTabular::toggleLeftLine()
+{
+	if (tabular().IsMultiColumn(getActiveCell()))
+		set(LyXTabular::M_TOGGLE_LINE_LEFT);
+	else
+		set(LyXTabular::TOGGLE_LINE_LEFT);
+}
+
+
+void ControlTabular::toggleRightLine()
+{
+	if (tabular().IsMultiColumn(getActiveCell()))
+		set(LyXTabular::M_TOGGLE_LINE_RIGHT);
+	else
+		set(LyXTabular::TOGGLE_LINE_RIGHT);
+}
+
+
+void ControlTabular::setSpecial(string const & special)
+{
+	if (tabular().IsMultiColumn(getActiveCell()))
+		set(LyXTabular::SET_SPECIAL_MULTI, special);
+	else
+		set(LyXTabular::SET_SPECIAL_COLUMN, special);
+}
+
+
+void ControlTabular::setWidth(string const & width)
+{
+	if (tabular().IsMultiColumn(getActiveCell()))
+		set(LyXTabular::SET_MPWIDTH, width);
+	else
+		set(LyXTabular::SET_PWIDTH, width);
+
+	dialog().view().update();
+}
+
+
+void ControlTabular::toggleMultiColumn()
+{
+	set(LyXTabular::MULTICOLUMN);
+	dialog().view().update();
+}
+
+
+void ControlTabular::rotateTabular(bool yes)
+{
+	if (yes)
+		set(LyXTabular::SET_ROTATE_TABULAR);
+	else
+		set(LyXTabular::UNSET_ROTATE_TABULAR);
+}
+
+
+void ControlTabular::rotateCell(bool yes)
+{
+	if (yes)
+		set(LyXTabular::SET_ROTATE_CELL);
+	else
+		set(LyXTabular::UNSET_ROTATE_CELL);
+}
+
+
+void ControlTabular::halign(ControlTabular::HALIGN h)
+{
+	LyXTabular::Feature num = LyXTabular::ALIGN_LEFT;
+	LyXTabular::Feature multi_num = LyXTabular::M_ALIGN_LEFT;
+
+	switch (h) {
+		case LEFT:
+			num = LyXTabular::ALIGN_LEFT;
+			multi_num = LyXTabular::M_ALIGN_LEFT;
+			break;
+		case CENTER:
+			num = LyXTabular::ALIGN_CENTER;
+			multi_num = LyXTabular::M_ALIGN_CENTER;
+			break;
+		case RIGHT:
+			num = LyXTabular::ALIGN_RIGHT;
+			multi_num = LyXTabular::M_ALIGN_RIGHT;
+			break;
+		case BLOCK:
+			num = LyXTabular::ALIGN_BLOCK;
+			//multi_num: no equivalent
+			break;
+	}
+
+	if (tabular().IsMultiColumn(getActiveCell()))
+		set(multi_num);
+	else
+		set(num);
+}
+
+
+void ControlTabular::valign(ControlTabular::VALIGN v)
+{
+	LyXTabular::Feature num = LyXTabular::VALIGN_CENTER;
+	LyXTabular::Feature multi_num = LyXTabular::M_VALIGN_CENTER;
+
+	switch (v) {
+		case TOP:
+			num = LyXTabular::VALIGN_TOP;
+			multi_num = LyXTabular::M_VALIGN_TOP;
+			break;
+		case VCENTER:
+			num = LyXTabular::VALIGN_CENTER;
+			multi_num = LyXTabular::M_VALIGN_CENTER;
+			break;
+		case BOTTOM:
+			num = LyXTabular::VALIGN_BOTTOM;
+			multi_num = LyXTabular::M_VALIGN_BOTTOM;
+			break;
+	}
+
+	if (tabular().IsMultiColumn(getActiveCell()))
+		set(multi_num);
+	else
+		set(num);
+}
+
+
+void ControlTabular::longTabular(bool yes)
+{
+	if (yes)
+		set(LyXTabular::SET_LONGTABULAR);
+	else
+		set(LyXTabular::UNSET_LONGTABULAR);
 }

@@ -21,11 +21,13 @@
 #include "lengthcombo.h"
 #include "qsetborder.h"
 #include "qt_helpers.h"
+#include "debug.h"
 
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
+using std::endl;
 
 QTabularDialog::QTabularDialog(QTabular * form)
 	: QTabularDialogBase(0, 0, false, 0),
@@ -92,54 +94,30 @@ void QTabularDialog::borderUnset_clicked()
 }
 
 
-namespace {
-
-bool isMulticolumnCell(QTabular * form) 
-{
-	LyXTabular const & tabular = form->controller().tabular();
-	int const cell = form->controller().getActiveCell();
-	return tabular.IsMultiColumn(cell);
-}
-
-}
-
-
 void QTabularDialog::leftBorder_changed()
 {
-	if (isMulticolumnCell(form_))
-		form_->controller().set(LyXTabular::M_TOGGLE_LINE_LEFT);
-	else
-		form_->controller().set(LyXTabular::TOGGLE_LINE_LEFT);
+	form_->controller().toggleLeftLine();
 	form_->changed();
 }
 
 
 void QTabularDialog::rightBorder_changed()
 {
-	if (isMulticolumnCell(form_))
-		form_->controller().set(LyXTabular::M_TOGGLE_LINE_RIGHT);
-	else
-		form_->controller().set(LyXTabular::TOGGLE_LINE_RIGHT);
+	form_->controller().toggleRightLine();
 	form_->changed();
 }
 
 
 void QTabularDialog::topBorder_changed()
 {
-	if (isMulticolumnCell(form_))
-		form_->controller().set(LyXTabular::M_TOGGLE_LINE_TOP);
-	else
-		form_->controller().set(LyXTabular::TOGGLE_LINE_TOP);
+	form_->controller().toggleTopLine();
 	form_->changed();
 }
 
 
 void QTabularDialog::bottomBorder_changed()
 {
-	if (isMulticolumnCell(form_))
-		form_->controller().set(LyXTabular::M_TOGGLE_LINE_BOTTOM);
-	else
-		form_->controller().set(LyXTabular::TOGGLE_LINE_BOTTOM);
+	form_->controller().toggleBottomLine();
 	form_->changed();
 }
 
@@ -147,150 +125,74 @@ void QTabularDialog::bottomBorder_changed()
 void QTabularDialog::specialAlignment_changed()
 {
 	string special = fromqstr(specialAlignmentED->text());
-	if (isMulticolumnCell(form_))
-		form_->controller().set(LyXTabular::SET_SPECIAL_MULTI, special);
-	else
-		form_->controller().set(LyXTabular::SET_SPECIAL_COLUMN, special);
+	form_->controller().setSpecial(special);
+	form_->changed();
 }
 
 
 void QTabularDialog::width_changed()
 {
+	form_->changed();
 	string const width =
 		LyXLength(widthED->text().toDouble(),
 			widthUnit->currentLengthItem()).asString();
-	if (isMulticolumnCell(form_))
-		form_->controller().set(LyXTabular::SET_MPWIDTH, width);
-	else
-		form_->controller().set(LyXTabular::SET_PWIDTH, width);
-	form_->changed();
-	form_->update_contents();
+	form_->controller().setWidth(width);
 }
 
 
 void QTabularDialog::multicolumn_clicked()
 {
-	form_->controller().set(LyXTabular::MULTICOLUMN);
+	form_->controller().toggleMultiColumn();
 	form_->changed();
-	form_->update_contents();
 }
 
 
-void QTabularDialog::rotateTabular_checked(int state)
+void QTabularDialog::rotateTabular()
 {
-	switch (state) {
-	case 0:
-		form_->controller().set(LyXTabular::UNSET_ROTATE_TABULAR);
-		break;
-	case 1:
-		// "no change state", should not happen
-		break;
-	case 2:
-		form_->controller().set(LyXTabular::SET_ROTATE_TABULAR);
-		break;
-	}
+	form_->controller().rotateTabular(rotateTabularCB->isChecked());
+	form_->changed();
 }
 
 
-void QTabularDialog::rotateCell_checked(int state)
+void QTabularDialog::rotateCell()
 {
-	switch (state) {
-	case 0:
-		form_->controller().set(LyXTabular::UNSET_ROTATE_CELL);
-		break;
-	case 1:
-		// "no change state", should not happen
-		break;
-	case 2:
-		form_->controller().set(LyXTabular::SET_ROTATE_CELL);
-		break;
-	}
+	form_->controller().rotateCell(rotateCellCB->isChecked());
+	form_->changed();
 }
 
 
 void QTabularDialog::hAlign_changed(int align)
 {
-	LyXTabular::Feature num = LyXTabular::ALIGN_LEFT;
-	LyXTabular::Feature multi_num = LyXTabular::M_ALIGN_LEFT;
+	ControlTabular::HALIGN h;
 
 	switch (align) {
-		case 0:
-		{
-			num = LyXTabular::ALIGN_LEFT;
-			multi_num = LyXTabular::M_ALIGN_LEFT;
-			break;
-		}
-		case 1:
-		{
-			num = LyXTabular::ALIGN_CENTER;
-			multi_num = LyXTabular::M_ALIGN_CENTER;
-			break;
-		}
-		case 2:
-		{
-			num = LyXTabular::ALIGN_RIGHT;
-			multi_num = LyXTabular::M_ALIGN_RIGHT;
-			break;
-		case 3:
-		{
-			num = LyXTabular::ALIGN_BLOCK;
-			//multi_num: no equivalent
-			break;
-		}
-		}
+		case 0: h = ControlTabular::LEFT; break;
+		case 1: h = ControlTabular::CENTER; break;
+		case 2: h = ControlTabular::RIGHT; break;
+		case 3: h = ControlTabular::BLOCK; break;
 	}
-	if (isMulticolumnCell(form_))
-		form_->controller().set(multi_num);
-	else
-		form_->controller().set(num);
+
+	form_->controller().halign(h);
 }
 
 
 void QTabularDialog::vAlign_changed(int align)
 {
-	LyXTabular::Feature num = LyXTabular::VALIGN_CENTER;
-	LyXTabular::Feature multi_num = LyXTabular::M_VALIGN_CENTER;
+	ControlTabular::VALIGN v;
 
 	switch (align) {
-		case 0:
-		{
-			num = LyXTabular::VALIGN_TOP;
-			multi_num = LyXTabular::M_VALIGN_TOP;
-			break;
-		}
-		case 1:
-		{
-			num = LyXTabular::VALIGN_CENTER;
-			multi_num = LyXTabular::M_VALIGN_CENTER;
-			break;
-		}
-		case 2:
-		{
-			num = LyXTabular::VALIGN_BOTTOM;
-			multi_num = LyXTabular::M_VALIGN_BOTTOM;
-			break;
-		}
+		case 0: v = ControlTabular::TOP; break;
+		case 1: v = ControlTabular::VCENTER; break;
+		case 2: v = ControlTabular::BOTTOM; break;
 	}
-	if (isMulticolumnCell(form_))
-		form_->controller().set(multi_num);
-	else
-		form_->controller().set(num);
+
+	form_->controller().valign(v);
 }
 
 
-void QTabularDialog::longTabular_changed(int state)
+void QTabularDialog::longTabular()
 {
-	switch (state) {
-	case 0:
-		form_->controller().set(LyXTabular::UNSET_LONGTABULAR);
-		break;
-	case 1:
-		// "no change state", should not happen
-		break;
-	case 2:
-		form_->controller().set(LyXTabular::SET_LONGTABULAR);
-		break;
-	}
+	form_->controller().longTabular(longTabularCB->isChecked());
 	form_->changed();
 }
 
