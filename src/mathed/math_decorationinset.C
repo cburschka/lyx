@@ -97,7 +97,7 @@ void MathDecorationInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 1, y);
 	if (wide())
-		mathed_draw_deco(pi, x + 1, y + dy_, pi.width, dh_, key_->name);
+		mathed_draw_deco(pi, x + 1, y + dy_, cell(0).width(), dh_, key_->name);
 	else
 		mathed_draw_deco(pi, x + 1 + (pi.width - dw_) / 2,
 			y + dy_, dw_, dh_, key_->name);
