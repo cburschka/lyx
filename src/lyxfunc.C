@@ -1279,26 +1279,6 @@ string const LyXFunc::dispatch(int ac,
 		owner->getDialogs()->showLogFile();
 		break;
 		
-	case LFUN_LAYOUTNO:
-	{
-		lyxerr[Debug::INFO] << "LFUN_LAYOUTNO: (arg) " << argument << endl;
-		int sel = strToInt(argument);
-		lyxerr[Debug::INFO] << "LFUN_LAYOUTNO: (sel) "<< sel << endl;
-		
-		// Should this give a setMessage instead?
-		if (sel == 0) 
-			return string(); // illegal argument
-
-		--sel; // sel 1..., but layout 0...
-
-		// Pretend we got the name instead.
-		dispatch(int(LFUN_LAYOUT), 
-			 textclasslist.NameOfLayout(owner->view()
-						    ->buffer()->params.textclass,
-						    sel));
-		return string();
-	}
-		
 	case LFUN_LAYOUT_DOCUMENT:
 		owner->getDialogs()->showDocument();
 		break;

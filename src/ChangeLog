@@ -1,5 +1,11 @@
 2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
 
+	* lyxfunc.C:
+	* commandtags.h:
+	* LyXAction.C: remove old LFUN_LAYOUTNO
+
+2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
+
 	* paragraph_pimpl.h:
 	* paragraph_pimpl.C: isTextAt() doesn't need font param
 

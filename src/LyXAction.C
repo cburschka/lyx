@@ -252,7 +252,6 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_COPY, "layout-copy",
 		  N_("Copy paragraph environment type"), Noop },
 		{ LFUN_LAYOUT_DOCUMENT, "layout-document", "", ReadOnly },
-		{ LFUN_LAYOUTNO, "", "internal only", Noop },
 		{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", "", ReadOnly },
 		{ LFUN_LAYOUT_PASTE, "layout-paste",
 		  N_("Paste paragraph environment type"), Noop },
