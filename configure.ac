@@ -231,7 +231,7 @@ test "x$prefix" = xNONE && prefix=$default_prefix
 test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
 if echo $prefix |grep ' ' >/dev/null 2>/dev/null ; then
   LYX_WARNING([The installation prefix \"${prefix}\" contains a space, which
-   causes problems with the Makefiles. The installation will be done in 
+   causes problems with the Makefiles. The installation will be done in
    directory \"`pwd`/installprefix\" instead. Please move its contents to
    the right place after installation.])
   prefix=`pwd`/installprefix
@@ -388,6 +388,10 @@ int mkstemp(char*);
 #define BOOST_DISABLE_THREADS 1
 #define BOOST_NO_WREGEX 1
 #define BOOST_NO_WSTRING 1
+
+#ifdef __CYGWIN__
+#define BOOST_POSIX 1
+#endif
 
 #endif
 ])

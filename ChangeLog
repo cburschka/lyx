@@ -1,3 +1,7 @@
+2005-02-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* configure.ac (AH_BOTTOM): make BOOST_POSIX be defined for cygwin 
+
 2005-02-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.ac: if the prefix contains space, replace it with
@@ -7,7 +11,7 @@
 
 2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
-	* configure.ac: add src/support/tests/Makefile 
+	* configure.ac: add src/support/tests/Makefile
 
 2005-01-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
