@@ -1,3 +1,8 @@
+2001-10-22  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (checkInsertChar): added for REALLY checking the
+	font of the inserted char in the right inset!
+
 2001-10-19  Juergen Vigna  <jug@sad.it>
 
 	* inset.h: added method allowSpellcheck() so that insets who do

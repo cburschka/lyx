@@ -884,7 +884,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			inset_boundary = cboundary(bv);
 			the_locking_inset = uinset;
 			uinset->insetButtonPress(bv, x - inset_x, y - inset_y,
-						 button);
+			                         button);
 			uinset->edit(bv, x - inset_x, y - inset_y, 0);
 			if (the_locking_inset)
 				updateLocal(bv, CURSOR, false);
@@ -920,7 +920,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 				localDispatch(bv, LFUN_PASTE, "");
 			else
 				localDispatch(bv, LFUN_PASTESELECTION,
-					      "paragraph");
+				              "paragraph");
 		}
 		if (clear)
 			lt = 0;
@@ -2315,4 +2315,12 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 	// we have to unlock ourself in this function by default!
 	bv->unlockInset(const_cast<InsetText *>(this));
 	return false;
+}
+
+
+bool InsetText::checkInsertChar(LyXFont & font)
+{
+	if (owner())
+		return owner()->checkInsertChar(font);
+	return true;
 }

@@ -238,7 +238,9 @@ public:
 	                   bool const & = true, bool const & = false);
 	bool searchBackward(BufferView *, string const &,
 	                    bool const & = true, bool const & = false);
-	
+	///
+	bool checkInsertChar(LyXFont &);
+	///
 	//
 	// Public structures and variables
 	///

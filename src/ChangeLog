@@ -1,3 +1,8 @@
+2001-10-22  Juergen Vigna  <jug@sad.it>
+
+	* buffer.C (insertStringAsLines): modify the font for inserting
+	chars in certain conditions by calling checkInsertChar(font).
+
 2001-10-19  Juergen Vigna  <jug@sad.it>
 
 	* text.C (workWidth): use getRow instead of wrong algorithm.

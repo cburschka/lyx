@@ -564,7 +564,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 
 // Single-click on work area
 void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
-					    unsigned int button)
+                                            unsigned int button)
 {
 	if (!buffer_ || !screen_.get()) return;
 
@@ -589,9 +589,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		   otherwise give the event to the inset */
 		if (inset_hit == bv_->theLockingInset()) {
 			bv_->theLockingInset()->
-				insetButtonPress(bv_,
-						 xpos, ypos,
-						 button);
+				insetButtonPress(bv_,xpos, ypos,button);
 			return;
 		} else {
 			bv_->unlockInset(bv_->theLockingInset());

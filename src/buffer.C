@@ -1340,11 +1340,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 // needed to insert the selection
 void Buffer::insertStringAsLines(Paragraph *& par, Paragraph::size_type & pos,
-				 LyXFont const & font, 
-				 string const & str) const
+                                 LyXFont const & fn,string const & str) const
 {
 	LyXLayout const & layout = textclasslist.Style(params.textclass, 
-						     par->getLayout());
+	                                               par->getLayout());
+	LyXFont font = fn;
+	
+	(void)par->checkInsertChar(font);
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
 	for(string::const_iterator cit = str.begin(); 
@@ -1352,7 +1354,7 @@ void Buffer::insertStringAsLines(Paragraph *& par, Paragraph::size_type & pos,
 		if (*cit == '\n') {
 			if (par->size() || layout.keepempty) { 
 				par->breakParagraph(params, pos, 
-						    layout.isEnvironment());
+				                    layout.isEnvironment());
 				par = par->next();
 				pos = 0;
 				space_inserted = true;
@@ -1360,8 +1362,9 @@ void Buffer::insertStringAsLines(Paragraph *& par, Paragraph::size_type & pos,
 				continue;
 			}
 			// do not insert consecutive spaces if !free_spacing
-		} else if ((*cit == ' ' || *cit == '\t')
-			   && space_inserted && !layout.free_spacing) {
+		} else if ((*cit == ' ' || *cit == '\t') &&
+		           space_inserted && !layout.free_spacing)
+		{
 			continue;
 		} else if (*cit == '\t') {
 			if (!layout.free_spacing) {
