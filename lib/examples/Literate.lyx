@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass literate-article
 \language english
 \inputencoding default
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -32,19 +34,29 @@ An example program
 Edmar Wienskoski Jr.
 \newline 
 edmar-w-jr@technologist.com
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Modified by Bernard Michael Hurley bernardh@westherts.ac.uk ---- Don't blame
  Edmar for any errors that have crept in!
-\end_float 
+\end_inset 
+
+
 \layout Date
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 today
+\end_inset 
+
+
 \layout Standard
 
 
@@ -185,14 +197,18 @@ buffer
 \family default 
 , a program name and line number.
  There is no special requirement on the input strings, they can be anything.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 This function has been slightly changed from EW's original to make scanning
  a bit easier with LaTeX::scanLogFile().
  The test has been added because LyX can crash if empty lines are allowed
  here --- I can't figure out why! --- BMH
-\end_float 
+\end_inset 
+
+
 \layout Scrap
 
 <<Function bodies>>=
@@ -711,13 +727,17 @@ cleans
 
  superfluous information from gcc messages, namely the name of the noweb
  file and the line number of the Error.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 More could be done.
  For instance, some way of distinguishing between gcc Errors and Warnings
  should be devised.
-\end_float 
+\end_inset 
+
+
 \layout Scrap
 
 <<Function bodies>>=
@@ -930,9 +950,9 @@ listerrors.c
 
 <<build-script>>=
 \newline 
-#!/usr/local/bin/bash
+#!/bin/sh
 \newline 
-notangle -L -Rlisterrors.c Literate.nw > listerrors.c
+notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > listerrors.c
 \newline 
 gcc -g -o listerrors listerrors.c
 \newline 
@@ -955,7 +975,7 @@ build-script
 
 #!/bin/sh
 \newline 
-notangle -Rbuild-script $1 | sh
+notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
 \layout LyX-Code
 
 \the_end
