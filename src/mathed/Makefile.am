@@ -4,7 +4,7 @@ EXTRA_DIST = formulamacro.C
 
 noinst_LTLIBRARIES = libmathed.la
 
-INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
+AM_CPPFLAGS = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 AM_CXXFLAGS = $(PCH_FLAGS)
 

@@ -2,9 +2,10 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libboostregex.la
 
-INCLUDES = $(BOOST_INCLUDES)
+AM_CPPFLAGS = \
+	-DBOOST_USER_CONFIG="<config.h>" \
+	$(BOOST_INCLUDES)
 
-AM_CPPFLAGS = -DBOOST_USER_CONFIG="<config.h>"
 AM_CXXFLAGS = $(PCH_FLAGS)
 
 libboostregex_la_SOURCES = \

@@ -5,17 +5,19 @@ SUBDIRS = ui moc
 
 EXTRA_DIST = Makefile.dialogs
 
-INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
-	-I$(top_srcdir)/images \
-	$(QT_INCLUDES) $(BOOST_INCLUDES) \
-	-I$(top_srcdir)/src/frontends/controllers
-
 noinst_LTLIBRARIES = libqt2.la
 
 libqt2_la_LDFLAGS = $(QT_LDFLAGS)
 libqt2_la_LIBADD = $(QT_LIB) ui/*.lo moc/*.lo ui/moc/*.lo
 
-AM_CPPFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
+AM_CPPFLAGS = \
+	-DQT_CLEAN_NAMESPACE \
+	-DQT_GENUINE_STR
+	-I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
+	-I$(top_srcdir)/images \
+	$(QT_INCLUDES) $(BOOST_INCLUDES) \
+	-I$(top_srcdir)/src/frontends/controllers
+
 AM_CXXFLAGS = $(PCH_FLAGS)
 
 libqt2_la_SOURCES = \

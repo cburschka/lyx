@@ -1,3 +1,8 @@
+2004-12-03  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Most Makefile.am's: Change to use AM_CPPFLAGS instead of
+	INCLUDES since that has been deprecated by automake. 
+
 2004-11-25  Angus Leeming  <leeming@lyx.org>
 
 	* README.Cygwin: new file, containing the current contents of

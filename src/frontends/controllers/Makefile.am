@@ -2,9 +2,9 @@ include $(top_srcdir)/config/common.am
 
 EXTRA_DIST = BCView.tmpl
 
-INCLUDES = -I$(top_srcdir)/src $(BOOST_INCLUDES)
-
 noinst_LTLIBRARIES = libcontrollers.la
+
+AM_CPPFLAGS = -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
 AM_CXXFLAGS = $(PCH_FLAGS)
 

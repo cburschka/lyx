@@ -1,6 +1,5 @@
 include $(top_srcdir)/config/common.am
 
-INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 EXTRA_DIST = test-structure.tex test-insets.tex
 DISTCLEANFILES += $(BUILT_SOURCES)
 
@@ -13,6 +12,8 @@ DISTCLEANFILES += $(BUILT_SOURCES)
 #tex2lyx_LDADD = libtexparser.la
 
 bin_PROGRAMS = tex2lyx
+
+AM_CPPFLAGS = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 AM_CXXFLAGS = $(PCH_FLAGS)
 

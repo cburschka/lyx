@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libgraphics.la
 
-INCLUDES = -I$(srcdir)/.. $(BOOST_INCLUDES)
+AM_CPPFLAGS = -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 AM_CXXFLAGS = $(PCH_FLAGS)
 

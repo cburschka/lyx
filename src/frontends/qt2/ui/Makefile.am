@@ -7,12 +7,16 @@ SUBDIRS = . moc
 
 EXTRA_DIST = QPreambleDialogBase.ui $(UIFILES)
 
-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/src/frontends \
+AM_CPPFLAGS = \
+	-DQT_CLEAN_NAMESPACE \
+	-DQT_GENUINE_STR \
+	-DQT_NO_TRANSLATION
+	-I$(top_srcdir)/src \
+	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/qt2 \
 	$(QT_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-AM_CPPFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION
 AM_CXXFLAGS = $(PCH_FLAGS)
 
 noinst_LTLIBRARIES = libqt2ui.la

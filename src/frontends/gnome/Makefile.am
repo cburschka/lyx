@@ -2,7 +2,9 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libgnome.la
 
-INCLUDES = $(FRONTEND_INCLUDES) -I$(top_srcdir)/src/ \
+AM_CPPFLAGS = \
+	$(FRONTEND_INCLUDES) \
+	-I$(top_srcdir)/src/ \
 	-I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/src/frontends/xforms \
 	-I$(top_srcdir)/src/frontends/controllers \

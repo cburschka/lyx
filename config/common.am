@@ -19,7 +19,7 @@ sinclude ./pch.h.gch.dep
 *.C *.cpp: $(PCH_FILE)
 
 pch.h.gch: $(PCH_SOURCE)
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) \
         $(AM_CPPFLAGS) $(CPPFLAGS) $(CXXFLAGS) \
 	-x c++-header $(PCH_SOURCE) -MT $@ -MD -MP -MF "./$@.Tdep" \
 	&& mv "./$@.Tdep" "./$@.dep" || rm "./$@.Tdep"

@@ -3,14 +3,14 @@ include $(srcdir)/../Makefile.dialogs
 
 DISTCLEANFILES += *.C
 
-INCLUDES = -I$(top_srcdir)/src/ \
+AM_CPPFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION \
+	-I$(top_srcdir)/src/ \
 	-I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/src/frontends/controllers \
 	-I$(top_builddir)/src/frontends/qt2 \
 	$(QT_INCLUDES) \
 	$(BOOST_INCLUDES)
 
-AM_CPPFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION
 AM_CXXFLAGS = $(PCH_FLAGS)
 
 noinst_LTLIBRARIES = libqt2moc.la

@@ -4,7 +4,9 @@ SUBDIRS = gimages glade
 
 noinst_LTLIBRARIES = libgtk.la
 
-INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src \
+AM_CPPFLAGS = \
+	-I$(top_srcdir)/images \
+	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
 	-I../xforms \
