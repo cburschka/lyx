@@ -2739,7 +2739,7 @@ void InsetText::collapseParagraphs(BufferView * bv) const
 {
 	BufferParams const & bparams = bv->buffer()->params;
 	LyXText * llt = getLyXText(bv);
-	
+
 	while(par->next()) {
 		if (par->size() && par->next()->size() &&
 			!par->isSeparator(par->size()-1))

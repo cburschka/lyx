@@ -949,7 +949,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 						TEXT()->cursor.irow()->baseline() +
 						TEXT()->cursor.irow()->height() + 1);
 					TEXT()->cursor.x_fix(TEXT()->cursor.x());
-#else					
+#else
 					TEXT()->cursorDown(owner->view());
 #endif
 				} else {

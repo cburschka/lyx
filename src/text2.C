@@ -2119,7 +2119,7 @@ float LyXText::getCursorX(BufferView * bview, Row * row,
 	float fill_label_hfill;
 	// This call HAS to be here because of the BidiTables!!!
 	prepareToPrint(bview, row, x, fill_separator, fill_hfill,
-	               fill_label_hfill);
+		       fill_label_hfill);
 
 	if (last < row->pos())
 		cursor_vpos = row->pos();

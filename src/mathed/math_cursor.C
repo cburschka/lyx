@@ -144,13 +144,13 @@ struct Selection
 				}
 				// append the left over horizontal cells to the last column
 				idx_type i = p->index(row + p->row(idx), p->ncols() - 1);
-				for (col_type col = numcols; col < data_.ncols(); ++col) 
+				for (col_type col = numcols; col < data_.ncols(); ++col)
 					p->cell(i).push_back(data_.cell(data_.index(row, col)));
 			}
 			// append the left over vertical cells to the last _cell_
 			idx_type i = p->nargs() - 1;
-			for (row_type row = numrows; row < data_.nrows(); ++row) 
-				for (col_type col = 0; col < data_.ncols(); ++col) 
+			for (row_type row = numrows; row < data_.nrows(); ++row)
+				for (col_type col = 0; col < data_.ncols(); ++col)
 					p->cell(i).push_back(data_.cell(data_.index(row, col)));
 		}
 	}
@@ -1253,7 +1253,7 @@ bool MathCursor::goUpDown(bool up)
 					up ? yo - 4 : formula()->yhigh()
 				);
 		}
-		
+
 		// any improvement so far?
 		int xnew, ynew;
 		getPos(xnew, ynew);
@@ -1462,7 +1462,7 @@ bool MathCursor::interpret(char c)
 		if (name == "\\") {
 			// remove the '\\'
 			backspace();
-			if (c == '\\') 
+			if (c == '\\')
 				interpret("\\backslash");
 			else
 				interpret(string("\\") + c);

@@ -745,13 +745,13 @@ bool Parser::parse_macro(string & name)
 		string pars;
 		while (good() && nextToken().cat() != catBegin)
 			pars += getToken().cs();
-	
+
 		if (!good()) {
 			lyxerr << "bad stream in parse_macro\n";
 			dump();
 			return false;
 		}
-			
+
 		//lyxerr << "read \\def parameter list '" << pars << "'\n";
 		if (!pars.empty()) {
 			lyxerr << "can't handle non-empty parameter lists\n";
@@ -780,7 +780,7 @@ bool Parser::parse_macro(string & name)
 		if (!arg.empty())
 			nargs = atoi(arg.c_str());
 
-	} else { 
+	} else {
 		lyxerr << "\\newcommand or \\def  expected\n";
 		return false;
 	}

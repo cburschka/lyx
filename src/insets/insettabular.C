@@ -2828,7 +2828,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 {
 	if (buf.length() <= 0)
 		return true;
-	
+
 	int cols = 1;
 	int rows = 1;
 	int maxCols = 1;

@@ -161,7 +161,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y, unsigned int)
 	metrics(bv);
 	mathcursor->setPos(x, y);
 	//lyxerr << "setting pos to " << x << "," << y << "\n";
-	
+
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this, false);
@@ -629,7 +629,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			ls = '(';
 		if (rs.empty())
 			rs = ')';
-		
+
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->handleDelim(ls, rs);
 		updateLocal(bv, true);
@@ -963,7 +963,7 @@ void mathDispatchInsertMath(BufferView * bv, string const & arg)
 			InsetFormula * f = new InsetFormula(arg);
 			if (!bv->insertInset(f))
 				delete f;
-			else if (!mathcursor) // hotfix 
+			else if (!mathcursor) // hotfix
 				bv->getLyXText()->cursorRight(bv);
 		} else {
 			mathDispatchMathMode(bv, arg);
