@@ -1,3 +1,9 @@
+2004-04-05  Angus Leeming  <leeming@lyx.org>
+
+	* text.C (redoParagraphs): add call to updateCounters(), thereby
+	fixing the missing "Figure #:" label from the caption of a
+	figure float.
+
 2004-04-13  Angus Leeming  <leeming@lyx.org>
 
 	* text3.C (dispatch): call Inset::.notifyCursorLeaves when the

@@ -1816,6 +1816,7 @@ void LyXText::redoParagraphs(par_type pit, par_type end)
 	for ( ; pit != end; ++pit)
 		redoParagraphInternal(pit);
 	updateParPositions();
+	updateCounters();
 }
 
 
