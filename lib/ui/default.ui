@@ -226,8 +226,34 @@ Menuset
 	Item "Array environment|y" "math-insert matrix 2 2"
 	Item "Cases environment|C" "math-insert cases 2"
   Separator
+	Submenu "Font Change|f" "insert_math_font"
 	Item "Math Panel|l" "math-panel"
     End
+
+    Menu "insert_math_font"
+	Item "Math normal font" "math-insert \mathnormal"
+	Separator
+	Item "Math calligraphic family" "math-insert \mathcal"
+	Item "Math fraktur family" "math-insert \mathfrak"
+	Item "Math roman family" "math-insert \mathrm"
+	Item "Math sans serif family" "math-insert \mathsf"
+	Separator
+	Item "Math bold series" "math-insert \mathbf"
+	Separator
+	Item "Text normal font" "math-insert \textnormal"
+	Separator
+	Item "Text roman family" "math-insert \textrm"
+	Item "Text sans serif family" "math-insert \textsf"
+	Item "Text typewriter family" "math-insert \texttt"
+	Separator
+	Item "Text bold series" "math-insert \textbf"
+	Item "Text medium series" "math-insert \textmd"
+	Separator
+	Item "Text italic shape" "math-insert \textit"
+	Item "Text small caps shape" "math-insert \textsc"
+	Item "Text slanted shape" "math-insert \textsl"
+	Item "Text upright shape" "math-insert \textup"
+		End
 
     Menu "insert_floats"
 	FloatInsert
