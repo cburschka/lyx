@@ -17,7 +17,7 @@ os.wait()
 
 pid = os.fork()
 if pid == 0:
-	os.execvp("fig2dev", ["fig2dev", "-Lpstex_t"] + parameters + [filename, basename + ".pstex_t"])
-	print "convert did not work second time"
+	os.execvp("fig2dev", ["fig2dev", "-Lpstex_t", "-p" + basename] + parameters + [filename, basename + ".pstex_t"])
+	print "fig2dev did not work the second time"
 	os.exit(1)
 os.wait()

@@ -1,5 +1,11 @@
 2003-05-23  Angus Leeming  <leeming@lyx.org>
 
+	* insetexternal.C (write): check how many lines are output.
+	(latex): use the "PDFLaTeX" flavour if outputting to pfdlatex and
+	if the template has defined it.
+
+2003-05-23  Angus Leeming  <leeming@lyx.org>
+
 	* insetquotes (validate): use the new LaTeXFeatures::useBabel() method.
 
 2003-05-23  Angus Leeming  <leeming@lyx.org>

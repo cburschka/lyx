@@ -11,14 +11,16 @@
 #include <config.h>
 
 #include "insetexternal.h"
-#include "ExternalTemplate.h"
-#include "BufferView.h"
+
 #include "buffer.h"
-#include "funcrequest.h"
-#include "lyx_main.h"
-#include "LaTeXFeatures.h"
-#include "gettext.h"
+#include "BufferView.h"
 #include "debug.h"
+#include "ExternalTemplate.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "LaTeXFeatures.h"
+#include "latexrunparams.h"
+#include "lyx_main.h"
 #include "lyxlex.h"
 #include "Lsstream.h"
 
@@ -27,6 +29,7 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/lyxalgo.h"
 #include "support/path.h"
 #include "support/systemcall.h"
 #include "support/FileInfo.h"
@@ -161,14 +164,25 @@ int InsetExternal::write(string const & format,
 	}
 
 	updateExternal(format, buf);
-	os << doSubstitution(buf, cit->second.product);
-	return 0; // CHECK  (FIXME check what ? - jbl)
+	string const str = doSubstitution(buf, cit->second.product);
+	os << str;
+	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
 }
 
 
 int InsetExternal::latex(Buffer const * buf, ostream & os,
-			 LatexRunParams const &) const
+			 LatexRunParams const & runparams) const
 {
+	// If the template has specified a PDFLaTeX output, then we try and
+	// use that.
+	if (runparams.flavor == LatexRunParams::PDFLATEX) {
+		ExternalTemplate const & et = params_.templ;
+		ExternalTemplate::Formats::const_iterator cit =
+			et.formats.find("PDFLaTeX");
+		if (cit != et.formats.end())
+			return write("PDFLaTeX", buf, os);
+	}
+
 	return write("LaTeX", buf, os);
 }
 
