@@ -880,6 +880,10 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 {
 	no_selection = true;
 
+	// use this to check mouse motion for selection!
+	mouse_x = x;
+	mouse_y = y;
+
 	int tmp_x = x - drawTextXOffset;
 	int tmp_y = y + insetAscent - getLyXText(bv)->first;
 	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
@@ -1008,7 +1012,7 @@ bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 
 void InsetText::insetMotionNotify(BufferView * bv, int x, int y, int state)
 {
-	if (no_selection)
+	if (no_selection || ((mouse_x == x) && (mouse_y == y)))
 		return;
 	if (the_locking_inset) {
 		the_locking_inset->insetMotionNotify(bv, x - inset_x,

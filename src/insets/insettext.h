@@ -417,5 +417,10 @@ private:
 	mutable BufferView * do_resize;
 	mutable bool do_reinit;
 	mutable bool in_insetAllowed;
+	///
+	// these are used to check for mouse movement in Motion selection code
+	///
+	int mouse_x;
+	int mouse_y;
 };
 #endif

@@ -1,3 +1,8 @@
+2001-12-24  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (insetMotionNotify): added a mouse_x & mouse_y position
+	to check for REAL mouseMotion.
+
 2001-12-20  Juergen Vigna  <jug@sad.it>
 
 	* inset.C (cursor): return the owners cursor if available instead of
