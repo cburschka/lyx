@@ -13,7 +13,7 @@ echo -n "Locating GNU m4... "
 for prog in $M4 gm4 gnum4 m4 ; do
   case `$prog --version 2>&1` in
     *GNU*) ok=yes
-           GNUM4=$prog
+	   GNUM4=$prog
 	   echo "found: $GNUM4"
 	   break ;;
     *) ;;
