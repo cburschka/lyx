@@ -306,8 +306,7 @@ or similar.
 */
 #if 0
 	// Add a splash screen to the centre of the work area
-	string const splash_file = (lyxrc.show_banner) ?
-		LibFileSearch("images", "banner", "xpm") : string();
+	string const splash_file = LibFileSearch("images", "banner", "xpm");
 #endif 
 }
 

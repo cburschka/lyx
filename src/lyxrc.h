@@ -97,7 +97,6 @@ enum LyXRCTags {
 	RC_CURSOR_FOLLOWS_SCROLLBAR,
 	RC_DIALOGS_ICONIFY_WITH_MAIN,
 	RC_EXIT_CONFIRMATION,
-	RC_DISPLAY_SHORTCUTS,
 	RC_MAKE_BACKUP,
 	RC_BACKUPDIR_PATH,
 	RC_RTL_SUPPORT,
@@ -302,8 +301,6 @@ enum LyXRCTags {
 	bool use_kbmap;
 	/// Ask for confirmation of exit when there are unsaved documents?
 	bool exit_confirmation;
-	/// Should we display short-cut information in the minibuffer?
-	bool display_shortcuts;
 	///
 	string primary_kbmap;
 	///
@@ -334,8 +331,6 @@ enum LyXRCTags {
 	bool auto_number;
 	///
 	bool mark_foreign_language;
-	///
-	bool show_banner;
 	/// Do we have to use a GUI?
 	bool use_gui;
 	///

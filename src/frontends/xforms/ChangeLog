@@ -1,5 +1,11 @@
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
+	* FormPreferences.h:
+	* FormPreferences.C:
+	* forms/form_preferences.fd: remove show_banner, display_shortcuts 
+ 
+2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
+
 	* XWorkArea.h:
 	* XWorkArea.C: remove splash, should be handled in
 	  LyXScreen::greyOut()

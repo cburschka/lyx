@@ -66,7 +66,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
-	{ "\\display_shortcuts", LyXRC::RC_DISPLAY_SHORTCUTS },
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\exit_confirmation", LyXRC::RC_EXIT_CONFIRMATION },
@@ -131,7 +130,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
-	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
@@ -225,7 +223,6 @@ void LyXRC::setDefaults() {
 	backupdir_path.erase();
 	exit_confirmation = true;
 	display_graphics = "color";
-	display_shortcuts = true;
 	// Spellchecker settings:
 #ifdef USE_PSPELL
 	use_pspell = true;
@@ -253,7 +250,6 @@ void LyXRC::setDefaults() {
 
 	//
 	date_insert_format = "%A, %e %B %Y";
-	show_banner = true;
 	cursor_follows_scrollbar = false;
 	dialogs_iconify_with_main = false;
 	label_init_length = 3;
@@ -359,11 +355,6 @@ int LyXRC::read(string const & filename)
 		case RC_DISPLAY_GRAPHICS:
 			if (lexrc.next())
 				display_graphics = lexrc.getString();
-			break;
-
-		case RC_DISPLAY_SHORTCUTS:
-			if (lexrc.next())
-				display_shortcuts = lexrc.getBool();
 			break;
 
 		case RC_KBMAP:
@@ -882,10 +873,6 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				mark_foreign_language = lexrc.getBool();
 			break;
-		case RC_SHOW_BANNER:
-			if (lexrc.next())
-				show_banner = lexrc.getBool();
-			break;
 
 		case RC_NEW_ASK_FILENAME:
 			if (lexrc.next())
@@ -1015,11 +1002,6 @@ void LyXRC::output(ostream & os) const
 		   << "# MISC SECTION ######################################\n"
 		   << "#\n\n";
 
-	case RC_SHOW_BANNER:
-		if (show_banner != system_lyxrc.show_banner) {
-			os << "# Set to false to inhibit the startup banner.\n"
-			   << "\\show_banner " << tostr(show_banner) << "\n";
-		}
 		// bind files are not done here.
 	case RC_UIFILE:
 		if (ui_file != system_lyxrc.ui_file) {
@@ -1059,13 +1041,6 @@ void LyXRC::output(ostream & os) const
 			   << "\n";
 		}
 
-	case RC_DISPLAY_SHORTCUTS:
-		if (display_shortcuts != system_lyxrc.display_shortcuts) {
-			os << "# Display name of the last command executed,\n"
-			   << "# with a list of short-cuts in the minibuffer.\n"
-			   << "\\display_shortcuts " << tostr(display_shortcuts)
-			   << "\n";
-		}
 	case RC_VIEWDVI_PAPEROPTION:
 		if (view_dvi_paper_option
 		    != system_lyxrc.view_dvi_paper_option) {
@@ -1917,10 +1892,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_DISPLAY_GRAPHICS:
 		str = _("Select how LyX will display any graphics.");
-		break;
-
-	case RC_DISPLAY_SHORTCUTS:
-		str = _("LyX continously displays names of last command executed, along with a list of defined short-cuts for it in the minibuffer. Set to false if LyX seems slow.");
 		break;
 
 	case RC_MAKE_BACKUP:

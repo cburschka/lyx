@@ -40,14 +40,6 @@ using std::hex;
 QWorkArea::QWorkArea(int, int, int, int)
 	: WorkArea(), QWidget(qApp->mainWidget()), painter_(*this)
 {
-	// Add a splash screen to the centre of the work area
-	string const splash_file = (lyxrc.show_banner) ?
-		LibFileSearch("images", "banner", "xpm") : string();
-
-	if (!splash_file.empty()) {
-		// FIXME
-	}
-
 	scrollbar_ = new QScrollBar(QScrollBar::Vertical, this);
 	content_ = new QContentPane(this);
 

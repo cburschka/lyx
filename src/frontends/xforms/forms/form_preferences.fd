@@ -973,7 +973,7 @@ argument: 0
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1101,7 +1101,7 @@ argument: 0
 Name: form_preferences_lnf_misc
 Width: 450
 Height: 350
-Number of Objects: 19
+Number of Objects: 17
 
 --------------------
 class: FL_BOX
@@ -1142,26 +1142,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 15 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Show banner|#S
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_banner
-callback: C_FormBaseDeprecatedInputCB
-argument: 0
-	value: 1
-
---------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 15 45 30 30
+box: 15 20 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1180,7 +1161,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 75 30 30
+box: 15 50 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1199,26 +1180,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 105 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Display keyboard shortcuts|#k
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_display_shrtcuts
-callback: C_FormBaseDeprecatedInputCB
-argument: 0
-	value: 1
-
---------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 15 135 30 30
+box: 15 80 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1237,7 +1199,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 165 30 30
+box: 15 110 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1256,7 +1218,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 15 195 30 30
+box: 15 140 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1319,7 +1281,7 @@ argument: 0
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER

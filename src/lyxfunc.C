@@ -785,42 +785,40 @@ void LyXFunc::verboseDispatch(kb_action action,
 
 	commandshortcut.erase();
 
-	if (lyxrc.display_shortcuts && show_sc) {
-		if (action != LFUN_SELFINSERT) {
-			// Put name of command and list of shortcuts
-			// for it in minibuffer
-			string comname = lyxaction.getActionName(action);
+	if (show_sc && action != LFUN_SELFINSERT) {
+		// Put name of command and list of shortcuts
+		// for it in minibuffer
+		string comname = lyxaction.getActionName(action);
 
-			int pseudoaction = action;
-			bool argsadded = false;
+		int pseudoaction = action;
+		bool argsadded = false;
 
-			if (!argument.empty()) {
-				// the pseudoaction is useful for the bindings
-				pseudoaction =
-					lyxaction.searchActionArg(action,
-								  argument);
+		if (!argument.empty()) {
+			// the pseudoaction is useful for the bindings
+			pseudoaction =
+				lyxaction.searchActionArg(action,
+							  argument);
 
-				if (pseudoaction == LFUN_UNKNOWN_ACTION) {
-					pseudoaction = action;
-				} else {
-					comname += " " + argument;
-					argsadded = true;
-				}
-			}
-
-			string const shortcuts =
-				toplevel_keymap->findbinding(pseudoaction);
-
-			if (!shortcuts.empty()) {
-				comname += ": " + shortcuts;
-			} else if (!argsadded && !argument.empty()) {
+			if (pseudoaction == LFUN_UNKNOWN_ACTION) {
+				pseudoaction = action;
+			} else {
 				comname += " " + argument;
+				argsadded = true;
 			}
+		}
 
-			if (!comname.empty()) {
-				comname = strip(comname);
-				commandshortcut = "(" + comname + ')';
-			}
+		string const shortcuts =
+			toplevel_keymap->findbinding(pseudoaction);
+
+		if (!shortcuts.empty()) {
+			comname += ": " + shortcuts;
+		} else if (!argsadded && !argument.empty()) {
+			comname += " " + argument;
+		}
+
+		if (!comname.empty()) {
+			comname = strip(comname);
+			commandshortcut = "(" + comname + ')';
 		}
 	}
 

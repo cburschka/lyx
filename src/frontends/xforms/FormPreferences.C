@@ -1825,12 +1825,9 @@ FD_preferences_lnf_misc const * FormPreferences::LnFmisc::dialog()
 
 void FormPreferences::LnFmisc::apply() const
 {
-	lyxrc.show_banner = fl_get_button(dialog_->check_banner);
 	lyxrc.auto_region_delete =
 		fl_get_button(dialog_->check_auto_region_delete);
 	lyxrc.exit_confirmation = fl_get_button(dialog_->check_exit_confirm);
-	lyxrc.display_shortcuts =
-		fl_get_button(dialog_->check_display_shrtcuts);
 	lyxrc.new_ask_filename = fl_get_button(dialog_->check_ask_new_file);
 	lyxrc.cursor_follows_scrollbar =
 		fl_get_button(dialog_->check_cursor_follows_scrollbar);
@@ -1869,10 +1866,8 @@ void FormPreferences::LnFmisc::build()
 	fl_set_counter_return(dialog_->counter_wm_jump, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	setPrehandler(dialog_->check_banner);
 	setPrehandler(dialog_->check_auto_region_delete);
 	setPrehandler(dialog_->check_exit_confirm);
-	setPrehandler(dialog_->check_display_shrtcuts);
 	setPrehandler(dialog_->counter_autosave);
 	setPrehandler(dialog_->check_ask_new_file);
 	setPrehandler(dialog_->check_cursor_follows_scrollbar);
@@ -1890,14 +1885,10 @@ FormPreferences::LnFmisc::feedback(FL_OBJECT const * const ob) const
 {
 	string str;
 
-	if (ob == dialog_->check_banner)
-		str = lyxrc.getDescription(LyXRC::RC_SHOW_BANNER);
-	else if (ob == dialog_->check_auto_region_delete)
+	if (ob == dialog_->check_auto_region_delete)
 		str = lyxrc.getDescription(LyXRC::RC_AUTOREGIONDELETE);
 	else if (ob == dialog_->check_exit_confirm)
 		str = lyxrc.getDescription(LyXRC::RC_EXIT_CONFIRMATION);
-	else if (ob == dialog_->check_display_shrtcuts)
-		str = lyxrc.getDescription(LyXRC::RC_DISPLAY_SHORTCUTS);
 	else if (ob == dialog_->check_ask_new_file)
 		str = lyxrc.getDescription(LyXRC::RC_NEW_ASK_FILENAME);
 	else if (ob == dialog_->check_cursor_follows_scrollbar)
@@ -1920,11 +1911,9 @@ FormPreferences::LnFmisc::feedback(FL_OBJECT const * const ob) const
 
 void FormPreferences::LnFmisc::update()
 {
-	fl_set_button(dialog_->check_banner, lyxrc.show_banner);
 	fl_set_button(dialog_->check_auto_region_delete,
 		      lyxrc.auto_region_delete);
 	fl_set_button(dialog_->check_exit_confirm, lyxrc.exit_confirmation);
-	fl_set_button(dialog_->check_display_shrtcuts, lyxrc.display_shortcuts);
 	fl_set_button(dialog_->check_ask_new_file, lyxrc.new_ask_filename);
 	fl_set_button(dialog_->check_cursor_follows_scrollbar,
 		      lyxrc.cursor_follows_scrollbar);
