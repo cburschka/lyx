@@ -1,0 +1,94 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[spie]{article (SPIE-Proceedings)}
+# SPIE-Article textclass definition file.
+# Author : Guenter Milde <g.milde@physik.tu-dresden.de>
+# to be used with the spie.cls LaTex-style available at
+# http://public.lanl.gov/kmh/spie/
+
+# Input general definitions
+Input stdclass.inc
+
+# no pagenumbers by default
+PageStyle empty
+
+# There are no chapters in an article.
+NoStyle Chapter
+NoStyle Chapter*
+
+MaxCounter		Counter_Section
+SecNumDepth		3
+TocDepth		3
+
+# Section-numbered style definition
+Style Section
+  Align			Center
+  AlignPossible		Block, Center, Left
+  Font
+    Series		Bold
+    Size		large
+  EndFont
+End
+
+# Section-unnumbered style definition
+Style Section*
+  Align			Center
+  AlignPossible		Block, Center, Left
+  Font
+    Series		Bold
+    Size		large
+  EndFont
+End
+
+Style Keywords
+  Margin		First_Dynamic
+  NextNoIndent 		1
+  LatexType             Command
+  LatexName		keywords
+  LabelType		Static
+  LabelString           "Keywords: "
+  # label font definition
+  LabelFont
+    Series		Bold
+  EndFont
+End
+
+Style Authorinfo
+  Margin		Dynamic
+  NextNoIndent 		1
+  InTitle		1
+  LatexType		Command
+  LatexName		authorinfo
+  ParSkip		0.4
+  Align			Left
+  AlignPossible		Block, Left, Right, Center
+  BottomSep		1.5
+  LabelType		Static
+  LabelString           "Authorinfo: "
+  LabelFont
+    Series		Bold
+    Shape		Italic
+  EndFont
+End  
+
+# Abstract style definition changes: 
+Style Abstract
+  LeftMargin		""
+  RightMargin		""
+  ParIndent		""
+  ParSep		0.5
+  LabelString		ABSTRACT
+  LabelFont
+    Series		Bold
+  EndFont
+  TextFont
+    Size		normal
+  EndFont
+End
+
+Style Acknowledgments
+  CopyStyle 	     	Abstract
+#  NextNoIndent 		1
+#  LatexType             Command
+  LatexName	        acknowledgments
+  LabelString		ACKNOWLEDGMENTS
+End
