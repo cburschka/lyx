@@ -1834,6 +1834,16 @@ void FormPreferences::LnFmisc::apply() const
 		(fl_get_counter_value(dialog_->counter_autosave));
 	lyxrc.wheel_jump = static_cast<unsigned int>
 		(fl_get_counter_value(dialog_->counter_wm_jump));
+
+	if (fl_get_button(dialog_->radio_display_monochrome)) {
+		lyxrc.display_graphics = "mono";
+	} else if (fl_get_button(dialog_->radio_display_grayscale)) {
+		lyxrc.display_graphics = "gray";
+	} else if (fl_get_button(dialog_->radio_display_color)) {
+		lyxrc.display_graphics = "color";
+	} else {
+		lyxrc.display_graphics = "no";
+	}
 }
 
 
@@ -1857,6 +1867,10 @@ void FormPreferences::LnFmisc::build()
 	setPreHandler(dialog_->check_cursor_follows_scrollbar);
 	setPreHandler(dialog_->check_dialogs_iconify_with_main);
 	setPreHandler(dialog_->counter_wm_jump);
+	setPreHandler(dialog_->radio_display_monochrome);
+	setPreHandler(dialog_->radio_display_grayscale);
+	setPreHandler(dialog_->radio_display_color);
+	setPreHandler(dialog_->radio_no_display);
 }
 
 
@@ -1883,6 +1897,11 @@ FormPreferences::LnFmisc::feedback(FL_OBJECT const * const ob) const
 		str = lyxrc.getDescription(LyXRC::RC_AUTOSAVE);
 	else if (ob == dialog_->counter_wm_jump)
 		str = lyxrc.getDescription(LyXRC::RC_WHEEL_JUMP);
+	else if (ob == dialog_->radio_display_monochrome ||
+		 ob == dialog_->radio_display_grayscale ||
+		 ob == dialog_->radio_display_color ||
+		 ob == dialog_->radio_no_display)
+		str = lyxrc.getDescription(LyXRC::RC_DISPLAY_GRAPHICS);
 
 	return str;
 }
@@ -1902,6 +1921,16 @@ void FormPreferences::LnFmisc::update()
 		      lyxrc.dialogs_iconify_with_main);
 	fl_set_counter_value(dialog_->counter_autosave, lyxrc.autosave);
 	fl_set_counter_value(dialog_->counter_wm_jump, lyxrc.wheel_jump);
+
+	if (lyxrc.display_graphics == "mono") {
+		fl_set_button(dialog_->radio_display_monochrome, 1);
+	} else if (lyxrc.display_graphics == "gray") {
+		fl_set_button(dialog_->radio_display_grayscale, 1);
+	} else if (lyxrc.display_graphics == "color") {
+		fl_set_button(dialog_->radio_display_color, 1);
+	} else {
+		fl_set_button(dialog_->radio_no_display, 1);
+	}
 }
 
 

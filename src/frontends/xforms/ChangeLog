@@ -1,3 +1,18 @@
+2001-09-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* form_ref.fd: a little tweaking.
+
+2001-09-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* forms/form_preferences.fd: rearrangement and addition of new
+	Display Graphics radio buttons to Look & Feel->Misc
+	(By Jürgen Spitzmüller).
+
+	* FormPreferences.C: modify new lyxrc variable "display_graphics"
+	depending on the values of the Display Graphics radio buttons.
+
+	* FormGraphics.C: use this variable.
+
 2001-09-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormMathsBitmap.[Ch]: add d-tor to finally fix a memory leak.

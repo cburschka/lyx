@@ -28,6 +28,7 @@
 #include "support/lstrings.h"  // for strToDbl & tostr
 #include "support/FileInfo.h"  // for FileInfo
 #include "insets/insetgraphicsParams.h"
+#include "lyxrc.h" // for lyxrc.display_graphics
 
 using std::endl;
 
@@ -107,10 +108,22 @@ void FormGraphics::apply()
 
 	igp.filename = fl_get_input(dialog_->input_filename);
 
-	if (fl_get_button(dialog_->check_display)) {
-		igp.display = InsetGraphicsParams::COLOR;
-	} else {
+	if (lyxrc.display_graphics == "no") {
 		igp.display = InsetGraphicsParams::NONE;
+
+	} else {
+		if (fl_get_button(dialog_->check_display)) {
+			if (lyxrc.display_graphics == "mono") {
+				igp.display = InsetGraphicsParams::MONOCHROME;
+			} else if (lyxrc.display_graphics == "gray") {
+				igp.display = InsetGraphicsParams::GRAYSCALE;
+			} else if (lyxrc.display_graphics == "color") {
+				igp.display = InsetGraphicsParams::COLOR;
+			}
+			
+		} else {
+			igp.display = InsetGraphicsParams::NONE;
+		}
 	}
 
 	double const scale =
@@ -198,11 +211,17 @@ void FormGraphics::update()
 	             igp.filename.c_str());
 
 	// To display or not to display
-	if (igp.display == InsetGraphicsParams::NONE) {
+	if (lyxrc.display_graphics == "no") {
 		fl_set_button(dialog_->check_display, 0);
 	} else {
-		fl_set_button(dialog_->check_display, 1);
+		if (igp.display == InsetGraphicsParams::NONE) {
+			fl_set_button(dialog_->check_display, 0);
+		} else {
+			fl_set_button(dialog_->check_display, 1);
+		}
 	}
+
+	setEnabled(dialog_->check_display, (lyxrc.display_graphics != "no"));
 
 	if (igp.heightResize == InsetGraphicsParams::SCALE) {
 		string number = tostr(igp.heightSize);
@@ -254,7 +273,7 @@ void FormGraphics::update()
 		default:
 			break;
 		}
-		fl_set_choice(dialog_->choice_width_units, pos);
+		fl_set_choice(dialog_->choice_height_units, pos);
 	}
 		
 	// Update the rotate angle

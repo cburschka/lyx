@@ -66,6 +66,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
+	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
 	{ "\\display_shortcuts", LyXRC::RC_DISPLAY_SHORTCUTS },
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
@@ -218,6 +219,7 @@ void LyXRC::setDefaults() {
 	make_backup = true;
 	backupdir_path = "";
 	exit_confirmation = true;
+	display_graphics = "mono";
 	display_shortcuts = true;
 	// Spellchecker settings:
 #ifdef USE_PSPELL	
@@ -343,6 +345,11 @@ int LyXRC::read(string const & filename)
 		case RC_EXIT_CONFIRMATION:
 			if (lexrc.next())
 				exit_confirmation = lexrc.getBool();
+			break;
+			
+		case RC_DISPLAY_GRAPHICS:
+			if (lexrc.next())
+				display_graphics = lexrc.getString();
 			break;
 			
 		case RC_DISPLAY_SHORTCUTS:
@@ -1027,6 +1034,14 @@ void LyXRC::output(ostream & os) const
 			   << "\\exit_confirmation " << tostr(exit_confirmation)
 			   << "\n";
 		}
+	case RC_DISPLAY_GRAPHICS:
+		if (display_graphics != system_lyxrc.display_graphics) {
+			os << "# Display graphics within LyX\n"
+			   << "# no|mono|gray|color\n"
+			   << "\\display_graphics " << display_graphics
+			   << "\n";
+		}
+			
 	case RC_DISPLAY_SHORTCUTS:
 		if (display_shortcuts != system_lyxrc.display_shortcuts) {
 			os << "# Display name of the last command executed,\n"
@@ -1873,6 +1888,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		
 	case RC_EXIT_CONFIRMATION:
 		str = N_("Sets whether LyX asks for a second confirmation to exit when you have changed documents. (LyX will still ask to save changed documents.)");
+		break;
+		
+	case RC_DISPLAY_GRAPHICS:
+		str = N_("Select how LyX will display any graphics.");
 		break;
 		
 	case RC_DISPLAY_SHORTCUTS:

@@ -118,6 +118,11 @@ struct FD_form_lnf_misc {
 	FL_OBJECT *check_dialogs_iconify_with_main;
 	FL_OBJECT *counter_wm_jump;
 	FL_OBJECT *counter_autosave;
+	FL_OBJECT *radio_button_group_display;
+	FL_OBJECT *radio_display_monochrome;
+	FL_OBJECT *radio_display_grayscale;
+	FL_OBJECT *radio_display_color;
+	FL_OBJECT *radio_no_display;
 };
 struct FD_form_spelloptions {
 	~FD_form_spelloptions();

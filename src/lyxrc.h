@@ -119,6 +119,7 @@ enum LyXRCTags {
 	RC_NEW_ASK_FILENAME,
 	RC_DEFAULT_LANGUAGE,
 	RC_LABEL_INIT_LENGTH,
+	RC_DISPLAY_GRAPHICS,
 #ifdef USE_PSPELL	
 	RC_USE_PSPELL,
 #endif
@@ -340,6 +341,8 @@ enum LyXRCTags {
 	bool dialogs_iconify_with_main;
 	///
 	int label_init_length;
+	///
+	string display_graphics;
 private:
 	/// Is a bind file already (or currently) read?
 	bool hasBindFile;
