@@ -342,8 +342,6 @@ private:
 	///
 	mutable int inset_y;
 	///
-	mutable int old_max_width;
-	///
 	bool no_selection;
 	///
 	UpdatableInset * the_locking_inset;

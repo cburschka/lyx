@@ -166,7 +166,6 @@ void InsetText::init(InsetText const * ins)
 	for_each(paragraphs.begin(), paragraphs.end(),
 		 boost::bind(&Paragraph::setInsetOwner, _1, this));
 	top_y = 0;
-	old_max_width = 0;
 	no_selection = true;
 	need_update = FULL;
 	drawTextXOffset = 0;

@@ -1,14 +1,14 @@
 
 2003-07-17  André Pönitz  <poenitz@gmx.net>
 
-	* insettext.[Ch]:
-	* insettabular.[Ch]: remove unneeded in_update_ members
-
-2003-07-17  André Pönitz  <poenitz@gmx.net>
-
 	* insetcollapsable.C:
 	* insettabular.C:
 	* insettext.C: don't call Inset::update() anymore
+
+	* insettext.[Ch]:
+	* insettabular.[Ch]: remove unneeded in_update_ members
+
+	* insettext.[Ch]: remove unneeded InsetText::old_max_width member 
 
 2003-07-16  André Pönitz  <poenitz@gmx.net>
 

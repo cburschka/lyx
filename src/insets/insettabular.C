@@ -1256,10 +1256,10 @@ void InsetTabular::calculate_dimensions_of_cells(BufferView * bv) const
 	int cell = -1;
 	bool changed = false;
 	for (int i = 0; i < tabular.rows(); ++i) {
-		maxAsc = 0;
-		maxDesc = 0;
+		int maxAsc = 0;
+		int maxDesc = 0;
 		for (int j = 0; j < tabular.columns(); ++j) {
-			if (tabular.isPartOfMultiColumn(i,j))
+			if (tabular.isPartOfMultiColumn(i, j))
 				continue;
 			++cell;
 			Dimension dim;
