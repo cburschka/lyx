@@ -154,8 +154,8 @@ void FormPrint::apply()
 				       string(fl_get_input(dialog_->input_file)),
 				       wp, from, to,
 				       static_cast<bool>(order_.getButton()),
-				       static_cast<bool>(fl_get_button(dialog_->
-								       radio_unsorted)),
+				       !static_cast<bool>(fl_get_button(dialog_->
+									radio_collated)),
 				       strToInt(fl_get_input(dialog_->input_count))))) {
 		WriteAlert(_("Error:"),
 			   _("Unable to print"),

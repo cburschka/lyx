@@ -31,8 +31,8 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBase(lv, d, _("Preferences"),
 		   BUFFER_INDEPENDENT, HIDE, new PreferencesPolicy),
 	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
-	  lnf_general_(0), screen_fonts_(0), interface_fonts_(0),
-	  printer_(0), paths_(0), minw_(0), minh_(0)
+	  lnf_general_(0), screen_fonts_(0), interface_(0),
+	  printer_(0), paths_(0), outputs_general_(0), minw_(0), minh_(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -49,14 +49,17 @@ FormPreferences::~FormPreferences()
 	delete outputs_tab_;
 	delete lnf_general_;
 	delete screen_fonts_;
-	delete interface_fonts_;
+	delete interface_;
 	delete printer_;
 	delete paths_;
+	delete outputs_general_;
 }
 
 
 void FormPreferences::hide()
 {
+	// We need to hide the active tabfolder otherwise we get a
+	// BadDrawable error from X windows and LyX crashes without saving.
 	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabfolder_prefs);
 	if (outer_form
 	    && outer_form->visible) {
@@ -89,16 +92,16 @@ void FormPreferences::build()
 	// build actual tabfolder contents
 	// these will become nested tabfolders
 	screen_fonts_ = build_screen_fonts();
-	interface_fonts_ = build_interface_fonts();
+	interface_ = build_interface();
 	lnf_general_ = build_lnf_general();
 	printer_ = build_printer();
 	paths_ = build_paths();
+	outputs_general_ = build_outputs_general();
 
 	// setup the input returns
 	// Lnf_General tab
-	fl_set_input_return(lnf_general_->input_bind, FL_RETURN_CHANGED);
 	fl_set_counter_return(lnf_general_->counter_autosave, FL_RETURN_CHANGED);
-	fl_set_counter_return(lnf_general_->counter_line_len, FL_RETURN_CHANGED);
+	fl_set_counter_return(lnf_general_->counter_wm_jump, FL_RETURN_CHANGED);
 	// Screen fonts
 	fl_set_input_return(screen_fonts_->input_roman, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_sans, FL_RETURN_CHANGED);
@@ -117,12 +120,16 @@ void FormPreferences::build()
 	fl_set_input_return(screen_fonts_->input_largest, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_huge, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_huger, FL_RETURN_CHANGED);
-	// interface fonts
-	fl_set_input_return(interface_fonts_->input_popup_font,
+	// interface
+	fl_set_input_return(interface_->input_popup_font,
 			    FL_RETURN_CHANGED);
-	fl_set_input_return(interface_fonts_->input_menu_font,
+	fl_set_input_return(interface_->input_menu_font,
 			    FL_RETURN_CHANGED);
-	fl_set_input_return(interface_fonts_->input_popup_encoding,
+	fl_set_input_return(interface_->input_popup_encoding,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(interface_->input_bind_file,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(interface_->input_ui_file,
 			    FL_RETURN_CHANGED);
 	// printer
 	fl_set_input_return(printer_->input_command, FL_RETURN_CHANGED);
@@ -149,6 +156,9 @@ void FormPreferences::build()
 	fl_set_input_return(paths_->input_lastfiles, FL_RETURN_CHANGED);
 	fl_set_input_return(paths_->input_backup_path, FL_RETURN_CHANGED);
 	fl_set_counter_return(paths_->counter_lastfiles, FL_RETURN_CHANGED);
+	// outputs general
+	fl_set_counter_return(outputs_general_->counter_line_len,
+			      FL_RETURN_CHANGED);
 
 	// Now add them to the tabfolder
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
@@ -167,8 +177,8 @@ void FormPreferences::build()
 			   _("Screen Fonts"),
 			   screen_fonts_->form);
 	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_outer,
-			   _("Interface Fonts"),
-			   interface_fonts_->form);
+			   _("Interface"),
+			   interface_->form);
 	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_outer,
 			   _("General"),
 			   lnf_general_->form);
@@ -183,16 +193,21 @@ void FormPreferences::build()
 	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
 			   _("Printer"),
 			   printer_->form);
+	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
+			   _("General"),
+			   outputs_general_->form);
 
 	// deactivate the various browse buttons because they
 	// currently aren't implemented
-	fl_deactivate_object(lnf_general_->button_bind_file_browse);
+	fl_deactivate_object(interface_->button_bind_file_browse);
+	fl_deactivate_object(interface_->button_ui_file_browse);
 	fl_deactivate_object(paths_->button_document_browse);
 	fl_deactivate_object(paths_->button_template_browse);
 	fl_deactivate_object(paths_->button_temp_dir_browse);
 	fl_deactivate_object(paths_->button_lastfiles_browse);
 	fl_deactivate_object(paths_->button_backup_path_browse);
-	fl_set_object_lcol(lnf_general_->button_bind_file_browse, FL_INACTIVE);
+	fl_set_object_lcol(interface_->button_bind_file_browse, FL_INACTIVE);
+	fl_set_object_lcol(interface_->button_ui_file_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_document_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_template_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_temp_dir_browse, FL_INACTIVE);
@@ -236,17 +251,21 @@ void FormPreferences::apply()
 	lyxrc.exit_confirmation = fl_get_button(lnf_general_->check_exit_confirm);
 	lyxrc.display_shortcuts =
 		fl_get_button(lnf_general_->check_display_shortcuts);
-	lyxrc.bind_file = fl_get_input(lnf_general_->input_bind);
+	lyxrc.new_ask_filename = fl_get_button(lnf_general_->check_ask_new_file);
+	lyxrc.cursor_follows_scrollbar =
+		fl_get_button(lnf_general_->check_cursor_follows_scrollbar);
 	lyxrc.autosave = static_cast<unsigned int>
 		(fl_get_counter_value(lnf_general_->counter_autosave));
-	lyxrc.ascii_linelen = static_cast<unsigned int>
-		(fl_get_counter_value(lnf_general_->counter_line_len));
-	// Interface fonts
+	lyxrc.wheel_jump = static_cast<unsigned int>
+		(fl_get_counter_value(lnf_general_->counter_wm_jump));
+	// Interface
 	lyxrc.popup_font_name =
-		fl_get_input(interface_fonts_->input_popup_font);
-	lyxrc.menu_font_name = fl_get_input(interface_fonts_->input_menu_font);
+		fl_get_input(interface_->input_popup_font);
+	lyxrc.menu_font_name = fl_get_input(interface_->input_menu_font);
 	lyxrc.font_norm_menu =
-		fl_get_input(interface_fonts_->input_popup_encoding);
+		fl_get_input(interface_->input_popup_encoding);
+	lyxrc.bind_file = fl_get_input(interface_->input_bind_file);
+	lyxrc.ui_file = fl_get_input(interface_->input_ui_file);
 	// Screen fonts
 	if (lyxrc.roman_font_name !=
 	    fl_get_input(screen_fonts_->input_roman) ||
@@ -351,6 +370,9 @@ void FormPreferences::apply()
 	lyxrc.make_backup = fl_get_button(paths_->check_make_backups);
 	lyxrc.num_lastfiles = static_cast<unsigned int>
 		(fl_get_counter_value(paths_->counter_lastfiles));
+	// outputs general
+	lyxrc.ascii_linelen = static_cast<unsigned int>
+		(fl_get_counter_value(outputs_general_->counter_line_len));
 }
 
 
@@ -367,12 +389,14 @@ void FormPreferences::update()
 			      lyxrc.exit_confirmation);
 		fl_set_button(lnf_general_->check_display_shortcuts,
 			      lyxrc.display_shortcuts);
-		fl_set_input(lnf_general_->input_bind,
-			     lyxrc.bind_file.c_str());
+		fl_set_button(lnf_general_->check_ask_new_file,
+			      lyxrc.new_ask_filename);
+		fl_set_button(lnf_general_->check_cursor_follows_scrollbar,
+			      lyxrc.cursor_follows_scrollbar);
 		fl_set_counter_value(lnf_general_->counter_autosave,
 				     lyxrc.autosave);
-		fl_set_counter_value(lnf_general_->counter_line_len,
-				     lyxrc.ascii_linelen);
+		fl_set_counter_value(lnf_general_->counter_wm_jump,
+				     lyxrc.wheel_jump);
 		// Screen fonts
 		fl_set_input(screen_fonts_->input_roman,
 			     lyxrc.roman_font_name.c_str());
@@ -406,13 +430,17 @@ void FormPreferences::update()
 			     tostr(lyxrc.font_sizes[LyXFont::SIZE_HUGE]).c_str());
 		fl_set_input(screen_fonts_->input_huger,
 			     tostr(lyxrc.font_sizes[LyXFont::SIZE_HUGER]).c_str());
-		// interface fonts
-		fl_set_input(interface_fonts_->input_popup_font,
+		// interface
+		fl_set_input(interface_->input_popup_font,
 			     lyxrc.popup_font_name.c_str());
-		fl_set_input(interface_fonts_->input_menu_font,
+		fl_set_input(interface_->input_menu_font,
 			     lyxrc.menu_font_name.c_str());
-		fl_set_input(interface_fonts_->input_popup_encoding,
+		fl_set_input(interface_->input_popup_encoding,
 			     lyxrc.font_norm_menu.c_str());
+		fl_set_input(interface_->input_bind_file,
+			     lyxrc.bind_file.c_str());
+		fl_set_input(interface_->input_ui_file,
+			     lyxrc.ui_file.c_str());
 		// printer
 		fl_set_button(printer_->check_adapt_output,
 			      lyxrc.print_adapt_output);
@@ -469,6 +497,10 @@ void FormPreferences::update()
 			      lyxrc.make_backup);
 		fl_set_counter_value(paths_->counter_lastfiles,
 				     lyxrc.num_lastfiles);
+		// outputs general
+		fl_set_counter_value(outputs_general_->counter_line_len,
+				     lyxrc.ascii_linelen);
+
 	}
 }
 
@@ -484,8 +516,10 @@ bool FormPreferences::input(FL_OBJECT *, long)
 	//  paths -- all dirs in the path should exist, be writable & absolute
 	if (!AbsolutePath(fl_get_input(paths_->input_default_path))
 	    || 1 != IsDirWriteable(fl_get_input(paths_->input_default_path))
+	    // template_path should be a readable directory
 	    || !AbsolutePath(fl_get_input(paths_->input_template_path))
-	    || 1 != IsDirWriteable(fl_get_input(paths_->input_template_path))
+	    || 1 != FileInfo(fl_get_input(paths_->input_template_path)).isDir()
+	    || 1 != FileInfo(fl_get_input(paths_->input_template_path)).readable()
 	    // lastfiles: exists && writeable || non-existent && isn't a dir
 	    // NOTE: assumes IsFileWriteable == -1 means non-existent hence
 	    //       the extra check to see if its a directory

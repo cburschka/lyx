@@ -33,7 +33,7 @@ struct FD_form_print {
 	FL_OBJECT *radio_order_reverse;
 	FL_OBJECT *input_from_page;
 	FL_OBJECT *input_count;
-	FL_OBJECT *radio_unsorted;
+	FL_OBJECT *radio_collated;
 	FL_OBJECT *input_to_page;
 };
 

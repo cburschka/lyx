@@ -29,10 +29,11 @@ class Dialogs;
 struct FD_form_preferences;
 struct FD_form_lnf_general;
 struct FD_form_screen_fonts;
-struct FD_form_interface_fonts;
+struct FD_form_interface;
 struct FD_form_printer;
 struct FD_form_paths;
 struct FD_form_outer_tab;
+struct FD_form_outputs_general;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
@@ -71,11 +72,13 @@ private:
 	///
 	FD_form_screen_fonts * build_screen_fonts();
 	///
-	FD_form_interface_fonts * build_interface_fonts();
+	FD_form_interface * build_interface();
 	///
 	FD_form_printer * build_printer();
 	///
 	FD_form_paths * build_paths();
+	///
+	FD_form_outputs_general * build_outputs_general();
 
 	/// Real GUI implementation.
 	FD_form_preferences * dialog_;
@@ -90,11 +93,13 @@ private:
 	///
 	FD_form_screen_fonts * screen_fonts_;
 	///
-	FD_form_interface_fonts * interface_fonts_;
+	FD_form_interface * interface_;
 	///
 	FD_form_printer * printer_;
 	///
 	FD_form_paths * paths_;
+	///
+	FD_form_outputs_general * outputs_general_;
 	/// Overcome a dumb xforms sizing bug
 	int minw_;
 	///

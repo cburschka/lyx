@@ -114,8 +114,8 @@ FD_form_print * FormPrint::build_print()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->radio_unsorted = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 115, 140, 30, idex(_("Unsorted|#U")));
-    fl_set_button_shortcut(obj, scex(_("Unsorted|#U")), 1);
+  fdui->radio_collated = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 115, 140, 30, idex(_("Collated|#C")));
+    fl_set_button_shortcut(obj, scex(_("Collated|#C")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->input_to_page = obj = fl_add_input(FL_INT_INPUT, 110, 160, 50, 30, _("to"));

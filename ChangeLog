@@ -1,5 +1,20 @@
 2000-10-11  Allan Rae  <rae@lyx.org>
 
+	* src/frontends/xforms/FormPreferences.C (input): template path must be
+	a readable directory.  It doesn't need to be writeable.
+	(build, delete, update, apply): New inputs in the various tabfolders
+
+	* src/frontends/xforms/forms/form_preferences.fd: 
+	* src/frontends/xforms/FormPreferences.h: New tabfolder and added
+	several new entries to existing folders.  Shuffled some existing stuff
+	around. 
+
+	* src/frontends/xforms/forms/form_print.fd: 
+	* src/frontends/xforms/FormPrint.C (apply): rename unsorted to collated.
+	Should probably rework PrinterParams as well.  Note that the switch to
+	collated is effectively the same as !unsorted so changing PrinterParams
+	will require a lot of fiddly changes to reverse the existing logic.
+
 	* src/lyx_cb.C (TimerCB): cleaned up Angus's patch.
 
 2000-10-10  Angus Leeming <a.leeming@ic.ac.uk>

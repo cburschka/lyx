@@ -21,6 +21,8 @@ extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
 
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
 
 /**** Forms and Objects ****/
 struct FD_form_lnf_general {
@@ -32,9 +34,9 @@ struct FD_form_lnf_general {
 	FL_OBJECT *check_exit_confirm;
 	FL_OBJECT *check_display_shortcuts;
 	FL_OBJECT *counter_autosave;
-	FL_OBJECT *counter_line_len;
-	FL_OBJECT *input_bind;
-	FL_OBJECT *button_bind_file_browse;
+	FL_OBJECT *check_ask_new_file;
+	FL_OBJECT *check_cursor_follows_scrollbar;
+	FL_OBJECT *counter_wm_jump;
 };
 struct FD_form_screen_fonts {
 	~FD_form_screen_fonts();
@@ -57,13 +59,17 @@ struct FD_form_screen_fonts {
 	FL_OBJECT *input_huge;
 	FL_OBJECT *input_huger;
 };
-struct FD_form_interface_fonts {
-	~FD_form_interface_fonts();
+struct FD_form_interface {
+	~FD_form_interface();
 
 	FL_FORM *form;
 	FL_OBJECT *input_popup_font;
 	FL_OBJECT *input_menu_font;
 	FL_OBJECT *input_popup_encoding;
+	FL_OBJECT *input_bind_file;
+	FL_OBJECT *button_bind_file_browse;
+	FL_OBJECT *input_ui_file;
+	FL_OBJECT *button_ui_file_browse;
 };
 struct FD_form_printer {
 	~FD_form_printer();
@@ -116,12 +122,19 @@ struct FD_form_preferences {
 	FL_OBJECT *button_ok;
 	FL_OBJECT *tabfolder_prefs;
 	FL_OBJECT *button_restore;
+	FL_OBJECT *text_warning;
 };
 struct FD_form_outer_tab {
 	~FD_form_outer_tab();
 
 	FL_FORM *form;
 	FL_OBJECT *tabfolder_outer;
+};
+struct FD_form_outputs_general {
+	~FD_form_outputs_general();
+
+	FL_FORM *form;
+	FL_OBJECT *counter_line_len;
 };
 
 #endif /* FD_form_lnf_general_h_ */
