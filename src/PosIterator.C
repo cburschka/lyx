@@ -30,7 +30,7 @@ PosIterator & PosIterator::operator++()
 {
 	BOOST_ASSERT(!stack_.empty());
 	while (true) {
-		PosIteratorItem & p = stack_.top();
+		PosIteratorItem & p = stack_.back();
 		
 		if (p.pos < p.pit->size()) {
 			InsetOld * inset = p.pit->getInset(p.pos);
@@ -38,7 +38,7 @@ PosIterator & PosIterator::operator++()
 				ParagraphList * pl = inset->getParagraphs(p.index);
 				if (pl) {
 					p.index++;
-					stack_.push(PosIteratorItem(pl, pl->begin(), 0));
+					stack_.push_back(PosIteratorItem(pl, pl->begin(), 0));
 					return *this;
 				}
 			}
@@ -52,7 +52,7 @@ PosIterator & PosIterator::operator++()
 		if (p.pit != p.pl->end() || stack_.size() == 1)
 			return *this;
 		
-		stack_.pop();
+		stack_.pop_back();
 	}
 	return *this;
 }
@@ -64,7 +64,7 @@ PosIterator & PosIterator::operator--()
 	
 	// try to go one position backwards: if on the start of the
 	// ParagraphList, pops an item 
-	PosIteratorItem & p = stack_.top();
+	PosIteratorItem & p = stack_.back();
 	if (p.pos > 0) {
 		--p.pos;
 		InsetOld * inset = p.pit->getInset(p.pos);
@@ -74,22 +74,22 @@ PosIterator & PosIterator::operator--()
 		if (p.pit == p.pl->begin()) {
 			if (stack_.size() == 1)
 				return *this;
-			stack_.pop();
-			--stack_.top().index;
+			stack_.pop_back();
+			--stack_.back().index;
 		} else {
 			--p.pit;
 			p.pos = p.pit->size();
 		}
 	}
 	// try to push an item if there is some left unexplored
-	PosIteratorItem & q = stack_.top();
+	PosIteratorItem & q = stack_.back();
 	if (q.pos < q.pit->size()) {
 		InsetOld * inset = q.pit->getInset(q.pos);
 		if (inset && q.index > 0) {
 			ParagraphList *
 				pl = inset->getParagraphs(q.index - 1);
 			BOOST_ASSERT(pl);
-			stack_.push(PosIteratorItem(pl, prior(pl->end()), pl->back().size()));
+			stack_.push_back(PosIteratorItem(pl, prior(pl->end()), pl->back().size()));
 		}
 	}
 	return *this;
@@ -105,8 +105,8 @@ bool operator!=(PosIterator const & lhs, PosIterator const & rhs)
 bool operator==(PosIterator const & lhs, PosIterator const & rhs)
 {
 	
-	PosIteratorItem const & li = lhs.stack_.top();
-	PosIteratorItem const & ri = rhs.stack_.top();
+	PosIteratorItem const & li = lhs.stack_.back();
+	PosIteratorItem const & ri = rhs.stack_.back();
 	
 	return (li.pl == ri.pl && li.pit == ri.pit &&
 		(li.pit == li.pl->end() || li.pos == ri.pos));
@@ -122,7 +122,7 @@ bool PosIterator::at_end() const
 PosIterator::PosIterator(ParagraphList * pl, ParagraphList::iterator pit,
 			 lyx::pos_type pos)
 {
-	stack_.push(PosIteratorItem(pl, pit, pos));
+	stack_.push_back(PosIteratorItem(pl, pit, pos));
 }
 
 
@@ -140,6 +140,15 @@ PosIterator::PosIterator(BufferView & bv)
 	}
 
 	operator=(par.asPosIterator(pos));
+}
+
+
+InsetOld * PosIterator::inset() const
+{
+	if (stack_.size() == 1)
+		return 0;
+	PosIteratorItem const & pi = stack_[stack_.size() - 2];
+	return pi.pit->getInset(pi.pos);
 }
 
 

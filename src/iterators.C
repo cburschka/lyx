@@ -354,11 +354,10 @@ PosIterator ParIterator::asPosIterator(lyx::pos_type pos) const
 	int const last = size() - 1;
 	for (int i = 0; i < last; ++i) {
 		ParPosition & pp = pimpl_->positions[i];
-		p.stack_.push(PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, (*pp.it)->pos, *pp.index + 1));
+		p.stack_.push_back(PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, (*pp.it)->pos, *pp.index + 1));
 	}
 	ParPosition const & pp = pimpl_->positions[last];
-	p.stack_.push(PosIteratorItem(const_cast<ParagraphList *>(pp.plist),
-				      pp.pit, pos, 0));
+	p.stack_.push_back(PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, pos, 0));
 	return p;
 }
 
@@ -366,24 +365,21 @@ PosIterator ParIterator::asPosIterator(lyx::pos_type pos) const
 ParIterator::ParIterator(PosIterator const & pos)
 	: pimpl_(new Pimpl)
 {
-	PosIterator copy = pos;
-	int const size = copy.stack_.size();
+	int const size = pos.stack_.size();
 	
 	for (int i = 0; i < size; ++i) {
-		PosIteratorItem & it = copy.stack_.top();
+		PosIteratorItem const & it = pos.stack_[i];
 		ParPosition pp(it.pit, *it.pl);
-		if (i > 0) {
+		if (i < size - 1) {
 			InsetOld * inset = it.pit->getInset(it.pos);
 			BOOST_ASSERT(inset);
 			InsetList::iterator beg = it.pit->insetlist.begin();
 			InsetList::iterator end = it.pit->insetlist.end();
 			for (; beg != end && beg->inset != inset; ++beg);
-			BOOST_ASSERT(beg != end);
 			pp.it.reset(beg);
 			pp.index.reset(it.index - 1);
 		}
-		pimpl_->positions.insert(pimpl_->positions.begin(), pp);
-		copy.stack_.pop();
+		pimpl_->positions.push_back(pp);
 	}
 }
 

@@ -153,7 +153,8 @@ bool isLetter(PosIterator & cur)
 {
 	return !cur.at_end()
 		&& cur.pit()->isLetter(cur.pos())
-		&& !isDeletedText(*cur.pit(), cur.pos());
+		&& !isDeletedText(*cur.pit(), cur.pos())
+		&& (!cur.inset() || cur.inset()->allowSpellCheck()); 
 }
 
 
@@ -174,7 +175,6 @@ WordLangTuple nextWord(PosIterator & cur, PosIterator const & end,
 		if (!cur.pit()->isInset(cur.pos()))
 			str += cur.pit()->getChar(cur.pos());
 	}
-	
 
 	return WordLangTuple(str, lang_code);
 }
@@ -201,7 +201,6 @@ void ControlSpellchecker::check()
 	if (cur != buffer()->pos_iterator_begin())
 		for (; cur != end && isLetter(cur); ++cur, ++start);
 
-	
 	while (res == SpellBase::OK || res == SpellBase::IGNORE) {
 		word_ = nextWord(cur, end, start, buffer()->params());
 

@@ -17,7 +17,7 @@
 
 #include "support/types.h"
 
-#include <stack>
+#include <vector>
 
 
 class BufferView;
@@ -48,15 +48,17 @@ public:
 	PosIterator & operator--();
 	friend bool operator==(PosIterator const &, PosIterator const &);
 
-	ParagraphList::iterator pit() const { return stack_.top().pit; }
-	lyx::pos_type pos() const { return stack_.top().pos; }
+	ParagraphList::iterator pit() const { return stack_.back().pit; }
+	lyx::pos_type pos() const { return stack_.back().pos; }
 	bool at_end() const;
+	InsetOld * inset() const;
 	friend PosIterator ParIterator::asPosIterator(lyx::pos_type) const;
 	friend ParIterator::ParIterator(PosIterator const &);
 	
 private:
 	PosIterator() {};
-	std::stack<PosIteratorItem> stack_;
+	//this is conceptually a stack, but we need random access sometimes
+	std::vector<PosIteratorItem> stack_;
 };
 
 bool operator!=(PosIterator const &, PosIterator const &);

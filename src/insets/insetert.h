@@ -133,6 +133,8 @@ private:
 	void updateStatus(BufferView *, bool = false) const;
 	///
 	void edit(BufferView * bv, bool left);
+	///
+	bool allowSpellCheck() const { return false; }
 
 	///
 	mutable ERTStatus status_;

@@ -284,6 +284,9 @@ public:
 	/// mark the inset contents as erased (for change tracking)
 	virtual void markErased() {}
 
+	/// does this inset allows spellchecking?
+	virtual bool allowSpellCheck() const { return true; }
+
 	/** Adds a LaTeX snippet to the Preview Loader for transformation
 	 *  into a bitmap image. Does not start the laoding process.
 	 *
