@@ -142,10 +142,9 @@ void QtView::closeEvent(QCloseEvent *)
 }
 
 
-void QtView::show(int x, int y, string const & title)
+void QtView::show()
 {
-	move(x, y);
-	setCaption(toqstr(title));
+	setCaption(qt_("LyX"));
 	QMainWindow::show();
 }
 

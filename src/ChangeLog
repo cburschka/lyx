@@ -1,3 +1,15 @@
+2003-01-05  John Levon  <levon@movementarian.org>
+
+	* BufferView.h:
+	* BufferView.C: add getEncoding()
+
+	* kbsequence.h:
+	* kbsequence.C: do not store last keypress
+
+	* lyxfunc.h:
+	* lyxfunc.C: store last keypress here instead. Pass encoding
+	  to getISOEncoded()
+
 2002-12-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyx_main.C (init): remove annoying error message when following

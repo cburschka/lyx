@@ -80,9 +80,13 @@ map<int, io_callback *> io_callbacks;
 // FIXME: wrong place !
 LyXServer * lyxserver;
 
+// in QLyXKeySym.C
+extern void initEncodings();
+
 #ifdef Q_WS_X11
 extern bool lyxX11EventFilter(XEvent * xev);
 #endif
+
 
 class LQApplication : public QApplication
 {
@@ -115,6 +119,8 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 
 	// needs to be done before reading lyxrc
 	lyxrc.dpi = getDPI();
+
+	initEncodings();
 }
 
 
@@ -132,7 +138,7 @@ void lyx_gui::start(string const & batch, vector<string> const & files)
 	unsigned int height = 510;
 
 	QtView view(width, height);
-	view.show(xpos, ypos, "LyX");
+	view.show();
 	view.init();
 
 	Buffer * last = 0;

@@ -77,6 +77,10 @@ private:
 
 	///
 	LyXView * owner;
+
+	/// the last character added to the key sequence, in ISO encoded form
+	char encoded_last_key;
+
 	///
 	kb_sequence keyseq;
 	///

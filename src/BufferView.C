@@ -933,6 +933,18 @@ Language const * BufferView::getParentLanguage(Inset * inset) const
 }
 
 
+Encoding const * BufferView::getEncoding() const
+{
+	LyXText * t = getLyXText();
+	if (!t)
+		return 0;
+
+	LyXCursor const & c= t->cursor;
+	LyXFont const font = c.par()->getFont(buffer()->params, c.pos());
+	return font.language()->encoding();
+}
+
+
 void BufferView::haveSelection(bool sel)
 {
 	pimpl_->workarea().haveSelection(sel);

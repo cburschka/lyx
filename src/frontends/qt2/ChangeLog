@@ -1,3 +1,12 @@
+2003-01-05  John Levon  <levon@movementarian.org>
+
+	* QLyXKeySym.h:
+	* QLyXKeySym.C: add an encoding map for getISOEncoded
+
+	* lyx_gui.C: init encodings
+
+	* QtView.h:
+	* QtView.C:
 2003-01-04  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
  
  	* QURL.C: isValid(): fix validation. 

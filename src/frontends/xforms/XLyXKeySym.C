@@ -69,7 +69,7 @@ string XLyXKeySym::getSymbolName() const
 }
 
 
-char XLyXKeySym::getISOEncoded() const
+char XLyXKeySym::getISOEncoded(string const &) const
 {
 	if (keysym_ == NoSymbol) {
 		return 0;

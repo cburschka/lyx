@@ -30,6 +30,7 @@ class Language;
 class Painter;
 class UpdatableInset;
 class WordLangTuple;
+class Encoding;
 
 /**
  * A buffer view encapsulates a view onto a particular
@@ -123,6 +124,9 @@ public:
 	int unlockInset(UpdatableInset * inset);
 	/// unlock the currently locked inset
 	void insetUnlock();
+
+	/// return the current encoding at the cursor
+	Encoding const * getEncoding() const;
 
 	/// return the parent language of the given inset
 	Language const * getParentLanguage(Inset * inset) const;

@@ -71,13 +71,6 @@ public:
 	/// Mark the sequence as deleted.
 	void mark_deleted();
 
-	/**
-	 * Return the value of the last keysym in the sequence
-	 * in the local ISO encoding. If it does not encode
-	 * in this encoding, return 0.
-	 */
-	char getLastKeyEncoded() const;
-
 	/// Reset sequence to become "deleted"
 	void reset();
 
@@ -100,9 +93,6 @@ public:
 	kb_keymap * curmap;
 
 private:
-	/// get the keysym of last in sequence
-	LyXKeySymPtr getsym() const;
-
 	/**
 	 * Array holding the current key sequence as KeySyms.
 	 * If sequence[length - 1] < 0xff it can be used as ISO8859 char

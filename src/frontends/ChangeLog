@@ -1,3 +1,7 @@
+2003-01-05  John Levon  <levon@movementarian.org>
+
+	* LyXKeySym.h: pass Encoding to getISOEncoded
+
 2002-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyx_gui.h: add new function lyx_gui::getStatus, which can be

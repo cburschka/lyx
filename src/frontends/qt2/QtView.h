@@ -37,13 +37,8 @@ public:
 
 	~QtView();
 
-	/**
-	 * show - display the top-level window
-	 * @param x x position
-	 * @param y y position
-	 * @param title window title
-	 */
-	void show(int x, int y, string const & t = string("LyX"));
+	/// show - display the top-level window
+	void show();
 
 	/// start modal operation
 	virtual void prohibitInput() const;

@@ -166,20 +166,6 @@ void kb_sequence::mark_deleted()
 }
 
 
-LyXKeySymPtr kb_sequence::getsym() const
-{
-	if (sequence.size() == 0)
-		return LyXKeySymPtr(LyXKeySymFactory::create());
-	return sequence.back();
-}
-
-
-char kb_sequence::getLastKeyEncoded() const
-{
-	return getsym()->getISOEncoded();
-}
-
-
 void kb_sequence::reset()
 {
 	mark_deleted();

@@ -31,6 +31,7 @@
 #include "gettext.h"
 #include "Lsstream.h"
 #include "trans_mgr.h"
+#include "encoding.h"
 #include "layout.h"
 #include "bufferview_funcs.h"
 #include "frontends/LyXView.h"
@@ -101,6 +102,7 @@ extern void ShowLatexLog();
 
 LyXFunc::LyXFunc(LyXView * o)
 	: owner(o),
+	encoded_last_key(0),
 	keyseq(toplevel_keymap.get(), toplevel_keymap.get()),
 	cancel_meta_seq(toplevel_keymap.get(), toplevel_keymap.get()),
 	meta_fake_bit(key_modifier::none)
@@ -134,9 +136,9 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 
 void LyXFunc::handleKeyFunc(kb_action action)
 {
-	char c = keyseq.getLastKeyEncoded();
+	char c = encoded_last_key;
 
-	if (keyseq.length() > 1) {
+	if (keyseq.length()) {
 		c = 0;
 	}
 
@@ -174,6 +176,10 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		lyxerr[Debug::KEY] << "isModifier true" << endl;
 		return;
 	}
+
+	Encoding const * encoding = view()->getEncoding();
+
+	encoded_last_key = keysym->getISOEncoded(encoding ? encoding->Name() : "");
 
 	// Do a one-deep top-level lookup for
 	// cancel and meta-fake keys. RVDK_PATCH_5
@@ -239,16 +245,15 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 	}
 
 	if (action == LFUN_SELFINSERT) {
-		char c = keysym->getISOEncoded();
-		string argument;
+		if (encoded_last_key != 0) {
+			string arg;
+			arg += encoded_last_key;
 
-		// FIXME: why ...
-		if (c != 0)
-			argument = c;
+			dispatch(FuncRequest(view(), LFUN_SELFINSERT, arg));
 
-		dispatch(FuncRequest(view(), LFUN_SELFINSERT, argument));
-		lyxerr[Debug::KEY] << "SelfInsert arg[`"
+			lyxerr[Debug::KEY] << "SelfInsert arg[`"
 				   << argument << "']" << endl;
+		}
 	} else {
 		dispatch(action);
 	}
@@ -760,7 +765,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 #endif
 			if ((action == LFUN_UNKNOWN_ACTION)
 			    && argument.empty()) {
-				argument = keyseq.getLastKeyEncoded();
+				argument = encoded_last_key;
 			}
 			// Undo/Redo is a bit tricky for insets.
 			if (action == LFUN_UNDO) {

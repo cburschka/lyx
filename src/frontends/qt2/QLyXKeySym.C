@@ -23,7 +23,75 @@
 #include <qevent.h>
 #include <qtextcodec.h>
 
+#include <map>
+
 using std::endl;
+using std::map;
+
+namespace {
+
+typedef map<string, QTextCodec *> EncodingMap;
+EncodingMap encoding_map;
+
+char const encode(string const & encoding, QString const & str)
+{
+	QTextCodec * codec = 0;
+
+	EncodingMap::const_iterator cit = encoding_map.find(encoding);
+	if (cit == encoding_map.end()) {
+		lyxerr[Debug::KEY] << "Unrecognised encoding "
+			<< encoding << endl;
+		codec = QTextCodec::codecForLocale();
+	} else {
+		codec = cit->second;
+	}
+
+	if (!codec) {
+		lyxerr[Debug::KEY] << "No codec exists for encoding "
+			<< encoding << endl;
+		codec = QTextCodec::codecForLocale();
+	}
+
+	lyxerr[Debug::KEY] << "Using codec " << fromqstr(codec->name()) << endl;
+
+	if (!codec->canEncode(str)) {
+		lyxerr[Debug::KEY] << "Oof. Can't encode the text !" << endl;
+		return 0;
+	}
+
+	QCString tmpstr = codec->fromUnicode(str);
+	char const * tmpcstr = tmpstr;
+	return tmpcstr[0];
+}
+
+}
+
+
+void initEncodings()
+{
+	// when no document open
+	encoding_map[""] = QTextCodec::codecForLocale();
+
+	encoding_map["iso8859-1"] = QTextCodec::codecForName("ISO 8859-1");
+	encoding_map["iso8859-2"] = QTextCodec::codecForName("ISO 8859-2");
+	encoding_map["iso8859-3"] = QTextCodec::codecForName("ISO 8859-3");
+	encoding_map["iso8859-4"] = QTextCodec::codecForName("ISO 8859-4");
+	encoding_map["iso8859-5"] = QTextCodec::codecForName("ISO 8859-5");
+	encoding_map["iso8859-6"] = QTextCodec::codecForName("ISO 8859-6");
+	encoding_map["iso8859-7"] = QTextCodec::codecForName("ISO 8859-7");
+	encoding_map["iso8859-9"] = QTextCodec::codecForName("ISO 8859-9");
+	encoding_map["iso8859-15"] = QTextCodec::codecForName("ISO 8859-15");
+	encoding_map["cp1255"] = QTextCodec::codecForName("CP 1255");
+	encoding_map["cp1251"] = QTextCodec::codecForName("CP 1251");
+	encoding_map["koi8"] = QTextCodec::codecForName("KOI8-R");
+	encoding_map["koi8-u"] = QTextCodec::codecForName("KOI8-U");
+
+	// FIXME
+	encoding_map["tis620-0"] = 0;
+	encoding_map["pt154"] = 0;
+
+	// There are lots more codecs in Qt too ...
+}
 
 
 QLyXKeySym::QLyXKeySym()
@@ -81,9 +149,9 @@ string QLyXKeySym::getSymbolName() const
 }
 
 
-char QLyXKeySym::getISOEncoded() const
+char QLyXKeySym::getISOEncoded(string const & encoding) const
 {
-	unsigned char const c = fromqstr(text_)[0];
+	unsigned char const c = encode(encoding, text_);
 	lyxerr[Debug::KEY] << "ISOEncoded returning value " << int(c) << endl;
 	return c;
 }

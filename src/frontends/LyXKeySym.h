@@ -47,7 +47,7 @@ public:
 	 * This converts the LyXKeySym to a 8-bit encoded character.
 	 * This relies on user to use the right encoding.
 	 */
-	virtual char getISOEncoded() const = 0;
+	virtual char getISOEncoded(string const & encoding) const = 0;
 };
 
 
