@@ -45,7 +45,7 @@ make
 unset LINGUAS || true
 rm -rf ${RPM_BUILD_ROOT}
 install -d -m 755 ${RPM_BUILD_ROOT}
-make DESTDIR=${RPM_BUILD_ROOT} install
+make DESTDIR=${RPM_BUILD_ROOT} prefix=${RPM_BUILD_ROOT}%{_prefix} install
 gzip -f9 ${RPM_BUILD_ROOT}%{_mandir}/man?/*
 
 #
@@ -94,7 +94,7 @@ fi
 texhash
 
 %files
-%attr(-,root,root)
+%defattr(-,root,root)
 %doc ABOUT-NLS ANNOUNCE COPYING 
 %doc README UPGRADING ChangeLog NEWS
 %doc lib/CREDITS README.reLyX
