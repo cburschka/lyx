@@ -1,6 +1,15 @@
 2001-11-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lyxrc.C (read): 
+	* lyxserver.C (emergencyCleanup): do not try to close pipes if
+	server is not running.
+	(openConnection): 
+	(closeConnection): add debug info when server is disabled.
+
+	* ColorHandler.C (getGCForeground): send debug message to GUI
+	channel. 
+
+	* lyxrc.C: do not include lyxserver.h and tex-strings.h.
+
 	* kbmap.C (bind): modify because return conventions of
 	kb_sequence::parse have changed.
 

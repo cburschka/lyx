@@ -88,7 +88,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 		val.foreground = bla;
 	// Try the exact RGB values first, then the approximate.
 	} else if (XAllocColor(display, colormap, &xcol) != 0) {
-		if (lyxerr.debugging()) {
+		if (lyxerr.debugging(Debug::GUI)) {
 			lyxerr << _("LyX: X11 color ") << s
 			       << _(" allocated for ") 
 			       << lcolor.getGUIName(c) << endl;

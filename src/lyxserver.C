@@ -108,7 +108,12 @@ void LyXComm::openConnection()
 	// We assume that we don't make it
 	ready = false;
  
-	if (pipename.empty()) return;
+	if (pipename.empty()) {
+		lyxerr[Debug::LYXSERVER]
+			<< "LyXComm: server is disabled, nothing to do"
+			<< endl;
+		return;
+	}
 
 	if ((infd = startPipe(inPipeName(), false)) == -1)
 		return;
@@ -136,6 +141,9 @@ void LyXComm::closeConnection()
        	lyxerr[Debug::LYXSERVER] << "LyXComm: Closing connection" << endl;
 
 	if (pipename.empty()) {
+		lyxerr[Debug::LYXSERVER]
+			<< "LyXComm: server is disabled, nothing to do"
+			<< endl;
 	        return;
 	}
 
@@ -255,8 +263,10 @@ void LyXComm::endPipe(int & fd, string const & filename)
 
 void LyXComm::emergencyCleanup()
 {
-	endPipe(infd, inPipeName());
-	endPipe(outfd, outPipeName());
+	if (!pipename.empty()) {
+		endPipe(infd, inPipeName());
+		endPipe(outfd, outPipeName());
+	}
 }
 
 
