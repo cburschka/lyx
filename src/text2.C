@@ -1629,10 +1629,8 @@ void LyXText::cursorUp(bool selecting)
 		int y2 = y1;
 		y -= topy;
 		InsetOld * inset_hit = checkInsetHit(x, y1);
-		if (inset_hit && isHighlyEditableInset(inset_hit)) {
+		if (inset_hit && isHighlyEditableInset(inset_hit))
 			inset_hit->edit(bv(), x, y - (y2 - y1));
-			bv()->cursor().push(inset_hit, inset_hit->getText(0));
-		}
 	}
 #else
 	lyxerr << "cursorUp: y " << cursor.y() << " bl: " <<
@@ -1657,10 +1655,8 @@ void LyXText::cursorDown(bool selecting)
 		int y2 = y1;
 		y -= topy;
 		InsetOld * inset_hit = checkInsetHit(x, y1);
-		if (inset_hit && isHighlyEditableInset(inset_hit)) {
-			bv()->cursor().push(inset_hit, inset_hit->getText(0));
+		if (inset_hit && isHighlyEditableInset(inset_hit))
 			inset_hit->edit(bv(), x, y - (y2 - y1));
-		}
 	}
 #else
 	setCursorFromCoordinates(bv()->x_target(),

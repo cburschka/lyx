@@ -16,6 +16,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "LColor.h"
@@ -276,9 +277,10 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 
 void InsetCollapsable::edit(BufferView * bv, bool left)
 {
-	lyxerr << "InsetCollapsable: edit" << endl;
+	lyxerr << "InsetCollapsable: edit left/right" << endl;
 	if (!bv->lockInset(this))
 		lyxerr << "InsetCollapsable: can't lock" << endl;
+	bv->cursor().push(this, inset.getText(0));
 	inset.edit(bv, left);
 	first_after_edit = true;
 	open(bv);
@@ -309,6 +311,7 @@ void InsetCollapsable::edit(BufferView * bv, bool left)
 
 void InsetCollapsable::edit(BufferView * bv, int x, int y)
 {
+	lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (collapsed_) {
 		collapsed_ = false;
 		// set this only here as it should be recollapsed only if
@@ -328,16 +331,15 @@ void InsetCollapsable::edit(BufferView * bv, int x, int y)
 			inset.edit(bv, x,
 				ascent() + y - (height_collapsed() + inset.ascent()));
 	}
+	bv->cursor().push(this, inset.getText(0));
 }
 
 
 DispatchResult
-InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
-				idx_type & idx, pos_type & pos)
+InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
 	//lyxerr << "InsetCollapsable::localDispatch: "
 	//	<< cmd.action << " '" << cmd.argument << "'\n";
-	BufferView * bv = cmd.view();
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			if (!collapsed_ && cmd.y > button_dim.y2)

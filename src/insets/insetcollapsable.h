@@ -157,6 +157,8 @@ protected:
 	void edit(BufferView *, bool);
 	///
 	void edit(BufferView *, int, int);
+	///
+	UpdatableInset * lockingInset() const { return inset.lockingInset(); }
 
 private:
 	///

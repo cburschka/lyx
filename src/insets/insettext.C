@@ -584,9 +584,10 @@ void InsetText::edit(BufferView * bv, bool left)
 	setViewCache(bv);
 	
 	if (!bv->lockInset(this)) {
-		lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+		lyxerr << "Cannot lock inset" << endl;
 		return;
 	}
+	lyxerr << "InsetText: edit left/right" << endl;
 
 	locked = true;
 	the_locking_inset = 0;
@@ -620,9 +621,10 @@ void InsetText::edit(BufferView * bv, bool left)
 void InsetText::edit(BufferView * bv, int x, int y)
 {
 	if (!bv->lockInset(this)) {
-		lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+		lyxerr << "Cannot lock inset" << endl;
 		return;
 	}
+	lyxerr << "InsetText: edit xy" << endl;
 
 	locked = true;
 	the_locking_inset = 0;
@@ -720,7 +722,6 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			if (result.val() >= FINISHED) {
 				updateLocal(bv, false);
 				bv->unlockInset(this);
-				bv->cursor().pop();
 			}
 			break;
 		case FINISHED_DOWN:
@@ -728,7 +729,6 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			if (result.val() >= FINISHED) {
 				updateLocal(bv, false);
 				bv->unlockInset(this);
-				bv->cursor().pop();
 			}
 			break;
 		default:
@@ -795,9 +795,11 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		break;
 
 	case LFUN_PRIOR:
-		if (crow() == text_.firstRow())
+		if (crow() == text_.firstRow()) {
 			result.val(FINISHED_UP);
-		else {
+			lyxerr << "InsetText: cursor pop 1" << endl;
+			bv->cursor().pop();
+		} else {
 			text_.cursorPrevious();
 			text_.clearSelection();
 			result.dispatched(true);
@@ -805,9 +807,11 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		break;
 
 	case LFUN_NEXT:
-		if (crow() == text_.lastRow())
+		if (crow() == text_.lastRow()) {
 			result.val(FINISHED_DOWN);
-		else {
+			lyxerr << "InsetText: cursor pop 2" << endl;
+			bv->cursor().pop();
+		} else {
 			text_.cursorNext();
 			text_.clearSelection();
 			result.dispatched(true);
@@ -954,7 +958,6 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 	if (result.val() >= FINISHED) {
 		result.val(NONE);
 		bv->unlockInset(this);
-		bv->cursor().pop();
 	}
 
 	return result;
@@ -1078,8 +1081,11 @@ InsetText::moveRightIntern(BufferView * bv, bool front,
 {
 	ParagraphList::iterator c_par = cpar();
 
-	if (boost::next(c_par) == paragraphs.end() && cpos() >= c_par->size())
+	if (boost::next(c_par) == paragraphs.end() && cpos() >= c_par->size()) {
+		lyxerr << "InsetText: cursor pop 3" << endl;
+		bv->cursor().pop();
 		return DispatchResult(false, FINISHED_RIGHT);
+	}
 	if (activate_inset && checkAndActivateInset(bv, front))
 		return DispatchResult(true, true);
 	text_.cursorRight(bv);
@@ -1093,8 +1099,11 @@ DispatchResult
 InsetText::moveLeftIntern(BufferView * bv, bool front,
 			  bool activate_inset, bool selecting)
 {
-	if (cpar() == paragraphs.begin() && cpos() <= 0)
+	if (cpar() == paragraphs.begin() && cpos() <= 0) {
+		lyxerr << "InsetText: cursor pop 4" << endl;
+		bv->cursor().pop();
 		return DispatchResult(false, FINISHED);
+	}
 	text_.cursorLeft(bv);
 	if (!selecting)
 		text_.clearSelection();
@@ -1106,8 +1115,11 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 
 DispatchResult InsetText::moveUp(BufferView * bv)
 {
-	if (crow() == text_.firstRow())
+	if (crow() == text_.firstRow()) {
+		lyxerr << "InsetText: cursor pop 5" << endl;
+		bv->cursor().pop();
 		return DispatchResult(false, FINISHED_UP);
+	}
 	text_.cursorUp(bv);
 	text_.clearSelection();
 	return DispatchResult(true);
@@ -1116,8 +1128,11 @@ DispatchResult InsetText::moveUp(BufferView * bv)
 
 DispatchResult InsetText::moveDown(BufferView * bv)
 {
-	if (crow() == text_.lastRow())
+	if (crow() == text_.lastRow()) {
+		lyxerr << "InsetText: cursor pop 6" << endl;
+		bv->cursor().pop();
 		return DispatchResult(false, FINISHED_DOWN);
+	}
 	text_.cursorDown(bv);
 	text_.clearSelection();
 	return DispatchResult(true);

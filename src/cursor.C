@@ -41,8 +41,9 @@ std::ostream & operator<<(std::ostream & os, CursorItem const & item)
 
 std::ostream & operator<<(std::ostream & os, LCursor const & cursor)
 {
+	os << "\n";
 	for (size_t i = 0, n = cursor.data_.size(); i != n; ++i)
-		os << "   " << cursor.data_[i];
+		os << "   " << cursor.data_[i] << "\n";
 	return os;
 }
 
@@ -68,11 +69,11 @@ bool LCursor::handleResult(DispatchResult const & res)
 	lyxerr << "LCursor::handleResult: " << res.val() << endl;
 	switch (res.val()) {
 		case FINISHED:
-			pop();
+			///pop();
 			return true;
 
 		case FINISHED_RIGHT: {
-			pop();
+			///pop();
 			//InsetText * inset = static_cast<InsetText *>(innerInset());
 			//if (inset)
 			//	inset->moveRightIntern(bv_, false, false);
@@ -83,7 +84,7 @@ bool LCursor::handleResult(DispatchResult const & res)
 		}
 
 		case FINISHED_UP: {
-			pop();
+			///pop();
 			//InsetText * inset = static_cast<InsetText *>(inset());
 			//if (inset)
 			//	result = inset->moveUp(bv);
@@ -91,7 +92,7 @@ bool LCursor::handleResult(DispatchResult const & res)
 		}
 
 		case FINISHED_DOWN: {
-			pop();
+			///pop();
 			//InsetText * inset = static_cast<InsetText *>(inset());
 			//if (inset)
 			// 	result = inset->moveDown(bv);
@@ -99,7 +100,6 @@ bool LCursor::handleResult(DispatchResult const & res)
 		}
 
 		default:
-			break;
 			lyxerr << "# unhandled result: " << res.val() << endl;
 			return false;
 	}
@@ -114,12 +114,15 @@ LCursor::LCursor(BufferView * bv)
 
 void LCursor::push(InsetOld * inset, LyXText * text)
 {
+	lyxerr << "LCursor::push()  inset: " << inset << " text: " << text
+		<< endl;
 	data_.push_back(CursorItem(inset, text));
 }
 
 
 void LCursor::pop()
 {
+	lyxerr << "LCursor::pop() " << endl;
 	//BOOST_ASSERT(!data_.empty());
 	if (data_.empty())
 		lyxerr << "### TRYING TO POP FROM EMPTY CURSOR" << endl;

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "insetbase.h"
+#include "debug.h"
 #include "dispatchresult.h"
 
 
@@ -38,10 +39,13 @@ InsetBase::priv_dispatch(FuncRequest const &, idx_type &, pos_type &)
 
 
 void InsetBase::edit(BufferView *, bool)
-{}
+{
+	lyxerr << "InsetBase: edit left/right" << std::endl;
+}
 
 
 void InsetBase::edit(BufferView * bv, int, int)
 {
+	lyxerr << "InsetBase: edit xy" << std::endl;
 	edit(bv, true);
 }

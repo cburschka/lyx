@@ -15,6 +15,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
@@ -641,8 +642,9 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 
 void InsetTabular::edit(BufferView * bv, bool left)
 {
-	lyxerr << "InsetTabular::edit: " << this << " first cell: "
-		<< &tabular.cell_info[0][0].inset << endl;
+	lyxerr << "InsetTabular::edit: " << this
+		<< " first text: " << tabular.cell_info[0][0].inset.getText(0) 
+		<< " first cell: " << &tabular.cell_info[0][0].inset << endl;
 
 	if (!bv->lockInset(this)) {
 		lyxerr << "InsetTabular::Cannot lock inset" << endl;
@@ -669,6 +671,7 @@ void InsetTabular::edit(BufferView * bv, bool left)
 	clearSelection();
 	resetPos(bv);
 	bv->fitCursor();
+	bv->cursor().push(this, 0);
 }
 
 
@@ -696,6 +699,7 @@ void InsetTabular::edit(BufferView * bv, int x, int y)
 		inset_y = cursory_;
 		activateCellInset(bv, x - inset_x, y - inset_y);
 	}
+	bv->cursor().push(this, tabular.getCellInset(actcell).getText(0));
 }
 
 
@@ -714,8 +718,11 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		return result;
 	}
 
-	if (cmd.action < 0 && cmd.argument.empty())
+	if (cmd.action < 0 && cmd.argument.empty()) {
+		lyxerr << "InsetTabular: cursor pop 2" << endl;
+		bv->cursor().pop();
 		return DispatchResult(false, FINISHED);
+	}
 
 	bool hs = hasSelection();
 
@@ -1107,8 +1114,9 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		break;
 	}
 
-	if (result.val() >= FINISHED)
+	if (result.val() >= FINISHED) {
 		bv->unlockInset(this);
+	}
 	else if (!the_locking_inset && bv->fitCursor())
 		updateLocal(bv);
 
@@ -1403,8 +1411,11 @@ DispatchResult InsetTabular::moveRight(BufferView * bv, bool lock)
 	} else {
 		bool moved = isRightToLeft(bv)
 			? movePrevCell(bv) : moveNextCell(bv);
-		if (!moved)
+		if (!moved) {
+			lyxerr << "InsetTabular: cursor pop 3" << endl;
+			bv->cursor().pop();
 			return DispatchResult(false, FINISHED_RIGHT);
+		}
 		if (lock && activateCellInset(bv))
 			return DispatchResult(true, true);
 	}
@@ -1416,8 +1427,11 @@ DispatchResult InsetTabular::moveRight(BufferView * bv, bool lock)
 DispatchResult InsetTabular::moveLeft(BufferView * bv, bool lock)
 {
 	bool moved = isRightToLeft(bv) ? moveNextCell(bv) : movePrevCell(bv);
-	if (!moved)
+	if (!moved) {
+		lyxerr << "InsetTabular: cursor pop 4" << endl;
+		bv->cursor().pop();
 		return DispatchResult(false, FINISHED);
+	}
 	// behind the inset
 	if (lock && activateCellInset(bv, 0, 0, true))
 		return DispatchResult(true, true);
@@ -1430,8 +1444,11 @@ DispatchResult InsetTabular::moveUp(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellAbove(actcell);
-	if (actcell == ocell) // we moved out of the inset
+	if (actcell == ocell) { // we moved out of the inset
+		lyxerr << "InsetTabular: cursor pop 5" << endl;
+		bv->cursor().pop();
 		return DispatchResult(false, FINISHED_UP);
+	}
 	resetPos(bv);
 	if (lock) {
 		int x = 0;
@@ -1451,8 +1468,11 @@ DispatchResult InsetTabular::moveDown(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellBelow(actcell);
-	if (actcell == ocell) // we moved out of the inset
+	if (actcell == ocell) { // we moved out of the inset
+		lyxerr << "InsetTabular: cursor pop 6" << endl;
+		bv->cursor().pop();
 		return DispatchResult(false, FINISHED_DOWN);
+	}
 	resetPos(bv);
 	if (lock) {
 		int x = 0;
@@ -1986,6 +2006,7 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, bool behind)
 	//inset_x = cursorx_ - top_x + tabular.getBeginningOfTextInCell(actcell);
 	//inset_y = cursory_;
 	inset.edit(bv, x, y);
+	bv->cursor().push(&inset, inset.getText(0));
 	if (!the_locking_inset)
 		return false;
 	updateLocal(bv);

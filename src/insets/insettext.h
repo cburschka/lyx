@@ -183,6 +183,8 @@ public:
 	void edit(BufferView *, bool);
 	///
 	void edit(BufferView *, int, int);
+	///
+	UpdatableInset * lockingInset() const { return the_locking_inset; }
 
 	///
 	int numParagraphs() const { return 1; }

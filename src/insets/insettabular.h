@@ -273,6 +273,8 @@ private:
 			  int & srow, int & erow) const;
 	///
 	bool insertAsciiString(BufferView *, std::string const & buf, bool usePaste);
+	///
+	UpdatableInset * lockingInset() const { return the_locking_inset; }
 
 	//
 	// Private structures and variables

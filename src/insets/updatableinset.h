@@ -88,6 +88,8 @@ public:
 	virtual bool showInsetDialog(BufferView *) const { return false; }
 	///
 	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {}
+	///
+	virtual UpdatableInset * lockingInset() const { return 0; }
 
 protected:
 	///  An updatable inset could handle lyx editing commands

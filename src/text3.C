@@ -376,10 +376,8 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 			gotsel = true;
 		}
 		if (bv->insertInset(inset)) {
-			if (edit) {
+			if (edit)
 				inset->edit(bv, true);
-				bv->cursor().push(inset, inset->getText(0));
-			}
 			if (gotsel && pastesel)
 				bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
 		}
@@ -596,7 +594,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			InsetOld * tmpinset = cursorPar()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
 			tmpinset->edit(bv, !is_rtl);
-			bv->cursor().push(tmpinset, tmpinset->getText(0));
 			break;
 		}
 		if (!is_rtl)
@@ -1247,8 +1244,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	// Single-click on work area
-	case LFUN_MOUSE_PRESS:
-	{
+	case LFUN_MOUSE_PRESS: {
 		if (!bv->buffer())
 			break;
 
@@ -1292,6 +1288,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 				break;
 			}
 			bv->unlockInset(bv->theLockingInset());
+			lyxerr << "Re-initializing cursor" << endl;
+			bv->cursor() = LCursor(bv);
 		}
 
 		if (!inset_hit)
@@ -1304,13 +1302,15 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 		// Single left click in math inset?
 		if (isHighlyEditableInset(inset_hit)) {
-			// Highly editable inset, like math
+			lyxerr << "click on highly editable inset, like math" << endl;
 			UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
 			selection_possible = false;
 			bv->owner()->message(inset->editMessage());
 			// We just have to lock the inset before calling a PressEvent on it!
 			if (!bv->lockInset(inset))
-				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+				lyxerr << "Cannot lock inset" << endl;
+#warning cell 0 is certainly not always good.
+			bv->cursor().push(inset, inset->getText(0));
 			FuncRequest cmd1(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
 			inset->dispatch(cmd1);
 			break;
