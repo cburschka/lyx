@@ -1,3 +1,8 @@
+2003-04-08  John Levon  <levon@movementarian.org>
+
+	* filetools.C: fix MakeDisplayPath() to not
+	lie (bug 993)
+
 2003-03-30  John Levon  <levon@movementarian.org>
 
 	* Makefile.am:

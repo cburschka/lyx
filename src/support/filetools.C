@@ -1121,54 +1121,39 @@ string const unzipFile(string const & zipped_file)
 }
 
 
-// Creates a nice compact path for displaying
-string const
-MakeDisplayPath (string const & path, unsigned int threshold)
+string const MakeDisplayPath(string const & path, unsigned int threshold)
 {
-	string::size_type const l1 = path.length();
+	string str = path;
 
-	// First, we try a relative path compared to home
 	string const home(GetEnvPath("HOME"));
-	string relhome = MakeRelPath(path, home);
 
-	string::size_type l2 = relhome.length();
+	// replace /home/blah with ~/
+	if (prefixIs(str, home))
+		str = subst(str, home, "~");
 
-	string prefix;
+	if (str.length() <= threshold)
+		return str;
 
-	// If we backup from home or don't have a relative path,
-	// this try is no good
-	if (prefixIs(relhome, "../") || os::is_absolute_path(relhome)) {
-		// relative path was no good, just use the original path
-		relhome = path;
-		l2 = l1;
-	} else {
-		prefix = "~/";
+	string const prefix = ".../";
+	string temp;
+
+	while (str.length() > threshold)
+		str = split(str, temp, '/');
+
+	// Did we shorten everything away?
+	if (str.empty()) {
+		// Yes, filename itself is too long.
+		// Pick the start and the end of the filename.
+		str = OnlyFilename(path);
+		string const head = str.substr(0, threshold / 2 - 3);
+
+		string::size_type len = str.length();
+		string const tail =
+			str.substr(len - threshold / 2 - 2, len - 1);
+		str = head + "..." + tail;
 	}
 
-	// Is the path too long?
-	if (l2 > threshold) {
-		// Yes, shortend it
-		prefix += ".../";
-
-		string temp;
-
-		while (relhome.length() > threshold)
-			relhome = split(relhome, temp, '/');
-
-		// Did we shortend everything away?
-		if (relhome.empty()) {
-			// Yes, filename in itself is too long.
-			// Pick the start and the end of the filename.
-			relhome = OnlyFilename(path);
-			string const head = relhome.substr(0, threshold/2 - 3);
-
-			l2 = relhome.length();
-			string const tail =
-				relhome.substr(l2 - threshold/2 - 2, l2 - 1);
-			relhome = head + "..." + tail;
-		}
-	}
-	return prefix + relhome;
+	return prefix + str;
 }
 
 
