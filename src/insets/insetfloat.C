@@ -194,6 +194,12 @@ void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 }
 
 
+string const & InsetFloat::type() const 
+{
+	return floatType;
+}
+
+
 void InsetFloat::wide(bool w)
 {
 	wide_ = w;

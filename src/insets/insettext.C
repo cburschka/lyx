@@ -599,7 +599,9 @@ void InsetText::InsetButtonRelease(BufferView * bv, int x, int y, int button)
     UpdatableInset * inset = 0;
 
     if (the_locking_inset) {
-	    the_locking_inset->InsetButtonRelease(bv, x-inset_x, y-inset_y,button);
+	    the_locking_inset->InsetButtonRelease(bv,
+						  x - inset_x, y - inset_y,
+						  button);
     } else {
 	if (cpar(bv)->GetChar(cpos(bv)) == LyXParagraph::META_INSET) {
     	    inset = static_cast<UpdatableInset*>(cpar(bv)->GetInset(cpos(bv)));

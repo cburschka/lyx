@@ -23,6 +23,7 @@
 #include "insets/insetbib.h"
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
+#include "insets/insetfloat.h"
 #include "layout.h"
 #include "LyXView.h"
 #include "support/textutils.h"
@@ -41,6 +42,7 @@
 #include "font.h"
 #include "debug.h"
 #include "lyxrc.h"
+#include "FloatList.h"
 
 //#define USE_OLD_CUT_AND_PASTE 1
 
@@ -179,7 +181,11 @@ LyXFont LyXText::GetFont(Buffer const * buf, LyXParagraph * par,
 
 	char par_depth = par->GetDepth();
 	// We specialize the 95% common case:
-	if (par->footnoteflag == LyXParagraph::NO_FOOTNOTE && !par_depth) {
+	if (
+#ifndef NEW_INSETS
+		par->footnoteflag == LyXParagraph::NO_FOOTNOTE &&
+#endif
+		!par_depth) {
 		if (pos >= 0){
 			// 95% goes here
 			if (layout.labeltype == LABEL_MANUAL
@@ -412,8 +418,7 @@ void LyXText::OpenStuff(BufferView * bview)
 {
      	if (cursor.pos() == 0 && cursor.par()->bibkey){
 		cursor.par()->bibkey->Edit(bview, 0, 0, 0);
-	}
-	else if (cursor.pos() < cursor.par()->Last() 
+	} else if (cursor.pos() < cursor.par()->Last() 
 		 && cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 		 && cursor.par()->GetInset(cursor.pos())->Editable()) {
 		bview->owner()->getMiniBuffer()
@@ -421,9 +426,12 @@ void LyXText::OpenStuff(BufferView * bview)
 		if (cursor.par()->GetInset(cursor.pos())->Editable() != Inset::HIGHLY_EDITABLE)
 			SetCursorParUndo(bview->buffer());
 		cursor.par()->GetInset(cursor.pos())->Edit(bview, 0, 0, 0);
-	} else {
+	}
+#ifndef NEW_INSETS
+	else {
 		ToggleFootnote(bview);
 	}
+#endif
 }
 
 
@@ -553,7 +561,9 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 		textclasslist.Style(bview->buffer()->params.textclass, layout);
    
 	while (cur.par() != send_cur.par()) {
+#ifndef NEW_INSETS
 		if (cur.par()->footnoteflag == sstart_cur.par()->footnoteflag) {
+#endif
 			cur.par()->SetLayout(bview->buffer()->params, layout);
 			MakeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
 			LyXParagraph * fppar = cur.par()->FirstPhysicalPar();
@@ -568,10 +578,14 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 				delete fppar->bibkey;
 				fppar->bibkey = 0;
 			}
+#ifndef NEW_INSETS
 		}
+#endif
 		cur.par(cur.par()->Next());
 	}
+#ifndef NEW_INSETS
 	if (cur.par()->footnoteflag == sstart_cur.par()->footnoteflag) {
+#endif
 		cur.par()->SetLayout(bview->buffer()->params, layout);
 		MakeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
 		LyXParagraph * fppar = cur.par()->FirstPhysicalPar();
@@ -586,7 +600,9 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 			delete fppar->bibkey;
 			fppar->bibkey = 0;
 		}
+#ifndef NEW_INSETS
 	}
+#endif
 	return endpar;
 }
 
@@ -1545,6 +1561,7 @@ char loweralphaCounter(int n)
 		return 'a' + n - 1;
 }
 
+
 char alphaCounter(int n)
 {
 	if (n < 1 || n > 26)
@@ -1552,6 +1569,7 @@ char alphaCounter(int n)
 	else
 		return 'A' + n - 1;
 }
+
 
 char hebrewCounter(int n)
 {
@@ -1566,7 +1584,9 @@ char hebrewCounter(int n)
 		return hebrew[n-1];
 }
 
-static char const * romanCounter(int n)
+
+static
+char const * romanCounter(int n)
 {
 	static char const * roman[20] = {
 		"i",   "ii",  "iii", "iv", "v",
@@ -1580,12 +1600,13 @@ static char const * romanCounter(int n)
 		return roman[n-1];
 }
 
+
 // set the counter of a paragraph. This includes the labels
 void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 {
 	// this is only relevant for the beginning of paragraph
 	par = par->FirstPhysicalPar();
-
+	
 	LyXLayout const & layout =
 		textclasslist.Style(buf->params.textclass, 
 				    par->GetLayout());
@@ -1615,8 +1636,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 		}
 		par->enumdepth = par->Previous()->FirstPhysicalPar()->enumdepth;
 		par->itemdepth = par->Previous()->FirstPhysicalPar()->itemdepth;
-	}
-	else {
+	} else {
 		for (int i = 0; i < 10; ++i) {
 			par->setCounter(i, 0);
 		}  
@@ -1661,9 +1681,11 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 			      par->Previous()->GetLayout()
 			     ).labeltype == LABEL_COUNTER_ENUMI
 	    && par->enumdepth < 3
+#ifndef NEW_INSETS
 	    && !(par->Previous()->footnoteflag == LyXParagraph::NO_FOOTNOTE 
 		    && par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
 		    && par->footnotekind == LyXParagraph::FOOTNOTE)
+#endif
 	    && layout.labeltype != LABEL_BIBLIO) {
 		par->enumdepth++;
 	}
@@ -1671,9 +1693,11 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 	/* Maybe we have to decrement the enumeration depth, see note above */
 	if (par->Previous()
 	    && par->Previous()->GetDepth() > par->GetDepth()
+#ifndef NEW_INSETS
 	    && !(par->Previous()->footnoteflag == LyXParagraph::NO_FOOTNOTE
 		    && par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
 		    && par->footnotekind == LyXParagraph::FOOTNOTE)
+#endif
 	    && layout.labeltype != LABEL_BIBLIO) {
 		par->enumdepth = par->DepthHook(par->GetDepth())->enumdepth;
 		par->setCounter(6 + par->enumdepth,
@@ -1934,26 +1958,32 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 		
 		// the caption hack:
 		if (layout.labeltype == LABEL_SENSITIVE) {
-		    bool isOK = (par->InInset() && par->InInset()->owner() && 
-				     (par->InInset()->owner()->LyxCode()==Inset::FLOAT_CODE));
-			if ((isOK && (par->InInset()->owner()->getInsetName() == "figure")) ||
-			    (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+			bool isOK (par->InInset() && par->InInset()->owner() &&
+				   (par->InInset()->owner()->LyxCode() == Inset::FLOAT_CODE));
+#ifndef NEW_INSETS
+			if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 			    && (par->footnotekind == LyXParagraph::FIG
-				|| par->footnotekind == LyXParagraph::WIDE_FIG)))
+				|| par->footnotekind == LyXParagraph::WIDE_FIG)) {
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
 					? ":רויא" : "Figure:";
-			else if ((isOK && (par->InInset()->owner()->getInsetName() == "table")) ||
-				 (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+			} else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 				 && (par->footnotekind == LyXParagraph::TAB
-				     || par->footnotekind == LyXParagraph::WIDE_TAB)))
+				     || par->footnotekind == LyXParagraph::WIDE_TAB)) {
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
 					? ":הלבט" : "Table:";
-			else if ((isOK && (par->InInset()->owner()->getInsetName() == "algorithm")) ||
-				 (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
-				  && par->footnotekind == LyXParagraph::ALGORITHM))
+			} else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+				   && par->footnotekind == LyXParagraph::ALGORITHM) {
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
 					? ":םתירוגלא" : "Algorithm:";
-			else {
+			}
+#endif
+			else if (isOK) {
+				InsetFloat * tmp = static_cast<InsetFloat*>(par->InInset()->owner());
+				Floating const & fl
+					= floatList.getType(tmp->type());
+				// We should get the correct number here too.
+				s = fl.name + " #:";
+			} else {
 				/* par->SetLayout(0); 
 				   s = layout->labelstring;  */
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
@@ -1978,10 +2008,12 @@ void LyXText::UpdateCounters(BufferView * bview, Row * row) const
 	if (!row) {
 		row = firstrow;
 		par = row->par();
-	}
-	else {
+	} else {
 		if (row->par()->next
-		    && row->par()->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE) {
+#ifndef NEW_INSETS
+		    && row->par()->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE)
+#endif
+			{
 			par = row->par()->LastPhysicalPar()->Next();
 		} else {
 			par = row->par()->next;
@@ -2683,14 +2715,18 @@ bool LyXText::UpdateInset(BufferView * bview, Inset * inset)
   
 	LyXParagraph * par = FirstParagraph();
 	do {
+#ifndef NEW_INSETS
 		// make sure the paragraph is open
 		if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
+#endif
 			pos = par->GetPositionOfInset(inset);
 			if (pos != -1){
 				CheckParagraph(bview, par, pos);
 				return true;
 			}
+#ifndef NEW_INSETS
 		}
+#endif
 		par = par->Next();
 	} while (par);
   
@@ -3341,8 +3377,7 @@ bool LyXText::TextHandleUndo(BufferView * bview, Undo * undo)
 			else
 				OwnerParagraph(tmppar3);
 			tmppar3->previous = before;
-		}
-		else {
+		} else {
 			if (!before)
 				OwnerParagraph(behind);
 		}
@@ -3356,6 +3391,7 @@ bool LyXText::TextHandleUndo(BufferView * bview, Undo * undo)
 		// Set the cursor for redoing
 		if (before) {
 			SetCursorIntern(bview, before->FirstSelfrowPar(), 0);
+#ifndef NEW_INSETS
 			// check wether before points to a closed float and open it if necessary
 			if (before && before->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE
 			    && before->next && before->next->footnoteflag != LyXParagraph::NO_FOOTNOTE){
@@ -3368,8 +3404,10 @@ bool LyXText::TextHandleUndo(BufferView * bview, Undo * undo)
 					tmppar4 = tmppar4->next;
 				}
 			}
+#endif
 		}
-    
+
+#ifndef NEW_INSETS
 		// open a cosed footnote at the end if necessary
 		if (behind && behind->previous && 
 		    behind->previous->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
@@ -3379,13 +3417,18 @@ bool LyXText::TextHandleUndo(BufferView * bview, Undo * undo)
 				behind = behind->next;
 			}
 		}
+#endif
     
 		// calculate the endpar for redoing the paragraphs.
 		if (behind) {
+#ifndef NEW_INSETS
 			if (behind->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE)
+#endif
 				endpar = behind->LastPhysicalPar()->Next();
+#ifndef NEW_INSETS
 			else
 				endpar = behind->NextAfterFootnote()->LastPhysicalPar()->Next();
+#endif
 		} else
 			endpar = behind;
     
@@ -3639,6 +3682,7 @@ void LyXText::toggleAppendix(BufferView * bview)
 	UpdateCounters(bview, 0);
 	SetCursor(bview, cursor.par(), cursor.pos());
 }
+
 
 LyXParagraph * LyXText::OwnerParagraph() const
 {

@@ -15,3 +15,22 @@
 #endif
 
 #include "insetcaption.h"
+#include "debug.h"
+
+void InsetCaption::Write(Buffer const * buf, ostream & os) const
+{
+	os << "Caption\n";
+	WriteParagraphData(buf, os);
+}
+
+
+
+void InsetCaption::Read(Buffer const * buf, LyXLex & lex)
+{
+	string token = lex.GetString();
+	if (token != "Caption") {
+		lyxerr << "InsetCaption::Read: consistency check failed."
+		       << endl;
+	}
+	InsetText::Read(buf, lex);
+}

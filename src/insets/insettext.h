@@ -154,9 +154,11 @@ public:
 //    LyXFont GetDrawFont(BufferView *, LyXParagraph *, int pos) const;
     ///
     LyXText * getLyXText(BufferView *) const;
+    ///
     void deleteLyXText(BufferView *, bool recursive=true) const;
+    ///
     void resizeLyXText(BufferView *) const;
-
+    ///
     LyXParagraph * par;
     ///
     mutable UpdateCodes need_update;
@@ -164,11 +166,13 @@ public:
 protected:
     ///
     void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty);
-
+    ///
     mutable int drawTextXOffset;
+    ///
     mutable int drawTextYOffset;
     ///
     bool autoBreakRows;
+    ///
     DrawFrame drawFrame;
     ///
     LColor::color frame_color;
@@ -198,13 +202,18 @@ private:
     string getText(int);
     ///
     bool checkAndActivateInset(BufferView * bv, bool behind);
+    ///
     bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
 			       int button = 0);
     ///
     int cx(BufferView *) const;
+    ///
     int cy(BufferView *) const;
+    ///
     int cpos(BufferView *) const;
+    ///
     LyXParagraph * cpar(BufferView *) const;
+    ///
     Row * crow(BufferView *) const;
 
     /// This instead of a macro
@@ -217,10 +226,15 @@ private:
     mutable bool locked;
     ///
     mutable int insetAscent;
+    ///
     mutable int insetDescent;
+    ///
     mutable int insetWidth;
+    ///
     mutable int last_width;
+    ///
     mutable int last_height;
+    ///
     mutable int top_y;
     ///
     LyXParagraph * inset_par;

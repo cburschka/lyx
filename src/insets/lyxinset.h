@@ -45,13 +45,13 @@ public:
 		///
 		TOC_CODE,  // do these insets really need a code? (ale)
 		///
-		LOF_CODE,
+		LOF_CODE, // 2
 		///
 		LOT_CODE,
 		///
 		LOA_CODE,
 		///
-		QUOTE_CODE,
+		QUOTE_CODE, // 5
 		///
 		MARK_CODE,
 		///
@@ -61,7 +61,7 @@ public:
 		///
 		HTMLURL_CODE,
 		///
-		SEPARATOR_CODE,
+		SEPARATOR_CODE, // 10
 		///
 		ENDING_CODE,
 		///
@@ -71,7 +71,7 @@ public:
 		///
 		ACCENT_CODE,
 		///
-		MATH_CODE,
+		MATH_CODE, // 15
 		///
 		INDEX_CODE,
 		///
@@ -81,7 +81,7 @@ public:
 		///
 		PARENT_CODE,
 		///
-		BIBTEX_CODE,
+		BIBTEX_CODE, // 20
 		///
 		TEXT_CODE,
 		///
@@ -91,7 +91,7 @@ public:
 		///
 		MARGIN_CODE,
 		///
-		FLOAT_CODE,
+		FLOAT_CODE, // 25
 		///
 		MINIPAGE_CODE,
 		///
@@ -101,7 +101,9 @@ public:
 		///
 		EXTERNAL_CODE,
 		///
-		THEOREM_CODE
+		THEOREM_CODE, // 30
+		///
+		CAPTION_CODE
 	};
 
 	///

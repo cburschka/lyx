@@ -46,6 +46,8 @@ public:
 	///
 	void InsetButtonRelease(BufferView * bv, int x, int y, int button);
 	///
+	string const & type() const;
+	///
 	void wide(bool w);
 	///
 	bool wide() const;

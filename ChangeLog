@@ -1,3 +1,29 @@
+2000-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/insets/lyxinset.h: add caption code
+
+	* src/insets/insetfloat.C (type): new method
+
+	* src/insets/insetcaption.C (Write): new method
+	(Read): new method
+	(LyxCode): new method
+
+	* src/text2.C (SetCounter): revert Jürgens code, but use his idea
+	to get it right together with using the FloatList.
+
+	* src/commandtags.h: add LFUN_INSET_CAPTION
+	* src/lyxfunc.C (Dispatch): handle it
+
+	* src/buffer.C (parseSingleLyXformat2Token): add code to read a
+	caption inset.
+
+	* src/Variables.[Ch]: make expand take a const reference, remove
+	the destructor, some whitespace changes.
+
+	* src/LyXAction.C (init): add caption-inset-insert
+
+	* src/FloatList.C (FloatList): update the default floats a bit.
+
 2000-07-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/Variables.[Ch]: new files. Intended to be used for language

@@ -23,6 +23,14 @@
 */
 class InsetCaption : public InsetText {
 public:
+	///
+	void Write(Buffer const * buf, std::ostream & os) const;
+	///
+	void Read(Buffer const * buf, LyXLex & lex);
+	///
+	Inset::Code LyxCode() const {
+		return CAPTION_CODE;
+	}
 protected:
 private:
 };

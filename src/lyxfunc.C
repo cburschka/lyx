@@ -62,6 +62,7 @@ using std::istringstream;
 #include "insets/insetlist.h"
 #include "insets/insettabular.h"
 #include "insets/insettheorem.h"
+#include "insets/insetcaption.h"
 #include "mathed/formulamacro.h"
 #include "toolbar.h"
 #include "spellchecker.h" // RVDK_PATCH_5
@@ -2102,12 +2103,32 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 
+	case LFUN_INSET_CAPTION:
+	{
+		// Do we have a locking inset...
+		if (owner->view()->the_locking_inset) {
+			lyxerr << "Locking inset code: "
+			       << owner->view()->the_locking_inset->LyxCode();
+			InsetCaption * new_inset = new InsetCaption;
+			new_inset->setOwner(owner->view()->the_locking_inset);
+			new_inset->SetAutoBreakRows(true);
+			new_inset->SetDrawFrame(0, InsetText::LOCKED);
+			new_inset->SetFrameColor(0, LColor::footnoteframe);
+			if (owner->view()->insertInset(new_inset))
+				new_inset->Edit(owner->view(), 0, 0, 0);
+			else
+				delete new_inset;
+		}
+	}
+	break;
+	
 	case LFUN_INSET_TABULAR:
 	{
 		int r = 2, c = 2;
 		if (!argument.empty())
-			sscanf(argument.c_str(),"%d%d",&r,&c);
-		InsetTabular * new_inset = new InsetTabular(owner->buffer(),r,c);
+			sscanf(argument.c_str(),"%d%d", &r, &c);
+		InsetTabular * new_inset =
+			new InsetTabular(owner->buffer(), r, c);
 		if (owner->view()->insertInset(new_inset))
 			new_inset->Edit(owner->view(), 0, 0, 0);
 		else

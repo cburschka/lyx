@@ -72,6 +72,7 @@
 #include "insets/insetlist.h"
 #include "insets/insettabular.h"
 #include "insets/insettheorem.h"
+#include "insets/insetcaption.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "LaTeX.h"
@@ -893,6 +894,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			++pos;
 		} else if (tmptok == "Theorem") {
 			Inset * inset = new InsetList;
+			inset->Read(this, lex);
+			par->InsertInset(pos, inset, font);
+			++pos;
+		} else if (tmptok == "Caption") {
+			Inset * inset = new InsetCaption;
 			inset->Read(this, lex);
 			par->InsertInset(pos, inset, font);
 			++pos;

@@ -20,21 +20,21 @@
 #include <map>
 
 
+///
 class Variables {
 public:
-  virtual ~Variables() { };
-  // 
+  /// 
   void set(string const &, string const &);
-  // 
+  /// 
   virtual string get(string const &) const;
-  //
+  ///
   bool isset(string const & var) const;
-  // 
-  string expand(string) const;
+  /// 
+  string expand(string const &) const;
 private:
-  //
-  typedef std::map<string,string> Vars;
-  //
+  ///
+  typedef std::map<string, string> Vars;
+  ///
   Vars vars_;
 };
 

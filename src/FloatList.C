@@ -11,20 +11,20 @@ FloatList::FloatList()
 	// Insert the latex builtin float-types
 	Floating table;
 	table.type = "table";
-	table.placement = "";
+	table.placement = "htbp";
 	table.ext = "lot";
 	table.within = "";
-	table.style = "";
-	table.name = "";
+	table.style = "plain";
+	table.name = "Table";
 	table.builtin = true;
 	list[table.type] = table;
 	Floating figure;
 	figure.type = "figure";
-	figure.placement = "";
+	figure.placement = "htbp";
 	figure.ext = "lof";
 	figure.within = "";
-	figure.style = "";
-	figure.name = "";
+	figure.style = "plain";
+	figure.name = "Figure";
 	figure.builtin = true;
 	list[figure.type] = figure;
 	// And we add algorithm too since LyX has

@@ -17,7 +17,8 @@
 #include "Variables.h"
 #include "support/LRegex.h"
 
-void Variables::set(string const &var, string const &val)
+
+void Variables::set(string const & var, string const & val)
 {
   Vars::const_iterator cit = vars_.find(var);
   if (cit != vars_.end()) 
@@ -26,7 +27,7 @@ void Variables::set(string const &var, string const &val)
 }
 
 
-string Variables::get(string const &var) const
+string Variables::get(string const & var) const
 {
   Vars::const_iterator cit = vars_.find(var);
   if (cit != vars_.end()) 
@@ -35,14 +36,17 @@ string Variables::get(string const &var) const
     return string();
 }
 
+
 bool Variables::isset(string const & var) const
 {
    Vars::const_iterator cit = vars_.find(var);
    return  (cit != vars_.end()); 
 }
 
-string Variables::expand(string str) const
+
+string Variables::expand(string const & s) const
 {
+  string str(s);
   LRegex reg("\\$\\{\\(.*\\)\\}");
 
   if (!reg.exact_match(str))
