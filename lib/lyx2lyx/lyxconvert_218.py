@@ -447,7 +447,6 @@ def fix_oldfloatinset(lines):
         j = find_token(lines, "collapsed", i)
         if j != -1:
             lines[j:j] = ["wide false"]
-            sys.stderr.write("i,j=%d,%d\n" % (i,j))
         i = i+1
 
 def change_listof(lines):
