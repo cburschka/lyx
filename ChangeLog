@@ -1,5 +1,8 @@
 2000-01-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/lyx_main.C (easyParse): remove test for bad comand line
+	options, since this broke all xforms-related parsing.
+
 	* src/kbmap.C (getsym): set return type to unsigned long, as
 	declared in header. On an alpha, long is _not_ the same as int.
 

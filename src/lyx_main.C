@@ -569,11 +569,6 @@ bool LyX::easyParse(int * argc, char * argv[])
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
 		}
-
-		else if((!arg.empty()) && (arg[0] == '-')) {
-			lyxerr << "Illegal option `" << arg << "'" <<endl;
-			exit(1);
-		}
 	}
 	return gui;
 }
