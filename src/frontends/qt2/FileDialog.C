@@ -54,6 +54,8 @@ FileDialog::Result const FileDialog::Select(string const & path, string const & 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path << "\", mask \"" << filter << "\", suggested \"" << suggested << endl;
 
+	dlg.setMode(QFileDialog::AnyFile);
+ 
 	if (!suggested.empty())
 		dlg.setSelection(suggested.c_str());
 
