@@ -1,3 +1,35 @@
+2003-05-21  Alfredo Braunstein  <abraunst@libero.it>
+
+	* Qt2Base.[Ch]:
+	* QDialogView.[Ch] (setTitle): added
+	* QAbout.C:
+	* QBibitem.C:
+	* QBibtex.C:
+	* QChanges.C:
+	* QCharacter.C:
+	* QCitation.C:
+	* QERT.C:
+	* QError.C:
+	* QErrorList.C:
+	* QErrorListDialog.C:
+	* QExternal.C:
+	* QFloat.C:
+	* QGraphics.C:
+	* QInclude.C:
+	* QLog.C:
+	* QMinipage.C:
+	* QParagraph.C:
+	* QRef.C:
+	* QShowFile.C:
+	* QTabular.C:
+	* QTabularCreate.C:
+	* QThesaurus.C:
+	* QToc.C:
+	* QURL.C:
+	* QVCLog.C:
+	* QWrap.C: the argument to Dialog::View ctor is now a string. use
+	setTitle instead of setCaption when appropriate
+
 2003-05-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QErrorListDialog.C: remove include for <qtextedit.h>

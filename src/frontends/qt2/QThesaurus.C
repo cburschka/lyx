@@ -25,7 +25,7 @@ typedef QController<ControlThesaurus, QView<QThesaurusDialog> > base_class;
 
 
 QThesaurus::QThesaurus(Dialog & parent)
-	: base_class(parent, qt_("LyX: Thesaurus"))
+	: base_class(parent, _("LyX: Thesaurus"))
 {
 }
 

@@ -30,7 +30,7 @@ void FormLog::update()
 	string const title = buildlog ?
 		_("LyX: LaTeX Log") :
 		_("LyX: Literate Programming Build Log");
-	fl_set_form_title(dialog_->form, title.c_str());
+	setTitle(title);
 
 	fl_clear_browser(dialog_->browser);
 	int const valid = fl_load_browser(dialog_->browser,

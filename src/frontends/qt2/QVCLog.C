@@ -13,6 +13,7 @@
 
 #include "Lsstream.h"
 #include "qt_helpers.h"
+#include "support/lstrings.h"
 #include "LyXView.h"
 #include "ControlVCLog.h"
 
@@ -29,7 +30,7 @@ typedef QController<ControlVCLog, QView<QVCLogDialog> > base_class;
 
 
 QVCLog::QVCLog(Dialog & parent)
-	: base_class(parent, qt_("LyX: Version Control Log"))
+	: base_class(parent, _("LyX: Version Control Log"))
 {
 }
 
@@ -44,11 +45,9 @@ void QVCLog::build_dialog()
 
 void QVCLog::update_contents()
 {
-#if USE_BOOST_FORMAT
-	dialog_->setCaption(toqstr(boost::io::str(boost::format(_("Version control log for %1$s")) % controller().getBufferFileName())));
-#else
-	dialog_->setCaption(toqstr(string(_("Version control log for ")) + controller().getBufferFileName()));
-#endif
+	setTitle(bformat(_("Version control log for %1$s"), 
+			 controller().getBufferFileName()));
+
 	dialog_->vclogTV->setText("");
 
 	ostringstream ss;

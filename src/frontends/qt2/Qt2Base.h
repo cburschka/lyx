@@ -29,7 +29,7 @@ class Qt2Base : public QObject, public ViewBase {
 	Q_OBJECT
 public:
 	///
-	Qt2Base(QString const &);
+	Qt2Base(string const &);
 	///
 	virtual ~Qt2Base() {}
 protected:
@@ -73,10 +73,6 @@ protected slots:
 private:
 	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QDialog * form() const = 0;
-
-private:
-	/// dialog title, displayed by WM.
-	QString title_;
 };
 
 

@@ -33,7 +33,7 @@ typedef QController<ControlAboutlyx, QView<QAboutDialog> > base_class;
 
 
 QAbout::QAbout(Dialog & parent)
-	: base_class(parent, qt_("About LyX"))
+	: base_class(parent, _("About LyX"))
 {
 }
 

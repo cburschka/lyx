@@ -162,6 +162,18 @@ Dialog::View & Dialog::view() const
 }
 
 
+void Dialog::View::setTitle(string const & newtitle)
+{
+	title_ = newtitle;
+}
+
+
+string const & Dialog::View::getTitle() const
+{
+	return title_;
+}
+
+
 void Dialog::setController(Controller * i)
 {
 	lyx::Assert(i && !controller_ptr_.get());

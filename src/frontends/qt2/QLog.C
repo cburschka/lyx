@@ -31,7 +31,7 @@ using std::getline;
 typedef QController<ControlLog, QView<QLogDialog> > base_class;
 
 QLog::QLog(Dialog & parent)
-	: base_class(parent, qt_("LyX: LaTeX Log"))
+	: base_class(parent, _("LyX: LaTeX Log"))
 {
 }
 
@@ -50,9 +50,9 @@ void QLog::update_contents()
 		controller().logfile();
 
 	if (logfile.first == Buffer::buildlog)
-		dialog_->setCaption(qt_("Build log"));
+		setTitle(_("Build log"));
 	else
-		dialog_->setCaption(qt_("LaTeX log"));
+		setTitle(_("LaTeX log"));
 
 	dialog_->logTV->setText("");
 

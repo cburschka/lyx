@@ -29,12 +29,11 @@ class QDialogView : public QObject, public Dialog::View {
 	Q_OBJECT
 public:
 	///
-	QDialogView(Dialog &, QString const &);
+	QDialogView(Dialog &, string const &);
 	///
 	virtual ~QDialogView() {}
 	///
 	bool readOnly() const;
-
 protected:
 	/// build the actual dialog
 	virtual void build_dialog() = 0;
@@ -78,10 +77,6 @@ protected slots:
 private:
 	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QDialog * form() const = 0;
-
-private:
-	/// dialog title, displayed by WM.
-	QString title_;
 };
 
 

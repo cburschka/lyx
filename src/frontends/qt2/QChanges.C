@@ -24,7 +24,7 @@ typedef QController<ControlChanges, QView<QChangesDialog> > base_class;
 
 
 QChanges::QChanges(Dialog & parent)
-	: base_class(parent, qt_("LyX: Merge Changes"))
+	: base_class(parent, _("LyX: Merge Changes"))
 {
 }
 

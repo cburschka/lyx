@@ -48,10 +48,10 @@ static int C_PrehandlerCB(FL_OBJECT *, int, FL_Coord, FL_Coord, int, void *);
 
 FormDialogView::FormDialogView(Dialog & parent,
 			       string const & t, bool allowResize)
-	: Dialog::View(parent),
+	: Dialog::View(parent, t),
 	  warning_posted_(false), message_widget_(0),
 	  minw_(0), minh_(0), allow_resize_(allowResize),
-	  title_(t), icon_pixmap_(0), icon_mask_(0),
+	  icon_pixmap_(0), icon_mask_(0),
 	  tooltips_(new Tooltips())
 {}
 
@@ -104,7 +104,7 @@ void FormDialogView::prepare_to_show()
 
 	// set the title for the minimized form
 	if (!lyxrc.dialogs_iconify_with_main)
-		fl_winicontitle(form()->window, title_.c_str());
+		fl_winicontitle(form()->window, getTitle().c_str());
 
 	//  assign an icon to the form
 	string const iconname = LibFileSearch("images", "lyx", "xpm");
@@ -157,7 +157,7 @@ void FormDialogView::show()
 		if (!allow_resize_)
 			fl_set_form_maxsize(form(), minw_, minh_);
 
-		string const maximize_title = "LyX: " + title_;
+		string const maximize_title = "LyX: " + getTitle();
 		int const iconify_policy = lyxrc.dialogs_iconify_with_main ?
 			FL_TRANSIENT : 0;
 

@@ -123,8 +123,6 @@ private:
 	int minh_;
 	/// Can the dialog be resized after it has been created?
 	bool allow_resize_;
-	/// dialog title, displayed by the window manager.
-	string title_;
 	/// Passed to the window manager to give a pretty little symbol ;-)
 	Pixmap icon_pixmap_;
 	///

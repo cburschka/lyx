@@ -25,7 +25,7 @@ typedef QController<ControlError, QView<QErrorDialog> > base_class;
 
 
 QError::QError(Dialog & parent)
-	: base_class(parent, qt_("LyX: LaTeX Error"))
+	: base_class(parent, _("LyX: LaTeX Error"))
 {
 }
 

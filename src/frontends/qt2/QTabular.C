@@ -34,7 +34,7 @@
 typedef QController<ControlTabular, QView<QTabularDialog> > base_class;
 
 QTabular::QTabular(Dialog & parent)
-	: base_class(parent, qt_("LyX: Table Settings"))
+	: base_class(parent, _("LyX: Table Settings"))
 {
 }
 

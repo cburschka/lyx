@@ -15,14 +15,26 @@
 #include "support/LAssert.h"
 
 
-ViewBase::ViewBase()
-	: controller_ptr_(0)
+ViewBase::ViewBase(string const & t)
+	: controller_ptr_(0), title_(t)
 {}
 
 
 void ViewBase::setController(ControlButtons & c)
 {
 	controller_ptr_ = &c;
+}
+
+
+void ViewBase::setTitle(string const & newtitle)
+{
+	title_ = newtitle;
+}
+
+
+string const & ViewBase::getTitle() const
+{
+	return title_;
 }
 
 

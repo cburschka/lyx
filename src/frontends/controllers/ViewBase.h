@@ -20,7 +20,7 @@ class ButtonController;
 class ViewBase : boost::noncopyable {
 public:
 	///
-	ViewBase();
+	ViewBase(string const &);
 	///
 	virtual ~ViewBase() {}
 
@@ -56,9 +56,18 @@ public:
 	ControlButtons const & getController() const;
 	///
 	ButtonController & bc();
+	/// sets the title of the dialog (window caption)
+	void setTitle(string const &);
+	/// gets the title of the dialog
+	string const & getTitle() const;
+
 protected:
 	/// We don't own this.
 	ControlButtons * controller_ptr_;
+
+private:
+	string title_;
+
 };
 
 #endif // VIEWBASE_H

@@ -39,7 +39,7 @@ void FormErrorList::build()
 
 void FormErrorList::update()
 {
-        fl_set_form_title(dialog_->form, controller().name().c_str());
+        setTitle(controller().name());
 	updateContents();
 }
 

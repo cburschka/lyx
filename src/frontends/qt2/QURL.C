@@ -26,7 +26,7 @@
 typedef QController<ControlCommand, QView<QURLDialog> > base_class;
 
 QURL::QURL(Dialog & parent)
-	: base_class(parent, qt_("LyX: URL"))
+	: base_class(parent, _("LyX: URL"))
 {
 }
 

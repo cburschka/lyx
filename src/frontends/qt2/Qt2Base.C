@@ -14,6 +14,7 @@
 #include <qapplication.h>
 
 #include "debug.h"
+#include "qt_helpers.h"
 #include "QtLyXView.h"
 #include "Qt2Base.h"
 #include "Qt2BC.h"
@@ -22,8 +23,8 @@
 #include "support/LAssert.h"
 
 
-Qt2Base::Qt2Base(QString const & t)
-	: ViewBase(), updating_(false), title_(t)
+Qt2Base::Qt2Base(string const & t)
+	: ViewBase(t), updating_(false)
 {}
 
 
@@ -50,10 +51,11 @@ void Qt2Base::show()
 
 	update();  // make sure its up-to-date
 
+	form()->setCaption(toqstr(getTitle()));
+
 	if (form()->isVisible()) {
 		form()->raise();
 	} else {
-		form()->setCaption(title_);
 		form()->show();
 	}
 }

@@ -30,7 +30,7 @@ typedef QController<ControlMinipage, QView<QMinipageDialog> > base_class;
 
 
 QMinipage::QMinipage(Dialog & parent)
-	: base_class(parent, qt_("LyX: Minipage Settings"))
+	: base_class(parent, _("LyX: Minipage Settings"))
 {
 }
 

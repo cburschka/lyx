@@ -38,7 +38,7 @@ typedef QController<ControlBibtex, QView<QBibtexDialog> > base_class;
 
 
 QBibtex::QBibtex(Dialog & parent)
-	: base_class(parent, qt_("BibTeX"))
+	: base_class(parent, _("BibTeX"))
 {
 }
 

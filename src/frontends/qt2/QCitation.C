@@ -43,7 +43,7 @@ typedef QController<ControlCitation, QView<QCitationDialog> > base_class;
 
 
 QCitation::QCitation(Dialog & parent)
-	: base_class(parent, qt_("LyX: Citation Reference"))
+	: base_class(parent, _("LyX: Citation Reference"))
 {}
 
 

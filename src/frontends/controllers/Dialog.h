@@ -179,7 +179,7 @@ private:
  */
 class Dialog::View : boost::noncopyable {
 public:
-	View(Dialog & parent) : p_(parent) {}
+	View(Dialog & parent, string title) : p_(parent), title_(title) {}
 	virtual ~View() {}
 
 	//@{
@@ -225,6 +225,11 @@ public:
 	Dialog & dialog() { return p_; }
 	Dialog const & dialog() const { return p_; }
 
+	/// sets the title of the dialog (window caption)
+	void setTitle(string const &);
+	/// gets the title of the dialog (window caption)
+	string const & getTitle() const;
+
 protected:
 	Kernel & kernel() { return p_.kernel(); }
 	Kernel const & kernel() const { return p_.kernel(); }
@@ -239,6 +244,8 @@ protected:
 private:
 	///
 	Dialog & p_;
+	///
+	string title_;
 };
 
 

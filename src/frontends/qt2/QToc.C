@@ -36,7 +36,7 @@ using std::vector;
 typedef QController<ControlToc, QView<QTocDialog> > base_class;
 
 QToc::QToc(Dialog & parent)
-	: base_class(parent, qt_("LyX: Table of Contents")), depth_(1)
+	: base_class(parent, _("LyX: Table of Contents")), depth_(1)
 {}
 
 
@@ -61,7 +61,7 @@ void QToc::updateType()
 		dialog_->typeCO->insertItem(toqstr(*it));
 		if (*it == type) {
 			dialog_->typeCO->setCurrentItem(it - choice.begin());
-			dialog_->setCaption(toqstr(type));
+			setTitle(type);
 		}
 	}
 }

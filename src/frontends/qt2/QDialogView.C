@@ -15,6 +15,7 @@
 #include <qapplication.h>
 
 #include "debug.h"
+#include "qt_helpers.h"
 #include "QtLyXView.h"
 #include "QDialogView.h"
 #include "Qt2BC.h"
@@ -22,8 +23,8 @@
 #include "support/LAssert.h"
 
 
-QDialogView::QDialogView(Dialog & parent, QString const & t)
-	: Dialog::View(parent), updating_(false), title_(t)
+QDialogView::QDialogView(Dialog & parent, string const & t)
+	: Dialog::View(parent,t), updating_(false)
 {}
 
 
@@ -55,10 +56,11 @@ void QDialogView::show()
 
 	update();  // make sure its up-to-date
 
+	form()->setCaption(toqstr(getTitle()));
+
 	if (form()->isVisible()) {
 		form()->raise();
 	} else {
-		form()->setCaption(title_);
 		form()->show();
 	}
 }
