@@ -63,7 +63,7 @@
 #include "GErrorList.h"
 #include "GERT.h"
 #include "FormExternal.h"
-#include "FormFloat.h"
+#include "GFloat.h"
 #include "GGraphics.h"
 #include "FormInclude.h"
 #include "GLog.h"
@@ -72,7 +72,7 @@
 #include "GMathsMatrix.h"
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
-#include "FormNote.h"
+#include "GNote.h"
 #include "GParagraph.h"
 #include "FormPreamble.h"
 #include "FormPreferences.h"
@@ -237,8 +237,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GSearch(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "float") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlFloat(*dialog));
-		dialog->setView(new FormFloat(*dialog));
+		dialog->setView(new GFloat(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "graphics") {
 		dialog->bc().view(new GBC(dialog->bc()));
@@ -452,8 +453,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormMathsStyle(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "note") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlNote(*dialog));
-		dialog->setView(new FormNote(*dialog));
+		dialog->setView(new GNote(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "branch") {
 		dialog->setController(new ControlBranch(*dialog));

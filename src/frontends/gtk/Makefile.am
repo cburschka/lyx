@@ -34,6 +34,8 @@ libgtk_la_SOURCES = \
 	GErrorList.h \
 	GERT.C \
 	GERT.h \
+	GFloat.C \
+	GFloat.h \
 	GGraphics.C \
 	GGraphics.h \
 	GLog.C \
@@ -50,6 +52,8 @@ libgtk_la_SOURCES = \
 	GMenubar.h \
 	GMiniBuffer.C \
 	GMiniBuffer.h \
+	GNote.C \
+	GNote.h \
 	GPainter.C \
 	GPainter.h \
 	GParagraph.C \
@@ -119,13 +123,11 @@ xforms_objects = \
 	../xforms/FormDialogView.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormExternal.lo \
-	../xforms/FormFloat.lo \
 	../xforms/FormInclude.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDelim.lo \
 	../xforms/FormMathsSpace.lo \
 	../xforms/FormMathsStyle.lo \
-	../xforms/FormNote.lo \
 	../xforms/FormPreamble.lo \
 	../xforms/FormPreferences.lo \
 	../xforms/FormRef.lo \
