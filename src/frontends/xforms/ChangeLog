@@ -1,3 +1,10 @@
+2001-10-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* forms/form_tabular.fd: Add value choices
+	* FormTabular.C: Handle that choices
+
+	* FormDocument.C: fix small bug.
+
 2001-10-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormGraphics.[Ch]: move some parameters out of the heaader file and

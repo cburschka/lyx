@@ -24,6 +24,9 @@
 #include "insets/insettabular.h"
 #include "buffer.h"
 #include "xforms_helpers.h"
+#include "helper_funcs.h"
+#include "input_validators.h"
+#include "support/lstrings.h"
 
 using SigC::slot;
 
@@ -122,6 +125,29 @@ void FormTabular::build()
 			   cell_options_->form);
 	fl_addto_tabfolder(dialog_->tabFolder, _("LongTable"),
 			   longtable_options_->form);
+
+	// We should set these input filters on width fields to make them accept
+	// only unsigned numbers.
+	// But this leeds to trouble with the current apply behaviour (JSpitzm).
+	// fl_set_input_filter(column_options_->input_column_width,
+	// 		    fl_unsigned_float_filter);
+	// fl_set_input_filter(cell_options_->input_mcolumn_width,
+	// 		    fl_unsigned_float_filter);
+
+	// Create the contents of the unit choices
+	// Don't include the "%" terms...
+	std::vector<string> units_vec = getLatexUnits();
+	for (std::vector<string>::iterator it = units_vec.begin();
+	     it != units_vec.end(); ++it) {
+	        if (contains(*it, "%"))
+	                it = units_vec.erase(it, it+1) - 1;
+	}
+	string units = getStringFromVector(units_vec, "|");
+
+	fl_addto_choice(column_options_->choice_value_column_width,
+			units.c_str());
+	fl_addto_choice(cell_options_->choice_value_mcolumn_width,
+			units.c_str());
 }
 
 
@@ -143,6 +169,7 @@ void FormTabular::update()
 	fl_activate_object(column_options_->input_special_alignment);
 	fl_activate_object(cell_options_->input_special_multialign);
 	fl_activate_object(column_options_->input_column_width);
+	fl_activate_object(column_options_->choice_value_column_width);
 	sprintf(buf,"%d",column);
 	fl_set_input(dialog_->input_tabular_column, buf);
 	fl_deactivate_object(dialog_->input_tabular_column);
@@ -190,10 +217,15 @@ void FormTabular::update()
 		setEnabled(cell_options_->radio_valign_center, true);
 		special = tabular->GetAlignSpecial(cell,LyXTabular::SET_SPECIAL_MULTI);
 		fl_set_input(cell_options_->input_special_multialign, special.c_str());
-		fl_set_input(cell_options_->input_mcolumn_width,pwidth.c_str());
+		string const default_unit = "cm";
+		updateWidgetsFromLengthString(cell_options_->input_mcolumn_width,
+					      cell_options_->choice_value_mcolumn_width,
+					      pwidth.c_str(), default_unit);
+
 		if (!lv_->buffer()->isReadonly()) {
 			setEnabled(cell_options_->input_special_multialign, true);
 			setEnabled(cell_options_->input_mcolumn_width, true);
+			setEnabled(cell_options_->choice_value_mcolumn_width, true);
 		}
 
 		setEnabled(cell_options_->radio_valign_top,    !pwidth.empty());
@@ -241,6 +273,7 @@ void FormTabular::update()
 
 		fl_set_input(cell_options_->input_mcolumn_width, "");
 		setEnabled(cell_options_->input_mcolumn_width, false);
+		setEnabled(cell_options_->choice_value_mcolumn_width, false);
 	}
 	if (tabular->GetRotateCell(cell))
 		fl_set_button(cell_options_->radio_rotate_cell, 1);
@@ -269,8 +302,12 @@ void FormTabular::update()
 	setEnabled(column_options_->input_special_alignment, !isReadonly);
 
 	pwidth = tabular->GetColumnPWidth(cell);
-	fl_set_input(column_options_->input_column_width,pwidth.c_str());
+	string const default_unit = "cm";
+	updateWidgetsFromLengthString(column_options_->input_column_width,
+				      column_options_->choice_value_column_width,
+				      pwidth.c_str(), default_unit);
 	setEnabled(column_options_->input_column_width, !isReadonly);
+	setEnabled(column_options_->choice_value_column_width, !isReadonly);
 
 	setEnabled(cell_options_->radio_useminipage, !pwidth.empty());
 	if (!pwidth.empty()) {
@@ -369,37 +406,22 @@ bool FormTabular::input(FL_OBJECT * ob, long)
       return false;
     }
     if (ob == column_options_->input_column_width) {
-        string const str = fl_get_input(ob);
-        if (!str.empty() && !isValidLength(str)) {
-            fl_set_object_label(dialog_->text_warning,
-                 _("Warning: Invalid Length (valid example: 10mm)"));
-            fl_show_object(dialog_->text_warning);
-            return false;
-        }
+	    string const str =
+		    getLengthFromWidgets(column_options_->input_column_width,
+					 column_options_->choice_value_column_width);
         inset_->tabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH,str);
         update(); // update for alignment
         return true;
     }
     if (ob == cell_options_->input_mcolumn_width) {
-        string const str = fl_get_input(ob);
-        if (!str.empty() && !isValidLength(str)) {
-            fl_set_object_label(dialog_->text_warning,
-                 _("Warning: Invalid Length (valid example: 10mm)"));
-            fl_show_object(dialog_->text_warning);
-            return false;
-        }
+	    string const str =
+		    getLengthFromWidgets(cell_options_->input_mcolumn_width,
+					 cell_options_->choice_value_mcolumn_width);
         inset_->tabularFeatures(lv_->view(), LyXTabular::SET_MPWIDTH,str);
         update(); // update for alignment
         return true;
     }
-    string const str = fl_get_input(column_options_->input_column_width);
-    if (!str.empty() && !isValidLength(str)) {
-        fl_set_object_label(
-	    dialog_->text_warning,
-	    _("Warning: Invalid Length (valid example: 10mm)"));
-        fl_show_object(dialog_->text_warning);
-        return false;
-    }
+
     if (ob == tabular_options_->button_append_row)
         num = LyXTabular::APPEND_ROW;
     else if (ob == tabular_options_->button_append_column)

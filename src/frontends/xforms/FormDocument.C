@@ -419,8 +419,10 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 	if (ob == class_->radio_doc_skip ||
 	    ob == class_->radio_doc_indent) {
 		setEnabled(class_->choice_doc_skip, skip_used);
-		setEnabled(class_->input_doc_skip, skip_used);
-		setEnabled(class_->choice_default_skip_units, skip_used);
+		setEnabled(class_->input_doc_skip,
+			   skip_used && length_input);
+		setEnabled(class_->choice_default_skip_units,
+			   skip_used && length_input);
 		// Default unit choice is cm if metric, inches if US paper.
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
 		bool const metric = paperchoice < 3 || paperchoice > 5;

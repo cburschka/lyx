@@ -56,6 +56,7 @@ struct FD_form_column_options {
 	FL_OBJECT *radio_valign_bottom;
 	FL_OBJECT *input_column_width;
 	FL_OBJECT *input_special_alignment;
+	FL_OBJECT *choice_value_column_width;
 };
 struct FD_form_cell_options {
 	~FD_form_cell_options();
@@ -76,6 +77,7 @@ struct FD_form_cell_options {
 	FL_OBJECT *radio_multicolumn;
 	FL_OBJECT *radio_useminipage;
 	FL_OBJECT *radio_rotate_cell;
+	FL_OBJECT *choice_value_mcolumn_width;
 };
 struct FD_form_longtable_options {
 	~FD_form_longtable_options();

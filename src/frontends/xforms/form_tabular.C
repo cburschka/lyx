@@ -143,9 +143,9 @@ FD_form_column_options * FormTabular::build_column_options()
   FL_OBJECT *obj;
   FD_form_column_options *fdui = new FD_form_column_options;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 505, 227);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 505, 225);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 505, 227, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 505, 225, "");
   {
     char const * const dummy = N_("Top|#t");
     fdui->radio_border_top = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 85, 45, 25, 25, idex(_(dummy)));
@@ -231,7 +231,7 @@ FD_form_column_options * FormTabular::build_column_options()
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("Width|#W");
-    fdui->input_column_width = obj = fl_add_input(FL_NORMAL_INPUT, 320, 170, 95, 30, idex(_(dummy)));
+    fdui->input_column_width = obj = fl_add_input(FL_NORMAL_INPUT, 275, 170, 95, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -239,7 +239,7 @@ FD_form_column_options * FormTabular::build_column_options()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Alignment|#A");
-    fdui->input_special_alignment = obj = fl_add_input(FL_NORMAL_INPUT, 85, 170, 215, 30, idex(_(dummy)));
+    fdui->input_special_alignment = obj = fl_add_input(FL_NORMAL_INPUT, 40, 170, 215, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -249,6 +249,9 @@ FD_form_column_options * FormTabular::build_column_options()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+  fdui->choice_value_column_width = obj = fl_add_choice(FL_NORMAL_CHOICE, 375, 170, 75, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -357,7 +360,7 @@ FD_form_cell_options * FormTabular::build_cell_options()
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("Width|#W");
-    fdui->input_mcolumn_width = obj = fl_add_input(FL_NORMAL_INPUT, 280, 180, 175, 30, idex(_(dummy)));
+    fdui->input_mcolumn_width = obj = fl_add_input(FL_NORMAL_INPUT, 280, 180, 95, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
@@ -391,6 +394,9 @@ FD_form_cell_options * FormTabular::build_cell_options()
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 180, 135, 290, 80, _("Special Multicolumn"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+  fdui->choice_value_mcolumn_width = obj = fl_add_choice(FL_NORMAL_CHOICE, 380, 180, 75, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

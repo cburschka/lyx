@@ -253,7 +253,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 245, 400, 85, _("Separation"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 110, 115, 80, _("Page cols"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 110, 120, 75, _("Page cols"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 20, 120, 75, _("Sides"));
@@ -372,7 +372,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_button(obj, 1);
   fl_end_group();
 
-  fdui->input_doc_spacing = obj = fl_add_input(FL_NORMAL_INPUT, 300, 200, 115, 30, "");
+  fdui->input_doc_spacing = obj = fl_add_input(FL_NORMAL_INPUT, 300, 200, 120, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   fdui->choice_default_skip_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 350, 290, 60, 30, "");
