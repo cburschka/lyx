@@ -510,6 +510,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 					// we do want to use some of these
 					// parameters to set options in the
 					// minipage inset.
+					InsetMinipage::Position imp = static_cast<InsetMinipage::Position>(minipar->params.pextraAlignment());
 					LyXParagraph * tmp = minipar;
 					while (tmp) {
 						tmp->params.pextraType(0);
@@ -522,6 +523,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 					}
 					
 					InsetMinipage * mini = new InsetMinipage;
+					mini->pos(imp);
 					mini->inset->par = minipar;
 					// Insert the minipage last in the
 					// previous paragraph.
@@ -564,6 +566,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				// This is not quite correct yet since we
 				// do want to use some of these parameters
 				// to set options in the minipage inset.
+				InsetMinipage::Position imp = static_cast<InsetMinipage::Position>(minipar->params.pextraAlignment());
 				LyXParagraph * tmp = minipar;
 				while (tmp) {
 					tmp->params.pextraType(0);
@@ -576,6 +579,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				}
 				
 				InsetMinipage * mini = new InsetMinipage;
+				mini->pos(imp);
 				mini->inset->par = minipar;
 				par->previous()->InsertInset(par->previous()->size(), mini);
 				minipar = 0;
@@ -2309,7 +2313,10 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 		// flag this with ftcount
 		ftcount = -1;
 		if (layout.isEnvironment()
-                    || par->params.pextraType() != LyXParagraph::PEXTRA_NONE) {
+#ifndef NEW_INSETS
+                    || par->params.pextraType() != LyXParagraph::PEXTRA_NONE
+#endif
+			) {
 			par = par->TeXEnvironment(this, params, ofs, texrow
 #ifndef NEW_INSETS
 						  ,ftnote, ft_texrow, ftcount

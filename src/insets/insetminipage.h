@@ -26,8 +26,8 @@ class InsetMinipage : public InsetCollapsable {
 public:
 	///
 	enum Position {
-		center,
 		top,
+		center,
 		bottom
 	};
 	///

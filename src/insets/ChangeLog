@@ -1,5 +1,8 @@
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* insetminipage.h: change the order or Position to match
+	LyXParagraph::MINIPAGE_ALIGNMENT
+
 	* several files: remvoe CXX_WORKING_NAMESPACES
 
 	* ExternalTemplate.h: noncopyable is in namespace boost
