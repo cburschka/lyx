@@ -47,7 +47,7 @@ typedef Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > base_class;
 
 
 QGraphics::QGraphics()
-	: base_class(qt_("Graphics"))
+	: base_class(qt_("LyX: Insert Graphics"))
 {
 }
 

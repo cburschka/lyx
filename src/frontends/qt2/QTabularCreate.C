@@ -25,7 +25,7 @@ typedef Qt2CB<ControlTabularCreate, Qt2DB<QTabularCreateDialog> > base_class;
 
 
 QTabularCreate::QTabularCreate()
-	: base_class(qt_("Insert table"))
+	: base_class(qt_("LyX: Insert Table"))
 {
 }
 

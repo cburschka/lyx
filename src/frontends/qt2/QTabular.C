@@ -32,7 +32,7 @@
 typedef Qt2CB<ControlTabular, Qt2DB<QTabularDialog> > base_class;
 
 QTabular::QTabular()
-	: base_class(qt_("LyX: Edit Table"))
+	: base_class(qt_("LyX: Table Settings"))
 {
 }
 

@@ -36,7 +36,7 @@ using std::vector;
 typedef Qt2CB<ControlToc, Qt2DB<QTocDialog> > base_class;
 
 QToc::QToc()
-	: base_class(qt_("Table of contents")), depth_(1)
+	: base_class(qt_("LyX: Table of Contents")), depth_(1)
 {}
 
 

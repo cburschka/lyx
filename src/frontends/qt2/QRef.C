@@ -39,7 +39,7 @@ typedef Qt2CB<ControlRef, Qt2DB<QRefDialog> > base_class;
 
 
 QRef::QRef()
-	: base_class(qt_("Cross Reference")),
+	: base_class(qt_("LyX: Insert Cross-reference")),
 	sort_(false), at_ref_(false)
 {
 }

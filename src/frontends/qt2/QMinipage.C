@@ -30,7 +30,7 @@ typedef Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> > base_class;
 
 
 QMinipage::QMinipage()
-	: base_class(qt_("Minipage"))
+	: base_class(qt_("LyX: Minipage Settings"))
 {
 }
 

@@ -30,7 +30,8 @@ typedef Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> > base_class;
 
 
 QTexinfo::QTexinfo()
-	: base_class(qt_("LaTeX Information")), warningPosted(false), activeStyle(ControlTexinfo::cls)
+	: base_class(qt_("LyX: LaTeX Information")),
+	  warningPosted(false), activeStyle(ControlTexinfo::cls)
 {
 }
 

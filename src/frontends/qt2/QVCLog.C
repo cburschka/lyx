@@ -29,7 +29,7 @@ typedef Qt2CB<ControlVCLog, Qt2DB<QVCLogDialog> > base_class;
 
 
 QVCLog::QVCLog()
-	: base_class(qt_("VCLog"))
+	: base_class(qt_("LyX: Version Control Log"))
 {
 }
 

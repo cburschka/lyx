@@ -33,7 +33,7 @@ typedef Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> > base_class;
 
 
 QCharacter::QCharacter()
-	: base_class(qt_("Character"))
+	: base_class(qt_("LyX: Change Character Settings"))
 {
 }
 

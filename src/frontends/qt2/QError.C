@@ -25,7 +25,7 @@ typedef Qt2CB<ControlError, Qt2DB<QErrorDialog> > base_class;
 
 
 QError::QError()
-	: base_class(qt_("LaTeX Error"))
+	: base_class(qt_("LyX: LaTeX Error"))
 {
 }
 

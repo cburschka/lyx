@@ -30,7 +30,7 @@ typedef Qt2CB<ControlWrap, Qt2DB<QWrapDialog> > base_class;
 
 
 QWrap::QWrap()
-	: base_class(qt_("Wrap Options"))
+	: base_class(qt_("LyX: Text-wrapping Settings"))
 {
 }
 

@@ -29,7 +29,7 @@ typedef Qt2CB<ControlExternal, Qt2DB<QExternalDialog> > base_class;
 
 
 QExternal::QExternal()
-	: base_class(qt_("External"))
+	: base_class(qt_("LyX: Insert External Material"))
 {
 }
 

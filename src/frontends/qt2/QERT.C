@@ -25,7 +25,7 @@ typedef Qt2CB<ControlERT, Qt2DB<QERTDialog> > base_class;
 
 
 QERT::QERT()
-	: base_class(qt_("LaTeX ERT"))
+	: base_class(qt_("LyX: LaTeX Code Settings"))
 {
 }
 

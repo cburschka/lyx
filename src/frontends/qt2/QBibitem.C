@@ -28,7 +28,7 @@ typedef Qt2CB<ControlBibitem, Qt2DB<QBibitemDialog> > base_class;
 
 
 QBibitem::QBibitem()
-	: base_class(qt_("Bibliography Item"))
+	: base_class(qt_("LyX: Insert Bibliography Item"))
 {
 }
 

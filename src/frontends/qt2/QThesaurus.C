@@ -25,7 +25,7 @@ typedef Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> > base_class;
 
 
 QThesaurus::QThesaurus()
-	: base_class(qt_("Thesaurus"))
+	: base_class(qt_("LyX: Thesaurus"))
 {
 }
 

@@ -26,7 +26,7 @@ typedef Qt2CB<ControlFloat, Qt2DB<QFloatDialog> > base_class;
 
 
 QFloat::QFloat()
-	: base_class(qt_("Float Settings"))
+	: base_class(qt_("LyX: Float Settings"))
 {
 }
 

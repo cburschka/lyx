@@ -43,7 +43,7 @@ typedef Qt2CB<ControlParagraph, Qt2DB<QParagraphDialog> > base_class;
 
 
 QParagraph::QParagraph()
-	: base_class(qt_("Paragraph Layout"))
+	: base_class(qt_("LyX: Paragraph Settings"))
 {}
 
 

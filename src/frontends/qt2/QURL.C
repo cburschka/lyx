@@ -27,7 +27,7 @@ typedef Qt2CB<ControlUrl, Qt2DB<QURLDialog> > base_class;
 
 
 QURL::QURL()
-	: base_class(qt_("URL"))
+	: base_class(qt_("LyX: Insert URL"))
 {
 }
 

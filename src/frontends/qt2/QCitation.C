@@ -42,7 +42,7 @@ typedef Qt2CB<ControlCitation, Qt2DB<QCitationDialog> > base_class;
 
 
 QCitation::QCitation()
-	: base_class(qt_("Citation"))
+	: base_class(qt_("LyX: Insert Citation"))
 {}
 
 

@@ -24,7 +24,7 @@ typedef Qt2CB<ControlIndex, Qt2DB<QIndexDialog> > base_class;
 
 
 QIndex::QIndex()
-	: base_class(qt_("Index"))
+	: base_class(qt_("LyX: Insert Index Entry"))
 {
 }
 

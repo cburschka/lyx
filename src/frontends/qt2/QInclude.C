@@ -29,7 +29,7 @@ typedef Qt2CB<ControlInclude, Qt2DB<QIncludeDialog> > base_class;
 
 
 QInclude::QInclude()
-	: base_class(qt_("Include"))
+	: base_class(qt_("LyX: Include File"))
 {
 }
 

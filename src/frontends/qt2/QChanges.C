@@ -24,7 +24,7 @@ typedef Qt2CB<ControlChanges, Qt2DB<QChangesDialog> > base_class;
 
 
 QChanges::QChanges()
-	: base_class(qt_("Changes"))
+	: base_class(qt_("LyX: Merge Changes"))
 {
 }
 
