@@ -3,7 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
+ * \author Rob Lahaye
  *
  * Full author contact details are available in file CREDITS
  */
@@ -57,16 +58,12 @@ void fillChoice(FD_citation * dialog, vector<string> vec)
 		return;
 
 	// They will be changed. Proceed
-	string str = " ";
-	if (!vec.empty())
-		str += getStringFromVector(vec, " | ") + " ";
+	bool const noVec = vec.empty();
+	string const str = noVec ? string() : getStringFromVector(vec, "|");
 
 	fl_clear_choice(dialog->choice_style);
 	fl_addto_choice(dialog->choice_style, str.c_str());
-
-	setEnabled(dialog->choice_style, !vec.empty());
-	if (vec.empty())
-		return;
+	setEnabled(dialog->choice_style, !noVec);
 }
 
 
@@ -81,16 +78,13 @@ void updateStyle(FD_citation * dialog, string command)
 		find(styles.begin(), styles.end(), cs.style);
 
 	// Use this to initialise the GUI
-	if (cit == styles.end()) {
-		fl_set_choice(dialog->choice_style, 1);
-		fl_set_button(dialog->check_full_author_list, 0);
-		fl_set_button(dialog->check_force_uppercase, 0);
-	} else {
-		int const i = int(cit - styles.begin());
-		fl_set_choice(dialog->choice_style, i+1);
-		fl_set_button(dialog->check_full_author_list,  cs.full);
-		fl_set_button(dialog->check_force_uppercase, cs.forceUCase);
-	}
+	bool const noStyles = cit == styles.end();
+	int const index = 1 + ( noStyles ? 0 : int(cit - styles.begin()) );
+	fl_set_choice(dialog->choice_style, index);
+	
+	// Disable if there are no styles, otherwise use cs member settings.
+	fl_set_button(dialog->check_full_author_list, !noStyles && cs.full);
+	fl_set_button(dialog->check_force_uppercase, !noStyles && cs.forceUCase);
 }
 
 } // namespace anon
@@ -107,7 +101,7 @@ FormCitation::FormCitation()
 void FormCitation::apply()
 {
 	string command = "cite";
-	if (dialog_->choice_style->active != 0) {
+	if (isActive(dialog_->choice_style)) {
 		vector<biblio::CiteStyle> const & styles =
 			ControlCitation::getCiteStyles();
 
@@ -124,7 +118,7 @@ void FormCitation::apply()
 	controller().params().setCmdName(command);
 	controller().params().setContents(getStringFromVector(citekeys));
 
-	string const after  = fl_get_input(dialog_->input_after);
+	string const after  = getString(dialog_->input_after);
 	controller().params().setOptions(after);
 }
 
@@ -142,23 +136,13 @@ void FormCitation::build()
 {
 	dialog_.reset(build_citation(this));
 
-	fl_set_input_return(dialog_->input_after,  FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_before, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_search, FL_RETURN_END);
-
-	fl_set_button(dialog_->check_search_case, 0);
-	fl_set_button(dialog_->check_search_type, 0);
-
-	setPrehandler(dialog_->input_search);
-	setPrehandler(dialog_->input_before);
-	setPrehandler(dialog_->input_after);
-
 	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);
 	bc().setRestore(dialog_->button_restore);
 
+	// disable for read-only documents
 	bc().addReadOnly(dialog_->button_add);
 	bc().addReadOnly(dialog_->button_del);
 	bc().addReadOnly(dialog_->button_up);
@@ -168,6 +152,15 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->input_after);
 	bc().addReadOnly(dialog_->check_full_author_list);
 	bc().addReadOnly(dialog_->check_force_uppercase);
+
+	// trigger an input event for cut&paste with middle mouse button.
+	setPrehandler(dialog_->input_search);
+	setPrehandler(dialog_->input_before);
+	setPrehandler(dialog_->input_after);
+
+	fl_set_input_return(dialog_->input_after,  FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_before, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_search, FL_RETURN_END);
 
 	//set up the tooltip mechanism
 	string str = _("Add the selected entry to the current citation reference.");
@@ -219,7 +212,7 @@ void FormCitation::build()
 
 void FormCitation::findBiblio(biblio::Direction const dir)
 {
-	string const str = fl_get_input(dialog_->input_search);
+	string const str = getString(dialog_->input_search);
 	biblio::InfoMap const & theMap = controller().bibkeysInfo();
 	bool const caseSensitive =
 		fl_get_button(dialog_->check_search_case);

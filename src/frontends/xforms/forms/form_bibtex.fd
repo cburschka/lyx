@@ -5,19 +5,19 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
-SnapGrid: 1
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_bibtex
-Width: 312
-Height: 358
-Number of Objects: 11
+Width: 435
+Height: 235
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 312 358
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 435 235
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -32,9 +32,27 @@ callback:
 argument: 
 
 --------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 355 25 75 25
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Update|#U
+shortcut: 
+resize: FL_RESIZE_X
+gravity: FL_North FL_North
+name: button_rescan
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 15 29 164 28
+box: 5 25 225 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_TOP_LEFT
@@ -43,8 +61,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Database:|#D
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_North FL_North
 name: input_database
 callback: C_FormBaseInputCB
 argument: 0
@@ -52,7 +70,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 12 316 90 30
+box: 150 205 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -61,16 +79,16 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: OK
 shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_ok
 callback: C_FormBaseOKCB
-argument: 3
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 112 316 90 30
+box: 340 205 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -79,16 +97,16 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Cancel|^[
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_close
 callback: C_FormBaseCancelCB
-argument: 2
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 14 80 166 26
+box: 5 95 225 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_TOP_LEFT
@@ -97,8 +115,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Style:|#S
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_North FL_North
 name: input_style
 callback: C_FormBaseInputCB
 argument: 0
@@ -106,53 +124,35 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 192 29 100 29
+box: 130 50 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Browse...|#B
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_North FL_North
 name: button_database_browse
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 195 167 100 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Choose|#C
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_style_choose
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 12 258 30 30
+box: 5 165 180 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Add bibliography to TOC|#A
+label: Add bibliography to TOC|#T
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_West FL_West
 name: check_bibtotoc
 callback: C_FormBaseInputCB
 argument: 0
@@ -160,17 +160,17 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 14 129 168 111
+box: 250 50 180 145
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Available Styles|#v
+label: Styles|#y
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_North FL_South
 name: browser_styles
 callback: C_FormBaseInputCB
 argument: 0
@@ -178,17 +178,17 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 192 79 100 30
+box: 130 120 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Browse...|#r
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_North FL_North
 name: button_style_browse
 callback: C_FormBaseInputCB
 argument: 0
@@ -196,19 +196,37 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 196 208 100 30
+box: 245 205 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Update List|#U
+label: Apply|#A
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_rescan
-callback: C_FormBaseInputCB
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
+name: button_apply
+callback: C_FormBaseApplyCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 5 205 90 25
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Restore|#R
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
+name: button_restore
+callback: C_FormBaseRestoreCB
 argument: 0
 
 ==============================

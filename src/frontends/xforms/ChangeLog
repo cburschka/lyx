@@ -1,3 +1,15 @@
+2002-10-23  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* forms/form_bibtex.fd:
+	* forms/form_citation.fd: less bulky with proper gravity/resize policy
+         and many other GUI layout improvements.
+
+	* FormBibtex.C: remove choose button, select directly instead;
+	add Restore/OK/Apply/Cancel buttons; modify tooltip-texts;
+
+	* FormCitation.C: (trivial) rearrange lines; remove redundant check
+	button settings (do that in form_citation.fd instead).
+
 2002-10-22  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* FeedbackController.C: use the NORMAL rather than the SMALL sized font
@@ -9,6 +21,7 @@
 	RadioButtonGroup's semantics.
 
 	* RadioButtonGroup.[Ch]: something of a clean-up.
+	(explicit c-tor): removed.
 	(reset): removed.
 	(set): new method, accepting an FL_OBJECT *.
 
