@@ -1,3 +1,8 @@
+2001-10-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* configure.in: set version here and not in version.h.
+	Generate version.C instead of version_info.h
+
 2001-09-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* configure.in (VERSION_INFO): use AC_SUBST instead of AC_DEFINE

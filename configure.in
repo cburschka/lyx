@@ -6,7 +6,10 @@ AM_CONFIG_HEADER(src/config.h)
 dnl This is a trick to make autoheader do the right thing
 dnl AM_CONFIG_HEADER(src/config.h)
 AC_CONFIG_AUX_DIR(config)
-LYX_GET_VERSION(${srcdir}/src/version.h)
+
+PACKAGE=lyx${program_suffix}
+VERSION="1.2.0cvs"
+LYX_CHECK_VERSION
 
 AC_CANONICAL_SYSTEM
 AC_VALIDATE_CACHE_SYSTEM_TYPE
@@ -339,7 +342,7 @@ AC_OUTPUT([Makefile \
        po/Makefile.in \
        sourcedoc/Doxyfile \
        src/Makefile \
-       src/version_info.h \
+       src/version.C \
        src/mathed/Makefile \
        src/graphics/Makefile \
        src/insets/Makefile \

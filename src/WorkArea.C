@@ -21,7 +21,7 @@
 #include "LyXView.h"
 #include "support/filetools.h" // LibFileSearch
 #include "lyxrc.h" // lyxrc.show_banner
-#include "version.h" // LYX_VERSION
+#include "version.h" // lyx_version
 #include "support/LAssert.h"
 
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
@@ -123,7 +123,7 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 		int const text_y = splash_y + 255;
 		splash_text_ = obj =
 			fl_add_text(FL_NORMAL_TEXT, text_x, text_y, 160, 16,
-				    LYX_VERSION);
+				    lyx_version);
 		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 		fl_mapcolor(FL_FREE_COL2, 0x2b, 0x47, 0x82);
 		fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);

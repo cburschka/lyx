@@ -4,13 +4,10 @@ dnl         Lars Gullik Bjønnes (larsbj@lyx.org)
 dnl         Allan Rae (rae@lyx.org)
 
 
-dnl Usage LYX_GET_VERSION   Sets "lyx_version" to the version of LyX being 
-dnl   built, displays it and sets variable "lyx_devel" to yes or no depending 
-dnl   whether the version is a development release or not. 
-AC_DEFUN(LYX_GET_VERSION,[
+dnl Usage LYX_CHECK_VERSION   Displays version of LyX being built and
+dnl sets variables "lyx_devel_version" and "lyx_prerelease"  
+AC_DEFUN(LYX_CHECK_VERSION,[
 changequote(, ) dnl
-VERSION=`grep '#define *LYX_VERSION' $1 |
-              sed -e 's/^.*"\(.*\)"$/\1/' 2>/dev/null`
 echo "configuring LyX version $VERSION"
 if echo "$VERSION" | grep 'cvs' >/dev/null ; then
   lyx_devel_version=yes
@@ -25,7 +22,6 @@ else
     lyx_prerelease=no
 fi
 changequote([, ]) dnl
-PACKAGE=lyx${program_suffix}
 AC_SUBST(lyx_devel_version)
 if test $lyx_devel_version = yes ; then 
   AC_DEFINE(DEVEL_VERSION, 1, Define if you are building a development version of LyX)

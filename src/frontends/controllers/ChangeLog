@@ -1,7 +1,12 @@
+2001-10-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ControlAboutlyx.C (getVersion): use lyx_version and
+	lyx_release_date instead of old macros
+
 2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* ControlSpellchecker.C (check): Behaves well now when the spell library
-	doesn't know a replacement to an incorrect word.
+	* ControlSpellchecker.C (check): Behaves well now when the spell
+	library doesn't know a replacement to an incorrect word.
 
 2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
 

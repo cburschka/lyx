@@ -1697,7 +1697,7 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 	// The top of the file should not be written by params.
 
 	// write out a comment in the top of the file
-	ofs << '#' << LYX_DOCVERSION 
+	ofs << '#' << lyx_docversion 
 	    << " created this file. For more info see http://www.lyx.org/\n"
 	    << "\\lyxformat " << LYX_FORMAT << "\n";
 
@@ -1971,7 +1971,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	texrow.start(paragraph, 0);
 
 	if (!only_body && nice) {
-		ofs << "%% " LYX_DOCVERSION " created this file.  "
+		ofs << "%% " << lyx_docversion << " created this file.  "
 			"For more info, see http://www.lyx.org/.\n"
 			"%% Do not edit unless you really know what "
 			"you are doing.\n";
@@ -2577,7 +2577,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		}
 	}
 
-	ofs << "<!-- "  << LYX_DOCVERSION 
+	ofs << "<!-- "  << lyx_docversion
 	    << " created this file. For more info see http://www.lyx.org/"
 	    << " -->\n";
 
@@ -3045,7 +3045,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	}
 	sgmlOpenTag(ofs, 0, top);
 
-	ofs << "<!-- DocBook file was created by " << LYX_DOCVERSION 
+	ofs << "<!-- DocBook file was created by " << lyx_docversion
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
 	vector<string> environment_stack(10);

@@ -1,3 +1,22 @@
+2001-10-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* .cvsignore: update
+
+	* lyx_main.C (commandLineVersionInfo): use new style version info.
+
+	* buffer.C (writeFile):
+	(makeLaTeXFile):
+	(makeLinuxDocFile):
+	(makeDocBookFile): use lyx_docversion instead of LYX_DOCVERSION.
+
+	* WorkArea.C (WorkArea): use lyx_version instead of LYX_VERSION.
+
+	* version.h: update to use stuff in version.C
+
+	* version.C.in: new file. Contains version information determined
+	at compile time. This is a merging of version.h and
+	version_info.h.in.
+
 2001-10-03  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (update): don't change "dirty" status in
