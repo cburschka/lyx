@@ -23,6 +23,7 @@
 #include "lyxtext.h"
 #include "debug.h"
 #include "lyxtextclasslist.h"
+#include "lyxrow.h"
 
 #include "insets/insettext.h"
 
@@ -626,20 +627,17 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 {
 	if (st != status_) {
 		status_ = st;
+		need_update = FULL;
 		switch (st) {
 		case Inlined:
-			inset.setAutoBreakRows(false);
+			inset.setUpdateStatus(bv, InsetText::INIT);
 			break;
 		case Open:
-			inset.setAutoBreakRows(true);
 			collapsed_ = false;
-			need_update = FULL;
 			setButtonLabel();
 			break;
 		case Collapsed:
-			inset.setAutoBreakRows(true);
 			collapsed_ = true;
-			need_update = FULL;
 			setButtonLabel();
 			if (bv)
 				bv->unlockInset(const_cast<InsetERT *>(this));
@@ -690,4 +688,16 @@ void InsetERT::getDrawFont(LyXFont & font) const
 	font = f;
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
+}
+
+
+int InsetERT::getMaxWidth(BufferView * bv, UpdatableInset const * in) const
+{
+	int w = InsetCollapsable::getMaxWidth(bv, in);
+	if (status_ != Inlined || w < 0)
+		return w;
+	LyXText * text = inset.getLyXText(bv);
+	if (text->width < w && !text->firstRow()->next())
+		return -1;
+	return w;
 }

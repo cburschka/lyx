@@ -1,3 +1,8 @@
+2002-03-05  Juergen Vigna  <jug@sad.it>
+
+	* insetert.C (status): change behaviour of Inlined.
+	(getMaxWidth): added for new inlined behaviour.
+
 2002-03-05  José Abílio Oliveira Matos  <jamatos@novalis.fc.up.pt>
 
 	* insetnote.h (linuxdoc, docbook): add empty methods.
@@ -8,6 +13,8 @@
 
 	* insettext.C (insetButtonPress): don't call exit on a InsetButtonPress
 	only that one in the inset. Should be enough.
+	(updateLocal): set the selection cursor always if we don't have a
+	selection to be sure it's set!
 
 	* insettabular.C (insetButtonPress): don't hit a sub inset 2 times.
 

@@ -132,6 +132,8 @@ public:
 	bool forceDefaultParagraphs(Inset const *) const {
 		return true;
 	}
+	///
+	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 
 private:
 	///

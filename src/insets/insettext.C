@@ -613,6 +613,8 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 	setUpdateStatus(bv, what);
 	bool flag = (((need_update != CURSOR) && (need_update != NONE)) ||
 	             (lt->status() != LyXText::UNCHANGED) || lt->selection.set());
+	if (!lt->selection.set())
+		lt->selection.cursor = lt->cursor;
 	if (clear)
 		lt = 0;
 	if (flag)

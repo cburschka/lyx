@@ -1788,7 +1788,6 @@ void LyXText::insertChar(BufferView * bview, char c)
 		textclasslist[bview->buffer()->params.textclass][cursor.row()->par()->layout()].free_spacing ||
 		cursor.row()->par()->isFreeSpacing();
 
-
 	if (lyxrc.auto_number) {
 		static string const number_operators = "+-/*";
 		static string const number_unary_operators = "+-";
@@ -1910,7 +1909,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 	Row * row = cursor.row();
 	int y = cursor.y() - row->baseline();
 	if (c != Paragraph::META_INSET) /* Here case LyXText::InsertInset 
-					    * already insertet the character */
+	                                 * already insertet the character */
 		cursor.par()->insertChar(cursor.pos(), c);
 	setCharFont(bview->buffer(), cursor.par(), cursor.pos(), rawtmpfont);
 
@@ -1929,7 +1928,8 @@ void LyXText::insertChar(BufferView * bview, char c)
 		 || ((cursor.pos() < cursor.par()->size()) &&
 			 cursor.par()->isInset(cursor.pos()+1))
 	     || cursor.row()->fill() == -1)
-	    && row->previous() && row->previous()->par() == row->par()) {
+	    && row->previous() && row->previous()->par() == row->par())
+	{
 		pos_type z = nextBreakPoint(bview,
 							   row->previous(),
 							   workWidth(bview));
@@ -1973,8 +1973,8 @@ void LyXText::insertChar(BufferView * bview, char c)
    
 	// recalculate the fill of the row
 	if (row->fill() >= 0)  /* needed because a newline
-			      * will set fill to -1. Otherwise
-			      * we would not get a rebreak! */
+	                        * will set fill to -1. Otherwise
+	                        * we would not get a rebreak! */
 		row->fill(fill(bview, row, workWidth(bview)));
 	if (row->fill() < 0) {
 		refresh_y = y;
