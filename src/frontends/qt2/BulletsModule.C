@@ -217,7 +217,7 @@ void BulletsModule::setBullet(QPushButton * pb, QComboBox * co, Bullet const & b
 {
 	if (b.getFont() == -1) {
 		pb->setPixmap(QPixmap());
-		pb->setText("...");
+		pb->setText(b.getText());
 	} else {
 		pb->setPixmap(getPixmap(b.getFont(), b.getCharacter()));
 	}
