@@ -836,7 +836,7 @@ dist_lyx2lyx_SCRIPTS = lyx2lyx/lyx2lyx
 dist_lyx2lyx_DATA = \
 	lyx2lyx/lyx2lyx \
 	lyx2lyx/parser_tools.py \
-	LyX.py \
+	lyx2lyx/LyX.py \
 	lyx2lyx/lyx_0_12.py \
 	lyx2lyx/lyx_1_0_0.py \
 	lyx2lyx/lyx_1_0_1.py \
