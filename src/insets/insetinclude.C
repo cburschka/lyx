@@ -25,6 +25,7 @@
 
 using std::ostream;
 using std::endl;
+using std::vector;
 
 extern BufferView * current_view;
 
@@ -419,36 +420,19 @@ void InsetInclude::Validate(LaTeXFeatures & features) const
 }
 
 
-string InsetInclude::getLabel(int) const
+vector<string> InsetInclude::getLabelList() const
 {
-    string label;
+    vector<string> l;
     string parentname;
-	
-	
+
     if (loadIfNeeded()) {
 	Buffer * tmp = bufferlist.getBuffer(getFileName());
 	tmp->setParentName(""); 
-	label =  tmp->getReferenceList('\n');
+	l = tmp->getLabelList();
 	tmp->setParentName(getMasterFilename());
     }
 
-    return label;
-}
-
-
-int InsetInclude::GetNumberOfLabels() const
-{
-    string label;
-
-    if (loadIfNeeded()) {
-	Buffer * tmp = bufferlist.getBuffer(getFileName());
-	tmp->setParentName("");    
-	label = tmp->getReferenceList('\n');
-	tmp->setParentName(getMasterFilename());
-    }
-    int nl = (label.empty())? 0: 1;
-	
-    return nl;
+    return l;
 }
 
 

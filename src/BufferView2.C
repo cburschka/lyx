@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include <fstream>
+#include <algorithm>
 
 #include "BufferView.h"
 #include "buffer.h"
@@ -29,12 +30,15 @@
 #include "lyx_gui_misc.h"
 #include "LaTeX.h"
 #include "BufferView_pimpl.h"
+#include "insets/insetcommand.h" //ChangeRefs
 
 extern BufferList bufferlist;
 
 using std::pair;
 using std::endl;
 using std::ifstream;
+using std::vector;
+using std::find;
 
 // Inserts a file into current document
 bool BufferView::insertLyXFile(string const & filen)
@@ -283,24 +287,17 @@ void BufferView::open_new_inset(UpdatableInset * new_inset)
 bool BufferView::gotoLabel(string const & label)
 
 {
-        LyXParagraph * par = buffer()->paragraph;
-        LyXParagraph::size_type pos;
-        Inset * inset;
-        while (par) {
-                pos = -1;
-                while ((inset = par->ReturnNextInsetPointer(pos))){     
-                        for (int i = 0; i < inset->GetNumberOfLabels(); ++i) {
-				if (label == inset->getLabel(i)) {
-					beforeChange();
-					text->SetCursor(par, pos);
-					text->sel_cursor = text->cursor;
-					update(0);
-					return true;
-				}
-			}
-                        ++pos;
-                } 
-                par = par->next;
+	for (Buffer::inset_iterator it = buffer()->inset_iterator_begin();
+	     it != buffer()->inset_iterator_end(); ++it) {
+		vector<string> labels = (*it)->getLabelList();
+		if ( find(labels.begin(),labels.end(),label)
+		     != labels.end()) {
+			beforeChange();
+			text->SetCursor(it.getPar(), it.getPos());
+			text->sel_cursor = text->cursor;
+			update(0);
+			return true;
+		}
 	}
 	return false;
 }
@@ -843,4 +840,42 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 			return;
 		}
 	}
+}
+
+bool BufferView::ChangeRefs(string const & from, string const & to)
+{
+	bool flag = false;
+	LyXParagraph * par = buffer()->paragraph;
+	LyXCursor cursor = text->cursor;
+	LyXCursor tmpcursor = cursor;
+	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
+	cursor.pos = tmpcursor.par->PositionInParFromPos(tmpcursor.pos);
+
+	while (par) {
+		bool flag2 = false;
+		for (LyXParagraph::inset_iterator it = par->inset_iterator_begin();
+		     it != par->inset_iterator_end(); ++it) {
+			if ((*it)->LyxCode() == Inset::REF_CODE) {
+				InsetCommand * inset = static_cast<InsetCommand *>(*it);
+				if (inset->getContents() == from) {
+					inset->setContents(to);
+					flag2 = true;
+				}
+			}
+		}
+		if (flag2) {
+			flag = true;
+			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
+				// this is possible now, since SetCursor takes
+				// care about footnotes
+				text->SetCursorIntern(par, 0);
+				text->RedoParagraphs(text->cursor,
+						     text->cursor.par->Next());
+				text->FullRebreak();
+			}
+		}
+		par = par->next;
+	}
+	text->SetCursorIntern(cursor.par, cursor.pos);
+	return flag;
 }

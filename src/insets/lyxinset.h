@@ -15,6 +15,8 @@
 #pragma interface
 #endif
 
+#include <vector>
+
 #include <X11/Xlib.h>
 
 #include "gettext.h"
@@ -156,9 +158,8 @@ public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Inset::Code LyxCode() const { return NO_CODE; }
   
-	/// Get the label that appears at screen
-	virtual string getLabel(int) const {
-		return string();
+	virtual std::vector<string> getLabelList() const {
+		return std::vector<string>();
 	}
 
 	///
@@ -171,10 +172,6 @@ public:
 	virtual bool display() const { return false; }  
 	/// Changes the display state of the inset
 	virtual void display(bool) {}  
-	///
-	virtual int GetNumberOfLabels() const {
-		return 0;
-	}
 	///
 	virtual bool InsertInsetAllowed(Inset *) const { return false; }
 	///

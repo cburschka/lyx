@@ -132,6 +132,8 @@ public:
 	void ChangeLanguage(Language const * from, Language const * to);
 	///
 	bool isMultiLingual();
+	///
+	string String(bool label);
 	
 	///
 	void writeFile(std::ostream &, BufferParams const &, char, char) const;
@@ -415,8 +417,6 @@ public:
 	///
 	Inset const * GetInset(size_type pos) const;
 	///
-	Inset * ReturnNextInsetPointer(size_type & pos);
-	///
 	void OpenFootnote(size_type pos);
 	///
 	void CloseFootnote(size_type pos);
@@ -601,6 +601,37 @@ private:
 	unsigned int id_;
 	///
 	static unsigned int paragraph_id;
+public:
+	class inset_iterator {
+	public:
+		inset_iterator() {}
+		inset_iterator(InsetList::iterator const & iter) : it(iter) {};
+		inset_iterator & operator++() {
+			++it;
+			return *this;
+		}
+		Inset * operator*() { return (*it).inset; }
+		size_type getPos() {return (*it).pos; }
+		bool operator==(inset_iterator const & iter) const {
+			return it == iter.it;
+		}
+		bool operator!=(inset_iterator const & iter) const {
+			return it != iter.it;
+		}
+	private:
+		InsetList::iterator it;
+	};
+	///
+	inset_iterator inset_iterator_begin() {
+		return inset_iterator(insetlist.begin());
+	}
+	///
+	inset_iterator inset_iterator_end() {
+		return inset_iterator(insetlist.end());
+	}
+	///
+	inset_iterator InsetIterator(size_type pos);
+
 };
 
 #endif

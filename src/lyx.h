@@ -73,6 +73,10 @@ typedef struct {
 	long  ldata;
 	FL_OBJECT *browser_ref;
 	FL_OBJECT *ref_name;
+	FL_OBJECT *sort;
+	FL_OBJECT *vref;
+	FL_OBJECT *vpageref;
+	FL_OBJECT *prettyref;
 } FD_form_ref;
 
 extern FD_form_ref * create_form_form_ref(void);

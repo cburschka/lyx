@@ -32,13 +32,13 @@ public:
 	///
 	Inset::Code LyxCode() const { return Inset::LABEL_CODE; }
 	///
-	int GetNumberOfLabels() const;
-	///
-	string getLabel(int) const;
+	std::vector<string> getLabelList() const;
 	///
 	string getScreenLabel() const { return getContents(); }
 	///
-	EDITABLE Editable() const { return NOT_EDITABLE; }
+	EDITABLE Editable() const { return IS_EDITABLE; }
+	///
+	void Edit(BufferView *, int, int, unsigned int);
 	///
 	int Latex(std::ostream &, bool fragile, bool free_spc) const;
 	///

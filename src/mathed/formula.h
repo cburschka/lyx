@@ -110,9 +110,7 @@ public:
 	///
 	bool SetNumber(bool);
 	///
-	int GetNumberOfLabels() const;
-	///
-	string getLabel(int) const;
+	std::vector<string> getLabelList() const;
    
 protected:
 	void UpdateLocal(BufferView * bv);

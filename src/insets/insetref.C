@@ -15,8 +15,10 @@
 #include "lyxfunc.h"
 #include "commandtags.h"
 #include "gettext.h"
+#include "LaTeXFeatures.h"
 
 using std::ostream;
+using std::endl;
 
 extern BufferView * current_view;
 
@@ -25,10 +27,7 @@ InsetRef::InsetRef(string const & cmd, Buffer * bf)
 	: master(bf)
 {
 	scanCommand(cmd);
-	if (getCmdName() == "ref")
-		flag = InsetRef::REF;
-	else
-		flag = InsetRef::PAGE_REF;
+	GenerateFlag();
 }
 
 
@@ -38,10 +37,39 @@ InsetRef::InsetRef(InsetCommand const & inscmd, Buffer * bf)
 	setCmdName(inscmd.getCmdName());
 	setContents(inscmd.getContents());
 	setOptions(inscmd.getOptions());
+	GenerateFlag();
+}
+
+
+void InsetRef::GenerateFlag()
+{
 	if (getCmdName() == "ref")
-		flag = InsetRef::REF;
+		flag = REF;
+	else if (getCmdName() == "pageref")
+		flag = PAGE_REF;
+	else if (getCmdName() == "vref")
+		flag = VREF;
+	else if (getCmdName() == "vpageref")
+		flag = VPAGE_REF;
+	else if (getCmdName() == "prettyref")
+		flag = PRETTY_REF;
+	else {
+		lyxerr << "ERROR (InsetRef::GenerateFlag): Unknown command name "
+		       << getCmdName() << endl;
+		flag = REF;
+	}
+}
+
+
+void InsetRef::Toggle() {
+	static string const cmd_names[REF_LAST+1] 
+		= {"ref", "pageref", "vref", "vpageref", "prettyref"};
+	
+	if (flag == REF_LAST)
+		flag = REF_FIRST;
 	else
-		flag = InsetRef::PAGE_REF;
+		flag = static_cast<Ref_Flags>(flag + 1);
+	setCmdName(cmd_names[flag]);
 }
 
 
@@ -54,12 +82,10 @@ void InsetRef::Edit(BufferView * bv, int, int, unsigned int)
 
 string InsetRef::getScreenLabel() const
 {
-	string temp;
-	if (flag == InsetRef::PAGE_REF)
-		temp += _("Page: ");
-	else 
-		temp += _("Ref: ");
-	temp += getContents();
+	static char const * labels[REF_LAST+1]
+		= { N_("Ref: "), N_("Page: "), N_("vRef: "), N_("vPage: "),
+		    N_("PrettyRef: ")};
+	string temp = _(labels[flag]) + getContents();
 	if(!current_view->buffer()->isLatex()
 	   && !getOptions().empty()) {
 		temp += "||";
@@ -125,4 +151,20 @@ string InsetRef::escape(string const & lab) const
 		}
 	}
 	return enc;
+}
+
+void InsetRef::Validate(LaTeXFeatures & features) const
+{
+	switch (flag) {
+	case VREF:
+	case VPAGE_REF:	
+		features.varioref = true;
+		break;
+	case PRETTY_REF:
+		features.prettyref = true;
+		break;
+	case REF:
+	case PAGE_REF:
+		break;
+	}
 }

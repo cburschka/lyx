@@ -154,9 +154,6 @@ void BufferView::workAreaMotionNotify(int x, int y, unsigned int state)
 }
 
 
-extern int bibitemMaxWidth(Painter &, LyXFont const &);
-
-
 ///  Single-click on work area
 void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 {

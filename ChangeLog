@@ -1,3 +1,48 @@
+2000-05-10  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* forms/lyx.fd: Redesign of form_ref
+
+	* src/LaTeXFeatures.[Ch]
+	* src/buffer.C
+	* src/lyx_cb.C
+	* src/menus.C	
+	* src/insets/insetref.[Ch]: Added support for varioref and prettyref.
+
+	* src/buffer.h
+	* src/lyxparagraph.h: Added new classes: LyXParagraph::inset_iterator
+	and Buffer::inset_iterator.
+
+	* src/menus.C: Added new menus: TOC and Refs.
+
+	* src/insets/insetlabel.C (Edit) Made InsetLabel editable.
+
+	* src/buffer.C (getTocList): New method.
+
+	* src/BufferView2.C (ChangeRefs): New method.
+
+	* src/buffer.C (getLabelList): New method. It replaces the old
+ 	getReferenceList. The return type is vector<string> instead of 
+	string.
+
+	* src/insets/insetinclude.C (getLabelList): New method. Replaces
+	the old getLabel() and GetNumberOfLabels() methods.
+	* src/insets/insetlabel.C (getLabelList): ditto
+	* src/mathed/formula.C (getLabelList): ditto
+	
+	* src/paragraph.C (String): New method.
+
+	* src/lyx_cb.C (TocSelectCB,TocUpdateCB): Rewritten.
+ 	Uses the new getTocList() method. 
+	TocSelectCB() now calls to TocUpdateCB() before moving the cursor, 
+	which automatically updates the contents of the browser.
+	(RefUpdateCB): Use the new getLabelList method.
+
+	* src/lyxfunc.C (Dispatch): Give an error if the label is not found.
+	
+	* src/BufferView2.C (gotoLabel) Use the new getLabelList method.
+
+	* src/spellchecker.C: Added using std::reverse;
+
 2000-05-19  Juergen Vigna  <jug@sad.it>
 
 	* src/tabular.C (Validate): fixed/added validating of LaTeXFeatures.

@@ -31,6 +31,8 @@
 #include <sys/types.h>
 #include <utime.h>
 
+#include <algorithm>
+
 #ifdef __GNUG__
 #pragma implementation "buffer.h"
 #endif
@@ -95,7 +97,8 @@ using std::ios;
 using std::setw;
 using std::endl;
 using std::pair;
-
+using std::vector;
+using std::max;
 
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
@@ -876,7 +879,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				   || inscmd.getCmdName() == "htmlurl") {
 				inset = new InsetUrl(inscmd.getCommand());
 			} else if (inscmd.getCmdName() == "ref"
-				   || inscmd.getCmdName() == "pageref") {
+				   || inscmd.getCmdName() == "pageref"
+				   || inscmd.getCmdName() == "vref"
+				   || inscmd.getCmdName() == "vpageref"
+				   || inscmd.getCmdName() == "prettyref") {
 				if (!inscmd.getOptions().empty() || !inscmd.getContents().empty()) {
 					inset = new InsetRef(inscmd, this);
 				}
@@ -3736,33 +3742,25 @@ void Buffer::setPaperStuff()
 string Buffer::getIncludeonlyList(char delim)
 {
 	string lst;
-	LyXParagraph * par = paragraph;
-	LyXParagraph::size_type pos;
-	Inset * inset;
-	while (par){
-		pos = -1;
-		while ((inset = par->ReturnNextInsetPointer(pos))){
-			if (inset->LyxCode() == Inset::INCLUDE_CODE) {
-				InsetInclude * insetinc = 
-					static_cast<InsetInclude*>(inset);
-				if (insetinc->isInclude() 
-				    && insetinc->isNoLoad()) {
-					if (!lst.empty())
-						lst += delim;
-					lst += OnlyFilename(ChangeExtension(insetinc->getContents(), string()));
-				}
+	for (inset_iterator it = inset_iterator_begin();
+	    it != inset_iterator_end(); ++it) {
+		if ((*it)->LyxCode() == Inset::INCLUDE_CODE) {
+			InsetInclude * insetinc = 
+				static_cast<InsetInclude *>(*it);
+			if (insetinc->isInclude() 
+			    && insetinc->isNoLoad()) {
+				if (!lst.empty())
+					lst += delim;
+				lst += OnlyFilename(ChangeExtension(insetinc->getContents(), string()));
 			}
-			++pos;
-		} 
-		par = par->next;
+		}
 	}
 	lyxerr.debug() << "Includeonly(" << lst << ')' << endl;
 	return lst;
 }
 
 
-// This is also a buffer property (ale)
-string Buffer::getReferenceList(char delim)
+vector<string> Buffer::getLabelList()
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
@@ -3770,29 +3768,69 @@ string Buffer::getReferenceList(char delim)
 	    && bufferlist.exists(params.parentname)) {
 		Buffer * tmp = bufferlist.getBuffer(params.parentname);
 		if (tmp)
-			return tmp->getReferenceList(delim);
+			return tmp->getLabelList();
 	}
 
+	vector<string> label_list;
+	for (inset_iterator it = inset_iterator_begin();
+	     it != inset_iterator_end(); ++it) {
+		vector<string> l = (*it)->getLabelList();
+		label_list.insert(label_list.end(), l.begin(), l.end());
+	}
+	return label_list;
+}
+
+
+vector<vector<Buffer::TocItem> > Buffer::getTocList()
+{
+	vector<vector<TocItem> > l(4);
 	LyXParagraph * par = paragraph;
-	LyXParagraph::size_type pos;
-	Inset * inset;
-        string lst;
 	while (par) {
-		pos = -1;
-		while ((inset = par->ReturnNextInsetPointer(pos))){     
-			for (int i = 0; i < inset->GetNumberOfLabels(); ++i) {
-				if (!lst.empty())
-					lst += delim;
-				lst += inset->getLabel(i);
+		if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
+			if (textclasslist.Style(params.textclass, 
+						par->GetLayout()).labeltype
+			    == LABEL_SENSITIVE) {
+				TocItem tmp;
+				tmp.par = par;
+				tmp.depth = 0;
+				tmp.str =  par->String(false);
+				switch (par->footnotekind) {
+				case LyXParagraph::FIG:
+				case LyXParagraph::WIDE_FIG:
+					l[1].push_back(tmp);
+					break;
+				case LyXParagraph::TAB:
+				case LyXParagraph::WIDE_TAB:
+					l[2].push_back(tmp);
+					break;
+				case LyXParagraph::ALGORITHM:
+					l[3].push_back(tmp);
+					break;
+				case LyXParagraph::FOOTNOTE:
+				case LyXParagraph::MARGIN:
+					break;
+				}
 			}
-			++pos;
+		} else if (!par->IsDummy()) {
+			char labeltype = textclasslist.Style(params.textclass, 
+							     par->GetLayout()).labeltype;
+      
+			if (labeltype >= LABEL_COUNTER_CHAPTER
+			    && labeltype <= LABEL_COUNTER_CHAPTER + params.tocdepth) {
+				// insert this into the table of contents
+				TocItem tmp;
+				tmp.par = par;
+				tmp.depth = max(0,
+						labeltype - 
+						textclasslist.TextClass(params.textclass).maxcounter());
+				tmp.str =  par->String(true);
+				l[0].push_back(tmp);
+			}
 		}
 		par = par->next;
 	}
-	lyxerr.debug() << "References(" <<  lst << ")" << endl;
-	return lst;
+	return l;
 }
-
 
 // This is also a buffer property (ale)
 string Buffer::getBibkeyList(char delim)
@@ -3818,28 +3856,21 @@ string Buffer::getBibkeyList(char delim)
 
 	// Might be either using bibtex or a child has bibliography
 	if (bibkeys.empty()) {
-		par = paragraph;
-		while (par) {
-			Inset * inset;
-			LyXParagraph::size_type pos = -1;
-
+		for (inset_iterator it = inset_iterator_begin();
+		     it != inset_iterator_end(); ++it) {
 			// Search for Bibtex or Include inset
-			while ((inset = par->ReturnNextInsetPointer(pos))) {
-				if (inset->LyxCode() == Inset::BIBTEX_CODE) {
+			if ((*it)->LyxCode() == Inset::BIBTEX_CODE) {
+				if (!bibkeys.empty())
+					bibkeys += delim;
+				bibkeys += static_cast<InsetBibtex *>(*it)->getKeys(delim);
+			} else if ((*it)->LyxCode() == Inset::INCLUDE_CODE) {
+				string bk(static_cast<InsetInclude *>(*it)->getKeys(delim));
+				if (!bk.empty()) {
 					if (!bibkeys.empty())
 						bibkeys += delim;
-					bibkeys += static_cast<InsetBibtex*>(inset)->getKeys(delim);
-				} else if (inset->LyxCode() == Inset::INCLUDE_CODE) {
-					string bk = static_cast<InsetInclude*>(inset)->getKeys(delim);
-					if (!bk.empty()) {
-						if (!bibkeys.empty())
-							bibkeys += delim;
-						bibkeys += bk;
-					}
+					bibkeys += bk;
 				}
-				++pos;
 			}
-			par = par->next;
 		}
 	}
  
@@ -3927,4 +3958,26 @@ bool Buffer::isMultiLingual()
 		par = par->next;
 	}
 	return false;
+}
+
+
+Buffer::inset_iterator::inset_iterator(LyXParagraph * paragraph,
+				       LyXParagraph::size_type pos)
+	: par(paragraph) {
+	it = par->InsetIterator(pos);
+	if (it == par->inset_iterator_end()) {
+		par = par->next;
+		SetParagraph();
+	}
+}
+
+
+void Buffer::inset_iterator::SetParagraph() {
+	while (par) {
+		it = par->inset_iterator_begin();
+		if (it != par->inset_iterator_end())
+			return;
+		par = par->next;
+	}
+	//it = 0;
 }

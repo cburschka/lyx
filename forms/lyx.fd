@@ -8,14 +8,14 @@ Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
 Name: form_title
-Width: 425
+Width: 420
 Height: 290
 Number of Objects: 2
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 425 290
+box: 0 0 420 290
 boxtype: FL_UP_BOX
 colors: FL_BLACK FL_TOP_BCOL
 alignment: FL_ALIGN_CENTER
@@ -93,7 +93,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -482,14 +482,14 @@ argument: 0
 
 =============== FORM ===============
 Name: form_ref
-Width: 290
-Height: 330
-Number of Objects: 8
+Width: 590
+Height: 400
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 290 330
+box: 0 0 590 400
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -507,7 +507,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 10 10 270 140
+box: 10 10 280 380
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_BOTTOM
@@ -525,7 +525,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 180 200 100 30
+box: 480 60 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -543,7 +543,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 180 240 100 30
+box: 480 100 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -561,7 +561,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 240 160 30
+box: 310 60 160 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -579,7 +579,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 200 160 30
+box: 310 100 160 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -597,7 +597,7 @@ argument: 1
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 280 160 30
+box: 310 280 160 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -610,12 +610,12 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthWest
 name: 
 callback: RefSelectCB
-argument: 2
+argument: 5
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 80 160 200 30
+box: 380 20 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -629,6 +629,79 @@ gravity: FL_SouthWest FL_SouthEast
 name: ref_name
 callback: 
 argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 310 360 110 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Sort keys|#S
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: sort
+callback: RefUpdateCB
+argument: 0
+	value: 1
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 310 140 160 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Insert vReference|#V
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
+name: vref
+callback: RefSelectCB
+argument: 2
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 310 180 160 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Insert vPage Number|#N
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
+name: vpageref
+callback: RefSelectCB
+argument: 3
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 310 220 160 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Insert Pretty Ref|#T
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
+name: prettyref
+callback: RefSelectCB
+argument: 4
 
 ==============================
 create_the_forms

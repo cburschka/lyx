@@ -16,8 +16,14 @@
 
 #include "insetlabel.h"
 #include "support/LOstream.h"
+#include "lyx_gui_misc.h"     //askForText
+#include "support/lstrings.h" //frontStrip, strip
+#include "lyxtext.h"
+#include "buffer.h"
 
 using std::ostream;
+using std::vector;
+using std::pair;
 
 /* Label. Used to insert a label automatically */
 
@@ -34,17 +40,37 @@ Inset * InsetLabel::Clone() const
 }
 
 
-int InsetLabel::GetNumberOfLabels() const
+vector<string> InsetLabel::getLabelList() const
 {
-	return 1;
+	return vector<string>(1,contents);
 }
 
 
-string InsetLabel::getLabel(int) const
+void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 {
-	return contents;
-}
+	if(bv->buffer()->isReadonly()) {
+		WarnReadonly(bv->buffer()->fileName());
+		return;
+	}
 
+	pair<bool, string> result = askForText(_("Enter label:"),
+					       contents);
+	if (result.first) {
+		string new_contents = frontStrip(strip(result.second));
+		if (!new_contents.empty() &&
+		    contents != new_contents) {
+			bool flag = bv->ChangeRefs(contents,new_contents);
+			contents = new_contents;
+			bv->text->RedoParagraph();
+			if (flag) {
+				bv->redraw();
+				bv->fitCursor();
+				//bv->updateScrollbar();
+			} else
+				bv->update(1);
+		}
+	}
+}
 
 int InsetLabel::Latex(ostream & os,
 		      bool /*fragile*/, bool /*fs*/) const

@@ -26,6 +26,8 @@
 #pragma implementation
 #endif
 
+#include <algorithm>
+
 #include "menus.h"
 #include "version.h"
 #include "lyxfont.h"
@@ -46,11 +48,14 @@
 #include "layout.h"
 #include "lyx_cb.h"
 #include "bufferview_funcs.h"
+#include "insets/insetref.h"
 #include "insets/insettabular.h"
 #include "tabular.h"
 
 using std::vector;
 using std::endl;
+using std::max;
+using std::sort;
 
 extern FD_form_screen * fd_form_screen;
 extern BufferList bufferlist;
@@ -79,6 +84,16 @@ extern "C" void C_Menus_ShowFileMenu2(FL_OBJECT * ob, long data)
 extern "C" void C_Menus_ShowEditMenu(FL_OBJECT * ob, long data)
 {
 	Menus::ShowEditMenu(ob, data);
+}
+
+extern "C" void C_Menus_ShowTocMenu(FL_OBJECT * ob, long data)
+{
+	Menus::ShowTocMenu(ob, data);
+}
+
+extern "C" void C_Menus_ShowRefsMenu(FL_OBJECT * ob, long data)
+{
+	Menus::ShowRefsMenu(ob, data);
 }
 
 extern "C" void C_Menus_ShowLayoutMenu(FL_OBJECT * ob, long data)
@@ -120,6 +135,8 @@ Menus::Menus(LyXView * view, int air)
 	fl_set_object_shortcut(menu_file, "", 1);
 	fl_set_object_shortcut(menu_file2, "", 1);
 	fl_set_object_shortcut(menu_edit, "", 1);
+	fl_set_object_shortcut(menu_toc, "", 1);
+	fl_set_object_shortcut(menu_refs, "", 1);
 	fl_set_object_shortcut(menu_layout, "", 1);
 	fl_set_object_shortcut(menu_math, "", 1);
 	fl_set_object_shortcut(menu_insert, "", 1);
@@ -166,6 +183,10 @@ void Menus::openByName(string const & menuName)
 			ShowFileMenu(menu_file, 0);
 		else if (menuName == _("Edit"))
 			ShowEditMenu(menu_edit, 0);
+		else if (menuName == _("TOC"))
+			ShowTocMenu(menu_toc, 0);
+		else if (menuName == _("Refs"))
+			ShowRefsMenu(menu_refs, 0);
 		else if (menuName == _("Layout"))
 			ShowLayoutMenu(menu_layout, 0);
 		else if (menuName == _("Insert"))
@@ -244,6 +265,34 @@ void Menus::create_menus(int air)
 	fl_set_object_callback(obj, C_Menus_ShowEditMenu, 0);
 	obj->u_vdata = this;
 	
+	/// TOC menu button
+	menu_toc = obj = 
+		fl_add_button(FL_TOUCH_BUTTON,
+			      moffset, yloc,
+			      fl_get_string_width(FL_BOLD_STYLE,
+						  MENU_LABEL_SIZE,
+						  _("TOC"),
+						  strlen(_("TOC"))) + mbadd,
+			      mbheight, _("TOC"));
+	moffset += obj->w + air;
+	fl_set_object_shortcut(obj, scex(_("MB|#T")), 1);
+	fl_set_object_callback(obj, C_Menus_ShowTocMenu, 0);
+	obj->u_vdata = this;
+
+	/// Refs menu button
+	menu_refs = obj = 
+		fl_add_button(FL_TOUCH_BUTTON,
+			      moffset, yloc,
+			      fl_get_string_width(FL_BOLD_STYLE,
+						  MENU_LABEL_SIZE,
+						  _("Refs"),
+						  strlen(_("Refs"))) + mbadd,
+			      mbheight, _("Refs"));
+	moffset += obj->w + air;
+	fl_set_object_shortcut(obj, scex(_("MB|#R")), 1);
+	fl_set_object_callback(obj, C_Menus_ShowRefsMenu, 0);
+	obj->u_vdata = this;
+
 	// Layout menu button
 	menu_layout = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
@@ -1222,6 +1271,201 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	fl_freepup(SubEditFloats);
 	fl_freepup(SubEditTable);
 	fl_freepup(SubVersionControl);
+}
+
+
+void Add_to_toc_menu(vector<Buffer::TocItem> const & toclist, 
+		     unsigned int from, unsigned int to, int depth,
+		     int menu, vector<int> & menus, FL_OBJECT * ob)
+{
+	unsigned int const max_number_of_items = 25;
+	if (to - from <= max_number_of_items)
+		for (unsigned int i = from; i < to; ++i)
+			fl_addtopup(menu,
+				    (string(4*max(0,toclist[i].depth-depth),' ')
+				     + toclist[i].str + "%x"
+				     + tostr(i+1)).c_str());
+	else {
+		unsigned int pos = from;
+		while (pos < to) {
+			unsigned int new_pos = pos+1;
+			while (new_pos < to &&
+			       toclist[new_pos].depth > depth)
+				++new_pos;
+			if (new_pos == pos+1) {
+				fl_addtopup(menu,
+					    (string(4*max(0,toclist[pos].depth-depth),' ')
+					     + toclist[pos].str + "%x"
+					     + tostr(pos+1)).c_str() );
+			} else {
+				int menu2 = fl_newpup(FL_ObjWin(ob));
+				menus.push_back(menu2);
+				Add_to_toc_menu(toclist, pos, new_pos,
+						depth+1, menu2, menus,ob);
+				fl_addtopup(menu,
+					    (string(4*max(0,toclist[pos].depth-depth),' ')
+					     + toclist[pos].str+"%m").c_str(),
+					    menu2);
+			}
+			pos = new_pos;
+		}
+	}
+}
+
+int const BIG_NUM = 1048576;
+
+void Menus::ShowTocMenu(FL_OBJECT * ob, long)
+{
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
+	vector<int> menus;
+
+	// set the pseudo menu-button
+	fl_set_object_boxtype(ob, FL_UP_BOX);
+	fl_set_button(ob, 0);
+	fl_redraw_object(ob);
+   
+	int TocMenu = fl_newpup(FL_ObjWin(ob));
+	menus.push_back(TocMenu);
+	vector<vector<Buffer::TocItem> > toclist =
+		men->currentView()->buffer()->getTocList();
+
+	static char const * MenuNames[3] = { N_("List of Figures%m%l"),
+					     N_("List of Tables%m%l"),
+					     N_("List of Algorithms%m%l") };
+	for (int j = 1; j <= 3; ++j)
+		if (!toclist[j].empty()) {
+			int menu2 = fl_newpup(FL_ObjWin(ob));
+			menus.push_back(menu2);
+			for (unsigned int i = 0; i < toclist[j].size(); ++i)
+				fl_addtopup(menu2,
+					    (toclist[j][i].str + "%x"
+					     + tostr(i+1+j*BIG_NUM)).c_str());
+			fl_addtopup(TocMenu, _(MenuNames[j-1]), menu2);
+		}
+
+	Add_to_toc_menu(toclist[0], 0, toclist[0].size(), 0,
+			TocMenu, menus, ob);
+
+	fl_setpup_position(
+		men->_view->getForm()->x + ob->x,
+		men->_view->getForm()->y + ob->y + ob->h + 10);   
+	int choice = fl_dopup(TocMenu);
+	XFlush(fl_display);
+
+	// set the pseudo menu-button back
+	fl_set_object_boxtype(ob, FL_FLAT_BOX);
+	fl_redraw_object(ob);
+	if (choice == 0)
+		men->_view->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
+	else if (choice > 0) {
+		int type = choice / BIG_NUM;
+		int num = (choice % BIG_NUM) - 1;
+		BufferView *bv = men->currentView();
+		bv->beforeChange();
+		bv->text->SetCursor(toclist[type][num].par, 0);
+		bv->text->sel_cursor = bv->text->cursor;
+		bv->update(0);
+	}
+	for (unsigned int i = 0; i < menus.size(); ++i)
+		fl_freepup(menus[i]);
+}
+
+void Add_to_refs_menu(vector<string> const & label_list, int offset,
+		     int menu, vector<int> & menus, FL_OBJECT * ob)
+{
+	unsigned int const max_number_of_items = 25;
+	unsigned int const max_number_of_items2 = 20;
+
+	if (label_list.size() <= max_number_of_items)
+		for (unsigned int i = 0; i < label_list.size(); ++i)
+			fl_addtopup(menu,
+				    (label_list[i] + "%x"
+				     +tostr(i+offset)).c_str());
+	else
+		for (unsigned int i = 0; i < label_list.size();
+		     i += max_number_of_items2) {
+			unsigned int j = std::min(label_list.size(),
+						  i+max_number_of_items2);
+			int menu2 = fl_newpup(FL_ObjWin(ob));
+			menus.push_back(menu2);
+			for (unsigned int k = i;  k < j; ++k)
+				fl_addtopup(menu2,
+					    (label_list[k] + "%x"
+					     + tostr(k+offset)).c_str());
+			fl_addtopup(menu,
+				    (label_list[i]+".."
+				     +label_list[j-1]+"%m").c_str(),
+				    menu2);
+		}
+
+
+}
+
+void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
+{
+	vector<int> menus;
+
+	Menus * men = static_cast<Menus*>(ob->u_vdata);
+
+	// set the pseudo menu-button
+	fl_set_object_boxtype(ob, FL_UP_BOX);
+	fl_set_button(ob, 0);
+	fl_redraw_object(ob);
+   
+	int RefsMenu = fl_newpup(FL_ObjWin(ob));
+	menus.push_back(RefsMenu);
+	Buffer * buffer = men->currentView()->buffer();
+	vector<string> label_list = buffer->getLabelList();
+	sort(label_list.begin(), label_list.end());
+
+	static char const * MenuNames[5] = { N_("Insert Page Number%m"),
+					     N_("Insert vref%m"),
+					     N_("Insert vpageref%m"),
+					     N_("Insert Pretty Ref%m"),
+					     N_("Goto Reference%m%l") };
+
+	for (int j = 1; j <= 5; ++j) {
+		int menu2 = fl_newpup(FL_ObjWin(ob));
+		menus.push_back(menu2);
+		Add_to_refs_menu(label_list, 1+j*BIG_NUM, menu2, menus, ob);
+		fl_addtopup(RefsMenu, _(MenuNames[j-1]), menu2);
+	}
+
+	fl_addtopup(RefsMenu, _("Insert Reference:%d%x0"));
+	Add_to_refs_menu(label_list, 1, RefsMenu, menus, ob);
+
+	if (label_list.empty()) {
+		fl_setpup_mode(RefsMenu, 1, FL_PUP_GREY);
+		fl_setpup_mode(RefsMenu, 2, FL_PUP_GREY);
+	}
+
+	fl_setpup_position(
+		men->_view->getForm()->x + ob->x,
+		men->_view->getForm()->y + ob->y + ob->h + 10);   
+	int choice = fl_dopup(RefsMenu);
+	XFlush(fl_display);
+
+	// set the pseudo menu-button back
+	fl_set_object_boxtype(ob, FL_FLAT_BOX);
+	fl_redraw_object(ob);
+
+	if (choice > 0) {
+		int type = choice / BIG_NUM;
+		int num = (choice % BIG_NUM) - 1;
+		if (type >= 5)
+			men->_view->getLyXFunc()->Dispatch(LFUN_REFGOTO,
+							   label_list[num].c_str());
+		else {
+			static string const commands[5]
+				= { "\\ref", "\\pageref", "\\vref", "\\vpageref",
+				    "\\prettyref"};
+			string t = commands[type] + "{" + label_list[num] + "}";
+			men->currentView()->insertInset(new InsetRef(t, buffer));
+		}
+	}
+
+	for (unsigned int i = 0; i < menus.size(); ++i)
+		fl_freepup(menus[i]);
 }
 
 

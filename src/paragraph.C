@@ -1930,16 +1930,12 @@ int LyXParagraph::AutoDeleteInsets()
 }
 
 
-Inset * LyXParagraph::ReturnNextInsetPointer(LyXParagraph::size_type & pos)
+LyXParagraph::inset_iterator LyXParagraph::InsetIterator(LyXParagraph::size_type pos)
 {
 	InsetList::iterator it = lower_bound(insetlist.begin(),
 					     insetlist.end(),
 					     pos, matchIT());
-	if (it != insetlist.end()) {
-		pos = (*it).pos;
-		return (*it).inset;
-	}
-	return 0;
+	return inset_iterator(it);
 }
 
 
@@ -4260,4 +4256,42 @@ bool LyXParagraph::isMultiLingual()
 			return true;
 	}
 	return false;
+}
+
+
+// Convert the paragraph to a string.
+// Used for building the table of contents
+string LyXParagraph::String(bool label)
+{
+	string s;
+	if (label && !IsDummy())
+		s += labelstring + ' ';
+	string::size_type len = s.size();
+
+	for (LyXParagraph::size_type i = 0;i < size(); ++i) {
+		unsigned char c = GetChar(i);
+		if (IsPrintable(c))
+			s += c;
+		else if (c == META_INSET &&
+			 GetInset(i)->LyxCode() == Inset::MATH_CODE) {
+#ifdef HAVE_SSTREAM
+			std::ostringstream ost;
+			GetInset(i)->Ascii(ost);
+#else
+			ostrstream ost;
+			GetInset(i)->Ascii(ost);
+			ost << '\0';
+#endif
+			s += subst(ost.str(),'\n',' ');
+		}
+	}
+
+	if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE)
+		s += NextAfterFootnote()->String(false);
+
+	if (!IsDummy()) {
+		if (isRightToLeftPar())
+			reverse(s.begin() + len,s.end());
+	}
+	return s;
 }

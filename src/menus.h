@@ -42,6 +42,10 @@ public:
 	///
 	static void ShowEditMenu(FL_OBJECT *ob, long data);
 	///
+	static void ShowTocMenu(FL_OBJECT *ob, long data);
+	///
+	static void ShowRefsMenu(FL_OBJECT *ob, long data);
+	///
 	static void ShowLayoutMenu(FL_OBJECT *ob, long data);
 	///
 	static void ShowInsertMenu(FL_OBJECT *ob, long data);
@@ -81,6 +85,10 @@ private:
 	FL_OBJECT *menu_file2;
 	///
 	FL_OBJECT *menu_edit;
+	///
+	FL_OBJECT *menu_toc;
+	///
+	FL_OBJECT *menu_refs;
 	///
 	FL_OBJECT *menu_layout;
 	///

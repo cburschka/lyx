@@ -40,10 +40,8 @@ public:
         Inset * Clone() const;
 	///
 	Inset::Code LyxCode() const { return Inset::INCLUDE_CODE; }
-	/// This is 1 if the childs have labels, 0 otherwise
-	int GetNumberOfLabels() const;
 	/// This returns the list of labels on the child buffer
-	string getLabel(int) const;
+	std::vector<string> getLabelList() const;
 	/// This returns the list of bibkeys on the child buffer
 	string getKeys(char delim) const;
 	///

@@ -27,9 +27,19 @@ public:
         ///
         enum Ref_Flags {
 		///
-		REF,
+		REF = 0,
 		///
-		PAGE_REF
+		PAGE_REF,
+		///
+		VREF,
+		///
+		VPAGE_REF,
+		///
+		PRETTY_REF,
+		///
+		REF_LAST = PRETTY_REF,
+		///
+		REF_FIRST = REF
 	};
 	
 	///
@@ -55,9 +65,7 @@ public:
 	///
 	string getScreenLabel() const;
 	///
-	InsetRef::Ref_Flags getFlag() { return flag; }
-	///
-	void setFlag(InsetRef::Ref_Flags f) { flag = f; }
+	void Toggle();
         ///
         void gotoLabel();
 	///
@@ -68,7 +76,11 @@ public:
 	int Linuxdoc(std::ostream &) const;
 	///
 	int DocBook(std::ostream &) const;
+	///
+	void Validate(LaTeXFeatures & features) const;
 private:
+	///
+	void GenerateFlag();
 	/// This function escapes 8-bit characters
 	string escape(string const &) const;
 	///

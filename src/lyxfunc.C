@@ -1294,10 +1294,7 @@ string LyXFunc::Dispatch(int ac,
 		InsetRef * inset = 
 			static_cast<InsetRef*>(getInsetByCode(Inset::REF_CODE));
 		if (inset) {
-			if (inset->getFlag() == InsetRef::REF)
-				inset->setFlag(InsetRef::PAGE_REF);
-			else
-				inset->setFlag(InsetRef::REF);
+			inset->Toggle();
 			owner->view()->updateInset(inset, true);
 		} else {
 			setErrorMessage(N_("No cross-reference to toggle"));
@@ -1323,7 +1320,10 @@ string LyXFunc::Dispatch(int ac,
 		
 		if (!label.empty()) {
 			owner->view()->savePosition();
-			owner->view()->gotoLabel(label.c_str());
+			if (!owner->view()->gotoLabel(label))
+				WriteAlert(_("Error"), 
+					   _("Couldn't find this label"), 
+					   _("in current document."));
 		}
 	}
 	break;
@@ -3077,23 +3077,15 @@ void LyXFunc::CloseBuffer()
 
 Inset * LyXFunc::getInsetByCode(Inset::Code code)
 {
-	bool found = false;
-	Inset * inset = 0;
 	LyXCursor cursor = owner->view()->text->cursor;
-	LyXParagraph::size_type pos = cursor.pos;
-	LyXParagraph * par = cursor.par;
-	
-	while (par && !found) {
-		while ((inset = par->ReturnNextInsetPointer(pos))){
-			if (inset->LyxCode() == code) {
-				found = true;
-				break;
-			}
-			++pos;
-		} 
-		par = par->next;
+	Buffer * buffer = owner->view()->buffer();
+	for (Buffer::inset_iterator it = Buffer::inset_iterator(cursor.par,
+								cursor.pos);
+	     it != buffer->inset_iterator_end(); ++it) {
+		if ((*it)->LyxCode() == code)
+			return *it;
 	}
-	return found ? inset : 0;
+	return 0;
 }
 
 

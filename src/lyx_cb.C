@@ -55,7 +55,8 @@ using std::cout;
 using std::ios;
 using std::istream_iterator;
 using std::pair;
-using std::reverse;
+using std::vector;
+using std::sort;
 
 extern Combox * combo_language;
 extern Combox * combo_language2;
@@ -3100,14 +3101,7 @@ void Reconfigure(BufferView * bv)
 // Table of Contents
 //
 
-struct TocList {
-	int counter[6];
-	bool appendix;
-	TocList * next;
-};
-
-
-static TocList * toclist = 0;
+static vector<Buffer::TocItem> toclist;
 
 
 extern "C" void TocSelectCB(FL_OBJECT * ob, long)
@@ -3115,40 +3109,19 @@ extern "C" void TocSelectCB(FL_OBJECT * ob, long)
 	if (!current_view->available())
 		return;
    
-	TocList * tmptoclist = toclist;
-	int i = fl_get_browser(ob);
-	for (int a = 1; a < i && tmptoclist->next; ++a) {
-		tmptoclist = tmptoclist->next;
-	}
-
-	if (!tmptoclist)
-		return;
-     
-
-	LyXParagraph * par = current_view->buffer()->paragraph;
-	while (par && (par->GetFirstCounter(0) != tmptoclist->counter[0] ||
-		       par->GetFirstCounter(1) != tmptoclist->counter[1] ||
-		       par->GetFirstCounter(2) != tmptoclist->counter[2] ||
-		       par->GetFirstCounter(3) != tmptoclist->counter[3] ||
-		       par->GetFirstCounter(4) != tmptoclist->counter[4] ||
-		       par->GetFirstCounter(5) != tmptoclist->counter[5] ||
-		       par->appendix != tmptoclist->appendix)) {
-		par = par->LastPhysicalPar()->Next();
-	}
-   
-	if (par) {
-		current_view->beforeChange();
-		current_view->text->SetCursor(par, 0);
+	TocUpdateCB(0, 0);
+	unsigned int choice = fl_get_browser(ob);
+	if (0 < choice && choice - 1 < toclist.size()) {
+ 		current_view->beforeChange();
+		current_view->text->SetCursor(toclist[choice-1].par, 0);
 		current_view->text->sel_cursor = 
 			current_view->text->cursor;
 		current_view->update(0);
-	}
-	else {
+	} else {
 		WriteAlert(_("Error"), 
 			   _("Couldn't find this label"), 
 			   _("in current document."));
 	}
-	  
 }
 
 
@@ -3160,108 +3133,40 @@ extern "C" void TocCancelCB(FL_OBJECT *, long)
 
 extern "C" void TocUpdateCB(FL_OBJECT *, long)
 {
-	static LyXParagraph * stapar = 0;
-	TocList * tmptoclist = 0;
-   
-	/* deleted the toclist */ 
-	if (toclist){
-		while (toclist){
-			tmptoclist = toclist->next;
-			delete toclist;
-			toclist = tmptoclist;
-		}
-	}
-	toclist = 0;
-	tmptoclist = toclist;
-
-
-	fl_clear_browser(fd_form_toc->browser_toc);
 	if (!current_view->available()) {
+		toclist.clear();
+		fl_clear_browser(fd_form_toc->browser_toc);
 		fl_add_browser_line(fd_form_toc->browser_toc,
 				    _("*** No Document ***"));
 		return;
 	}
-	fl_hide_object(fd_form_toc->browser_toc);
-	/* get the table of contents */ 
-	LyXParagraph * par = current_view->buffer()->paragraph;
-	char labeltype;
-	char * line = new char[200];
-	int pos = 0;
-	unsigned char c;
+
+	vector<vector<Buffer::TocItem> > tmp =
+		current_view->buffer()->getTocList();
+	if (toclist == tmp[0])
+		return;
+	toclist = tmp[0];
+
+	static Buffer * buffer = 0;
 	int topline = 0;
-   
-	if (stapar == par)
+	int line = 0;
+	if (buffer == current_view->buffer()) {
 		topline = fl_get_browser_topline(fd_form_toc->browser_toc);
-	stapar = par;
-   
-	while (par) {
-		labeltype = textclasslist.Style(current_view->buffer()->params.textclass, 
-						par->GetLayout()).labeltype;
-      
-		if (labeltype >= LABEL_COUNTER_CHAPTER
-		    && labeltype <= LABEL_COUNTER_CHAPTER +
-		    current_view->buffer()->params.tocdepth) {
-			/* insert this into the table of contents */ 
-			/* first indent a little bit */ 
-			
-			for (pos = 0; 
-			     pos < (labeltype - 
-				    textclasslist.TextClass(current_view->buffer()->
-							    params.textclass).maxcounter()) * 4 + 2;
-			     ++pos)
-				line[pos] = ' ';
-			
-			// Then the labestring
-			if (!par->labelstring.empty()) {
-				string::size_type i = 0;
-				while (pos < 199 && i < par->labelstring.length()) {
-					line[pos] = par->labelstring[i];
-					++i;
-					++pos;
-				}
-			}
-	 
-			line[pos] = ' ';
-			++pos;
-			int pos0 = pos;
-			
-			/* now the contents */
-			LyXParagraph::size_type i = 0;
-			while (pos < 199 && i < par->size()) {
-				c = par->GetChar(i);
-				if (isprint(c) || c >= 128) {
-					line[pos] = c;
-					++pos;
-				}
-				++i;
-			}
-			if (par->isRightToLeftPar())
-				reverse(line + pos0, line + pos);
-			
-			line[pos] = '\0';
-			fl_add_browser_line(fd_form_toc->browser_toc, line);
-			
-			/* make a toclist entry */
-			if (!tmptoclist){
-				tmptoclist = new TocList;
-				toclist = tmptoclist;
-			} else {
-				tmptoclist->next = new TocList;
-				tmptoclist = tmptoclist->next;
-			}
-			
-			tmptoclist->next = 0;
-			int a = 0;
-			for (a = 0; a < 6; ++a) {
-				tmptoclist->counter[a] = par->GetFirstCounter(a);
-			}
-			tmptoclist->appendix = par->appendix;
-		}
-		par = par->LastPhysicalPar()->Next();
-		
-	}
-	delete[] line;
+		line = fl_get_browser(fd_form_toc->browser_toc);
+	} else
+		buffer = current_view->buffer();
+
+	fl_clear_browser(fd_form_toc->browser_toc);
+	fl_hide_object(fd_form_toc->browser_toc);
+
+	for (vector<Buffer::TocItem>::const_iterator it = toclist.begin();
+	     it != toclist.end(); ++it)
+		fl_add_browser_line(fd_form_toc->browser_toc,
+				    (string(4*(*it).depth,' ')+
+				     (*it).str).c_str());
+
 	fl_set_browser_topline(fd_form_toc->browser_toc, topline);
+	fl_select_browser_line(fd_form_toc->browser_toc, line);
 	fl_show_object(fd_form_toc->browser_toc);
 }
 
@@ -3280,18 +3185,17 @@ extern "C" void RefSelectCB(FL_OBJECT *, long data)
 	if (s.empty())
 		return;
 
-        if (data == 2) {
+        if (data >= 5) {
                 current_view->owner()->getLyXFunc()->Dispatch(LFUN_REFGOTO, s.c_str());
 	        return;
 	}
-	    
-	string t;
-	if (data == 0)
-		t += "\\ref";
-	else
-		t += "\\pageref";
 
-	if(current_view->buffer()->isSGML())
+	static string const commands[5]
+		= { "\\ref", "\\pageref", "\\vref", "\\vpageref",
+		    "\\prettyref"};
+	string t = commands[data];
+
+	if (current_view->buffer()->isSGML())
 		t += "[" + u + "]" + "{" + s + "}";
 	else
 		t += "{" + s + "}";
@@ -3317,11 +3221,16 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 	string currentstr = btmp ? btmp : "";
 
 	fl_clear_browser(brow);
+	fl_hide_object(brow);
 
-	string refs = current_view->buffer()->getReferenceList('\n');
+	vector<string> refs = current_view->buffer()->getLabelList();
+	if (fl_get_button(fd_form_ref->sort))
+		sort(refs.begin(),refs.end());
+	for (vector<string>::const_iterator it = refs.begin();
+	     it != refs.end(); ++it)
+		fl_add_browser_line(brow, (*it).c_str());
+
 	int topline = 1;
-
-	fl_addto_browser_chars(brow, refs.c_str());
 	int total_lines = fl_get_browser_maxline(brow);
 	for (int i = 1; i <= total_lines ; ++i) {
 		if (fl_get_browser_line(brow, i) == currentstr) {
@@ -3347,11 +3256,25 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 	if (!current_view->buffer()->isSGML()) {
 		fl_deactivate_object(fd_form_ref->ref_name);
 		fl_set_object_lcol(fd_form_ref->ref_name, FL_INACTIVE);
-	}
-	else {
+
+		fl_activate_object(fd_form_ref->vref);
+		fl_set_object_lcol(fd_form_ref->vref, FL_BLACK);
+		fl_activate_object(fd_form_ref->vpageref);
+		fl_set_object_lcol(fd_form_ref->vpageref, FL_BLACK);
+		fl_activate_object(fd_form_ref->prettyref);
+		fl_set_object_lcol(fd_form_ref->prettyref, FL_BLACK);
+	} else {
 		fl_activate_object(fd_form_ref->ref_name);
 		fl_set_object_lcol(fd_form_ref->ref_name, FL_BLACK);
+
+		fl_deactivate_object(fd_form_ref->vref);
+		fl_set_object_lcol(fd_form_ref->vref, FL_INACTIVE);
+		fl_deactivate_object(fd_form_ref->vpageref);
+		fl_set_object_lcol(fd_form_ref->vpageref, FL_INACTIVE);
+		fl_deactivate_object(fd_form_ref->prettyref);
+		fl_set_object_lcol(fd_form_ref->prettyref, FL_INACTIVE);
 	}
+	fl_show_object(brow);
 }
 
 

@@ -218,6 +218,8 @@ public:
 	void leaveView();
 	///
 	void workAreaSelectionNotify(Window win, XEvent * event);
+	///
+	bool ChangeRefs(string const & from, string const & to);
 private:
 	struct Pimpl;
 	Pimpl * pimpl_;

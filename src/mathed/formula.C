@@ -47,6 +47,7 @@ using std::ostream;
 using std::istream;
 using std::pair;
 using std::endl;
+using std::vector;
 
 extern char * mathed_label;
 
@@ -602,48 +603,25 @@ void InsetFormula::display(bool dspf)
 }
 
 
-int InsetFormula::GetNumberOfLabels() const
-{
-   // This is dirty, I know. I'll clean it at 0.13
-   if (par->GetType() == LM_OT_MPARN) {
-       MathMatrixInset * mt = static_cast<MathMatrixInset*>(par);
-       int nl = 0;
-       MathedRowSt const * crow = mt->getRowSt();
-       while (crow) {
-	   if (crow->getLabel()) ++nl;
-	   crow = crow->getNext();
-       }
-       return nl;
-   } else
-   if (!label.empty())
-       return 1;
-   else
-       return 0;
-}
-
-
-string InsetFormula::getLabel(int il) const
+vector<string> InsetFormula::getLabelList() const
 {
 //#warning This is dirty, I know. Ill clean it at 0.11
-	// Correction, the only way to clean this is with a new kernel: 0.13.
+// Correction, the only way to clean this is with a new kernel: 0.13.
+
+	vector<string> label_list;
+
 	if (par->GetType() == LM_OT_MPARN) {
-		string lab;
 		MathMatrixInset * mt = static_cast<MathMatrixInset*>(par);
-		int nl = 0;
 		MathedRowSt const * crow = mt->getRowSt();
 		while (crow) {
-			if (crow->getLabel()) {
-				if (nl == il) {
-					lab = crow->getLabel();
-					break;
-				}
-				++nl;
-			}
+			if (crow->getLabel())
+				label_list.push_back(crow->getLabel());
 			crow = crow->getNext();
 		}
-		return lab;
-	}
-	return label;
+	} else if (!label.empty())
+		label_list.push_back(label);
+
+	return label_list;
 }
 
 

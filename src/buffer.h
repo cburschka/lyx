@@ -291,9 +291,17 @@ public:
 	///
 	string getIncludeonlyList(char delim = ',');
 	///
-	string getReferenceList(char delim = '|');
-	///
 	string getBibkeyList(char delim = '|');
+	///
+	struct TocItem {
+		LyXParagraph *par;
+		int depth;
+		string str;
+	};
+	///
+	std::vector<std::vector<TocItem> > getTocList();
+	///
+	std::vector<string> getLabelList();
 
 	/** This will clearly have to change later. Later we can have more
 	    than one user per buffer. */
@@ -411,6 +419,47 @@ private:
 	    of the buffers in the list of users to do a updateLayoutChoice.
 	*/
 	BufferView * users;
+
+	class inset_iterator {
+	public:
+		inset_iterator() : par(0) /*, it(0)*/ {}
+		inset_iterator(LyXParagraph * paragraph) : par(paragraph) {
+			SetParagraph();
+		}
+		inset_iterator(LyXParagraph * paragraph, LyXParagraph::size_type pos);
+		inset_iterator & operator++() {
+			if (par) {
+				++it;
+				if (it == par->inset_iterator_end()) {
+					par = par->next;
+					SetParagraph();
+				}
+			}
+			return *this;
+		}
+		Inset * operator*() {return *it; }
+		LyXParagraph * getPar() { return par; }
+		LyXParagraph::size_type getPos() {return it.getPos(); }
+		bool operator==(inset_iterator const & iter) const {
+			return it == iter.it && par == iter.par;
+		}
+		bool operator!=(inset_iterator const & iter) const {
+			return it != iter.it || par != iter.par;
+		}
+	private:
+		void SetParagraph();
+		LyXParagraph * par;
+		LyXParagraph::inset_iterator it;
+	};
+public:
+	///
+	inset_iterator inset_iterator_begin() {
+		return inset_iterator(paragraph);
+	}
+	///
+	inset_iterator inset_iterator_end() {
+		return inset_iterator();
+	}
 };
 
 
@@ -418,6 +467,19 @@ inline
 void Buffer::setParentName(string const & name)
 {
 	params.parentname = name;    
+}
+
+inline
+bool operator==(Buffer::TocItem const & a, Buffer::TocItem const & b) {
+	return a.par == b.par && a.str == b.str;
+	// No need to compare depth.
+}
+
+
+inline
+bool operator!=(Buffer::TocItem const & a, Buffer::TocItem const & b) {
+	return !(a == b);
+	// No need to compare depth.
 }
 
 #endif

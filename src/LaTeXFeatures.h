@@ -79,6 +79,10 @@ struct LaTeXFeatures {
 	bool floatflt;	// floatflt.sty
 	///
 	bool url;       // url.sty
+	///
+	bool varioref;  // varioref.sty
+	///
+	bool prettyref; // prettyref.sty
 	//@}
 
 	

@@ -43,6 +43,8 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
 	subfigure = false;
 	floatflt = false;
 	url = false;
+	varioref = false;
+	prettyref = false;
 	
 	// commands
 	lyx = false;
@@ -181,7 +183,15 @@ string LaTeXFeatures::getPackages()
 	if (url && ! tclass.provides(LyXTextClass::url))
 		packages += "\\IfFileExists{url.sty}{\\usepackage{url}}\n"
 			    "                      {\\newcommand{\\url}{\\texttt}}\n";
-	
+
+	// varioref.sty
+	if (varioref)
+		packages += "\\usepackage{varioref}\n";
+
+	// prettyref.sty
+	if (prettyref)
+		packages += "\\usepackage{prettyref}\n";
+
 	return packages;
 }
 
