@@ -230,7 +230,7 @@ public:
     char const * GetDocBookAlign(int cell, bool isColumn = false) const;
 
     ///
-    bool IsMultiColumn(int cell) const;
+    bool IsMultiColumn(int cell, bool real = false) const;
     ///
     void SetMultiColumn(int cell, int number);
     ///
@@ -407,7 +407,11 @@ private: //////////////////////////////////////////////////////////////////
     ///
     int width_of_tabular;
     ///
+    int rotate;
+    ///
     /// for long tabulars
+    ///
+    int is_long_tabular;
     ///
     int endhead; // row of endhead
     int endfirsthead; // row of endfirsthead
@@ -430,19 +434,14 @@ private: //////////////////////////////////////////////////////////////////
     bool calculate_width_of_column_NMC(int column); // no multi cells
     ///
     void calculate_width_of_tabular();
-
     ///
     cellstruct * cellinfo_of_cell(int cell) const;
-
     ///
     void delete_column(int column);
-
     ///
     int cells_in_multicolumn(int cell) const;
     ///
-    int is_long_tabular;
-    ///
-    int rotate;
+    bool UseParbox(int cell) const;
 };
 
 #endif

@@ -116,7 +116,7 @@ public:
 	};
 
 	///
-	Inset() { owner_ = 0; top_x = top_baseline = 0; }
+	Inset() { owner_ = 0; top_x = top_baseline = 0; scx = 0; }
 	///
 	virtual ~Inset() {}
 	///
@@ -215,11 +215,14 @@ public:
 	virtual LyXText * getLyXText(BufferView *) const;
 	virtual void deleteLyXText(BufferView *, bool =true) const {}
 	virtual void resizeLyXText(BufferView *) const {}
+	// returns the actuall scroll-value
+	int  scroll() const { return scx; }
 
 protected:
 	///
 	mutable int top_x;
 	mutable int top_baseline;
+	mutable int scx;
 
 private:
 	///
@@ -283,7 +286,7 @@ public:
 	}
 
 	///
-	UpdatableInset() { scx = mx_scx = 0; }
+	UpdatableInset() {}
 	///
 	virtual EDITABLE Editable() const;
    
@@ -341,14 +344,16 @@ public:
 	virtual bool isCursorVisible() const { return cursor_visible; }
 	///
 	virtual int getMaxWidth(Painter & pain, UpdatableInset const *) const;
+	///
+	int scroll() const { return scx; }
 
 protected:
 	///
 	mutable bool cursor_visible;
 
-private:
-	///
-	int mx_scx;
-	mutable int scx;
+	// scrolls to absolute position in bufferview-workwidth * sx units
+	void scroll(BufferView *, float sx) const;
+	// scrolls offset pixels
+	void scroll(BufferView *, int offset) const;
 };
 #endif

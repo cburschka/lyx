@@ -102,7 +102,7 @@ public:
     ///
     void InsetUnlock(BufferView *);
     ///
-    void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty);
+    void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty) const;
     ///
     bool LockInsetInInset(BufferView *, UpdatableInset *);
     ///
@@ -209,8 +209,6 @@ private:
     bool InsetHit(BufferView * bv, int x, int y) const;
     ///
     int GetMaxWidthOfCell(Painter &, int cell) const;
-    ///
-    void recomputeTextInsets(BufferView *, const LyXFont &) const;
 
     ///
     /// Private structures and variables

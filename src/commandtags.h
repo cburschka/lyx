@@ -273,6 +273,7 @@ enum kb_action {
 	LFUN_INSERT_URL,                // Angus 20000726
 	LFUN_TABULAR_FEATURE,           // Jug 20000728
 	LFUN_LAYOUT_TABULAR,            // Jug 20000731
+	LFUN_SCROLL_INSET,              // Jug 20000801
 	LFUN_INDEX_INSERT,              // Angus 20000803
 	LFUN_LASTACTION  /* this marks the end of the table */
 };

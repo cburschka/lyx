@@ -506,7 +506,8 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 		LyXCursor cursor = bv_->text->cursor;
 		bv_->the_locking_inset->
 			InsetMotionNotify(bv_,
-					  x - cursor.x(),
+					  x - cursor.x() -
+					  bv_->the_locking_inset->scroll(),
 					  y - cursor.y() + bv_->text->first,
 					  state);
 		return;
@@ -906,10 +907,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
   
 	LyXCursor cursor;
 	text->SetCursorFromCoordinates(bv_, cursor, x, y_tmp);
-#if 0 // Are you planning to use this Jürgen? (Lgb)
-	bool move_cursor = ((cursor.par != text->cursor.par) ||
-			    (cursor.pos != text->cursor.pos()));
-#endif
+
 	if (cursor.pos() < cursor.par()->Last()
 	    && cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 	    && cursor.par()->GetInset(cursor.pos())
@@ -923,20 +921,17 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 		int start_x, end_x;
 
 		if (is_rtl) {
-			start_x = cursor.x() - tmpinset->width(bv_, font);
-			end_x = cursor.x();
+			start_x = cursor.x() - tmpinset->width(bv_, font) + tmpinset->scroll();
+			end_x = cursor.x() + tmpinset->scroll();
 		} else {
-			start_x = cursor.x();
-			end_x = cursor.x() + tmpinset->width(bv_, font);
+			start_x = cursor.x() + tmpinset->scroll();
+			end_x = cursor.x() + tmpinset->width(bv_, font) + tmpinset->scroll();
 		}
 
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)
 		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font)) {
-#if 0
-			if (move_cursor && (tmpinset != bv_->the_locking_inset))
-#endif
-				text->SetCursor(bv_, cursor.par(),cursor.pos(),true);
+			text->SetCursor(bv_, cursor.par(),cursor.pos(),true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
 			y = y_tmp - (text->cursor.y()); 
@@ -955,11 +950,13 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 		int start_x, end_x;
 
 		if (!is_rtl) {
-			start_x = cursor.x() - tmpinset->width(bv_, font);
-			end_x = cursor.x();
+			start_x = cursor.x() - tmpinset->width(bv_, font) +
+			    tmpinset->scroll();
+			end_x = cursor.x() + tmpinset->scroll();
 		} else {
-			start_x = cursor.x();
-			end_x = cursor.x() + tmpinset->width(bv_, font);
+			start_x = cursor.x() + tmpinset->scroll();
+			end_x = cursor.x() + tmpinset->width(bv_, font) +
+			    tmpinset->scroll();
 		}
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)

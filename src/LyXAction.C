@@ -365,6 +365,8 @@ void LyXAction::init()
 		{ LFUN_CENTER, "screen-recenter", "", ReadOnly },
 		{ LFUN_PRIOR, "screen-up", "", ReadOnly },
 		{ LFUN_PRIORSEL, "screen-up-select", "", ReadOnly },
+		{ LFUN_SCROLL_INSET, "inset-scroll", N_("Scroll inset"),
+		  ReadOnly },
 		{ LFUN_SELFINSERT, "self-insert", "", Noop },
 		{ LFUN_CHARATCURSOR, "server-char-after", "", ReadOnly },
 		{ LFUN_GETFONT, "server-get-font", "", ReadOnly },

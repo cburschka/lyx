@@ -175,14 +175,14 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
             continue;
 	if (token == "\\end_inset")
 	    break;
-	if (const_cast<Buffer*>(buf)->parseSingleLyXformat2Token(lex, par, return_par,
-					    token, pos, depth,
-					    font
+	if (const_cast<Buffer*>(buf)->
+	    parseSingleLyXformat2Token(lex, par, return_par,token, pos, depth,
+				       font
 #ifndef NEW_INSETS
-								 , footnoteflag,
-					    footnotekind
+				       , footnoteflag, footnotekind
 #endif
-		)) {
+				       ))
+	{
 	    // the_end read this should NEVER happen
 	    lex.printError("\\the_end read in inset! Error in document!");
 	    return;
@@ -267,9 +267,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     if (top_x != int(x)) {
 	need_update = INIT;
 	top_x = int(x);
-	owner()->update(bv, f, true);
+//	owner()->update(bv, f, true);
 	bv->text->status = LyXText::CHANGED_IN_DRAW;
-//	return;
+	return;
     }
 
     top_baseline = baseline;
@@ -319,7 +319,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 			   LColor::background);
     }
     x += insetWidth - TEXT_TO_INSET_OFFSET;
-    if (need_update != INIT)
+    if (bv->text->status==LyXText::CHANGED_IN_DRAW)
+	need_update = INIT;
+    else if (need_update != INIT)
 	need_update = NONE;
 }
 
@@ -1244,6 +1246,8 @@ void InsetText::SetAutoBreakRows(bool flag)
     if (flag != autoBreakRows) {
 	autoBreakRows = flag;
 	need_update = FULL;
+	if (!flag)
+	    removeNewlines();
     }
 }
 
@@ -1389,4 +1393,17 @@ void InsetText::resizeLyXText(BufferView * bv) const
 	}
     }
     need_update = FULL;
+}
+
+
+void InsetText::removeNewlines()
+{
+    LyXParagraph * p = par;
+
+    for(;p; p = p->next) {
+	for(int i = 0; i < p->Last(); ++i) {
+	    if (p->GetChar(i) == LyXParagraph::META_NEWLINE)
+		p->Erase(i);
+	}
+    }
 }

@@ -3038,9 +3038,10 @@ void LyXText::PrepareToPrint(BufferView * bview,
 #endif
 	   
 	// center displayed insets 
+	Inset * inset;
 	   if (row->par()->GetChar(row->pos()) == LyXParagraph::META_INSET
-	       && row->par()->GetInset(row->pos())
-	       && row->par()->GetInset(row->pos())->display())
+	       && (inset=row->par()->GetInset(row->pos()))
+	       && (inset->display())) // || (inset->scroll() < 0)))
 	     align = LYX_ALIGN_CENTER;
 
 	   switch (align) {

@@ -14,11 +14,17 @@
 #pragma implementation "lyxinset.h"
 #endif
 
+#define SCROLL_INSET
+
 #include "lyxinset.h"
 #include "debug.h"
 #include "BufferView.h"
 #include "support/lstrings.h"
 #include "Painter.h"
+#ifdef SCROLL_INSET
+#include "commandtags.h"
+#include "support/lstrings.h"
+#endif
 
 using std::endl;
 
@@ -26,19 +32,19 @@ using std::endl;
 
 bool Inset::Deletable() const
 {
-  return true;
+    return true;
 }
 
 
 bool Inset::DirectWrite() const
 {
-  return false;
+    return false;
 }
 
 
 Inset::EDITABLE Inset::Editable() const
 {
-  return NOT_EDITABLE;
+    return NOT_EDITABLE;
 }
 
 
@@ -49,7 +55,7 @@ void Inset::Validate(LaTeXFeatures &) const
 
 bool Inset::AutoDelete() const
 {
-  return false;
+    return false;
 }
 
 
@@ -60,13 +66,13 @@ void Inset::Edit(BufferView *, int, int, unsigned int)
 
 LyXFont Inset::ConvertFont(LyXFont const & font) const
 {
-	return LyXFont(font);
+    return LyXFont(font);
 }
 
 
 char const * Inset::EditMessage() const 
 {
-	return _("Opened inset");
+    return _("Opened inset");
 }
 
 
@@ -83,41 +89,41 @@ LyXText * Inset::getLyXText(BufferView * bv) const
 
 void UpdatableInset::InsetButtonPress(BufferView *, int x, int y, int button)
 {
-	lyxerr.debug() << "Inset Button Press x=" << x
-		       << ", y=" << y << ", button=" << button << endl;
+    lyxerr.debug() << "Inset Button Press x=" << x
+		   << ", y=" << y << ", button=" << button << endl;
 }
 
 
 void UpdatableInset::InsetButtonRelease(BufferView *, int x, int y, int button)
 {
-	lyxerr.debug() << "Inset Button Release x=" << x
-		       << ", y=" << y << ", button=" << button << endl;
+    lyxerr.debug() << "Inset Button Release x=" << x
+		   << ", y=" << y << ", button=" << button << endl;
 }
 
 
 void UpdatableInset::InsetKeyPress(XKeyEvent *)
 {
-	lyxerr.debug() << "Inset Keypress" << endl;
+    lyxerr.debug() << "Inset Keypress" << endl;
 }
 
 
 void UpdatableInset::InsetMotionNotify(BufferView *, int x, int y, int state)
 {
-	lyxerr.debug() << "Inset Motion Notify x=" << x
-		       << ", y=" << y << ", state=" << state << endl;
+    lyxerr.debug() << "Inset Motion Notify x=" << x
+		   << ", y=" << y << ", state=" << state << endl;
 }
 
 
 void UpdatableInset::InsetUnlock(BufferView *)
 {
-	lyxerr.debug() << "Inset Unlock" << endl;
+    lyxerr.debug() << "Inset Unlock" << endl;
 }
 
 
 // An updatable inset is highly editable by definition
 Inset::EDITABLE UpdatableInset::Editable() const
 {
-	return HIGHLY_EDITABLE;
+    return HIGHLY_EDITABLE;
 }
 
 
@@ -136,20 +142,15 @@ void UpdatableInset::HideInsetCursor(BufferView *)
 }
 
 
-void UpdatableInset::Edit(BufferView * bv, int, int, unsigned int)
+void UpdatableInset::Edit(BufferView *, int, int, unsigned int)
 {
-    LyXFont font;
-
-    scx = 0;
-
-    mx_scx = abs((width(bv, font) - bv->workWidth()) / 2);
 }
 
 
 void UpdatableInset::draw(BufferView *, LyXFont const &,
 			  int /* baseline */, float & x, bool/*cleared*/) const
 {
-    if (scx) x += float(scx);
+    x += float(scx);
 // ATTENTION: don't do the following here!!!
 //    top_x = int(x);
 //    top_baseline = baseline;
@@ -161,10 +162,59 @@ void UpdatableInset::SetFont(BufferView *, LyXFont const &, bool )
 }
 
 
+#ifdef SCROLL_INSET
+void UpdatableInset::scroll(BufferView * bv, float s) const
+{
+    LyXFont font;
+
+    if (((top_x - scx) > 0) && 
+	(top_x - scx + width(bv, font)) < bv->workWidth())
+	return;
+    if ((s > 0) && (top_x > 0))
+	return;
+
+//    int mx_scx=abs((width(bv,font) - bv->workWidth())/2);
+    int save_scx = scx;
+    
+    scx = int(s*bv->workWidth()/2);
+//    if (!display())
+//	scx += 20;
+
+    if ((top_x - save_scx + scx + width(bv, font)) < (bv->workWidth()/2)) {
+	scx += (bv->workWidth()/2) - (top_x - save_scx + scx + width(bv,font));
+    }
+//    bv->updateInset(const_cast<UpdatableInset *>(this), false);
+}
+
+void UpdatableInset::scroll(BufferView * bv, int offset) const
+{
+    if (offset > 0) {
+	if (!scx && top_x > 0)
+	    return;
+	if ((top_x + offset) > 20)
+	    scx += offset - (top_x - scx + offset - 20);
+	else
+	    scx += offset;
+    } else {
+	LyXFont font;
+	if (!scx && (top_x+width(bv, font)) < (bv->workWidth()-20))
+	    return;
+	if ((top_x - scx + offset + width(bv,font)) < (bv->workWidth()-20)) {
+	    scx = bv->workWidth() - width(bv,font) - top_x + scx - 20; 
+	} else {
+	    scx += offset;
+	}
+    }
+//    bv->updateInset(const_cast<UpdatableInset *>(this), false);
+}
+
+
+#endif
+
 ///  An updatable inset could handle lyx editing commands
 #ifdef SCROLL_INSET
 UpdatableInset::RESULT
-UpdatableInset::LocalDispatch(BufferView *, 
+UpdatableInset::LocalDispatch(BufferView * bv, 
 			      int action, string const & arg) 
 #else
 UpdatableInset::RESULT
@@ -172,14 +222,19 @@ UpdatableInset::LocalDispatch(BufferView *, int, string const &)
 #endif
 {
 #ifdef SCROLL_INSET
-    if (action==LFUN_SCROLL_INSET)
-	{
-	    float xx;
-	    sscanf(arg.c_str(), "%f", &xx);	
-	    scroll(xx);
 
-	    return DISPATCHED;
+    if (!arg.empty() && (action==LFUN_SCROLL_INSET)) {
+	if (arg.find('.') != arg.npos) {
+	    float xx = static_cast<float>(strToDbl(arg));
+	    scroll(bv, xx);
+	} else {
+	    int xx = strToInt(arg);
+	    scroll(bv, xx);
 	}
+	bv->updateInset(this, false);
+	
+	return DISPATCHED;
+    }
 #endif
     return UNDISPATCHED; 
 }

@@ -249,7 +249,7 @@ void LyXTabular::AppendColumn(int cell)
 							  cellstruct()));
     int column = column_of_cell(cell);
     int i, j;
-    column_vector::iterator cit = column_info.begin() + column;
+    column_vector::iterator cit = column_info.begin() + column + 1;
     column_info.insert(cit, columnstruct());
 
     for (i = 0; i < rows_; ++i) {
@@ -544,11 +544,13 @@ bool LyXTabular::SetWidthOfMulticolCell(int cell, int new_width)
     }
     // set the width to MAX_WIDTH until width > 0
     int width = (new_width + 2 * WIDTH_OF_LINE);
-    for (i = column1; (i < column2) && (width > 0); ++i) {
+    for (i = column1; (i < column2) && (width>column_info[i].width_of_column);
+	 ++i)
+    {
         cell_info[row][i].width_of_cell = column_info[i].width_of_column;
         width -= column_info[i].width_of_column;
     }
-    if (i == column2) {
+    if (width > 0) {
         cell_info[row][i].width_of_cell = width;
     }
     return true;
@@ -578,10 +580,12 @@ bool LyXTabular::SetWidthOfCell(int cell, int new_width)
 {
     int row = row_of_cell(cell);
     int column1 = column_of_cell(cell);
-    int tmp = 0;
+    bool tmp = false;
     int width = 0;
 
-    if (IsMultiColumn(cell)) {
+    if (GetWidthOfCell(cell) == (new_width+2*WIDTH_OF_LINE))
+	return false;
+    if (IsMultiColumn(cell, true)) {
         tmp = SetWidthOfMulticolCell(cell, new_width);
     } else {
 	width = (new_width + 2*WIDTH_OF_LINE);
@@ -779,9 +783,6 @@ int LyXTabular::GetWidthOfCell(int cell) const
     for (; i <= column2; ++i) {
 	result += cell_info[row][i].width_of_cell;
     }
-    
-//    result += GetAdditionalWidth(cell);
-    
     return result;
 }
 
@@ -847,12 +848,16 @@ bool LyXTabular::calculate_width_of_column(int column)
 }
 
 
+///
+/// calculate the with of the column without regarding REAL MultiColumn
+/// cells. This means MultiColumn-cells spanning more than 1 column.
+///
 bool LyXTabular::calculate_width_of_column_NMC(int column)
 {
     int old_column_width = column_info[column].width_of_column;
     int max = 0;
     for (int i = 0; i < rows_; ++i) {
-        if (!IsMultiColumn(GetCellNumber(i, column)) &&
+        if (!IsMultiColumn(GetCellNumber(i, column), true) &&
             (cell_info[i][column].width_of_cell > max)) {
             max = cell_info[i][column].width_of_cell;
         }
@@ -1509,9 +1514,10 @@ int LyXTabular::DocBookEndOfCell(ostream & os, int cell, int & depth) const
 }
 
 
-bool LyXTabular::IsMultiColumn(int cell) const
+bool LyXTabular::IsMultiColumn(int cell, bool real) const
 {
-    return (cellinfo_of_cell(cell)->multicolumn != LyXTabular::CELL_NORMAL);
+    return ((!real || (column_of_cell(cell) != right_column_of_cell(cell))) &&
+	(cellinfo_of_cell(cell)->multicolumn !=LyXTabular::CELL_NORMAL));
 }
 
 
@@ -1694,8 +1700,10 @@ int LyXTabular::GetUsebox(int cell) const
 {
     if (column_info[column_of_cell(cell)].p_width.empty() &&
         !(IsMultiColumn(cell) && !cellinfo_of_cell(cell)->p_width.empty()))
-        return false;
-    return cellinfo_of_cell(cell)->usebox;
+        return 0;
+    if (cellinfo_of_cell(cell)->usebox > 1)
+	return cellinfo_of_cell(cell)->usebox;
+    return UseParbox(cell);
 }
 
 
@@ -2168,4 +2176,18 @@ void LyXTabular::Validate(LaTeXFeatures & features) const
 	    features.array = true;
 	GetCellInset(cell)->Validate(features);
     }
+}
+
+
+bool LyXTabular::UseParbox(int cell) const
+{
+    LyXParagraph *par = GetCellInset(cell)->par;
+
+    for(;par; par = par->next) {
+	for(int i = 0; i < par->Last(); ++i) {
+	    if (par->GetChar(i)	== LyXParagraph::META_NEWLINE)
+		return true;
+	}
+    }
+    return false;
 }

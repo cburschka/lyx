@@ -1,3 +1,44 @@
+2000-08-07  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (recomputeTextInsets): removed function
+
+	* src/tabular.C (SetWidthOfMulticolCell): 
+	(SetWidthOfCell): 
+	(calculate_width_of_column_NMC): fixed return value so that it really
+	only returns true if the column-width has changed (there where
+	problems with muliticolumn-cells in this column).
+
+2000-08-04  Juergen Vigna  <jug@sad.it>
+
+	* src/BufferView_pimpl.C (checkInsetHit): changed so that it looks
+	also on the scrollstatus of the inset.
+	(workAreaMotionNotify): ditto.
+
+	* src/texrow.C (getIdFromRow): fixed compile problem on egcs-1.1.2.
+
+2000-08-01  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (resetPos): scroll tabular automatically.
+
+	* src/commandtags.h: 
+	* src/LyXAction.C (init): 
+	* src/insets/inset.C (LocalDispatch): added support for
+	LFUN_SCROLL_INSET.
+
+	* src/insets/inset.C (scroll): new functions.
+
+	* src/insets/insettext.C (removeNewlines): new function.
+	(SetAutoBreakRows): removes forced newlines in the text of the
+	paragraph if autoBreakRows is set to false.
+
+	* src/tabular.C (Latex): generates a parbox around the cell contents
+	if needed.
+
+	* src/frontends/xforms/FormTabular.C (local_update): removed
+	the radio_useparbox button.
+
+	* src/tabular.C (UseParbox): new function
+
 2000-08-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/translator.h: move all typedefs to public section

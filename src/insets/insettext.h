@@ -205,6 +205,8 @@ private:
     ///
     bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
 			       int button = 0);
+    void removeNewlines();
+
     ///
     int cx(BufferView *) const;
     ///

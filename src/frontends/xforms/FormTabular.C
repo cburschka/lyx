@@ -407,24 +407,13 @@ bool FormTabular::local_update(bool)
         fl_activate_object(column_options_->input_column_width);
     }
     if (!pwidth.empty()) {
-        fl_activate_object(cell_options_->radio_useparbox);
         fl_activate_object(cell_options_->radio_useminipage);
-        fl_set_object_lcol(cell_options_->radio_useparbox, FL_BLACK);
         fl_set_object_lcol(cell_options_->radio_useminipage, FL_BLACK);
-	fl_set_button(cell_options_->radio_useparbox, 0);
-	fl_set_button(cell_options_->radio_useminipage, 0);
-	switch (tabular->GetUsebox(cell)) {
-	case 1:
-	    fl_set_button(cell_options_->radio_useparbox, 1);
-	    break;
-	case 2:
+	if (tabular->GetUsebox(cell) == 2)
 	    fl_set_button(cell_options_->radio_useminipage, 1);
-	    break;
-	}
+	else
+	    fl_set_button(cell_options_->radio_useminipage, 0);
     } else {
-        fl_deactivate_object(cell_options_->radio_useparbox);
-        fl_set_object_lcol(cell_options_->radio_useparbox, FL_INACTIVE);
-        fl_set_button(cell_options_->radio_useparbox,0);
         fl_deactivate_object(cell_options_->radio_useminipage);
         fl_set_object_lcol(cell_options_->radio_useminipage, FL_INACTIVE);
         fl_set_button(cell_options_->radio_useminipage,0);
@@ -674,9 +663,6 @@ void FormTabular::SetTabularOptions(FL_OBJECT * ob, long)
             num = LyXTabular::SET_ROTATE_CELL;
 	else
 	    num = LyXTabular::UNSET_ROTATE_CELL;
-    } else if (ob == cell_options_->radio_useparbox) {
-        num = LyXTabular::SET_USEBOX;
-	special = "1";
     } else if (ob == cell_options_->radio_useminipage) {
         num = LyXTabular::SET_USEBOX;
 	special = "2";
