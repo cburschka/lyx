@@ -635,6 +635,7 @@ void LyX::readUIFile(string const & name)
 	enum Uitags {
 		ui_menuset = 1,
 		ui_toolbar,
+		ui_toolbars,
 		ui_include,
 		ui_last
 	};
@@ -642,7 +643,8 @@ void LyX::readUIFile(string const & name)
 	struct keyword_item uitags[ui_last - 1] = {
 		{ "include", ui_include },
 		{ "menuset", ui_menuset },
-		{ "toolbar", ui_toolbar }
+		{ "toolbar", ui_toolbar },
+		{ "toolbars", ui_toolbars }
 	};
 
 	// Ensure that a file is read only once (prevents include loops)
@@ -695,6 +697,10 @@ void LyX::readUIFile(string const & name)
 
 		case ui_toolbar:
 			toolbarbackend.read(lex);
+			break;
+
+		case ui_toolbars:
+			toolbarbackend.readToolbars(lex);
 			break;
 
 		default:

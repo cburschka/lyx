@@ -4,3 +4,24 @@
 Include "stdmenus.ui"
 
 Include "stdtoolbars.ui"
+
+# Which toolbars to use.
+#
+# The second parameter are the flags :
+#
+# on: the toolbar is visible
+# off: the toolbar is not visible
+# math: the toolbar is visible only when in math
+# table: the toolbar is visible only when in a table
+# top: the toolbar should be at the top of the window
+# bottom: the toolbar should be at the bottom of the window
+# left: the toolbar should be at the left of the window
+# right: the toolbar should be at the right of the window
+#
+Toolbars
+	"Standard" "on,top"
+	"Extra" "on,top"
+	"Table" "off,bottom"
+	"Math" "off,bottom"
+	"Command Buffer" "off,bottom"
+End

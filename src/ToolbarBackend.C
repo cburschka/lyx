@@ -71,38 +71,6 @@ void ToolbarBackend::read(LyXLex & lex)
 	tb.name = lex.getString();
 	lex.next(true);
 	
-	tb.flags = static_cast<Flags>(0);
-	string flagstr = lex.getString();
-	vector<string> flags = getVectorFromString(flagstr);
-
-	vector<string>::const_iterator cit = flags.begin();
-	vector<string>::const_iterator end = flags.end();
-
-	for (; cit != end; ++cit) {
-		int flag = 0;
-		if (!compare_ascii_no_case(*cit, "off"))
-			flag = OFF;
-		else if (!compare_ascii_no_case(*cit, "on"))
-			flag = ON;
-		else if (!compare_ascii_no_case(*cit, "math"))
-			flag = MATH;
-		else if (!compare_ascii_no_case(*cit, "table"))
-			flag = TABLE;
-		else if (!compare_ascii_no_case(*cit, "top"))
-			flag = TOP;
-		else if (!compare_ascii_no_case(*cit, "bottom"))
-			flag = BOTTOM;
-		else if (!compare_ascii_no_case(*cit, "left"))
-			flag = LEFT;
-		else if (!compare_ascii_no_case(*cit, "right"))
-			flag = RIGHT;
-		else {
-			lyxerr << "ToolbarBackend::read: unrecognised token:`"
-			       << *cit << '\'' << endl;
-		}
-		tb.flags = static_cast<Flags>(tb.flags | flag);
-	}
-
 	bool quit = false;
 
 	lex.pushTable(toolTags, TO_LAST - 1);
@@ -149,6 +117,74 @@ void ToolbarBackend::read(LyXLex & lex)
 	toolbars.push_back(tb);
 
 	lex.popTable();
+}
+
+
+void ToolbarBackend::readToolbars(LyXLex & lex)
+{
+	//consistency check
+	if (compare_ascii_no_case(lex.getString(), "toolbars")) {
+		lyxerr << "ToolbarBackend::read: ERROR wrong token:`"
+		       << lex.getString() << '\'' << endl;
+	}
+
+	lex.next(true);
+
+	while (lex.isOK()) {
+		string name = lex.getString();
+		lex.next(true);
+
+		if (!compare_ascii_no_case(name, "end"))
+			return;
+
+		Toolbars::iterator tcit = toolbars.begin();
+		Toolbars::iterator tend = toolbars.end();
+		for (; tcit != tend; ++tcit) {
+			if (tcit->name == name)
+				break;
+		}
+
+		if (tcit == tend) {
+			lyxerr << "ToolbarBackend: undefined toolbar "
+				<< name << endl;
+			return;
+		}
+
+		tcit->flags = static_cast<Flags>(0);
+		string flagstr = lex.getString();
+		lex.next(true);
+		vector<string> flags = getVectorFromString(flagstr);
+
+		vector<string>::const_iterator cit = flags.begin();
+		vector<string>::const_iterator end = flags.end();
+
+		for (; cit != end; ++cit) {
+			int flag = 0;
+			if (!compare_ascii_no_case(*cit, "off"))
+				flag = OFF;
+			else if (!compare_ascii_no_case(*cit, "on"))
+				flag = ON;
+			else if (!compare_ascii_no_case(*cit, "math"))
+				flag = MATH;
+			else if (!compare_ascii_no_case(*cit, "table"))
+				flag = TABLE;
+			else if (!compare_ascii_no_case(*cit, "top"))
+				flag = TOP;
+			else if (!compare_ascii_no_case(*cit, "bottom"))
+				flag = BOTTOM;
+			else if (!compare_ascii_no_case(*cit, "left"))
+				flag = LEFT;
+			else if (!compare_ascii_no_case(*cit, "right"))
+				flag = RIGHT;
+			else {
+				lyxerr << "ToolbarBackend::read: unrecognised token:`"
+				       << *cit << '\'' << endl;
+			}
+			tcit->flags = static_cast<Flags>(tcit->flags | flag);
+		}
+
+		usedtoolbars.push_back(*tcit);
+	}
 }
 
 

@@ -68,15 +68,18 @@ public:
 
 	/// iterator for all toolbars
 	Toolbars::const_iterator begin() const {
-		return toolbars.begin();
+		return usedtoolbars.begin();
 	}
 
 	Toolbars::const_iterator end() const {
-		return toolbars.end();
+		return usedtoolbars.end();
 	}
 
 	/// read a toolbar from the file
 	void read(LyXLex &);
+
+	/// read the used toolbars
+	void readToolbars(LyXLex &);
 
 	/// return a full path of an XPM for the given action
 	static string const getIcon(int action);
@@ -90,6 +93,9 @@ private:
 
 	/// all the toolbars
 	Toolbars toolbars;
+
+	/// toolbars listed
+	Toolbars usedtoolbars;
 };
 
 /// The global instance
