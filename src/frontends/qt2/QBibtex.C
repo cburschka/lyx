@@ -27,6 +27,7 @@
 #include <qlistbox.h>
 #include <qcheckbox.h>
 
+#include "ui/QBibtexAddDialogBase.h"
 #include "QBibtexDialog.h"
 #include "QBibtex.h"
 #include "Qt2BC.h"
@@ -49,11 +50,10 @@ void QBibtex::build_dialog()
 	bcview().setOK(dialog_->okPB);
 	bcview().setCancel(dialog_->closePB);
 	bcview().addReadOnly(dialog_->databaseLB);
-	bcview().addReadOnly(dialog_->databasePB);
 	bcview().addReadOnly(dialog_->stylePB);
 	bcview().addReadOnly(dialog_->styleCB);
 	bcview().addReadOnly(dialog_->bibtocCB);
-	bcview().addReadOnly(dialog_->databasePB);
+	bcview().addReadOnly(dialog_->addBibPB);
 	bcview().addReadOnly(dialog_->deletePB);
 }
 
@@ -72,17 +72,15 @@ void QBibtex::update_contents()
 			dialog_->databaseLB->insertItem(toqstr(bib));
 	}
 
-	dialog_->addBibCB->clear();
+	dialog_->add_->bibLB->clear();
 
 	vector<string> const bib_str = getVectorFromString(
 		controller().getBibFiles(), "\n");
 	for (vector<string>::const_iterator it = bib_str.begin();
 		it != bib_str.end(); ++it) {
 		string bibItem(ChangeExtension(*it, ""));
-		dialog_->addBibCB->insertItem(toqstr(bibItem));
+		dialog_->add_->bibLB->insertItem(toqstr(bibItem));
 	}
-	dialog_->addBibCB->clearEdit();
-
 
 	string bibtotoc = "bibtotoc";
 	string bibstyle(controller().params().getOptions());

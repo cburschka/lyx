@@ -26,6 +26,7 @@
 #include <qcheckbox.h>
 #include <qfiledialog.h>
 
+#include "ui/QBibtexAddDialogBase.h"
 #include "QBibtexDialog.h"
 #include "QBibtex.h"
 
@@ -40,6 +41,14 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 		form, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+
+	add_ = new QBibtexAddDialogBase(this, "", true);
+	connect(add_->addPB, SIGNAL(clicked()), this, SLOT(addDatabase()));
+	connect(add_->addPB, SIGNAL(clicked()), this, SLOT(addDatabase()));
+	connect(add_->bibLB, SIGNAL(selected(QListBoxItem *)), this, SLOT(addDatabase()));
+	connect(add_->bibLB, SIGNAL(selected(QListBoxItem *)), add_, SLOT(accept()));
+	connect(add_->bibLB, SIGNAL(currentChanged(QListBoxItem *)), this, SLOT(availableChanged()));
+	connect(add_->browsePB, SIGNAL(clicked()), this, SLOT(browseBibPressed()));
 }
 
 
@@ -77,35 +86,45 @@ void QBibtexDialog::browsePressed()
 	}
 }
 
+
 void QBibtexDialog::browseBibPressed()
 {
 	QString const file = QFileDialog::getOpenFileName(QString::null,
-		qt_("BibTeX database files (*.bib)"), this, 0, qt_("Select a BibTeX database to add"));
+		qt_("BibTeX database files (*.bib)"), add_, 0, qt_("Select a BibTeX database to add"));
 
 	if (!file.isNull()) {
 		string const f = ChangeExtension(fromqstr(file), "");
 		bool present = false;
 
-		for (unsigned int i = 0; i != databaseLB->count(); i++) {
-			if (fromqstr(databaseLB->text(i)) == f)
+		for (unsigned int i = 0; i != add_->bibLB->count(); i++) {
+			if (fromqstr(add_->bibLB->text(i)) == f)
 				present = true;
 		}
 
 		if (!present) {
-			databaseLB->insertItem(toqstr(f));
+			add_->bibLB->insertItem(toqstr(f));
 			form_->changed();
 		}
+
+		add_->bibED->setText(toqstr(f));
 	}
 }
 
 void QBibtexDialog::addPressed()
 {
-	QString const file = addBibCB->currentText();
+	add_->exec();
+}
+
+
+void QBibtexDialog::addDatabase()
+{
+	QString const file = add_->bibED->text();
+
 	if (!file.isNull()) {
-		string const f = ChangeExtension(file.latin1(), "");
+		string const f = ChangeExtension(fromqstr(file), "");
 		bool present = false;
-		for(unsigned int i = 0; i != databaseLB->count(); ++i) {
-			if (databaseLB->text(i).latin1() == f)
+		for (unsigned int i = 0; i != databaseLB->count(); ++i) {
+			if (fromqstr(databaseLB->text(i)) == f)
 				present = true;
 
 		}
@@ -116,21 +135,23 @@ void QBibtexDialog::addPressed()
 	}
 }
 
+
 void QBibtexDialog::deletePressed()
 {
 	databaseLB->removeItem(databaseLB->currentItem());
 }
 
 
-void QBibtexDialog::styleChanged(QString const & sel)
-{
-	styleCB->insertItem(sel,0);
-}
-
 
 void QBibtexDialog::databaseChanged()
 {
 	deletePB->setEnabled(!form_->readOnly() && databaseLB->currentItem() != -1);
+}
+
+
+void QBibtexDialog::availableChanged()
+{
+	add_->bibED->setText(add_->bibLB->currentText());
 }
 
 

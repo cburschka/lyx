@@ -16,21 +16,29 @@
 #include "ui/QBibtexDialogBase.h"
 
 class QBibtex;
+class QBibtexAddDialogBase;
 
 class QBibtexDialog : public QBibtexDialogBase {
 	Q_OBJECT
+
 public:
 	QBibtexDialog(QBibtex * form);
+
+	QBibtexAddDialogBase * add_;
+
 protected slots:
 	virtual void change_adaptor();
 	virtual void browsePressed();
 	virtual void browseBibPressed();
 	virtual void addPressed();
+	virtual void addDatabase();
 	virtual void deletePressed();
-	virtual void styleChanged(const QString &);
 	virtual void databaseChanged();
+	virtual void availableChanged();
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
+
 private:
 	QBibtex * form_;
 };
