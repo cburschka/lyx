@@ -1378,9 +1378,6 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 			break;
 	default:
 		// we don't need it for the last paragraph!!!
-		// or for tables in floats
-		//   -- effectively creates a \par where there isn't one which
-		//      breaks a \subfigure or \subtable.
 		if (next_) {
 			os << '\n';
 			texrow.newline();

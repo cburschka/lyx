@@ -1,3 +1,9 @@
+2001-11-09  Allan Rae  <rae@lyx.org>
+
+	* paragraph.C (TeXOnePar): remove old, now-irrelevent comments about
+	'\n's after tables.  Tabular and ERT inset work now makes this no
+	longer necessary.
+
 2001-11-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* minibuffer.h:
