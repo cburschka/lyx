@@ -2,7 +2,7 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "debug.h"
-#include "support.h"
+#include "math_support.h"
 
 
 MathSymbolInset::MathSymbolInset(const latexkeys * l)

@@ -3,7 +3,7 @@
 #endif
 
 #include "math_spaceinset.h"
-#include "support.h"
+#include "math_support.h"
 #include "LColor.h"
 #include "Painter.h"
 #include "math_mathmlstream.h"

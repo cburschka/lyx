@@ -5,7 +5,7 @@
 #include "math_funcinset.h"
 #include "font.h"
 #include "Painter.h"
-#include "support.h"
+#include "math_support.h"
 #include "math_mathmlstream.h"
 
 

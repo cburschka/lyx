@@ -1,7 +1,7 @@
 #include "math_notinset.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
-#include "support.h"
+#include "math_support.h"
 
 
 MathNotInset::MathNotInset()

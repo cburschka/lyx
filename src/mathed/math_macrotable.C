@@ -12,7 +12,7 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "debug.h"
-#include "support.h" // math_font_available
+#include "math_support.h" // math_font_available
 
 
 MathMacroTable::table_type MathMacroTable::macro_table;

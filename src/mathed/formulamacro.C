@@ -32,7 +32,7 @@
 #include "Painter.h"
 #include "font.h"
 #include "support/lyxlib.h"
-#include "mathed/support.h"
+#include "mathed/math_support.h"
 #include "support/LOstream.h"
 #include "debug.h"
 #include "lyxlex.h"

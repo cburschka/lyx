@@ -1,6 +1,6 @@
 #include "math_funcliminset.h"
 #include "math_mathmlstream.h"
-#include "support.h"
+#include "math_support.h"
 
 
 MathFuncLimInset::MathFuncLimInset(string const & name)

@@ -28,7 +28,7 @@
 #include "debug.h"
 #include "LColor.h"
 #include "Painter.h"
-#include "support.h"
+#include "math_support.h"
 #include "formulabase.h"
 #include "math_cursor.h"
 #include "math_factory.h"

@@ -32,7 +32,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "debug.h"
-#include "support.h"
+#include "math_support.h"
 #include "support/lstrings.h"
 #include "LyXView.h"
 #include "Painter.h"

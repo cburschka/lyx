@@ -1,5 +1,5 @@
 #include "math_exfuncinset.h"
-#include "support.h"
+#include "math_support.h"
 #include "math_mathmlstream.h"
 
 

@@ -8,7 +8,7 @@
 #include "math_mathmlstream.h"
 #include "LColor.h"
 #include "Painter.h"
-#include "support.h"
+#include "math_support.h"
 #include "math_parser.h"
 #include "debug.h"
 

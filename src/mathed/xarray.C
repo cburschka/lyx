@@ -7,7 +7,7 @@
 #include "xarray.h"
 #include "math_inset.h"
 #include "math_scriptinset.h"
-#include "support.h"
+#include "math_support.h"
 #include "math_defs.h"
 #include "Painter.h"
 #include "debug.h"

@@ -23,7 +23,7 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "debug.h"
-#include "support.h"
+#include "math_support.h"
 #include "math_cursor.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"

@@ -4,7 +4,7 @@
 
 #include "math_kerninset.h"
 #include "math_mathmlstream.h"
-#include "support.h"
+#include "math_support.h"
 
 
 MathKernInset::MathKernInset()

@@ -3,7 +3,7 @@
 #endif
 
 #include "math_binominset.h"
-#include "support.h"
+#include "math_support.h"
 #include "support/LOstream.h"
 #include "math_mathmlstream.h"
 

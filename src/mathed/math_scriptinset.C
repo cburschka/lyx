@@ -4,7 +4,7 @@
 
 #include "math_scriptinset.h"
 #include "debug.h"
-#include "support.h"
+#include "math_support.h"
 #include "math_mathmlstream.h"
 #include "support/LAssert.h"
 

@@ -3,7 +3,7 @@
 #endif
 
 #include "math_fracinset.h"
-#include "support.h"
+#include "math_support.h"
 #include "Painter.h"
 #include "math_mathmlstream.h"
 

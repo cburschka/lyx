@@ -3,7 +3,7 @@
 #endif
 
 #include "math_decorationinset.h"
-#include "support.h"
+#include "math_support.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 

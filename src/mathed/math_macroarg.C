@@ -6,7 +6,7 @@
 #include "math_macro.h"
 #include "math_defs.h"
 #include "math_mathmlstream.h"
-#include "support.h"
+#include "math_support.h"
 #include "debug.h"
 
 

@@ -41,7 +41,7 @@
 #include "Painter.h"
 #include "lyxrc.h"
 #include "math_matrixinset.h"
-#include "support.h"
+#include "math_support.h"
 #include "math_mathmlstream.h"
 
 using std::ostream;

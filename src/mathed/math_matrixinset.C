@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "math_matrixinset.h"
-#include "support.h"
+#include "math_support.h"
 #include "debug.h"
 #include "Painter.h"
 #include "LaTeXFeatures.h"

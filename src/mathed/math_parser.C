@@ -73,7 +73,7 @@ point to write some macros:
 #include "math_splitinset.h"
 #include "math_sqrtinset.h"
 #include "debug.h"
-#include "support.h"
+#include "math_support.h"
 #include "lyxlex.h"
 #include "support/lstrings.h"
 

@@ -2,7 +2,7 @@
 
 #include <map>
 
-#include "support.h"
+#include "math_support.h"
 #include "lyxfont.h"
 #include "FontLoader.h"
 #include "font.h"
