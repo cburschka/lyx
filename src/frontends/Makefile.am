@@ -4,20 +4,17 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 # xforms has to be fixed here as we still need object files in this directory
 # for the compilation of other frontends, so until that we have to let this
 # here.
-SUBDIRS = controllers xforms @FRONTEND@
+SUBDIRS = controllers @FRONTEND@
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/xforms ${SIGC_CFLAGS} $(BOOST_INCLUDES)
+INCLUDES = $(FRONTEND_INCLUDES) -I$(srcdir)/..  $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 LIBS =
 noinst_LTLIBRARIES = libfrontends.la
 
-libfrontends_la_LIBADD= \
-	xforms/*.lo \
+libfrontends_la_LIBADD= @FRONTEND_GUILIB@ \
 	controllers/*.lo
 
-libfrontends_la_DEPENDENCIES = \
-	xforms/*.lo \
-	controllers/*.lo
+libfrontends_la_DEPENDENCIES = $(libfrontends_la_LIBADD)
 
 libfrontends_la_SOURCES=\
 	Alert.C \
@@ -42,7 +39,7 @@ libfrontends.la: libfrontends.o
 libfrontends.o: $(libfrontends_la_OBJECTS) $(libfrontends_la_DEPENDENCIES)
 	$(CXXLINK) $(libfrontends_la_OBJECTS) $(libfrontends_la_LIBADD)
 
-EXTRA_DIST = qt2 gnome
+EXTRA_DIST = xforms qt2 gnome
 
 dist-hook:
 	@cd $(distdir) ; \

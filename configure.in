@@ -186,8 +186,9 @@ dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.
 case "$lyx_use_frontend" in 
   xforms) 
   # for now don't set it for xforms as this is always entered
-    FRONTEND=""
-    FRONTEND_GUILIB="xforms/libxforms.o";;
+    FRONTEND="xforms"
+    FRONTEND_GUILIB="xforms/*.lo"
+    FRONTEND_INCLUDES="-I\$(srcdir)/xforms";;
   gnome)    
     AM_PATH_GTKMM(1.2.1,,
         AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))
@@ -205,15 +206,15 @@ dnl Ensure gnome-config is available...
 	    AC_MSG_ERROR(Did not find libGlade installed)
 	fi
 		
-    FRONTEND="gnome"
-    FRONTEND_GUILIB="gnome/libgnome.la"
+    FRONTEND="xforms gnome"
+    FRONTEND_GUILIB="gnome/*.lo"
     FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
     FRONTEND_INCLUDES="-I\${srcdir}/gnome \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS) `gnome-config --cflags libglade gnomeui`"
     FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS) `gnome-config --libs libglade gnomeui`";;
   qt2)
     QT2_DO_IT_ALL
-    FRONTEND="qt2"
-    FRONTEND_GUILIB="qt2/libqt2.la"
+    FRONTEND="xforms qt2"
+    FRONTEND_GUILIB="qt2/*.lo"
     FRONTEND_LDFLAGS="\$(QT2_LDFLAGS)"
     FRONTEND_INCLUDES="-I\${srcdir}/qt2 \$(QT2_INCLUDES)"
     FRONTEND_LIBS="\$(QT2_LIBS)";;
