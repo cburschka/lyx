@@ -1,3 +1,8 @@
+2003-10-28  Alfredo Braunstein  <abraunst@libero.it>
+
+	* text2.C (cursorEnd): simple fix to the "end key goes to one
+	before the end on last row" bug
+
 2003-10-27  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text.C (backspace): fix the "zombie characters"

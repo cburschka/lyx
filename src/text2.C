@@ -570,7 +570,10 @@ void LyXText::cursorHome()
 void LyXText::cursorEnd()
 {
 	ParagraphList::iterator cpit = cursorPar();
-	setCursor(cpit, cpit->getRow(cursor.pos())->endpos() - 1);
+	pos_type end = cpit->getRow(cursor.pos())->endpos();
+	/* if not on the last row of the par, put the cursor before
+	  the final space */
+	setCursor(cpit, end == cpit->size() ? end : end - 1);
 }
 
 
