@@ -55,7 +55,7 @@ public:
 	/// pop one slice off the cursor stack and go right
 	bool popRight();
 	/// sets cursor part
-	void setCursor(DocIterator const & it, bool sel);
+	void setCursor(DocIterator const & it);
 
 	//
 	// selection

@@ -440,7 +440,8 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		if (bvcur.selection() && bvcur.anchor_.size() < cur.size())
 			break;
 		setPos(cur, cmd.x, cmd.y);
-		bvcur.setCursor(cur, true);
+		bvcur.setCursor(cur);
+		bvcur.selection() = true;
 		lyxerr << "# InsetTabular::MouseMotion\n" << bvcur << endl;
 		break;
 

@@ -108,7 +108,8 @@ void performUndoOrRedo(BufferView & bv, Undo const & undo)
 {
 	LCursor & cur = bv.cursor();
 	lyxerr << "undo, performing: " << undo << std::endl;
-	cur.setCursor(undo.cursor.asDocIterator(&bv.buffer()->inset()), false);
+	cur.setCursor(undo.cursor.asDocIterator(&bv.buffer()->inset()));
+	cur.selection() = false;
 
 	if (cur.inMathed()) {
 		// We stored the full cell here as there is not much to be

@@ -92,7 +92,7 @@ namespace {
 		for (int i = 0; ; ++i) {
 			int xo, yo;
 			LCursor cur = c;
-			cur.setCursor(it, false);
+			cur.setCursor(it);
 			cur.inset().getCursorPos(cur, xo, yo);
 			double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 			// '<=' in order to take the last possible position
@@ -138,7 +138,7 @@ namespace {
 			if (!cursor.selection() || positionable(it, cursor.anchor_)) {
 				int xo = 0, yo = 0;
 				LCursor cur = cursor;
-				cur.setCursor(it, false);
+				cur.setCursor(it);
 				cur.inset().getCursorPos(cur, xo, yo);
 				if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 					double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
@@ -156,7 +156,7 @@ namespace {
 
 		//lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
 		if (best_dist < 1e10)
-			cursor.setCursor(best_cursor, false);
+			cursor.setCursor(best_cursor);
 		return best_dist < 1e10;
 	}
 
@@ -181,11 +181,10 @@ void LCursor::reset(InsetBase & inset)
 }
 
 
-void LCursor::setCursor(DocIterator const & cur, bool sel)
+// this (intentionally) does neither touch anchor nor selection status
+void LCursor::setCursor(DocIterator const & cur)
 {
-	// this (intentionally) does not touch the anchor
 	DocIterator::operator=(cur);
-	selection() = sel;
 }
 
 
@@ -447,7 +446,8 @@ void LCursor::setSelection()
 
 void LCursor::setSelection(DocIterator const & where, size_t n)
 {
-	setCursor(where, true);
+	setCursor(where);
+	selection() = true;
 	anchor_ = where;
 	pos() += n;
 }
@@ -771,7 +771,7 @@ bool LCursor::up()
 	DocIterator save = *this;
 	if (goUpDown(true))
 		return true;
-	setCursor(save, false);
+	setCursor(save);
 	autocorrect() = false;
 	return selection();
 }
@@ -783,7 +783,7 @@ bool LCursor::down()
 	DocIterator save = *this;
 	if (goUpDown(false))
 		return true;
-	setCursor(save, false);
+	setCursor(save);
 	autocorrect() = false;
 	return selection();
 }
@@ -976,7 +976,7 @@ bool LCursor::goUpDown(bool up)
 		if (inset().idxUpDown(*this, up)) {
 			// try to find best position within this inset
 			if (!selection())
-				setCursor(bruteFind2(*this, xo, yo), false);
+				setCursor(bruteFind2(*this, xo, yo));
 			return true;
 		}
 

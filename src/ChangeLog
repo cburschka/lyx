@@ -1,3 +1,10 @@
+
+2004-08-14  André Pönitz  <poenitz@gmx.net>
+
+	* paragraph.h: inline getChar()
+	
+	* BufferView.h: remove unused declarations
+
 2004-08-14  José Matos  <jamatos@lyx.org>
 
 	* Buffer.[Ch] (readDocument): new name for old readBody.

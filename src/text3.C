@@ -184,49 +184,6 @@ string const freefont2string()
 
 }
 
-
-// takes absolute x,y coordinates
-InsetBase * LyXText::checkInsetHit(int x, int y) const
-{
-	par_type pit;
-	par_type end;
-
-	getParsInRange(paragraphs(),
-		       bv()->top_y() - yo_,
-		       bv()->top_y() - yo_ + bv()->workHeight(),
-		       pit, end);
-
-	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
-			     << ": x: " << x << " y: " << y
-			     << "  pit: " << pit << " end: " << end << endl;
-	for (; pit != end; ++pit) {
-		InsetList::const_iterator iit = pars_[pit].insetlist.begin();
-		InsetList::const_iterator iend = pars_[pit].insetlist.end();
-		for (; iit != iend; ++iit) {
-			InsetBase * inset = iit->inset;
-#if 1
-			lyxerr[Debug::DEBUG]
-				<< "examining inset " << inset << endl;
-			if (theCoords.insets_.has(inset))
-				lyxerr
-					<< " xo: " << inset->xo() << "..." << inset->xo() + inset->width()
-					<< " yo: " << inset->yo() - inset->ascent() << "..."
-					<< inset->yo() + inset->descent() << endl;
-			else
-				lyxerr << " inset has no cached position";
-#endif
-			if (inset->covers(x, y)) {
-				lyxerr[Debug::DEBUG]
-					<< "Hit inset: " << inset << endl;
-				return inset;
-			}
-		}
-	}
-	lyxerr[Debug::DEBUG] << "No inset hit. " << endl;
-	return 0;
-}
-
-
 bool LyXText::gotoNextInset(LCursor & cur,
 	vector<InsetOld_code> const & codes, string const & contents)
 {
@@ -1134,7 +1091,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		// don't set anchor_
-		bv->cursor().setCursor(cur, true);
+		bv->cursor().setCursor(cur);
+		bv->cursor().selection() = true;
 		lyxerr << "MOTION: " << bv->cursor() << endl;
 		break;
 	}

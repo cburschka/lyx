@@ -933,7 +933,8 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 	first_x = cmd.x;
 	first_y = cmd.y;
 
-	cur.bv().cursor().setCursor(cur, true);
+	cur.bv().cursor().setCursor(cur);
+	cur.bv().cursor().selection() = true;
 }
 
 

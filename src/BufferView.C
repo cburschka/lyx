@@ -47,11 +47,7 @@
 #include "insets/updatableinset.h"
 #include "insets/insettext.h"
 
-#include "support/filetools.h"
-#include "support/lyxalgo.h" // lyx_count
-
 using lyx::support::bformat;
-using lyx::support::MakeAbsPath;
 
 using lyx::cap::setSelectionRange;
 
@@ -259,30 +255,6 @@ void BufferView::scroll(int lines)
 }
 
 
-// Inserts a file into current document
-bool BufferView::insertLyXFile(string const & filen)
-	//
-	// Copyright CHT Software Service GmbH
-	// Uwe C. Schroeder
-	//
-	// Insert a LyXformat - file into current buffer
-	//
-	// Moved from lyx_cb.C (Lgb)
-{
-	BOOST_ASSERT(!filen.empty());
-
-	string const fname = MakeAbsPath(filen);
-
-	cursor().clearSelection();
-	text()->breakParagraph(cursor());
-
-	BOOST_ASSERT(cursor().inTexted());
-	bool res = buffer()->readFile(fname, cursor().par());
-	resize();
-	return res;
-}
-
-
 void BufferView::showErrorList(string const & action) const
 {
 	if (getErrorList().size()) {
@@ -310,8 +282,7 @@ void BufferView::setCursorFromRow(int row)
 	if (tmpid == -1)
 		text()->setCursor(cursor(), 0, 0);
 	else
-		text()->setCursor(cursor(), buffer()->getParFromID(tmpid).pit(),
-			tmppos);
+		text()->setCursor(cursor(), buffer()->getParFromID(tmpid).pit(), tmppos);
 }
 
 
@@ -377,7 +348,8 @@ void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 	for (int i = 0; i < last; ++i)
 		par[i].inset().edit(cursor(), true);
 
-	cursor().setCursor(makeDocIterator(par, pos), false);
+	cursor().setCursor(makeDocIterator(par, pos));
+	cursor().selection() = false;
 	par.bottom().text()->redoParagraph(par.bottom().par());
 }
 
@@ -395,7 +367,8 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 		if (backwards) {
 			cursor().setSelection(cursor(), -length);
 			DocIterator const it = cursor();
-			cursor().setCursor(cursor().anchor_, true);
+			cursor().setCursor(cursor().anchor_);
+			cursor().selection() = true;
 			cursor().anchor_ = it;
 		} else
 			cursor().setSelection(cursor(), length);

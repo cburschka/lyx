@@ -81,6 +81,7 @@ using lyx::support::FileSearch;
 using lyx::support::ForkedcallsController;
 using lyx::support::IsDirWriteable;
 using lyx::support::MakeDisplayPath;
+using lyx::support::MakeAbsPath;
 using lyx::support::strToUnsignedInt;
 using lyx::support::system_lyxdir;
 
@@ -796,12 +797,19 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 
 	string const disp_fn = MakeDisplayPath(filename);
 	owner_->message(bformat(_("Inserting document %1$s..."), disp_fn));
-	if (bv_->insertLyXFile(filename))
-		owner_->message(bformat(_("Document %1$s inserted."),
-					disp_fn));
-	else
-		owner_->message(bformat(_("Could not insert document %1$s"),
-					disp_fn));
+
+	bv_->cursor().clearSelection();
+	bv_->text()->breakParagraph(bv_->cursor());
+
+	BOOST_ASSERT(bv_->cursor().inTexted());
+
+	string const fname = MakeAbsPath(filename);
+	bool const res = bv_->buffer()->readFile(fname, bv_->cursor().par());
+	bv_->resize();
+
+  string s = res ? _("Document %1$s inserted.")
+	               : _("Could not insert document %1$s");
+	owner_->message(bformat(s, disp_fn));
 }
 
 
@@ -876,8 +884,9 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 
 	// Build temporary cursor.
 	InsetBase * inset = bv_->text()->editXY(cur, cmd.x, cmd.y);
-	lyxerr << "hit inset at tip: " << inset << endl;
-	lyxerr << "created temp cursor:\n" << cur << endl;
+	lyxerr << " * created temp cursor: " << inset << endl;
+	lyxerr << " * hit inset at tip: " << inset << endl;
+	lyxerr << " * created temp cursor:" << cur << endl;
 
 	// Put anchor at the same position.
 	cur.resetAnchor();
@@ -885,7 +894,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	// Try to dispatch to an non-editable inset near this position
 	// via the temp cursor. If the inset wishes to change the real
 	// cursor it has to do so explicitly by using
-	//  cur.bv().cursor() = cur;  (or similar)'
+	//  cur.bv().cursor() = cur;  (or similar)
 	if (inset)
 		inset->dispatch(cur, cmd);
 

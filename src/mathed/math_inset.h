@@ -177,6 +177,9 @@ public:
 	virtual void mutate(std::string const &) {}
 	/// usually the latex name
 	virtual std::string name() const;
+	
+	/// math stuff usually isn't allowed in text mode
+	virtual bool allowedIn(mode_type mode) const { return mode == MATH_MODE; }
 };
 
 std::ostream & operator<<(std::ostream &, MathAtom const &);

@@ -362,6 +362,8 @@ public:
 	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
 	/// return text or mathmode if that is possible to determine
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
+	/// returns whether this inset is allowed in other insets of given mode
+	virtual bool allowedIn(mode_type) const { return true; }
 
 	/// is this inset allowed within a font change?
 	virtual bool noFontChange() const { return false; }

@@ -28,7 +28,7 @@ using std::auto_ptr;
 MathDecorationInset::MathDecorationInset(latexkeys const * key)
 	: MathNestInset(1), key_(key)
 {
-	lyxerr << " creating deco " << key->name << std::endl;
+//	lyxerr << " creating deco " << key->name << std::endl;
 }
 
 

@@ -27,6 +27,7 @@
 #include "BufferView.h"
 #include "Bullet.h"
 #include "counters.h"
+#include "coordcache.h"
 #include "cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -99,6 +100,46 @@ bool LyXText::isMainText() const
 {
 	return &bv()->buffer()->text() == this;
 }
+
+
+// takes absolute x,y coordinates
+InsetBase * LyXText::checkInsetHit(int x, int y) const 
+{
+	par_type pit;
+	par_type end;
+
+	getParsInRange(paragraphs(),
+		       bv()->top_y() - yo_,
+		       bv()->top_y() - yo_ + bv()->workHeight(),
+		       pit, end);
+
+	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
+	lyxerr << "  pit: " << pit << " end: " << end << endl;
+	for (; pit != end; ++pit) {
+		InsetList::const_iterator iit = pars_[pit].insetlist.begin();
+		InsetList::const_iterator iend = pars_[pit].insetlist.end();
+		for (; iit != iend; ++iit) {
+			InsetBase * inset = iit->inset;
+#if 1
+			lyxerr << "examining inset " << inset << endl;
+			if (theCoords.insets_.has(inset))
+				lyxerr
+					<< " xo: " << inset->xo() << "..." << inset->xo() + inset->width()
+					<< " yo: " << inset->yo() - inset->ascent() << "..."
+					<< inset->yo() + inset->descent() << endl;
+			else
+				lyxerr << " inset has no cached position";
+#endif
+			if (inset->covers(x, y)) {
+				lyxerr << "Hit inset: " << inset << endl;
+				return inset;
+			}
+		}
+	}
+	lyxerr << "No inset hit. " << endl;
+	return 0;
+}
+
 
 
 // Gets the fully instantiated font at a given position in a paragraph
@@ -1122,6 +1163,7 @@ pos_type LyXText::getColumnNearX(par_type pit,
 
 
 // x,y are absolute coordinates
+// sets cursor only within this LyXText
 void LyXText::setCursorFromCoordinates(LCursor & cur, int x, int y)
 {
 	x -= xo_;
@@ -1138,6 +1180,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int x, int y)
 
 
 // x,y are absolute screen coordinates
+// sets cursor recursively descending into nested editable insets
 InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 {
 	par_type pit;

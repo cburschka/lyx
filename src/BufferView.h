@@ -24,11 +24,9 @@
 class Buffer;
 class Change;
 class DocIterator;
-class Encoding;
 class ErrorList;
 class FuncRequest;
 class FuncStatus;
-class InsetBase;
 class InsetOld;
 class Language;
 class LCursor;
@@ -37,8 +35,6 @@ class LyXScreen;
 class LyXView;
 class Painter;
 class ParIterator;
-class TeXErrors;
-class UpdatableInset;
 
 /**
  * A buffer view encapsulates a view onto a particular
@@ -128,12 +124,6 @@ public:
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
 
-	/// Inserts a lyx file at cursor position. return false if it fails
-	bool insertLyXFile(std::string const & file);
-
-	/// FIXME
-	bool fitLockedInsetCursor(int x, int y, int asc, int desc);
-
 	/// hide the cursor if it is visible
 	void hideCursor();
 
@@ -142,7 +132,7 @@ public:
 	/// scroll document by the given number of lines of default height
 	void scroll(int lines);
 	/// Scroll the view by a number of pixels
-	void scrollDocView(int);
+	void scrollDocView(int pixels);
 
 	/// return the pixel width of the document view
 	int workWidth() const;
