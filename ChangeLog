@@ -1,3 +1,37 @@
+2000-03-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/LColor.C: made the command inset background a bit lighter.
+
+2000-03-20  Hartmut Goebel <goebel@noris.net>
+
+	* lib/layouts/stdstruct.inc: split into stdtitle.inc and
+	stdstruct.inc. Koma-Script added some title elements which
+	otherwise have been listed below "bibliography". This split allows
+	adding title elements to where they belong.
+
+	* lib/layouts/scrclass.inc: changed to include stdtitle.inc, then
+	define the additional tilte elements and then include
+	stdstruct.inc. 
+
+	* many other layout files: changed to include stdtitle.inc just
+	before stdstruct.inc.
+
+2000-03-18 Dekel Tsur <dekel@math.tau.ac.il>
+
+	* src/buffer.C: (save) Added the option to store all backup files
+	in a single directory
+
+	* src/lyxrc.[Ch]: Added variable \backupdir_path
+
+	* lib/lyxrc.example: Added descriptions of recently added variables
+
+	* src/insets/insetbib.[Ch]: Fixed few bugs (crash when editing a
+ 	bibtex inset, not closing the bibtex popup when deleting the inset)
+
+2000-03-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_cb.C: add a couple using directives.
+
 2000-03-17 José Abílio Matos <jamatos@lyx.org>
 	* src/lyx_cb.C (RunLinuxDoc) Removed the flag==-1 option for linuxdoc 
 	import based on the filename.

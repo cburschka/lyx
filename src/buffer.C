@@ -1093,14 +1093,19 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 
 
 // Should probably be moved to somewhere else: BufferView? LyXView?
-bool Buffer::save(bool makeBackup) const
+bool Buffer::save() const
 {
 	// We don't need autosaves in the immediate future. (Asger)
 	resetAutosaveTimers();
 
 	// make a backup
-	if (makeBackup) {
-		string s = fileName() + '~';
+	string s;
+	if (lyxrc.make_backup) {
+		s = fileName() + '~';
+		if (!lyxrc.backupdir_path.empty())
+			s = AddName(lyxrc.backupdir_path,
+				    subst(CleanupPath(s),'/','!'));
+
 		// Rename is the wrong way of making a backup,
 		// this is the correct way.
 		/* truss cp fil fil2:
@@ -1168,8 +1173,7 @@ bool Buffer::save(bool makeBackup) const
 		}
 	} else {
 		// Saving failed, so backup is not backup
-		if (makeBackup) {
-			string s = fileName() + '~';
+		if (lyxrc.make_backup) {
 			::rename(s.c_str(), fileName().c_str());
 		}
 		return false;

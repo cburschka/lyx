@@ -511,6 +511,15 @@
 # SGML or plain text). Default is 75. 
 #\ascii_linelen 80
 
+# Set to false if you don't want LyX to create backup files.
+# Default is true.
+#\make_backup true
+
+# The path for storing backup files. If it is the empty string, LyX will
+# store the backup file in the same directory of the original file.
+# Default is "".
+#\backupdir_path "~/Desktop/Trash/"
+
 
 #
 # FAX SECTION #############################################################
@@ -588,6 +597,42 @@
 # details of the format.
 #
 #\date_insert_format "%A, %e. %B %Y"
+
+#
+# LANGUAGE SUPPORT SECTION ####################################################
+#
+
+# Set to true to enable support of right-to-left languages (e.g. Hebrew,
+# Arabic). Default is false.
+#\rtl true
+
+# If auto_mathmode is set to "true", each time a digit key is pressed,
+# LyX will automatically enter into math-mode.
+# If auto_mathmode is set to "rtl", the above behavior will take place
+# only when editing right-to-left text.
+# Default is false.
+#\auto_mathmode true
+
+# The latex command for loading the language package.
+# Default is \usepackage{babel}.
+#\language_package "\usepackage{omega}"
+
+# The latex command for changing the from the language of the document
+# to another language. $$lang is substituted by the name of the second
+# language. Default is \selectlanguage{$$lang}.
+#\language_command_begin "\begin{otherlanguage}{$$lang}"
+
+# The latex command for changing back the language to the language of
+# the document. Default is \selectlanguage{$$lang}.
+#\language_command_end "\end{otherlanguage}"
+
+# Set to false if a language switching command is needed at the beginning of
+# the document. Default is true.
+#\language_auto_begin false
+
+# Set to false if a language switching command is needed at the end of
+# the document. Default is true.
+#\language_auto_end false
 
 #
 # HEBREW SUPPORT SECTION ####################################################

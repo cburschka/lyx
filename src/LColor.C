@@ -57,7 +57,7 @@ LColor::LColor()
 	fill(notebg, _("note background"), "notebg", "yellow", "notebg");
 	fill(noteframe, _("note frame"), "noteframe", "black", "noteframe");
 	fill(command, _("command-inset"), "command", "black", "command");
-	fill(commandbg, _("command-inset background"), "commandbg", "grey50", "commandbg");
+	fill(commandbg, _("command-inset background"), "commandbg", "grey80", "commandbg");
 	fill(commandframe, _("inset frame"), "commandframe", "black", "commandframe");
 	fill(accent, _("accent"), "accent", "black", "accent");
 	fill(accentbg, _("accent background"), "accentbg", "offwhite", "accentbg");

@@ -13,6 +13,8 @@
 #include <fstream>
 
 using std::ifstream;
+using std::copy;
+using std::back_inserter;
 
 #include "LString.h"
 #include "support/lstrings.h"
@@ -276,7 +278,7 @@ void SetUpdateTimer(float time)
 void MenuWrite(Buffer * buffer)
 {
 	XFlush(fl_display);
-	if (!buffer->save(lyxrc.make_backup)) {
+	if (!buffer->save()) {
 		string fname = buffer->fileName();
 		string s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),

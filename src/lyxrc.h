@@ -140,6 +140,8 @@ public:
 	unsigned int num_lastfiles;
 	/// shall a backup file be created
 	bool make_backup;
+	/// A directory for storing backup files
+	string backupdir_path;
 	/// Zoom factor for screen fonts
 	unsigned int zoom;
 	/// Screen font sizes in points for each font size

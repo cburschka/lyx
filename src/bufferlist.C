@@ -156,7 +156,7 @@ bool BufferList::close(Buffer * buf)
 				       MakeDisplayPath(buf->fileName(), 50),
 				       _("Save document?"))){
 		case 1: // Yes
-			if (buf->save(lyxrc.make_backup)) {
+			if (buf->save()) {
 				lastfiles->newFile(buf->fileName());
 			} else {
 				AllowInput();

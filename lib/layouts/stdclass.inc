@@ -37,6 +37,7 @@ End
 Input stdlists.inc
 Input stdsections.inc
 Input stdstarsections.inc
+Input stdtitle.inc
 Input stdstruct.inc
 Input lyxmacros.inc
 Input stdlayouts.inc

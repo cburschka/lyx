@@ -141,7 +141,7 @@ Style Minisec
   EndFont
 End
 
-Input stdstruct.inc
+Input stdtitle.inc
 
 # Modify Title
 Style Title
@@ -162,20 +162,6 @@ End
 Style Date
   Font
     Size                Larger
-  EndFont
-End
-
-# Modify Abstract
-Style Abstract
-  LabelFont
-    Family              Sans
-  EndFont
-End
-
-# Modify Bibliography
-Style Bibliography
-  LabelFont
-    Family              Sans
   EndFont
 End
 
@@ -225,6 +211,22 @@ End
 Style Extratitle
   CopyStyle             Titlehead
   LatexName             extratitle
+End
+
+Input stdstruct.inc
+
+# Modify Abstract
+Style Abstract
+  LabelFont
+    Family              Sans
+  EndFont
+End
+
+# Modify Bibliography
+Style Bibliography
+  LabelFont
+    Family              Sans
+  EndFont
 End
 
 Input stdlayouts.inc

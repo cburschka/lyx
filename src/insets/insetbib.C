@@ -220,7 +220,8 @@ InsetBibKey::InsetBibKey(InsetBibKey const * b):
 InsetBibKey::~InsetBibKey()
 {
 	if(bibitem_form && bibitem_form->bibitem_form
-	   && bibitem_form->bibitem_form->visible)
+	   && bibitem_form->bibitem_form->visible
+	   && bibitem_form->bibitem_form->u_vdata == &holder)
 		fl_hide_form(bibitem_form->bibitem_form);
 }
 
@@ -301,6 +302,14 @@ InsetBibtex::InsetBibtex(string const & dbase, string const & style,
 			 Buffer * o)
 	: InsetCommand("BibTeX", dbase, style), owner(o)
 {
+}
+
+InsetBibtex::~InsetBibtex()
+{
+	if(bibitem_form && bibitem_form->bibitem_form
+	   && bibitem_form->bibitem_form->visible
+	   && bibitem_form->bibitem_form->u_vdata == &holder)
+		fl_hide_form(bibitem_form->bibitem_form);
 }
 
 
@@ -404,7 +413,7 @@ string InsetBibtex::getKeys(char delim)
 
 
 // BibTeX should have its own dialog. This is provisional.
-void InsetBibtex::Edit(BufferView *, int, int, unsigned int)
+void InsetBibtex::Edit(BufferView * bv, int, int, unsigned int)
 {
 	if (!bibitem_form) {
 		bibitem_form = create_form_bibitem_form();
@@ -412,7 +421,10 @@ void InsetBibtex::Edit(BufferView *, int, int, unsigned int)
 				    CancelCloseBoxCB, 0);
 	}
 
-	bibitem_form->bibitem_form->u_vdata = this;
+	holder.inset = this;
+	holder.view = bv;
+	bibitem_form->bibitem_form->u_vdata = &holder;
+
 	fl_set_object_label(bibitem_form->key, _("Database:"));
 	fl_set_object_label(bibitem_form->label, _("Style:  "));
 	fl_set_input(bibitem_form->key, getContents().c_str());

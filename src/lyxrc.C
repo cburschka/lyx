@@ -132,6 +132,7 @@ enum LyXRCTags {
 	RC_RELYX_COMMAND,
 	RC_HTML_COMMAND,
 	RC_MAKE_BACKUP,
+	RC_BACKUPDIR_PATH,
 	RC_RTL_SUPPORT,
 	RC_AUTO_MATHMODE,
 	RC_LANGUAGE_PACKAGE,
@@ -160,6 +161,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\auto_region_delete", RC_AUTOREGIONDELETE },
 	{ "\\autosave", RC_AUTOSAVE },
 	{ "\\background_color", RC_BACKGROUND_COLOR },
+	{ "\\backupdir_path", RC_BACKUPDIR_PATH },
 	{ "\\begin_toolbar", RC_BEGINTOOLBAR },
 	{ "\\bind", RC_BIND },
 	{ "\\bind_file", RC_BINDFILE },
@@ -334,6 +336,7 @@ void LyXRC::setDefaults() {
 	num_lastfiles = 4;
 	check_lastfiles = true;
 	make_backup = true;
+	backupdir_path = "";
 	exit_confirmation = true;
 	display_shortcuts = true;
 	// Spellchecker settings:
@@ -947,6 +950,10 @@ int LyXRC::read(string const & filename)
 		        if (lexrc.next())
 		                make_backup = lexrc.GetBool();
 			break;
+		case RC_BACKUPDIR_PATH:
+			if (lexrc.next())
+				backupdir_path = ExpandPath(lexrc.GetString());
+			break;
 		case RC_DATE_INSERT_FORMAT:
 			if (lexrc.next())
 				date_insert_format = lexrc.GetString();
@@ -1293,6 +1300,8 @@ void LyXRC::output(ostream & os) const
 		   << "\"\n";
 	case RC_MAKE_BACKUP:
 		os << "\\make_backup " << tostr(make_backup) << "\n";
+	case RC_BACKUPDIR_PATH:
+		os << "\\backupdir_path" << backupdir_path << "\n";
 	case RC_DATE_INSERT_FORMAT:
 		os << "\\date_insert_format \"" << date_insert_format
 		   << "\"\n";

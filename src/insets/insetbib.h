@@ -113,6 +113,9 @@ public:
 	///
 	InsetBibtex(string const & dbase, string const & style,
 		    Buffer *);
+	///
+	~InsetBibtex();
+
         ///
 	Inset * Clone() const {
 		return new InsetBibtex(contents, options, 0);
@@ -139,10 +142,19 @@ public:
         ///
         bool delDatabase(string const &);
 	///
-	bool display() const { return true; }    
+	bool display() const { return true; } 
+
+   	struct Holder {
+		InsetBibtex * inset;
+		BufferView * view;
+	};
+
 private:
 	///
 	mutable Buffer * owner;
+
+	///
+	Holder holder;
 };
 
 #endif

@@ -143,7 +143,7 @@ public:
 	    Takes care of auto-save files and backup file if requested.
 	    Returns true if the save is successful, false otherwise.
 	*/
-	bool save(bool makeBackup) const;
+	bool save() const;
 	
 	/// Write file. Returns false if unsuccesful.
 	bool writeFile(string const &, bool) const;
