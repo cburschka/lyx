@@ -1,3 +1,9 @@
+2002-06-27  Juergen Spitzmueller <j.spitzmueller@gmx.de>
+
+	* FormInclude.C: Comment out unneeded and wrong update mechanism 
+	(related to bug #459)
+	*forms/form_include.fd: define missing callbacks (bug #459)
+
 2002-07-03  Vitaly Lipatov  <LAV@VL3143.spb.edu>
 
 	* FormDocument.C (build): add pt154 encoding

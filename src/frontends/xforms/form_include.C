@@ -39,6 +39,7 @@ FD_form_include * FormInclude::build_include()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 120, 170, 100, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
@@ -70,6 +71,7 @@ FD_form_include * FormInclude::build_include()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
  fl_bgn_group();
   {
     char const * const dummy = N_("Verbatim|#V");

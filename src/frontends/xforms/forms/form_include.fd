@@ -81,8 +81,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_typeset
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -171,8 +171,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_visiblespace
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_BEGIN_GROUP
@@ -188,7 +188,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name:
+name: 
 callback: 
 argument: 
 
