@@ -1,5 +1,10 @@
 2002-05-02  Juergen Vigna  <jug@sad.it>
 
+	* text2.C (fixCursorAfterDelete): check to make sure we don't request
+	to set the cursor behind the pargraph with > size().
+	(setCursor): check also for the same paragraph when checking where
+	to put the cursor if we have a NFR inset.
+
 	* buffer.C (parseSingleLyXformat2Token): move the compatibility
 	parts of layout read further up as it still was in the wrong
 	position.

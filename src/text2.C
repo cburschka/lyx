@@ -2072,6 +2072,7 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	cur.iy(y + row->baseline());
 	Inset * ins;
 	if (row->previous() && pos &&
+		row->previous()->par() == row->par() &&
 		par->getChar(pos) == Paragraph::META_INSET &&
 		(ins=par->getInset(pos)) && (ins->needFullRow() || ins->display()))
 	{
@@ -2404,6 +2405,11 @@ void LyXText::fixCursorAfterDelete(BufferView * bview,
 	if (cur.pos() > where.pos())
 		cur.pos(cur.pos()-1);
 
+	// check also if we don't want to set the cursor on a spot behind the
+	// pagragraph because we erased the last character.
+	if (cur.pos() > cur.par()->size())
+		cur.pos(cur.par()->size());
+	
 	// recompute row et al. for this cursor
 	setCursor(bview, cur, cur.par(), cur.pos(), cur.boundary());
 }
