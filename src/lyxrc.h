@@ -249,9 +249,15 @@ enum LyXRCTags {
 		///
 		ISO_8859_1,
 		///
+		ISO_8859_3,
+		///
+		ISO_8859_4,
+		///
 		ISO_8859_6_8,
 		///
 		ISO_8859_9,
+		///
+		ISO_8859_15,
 		///
 		OTHER_ENCODING
 	};

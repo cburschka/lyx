@@ -2950,10 +2950,13 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 			case '°': case '±': case '²': case '³':  
 			case '×': case '÷': case '¹': case 'ª':
 			case 'º': case '¬': case 'µ':
-				if (bparams.inputenc == "latin1" ||
+				if ((bparams.inputenc == "latin1" ||
+				     bparams.inputenc == "latin9") ||
 				    (bparams.inputenc == "auto" &&
-				     font.language()->encoding()->LatexName()
-				     == "latin1")) {
+				     (font.language()->encoding()->LatexName()
+				      == "latin1" ||
+				      font.language()->encoding()->LatexName()
+				      == "latin9"))) {
 					os << "\\ensuremath{"
 					   << c
 					   << '}';

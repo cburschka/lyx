@@ -1,3 +1,18 @@
+2001-10-22  Adrien Rebollo <adrien.rebollo@gmx.fr>
+
+	* lib/kbd/iso8859-1.cdef: overhaul
+	* lib/kbd/iso8859-3.cdef:
+	* lib/kbd/iso8859-4.cdef:
+	* lib/kbd/iso8859-15.cdef: new files
+	* src/lyxrc.C (set_font_norm_type): recognizes latin3, 4 and 9
+	* src/lyxrc.h: added ISO_8859_3, ISO_8859_4 and ISO_8859_15
+	* src/paragraph.C (SimpleTeXSpecialChars): protects math-only
+	characters in latin9 too
+	* src/frontends/xforms/FormDocument.C (build): added latin3, latin4
+	and latin9 options
+	* src/insets/insetquotes.C (DispString): beautifying single and
+	double quotes in latin1, 3, 4 and 9
+    
 2001-10-19  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (SetFont): fixed problem of marking
