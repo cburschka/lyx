@@ -56,7 +56,7 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 
 	lyx_gui::register_socket_callback(
 		fd_,
-		boost::bind(&LyXServerSocket::serverCallback, *this)
+		boost::bind(&LyXServerSocket::serverCallback, this)
 		);
 
 	lyxerr[Debug::LYXSERVER] << "lyx: New server socket "
@@ -103,7 +103,7 @@ void LyXServerSocket::serverCallback()
 	lyx_gui::register_socket_callback(
 		client_fd,
 		boost::bind(&LyXServerSocket::dataCallback,
-			    *this, client_fd)
+			    this, client_fd)
 		);
 }
 

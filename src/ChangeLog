@@ -1,3 +1,9 @@
+2004-07-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxserver.C (startPipe): use this (pointer) not *this (reference)
+	* lyxsocket.C (LyXServerSocket): ditto
+	(serverCallback): ditto
+
 2004-07-23  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* LaTeXFeatures.C: check release date when loading jurabib.

@@ -207,7 +207,7 @@ int LyXComm::startPipe(string const & filename, bool write)
 	}
 
 	if (!write) {
-		lyx_gui::register_socket_callback(fd, boost::bind(&LyXComm::read_ready, *this));
+		lyx_gui::register_socket_callback(fd, boost::bind(&LyXComm::read_ready, this));
 	}
 
 	return fd;
