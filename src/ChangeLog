@@ -1,5 +1,9 @@
 2001-04-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* MenuBackend.C (class compare_format): put into anon namespace
+	(expand): constify label, names, action, action2
+	(expand): 
+
 	* text.C (SingleWidth): constify font
 	(IsBoundary): constify rtl2
 	(GetVisibleRow): constify ww

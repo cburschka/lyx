@@ -219,12 +219,18 @@ void Menu::checkShortcuts() const
 	}
 }
 
+
+namespace {
+
 class compare_format {
 public:
 	bool operator()(Format const * p1, Format const * p2) {
 		return *p1 < *p2;	
 	}
 };
+
+} // namespace anon
+
 
 void Menu::expand(Menu & tomenu, Buffer * buf) const
 {
@@ -236,10 +242,10 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			for (LastFiles::const_iterator lfit = lastfiles->begin();
 			     lfit != lastfiles->end() && ii < 10;
 			     ++lfit, ++ii) {
-				string label = tostr(ii) + ". "
+				string const label = tostr(ii) + ". "
 					+ MakeDisplayPath((*lfit), 30)
 					+ '|' + tostr(ii);
-				int action = lyxaction.
+				int const action = lyxaction.
 					getPseudoAction(LFUN_FILE_OPEN,
 							(*lfit));
 				tomenu.add(MenuItem(MenuItem::Command,
@@ -249,7 +255,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		break;
 		
 		case MenuItem::Documents: {
-			vector<string> names = bufferlist.getFileNames();
+			vector<string> const names = bufferlist.getFileNames();
 			
 			if (names.empty()) {
 				tomenu.add(MenuItem(MenuItem::Command,
@@ -260,9 +266,10 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 
 			for (vector<string>::const_iterator docit = names.begin();
 			     docit != names.end() ; ++docit) {
-				int action =
+				int const action =
 					lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *docit);
-				string label = MakeDisplayPath(*docit, 30);
+				string const label =
+					MakeDisplayPath(*docit, 30);
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action));
 			}
@@ -306,7 +313,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 						label = _("Ascii text as paragraphs");
 				if (!(*fit)->shortcut().empty())
 					label += "|" + (*fit)->shortcut();
-				int action2 = lyxaction.
+				int const action2 = lyxaction.
 					getPseudoAction(action, (*fit)->name());
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action2));
