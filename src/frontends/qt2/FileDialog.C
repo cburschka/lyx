@@ -13,28 +13,29 @@
 #endif
 
 #include <config.h>
-#include <gettext.h>
-#include <utility>
 
 #include "commandtags.h"
 #include "LString.h"
 #include "frontends/FileDialog.h"
 #include "FileDialog_private.h"
 #include "debug.h"
+#include "gettext.h"
 
 #include <qapplication.h>
- 
+
+#include <utility>
+
 using std::make_pair;
 using std::pair;
 using std::endl;
 
-struct FileDialog::Private { 
+struct FileDialog::Private {
 	Button b1;
 	Button b2;
 };
- 
+
 FileDialog::FileDialog(LyXView *lv, string const & t, kb_action s, Button b1, Button b2)
-	: private_(new FileDialog::Private()), lv_(lv), title_(t), success_(s)
+	: private_(new FileDialog::Private), lv_(lv), title_(t), success_(s)
 {
 	private_->b1 = b1;
 	private_->b2 = b2;
@@ -57,14 +58,14 @@ FileDialog::Result const FileDialog::Select(string const & path, string const & 
 	lyxerr[Debug::GUI] << "Select with path \"" << path << "\", mask \"" << filter << "\", suggested \"" << suggested << endl;
 
 	dlg.setMode(QFileDialog::AnyFile);
- 
+
 	if (!suggested.empty())
 		dlg.setSelection(suggested.c_str());
 
 	// This code relies on DestructiveClose which is broken
 	// in Qt < 3.0.5. So we just don't allow it for now.
 	//if (success_ == LFUN_SELECT_FILE_SYNC) {
- 
+
 	FileDialog::Result result;
 	lyxerr[Debug::GUI] << "Synchronous FileDialog : " << endl;
 	result.first = FileDialog::Chosen;

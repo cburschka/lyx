@@ -97,8 +97,7 @@ void QDocument::build_dialog()
 	dialog_->packagesModule->lspacingCO->insertItem(
 		_("Custom"),Spacing::Other);
 
-	int n;
-	for (n=0; tex_graphics[n][0]; ++n) {
+	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = tex_graphics[n];
 		dialog_->packagesModule->psdriverCO->insertItem(enc);
 	}
@@ -116,7 +115,7 @@ void QDocument::build_dialog()
 		dialog_->layoutModule->classCO->insertItem(cit->description().c_str());
 	}
 
-	for (n=0; tex_fonts[n][0]; ++n) {
+	for (int n = 0; tex_fonts[n][0]; ++n) {
 		QString font = tex_fonts[n];
 		dialog_->layoutModule->fontsCO->insertItem(font);
 	}
@@ -142,7 +141,7 @@ void QDocument::build_dialog()
 
 	string const bmtablefile = LibFileSearch("images", "standard", "xpm");
 	QString s = bmtablefile.c_str();
-   qWarning("%d",s);
+	qWarning("%d", s);
 
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->okPB);
@@ -434,9 +433,9 @@ void QDocument::update_contents()
 
 	QString text = controller().params().graphicsDriver.c_str();
 	int nitem = dialog_->packagesModule->psdriverCO->count();
-	for (int n=0; n<nitem ; ++n) {
+	for (int n = 0; n < nitem ; ++n) {
 		QString enc = tex_graphics[n];
-		if (enc==text) {
+		if (enc == text) {
 			dialog_->packagesModule->psdriverCO->setCurrentItem(n);
 		}
 	}
@@ -469,8 +468,7 @@ void QDocument::update_contents()
 	dialog_->updatePagestyle(controller().textClass().opt_pagestyle(),
 				 controller().params().pagestyle);
 
-
-	for (int n=0; tex_fonts[n][0]; ++n) {
+	for (int n = 0; tex_fonts[n][0]; ++n) {
 		if (tex_fonts[n]==controller().params().fonts) {
 			dialog_->layoutModule->fontsCO->setCurrentItem(n);
 			break;
@@ -550,7 +548,7 @@ void QDocument::update_contents()
 	int item = controller().params().paperpackage;
 	if (controller().params().use_geometry) {
 		item = 1;
-	} else if (item>0) {
+	} else if (item > 0) {
 		item = item + 1;
 	}
 	dialog_->marginsModule->marginCO->setCurrentItem(item);

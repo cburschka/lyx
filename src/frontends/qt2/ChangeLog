@@ -1,7 +1,28 @@
+2002-10-19  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* qfont_loader.C (update): move loop vars into for scopes.
+	(get): add some debug msg.
+	(font_info): ditto
+	(getfontinfo): simplify slightly
+
+	* QParagraph.C (setWidgetsFromVSpace): initilize item
+
+	* QERT.C (update_contents): initialize rb
+
+	* QDocument.C (build_dialog): move int n inside for scope.
+
+	* QCharacter.C (findPos2nd): add a typedef
+
+	* FileDialog_private.C: include order changed.
+	(LyXFileDialog): some reformat
+
+	* FileDialog.C: include order changed.
+	(FileDialog): fix wrong use of new.
+
 2002-10-17  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
- 
- 	* ui/QSendtoDialog.ui: fix layout
- 
+
+	* ui/QSendtoDialog.ui: fix layout
+
 2002-10-17  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.C (getDPI): use an average of DpiX and DpiY.
@@ -56,7 +77,7 @@
 2002-10-12  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* qfont_loader.C (available): Implemented.
-	
+
 2002-10-09  Edwin Leuven <leuven@fee.uva.nl>
 
 	* QDocument.C: Brand new document dialog

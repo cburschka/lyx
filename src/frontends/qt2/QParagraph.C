@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Edwin Leuven 
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS
  */
@@ -223,7 +223,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 	value->setEnabled(false);
 	unit->setEnabled(false);
 
-	int item;
+	int item = 0;
 	switch (space.kind()) {
 	case VSpace::NONE:
 		item = 0;

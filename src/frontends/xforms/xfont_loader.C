@@ -301,7 +301,7 @@ XFontStruct * xfont_loader::doLoad(LyXFont::FONT_FAMILY family,
 		if (font == "fixed") {
 			lyxerr << "We're doomed. Can't get 'fixed' font." << endl;
 		} else {
-			lyxerr << "Could not get font '" << font 
+			lyxerr << "Could not get font '" << font
 				<< "'. Using 'fixed'." << endl;
 			fs = XLoadQueryFont(fl_get_display(), "fixed");
 		}

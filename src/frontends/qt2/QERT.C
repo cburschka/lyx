@@ -54,7 +54,7 @@ void QERT::apply()
 
 void QERT::update_contents()
 {
-	QRadioButton * rb;
+	QRadioButton * rb = 0;
 
 	switch (controller().params().status) {
 		case InsetERT::Open: rb = dialog_->openRB; break;

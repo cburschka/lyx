@@ -101,7 +101,10 @@ namespace {
 template<class A, class B>
 int findPos2nd(vector<std::pair<A,B> > const & vec, B const & val)
 {
-	vector<std::pair<A,B> >::const_iterator cit = vec.begin();
+	typedef typename vector<std::pair<A, B> >::const_iterator
+		const_iterator;
+
+	const_iterator cit = vec.begin();
 	for (; cit != vec.end(); ++cit) {
 		if (cit->second == val)
 			return int(cit - vec.begin());

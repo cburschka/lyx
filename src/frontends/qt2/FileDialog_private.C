@@ -14,16 +14,18 @@
 #pragma implementation
 #endif
 
-#include <qapplication.h>
-#include <qtoolbutton.h>
-
-#include "FileDialog_private.h"
-
 #include "QtLyXView.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "lyxfunc.h"
+#include "FileDialog_private.h"
+
 #include "support/lstrings.h"
+
+#include <qapplication.h>
+#include <qfiledialog.h>
+#include <qtoolbutton.h>
+
 
 namespace {
 	/// return the Qt form of the label
@@ -40,9 +42,12 @@ namespace {
 	}
 }
 
-LyXFileDialog::LyXFileDialog(string const & p, string const & m, string const & t,
+
+LyXFileDialog::LyXFileDialog(string const & p, string const & m,
+			     string const & t,
 		FileDialog::Button const & b1, FileDialog::Button const & b2)
-	: QFileDialog(p.c_str(), m.c_str(), qApp->mainWidget(), t.c_str(), true),
+	: QFileDialog(p.c_str(), m.c_str(),
+		      qApp->mainWidget(), t.c_str(), true),
 	  b1_(0), b2_(0)
 {
 	setCaption(t.c_str());

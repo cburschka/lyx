@@ -40,14 +40,10 @@ qfont_loader::~qfont_loader()
 
 void qfont_loader::update()
 {
-	int i1,i2,i3,i4;
-
-	// fuck this !
-
-	for (i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) {
-		for (i2 = 0; i1 < 2; ++i2) {
-			for (i3 = 0; i1 < 4; ++i3) {
-				for (i4 = 0; i1 < 10; ++i4) {
+	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) {
+		for (int i2 = 0; i1 < 2; ++i2) {
+			for (int i3 = 0; i1 < 4; ++i3) {
+				for (int i4 = 0; i1 < 10; ++i4) {
 					fontinfo_[i1][i2][i3][i4].reset(0);
 				}
 			}
@@ -62,8 +58,12 @@ QFont const & qfont_loader::get(LyXFont const & f)
 
 	if (lyxerr.debugging(Debug::FONT)) {
 		lyxerr[Debug::FONT] << "Font '" << f.stateText(0)
-			<< "' matched by\n" << ret.rawName().latin1() << endl;
+			<< "' matched by\n" << ret.rawName() << endl;
 	}
+
+	lyxerr[Debug::FONT] << "The font has size: "
+			    << ret.pointSizeFloat() << endl;
+
 	return ret;
 }
 
@@ -128,6 +128,16 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 			break;
 	}
 
+	// Is this an exact match?
+	if (font.exactMatch()) {
+		lyxerr[Debug::FONT] << "This font is an exact match" << endl;
+	} else {
+		lyxerr[Debug::FONT] << "This font is NOT an exact match"
+				    << endl;
+	}
+
+	lyxerr[Debug::FONT] << "XFLD: " << font.rawName() << endl;
+
 	metrics = QFontMetrics(font);
 }
 
@@ -139,13 +149,12 @@ qfont_loader::font_info const * qfont_loader::getfontinfo(LyXFont const & f)
 	}
 
 	font_info * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()].get();
-	if (fi) {
-		return fi;
-	} else {
+	if (!fi) {
 		fi = new font_info(f);
 		fontinfo_[f.family()][f.series()][f.realShape()][f.size()].reset(fi);
-		return fi;
 	}
+
+	return fi;
 }
 
 
