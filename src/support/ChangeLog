@@ -1,3 +1,8 @@
+2002-11-12  Angus Leeming  <aleem@pneumon.bg.ic.ac.uk>
+
+	* lstrings.C (getVectorFromString): #if 0 -> #if 1 until Lars devises
+	a solution that he likes and which actually works.
+
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lstrings.h (tostr): STRCONV

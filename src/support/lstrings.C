@@ -616,7 +616,10 @@ string const escape(string const & lab)
 vector<string> const getVectorFromString(string const & str,
 					 string const & delim)
 {
-#if 0
+// Lars would like this code to go, but for now his replacement (below)
+// doesn't fullfil the same function. I have, therefore, reactivated the
+// old code for now. Angus 11 Nov 2002.
+#if 1
 	vector<string> vec;
 	if (str.empty())
 		return vec;
