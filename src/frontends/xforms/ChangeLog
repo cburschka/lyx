@@ -1,3 +1,13 @@
+2003-01-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* FileDialog.C: implement opendir [bug 824], fix mask.
+
+	* FormFileDialog.[Ch]: implement SelectDir (browse directories)
+	[bug 824].
+
+	* FormPreferences.C: use browsedir for paths [bug 824]
+	do not delete paths unnecessary.
+
 2003-01-13  Michael Schmitt <michael.schmitt@teststep.org>
 
 	* xformsImage.C (getWidth): revert "fix" that breaks behavior with
