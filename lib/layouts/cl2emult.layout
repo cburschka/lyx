@@ -9,22 +9,24 @@ Sides                     1
 SecNumDepth               2
 TocDepth                  2
 
-MaxCounter                Counter_Chapter
+MaxCounter                Counter_Section
 
 DefaultStyle              Standard
-
-NoStyle                   Chapter
-NoStyle                   Chapter*
-NoStyle                   Part
-NoStyle                   Part*
 
 Input stdlists.inc
 Input stdsections.inc
 Input stdstarsections.inc
 Input stdstruct.inc
-Input lyxmacros.inc
 Input stdlayouts.inc
-Input obsolete.inc
+
+NoStyle                   Chapter
+NoStyle                   Chapter*
+NoStyle                   Part
+NoStyle                   Part*
+NoStyle                   Paragraph
+NoStyle                   Paragraph*
+NoStyle                   Subparagraph
+NoStyle                   Subparagraph*
 
 DefaultFont
   Family                Roman
@@ -36,25 +38,22 @@ EndFont
 
 
 Style Title
-  Margin                First_Dynamic
+  Margin                Static
   LatexType             Command
   InTitle               1
-  LatexName             title
-  ParSkip               0.0
+  LatexName             title*
   ItemSep               0
   TopSep                0
-  BottomSep             1
+  BottomSep             2
   ParSep                1
   Align                 Left
-  #LabelType             Counter_Chapter
-  LabelString           "0  "
-  LabelType             Static
   Font                  
     Size                Largest
+		Series              Bold	
   EndFont               
 End                     
-                        
-                        
+
+
 Style Author            
   Margin                Static
   LatexType             Command
