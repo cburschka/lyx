@@ -1,3 +1,14 @@
+2002-04-17  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* deco.xpm
+	* smallcaps.xpm
+	* space.xpm
+	* sub.xpm
+	* super.xpm :
+	Rewrite any 13 char colour strings as the equivalent 7 char string,
+	by running them past fl_lookup_RGBcolor.
+	For example, "#BEFBBEFBBEFB" becomes "#bebebe".
+
 2002-03-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* style.xbm:
