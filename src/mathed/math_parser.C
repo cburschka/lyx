@@ -86,13 +86,13 @@ using std::atoi;
 
 namespace {
 
-MathInset::mode_type asMode(string const & str)
+MathInset::mode_type asMode(MathInset::mode_type oldmode, string const & str)
 {
 	if (str == "mathmode")
 		return MathInset::MATH_MODE;
 	if (str == "textmode" || str == "forcetext")
 		return MathInset::TEXT_MODE;
-	return MathInset::UNDECIDED_MODE;
+	return oldmode;
 }
 
 
@@ -1151,12 +1151,12 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			if (l) {
 				if (l->inset == "font") {
 					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, asMode(l->extra));
+					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, asMode(mode, l->extra));
 				}
 
 				else if (l->inset == "oldfont") {
 					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back().nucleus()->cell(0), flags, asMode(l->extra));
+					parse(cell->back().nucleus()->cell(0), flags, asMode(mode, l->extra));
 					return;
 				}
 
@@ -1179,7 +1179,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				else {
 					MathAtom at = createMathInset(t.cs());
 					for (MathInset::idx_type i = 0; i < at->nargs(); ++i)
-						parse(at.nucleus()->cell(i), FLAG_ITEM, asMode(l->extra));
+						parse(at.nucleus()->cell(i), FLAG_ITEM, asMode(mode, l->extra));
 					cell->push_back(at);
 				}
 			}
