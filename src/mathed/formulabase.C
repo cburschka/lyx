@@ -307,12 +307,11 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
 	par_->Metrics(LM_ST_TEXT);
-	bv->updateInset(this, false);
-	if (x == 0) {
+	//bv->updateInset(this, false);
+	if (x == 0)
 		mathcursor->first();
-	} else {
+	else
 		mathcursor->last();
-	}
 	sel_x = 0;
 	sel_y = 0;
 	sel_flag = false;
