@@ -1,3 +1,8 @@
+2004-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_gui.C (getStatus): under Mac OS X, disable the
+	buffer-related lfuns when the main window does not have the focus.
+
 2004-06-21  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QCitation.[Ch]: add validation (fix bug 1617).

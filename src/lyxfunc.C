@@ -299,6 +299,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	// the default error message if we disable the command
 	setStatusMessage(N_("Command disabled"));
+	if (!flag.enabled()) 
+		return flag;
 
 	// Check whether we need a buffer
 	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer) && !buf) {

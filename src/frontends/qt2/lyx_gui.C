@@ -244,6 +244,18 @@ FuncStatus getStatus(FuncRequest const & ev)
 	default:
 		break;
 	}
+
+#ifdef Q_WS_MACX
+	// In LyX/Mac, when a dialog is open, the menus of the
+	// application can still be accessed without giving focus to
+	// the main window. In this case, we want to disable the menu
+	// entries that are buffer-related.
+	if (use_gui 
+	    && qApp->activeWindow() != qApp->mainWidget()
+	    && !lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)) 
+		flag.enabled(false);
+#endif
+
 	return flag;
 }
 
