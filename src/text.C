@@ -1536,7 +1536,7 @@ void LyXText::cursorLeftOneWord()
 void LyXText::selectWord(word_location loc)
 {
 	LyXCursor from = cursor;
-	LyXCursor to;
+	LyXCursor to = cursor;
 	::getWord(*this, from, to, loc, ownerParagraphs());
 	if (cursor != from)
 		setCursor(from.par(), from.pos());
