@@ -453,12 +453,11 @@ Buffer * BufferList::newFile(string const & name, string tname)
 		b->paragraph = new LyXParagraph;
 	}
 
-#ifdef NEW_WITH_FILENAME
-	b->markDirty();
-#else
-#warning Why mark a new document dirty? I deactivate this for unnamed docs! (Jug)
-	b->setUnnamed();
-#endif
+#warning Why mark a new document dirty? I deactivate this (Jug)
+	if (!lyxrc.new_ask_filename) {
+//		b->markDirty();
+		b->setUnnamed();
+	}
 	b->setReadonly(false);
 	
 	return b;

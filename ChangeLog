@@ -1,3 +1,10 @@
+2000-08-08  Juergen Vigna  <jug@sad.it>
+
+	* src/bufferlist.C (newFile):
+	* src/lyxfunc.C (MenuNew): use the new_ask_filename tag from lyxrc.
+
+	* src/lyxrc.C: added new_ask_filename tag
+
 2000-08-07  Baruch Even  <baruch.even@writeme.com>
 
 	* src/graphics/Renderer.h:

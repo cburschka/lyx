@@ -2962,32 +2962,35 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			initpath = trypath;
 	}
 
-#ifdef NEW_WITH_FILENAME
-	ProhibitInput(owner->view());
-	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-	fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
-	fname = fileDlg.Select(_("Enter Filename for new document"), 
-			       initpath, "*.lyx", _("newfile"));
- 	AllowInput(owner->view());
-	
-	if (fname.empty()) {
-		owner->getMiniBuffer()->Set(_("Canceled."));
-		lyxerr.debug() << "New Document Cancelled." << endl;
-		return;
-	}
-	
-	// get absolute path of file and make sure the filename ends
-	// with .lyx
-	string s = MakeAbsPath(fname);
-	if (!IsLyXFilename(s))
-		s += ".lyx";
+	static int newfile_number = 0;
+	string s = "newfile"+tostr(++newfile_number);
 
-	// Check if the document already is open
-	if (bufferlist.exists(s)) {
-		switch(AskConfirmation(_("Document is already open:"), 
-				       MakeDisplayPath(s, 50),
-				       _("Do you want to close that document now?\n"
-					 "('No' will just switch to the open version)")))
+	if (lyxrc.new_ask_filename) {
+		ProhibitInput(owner->view());
+		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
+		fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
+		fname = fileDlg.Select(_("Enter Filename for new document"), 
+				       initpath, "*.lyx", _("newfile"));
+		AllowInput(owner->view());
+	
+		if (fname.empty()) {
+			owner->getMiniBuffer()->Set(_("Canceled."));
+			lyxerr.debug() << "New Document Cancelled." << endl;
+			return;
+		}
+	
+		// get absolute path of file and make sure the filename ends
+		// with .lyx
+		string s = MakeAbsPath(fname);
+		if (!IsLyXFilename(s))
+			s += ".lyx";
+
+		// Check if the document already is open
+		if (bufferlist.exists(s)) {
+			switch(AskConfirmation(_("Document is already open:"), 
+					       MakeDisplayPath(s, 50),
+					       _("Do you want to close that document now?\n"
+						 "('No' will just switch to the open version)")))
 			{
 			case 1: // Yes: close the document
 				if (!bufferlist.close(bufferlist.getBuffer(s)))
@@ -3001,37 +3004,34 @@ void LyXFunc::MenuNew(bool fromTemplate)
 				owner->getMiniBuffer()->Set(_("Canceled."));
 				return;
 			}
-	}
-
-	// Check whether the file already exists
-	if (IsLyXFilename(s)) {
+		}
+		// Check whether the file already exists
+		if (IsLyXFilename(s)) {
+			FileInfo fi(s);
+			if (fi.readable() &&
+			    AskQuestion(_("File already exists:"), 
+					MakeDisplayPath(s, 50),
+					_("Do you want to open the document?"))) {
+				// loads document
+				owner->getMiniBuffer()->Set(_("Opening document"), 
+							    MakeDisplayPath(s), "...");
+				XFlush(fl_display);
+				owner->view()->buffer(
+					bufferlist.loadLyXFile(s));
+				owner->getMiniBuffer()->Set(_("Document"),
+							    MakeDisplayPath(s),
+							    _("opened."));
+				return;
+			}
+		}
+	} else {
 		FileInfo fi(s);
-		if (fi.readable() &&
-		    AskQuestion(_("File already exists:"), 
-				MakeDisplayPath(s, 50),
-				_("Do you want to open the document?"))) {
-			// loads document
-			owner->getMiniBuffer()->Set(_("Opening document"), 
-						    MakeDisplayPath(s), "...");
-			XFlush(fl_display);
-			owner->view()->buffer(
-				bufferlist.loadLyXFile(s));
-			owner->getMiniBuffer()->Set(_("Document"),
-						    MakeDisplayPath(s),
-						    _("opened."));
-			return;
+		while (bufferlist.exists(s) || fi.readable()) {
+			++newfile_number;
+			s = "newfile"+tostr(newfile_number);
+			fi.newFile(s);
 		}
 	}
-#else
-	static int newfile_number = 0;
-	string s = "/lyx/dummy/dirname/newfile ["+tostr(++newfile_number)+"]";
-	FileInfo fi(s);
-	while (bufferlist.exists(s) || fi.readable()) {
-		++newfile_number;
-		s = "/lyx/dummy/dirname/newfile ["+tostr(newfile_number)+"]";
-		fi.newFile(s);
-	}
-#endif
 
 	// The template stuff
 	string templname;

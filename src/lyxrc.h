@@ -259,6 +259,8 @@ public:
 	string docbook_to_html_command;
 	///
 	string docbook_to_pdf_command;
+	///
+	bool new_ask_filename;
 };
 
 ///

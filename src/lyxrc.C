@@ -155,6 +155,7 @@ enum LyXRCTags {
 	RC_DOCBOOK_TO_HTML_COMMAND,
 	RC_DOCBOOK_TO_PDF_COMMAND,
 	RC_WHEEL_JUMP,
+	RC_NEW_ASK_FILENAME,
 	RC_LAST
 };
 
@@ -211,6 +212,7 @@ keyword_item lyxrcTags[] = {
         { "\\literate_extension", RC_LITERATE_EXTENSION },
 	{ "\\make_backup", RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", RC_MARK_FOREIGN_LANGUAGE },
+	{ "\\new_ask_filename", RC_NEW_ASK_FILENAME },
 	{ "\\num_lastfiles", RC_NUMLASTFILES },
 	{ "\\override_x_deadkeys", RC_OVERRIDE_X_DEADKEYS },
 	{ "\\pdf_mode", RC_PDF_MODE },
@@ -376,6 +378,8 @@ void LyXRC::setDefaults() {
 	language_auto_end = true;
 	language_command_begin = "\\selectlanguage{$$lang}";
 	language_command_end = "\\selectlanguage{$$lang}";
+	///
+	new_ask_filename = false;
 
 	///
 	date_insert_format = "%A, %e %B %Y";
@@ -1096,6 +1100,11 @@ int LyXRC::read(string const & filename)
 		case RC_DOCBOOK_TO_PDF_COMMAND:
 			if ( lexrc.next())
 				docbook_to_pdf_command = lexrc.GetString();
+			break;
+			
+		case RC_NEW_ASK_FILENAME:
+			if ( lexrc.next())
+				new_ask_filename = lexrc.GetBool();
 			break;
 
 		case RC_LAST: break; // this is just a dummy

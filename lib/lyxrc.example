@@ -83,6 +83,11 @@
 # We recommend to keep the confirmation, though.
 #\exit_confirmation false
 
+# This sets the behaviour if you want to be asked for a filename when
+# creating a new document or wait until you save it and be asked then.
+# The default for now is ask on save.
+# \new_ask_filename false
+
 # LyX continously displays names of last command executed, along with a list 
 # of defined short-cuts for it in the minibuffer.
 # It requires some horsepower to function, so you can turn it off, if LyX
