@@ -58,6 +58,8 @@ public:
         ///
         int  getCounter() const { return counter; }
 	///
+	string const getBibLabel() const;
+	///
 	void callback( FD_bibitem_form *, long );
 	///
 	struct Holder {
@@ -70,6 +72,8 @@ private:
         int counter;
 	///
 	Holder holder;
+	///
+	static int key_counter;
 };
 
 

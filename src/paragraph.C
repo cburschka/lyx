@@ -2205,6 +2205,9 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 			return (*cit).pos;
 		}
 	}
+	if (inset == bibkey)
+		return 0;
+
 #ifndef NEW_INSETS
 	// Think about footnotes.
 	if (footnoteflag == LyXParagraph::NO_FOOTNOTE 
