@@ -6,18 +6,24 @@
 # replacement in ~/.lyx/scripts
 #
 # converts an image from $1 to $2 format
-convert -depth 8 $1 $2
-if [ $? -ne 0 ]; then
-    exit $?
-fi
+
+convert -depth 8 $1 $2 || {
+	echo "$0 ERROR"
+	echo "Execution of \"convert\" failed."
+	exit 1
+}
 
 # It appears that convert succeeded, but we know better than to trust it ;-)
 # convert is passed strings in the form "FMT:FILENAME", so use the ':' to
 # delimit the two parts.
-FILE=`echo $2 | cut -d ':' -f 2`
+# Note that Win32 filenames have the form 'C:\my\file',
+# so use everything from the first ':' to the end of the line.
+FILE=`echo $2 | cut -d ':' -f 2-`
 
-# FSTATUS == 0 is the file exists and == 1 if it does not.
-FSTATUS=0
-test -f $FILE || FSTATUS=1
+test -f $FILE || {
+	echo "$0 ERROR"
+	echo "Unable to find file \"${FILE}\""
+	exit 1
+}
 
-exit $FSTATUS
+echo "$0 generated file \"${FILE}\" successfully."
