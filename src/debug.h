@@ -47,13 +47,16 @@ struct Debug {
 		///
 		ACTION     = (1 << 14),   // 16384
 		///
-		LYXLEX     = (1 << 15)
+		LYXLEX     = (1 << 15),
+		///
+		DEPEND     = (1 << 16)
 	};
 	///
 	static const type ANY = type(INFO | INIT | KEY | TOOLBAR |
 				     PARSER | LYXRC | KBMAP | LATEX |
 				     MATHED | FONT | TCLASS | LYXVC |
-				     LYXSERVER | ROFF | ACTION | LYXLEX);
+				     LYXSERVER | ROFF | ACTION | LYXLEX |
+				     DEPEND);
 	///
 	friend inline void operator|=(Debug::type & d1, Debug::type d2);
 	

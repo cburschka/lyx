@@ -142,8 +142,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 				os << "\n\\begin_float "
 				   << string_footnotekinds[footnotekind]
 				   << " ";
-			}
-			else {
+			} else {
 				os << "\n\\end_float ";
 			}
 		}
@@ -155,8 +154,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 					os << "\n\\begin_deeper ";
 					++dth;
 				}
-			}
-			else {
+			} else {
 				while (depth < dth) {
 					os << "\n\\end_deeper ";
 					--dth;
@@ -233,8 +231,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
                         }
 			os << '\n';
                 }
-	}
-	else {
+	} else {
    		// Dummy layout. This means that a footnote ended.
 		os << "\n\\end_float ";
 		footflag = LyXParagraph::NO_FOOTNOTE;
@@ -553,14 +550,14 @@ LyXParagraph::~LyXParagraph()
 	while (insettable) {
 		tmpinset = insettable;
 		insettable = insettable->next;
-		if (tmpinset->inset)
+		if (tmpinset->inset) // DEL LINE
 			delete tmpinset->inset;
 		delete tmpinset;
 		if (insettable && insettable->next == insettable) {
 			// somehow this recursion appears occasionally
 			// but I can't find where.  This bandaid
 			// helps but isn't the best fix. (ARRae)
-			if (insettable->inset) {
+			if (insettable->inset) { // DEL LINE
 				delete insettable->inset;
 			}
 			delete insettable;
@@ -578,12 +575,12 @@ LyXParagraph::~LyXParagraph()
 #endif
 
 	/* table stuff -- begin*/ 
-	if (table)
+	if (table) // DEL LINE
 		delete table;
 	/* table stuff -- end*/ 
 
         // ale970302
-	if (bibkey)
+	if (bibkey) // DEL LINE
 	        delete bibkey;
 }
 
@@ -621,7 +618,7 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 				tmpi = tmpi->next;
 			}
 			if (tmpi) {	// this should always be true
-				if (tmpi->inset) // delete the inset if it exists
+				if (tmpi->inset) // delete the inset if it exists // DEL LINE
 					delete tmpi->inset;
 				if (tmpi == insettable)
 					insettable = tmpi->next;
@@ -2201,7 +2198,7 @@ Inset * LyXParagraph::ReturnNextInsetPointer(LyXParagraph::size_type & pos)
 	for (InsetList::iterator it = insetlist.begin();
 	     it != insetlist.end(); ++it) {
 		if ((*it).pos >= pos) {
-			if (it2 != insetlist.end() || (*it).pos < (*it2).pos)
+			if (it2 == insetlist.end() || (*it).pos < (*it2).pos)
 				it2 = it;
 		}
 	}

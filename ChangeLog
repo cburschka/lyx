@@ -1,3 +1,20 @@
+2000-01-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* several files: marked several lines with "DEL LINE", this is
+	lines that can be deleted without changing anything.
+	if (<ptr>) // DEL LINE  /* this line is _never_ needed. Delete
+	                           checks this anyway */
+	        delete <ptr>
+
+	* src/insets/insetlatexaccent.C: Changed some debugs to Debug::KEY
+
+	* src/DepTable.C (update): add a "+" at the end when the checksum
+	is different. (debugging string only)
+
+	* src/paragraph.C (ReturnNextInsetPointer): fix bug that caused
+	the next inset to not be displayed. This should also fix the list
+	of labels in the "Insert Crossreference" dialog.
+
 2000-01-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/LSubstring.C (LSubstring): set pos to string::npos

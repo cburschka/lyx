@@ -133,10 +133,10 @@ LyX::LyX(int * argc, char * argv[])
 // A destructor is always necessary  (asierra-970604)
 LyX::~LyX()
 {
-	if (lastfiles)
+	if (lastfiles) // DEL LINE
 		delete lastfiles;
 
-	if (lyxGUI)
+	if (lyxGUI) // DEL LINE
 		delete lyxGUI;
 }
 

@@ -4,7 +4,7 @@
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1999 The LyX Team.
+ *          Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -98,7 +98,7 @@ void InsetLatexAccent::checkContents()
 	}
         if (contents[0] != '\\') return; // demand that first char is a '\\'
 
-	lyxerr.debug() << "Decode: " << contents << endl;
+	lyxerr[Debug::KEY] << "Decode: " << contents << endl;
 
         remdot = false; plusasc = false; plusdesc = false;
 
@@ -213,12 +213,12 @@ void InsetLatexAccent::checkContents()
 			break;
 		}
 		//ic = (modtype == DOT_LESS_J ? 'j' : 'i');
-		lyxerr.debug() << "Contents: [" << contents << "]"
-			       << ", ic: " << ic 
-			       << ", top: " << plusasc 
-			       << ", bot: " << plusdesc 
-			       << ", dot: " << remdot 
-			       << ", mod: " << modtype << endl;
+		lyxerr[Debug::KEY] << "Contents: [" << contents << "]"
+				   << ", ic: " << ic 
+				   << ", top: " << plusasc 
+				   << ", bot: " << plusdesc 
+				   << ", dot: " << remdot 
+				   << ", mod: " << modtype << endl;
 		// Special case for space
 	} else if (contents[3] == '}') {
 		ic = ' ';
@@ -253,12 +253,12 @@ void InsetLatexAccent::checkContents()
 		if (contents[++i] != '}' && contents[++i]) return;
 					   
 		// fine, the char is properly decoded now (hopefully)
-		lyxerr.debug() << "Contents: [" << contents << "]"
-			       << ", ic: " << ic
-			       << ", top: " << plusasc 
-			       << ", bot: " << plusdesc 
-			       << ", dot: " << remdot
-			       << ", mod: " << modtype << endl;
+		lyxerr[Debug::KEY] << "Contents: [" << contents << "]"
+				   << ", ic: " << ic
+				   << ", top: " << plusasc 
+				   << ", bot: " << plusdesc 
+				   << ", dot: " << remdot
+				   << ", mod: " << modtype << endl;
 	}
         candisp = true;
 }
@@ -413,7 +413,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 			float tmpx = 0;
 			if (font.shape() == LyXFont::ITALIC_SHAPE)
 				tmpx += (8.0 * hg) / 10.0; // italic
-			lyxerr.debug() << "Removing dot." << endl;
+			lyxerr[Debug::KEY] << "Removing dot." << endl;
 			// remove the dot first
 			scr.fillRectangle(gc_clear, int(x + tmpx),
 					  tmpvar, wid,

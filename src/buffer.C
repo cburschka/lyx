@@ -3823,17 +3823,18 @@ string Buffer::getReferenceList(char delim)
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
-	if (!params.parentname.empty() && bufferlist.exists(params.parentname)) {
+	if (!params.parentname.empty()
+	    && bufferlist.exists(params.parentname)) {
 		Buffer * tmp = bufferlist.getBuffer(params.parentname);
 		if (tmp)
-		  return tmp->getReferenceList(delim);
+			return tmp->getReferenceList(delim);
 	}
 
 	LyXParagraph * par = paragraph;
 	LyXParagraph::size_type pos;
 	Inset * inset;
         string lst;
-	while (par){
+	while (par) {
 		pos = -1;
 		while ((inset = par->ReturnNextInsetPointer(pos))){     
 			for (int i = 0; i < inset->GetNumberOfLabels(); ++i) {
@@ -3842,7 +3843,7 @@ string Buffer::getReferenceList(char delim)
 				lst += inset->getLabel(i);
 			}
 			++pos;
-		} 
+		}
 		par = par->next;
 	}
 	lyxerr.debug() << "References(" <<  lst << ")" << endl;

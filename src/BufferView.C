@@ -225,7 +225,7 @@ void BufferView::buffer(Buffer * b)
 	
 	// Nuke old image
 	// screen is always deleted when the buffer is changed.
-	if (screen)
+	if (screen) // DEL LINE
 		delete screen;
 	screen = 0;
 
@@ -273,7 +273,7 @@ void BufferView::buffer(Buffer * b)
 void BufferView::updateScreen()
 {
 	// Regenerate the screen.
-	if (screen)
+	if (screen) // DEL LINE
 		delete screen;
 	screen = new LyXScreen(FL_ObjWin(work_area),
 			       work_area->w,
@@ -1520,13 +1520,17 @@ void BufferView::CursorToggleCB(FL_OBJECT * ob, long)
 		Window tmpwin;
 		int tmp;
 		XGetInputFocus(fl_display, &tmpwin, &tmp);
-		if (lyxerr.debugging(Debug::INFO)) {
-			lyxerr << "tmpwin: " << tmpwin
-			       << "\nwindow: " << view->owner_->getForm()->window
-			       << "\nwork_area_focus: " << view->work_area_focus
-			       << "\nlyx_focus      : " << view->lyx_focus
-			       << endl;
-		}
+		// Commenting this out, we have not had problems with this
+		// for a long time. We will probably work on this code later
+		// and we can reenable this debug code then. Now it only
+		// anoying when debugging. (Lgb)
+		//if (lyxerr.debugging(Debug::INFO)) {
+		//	lyxerr << "tmpwin: " << tmpwin
+		//	       << "\nwindow: " << view->owner_->getForm()->window
+		//	       << "\nwork_area_focus: " << view->work_area_focus
+		//	       << "\nlyx_focus      : " << view->lyx_focus
+		//	       << endl;
+		//}
 		if (tmpwin != view->owner_->getForm()->window) {
 			view->lyx_focus = false;
 			goto skip_timer;

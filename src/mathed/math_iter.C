@@ -394,7 +394,7 @@ void MathedIter::Clear()
    Reset();  
    while (OK()) {
       if (IsInset()) {
-	 MathedInset* inset = GetInset();
+	 MathedInset * inset = GetInset();
 	  if (inset->GetType()!= LM_OT_MACRO_ARG)
 	    delete inset;
 	  Delete();
@@ -519,7 +519,7 @@ void MathedXIter::Merge(LyxArrayBase *a0)
 		crow = r;
 	    } else {
 		Delete();
-		pos2--;
+		--pos2;
 	    }
 	}
         Next();    

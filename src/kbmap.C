@@ -519,7 +519,7 @@ kb_keymap::~kb_keymap()
 {
 	if(!table) return;
 	for(kb_key * t = table; t->code != NoSymbol; ++t)
-		if(t->table)
+		if(t->table) // DEL LINE
 			delete t->table;
 	delete table;
 }

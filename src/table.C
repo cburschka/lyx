@@ -292,10 +292,10 @@ void LyXTable::set_row_column_number_info()
 	row = 0;
 	column = 0;
 
-	if (rowofcell)
+	if (rowofcell) // DEL LINE
 		delete [] rowofcell;
 	rowofcell = new int[numberofcells];
-	if (columnofcell)
+	if (columnofcell) // DEL LINE
 		delete [] columnofcell;
 	columnofcell = new int[numberofcells];
   

@@ -437,7 +437,8 @@ struct MathedRowSt {
     ///
     ~MathedRowSt() {
 	delete[] w;
-	if (label) delete[] label;
+	if (label) // DEL LINE
+		delete[] label;
     }
     /// Should be const but...
     MathedRowSt * getNext() const  { return next; }

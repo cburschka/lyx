@@ -32,6 +32,7 @@ static error_item errorTags[] = {
 	{ Debug::LYXRC,		"lyxrc",	"Configuration files reading"},
 	{ Debug::KBMAP,		"kbmap",	"Custom keyboard definition"},
 	{ Debug::LATEX,		"latex",	"LaTeX generation/execution"},
+	{ Debug::DEPEND,        "depend",       "Dependency information"},
 	{ Debug::MATHED,	"mathed",	"Math editor"},
 	{ Debug::FONT,		"font",		"Font handling"},
 	{ Debug::TCLASS,	"tclass",	"Textclass files reading"},
@@ -55,7 +56,7 @@ Debug::type Debug::value(string const & val)
 	while (!v.empty()) {
 		string::size_type st = v.find(',');
 		string tmp(lowercase(v.substr(0, st)));
-		if (tmp.empty()) 
+		if (tmp.empty())
 			break;
 		// Is it a number?
 		if (isStrInt(tmp)) 

@@ -202,10 +202,10 @@ LyXGUI::~LyXGUI()
 {
         // Lyxserver was created in this class so should be destroyed
         // here.  asierra-970604
-        if (lyxserver) {
+        if (lyxserver) { // DEL LINE
 		delete lyxserver;
 		lyxserver = 0;
-	}
+	} // DEL LINE
 
 	CloseLyXLookup();
 }

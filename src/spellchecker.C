@@ -94,7 +94,8 @@ struct isp_result {
 		misses = static_cast<char**>(0);
 	}
 	~isp_result() {
-		if (misses) delete[] misses;
+		if (misses) // DEL LINE
+			delete[] misses;
 	}
 };
 

@@ -50,9 +50,12 @@ void DepTable::update()
 		unsigned long one = (*itr).second.second;
 		unsigned long two = lyx::sum((*itr).first.c_str());
 		(*itr).second = make_pair(one, two);
-		if (lyxerr.debugging()) {
-			lyxerr << "update: " << (*itr).first << " "
-			       << one << " " << two << endl;
+		if (lyxerr.debugging(Debug::DEPEND)) {
+			lyxerr << "Update dep: " << (*itr).first << " "
+			       << one << " " << two;
+			if (one != two)
+				lyxerr << " +";
+			lyxerr << endl;
 		}
 	}
 }
@@ -93,7 +96,6 @@ bool DepTable::extchanged(string const & ext) const
 				return true;
 		}
 	}
-		     
 	return false;
 }
 
@@ -125,7 +127,7 @@ void DepTable::write(string const & f) const
 	for (DepList::const_iterator cit = deplist.begin();
 	     cit != deplist.end();
 	     ++cit) {
-		if (lyxerr.debugging()) {
+		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Write dep: "
 			       << (*cit).first << " "
 			       << (*cit).second.first << " "
@@ -145,8 +147,8 @@ void DepTable::read(string const & f)
 	unsigned long one = 0;
 	unsigned long two = 0;
 	while(ifs >> nome >> one >> two) {
-		if (lyxerr.debugging()) {
-			lyxerr << "read dep: "
+		if (lyxerr.debugging(Debug::DEPEND)) {
+			lyxerr << "Read dep: "
 			       << nome << " "
 			       << one << " "
 			       << two << endl;

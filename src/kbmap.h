@@ -89,13 +89,12 @@ public:
 	
 	
 	///
-	~kb_sequence()
-		{
-			if (sequence != staticseq) {
-				delete sequence;
-				delete modifiers;
-			}
+	~kb_sequence() {
+		if (sequence != staticseq) {
+			delete sequence;
+			delete modifiers;
 		}
+	}
 	
 	/// Add a key to the key sequence and look it up in the curmap
 	/** Add a key to the key sequence and look it up in the curmap
