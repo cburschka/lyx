@@ -15,7 +15,6 @@ Style Standard
   Margin  		Static
   LatexType 		Paragraph
   LatexName 		p
-  ParIndent		MM
   ParSkip 		0.4
   Align 		Block
   AlignPossible 	Block
@@ -67,7 +66,6 @@ Style Section
   Margin		Dynamic
   LatexType		Command
   LatexName		sect
-  NextNoIndent		1
   LabelSep		xxx
   ParSkip		0.4
   TopSep		1.3
@@ -76,7 +74,6 @@ Style Section
   Align			Block
   AlignPossible		Block, Left
   LabelType		Counter_Section
-
   # standard font definition
   Font 
     Series 		Bold
@@ -95,7 +92,6 @@ Style Subsection
   Margin		Dynamic
   LatexType		Command
   LatexName		sect1
-  NextNoIndent		1
   LabelSep		xxx
   ParSkip		0.4
   TopSep		0.9
@@ -123,7 +119,6 @@ Style Subsubsection
   Margin		Dynamic
   LatexType		Command
   LatexName		sect2
-  NextNoIndent		1
   LabelSep		xxx
   ParSkip		0.4
   TopSep		0.7
@@ -149,7 +144,6 @@ Style Paragraph
   Margin		Dynamic
   LatexType		Command
   LatexName		sect3
-  NextNoIndent		1
   LabelSep		xxx
   ParSkip		0.4
   TopSep		0.4
@@ -199,7 +193,6 @@ Style Enumerate
   Margin		Static
   LatexType		Item_Environment
   LatexName		enum
-  NextNoIndent		1
   LeftMargin		MMN
   LabelSep		xx
   ItemSep		0.2
@@ -216,7 +209,6 @@ Style Itemize
   Margin		Static
   LatexType		Item_Environment
   LatexName		itemize
-  NextNoIndent		1
   LeftMargin		MMN
   LabelSep		xx
   ItemSep		0.2
@@ -234,7 +226,6 @@ Style Description
   Margin		First_Dynamic
   LatexType		Item_environment
   LatexName		descrip
-  NextNoIndent		1
   LeftMargin		MM
   LabelSep		xxx
   ParSkip		0.4
@@ -258,7 +249,6 @@ Style Verbatim
   Margin		Static
   LatexType		environment
   LatexName		verb
-  NextNoIndent		1
   LeftMargin		MM
   LabelSep		xx
   ItemSep		0.2
@@ -286,7 +276,6 @@ Style Code
   Margin		Static
   LatexType		Environment
   LatexName		code
-  NextNoIndent		1
   LeftMargin		MM
   LabelSep		xx
   ItemSep		0.2
@@ -304,7 +293,6 @@ Style Author
   Margin		Dynamic
   LatexType		Paragraph
   LatexName		author
-  NextNoIndent		1
   LabelSep		xxx
   ParSkip		0.4
   TopSep		1.3
@@ -330,7 +318,6 @@ Style Date
   Margin		Dynamic
   LatexType		Paragraph
   LatexName		date
-  NextNoIndent		1
   LabelSep		xxx
   ParSkip		0.4
   TopSep		0.9
@@ -356,7 +343,6 @@ Style Abstract
   Margin		Static
   LatexType		Paragraph
   LatexName		abstract
-  NextNoIndent		1
   LeftMargin		MM
   LabelSep		xx
   ItemSep		0
