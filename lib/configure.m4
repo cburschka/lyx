@@ -253,7 +253,7 @@ SEARCH_PROG([for a PDF preview],PDF_VIEWER,acroread gv ghostview xpdf)
 SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap)
 
 # Search something to preview html
-SEARCH_PROG([for a HTML previewer],HTML_VIEWER, netscape)
+SEARCH_PROG([for a HTML previewer],HTML_VIEWER, "mozilla file://\$\$p\$\$i" netscape)
 
 # Search for a program to preview latex code
 SEARCH_PROG([for a LaTeX preview],LATEX_VIEWER, "xterm -e less")

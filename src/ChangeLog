@@ -1,3 +1,9 @@
+2002-10-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* converter.C (view): add support for $$i (file name) and $$p
+	(file path) for the viewer command. If $$i is not specified, then
+	it is appended to the command (for compatibility with old syntax)
+
 2002-10-14  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): alter the order in which the
