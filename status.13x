@@ -24,6 +24,9 @@ What's new
 
 - add Proof layout to elsart class
 
+- add a bit of documentation of the AGU journals support in the
+  Extended manual
+
 ** Bug fixes
 
 - fix possible crash when changing text class [bug #1050]
@@ -56,6 +59,9 @@ What's new
 
 - do not write in preference file the colors which are still at their
   default value [bug #1069, Qt only]
+
+- fix some cases where the View>TeX information dialog would get
+  confused because the same file gets listed several times
 
 - it was not possible to view the french versions of the Extended and
   Customization manual.

@@ -1,3 +1,9 @@
+2003-06-20  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/TeXFiles.sh (types): Generalise the sed that tries to
+	normalise paths /foo//bar ==> /foo/bar to work with arbitrary
+	'///' etc also.
+
 2003-06-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.m4: add some code to workaround zsh incompatibilities
