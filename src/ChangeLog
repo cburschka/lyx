@@ -1,5 +1,11 @@
 2003-04-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* messages.C: make case where setlocale cannot comply work better.
+
+	* buffer.C (updateDocLang): new function
+	(changeLanguage): use it
+	(readFile): use it
+
 	* text2.C (setCounter): use B_ a bit.
 
 	* lyxlayout.C (Read): be sure to trim the label strings.

@@ -88,11 +88,13 @@ public:
 	string const get(string const & m) const
 	{
 		char * old = strdup(setlocale(LC_ALL, 0));
-		setlocale(LC_ALL, lang_.c_str());
+		char * n = setlocale(LC_ALL, lang_.c_str());
 		const char* msg = gettext(m.c_str());
 		setlocale(LC_ALL, old);
 		free(old);
-		return string(msg);
+		// If we are unable to honour the request we just
+		// return what we got in.
+		return (!n ? m : string(msg));
 	}
 private:
 	///

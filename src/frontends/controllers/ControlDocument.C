@@ -95,10 +95,14 @@ void ControlDocument::setLanguage()
 	Language const * oldL = buffer()->params.language;
 	Language const * newL = bp_->language;
 
-	if (oldL != newL
-	    && oldL->RightToLeft() == newL->RightToLeft()
-	    && !lv_.buffer()->isMultiLingual())
-		lv_.buffer()->changeLanguage(oldL, newL);
+	if (oldL != newL) {
+		
+		if (oldL->RightToLeft() == newL->RightToLeft()
+		    && !lv_.buffer()->isMultiLingual())
+			lv_.buffer()->changeLanguage(oldL, newL);
+		else
+		    lv_.buffer()->updateDocLang(newL);
+	}
 }
 
 
