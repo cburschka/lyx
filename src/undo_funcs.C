@@ -143,6 +143,8 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			Inset * in = 0;
 			if (before)
 				in = before->inInset();
+			else if (undo->number_of_inset_id >= 0)
+				in = bv->buffer()->getInsetFromID(undo->number_of_inset_id);
 			tmppar4->setInsetOwner(in);
 			while (tmppar4->next()) {
 				tmppar4 = tmppar4->next();
@@ -185,14 +187,17 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			if (before)
 				before->next(tmppar3);
 			else
-				bv->text->ownerParagraph(tmppar3->id(),
-							 tmppar3);
+				bv->text->ownerParagraph(firstUndoParagraph(bv, undo->number_of_inset_id)->id(),
+				                         tmppar3);
 
 			tmppar3->previous(before);
 		} else {
-			// Do we really enter here ??? (Jug)
+			// We enter here on DELETE undo operations where we have to
+			// substitue the second paragraph with the first if the removed
+			// one is the first!
 			if (!before && behind) {
-				bv->text->ownerParagraph(behind);
+				bv->text->ownerParagraph(firstUndoParagraph(bv, undo->number_of_inset_id)->id(),
+				                         behind);
 				tmppar3 = behind;
 			}
 		}

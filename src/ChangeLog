@@ -1,3 +1,8 @@
+2002-03-07  Juergen Vigna  <jug@sad.it>
+
+	* undo_funcs.C (textHandleUndo): fix problems when the paragraph
+	got moved away with the DEPM and also set the inset_owner always
+	right which before could have been omitted.
 2002-03-07  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C (parseSingleLyXformat2Token): use default layout is the

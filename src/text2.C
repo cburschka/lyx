@@ -2326,7 +2326,8 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 					    LyXCursor const & old_cursor) const
 {
 	// Would be wrong to delete anything if we have a selection.
-	if (selection.set()) return false;
+	if (selection.set())
+		return false;
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (textclasslist[bview->buffer()->params.textclass][
