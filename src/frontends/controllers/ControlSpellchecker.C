@@ -123,9 +123,9 @@ bool isLetter(DocIterator const & cur)
 	return cur.inTexted()
 		&& cur.inset().allowSpellCheck()
 		&& cur.pos() != cur.lastpos()
-		&& (cur.paragraph().isLetter(cur.pos()) 
+		&& (cur.paragraph().isLetter(cur.pos())
 		    // We want to pass the ' and escape chars to ispell
-		    || contains(lyxrc.isp_esc_chars + '\'', 
+		    || contains(lyxrc.isp_esc_chars + '\'',
 				cur.paragraph().getChar(cur.pos())))
 		&& !isDeletedText(cur.paragraph(), cur.pos());
 }
@@ -147,22 +147,22 @@ WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
 				lang_code = cur.paragraph().getFontSettings(bp, cur.pos()).language()->code();
 			}
 			// Insets like optional hyphens and ligature
-			// break are part of a word. 
+			// break are part of a word.
 			if (!cur.paragraph().isInset(cur.pos())) {
-				Paragraph::value_type const c = 
+				Paragraph::value_type const c =
 					cur.paragraph().getChar(cur.pos());
 				word += c;
 				if (IsDigit(c))
 					ignoreword = true;
-			} 
+			}
 		} else { // !isLetter(cur)
-			if (inword) 
+			if (inword)
 				if (!ignoreword)
 					return WordLangTuple(word, lang_code);
 				else
 					inword = false;
 		}
-		
+
 		cur.forwardPos();
 		++progress;
 	}

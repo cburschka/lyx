@@ -316,7 +316,7 @@ void QPrefsDialog::updateConverters()
 	Converters::const_iterator ccit = form_->converters().begin();
 	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
-		std::string const name = ccit->From->prettyname() + " -> " 
+		std::string const name = ccit->From->prettyname() + " -> "
 			+ ccit->To->prettyname();
 		convertmod->convertersLB->insertItem(toqstr(name));
 	}
@@ -335,7 +335,7 @@ void QPrefsDialog::switch_converter(int nr)
 	convertersModule->converterToCO->setCurrentItem(form_->formats().getNumber(c.to));
 	convertersModule->converterED->setText(toqstr(c.command));
 	convertersModule->converterFlagED->setText(toqstr(c.flags));
-	
+
 	updateConverterButtons();
 }
 
@@ -354,18 +354,18 @@ void QPrefsDialog::updateConverterButtons()
 		convertersModule->converterToCO->currentItem()));
 	int const sel = form_->converters().getNumber(from.name(), to.name());
 	bool const known = !(sel < 0);
-	bool const valid = !(convertersModule->converterED->text().isEmpty() 
+	bool const valid = !(convertersModule->converterED->text().isEmpty()
 		|| from.name() == to.name());
-	
+
 	Converter const & c(form_->converters().get(
 		convertersModule->convertersLB->currentItem()));
 	string const old_command = c.command;
 	string const old_flag = c.flags;
 	string const new_command(fromqstr(convertersModule->converterED->text()));
 	string const new_flag(fromqstr(convertersModule->converterFlagED->text()));
-	
+
 	bool modified = ((old_command != new_command) || (old_flag != new_flag));
-	
+
 	convertersModule->converterModifyPB->setEnabled(valid && known && modified);
 	convertersModule->converterNewPB->setEnabled(valid && !known);
 	convertersModule->converterRemovePB->setEnabled(known);

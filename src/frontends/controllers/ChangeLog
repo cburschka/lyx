@@ -31,7 +31,7 @@
 
 2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* ControlRef.C (gotoRef, gotoBookmark): 
+	* ControlRef.C (gotoRef, gotoBookmark):
 	* Kernel.C (dispatch): remove verbose argument
 
 	* ControlCommandBuffer.C (dispatch): set origin of the lfun to

@@ -153,7 +153,7 @@ void QVSpace::build_dialog()
 
 	// initialize the length validator
 	addCheckedLineEdit(bcview(), dialog_->valueLE, dialog_->valueL);
-	
+
 	// remove the %-items from the unit choice
 	dialog_->unitCO->noPercents();
 }

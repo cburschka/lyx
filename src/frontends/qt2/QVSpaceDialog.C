@@ -51,7 +51,7 @@ QVSpaceDialog::QVSpaceDialog(QVSpace * form)
 		form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
-		
+
 	valueLE->setValidator(unsignedLengthValidator(valueLE));
 }
 

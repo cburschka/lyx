@@ -178,7 +178,7 @@ void GBox::update()
 			if (special == ids_spec_[i])
 				spc = gui_names_spec_[i];
 		}
-		for (size_t j = 0; j 
+		for (size_t j = 0; j
 			< widthunitsstore_->children().size(); ++j) {
 			if (widthunitsstore_->children()[j][stringcol_] == spc)
 				widthunitscombo_->set_active(j);

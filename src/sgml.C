@@ -153,8 +153,8 @@ string cleanID(Buffer const & buf, OutputParams const & runparams, std::string c
 	// make sure it starts with a letter
 	if (!isalpha(*it) && allowed.find(*it) >= allowed.size())
 		content += "x";
-	
-	bool mangle = false;	
+
+	bool mangle = false;
 	for (; it != end; ++it) {
 		char c = *it;
 		if (isalpha(c) || isdigit(c) || c == '-' || c == '.' || allowed.find(c) < allowed.size())

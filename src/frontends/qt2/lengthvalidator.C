@@ -40,7 +40,7 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 		return (isValidGlueLength(text, &gl)) ?
 			QValidator::Acceptable : QValidator::Intermediate;
 		}
-		
+
 	LyXLength l;
 	bool const valid_length = isValidLength(text, &l);
 	if (!valid_length)

@@ -167,13 +167,13 @@ void layoutSelected(LyXView & lv, string const & name)
 		string const & itname = (*it)->name();
 		// Yes, the _() is correct
 		if (_(itname) == name) {
-			FuncRequest const func(LFUN_LAYOUT, itname, 
+			FuncRequest const func(LFUN_LAYOUT, itname,
 					       FuncRequest::UI);
 			lv.getLyXFunc().dispatch(func);
 			return;
 		}
 	}
-	lyxerr << "ERROR (layoutSelected): layout not found!" 
+	lyxerr << "ERROR (layoutSelected): layout not found!"
 	       << endl;
 }
 

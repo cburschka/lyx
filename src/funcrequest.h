@@ -27,10 +27,10 @@ class FuncRequest {
 public:
 	/// Where the request came from
 	enum Origin {
-		INTERNAL, 
+		INTERNAL,
 		UI, // The menu or the toolbar
 		KEYBOARD, // a keyboard binding
-		COMMANDBUFFER 
+		COMMANDBUFFER
 	};
 
 	/// just for putting these things in std::container
@@ -38,13 +38,13 @@ public:
 	/// actions without extra argument
 	explicit FuncRequest(kb_action act, Origin o = INTERNAL);
 	/// actions without extra argument
-	FuncRequest(kb_action act, int x, int y, mouse_button::state button, 
-		    Origin o = INTERNAL); 
+	FuncRequest(kb_action act, int x, int y, mouse_button::state button,
+		    Origin o = INTERNAL);
 	/// actions with extra argument
-	FuncRequest(kb_action act, std::string const & arg, 
+	FuncRequest(kb_action act, std::string const & arg,
 		    Origin o = INTERNAL);
 	/// for changing requests a bit
-	FuncRequest(FuncRequest const & cmd, std::string const & arg, 
+	FuncRequest(FuncRequest const & cmd, std::string const & arg,
 		    Origin o = INTERNAL);
 
 	/// access to button

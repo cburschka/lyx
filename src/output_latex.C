@@ -195,16 +195,16 @@ TeXEnvironment(Buffer const & buf,
 }
 
 
-int latexOptArgInsets(Buffer const & buf, Paragraph const & par, 
+int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
 		      ostream & os, OutputParams const & runparams, int number)
 {
 	int lines = 0;
-	
+
 	InsetList::const_iterator it = par.insetlist.begin();
 	InsetList::const_iterator end = par.insetlist.end();
 	for (; it != end && number > 0 ; ++it) {
 		if (it->inset->lyxCode() == InsetBase::OPTARG_CODE) {
-			InsetOptArg * ins = 
+			InsetOptArg * ins =
 				static_cast<InsetOptArg *>(it->inset);
 			lines += ins->latexOptional(buf, os, runparams);
 			--number;
@@ -313,7 +313,7 @@ TeXOnePar(Buffer const & buf,
 
 		// Separate handling of optional argument inset.
 		if (style->optionalargs > 0) {
-			int ret = latexOptArgInsets(buf, *pit, os, runparams, 
+			int ret = latexOptArgInsets(buf, *pit, os, runparams,
 						    style->optionalargs);
 			while (ret > 0) {
 				texrow.newline();

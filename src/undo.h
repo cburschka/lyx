@@ -45,7 +45,7 @@ structure ('Undo') _before_ it is changed in some edit operation.
 Obviously, the stored ranged should be as small as possible. However, it
 there is a lower limit: The StableDocIterator pointing stored in the undo
 struct must be valid after the changes, too, as it will used as a pointer
-where to insert the stored bits when performining undo. 
+where to insert the stored bits when performining undo.
 
 */
 
@@ -70,7 +70,7 @@ struct Undo {
 	undo_kind kind;
 	/// the position of the cursor
 	StableDocIterator cursor;
-	/// the position of the cell described 
+	/// the position of the cell described
 	StableDocIterator cell;
 	/// counted from begin of cell
 	lyx::pit_type from;

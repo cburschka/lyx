@@ -48,7 +48,7 @@ std::ostream & operator<<(std::ostream & os, Undo const & undo)
 
 
 void recordUndo(Undo::undo_kind kind,
-	DocIterator & cell, 
+	DocIterator & cell,
 	pit_type first_pit, pit_type last_pit,
 	DocIterator & cur,
 	limited_stack<Undo> & stack)
@@ -185,7 +185,7 @@ bool textUndoOrRedo(BufferView & bv,
 
 	// If both places have the same depth we stay in the same
 	// cell and store paragraphs from this cell. Otherwise we
-	// will drop slices from the more nested iterator and 
+	// will drop slices from the more nested iterator and
 	// create an undo item from a single paragraph of the common
 	// ancestor.
 	DocIterator ancestor_dit = cur_dit;
