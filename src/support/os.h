@@ -22,23 +22,23 @@ public:
 	static void init(int * argc, char ** argv[]);
 
 	// 
-	static string binpath() {return binpath_;};
+	static string binpath() {return binpath_;}
 
 	// 
-	static string binname() {return binname_;};
+	static string binname() {return binname_;}
 
 	// system_tempdir actually doesn't belong here.
 	// I put it here only to avoid a global variable.
-	static void setTmpDir(string p) {tmpdir_ = p;};
+	static void setTmpDir(string p) {tmpdir_ = p;}
 
 	// 
-	static string getTmpDir() {return tmpdir_;};
+	static string getTmpDir() {return tmpdir_;}
 
 	// 
 	static string current_root();
 
 	// 
-	static os::shell_type shell() {return _shell;};
+	static os::shell_type shell() {return _shell;}
 
 	// DBCS aware!
 	static string::size_type common_path(string const &p1,
