@@ -16,7 +16,7 @@
 
 #include "insetcaption.h"
 #include "frontends/Painter.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "BufferView.h"
 #include "FloatList.h"
 #include "insets/insetfloat.h"
@@ -89,7 +89,7 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 	string const label = _(fl) + " " + num + ":";
 
 	Painter & pain = bv->painter();
-	int const w = lyxfont::width(label, f);
+	int const w = font_metrics::width(label, f);
 	pain.text(int(x), baseline, label, f);
 	x += w;
 

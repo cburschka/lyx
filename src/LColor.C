@@ -13,8 +13,6 @@
 #pragma implementation
 #endif
 
-#include <X11/Xlib.h>
-
 #include "debug.h"
 #include "LColor.h"
 #include "support/LAssert.h"

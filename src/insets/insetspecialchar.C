@@ -18,7 +18,7 @@
 #include "LaTeXFeatures.h"
 #include "BufferView.h"
 #include "frontends/Painter.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "lyxlex.h"
 #include "lyxfont.h"
 
@@ -37,13 +37,13 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 
 int InsetSpecialChar::ascent(BufferView *, LyXFont const & font) const
 {
-	return lyxfont::maxAscent(font);
+	return font_metrics::maxAscent(font);
 }
 
 
 int InsetSpecialChar::descent(BufferView *, LyXFont const & font) const
 {
-	return lyxfont::maxDescent(font);
+	return font_metrics::maxDescent(font);
 }
 
 
@@ -52,30 +52,30 @@ int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
 	switch (kind_) {
 	case HYPHENATION:
 	{
-		int w = lyxfont::width('-', font);
-		if (w > 5)
+		int w = font_metrics::width('-', font);
+		if (w > 5) 
 			w -= 2; // to make it look shorter
 		return w;
 	}
 	case LIGATURE_BREAK:
 	{
-		return lyxfont::width('|', font);
+		return font_metrics::width('|', font);
 	}
 	case END_OF_SENTENCE:
 	{
-		return lyxfont::width('.', font);
+		return font_metrics::width('.', font);
 	}
 	case LDOTS:
 	{
-		return lyxfont::width(". . .", font);
+		return font_metrics::width(". . .", font);
 	}
 	case MENU_SEPARATOR:
 	{
-		return lyxfont::width(" x ", font);
+		return font_metrics::width(" x ", font);
 	}
 	case PROTECTED_SEPARATOR:
 	{
-		return lyxfont::width('x', font);
+		return font_metrics::width('x', font);
 	}
 
 	}
@@ -121,9 +121,9 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 	case MENU_SEPARATOR:
 	{
 		// A triangle the width and height of an 'x'
-		int w = lyxfont::width('x', font);
-		int ox = lyxfont::width(' ', font) + int(x);
-		int h = lyxfont::ascent('x', font);
+		int w = font_metrics::width('x', font);
+		int ox = font_metrics::width(' ', font) + int(x);
+		int h = font_metrics::ascent('x', font);
 		int xp[4], yp[4];
 
 		xp[0] = ox;	yp[0] = baseline;
@@ -138,7 +138,7 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 	case PROTECTED_SEPARATOR:
 	{
 		float w = width(bv, font);
-		int h = lyxfont::ascent('x', font);
+		int h = font_metrics::ascent('x', font);
 		int xp[4], yp[4];
 
 		xp[0] = int(x);

@@ -15,7 +15,7 @@
 #endif
 
 #include "BufferView.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "lyxfont.h"
 #include "gettext.h"
 #include "inseterror.h"
@@ -36,7 +36,7 @@ int InsetError::ascent(BufferView *, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
-	return lyxfont::maxAscent(efont) + 1;
+	return font_metrics::maxAscent(efont) + 1;
 }
 
 
@@ -44,7 +44,7 @@ int InsetError::descent(BufferView *, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
-	return lyxfont::maxDescent(efont) + 1;
+	return font_metrics::maxDescent(efont) + 1;
 }
 
 
@@ -52,7 +52,7 @@ int InsetError::width(BufferView *, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
-	return 6 + lyxfont::width(_("Error"), efont);
+	return 6 + font_metrics::width(_("Error"), efont);
 }
 
 

@@ -29,7 +29,7 @@
 #include "lyxtext.h"
 #include "lyxcursor.h"
 #include "CutAndPaste.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "LColor.h"
 #include "lyxrow.h"
 #include "lyxrc.h"
@@ -1808,9 +1808,9 @@ void InsetText::toggleInsetCursor(BufferView * bv)
 
 	LyXFont const font(getLyXText(bv)->getFont(bv->buffer(), cpar(bv), cpos(bv)));
 
-	int const asc = lyxfont::maxAscent(font);
-	int const desc = lyxfont::maxDescent(font);
-
+	int const asc = font_metrics::maxAscent(font);
+	int const desc = font_metrics::maxDescent(font);
+  
 	if (isCursorVisible())
 		bv->hideLockedInsetCursor();
 	else
@@ -1828,9 +1828,9 @@ void InsetText::showInsetCursor(BufferView * bv, bool show)
 	if (!isCursorVisible()) {
 		LyXFont const font =
 			getLyXText(bv)->getFont(bv->buffer(), cpar(bv), cpos(bv));
-
-		int const asc = lyxfont::maxAscent(font);
-		int const desc = lyxfont::maxDescent(font);
+	
+		int const asc = font_metrics::maxAscent(font);
+		int const desc = font_metrics::maxDescent(font);
 
 		bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc);
 		if (show)
@@ -1859,9 +1859,9 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 	}
 	LyXFont const font =
 		getLyXText(bv)->getFont(bv->buffer(), cpar(bv), cpos(bv));
-
-	int const asc = lyxfont::maxAscent(font);
-	int const desc = lyxfont::maxDescent(font);
+	
+	int const asc = font_metrics::maxAscent(font);
+	int const desc = font_metrics::maxDescent(font);
 
 	if (bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc))
 		need_update |= FULL;

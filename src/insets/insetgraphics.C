@@ -88,7 +88,7 @@ TODO Before initial production release:
 #include "converter.h"
 #include "frontends/Painter.h"
 #include "lyxrc.h"
-#include "font.h"    // For the lyxfont class.
+#include "frontends/font_metrics.h"
 #include "debug.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -263,13 +263,13 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 		string const justname = OnlyFilename (params().filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			font_width = lyxfont::width(justname, msgFont);
+			font_width = font_metrics::width(justname, msgFont);
 		}
 
 		string const msg = statusMessage();
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
-			int const msg_width = lyxfont::width(msg, msgFont);
+			int const msg_width = font_metrics::width(msg, msgFont);
 			font_width = std::max(font_width, msg_width);
 		}
 
@@ -328,8 +328,8 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		string const justname = OnlyFilename (params().filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			paint.text(old_x + 8,
-				   baseline - lyxfont::maxAscent(msgFont) - 4,
+			paint.text(old_x + 8, 
+				   baseline - font_metrics::maxAscent(msgFont) - 4,
 				   justname, msgFont);
 		}
 

@@ -7,8 +7,8 @@
 #include "math_charinset.h"
 #include "LColor.h"
 #include "frontends/Painter.h"
+#include "frontends/font_metrics.h"
 #include "support/LOstream.h"
-#include "font.h"
 #include "debug.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
@@ -67,7 +67,7 @@ void MathCharInset::metrics(MathMetricsInfo const & mi) const
 	whichFont(font_, code_, mi);
 	mathed_char_dim(font_, char_, ascent_, descent_, width_);
 	if (isBinaryOp(char_, code_))
-		width_ += 2 * lyxfont::width(' ', font_);
+		width_ += 2 * font_metrics::width(' ', font_);
 }
 
 
@@ -75,7 +75,7 @@ void MathCharInset::draw(Painter & pain, int x, int y) const
 {
 	//lyxerr << "drawing '" << char_ << "' code: " << code_ << endl;
 	if (isBinaryOp(char_, code_))
-		x += lyxfont::width(' ', font_);
+		x += font_metrics::width(' ', font_);
 	drawChar(pain, font_, x, y, char_);
 }
 

@@ -23,7 +23,7 @@
 #include "frontends/WorkArea.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "font.h"
+#include "font_metrics.h"
 #include "insets/insettext.h"
 #include "ColorHandler.h"
 #include "language.h"
@@ -241,8 +241,8 @@ void LyXScreen::showCursor(LyXText const * text, BufferView const * bv)
 			shape = (text->real_current_font.isVisibleRightToLeft())
 				? REVERSED_L_SHAPE : L_SHAPE;
 		showManualCursor(text, text->cursor.x(), text->cursor.y(),
-				 lyxfont::maxAscent(text->real_current_font),
-				 lyxfont::maxDescent(text->real_current_font),
+				 font_metrics::maxAscent(text->real_current_font),
+				 font_metrics::maxDescent(text->real_current_font),
 				 shape);
 	}
 }

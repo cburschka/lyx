@@ -11,7 +11,7 @@
 #include "gettext.h"
 #include "lyxtext.h"
 #include "lyxrc.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
 #include "lyxtextclasslist.h"
 
@@ -353,7 +353,7 @@ string const bibitemWidest(Buffer const * buffer)
 	while (par) {
 		if (par->bibkey) {
 			int const wx =
-				lyxfont::width(par->bibkey->getBibLabel(),
+				font_metrics::width(par->bibkey->getBibLabel(),
 					       font);
 			if (wx > w) {
 				w = wx;

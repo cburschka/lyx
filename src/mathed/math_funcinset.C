@@ -5,7 +5,7 @@
 #endif
 
 #include "math_funcinset.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"

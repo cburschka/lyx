@@ -23,7 +23,7 @@
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "frontends/Painter.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "lyxtext.h"
 #include "frontends/LyXView.h"
 #include "insets/insettext.h"
@@ -1428,10 +1428,10 @@ void InsetTabular::toggleInsetCursor(BufferView * bv)
 	}
 
 	LyXFont font; // = the_locking_inset->GetFont(par, cursor.pos);
-
-	int const asc = lyxfont::maxAscent(font);
-	int const desc = lyxfont::maxDescent(font);
-
+	
+	int const asc = font_metrics::maxAscent(font);
+	int const desc = font_metrics::maxDescent(font);
+	
 	if (isCursorVisible())
 		bv->hideLockedInsetCursor();
 	else
@@ -1446,9 +1446,9 @@ void InsetTabular::showInsetCursor(BufferView * bv, bool show)
 		return;
 	if (!isCursorVisible()) {
 		LyXFont font; // = GetFont(par, cursor.pos);
-
-		int const asc = lyxfont::maxAscent(font);
-		int const desc = lyxfont::maxDescent(font);
+	
+		int const asc = font_metrics::maxAscent(font);
+		int const desc = font_metrics::maxDescent(font);
 		bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
 		if (show)
 			bv->showLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
@@ -1476,10 +1476,11 @@ void InsetTabular::fitInsetCursor(BufferView * bv) const
 		return;
 	}
 	LyXFont font;
-
-	int const asc = lyxfont::maxAscent(font);
-	int const desc = lyxfont::maxDescent(font);
+	
+	int const asc = font_metrics::maxAscent(font);
+	int const desc = font_metrics::maxDescent(font);
 	resetPos(bv);
+
 	if (bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc))
 		need_update = FULL;
 }

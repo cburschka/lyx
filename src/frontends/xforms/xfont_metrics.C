@@ -15,7 +15,7 @@
 #endif
 
 #include "support/lstrings.h"
-#include "font.h"
+#include "xfont_metrics.h"
 #include "FontLoader.h"
 #include "lyxrc.h"
 #include "encoding.h"
@@ -41,19 +41,19 @@ XID getFontID(LyXFont const & f)
 
 } // namespace anon
 
-int lyxfont::maxAscent(LyXFont const & f)
+int font_metrics::maxAscent(LyXFont const & f)
 {
 	return getXFontstruct(f)->ascent;
 }
 
 
-int lyxfont::maxDescent(LyXFont const & f)
+int font_metrics::maxDescent(LyXFont const & f)
 {
 	return getXFontstruct(f)->descent;
 }
 
 
-int lyxfont::ascent(char c, LyXFont const & f)
+int font_metrics::ascent(char c, LyXFont const & f)
 {
 	XFontStruct * finfo = getXFontstruct(f);
 	unsigned int uc = static_cast<unsigned char>(c);
@@ -66,7 +66,7 @@ int lyxfont::ascent(char c, LyXFont const & f)
 }
 
 
-int lyxfont::descent(char c, LyXFont const & f)
+int font_metrics::descent(char c, LyXFont const & f)
 {
 	XFontStruct * finfo = getXFontstruct(f);
 	unsigned int uc = static_cast<unsigned char>(c);
@@ -79,7 +79,7 @@ int lyxfont::descent(char c, LyXFont const & f)
 }
 
 
-int lyxfont::lbearing(char c, LyXFont const & f)
+int font_metrics::lbearing(char c, LyXFont const & f)
 {
 	XFontStruct * finfo = getXFontstruct(f);
 	unsigned int uc = static_cast<unsigned char>(c);
@@ -92,7 +92,7 @@ int lyxfont::lbearing(char c, LyXFont const & f)
 }
 
 
-int lyxfont::rbearing(char c, LyXFont const & f)
+int font_metrics::rbearing(char c, LyXFont const & f)
 {
 	XFontStruct * finfo = getXFontstruct(f);
 	unsigned int uc = static_cast<unsigned char>(c);
@@ -105,7 +105,20 @@ int lyxfont::rbearing(char c, LyXFont const & f)
 }
 
 
-int lyxfont::width(char const * s, size_t n, LyXFont const & f)
+int font_metrics::width(char c, LyXFont const & f)
+{ 
+	return width(&c, 1, f);
+}
+
+
+int font_metrics::width(string const & s, LyXFont const & f)
+{
+	if (s.empty()) return 0;
+	return width(s.data(), s.length(), f);
+}
+ 
+ 
+int font_metrics::width(char const * s, size_t n, LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return n;
@@ -150,7 +163,7 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 }
 
 
-int lyxfont::signedWidth(string const & s, LyXFont const & f)
+int font_metrics::signedWidth(string const & s, LyXFont const & f)
 {
 	if (s.empty())
 		return 0;
@@ -161,8 +174,8 @@ int lyxfont::signedWidth(string const & s, LyXFont const & f)
 }
 
 
-//int lyxfont::width(wstring const & s, int n, LyXFont const & f)
-int lyxfont::width(XChar2b const * s, int n, LyXFont const & f)
+//int font_metrics::width(wstring const & s, int n, LyXFont const & f)
+int font_metrics::width(XChar2b const * s, int n, LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return n;
@@ -192,43 +205,43 @@ int lyxfont::width(XChar2b const * s, int n, LyXFont const & f)
 	}
 }
 
-int lyxfont::XTextWidth(LyXFont const & f, char const * str, int count)
+int font_metrics::XTextWidth(LyXFont const & f, char const * str, int count)
 {
 	return ::XTextWidth(getXFontstruct(f), str, count);
 }
 
 
-int lyxfont::XTextWidth16(LyXFont const & f, XChar2b const * str, int count)
+int font_metrics::XTextWidth16(LyXFont const & f, XChar2b const * str, int count)
 {
 	return ::XTextWidth16(getXFontstruct(f), str, count);
 }
 
 
-void lyxfont::XSetFont(Display * display, GC gc, LyXFont const & f)
+void font_metrics::XSetFont(Display * display, GC gc, LyXFont const & f)
 {
 	::XSetFont(display, gc, getFontID(f));
 }
 
 
-void lyxfont::rectText(string const & str, LyXFont const & font,
+void font_metrics::rectText(string const & str, LyXFont const & font,
 	      int & width, int & ascent, int & descent)
 {
 	static int const d = 2;
-	width = lyxfont::width(str, font) + d * 2 + 2;
-	ascent = lyxfont::maxAscent(font) + d;
-	descent = lyxfont::maxDescent(font) + d;
+	width = font_metrics::width(str, font) + d * 2 + 2;
+	ascent = font_metrics::maxAscent(font) + d;
+	descent = font_metrics::maxDescent(font) + d;
 }
 
 
 
-void lyxfont::buttonText(string const & str, LyXFont const & font,
+void font_metrics::buttonText(string const & str, LyXFont const & font,
 		int & width, int & ascent, int & descent)
 {
 	static int const d = 3;
 
-	width = lyxfont::width(str, font) + d * 2 + 2;
-	ascent = lyxfont::maxAscent(font) + d;
-	descent = lyxfont::maxDescent(font) + d;
+	width = font_metrics::width(str, font) + d * 2 + 2;
+	ascent = font_metrics::maxAscent(font) + d;
+	descent = font_metrics::maxDescent(font) + d;
 }
 
 

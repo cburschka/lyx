@@ -26,7 +26,7 @@
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "frontends/Painter.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
@@ -2145,7 +2145,7 @@ float LyXText::getCursorX(BufferView * bview, Row * row,
 		pos_type pos = vis2log(vpos);
 		if (main_body > 0 && pos == main_body - 1) {
 			x += fill_label_hfill +
-				lyxfont::width(textclasslist[
+				font_metrics::width(textclasslist[
 						       bview->buffer()->params.textclass][
 					row->par()->layout()]
 					       .labelsep,

@@ -5,7 +5,6 @@
 #endif
 
 #include "math_unknowninset.h"
-#include "font.h"
 #include "frontends/Painter.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"

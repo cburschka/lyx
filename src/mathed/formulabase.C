@@ -35,7 +35,7 @@
 #include "support/lstrings.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "Lsstream.h"
 #include "math_arrayinset.h"
 #include "math_charinset.h"

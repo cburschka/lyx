@@ -18,7 +18,7 @@
 #include "debug.h"
 #include "lyxfont.h"
 #include "WorkArea.h"
-#include "font.h"
+#include "xfont_metrics.h"
 #include "ColorHandler.h"
 #include "lyxrc.h"
 #include "encoding.h"
@@ -220,7 +220,7 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 
 	GC gc = lyxColorHandler->getGCForeground(f.realColor());
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		lyxfont::XSetFont(display(), gc, f);
+		font_metrics::XSetFont(display(), gc, f);
 		XDrawString(display(), owner.getPixmap(), gc, x, y, s, ls);
 	} else {
 		LyXFont smallfont(f);
@@ -229,21 +229,21 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 		for (size_t i = 0; i < ls; ++i) {
 			char const c = uppercase(s[i]);
 			if (c != s[i]) {
-				lyxfont::XSetFont(display(), gc, smallfont);
+				font_metrics::XSetFont(display(), gc, smallfont);
 				XDrawString(display(), owner.getPixmap(), gc,
 					    tmpx, y, &c, 1);
-				tmpx += lyxfont::XTextWidth(smallfont, &c, 1);
+				tmpx += font_metrics::XTextWidth(smallfont, &c, 1);
 			} else {
-				lyxfont::XSetFont(display(), gc, f);
+				font_metrics::XSetFont(display(), gc, f);
 				XDrawString(display(), owner.getPixmap(), gc,
 					    tmpx, y, &c, 1);
-				tmpx += lyxfont::XTextWidth(f, &c, 1);
+				tmpx += font_metrics::XTextWidth(f, &c, 1);
 			}
 		}
 	}
 
 	if (f.underbar() == LyXFont::ON) {
-		underline(f, x, y, lyxfont::width(s, ls, f));
+		underline(f, x, y, font_metrics::width(s, ls, f));
 	}
 
 	return *this;
@@ -255,7 +255,7 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 {
 	GC gc = lyxColorHandler->getGCForeground(f.realColor());
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		lyxfont::XSetFont(display(), gc, f);
+		font_metrics::XSetFont(display(), gc, f);
 		XDrawString16(display(), owner.getPixmap(), gc, x, y, s, ls);
 	} else {
 		LyXFont smallfont(f);
@@ -270,21 +270,21 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 				c.byte2 = uppercase(s[i].byte2);
 			}
 			if (c.byte2 != s[i].byte2) {
-				lyxfont::XSetFont(display(), gc, smallfont);
+				font_metrics::XSetFont(display(), gc, smallfont);
 				XDrawString16(display(), owner.getPixmap(), gc,
 					      tmpx, y, &c, 1);
-				tmpx += lyxfont::XTextWidth16(smallfont, &c, 1);
+				tmpx += font_metrics::XTextWidth16(smallfont, &c, 1);
 			} else {
-				lyxfont::XSetFont(display(), gc, f);
+				font_metrics::XSetFont(display(), gc, f);
 				XDrawString16(display(), owner.getPixmap(), gc,
 					      tmpx, y, &c, 1);
-				tmpx += lyxfont::XTextWidth16(f, &c, 1);
+				tmpx += font_metrics::XTextWidth16(f, &c, 1);
 			}
 		}
 	}
 
 	if (f.underbar() == LyXFont::ON) {
-		underline(f, x, y, lyxfont::width(s, ls, f));
+		underline(f, x, y, font_metrics::width(s, ls, f));
 	}
 
 	return *this;
@@ -293,8 +293,8 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 
 void Painter::underline(LyXFont const & f, int x, int y, int width)
 {
-	int const below = max(lyxfont::maxDescent(f) / 2, 2);
-	int const height = max((lyxfont::maxDescent(f) / 4) - 1, 1);
+	int const below = max(font_metrics::maxDescent(f) / 2, 2);
+	int const height = max((font_metrics::maxDescent(f) / 4) - 1, 1);
 	if (height < 2)
 		line(x, y + below, x + width, y + below, f.color());
 	else

@@ -22,72 +22,53 @@
 
 class LyXFont;
 
+namespace font_metrics {
 //namespace lyx {
 //namespace font {
 ///
-struct lyxfont {
+//istruct lyxfont {
 	///
-	static
 	int maxAscent(LyXFont const & f);
 	///
-	static
 	int maxDescent(LyXFont const & f);
 	///
-	static
 	int ascent(char c, LyXFont const & f);
 	///
-	static
 	int descent(char c, LyXFont const & f);
 	///
-	static
 	int lbearing(char c, LyXFont const & f);
 	///
-	static
 	int rbearing(char c, LyXFont const & f);
 	///
-	static
-	int width(char c, LyXFont const & f) {
-		return width(&c, 1, f);
-	}
-	///
-	static
 	int width(char const * s, size_t n, LyXFont const & f);
 	///
-	static
-	int width(string const & s, LyXFont const & f) {
-		if (s.empty()) return 0;
-		return width(s.data(), s.length(), f);
-	}
+	int width(char c, LyXFont const & f);
+	///
+	int width(string const & s, LyXFont const & f);
 	///
 	//static
 	//int width(char const * s, LyXFont const & f) {
 	//	return width(s, strlen(s), f);
 	//}
 	///
-	static
 	int signedWidth(string const & s, LyXFont const & f);
 	///
-	static
 	int XTextWidth(LyXFont const & f, char const * str, int count);
 	///
-	static
 	int width(XChar2b const * s, int n, LyXFont const & f);
 	///
-	static
 	int XTextWidth16(LyXFont const & f, XChar2b const * str, int count);
 	///
-	static
 	void XSetFont(Display * display, GC gc, LyXFont const & f);
 	// A couple of more high-level metrics
 	///
-	static
 	void rectText(string const & str, LyXFont const & font,
 		      int & width, int & ascent, int & descent);
 	///
-	static
 	void buttonText(string const & str, LyXFont const & font,
 			int & width, int & ascent, int & descent);
-};
+//};
+}
 
 //} // end of namespace font
 

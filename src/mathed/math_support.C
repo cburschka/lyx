@@ -5,7 +5,7 @@
 #include "math_support.h"
 #include "lyxfont.h"
 #include "FontLoader.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "math_cursor.h"
 #include "math_defs.h"
 #include "math_inset.h"
@@ -559,27 +559,27 @@ deco_struct const * search_deco(string const & name)
 void mathed_char_dim(LyXFont const & font,
 	unsigned char c, int & asc, int & des, int & wid)
 {
-	des = lyxfont::descent(c, font);
-	asc = lyxfont::ascent(c, font);
+	des = font_metrics::descent(c, font);
+	asc = font_metrics::ascent(c, font);
 	wid = mathed_char_width(font, c);
 }
 
 
 int mathed_char_ascent(LyXFont const & font, unsigned char c)
 {
-	return lyxfont::ascent(c, font);
+	return font_metrics::ascent(c, font);
 }
 
 
 int mathed_char_descent(LyXFont const & font, unsigned char c)
 {
-	return lyxfont::descent(c, font);
+	return font_metrics::descent(c, font);
 }
 
 
 int mathed_char_width(LyXFont const & font, unsigned char c)
 {
-	return lyxfont::width(c, font);
+	return font_metrics::width(c, font);
 }
 
 
@@ -588,16 +588,16 @@ void mathed_string_dim(LyXFont const & font,
 {
 	asc = des = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
-		des = max(des, lyxfont::descent(*it, font));
-		asc = max(asc, lyxfont::ascent(*it, font));
+		des = max(des, font_metrics::descent(*it, font));
+		asc = max(asc, font_metrics::ascent(*it, font));
 	}
-	wid = lyxfont::width(s, font);
+	wid = font_metrics::width(s, font);
 }
 
 
 int mathed_string_width(LyXFont const & font, string const & s)
 {
-	return lyxfont::width(s, font);
+	return font_metrics::width(s, font);
 }
 
 
@@ -605,7 +605,7 @@ int mathed_string_ascent(LyXFont const & font, string const & s)
 {
 	int asc = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it)
-		asc = max(asc, lyxfont::ascent(*it, font));
+		asc = max(asc, font_metrics::ascent(*it, font));
 	return asc;
 }
 
@@ -614,7 +614,7 @@ int mathed_string_descent(LyXFont const & font, string const & s)
 {
 	int des = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it)
-		des = max(des, lyxfont::descent(*it, font));
+		des = max(des, font_metrics::descent(*it, font));
 	return des;
 }
 
@@ -734,8 +734,8 @@ void smallerStyleFrac(MathMetricsInfo & st)
 
 void math_font_max_dim(LyXFont const & font, int & asc, int & des)
 {
-	asc = lyxfont::maxAscent(font);
-	des = lyxfont::maxDescent(font);
+	asc = font_metrics::maxAscent(font);
+	des = font_metrics::maxDescent(font);
 }
 
 

@@ -14,7 +14,6 @@
 #include "commandtags.h"
 #include "lyxfunc.h"
 #include "debug.h"
-#include "font.h"
 #include "bufferview_funcs.h"
 #include "TextCache.h"
 #include "bufferlist.h"

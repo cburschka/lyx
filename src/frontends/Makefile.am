@@ -36,5 +36,6 @@ libfrontends_la_SOURCES = \
 	LyXView.h \
 	WorkArea.C \
 	WorkArea.h \
+	font_metrics.h \
 	screen.C \
 	screen.h

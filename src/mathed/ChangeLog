@@ -1,3 +1,12 @@
+2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* formulabase.C:
+	* formulamacro.C:
+	* math_charinset.C:
+	* math_funcinset.C:
+	* math_support.C:
+	* math_unknowninset.C: new name for font metrics
+ 
 2002-05-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* math_autocorrect.C: include vector and add a using statement.
@@ -7,7 +16,6 @@
 	* math_autocorrect.[Ch]: new "auto correction" feature
 	* math_cursor.[Ch]: subsequent changes
 	* math_parser.C: somewhat better error reporting
-
 
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 

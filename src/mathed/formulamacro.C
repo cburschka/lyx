@@ -28,7 +28,7 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "frontends/Painter.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "support/lyxlib.h"
 #include "support/LOstream.h"
 #include "debug.h"
@@ -136,7 +136,7 @@ int InsetFormulaMacro::descent(BufferView *, LyXFont const &) const
 int InsetFormulaMacro::width(BufferView * bv, LyXFont const & f) const
 {
 	metrics(bv, f);
-	return 10 + lyxfont::width(prefix(), f) + par()->width();
+	return 10 + font_metrics::width(prefix(), f) + par()->width();
 }
 
 
@@ -189,7 +189,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	pain.text(x + 2, y, prefix(), font);
 
 	// formula
-	par()->draw(pain, x + lyxfont::width(prefix(), f) + 5, y);
+	par()->draw(pain, x + font_metrics::width(prefix(), f) + 5, y);
 	xx += w + 2;
 	xo_ = x;
 	yo_ = y;

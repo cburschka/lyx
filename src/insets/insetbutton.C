@@ -20,7 +20,7 @@
 #include "frontends/Painter.h"
 #include "support/LAssert.h"
 #include "lyxfont.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 
 using std::ostream;
 using std::endl;
@@ -38,10 +38,10 @@ int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 	int descent;
 	string const s = getScreenLabel(bv->buffer());
 
-	if (editable()) {
-		lyxfont::buttonText(s, font, width, ascent, descent);
+        if (editable()) {
+		font_metrics::buttonText(s, font, width, ascent, descent);
 	} else {
-		lyxfont::rectText(s, font, width, ascent, descent);
+		font_metrics::rectText(s, font, width, ascent, descent);
 	}
 
 	return ascent;
@@ -60,10 +60,10 @@ int InsetButton::descent(BufferView * bv, LyXFont const &) const
 	int descent;
 	string const s = getScreenLabel(bv->buffer());
 
-	if (editable()) {
-		lyxfont::buttonText(s, font, width, ascent, descent);
+        if (editable()) {
+		font_metrics::buttonText(s, font, width, ascent, descent);
 	} else {
-		lyxfont::rectText(s, font, width, ascent, descent);
+		font_metrics::rectText(s, font, width, ascent, descent);
 	}
 
 	return descent;
@@ -82,10 +82,10 @@ int InsetButton::width(BufferView * bv, LyXFont const &) const
 	int descent;
 	string const s = getScreenLabel(bv->buffer());
 
-	if (editable()) {
-		lyxfont::buttonText(s, font, width, ascent, descent);
+        if (editable()) {
+		font_metrics::buttonText(s, font, width, ascent, descent);
 	} else {
-		lyxfont::rectText(s, font, width, ascent, descent);
+		font_metrics::rectText(s, font, width, ascent, descent);
 	}
 
 	return width + 4;

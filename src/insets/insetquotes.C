@@ -23,7 +23,7 @@
 #include "frontends/Painter.h"
 #include "buffer.h"
 #include "debug.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "language.h"
 #include "lyxfont.h"
 #include "lyxrc.h"
@@ -186,13 +186,13 @@ string const InsetQuotes::dispString(Language const * loclang) const
 
 int InsetQuotes::ascent(BufferView *, LyXFont const & font) const
 {
-	return lyxfont::maxAscent(font);
+	return font_metrics::maxAscent(font);
 }
 
 
 int InsetQuotes::descent(BufferView *, LyXFont const & font) const
 {
-	return lyxfont::maxDescent(font);
+	return font_metrics::maxDescent(font);
 }
 
 
@@ -203,11 +203,11 @@ int InsetQuotes::width(BufferView *, LyXFont const & font) const
 
 	for (string::size_type i = 0; i < text.length(); ++i) {
 		if (text[i] == ' ')
-			w += lyxfont::width('i', font);
+			w += font_metrics::width('i', font);
 		else if (i == 0 || text[i] != text[i-1])
-			w += lyxfont::width(text[i], font);
+			w += font_metrics::width(text[i], font);
 		else
-			w += lyxfont::width(',', font);
+			w += font_metrics::width(',', font);
 	}
 
 	return w;

@@ -16,7 +16,7 @@
 #include "Painter.h"
 #include "lyxfont.h"
 #include "WorkArea.h"
-#include "font.h"
+#include "font_metrics.h"
 
 
 int PainterBase::paperMargin() const
@@ -97,7 +97,7 @@ PainterBase & PainterBase::rectText(int x, int baseline,
 	int ascent;
 	int descent;
 
-	lyxfont::rectText(str, font, width, ascent, descent);
+	font_metrics::rectText(str, font, width, ascent, descent);
 	rectangle(x, baseline - ascent, width, ascent + descent, frame);
 	fillRectangle(x + 1, baseline - ascent + 1, width - 1,
 		      ascent + descent - 1, back);
@@ -114,7 +114,7 @@ PainterBase & PainterBase::buttonText(int x, int baseline,
 	int ascent;
 	int descent;
 
-	lyxfont::buttonText(str, font, width, ascent, descent);
+	font_metrics::buttonText(str, font, width, ascent, descent);
 	button(x, baseline - ascent, width, descent + ascent);
 	text(x + 4, baseline, str, font);
 	return *this;

@@ -21,7 +21,7 @@
 #include "frontends/Painter.h"
 #include "debug.h"
 #include "lyxtext.h"
-#include "font.h"
+#include "frontends/font_metrics.h"
 #include "lyxlex.h"
 
 #include "insets/insettext.h"
@@ -113,7 +113,7 @@ int InsetCollapsable::ascent_collapsed() const
 	int width = 0;
 	int ascent = 0;
 	int descent = 0;
-	lyxfont::buttonText(label, labelfont, width, ascent, descent);
+	font_metrics::buttonText(label, labelfont, width, ascent, descent);
 	return ascent;
 }
 
@@ -123,7 +123,7 @@ int InsetCollapsable::descent_collapsed() const
 	int width = 0;
 	int ascent = 0;
 	int descent = 0;
-	lyxfont::buttonText(label, labelfont, width, ascent, descent);
+	font_metrics::buttonText(label, labelfont, width, ascent, descent);
 	return descent;
 }
 
@@ -134,7 +134,7 @@ int InsetCollapsable::width_collapsed() const
 	int width;
 	int ascent;
 	int descent;
-	lyxfont::buttonText(label, labelfont, width, ascent, descent);
+	font_metrics::buttonText(label, labelfont, width, ascent, descent);
 	return width + (2*TEXT_TO_INSET_OFFSET);
 }
 

@@ -114,8 +114,6 @@ lyx_SOURCES = \
 	encoding.h \
 	exporter.C \
 	exporter.h \
-	font.C \
-	font.h \
 	gettext.C \
 	gettext.h \
 	importer.C \
