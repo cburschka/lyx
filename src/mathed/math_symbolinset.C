@@ -56,6 +56,9 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 	}
 	if (isRelOp())
 		width_ += 6;
+	// seperate things a bit
+	if (sym_->draw.size() > 1)
+		width_ += 2;
 
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)
@@ -72,6 +75,8 @@ void MathSymbolInset::draw(MathPainterInfo & pi, int x, int y) const
 	//	<< "'\n";
 	if (isRelOp())
 		x += 3;
+	if (sym_->draw.size() > 1)
+		x += 1;
 	MathFontSetChanger dummy(pi.base, sym_->inset.c_str());
 	drawStr(pi, pi.base.font, x, y - h_, sym_->draw);
 }
@@ -173,5 +178,5 @@ void MathSymbolInset::write(WriteStream & os) const
 
 void MathSymbolInset::infoize(ostream & os) const
 {
-	os << '\\' << name();
+	os << "Symbol: " << name();
 }

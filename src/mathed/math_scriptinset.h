@@ -86,6 +86,8 @@ public:
 	void removeEmptyScripts();
 	/// make sure a script is accessible
 	void ensure(bool up);
+	///
+	void MathScriptInset::infoize(std::ostream & os) const;
 
 	// call these methods ...2 to make compaq cxx in anal mode happy...
 	/// suppresses empty braces if necessary
@@ -95,7 +97,6 @@ public:
 	virtual void maplize2(MathInset const * nuc, MapleStream & os) const;
 	virtual void mathematicize2(MathInset const * nuc, MathematicaStream & os) const;
 	virtual void mathmlize2(MathInset const * nuc, MathMLStream & os) const;
-
 public:
 	/// returns x offset for main part
 	int dxx(MathInset const * nuc) const;

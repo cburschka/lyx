@@ -261,7 +261,7 @@ void MathScriptInset::drawT(MathInset const * nuc, TextPainter & pain,
 
 bool MathScriptInset::hasLimits(MathInset const * nuc) const
 {
-	// obviuos cases
+	// obvious cases
 	if (limits_ == 1)
 		return true;
 	if (limits_ == -1)
@@ -462,4 +462,11 @@ void MathScriptInset::octavize2(MathInset const * nuc, OctaveStream & os) const
 		os << '[' << down().data_ << ']';
 	if (hasUp() && up().data_.size())
 		os << "^(" << up().data_ << ')';
+}
+
+
+void MathScriptInset::infoize(std::ostream & os) const
+{
+	if (limits_)
+		os << (limits_ == 1 ? "Displayed limits " : "Inlined limits ");
 }

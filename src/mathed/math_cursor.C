@@ -1571,14 +1571,15 @@ void MathCursor::insetToggle()
 string MathCursor::info() const
 {
 	ostringstream os;
-	os << "Math editor mode ";
+	os << "Math editor mode.  ";
 	for (int i = 0, n = depth(); i < n; ++i) {
 		Cursor_[i].par_->infoize(os);
 		os << "  ";
 	}
-	//if (pos() > 0)
-	//	prevAtom()->infoize(os);
-	os << "                ";
+	if (hasPrevAtom())
+		if (prevAtom()->asSymbolInset() || prevAtom()->asScriptInset())
+			prevAtom()->infoize(os);
+	os << "                    ";
 	return os.str().c_str(); // .c_str() needed for lyxstring
 }
 
