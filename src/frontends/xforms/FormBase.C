@@ -60,7 +60,6 @@ void FormBase::redraw()
 
 void FormBase::show()
 {
-	lyxerr << "show" << endl;
 	if (!form()) {
 		build();
 	}

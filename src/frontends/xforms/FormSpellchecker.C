@@ -23,8 +23,7 @@ typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 
 FormSpellchecker::FormSpellchecker(ControlSpellchecker & c, Dialogs & d)
 	: base_class(c, d, _("LyX: Spellchecker"), false)
-{
-}
+{}
 
 
 void FormSpellchecker::build()
@@ -130,7 +129,7 @@ void FormSpellchecker::partialUpdate(int id)
 	case 2:
 		// show exit message
 		fl_show_messages(controller().getMessage().c_str());
-		//hide();
+		hide();
 	}
 }
 
