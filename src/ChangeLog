@@ -1,3 +1,11 @@
+2003-04-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxrow.h: store a ParagraphList::iterator instead of a
+	Paragraph* and adjust other class functions to suit.
+	
+	* lyxrow_funcs.C, text.C, text2.C, text3.C: adjust because of the
+	above.
+	
 2003-04-01  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text2.C (setCursor): do not anchor to cursor row for the time being
@@ -8,7 +16,7 @@
 	* lfuns.h:
 	* lyx_main.C:
 	* lyxtext.h:
-	* text.C:	
+	* text.C:
 	* text3.C: rename the "tab" lfuns. Remove tab support from normal text
 
 2003-04-02  Lars Gullik Bjønnes  <larsbj@gullik.net>

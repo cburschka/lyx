@@ -96,7 +96,7 @@ void LyXText::init(BufferView * bview, bool reinit)
 	for (; par != end; ++par) {
 		insertParagraph(&*par, rowlist_.end());
 	}
-	setCursorIntern(rowlist_.begin()->par(), 0);
+	setCursorIntern(&*rowlist_.begin()->par(), 0);
 	selection.cursor = cursor;
 
 	updateCounters();
@@ -298,10 +298,10 @@ void LyXText::removeRow(RowList::iterator rit)
 // remove all following rows of the paragraph of the specified row.
 void LyXText::removeParagraph(RowList::iterator rit)
 {
-	Paragraph * tmppar = rit->par();
+	ParagraphList::iterator tmppit = rit->par();
 	++rit;
 
-	while (rit != rows().end() && rit->par() == tmppar) {
+	while (rit != rows().end() && rit->par() == tmppit) {
 		RowList::iterator tmprit = boost::next(rit);
 		removeRow(rit);
 		rit = tmprit;
@@ -309,6 +309,7 @@ void LyXText::removeParagraph(RowList::iterator rit)
 }
 
 
+#warning FIXME Convert this to ParagraphList::iterator
 void LyXText::insertParagraph(Paragraph * par, RowList::iterator rowit)
 {
 	// insert a new row, starting at position 0
@@ -679,26 +680,26 @@ void LyXText::redoDrawingOfParagraph(LyXCursor const & cur)
 // and the specified par
 // This function is needed after SetLayout and SetFont etc.
 void LyXText::redoParagraphs(LyXCursor const & cur,
-			     Paragraph const * endpar)
+			     Paragraph const * ep)
 {
 	RowList::iterator tmprit = cur.row();
-
+	ParagraphList::iterator endpit(const_cast<Paragraph*>(ep));
 	int y = cur.y() - tmprit->baseline();
 
-	Paragraph * first_phys_par;
+	ParagraphList::iterator first_phys_pit;
 	if (tmprit == rows().begin()) {
 		// A trick/hack for UNDO.
 		// This is needed because in an UNDO/REDO we could have
 		// changed the ownerParagrah() so the paragraph inside
 		// the row is NOT my really first par anymore.
 		// Got it Lars ;) (Jug 20011206)
-		first_phys_par = &*ownerParagraphs().begin();
+		first_phys_pit = ownerParagraphs().begin();
 #warning FIXME
 		// In here prevrit could be set to rows().end(). (Lgb)
 	} else {
-		first_phys_par = tmprit->par();
+		first_phys_pit = tmprit->par();
 		while (tmprit != rows().begin()
-		       && boost::prior(tmprit)->par() == first_phys_par)
+		       && boost::prior(tmprit)->par() == first_phys_pit)
 		{
 			--tmprit;
 			y -= tmprit->height();
@@ -718,26 +719,26 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 	}
 
 	// remove it
-	while (tmprit != rows().end() && tmprit->par() != endpar) {
+	while (tmprit != rows().end() && tmprit->par() != endpit) {
 		RowList::iterator tmprit2 = tmprit++;
 		removeRow(tmprit2);
 	}
 
 	// Reinsert the paragraphs.
-	Paragraph * tmppar = first_phys_par;
+	ParagraphList::iterator tmppit = first_phys_pit;
 #warning FIXME
 	// See if this loop can be rewritten as a while loop instead.
 	// That should also make the code a bit easier to read. (Lgb)
 	do {
-		if (tmppar) {
-			insertParagraph(tmppar, tmprit);
+		if (tmppit != ownerParagraphs().end()) {
+			insertParagraph(&*tmppit, tmprit);
 			while (tmprit != rows().end()
-			       && tmprit->par() == tmppar) {
+			       && tmprit->par() == tmppit) {
 				++tmprit;
 			}
-			tmppar = tmppar->next();
+			++tmppit;
 		}
-	} while (tmppar && tmppar != endpar);
+	} while (tmppit != ownerParagraphs().end() && tmppit != endpit);
 
 #warning FIXME
 	// If the above changes are done, then we can compare prevrit
@@ -1270,28 +1271,28 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 void LyXText::updateCounters()
 {
 	RowList::iterator rowit = rows().begin();
-	Paragraph * par = rowit->par();
+	ParagraphList::iterator pit = rowit->par();
 
 	// CHECK if this is really needed. (Lgb)
 	bv()->buffer()->params.getLyXTextClass().counters().reset();
 
-	while (par) {
-		while (rowit->par() != par)
+	while (pit != ownerParagraphs().end()) {
+		while (rowit->par() != pit)
 			++rowit;
 
-		string const oldLabel = par->params().labelString();
+		string const oldLabel = pit->params().labelString();
 
 		// setCounter can potentially change the labelString.
-		setCounter(bv()->buffer(), par);
+		setCounter(bv()->buffer(), &*pit);
 
-		string const & newLabel = par->params().labelString();
+		string const & newLabel = pit->params().labelString();
 
 		if (oldLabel.empty() && !newLabel.empty()) {
 			removeParagraph(rowit);
 			appendParagraph(rowit);
 		}
 
-		par = par->next();
+		++pit;
 	}
 }
 
@@ -1788,23 +1789,23 @@ float LyXText::getCursorX(RowList::iterator rit,
 				font_metrics::width(
 					rit->par()->layout()->labelsep,
 					getLabelFont(bv()->buffer(),
-						     rit->par()));
+						     &*rit->par()));
 			if (rit->par()->isLineSeparator(body_pos - 1))
-				x -= singleWidth(rit->par(), body_pos - 1);
+				x -= singleWidth(&*rit->par(), body_pos - 1);
 		}
 
 		if (hfillExpansion(*this, rit, pos)) {
-			x += singleWidth(rit->par(), pos);
+			x += singleWidth(&*rit->par(), pos);
 			if (pos >= body_pos)
 				x += fill_hfill;
 			else
 				x += fill_label_hfill;
 		} else if (rit->par()->isSeparator(pos)) {
-			x += singleWidth(rit->par(), pos);
+			x += singleWidth(&*rit->par(), pos);
 			if (pos >= body_pos)
 				x += fill_separator;
 		} else
-			x += singleWidth(rit->par(), pos);
+			x += singleWidth(&*rit->par(), pos);
 	}
 	return x;
 }
@@ -1923,23 +1924,23 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 		if (body_pos > 0 && c == body_pos - 1) {
 			tmpx += fill_label_hfill +
 				font_metrics::width(layout->labelsep,
-					       getLabelFont(bv()->buffer(), rit->par()));
+					       getLabelFont(bv()->buffer(), &*rit->par()));
 			if (rit->par()->isLineSeparator(body_pos - 1))
-				tmpx -= singleWidth(rit->par(), body_pos - 1);
+				tmpx -= singleWidth(&*rit->par(), body_pos - 1);
 		}
 
 		if (hfillExpansion(*this, rit, c)) {
-			tmpx += singleWidth(rit->par(), c);
+			tmpx += singleWidth(&*rit->par(), c);
 			if (c >= body_pos)
 				tmpx += fill_hfill;
 			else
 				tmpx += fill_label_hfill;
 		} else if (rit->par()->isSeparator(c)) {
-			tmpx += singleWidth(rit->par(), c);
+			tmpx += singleWidth(&*rit->par(), c);
 			if (c >= body_pos)
 				tmpx+= fill_separator;
 		} else {
-			tmpx += singleWidth(rit->par(), c);
+			tmpx += singleWidth(&*rit->par(), c);
 		}
 		++vc;
 	}
@@ -1976,16 +1977,16 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 		bool const rtl = (bidi_level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = isBoundary(bv()->buffer(), rit->par(), c);
+			boundary = isBoundary(bv()->buffer(), &*rit->par(), c);
 		}
 	}
 
 	if (rit->pos() <= last && c > last
 	    && rit->par()->isNewline(last)) {
 		if (bidi_level(last) % 2 == 0)
-			tmpx -= singleWidth(rit->par(), last);
+			tmpx -= singleWidth(&*rit->par(), last);
 		else
-			tmpx += singleWidth(rit->par(), last);
+			tmpx += singleWidth(&*rit->par(), last);
 		c = last;
 	}
 
@@ -2037,7 +2038,7 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	RowList::iterator row = getRowNearY(y);
 	bool bound = false;
 	pos_type const column = getColumnNearX(row, x, bound);
-	cur.par(row->par());
+	cur.par(&*row->par());
 	cur.pos(row->pos() + column);
 	cur.x(x);
 	cur.y(y + row->baseline());

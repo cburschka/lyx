@@ -23,26 +23,26 @@ using std::max;
 using std::min;
 
 Row::Row()
-	: par_(0), pos_(0), fill_(0), height_(0), width_(0),
+	: pos_(0), fill_(0), height_(0), width_(0),
 	  ascent_of_text_(0), baseline_(0)
 {}
 
 
-Row::Row(Paragraph * pa, pos_type po)
-	: par_(pa), pos_(po), fill_(0), height_(0), width_(0),
+Row::Row(ParagraphList::iterator pit, pos_type po)
+	: pit_(pit), pos_(po), fill_(0), height_(0), width_(0),
 	  ascent_of_text_(0), baseline_(0)
 {}
 
 
-Paragraph * Row::par()
+ParagraphList::iterator Row::par()
 {
-	return par_;
+	return pit_;
 }
 
 
-Paragraph * Row::par() const
+ParagraphList::iterator Row::par() const
 {
-	return par_;
+	return pit_;
 }
 
 
@@ -52,9 +52,9 @@ unsigned short Row::height() const
 }
 
 
-void Row::par(Paragraph * p)
+void Row::par(ParagraphList::iterator pit)
 {
-	par_ = p;
+	pit_ = pit;
 }
 
 

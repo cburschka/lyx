@@ -39,15 +39,15 @@ namespace {
 
 bool nextRowIsAllInset(Row const & row, pos_type last)
 {
-	Paragraph const * par = row.par();
+	ParagraphList::iterator pit = row.par();
 
-	if (last + 1 >= par->size())
+	if (last + 1 >= pit->size())
 		return false;
 
-	if (!par->isInset(last + 1))
+	if (!pit->isInset(last + 1))
 		return false;
 
-	Inset const * i = par->getInset(last + 1);
+	Inset const * i = pit->getInset(last + 1);
 	return i->needFullRow() || i->display();
 }
 
@@ -74,13 +74,13 @@ pos_type lastPrintablePos(LyXText const & lt, RowList::iterator rit)
 int numberOfSeparators(LyXText const & lt, RowList::iterator rit)
 {
         pos_type const last = lastPrintablePos(lt, rit);
-	Paragraph const * par = rit->par();
+	ParagraphList::iterator pit = rit->par();
 
         int n = 0;
 
-        pos_type p = max(rit->pos(), par->beginningOfBody());
+        pos_type p = max(rit->pos(), pit->beginningOfBody());
         for (; p < last; ++p) {
-                if (par->isSeparator(p)) {
+                if (pit->isSeparator(p)) {
                         ++n;
                 }
         }
@@ -94,22 +94,22 @@ int numberOfHfills(LyXText const & lt, RowList::iterator rit)
 {
 	pos_type const last = lastPos(lt, rit);
 	pos_type first = rit->pos();
-	Paragraph const * par = rit->par();
+	ParagraphList::iterator pit = rit->par();
 
 	// hfill *DO* count at the beginning of paragraphs!
 	if (first) {
-		while (first < last && par->isHfill(first)) {
+		while (first < last && pit->isHfill(first)) {
 			++first;
 		}
 	}
 
-	first = max(first, par->beginningOfBody());
+	first = max(first, pit->beginningOfBody());
 
 	int n = 0;
 
 	// last, because the end is ignored!
 	for (pos_type p = first; p < last; ++p) {
-		if (par->isHfill(p))
+		if (pit->isHfill(p))
 			++n;
 	}
 	return n;
@@ -122,20 +122,20 @@ int numberOfLabelHfills(LyXText const & lt, RowList::iterator rit)
 {
 	pos_type last = lastPos(lt, rit);
 	pos_type first = rit->pos();
-	Paragraph const * par = rit->par();
+	ParagraphList::iterator pit = rit->par();
 
 	// hfill *DO* count at the beginning of paragraphs!
 	if (first) {
-		while (first < last && par->isHfill(first))
+		while (first < last && pit->isHfill(first))
 			++first;
 	}
 
-	last = min(last, par->beginningOfBody());
+	last = min(last, pit->beginningOfBody());
 	int n = 0;
 
 	// last, because the end is ignored!
 	for (pos_type p = first; p < last; ++p) {
-		if (par->isHfill(p))
+		if (pit->isHfill(p))
 			++n;
 	}
 	return n;
@@ -144,16 +144,16 @@ int numberOfLabelHfills(LyXText const & lt, RowList::iterator rit)
 
 bool hfillExpansion(LyXText const & lt, RowList::iterator rit, pos_type pos)
 {
-	Paragraph const * par = rit->par();
+	ParagraphList::iterator pit = rit->par();
 
-	if (!par->isHfill(pos))
+	if (!pit->isHfill(pos))
 		return false;
 
 	// at the end of a row it does not count
 	// unless another hfill exists on the line
 	if (pos >= lastPos(lt, rit)) {
 		pos_type i = rit->pos();
-		while (i < pos && !par->isHfill(i)) {
+		while (i < pos && !pit->isHfill(i)) {
 			++i;
 		}
 		if (i == pos) {
@@ -167,15 +167,15 @@ bool hfillExpansion(LyXText const & lt, RowList::iterator rit, pos_type pos)
 		return true;
 
 	// in some labels it does not count
-	if (par->layout()->margintype != MARGIN_MANUAL
-	    && pos < par->beginningOfBody())
+	if (pit->layout()->margintype != MARGIN_MANUAL
+	    && pos < pit->beginningOfBody())
 		return false;
 
 	// if there is anything between the first char of the row and
 	// the specified position that is not a newline and not a hfill,
 	// the hfill will count, otherwise not
 	pos_type i = rit->pos();
-	while (i < pos && (par->isNewline(i) || par->isHfill(i)))
+	while (i < pos && (pit->isNewline(i) || pit->isHfill(i)))
 		++i;
 
 	return i != pos;
