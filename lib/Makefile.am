@@ -92,5 +92,5 @@ uninstall-local: uninstall-xfonts
 dist-hook:
 	cd $(distdir) ; rm -rf `find . -name \*CVS\*` ; \
 	rm -rf doc/.cvsignore; \
-	[ -f doc/UserGuide.lyx ] || { cvs -Q export -r HEAD -d doc lyxdoc || \
+	[ -f doc/UserGuide.lyx ] || { cvs -Q export -r BRANCH_1_3_X -d doc lyxdoc || \
 	  echo "WARNING: Unable to get LyX Documentation from CVS!" ; true ; }
