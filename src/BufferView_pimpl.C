@@ -499,7 +499,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 	screen().hideCursor();
 
 	bv_->text->top_y(value);
-	//screen().draw();
+	screen().redraw(*bv_);
 
 	if (!lyxrc.cursor_follows_scrollbar)
 		return;
