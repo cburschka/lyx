@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "support/lstrings.h"
 #include "Lsstream.h"
 #include <iomanip>
@@ -88,6 +87,18 @@ void QPrefs::build_dialog()
 	for (; lit != lend; ++lit) {
 		langmod->defaultLanguageCO->insertItem(toqstr(lit->first));
 	}
+
+	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
+	spellmod->spellCommandCO->insertItem(qt_("ispell"));
+	spellmod->spellCommandCO->insertItem(qt_("aspell"));
+	spellmod->spellCommandCO->insertItem(qt_("hspell"));
+#ifdef USE_PSPELL
+	spellmod->spellCommandCO->insertItem(qt_("pspell (library)"));
+#else
+#ifdef USE_ASPELL
+	spellmod->spellCommandCO->insertItem(qt_("aspell (library)"));
+#endif
+#endif
 }
 
 
@@ -186,7 +197,17 @@ void QPrefs::apply()
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
 
-	rc.isp_command = fromqstr(spellmod->spellCommandCO->currentText());
+	switch (spellmod->spellCommandCO->currentItem()) {
+		case 0:
+		case 1:
+		case 2:
+			rc.use_spell_lib = false;
+			rc.isp_command = fromqstr(spellmod->spellCommandCO->currentText());
+			break;
+		case 3:
+			rc.use_spell_lib = true;
+			break;
+	}
 
 	// FIXME: remove isp_use_alt_lang
 	rc.isp_alt_lang = fromqstr(spellmod->altLanguageED->text());
@@ -445,13 +466,22 @@ void QPrefs::update_contents()
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
 
-	QString const tmp = qt_(rc.isp_command);
-	for (int i = 0; i < spellmod->spellCommandCO->count(); ++i) {
-		if (spellmod->spellCommandCO->text(i) == tmp) {
-			spellmod->spellCommandCO->setCurrentItem(i);
-			break;
-		}
+	spellmod->spellCommandCO->setCurrentItem(0);
+
+	if (rc.isp_command == "ispell") {
+		spellmod->spellCommandCO->setCurrentItem(0);
+	} else if (rc.isp_command == "aspell") {
+		spellmod->spellCommandCO->setCurrentItem(1);
+	} else if (rc.isp_command == "hspell") {
+		spellmod->spellCommandCO->setCurrentItem(2);
 	}
+	
+	if (rc.use_spell_lib) {
+#if defined(USE_ASPELL) || defined(USE_PSPELL)
+		spellmod->spellCommandCO->setCurrentItem(3);
+#endif
+	}
+
 	// FIXME: remove isp_use_alt_lang
 	spellmod->altLanguageED->setText(toqstr(rc.isp_alt_lang));
 	// FIXME: remove isp_use_esc_chars

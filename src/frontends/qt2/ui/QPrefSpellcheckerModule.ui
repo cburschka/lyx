@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>390</width>
+            <width>386</width>
             <height>268</height>
         </rect>
     </property>
@@ -53,7 +53,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Spell chec&amp;ker program:</string>
+                        <string>Spell chec&amp;ker:</string>
                     </property>
                     <property>
                         <name>buddy</name>
@@ -93,6 +93,10 @@
                     <property stdset="1">
                         <name>name</name>
                         <cstring>altLanguageED</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Override the language used for the spellchecker</string>
                     </property>
                 </widget>
                 <widget row="1"  column="0" >
@@ -163,6 +167,10 @@
                         <name>name</name>
                         <cstring>persDictionaryED</cstring>
                     </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Specify a personal dictionary file other than the default</string>
+                    </property>
                 </widget>
                 <widget row="3"  column="0" >
                     <class>QLabel</class>
@@ -181,24 +189,6 @@
                 </widget>
                 <widget row="0"  column="1" >
                     <class>QComboBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>ispell</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>aspell</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>hspell</string>
-                        </property>
-                    </item>
                     <property stdset="1">
                         <name>name</name>
                         <cstring>spellCommandCO</cstring>
@@ -236,6 +226,10 @@
             <property stdset="1">
                 <name>text</name>
                 <string>Accept compound &amp;words</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Accept words such as "diskdrive"</string>
             </property>
         </widget>
         <widget>
