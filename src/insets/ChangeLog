@@ -1,5 +1,12 @@
 2003-10-10  Angus Leeming  <leeming@lyx.org>
 
+	* insetinclude.C (metrics): use preview_->metrics.
+	(draw): use preview_->draw.
+
+	* render_preview.[Ch] (pimage): removed.
+
+2003-10-10  Angus Leeming  <leeming@lyx.org>
+
 	* renderers.[Ch]: removed.
 
 	* render_base.[Ch]:

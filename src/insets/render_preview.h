@@ -73,10 +73,6 @@ public:
 	/// The preview has been generated and is ready to use.
 	bool previewReady() const;
 
-	/// If the preview is not ready, returns 0.
-	lyx::graphics::PreviewImage const * const pimage() const
-		{ return pimage_; }
-
 	/// Connect and you'll be informed when the preview is ready.
 	typedef boost::signal0<void>::slot_type slot_type;
 	boost::signals::connection connect(slot_type const &);

@@ -60,9 +60,9 @@ RenderBase * RenderPreview::clone() const
 void RenderPreview::metrics(MetricsInfo &, Dimension & dim) const
 {
 	if (previewReady()) {
-		dim.asc = pimage()->ascent();
-		dim.des = pimage()->descent();
-		dim.wid = pimage()->width();
+		dim.asc = pimage_->ascent();
+		dim.des = pimage_->descent();
+		dim.wid = pimage_->width();
 	} else {
 		dim.asc = 20;
 		dim.des = 20;
@@ -75,15 +75,12 @@ void RenderPreview::metrics(MetricsInfo &, Dimension & dim) const
 
 void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(pi.base.bv);
-	view_ = pi.base.bv->owner()->view();
-
 	if (!previewReady())
 		pi.pain.rectangle(x, y - dim_.asc, dim_.wid, dim_.height(),
 				  LColor::foreground);
 	else
 		pi.pain.image(x, y - dim_.asc, dim_.wid, dim_.height(),
-			      *(pimage()->image()));
+			      *(pimage_->image()));
 }
 
 

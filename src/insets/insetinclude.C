@@ -519,9 +519,7 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (preview_->previewReady()) {
-		dim.asc = preview_->pimage()->ascent();
-		dim.des = preview_->pimage()->descent();
-		dim.wid = preview_->pimage()->width();
+		preview_->metrics(mi, dim);
 	} else {
 		if (!set_label_) {
 			set_label_ = true;
@@ -555,8 +553,7 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 		preview_->startMonitoring(included_file);
 	}
 
-	pi.pain.image(x + button_.box().x1, y - dim_.asc, dim_.wid, dim_.height(),
-			    *(preview_->pimage()->image()));
+	preview_->draw(pi, x + button_.box().x1, y);
 }
 
 
