@@ -1,3 +1,7 @@
+2004-04-19  José Matos   <jamatos@lyx.orrg>
+	* parser_tools.py (chain): fix the detection of the last format for
+	revertions.
+
 2004-04-19  Martin Vermeer  <martin.vermeer@hut.fi>
 	* lyx_1_4.py (convert_frameless_box): Replace instead of adding
 	new code.

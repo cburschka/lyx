@@ -341,11 +341,16 @@ def chain(opt, initial_version):
                 steps.append(step[0])
     else:
         mode = "revert"
-        for step in format_relation:
-            if  final_step <= step[0] <= initial_step:
-                steps.insert(0, step[0])
+        relation_format = format_relation
+        relation_format.reverse()
+        last_step = None
 
-        if step[1][-1:] == opt.end:
-            del steps[0]
+        for step in relation_format:
+            if  final_step <= step[0] <= initial_step:
+                steps.append(step[0])
+                last_step = step
+
+        if last_step[1][-1] == opt.end:
+            steps.pop()
 
     return mode, steps
