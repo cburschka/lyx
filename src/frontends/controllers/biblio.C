@@ -29,7 +29,6 @@
 using std::find;
 using std::min;
 using std::vector;
-using std::sort;
 
 namespace biblio {
 
@@ -163,7 +162,7 @@ string const familyName(string const & name)
 	if (fname[0] == '\\')
 		return fname.substr(2);
 
-	return fname;
+	return rtrim(fname);
 }
 
 
@@ -174,14 +173,16 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())
 		return string();
+	string const & data = it->second;
 
-	string::size_type const pos = it->second.find("TheBibliographyRef");
+	// Is the entry a BibTeX one or one from lyx-layout "bibliography"?
+	string::size_type const pos = data.find("TheBibliographyRef");
 	if (pos != string::npos) {
 		if (pos <= 2) {
 			return string();
 		}
 
-		string const opt = trim(it->second.substr(0, pos - 1));
+		string const opt = trim(data.substr(0, pos - 1));
 		if (opt.empty())
 			return string();
 
@@ -190,33 +191,26 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 		return authors;
 	}
 
-	string author = parseBibTeX(it->second, "author");
+	string author = parseBibTeX(data, "author");
 	if (author.empty())
-		author = parseBibTeX(it->second, "editor");
+		author = parseBibTeX(data, "editor");
 
 	if (author.empty()) {
-		author = parseBibTeX(it->second, "key");
+		author = parseBibTeX(data, "key");
 		if (author.empty())
 			author = key;
 		return author;
 	}
 
-	vector<string> authors = getVectorFromString(author, " and");
+	vector<string> const authors = getVectorFromString(author, " and ");
+	if (authors.empty())
+		return author;
 
-	if (!authors.empty()) {
-		author.erase();
-
-		for (vector<string>::iterator it = authors.begin();
-		     it != authors.end(); ++it) {
-			*it = familyName(rtrim(*it));
-		}
-
-		author = authors[0];
-		if (authors.size() == 2)
-			author += _(" and ") + authors[1];
-		else if (authors.size() > 2)
-			author += _(" et al.");
-	}
+	author = familyName(authors[0]);
+	if (authors.size() == 2)
+		author += _(" and ") + familyName(authors[1]);
+	else if (authors.size() > 2)
+		author += _(" et al.");
 
 	return author;
 }
@@ -229,15 +223,17 @@ string const getYear(InfoMap const & map, string const & key)
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())
 		return string();
+	string const & data = it->second;
 
-	string::size_type const pos = it->second.find("TheBibliographyRef");
+	// Is the entry a BibTeX one or one from lyx-layout "bibliography"?
+	string::size_type const pos = data.find("TheBibliographyRef");
 	if (pos != string::npos) {
 		if (pos <= 2) {
 			return string();
 		}
 
 		string const opt =
-			trim(it->second.substr(0, pos - 1));
+			trim(data.substr(0, pos - 1));
 		if (opt.empty())
 			return string();
 
@@ -249,13 +245,15 @@ string const getYear(InfoMap const & map, string const & key)
 
 	}
 
-	string year = parseBibTeX(it->second, "year");
+	string year = parseBibTeX(data, "year");
 	if (year.empty())
 		year = _("No year");
 
 	return year;
 }
 
+
+namespace {
 
 // A functor for use with std::sort, leading to case insensitive sorting
 struct compareNoCase: public std::binary_function<string, string, bool>
@@ -264,16 +262,20 @@ struct compareNoCase: public std::binary_function<string, string, bool>
 		return compare_ascii_no_case(s1, s2) < 0;
 	}
 };
+ 
+} // namespace anon
+
 
 vector<string> const getKeys(InfoMap const & map)
 {
 	vector<string> bibkeys;
-
-	for (InfoMap::const_iterator it = map.begin(); it != map.end(); ++it) {
+	InfoMap::const_iterator it  = map.begin();
+	InfoMap::const_iterator end = map.end();
+	for (; it != end; ++it) {
 		bibkeys.push_back(it->first);
 	}
 
-	sort(bibkeys.begin(), bibkeys.end(), compareNoCase());
+	std::sort(bibkeys.begin(), bibkeys.end(), compareNoCase());
 	return bibkeys;
 }
 
@@ -285,36 +287,37 @@ string const getInfo(InfoMap const & map, string const & key)
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())
 		return string();
+	string const & data = it->second;
 
 	// is the entry a BibTeX one or one from lyx-layout "bibliography"?
 	string const separator("TheBibliographyRef");
-	string::size_type const pos = it->second.find(separator);
+	string::size_type const pos = data.find(separator);
 	if (pos != string::npos) {
 		string::size_type const pos2 = pos + separator.size();
-		string const info = trim(it->second.substr(pos2));
+		string const info = trim(data.substr(pos2));
 		return info;
 	}
 
 	// Search for all possible "required" keys
-	string author = parseBibTeX(it->second, "author");
+	string author = parseBibTeX(data, "author");
 	if (author.empty())
-		author = parseBibTeX(it->second, "editor");
+		author = parseBibTeX(data, "editor");
 
-	string year       = parseBibTeX(it->second, "year");
-	string title      = parseBibTeX(it->second, "title");
-	string booktitle  = parseBibTeX(it->second, "booktitle");
-	string chapter    = parseBibTeX(it->second, "chapter");
-	string number     = parseBibTeX(it->second, "number");
-	string volume     = parseBibTeX(it->second, "volume");
-	string pages      = parseBibTeX(it->second, "pages");
+	string year       = parseBibTeX(data, "year");
+	string title      = parseBibTeX(data, "title");
+	string booktitle  = parseBibTeX(data, "booktitle");
+	string chapter    = parseBibTeX(data, "chapter");
+	string number     = parseBibTeX(data, "number");
+	string volume     = parseBibTeX(data, "volume");
+	string pages      = parseBibTeX(data, "pages");
 
-	string media      = parseBibTeX(it->second, "journal");
+	string media      = parseBibTeX(data, "journal");
 	if (media.empty())
-		media = parseBibTeX(it->second, "publisher");
+		media = parseBibTeX(data, "publisher");
 	if (media.empty())
-		media = parseBibTeX(it->second, "school");
+		media = parseBibTeX(data, "school");
 	if (media.empty())
-		media = parseBibTeX(it->second, "institution");
+		media = parseBibTeX(data, "institution");
 
 	ostringstream result;
 	if (!author.empty())
@@ -341,7 +344,7 @@ string const getInfo(InfoMap const & map, string const & key)
 		return result_str;
 
 	// This should never happen (or at least be very unusual!)
-	return it->second;
+	return data;
 }
 
 
