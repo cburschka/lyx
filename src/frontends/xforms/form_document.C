@@ -25,37 +25,43 @@ FD_form_tabbed_document * FormDocument::build_tabbed_document()
   FL_OBJECT *obj;
   FD_form_tabbed_document *fdui = new FD_form_tabbed_document;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 465, 450);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 465, 475);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 465, 450, "");
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 465, 475, "");
   fdui->tabbed_folder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 20, 15, 435, 365, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 410, 100, 30, idex(_(dummy)));
+    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 430, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, INPUT);
   {
     char const * const dummy = N_("Apply|#A");
-    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 245, 410, 100, 30, idex(_(dummy)));
+    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 245, 430, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedApplyCB, INPUT);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 135, 410, 100, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 135, 430, 100, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, INPUT);
-  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 20, 380, 435, 30, "");
+  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 10, 390, 435, 30, "");
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 410, 100, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 430, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedRestoreCB, INPUT);
+  {
+    char const * const dummy = N_("Save as Defaults|#v");
+    fdui->button_save_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 390, 170, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -354,7 +360,6 @@ FD_form_doc_class * FormDocument::build_doc_class()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-    fl_set_button(obj, 1);
   {
     char const * const dummy = N_("Skip|#K");
     fdui->radio_doc_skip = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 300, 240, 110, 30, idex(_(dummy)));
@@ -369,20 +374,14 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
-    char const * const dummy = N_("Save as Defaults|#v");
-    fdui->button_save_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 305, 295, 105, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  {
     char const * const dummy = N_("Reset|#R");
-    fdui->button_reset_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 160, 295, 100, 30, idex(_(dummy)));
+    fdui->button_reset_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 190, 300, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->radio_auto_reset = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 295, 30, 30, _("Auto Reset"));
+  fdui->radio_auto_reset = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 25, 300, 30, 30, _("Auto Reset"));
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 285, 410, 45, _("Class Defaults"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 15, 290, 285, 45, _("Class Defaults"));
   fl_end_form();
 
   fdui->form->fdui = fdui;

@@ -9,6 +9,7 @@ extern  "C" void C_FormBaseDeprecatedCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseDeprecatedApplyCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseDeprecatedOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseDeprecatedRestoreCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseDeprecatedInputCB(FL_OBJECT *, long);
 
@@ -32,6 +33,7 @@ struct FD_form_tabbed_document {
 	FL_OBJECT *button_ok;
 	FL_OBJECT *text_warning;
 	FL_OBJECT *button_restore;
+	FL_OBJECT *button_save_defaults;
 };
 struct FD_form_doc_paper {
 	~FD_form_doc_paper();
@@ -76,7 +78,6 @@ struct FD_form_doc_class {
 	FL_OBJECT *radio_doc_indent;
 	FL_OBJECT *radio_doc_skip;
 	FL_OBJECT *input_doc_spacing;
-	FL_OBJECT *button_save_defaults;
 	FL_OBJECT *button_reset_defaults;
 	FL_OBJECT *radio_auto_reset;
 };

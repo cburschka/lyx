@@ -214,7 +214,7 @@ void LyXRC::setDefaults() {
 	override_x_deadkeys = true;
 	autosave = 300;
 	auto_region_delete = true;
-	auto_reset_options = true;
+	auto_reset_options = false;
 	ascii_linelen = 65;
 	num_lastfiles = 4;
 	check_lastfiles = true;

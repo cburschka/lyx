@@ -91,6 +91,7 @@ void FormDocument::build()
     bc().setApply(dialog_->button_apply);
     bc().setCancel(dialog_->button_cancel);
     bc().setRestore(dialog_->button_restore);
+    bc().addReadOnly (dialog_->button_save_defaults);
 
     // the document paper form
     paper_.reset(build_doc_paper());
@@ -179,7 +180,6 @@ void FormDocument::build()
     bc().addReadOnly (class_->input_doc_spacing);
     bc().addReadOnly (class_->radio_auto_reset);
     bc().addReadOnly (class_->button_reset_defaults);
-    bc().addReadOnly (class_->button_save_defaults);
 
 
     // the document language form
@@ -309,6 +309,9 @@ void FormDocument::update()
 
     checkReadOnly();
 
+    fl_set_object_label(dialog_->button_save_defaults,
+    	_("Save as Defaults"));
+
     BufferParams const & params = lv_->buffer()->params;
 
     class_update(params);
@@ -363,7 +366,7 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		lyxrc.auto_reset_options = fl_get_button(class_->radio_auto_reset);
 	}
 
-	if (ob == class_->button_save_defaults) {
+	if (ob == dialog_->button_save_defaults) {
 		lv_->getLyXFunc()->dispatch(LFUN_LAYOUT_SAVE_DEFAULT);
 	}
 
@@ -726,7 +729,6 @@ void FormDocument::class_update(BufferParams const & params)
     fl_set_button(class_->radio_auto_reset, lyxrc.auto_reset_options);
     fl_set_object_label(class_->button_reset_defaults, _("Reset"));
     setEnabled(class_->button_reset_defaults, !params.hasClassDefaults());
-    fl_set_object_label(class_->button_save_defaults, _("Save as Defaults"));
 
 }
 

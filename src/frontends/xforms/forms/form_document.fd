@@ -10,13 +10,13 @@ SnapGrid: 5
 =============== FORM ===============
 Name: form_tabbed_document
 Width: 465
-Height: 450
-Number of Objects: 7
+Height: 475
+Number of Objects: 8
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 465 450
+box: 0 0 465 475
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -52,7 +52,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 355 410 100 30
+box: 355 430 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -70,7 +70,7 @@ argument: INPUT
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 245 410 100 30
+box: 245 430 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -88,7 +88,7 @@ argument: INPUT
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 135 410 100 30
+box: 135 430 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -106,7 +106,7 @@ argument: INPUT
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 20 380 435 30
+box: 10 390 435 30
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -124,7 +124,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 410 100 30
+box: 10 430 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -137,6 +137,24 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_restore
 callback: C_FormBaseDeprecatedRestoreCB
+argument: INPUT
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 390 170 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Save as Defaults|#v
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_save_defaults
+callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
 =============== FORM ===============
@@ -653,7 +671,7 @@ argument:
 Name: form_doc_class
 Width: 440
 Height: 345
-Number of Objects: 29
+Number of Objects: 28
 
 --------------------
 class: FL_BOX
@@ -1109,25 +1127,7 @@ argument: INPUT
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 305 295 105 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Save as Defaults|#v
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_save_defaults
-callback: C_FormBaseDeprecatedInputCB
-argument: INPUT
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 160 295 100 30
+box: 190 300 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1145,7 +1145,7 @@ argument: INPUT
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 20 295 30 30
+box: 25 300 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1163,7 +1163,7 @@ argument: INPUT
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 10 285 410 45
+box: 15 290 285 45
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT

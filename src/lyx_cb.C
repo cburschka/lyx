@@ -532,7 +532,7 @@ void MenuLayoutSave(BufferView * bv)
 		return;
 
 	if (AskQuestion(_("Do you want to save the current settings"),
-			_("for Character, Document, Paper and Quotes"),
+			_("for document layout"),
 			_("as default for new documents?")))
 		bv->buffer()->saveParamsAsDefaults();
 }
