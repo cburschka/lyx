@@ -1,3 +1,9 @@
+
+2005-03-22  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_hullinset.C (getStatus): intercept and suppress the
+	adding of grid lines in case of a plain equation hull
+
 2005-03-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_nestinset.C (doDispatch): create a MathBoxInset for mbox

@@ -1122,6 +1122,17 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enabled(false);
 			return true;
 		}
+		if ((type_ == "simple" 
+		  || type_ == "equation" 
+		  || type_ == "none") &&
+		    (s == "add-hline-above" || s == "add-hline-below" ||
+		     s == "add-vline-left" || s == "add-vline-right")) {
+			flag.message(bformat(
+				N_("Can't add grid lines in '%1$s'"),
+				type_));
+			flag.enabled(false);
+			return true;
+		}
 		return MathGridInset::getStatus(cur, cmd, flag);
 	}
 	default:
