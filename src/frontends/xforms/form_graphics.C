@@ -269,61 +269,61 @@ FD_form_bbox * FormGraphics::build_bbox()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 25, 455, 195, _("Bounding Box"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  obj = fl_add_text(FL_NORMAL_TEXT, 120, 35, 35, 25, _("X"));
+  obj = fl_add_text(FL_NORMAL_TEXT, 135, 35, 35, 25, _("X"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_text(FL_NORMAL_TEXT, 325, 35, 30, 25, _("Y"));
+  obj = fl_add_text(FL_NORMAL_TEXT, 360, 35, 30, 25, _("Y"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("Left Bottom:|#L");
-    fdui->input_bb_x0 = obj = fl_add_input(FL_NORMAL_INPUT, 120, 60, 50, 30, idex(_(dummy)));
+    fdui->input_bb_x0 = obj = fl_add_input(FL_NORMAL_INPUT, 135, 60, 50, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_bb_x0 = obj = fl_add_choice(FL_NORMAL_CHOICE, 175, 60, 50, 30, "");
+  fdui->choice_bb_x0 = obj = fl_add_choice(FL_NORMAL_CHOICE, 190, 60, 50, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Right Top:|#R");
-    fdui->input_bb_x1 = obj = fl_add_input(FL_NORMAL_INPUT, 120, 100, 50, 30, idex(_(dummy)));
+    fdui->input_bb_x1 = obj = fl_add_input(FL_NORMAL_INPUT, 135, 100, 50, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_bb_x1 = obj = fl_add_choice(FL_NORMAL_CHOICE, 175, 100, 50, 30, "");
+  fdui->choice_bb_x1 = obj = fl_add_choice(FL_NORMAL_CHOICE, 190, 100, 50, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Left Bottom:|#f");
-    fdui->input_bb_y0 = obj = fl_add_input(FL_NORMAL_INPUT, 325, 60, 50, 30, idex(_(dummy)));
+    fdui->input_bb_y0 = obj = fl_add_input(FL_NORMAL_INPUT, 360, 60, 50, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_bb_y0 = obj = fl_add_choice(FL_NORMAL_CHOICE, 380, 60, 45, 30, "");
+  fdui->choice_bb_y0 = obj = fl_add_choice(FL_NORMAL_CHOICE, 415, 60, 45, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Right Top:|#T");
-    fdui->input_bb_y1 = obj = fl_add_input(FL_NORMAL_INPUT, 325, 100, 50, 30, idex(_(dummy)));
+    fdui->input_bb_y1 = obj = fl_add_input(FL_NORMAL_INPUT, 360, 100, 50, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_bb_y1 = obj = fl_add_choice(FL_NORMAL_CHOICE, 380, 100, 45, 30, "");
+  fdui->choice_bb_y1 = obj = fl_add_choice(FL_NORMAL_CHOICE, 415, 100, 45, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("clip to bounding box|#c");
-    fdui->button_clip = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 295, 145, 30, 30, idex(_(dummy)));
+    fdui->button_clip = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 260, 145, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -331,7 +331,7 @@ FD_form_bbox * FormGraphics::build_bbox()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("draft mode|#d");
-    fdui->button_draft = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 295, 180, 30, 30, idex(_(dummy)));
+    fdui->button_draft = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 260, 180, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -339,7 +339,7 @@ FD_form_bbox * FormGraphics::build_bbox()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Get bounding box from file|#G");
-    fdui->button_getBB = obj = fl_add_button(FL_NORMAL_BUTTON, 30, 160, 200, 30, idex(_(dummy)));
+    fdui->button_getBB = obj = fl_add_button(FL_NORMAL_BUTTON, 30, 160, 220, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
