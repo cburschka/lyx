@@ -186,6 +186,12 @@ void FormPreferences::build()
 	bc().setCancel(dialog_->button_cancel);
 	bc().setRestore(dialog_->button_restore);
 
+	// The first time the dialog is shown, the Apply, Save buttons are
+	// active. On any subsequent showing they aren't (as they shouldn't).
+	// Don't understand why this is so, but this fixes things.
+	// (Angus 7 Sep, 2001)
+	bc().input(ButtonPolicy::SMI_CANCEL);
+
 	// build the tab folders
 	converters_tab_.reset(build_outer_tab());
 	look_n_feel_tab_.reset(build_outer_tab());
