@@ -23,6 +23,7 @@
 #include "insets/insetbibtex.h"
 #include "insets/insetcaption.h"
 #include "insets/insetcite.h"
+#include "insets/insetenv.h"
 #include "insets/insetert.h"
 #include "insets/insetexternal.h"
 #include "insets/insetfloat.h"
@@ -159,6 +160,9 @@ Inset * createInset(FuncRequest const & cmd)
 	case LFUN_PARENTINSERT:
 		return new InsetParent(
 			InsetCommandParams("lyxparent", cmd.argument), *bv->buffer());
+
+	case LFUN_ENVIRONMENT_INSERT:
+		return new InsetEnvironment(params, cmd.argument);
 
 #if 0
 	case LFUN_INSET_LIST:

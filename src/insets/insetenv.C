@@ -51,7 +51,7 @@ Inset * InsetEnvironment::clone(Buffer const &, bool same_id) const
 
 void InsetEnvironment::write(Buffer const * buf, ostream & os) const
 {
-	os << "Environment" << getInsetName() << "\"\n";
+	os << "Environment " << getInsetName() << "\"\n";
 	InsetCollapsable::write(buf, os);
 }
 

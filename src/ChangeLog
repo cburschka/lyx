@@ -1,3 +1,8 @@
+
+2003-03-13 André Pönitz <poenitz@gmx.net>
+
+	* factory.C: make it aware of InsetEnv 
+
 2003-03-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C (setCursor): never ask for one past last
@@ -141,7 +146,7 @@
 
 2003-03-11 André Pönitz <poenitz@gmx.net>
 
-	* factory.C: make it aware of InsetHFill (not active yet)
+	* factory.C: make it aware of InsetHFill
 
 2003-03-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
