@@ -5,49 +5,45 @@
 
 
    Make sure you have installed the MacOSX development tools.  The
-   procedure described here builds LyX-1.3.3 linked with a static Qt
+   procedure described here builds LyX-1.3.4 linked with a static Qt
    library and installs the LyX and Start-LyX applications.
 
    Download the GPL-licensed MacOSX Qt 3.1.2 library source code from
-   ftp://ftp.lyx.org/pub/lyx/contrib/qt-mac-free-3.1.2.sit.  Untar the
-   .tar.gz file in a convenient directory in /usr/local/src or
-   /usr/local. Then open a terminal, cd to the Qt source directory,
-   apply the patch development/MacOSX/qt.patch, and:
+   <ftp://ftp.lyx.org/pub/lyx/contrib/qt-mac-free-3.1.2.sit>.  Untar
+   the .tar.gz file in a convenient directory in /usr/local/src or
+   /usr/local, open a terminal, cd to the Qt source directory, apply
+   the patch development/MacOSX/qt.patch, and:
 
-   % setenv QTDIR `pwd` 
-   % sudo gcc_select 2 
-   % ./configure -static 
-   % make 
-   % sudo gcc_select 3 
-
-   To avoid this compiler-changing procedure in the future, you might
-   want to write Apple to urge that they fix bug ID #3162425 so the
-   default gcc-3.1 compiler can be used to compile LyX-1.3.x on MacOSX.
+     setenv QTDIR `pwd` 
+     sudo gcc_select 2 
+     ./configure -static 
+     make 
+     sudo gcc_select 3 
 
    Using the same terminal session you used to build the Qt libraries
    (or if you start a new terminal, set the QTDIR environment variable
    as above), cd to the top of the LyX source hierarchy. Then:
 
-   % setenv CXX g++2
-   % setenv LDFLAGS "-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
-   % ./configure --with-frontend=qt --without-x --datadir=/Applications/LyX.app/Contents/Resources --bindir=/Applications/LyX.app/Contents/MacOS --mandir=/Applications/LyX.app/Contents/Resources/man
-   % make
+     setenv CXX g++2
+     setenv LDFLAGS "-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
+     ./configure --with-frontend=qt --without-x --datadir=/Applications/LyX.app/Contents/Resources --bindir=/Applications/LyX.app/Contents/MacOS --mandir=/Applications/LyX.app/Contents/Resources/man
+     make
 
-   Download the LyX Framework at
-   http://www.18james.com/code/LyX.tar.gz and run the installer. Then
-   in the terminal where you built LyX:
+   Download the LyX Framework <http://www.18james.com/code/LyX.tar.gz>
+   and run the installer. Then in the terminal where you built LyX:
 
-   % make install
-   % rm /Applications/LyX.app/Contents/Resources/LyX/images/lyx.xpm
+     make install
+     rm /Applications/LyX.app/Contents/Resources/LyX/images/lyx.xpm
 
    For information on configuring LyX/Mac, please see the howto at
-   http://www.18james.com/lyx_on_aqua.html . The binary installation
-   of LyX/Mac sets the PATH in ~/.MacOS/environment.plist, installs
+   <http://www.18james.com/lyx_on_aqua.html>. The binary installation
+   of LyX/Mac sets the PATH in ~/.MacOSX/environment.plist, installs
    the LyX math fonts, configures LyX to use the reLyX and noweb2lyx
    commands in the application package and to use system defaults for
-   viewers, sets up the lyxpipe for Start-LyX, and optionally installs
-   latex-preview; you will need to do this configuration manually if
-   you build LyX/Mac yourself.
+   viewers, sets up the lyxpipe, installs several LaTeX packages, and
+   includes lyxeditor and the functionality for inverse DVI search
+   with some DVI-previewers.  You will need to do this configuration
+   manually if you build LyX/Mac yourself.
 
    The information on this page is believed to be accurate, has been
    used successfully on many systems and sites, and has benefited from

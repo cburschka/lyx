@@ -243,3 +243,17 @@ void lyx_gui::remove_read_callback(int fd)
 		io_callbacks.erase(it);
 	}
 }
+
+
+bool lyx_gui::needs_ugly_metrics_hack()
+{
+// There is some bug (in our fonts) which make the metrics of things
+// like \sum wrong under Qt/Mac. The only solution we have for now is
+// to add this ugly function, so that MathSymbolInset::metrics can do
+// the right thing
+#ifdef Q_WS_MAC
+	return true;
+#else
+	return false;
+#endif
+}

@@ -1,3 +1,7 @@
+2003-10-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_gui.C (needs_ugly_metrics_hack): new method, returns false
+
 2003-07-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* xfont_loader.C (addFontPath): condition message to Debug::FONT

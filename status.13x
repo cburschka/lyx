@@ -29,12 +29,15 @@ What's new
 - fix crash when saving file containing a table (only with some
   compilers) [Bug #1415]
 
+- add debug output if unable to open an ofstream to output the graphics
+  conversion script.
+
 - enable the file dialog to open files with non-latin filenames [Qt only]
 
 - add a couple forgotten MacOSX-related files
 
+- a better fix for badly placed math symbols with LyX/Mac
+
 - compilation fixes for MacOSX
 
-- add debug output if unable to open an ofstream to output the graphics
-  conversion script.
 

@@ -388,3 +388,9 @@ void lyx_gui::remove_read_callback(int fd)
 {
 	fl_remove_io_callback(fd, FL_READ, C_read_callback);
 }
+
+
+bool lyx_gui::needs_ugly_metrics_hack()
+{
+	return false;
+}

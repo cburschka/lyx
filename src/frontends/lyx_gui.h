@@ -84,6 +84,13 @@ void set_read_callback(int fd, LyXComm * comm);
  */
 void remove_read_callback(int fd);
 
+/**
+ * tells whether a special metrics hack is needed by mathed. Currently
+ * only Qt/Mac requires it. The name has been chosen to be horrible
+ * enough to get someone to fix the fonts :)
+ */
+bool needs_ugly_metrics_hack();
+
 } // namespace lyx_gui
 
 #endif // LYX_GUI_H
