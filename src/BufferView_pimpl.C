@@ -1217,9 +1217,10 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 			      bv_->text->cursor.iy()
 				  + bv_->theLockingInset()->insetInInsetY()
 				  + y - text->cursor.row()->baseline());
-	} else if (text->cursor.row()->height() < workarea_.height()) {
+	} else if (text->cursor.irow()->height() < workarea_.height()) {
 		screen_->draw(text, bv_, text->cursor.y() -
 			      text->cursor.row()->baseline());
+	} else {
 	}
 	updateScrollbar();
 }
@@ -1454,7 +1455,7 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 
 
 inline
-void BufferView::Pimpl::moveCursorUpdate(bool selecting)
+void BufferView::Pimpl::moveCursorUpdate(bool selecting, bool fitcur)
 {
 	LyXText * lt = bv_->getLyXText();
 
@@ -1466,7 +1467,10 @@ void BufferView::Pimpl::moveCursorUpdate(bool selecting)
 			updateInset(lt->inset_owner, false);
 	}
 	if (lt->bv_owner) {
-		update(lt, BufferView::SELECT|BufferView::FITCUR);
+		if (fitcur)
+			update(lt, BufferView::SELECT|BufferView::FITCUR);
+		else
+			update(lt, BufferView::SELECT);
 		showCursor();
 	}
 
@@ -2056,7 +2060,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt, BufferView::UPDATE);
 		cursorNext(lt);
 		finishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(false, false);
 		owner_->showState();
 	}
 	break;
@@ -2209,7 +2213,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
-		lt->cursorUp(bv_);
+		lt->cursorUp(bv_, true);
 		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();
@@ -2222,7 +2226,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 		update(lt,
 		       BufferView::SELECT|BufferView::FITCUR);
-		lt->cursorDown(bv_);
+		lt->cursorDown(bv_, true);
 		finishUndo();
 		moveCursorUpdate(true);
 		owner_->showState();

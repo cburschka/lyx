@@ -299,11 +299,11 @@ private:
 					bool activate_inset = true,
 					bool selecting = false);
 	///
-	UpdatableInset::RESULT moveRightIntern(BufferView *, bool behind,
+	UpdatableInset::RESULT moveRightIntern(BufferView *, bool front,
 					       bool activate_inset = true,
 					       bool selecting = false);
 	///
-	UpdatableInset::RESULT moveLeftIntern(BufferView *, bool behind,
+	UpdatableInset::RESULT moveLeftIntern(BufferView *, bool front,
 					      bool activate_inset = true,
 					      bool selecting = false);
 
@@ -314,7 +314,7 @@ private:
 	///
 	void setCharFont(Buffer const *, int pos, LyXFont const & font);
 	///
-	bool checkAndActivateInset(BufferView * bv, bool behind);
+	bool checkAndActivateInset(BufferView * bv, bool front);
 	///
 	bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
 				   int button = 0);

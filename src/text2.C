@@ -2319,17 +2319,21 @@ void LyXText::cursorRight(BufferView * bview, bool internal) const
 }
 
 
-void LyXText::cursorUp(BufferView * bview) const
+void LyXText::cursorUp(BufferView * bview, bool selecting) const
 {
 #if 1
 	int x = cursor.x_fix();
 	int y = cursor.y() - cursor.row()->baseline() - 1;
 	setCursorFromCoordinates(bview, x, y);
-	int y1 = cursor.iy() - first_y;
-	int y2 = y1;
-	Inset * inset_hit = bview->checkInsetHit(const_cast<LyXText *>(this), x, y1);
-	if (inset_hit && isHighlyEditableInset(inset_hit)) {
-		inset_hit->edit(bview, x, y - (y2 - y1), 0);
+	if (!selecting) {
+		int y1 = cursor.iy() - first_y;
+		int y2 = y1;
+		y -= first_y;
+		Inset * inset_hit =
+			bview->checkInsetHit(const_cast<LyXText *>(this), x, y1);
+		if (inset_hit && isHighlyEditableInset(inset_hit)) {
+			inset_hit->edit(bview, x, y - (y2 - y1), 0);
+		}
 	}
 #else
 	setCursorFromCoordinates(bview, cursor.x_fix(),
@@ -2338,18 +2342,22 @@ void LyXText::cursorUp(BufferView * bview) const
 }
 
 
-void LyXText::cursorDown(BufferView * bview) const
+void LyXText::cursorDown(BufferView * bview, bool selecting) const
 {
 #if 1
 	int x = cursor.x_fix();
 	int y = cursor.y() - cursor.row()->baseline() +
 		cursor.row()->height() + 1;
 	setCursorFromCoordinates(bview, x, y);
-	int y1 = cursor.iy() - first_y;
-	int y2 = y1;
-	Inset * inset_hit = bview->checkInsetHit(const_cast<LyXText *>(this), x, y1);
-	if (inset_hit && isHighlyEditableInset(inset_hit)) {
-		inset_hit->edit(bview, x, y - (y2 - y1), 0);
+	if (!selecting) {
+		int y1 = cursor.iy() - first_y;
+		int y2 = y1;
+		y -= first_y;
+		Inset * inset_hit =
+			bview->checkInsetHit(const_cast<LyXText *>(this), x, y1);
+		if (inset_hit && isHighlyEditableInset(inset_hit)) {
+			inset_hit->edit(bview, x, y - (y2 - y1), 0);
+		}
 	}
 #else
 	setCursorFromCoordinates(bview, cursor.x_fix(),

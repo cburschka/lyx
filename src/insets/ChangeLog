@@ -1,3 +1,8 @@
+2002-04-17  Juergen Vigna  <jug@sad.it>
+
+	* insettext.h: changed behind variables to front variables to be
+	equal to the one in the edit call (as it is for that they are used).
+
 2002-04-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetnote.h (ascii): overide the InsetCollapsable::ascii method to

@@ -958,7 +958,9 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 				moveCursorUpdate(true, false);
 				owner->showState();
 				goto exit_with_message;
-			} else {
+			}
+#warning I am not sure this is still right, please have a look! (Jug 20020417)
+			else { // result == UNDISPATCHED
 				//setMessage(N_("Text mode"));
 				switch (action) {
 				case LFUN_UNKNOWN_ACTION:

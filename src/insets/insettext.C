@@ -1843,9 +1843,9 @@ UpdatableInset::RESULT
 InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 {
 	if (getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
-		return moveLeftIntern(bv, false, activate_inset, selecting);
+		return moveLeftIntern(bv, true, activate_inset, selecting);
 	else
-		return moveRightIntern(bv, false, activate_inset, selecting);
+		return moveRightIntern(bv, true, activate_inset, selecting);
 }
 
 
@@ -1853,19 +1853,19 @@ UpdatableInset::RESULT
 InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 {
 	if (getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
-		return moveRightIntern(bv, true, activate_inset, selecting);
+		return moveRightIntern(bv, false, activate_inset, selecting);
 	else
-		return moveLeftIntern(bv, true, activate_inset, selecting);
+		return moveLeftIntern(bv, false, activate_inset, selecting);
 }
 
 
 UpdatableInset::RESULT
-InsetText::moveRightIntern(BufferView * bv, bool behind,
+InsetText::moveRightIntern(BufferView * bv, bool front,
 			   bool activate_inset, bool selecting)
 {
 	if (!cpar(bv)->next() && (cpos(bv) >= cpar(bv)->size()))
 		return FINISHED_RIGHT;
-	if (activate_inset && checkAndActivateInset(bv, behind))
+	if (activate_inset && checkAndActivateInset(bv, front))
 		return DISPATCHED;
 	getLyXText(bv)->cursorRight(bv);
 	if (!selecting)
@@ -1875,7 +1875,7 @@ InsetText::moveRightIntern(BufferView * bv, bool behind,
 
 
 UpdatableInset::RESULT
-InsetText::moveLeftIntern(BufferView * bv, bool behind,
+InsetText::moveLeftIntern(BufferView * bv, bool front,
 			  bool activate_inset, bool selecting)
 {
 	if (!cpar(bv)->previous() && (cpos(bv) <= 0))
@@ -1883,7 +1883,7 @@ InsetText::moveLeftIntern(BufferView * bv, bool behind,
 	getLyXText(bv)->cursorLeft(bv);
 	if (!selecting)
 		getLyXText(bv)->selection.cursor = getLyXText(bv)->cursor;
-	if (activate_inset && checkAndActivateInset(bv, behind))
+	if (activate_inset && checkAndActivateInset(bv, front))
 		return DISPATCHED;
 	return DISPATCHED_NOUPDATE;
 }
@@ -2022,27 +2022,14 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 }
 
 
-bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
+bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 {
 	if (cpar(bv)->isInset(cpos(bv))) {
-		unsigned int x;
-		unsigned int y;
 		Inset * inset =
 			static_cast<UpdatableInset*>(cpar(bv)->getInset(cpos(bv)));
 		if (!isHighlyEditableInset(inset))
 			return false;
-		LyXFont const font =
-			getLyXText(bv)->getFont(bv->buffer(), cpar(bv), cpos(bv));
-		if (behind) {
-			x = inset->width(bv, font);
-			y = font.isRightToLeft() ? 0 : inset->descent(bv, font);
-		} else {
-			x = 0;
-			y = font.isRightToLeft() ? inset->descent(bv, font) : 0;
-		}
-		//inset_x = cx(bv) - top_x + drawTextXOffset;
-		//inset_y = cy(bv) + drawTextYOffset;
-		inset->edit(bv, x, y, 0);
+		inset->edit(bv, front);
 		if (!the_locking_inset)
 			return false;
 		updateLocal(bv, CURSOR, false);

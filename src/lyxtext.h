@@ -340,9 +340,9 @@ public:
 	void setCursorFromCoordinates(BufferView *, LyXCursor &,
 				      int x, int y) const;
 	///
-	void cursorUp(BufferView *) const;
+	void cursorUp(BufferView *, bool selecting = false) const;
 	///
-	void cursorDown(BufferView *) const;
+	void cursorDown(BufferView *, bool selecting = false) const;
 	///
 	void cursorLeft(BufferView *, bool internal = true) const;
 	///

@@ -200,7 +200,7 @@ private:
 	///
 	std::vector<Position> saved_positions;
 	///
-	void moveCursorUpdate(bool selecting);
+	void moveCursorUpdate(bool selecting, bool fitcur = true);
 	/// Get next inset of this class from current cursor position
 	Inset * getInsetByCode(Inset::Code code);
 	///
