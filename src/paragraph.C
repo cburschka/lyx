@@ -80,6 +80,7 @@ Paragraph::Paragraph(Paragraph const & par)
 		text_(par.text_), begin_of_body_(par.begin_of_body_),
 	  pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
 {
+	//lyxerr << "Paragraph::Paragraph(Paragraph const&)" << endl;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it)
@@ -87,32 +88,30 @@ Paragraph::Paragraph(Paragraph const & par)
 }
 
 
-void Paragraph::operator=(Paragraph const & par)
+Paragraph & Paragraph::operator=(Paragraph const & par)
 {
 	// needed as we will destroy the pimpl_ before copying it
-	if (&par != this)
-		return;
+	if (&par != this) {
+		itemdepth = par.itemdepth;
 
-	lyxerr << "Paragraph::operator=()" << endl;
+		insetlist = par.insetlist;
+		InsetList::iterator it = insetlist.begin();
+		InsetList::iterator end = insetlist.end();
+		for (; it != end; ++it)
+			it->inset = it->inset->clone().release();
 
-	itemdepth = par.itemdepth;
+		rows = par.rows;
+		y = par.y;
+		height = par.height;
+		width = par.width;
+		layout_ = par.layout();
+		text_ = par.text_;
+		begin_of_body_ = par.begin_of_body_;
 
-	insetlist = par.insetlist;
-	InsetList::iterator it = insetlist.begin();
-	InsetList::iterator end = insetlist.end();
-	for (; it != end; ++it)
-		it->inset = it->inset->clone().release();
-
-	rows = par.rows;
-	y = par.y;
-	height = par.height;
-	width = par.width;
-	layout_ = par.layout();
-	text_ = par.text_;
-	begin_of_body_ = par.begin_of_body_;
-
-	delete pimpl_;
-	pimpl_ = new Pimpl(*par.pimpl_, this);
+		delete pimpl_;
+		pimpl_ = new Pimpl(*par.pimpl_, this);
+	}
+	return *this;
 }
 
 

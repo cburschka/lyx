@@ -370,15 +370,14 @@ LyXText * BufferView::text() const
 void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 {
 	LCursor & cur = cursor();
-	cur.reset();
-	cur.push(buffer()->inset());
+	cur.reset(buffer()->inset());
 	ParIterator::PosHolder const & positions = par.positions();
 	int const last = par.size() - 1;
 	for (int i = 0; i < last; ++i)
 		(*positions[i].it)->inset->edit(cur, true);
 	cur.resetAnchor();
-	LyXText * text = par.text(*buffer());
-	text->setCursor(cur, text->parOffset(par.pit()), pos);
+	LyXText & text = *par.text(*buffer());
+	text.setCursor(cur, text.parOffset(par.pit()), pos);
 }
 
 

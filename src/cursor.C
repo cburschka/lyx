@@ -86,12 +86,12 @@ LCursor::LCursor(BufferView & bv)
 {}
 
 
-void LCursor::reset()
+void LCursor::reset(InsetBase & inset)
 {
 	clear();
-	push_back(CursorSlice());
+	push_back(CursorSlice(inset));
 	anchor_.clear();
-	anchor_.push_back(CursorSlice());
+	anchor_.push_back(CursorSlice(inset));
 	cached_y_ = 0;
 	clearTargetX();
 	selection_ = false;

@@ -442,14 +442,14 @@ void BufferView::Pimpl::scrollDocView(int value)
 	int const first = top_y() + height;
 	int const last = top_y() + workarea().workHeight() - height;
 
-	bv_->cursor().reset();
+	bv_->cursor().reset(bv_->buffer()->inset());
 	LyXText * text = bv_->text();
-	CursorSlice & cur = bv_->cursor().front();
-	int y = text->cursorY(cur);
+	int y = text->cursorY(bv_->cursor().front());
 	if (y < first)
-		text->setCursorFromCoordinates(bv_->cursor(), 0, first);
-	else if (y > last)
-		text->setCursorFromCoordinates(bv_->cursor(), 0, last);
+		y = first;
+	if (y > last)
+		y = last;
+	text->setCursorFromCoordinates(bv_->cursor(), 0, y);
 
 	owner_->updateLayoutChoice();
 }
@@ -1028,7 +1028,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
-		bv_->cursor().reset();
+		bv_->cursor().reset(bv_->buffer()->inset());
 #warning FIXME changes
 		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->acceptChange(bv_->cursor());
@@ -1037,7 +1037,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_REJECT_ALL_CHANGES: {
-		bv_->cursor().reset();
+		bv_->cursor().reset(bv_->buffer()->inset());
 #warning FIXME changes
 		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->rejectChange(bv_->cursor());
@@ -1090,7 +1090,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BEGINNINGBUFSEL:
-		bv_->cursor().reset();
+		bv_->cursor().reset(bv_->buffer()->inset());
 		if (!cur.selection())
 			cur.resetAnchor();
 		bv_->text()->cursorTop(cur);
@@ -1098,7 +1098,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_ENDBUFSEL:
-		bv_->cursor().reset();
+		bv_->cursor().reset(bv_->buffer()->inset());
 		if (!cur.selection())
 			cur.resetAnchor();
 		bv_->text()->cursorBottom(cur);

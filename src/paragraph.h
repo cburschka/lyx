@@ -65,7 +65,7 @@ public:
 	///
 	Paragraph(Paragraph const &);
 	///
-	void operator=(Paragraph const &);
+	Paragraph & operator=(Paragraph const &);
 	///
 	~Paragraph();
 

@@ -159,8 +159,9 @@ public:
 	void info(std::ostream & os) const;
 	/// are we in math mode (2), text mode (1) or unsure (0)?
 	int currentMode();
-	/// reset cursor
-	void reset();
+	/// reset cursor bottom to the beginning of the given inset
+	// (sort of 'chroot' environment...)
+	void reset(InsetBase &);
 	/// for spellchecking
 	void replaceWord(std::string const & replacestring);
 	/// update our view
