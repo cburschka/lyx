@@ -83,7 +83,7 @@ void GUIRunTime::processEvents()
 		fl_XNextEvent(&ev);
 		lyxerr << "Received unhandled X11 event" << endl;
 		lyxerr << "Type: 0x" << hex << ev.xany.type <<
-			"Target: 0x" << hex << ev.xany.window << endl;
+			" Target: 0x" << hex << ev.xany.window << endl;
 	}
 }
 
@@ -96,7 +96,7 @@ void GUIRunTime::runTime()
 			fl_XNextEvent(&ev);
 			lyxerr << "Received unhandled X11 event" << endl;
 			lyxerr << "Type: 0x" << hex << ev.xany.type <<
-				"Target: 0x" << hex << ev.xany.window << endl;
+				" Target: 0x" << hex << ev.xany.window << endl;
 		}
 	}
 }

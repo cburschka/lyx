@@ -23,6 +23,10 @@
 	* FormTabular.C (update): deactivate left/right border settings for
 	multicolumns if not an outer cell or no parent multicolumn cell.
 
+2002-03-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* GUIRunTime.C: add spaces to error messages
+ 
 2002-03-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBase.C (show):
