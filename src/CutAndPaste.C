@@ -56,34 +56,15 @@ extern BufferView * current_view;
 namespace {
 
 // FIXME: stupid name
-Paragraph * buf = 0;
+ParagraphList paragraphs;
 textclass_type textclass = 0;
-
-// for now here this should be in another Cut&Paste Class!
-// Jürgen, I moved this out of CutAndPaste since it does not operate on any
-// member of the CutAndPaste class and in addition it was private.
-// Perhaps it even should take a parameter? (Lgb)
-void DeleteBuffer()
-{
-	if (!buf)
-		return;
-
-	Paragraph * tmppar;
-
-	while (buf) {
-		tmppar =  buf;
-		buf = buf->next();
-		delete tmppar;
-	}
-	buf = 0;
-}
 
 } // namespace anon
 
 
 bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
-			       int start, int & end, char tc, bool doclear,
-							   bool realcut)
+			       int start, int & end, textclass_type tc,
+			       bool doclear, bool realcut)
 {
 	if (!startpar || (start > startpar->size()))
 		return false;
@@ -179,18 +160,20 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 
 
 bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
-				int start, int end, char tc)
+				int start, int end, textclass_type tc)
 {
 	if (!startpar || (start > startpar->size()))
 		return false;
 
-	DeleteBuffer();
+	paragraphs.clear();
 
 	textclass = tc;
 
 	if (!endpar || startpar == endpar) {
 		// only within one paragraph
-		buf = new Paragraph;
+		ParagraphList::iterator buf =
+			paragraphs.insert(paragraphs.begin(), new Paragraph);
+
 		buf->layout(startpar->layout());
 		pos_type i = start;
 		if (end > startpar->size())
@@ -203,46 +186,48 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 		// copy more than one paragraph
 		// clone the paragraphs within the selection
 		Paragraph * tmppar = startpar;
-		buf = new Paragraph(*tmppar, false);
-		Paragraph * tmppar2 = buf;
-		tmppar2->cleanChanges();
 
-		while (tmppar != endpar
-		       && tmppar->next()) {
-			tmppar = tmppar->next();
-			tmppar2->next(new Paragraph(*tmppar, false));
-			tmppar2->next()->previous(tmppar2);
-			tmppar2 = tmppar2->next();
+		while (tmppar != endpar) {
+			Paragraph * newpar = new Paragraph(*tmppar, false);
 			// reset change info
-			tmppar2->cleanChanges();
-		}
-		tmppar2->next(0);
+			newpar->cleanChanges();
+#if 1
+			newpar->setInsetOwner(0);
+#endif
 
-		// the buf paragraph is too big
+			paragraphs.push_back(newpar);
+			tmppar = tmppar->next();
+		}
+
+		// The first paragraph is too big.
+		Paragraph & front = paragraphs.front();
 		pos_type tmpi2 = start;
 		for (; tmpi2; --tmpi2)
-			buf->erase(0);
+			front.erase(0);
 
-		// now tmppar 2 is too big, delete all after end
+		// Now last paragraph is too big, delete all after end.
+		Paragraph & back = paragraphs.back();
 		tmpi2 = end;
-		while (tmppar2->size() > tmpi2) {
-			tmppar2->erase(tmppar2->size() - 1);
+		while (back.size() > tmpi2) {
+			back.erase(back.size() - 1);
 		}
+
+#if 0
 		// this paragraph's are of noone's owner!
-		tmppar = buf;
-		while (tmppar) {
-			tmppar->setInsetOwner(0);
-			tmppar = tmppar->next();
-		}
+		ParagraphList::iterator it = paragraphs.begin();
+		ParagraphList::iterator end = paragraphs.end();
+		for (; it != end; ++it)
+			it->setInsetOwner(0);
+#endif
 	}
 	return true;
 }
 
 
 bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
-				 int & pos, char tc)
+				 int & pos, textclass_type tc)
 {
-	if (!checkPastePossible(*par))
+	if (!checkPastePossible())
 		return false;
 
 	if (pos > (*par)->size())
@@ -287,37 +272,45 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// many paragraphs
 
 		// make a copy of the simple cut_buffer
-		Paragraph * tmpbuf = buf;
-		Paragraph * simple_cut_clone = new Paragraph(*tmpbuf, false);
-		Paragraph * tmpbuf2 = simple_cut_clone;
+#if 1
+		ParagraphList::iterator it = paragraphs.begin();
 
-		while (tmpbuf->next()) {
-			tmpbuf = tmpbuf->next();
-			tmpbuf2->next(new Paragraph(*tmpbuf, false));
-			tmpbuf2->next()->previous(tmpbuf2);
-			tmpbuf2 = tmpbuf2->next();
+		ParagraphList simple_cut_clone;
+		simple_cut_clone.insert(simple_cut_clone.begin(),
+					new Paragraph(*it, false));
+
+		ParagraphList::iterator end = paragraphs.end();
+		while (boost::next(it) != end) {
+			++it;
+			simple_cut_clone.insert(simple_cut_clone.end(),
+						new Paragraph(*it, false));
 		}
-
+#else
+		// Later we want it done like this:
+		ParagraphList simple_cut_clone(paragraphs.begin(),
+					       paragraphs.end());
+#endif
 		// now remove all out of the buffer which is NOT allowed in the
 		// new environment and set also another font if that is required
-		tmpbuf = buf;
+		ParagraphList::iterator tmpbuf = paragraphs.begin();
 		int depth_delta = (*par)->params().depth() - tmpbuf->params().depth();
-		// temporary set *par as previous of tmpbuf as we might have to realize
-		// the font.
+		// Temporary set *par as previous of tmpbuf as we might have
+		// to realize the font.
 		tmpbuf->previous(*par);
 
 		// make sure there is no class difference
-		SwitchLayoutsBetweenClasses(textclass, tc, tmpbuf,
+		SwitchLayoutsBetweenClasses(textclass, tc, &*tmpbuf,
 					    current_view->buffer()->params);
 
 		Paragraph::depth_type max_depth = (*par)->getMaxDepthAfter();
 
-		while(tmpbuf) {
-			// if we have a negative jump so that the depth would go below
-			// 0 depth then we have to redo the delta to this new max depth
-			// level so that subsequent paragraphs are aligned correctly to
-			// this paragraph at level 0.
-			if ((static_cast<int>(tmpbuf->params().depth()) + depth_delta) < 0)
+		while (tmpbuf != paragraphs.end()) {
+			// If we have a negative jump so that the depth would
+			// go below 0 depth then we have to redo the delta to
+			// this new max depth level so that subsequent
+			// paragraphs are aligned correctly to this paragraph
+			// at level 0.
+			if ((int(tmpbuf->params().depth()) + depth_delta) < 0)
 				depth_delta = 0;
 			// set the right depth so that we are not too deep or shallow.
 			tmpbuf->params().depth(tmpbuf->params().depth() + depth_delta);
@@ -329,7 +322,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 				max_depth = tmpbuf->getMaxDepthAfter();
 			// set the inset owner of this paragraph
 			tmpbuf->setInsetOwner((*par)->inInset());
-			for(pos_type i = 0; i < tmpbuf->size(); ++i) {
+			for (pos_type i = 0; i < tmpbuf->size(); ++i) {
 				if (tmpbuf->getChar(i) == Paragraph::META_INSET) {
 					if (!(*par)->insetAllowed(tmpbuf->getInset(i)->lyxCode()))
 					{
@@ -348,16 +341,16 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 			tmpbuf = tmpbuf->next();
 		}
 		// now reset it to 0
-		buf->previous(0);
+		paragraphs.begin()->previous(0);
 
 		// make the buf exactly the same layout than
 		// the cursor paragraph
-		buf->makeSameLayout(*par);
+		paragraphs.begin()->makeSameLayout(*par);
 
 		// find the end of the buffer
-		Paragraph * lastbuffer = buf;
-		while (lastbuffer->next())
-			lastbuffer = lastbuffer->next();
+		ParagraphList::iterator lastbuffer = paragraphs.begin();
+		while (boost::next(lastbuffer) != paragraphs.end())
+			++lastbuffer;
 
 		bool paste_the_end = false;
 
@@ -373,10 +366,10 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 
 		// paste it!
 		lastbuffer->next((*par)->next());
-		(*par)->next()->previous(lastbuffer);
+		(*par)->next()->previous(&*lastbuffer);
 
-		(*par)->next(buf);
-		buf->previous(*par);
+		(*par)->next(&*paragraphs.begin());
+		paragraphs.begin()->previous(*par);
 
 		if ((*par)->next() == lastbuffer)
 			lastbuffer = *par;
@@ -384,15 +377,15 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		mergeParagraph(current_view->buffer()->params,
 			       current_view->buffer()->paragraphs, *par);
 		// store the new cursor position
-		*par = lastbuffer;
+		*par = &*lastbuffer;
 		pos = lastbuffer->size();
 		// maybe some pasting
 		if (lastbuffer->next() && paste_the_end) {
-			if (lastbuffer->next()->hasSameLayout(lastbuffer)) {
+			if (lastbuffer->next()->hasSameLayout(&*lastbuffer)) {
 				mergeParagraph(current_view->buffer()->params,
 					       current_view->buffer()->paragraphs, lastbuffer);
 			} else if (!lastbuffer->next()->size()) {
-				lastbuffer->next()->makeSameLayout(lastbuffer);
+				lastbuffer->next()->makeSameLayout(&*lastbuffer);
 				mergeParagraph(current_view->buffer()->params, current_view->buffer()->paragraphs, lastbuffer);
 			} else if (!lastbuffer->size()) {
 				lastbuffer->makeSameLayout(lastbuffer->next());
@@ -402,7 +395,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 				lastbuffer->next()->stripLeadingSpaces();
 		}
 		// restore the simple cut buffer
-		buf = simple_cut_clone;
+		paragraphs = simple_cut_clone;
 	}
 
 	return true;
@@ -411,16 +404,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 
 int CutAndPaste::nrOfParagraphs()
 {
-	if (!buf)
-		return 0;
-
-	int n = 1;
-	Paragraph * tmppar = buf;
-	while (tmppar->next()) {
-		++n;
-		tmppar = tmppar->next();
-	}
-	return n;
+	return paragraphs.size();
 }
 
 
@@ -482,9 +466,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 }
 
 
-bool CutAndPaste::checkPastePossible(Paragraph *)
+bool CutAndPaste::checkPastePossible()
 {
-	if (!buf) return false;
-
-	return true;
+	return !paragraphs.empty();
 }

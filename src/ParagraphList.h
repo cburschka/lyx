@@ -64,9 +64,13 @@ public:
 	///
 	void push_back(Paragraph *);
 	///
-	Paragraph const * back() const;
+	Paragraph const & front() const;
 	///
-	Paragraph * back();
+	Paragraph & front();
+	///
+	Paragraph const & back() const;
+	///
+	Paragraph & back();
 	///
 	int size() const;
 	///

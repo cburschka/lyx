@@ -22,14 +22,15 @@ namespace CutAndPaste {
 
 /// realcut == false is we actually want a delete
 bool cutSelection(Paragraph * startpar, Paragraph ** endpar,
-		  int start, int & end, char tc, bool doclear = false,
-		  bool realcut = true);
+		  int start, int & end, lyx::textclass_type tc,
+		  bool doclear = false, bool realcut = true);
+
 ///
 bool copySelection(Paragraph * startpar, Paragraph * endpar,
-		   int start, int end, char tc);
+		   int start, int end, lyx::textclass_type tc);
 ///
 bool pasteSelection(Paragraph ** par, Paragraph ** endpar,
-		    int & pos, char tc);
+		    int & pos, lyx::textclass_type tc);
 
 ///
 int nrOfParagraphs();
@@ -43,7 +44,7 @@ int SwitchLayoutsBetweenClasses(lyx::textclass_type c1,
 				Paragraph * par,
 				BufferParams const & bparams);
 ///
-bool checkPastePossible(Paragraph *);
+bool checkPastePossible();
 
 } // end of CutAndPaste
 

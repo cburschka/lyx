@@ -1,14 +1,36 @@
+2003-03-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ParagraphList.C (front): new function
+	(back): implement
+
 2003-03-06  Alfredo Braunstein  <abraunst@libero.it>
 
-	* lyxtext.h (top_y): added these 2 methods, and private vars top_row_ 
+	* lyxtext.h (top_y): added these 2 methods, and private vars top_row_
 	and top_row_offset_. removed var first_y.
-	* text.C (top_y): 
-	* text2.C (LyXText, removeRow): 
+	* text.C (top_y):
+	* text2.C (LyXText, removeRow):
 	* text3.C:
-	* BufferView_pimpl.C: 
+	* BufferView_pimpl.C:
 	use these methods instead of using first_y
 
 2003-03-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (pasteSelection): adjust for checkPastePossible
+
+	* CutAndPaste.C: remove Paragraph * buf and replace with
+	ParagraphList paragraphs.
+	(DeleteBuffer): delete
+	(cutSelection): change the tc type to textclass_type
+	(copySelection): change the tc type to textclass_type
+	(copySelection): adjust for ParagraphList
+	(pasteSelection): change the tc type to textclass_type
+	(pasteSelection): adjust for Paragraphlist
+	(nrOfParagraphs): simplify for ParagraphList
+	(checkPastePossible): simplify for ParagraphList
+	(checkPastePossible): remove unused arg
+
+	* ParagraphList.C (insert): handle the case where there are no
+	paragraphs yet.
 
 	* CutAndPaste.h: make CutAndPaste a namespace.
 

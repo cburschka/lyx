@@ -94,6 +94,8 @@ ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 		par->previous(prev);
 		prev->next(par);
 		it->previous(par);
+	} else if (parlist == 0) {
+		parlist = par;
 	} else {
 		// Find last par.
 		Paragraph * last = parlist;
@@ -151,6 +153,36 @@ ParagraphList::iterator ParagraphList::end()
 ParagraphList::iterator ParagraphList::end() const
 {
 	return iterator();
+}
+
+
+Paragraph const & ParagraphList::front() const
+{
+	return *parlist;
+}
+
+
+Paragraph & ParagraphList::front()
+{
+	return *parlist;
+}
+
+
+Paragraph const & ParagraphList::back() const
+{
+	Paragraph * tmp = parlist;
+	while (tmp->next())
+		tmp = tmp->next();
+	return *tmp;
+}
+
+
+Paragraph & ParagraphList::back()
+{
+	Paragraph * tmp = parlist;
+	while (tmp->next())
+		tmp = tmp->next();
+	return *tmp;
 }
 
 
