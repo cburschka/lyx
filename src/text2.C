@@ -697,7 +697,7 @@ void LyXText::fullRebreak()
 
 void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
-	lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << "\n";
+	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << "\n";
 
 	// rebuild row cache
 	rowlist_.clear();

@@ -306,8 +306,8 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 	}
 
 	// Draw text and set the new x position
-	lyxerr << "paint row: yo_ " << yo_ << " baseline: " << row_->baseline()
-		<< "\n";
+	//lyxerr << "paint row: yo_ " << yo_ << " baseline: " << row_->baseline()
+	//	<< "\n";
 	pain_.text(int(x_), yo_ + row_->baseline(), str, orig_font);
 	x_ += font_metrics::width(str, orig_font);
 }

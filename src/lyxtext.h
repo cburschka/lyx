@@ -475,7 +475,7 @@ public:
 	int singleWidth(ParagraphList::iterator pit,
 		lyx::pos_type pos, char c) const;
 	/// rebuild row cache
-	void rebuildRows();
+	void rebuildRows(ParagraphList::iterator pit);
 
 	/// return the color of the canvas
 	LColor::color backgroundColor() const;

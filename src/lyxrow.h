@@ -24,7 +24,7 @@ public:
 	///
 	Row();
 	///
-	Row(ParagraphList::iterator pit, lyx::pos_type po);
+	Row(ParagraphList::iterator pit, lyx::pos_type pos);
 	///
 	void par(ParagraphList::iterator pit);
 	///
@@ -70,7 +70,7 @@ private:
 	ParagraphList::iterator pit_;
 	///
 	lyx::pos_type pos_;
-	/** what is missing to a full row can be negative.
+	/** what is missing to a full row. Can be negative.
 	  Needed for hfills, flushright, block etc. */
 	mutable int fill_;
 	///

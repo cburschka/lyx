@@ -1950,6 +1950,8 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	text_.init(bv);
 	restoreLyXTextState();
 
+	// seems to be unneeded
+#if 1
 	if (the_locking_inset) {
 		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy() + drawTextYOffset;
@@ -1963,6 +1965,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	} else {
 		need_update |= FULL;
 	}
+#endif
 }
 
 

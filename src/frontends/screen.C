@@ -26,8 +26,8 @@
 #include "debug.h"
 #include "rowpainter.h"
 #include "insets/updatableinset.h"
-#include "mathed/formulabase.h"
 #include "lyx_gui.h"
+#include "metricsinfo.h"
 
 // Splash screen-specific stuff
 #include "lyxfont.h"
@@ -147,8 +147,8 @@ void LyXScreen::showCursor(BufferView & bv)
 	Cursor_Shape shape = BAR_SHAPE;
 
 	LyXText const & text = *bv.getLyXText();
-	LyXFont const & realfont(text.real_current_font);
-	BufferParams const & bp(bv.buffer()->params);
+	LyXFont const & realfont = text.real_current_font;
+	BufferParams const & bp = bv.buffer()->params;
 	bool const samelang = realfont.language() == bp.language;
 	bool const isrtl = realfont.isVisibleRightToLeft();
 
@@ -453,6 +453,16 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 
 	hideCursor();
 
+#if 0
+	// some day it should look like that:
+	// redo metrics
+	Dimension dim;
+	LyXFont font;
+	MetricsInfo mi(bv, font, workarea().workWidth());
+	text->metrics(mi, dim);
+#endif
+
+	// draw it
 	RowList::iterator const rend = text->rows().end();
 	while (rit != rend && y < y2) {
 		paintRows(*bv, *text, rit, y + yo, xo, y + topy);
