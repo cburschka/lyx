@@ -418,7 +418,6 @@ string formatted(string const & sin, int w, int size, int style)
 void setCursorColor(int color)
 {
 	fl_set_cursor_color(FL_DEFAULT_CURSOR, color, FL_WHITE);
-	fl_set_cursor_color(XC_question_arrow, color, FL_WHITE);
 	fl_set_cursor_color(XC_xterm,          color, FL_WHITE);
 	fl_set_cursor_color(XC_watch,          color, FL_WHITE);
 	fl_set_cursor_color(XC_sb_right_arrow, color, FL_WHITE);

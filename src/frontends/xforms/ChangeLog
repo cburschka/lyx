@@ -1,3 +1,8 @@
+2002-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xforms_helpers.C (setCursorColor):
+	* Tooltips.C (set): remove XC_question_arrow code.
+
 2002-03-19  André Pönitz <poenitz@gmx.net>
 
 	* FormParagraph.C: whitespace changes
@@ -7,7 +12,7 @@
 	* Tooltips.[Ch] (initTooltip): renamed init. In the 0.89 version, no
 	longer call fl_set_object_helper as this routine respects line breaks
 	only if the dialog is visible.
-	(getTooltip): renamed  get.
+	(getTooltip): renamed get.
 	(toggleTooltips): renamed set and made public,
 	
 	* FormBase.C (show):

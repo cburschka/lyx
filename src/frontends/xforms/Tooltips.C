@@ -67,16 +67,6 @@ void Tooltips::set()
 		char const * const c_str = enabled_ ? it->second.c_str() : 0;
 		fl_set_object_helper(ob, c_str);
 	}
-
-	FL_OBJECT * const ob = tooltipsMap.begin()->first;
-
-	// The dialog is not visible
-	if (!ob->form->window)
-		return;
-
-	// Set the cursor to a question mark or back to the default.
-	int const cursor = enabled_ ? XC_question_arrow : FL_DEFAULT_CURSOR;
-	fl_set_cursor(ob->form->window, cursor);
 }
 
 
@@ -145,22 +135,7 @@ void Tooltips::toggleEnabled()
 
 
 void Tooltips::set()
-{
-	if (tooltipsMap.empty())
-		// There are no objects with tooltips in this dialog, so
-		// just go away. Don't change the cursor to a question mark.
-		return;
-
-	FL_OBJECT * const ob = tooltipsMap.begin()->first;
-
-	// The dialog is not visible
-	if (!ob->form->window)
-		return;
-
-	// Set the cursor to a question mark or back to the default.
-	int const cursor = enabled_ ? XC_question_arrow : FL_DEFAULT_CURSOR;
-	fl_set_cursor(ob->form->window, cursor);
-}
+{}
 
 
 void Tooltips::init(FL_OBJECT * ob, string const & tip)

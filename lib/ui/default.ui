@@ -316,7 +316,7 @@ Menuset
 # HELP MENU
 #
     Menu "help"
-	Item "What's this?|W" "toggle-tooltips"
+	Item "Tooltips|o" "toggle-tooltips"
         Separator
 	Item "Introduction|I" "help-open Intro"
 	Item "Tutorial|T" "help-open Tutorial"
