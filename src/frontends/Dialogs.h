@@ -143,7 +143,7 @@ public:
 	///
 	void showParagraph();
 	///
-	void updateParagraph();
+	boost::signal0<void>  updateParagraph;
 	///
 	void showPreamble();
 	///

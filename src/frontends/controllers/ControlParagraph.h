@@ -38,6 +38,8 @@ public:
 	bool inInset() const;
 	///
 	LyXAlignment alignPossible() const;
+	///
+	void changedParagraph();
 
 private:
 	/// Get changed parameters and Dispatch them to the kernel.

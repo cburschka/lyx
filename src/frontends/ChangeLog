@@ -1,3 +1,7 @@
+2002-08-02  Edwin Leuven <leuven@fee.uva.nl>
+
+	* Dialogs.[Ch] (updateParagraph): converted back to a signal again.
+
 2002-08-02  Angus Leeming  <leeming@lyx.org>
 
 	* LyXView.[Ch] (view): now returns shared_ptr<BufferView> const &

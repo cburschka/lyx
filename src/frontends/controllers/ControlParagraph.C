@@ -14,6 +14,7 @@
 #endif
 
 #include "ControlParagraph.h"
+#include "ButtonControllerBase.h"
 #include "ViewBase.h"
 #include "ParagraphParameters.h"
 #include "Liason.h"
@@ -23,13 +24,19 @@
 #include "buffer.h"
 #include "lyxtext.h"
 #include "support/LAssert.h"
+#include "Dialogs.h"
+#include <boost/bind.hpp>
 
 using Liason::setMinibuffer;
 
 
 ControlParagraph::ControlParagraph(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d), pp_(0), ininset_(false)
-{}
+{
+     d_.updateParagraph.connect(
+	     boost::bind(&ControlParagraph::changedParagraph, this));
+
+}
 
 
 ControlParagraph::~ControlParagraph()
@@ -111,4 +118,19 @@ void ControlParagraph::setParams()
 
 	/// is paragraph in inset
 	ininset_ = par_->inInset();
+}
+
+void ControlParagraph::changedParagraph()
+{
+	/// get paragraph
+	Paragraph const * p = lv_.view()->getLyXText()->cursor.par();
+
+	if (p == 0) // this is wrong as we don't set par_ here! /* || p == par_) */
+		return;
+
+	// For now, don't bother checking if the params are different.
+	// Will the underlying paragraph accept our changes?
+	Inset * const inset = p->inInset();
+	bool const accept = !(inset && inset->forceDefaultParagraphs(inset));
+	bc().valid(accept);
 }

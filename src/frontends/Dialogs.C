@@ -187,13 +187,6 @@ void Dialogs::showParagraph()
 	gui_ShowParagraph(*dialogs_lyxview, *this);
 }
 
-void Dialogs::updateParagraph()
-{
-#if 0
-	gui_UpdateParagraph(*dialogs_lyxview, *this);
-#endif
-}
-
 
 void Dialogs::showPreamble()
 {
