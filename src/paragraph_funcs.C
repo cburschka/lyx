@@ -928,7 +928,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		inset->read(&buf, lex);
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\hfill") {
-		par.insertInset(par.size(), new InsetHFill(), font, change);
+		par.insertInset(par.size(), new InsetHFill, font, change);
 	} else if (token == "\\change_unchanged") {
 		// Hack ! Needed for empty paragraphs :/
 		// FIXME: is it still ??
