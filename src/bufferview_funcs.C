@@ -434,8 +434,7 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 	
 	bv->getLyXText()->clearSelection();
 
-	LyXText * text = par.text() ? par.text() : bv->text;
-	
+	LyXText * text = par.text(bv);
 	par.lockPath(bv);
 
 	text->setCursor(cur.pit(), cur.pos());

@@ -61,19 +61,15 @@ std::ostream & operator<<(std::ostream & os, Undo const & undo)
 
 
 // translates LyXText pointer into offset count from document begin
-ParIterator text2pit(LyXText * text, int & tcount)
+ParIterator text2pit(BufferView * bv, LyXText * text, int & tcount)
 {
 	tcount = 0;
 	Buffer * buf = text->bv()->buffer();
 	ParIterator pit = buf->par_iterator_begin();
 	ParIterator end = buf->par_iterator_end();
 
-	// it.text() returns 0 for outermost text.
-	if (text == text->bv()->text)
-		return pit;
-
 	for ( ; pit != end; ++pit, ++tcount)
-		if (pit.text() == text)
+		if (pit.text(bv) == text)
 			return pit;
 	lyxerr << "undo: should not happen" << std::endl;
 	return end;
@@ -97,14 +93,6 @@ ParIterator num2pit(BufferView * bv, int num)
 	lyxerr << "undo: num2pit: num: " << num << std::endl;
 	BOOST_ASSERT(false);
 	return buf->par_iterator_begin();
-}
-
-
-// translates offset from buffer begin to LyXText
-LyXText * pit2text(BufferView * bv, ParIterator const & pit)
-{
-	LyXText * text = pit.text();
-	return text ? text : bv->text;
 }
 
 
@@ -133,7 +121,7 @@ void recordUndo(Undo::undo_kind kind,
 
 	// make and push the Undo entry
 	int textnum;
-	ParIterator pit = text2pit(text, textnum);
+	ParIterator pit = text2pit(text->bv(), text, textnum);
 	stack.push(Undo(kind, textnum, pit.index(),
 		first_par, end_par, text->cursor.par(), text->cursor.pos()));
 	lyxerr << "undo record: " << stack.top() << std::endl;
@@ -161,7 +149,7 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 {
 	lyxerr << "undo, performing: " << undo << std::endl;
 	ParIterator pit = num2pit(bv, undo.text);
-	LyXText * text = pit2text(bv, pit);
+	LyXText * text = pit.text(bv);
 	ParagraphList & plist = text->ownerParagraphs();
 
 	// remove new stuff between first and last
@@ -238,7 +226,7 @@ bool textUndoOrRedo(BufferView * bv,
 			advance(last, plist.size() - undo.end_par + 1);
 			otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
 		}
-		LyXText * text = pit2text(bv, pit);
+		LyXText * text = pit.text(bv);
 		otherstack.top().cursor_pos = text->cursor.pos();
 		otherstack.top().cursor_par = text->cursor.par();
 		lyxerr << " undo other: " << otherstack.top() << std::endl;

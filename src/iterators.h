@@ -48,7 +48,7 @@ public:
 	ParagraphList & plist() const;
 	/// returns 'innermost' LyXText if in an inset or '0' instead of
 	//bv->text
-	LyXText * text() const;
+	LyXText * text(BufferView *) const;
 	/// returns innermost inset
 	InsetOld * inset() const;
 	/// returns index of cell in innermost inset

@@ -1,3 +1,10 @@
+2003-11-05  Alfredo Braunstein  <abraunst@libero.it>
+
+	* iterators.[Ch] (text): require bv argument
+	* undo.C (recordUndo): 
+	* lyxfunc.C (dispatch): 
+	* bufferview_funcs.C (put_selection_at): adjust
+
 2003-11-05  João Luis M. Assirati  <assirati@fma.if.usp.br>
 
 	* lyxsocket.C: export variables XEDITOR and LYXSOCKET

@@ -1406,7 +1406,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 
 		par.lockPath(view());
-		LyXText * lt = par.text() ? par.text() : view()->text;
+		LyXText * lt = par.text(view());
 
 		// Set the cursor
 		lt->setCursor(par.pit(), 0);

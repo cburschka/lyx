@@ -149,11 +149,11 @@ ParIterator & ParIterator::operator++()
 }
 
 
-LyXText * ParIterator::text() const
+LyXText * ParIterator::text(BufferView * bv) const
 {
 	//lyxerr << "positions.size: " << pimpl_->positions.size() << std::endl;
 	if (pimpl_->positions.size() <= 1)
-		return 0;
+		return bv->text;
 
 	ParPosition const & pos = pimpl_->positions[pimpl_->positions.size() - 2];
 	return (*pos.it)->inset->getText(*pos.index);
