@@ -360,13 +360,14 @@ bool Converters::convert(Buffer const * buffer,
 			}
 
 			if (res) {
-				if (conv.to == "program")
-					Alert::alert(_("There were errors during the Build process."),
-						   _("You should try to fix them."));
-				else
+				if (conv.to == "program") {
+					Alert::error(_("Build errors"),
+						_("There were errors during the build process."));
+				} else {
 					Alert::alert(_("Cannot convert file"),
 						   _("Error while executing"),
 						   command.substr(0, 50));
+				}
 				return false;
 			}
 		}
@@ -465,6 +466,36 @@ bool Converters::formatIsUsed(string const & format)
 }
 
 
+namespace {
+
+void alertErrors(string const & prog, int nr_errors)
+{
+	string s;
+#if USE_BOOST_FORMAT
+	if (nr_errors == 1) {
+		boost::format fmt(_("One error detected when running %1$s.\n"));
+		fmt % prog;
+		s = fmt.str();
+	} else {
+		boost::format fmt(_("%1$s errors detected when running %2$s.\n"));
+		fmt % tostr(nr_errors);
+		fmt % prog;
+		s = fmt.str();
+	}
+#else
+	if (num_errors == 1) {
+		s = _("One error detected");
+	} else {
+		s = tostr(num_errors);
+		s += _(" errors detected.");
+	}
+#endif
+	Alert::error(_("Errors found"), s);
+}
+
+}
+
+
 bool Converters::scanLog(Buffer const * buffer, string const & command,
 			string const & filename)
 {
@@ -492,31 +523,13 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 	}
 
 	if ((result & LaTeX::ERRORS)) {
-		int num_errors = latex.getNumErrors();
-		string s;
-		string t;
-		if (num_errors == 1) {
-			s = _("One error detected");
-			t = _("You should try to fix it.");
-		} else {
-			s = tostr(num_errors);
-			s += _(" errors detected.");
-			t = _("You should try to fix them.");
-		}
 		string head;
 		split(command, head, ' ');
-#if USE_BOOST_FORMAT
-		Alert::alert(boost::io::str(boost::format(_("There were errors during running of %1$s")) % head),
-			   s, t);
-#else
-		Alert::alert(_("There were errors during running of ") + head,
-			   s, t);
-#endif
+		alertErrors(head, latex.getNumErrors());
 		return false;
 	} else if (result & LaTeX::NO_OUTPUT) {
-		string const s = _("The operation resulted in");
-		string const t = _("an empty file.");
-		Alert::alert(_("Resulting file is empty"), s, t);
+		Alert::warning(_("Output is empty"),
+			_("An empty output file was generated."));
 		return false;
 	}
 	return true;
@@ -558,23 +571,10 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 		Alert::alert(_("LaTeX did not work!"),
 			   _("Missing log file:"), name);
 	} else if ((result & LaTeX::ERRORS)) {
-		int num_errors = latex.getNumErrors();
-		string s;
-		string t;
-		if (num_errors == 1) {
-			s = _("One error detected");
-			t = _("You should try to fix it.");
-		} else {
-			s = tostr(num_errors);
-			s += _(" errors detected.");
-			t = _("You should try to fix them.");
-		}
-		Alert::alert(_("There were errors during the LaTeX run."),
-			   s, t);
+		alertErrors("LaTeX", latex.getNumErrors());
 	}  else if (result & LaTeX::NO_OUTPUT) {
-		string const s = _("The operation resulted in");
-		string const t = _("an empty file.");
-		Alert::alert(_("Resulting file is empty"), s, t);
+		Alert::warning(_("Output is empty"),
+			_("An empty output file was generated."));
 	}
 
 	if (bv)
