@@ -10,6 +10,7 @@ DIALOGS = \
 	QError \
 	QERT \
 	QExternal \
+	QInclude \
 	QIndex \
 	QParagraph \
 	QPrint \
@@ -40,6 +41,8 @@ DIALOGSOURCES = \
 	QERT.C QERTDialog.C \
 	QExternal.h QExternalDialog.h \
 	QExternal.C QExternalDialog.C \
+	QInclude.h QIncludeDialog.h \
+	QInclude.C QIncludeDialog.C \
 	QIndex.h QIndexDialog.h \
 	QIndex.C QIndexDialog.C \
 	QParagraph.h QParagraphDialog.h \
@@ -71,6 +74,7 @@ MOCDIALOGS = \
 	QErrorDialog_moc.C \
 	QERTDialog_moc.C \
 	QExternalDialog_moc.C \
+	QIncludeDialog_moc.C \
 	QIndexDialog_moc.C \
 	QParagraphDialog_moc.C \
 	QPrintDialog_moc.C \
@@ -101,6 +105,8 @@ UIDIALOGS = \
 	QERTDialogBase.h \
 	QExternalDialogBase.C \
 	QExternalDialogBase.h \
+	QIncludeDialogBase.h \
+	QIncludeDialogBase.C \
 	QIndexDialogBase.h \
 	QIndexDialogBase.C \
 	QParagraphDialogBase.h \
@@ -130,6 +136,7 @@ UIMOCDIALOGS = \
 	QErrorDialogBase_moc.C \
 	QERTDialogBase_moc.C \
 	QExternalDialogBase_moc.C \
+	QIncludeDialogBase_moc.C \
 	QIndexDialogBase_moc.C \
 	QParagraphDialogBase_moc.C \
 	QPrintDialogBase_moc.C \

@@ -44,6 +44,7 @@ void QThesaurus::build_dialog()
 void QThesaurus::update_contents()
 {
 	dialog_->entryED->setText(controller().text().c_str());
+	dialog_->replaceED->setText("");
 	dialog_->updateLists(); 
 }
 

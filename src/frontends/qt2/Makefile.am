@@ -26,7 +26,6 @@ libqt2_la_OBJADD = \
 	../xforms/FormBrowser.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormGraphics.lo \
-	../xforms/FormInclude.lo \
 	../xforms/FormIndex.lo \
 	../xforms/FormInset.lo \
 	../xforms/FormLog.lo \
