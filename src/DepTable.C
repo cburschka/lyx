@@ -50,7 +50,7 @@ void DepTable::insert(string const & fi,
 		dep_info di;
 		di.crc_prev = 0;
 		if (upd) {
-			lyxerr[Debug::DEPEND] << " CRC..." << flush;
+			lyxerr[Debug::DEPEND] << " CRC..." << std::flush;
 			di.crc_cur = lyx::sum(f);
 			lyxerr[Debug::DEPEND] << "done." << endl;
 			struct stat f_info;
