@@ -1,6 +1,17 @@
+2003-10-25  Angus Leeming  <leeming@lyx.org>
+
+	* render_base.h (asButton, asGraphic, asPreview, asMonitoredPreview):
+	new virtual member functions, specialised...
+	* render_button.h (asButton):
+	* render_graphic.h (asGraphic):
+	* render_preview.h (asPreview, asMonitoredPreview): ... here.
+
+	* insetexternal.C: use these new functions rather than dynamic_cast.
+	Various other small simplifications.
+
 2003-10-22  Angus Leeming  <leeming@lyx.org>
 
-w	* insetexternal.[Ch]: add the ability to 'preview' the external file
+	* insetexternal.[Ch]: add the ability to 'preview' the external file
 	if so desired.
 
 	* insetinclude.C: changes due to the changes in the RenderPreview

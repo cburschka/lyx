@@ -44,6 +44,9 @@ public:
 	typedef boost::signal0<void>::slot_type slot_type;
 	boost::signals::connection connect(slot_type const &) const;
 
+	/// equivalent to dynamic_cast
+	virtual RenderGraphic * asGraphic() { return this; }
+
 private:
 	/// Not implemented.
 	RenderGraphic & operator=(RenderGraphic const &);

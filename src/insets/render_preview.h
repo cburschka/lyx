@@ -79,6 +79,9 @@ public:
 	typedef boost::signal0<void>::slot_type slot_type;
 	boost::signals::connection connect(slot_type const &);
 
+	/// equivalent to dynamic_cast
+	virtual RenderPreview * asPreview() { return this; }
+
 private:
 	/// Not implemented.
 	void operator=(RenderPreview const &);
@@ -116,6 +119,9 @@ public:
 
 	/// Connect and you'll be informed when the file changes.
 	boost::signals::connection fileChanged(slot_type const &);
+
+	/// equivalent to dynamic_cast
+	virtual RenderMonitoredPreview * asMonitoredPreview() { return this; }
 
 private:
 	///

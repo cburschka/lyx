@@ -37,6 +37,9 @@ public:
 	///
 	void setBox(Box b) { button_box_ = b; }
 
+	/// equivalent to dynamic_cast
+	virtual RenderButton * asButton() { return this; }
+
 private:
 	/// The stored data.
 	std::string text_;

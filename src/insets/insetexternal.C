@@ -99,6 +99,7 @@ TempName::operator=(TempName const & other)
 	return *this;
 }
 
+
 namespace {
 
 /// The translator between the Display enum and corresponding lyx string.
@@ -117,6 +118,7 @@ Translator<DisplayType, string> const initTranslator()
 }
 
 } // namespace anon
+
 
 Translator<DisplayType, string> const & displayTranslator() 
 {
@@ -383,55 +385,6 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 }
 
 
-namespace {
-
-enum RenderType {
-	RENDERBUTTON,
-	RENDERGRAPHIC,
-	RENDERPREVIEW
-};
-
-RenderType getRenderType(InsetExternalParams const & p)
-{
-	if (!external::getTemplatePtr(p) || p.filename.empty() ||
-	    p.display == external::NoDisplay)
-		return RENDERBUTTON;
-
-	if (p.display == external::PreviewDisplay) {
-		if (RenderPreview::activated())
-			return RENDERPREVIEW;
-		return RENDERBUTTON;
-	}
-
-	if (p.display == external::DefaultDisplay &&
-	    lyxrc.display_graphics == graphics::NoDisplay)
-		return RENDERBUTTON;
-	return RENDERGRAPHIC;
-}
-
-
-RenderGraphic &
-graphicRenderer(boost::scoped_ptr<RenderBase> const & renderer) 
-{
-	RenderGraphic * const ptr =
-		dynamic_cast<RenderGraphic *>(renderer.get());
-	BOOST_ASSERT(ptr);
-	return *ptr;
-}
-
-
-RenderMonitoredPreview &
-previewRenderer(boost::scoped_ptr<RenderBase> const & renderer) 
-{
-	RenderMonitoredPreview * const ptr =
-		dynamic_cast<RenderMonitoredPreview *>(renderer.get());
-	BOOST_ASSERT(ptr);
-	return *ptr;
-}
-
-} // namespace anon
-
-
 InsetExternal::InsetExternal()
 	: renderer_(new RenderButton)
 {}
@@ -443,41 +396,14 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 	  params_(other.params_),
 	  renderer_(other.renderer_->clone())
 {
-	switch (getRenderType(params_)) {
-	case RENDERBUTTON:
-		break;
-
-	case RENDERGRAPHIC: {
-		RenderGraphic * const ptr =
-			dynamic_cast<RenderGraphic *>(renderer_.get());
-		if (!ptr) {
-			lyxerr << "InsetExternal::InsetExternal "
-			       << "Not a RenderGraphic!!"
-			       << std::endl;
-			return;
-		}
-		ptr->connect(boost::bind(&InsetExternal::statusChanged, this));
-// 		RenderGraphic & renderer = graphicRenderer(renderer_);
-// 		renderer.connect(boost::bind(&InsetExternal::statusChanged, this));
-		break;
-	}
-
-	case RENDERPREVIEW: {
-		RenderMonitoredPreview * const ptr =
-		dynamic_cast<RenderMonitoredPreview *>(renderer_.get());
-		if (!ptr) {
-			lyxerr << "InsetExternal::InsetExternal "
-			       << "Not a RenderPreview!!"
-			       << std::endl;
-			return;
-		}
+	if (renderer_->asMonitoredPreview() != 0) {
+		RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
 		ptr->connect(boost::bind(&InsetExternal::statusChanged, this));
 		ptr->fileChanged(boost::bind(&InsetExternal::fileChanged, this));
-// 		RenderMonitoredPreview & renderer = previewRenderer(renderer_);
-// 		renderer.connect(boost::bind(&InsetExternal::statusChanged, this));
-// 		renderer.fileChanged(boost::bind(&InsetExternal::fileChanged, this));
-		break;
-	}
+
+	} else if (renderer_->asGraphic() != 0 ) {
+		RenderGraphic * const ptr = renderer_->asGraphic();
+		ptr->connect(boost::bind(&InsetExternal::statusChanged, this));
 	}
 }
 
@@ -556,6 +482,33 @@ void InsetExternal::draw(PainterInfo & pi, int x, int y) const
 
 namespace {
 
+enum RenderType {
+	RENDERBUTTON,
+	RENDERGRAPHIC,
+	RENDERPREVIEW
+};
+
+
+RenderType getRenderType(InsetExternalParams const & p)
+{
+	if (!external::getTemplatePtr(p) ||
+	    p.filename.empty() ||
+	    p.display == external::NoDisplay)
+		return RENDERBUTTON;
+
+	if (p.display == external::PreviewDisplay) {
+		if (RenderPreview::activated())
+			return RENDERPREVIEW;
+		return RENDERBUTTON;
+	}
+
+	if (p.display == external::DefaultDisplay &&
+	    lyxrc.display_graphics == graphics::NoDisplay)
+		return RENDERBUTTON;
+	return RENDERGRAPHIC;
+}
+
+
 graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 {
 	graphics::Params gparams;
@@ -620,14 +573,11 @@ InsetExternalParams const & InsetExternal::params() const
 void InsetExternal::setParams(InsetExternalParams const & p,
 			      Buffer const & buffer)
 {
-	// The stored params; what we would like to happen in an ideal world.
 	params_ = p;
 
-	// We display the inset as a button by default.
 	switch (getRenderType(params_)) {
 	case RENDERBUTTON: {
-		RenderButton * button_ptr =
-			dynamic_cast<RenderButton *>(renderer_.get());
+		RenderButton * button_ptr = renderer_->asButton();
 		if (!button_ptr) {
 			button_ptr = new RenderButton;
 			renderer_.reset(button_ptr);
@@ -637,8 +587,7 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 		break;
 
 	} case RENDERGRAPHIC: {
-		RenderGraphic * graphic_ptr =
-			dynamic_cast<RenderGraphic *>(renderer_.get());
+		RenderGraphic * graphic_ptr = renderer_->asGraphic();
 		if (!graphic_ptr) {
 			graphic_ptr = new RenderGraphic;
 			graphic_ptr->connect(
@@ -649,9 +598,10 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 		graphic_ptr->update(get_grfx_params(params_));
 
 		break;
+
 	} case RENDERPREVIEW: {
 		RenderMonitoredPreview * preview_ptr =
-			dynamic_cast<RenderMonitoredPreview *>(renderer_.get());
+			renderer_->asMonitoredPreview();
 		if (!preview_ptr) {
 			preview_ptr  = new RenderMonitoredPreview;
 			preview_ptr->connect(
@@ -677,12 +627,13 @@ void InsetExternal::fileChanged() const
 	if (!buffer_ptr)
 		return;
 
-	RenderMonitoredPreview & renderer = previewRenderer(renderer_);
+	RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
+	BOOST_ASSERT(ptr);
 
 	Buffer const & buffer = *buffer_ptr;
-	renderer.removePreview(buffer);
-	add_preview(renderer, *this, buffer);
-	renderer.startLoading(buffer);
+	ptr->removePreview(buffer);
+	add_preview(*ptr, *this, buffer);
+	ptr->startLoading(buffer);
 }
 
 
@@ -819,15 +770,14 @@ void add_preview(RenderMonitoredPreview & renderer, InsetExternal const & inset,
 
 void InsetExternal::addPreview(graphics::PreviewLoader & ploader) const
 {
-	if (getRenderType(params_) != RENDERPREVIEW)
+	RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
+	if (!ptr)
 		return;
 
-	RenderMonitoredPreview & renderer = previewRenderer(renderer_);
-
 	if (preview_wanted(params())) {
-		renderer.setAbsFile(params_.filename.absFilename());
+		ptr->setAbsFile(params_.filename.absFilename());
 		string const snippet = latex_string(*this, ploader.buffer());
-		renderer.addPreview(snippet, ploader);
+		ptr->addPreview(snippet, ploader);
 	}
 }
 

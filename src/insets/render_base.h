@@ -17,6 +17,10 @@
 class MetricsInfo;
 class PainterInfo;
 
+class RenderButton;
+class RenderGraphic;
+class RenderPreview;
+class RenderMonitoredPreview;
 
 class RenderBase {
 public:
@@ -28,6 +32,12 @@ public:
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
+
+	/// equivalent to dynamic_cast
+	virtual RenderButton * asButton() { return 0; }
+	virtual RenderGraphic * asGraphic() { return 0; }
+	virtual RenderPreview * asPreview() { return 0; }
+	virtual RenderMonitoredPreview * asMonitoredPreview() { return 0; }
 
 protected:
 	RenderBase() {}
