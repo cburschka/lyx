@@ -72,7 +72,7 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 270, 70, 200, 70, _("Rotation"));
   {
-    char const * const dummy = N_("Angle|#A");
+    char const * const dummy = N_("Angle|#n");
     fdui->input_rotate_angle = obj = fl_add_input(FL_INT_INPUT, 340, 90, 70, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

@@ -14,6 +14,7 @@
 #endif
 
 class LyXView;
+class DropDown; 
 
 ///
 class MiniBuffer : public SigC::Object {
@@ -27,6 +28,12 @@ public:
 	MiniBuffer(LyXView * o,
 		   FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w);
 
+	/// destructor
+	~MiniBuffer();
+
+	/// create drop down
+	void dd_init();
+ 
 	///
 	void addSet(string const &,
 		    string const & = string());
@@ -87,6 +94,8 @@ private:
 	Timeout timer;
 	///
 	Timeout stored_timer;
+	/// the dropdown menu
+	DropDown * dropdown_;
 	///
 	FL_OBJECT * the_buffer;
 	///

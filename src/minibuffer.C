@@ -18,6 +18,9 @@
 #pragma implementation
 #endif
 
+// FIXME: temporary 
+#include "frontends/xforms/DropDown.h"
+ 
 #include "minibuffer.h"
 
 #include "support/lyxalgo.h"
@@ -62,7 +65,21 @@ MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 	deactivate();
 }
 
+ 
+// thanks for nothing, xforms (recursive creation not allowed) 
+void MiniBuffer::dd_init()
+{
+	dropdown_ = new DropDown(owner_, the_buffer);
+	dropdown_->result.connect(slot(this, &MiniBuffer::set_input));
+}
 
+
+MiniBuffer::~MiniBuffer()
+{
+	delete dropdown_;
+}
+
+ 
 void MiniBuffer::stored_slot() 
 {
 	if (stored_) {
@@ -158,10 +175,12 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				}
 				set_input(test);
 				
-				// How should the possible matches
-				// be visualized?
-				std::copy(comp.begin(), comp.end(),
-					  std::ostream_iterator<string>(std::cerr, "\n"));
+				int x,y,w,h;
+				fl_get_wingeometry(fl_get_real_object_window(the_buffer),
+					&x, &y, &w, &h);
+ 
+				// asynchronous completion 
+				dropdown_->select(comp, x, y + h, w);
 			}
 			return 1; 
 		}

@@ -190,6 +190,8 @@ void XFormsView::create_form_form_main(int width, int height)
 	fl_set_form_minsize(form_, 50, 50);
 	
 	fl_end_form();
+
+	minibuffer->dd_init(); 
 }
 
 

@@ -20,6 +20,8 @@ libxforms_la_SOURCES = \
 	combox.C \
 	combox.h \
 	Dialogs.C \
+	DropDown.h \
+	DropDown.C \
 	FileDialog.C \
 	FormFiledialog.h \
 	FormFiledialog.C \
