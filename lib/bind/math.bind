@@ -40,6 +40,10 @@
 \bind "M-m p"			"math-insert \partial"
 \bind "M-m r"			"math-insert \root"
 \bind "M-m l"			"math-limits"
+\bind "M-m S-L l"		"math-limits limits"
+\bind "M-m S-L n"		"math-limits nolimits"
+\bind "M-m S-L space"		"math-limits empty"
+
 
 \bind "M-m n"			"math-number"
 \bind "M-m S-N"			"math-nonumber"

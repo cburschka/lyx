@@ -128,7 +128,8 @@ Menuset
 #	Separator
 	Item "Toggle numbering|n" "math-number"
 	Item "Toggle numbering of line|u" "math-nonumber"
-	Item "Toggle limits|l" "math-limits"
+#	Item "Toggle limits|l" "math-limits"
+	Submenu "Change limits type...|l" "edit_math_limits"
 	Separator
 	Submenu "Change formula type...|t" "edit_math_mutate"
 	Separator
@@ -139,6 +140,12 @@ Menuset
 	#Item "Line Left|L" "tabular-feature toggle-line-left"
 	#Item "Line Right|R" "tabular-feature toggle-line-right"
 	#Separator
+    End
+
+    Menu "edit_math_limits"
+	 Item "Default|t"  "math-limits empty"
+	 Item "Display|D"  "math-limits limits"
+	 Item "Inline|I"  "math-limits nolimits"
     End
 
     Menu "edit_math_extern"
