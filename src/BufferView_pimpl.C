@@ -111,6 +111,20 @@ boost::signals::connection selectioncon;
 boost::signals::connection lostcon;
 
 
+/// Get next inset of this class from current cursor position
+template <class T>
+T * getInsetByCode(LCursor & cur, InsetBase::Code code)
+{
+	T * inset = 0;
+	DocIterator it = cur;
+	if (it.nextInset() &&
+	    it.nextInset()->lyxCode() == code) {
+		inset = static_cast<T*>(it.nextInset());
+	}
+	return inset;
+}
+
+
 } // anon namespace
 
 
@@ -730,24 +744,6 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 }
 
 
-InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
-{
-#ifdef WITH_WARNINGS
-#warning Does not work for mathed. (Still true?)
-#endif
-	// Ok, this is a little bit too brute force but it
-	// should work for now. Better infrastructure is coming. (Lgb)
-	LCursor & cur = bv_->cursor();
-	DocIterator it = cur;
-	for (it.forwardInset(); it; it.forwardInset()) {
-		BOOST_ASSERT(it.nextInset());
-		if (it.nextInset()->lyxCode() == code)
-				return it.nextInset();
-	}
-	return 0;
-}
-
-
 void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 {
 	string filename = filenm;
@@ -1038,7 +1034,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		string label = cmd.argument;
 		if (label.empty()) {
 			InsetRef * inset =
-				static_cast<InsetRef*>(getInsetByCode(InsetBase::REF_CODE));
+				getInsetByCode<InsetRef>(bv_->cursor(),
+							 InsetBase::REF_CODE);
 			if (inset) {
 				label = inset->getContents();
 				savePosition(0);

@@ -1,3 +1,10 @@
+2004-08-14  Lars Gullik Bjonnes  <larsbj@lyx.org>
+
+	bug 1096
+	* BufferView_pimpl.C (getInsetByCode): move function out of class
+	and change in to a template in anon namespace. Also fix to do what
+	suits us better.
+
 2004-08-13  Lars Gullik Bjonnes  <larsbj@lyx.org>
 
 	bug 1305
@@ -26,7 +33,7 @@
 	optional argument, enclose the argument with curly brackets (in
 	case it contains a closing square bracket)
 
-	* text2.C (editXY): 
+	* text2.C (editXY):
 	* text2.C (editXY):
 	* text3.C (checkInsetHit): constify
 

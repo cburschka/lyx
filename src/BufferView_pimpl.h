@@ -173,8 +173,6 @@ private:
 	};
 	///
 	std::vector<Position> saved_positions;
-	/// Get next inset of this class from current cursor position
-	InsetBase * getInsetByCode(InsetBase::Code code);
 	///
 	void MenuInsertLyXFile(std::string const & filen);
 	/// our workarea
