@@ -5,14 +5,15 @@ ETAGS_ARGS = --lang=c++
 
 noinst_LTLIBRARIES = libgnome.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
+
 INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
 	-I${top_srcdir}/src/frontends/xforms \
 	-I${top_srcdir}/src/frontends/controllers \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
 
-libgnome_la_LIBADD = \
-	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+#libgnome_la_LIBADD = \
+#	@FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 xforms_objects = \
 	../xforms/xforms_helpers.lo \

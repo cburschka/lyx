@@ -17,12 +17,12 @@ LIBS=
 
 include Makefile.dialogs
 
-libqt2_la_LIBADD = \
-	xforms/libqt2xforms.la \
-	ui/libqt2ui.la \
-	moc/libqt2moc.la \
-	ui/moc/libqt2uimoc.la \
-	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+#libqt2_la_LIBADD = \
+#	xforms/libqt2xforms.la \
+#	ui/libqt2ui.la \
+#	moc/libqt2moc.la \
+#	ui/moc/libqt2uimoc.la \
+#	@FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 libqt2_la_SOURCES = \
 	$(DIALOGSOURCES) \
