@@ -61,7 +61,8 @@ int InsetFoot::latex(Buffer const & buf, ostream & os,
 		     OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
-	runparams.moving_arg |= ownerPar(buf, this).layout()->intitle;
+	// footnotes in titling commands like \title have moving arguments
+	runparams.moving_arg |= runparams_in.intitle;
 
 	os << "%\n\\footnote{";
 

@@ -1,3 +1,11 @@
+2004-08-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetfoot.C (latex): use OutputParams::intitle instead of
+	parOwner() (avoids time consuming lookup)
+
+	* insetquotes.C (latex): same as above with OutputParams::lang.
+	Moreover the code actually works now.
+
 2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* insetwrap.C, insetvspace.C, insettabular.C, insetnote.C:

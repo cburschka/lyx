@@ -12,6 +12,8 @@
 #ifndef OUTPUTPARAMS_H
 #define OUTPUTPARAMS_H
 
+#include <string>
+
 #include "support/types.h"
 #include <boost/shared_ptr.hpp>
 
@@ -47,6 +49,16 @@ struct OutputParams {
 	    fragile commands by preceding the latex with \protect.
 	*/
 	bool moving_arg;
+
+	/** intitle == true means that the environment in which the
+	    inset is typeset is part of a title (before a \maketitle).
+	    Footnotes in such environments have moving arguments.
+	*/
+	bool intitle;
+
+	/** the babel name of the language at the point where the inset is
+	 */
+	std::string lang;
 
 	/** free_spacing == true means that the inset is in a free-spacing
 	    paragraph.

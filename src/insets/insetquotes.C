@@ -263,35 +263,20 @@ void InsetQuotes::read(Buffer const &, LyXLex & lex)
 }
 
 
-int InsetQuotes::latex(Buffer const & buf, ostream & os,
+int InsetQuotes::latex(Buffer const &, ostream & os,
 		       OutputParams const & runparams) const
 {
-	// How do we get the local language here??
-	lyx::pos_type curr_pos = ownerPar(buf, this).getPositionOfInset(this);
-	BOOST_ASSERT(curr_pos != -1);
-
-#ifdef WITH_WARNINGS
-#warning FIXME. We _must_ find another way to get the language. (Lgb)
-#endif
-#if 0
-	// This cannot be used. (Lgb)
-	string const curr_lang =
-		parOwner()->getFont(buf->params, curr_pos).language()->babel();
-#else
-	// And this is not the way... (Lgb)
-	string const curr_lang = buf.params().language->lang();
-#endif
 	const int quoteind = quote_index[side_][language_];
 	string qstr;
 
 	if (language_ == FrenchQ && times_ == DoubleQ
-	    && curr_lang == "frenchb") {
+	    && runparams.lang == "frenchb") {
 		if (side_ == LeftQ)
 			qstr = "\\og "; //the spaces are important here
 		else
 			qstr = " \\fg{}"; //and here
 	} else if (language_ == FrenchQ && times_ == DoubleQ
-		   && curr_lang == "french") {
+		   && runparams.lang == "french") {
 		if (side_ == LeftQ)
 			qstr = "<< "; //the spaces are important here
 		else

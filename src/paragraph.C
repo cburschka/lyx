@@ -924,8 +924,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		basefont = getLayoutFont(bparams, outerfont);
 	}
 
-	bool moving_arg = runparams.moving_arg;
-	moving_arg |= style->needprotect;
+	bool const moving_arg = runparams.moving_arg | style->needprotect;
 
 	// Which font is currently active?
 	LyXFont running_font(basefont);
@@ -1027,8 +1026,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		OutputParams rp = runparams;
 		rp.moving_arg = moving_arg;
 		rp.free_spacing = style->free_spacing;
+		rp.lang = font.language()->babel();
+		rp.intitle = style->intitle;
 		pimpl_->simpleTeXSpecialChars(buf, bparams,
-					      os, texrow, runparams,
+					      os, texrow, rp,
 					      font, running_font,
 					      basefont, outerfont, open_font,
 					      running_change,
