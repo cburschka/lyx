@@ -90,10 +90,5 @@ cat <<EOF
 $relyx_warning_txt
 EOF
 fi
-cat <<EOF
-Configuration of LyX was successful.  
-Type 'make' to compile the program, 
-and then 'make install' to install it.
-EOF
 fi])
 

@@ -1,3 +1,10 @@
+2000-11-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/reLyX/acinclude.m4 (RELYX_CHECK_ERRORS): remove useless message.
+
+	* config/lyxinclude.m4 (LYX_PROG_CXX): remove -fno-rtti for gcc
+	2.96 (RedHat 7.0).
+
 2000-10-27  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/mathed/formulamacro.h (LyxCode) Return MATHMACRO_CODE instead

@@ -185,7 +185,7 @@ dnl Check the version of g++
     case $gxx_version in
       2.95.1)  CXXFLAGS="-g $lyx_opt -fpermissive -fno-rtti -fno-exceptions";;
       2.95.*)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
-      2.96*)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
+      2.96*)  CXXFLAGS="-g $lyx_opt -fno-exceptions";;
       2.97*)   CXXFLAGS="-g $lyx_opt -fhonor-std -fvtable-thunks -ffunction-sections -fdata-sections";;
       *2.91.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
       *)       CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
