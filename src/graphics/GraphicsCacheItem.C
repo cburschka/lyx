@@ -434,6 +434,10 @@ string const findTargetFormat(string const & from)
 	for (; it2 != end; ++it2) {
 		if (graphics_converter.isReachable(from, *it2))
 			return *it2;
+		else
+			lyxerr[Debug::GRAPHICS]
+				<< "Unable to convert from " << from
+				<< " to " << *it2 << std::endl;
 	}
 
 	// Failed!
