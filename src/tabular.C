@@ -1262,7 +1262,6 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
     int e = 0;
     int f = 0;
     int g = 0;
-    int h = 0;
 	
     istream & is = lex.getStream();
     string s(fl);
@@ -1314,7 +1313,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	endfoot = c;
 	endlastfoot = d;
 	for (i = 0; i < rows_; ++i) {
-	    a = b = c = d = e = f = g = h = 0;
+	    a = b = c = d = e = f = g = 0;
 	    is >> a >> b >> c >> d;
 	    row_info[i].top_line = a;
 	    row_info[i].bottom_line = b;

@@ -214,3 +214,5 @@ LColor::color LColor::getFromLyXName(string const & lyxname) const
 
 // The evil global LColor instance
 LColor lcolor;
+// An equally evil global system LColor instance
+LColor system_lcolor;

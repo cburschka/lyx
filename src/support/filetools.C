@@ -1135,3 +1135,151 @@ void removeAutosaveFile(string const & filename)
 		}
 	}
 }
+
+
+bool WriteableDir(string const & name, string & errorMessage)
+{
+	errorMessage.erase();
+
+	if (!AbsolutePath(name)) {
+		errorMessage = N_("The absolute path is required.");
+		return false;
+	}
+
+	FileInfo const tp(name);
+	if (!tp.isDir()) {
+		errorMessage = N_("Directory does not exist.");
+		return false;
+	}
+
+	if (!tp.writable()) {
+		errorMessage = N_("Cannot write to this directory.");
+		return false;
+	}
+
+	return true;
+}
+
+
+bool ReadableDir(string const & name, string & errorMessage)
+{
+	errorMessage.erase();
+
+	if (!AbsolutePath(name)) {
+		errorMessage = N_("The absolute path is required.");
+		return false;
+	}
+
+	FileInfo const tp(name);
+	if (!tp.isDir()) {
+		errorMessage = N_("Directory does not exist.");
+		return false;
+	}
+
+	if (!tp.readable()) {
+		errorMessage = N_("Cannot read this directory.");
+		return false;
+	}
+
+	return true;
+}
+
+
+bool WriteableFile(string const & name, string & errorMessage)
+{
+	// A writeable file is either:
+	// * An existing file to which we have write access, or
+	// * A file that doesn't yet exist but that would exist in a writeable
+	//   directory.
+
+	errorMessage.erase();
+
+	if (name.empty()) {
+		errorMessage = N_("No file input.");
+		return false;
+	}
+
+	string const dir = OnlyPath(name);
+	if (!AbsolutePath(dir)) {
+		errorMessage = N_("The absolute path is required.");
+		return false;
+	}
+
+	FileInfo d(name);
+	if (!d.isDir()) {
+		d.newFile(dir);
+	}
+
+	if (!d.isDir()) {
+		errorMessage = N_("Directory does not exist.");
+		return false;
+	}
+	
+	if (!d.writable()) {
+		errorMessage = N_("Cannot write to this directory.");
+		return false;
+	}
+
+	FileInfo f(name);
+	if (dir == name || f.isDir()) {
+		errorMessage = N_("A file is required, not a directory.");
+		return false;
+	}
+
+	if (f.exist() && !f.writable()) {
+		errorMessage = N_("Cannot write to this file.");
+		return false;
+	}
+	
+	return true;
+}
+
+
+bool ReadableFile(string const & name, string & errorMessage)
+{
+	errorMessage.erase();
+
+	if (name.empty()) {
+		errorMessage = N_("No file input.");
+		return false;
+	}
+
+	string const dir = OnlyPath(name);
+	if (!AbsolutePath(dir)) {
+		errorMessage = N_("The absolute path is required.");
+		return false;
+	}
+
+	FileInfo d(name);
+	if (!d.isDir()) {
+		d.newFile(dir);
+	}
+
+	if (!d.isDir()) {
+		errorMessage = N_("Directory does not exist.");
+		return false;
+	}
+	
+	if (!d.readable()) {
+		errorMessage = N_("Cannot read from this directory.");
+		return false;
+	}
+
+	FileInfo f(name);
+	if (dir == name || f.isDir()) {
+		errorMessage = N_("A file is required, not a directory.");
+		return false;
+	}
+
+	if (!f.exist()) {
+		errorMessage = N_("File does not exist.");
+		return false;
+	}
+	
+	if (!f.readable()) {
+		errorMessage = N_("Cannot read from this file.");
+		return false;
+	}
+
+	return true;
+}

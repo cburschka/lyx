@@ -12,8 +12,6 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-#include <utility> // for pair
-
 #ifdef __GNUG_
 #pragma interface
 #endif
@@ -42,17 +40,13 @@ struct RGBColor {
 	RGBColor(HSVColor const &);
 };
 
-typedef std::pair<string, RGBColor> X11Color;
-
-/// struct holding xform-specific colors
-struct XformColor {
+struct NamedColor : public RGBColor {
 	string name;
-	int colorID;
-	RGBColor col;
-	XformColor() : colorID(0) {}
+	NamedColor() : RGBColor() {}
+	NamedColor(string const & n, RGBColor const & c )
+		: RGBColor(c), name(n) {}
+	RGBColor const & color() const { return *this; }
 	string const & getname() const { return name; }
-	static bool read(string const &);
-	static bool write(string const &);
 };
 
 inline

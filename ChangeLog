@@ -1,3 +1,62 @@
+2000-11-15  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/ColorHandler.[Ch]: removed some header files from .h file.
+	Included LColor.h in .C file.
+
+	* src/LColor.[Ch]: made class copyable so that I could create a
+	system_lcolor instance.
+
+	* src/Painter.h: removed LColor.h.
+
+	* src/lyx_gui.C (create_forms): used AddName.
+
+	* src/lyx_main.C (init): copied lcolor to system_lcolr prior to reading
+	of user preferences/lyxrc file.
+
+	* src/lyxrc.C (output): output changes to lcolor.
+
+	* src/frontends/xforms/Color.[Ch]: Changed X11Color to a new struct,
+	NamedColor.
+	Moved class xformColor to files xform_helpers.[Ch]. These files,
+	Color.[Ch], could now be moved into src if they would be useful to
+	other GUIs.
+
+	* src/frontends/xforms/xform_helpers.[Ch]: moved class XformColor here.
+	Also moved FormPreferences::browseFile here as it can be used by any
+	xform dialog with a "Browse" button. FormGraphics is a perfect example.
+
+	* src/support/filetools.[Ch] (WriteableDir, ReadableDir, WriteableFile,
+	ReadableFile): changed the FormPreferences methods a little and moved
+	them here as they'll be useful elsewhere also.
+
+	* src/frontends/xforms/FormPreferences.h: a bit more cleaning up.
+	Removed some header files and used forward declarations instead.
+	Better commenting.
+	Removed some methods as they'll be useful elsewhere (see above).
+
+	* src/frontends/xforms/FormPreferences.C: a bit more cleaning up.
+	Can also now modify the LyX LColors. However, for reasons that I don't
+	yet understand, it appears that we can use
+	LyXFunc::Dispatch(LFUN_SET_COLOR, arg) only when we have a buffer
+	present. The problem appears to lie in ColorHandler, because I can
+	change the color using LColor.SetColor(). Similarly, when reading in a
+	preferences file with some set_color instances, I'll get a warning
+	like: Color sea green is undefined or may not be redefined 
+	Bad lyxrc set_color for sea green
+
+	Once the buffer is loaded, however, I can happily change to this color.
+
+	Finally, it appears that I have to set the color of "inset frame"
+	explicitly, or it oscillates from "black" to "indian red" with each
+	successive "Apply".
+                                           
+2000-11-15  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* ANNOUNCE: corrected a spelling mistake.
+	
+	* src/tabular.C (OldFormatRead): variable "h" was set but never used.
+	Removed.
+
 2000-11-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/kbsequence.C (addkey): use a vector as per Andre Poenitz patch.

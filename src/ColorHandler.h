@@ -18,9 +18,7 @@
 // This is only included to provide stuff for the non-public sections
 #include <X11/Xlib.h>
 
-#include <map>
 #include "PainterBase.h"
-#include "LColor.h"
 
 class LyXFont;
 class WorkArea;

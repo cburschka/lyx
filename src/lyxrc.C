@@ -1158,9 +1158,20 @@ void LyXRC::output(ostream & os) const
 			os << "\n";
 		}
 		
-	//case RC_SET_COLOR:
-		// color bindings not written to preference file.
-		// And we want to be warned about that. (Lgb)
+		os << "\n#\n"
+		   << "# COLOR SECTION ###################################\n"
+		   << "#\n\n";
+		
+	case RC_SET_COLOR:
+		for( int i=0; i<LColor::ignore; ++i ) {
+			LColor::color lc = static_cast<LColor::color>(i);
+
+			if (lcolor.getX11Name(lc) !=
+			    system_lcolor.getX11Name(lc)) {
+				os << "\\set_color \"" << lcolor.getX11Name(lc)
+				   << "\"\n";
+			}
+		}
 		
 		os << "\n#\n"
 		   << "# PRINTER SECTION ###################################\n"

@@ -22,8 +22,9 @@
 #pragma implementation
 #endif
 
+#include "Color.h"
+#include "LColor.h"
 #include "Lsstream.h"
-#include "filedlg.h" // for LyXFileDlg
 #include "FormPreferences.h"
 #include "form_preferences.h"
 #include "input_validators.h"
@@ -34,12 +35,11 @@
 #include "lyxrc.h"
 #include "combox.h"
 #include "debug.h"
-#include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "lyx_gui_misc.h"
+#include "lyx_gui_misc.h" // idex, scex
 #include "lyxlex.h"
 #include "input_validators.h"
-#include "xform_helpers.h" // formatted()
+#include "xform_helpers.h"
 #include "xform_macros.h"
 #include "converter.h"
 #include "support/lyxfunctional.h"
@@ -67,8 +67,11 @@ static string const colorFile("/usr/lib/X11/rgb.txt");
 static Formats    local_formats;
 static Converters local_converters;
 
-vector<X11Color>   FormPreferences::Colors::colorDB;
+static vector<NamedColor> fullColorDB;
+static vector<NamedColor> lyxColorDB;
+vector<NamedColor> FormPreferences::Colors::colorDB;
 vector<XformColor> FormPreferences::Colors::xformColorDB;
+
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
@@ -401,7 +404,7 @@ void FormPreferences::Colors::apply()
 	     cit != xformColorDB.end(); ++cit ) {
 		RGBColor col;
 		fl_getmcolor((*cit).colorID, &col.r, &col.g, &col.b);
-		if( col != (*cit).col ) {
+		if( col != (*cit).color() ) {
 			modifiedXformPrefs = true;
 			if( (*cit).colorID == FL_BLACK )
 				modifiedText = true;
@@ -411,11 +414,11 @@ void FormPreferences::Colors::apply()
 	}
 
 	if( modifiedXformPrefs ) {
-		vector<XformColor>::const_iterator cit;
-		for( cit = xformColorDB.begin(); 
+		for( vector<XformColor>::const_iterator cit =
+			     xformColorDB.begin(); 
 		     cit != xformColorDB.end(); ++cit ) {
 			fl_mapcolor((*cit).colorID,
-				    (*cit).col.r, (*cit).col.g, (*cit).col.b);
+				    (*cit).r, (*cit).g, (*cit).b);
 
 			if( modifiedText && (*cit).colorID == FL_BLACK ) {
 				AdjustVal( FL_INACTIVE, FL_BLACK, 0.5 );
@@ -432,6 +435,34 @@ void FormPreferences::Colors::apply()
 		}
 		Dialogs::redrawGUI();
 	}
+
+	// Now do the same for the LyX LColors...
+	for( vector<NamedColor>::const_iterator cit = lyxColorDB.begin();
+	     cit != lyxColorDB.end(); ++cit ) {
+		LColor::color lc = lcolor.getFromGUIName((*cit).getname());
+		if( lc == LColor::ignore ) continue;
+
+		// Ascertain the X11 name
+		RGBColor col = (*cit).color();
+		vector<NamedColor>::const_iterator cit2 =
+			find_if(colorDB.begin(), colorDB.end(),
+				compare_memfun(&NamedColor::color, col));
+		if( cit2 == colorDB.end() ) continue;
+
+		if( lcolor.getX11Name(lc) != (*cit2).getname() ) {
+			lyxerr << "FormPreferences::Colors::apply: "
+			       << "resetting LColor " << lcolor.getGUIName(lc)
+			       << " from \"" << lcolor.getX11Name(lc)
+			       << "\" to \"" << (*cit2).getname() << "\"."
+			       << endl;
+			string arg = lcolor.getLyXName(lc) + string(" ") +
+				(*cit2).getname();
+			
+			parent_.lv_->getLyXFunc()->
+				Dispatch(LFUN_SET_COLOR, arg);
+		}
+	}
+	
 }
 
 
@@ -459,24 +490,74 @@ void FormPreferences::Colors::build()
 	
 	fl_set_input_return(dialog_->input_name, FL_RETURN_CHANGED);
 
+	// set up the feedback mechanism
+	setPreHandler( dialog_->browser_x11 );
+	setPreHandler( dialog_->input_name );
+	setPreHandler( dialog_->button_browse );
+	setPreHandler( dialog_->button_color );
+	setPreHandler( dialog_->valslider_red );
+	setPreHandler( dialog_->valslider_green );
+	setPreHandler( dialog_->valslider_blue );
+	setPreHandler( dialog_->browser_lyx_objs );
+	setPreHandler( dialog_->button_modify );
+	setPreHandler( dialog_->button_modify );
+
+	// Load the X11 color data base
 	if (LoadBrowserX11(colorFile) )
 		fl_set_input(dialog_->input_name, colorFile.c_str());
-	else
+	else {
 		fl_set_input(dialog_->input_name, N_("No file found"));
+		return;
+	}
+	
+	// The LyX LColors may have names in the fullColorDB but not in the
+	// reduced colorDB shown in the browser (which has one name only for
+	// each RGB entry). If so, replace them with the colorDB name.
 
-	LoadBrowserLyX();
+	// This can go here and not in update() because we only need to do it
+	// once.
+	for( int i=0; i<LColor::ignore; ++i ) {
+		LColor::color lc = static_cast<LColor::color>(i);
 
-	// set up the feedback mechanism
-	parent_.setPreHandler( dialog_->browser_x11 );
-	parent_.setPreHandler( dialog_->input_name );
-	parent_.setPreHandler( dialog_->button_browse );
-	parent_.setPreHandler( dialog_->button_color );
-	parent_.setPreHandler( dialog_->valslider_red );
-	parent_.setPreHandler( dialog_->valslider_green );
-	parent_.setPreHandler( dialog_->valslider_blue );
-	parent_.setPreHandler( dialog_->browser_lyx_objs );
-	parent_.setPreHandler( dialog_->button_modify );
-	parent_.setPreHandler( dialog_->button_modify );
+		string name = lowercase(lcolor.getX11Name(lc));
+
+		// Find the RGBColor associated with this X11 name.
+		vector<NamedColor>::const_iterator cit =
+			find_if(fullColorDB.begin(), fullColorDB.end(),
+			compare_memfun(&NamedColor::getname, name));
+
+		bool error = ( cit == fullColorDB.end() );
+
+		// Find the "appropriate" X11 name for this color.
+		if( !error) {
+			RGBColor col = (*cit).color();
+			cit = find_if(colorDB.begin(), colorDB.end(),
+				      compare_memfun(&NamedColor::color, col));
+
+			error = ( cit == colorDB.end() );
+		}
+
+		// Unable to match name to RGBColor. Reset color to black.
+		if( error ) {
+			lyxerr << "FormPreferences::Colors::build: "
+			       << "LColor " << lcolor.getLyXName(lc)
+			       << ": can't find color \"" << name
+			       << "\". Set to \"black\"!" << endl;
+			string arg = lcolor.getLyXName(lc) + string(" black");
+			parent_.lv_->getLyXFunc()->
+			 	Dispatch(LFUN_SET_COLOR, arg);
+			continue;
+		}
+
+		// Change the LColor X11name. Don't want to trigger a redraw,
+		// as we're just changing the name to an equivalent one
+		// (same RGBColor). Also reset the system_lcolor names, so
+		// that we don't output unnecessary changes.
+		if( lcolor.getX11Name(lc) != (*cit).getname() ) {
+			lcolor.setColor(lc, (*cit).getname());
+			system_lcolor.setColor(lc, (*cit).getname());
+		}
+	}
 }
 
 
@@ -519,10 +600,11 @@ bool FormPreferences::Colors::input( FL_OBJECT const * const ob )
 		return Database();
 
 	} else if (ob == dialog_->button_browse) {
-		return parent_.browse(dialog_->input_name,
-				      _("X11 color database"), "*.txt",
-				      make_pair(string(), string()),
-				      make_pair(string(), string()));
+		parent_.browse(dialog_->input_name,
+			       _("X11 color database"), "*.txt",
+			       make_pair(string(), string()),
+			       make_pair(string(), string()));
+		return true;
 
 	} else if (ob == dialog_->browser_lyx_objs) {
 		return BrowserLyX();
@@ -536,7 +618,9 @@ bool FormPreferences::Colors::input( FL_OBJECT const * const ob )
 
 
 void FormPreferences::Colors::update()
-{}
+{
+	LoadBrowserLyX();
+}
 
 
 void FormPreferences::Colors::AdjustVal( int colAdjust, int colParent,
@@ -565,24 +649,37 @@ bool FormPreferences::Colors::BrowserLyX() const
 
 	string name = fl_get_browser_line( dialog_->browser_lyx_objs, i );
 
-	vector<XformColor>::const_iterator cit =
-		find_if(xformColorDB.begin(), xformColorDB.end(),
-			compare_memfun(&XformColor::getname, name));
+	// Is the choice an Xforms color...
+	int choice = 0;
 
-	if( cit != xformColorDB.end() ) {
+	vector<NamedColor>::const_iterator cit =
+		find_if(xformColorDB.begin(), xformColorDB.end(),
+			compare_memfun(&NamedColor::getname, name));
+
+	if( cit != xformColorDB.end() ) choice = 1;
+	
+	// or a LyX Logical color?
+	if( choice == 0 ) {
+		cit = find_if(lyxColorDB.begin(), lyxColorDB.end(),
+			      compare_memfun(&NamedColor::getname, name));
+
+		if( cit != colorDB.end() ) choice = 2;
+	}
+	
+	if( choice != 0 ) {
 		fl_freeze_form( dialog_->form );
 
-		fl_set_slider_value( dialog_->valslider_red,   (*cit).col.r );
-		fl_set_slider_value( dialog_->valslider_green, (*cit).col.g );
-		fl_set_slider_value( dialog_->valslider_blue,  (*cit).col.b );
+		fl_set_slider_value( dialog_->valslider_red,   (*cit).r );
+		fl_set_slider_value( dialog_->valslider_green, (*cit).g );
+		fl_set_slider_value( dialog_->valslider_blue,  (*cit).b );
 		RGB();
-
+			
 		fl_unfreeze_form( dialog_->form );
+
+		fl_deactivate_object( dialog_->button_modify );
+		fl_set_object_lcol( dialog_->button_modify, FL_INACTIVE );
 	}
-
-	fl_deactivate_object( dialog_->button_modify );
-	fl_set_object_lcol( dialog_->button_modify, FL_INACTIVE );
-
+	
 	return true;
 }
 
@@ -595,7 +692,7 @@ bool FormPreferences::Colors::BrowserX11() const
 
 	fl_freeze_form( dialog_->form );
 
-	RGBColor col = colorDB[i-1].second;
+	RGBColor col = colorDB[i-1].color();
     
 	fl_mapcolor( FL_FREE_COL4 + i, col.r, col.g, col.b );
 	fl_mapcolor( FL_FREE_COL4, col.r, col.g, col.b );
@@ -611,7 +708,7 @@ bool FormPreferences::Colors::BrowserX11() const
 		if( line > fl_get_browser_maxline(dialog_->browser_lyx_objs) )
 			isSelected = false;	
 
-	if( isSelected && colorDB[i-1].second == col ) {
+	if( isSelected && colorDB[i-1].color() == col ) {
 		fl_activate_object( dialog_->button_modify );
 		fl_set_object_lcol( dialog_->button_modify, FL_BLACK );
 	}
@@ -624,9 +721,12 @@ bool FormPreferences::Colors::BrowserX11() const
 
 bool FormPreferences::Colors::Database()
 {
+	string err;
 	string file = fl_get_input(dialog_->input_name);
-	if( !parent_.ReadableFile(file) )
+	if( !ReadableFile(file, err) ) {
+		parent_.printWarning( err );
 		return false;
+	}
 
 	if (LoadBrowserX11(file) )
 		return true;
@@ -642,39 +742,75 @@ void FormPreferences::Colors::LoadBrowserLyX()
 
 	xcol.name = "GUI background";
 	xcol.colorID = FL_COL1;
-	fl_getmcolor(FL_COL1, &xcol.col.r, &xcol.col.g, &xcol.col.b);
+	fl_getmcolor(FL_COL1, &xcol.r, &xcol.g, &xcol.b);
 
 	xformColorDB.push_back( xcol );
 
 	xcol.name = "GUI text";
 	xcol.colorID = FL_BLACK;
-	fl_getmcolor(FL_BLACK, &xcol.col.r, &xcol.col.g, &xcol.col.b);
+	fl_getmcolor(FL_BLACK, &xcol.r, &xcol.g, &xcol.b);
 
 	xformColorDB.push_back( xcol );
 
 	// FL_LIGHTER_COL1 does not exist in xforms 0.88
 	// xcol.name = "GUI active tab";
 	// xcol.colorID = FL_LIGHTER_COL1;
-	// fl_getmcolor(FL_LIGHTER_COL1, &xcol.col.r, &xcol.col.g, &xcol.col.b);
+	// fl_getmcolor(FL_LIGHTER_COL1, &xcol.r, &xcol.g, &xcol.b);
 	// 
 	// xformColorDB.push_back( xcol );
 
 	xcol.name = "GUI push button";
 	xcol.colorID = FL_YELLOW;
-	fl_getmcolor(FL_YELLOW, &xcol.col.r, &xcol.col.g, &xcol.col.b);
+	fl_getmcolor(FL_YELLOW, &xcol.r, &xcol.g, &xcol.b);
 
 	xformColorDB.push_back( xcol );
 
+	// Now create the the LyX LColors database
+	for( int i=0; i<LColor::ignore; ++i ) {
+		LColor::color lc = static_cast<LColor::color>(i);
+		if( lc == LColor::none
+		    || lc == LColor::black
+		    || lc == LColor::white
+		    || lc == LColor::red
+		    || lc == LColor::green
+		    || lc == LColor::blue
+		    || lc == LColor::cyan
+		    || lc == LColor::magenta
+		    || lc == LColor::yellow
+		    || lc == LColor::inherit
+		    || lc == LColor::ignore ) continue;
+
+		string name = lcolor.getX11Name(lc);
+
+		vector<NamedColor>::const_iterator cit =
+			find_if(colorDB.begin(), colorDB.end(),
+				compare_memfun(&NamedColor::getname, name));
+
+		if( cit == colorDB.end() ) {
+			lyxerr << "FormPreferences::Colors::LoadBrowserLyX: "
+			       << "can't find color \"" << name
+			       << "\". This shouldn't happen!" << endl;
+			continue;
+		}
+
+		NamedColor ncol(lcolor.getGUIName(lc), (*cit).color());
+		lyxColorDB.push_back( ncol );
+	}
+
+	// Finally, construct the browser
 	FL_OBJECT * colbr = dialog_->browser_lyx_objs;
 	fl_clear_browser( colbr );
 	for( vector<XformColor>::const_iterator cit = xformColorDB.begin();
 	     cit != xformColorDB.end(); ++cit ) {
-		fl_addto_browser(colbr, (*cit).name.c_str() );
+		fl_addto_browser(colbr, (*cit).getname().c_str() );
+	}
+	for( vector<NamedColor>::const_iterator cit = lyxColorDB.begin();
+	     cit != lyxColorDB.end(); ++cit ) {
+		fl_addto_browser(colbr, (*cit).getname().c_str() );
 	}
 
-	// Now load the LyX LColors
-
 	// just to be safe...
+	fl_set_browser_topline( dialog_->browser_lyx_objs, 1);
 	fl_deselect_browser( dialog_->browser_lyx_objs );
 	fl_deactivate_object( dialog_->button_modify );
 	fl_set_object_lcol( dialog_->button_modify, FL_INACTIVE );
@@ -688,6 +824,9 @@ bool FormPreferences::Colors::LoadBrowserX11(string const & filename) const
 	
 	if (!lex.setFile(filename))
 		return true;
+
+	//colorDB.erase();
+	//fullColorDB.erase();
 
 	vector<RGBColor> cols;
 	vector<string> names;
@@ -727,6 +866,14 @@ bool FormPreferences::Colors::LoadBrowserX11(string const & filename) const
 				names.push_back(name);
 			}
 		}
+
+		// Also create a list of ALL names, colors
+		fullColorDB.push_back( NamedColor(name, col) );
+		// if name contains spaces, remove them
+		if( contains(name, " ") ) {
+			name = subst(name, " ", "");
+			fullColorDB.push_back( NamedColor(name, col) );
+		}
 	}
 	
 	FL_OBJECT * colbr = dialog_->browser_x11;
@@ -736,7 +883,7 @@ bool FormPreferences::Colors::LoadBrowserX11(string const & filename) const
 	vector<string>::const_iterator sit = names.begin();
 	for (vector<RGBColor>::const_iterator iit = cols.begin();
 	     iit != cols.end(); ++iit, ++sit) {
-		colorDB.push_back( X11Color(*sit, *iit) );
+		colorDB.push_back( NamedColor(*sit, *iit) );
 		fl_addto_browser(colbr, (*sit).c_str());
 	}
 	
@@ -744,7 +891,7 @@ bool FormPreferences::Colors::LoadBrowserX11(string const & filename) const
 	fl_select_browser_line(colbr, 1);
 	BrowserX11();
 	fl_unfreeze_form(dialog_->form);
-	
+
 	return true;
 }
 
@@ -752,25 +899,36 @@ bool FormPreferences::Colors::LoadBrowserX11(string const & filename) const
 bool FormPreferences::Colors::Modify() const
 {
 	int i = fl_get_browser( dialog_->browser_lyx_objs );
-	if (i < 1)
-		return true;
+	if (i < 1) return true;
 
 	string name = fl_get_browser_line( dialog_->browser_lyx_objs, i );
 
-	vector<XformColor>::iterator it = // non-const; it's modified below
+	// Is the choice an Xforms color...
+	int choice = 0;
+
+	vector<NamedColor>::iterator it = // non-const; it's modified below
 		find_if(xformColorDB.begin(), xformColorDB.end(),
-			compare_memfun(&XformColor::getname, name));
+			compare_memfun(&NamedColor::getname, name));
 
-	if( it == xformColorDB.end() )
-		return true;
+	if( it != xformColorDB.end() ) choice = 1;
+	
+	// or a LyX Logical color?
+	if( choice == 0 ) {
+		it = find_if(lyxColorDB.begin(), lyxColorDB.end(),
+			     compare_memfun(&NamedColor::getname, name));
 
+		if( it != colorDB.end() ) choice = 2;
+	}
+	
+	if( choice == 0 ) return true;
+
+	// Ok! Modify the color.
 	int j = fl_get_browser( dialog_->browser_x11 );
-	if (j < 1)
-		return true;
+	if (j < 1) return true;
 
-	(*it).col.r = colorDB[j-1].second.r;
-	(*it).col.g = colorDB[j-1].second.g;
-	(*it).col.b = colorDB[j-1].second.b;
+	(*it).r = colorDB[j-1].r;
+	(*it).g = colorDB[j-1].g;
+	(*it).b = colorDB[j-1].b;
 
 	fl_deselect_browser(dialog_->browser_x11);
 	fl_deselect_browser(dialog_->browser_lyx_objs);
@@ -807,7 +965,7 @@ bool FormPreferences::Colors::RGB() const
 		if( line > fl_get_browser_maxline(dialog_->browser_lyx_objs) )
 			isSelected = false;	
 
-	if( isSelected && colorDB[i].second == col ) {
+	if( isSelected && colorDB[i].color() == col ) {
 		fl_activate_object( dialog_->button_modify );
 		fl_set_object_lcol( dialog_->button_modify, FL_BLACK );
 	} else {
@@ -824,15 +982,14 @@ bool FormPreferences::Colors::RGB() const
 int FormPreferences::Colors::SearchEntry(RGBColor const & col) const
 {
 	int mindiff = 0x7fffffff;
-	vector<X11Color>::const_iterator mincit = colorDB.begin();
+	vector<NamedColor>::const_iterator mincit = colorDB.begin();
 
-	for (vector<X11Color>::const_iterator cit = colorDB.begin();
+	for (vector<NamedColor>::const_iterator cit = colorDB.begin();
 	     cit != colorDB.end(); ++cit) {
-		RGBColor colDB = (*cit).second;
 		RGBColor diff;
-		diff.r = col.r - colDB.r;
-		diff.g = col.g - colDB.g;
-		diff.b = col.b - colDB.b;
+		diff.r = col.r - (*cit).r;
+		diff.g = col.g - (*cit).g;
+		diff.b = col.b - (*cit).b;
 
 		int d = (2 * (diff.r * diff.r) +
 		         3 * (diff.g * diff.g) +
@@ -869,13 +1026,13 @@ void FormPreferences::Converters::build()
 	fl_set_input_return(dialog_->input_flags, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler( dialog_->browser_all );
-	parent_.setPreHandler( dialog_->button_delete );
-	parent_.setPreHandler( dialog_->button_add );
-	parent_.setPreHandler( dialog_->input_converter );
-	parent_.setPreHandler( dialog_->choice_from );
-	parent_.setPreHandler( dialog_->choice_to );
-	parent_.setPreHandler( dialog_->input_flags );
+	setPreHandler( dialog_->browser_all );
+	setPreHandler( dialog_->button_delete );
+	setPreHandler( dialog_->button_add );
+	setPreHandler( dialog_->input_converter );
+	setPreHandler( dialog_->choice_from );
+	setPreHandler( dialog_->choice_to );
+	setPreHandler( dialog_->input_flags );
 }
 
 
@@ -1146,14 +1303,14 @@ void FormPreferences::Formats::build()
 	fl_set_input_filter(dialog_->input_format, fl_lowercase_filter);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler( dialog_->browser_all );
-	parent_.setPreHandler( dialog_->input_format );
-	parent_.setPreHandler( dialog_->input_gui_name );
-	parent_.setPreHandler( dialog_->button_delete );
-	parent_.setPreHandler( dialog_->button_add );
-	parent_.setPreHandler( dialog_->input_extension );
-	parent_.setPreHandler( dialog_->input_viewer );
-	parent_.setPreHandler( dialog_->input_shrtcut );
+	setPreHandler( dialog_->browser_all );
+	setPreHandler( dialog_->input_format );
+	setPreHandler( dialog_->input_gui_name );
+	setPreHandler( dialog_->button_delete );
+	setPreHandler( dialog_->button_add );
+	setPreHandler( dialog_->input_extension );
+	setPreHandler( dialog_->input_viewer );
+	setPreHandler( dialog_->input_shrtcut );
 }
 
 
@@ -1293,7 +1450,7 @@ bool FormPreferences::Formats::Delete()
 	string name = fl_get_input(dialog_->input_format);
 
 	if (local_converters.FormatIsUsed(name)) {
-		parent_.printWarning(_("WARNING! Cannot remove a Format used by a Converter. Remove the converter first."));
+		parent_.printWarning(_("Cannot remove a Format used by a Converter. Remove the converter first."));
 		fl_deactivate_object(dialog_->button_delete);
 		fl_set_object_lcol(dialog_->button_delete, FL_INACTIVE);
 		return false;
@@ -1373,7 +1530,7 @@ void FormPreferences::InputsMisc::build()
 	fl_set_input_return(dialog_->input_date_format, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler( dialog_->input_date_format );
+	setPreHandler( dialog_->input_date_format );
 }
 
 
@@ -1428,14 +1585,14 @@ void FormPreferences::Interface::build()
 	fl_set_input_return(dialog_->input_ui_file, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler( dialog_->input_popup_font );
-	parent_.setPreHandler( dialog_->input_menu_font );
-	parent_.setPreHandler( dialog_->input_popup_encoding );
-	parent_.setPreHandler( dialog_->input_bind_file );
-	parent_.setPreHandler( dialog_->button_bind_file_browse );
-	parent_.setPreHandler( dialog_->input_ui_file );
-	parent_.setPreHandler( dialog_->button_ui_file_browse );
-	parent_.setPreHandler( dialog_->check_override_x_dead_keys );
+	setPreHandler( dialog_->input_popup_font );
+	setPreHandler( dialog_->input_menu_font );
+	setPreHandler( dialog_->input_popup_encoding );
+	setPreHandler( dialog_->input_bind_file );
+	setPreHandler( dialog_->button_bind_file_browse );
+	setPreHandler( dialog_->input_ui_file );
+	setPreHandler( dialog_->button_ui_file_browse );
+	setPreHandler( dialog_->check_override_x_dead_keys );
 }
 
 
@@ -1581,21 +1738,23 @@ void FormPreferences::Language::build()
 	fl_unfreeze_form(dialog_->form);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler( dialog_->input_package );
-	parent_.setPreHandler( dialog_->check_use_kbmap );
+	setPreHandler( dialog_->input_package );
+	setPreHandler( dialog_->check_use_kbmap );
 
 	// This is safe, as nothing is done to the pointer, other than
 	// to use its address in a block-if statement.
-	//setPreHandler( reinterpret_cast<FL_OBJECT *>(combo_default_lang) );
+	// setPreHandler(
+	// 		reinterpret_cast<FL_OBJECT *>(combo_default_lang),
+	//		C_FormPreferencesFeedbackCB );
 
-	parent_.setPreHandler( dialog_->input_kbmap1 );
-	parent_.setPreHandler( dialog_->input_kbmap2 );
-	parent_.setPreHandler( dialog_->check_rtl_support );
-	parent_.setPreHandler( dialog_->check_mark_foreign );
-	parent_.setPreHandler( dialog_->check_auto_begin );
-	parent_.setPreHandler( dialog_->check_auto_end );
-	parent_.setPreHandler( dialog_->input_command_begin );
-	parent_.setPreHandler( dialog_->input_command_end );
+	setPreHandler( dialog_->input_kbmap1 );
+	setPreHandler( dialog_->input_kbmap2 );
+	setPreHandler( dialog_->check_rtl_support );
+	setPreHandler( dialog_->check_mark_foreign );
+	setPreHandler( dialog_->check_auto_begin );
+	setPreHandler( dialog_->check_auto_end );
+	setPreHandler( dialog_->input_command_begin );
+	setPreHandler( dialog_->input_command_end );
 
 	// Activate/Deactivate the input fields dependent on the state of the
 	// buttons.
@@ -1773,14 +1932,14 @@ void FormPreferences::LnFmisc::build()
 	fl_set_counter_return(dialog_->counter_wm_jump, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler(dialog_->check_banner);
-	parent_.setPreHandler(dialog_->check_auto_region_delete);
-	parent_.setPreHandler(dialog_->check_exit_confirm);
-	parent_.setPreHandler(dialog_->check_display_shrtcuts);
-	parent_.setPreHandler(dialog_->counter_autosave);
-	parent_.setPreHandler(dialog_->check_ask_new_file);
-	parent_.setPreHandler(dialog_->check_cursor_follows_scrollbar);
-	parent_.setPreHandler(dialog_->counter_wm_jump);
+	setPreHandler( dialog_->check_banner );
+	setPreHandler( dialog_->check_auto_region_delete );
+	setPreHandler( dialog_->check_exit_confirm );
+	setPreHandler( dialog_->check_display_shrtcuts );
+	setPreHandler( dialog_->counter_autosave );
+	setPreHandler( dialog_->check_ask_new_file );
+	setPreHandler( dialog_->check_cursor_follows_scrollbar );
+	setPreHandler( dialog_->counter_wm_jump );
 }
 
 
@@ -1862,11 +2021,11 @@ void FormPreferences::OutputsMisc::build()
 			_(" default | US letter | legal | executive | A3 | A4 | A5 | B5 "));
 
 	// set up the feedback mechanism
-	parent_.setPreHandler( dialog_->counter_line_len );
-	parent_.setPreHandler( dialog_->input_tex_encoding );
-	parent_.setPreHandler( dialog_->choice_default_papersize );
-	parent_.setPreHandler( dialog_->input_ascii_roff );
-	parent_.setPreHandler( dialog_->input_checktex );
+	setPreHandler( dialog_->counter_line_len );
+	setPreHandler( dialog_->input_tex_encoding );
+	setPreHandler( dialog_->choice_default_papersize );
+	setPreHandler( dialog_->input_ascii_roff );
+	setPreHandler( dialog_->input_checktex );
 }
 
 
@@ -1959,16 +2118,16 @@ void FormPreferences::Paths::build()
 	fl_set_input_return(dialog_->input_serverpipe, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler(dialog_->input_default_path);
-	parent_.setPreHandler(dialog_->counter_lastfiles);
-	parent_.setPreHandler(dialog_->input_template_path);
-	parent_.setPreHandler(dialog_->check_last_files);
-	parent_.setPreHandler(dialog_->input_lastfiles);
-	parent_.setPreHandler(dialog_->check_make_backups);
-	parent_.setPreHandler(dialog_->input_backup_path);
-	parent_.setPreHandler(dialog_->input_serverpipe);
-	parent_.setPreHandler(dialog_->input_temp_dir);
-	parent_.setPreHandler(dialog_->check_use_temp_dir);
+	setPreHandler( dialog_->input_default_path );
+	setPreHandler( dialog_->counter_lastfiles );
+	setPreHandler( dialog_->input_template_path );
+	setPreHandler( dialog_->check_last_files );
+	setPreHandler( dialog_->input_lastfiles );
+	setPreHandler( dialog_->check_make_backups );
+	setPreHandler( dialog_->input_backup_path );
+	setPreHandler( dialog_->input_serverpipe );
+	setPreHandler( dialog_->input_temp_dir );
+	setPreHandler( dialog_->check_use_temp_dir );
 }
 
 
@@ -1995,8 +2154,11 @@ FormPreferences::Paths::feedback(FL_OBJECT const * const ob) const
 		str = lyxrc.getDescription( LyXRC::RC_MAKE_BACKUP );
 	else if (ob == dialog_->input_backup_path )
 		str = lyxrc.getDescription( LyXRC::RC_BACKUPDIR_PATH );
-	else if (ob == dialog_->input_serverpipe )
+	else if (ob == dialog_->input_serverpipe ) {
 		str = lyxrc.getDescription( LyXRC::RC_SERVERPIPE );
+		str += " Enter either the input pipe, xxx.in, or the output pipe, xxx.out.";
+	}
+	
 
 	return str;
 }
@@ -2046,48 +2208,70 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	}
 
 	if (!ob || ob == dialog_->input_default_path) {
+		string err;
 		string name = fl_get_input(dialog_->input_default_path);
-		if (!parent_.WriteableDir(name) )
+		if (!WriteableDir(name, err) ) {
+			parent_.printWarning( err );
 			return false;
+		}
 	}
 
 	if (!ob || ob == dialog_->input_template_path) {
+		string err;
 		string name = fl_get_input(dialog_->input_template_path);
-		if (!parent_.ReadableDir(name) )
-		    return false;
+		if (!ReadableDir(name, err) ) {
+			parent_.printWarning( err );
+			return false;
+		}
 	}
 
 	if (!ob || ob == dialog_->input_temp_dir) {
+		string err;
 		string name = fl_get_input(dialog_->input_temp_dir);
 		if (fl_get_button(dialog_->check_make_backups)
 		    && !name.empty()
-		    && !parent_.WriteableDir(name) )
+		    && !WriteableDir(name, err) ) {
+			parent_.printWarning( err );
 			return false;
+		}
 	}
 
 	if (!ob || ob == dialog_->input_backup_path) {
+		string err;
 		string name = fl_get_input(dialog_->input_backup_path);
 		if (fl_get_button(dialog_->check_make_backups)
 		    && !name.empty()
-		    && !parent_.WriteableDir(name) )
+		    && !WriteableDir(name, err) ) {
+			parent_.printWarning( err );
 			return false;
+		}
 	}
 
 	if (!ob || ob == dialog_->input_lastfiles) {
+		string err;
 		string name = fl_get_input(dialog_->input_lastfiles);
 		if (fl_get_button(dialog_->check_last_files)
 		    && !name.empty()
-		    && !parent_.WriteableFile(name) )
+		    && !WriteableFile(name, err) ) {
+			parent_.printWarning( err );
 			return false;
+		}
 	}
 
 	if (!ob || ob == dialog_->input_serverpipe) {
+		string err;
 		string name = fl_get_input(dialog_->input_serverpipe);
 		if (!name.empty()) {
-			if (!parent_.WriteableFile(name, ".in"))
+			// strip of the extension
+			string str = ChangeExtension(name, "");
+			if (!WriteableFile( str + ".in", err)) {
+				parent_.printWarning( err );
 				return false;
-			if (!parent_.WriteableFile(name, ".out"))
+			}
+			if (!WriteableFile( str + ".out", err)) {
+				parent_.printWarning( err );
 				return false;
+			}
 		}
 	}
 
@@ -2266,24 +2450,24 @@ void FormPreferences::Printer::build()
 	fl_set_input_return(dialog_->input_name, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler( dialog_->input_command );
-	parent_.setPreHandler( dialog_->input_page_range );
-	parent_.setPreHandler( dialog_->input_copies );
-	parent_.setPreHandler( dialog_->input_reverse );
-	parent_.setPreHandler( dialog_->input_to_printer );
-	parent_.setPreHandler( dialog_->input_file_extension );
-	parent_.setPreHandler( dialog_->input_spool_command );
-	parent_.setPreHandler( dialog_->input_paper_type );
-	parent_.setPreHandler( dialog_->input_even_pages );
-	parent_.setPreHandler( dialog_->input_odd_pages );
-	parent_.setPreHandler( dialog_->input_collated );
-	parent_.setPreHandler( dialog_->input_landscape );
-	parent_.setPreHandler( dialog_->input_to_file );
-	parent_.setPreHandler( dialog_->input_extra_options );
-	parent_.setPreHandler( dialog_->input_spool_prefix );
-	parent_.setPreHandler( dialog_->input_paper_size );
-	parent_.setPreHandler( dialog_->input_name );
-	parent_.setPreHandler( dialog_->check_adapt_output );
+	setPreHandler( dialog_->input_command );
+	setPreHandler( dialog_->input_page_range );
+	setPreHandler( dialog_->input_copies );
+	setPreHandler( dialog_->input_reverse );
+	setPreHandler( dialog_->input_to_printer );
+	setPreHandler( dialog_->input_file_extension );
+	setPreHandler( dialog_->input_spool_command );
+	setPreHandler( dialog_->input_paper_type );
+	setPreHandler( dialog_->input_even_pages );
+	setPreHandler( dialog_->input_odd_pages );
+	setPreHandler( dialog_->input_collated );
+	setPreHandler( dialog_->input_landscape );
+	setPreHandler( dialog_->input_to_file );
+	setPreHandler( dialog_->input_extra_options );
+	setPreHandler( dialog_->input_spool_prefix );
+	setPreHandler( dialog_->input_paper_size );
+	setPreHandler( dialog_->input_name );
+	setPreHandler( dialog_->check_adapt_output );
 }
 
 
@@ -2495,23 +2679,23 @@ void FormPreferences::ScreenFonts::build()
 			    fl_unsigned_int_filter);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler(dialog_->input_roman);
-	parent_.setPreHandler(dialog_->input_sans);
-	parent_.setPreHandler(dialog_->input_typewriter);
-	parent_.setPreHandler(dialog_->counter_zoom);
-	parent_.setPreHandler(dialog_->counter_dpi);
-	parent_.setPreHandler(dialog_->check_scalable);
-	parent_.setPreHandler(dialog_->input_screen_encoding);
-	parent_.setPreHandler(dialog_->input_tiny);
-	parent_.setPreHandler(dialog_->input_script);
-	parent_.setPreHandler(dialog_->input_footnote);
-	parent_.setPreHandler(dialog_->input_small);
-	parent_.setPreHandler(dialog_->input_large);
-	parent_.setPreHandler(dialog_->input_larger);
-	parent_.setPreHandler(dialog_->input_largest);
-	parent_.setPreHandler(dialog_->input_normal);
-	parent_.setPreHandler(dialog_->input_huge);
-	parent_.setPreHandler(dialog_->input_huger);
+	setPreHandler( dialog_->input_roman );
+	setPreHandler( dialog_->input_sans );
+	setPreHandler( dialog_->input_typewriter );
+	setPreHandler( dialog_->counter_zoom );
+	setPreHandler( dialog_->counter_dpi );
+	setPreHandler( dialog_->check_scalable );
+	setPreHandler( dialog_->input_screen_encoding );
+	setPreHandler( dialog_->input_tiny );
+	setPreHandler( dialog_->input_script );
+	setPreHandler( dialog_->input_footnote );
+	setPreHandler( dialog_->input_small );
+	setPreHandler( dialog_->input_large );
+	setPreHandler( dialog_->input_larger );
+	setPreHandler( dialog_->input_largest );
+	setPreHandler( dialog_->input_normal );
+	setPreHandler( dialog_->input_huge );
+	setPreHandler( dialog_->input_huger );
 }
 
 	
@@ -2569,7 +2753,7 @@ bool FormPreferences::ScreenFonts::input()
 	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_huge))
 	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_huger))) {
 		activate = false;
-		str = N_("WARNING! Fonts must be positive!");
+		str = N_("Fonts must be positive!");
 
 	// Fontsizes -- tiny < script < footnote etc.
 	} else if (strToDbl(fl_get_input(dialog_->input_tiny)) >
@@ -2592,7 +2776,7 @@ bool FormPreferences::ScreenFonts::input()
 		   strToDbl(fl_get_input(dialog_->input_huger))) {
 		activate = false;
 
-		str = N_("WARNING! Fonts must be input in the order tiny > script> footnote > small > normal > large > larger > largest > huge > huger.");
+		str = N_("Fonts must be input in the order tiny > script> footnote > small > normal > large > larger > largest > huge > huger.");
 	}
 
 	if (!activate)
@@ -2717,16 +2901,16 @@ void FormPreferences::SpellChecker::build()
 			    FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	parent_.setPreHandler(dialog_->choice_spell_command);
-	parent_.setPreHandler(dialog_->check_alt_lang);
-	parent_.setPreHandler(dialog_->input_alt_lang);
-	parent_.setPreHandler(dialog_->check_escape_chars);
-	parent_.setPreHandler(dialog_->input_escape_chars);
-	parent_.setPreHandler(dialog_->check_personal_dict);
-	parent_.setPreHandler(dialog_->input_personal_dict);
-	parent_.setPreHandler(dialog_->button_personal_dict);
-	parent_.setPreHandler(dialog_->check_compound_words);
-	parent_.setPreHandler(dialog_->check_input_enc);
+	setPreHandler( dialog_->choice_spell_command );
+	setPreHandler( dialog_->check_alt_lang );
+	setPreHandler( dialog_->input_alt_lang );
+	setPreHandler( dialog_->check_escape_chars );
+	setPreHandler( dialog_->input_escape_chars );
+	setPreHandler( dialog_->check_personal_dict );
+	setPreHandler( dialog_->input_personal_dict );
+	setPreHandler( dialog_->button_personal_dict );
+	setPreHandler( dialog_->check_compound_words );
+	setPreHandler( dialog_->check_input_enc );
 }
 
 
@@ -2875,185 +3059,20 @@ void FormPreferences::SpellChecker::update()
 }
 
 
-bool FormPreferences::WriteableDir(string const & name)
-{
-	bool success = true;
-	string str;
-
-	if (!AbsolutePath(name)) {
-		success = false;
-		str = N_("WARNING! The absolute path is required.");
-	}
-
-	FileInfo const tp(name);
-	if (success && !tp.isDir()) {
-		success = false;
-		str = N_("WARNING! Directory does not exist.");
-	}
-
-	if (success && !tp.writable()) {
-		success = false;
-		str = N_("WARNING! Cannot write to this directory.");
-	}
-
-	if (!success)
-		printWarning(str);
-	
-	return success;
-}
-
-
-bool FormPreferences::ReadableDir(string const & name)
-{
-	bool success = true;
-	string str;
-
-	if (!AbsolutePath(name)) {
-		success = false;
-		str = N_("WARNING! The absolute path is required.");
-	}
-
-	FileInfo const tp(name);
-	if (success && !tp.isDir()) {
-		success = false;
-		str = N_("WARNING! Directory does not exist.");
-	}
-
-	if (success && !tp.readable()) {
-		success = false;
-		str = N_("WARNING! Cannot read this directory.");
-	}
-
-	if (!success)
-		printWarning( str );
-
-	return success;
-}
-
-
-bool FormPreferences::WriteableFile(string const & name,
-				    string const & suffix)
-{
-	// A writeable file is either:
-	// * An existing file to which we have write access, or
-	// * A file that doesn't yet exist but that would exist in a writeable
-	//   directory.
-
-	bool success = true;
-	string str;
-
-	if (name.empty()) {
-		success = false;
-		str = N_("WARNING! No file input.");
-	}
-
-	string const dir = OnlyPath(name);
-	if (success && !AbsolutePath(dir)) {
-		success = false;
-		str = N_("WARNING! The absolute path is required.");
-	}
-
-	FileInfo d(name);
-	if (!d.isDir()) {
-		d.newFile(dir);
-	}
-
-	if (success && !d.isDir()) {
-		success = false;
-		str = N_("WARNING! Directory does not exist.");
-	}
-	
-	if (success && !d.writable()) {
-		success = false;
-		str = N_("WARNING! Cannot write to this directory.");
-	}
-
-	FileInfo f(name + suffix);
-	if (success && (dir == name || f.isDir())) {
-		success = false;
-		str = N_("WARNING! A file is required, not a directory.");
-	}
-
-	if (success && (f.exist() && !f.writable())) {
-		success = false;
-		str = N_("WARNING! Cannot write to this file.");
-	}
-	
-	if (!success)
-		printWarning( str );
-
-	return success;
-}
-
-
-bool FormPreferences::ReadableFile(string const & name,
-				   string const & suffix)
-{
-	bool success = true;
-	string str;
-
-	if (name.empty()) {
-		success = false;
-		str = N_("WARNING! No file input.");
-	}
-
-	string const dir = OnlyPath(name);
-	if (success && !AbsolutePath(dir)) {
-		success = false;
-		str = N_("WARNING! The absolute path is required.");
-	}
-
-	FileInfo d(name);
-	if (!d.isDir()) {
-		d.newFile(dir);
-	}
-
-	if (success && !d.isDir()) {
-		success = false;
-		str = N_("WARNING! Directory does not exist.");
-	}
-	
-	if (success && !d.readable()) {
-		success = false;
-		str = N_("WARNING! Cannot read from this directory.");
-	}
-
-	FileInfo f(name + suffix);
-	if (success && (dir == name || f.isDir())) {
-		success = false;
-		str = N_("WARNING! A file is required, not a directory.");
-	}
-
-	if (success && !f.exist()) {
-		success = false;
-		str = N_("WARNING! File does not exist.");
-	}
-	
-	if (success && !f.readable()) {
-		success = false;
-		str = N_("WARNING! Cannot read from this file.");
-	}
-	
-	if (!success)
-		printWarning( str );
-
-	return success;
-}
-
-
-void FormPreferences::printWarning(string const & warning)
+void FormPreferences::printWarning( string const & warning )
 {
 	warningPosted = true;
 
-	string const str = formatted(warning, dialog_->text_warning->w - 10,
-				     FL_SMALL_SIZE, FL_NORMAL_STYLE);
+	string str = N_("WARNING!") + string(" ") + warning;
+	str = formatted( str, dialog_->text_warning->w-10,
+			 FL_SMALL_SIZE, FL_NORMAL_STYLE );
 
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 }
 
 
-bool FormPreferences::browse(FL_OBJECT * inpt,
+void FormPreferences::browse(FL_OBJECT * inpt,
 			     string const & title,
 			     string const & pattern, 
 			     pair<string,string> const & dir1,
@@ -3071,58 +3090,6 @@ bool FormPreferences::browse(FL_OBJECT * inpt,
 		fl_set_input(inpt, new_filename.c_str());
 		input(inpt, 0);
 	}
-	
-	return true;
-}
-
-
-string const
-FormPreferences::browseFile(string const & filename,
-			    string const & title,
-			    string const & pattern, 
-			    pair<string,string> const & dir1,
-			    pair<string,string> const & dir2) const
-{
-	string lastPath = ".";
-	if (!filename.empty()) lastPath = OnlyPath(filename);
-
-	LyXFileDlg fileDlg;
-
-	if (!dir1.second.empty()) {
-		FileInfo fileInfo(dir1.second);
-		if (fileInfo.isOK() && fileInfo.isDir())
-			fileDlg.SetButton(0, dir1.first, dir1.second);
-	}
-
-	if (!dir2.second.empty()) {
-		FileInfo fileInfo(dir2.second);
-		if (fileInfo.isOK() && fileInfo.isDir())
-		    fileDlg.SetButton(1, dir2.first, dir2.second);
-	}
-
-	bool error = false;
-	string buf;
-	do {
-		string const p = fileDlg.Select(title,
-		                          lastPath,
-		                          pattern, filename);
-
-		if (p.empty()) return p;
-
-		lastPath = OnlyPath(p);
-
-		if (p.find_first_of("#~$% ") != string::npos) {
-			WriteAlert(_("Filename can't contain any "
-			             "of these characters:"),
-			           _("space, '#', '~', '$' or '%'."));
-			error = true;
-		} else {
-			error = false;
-			buf = p;
-		}
-	} while (error);
-
-	return buf;
 }
 
 
@@ -3170,7 +3137,9 @@ void FormPreferences::Feedback(FL_OBJECT * ob, int event)
 }
 
 
-void FormPreferences::setPreHandler(FL_OBJECT * ob) const
+
+
+void FormPreferences::setPreHandler(FL_OBJECT * ob)
 {
 	Assert(ob);
 	fl_set_object_prehandler(ob, C_FormPreferencesFeedbackCB);

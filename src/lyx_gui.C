@@ -42,7 +42,7 @@
 #include "language.h"
 #include "ColorHandler.h"
 #include "frontends/GUIRunTime.h"
-#include "frontends/xforms/Color.h"
+#include "frontends/xforms/xform_helpers.h" // for XformColor
 
 using std::endl;
 
@@ -373,7 +373,7 @@ void LyXGUI::create_forms()
 	// This is probably as good a time as any to map the xform colours,
 	// should a mapping exist.
 	{
-		string filename = user_lyxdir + "/preferences.xform";
+		string filename = AddName(user_lyxdir, "preferences.xform");
 		XformColor::read( filename );
 	}
 	

@@ -32,7 +32,10 @@
   - A logical color, such as no color, inherit, math
 
   */
-class LColor : public noncopyable {
+class LColor //: public noncopyable {
+// made copyable for same reasons as LyXRC was made copyable. See there for
+// explanation.
+{
 public:
 	/// Names of colors, including all logical colors
 	enum color {
@@ -216,5 +219,7 @@ private:
 
 ///
 extern LColor lcolor;
+///
+extern LColor system_lcolor;
 
 #endif

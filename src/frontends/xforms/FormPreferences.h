@@ -18,10 +18,7 @@
 #define FORMPREFERENCES_H
 
 #include <utility> // for pair
-
 #include "FormBase.h"
-#include "Color.h"
-#include "LString.h"
 
 #ifdef __GNUG_
 #pragma interface
@@ -32,6 +29,9 @@ class Command;
 class Dialogs;
 class Format;
 class LyXView;
+class NamedColor;
+class RGBColor;
+class XformColor;
 struct FD_form_colors;
 struct FD_form_converters;
 struct FD_form_formats;
@@ -67,9 +67,9 @@ private:
 	virtual void redraw();
 	/// Update the dialog.
 	virtual void update();
-	///
+	/// Hide the dialog.
 	virtual void hide();
-	/// OK from dialog
+	/// OK (Save) from dialog
 	virtual void ok();
 	/// Apply from dialog
 	virtual void apply();
@@ -77,48 +77,25 @@ private:
 	virtual bool input(FL_OBJECT *, long);
 	/// Build the dialog
 	virtual void build();
-	/// control which feedback message is output
-	void feedback( FL_OBJECT * );
-	/// The handler for the preemptive feedback
-	void Feedback(FL_OBJECT *, int);
-	///
+	/// Pointer to the actual instantiation of xform's form.
 	virtual FL_FORM * form() const;
+	/// control which feedback message is output
+	void feedback(FL_OBJECT *);
 
-	/** Helper functions available to the various tab folders.
-	 */
-
-	///
-	bool WriteableDir( string const & );
-	///
-	bool ReadableDir( string const & );
-	///
-	bool WriteableFile( string const &, string const & = string() );
-	///
-	bool ReadableFile( string const &, string const & = string() );
-	///
-	void setPreHandler( FL_OBJECT * ) const;
-	///
+       	/// Set the preemptive handler for each FL_OBJECT.
+	static void setPreHandler(FL_OBJECT *);
+	/// The preemptive handler for feedback messages.
+	void Feedback(FL_OBJECT *, int);
+	/// Print a warning message and set warning flag.
 	void printWarning( string const & );
-
-	/** title: filedlg title, pattern: *.ps etc
-	    extra buttons on filedlg: dir1 = (name, dir), dir2 = (name, dir)
+	/** Launch a file dialog and modify input if it returns a new file.
+	    For an explanation of the various parameters, see xform_helpers.h.
 	 */
+	void browse( FL_OBJECT * input,
+		     string const & title, string const & pattern, 
+		     std::pair<string,string> const & dir1,
+		     std::pair<string,string> const & dir2 );
 	
-	///
-	bool browse(FL_OBJECT * input,
-		    string const & title, string const & pattern, 
-		    std::pair<string,string> const & dir1 //=
-		    //std::pair<string,string>()
-		    ,
-		    std::pair<string,string> const & dir2 //=
-		    //std::pair<string,string>()
-		);
-	/// called from browse()
-	string const browseFile( string const & filename,
-				 string const & title, string const & pattern, 
-				 std::pair<string,string> const & dir1,
-				 std::pair<string,string> const & dir2 ) const;
-
 	/// Type definitions from the fdesign produced header file.
 	FD_form_preferences * build_preferences();
 	///
@@ -214,7 +191,7 @@ private:
 		///
 		FD_form_colors * dialog_;
 		/// A vector of RGB colors and associated name.
-		static std::vector<X11Color> colorDB;
+		static std::vector<NamedColor> colorDB;
 		/// A vector of xform RGB colors and associated name.
 		static std::vector<XformColor> xformColorDB;
 	};
@@ -225,7 +202,7 @@ private:
 	class Converters {
 	public:
 		///
-		Converters( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		Converters( FormPreferences & p ) : parent_(p), dialog_(0) {}
 		///
 		~Converters();
 		///
@@ -565,7 +542,6 @@ private:
 	///
 	friend class SpellChecker;
 
-	
 	/** The tab folders.
 	 */
 	

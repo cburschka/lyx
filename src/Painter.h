@@ -22,7 +22,6 @@
 #include <X11/Xlib.h>
 
 #include "PainterBase.h"
-#include "LColor.h"
 
 class LyXFont;
 class WorkArea;

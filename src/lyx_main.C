@@ -402,6 +402,7 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	system_lyxrc = lyxrc;
 	system_formats = formats;
 	system_converters = converters;
+	system_lcolor = lcolor;
 
 	// If there is a preferences file we read that instead
 	// of the old lyxrc file.

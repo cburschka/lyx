@@ -94,7 +94,7 @@ public:
 	virtual PainterBase & fillPolygon(
 		int const * xp, int const * yp,
 		int np,
-		LColor::color =LColor::foreground) = 0;
+		LColor::color = LColor::foreground) = 0;
 
 	/// Draw lines from x1,y1 to x2,y2. They are arrays
         virtual PainterBase & segments(

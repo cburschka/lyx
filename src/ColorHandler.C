@@ -20,6 +20,7 @@
 #include "debug.h"
 
 #include "ColorHandler.h"
+#include "LColor.h"
 #include "gettext.h"
 
 using std::endl;
