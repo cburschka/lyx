@@ -97,6 +97,19 @@ CTAN
  in LyX.
 \layout Enumerate
 
+The packages that have been stamped 
+\begin_inset Quotes eld
+\end_inset 
+
+required
+\begin_inset Quotes erd
+\end_inset 
+
+ by the LaTeX maintainers.
+ These ones should definitely be present, but you may not have some of them
+ if your LaTeX distribution is a bit old.
+\layout Enumerate
+
 Some packages that LyX uses when you try to change the margins of your document.
  The detection of these items does not yet affect the options available
  inside LyX.
@@ -179,6 +192,8 @@ The LaTeX version that LyX will use is:
  
 \family typewriter 
 1995/12/01
+\family default 
+
 \begin_inset Foot
 collapsed true
 
@@ -362,7 +377,48 @@ Notes: The standard document class
 slides
 \family default 
  is intended to produce transparencies.
- 
+ It is not very well supported by LyX.
+ It is advised to use 
+\family sans 
+foils
+\family default 
+ instead if it is available (see\SpecialChar ~
+
+\begin_inset LatexCommand \ref{ssec:foils}
+
+\end_inset 
+
+).
+\layout Subsection
+
+amsart
+\layout Description
+
+Found: @chk_amsart@
+\layout Description
+
+CTAN: 
+\family typewriter 
+fonts/ams/amslatex/inputs/
+\layout Description
+
+Notes: The document class 
+\family sans 
+amsart
+\family default 
+ is an alternative to the class 
+\family sans 
+article
+\family default 
+.
+ It is part of the AMS-LaTeX package and is used for typesetting of mathematics
+ with a look the American Mathematical Society has developed.
+ They recommend it for the preparation of manuscripts intended for publication
+ both in the Society's books and journals, and also in other mathematical
+ literature.
+ The Society requests that published documents prepared with AMS-LaTeX include
+ an acknowledgment of its use.
+ LyX support is still limited.
 \layout Section
 
 Additional document classes
@@ -429,36 +485,6 @@ Publications of the Astronomical Society of the Pacific
 .
 \layout Subsection
 
-amsart
-\layout Description
-
-Found: @chk_amsart@
-\layout Description
-
-CTAN: 
-\family typewriter 
-fonts/ams/amslatex/inputs/
-\layout Description
-
-Notes: The document class 
-\family sans 
-amsart
-\family default 
- is an alternative to the class 
-\family sans 
-article
-\family default 
-.
- It is part of the AMS-LaTeX package and is used for typesetting of mathematics
- with a look the American Mathematical Society has developed.
- They recommend it for the preparation of manuscripts intended for publication
- both in the Society's books and journals, and also in other mathematical
- literature.
- The Society requests that published documents prepared with AMS-LaTeX include
- an acknowledgment of its use.
- LyX support is still limited.
-\layout Subsection
-
 broadway
 \layout Description
 
@@ -479,6 +505,37 @@ broadway
  is for writing plays.
  It is not an existing LaTeX document class, but a new one which is distributed
  with LyX.
+\layout Subsection
+
+cv
+\layout Description
+
+Found: @chk_cv@
+\layout Description
+
+CTAN: N/A (must be installed from the 
+\family typewriter 
+tex/
+\family default 
+ subdirectory of LyX source distribution)
+\layout Description
+
+WWW: At the time of this writing, the latest version can be obtained at
+ 
+\begin_inset LatexCommand \url{http://www-rocq.inria.fr/~lasgoutt/lyx/cv-1.5.tar.gz}
+
+\end_inset 
+
+
+\layout Description
+
+Notes: The document class 
+\family sans 
+cv
+\family default 
+ is for writing a curriculum vitae.
+ It is rather minimalist, but has nice features like bibliography support
+ (useful for academics).
 \layout Subsection
 
 dinbrief
@@ -526,10 +583,10 @@ jadetex
  You need the sgmltools v2.0 package installed to use this.
 \layout Subsection
 
-encts
+entcs
 \layout Description
 
-Found: @chk_encts@
+Found: @chk_entcs@
 \layout Description
 
 CTAN: N/A
@@ -552,10 +609,26 @@ entcs
  
 \layout Subsection
 
-extarticle
+extsizes
 \layout Description
 
-Found: @chk_extarticle@
+Found: 
+\family sans 
+extarticle
+\family default 
+: @chk_extarticle@, 
+\family sans 
+extbook
+\family default 
+:@chk_extbook@, 
+\family sans 
+extreport
+\family default 
+: @chk_extreport@, 
+\family sans 
+extletter
+\family default 
+: @chk_extletter@
 \layout Description
 
 CTAN: 
@@ -563,81 +636,80 @@ CTAN:
 tex-archive/macros/latex/contrib/other/extsizes/
 \layout Description
 
-Notes: 
-\family sans 
-extarticle
-\family default 
- is equivalent to standard 
+Notes: These document classes are equivalent to the corresponding standard
+ classes (
 \family sans 
 article
 \family default 
- class with additional document-wide font sizes.
-\layout Subsection
-
-extbook
-\layout Description
-
-Found: @chk_extbook@
-\layout Description
-
-CTAN: 
-\family typewriter 
-tex-archive/macros/latex/contrib/other/extsizes/
-\layout Description
-
-Notes: 
-\family sans 
-extbook
-\family default 
- is equivalent to standard 
+, 
 \family sans 
 book
 \family default 
- class with additional document-wide font sizes.
+, \SpecialChar \ldots{}
+) with additional document-wide font sizes.
 \layout Subsection
 
-extreport
+Springer 2-columns Journals (ejour2)
 \layout Description
 
-Found: @chk_extreport@
+Found: @chk_ejour2@
+\layout Description
+
+CTAN: N/A (must be installed from the 
+\family typewriter 
+tex/
+\family default 
+ subdirectory of LyX source distribution)
+\layout Description
+
+Notes: The document class 
+\family sans 
+ejour2
+\family default 
+ is for the two-column journal format used by Springer Verlag.
+ It is reasonably well tested only for the Journal of Geodesy.
+ It is not an existing LaTeX document class, but a new one which is distributed
+ with LyX.
+\layout Subsection
+
+
+\begin_inset LatexCommand \label{ssec:foils}
+
+\end_inset 
+
+foils
+\layout Description
+
+Found: @chk_foils@
 \layout Description
 
 CTAN: 
 \family typewriter 
-tex-archive/macros/latex/contrib/other/extsizes/
+macros/latex/contrib/supported/foiltex/
 \layout Description
 
-Notes: 
+Notes: The document class 
 \family sans 
-extreport
+foils
 \family default 
- is equivalent to standard 
+ (aka FoilTeX) provides an alternative to the standard 
 \family sans 
-report
+slides
 \family default 
- class with additional document-wide font sizes.
-\layout Subsection
-
-extletter
-\layout Description
-
-Found: @chk_extletter@
-\layout Description
-
-CTAN: 
-\family typewriter 
-tex-archive/macros/latex/contrib/other/extsizes/
-\layout Description
-
-Notes: 
+ class to make transparencies.
+ It allows cross references, uses a less ugly font, and is in general much
+ better to use than 
 \family sans 
-extletter
+slides
 \family default 
- is equivalent to standard 
+.
+ It does not however have some of the advanced features found in the 
 \family sans 
-letter
+seminar
 \family default 
- class with additional document-wide font sizes.
+ class, which is not currently supported by LyX.
+ Note that, due to its somewhat restrictive license, it is not included
+ in free TeX distributions like teTeX.
 \layout Subsection
 
 g-brief-en
@@ -674,63 +746,6 @@ Notes: The document class
 g-brief-de
 \family default 
  is the same as the above g-brief-en only with german labels.
-\layout Subsection
-
-Springer 2-columns Journals (ejour2)
-\layout Description
-
-Found: @chk_ejour2@
-\layout Description
-
-CTAN: N/A (must be installed from the 
-\family typewriter 
-tex/
-\family default 
- subdirectory of LyX source distribution)
-\layout Description
-
-Notes: The document class 
-\family sans 
-ejour2
-\family default 
- is for the two-column journal format used by Springer Verlag.
- It is reasonably well tested only for the Journal of Geodesy.
- It is not an existing LaTeX document class, but a new one which is distributed
- with LyX.
-\layout Subsection
-
-foils
-\layout Description
-
-Found: @chk_foils@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/contrib/supported/foiltex/
-\layout Description
-
-Notes: The document class 
-\family sans 
-foils
-\family default 
- (aka FoilTeX) provides an alternative to the standard 
-\family sans 
-slides
-\family default 
- class to make transparencies.
- It allows cross references, uses a less ugly font, and is in general much
- better to use than 
-\family sans 
-slides
-\family default 
-.
- It does not however have some of the advanced features found in the 
-\family sans 
-seminar
-\family default 
- class, which is not currently supported by LyX.
- 
 \layout Subsection
 
 hollywood
@@ -886,6 +901,43 @@ Astrophysics and Space Science, Solar Physics
 ).
 \layout Subsection
 
+Koma-Script
+\layout Description
+
+Found: scrartcl: @chk_scrartcl@, 
+\family sans 
+scrreprt
+\family default 
+: @chk_scrreprt@, 
+\family sans 
+scrbook
+\family default 
+: @chk_scrbook@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/supported/koma-script/
+\layout Description
+
+Notes: These document classes provide different versions of the base LaTeX
+ document classes 
+\family sans 
+article
+\family default 
+, 
+\family sans 
+report
+\family default 
+ and 
+\family sans 
+book
+\family default 
+.
+ They have been changed to look somewhat better and be more adapted to european
+ typesetting standards.
+\layout Subsection
+
 latex8
 \layout Description
 
@@ -1001,35 +1053,6 @@ article
  sans serif sections, headings, and more.
 \layout Subsection
 
-Koma-Script (scrartcl, scrreprt, scrbook)
-\layout Description
-
-Found: @chk_scrartcl@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/contrib/supported/koma-script/
-\layout Description
-
-Notes: These document classes provide different versions of the base LaTeX
- document classes 
-\family sans 
-article
-\family default 
-, 
-\family sans 
-report
-\family default 
- and 
-\family sans 
-book
-\family default 
-.
- They have been changed to look somewhat better and be more adapted to european
- typesetting standards.
-\layout Subsection
-
 REVTeX
 \layout Description
 
@@ -1079,8 +1102,11 @@ Notes: REVTeX 4 is a class used for submitting manuscripts to journals including
  Topics---Accelerators and Beams), the American Institute of Physics, the
  Optical Society of America, and the Society for Exploration Geophysicists.
  [It is in BETA release as of July, 2000.] Also see 
-\family typewriter 
-http://publish.aps.org/revtex4/
+\begin_inset LatexCommand \url{http://publish.aps.org/revtex4/}
+
+\end_inset 
+
+.
 \layout Subsection
 
 SIAMLTeX
@@ -1143,6 +1169,260 @@ svjour.inc
 sv<journal>.layout
 \family default 
  to support any other Springer journals (hint, hint!)
+\layout Section
+
+Required packages
+\layout Standard
+
+This section contains packages which have been declared as 
+\begin_inset Quotes eld
+\end_inset 
+
+required
+\begin_inset Quotes erd
+\end_inset 
+
+ by the LaTeX maintainers.
+ You should really consider upgrading your LaTeX setup if one of them is
+ not detected.
+\layout Subsection
+
+array
+\layout Description
+
+Found: @chk_array@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/required/tools/array.dtx
+\layout Description
+
+Notes: The package array is needed by LyX to be able to output vertical
+ alignment other then ''top'' for tabulars.
+\layout Subsection
+
+babel
+\layout Description
+
+Found: @chk_babel@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/packages/babel/
+\layout Description
+
+Notes: The package 
+\family sans 
+babel
+\family default 
+ allows you to customize your document for your favorite language (see the
+ 
+\family sans 
+\size normal 
+Layout->Document
+\family default 
+\size default 
+  popup).
+ In particular, it handles hyphenation and automatic translation of all
+ labels like 
+\begin_inset Quotes eld
+\end_inset 
+
+Chapter
+\begin_inset Quotes erd
+\end_inset 
+
+  and 
+\begin_inset Quotes eld
+\end_inset 
+
+Table of contents
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ This package is not needed if you only plan to write in English, except
+ if you want to use non-English quotes.
+\layout Subsection
+
+color
+\layout Description
+
+Found: @chk_color@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/packages/graphics/
+\layout Description
+
+Notes: The package 
+\family sans 
+color
+\family default 
+ is needed by LyX to handled colored text.
+ These colors will not show in the DVI preview window, but will be correct
+ on the printed output or with a PostScript® previewer.
+ This package is bundled with the 
+\family sans 
+graphics
+\family default 
+ package (see 
+\begin_inset LatexCommand \ref{ssec:graphics}
+
+\end_inset 
+
+).
+\layout Subsection
+
+
+\begin_inset LatexCommand \label{ssec:graphics}
+
+\end_inset 
+
+graphics
+\layout Description
+
+Found: @chk_graphics@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/packages/graphics/
+\layout Description
+
+Notes: The package 
+\family sans 
+graphics
+\family default 
+ is needed by LyX to insert PostScript® figures (using the older figure
+ inset).
+ You will also need the program 
+\family typewriter 
+\size normal 
+ghostview
+\family default 
+\size default 
+ to see them on screen.
+ The configuration script has determined that the graphics driver used by
+ the package should be 
+\family sans 
+
+\begin_inset Quotes eld
+\end_inset 
+
+@chk_graphicsdriver@
+\begin_inset Quotes erd
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Here, a value of 
+\begin_inset Quotes eld
+\end_inset 
+
+default
+\begin_inset Quotes erd
+\end_inset 
+
+ means that your LaTeX installation provides a sensible value for this parameter.
+\end_inset 
+
+.
+\layout Subsection
+
+graphicx
+\layout Description
+
+Found: @chk_graphicx@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/packages/graphics/
+\layout Description
+
+Notes: The package 
+\family sans 
+graphicx
+\family default 
+ is needed by LyX to insert PostScript® figures (using the new graphics
+ inset).
+ You will also need 
+\family typewriter 
+\size normal 
+ghost
+\size default 
+script
+\family default 
+ to see them on screen.
+ The configuration script has determined that the graphics driver used by
+ the package should be 
+\family sans 
+
+\begin_inset Quotes eld
+\end_inset 
+
+@chk_graphicsdriver@
+\begin_inset Quotes erd
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Here, a value of 
+\begin_inset Quotes eld
+\end_inset 
+
+default
+\begin_inset Quotes erd
+\end_inset 
+
+ means that your LaTeX installation provides a sensible value for this parameter.
+\end_inset 
+
+.
+\layout Subsection
+
+longtable
+\layout Description
+
+Found: @chk_longtable@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/required/tools/
+\layout Description
+
+Notes: The package 
+\family sans 
+longtable
+\family default 
+ is needed by LyX to be able to output correctly multipage tables.
+\layout Subsection
+
+varioref
+\layout Description
+
+Found: @chk_varioref@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/required/tools/
+\layout Description
+
+Notes: none yet
 \layout Section
 
 Paper layout packages
@@ -1266,96 +1546,6 @@ index of algorithms
  too.
 \layout Subsection
 
-array
-\layout Description
-
-Found: @chk_array@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/required/tools/array.dtx
-\layout Description
-
-Notes: The package array is needed by LyX to be able to output vertical
- alignment other then ''top'' for tabulars.
-\layout Subsection
-
-babel
-\layout Description
-
-Found: @chk_babel@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/packages/babel/
-\layout Description
-
-Notes: The package 
-\family sans 
-babel
-\family default 
- allows you to customize your document for your favorite language (see the
- 
-\family sans 
-\size normal 
-Layout->Document
-\family default 
-\size default 
-  popup).
- In particular, it handles hyphenation and automatic translation of all
- labels like 
-\begin_inset Quotes eld
-\end_inset 
-
-Chapter
-\begin_inset Quotes erd
-\end_inset 
-
-  and 
-\begin_inset Quotes eld
-\end_inset 
-
-Table of contents
-\begin_inset Quotes erd
-\end_inset 
-
-.
- This package is not needed if you only plan to write in English, except
- if you want to use non-English quotes.
-\layout Subsection
-
-color
-\layout Description
-
-Found: @chk_color@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/packages/graphics/
-\layout Description
-
-Notes: The package 
-\family sans 
-color
-\family default 
- is needed by LyX to handled colored text.
- These colors will not show in the DVI preview window, but will be correct
- on the printed output or with a PostScript® previewer.
- This package is bundled with the 
-\family sans 
-graphics
-\family default 
- package (see 
-\begin_inset LatexCommand \ref{ssec:graphics}
-
-\end_inset 
-
-).
-\layout Subsection
-
 fancyhdr
 \layout Description
 
@@ -1413,85 +1603,6 @@ Layout->Paragraph->ExtraOpt
  in the paragraph of a figure float.
  It allows you to create a figure float which is narrower than the full
  page and wrap the text around it.
-\layout Subsection
-
-
-\begin_inset LatexCommand \label{ssec:graphics}
-
-\end_inset 
-
-graphics
-\layout Description
-
-Found: @chk_graphics@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/packages/graphics/
-\layout Description
-
-Notes: The package 
-\family sans 
-graphics
-\family default 
- is needed by LyX to insert PostScript® figures.
- You will also need the program 
-\family typewriter 
-\size normal 
-ghostview
-\family default 
-\size default 
- to see them on screen.
- The configuration script has determined that the graphics driver used by
- the package should be 
-\family sans 
-
-\begin_inset Quotes eld
-\end_inset 
-
-@chk_graphicsdriver@
-\begin_inset Quotes erd
-\end_inset 
-
-
-\begin_inset Foot
-collapsed true
-
-\layout Standard
-
-Here, a value of 
-\begin_inset Quotes eld
-\end_inset 
-
-default
-\begin_inset Quotes erd
-\end_inset 
-
- means that your LaTeX installation provides a sensible value for this parameter.
-\end_inset 
-
-.
-\layout Subsection
-
-longtable
-\layout Description
-
-Found: @chk_longtable@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/packages/tools/longtable.dtx
-\layout Description
-
-Notes: The package 
-\family sans 
-longtable
-\family default 
- is needed by LyX to be able to output correctly multipage tables.
-\layout Subsection
-
 \layout Subsection
 
 natbib
@@ -1600,18 +1711,4 @@ Notes: The package
 url
 \family default 
  is needed by LyX to be able to output url's corrently.
-\layout Subsection
-
-varioref
-\layout Description
-
-Found: @chk_varioref@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/required/tools/
-\layout Description
-
-Notes: none yet
 \the_end
