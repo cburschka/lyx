@@ -422,11 +422,11 @@ void FormExternal::build()
 		fl_addto_choice(rotate_->choice_origin,
 				external::origin_gui_str(i).c_str());
 
-	string const width_list = bformat(_("Scale%%%%|%1$s"),
-					  choice_Length_All);
-	fl_addto_choice(scale_->choice_width, width_list.c_str());
+	string const height_list = buildChoiceLengthString();
+	string const width_list = bformat(_("Scale%%%%|%1$s"), height_list);
 
-	fl_addto_choice(scale_->choice_height, choice_Length_All.c_str());
+	fl_addto_choice(scale_->choice_width, width_list.c_str());
+	fl_addto_choice(scale_->choice_height, height_list.c_str());
 
 	// Set up the tooltips.
 	string str = _("The file you want to insert.");

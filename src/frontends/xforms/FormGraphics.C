@@ -130,10 +130,11 @@ void FormGraphics::build()
 		_("Default|Monochrome|Grayscale|Color|Do not display");
 	fl_addto_choice(file_->choice_display, display_List.c_str());
 
-	string const width_list = bformat(_("Scale%%%%|%1$s"), choice_Length_All);
-	fl_addto_choice(file_->choice_width, width_list.c_str());
+	string const height_list = buildChoiceLengthString();
+	string const width_list = bformat(_("Scale%%%%|%1$s"), height_list);
 
-	fl_addto_choice(file_->choice_height, choice_Length_All.c_str());
+	fl_addto_choice(file_->choice_width, width_list.c_str());
+	fl_addto_choice(file_->choice_height, height_list.c_str());
 
 	// set up the tooltips for the filesection
 	string str = _("The file you want to insert.");

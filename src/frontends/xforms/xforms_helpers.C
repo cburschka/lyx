@@ -14,6 +14,7 @@
 
 #include "debug.h"
 #include "gettext.h"
+#include "lengthcommon.h"
 #include "lyxgluelength.h"
 #include "lyxlex.h"
 
@@ -41,6 +42,18 @@ using std::make_pair;
 using std::ofstream;
 using std::vector;
 using std::string;
+
+
+std::string const buildChoiceLengthString()
+{
+	string data;
+	for (int i = 0; i != num_units; ++i) {
+		if (i != 0)
+			data += "|";
+		data += subst(unit_name_gui[i], "%", "%%");
+	}
+	return data;
+}
 
 
 bool isActive(FL_OBJECT * ob)

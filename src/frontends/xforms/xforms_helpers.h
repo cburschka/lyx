@@ -29,11 +29,10 @@ std::pair<std::string, std::string> parse_shortcut(std::string const & str);
 unsigned long fl_getmcolor(int i, unsigned int * r, unsigned int * g,
 			   unsigned int * b);
 
-// what we always need for lengths
-std::string const choice_Length_All =
-    "cm|mm|in|text%%|col%%|page%%|line%%|ex|em|pt|sp|bp|dd|pc|cc|mu";
-std::string const choice_Length_WithUnit =
-    "cm|mm|in|ex|em|pt|sp|bp|dd|pc|cc|mu";	// all with a Unit
+/** Generate a string of available length units with which to
+ *  populate a choice widget.
+ */
+std::string const buildChoiceLengthString();
 
 /// return the (in)active state of the object
 bool isActive(FL_OBJECT * ob);

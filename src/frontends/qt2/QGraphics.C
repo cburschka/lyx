@@ -109,7 +109,7 @@ int getItemNo(vector<string> v, string const & s) {
 
 // returns the number of the unit in the array unit_name,
 // which is defined in lengthcommon.C
-int getUnitNo(char const * c[], string const & s) {
+int getUnitNo(char const * const c[], string const & s) {
 	int i = 0;
 	while (i < num_units && s != c[i])
 		++i;
