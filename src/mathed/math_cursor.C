@@ -1598,5 +1598,5 @@ string MathCursor::info() const
 	ostringstream os;
 	if (pos() > 0)
 		prevAtom()->infoize(os);
-	return os.str();
+	return os.str().c_str(); // .c_str() needed for lyxstring
 }
