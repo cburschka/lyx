@@ -114,7 +114,7 @@ void QContentPane::mouseReleaseEvent(QMouseEvent * e)
 void QContentPane::mouseMoveEvent(QMouseEvent * e)
 {
 	FuncRequest cmd
-		(LFUN_MOUSE_RELEASE, e->x(), e->y(), q_motion_state(e->button()));
+		(LFUN_MOUSE_MOTION, e->x(), e->y(), q_motion_state(e->state()));
 	wa_->dispatch(cmd);
 }
 
