@@ -22,6 +22,8 @@
 #include "lyxrc.h"	// lyxrc.font_*
 #include "BufferView.h"
 #include "frontends/LyXView.h"
+#include "support/systemcall.h"
+#include "support/filetools.h"
 
 #include FORMS_H_LOCATION
 
@@ -89,6 +91,43 @@ void xfont_loader::unload()
 			}
 }
 
+namespace {
+string const symbolPattern(LyXFont::FONT_FAMILY family)
+{
+	switch (family) {
+	case LyXFont::SYMBOL_FAMILY:
+		return "-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific";
+
+	case LyXFont::CMR_FAMILY:
+		return "-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::CMSY_FAMILY:
+		return "-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::CMM_FAMILY:
+		return "-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::CMEX_FAMILY:
+		return "-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::MSA_FAMILY:
+		return "-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::MSB_FAMILY:
+		return "-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::EUFRAK_FAMILY:
+		return "-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*";
+
+	case LyXFont::WASY_FAMILY:
+		return "-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*";
+
+	default:
+		return string();
+	}	
+}
+
+}
 
 // Get font info
 /* Takes care of finding which font that can match the given request. Tries
@@ -102,55 +141,32 @@ void xfont_loader::getFontinfo(LyXFont::FONT_FAMILY family,
 		return;
 
 	// Special fonts
-	switch (family)
-	{
-		case LyXFont::SYMBOL_FAMILY:
-			fontinfo[family][series][shape] =
-				new FontInfo("-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific");
-			return;
-
-		case LyXFont::CMR_FAMILY:
-			fontinfo[family][series][shape] =
-				new FontInfo("-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*");
-			return;
-
-		case LyXFont::CMSY_FAMILY:
-			fontinfo[family][series][shape] =
-				new FontInfo("-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*");
-			return;
-
-		case LyXFont::CMM_FAMILY:
-			fontinfo[family][series][shape] =
-				new FontInfo("-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*");
-			return;
-
-		case LyXFont::CMEX_FAMILY:
-			fontinfo[family][series][shape] =
-				new FontInfo("-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*");
-			return;
-
-		case LyXFont::MSA_FAMILY:
-			fontinfo[family][series][shape] =
-				new FontInfo("-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*");
-			return;
-
-		case LyXFont::MSB_FAMILY:
-			fontinfo[family][series][shape] =
-				new FontInfo("-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*");
-			return;
-
-		case LyXFont::EUFRAK_FAMILY:
-			fontinfo[family][series][shape] =
-				new FontInfo("-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*");
-			return;
-
-		case LyXFont::WASY_FAMILY:
-			fontinfo[family][series][shape] =
-				new FontInfo("-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*");
-			return;
-
-		default:
-			break;
+	string pat = symbolPattern(family);
+	if (!pat.empty()) {
+		static bool first_time = true;
+		fontinfo[family][series][shape] = new FontInfo(pat);
+		if (family != LyXFont::SYMBOL_FAMILY &&
+		    !fontinfo[family][series][shape]->exist() &&
+		    first_time) {
+			first_time = false;
+			string const dir = 
+				OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
+			if (!dir.empty()) {
+				int n;
+				char ** p = XGetFontPath(fl_get_display(), &n);
+				if (std::find(p, p+n, dir) != p+n)
+					return;
+				lyxerr << "Adding " << dir << " to the font path.\n";
+				string const command = "xset fp+ " + dir;
+				Systemcall s;
+				if (!s.startscript(Systemcall::Wait, command)) {
+					delete fontinfo[family][series][shape];
+					fontinfo[family][series][shape] = new FontInfo(pat);	
+				} else
+					lyxerr << "Unable to add font path.\n";
+			}
+		}
+		return;
 	}
 
 
@@ -334,6 +350,5 @@ bool xfont_loader::available(LyXFont const & f)
 
 	if (!fontinfo[f.family()][f.series()][f.realShape()])
 		getFontinfo(f.family(), f.series(), f.realShape());
-	return fontinfo[f.family()][f.series()][f.realShape()]
-		->getFontname(f.size()).size();
+	return fontinfo[f.family()][f.series()][f.realShape()]->exist();
 }

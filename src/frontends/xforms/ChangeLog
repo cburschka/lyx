@@ -1,3 +1,8 @@
+2002-10-25  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* xfont_loader.C (getFontinfo): Add xfonts to the font path if
+	necessary.
+
 2002-10-25  Angus Leeming  <leeming@lyx.org>
 
 	* FormSpellchecker.C (input): fix crash when progress == 0.
