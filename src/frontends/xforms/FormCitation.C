@@ -96,11 +96,20 @@ void FormCitation::build()
 	bc_.addReadOnly(dialog_->downBtn);
 	bc_.addReadOnly(dialog_->textBefore);
 	bc_.addReadOnly(dialog_->textAftr);
+
+	bc_.addTriggerChange(dialog_->addBtn);
+	bc_.addTriggerChange(dialog_->delBtn);
+	bc_.addTriggerChange(dialog_->upBtn);
+	bc_.addTriggerChange(dialog_->downBtn);
+	bc_.addTriggerChange(dialog_->textBefore);
+	bc_.addTriggerChange(dialog_->textAftr);
 }
 
 
 void FormCitation::update()
 {
+	bc_.readOnly(lv_->buffer()->isReadonly());
+
 	bibkeys.clear();
 	bibkeysInfo.clear();
 
@@ -141,8 +150,6 @@ void FormCitation::update()
 	setSize( size, bibPresent );
 
 	fl_set_input( dialog_->textAftr, params.getOptions().c_str());
-
-	bc_.readOnly(lv_->buffer()->isReadonly());
 }
 
 

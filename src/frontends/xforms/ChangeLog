@@ -1,5 +1,23 @@
 2001-02-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ButtonController.[Ch] (addTriggerChange, eraseTriggerChange):
+	new methods.
+	(valid): method can now be passed an optional FL_OBJECT *. If it is, and
+	the vector of FL_OBJECT *s that can trigger a change in the button state
+	is not empty, then a change of state will occur only if the FL_OBJECT *
+	is present in this vector.
+
+	* FormBase.C (RestoreCB): call bc.undoAll() before restore(). Allows
+	the user to deactivate specific fields within restore().
+	(InputCB): pass the FL_OBJECT * to bc_.valid().
+
+	* FormCitation.C (build): create a vector of FL_OBJECT *s that can
+	trigger a change of state in the Ok,Apply buttons.
+	(update): bc_.readOnly() to the start of the method. Similar reasoning
+	to that for FormBase::RestoreCB, above.
+
+2001-02-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormBrowser.C: used OkCancelPolicy for ButtonController rather than
 	IgnorantPolicy.
 

@@ -89,6 +89,15 @@ public:
 		read_only_.erase(read_only_.begin(), read_only_.end());
 	}
 
+	///
+	void addTriggerChange(FL_OBJECT * obj) {
+		trigger_change_.push_back(obj);
+	}
+	///
+	void eraseTriggerChange() {
+		trigger_change_.clear();
+	}
+
 	/* Action Functions */
 	/// force a refresh of the buttons
 	void refresh();
@@ -110,7 +119,7 @@ public:
 	///
 	void readWrite();
 	/// Passthrough function -- returns its input value
-	bool valid(bool v = true);
+	bool valid(bool v = true, FL_OBJECT * obj = 0);
 	///
 	void invalid();
 private:
@@ -126,6 +135,8 @@ private:
 	FL_OBJECT * undo_all_;
 	/// List of items to be deactivated when in one of the read-only states
 	std::list<FL_OBJECT *> read_only_;
+	/// List of items that will trigger a change in activation status.
+	std::vector<FL_OBJECT *> trigger_change_;
 	///
 	char const * cancel_label;
 	///

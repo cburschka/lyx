@@ -170,7 +170,7 @@ void FormBase::InputCB(FL_OBJECT * ob, long data)
 	Assert(ob && ob->form);
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
 	Assert(ob);
-	pre->bc_.valid(pre->input(ob, data));
+	pre->bc_.valid(pre->input(ob, data), ob);
 }
 
 
@@ -179,8 +179,8 @@ void FormBase::RestoreCB(FL_OBJECT * ob, long)
 	Assert(ob && ob->form);
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
 	Assert(ob);
-	pre->restore();
 	pre->bc_.undoAll();
+	pre->restore();
 }
 
 
