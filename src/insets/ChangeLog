@@ -1,3 +1,12 @@
+2004-06-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (prepareFile): remove conversion_needed flag.
+	It made the following fail for a .eps graphics file:
+	1) view->ps
+	2) view->pdf (pdflatex)
+	because the .eps file was already in the temp dir when the pdflatex
+	export happened and therefore no .eps -> pdf conversion was done.
+
 2004-06-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C, insettabular.C: s/wether/whether/g

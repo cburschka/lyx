@@ -455,16 +455,12 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// This is necessary for DVI export.
 	string const temp_path = m_buffer->temppath();
 
-	bool conversion_needed = true;
-
 	CopyStatus status;
 	boost::tie(status, temp_file) =
 			copyToDirIfNeeded(orig_file, temp_path, zipped);
 
 	if (status == FAILURE)
 		return orig_file;
-	else if (status == IDENTICAL_CONTENTS)
-		conversion_needed = false;
 
 	// a relative filename should be relative to the master
 	// buffer.
@@ -551,8 +547,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if temp_file is newer than to_file
-	if (!conversion_needed ||
-	    compare_timestamps(temp_file, to_file) < 0) {
+	if (compare_timestamps(temp_file, to_file) < 0) {
 		lyxerr[Debug::GRAPHICS]
 			<< bformat(_("No conversion of %1$s is needed after all"),
 				   rel_file)
