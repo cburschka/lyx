@@ -19,12 +19,6 @@ using std::endl;
 using std::max;
 
 
-bool isBinaryOp(char c, MathTextCodes type)
-{
-	return type < LM_TC_SYMB && strchr("+-<>=/*", c);
-}
-
-
 ///
 class Matrix {
 public:
@@ -562,23 +556,6 @@ void mathed_char_dim(LyXFont const & font,
 }
 
 
-int mathed_char_height(LyXFont const & font,
-	unsigned char c, int & asc, int & des)
-{
-	des = lyxfont::descent(c, font);
-	asc = lyxfont::ascent(c, font);
-	return asc + des;
-}
-
-
-int mathed_char_height(LyXFont const & font, unsigned char c)
-{
-	int asc;
-	int des;
-	return mathed_char_height(font, c, asc, des);
-}
-
-
 int mathed_char_ascent(LyXFont const & font, unsigned char c)
 {
 	return lyxfont::ascent(c, font);
@@ -591,11 +568,8 @@ int mathed_char_descent(LyXFont const & font, unsigned char c)
 }
 
 
-int mathed_char_width(LyXFont const & font,
-	unsigned char c)
+int mathed_char_width(LyXFont const & font, unsigned char c)
 {
-	//if (isBinaryOp(c, type))
-	//	return lyxfont::width(c, font) + 2 * lyxfont::width(' ', font);
 	return lyxfont::width(c, font);
 }
 
@@ -603,20 +577,12 @@ int mathed_char_width(LyXFont const & font,
 void mathed_string_dim(LyXFont const & font,
 	string const & s, int & asc, int & des, int & wid)
 {
-	mathed_string_height(font, s, asc, des);
-	wid = mathed_string_width(font, s);
-}
-
-
-int mathed_string_height(LyXFont const & font,
-	string const & s, int & asc, int & des)
-{
 	asc = des = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
 		des = max(des, lyxfont::descent(*it, font));
 		asc = max(asc, lyxfont::ascent(*it, font));
 	}
-	return asc + des;
+	wid = lyxfont::width(s, font);
 }
 
 
@@ -731,8 +697,6 @@ void drawStr(Painter & pain, LyXFont const & font,
 
 void drawChar(Painter & pain, LyXFont const & font, int x, int y, char c)
 {
-	//if (isBinaryOp(c, type)) 
-	//	x += lyxfont::width(' ', font);
 	pain.text(x, y, c, font);
 }
 

@@ -17,7 +17,6 @@ extern char const * latex_mathspace[];
 
 void mathed_char_dim(LyXFont const &, unsigned char c,
 	int & asc, int & des, int & wid);
-int mathed_char_height(LyXFont const &, unsigned char c, int & asc, int & des);
 int mathed_char_width(LyXFont const &, unsigned char c);
 int mathed_char_ascent(LyXFont const &, unsigned char c);
 int mathed_char_descent(LyXFont const &, unsigned char c);
@@ -29,8 +28,6 @@ void mathed_draw_framebox(Painter & pain, int x, int y, MathInset const *);
 
 void mathed_string_dim(LyXFont const &,
 	string const & s, int & asc, int & des, int & wid);
-int mathed_string_height(LyXFont const &,
-	string const & s, int & asc, int & des);
 
 int mathed_string_width(LyXFont const &, string const & s);
 int mathed_string_ascent(LyXFont const &, string const & s);

@@ -44,7 +44,7 @@ void MathBigInset::metrics(MathMetricsInfo const & mi) const
 {
 	LyXFont font;
 	whichFont(font, LM_TC_VAR, mi);
-	double h = mathed_char_height(font, 'I', ascent_, descent_);  
+	double h = mathed_char_ascent(font, 'I');
 	double f = increase();
 	width_   = 6;
 	ascent_  = int(h + f * h);

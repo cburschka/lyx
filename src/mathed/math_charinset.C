@@ -10,15 +10,22 @@
 #include "LColor.h"
 #include "Painter.h"
 #include "support/LOstream.h"
-#include "math_support.h"
-#include "math_parser.h"
+#include "font.h"
 #include "debug.h"
+#include "math_support.h"
 #include "math_mathmlstream.h"
 #include "LaTeXFeatures.h"
 #include "textpainter.h"
 
 
 using std::ostream;
+using std::endl;
+
+
+bool isBinaryOp(char c, MathTextCodes type)
+{
+	return type < LM_TC_SYMB && strchr("+-<>=/*", c);
+}
 
 
 MathCharInset::MathCharInset(char c)
@@ -54,12 +61,16 @@ void MathCharInset::metrics(MathMetricsInfo const & mi) const
 {
 	whichFont(font_, code_, mi);
 	mathed_char_dim(font_, char_, ascent_, descent_, width_);
+	if (isBinaryOp(char_, code_))
+		width_ += 2 * lyxfont::width(' ', font_);
 }
 
 
 void MathCharInset::draw(Painter & pain, int x, int y) const
 { 
 	//lyxerr << "drawing '" << char_ << "' code: " << code_ << endl;
+	if (isBinaryOp(char_, code_))
+		x += lyxfont::width(' ', font_);
 	drawChar(pain, font_, x, y, char_);
 }
 
@@ -74,7 +85,7 @@ void MathCharInset::metrics(TextMetricsInfo const &) const
 
 void MathCharInset::draw(TextPainter & pain, int x, int y) const
 { 
-	lyxerr << "drawing text '" << char_ << "' code: " << code_ << endl;
+	//lyxerr << "drawing text '" << char_ << "' code: " << code_ << endl;
 	pain.draw(x, y, char_);
 }
 
