@@ -94,7 +94,7 @@ private:
 	///
 	unsigned meta_fake_bit;
 	///
-	void moveCursorUpdate(LyXText *, bool selecting = false);
+	void moveCursorUpdate(bool flag = true, bool selecting = false);
 	///
 	void setupLocalKeymap();
         ///
@@ -128,7 +128,12 @@ private:
 	void CloseBuffer();
 	///
 	void reloadBuffer();
-	/// This is the same for all lyxfunc objects
+	///
+	//  This return or directly text (default) of getLyXText()
+	///
+	LyXText * TEXT(bool) const;
+	///
+	//  This is the same for all lyxfunc objects
 	static bool show_sc;
 };
      

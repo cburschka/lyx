@@ -120,7 +120,7 @@ public:
     ///
     int getMaxWidth(Painter & pain, UpdatableInset const *) const;
     ///
-    LyXText * getLyXText(BufferView const *) const;
+    LyXText * getLyXText(BufferView const *, bool const recursive) const;
     ///
     void deleteLyXText(BufferView *, bool recursive=true) const;
     ///

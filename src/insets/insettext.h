@@ -50,15 +50,15 @@ public:
 	///
 	CLEAR_FRAME = 2,
 	///
-	DRAW_FRAME = 3,
+	DRAW_FRAME = 4,
 	///
-	SELECTION = 4,
+	SELECTION = 8,
 	///
-	CURSOR_PAR = 5,
+	CURSOR_PAR = 16,
 	///
-	FULL = 6,
+	FULL = 32,
 	///
-	INIT = 7
+	INIT = 64
     };
     ///
     enum DrawFrame {
@@ -99,7 +99,7 @@ public:
     ///
     void update(BufferView *, LyXFont const &, bool =false);
     ///
-    void SetUpdateStatus(BufferView *, UpdateCodes);
+    void SetUpdateStatus(BufferView *, int what);
     ///
     string const EditMessage() const;
     ///
@@ -170,7 +170,7 @@ public:
     ///
     void SetFrameColor(BufferView *, LColor::color);
     ///
-    LyXText * getLyXText(BufferView const *) const;
+    LyXText * getLyXText(BufferView const *, bool const recursive=false) const;
     ///
     void deleteLyXText(BufferView *, bool recursive=true) const;
     ///
@@ -178,11 +178,11 @@ public:
     ///
     LyXParagraph * par;
     ///
-    mutable UpdateCodes need_update;
+    mutable int need_update;
 
 protected:
     ///
-    void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty);
+    void UpdateLocal(BufferView *, int what, bool mark_dirty);
     ///
     mutable int drawTextXOffset;
     ///

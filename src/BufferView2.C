@@ -558,7 +558,7 @@ void BufferView::copyEnvironment()
 		text->copyEnvironmentType();
 		// clear the selection, even if mark_set
 		toggleSelection();
-		text->ClearSelection();
+		text->ClearSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner()->getMiniBuffer()->Set(_("Paragraph environment type copied"));
 	}
@@ -581,7 +581,7 @@ void BufferView::copy()
 		text->CopySelection(this);
 		// clear the selection, even if mark_set
 		toggleSelection();
-		text->ClearSelection();
+		text->ClearSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner()->getMiniBuffer()->Set(_("Copy"));
 	}
@@ -607,7 +607,7 @@ void BufferView::paste()
 	hideCursor();
 	// clear the selection
 	toggleSelection();
-	text->ClearSelection();
+	text->ClearSelection(this);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 	
 	// paste
@@ -616,7 +616,7 @@ void BufferView::paste()
 	
 	// clear the selection 
 	toggleSelection();
-	text->ClearSelection();
+	text->ClearSelection(this);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
 
@@ -709,7 +709,7 @@ void BufferView::endOfSpellCheck()
 	hideCursor();
 	beforeChange(text);
 	text->SelectSelectedWord(this);
-	text->ClearSelection();
+	text->ClearSelection(this);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
 
@@ -973,7 +973,7 @@ void BufferView::theLockingInset(UpdatableInset * inset)
 LyXText * BufferView::getLyXText() const
 {
 	if (theLockingInset()) {
-		LyXText * txt = theLockingInset()->getLyXText(this);
+		LyXText * txt = theLockingInset()->getLyXText(this, true);
 		if (txt)
 			return txt;
 	}

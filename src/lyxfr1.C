@@ -168,7 +168,7 @@ void LyXFindReplace::SearchReplaceAllCB()
 	bv->hideCursor();
 
 	// start at top
-	bv->text->ClearSelection();
+	bv->text->ClearSelection(bv);
 	bv->text->CursorTop(bv);
 
 	int replace_count = 0;
@@ -226,7 +226,7 @@ bool LyXFindReplace::SearchCB(bool fForward)
 
 		// clear the selection (if there is any) 
 		bv->toggleSelection();
-		bv->text->ClearSelection();
+		bv->text->ClearSelection(bv);
 
 		// set the new selection 
 		SetSelectionOverLenChars(bv, iLenSelected);

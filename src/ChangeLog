@@ -1,3 +1,10 @@
+2001-02-20  Juergen Vigna  <jug@sad.it>
+
+	* text2.C (ClearSelection): added BufferView param for inset_owner call
+
+	* lyxfunc.C (TEXT): added this function and use it instead of
+	directly owner->view()-text of getLyXText().
+
 2001-02-20  Edwin Leuven <leuven@fee.uva.nl>
 
         * src/layout_forms.C: out preamble

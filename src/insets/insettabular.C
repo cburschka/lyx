@@ -1241,7 +1241,6 @@ void InsetTabular::resetPos(BufferView * bv) const
 	     (tabular->GetWidthOfColumn(actcell) > bv->workWidth()-20))
     {
 	    int xx = cursor.x() - offset + bv->text->GetRealCursorX(bv);
-	    printf("%d\n", xx);
 	    if (xx > (bv->workWidth()-20))
 		scroll(bv, -(xx - bv->workWidth() + 60));
 	    else if (xx < 20) {
@@ -1828,11 +1827,11 @@ void InsetTabular::resizeLyXText(BufferView *) const
 }
 
 
-LyXText * InsetTabular::getLyXText(BufferView const * bv) const
+LyXText * InsetTabular::getLyXText(BufferView const * bv, bool const recursive) const
 {
     if (the_locking_inset)
-	return the_locking_inset->getLyXText(bv);
-    return Inset::getLyXText(bv);
+	return the_locking_inset->getLyXText(bv, recursive);
+    return Inset::getLyXText(bv, recursive);
 }
 
 

@@ -1,3 +1,16 @@
+2001-02-22  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (getLyXText): honor the recursive parameter.
+
+	* inset.C (getLyXText): added bool recursive parameter.
+
+	* insettext.C (SetUpdateStatus): or the update codes.
+	(draw): check need_update with &.
+	(InsetButtonPress): set no_selection to not put a selection when
+	entering an inset and it is redraws in another spot.
+
+	* insettext.h: made need_update an int.
+
 2001-02-20  Baruch Even  <baruch@ev-en.org>
 
 	* insetgraphics.h:

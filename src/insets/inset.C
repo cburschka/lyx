@@ -72,10 +72,10 @@ string const Inset::EditMessage() const
 }
 
 
-LyXText * Inset::getLyXText(BufferView const * bv) const
+LyXText * Inset::getLyXText(BufferView const * bv, bool const) const
 {
     if (owner())
-	    return owner()->getLyXText(bv);
+	    return owner()->getLyXText(bv, false);
     else
 	    return bv->text;
 }

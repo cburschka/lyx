@@ -657,7 +657,7 @@ void LyXText::SetLayout(BufferView * bview, LyXTextClass::size_type layout)
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos(),
 		  false);
 	UpdateCounters(bview, cursor.row());
-	ClearSelection();
+	ClearSelection(bview);
 	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos(), true);
 }
@@ -775,7 +775,7 @@ void  LyXText::IncDepth(BufferView * bview)
 	sel_cursor = cursor;
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
 	UpdateCounters(bview, cursor.row());
-	ClearSelection();
+	ClearSelection(bview);
 	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
@@ -852,7 +852,7 @@ void  LyXText::DecDepth(BufferView * bview)
 	sel_cursor = cursor;
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
 	UpdateCounters(bview, cursor.row());
-	ClearSelection();
+	ClearSelection(bview);
 	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
@@ -934,7 +934,7 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	SetCursor(bview, sel_start_cursor.par(), sel_start_cursor.pos());
 	sel_cursor = cursor;
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
-	ClearSelection();
+	ClearSelection(bview);
 	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos(), true,
 		  tmpcursor.boundary());
@@ -1208,10 +1208,8 @@ string const LyXText::selectionAsString(Buffer const * buffer) const
 }
 
 
-void LyXText::ClearSelection() const
+void LyXText::ClearSelection(BufferView * bview) const
 {
-	if (selection)
-		status = LyXText::NEED_MORE_REFRESH;
 	selection = false;
 	mark_set = false;
 }
@@ -1298,7 +1296,7 @@ void LyXText::ToggleFree(BufferView * bview,
 	/* Implicit selections are cleared afterwards and cursor is set to the
 	   original position. */
 	if (implicitSelection) {
-		ClearSelection();
+		ClearSelection(bview);
 		cursor = resetCursor;
 		SetCursor(bview, cursor.par(), cursor.pos());
 		sel_cursor = cursor;
@@ -1327,7 +1325,7 @@ void LyXText::MeltFootnoteEnvironment(BufferView * bview)
 {
 	LyXParagraph * tmppar, * firsttmppar;
    
-	ClearSelection();
+	ClearSelection(bview);
    
 	/* is is only allowed, if the cursor is IN an open footnote.
 	 * Otherwise it is too dangerous */ 
@@ -1413,7 +1411,7 @@ void LyXText::MeltFootnoteEnvironment(BufferView * bview)
 	UpdateCounters(bview, row);
    
    
-	ClearSelection();
+	ClearSelection(bview);
 }
 #endif
 
@@ -1520,7 +1518,7 @@ void LyXText::SetParagraph(BufferView * bview,
 	
 	RedoParagraphs(bview, sel_start_cursor, endpar);
 	
-	ClearSelection();
+	ClearSelection(bview);
 	SetCursor(bview, sel_start_cursor.par(), sel_start_cursor.pos());
 	sel_cursor = cursor;
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
@@ -1610,7 +1608,7 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
 #endif
         }
 	RedoParagraphs(bview, sel_start_cursor, endpar);
-	ClearSelection();
+	ClearSelection(bview);
 	SetCursor(bview, sel_start_cursor.par(), sel_start_cursor.pos());
 	sel_cursor = cursor;
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
@@ -2281,7 +2279,7 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 
 	RedoParagraphs(bview, sel_start_cursor, endpar);
    
-	ClearSelection();
+	ClearSelection(bview);
 	cursor = sel_start_cursor;
 	SetCursor(bview, cursor.par(), cursor.pos());
 	sel_cursor = cursor;
@@ -2369,7 +2367,7 @@ void LyXText::PasteSelection(BufferView * bview)
 	RedoParagraphs(bview, cursor, endpar);
 	
 	SetCursor(bview, cursor.par(), cursor.pos());
-	ClearSelection();
+	ClearSelection(bview);
    
 	sel_cursor = cursor;
 	SetCursor(bview, actpar, pos);
@@ -2509,7 +2507,7 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 		textclasslist.Style(bview->buffer()->params.textclass, 
 				    cursor.par()->GetLayout()).isEnvironment();
 	// only to be sure, should not be neccessary
-	ClearSelection();
+	ClearSelection(bview);
 	
 	// insert the string, don't insert doublespace
 	string::size_type i = 0;

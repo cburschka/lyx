@@ -1895,7 +1895,7 @@ void LyXText::OpenFootnote(BufferView * bview)
 // Just a macro to make some thing easier. 
 void LyXText::RedoParagraph(BufferView * bview) const
 {
-	ClearSelection();
+	ClearSelection(bview);
 	RedoParagraphs(bview, cursor, cursor.par()->Next());
 	SetCursorIntern(bview, cursor.par(), cursor.pos());
 }
@@ -4091,7 +4091,7 @@ void LyXText::InsertFootnoteEnvironment(BufferView * bview,
    
    SetCursor(bview, sel_start_cursor.par()->Next(), 0);
 
-   ClearSelection();
+   ClearSelection(bview);
 }
 #endif
 

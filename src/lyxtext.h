@@ -235,7 +235,7 @@ public:
 	/// need the selection cursor:
 	void SetSelection(BufferView *);
 	///
-	void ClearSelection() const;
+	void ClearSelection(BufferView *) const;
 	///
 	string const selectionAsString(Buffer const *) const;
 	

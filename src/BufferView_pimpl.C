@@ -585,7 +585,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	
 	// Clear the selection
 	screen_->ToggleSelection(bv_->text, bv_);
-	bv_->text->ClearSelection();
+	bv_->text->ClearSelection(bv_);
 	bv_->text->FullRebreak(bv_);
 	screen_->Update(bv_->text, bv_);
 	updateScrollbar();
@@ -647,10 +647,14 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 	    return;
 
 	if (screen_ && button == 1) {
-	    screen_->HideCursor();
-	    screen_->ToggleSelection(text, bv_);
-	    text->SelectWord(bv_);
-	    screen_->ToggleSelection(text, bv_, false);
+	    if (text->bv_owner) {
+		screen_->HideCursor();
+		screen_->ToggleSelection(text, bv_);
+		text->SelectWord(bv_);
+		screen_->ToggleSelection(text, bv_, false);
+	    } else {
+		text->SelectWord(bv_);
+	    }
 	    /* This will fit the cursor on the screen
 	     * if necessary */
 	    update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -1031,7 +1035,7 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 	text->FullRebreak(bv_);
 
 	if (text->inset_owner) {
-	    text->inset_owner->SetUpdateStatus(bv_, InsetText::CURSOR_PAR);
+//	    text->inset_owner->SetUpdateStatus(bv_, InsetText::CURSOR_PAR);
 	    bv_->updateInset(text->inset_owner, true);
 	} else
 	    update();
@@ -1146,7 +1150,7 @@ bool BufferView::Pimpl::available() const
 void BufferView::Pimpl::beforeChange(LyXText * text)
 {
 	toggleSelection();
-	text->ClearSelection();
+	text->ClearSelection(bv_);
 }
 
 

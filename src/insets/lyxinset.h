@@ -227,7 +227,7 @@ public:
 	// because we could have fake text insets and have to call this
 	// inside them without cast!!!
 	///
-	virtual LyXText * getLyXText(BufferView const *) const;
+	virtual LyXText * getLyXText(BufferView const *, bool const recursive=false) const;
 	///
 	virtual void deleteLyXText(BufferView *, bool = true) const {}
 	///
