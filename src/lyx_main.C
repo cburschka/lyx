@@ -577,13 +577,13 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 	FileInfo fileInfo(user_lyxdir);
 	if (fileInfo.isOK() && fileInfo.isDir()) {
 		first_start = false;
-		Path p(user_lyxdir);
 		FileInfo script(configure_script);
-		FileInfo defaults("lyxrc.defaults");
-		if (!defaults.isOK()
-		    || defaults.getModificationTime() < script.getModificationTime()) {
+		FileInfo defaults(AddName(user_lyxdir, "lyxrc.defaults"));
+		if (defaults.isOK() && script.isOK()
+		    && defaults.getModificationTime() < script.getModificationTime()) {
 			lyxerr << _("LyX: reconfiguring user directory")
 			       << endl;
+			Path p(user_lyxdir);
 			::system(configure_script.c_str());
 			lyxerr << "LyX: " << _("Done!") << endl;
 		}
