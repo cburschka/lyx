@@ -92,9 +92,6 @@ public:
 	/// Returns whether something would be changed by changeDepth
 	bool changeDepthAllowed(LCursor & cur, bv_funcs::DEPTH_CHANGE type);
 
-	/// get the depth at current cursor position
-	int getDepth() const;
-
 	/// Set font over selection paragraphs and rebreak.
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
@@ -145,8 +142,6 @@ public:
 	ParagraphList::iterator getPar(par_type par) const;
 	///
 	int parOffset(ParagraphList::iterator pit) const;
-	/// # FIXME: should not be used
-	ParagraphList::iterator cursorPar() const;
 	// Returns the current font and depth as a message.
 	std::string LyXText::currentState(LCursor & cur);
 
@@ -372,11 +367,7 @@ public:
 	///
 	int cursorY(CursorSlice const & cursor) const;
 
-	/// the current cursor slice
-	CursorSlice & cursor();
-	/// the current cursor slice
-	CursorSlice const & cursor() const;
-
+	///
 	friend class LyXScreen;
 
 	///

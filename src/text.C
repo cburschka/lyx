@@ -1294,7 +1294,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 		from = cur.selBegin();
 		to = cur.selEnd();
 	} else {
-		from = cursor();
+		from = cur.top();
 		getWord(from, to, lyx::PARTIAL_WORD);
 		setCursor(cur, to.par(), to.pos() + 1);
 	}
@@ -1436,14 +1436,6 @@ void LyXText::backspace(LCursor & cur)
 }
 
 
-ParagraphList::iterator LyXText::cursorPar() const
-{
-	//lyxerr << "### cursorPar: cursor: " << bv()->cursor() << endl;
-	//lyxerr << "xxx cursorPar: cursor: " << cursor() << endl;
-	return getPar(cursor().par());
-}
-
-
 ParagraphList::iterator LyXText::getPar(CursorSlice const & cur) const
 {
 	return getPar(cur.par());
@@ -1492,12 +1484,6 @@ LyXText::getRowNearY(int y, ParagraphList::iterator & pit) const
 
 	return rit;
 #endif
-}
-
-
-int LyXText::getDepth() const
-{
-	return cursorPar()->getDepth();
 }
 
 
@@ -1874,31 +1860,6 @@ int LyXText::cursorY(CursorSlice const & cur) const
 }
 
 
-CursorSlice & LyXText::cursor()
-{
-	//lyxerr << "# accessing slice " << findText(this) << endl;
-	if (this != bv()->cursor().text()) {
-		lyxerr << "cursor: " << bv()->cursor()
-			<< "\ntext: " << bv()->cursor().text() 
-			<< "\nthis: " << this << endl;
-		BOOST_ASSERT(false);
-	}
-	return bv()->cursor().top();
-}
-
-
-CursorSlice const & LyXText::cursor() const
-{
-	if (this != bv()->cursor().text()) {
-		lyxerr << "cursor: " << bv()->cursor()
-			<< "\ntext: " << bv()->cursor().text() 
-			<< "\nthis: " << this << endl;
-		BOOST_ASSERT(false);
-	}
-	return bv()->cursor().top();
-}
-
-
 void LyXText::replaceSelection(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
@@ -1944,7 +1905,7 @@ string LyXText::currentState(LCursor & cur)
 	// os << bformat(_("Font: %1$s"), font.stateText(&buffer->params));
 
 	// The paragraph depth
-	int depth = getDepth();
+	int depth = cur.paragraph().getDepth();
 	if (depth > 0)
 		os << bformat(_(", Depth: %1$s"), tostr(depth));
 

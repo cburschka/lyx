@@ -616,9 +616,10 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 {
 	if (i >= saved_positions_num)
 		return;
+	BOOST_ASSERT(bv_->cursor().inTexted());
 	saved_positions[i] = Position(buffer_->fileName(),
-				      bv_->text()->cursorPar()->id(),
-				      bv_->text()->cursor().pos());
+				      bv_->cursor().paragraph().id(),
+				      bv_->cursor().pos());
 	if (i > 0)
 		owner_->message(bformat(_("Saved bookmark %1$s"), tostr(i)));
 }

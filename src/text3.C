@@ -265,7 +265,7 @@ void LyXText::gotoInset(LCursor & cur,
 			cur.par() = 0;
 			cur.pos() = 0;
 			if (!gotoNextInset(cur, codes, contents)) {
-				cursor() = tmp;
+				cur.top() = tmp;
 				cur.message(_("No more insets"));
 			}
 		} else {

@@ -1036,7 +1036,7 @@ void LyXText::insertStringAsLines(LCursor & cur, string const & str)
 {
 	ParagraphList::iterator pit = getPar(cur.par());
 	ParagraphList::iterator endpit = boost::next(pit);
-	pos_type pos = cursor().pos();
+	pos_type pos = cur.pos();
 	recordUndo(cur);
 
 	// only to be sure, should not be neccessary

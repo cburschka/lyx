@@ -267,7 +267,9 @@ bool BufferView::insertLyXFile(string const & filen)
 	cursor().clearSelection();
 	text()->breakParagraph(cursor());
 
-	bool res = buffer()->readFile(fname, text()->cursorPar());
+	BOOST_ASSERT(cursor().inTexted());
+	LyXText * text = cursor().text();
+	bool res = buffer()->readFile(fname, text->getPar(cursor().par()));
 	resize();
 	return res;
 }
