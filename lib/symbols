@@ -199,9 +199,10 @@ spadesuit          cmsy        127 170 mathord  x
 # We define lyxnot as mathrel in order to have proper alignment
 lyxnot             cmsy         54  47 mathrel  x
 iffont cmsy
-\def\not{\lyxnot\kern-12mu}
+# 9mu = 0.5em which is the extra space added to relation operators
+\def\not{\lyxnot\kern-9mu}
 else
-\def\not{\lyxnot\kern-20mu}
+\def\not{\kern4mu\lyxnot\kern-19mu}
 endif
 coprod             cmex         96   0 mathop   x
 bigvee             cmex         87   0 mathop   x
@@ -769,25 +770,28 @@ $                  mathnormal    0   0 special  x
 # pre-defined macros
 #
 
+\def\neq{\not=}
 \def\notin{\not\in}
 \def\slash{/}
 
-\def\longleftrightarrow{\leftarrow\kern-15mu\rightarrow} 
-\def\Longleftrightarrow{\Leftarrow\kern-15mu\Rightarrow}
+\def\longleftrightarrow{\leftarrow\kern-12mu\rightarrow} 
+\def\Longleftrightarrow{\Leftarrow\kern-12mu\Rightarrow}
 \def\doteq{\stackrel{\cdot}{=}}
 
+# The value 9.5 comes from the length of 0.5em = 9mu that is added to
+# relation operators. The 0.5 is added due to rounding errors.
 iffont cmsy
-\def\longrightarrow{\lyxbar\kern-11mu\rightarrow}
-\def\longleftarrow{\leftarrow\kern-11mu\lyxbar}
-\def\Longrightarrow{\lyxeq\kern-9mu\Rightarrow}
-\def\Longleftarrow{\Leftarrow\kern-9mu\lyxeq}
-\def\mapsto{\mapstochar\kern-12mu\rightarrow}
-\def\longmapsto{\mapstochar\kern-9mu\lyxbar\kern-11mu\rightarrow}
-\def\models{\vert\kern-7.5mu\lyxeq}
+\def\longrightarrow{\lyxbar\kern-9.5mu\rightarrow}
+\def\longleftarrow{\leftarrow\kern-9.5mu\lyxbar}
+\def\Longrightarrow{\lyxeq\kern-9.5mu\Rightarrow}
+\def\Longleftarrow{\Leftarrow\kern-9.5mu\lyxeq}
+\def\mapsto{\mapstochar\kern-9mu\rightarrow}
+\def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-9.5mu\rightarrow}
+\def\models{\vert\kern-7mu\lyxeq}
 endif
 iffont cmm
-\def\hookrightarrow{\lhook\kern-13mu\rightarrow}
-\def\hookleftarrow{\leftarrow\kern-13mu\rhook}
+\def\hookrightarrow{\lhook\kern-12mu\rightarrow}
+\def\hookleftarrow{\leftarrow\kern-12mu\rhook}
 \def\bowtie{\triangleright\kern-6mu\triangleleft}
 endif
 iffont msa
@@ -800,7 +804,6 @@ iffont msb
 endif
 \def\mathcircumflex{\mbox{\^{}}}
 
-neq                lyxsymbol             185 0 mathrel  x
 ne                 lyxsymbol             185 0 mathrel  x
 textdegree         lyxsymbol             176 0 mathord  x
 cong               lyxsymbol             64  0 mathrel  x
