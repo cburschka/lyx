@@ -10,6 +10,7 @@ src/buffer.C
 src/buffer_funcs.C
 src/bufferlist.C
 src/bufferparams.C
+src/bufferview_funcs.C
 src/client/debug.C
 src/client/gettext.h
 src/converter.C
@@ -195,6 +196,7 @@ src/lyxfunc.C
 src/lyxrc.C
 src/lyxvc.C
 src/mathed/formulamacro.C
+src/mathed/math_gridinset.C
 src/mathed/math_hullinset.C
 src/mathed/math_macrotemplate.C
 src/mathed/math_nestinset.C
