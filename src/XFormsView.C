@@ -107,6 +107,15 @@ void XFormsView::show(int place, int border, string const & title)
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 	InitLyXLookup(fl_get_display(), form_->window);
 #endif
+
+	/* This is a fudge needed to overcome some wierd xforms behaviour.
+	   If the tooltips are set before the dialog is visible, then they
+	   are not displayed. No, I don't understand either.
+
+	   This is a fix for LyX branch 1_2_X. It will not be ported forward
+	   into 1.3 and beyond; a better fix should be found.
+	 */
+	toolbar->setTooltips();
 }
 
 

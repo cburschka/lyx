@@ -117,3 +117,9 @@ void Toolbar::add(string const & func, bool doclean)
 		pimpl_->add(tf, doclean);
 	}
 }
+
+
+void Toolbar::setTooltips()
+{
+	pimpl_->setTooltips();
+}

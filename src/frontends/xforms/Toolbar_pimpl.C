@@ -476,3 +476,9 @@ void Toolbar::Pimpl::lightReset() {
 	xpos = sxpos - standardspacing;
 	ypos = sypos;
 }
+
+
+void Toolbar::Pimpl::setTooltips()
+{
+	tooltip_->set();
+}

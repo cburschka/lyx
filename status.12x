@@ -34,6 +34,8 @@ What's new
 
 - fix positionning of cursor after undo
 
+- fix bug where error insets were not correctly removed
+
 - save preamble too when using 'save as document defaults' in document
   layout dialog
 
@@ -44,6 +46,8 @@ What's new
 - fix drawing problems for collapsed ERT insets
 
 - fix rotation angle of images to be the same as in latex output
+
+- fix bug where toolbar tips would not work at startup
 
 - disable 'Load' button of 'include file' dialog for verbatim include
 
@@ -85,6 +89,6 @@ What's new
 
 - fix compilation on AIX (unique_id identifier)
 
-- improve compilation with compaq cxx 6.5 (not there yet...)
+- fix compilation with compaq cxx 6.3
 
 - fix "FADE OUT:" style in hollywood layout
