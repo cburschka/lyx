@@ -8,6 +8,7 @@
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+#include "support/LOstream.h"
 
 
 MathBoxInset::MathBoxInset(string const & name)
