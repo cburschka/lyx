@@ -2369,9 +2369,9 @@ FormPreferences::Printer::feedback(FL_OBJECT const * const ob) const
 	else if (ob == dialog_->input_landscape)
 		str = lyxrc.getDescription(LyXRC::RC_PRINTLANDSCAPEFLAG);
 	else if (ob == dialog_->input_copies)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTCOLLCOPIESFLAG);
-	else if (ob == dialog_->input_collated)
 		str = lyxrc.getDescription(LyXRC::RC_PRINTCOPIESFLAG);
+	else if (ob == dialog_->input_collated)
+		str = lyxrc.getDescription(LyXRC::RC_PRINTCOLLCOPIESFLAG);
 	else if (ob == dialog_->input_paper_type)
 		str = lyxrc.getDescription(LyXRC::RC_PRINTPAPERFLAG);
 	else if (ob == dialog_->input_paper_size)

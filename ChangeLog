@@ -1,3 +1,8 @@
+2000-12-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/FormPreferences.C (feedback): fix
+	description of RC_PRINTCOPIESFLAG and RC_PRINTCOLLCOPIESFLAG.
+
 2000-12-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/FileInfo.h: move unistd.h to after sys/types.h and
@@ -13,7 +18,6 @@
 
 	* src/frontends/xforms/xform_helpers.C: adjust the order of
 	includes, some whitespace changes.
-	
 
 	* src/trans.C (Load): constify filename and res
 
@@ -42,7 +46,7 @@
 	(scroll_cb): emit signal
 
 	* src/LaTeXFeatures.C: include Floatlist.h
-	(getPackages): only load flot.sty when needed
+	(getPackages): only load float.sty when needed
 	(getMacros): prepare for outputting the correct code to preamble.
 
 	* src/Floating.h: make all variables private + rename to var_.
