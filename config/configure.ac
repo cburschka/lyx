@@ -182,7 +182,7 @@ dnl     FRONTEND_GUILIB="gnome/*.lo"
 dnl     FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
 dnl     FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms ${GNOME_FRONTEND_CFLAGS} "
 dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
-dnl 	;;
+dnl	;;
   qt)
     QT_DO_IT_ALL
     FRONTEND="qt2"
