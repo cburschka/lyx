@@ -1,4 +1,8 @@
-2003-10-01  Vitaly Lipatov <lav@vl3143.spb.edu>
+2003-10-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C: add an #include
+
+2003-10-01  Vitaly Lipatov  <lav@vl3143.spb.edu>
 
 	* FileDialog.C: use fromqstr in a few places to enable the dialog to
 	read non-latin filenames.

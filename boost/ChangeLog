@@ -1,3 +1,8 @@
+2003-10-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* boost/config/user.hpp (BOOST_REGEX_NARROW_INSTANTIATE): define
+	on OSX
+
 2003-05-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* boost/config/compiler/gcc.hpp: accept gcc 3.3 as valid compiler

@@ -70,3 +70,6 @@
 #define BOOST_NO_WREGEX 1
 #define BOOST_NO_WSTRING 1
 #define BOOST_FUNCTION_NO_DEPRECATED 1
+#if defined(__APPLE__) && defined(__GNUC__)
+#define BOOST_REGEX_NARROW_INSTANTIATE
+#endif

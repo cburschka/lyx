@@ -25,6 +25,7 @@
 #include <qglobal.h>
 #include <qfontmetrics.h>
 #include <qfontdatabase.h>
+#include <qfontinfo.h>
 #include <qstringlist.h>
 #include "support/lstrings.h"
 
