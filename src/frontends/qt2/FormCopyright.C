@@ -38,13 +38,15 @@ void FormCopyright::build()
 {
     // PENDING(kalle) Parent???
     dialog_.reset( new FormCopyrightDialogImpl() );
-
+    connect( dialog_.get()->closePB, SIGNAL( clicked() ),
+	     this, SLOT( slotCancel() ) );
+    
     dialog_->copyrightLA->setText( controller().getCopyright().c_str() );
     dialog_->licenseLA->setText( controller().getLicence().c_str() );
     dialog_->disclaimerLA->setText( controller().getDisclaimer().c_str() );
     
     // Manage the cancel/close button
-    bc().setCancel(dialog_->okPB);
+    bc().setCancel(dialog_->closePB);
     bc().refresh();
 }
 

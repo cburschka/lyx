@@ -18,6 +18,9 @@
 
 class QDialog;
 
+#include <qfont.h>
+#include <qobject.h>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -30,8 +33,9 @@ class qt2BC;
 
 /** This class is an Qt2 GUI base class.
  */
-class FormBase : public ViewBC<qt2BC>
+class FormBase : public QObject, public ViewBC<qt2BC>
 {
+    Q_OBJECT
 public:
 	///
 	FormBase(ControlBase &, string const &);
@@ -46,12 +50,28 @@ protected:
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 
+protected slots:
+    // dialog closed from WM
+    void slotWMHide();
+    
+    // Apply button clicked
+    void slotApply();
+    
+    // OK button clicked
+    void slotOK();
+    
+    // Cancel button clicked
+    void slotCancel();
+    
+    // Restore button clicked
+    void slotRestore();
+    
 private:
 	/// Pointer to the actual instantiation of xform's form
 	virtual QDialog* form() const = 0;
-// 	/** Filter the inputs on callback from xforms
-// 	    Return true if inputs are valid. */
-// 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+ 	/** Filter the inputs on callback from xforms
+ 	    Return true if inputs are valid. */
+ 	virtual ButtonPolicy::SMInput input(QWidget*, long);
 
 private:
 	/// dialog title, displayed by WM.

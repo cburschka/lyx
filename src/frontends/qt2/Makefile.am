@@ -12,6 +12,7 @@ CXXFLAGS += -DQT_CLEAN_NAMESPACE -fno-rtti -fno-exceptions
 # moc generated files
 BUILTSOURCES = \
 	moc_FileDialog_private.C \
+	moc_FormBase.C		\
 	moc_FormCitationDialog.C	\
 	moc_FormCitationDialogImpl.C	\
 	moc_FormCopyrightDialog.C	\
@@ -159,6 +160,9 @@ dist-hook:
 	cp -p $(srcdir)/$$subdir/$$fil $(distdir)/$$subdir ; \
 	done ; \
 	done
+
+moc_FormBase.C: FormBase.h
+	$(MOC) -o $@ $<
 
 FormCitation.C: FormCitationDialog.h
 FormCitationDialog.h: FormCitationDialog.ui

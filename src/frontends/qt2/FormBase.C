@@ -25,6 +25,8 @@
 #include "qt2BC.h"
 #include "support/LAssert.h"
 
+#include <stdio.h>
+
 
 FormBase::FormBase(ControlBase & c, string const & t)
 	: ViewBC<qt2BC>(c), title_(t)
@@ -34,17 +36,27 @@ FormBase::FormBase(ControlBase & c, string const & t)
 
 void FormBase::show()
 {
-	if (!form()) {
+    fprintf( stderr, "FormBase::show() 1\n" );
+    if (!form()) {
+    fprintf( stderr, "FormBase::show() 2\n" );
 		build();
+    fprintf( stderr, "FormBase::show() 3\n" );
 	}
+    fprintf( stderr, "FormBase::show() 4\n" );
 
 	update();  // make sure its up-to-date
+    fprintf( stderr, "FormBase::show() 5\n" );
 
 	if (form()->isVisible()) {
+    fprintf( stderr, "FormBase::show() 6\n" );
 	    form()->raise();
+    fprintf( stderr, "FormBase::show() 7\n" );
 	} else {
+    fprintf( stderr, "FormBase::show() 8\n" );
 	    form()->setCaption( title_.c_str() );
+    fprintf( stderr, "FormBase::show() 9\n" );
 	    form()->show();
+    fprintf( stderr, "FormBase::show() 10\n" );
 	}
 }
 
@@ -56,65 +68,52 @@ void FormBase::hide()
 }
 
 
+// PENDING(kalle) Handle this with QValidator?
 // void FormBase::InputCB(FL_OBJECT * ob, long data)
 // {
 // 	bc().input(input(ob, data));
 // }
 
 
-// ButtonPolicy::SMInput FormBase::input(FL_OBJECT *, long)
-// {
-// 	return ButtonPolicy::SMI_VALID;
-// }
+ButtonPolicy::SMInput FormBase::input(QWidget*, long)
+{
+    return ButtonPolicy::SMI_VALID;
+}
 
 
-namespace {
 
-// FormBase * GetForm(QWidget * ob)
-// {
-// 	Assert(ob && ob->form && ob->form->u_vdata);
-// 	FormBase * pre = static_cast<FormBase *>(ob->form->u_vdata);
-// 	return pre;
-// }
-
-} // namespace anon
+void FormBase::slotWMHide()
+{
+    CancelButton();
+}
 
 
-// extern "C" int C_FormBaseWMHideCB(FL_FORM * form, void *)
-// {
-// 	// Close the dialog cleanly, even if the WM is used to do so.
-// 	Assert(form && form->u_vdata);
-// 	FormBase * pre = static_cast<FormBase *>(form->u_vdata);
-// 	pre->CancelButton();
-// 	return FL_CANCEL;
-// }
+
+void FormBase::slotApply()
+{
+    ApplyButton();
+}
 
 
-// extern "C" void C_FormBaseApplyCB(FL_OBJECT * ob, long)
-// {
-// 	GetForm(ob)->ApplyButton();
-// }
+void FormBase::slotOK()
+{
+    OKButton();
+}
 
 
-// extern "C" void C_FormBaseOKCB(FL_OBJECT * ob, long)
-// {
-// 	GetForm(ob)->OKButton();
-// }
+void FormBase::slotCancel()
+{
+    CancelButton();
+}
 
 
-// extern "C" void C_FormBaseCancelCB(FL_OBJECT * ob, long)
-// {
-// 	FormBase * form = GetForm(ob);
-// 	form->CancelButton();
-// }
+void FormBase::slotRestore()
+{
+    RestoreButton();
+}
 
 
-// extern "C" void C_FormBaseRestoreCB(FL_OBJECT * ob, long)
-// {
-// 	GetForm(ob)->RestoreButton();
-// }
-
-
+// PENDING(kalle) How to handle this?
 // extern "C" void C_FormBaseInputCB(FL_OBJECT * ob, long d)
 // {
 // 	GetForm(ob)->InputCB(ob, d);
