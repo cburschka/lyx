@@ -1,5 +1,7 @@
 2000-10-02  Allan Rae  <rae@lyx.org>
 
+	* boost/.cvsignore: ignore Makefile as well
+
 	* src/lyxfunc.C (Dispatch): missing break; and moved the '}' for
 	LFUN_UNKNOWN_ACTION: so it doesn't wrap around default:.
 
