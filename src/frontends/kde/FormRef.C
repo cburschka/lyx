@@ -220,8 +220,10 @@ void FormRef::apply()
 			inset_->setParams(params);
 			lv_->view()->updateInset(inset_, true);
 		}
-	} else
+	} else {
 		lv_->getLyXFunc()->Dispatch(LFUN_REF_INSERT, params.getAsString().c_str());
+		lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_SAVE, "0");
+	}
 }
 
 
