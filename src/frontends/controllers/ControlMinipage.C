@@ -84,10 +84,10 @@ vector<string> const getUnits()
 	units.push_back("mm");
 	units.push_back("in");
 	units.push_back("em");
-	units.push_back("\%");
-	units.push_back("\%c");
-	units.push_back("\%l");
-	units.push_back("\%p");
+	units.push_back("%%");
+	units.push_back("%%c");
+	units.push_back("%%l");
+	units.push_back("%%p");
 
 	return units;
 }
