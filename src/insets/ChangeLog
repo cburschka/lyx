@@ -1,3 +1,9 @@
+2004-10-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetfoot.C (latex): use \thanks instead of \footnote on titlepage 
+	layouts. This fixes problems with the memoir class (which does not 
+	allow \footnote) [bug 1677]
+
 2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetcite.C (latex): fix #warning statement

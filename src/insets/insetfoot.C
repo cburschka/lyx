@@ -64,12 +64,17 @@ string const InsetFoot::editMessage() const
 int InsetFoot::latex(Buffer const * buf,
 		     ostream & os, bool fragile, bool fp) const
 {
+	bool isintitle = false;
 	if (buf && parOwner()) {
 		LyXLayout_ptr const & layout = parOwner()->layout();
 		fragile |= layout->intitle;
+		isintitle = layout->intitle;
 	}
 
-	os << "%\n\\footnote{";
+	if (isintitle)
+		os << "%\n\\thanks{";
+	else
+		os << "%\n\\footnote{";
 
 	int const i = inset.latex(buf, os, fragile, fp);
 	os << "%\n}";
