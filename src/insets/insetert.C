@@ -348,15 +348,61 @@ int InsetERT::ascii(Buffer const *,
 }
 
 
-int InsetERT::linuxdoc(Buffer const *, std::ostream &) const
+int InsetERT::linuxdoc(Buffer const *, std::ostream & os) const
 {
-	return 0;
+	Paragraph * par = inset.paragraph();
+	int lines = 0;
+	while (par) {
+		Paragraph::size_type siz = par->size();
+		for (Paragraph::size_type i = 0; i < siz; ++i) {
+			Paragraph::value_type c = par->getChar(i);
+			switch (c) {
+			case Paragraph::META_NEWLINE:
+				os << '\n';
+				++lines;
+				break;
+			default:
+				os << c;
+				break;
+			}
+		}
+		par = par->next();
+		if (par) {
+			os << "\n";
+			lines ++;
+		}
+	}
+	
+	return lines;
 }
 
 
-int InsetERT::docbook(Buffer const *, std::ostream &) const
+int InsetERT::docbook(Buffer const *, std::ostream & os) const
 {
-	return 0;
+	Paragraph * par = inset.paragraph();
+	int lines = 0;
+	while (par) {
+		Paragraph::size_type siz = par->size();
+		for (Paragraph::size_type i = 0; i < siz; ++i) {
+			Paragraph::value_type c = par->getChar(i);
+			switch (c) {
+			case Paragraph::META_NEWLINE:
+				os << '\n';
+				++lines;
+				break;
+			default:
+				os << c;
+				break;
+			}
+		}
+		par = par->next();
+		if (par) {
+			os << "\n";
+			lines ++;
+		}
+	}
+	
+	return lines;
 }
 
 
