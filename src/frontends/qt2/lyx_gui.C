@@ -24,6 +24,7 @@
 #include "lyxrc.h"
 #include "lyxfont.h"
 #include "funcrequest.h"
+#include "graphics/LoaderQueue.h"
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
@@ -118,6 +119,8 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 	lyxrc.dpi = getDPI();
 
 	initEncodings();
+
+	LoaderQueue::setPriority(10,100);
 }
 
 

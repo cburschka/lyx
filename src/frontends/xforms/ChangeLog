@@ -1,3 +1,7 @@
+2003-02-22  Alfredo Braunstein <abraunst@libero.it>
+
+	* lyx_gui.C (parse_init): added a call to LoaderQueue::setPriority
+
 2003-02-17  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* FormBibTeX.C: add double click to choose from list.

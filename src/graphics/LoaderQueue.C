@@ -20,6 +20,8 @@ using std::list;
 
 namespace grfx {
 
+int LoaderQueue::s_numimages_ = 5;
+int LoaderQueue::s_millisecs_ = 500;
 
 LoaderQueue & LoaderQueue::get()
 {
@@ -34,7 +36,7 @@ void LoaderQueue::loadNext()
 	lyxerr[Debug::GRAPHICS] << "LoaderQueue: "
 				<< cache_queue_.size()
 				<< " items in the queue" << endl; 
-	int counter = 10;
+	int counter = s_numimages_;
 	while (cache_queue_.size() && counter--) {
 		if(cache_queue_.front()->status() == WaitingToLoad)
 			cache_queue_.front()->startLoading();
@@ -49,7 +51,18 @@ void LoaderQueue::loadNext()
 }
 
 
-LoaderQueue::LoaderQueue() : timer(100, Timeout::ONETIME), 
+void LoaderQueue::setPriority(int numimages , int millisecs)
+{
+	s_numimages_ = numimages;
+	s_millisecs_ = millisecs;
+	lyxerr[Debug::GRAPHICS] << "LoaderQueue:  priority set to "
+				<< s_numimages_ << " images at a time, "
+				<< s_millisecs_ << " milliseconds between calls" 
+				<< endl;
+}
+	
+
+LoaderQueue::LoaderQueue() : timer(s_millisecs_, Timeout::ONETIME), 
 			     running_(false)
 {
 	timer.timeout.connect(boost::bind(&LoaderQueue::loadNext, this));
@@ -71,6 +84,7 @@ void LoaderQueue::startLoader()
 {
 	lyxerr[Debug::GRAPHICS] << "LoaderQueue: waking up" << endl;
 	running_ = true ;
+	timer.setTimeout(s_millisecs_);
 	timer.start();
 }
 

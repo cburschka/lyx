@@ -33,34 +33,48 @@ namespace grfx {
 
 class LoaderQueue {
 public:
-	//use this to request a loading
+	/// Use this to request that the item is loaded.
 	void touch(Cache::ItemPtr const & item);
-	//query if the clock is ticking
+	/// Query whether the clock is ticking.
 	bool running() const;
-	//get the and only instance of the class
+	///get the and only instance of the class
 	static LoaderQueue & get();
+	/** Adjusts the queue priority:
+	 *  numimages is the number of images loaded in a particular call
+	 *  from the timer.
+	 *  millisecs is the time interval between calls.
+	 *  Higher numimages, lower millisecs means higher priority.
+	 */
+	static void setPriority(int numimages , int millisecs);
 private:
-	//this class is a singleton class... use LoaderQueue::get() instead
+	/// This class is a singleton class... use LoaderQueue::get() instead
 	LoaderQueue();
-	//in-progress loading queue (elements are unique here) 
+	/// The in-progress loading queue (elements are unique here).
 	std::list<Cache::ItemPtr> cache_queue_;
-	//makes faster the insertion of new elements
+	/// Used to make the insertion of new elements faster.
 	std::set<Cache::ItemPtr> cache_set_;
-	//newly touched element go here, loadNext move them to cache_queue_
+	/// Newly touched elements go here. loadNext moves them to cache_queue_
 	std::queue<Cache::ItemPtr> bucket_;
-	//
+	///
 	Timeout timer;
-	//
+	///
 	bool running_;
-	//moves bucket_ to cache_queue_
+	///
+	static int s_numimages_ ;
+	///
+	static int s_millisecs_ ;
+
+	/// Moves bucket_ to cache_queue_
 	void emptyBucket();
-	//adds or reprioritizes one element in cache_queue_
+	/// Adds or reprioritizes one element in cache_queue_
 	void addToQueue(Cache::ItemPtr const & item);
-	//this is the 'threaded' method, that does the loading in background
+	/** This is the 'threaded' method, that does the loading in the
+	 *  background.
+	 */
 	void loadNext();
-	//
+	///
 	void startLoader();
-	//
+	///
 	void stopLoader();
 };
 
