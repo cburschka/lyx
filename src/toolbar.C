@@ -294,7 +294,7 @@ void Toolbar::set(bool doingmain)
 
 			// Set the tooltip
 #if FL_REVISION >= 89
-			string help = lyxaction.helpText(action);
+			string help = lyxaction.helpText(item->action);
 			fl_set_object_helper(obj, help.c_str());	
 #else
 			fl_set_object_posthandler(obj, C_Toolbar_BubblePost);

@@ -232,10 +232,7 @@ void FontSize(BufferView * bv, string const & size)
 }
 
 
-/* -------> Returns the current font and depth by printing a message. In the
- * future perhaps we could try to implement a callback to the button-bar.
- * That is, `light' the bold button when the font is currently bold, etc.
- */
+// Returns the current font and depth as a message. 
 string CurrentState(BufferView * bv)
 {
 	string state;
