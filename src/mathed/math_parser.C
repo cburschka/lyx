@@ -1031,8 +1031,8 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			dump();
 			lyxerr << "found '}' unexpectedly, array: '" << array << "'\n";
 			//lyxerr << "found '}' unexpectedly\n";
-			lyx::Assert(0);
-			add(array, '}', LM_TC_TEX);
+			//lyx::Assert(0);
+			//add(array, '}', LM_TC_TEX);
 		}
 
 		else if (t.cat() == catAlign) {

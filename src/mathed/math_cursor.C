@@ -1465,6 +1465,11 @@ bool MathCursor::interpret(char c)
 
 		macroModeClose();
 
+		if (c == '{' || c == '}') {
+			insert(MathAtom(new MathSpecialCharInset(c)));
+			return true;
+		}
+
 		if (c != ' ')
 			interpret(c);
 

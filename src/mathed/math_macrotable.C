@@ -89,6 +89,7 @@ void MathMacroTable::builtinMacros()
 	//define("\\def\\emptyset{\\not0}");
 	define("\\def\\notin{\\not\\in}");
 	define("\\def\\slash{/}");
+	//define("\\def\\mathcircumflex{\\^}");
 
 	// fontmath.ltx
 
