@@ -1,3 +1,9 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* Timeout_pimpl.[Ch]: removed.
+	* xformsTimeout.[Ch]: new files, replacing the above.
+	The xformsTimeout class derives from Timeout::Impl.
+
 2003-02-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* xfont_loader.C (addFontPath): make debug messages quieter

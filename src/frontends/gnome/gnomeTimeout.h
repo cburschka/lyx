@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file gnome/Timeout_pimpl.h
+ * \file gnomeTimeout.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -8,8 +8,8 @@
  *
  * Full author contact details are available in file CREDITS
  */
-#ifndef TIMEOUTPIMPL_H
-#define TIMEOUTPIMPL_H
+#ifndef GNOMETIMEOUT_H
+#define GNOMETIMEOUT_H
 
 #include "frontends/Timeout.h"
 #include "glib.h" // for gint
@@ -21,10 +21,10 @@
  * This class executes the callback when the timeout expires
  * using Gnome mechanisms
  */
-struct Timeout::Pimpl : public SigC::Object {
+struct gnomeTimeout : public SigC::Object, public Timeout::Impl {
 public:
 	///
-	Pimpl(Timeout * owner_);
+	gnomeTimeout(Timeout * owner_);
 	/// start the timer
 	void start();
 	/// stop the timer
@@ -39,12 +39,10 @@ public:
 	/// The timeout signal, this gets called when the timeout passed.
 	bool timeoutEvent();
 private:
-	/// the owning timer
-	Timeout * owner_;
 	/// Timer connection
 	SigC::Connection conn_;
 	/// Used for running as SigC::Connection::connected() isn't const
 	bool running_;
 };
 
-#endif
+#endif // GNOMETIMEOUT

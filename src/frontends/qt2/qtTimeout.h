@@ -1,42 +1,47 @@
 // -*- C++ -*-
 /**
- * \file xforms/Timeout_pimpl.h
+ * \file qtTimeout.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
-#ifndef TIMEOUTPIMPL_H
-#define TIMEOUTPIMPL_H
+
+#ifndef QTTIMEOUT_H
+#define QTTIMEOUT_H
 
 #include "frontends/Timeout.h"
+#include <qobject.h> 
 
+// stupid Qt
+#undef emit
 
 /**
  * This class executes the callback when the timeout expires
- * using XForms mechanisms
+ * using Qt mechanisms
  */
-struct Timeout::Pimpl {
+struct qtTimeout : QObject, public Timeout::Impl {
 public:
 	///
-	Pimpl(Timeout * owner_);
-	/// Is the timer running?
-	bool running() const;
+	qtTimeout(Timeout & owner_);
+	///
+	virtual bool running() const;
 	/// start the timer
-	void start();
+	virtual void start();
 	/// stop the timer
-	void stop();
+	virtual void stop();
 	/// reset
-	void reset();
+	virtual void reset();
+
+protected:
+	/// slot
+	virtual void timerEvent(QTimerEvent *);
 
 private:
-	/// the owning timer
-	Timeout * owner_;
-	/// xforms id
+	/// timout id
 	int timeout_id;
 };
 
-#endif
+#endif // QTTIMEOUT_H

@@ -9,8 +9,6 @@ INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src \
 
 SUBDIRS = forms
 
-EXTRA_DIST = xformsImage.C xformsImage.h
-
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libxforms_la_SOURCES = \
 	forms_fwd.h \
@@ -35,10 +33,12 @@ libxforms_la_SOURCES = \
 	xforms_helpers.h \
 	xforms_resize.C \
 	xforms_resize.h \
-	xformsImage.C \
-	xformsImage.h \
 	xformsBC.C \
 	xformsBC.h \
+	xformsImage.C \
+	xformsImage.h \
+	xformsTimeout.C \
+	xformsTimeout.h \
 	xscreen.C \
 	xscreen.h \
 	Alert_pimpl.C \
@@ -146,8 +146,6 @@ libxforms_la_SOURCES = \
 	Menubar_pimpl.h \
 	RadioButtonGroup.C \
 	RadioButtonGroup.h \
-	Timeout_pimpl.C \
-	Timeout_pimpl.h \
 	Toolbar_pimpl.C \
 	Toolbar_pimpl.h \
 	Tooltips.C \

@@ -1,5 +1,12 @@
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
+	* Timeout.[Ch]: define a Timeout::Impl abstract base class from
+	which the GUIs will derive their implementations. Means that
+	we no longer have to look into the GUIs to write the class.
+	Store the implementation in a boost::scoped_ptr, not a raw pointer.
+
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.h: remove forward declarations of InsetBibKey, InsetBibtex.
 
 	* FileDialog.h: don't pass LyXView to the c-tor.

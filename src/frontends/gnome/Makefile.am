@@ -152,8 +152,8 @@ libgnome_la_SOURCES = \
 	gnomeBC.C \
 	gnomeBC.h \
 	lyx_gui.C \
-	Timeout_pimpl.C \
-	Timeout_pimpl.h \
+	gnomeTimeout.C \
+	gnomeTimeout.h \
 	pixbutton.h 
 
 libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)

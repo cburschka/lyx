@@ -12,22 +12,12 @@
 #include <config.h>
 
 #include "Timeout.h"
-#include "debug.h"
-
-#include "Timeout_pimpl.h"
-
-
-Timeout::Timeout(unsigned int msec, Type t)
-	: type(t), timeout_ms(msec)
-{
-	pimpl_ = new Pimpl(this);
-}
+#include "support/LAssert.h"
 
 
 Timeout::~Timeout()
 {
 	pimpl_->stop();
-	delete pimpl_;
 }
 
 
@@ -42,16 +32,19 @@ void Timeout::start()
 	pimpl_->start();
 }
 
+
 void Timeout::stop()
 {
 	pimpl_->stop();
 }
+
 
 void Timeout::restart()
 {
 	pimpl_->stop();
 	pimpl_->start();
 }
+
 
 void Timeout::emit()
 {
@@ -60,6 +53,7 @@ void Timeout::emit()
 	if (type == CONTINUOUS)
 		pimpl_->start();
 }
+
 
 Timeout & Timeout::setType(Type t)
 {
@@ -70,6 +64,9 @@ Timeout & Timeout::setType(Type t)
 
 Timeout & Timeout::setTimeout(unsigned int msec)
 {
+	// Can't have a timeout of zero!
+	lyx::Assert(msec);
+
 	timeout_ms = msec;
 	return * this;
 }

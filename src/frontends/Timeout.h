@@ -13,8 +13,8 @@
 #ifndef TIMEOUT_H
 #define TIMEOUT_H
 
-
 #include <boost/signals/signal0.hpp>
+
 
 /**
  * This class executes the callback when the timeout expires.
@@ -26,7 +26,7 @@ public:
 		ONETIME, //< one-shot timer
 		CONTINUOUS //< repeating
 	};
-	///
+	/// Note that the c-tor is implemented in the GUI-specific frontends
 	Timeout(unsigned int msec, Type = ONETIME);
 	///
 	~Timeout();
@@ -47,13 +47,42 @@ public:
 	/// set the timeout value
 	Timeout & setTimeout(unsigned int msec);
 
+	/** Base class for the GUI implementation.
+	    It must be public so that C callback functions can access its
+	    daughter classes.
+	 */
+	class Impl
+	{
+	public:
+		///
+		Impl(Timeout & owner) : owner_(owner) {}
+		///
+		virtual ~Impl() {}
+		/// Is the timer running?
+		virtual bool running() const = 0;
+		/// start the timer
+		virtual void start() = 0;
+		/// stop the timer
+		virtual void stop() = 0;
+		/// reset
+		virtual void reset() = 0;
+
+	protected:
+		///
+		void emit() { owner_.emit(); }
+		///
+		unsigned int timeout_ms() const { return owner_.timeout_ms; }
+
+	private:
+		///
+		Timeout & owner_;
+	};
+	
 private:
 	///
-	struct Pimpl;
+	friend class Impl;
 	///
-	friend struct Pimpl;
-	/// implementation
-	Pimpl * pimpl_;
+	boost::scoped_ptr<Impl> const pimpl_;
 	/// one-shot or repeating
 	Type type;
 	/// timeout value in milliseconds

@@ -24,7 +24,7 @@ libqt2_la_SOURCES = \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
 	Menubar_pimpl.C Menubar_pimpl.h \
-	Timeout_pimpl.C Timeout_pimpl.h \
+	qtTimeout.C qtTimeout.h \
 	QAbout.C QAbout.h \
 	QBibitem.C QBibitem.h \
 	QBibtex.C QBibtex.h \

@@ -1,3 +1,9 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* Timeout_pimpl.[Ch]: removed.
+	* qtTimeout.[Ch]: new files, replacing the above.
+	The qtTimeout class derives from Timeout::Impl.
+
 2003-02-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* qfont_loader.C (addFontPath): make debug messages quieter

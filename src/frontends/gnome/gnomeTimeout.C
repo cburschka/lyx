@@ -1,5 +1,5 @@
 /**
- * \file gnome/Timeout_pimpl.C
+ * \file gnomeTimeout.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,27 +11,34 @@
 
 #include <config.h>
 
-
 #include <glibmm/main.h>
-#include "Timeout_pimpl.h"
+#include "gnomeTimeout.h"
 #include "debug.h"
 
-Timeout::Pimpl::Pimpl(Timeout * owner)
-  : owner_(owner)
-{
-}
 
-void Timeout::Pimpl::reset()
+Timeout::Timeout(unsigned int msec, Type t)
+	: pimpl_(new gnomeTimeout(*this)), type(t), timeout_ms(msec)
+{}
+
+
+gnomeTimeout::(gnomeTimeoutTimeout * owner)
+	: Timeout::Impl(owner), timeout_id(-1)
+{}
+
+
+void gnomeTimeout::reset()
 {
 	stop();
 }
 
-bool Timeout::Pimpl::running() const
+
+bool gnomeTimeout::running() const
 {
 	return running_;
 }
 
-void Timeout::Pimpl::start()
+
+void gnomeTimeout::start()
 {
 	if (conn_.connected()) {
 		lyxerr << "Timeout::start: already running!" << std::endl;
@@ -40,21 +47,21 @@ void Timeout::Pimpl::start()
 
 	conn_ = Glib::signal_timeout().connect(
 			 SigC::slot(*this, &Timeout::Pimpl::timeoutEvent),
-			 owner_->timeout_ms
+			 timeout_ms()
 			);
 	running_ = true;
 }
 
 
-void Timeout::Pimpl::stop()
+void gnomeTimeout::stop()
 {
 	conn_.disconnect();
 	running_ = false;
 }
 
 
-bool Timeout::Pimpl::timeoutEvent()
+bool gnomeTimeout::timeoutEvent()
 {
-	owner_->emit();
+	emit();
 	return false; // discontinue emitting timeouts.
 }
