@@ -445,6 +445,8 @@ void handle_tabular(Parser & p, ostream & os)
 			os << " rightline=\"true\"";
 		if (colinfo[col].leftline)
 			os << " leftline=\"true\"";
+		if (colinfo[col].special.size())
+			os << " special=\"" << colinfo[col].special << "\"";
 		os << " valignment=\"top\"";
 		os << " width=\"" << colinfo[col].width << "\"";
 		os << ">\n";
