@@ -12,6 +12,7 @@
  */
 
 #include <config.h>
+#include <algorithm>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -24,8 +25,13 @@
 #include "LyXView.h"
 #include "buffer.h"
 #include "lyxfunc.h"
+#include "bufferlist.h"
 
 using SigC::slot;
+using std::vector;
+using std::find;
+
+extern BufferList bufferlist;
 
 ControlRef::ControlRef(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_REF_INSERT)
@@ -35,9 +41,12 @@ ControlRef::ControlRef(LyXView & lv, Dialogs & d)
 }
 
 
-std::vector<string> const ControlRef::getLabelList() const
+vector<string> const ControlRef::getLabelList(string const & name) const
 {
-	return lv_.buffer()->getLabelList();
+	Buffer * buffer = bufferlist.getBuffer(name);
+	if (!buffer)
+		buffer = lv_.buffer();
+	return buffer->getLabelList();
 }
 
 
@@ -53,3 +62,20 @@ void ControlRef::gotoBookmark() const
 	lv_.getLyXFunc()->dispatch(LFUN_BOOKMARK_GOTO, "0");
 }
 
+
+vector<string> const ControlRef::getBufferList() const
+{
+	return bufferlist.getFileNames();
+}
+
+
+int ControlRef::getBufferNum() const
+{
+	vector<string> buffers = bufferlist.getFileNames();
+	string const name = lv_.buffer()->fileName();
+	vector<string>::const_iterator cit =
+		find(buffers.begin(), buffers.end(), name);
+	if (cit == buffers.end())
+		return 0;
+	return cit - buffers.begin();
+}

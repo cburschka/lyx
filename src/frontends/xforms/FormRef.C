@@ -24,6 +24,8 @@
 #include "form_ref.h"
 #include "xforms_helpers.h"
 #include "insets/insetref.h"
+#include "helper_funcs.h" // getStringFromVector
+#include "support/lstrings.h" // frontStrip, strip
 
 using std::find;
 using std::max;
@@ -90,7 +92,13 @@ void FormRef::update()
 		setEnabled(dialog_->type, true);
 	}
 
-	refs_ = controller().getLabelList();
+	string const choice =
+                " " + getStringFromVector(controller().getBufferList(), " | ") + " ";
+	fl_clear_choice(dialog_->buffer);
+	fl_addto_choice(dialog_->buffer, choice.c_str());
+	fl_set_choice(dialog_->buffer, controller().getBufferNum() + 1);
+
+	refs_ = controller().getLabelList(string());
 	updateBrowser(refs_);
 }
 
@@ -119,17 +127,19 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 		setEnabled(dialog_->sort,    true);
 
 		string ref = fl_get_input(dialog_->ref);
-		vector<string>::const_iterator cit =
-			find(keys.begin(), keys.end(), ref);
+		vector<string>::const_iterator cit = (ref.empty())
+			? keys.begin()
+			: find(keys.begin(), keys.end(), ref);
 		if (cit == keys.end()) {
-			cit = keys.begin();
-			fl_set_input(dialog_->ref, cit->c_str());
-		} else if (ref.empty())
-			fl_set_input(dialog_->ref, cit->c_str());
+			fl_deselect_browser(dialog_->browser);
+		} else {
+			if (ref.empty())
+				fl_set_input(dialog_->ref, cit->c_str());
 
-		int const i = static_cast<int>(cit - keys.begin());
-		fl_set_browser_topline(dialog_->browser, max(i-5, 1));
-		fl_select_browser_line(dialog_->browser, i+1);
+			int const i = static_cast<int>(cit - keys.begin());
+			fl_set_browser_topline(dialog_->browser, max(i-5, 1));
+			fl_select_browser_line(dialog_->browser, i+1);
+		}
 	}
 }
 
@@ -185,10 +195,15 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		fl_set_object_lcol(dialog_->ref, FL_BLACK);
 
 	} else if (ob == dialog_->button_update || 
-		   ob == dialog_->sort) {
+		   ob == dialog_->sort ||
+		   ob == dialog_->buffer) {
 
-		if (ob == dialog_->button_update)
-			refs_ = controller().getLabelList();
+		if (ob == dialog_->button_update ||
+		    ob == dialog_->buffer) {
+			string const name =
+				frontStrip(strip(fl_get_choice_text(dialog_->buffer)));
+			refs_ = controller().getLabelList(name);
+		}
 
 		fl_freeze_form(form());
 		updateBrowser(refs_);

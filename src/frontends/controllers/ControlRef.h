@@ -29,11 +29,15 @@ public:
 	ControlRef(LyXView &, Dialogs &);
 
 	///
-	std::vector<string> const getLabelList() const;
+	std::vector<string> const getLabelList(string const &) const;
 	///
 	void gotoRef(string const &) const;
 	///
 	void gotoBookmark() const;
+	///
+	std::vector<string> const getBufferList() const;
+	///
+	int getBufferNum() const;
 };
 
 #endif // CONTROLREF_H

@@ -28,6 +28,7 @@ struct FD_form_ref {
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_restore;
+	FL_OBJECT *buffer;
 };
 
 #endif /* FD_form_ref_h_ */

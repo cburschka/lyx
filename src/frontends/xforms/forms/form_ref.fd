@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_ref
 Width: 530
 Height: 340
-Number of Objects: 12
+Number of Objects: 13
 
 --------------------
 class: FL_BOX
@@ -46,12 +46,12 @@ resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_South
 name: browser
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 40 260 90 30
+box: 10 260 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -64,12 +64,12 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthWest
 name: button_update
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 170 260 30 30
+box: 110 260 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_RIGHT
@@ -82,7 +82,7 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthWest
 name: sort
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -136,7 +136,7 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: type
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -154,7 +154,7 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_go
 callback: C_FormBaseInputCB
-argument:
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -172,7 +172,7 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_ok
 callback: C_FormBaseOKCB
-argument:
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -190,7 +190,7 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_cancel
 callback: C_FormBaseCancelCB
-argument:
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -208,7 +208,7 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_apply
 callback: C_FormBaseApplyCB
-argument:
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -226,7 +226,25 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_restore
 callback: C_FormBaseRestoreCB
-argument:
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 190 260 100 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_RIGHT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Buffer|#B
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
+name: buffer
+callback: C_FormBaseInputCB
+argument: 0
 
 ==============================
 create_the_forms
