@@ -1,3 +1,9 @@
+2003-07-27  Angus Leeming  <leeming@lyx.org>
+
+	* tex2lyx.C: add Debug::ANY hack.
+
+	* text.C: remove hardcoded command layouts.
+
 2003-07-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (parse_text): fix handling of \LaTeXe macro

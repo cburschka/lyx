@@ -24,8 +24,6 @@ linked_files = \
 	lyxlex.C \
 	lyxlex_pimpl.C
 
-#	debug.C
-
 tex2lyx_SOURCES = \
 	$(linked_files) \
 	Spacing.h \

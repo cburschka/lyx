@@ -6,8 +6,8 @@
 
 #include "tex2lyx.h"
 
-#include "lyx_main.h"
 #include "debug.h"
+#include "lyx_main.h"
 #include "lyxtextclass.h"
 
 #include <cctype>
@@ -30,10 +30,11 @@ using std::stringstream;
 using std::string;
 using std::vector;
 
-// A hack to allow the thing to link in the lyxlayout stuff
+// Hacks to allow the thing to link in the lyxlayout stuff
 string system_lyxdir = "../../../lib";
 string build_lyxdir = "../../lib";
 string user_lyxdir = ".";
+Debug::type const Debug::ANY = Debug::type(0);
 DebugStream lyxerr;
 
 void LyX::emergencyCleanup() {}

@@ -30,9 +30,6 @@ using lyx::support::suffixIs;
 
 namespace {
 
-char const * known_headings[] = { "caption", "title", "author", "date",
-"paragraph", "chapter", "section", "subsection", "subsubsection", 0 };
-
 char const * known_latex_commands[] = { "ref", "cite", "label", "index",
 "printindex", "pageref", "url", 0 };
 
@@ -135,6 +132,43 @@ void handle_par(ostream & os)
 }
 
 
+struct isLayout {
+	isLayout(string const name) : name_(name) {}
+	bool operator()(LyXLayout_ptr const & ptr) {
+		return ptr.get() && ptr->latexname() == name_;
+	}
+private:
+	string const name_;
+};
+
+
+LyXLayout_ptr findLayout(LyXTextClass const & textclass,
+			 string const & name) 
+{
+	LyXTextClass::const_iterator it  = textclass.begin();
+	LyXTextClass::const_iterator end = textclass.end();
+	it = std::find_if(it, end, isLayout(name));
+	return (it == end) ? LyXLayout_ptr() : *it;
+}
+
+
+void output_layout(ostream & os, LyXLayout_ptr const & layout_ptr,
+		  Parser & p, bool outer, LyXTextClass const & textclass)
+{
+	string name = layout_ptr->name();
+	os << "\n\n\\layout " << name << "\n\n";
+	if (layout_ptr->optionalargs > 0) {
+		string opt = p.getOpt();
+		if (opt.size()) {
+			begin_inset(os, "OptArg\n");
+			os << "collapsed true\n\n\\layout Standard\n\n" << opt;
+			end_inset(os);
+		}
+	}
+	parse_text(p, os, FLAG_ITEM, outer, textclass);
+	os << "\n\n\\layout Standard\n\n";
+}
+
 } // anonymous namespace
 
 
@@ -142,6 +176,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		LyXTextClass const & textclass)
 {
 	while (p.good()) {
+		LyXLayout_ptr layout_ptr;
 		Token const & t = p.get_token();
 
 #ifdef FILEDEBUG
@@ -372,21 +407,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			//cerr << "next token: '" << p.next_token().cs() << "'\n";
 		}
 
-		else if (is_known(t.cs(), known_headings)) {
-			string name = t.cs();
-			if (p.next_token().asInput() == "*") {
-				p.get_token();
-				name += "*";
-			}
-			os << "\n\n\\layout " << cap(name) << "\n\n";
-			string opt = p.getOpt();
-			if (opt.size()) {
-				begin_inset(os, "OptArg\n");
-				os << "collapsed true\n\n\\layout Standard\n\n" << opt;
-				end_inset(os);
-			}
-			parse_text(p, os, FLAG_ITEM, outer, textclass);
-			os << "\n\n\\layout Standard\n\n";
+		// Must attempt to parse "Section*" before "Section".
+		else if ((p.next_token().asInput() == "*") &&
+			 // The single '=' is meant here.
+			 (layout_ptr = findLayout(textclass,
+						  t.cs() + '*')).get() &&
+			 layout_ptr->isCommand()) {
+			p.get_token();
+			output_layout(os, layout_ptr, p, outer, textclass);
+		}
+
+		// The single '=' is meant here.
+		else if ((layout_ptr = findLayout(textclass, t.cs())).get() &&
+			 layout_ptr->isCommand()) {
+			output_layout(os, layout_ptr, p, outer, textclass);
 		}
 
 		else if (t.cs() == "includegraphics") {
@@ -600,18 +634,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "\\")
 			os << "\n\\newline\n";
 	
-		else if (t.cs() == "lyxrightaddress") {
-			os << "\n\\layout Right Address\n";
-			parse_text(p, os, FLAG_ITEM, outer, textclass);
-			os << "\n\\layout Standard\n";
-		}
-
-		else if (t.cs() == "lyxaddress") {
-			os << "\n\\layout Address\n";
-			parse_text(p, os, FLAG_ITEM, outer, textclass);
-			os << "\n\\layout Standard\n";
-		}
-
 		else if (t.cs() == "input")
 			handle_ert(os, "\\input{" + p.verbatim_item() + "}\n");
 
