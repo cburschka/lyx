@@ -932,7 +932,7 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		getLyXText(bv)->updateInset(bv, inset);
 		the_locking_inset = 0;
 		if (lr)
-			moveRight(bv, false);
+			moveRightIntern(bv, true, false);
 		old_par = 0; // force layout setting
 		if (scroll())
 			scroll(bv, 0.0F);
@@ -1872,7 +1872,7 @@ UpdatableInset::RESULT
 InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 {
 	if (getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
-		return moveLeftIntern(bv, true, activate_inset, selecting);
+		return moveLeftIntern(bv, false, activate_inset, selecting);
 	else
 		return moveRightIntern(bv, true, activate_inset, selecting);
 }
@@ -1882,7 +1882,7 @@ UpdatableInset::RESULT
 InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 {
 	if (getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
-		return moveRightIntern(bv, false, activate_inset, selecting);
+		return moveRightIntern(bv, true, activate_inset, selecting);
 	else
 		return moveLeftIntern(bv, false, activate_inset, selecting);
 }

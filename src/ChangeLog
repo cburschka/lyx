@@ -1,3 +1,8 @@
+2002-07-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyxfunc.C (dispatch): Correct cursor behaviour when exiting
+	an inset in a RTL paragraph.
+
 2002-07-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* MenuBackend.C (expand): add numeric shortcuts to document menu

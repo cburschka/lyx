@@ -585,10 +585,17 @@ void InsetTabular::edit(BufferView * bv, bool front)
 	the_locking_inset = 0;
 	inset_x = 0;
 	inset_y = 0;
-	if (front)
-		actcell = 0;
-	else
-		actcell = tabular->GetNumberOfCells() - 1;
+	if (front) {
+		if (isRightToLeft(bv))
+			actcell = tabular->GetLastCellInRow(0);
+		else
+			actcell = 0;
+	} else {
+		if (isRightToLeft(bv))
+			actcell = tabular->GetFirstCellInRow(tabular->rows()-1);
+		else
+			actcell = tabular->GetNumberOfCells() - 1;
+	}
 	clearSelection();
 	resetPos(bv);
 	bv->fitCursor();
