@@ -168,8 +168,10 @@ public:
 	virtual bool isGrid() const { return false; }
 	/// identifies ArrayInsets
 	virtual bool isArray() const { return false; }
-	/// identifies Charinsets
+	/// identifies CharInsets
 	virtual MathCharInset const * asCharInset() const { return 0; }
+	/// identifies ScriptInsets
+	virtual MathScriptInset const * asScriptInset() const { return 0; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
 	///

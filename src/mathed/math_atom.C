@@ -42,6 +42,13 @@ MathAtom::MathAtom(MathInset * p)
 }
 
 
+MathAtom::MathAtom(MathInset * p, MathScriptInset * up, MathScriptInset * down)
+	: nucleus_(p), limits_(0), xo_(0), yo_(0)
+{
+	script_[0] = down;
+	script_[1] = up;
+}
+
 
 MathAtom::MathAtom(MathAtom const & p)
 {
@@ -199,6 +206,18 @@ MathScriptInset * MathAtom::up() const
 
 
 MathScriptInset * MathAtom::down() const
+{
+	return script_[0];
+}
+
+
+MathScriptInset * & MathAtom::up()
+{
+	return script_[1];
+}
+
+
+MathScriptInset * & MathAtom::down()
 {
 	return script_[0];
 }

@@ -38,6 +38,8 @@ public:
 	MathAtom(MathAtom const &);
 	///
 	explicit MathAtom(MathInset * p);
+	///
+	MathAtom(MathInset * p, MathScriptInset * up, MathScriptInset * down);
 	/// 
 	virtual ~MathAtom(); 
 	///
@@ -98,6 +100,10 @@ public:
 	MathScriptInset * up() const;
 	/// returns subscript
 	MathScriptInset * down() const;
+	/// returns superscript
+	MathScriptInset * & up();
+	/// returns subscript
+	MathScriptInset * & down();
 	///
 	MathInset * nucleus() const { return nucleus_; }
 	///

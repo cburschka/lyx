@@ -15,7 +15,7 @@
 class MathScriptInset : public MathNestInset {
 public:
 	///
-	MathScriptInset(bool up);
+	explicit MathScriptInset(bool up);
 	///
 	MathInset * clone() const;
 	///
@@ -24,6 +24,12 @@ public:
 	void metrics(MathStyles st) const;
 	///
 	void draw(Painter &, int x, int y) const;
+	///
+	MathScriptInset const * asScriptInset() const;
+	///
+	bool up() const { return up_; }
+	///
+	bool down() const { return !up_; }
 private:
 	///
 	bool up_;

@@ -146,8 +146,11 @@ bool MathCursor::popLeft()
 {
 	if (Cursor_.size() <= 1)
 		return false;
+	if (nextAtom())
+		nextAtom()->removeEmptyScripts();
 	Cursor_.pop_back();
-	//array().at(pos())->removeEmptyScripts();
+	if (nextAtom())
+		nextAtom()->removeEmptyScripts();
 	return true;
 }
 
@@ -156,8 +159,11 @@ bool MathCursor::popRight()
 {
 	if (Cursor_.size() <= 1)
 		return false;
+	if (nextAtom())
+		nextAtom()->removeEmptyScripts();
 	Cursor_.pop_back();
-	//array().at(pos())->removeEmptyScripts();
+	if (nextAtom())
+		nextAtom()->removeEmptyScripts();
 	posRight();
 	return true;
 }
@@ -469,7 +475,7 @@ void MathCursor::insert(MathArray const & ar)
 void MathCursor::backspace()
 {
 	if (posLeft()) {
-		plainErase();
+		erase();
 		return;
 	}
 
@@ -503,9 +509,41 @@ void MathCursor::erase()
 		return;
 	}
 
-	if (pos() < size())
-		plainErase();
+	if (pos() == size())
+		return;
 
+	// delete nucleus, keep scripts if possible
+	MathAtom * p = prevAtom();
+	MathAtom * n = nextAtom();
+	if (pos() > 0) {
+		bool need_parans = (p->up() && n->up()) || (p->down() && n->down());
+		if (need_parans) {
+			// need empty block
+			insert('{', LM_TC_TEX);
+			insert('}', LM_TC_TEX);
+			p = prevAtom();
+			n = nextAtom();
+		}
+		// move indices to the left
+		if (n->up())
+			swap(p->up(), n->up());
+		if (n->down())
+			swap(p->down(), n->down());
+		plainErase();
+		return;
+	}
+
+	// pos == 0 now
+	if (n->up() || n->down()) {
+		insert('{', LM_TC_TEX);
+		insert('}', LM_TC_TEX);
+		p = prevAtom();
+		n = nextAtom();
+		swap(p->up(), n->up());
+		swap(p->down(), n->down());
+	}
+
+	plainErase();
 	dump("erase 2");
 }
 
@@ -1119,6 +1157,15 @@ bool MathCursor::goUp()
 	if (par()->idxUp(idx(), pos()))
 		return true;
 
+	// leave subscript to the nearest side	
+	if (par()->asScriptInset() && par()->asScriptInset()->down()) {
+		if (pos() <= size() / 2)
+			popLeft();
+		else
+			popRight();		
+		return true;
+	}
+
 	// if not, apply brute force.
 	int x0;
 	int y0;
@@ -1140,6 +1187,15 @@ bool MathCursor::goDown()
 	// first ask the inset if it knows better then we
 	if (par()->idxDown(idx(), pos()))
 		return true;
+
+	// leave superscript to the nearest side	
+	if (par()->asScriptInset() && par()->asScriptInset()->up()) {
+		if (pos() <= size() / 2)
+			popLeft();
+		else
+			popRight();		
+		return true;
+	}
 
 	// if not, apply brute force.
 	int x0;

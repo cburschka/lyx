@@ -20,6 +20,11 @@ MathInset * MathScriptInset::clone() const
 }
 
 
+MathScriptInset const * MathScriptInset::asScriptInset() const
+{
+	return this;
+}
+
 void MathScriptInset::write(std::ostream & os, bool fragile) const
 {
 	cell(0).write(os, fragile);
