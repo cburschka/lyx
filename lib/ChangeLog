@@ -1,3 +1,8 @@
+2002-07-30  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2ppm.sh: rename bbox.sed so that multiple runs
+	don't get confused.
+
 2002-07-24  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
 	* examples/fr_CV.lyx:               new file

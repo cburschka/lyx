@@ -50,7 +50,7 @@ DIR=`dirname $1`
 BASE=`basename $1 .tex`
 DVIFILE=${BASE}.dvi
 PSFILE=${BASE}.ps
-METRICS=${BASE}.metrics
+METRICSFILE=${BASE}.metrics
 
 # LaTeX -> DVI.
 cd ${DIR}
@@ -106,12 +106,12 @@ if [ ${STATUS} -ne 0 ]; then
 	BAIL_OUT
 fi
 
-# Attempt to generate a file ${METRICS} that contains only the tightpage
+# Attempt to generate a file ${METRICSFILE} that contains only the tightpage
 # bounding box info, extract from ${PSFILE}
 
 # 1. Create a file containing the sed instructions
-SEDSCRIPT=bbox.sed
-cat - > ${SEDSCRIPT} <<EOF
+SEDFILE=${BASE}.sed
+cat - > ${SEDFILE} <<EOF
 # Delete everything that's enclosed between %%BeginDocument and %%EndDocument
 /^\%\%BeginDocument/,/^\%\%EndDocument/d
 
@@ -134,8 +134,8 @@ d
 EOF
 
 # 2. Run sed!
-sed -f ${SEDSCRIPT} < ${PSFILE} > ${METRICS}
-rm -f ${SEDSCRIPT}
+sed -f ${SEDFILE} < ${PSFILE} > ${METRICSFILE}
+rm -f ${SEDFILE}
 
 # The ppm files have spurious (?! say some !) white space on the left and right
 # sides. If you want this removed set REMOVE_WS=1.
