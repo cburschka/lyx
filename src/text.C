@@ -528,12 +528,12 @@ int LyXText::leftMargin(par_type pit, pos_type pos) const
 
 		// Make a corresponding row. Need to call leftMargin()
 		// to check whether it is a sufficent paragraph.
-		if (newpar != pars_.size()
+		if (newpar != par_type(pars_.size())
 		    && pars_[newpar].layout()->isEnvironment()) {
 			x = leftMargin(newpar);
 		}
 
-		if (newpar != paragraphs().size()
+		if (newpar != par_type(paragraphs().size())
 		    && pars_[pit].layout() == tclass.defaultLayout()) {
 			if (pars_[newpar].params().noindent())
 				parindent.erase();
@@ -1001,7 +1001,7 @@ void LyXText::setHeightOfRow(par_type pit, Row & row)
 		}
 
 		prev = outerHook(pit, pars_);
-		if (prev != pars_.size()) {
+		if (prev != par_type(pars_.size())) {
 			maxasc += int(pars_[prev].layout()->parsep * dh);
 		} else if (pit != 0) {
 			if (pars_[pit - 1].getDepth() != 0 ||
@@ -1017,7 +1017,7 @@ void LyXText::setHeightOfRow(par_type pit, Row & row)
 		// a section, or between the items of a itemize or enumerate
 		// environment
 		par_type nextpit = pit + 1;
-		if (nextpit != pars_.size()) {
+		if (nextpit != par_type(pars_.size())) {
 			par_type cpit = pit;
 			double usual = 0;
 			double unusual = 0;
@@ -1747,7 +1747,7 @@ void LyXText::nextRow(par_type & pit, RowList::iterator & rit) const
 	++rit;
 	if (rit == pars_[pit].rows.end()) {
 		++pit;
-		if (pit == paragraphs().size())
+		if (pit == par_type(paragraphs().size()))
 			--pit;
 		else
 			rit = pars_[pit].rows.begin();
@@ -1868,7 +1868,8 @@ void LyXText::drawSelection(PainterInfo &, int, int) const
 
 bool LyXText::isLastRow(par_type pit, Row const & row) const
 {
-	return row.endpos() >= pars_[pit].size() && pit + 1 == paragraphs().size();
+	return row.endpos() >= pars_[pit].size()
+		&& pit + 1 == par_type(paragraphs().size());
 }
 
 
@@ -2199,7 +2200,7 @@ int LyXText::dist(int x, int y) const
 
 	if (x < xo_)
 		xx = xo_ - x;
-	else if (x > xo_ + width_)
+	else if (x > xo_ + int(width_))
 		xx = x - xo_ - width_;
 
 	if (y < yo_ - ascent())

@@ -238,7 +238,7 @@ void asciiParagraph(Buffer const & buf,
 		default:
 			word += c;
 			if (runparams.linelen > 0 &&
-				currlinelen + word.length() > runparams.linelen)
+			    currlinelen + word.length() > runparams.linelen)
 			{
 				os << "\n";
 				pair<int, string> p = addDepth(depth, ltype_depth);

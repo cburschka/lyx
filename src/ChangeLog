@@ -1,5 +1,24 @@
 2004-03-26  Angus Leeming  <leeming@lyx.org>
 
+	* src/BufferView_pimpl.C:
+	* src/CutAndPaste.C:
+	* src/buffer.C:
+	* src/iterators.C:
+	* src/output_plaintext.C:
+	* src/outputparams.h:
+	* src/paragraph_funcs.C:
+	* src/rowpainter.C:
+	* src/text.C:
+	* src/text2.C:
+	* src/frontends/controllers/ControlErrorList.C:
+	* src/frontends/gtk/FileDialogPrivate.C:
+	* src/frontends/gtk/GPainter.C:
+	* src/frontends/gtk/GToolbar.C:
+	* src/frontends/qt2/QRef.C:
+	* src/mathed/math_scriptinset.C: squash compiler warnings.
+
+2004-03-26  Angus Leeming  <leeming@lyx.org>
+
 	* ispell.C (LaunchIspell::start):
 	* lyx_cb.C (AutoSaveBuffer::start):
 	invoke run(DontWait) rather than runNonBlocking().

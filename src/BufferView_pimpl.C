@@ -713,12 +713,14 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 }
 
 
-InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
+InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code /*code*/)
 {
 #warning Does not work for mathed
 	// Ok, this is a little bit too brute force but it
 	// should work for now. Better infrastructure is coming. (Lgb)
 
+#warning FIXME
+#if 0
 	Buffer * buf = bv_->buffer();
 	Buffer::inset_iterator beg = buf->inset_iterator_begin();
 	Buffer::inset_iterator end = buf->inset_iterator_end();
@@ -726,8 +728,6 @@ InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
 	bool cursor_par_seen = false;
 
 	LCursor & cur = bv_->cursor();
-#warning FIXME
-#if 0
 	LyXText * = bv_->getLyXText();
 	ParagraphList::iterator pit = text->getPar(cur.par());
 

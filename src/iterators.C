@@ -36,7 +36,7 @@ using boost::next;
 ParPosition::ParPosition(par_type p, ParagraphList const & pl)
 	: pit(p), plist(&pl)
 {
-	if (p != pl.size())
+	if (p != par_type(pl.size()))
 		it.reset(const_cast<InsetList&>(pl[p].insetlist).begin());
 }
 
@@ -117,7 +117,8 @@ ParIterator & ParIterator::operator++()
 		}
 
 		// Try to go to the next paragarph
-		if (p.pit + 1 != p.plist->size() || positions_.size() == 1) {
+		if (p.pit + 1 != par_type(p.plist->size()) ||
+		    positions_.size() == 1) {
 			++p.pit;
 			p.index.reset();
 			p.it.reset();
@@ -291,7 +292,8 @@ ParConstIterator & ParConstIterator::operator++()
 		}
 
 		// Try to go to the next paragarph
-		if (p.pit + 1 != p.plist->size() || positions_.size() == 1) {
+		if (p.pit + 1 != par_type(p.plist->size()) ||
+		    positions_.size() == 1) {
 			++p.pit;
 			p.index.reset();
 			p.it.reset();

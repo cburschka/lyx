@@ -62,8 +62,7 @@ void GPainter::setForeground(Glib::RefPtr<Gdk::GC> gc, LColor_color clr)
 void GPainter::setLineParam(Glib::RefPtr<Gdk::GC> gc,
 			    line_style ls, line_width lw)
 {
-	int width;
-	Gdk::LineStyle style;
+	int width = 0;
 	switch (lw) {
 	case Painter::line_thin:
 		width = 0;
@@ -73,6 +72,7 @@ void GPainter::setLineParam(Glib::RefPtr<Gdk::GC> gc,
 		break;
 	}
 
+	Gdk::LineStyle style = Gdk::LINE_SOLID;
 	switch (ls) {
 	case Painter::line_solid:
 		style = Gdk::LINE_SOLID;

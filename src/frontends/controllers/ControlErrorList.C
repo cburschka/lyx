@@ -72,6 +72,7 @@ void ControlErrorList::goTo(int item)
 
 	// Now make the selection.
 #warning FIXME (goto error)
+#warning This should be implemented using an LFUN. (Angus)
 #if 0
 	PosIterator const pos(pit, start);
 	kernel().bufferview()->putSelectionAt(pos, range, false);

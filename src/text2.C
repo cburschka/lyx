@@ -195,10 +195,10 @@ void LyXText::setCharFont(par_type pit, pos_type pos, LyXFont const & fnt)
 	if (pars_[pit].getDepth()) {
 		par_type tp = pit;
 		while (!layoutfont.resolved() &&
-		       tp != paragraphs().size() &&
+		       tp != par_type(paragraphs().size()) &&
 		       pars_[tp].getDepth()) {
 			tp = outerHook(tp, paragraphs());
-			if (tp != paragraphs().size())
+			if (tp != par_type(paragraphs().size()))
 				layoutfont.realize(pars_[tp].layout()->font);
 		}
 	}

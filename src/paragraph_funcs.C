@@ -250,12 +250,12 @@ int getEndLabel(par_type p, ParagraphList const & pars)
 {
 	par_type pit = p;
 	Paragraph::depth_type par_depth = pars[p].getDepth();
-	while (pit != pars.size()) {
+	while (pit != par_type(pars.size())) {
 		LyXLayout_ptr const & layout = pars[pit].layout();
 		int const endlabeltype = layout->endlabeltype;
 
 		if (endlabeltype != END_LABEL_NO_LABEL) {
-			if (p + 1 == pars.size())
+			if (p + 1 == par_type(pars.size()))
 				return endlabeltype;
 
 			Paragraph::depth_type const next_depth =
@@ -268,7 +268,7 @@ int getEndLabel(par_type p, ParagraphList const & pars)
 		if (par_depth == 0)
 			break;
 		pit = outerHook(pit, pars);
-		if (pit != pars.size())
+		if (pit != par_type(pars.size()))
 			par_depth = pars[pit].getDepth();
 	}
 	return END_LABEL_NO_LABEL;
@@ -281,9 +281,11 @@ LyXFont const outerFont(par_type pit, ParagraphList const & pars)
 	LyXFont tmpfont(LyXFont::ALL_INHERIT);
 
 	// Resolve against environment font information
-	while (pit != pars.size() && par_depth && !tmpfont.resolved()) {
+	while (pit != par_type(pars.size())
+	       && par_depth
+	       && !tmpfont.resolved()) {
 		pit = outerHook(pit, pars);
-		if (pit != pars.size()) {
+		if (pit != par_type(pars.size())) {
 			tmpfont.realize(pars[pit].layout()->font);
 			par_depth = pars[pit].getDepth();
 		}

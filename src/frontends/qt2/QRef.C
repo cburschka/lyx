@@ -184,7 +184,7 @@ void QRef::redoRefs()
 	
 	// restore the last selection for new insets
 	if (tmp.isEmpty() && lastref != -1 
-	&& lastref < dialog_->refsLB->count())
+	    && lastref < int(dialog_->refsLB->count()))
 		dialog_->refsLB->setCurrentItem(lastref);
 	else	
 		for (unsigned int i = 0; i < dialog_->refsLB->count(); ++i) {

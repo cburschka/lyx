@@ -852,7 +852,7 @@ int paintPars(BufferView const & bv, LyXText const & text,
 	y -= bv.top_y();
 
 	ParagraphList & pars = text.paragraphs();
-	for ( ; pit != pars.size(); ++pit) {
+	for ( ; pit != par_type(pars.size()); ++pit) {
 		RowList::iterator row = pars[pit].rows.begin();
 		RowList::iterator rend = pars[pit].rows.end();
 

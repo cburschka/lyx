@@ -18,8 +18,8 @@ using std::string;
 
 FileDialog::Private::Private(string const & title,
 			     kb_action action,
-			     FileDialog::Button b1,
-			     FileDialog::Button b2) :
+			     FileDialog::Button /*b1*/,
+			     FileDialog::Button /*b2*/) :
 	action_(action)
 {
 	fileSelection_.set_title(title);

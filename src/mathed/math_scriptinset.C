@@ -341,6 +341,8 @@ InsetBase::idx_type MathScriptInset::idxOfScript(bool up) const
 	if (nargs() == 3)
 		return up ? 1 : 2;
 	BOOST_ASSERT(false);
+	// Silence compiler
+	return 0;
 }
 
 

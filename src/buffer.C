@@ -1302,7 +1302,7 @@ bool Buffer::isMultiLingual() const
 
 void Buffer::inset_iterator::setParagraph()
 {
-	while (pit != pars_->size()) {
+	while (pit != par_type(pars_->size())) {
 		it = (*pars_)[pit].insetlist.begin();
 		if (it != (*pars_)[pit].insetlist.end())
 			return;
@@ -1522,7 +1522,7 @@ Buffer::inset_iterator Buffer::inset_const_iterator_end() const
 
 Buffer::inset_iterator & Buffer::inset_iterator::operator++()
 {
-	if (pit != pars_->size()) {
+	if (pit != par_type(pars_->size())) {
 		++it;
 		if (it == (*pars_)[pit].insetlist.end()) {
 			++pit;

@@ -139,10 +139,12 @@ PitPosPair eraseSelection(BufferParams const & params, ParagraphList & pars,
 	par_type startpit, par_type endpit,
 	int startpos, int endpos, bool doclear)
 {
-	if (startpit == pars.size() || (startpos > pars[startpit].size()))
+	if (startpit == par_type(pars.size()) ||
+	    (startpos > pars[startpit].size()))
 		return PitPosPair(endpit, endpos);
 
-	if (endpit == pars.size() || startpit == endpit) {
+	if (endpit == par_type(pars.size()) ||
+	    startpit == endpit) {
 		endpos -= pars[startpit].erase(startpos, endpos);
 		return PitPosPair(endpit, endpos);
 	}
@@ -162,7 +164,7 @@ PitPosPair eraseSelection(BufferParams const & params, ParagraphList & pars,
 
 	par_type pit = startpit + 1;
 
-	while (pit != endpit && pit != pars.size()) {
+	while (pit != endpit && pit != par_type(pars.size())) {
 		par_type const next = pit + 1;
 		// "erase" the contents of the par
 		pars[pit].erase(0, pars[pit].size());
@@ -183,7 +185,7 @@ PitPosPair eraseSelection(BufferParams const & params, ParagraphList & pars,
 	}
 #endif
 
-	if (startpit + 1 == pars.size())
+	if (startpit + 1 == par_type(pars.size()))
 		return PitPosPair(endpit, endpos);
 
 	if (doclear) {
@@ -324,7 +326,7 @@ pasteSelection(Buffer const & buffer, ParagraphList & pars,
 
 	// Split the paragraph for inserting the buf if necessary.
 	bool did_split = false;
-	if (pars[pit].size() || pit + 1 == pars.size()) {
+	if (pars[pit].size() || pit + 1 == par_type(pars.size())) {
 		breakParagraphConservative(buffer.params(), pars, pit, pos);
 		did_split = true;
 	}
@@ -344,7 +346,7 @@ pasteSelection(Buffer const & buffer, ParagraphList & pars,
 	pos = pars[last_paste].size();
 
 	// Maybe some pasting.
-	if (did_split && last_paste + 1 != pars.size()) {
+	if (did_split && last_paste + 1 != par_type(pars.size())) {
 		if (pars[last_paste + 1].hasSameLayout(pars[last_paste])) {
 			mergeParagraph(buffer.params(), pars, last_paste);
 		} else if (pars[last_paste + 1].empty()) {

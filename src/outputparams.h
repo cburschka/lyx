@@ -12,6 +12,8 @@
 #ifndef OUTPUTPARAMS_H
 #define OUTPUTPARAMS_H
 
+#include "support/types.h"
+
 struct OutputParams {
         enum FLAVOR {
                 LATEX,
@@ -58,7 +60,7 @@ struct OutputParams {
 
 	/** Line lenght to use with ascii export.
 	 */
-	int linelen;
+	lyx::size_type linelen;
 };
 
 #endif // LATEXRUNPARAMS_H
