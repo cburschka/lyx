@@ -1168,7 +1168,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "includegraphics") {
+			bool const clip = p.next_token().asInput() == "*";
+			if (clip)
+				p.get_token();
 			map<string, string> opts = split_map(p.getArg('[', ']'));
+			if (clip)
+				opts["clip"] = string();
 			string name = subst(p.verbatim_item(), "\\lyxdot ", ".");
 
 			string const path = getMasterFilePath();
