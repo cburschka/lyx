@@ -1,3 +1,10 @@
+2005-02-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* relyx_configure.in:
+	* relyx_configure.ac: use AC_CANONICAL_TARGET
+
+	* lyxinclude.m4 (LYX_USE_PACKAGING): set libdir correctly
+
 2005-02-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.in:

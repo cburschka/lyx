@@ -126,10 +126,12 @@ AC_MSG_RESULT($lyx_use_packaging)
 case $lyx_use_packaging in 
    macosx) default_prefix="/Applications/LyX.app"
 	   bindir='${prefix}/Contents/MacOS'
+	   libdir='${prefix}/Contents/Resources'
 	   datadir='${prefix}/Contents/Resources'
 	   mandir='${prefix}/Contents/Resources/man' ;;
   windows) default_prefix="C:/Program Files/LyX"
 	   bindir='${prefix}/bin'
+	   libdir='${prefix}/Resources'
 	   datadir='${prefix}/Resources'
 	   mandir='${prefix}/Resources/man' ;;
     posix) default_prefix=$ac_default_prefix ;;

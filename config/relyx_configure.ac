@@ -8,6 +8,7 @@ dnl PACKAGE=reLyX
 dnl Do this to install in $datadir/lyx/reLyX instead of $datadir/reLyX/reLyX
 
 AM_MAINTAINER_MODE
+AC_CANONICAL_TARGET
 
 AC_ARG_WITH(version-suffix,
   [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
