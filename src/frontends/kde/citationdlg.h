@@ -6,102 +6,71 @@
  * \author John Levon
  */
 
-#ifndef CITATIONDLG_H
-#define CITATIONDLG_H
+#ifndef CITATIONDIALOG_H
+#define CITATIONDIALOG_H
 
-#include <config.h>
-#include <gettext.h>
+#include "FormCitation.h" 
+#include "dlg/citationdlgdata.h"
+#include "controllers/ButtonPolicies.h" 
 
-// to connect apply() and hide()
-#include "FormCitation.h"
+class CitationDialog : public CitationDialogData
+{
+	Q_OBJECT
 
-#include <qdialog.h> 
-#include <qlistbox.h>
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qtooltip.h>
-#include <qlineedit.h>
-#include <qmultilinedit.h>
-#include <qpushbutton.h>
-
-class CitationDialog : public QDialog {
-   Q_OBJECT
 public:
-	CitationDialog(FormCitation *form, QWidget *parent=0, char const * name=0,
-			    bool modal=false, WFlags f=0);
-	~CitationDialog();
+	CitationDialog(FormCitation * form, QWidget * parent = 0, char const * name = 0);
 
-	// widgets
+private slots:
+	virtual void clicked_ok() { form_->OKButton(); };
+	virtual void clicked_apply() { form_->ApplyButton(); };
+	virtual void clicked_restore() { form_->RestoreButton(); form_->updateButtons(); };
+	virtual void clicked_cancel() { form_->CancelButton(); };
+ 
+	virtual void clicked_add() {
+		form_->bc().input(form_->add());
+		form_->updateButtons(); 
+	}
 
-	QLabel * labelchosen;
-	QListBox * chosen;
-	QLabel * labelkeys;
-	QListBox * keys;
-	QLabel * labelentry;
-	QMultiLineEdit * entry;
-	QLabel * labelafter;
-	QLineEdit * after;
-	QPushButton * add;
-	QPushButton * up;
-	QPushButton * down;
-	QPushButton * remove;
-	QPushButton * buttonOk;
-	QPushButton * buttonCancel;
+	virtual void clicked_up() {
+		form_->bc().input(form_->up());
+		form_->updateButtons(); 
+	}
 
-protected:
-	void closeEvent(QCloseEvent * e);
+	virtual void clicked_down() {
+		form_->bc().input(form_->down());
+		form_->updateButtons(); 
+	}
+
+	virtual void clicked_remove() {
+		form_->bc().input(form_->remove());
+		form_->updateButtons(); 
+	}
+
+	virtual void clicked_search();
+ 
+	virtual void select_available_adaptor(const char * key) {
+		form_->bc().input(form_->select_key(key));
+		form_->updateButtons(); 
+	}
+
+	virtual void highlight_available_adaptor(const char * key) {
+		form_->highlight_key(key);
+	}
+
+	virtual void highlight_chosen_adaptor(const char * key) {
+		form_->highlight_chosen(key);
+	}
+
+	virtual void after_changed(const char *) {
+		form_->bc().valid(true);
+		form_->updateButtons(); 
+	}
+
+protected slots:
+	virtual void closeEvent(QCloseEvent *e);
 
 private:
 	FormCitation * form_;
 
-	// layouts
-
-	QHBoxLayout * topLayout;
-	QVBoxLayout * layout;
-	QHBoxLayout * browserLayout;
-	QVBoxLayout * chosenLayout;
-	QVBoxLayout * iconLayout;
-	QVBoxLayout * keysLayout;
-	QVBoxLayout * entryLayout;
-	QHBoxLayout * afterLayout;
-	QHBoxLayout * buttonLayout;
-
-private slots:
-	void apply_adaptor(void) {
-		form_->OKButton();
-	}
-
-	void close_adaptor(void) {
-		form_->CancelButton();
-	}
-
-	void add_adaptor(void) {
-		form_->bc().valid(form_->add());
-	}
-
-	void up_adaptor(void) {
-		form_->bc().valid(form_->up());
-	}
-
-	void down_adaptor(void) {
-		form_->bc().valid(form_->down());
-	}
-
-	void remove_adaptor(void) {
-		form_->bc().valid(form_->remove());
-	}
-
-	void select_key_adaptor(const char * key) {
-		form_->bc().valid(form_->select_key(key));
-	}
-
-	void highlight_key_adaptor(const char * key) {
-		form_->highlight_key(key);
-	}
-
-	void highlight_chosen_adaptor(const char * key) {
-		form_->highlight_chosen(key);
-	}
 };
-
-#endif // CITATIONDLG_H
+#endif // CITATIONDIALOG_H

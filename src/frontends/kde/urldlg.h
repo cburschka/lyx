@@ -40,8 +40,8 @@ public:
 	QPushButton * buttonOk;
 	QPushButton * buttonCancel;
 
-protected:
-	void closeEvent(QCloseEvent * e);
+protected slots:
+	virtual void closeEvent(QCloseEvent * e);
  
 private:
 	FormUrl * form_;

@@ -18,8 +18,6 @@
 #include "lyxrc.h" 
 #include "PrinterParams.h"
  
-// FIXME: closeEvent 
- 
 class PrintDialog : public PrintDialogData
 {
 	Q_OBJECT
@@ -130,6 +128,8 @@ protected slots:
 		form_->OKButton();
 	}
 
+	virtual void closeEvent(QCloseEvent * e);
+ 
 	/// open up the browser to select ps file 
 	void clickedBrowse();
 	

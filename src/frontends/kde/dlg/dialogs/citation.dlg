@@ -1,0 +1,600 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {}
+	ClassSource {}
+	ClassName {}
+	DataHeader {citationdlgdata.h}
+	DataSource {citationdlgdata.C}
+	DataName {CitationDialogData}
+	WindowBaseClass {QDialog}
+	IsModal {false}
+	UseGetText {true}
+	WindowFlags {53248}
+}
+WidgetLayout {
+InitialPos {-1 -1}
+Size {580 440}
+MinSize {200 65}
+MaxSize {32767 65}
+Grid {5}
+
+PushButton {
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
+		Text {&OK}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {51 379 47 56}
+		Name {button_ok}
+		Variable {button_ok}
+		Signal {[Protected]  clicked --> clicked_ok  ()}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+PushButton {
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {false}
+		IsMenuButton {false}
+		Text {&Cancel}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {483 379 46 56}
+		Name {button_cancel}
+		Variable {button_cancel}
+		Signal {[Protected]  clicked --> clicked_cancel  ()}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+PushButton {
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
+		Text {&Apply}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {195 379 46 56}
+		Name {button_apply}
+		Variable {button_apply}
+		Signal {[Protected]  clicked --> clicked_apply  ()}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+PushButton {
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
+		Text {&Restore}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {339 379 46 56}
+		Name {button_restore}
+		Variable {button_restore}
+		Signal {[Protected]  clicked --> clicked_restore  ()}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+ListBox {
+		DragSelect {true}
+		AutoScroll {true}
+		ScrollBar {false}
+		AutoScrollBar {true}
+		BottomScrollBar {false}
+		AutoBottomScrollBar {true}
+		SmoothScrolling {true}
+		MultiSelection {false}
+		AutoUpdate {true}
+		Style {51}
+		LineWidth {2}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {79 5 209 233}
+		Name {list_chosen}
+		Variable {list_chosen}
+		Signal {[Protected]  highlighted --> highlight_chosen_adaptor  (const char*)}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {SameFont}
+		PalettePropagation {SameFont}
+}
+ListBox {
+		DragSelect {true}
+		AutoScroll {true}
+		ScrollBar {false}
+		AutoScrollBar {true}
+		BottomScrollBar {false}
+		AutoBottomScrollBar {true}
+		SmoothScrolling {true}
+		MultiSelection {false}
+		AutoUpdate {true}
+		Style {51}
+		LineWidth {2}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {367 5 208 233}
+		Name {list_available}
+		Variable {list_available}
+		Signal {[Protected]  highlighted --> highlight_available_adaptor  (const char*)}
+		Signal {[Protected]  selected --> select_available_adaptor  (const char*)}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {SameFont}
+		PalettePropagation {SameFont}
+}
+PushButton {
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
+		Text {&Down}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {5 86 69 76}
+		Name {button_down}
+		Variable {button_down}
+		Signal {[Protected]  clicked --> clicked_down  ()}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+PushButton {
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
+		Text {&Remove}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {293 66 69 56}
+		Name {button_remove}
+		Variable {button_remove}
+		Signal {[Protected]  clicked --> clicked_remove  ()}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+PushButton {
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
+		Text {&Up}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {5 5 69 76}
+		Name {button_up}
+		Variable {button_up}
+		Signal {[Protected]  clicked --> clicked_up  ()}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+PushButton {
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
+		Text {&Add}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {293 5 69 56}
+		Name {button_add}
+		Variable {button_add}
+		Signal {[Protected]  clicked --> clicked_add  ()}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Text after : }
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {5 271 283 15}
+		Name {label_after}
+		MinimumSize {0 15}
+		MaximumSize {32767 15}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+LineEdit {
+		Text {}
+		EchoMode {Normal}
+		MaxLength {32767}
+		FrameShown {true}
+		Rect {293 243 282 71}
+		Name {line_after}
+		Variable {line_after}
+		Signal {[Protected]  textChanged --> after_changed  (const char*)}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+MultiLineEdit {
+		Line {}
+		ReadOnly {true}
+		OverwriteMode {false}
+		AutoUpdate {true}
+		Style {51}
+		LineWidth {2}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {5 319 570 55}
+		Name {line_details}
+		Variable {line_details}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {SameFont}
+		PalettePropagation {SameFont}
+}
+PushButton {
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
+		Text {&Search}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {293 127 69 55}
+		Name {button_search}
+		Variable {button_search}
+		Signal {[Protected]  clicked --> clicked_search  ()}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+
+Box_Layout-1{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Box_Layout-1.1{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {4}
+}
+Box_Layout-1.1.1{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.1.1.1{
+	Widget {button_up}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.1.1.2{
+	Widget {button_down}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Stretch-1.1.1.3{
+	Stretch {1}
+}
+Box_Layout-1.1.2{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {3}
+}
+Layout_Widget-1.1.2.1{
+	Widget {list_chosen}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Layout-1.1.3{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.1.3.1{
+	Widget {button_add}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.1.3.2{
+	Widget {button_remove}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.1.3.3{
+	Widget {button_search}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Stretch-1.1.3.4{
+	Stretch {1}
+}
+Box_Layout-1.1.4{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {3}
+}
+Layout_Widget-1.1.4.1{
+	Widget {list_available}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Layout-1.2{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.2.1{
+	Widget {label_after}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.2.2{
+	Widget {line_after}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Layout-1.3{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.3.1{
+	Widget {line_details}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Layout-1.4{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Box_Stretch-1.4.1{
+	Stretch {1}
+}
+Layout_Widget-1.4.2{
+	Widget {button_ok}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Stretch-1.4.3{
+	Stretch {2}
+}
+Layout_Widget-1.4.4{
+	Widget {button_apply}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Stretch-1.4.5{
+	Stretch {2}
+}
+Layout_Widget-1.4.6{
+	Widget {button_restore}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Stretch-1.4.7{
+	Stretch {2}
+}
+Layout_Widget-1.4.8{
+	Widget {button_cancel}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Stretch-1.4.9{
+	Stretch {1}
+}
+}

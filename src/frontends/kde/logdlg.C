@@ -40,3 +40,10 @@ void LogDialog::updatePressed()
 	// FIXME: hmm 
 	//form_->controller().setParams();
 }
+
+
+void LogDialog::closeEvent(QCloseEvent * e)
+{
+	form_->CancelButton();
+	e->accept();
+}

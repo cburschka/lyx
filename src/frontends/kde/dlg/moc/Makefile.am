@@ -5,7 +5,8 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 	${FRONTEND_INCLUDES} ${BOOST_INCLUDES}
 
-libkdedlgmoc_la_SOURCES = copyrightdlgdata_moc.C \
+libkdedlgmoc_la_SOURCES = citationdlgdata_moc.C \
+		copyrightdlgdata_moc.C \
 		docdlgdata_moc.C \
 		docsettingsdlgdata_moc.C \
 		docgeometrydlgdata_moc.C \
@@ -31,6 +32,8 @@ LIBS=
 ETAGS_ARGS = --lang=c++
 	$(BUILTSOURCES)
 
+citationdlgdata_moc.C: ../citationdlgdata.h
+	$(MOC) $< -o $@ 
 copyrightdlgdata_moc.C: ../copyrightdlgdata.h
 	$(MOC) $< -o $@
 docdlgdata_moc.C: ../docdlgdata.h

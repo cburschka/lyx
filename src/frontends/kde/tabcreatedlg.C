@@ -57,3 +57,10 @@ void TabularCreateDialog::clickedCancel()
 {
 	form_->CancelButton(); 
 }
+
+
+void TabularCreateDialog::closeEvent(QCloseEvent * e)
+{
+	form_->CancelButton();
+	e->accept();
+}

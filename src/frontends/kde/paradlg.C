@@ -28,10 +28,11 @@ ParaDialog::ParaDialog(FormParagraph * form, QWidget * parent, char const * name
 	setUpdatesEnabled(false);
 
 	generalpage = new ParaGeneralDialog(this, "generalpage");
-	extrapage = new ParaExtraDialog(this, "extrapage");
-	
 	tabstack->addTabPage(generalpage, _("&General"));
+#ifndef NO_PEXTRA
+	extrapage = new ParaExtraDialog(this, "extrapage");
 	tabstack->addTabPage(extrapage, _("&Extra"));
+#endif
 
 	setUpdatesEnabled(true);
 	update();
@@ -199,6 +200,7 @@ void ParaDialog::setBelowLength(float val, float plus, float minus,
 }
 
 
+#ifndef NO_PEXTRA
 void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string percent, int align,
 	bool hfill, bool startminipage, LyXParagraph::PEXTRA_TYPE type)
 {
@@ -271,6 +273,7 @@ void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string pe
 			break;
 	}
 }
+#endif // NO_PEXTRA 
 
 
 LyXGlueLength ParaDialog::getAboveLength() const
@@ -303,6 +306,7 @@ LyXGlueLength ParaDialog::getBelowLength() const
 }
 
 
+#ifndef NO_PEXTRA
 LyXLength ParaDialog::getExtraWidth() const
 {
 
@@ -342,3 +346,4 @@ string ParaDialog::getExtraWidthPercent() const
 		val = 0.0;
 	return tostr(val);
 }
+#endif // NO_PEXTRA

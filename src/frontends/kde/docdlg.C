@@ -20,6 +20,7 @@
 
 #include "dlg/helpers.h"
 
+#include "language.h"
 #include "gettext.h"
 #include "debug.h"
 

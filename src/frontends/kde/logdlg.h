@@ -14,8 +14,6 @@
  
 #include "dlg/logdlgdata.h"
 
-// FIXME: closeEvent
- 
 class FormLog;
  
 class LogDialog : public LogDialogData
@@ -29,8 +27,8 @@ public:
  
 protected slots:
 	virtual void closePressed();
- 
 	virtual void updatePressed();
+	virtual void closeEvent(QCloseEvent * e);
  
 private:
 	FormLog * form_;

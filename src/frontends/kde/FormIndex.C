@@ -26,7 +26,7 @@ void FormIndex::build()
 
 	// FIXME
  
-	//bc().setUndoAll(dialog_->buttonRestore);
+	//bc().setRestore(dialog_->buttonRestore);
 	bc().setOK(dialog_->button_ok);
 	//bc().setApply(dialog_->buttonApply); 
 	bc().setCancel(dialog_->button_cancel);

@@ -38,7 +38,9 @@ public:
 	void setSpace(VSpace::vspace_kind, VSpace::vspace_kind, bool, bool);
 	void setAboveLength(float, float, float, LyXGlueLength::UNIT, LyXGlueLength::UNIT, LyXGlueLength::UNIT);
 	void setBelowLength(float, float, float, LyXGlueLength::UNIT, LyXGlueLength::UNIT, LyXGlueLength::UNIT);
+#ifndef NO_PEXTRA 
 	void setExtra(float, LyXGlueLength::UNIT, const string, int, bool, bool, LyXParagraph::PEXTRA_TYPE);
+#endif 
 
 	char const * getLabelWidth() const {
 		return generalpage->line_labelwidth->text();
@@ -93,6 +95,7 @@ public:
 	LyXGlueLength getAboveLength() const;
 
 	LyXGlueLength getBelowLength() const;
+#ifndef NO_PEXTRA
 	LyXLength getExtraWidth() const;
 
 	string getExtraWidthPercent() const;
@@ -122,6 +125,8 @@ public:
 	bool getStartNewMinipage() const {
 		return extrapage->check_startnewminipage->isChecked();
 	}
+#endif
+ 
 protected:
 	void closeEvent(QCloseEvent * e);
 
@@ -130,8 +135,10 @@ private:
 
 	/// the general tab page
 	ParaGeneralDialog * generalpage;
+#ifndef NO_PEXTRA 
 	/// the extra options tab page
 	ParaExtraDialog * extrapage;
+#endif
  
 	VSpace::vspace_kind getSpaceKind(int val) const {
 		switch (val) {

@@ -27,3 +27,10 @@ void CopyrightDialog::clickedOK()
 {
 	form_->OKButton();
 }
+
+
+void CopyrightDialog::closeEvent(QCloseEvent * e)
+{
+	form_->CancelButton();
+	e->accept();
+}

@@ -11,7 +11,6 @@
 
 #include "dlg/copyrightdlgdata.h"
 
-// FIXME: closeEvent 
 class FormCopyright;
  
 class CopyrightDialog : public CopyrightDialogData
@@ -26,6 +25,7 @@ public:
 protected slots:
 
 	virtual void clickedOK();
+	virtual void closeEvent(QCloseEvent * e);
 
 private:
 	FormCopyright * form_;

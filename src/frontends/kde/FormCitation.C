@@ -15,6 +15,7 @@
 #include "ControlCitation.h"
 #include "citationdlg.h"
 #include "gettext.h"
+#include "biblio.h" 
 #include "support/lstrings.h"
 #include "helper_funcs.h" 
 
@@ -33,7 +34,7 @@ void FormCitation::apply()
 {
 	controller().params().setCmdName("cite");
 	controller().params().setContents(getStringFromVector(chosenkeys));
-	controller().params().setOptions(dialog_->after->text());
+	controller().params().setOptions(dialog_->line_after->text());
 }
 
 
@@ -49,33 +50,29 @@ void FormCitation::hide()
 
 void FormCitation::build()
 {
-	dialog_.reset(new CitationDialog(this, 0, "Citation", false));
+	dialog_.reset(new CitationDialog(this, 0, _("Citation")));
 
-	// FIXME: apply, restore buttons
- 
         // Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->buttonOk);
-	//bc().setApply(dialog_->buttonApply);
-	bc().setCancel(dialog_->buttonCancel);
-	//bc().setUndoAll(dialog_->buttonRestore);
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setRestore(dialog_->button_restore);
+	bc().setCancel(dialog_->button_cancel);
 
-	bc().addReadOnly(dialog_->keys);
-	bc().addReadOnly(dialog_->chosen);
-	bc().addReadOnly(dialog_->after); 
-	bc().addReadOnly(dialog_->add);
-	bc().addReadOnly(dialog_->remove);
-	bc().addReadOnly(dialog_->up);
-	bc().addReadOnly(dialog_->down);
-	// FIXME: when implemented, add these
+	bc().addReadOnly(dialog_->list_available);
+	bc().addReadOnly(dialog_->list_chosen);
+	bc().addReadOnly(dialog_->line_after); 
+	bc().addReadOnly(dialog_->button_add);
+	bc().addReadOnly(dialog_->button_remove);
+	bc().addReadOnly(dialog_->button_up);
+	bc().addReadOnly(dialog_->button_down);
 	//bc().addReadOnly(dialog_->style);
-	//bc().addReadOnly(dialog_->before);
 }
 
 
 void FormCitation::update()
 {
-	/* FIXME
-	keys = controller().getBibkeys();
+	keys = biblio::getKeys(controller().bibkeysInfo());
+
 	updateAvailableList();
 	selectedKey.erase();
 
@@ -83,55 +80,37 @@ void FormCitation::update()
 	updateChosenList();
 	selectedChosenKey.erase();
 
-	dialog_->entry->setText("");
-	dialog_->after->setText(controller().params().getOptions().c_str());
+	dialog_->line_details->setText("");
+	dialog_->line_after->setText(controller().params().getOptions().c_str());
 
-	updateButtons();
-
-	if (controller().isReadonly()) {
-		dialog_->keys->setFocusPolicy(QWidget::NoFocus);
-		dialog_->chosen->setFocusPolicy(QWidget::NoFocus);
-		dialog_->after->setFocusPolicy(QWidget::NoFocus);
-	} else {
-		dialog_->keys->setFocusPolicy(QWidget::StrongFocus);
-		dialog_->chosen->setFocusPolicy(QWidget::StrongFocus);
-		dialog_->after->setFocusPolicy(QWidget::StrongFocus);
-	}
-	*/
+	if (!controller().isReadonly()) 
+		updateButtons();
 }
 
 
 void FormCitation::updateButtons()
 {
-	if (controller().isReadonly()) {
-		dialog_->add->setEnabled(false);
-		dialog_->remove->setEnabled(false);
-		dialog_->up->setEnabled(false);
-		dialog_->down->setEnabled(false);
-		return;
-	}
-
 	bool ischosenkey = !selectedChosenKey.empty();
 
 	vector<string>::const_iterator iter =
 		find(chosenkeys.begin(), chosenkeys.end(), selectedKey);
 
-	dialog_->add->setEnabled(!selectedKey.empty() && iter == chosenkeys.end());
-	dialog_->remove->setEnabled(ischosenkey);
-	dialog_->up->setEnabled(ischosenkey);
-	dialog_->down->setEnabled(ischosenkey);
+	dialog_->button_add->setEnabled(!selectedKey.empty() && iter == chosenkeys.end());
+	dialog_->button_remove->setEnabled(ischosenkey);
+	dialog_->button_up->setEnabled(ischosenkey);
+	dialog_->button_down->setEnabled(ischosenkey);
 }
 
 
 void FormCitation::updateChosenList()
 {
-	updateList(dialog_->chosen, chosenkeys);
+	updateList(dialog_->list_chosen, chosenkeys);
 }
 
 
 void FormCitation::updateAvailableList()
 {
-	updateList(dialog_->keys, keys);
+	updateList(dialog_->list_available, keys);
 }
 
 
@@ -142,7 +121,8 @@ void FormCitation::updateList(QListBox * lb, vector<string> const & keys)
 
 	for (vector<string>::const_iterator iter = keys.begin();
 		iter != keys.end(); ++iter) {
-		lb->insertItem(iter->c_str());
+		if (!iter->empty()) 
+			lb->insertItem(iter->c_str());
 	}
 	lb->setAutoUpdate(true);
 	lb->update();
@@ -151,10 +131,10 @@ void FormCitation::updateList(QListBox * lb, vector<string> const & keys)
 
 void FormCitation::selectChosen()
 {
-	for (unsigned int i=0; i < dialog_->chosen->count(); ++i) {
-		if (dialog_->chosen->text(i)==selectedChosenKey) {
-			dialog_->chosen->setSelected(i,true);
-			dialog_->chosen->setTopItem(i);
+	for (unsigned int i=0; i < dialog_->list_chosen->count(); ++i) {
+		if (dialog_->list_chosen->text(i)==selectedChosenKey) {
+			dialog_->list_chosen->setSelected(i,true);
+			dialog_->list_chosen->setTopItem(i);
 			break;
 		}
 	}
@@ -277,20 +257,19 @@ ButtonPolicy::SMInput FormCitation::select_key(char const * key)
  
 void FormCitation::highlight_key(char const * key)
 {
-	highlight(key, dialog_->chosen, selectedKey, selectedChosenKey);
+	highlight(key, dialog_->list_chosen, selectedKey, selectedChosenKey);
 }
 
  
 void FormCitation::highlight_chosen(char const * key)
 {
-	highlight(key, dialog_->keys, selectedChosenKey, selectedKey);
+	highlight(key, dialog_->list_available, selectedChosenKey, selectedKey);
 }
 
 
 void FormCitation::highlight(char const * key, QListBox * lb,
 			     string & selected1, string & selected2)
 {
-	/* 
 	selected1.erase();
 	selected1 = key;
 
@@ -298,8 +277,8 @@ void FormCitation::highlight(char const * key, QListBox * lb,
 
 	for (i=0; i < keys.size(); ++i) {
 		if (keys[i] == key) {
-			string const tmp = controller().getBibkeyInfo(key);
-			dialog_->entry->setText(tmp.c_str());
+			string const tmp = biblio::getInfo(controller().bibkeysInfo(), key);
+			dialog_->line_details->setText(tmp.c_str());
 			lb->clearFocus();
 			lb->clearSelection();
 			selected2.erase();
@@ -308,8 +287,7 @@ void FormCitation::highlight(char const * key, QListBox * lb,
 	}
 
 	if (i == keys.size())
-		dialog_->entry->setText(_("Key not found."));
+		dialog_->line_details->setText(_("Key not found."));
 
 	updateButtons();
-	*/ 
 }

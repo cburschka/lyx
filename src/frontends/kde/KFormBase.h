@@ -24,7 +24,7 @@ class QWidget;
 class KFormDialogBase : public ViewBC<kdeBC> {
 public:
 	///
-	KFormDialogBase(ControlButton & c);
+	KFormDialogBase(ControlButtons & c);
 
 	// Functions accessible to the Controller
 
@@ -44,7 +44,7 @@ template <class Controller, class Dialog>
 	class KFormBase : public KFormDialogBase {
 public:
 	///
-	KFormBase(ControlButton & c);
+	KFormBase(ControlButtons & c);
  
 protected:
 	/// parent controller 
@@ -58,7 +58,7 @@ protected:
 };
 
 template <class Controller, class Dialog>
-	KFormBase<Controller, Dialog>::KFormBase(ControlButton & c) 
+	KFormBase<Controller, Dialog>::KFormBase(ControlButtons & c) 
 	: KFormDialogBase(c)
 {
 }

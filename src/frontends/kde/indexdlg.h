@@ -12,8 +12,6 @@
 #include "FormIndex.h" 
 #include "dlg/indexdlgdata.h"
 
-// FIXME: closeEvent 
-
 class IndexDialog : public IndexDialogData
 {
 Q_OBJECT
@@ -24,9 +22,10 @@ public:
 	void setIndexText(char const * str) { line_index->setText(str); }
 	char const * getIndexText() { return line_index->text(); }
 
-private slots:
-	void clickedOK() { form_->OKButton(); };
-	void clickedCancel() { form_->CancelButton(); };
+protected slots:
+	virtual void clickedOK() { form_->OKButton(); };
+	virtual void clickedCancel() { form_->CancelButton(); };
+	virtual void closeEvent(QCloseEvent * e);
 
 private:
 	FormIndex * form_;

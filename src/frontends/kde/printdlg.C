@@ -64,3 +64,10 @@ void PrintDialog::changedCount(char const * text)
 
 	check_sort->setEnabled(strToInt(text) > 1);
 }
+
+
+void PrintDialog::closeEvent(QCloseEvent * e)
+{
+	form_->CancelButton();
+	e->accept();
+}

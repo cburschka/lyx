@@ -12,8 +12,6 @@
 #include "FormTabularCreate.h" 
 #include "dlg/tabcreatedlgdata.h"
 
-// FIXME: closeEvent
- 
 class TabularCreateDialog : public TabularCreateDialogData
 {
 	Q_OBJECT
@@ -26,6 +24,7 @@ protected slots:
 	virtual void clickedCancel();
 	virtual void colsChanged(unsigned int);
 	virtual void rowsChanged(unsigned int);
+	virtual void closeEvent(QCloseEvent * e); 
 
 private:
 	FormTabularCreate * form_;

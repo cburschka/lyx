@@ -7,9 +7,44 @@
  * \author John Levon
  */
 
+// real GUI implementations. Have to go at the top
+// because Qt is stupid.
+#include "citationdlg.h" 
+#include "copyrightdlg.h"
+#include "indexdlg.h"
+#include "logdlg.h"
+#include "printdlg.h"
+#include "refdlg.h"
+#include "tabcreatedlg.h"
+//#include "tocdlg.h"
+#include "urldlg.h"
+#include "vclogdlg.h" 
+ 
 #include <config.h>
 #include FORMS_H_LOCATION
 
+#include "QtLyXView.h"
+ 
+#include "combox.h"
+#include "form_bibitem.h"
+#include "form_bibtex.h"
+#include "form_browser.h"
+#include "form_character.h"
+#include "form_credits.h"
+#include "form_error.h"
+#include "form_external.h" 
+#include "form_graphics.h"
+#include "form_include.h" 
+#include "form_minipage.h"
+#include "form_preamble.h"
+#include "form_search.h"
+#include "form_splash.h"
+ 
+#include "Dialogs.h"
+#include "kdeBC.h"
+#include "GUI.h"
+ 
+// controllers
 #include "ControlBibitem.h"
 #include "ControlBibtex.h"
 #include "ControlCharacter.h"
@@ -32,15 +67,7 @@
 #include "ControlUrl.h"
 #include "ControlVCLog.h"
 
-#include "Dialogs.h"
-
-#include "kdeBC.h"
- 
-#include "GUI.h"
- 
-// FIXME: how horrendous. It would help a little if we
-// could rename ControlButton not to clash with stupid Qt ... Angus ?
- 
+// dialogs
 #include "FormBibitem.h"
 #include "FormBibtex.h"
 #include "FormCharacter.h" 
@@ -69,40 +96,7 @@
 #include "FormUrl.h"
 #include "FormVCLog.h"
 
-// we need all these in order to use scoped_ptr. how ugly ...
-#include "combox.h"
-#include "form_bibitem.h"
-#include "form_bibtex.h"
-#include "form_browser.h"
-#include "form_character.h"
-#include "form_credits.h"
-#include "form_error.h"
-#include "form_external.h" 
-#include "form_graphics.h"
-#include "form_include.h" 
-#include "form_minipage.h"
-#include "form_preamble.h"
-#include "form_search.h"
-#include "form_splash.h"
-// Qt does it again. We can't include the dlg.h files *before*
-// anything else because "ControlButton" is an enum value,
-// and we can't include them *after* because it #errors on
-// a #defined TrueColor ... *sigh* 
-#undef TrueColor 
-// FIXME: I don't even know where this one is coming from !
-#undef Unsorted 
-#include "citationdlg.h" 
-#include "copyrightdlg.h"
-#include "indexdlg.h"
-#include "logdlg.h"
-#include "printdlg.h"
-#include "refdlg.h"
-#include "tabcreatedlg.h"
-//#include "tocdlg.h"
-#include "urldlg.h"
-#include "vclogdlg.h" 
 
- 
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -136,13 +130,13 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUITabularCreate<FormTabularCreate, kdeBC>(*lv, *this));
 	add(new GUIUrl<FormUrl, kdeBC>(*lv, *this));
 	add(new GUIVCLog<FormVCLog, kdeBC>(*lv, *this));
+	//add(new GUIToc<FormToc, kdeBC>(*lv, *this));
 
 	add(new FormDocument(lv, this));
  	add(new FormMathsPanel(lv, this));
 	add(new FormParagraph(lv, this));
 	add(new FormPreferences(lv, this));
 	add(new FormTabular(lv, this));
-	//add(new FormToc(lv, this));
 	
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

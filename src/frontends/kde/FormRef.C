@@ -31,7 +31,7 @@ void FormRef::build()
 {
 	dialog_.reset(new RefDialog(this, 0, _("LyX: Cross Reference"), false));
 
-	//bc().setUndoAll(dialog_->buttonRestore); 
+	//bc().setRestore(dialog_->buttonRestore); 
 	bc().setOK(dialog_->buttonOk); 
 	//bc().setApply(dialog_->buttonApply); 
 	bc().setCancel(dialog_->buttonCancel); 

@@ -14,16 +14,15 @@
 
 #include "Dialogs.h"
 #include "KFormBase.h"
-#include "ControlButton.h" 
+#include "ControlButtons.h" 
 
-KFormDialogBase::KFormDialogBase(ControlButton & c)
+#include <qdialog.h>
+ 
+KFormDialogBase::KFormDialogBase(ControlButtons & c)
 	: ViewBC<kdeBC>(c)
 {
 }
 
-// this HAS to go here because it has ControlButton as an enum value
-
-#include <qdialog.h>
  
 void KFormDialogBase::show()
 {

@@ -41,3 +41,10 @@ void VCLogDialog::updatePressed()
 	// FIXME: hmm 
 	//form_->controller().setParams();
 }
+
+
+void VCLogDialog::closeEvent(QCloseEvent * e)
+{
+	form_->CancelButton();
+	e->accept();
+}

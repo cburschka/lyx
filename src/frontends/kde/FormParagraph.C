@@ -107,6 +107,7 @@ void FormParagraph::update(bool switched)
 			  physpar->params.spaceTop().keep(),
 			  physpar->params.spaceBottom().keep());
 
+#ifndef NO_PEXTRA 
 	// now the extras page
 
 	LyXLength extrawidth;
@@ -127,6 +128,7 @@ void FormParagraph::update(bool switched)
 			  par->params.pextraStartMinipage(),
 			  static_cast<LyXParagraph::PEXTRA_TYPE>
 			  (par->params.pextraType()));
+#endif // NO_PEXTRA
 }
 
 
@@ -162,6 +164,7 @@ void FormParagraph::apply()
 		spaceabove, spacebelow, dialog_->getAlign(),
 		dialog_->getLabelWidth(), dialog_->getNoIndent());
 
+#ifndef NO_PEXTRA
 	// extra stuff
 
 	string width("");
@@ -176,13 +179,12 @@ void FormParagraph::apply()
 	lyxerr[Debug::GUI] << "Setting extrawidth \"" << width << "\"" << endl;
 	lyxerr[Debug::GUI] << "Setting percent extrawidth \"" << widthp << "\"" << endl;
 
-	/* FIXME 
 	lv_->view()->text->SetParagraphExtraOpt(lv_->view(),
 		dialog_->getExtraType(), width, widthp,
 		dialog_->getExtraAlign(),
 		dialog_->getHfillBetween(),
 		dialog_->getStartNewMinipage());
-	*/ 
+#endif // NO_PEXTRA 
 
 	lv_->view()->update(lv_->view()->text, 
 			    BufferView::SELECT |

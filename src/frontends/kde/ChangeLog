@@ -1,3 +1,24 @@
+2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Form*.C:
+	* Dialogs.C: s/UndoAll/Restore/, s/ControlButton/ControlButtons/,
+	add closeEvents where necessary
+
+	* FormCitation.h:
+	* FormCitation.C:
+	* citationdlg.C:
+	* citationdlg.h:
+	* dlg/citationdlgdata.C:
+	* dlg/citationdlgdata.h:
+	* dlg/dialogs/citation.dlg: update to work with MVC properly,
+	move to qtarch-generated dialog file; still need search dialog
+
+	* paradlg.h:
+	* paradlg.C:
+	* FormParagraph.C: only include extra code ifndef NO_PEXTRA
+
+	* docdlg.C: include language.h
+
 2001-04-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: update for MVC

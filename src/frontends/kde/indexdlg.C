@@ -27,3 +27,10 @@ IndexDialog::IndexDialog(FormIndex * f, QWidget * p, char const * name)
 	setMinimumSize(200, 65);
 	setMaximumSize(32767, 65);
 }
+
+
+void IndexDialog::closeEvent(QCloseEvent * e)
+{
+	form_->CancelButton();
+	e->accept();
+}
