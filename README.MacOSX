@@ -8,8 +8,8 @@
    procedure described here builds LyX-1.3.3 linked with a static Qt
    library and installs the LyX and Start-LyX applications.
 
-   Download the GPL-licensed MacOSX Qt library source code from
-   ftp://ftp.trolltech.com/qt/source/qt-mac-free-3.1.2.sit. Untar the
+   Download the GPL-licensed MacOSX Qt 3.1.2 library source code from
+   ftp://ftp.lyx.org/pub/lyx/contrib/qt-mac-free-3.1.2.sit.  Untar the
    .tar.gz file in a convenient directory in /usr/local/src or
    /usr/local. Then open a terminal, cd to the Qt source directory,
    apply the patch development/MacOSX/qt.patch, and:
@@ -19,8 +19,6 @@
    % ./configure -static 
    % make 
    % sudo gcc_select 3 
-   % mkdir lib/unused 
-   % mv lib/*.dylib lib/unused 
 
    To avoid this compiler-changing procedure in the future, you might
    want to write Apple to urge that they fix bug ID #3162425 so the
@@ -43,14 +41,16 @@ lications/LyX.app/Contents/Resources/man
    in the terminal where you built LyX:
 
    % make install
-   % cp development/MacOSX/lyx.xpm /Applications/LyX.app/Contents/Resources/LyX/images/lyx.xpm
+   % rm /Applications/LyX.app/Contents/Resources/LyX/images/lyx.xpm
 
-   Please see the LyX on Aqua howto at
-   http://www.18james.com/lyx_on_aqua.html for information on
-   configuring LyX on Aqua. The binary installation of LyX on Aqua
-   installs ~/.MacOS/environment.plist and the TeX math fonts; you
-   will need to do this configuration manually if you build LyX
-   yourself.
+   For information on configuring LyX/Mac, please see the howto at
+   http://www.18james.com/lyx_on_aqua.html . The binary installation
+   of LyX on Aqua sets the PATH in ~/.MacOS/environment.plist,
+   installs the LyX math fonts, configures LyX to use the reLyX and
+   noweb2lyx commands in the application package and to use system
+   defaults for viewers, sets up the lyxpipe for Start-LyX, and
+   optionally installs latex-preview; you will need to do this
+   configuration manually if you build LyX/Mac yourself.
 
    The information on this page is believed to be accurate, has been
    used successfully on many systems and sites, and has benefited from
