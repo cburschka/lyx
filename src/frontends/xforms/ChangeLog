@@ -1,3 +1,20 @@
+2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* FormFloat.C (input): fix the radio buttongroup behaviour.
+
+	* RadioButtonGroup.C (init): Assert on ROUND3DBUTTON and RADIO_BUTTON
+	when adding object to the group.
+
+	* forms/form_float.fd: use RADIO_BUTTON for the buttons in the radio
+	group.
+
+	* FormDocument.C: remove redundant header files.
+
+2002-10-24  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs_impl.h: set the policy of the BibtexDialog to
+	NoRepeatedApplyReadOnlyPolicy.
+
 2002-10-23  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* forms/form_float.fd: prettify and implement gravity/resize policy

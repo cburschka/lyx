@@ -11,43 +11,38 @@
 
 #include <config.h>
 
-#include FORMS_H_LOCATION
-#include XPM_H_LOCATION
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "FormDocument.h"
 #include "forms/form_document.h"
-#include "Alert.h"
-#include "lyxtextclasslist.h"
-#include "combox.h"
-#include "tex-strings.h"
-#include "bufferparams.h"
-#include "vspace.h"
-#include "bmtable.h"
-#include "language.h"
-#include "frnt_lang.h"
-#include "frontends/LyXView.h"
-#include "lyxfunc.h"
-#include "lyxrc.h"
-#include "BufferView.h"
-#include "buffer.h"
-#include "CutAndPaste.h"
-#include "bufferview_funcs.h"
-#include "xforms_helpers.h"
-#include "checkedwidgets.h"
-#include "debug.h"
-#include "input_validators.h" // fl_unsigned_float_filter
-#include "helper_funcs.h"
-#include "lyx_main.h" // for user_lyxdir
 
-#include "insets/insetquotes.h"
+#include "bmtable.h"
+#include "checkedwidgets.h"
+#include "combox.h"
+#include "input_validators.h" // fl_unsigned_float_filter
+#include "xforms_helpers.h"
+
+#include "buffer.h"
+#include "BufferView.h"
+#include "CutAndPaste.h"
+#include "debug.h"
+#include "language.h"
+#include "lyx_main.h" // for user_lyxdir
+#include "lyxrc.h"
+#include "lyxtextclasslist.h"
+#include "tex-strings.h"
+
+#include "controllers/frnt_lang.h"
+#include "controllers/helper_funcs.h"
+
+#include "frontends/LyXView.h"
+#include "frontends/Alert.h"
 
 #include "support/filetools.h"
-#include "support/lstrings.h"
 
+#include XPM_H_LOCATION
 #include FORMS_H_LOCATION
 
 #include <boost/bind.hpp>

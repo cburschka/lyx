@@ -249,7 +249,7 @@ argument:
 
 --------------------
 class: FL_ROUND3DBUTTON
-type: PUSH_BUTTON
+type: RADIO_BUTTON
 box: 10 85 200 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
@@ -267,7 +267,7 @@ argument: 0
 
 --------------------
 class: FL_ROUND3DBUTTON
-type: PUSH_BUTTON
+type: RADIO_BUTTON
 box: 10 55 200 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
@@ -285,7 +285,7 @@ argument: 0
 
 --------------------
 class: FL_ROUND3DBUTTON
-type: PUSH_BUTTON
+type: RADIO_BUTTON
 box: 10 25 200 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW

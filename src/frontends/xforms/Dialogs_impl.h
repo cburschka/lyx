@@ -180,7 +180,7 @@ AboutlyxDialog;
 typedef GUI<ControlBibitem, FormBibitem, OkCancelReadOnlyPolicy, xformsBC>
 BibitemDialog;
 
-typedef GUI<ControlBibtex, FormBibtex, OkApplyCancelReadOnlyPolicy, xformsBC>
+typedef GUI<ControlBibtex, FormBibtex, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 BibtexDialog;
 
 typedef GUI<ControlCharacter, FormCharacter, OkApplyCancelReadOnlyPolicy, xformsBC>

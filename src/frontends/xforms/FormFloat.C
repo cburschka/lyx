@@ -188,18 +188,13 @@ void FormFloat::update()
 
 ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 {
-	bool alternatives = placement_.get() == ALTERNATIVES;
+	bool const alternatives = placement_.get() == ALTERNATIVES;
 	bool const wide = fl_get_button(dialog_->check_wide);
 
 	if (ob == dialog_->radio_default ||
 	    ob == dialog_->radio_here_definitely ||
 	    ob == dialog_->radio_alternatives) {
-
-		// set radio button
-		placement_.set(ob);
-		alternatives = placement_.get() == ALTERNATIVES;
-
-		// enable check buttons for Alternatives
+		// enable check buttons only for Alternatives
 		setEnabled(dialog_->check_top, alternatives);
 		setEnabled(dialog_->check_bottom, alternatives);
 		setEnabled(dialog_->check_page, alternatives);
@@ -207,14 +202,13 @@ ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 		setEnabled(dialog_->check_here, alternatives && !wide);
 
 	} else if (ob == dialog_->check_wide) {
-		// wide float doesn't allow 'Here, definitely!' and 'here'
-		setEnabled(dialog_->radio_here_definitely, !wide);
-		setEnabled(dialog_->check_here, alternatives && !wide);
-		
-		// flip to default, if 'Here, definitely!' was selected
 		if (wide && placement_.get() == HERE_DEFINITELY) {
+			// wide float doesn't allow 'Here, definitely!'
+			// placement
 			placement_.set(dialog_->radio_default);
 		}
+		setEnabled(dialog_->check_here, alternatives && !wide);
+		setEnabled(dialog_->radio_here_definitely, !wide);
 	}
 
 	// enable force button, if Alternatives is selected and at least
