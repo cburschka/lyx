@@ -19,6 +19,24 @@
 // (an inlined member of some class)?
 
 // This should have been a namespace
+#ifdef CXX_WORKING_NAMESPACES
+namespace lyx {
+	///
+	char * getcwd(char * buffer, size_t size);
+	///
+	int chdir(char const * name);
+	/// generates an checksum
+	unsigned long sum(char const * file);
+	/// returns a date string
+	char * date(); 
+	///
+	string getUserName();
+	///
+	int kill(int pid, int sig);
+	///
+	void abort();
+}
+#else
 struct lyx {
 	///
 	static char * getcwd(char * buffer, size_t size);
@@ -35,4 +53,5 @@ struct lyx {
 	///
 	static void abort();
 };
+#endif // CXX_WORKING_NAMESPACES
 #endif
