@@ -20,7 +20,7 @@
 // If you need Paragraph proper, go to text_func.h
 
 /** The cursor.
-	Later this variable has to be removed. There should be now internal
+	Later this variable has to be removed. There should be no internal
 	cursor in a text (and thus not in a buffer). By keeping this it is
 	(I think) impossible to have several views with the same buffer, but
 	the cursor placed at different places.
@@ -28,7 +28,8 @@
 	Since the LyXText now has been moved from Buffer to BufferView
 	it should not be absolutely needed to move the cursor...
 	[even later]
-	It should neverthe less to keep classes and intedependencies small 
+	Nevertheless, it should still be moved, in order to keep classes
+	and interdependencies small. 
 	*/
 
 // The structure that keeps track of the selections set.

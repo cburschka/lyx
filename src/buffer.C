@@ -168,7 +168,7 @@ Buffer::~Buffer()
 
 	paragraphs.clear();
 
-	// Remove any previewed LaTeX snippets assocoated with this buffer.
+	// Remove any previewed LaTeX snippets associated with this buffer.
 	lyx::graphics::Previews::get().removeLoader(this);
 }
 
