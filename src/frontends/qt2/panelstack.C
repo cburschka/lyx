@@ -38,6 +38,9 @@ PanelStack::PanelStack(QWidget * parent, const char * name)
 	list_->setResizeMode(QListView::AllColumns);
 #endif
 	list_->setRootIsDecorated(true);
+	QWidget * w = static_cast<QWidget*>(list_->child("list view header"));
+	if (w)
+		w->hide();
 
 	connect(list_, SIGNAL(currentChanged(QListViewItem*)),
 	        this, SLOT(switchPanel(QListViewItem *)));
