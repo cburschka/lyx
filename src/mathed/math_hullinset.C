@@ -784,8 +784,11 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 
 void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "*** MathHullInset: request: " << cmd << endl;
 	switch (cmd.action) {
+
+	case LFUN_BREAKPARAGRAPH:
+		// just swallow this
+		break;
 
 	case LFUN_BREAKLINE:
 		if (type_ == "simple" || type_ == "equation") {

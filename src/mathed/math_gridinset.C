@@ -1017,11 +1017,11 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		//	return DispatchResult(true, true);
 		//}
 		MathNestInset::priv_dispatch(cur, cmd);
-		return;
+		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		GridInsetMailer(*this).updateDialog(&cur.bv());
-		return;
+		break;
 
 	// insert file functions
 	case LFUN_DELETE_LINE_FORWARD:
@@ -1029,7 +1029,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		//macroModeClose();
 		//if (selection_) {
 		//	selDel();
-		//	return;
+		//	break;
 		//}
 		if (nrows() > 1)
 			delRow(cur.row());
@@ -1037,12 +1037,12 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.idx() = cur.lastidx();
 		if (cur.pos() > cur.lastpos())
 			cur.pos() = cur.lastpos();
-		return;
+		break;
 
 	case LFUN_CELL_SPLIT:
 		////recordUndo(cur, Undo::ATOMIC);
 		splitCell(cur);
-		return;
+		break;
 
 	case LFUN_BREAKLINE: {
 		////recordUndo(cur, Undo::INSERT);
@@ -1062,7 +1062,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 		//mathcursor->normalize();
 		cmd = FuncRequest(LFUN_FINISHED_LEFT);
-		return;
+		break;
 	}
 
 	case LFUN_TABULAR_FEATURE: {
@@ -1118,10 +1118,10 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			swapCol(col(cur.idx()));
 		else {
 			cur.undispatched();
-			return;
+			break;
 		}
 		lyxerr << "returning FINISHED_LEFT" << endl;
-		return;
+		break;
 	}
 
 	case LFUN_PASTE: {
@@ -1154,7 +1154,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 				for (col_type c = 0; c < grid.ncols(); ++c)
 					cell(i).append(grid.cell(grid.index(r, c)));
 		}
-		return;
+		break;
 	}
 
 	case LFUN_HOMESEL:
