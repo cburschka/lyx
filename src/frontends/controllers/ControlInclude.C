@@ -55,15 +55,15 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 	string pattern;
 	switch (in_type) {
 	case INPUT:
-	    pattern = _("*.(tex|lyx)| LaTeX/LyX Documents");
+	    pattern = _("*.(tex|lyx)| LaTeX/LyX Documents (*.tex *.lyx)");
 	    break;
 
 	case VERBATIM:
-	    pattern = _("*| All files ");
+	    pattern = _("*| All files (*)");
 	    break;
 
 	case INCLUDE:
-	    pattern = _("*.(tex|lyx)| LaTeX/LyX Documents");
+	    pattern = _("*.(tex|lyx)| LaTeX/LyX Documents (*.tex *.lyx)");
 	    break;
 	}
 
