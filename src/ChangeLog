@@ -1,3 +1,10 @@
+2003-10-25  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* MenuBackend.C:
+	* lyxfunc.C: fix (at least partly) the problems
+	with the Nav menu and headers inside branch insets
+	reported by Kayvan
+
 2003-10-24  Alfredo Braunstein  <abraunst@libero.it>
 
 	* paragraph.C (getChar): add strong asserts

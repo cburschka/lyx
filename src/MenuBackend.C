@@ -536,8 +536,9 @@ void expandToc2(Menu & tomenu,
 			string label(4 * max(0, toc_list[i].depth - depth),' ');
 			label += limit_string_length(toc_list[i].str);
 			if (toc_list[i].depth == depth
-			    && ++shortcut_count <= 9) {
-				label += '|' + tostr(shortcut_count);
+			    && shortcut_count < 9) {
+				if (label.find(tostr(shortcut_count + 1)) != string::npos)
+					label += '|' + tostr(++shortcut_count);
 			}
 			tomenu.add(MenuItem(MenuItem::Command, label,
 					    FuncRequest(toc_list[i].action())));
@@ -553,9 +554,10 @@ void expandToc2(Menu & tomenu,
 			string label(4 * max(0, toc_list[pos].depth - depth), ' ');
 			label += limit_string_length(toc_list[pos].str);
 			if (toc_list[pos].depth == depth &&
-			    ++shortcut_count <= 9)
-				label += '|' + tostr(shortcut_count);
-
+			    shortcut_count < 9) {
+				if (label.find(tostr(shortcut_count + 1)) != string::npos)
+					label += '|' + tostr(++shortcut_count);
+				}
 			if (new_pos == pos + 1) {
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, FuncRequest(toc_list[pos].action())));

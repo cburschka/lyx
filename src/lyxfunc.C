@@ -814,7 +814,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	// solution, we consider only the first action of the sequence
 	if (ev.action == LFUN_SEQUENCE) {
 		// argument contains ';'-terminated commands
-#warning LyXAction arguements not handled here.
+#warning LyXAction arguments not handled here.
 		flag = getStatus(FuncRequest(lyxaction.lookupFunc(token(ev.argument, ';', 0))));
 	}
 
@@ -1416,12 +1416,16 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 		if (view()->theLockingInset())
 			view()->unlockInset(view()->theLockingInset());
+
+		LyXText * lt = view()->getLyXText();
 		if (par->inInset()) {
 			FuncRequest cmd(view(), LFUN_INSET_EDIT, "left");
 			par->inInset()->dispatch(cmd);
+			lt = par->inInset()->getLyXText(view());
 		}
+
 		// Set the cursor
-		view()->getLyXText()->setCursor(par.pit(), 0);
+		lt->setCursor(par.pit(), 0);
 		view()->switchKeyMap();
 		owner->view_state_changed();
 
