@@ -218,12 +218,16 @@ void Dialogs::showSpellchecker()
 }
 
 
-void Dialogs::showTabular(InsetTabular *)
-{}
+void Dialogs::showTabular(InsetTabular * it)
+{
+	pimpl_->tabular.controller().showInset(it);
+}
 
 
-void Dialogs::updateTabular(InsetTabular *)
-{}
+void Dialogs::updateTabular(InsetTabular * it)
+{
+	pimpl_->tabular.controller().updateInset(it); 
+}
 
 
 void Dialogs::showTabularCreate()

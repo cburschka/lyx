@@ -20,6 +20,7 @@ nodist_libqt2moc_la_SOURCES = \
 	emptytable_moc.C \
 	iconpalette_moc.C \
 	lengthcombo_moc.C \
+	qsetborder_moc.C \
 	qttableview_moc.C \
 	qgridview_moc.C \
 	QBrowseBox_moc.C \

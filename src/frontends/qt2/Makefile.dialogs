@@ -28,6 +28,7 @@ DIALOGS = \
 	QShowFile \
 	QSpellchecker \
 	QTabularCreate \
+	QTabular \
 	QTexinfo \
 	QThesaurus \
 	QToc \
@@ -90,6 +91,8 @@ DIALOGSOURCES = \
 	QSpellchecker.C QSpellcheckerDialog.C \
 	QTabularCreate.h QTabularCreateDialog.h \
 	QTabularCreate.C QTabularCreateDialog.C \
+	QTabular.h QTabularDialog.h \
+	QTabular.C QTabularDialog.C \
 	QTexinfo.h QTexinfoDialog.h \
 	QTexinfo.C QTexinfoDialog.C \
 	QThesaurus.h QThesaurusDialog.h \
@@ -132,6 +135,7 @@ MOCDIALOGS = \
 	QShowFileDialog_moc.C \
 	QSpellcheckerDialog_moc.C \
 	QTabularCreateDialog_moc.C \
+	QTabularDialog_moc.C \
 	QTexinfoDialog_moc.C \
 	QThesaurusDialog_moc.C \
 	QTocDialog_moc.C \
@@ -198,6 +202,8 @@ UIDIALOGS = \
 	QSpellcheckerDialogBase.C \
 	QTabularCreateDialogBase.h \
 	QTabularCreateDialogBase.C \
+	QTabularDialogBase.h \
+	QTabularDialogBase.C \
 	QTexinfoDialogBase.h \
 	QTexinfoDialogBase.C \
 	QThesaurusDialogBase.h \
@@ -264,6 +270,7 @@ UIDIALOGS = \
 	QShowFileDialogBase_moc.C \
 	QSpellcheckerDialogBase_moc.C \
 	QTabularCreateDialogBase_moc.C \
+	QTabularDialogBase_moc.C \
 	QTexinfoDialogBase_moc.C \
 	QThesaurusDialogBase_moc.C \
 	QTocDialogBase_moc.C \

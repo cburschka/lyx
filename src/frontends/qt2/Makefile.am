@@ -77,6 +77,8 @@ libqt2_la_SOURCES = \
 	qlkey.h \
 	qscreen.h \
 	qscreen.C \
+	qsetborder.h \
+	qsetborder.C \
 	qttableview.h \
 	qttableview.C \
 	$(DIALOGSOURCES)
