@@ -208,7 +208,6 @@ int replace(BufferView * bv,
 
 	// FIXME: should be called via an LFUN
 	bv->buffer()->markDirty();
-	bv->fitCursor();
 	bv->update();
 
 	return replace_count;
@@ -263,7 +262,6 @@ bool find(BufferView * bv,
 		bv->unlockInset(bv->theLockingInset());
 		found = false;
 	}
-	bv->fitCursor();
 	bv->update();
 
 	return found;
@@ -397,7 +395,6 @@ bool findNextChange(BufferView * bv)
 		found = false;
 	}
 
-	bv->fitCursor();
 	bv->update();
 
 	return found;

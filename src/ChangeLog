@@ -1,17 +1,26 @@
 
+2003-08-18  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* lyxfind.C:
+	* paragraph_funcs.C:
+	* rowpainter.C:
+	* text3.C: remove LyXScreen::draw() and fitCursor calls
+
 2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>	
 
-	* src/BranchList.[Ch]:
-	* src/InsetList.[Ch]:
-	* src/LColor.[Ch]:
-	* src/LyXAction.C:
-	* src/Makefile.am:
-	* src/MenuBackend.[Ch]:
-	* src/bufferparams.[Ch]:
-	* src/factory.C:
-	* src/lfuns.h:
-	* src/lyxfunc.C:
-	* src/text3.C: implements the 'branch inset'
+	* BranchList.[Ch]:
+	* InsetList.[Ch]:
+	* LColor.[Ch]:
+	* LyXAction.C:
+	* Makefile.am:
+	* MenuBackend.[Ch]:
+	* bufferparams.[Ch]:
+	* factory.C:
+	* lfuns.h:
+	* lyxfunc.C:
+	* text3.C: implements the 'branch inset'
 	idea. This allows the output of various versions of a document
 	from a single source version, selectively outputing or suppressing
 	output of parts of the text.

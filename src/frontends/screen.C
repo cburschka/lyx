@@ -236,8 +236,8 @@ bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 	if (newtop == text->top_y())
 		return false;
 
-	draw(text, bv, newtop);
 	text->top_y(newtop);
+	//draw();
 	return true;
 }
 
@@ -289,10 +289,9 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 	// Is a change necessary?
 	int const newtop = topCursorVisible(text);
 	bool const result = (newtop != text->top_y());
-	if (result) {
-		draw(text, bv, newtop);
-	}
-
+	text->top_y(newtop);
+	//if (result)
+	//	draw();
 	return result;
 }
 
@@ -309,7 +308,7 @@ void LyXScreen::redraw(BufferView & bv)
 	workarea().getPainter().start();
 
 	bv.text->updateRowPositions();
-	drawFromTo(bv.text, &bv, 0, workarea().workHeight(), 0, 0);
+	drawFromTo(bv.text, &bv);
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 
 	workarea().getPainter().end();
@@ -340,32 +339,27 @@ void LyXScreen::greyOut()
 
 		workarea().getPainter().image(x, y, w, h, *splash_image);
 
-		string const & splash_text  = splash.text();
-		LyXFont const & splash_font = splash.font();
-
 		x += 260;
 		y += 265;
 
-		workarea().getPainter().text(x, y, splash_text, splash_font);
+		workarea().getPainter().text(x, y, splash.text(), splash.font());
 	}
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 	workarea().getPainter().end();
 }
 
 
-void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
-	int y1, int y2, int yo, int xo)
+void LyXScreen::drawFromTo(LyXText * text, BufferView * bv)
 {
-	lyxerr[Debug::GUI] << "screen: drawFromTo " << y1 << '-' << y2 << endl;
 	hideCursor();
-
+	int const y2 = workarea().workHeight();
 	int const topy = text->top_y();
-	int y_text = topy + y1;
+	int y_text = topy;
 	ParagraphList::iterator dummypit;
 	RowList::iterator rit = text->getRowNearY(y_text, dummypit);
 	int y = y_text - topy;
 
-	y = paintRows(*bv, *text, rit, xo, y, y, y2, yo);
+	y = paintRows(*bv, *text, rit, 0, y, y, y2, 0);
 
 	// maybe we have to clear the screen at the bottom
 	if (y < y2 && !text->isInInset()) {

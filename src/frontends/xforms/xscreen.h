@@ -35,10 +35,6 @@ public:
 	/// Sets the cursor color to LColor::cursor.
 	virtual	void setCursorColor();
 
-	/** Draws the screen form textposition y. Uses as much of
-	    the already printed pixmap as possible */
-	virtual void draw(LyXText *, BufferView *, unsigned int y);
-
 protected:
 	/// get the work area
 	virtual WorkArea & workarea() const { return owner_; }

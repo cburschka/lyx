@@ -68,22 +68,6 @@ void QScreen::expose(int x, int y, int w, int h)
 }
 
 
-void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
-{
-	QPixmap * p = owner_.getPixmap();
-
-	owner_.getPainter().start();
-
-	text->top_y(y);
-
-	// not needed in the xforms frontend anymore
-	//drawFromTo(text, bv, 0, owner_.height(), 0, 0);
-	repaint();
-
-	owner_.getPainter().end();
-}
-
-
 void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 {
 	cursor_x_ = x;

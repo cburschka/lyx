@@ -489,7 +489,8 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 	screen().hideCursor();
 
-	screen().draw(bv_->text, bv_, value);
+	bv_->text->top_y(value);
+	//screen().draw();
 
 	if (!lyxrc.cursor_follows_scrollbar)
 		return;
@@ -767,14 +768,14 @@ void BufferView::Pimpl::insetUnlock()
 
 void BufferView::Pimpl::center()
 {
-	LyXText * t = bv_->text;
+	LyXText * text = bv_->text;
 
-	beforeChange(t);
+	beforeChange(text);
 	int const half_height = workarea().workHeight() / 2;
 	int new_y = 0;
 
-	if (t->cursor.y() > half_height)
-		new_y = t->cursor.y() - half_height;
+	if (text->cursor.y() > half_height)
+		new_y = text->cursor.y() - half_height;
 
 	// FIXME: look at this comment again ...
 
@@ -787,8 +788,8 @@ void BufferView::Pimpl::center()
 	// and also might have moved top_y() must make sure to call
 	// updateScrollbar() currently. Never mind that this is a
 	// pretty obfuscated way of updating t->top_y()
-	screen().draw(t, bv_, new_y);
-
+	text->top_y(new_y);
+	//screen().draw();
 	update();
 }
 
@@ -817,7 +818,7 @@ InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
 	return it != buffer_->inset_iterator_end() ? (*it) : 0;
 #else
 	// Ok, this is a little bit too brute force but it
-	// should work for now. Better infrastructure is comming. (Lgb)
+	// should work for now. Better infrastructure is coming. (Lgb)
 
 	Buffer * b = bv_->buffer();
 	LyXCursor cursor = bv_->getLyXText()->cursor;
@@ -1179,7 +1180,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			if (name == "bibitem") {
 				// We need to do a redraw because the maximum
 				// InsetBibitem width could have changed
-				bv_->fitCursor();
 #warning check whether the update() is needed at all
 				bv_->update();
 			}
@@ -1201,12 +1201,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	case LFUN_LAYOUT_PARAGRAPH: {
-		Paragraph const * par = &*bv_->getLyXText()->cursor.par();
-		if (!par)
-			break;
-
 		string data;
-		params2string(*par, data);
+		params2string(*bv_->getLyXText()->cursor.par(), data);
 
 		data = "show\n" + data;
 		bv_->owner()->getDialogs().show("paragraph", data);

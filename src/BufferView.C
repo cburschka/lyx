@@ -444,7 +444,6 @@ void BufferView::replaceWord(string const & replacestring)
 
 	// FIXME: should be done through LFUN
 	buffer()->markDirty();
-	fitCursor();
 	update();
 }
 

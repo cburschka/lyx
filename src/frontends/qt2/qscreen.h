@@ -29,14 +29,6 @@ public:
 
 	virtual ~QScreen();
 
-	/**
-	 * draw the screen from a given position
-	 * @param y the text position to draw from
-	 *
-	 * Uses as much of the already printed pixmap as possible
-	 */
-	virtual void draw(LyXText *, BufferView *, unsigned int y);
-
 protected:
 	/// get the work area
 	virtual WorkArea & workarea() const { return owner_; }

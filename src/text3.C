@@ -1248,7 +1248,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		bv->text->setSelection();
 		bv->update();
-		bv->fitCursor();
 		break;
 	}
 
@@ -1424,7 +1423,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// stack. They don't *have* to
 			// alter the document...
 			// (Joacim)
-			// ...or maybe the SetCursorParUndo()
+			// ...or maybe the recordUndo()
 			// below isn't necessary at all anylonger?
 			if (inset_hit->lyxCode() == InsetOld::REF_CODE)
 				recordUndo(bv, Undo::ATOMIC);

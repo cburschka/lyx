@@ -169,15 +169,3 @@ void XScreen::expose(int x, int y, int w, int h)
 		  x + owner_.xpos(),
 		  y + owner_.ypos());
 }
-
-
-void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
-{
-	text->top_y(y);
-
-	// make a dumb new-draw
-	//drawFromTo(text, bv, 0, owner_.workHeight(), 0, 0);
-	//expose(0, 0, owner_.workWidth(), owner_.workHeight());
-
-	XSync(fl_get_display(), 0);
-}

@@ -39,14 +39,6 @@ public:
 	virtual ~LyXScreen();
 
 	/**
-	 * draw the screen from a given position
-	 * @param y the text position to draw from
-	 *
-	 * Uses as much of the already printed pixmap as possible
-	 */
-	virtual void draw(LyXText *, BufferView *, unsigned int y) = 0;
-
-	/**
 	 * fit the cursor onto the visible work area, scrolling if necessary
 	 * @param bv the buffer view
 	 * @param vheight the height of the visible region
@@ -115,11 +107,10 @@ protected:
 	/// hide the cursor
 	virtual void removeCursor() = 0;
 
-	/// y1 and y2 are coordinates of the screen
-	void drawFromTo(LyXText *, BufferView *, int y1, int y2,
-	                int y_offset = 0, int x_offset = 0);
-
 private:
+	/// y1 and y2 are coordinates of the screen
+	void drawFromTo(LyXText *, BufferView *);
+
 	/// grey out (no buffer)
 	void greyOut();
 
