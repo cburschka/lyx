@@ -22,7 +22,6 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES) @FRONTEND_INCLUDES@
 localedir = $(datadir)/locale
 lyx_SOURCES = \
-	BackStack.h \
 	BufferView.C \
 	BufferView.h \
 	BufferView2.C \
