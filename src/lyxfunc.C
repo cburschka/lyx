@@ -287,25 +287,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	setStatusMessage(N_("Command disabled"));
 
 	// Check whether we need a buffer
-	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
-		// Yes we need a buffer, do we have one?
-		if (buf) {
-			// yes
-			// Can we use a readonly buffer?
-			if (buf->isReadonly() &&
-			    !lyxaction.funcHasFlag(cmd.action,
-						   LyXAction::ReadOnly)) {
-				// no
-				setStatusMessage(N_("Document is read-only"));
-				flag.enabled(false);
-			}
-		} else {
-			// no
-			setStatusMessage(N_("Command not allowed with"
-					    "out any document open"));
-			flag.enabled(false);
-			return flag;
-		}
+	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer) && !buf) {
+		// no, exit directly
+		setStatusMessage(N_("Command not allowed with"
+				    "out any document open"));
+		flag.enabled(false);
+		return flag;
 	}
 
 	// I would really like to avoid having this switch and rather try to
@@ -503,15 +490,27 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SET_COLOR:
 	case LFUN_MESSAGE:
 	case LFUN_EXTERNAL_EDIT:
+	case LFUN_FILE_INSERT:
+	case LFUN_FILE_INSERT_ASCII:
+	case LFUN_FILE_INSERT_ASCII_PARA:
 		// these are handled in our dispatch()
 		break;
 
 	default:
 		cur.getStatus(cmd, flag);
-		return flag;
 	}
 
-	flag.enabled(enable);
+	if (!enable)
+		flag.enabled(false);
+
+	// Can we use a readonly buffer?
+	if (buf && buf->isReadonly() 
+	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
+	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
+		setStatusMessage(N_("Document is read-only"));
+		flag.enabled(false);
+	}
+
 	return flag;
 }
 

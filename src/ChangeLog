@@ -1,5 +1,8 @@
 2004-03-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* lyxfunc.C (getStatus): handle read-only buffers correctly;
+	handle LFUN_FILE_INSERT_*
+
 	* lyxrc.C (setDefaults, getDescription, output, read): 
 	* lyxrc.h: remove ps_command
 
