@@ -1,3 +1,18 @@
+2000-08-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/Menubar_pimpl.C (create_submenu): try to
+	fix handling of shortcuts (many bugs :)
+	(add_lastfiles): ditto.
+
+	* lib/ui/default.ui: fix a few shortcuts.
+
+2000-07-27  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* Makefile.am: Fix ``rpmdist'' target to return the exit
+	status of the ``rpm'' command, instead of the last command in
+	the chain (the ``rm lyx.xpm'' command, which always returns
+	success).
+
 2000-08-02  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/FormUrl.C (FormUrl): Initialise ALL variables.

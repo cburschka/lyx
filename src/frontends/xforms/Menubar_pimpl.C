@@ -230,15 +230,14 @@ void Menubar::Pimpl::add_lastfiles(int menu, string const & extra_label,
 			lyxaction.getPseudoAction(LFUN_FILE_OPEN, (*cit));
 		string label = tostr(ii) + ". "
 			+ MakeDisplayPath((*cit),30)
-			+ "%x" + tostr(action);
+			+ "%x" + tostr(action) + "%h";
 		if ((cit + 1) == lastfiles->end())
 			label += extra_label;
 		string shortcut = tostr(ii) + "#" + tostr(ii); 
 		lyxerr[Debug::GUI] << "shortcut is " << shortcut <<
 			endl;
 
-		int n = fl_addtopup(menu, strpool.add(label));
-		fl_setpup_shortcut(menu, n, strpool.add(shortcut));
+		fl_addtopup(menu, strpool.add(label), strpool.add(shortcut));
 	}
 
 }
@@ -355,26 +354,19 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 
 			// Finally the menu shortcut
 			string shortcut = item.shortcut();
-			string xfshortcut;
+
 			if (!shortcut.empty()) {
-				xfshortcut += uppercase(shortcut[0]);
-				xfshortcut += '#';
-				xfshortcut += uppercase(shortcut[0]);
-				xfshortcut += lowercase(shortcut[0]);
-				xfshortcut += '#';
-				xfshortcut += lowercase(shortcut[0]);
-				lyxerr[Debug::GUI] << "shortcut is " 
-						   << xfshortcut << endl;
+				shortcut += lowercase(shortcut[0]);
 				label += "%h";
 				fl_addtopup(menu, strpool.add(label), 
-					    strpool.add(xfshortcut));
+					    strpool.add(shortcut));
 			} else
 				fl_addtopup(menu, strpool.add(label));
 			
 			lyxerr[Debug::GUI] << "Command: \""  
 					   << lyxaction.getActionName(item.action())
 					   << "\", Binding " << accel 
-					   << ", shortcut " << xfshortcut 
+					   << ", shortcut " << shortcut 
 					   << endl;
 
 
@@ -390,8 +382,14 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			string label = item.label();
 			label += extra_label + "%m";
 			string shortcut = item.shortcut();
-			int n = fl_addtopup(menu, strpool.add(label), submenu);
-			fl_setpup_shortcut(menu, n, strpool.add(shortcut));
+			if (!shortcut.empty()) {
+				shortcut += lowercase(shortcut[0]);
+				fl_addtopup(menu, strpool.add(label + "%h"),
+					    submenu, strpool.add(shortcut));
+			}
+			else {
+				fl_addtopup(menu, strpool.add(label), submenu);
+			}
 			break;
 		}
 
