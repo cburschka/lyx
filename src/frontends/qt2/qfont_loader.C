@@ -24,6 +24,8 @@
 
 #include <qglobal.h>
 #include <qfontmetrics.h>
+#include <qfontdatabase.h>
+#include <qstringlist.h>
 #include "support/lstrings.h"
 
 #ifdef Q_WS_X11
@@ -34,6 +36,170 @@
 #endif
 
 using std::endl;
+
+
+namespace {
+
+void addFontPath()
+{
+#ifdef Q_WS_X11
+	string const dir =  OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
+	if (!dir.empty()) {
+		QWidget w;
+		int n;
+		char ** p = XGetFontPath(w.x11Display(), &n);
+		if (std::find(p, p + n, dir) != p + n)
+			return;
+		lyxerr << "Adding " << dir << " to the font path.\n";
+		string const command = "xset fp+ " + dir;
+		Systemcall s;
+		if (!s.startscript(Systemcall::Wait, command))
+			return;
+		lyxerr << "Unable to add font path.\n";
+	}
+#endif
+}
+
+
+struct symbol_font {
+	LyXFont::FONT_FAMILY lyx_family;
+	string family;
+	string xlfd;
+};
+
+symbol_font symbol_fonts[] = {
+	{ LyXFont::SYMBOL_FAMILY,
+		"symbol",
+		"-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific" },
+
+	{ LyXFont::CMR_FAMILY,
+		"cmr10",
+		"-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+
+	{ LyXFont::CMSY_FAMILY,
+		"cmsy10",
+		"-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*" },
+
+	{ LyXFont::CMM_FAMILY,
+		"cmmi10",
+		"-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+
+	{ LyXFont::CMEX_FAMILY,
+		"cmex10",
+		"-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*" },
+
+	{ LyXFont::MSA_FAMILY,
+		"msam10",
+		"-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*" },
+
+	{ LyXFont::MSB_FAMILY,
+		"msbm10",
+		"-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*" },
+
+	{ LyXFont::EUFRAK_FAMILY,
+		"eufm10",
+		"-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+
+	{ LyXFont::WASY_FAMILY,
+		"wasy10",
+		"-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" }
+};
+
+size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_font);
+
+
+string getRawName(string const & family)
+{
+	for (size_t i = 0; i < nr_symbol_fonts; ++i) {
+		if (family == symbol_fonts[i].family)
+			return symbol_fonts[i].xlfd;
+	}
+	lyxerr[Debug::FONT] << "BUG: family not found !" << endl;
+	return string();
+}
+
+
+string const symbolFamily(LyXFont::FONT_FAMILY family)
+{
+	for (size_t i = 0; i < nr_symbol_fonts; ++i) {
+		if (family == symbol_fonts[i].lyx_family)
+			return symbol_fonts[i].family;
+	}
+	return string();
+}
+
+
+QFont const getSymbolFont(string const & family)
+{
+	lyxerr[Debug::FONT] << "Looking for font family "
+		<< family << " ... ";
+	string upper = family;
+	upper[0] = toupper(family[0]);
+
+	QFont font;
+	font.setFamily(toqstr(family));
+
+	// Note Qt lies about family, so we use rawName.
+	if (contains(fromqstr(font.rawName()), family)) {
+		lyxerr[Debug::FONT] << " got it !" << endl;
+		return font;
+	}
+
+	font.setFamily(toqstr(upper));
+
+	if (contains(fromqstr(font.rawName()), upper)) {
+		lyxerr[Debug::FONT] << " got it (uppercase version) !" << endl;
+		return font;
+	}
+
+	// A simple setFamily() fails on Qt 2
+
+	font.setRawName(toqstr(getRawName(family)));
+
+	if (contains(fromqstr(font.rawName()), family)) {
+		lyxerr[Debug::FONT] << " got it (raw version) !" << endl;
+		return font;
+	}
+
+	lyxerr[Debug::FONT] << " FAILED :(" << endl;
+	return font;
+}
+
+
+bool isAvailable(LyXFont const & f)
+{
+	string const tmp = symbolFamily(f.family());
+
+	if (tmp.empty())
+		return false;
+
+	QString const family(toqstr(tmp));
+
+	lyxerr[Debug::FONT] << "Family " << tmp
+	       << " isAvailable ?" << endl;
+
+	QFontDatabase db;
+	// pass false for match-locale: LaTeX fonts
+	// do not have non-matching locale according
+	// to Qt 2
+	QStringList sl(db.families(false));
+
+	for (QStringList::Iterator it = sl.begin(); it != sl.end(); ++it) {
+
+		// Case-insensitive for Cmmi10 vs. cmmi10
+		if ((*it).contains(family, false)) {
+			lyxerr[Debug::FONT]
+				<< "found family "
+				<< fromqstr(*it) << endl;
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+} // namespace anon
 
 
 qfont_loader::qfont_loader()
@@ -72,111 +238,26 @@ void qfont_loader::update()
 
 QFont const & qfont_loader::get(LyXFont const & f)
 {
-	QFont const & ret(getfontinfo(f)->font);
+	static bool first_call = true;
 
-	if (lyxerr.debugging(Debug::FONT)) {
-		lyxerr[Debug::FONT] << "Font '" << f.stateText(0)
-			<< "' matched by\n" << ret.rawName() << endl;
+	if (first_call) {
+		first_call = false;
+		addFontPath();
 	}
 
-	lyxerr[Debug::FONT] << "The font has size: "
-			    << ret.pointSizeFloat() << endl;
+	QFont const & ret(getfontinfo(f)->font);
 
 	return ret;
 }
-
-namespace {
-
-string const symbolPattern(LyXFont::FONT_FAMILY family)
-{
-	switch (family) {
-	case LyXFont::SYMBOL_FAMILY:
-		return "-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific";
-
-	case LyXFont::CMR_FAMILY:
-		return "-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*";
-
-	case LyXFont::CMSY_FAMILY:
-		return "-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*";
-
-	case LyXFont::CMM_FAMILY:
-		return "-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*";
-
-	case LyXFont::CMEX_FAMILY:
-		return "-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*";
-
-	case LyXFont::MSA_FAMILY:
-		return "-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*";
-
-	case LyXFont::MSB_FAMILY:
-		return "-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*";
-
-	case LyXFont::EUFRAK_FAMILY:
-		return "-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*";
-
-	case LyXFont::WASY_FAMILY:
-		return "-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*";
-
-	default:
-		return string();
-	}
-}
-
-bool addFontPath()
-{
-#ifdef Q_WS_X11
-	string const dir =  OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
-	if (!dir.empty()) {
-		QWidget w;
-		int n;
-		char ** p = XGetFontPath(w.x11Display(), &n);
-		if (std::find(p, p + n, dir) != p + n)
-			return false;
-		lyxerr << "Adding " << dir << " to the font path.\n";
-		string const command = "xset fp+ " + dir;
-		Systemcall s;
-		if (!s.startscript(Systemcall::Wait, command))
-			return true;
-		lyxerr << "Unable to add font path.\n";
-	}
-#endif
-	return false;
-}
-
-
-bool isAvailable(QFont const & font, LyXFont const & f)
-{
-	string tmp = symbolPattern(f.family());
-	if (tmp.empty())
-		return false;
-	else {
-		bool const found(token(tmp, '-', 2) ==
-			token(fromqstr(font.rawName()), '-', 2));
-		lyxerr[Debug::FONT] << "Looking for symbol font \n\""
-			<< tmp << "\" and got \n\"" << fromqstr(font.rawName())
-			<< "\"\n match: " << found << endl;
-		return found;
-	}
-}
-
-} // namespace anon
 
 
 qfont_loader::font_info::font_info(LyXFont const & f)
 	: metrics(font)
 {
 
-	string pat = symbolPattern(f.family());
+	string const pat = symbolFamily(f.family());
 	if (!pat.empty()) {
-		static bool first_time = true;
-		font.setRawName(toqstr(pat));
-		if (f.family() != LyXFont::SYMBOL_FAMILY &&
-		    !isAvailable(font, f) && first_time) {
-			first_time = false;
-			if (addFontPath()) {
-				font.setRawName(toqstr(pat));
-			}
-		}
+		font = getSymbolFont(pat);
 	} else {
 		switch (f.family()) {
 		case LyXFont::ROMAN_FAMILY:
@@ -206,6 +287,8 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 		case LyXFont::BOLD_SERIES:
 			font.setWeight(QFont::Bold);
 			break;
+		default:
+			break;
 	}
 
 	switch (f.realShape()) {
@@ -213,7 +296,17 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 		case LyXFont::SLANTED_SHAPE:
 			font.setItalic(true);
 			break;
+		default:
+			break;
 	}
+
+	if (lyxerr.debugging(Debug::FONT)) {
+		lyxerr[Debug::FONT] << "Font '" << f.stateText(0)
+			<< "' matched by\n" << font.rawName() << endl;
+	}
+
+	lyxerr[Debug::FONT] << "The font has size: "
+			    << font.pointSizeFloat() << endl;
 
 	// Is this an exact match?
 	if (font.exactMatch()) {
@@ -264,7 +357,7 @@ bool qfont_loader::available(LyXFont const & f)
 	if (!lyxrc.use_gui)
 		return false;
 
-	bool const is_available(isAvailable(getfontinfo(f)->font, f));
+	bool const is_available(isAvailable(f));
 	lyxerr[Debug::FONT] << "font_loader::available returning "
 		<< is_available << endl;
 	return is_available;
