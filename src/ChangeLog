@@ -1,3 +1,11 @@
+
+2003-11-24  André Pönitz  <poenitz@gmx.net>
+
+	* rowpainter.C: simplification
+
+	* text2.C (updateCounters): remove call to redoParagraph on 
+	changed labels as this is far too expensive.
+
 2003-11-24  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* converter.C (convert): fix a crash: this function gets

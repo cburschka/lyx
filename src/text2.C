@@ -1009,7 +1009,9 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 }
 
 
-// Updates all counters. Paragraphs with changed label string will be rebroken
+// Updates all counters. Paragraphs with changed label string will be
+// not be rebroken as this is too expensive. The next round will get it
+// right anyway...
 void LyXText::updateCounters()
 {
 	// start over
@@ -1018,8 +1020,6 @@ void LyXText::updateCounters()
 	ParagraphList::iterator beg = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
 	for (ParagraphList::iterator pit = beg; pit != end; ++pit) {
-		string const oldLabel = pit->params().labelString();
-
 		size_t maxdepth = 0;
 		if (pit != beg)
 			maxdepth = boost::prior(pit)->getMaxDepthAfter();
@@ -1029,11 +1029,6 @@ void LyXText::updateCounters()
 
 		// setCounter can potentially change the labelString.
 		setCounter(*bv()->buffer(), pit);
-
-		string const & newLabel = pit->params().labelString();
-
-		if (oldLabel != newLabel)
-			redoParagraph(pit);
 	}
 }
 
