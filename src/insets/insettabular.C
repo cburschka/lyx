@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "insettabular.h"
 #include "insettext.h"
 
@@ -30,6 +29,7 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
+#include "Lsstream.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"

@@ -10,6 +10,8 @@
 #include "gettext.h"
 #include "paragraph.h"
 #include "lyxtext.h"
+#include "Lsstream.h"
+
 #include "frontends/LyXView.h"
 
 #include "support/lstrings.h"

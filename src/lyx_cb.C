@@ -21,6 +21,7 @@
 #include "lyxtext.h"
 #include "gettext.h"
 #include "BufferView.h"
+#include "Lsstream.h"
 
 #include "insets/insetlabel.h"
 
@@ -35,8 +36,6 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 #include "support/lstrings.h"
-
-#include "support/BoostFormat.h"
 
 #include <fstream>
 #include <algorithm>
@@ -87,14 +86,8 @@ bool MenuWrite(BufferView * bv, Buffer * buffer)
 
 	string const file = MakeDisplayPath(buffer->fileName(), 30);
 
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("The document %1$s could not be saved.\n\nDo you want to rename the document and try again?"));
-	fmt % file;
-	string text = fmt.str();
-#else
-	string text = _("The document ");
-	text += file + _(" could not be saved.\n\nDo you want to rename the document and try again?");
-#endif
+	string text = bformat(_("The document %1$s could not be saved.\n\n"
+		"Do you want to rename the document and try again?"), file);
 	int const ret = Alert::prompt(_("Rename and save?"),
 		text, 0, 1, _("&Rename"), _("&Cancel"));
 
@@ -145,15 +138,8 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 	FileInfo const myfile(fname);
 	if (myfile.isOK()) {
 		string const file = MakeDisplayPath(fname, 30);
-
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("The document %1$s already exists.\n\nDo you want to over-write that document?"));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("The document ");
-		text += file + _(" already exists.\n\nDo you want to over-write that document?");
-#endif
+		string text = bformat(_("The document %1$s already exists.\n\n"
+			"Do you want to over-write that document?"), file);
 		int const ret = Alert::prompt(_("Over-write document?"),
 			text, 0, 1, _("&Over-write"), _("&Cancel"));
 
@@ -200,13 +186,8 @@ void QuitLyX()
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << system_tempdir << endl;
 
 	if (destroyDir(system_tempdir) != 0) {
-#if USE_BOOST_FORMAT
-		boost::format fmt = _("Could not remove the temporary directory %1$s");
-		fmt % system_tempdir;
-		string msg = fmt.str();
-#else
-		string msg = _("Could not remove the temporary directory ") + system_tempdir;
-#endif
+		string msg = bformat(_("Could not remove the temporary directory %1$s"),
+			system_tempdir);
 		Alert::warning(_("Could not remove temporary directory"), msg);
 	}
 
@@ -238,11 +219,7 @@ private:
 
 int AutoSaveBuffer::start()
 {
-#if USE_BOOST_FORMAT
-	command_ = boost::io::str(boost::format(_("Auto-saving %1$s")) % fname_);
-#else
-	command_ = _("Auto-saving ") + fname_;
-#endif
+	command_ = bformat(_("Auto-saving %1$s"), fname_);
 	return runNonBlocking();
 }
 
@@ -404,16 +381,8 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	if (!fi.readable()) {
 		string const error = strerror(errno);
 		string const file = MakeDisplayPath(fname, 50);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Could not read the specified document\n%1$s\ndue to the error: %2$s"));
-		fmt % file;
-		fmt % error;
-		string text = fmt.str();
-#else
-		string text = _("Could not read the specified document\n");
-		text += file + _(" due to the error: ");
-		text += error;
-#endif
+		string const text = bformat(_("Could not read the specified document\n"
+			"%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not read file"), text);
 		return string();
 	}
@@ -422,16 +391,8 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	if (!ifs) {
 		string const error = strerror(errno);
 		string const file = MakeDisplayPath(fname, 50);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Could not open the specified document\n%1$s\ndue to the error: %2$s"));
-		fmt % file;
-		fmt % error;
-		string text = fmt.str();
-#else
-		string text = _("Could not open the specified document\n");
-		text += file + _(" due to the error: ");
-		text += error;
-#endif
+		string const text = bformat(_("Could not open the specified document\n"
+			"%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not open file"), text);
 		return string();
 	}

@@ -66,8 +66,6 @@
 #include "support/path.h"
 #include "support/lyxfunctional.h"
 
-#include "support/BoostFormat.h"
-
 #include <ctime>
 #include <clocale>
 #include <cstdlib>
@@ -773,15 +771,7 @@ void LyXFunc::dispatch(string const & s, bool verbose)
 	int const action = lyxaction.LookupFunc(s);
 
 	if (action == LFUN_UNKNOWN_ACTION) {
-#if USE_BOOST_FORMAT
-boost::format fmt(_("Unknown function (%1$s)"));
-fmt % s;
-owner->message(fmt.str());
-#else
-		string const msg = string(_("Unknown function ("))
-			+ s + ')';
-		owner->message(msg);
-#endif
+		owner->message(bformat(_("Unknown function (%1$s)"), s));
 		return;
 	}
 
@@ -1051,19 +1041,11 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_MENUWRITE:
 		if (!owner->buffer()->isUnnamed()) {
-			ostringstream s1;
-#if USE_BOOST_FORMAT
-			s1 << boost::format(_("Saving document %1$s..."))
-			   % MakeDisplayPath(owner->buffer()->fileName());
-#else
-			s1 << _("Saving document ")
-			   << MakeDisplayPath(owner->buffer()->fileName())
-			   << _("...");
-#endif
-			owner->message(STRCONV(s1.str()));
+			string const str = bformat(_("Saving document %1$s..."),
+			   MakeDisplayPath(owner->buffer()->fileName()));
+			owner->message(str);
 			MenuWrite(view(), owner->buffer());
-			s1 << _(" done.");
-			owner->message(STRCONV(s1.str()));
+			owner->message(str + _(" done."));
 		} else
 			WriteAs(view(), owner->buffer());
 		break;
@@ -1074,14 +1056,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_MENURELOAD: {
 		string const file = MakeDisplayPath(view()->buffer()->fileName(), 20);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Any changes will be lost. Are you sure you want to revert to the saved version of the document %1$s?"));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("Any changes will be lost. Are you sure you want to revert to the saved version of the document");
-		text += file + _("?");
-#endif
+		string text = bformat(_("Any changes will be lost. Are you sure "
+			"you want to revert to the saved version of the document %1$s?"), file);
 		int const ret = Alert::prompt(_("Revert to saved document?"),
 			text, 0, 1, _("&Revert"), _("&Cancel"));
 
@@ -1216,15 +1192,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			       << arg << "'. Bad installation?" << endl;
 			break;
 		}
-		ostringstream str;
-#if USE_BOOST_FORMAT
-		str << boost::format(_("Opening help file %1$s..."))
-		    % MakeDisplayPath(fname);
-#else
-		str << _("Opening help file ")
-		    << MakeDisplayPath(fname) << _("...");
-#endif
-		owner->message(STRCONV(str.str()));
+		owner->message(bformat(_("Opening help file %1$s..."),
+			MakeDisplayPath(fname)));
 		view()->buffer(bufferlist.loadLyXFile(fname, false));
 		break;
 	}
@@ -1568,20 +1537,10 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			 x11_name != lcolor.getX11Name(LColor::graphicsbg));
 
 		if (!lcolor.setColor(lyx_name, x11_name)) {
-#if USE_BOOST_FORMAT
 			setErrorMessage(
-				boost::io::str(
-					boost::format(
-						_("Set-color \"%1$s\" failed "
+				bformat(_("Set-color \"%1$s\" failed "
 						  "- color is undefined or "
-						  "may not be redefined"))
-					% lyx_name));
-#else
-			setErrorMessage(_("Set-color ") + lyx_name
-					+ _(" failed - color is undefined"
-					    " or may not be redefined"));
-#endif
-
+						  "may not be redefined"), lyx_name));
 			break;
 		}
 
@@ -1821,33 +1780,17 @@ void LyXFunc::open(string const & fname)
 		return;
 	}
 
-	ostringstream str;
-#if USE_BOOST_FORMAT
-	str << boost::format(_("Opening document %1$s...")) % disp_fn;
-#else
-	str << _("Opening document ") << disp_fn << _("...");
-#endif
-
-	owner->message(STRCONV(str.str()));
+	owner->message(bformat(_("Opening document %1$s..."), disp_fn));
 
 	Buffer * openbuf = bufferlist.loadLyXFile(filename);
-	ostringstream str2;
+	string str2;
 	if (openbuf) {
 		view()->buffer(openbuf);
-#if USE_BOOST_FORMAT
-		str2 << boost::format(_("Document %1$s opened.")) % disp_fn;
-#else
-		str2 << _("Document ") << disp_fn << _(" opened.");
-#endif
+		str2 = bformat(_("Document %1$s opened."), disp_fn);
 	} else {
-#if USE_BOOST_FORMAT
-		str2 << boost::format(_("Could not open document %1$s"))
-			% disp_fn;
-#else
-		str2 << _("Could not open document ") << disp_fn;
-#endif
+		str2 = bformat(_("Could not open document %1$s"), disp_fn);
 	}
-	owner->message(STRCONV(str2.str()));
+	owner->message(str2);
 }
 
 
@@ -1870,14 +1813,8 @@ void LyXFunc::doImport(string const & argument)
 				initpath = trypath;
 		}
 
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Select %1$s file to import"));
-		fmt % formats.prettyName(format);
-		string const text = fmt.str();
-#else
-		string const text = _("Select ") + formats.prettyName(format)
-			+ _(" file to import");;
-#endif
+		string const text = bformat(_("Select %1$s file to import"),
+			formats.prettyName(format));
 
 		FileDialog fileDlg(text,
 			LFUN_IMPORT,
@@ -1924,14 +1861,8 @@ void LyXFunc::doImport(string const & argument)
 	if (FileInfo(lyxfile, true).exist() && filename != lyxfile) {
 		string const file = MakeDisplayPath(lyxfile, 30);
 
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("The document %1$s already exists.\n\nDo you want to over-write that document?"));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("The document ");
-		text += file + _(" already exists.\n\nDo you want to over-write that document?");
-#endif
+		string text = bformat(_("The document %1$s already exists.\n\n"
+			"Do you want to over-write that document?"), file);
 		int const ret = Alert::prompt(_("Over-write document?"),
 			text, 0, 1, _("&Over-write"), _("&Cancel"));
 

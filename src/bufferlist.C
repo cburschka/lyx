@@ -34,7 +34,6 @@
 #include "support/LAssert.h"
 
 #include <boost/bind.hpp>
-#include "support/BoostFormat.h"
 
 #include <cassert>
 #include <algorithm>
@@ -69,14 +68,8 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 	else
 		file = MakeDisplayPath(buf->fileName(), 30);
 
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("The document %1$s has unsaved changes.\n\nDo you want to save the document?"));
-	fmt % file;
-	string text = fmt.str();
-#else
-	string text = _("The document ");
-	text += file + _(" has unsaved changes.\n\nWhat do you want to do with it?");
-#endif
+	string text = bformat(_("The document %1$s has unsaved changes.\n\n"
+		"Do you want to save the document?"), file);
 	int const ret = Alert::prompt(_("Save changed document?"),
 		text, 0, 2, _("&Save Changes"), _("&Discard Changes"), _("&Cancel"));
 
@@ -178,14 +171,9 @@ bool BufferList::close(Buffer * buf, bool ask)
 		fname = OnlyFilename(buf->fileName());
 	else
 		fname = MakeDisplayPath(buf->fileName(), 30);
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("The document %1$s has unsaved changes.\n\nDo you want to save the document?"));
-	fmt % fname;
-	string text = fmt.str();
-#else
-	string text = _("The document ");
-	text += fname + _(" has unsaved changes.\n\nWhat do you want to do with it?");
-#endif
+
+	string text = bformat(_("The document %1$s has unsaved changes.\n\n"
+		"Do you want to save the document?"), fname);
 	int const ret = Alert::prompt(_("Save changed document?"),
 		text, 0, 2, _("&Save Changes"), _("&Discard Changes"), _("&Cancel"));
 
@@ -274,15 +262,9 @@ void BufferList::emergencyWrite(Buffer * buf)
 	string const doc = buf->isUnnamed()
 		? OnlyFilename(buf->fileName()) : buf->fileName();
 
-#if USE_BOOST_FORMAT
-	lyxerr << boost::format(_("LyX: Attempting to save document %1$s"))
-		% doc
-	       << endl;
-#else
-	lyxerr << _("LyX: Attempting to save document ") << doc << endl;
-#endif
-	// We try to save three places:
+	lyxerr << bformat(_("LyX: Attempting to save document %1$s"), doc) << endl;
 
+	// We try to save three places:
 	// 1) Same place as document. Unless it is an unnamed doc.
 	if (!buf->isUnnamed()) {
 		string s = buf->fileName();
@@ -335,14 +317,8 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 
 	if (!fileInfo2.exist()) {
 		string const file = MakeDisplayPath(s, 50);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("The specified document\n%1$s\ncould not be read."));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("The specified document\n");
-		text += file + _(" could not be read.");
-#endif
+		string text = bformat(_("The specified document\n%1$s"
+			"\ncould not be read."),	file);
 		Alert::error(_("Could not read document"), text);
 		return 0;
 	}
@@ -359,14 +335,8 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 		if (fileInfoE.getModificationTime()
 		    > fileInfo2.getModificationTime()) {
 			string const file = MakeDisplayPath(s, 20);
-#if USE_BOOST_FORMAT
-			boost::format fmt(_("An emergency save of the document %1$s exists.\n\nRecover emergency save?"));
-			fmt % file;
-			string text = fmt.str();
-#else
-			string text = _("An emergency save of the document ");
-			text += file + _(" exists.\n\nRecover emergency save?");
-#endif
+			string text = bformat(_("An emergency save of the document %1$s exists.\n"
+				"\nRecover emergency save?"), file);
 			int const ret = Alert::prompt(_("Load emergency save?"),
 				text, 0, 1, _("&Recover"), _("&Load Original"));
 
@@ -390,14 +360,8 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 			if (fileInfoA.getModificationTime()
 			    > fileInfo2.getModificationTime()) {
 				string const file = MakeDisplayPath(s, 20);
-#if USE_BOOST_FORMAT
-				boost::format fmt(_("The backup of the document %1$s is newer.\n\nLoad the backup instead?"));
-				fmt % file;
-				string text = fmt.str();
-#else
-				string text = _("The backup of the document ");
-				text += file + _(" is newer.\n\nLoad the backup instead?");
-#endif
+				string text = bformat(_("The backup of the document %1$s is newer.\n\n"	
+					"Load the backup instead?"), file);
 				int const ret = Alert::prompt(_("Load backup?"),
 					text, 0, 1, _("&Load backup"), _("Load &original"));
 
@@ -472,14 +436,8 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 		}
 		if (!templateok) {
 			string const file = MakeDisplayPath(tname, 50);
-#if USE_BOOST_FORMAT
-			boost::format fmt(_("The specified document template\n%1$s\ncould not be read."));
-			fmt % file;
-			string text = fmt.str();
-#else
-			string text = _("The specified document template\n");
-			text += file + _(" could not be read.");
-#endif
+			string text  = bformat(_("The specified document template\n%1$s\n"
+				"could not be read."), file);
 			Alert::error(_("Could not read template"), text);
 			// no template, start with empty buffer
 			b->paragraphs.push_back(new Paragraph);
@@ -514,14 +472,8 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	// file already open?
 	if (exists(s)) {
 		string const file = MakeDisplayPath(s, 20);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("The document %1$s is already loaded.\n\nDo you want to revert to the saved version?"));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("The document ");
-		text += file + _(" is already loaded.\n\nDo you want to revert to the saved version?");
-#endif
+		string text = bformat(_("The document %1$s is already loaded.\n\n"
+			"Do you want to revert to the saved version?"), file);
 		int const ret = Alert::prompt(_("Revert to saved document?"),
 			text, 0, 1,  _("&Revert"), _("&Switch to document"));
 
@@ -554,14 +506,8 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		string const file = MakeDisplayPath(s, 20);
 		// Here we probably should run
 		if (LyXVC::file_not_found_hook(s)) {
-#if USE_BOOST_FORMAT
-			boost::format fmt(_("Do you want to retrieve the document %1$s from version control?"));
-			fmt % file;
-			string text = fmt.str();
-#else
-			string text = _("Do you want to retrieve the document ");
-			text += file + _(" from version control?");
-#endif
+			string text = bformat(_("Do you want to retrieve the document"
+				" %1$s from version control?"), file);
 			int const ret = Alert::prompt(_("Retrieve from version control?"),
 				text, 0, 1, _("&Retrieve"), _("&Cancel"));
 
@@ -574,14 +520,8 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 			}
 		}
 
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("The document %1$s does not yet exist.\n\nDo you want to create a new document?"));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("The document ");
-		text += file + _(" does not yet exist.\n\nDo you want to create a new document?");
-#endif
+		string text = bformat(_("The document %1$s does not yet exist.\n\n"
+			"Do you want to create a new document?"), file);
 		int const ret = Alert::prompt(_("Create new document?"),
 			text, 0, 1, _("&Create"), _("Cancel"));
 

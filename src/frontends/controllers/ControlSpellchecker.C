@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlSpellchecker.h"
 #include "ViewBase.h"
 #include "buffer.h"
@@ -32,9 +31,8 @@
 
 #include "frontends/Alert.h"
 
-#include "support/BoostFormat.h"
-
 using std::endl;
+
 
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
@@ -221,22 +219,10 @@ void ControlSpellchecker::showSummary()
 	}
 
 	string message;
-
-#if USE_BOOST_FORMAT
-	if (count_ != 1) {
-		boost::format fmter(_("%1$d words checked."));
-		fmter % count_;
-		message += fmter.str();
-	} else {
-		message += _("One word checked.");
-	}
-#else
-	if (count_ != 1) {
-		message += tostr(count_) + _(" words checked.");
-	} else {
+	if (count_ != 1)
+		message = bformat(_("%1$s words checked."), tostr(count_));
+	else
 		message = _("One word checked.");
-	}
-#endif
 
 	view().hide();
 	Alert::information(_("Spell-checking is complete"), message);

@@ -23,12 +23,11 @@
 #include "gettext.h"
 #include "BufferView.h"
 
-#include "support/BoostFormat.h"
-
 #include <algorithm>
 
 using std::vector;
 using std::find;
+
 
 extern BufferList bufferlist;
 extern void InsertAsciiFile(BufferView *, string const &, bool);
@@ -38,13 +37,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		      string const & format)
 {
 	string const displaypath = MakeDisplayPath(filename);
-	ostringstream s1;
-#if USE_BOOST_FORMAT
-	s1 << boost::format(_("Importing %1$s...")) % displaypath;
-#else
-	s1 << _("Importing ") << displaypath << _("...");
-#endif
-	lv->message(STRCONV(s1.str()));
+	lv->message(bformat(_("Importing %1$s..."), displaypath));
 
 	string const lyxfile = ChangeExtension(filename, ".lyx");
 
@@ -62,16 +55,9 @@ bool Importer::Import(LyXView * lv, string const & filename,
 			}
 		}
 		if (loader_format.empty()) {
-#if USE_BOOST_FORMAT
-// FIXME: better english ...
 			Alert::error(_("Couldn't import file"),
-				     boost::io::str(boost::format(_("No information for importing the format %1$s."))
-				   % formats.prettyName(format)));
-#else
-			Alert::error(_("Couldn't import file"),
-				     _("No information for importing the format ")
-				     + formats.prettyName(format) + ".");
-#endif
+				     bformat(_("No information for importing the format %1$s."),
+				         formats.prettyName(format)));
 			return false;
 		}
 	} else

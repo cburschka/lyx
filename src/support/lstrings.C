@@ -15,6 +15,7 @@
 #include "lstrings.h"
 #include "LAssert.h"
 #include "debug.h"
+#include "BoostFormat.h"
 
 #include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>
@@ -670,3 +671,60 @@ string const getStringFromVector(vector<string> const & vec,
 	}
 	return str;
 }
+
+
+#if USE_BOOST_FORMAT
+
+string bformat(char const * fmt, string const & arg1)
+{
+	return STRCONV((boost::format(fmt) % STRCONV(arg1)).str());
+}
+
+
+string bformat(char const * fmt, string const & arg1, string const & arg2)
+{
+	return STRCONV((boost::format(fmt) % STRCONV(arg1) % STRCONV(arg2)).str());
+}
+
+string bformat(char const * fmt, string const & arg1, string const & arg2,
+	string const & arg3, string const & arg4)
+{
+	return STRCONV((boost::format(fmt) % STRCONV(arg1) % STRCONV(arg2)
+		% STRCONV(arg3) % STRCONV(arg4)).str());
+}
+
+#else 
+
+string bformat(char const * fmt, string const & arg1)
+{
+	Assert(contains(fmt, "%1$s"));
+	string const str = subst(fmt, "%1$s", arg1);
+	return subst(str, "%%", "%");
+}
+
+
+string bformat(char const * fmt, string const & arg1, string const & arg2)
+{
+	Assert(contains(fmt, "%1$s"));
+	Assert(contains(fmt, "%2$s"));
+	string str = subst(fmt, "%1$s", arg1);
+	str = subst(str, "%2$s", arg2);
+	return subst(str, "%%", "%");
+}
+
+
+string bformat(char const * fmt, string const & arg1, string const & arg2,
+	string const & arg3, string const & arg4)
+{
+	Assert(contains(fmt, "%1$s"));
+	Assert(contains(fmt, "%2$s"));
+	Assert(contains(fmt, "%3$s"));
+	Assert(contains(fmt, "%4$s"));
+	string str = subst(fmt, "%1$s", arg1);
+	str = subst(str, "%2$s", arg2);
+	str = subst(str, "%3$s", arg3);
+	str = subst(str, "%4$s", arg4);
+	return subst(str, "%%", "%");
+}
+
+#endif

@@ -1,3 +1,10 @@
+
+2003-05-12 André Pönitz <poenitz@gmx.net>
+
+	* formula.C:
+	* math_parser.C:
+	* math_cursor.C: boost::format -> bformat  all over the place
+
 2003-05-06  Ling Li  <ling@caltech.edu>
  
  	* Makefile, math_makeboxinset.[Ch]:

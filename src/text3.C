@@ -36,6 +36,7 @@
 #include "insets/insetnewline.h"
 #include "undo_funcs.h"
 #include "text_funcs.h"
+#include "Lsstream.h"
 
 #include <ctime>
 #include <clocale>

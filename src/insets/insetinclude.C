@@ -7,8 +7,8 @@
  *
  * Full author contact details are available in file CREDITS
  */
-#include <config.h>
 
+#include <config.h>
 
 #include "insetinclude.h"
 #include "buffer.h"
@@ -20,6 +20,7 @@
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
+#include "Lsstream.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"

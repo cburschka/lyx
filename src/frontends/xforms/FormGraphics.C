@@ -126,12 +126,7 @@ void FormGraphics::build()
 		_("Default|Monochrome|Grayscale|Color|Do not display");
 	fl_addto_choice(file_->choice_display, display_List.c_str());
 
-#if USE_BOOST_FORMAT
-	string const width_list = boost::io::str(boost::format(_("Scale%%%%|%1$s")) % choice_Length_All);
-#else
-	// xgettext:no-c-format
-	string const width_list = _("Scale%%|") + choice_Length_All;
-#endif
+	string const width_list = bformat(_("Scale%%%%|%1$s"), choice_Length_All);
 	fl_addto_choice(file_->choice_width, width_list.c_str());
 
 	fl_addto_choice(file_->choice_height, choice_Length_All.c_str());

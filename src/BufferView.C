@@ -44,7 +44,6 @@
 #include "support/lyxfunctional.h" // equal_1st_in_pair
 #include "support/types.h"
 #include "support/lyxalgo.h" // lyx_count
-#include "support/BoostFormat.h"
 
 #include <fstream>
 
@@ -293,14 +292,8 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	if (!fi.readable()) {
 		string const file = MakeDisplayPath(fname, 50);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("The specified document\n%1$s\ncould not be read."));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("The specified document\n");
-		text += file + _(" could not be read.");
-#endif
+		string const text =
+			bformat(_("The specified document\n%1$s\ncould not be read."), file);
 		Alert::error(_("Could not read document"), text);
 		return false;
 	}
@@ -310,14 +303,8 @@ bool BufferView::insertLyXFile(string const & filen)
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
 		string const file = MakeDisplayPath(fname, 50);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Could not open the specified document\n%1$s."));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("Could not open the specified document\n");
-		text += file + ".";
-#endif
+		string const text =
+			bformat(_("Could not open the specified document\n"), file);
 		Alert::error(_("Could not open file"), text);
 		return false;
 	}

@@ -10,19 +10,18 @@
 
 #include <config.h>
 
-#include <algorithm>
-
 #include "exporter.h"
 #include "buffer.h"
 #include "lyx_cb.h" //ShowMessage()
 #include "support/filetools.h"
-#include "support/BoostFormat.h"
 #include "lyxrc.h"
 #include "converter.h"
 #include "format.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
+
+#include <algorithm>
 
 using std::vector;
 using std::find;
@@ -59,16 +58,9 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			}
 		}
 		if (backend_format.empty()) {
-#if USE_BOOST_FORMAT
-// FIXME: better english ...
 			Alert::error(_("Couldn't export file"),
-				     boost::io::str(boost::format(_("No information for exporting the format %1$s."))
-				   % formats.prettyName(format)));
-#else
-			Alert::error(_("Couldn't export file"),
-				     _("No information for exporting the format ")
-				     + formats.prettyName(format) + ".");
-#endif
+				bformat(_("No information for exporting the format %1$s."),
+				   formats.prettyName(format)));
 			return false;
 		}
 	} else

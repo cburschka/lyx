@@ -36,7 +36,6 @@
 
 #include "insets/updatableinset.h"
 
-#include "support/BoostFormat.h"
 
 namespace {
 
@@ -67,7 +66,7 @@ bool font2string(LyXFont const & font, bool toggle, string & data)
 	   << "color " << font.color() << '\n'
 	   << "language " << lang << '\n'
 	   << "toggleall " << tostr(toggle);
-	data = os.str();
+	data = STRCONV(os.str());
 	return true;
 }
 
@@ -76,7 +75,7 @@ bool font2string(LyXFont const & font, bool toggle, string & data)
 // If successful, returns true
 bool string2font(string const & data, LyXFont & font, bool & toggle)
 {
-	istringstream is(data);
+	istringstream is(STRCONV(data));
 	LyXLex lex(0,0);
 	lex.setStream(is);
 
@@ -320,22 +319,12 @@ string const currentState(BufferView * bv)
 		buffer->params.getLyXTextClass().defaultfont();
 	font.reduce(defaultfont);
 
-#if USE_BOOST_FORMAT
-	state << boost::format(_("Font: %1$s")) % font.stateText(&buffer->params);
-#else
-	state << _("Font: ") << font.stateText(&buffer->params);
-#endif
+	state << bformat(_("Font: %1$s"), font.stateText(&buffer->params));
 
 	// The paragraph depth
 	int depth = text->getDepth();
-	if (depth > 0) {
-#if USE_BOOST_FORMAT
-		state << boost::format(_(", Depth: %1$d")) % depth;
-#else
-		state << _(", Depth: ") << depth;
-#endif
-	}
-
+	if (depth > 0)
+		state << bformat(_(", Depth: %1$s"), tostr(depth));
 
 	// The paragraph spacing, but only if different from
 	// buffer spacing.

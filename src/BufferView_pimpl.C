@@ -19,6 +19,7 @@
 #include "gettext.h"
 #include "intl.h"
 #include "iterators.h"
+#include "Lsstream.h"
 #include "lyx_cb.h" // added for Dispatch functions
 #include "lyx_main.h"
 #include "lyxfind.h"
@@ -57,7 +58,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/signals/connection.hpp>
-#include "support/BoostFormat.h"
 
 #include <unistd.h>
 #include <sys/wait.h>
@@ -621,15 +621,8 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 	saved_positions[i] = Position(buffer_->fileName(),
 				      bv_->text->cursor.par()->id(),
 				      bv_->text->cursor.pos());
-	if (i > 0) {
-		ostringstream str;
-#if USE_BOOST_FORMAT
-		str << boost::format(_("Saved bookmark %1$d")) % i;
-#else
-		str << _("Saved bookmark ") << i;
-#endif
-		owner_->message(STRCONV(str.str()));
-	}
+	if (i > 0)
+		owner_->message(bformat(_("Saved bookmark %1$s"), tostr(i)));
 }
 
 
@@ -657,15 +650,8 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 			     min(par->size(), saved_positions[i].par_pos));
 
 	update(BufferView::SELECT);
-	if (i > 0) {
-		ostringstream str;
-#if USE_BOOST_FORMAT
-		str << boost::format(_("Moved to bookmark %1$d")) % i;
-#else
-		str << _("Moved to bookmark ") << i;
-#endif
-		owner_->message(STRCONV(str.str()));
-	}
+	if (i > 0)
+		owner_->message(bformat(_("Moved to bookmark %1$s"), tostr(i)));
 }
 
 
@@ -853,33 +839,13 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	// necessary
 	filename = FileSearch(string(), filename, "lyx");
 
-	string const disp_fn(MakeDisplayPath(filename));
-
-	ostringstream s1;
-#if USE_BOOST_FORMAT
-	s1 << boost::format(_("Inserting document %1$s...")) % disp_fn;
-#else
-	s1 << _("Inserting document ") << disp_fn << _("...");
-#endif
-	owner_->message(STRCONV(s1.str()));
+	string const disp_fn = MakeDisplayPath(filename);
+	owner_->message(bformat(_("Inserting document %1$s..."), disp_fn));
 	bool const res = bv_->insertLyXFile(filename);
-	if (res) {
-		ostringstream str;
-#if USE_BOOST_FORMAT
-		str << boost::format(_("Document %1$s inserted.")) % disp_fn;
-#else
-		str << _("Document ") << disp_fn << _(" inserted.");
-#endif
-		owner_->message(STRCONV(str.str()));
-	} else {
-		ostringstream str;
-#if USE_BOOST_FORMAT
-		str << boost::format(_("Could not insert document %1$s")) % disp_fn;
-#else
-		str << _("Could not insert document ") << disp_fn;
-#endif
-		owner_->message(STRCONV(str.str()));
-	}
+	if (res) 
+		owner_->message(bformat(_("Document %1$s inserted."), disp_fn));
+	else 
+		owner_->message(bformat(_("Could not insert document %1$s"), disp_fn));
 }
 
 

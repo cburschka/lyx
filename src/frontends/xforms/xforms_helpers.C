@@ -10,23 +10,23 @@
 
 #include <config.h>
 
-
 #include "xforms_helpers.h"
 
 #include "lyxlex.h"
 #include "gettext.h"
 #include "lyxlength.h"
 #include "lyxgluelength.h"
+#include "Lsstream.h"
 
 #include "support/LAssert.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // frontStrip, strip
 
-#include <fstream>
-
 #include FORMS_H_LOCATION
 #include "combox.h"
+
+#include <fstream>
 
 using std::ofstream;
 using std::pair;

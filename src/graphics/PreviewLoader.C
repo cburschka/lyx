@@ -16,10 +16,10 @@
 #include "buffer.h"
 #include "converter.h"
 #include "format.h"
-
 #include "debug.h"
 #include "lyxrc.h"
 #include "LColor.h"
+#include "Lsstream.h"
 
 #include "insets/inset.h"
 

@@ -13,6 +13,7 @@
 
 #include "counters.h"
 #include "debug.h"
+#include "Lsstream.h"
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"

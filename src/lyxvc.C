@@ -13,12 +13,12 @@
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"
-#include "support/BoostFormat.h"
 
 #include <unistd.h>
 
 using std::endl;
 using std::pair;
+
 
 /* WARNING: Several of the vcs-> methods end up
  * deleting this object via BufferView::reload() !
@@ -80,14 +80,8 @@ bool LyXVC::ensureClean()
 		return true;
 
 	string const file = MakeDisplayPath(owner_->fileName(), 30);
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("The document %1$s has unsaved changes.\n\nDo you want to save the document?"));
-	fmt % file;
-	string text = fmt.str();
-#else
-	string text = _("The document ");
-	text += file + _(" has unsaved changes.\n\nDo you want to save the document?");
-#endif
+	string text = bformat(_("The document %1$s has unsaved changes.\n\n"
+		"Do you want to save the document?"), file);
 	int const ret = Alert::prompt(_("Save changed document?"),
 		text, 0, 1, _("&Save"), _("&Cancel"));
 
@@ -193,15 +187,9 @@ void LyXVC::revert()
 	lyxerr[Debug::LYXVC] << "LyXVC: revert" << endl;
 
 	string const file = MakeDisplayPath(owner_->fileName(), 20);
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("Reverting to the stored version of the document %1$s will "
-			"lose all current changes.\n\nDo you want to revert to the saved version?"));
-	fmt % file;
-	string text = fmt.str();
-#else
-	string text = _("Reverting to the stored version of the document ");
-	text += file + _(" will lose all current changes.\n\nDo you want to revert to the saved version?");
-#endif
+	string text = bformat(_("Reverting to the stored version of the "
+		"document %1$s will lose all current changes.\n\n"
+		"Do you want to revert to the saved version?"), file);
 	int const ret = Alert::prompt(_("Revert to stored version of document?"),
 		text, 0, 1, _("&Revert"), _("&Cancel"));
 

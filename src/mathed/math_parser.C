@@ -32,7 +32,6 @@ following hack as starting point to write some macros:
 
 #include <config.h>
 
-
 #include "math_parser.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"
@@ -63,6 +62,7 @@ following hack as starting point to write some macros:
 #include "ref_inset.h"
 
 #include "lyxlex.h"
+#include "Lsstream.h"
 #include "debug.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"

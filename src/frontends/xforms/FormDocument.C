@@ -141,7 +141,8 @@ void FormDocument::build()
 		} else {
 			string item =
 #if USE_BOOST_FORMAT
-				boost::io::str(boost::format(_("Unavailable: %1$s")) % tit->description());
+				STRCONV(boost::io::str(boost::format(_("Unavailable: %1$s"))
+					% tit->description()));
 #else
 				_("Unavailable: ") + tit->description();
 #endif

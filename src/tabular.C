@@ -30,6 +30,7 @@
 #include "support/LAssert.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
+#include "Lsstream.h"
 #include "tabular_funcs.h"
 #include "lyxlex.h"
 

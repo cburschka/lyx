@@ -25,6 +25,7 @@
 #include "gettext.h"
 #include "changes.h"
 #include "paragraph_funcs.h"
+#include "Lsstream.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"

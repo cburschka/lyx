@@ -241,4 +241,15 @@ std::vector<string> const getVectorFromString(string const & str,
 string const getStringFromVector(std::vector<string> const & vec,
 				 string const & delim = ",");
 
+// wrapper around boost::format using one argument %1$s
+string bformat(char const * fmt, string const & arg1);
+// arguments %1$s and %2$s
+string bformat(char const * fmt, string const & arg1, string const & arg2);
+// arguments %1$s and %2$s and %3$s
+string bformat(char const * fmt, string const & arg1, string const & arg2,
+               string const & arg3);
+// arguments %1$s and %2$s and %3$s and %4$s
+string bformat(char const * fmt, string const & arg1, string const & arg2,
+               string const & arg3, string const & arg4);
+
 #endif

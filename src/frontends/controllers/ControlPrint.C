@@ -29,7 +29,6 @@
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/systemcall.h"
-#include "support/BoostFormat.h"
 
 #include "debug.h" // for lyxerr
 
@@ -86,16 +85,9 @@ namespace {
 
 void showPrintError(string const & name)
 {
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Could not print the document %1$s.\n"
-			"Check that your printer is set up correctly."));
-		fmt % MakeDisplayPath(name, 50);
-		string str = fmt.str();
-#else
-		string str = _("Could not print the document ");
-		str += MakeDisplayPath(name, 50);
-		str += _(".\nCheck that your printer is set up correctly.");
-#endif
+		string str = bformat(_("Could not print the document %1$s.\n"
+			"Check that your printer is set up correctly."),
+			MakeDisplayPath(name, 50));
 		Alert::error(_("Print document failed"), str);
 }
 

@@ -1,4 +1,35 @@
 
+2003-05-12 André Pönitz <poenitz@gmx.net>
+
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* CutAndPaste.C:
+	* LaTeX.C:
+	* LaTeXFeatures.C:
+	* ParagraphParameters.C:
+	* buffer.C:
+	* bufferlist.C:
+	* bufferparams.C:
+	* bufferview_funcs.C:
+	* converter.C:
+	* counters.C:
+	* debug.C:
+	* exporter.C:
+	* format.C:
+	* importer.C:
+	* lyx_cb.C:
+	* lyx_main.C:
+	* lyxfont.C:
+	* lyxfunc.C:
+	* lyxvc.C:
+	* paragraph.C:
+	* paragraph_funcs.C:
+	* tabular.C:
+	* tabular_funcs.C:
+	* text2.C:
+	* text3.C:  boost::format -> bformat  all over the place
+
+
 2003-05-09 André Pönitz <poenitz@gmx.net>
 
 	* LColor.[Ch]: Pimpl the #include <map> away

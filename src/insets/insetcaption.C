@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "insetcaption.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
@@ -21,6 +20,7 @@
 #include "insets/insetwrap.h"
 #include "debug.h"
 #include "gettext.h"
+#include "Lsstream.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "support/BoostFormat.h"
@@ -92,18 +92,10 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 	string const fl = i2 ? floats.getType(type).name() : N_("Float");
 
 	// Discover the number...
-	// ...
-	string const num("#");
+	string const num = "#";
 
-#if USE_BOOST_FORMAT
 	// Generate the label
-	boost::format frm("%1$s %2$s:");
-	frm % _(fl) % num;
-	string const label = frm.str();
-#else
-	// Generate the label
-	string const label = _(fl) + ' ' + num + ':';
-#endif
+	string const label = bformat("%1$s %2$s:", _(fl), num);
 	Painter & pain = bv->painter();
 	int const w = font_metrics::width(label, f);
 	pain.text(int(x), baseline, label, f);

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "insettext.h"
 
 #include "buffer.h"
@@ -38,6 +37,7 @@
 #include "sgml.h"
 #include "rowpainter.h"
 #include "insetnewline.h"
+#include "Lsstream.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"

@@ -1,4 +1,18 @@
 
+2003-05-12 André Pönitz <poenitz@gmx.net>
+
+	* insetcaption.C:
+	* insetexternal.C:
+	* insetfloat.C:
+	* insetfloatlist.C:
+	* insetgraphics.C:
+	* insetinclude.C:
+	* insetminipage.C:
+	* insetminipage.C:
+	* insettabular.C:
+	* insettext.C:
+	* insetwwrap.C:  boost::format -> bformat  all over the place
+
 2003-05-05 André Pönitz <poenitz@gmx.net>
 
 	* insettext.h: add missing #include <map>

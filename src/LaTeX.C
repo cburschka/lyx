@@ -28,7 +28,6 @@
 #include "support/path.h"
 
 #include <boost/regex.hpp>
-#include "support/BoostFormat.h"
 
 #include <fstream>
 #include <cstdio>  // sscanf
@@ -70,13 +69,8 @@ namespace {
 
 void showRunMessage(LyXFunc * lf, unsigned int count)
 {
-	ostringstream str;
-#if USE_BOOST_FORMAT
-	str << boost::format(_("Waiting for LaTeX run number %1$d")) % count;
-#else
-	str << _("Waiting for LaTeX run number ") << count;
-#endif
-	lf->dispatch(FuncRequest(LFUN_MESSAGE, STRCONV(str.str())));
+	string str = bformat(_("Waiting for LaTeX run number %1$s"), tostr(count));
+	lf->dispatch(FuncRequest(LFUN_MESSAGE, str));
 }
 
 

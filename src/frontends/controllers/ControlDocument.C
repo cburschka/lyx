@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "BufferView.h"
 #include "ControlDocument.h"
 #include "ViewBase.h"
@@ -33,15 +32,13 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
-#include "support/BoostFormat.h"
-
 using std::endl;
 
 
 ControlDocument::ControlDocument(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d), bp_(0)
-{
-}
+{}
+
 
 ControlDocument::~ControlDocument()
 {}
@@ -129,31 +126,15 @@ void ControlDocument::classApply()
 		return;
 
 	string s;
-#if USE_BOOST_FORMAT
 	if (ret == 1) {
-		boost::format fmt(_("One paragraph could not be converted\n"
-			"into the document class %1$s."));
-		fmt % textclasslist[new_class].name();
-		s = fmt.str();
+		s = bformat(_("One paragraph could not be converted\n"
+			"into the document class %1$s."),
+			textclasslist[new_class].name());
 	} else {
-		boost::format fmt(_("%1$s paragraphs could not be converted\n"
-			"into the document class %2$s."));
-		fmt % tostr(ret);
-		fmt % textclasslist[new_class].name();
-		s = fmt.str();
+		s = bformat(_("%1$s paragraphs could not be converted\n"
+			"into the document class %2$s."),
+			textclasslist[new_class].name());
 	}
-#else
-	if (ret == 1) {
-		s += _("One paragraph could not be converted\n"
-			"into the document class ");
-		s += textclasslist[new_class].name() + ".";
-	} else {
-		s += tostr(ret);
-		s += _(" paragraphs could not be converted\n"
-			"into the document class ");
-		s += textclasslist[new_class].name() + ".";
-	}
-#endif
 	Alert::warning(_("Class conversion errors"), s);
 }
 
@@ -164,18 +145,9 @@ bool ControlDocument::loadTextclass(lyx::textclass_type tc) const
 	if (success)
 		return success;
 
-	string s;
-
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("The document could not be converted\n"
-			"into the document class %1$s."));
-	fmt % textclasslist[tc].name();
-	s = fmt.str();
-#else
-	s += _("The document could not be converted\n"
-	       "into the document class ");
-	s += textclasslist[tc].name() + ".";
-#endif
+	string s = bformat(_("The document could not be converted\n"
+			"into the document class %1$s."),
+			textclasslist[tc].name());
 	Alert::error(_("Could not change class"), s);
 
 	return success;

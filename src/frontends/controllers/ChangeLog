@@ -1,3 +1,11 @@
+
+2003-05-12 André Pönitz <poenitz@gmx.net>
+
+	* ControlDocument.C:
+	* ControlPrint.C:
+	* ControlSpellchecker.C:
+	* biblio.C: boost::format -> bformat  all over the place
+
 2003-05-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am: better lib building

@@ -58,6 +58,7 @@ string const write_attribute(string const & name, LyXLength const & value)
 	return write_attribute(name, value.asString());
 }
 
+
 string const tostr(LyXAlignment const & num)
 {
 	switch (num) {

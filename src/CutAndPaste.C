@@ -17,17 +17,17 @@
 #include "ParagraphParameters.h"
 #include "lyxtext.h"
 #include "lyxcursor.h"
-#include "gettext.h"
 #include "iterators.h"
 #include "lyxtextclasslist.h"
 #include "undo_funcs.h"
+#include "gettext.h"
 #include "paragraph_funcs.h"
 #include "debug.h"
 
 #include "insets/inseterror.h"
 
-#include "support/BoostFormat.h"
 #include "support/LAssert.h"
+#include "support/lstrings.h"
 #include "support/limited_stack.h"
 
 using std::endl;
@@ -354,28 +354,12 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 
 		if (!hasLayout && name != tclass1.defaultLayoutName()) {
 			++ret;
-#if USE_BOOST_FORMAT
-			boost::format fmt(_("Layout had to be changed from\n"
-					    "%1$s to %2$s\n"
-					    "because of class conversion from\n"
-					    "%3$s to %4$s"));
-			fmt     % name
-				% par->layout()->name()
-				% tclass1.name()
-				% tclass2.name();
-
-			string const s = fmt.str();
-#else
-			string const s = _("Layout had to be changed from\n")
-				+ name + _(" to ")
-				+ par->layout()->name()
-				+ _("\nbecause of class conversion from\n")
-				+ tclass1.name() + _(" to ")
-				+ tclass2.name();
-#endif
+			string const s = bformat(
+				_("Layout had to be changed from\n%1$s to %2$s\n"
+				"because of class conversion from\n%3$s to %4$s"),
+			 name, par->layout()->name(), tclass1.name(), tclass2.name());
 			// To warn the user that something had to be done.
-			InsetError * new_inset = new InsetError(s);
-			par->insertInset(0, new_inset);
+			par->insertInset(0, new InsetError(s));
 		}
 	}
 	return ret;

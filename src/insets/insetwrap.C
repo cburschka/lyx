@@ -23,6 +23,7 @@
 #include "lyxfont.h"
 #include "lyxlex.h"
 #include "lyxtext.h"
+#include "Lsstream.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"

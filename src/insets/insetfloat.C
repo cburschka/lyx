@@ -8,8 +8,8 @@
  *
  * Full author contact details are available in file CREDITS
  */
-#include <config.h>
 
+#include <config.h>
 
 #include "insetfloat.h"
 #include "insettext.h"
@@ -26,6 +26,7 @@
 #include "lyxfont.h"
 #include "lyxlex.h"
 #include "lyxtext.h"
+#include "Lsstream.h"
 
 #include "support/LOstream.h"
 #include "support/lstrings.h"

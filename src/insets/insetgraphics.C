@@ -52,7 +52,6 @@ TODO
 
 #include <config.h>
 
-
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
 
@@ -71,8 +70,9 @@ TODO
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
-#include "frontends/lyx_gui.h"
+#include "Lsstream.h"
 
+#include "frontends/lyx_gui.h"
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
 #include "frontends/font_metrics.h"
@@ -798,15 +798,7 @@ int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 	// 1. Convert file to ascii using gifscii
 	// 2. Read ascii output file and add it to the output stream.
 	// at least we send the filename
-#if USE_BOOST_FORMAT
-	os << '<'
-	   << boost::format(_("Graphics file: %1$s")) % params().filename
-	   << ">\n";
-#else
-	os << '<'
-	   << _("Graphics file: ") << params().filename
-	   << ">\n";
-#endif
+	os << '<' << bformat(_("Graphics file: %1$s"), params().filename) << ">\n";
 	return 0;
 }
 

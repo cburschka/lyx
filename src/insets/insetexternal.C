@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "insetexternal.h"
 #include "ExternalTemplate.h"
 #include "BufferView.h"
@@ -21,6 +20,7 @@
 #include "gettext.h"
 #include "debug.h"
 #include "lyxlex.h"
+#include "Lsstream.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"

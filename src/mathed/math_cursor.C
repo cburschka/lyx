@@ -18,11 +18,11 @@
 #include <config.h>
 #include <lyxrc.h>
 
-
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "support/limited_stack.h"
 #include "debug.h"
+#include "Lsstream.h"
 #include "frontends/Painter.h"
 #include "math_cursor.h"
 #include "formulabase.h"

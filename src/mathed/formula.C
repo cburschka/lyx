@@ -27,6 +27,7 @@
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
+#include "Lsstream.h"
 
 #include "BufferView.h"
 #include "gettext.h"

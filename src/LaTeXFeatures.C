@@ -19,6 +19,7 @@
 #include "language.h"
 #include "encoding.h"
 #include "LString.h"
+#include "Lsstream.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"

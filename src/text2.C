@@ -12,7 +12,9 @@
 
 #include "lyxtext.h"
 #include "LString.h"
+#include "Lsstream.h"
 #include "paragraph.h"
+#include "funcrequest.h"
 #include "frontends/LyXView.h"
 #include "undo_funcs.h"
 #include "buffer.h"
@@ -40,7 +42,6 @@
 #include "support/textutils.h"
 #include "support/lstrings.h"
 
-#include "support/BoostFormat.h"
 #include <boost/tuple/tuple.hpp>
 
 using std::vector;
@@ -1188,17 +1189,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 				textclass.counters().step(fl.type());
 
 				// Doesn't work... yet.
-#if USE_BOOST_FORMAT
-				s = boost::io::str(boost::format(_("%1$s #:")) % buf->B_(fl.name()));
-				// s << boost::format(_("%1$s %1$d:")
-				//        % fl.name()
-				//	  % buf->counters().value(fl.name());
-#else
-				ostringstream o;
-				//o << fl.name() << ' ' << buf->counters().value(fl.name()) << ":";
-				o << buf->B_(fl.name()) << " #:";
-				s = STRCONV(o.str());
-#endif
+				s = bformat(_("%1$s #:"), buf->B_(fl.name()));
 			} else {
 				// par->SetLayout(0);
 				// s = layout->labelstring;

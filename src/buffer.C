@@ -66,7 +66,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
-#include "support/BoostFormat.h"
 
 #include <fstream>
 #include <iomanip>
@@ -147,14 +146,8 @@ Buffer::~Buffer()
 		users->buffer(0);
 
 	if (!tmppath.empty() && destroyDir(tmppath) != 0) {
-#if USE_BOOST_FORMAT
-		boost::format fmt = _("Could not remove the temporary directory %1$s");
-		fmt % tmppath;
-		string msg = fmt.str();
-#else
-		string msg = _("Could not remove the temporary directory ") + tmppath;
-#endif
-		Alert::warning(_("Could not remove temporary directory"), msg);
+		Alert::warning(_("Could not remove temporary directory"), 
+			bformat(_("Could not remove the temporary directory %1$s"), tmppath));
 	}
 
 	paragraphs.clear();
@@ -257,16 +250,9 @@ namespace {
 
 void unknownClass(string const & unknown)
 {
-	string msg =
-#if USE_BOOST_FORMAT
-		boost::io::str(boost::format(
-			_("Using the default document class, because the "
-			" class %1$s is unknown.")) % unknown);
-#else
-		_("Using the default document class, because the "
-		" class ") + unknown + (" is unknown.");
-#endif
-	Alert::warning(_("Unknown document class"), msg);
+	Alert::warning(_("Unknown document class"), 
+		bformat(_("Using the default document class, because the "
+			" class %1$s is unknown."), unknown));
 }
 
 } // anon
@@ -321,16 +307,9 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 
 		if (!params.getLyXTextClass().load()) {
 			string theclass = params.getLyXTextClass().name();
-			string msg =
-#if USE_BOOST_FORMAT
-				boost::io::str(boost::format(
-					_("Using the default document class, because the "
-					" class %1$s could not be loaded.")) % theclass);
-#else
-				_("Using the default document class, because the "
-				" class ") + theclass + (" could not be loaded.");
-#endif
-			Alert::error(_("Can't load document class"), msg);
+			Alert::error(_("Can't load document class"), bformat(
+					"Using the default document class, because the "
+					" class %1$s could not be loaded.", theclass));
 			params.textclass = 0;
 		}
 	} else {
@@ -365,36 +344,22 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 
 
 	if (unknown_tokens > 0) {
-#if USE_BOOST_FORMAT
 		string s;
 		if (unknown_tokens == 1) {
-			boost::format fmt(_("Encountered one unknown token when reading the document %1$s."));
-			fmt % fileName();
-			s = fmt.str();
+			s = bformat(_("Encountered one unknown token when reading "
+				"the document %1$s."), fileName());
 		} else {
-			boost::format fmt(_("Encountered %1$s unknown tokens when reading the document %2$s."));
-			fmt % tostr(unknown_tokens);
-			fmt % fileName();
-			s = fmt.str();
-		}
-#else
-		string s = _("Encountered ");
-		if (unknown_tokens == 1) {
-			s += _("one unknown token");
-		} else {
-			s += tostr(unknown_tokens);
-			s += _(" unknown tokens");
+			s = bformat(_("Encountered %1$s unknown tokens when reading "
+				"the document %2$s."), tostr(unknown_tokens), fileName());
 		}
 		Alert::warning(_("Document format failure"), s);
-#endif
 	}
 
 	return the_end_read;
 }
 
 
-int
-Buffer::readParagraph(LyXLex & lex, string const & token,
+int Buffer::readParagraph(LyXLex & lex, string const & token,
 		      ParagraphList & pars, ParagraphList::iterator & pit,
 		      Paragraph::depth_type & depth)
 {
@@ -964,14 +929,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
 		string const file = MakeDisplayPath(fname, 50);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Could not save the document\n%1$s."));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("Could not save the document\n");
-		text += file + ".";
-#endif
+		string text = bformat(_("Could not save the document\n%1$s."), file);
 		Alert::error(_("Could not save document"), text);
 		return;
 	}
@@ -1001,14 +959,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
 		string const file = MakeDisplayPath(fname, 50);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Could not open the specified document\n%1$s."));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("Could not open the specified document\n");
-		text += file + ".";
-#endif
+		string text = bformat(_("Could not open the specified document\n%1$s."),
+			file);
 		Alert::error(_("Could not open file"), text);
 		return;
 	}
@@ -1167,14 +1119,8 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 	if (!ofs) {
 		string const file = MakeDisplayPath(fname, 50);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Could not save the specified document\n%1$s.\n"));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("Could not save the specified document\n");
-		text += file + _(".\n");
-#endif
+		string text = bformat(_("Could not save the specified document\n%1$s.\n"),
+			file);
 		Alert::error(_("Could not save document"), text);
 		return;
 	}
@@ -1630,14 +1576,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
 		string const file = MakeDisplayPath(fname, 50);
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Could not save the specified document\n%1$s.\n"));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("Could not save the specified document\n");
-		text += file + _(".\n");
-#endif
+		string text = bformat(_("Could not save the specified document\n%1$s.\n"),
+			file);
 		Alert::error(_("Could not save document"), text);
 		return;
 	}

@@ -21,8 +21,8 @@
 #include "encoding.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
-#include "support/BoostFormat.h"
 #include "factory.h"
+#include "Lsstream.h"
 #include "support/lstrings.h"
 #include "insets/insetoptarg.h"
 #include "insets/insetcommandparams.h"
@@ -968,34 +968,25 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		change = Change(Change::UNCHANGED);
 	} else if (token == "\\change_inserted") {
 		lex.nextToken();
-		istringstream istr(lex.getString());
+		istringstream is(STRCONV(lex.getString()));
 		int aid;
 		lyx::time_type ct;
-		istr >> aid;
-		istr >> ct;
+		is >> aid >> ct;
 		change = Change(Change::INSERTED, bp.author_map[aid], ct);
 	} else if (token == "\\change_deleted") {
 		lex.nextToken();
-		istringstream istr(lex.getString());
+		istringstream is(STRCONV(lex.getString()));
 		int aid;
 		lyx::time_type ct;
-		istr >> aid;
-		istr >> ct;
+		is >> aid >> ct;
 		change = Change(Change::DELETED, bp.author_map[aid], ct);
 	} else {
 		lex.eatLine();
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Unknown token: %1$s %2$s\n"));
-		fmt % token % lex.getString();
-		string const s = fmt.str();
-#else
-		string const s = _("Unknown token: ") + token
-			+ ' ' + lex.getString() + '\n';
-#endif
+		string const s = bformat(_("Unknown token: %1$s %2$s\n"),
+			token, lex.getString());
 		// we can do this here this way because we're actually reading
 		// the buffer and don't care about LyXText right now.
-		InsetError * inset = new InsetError(s);
-		par.insertInset(par.size(), inset, font);
+		par.insertInset(par.size(), new InsetError(s), font);
 		return 1;
 	}
 	return 0;

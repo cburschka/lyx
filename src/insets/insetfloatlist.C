@@ -7,22 +7,24 @@
  *
  * Full author contact details are available in file CREDITS
  */
-#include <config.h>
 
+#include <config.h>
 
 #include "insetfloatlist.h"
 #include "FloatList.h"
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "toc.h"
 #include "gettext.h"
 #include "debug.h"
+#include "Lsstream.h"
 
-#include "support/BoostFormat.h"
+#include "support/lstrings.h"
+
+#include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
 
 using std::ostream;
 using std::endl;
@@ -30,8 +32,7 @@ using std::endl;
 
 InsetFloatList::InsetFloatList()
 	: InsetCommand(InsetCommandParams())
-{
-}
+{}
 
 
 InsetFloatList::InsetFloatList(string const & type)
@@ -130,19 +131,9 @@ int InsetFloatList::latex(Buffer const * buf, ostream & os, bool, bool) const
 			   << cit->second.listName() << "}\n";
 		}
 	} else {
-#if USE_BOOST_FORMAT
-		os << "%%\\listof{"
-		   << getCmdName()
-		   << "}{"
-		   << boost::format(_("List of %1$s")) % cit->second.name()
+		os << "%%\\listof{" << getCmdName() << "}{"
+		   << bformat(_("List of %1$s"), cit->second.name())
 		   << "}\n";
-#else
-		os << "%%\\listof{"
-		   << getCmdName()
-		   << "}{"
-		   << _("List of ") << cit->second.name()
-		   << "}\n";
-#endif
 	}
 	return 1;
 }

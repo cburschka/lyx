@@ -39,7 +39,6 @@
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
 
-#include "support/BoostFormat.h"
 #include <boost/function.hpp>
 
 #include <cstdlib>
@@ -78,16 +77,9 @@ namespace {
 
 void showFileError(string const & error)
 {
-#if USE_BOOST_FORMAT
 	Alert::warning(_("Could not read configuration file"),
-		   boost::io::str(boost::format(
-		   _("Error while reading the configuration file\n%1$s.\n"
-		     "Please check your installation.")) % error));
-#else
-	Alert::warning(_("Could not read configuration file"),
-		   string(_("Error while reading the configuration file\n"))
-		   + error + _(".\nPlease check your installation."));
-#endif
+		   bformat(_("Error while reading the configuration file\n%1$s.\n"
+		     "Please check your installation."), error));
 	exit(EXIT_FAILURE);
 }
 
@@ -116,15 +108,8 @@ LyX::LyX(int & argc, char * argv[])
 	// other than documents
 	for (int argi = 1; argi < argc ; ++argi) {
 		if (argv[argi][0] == '-') {
-#if USE_BOOST_FORMAT
-			lyxerr << boost::format(_("Wrong command line option `%1$s'. Exiting."))
-				% argv[argi]
-			       << endl;
-#else
-			lyxerr << _("Wrong command line option `")
-			       << argv[argi] << _("'. Exiting.")
-			       << endl;
-#endif
+			lyxerr << bformat(_("Wrong command line option `%1$s'. Exiting."),
+				argv[argi]) << endl;
 			exit(1);
 		}
 	}
@@ -375,16 +360,8 @@ void LyX::init(bool gui)
 					<< "Giving up." << endl;
 				exit(1);
 			}
-#if USE_BOOST_FORMAT
-			lyxerr << boost::format(_("Using built-in default %1$s"
-						  " but expect problems."))
-				% static_cast<char *>(LYX_DIR)
-			       << endl;
-#else
-			lyxerr << _("Using built-in default ") << LYX_DIR
-			       << _(" but expect problems.")
-			       << endl;
-#endif
+			lyxerr << bformat(_("Using built-in default %1$s but expect problems."),
+				static_cast<char *>(LYX_DIR)) << endl;
 		} else {
 			lyxerr << _("Expect problems.") << endl;
 		}
@@ -616,29 +593,14 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 
 	first_start = !explicit_userdir;
 
-#if USE_BOOST_FORMAT
-	lyxerr << boost::format(_("LyX: Creating directory %1$s"
-				  " and running configure..."))
-		% user_lyxdir
-	       << endl;
-#else
-	lyxerr << _("LyX: Creating directory ") << user_lyxdir
-	       << _(" and running configure...")
-	       << endl;
-#endif
+	lyxerr << bformat(_("LyX: Creating directory %1$s"
+				  " and running configure..."), user_lyxdir) << endl;
 
 	if (!createDirectory(user_lyxdir, 0755)) {
 		// Failed, let's use $HOME instead.
 		user_lyxdir = GetEnvPath("HOME");
-#if USE_BOOST_FORMAT
-		lyxerr << boost::format(_("Failed. Will use %1$s instead."))
-			% user_lyxdir
-		       << endl;
-#else
-		lyxerr << _("Failed. Will use ") << user_lyxdir <<
-			_(" instead.")
-		       << endl;
-#endif
+		lyxerr << bformat(_("Failed. Will use %1$s instead."),
+			user_lyxdir) << endl;
 		return;
 	}
 
@@ -788,18 +750,13 @@ int parse_dbg(string const & arg, string const &)
 		Debug::showTags(lyxerr);
 		exit(0);
 	}
-#if USE_BOOST_FORMAT
-	lyxerr << boost::format(_("Setting debug level to %1$s"))
-		% arg
-	       << endl;
-#else
-	lyxerr << _("Setting debug level to ") << arg << endl;
-#endif
+	lyxerr << bformat(_("Setting debug level to %1$s"), arg) << endl;
 
 	lyxerr.level(Debug::value(arg));
 	Debug::showLevel(lyxerr, lyxerr.level());
 	return 1;
 }
+
 
 int parse_help(string const &, string const &)
 {

@@ -30,8 +30,6 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
-#include "support/BoostFormat.h"
-
 #include <cctype>
 
 #ifndef CXX_GLOBAL_CSTD
@@ -364,17 +362,11 @@ bool Converters::convert(Buffer const * buffer,
 					Alert::error(_("Build errors"),
 						_("There were errors during the build process."));
 				} else {
-#if USE_BOOST_FORMAT
 // FIXME: this should go out of here. For example, here we cannot say if
 // it is a document (.lyx) or something else. Same goes for elsewhere.
 				Alert::error(_("Cannot convert file"),
-					boost::io::str(boost::format(_("An error occurred whilst running %1$s"))
-					% command.substr(0, 50)));
-#else
-				Alert::error(_("Cannot convert file"),
-					_("An error occurred whilst running ")
-					+ command.substr(0, 50));
-#endif
+					bformat(_("An error occurred whilst running %1$s"),
+						command.substr(0, 50)));
 				}
 				return false;
 			}
@@ -396,14 +388,9 @@ bool Converters::convert(Buffer const * buffer,
 			string to = subst(conv.result_dir,
 					  token_base, to_base);
 			if (!lyx::rename(from, to)) {
-#if USE_BOOST_FORMAT
 				Alert::error(_("Cannot convert file"),
-					boost::io::str(boost::format(_(
-					"Could not move a temporary file from %1$s to %2$s.")) % from % to));
-#else
-				Alert::error(_("Cannot convert file"),
-					   _("Could not move a temporary file from ") + from + _(" to ") + to + ".");
-#endif
+					bformat(_("Could not move a temporary file from %1$s to %2$s."),
+						from, to));
 				return false;
 			}
 		}
@@ -439,14 +426,9 @@ bool Converters::move(string const & from, string const & to, bool copy)
 				? lyx::copy(from2, to2)
 				: lyx::rename(from2, to2);
 			if (!moved && no_errors) {
-#if USE_BOOST_FORMAT
 				Alert::error(_("Cannot convert file"),
-					boost::io::str(boost::format(_(
-					"Could not move a temporary file from %1$s to %2$s.")) % from2 % to2));
-#else
-				Alert::error(_("Cannot convert file"),
-					   _("Could not move a temporary file from ") + from2 + _(" to ") + to2 + ".");
-#endif
+					bformat(_("Could not move a temporary file from %1$s to %2$s."),
+						from2, to2));
 				no_errors = false;
 			}
 		}
@@ -481,25 +463,11 @@ namespace {
 void alertErrors(string const & prog, int nr_errors)
 {
 	string s;
-#if USE_BOOST_FORMAT
-	if (nr_errors == 1) {
-		boost::format fmt(_("One error detected when running %1$s.\n"));
-		fmt % prog;
-		s = fmt.str();
-	} else {
-		boost::format fmt(_("%1$s errors detected when running %2$s.\n"));
-		fmt % tostr(nr_errors);
-		fmt % prog;
-		s = fmt.str();
-	}
-#else
-	if (nr_errors == 1) {
-		s = _("One error detected");
-	} else {
-		s = tostr(nr_errors);
-		s += _(" errors detected.");
-	}
-#endif
+	if (nr_errors == 1)
+		s = bformat(_("One error detected when running %1$s.\n"), prog);
+	else
+		s = bformat(_("%1$s errors detected when running %2$s.\n"),
+			prog, tostr(nr_errors));
 	Alert::error(_("Errors found"), s);
 }
 
@@ -578,17 +546,8 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {
-		string str;
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("LaTeX did not run successfully. Additionally, LyX "
-			"could not locate the LaTeX log %1$s."));
-		fmt % name;
-		str = fmt.str();
-#else
-		str += _("LaTeX did not run successfully. Additionally, LyX "
-			"could not locate the LaTeX log ");
-		str += name + ".";
-#endif
+		string str = bformat(_("LaTeX did not run successfully. Additionally, LyX "
+			"could not locate the LaTeX log %1$s."), name);
 		Alert::error(_("LaTeX failed"), str);
 	} else if ((result & LaTeX::ERRORS)) {
 		alertErrors("LaTeX", latex.getNumErrors());

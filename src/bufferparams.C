@@ -28,7 +28,6 @@
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
 #include "support/types.h"
-#include "support/BoostFormat.h"
 
 #include "frontends/Alert.h"
 
@@ -97,12 +96,8 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			return classname;
 		}
 		if (!getLyXTextClass().isTeXClassAvailable()) {
-			string msg =
-#if USE_BOOST_FORMAT
-				boost::io::str(boost::format(_("The document uses a missing TeX class \"%1$s\".\n")) % classname);
-#else
-				_("The document uses a missing TeX class ") + classname + ".\n";
-#endif
+			string msg = bformat(_("The document uses a missing "
+				"TeX class \"%1$s\".\n"), classname);
 			Alert::warning(_("Document class not available"),
 			               msg + _("LyX will not be able to produce output."));
 		}
