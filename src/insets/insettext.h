@@ -142,7 +142,9 @@ public:
 	size_t nargs() const { return 1; }
 	///
 	ParagraphList & paragraphs() const;
-
+	///
+	bool insetAllowed(Code) const { return true; }
+	
 protected:
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);

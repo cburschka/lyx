@@ -126,18 +126,14 @@ void breakParagraph(BufferParams const & bparams,
 		// copy everything behind the break-position
 		// to the new paragraph
 
-#ifdef WITH_WARNINGS
-#warning this seems wrong
-#endif
-		/* FIXME: if !keepempty, empty() == true, then we reach
-		 * here with size() == 0. So pos_end becomes - 1. Why
-		 * doesn't this cause problems ???
+		/* Note: if !keepempty, empty() == true, then we reach
+		 * here with size() == 0. So pos_end becomes - 1. This
+		 * doesn't cause problems because both loops below
+		 * enforce pos <= pos_end and 0 <= pos
 		 */
 		pos_type pos_end = pars[par].size() - 1;
-		pos_type i = pos;
-		pos_type j = pos;
 
-		for (; i <= pos_end; ++i) {
+		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
 			Change::Type change = pars[par].lookupChange(i);
 			if (moveItem(pars[par], *tmp, bparams, i, j - pos)) {
 				tmp->setChange(j - pos, change);
@@ -145,7 +141,7 @@ void breakParagraph(BufferParams const & bparams,
 			}
 		}
 
-		for (i = pos_end; i >= pos; --i)
+		for (pos_type i = pos_end; i >= pos; --i)
 			pars[par].eraseIntern(i);
 	}
 

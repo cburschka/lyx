@@ -161,19 +161,17 @@ PitPosPair eraseSelection(BufferParams const & params, ParagraphList & pars,
 		all_erased = false;
 
 	// Loop through the deleted pars if any, erasing as needed
-
-	par_type pit = startpit + 1;
-
-	while (pit != endpit && pit != par_type(pars.size())) {
-		par_type const next = pit + 1;
+	for (par_type pit = startpit + 1; pit != endpit;) {
 		// "erase" the contents of the par
 		pars[pit].erase(0, pars[pit].size());
 		if (!pars[pit].size()) {
 			// remove the par if it's now empty
 			pars.erase(pars.begin() + pit);
-		} else
+			--endpit;
+		} else {
+			++pit;
 			all_erased = false;
-		pit = next;
+		}
 	}
 
 #if 0 // FIXME: why for cut but not copy ?
@@ -333,14 +331,10 @@ pasteSelection(Buffer const & buffer, ParagraphList & pars,
 
 	// Paste it!
 	pars.insert(pars.begin() + pit + 1, insertion.begin(), insertion.end());
-	par_type last_paste = pit + insertion.size();
-
-	// If we only inserted one paragraph.
-	if (insertion.size() == 1)
-		last_paste = pit;
-
 	mergeParagraph(buffer.params(), pars, pit);
 
+	par_type last_paste = pit + insertion.size() - 1;
+	
 	// Store the new cursor position.
 	pit = last_paste;
 	pos = pars[last_paste].size();
@@ -353,13 +347,15 @@ pasteSelection(Buffer const & buffer, ParagraphList & pars,
 			pars[last_paste + 1].makeSameLayout(pars[last_paste]);
 			mergeParagraph(buffer.params(), pars, last_paste);
 		} else if (pars[last_paste].empty()) {
-			pars[last_paste].makeSameLayout(pars[last_paste]);
+			pars[last_paste].makeSameLayout(pars[last_paste + 1]);
 			mergeParagraph(buffer.params(), pars, last_paste);
-		} else
+		} else {
 			pars[last_paste + 1].stripLeadingSpaces();
+			++last_paste;
+		}
 	}
 
-	return make_pair(PitPosPair(pit, pos), pit + insertion.size() + 1);
+	return make_pair(PitPosPair(pit, pos), last_paste + 1);
 }
 
 

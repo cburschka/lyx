@@ -1,4 +1,8 @@
-2004-03-27  Alfredo Braunstein  <abraunst@lyx.org>
+
+2004-03-28  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insettext.h: add insetAllowed returning true by default (fixing
+	vanishing insets problem)
 
 	* insettext.C (draw): handle the responsability of adding the
 	ouside offset to collapsable. Clean code a bit.
