@@ -55,6 +55,9 @@ public:
 		/** This is a list of importable formats
 		    typically for the File->Export menu. */
 		ImportFormats,
+		/** This is the list of elements available 
+		 * for insertion into document. */
+		CharStyles,
 		/** This is the list of floats that we can
 		    insert a list for. */
 		FloatListInsert,

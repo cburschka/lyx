@@ -226,6 +226,7 @@ void LyXAction::init()
 		{ LFUN_META_FAKE, "meta-prefix", NoBuffer },
 		{ LFUN_INSET_MINIPAGE, "minipage-insert", Noop },
 		{ LFUN_INSERT_BRANCH, "branch-insert", Noop },
+		{ LFUN_INSERT_CHARSTYLE, "charstyle-insert", Noop },
 		{ LFUN_INSERT_NOTE, "note-insert", Noop },
 		{ LFUN_INSERT_BOX, "box-insert", Noop },
 		{ LFUN_GOTONOTE, "note-next", ReadOnly },

@@ -26,6 +26,7 @@
 #include "insets/insetbibtex.h"
 #include "insets/insetcaption.h"
 #include "insets/insetcite.h"
+#include "insets/insetcharstyle.h"
 #include "insets/insetenv.h"
 #include "insets/insetert.h"
 #include "insets/insetexternal.h"
@@ -85,6 +86,12 @@ InsetOld * createInset(FuncRequest const & cmd)
 
 	case LFUN_INSET_MINIPAGE:
 		return new InsetMinipage(params);
+
+	case LFUN_INSERT_CHARSTYLE: {
+		string s = cmd.getArg(0);
+		CharStyles::iterator found_cs = params.getLyXTextClass().charstyle(s);
+		return new InsetCharStyle(params, found_cs);
+	}
 
 	case LFUN_INSERT_NOTE: {
 		string arg = cmd.getArg(0);
@@ -335,8 +342,13 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 
 	auto_ptr<InsetOld> inset;
 
+	LyXTextClass tclass = buf.params().getLyXTextClass();
+		
 	lex.next();
-	string const tmptok = lex.getString();
+	string tmptok = lex.getString();
+	CharStyles::iterator found_cs = tclass.charstyle(tmptok);
+	if (found_cs != tclass.charstyles().end())
+		tmptok = "CharStyle";
 
 	// test the different insets
 	if (tmptok == "LatexCommand") {
@@ -408,6 +420,8 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		        || tmptok == "Shadowbox" || tmptok == "Doublebox"
 		        || tmptok == "Ovalbox" || tmptok == "Frameless") {
 			inset.reset(new InsetBox(buf.params(), tmptok));
+		} else if (tmptok == "CharStyle") {
+			inset.reset(new InsetCharStyle(buf.params(), found_cs));
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf.params(), string()));
 		} else if (tmptok == "Include") {

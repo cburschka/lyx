@@ -40,6 +40,8 @@ libinsets_la_SOURCES = \
 	insetbranch.h \
 	insetcaption.C \
 	insetcaption.h \
+	insetcharstyle.C \
+	insetcharstyle.h \
 	insetcite.C \
 	insetcite.h \
 	insetcollapsable.C \

@@ -26,6 +26,55 @@ Style Standard
 End
 
 
+CharStyle Filename
+	LatexType             Command
+	LatexName             filename
+	Font
+	  Family              Typewriter
+	EndFont
+	LabelFont
+	  Shape               Italic
+	  Color               red
+	EndFont
+End
+
+CharStyle FirstName
+	LatexType             Command
+	LatexName             firstname
+	Font
+	  Shape               SmallCaps	
+	EndFont
+	LabelFont
+	  Shape               Italic
+	  Color               red
+	EndFont
+End
+
+CharStyle Surname
+	LatexType             Command
+	LatexName             surname
+	Font
+	  Shape               SmallCaps	
+	EndFont
+	LabelFont
+	  Shape               Italic
+	  Color               red
+	EndFont
+End
+
+CharStyle Literal
+	LatexType             Command
+	LatexName             literal
+	Font
+	  Family              Typewriter
+	EndFont
+	LabelFont
+	  Shape               Italic
+	  Color               red
+	EndFont
+End
+
+
 Input db_stdlists.inc
 Input db_stdsections.inc
 Input db_stdstarsections.inc

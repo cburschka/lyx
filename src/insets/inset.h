@@ -134,7 +134,9 @@ public:
 		///
 		BRANCH_CODE, // 40
 		///
-		BOX_CODE
+		BOX_CODE,
+		///
+		CHARSTYLE_CODE
 	};
 
 	///

@@ -104,6 +104,7 @@ enum TextClassTags {
 	TC_INPUT,
 	TC_STYLE,
 	TC_DEFAULTSTYLE,
+	TC_CHARSTYLE,
 	TC_ENVIRONMENT,
 	TC_NOSTYLE,
 	TC_COLUMNS,
@@ -131,6 +132,7 @@ enum TextClassTags {
 bool LyXTextClass::Read(string const & filename, bool merge)
 {
 	keyword_item textClassTags[] = {
+		{ "charstyle",       TC_CHARSTYLE },
 		{ "classoptions",    TC_CLASSOPTIONS },
 		{ "columns",         TC_COLUMNS },
 		{ "counter",         TC_COUNTER },
@@ -346,6 +348,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			if (lexrc.next())
 				rightmargin_ = lexrc.getString();
 			break;
+		case TC_CHARSTYLE:
+			if (lexrc.next()) {
+				string const name = subst(lexrc.getString(), '_', ' ');
+				readCharStyle(lexrc, name);
+			}
+			break;
 		case TC_FLOAT:
 			readFloat(lexrc);
 			break;
@@ -506,6 +514,85 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 	lexrc.popTable();
 }
 
+enum CharStyleTags {
+	CS_FONT = 1,
+	CS_LABELFONT,
+	CS_LATEXTYPE,
+	CS_LATEXNAME,
+	CS_PREAMBLE,
+	CS_END
+};
+
+
+void LyXTextClass::readCharStyle(LyXLex & lexrc, string const & name)
+{
+	keyword_item elementTags[] = {
+		{ "end", CS_END },
+		{ "font", CS_FONT },
+		{ "labelfont", CS_LABELFONT },
+		{ "latexname", CS_LATEXNAME },
+		{ "latextype", CS_LATEXTYPE },
+		{ "preamble", CS_PREAMBLE}
+	};
+
+	lexrc.pushTable(elementTags, CS_END);
+
+	string latextype;
+	string latexname;
+	LyXFont font(LyXFont::ALL_INHERIT);
+	LyXFont labelfont(LyXFont::ALL_INHERIT);
+	string preamble;
+	
+	bool getout = false;
+	while (!getout && lexrc.isOK()) {
+		int le = lexrc.lex();
+		switch (le) {
+		case LyXLex::LEX_UNDEF:
+			lexrc.printError("Unknown ClassOption tag `$$Token'");
+			continue;
+		default: break;
+		}
+		switch (static_cast<CharStyleTags>(le)) {
+		case CS_LATEXTYPE:
+			lexrc.next();
+			latextype = lexrc.getString();
+			break;
+		case CS_LATEXNAME:
+			lexrc.next();
+			latexname = lexrc.getString();
+			break;
+		case CS_LABELFONT:
+			labelfont.lyxRead(lexrc);
+			break;
+		case CS_FONT:
+			font.lyxRead(lexrc);
+			labelfont = font;
+			break;
+		case CS_PREAMBLE:
+			preamble = lexrc.getLongString("EndPreamble");
+			break;
+		case CS_END:
+			getout = true;
+			break;
+		}
+	}
+
+	//
+	// Here add element to list if getout == true
+	if (getout) {
+		CharStyle cs;
+		cs.name = name;
+		cs.latextype = latextype;
+		cs.latexname = latexname;
+		cs.font = font;
+		cs.labelfont = labelfont;
+		cs.preamble = preamble;
+		charstyles().push_back(cs);
+	}
+
+	lexrc.popTable();
+}
+
 
 enum FloatTags {
 	FT_TYPE = 1,
@@ -518,6 +605,7 @@ enum FloatTags {
 	FT_BUILTIN,
 	FT_END
 };
+
 
 void LyXTextClass::readFloat(LyXLex & lexrc)
 {
@@ -773,6 +861,18 @@ FloatList const & LyXTextClass::floats() const
 Counters & LyXTextClass::counters() const
 {
 	return *ctrs_.get();
+}
+
+
+CharStyles::iterator LyXTextClass::charstyle(string const & s) const
+{
+	CharStyles::iterator cs = charstyles().begin();
+	CharStyles::iterator csend = charstyles().end();
+	for (; cs != csend; ++cs) {
+		if (cs->name == s)
+			return cs;
+	}
+	return csend;
 }
 
 

@@ -645,6 +645,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_INSERT_NOTE:
 		code = InsetOld::NOTE_CODE;
 		break;
+	case LFUN_INSERT_CHARSTYLE:
+		code = InsetOld::CHARSTYLE_CODE;
+		if (buf->params().getLyXTextClass().charstyles().empty())
+			disable = true;
+		break;
 	case LFUN_INSERT_BOX:
 		code = InsetOld::BOX_CODE;
 		break;

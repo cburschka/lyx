@@ -1,12 +1,12 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 225
 \textclass docbook
 \language english
 \inputencoding default
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single
+\spacing single 
 \papersize Default
 \paperpackage a4
 \use_geometry 0
@@ -23,83 +23,140 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes 0
+\end_header
 
-\layout SGML
+\begin_layout SGML
 
  
 \begin_inset Note
 collapsed true
 
-\layout Standard
+\begin_layout Standard
 
 Here goes the information about the article:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * title
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * date
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * author
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 + first name
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 + last name
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * abstract
+\end_layout
+
 \end_inset 
 
 
-\layout Title
+\end_layout
+
+\begin_layout Title
 \added_space_top vfill \added_space_bottom vfill 
 Docbook with LyX
-\layout Date
+\end_layout
+
+\begin_layout Date
 
 24 September 1999
-\layout Author
+\end_layout
+
+\begin_layout Author
+
+\end_layout
 
 \begin_deeper 
-\layout SGML
+\begin_layout SGML
 \align center 
-
-\size normal 
 
 \begin_inset Note
 collapsed true
 
-\layout Standard
+\begin_layout Standard
 
 The author name is always composed of:
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * first name
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 * surname
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 It is always possible to have more than one author.
+\end_layout
+
 \end_inset 
 
 
-\layout FirstName
+\end_layout
+
+\end_deeper 
+\begin_layout Author
+
+
+\begin_inset FirstName
+collapsed true
+
+\begin_layout Standard
 
 Jose'
-\layout Surname
+\end_layout
+
+\end_inset 
+
+
+\begin_inset Surname
+collapsed true
+
+\begin_layout Standard
 
 Matos
-\end_deeper 
-\layout Abstract
+\end_layout
+
+\end_inset 
+
+
+\end_layout
+
+\begin_layout Abstract
 
 This is a small illustration of lyx's features using DocBook.
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 The abstract can span several paragraphs.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 
 \begin_inset LatexCommand \label{first-section}
@@ -107,20 +164,30 @@ The abstract can span several paragraphs.
 \end_inset 
 
 Introduction
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This file ilustrates the generation of docbook documents with LyX.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This will improve as soon as new features are available.
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 Standard layouts
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 One of the goals is the support, as much as possible, of layouts used in
  other textclass, for compatibility purposes.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Remember that this is work in progress, I would like to hear any comments,
  good or 
@@ -132,65 +199,103 @@ bad
 \end_inset 
 
 .
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Lists
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This is an example with several nested lists.
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 item 1
+\end_layout
+
 \begin_deeper 
-\layout Enumerate
+\begin_layout Enumerate
 
 item 2
-\layout Description
+\end_layout
+
+\begin_layout Description
 
 new item
+\end_layout
+
 \begin_deeper 
-\layout Enumerate
+\begin_layout Enumerate
 
 collection
+\end_layout
+
 \end_deeper 
 \end_deeper 
-\layout Itemize
+\begin_layout Itemize
 
 new set
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Code
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Required steps to have a running lyx.
-\layout Quotation
+\end_layout
+
+\begin_layout Quotation
 
 Be carefull with your own code.
-\layout Quotation
+\end_layout
+
+\begin_layout Quotation
 
 The debugger.
-\layout Code
+\end_layout
+
+\begin_layout Code
 
 cat > env.out
-\layout Code
+\end_layout
+
+\begin_layout Code
 
 tar xvzf lyx.tgz
-\layout Code
+\end_layout
+
+\begin_layout Code
 
 cd lyx-1_0_x
-\layout Code
+\end_layout
+
+\begin_layout Code
 
 ./configure
-\layout Code
+\end_layout
+
+\begin_layout Code
 
 make
-\layout Code
+\end_layout
+
+\begin_layout Code
 
 make install
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Labels
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 If a label is the first element in any layout, that label will be merged
  with that element.
@@ -200,41 +305,56 @@ If a label is the first element in any layout, that label will be merged
 \end_inset 
 
 .
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Fonts
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 The only fonts supported are 
 \emph on 
 Emphasis
 \emph default 
  and 
-\begin_inset ERT
-status Collapsed
+\begin_inset Literal
+collapsed true
 
-\layout Standard
-<literal>SGML</literal>
+\begin_layout Standard
+
+SGML
+\end_layout
+
 \end_inset 
 
 .
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Figures
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 One of the major changes in the docbook when compared with the linuxdoc
  support are the figures support.
  LyX only allows to view eps figures.
  So you should have one of these if you want to take advantage of this feature.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Notice that when the docbook code is exported the filename extension is
  stripped.
  This enables that when the several backends are processed in sgmltools,
  the corresponding extensions are added.
  The default extension are eps for the print and gif for the html backend.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset Float figure
@@ -242,7 +362,7 @@ placement htbp
 wide false
 collapsed false
 
-\layout Standard
+\begin_layout Standard
 
 
 \begin_inset Graphics
@@ -252,19 +372,28 @@ collapsed false
 	height 3cm
 	rotateAngle 45
 	rotateOrigin center
+
 \end_inset 
 
 
-\layout Caption
+\end_layout
+
+\begin_layout Caption
 
 Nice platypus
+\end_layout
+
 \end_inset 
 
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 Wide figures are treated as normal figures.
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 
 \begin_inset Float figure
@@ -272,7 +401,7 @@ placement htbp
 wide true
 collapsed false
 
-\layout Standard
+\begin_layout Standard
 
 
 \begin_inset Graphics
@@ -282,20 +411,29 @@ collapsed false
 	height 3cm
 	rotateAngle 45
 	rotateOrigin center
+
 \end_inset 
 
 
-\layout Caption
+\end_layout
+
+\begin_layout Caption
 
 long, very long...
  :-)
+\end_layout
+
 \end_inset 
 
 
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Tables
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 There is also basic support for tables.
 \begin_inset Float table
@@ -303,10 +441,10 @@ placement htbp
 wide false
 collapsed false
 
-\layout Standard
+\begin_layout Standard
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="5">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0pt">
@@ -318,40 +456,50 @@ collapsed false
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
 
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Software 1
+\end_layout
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Software 2
+\end_layout
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Software 3
+\end_layout
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Software 4
+\end_layout
+
 \end_inset 
 </cell>
 </row>
@@ -359,39 +507,49 @@ Software 4
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Plataform 1
+\end_layout
+
 \end_inset 
 </cell>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 25 MB
+\end_layout
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 10 MB
+\end_layout
+
 \end_inset 
 </cell>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 34 MB
+\end_layout
+
 \end_inset 
 </cell>
 <cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
 
 \end_inset 
 </cell>
@@ -400,40 +558,50 @@ Plataform 1
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 Plataform 2
+\end_layout
+
 \end_inset 
 </cell>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
 
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 12 MB
+\end_layout
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 30 MB
+\end_layout
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\layout Standard
+\begin_layout Standard
 
 35 MB
+\end_layout
+
 \end_inset 
 </cell>
 </row>
@@ -442,19 +610,29 @@ Plataform 2
 \end_inset 
 
 
-\layout Caption
+\end_layout
+
+\begin_layout Caption
 
 Nice Formal Table
+\end_layout
+
 \end_inset 
 
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 As it happens with the figures the wide tables are treated as normal tables.
-\layout Subsection
+\end_layout
+
+\begin_layout Subsection
 
 Margins
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 There are some restrictions when using margins.
  For further information on docbook allowed syntax consult the 
@@ -463,128 +641,188 @@ There are some restrictions when using margins.
 \end_inset 
 
 .
-\layout Quotation
+\end_layout
+
+\begin_layout Quotation
 
 It is also possible to insert margin notes inside some environments.
+\end_layout
+
 \begin_deeper 
-\layout SGML
+\begin_layout SGML
 
 
 \begin_inset Marginal
 collapsed true
 
-\layout Standard
+\begin_layout Standard
 
 margin note
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 second par -> margin note
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 third par -> margin note
+\end_layout
+
 \end_inset 
 
  
+\end_layout
+
 \end_deeper 
-\layout Quotation
+\begin_layout Quotation
 
 Notice that the previous layout is at level 1 
 \begin_inset Foot
 collapsed true
 
-\layout Standard
+\begin_layout Standard
 
 This comes from a docbook restriction.
  Sidebar can only appear inside "MSGTEXT", "CAUTION", "IMPORTANT", "NOTE",
  "TIP", "WARNING", "BLOCKQUOTE".
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 These environments are easily added to the docbook layout.
+\end_layout
+
 \end_inset 
 
  and so is the follow:
+\end_layout
+
 \begin_deeper 
-\layout SGML
+\begin_layout SGML
 
 
 \begin_inset Marginal
 collapsed true
 
-\layout Standard
+\begin_layout Standard
 
 too marginal ;-)
+\end_layout
+
 \end_inset 
 
  
+\end_layout
+
 \end_deeper 
-\layout Section
+\begin_layout Section
 
 The road map
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This is a small list of the remaining tasks:
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 Expand the number of layouts
+\end_layout
+
 \begin_deeper 
-\layout Itemize
+\begin_layout Itemize
 
 example
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 note
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 warning
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 tip
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 caution
-\layout Itemize
+\end_layout
+
+\begin_layout Itemize
 
 important
+\end_layout
+
 \end_deeper 
-\layout Itemize
+\begin_layout Itemize
 
 Compose other layout files, besides article
+\end_layout
+
 \begin_deeper 
-\layout Enumerate
+\begin_layout Enumerate
 
 book
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 set (very unlikely)
 \begin_inset Foot
 collapsed true
 
-\layout Standard
+\begin_layout Standard
 
 I do not expect lyx to deal with colection of books, for now!
+\end_layout
+
 \end_inset 
 
 
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 refentry
+\end_layout
+
 \end_deeper 
-\layout Itemize
+\begin_layout Itemize
 
 goodies
+\end_layout
+
 \begin_deeper 
-\layout Enumerate
+\begin_layout Enumerate
 
 including other lyx files
-\layout Enumerate
+\end_layout
+
+\begin_layout Enumerate
 
 more advanced tables support
+\end_layout
+
 \end_deeper 
-\layout Itemize
+\begin_layout Itemize
 
 better documentation
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 That's all.
  ;-)
-\the_end
+\end_layout
+
+\end_document

@@ -1511,6 +1511,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_CAPTION:
 #endif
 	case LFUN_INSERT_NOTE:
+	case LFUN_INSERT_CHARSTYLE:
 	case LFUN_INSERT_BOX:
 	case LFUN_INSERT_BRANCH:
 	case LFUN_INSERT_BIBITEM:

@@ -22,6 +22,21 @@ class Counters;
 class FloatList;
 
 
+///
+struct CharStyle {
+	std::string name;
+	std::string latextype;
+	std::string latexname;
+	LyXFont font;
+	LyXFont labelfont;
+	std::string preamble;
+};
+
+
+/// List of semantically defined character style insets
+typedef std::vector<CharStyle> CharStyles;
+
+
 /// Stores the layout specification of a LyX document class.
 class LyXTextClass {
 public:
@@ -55,6 +70,8 @@ public:
 	///
 	void readClassOptions(LyXLex &);
 	///
+	void readCharStyle(LyXLex &, std::string const &);
+	///
 	void readFloat(LyXLex &);
 	///
 	void readCounter(LyXLex &);
@@ -73,6 +90,10 @@ public:
 	FloatList const & floats() const;
 	/// The Counters present in this document class.
 	Counters & counters() const;
+	/// CharStyles of this doc class
+	CharStyles & charstyles() const { return charstylelist_; };
+	/// Retrieve element of name s:
+	CharStyles::iterator charstyle(std::string const & s) const;
 	///
 	std::string const & defaultLayoutName() const;
 	///
@@ -199,7 +220,9 @@ private:
 
 	/// Paragraph styles used in this layout
 	LayoutList layoutlist_;
-
+	/// CharStyles available to this layout
+	mutable CharStyles charstylelist_;
+	
 	/// available types of float, eg. figure, algorithm.
 	boost::shared_ptr<FloatList> floatlist_;
 

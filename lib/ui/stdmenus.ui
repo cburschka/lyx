@@ -231,6 +231,7 @@ Menuset
 		Submenu "Note|N" "insert_note"
 		Submenu "Box" "insert_box"
 		Submenu "Branch|B" "branches"
+		Submenu "Character Style" "charstyle"
 		Submenu "File|e" "insert_file"
 		Separator
 		Item "Citation Reference...|C" "dialog-show-new-inset citation"
@@ -352,6 +353,10 @@ Menuset
 
 	Menu "branches"
 		Branches
+	End
+
+	Menu "charstyle"
+		CharStyles
 	End
 
 #

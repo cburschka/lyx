@@ -409,6 +409,13 @@ string const LaTeXFeatures::getTClassPreamble() const
 		tcpreamble << tclass[*cit]->preamble();
 	}
 
+	CharStyles::iterator cs = tclass.charstyles().begin();
+	CharStyles::iterator csend = tclass.charstyles().end();
+	for (; cs != csend; ++cs) {
+		if (isRequired(cs->name))
+			tcpreamble << cs->preamble;
+	}
+	
 	return tcpreamble.str();
 }
 

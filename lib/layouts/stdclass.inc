@@ -35,6 +35,21 @@ Style Standard
 	LabelType             No_Label
 End
 
+CharStyle Noun
+	LatexType             Command
+	LatexName             noun
+	Font
+	  Shape               SmallCaps
+	EndFont
+	LabelFont
+	  Shape               SmallCaps
+	  Color               blue
+	EndFont
+	Preamble
+	  \newcommand{\noun}[1]{\textsc{#1}}
+	EndPreamble
+End
+
 
 Input stdlists.inc
 Input stdsections.inc

@@ -1,3 +1,11 @@
+2003-11-12  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* src/insets/Makefile.am:
+	* src/insets/inset.h:
+	* src/insets/insetcharstyle.C:
+	* src/insets/insetcharstyle.h: The Character Style /XML short
+	element patch.
+
 2003-11-11  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* insettext.C: remove all update calls

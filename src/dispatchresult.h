@@ -27,7 +27,7 @@
 			the inset.
 	FINISHED_POP       = FINISHED, but move the cursor out the inset
                        (possibly more than one level)
-	UNDISPATCHED        = the action was not catched, it should be
+	UNDISPATCHED        = the action was not caught, it should be
 			dispatched by lower level insets
 */
 enum dispatch_result_t {

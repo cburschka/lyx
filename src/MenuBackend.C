@@ -191,6 +191,7 @@ Menu & Menu::read(LyXLex & lex)
 		md_item = 1,
 		md_branches,
 		md_documents,
+		md_charstyles,
 		md_endmenu,
 		md_exportformats,
 		md_importformats,
@@ -210,6 +211,7 @@ Menu & Menu::read(LyXLex & lex)
 
 	struct keyword_item menutags[md_last - 1] = {
 		{ "branches", md_branches },
+		{ "charstyles", md_charstyles },
 		{ "documents", md_documents },
 		{ "end", md_endmenu },
 		{ "exportformats", md_exportformats },
@@ -257,6 +259,10 @@ Menu & Menu::read(LyXLex & lex)
 
 		case md_lastfiles:
 			add(MenuItem(MenuItem::Lastfiles));
+			break;
+
+		case md_charstyles:
+			add(MenuItem(MenuItem::CharStyles));
 			break;
 
 		case md_documents:
@@ -524,6 +530,28 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 }
 
 
+void expandCharStyleInsert(Menu & tomenu, LyXView const * view)
+{
+	if (!view->buffer()) {
+		tomenu.add(MenuItem(MenuItem::Command,
+				    _("No Documents Open!"),
+				    FuncRequest(LFUN_NOACTION)),
+			   view);
+		return;
+	}
+	CharStyles & charstyles = 
+		view->buffer()->params().getLyXTextClass().charstyles();
+	CharStyles::iterator cit = charstyles.begin();
+	CharStyles::iterator end = charstyles.end();
+	for (; cit != end; ++cit) {
+		string const label = cit->name;
+		tomenu.add(MenuItem(MenuItem::Command, label,
+				    FuncRequest(LFUN_INSERT_CHARSTYLE,
+						cit->name)), view);
+	}
+}
+
+
 Menu::size_type const max_number_of_items = 25;
 
 void expandToc2(Menu & tomenu,
@@ -689,6 +717,10 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats:
 			expandFormats(cit->kind(), tomenu, view);
+			break;
+
+		case MenuItem::CharStyles:
+			expandCharStyleInsert(tomenu, view);
 			break;
 
 		case MenuItem::FloatListInsert:
