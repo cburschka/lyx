@@ -1001,8 +1001,11 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "label") {
-			if (grid.asHullInset())
-				grid.asHullInset()->label(cellrow, getArg('{', '}'));
+			if (grid.asHullInset()) {
+				MathArray ar;
+				parse_into(ar, FLAG_ITEM, false);
+				grid.asHullInset()->label(cellrow, asString(ar));
+			}
 		}
 
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {

@@ -24,9 +24,9 @@
 #include "Lsstream.h"
 #include "math_inset.h"
 #include "math_scriptinset.h"
-#include "math_charinset.h"
 #include "math_mathmlstream.h"
 #include "math_cursor.h"
+#include "math_parser.h"
 #include "debug.h"
 
 #include "frontends/LyXView.h"
@@ -307,19 +307,17 @@ string const & MathInset::getType() const
 
 string asString(MathArray const & ar)
 {
-	string res;
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		if ((*it)->getChar())
-			res += (*it)->getChar();
-	return res;
+	std::ostringstream os;
+	WriteStream ws(os);
+	ws << ar;
+	return os.str();
 }
 
 
 MathArray asArray(string const & str)
 {
 	MathArray ar;
-	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
-		ar.push_back(MathAtom(new MathCharInset(*it)));
+	mathed_parse_cell(ar, str);
 	return ar;
 }
 
