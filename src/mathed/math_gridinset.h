@@ -22,6 +22,8 @@ class MathGridInset : public MathNestInset {
 	struct RowInfo {
 		///
 		RowInfo();
+		///
+		int skipPixels() const;
 		/// cached descent
 		mutable int descent_;
 		/// cached ascent

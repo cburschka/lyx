@@ -24,6 +24,16 @@ MathGridInset::RowInfo::RowInfo()
 {}
 
 
+int MathGridInset::RowInfo::skipPixels() const
+{
+#ifdef WITH_WARNINGS
+#warning fix this once the interface to LyXLength has oimproved
+#endif
+	return int(skip_.value());
+}
+
+
+
 MathGridInset::ColInfo::ColInfo()
 	: h_align_('c'), leftline_(false), rightline_(false)
 {}
@@ -116,6 +126,7 @@ void MathGridInset::metrics(MathStyles st) const
 			rowinfo_[row].offset_ = 
 				rowinfo_[row - 1].offset_ +
 				rowinfo_[row - 1].descent_ +
+				rowinfo_[row - 1].skipPixels() +
 				MATH_ROWSEP +
 				rowinfo_[row].ascent_;
 		else 
