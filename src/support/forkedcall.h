@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- *  \file syscall.h
+ *  \file forkedcall.h
  *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
@@ -71,7 +71,7 @@ public:
 	 *  we can return easily to C++ methods, rather than just globally
 	 *  accessible functions.
 	 */
-	typedef SigC::Signal3<void, string, pid_t, int> SignalType;
+	typedef SigC::Signal3<void, string const &, pid_t, int> SignalType;
 
 	/** The signal is connected in the calling routine to the desired
 	 *  slot. We pass a shared_ptr rather than a reference to the signal

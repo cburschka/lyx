@@ -1,5 +1,5 @@
 /**
- *  \file syscall.C
+ *  \file forkedcall.C
  *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
