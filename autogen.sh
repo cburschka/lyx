@@ -5,19 +5,17 @@ autoversion=`autoconf --version | head -n 1`
 
 case $autoversion in
     *2.13)
-	echo "2.13"
 	cp config/acconfig.h .
 	cp config/configure.in .
 	cp config/relyx_configure.in lib/reLyX/configure.in
 	;;
     *2.53)
-	echo "2.53"
 	cp config/configure.ac .
 	cp config/relyx_configure.ac lib/reLyX/configure.ac
 	;;
     *)
-	echo "You are running a version of autoconf that"
-	echo "we do not support."
+	echo "You are running autoconf $autoversion, that"
+	echo "version is not supported by LyX."
 	echo "LyX only supports autoconf 2.13 and 2.53."
 	exit
 	;;
