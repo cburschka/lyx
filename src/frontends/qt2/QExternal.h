@@ -28,8 +28,7 @@ public:
 	friend class QExternalDialog;
 
 	QExternal();
-protected:
-	virtual bool isValid();
+ 
 private:
 	/// Apply changes
 	virtual void apply();
