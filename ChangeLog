@@ -1,3 +1,15 @@
+2001-01-26  Volodymyr M . Lisivka  <lvm_ukr@yahoo.com>
+
+	* lib/kbd/koi8-u.kmap: new file.
+
+	* lib/encodings: add koi-8u encoding.
+
+	* lib/languages: update ukrainian entry
+
+2001-01-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/CREDITS: update Tino Meinen address.
+
 2001-01-25  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/insets/insetbib.C (bibitemWidest): Use lyxfont::width instead of
