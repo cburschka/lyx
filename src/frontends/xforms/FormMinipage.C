@@ -21,10 +21,10 @@
 #include "xforms_helpers.h"
 #include FORMS_H_LOCATION
 
-typedef FormCB<ControlMinipage, FormDB<FD_minipage> > base_class;
+typedef FormController<ControlMinipage, FormView<FD_minipage> > base_class;
 
-FormMinipage::FormMinipage()
-	: base_class(_("Minipage Options"))
+FormMinipage::FormMinipage(Dialog & parent)
+	: base_class(parent, _("Minipage Options"))
 {}
 
 
@@ -57,7 +57,7 @@ void FormMinipage::build()
 
 void FormMinipage::apply()
 {
-	controller().params().pageWidth =
+	controller().params().width =
 		LyXLength(getLengthFromWidgets(dialog_->input_width,
 					       dialog_->choice_width_units));
 
@@ -72,7 +72,7 @@ void FormMinipage::apply()
 
 void FormMinipage::update()
 {
-	LyXLength len(controller().params().pageWidth);
+	LyXLength len(controller().params().width);
 	fl_set_input(dialog_->input_width, tostr(len.value()).c_str());
 	fl_set_choice(dialog_->choice_width_units, len.unit() + 1);
 

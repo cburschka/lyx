@@ -15,57 +15,45 @@
 
 #include "Tooltips.h"
 
-#include "ControlBibitem.h"
+#include "ControlBibtex.h"
+#include "ControlCitation.h"
+#include "ControlCommand.h"
+#include "ControlError.h"
+#include "ControlERT.h"
+#include "ControlExternal.h"
+#include "ControlFloat.h"
+#include "ControlInclude.h"
+#include "ControlMinipage.h"
+#include "ControlRef.h"
+#include "ControlToc.h"
+#include "ControlWrap.h"
+
 #include "FormBibitem.h"
 #include "forms/form_bibitem.h"
-
-#include "ControlBibtex.h"
 #include "FormBibtex.h"
 #include "forms/form_bibtex.h"
-
-#include "ControlCitation.h"
 #include "FormCitation.h"
 #include "forms/form_citation.h"
-
-#include "ControlError.h"
 #include "FormError.h"
 #include "forms/form_error.h"
-
-#include "ControlERT.h"
 #include "FormERT.h"
 #include "forms/form_ert.h"
-
-#include "ControlExternal.h"
 #include "FormExternal.h"
 #include "forms/form_external.h"
-
-#include "ControlFloat.h"
 #include "FormFloat.h"
 #include "forms/form_float.h"
-
-#include "ControlInclude.h"
 #include "FormInclude.h"
 #include "forms/form_include.h"
-
-#include "ControlIndex.h"
-#include "ControlLabel.h"
-
-#include "FormText.h"
-#include "forms/form_text.h"
-
-#include "ControlRef.h"
+#include "FormMinipage.h"
+#include "forms/form_minipage.h"
 #include "FormRef.h"
 #include "forms/form_ref.h"
-
-#include "ControlToc.h"
+#include "FormText.h"
+#include "forms/form_text.h"
 #include "FormToc.h"
 #include "forms/form_toc.h"
-
-#include "ControlUrl.h"
 #include "FormUrl.h"
 #include "forms/form_url.h"
-
-#include "ControlWrap.h"
 #include "FormWrap.h"
 #include "forms/form_wrap.h"
 
@@ -95,8 +83,8 @@ namespace {
 // 				     "url", "wrap" };
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
 				     "error", "ert", "external", "float",
-				     "include", "index", "label", "ref",
-				     "toc", "url", "wrap" };
+				     "include", "index", "label", "minipage",
+				     "ref", "toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -129,7 +117,7 @@ Dialog * Dialogs::build(string const & name)
 	Dialog * dialog = new Dialog(lyxview_, name);
 
 	if (name == "bibitem") {
-		dialog->setController(new ControlBibitem(*dialog));
+		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormBibitem(*dialog));
 		dialog->setButtonController(new OkCancelReadOnlyBC);
 	} else if (name == "bibtex") {
@@ -161,14 +149,18 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new FormInclude(*dialog));
 		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
 	} else if (name == "index") {
-		dialog->setController(new ControlIndex(*dialog));
+		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormText(*dialog,
 					     _("Index"), _("Keyword:|#K")));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "label") {
-		dialog->setController(new ControlLabel(*dialog));
+		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormText(*dialog,
 					     _("Label"), _("Label:|#L")));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "minipage") {
+		dialog->setController(new ControlMinipage(*dialog));
+		dialog->setView(new FormMinipage(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
@@ -179,7 +171,7 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new FormToc(*dialog));
 		dialog->setButtonController(new OkCancelBC);
 	} else if (name == "url") {
-		dialog->setController(new ControlUrl(*dialog));
+		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormUrl(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "wrap") {

@@ -75,18 +75,6 @@ void Dialogs::showMathPanel()
 }
 
 
-void Dialogs::showMinipage(InsetMinipage * im)
-{
-	pimpl_->minipage.controller().showInset(im);
-}
-
-
-void Dialogs::updateMinipage(InsetMinipage * im)
-{
-	pimpl_->minipage.controller().showInset(im);
-}
-
-
 void Dialogs::showParagraph()
 {
 	pimpl_->paragraph.controller().show();

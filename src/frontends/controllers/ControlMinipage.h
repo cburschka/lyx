@@ -13,49 +13,28 @@
 #ifndef CONTROLMINIPAGE_H
 #define CONTROLMINIPAGE_H
 
-#include <vector>
+#include "Dialog.h"
+#include "insets/insetminipage.h"
 
-
-#include "ControlInset.h"
-#include "insets/insetminipage.h" // InsetMinipage::Position
-
-/** This should be moved back into insetminipage.h and InsetMinipage should
-    contain an instance of it. */
-
-struct MinipageParams {
-	///
-	MinipageParams();
-	///
-	MinipageParams(InsetMinipage const &);
-	///
-	LyXLength pageWidth;
-	///
-	InsetMinipage::Position pos;
-};
-
-
-///
-bool operator==(MinipageParams const &, MinipageParams const &);
-///
-bool operator!=(MinipageParams const &, MinipageParams const &);
-
-
-/** A controller for Minipage dialogs.
- */
-class ControlMinipage : public ControlInset<InsetMinipage, MinipageParams>  {
+class ControlMinipage : public Dialog::Controller {
 public:
 	///
-	ControlMinipage(LyXView &, Dialogs &);
-private:
-	/// Dispatch the changed parameters to the kernel.
-	virtual void applyParamsToInset();
+	ControlMinipage(Dialog &);
 	///
-	virtual void applyParamsNoInset();
-	/// get the parameters from the string passed to createInset.
-	virtual MinipageParams const getParams(string const &)
-		{ return MinipageParams(); }
-	/// get the parameters from the inset passed to showInset.
-	virtual MinipageParams const getParams(InsetMinipage const &);
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// clean-up on hide.
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
+	///
+	InsetMinipage::Params & params() { return *params_.get(); }
+	///
+	InsetMinipage::Params const & params() const { return *params_.get(); }
+private:
+	///
+	boost::scoped_ptr<InsetMinipage::Params> params_;
 };
 
 #endif

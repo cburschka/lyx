@@ -34,6 +34,6 @@ void ControlERT::clearParams()
 
 void ControlERT::dispatchParams()
 {
-	string const lfun = InsetERTMailer::params2string("ert", status_);
+	string const lfun = InsetERTMailer::params2string(status_);
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }

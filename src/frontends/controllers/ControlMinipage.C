@@ -11,53 +11,31 @@
 
 #include <config.h>
 
-
 #include "ControlMinipage.h"
-#include "BufferView.h"
+#include "funcrequest.h"
 
 
-ControlMinipage::ControlMinipage(LyXView & lv, Dialogs & d)
-	: ControlInset<InsetMinipage, MinipageParams>(lv, d)
+ControlMinipage::ControlMinipage(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-void ControlMinipage::applyParamsToInset()
+void ControlMinipage::initialiseParams(string const & data)
 {
-	inset()->pageWidth(params().pageWidth);
-	inset()->pos(params().pos);
-
-	bufferview()->updateInset(inset(), true);
+	InsetMinipage::Params params;
+	InsetMinipageMailer::string2params(data, params);
+	params_.reset(new InsetMinipage::Params(params));
 }
 
 
-void ControlMinipage::applyParamsNoInset()
+void ControlMinipage::clearParams()
 {
+	params_.reset();
 }
 
 
-MinipageParams const ControlMinipage::getParams(InsetMinipage const & inset)
+void ControlMinipage::dispatchParams()
 {
-	return MinipageParams(inset);
-}
-
-
-MinipageParams::MinipageParams()
-	: pos(InsetMinipage::top)
-{}
-
-
-MinipageParams::MinipageParams(InsetMinipage const & inset)
-	: pageWidth(inset.pageWidth()), pos(inset.pos())
-{}
-
-
-bool operator==(MinipageParams const & p1, MinipageParams const & p2)
-{
-	return (p1.pageWidth == p2.pageWidth && p1.pos == p2.pos);
-}
-
-
-bool operator!=(MinipageParams const & p1, MinipageParams const & p2)
-{
-	return !(p1 == p2);
+	string const lfun = InsetMinipageMailer::params2string(params());
+	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }

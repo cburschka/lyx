@@ -13,18 +13,21 @@
 
 
 #include "insetminipage.h"
+#include "insettext.h"
+
+#include "BufferView.h"
+#include "debug.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "lyxfont.h"
-#include "BufferView.h"
+#include "lyxlex.h"
+#include "lyxtext.h"
+
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
-#include "lyxtext.h"
-#include "insets/insettext.h"
+
 #include "support/LOstream.h"
 #include "support/lstrings.h"
-#include "debug.h"
-#include "gettext.h"
-#include "lyxlex.h"
 
 using std::ostream;
 using std::endl;
@@ -59,8 +62,7 @@ using std::endl;
 // (Lgb)
 
 InsetMinipage::InsetMinipage(BufferParams const & bp)
-	: InsetCollapsable(bp), pos_(center),
-	  inner_pos_(inner_center), width_(100, LyXLength::PCW)
+	: InsetCollapsable(bp)
 {
 	setLabel(_("minipage"));
 	LyXFont font(LyXFont::ALL_SANE);
@@ -86,9 +88,7 @@ InsetMinipage::InsetMinipage(BufferParams const & bp)
 
 
 InsetMinipage::InsetMinipage(InsetMinipage const & in, bool same_id)
-	: InsetCollapsable(in, same_id),
-	  pos_(in.pos_), inner_pos_(in.inner_pos_),
-	  height_(in.height_), width_(in.width_)
+	: InsetCollapsable(in, same_id), params_(in.params_)
 {}
 
 
@@ -100,29 +100,53 @@ Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
 
 InsetMinipage::~InsetMinipage()
 {
-	hideDialog();
+	InsetMinipageMailer mailer(*this);
+	mailer.hideDialog();
 }
 
 
-void InsetMinipage::write(Buffer const * buf, ostream & os) const
+dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 {
-	os << getInsetName() << '\n'
-	   << "position " << pos_ << '\n'
-	   << "inner_position " << inner_pos_ << '\n'
-	   << "height \"" << height_.asString() << "\"\n"
-	   << "width \"" << width_.asString() << "\"\n";
-	InsetCollapsable::write(buf, os);
+	Inset::RESULT result = UNDISPATCHED;
+
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY: {
+		InsetMinipage::Params params;
+		InsetMinipageMailer::string2params(cmd.argument, params);
+
+		params_.pos   = params.pos;
+		params_.width = params.width;
+
+		cmd.view()->updateInset(this, true);
+		result = DISPATCHED;
+	}
+	break;
+	default:
+		result = InsetCollapsable::localDispatch(cmd);
+	}
+
+	return result;
 }
 
 
-void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
+void InsetMinipage::Params::write(ostream & os) const
+{
+	os << "Minipage" << '\n'
+	   << "position " << pos << '\n'
+	   << "inner_position " << inner_pos << '\n'
+	   << "height \"" << height.asString() << "\"\n"
+	   << "width \"" << width.asString() << "\"\n";
+}
+
+
+void InsetMinipage::Params::read(LyXLex & lex)
 {
 	if (lex.isOK()) {
 		lex.next();
 		string const token = lex.getString();
 		if (token == "position") {
 			lex.next();
-			pos_ = static_cast<Position>(lex.getInteger());
+			pos = static_cast<Position>(lex.getInteger());
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'position'-tag!"
 				   << endl;
@@ -135,7 +159,7 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 		string const token = lex.getString();
 		if (token == "inner_position") {
 			lex.next();
-			inner_pos_ = static_cast<InnerPosition>(lex.getInteger());
+			inner_pos = static_cast<InnerPosition>(lex.getInteger());
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'inner_position'-tag!"
 				   << endl;
@@ -148,7 +172,7 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 		string const token = lex.getString();
 		if (token == "height") {
 			lex.next();
-			height_ = LyXLength(lex.getString());
+			height = LyXLength(lex.getString());
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'height'-tag!"
 				   << endl;
@@ -161,7 +185,7 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 		string const token = lex.getString();
 		if (token == "width") {
 			lex.next();
-			width_ = LyXLength(lex.getString());
+			width = LyXLength(lex.getString());
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'width'-tag!"
 				   << endl;
@@ -169,6 +193,19 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
+}
+
+
+void InsetMinipage::write(Buffer const * buf, ostream & os) const
+{
+	params_.write(os);
+	InsetCollapsable::write(buf, os);
+}
+
+
+void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
+{
+	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
 }
 
@@ -180,7 +217,7 @@ int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
 	else {
 		// Take placement into account.
 		int i = 0;
-		switch (pos_) {
+		switch (params_.pos) {
 		case top:
 			i = InsetCollapsable::ascent(bv, font);
 			break;
@@ -204,7 +241,7 @@ int InsetMinipage::descent(BufferView * bv, LyXFont const & font) const
 	else {
 		// Take placement into account.
 		int i = 0;
-		switch (pos_) {
+		switch (params_.pos) {
 		case top:
 			i = InsetCollapsable::descent(bv, font);
 			break;
@@ -231,7 +268,7 @@ int InsetMinipage::latex(Buffer const * buf,
 			 ostream & os, bool fragile, bool fp) const
 {
 	string s_pos;
-	switch (pos_) {
+	switch (params_.pos) {
 	case top:
 		s_pos += 't';
 		break;
@@ -243,7 +280,7 @@ int InsetMinipage::latex(Buffer const * buf,
 		break;
 	}
 	os << "\\begin{minipage}[" << s_pos << "]{"
-	   << width_.asLatexString() << "}%\n";
+	   << params_.width.asLatexString() << "}%\n";
 
 	int i = inset.latex(buf, os, fragile, fp);
 
@@ -263,14 +300,14 @@ bool InsetMinipage::insetAllowed(Inset::Code code) const
 
 InsetMinipage::Position InsetMinipage::pos() const
 {
-	return pos_;
+	return params_.pos;
 }
 
 
 void InsetMinipage::pos(InsetMinipage::Position p)
 {
-	if (pos_ != p) {
-		pos_ = p;
+	if (params_.pos != p) {
+		params_.pos = p;
 		need_update = FULL;
 	}
 }
@@ -278,26 +315,26 @@ void InsetMinipage::pos(InsetMinipage::Position p)
 
 InsetMinipage::InnerPosition InsetMinipage::innerPos() const
 {
-	return inner_pos_;
+	return params_.inner_pos;
 }
 
 
 void InsetMinipage::innerPos(InsetMinipage::InnerPosition ip)
 {
-	inner_pos_ = ip;
+	params_.inner_pos = ip;
 }
 
 
 LyXLength const & InsetMinipage::pageHeight() const
 {
-	return height_;
+	return params_.height;
 }
 
 
 void InsetMinipage::pageHeight(LyXLength const & ll)
 {
-	if (height_ != ll) {
-		height_ = ll;
+	if (params_.height != ll) {
+		params_.height = ll;
 		need_update = FULL;
 	}
 }
@@ -305,14 +342,14 @@ void InsetMinipage::pageHeight(LyXLength const & ll)
 
 LyXLength const & InsetMinipage::pageWidth() const
 {
-	return width_;
+	return params_.width;
 }
 
 
 void InsetMinipage::pageWidth(LyXLength const & ll)
 {
-	if (ll != width_) {
-		width_ = ll;
+	if (ll != params_.width) {
+		params_.width = ll;
 		need_update = FULL;
 	}
 }
@@ -320,8 +357,12 @@ void InsetMinipage::pageWidth(LyXLength const & ll)
 
 bool InsetMinipage::showInsetDialog(BufferView * bv) const
 {
-	if (!inset.showInsetDialog(bv))
-		bv->owner()->getDialogs().showMinipage(const_cast<InsetMinipage *>(this));
+	if (!inset.showInsetDialog(bv)) {
+		InsetMinipage * tmp = const_cast<InsetMinipage *>(this);
+		InsetMinipageMailer mailer(*tmp);
+		mailer.showDialog();
+	}
+
 	return true;
 }
 
@@ -333,7 +374,7 @@ int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 	    static_cast<UpdatableInset*>(owner())->getMaxWidth(bv, inset) < 0) {
 		return -1;
 	}
-	if (!width_.zero()) {
+	if (!params_.width.zero()) {
 		int ww1 = latexTextWidth(bv);
 		int ww2 = InsetCollapsable::getMaxWidth(bv, inset);
 		if (ww2 > 0 && ww2 < ww1) {
@@ -348,5 +389,65 @@ int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 
 int InsetMinipage::latexTextWidth(BufferView * bv) const
 {
-	return width_.inPixels(InsetCollapsable::latexTextWidth(bv));
+	return params_.width.inPixels(InsetCollapsable::latexTextWidth(bv));
+}
+
+
+InsetMinipage::Params::Params()
+	: pos(center),
+	  inner_pos(inner_center),
+	  width(100, LyXLength::PCW)
+{}
+
+
+string const InsetMinipageMailer:: name_("minipage");
+
+InsetMinipageMailer::InsetMinipageMailer(InsetMinipage & inset)
+	: inset_(inset)
+{}
+
+
+string const InsetMinipageMailer::inset2string() const
+{
+	return params2string(inset_.params());
+}
+
+
+void InsetMinipageMailer::string2params(string const & in,
+					InsetMinipage::Params & params)
+{
+	params = InsetMinipage::Params();
+
+	istringstream data(in);
+	LyXLex lex(0,0);
+	lex.setStream(data);
+
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != "minipage")
+			return;
+	}
+
+	// This is part of the inset proper that is usually swallowed
+	// by Buffer::readInset
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != "Minipage")
+			return;
+	}
+
+	params.read(lex);
+}
+
+
+string const
+InsetMinipageMailer::params2string(InsetMinipage::Params const & params)
+{
+	ostringstream data;
+	data << name_ << ' ';
+	params.write(data);
+
+	return data.str();
 }

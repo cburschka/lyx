@@ -360,15 +360,16 @@ bool operator!=(InsetExternal::Params const & left,
 }
 
 
+string const InsetExternalMailer::name_("external");
+
 InsetExternalMailer::InsetExternalMailer(InsetExternal & inset)
-	: name_("external"), inset_(inset)
+	: inset_(inset)
 {}
 
 
 string const InsetExternalMailer::inset2string() const
 {
-	
-	return params2string(name(), inset_.params());
+	return params2string(inset_.params());
 }
 
 
@@ -377,21 +378,25 @@ void InsetExternalMailer::string2params(string const & in,
 {
 	params = InsetExternal::Params();
 
-	string name;
-	string body = split(in, name, ' ');
+	istringstream data(in);
+	LyXLex lex(0,0);
+	lex.setStream(data);
 
-	if (name != "external" || body.empty())
-		return;
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != name_)
+			return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Buffer::readInset
-	body = split(body, name, ' ');
-	if (name != "External")
-		return;
-
-	istringstream data(body);
-	LyXLex lex(0,0);
-	lex.setStream(data);
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != "External")
+			return;
+	}
 
 	InsetExternal inset;	
 	inset.read(0, lex);
@@ -400,13 +405,12 @@ void InsetExternalMailer::string2params(string const & in,
 
 
 string const
-InsetExternalMailer::params2string(string const & name,
-				   InsetExternal::Params const & params)
+InsetExternalMailer::params2string(InsetExternal::Params const & params)
 {
 	InsetExternal inset;
 	inset.setFromParams(params);
 	ostringstream data;
-	data << name << ' ';
+	data << name_ << ' ';
 	inset.write(0, data);
 	data << "\\end_inset\n";
 

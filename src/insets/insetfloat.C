@@ -395,14 +395,16 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 }
 
 
+string const InsetFloatMailer::name_("float");
+
 InsetFloatMailer::InsetFloatMailer(InsetFloat & inset)
-	: name_("float"), inset_(inset)
+	: inset_(inset)
 {}
 
 
 string const InsetFloatMailer::inset2string() const
 {
-	return params2string(name(), inset_.params());
+	return params2string(inset_.params());
 }
 
 
@@ -411,32 +413,35 @@ void InsetFloatMailer::string2params(string const & in,
 {
 	params = InsetFloatParams();
 
-	string name;
-	string body = split(in, name, ' ');
+	istringstream data(in);
+	LyXLex lex(0,0);
+	lex.setStream(data);
 
-	if (name != "float" || body.empty())
-		return;
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != name_)
+			return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Buffer::readInset
-	body = split(body, name, '\n');
-	if (!prefixIs(name, "Float "))
-		return;
-
-	istringstream data(body);
-	LyXLex lex(0,0);
-	lex.setStream(data);
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != "Float" || !lex.eatLine())
+			return;
+	}
 
 	params.read(lex);
 }
 
 
 string const
-InsetFloatMailer::params2string(string const & name,
-				InsetFloatParams const & params)
+InsetFloatMailer::params2string(InsetFloatParams const & params)
 {
 	ostringstream data;
-	data << name << ' ';
+	data << name_ << ' ';
 	params.write(data);
 
 	return data.str();

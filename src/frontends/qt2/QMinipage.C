@@ -26,11 +26,11 @@
 #include <qcombobox.h>
 #include <qlineedit.h>
 
-typedef Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> > base_class;
+typedef QController<ControlMinipage, QView<QMinipageDialog> > base_class;
 
 
-QMinipage::QMinipage()
-	: base_class(qt_("LyX: Minipage Settings"))
+QMinipage::QMinipage(Dialog & parent)
+	: base_class(parent, qt_("LyX: Minipage Settings"))
 {
 }
 
@@ -57,9 +57,9 @@ void QMinipage::apply()
 	if (dialog_->widthED->text().isEmpty())
 		unit = LyXLength::UNIT_NONE;
 
-	MinipageParams & params = controller().params();
+	InsetMinipage::Params & params = controller().params();
 
-	params.pageWidth = LyXLength(value, unit);
+	params.width = LyXLength(value, unit);
 
 	switch (dialog_->valignCO->currentItem()) {
 	case 0:
@@ -90,9 +90,9 @@ string const numtostr(double val)
 
 void QMinipage::update_contents()
 {
-	MinipageParams const & params = controller().params();
+	InsetMinipage::Params const & params = controller().params();
 
-	LyXLength len(params.pageWidth);
+	LyXLength len(params.width);
 	dialog_->widthED->setText(toqstr(numtostr(len.value())));
 	dialog_->unitsLC->setCurrentItem(len.unit());
 	lyxerr << "width " << numtostr(len.value())

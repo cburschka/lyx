@@ -1,3 +1,18 @@
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove minipage dialog.
+
+	* Dialogs3.C: add minipage dialog. No longer use the bibitem, include,
+	label or url controllers; use ControlCommand instead.
+
+	* FormBibitem.[Ch]:
+	* FormIndex.[Ch]: changes due to use of ControlCommand, above
+
+	* FormMinipage.[Ch]:
+	* forms/form_minipage.fd: changes to use the new Dialog-based scheme.
+
 2003-03-06  Alfredo Braunstein  <abraunst@libero.it>
 
 	* xscreen.C: use LyXText::top_y() instead of LyXText::first_y

@@ -15,11 +15,11 @@
 
 #include "QDialogView.h"
 
-class ControlBibitem;
+class ControlCommand;
 class QBibitemDialog;
 
 class QBibitem
-	: public QController<ControlBibitem, QView<QBibitemDialog> >
+	: public QController<ControlCommand, QView<QBibitemDialog> >
 {
 public:
 	friend class QBibitemDialog;

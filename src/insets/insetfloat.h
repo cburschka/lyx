@@ -108,11 +108,10 @@ public:
 	///
 	static void string2params(string const &, InsetFloatParams &);
 	///
-	static string const params2string(string const & name,
-					  InsetFloatParams const &);
+	static string const params2string(InsetFloatParams const &);
 private:
 	///
-	string const name_;
+	static string const name_;
 	///
 	InsetFloat & inset_;
 };

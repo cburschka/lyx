@@ -36,6 +36,6 @@ void ControlFloat::clearParams()
 
 void ControlFloat::dispatchParams()
 {
-	string const lfun = InsetFloatMailer::params2string("float", params());
+	string const lfun = InsetFloatMailer::params2string(params());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }

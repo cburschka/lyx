@@ -22,7 +22,6 @@
 #include "ControlGraphics.h"
 #include "insets/insetgraphicsParams.h"
 #include "ControlLog.h"
-#include "ControlMinipage.h"
 #include "ControlParagraph.h"
 #include "ControlPrefs.h"
 #include "ControlPrint.h"
@@ -52,8 +51,6 @@
 #include "QGraphicsDialog.h"
 #include "QLog.h"
 #include "QLogDialog.h"
-#include "QMinipage.h"
-#include "QMinipageDialog.h"
 #include "QParagraph.h"
 #include "QParagraphDialog.h"
 #include "QPrefs.h"
@@ -109,9 +106,6 @@ GraphicsDialog;
 typedef GUI<ControlLog, QLog, OkCancelPolicy, Qt2BC>
 LogFileDialog;
 
-typedef GUI<ControlMinipage, QMinipage, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-MinipageDialog;
-
 typedef GUI<ControlParagraph, QParagraph, OkApplyCancelReadOnlyPolicy, Qt2BC>
 ParagraphDialog;
 
@@ -158,7 +152,6 @@ struct Dialogs::Impl {
 	FileDialog          file;
 	GraphicsDialog      graphics;
 	LogFileDialog       logfile;
-	MinipageDialog      minipage;
 	ParagraphDialog     paragraph;
 	PrefsDialog         prefs;
 	PrintDialog         print;

@@ -164,11 +164,10 @@ public:
 	///
 	static void string2params(string const &, InsetInclude::Params &);
 	///
-	static string const params2string(string const & name,
-					  InsetInclude::Params const &);
+	static string const params2string(InsetInclude::Params const &);
 private:
 	///
-	string const name_;
+	static string const name_;
 	///
 	InsetInclude & inset_;
 };

@@ -1350,6 +1350,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		string data;
 		if (name == "bibitem" ||
 		    name == "bibtex" ||
+		    name == "include" ||
 		    name == "index" ||
 		    name == "ref" ||
 		    name == "toc" ||
@@ -1359,9 +1360,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		} else if (name == "citation") {
 			InsetCommandParams p("cite");
 			data = InsetCommandMailer::params2string(name, p);
-		} else if (name == "ert") {
-			data = InsetERTMailer::params2string(name,
-							     InsetERT::Open);
 		}
 		owner->getDialogs().show(name, data, 0);
 	}

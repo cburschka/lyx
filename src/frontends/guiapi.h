@@ -17,7 +17,6 @@
 
 class Dialogs;
 class InsetGraphics;
-class InsetMinipage;
 class InsetTabular;
 
 extern "C" {
@@ -33,8 +32,6 @@ void gui_ShowForks(Dialogs &);
 void gui_ShowGraphics(InsetGraphics *, Dialogs &);
 void gui_ShowLogFile(Dialogs &);
 void gui_ShowMathPanel(Dialogs &);
-void gui_ShowMinipage(InsetMinipage *, Dialogs &);
-void gui_UpdateMinipage(InsetMinipage *, Dialogs &);
 void gui_ShowParagraph(Dialogs &);
 void gui_UpdateParagraph(Dialogs &);
 void gui_ShowPreamble(Dialogs &);

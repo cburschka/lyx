@@ -1,3 +1,8 @@
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
+	* lyxfunc.C (dispatch): add "include" to LFUN_SHOW_NEW_INSET and
+	remove "ert".
+
 2003-03-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ParagraphList.C (front): new function

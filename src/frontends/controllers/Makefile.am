@@ -27,8 +27,6 @@ libcontrollers_la_SOURCES= \
 	ButtonPolicies.h \
 	ControlAboutlyx.C \
 	ControlAboutlyx.h \
-	ControlBibitem.C \
-	ControlBibitem.h \
 	ControlBibtex.C \
 	ControlBibtex.h \
 	ControlButtons.C \
@@ -64,11 +62,7 @@ libcontrollers_la_SOURCES= \
 	ControlGraphics.h \
 	ControlInclude.C \
 	ControlInclude.h \
-	ControlIndex.C \
-	ControlIndex.h \
 	ControlInset.h \
-	ControlLabel.C \
-	ControlLabel.h \
 	ControlLog.C \
 	ControlLog.h \
 	ControlMath.C \
@@ -103,8 +97,6 @@ libcontrollers_la_SOURCES= \
 	ControlThesaurus.h \
 	ControlToc.C \
 	ControlToc.h \
-	ControlUrl.C \
-	ControlUrl.h \
 	ControlVCLog.C \
 	ControlVCLog.h \
 	ControlWrap.C \

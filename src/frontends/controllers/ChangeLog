@@ -1,3 +1,21 @@
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
+	* ControlBibitem.[Ch]:
+	* ControlIndex.[Ch]:
+	* ControlLabel.[Ch]:
+	* ControlUrl.[Ch]: removed.
+
+	* Makefile.am: remove files.
+
+	* ControlERT.C (dispatchParams):
+	* ControlExternal.C (dispatchParams):
+	* ControlFloat.C (dispatchParams):
+	* ControlInclude.C (dispatchParams):
+	* ControlWrap.C (dispatchParams): no need to pass name to Mailer
+	anymore.
+
+	* ControlMinipage.[Ch]: rewrite to use the Dialog-based scheme.
+
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
 	* ControlWrap.[Ch]: rewrite to use the Dialog-based scheme.

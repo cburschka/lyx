@@ -33,7 +33,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  file(lv, d),
 	  graphics(lv, d),
 	  logfile(lv, d),
-	  minipage(lv, d),
 	  paragraph(lv, d),
 	  prefs(lv, d),
 	  print(lv, d),

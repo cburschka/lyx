@@ -48,7 +48,7 @@ void ControlInclude::clearParams()
 void ControlInclude::dispatchParams()
 {
 	InsetInclude::Params p = params();
-	string const lfun = InsetIncludeMailer::params2string("include", p);
+	string const lfun = InsetIncludeMailer::params2string(p);
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 

@@ -610,14 +610,16 @@ void InsetInclude::PreviewImpl::restartLoading()
 }
 
 
+string const InsetIncludeMailer::name_("include");
+
 InsetIncludeMailer::InsetIncludeMailer(InsetInclude & inset)
-	: name_("include"), inset_(inset)
+	: inset_(inset)
 {}
 
 
 string const InsetIncludeMailer::inset2string() const
 {
-	return params2string(name(), inset_.params());
+	return params2string(inset_.params());
 }
 
 
@@ -626,21 +628,25 @@ void InsetIncludeMailer::string2params(string const & in,
 {
 	params = InsetInclude::Params();
 
-	string name;
-	string body = split(in, name, ' ');
+	istringstream data(in);
+	LyXLex lex(0,0);
+	lex.setStream(data);
 
-	if (name != "include" || body.empty())
-		return;
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != name_)
+			return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Buffer::readInset
-	body = split(body, name, ' ');
-	if (name != "Include")
-		return;
-
-	istringstream data(body);
-	LyXLex lex(0,0);
-	lex.setStream(data);
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != "Include")
+			return;
+	}
 
 	InsetInclude inset(params);	
 	inset.read(0, lex);
@@ -649,13 +655,12 @@ void InsetIncludeMailer::string2params(string const & in,
 
 
 string const
-InsetIncludeMailer::params2string(string const & name,
-				  InsetInclude::Params const & params)
+InsetIncludeMailer::params2string(InsetInclude::Params const & params)
 {
 	InsetInclude inset(params);
 	inset.set(params);
 	ostringstream data;
-	data << name << ' ';
+	data << name_ << ' ';
 	inset.write(0, data);
 	data << "\\end_inset\n";
 

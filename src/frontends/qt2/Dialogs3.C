@@ -13,7 +13,6 @@
 #include "Dialogs.h"
 #include "Dialog.h"
 
-#include "ControlBibitem.h"
 #include "ControlBibtex.h"
 #include "ControlCitation.h"
 #include "ControlError.h"
@@ -21,11 +20,9 @@
 #include "ControlExternal.h"
 #include "ControlFloat.h"
 #include "ControlInclude.h"
-#include "ControlIndex.h"
-#include "ControlLabel.h"
+#include "ControlMinipage.h"
 #include "ControlRef.h"
 #include "ControlToc.h"
-#include "ControlUrl.h"
 #include "ControlWrap.h"
 
 #include "QBibitem.h"
@@ -50,6 +47,8 @@
 #include "QIncludeDialog.h"
 #include "QIndex.h"
 #include "QIndexDialog.h"
+#include "QMinipage.h"
+#include "QMinipageDialog.h"
 #include "QRef.h"
 #include "QRefDialog.h"
 #include "QToc.h"
@@ -80,8 +79,8 @@ namespace {
 
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
 				     "error", "ert", "external", "float",
-				     "include", "index", "label", "ref",
-				     "toc", "url", "wrap" };
+				     "include", "index", "label", "minipage",
+				     "ref", "toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -114,7 +113,7 @@ Dialog * Dialogs::build(string const & name)
 	Dialog * dialog = new Dialog(lyxview_, name);
 
 	if (name == "bibitem") {
-		dialog->setController(new ControlBibitem(*dialog));
+		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QBibitem(*dialog));
 		dialog->setButtonController(new OkCancelReadOnlyBC);
 	} else if (name == "bibtex") {
@@ -146,16 +145,20 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new QInclude(*dialog));
 		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
 	} else if (name == "index") {
-		dialog->setController(new ControlIndex(*dialog));
+		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
 					   qt_("LyX: Insert Index Entry"),
 					   qt_("&Keyword")));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "label") {
-		dialog->setController(new ControlLabel(*dialog));
+		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
 					   qt_("LyX: Insert Label"),
 					   qt_("&Label")));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "minipage") {
+		dialog->setController(new ControlMinipage(*dialog));
+		dialog->setView(new QMinipage(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
@@ -166,7 +169,7 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new QToc(*dialog));
 		dialog->setButtonController(new OkCancelBC);
 	} else if (name == "url") {
-		dialog->setController(new ControlUrl(*dialog));
+		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QURL(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "wrap") {

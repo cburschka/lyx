@@ -12,8 +12,7 @@
 #ifndef FORMMINIPAGE_H
 #define FORMMINIPAGE_H
 
-
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlMinipage;
 struct FD_minipage;
@@ -22,10 +21,10 @@ struct FD_minipage;
     Dialog.
  */
 class FormMinipage
-	: public FormCB<ControlMinipage, FormDB<FD_minipage> > {
+	: public FormController<ControlMinipage, FormView<FD_minipage> > {
 public:
 	///
-	FormMinipage();
+	FormMinipage(Dialog &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

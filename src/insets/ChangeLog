@@ -1,3 +1,20 @@
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
+	* insetcommand.C (string2params):
+	* insetexternal.C (string2params):
+	* insetfloat.C (string2params):
+	* insetinclude.C (string2params):
+	* insetwrap.C (string2params): use LyXLeX more.
+
+	* insetert.[Ch]:
+	* insetexternal.[Ch]:
+	* insetfloat.[Ch]:
+	* insetinclude.[Ch]:
+	* insetwrap.[Ch]: change Mailer::name_ to be static.
+
+	* insetminipage.[Ch]: define a new class InsetMinipageMailer and use
+	it to communicate with the frontend dialogs.
+
 2003-03-06  Alfredo Braunstein  <abraunst@libero.it>
 
 	* insettext.C:

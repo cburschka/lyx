@@ -75,18 +75,6 @@ void gui_ShowMathPanel(Dialogs & d)
 }
 
 
-void gui_ShowMinipage(InsetMinipage * im, Dialogs & d)
-{
-	d.showMinipage(im);
-}
-
-
-void gui_UpdateMinipage(InsetMinipage * im, Dialogs & d)
-{
-	d.updateMinipage(im);
-}
-
-
 void gui_ShowParagraph(Dialogs & d)
 {
 	d.showParagraph();

@@ -10,9 +10,6 @@
 
 #include <config.h>
 
-
-#include "ControlBibitem.h"
-
 #include <qpushbutton.h>
 #include <qlineedit.h>
 

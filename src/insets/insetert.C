@@ -740,14 +740,16 @@ void InsetERT::update(BufferView * bv, LyXFont const & font,
 }
 
 
+string const InsetERTMailer::name_("ert");
+
 InsetERTMailer::InsetERTMailer(InsetERT & inset)
-	: name_("ert"), inset_(inset)
+	: inset_(inset)
 {}
 
 
 string const InsetERTMailer::inset2string() const
 {
-	return params2string(name(), inset_.status());
+	return params2string(inset_.status());
 }
 
 
@@ -767,7 +769,7 @@ void InsetERTMailer::string2params(string const & in,
 
 
 string const
-InsetERTMailer::params2string(string const & name, InsetERT::ERTStatus status)
+InsetERTMailer::params2string(InsetERT::ERTStatus status)
 {
-	return name + ' ' + tostr(status);
+	return name_ + ' ' + tostr(status);
 }

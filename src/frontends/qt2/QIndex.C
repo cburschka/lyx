@@ -11,7 +11,7 @@
 #include <config.h>
 
 
-#include "ControlIndex.h"
+#include "ControlCommand.h"
 #include "qt_helpers.h"
 
 #include "QIndexDialog.h"

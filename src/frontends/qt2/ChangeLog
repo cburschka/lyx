@@ -1,3 +1,20 @@
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove minipage dialog.
+
+	* Dialogs3.C: add minipage dialog. No longer use the bibitem, include,
+	label or url controllers; use ControlCommand instead.
+
+	* QBibitem.[Ch]:
+	* QIndex.[Ch]:
+	* QURL.[Ch]: changes due to use of ControlCommand, above
+
+	* QBibitemDialog.C: no need to include controller.
+
+	* QMinipage.[Ch]: changes to use the new Dialog-based scheme.
+
 2003-03-06  Alfredo Braunstein  <abraunst@libero.it>
 
 	* qscreen.C: use LyXText::top_y() instead of LyXText::first_y

@@ -15,12 +15,12 @@
 
 #include "FormDialogView.h"
 
-class ControlUrl;
+class ControlCommand;
 struct FD_url;
 
 /** This class provides an XForms implementation of the Url Dialog.
  */
-class FormUrl : public FormController<ControlUrl, FormView<FD_url> > {
+class FormUrl : public FormController<ControlCommand, FormView<FD_url> > {
 public:
 	///
 	FormUrl(Dialog &);

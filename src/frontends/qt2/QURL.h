@@ -15,12 +15,12 @@
 
 #include "QDialogView.h"
 
-class ControlUrl;
+class ControlCommand;
 class QURLDialog;
 
 
 class QURL :
-	public QController<ControlUrl, QView<QURLDialog> >
+	public QController<ControlCommand, QView<QURLDialog> >
 {
 public:
 	friend class QURLDialog;

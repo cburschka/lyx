@@ -13,7 +13,7 @@
 
 #include "support/lstrings.h"
 
-#include "ControlBibitem.h"
+#include "ControlCommand.h"
 #include "qt_helpers.h"
 #include "debug.h"
 
@@ -24,7 +24,7 @@
 #include "QBibitem.h"
 #include "Qt2BC.h"
 
-typedef QController<ControlBibitem, QView<QBibitemDialog> > base_class;
+typedef QController<ControlCommand, QView<QBibitemDialog> > base_class;
 
 
 QBibitem::QBibitem(Dialog & parent)

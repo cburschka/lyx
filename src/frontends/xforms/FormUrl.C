@@ -13,12 +13,12 @@
 
 
 #include "xformsBC.h"
-#include "ControlUrl.h"
+#include "ControlCommand.h"
 #include "FormUrl.h"
 #include "forms/form_url.h"
 #include FORMS_H_LOCATION
 
-typedef FormController<ControlUrl, FormView<FD_url> > base_class;
+typedef  FormController<ControlCommand, FormView<FD_url> > base_class;
 
 FormUrl::FormUrl(Dialog & parent)
 	: base_class(parent, _("Url"))

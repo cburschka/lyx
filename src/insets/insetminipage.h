@@ -17,8 +17,6 @@
 #include "insetcollapsable.h"
 #include "lyxlength.h"
 
-#include <boost/signals/signal0.hpp>
-
 /** The minipage inset
 
 */
@@ -37,12 +35,33 @@ public:
 		inner_bottom,
 		inner_stretch
 	};
+
+	///
+	struct Params {
+		///
+		Params();
+		///
+		Position pos;
+		///
+		InnerPosition inner_pos;
+		///
+		LyXLength height;
+		///
+		LyXLength width;
+		///
+		void write(std::ostream & os) const;
+		///
+		void read(LyXLex & lex);
+	};
+
 	///
 	InsetMinipage(BufferParams const &);
 	///
 	InsetMinipage(InsetMinipage const &, bool same_id = false);
 	///
 	~InsetMinipage();
+	///
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -78,8 +97,6 @@ public:
 	///
 	void pageWidth(LyXLength const &);
 	///
-	boost::signal0<void> hideDialog;
-	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
 	bool needFullRow() const { return false; }
@@ -91,16 +108,38 @@ public:
 	bool showInsetDialog(BufferView *) const;
 	///
 	int latexTextWidth(BufferView *) const;
-
+	///
+	void params(Params const & p) { params_ = p; }
+	///
+	Params const & params() const { return params_; }
 private:
 	///
-	Position pos_;
+	Params params_;
+};
+
+
+#include "mailinset.h"
+
+
+class InsetMinipageMailer : public MailInset {
+public:
 	///
-	InnerPosition inner_pos_;
+	InsetMinipageMailer(InsetMinipage & inset);
 	///
-	LyXLength height_;
+	virtual Inset & inset() const { return inset_; }
 	///
-	LyXLength width_;
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	///
+	static void string2params(string const &, InsetMinipage::Params &);
+	///
+	static string const params2string(InsetMinipage::Params const &);
+private:
+	///
+	static string const name_;
+	///
+	InsetMinipage & inset_;
 };
 
 #endif

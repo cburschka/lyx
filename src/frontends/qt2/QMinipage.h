@@ -13,20 +13,21 @@
 #define QMINIPAGE_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlMinipage;
 class QMinipageDialog;
 
 ///
 class QMinipage
-	: public Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> >
+	: public QController<ControlMinipage, QView<QMinipageDialog> >
 {
 public:
 	///
 	friend class QMinipageDialog;
 	///
-	QMinipage();
+	QMinipage(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply();

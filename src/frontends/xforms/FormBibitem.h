@@ -16,13 +16,13 @@
 
 #include "FormDialogView.h"
 
-class ControlBibitem;
+class ControlCommand;
 struct FD_bibitem;
 
 /**
  * For bibliography entry editing
  */
-class FormBibitem : public FormController<ControlBibitem, FormView<FD_bibitem> > {
+class FormBibitem : public FormController<ControlCommand, FormView<FD_bibitem> > {
 public:
 	///
 	FormBibitem(Dialog &);

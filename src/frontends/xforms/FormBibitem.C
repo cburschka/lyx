@@ -12,7 +12,7 @@
 
 #include <config.h>
 #include "xformsBC.h"
-#include "ControlBibitem.h"
+#include "ControlCommand.h"
 #include "FormBibitem.h"
 #include "Tooltips.h"
 #include "forms/form_bibitem.h"
@@ -20,7 +20,7 @@
 #include "gettext.h"
 #include "support/lstrings.h" // compare
 
-typedef FormController<ControlBibitem, FormView<FD_bibitem> > base_class;
+typedef FormController<ControlCommand, FormView<FD_bibitem> > base_class;
 
 FormBibitem::FormBibitem(Dialog & parent)
 	: base_class(parent, _("Bibliography Entry"))

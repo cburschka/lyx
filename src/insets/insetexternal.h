@@ -143,11 +143,10 @@ public:
 	///
 	static void string2params(string const &, InsetExternal::Params &);
 	///
-	static string const params2string(string const & name,
-					  InsetExternal::Params const &);
+	static string const params2string(InsetExternal::Params const &);
 private:
 	///
-	string const name_;
+	static string const name_;
 	///
 	InsetExternal & inset_;
 };

@@ -310,14 +310,16 @@ void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
 }
 
 
+string const InsetWrapMailer::name_("wrap");
+
 InsetWrapMailer::InsetWrapMailer(InsetWrap & inset)
-	: name_("wrap"), inset_(inset)
+	: inset_(inset)
 {}
 
 
 string const InsetWrapMailer::inset2string() const
 {
-	return params2string(name(), inset_.params());
+	return params2string(inset_.params());
 }
 
 
@@ -326,32 +328,35 @@ void InsetWrapMailer::string2params(string const & in,
 {
 	params = InsetWrapParams();
 
-	string name;
-	string body = split(in, name, ' ');
+	istringstream data(in);
+	LyXLex lex(0,0);
+	lex.setStream(data);
 
-	if (name != "wrap" || body.empty())
-		return;
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != name_)
+			return;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Buffer::readInset
-	body = split(body, name, '\n');
-	if (!prefixIs(name, "Wrap "))
-		return;
-
-	istringstream data(body);
-	LyXLex lex(0,0);
-	lex.setStream(data);
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != "Wrap" || !lex.eatLine())
+			return;
+	}
 
 	params.read(lex);
 }
 
 
 string const
-InsetWrapMailer::params2string(string const & name,
-			       InsetWrapParams const & params)
+InsetWrapMailer::params2string(InsetWrapParams const & params)
 {
 	ostringstream data;
-	data << name << ' ';
+	data << name_ << ' ';
 	params.write(data);
 
 	return data.str();

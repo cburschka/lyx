@@ -25,7 +25,6 @@ class LyXView;
 
 class InsetGraphics;
 class InsetInfo;
-class InsetMinipage;
 class Paragraph;
 class InsetTabular;
 
@@ -95,10 +94,6 @@ public:
 	void showMathPanel();
 	/// show the merge changes dialog
 	void showMergeChanges();
-	///
-	void showMinipage(InsetMinipage *);
-	///
-	void updateMinipage(InsetMinipage *);
 	///
 	void showParagraph();
 	///

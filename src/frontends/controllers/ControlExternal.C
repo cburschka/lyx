@@ -46,8 +46,7 @@ void ControlExternal::clearParams()
 
 void ControlExternal::dispatchParams()
 {
-	InsetExternal::Params p = params();
-	string const lfun = InsetExternalMailer::params2string("external", p);
+	string const lfun = InsetExternalMailer::params2string(params());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 

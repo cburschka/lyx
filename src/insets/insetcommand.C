@@ -101,15 +101,14 @@ void InsetCommandMailer::string2params(string const & in,
 	params.setContents(string());
 	params.setOptions(string());
 
-	string name;
-	string body = split(in, name, ' ');
-
-	if (body.empty())
-		return;
-
-	istringstream data(body);
+	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
+
+	if (lex.isOK()) {
+		lex.next();
+		string const name = lex.getString();
+	}
 
 	params.read(lex);
 }
