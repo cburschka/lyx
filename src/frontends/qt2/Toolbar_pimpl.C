@@ -44,13 +44,17 @@ QPixmap getIconPixmap(int action)
 {
 	FuncRequest f = lyxaction.retrieveActionArg(action);
  
-	string const name = lyxaction.getActionName(f.action);
 	string xpm_name;
 
-	if (!f.argument.empty())
-		xpm_name = subst(name + ' ' + f.argument, ' ','_');
-	else 
-		xpm_name = name;
+	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
+		xpm_name = "math/" + subst(f.argument, ' ', '_');
+	} else {
+		string const name = lyxaction.getActionName(f.action);
+		if (!f.argument.empty())
+			xpm_name = subst(name + ' ' + f.argument, ' ','_');
+		else 
+			xpm_name = name;
+	}
 
 	string fullname = LibFileSearch("images", xpm_name, "xpm");
 
@@ -60,18 +64,6 @@ QPixmap getIconPixmap(int action)
 		return QPixmap(fullname.c_str());
 	}
 
-	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
-#if 0 // FIXME: GUII
-		char const ** pixmap =
-			get_pixmap_from_symbol(arg.c_str(), 30, 30);
-		if (pixmap) {
-			lyxerr[Debug::GUI] << "Using mathed-provided icon"
-					   << endl;
-			return QPixmap(pixmap);
-		}
-#endif
-	}
-	
 	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
 	fullname = LibFileSearch("images", "unknown", "xpm");
 	if (!fullname.empty()) {
