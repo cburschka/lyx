@@ -18,7 +18,7 @@ def cppClass(gladeClass):
         return "Gtk::" + gladeClass[3:]
     elif gnome.search(gladeClass):
         return "Gnome::" + gladeClass[5:]
-    
+
 class widget:
     def __init__(self, clss, name):
         self.clss = cppClass(clss)
@@ -27,7 +27,7 @@ class widget:
     def getAccessor(self):
         function = ""
         function += self.clss + " * " + dialog +"::" + self.name
-        function += "() const \n{\n        return getWidget<" + self.clss 
+        function += "() const \n{\n        return getWidget<" + self.clss
         function +=  ">(\"" + "r_" + self.name + "\");\n}\n"
 
         return function
@@ -47,17 +47,17 @@ class GnomeFrontendHandler(ContentHandler):
         self.elemstack = []
         self.widget = 0
         self.TODO = []
-        
+
     def startElement(self, name, attrs):
         self.elemstack.append(name)
         if name == "widget" and rn.search(attrs["id"]):
-                self.TODO.append(widget(attrs["class"], 
+                self.TODO.append(widget(attrs["class"],
                                         re.sub("^r_", "", attrs["id"])))
-    
+
     def endElement(self, name):
         self.elemstack.pop()
 
-        
+
     def characters(self, data):
 
         elem = self.elemstack[-1]
@@ -97,7 +97,7 @@ for i in hndlr.widgets():
 dotH.close()
 
 
-    
 
 
-        
+
+

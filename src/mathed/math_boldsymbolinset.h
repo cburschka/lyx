@@ -15,7 +15,7 @@
 #include "math_nestinset.h"
 
 
-/// Inset for AMSTeX's \boldsymbol 
+/// Inset for AMSTeX's \boldsymbol
 class MathBoldsymbolInset : public MathNestInset {
 public:
 	///

@@ -111,7 +111,7 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 }
 
 
-char const * const dialognames[] = { 
+char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "branch", "box", "changes",
 "character", "citation", "error", "errorlist" , "ert", "external", "file",
 "float", "graphics", "include", "index", "label", "latexlog", "mathpanel",

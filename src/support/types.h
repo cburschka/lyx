@@ -25,7 +25,7 @@ namespace lyx
 	// used there...
 	typedef ptrdiff_t  pos_type;
 
-	/// a type for paragraph offsets 
+	/// a type for paragraph offsets
 	typedef ptrdiff_t  paroffset_type;
 
 	/// a type for the nesting depth of a paragraph

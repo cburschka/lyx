@@ -52,7 +52,7 @@ void ControlBox::dispatchParams()
 void box_gui_tokens(vector<string> & ids, vector<string> & gui_names)
 {
 	char const * const ids_[] = {
-		"Frameless", "Boxed", "ovalbox", 
+		"Frameless", "Boxed", "ovalbox",
 		"Ovalbox", "Shadowbox", "Doublebox"};
 	size_t const ids_size = sizeof(ids_) / sizeof(char *);
 	ids = vector<string>(ids_, ids_ + ids_size);
@@ -65,11 +65,11 @@ void box_gui_tokens(vector<string> & ids, vector<string> & gui_names)
 	gui_names.push_back(_("Double box"));
 }
 
-void box_gui_tokens_special_length(vector<string> & ids, 
+void box_gui_tokens_special_length(vector<string> & ids,
 	vector<string> & gui_names)
 {
 	char const * const ids_[] = {
-		"none", "height", "depth", 
+		"none", "height", "depth",
 		"totalheight", "width"};
 	size_t const ids_size = sizeof(ids_) / sizeof(char *);
 	ids = vector<string>(ids_, ids_ + ids_size);

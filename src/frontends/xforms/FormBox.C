@@ -97,19 +97,19 @@ void FormBox::build()
 	}
 
 	string choice = getStringFromVector(getLatexUnits(), "|");
-	fl_addto_choice(dialog_->choice_width_unit, 
+	fl_addto_choice(dialog_->choice_width_unit,
 		subst(choice, "%", "%%").c_str());
 
 	bcview().addReadOnly(dialog_->input_height);
 	bcview().addReadOnly(dialog_->choice_height_unit);
 	bcview().addReadOnly(dialog_->choice_height_special);
 	for (unsigned int i = 0; i < gui_names_spec_.size(); ++i) {
-		fl_addto_choice(dialog_->choice_height_special, 
+		fl_addto_choice(dialog_->choice_height_special,
 			gui_names_spec_[i].c_str());
 	}
 
 	choice = getStringFromVector(getLatexUnits(), "|");
-	fl_addto_choice(dialog_->choice_height_unit, 
+	fl_addto_choice(dialog_->choice_height_unit,
 		subst(choice, "%", "%%").c_str());
 
 	bcview().setOK(dialog_->button_ok);
@@ -151,7 +151,7 @@ void FormBox::update()
 	string special(controller().params().special);
 	for (unsigned int i = 0; i < gui_names_spec_.size(); ++i) {
 		if (special == ids_spec_[i])
-			fl_set_choice_text(dialog_->choice_special, 
+			fl_set_choice_text(dialog_->choice_special,
 				gui_names_spec_[i].c_str());
 		}
 	// Special width unit must be default for general units to be enabled
@@ -165,7 +165,7 @@ void FormBox::update()
 	string const height_special(controller().params().height_special);
 	for (unsigned int i = 0; i < gui_names_spec_.size(); ++i) {
 		if (height_special == ids_spec_[i])
-			fl_set_choice_text(dialog_->choice_height_special, 
+			fl_set_choice_text(dialog_->choice_height_special,
 				gui_names_spec_[i].c_str());
 		}
 	setEnabled(dialog_->input_height, controller().params().inner_box);
@@ -183,46 +183,46 @@ void FormBox::apply()
 	controller().params().type = ids_[i - 1];
 
 	controller().params().inner_box = fl_get_button(dialog_->check_inner_box);
-	controller().params().use_parbox = 
+	controller().params().use_parbox =
 		fl_get_button(dialog_->radio_parbox);
 	controller().params().width =
 		LyXLength(getLengthFromWidgets(dialog_->input_width,
 		dialog_->choice_width_unit));
-	
+
 	controller().params().pos =
 		"tcb"[fl_get_choice(dialog_->choice_pos) - 1];
 	controller().params().inner_pos =
 		"tcbs"[fl_get_choice(dialog_->choice_inner_pos) - 1];
 	controller().params().hor_pos =
 		"lcrs"[fl_get_choice(dialog_->choice_hor_pos) - 1];
-	
-	i = fl_get_choice(dialog_->choice_special);	
+
+	i = fl_get_choice(dialog_->choice_special);
 	controller().params().special = ids_spec_[i - 1];
-	
+
 	controller().params().height =
 		LyXLength(getLengthFromWidgets(dialog_->input_height,
 		dialog_->choice_height_unit));
-	i = fl_get_choice(dialog_->choice_height_special);	
+	i = fl_get_choice(dialog_->choice_height_special);
 	controller().params().height_special = ids_spec_[i - 1];
 }
 
 ButtonPolicy::SMInput FormBox::input(FL_OBJECT * ob, long)
 {
 	if (ob == dialog_->check_inner_box) {
-		setEnabled(dialog_->choice_pos, 
+		setEnabled(dialog_->choice_pos,
 			fl_get_button(dialog_->check_inner_box));
-		setEnabled(dialog_->radio_parbox, 
+		setEnabled(dialog_->radio_parbox,
 			fl_get_button(dialog_->check_inner_box));
-		setEnabled(dialog_->radio_minipage, 
+		setEnabled(dialog_->radio_minipage,
 			fl_get_button(dialog_->check_inner_box));
 		setEnabled(dialog_->choice_width_unit, true);
-		setEnabled(dialog_->choice_special, 
+		setEnabled(dialog_->choice_special,
 			!fl_get_button(dialog_->check_inner_box));
 		setEnabled(dialog_->input_height,
 			fl_get_button(dialog_->check_inner_box));
 		setEnabled(dialog_->choice_height_unit,
 			fl_get_button(dialog_->check_inner_box));
-		setEnabled(dialog_->choice_height_special, 
+		setEnabled(dialog_->choice_height_special,
 			fl_get_button(dialog_->check_inner_box));
 		setEnabled(dialog_->choice_hor_pos,
 			!fl_get_button(dialog_->check_inner_box));
@@ -237,15 +237,15 @@ ButtonPolicy::SMInput FormBox::input(FL_OBJECT * ob, long)
 	}
 
 	if (ob == dialog_->choice_special || ob == dialog_->check_inner_box)
-		setEnabled(dialog_->choice_width_unit, 
+		setEnabled(dialog_->choice_width_unit,
 			fl_get_choice(dialog_->choice_special) == NONE);
 	if (ob == dialog_->choice_height_special || ob == dialog_->check_inner_box)
 		if (fl_get_choice(dialog_->choice_height_special) != NONE)
 		    setEnabled(dialog_->choice_height_unit, false);
 		else
-		    setEnabled(dialog_->choice_height_unit, 
+		    setEnabled(dialog_->choice_height_unit,
 				fl_get_button(dialog_->check_inner_box));
-	
+
 	// An inner box (parbox, minipage) is mandatory if no outer box
 	if (ob == dialog_->choice_type) {
 		int i = fl_get_choice(dialog_->choice_type);
@@ -263,7 +263,7 @@ ButtonPolicy::SMInput FormBox::input(FL_OBJECT * ob, long)
 		if (invalid) {
 			postWarning(_("Invalid Length!"));
 			return ButtonPolicy::SMI_INVALID;
-		} 
+		}
 	}
 	if (ob == dialog_->input_height) {
 		string const input = getString(dialog_->input_height);
@@ -271,10 +271,10 @@ ButtonPolicy::SMInput FormBox::input(FL_OBJECT * ob, long)
 		if (invalid) {
 			postWarning(_("Invalid Length!"));
 			return ButtonPolicy::SMI_INVALID;
-		} 
+		}
 	}
 	if (ob == dialog_->button_defaults) {
-		fl_set_button(dialog_->check_inner_box, true);	
+		fl_set_button(dialog_->check_inner_box, true);
 		fl_set_button(dialog_->radio_parbox, false);
 		fl_set_input(dialog_->input_width, "100");
 		fl_set_choice(dialog_->choice_width_unit, LyXLength::PCW + 1);
@@ -282,7 +282,7 @@ ButtonPolicy::SMInput FormBox::input(FL_OBJECT * ob, long)
 		fl_set_input(dialog_->input_height, "1");
 		fl_set_choice(dialog_->choice_height_special, TOTALHEIGHT);
 	}
-	
+
 	return ButtonPolicy::SMI_VALID;
 }
 

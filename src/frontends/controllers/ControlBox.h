@@ -43,7 +43,7 @@ private:
 ///
 void box_gui_tokens(std::vector<std::string> &, std::vector<std::string> &);
 ///
-void box_gui_tokens_special_length(std::vector<std::string> &, 
+void box_gui_tokens_special_length(std::vector<std::string> &,
 	std::vector<std::string> &);
 
 #endif // CONTROLBOX_H
