@@ -79,8 +79,8 @@ sub last_lyx {
 	    my $newfile;
 	    if ($main::opt_o) { # all files go to outputdir; no path nec.
 		$newfile = "$basename.lyx";
-	    } else { # keep relative path, e.g. Just change suffix
-		($newfile = $fil) =~ s/$suffix/.lyx/;
+	    } else { # keep relative path, e.g. Just change/add suffix
+		($newfile = $fil) =~ s/$suffix$/.lyx/;
 	    }
 	    s/\Q{$fil}\E/{$newfile}/;
 	} # end special if for table, bibstyle, include

@@ -8,7 +8,7 @@
 #
 # This code usually gets called by the reLyX wrapper executable
 #
-# $Id: reLyXmain.pl,v 1.2 2000/03/29 23:02:36 karger Exp $
+# $Id: reLyXmain.pl,v 1.3 2000/06/06 10:32:10 lasgouttes Exp $
 #
 
 require 5.002; # Perl 5.001 doesn't work. Perl 4 REALLY doesn't work.
@@ -27,6 +27,8 @@ use vars qw($opt_c $opt_d $opt_f $opt_h $opt_n $opt_o $opt_p $opt_r $opt_s
             $dot_lyxdir
             $Success
             @File_List
+            @Suffix_List
+            $LyXFormat
 	   );
 use Cwd; # getcwd etc.
 use Getopt::Std; # read in command-line options
@@ -50,8 +52,8 @@ if (!defined($lyxname)) {$lyxname = "lyx"}
 use vars qw($lyxdir $lyxname);
  
 # variables that a user might want to change
-my @Suffix_List = '\.(ltx|latex|tex)'; # allowed suffixes for LaTeX file
-my $LyXFormat = "2.15"; #What to print in \lyxformat command in .lyx file
+@Suffix_List = '\.(ltx|latex|tex)'; # allowed suffixes for LaTeX file
+$LyXFormat = "2.15"; #What to print in \lyxformat command in .lyx file
 my $syntaxname = "syntax.default"; # name of the default syntax file
 $dot_lyxdir = $ENV{'HOME'} . "/.$lyxname"; # personal .lyx directory
 
@@ -63,7 +65,7 @@ BEGIN{$Success = 0}
 #
 
 # Print welcome message including version info
-my $version_info = '$Date: 2000/03/29 23:02:36 $'; # RCS puts checkin date here
+my $version_info = '$Date: 2000/06/06 10:32:10 $'; # RCS puts checkin date here
 $version_info =~ s&.*?(\d+/\d+/\d+).*&$1&; # take out just the date info
 warn "reLyX, the LaTeX to LyX translator. Revision date $version_info\n\n";
 
