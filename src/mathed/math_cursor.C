@@ -181,19 +181,23 @@ void MathCursor::dump(char const * what) const
 }
 
 
-void MathCursor::seldump(char const *) const
+void MathCursor::seldump(char const * str) const
 {
 	//lyxerr << "SEL: " << str << ": '" << theSelection << "'\n";
 	//dump("   Pos");
 	return;
 
-	//lyxerr << "\n\n\\n=================vvvvvvvvvvvvv=======================   "
-	//	<<  str << "\ntheSelection: " << theSelection;
-	//for (unsigned int i = 0; i < Cursor_.size(); ++i) 
-	//	lyxerr << Cursor_[i].par_ << "\n'" << Cursor_[i].cell() << "'\n";
+	lyxerr << "\n\n\n=================vvvvvvvvvvvvv=======================   "
+		<<  str << "\ntheSelection: " << selection_
+		<< " '" << theSelection.glue() << "'\n";
+	for (unsigned int i = 0; i < Cursor_.size(); ++i) 
+		lyxerr << Cursor_[i].par_ << "\n'" << Cursor_[i].cell() << "'\n";
+	lyxerr << "\n";
+	for (unsigned int i = 0; i < Anchor_.size(); ++i) 
+		lyxerr << Anchor_[i].par_ << "\n'" << Anchor_[i].cell() << "'\n";
 	//lyxerr << "\ncursor.pos_: " << cursor().pos_;
 	//lyxerr << "\nanchor.pos_: " << anchor().pos_;
-	//lyxerr << "\n===================^^^^^^^^^^^^=====================\n\n\n";
+	lyxerr << "\n===================^^^^^^^^^^^^=====================\n\n\n";
 }
 
 
@@ -412,7 +416,7 @@ void MathCursor::insert(char c, MathTextCodes t)
 	}
 
 	array().insert(cursor().pos_, c, t);
-	++cursor().pos_;
+	plainRight();
 }
 
 
@@ -428,7 +432,7 @@ void MathCursor::insert(MathInset * p)
 	}
 
 	array().insert(cursor().pos_, p);
-	++cursor().pos_;
+	plainRight();
 }
 
 
@@ -778,8 +782,10 @@ void MathCursor::selCut()
 	if (selection_) {
 		theSelection.grab(*this);
 		theSelection.erase(*this);
+		selClear();
+	} else {
+		theSelection.clear();
 	}
-	selClear();
 }
 
 
@@ -803,10 +809,12 @@ void MathCursor::selPaste()
 
 void MathCursor::selHandle(bool sel)
 {
-	if (sel && !selection_)
-		selStart();
-	if (!sel && selection_)
-		selClear();
+	if (sel == selection_)
+		return;
+
+	theSelection.clear();
+	Anchor_    = Cursor_;
+	selection_ = sel;
 }
 
 
@@ -816,6 +824,7 @@ void MathCursor::selStart()
 	if (selection_)
 		return;
 
+	theSelection.clear();
 	Anchor_ = Cursor_;
 	selection_ = true;
 }
@@ -823,6 +832,7 @@ void MathCursor::selStart()
 
 void MathCursor::selClear()
 {
+	seldump("selClear");
 	selection_ = false;
 }
 
