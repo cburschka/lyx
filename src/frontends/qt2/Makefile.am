@@ -49,7 +49,6 @@ libqt2_la_OBJADD = \
 	../xforms/FormInset.lo \
 	../xforms/FormLog.lo \
 	../xforms/FormMinipage.lo \
-	../xforms/FormMaths.lo \
 	../xforms/FormPreamble.lo \
 	../xforms/FormPreferences.lo \
 	../xforms/FormRef.lo \
@@ -74,7 +73,6 @@ libqt2_la_OBJADD = \
 	../xforms/form_graphics.lo \
 	../xforms/form_include.lo \
 	../xforms/form_index.lo \
-	../xforms/form_maths.lo \
 	../xforms/form_minipage.lo \
 	../xforms/form_preamble.lo \
 	../xforms/form_preferences.lo \

@@ -47,7 +47,7 @@ void FormParagraph::update(bool switched)
 		return;
 
 	Buffer *buf = lv_->view()->buffer();
-	
+
 	if (readonly!=buf->isReadonly()) {
 		readonly = buf->isReadonly();
 		dialog_->setReadOnly(readonly);
@@ -64,7 +64,7 @@ void FormParagraph::update(bool switched)
 	LyXParagraph *par = text->cursor.par();
 
 	int align = par->GetAlign();
-	
+
 	if (align==LYX_ALIGN_LAYOUT)
 		align = textclasslist.Style(buf->params.textclass, par->GetLayout()).align;
 
@@ -73,7 +73,7 @@ void FormParagraph::update(bool switched)
 #else
 	ParagraphParameters *params = &(par->params);
 #endif
-    
+
 	if (params->spaceTop().kind() == VSpace::LENGTH) {
 		LyXGlueLength above = params->spaceTop().length();
 		lyxerr[Debug::GUI] << "Reading above space : \"" << params->spaceTop().length().asString() << "\"" << endl;
@@ -148,7 +148,6 @@ void FormParagraph::apply()
 		spaceabove, spacebelow, dialog_->getAlign(),
 		dialog_->getLabelWidth(), dialog_->getNoIndent());
 
-#ifndef NO_PEXTRA
 	// extra stuff
 
 	string width("");
@@ -163,6 +162,7 @@ void FormParagraph::apply()
 	lyxerr[Debug::GUI] << "Setting extrawidth \"" << width << "\"" << endl;
 	lyxerr[Debug::GUI] << "Setting percent extrawidth \"" << widthp << "\"" << endl;
 
+#ifndef NO_PEXTRA
 	lv_->view()->text->SetParagraphExtraOpt(lv_->view(),
 		dialog_->getExtraType(), width, widthp,
 		dialog_->getExtraAlign(),
@@ -173,7 +173,7 @@ void FormParagraph::apply()
 			    BufferView::SELECT |
 			    BufferView::FITCUR |
 			    BufferView::CHANGE);
-	
+
 	lv_->buffer()->markDirty();
 	setMinibuffer(lv_, _("Paragraph layout set"));
 }
@@ -186,11 +186,11 @@ void FormParagraph::show()
 	if (!dialog_->isVisible())
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormParagraph::hide));
 
-	 
+
 	dialog_->raise();
 	dialog_->setActiveWindow();
 	update();
-	 
+
 	dialog_->show();
 }
 

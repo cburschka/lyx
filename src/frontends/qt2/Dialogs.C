@@ -48,7 +48,10 @@ Dialogs::Dialogs(LyXView * lv)
     add( new FormCharacter(lv, this));
     add( new FormCitation(lv, this));
     //	add(new FormCopyright(lv, this));
-    add( new FormCredits(lv, this));
+
+    // REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-22
+    //    add( new FormCredits(lv, this));
+
     //	add(new FormDocument(lv, this));
     add(new FormError(lv, this));
     add(new FormGraphics(lv, this));
