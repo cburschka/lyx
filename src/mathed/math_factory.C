@@ -101,7 +101,7 @@ MathAtom createMathInset(string const & s)
 	if (s == "xymatrix")
 		return MathAtom(new MathXYMatrixInset);
 
-	if (s == "xrightarrow")
+	if (s == "xrightarrow" || s == "xleftarrow")
 		return MathAtom(new MathXArrowInset(s));
 
 	if (s == "split" || s == "gathered" || s == "aligned")
