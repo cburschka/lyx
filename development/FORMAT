@@ -1,6 +1,22 @@
 LyX file-format changes
 -----------------------
 
+2004-08-15  José Matos  <jamatos@lyx.org>
+
+	* format incremented to 236.
+	* Added tags:
+		- \begin_document
+		- \begin_header
+		- \begin_body
+		- \end_body
+
+	* The options for \papersize are changed:
+		Default -> default
+		Custom -> custom
+	* All whitespaces are removed at the end of lines, when
+	not necessary. As an example we have all the lines in the header that
+	do not belong to the preamble.
+
 2004-07-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format incremented to 235.
