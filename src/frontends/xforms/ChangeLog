@@ -1,3 +1,8 @@
+2002-04-23  Juergen Spitzmueller <j.spitzmueller@gmx.de>
+
+	* FormBibtex.C: Do not use a blank after the comma for multiple
+	bib-files (which is not read in correctly).
+
 2002-04-19  Juergen Vigna  <jug@sad.it>
 
 	* FormParagraph.C (changedParagraph): don't check for p == par_ as

@@ -85,7 +85,7 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 		if (!out_name.empty()) {
 			// add the database to any existing ones
 			if (!in_name.empty())
-				out_name = in_name + ", " + out_name;
+				out_name = in_name + ',' + out_name;
 
 			fl_freeze_form(form());
 			fl_set_input(dialog_->input_database, out_name.c_str());
@@ -157,7 +157,7 @@ string const unique_and_no_extensions(string const & str_in)
 		*it = ChangeExtension(*it, "");
 	}
 	eliminate_duplicates(dbase);
-	return subst(getStringFromVector(dbase),",",", ");
+	return getStringFromVector(dbase);
 }
 
 } // namespace anon
