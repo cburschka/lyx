@@ -117,15 +117,6 @@ if [ $? -eq 0 ]; then
     echo "#include \"bmtable.h\"" >> ${COUT}
 fi
 
-# This is (I hope) a very temporary fudge.
-# FormMathsPanel should be modified in input() to not use the data parameter.
-# Instead, use the FL_OBJECT * parameter.
-# Angus 12 June, 2002.
-grep MM_ ${CIN} > /dev/null
-if [ $? -eq 0 ]; then
-    echo "#include \"MathsCallbacks.h\"" >> ${COUT}
-fi
-
 echo >> ${COUT}
 
 sed -f ${FDFIXC} < ${CIN} >> ${COUT}

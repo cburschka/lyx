@@ -6,7 +6,7 @@
  * \author Alejandro Aguilar Sierra
  * \author Pablo De Napoli
  * \author John Levon
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -18,7 +18,7 @@
 #endif
 
 #include "ControlMath.h"
- 
+
 #include "frontends/LyXView.h"
 #include "FormMathsPanel.h"
 #include "forms/form_maths_panel.h"
@@ -65,7 +65,6 @@
 #include "ams_nrel.xbm"
 #include "ams_ops.xbm"
 
-using std::vector;
 
 FormMathsPanel::FormMathsPanel(LyXView & lv, Dialogs & d)
 	: FormBaseBD(lv, d, _("Maths Panel")),
@@ -77,89 +76,72 @@ FormMathsPanel::FormMathsPanel(LyXView & lv, Dialogs & d)
 	space_.reset( new FormMathsSpace( lv, d, *this));
 	style_.reset( new FormMathsStyle( lv, d, *this));
 
-	typedef vector<string> StringVec;
+	typedef std::vector<string> StringVec;
+	char const * const * begin = latex_arrow;
+	char const * const * end   = begin + nr_latex_arrow;
+	arrow_.reset(new FormMathsBitmap(lv, d, *this, _("Arrows"),
+					 StringVec(begin, end)));
 
-	StringVec latex(nr_latex_arrow);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_arrow[i];
-	}
-	arrow_.reset(new FormMathsBitmap(lv, d, *this, _("Arrows"), latex));
+	begin = latex_bop;
+	end   = begin + nr_latex_bop;
+	boperator_.reset(new FormMathsBitmap(lv, d, *this, _("Binary Ops"),
+					     StringVec(begin, end)));
 
-	latex.resize(nr_latex_bop);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_bop[i];
-	}
-	boperator_.reset(new FormMathsBitmap(lv, d, *this, _("Binary Ops"), latex));
+	begin = latex_brel;
+	end   = begin + nr_latex_brel;
+	brelats_.reset(new FormMathsBitmap(lv, d, *this, _("Bin Relations"),
+					   StringVec(begin, end)));
 
-	latex.resize(nr_latex_brel);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_brel[i];
-	}
-	brelats_.reset(new FormMathsBitmap(lv, d, *this, _("Bin Relations"), latex));
+	begin = latex_greek;
+	end   = begin + nr_latex_greek;
+	greek_.reset(new FormMathsBitmap(lv, d, *this, _("Greek"),
+					 StringVec(begin, end)));
 
-	latex.resize(nr_latex_greek);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_greek[i];
-	}
-	greek_.reset(new FormMathsBitmap(lv, d, *this, _("Greek"), latex));
+	begin = latex_misc;
+	end   = begin + nr_latex_misc;
+	misc_.reset(new FormMathsBitmap(lv, d, *this, _("Misc"),
+					StringVec(begin, end)));
 
-	latex.resize(nr_latex_misc);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_misc[i];
-	}
-	misc_.reset(new FormMathsBitmap(lv, d, *this, _("Misc"), latex));
+	begin = latex_dots;
+	end   = begin + nr_latex_dots;
+	dots_.reset(new FormMathsBitmap(lv, d, *this, _("Dots"),
+					StringVec(begin, end)));
 
-	latex.resize(nr_latex_dots);
-	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
-		latex[i] = latex_dots[i];
-	}
-	dots_.reset(new FormMathsBitmap(lv, d, *this, _("Dots"), latex));
+	begin = latex_varsz;
+	end   = begin + nr_latex_varsz;
+	varsize_.reset(new FormMathsBitmap(lv, d, *this, _("Big Operators"),
+					   StringVec(begin, end)));
 
-	latex.resize(nr_latex_varsz);
-	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
-		latex[i] = latex_varsz[i];
-	}
-	varsize_.reset(new FormMathsBitmap(lv, d, *this, _("Big Operators"), latex));
+	begin = latex_ams_misc;
+	end   = begin + nr_latex_ams_misc;
+	ams_misc_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Misc"),
+					    StringVec(begin, end)));
 
-	latex.resize(nr_latex_ams_misc);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_ams_misc[i];
-	}
-	ams_misc_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Misc"), latex));
+	begin = latex_ams_arrows;
+	end   = begin + nr_latex_ams_arrows;
+	ams_arrows_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Arrows"),
+					      StringVec(begin, end)));
 
-	latex.resize(nr_latex_ams_arrows);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_ams_arrows[i];
-	}
-	ams_arrows_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Arrows"), latex));
+	begin = latex_ams_rel;
+	end   = begin + nr_latex_ams_rel;
+	ams_rel_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Relations"),
+					   StringVec(begin, end)));
 
-	latex.resize(nr_latex_ams_rel);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_ams_rel[i];
-	}
-	ams_rel_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Relations"), latex));
+	begin = latex_ams_nrel;
+	end   = begin + nr_latex_ams_nrel;
+	ams_nrel_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Negated Rel"),
+					    StringVec(begin, end)));
 
-	latex.resize(nr_latex_ams_nrel);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_ams_nrel[i];
-	}
-	ams_nrel_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Negated Rel"), latex));
-
-	latex.resize(nr_latex_ams_ops);
-	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
-		latex[i] = latex_ams_ops[i];
-	}
-	ams_ops_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Operators"), latex));
-
-	//showUnderMouse(false);
+	begin = latex_ams_ops;
+	end   = begin + nr_latex_ams_ops;
+	ams_ops_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Operators"),
+					   StringVec(begin, end)));
 }
 
 
 FL_FORM * FormMathsPanel::form() const
 {
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
+	return dialog_.get() ? dialog_->form : 0;
 }
 
 
@@ -235,143 +217,116 @@ void FormMathsPanel::build()
 }
 
 
-bool FormMathsPanel::input(FL_OBJECT *, long data)
+bool FormMathsPanel::input(FL_OBJECT * ob, long)
 {
-	MathsCallbackValues const val = static_cast<MathsCallbackValues>(data);
-
-	switch (val) {
-	case MM_GREEK:
+	if (ob == dialog_->button_greek) {
 		if (active_ && active_ != greek_.get())
 			active_->hide();
 		greek_->show();
-		break;
 
-	case MM_ARROW:
+	} else if (ob == dialog_->button_arrow) {
 		if (active_ && active_ != arrow_.get())
 			active_->hide();
 		arrow_->show();
-		break;
 
-	case MM_BOP:
+	} else if (ob == dialog_->button_boperator) {
 		if (active_ && active_ != boperator_.get())
 			active_->hide();
 		boperator_->show();
-		break;
 
-	case MM_BRELATS:
+	} else if (ob == dialog_->button_brelats) {
 		if (active_ && active_ != brelats_.get())
 			active_->hide();
 		brelats_->show();
-		break;
 
-	case MM_MISC:
+	} else if (ob == dialog_->button_misc) {
 		if (active_ && active_ != misc_.get())
 			active_->hide();
 		misc_->show();
-		break;
 
-	case MM_DOTS:
+	} else if (ob == dialog_->button_dots) {
 		if (active_ && active_ != dots_.get())
 			active_->hide();
 		dots_->show();
-		break;
 
-	case MM_VARSIZE:
+	} else if (ob == dialog_->button_varsize) {
 		if (active_ && active_ != varsize_.get())
 			active_->hide();
 		varsize_->show();
-		break;
 
-	case MM_AMS_MISC:
+	} else if (ob == dialog_->button_ams_misc) {
 		if (active_ && active_ != ams_misc_.get())
 			active_->hide();
 		ams_misc_->show();
-		break;
 
-	case MM_AMS_ARROWS:
+	} else if (ob == dialog_->button_ams_arrows) {
 		if (active_ && active_ != ams_arrows_.get())
 			active_->hide();
 		ams_arrows_->show();
-		break;
 
-	case MM_AMS_BREL:
+	} else if (ob == dialog_->button_ams_brel) {
 		if (active_ && active_ != ams_rel_.get())
 			active_->hide();
 		ams_rel_->show();
-		break;
 
-	case MM_AMS_NREL:
+	} else if (ob == dialog_->button_ams_nrel) {
 		if (active_ && active_ != ams_nrel_.get())
 			active_->hide();
 		ams_nrel_->show();
-		break;
 
-	case MM_AMS_OPS:
+	} else if (ob == dialog_->button_ams_ops) {
 		if (active_ && active_ != ams_ops_.get())
 			active_->hide();
 		ams_ops_->show();
-		break;
 
-	case MM_FRAC:
+	} else if (ob == dialog_->button_frac) {
 		insertSymbol("frac");
-		break;
 
-	case MM_SQRT:
+	} else if (ob == dialog_->button_sqrt) {
 		insertSymbol("sqrt");
-		break;
 
-	case MM_SUPER:
+	} else if (ob == dialog_->button_super) {
 		lv_.dispatch(FuncRequest(LFUN_SUPERSCRIPT));
-		break;
 
-	case MM_SUB:
+	} else if (ob == dialog_->button_sub) {
 		lv_.dispatch(FuncRequest(LFUN_SUBSCRIPT));
-		break;
 
-	case MM_SUBSUPER:
-		lv_.dispatch(FuncRequest(LFUN_SUBSCRIPT));
-		lv_.dispatch(FuncRequest(LFUN_LEFT));
-		lv_.dispatch(FuncRequest(LFUN_SUPERSCRIPT));
-		break;
+//  	} else if (ob == dialog_->???) {
+//  		lv_.dispatch(FuncRequest(LFUN_SUBSCRIPT));
+//  		lv_.dispatch(FuncRequest(LFUN_LEFT));
+//  		lv_.dispatch(FuncRequest(LFUN_SUPERSCRIPT));
 
-	case MM_DELIM:
+	} else if (ob == dialog_->button_delim) {
 		if (active_ && active_ != delim_.get())
 			active_->hide();
 		delim_->show();
-		break;
 
-	case MM_MATRIX:
+	} else if (ob == dialog_->button_matrix) {
 		if (active_ && active_ != matrix_.get())
 			active_->hide();
 		matrix_->show();
-		break;
 
-	case MM_DECO:
+	} else if (ob == dialog_->button_deco) {
 		if (active_ && active_ != deco_.get())
 			active_->hide();
 		deco_->show();
-		break;
 
-	case MM_SPACE:
+	} else if (ob == dialog_->button_space) {
 		if (active_ && active_ != space_.get())
 			active_->hide();
 		space_->show();
-		break;
 
-	case MM_STYLE:
+	} else if (ob == dialog_->button_style) {
 		if (active_ && active_ != style_.get())
 			active_->hide();
 		style_->show();
-		break;
 
-	case MM_EQU:
+	} else if (ob == dialog_->button_equation) {
 		mathDisplay();
-		break;
 
-	case MM_FUNC:
+	} else if (ob == dialog_->browser_funcs) {
 		int const i = fl_get_browser(dialog_->browser_funcs) - 1;
 		insertSymbol(function_names[i]);
-		break;
 	}
 
 	return true;

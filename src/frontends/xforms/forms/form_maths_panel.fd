@@ -65,7 +65,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_SouthEast
 name: browser_funcs
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_FUNC
+argument: 
   h_pref: FL_OFF
 
 --------------------
@@ -84,7 +84,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_greek
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_GREEK
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -102,7 +102,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_arrow
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_ARROW
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -120,7 +120,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_boperator
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_BOP
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -138,7 +138,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_brelats
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_BRELATS
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -156,7 +156,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_misc
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_MISC
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -174,7 +174,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_equation
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_EQU
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -192,7 +192,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_sqrt
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_SQRT
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -210,7 +210,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_frac
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_FRAC
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -228,7 +228,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_delim
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_DELIM
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -246,7 +246,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_matrix
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_MATRIX
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -264,7 +264,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_deco
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_DECO
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -282,7 +282,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_space
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_SPACE
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -300,7 +300,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_dots
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_DOTS
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -318,7 +318,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_varsize
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_VARSIZE
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -336,7 +336,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_sub
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_SUB
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -354,7 +354,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_super
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_SUPER
+argument: 
 
 --------------------
 class: FL_PIXMAPBUTTON
@@ -372,7 +372,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_style
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_STYLE
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -390,7 +390,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ams_arrows
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_AMS_ARROWS
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -408,7 +408,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ams_brel
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_AMS_BREL
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -426,7 +426,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ams_nrel
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_AMS_NREL
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -444,7 +444,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ams_ops
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_AMS_OPS
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -462,7 +462,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ams_misc
 callback: C_FormBaseDeprecatedInputCB
-argument: MM_AMS_MISC
+argument: 
 
 ==============================
 create_the_forms

@@ -1,3 +1,17 @@
+2002-11-20  Angus Leeming  <leeming@lyx.org>
+
+	* MathsCallbacks.h: removed.
+	* Makefile.am: remove MathsCallbacks.h.
+
+	* FormMathsPanel.C (FormMathsPanel): use vector(begin, end) c-tor
+	rather than our home-grown loops.
+
+	* FormMathsPanel.h:
+	* forms/fdfix.sh: no longer #include "MathsCallbacks.h".
+
+	* FormMathsPanel.C (input):
+	* forms/form_maths_panel.fd: don't pass/use MM_XYZ data.
+
 2002-11-19  Angus Leeming  <leeming@lyx.org>
 
 	* FormInset.[Ch]: removed; no longer used after John's port of the
@@ -8,7 +22,7 @@
 	* FormBase.h (show):
 	* FormExternal.h (apply, build, update, input):
 	* FormSpellchecker.h (apply, build, update, partialUpdate):
-	propogate virtual keyword.
+	propogate the virtual keyword.
 
 2002-11-17  John Levon  <levon@movementarian.org>
 
