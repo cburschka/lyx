@@ -29,6 +29,9 @@ void FormSpellchecker::build()
 {
 	dialog_.reset(build_spellchecker());
 	
+	fl_set_slider_bounds(dialog_->slider, 0.0, 100.0);
+	fl_set_slider_step(dialog_->slider, 1.0);
+
 	// Manage the buttons
 	bc().setCancel(dialog_->done);
 	bc().addReadOnly(dialog_->replace);

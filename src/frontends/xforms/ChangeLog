@@ -2,6 +2,9 @@
 
 	* form_ref.fd: a little tweaking.
 
+	* FormSpellchecker.C (build): set the bounds to the slider, so it
+	updates during a spellchecking session.
+
 2001-09-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* forms/form_preferences.fd: rearrangement and addition of new
