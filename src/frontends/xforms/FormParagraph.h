@@ -16,6 +16,9 @@
 #include <boost/smart_ptr.hpp>
 #include "FormBaseDeprecated.h"
 #include "xformsBC.h"
+#if 1
+#include "lyxparagraph.h"
+#endif
 
 #ifdef __GNUG_
 #pragma interface
@@ -52,26 +55,32 @@ private:
 	
 	///
 	void general_update();
+#ifndef NO_PEXTRA
 	///
 	void extra_update();
+#endif
 	///
 	void general_apply();
+#ifndef NO_PEXTRA
 	///
 	void extra_apply();
-
+#endif
 	/// Typedefinitions from the fdesign produced Header file
 	FD_form_tabbed_paragraph * build_tabbed_paragraph();
 	///
 	FD_form_paragraph_general * build_paragraph_general();
+//#ifndef NO_PEXTRA
 	///
 	FD_form_paragraph_extra * build_paragraph_extra();
-
+//#endif
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_form_tabbed_paragraph> dialog_;
 	///
 	boost::scoped_ptr<FD_form_paragraph_general> general_;
+#ifndef NO_PEXTRA
 	///
 	boost::scoped_ptr<FD_form_paragraph_extra> extra_;
+#endif
 	/// The ButtonController
 	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };

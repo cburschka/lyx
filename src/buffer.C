@@ -479,6 +479,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			++pos;
 		} else {
 #endif
+#ifndef NO_PEXTRA_REALLY
 			// BEGIN pextra_minipage compability
 			// This should be removed in 1.3.x (Lgb)
 			
@@ -593,7 +594,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			}
 			
 			// End of pextra_minipage compability
-			
+#endif	
 			if (!return_par)
 				return_par = par;
 			else {
@@ -1081,6 +1082,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 	} else if (token == "\\added_space_bottom") {
 		lex.nextToken();
 		par->params.spaceBottom(VSpace(lex.GetString()));
+#ifndef NO_PEXTRA_REALLY
 	} else if (token == "\\pextra_type") {
 		lex.nextToken();
 		par->params.pextraType(lex.GetInteger());
@@ -1099,6 +1101,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 	} else if (token == "\\pextra_start_minipage") {
 		lex.nextToken();
 		par->params.pextraStartMinipage(lex.GetInteger());
+#endif
 	} else if (token == "\\labelwidthstring") {
 		lex.EatLine();
 		par->params.labelWidthString(lex.GetString());

@@ -93,7 +93,6 @@ public:
 	LyXGlueLength getAboveLength() const;
 
 	LyXGlueLength getBelowLength() const;
-
 	LyXLength getExtraWidth() const;
 
 	string getExtraWidthPercent() const;
@@ -123,7 +122,6 @@ public:
 	bool getStartNewMinipage() const {
 		return extrapage->startnewminipage->isChecked();
 	}
-
 protected:
 	void closeEvent(QCloseEvent * e);
 
@@ -134,7 +132,6 @@ private:
 	ParaGeneralDialog * generalpage;
 	/// the extra options tab page
 	ParaExtraDialog * extrapage;
-
 	VSpace::vspace_kind getSpaceKind(int val) const {
 		switch (val) {
 			case 0: return VSpace::NONE;

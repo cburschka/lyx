@@ -33,6 +33,7 @@ void ParagraphParameters::clear()
 	tmp.labelstring.erase();
 	tmp.labelwidthstring.erase();
 	tmp.start_of_appendix = false;
+#ifndef NO_PEXTRA_REALLY
         //tmp.pextra_type = PEXTRA_NONE;
         tmp.pextra_type = 0;
         tmp.pextra_width.erase();
@@ -41,7 +42,7 @@ void ParagraphParameters::clear()
         tmp.pextra_alignment = 0;
         tmp.pextra_hfill = false;
         tmp.pextra_start_minipage = false;
-
+#endif
 	set_from_struct(tmp);
 }
 
@@ -56,13 +57,15 @@ bool ParagraphParameters::sameLayout(ParagraphParameters const & pp) const
 		param->line_top == pp.param->line_top &&
 		param->pagebreak_top == pp.param->pagebreak_top &&
 		param->added_space_top == pp.param->added_space_top &&
+#ifndef NO_PEXTRA_REALLY
 		param->spacing == pp.param->spacing &&
 		param->pextra_type == pp.param->pextra_type &&
                 param->pextra_width == pp.param->pextra_width && 
                 param->pextra_widthp == pp.param->pextra_widthp &&
                 param->pextra_alignment == pp.param->pextra_alignment && 
                 param->pextra_hfill == pp.param->pextra_hfill && 
-                param->pextra_start_minipage == pp.param->pextra_start_minipage && 
+                param->pextra_start_minipage == pp.param->pextra_start_minipage &&
+#endif
 		param->noindent == pp.param->noindent &&
 		param->depth == pp.param->depth;
 }
@@ -80,12 +83,14 @@ void ParagraphParameters::makeSame(ParagraphParameters const & pp)
 	tmp.pagebreak_top = pp.param->pagebreak_top;
 	tmp.added_space_top = pp.param->added_space_top;
 	tmp.spacing = pp.param->spacing;
+#ifndef NO_PEXTRA_REALLY
 	tmp.pextra_type = pp.param->pextra_type;
 	tmp.pextra_width = pp.param->pextra_width;
 	tmp.pextra_widthp = pp.param->pextra_widthp;
 	tmp.pextra_alignment = pp.param->pextra_alignment;
 	tmp.pextra_hfill = pp.param->pextra_hfill;
 	tmp.pextra_start_minipage = pp.param->pextra_start_minipage;
+#endif
 	tmp.noindent = pp.param->noindent;
 	tmp.depth = pp.param->depth;
 
@@ -295,7 +300,7 @@ void ParagraphParameters::labelWidthString(string const & lws)
 	set_from_struct(tmp);
 }
 
-
+#ifndef NO_PEXTRA_REALLY
 int ParagraphParameters::pextraType() const
 {
 	return param->pextra_type;
@@ -378,3 +383,4 @@ void ParagraphParameters::pextraStartMinipage(bool smp)
 	tmp.pextra_start_minipage = smp;
 	set_from_struct(tmp);
 }
+#endif

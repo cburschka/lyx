@@ -157,6 +157,7 @@ void ParagraphDlgImpl::setBelowLength(float val, float plus, float minus,
    spacingBelowMinusUnit->setCurrentItem(getItem(munit));
 }
 
+
 void ParagraphDlgImpl::setExtra(float widthval, LyXLength::UNIT units, const string percent, int align, 
 	bool hfill, bool startminipage, LyXParagraph::PEXTRA_TYPE type)
 {
@@ -207,6 +208,7 @@ void ParagraphDlgImpl::setExtra(float widthval, LyXLength::UNIT units, const str
    minipageStart->setChecked(startminipage);
    
 }
+
 
 LyXGlueLength ParagraphDlgImpl::getAboveLength() const
 {
@@ -309,7 +311,8 @@ VSpace::vspace_kind ParagraphDlgImpl::getSpaceAboveKind() const {
 VSpace::vspace_kind ParagraphDlgImpl::getSpaceBelowKind() const {
    return getSpaceKind(spacingBelow->currentItem());
 }
-   
+
+
 LyXParagraph::PEXTRA_TYPE ParagraphDlgImpl::getExtraType() const {
    switch (extraType->currentItem()) {
       case 0: return LyXParagraph::PEXTRA_NONE;
@@ -336,6 +339,7 @@ bool ParagraphDlgImpl::getHfillBetween() const {
 bool ParagraphDlgImpl::getStartNewMinipage() const {
    return minipageStart->isChecked();
 }
+
 
 VSpace::vspace_kind ParagraphDlgImpl::getSpaceKind(int val) const {
    switch (val) {

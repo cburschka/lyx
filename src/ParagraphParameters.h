@@ -11,6 +11,9 @@ class VSpace;
 class Spacing;
 struct ParameterStruct;
 
+// Not yet... lyx 1.3.x or so
+//#define NO_PEXTRA_REALLY 1
+
 ///
 class ParagraphParameters {
 public:
@@ -78,6 +81,7 @@ public:
 	string const & labelWidthString() const;
 	///
 	void labelWidthString(string const &);
+#ifndef NO_PEXTRA_REALLY
 	///
 	int pextraType() const;
 	///
@@ -102,6 +106,7 @@ public:
 	bool pextraStartMinipage() const;
 	///
 	void pextraStartMinipage(bool);
+#endif
 private:
 	///
 	void set_from_struct(ParameterStruct const &);

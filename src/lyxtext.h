@@ -393,13 +393,14 @@ public:
 			  LyXAlignment align, 
 			  string labelwidthstring,
 			  bool noindent);
+#ifndef NO_PEXTRA
 	///
 	void SetParagraphExtraOpt(BufferView *, int type,
 				  string const & width,
 				  string const & widthp,
 				  int alignment, bool hfill,
 				  bool start_minipage);
-
+#endif
 	/* these things are for search and replace */
 
 	/** sets the selection over the number of characters of string,

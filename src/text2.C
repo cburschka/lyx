@@ -1554,6 +1554,7 @@ void LyXText::SetParagraph(BufferView * bview,
 }
 
 
+#ifndef NO_PEXTRA
 void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
                                    string const & width,
                                    string const & widthp,
@@ -1613,6 +1614,7 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
                 if (cursor.par()->footnoteflag ==
                     sel_start_cursor.par()->footnoteflag) {
 #endif
+#ifndef NO_PEXTRA
                         if (type == LyXParagraph::PEXTRA_NONE) {
                                 if (cursor.par()->params.pextraType() != LyXParagraph::PEXTRA_NONE) {
                                         cursor.par()->UnsetPExtraType(bview->buffer()->params);
@@ -1625,6 +1627,7 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
                                 cursor.par()->params.pextraStartMinipage(start_minipage);
                                 cursor.par()->params.pextraAlignment(alignment);
                         }
+#endif
 #ifndef NEW_INSETS
 		}
                 tmppar = cursor.par()->FirstPhysicalPar()->previous();
@@ -1640,7 +1643,8 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
 	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
-
+#endif
+	
 
 char loweralphaCounter(int n)
 {

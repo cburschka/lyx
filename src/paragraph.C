@@ -206,6 +206,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			}
 			os << "\\align " << string_align[h] << " ";
 		}
+#ifndef NO_PEXTRA
                 if (params.pextraType() != PEXTRA_NONE) {
                         os << "\\pextra_type " << params.pextraType();
                         if (params.pextraType() == PEXTRA_MINIPAGE) {
@@ -227,6 +228,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
                         }
 			os << '\n';
                 }
+#endif
 #ifndef NEW_INSETS
 	} else {
    		// Dummy layout. This means that a footnote ended.
@@ -379,18 +381,22 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 			(*cit).inset->Validate(features);
 	}
 
+#ifndef NO_PEXTRA
         if (params.pextraType() == PEXTRA_INDENT)
                 features.LyXParagraphIndent = true;
         if (params.pextraType() == PEXTRA_FLOATFLT)
                 features.floatflt = true;
+#endif
 #ifndef NEW_INSETS
         if (layout.needprotect 
 	    && next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE)
 		features.NeedLyXFootnoteCode = true;
 #endif
+#ifndef NO_PEXTRA
         if (bparams.paragraph_separation == BufferParams::PARSEP_INDENT
             && params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE)
 		features.NeedLyXMinipageIndent = true;
+#endif
 #ifndef NEW_INSETS
 	if (footnoteflag != NO_FOOTNOTE && footnotekind == ALGORITHM)
 		features.algorithm = true;
@@ -1939,7 +1945,9 @@ void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
 
 	par->layout = new_layout;
 
+#ifndef NO_PEXTRA
         if (par->params.pextraType() == PEXTRA_NONE) {
+#endif
                 if (par->previous()) {
 #ifndef NEW_INSETS
                         ppar = par->previous()->FirstPhysicalPar();
@@ -1970,6 +1978,7 @@ void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
 			npar = npar->next();
 #endif
                 }
+#ifndef NO_PEXTRA
                 if (ppar && (ppar->params.pextraType() != PEXTRA_NONE)) {
                         string p1 = ppar->params.pextraWidth();
 			string p2 = ppar->params.pextraWidthp();
@@ -1985,6 +1994,7 @@ void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
                                             p1, p2);
                 }
         }
+#endif
 }
 
 
@@ -2007,7 +2017,9 @@ void LyXParagraph::SetLayout(BufferParams const & bparams,
 	par->params.spaceBottom(VSpace(VSpace::NONE));
 	par->params.spacing(Spacing(Spacing::Default));
 
+#ifndef NO_PEXTRA
         if (par->params.pextraType() == PEXTRA_NONE) {
+#endif
                 if (par->previous()) {
 #ifndef NEW_INSETS
                         ppar = par->previous()->FirstPhysicalPar();
@@ -2038,6 +2050,7 @@ void LyXParagraph::SetLayout(BufferParams const & bparams,
 			npar = npar->next();
 #endif
                 }
+#ifndef NO_PEXTRA
                 if (ppar && (ppar->params.pextraType() != PEXTRA_NONE)) {
                         string const p1 = ppar->params.pextraWidth();
 			string const p2 = ppar->params.pextraWidthp();
@@ -2052,6 +2065,7 @@ void LyXParagraph::SetLayout(BufferParams const & bparams,
                                             p1, p2);
                 }
         }
+#endif
 }
 
 
@@ -2421,7 +2435,10 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 		if (par
 		    && (par->layout != layout
 			|| par->params.depth() != params.depth()
-			|| par->params.pextraType() != params.pextraType()))
+#ifndef NO_PEXTRA
+			|| par->params.pextraType() != params.pextraType()
+#endif
+			    ))
 			break;
 	default:
 		// we don't need it for the last paragraph!!!
@@ -3114,7 +3131,10 @@ LyXParagraph * LyXParagraph::TeXDeeper(Buffer const * buf,
 #endif
 		if (textclasslist.Style(bparams.textclass, 
 					par->layout).isEnvironment()
-		    || par->params.pextraType() != PEXTRA_NONE) {
+#ifndef NO_PEXTRA
+		    || par->params.pextraType() != PEXTRA_NONE
+#endif
+			) {
 			par = par->TeXEnvironment(buf, bparams,
 						  os, texrow
 #ifndef NEW_INSETS
@@ -3149,14 +3169,18 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 #endif
 	)
 {
+#ifndef NO_PEXTRA
 	bool eindent_open = false;
+#endif
 #ifndef NEW_INSETS
 	bool foot_this_level = false;
 #endif
+#ifndef NO_PEXTRA
 	// flags when footnotetext should be appended to file.
         static bool minipage_open = false;
         static int minipage_open_depth = 0;
 	char par_sep = bparams.paragraph_separation;
+#endif
     
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << this << endl;
 #ifndef NEW_INSETS
@@ -3167,7 +3191,8 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 	LyXLayout const & style =
 		textclasslist.Style(bparams.textclass,
 				    layout);
-       
+
+#ifndef NO_PEXTRA
 	if (params.pextraType() == PEXTRA_INDENT) {
 		if (!params.pextraWidth().empty()) {
 			os << "\\begin{LyXParagraphIndent}{"
@@ -3247,7 +3272,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 		minipage_open = true;
                 minipage_open_depth = params.depth();
 	}
-
+#endif
 #ifdef WITH_WARNINGS
 #warning Define FANCY_FOOTNOTE_CODE to re-enable Allan footnote code
 	//I disabled it because it breaks when lists span on several
@@ -3295,7 +3320,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 				     foot, foot_texrow, foot_count
 #endif
 			);
-
+#ifndef NO_PEXTRA
                 if (minipage_open && par && !style.isEnvironment() &&
                     (par->params.pextraType() == PEXTRA_MINIPAGE) &&
                     par->params.pextraStartMinipage()) {
@@ -3307,6 +3332,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 			}
 			minipage_open = false;
                 }
+#endif
 		if (par && par->params.depth() > params.depth()) {
 			if (textclasslist.Style(bparams.textclass,
 						par->layout).isParagraph()
@@ -3333,6 +3359,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 #endif
 				);
 		}
+#ifndef NO_PEXTRA
 		if (par && par->layout == layout && par->params.depth() == params.depth() &&
 		    (par->params.pextraType() == PEXTRA_MINIPAGE) && !minipage_open) {
 			if (par->params.pextraHfill() && par->previous() &&
@@ -3384,10 +3411,13 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 			minipage_open = true;
                         minipage_open_depth = par->params.depth();
 		}
+#endif
 	} while (par
 		 && par->layout == layout
 		 && par->params.depth() == params.depth()
+#ifndef NO_PEXTRA
 		 && par->params.pextraType() == params.pextraType()
+#endif
 #ifndef NEW_INSETS
 		 && par->footnoteflag == footnoteflag
 #endif
@@ -3413,6 +3443,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 		}
 #endif
 	}
+#ifndef NO_PEXTRA
         if (minipage_open && (minipage_open_depth == params.depth()) &&
             (!par || par->params.pextraStartMinipage() ||
              par->params.pextraType() != PEXTRA_MINIPAGE)) {
@@ -3438,6 +3469,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
                 os << '\n';
 		texrow.newline();
 	}
+#endif
 	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << par << endl;
 	return par;  // ale970302
 }
@@ -3718,6 +3750,7 @@ bool LyXParagraph::IsDummy() const
 }
 #endif
 
+#ifndef NO_PEXTRA
 void LyXParagraph::SetPExtraType(BufferParams const & bparams,
 				 int type, string const & width,
 				 string const & widthp)
@@ -3826,6 +3859,7 @@ void LyXParagraph::UnsetPExtraType(BufferParams const & bparams)
 		}
 	}
 }
+#endif
 
 
 bool LyXParagraph::IsHfill(size_type pos) const

@@ -103,7 +103,6 @@ void FormParagraph::update(bool switched)
 	float val = 0.0;
 	LyXLength::UNIT unit = LyXLength::CM;
 	params = &(par->params);
-
 	if (isValidLength(params->pextraWidth(), &extrawidth)) {
 		lyxerr[Debug::GUI] << "Reading extra width \"" << extrawidth.asString() << "\"" << endl;
 		val = extrawidth.value();

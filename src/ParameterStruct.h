@@ -37,6 +37,7 @@ struct ParameterStruct {
 	string labelstring;
 	///
 	string labelwidthstring;
+#ifndef NO_PEXTRA_REALLY
         ///
         int pextra_type;
         ///
@@ -49,6 +50,7 @@ struct ParameterStruct {
         bool pextra_hfill;
         ///
         bool pextra_start_minipage;
+#endif
 };
 
 
@@ -70,12 +72,16 @@ bool operator==(ParameterStruct const & ps1,
 		&& ps1.appendix == ps2.appendix
 		&& ps1.labelstring == ps2.labelstring
 		&& ps1.labelwidthstring == ps2.labelwidthstring
+#ifndef NO_PEXTRA_REALLY
 		&& ps1.pextra_type == ps2.pextra_type
 		&& ps1.pextra_width == ps2.pextra_width
 		&& ps1.pextra_widthp == ps2.pextra_widthp
 		&& ps1.pextra_alignment == ps2.pextra_alignment
 		&& ps1.pextra_hfill == ps2.pextra_hfill
-		&& ps1.pextra_start_minipage == ps2.pextra_start_minipage;
+		&& ps1.pextra_start_minipage == ps2.pextra_start_minipage
+#endif
+	;
+	
 }
 
 #endif

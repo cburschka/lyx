@@ -36,10 +36,12 @@ class BufferView;
 // I dare you to enable this and help me find all the bugs that then show
 // up. (Lgb)
 #define NEW_INSETS 1
+#define NO_PEXTRA 1
 
 /// A LyXParagraph holds all text, attributes and insets in a text paragraph
 class LyXParagraph  {
 public:
+#ifndef NO_PEXTRA_REALLY
 	///
 	enum PEXTRA_TYPE {
 		///
@@ -60,6 +62,7 @@ public:
 		///
 		MINIPAGE_ALIGN_BOTTOM
 	};
+#endif
 	///
 	enum META_KIND {
 #ifndef NEW_INSETS
@@ -467,6 +470,7 @@ public:
 	    first paragraph keeps information  about layoutparameters, */
 	bool IsDummy() const;
 #endif
+#ifndef NO_PEXTRA_REALLY
         /* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
            I have to set it on each of it's elements */
 	///
@@ -474,6 +478,7 @@ public:
 			   string const & width, string const & widthp);
 	///
         void UnsetPExtraType(BufferParams const &);
+#endif
 	///
 	bool linuxDocConvertChar(char c, string & sgml_string);
 private:

@@ -25,6 +25,9 @@
 #include "buffer.h"
 #include "lyxtext.h"
 #include "xforms_helpers.h"
+#if 1
+#include "lyxparagraph.h"
+#endif
 
 using Liason::setMinibuffer;
 
@@ -105,6 +108,7 @@ void FormParagraph::build()
     bc_.addReadOnly (general_->check_noindent);
     bc_.addReadOnly (general_->input_labelwidth);
 
+#ifndef NO_PEXTRA
     // the document class form
     extra_.reset(build_paragraph_extra());
 
@@ -116,10 +120,13 @@ void FormParagraph::build()
     bc_.addReadOnly (extra_->radio_pextra_floatflt);
     bc_.addReadOnly (extra_->radio_pextra_hfill);
     bc_.addReadOnly (extra_->radio_pextra_startmp);
-
+#endif
+    
     // now make them fit together
     fl_addto_tabfolder(dialog_->tabbed_folder,_("General"), general_->form);
+#ifndef NO_PEXTRA
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Extra"), extra_->form);
+#endif
 }
 
 
@@ -129,7 +136,9 @@ void FormParagraph::apply()
 	return;
 
     general_apply();
+#ifndef NO_PEXTRA
     extra_apply();
+#endif
 
     lv_->view()->update(lv_->view()->text, 
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
@@ -144,7 +153,9 @@ void FormParagraph::update()
         return;
 
     general_update();
+#ifndef NO_PEXTRA
     extra_update();
+#endif
     bc_.readOnly(lv_->buffer()->isReadonly());
 }
 
@@ -250,6 +261,7 @@ void FormParagraph::general_apply()
 }
 
 
+#ifndef NO_PEXTRA
 void FormParagraph::extra_apply()
 {
     char const * width = fl_get_input(extra_->input_pextra_width);
@@ -280,6 +292,7 @@ void FormParagraph::extra_apply()
     text->SetParagraphExtraOpt(lv_->view(), type, width, widthp, alignment,
 			       hfill, start_minipage);
 }
+#endif
 
 
 void FormParagraph::general_update()
@@ -454,6 +467,7 @@ void FormParagraph::general_update()
 }
 
 
+#ifndef NO_PEXTRA
 void FormParagraph::extra_update()
 {
     if (!lv_->view()->available() || !extra_.get())
@@ -520,6 +534,7 @@ void FormParagraph::extra_update()
     }
     fl_hide_object(dialog_->text_warning);
 }
+#endif
 
 
 bool FormParagraph::input(FL_OBJECT * ob, long)
@@ -542,6 +557,7 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     if (fl_get_choice (general_->choice_space_below) != 7)
         fl_set_input (general_->input_space_below, "");
 
+#ifndef NO_PEXTRA
     //
     // then the extra form
     //
@@ -594,6 +610,7 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
 	setEnabled(extra_->radio_pextra_hfill,   false);
 	setEnabled(extra_->radio_pextra_startmp, false);
     }
+#endif
     
     //
     // first the general form
@@ -621,6 +638,7 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
         }
     }
 
+#ifndef NO_PEXTRA
     //
     // then the extra form
     //
@@ -657,6 +675,7 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
 	    fl_show_object(dialog_->text_warning);
 	}
     }
+#endif
     return ret;
 }
 

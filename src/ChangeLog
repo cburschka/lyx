@@ -1,3 +1,20 @@
+2001-03-16  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* text2.C: ditto
+
+	* text.C: ditto
+
+	* paragraph.C: ditto
+
+	* lyxtext.h: NO_PEXTRA
+
+	* buffer.C: NO_PEXTRA_REALLY, NO_PEXTRA
+
+	* ParagraphParameters.C (clear): NO_PEXTRA_REALLY
+	* ParameterStruct.h: ditto
+	* ParagraphParameters.h: ditto 
+	* lyxparagraph.h: ditto
+
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* buffer.C: add compability for minipage alignment.

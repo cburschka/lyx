@@ -853,6 +853,7 @@ int LyXText::LeftMargin(BufferView * bview, Row const * row) const
 	}
 	break;
 	}
+#ifndef NO_PEXTRA
 	if ((workWidth(bview) > 0) &&
 	    (row->par()->params.pextraType() == LyXParagraph::PEXTRA_INDENT)) {
 		if (!row->par()->params.pextraWidthp().empty()) {
@@ -868,6 +869,7 @@ int LyXText::LeftMargin(BufferView * bview, Row const * row) const
 			x += lyxfont::width("XXXXXX", font);
 		}
 	}
+#endif
 	
 	int align; // wrong type
 #ifndef NEW_INSETS
@@ -3554,6 +3556,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				  LColor::appendixline);
 		}
 
+#ifndef NO_PEXTRA
 		// Draw minipage line
 		bool const minipage =
 			(p->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE);
@@ -3562,7 +3565,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				  LYX_PAPER_MARGIN/5, 
 				  y_offset + row_ptr->height() - 1,
 				  LColor::minipageline);
-
+#endif
 		// Draw depth lines
 		int const depth = p->GetDepth();
 		for (int i = 1; i <= depth; ++i) {
@@ -3600,7 +3603,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			  ww - 2, y_offset + row_ptr->height(),
 			  LColor::appendixline);
 	}
-
+#ifndef NO_PEXTRA
 	// Draw minipage line
 	bool const minipage =
 		(firstpar->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE);
@@ -3609,7 +3612,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			  LYX_PAPER_MARGIN/5 + box_x, 
 			  y_offset + row_ptr->height() - 1,
 			  LColor::minipageline);
-
+#endif
 	// Draw depth lines
 	int const depth = firstpar->GetDepth();
 	if (depth > 0) {
@@ -3638,7 +3641,11 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 
 		for (int i = 1; i <= depth; ++i) {
 			int const line_x = (LYX_PAPER_MARGIN / 5) *
-				(i + minipage) + box_x + x_offset;
+				(i
+#ifndef NO_PEXTRA
+				 + minipage
+#endif
+					) + box_x + x_offset;
 			pain.line(line_x, y_offset, line_x,
 				  y_offset + row_ptr->height() - 1 - (i - next_depth - 1) * 3,
 				  LColor::depthbar);
@@ -4208,6 +4215,7 @@ void LyXText::InsertFootnoteEnvironment(BufferView * bview,
 		 _("Sorry."));
      return;
    }
+#ifndef NO_PEXTRA
    /* no marginpars in minipages */
    if (kind == LyXParagraph::MARGIN 
       && cursor.par()->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE) {
@@ -4216,7 +4224,7 @@ void LyXText::InsertFootnoteEnvironment(BufferView * bview,
 		 _("Sorry."));
       return;
    }
-   
+#endif
    /* this doesnt make sense, if there is no selection */ 
    bool dummy_selection = false;
    if (!selection) {
