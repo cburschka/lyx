@@ -145,6 +145,22 @@ private:
 	void doExtern(LCursor & cur, FuncRequest & func);
 	///
 	void glueall();
+	/*!
+	 * split every row at the first relation operator.
+	 * The number of columns must be 1. One column is added.
+	 * The first relation operator and everything after it goes to the
+	 * second column.
+	 */
+	void splitTo2Cols();
+	/*!
+	 * split every row at the first relation operator.
+	 * The number of columns must be < 3. One or two columns are added.
+	 * The first relation operator goes to the second column.
+	 * Everything after it goes to the third column.
+	 */
+	void splitTo3Cols();
+	/// change number of columns, split or combine columns if necessary.
+	void changeCols(col_type);
 	///
 	char const * standardFont() const;
 	/// consistency check

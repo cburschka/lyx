@@ -607,6 +607,65 @@ void MathHullInset::glueall()
 }
 
 
+void MathHullInset::splitTo2Cols()
+{
+	BOOST_ASSERT(ncols() == 1);
+	MathGridInset::addCol(1);
+	for (row_type row = 0; row < nrows(); ++row) {
+		idx_type const i = 2 * row;
+		pos_type pos = firstRelOp(cell(i));
+		cell(i + 1) = MathArray(cell(i).begin() + pos, cell(i).end());
+		cell(i).erase(pos, cell(i).size());
+	}
+}
+
+
+void MathHullInset::splitTo3Cols()
+{
+	BOOST_ASSERT(ncols() < 3);
+	if (ncols() < 2)
+		splitTo2Cols();
+	MathGridInset::addCol(1);
+	for (row_type row = 0; row < nrows(); ++row) {
+		idx_type const i = 3 * row + 1;
+		if (cell(i).size()) {
+			cell(i + 1) = MathArray(cell(i).begin() + 1, cell(i).end());
+			cell(i).erase(1, cell(i).size());
+		}
+	}
+}
+
+
+void MathHullInset::changeCols(col_type cols)
+{
+	if (ncols() == cols)
+		return;
+	else if (ncols() < cols) {
+		// split columns
+		if (cols < 3)
+			splitTo2Cols();
+		else {
+			splitTo3Cols();
+			while (ncols() < cols)
+				MathGridInset::addCol(ncols() - 1);
+		}
+		return;
+	}
+
+	// combine columns
+	for (row_type row = 0; row < nrows(); ++row) {
+		idx_type const i = row * ncols();
+		for (col_type col = cols; col < ncols(); ++col) {
+			cell(i + cols - 1).append(cell(i + col));
+		}
+	}
+	// delete columns
+	while (ncols() > cols) {
+		MathGridInset::delCol(ncols() - 1);
+	}
+}
+
+
 string const & MathHullInset::getType() const
 {
 	return type_;
@@ -626,7 +685,12 @@ void MathHullInset::mutate(string const & newtype)
 	lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'" << endl;
 
 	// we try to move along the chain
-	// none <-> simple <-> equation <-> eqnarray
+	// none <-> simple <-> equation <-> eqnarray -> *align* -> multline, gather -+
+	//                                     ^                                     |
+	//                                     +-------------------------------------+
+	// we use eqnarray as intermediate type for mutations that are not
+	// directly supported because it handles labels and numbering for
+	// "down mutation".
 
 	if (newtype == "dump") {
 		dump();
@@ -645,6 +709,7 @@ void MathHullInset::mutate(string const & newtype)
 	else if (type_ == "simple") {
 		if (newtype == "none") {
 			setType("none");
+			numbered(0, false);
 		} else {
 			setType("equation");
 			numbered(0, false);
@@ -655,32 +720,17 @@ void MathHullInset::mutate(string const & newtype)
 	else if (type_ == "equation") {
 		if (smaller(newtype, type_)) {
 			setType("simple");
+			numbered(0, false);
 			mutate(newtype);
 		} else if (newtype == "eqnarray") {
-			MathGridInset::addCol(1);
-			MathGridInset::addCol(1);
-
-			// split it "nicely" on the firest relop
-			pos_type pos = firstRelOp(cell(0));
-			cell(1) = MathArray(cell(0).begin() + pos, cell(0).end());
-			cell(0).erase(pos, cell(0).size());
-
-			if (cell(1).size()) {
-				cell(2) = MathArray(cell(1).begin() + 1, cell(1).end());
-				cell(1).erase(1, cell(1).size());
-			}
+			// split it "nicely" on the first relop
+			splitTo3Cols();
 			setType("eqnarray");
-			mutate(newtype);
 		} else if (newtype == "multline" || newtype == "gather") {
 			setType(newtype);
-			numbered(0, false);
 		} else {
-			MathGridInset::addCol(1);
 			// split it "nicely"
-			pos_type pos = firstRelOp(cell(0));
-			cell(1) = cell(0);
-			cell(0).erase(pos, cell(0).size());
-			cell(1).erase(0, pos);
+			splitTo2Cols();
 			setType("align");
 			mutate(newtype);
 		}
@@ -708,52 +758,67 @@ void MathHullInset::mutate(string const & newtype)
 			label_[0] = label;
 			mutate(newtype);
 		} else { // align & Co.
-			for (row_type row = 0; row < nrows(); ++row) {
-				idx_type c = 3 * row + 1;
-				cell(c).append(cell(c + 1));
-			}
-			MathGridInset::delCol(2);
+			changeCols(2);
 			setType("align");
 			mutate(newtype);
 		}
 	}
 
-	else if (type_ == "align") {
-		if (smaller(newtype, type_)) {
-			MathGridInset::addCol(1);
+	else if (type_ ==  "align"   || type_ == "alignat" ||
+	         type_ == "xalignat" || type_ == "flalign") {
+		if (smaller(newtype, "align")) {
+			changeCols(3);
 			setType("eqnarray");
 			mutate(newtype);
+		} else if (newtype == "gather" || newtype == "multline") {
+			changeCols(1);
+			setType(newtype);
+		} else if (newtype ==   "xxalignat") {
+			for (row_type row = 0; row < nrows(); ++row)
+				numbered(row, false);
+			setType(newtype);
 		} else {
 			setType(newtype);
 		}
 	}
 
-	else if (type_ == "multline") {
-		if (newtype == "gather" || newtype == "align" ||
-		    newtype == "xalignat" || newtype == "xxalignat" || newtype == "flalign")
-			setType(newtype);
-		else if (newtype == "eqnarray") {
-			MathGridInset::addCol(1);
-			MathGridInset::addCol(1);
+	else if (type_ == "xxalignat") {
+		for (row_type row = 0; row < nrows(); ++row)
+			numbered(row, false);
+		if (smaller(newtype, "align")) {
+			changeCols(3);
 			setType("eqnarray");
+			mutate(newtype);
+		} else if (newtype == "gather" || newtype == "multline") {
+			changeCols(1);
+			setType(newtype);
 		} else {
-			lyxerr << "mutation from '" << type_
-				<< "' to '" << newtype << "' not implemented" << endl;
+			setType(newtype);
 		}
 	}
 
-	else if (type_ == "gather") {
-		if (newtype == "multline") {
+	else if (type_ == "multline" || type_ == "gather") {
+		if (newtype == "gather" || newtype == "multline")
+			setType(newtype);
+		else if (newtype ==   "align"   || newtype == "flalign"  ||
+		         newtype ==   "alignat" || newtype == "xalignat") {
+			splitTo2Cols();
+			setType(newtype);
+		} else if (newtype ==   "xxalignat") {
+			splitTo2Cols();
+			for (row_type row = 0; row < nrows(); ++row)
+				numbered(row, false);
 			setType(newtype);
 		} else {
-			lyxerr << "mutation from '" << type_
-				<< "' to '" << newtype << "' not implemented" << endl;
+			splitTo3Cols();
+			setType("eqnarray");
+			mutate(newtype);
 		}
 	}
 
 	else {
 		lyxerr << "mutation from '" << type_
-					 << "' to '" << newtype << "' not implemented" << endl;
+		       << "' to '" << newtype << "' not implemented" << endl;
 	}
 }
 

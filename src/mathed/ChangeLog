@@ -1,3 +1,10 @@
+2004-09-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_hullinset.[C,h] (splitTo2Cols): new
+	* math_hullinset.[C,h] (splitTo3Cols): new
+	* math_hullinset.[C,h] (changeCols): new
+	* math_hullinset.C (mutate): implement missing mutations
+
 2004-08-16  José Matos  <jamatos@lyx.org>
 
 	* formulamacro.C (write):
