@@ -1,5 +1,11 @@
 2001-03-01  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* math_iter.h: add comment on virtual destructor
+
+	* math_iter.C (Delete): make c const
+
+	* math_parinset.C (Metrics): cleanup indent. make one string const.
+
 	* math_inset.C (size): move out of line
 	(incSize): ditto
 

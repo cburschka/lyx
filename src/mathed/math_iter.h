@@ -50,7 +50,7 @@ public:
 	///
 	explicit
 	MathedIter(MathedArray *);
-	///
+	/// Virtual base destructor.
 	virtual ~MathedIter() {}
 	///
 	bool goNextCode(MathedTextCodes);

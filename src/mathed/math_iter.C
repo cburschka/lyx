@@ -340,7 +340,7 @@ bool MathedIter::Delete()
 		return false;
 
 	int shift = 0;
-	byte c = GetChar();
+	byte const c = GetChar();
 	if (c >= ' ') {
 
 		if (MathIsFont((*array)[pos - 1]) && (*array)[pos + 1] < ' ') {
