@@ -172,8 +172,9 @@ GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
 	
 	int index = lw + (ls << 1) + (c << 6);
 
-	if (lineGCcache.find(index) != lineGCcache.end())
-		return lineGCcache[index];
+	LineGCCache::iterator it = lineGCcache.find(index);
+	if (it != lineGCcache.end())
+		return it->second;
 
 	XGCValues val;
 	XGetGCValues(display, getGCForeground(c), GCForeground, &val);
