@@ -35,6 +35,8 @@ public:
 	virtual void show() = 0;
 	/// Update dialog before/whilst showing it.
 	virtual void update() = 0;
+	/// build the dialog
+	virtual void build() = 0;
 
 	/** These shortcuts allow (e.g. xform's) global callback functions
 	    access to the buttons without making the whole controller_ public.

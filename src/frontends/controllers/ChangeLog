@@ -1,3 +1,12 @@
+2001-08-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ControlCharacter.C: fix typo
+
+	* ViewBase.h: 
+	* ControlDialogs.C:
+	* ControlInsets.C: make sure dialog is built before it is shown, so
+	  it works properly the very first time it is shown
+ 
 2001-08-20  Herbert Voss  <voss@perce.de>
 
 	* ControlBibtex.[Ch]: enhanced bibtex-data gui to browse for databases

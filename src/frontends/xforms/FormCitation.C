@@ -25,7 +25,6 @@
 #include "form_citation.h"
 #include "gettext.h"
 #include "support/lstrings.h"
-#include "biblio.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
 
@@ -136,6 +135,7 @@ void FormCitation::build()
 
 	fl_set_input_return(dialog_->input_after,  FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_before, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_search, FL_RETURN_END);
 
 	fl_set_button(dialog_->button_search_case, 0);
 	fl_set_button(dialog_->button_search_type, 0);
@@ -157,6 +157,44 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->button_force_uppercase);
 }
 
+
+void FormCitation::findBiblio(biblio::Direction const dir)
+{
+	string const str = fl_get_input(dialog_->input_search);
+	biblio::InfoMap const & theMap = controller().bibkeysInfo();
+	bool const caseSensitive =
+		fl_get_button(dialog_->button_search_case);
+	biblio::Search const type =
+		fl_get_button(dialog_->button_search_type) ?
+		biblio::REGEX : biblio::SIMPLE;
+
+	vector<string>::const_iterator start = bibkeys.begin();
+	int const sel = fl_get_browser(dialog_->browser_bib);
+	if (sel >= 1 && sel <= int(bibkeys.size()))
+		start += sel - 1;
+
+	// Find the NEXT instance...
+	(dir == biblio::FORWARD) ? ++start : --start;
+
+
+	vector<string>::const_iterator const cit =
+	biblio::searchKeys(theMap, bibkeys, str,
+			   start, type, dir, caseSensitive);
+
+	if (cit == bibkeys.end())
+		return;
+
+	int const found = int(cit - bibkeys.begin()) + 1;
+	if (found == sel)
+		return;
+
+	// Update the display
+	int const top = max(found - 5, 1);
+	fl_set_browser_topline(dialog_->browser_bib, top);
+	fl_select_browser_line(dialog_->browser_bib, found);
+	input(dialog_->browser_bib, 0);
+}
+ 
 
 ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 {
@@ -299,50 +337,12 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		setCiteButtons(ON);
 		activate = ButtonPolicy::SMI_VALID;
 
-	} else if (ob == dialog_->button_previous ||
-		   ob == dialog_->button_next) {
-
-		string const str = fl_get_input(dialog_->input_search);
-
-		biblio::Direction const dir =
-			(ob == dialog_->button_previous) ?
-			biblio::BACKWARD : biblio::FORWARD;
-
-		biblio::Search const type =
-			fl_get_button(dialog_->button_search_type) ?
-			biblio::REGEX : biblio::SIMPLE;
-
-		vector<string>::const_iterator start = bibkeys.begin();
-		int const sel = fl_get_browser(dialog_->browser_bib);
-		if (sel >= 1 && sel <= int(bibkeys.size()))
-			start += sel-1;
-
-		// Find the NEXT instance...
-		if (dir == biblio::FORWARD)
-			start += 1;
-		else
-			start -= 1;
-
-		bool const caseSensitive =
-			fl_get_button(dialog_->button_search_case);
-
-		vector<string>::const_iterator const cit =
-			biblio::searchKeys(theMap, bibkeys, str,
-					   start, type, dir, caseSensitive);
-
-		if (cit == bibkeys.end())
-			return ButtonPolicy::SMI_NOOP;
-
-		int const found = int(cit - bibkeys.begin()) + 1;
-		if (found == sel)
-			return ButtonPolicy::SMI_NOOP;
-
-		// Update the display
-		int const top = max(found-5, 1);
-		fl_set_browser_topline(dialog_->browser_bib, top);
-		fl_select_browser_line(dialog_->browser_bib, found);
-		input(dialog_->browser_bib, 0);
-
+	} else if (ob == dialog_->button_previous) {
+		findBiblio(biblio::BACKWARD);
+	} else if (ob == dialog_->button_next) {
+		findBiblio(biblio::FORWARD);
+	} else if (ob == dialog_->input_search) {
+		findBiblio(biblio::FORWARD);
 	} else if (ob == dialog_->choice_style ||
 		   ob == dialog_->button_full_author_list ||
 		   ob == dialog_->button_force_uppercase ||

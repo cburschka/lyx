@@ -20,6 +20,7 @@
 #endif
 
 #include "FormBase.h"
+#include "biblio.h"
 
 /** This class provides an XForms implementation of the Citation Dialog.
  */
@@ -53,6 +54,9 @@ private:
 
 	/// Fdesign generated method
 	FD_form_citation * build_citation();
+
+	/// search for a citation
+	void FormCitation::findBiblio(biblio::Direction const dir);
 
 	///
 	void updateBrowser(FL_OBJECT *, std::vector<string> const &) const;

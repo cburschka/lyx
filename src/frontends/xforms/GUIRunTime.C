@@ -71,9 +71,11 @@ int GUIRunTime::initApplication(int , char **)
 void GUIRunTime::processEvents() 
 {
 	if (fl_do_forms() == FL_EVENT) {
-		lyxerr << "LyX: This shouldn't happen..." << endl;
 		XEvent ev;
 		fl_XNextEvent(&ev);
+		lyxerr << "Received unhandled X11 event" << endl;
+		lyxerr << "Type: 0x" << std::hex << ev.xany.type <<
+			"Target: 0x" << std::hex << ev.xany.window << endl;
 	}
 }
 
@@ -82,9 +84,11 @@ void GUIRunTime::runTime()
 {
 	while (!finished) {
 		if (fl_check_forms() == FL_EVENT) {
-			lyxerr << "LyX: This shouldn't happen..." << endl;
 			XEvent ev;
 			fl_XNextEvent(&ev);
+			lyxerr << "Received unhandled X11 event" << endl;
+			lyxerr << "Type: 0x" << std::hex << ev.xany.type <<
+				"Target: 0x" << std::hex << ev.xany.window << endl;
 		}
 	}
 }

@@ -3,7 +3,7 @@
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #include <vector>

@@ -20,6 +20,7 @@
 #define CONTROLINSET_H
 
 #include "support/LAssert.h"
+#include "debug.h" 
 #include "ControlConnections.h"
 
 class Inset;
@@ -135,6 +136,12 @@ void ControlInset<Inset, Params>::show(Params const & params)
 
 	setDaughterParams();
 
+	static bool isBuilt = false;
+	if (!isBuilt) {
+		isBuilt = true;
+		view().build();
+	}
+
 	bc().readOnly(isReadonly());
 	view().show();
 }
@@ -168,6 +175,10 @@ void ControlInset<Inset, Params>::update()
 		params_ = new Params();
 
 	bc().readOnly(isReadonly());
+	// Reset the Button Controller to it's initial state
+	bc().invalid();
+	bc().restore();
+
 	view().update();
 }
 

@@ -64,6 +64,12 @@ void ControlDialog<Base>::show()
 
 	setParams();
 
+	static bool isBuilt = false;
+	if (!isBuilt) {
+		isBuilt = true;
+		view().build();
+	}
+
 	bc().readOnly(isReadonly());
 	view().show();
 }
@@ -75,8 +81,12 @@ void ControlDialog<Base>::update()
 		return;
 
 	setParams();
-	
+
 	bc().readOnly(isReadonly());
+	// Reset the Button Controller to it's initial state
+	bc().invalid();
+	bc().restore();
+
 	view().update();
 }
 
