@@ -796,12 +796,17 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		string const & name = argument;
+		string data;
 		if (name == "ref") {
-			RefInset tmp;
-			string const data = tmp.createDialogStr(name);
-			bv->owner()->getDialogs().show(name, data, 0);
-		} else
+			RefInset tmp(name);
+			data = tmp.createDialogStr(name);
+		}
+
+		if (data.empty())
 			result = UNDISPATCHED;
+		else {
+			bv->owner()->getDialogs().show(name, data, 0);
+		}
 	}
 	break;
 
