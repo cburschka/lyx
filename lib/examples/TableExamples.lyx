@@ -2861,7 +2861,25 @@ d
 
 \layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+multirow{4}{14mm}{
+\end_inset 
+
 Text in column 1
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -2877,7 +2895,25 @@ C2a
 
 \layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+multirow{4}{14mm}{
+\end_inset 
+
 Text in column 1
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -3030,7 +3066,7 @@ centering
 position 0
 inner_position 0
 height "0pt"
-width "25p%"
+width "25col%"
 collapsed false
 
 \layout Standard
@@ -3091,7 +3127,25 @@ b
 
 \layout Standard
 
-1example1 cell(b,1)
+1
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+footnote{
+\end_inset 
+
+example1 cell(b,1)
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -3175,7 +3229,25 @@ d
 
 \layout Standard
 
-9example1 cell(d,9)
+9
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+footnote{
+\end_inset 
+
+example1 cell(d,9)
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+
 \end_inset 
 </cell>
 </row>
@@ -3276,7 +3348,25 @@ b
 
 \layout Standard
 
-1example2 cell(b,1)
+1
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+footnote{
+\end_inset 
+
+example2 cell(b,1)
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -3360,7 +3450,25 @@ d
 
 \layout Standard
 
-9example2 cell(d,9)
+9
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+footnote{
+\end_inset 
+
+example2 cell(d,9)
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+
 \end_inset 
 </cell>
 </row>
@@ -3440,6 +3548,16 @@ b
 \layout Standard
 
 1
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+footnotemark
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -3524,6 +3642,16 @@ d
 \layout Standard
 
 9
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+footnotemark
+\end_inset 
+
+
 \end_inset 
 </cell>
 </row>
