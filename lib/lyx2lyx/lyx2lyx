@@ -127,6 +127,9 @@ def read_file(file, header, body):
         if check_token(line, '\\end_preamble'):
             preamble = 0
 
+        if not preamble:
+            line = string.strip(line)
+
         if not line and not preamble:
             break
 
