@@ -274,7 +274,7 @@ void kb_sequence::delseq()
    Returns   : keysym
 \* ---F------------------------------------------------------------------- */
 
-KeySym kb_sequence::getsym()
+unsigned long kb_sequence::getsym()
 {
 	int l = length;
 	if(l == 0) return NoSymbol;

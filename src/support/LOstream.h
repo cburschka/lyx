@@ -21,5 +21,6 @@
 
 using std::ostream;
 using std::endl; 
+using std::flush;
 
 #endif
