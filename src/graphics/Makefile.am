@@ -4,8 +4,6 @@ noinst_LTLIBRARIES = libgraphics.la
 
 INCLUDES = -I$(srcdir)/.. $(BOOST_INCLUDES)
 
-EXTRA_DIST = GraphicsImageXPM.C GraphicsImageXPM.h
-
 libgraphics_la_SOURCES = \
 	GraphicsCache.h \
 	GraphicsCache.C \
