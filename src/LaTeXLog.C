@@ -8,7 +8,6 @@
 #include "LString.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "support/path.h"
 #include "lyxrc.h"
 #include "BufferView.h"
 #include "gettext.h"
@@ -23,23 +22,37 @@ void ShowLatexLog()
 	bool use_build = false;
 	static int ow = -1, oh;
 
-	filename = current_view->buffer()->getLatexName();
+	filename = current_view->buffer()->getLatexName(false);
+
 	if (!filename.empty()) {
-		fname = OnlyFilename(ChangeExtension(filename, ".log"));
-		bname = OnlyFilename(ChangeExtension(filename,
-				     formats.Extension("literate") + ".out"));
 		path = OnlyPath(filename);
 		if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 			path = current_view->buffer()->tmppath;
 		}
-		FileInfo f_fi(path + fname), b_fi(path + bname);
+		fname = AddName(path, ChangeExtension(filename, ".log"));
+		bname = AddName(path,
+				ChangeExtension(filename,
+						formats.Extension("literate")
+						+ ".out"));
+		FileInfo f_fi(fname), b_fi(bname);
+
 		if (b_fi.exist())
+			// If no Latex log or Build log is newer, show
+			// Build log 
 			if (!f_fi.exist()
 			    || f_fi.getModificationTime() < b_fi.getModificationTime())
-				use_build = true; // If no Latex log or Build log is newer, show Build log
-		Path p(path); // path to LaTeX file
-		if (!fl_load_browser(fd_latex_log->browser_latexlog,
-				     use_build ? bname.c_str() : fname.c_str()))
+				use_build = true; 
+
+		string name;
+
+		if (use_build)
+			name = bname;
+		else
+			name = fname;
+
+		lyxerr[Debug::FILES] << "Log file: " << name << endl;
+
+		if (!fl_load_browser(fd_latex_log->browser_latexlog, name.c_str()))
 			fl_add_browser_line(fd_latex_log->browser_latexlog,
 					    _("No LaTeX log file found"));
 	} else {
