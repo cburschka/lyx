@@ -25,6 +25,8 @@ extern char const * latex_dots[];
 extern int const nr_latex_dots;
 extern char const * latex_greek[];
 extern int const nr_latex_greek;
+extern char const * latex_deco[];
+extern int const nr_latex_deco;
 extern char const * latex_misc[];
 extern int const nr_latex_misc;
 extern char const * latex_varsz[];

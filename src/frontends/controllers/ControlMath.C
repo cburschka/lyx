@@ -28,6 +28,17 @@ char const * latex_dots[] = {
 
 int const nr_latex_dots = sizeof(latex_dots) / sizeof(char const *) - 1;
 
+char const * latex_deco[] = {
+	"widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow",
+	"overline", "underbrace", "underline", "underleftarrow", "underrightarrow",
+	"underleftrightarrow", "overleftrightarrow",
+	"hat", "acute", "bar", "dot",
+	"check", "grave", "vec", "ddot",
+	"breve", "tilde", ""
+};
+
+int const nr_latex_deco = sizeof(latex_deco) / sizeof(char const *) - 1;
+
 char const * latex_arrow[] = {
 	"downarrow", "leftarrow", "Downarrow", "Leftarrow",
 	"hookleftarrow", "rightarrow", "uparrow", "Rightarrow", "Uparrow",
