@@ -919,6 +919,9 @@ void LyXText::cursorHome()
 
 void LyXText::cursorEnd()
 {
+	if (cursor.par()->empty())
+		return;
+
 	if (!cursor.row()->next()
 	    || cursor.row()->next()->par() != cursor.row()->par()) {
 		setCursor(cursor.par(), cursor.row()->lastPos() + 1);

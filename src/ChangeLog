@@ -1,5 +1,9 @@
 2003-03-28  John Levon  <levon@movementarian.org>
 
+	* text2.C: fix bug 974 (End on empty par)
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
 	* BufferView_pimpl.C:
 	* LyXAction.C:
 	* lfuns.h: remove do-nothing math greek lfuns
