@@ -3,6 +3,16 @@ LyX file-format changes
 
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* Change the output of InsetBox:
+	\begin_inset Boxed -> \begin_inset Box Boxed
+	\begin_inset Doublebox -> \begin_inset Box Doublebox
+	\begin_inset Frameless -> \begin_inset Box Frameless
+	\begin_inset ovalbox -> \begin_inset Box ovalbox
+	\begin_inset Ovalbox -> \begin_inset Box Ovalbox
+	\begin_inset Shadowbox -> \begin_inset Box Shadowbox
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
 	* Change the output of InsetNote:
 	\begin_inset Note -> \begin_inset Note Note
 	\begin_inset Comment -> \begin_inset Note Comment

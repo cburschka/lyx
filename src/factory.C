@@ -404,9 +404,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			inset.reset(new InsetGraphics);
 		} else if (tmptok == "Note") {
 			inset.reset(new InsetNote(buf.params(), tmptok));
-		} else if (tmptok == "Boxed" || tmptok == "ovalbox"
-		        || tmptok == "Shadowbox" || tmptok == "Doublebox"
-		        || tmptok == "Ovalbox" || tmptok == "Frameless") {
+		} else if (tmptok == "Box") {
 			inset.reset(new InsetBox(buf.params(), tmptok));
 		} else if (tmptok == "CharStyle") {
 			lex.next();

@@ -1,5 +1,14 @@
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* lyx2lyx: up the format to 227.
+	(lyxformat): squash latent bug when reporting an inability to convert
+	to the desired format.
+
+	* lyxconvert_226.py:
+	* lyxrevert_227.py: convert the Box inset between formats 226 and 227.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
 	* lyx2lyx: up the format to 226.
 
 	* lyxconvert_225.py:

@@ -26,6 +26,7 @@
 #include "paragraph.h"
 
 #include "support/std_sstream.h"
+#include "support/translator.h"
 
 using std::auto_ptr;
 using std::string;
@@ -36,6 +37,8 @@ using std::endl;
 
 
 namespace {
+
+typedef Translator<std::string, InsetBox::BoxType> BoxTranslator;
 
 BoxTranslator const init_boxtranslator() {
 	BoxTranslator translator("Boxed", InsetBox::Boxed);
@@ -418,7 +421,7 @@ string const InsetBoxMailer::params2string(InsetBoxParams const & params)
 
 
 void InsetBoxMailer::string2params(string const & in,
-	InsetBoxParams & params)
+				   InsetBoxParams & params)
 {
 	params = InsetBoxParams(string());
 
@@ -429,10 +432,20 @@ void InsetBoxMailer::string2params(string const & in,
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
-	string token;
-	lex.next();
-	token = lex.getString();
-	lex.next();
+	string name;
+	lex >> name;
+	if (!lex || name != name_) {
+		lyxerr << "InsetBoxMailer::string2params(" << in << ")\n"
+		       << "Missing identifier \"" << name_ << '"' << std::endl;
+		return;
+	}
+
+	// This is part of the inset proper that is usually swallowed
+	// by LyXText::readInset
+	string inset_id;
+	lex >> inset_id;
+	if (!lex || inset_id != "Box")
+		return;
 
 	params.read(lex);
 }
@@ -454,7 +467,7 @@ InsetBoxParams::InsetBoxParams(string const & label)
 
 void InsetBoxParams::write(ostream & os) const
 {
-	os << type << "\n";
+	os << "Box " << type << "\n";
 	os << "position \"" << pos << "\"\n";
 	os << "hor_pos \"" << hor_pos << "\"\n";
 	os << "has_inner_box " << inner_box << "\n";
@@ -469,13 +482,17 @@ void InsetBoxParams::write(ostream & os) const
 
 void InsetBoxParams::read(LyXLex & lex)
 {
+	if (!lex.isOK())
+		return;
+
 	if (lex.isOK()) {
+		lex.next();
 		type = lex.getString();
 	}
-	string token;
 	if (!lex.isOK())
 		return;
 	lex.next();
+	string token;
 	token = lex.getString();
 	if (token == "position") {
 		lex.next();

@@ -40,7 +40,7 @@ opt.quiet = 0
 
 format = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
-lst_ft = [210, 215, 216, 217,  218, 220, 221, 223, 224, 225, 226]
+lst_ft = [210, 215, 216, 217,  218, 220, 221, 223, 224, 225, 226, 227]
 
 def usage():
     print """Usage: lyx2lyx [options] [file]
@@ -115,7 +115,7 @@ def lyxformat(fmt):
     if fmt in lst_ft:
         return fmt
 
-    opt.err.write(fmt + ": " + error.format_not_supported)
+    opt.err.write(str(fmt) + ": " + error.format_not_supported)
     sys.exit(1)
 
 def read_file(file, header, body):

@@ -1,5 +1,12 @@
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* insetbox.C: (read, write): now prepend the inset contents with
+	'Box' to identify the inset as a box inset.
+
+	* insetbox.h: move the translators out of sight.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
 	* insetert.C (string2params): clean-up using the new lyxlex interface.
 
 	* insetexternal.C: ensure that InsetExternalParams has a default
@@ -36,7 +43,8 @@
 
 	* insetexternal.C (draw): update the xo_, yo_ cache.
 
-	* ExternalTransforms.[Ch] (ResizeData): add a usingScale member function.
+	* ExternalTransforms.[Ch] (ResizeData): add a usingScale member
+	function.
 	(RotationDataType): new helper struct wrapping the
 	RotationData::OriginType enum.
 

@@ -16,7 +16,6 @@
 
 #include "insetcollapsable.h"
 #include "lyxlength.h"
-#include "support/translator.h"
 
 
 struct InsetBoxParams {
@@ -117,15 +116,6 @@ private:
 	///
 	InsetBoxParams params_;
 };
-
-
-namespace {
-
-typedef Translator<std::string, InsetBox::BoxType> BoxTranslator;
-BoxTranslator const & boxtranslator();
-BoxTranslator const & boxtranslator_loc();
-
-} // anon
 
 
 #include "mailinset.h"
