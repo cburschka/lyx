@@ -1,3 +1,8 @@
+2005-02-24  Johnathan Burchill  <jkerrb@users.sourceforge.net>
+
+	* paragraph_funcs.C: fix crash when pasting insets in change 
+	tracking mode [bug 1277] (honour change type in moveItem).
+
 2005-02-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* LaTeX.C (scanLogFile): recognize pdfTeX warnings

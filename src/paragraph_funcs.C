@@ -58,7 +58,12 @@ using std::pair;
 namespace {
 
 bool moveItem(Paragraph & from, Paragraph & to,
-	BufferParams const & params, pos_type i, pos_type j)
+	BufferParams const & params, pos_type i, pos_type j, 
+	Change change = Change(Change::INSERTED)); 
+
+bool moveItem(Paragraph & from, Paragraph & to,
+	BufferParams const & params, pos_type i, pos_type j,
+	Change change)
 {
 	Paragraph::value_type const tmpchar = from.getChar(i);
 	LyXFont tmpfont = from.getFontSettings(params, i);
@@ -76,11 +81,11 @@ bool moveItem(Paragraph & from, Paragraph & to,
 			return false;
 		}
 		if (tmpinset)
-			to.insertInset(j, tmpinset, tmpfont);
+			to.insertInset(j, tmpinset, tmpfont, change);
 	} else {
 		if (!to.checkInsertChar(tmpfont))
 			return false;
-		to.insertChar(j, tmpchar, tmpfont);
+		to.insertChar(j, tmpchar, tmpfont, change);
 	}
 	return true;
 }
@@ -192,6 +197,9 @@ void breakParagraphConservative(BufferParams const & bparams,
 	Paragraph & tmp = *pars.insert(pars.begin() + par_offset + 1, Paragraph());
 	Paragraph & par = pars[par_offset];
 
+	if (bparams.tracking_changes)
+		tmp.trackChanges();
+
 	tmp.makeSameLayout(par);
 
 	// When can pos > size()?
@@ -201,12 +209,14 @@ void breakParagraphConservative(BufferParams const & bparams,
 		// paragraph
 		pos_type pos_end = par.size() - 1;
 
-		for (pos_type i = pos, j = pos; i <= pos_end; ++i)
-			if (moveItem(par, tmp, bparams, i, j - pos))
+		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
+			Change::Type change = par.lookupChange(i);
+			if (moveItem(par, tmp, bparams, i, j - pos, change))
 				++j;
+		}
 
 		for (pos_type k = pos_end; k >= pos; --k)
-			par.erase(k);
+			par.eraseIntern(k);
 	}
 }
 
@@ -221,9 +231,11 @@ void mergeParagraph(BufferParams const & bparams,
 	pos_type pos_insert = par.size();
 
 	// ok, now copy the paragraph
-	for (pos_type i = 0, j = 0; i <= pos_end; ++i)
-		if (moveItem(next, par, bparams, i, pos_insert + j))
+	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {
+		Change::Type change = next.lookupChange(i);
+		if (moveItem(next, par, bparams, i, pos_insert + j, change))
 			++j;
+	}
 
 	pars.erase(pars.begin() + par_offset + 1);
 }
