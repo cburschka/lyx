@@ -361,16 +361,16 @@ LyXGlueLength::LyXGlueLength (string const & data)
 {
 	LyXGlueLength tmp(0.0, PT);
 
-	if (!isValidGlueLength (data, &tmp))
-		return; // should raise an exception
-	else {
-		val = tmp.val;
-		uni = tmp.uni;
-		plus_val = tmp.plus_val;
-		plus_uni = tmp.plus_uni;
-		minus_val = tmp.minus_val;
-		minus_uni = tmp.minus_uni;
-	}
+	// we should really raise exception here
+	if (!isValidGlueLength(data, &tmp))
+		;
+ 
+	val = tmp.val;
+	uni = tmp.uni;
+	plus_val = tmp.plus_val;
+	plus_uni = tmp.plus_uni;
+	minus_val = tmp.minus_val;
+	minus_uni = tmp.minus_uni;
 }
 
 

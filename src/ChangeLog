@@ -1,3 +1,7 @@
+2001-11-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* vspace.C: initialise lyxgluelength on failure
+
 2001-11-28  Allan Rae  <rae@lyx.org>
 
 	* text.C (paintLastRow): g++-2.95.3 and others don't like variable

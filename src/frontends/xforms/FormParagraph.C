@@ -120,8 +120,8 @@ void FormParagraph::build()
     fl_set_input_return(dialog_->input_labelwidth, FL_RETURN_CHANGED);
     fl_set_input_return(dialog_->input_linespacing, FL_RETURN_CHANGED);
     fl_set_input_filter(dialog_->input_linespacing, fl_unsigned_float_filter);
-    fl_set_input_filter(dialog_->input_space_above, fl_unsigned_float_filter);
-    fl_set_input_filter(dialog_->input_space_below, fl_unsigned_float_filter);
+    fl_set_input_filter(dialog_->input_space_above, fl_float_filter);
+    fl_set_input_filter(dialog_->input_space_below, fl_float_filter);
 
     // Create the contents of the unit choices
     // Don't include the "%" terms...
@@ -244,8 +244,10 @@ void FormParagraph::apply()
 	space_bottom = VSpace(VSpace::VFILL);
 	break;
     case 7:
-	space_bottom =
-		VSpace(LyXGlueLength(fl_get_input(dialog_->input_space_below)));
+	string const length =
+		getLengthFromWidgets(dialog_->input_space_below,
+		dialog_->choice_value_space_below);
+	space_bottom = VSpace(LyXGlueLength(length));
 	break;
     }
     if (fl_get_button (dialog_->check_space_below))

@@ -423,8 +423,7 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 	FL_OBJECT * ob = static_cast<FL_OBJECT *>(form->u_vdata);
 	Combox * combo = static_cast<Combox*>(ob->u_vdata);
 	
-	// I don't know why belowmouse does not work, but it doesn't. (Asger)
-	// Are we sure? Please verify. (Lgb)
+	// below mouse does not work like we need it 
 	if (static_cast<XEvent *>(xev)->type == ButtonPress && (
 		static_cast<XEvent *>(xev)->xbutton.x - ob->x < 0 ||
 		static_cast<XEvent *>(xev)->xbutton.x - ob->x > ob->w ||
