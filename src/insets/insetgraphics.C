@@ -322,7 +322,8 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
 	Painter & paint = bv->painter();
-
+	grfx::ImageStatus old_status_ = cached_status_;
+	
 	if (drawImage()) {
 //		lyxerr << "IG(" << this << "): " << old_x << endl;
 		paint.image(old_x + 2, baseline - lascent,
@@ -354,6 +355,12 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		}
 	}
 
+	// the status message may mean we changed size, so indicate
+	// we need a row redraw
+	if (old_status_ != cached_status_) {
+		bv->getLyXText()->status(bv, LyXText::CHANGED_IN_DRAW);
+	}
+ 
 	// Reset the cache, ready for the next draw request
 	cached_status_ = grfx::ErrorUnknown;
 	cached_image_.reset(0);
