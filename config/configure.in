@@ -6,12 +6,12 @@ AM_CONFIG_HEADER(src/config.h)
 dnl This is a trick to make autoheader do the right thing
 dnl AM_CONFIG_HEADER(src/config.h)
 AC_CONFIG_AUX_DIR(config)
-AM_MAINTAINER_MODE
 
 PACKAGE=lyx${program_suffix}
 VERSION="1.3.2cvs"
 LYX_CHECK_VERSION
 
+AM_MAINTAINER_MODE
 AC_CANONICAL_SYSTEM
 
 LYX_VERSION_SUFFIX
