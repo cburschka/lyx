@@ -73,6 +73,10 @@ What's new
 
 - Fix bindings for depth-increment/decrement for LyX/Mac.
 
+- Do not use the -swap option when viewing a Postscript file with gv,
+  since newer versions do not support it. Users that see landscape
+  documents upside-down should delect 'swap landscape' in gv options.
+
 - Fix server function server-get-tip [Bug 1781]
 
 

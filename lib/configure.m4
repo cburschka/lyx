@@ -270,7 +270,7 @@ LYXRC_PROG([for a Postscript interpreter], \ps_command, gs)
 # Search something to preview postscript
 SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gsview32 gv ghostview)
 case $GHOSTVIEW in
-  gv|ghostview) PS_VIEWER="$GHOSTVIEW -swap" ;;
+  ghostview) PS_VIEWER="$GHOSTVIEW -swap" ;;
   *) PS_VIEWER="$GHOSTVIEW";;
 esac
 EPS_VIEWER=$GHOSTVIEW
