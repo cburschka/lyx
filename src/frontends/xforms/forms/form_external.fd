@@ -1,0 +1,214 @@
+Magic: 13000
+
+Internal Form Definition File
+    (do not change)
+
+Number of forms: 1
+Unit of measure: FL_COORD_PIXEL
+
+=============== FORM ===============
+Name: form_external
+Width: 560
+Height: 310
+Number of Objects: 11
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 560 310
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 130 10 300 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Template|#t
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_NorthEast
+name: choice_template
+callback: ExternalTemplateCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 130 190 190 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: File|#F
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_SouthWest FL_SouthEast
+name: input_filename
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 330 190 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Browse...|#B
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_SouthEast FL_SouthEast
+name: button_filenamebrowse
+callback: ExternalBrowseCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 130 230 300 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Parameters|#P
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_SouthWest FL_SouthEast
+name: input_parameters
+callback:
+argument: 
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 435 50 110 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Edit file|#E
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthEast FL_NorthEast
+name: button_edit
+callback: ExternalEditCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 435 90 110 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: View result|#V
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthEast FL_NorthEast
+name: button_view
+callback: ExternalViewCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 435 130 110 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Update result|#U
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthEast FL_NorthEast
+name: button_update
+callback: ExternalUpdateCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: RETURN_BUTTON
+box: 315 270 110 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: OK
+shortcut: ^M
+resize: FL_RESIZE_ALL
+gravity: FL_SouthEast FL_SouthEast
+name: button_ok
+callback: C_FormBaseOKCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 435 270 110 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Cancel|#C^[
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_SouthEast FL_SouthEast
+name: button_cancel
+callback: C_FormBaseCancelCB
+argument: 0
+
+--------------------
+class: FL_BROWSER
+type: NORMAL_BROWSER
+box: 130 50 300 130
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_TOP
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_SouthEast
+name: browser_helptext
+callback: 
+argument: 
+
+==============================
+create_the_forms
