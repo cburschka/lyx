@@ -2797,3 +2797,18 @@ void InsetText::appendParagraphs(BufferParams const & bparams,
 
 	reinitLyXText();
 }
+
+
+void InsetText::addPreview(grfx::PreviewLoader & loader) const
+{
+	Paragraph * par = getFirstParagraph(0);
+	while (par) {
+		Paragraph::inset_iterator it  = par->inset_iterator_begin();
+		Paragraph::inset_iterator end = par->inset_iterator_end();
+		for (; it != end; ++it) {
+			it->addPreview(loader);
+		}
+
+		par = par->next();
+	}
+}

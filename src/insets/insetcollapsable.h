@@ -190,6 +190,9 @@ public:
 	bool searchBackward(BufferView * bv, string const & str,
 			    bool = true, bool = false);
 
+	///
+	void addPreview(grfx::PreviewLoader &) const;
+
 protected:
 	///
 	int ascent_collapsed() const;

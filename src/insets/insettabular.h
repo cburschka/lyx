@@ -229,6 +229,9 @@ public:
 	// "normal" means without width set!
 	bool forceDefaultParagraphs(Inset const * in) const;
 
+	///
+	void addPreview(grfx::PreviewLoader &) const;
+
 	//
 	// Public structures and variables
 	///

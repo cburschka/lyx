@@ -248,6 +248,8 @@ public:
 	///
 	void appendParagraphs(BufferParams const & bparams, Paragraph *);
 	///
+	void addPreview(grfx::PreviewLoader &) const;
+
 	//
 	// Public structures and variables
 	///

@@ -2917,3 +2917,15 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 
 	return true;
 }
+
+
+void InsetTabular::addPreview(grfx::PreviewLoader & loader) const
+{
+	int const rows = tabular->rows();
+	int const columns = tabular->columns();
+	for (int i = 0; i < rows; ++i) {
+		for (int j = 0; j < columns; ++j) {
+			tabular->GetCellInset(i,j)->addPreview(loader);
+		}
+	}
+}

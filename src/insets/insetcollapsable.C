@@ -676,3 +676,9 @@ string const InsetCollapsable::selectNextWordToSpellcheck(BufferView * bv,
 	first_after_edit = false;
 	return str;
 }
+
+
+void InsetCollapsable::addPreview(grfx::PreviewLoader & loader) const
+{
+	inset.addPreview(loader);
+}
