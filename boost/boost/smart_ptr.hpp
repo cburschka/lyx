@@ -63,6 +63,10 @@
 #include <boost/utility.hpp>  // for boost::noncopyable
 #include <functional>         // for std::less
 
+#ifdef LYX_NO_EXCEPTIONS
+#include <assert.h>
+#endif
+
 namespace boost {
 
 //  scoped_ptr  --------------------------------------------------------------//
@@ -142,6 +146,7 @@ template<typename T> class shared_ptr {
       catch (...) { delete p; throw; } 
 #else
 	  pn = new long(1);
+	  assert(pn != 0);
 #endif
    }
 
@@ -221,6 +226,7 @@ template<typename T> class shared_ptr {
         } // catch
 #else
 		pn = new long;
+		assert(pn != 0);
 #endif
       } // allocate new reference counter
       *pn = 1;
@@ -298,6 +304,7 @@ template<typename T> class shared_array {
       catch (...) { delete [] p; throw; } 
 #else
 	  pn = new long(1);
+	  assert(pn != 0);
 #endif
    }
 
@@ -328,6 +335,7 @@ template<typename T> class shared_array {
         } // catch
 #else
 		pn = new long;
+		assert(pn != 0);
 #endif
       } // allocate new reference counter
       *pn = 1;
