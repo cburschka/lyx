@@ -76,7 +76,7 @@ enum MathTextCodes  {
 	///
 	LM_TC_MSB,
 	///
-	LM_FONT_END,
+	LM_FONT_END
 };
 
 
