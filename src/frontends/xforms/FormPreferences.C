@@ -43,7 +43,7 @@ using std::vector;
 extern string fmt(char const * fmtstr ...);
 extern Languages languages;
 
-typedef pair<string, vector<int> > X11Colour;
+typedef pair<string, FormPreferences::RGB> X11Colour;
 
 static vector<X11Colour> colourDB;
 static string const colourFile = "/usr/lib/X11/rgb.txt";
@@ -51,8 +51,10 @@ static string const colourFile = "/usr/lib/X11/rgb.txt";
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
-	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
-	  usage_tab_(0), colours_(0), formats_(0), inputs_misc_(0),
+	  dialog_(0),
+	  converters_tab_(0), inputs_tab_(0), look_n_feel_tab_(0),
+	  outputs_tab_(0),  usage_tab_(0),
+	  colours_(0), converters_(0), formats_(0), inputs_misc_(0),
 	  interface_(0), language_(0), lnf_misc_(0), outputs_misc_(0),
 	  paths_(0), printer_(0), screen_fonts_(0), spellchecker_(0),
 	  combo_default_lang(0), combo_kbmap_1(0), combo_kbmap_2(0),
@@ -71,11 +73,14 @@ FormPreferences::~FormPreferences()
 	delete combo_kbmap_1;
 	delete combo_kbmap_2;
 
-	delete look_n_feel_tab_;
+	delete converters_tab_;
 	delete inputs_tab_;
+	delete look_n_feel_tab_;
 	delete outputs_tab_;
 	delete usage_tab_;
+
 	delete colours_;
+	delete converters_;
 	delete formats_;
 	delete inputs_misc_;
 	delete interface_;
@@ -136,14 +141,16 @@ void FormPreferences::build()
 	minh_ = form()->h;
 
 	// build the tab folders
-	outputs_tab_ = build_outer_tab();
+	converters_tab_ = build_outer_tab();
 	look_n_feel_tab_ = build_outer_tab();
 	inputs_tab_ = build_outer_tab();
+	outputs_tab_ = build_outer_tab();
 	usage_tab_ = build_outer_tab();
 
 	// build actual tabfolder contents
 	// these will become nested tabfolders
 	buildColours();
+	buildConverters();
 	buildFormats();
 	buildInputsMisc();
 	buildInterface();
@@ -160,14 +167,17 @@ void FormPreferences::build()
 			   _("Look and Feel"),
 			   look_n_feel_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
+			   _("Usage"),
+			   usage_tab_->form);
+	fl_addto_tabfolder(dialog_->tabfolder_prefs,
+			   _("Converters"),
+			   converters_tab_->form);
+	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Inputs"),
 			   inputs_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Outputs"),
 			   outputs_tab_->form);
-	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Usage"),
-			   usage_tab_->form);
 
 	// now build the nested tabfolders
 	// Starting with look and feel
@@ -184,6 +194,14 @@ void FormPreferences::build()
 			   _("Misc"),
 			   lnf_misc_->form);
 
+	// then build converters
+	fl_addto_tabfolder(converters_tab_->tabfolder_outer,
+			   _("Formats"),
+			   formats_->form);
+	fl_addto_tabfolder(converters_tab_->tabfolder_outer,
+			   _("Converters"),
+			   converters_->form);
+
 	// then build inputs
 	// Paths should probably go in a few outer_tab called Files
 	fl_addto_tabfolder(inputs_tab_->tabfolder_outer,
@@ -197,9 +215,6 @@ void FormPreferences::build()
 	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
 			   _("Printer"),
 			   printer_->form);
-	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
-			   _("Formats"),
-			   formats_->form);
 	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
 			   _("Misc"),
 			   outputs_misc_->form);
@@ -227,6 +242,7 @@ void FormPreferences::apply()
 	// and other stuff which may cost us a lot on slower/high-load machines.
 
 	applyColours();
+	applyConverters();
 	applyFormats();
 	applyInputsMisc();
 	applyInterface();
@@ -246,6 +262,8 @@ void FormPreferences::feedback( FL_OBJECT * ob )
 
 	if( ob->form->fdui == colours_ ) {
 		str = feedbackColours( ob );
+	} else if( ob->form->fdui == converters_ ) {
+		str = feedbackConverters( ob );
 	} else if( ob->form->fdui == formats_ ) {
 		str = feedbackFormats( ob );
 	} else if( ob->form->fdui == inputs_misc_ ) {
@@ -311,6 +329,7 @@ void FormPreferences::update()
     
 	// read lyxrc entries
 	updateColours();
+	updateConverters();
 	updateFormats();
 	updateInputsMisc();
 	updateInterface();
@@ -354,7 +373,7 @@ void FormPreferences::buildColours()
 	
 	fl_set_input_return(colours_->input_name, FL_RETURN_END_CHANGED);
 
-	if( loadColourBrowser(colourFile) )
+	if( ColoursLoadBrowser(colourFile) )
 		fl_set_input(colours_->input_name, colourFile.c_str());
 	else
 		fl_set_input(colours_->input_name, N_("No file found"));
@@ -362,70 +381,6 @@ void FormPreferences::buildColours()
 	// deactivate the browse button because it isn't implemented
 	fl_deactivate_object(colours_->button_browse);
 	fl_set_object_lcol(colours_->button_browse, FL_INACTIVE);
-}
-
-
-bool FormPreferences::loadColourBrowser( string const & filename )
-{
-	LyXLex lex(0, 0);
-
-	if (!lex.setFile(filename))
-		return false;
-
-	vector<int> oldrgb(3);
-	oldrgb[0] = -1; oldrgb[1] = -1; oldrgb[2] = -1;
-
-	istream & is = lex.getStream();
-	string line;
-
-	while( 1 ) {
-		getline( is, line );
-		if( line.empty() )
-			break;
-
-		if( line[0] != '!' ) {
-			vector<int> rgb(3);
-			string name;
-			
-			istringstream iss(line);
-			iss >> rgb[0] >> rgb[1] >> rgb[2];
-			while( iss.good() ) {
-				string next;
-				iss >> next;
-				name += next;
-			}
-
-			// remove redundant entries on the fly
-			if( oldrgb != rgb ) {
-				string tmp;
-				name = lowercase( name );
-				if( name == "gray0" )   name = "black";
-				if( name == "gray100" ) name = "white";
-				X11Colour pa( name, rgb );
-				colourDB.push_back(pa);
-			}
-			oldrgb = rgb;
-		}
-	}
-
-	FL_OBJECT * colbr = colours_->browser_x11;
-	fl_freeze_form(colours_->form);
-	fl_clear_browser( colbr );
-
-	for( vector<X11Colour>::const_iterator cit = colourDB.begin();
-	     cit != colourDB.end(); ++cit ) {
-		vector<int> rgb = (*cit).second;
-		string name = fmt("%3d %3d %3d ", rgb[0], rgb[1], rgb[2]) +
-			      (*cit).first;
-		fl_addto_browser(colbr, name.c_str());
-	}
-
-	fl_set_browser_topline(colbr, 1);
-	fl_select_browser_line(colbr, 1);
-	updateColoursBrowser(0);
-	fl_unfreeze_form(colours_->form);
-	
-	return true;
 }
 
 
@@ -442,19 +397,19 @@ bool FormPreferences::inputColours( FL_OBJECT const * const ob )
 	if( ob == colours_->browser_x11 ) {
 		int i = fl_get_browser(colours_->browser_x11);
 		if( i > 0) {
-			updateColoursBrowser(i-1);
+			ColoursUpdateBrowser(i-1);
 		}
 
 	} else if( ob == colours_->valslider_red
 		   || ob == colours_->valslider_green
 		   || ob == colours_->valslider_blue ) {
-		updateColoursRGB();
+		ColoursUpdateRGB();
 
 	} else if( ob == colours_->input_name) {
 		string file = fl_get_input(colours_->input_name);
-		if( loadColourBrowser(file) )
+		if( ColoursLoadBrowser(file) )
 			fl_set_input(colours_->input_name, file.c_str());
-		else if( loadColourBrowser(colourFile) )
+		else if( ColoursLoadBrowser(colourFile) )
 			fl_set_input(colours_->input_name, colourFile.c_str());
 		else
 			fl_set_input(colours_->input_name, N_("No file found"));
@@ -464,63 +419,105 @@ bool FormPreferences::inputColours( FL_OBJECT const * const ob )
 }
 
 
-void FormPreferences::updateColoursBrowser( int i )
+bool FormPreferences::ColoursLoadBrowser( string const & filename )
 {
+	LyXLex lex(0, 0);
+
+	if (!lex.setFile(filename))
+		return false;
+
+	istream & is = lex.getStream();
+	string line;
+
+	vector<RGB> cols;
+	vector<string> names;
+	
+	while( 1 ) {
+		getline( is, line );
+		if( line.empty() )
+			break;
+
+		if( line[0] != '!' ) {
+			RGB col;
+			string name;
+			
+			istringstream iss(line);
+			iss >> col.r >> col.g >> col.b;
+			while( iss.good() ) {
+				string next;
+				iss >> next;
+				if( !name.empty() ) name += " ";
+				name += next;
+			}
+
+			// remove redundant entries on the fly
+			bool add = cols.empty();
+			if( !add ) {
+				vector<RGB>::const_iterator it =
+					find( cols.begin(), cols.end(), col );
+				add = (it == cols.end());
+			}
+			
+			if ( add ) {
+				name = lowercase( name );
+				if( name == "gray0" )   name = "black";
+				if( name == "gray100" ) name = "white";
+
+				if( name == "black" || name == "white" ) {
+					cols.insert(cols.begin(), col);
+					names.insert(names.begin(), name);
+				} else {
+					cols.push_back(col);
+					names.push_back(name);
+  				}
+  			}
+  		}
+ 	}
+
+	vector<string>::iterator sit = names.begin();
+	for( vector<RGB>::const_iterator iit = cols.begin();
+	     iit != cols.end(); ++iit, ++sit ) {
+		colourDB.push_back( X11Colour(*sit, *iit) );
+	}
+	
+	FL_OBJECT * colbr = colours_->browser_x11;
 	fl_freeze_form(colours_->form);
+	fl_clear_browser( colbr );
 
-	vector<int> rgb = colourDB[i].second;
-    
-	fl_mapcolor(FL_FREE_COL4+i, rgb[0], rgb[1], rgb[2]);
-	fl_mapcolor(FL_FREE_COL4,   rgb[0], rgb[1], rgb[2]);
-	fl_set_slider_value(colours_->valslider_red,   rgb[0]);
-	fl_set_slider_value(colours_->valslider_green, rgb[1]);
-	fl_set_slider_value(colours_->valslider_blue,  rgb[2]);
-	fl_redraw_object(colours_->button_colour);
+	for( vector<X11Colour>::const_iterator cit = colourDB.begin();
+	     cit != colourDB.end(); ++cit ) {
+		string name = (*cit).first;
+		//RGB col     = (*cit).second;
+		//name += "  (" + tostr(col.r) + ", " + tostr(col.g) +
+		//	", " + tostr(col.b) + ")";
+		fl_addto_browser(colbr, name.c_str());
+	}
 
+	fl_set_browser_topline(colbr, 1);
+	fl_select_browser_line(colbr, 1);
+	ColoursUpdateBrowser(0);
 	fl_unfreeze_form(colours_->form);
+	
+	return true;
 }
 
 
-void FormPreferences::updateColoursRGB()
-{
-	fl_freeze_form(colours_->form);
-
-	vector<int> rgb(3);
-	rgb[0] = fl_get_slider_value(colours_->valslider_red);
-	rgb[1] = fl_get_slider_value(colours_->valslider_green);
-	rgb[2] = fl_get_slider_value(colours_->valslider_blue);
-    
-	fl_mapcolor(FL_FREE_COL4, rgb[0], rgb[1], rgb[2]);
-	fl_redraw_object(colours_->button_colour);
-
-	int top = fl_get_browser_topline(colours_->browser_x11);
-	int i = searchColourEntry( rgb );
-	// change topline only if necessary
-	if(i < top || i > (top+15))
-		fl_set_browser_topline(colours_->browser_x11,
-						       i-8);
-	fl_select_browser_line(colours_->browser_x11, i + 1);
-
-	fl_unfreeze_form(colours_->form);
-}
-
-
-int FormPreferences::searchColourEntry(vector<int> const & rgb ) const
+int FormPreferences::ColoursSearchEntry(RGB const & col ) const
 {
 	int mindiff = 0x7fffffff;
 	vector<X11Colour>::const_iterator mincit = colourDB.begin();
 
 	for( vector<X11Colour>::const_iterator cit = colourDB.begin();
 	     cit != colourDB.end(); ++cit ) {
-		vector<int> rgbDB = (*cit).second;
-		vector<int> diff(3);
-		diff[0] = rgb[0] - rgbDB[0];
-		diff[1] = rgb[1] - rgbDB[1];
-		diff[2] = rgb[2] - rgbDB[2];
+		RGB colDB = (*cit).second;
+		RGB diff;
+		diff.r = col.r - colDB.r;
+		diff.g = col.g - colDB.g;
+		diff.b = col.b - colDB.b;
 
-		int d = (2 * (diff[0] * diff[0]) +
-		         3 * (diff[1] * diff[1]) +
-		             (diff[2] * diff[2]));
+		int d = (2 * (diff.r * diff.r) +
+		         3 * (diff.g * diff.g) +
+		             (diff.b * diff.b));
 
 		if( mindiff > d ) {
 			mindiff = d;
@@ -531,7 +528,70 @@ int FormPreferences::searchColourEntry(vector<int> const & rgb ) const
 }
 
 
+void FormPreferences::ColoursUpdateBrowser( int i )
+{
+	fl_freeze_form(colours_->form);
+
+	RGB col = colourDB[i].second;
+    
+	fl_mapcolor(FL_FREE_COL4+i, col.r, col.g, col.b);
+	fl_mapcolor(FL_FREE_COL4,   col.r, col.g, col.b);
+	fl_set_slider_value(colours_->valslider_red,   col.r);
+	fl_set_slider_value(colours_->valslider_green, col.g);
+	fl_set_slider_value(colours_->valslider_blue,  col.b);
+	fl_redraw_object(colours_->button_colour);
+
+	fl_unfreeze_form(colours_->form);
+}
+
+
+void FormPreferences::ColoursUpdateRGB()
+{
+	fl_freeze_form(colours_->form);
+
+	RGB col;
+	col.r = int(fl_get_slider_value(colours_->valslider_red));
+	col.g = int(fl_get_slider_value(colours_->valslider_green));
+	col.b = int(fl_get_slider_value(colours_->valslider_blue));
+    
+	fl_mapcolor(FL_FREE_COL4, col.r, col.g, col.b);
+	fl_redraw_object(colours_->button_colour);
+
+	int i = ColoursSearchEntry( col );
+	// change topline only if necessary
+	// int top = fl_get_browser_topline(colours_->browser_x11);
+	// if(i < top || i > (top+15))
+	fl_set_browser_topline(colours_->browser_x11, i-5);
+	fl_select_browser_line(colours_->browser_x11, i + 1);
+
+	fl_unfreeze_form(colours_->form);
+}
+
+
 void FormPreferences::updateColours()
+{
+}
+
+
+void FormPreferences::applyConverters() const
+{
+}
+
+
+void FormPreferences::buildConverters()
+{
+	converters_ = build_converters();
+
+}
+
+
+string FormPreferences::feedbackConverters( FL_OBJECT const * const ) const
+{
+	return string();
+}
+
+
+void FormPreferences::updateConverters()
 {
 }
 
@@ -747,7 +807,7 @@ void FormPreferences::buildLanguage()
 	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_default_lang->shortcut("#L",1);
 	combo_default_lang->setcallback(ComboLanguageCB, this);
-	addLanguages( *combo_default_lang );
+	LanguagesAdd( *combo_default_lang );
 	
 	// ditto kbmap_1
 	obj = language_->choice_kbmap_1;
@@ -756,7 +816,7 @@ void FormPreferences::buildLanguage()
 	combo_kbmap_1->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_kbmap_1->shortcut("#1",1);
 	combo_kbmap_1->setcallback(ComboLanguageCB, this);
-	addLanguages( *combo_kbmap_1 );
+	LanguagesAdd( *combo_kbmap_1 );
 	
 	// ditto kbmap_2
 	obj = language_->choice_kbmap_2;
@@ -765,7 +825,7 @@ void FormPreferences::buildLanguage()
 	combo_kbmap_2->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_kbmap_2->shortcut("#2",1);
 	combo_kbmap_2->setcallback(ComboLanguageCB, this);
-	addLanguages( *combo_kbmap_2 );
+	LanguagesAdd( *combo_kbmap_2 );
 
 	fl_end_form();
 	fl_unfreeze_form(language_->form);
@@ -790,15 +850,6 @@ void FormPreferences::buildLanguage()
 	setPostHandler( language_->input_command_end );
 
 	fl_end_form();
-}
-
-
-void FormPreferences::addLanguages( Combox & combo ) const
-{
-	for(Languages::const_iterator cit = languages.begin();
-	    cit != languages.end(); cit++) {
-		combo.addto((*cit).second.lang());
-	}
 }
 
 
@@ -882,6 +933,15 @@ void FormPreferences::updateLanguage()
 	// Activate/Deactivate the input fields dependent on the state of the
 	// buttons.
 	inputLanguage( 0 );
+}
+
+
+void FormPreferences::LanguagesAdd( Combox & combo ) const
+{
+	for(Languages::const_iterator cit = languages.begin();
+	    cit != languages.end(); cit++) {
+		combo.addto((*cit).second.lang());
+	}
 }
 
 

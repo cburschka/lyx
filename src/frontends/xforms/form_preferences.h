@@ -33,6 +33,8 @@ extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
 
 /**** Forms and Objects ****/
 struct FD_form_preferences {
@@ -134,6 +136,17 @@ struct FD_form_colours {
 	FL_OBJECT *valslider_green;
 	FL_OBJECT *valslider_blue;
 	FL_OBJECT *browser_lyx_objs;
+};
+struct FD_form_converters {
+	~FD_form_converters();
+
+	FL_FORM *form;
+	FL_OBJECT *browser_converters;
+	FL_OBJECT *button_delete;
+	FL_OBJECT *button_add;
+	FL_OBJECT *input_converter;
+	FL_OBJECT *choice_from;
+	FL_OBJECT *choice_to;
 };
 struct FD_form_formats {
 	~FD_form_formats();

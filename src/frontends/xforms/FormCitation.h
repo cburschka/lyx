@@ -71,7 +71,7 @@ private:
 	void setCiteButtons( State ) const;
 	///
 	void setSize( int, bool ) const;
-	///
+	/// Type definition from the fdesign produced header file.
 	FD_form_citation * build_citation();
 
 	/// Real GUI implementation.

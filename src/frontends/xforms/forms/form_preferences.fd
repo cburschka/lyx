@@ -3,7 +3,7 @@ Magic: 13000
 Internal Form Definition File
     (do not change)
 
-Number of forms: 13
+Number of forms: 14
 Unit of measure: FL_COORD_PIXEL
 SnapGrid: 1
 
@@ -36,7 +36,7 @@ class: FL_TABFOLDER
 type: TOP_TABFOLDER
 box: 5 10 455 375
 boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_BOTTOM_BCOL FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
@@ -204,7 +204,7 @@ class: FL_TABFOLDER
 type: TOP_TABFOLDER
 box: 0 0 455 375
 boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_BOTTOM_BCOL FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
@@ -1187,7 +1187,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 10 25 175 235
+box: 10 25 150 235
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -1205,7 +1205,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 10 285 175 30
+box: 10 285 185 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_TOP
@@ -1223,7 +1223,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 190 285 90 30
+box: 200 285 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1241,7 +1241,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 300 230 140 30
+box: 290 230 150 30
 boxtype: FL_BORDER_BOX
 colors: FL_WHITE FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1259,7 +1259,7 @@ argument:
 --------------------
 class: FL_VALSLIDER
 type: VERT_FILL_SLIDER
-box: 190 25 30 235
+box: 180 25 30 235
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_RED
 alignment: FL_ALIGN_TOP
@@ -1278,7 +1278,7 @@ argument: 0
 --------------------
 class: FL_VALSLIDER
 type: VERT_FILL_SLIDER
-box: 220 25 30 235
+box: 210 25 30 235
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_GREEN
 alignment: FL_ALIGN_TOP
@@ -1297,7 +1297,7 @@ argument: 0
 --------------------
 class: FL_VALSLIDER
 type: VERT_FILL_SLIDER
-box: 250 25 30 235
+box: 240 25 30 235
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_TOP
@@ -1316,7 +1316,7 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 300 25 140 200
+box: 290 25 150 200
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -1328,6 +1328,138 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: browser_lyx_objs
+callback: C_FormBaseInputCB
+argument: 0
+
+=============== FORM ===============
+Name: form_converters
+Width: 450
+Height: 360
+Number of Objects: 7
+
+--------------------
+class: FL_BOX
+type: FLAT_BOX
+box: 0 0 450 360
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_BROWSER
+type: NORMAL_BROWSER
+box: 30 30 160 270
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_TOP
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: All converters|#A
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: browser_converters
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 340 270 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Delete|#D
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_delete
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 240 270 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Add|#A
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_add
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 280 110 150 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Converter|#C
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_converter
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 280 30 150 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: From|#F
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_from
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 280 70 150 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: To|#T
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_to
 callback: C_FormBaseInputCB
 argument: 0
 

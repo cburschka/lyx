@@ -26,6 +26,7 @@
 class LyXView;
 class Dialogs;
 struct FD_form_colours;
+struct FD_form_converters;
 struct FD_form_formats;
 struct FD_form_inputs_misc;
 struct FD_form_interface;
@@ -56,6 +57,19 @@ public:
 	///
 	void feedbackPost(FL_OBJECT *, int);
 
+	/// helper struct for Colours
+	struct RGB {
+		int r;
+		int g;
+		int b;
+		RGB() : r(0), g(0), b(0) {}
+		RGB(int red, int green, int blue) : r(red), g(green), b(blue) {}
+		bool operator==(RGB const & o) const
+			{ return( r == o.r && g == o.g && b == o.b ); }
+		bool operator!=(RGB const & o) const
+			{ return( r != o.r || g != o.g || b != o.b ); }
+	};
+
 private:
 	/// Update the dialog.
 	virtual void update();
@@ -73,8 +87,14 @@ private:
 	void feedback( FL_OBJECT * );
 	///
 	virtual FL_FORM * form() const;
+
+	/** Folder specific apply functions.
+	 */
+	
 	///
 	void applyColours() const;
+	///
+	void applyConverters() const;
 	///
 	void applyFormats() const;
 	///
@@ -95,12 +115,14 @@ private:
 	void applyScreenFonts() const;
 	///
 	void applySpellChecker(); // not const because calls updateSpellChecker!
+
+	/** Folder specific build functions.
+	 */
+	
 	///
 	void buildColours();
 	///
-	bool loadColourBrowser( string const & );
-	///
-	int searchColourEntry(std::vector<int> const & ) const;
+	void buildConverters();
 	///
 	void buildFormats();
 	///
@@ -109,8 +131,6 @@ private:
 	void buildInterface();
 	///
 	void buildLanguage();
-	///
-	void addLanguages( Combox & ) const;
 	///
 	void buildLnFmisc();
 	///
@@ -123,8 +143,14 @@ private:
 	void buildScreenFonts();
 	///
 	void buildSpellchecker();
+
+	/** Folder specific feedback functions.
+	 */
+	
 	///
 	string feedbackColours(FL_OBJECT const * const) const;
+	///
+	string feedbackConverters(FL_OBJECT const * const) const;
 	///
 	string feedbackFormats( FL_OBJECT const * const ) const;
 	///
@@ -145,6 +171,10 @@ private:
 	string feedbackScreenFonts(FL_OBJECT const * const) const;
 	///
 	string feedbackSpellChecker(FL_OBJECT const * const) const;
+
+	/** Folder specific input functions. Not all folders require one.
+	 */
+	
 	///
 	bool inputColours(FL_OBJECT const * const);
 	///
@@ -157,12 +187,14 @@ private:
 	bool inputScreenFonts();
 	///
 	bool inputSpellChecker(FL_OBJECT const * const);
+
+	/** Folder specific update functions.
+	 */
+	
 	///
 	void updateColours();
 	///
-	void updateColoursBrowser( int );
-	///
-	void updateColoursRGB();
+	void updateConverters();
 	///
 	void updateFormats();
 	///
@@ -184,21 +216,38 @@ private:
 	///
 	void updateSpellChecker();
 
+	/** Some helper functions for specific folders.
+	 */
+	
+	///
+	void LanguagesAdd( Combox & ) const;
+	///
+	bool ColoursLoadBrowser( string const & );
+	///
+	int  ColoursSearchEntry(RGB const & ) const;
+	///
+	void ColoursUpdateBrowser( int );
+	///
+	void ColoursUpdateRGB();
+
 	///
 	bool WriteableDir( string const & ) const;
 	///
 	bool ReadableDir( string const & ) const;
 	///
 	bool WriteableFile( string const &, string const & = string() ) const;
-	///
+
+	/// The timer post handler.
 	void setPostHandler( FL_OBJECT * ) const;
 
-	///
+	/// Type definitions from the fdesign produced header file.
 	FD_form_preferences * build_preferences();
 	///
 	FD_form_outer_tab * build_outer_tab();
 	///
 	FD_form_colours * build_colours();
+	///
+	FD_form_converters * build_converters();
 	///
 	FD_form_formats * build_formats();
 	///
@@ -222,14 +271,18 @@ private:
 
 	/// Real GUI implementation.
 	FD_form_preferences * dialog_;
-	/// Outputs tabfolder
-	FD_form_outer_tab * outputs_tab_;
-	/// HCI configuration
-	FD_form_outer_tab * look_n_feel_tab_;
+	/// Converters tabfolder
+	FD_form_outer_tab * converters_tab_;
 	/// reLyX and other import/input stuff
 	FD_form_outer_tab * inputs_tab_;
+	/// HCI configuration
+	FD_form_outer_tab * look_n_feel_tab_;
+	/// Outputs tabfolder
+	FD_form_outer_tab * outputs_tab_;
 	/// Spellchecker, language stuff, etc
 	FD_form_outer_tab * usage_tab_;
+	///
+	FD_form_converters * converters_;
 	///
 	FD_form_colours * colours_;
 	///
