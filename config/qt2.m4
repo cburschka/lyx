@@ -278,6 +278,7 @@ else
   dnl libs and headers supplied. Need to check lib name
   qt2_incdir="$ac_qt2_includes"
   qt2_libdir="$ac_qt2_libraries" 
+  ac_qt2_name="-lqt"
   QT2_CHECK_LIB_NAME
   have_qt2="yes"
 fi
@@ -289,7 +290,7 @@ if test "$have_qt2" != yes; then
 else
   ac_cv_have_qt2="have_qt2=yes ac_qt2_name=$ac_qt2_name \
     ac_qt2_includes=$ac_qt2_includes ac_qt2_libraries=$ac_qt2_libraries"
-  AC_MSG_RESULT([libraries $ac_qt2_libraries, headers $ac_qt2_includes])
+  AC_MSG_RESULT([libraries $ac_qt2_name in $ac_qt2_libraries, headers $ac_qt2_includes])
  
   qt2_libraries="$ac_qt2_libraries"
   qt2_includes="$ac_qt2_includes"
