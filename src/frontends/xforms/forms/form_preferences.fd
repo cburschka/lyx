@@ -158,7 +158,7 @@ callback:
 argument: 
 
 =============== FORM ===============
-Name: form_outer_tab
+Name: form_inner_tab
 Width: 455
 Height: 375
 Number of Objects: 2
@@ -195,7 +195,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: tabfolder_outer
+name: tabfolder_inner
 callback: 
 argument: 
 

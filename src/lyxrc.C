@@ -1897,7 +1897,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_SCREEN_FONT_SCALABLE:
-		str = N_("Allow the use of scalable screen fonts? If false, LyX will use the closest existing size for a match. Use this if the scalable fonts look bad and you have many fixed size fonts.");
+		str = N_("Allow bitmap fonts to be resized. If you are using a bitmap font, selecting this option may make some fonts look blocky in LyX. Deselecting this option makes LyX use the nearest bitmap font size available, instead of scaling.");
 		break;
 		
 	case RC_CHKTEX_COMMAND:

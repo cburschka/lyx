@@ -48,11 +48,11 @@ struct FD_form_preferences {
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *text_warning;
 };
-struct FD_form_outer_tab {
-	~FD_form_outer_tab();
+struct FD_form_inner_tab {
+	~FD_form_inner_tab();
 
 	FL_FORM *form;
-	FL_OBJECT *tabfolder_outer;
+	FL_OBJECT *tabfolder_inner;
 };
 struct FD_form_screen_fonts {
 	~FD_form_screen_fonts();

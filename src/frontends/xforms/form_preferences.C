@@ -64,22 +64,22 @@ FD_form_preferences * FormPreferences::build_preferences()
 }
 /*---------------------------------------*/
 
-FD_form_outer_tab::~FD_form_outer_tab()
+FD_form_inner_tab::~FD_form_inner_tab()
 {
   if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
 
-FD_form_outer_tab * FormPreferences::build_outer_tab()
+FD_form_inner_tab * FormPreferences::build_inner_tab()
 {
   FL_OBJECT *obj;
-  FD_form_outer_tab *fdui = new FD_form_outer_tab;
+  FD_form_inner_tab *fdui = new FD_form_inner_tab;
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 455, 375);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 455, 375, "");
-  fdui->tabfolder_outer = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 0, 0, 455, 375, "");
+  fdui->tabfolder_inner = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 0, 0, 455, 375, "");
     fl_set_object_boxtype(obj, FL_FLAT_BOX);
   fl_end_form();
 

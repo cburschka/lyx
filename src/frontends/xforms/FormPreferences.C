@@ -97,19 +97,19 @@ void FormPreferences::redraw()
 
 	FL_FORM * form3 = 0;
 	if (form2 == converters_tab_->form)
-		form3 = fl_get_active_folder(converters_tab_->tabfolder_outer);
+		form3 = fl_get_active_folder(converters_tab_->tabfolder_inner);
 
 	else if (form2 == look_n_feel_tab_->form)
-		form3 = fl_get_active_folder(look_n_feel_tab_->tabfolder_outer);
+		form3 = fl_get_active_folder(look_n_feel_tab_->tabfolder_inner);
 
 	else if (form2 == inputs_tab_->form)
-		form3 = fl_get_active_folder(inputs_tab_->tabfolder_outer);
+		form3 = fl_get_active_folder(inputs_tab_->tabfolder_inner);
 
 	else if (form2 == outputs_tab_->form)
-		form3 = fl_get_active_folder(outputs_tab_->tabfolder_outer);
+		form3 = fl_get_active_folder(outputs_tab_->tabfolder_inner);
 
 	else if (form2 == lang_opts_tab_->form)
-		form3 = fl_get_active_folder(lang_opts_tab_->tabfolder_outer);
+		form3 = fl_get_active_folder(lang_opts_tab_->tabfolder_inner);
 
 	if (form3 && form3->visible)
 		fl_redraw_form(form3);
@@ -127,7 +127,7 @@ void FormPreferences::showSpellPref()
 {
 	show();
 	fl_set_folder(dialog_->tabfolder_prefs, lang_opts_tab_->form);
-	fl_set_folder(lang_opts_tab_->tabfolder_outer, spelloptions_.dialog()->form);
+	fl_set_folder(lang_opts_tab_->tabfolder_inner, spelloptions_.dialog()->form);
 }
 
 
@@ -149,10 +149,10 @@ void FormPreferences::hide()
 {
 	// We need to hide the active tabfolder otherwise we get a
 	// BadDrawable error from X window and LyX crashes without saving.
-	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabfolder_prefs);
-	if (outer_form
-	    && outer_form->visible) {
-		fl_hide_form(outer_form);
+	FL_FORM * inner_form = fl_get_active_folder(dialog_->tabfolder_prefs);
+	if (inner_form
+	    && inner_form->visible) {
+		fl_hide_form(inner_form);
 	}
 	FormBaseDeprecated::hide();
 }
@@ -169,11 +169,11 @@ void FormPreferences::build()
 	bc().setRestore(dialog_->button_restore);
 
 	// build the tab folders
-	converters_tab_.reset(build_outer_tab());
-	look_n_feel_tab_.reset(build_outer_tab());
-	inputs_tab_.reset(build_outer_tab());
-	outputs_tab_.reset(build_outer_tab());
-	lang_opts_tab_.reset(build_outer_tab());
+	converters_tab_.reset(build_inner_tab());
+	look_n_feel_tab_.reset(build_inner_tab());
+	inputs_tab_.reset(build_inner_tab());
+	outputs_tab_.reset(build_inner_tab());
+	lang_opts_tab_.reset(build_inner_tab());
 
 	// build actual tabfolder contents
 	// these will become nested tabfolders
@@ -209,49 +209,49 @@ void FormPreferences::build()
 
 	// now build the nested tabfolders
 	// Starting with look and feel
-	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_outer,
+	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
 			   _("Screen Fonts"),
 			   screen_fonts_.dialog()->form);
-	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_outer,
+	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
 			   _("Interface"),
 			   interface_.dialog()->form);
-	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_outer,
+	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
 			   _("Colors"),
 			   colors_.dialog()->form);
-	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_outer,
+	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
 			   _("Misc"),
 			   lnf_misc_.dialog()->form);
 
 	// then build converters
-	fl_addto_tabfolder(converters_tab_->tabfolder_outer,
+	fl_addto_tabfolder(converters_tab_->tabfolder_inner,
 			   _("Formats"),
 			   formats_.dialog()->form);
-	fl_addto_tabfolder(converters_tab_->tabfolder_outer,
+	fl_addto_tabfolder(converters_tab_->tabfolder_inner,
 			   _("Converters"),
 			   converters_.dialog()->form);
 
 	// then build inputs
-	// Paths should probably go in a few outer_tab called Files
-	fl_addto_tabfolder(inputs_tab_->tabfolder_outer,
+	// Paths should probably go in a few inner_tab called Files
+	fl_addto_tabfolder(inputs_tab_->tabfolder_inner,
 			   _("Paths"),
 			   paths_.dialog()->form);
-	fl_addto_tabfolder(inputs_tab_->tabfolder_outer,
+	fl_addto_tabfolder(inputs_tab_->tabfolder_inner,
 			   _("Misc"),
 			   inputs_misc_.dialog()->form);
 
 	// then building outputs
-	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
+	fl_addto_tabfolder(outputs_tab_->tabfolder_inner,
 			   _("Printer"),
 			   printer_.dialog()->form);
-	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
+	fl_addto_tabfolder(outputs_tab_->tabfolder_inner,
 			   _("Misc"),
 			   outputs_misc_.dialog()->form);
 
 	// then building usage
-	fl_addto_tabfolder(lang_opts_tab_->tabfolder_outer,
+	fl_addto_tabfolder(lang_opts_tab_->tabfolder_inner,
 			   _("Spell checker"),
 			   spelloptions_.dialog()->form);
-	fl_addto_tabfolder(lang_opts_tab_->tabfolder_outer,
+	fl_addto_tabfolder(lang_opts_tab_->tabfolder_inner,
 			   _("Language"),
 			   language_.dialog()->form);
 }
@@ -1643,7 +1643,7 @@ void FormPreferences::Language::build()
 	fl_deactivate_object(dialog_->choice_default_lang);
 	combo_default_lang.reset(new Combox(FL_COMBOX_DROPLIST));
 	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400,
-				parent_.lang_opts_tab_->tabfolder_outer,
+				parent_.lang_opts_tab_->tabfolder_inner,
 				parent_.dialog_->tabfolder_prefs);
 	combo_default_lang->shortcut("#L",1);
 	combo_default_lang->setcallback(ComboCB, &parent_);

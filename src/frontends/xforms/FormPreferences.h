@@ -39,7 +39,7 @@ struct FD_form_inputs_misc;
 struct FD_form_interface;
 struct FD_form_language;
 struct FD_form_lnf_misc;
-struct FD_form_outer_tab;
+struct FD_form_inner_tab;
 struct FD_form_outputs_misc;
 struct FD_form_paths;
 struct FD_form_preferences;
@@ -101,7 +101,7 @@ private:
 	/// Fdesign generated methods
 	FD_form_preferences * build_preferences();
 	///
-	FD_form_outer_tab * build_outer_tab();
+	FD_form_inner_tab * build_inner_tab();
 	///
 	FD_form_colors * build_colors();
 	///
@@ -130,15 +130,15 @@ private:
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_form_preferences> dialog_;
 	/// Converters tabfolder
-	boost::scoped_ptr<FD_form_outer_tab> converters_tab_;
+	boost::scoped_ptr<FD_form_inner_tab> converters_tab_;
 	/// reLyX and other import/input stuff
-	boost::scoped_ptr<FD_form_outer_tab> inputs_tab_;
+	boost::scoped_ptr<FD_form_inner_tab> inputs_tab_;
 	/// HCI configuration
-	boost::scoped_ptr<FD_form_outer_tab> look_n_feel_tab_;
+	boost::scoped_ptr<FD_form_inner_tab> look_n_feel_tab_;
 	/// Outputs tabfolder
-	boost::scoped_ptr<FD_form_outer_tab> outputs_tab_;
+	boost::scoped_ptr<FD_form_inner_tab> outputs_tab_;
 	/// Spellchecker, language stuff, etc
-	boost::scoped_ptr<FD_form_outer_tab> lang_opts_tab_;
+	boost::scoped_ptr<FD_form_inner_tab> lang_opts_tab_;
 
 	/** Flag whether a warning has been posted to the text window.
 	    If so, don't redraw the window when the mouse leaves an object. */
