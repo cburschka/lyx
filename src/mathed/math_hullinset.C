@@ -110,7 +110,7 @@ namespace {
 		if (s == "gather")    return 9;
 		if (s == "flalign")   return 10;
 		lyxerr << "unknown hull type '" << s << "'" << endl;
-		return 0;
+		return -1;
 	}
 
 	bool smaller(string const & s, string const & t)
@@ -698,6 +698,10 @@ void MathHullInset::mutate(string const & newtype)
 
 	else if (newtype == type_) {
 		// done
+	}
+
+	else if (typecode(newtype) < 0) {
+		// unknown type
 	}
 
 	else if (type_ == "none") {

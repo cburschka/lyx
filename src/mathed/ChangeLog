@@ -1,6 +1,11 @@
+2004-10-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_hullinset.C (mutate): fix endless loop for unknown types
+
 2004-10-05  Andreas Vox  <vox@isp.uni-luebeck.de>
 
-	* math_hullinset.C (docbook): write additional <alt role="tex" > tag for	Docbook  XML
+	* math_hullinset.C (docbook): write additional <alt role="tex" >
+	tag for	Docbook XML
 
 2004-09-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
