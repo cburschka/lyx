@@ -127,10 +127,11 @@ void FormParagraph::build()
     fl_set_input_return(general_->input_space_below, FL_RETURN_CHANGED);
     fl_set_input_return(general_->input_labelwidth, FL_RETURN_CHANGED);
 
-    bc_.addReadOnly (general_->radio_align_right);
-    bc_.addReadOnly (general_->radio_align_left);
-    bc_.addReadOnly (general_->radio_align_block);
-    bc_.addReadOnly (general_->radio_align_center);
+    bc_.addReadOnly (general_->group_radio_alignment);
+    // bc_.addReadOnly (general_->radio_align_right);
+    // bc_.addReadOnly (general_->radio_align_left);
+    // bc_.addReadOnly (general_->radio_align_block);
+    // bc_.addReadOnly (general_->radio_align_center);
     bc_.addReadOnly (general_->check_lines_top);
     bc_.addReadOnly (general_->check_lines_bottom);
     bc_.addReadOnly (general_->check_pagebreaks_top);

@@ -201,6 +201,9 @@ void FormDocument::build()
 		      " «text» | »text« "));
 
     bc().addReadOnly (language_->choice_inputenc);
+    bc().addReadOnly (language_->choice_quotes_language);
+    bc().addReadOnly (language_->radio_single);
+    bc().addReadOnly (language_->radio_double);
 
     // the document options form
     options_.reset(build_doc_options());
@@ -237,6 +240,8 @@ void FormDocument::build()
     bc().addReadOnly (bullets_->bmtable_bullet_panel);
     bc().addReadOnly (bullets_->choice_bullet_size);
     bc().addReadOnly (bullets_->input_bullet_latex);
+    bc().addReadOnly (bullets_->radio_bullet_depth);
+    bc().addReadOnly (bullets_->radio_bullet_panel);
 
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Document"),
 		       class_->form);

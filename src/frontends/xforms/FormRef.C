@@ -54,6 +54,10 @@ void FormRef::build()
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
 	bc().setRestore(dialog_->button_restore);
+
+	bc().addReadOnly(dialog_->button_update);
+	bc().addReadOnly(dialog_->name);
+	bc().addReadOnly(dialog_->ref);
 }
 
 

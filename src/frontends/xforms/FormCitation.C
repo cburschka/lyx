@@ -153,6 +153,8 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->choice_style);
 	bc().addReadOnly(dialog_->input_before);
 	bc().addReadOnly(dialog_->input_after);
+	bc().addReadOnly(dialog_->button_full_author_list);
+	bc().addReadOnly(dialog_->button_force_uppercase);
 }
 
 
@@ -385,6 +387,11 @@ void FormCitation::update()
 		    dialog_->button_full_author_list,
 		    dialog_->button_force_uppercase,
 		    controller().params().getCmdName());
+
+	bool const natbib = controller().usingNatbib();
+	setEnabled(dialog_->button_full_author_list, natbib);
+	setEnabled(dialog_->button_force_uppercase, natbib);
+	setEnabled(dialog_->choice_style, natbib);
 	
 	// No keys have been selected yet, so...
 	fl_clear_browser(dialog_->browser_info);

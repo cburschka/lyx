@@ -1,3 +1,15 @@
+2001-08-09  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.C (build):
+	* FormDocument.C (build):
+	* FormMinipage.C (build):
+	* FormParagraph.C (build):
+	* FormRef.C (build): added stuff to read-only list in the
+	button controller.
+
+	* FormCitation.C (update): disable citation style stuff when not using
+	Natbib.
+
 2001-08-06  Juergen Vigna  <jug@sad.it>
 
 	* forms/form_ert.fd: new file.
