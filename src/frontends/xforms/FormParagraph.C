@@ -63,13 +63,7 @@ void FormParagraph::disconnect()
 
 Paragraph const * FormParagraph::getCurrentParagraph() const
 {
-	LyXText * text = 0;
-
-	if (lv_->view()->theLockingInset())
-		text = lv_->view()->theLockingInset()->getLyXText(lv_->view());
-	if (!text)
-		text = lv_->view()->text;
-	return text->cursor.par();
+	return lv_->view()->getLyXText()->cursor.par();
 }
 
 
@@ -278,11 +272,7 @@ void FormParagraph::apply()
     }
 
     Spacing const spacing(linespacing, other_linespacing);
-    LyXText * text = 0;
-    if (lv_->view()->theLockingInset())
-	text = lv_->view()->theLockingInset()->getLyXText(lv_->view());
-    if (!text)
-	text = lv_->view()->text;
+    LyXText * text(lv_->view()->getLyXText());
     text->setParagraph(lv_->view(), line_top, line_bottom, pagebreak_top,
 		       pagebreak_bottom, space_top, space_bottom, spacing,
                        align, labelwidthstring, noindent);

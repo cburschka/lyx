@@ -1,3 +1,8 @@
+2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
+
+       * FormParagraph.C (getCurrentParagraph): 
+	(apply):  get the right LyXText !
+ 
 2001-11-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormParagraph.C: disallow page breaks in insets
