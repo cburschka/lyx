@@ -58,6 +58,8 @@ enum MathTextCodes  {
 	/// Internal code for variables
 	LM_TC_VAR,
 	///
+	LM_TC_CONST,
+	///
 	LM_TC_RM,
 	///
 	LM_TC_CAL,

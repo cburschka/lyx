@@ -16,21 +16,22 @@
 MathCharInset::MathCharInset(char c)
 	: char_(c), code_(nativeCode(c))
 {
-	if (isalpha(c))
-		code_ = LM_TC_VAR;
+//lyxerr << "creating char '" << char_ << "' with code " << int(code_) << endl;
 }
 
 
 MathCharInset::MathCharInset(char c, MathTextCodes t)
 	: char_(c), code_((t == LM_TC_MIN) ? nativeCode(c) : t)
-{}
+{
+//lyxerr << "creating char '" << char_ << "' with code " << int(code_) << endl;
+}
 
 
 MathTextCodes MathCharInset::nativeCode(char c) const
 {
 	if (isalpha(c))
 		return LM_TC_VAR;
-	return LM_TC_MIN;
+	return LM_TC_CONST;
 }
 
 
@@ -68,6 +69,7 @@ void MathCharInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(y);
+	//lyxerr << "drawing '" << char_ << "' code: " << code_ << endl;
 	drawChar(pain, code_, size_, x, y, char_);
 }
 

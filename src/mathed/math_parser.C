@@ -118,9 +118,6 @@ inline CatCode catcode(unsigned char c)
 }
 
 
-const unsigned char LM_TK_OPEN  = '{';
-const unsigned char LM_TK_CLOSE = '}';
-
 enum {
 	FLAG_BRACE      = 1 << 0,  //  an opening brace needed
 	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing process
@@ -440,10 +437,12 @@ void Parser::tokenize(string const & buffer)
 		}
 	}
 
-	//lyxerr << "\nTokens: ";
-	//for (unsigned i = 0; i < tokens_.size(); ++i)
-	//	lyxerr << tokens_[i];
-	//lyxerr << "\n";
+#if 0
+	lyxerr << "\nTokens: ";
+	for (unsigned i = 0; i < tokens_.size(); ++i)
+		lyxerr << tokens_[i];
+	lyxerr << "\n";
+#endif
 }
 
 
