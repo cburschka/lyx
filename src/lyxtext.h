@@ -662,9 +662,9 @@ public:
 	///
 	Paragraph * ownerParagraph() const;
 	//
-	Paragraph * ownerParagraph(Paragraph *) const;
+	void ownerParagraph(Paragraph *) const;
 	// set it searching first for the right owner using the paragraph id
-	Paragraph * ownerParagraph(int id, Paragraph *) const;
+	void ownerParagraph(int id, Paragraph *) const;
 };
 
 

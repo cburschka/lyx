@@ -1137,8 +1137,7 @@ void LyXText::toggleFree(BufferView * bview,
 }
 
 
-string
-LyXText::getStringToIndex(BufferView * bview)
+string LyXText::getStringToIndex(BufferView * bview)
 {
 	string idxstring;
 	
@@ -1170,8 +1169,8 @@ LyXText::getStringToIndex(BufferView * bview)
 	return idxstring;
 }
 
-Paragraph::size_type
-LyXText::beginningOfMainBody(Buffer const * buf,
+
+Paragraph::size_type LyXText::beginningOfMainBody(Buffer const * buf,
 			     Paragraph const * par) const
 {
 	if (textclasslist.Style(buf->params.textclass,
@@ -1193,7 +1192,7 @@ void LyXText::setParagraph(BufferView * bview,
 			   bool pagebreak_top, bool pagebreak_bottom,
 			   VSpace const & space_top,
 			   VSpace const & space_bottom,
-                           Spacing const & spacing,
+			   Spacing const & spacing,
 			   LyXAlignment align, 
 			   string labelwidthstring,
 			   bool noindent) 
@@ -2070,7 +2069,7 @@ bool LyXText::updateInset(BufferView * bview, Inset * inset)
 {
 	// first check the current paragraph
 	int pos = cursor.par()->getPositionOfInset(inset);
-	if (pos != -1){
+	if (pos != -1) {
 		checkParagraph(bview, cursor.par(), pos);
 		return true;
 	}
@@ -2080,7 +2079,7 @@ bool LyXText::updateInset(BufferView * bview, Inset * inset)
 	Paragraph * par = firstParagraph();
 	do {
 		pos = par->getPositionOfInset(inset);
-		if (pos != -1){
+		if (pos != -1) {
 			checkParagraph(bview, par, pos);
 			return true;
 		}
@@ -2576,17 +2575,17 @@ Paragraph * LyXText::ownerParagraph() const
 }
 
 
-Paragraph * LyXText::ownerParagraph(Paragraph * p) const
+void LyXText::ownerParagraph(Paragraph * p) const
 {
 	if (inset_owner) {
 		inset_owner->paragraph(p);
 	} else {
 		bv_owner->buffer()->paragraph = p;
 	}
-	return 0;
 }
 
-Paragraph * LyXText::ownerParagraph(int id, Paragraph * p) const
+
+void LyXText::ownerParagraph(int id, Paragraph * p) const
 {
 	Paragraph * op = bv_owner->buffer()->getParFromID(id);
 	if (op && op->inInset()) {
@@ -2598,7 +2597,6 @@ Paragraph * LyXText::ownerParagraph(int id, Paragraph * p) const
 			bv_owner->buffer()->paragraph = p;
 		}
 	}
-	return 0;
 }
 
 
