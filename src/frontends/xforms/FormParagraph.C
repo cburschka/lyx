@@ -116,14 +116,14 @@ void FormParagraph::build()
 	setMessageWidget(dialog_->text_warning);
 
 	fl_addto_choice(dialog_->choice_space_above,
-		_(" None | Defskip | Smallskip "
-		"| Medskip | Bigskip | VFill | Length "));
+			_(" None | Defskip | Smallskip "
+			  "| Medskip | Bigskip | VFill | Length "));
 	fl_addto_choice(dialog_->choice_space_below,
-		_(" None | Defskip | Smallskip "
-		"| Medskip | Bigskip | VFill | Length ")); 
+			_(" None | Defskip | Smallskip "
+			  "| Medskip | Bigskip | VFill | Length ")); 
 
 	fl_addto_choice(dialog_->choice_linespacing,
-		_(" Default | Single | OneHalf | Double | Other "));
+			_(" Default | Single | OneHalf | Double | Other "));
 
 	fl_set_input_return(dialog_->input_space_above, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_space_below, FL_RETURN_CHANGED);
@@ -141,7 +141,7 @@ void FormParagraph::build()
 	vector<string> units_vec = getLatexUnits();
 #if 0
 	for (vector<string>::iterator it = units_vec.begin();
-		it != units_vec.end(); ++it) {
+	     it != units_vec.end(); ++it) {
 		if (contains(*it, "%"))
 			it = units_vec.erase(it, it+1) - 1;
 	}
@@ -149,7 +149,7 @@ void FormParagraph::build()
 	// Something similar to this is a better way to erase
 	vector<string>::iterator del =
 		remove_if(units_vec.begin(), units_vec.end(),
-			bind2nd(contains_functor(), "%"));
+			  bind2nd(contains_functor(), "%"));
 	units_vec.erase(del, units_vec.end());
 #endif
 
@@ -197,7 +197,7 @@ VSpace setVSpaceFromWidgets(FL_OBJECT * choice_type,
 		    input_length  && input_length->objclass  == FL_INPUT &&
 		    choice_length && choice_length->objclass == FL_CHOICE &&
 		    check_keep    && check_keep->objclass    == FL_CHECKBUTTON);
-	
+
 	VSpace space;
 
 	switch (fl_get_choice(choice_type)) {
@@ -234,6 +234,23 @@ VSpace setVSpaceFromWidgets(FL_OBJECT * choice_type,
 	return space;
 }
 
+
+void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
+{
+	// Paranoia check!
+	lyx::Assert(choice_type  && choice_type->objclass   == FL_CHOICE &&
+		    input_length && input_length->objclass  == FL_INPUT);
+
+	if (fl_get_choice(choice_type) != 7)
+		return;
+
+	// If a vspace kind is "Length" but there's no text in
+	// the input field, reset the kind to "None".
+	string const input = strip(getStringFromInput(input_length));
+	if (input.empty())
+		fl_set_choice(choice_type, 1);
+}
+
 } // namespace anon 
 
 
@@ -243,18 +260,11 @@ void FormParagraph::apply()
 		return;
 
 	// If a vspace kind is "Length" but there's no text in
-	// the input field, reset the kind to "None". 
-	if ((fl_get_choice(dialog_->choice_space_above) == 7) &&
-	    !*(fl_get_input(dialog_->input_space_above)))
-	{
-		fl_set_choice(dialog_->choice_space_above, 1);
-	}
-
-	if ((fl_get_choice (dialog_->choice_space_below) == 7) &&
-	    !*(fl_get_input (dialog_->input_space_below)))
-	{
-		fl_set_choice(dialog_->choice_space_below, 1);
-	}
+	// the input field, reset the kind to "None".
+	validateVSpaceWidgets(dialog_->choice_space_above,
+			      dialog_->input_space_above);
+	validateVSpaceWidgets(dialog_->choice_space_below,
+			      dialog_->input_space_below);
 
 	bool const line_top = fl_get_button(dialog_->check_lines_top);
 	bool const line_bottom = fl_get_button(dialog_->check_lines_bottom);
@@ -289,19 +299,27 @@ void FormParagraph::apply()
 	bool const noindent = fl_get_button(dialog_->check_noindent);
 
 	Spacing::Space linespacing = Spacing::Default;
-	string other_linespacing;
+	string other;
 	switch (fl_get_choice(dialog_->choice_linespacing)) {
-		case 1: linespacing = Spacing::Default; break;
-		case 2: linespacing = Spacing::Single; break;
-		case 3: linespacing = Spacing::Onehalf; break;
-		case 4: linespacing = Spacing::Double; break;
-		case 5:
-			linespacing = Spacing::Other;
-			other_linespacing = fl_get_input(dialog_->input_linespacing);
-			break;
+	case 1:
+		linespacing = Spacing::Default;
+		break;
+	case 2:
+		linespacing = Spacing::Single;
+		break;
+	case 3:
+		linespacing = Spacing::Onehalf;
+		break;
+	case 4:
+		linespacing = Spacing::Double;
+		break;
+	case 5:
+		linespacing = Spacing::Other;
+		other = getStringFromInput(dialog_->input_linespacing);
+		break;
 	}
 
-	Spacing const spacing(linespacing, other_linespacing);
+	Spacing const spacing(linespacing, other);
 
 	LyXText * text(lv_->view()->getLyXText());
 	text->setParagraph(lv_->view(), line_top, line_bottom, pagebreak_top,
@@ -310,7 +328,7 @@ void FormParagraph::apply()
 
 	// Actually apply these settings
 	lv_->view()->update(text, 
-	BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
+			    BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
 	lv_->buffer()->markDirty();
 	setMinibuffer(lv_, _("Paragraph layout set"));
 }
@@ -405,18 +423,18 @@ void FormParagraph::update()
 		align = tclass[par_->layout()].align;
 
 	switch (align) {
-		case LYX_ALIGN_RIGHT:
-			fl_set_button(dialog_->radio_align_right, 1);
-			break;
-		case LYX_ALIGN_LEFT:
-			fl_set_button(dialog_->radio_align_left, 1);
-			break;
-		case LYX_ALIGN_CENTER:
-			fl_set_button(dialog_->radio_align_center, 1);
-			break;
-		default:
-			fl_set_button(dialog_->radio_align_block, 1);
-			break;
+	case LYX_ALIGN_RIGHT:
+		fl_set_button(dialog_->radio_align_right, 1);
+		break;
+	case LYX_ALIGN_LEFT:
+		fl_set_button(dialog_->radio_align_left, 1);
+		break;
+	case LYX_ALIGN_CENTER:
+		fl_set_button(dialog_->radio_align_center, 1);
+		break;
+	default:
+		fl_set_button(dialog_->radio_align_block, 1);
+		break;
 	}
 
 	LyXAlignment alignpos = tclass[par_->layout()].alignpossible;
@@ -445,11 +463,11 @@ void FormParagraph::update()
 	Spacing const space = par_->params().spacing();
 
 	switch (space.getSpace()) {
-		default: linespacing = 1; break;
-		case Spacing::Single: linespacing = 2; break;
-		case Spacing::Onehalf: linespacing = 3; break;
-		case Spacing::Double: linespacing = 4; break;
-		case Spacing::Other: linespacing = 5; break;
+	default: linespacing = 1; break;
+	case Spacing::Single: linespacing = 2; break;
+	case Spacing::Onehalf: linespacing = 3; break;
+	case Spacing::Double: linespacing = 4; break;
+	case Spacing::Other: linespacing = 5; break;
 	}
 
 	fl_set_choice(dialog_->choice_linespacing, linespacing);
