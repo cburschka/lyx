@@ -1,0 +1,1831 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass book
+\language english
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+
+\layout Title
+
+Introduction to LyX
+\layout Author
+
+by the LyX Team
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Principal maintainer of this file is 
+\noun on 
+John Weiss
+\noun default 
+.
+ If you have comments or error corrections, please send them to the LyX
+ Documentation mailing list, <lyx-docs@lists.lyx.org>.
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Chapter
+
+The Philosophy of LyX
+\layout Quote
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+Uncle Cosmo, why do they call this a word processor?
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Quote
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+It's simple, Skyler.
+ You've seen what food processors do to food, right?
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Quote
+
+
+\hfill 
+--- Jeff MacNelly in 
+\begin_inset Quotes eld
+\end_inset 
+
+Shoe
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\layout Section
+
+What is LyX?
+\layout Standard
+
+LyX is a document preparation system.
+ It excels at letting you create complex technical and scientific articles
+ with mathematics, cross-references, bibliographies, indices, etc.
+ It is very good at documents of any length in which the usual processing
+ abilities are required: automatic sectioning and pagination, spellchecking,
+ and so forth.
+ It can also be used to write a letter to your mom, though granted, there
+ are probably simpler programs available for that.
+ It is definitely not the best tool for creating banners, flyers, or advertiseme
+nts (we'll explain why later), though with some effort all these can be
+ done, too.
+ Some examples of what it is used for: memos, letters, dissertations and
+ theses, lecture notes, seminar notebooks, conference proceedings, software
+ documentation, books (on PostgreSQL, remote sensing, cryptology, fictional
+ novels, poetry, and even a children's book or two), articles in refereed
+ scientific journals, scripts for plays and movies, business proposals \SpecialChar \ldots{}
+
+ you get the idea.
+\layout Standard
+
+LyX is a program that provides a modern approach to writing documents with
+ a computer by using a markup language paradigm, an approach that breaks
+ with the obsolete tradition of the 
+\begin_inset Quotes eld
+\end_inset 
+
+typewriter concept.
+\begin_inset Quotes erd
+\end_inset 
+
+ It is designed for authors who want professional output quickly with a
+ minimum of effort without becoming specialists in typesetting.
+ The job of typesetting is done mostly by the computer, not the author;
+ with LyX, the author can concentrate on the contents of her writing.
+\layout Standard
+
+Part of the initial challenge of using LyX comes from the change in thinking
+ that you, the user, must make.
+ At one time, all we had for creating documents were typewriters, so we
+ all learned certain tricks to get around their limitations.
+ Underlining, which is little more than overstriking with the 
+\begin_inset Quotes eld
+\end_inset 
+
+_
+\begin_inset Quotes erd
+\end_inset 
+
+ character, became a way to emphasize text.
+ You were forced to figure out column sizes and tab stops, and set them,
+ before creating a table.
+ The same applied for letters and other right justified text.
+ Hyphenation at the end of a line required a careful eye and a lot of foresight.
+\layout Standard
+
+In other words, we've all been trained to worry about the little details
+ of which character goes where.
+ Consequently, almost all word processors have this mentality.
+ They still use tab stops for adding whitespace.
+ You still need to worry about exactly where on the page something will
+ appear.
+ Emphasizing text means changing a font, similar to changing the typewriter
+ wheel.
+ This is the underlying philosophy of a WYSIWYG word processor: 
+\begin_inset Quotes eld
+\end_inset 
+
+What You See Is What You Get
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Unfortunately, that paradigm often results in 
+\begin_inset Quotes eld
+\end_inset 
+
+What You See Is All You Get
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\layout Standard
+
+This is where LyX differs from an ordinary word processor.
+ You don't concern yourself with what character goes where.
+ You tell LyX 
+\emph on 
+what you're doing
+\emph default 
+ and LyX takes care of the rest, following a set of rules called a 
+\emph on 
+style.
+\emph default 
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+To be fair, most recent versions of the most popular office suites now have
+ some sort of style sheets which follow a similar markup method.
+ However, our experience is that they are still rarely used in practice.
+\end_inset 
+
+ Let's look at a little example:
+\layout Standard
+
+Suppose you are writing a report.
+ To begin your report, you want a section called 
+\begin_inset Quotes eld
+\end_inset 
+
+Introduction\SpecialChar \@.
+
+\begin_inset Quotes erd
+\end_inset 
+
+ So, you go into whatever menu it is in your word processor that changes
+ font sizes and decide on a new font size.
+ Then you turn on bold face.
+ Then you type, 
+\begin_inset Quotes eld
+\end_inset 
+
+1.\SpecialChar ~
+\SpecialChar ~
+Introduction
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Of course, if you later decide that this section belongs someplace else
+ in the document, or if you insert a new section before it, you need to
+ change the numbering for this and all following sections, as well as any
+ entry in the table of contents.
+ 
+\layout Standard
+
+In LyX, you go to the pull-down on the far left of the button bar and select
+ 
+\family sans 
+Section
+\family default 
+, and type 
+\begin_inset Quotes eld
+\end_inset 
+
+Introduction\SpecialChar \@.
+
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+Yes, that's all.
+ If you cut and paste the section, it will automatically be renumbered ---
+ everywhere.
+ And if you enter references to that section correctly (by inserting cross-refer
+ence tags), LyX will automatically update them all throughout the file so
+ that you never, ever type a section number.
+\layout Standard
+
+Now let's look at the problem of consistency.
+ Five days later, you reopen your report and start Section\SpecialChar ~
+4.
+ However, you forget that you were using 18pt bold instead of 16pt, so you
+ type in the heading for Section\SpecialChar ~
+4 in a different font that what you used
+ for Section\SpecialChar ~
+1.
+ That problem doesn't even exist in LyX.
+ The computer takes care of all that silly bookkeeping about which thing
+ has what size font, not you.
+ After all, that's what a computer is good at.
+\layout Standard
+
+Here's another example.
+ Suppose you're making a list.
+ In other word processors, a list is just a bunch of tab stops and newlines.
+ You need to figure out where to put the label for each list item, what
+ that label should be, how many blank lines to put between each item, and
+ so on.
+ Under LyX, you have only two concerns: what kind of list is this, and what
+ do I want to put in it.
+ That's it.
+\layout Standard
+
+So, the basic idea behind LyX is: specify 
+\emph on 
+what
+\emph default 
+ you're doing, not 
+\emph on 
+how
+\emph default 
+ to do it.
+ Instead of 
+\begin_inset Quotes eld
+\end_inset 
+
+What You See Is What You Get,
+\begin_inset Quotes erd
+\end_inset 
+
+ the LyX model is 
+\begin_inset Quotes eld
+\end_inset 
+
+What You See Is What You 
+\emph on 
+Mean
+\emph default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ or 
+\begin_inset Quotes eld
+\end_inset 
+
+WYSIWYM.
+\begin_inset Quotes erd
+\end_inset 
+
+ It's a powerful idea that greatly simplifies the mechanics of writing documents.
+ This is also why LyX isn't so good for creating posters and flyers---in
+ this case, you 
+\emph on 
+do
+\emph default 
+ want to specify exactly where everything goes, because there are no functional
+ units like paragraphs, sections, etc.
+ This doesn't mean LyX is missing some cool function.
+ It simply means that it isn't the right tool for the job --- you don't
+ use a screwdriver to drive in nails (unless your screwdriver comes with
+ a lifetime warranty).
+\layout Section
+
+Differences between LyX and Other Word 
+\newline 
+Processors
+\begin_inset OptArg
+collapsed true
+
+\layout Standard
+
+LyX and Other Word Processors
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+No, we're not trying to start (or win) a word processor holy war here.
+ But we do think it's important to describe LyX's features.
+ And one of LyX's main features, WYSIWYM, is a fundamentally different concept
+ than the one that most of people have about word processing.
+\end_inset 
+
+
+\layout Standard
+
+Here's a list of things you won't find in LyX:
+\layout Itemize
+
+The document ruler
+\layout Itemize
+
+Tab stops
+\layout Itemize
+
+Extra whitespace (i.e.
+ hitting 
+\family sans 
+Enter
+\family default 
+ or 
+\family sans 
+Space
+\family default 
+ two or more times)
+\layout Standard
+
+Tab stops, along with a ruler showing you the position of things on the
+ page, are useless in LyX.
+ The program worries about where things go on the page, not you.
+ Extra whitespace is similar; LyX adds them where necessary, depending on
+ context.
+ Not being able to type two blank lines in a row will be annoying at first,
+ but it makes more sense once you're thinking in WYSIWYM terms.
+\layout Standard
+
+Here are some things that exist in LyX, but aren't used as you might think:
+\layout Itemize
+
+Indenting controls
+\layout Itemize
+
+Page breaks
+\layout Itemize
+
+Line spacing (i.e.
+ single spaced, double spaced, etc.)
+\layout Itemize
+
+Whitespace, horizontal and vertical
+\layout Itemize
+
+Fonts and font sizes
+\layout Itemize
+
+Typefaces (bold, italic, underline, etc.)
+\layout Standard
+
+Although they exist in LyX, you generally don't need them.
+ LyX will take care of these things for you, depending on what you're doing.
+ Different parts of the document are automatically set in a different typeface
+ and font size.
+ Paragraph indenting is context dependent; different types of paragraphs
+ get indented differently.
+ Page breaks get handled automatically, as well.
+ In general, the space between lines, between words, and between paragraphs
+ is variable, set by LyX.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+There are ways to adjust all of these (only some of which require knowledge
+ of LaTeX), either for a whole document or for a specific location in a
+ document.
+ See the 
+\emph on 
+User's Guide
+\emph default 
+ and/or the 
+\emph on 
+Extended Features
+\emph default 
+ manual for details.
+\end_inset 
+
+ 
+\layout Standard
+
+Lastly, there are a few areas where we believe LyX (and LaTeX) surpasses
+ many word processors:
+\layout Itemize
+
+Hyphenation
+\layout Itemize
+
+Lists of any type
+\layout Itemize
+
+Mathematics
+\layout Itemize
+
+Tables
+\layout Itemize
+
+Cross-referencing
+\layout Standard
+
+Granted, many modern word processors can handle mathematical symbols, tables,
+ and hyphenation, and many have moved towards style definitions and the
+ WYSIWYM concept.
+ However, they've only recently been able to do so, whereas LyX is built
+ upon the LaTeX document preparation system.
+ LaTeX has been around for over 15 years, and 
+\emph on 
+works
+\emph default 
+.
+\layout Section
+
+What the heck 
+\emph on 
+is
+\emph default 
+ LaTeX (and why do I care)?
+\layout Standard
+
+LaTeX is a document preparation system designed by Leslie Lamport in 1985.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+The source for the info in this section is 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\emph on 
+A Guide to LaTeX2e
+\emph default 
+,
+\begin_inset Quotes erd
+\end_inset 
+
+ by Helmut Kopka and Patrick Daly, which has an entry in the bibliography
+ of the 
+\emph on 
+User's Guide
+\emph default 
+\SpecialChar \@.
+
+\end_inset 
+
+ It, in turn, was built up from a typesetting language called TeX, created
+ by Donald Knuth in 1984.
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+TeX
+\begin_inset Quotes erd
+\end_inset 
+
+ is pronounced like 
+\begin_inset Quotes eld
+\end_inset 
+
+blech!
+\begin_inset Quotes erd
+\end_inset 
+
+ which is how many people feel about it.
+ However, most folks don't understand just what TeX is.
+ TeX takes a sequence of typesetting commands, written in a script in an
+ ASCII file, and executes them.
+ It's a bit more complicated than a typewriter, but not nearly as involved
+ as an actual printing press; however, many of the 
+\begin_inset Quotes eld
+\end_inset 
+
+tricks
+\begin_inset Quotes erd
+\end_inset 
+
+ of the printing trade were modeled by Knuth as computer algorithms and
+ incorporated into TeX, thus its excellent printed appearance.
+ In any case, what comes directly out of TeX is the so-called 
+\begin_inset Quotes eld
+\end_inset 
+
+device independent
+\begin_inset Quotes erd
+\end_inset 
+
+ format file, or 
+\family typewriter 
+dvi
+\family default 
+ for short.
+ You can then feed the 
+\family typewriter 
+dvi
+\family default 
+ file to anything that understands 
+\family typewriter 
+dvi
+\family default 
+, or converts 
+\family typewriter 
+dvi
+\family default 
+ to other formats like PostScript®, PDF, etc.
+ 
+\layout Standard
+
+If it weren't for one other feature, all TeX would be is a typesetting engine.
+ However, TeX also allows you to define macros.
+ This is where the action begins.
+\layout Standard
+
+Most people who use TeX are actually using a macro package which Knuth created
+ to hide a lot of the typesetting details.
+ This is what most people think of when they think of TeX\SpecialChar \@.
+ Ordinary users
+ don't work with raw TeX, which are the bare-bones typesetting commands.
+ People creating new macro-packages do that.
+ This is where Leslie Lamport enters our story.
+ He wanted a macro package that was more user-oriented and less typesetter-orien
+ted, a set of commands that consistently typeset things like sections or
+ tables or math formulae in a uniform, consistent fashion with as little
+ fuss as possible.
+ This is how LaTeX was born.
+\layout Standard
+
+Now, in parallel with the development and growth of LaTeX, other folks were
+ creating their own custom macro packages for TeX, ones to make slides or
+ articles for math journals and so on.
+ Some used the raw TeX facilities to do this, others began modifying LaTeX.
+ To try and unify this mess, a team of LaTeX-nicians (including Lamport,
+ of course) began to work on LaTeX2e, the current version of LaTeX, during
+ the late 1980's.
+ This new version of LaTeX has commands which provide an easier-to-use interface
+ to TeX's macro-creating commands (remember TeX?), aid in the use of new
+ fonts, and so on.
+ In fact, LaTeX is quite an extensive language in its own right! Users around
+ the world have been creating their own add-ons for LaTeX beyond the standard
+ ones.
+\layout Standard
+
+There are two ways to extend LaTeX: classes and styles.
+ A 
+\emph on 
+class
+\emph default 
+ is a set of LaTeX (and TeX) macros describing a new type of document, like
+ a book, or an article.
+ There are classes for slides, for physics and math journals\SpecialChar \ldots{}
+ many universities
+ even have a class for their thesis format! A 
+\emph on 
+style
+\emph default 
+ differs from a class in that it doesn't define a new type of document,
+ but a different type of 
+\emph on 
+behavior
+\emph default 
+ that any document can use.
+ For example, LyX controls page margins and line spacing using two different
+ LaTeX style-files designed for these purposes.
+ There are style-files for a whole slew of things: printing labels or envelopes,
+ changing indentation behavior, adding new fonts, manipulating graphics,
+ designing fancy page headings, customizing bibliographies, altering the
+ location and appearance of footnotes, tables, and figures, customizing
+ lists, et cetera.
+\layout Standard
+
+Here's a summary:
+\layout List
+\labelwidthstring 00.00.0000
+
+TeX: Typesetting language with macro capability.
+\layout List
+\labelwidthstring 00.00.0000
+
+LaTeX: Macro package built upon TeX\SpecialChar \@.
+
+\layout List
+\labelwidthstring 00.00.0000
+
+classes: Descriptions of a type of document, using LaTeX\SpecialChar \@.
+
+\layout List
+\labelwidthstring 00.00.0000
+
+styles: Alters the default behavior of LaTeX in some way.
+\layout List
+\labelwidthstring 00.00.0000
+
+LyX: Visual, WYSIWYM word-processor that uses LaTeX in all its glory to
+ do its printing.
+\layout Standard
+
+The idea of this section was to try and explain 
+\emph on 
+why
+\emph default 
+ LyX works somewhat differently from other word processors.
+ The reason is simple: LyX uses LaTeX as its printing backend.
+ Just like LaTeX, LyX focuses on the context of your writing --- 
+\emph on 
+what
+\emph default 
+ you are typing.
+ The computer then handles how it should look.
+\layout Standard
+
+Oh --- one last thing.
+ LaTeX is pronounced like TeX is.
+ It rhymes with 
+\begin_inset Quotes eld
+\end_inset 
+
+hey blech.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+or 
+\begin_inset Quotes eld
+\end_inset 
+
+ha blech
+\begin_inset Quotes erd
+\end_inset 
+
+, depending on how you pronounce your 
+\begin_inset Quotes eld
+\end_inset 
+
+a
+\begin_inset Quotes erd
+\end_inset 
+
+s\SpecialChar \ldots{}
+
+\end_inset 
+
+ Usually.
+ Lamport says in his book, though, that 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\emph on 
+lay
+\emph default 
+-tecks is also possible
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+LyX,
+\begin_inset Quotes erd
+\end_inset 
+
+ on the other hand, is pronounced 
+\begin_inset Quotes eld
+\end_inset 
+
+licks.
+\begin_inset Quotes erd
+\end_inset 
+
+ Or 
+\begin_inset Quotes eld
+\end_inset 
+
+lucks,
+\begin_inset Quotes erd
+\end_inset 
+
+ or 
+\begin_inset Quotes eld
+\end_inset 
+
+looks,
+\begin_inset Quotes erd
+\end_inset 
+
+ depending on what country you're from \SpecialChar \ldots{}
+ but numerous holy wars and flame
+ fests have been started over this issue on the LyX mailing lists, so please
+ just pronounce it however you please.
+ Just don't pronounce it 
+\begin_inset Quotes eld
+\end_inset 
+
+word
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ 
+\family typewriter 
+:-)
+\layout Chapter
+
+Navigating the Documentation
+\layout Standard
+
+To make it easier to answer your questions and describe all of the features
+ of LyX, the documentation has been split up into several different files.
+ Each one has its own purpose, as described below.
+ Before you go plowing into any of those files, however, you should read
+ this chapter thoroughly first, since it contains a lot of useful information
+ and commentary that can save you some time.
+\layout Standard
+
+Although LyX is now well past the 
+\begin_inset Quotes eld
+\end_inset 
+
+version 1.0
+\begin_inset Quotes erd
+\end_inset 
+
+ mark, some of the documentation may be incomplete or a bit out of date,
+ though we try to keep up.
+ Like the rest of LyX, the manuals are the work of a group of volunteers
+ who have 
+\begin_inset Quotes eld
+\end_inset 
+
+Real Jobs
+\begin_inset Quotes erd
+\end_inset 
+
+, families, dishes to clean, kitty litter to dispose of, et cetera.
+ If you want to help out, be sure to read Section\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:Contrib}
+
+\end_inset 
+
+ in addition to the rest of this document.)
+\layout Standard
+
+Also, please do us a favor---if anything in these manuals confuses you,
+ is unclear, or wrong, don't hesitate to let us know! You can reach the
+ current document maintainers by mailing to 
+\family typewriter 
+lyx-docs@lists.lyx.org
+\family default 
+.
+ If you have questions which are not obviously answered in the documentation,
+ and need help fast, there is an active users' mailing list which you can
+ reach at 
+\family typewriter 
+lyx-users@lists.lyx.org
+\family default 
+.
+\layout Section
+
+The Format of the Manuals
+\layout Standard
+
+Some of you may have printed out the manual(s).
+ Others may be reading it online, within LyX as a file.
+ For those reading online, there are some differences from the printed version.
+ First, the title is simply at the top of the document, not formatted on
+ a separate page as in some of the printed versions.
+ Nor are any of the footnotes or the Table of Contents visible.
+ To open a footnote, which looks like this,
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Hi! 
+\layout Standard
+
+To close me, click on the grey box on the top left of this box, the one
+ with the word 
+\begin_inset Quotes eld
+\end_inset 
+
+foot
+\begin_inset Quotes erd
+\end_inset 
+
+ in it.
+\end_inset 
+
+ click on it with the left mouse button.
+ For the Table of Contents, either click on the grey box, or click on the
+ 
+\family sans 
+\bar under 
+N
+\bar default 
+avigate
+\family default 
+ menu, where the contents are displayed automatically\SpecialChar \@.
+ (Try it!)
+\layout Standard
+
+In the printed manuals, all cross-references appear as the actual numbers
+ for a chapter, section, subsection, and so on.
+ Online, however, all cross-references appear as a grey box like the following:
+ 
+\begin_inset LatexCommand \ref{sec:Contrib}
+
+\end_inset 
+
+.
+ (The printed manuals show a number instead.) If you click on that box with
+ the left mouse button, a dialog box will appear containing a list of all
+ the cross-references in the document.
+ This introduction has only one named 
+\begin_inset Quotes eld
+\end_inset 
+
+sec:Contrib
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ You can go to the section the referred to by clicking the button labeled
+ "Go to reference".
+ Going back to where you came from is just as easy.
+ Clicking on 
+\begin_inset Quotes eld
+\end_inset 
+
+Go back
+\begin_inset Quotes erd
+\end_inset 
+
+ or typing 
+\family sans 
+C-<
+\family default 
+ will take you back to your earlier location.
+ (What does 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+C-<
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ mean? See below.)
+\layout Standard
+
+Now that we've cleared up some of the differences between the printed and
+ online versions of this file, we can start looking at the format of this
+ document.
+ You'll occasionally notice things in different fonts:
+\layout Itemize
+
+
+\emph on 
+Emphasized Style
+\emph default 
+ is used for general emphasis, generic arguments, book titles, names of
+ sections of other manuals, and notes from the authors.
+\layout Itemize
+
+
+\family typewriter 
+Typewriter
+\family default 
+ is used for program and file names, LaTeX code, and LyX code and functions.
+\layout Itemize
+
+
+\family sans 
+Sans Serif
+\family default 
+ is used for menu, button, or dialog box names, and the names of keyboard
+ keys.
+\layout Itemize
+
+
+\noun on 
+Noun Style
+\noun default 
+ is used for people's names.
+\layout Standard
+
+For menu accelerator keys and other more obscure keybindings, you'll probably
+ get referred to the 
+\emph on 
+Key Bindings
+\emph default 
+ section of the 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\emph on 
+Extended Features Manual
+\emph default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ (the file 
+\family typewriter 
+Extended.lyx
+\family default 
+).
+ When we do need to reference keys, we'll use the following prefixing convention
+:
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+C-
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ indicates the 
+\family sans 
+Control-
+\family default 
+ key.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+S-
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ indicates the 
+\family sans 
+Shift-
+\family default 
+ key.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+M-
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ indicates the 
+\family sans 
+Meta-
+\family default 
+ key, which on some keyboards will be the 
+\family sans 
+Alt-
+\family default 
+ key.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+F1
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+F12
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ are the function keys.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Esc
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ is the escape key.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Left
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Right
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Up
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Down
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+: self-explanatory.
+\layout Itemize
+
+
+\family sans 
+
+\begin_inset Quotes eld
+\end_inset 
+
+Insert
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Delete
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Home
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+End
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+PageUp
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+PageDown
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+: these are the 6 keys that appear above the cursor keys on many PC keyboards.
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+PageUp
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ and 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+PageDown
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ are called 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Prior
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ and 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Next
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ on some keyboards.
+\layout Itemize
+
+
+\family sans 
+Return
+\family default 
+ and 
+\family sans 
+Enter
+\family default 
+ both refer to the same key.
+ Some keyboards label the 
+\family sans 
+Return
+\family default 
+ key as 
+\begin_inset Quotes eld
+\end_inset 
+
+Return,
+\begin_inset Quotes erd
+\end_inset 
+
+ others as 
+\begin_inset Quotes eld
+\end_inset 
+
+Enter,
+\begin_inset Quotes erd
+\end_inset 
+
+ still others have two keys.
+ LyX treats all of them as the same key, so we'll use 
+\family sans 
+Return
+\family default 
+ and 
+\family sans 
+Enter
+\family default 
+ interchangeably.
+\layout Standard
+
+You'll also see something like 
+\begin_inset Quotes eld
+\end_inset 
+
+(See 
+\emph on 
+
+\begin_inset Quotes els
+\end_inset 
+
+Extended
+\emph default 
+
+\begin_inset Quotes ers
+\end_inset 
+
+)
+\begin_inset Quotes erd
+\end_inset 
+
+ from time to time.
+ We've listed the possible default keybindings for a function in its entry
+ in the 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\emph on 
+Extended Features Manual
+\emph default 
+,
+\begin_inset Quotes erd
+\end_inset 
+
+ so check there, too.
+ Note that there are two different keybinding maps in common use in the
+ LyX community: the 
+\begin_inset Quotes eld
+\end_inset 
+
+CUA
+\begin_inset Quotes erd
+\end_inset 
+
+ style which is the default and familiar to those coming from the PC world,
+ and the 
+\begin_inset Quotes eld
+\end_inset 
+
+emacs
+\begin_inset Quotes erd
+\end_inset 
+
+ style, which is common with those who 
+\begin_inset Quotes eld
+\end_inset 
+
+grew up
+\begin_inset Quotes erd
+\end_inset 
+
+ on Unix systems and use the Emacs editor.
+ Unless specifically noted, the keybindings in the documentation are from
+ the default CUA map.
+ If you like Emacs, you should be smart enough to read the documentation
+ and figure out the bindings on your own.
+\layout Section
+
+The Manuals
+\layout Standard
+
+The following list describes the contents of each of the files in the documentat
+ion:
+\layout Description
+
+
+\emph on 
+Introduction
+\begin_deeper 
+\layout Standard
+
+This file.
+\end_deeper 
+\layout Description
+
+
+\emph on 
+Tutorial 
+\begin_deeper 
+\layout Standard
+
+If you are new to LyX, and have never used LaTeX before, you should start
+ here.
+ If you think LaTeX is the stuff they make condoms out of, then you definitely
+ need to reread Chapter 1, then read the 
+\emph on 
+Tutorial
+\emph default 
+.
+ Note that after you read the 
+\emph on 
+Tutorial
+\emph default 
+, you'll probably still think LaTeX is some stretchy substance --- but you
+ 
+\emph on 
+will
+\emph default 
+ know how to use LyX.
+\layout Standard
+
+If you 
+\emph on 
+have
+\emph default 
+ used LaTeX before, you should still read the 
+\emph on 
+Tutorial
+\emph default 
+, starting with the section on 
+\begin_inset Quotes eld
+\end_inset 
+
+LyX for LaTeX users.
+\begin_inset Quotes erd
+\end_inset 
+
+ (Skimming the rest of the document wouldn't hurt, either.)
+\layout Standard
+
+If, at any time, you find yourself feeling a bit clueless with respect to
+ LyX, try perusing the 
+\emph on 
+Tutorial
+\emph default 
+ before diving into any of the other manuals.
+ It's a good springboard.
+\end_deeper 
+\layout Description
+
+
+\emph on 
+User's\SpecialChar ~
+Guide
+\begin_deeper 
+\layout Standard
+
+The primary documentation.
+ We'll cover 
+\emph on 
+most
+\emph default 
+ of the basic operation and available features of LyX here.
+ The main manual assumes that you've read the 
+\emph on 
+Tutorial
+\emph default 
+.
+\end_deeper 
+\layout Description
+
+
+\emph on 
+Extended\SpecialChar ~
+Features
+\begin_deeper 
+\layout Standard
+
+Extension of the 
+\emph on 
+User's Guide
+\emph default 
+.
+ Documents how to use raw LaTeX commands, additional layouts, and special-purpos
+e editing features, and includes some of the (rather bizarre, but nifty)
+ tricks of the LaTeX masters.
+\end_deeper 
+\layout Description
+
+
+\emph on 
+Customization
+\begin_deeper 
+\layout Standard
+
+A description of advanced LyX features, including how to customize the overall
+ behavior of LyX\SpecialChar \@.
+ This includes such things as keybindings, internationalization,
+ and configuration files.
+ Don't even think of going in here until you read the 
+\emph on 
+Tutorial
+\emph default 
+.
+\end_deeper 
+\layout Description
+
+
+\emph on 
+LaTeX\SpecialChar ~
+configuration
+\begin_deeper 
+\layout Standard
+
+LyX investigates your system upon installation.
+ This file contains info on what LyX learned about your installation.
+ Check it to see if you're missing something you might like to have.
+\end_deeper 
+\layout Standard
+
+These files will reference one another as necessary.
+ For example, the 
+\emph on 
+User's Guide
+\emph default 
+ contains 
+\emph on 
+some
+\emph default 
+ information on installation and customization, but refers the reader to
+ the 
+\emph on 
+Customization Manual
+\emph default 
+ for more information.
+\layout Standard
+
+We'll state again an important point:
+\layout Standard
+\added_space_top bigskip \added_space_bottom bigskip \align center 
+If you are new to LyX, read the 
+\emph on 
+Tutorial
+\emph default 
+.
+ Now\SpecialChar \@.
+
+\layout Standard
+
+Otherwise, you could needlessly frustrate yourself.
+ LyX does all that you need a word processor to do, but using a different
+ approach.
+\layout Chapter
+
+
+\begin_inset LatexCommand \label{sec:Contrib}
+
+\end_inset 
+
+Contributing to the LyX Project
+\layout Section
+
+Contributing to LyX
+\layout Standard
+
+LyX is mostly written in C++ (the LaTeX importer is written in Perl).
+ It is a large project, and as a result it is not free from bugs, or the
+ need for improvements in the source code.
+\layout Subsection
+
+Reporting a bug
+\layout Standard
+
+While using LyX, you may find behaviour which you consider a bug.
+ Crashes, though rare, can happen.
+ User interface problems are considered major bugs by the LyX team: especially
+ helpful are indications of parts of the LyX interface you find confusing,
+ or unclear.
+\layout Standard
+
+LyX has a bug tracking system, which you can find at 
+\family typewriter 
+
+\begin_inset LatexCommand \htmlurl[LyX bug tracker]{http://bugzilla.lyx.org/}
+
+\end_inset 
+
+
+\family default 
+.
+ You should check the bug tracker before reporting any bugs, in case it
+ has already been reported.
+ If you have a comment on an existing bug, or wish to report a new bug,
+ you may either use the bug tracker, or send an e-mail to the development
+ mailing list, 
+\family typewriter 
+lyx-devel@lists.lyx.org
+\family default 
+.
+ Archives of this list are linked from the main LyX website, 
+\family typewriter 
+
+\begin_inset LatexCommand \htmlurl[LyX website]{http://www.lyx.org/}
+
+\end_inset 
+
+
+\family default 
+.
+\layout Standard
+
+A good (useful) bug report will at a minimum include the version of LyX
+ you are having the problem with.
+ Accurate, detailed descriptions are preferred - the more time developers
+ have to spend to pinpoint the source of a bug, the less time they have
+ for other improvements.
+ Mention the system and system version you are running LyX with.
+ Give the versions of the libraries you have installed on your system, and,
+ if relevant, the versions of external programs that LyX uses.
+ If it's a compilation or configuration problem, include the file 
+\family typewriter 
+config.log
+\family default 
+, and mention which compiler you are using.
+ 
+\layout Standard
+
+If you can make LyX crash, please take the time to produce a backtrace with
+ a non-stripped lyx executable.
+ The one built in the source directory is per default not stripped, while
+ the installed binary is stripped.
+ So, run LyX from gdb by typing, for example, 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+\size small 
+gdb /users/steve/lyx-1.0.x/src/lyx
+\family default 
+\size default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ and then 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+\size small 
+run
+\family default 
+\size default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Make LyX crash and you'll return to gdb.
+ Use 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+\size small 
+bt
+\family default 
+\size default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ to produce a backtrace and include the output in the bug report
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+if you want to be thorough, use the 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+info locals
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ and 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+up
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ commands to print out the values of local variables at a few stack levels.
+\end_inset 
+
+.
+ If possible, then a description of a way to reproduce the bug is more important
+ than a backtrace, because then we have the possibility to roll our own
+ backtrace.
+ If the bug is not easily reproducible, a backtrace is essential, because
+ then that might be all we've got.
+\layout Subsection
+
+Contributing fixes and new features
+\layout Standard
+
+If you have made changes to LyX's source that you think should become part
+ of LyX, send your changes as a diff file (in unified format) to the development
+ list referenced above, along with a change log, and a description of what
+ your patch does.
+\layout Section
+
+Contributing to the Documentation
+\layout Standard
+
+LyX's documentation is extensive; however LyX is under constant development,
+ and each new release adds new features.
+ You may find some documentation needs improvement.
+ This section describes what to do if you find an error, or have some suggestion
+s for improving the documentation.
+\layout Subsection
+
+Reporting Errors in the Manuals
+\layout Standard
+
+If you find a problem with the documentation, send a message to the mailing
+ list 
+\family typewriter 
+lyx-docs@lists.lyx.org
+\family default 
+.
+ The documentation team will make any necessary fixes.
+\layout Subsection
+
+Joining the Documentation Team.
+\layout Standard
+
+The LyX Documentation Project, like anything else in the LyX project, can
+ always use assistance! If you're interested in contributing to the Documentatio
+n Project, you need to do the following assignment 
+\emph on 
+first
+\emph default 
+:
+\layout Enumerate
+
+Get the latest LyX source code.
+ Untar it.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+The more adventurous can grab the latest documentation anonymously from
+ the LyX CVS repository - it is contained in the 
+\family typewriter 
+lyxdoc
+\family default 
+ module.
+\end_inset 
+
+ You will find a directory inside the main tree called 
+\family typewriter 
+lib/doc/
+\family default 
+.
+ Inside that directory is a file called 
+\family typewriter 
+DocStyle.lyx
+\family default 
+.
+ Read it; it's the style sheet for the documentation.
+\layout Enumerate
+
+Next, read the 
+\emph on 
+User's Guide
+\emph default 
+ and the 
+\emph on 
+Tutorial
+\emph default 
+.
+ 
+\begin_deeper 
+\layout Standard
+
+The point of this exercise is to give you ideas.
+ The 
+\emph on 
+Tutorial
+\emph default 
+ and 
+\emph on 
+User's Guide
+\emph default 
+ is likely to be the most up-to-date of all of the documentation.
+ You should be able to glean some insights into how we want the manuals
+ to read and to look.
+\end_deeper 
+\layout Enumerate
+
+Contact the team at: 
+\begin_deeper 
+\layout Standard
+
+
+\family typewriter 
+lyx-docs@lists.lyx.org
+\layout Standard
+
+to discuss your intended changes, and get some feedback on them.
+\end_deeper 
+\layout Standard
+
+The changes you wish to make may range from improving clarity of the text,
+ to doing major re-structuring of the documentation.
+ Any and all improvements are gladly received.
+\the_end

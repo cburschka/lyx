@@ -1,0 +1,5487 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass book
+\language russian
+\inputencoding koi8-r
+\fontscheme default
+\graphics none
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage widemarginsa4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+
+\layout Title
+
+Самоучитель по LyX
+\layout Author
+
+автор: Amir Karger и команда разработки LyX
+\newline 
+перевод: Максим Дзюманенко
+\newline 
+лит.
+ редакторы: Юрий Калиниченко, Виталий Липатов
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Chapter
+
+Введение
+\layout Section
+
+Добро пожаловать в LyX!
+\layout Standard
+
+Этот файл предназначен для тех, кто никогда не слышал о LaTeX, или знаком
+ с ним поверхностно.
+ Не волнуйтесь, вам не придётся изучать LaTeX для работы с LyX, ведь всё-таки
+ основной целью LyX является предоставить почти WYSIWYG-интерфейс к LaTeX.
+ Однако для эффективного использования LyX вам придётся немного поучиться.
+ 
+\layout Standard
+
+Некоторые из вас, вероятно, обратились к этому документу после того как
+ попытались вставить два пробела после 
+\begin_inset Quotes fld
+\end_inset 
+
+.
+\begin_inset Quotes frd
+\end_inset 
+
+ или 3 пустых строки между абзацами, и испытали серьёзное разочарование,
+ обнаружив, что не можете этого сделать.
+ В действительности вы увидите, что большинство приёмов, которыми вы привыкли
+ пользоваться в других текстовых процессорах, не работают в LyX.
+ Это потому, что большинство текстовых процессоров, которыми вы пользовались
+ ранее, требовали, чтобы вы вручную расставляли все пробелы, изменяли шрифты
+ и пр.
+ Таким образом, вы не только писали документ, но также занимались его полиграфич
+еским оформлением.
+ LyX выполняет такое оформление за вас, позволяя вам сосредоточить своё
+ внимание на том, что действительно важно --- например, на содержимом вашего
+ документа.
+\layout Standard
+
+Поэтому наберитесь терпения и читайте.
+ Чтение этого учебника определённо стоит потраченного времени.
+\layout Section
+
+Чем 
+\emph on 
+является
+\emph default 
+ самоучитель и чем 
+\emph on 
+не является
+\layout Standard
+
+Перед тем как начать этот раздел, мы хотели бы кое-что пояснить.
+ 
+\emph on 
+Самоучитель
+\emph default 
+ использует обозначения, приведённые во 
+\emph on 
+Введении
+\emph default 
+\SpecialChar \@.
+ Если вы начали чтение с этого материала, прочтите сначала 
+\emph on 
+Введение
+\emph default 
+.
+ 
+\layout Standard
+
+Теперь, когда вы знаете, какой шрифт что означает, мы бы хотели немного
+ поговорить о предназначении этого
+\emph on 
+ Самоучителя
+\emph default 
+.
+\layout Subsection
+
+Общее представление о Самоучителе
+\layout Standard
+
+Самоучитель состоит из примеров и упражнений.
+ Чтобы получить общее представление о этом документе, вы должны прочесть
+ весь документ, набирая все те небольшие примеры, которые мы будем просить
+ вас набрать и выполняя все приведённые упражнения, контролируя правильность
+ их выполнения.
+ Для удобства вы можете напечатать PostScript
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+textregistered
+\end_inset 
+
+-версию этого документа.
+\layout Standard
+
+Если вы знакомы с LaTeX, вероятно вы сможете прочесть 
+\emph on 
+Самоучитель
+\emph default 
+ несколько быстрее, так как многие идеи LyX --- попросту замаскированные
+ идеи LaTeX.
+ Однако у LyX есть свои повороты
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+или, более оптимистично, 
+\begin_inset Quotes fld
+\end_inset 
+
+особенности
+\begin_inset Quotes frd
+\end_inset 
+
+
+\end_inset 
+
+, которые вам предстоит изучить.
+ Даже если вы не чувствуете необходимым читать оставшуюся часть 
+\emph on 
+Самоучителя
+\emph default 
+, вы определённо должны просмотреть раздел\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:latexusers}
+
+\end_inset 
+
+, который написан специально для опытных пользователей LaTeX.
+\layout Subsection
+
+Что вы 
+\emph on 
+не
+\emph default 
+ найдёте:
+\layout Itemize
+
+Постоянную опеку или прочие бестолковые объяснения.
+\begin_deeper 
+\layout Standard
+
+В компьютерной литературе в настоящее время сложилась такая тенденция
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Заметка 
+\shape smallcaps 
+\noun on 
+John 
+\noun default 
+Weiss
+\shape default 
+: \SpecialChar \ldots{}
+по крайней мере в Америке, где мы всё приводим к наименьшему общему знаменател
+ю\SpecialChar \ldots{}
+
+\end_inset 
+
+: 
+\begin_inset Quotes fld
+\end_inset 
+
+Предположим, пользователь имеет коэффициент интеллекта на уровне картофелины
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Мы так не делаем.
+ 
+\layout Standard
+
+С другой стороны, мы понимаем, что большинство пользователей читают руководства,
+ особенно учебники, только тогда, когда они не знают, что же делать дальше.
+ Так что хотя мы сознаем что вы, пользователь, 
+\emph on 
+не
+\emph default 
+ глупы, мы понимаем, что вы можете быть несведущи или сбиты с толку.
+\end_deeper 
+\layout Itemize
+
+Инструкций по использованию мышью и клавиатурой.
+\begin_deeper 
+\layout Standard
+
+Если вы не можете разобраться с тем, как использовать компьютер, мы не сможем
+ вам помочь, так как это выходит за рамки руководств по LyX.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Более того, если вы начинаете с использования LyX, у вас наверно большая
+ часть головы заполнена мозгами.
+\end_inset 
+
+
+\end_deeper 
+\layout Itemize
+
+Подробного объяснения всех возможностей LyX.
+\begin_deeper 
+\layout Standard
+
+Ведь нам же не нужны два 
+\emph on 
+Руководства пользователя
+\emph default 
+, правда?
+\layout Standard
+
+Если серьёзно, мы сделали этот документ только для того, чтобы дать вам
+ начальный толчок, поскольку всё, что вам реально необходимо --- это 
+\emph on 
+Руководство пользователя
+\emph default 
+.
+ Если бы мы попробовали повторить здесь всю информацию обо всех возможностях
+ LyX, 
+\emph on 
+Самоучитель
+\emph default 
+ был бы избыточен, слишком длинен, и всегда устаревший.
+ Так что здесь мы только ознакомим вас с возможностями LyX; представьте
+ себе, что в конце каждого раздела написано 
+\begin_inset Quotes fld
+\end_inset 
+
+смотрите 
+\emph on 
+Руководство пользователя
+\emph default 
+
+\begin_inset Quotes frd
+\end_inset 
+
+.
+\end_deeper 
+\layout Itemize
+
+Детального объяснения LaTeX.
+\begin_deeper 
+\layout Standard
+
+Это излишне.
+ Если вам действительно интересно изучить некоторые искусные приёмы работы
+ с LaTeX, вы всегда можете обратиться к книге по LaTeX.
+ В продаже есть несколько хороших книг.
+ Всё-таки ни к чему изобретать колесо\SpecialChar \ldots{}
+
+\end_deeper 
+\layout Standard
+
+Итак, отважный человек, время двигаться вперёд.
+ Настало время создать ваш первый документ в LyX\SpecialChar \ldots{}
+
+\layout Chapter
+
+Начинаем работать с LyX
+\layout Section
+
+Ваш первый LyX документ
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:first-doc-ex}
+
+\end_inset 
+
+ Итак, вы готовы к написанию.
+ Однако перед тем как вы приступите к этом, нам нужно сделать несколько
+ замечаний, которые, будем надеяться, сделают 
+\emph on 
+Самоучитель 
+\emph default 
+более информативным, полезным и интересным.
+\layout Standard
+
+Так как здесь приводится далеко не вся информация, 
+\emph on 
+первое
+\emph default 
+, что вы должны сделать --- найти другие справочные файлы
+\series medium 
+.
+ 
+\series default 
+К счастью
+\series medium 
+, 
+\series default 
+это очень просто
+\series medium 
+.
+
+\series default 
+ Запустите LyX.
+ Выберите 
+\emph on 
+Руководство пользователя
+\emph default 
+ из меню
+\family sans 
+ Помощь
+\family default 
+.
+ Таким же образом вы можете загрузить и 
+\emph on 
+Самоучитель
+\emph default 
+ (если вы уже его не читаете с экрана).
+ То есть вы можете читать справочные файлы в процессе написания вашего собственн
+ого документа
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Они также могут служить хорошим примером использования многих возможностей
+ LyX'а.
+\end_inset 
+
+.
+ Заметьте, что после того как вы открыли более одного документа, для переключени
+я между ними вы можете использовать меню 
+\family sans 
+Документы
+\family default 
+.
+
+\emph on 
+ Самоучитель
+\emph default 
+ не раскрывает детально каждую из тем, описанных в других руководствах по
+ LyX.
+ Это немного усложняет вашу жизнь на первых порах, но позволяет сохранить
+ 
+\emph on 
+Самоучитель
+\emph default 
+ коротким.
+ Также у вас выработается привычка использовать другие руководства, что
+ в итоге сохранит вам массу времени.
+\layout Standard
+
+В этом 
+\emph on 
+Самоучителе
+\emph default 
+ мы предполагаем, что у вас есть полностью работоспособная версия LyX, а
+ также LaTeX, 
+\family typewriter 
+xdvi
+\family default 
+ или другой просмотрщик 
+\family typewriter 
+dvi
+\family default 
+, 
+\family typewriter 
+dvips
+\family default 
+ или какой-то другой путь преобразования документов в PostScript
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+textregistered
+\end_inset 
+
+, и работающий принтер.
+ Если что либо из этого у вас отсутствует, вы (или доброжелательный системный
+ администратор) должны настроить вашу систему.
+ Информацию по настройке можно найти в других руководствах.
+\layout Standard
+
+Мы написали файл, который позволит вам поупражняться в мастерстве владения
+ LyX.
+ Он называется 
+\family typewriter 
+example_raw.lyx
+\family default 
+.
+ Представьте, что он набран кем-то, кто не очень хорошо знаком с великолепными
+ возможностями LyX.
+ По мере изучения новых способностей LyX, мы будем предлагать вам исправить
+ соответствующие части 
+\family typewriter 
+example_raw.lyx
+\family default 
+.
+ Также он содержит 
+\begin_inset Quotes fld
+\end_inset 
+
+утонченные
+\begin_inset Quotes frd
+\end_inset 
+
+ намёки на то, как их исправить
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Эти намёки размещены в жёлтых 
+\begin_inset Quotes fld
+\end_inset 
+
+Заметках
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Щёлкните на них мышью, чтобы увидеть текст.
+\end_inset 
+
+.
+ Если вы желаете схитрить (или проверить, что вы всё выполнили), есть также
+ файл 
+\family typewriter 
+example_lyxified.lyx,
+\family default 
+ содержащий тот же текст, написанный и оформленный знатоком LyX.
+\layout Standard
+
+Файлы с примерами можно найти в каталоге 
+\family typewriter 
+examples/
+\family default 
+, к которому можно добраться, выбрав 
+\family sans 
+\bar under 
+Ф
+\bar default 
+айл\SpecialChar \menuseparator
+
+\bar under 
+О
+\bar default 
+ткрыть
+\family default 
+ и нажав на кнопке 
+\family sans 
+\bar under 
+П
+\bar default 
+римеры
+\family default 
+.
+ Откройте документ, и используя 
+\family sans 
+\bar under 
+Ф
+\bar default 
+айл\SpecialChar \menuseparator
+Сохранить\SpecialChar ~
+как
+\family default 
+, сохраните копию в вашем рабочем каталоге.
+ Исправляя различные части документа, проверяйте, как эти изменения отражаются
+ в файле 
+\family typewriter 
+dvi
+\family default 
+.
+\layout Standard
+
+Кстати, каталог 
+\family typewriter 
+examples/
+\family default 
+ содержит и другие файлы с примерами.
+ Они продемонстрируют вам различные примечательные возможности LyX.
+ Эти примеры также демонстрируют некоторые возможности, которые не были
+ помещены в документации (из-за размеров или по другим соображениям).
+ После прочтения 
+\emph on 
+Самоучителя
+\emph default 
+, или если вы запутаетесь при выполнении чего-либо необычного в LyX, взгляните
+ на эти файлы.
+\layout Subsection
+
+Набор, просмотр и печать
+\layout Itemize
+
+Создайте новый файл с помощью меню 
+\family sans 
+Файл\SpecialChar \menuseparator
+Создать;
+\layout Itemize
+
+Наберите такое предложение: 
+\family typewriter 
+
+\begin_inset Quotes fld
+\end_inset 
+
+Это мой первый LyX документ!
+\begin_inset Quotes frd
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Всё верно.
+ Вы действительно можете набрать всё, что захотите.
+ Это не имеет значения.
+ Мы извиняемся за бессмысленность этого предложения, а также за всё то,
+ что мы будем просить вас набрать в будущем.
+\end_inset 
+
+
+\layout Itemize
+
+Сохраните документ с помощью 
+\family sans 
+Файл\SpecialChar \menuseparator
+Сохранить\SpecialChar ~
+как\SpecialChar \@.
+
+\layout Itemize
+
+Запустите LaTeX для создания файла 
+\family typewriter 
+dvi
+\family default 
+ через пункт меню 
+\family sans 
+Просмотреть\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+VI
+\family default 
+\SpecialChar \@.
+ Вы увидите, как в окне, из которого вы запустили lyx, будут печататься
+ сообщения LaTeX, сейчас вы можете их проигнорировать.
+ LyX запустит 
+\family typewriter 
+xDVI
+\family default 
+ (или другой просмотрщик 
+\family typewriter 
+dvi
+\family default 
+), который откроется в новом окне и отобразит как будет выглядеть ваш документ
+ при печати.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Вы можете сэкономить время, оставив 
+\family typewriter 
+xdvi
+\family default 
+ запущенным в фоновом режиме.
+ Далее вы можете использовать 
+\family sans 
+Просмотреть\SpecialChar \menuseparator
+Обновить\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+VI
+\family default 
+ и просто щёлкать на окне 
+\family typewriter 
+xdvi
+\family default 
+ (или раскрывать его) после завершения вывода LaTeX.
+\end_inset 
+
+
+\layout Itemize
+
+Напечатайте файл через меню 
+\family sans 
+Файл\SpecialChar \menuseparator
+Распечатать
+\family default 
+, и нажмите 
+\family sans 
+OK\SpecialChar \@.
+
+\layout Standard
+
+Наши поздравления! Вы написали и напечатали ваш первый документ LyX.
+ Всё остальное просто детали, которые раскрываются в оставшейся части 
+\emph on 
+Самоучителя
+\emph default 
+, 
+\emph on 
+Руководстве пользователя
+\emph default 
+ и 
+\emph on 
+Дополнительных возможностях
+\emph default 
+.
+\layout Subsection
+
+Простые операции
+\layout Standard
+
+Конечно же, LyX может выполнять большинство операций, которые доступны в
+ других текстовых процессорах.
+ Он будет автоматически переносить слова и выравнивать абзацы.
+ Теперь разверните парочку меню
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Если вы похожи на многих других пользователей 
+\noun on 
+unix
+\noun default 
+, то наверняка делали это до чтения 
+\emph on 
+Самоучителя
+\emph default 
+.
+\end_inset 
+
+ и вы увидите, что большинство простых команд (например, 
+\family sans 
+Файл\SpecialChar \menuseparator
+Выйти, Правка\SpecialChar \menuseparator
+Вставить, Файл\SpecialChar \menuseparator
+Сохранить) 
+\family default 
+названы так, как вы и ожидаете, находятся в тех же меню, где вы думаете,
+ что они должны бы находиться, и выполняют то, что вы от них ожидаете.
+ Ниже приводится короткое описание выполнения некоторых простых действий.
+\layout Description
+
+Отмена.
+ В LyX есть 
+\emph on 
+возможность
+\emph default 
+ 
+\begin_inset Quotes fld
+\end_inset 
+
+неограниченной отмены
+\begin_inset Quotes frd
+\end_inset 
+
+, означающая, что вы можете отменить всё, что делали с начала текущего сеанса
+ редактирования нажатием 
+\family sans 
+Правка\SpecialChar \menuseparator
+Отменить\SpecialChar ~
+последнее\SpecialChar ~
+действие
+\family default 
+ нужное количество раз.
+ Если вы отменили слишком много, чтобы вернуть отменённое просто выберите
+ 
+\family sans 
+Правка\SpecialChar \menuseparator
+Повторить\SpecialChar ~
+отменённое\SpecialChar ~
+действие
+\family default 
+.
+ 
+\begin_deeper 
+\layout Standard
+
+[На данный момент, отмена ограничена 100 шагами.
+ Отмена работает не для 
+\emph on 
+всего
+\emph default 
+, например, нельзя отменить изменения в формате документа.]
+\end_deeper 
+\layout Description
+
+Вырезка/Вставка/Копирование.
+ Для вырезки, вставки и копирования используйте 
+\family sans 
+Правка\SpecialChar \menuseparator
+Вырезать
+\family default 
+, 
+\family sans 
+Правка\SpecialChar \menuseparator
+Вставить
+\family default 
+ и 
+\family sans 
+Правка\SpecialChar \menuseparator
+Копировать
+\family default 
+.
+ Или автоматически вставляйте выбранный текст с помощью 
+\emph on 
+средней кнопки мыши
+\emph default 
+.
+\layout Description
+
+Поиск/Замена.
+ Для поиска используйте 
+\family sans 
+Правка\SpecialChar \menuseparator
+Найти\SpecialChar ~
+и\SpecialChar ~
+заменить
+\family default 
+.
+ В открывающемся при этом диалоговом окне вы можете начать поиск кнопками
+ 
+\family sans 
+Вперёд
+\family default 
+ или 
+\family sans 
+Назад
+\family default 
+; для замены найденного слова используйте кнопку 
+\family sans 
+Заменить
+\family default 
+.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Когда закончите, закройте окно.
+ Либо оставьте его открытым, если вам так удобнее.
+ Большинство диалоговых окон в LyX --- включая 
+\family sans 
+Найти\SpecialChar ~
+и\SpecialChar ~
+заменить
+\family default 
+, 
+\family sans 
+Содержание
+\family default 
+, а также различные математические всплывающие окна --- окна, которые вместо
+ того, чтобы закрыть, можно свернуть.
+ Некоторые диалоговые окна, таких как 
+\family sans 
+Файл\SpecialChar \menuseparator
+Открыть
+\family default 
+, не позволяют вам ничего сделать в главном окне LyX, пока вы не закроете
+ диалог.
+ Когда вы пытаетесь набрать в главном окне LyX или даёте команду в каком-либо
+ диалоговом окне, проверяйте, что фокус ввода находится в нужном окне.
+\end_inset 
+
+ Если пожелаете, вы можете указать, выполнять ли чувствительный к регистру
+ поиск, или поиск только полных слов.
+\layout Description
+
+Форматирование\SpecialChar ~
+символов.
+ Вы можете 
+\emph on 
+выделять
+\emph default 
+ текст (обычно выделяемые символы становятся наклонными), делать его 
+\series bold 
+полужирным
+\series default 
+, включать шрифт 
+\noun on 
+имён собственных
+\noun default 
+ (обычно капитель, используется для имён людей) переключая кнопки в меню
+ 
+\family sans 
+Формат\SpecialChar \menuseparator
+Символ
+\family default 
+.
+\layout Description
+
+Панель\SpecialChar ~
+инструментов.
+ Кнопки на панели инструментов (прямо под меню) позволяют вам выполнять
+ некоторые часто используемые действия, такие как 
+\family sans 
+Вставить
+\family default 
+ и 
+\family sans 
+Распечатать
+\family default 
+.
+ Если вы удерживаете мышь над кнопкой панели инструментов, небольшая жёлтая
+ заметка расскажет вам о назначении этой кнопки.
+\layout Description
+
+Мини-буфер.
+ Серая строка в самом низу окна LyX называется мини-буфер.
+ Эта строка показывает различную полезную информацию.
+ Например, после сохранения документа она сообщит имя только что сохранённого
+ файла.
+ Также тут могут появляться некоторые сообщения об ошибках.
+ Обратите внимание, вы также можете 
+\emph on 
+набирать
+\emph default 
+ в мини-буфере.
+ Это даст вам доступ ко всем видам интересных выполняемых функций, включая
+ функции, которые могут испортить ваш документ.
+ Другими словами, не набирайте ничего в мини-буфере, пока не будете знать,
+ что вы делаете.
+\layout Standard
+
+Конечно, вы ещё недостаточно много написали для использования большинства
+ этих функций, но когда вы напишете больше, всё-таки попробуйте отмену,
+ вставку и т.п.
+\layout Subsection
+
+WYSIWYM: Пробельное пространство в LyX
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:whitespace}
+
+\end_inset 
+
+Одно из самого сложного для новичков --- это привыкнуть к способу обращения
+ LyX с пробельным пространством.
+ Сколько бы раз вы ни нажимали 
+\family sans 
+Enter
+\family default 
+, вы получите только одну пустую строку.
+ Сколько бы вы раз ни нажимали 
+\family sans 
+Пробел
+\family default 
+, вы получите только один пробел.
+ На пустой строке LyX не позволит вам ввести даже один пробел.
+ Клавиша 
+\family sans 
+Tab
+\family default 
+ не будет передвигать курсор по позициям табуляции; фактически табуляции
+\emph on 
+ нет
+\emph default 
+! Для установки табуляции и границ вверху страницы нет никакой линейки.
+\layout Standard
+
+Многие коммерческие текстовые процессоры построены на принципе WYSIWYG:
+ 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\lang english
+What You See Is What You Get
+\lang russian
+
+\begin_inset Quotes frd
+\end_inset 
+
+ (
+\begin_inset Quotes fld
+\end_inset 
+
+То, что вы видите --- это то, что вы получите
+\begin_inset Quotes frd
+\end_inset 
+
+).
+ LyX же построен на принципе 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\lang english
+What You See Is What You 
+\emph on 
+Mean
+\emph default 
+\lang russian
+
+\begin_inset Quotes frd
+\end_inset 
+
+ (
+\begin_inset Quotes fld
+\end_inset 
+
+Вы видите то, что вы имели в виду
+\begin_inset Quotes frd
+\end_inset 
+
+).
+ Вы вводите, что вам нужно, а LyX позаботится об оформлении вместо вас,
+ так что результат будет выглядеть хорошо.
+ 
+\family sans 
+Enter
+\family default 
+ грамматически разделяет абзацы, а
+\family sans 
+ Пробел
+\family default 
+ грамматически разделяет слова, поэтому незачем ставить несколько пробелов
+ подряд; Клавиша 
+\family sans 
+Tab
+\family default 
+ вовсе не имеет никакой грамматической функции, и LyX её не поддерживает.
+ Используя LyX, вы будете уделять большую часть вашего времени 
+\emph on 
+содержимому
+\emph default 
+ вашего документа, и меньшую --- его 
+\emph on 
+форматированию.
+ 
+\emph default 
+Более подробно о концепции WYSIWYM смотрите во 
+\emph on 
+Введении
+\emph default 
+.
+ 
+\layout Standard
+
+В LyX есть (в большом количестве) инструменты точной настройки форматирования
+ вашего документа.
+ Ведь всё-таки LyX не может оформлять текст 
+\emph on 
+точно так,
+\emph default 
+ как вы себе представляете.
+ Обо всём этом содержится информация в 
+\emph on 
+Руководстве пользователя
+\emph default 
+.
+ Данный инструментарий включает: горизонтальный клей и вертикальные интервалы,
+ что более мощно и универсально, чем повторяющиеся пустые сроки, а также
+ способы изменения размеров шрифта, стилей символов и выравнивания абзацев
+ вручную.
+ Идея состоит в том, что вы можете набрать весь ваш документ, сосредоточившись
+ на содержимом, и позаботиться о точной настройке в самом конце.
+ В обычных текстовых процессорах, вас будет отвлекать форматирование документа
+ в процессе написания.
+\layout Standard
+
+Ещё один специальный тип пустого пространства --- 
+\family sans 
+Неразрывный\SpecialChar ~
+пробел
+\family default 
+, которое делается нажатием 
+\family sans 
+C-Пробел
+\family default 
+ (или 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Специальный\SpecialChar ~
+символ\SpecialChar \menuseparator
+Неразрывный\SpecialChar ~
+пробел
+\family default 
+) и показывается на экране как маленькая буква 
+\begin_inset Quotes fld
+\end_inset 
+
+u
+\begin_inset Quotes frd
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Если вы читаете это руководство с экрана, вы вероятно уже заметили это и
+ были удивлены.
+\end_inset 
+
+.
+ Если вы вставляете 
+\family sans 
+Неразрывный\SpecialChar ~
+пробел
+\family default 
+ между двумя словами, на бумаге он напечатается как обычный пробел.
+ Однако, 
+\family sans 
+Неразрывный пробел
+\family default 
+ указывает LaTeX не вставлять между этих двух слов разрыв строки.
+ Он часто используется для написания чего-то наподобие 
+\begin_inset Quotes fld
+\end_inset 
+
+смотрите Раздел\SpecialChar ~
+1
+\begin_inset Quotes frd
+\end_inset 
+
+, если вы хотите быть уверены, что 
+\begin_inset Quotes fld
+\end_inset 
+
+Раздел
+\begin_inset Quotes frd
+\end_inset 
+
+ и 
+\begin_inset Quotes fld
+\end_inset 
+
+1
+\begin_inset Quotes frd
+\end_inset 
+
+ будут напечатаны на одной строке
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Мы также используем его в 
+\emph on 
+Самоучителе 
+\emph default 
+для описания названий меню, или специальных символов подобных\SpecialChar \ldots{}
+
+\family sans 
+ Неразрывному\SpecialChar ~
+пробелу!
+\end_inset 
+
+.
+\layout Section
+
+Окружения
+\layout Standard
+
+Различные части документа служат различным целям; мы называем эти части
+ 
+\emph on 
+окружениями
+\emph default 
+.
+ Большинство документов состоит из обычного текста.
+ Заголовки раздела (главы, подраздела и т.д.) дают понять пользователю, что
+ начинается новый тематический раздел или подраздел.
+ Некоторые типы документов имеют специальные окружения.
+ Журнальная статья содержит резюме и заголовок.
+ Письмо не содержит ни того, ни другого, однако, возможно, содержит окружение
+ с адресом отправителя.
+\layout Standard
+
+Окружения --- значительная часть философии LyX 
+\begin_inset Quotes fld
+\end_inset 
+
+Вы видите то, что вы имели в виду
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Конкретное окружение может требовать определённых стилей и размеров шрифта,
+ размеров отступа, междустрочного интервала и тому подобное.
+ Это усугубляется тем, что соответствующее форматирование данного окружения
+ может меняться: один журнал для заголовков разделов использует жирный шрифт,
+ величиной 18 пунктов, выравненный по центру, а другой использует наклонный,
+ величиной 15 пунктов, выравненный по левому краю; различные языки могут
+ иметь различные стандарты отступов; также может широко варьироваться формат
+ библиографий.
+ LyX поможет вам избежать изучения всевозможных стилей форматирования.
+\layout Standard
+
+Окно
+\family sans 
+ Окружение
+\family default 
+ размещено в левом краю панели инструментов (прямо под меню 
+\family sans 
+Файл
+\family default 
+).
+ Оно отображает текущее используемое окружение, в котором вы пишете.
+ Когда вы писали ваш первый документ, оно показывало 
+\begin_inset Quotes fld
+\end_inset 
+
+Обычный
+\begin_inset Quotes frd
+\end_inset 
+
+, что является окружением по умолчанию для текста.
+ Теперь поместите различные окружения в ваш новый документ, чтобы посмотреть,
+ как они работают.
+ Это делается с помощью меню 
+\family sans 
+Окружение
+\family default 
+, которое открывается нажатием мышью на картинку со 
+\begin_inset Quotes fld
+\end_inset 
+
+стрелкой вниз
+\begin_inset Quotes frd
+\end_inset 
+
+ прямо справа от окна 
+\family sans 
+Окружение
+\family default 
+.
+\layout Subsection
+
+Разделы и подразделы
+\layout Standard
+
+Наберите слово
+\family typewriter 
+ 
+\begin_inset Quotes fld
+\end_inset 
+
+Введение
+\begin_inset Quotes frd
+\end_inset 
+
+
+\family default 
+ в первой строке вашего документа, и выберите 
+\family sans 
+Раздел
+\family default 
+ из меню 
+\family sans 
+Окружение
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Не обязательно
+\emph on 
+ выделять
+\emph default 
+ строку.
+ Если ничего не выделено, LyX изменяет окружение текущего абзаца.
+ Как вариант, вы можете изменить окружение нескольких абзацев путём их выделения
+ перед выбором окружения.
+\end_inset 
+
+
+\family default 
+.
+ LyX пронумерует раздел номером 
+\begin_inset Quotes fld
+\end_inset 
+
+1
+\begin_inset Quotes frd
+\end_inset 
+
+ и установит большой шрифт для его заголовка.
+ (Конечно, заголовок раздела будет также корректно отображаться и в 
+\family typewriter 
+dvi
+\family default 
+, и в печатном документе).
+ Теперь нажмите 
+\family sans 
+Enter
+\family default 
+\SpecialChar \@.
+ Заметьте, что окно 
+\family sans 
+Окружение
+\family default 
+ меняется с 
+\begin_inset Quotes fld
+\end_inset 
+
+Раздел
+\begin_inset Quotes frd
+\end_inset 
+
+ обратно на 
+\begin_inset Quotes fld
+\end_inset 
+
+Обычный
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Окончание заголовков разделов, как и большинства окружений, предполагается
+ по нажатию 
+\family sans 
+Enter
+\family default 
+\SpecialChar \@.
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+О том, как набирать заголовки из двух или более строк см.
+ 
+\emph on 
+Руководство Пользователя
+\emph default 
+.
+ Конечно же, окружение 
+\family sans 
+Обычный
+\family default 
+ может распространяться на несколько абзацев.
+ По нажатию 
+\family sans 
+Return
+\family default 
+ также не завершаются различные окружения списков (смотрите ниже).
+ Вы всегда можете узнать текущее окружение абзаца, взглянув в окно 
+\family sans 
+Окружение
+\family default 
+.
+\end_inset 
+
+ Введите вступительную часть документа: 
+\layout LyX-Code
+
+Это вступительная часть моего первого  документа LyX.
+\layout Standard
+
+Нажмите 
+\family sans 
+Enter
+\family default 
+ ещё раз, и снова выберите 
+\family sans 
+Раздел
+\family default 
+ в меню 
+\family sans 
+Окружение
+\family default 
+.
+ LyX напишет 
+\begin_inset Quotes fld
+\end_inset 
+
+2
+\begin_inset Quotes frd
+\end_inset 
+
+ и будет ожидать ввода заголовка.
+ Наберите 
+\family typewriter 
+Прочее
+\family default 
+, и вы увидите, что LyX снова помечает набранное как заголовок раздела.
+\layout Standard
+
+Выглядит лучше.
+ Снова перейдите к концу Раздела\SpecialChar ~
+1 (после текста 
+\begin_inset Quotes fld
+\end_inset 
+
+мой первый документ LyX
+\begin_inset Quotes frd
+\end_inset 
+
+), снова нажмите 
+\family sans 
+Enter
+\family default 
+, и снова выберите 
+\family sans 
+Раздел
+\family default 
+ из меню
+\family sans 
+ Окружение
+\family default 
+.
+ И опять LyX напишет 
+\begin_inset Quotes fld
+\end_inset 
+
+2
+\begin_inset Quotes frd
+\end_inset 
+
+ и будет ожидать ввода заголовка.
+ Наберите 
+\family typewriter 
+фразу 
+\begin_inset Quotes fld
+\end_inset 
+
+Об этом документе
+\family default 
+
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Раздел 
+\begin_inset Quotes fld
+\end_inset 
+
+Прочее
+\begin_inset Quotes frd
+\end_inset 
+
+, который был Разделом\SpecialChar ~
+2, автоматически перенумеруется в Раздел\SpecialChar ~
+3! В манере
+ WYSIWYM, вам нужно просто указать текст, который составляет заголовок,
+ и LyX возьмёт на себя нумерацию разделов и их оформление.
+\layout Standard
+
+Нажмите 
+\family sans 
+Enter
+\family default 
+ чтобы вернуться к окружению 
+\family sans 
+Обычный
+\family default 
+, и наберите следующие строки:
+\layout LyX-Code
+
+Разделы и подразделы описаны ниже.
+\layout LyX-Code
+
+Описание Раздела
+\layout LyX-Code
+
+Разделы больше, чем подразделы.
+\layout LyX-Code
+
+Описание подраздела
+\layout LyX-Code
+
+Подразделы меньше, чем разделы.
+\layout Standard
+
+Нажмите на второй строке и выберите 
+\family sans 
+Подраздел
+\family default 
+ из меню
+\family sans 
+ Окружение
+\family default 
+.
+ LyX пронумерует подраздел 
+\begin_inset Quotes fld
+\end_inset 
+
+2.1
+\begin_inset Quotes frd
+\end_inset 
+
+, и оформит его шрифтом, который больше, чем обычный шрифт, но меньше шрифта
+ в заголовке раздела.
+ Также измените окружение четвёртой строки на 
+\family sans 
+Подраздел
+\family default 
+.
+ Как вы и ожидали, LyX автоматически пронумерует раздел 
+\begin_inset Quotes fld
+\end_inset 
+
+2.2
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Если вы вставите другой раздел перед Разделом\SpecialChar ~
+2, Раздел\SpecialChar ~
+2 будет перенумерован
+ в Раздел\SpecialChar ~
+3, а подразделы будут перенумерованы в 
+\begin_inset Quotes fld
+\end_inset 
+
+3.1
+\begin_inset Quotes frd
+\end_inset 
+
+ и 
+\begin_inset Quotes fld
+\end_inset 
+
+3.2
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ 
+\layout Standard
+
+Четыре уровня секционирования включают Подподраздел, Параграф, и Подпараграф.
+ Поиграйте с ними по вашему усмотрению.
+ Вы можете заметить, что заголовки параграфов и подпараграфов по умолчанию
+ не нумеруются, и что подпараграфы начинаются с отступа; как это изменить
+ смотрите в 
+\emph on 
+Руководстве пользователя
+\emph default 
+.
+ Заголовок 
+\family sans 
+Часть
+\family default 
+ -- самый верхний уровень секционирования, выше 
+\family sans 
+Раздел
+\family default 
+, но его использование разрешено только в некоторых типах текстовых классов
+ документов LyX (смотрите Раздел\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:textclasses}
+
+\end_inset 
+
+).
+ 
+\layout Standard
+
+И наконец вам может понадобиться, чтобы разделы и подразделы не нумеровались.
+ Есть окружения и для этого.
+ Если вы измените окружение одного из заголовков на
+\family sans 
+ Раздел*
+\family default 
+ (чтобы его найти, возможно, вам потребуется прокрутить меню 
+\family sans 
+Окружение
+\family default 
+ вниз), LyX будет использовать тот же размер шрифта, но не будет нумеровать
+ этот раздел.
+ Также есть соответствующие отмеченные звёздочкой окружения для 
+\family sans 
+Подраздел
+\family default 
+ и 
+\family sans 
+Подподраздел
+\family default 
+.
+ Попробуйте изменить некоторые из ваших разделов и подразделов на эквивалентные
+ окружения со звёздочкой и понаблюдайте, как будет меняться нумерация.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Исправьте заголовки разделов и подразделов в 
+\family typewriter 
+example_raw.lyx
+\family default 
+.
+ 
+\layout Subsection
+
+Списки и подсписки
+\layout Standard
+
+LyX поддерживает несколько различных окружений для оформления списков.
+ Различные виды списков освобождают вас от нажатий клавиши 
+\family sans 
+Tab
+\family default 
+ миллион раз при создании структуры, или от перенумерации целого списка
+ при добавлении пункта в середину списка, и позволяют вам сконцентрироваться
+ на содержимом списка.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Да, мы подчёркиваем это на протяжении всего 
+\emph on 
+Самоучителя
+\emph default 
+.
+ Но 
+\emph on 
+это
+\emph default 
+ --- главная философия LyX'а, так что, пожалуйста, простите нас.
+\end_inset 
+
+ Различные типы документов логически требуют различных сред списков:
+\layout Itemize
+
+Слайды презентации могут использовать окружение точечного списка 
+\family sans 
+Перечисление
+\family default 
+ для описания различных точек.
+ 
+\layout Itemize
+
+Планы и структуры могут использовать окружение
+\family sans 
+ Нумерация
+\family default 
+ нумерованного списка (и буквенных подсписков).
+ 
+\layout Itemize
+
+Документ, описывающий несколько программных пакетов, мог бы использовать
+ окружение 
+\family sans 
+Описание
+\family default 
+, где каждый пункт списка начинается с выделенного жирным шрифтом слова.
+\layout Itemize
+
+Окружение 
+\family sans 
+Список,
+\family default 
+ отсутствующее в LaTeX, является несколько изменённой формой окружения 
+\family sans 
+Описание
+\family default 
+.
+\layout Standard
+
+Давайте напишем список причин, по которым LyX лучше других текстовых процессоров.
+ Где-нибудь в вашем документе наберите:
+\layout Standard
+
+
+\family typewriter 
+Lyx лучше любого текстового процессора потому, что: 
+\layout Standard
+
+и нажмите 
+\family sans 
+Enter
+\family default 
+.
+ Теперь выберите 
+\family sans 
+Перечисление
+\family default 
+ из меню 
+\family sans 
+Окружение
+\family default 
+.
+ LyX нарисует 
+\begin_inset Quotes fld
+\end_inset 
+
+пульку
+\begin_inset Quotes frd
+\end_inset 
+
+ (фактически, звёздочку, которая преобразуется в кружочек при печати) в
+ строке.
+ Наберите ваши причины: 
+\layout LyX-Code
+
+Оформление делается за вас.
+\layout LyX-Code
+
+Математика --- WYSIWYG
+\layout LyX-Code
+
+Очень просто создавать списки!
+\layout Standard
+
+Окружения списков, в отличие от заголовков, не завершаются по нажатию 
+\family sans 
+Enter
+\family default 
+.
+ Вместо этого, LyX предполагает, что вы собираетесь продолжить список следующим
+ пунктом.
+ Таким образом, выше вы получите список из трёх пунктов.
+ Если вам нужно более одного абзаца в одном 
+\emph on 
+пункте списка,
+\emph default 
+ одним из способов будет использовать 
+\family sans 
+Разрыв\SpecialChar ~
+Строки
+\family default 
+, который вы получите, нажав 
+\family sans 
+C-Enter
+\family default 
+.
+ Чтобы завершить ввод списка, вам нужно заново выбрать окружение 
+\family sans 
+Обычный
+\family default 
+ (или использовать клавишную комбинацию 
+\family sans 
+M-p\SpecialChar ~
+s
+\family default 
+).
+\layout Standard
+
+Вы получили красивый ненумерованный список.
+ Вы можете запустить LaTeX, чтобы посмотреть, как он будет выглядеть при
+ печати.
+ Но что, если вы хотите пронумеровать причины? Что ж, просто выделите весь
+ список
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+LyX не позволит вам выделить первую метку, пока вы не выберете абзац 
+\emph on 
+перед 
+\emph default 
+списком, что, вероятно, вам не нужно.
+ Также вы не сможете выделять номера в нумерованных заголовках разделов.
+ Не беспокойтесь об этом.
+\end_inset 
+
+ и выберите 
+\family sans 
+Нумерация
+\family default 
+ из меню Окружение.
+ Ух! Как мы и говорили, если вы удаляете или добавляете пункты списка, LyX
+ будет исправлять нумерацию.
+\layout Standard
+
+Пока список отмечен, вы можете попробовать другие два окружения списков,
+ 
+\family sans 
+Описание
+\family default 
+ и 
+\family sans 
+Список
+\family default 
+, для того, чтобы посмотреть, как они выглядят.
+ Для этих двух окружений, каждый пункт списка состоит из термина, который
+ является первым словом списка, за которым следует определение --- остальная
+ часть абзаца (пока вы не нажмёте 
+\family sans 
+Enter
+\family default 
+).
+ Термин отделяется от остальной части абзаца либо жирным шрифтом (
+\family sans 
+Описание
+\family default 
+), либо 
+\begin_inset Quotes fld
+\end_inset 
+
+Табуляцией
+\begin_inset Quotes frd
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Но отступ оформления, который будет изменяться, чтобы вместить наибольший
+ из терминов, --- не печальный, жёсткий, неизменяемый табулятор в печатающей
+ машинке.
+\end_inset 
+
+ (
+\family sans 
+Список
+\family default 
+).
+ Если вы хотите получить более одного слова в определении, разделяйте их
+ с помощью 
+\family sans 
+Неразрывного\SpecialChar ~
+пробела
+\family default 
+.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Наберите список в 
+\family typewriter 
+example_raw.lyx
+\layout Standard
+
+Вы можете вкладывать списки друг в друга самыми различными комбинациями.
+ Очевидным примером было бы написание структурированного плана.
+ Нумерованные и не нумерованные списки будут иметь различные схемы нумерации
+ подсписков.
+ Большие подробности о списках, а также примеры с множественными вложениями,
+ смотрите в 
+\emph on 
+Руководстве Пользователя
+\emph default 
+.
+\layout Subsection
+
+Другие окружения: стихи, цитаты и прочее
+\layout Standard
+
+Есть два окружения для оформления цитат отдельно от окружающего текста:
+ 
+\family sans 
+Цитата
+\family default 
+ для коротких цитат и 
+\family sans 
+Большая\SpecialChar ~
+цитата
+\family default 
+ для длинных.
+ Код программ (окружение 
+\family sans 
+LyX-
+\family default 
+код, также используется в 
+\emph on 
+Самоучителе
+\emph default 
+ для оформления длинных примеров) пишется 
+\family typewriter 
+машинописным
+\family default 
+ шрифтом; это окружение --- единственное место в LyX, где допустимо использовать
+ многократные пробелы для отступов в тексте.
+ Также вы можете писать стихи
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+\SpecialChar \ldots{}
+предполагается вы достаточно творческий человек, чтобы поэзия была у вас
+ на первом месте.
+\end_inset 
+
+ используя стиль Стихи.
+ При этом вам нужно будет использовать 
+\family sans 
+Enter
+\family default 
+ для разделения строф, и 
+\family sans 
+C-Enter
+\family default 
+ для разделения строк в строфе.
+ Более полное описание всех свойств окружений LyX смотрите в 
+\emph on 
+Руководстве Пользователя
+\emph default 
+.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Корректно оформите окружения 
+\family sans 
+Цитата, LyX-код,
+\family default 
+ и 
+\family sans 
+Стихи
+\family default 
+ в 
+\family typewriter 
+example_raw.lyx
+\layout Chapter
+
+Написание документов
+\layout Standard
+
+Будем надеяться, предыдущая глава позволила вам привыкнуть к написанию в
+ LyX.
+ Вам были представлены основные операции редактирования в LyX, а также мощные
+ методы написания с помощью окружений.
+ Однако большинство использующих LyX людей желали бы создавать документы:
+ бумаги, статьи, книги, руководства или письма.
+ Цель этой главы перевести вас от простого написания текста в LyX к созданию
+ законченного документа.
+ Она продемонстрирует вам классы текста, которые позволят вам писать документы
+ различного рода.
+ Затем она опишет многие дополнения, превращающие текст в документ, такие
+ как заголовки, сноски, перекрёстные ссылки, библиографии и содержание.
+\layout Section
+
+Классы текста и шаблоны: Написание писем
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:textclasses}
+
+\end_inset 
+
+Различные типы документов требуют различного полиграфического оформления.
+ Например, книги обычно печатаются с двух сторон листа, в то время как статьи
+ --- с одной стороны.
+ Дополнительно, многие документы содержат специальные окружения: письма
+ включают адрес отправителя и подпись, что не имеет смысла в книге или статье.
+ 
+\emph on 
+Класс текста
+\emph default 
+ LyX
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+для пользователей LaTeX'а: это эквивалентно классу документа в LaTeX'е
+\end_inset 
+
+ заботится об этих значительных различиях между различными типами документов.
+ Например, 
+\emph on 
+Самоучитель
+\emph default 
+ был написан в классе текста
+\family sans 
+ Book
+\family default 
+.
+ Классы текста --- это ещё одна важная часть философии WYSIWYM; они указывают
+ LyX способ оформления документа, так что вам нет необходимости знать его.
+\layout Standard
+
+Скорее всего ваш документ написан в классе текста 
+\family sans 
+Article
+\family default 
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Обычно он является классом по умолчанию, однако вы можете изменить это в
+ вашем файле 
+\family typewriter 
+lyxrc
+\family default 
+.
+\end_inset 
+
+.
+ Чтобы посмотреть как различаются оформления, попробуйте поменять его на
+ другие классы текста (используя закладку 
+\family sans 
+Документ
+\family default 
+ в диалоговом окне
+\family sans 
+\bar under 
+ 
+\bar default 
+Формат\SpecialChar \menuseparator
+Документ
+\family default 
+.
+ Если вы измените класс текста вашего документа на 
+\family sans 
+Book
+\family default 
+ и посмотрите в меню 
+\family typewriter 
+Окружение
+\family default 
+, вы увидите, что большинство допустимых окружений такие же.
+ Однако, теперь вы можете использовать окружение 
+\family sans 
+Часть
+\family default 
+.
+ Если вы не уверены, какое окружение можно использовать в данном классе
+ текста, сверьтесь с меню Окружение.
+\layout Standard
+
+Размеры шрифтов, печать в одну или две колонки, и оформление заголовков
+ станиц --- просто некоторые способы отличий типографского оформления одного
+ журнала от другого.
+ Так как Компьютерный Век продолжает развиваться, журналы начали принимать
+ документы в электронном виде, создавая 
+\begin_inset Quotes fld
+\end_inset 
+
+стилевые файлы
+\begin_inset Quotes frd
+\end_inset 
+
+ LaTeX, чтобы авторы могли отправлять корректно сформированные статьи.
+ LyX также их поддерживает.
+ Например, LyX поддерживает оформление (и дополнительные окружения) журналов
+ Американского Математического Общества, используя класс текста 
+\family sans 
+Article\SpecialChar ~
+(AMS)
+\family default 
+.
+\layout Standard
+
+Вот небольшой справочник классов текста.
+ Для получение большей информации обратитесь к разделу 
+\emph on 
+Специальные классы документов
+\emph default 
+ в 
+\emph on 
+Дополнительных возможностях.
+ 
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Имя
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Заметки
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\lang english
+article
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+печать с одной стороны, без глав
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\lang english
+article (AMS)
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+форматы и окружения для Американского Математического Oбщества
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\lang english
+report
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+больше чем article, печать с двух сторон
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\lang english
+book
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+отчёты и книги
+\end_inset 
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\lang english
+slides
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+прозрачные плёнки, также включает FoilTeX
+\end_inset 
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\lang english
+letter
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+множество дополнительных окружений: адреса, подписи
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Section
+
+Шаблоны: Написание письма
+\layout Standard
+
+Один из наиболее популярных классов --- 
+\family sans 
+Letter
+\family default 
+ (Письмо)\SpecialChar \@.
+ Одним из способов написания письма является создание
+\family sans 
+ 
+\family default 
+нового файла, и выбор 
+\family sans 
+Letter
+\family default 
+ из меню 
+\family sans 
+Класс
+\family default 
+ в диалоговом окне 
+\family sans 
+Формат\SpecialChar \menuseparator
+Документ
+\family default 
+.
+ Хотя это наиболее очевидный способ написания письма, он требует множества
+ действий.
+ Каждый раз, когда вы пишете деловое письмо, вы набираете свой адрес, адрес
+ получателя, тело письма, подпись и т.п.
+ В LyX есть 
+\emph on 
+шаблон
+\emph default 
+ для писем, содержащий пример письма; если у вас есть шаблон, вы можете
+ просто заменить несколько частей письма своим текстом каждый раз когда
+ вы пишете письмо.
+\layout Standard
+
+Создайте новый файл с помощью 
+\family sans 
+Файл\SpecialChar \menuseparator
+Создать\SpecialChar ~
+из\SpecialChar ~
+шаблона
+\family default 
+.
+ После выбора имени нового файла, выберите 
+\family typewriter 
+letter.lyx
+\family default 
+ в диалоговом окне 
+\family sans 
+Выберите\SpecialChar ~
+шаблон
+\family default 
+.
+ Посмотреть, как оформлены различные окружения можно сохранив и напечатав
+ файл.
+\layout Standard
+
+Когда вы взглянете на меню 
+\family sans 
+Окружение
+\family default 
+, вы увидите несколько окружений, таких как окружение 
+\family sans 
+Мой\SpecialChar ~
+адрес
+\family default 
+, которых нет ни в каких других классах текстов..
+ Другие, такие как 
+\family sans 
+Цитата 
+\family default 
+и 
+\family sans 
+Описание
+\family default 
+, вам знакомы.
+ Вы можете немного с ними поиграть и посмотреть, как они работают.
+ Например, вы заметите, что окружение 
+\family sans 
+Подпись
+\family default 
+ перед фактическим содержимым подписи содержит слово 
+\begin_inset Quotes fld
+\end_inset 
+
+Signature:
+\begin_inset Quotes fld
+\end_inset 
+
+, выведенное красным цветом.
+ Это слово не будет показано в распечатанном письме, в чем вы можете убедиться,
+ если напечатаете файл.
+ Оно здесь просто для того, чтобы вы знали, что это подпись.
+ Также заметьте, что не имеет значения место расположения строки 
+\family sans 
+Подпись
+\family default 
+ в файле.
+ Помните, LyX следует концепции WYSIWYM; вы можете вставить окружение 
+\family sans 
+Подпись
+\family default 
+ где захотите, но LyX знает, что в печатном документе подпись будет в конце.
+\layout Standard
+
+Шаблон --- обычный LyX-файл.
+ Это значит, что вы можете заполнить поля с указанием вашего адреса и подписи
+ и сохранить его в файл как новый шаблон.
+ Теперь, когда вам нужно написать письмо, вы можете использовать сохранённый
+ шаблон письма.
+ Тут мы не будем задавать вам 
+\begin_inset Quotes fld
+\end_inset 
+
+упражнение
+\begin_inset Quotes frd
+\end_inset 
+
+, просто напишите кому-либо письмо.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Одно замечание, если вы пишете на основе шаблона.
+ Если вы удалите весь текст в каком-либо окружении --- например, очистив
+ всё поле 
+\family sans 
+Мой\SpecialChar ~
+адрес,
+\family default 
+ чтобы заменить его своим текстом, а затем переместите курсор, не введя
+ этого текста --- окружение может исчезнуть.
+ Это потому, что большинство окружений не могут существовать без содержащегося
+ в них текста.
+ Просто заново выберите окружение из меню 
+\family sans 
+Окружение
+\family default 
+ и оно вернётся.
+\end_inset 
+
+
+\layout Standard
+
+Шаблоны могут сэкономить массу времени, и мы рекомендуем использовать их
+ при всякой возможности.
+ К тому же, они могут помочь некоторым людям изучить способы использования
+ некоторых необычных классов текста.
+ В заключение, они могут быть полезны людям, которые настраивают LyX для
+ других, менее знакомых с компьютером пользователей.
+ Например, когда они впервые изучают LyX, они будут меньше пугаться, если
+ у них будет настроенный в соответствии с требованиями их компании шаблон,
+ к примеру, для написания писем.
+\layout Section
+
+Заголовки документов
+\layout Standard
+
+LyX (подобно LaTeX) рассматривает заголовок --- который может содержать
+ фактический заголовок, имя автора, дату и даже резюме документа --- как
+ отдельную часть документа.
+\layout Standard
+
+Вернитесь к началу вашего 
+\family typewriter 
+newfile.lyx 
+\family default 
+документа и проверьте, что вы использовали класс текста 
+\family sans 
+Article
+\family default 
+.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Вы больше не должны использовать класс текста
+\family sans 
+ Letter
+\family default 
+, так как он не позволяет задавать заголовок документа.
+\end_inset 
+
+ Наберите заголовок в первой строке, и измените окружение строки на 
+\family sans 
+Заголовок
+\family default 
+.
+ На следующей строке наберите ваше имя и измените его окружение на 
+\family sans 
+Автор
+\family default 
+.
+ На следующей строке наберите дату и измените окружение на 
+\family sans 
+Дата
+\family default 
+.
+ Наберите абзац или два с обобщением содержимого вашего документа, используя
+ окружение 
+\family sans 
+Аннотация
+\family default 
+.
+ Теперь посмотрите, как это выглядит на печати.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Исправьте заголовок, дату и имя автора в документе 
+\family typewriter 
+example_raw.lyx
+\layout Section
+
+Метки и перекрёстные ссылки
+\begin_inset LatexCommand \label{sec:Метки-и-перекрёстные}
+
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:labels}
+
+\end_inset 
+
+Вы можете пометить раздел (или подподраздел, или, что реже используется,
+ просто произвольную часть текста) в вашем документе.
+ Как только вы это сделали, вы можете ссылаться на этот раздел в других
+ частях документа, используя перекрёстные ссылки.
+ Вы можете ссылаться на номер раздела, или на страницу, на которой начинается
+ данный раздел.
+ Так же как и с разделами и сносками, LyX сам заботится о перекрёстных ссылках.
+ Автоматическое управление метками и перекрёстными ссылками --- одно из
+ главных преимуществ LyX (и LaTeX) над традиционными текстовыми процессорами.
+\layout Subsection*
+
+Ваша первая метка
+\layout Standard
+
+Давайте отметим наш второй раздел, с заголовком 
+\begin_inset Quotes fld
+\end_inset 
+
+Об этом документе
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Нажмите левой кнопкой мыши в строке на окончании заголовка раздела, и выберите
+\family sans 
+\bar under 
+ 
+\bar default 
+Вставить\SpecialChar \menuseparator
+Метку
+\family default 
+.
+ Откроется диалоговое окно, в котором будет будет предложено ввести имя
+ метки.
+ Напишем 
+\family typewriter 
+разд:о\SpecialChar ~
+документе
+\family default 
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Возможно, у вас будут проблемы с названиями меток по-русски и вам придётся
+ называть метки только латинскими буквами.
+ --- 
+\emph on 
+прим.
+ лит.
+ ред.
+\end_inset 
+
+, что выглядит довольно описательным именем метки и не должно вызывать конфликто
+в с другими метками, которые мы, возможно, добавим
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Мы написали 
+\begin_inset Quotes fld
+\end_inset 
+
+разд:
+\begin_inset Quotes fld
+\end_inset 
+
+, так как вы также можете создавать метки для математических уравнений,
+ таблиц, рисунков и пунктов списков.
+ На самом деле LyX уже умеет автоматически заполнять это за вас.
+\end_inset 
+
+.
+ Когда вы нажмёте на 
+\family sans 
+OK
+\family default 
+, имя метки будет помещено в прямоугольник сразу же за заголовком раздела.
+\layout Standard
+
+Аналогичным образом вы можете вставлять метки в любом месте раздела; ссылка
+ на раздел будет указывать на последний раздел или подраздел, заголовок
+ которого встретится перед меткой.
+ Однако, вставка метки в одну строку с заголовком раздела (или, возможно,
+ в первой строке текста раздела) гарантирует, что ссылки на страницу будут
+ указывать на начало раздела.
+\layout Standard
+
+Поскольку вы ещё ничего другого не сделали, файл 
+\family typewriter 
+dvi
+\family default 
+ будет выглядеть точно так же, так как метки не показываются в печатном
+ документе.
+ Однако, теперь, когда вы вставили метку, вы можете на неё ссылаться.
+ Далее мы сделаем это.
+\layout Subsection*
+
+Ваша первая перекрёстная ссылка
+\layout Standard
+
+Поставьте курсор где-нибудь в Разделе\SpecialChar ~
+2 вашего документа.
+ Наберите 
+\layout LyX-Code
+
+Если вы хотите больше узнать об этом документе, смотрите 
+\newline 
+Раздел, который можно найти на странице .
+\layout Standard
+
+Теперь поставьте курсор после слова 
+\begin_inset Quotes fld
+\end_inset 
+
+Раздел
+\begin_inset Quotes frd
+\end_inset 
+
+
+\family typewriter 
+ 
+\family default 
+и выберите 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Перекрёстную\SpecialChar ~
+ссылку
+\family default 
+.
+ Появится диалоговое окно 
+\family sans 
+Перекрёстная\SpecialChar ~
+ссылка
+\family default 
+.
+ Оно покажет список доступных для выбора меток.
+ На данный момент, в нем должна быть только одна метка 
+\begin_inset Quotes fld
+\end_inset 
+
+разд:о\SpecialChar ~
+документе
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Выделите её (она может быть выделена по умолчанию), затем установите 
+\family sans 
+Тип\SpecialChar ~
+ссылки
+\family default 
+ на 
+\family sans 
+Обычный
+\family default 
+ (по умолчанию), и нажмите 
+\family sans 
+Применить
+\family default 
+.
+ Теперь поставьте курсор после слова 
+\begin_inset Quotes fld
+\end_inset 
+
+странице
+\begin_inset Quotes frd
+\end_inset 
+
+, и измените 
+\family sans 
+Тип ссылки
+\family default 
+ на 
+\family typewriter 
+Номер\SpecialChar ~
+страницы
+\family default 
+, затем нажмите 
+\family sans 
+Применить
+\family default 
+.
+ (Чтобы быть более точным, вы должны вставить 
+\family sans 
+Неразрывный\SpecialChar ~
+пробел
+\family default 
+ между словом 
+\begin_inset Quotes fld
+\end_inset 
+
+Раздел
+\begin_inset Quotes frd
+\end_inset 
+
+ и ссылкой.
+ То же и для ссылки на номер страницы.)
+\layout Standard
+
+LyX вставляет ссылки в виде серого прямоугольника прямо в то место, где
+ находился курсор.
+ В печатном документе, этот маркер ссылки будет заменён либо на номер страницы,
+ либо на номер раздела (в зависимости от того, что вы выбрали диалоговом
+ окне 
+\family sans 
+Перекрёстная\SpecialChar ~
+ссылка
+\family default 
+).
+ Для удобства перекрёстная ссылка выступает в роли гиперссылки при просмотре
+ документа LyX; нажатие на неё приводит к появлению диалога 
+\family sans 
+Перекрёстная\SpecialChar ~
+ссылка
+\family default 
+, в котором нажатие на 
+\family sans 
+Перейти\SpecialChar ~
+к\SpecialChar ~
+ссылке
+\family default 
+ переместит курсор к метке ссылки, а 
+\family sans 
+C-<
+\family default 
+ вернёт курсор обратно к ссылке.
+ Используйте 
+\family sans 
+Просмотреть\SpecialChar \menuseparator
+Обновить\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+VI
+\family default 
+, и вы увидите, что на последней странице мы делали ссылку на 
+\begin_inset Quotes fld
+\end_inset 
+
+Раздел\SpecialChar ~
+2
+\begin_inset Quotes frd
+\end_inset 
+
+ и 
+\begin_inset Quotes fld
+\end_inset 
+
+Страницу\SpecialChar ~
+1
+\begin_inset Quotes frd
+\end_inset 
+
+ (либо на другую страницу, на которой появится заголовок Раздела\SpecialChar ~
+2).
+\layout Subsection*
+
+Более интересная информация о метках
+\layout Standard
+
+Мы говорили вам, что LyX заботится о нумерации перекрёстных ссылок, теперь
+ вы сможете это проверить.
+ Добавьте новый раздел перед Разделом\SpecialChar ~
+2.
+ Теперь перезапустите LaTeX, и --- вуаля! --- перекрёстная ссылка изменилась
+ на 
+\begin_inset Quotes fld
+\end_inset 
+
+3
+\begin_inset Quotes frd
+\end_inset 
+
+! Измените 
+\begin_inset Quotes fld
+\end_inset 
+
+Об этом документе
+\begin_inset Quotes frd
+\end_inset 
+
+ на подраздел, и перекрёстная ссылка будет ссылаться на Раздел\SpecialChar ~
+2.1 вместо
+ Раздела\SpecialChar ~
+3.
+ Конечно, ссылка на страницу не изменится, пока вы не добавите целую страницу
+ текста перед ссылкой.
+\layout Standard
+
+Если вы хотите ещё немного попрактиковаться с метками, попробуйте вставить
+ метку, 
+\begin_inset Quotes fld
+\end_inset 
+
+разд:моя первая метка
+\begin_inset Quotes frd
+\end_inset 
+
+, в то место, где была ваша первая перекрёстная ссылка, и создайте ссылку
+ на неё из другого места документа.
+ Если вы будете часто вставлять перекрёстные ссылки (например, если вы пишете
+ журнальную статью), будет удобнее оставить окно 
+\family sans 
+Перекрёстная\SpecialChar ~
+ссылка
+\family default 
+ открытым.
+\layout Standard
+
+Если вы хотите проверить, что перекрёстные ссылки правильно работают даже
+ на больших документах, 
+\family sans 
+Скопируйте
+\family default 
+ несколько страниц текста из 
+\emph on 
+Руководства пользователя
+\emph default 
+ в буфер обмена, и 
+\family sans 
+Вставьте
+\family default 
+ этот текст в свой документ
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Кстати, копирование заголовка главы может вызвать ошибку, так как использование
+ глав поддерживается в классе текста 
+\family sans 
+Article
+\family default 
+.
+ Если это случилось --- просто удалите заголовок главы.
+ Если вы хотите знать почему это происходит, смотрите Раздел\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:textclasses}
+
+\end_inset 
+
+.
+ 
+\end_inset 
+
+.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Исправьте ссылки в 
+\family typewriter 
+example_raw.lyx
+\layout Section
+
+Сноски и примечания на полях
+\layout Standard
+
+Сноски можно добавить используя кнопку 
+\family sans 
+Вставить\SpecialChar ~
+сноску
+\family default 
+ в панели инструментов
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Кнопка выглядит в виде стрелки, указывающей на красный текст, прямо под
+ строками с чёрным текстом.
+\end_inset 
+
+ или через меню 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Сноску
+\family default 
+\SpecialChar \@.
+ Нажмите мышью на конец слова 
+\begin_inset Quotes fld
+\end_inset 
+
+LyX
+\begin_inset Quotes frd
+\end_inset 
+
+ где-то в вашем документе и нажмите кнопку 
+\family sans 
+Вставить\SpecialChar ~
+сноску
+\family default 
+.
+ Ниже строки, в которой вы набираете, откроется строка сноски.
+ В левом конце строки вы увидите написанное красным на сером фоне слово
+ 
+\begin_inset Quotes fld
+\end_inset 
+
+сноска
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Остальная часть строки будет обрамлена красной линией; это то место, где
+ вы будете набирать вашу сноску.
+ LyX должен поместить курсор в начале строки.
+ Наберите
+\layout LyX-Code
+
+LyX --- мощный текстовый процессор.
+\layout Standard
+
+Теперь нажмите на слове 
+\begin_inset Quotes fld
+\end_inset 
+
+сноска
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Сноска исчезнет, останется только слово 
+\begin_inset Quotes fld
+\end_inset 
+
+сноска
+\begin_inset Quotes frd
+\end_inset 
+
+, подчёркнутое красной линией, оно показывает место, где будет напечатан
+ маркер сноски в тексте; это называется 
+\begin_inset Quotes fld
+\end_inset 
+
+свёртыванием
+\begin_inset Quotes frd
+\end_inset 
+
+ сноски.
+ Нажав на красном маркере, вы можете развернуть сноску в любой момент, и
+ при желании отредактировать её текст.
+\layout Standard
+
+Вас может удивить, что маркер сноски --- слово, а не цифра.
+ Разгадка в том, что сам LyX заботится о нумерации сносок при печати текста.
+ Вы сами сможете это увидеть, просмотрев файл 
+\family typewriter 
+dvi
+\family default 
+ (или печатный экземпляр).
+ Если вы добавите другие сноски, LyX перенумерует всех их.
+ Так как LyX (а фактически LaTeX) заботится о нумерации сносок, нет необходимост
+и нумеровать их в файле LyX.
+\layout Standard
+
+Сноску можно вырезать и вставлять, как и обычный текст.
+ Давайте, попробуйте! Всё, что вам нужно --- это выделить маркер сноски
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Это проще сделать с клавиатуры.
+ Если вы попытаетесь выделить маркер мышкой, вы можете случайно развернуть
+ сноску.
+\end_inset 
+
+ затем 
+\family sans 
+Вырезать
+\family default 
+ и 
+\family sans 
+Вставить
+\family default 
+.
+ В дополнение, вы можете превратить обычный текст в сноску, выделив его
+ и нажав кнопку 
+\family sans 
+Вставить\SpecialChar ~
+сноску
+\family default 
+; изменить сноску на обычный текст можно, нажав на кнопку 
+\family sans 
+Вставить\SpecialChar ~
+сноску,
+\family default 
+ когда курсор находится в сноске.
+\layout Standard
+
+Примечания на полях можно добавить, нажав кнопку 
+\family sans 
+Вставить\SpecialChar ~
+примечание\SpecialChar ~
+на\SpecialChar ~
+полях
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Кнопка выглядит в виде стрелки указывающей на красный текст следующий за
+ (т.е., в полях) чёрным текстом, и обычно располагается за кнопкой 
+\family sans 
+Вставить\SpecialChar ~
+сноску
+\family default 
+ на панели инструментов.
+\end_inset 
+
+
+\family default 
+ или 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Примечание\SpecialChar ~
+на\SpecialChar ~
+полях
+\family default 
+\SpecialChar \@.
+ Примечания на полях подобны сноскам, за исключением: 
+\layout Itemize
+
+экранный маркер называется 
+\begin_inset Quotes fld
+\end_inset 
+
+примечание на полях
+\begin_inset Quotes frd
+\end_inset 
+
+ вместо 
+\begin_inset Quotes fld
+\end_inset 
+
+сноска
+\begin_inset Quotes frd
+\end_inset 
+
+;
+\layout Itemize
+
+текст будет помещён на полях, а не внизу страницы;
+\layout Itemize
+
+примечания на полях не нумеруются;
+\layout Standard
+
+Превратите вашу LyX сноску в обычный текст, затем выделите его и преобразуйте
+ в примечание на полях.
+ Запустите снова LaTeX и посмотрите, как выглядит примечание на полях.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Исправьте сноску в 
+\family typewriter 
+example_raw.lyx
+\layout Section
+
+Библиографии
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:bibliographies}
+
+\end_inset 
+
+Библиографии (по крайней мере в науке) подобны перекрёстным ссылкам
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Чтобы получить гуманитарный стиль библиографий, творчески совместите методику
+ из этого раздела с использованием сносок.
+\end_inset 
+
+.
+ Библиография состоит из списка ссылок в конце документа, и на них можно
+ ссылаться в документе.
+ Как в случае с заголовками разделов, LyX и LaTeX упрощают вашу работу,
+ автоматически нумеруя элементы библиографии и изменяя ссылки на источники
+ цитирования при изменении их нумерации.
+\layout Standard
+
+Перейдите к концу документа и выберите окружение 
+\family sans 
+Библиография
+\family default 
+.
+ Теперь каждый набираемый вами абзац будет ссылкой на источник.
+ Наберите вашу первую ссылку 
+\family typewriter 
+
+\begin_inset Quotes fld
+\end_inset 
+
+Самоучитель по Lyx команды документирования LyX
+\family default 
+
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Заметьте, что LyX автоматически вставит число в прямоугольнике перед каждой
+ ссылкой.
+ Нажмите на прямоугольнике с номером ссылки, и появится диалоговое окно
+ 
+\family sans 
+Элемент\SpecialChar ~
+библиографии
+\family default 
+.
+ Для ссылки на элемент в документе LyX вы используете первое поле 
+\family sans 
+Ссылка
+\family default 
+.
+ По умолчанию, это число.
+ Измените 
+\family sans 
+Ссылку
+\family default 
+ на 
+\begin_inset Quotes fld
+\end_inset 
+
+lyxtutorial
+\begin_inset Quotes frd
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Кириллические символы вызовут ошибку при вызове LaTeX.
+ --- 
+\emph on 
+прим.
+ пер.
+\end_inset 
+
+, чтобы её проще было запомнить.
+\layout Standard
+
+Теперь нажмите в том месте вашего документа, где вы хотите вставить ссылку.
+ Теперь вставьте ссылку с помощью меню 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Ссылку\SpecialChar ~
+на\SpecialChar ~
+источник\SpecialChar ~
+цитирования\SpecialChar \@.
+
+\family default 
+ Появится диалоговое окно 
+\family sans 
+Ссылка на источник
+\family default 
+.
+ Правая панель этого окна будет содержать список элементов библиографии,
+ и это поле позволит вам выбрать элемент библиографии, на который вы хотите
+ сослаться
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Рекомендуется в поле 
+\family sans 
+Ссылка
+\family default 
+ давать ключам логичные уникальные имена, а не оставлять нумерацию по умолчанию.
+\end_inset 
+
+.
+ Выберите 
+\begin_inset Quotes fld
+\end_inset 
+
+lyxtutorial
+\begin_inset Quotes frd
+\end_inset 
+
+ (сейчас это единственный элемент библиографии), затем, используя стрелку
+ влево в центре, переместите её в прямоугольник 
+\family sans 
+Выбранные\SpecialChar ~
+ссылки
+\family default 
+.
+ (У вас может быть множество ссылок в одном и том же месте, если вы перенесёте
+ несколько элементов подобным образом.) Теперь запустите LaTeX, и вы увидите,
+ что ссылки появляются в тексте в квадратных скобках, согласно нумерации
+ элементов библиографии в конце документа.
+\layout Standard
+
+Как использовать остальные поля? Поле 
+\family sans 
+После
+\family default 
+ в диалоговом окне 
+\family sans 
+Цитата
+\family default 
+ вставляет в скобках после ссылки заметку (например, ссылку на страницу
+ или главу в книге или статье, на которую ссылаются).
+ Если вы хотите, чтобы ссылки в печатном документе были метками, а не числами
+ (например, некоторые журналы хотели бы использовать 
+\begin_inset Quotes fld
+\end_inset 
+
+[Smi95]
+\begin_inset Quotes frd
+\end_inset 
+
+ для ссылок на работу, написанную Smith в 1995), то вам нужно использовать
+ поле 
+\family sans 
+Метка
+\family default 
+ в диалоговом окне 
+\family sans 
+Элемент\SpecialChar ~
+библиографии
+\family default 
+.
+ Как обычно, более подробную информацию можно найти в 
+\emph on 
+Руководстве пользователя
+\emph default 
+.
+\layout Standard
+
+
+\series bold 
+Упражнение: 
+\series default 
+Исправьте библиографию и ссылки на её элементы в 
+\family typewriter 
+example_raw.lyx
+\layout Section
+
+Содержание
+\layout Standard
+
+В начале вашего документа вы можете вставить содержание.
+ В LyX это делается очень просто.
+ Просто нажмите 
+\family sans 
+Enter
+\family default 
+ после заглавия вашего документа, но до начала заголовка первого раздела
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Не пытайтесь установить курсор перед номером раздела.
+ Это не сработает.
+ Вы всё равно не сможете отредактировать номер раздела, так как о нумерации
+ заботится сам LyX.
+\end_inset 
+
+ и выберите
+\family sans 
+ Вставить\SpecialChar \menuseparator
+Списки\SpecialChar ~
+и\SpecialChar ~
+содержания\SpecialChar \menuseparator
+Содержание
+\family default 
+.
+ В прямоугольнике (называемом также вкладкой) появится слово 
+\begin_inset Quotes fld
+\end_inset 
+
+Содержание
+\begin_inset Quotes frd
+\end_inset 
+
+ в первой строке вашего документа.
+ 
+\layout Standard
+
+Оно не кажется слишком полезным.
+ Однако, если вы посмотрите в ваш файл 
+\family typewriter 
+dvi
+\family default 
+, вы увидите сгенерированное содержание, в котором перечислены различные
+ разделы и подразделы вашего документа.
+ Как обычно, если вы переставите разделы или создадите новые, то увидите
+ эти изменения в файле 
+\family typewriter 
+dvi
+\family default 
+ после его обновления.
+ 
+\layout Standard
+
+Содержание не выводится в экранной версии документа, так как вы всё равно
+ не можете его редактировать.
+ Однако, вы можете отобразить его в отдельном окне, нажав на вкладке, или
+ используя меню
+\family sans 
+ Просмотреть\SpecialChar \menuseparator
+Содержание
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Команда меню будет работать, даже если в вашем документе нет вкладки 
+\begin_inset Quotes fld
+\end_inset 
+
+содержание
+\begin_inset Quotes frd
+\end_inset 
+
+.
+\end_inset 
+
+
+\family default 
+.
+ Это очень полезный инструмент.
+ Вы можете использовать окно 
+\family sans 
+Содержание
+\family default 
+ для перемещения по вашему документу.
+ Нажатие кнопкой мыши на заголовок раздела или подраздела в окне 
+\family sans 
+Содержание
+\family default 
+ приведёт к подсветке её строки и перемещению курсора (в окне редактора
+ LyX) на соответствующее место в документе.
+ Также вы можете использовать клавиши стрелок для передвижения вверх и вниз
+ по содержанию.
+ Поэтому, вам, возможно, будет удобнее держать это окно открытым в процессе
+ редактирования.
+
+\lang english
+ 
+\lang russian
+Подобную функциональность вы можете получить через меню 
+\family sans 
+\bar under 
+П
+\bar default 
+ерейти
+\family default 
+, где содержание появлется автоматически.
+\layout Standard
+
+Чтобы избавиться от Содержания, вы можете удалить маркер таблицы содержания
+ так же, как и любой другой символ.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Исправьте содержание в 
+\family typewriter 
+example_raw.lyx
+\layout Chapter
+
+Использование математики
+\layout Standard
+
+LaTeX используется многими учёными, так как он прекрасно отображает формулы,
+ избегая управляющих символов, используемых другими текстовыми процессорами
+ и их редакторами формул.
+ Однако многие учёные недовольны тем, что написание формул в LaTeX больше
+ подобно программированию, чем написанию.
+ К счастью, LyX поддерживает режим WYSIWYM для набора формул.
+ Если вы пользовались LaTeX, вы обнаружите, что можно набирать все обычные
+ математические команды LaTeX, но они будут показаны в манере WYSIWYM.
+ Если же, вы никогда не писали в LaTeX, то 
+\family sans 
+Математическая\SpecialChar ~
+панель
+\family default 
+ быстро и просто позволит вам составлять профессионально выглядящие формулы
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Извините, но LyX не может проверять 
+\emph on 
+корректность
+\emph default 
+ ваших формул.
+\end_inset 
+
+.
+\layout Section
+
+Математический режим
+\layout Standard
+
+Где-то в вашем LyX документе наберите:
+\layout LyX-Code
+
+Мне нравится высказывание Эйнштейна, E=mc^2, так как это просто.
+\layout Standard
+
+Итак, эта формула выглядит не очень хорошо, даже в файле
+\family typewriter 
+ dvi
+\family default 
+ --- в ней нет пропусков между символами и знаком равенства, и вы хотели
+ бы написать 
+\begin_inset Quotes fld
+\end_inset 
+
+2
+\begin_inset Quotes frd
+\end_inset 
+
+ в верхнем индексе.
+ Такое плохое оформление произошло из-за того, что мы не сказали LyX о том,
+ что мы писали математическое выражение, поэтому он оформил его как обычный
+ текст.
+\layout Standard
+
+Математические формулы пишутся в математическом редакторе (ещё известном
+ как математический режим).
+ Чтобы войти в математический режим, просто нажмите на кнопку панели инструменто
+в с синей надписью 
+\begin_inset Formula $\frac{a+b}{c}$
+\end_inset 
+
+ на ней.
+ LyX откроет голубой прямоугольник, обрамлённый фиолетовым.
+ Голубой прямоугольник --- это 
+\emph on 
+точка ввода
+\emph default 
+, сообщающая вам, что математический редактор ожидает, что вы что-то введёте,
+ а фиолетовый прямоугольник означает, что вы в математическом редакторе.
+ Курсор уже размещён в голубом прямоугольнике, поэтому просто наберите 
+\family typewriter 
+E=mc^2
+\family default 
+.
+ Выражение будет набрано голубым цветом, а голубой прямоугольник исчезнет,
+ как только точка ввода станет не пустой.
+ Теперь, чтобы выйти из математического редактора наберите 
+\family sans 
+Esc
+\family default 
+ (Заметка: нажатие на кнопку 
+\family sans 
+Математический\SpecialChar ~
+режим
+\family default 
+ 
+\emph on 
+не
+\emph default 
+ приведёт к выходу из математического редактора).
+ Фиолетовый прямоугольник исчезнет, оставив курсор справа от выражения,
+ и теперь если вы что-то наберёте, это будет обычный текст.
+\layout Standard
+
+Запустите LaTeX и просмотрите файл
+\family typewriter 
+ dvi
+\family default 
+.
+ Обратите внимание, что выражение красиво оформлено, с пробелами между символами
+ и знаком равенства, и с 
+\begin_inset Quotes fld
+\end_inset 
+
+2
+\begin_inset Quotes frd
+\end_inset 
+
+ в верхнем индексе.
+ Символы в математическом режиме рассматриваются как переменные, и отображаются
+ наклонном шрифтом.
+ Числа --- просто числа.
+\layout Standard
+
+Математический редактор --- ещё один пример философии WYSIWYM.
+ В LaTeX, вы набираете математическое выражение, используя текст и такие
+ команды как 
+\family typewriter 
+
+\backslash 
+sqrt
+\family default 
+; это может вызывать недовольство, так как вы не видите, как будет выглядеть
+ ваше выражение, пока не обработаете файл LaTeX, и вы можете тратить время
+ на поиск пропущенных скобок или других 
+\begin_inset Quotes fld
+\end_inset 
+
+ошибок
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ С другой стороны, LyX не пытается идеально отобразить выражение (WYSIWYG),
+ но даёт вам понять как выражение будет выглядеть.
+ Затем LaTeX берёт на себя профессиональное его оформление.
+ 99% времени вы не делаете никаких изменений шрифтов или пропусков, которые
+ выполняет LaTeX.
+ Таким образом (извиняюсь за повторение) вы можете сконцентрироваться на
+ 
+\emph on 
+содержимом
+\emph default 
+ ваших математических выражений, а не на их формате.
+\layout Section
+
+Навигация по формулам
+\layout Standard
+
+Теперь изменим 
+\begin_inset Formula $E=mc^{2}$
+\end_inset 
+
+ на 
+\begin_inset Formula $E=1+mc^{2}$
+\end_inset 
+
+.
+ Используем клавиши стрелок для перемещения по выражению.
+ Обратите внимание, что когда вы вводите ваше выражение, появляется фиолетовый
+ прямоугольник, который сообщает вам, что вы снова в математическом редакторе.
+ Теперь вы можете использовать клавиши 
+\family sans 
+Влево
+\family default 
+ и 
+\family sans 
+Вправо
+\family default 
+ для перемещения курсора за знак равенства, и просто набрать 
+\begin_inset Quotes fld
+\end_inset 
+
+1+
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Далее вы можете использовать клавиши со стрелками или 
+\family sans 
+Esc
+\family default 
+ для выхода из выражения, при этом фиолетовый прямоугольник исчезнет.
+ Многие люди находят удобными клавиши со стрелками, но вы также можете нажать
+ кнопку мыши в любом месте вашего выражения, чтобы установить курсор в нужное
+ место и запустить математический редактор.
+\layout Standard
+
+Кроме специальных клавиш, описанных ниже, набор в математическом режиме
+ подобен редактированию обычного текста.
+ Используйте 
+\family sans 
+Delete
+\family default 
+ (или 
+\family sans 
+Backspace
+\family default 
+) для удаления знаков.
+ Выделяйте текст клавишами стрелок или с помощью мыши.
+ 
+\family sans 
+Правка\SpecialChar \menuseparator
+Отменить\SpecialChar ~
+последнее\SpecialChar ~
+действие
+\family default 
+ работает и в математическом режиме, так же, как и вырезка и вставка.
+ Нужно быть осторожным с одним: если вы находитесь прямо после математического
+ выражения и нажимаете 
+\family sans 
+Delete
+\family default 
+ (или 
+\family sans 
+Backspace
+\family default 
+), это приведёт к удалению всего выражения.
+ К счастью, чтобы всё вернуть, вы можете просто использовать 
+\family sans 
+Отменить\SpecialChar ~
+последнее\SpecialChar ~
+действие
+\family default 
+.
+\layout Standard
+
+Что, если вы хотите изменить 
+\begin_inset Formula $E=mc^{2}$
+\end_inset 
+
+ на 
+\begin_inset Formula $E=mc^{2.5}+1$
+\end_inset 
+
+? Снова, вы можете использовать мышь, чтобы установить курсор в нужное место.
+ Однако, вы можете воспользоваться клавишами стрелок.
+ Если курсор стоит сразу после 
+\begin_inset Quotes fld
+\end_inset 
+
+c
+\begin_inset Quotes frd
+\end_inset 
+
+, но перед 
+\begin_inset Quotes fld
+\end_inset 
+
+2
+\begin_inset Quotes frd
+\end_inset 
+
+, то нажатие 
+\family sans 
+Вверх
+\family default 
+ приведёт к перемещению курсора вверх на верхний индекс, непосредственно
+ перед 
+\begin_inset Quotes fld
+\end_inset 
+
+2
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Добавьте 
+\begin_inset Quotes fld
+\end_inset 
+
+.5
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Теперь нажатие 
+\family sans 
+Вниз
+\family default 
+ переместит курсор обратно на обычный уровень теста.
+ Фактически, если вы нажмёте 
+\family sans 
+Вниз
+\family default 
+ где-либо в верхнем индексе, курсор будет помещён непосредственно 
+\emph on 
+после
+\emph default 
+ верхнего индекса (так что теперь вы можете набрать 
+\begin_inset Quotes fld
+\end_inset 
+
++1
+\begin_inset Quotes frd
+\end_inset 
+
+).
+\layout Standard
+
+Также при навигации по выражению вы можете использовать клавишу 
+\family sans 
+Пробел
+\family default 
+.
+ Если вы уже находитесь в математической структуре ( верхнем индексе, нижнем
+ индексе, дроби, квадратном корне, ограничителях, или матрице, все они описаны
+ в следующих разделах), нажатие 
+\family sans 
+Пробел
+\family default 
+ будет передвигать курсор по структуре, но оставаясь в математическом редакторе.
+ Итак, если курсор где-то в верхнем индексе, нажатие 
+\family sans 
+Пробел
+\family default 
+ приведёт к перемещению курсора вниз к обычному уровню после верхнего индекса.
+ Это значит: что вы можете набрать 
+\begin_inset Formula $E=mc^{1+x}-2$
+\end_inset 
+
+ без использования мыши 
+\emph on 
+или
+\emph default 
+ клавиш стрелок, это будет предпочитаемый вами метод, когда вы приобретёте
+ некоторый опыт.
+ Только будьте внимательны и не нажимайте 
+\family sans 
+Пробел
+\family default 
+ между единицей и знаком плюс, иначе вы выйдете из верхнего индекса.
+ В местах, где эти действия не имеют смысла (скажем, между 
+\begin_inset Quotes fld
+\end_inset 
+
+m
+\begin_inset Quotes frd
+\end_inset 
+
+ и 
+\begin_inset Quotes fld
+\end_inset 
+
+c
+\begin_inset Quotes frd
+\end_inset 
+
+), 
+\family sans 
+Пробел
+\family default 
+ ничего не делает
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+
+\family sans 
+Пробел
+\family default 
+ и 
+\family sans 
+Tab
+\family default 
+ 
+\series bold 
+не
+\series default 
+ используются для создания дополнительного пространства между частями формулы.
+ Это пространство создаётся при оформлении, что подразумевает, что вы должны
+ дать LyX'у (LaTeX'у) позаботиться об этом (смотрите Раздел 
+\begin_inset LatexCommand \ref{sec:whitespace}
+
+\end_inset 
+
+).
+ Если вы не удовлетворены результатом, есть способы точной настройки пропусков,
+ для чего вы можете заглянуть в 
+\emph on 
+Руководство пользователя,
+\emph default 
+ но не заботьтесь об этом до создания всего содержимого вашего документа.
+\end_inset 
+
+.
+\layout Standard
+
+Обратите внимание, если вы набираете ваше выражение и выходите с помощью
+ 
+\family sans 
+Esc
+\family default 
+, после выражения не будет создан пробел.
+ Это правильно, если вы набираете запятую или точку, но если далее вы набираете
+ слово или формулу, вам следует явно нажать 
+\family sans 
+Пробел
+\family default 
+ после выхода из математического редактора.
+ Для ускорения, находясь в самом конце математического выражения, нажмите
+ 
+\family sans 
+Пробел
+\family default 
+ для выхода из математического редактора, и ещё раз для отступа после выражения.
+ Таким образом вы сможете написать 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\begin_inset Formula $f=ma$
+\end_inset 
+
+ --- моя любимая формула
+\begin_inset Quotes frd
+\end_inset 
+
+ вместо 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\begin_inset Formula $f=ma$
+\end_inset 
+
+моя любимая формула
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ 
+\layout Section
+
+Показатели степени и индексы
+\layout Standard
+
+Показатель степени можно ввести через 
+\family sans 
+Математическую\SpecialChar ~
+панель
+\family default 
+ (см.
+ ниже), но на самом деле проще нажать клавишу 
+\begin_inset Quotes fld
+\end_inset 
+
+^
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ LyX переместит точку ввода (синий прямоугольник, помните?) в верхний индекс,
+ и всё, что вы будете набирать, будет набрано в верхнем индексе и маленьким
+ шрифтом.
+ Всё, что вы набираете до нажатия 
+\family sans 
+Пробел
+\family default 
+ (или 
+\family sans 
+Esc
+\family default 
+, чтобы вообще выйти из математического редактора) будет в верхнем индексе.
+\layout Standard
+
+Создание нижнего индекса так же просто: начните набор с клавиши подчёркивания
+ 
+\begin_inset Quotes fld
+\end_inset 
+
+_
+\begin_inset Quotes fld
+\end_inset 
+
+.
+ Вы можете вводить верхний и нижний индекс как для верхнего, так и для нижнего
+ индексов, например: 
+\begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
+\end_inset 
+
+.
+ 
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Введите формулу 1 из 
+\family typewriter 
+example_raw.lyx
+\family default 
+ в математическом режиме.
+\layout Section
+
+Математическая панель
+\layout Standard
+
+
+\family sans 
+Математическая\SpecialChar ~
+панель
+\family default 
+ --- удобный способ ввода символов или выполнения многих сложных функций
+ математического редактора.
+ Многие из этих функций можно выполнить с клавиатуры или из меню 
+\family sans 
+\bar under 
+П
+\bar default 
+равка\SpecialChar \menuseparator
+
+\bar under 
+М
+\bar default 
+атематика
+\family default 
+ и 
+\family sans 
+\bar under 
+В
+\bar default 
+ставить\SpecialChar \menuseparator
+
+\bar under 
+М
+\bar default 
+атематика
+\family default 
+.
+ Однако мы собираемся сконцентрироваться на использовании 
+\family sans 
+Математической\SpecialChar ~
+панели
+\family default 
+, чтобы дать вам представление о том, что там есть; комбинации клавиш вы
+ сможете изучить позже из других руководств.
+ Так что откройте сейчас 
+\family sans 
+Математическую\SpecialChar ~
+панель
+\family default 
+ через меню 
+\family sans 
+\bar under 
+В
+\bar default 
+ставить\SpecialChar \menuseparator
+
+\bar under 
+М
+\bar default 
+атематика\SpecialChar \menuseparator
+Математическая панель
+\family default 
+ и не закрывайте её, пока не прочтёте этот раздел.
+\layout Subsection
+
+Греческий алфавит и значки
+\layout Standard
+
+Если вы нажмёте на кнопку, помеченную 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\begin_inset Formula $\Gamma\rho\varepsilon\varepsilon\kappa$
+\end_inset 
+
+
+\begin_inset Quotes frd
+\end_inset 
+
+ --- появится меню, в котором можно выбрать греческие буквы, они будут появлятьс
+я в позиции курсора.
+ Обратите внимание, что там есть несколько вариантов для epsilon, pi, phi,
+ theta, и sigma.
+ Для сокращения при наборе текста, вы можете сразу выбирать что-либо в 
+\family sans 
+Математической\SpecialChar ~
+панели
+\family default 
+, при этом автоматически откроется математический редактор.
+\layout Standard
+
+Внизу 
+\family sans 
+Математической\SpecialChar ~
+панели
+\family default 
+ расположено двенадцать кнопок, которые позволят вам выбрать из широкого
+ диапазона символов, используемых в математике: различные стрелки, знаки
+ сравнения, операторы, знаки суммы и интеграла
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Чёрные кнопки для обычных символов LaTeX и синие кнопки для более специализирова
+нных символов, предоставляемых Американским Математическим Сообществом.
+ Но я забегаю вперёд.
+\end_inset 
+
+.
+ Обратите внимание, что верхний индекс и нижний индекс позволяют вам вставлять
+ верхний и нижний пределы сумм и интегралов.
+ Последняя кнопка в каждом цвете весьма разнообразна.
+ 
+\begin_inset Quotes fld
+\end_inset 
+
+Нет ничего, что вы не смогли бы сделать\SpecialChar \ldots{}
+ Всё, что вам нужно --- 
+\begin_inset Formula $\heartsuit$
+\end_inset 
+
+.
+\begin_inset Quotes frd
+\end_inset 
+
+
+\layout Standard
+
+Четыре нижние кнопки 
+\family sans 
+Математической\SpecialChar ~
+панели
+\family default 
+ позволят вам выбрать символы из широкого диапазона используемых в математике
+ символов: различные стрелки, знаки сравнения, операторы суммы и интегралы.
+ Обратите внимание, что верхний индекс и нижний индекс позволяют вам вставлять
+ верхний и нижний пределы сумм и интегралов.
+ Последняя кнопка ужасно разнообразна.
+ 
+\begin_inset Quotes fld
+\end_inset 
+
+Вы не сможете ничего сделать из того, что невозможно сделать\SpecialChar \ldots{}
+ Всё, что вам
+ нужно --- 
+\begin_inset Formula $\heartsuit$
+\end_inset 
+
+.
+\begin_inset Quotes frd
+\end_inset 
+
+
+\layout Subsection
+
+Квадратные корни, диакритические знаки, и ограничители 
+\layout Standard
+
+Для ввода квадратного корня просто нажмите на кнопке со значком квадратного
+ корня.
+ Появится квадратный корень, и курсор будет в новой точке ввода внутри квадратно
+го корня.
+ Вы можете набирать переменные, числа, другие квадратные корни, дроби, что
+ хотите.
+ LyX будет автоматически изменять размер квадратного корня.
+ чтобы вместить содержимое.
+\layout Standard
+
+Надчёркивание символа (
+\begin_inset Formula $\overrightarrow{v}$
+\end_inset 
+
+) или группы символов (
+\begin_inset Formula $\overrightarrow{a+b}$
+\end_inset 
+
+) делается следующим образом.
+ Откройте окно 
+\family sans 
+Декорация,
+\family default 
+ нажав кнопку 
+\family sans 
+Декорация
+\family default 
+, на которой изображён синий квадрат с чёрной тильдой\SpecialChar ~
+(~) над ним.
+ Нажмите мышью на значок, и LyX напечатает значок с точкой ввода под (или
+ над) ним.
+ Теперь в точке ввода просто введите всё, что вам нужно, и, чтобы выйти
+ из значка, нажмите 
+\family sans 
+Пробел
+\family default 
+.
+ Существует два набора декораций.
+ Верхний набор (с большими кнопками) изменяет свой размер в зависимости
+ от текста, который в него будет введён.
+ Нижний набор имеет фиксированный размер и более подходит для одиночных
+ букв.
+\layout Standard
+
+Такие ограничители, как круглые, квадратные и фигурные скобки, работают
+ подобным образом, но чуть более сложно.
+ Для появления окна 
+\family sans 
+Ограничители
+\family default 
+ нажмите кнопку 
+\family sans 
+Ограничители
+\family default 
+, на которой изображён синий квадрат, окружённый квадратными скобками.
+ Выберите левый ограничитель нажатием 
+\emph on 
+левой кнопки мыши,
+\emph default 
+ а правый --- нажатием 
+\emph on 
+правой кнопки мыши
+\emph default 
+.
+ (Либо воспользуйтесь кнопками 
+\family sans 
+С
+\bar under 
+л
+\bar default 
+ева,
+\family default 
+ 
+\family sans 
+С
+\bar under 
+п
+\bar default 
+рава
+\family default 
+ и 
+\family sans 
+\bar under 
+О
+\bar default 
+бе
+\family default 
+, а затем выберите нужный ограничитель нажатием 
+\emph on 
+левой кнопки мыши
+\emph default 
+.) Ваш текущий выбор ограничителей отображается в квадрате вверху окна.
+ По умолчанию --- это пара круглых скобок, но вы может выбрать пару фигурных
+ скобок, фигурную и круглую скобку, или даже выбрать пустой квадрат, чтобы
+ получить что-то вроде 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\begin_inset Formula $a=\left\langle 7\right.$
+\end_inset 
+
+
+\begin_inset Quotes frd
+\end_inset 
+
+ (пустой ограничитель отображается в LyX как прерывистая чёрная линия, но
+ она не будет показана на печати).
+\layout Standard
+
+Как только вы выбрали ограничители, вставить их в выражение можно нажатием
+ на 
+\family sans 
+OK
+\family default 
+ (или нажатием на 
+\family sans 
+Применить,
+\family default 
+ если вы хотите оставить окно открытым).
+ Если вы ленивы --- можете набрать круглые скобки в математическом режиме
+ на клавиатуре, без помощи окна 
+\family sans 
+Ограничител
+\family default 
+и.
+ Однако эти круглые скобки будут того же размера, что и обычный текст, и
+ они будут плохо выглядеть, если вы заключили в скобки большую дробь или
+ матрицу.
+ Использование окна 
+\family sans 
+Ограничители
+\family default 
+ гарантирует, что размер ограничителя будет основан на размере содержимого.
+\layout Standard
+
+Также вы можете вставить ограничители, знак корня или декорацию в уже существующ
+ий текст.
+ Выберите желаемую часть формулы и нажмите кнопку мыши на нужной кнопке
+ 
+\family sans 
+Математической\SpecialChar ~
+панели
+\family default 
+.
+ Попробуйте этот способ для преобразования Второго закона Ньютона из скалярной
+ в векторную форму (
+\begin_inset Formula $f=ma$
+\end_inset 
+
+ к 
+\begin_inset Formula $\overrightarrow{f}=m\overrightarrow{a}$
+\end_inset 
+
+).
+ Как только вы научитесь работать с матрицами, этим способом вы будете заключать
+ матрицу в квадратные или фигурные скобки.
+\layout Subsection
+
+Дроби
+\layout Standard
+
+Использовать дробь в математическом редакторе очень просто.
+ Нажмите на кнопку 
+\family sans 
+Дробь
+\family default 
+ в 
+\family sans 
+Математической панели
+\family default 
+, и появится дробь с двумя голубыми прямоугольниками в числителе и знаменателе.
+ LyX вставит две точки ввода в дроби.
+ Как можно было бы и ожидать, для передвижения по дроби вы можете использовать
+ клавиши стрелок или мышь.
+ Нажмите на верхний квадрат и наберите 
+\begin_inset Quotes fld
+\end_inset 
+
+1
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Теперь нажмите 
+\family sans 
+Вниз
+\family default 
+ и наберите 
+\begin_inset Quotes fld
+\end_inset 
+
+2
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Вы создали дробь! Конечно, вы можете вставлять всё, что угодно, в каждой
+ части дроби: переменные со степенями, квадратные корни, другие дроби, и
+ т.д.
+ 
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Наберите формулу 2 из 
+\family typewriter 
+example_raw.lyx
+\family default 
+ в математическом режиме.
+\layout Subsection
+
+Режим LaTeX: Пределы, логарифмы, синусы и прочее
+\layout Standard
+
+Так как символы в математическом режиме рассматриваются как переменные,
+ если в математическом режиме вы набираете 
+\begin_inset Quotes fld
+\end_inset 
+
+sin
+\begin_inset Quotes frd
+\end_inset 
+
+, LyX думает, что вы набираете произведение трёх переменных 
+\begin_inset Formula $s$
+\end_inset 
+
+, 
+\begin_inset Formula $i$
+\end_inset 
+
+, и 
+\begin_inset Formula $n$
+\end_inset 
+
+.
+ Эти три символа будут отображены наклонным шрифтом, а вы на самом деле
+ хотели увидеть слово 
+\begin_inset Quotes fld
+\end_inset 
+
+sin
+\begin_inset Quotes frd
+\end_inset 
+
+ в прямом шрифте.
+ К тому же, LyX не вставит пропуск между словом 
+\begin_inset Quotes fld
+\end_inset 
+
+sin
+\begin_inset Quotes frd
+\end_inset 
+
+ и 
+\begin_inset Quotes fld
+\end_inset 
+
+x
+\begin_inset Quotes frd
+\end_inset 
+
+ (нажатие 
+\family sans 
+Пробел
+\family default 
+ просто выведет вас из математического режима).
+ Как же получить 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\begin_inset Formula $\sin x$
+\end_inset 
+
+
+\begin_inset Quotes frd
+\end_inset 
+
+ вместо 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\begin_inset Formula $sinx$
+\end_inset 
+
+
+\begin_inset Quotes frd
+\end_inset 
+
+?
+\layout Standard
+
+Нажмите на 
+\begin_inset Quotes fld
+\end_inset 
+
+sin
+\begin_inset Quotes frd
+\end_inset 
+
+ в списке 
+\family sans 
+Функции
+\family default 
+ в 
+\family sans 
+Математической\SpecialChar ~
+панели
+\family default 
+.
+ Слово 
+\begin_inset Quotes fld
+\end_inset 
+
+sin
+\begin_inset Quotes frd
+\end_inset 
+
+ появится записанное чёрным цветом и прямым романским шрифтом.
+ Всё слово рассматривается как один символ, если вы нажимаете 
+\family sans 
+Backspace
+\family default 
+ --- будет удалено всё слово.
+ Теперь наберите 
+\begin_inset Quotes fld
+\end_inset 
+
+x
+\begin_inset Quotes frd
+\end_inset 
+
+, и он появится в наклонном шрифте, как и положено в математическом режиме.
+ В файле
+\family typewriter 
+ dvi
+\family default 
+, выражение будет оформлено правильно.
+ Попробуйте.
+\layout Standard
+
+Прочие команды, вводимые в режиме LaTeX с помощью списка 
+\family sans 
+Функций
+\family default 
+, включают другие тригонометрические функции и их обратные функции, гиперболичес
+кие функции, логарифмы и ещё несколько других.
+ Эти функции могут содержать как верхний индекс, так и нижний индекс, что
+ важно при наборе 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\begin_inset Formula $\cos^{2}\theta$
+\end_inset 
+
+
+\begin_inset Quotes frd
+\end_inset 
+
+ или 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\begin_inset Formula $\lim_{n\rightarrow\infty}$
+\end_inset 
+
+
+\begin_inset Quotes frd
+\end_inset 
+
+.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Введите формулу 3 из 
+\family typewriter 
+example_raw.lyx
+\family default 
+ в математическом режиме.
+\layout Subsection
+
+Матрицы
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:matrices}
+
+\end_inset 
+
+Нажмите на кнопке 
+\family sans 
+Матрица
+\family default 
+ в 
+\family sans 
+Математической\SpecialChar ~
+панели
+\family default 
+.
+ Появится диалоговое окно Матрица, в нём будут две полосы прокрутки, которые
+ позволят вам выбирать количество строк и столбцов в вашей матрице.
+ Выберите 2 строки и 3 столбца и нажмите 
+\family sans 
+Применить
+\family default 
+ или 
+\family sans 
+OK
+\family default 
+.
+ LyX выведет 6 точек ввода в виде матрицы 
+\begin_inset Formula $2\times3$
+\end_inset 
+
+.
+ Как обычно, вы можете вводить в каждой точке ввода математические выражения
+ любого типа (квадратные корни, другие матрицы и т.д.).
+ Если пожелаете, можете оставить несколько точек ввода пустыми.
+\layout Standard
+
+Для передвижения по горизонтали между столбцами матрицы используется клавиша
+ 
+\family sans 
+Tab
+\family default 
+.
+ Также вы можете использовать клавиши стрелок --- нажатие 
+\family sans 
+Вправо
+\family default 
+ в конце одного поля перебрасывает ввод к следующему, 
+\family sans 
+Вниз
+\family default 
+ перемещает на строку вниз, и т.п.
+\layout Standard
+
+Если вам вдруг потребуется больше колонок или столбцов, используйте пункты
+ 
+\family sans 
+\bar under 
+П
+\bar default 
+равка\SpecialChar \menuseparator
+
+\bar under 
+М
+\bar default 
+атематика\SpecialChar \menuseparator
+Вставить\SpecialChar ~
+строку 
+\family default 
+и 
+\family sans 
+\bar under 
+П
+\bar default 
+равка\SpecialChar \menuseparator
+
+\bar under 
+М
+\bar default 
+атематика\SpecialChar \menuseparator
+Вставить\SpecialChar ~
+столбец
+\family default 
+.
+ Они добавляют колонку или строку после текущей позиции.
+ Если вы добавили слишком много, используйте 
+\family sans 
+Удалить\SpecialChar ~
+строку 
+\family default 
+и
+\family sans 
+ Удалить\SpecialChar ~
+столбец 
+\family default 
+из того же меню.
+\layout Standard
+
+Способы изменения горизонтального выравнивания каждого столбца, а также
+ изменения вертикальной позиции всей матрицы смотрите в 
+\emph on 
+Руководстве\SpecialChar ~
+Пользователя
+\emph default 
+.
+ Обратите внимание, если вы хотите набрать таблицу с текстом, вам следует
+ использовать замечательную поддержку таблиц в LyX, а не набор текста в
+ матрице.
+\layout Subsection
+
+Режим отображения.
+ Выключные формулы
+\layout Standard
+
+Всё написанные нами до сих пор выражения были на одном уровне с предыдущим
+ и последующим текстом.
+ Это подходит для коротких, простых выражений, но если вы хотите писать
+ большие выражения, или что бы ваши выражения выделялись из текста --- вам
+ нужно писать их в выключном режиме.
+ К тому же только выключные выражения можно снабжать метками и нумеровать
+ (смотрите 
+\emph on 
+Руководство Пользователя
+\emph default 
+), также многострочные формулы (смотрите Разд.
+ 
+\begin_inset LatexCommand \ref{sec:multiline}
+
+\end_inset 
+
+) могут существовать только в выключном режиме.
+\layout Standard
+
+Нажмите на кнопке 
+\family sans 
+Выключной режим
+\family default 
+ в 
+\family sans 
+Математической\SpecialChar ~
+панели
+\family default 
+, на которой изображены несколько линий текста до и после синего прямоугольника.
+ LyX откроет точку ввода, но эта точка ввода будет в новой строке и отцентрирова
+на посередине.
+ Теперь наберите выражение, запустите LaTeX и посмотрите, как оно выглядит.
+ Кнопка 
+\family sans 
+Выключной режим
+\family default 
+ на самом деле является переключателем; используйте её для преобразования
+ нескольких ваших выражений в выключной режим и обратно.
+ 
+\layout Standard
+
+Выключной режим имеет несколько отличий от обычного математического режима:
+\layout Itemize
+
+Для некоторых символов, например 
+\begin_inset Formula $\sum$
+\end_inset 
+
+ и 
+\begin_inset Formula $\int$
+\end_inset 
+
+, больше шрифт по умолчанию;
+\layout Itemize
+
+Верхний и нижний индексы пределов и сумм (но не интегралов) пишутся под
+ символом, а не за ним;
+\layout Itemize
+
+Текст выравнивается по середине.
+\layout Standard
+
+За исключением этих отличий выключные выражения и выражения в строке одинаковы.
+\layout Standard
+
+Ещё одна заключительная заметка о способе оформления выключных формул: будьте
+ внимательны с тем, вставляете ли вы вашу формулу в новый абзац или нет.
+ Если ваша формула в середине предложения или абзаца, не нажимайте 
+\family sans 
+Enter
+\family default 
+.
+ Если вы это сделаете, текст 
+\emph on 
+после
+\emph default 
+ формулы будет начинаться с нового абзаца.
+ Таким образом, текст будет выведен с отступом, что, вероятно, вам не нужно.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Вставьте различные формулы в 
+\family typewriter 
+example_raw.lyx
+\family default 
+ в выключном режиме, и посмотрите, как отличается их оформление.
+\layout Standard
+
+
+\series bold 
+Упражнение
+\series default 
+: Используя различные инструменты, изученные в этом разделе, вы должны быть
+ способны набрать следующую формулу
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+После того, как вы сделаете это самым сложным способом, почему бы вам не
+ попробовать меню 
+\family sans 
+Вставить
+\family default 
+\SpecialChar \menuseparator
+
+\family sans 
+Математика
+\family default 
+\SpecialChar \menuseparator
+
+\family sans 
+Блок\SpecialChar ~
+вариантов
+\family default 
+?
+\end_inset 
+
+: 
+\begin_inset Formula \[
+f(x)=\left\{ \begin{array}{cc}
+\log_{8}x & x>0\\
+0 & x=0\\
+\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0\end{array}\right.\]
+
+\end_inset 
+
+
+\layout Section
+
+Многострочные формулы
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:multiline}
+
+\end_inset 
+
+Попробуйте набрать следующие формулы и посмотрите результат в файле 
+\family typewriter 
+dvi
+\family default 
+.
+ Вам нужно будет ввести две отдельные формулы в выключном режиме.
+ 
+\layout Standard
+
+
+\begin_inset Formula \[
+x=y+y+y+y+y\]
+
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset Formula \[
+=5y\]
+
+\end_inset 
+
+
+\layout Standard
+
+Это совсем не хорошо выглядит! Если вы последовательно набираете две или
+ более формулы, они намного лучше выглядят, если выравнены их знаки равенства;
+ особенно если вторая формула без левой части.
+ LyX позволяет вам писать многострочные уравнения и некоторым образом управлять
+ выравниванием.
+ 
+\begin_inset Formula \begin{eqnarray*}
+x & = & y+y+y+y+y\\
+ & = & 5y\end{eqnarray*}
+
+\end_inset 
+
+
+\layout Standard
+
+Выглядит 
+\emph on 
+намного
+\emph default 
+ лучше! Знаки равенства выравнены, и меньше вертикальный пропуск между формулами.
+\layout Standard
+
+Чтобы начать ввод многострочной формулы, откройте выключное математическое
+ выражение и нажмите 
+\family sans 
+C-Enter
+\family default 
+ или выберите 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Математика\SpecialChar \menuseparator
+Блок\SpecialChar ~
+уравнений
+\family default 
+.
+ LyX выведет строку с тремя пустыми точками ввода.
+ Это многострочная формула, имеющая только одну строку.
+ Разочарованы? Выберите 
+\family sans 
+Правка\SpecialChar \menuseparator
+Математика\SpecialChar \menuseparator
+Добавить\SpecialChar ~
+строку
+\family default 
+ или просто нажмите 
+\family sans 
+C-Enter
+\family default 
+ ещё раз, чтобы получить две такие строки.
+ Попробуйте воспроизвести приведённую выше многострочную формулу.
+ Обратите внимание, что в многострочной формуле допустимо оставлять одну
+ или более точек ввода пустыми.
+ Это может быть полезно для таких примеров, какой приведён выше, либо для
+ разделения очень длинных формул, например
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Заметьте, что промежуток после первого плюса во второй строке очень мал.
+ Это один из редких случаев когда LaTeX терпит неудачу и вы должны позаботиться
+ о промежутке самостоятельно.
+ Подробнее см.
+ 
+\emph on 
+Руководство пользователя
+\emph default 
+.
+\end_inset 
+
+: 
+\begin_inset Formula \begin{eqnarray*}
+x & = & a+b+c+d\\
+ &  & +e+f+g\end{eqnarray*}
+
+\end_inset 
+
+
+\layout Standard
+
+LyX выровняет второе (среднее) поле каждой строки, поэтому в этом поле обычно
+ вводятся знаки равенства или другие операторы сравнения; хотя фактически
+ вы можете вводить там всё, что угодно.
+ Но не используйте многострочные формулы для составления массивов; для этого
+ используйте матрицы (смотрите Разд.
+ 
+\begin_inset LatexCommand \ref{sec:matrices}
+
+\end_inset 
+
+).
+\layout Standard
+
+Если вы хотите выравнять длинный набор формул, используйте 
+\family sans 
+C-Enter
+\family default 
+ для ввода новой строки с тремя точками ввода.
+ Если при этом вы не в конце строки, оставшаяся часть текущей строки будет
+ перенесена в новую строку.
+ Если вы нажмёте 
+\family sans 
+C-Enter
+\family default 
+ когда вы уже написали (однострочную) формулу, вся формула будет перенесена
+ в первое поле.
+ Поместите курсор перед знаком равенства и нажмите 
+\family sans 
+C-Tab,
+\family default 
+ он переместится во второе поле.
+ Затем переместите курсор за знак равенства, и ещё раз нажмите 
+\family sans 
+C-Tab
+\family default 
+ и правая часть формулы переместится в третье поле.
+ Попробуйте изменить формулу 
+\begin_inset Formula $E=mc^{2}$
+\end_inset 
+
+ на
+\begin_inset Formula \begin{eqnarray*}
+E & = & mc^{2}\\
+ & = & mc\times c\end{eqnarray*}
+
+\end_inset 
+
+
+\layout Standard
+
+Если вы написали слишком много строк, используйте меню 
+\family sans 
+Правка\SpecialChar \menuseparator
+Математика\SpecialChar \menuseparator
+Удалить\SpecialChar ~
+строку
+\family default 
+.
+ Так же вы можете поместить курсор в конец строки и использовать 
+\family sans 
+C-k
+\family default 
+ для удаления следующей строки.
+ Это приведёт к удалению перевода строки и присоединении (всех трёх точек
+ ввода) следующей строки к окончанию текущей.
+ Если следующая строка пуста, она просто исчезнет.
+ Использование 
+\family sans 
+C-k 
+\family default 
+не в конце строки удалит всё до конца строки.
+ Действие 
+\family sans 
+C-k 
+\family default 
+не специфично для математического режима, она всегда удаляет до конца строки
+ в любом режиме и в любом случае.
+\layout Standard
+
+И напоследок: существует гораздо больше видов многострочных уравнений.
+ Но мы не можем подробностях объяснить все эти загадочные пункты в меню
+ 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Математика
+\family default 
+, которые начинаются с букв AMS! Американское Математическое Сообщество,
+ будучи недовольным некоторыми особенностями обычных многострочных уравнений,
+ создало собственное семейство конструкций LaTeX для выполнения тех же самых
+ задач.
+ Почему вам хотелось бы использовать их? Читайте об этом в 
+\emph on 
+Руковостве пользователя
+\emph default 
+.
+\layout Section
+
+Дополнительные математические возможности
+\layout Standard
+
+Математический редактор может делать намного больше.
+ Теперь, когда вы ознакомились с основами, обратитесь к 
+\emph on 
+Руководству пользователя 
+\emph default 
+за подсказками относительно:
+\layout Itemize
+
+Пометок и нумерации выражений;
+\layout Itemize
+
+Изменений гарнитур, например, чтобы написать в выражении текст жирным шрифтом.
+ Мы должны заметить, что нажатие кнопки 
+\family sans 
+Математический\SpecialChar ~
+режим
+\family default 
+ в панели инструментов, в то время как вы уже в математическом редакторе,
+ приведёт к написанию текста прямым шрифтом, до тех пор, пока вы не нажмёте
+ её ещё раз;
+\layout Itemize
+
+Точной подстройки размеров шрифтов или пробелов в выражении.
+ (Принимайтесь за это только в конце работы над документом)
+\layout Itemize
+
+Написания макросов.
+ Это очень мощный инструмент, так как вы просто определяете макрос единожды
+ в начале вашего документа и можете его использовать на протяжении всего
+ документа.
+ Если вы измените определение макроса, изменятся все ссылки на макрос во
+ всём документе.
+ Макрос даже может содержать аргументы;
+\layout Itemize
+
+Выполнения многих других вещей, рассмотреть которые у нас не хватило времени
+ в этом 
+\emph on 
+Самоучителе
+\emph default 
+.
+\layout Chapter
+
+Разное
+\layout Section
+
+Прочие важные свойства LyX
+\layout Standard
+
+Мы не рассмотрели все возможные команды LyX, но мы это и не планировали.
+ Как обычно, более подробную информацию ищите в 
+\emph on 
+Руководстве пользователя
+\emph default 
+.
+ Назначение каждой команды LyX описано в 
+\emph on 
+Справочном руководстве
+\emph default 
+.
+ Мы просто ещё упомянем о нескольких важных вещах, которые может делать
+ LyX\SpecialChar \ldots{}
+
+\layout Itemize
+
+В LyX есть WYSIWYM-поддержка таблиц.
+ Для вставки таблицы используйте 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Таблицу
+\family default 
+.
+ 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Убрано в русском переводе: (Мы предпочитаем использовать соглашение LaTeX'а:
+ tabular и table --- чтобы отличить содержимое таблицы от плавающей таблицы,
+ которая включает содержимое таблицы, заголовок и т.д.) --- 
+\emph on 
+лит.
+ ред.
+\end_inset 
+
+ Нажатие на таблице 
+\emph on 
+правой кнопкой
+\emph default 
+ мыши приводит к появлению меню 
+\family sans 
+Формат\SpecialChar ~
+таблицы,
+\family default 
+ которое позволяет вам выполнять всестороннее её редактирование.
+\layout Itemize
+
+LyX также поддерживает включение рисунков в различных форматах (включая
+ JPEG или другие растровые форматы, PostScript
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+textregistered{}
+\end_inset 
+
+ и простой LaTeX) в документ.
+ (Вы уже догадались как это сделать: 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Рисунок
+\family default 
+\SpecialChar \@.
+ Затем нажмите мышью на рисунке и выберите включаемый файл, угол поворота,
+ масштаб, и прочее) Таблицы и рисунки могут иметь заголовки, и LyX может
+ автоматически генерировать списки рисунков и/или таблиц.
+\layout Itemize
+
+Поддерживается контроль версий с помощью RCS (более подробно об этом
+\family typewriter 
+ 
+\lang english
+man rcsintro
+\family default 
+\lang russian
+).
+\layout Itemize
+
+LyX гибко настраивается.
+ Всё, от внешнего вида окна LyX до способов вывода, может быть настроено
+ множеством способов.
+ Большая часть настроек может быть выполнена в меню 
+\family sans 
+Правка\SpecialChar \menuseparator
+Настройки
+\family default 
+.
+ Более подробно об этом смотрите в 
+\family sans 
+Помощь\SpecialChar \menuseparator
+Руководство\SpecialChar ~
+по\SpecialChar ~
+настройке\SpecialChar \@.
+
+\layout Itemize
+
+LyX разрабатывается командой программистов с пяти континентов.
+ Поэтому, по сравнению с другими текстовыми процессорами, LyX лучше всех
+ поддерживает многие европейские языки (такие как Датский, Немецкий, Французский
+, Греческий, Чешский, Турецкий, \SpecialChar \ldots{}
+).
+ Вы можете писать документы на различных языках, а также можете настроить
+ LyX для отображения меню и сообщений об ошибках на различных языках.
+\layout Itemize
+
+Меню LyX имеют соответствующие клавишные комбинации.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+В русском варианте локализации клавишные комбинации (пока?) не реализованы.
+ --- 
+\emph on 
+прим.
+ пер.
+\end_inset 
+
+ Это означают, что вы можете выполнять 
+\family sans 
+\bar under 
+F
+\bar default 
+ile\SpecialChar \menuseparator
+
+\bar under 
+O
+\bar default 
+pen,
+\family default 
+ нажав 
+\family sans 
+M-F
+\family default 
+ и далее 
+\family sans 
+O
+\family default 
+ или используя комбинацию клавиш, которая указаны в пункте меню (
+\family sans 
+C-O
+\family default 
+ по умолчанию).
+ Комбинации клавиш также настраиваются.
+ Информацию об этом смотрите в 
+\family sans 
+Помощь\SpecialChar \menuseparator
+Руководство\SpecialChar ~
+по\SpecialChar ~
+настройке\SpecialChar \@.
+
+\layout Itemize
+
+LyX может читать документы в формате LaTeX.
+ Смотрите Раздел\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:relyx}
+
+\end_inset 
+
+.
+\layout Itemize
+
+Можно выполнять проверку орфографии с помощью 
+\family sans 
+Правка\SpecialChar \menuseparator
+Проверка правописания
+\family default 
+\SpecialChar \@.
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Обратите внимание, что проверка орфографии производится только от позиции
+ курсора до конца документа.
+\end_inset 
+
+
+\layout Section
+
+LyX для пользователей LaTeX
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:latexusers}
+
+\end_inset 
+
+Если вы ничего не знаете о LaTeX, вам не нужно читать этот раздел.
+ Конечно, вы можете 
+\emph on 
+изучить
+\emph default 
+ LaTeX, а затем читать эту главу.
+ Однако многие люди, начавшие использовать LyX, ознакомлены с LaTeX.
+ Если вы такой человек, вы можете удивиться тому, что LyX может почти всё
+ то, что может LaTeX.
+ Коротко: LyX, в той или иной степени, может почти всё, что и LaTeX, и он
+ определённо упрощает большинство операций написания документа LaTeX.
+ На данный момент, возможно несколько досадных моментов при конвертировании
+ старых документов LaTeX и ещё в нескольких областях, но следующие выпуски
+ LyX будут избавлены от этих проблем.
+\layout Standard
+
+Так как это лишь самоучитель, мы только упомянем некоторые вещи, наиболее
+ интересные новым пользователям LyX.
+ Так как в наших интересах держать 
+\emph on 
+Самоучитель
+\emph default 
+ небольшим, мы приведём здесь минимальную информацию.
+ В руководстве
+\emph on 
+ Дополнительные возможности
+\emph default 
+, особенно в главе 
+\emph on 
+Секреты специалистов по LaTeX
+\emph default 
+,
+\emph on 
+ 
+\emph default 
+приведена большая часть информации о различиях между LyX и LaTeX, а также
+ приведены приёмы использования LaTeX в LyX.
+\layout Subsection
+
+Режим LaTeX
+\layout Standard
+
+Всё, что вы введёте в режиме LaTeX, будет в том же виде, без изменений,
+ передано LaTeX, а на экране будет отображено красным цветом.
+ Вы можете использовать команды LaTeX в LyX, выбрав
+\family sans 
+ Вставить\SpecialChar \menuseparator
+Команду\SpecialChar ~
+LaTeX
+\family default 
+ или нажав на кнопке с красной надписью TeX.
+ При этом создается текстовое окно, всё содержимое которого будет напрямую
+ передано LaTeX.
+\layout Standard
+
+В математическом редакторе режим LaTeX обрабатывается немного по-другому.
+ Войдите в режим LaTeX, нажав на обратный слэш.
+ Обратный слэш не отображается, но всё, что вы введёте, отобразится в красном
+ цвете.
+ Выход из режима LaTeX производится нажатием клавиши
+\family sans 
+ Пробел
+\family default 
+ или любого другого символа, кроме латинских букв, цифр, знака подчёркивания,
+ знака 
+\begin_inset Quotes fld
+\end_inset 
+
+^
+\begin_inset Quotes frd
+\end_inset 
+
+, и круглых скобок.
+ Как только вы вышли из режима LaTeX, если LyX знает набранную вами команду
+ LaTeX, он преобразует её к WYSIWYM\SpecialChar \@.
+ Так, если в математическом редакторе
+ вы набрали 
+\family typewriter 
+
+\backslash 
+gamma
+\family default 
+, то при нажатии 
+\family sans 
+Пробел
+\family default 
+ LyX заменит красный текст 
+\begin_inset Quotes fld
+\end_inset 
+
+gamma
+\begin_inset Quotes frd
+\end_inset 
+
+ на голубую 
+\begin_inset Quotes fld
+\end_inset 
+
+
+\begin_inset Formula $\gamma$
+\end_inset 
+
+
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Это работает практически для всех простых математических макросов.
+ Набор таким способом может быть более быстрым, чем с помощью 
+\family sans 
+Математической\SpecialChar ~
+панели
+\family default 
+, и будет особенно удобен опытным пользователям LaTeX.
+\layout Standard
+
+Как специальный случай, если вы набираете фигурную скобку в математическом
+ редакторе в режиме LaTeX, то математический редактор оформит открывающую
+ 
+\emph on 
+и
+\emph default 
+ закрывающую фигурные скобки красным, затем 
+\emph on 
+выведет
+\emph default 
+ вас из режима LaTeX и поместит курсор в пространство между фигурными скобками.
+ Так более удобно набирать команды, для которых математический редактор
+ не знает, как передавать аргументы.
+\layout Standard
+
+LyX не может делать абсолютно всё, что может LaTeX (пока?).
+ Некоторые интересные функции вовсе не поддерживаются, некоторые --- работают,
+ но не отображаются в режиме WYSIWYM.
+ Режим LaTeX позволяет пользователям получить полную гибкость LaTeX, при
+ сохранении удобных функций LyX, таких как WYSIWYM-математика, таблицы,
+ и редактирование.
+ LyX никогда не будет поддерживать каждый пакет LaTeX.
+ Однако, набрав 
+\family typewriter 
+
+\backslash 
+usepackage{foo}
+\family default 
+ в преамбуле LaTeX (смотрите Раздел\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:preamble}
+
+\end_inset 
+
+), вы можете использовать любой нужный вам пакет, однако вы не получите
+ отображения возможностей этого пакета в режиме WYSIWYM.
+\layout Subsection
+
+Импортирование документов LaTeX --- 
+\family typewriter 
+reLyX
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:relyx}
+
+\end_inset 
+
+Вы можете импортировать файл LaTeX в LyX выбрав 
+\family sans 
+Файл\SpecialChar \menuseparator
+Импортировать\SpecialChar ~
+из\SpecialChar \menuseparator
+LaTeX
+\family default 
+.
+ При этом будет вызван Perl-скрипт, называемый 
+\family typewriter 
+reLyX
+\family default 
+, который создаст файл 
+\family typewriter 
+foo.lyx
+\family default 
+ из файла 
+\family typewriter 
+foo.tex
+\family default 
+, и затем откроет этот файл.
+ Если преобразование не сработает, вы можете вызвать 
+\family typewriter 
+reLyX
+\family default 
+ из командной строки
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Если LyX установлен, отдельный исполняемый файл с именем 
+\family typewriter 
+reLyX
+\family default 
+ будет помещён в ту же папку, что и исполняемый файл 
+\family typewriter 
+lyx
+\family default 
+ (например, 
+\family typewriter 
+/usr/local/bin/reLyX
+\family default 
+).
+
+\family typewriter 
+ reLyX
+\family default 
+ требует наличия Perl (версии 5.002 на момент написания).
+\end_inset 
+
+, возможно, используя некоторые интересные параметры.
+\layout Standard
+
+
+\family typewriter 
+reLyX
+\family default 
+ способен преобразовывать большинство допустимых документов LaTeX, но не
+ всё.
+ То, что он не поймет, он вставит в режиме LaTeX, так что после преобразования
+ файла с помощью 
+\family typewriter 
+reLyX
+\family default 
+ вы сможете найти красный текст и вручную его отредактировать.
+\layout Standard
+
+У 
+\family typewriter 
+reLyX
+\family default 
+ есть своя man-страница.
+ Прочтите её и просмотрите список поддерживаемых команд LaTeX и окружений,
+ ошибки (и способы их обхождения), а также способы использования различных
+ параметров.
+\layout Subsection
+
+Преобразование документов LyX в формат LaTeX
+\layout Standard
+
+Возможно, вы пожелаете преобразовать документ LyX в файл LaTeX.
+ Например, его захочет прочесть ваш сотрудник или соавтор, кто не знаком
+ с LyX.
+ Это делается очень просто.
+ Выберите 
+\family sans 
+Файл\SpecialChar \menuseparator
+Экспортировать\SpecialChar ~
+в\SpecialChar \menuseparator
+LaTeX
+\family default 
+.
+ Будет создан файл 
+\family typewriter 
+whatever.tex
+\family default 
+ из редактируемого файла 
+\family typewriter 
+whatever.lyx
+\family default 
+.
+ LyX всегда создаёт временные файлы LaTeX при просмотре или печати, так
+ что он очень хорош в генерировании LaTeX.
+\layout Subsection
+
+Преамбула LaTeX 
+\layout Subsubsection
+
+Класс документа
+\layout Standard
+
+В диалоговом окне 
+\family sans 
+Формат\SpecialChar \menuseparator
+Документ
+\family default 
+ задаётся множество параметров, некоторые из которых можно было бы указать
+ в команде 
+\family typewriter 
+
+\backslash 
+documentclass
+\family default 
+.
+ Здесь можно изменить класс, размер шрифта по умолчанию, размер бумаги.
+ Вставьте дополнительные параметры команды 
+\family typewriter 
+
+\backslash 
+documentclass
+\family default 
+ в 
+\family sans 
+Доп.\SpecialChar ~
+параметры
+\family default 
+.
+\layout Subsubsection
+
+Другие вопросы относительно преамбулы
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:preamble}
+
+\end_inset 
+
+Если у вас есть специальные команды в преамбуле файла LaTeX, вы также можете
+ использовать их в документе LyX.
+ Выберите 
+\family sans 
+Формат\SpecialChar \menuseparator
+Преамбула\SpecialChar ~
+LaTeX
+\family default 
+ и введите их в появившемся окне.
+ Всё, что вы введёте, будет (как в режиме LaTeX) отправлено непосредственно
+ LaTeX.
+\layout Subsection
+
+BibTeX
+\layout Standard
+
+В LyX есть поддержка BibTeX, что позволяет вам создавать базы данных библиографи
+ческих ссылок, используемых во многих документах.
+ Для включения 
+\family typewriter 
+bib
+\family default 
+-файла выберите 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Списки\SpecialChar ~
+и\SpecialChar ~
+содержания\SpecialChar \menuseparator
+Ссылки\SpecialChar ~
+сгенерированные\SpecialChar ~
+через\SpecialChar ~
+BibTeX
+\family default 
+.
+ Вы увидите диалоговое окно 
+\family sans 
+BibTeX
+\family default 
+.
+ В поле 
+\family sans 
+База\SpecialChar ~
+данных
+\family default 
+ наберите всё, что вы хотели бы набрать в скобках команды 
+\family typewriter 
+
+\backslash 
+bibliography{}
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Как и в обычном LaTeX, множественные библиографии разделяются запятыми без
+ пробелов.
+\end_inset 
+
+
+\family default 
+.
+ Подобным образом в поле 
+\family sans 
+Стиль
+\family default 
+ наберите всё, что вы хотели бы набрать в скобках команды 
+\family typewriter 
+
+\backslash 
+bibliographystyle{}
+\family default 
+.
+\layout Standard
+
+Как только вы это сделали --- можете использовать цитаты из любой включенной
+ библиографии с помощью 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Ссылку\SpecialChar ~
+на\SpecialChar ~
+источник\SpecialChar ~
+цитирования
+\family default 
+ (смотрите Раздел\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:bibliographies}
+
+\end_inset 
+
+).
+ LyX позаботится о запуске BibTeX.
+ В появившемся окне
+\family sans 
+ Ссылка\SpecialChar ~
+на\SpecialChar ~
+источник
+\family default 
+ будет показан список всех присутствующих в вашем 
+\family typewriter 
+bib
+\family default 
+-файле ссылок.
+\layout Subsection
+
+Разное
+\layout Standard
+
+Для вставки других специальных символов, включая эллипсы, разрывы строк,
+ точки переносов, смотрите меню 
+\family sans 
+Вставить\SpecialChar \menuseparator
+Специальный\SpecialChar ~
+символ
+\family default 
+.
+\layout Section
+
+Ошибки!
+\layout Standard
+
+Иногда при преобразовании документов LaTeX, случаются ошибки, т.е.
+ места, непонятные для LyX или LaTeX.
+ Когда это происходит, LyX создаёт прямоугольник ошибки (прямоугольник с
+ написанным внутри словом 
+\begin_inset Quotes fld
+\end_inset 
+
+Ошибка
+\begin_inset Quotes frd
+\end_inset 
+
+).
+ Нажатие на этот прямоугольник приведёт к появлению окна с описанием ошибки.
+ Если вы что-то не так сделали в LyX, то там будет описание ошибки LyX,
+ но это должно происходить очень редко.
+ Если это проблема LaTeX (чаще это происходит с текстом, набранным в режиме
+ TeX), то LyX просто процитирует сообщение об ошибке LaTeX.
+\the_end

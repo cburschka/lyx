@@ -1,0 +1,44 @@
+README.Documentation
+
+by John Weiss [3/2000] jpweiss@idsi.net
+
+
+================
+Introduction
+
+    The purpose of this file is *used* *to* *be* to provide a style
+    sheet and helpful hints to those wishing to help with the
+    LyX Documentation Project.  There's now a separate style-sheet for
+    that.
+
+    If you're actually looking for documentation, check out the "Help"
+    menu.  Start by reading the Introduction.
+
+================
+Why a separate documentation project?  Can't the developers do it?
+
+    In a word, no.  They're too busy adding features and squishing
+    bugs.
+
+    Also, g++ is far more forgiving of style changes than a human
+    brain.  As long as the code is correct, g++ will happilly compile
+    it, and compile it the same way from machine to machine.  Human
+    brains are far less forgiving and far more individualized.  So,
+    the documentation needs to all be in a uniform style, in addition
+    to being grammatically correct and easily readable.  That's a
+    pretty big undertaking - which is why I volunteered to
+    administrate the docs back in 1997.  Since then, I've passed the
+    duty of maintaining the docs on to others.
+
+================
+Helping Out
+
+    If you'd like to contribute to the LyX Documentation Project,
+    start by reading the file Intro.lyx.  It contains a description of
+    the style of the documentation from a reader's perspective.  After
+    that, read the LyX Documentation Style Sheet (DocStyle.lyx) and
+    commit it to memory!
+
+
+John Weiss
+March, 2000

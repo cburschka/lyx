@@ -1,0 +1,2559 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass article
+\language french
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Plan de la documentation
+\layout Section*
+
+Introduction à LyX
+
+
+\layout Description
+1 
+La philosophie de LyX
+\begin_deeper
+\layout Description
+1.1 
+Qu'est-ce que LyX ?
+\layout Description
+1.2 
+Différences entre LyX et les autres traitements de texte
+
+
+
+
+\layout Description
+1.3 
+Qu'est-ce donc que LaTeX (et en quoi ça me concerne) ?
+\end_deeper
+\layout Description
+2 
+Naviguer dans la documentation
+\begin_deeper
+\layout Description
+2.1 
+Le Format des Manuels
+\layout Description
+2.2 
+Les Manuels
+\end_deeper
+\layout Description
+3 
+
+
+Contribuer au projet LyX
+\begin_deeper
+\layout Description
+3.1 
+Contribuer à LyX
+\begin_deeper
+\layout Description
+3.1.1 
+Signaler un bogue
+\layout Description
+3.1.2 
+Offrir des corrections et de nouvelles fonctions
+\end_deeper
+\layout Description
+3.2 
+Contribuer à la Documentation
+\begin_deeper
+\layout Description
+3.2.1 
+Rapporter les erreurs dans les Manuels
+\layout Description
+3.2.2 
+Se joindre à l'Équipe de Documentation
+\layout Description
+3.2.3 
+Contribuer à la Traduction
+\end_deeper
+\end_deeper
+\layout Section*
+
+Foire Aux Questions de LyX, avec les Réponses
+\newline 
+Version 0.3.7
+
+
+\layout Description
+1 
+Introduction et Informations d'ordre général
+\begin_deeper
+\layout Description
+1.1 
+Qu'est-ce que LyX?
+\layout Description
+1.2 
+C'est bien, mais est-ce utile ?
+\layout Description
+1.3 
+Où commencer ?
+\layout Description
+1.4 
+LyX marche-t-il sur mon ordinateur ?
+\layout Description
+1.5 
+LyX nécessite combien d'espace disque ?
+\layout Description
+1.6 
+LyX est-il vraiment un logiciel ouvert ?
+\end_deeper
+\layout Description
+2 
+Ressources Internet
+\begin_deeper
+\layout Description
+2.1 
+Où chercher sur la Toile, au sujet de LyX ?
+\layout Description
+2.2 
+Et par FTP ?
+\layout Description
+2.3 
+Quelles sont les listes de diffusion ?
+\layout Description
+2.4 
+Les listes de diffusion sont-elles archivées quelque part ?
+\layout Description
+2.5 
+C'est malin ! Où sont-elles archivées ?
+\end_deeper
+\layout Description
+3 
+Compatibilité avec d'autres traitements de texte
+\begin_deeper
+\layout Description
+3.1 
+Puis-je lire/écrire des fichiers LaTeX ?
+\layout Description
+3.2 
+Puis-je lire/écrire des fichiers Word ?
+\layout Description
+3.3 
+Puis-je lire/écrire des fichiers HTML ?
+\end_deeper
+\layout Description
+4 
+Se procurer LyX et le compiler
+\begin_deeper
+\layout Description
+4.1 
+De quoi ai-je besoin ?
+\layout Description
+4.2 
+Comment le compiler ?
+\layout Description
+4.3 
+Je déteste compiler.
+ Où sont les binaires précompilés ?
+\end_deeper
+\layout Description
+5 
+Questions sur le Vilain Texte Rouge ? (IMPORTANT !)
+\begin_deeper
+\layout Description
+5.1 
+Qu'est-ce que le Vilain Texte Rouge (alias ERT) ?
+\layout Description
+5.2 
+Comment entrer de l'ERT ?
+\layout Description
+5.3 
+Le nouvel insert ERT est un fardeau !
+\layout Description
+5.4 
+Y a-t-il une alternative ?
+\end_deeper
+\layout Description
+6 
+Questions sur l'utilisation de LyX
+\begin_deeper
+\layout Description
+6.1 
+Questions d'ordre général
+\begin_deeper
+\layout Description
+6.1.1 
+Comment me débarrasser de la date sous le titre ?
+\layout Description
+6.1.2 
+Comment changer l'espacement dans un environnement de liste ListePuces/Énumérati
+on/Description ?
+\layout Description
+6.1.3 
+Comment numéroter les équations section par section ?
+\layout Description
+6.1.4 
+Puis-je le faire aussi avec les figures et les tableaux ?
+\layout Description
+6.1.5 
+Comment transformer la numérotation des notes de bas de page en symboles
+ (étoile, point, etc.) ?
+\layout Description
+6.1.6 
+Comment se débarrasser des veuves et des orphelins ?
+\layout Description
+6.1.7 
+Comment obtenir une liste formatée qui commence par 1.
+ a) (par exemple) ?
+\layout Description
+6.1.8 
+Comment compter les mots dans LyX ?
+\layout Description
+6.1.9 
+Comment insérer une quantité donnée d'espacement horizontal ?
+\layout Description
+6.1.10 
+Comment faire référence à des citations en les groupant ainsi [1,2,3,6]
+ ou [1-3,6] plutôt qu'ainsi [1][2][3][6] ?
+\end_deeper
+\layout Description
+6.2 
+Questions au sujet des figures
+\begin_deeper
+\layout Description
+6.2.1 
+Quelle est la différence entre une 
+\begin_inset Quotes fld
+\end_inset 
+
+figure
+\begin_inset Quotes frd
+\end_inset 
+
+ et une 
+\begin_inset Quotes fld
+\end_inset 
+
+figure flottante
+\begin_inset Quotes frd
+\end_inset 
+
+ ?
+\layout Description
+6.2.2 
+Comment faire pour que LyX mette la figure exactement où je veux ?
+\layout Description
+6.2.3 
+Que veut dire 
+\begin_inset Quotes fld
+\end_inset 
+
+Too many unprocessed floats
+\begin_inset Quotes frd
+\end_inset 
+
+
+
+ ?
+\end_deeper
+\layout Description
+6.3 
+Questions au sujet des Maths
+\begin_deeper
+\layout Description
+6.3.1 
+Comment mettre du texte normal dans une équation mathématique ?
+\layout Description
+6.3.2 
+Comment obtenir une racine cubique (ou plus élevée) ?
+\end_deeper
+\end_deeper
+\layout Description
+7 
+Questions sur le lancement de LyX
+\begin_deeper
+\layout Description
+7.1 
+Comment convertir des fichiers LyX en LaTeX à la ligne de commande ?
+\layout Description
+7.2 
+Comment créer des fichiers PDF à partir de mon document LyX ?
+\layout Description
+7.3 
+Pourquoi les polices de mon document sont-elles si laides dans 
+\family typewriter 
+acroread
+\family default 
+ ?
+\layout Description
+7.4 
+Pourquoi ma version flambant neuve de Ghostscript ne rend-elle pas correctement
+ les figures EPS en ligne ?
+\end_deeper
+\layout Description
+8 
+Questions sur LyX et Windows
+\begin_deeper
+\layout Description
+8.1 
+Pourquoi les menus et la barre d'outils clignotent-ils ?
+\end_deeper
+\layout Description
+9 
+Comment obtenir plus d'aide
+\begin_deeper
+\layout Description
+9.1 
+Vous n'avez toujours pas répondu à ma question !
+\layout Description
+9.2 
+Je veux écrire à quelqu'un pour lui parler de mon problème
+\layout Description
+9.3 
+Quoi mettre dans une demande d'assistance ?
+\end_deeper
+\layout Description
+10 
+Renseignements Administratifs et Remerciements
+\begin_deeper
+\layout Description
+10.1 
+Votre avis est le bienvenu
+\layout Description
+10.2 
+Formats dans lesquels cette FAQ est disponible
+\layout Description
+10.3 
+Auteurs et remerciements
+\layout Description
+10.4 
+Garantie et Licence
+\end_deeper
+\layout Section*
+
+Le Manuel d'Apprentissage de LyX
+
+
+\layout Description
+1 
+Introduction
+\begin_deeper
+\layout Description
+1.1 
+Bienvenue dans l'univers de LyX !
+\layout Description
+1.2 
+Le Manuel\SpecialChar ~
+d'Apprentissage : ce qu'il 
+\shape slanted 
+est
+\shape default 
+, ce qu'il 
+\emph on 
+n'est pas
+\begin_deeper
+\layout Description
+1.2.1 
+Tirer le meilleur profit du Manuel\SpecialChar ~
+d'Apprentissage
+\layout Description
+1.2.2 
+Ce que vous 
+\emph on 
+ne
+\emph default 
+ trouverez 
+\emph on 
+pas
+\emph default 
+ 
+\end_deeper
+\end_deeper
+\layout Description
+2 
+Démarrer avec LyX
+\begin_deeper
+\layout Description
+2.1 
+Votre premier document LyX 
+\begin_deeper
+\layout Description
+2.1.1 
+Taper, visualiser, et imprimer
+\layout Description
+2.1.2 
+Opérations de base
+\layout Description
+2.1.3 
+WYSIWYM : les espaces avec LyX
+\end_deeper
+\layout Description
+2.2 
+Environnements
+\begin_deeper
+\layout Description
+2.2.1 
+Sections et sous-sections
+\layout Description
+2.2.2 
+Listes et sous-listes
+\layout Description
+2.2.3 
+Autres environnement : vers, citations, et autres
+\end_deeper
+\end_deeper
+\layout Description
+3 
+Écrire des documents
+\begin_deeper
+\layout Description
+3.1 
+Classes de texte
+\layout Description
+3.2 
+Modèles : écrire une lettre
+\layout Description
+3.3 
+Titres des documents
+\layout Description
+3.4 
+Étiquettes et références croisées
+\begin_deeper
+\layout Description
+3.4.1 
+Votre première étiquette
+\layout Description
+3.4.2 
+Votre première référence croisée
+\layout Description
+3.4.3 
+En faire davantage avec les étiquettes
+\end_deeper
+\layout Description
+3.5 
+Notes de marge et de bas de page
+\layout Description
+3.6 
+Bibliographies
+\layout Description
+3.7 
+Table des matières
+\end_deeper
+\layout Description
+4 
+Utilisation du mode mathématique
+\begin_deeper
+\layout Description
+4.1 
+Mode Mathématique
+\layout Description
+4.2 
+Se déplacer dans une équation
+\layout Description
+4.3 
+Indices et exposants
+\layout Description
+4.4 
+La Palette Mathématique
+\begin_deeper
+\layout Description
+4.4.1 
+Grec et symboles
+\layout Description
+4.4.2 
+Racines carrées, accents, et délimiteurs
+\layout Description
+4.4.3 
+Fractions
+\layout Description
+4.4.4 
+Mode TeX : limites, log, sin et autres
+\layout Description
+4.4.5 
+Matrices
+\layout Description
+4.4.6 
+Hors ligne
+\end_deeper
+\layout Description
+4.5 
+En savoir plus sur l'écriture des maths
+\end_deeper
+\layout Description
+5 
+Divers
+\begin_deeper
+\layout Description
+5.1 
+Autres fonctionnalités majeures de LyX
+\layout Description
+5.2 
+LyX pour les connaisseurs de LaTeX
+\begin_deeper
+\layout Description
+5.2.1 
+Mode TeX
+\layout Description
+5.2.2 
+Importer des documents LaTeX -- 
+\family typewriter 
+reLyX
+\layout Description
+5.2.3 
+Conversion de documents LyX en LaTeX
+\layout Description
+5.2.4 
+Préambule LaTeX
+\begin_deeper
+\layout Description
+5.2.4.1 
+Classe de Document
+\layout Description
+5.2.4.2 
+Autres Éléments du Préambule
+\end_deeper
+\layout Description
+5.2.5 
+BibTeX
+\end_deeper
+\layout Description
+5.3 
+Erreurs !
+\layout Description
+5.4 
+LyX et la typographie française
+\end_deeper
+\layout Section*
+
+Guide de l'Utilisateur de LyX
+
+
+\layout Description
+1 
+Introduction
+\begin_deeper
+\layout Description
+1.1 
+Qu'est-ce que LyX ?
+\layout Description
+1.2 
+Pour démarrer
+\begin_deeper
+\layout Description
+1.2.1 
+Démarrer LyX
+\layout Description
+1.2.2 
+À quoi ressemble LyX
+\begin_deeper
+\layout Description
+1.2.2.1 
+La fenêtre principale
+\end_deeper
+\layout Description
+1.2.3 
+À l'aide !
+\end_deeper
+\layout Description
+1.3 
+L'interface de LyX
+\begin_deeper
+\layout Description
+1.3.1 
+Opérations de base sur les fichiers
+\layout Description
+1.3.2 
+Fonctions de base d'édition
+\layout Description
+1.3.3 
+Annuler et Refaire
+\layout Description
+1.3.4 
+Raccourcis souris de base
+\layout Description
+1.3.5 
+Raccourcis clavier de base
+\end_deeper
+\layout Description
+1.4 
+Utiliser LyX avec d'autres programmes
+\begin_deeper
+\layout Description
+1.4.1 
+Importer des fichiers ASCII
+\layout Description
+1.4.2 
+Copier-coller entre LyX et d'autres programmes X
+\end_deeper
+\end_deeper
+\layout Description
+2 
+Configuration de LyX et Applications nécessaires
+\begin_deeper
+\layout Description
+2.1 
+Introduction
+\layout Description
+2.2 
+Configuration de base de LyX
+\layout Description
+2.3 
+Configurer le clavier X
+\begin_deeper
+\layout Description
+2.3.1 
+
+\family typewriter 
+xmodmap
+\family default 
+ et 
+\family typewriter 
+xkeycaps
+\begin_deeper
+\layout Description
+2.3.1.1 
+
+\family typewriter 
+xmodmap
+\layout Description
+2.3.1.2 
+
+\family typewriter 
+xkeycaps
+\end_deeper
+\layout Description
+2.3.2 
+Touches de modification et Bascule de mode
+\layout Description
+2.3.3 
+Conseils et trucs utiles
+\end_deeper
+\layout Description
+2.4 
+LaTeX
+\layout Description
+2.5 
+Dvips et Ghostscript
+\begin_deeper
+\layout Description
+2.5.1 
+Ce dont vous avez besoin
+\layout Description
+2.5.2 
+Dvips
+\layout Description
+2.5.3 
+Ghostscript, Xdvi et Ghostview
+\end_deeper
+\layout Description
+2.6 
+L'imprimante
+\end_deeper
+\layout Description
+3 
+Les bases de LyX
+\begin_deeper
+\layout Description
+3.1 
+Types de documents
+\begin_deeper
+\layout Description
+3.1.1 
+Introduction
+\layout Description
+3.1.2 
+
+
+Les différents classes de document
+\begin_deeper
+\layout Description
+3.1.2.1 
+En résumé
+\layout Description
+3.1.2.2 
+Sélectionner une classe
+\layout Description
+3.1.2.3 
+Propriétés
+\end_deeper
+\layout Description
+3.1.3 
+Réglage fin de ces Valeurs par Défaut
+\layout Description
+3.1.4 
+Taille de papier, Orientation et Marges
+\layout Description
+3.1.5 
+Note importante
+\end_deeper
+\layout Description
+3.2 
+Indentation et Séparation des paragraphes
+\begin_deeper
+\layout Description
+3.2.1 
+Introduction
+\layout Description
+3.2.2 
+Méthode générale d'Indentation
+\layout Description
+3.2.3 
+Réglage fin
+\layout Description
+3.2.4 
+Changer l'Interligne
+\end_deeper
+\layout Description
+3.3 
+Environnements de Paragraphe
+
+
+\begin_deeper
+\layout Description
+3.3.1 
+En résumé
+\layout Description
+3.3.2 
+Standard
+\layout Description
+3.3.3 
+Titre du Document
+\layout Description
+3.3.4 
+En-têtes
+\begin_deeper
+\layout Description
+3.3.4.1 
+En-têtes Numérotés
+\layout Description
+3.3.4.2 
+En-têtes Non Numérotés
+\layout Description
+3.3.4.3 
+Changer la Numérotation
+\layout Description
+3.3.4.4 
+Information Spéciale
+\layout Description
+3.3.4.5 
+Créer un Appendice
+\end_deeper
+\layout Description
+3.3.5 
+Citations et Poésie
+\begin_deeper
+\layout Description
+3.3.5.1 
+
+\family sans 
+Cite
+\family default 
+ et 
+\family sans 
+Citation
+\layout Description
+3.3.5.2 
+
+\family sans 
+Vers
+\end_deeper
+\layout Description
+3.3.6 
+Listes
+\begin_deeper
+\layout Description
+3.3.6.1 
+Principes Généraux
+\layout Description
+3.3.6.2 
+
+\family sans 
+ListePuces
+\layout Description
+3.3.6.3 
+
+\family sans 
+Énumération
+\layout Description
+3.3.6.4 
+
+\family sans 
+Description
+\layout Description
+3.3.6.5 
+La Liste LyX (environnement 
+\family sans 
+Liste
+\family default 
+)
+\end_deeper
+\layout Description
+3.3.7 
+Lettres
+\begin_deeper
+\layout Description
+3.3.7.1 
+
+\family sans 
+Adresse
+\family default 
+ et 
+\family sans 
+Adresse\SpecialChar ~
+à\SpecialChar ~
+Droite
+\family default 
+ : Un résumé
+\layout Description
+3.3.7.2 
+Emploi
+\end_deeper
+\layout Description
+3.3.8 
+Documents de recherche
+\begin_deeper
+\layout Description
+3.3.8.1 
+
+\family sans 
+Abstract
+\layout Description
+3.3.8.2 
+
+\family sans 
+Bibliographie
+\end_deeper
+\layout Description
+3.3.9 
+Usage spécial
+\begin_deeper
+\layout Description
+3.3.9.1 
+
+\family sans 
+Légende
+\layout Description
+3.3.9.2 
+
+\family sans 
+LyX-Code
+\layout Description
+3.3.9.3 
+
+\family sans 
+Commentaire
+\end_deeper
+\end_deeper
+\layout Description
+3.4 
+Environnements Emboîtés
+
+
+\begin_deeper
+\layout Description
+3.4.1 
+Pourquoi c'est important
+
+
+\layout Description
+3.4.2 
+Ce que vous pouvez et ne pouvez pas emboîter
+\layout Description
+3.4.3 
+Emboîter d'autres objets : tableaux, math, flottants, etc.
+\layout Description
+3.4.4 
+Emploi et Propriétés générales
+\begin_deeper
+\layout Description
+3.4.4.1 
+Les limites de l'emboîtement
+\end_deeper
+\layout Description
+3.4.5 
+Quelques Exemples
+\begin_deeper
+\layout Description
+3.4.5.1 
+Exemple n°1 : Six niveaux et Emboîtement mixte
+\layout Description
+3.4.5.2 
+Exemple n°2 : Héritage
+\layout Description
+3.4.5.3 
+Exemple n°3 : Marqueurs de liste et Niveaux dans les Environnements 
+\family sans 
+Énumération
+\family default 
+ et 
+\family sans 
+ListePuces
+\layout Description
+3.4.5.4 
+Exemple n°4 : Péter les plombs
+\end_deeper
+\end_deeper
+\layout Description
+3.5 
+Polices et Styles de Texte
+\begin_deeper
+\layout Description
+3.5.1 
+En résumé
+\layout Description
+3.5.2 
+Options Globales
+\layout Description
+3.5.3 
+Utiliser des Styles de Caractères Différents
+\layout Description
+3.5.4 
+Réglage fin avec la Fenêtre 
+\family sans 
+Style\SpecialChar ~
+de\SpecialChar ~
+Caractère
+\end_deeper
+\layout Description
+3.6 
+Imprimer et Prévisualiser
+\begin_deeper
+\layout Description
+3.6.1 
+En résumé
+\layout Description
+3.6.2 
+Visualisation Rapide avec 
+\family typewriter 
+xdvi
+\layout Description
+3.6.3 
+Visualiser la Version PostScript® avec 
+\family typewriter 
+ghostview
+\family default 
+ 
+\layout Description
+3.6.4 
+Imprimer le Fichier
+\end_deeper
+\layout Description
+3.7 
+Quelques Mots sur la Typographie
+\begin_deeper
+\layout Description
+3.7.1 
+Tirets et Césures
+\layout Description
+3.7.2 
+Ponctuation
+\begin_deeper
+\layout Description
+3.7.2.1 
+Abréviations et Fins de phrase
+\layout Description
+3.7.2.2 
+Guillemets
+\end_deeper
+\layout Description
+3.7.3 
+Ligatures
+\layout Description
+3.7.4 
+Veuves et Orphelins
+\end_deeper
+\end_deeper
+\layout Description
+4 
+Les Flottants : Tableaux, Figures et Notes
+
+
+\begin_deeper
+\layout Description
+4.1 
+Notes en Bas de Page
+\layout Description
+4.2 
+Notes en Marge
+\layout Description
+4.3 
+Figures et Graphiques Importés
+\begin_deeper
+\layout Description
+4.3.1 
+Figures Flottantes
+\begin_deeper
+\layout Description
+4.3.1.1 
+Utiliser les Figures Flottantes
+\layout Description
+4.3.1.2 
+Emplacement des Flottants
+\end_deeper
+\layout Description
+4.3.2 
+
+\family typewriter 
+XFig
+\family default 
+ et LyX
+\end_deeper
+\layout Description
+4.4 
+Tableaux
+\begin_deeper
+\layout Description
+4.4.1 
+La fenêtre 
+\family sans 
+Tableau
+\layout Description
+4.4.2 
+Ce que vous pouvez placer dans une case de tableau
+\layout Description
+4.4.3 
+Copier-Coller avec les Tableaux
+\layout Description
+4.4.4 
+Cases sur Plusieurs Lignes
+\layout Description
+4.4.5 
+Tableaux Flottants
+\end_deeper
+\layout Description
+4.5 
+Table des Matières et autres Sommaires
+\begin_deeper
+\layout Description
+4.5.1 
+La Table des Matières
+\layout Description
+4.5.2 
+Liste des Figures, des Tableaux et des Algorithmes
+\end_deeper
+\end_deeper
+\layout Description
+5 
+Formules mathématiques
+\begin_deeper
+\layout Description
+5.1 
+Les bases de l'édition mathématique
+\begin_deeper
+\layout Description
+5.1.1 
+Naviguer dans une formule
+\layout Description
+5.1.2 
+Sélectionner du texte
+\layout Description
+5.1.3 
+Indices et Exposants
+\layout Description
+5.1.4 
+Fractions 
+\layout Description
+5.1.5 
+Sommes et Intégrales
+\layout Description
+5.1.6 
+La 
+\family sans 
+Palette Mathématique
+\layout Description
+5.1.7 
+Autres symboles mathématiques
+\layout Description
+5.1.8 
+Changer l'espacement
+\layout Description
+5.1.9 
+Fonctions mathématiques
+\layout Description
+5.1.10 
+Accents
+\layout Description
+5.1.11 
+L'éditeur mathématique pour les utilisateurs de LaTeX
+\end_deeper
+\layout Description
+5.2 
+Délimiteurs et ornements
+\layout Description
+5.3 
+Regroupement
+\layout Description
+5.4 
+Matrices et équations sur plusieurs lignes
+\layout Description
+5.5 
+Numérotation et étiquetage des équations
+\layout Description
+5.6 
+Macros définies par l'utilisateur en mode mathématique
+\begin_deeper
+\layout Description
+5.6.1 
+Mode d'emploi des macros
+\begin_deeper
+\layout Description
+5.6.1.1 
+Comment en créer
+\layout Description
+5.6.1.2 
+Comment y naviguer
+\end_deeper
+\end_deeper
+\layout Description
+5.7 
+Réglage fin
+\begin_deeper
+\layout Description
+5.7.1 
+Polices
+\layout Description
+5.7.2 
+Mode Texte-Math
+
+
+\layout Description
+5.7.3 
+Taille de police
+\end_deeper
+\layout Description
+5.8 
+LaTeX AMS
+\begin_deeper
+\layout Description
+5.8.1 
+Activer la gestion d'AMS
+\layout Description
+5.8.2 
+Symboles AMS
+\layout Description
+5.8.3 
+Types de formules AMS
+\end_deeper
+\end_deeper
+\layout Description
+6 
+Autres Outils
+\begin_deeper
+\layout Description
+6.1 
+Références croisées
+\layout Description
+6.2 
+URLs (Uniform Resource Locators)
+\layout Description
+6.3 
+Écrire des titres courts avec des paramètres optionnels
+
+
+\layout Description
+6.4 
+Espacement, pagination et passages à la ligne
+\begin_deeper
+\layout Description
+6.4.1 
+Espace horizontal supplémentaire
+\layout Description
+6.4.2 
+Espace vertical supplémentaire
+\layout Description
+6.4.3 
+Changer l'alignement d'un paragraphe
+\layout Description
+6.4.4 
+Forcer les sauts de page
+\layout Description
+6.4.5 
+Espaces insécables
+\layout Description
+6.4.6 
+Le passage à la ligne
+\end_deeper
+\layout Description
+6.5 
+Correction orthographique
+\begin_deeper
+\layout Description
+6.5.1 
+Options du correcteur orthographique
+\begin_deeper
+\layout Description
+6.5.1.1 
+Dictionnaire
+\layout Description
+6.5.1.2 
+Dictionnaire personnel
+\layout Description
+6.5.1.3 
+Autres options
+\end_deeper
+\layout Description
+6.5.2 
+Limitations
+\end_deeper
+\layout Description
+6.6 
+Support international
+\begin_deeper
+\layout Description
+6.6.1 
+Options de langue du menu 
+\family sans 
+Format
+\layout Description
+6.6.2 
+La configuration du clavier
+\layout Description
+6.6.3 
+Tableaux de caractères
+\end_deeper
+\end_deeper
+\layout Description
+7 
+Remerciements
+\layout Section*
+
+Options avancées de LyX
+
+
+\layout Description
+1 
+Introduction
+\layout Description
+2 
+LyX et LaTeX
+\begin_deeper
+\layout Description
+2.1 
+Comment LyX utilise LaTeX
+\layout Description
+2.2 
+
+\begin_inset Quotes fld
+\end_inset 
+
+Au secours ! LyX a généré un fichier 
+\family typewriter 
+.tex
+\family default 
+ illisible !
+\begin_inset Quotes frd
+\end_inset 
+
+
+\layout Description
+2.3 
+Traduire des fichiers LaTeX en LyX
+\layout Description
+2.4 
+Insérer du code LaTeX dans des documents LyX
+\layout Description
+2.5 
+LyX et le préambule LaTeX
+\begin_deeper
+\layout Description
+2.5.1 
+À propos du préambule LaTeX
+\layout Description
+2.5.2 
+Changer le préambule
+\layout Description
+2.5.3 
+Exemples
+\begin_deeper
+\layout Description
+2.5.3.1 
+Exemple 1 : Décalages
+\layout Description
+2.5.3.2 
+Exemple 2 : Étiquettes
+\layout Description
+2.5.3.3 
+Exemple 3 : Indentation de paragraphe
+\layout Description
+2.5.3.4 
+Exemple 4 : Ce document
+\end_deeper
+\end_deeper
+\layout Description
+2.6 
+LyX et les erreurs LaTeX
+\end_deeper
+\layout Description
+3 
+Outils supplémentaires
+\begin_deeper
+\layout Description
+3.1 
+Préparer une bibliographie avec BibTeX
+\layout Description
+3.2 
+Réalisation d'un index
+\layout Description
+3.3 
+Documents en plusieurs fichiers
+\begin_deeper
+\layout Description
+3.3.1 
+Généralités
+\layout Description
+3.3.2 
+Références croisées entre fichiers
+\end_deeper
+\layout Description
+3.4 
+Algorithmes
+\layout Description
+3.5 
+Sous-figures
+\layout Description
+3.6 
+En-têtes et pieds de page sur mesure
+\layout Description
+3.7 
+Minipages
+\layout Description
+3.8 
+Enrober une Figure avec du Texte
+
+
+\layout Description
+3.9 
+Options supplémentaires pour les tableaux
+\begin_deeper
+\layout Description
+3.9.1 
+Enlever les espaces supplémentaires des colonnes
+\layout Description
+3.9.2 
+Changer le caractère de séparation de colonnes
+\layout Description
+3.9.3 
+Colonnes alignées sur le symbole décimal
+\layout Description
+3.9.4 
+Une meilleure solution pour l'alignement décimal
+\end_deeper
+\layout Description
+3.10 
+Choix de puces dans 
+\family sans 
+ListePuces
+\family default 
+
+
+
+\begin_deeper
+\layout Description
+3.10.1 
+Introduction
+\layout Description
+3.10.2 
+À quoi elles ressemblent
+\layout Description
+3.10.3 
+Comment s'en servir
+\end_deeper
+\end_deeper
+\layout Description
+4 
+Classes de document spéciales
+\begin_deeper
+\layout Description
+4.1 
+LaTeX AMS
+\begin_deeper
+\layout Description
+4.1.1 
+Ce qu'offrent ces formats
+\end_deeper
+\layout Description
+4.2 
+Dinbrief
+\layout Description
+4.3 
+Papier
+\layout Description
+4.4 
+Papier A&A
+\begin_deeper
+\layout Description
+4.4.1 
+Introduction
+\layout Description
+4.4.2 
+Pour commencer
+\layout Description
+4.4.3 
+Le bloc d'en-tête
+\layout Description
+4.4.4 
+L'abstract
+\layout Description
+4.4.5 
+Environnements supportés
+\layout Description
+4.4.6 
+Commandes non encore supportées par LyX
+\layout Description
+4.4.7 
+Figures et Tableaux Flottants
+\layout Description
+4.4.8 
+Format du référé
+\layout Description
+4.4.9 
+Le papier exemple
+\end_deeper
+\layout Description
+4.5 
+AASTeX
+\begin_deeper
+\layout Description
+4.5.1 
+Introduction
+\layout Description
+4.5.2 
+Commencer un Nouveau Papier
+\layout Description
+4.5.3 
+Finir votre Papier
+\layout Description
+4.5.4 
+Commentaires sur des Commandes Particulières
+\begin_deeper
+\layout Description
+4.5.4.1 
+Les choses qui marchent comme prévu
+\layout Description
+4.5.4.2 
+Les choses qui marchent, mais qui nécessitent un commentaire
+\layout Description
+4.5.4.3 
+Les choses qui ne sont pas implémentées, utilisez du Vilain Texte Rouge
+\layout Description
+4.5.4.4 
+Les choses qui ne peuvent pas être implémentées
+\end_deeper
+\layout Description
+4.5.5 
+FAQs, Conseils, Trucs et autres Astuces
+\begin_deeper
+\layout Description
+4.5.5.1 
+Faire coopérer LyX et AASTeX
+\layout Description
+4.5.5.2 
+Erreur LaTeX lors du traitement d'un tableau
+\layout Description
+4.5.5.3 
+Références
+
+
+\layout Description
+4.5.5.4 
+Inclure des fichiers EPS
+\layout Description
+4.5.5.5 
+Les choses qui auraient pu être faites, mais qui ne l'ont pas été
+\end_deeper
+\layout Description
+4.5.6 
+Touche Finale
+\end_deeper
+\layout Description
+4.6 
+ijmpd
+\begin_deeper
+\layout Description
+4.6.1 
+En résumé
+\layout Description
+4.6.2 
+Écrire un papier
+\layout Description
+4.6.3 
+Préparer un papier avant de le soumettre
+\layout Description
+4.6.4 
+Utilisation de l'ERT
+
+
+\end_deeper
+\layout Description
+4.7 
+Kluwer
+\begin_deeper
+\layout Description
+4.7.1 
+En résumé
+\layout Description
+4.7.2 
+Écrire un papier
+\layout Description
+4.7.3 
+Préparer un papier avant de le soumettre
+\layout Description
+4.7.4 
+
+\begin_inset Quotes fld
+\end_inset 
+
+Particularités
+\begin_inset Quotes frd
+\end_inset 
+
+ du paquetage Kluwer
+
+
+\end_deeper
+\layout Description
+4.8 
+Koma-Script
+\begin_deeper
+\layout Description
+4.8.1 
+En résumé
+\layout Description
+4.8.2 
+
+\family sans 
+article (koma-script)
+\family default 
+, 
+\family sans 
+report (koma-script)
+\family default 
+, et 
+\family sans 
+book (koma-script)
+\layout Description
+4.8.3 
+
+\family sans 
+letter (koma-script)
+\layout Description
+4.8.4 
+La nouvelle classe lettre : 
+\family sans 
+letter (koma-script v.2)
+\layout Description
+4.8.5 
+Problèmes
+\end_deeper
+\layout Description
+4.9 
+Publications Springer sur deux colonnes (
+\family sans 
+svjour
+\family default 
+)
+\begin_deeper
+\layout Description
+4.9.1 
+Description
+\layout Description
+4.9.2 
+Nouveaux styles
+\layout Description
+4.9.3 
+Publications supportées
+\layout Description
+4.9.4 
+Crédits
+\layout Description
+4.9.5 
+Bogues
+\end_deeper
+\layout Description
+4.10 
+Publications de l'AGU (
+\family sans 
+aguplus
+\family default 
+)
+\begin_deeper
+\layout Description
+4.10.1 
+Description
+\layout Description
+4.10.2 
+Nouveaux environnements
+\layout Description
+4.10.3 
+Nouveaux flottants
+\layout Description
+4.10.4 
+Publications supportées
+\layout Description
+4.10.5 
+Bogues et choses à retenir
+\end_deeper
+\layout Description
+4.11 
+Publications de l'EGS (
+\family sans 
+egs
+\family default 
+)
+\begin_deeper
+\layout Description
+4.11.1 
+Description
+\layout Description
+4.11.2 
+Nouveaux environnements
+\end_deeper
+\layout Description
+4.12 
+Diapos Slides (alias SliTeX)
+
+
+\begin_deeper
+\layout Description
+4.12.1 
+Introduction
+\layout Description
+4.12.2 
+Pour Commencer
+
+
+\layout Description
+4.12.3 
+Environnements de Paragraphe
+\begin_deeper
+\layout Description
+4.12.3.1 
+Environnements supportés
+\layout Description
+4.12.3.2 
+Subtilités des nouveaux environnements
+
+
+\end_deeper
+\layout Description
+4.12.4 
+Réaliser une présentation grâce à 
+\family sans 
+Diapo
+\family default 
+,
+\family sans 
+ SurCouche
+\family default 
+ et 
+\family sans 
+Note
+\begin_deeper
+\layout Description
+4.12.4.1 
+Utiliser l'environnement 
+\family sans 
+Diapo
+\layout Description
+4.12.4.2 
+Utiliser des 
+\family sans 
+SurCouches
+\family default 
+ avec des 
+\family sans 
+Diapos
+\layout Description
+4.12.4.3 
+Utiliser des 
+\family sans 
+Notes
+\family default 
+ avec des 
+\family sans 
+Diapos
+\family default 
+
+
+
+\end_deeper
+\layout Description
+4.12.5 
+Le fichier modèle pour la classe 
+\family sans 
+slides
+\end_deeper
+\layout Description
+4.13 
+Diapos Foils (alias 
+\family sans 
+Foil
+\family default 
+\noun on 
+TeX
+\noun default 
+)
+
+
+\begin_deeper
+\layout Description
+4.13.1 
+Introduction
+\layout Description
+4.13.2 
+Pour commencer
+\begin_deeper
+\layout Description
+4.13.2.1 
+Options Supplémentaires
+\end_deeper
+\layout Description
+4.13.3 
+Environnements supportés
+\layout Description
+4.13.4 
+Création de diapos
+\begin_deeper
+\layout Description
+4.13.4.1 
+Donner un titre de page
+\layout Description
+4.13.4.2 
+Débuter une nouvelle diapo
+\layout Description
+4.13.4.3 
+Théorèmes, lemmes, preuves et tutti quanti
+\layout Description
+4.13.4.4 
+Listes
+\layout Description
+4.13.4.5 
+Figures et tableaux
+\layout Description
+4.13.4.6 
+En-têtes et pieds de pages 
+
+
+\end_deeper
+\layout Description
+4.13.5 
+Fonctions de 
+\family sans 
+FoilTeX
+\family default 
+ non-supportées
+
+
+\begin_deeper
+\layout Description
+4.13.5.1 
+Longueurs
+\layout Description
+4.13.5.2 
+En-têtes et pieds
+\end_deeper
+\end_deeper
+\layout Description
+4.14 
+Latex8 (Papiers des Conférences de l'IEEE)
+\begin_deeper
+\layout Description
+4.14.1 
+Introduction
+\layout Description
+4.14.2 
+Pour commencer
+\layout Description
+4.14.3 
+Environnements supportés
+\layout Description
+4.14.4 
+Différences entre écran et impression
+\end_deeper
+\layout Description
+4.15 
+Hollywood (scripts d'Hollywood)
+\begin_deeper
+\layout Description
+4.15.1 
+Introduction
+\layout Description
+4.15.2 
+Problèmes particuliers
+\layout Description
+4.15.3 
+Fonctions particulières
+\layout Description
+4.15.4 
+Taille de papier et Marges
+\layout Description
+4.15.5 
+Environnements
+\layout Description
+4.15.6 
+Jargon de script
+\end_deeper
+\layout Description
+4.16 
+Broadway
+\begin_deeper
+\layout Description
+4.16.1 
+Introduction
+\layout Description
+4.16.2 
+Problèmes particuliers
+\layout Description
+4.16.3 
+Fonctions particulières
+\layout Description
+4.16.4 
+Taille de papier et Marges
+\layout Description
+4.16.5 
+Environnements
+\end_deeper
+\layout Description
+4.17 
+RevTeX4
+\begin_deeper
+\layout Description
+4.17.1 
+Installation
+\layout Description
+4.17.2 
+Dans le préambule
+\layout Description
+4.17.3 
+Champs
+
+
+\layout Description
+4.17.4 
+Notes importantes
+\layout Description
+4.17.5 
+Inconvénients
+\end_deeper
+\layout Description
+4.18 
+Article (mwart), book (mwbk) and report (mwrep)
+
+
+\layout Description
+4.19 
+Elsevier Journals
+\end_deeper
+\layout Description
+5 
+Importer et Exporter d'autres Formats de Fichier
+
+
+\begin_deeper
+\layout Description
+5.1 
+Considérations Générales
+\layout Description
+5.2 
+Importer d'autres Formats
+\begin_deeper
+\layout Description
+5.2.1 
+LaTeX
+\layout Description
+5.2.2 
+Texte ASCII
+\layout Description
+5.2.3 
+Noweb
+\end_deeper
+\layout Description
+5.3 
+Exporter d'autres formats
+\begin_deeper
+\layout Description
+5.3.1 
+LaTeX
+\layout Description
+5.3.2 
+DVI (Device Independent Files : Fichiers Indépendants de l'Appareil)
+\layout Description
+5.3.3 
+PostScript®
+\layout Description
+5.3.4 
+Texte ASCII
+\layout Description
+5.3.5 
+HTML
+\layout Description
+5.3.6 
+PDF
+\begin_deeper
+\layout Description
+5.3.6.1 
+Utiliser pdfLaTeX
+\layout Description
+5.3.6.2 
+Pourquoi mon texte a-t-il l'air si moche quand je le visionne avec Acrobat
+ Reader ?
+
+
+
+
+\layout Description
+5.3.6.3 
+Pourquoi la commande 
+\family typewriter 
+
+\backslash 
+boldsymbol{}
+\family default 
+ ne marche pas quand j'utilise pslatex ?
+
+
+
+
+\layout Description
+5.3.6.4 
+Est-il possible d'écrire du code LaTeX qui ne soit lu que par pdfLaTeX ?
+
+
+\layout Description
+5.3.6.5 
+Comment puis-je rendre les URL cliquables ?
+\end_deeper
+\layout Description
+5.3.7 
+Personnalisé
+\end_deeper
+\layout Description
+5.4 
+Description complète de reLyX
+
+
+\begin_deeper
+\layout Description
+5.4.1 
+Synopsis
+\layout Description
+5.4.2 
+Options
+\layout Description
+5.4.3 
+Description
+\begin_deeper
+\layout Description
+5.4.3.1 
+Introduction
+\layout Description
+5.4.3.2 
+Usage
+\layout Description
+5.4.3.3 
+Ce que reLyX sait gérer
+\layout Description
+5.4.3.4 
+Ce que reLyX ne sait pas gérer -- Mais ça marche quand même
+\layout Description
+5.4.3.5 
+Ce que reLyX gère mal -- c'est-à-dire les BOGUES
+
+
+\layout Description
+5.4.3.6 
+Ce que LyX ne sait pas gérer
+\end_deeper
+\layout Description
+5.4.4 
+Exemples
+\layout Description
+5.4.5 
+Notes
+\begin_deeper
+\layout Description
+5.4.5.1 
+Rapports de bogue
+
+
+\layout Description
+5.4.5.2 
+Détails de l'Implémentation
+\layout Description
+5.4.5.3 
+Fichiers de Format
+\layout Description
+5.4.5.4 
+Fichiers de Syntaxe
+
+
+\layout Description
+5.4.5.5 
+Divers
+\end_deeper
+\layout Description
+5.4.6 
+Diagnostics
+\layout Description
+5.4.7 
+Avertissements
+\layout Description
+5.4.8 
+Fichiers
+\layout Description
+5.4.9 
+Voir aussi
+\layout Description
+5.4.10 
+Auteurs
+\end_deeper
+\end_deeper
+\layout Description
+6 
+LyX et applications extérieures
+\begin_deeper
+\layout Description
+6.1 
+LyX avec les outils SGML (alias LinuxDoc) 
+\begin_deeper
+\layout Description
+6.1.1 
+En résumé
+\layout Description
+6.1.2 
+Préparer et utiliser un document LinuxDoc
+\begin_deeper
+\layout Description
+6.1.2.1 
+Pour commencer
+\layout Description
+6.1.2.2 
+Le format LinuxDoc
+\end_deeper
+\layout Description
+6.1.3 
+Utilisation des environnements de paragraphe dans LinuxDoc
+\begin_deeper
+\layout Description
+6.1.3.1 
+Structure des documents LinuxDoc
+\layout Description
+6.1.3.2 
+Environnements de paragraphe LinuxDoc
+\layout Description
+6.1.3.3 
+Autres possibilités avec ces documents
+\layout Description
+6.1.3.4 
+Références croisées et HTML 
+\end_deeper
+\layout Description
+6.1.4 
+Utiliser les scripts Sgml pour LinuxDoc
+
+
+
+
+\layout Description
+6.1.5 
+Erreurs avec LinuxDoc
+\end_deeper
+\layout Description
+6.2 
+Correcteur TeX
+\begin_deeper
+\layout Description
+6.2.1 
+Introduction
+\layout Description
+6.2.2 
+Comment l'utiliser
+\layout Description
+6.2.3 
+Réglages fins
+\end_deeper
+\layout Description
+6.3 
+Contrôle de Version sous LyX
+\begin_deeper
+\layout Description
+6.3.1 
+Introduction
+\layout Description
+6.3.2 
+Les commandes RCS sous LyX
+\begin_deeper
+\layout Description
+6.3.2.1 
+
+\family sans 
+Initialiser le contrôle de versions
+\layout Description
+6.3.2.2 
+
+\family sans 
+Figer cette Version
+\layout Description
+6.3.2.3 
+
+\family sans 
+Nouvelle Version Éditable
+\layout Description
+6.3.2.4 
+
+\family sans 
+Recharger la Version Précédente
+\layout Description
+6.3.2.5 
+
+\family sans 
+Annuler Figer
+\layout Description
+6.3.2.6 
+
+\family sans 
+Visualiser Historique
+\end_deeper
+\end_deeper
+\layout Description
+6.4 
+Programmation littéraire
+\begin_deeper
+\layout Description
+6.4.1 
+Introduction
+\layout Description
+6.4.2 
+La programmation littéraire
+\begin_deeper
+\layout Description
+6.4.2.1 
+Références
+\end_deeper
+\layout Description
+6.4.3 
+LyX et la Programmation Littéraire
+\begin_deeper
+\layout Description
+6.4.3.1 
+Génération des documents et du code (weaving and tangling)
+\layout Description
+6.4.3.2 
+Configurer LyX
+\layout Description
+6.4.3.3 
+Fonctions pour le déboguage
+\layout Description
+6.4.3.4 
+Ajouts à la barre d'outils
+\layout Description
+6.4.3.5 
+Couleurs personnalisées
+\end_deeper
+\end_deeper
+\end_deeper
+\layout Description
+7 
+Secrets des Maîtres du LaTeX
+
+
+\begin_deeper
+\layout Description
+7.1 
+Trucs pour les notes de bas de page ou les notes en marge
+\begin_deeper
+\layout Description
+7.1.1 
+Notes de bas de page 
+\layout Description
+7.1.2 
+Notes en marge
+\end_deeper
+\layout Description
+7.2 
+MultiColonnes
+\begin_deeper
+\layout Description
+7.2.1 
+But
+\layout Description
+7.2.2 
+Limitations
+\layout Description
+7.2.3 
+Exemples
+\begin_deeper
+\layout Description
+7.2.3.1 
+Deux Colonnes
+\layout Description
+7.2.3.2 
+Colonnes Multiples
+\layout Description
+7.2.3.3 
+Des Colonnes dans une Colonne
+\end_deeper
+\end_deeper
+\layout Description
+7.3 
+Numérotation dans l'Environnement de Paragraphe 
+\family sans 
+Énumération
+
+
+\layout Description
+7.4 
+Ajout d'Espace entre les Rangées d'un Tableau
+\layout Description
+7.5 
+Lettrines
+\layout Description
+7.6 
+Paragraphes de Forme Inhabituelle
+\layout Description
+7.7 
+Résumé
+\end_deeper
+\layout Section*
+
+Personnaliser LyX : Fonctions pour l'Utilisateur Avancé
+
+
+\layout Description
+1 
+Introduction
+\layout Description
+2 
+Les fichiers de configuration de LyX
+\begin_deeper
+\layout Description
+2.1 
+Qu'est-ce qu'il y a dans 
+\family typewriter 
+RépLyX
+\family default 
+ ?
+\begin_deeper
+\layout Description
+2.1.1 
+Les fichiers générés automatiquement
+\layout Description
+2.1.2 
+Répertoires
+\layout Description
+2.1.3 
+Fichiers que vous n'avez pas à modifier
+\layout Description
+2.1.4 
+Autres fichiers appelant un commentaire
+\end_deeper
+\layout Description
+2.2 
+Votre répertoire personnel de configuration
+\layout Description
+2.3 
+Utiliser LyX avec plusieurs configurations
+\end_deeper
+\layout Description
+3 
+La fenêtre 
+\family sans 
+Préférences
+\begin_deeper
+\layout Description
+3.1 
+Utiliser la fenêtre pour la première fois
+\layout Description
+3.2 
+Polices d'Écran
+\begin_deeper
+\layout Description
+3.2.1 
+Réglage de la Résolution DPI et Agrandissement des Polices
+\layout Description
+3.2.2 
+Commandes de définition de police
+\layout Description
+3.2.3 
+Encodage de police
+\end_deeper
+\layout Description
+3.3 
+Raccourcis
+
+
+\layout Description
+3.4 
+Interface utilisateur
+
+
+\layout Description
+3.5 
+Convertisseurs, Formats et Visionneuses
+\layout Description
+3.6 
+Options d'exportation ASCII
+\layout Description
+3.7 
+Imprimante
+\begin_deeper
+\layout Description
+3.7.1 
+Changer les Couleurs
+\end_deeper
+\layout Description
+3.8 
+Les réglages autodétectés
+\layout Description
+3.9 
+Le reste
+\end_deeper
+\layout Description
+4 
+Internationaliser LyX
+
+
+\begin_deeper
+\layout Description
+4.1 
+Sélectionner une autre langue pour l'interface utilisateur
+\layout Description
+4.2 
+Traduire LyX
+\begin_deeper
+\layout Description
+4.2.1 
+Traduire l'interface graphique (messages textuels)
+\layout Description
+4.2.2 
+Traduire la documentation
+\end_deeper
+\layout Description
+4.3 
+Support de Clavier International
+\begin_deeper
+\layout Description
+4.3.1 
+Définir ses propres réaffectations clavier : Format de fichier 
+\family typewriter 
+.kmap
+\end_deeper
+\layout Description
+4.4 
+Les Claviers Internationaux
+
+
+\begin_deeper
+\layout Description
+4.4.1 
+Le fichier 
+\family typewriter 
+.kmap
+\layout Description
+4.4.2 
+Le fichier 
+\family typewriter 
+.cdef
+\layout Description
+4.4.3 
+Touches mortes
+\layout Description
+4.4.4 
+Enregistrer votre Configuration Linguistique
+\end_deeper
+\end_deeper
+\layout Description
+5 
+Installer de Nouvelles Classes de Document, Formats et Modèles
+
+
+
+
+\begin_deeper
+\layout Description
+5.1 
+Installer un nouveau paquetage LaTeX
+\layout Description
+5.2 
+Formats
+\begin_deeper
+\layout Description
+5.2.1 
+Gérer de nouvelles classes de document
+\layout Description
+5.2.2 
+Format pour un fichier 
+\family typewriter 
+.sty
+\layout Description
+5.2.3 
+Format pour un fichier 
+\family typewriter 
+.cls
+\end_deeper
+\layout Description
+5.3 
+Déclarer une nouvelle classe de texte
+\begin_deeper
+\layout Description
+5.3.1 
+Paramètres généraux d'une classe de texte
+\layout Description
+5.3.2 
+Section 
+\family typewriter 
+ClassOptions
+\layout Description
+5.3.3 
+Formats de paragraphe spécifiques
+\layout Description
+5.3.4 
+Flottants
+\layout Description
+5.3.5 
+Compteurs
+\layout Description
+5.3.6 
+Description de police
+\end_deeper
+\layout Description
+5.4 
+Créer des Modèles
+
+
+\end_deeper
+\layout Description
+6 
+Insérer un Objet Externe
+\begin_deeper
+\layout Description
+6.1 
+Contexte
+\layout Description
+6.2 
+Comment fonctionne-t-il ?
+\layout Description
+6.3 
+La Fenêtre d'Objet Externe
+\layout Description
+6.4 
+Exemples
+\layout Description
+6.5 
+Le fichier de configuration des cadres externes
+\layout Description
+6.6 
+Le mécanisme de substitution
+\layout Description
+6.7 
+La question de la sécurité
+\end_deeper
+\layout Description
+7 
+Le Serveur LyX
+\begin_deeper
+\layout Description
+7.1 
+Introduction
+\layout Description
+7.2 
+Démarrer le Serveur LyX
+\layout Description
+7.3 
+Communication normale
+\layout Description
+7.4 
+Notification
+\layout Description
+7.5 
+Le Protocole Serveur LyX
+\end_deeper
+\layout Description
+8 \start_of_appendix 
+Raccourcis
+\begin_deeper
+\layout Description
+8.1 
+Barre d'outils
+\layout Description
+8.2 
+Menus
+
+
+\begin_deeper
+\layout Description
+8.2.1 
+Fichier
+\layout Description
+8.2.2 
+Éditer
+\layout Description
+8.2.3 
+Insérer
+\layout Description
+8.2.4 
+Format
+\begin_deeper
+\layout Description
+8.2.4.1 
+Format\SpecialChar \menuseparator
+Caractère
+\end_deeper
+\layout Description
+8.2.5 
+Visualiser
+\layout Description
+8.2.6 
+Naviguer
+\layout Description
+8.2.7 
+Aide
+\layout Description
+8.2.8 
+Style de Paragraphe
+\end_deeper
+\layout Description
+8.3 
+Clavier
+\begin_deeper
+\layout Description
+8.3.1 
+Spécifique à 
+\family typewriter 
+emacs.bind
+\layout Description
+8.3.2 
+Spécifique à 
+\family typewriter 
+cua.bind
+\layout Description
+8.3.3 
+Spécifique à 
+\family typewriter 
+sciword.bind
+\layout Description
+8.3.4 
+Raccourcis mathématiques standard
+\layout Description
+8.3.5 
+Autres Raccourcis
+\end_deeper
+\end_deeper
+
+\the_end

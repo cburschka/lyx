@@ -1,0 +1,2314 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass book
+\begin_preamble
+\usepackage[none]{hyphenat}
+\frenchspacing
+\sloppy
+
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\fancyfoot[C]{}
+\end_preamble
+\language hebrew
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 2
+\paperpagestyle fancy
+
+\layout Title
+
+הקדמה לליקס
+\layout Author
+
+מאת ג'ון וויס וצוות ליקס
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+תורגם ע"י ליאת וגדי קוזמא, 
+\numeric on 
+2002
+\numeric off 
+ )בהסתמך על תרגום קודם מאת דידי בר-דוד(
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Chapter
+
+הפילוסופיה של ליקס
+\layout Standard
+
+
+\lang english
+If you cannot see anything in this document except for this paragraph, do
+ not despair! Everything you need is in Dekel Tsur's site: 
+\begin_inset LatexCommand \htmlurl{http://www.math.tau.ac.il/~dekelts/lyx/}
+
+\end_inset 
+
+.
+ Get what you need, install it, and return to reading this document at your
+ leisure.
+\layout Section
+
+מה היא ליקס?
+\layout Standard
+
+ליקס היא מערכת לעריכת מסמכים.
+ הצד החזק שלה הוא מסמכים טכניים ומדעיים הכוללים
+\series bold 
+ 
+\series default 
+נוסחאות מתמטיות, הפניות, הערות שוליים, ביבליוגרפיה, אינדקס וכדומה.
+ ככול שהמסמך ארוך יותר, כך היתרונות שלה מתבטאים יותר, גם אם כל האופציות
+ שאתה צריך 
+\lang english
+---
+\lang hebrew
+ או את צריכה, המסמך הזה מיועד גם לך, כמובן, אבל אני אציין את זה רק הפעם
+ 
+\lang english
+---
+\lang hebrew
+ הן מספור אוטומטי ובדיקת איות.
+ תוכל להשתמש בה גם כדי לכתוב מכתב לאמא, אם כי קרוב לוודאי שלמטרה זו
+\series bold 
+ 
+\series default 
+יש תוכנות פשוטות יותר.
+ היא בפרוש אינה מתאימה להכנת שלטים, פמפלטים או פרסומות )יוסבר בהמשך( אם
+ כי במאמץ מסוים תוכל לעשות
+\series bold 
+ 
+\series default 
+גם את זה.
+ כבר השתמשו בה, לדוגמא, לכתיבת מזכרים, מכתבים, עבודות ודיסרטציות, סיכומי
+ הרצאות, סמינרים וכנסים, תעוד תוכנה, ספרים )על 
+\lang english
+PostgreSQL
+\lang hebrew
+, חישה מרחוק, קריפטולוגיה, ספרות, שירה ואפילו ספר ילדים או שניים(, מאמרים
+ בעיתונים מדעיים, תסריטים למחזות ולקולנוע, הצעות עסקיות\SpecialChar \ldots{}
+ ועוד.
+\layout Standard
+
+ליקס לא תוכננה כדי לדמות מעין מכונת כתיבה משוכללת.
+ במקום זה יש לה גישה מודרנית לכתיבת מסמכים המבוססת על "שפת מיתוג" )
+\lang english
+markup language
+\lang hebrew
+(.
+ היא מיועדת למי שמעוניין בפלט באיכות מקצועית בלי להתאמץ ובלי להפוך למומחים
+ בסדר דפוס.
+ עבודת הסידור מתבצעת ברובה על ידי המחשב, לא המשתמש.
+ עם ליקס
+\series bold 
+,
+\series default 
+ הכותב יכול להתרכז בתוכן.
+\layout Standard
+
+חלק מהאתגר שעומד בפניך לפני השימוש הראשון בליקס הוא לשנות גישה.
+ בימים עברו כל מה שהיה לנו היו מכונות כתיבה, ונאלצנו לפתח שיטות כדי לעקוף
+ את המגבלות שלהן.
+ קו תחתי 
+\lang english
+---
+\lang hebrew
+ שאפשר להשיג פשוט על ידי חזרה אחורה ושימוש במקש ה-_ הפך לשיטה מקובלת להדגיש
+ טקסט.
+ היית צריך לחשב את רוחב הטורים ומקומות ה-
+\lang english
+tab
+\lang hebrew
+ מראש כדי ליצור טבלה.
+ כנ"ל למכתבים או לטקסט מיושר אחר.
+ פרוק מילים עם מקף בסוף השורה דרש עין זהירה ויכולת לחשוב קדימה.
+\layout Standard
+
+במילים אחרות, היינו חייבים לשים לב לפרטים הקטנים של איזה אות הולכת לאיפה.
+ כתוצאה, כמעט לכל מעבדי התמלילים יש היום
+\series bold 
+ 
+\series default 
+את אותה מנטליות.
+ יש להם 
+\lang english
+tab stops
+\lang hebrew
+ כדי להוסיף רווחים.
+ עדיין צריך לדאוג איפה בדיוק על הדף תופיע כל מילה.
+ הדגשת טקסט דורשת החלפת פונט )גופן( 
+\lang english
+---
+\lang hebrew
+ כמו החלפת גלגל במכונת כתיבה.
+ זוהי הפילוסופיה הבסיסית של מעבדי תמלילים 
+\lang english
+WYSIWYG
+\lang hebrew
+, דהיינו רוב מעבדי התמלילים המוכרים על חלונות או מקינטוש: 
+\lang english
+What You See Is What You Get
+\lang hebrew
+.
+ למרבה הצער, התוצאה הסופית היא שבהרבה מקרים מה שאתה מקבל הוא רק מה שאתה
+ רואה.
+\layout Standard
+
+כאן נכנסת ליקס לתמונה.
+ בליקס אתה לא צריך להטריד את עצמך בזוטות כאלה.
+ אתה אומר לליקס מה אתה רוצה
+\series bold 
+ 
+\series default 
+וליקס דואג לכל השאר, בעזרת מערכת חוקים הנקראת "סגנון" )
+\lang english
+style
+\lang hebrew
+(
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+למען ההגינות יש לציין שבגרסאות האחרונות של רוב מעבדי התמלילים הפופלריים,
+ קיימים דפי סגנון )
+\lang english
+style sheets
+\lang hebrew
+( שמאפשרים לך להשתמש בשיטת 
+\lang english
+markup
+\lang hebrew
+ דומה.
+ עם זאת, ניסיוננו הוא שהם פשוט אינם בשימוש.
+\end_inset 
+
+.
+ 
+\bar under 
+ו
+\bar default 
+נתחיל בדוגמא:
+\layout Standard
+
+נניח שאתה רוצה לכתוב דו"ח.
+ בהתחלה אתה רוצה פרק שיקרא "הקדמה".
+ אתה הולך לתפריטים, מחליט על גודל הפונט שבו תשתמש ובוחר אותו.
+ אח"כ אתה מפעיל 
+\lang english
+bold
+\lang hebrew
+.
+ אח"כ אתה מקיש "
+\numeric on 
+1
+\numeric off 
+.
+ הקדמה".
+ כמובן שאם אחרי זה תחליט שהפרק הזה צריך להיות במקום אחר במסמך, או אם תכניס
+ פרק חדש לפניו, תצטרך לשנות את המספור שלו, של כל הפרקים שאחריו, של תוכן
+ העניינים, ומי יודע איפה עוד.
+\layout Standard
+
+בליקס אתה פשוט הולך לחלק השמאלי ביותר של לוח האיקונים, בוחר מהתפריט 
+\family sans 
+\lang english
+Section
+\family default 
+\lang hebrew
+ ומקיש "הקדמה".
+\layout Standard
+
+כן, זה הכל.
+ אם אח"כ תגזור ותדביק את הפרק, הוא ימוספר אוטומטית 
+\lang english
+---
+\lang hebrew
+ בכל מקום.
+ ואם תכניס הפנייות לפרק כיאות ליקס תעדכן גם אותן.
+ בליקס לא תצטרך לעולם, בשום מצב, להקליד את מספר הפרק בעצמך.
+\layout Standard
+
+בואו נחשוב על אחידות.
+ חמישה ימים עברו, אתה פותח את המסמך שוב ומתחיל את פרק 
+\numeric on 
+4
+\numeric off 
+.
+ אבל שכחת שעשית את הכותרת בגודל 
+\numeric on 
+18
+\numeric off 
+ וב-
+\lang english
+bold
+\lang hebrew
+, במקום ב-
+\numeric on 
+16
+\numeric off 
+, ואתה מתחיל את הכותרת לפרק 
+\numeric on 
+4
+\numeric off 
+ בפונט שונה ממה שהשתמשת בפרק 
+\numeric on 
+1
+\numeric off 
+.
+ בליקס הבעיה הזו לא קיימת.
+ המחשב מטפל בכל הפנקסנות של מה צריך להיות באיזה גודל, לא אתה.
+ אחרי הכל, בשביל זה יש מחשבים.
+\layout Standard
+
+דוגמא אחרונה: נניח שאתה כותב רשימה.
+ במעבדי תמלילים אחרים, רשימה היא סתם אוסף של הקלדות 
+\lang english
+tab
+\lang hebrew
+ ושורות חדשות.
+ אתה צריך לחשוב איפה לשים את הכותרת לכל דבר ברשימה שלך, באיזה פונט, כמה
+ שורות ריקות לשים בין ערך לערך, וכו'.
+ בליקס יש לך רק שתי שאלות: איזה סוג רשימה זו, ומה לשים בה.
+ זה הכל.
+\layout Standard
+
+לסיכום, הרעיון הבסיסי של ליקס הוא: ציין למחשב מה אתה עושה, ולא איך אתה עושה
+ את זה.
+ במקום "
+\lang english
+What you see is what you get
+\lang hebrew
+
+\begin_inset Quotes erd
+\end_inset 
+
+, דהיינו, מה שאתה רואה על המסך זהה לפלט, המודל של ליקס הוא "
+\lang english
+What you see is what you mean
+\lang hebrew
+", או בראשי תיבות 
+\lang english
+WYSIWYM
+\lang hebrew
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+אני לא מתכוון לתרגם או להסביר או ראשי התיבות האלה.
+ גם באנגלית צריך לקרוא לפחות את השעור המודרך כדי להבין למה באמת הכוונה 
+\lang english
+---
+\lang hebrew
+ ג
+\begin_inset Quotes erd
+\end_inset 
+
+ק.
+\end_inset 
+
+.
+ זהו רעיון רב כוח שמפשט מאוד את המכניקה של כתיבת מסמכים.
+ זו גם הסיבה שליקס אינו מתאים לפוסטרים או פליירים 
+\lang english
+---
+\lang hebrew
+ במקרה הזה אתה בהחלט רוצה לציין בעצמך מה הולך לאיפה, ואין יחידות מוגדרות
+ כמו פסקאות או פרקים.
+ זה לא אומר שליקס פחות טוב 
+\lang english
+---
+\lang hebrew
+ רק שהוא לא הכלי המתאים לעבודה הזאת.
+ אתה לא משתמש במברג כדי לתקוע מסמרים, בסופו של דבר.
+\layout Section
+
+הבדלים בין ליקס למעבדי תמלילים אחרים
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+לא, אנחנו לא רוצים לפתוח בג'יהאד רעיוני.
+ אנחנו רק חושבים שחשוב לציין את התכונות של ליקס.
+ ואחת מהתכונות המרכזיות של ליקס, 
+\lang english
+WYSIWYM
+\lang hebrew
+, שונה מהותית מהקונצפט שיש ל-
+\lang english
+99%
+\lang hebrew
+ מהאנשים לגבי עיבוד תמלילים.
+\end_inset 
+
+
+\layout Standard
+
+נתחיל ברשימה של דברים שלא תמצא בליקס:
+\layout Itemize
+
+סרגל
+\layout Itemize
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+למרבה הצער אין אפשרות לפתוח שורה עברית בטקסט אנגלי בלי 
+\lang english
+note
+\lang hebrew
+...
+\end_inset 
+
+
+\lang english
+tab stops
+\layout Itemize
+
+רווחים כפולים )לדוגמא, הקשה על 
+\lang english
+Enter
+\lang hebrew
+ פעמיים ומעלה(
+\layout Standard
+
+והסרגל וה-
+\lang english
+tab
+\lang hebrew
+ מיותרים בליקס.
+ התוכנה מטפלת במיקום על הדף במקומך.
+ רווחים כפולים הם דומים 
+\lang english
+---
+\lang hebrew
+ ליקס מוסיפה אותם במקומות הנכונים להקשר.
+ חוסר האפשרות
+\bar under 
+ 
+\bar default 
+ליצור שתי שורות ריקות
+\series bold 
+ 
+\series default 
+רצופות
+\series bold 
+ 
+\series default 
+תעצבן בהתחלה, אבל כשתתרגל לגישת ה-
+\lang english
+WYSIWYM
+\lang hebrew
+, ההגיון שלה יתבהר.
+\layout Standard
+
+הדברים הבאים קיימים בליקס, אבל לא משתמשים בהם כמו
+\series bold 
+ 
+\series default 
+שאתה רגיל:
+\layout Itemize
+
+שליטה באינדנטציה )יישור(
+\layout Itemize
+
+מעבר דפים
+\layout Itemize
+
+מרווח שורות )דהיינו רווח בודד, כפול וכו'(
+\layout Itemize
+
+רווח, לרוחב ולגובה
+\layout Itemize
+
+פונטים וגדלים
+\layout Itemize
+
+אותיות מובלטות, מוטות, מודגשות
+\bar under 
+ 
+\bar default 
+וכדומה
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+התמיכה בעברית באלה כרגע עלובה ביותר 
+\lang english
+---
+\lang hebrew
+ ג
+\begin_inset Quotes erd
+\end_inset 
+
+ק.
+\end_inset 
+
+.
+\layout Standard
+
+למרות שכל אלה
+\series bold 
+ 
+\series default 
+קיימים בליקס, בדרך כלל לא תזדקק להם.
+ ליקס דואג לכל זה בשבילך,
+\bar under 
+ 
+\bar default 
+בהתאם
+\series bold 
+ 
+\series default 
+למה שאתה עושה בכל רגע.
+ הפונטים, הגדלים וסוגי ההדגשה בחלקים שונים של המסמך נקבעים אוטומטית.
+ היישור של פסקאות שונות תלוי בהקשר, ופסקאות שונות מיושרות בצורה שונה.
+
+\series bold 
+ 
+\series default 
+אתה לא צריך לעשות שום דבר מיוחד כדי לפתוח דף חדש במקומות מיוחדים, כגון סוף
+ פרק.
+ באופן כללי, הרווחים
+\series bold 
+ 
+\series default 
+בין מילים, שורות ופסקאות נקבעים ע"י ליקס
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+אפשר להתאים את כל הפרמטרים האלה, )עבור חלק לא גדול תצטרך ידע ב- 
+\lang english
+LaTeX
+\lang hebrew
+(, לכל המסמך או לאזורים ספציפיים במסמך.
+ ראה פרטים במדריך למשתמש )
+\emph on 
+\lang english
+User's Guide
+\emph default 
+\lang hebrew
+( ובמסמך "תכונות נוספות" )
+\emph on 
+\lang english
+Extended Features
+\emph default 
+\lang hebrew
+(.
+\end_inset 
+
+.
+\layout Standard
+
+לקינוח, בתחומים אלה, לדעתנו, ליקס )ו-
+\lang english
+LaTeX
+\lang hebrew
+( עולים בהרבה על מעבדי תמלילים רגילים:
+\layout Itemize
+
+פרוק מילים בסופי שורות
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+לא רק שכרגע האלגוריתם הנדרש כדי לבצע זאת בעברית לא ממומש, אלא ש-
+\lang english
+LaTeX
+\lang hebrew
+ מגדיל ושובר מילים במקומות אקראיים 
+\lang english
+---
+\lang hebrew
+ ג
+\begin_inset Quotes erd
+\end_inset 
+
+ק.
+\end_inset 
+
+ )
+\lang english
+hyphenation
+\lang hebrew
+(.
+\layout Itemize
+
+רשימות מכל סוג
+\layout Itemize
+
+מתמטיקה
+\layout Itemize
+
+טבלאות
+\layout Itemize
+
+הפניות
+\layout Standard
+
+נכון שלהרבה מעבדי תמלילים מודרניים יש יכולת לטפל בסימנים מתמטיים מסוימים,
+ טבלאות ו-
+\lang english
+hyphenation
+\lang hebrew
+, ולחלקם יש
+\series bold 
+ 
+\series default 
+הגדרות סיגנון בצורה המזכירה את קונצפט ה-
+\lang english
+WYSIWYM
+\lang hebrew
+.
+ עם זאת, מדובר בתוספות חדשות.
+ ליקס בנויה מעל 
+\lang english
+LaTeX
+\lang hebrew
+, מערכת מקצועית לעיבוד מסמכים הקיימת למעלה
+\series bold 
+ 
+\series default 
+מ-
+\numeric on 
+15
+\numeric off 
+ שנה, ועובדת.
+ אם היו באגים ב-
+\lang english
+LaTeX
+\lang hebrew
+, הם תוקנו מזמן
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+בסדר, בסדר, אין תוכנה בלי בגים.
+ אבל באופן יחסי, 
+\lang english
+LaTeX
+\lang hebrew
+ היא תוכנה בעלת כמות בגים מינימלית.
+\end_inset 
+
+.
+\layout Standard
+
+ההבדל האחרון שאנחנו רוצים לציין בין ליקס למעבדי תמלילים אחרים הוא שליקס
+ משתדל מאוד לא לאבד את העבודה שלך.
+ אנחנו, צוות ליקס, יודעים שלא נמצא כל באג ובאג, ואנחנו לא מנסים להעמיד פנים
+ שאלה "תכונות" של התוכנה.
+ היית מצפה שכשהבאגים האלה מופיעים, ליקס ישלח את 
+\numeric on 
+3
+\numeric off 
+ הדפים האחרונים שלך למעמקי השכחה.
+\layout Standard
+
+לא.
+\layout Standard
+
+כשליקס עף, הוא רושם את כל המסמכים שהחזיק בזכרון לקובץ חרום.
+ כשתפתח את ליקס שוב, ותעלה את הקובץ המדובר, ליקס ישאל אותך אם להעלות את
+ הקובץ או את קובץ החרום )הוא בודק מי חדש יותר(.
+ משתמשים רבים
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+גם אני.
+ והכל אמת 
+\lang english
+---
+\lang hebrew
+ ג
+\begin_inset Quotes erd
+\end_inset 
+
+ק.
+\end_inset 
+
+ כתבו את תזת הדוקטור שלהם עם ליקס.
+ לעיתים נדירות, אם בכלל, הם איבדו דף למרות
+\bar under 
+ 
+\bar default 
+שהתוכנה אכן עפה מידי פעם.
+\layout Section
+
+מה לעזאזל זה 
+\lang english
+LaTeX
+\lang hebrew
+ )ולמה שיהיה לי אכפת(?
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+המקור לאינפורמציה בחלק הזה הוא "
+\lang english
+A Guide to LaTeX2e
+\lang hebrew
+
+\begin_inset Quotes erd
+\end_inset 
+
+, מאת הלמוט קופקה )
+\lang english
+Helmut Kopka
+\lang hebrew
+( ופטריק דלי )
+\lang english
+Patrick Daly
+\lang hebrew
+( 
+\lang english
+---
+\lang hebrew
+ ראה הפניה ביבליוגרפית במדריך למשתמש )
+\emph on 
+\lang english
+User's Guide
+\emph default 
+\lang hebrew
+(.
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\lang english
+LaTeX
+\lang hebrew
+ היא מערכת לעריכת מסמכים שתוכננה ע"י לסלי למפורט )
+\lang english
+Leslie Lamport
+\lang hebrew
+( ב-
+\numeric on 
+1985
+\numeric off 
+.
+ היא, בתורה, בנויה מעל שפת מחשב יעודית בשם 
+\lang english
+TeX
+\lang hebrew
+ )יש לבטא "טך"( שנוצרה ע"י דונלד קנות )
+\lang english
+Donald Knuth
+\lang hebrew
+( ב-
+\numeric on 
+1984
+\numeric off 
+.
+ לא מעטים שנאלצו להשתמש ב-
+\lang english
+TeX
+\lang hebrew
+ פיתחו עליו דעה שלילית, ולכן אנחנו רוצים להבהיר כאן בלבול מסוים בין שני
+ פנים שונים של 
+\lang english
+TeX
+\lang hebrew
+.
+ 
+\lang english
+TeX
+\lang hebrew
+ בסיסי היא תוכנה שמקבלת רשימה של פקודות בפורמט טקסטואלי )
+\lang english
+ASCII
+\lang hebrew
+( ומבצעת אותן.
+ היא יותר מורכבת ממכונת כתיבה, אבל הרבה פחות ממערכת דפוס מלאה.
+ עם זאת, הרבה מהטריקים המקובלים בדפוס עובדו ע"י קנות לאלגוריתמים, ויושמו
+ ב-
+\lang english
+TeX
+\lang hebrew
+, ומכאן האיכות המעולה של התוצר הסופי.
+ הפלט של 
+\lang english
+TeX
+\lang hebrew
+ הוא קובץ 
+\lang english
+dvi
+\lang hebrew
+ )ראשי תיבות של 
+\lang english
+device independent
+\lang hebrew
+(, שאותו ניתן לתרגם למגוון פורמטים מודרניים יותר, כמו פוסטסקריפט
+\lang english
+®
+\lang hebrew
+, 
+\lang english
+PDF
+\lang hebrew
+, וכו'.
+\layout Standard
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\lang english
+TeX
+\lang hebrew
+ לא היתה התוכנה הראשונה מסוג זה, והסיבה ש-
+\lang english
+TeX
+\lang hebrew
+ איתנו עד היום והאחרות שקעו לתהום הנשיה היא זו: 
+\lang english
+TeX
+\lang hebrew
+ מאפשרת לך להגדיר תוספות לשפה, או חבילות מקרו.
+ פה מתחיל האקשן.
+\layout Standard
+
+רוב משתמשי 
+\lang english
+TeX
+\lang hebrew
+ משתמשים בפועל בחבילת מקרו שקנות יצר כדי לקצר בכתיבה 
+\lang english
+---
+\lang hebrew
+ זה הפן השני של 
+\lang english
+TeX
+\lang hebrew
+, וזה שעליו חושבים רוב המשתמשים כשהם חושבים על 
+\lang english
+TeX
+\lang hebrew
+.
+ משתמשים רגילים לא נוגעים ב-
+\lang english
+TeX
+\lang hebrew
+ בסיסי, שהם פקודות הדפסה לא מעובדות.
+ יוצרים של חבילות מקרו חדשות עושים את זה.
+ כאן נכנס לסלי למפורט לסיפור.
+ הוא רצה חבילת מקרו שתדבר בשפת המשתמש, ולא בשפת הדפוס, עם פקודות ליצר פרקים,
+ טבלאות או נוסחאות בצורה קונסיסטנטית 
+\series bold 
+ו
+\series default 
+עם מינימום של בילבול מוח.
+ כך נולד 
+\lang english
+LaTeX
+\lang hebrew
+.
+\layout Standard
+
+במקביל לפיתוח של 
+\lang english
+LaTeX
+\lang hebrew
+ נכתבו חבילות מקרו נוספות עבור 
+\lang english
+TeX
+\lang hebrew
+, עבור שקפים, עיתוני מתמטיקה ספציפיים, וכו'.
+ חלק מהכותבים עבדו ישירות עם 
+\lang english
+TeX
+\lang hebrew
+ בסיסי, ואחרים השתמשו ב-
+\lang english
+LaTeX
+\lang hebrew
+ כנקודת התחלה.
+ כדי לסדר את הבלגן קבוצה של 
+\lang english
+LaTeX
+\lang hebrew
+-נאים )כולל למפורט, כמובן( התחילו בפרויקט 
+\lang english
+LaTeX2e
+\lang hebrew
+, הגירסה הנוכחית של 
+\lang english
+LaTeX
+\lang hebrew
+ בשנות ה- 
+\numeric on 
+80
+\numeric off 
+ המאוחרות.
+ בגירסה זו יש ממשק פשוט יותר ל- 
+\lang english
+TeX
+\lang hebrew
+ )זוכרים את 
+\lang english
+TeX
+\lang hebrew
+?(, פונטים חדשים, וכו'.
+ למעשה, 
+\lang english
+LaTeX
+\lang hebrew
+ היא שפה בזכות עצמה! משתמשים מכל רחבי העולם יצרו ויוצרים תוספים ל-
+\lang english
+LaTeX
+\lang hebrew
+ מעבר לחלקי השפה הרשמיים.
+\layout Standard
+
+יש שתי דרכים להרחיב את 
+\lang english
+LaTeX
+\lang hebrew
+: מחלקות-מסמכים )
+\lang english
+classes
+\lang hebrew
+( וסגנונות )
+\lang english
+styles
+\lang hebrew
+(.
+ מחלקה חדשה יכולה להיות "ספר" או "מאמר".
+ ישנן מחלקות עבור שקופיות, עיתוני פיזיקה ומתמטיקה...
+ הרבה אוניברסיטאות הגדירו מחלקה עבור פורמט התזה הרצוי להן.
+ "סגנון" אינו סוג חדש של מסמך אלא התנהגות חדשה שכל מסמך מכל סוג יכול להשתמש
+ בה.
+ לדוגמא, ליקס משנה את השוליים של המסמך ואת הרווחים בין השורות בעזרת שני
+ קבצי סגנון 
+\lang english
+LaTeX
+\lang hebrew
+ יעודיים.
+ קיימים קבצי סגנון למגוון של שימושים: שינוי יישור השורות, הוספת פונטים,
+ טיפול בגרפיקה, כותרות עמוד מתוחכמות, התאמת הביבליוגרפיה, שינוי המקום והמראה
+ של הערות שוליים, טבלאות, תמונות, רשימות, וכו' וכו' וכו'.
+\layout Standard
+
+לסיכום:
+\layout Description
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\lang english
+TeX
+\lang hebrew
+ שפת הדפסה עם יכולות מקרו.
+\layout Description
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\lang english
+LaTeX
+\lang hebrew
+ חבילת מקרו עבור 
+\lang english
+TeX
+\lang hebrew
+.
+\layout Description
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\lang english
+class
+\lang hebrew
+ תאור של סוג מסמך עבור 
+\lang english
+LaTeX
+\lang hebrew
+.
+\layout Description
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\lang english
+style
+\lang hebrew
+ משנה את ההתנהגות של 
+\lang english
+LaTeX
+\lang hebrew
+ בדרך מסוימת.
+\layout Description
+
+ליקס מעבד תמלילים ויזואלי 
+\lang english
+WYSIWYM
+\lang hebrew
+ שמשתמש ב-
+\lang english
+LaTeX
+\lang hebrew
+ כדי לבצע את עבודת ההדפסה.
+\layout Standard
+
+המטרה של סעיף זה היתה לנסות להסביר למה ליקס שונה ממעבדי תמלילים אחרים.
+ הסיבה היא פשוטה: ליקס משתמש ב-
+\lang english
+LaTeX
+\lang hebrew
+ כמנוע ההדפסה שלו.
+ כמו 
+\lang english
+LaTeX
+\lang hebrew
+, ליקס מתמקד בתוכן 
+\lang english
+---
+\lang hebrew
+ מה אתה כותב.
+ המחשב מטפל בשאלה איך זה צריך להראות.
+\layout Standard
+
+]הערה לקינוח: עם כל הכבוד לחולשות של ליקס בעברית, שטרחתי וציינתי אותן פעמים
+ מספר )בהערות שוליים, למי שפספס(, לכתיבה מתמטית בעברית למעשה אין אלטרנטיבה.
+ אל תחשוב אפילו על לכתוב מסמך מתמטי של יותר משני עמודים ב-
+\lang english
+Word®
+\lang hebrew
+, לא משנה באיזה שפה.
+ אתה תצטער על זה.
+ אני הצטערתי 
+\lang english
+---
+\lang hebrew
+ ג
+\begin_inset Quotes erd
+\end_inset 
+
+ק.[
+\layout Chapter
+
+שימוש בתיעוד
+\layout Standard
+
+כדי להקל על הקריאה ולאפשר לתאר את כל התכונות של ליקס, חולק התיעוד למספר
+ קבצים.
+ לכל אחד מטרה משלו.
+ לפני שמתחילים להסתער על אחד מהקבצים האלה, כדאי לקרוא את הפרק הזה במלואו:
+ הוא מכיל מידע שימושי רב והערות שיכולות לחסוך לכם זמן.
+\layout Standard
+
+למרות שליקס עבר מזמן את הנקודה
+\series bold 
+ 
+\series default 
+''גירסה
+\lang american
+ 1.0
+\lang hebrew
+", חלק מהתיעוד עלול להיות חלקי או לא מעודכן.
+ כמו שאר ליקס, המדריכים נכתבו על-ידי קבוצת מתנדבים בעלי עבודות "אמיתיות",
+ תזות, משפחות, כלים שצריך לשטוף, חתולים שצריך להאכיל וכן הלאה.
+ אנו עושים את המירב כדי לספק מדריכים מעודכנים, אבל לא תמיד אנו מצליחים.
+ )אם אתה רוצה לעזור לתקן את המצב, קרא את סעיף 
+\lang american
+
+\begin_inset LatexCommand \ref{sec:Contrib}
+
+\end_inset 
+
+
+\lang hebrew
+ וכן את שאר המסמך(.
+\layout Standard
+
+בנוסף, עשה לנו טובה 
+\lang english
+---
+\lang hebrew
+ אם מצאת במדריכים שלנו פרט
+\series bold 
+ 
+\series default 
+מבלבל, לא ברור, או שגוי, אל תהסס לומר לנו! כדי ליצור קשר עם
+\series bold 
+ 
+\series default 
+האחראים הנוכחיים לתיעוד, שלח דואר אלקטרוני אל 
+\family typewriter 
+\lang american
+lyx-docs@lists.lyx.org
+\family default 
+\lang hebrew
+.
+ בנוסף אם יש לך שאלה שאין לה תשובה ברורה בתעוד, 
+\series bold 
+ו
+\series default 
+אתה זקוק לתמיכה, יש רשימת דיון של משתמשים בכתובת 
+\family typewriter 
+\lang american
+lyx-users@lists.lyx.org
+\family default 
+\lang hebrew
+.
+\layout Section
+
+פורמט המדריכים
+\layout Standard
+
+חלקכם מן הסתם הדפיס את המדריך)ים(.
+ אחרים קוראים אותם מתוך ליקס כקובץ.
+ אם אתה קורא את המדריך ישירות מהמסך, הפורמט שלו שונה מזה של הגרסא המודפסת
+ במספר היבטים.
+ ראשית, הכותרת היא בראש המסמך, לא בדף בפני עצמו כמו בחלק מהגרסאות המודפסות.
+ בנוסף
+\series bold 
+,
+\series default 
+ תוכן הענינים והערות השולים מוחבאים.
+ כדי לראות את תוכנה של הערת שוליים, שנראת ככה, 
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+הי.
+\layout Standard
+
+כדי לסגור אותי יש ללחוץ על הקוביה האפורה משמאל למעלה, זו עם המילה 
+\family sans 
+\lang english
+foot
+\family default 
+\lang hebrew
+.
+\end_inset 
+
+ לחץ עליה עם כפתור העכבר השמאלי.
+ כדי לראות את תוכן העניינים, לחץ עליו, או על תפריט ה
+\family sans 
+ניווט
+\family default 
+ )
+\family sans 
+\lang english
+Navigate
+\family default 
+\lang hebrew
+( שבו הוא מופיע אוטומטית )נסה ותראה!( בתעוד העברי מופיעות קופסאות צהובות
+ כאלה: 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+ )לא מופיע בגרסה המודפסת(.
+ התעלם מהן.
+\layout Standard
+
+במדריך המודפס, כל ההפניות מופיעות כמספר 
+\lang english
+---
+\lang hebrew
+ של פרק, סעיף, תת-סעיף וכו'.
+ על המסך, עם זאת, כל ההפניות נראות כמו קופסה אפורה כדלקמן: 
+\begin_inset LatexCommand \ref{sec:Contrib}
+
+\end_inset 
+
+ )במדריך המודפס יופיע מספר(.
+ אם תלחץ על הקופסה עם הכפתור השמאלי של העכבר, תופיע תבת דיאלוג עם רשימת
+ ההפניות במסמך.
+ בהקדמה זו יש רק
+\series bold 
+ 
+\series default 
+אחת בשם 
+\family typewriter 
+\lang english
+sec:Contrib
+\family default 
+\lang hebrew
+.
+ אתה יכול להגיע לסעיף המתאים
+\series bold 
+ 
+\series default 
+ע"י לחיצה על הכפתור 
+\family typewriter 
+\lang english
+Goto\SpecialChar ~
+Reference
+\family default 
+\lang hebrew
+.
+ לחזור זה לא יותר מסובך 
+\lang english
+---
+\lang hebrew
+ לחיצה על 
+\family typewriter 
+\lang english
+Go back
+\family default 
+\lang hebrew
+ או הקלדת
+\series bold 
+\bar under 
+ 
+\family sans 
+\series default 
+\bar default 
+\lang english
+C-<
+\family default 
+\lang hebrew
+ יביאו אותך למיקום הקודם.
+ מה זה 
+\family sans 
+\lang english
+C-<
+\family default 
+\lang hebrew
+? ראה לעיל.
+ הפניות לאינטרנט יופיעו גם הן כקופסה אפורה: 
+\begin_inset LatexCommand \htmlurl[Journal of irreproducible results]{http://www.jir.com/}
+
+\end_inset 
+
+.
+ לחץ עליה לפרטים מלאים.
+\layout Standard
+
+עכשיו כשגמרנו עם חלק מההבדלים בין הגרסה המודפסת והמקוונת, אפשר להתחיל עם
+ פורמט המסמך עצמו
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+מכיוון שהתעוד בעברית רחוק מלהיות שלם, למטה יופיעו הסברים גם על פורמט התעוד
+ באנגלית וגם בעברית 
+\lang english
+---
+\lang hebrew
+ ג
+\begin_inset Quotes erd
+\end_inset 
+
+ק.
+\end_inset 
+
+.
+ מפעם לפעם תשים לב להחלפת פונטים:
+\layout Itemize
+
+אותיות מוטות בטקסט באנגלית )
+\emph on 
+\lang english
+Emphasized Style
+\emph default 
+\lang hebrew
+( משמשות להדגשה כללית, פרמטרים, כותרות של ספרים, שמות של חלקים אחרים של
+ המדריך והערות מהעורכים.
+ בעברית, כמובן, אין אותיות מוטות.
+\layout Itemize
+
+שמות של תוכניות וקבצים, פקודות 
+\lang english
+LaTeX
+\lang hebrew
+, קוד ופקודות ליקס יופיעו רק באנגלית, ובפונט 
+\family typewriter 
+\lang english
+Typewriter
+\lang hebrew
+.
+\layout Itemize
+
+שמות של תפריטים, כפתורים, תבות דיאלוג )נקראות 
+\lang english
+popups
+\lang hebrew
+ בתעוד באנגלית( ומקשי פקודה יופיעו באנגלית בפונט 
+\family sans 
+\lang english
+Sans Serif
+\family default 
+\lang hebrew
+ ובעברית בפונט "
+\family sans 
+תל אביב
+\family default 
+".
+ מקשי פקודה יופיעו כמעט רק באנגלית.
+\layout Itemize
+
+שמות של אנשים באנגלית יופיעו ב-
+\noun on 
+\lang english
+Noun Style
+\noun default 
+\lang hebrew
+.
+\layout Standard
+
+עבור מקשי קיצור דרך לתפריטים, ומקשי פקודה אחרים תופנה בדרך כלל לחלק "מקשים"
+ )
+\emph on 
+\lang english
+Key Bindings
+\emph default 
+\lang hebrew
+( של מסמך התכונות הנוספות )
+\emph on 
+\lang english
+Extended Features
+\lang hebrew
+(
+\emph default 
+ בקובץ 
+\family typewriter 
+\lang english
+Extended.lyx
+\family default 
+\lang hebrew
+.
+ כאשר מפעם לפעם נצטרך לתאר מקשי פקודה, נשתמש בקיצורים הבאים:
+\layout Itemize
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\family sans 
+\lang english
+C-
+\family default 
+\lang hebrew
+ מתייחס למקש 
+\family sans 
+\lang english
+Control
+\family default 
+\lang hebrew
+.
+\layout Itemize
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\family sans 
+\lang english
+S-
+\family default 
+\lang hebrew
+ מתייחס למקש 
+\family sans 
+\lang english
+Shift
+\family default 
+\lang hebrew
+.
+\layout Itemize
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\family sans 
+\lang english
+M-
+\family default 
+\lang hebrew
+ מתייחס למקש 
+\family sans 
+\lang english
+Meta
+\family default 
+\lang hebrew
+\SpecialChar ~
+
+\lang english
+---
+\lang hebrew
+ על המקלדת שלך בהחלט יתכן שהוא מסומן כ- 
+\family sans 
+\lang english
+Alt
+\family default 
+\lang hebrew
+.
+\layout Itemize
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\family sans 
+\lang english
+F1
+\family default 
+\lang hebrew
+ עד 
+\family sans 
+\lang english
+F12
+\family default 
+\lang hebrew
+ הם מקשי הפונקציה.
+\layout Itemize
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\family sans 
+\lang english
+Esc
+\family default 
+\lang hebrew
+ הוא בדרך כלל פשוט 
+\family sans 
+\lang english
+Esc
+\family default 
+\lang hebrew
+ אם כי יכול גם להיות מסומן ב-
+\family sans 
+\lang english
+Escape
+\family default 
+\lang hebrew
+.
+\layout Itemize
+
+שמאלה )
+\family sans 
+\lang english
+Left
+\family default 
+\lang hebrew
+(, ימינה )
+\family sans 
+\lang english
+Right
+\family default 
+\lang hebrew
+(, למעלה )
+\family sans 
+\lang english
+Up
+\family default 
+\lang hebrew
+( ולמטה )
+\family sans 
+\lang english
+Down
+\family default 
+\lang hebrew
+( הם החצים.
+\layout Itemize
+
+הכנס )
+\family sans 
+\lang english
+Insert
+\family default 
+\lang hebrew
+(, מחק )
+\family sans 
+\lang english
+Delete
+\family default 
+\lang hebrew
+(, 
+\family sans 
+\lang english
+Home
+\family default 
+\lang hebrew
+, 
+\family sans 
+\lang english
+End
+\family default 
+\lang hebrew
+, דף למעלה )
+\family sans 
+\lang english
+PageUp
+\family default 
+\lang hebrew
+( ודף למטה )
+\family sans 
+\lang english
+PageDown
+\family default 
+\lang hebrew
+( הם המקשים המופיעים ברוב המקלדות מעל החיצים.
+ במקלדות מסוימות 
+\family sans 
+\lang english
+PageUp
+\family default 
+\lang hebrew
+ ו-
+\family sans 
+\lang english
+PageDown
+\family default 
+\lang hebrew
+ נקראים 
+\family sans 
+\lang english
+Prior
+\family default 
+\lang hebrew
+ ו-
+\family sans 
+\lang english
+Next
+\family default 
+\lang hebrew
+ בהתאמה.
+\layout Itemize
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\family sans 
+\lang english
+Return
+\family default 
+\lang hebrew
+ ו-
+\family sans 
+\lang english
+Enter
+\family default 
+\lang hebrew
+ מתייחסים לאותו מקש.
+ במקלדות מסוימות יש רק מקש בשם 
+\family sans 
+\lang english
+Return
+\family default 
+\lang hebrew
+, באחרות רק בשם 
+\family sans 
+\lang english
+Enter
+\family default 
+\lang hebrew
+ ובכמה אפילו מופיעים שניהם! ליקס לא מבדילה ביניהם ואנחנו נשתמש בשניהם ללא
+ אבחנה.
+\layout Standard
+
+מפעם לפעם יופיע גם הטקסט "ראה 'תכונות נוספות'".
+ שמנו רשימה מלאה של כל קומבינציות המקשים האפשריות עבור פונקציה מסוימת בסעיף
+ המתאים לה במדריך בשם זה
+\series bold 
+ 
+\series default 
+אז כדאי לבדוק גם שם.
+ שים לב שניתן לשנות את כל מקשי הפקודה בבת אחת על ידי החלפת מפת המקשים )
+\lang english
+keybinding map
+\lang hebrew
+(.
+ יש שתי מפות מקשים נפוצות: 
+\family typewriter 
+\lang english
+CUA
+\family default 
+\lang hebrew
+, ברירת המחדל שמן הסתם תהיה מוכרת למי שמגיע מעולם החלונות, ו-
+\family typewriter 
+\lang english
+emacs
+\family default 
+\lang hebrew
+, שתהיה נוחה יותר לותיקי מערכות יוניקס.
+ אלא אם כן
+\series bold 
+ 
+\series default 
+מצוין אחרת במפורש, קיצורי הדרך בתעוד יתיחסו תמיד להתאמה 
+\family typewriter 
+\lang english
+CUA
+\family default 
+\lang hebrew
+.
+ אם אתה חובב של אימקס, מן הסתם תצליח לנחש איזה מקש עושה מה בעצמך.
+\layout Section
+
+המדריכים
+\layout Standard
+
+הרשימה שלהלן
+\series bold 
+ 
+\series default 
+מתארת את תוכן
+\bar under 
+ 
+\bar default 
+קבצי התיעוד השונים: 
+\layout Description
+
+הקדמה\SpecialChar ~
+)
+\lang english
+introduction
+\lang hebrew
+(
+\begin_deeper 
+\layout Standard
+
+קובץ זה.
+\end_deeper 
+\layout Description
+
+שעור\SpecialChar ~
+מודרך\SpecialChar ~
+)
+\lang english
+Tutorial
+\lang hebrew
+(
+\begin_deeper 
+\layout Standard
+
+אם אתה חדש בליקס, ואף פעם לא השתמשת ב-
+\lang english
+LaTeX
+\lang hebrew
+, כדאי שתתחיל כאן
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+מופיע בתפריטים בעברית כ"מסמך לימוד" 
+\lang english
+---
+\lang hebrew
+ ג
+\begin_inset Quotes erd
+\end_inset 
+
+ק.
+\end_inset 
+
+.
+ אם אתה חושב שלטקס
+\series bold 
+\bar under 
+ 
+\series default 
+\bar default 
+זה משהו שעושים ממנו קונדומים
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+או לביבות ביידיש
+\end_inset 
+
+ כדאי שתקרא שוב את פרק 
+\numeric on 
+1
+\numeric off 
+, ואז את השעור המודרך.
+ סביר שגם אחרי שתקרא את השעור המודרך עדיין תחשוב ש- 
+\lang english
+LaTeX
+\lang hebrew
+ זה חומר
+\emph on 
+ 
+\emph default 
+גמיש זה או אחר 
+\lang english
+---
+\lang hebrew
+ אבל לפחות תדע איך להשתמש בליקס.
+\layout Standard
+
+אם כבר השתמשת בעבר ב- 
+\lang english
+LaTeX
+\lang hebrew
+ עדיין כדאי שתקרא את מסמך הלימוד, החל מהפרק "ליקס למשתמשי 
+\lang english
+LaTeX
+\lang hebrew
+
+\begin_inset Quotes erd
+\end_inset 
+
+ )
+\lang english
+LyX for LaTeX users
+\lang hebrew
+(.
+ לרפרף על שאר המסמך גם לא יכול להזיק.
+\layout Standard
+
+אם, ברגע נתון אתה מרגיש שאתה הולך לאיבוד עם ליקס, נסה קודם כל
+\series bold 
+ 
+\series default 
+את השעור המודרך.
+ הוא נקודת התחלה טובה.
+\layout Standard
+
+השעור המודרך תורגם לעברית.
+ אם משום מה התפריט 
+\family sans 
+עזרה:מסמך\SpecialChar ~
+לימוד
+\family default 
+ )
+\family sans 
+\bar under 
+\lang english
+H
+\bar default 
+elp\SpecialChar \menuseparator
+
+\bar under 
+T
+\bar default 
+utorial
+\family default 
+\lang hebrew
+( מביא לך את הגרסה האנגלית, פתח את הגרסה העברית כקובץ: אחרי 
+\family sans 
+קובץ:פתח
+\family default 
+ בחר 
+\family sans 
+דוגמאות
+\family default 
+, ותגיע ל-
+\lang english
+.../lyx/examples
+\lang hebrew
+ עבור לספריה 
+\lang english
+.../lyx/doc
+\lang hebrew
+ ושם תמצא את המסמך תחת השם 
+\lang english
+he_Tutorial.lyx
+\lang hebrew
+.
+\end_deeper 
+\layout Description
+
+המדריך\SpecialChar ~
+למשתמש\SpecialChar ~
+)
+\lang english
+User's\SpecialChar ~
+Guide
+\lang hebrew
+(
+\begin_deeper 
+\layout Standard
+
+התעוד העקרי.
+ נכסה שם את רוב השימוש הבסיסי והתכונות של ליקס.
+ מדריך זה מניח שקראת את השעור המודרך.
+\end_deeper 
+\layout Description
+
+תכונות\SpecialChar ~
+נוספות\SpecialChar ~
+)
+\lang english
+Extended\SpecialChar ~
+Features
+\lang hebrew
+(
+\begin_deeper 
+\layout Standard
+
+חלק ב
+\series bold 
+'
+\series default 
+ של המדריך למשתמש.
+ מסביר איך להשתמש בפקודות 
+\lang english
+LaTeX
+\lang hebrew
+ ישירות, מחלקות מסמכים נוספות, תכונות מיוחדות, וכמה מהטריקים של חכמי ה-
+\lang english
+LaTeX
+\lang hebrew
+ )מוזרים, לעיתים, אבל בדרך כלל משובחים(.
+\end_deeper 
+\layout Description
+
+התאמה\SpecialChar ~
+)
+\lang english
+Customization
+\lang hebrew
+(
+\begin_deeper 
+\layout Standard
+
+תאור של תכונות ליקס מתקדמות, כולל איך להתאים את ההתנהגות הכוללת של ליקס.
+ בפרט מדובר בהתאמות של מקשים לפונקציות, התאמה לשפות שונות, וקבצי הקונפיגורציה.
+ אין לך מה לחפש שם לפני שקראת את השעור המודרך.
+\end_deeper 
+\layout Description
+
+תצורת\SpecialChar ~
+)
+\lang english
+configuration
+\lang hebrew
+(\SpecialChar ~
+
+\lang english
+LaTeX
+\begin_deeper 
+\layout Standard
+
+קובץ זה מכיל רשימת מצאי של המערכת שלך, שליקס יצר בעת התקנתו.
+ בדוק שם אם חסר לך משהו שהיית יכול לרצות.
+\end_deeper 
+\layout Standard
+
+הקבצים האלה מפנים זה לזה לפי הצורך.
+ לדוגמא, המדריך למשתמש מכיל כמות מסוימת של אינפורמציה על התקנה והתאמה, אבל
+ מפנה למסמך ההתאמה למידע נוסף.
+\layout Standard
+
+ושוב נקודה חשובה:
+\layout Standard
+\added_space_top bigskip \added_space_bottom bigskip \align center 
+אם אתה חדש בליקס לך תקרא את השעור המודרך.
+ עכשיו.
+\layout Standard
+
+אחרת אתה עלול להיות
+\series bold 
+ 
+\series default 
+מתוסכל
+\bar under 
+ 
+\bar default 
+שלא לצורך.
+ ליקס עושה כל מה שמעבד תמלילים עושה בשבילך
+\series bold 
+,
+\series default 
+ אבל בגישה שונה.
+\layout Chapter
+
+איך לתרום לפרויקט הליקס
+\layout Section
+
+לתרום לליקס התוכנה
+\layout Standard
+
+ליקס נכתב רובו ככולו ב- 
+\lang english
+C++
+\lang hebrew
+ )המיבא של 
+\lang english
+LaTeX
+\lang hebrew
+ כתוב בפרל(.
+ זה פרויקט גדול, וכתוצאה תמיד יהיו
+\series bold 
+ 
+\series default 
+בגים
+\series bold 
+ 
+\series default 
+ומקום לשיפור.
+\layout Subsubsection
+
+איך לדווח על באג
+\layout Standard
+
+אתה עלול להתקל בהתנהגות של ליקס שתראה לך כבאג.
+ תעופות הן נדירות, אבל הן קורות.
+ בעיות בממשק המשתמש 
+\lang english
+---
+\lang hebrew
+ התנהגות לא עקבית או מבלבלת 
+\lang english
+---
+\lang hebrew
+ נחשבות באגים חמורים על ידי צוות ליקס ומטופלות במלוא הרצינות.
+ אנחנו רוצים לשמוע את דעתך.
+\layout Standard
+
+לליקס יש מערכת למעקב אחרי באגים בכתובת 
+\begin_inset LatexCommand \htmlurl{http://bugzilla.lyx.org/}
+
+\end_inset 
+
+.
+ בדוק שם לפני שאתה מדווח על באג, למקרה שהוא כבר דווח.
+ אם יש לך הערה על באג קיים או שאתה רוצה לדווח על באג חדש, אתה יכול להשתמש
+ במערכת המעקב, או לכתוב לרשימת הדיוור של המפתחים, 
+\begin_inset LatexCommand \url{lyx-devel@lists.lyx.org}
+
+\end_inset 
+
+.
+ יש קישור לארכיון מהאתר הראשי של ליקס, 
+\begin_inset LatexCommand \htmlurl{http://www.lyx.org/}
+
+\end_inset 
+
+.
+\layout Standard
+
+דיווח טוב על באג צריך להכיל לכל הפחות
+\series bold 
+ 
+\series default 
+את הגרסה של ליקס שבה מופיעה הבעיה.
+ תאור מפורט ומדויק עדיף 
+\lang english
+---
+\lang hebrew
+ ככל שהמתפחים מבזבזים יותר זמן בזיהוי מדויק של מקור הבעיה, כך יש להם פחות
+ זמן להשקיע בשיפורים אחרים.
+ ציין גם
+\series bold 
+ 
+\series default 
+המערכת שעליה אתה מריץ את ליקס ואת גירסתה )לדוגמא: 
+\lang english
+Linux 2.4.19
+\lang hebrew
+(.
+ הוסף את הגירסאות של הספריות שהתקנת על המערכת, ואם זה רלבנטי, את הגרסאות
+ של התוכנות החיצוניות שבהן ליקס משתמש.
+ עם מדובר בבעית קומפילציה או קונפיגורציה, צרף את הקובץ 
+\family typewriter 
+\lang english
+config.log
+\family default 
+\lang hebrew
+ ואת גרסאת הקומפיילר שבה השתמשת.
+\layout Standard
+
+אם הצלחת לגרום לליקס לעוף, אנא טרח ליצר 
+\lang english
+backtrace
+\lang hebrew
+ בעזרת גרסת ליקס שאינה 
+\lang english
+stripped
+\lang hebrew
+.
+ בדרך כלל, ליקס בספרית הקבצים המקורית מכיל מידע עבור דיבוג, בעוד הגרסה המותקנת
+ היא 
+\lang english
+stripped
+\lang hebrew
+, דהיינו אינה כוללת
+\series bold 
+ 
+\series default 
+מידע זה.
+ אם כך, הרץ את ליקס מתוך 
+\lang english
+gdb
+\lang hebrew
+ בעזרת הפקודה, למשל, 
+\family typewriter 
+\lang english
+gdb\SpecialChar ~
+/users/dani/lyx-1.2.0pre4/src/lyx
+\family default 
+\lang hebrew
+ ואז 
+\family typewriter 
+\lang english
+run
+\family default 
+\lang hebrew
+.
+ גרום לליקס לעוף ואז תוחזר ל- 
+\family typewriter 
+\lang english
+gdb
+\family default 
+\lang hebrew
+.
+ הפקודה 
+\family typewriter 
+\lang english
+bt
+\family default 
+\lang hebrew
+ תיצר 
+\lang english
+backtrace
+\lang hebrew
+.
+ הוסף אותו לדיווח
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+אם אתה רוצה להיות יסודי, השתמש בפקודות 
+\family typewriter 
+\lang english
+info locals
+\family default 
+\lang hebrew
+ ו- 
+\family typewriter 
+\lang english
+up
+\family default 
+\lang hebrew
+ כדי להדפיס ערכים של משתנים מקומים בכמה דרגות של המחסנית.
+\end_inset 
+
+.
+ אם יש שיטה בטוחה ליצר את הבאג, תאור שלה אפילו עדיף על פני 
+\lang english
+backtrace
+\lang hebrew
+ כי הוא יאפשר לנו ליצור את ה- 
+\lang english
+backtrace
+\lang hebrew
+ בעצמנו.
+ אם קשה לשחזר את הבאג, 
+\lang english
+backtrace
+\lang hebrew
+ הוא חיוני, כי זה עלול להיות כל מה שיש לנו.
+\layout Subsection
+
+איך לתרום תיקונים ותכונות חדשות
+\layout Standard
+
+אם שינית את הקוד של ליקס ואתה חושב ששינויים אלה יכולים להיות שימושיים לכלל
+ המשתמשים, שלח את השינויים שלך כקובץ 
+\lang english
+diff
+\lang hebrew
+ )
+\lang english
+unified
+\lang hebrew
+( לקבוצת הדיון של המפתחים שהוזכרה לעיל, בנוסף ל- 
+\lang english
+change log
+\lang hebrew
+ ותאור של מה שהטלאי )
+\lang english
+patch
+\lang hebrew
+( שלך מבצע.
+\layout Section
+
+תרומה לתעוד
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:Contrib}
+
+\end_inset 
+
+ליקס מתפתחת ללא הרף, כל גירסה חדשה מוסיפה תכונות, ולמרות שהתעוד מקיף, הוא
+ לא תמיד עומד בקצב.
+ פה נתאר מה לעשות אם מצאת שגיאה, או שיש לך הצעות איך לשפר את התעוד.
+\layout Subsection
+
+דיווח על שגיאות
+\layout Standard
+
+אם מצאת טעות בתעוד, שלח דואר לקבוצת הדיון 
+\family typewriter 
+\lang english
+lyx-docs@lists.lyx.org
+\family default 
+\lang hebrew
+.
+ צוות התעוד יבצע את השינויים הנדרשים.
+\layout Subsection
+
+להצטרף לצוות התעוד
+\layout Standard
+
+צוות התעוד של ליקס תמיד צריך עזרה 
+\lang english
+---
+\lang hebrew
+ כמו כולם.
+ אם אתה מעוניין לתרום, קודם כל אתה צריך לבצע את הפעולות הבאות.
+\layout Enumerate
+
+הורד את הגרסה החדשה ביותר של קוד ליקס
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+ההרפתקנים יכולים להוריד את התעוד העדכני ביותר מאתר ה- 
+\lang english
+CVS
+\lang hebrew
+ של ליקס.
+ הוא נמצא במודול 
+\family typewriter 
+\lang english
+lyxdoc
+\family default 
+\lang hebrew
+.
+ יש גם ממשק רשת 
+\lang english
+---
+\lang hebrew
+ מקושר מהאתר הראשי של ליקס 
+\lang english
+---
+\lang hebrew
+ למי שלא התקינו או לא אוהבים את 
+\lang english
+CVS
+\lang hebrew
+.
+\end_inset 
+
+.
+ בראש העץ תמצא ספריה בשם 
+\family typewriter 
+\lang english
+lib/doc/
+\family default 
+\lang hebrew
+.
+ בתוך הספריה הזו יש קובץ בשם 
+\family typewriter 
+\lang english
+DocStyle.lyx
+\family default 
+\lang hebrew
+.
+ קרא אותו.
+ הוא מכיל הוראות לגבי פורמט קבצי התעוד
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+הרבה מההוראות בקובץ זה אינן רלבנטיות או דורשות עיבוד לעברית, והדבר אינו
+ מתועד בצורה מסודרת.
+ בסביבות 
+\numeric on 
+2000
+\numeric off 
+ היה דיון בענין בקבוצת הדיון שמסוכם יפה בכתובת 
+\begin_inset LatexCommand \url{http://www.mail-archive.com/lyx-docs@lists.lyx.org/msg00155.html}
+
+\end_inset 
+
+ 
+\lang english
+---
+\lang hebrew
+ זה יכול לשמש כנקודת התחלה.
+ אפשר גם לנסות אותי באופן אישי, 
+\family typewriter 
+\lang english
+gadykozma@hotmail.com
+\family default 
+\lang hebrew
+.
+\end_inset 
+
+.
+\layout Enumerate
+
+קח יום יומים מנוחה.
+ קרא את 
+\family typewriter 
+\lang english
+DocStyle.lyx
+\family default 
+\lang hebrew
+ שוב.
+\layout Enumerate
+
+קרא את המדריך למשתמש ואת מסמך הלימוד.
+\begin_deeper 
+\layout Standard
+
+המטרה של התרגיל הזה היא לתת לך רעיונות.
+ המדריך למשתמש ומסמך הלימוד הם בסבירות גבוהה המסמכים המעודכנים ביותר.
+ זה יבהיר לך איך אנחנו רוצים שהמדריכים יראו ויקראו.
+\end_deeper 
+\layout Enumerate
+
+צור קשר עם הצוות בכתובת 
+\begin_deeper 
+\layout Standard
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+\end_inset 
+
+
+\family typewriter 
+\lang english
+lyx-docs@lists.lyx.org
+\layout Standard
+
+כדי לדון בשינויים שלך וכדי לקבל עליהם משוב.
+\end_deeper 
+\layout Standard
+
+השינויים שלך יכולים להיות הבהרה של נקודה מסוימת בטקסט, ועד ארגון מחדש של
+ חלקים נרחבים של התעוד.
+ בכל מקרה נשמח לקבלם.
+\the_end

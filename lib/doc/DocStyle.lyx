@@ -1,0 +1,4400 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass article
+\language english
+\inputencoding latin1
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Title
+
+Documentation Project Style Sheet
+\layout Author
+
+by John Weiss
+\layout Abstract
+
+This article is a style sheet.
+ It describes, with examples, how the documentation should look and sound.
+ The first few sections explain the font conventions and typography conventions
+ all documentation writers should follow.
+ Those sections also contain examples.
+ It also explains the purpose of each of the different manuals.
+ Follow it not merely to the letter, but also in spirit.
+\layout Abstract
+
+The Style Sheet for LyX documentation (hereafter known as the Style Sheet)
+ applies to 
+\emph on 
+all
+\emph default 
+ forms of LyX documenation, regardless of language.
+ There is a section for translators in the Style Sheet, towards the end.
+ 
+\emph on 
+Read the entire Style Sheet!
+\emph default 
+ Even if you are a translator, I assume you know enough English to comprehend
+ this document.
+\layout Section
+
+Questions and Clarifications
+\layout Standard
+
+After the second version of this Style Sheet grew uncomfortably large, the
+ LyX DocTeam decided it needed to lose some excess weight.
+ It seems the Style Sheet began to specify too many special cases, too many
+ points of clarification.
+ On the other hand, contributors to the documents were discovering many
+ creative ways of misinterpreting the Style Sheet specifications.
+ Therefore:
+\layout Quote
+
+If you have any questions about anything in the Style Sheet, 
+\emph on 
+ask first, write second!
+\layout Standard
+
+Field all questions to the LyX Developer's Mailing List.
+ There are seasoned DocTeam members who can answer your questions.
+ If you have any problems with the Style Sheet itself, also contact the
+ mailing list.
+\layout Section
+
+Fonts
+\layout Standard
+
+We'll start with the easiest section, yet also the most important.
+\layout Standard
+
+This is how you should fontify text in the manuals:
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\emph on 
+Emphasized
+\emph default 
+ general emphasis, generic arguments, titles of books, names the other manuals
+ and of their sections, and notes from the authors
+\begin_deeper 
+\layout Standard
+
+Do not overemphasize your text.
+\end_deeper 
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\family typewriter 
+Typewriter
+\family default 
+ program names, file names, 
+\family typewriter 
+man
+\family default 
+-page names, LaTeX code, LaTeX commands, LaTeX package names, and LyX code
+ and functions
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+ menu, button, or popup names, the names/lables of all widgets in a popup,
+ the names of keyboard keys, and certain 
+\begin_inset Quotes eld
+\end_inset 
+
+special terms
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\noun on 
+Noun\SpecialChar ~
+Style
+\noun default 
+ people's names
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\family sans 
+\bar under 
+U
+\bar default 
+nderlined\SpecialChar ~
+Sans\SpecialChar ~
+Serif
+\family default 
+ Rich Fields added this to mimick the underlining of letters in the menus
+ and on buttons.
+ It helps to highlight the accelerator keys, and human brains store information
+ best when they see it frequently.
+\begin_deeper 
+\layout Description
+
+WARNING! --- When you do this, make sure you 
+\emph on 
+only
+\emph default 
+ shut off the underlining.
+ Too many people send in things that look like: 
+\newline 
+
+\family sans 
+\bar under 
+T
+\family default 
+\bar default 
+his
+\newline 
+\SpecialChar \ldots{}
+i.\SpecialChar ~
+e.\SpecialChar ~
+they not only shut off underlining, they turned off 
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+, too! 
+\emph on 
+Don't do that!
+\emph default 
+ Make sure the entire word is still in 
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+ after you shut off the underlining.
+\end_deeper 
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\series bold 
+Bold
+\series default 
+ Unused.
+\begin_deeper 
+\layout Standard
+
+If you want to emphasize any text, use 
+\emph on 
+Emphasized
+\emph default 
+.
+ LaTeX will put many things boldface on its own, such as 
+\family sans 
+Section
+\family default 
+s, certain parts of equations, et cetera.
+\layout Standard
+
+Repeat: do not use boldface.
+\end_deeper 
+\layout Standard
+
+Here are some examples:
+\layout Enumerate
+
+The function 
+\family typewriter 
+math-mode
+\family default 
+ appears in configuration files and in the LyX source.
+ Therefore, it (and all other LyX function names) count as code and is set
+ in 
+\family typewriter 
+Typewriter
+\family default 
+.
+\layout Enumerate
+
+However, 
+\family sans 
+\bar under 
+M
+\bar default 
+ath\SpecialChar ~
+mode
+\family default 
+ is a menu item in the 
+\family sans 
+\bar under 
+M
+\bar default 
+ath
+\family default 
+ menu, so it appears in 
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+.
+ Notice the use of 
+\family sans 
+\bar under 
+U
+\bar default 
+nderlined\SpecialChar ~
+Sans\SpecialChar ~
+Serif
+\family default 
+ for the accelerator keys.
+\layout Enumerate
+
+Consider the following excerpt from the introduction of one of the manuals:
+\begin_deeper 
+\layout Quotation
+
+
+\family sans 
+Return
+\family default 
+ and 
+\family sans 
+Enter
+\family default 
+ both refer to the same key.
+ Some keyboards label the 
+\family sans 
+Return
+\family default 
+ key as 
+\begin_inset Quotes eld
+\end_inset 
+
+Return,
+\begin_inset Quotes erd
+\end_inset 
+
+ others as 
+\begin_inset Quotes eld
+\end_inset 
+
+Enter,
+\begin_inset Quotes erd
+\end_inset 
+
+ still others have two keys.
+ LyX treats all of them as the same key, so we'll use 
+\family sans 
+Return
+\family default 
+ and 
+\family sans 
+Enter
+\family default 
+ interchangeably.
+\layout Standard
+
+Notice that the key name, 
+\family sans 
+Return
+\family default 
+, is in 
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+, but 
+\emph on 
+only
+\emph default 
+ when it references the key itself! When I described how the manufacturer
+ chose to label its keyboard, I used Roman and put the word in quotes.
+ There is a semantic difference.
+\end_deeper 
+\layout Enumerate
+
+Take the following command:
+\begin_deeper 
+\layout Standard
+
+
+\family typewriter 
+lpr -P
+\family default 
+\emph on 
+printername
+\layout Standard
+
+Notice that the argument to the 
+\family typewriter 
+-P
+\family default 
+ option is in 
+\emph on 
+Roman Italics
+\emph default 
+ (i.e.
+ emphasized).
+ This is a case where you don't use 
+\family typewriter 
+Typewriter
+\family default 
+ for code, because you want the generic argument label to stand out.
+ On the other hand, if you were specifying an argument, for example, 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+lpr -Pduaneps
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+, you'd leave it in 
+\family typewriter 
+Typewriter
+\family default 
+.
+ 
+\end_deeper 
+\layout Enumerate
+
+Any LaTeX commands and code, and any 
+\emph on 
+unsupported
+\emph default 
+ LaTeX package names get set in 
+\family typewriter 
+Typewriter
+\family default 
+.
+ For example, 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+multicol
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ is the name of an unsupported LaTeX package, but 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+book
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ is a supported LaTeX class.
+\layout Section
+
+Keys 
+\layout Standard
+
+The canonical keyboard contains these keys:
+\layout Itemize
+
+
+\family sans 
+C-
+\family default 
+ or 
+\family sans 
+Control-
+\family default 
+ 
+\layout Itemize
+
+
+\family sans 
+S-
+\family default 
+ or 
+\family sans 
+Shift-
+\family default 
+ 
+\layout Itemize
+
+
+\family sans 
+M-
+\family default 
+ or 
+\family sans 
+Meta-
+\family default 
+ 
+\begin_deeper 
+\layout Standard
+
+Self-explanatory.
+ Be lazy and 
+\emph on 
+use the abbreviations
+\emph default 
+ whenever possible.
+\end_deeper 
+\layout Itemize
+
+
+\family sans 
+F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12
+\begin_deeper 
+\layout Standard
+
+The function keys.
+ Most modern keyboards have all 12.
+\end_deeper 
+\layout Itemize
+
+
+\family sans 
+Esc
+\family default 
+ 
+\begin_deeper 
+\layout Standard
+
+The 
+\begin_inset Quotes eld
+\end_inset 
+
+Escape key.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\end_deeper 
+\layout Itemize
+
+
+\family sans 
+Insert
+\family default 
+ 
+\family sans 
+Delete
+\family default 
+ 
+\family sans 
+Home
+\family default 
+ 
+\family sans 
+End
+\family default 
+ 
+\family sans 
+PageUp
+\family default 
+ 
+\family sans 
+PageDown
+\begin_deeper 
+\layout Standard
+
+These are the 6 keys that appear above the cursor keys on many PC keyboards.
+ Consider them as part of the standard motion keys.
+\end_deeper 
+\layout Itemize
+
+
+\family sans 
+Left Right Up Down
+\begin_deeper 
+\layout Standard
+
+The four standard motion keys.
+ There is no need to put the word 
+\begin_inset Quotes eld
+\end_inset 
+
+arrow
+\begin_inset Quotes erd
+\end_inset 
+
+ anywhere, since that's obvious.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Same goes for 
+\begin_inset Quotes eld
+\end_inset 
+
+cursor key
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Even the word 
+\begin_inset Quotes eld
+\end_inset 
+
+key
+\begin_inset Quotes erd
+\end_inset 
+
+ after one of these may be redundant in certain situations.
+\end_inset 
+
+ 
+\end_deeper 
+\layout Itemize
+
+
+\family sans 
+Return
+\family default 
+ and 
+\family sans 
+Enter
+\family default 
+ 
+\begin_deeper 
+\layout Standard
+
+I won't throw a hissy fit if you use one instead of the other.
+ I'd prefer if you used 
+\family sans 
+Return
+\family default 
+ over 
+\family sans 
+Enter
+\family default 
+, but it's okay if you slip up and forget.
+ Since these two keys are bound to the same function in LyX, it doesn't
+ really matter.
+\end_deeper 
+\layout Standard
+
+You do not need to explain everywhere what the 
+\family sans 
+Meta
+\family default 
+ key is or where the 
+\family sans 
+Left
+\family default 
+ key is, et cetera.
+ The user isn't stupid.
+ Also, someone will document anything that isn't clear (e.\SpecialChar ~
+g.\SpecialChar ~
+the 
+\family sans 
+Meta
+\family default 
+ vs.
+ 
+\family sans 
+Alt
+\family default 
+ problem) someplace in the introduction.
+ No need for you to repeat someone else's work.
+\layout Standard
+
+LyX does not support keyboards missing any of the keys described above,
+ with one exception.
+ LyX can support a keyboard missing 
+\family sans 
+F11
+\family default 
+ and 
+\family sans 
+F12
+\family default 
+.
+ There is a keyboard accelerator for 
+\family sans 
+F10
+\family default 
+, but this is the only function key LyX assumes exists.
+ Nevertheless, these details are of minor, if any, concern for the documentation.
+ Assume the aforementioned keys exist.
+\layout Section
+
+Mice
+\layout Standard
+
+The word 
+\begin_inset Quotes eld
+\end_inset 
+
+mouse
+\begin_inset Quotes erd
+\end_inset 
+
+ and any description of the 3 mouse buttons have no special handling.
+ Don't typeset them in any other font than the default, which is Roman.
+ 
+\layout Standard
+
+Exception: you're writing an Author's Note (see section 
+\begin_inset LatexCommand \ref{sec:author-notes}
+
+\end_inset 
+
+) and you need to mention something about the mouse.
+ Since the rest of the note is in 
+\emph on 
+Emphasized
+\emph default 
+, your description of 
+\begin_inset Quotes eld
+\end_inset 
+
+middle mouse button
+\begin_inset Quotes erd
+\end_inset 
+
+ should be emphasized, as well.
+ There are a couple of other cases like this one; use your judgement.
+\layout Standard
+
+There are only 3 mouse buttons.
+ The use of them and of the mouse itself is obvious.
+ There are few --- if any --- nonstandard things we do with the mouse.
+ Therefore, there's no need to make the word 
+\begin_inset Quotes eld
+\end_inset 
+
+mouse
+\begin_inset Quotes erd
+\end_inset 
+
+ or 
+\begin_inset Quotes eld
+\end_inset 
+
+mouse button
+\begin_inset Quotes erd
+\end_inset 
+
+ stand out.
+\layout Section
+
+Special Typography
+\layout Standard
+
+Do the following:
+\layout Description
+
+Multi-word\SpecialChar ~
+names Use a 
+\family sans 
+Protected\SpecialChar ~
+Blank
+\family default 
+ between the words for menu and widget names.
+ E.\SpecialChar ~
+g.: 
+\family sans 
+Save\SpecialChar ~
+As
+\family default 
+, not 
+\family sans 
+Save As
+\family default 
+.
+ 
+\begin_deeper 
+\layout Standard
+
+This holds for things in 
+\family typewriter 
+Typewriter
+\family default 
+ as well as 
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+, with one caveat.
+ If you have a long code example, one that can't simply be inlined and put
+ in 
+\family typewriter 
+Typewriter
+\family default 
+, put that in a 
+\family sans 
+LyX\SpecialChar ~
+Code
+\family default 
+ environment.
+\layout Standard
+
+I want the 
+\family sans 
+Protected\SpecialChar ~
+Blank
+\family default 
+ so that the name doesn't get split between two lines, which is visually
+ disruptive.
+ If something with a 
+\family sans 
+Protected\SpecialChar ~
+Blank
+\family default 
+ is near the end of a line and overflows the margin, use a 
+\family typewriter 
+
+\backslash 
+sloppypar
+\family default 
+ in that parargraph (consult a LaTeX book for more about 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+
+\backslash 
+sloppypar
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+) or manually add a hypenation point.
+\end_deeper 
+\layout Description
+
+Special\SpecialChar ~
+Terms These are things like the following:
+\begin_deeper 
+\layout Itemize
+
+
+\family sans 
+HFill
+\family default 
+ 
+\layout Itemize
+
+
+\family sans 
+VFill
+\family default 
+ 
+\layout Itemize
+
+
+\family sans 
+Table\SpecialChar ~
+Float
+\layout Itemize
+
+
+\family sans 
+Figure\SpecialChar ~
+Float
+\begin_deeper 
+\layout Standard
+
+Use 
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+ font and, in the case of 
+\family sans 
+HFill 
+\family default 
+and 
+\family sans 
+VFill
+\family default 
+, capitalize the first two letters.
+\layout Standard
+
+Why are these terms special? They are concepts which the seasoned LaTeX-pert
+ is familiar with, but which the new LyX user is not.
+ I want them to stand out from the rest of the text, hence the use of 
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+ for them.
+\end_deeper 
+\end_deeper 
+\layout Standard
+
+Seasoned LyX Team Members: Are there other terms that require this special
+ status? On the other hand, should we eliminate this style completely?
+\layout Description
+
+Terminology Note the following:
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+dialog
+\begin_inset Quotes erd
+\end_inset 
+
+ not 
+\begin_inset Quotes eld
+\end_inset 
+
+popup
+\begin_inset Quotes erd
+\end_inset 
+
+ or 
+\begin_inset Quotes eld
+\end_inset 
+
+window
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+Confirmation alert
+\begin_inset Quotes erd
+\end_inset 
+
+ not 
+\begin_inset Quotes eld
+\end_inset 
+
+dialog
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\layout Itemize
+
+PostScript® is a registered trademark of Adobe Corp.
+ 
+\emph on 
+You must put the ® after it or we'll get sued!
+\emph default 
+ I also want it written as seen here, always capitalized.
+ Not 
+\begin_inset Quotes eld
+\end_inset 
+
+postscript®,
+\begin_inset Quotes erd
+\end_inset 
+
+ or 
+\begin_inset Quotes eld
+\end_inset 
+
+Postscript®
+\begin_inset Quotes erd
+\end_inset 
+
+ but 
+\begin_inset Quotes eld
+\end_inset 
+
+PostScript®
+\begin_inset Quotes erd
+\end_inset 
+
+ - both of them capitalized, in the default font (i.\SpecialChar ~
+.e.\SpecialChar ~
+Roman).
+ If you must, cut and paste it from here.
+\begin_deeper 
+\layout Standard
+
+I am going to say this again:
+\layout Standard
+\added_space_top 0.37cm \added_space_bottom 0.51cm \align center 
+
+\size larger 
+\emph on 
+You must put the ® after PostScript® or we'll get sued!
+\layout Standard
+
+I mean it! American companies like to sue anything that moves.
+ We could get in 
+\emph on 
+major trouble
+\emph default 
+ by forgetting that ®.
+ So, don't.
+ Got it?
+\end_deeper 
+\layout Itemize
+
+Similarly, if you use any other registered trademark in any documentation,
+ put the ® after it, too.
+\layout Description
+
+Menu\SpecialChar ~
+Items When quick-referencing an item in a menu, use the menu separator:
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \menuseparator
+
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Example: 
+\family sans 
+File\SpecialChar \menuseparator
+Save
+\family default 
+.
+ Notice that there are 
+\emph on 
+no spaces
+\emph default 
+ around the 
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \menuseparator
+
+\begin_inset Quotes erd
+\end_inset 
+
+ and that it's in 
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+, just like the menu and item names.
+\begin_deeper 
+\layout Enumerate
+
+The reason why I want no spaces around the 
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \menuseparator
+
+\begin_inset Quotes erd
+\end_inset 
+
+ is to prevent LyX from splitting terms across lines.
+ The same goes for using 
+\family sans 
+Protected\SpecialChar ~
+Blank
+\family default 
+s between multi-word terms.
+ The split would be visually disruptive.
+\layout Enumerate
+
+A 
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \menuseparator
+
+\begin_inset Quotes erd
+\end_inset 
+
+ goes between menu names and item names 
+\emph on 
+only
+\emph default 
+.
+ (Yes, submenus are okay, too).
+\layout Enumerate
+
+
+\emph on 
+NEVER
+\emph default 
+ put 
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \menuseparator
+
+\begin_inset Quotes erd
+\end_inset 
+
+ between menu items and dialog names.
+ Example: 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+\bar under 
+L
+\bar default 
+ayout\SpecialChar \menuseparator
+P
+\bar under 
+a
+\bar default 
+per\SpecialChar \menuseparator
+Paper\SpecialChar ~
+Dialog
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\emph on 
+IS STRICTLY FORBIDDEN!
+\emph default 
+ 
+\begin_deeper 
+\layout Standard
+
+
+\emph on 
+NEVER
+\emph default 
+ put 
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \menuseparator
+
+\begin_inset Quotes erd
+\end_inset 
+
+ between popup names and any dialog.
+ Example: 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Paper\SpecialChar ~
+Dialog\SpecialChar \menuseparator
+P
+\bar under 
+o
+\bar default 
+rtrait
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\emph on 
+IS STRICTLY FORBIDDEN!
+\layout Standard
+
+
+\emph on 
+NEVER
+\emph default 
+ put 
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \menuseparator
+
+\begin_inset Quotes erd
+\end_inset 
+
+ between menu items and any dialog.
+ Example: 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+\bar under 
+L
+\bar default 
+ayout\SpecialChar \menuseparator
+P
+\bar under 
+a
+\bar default 
+per\SpecialChar \menuseparator
+P
+\bar under 
+o
+\bar default 
+rtrait
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\emph on 
+IS STRICTLY FORBIDDEN!
+\layout Standard
+
+Either write out the description, or use context to eliminate any need to
+ repeat menu items, dialog names, etc.
+\end_deeper 
+\end_deeper 
+\layout Description
+
+Note\SpecialChar ~
+Boxes LyX has a feature for adding comments that appear only within
+ the LyX GUI.
+ Here's one: 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+These should NEVER appear in the manuals.
+\end_inset 
+
+.
+ You will see nothing in a printout of the Style Sheet.
+ Therefore, they have no place in the manuals.
+ Period.
+ 
+\begin_deeper 
+\layout Standard
+
+If you have a parenthetical comment you want to make, the reader should
+ see it too, even in the printed version.
+ Use an Author's Note (see section 
+\begin_inset LatexCommand \ref{sec:author-notes}
+
+\end_inset 
+
+) in place of the Note-Boxes.
+\end_deeper 
+\layout Description
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+(\SpecialChar \ldots{}
+)
+\begin_inset Quotes erd
+\end_inset 
+
+,\SpecialChar ~
+
+\begin_inset Quotes eld
+\end_inset 
+
+[\SpecialChar \ldots{}
+]
+\begin_inset Quotes erd
+\end_inset 
+
+\SpecialChar ~
+and\SpecialChar ~
+
+\begin_inset Quotes eld
+\end_inset 
+
+{\SpecialChar \ldots{}
+}
+\begin_inset Quotes erd
+\end_inset 
+
+ I have recently been corrected about the use of parentheses.
+ Standard English typesetting uses the normal parentheses, 
+\begin_inset Quotes eld
+\end_inset 
+
+(\SpecialChar \ldots{}
+)
+\begin_inset Quotes erd
+\end_inset 
+
+, around any aside, remark, or parenthetical expression.
+ The bracket, 
+\begin_inset Quotes eld
+\end_inset 
+
+[\SpecialChar \ldots{}
+]
+\begin_inset Quotes erd
+\end_inset 
+
+, is used only within quotations (see section\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:quote}
+
+\end_inset 
+
+).
+ The brace, 
+\begin_inset Quotes eld
+\end_inset 
+
+{\SpecialChar \ldots{}
+}
+\begin_inset Quotes erd
+\end_inset 
+
+, is never used.
+ Therefore, never use 
+\begin_inset Quotes eld
+\end_inset 
+
+[\SpecialChar \ldots{}
+]
+\begin_inset Quotes erd
+\end_inset 
+
+ or 
+\begin_inset Quotes eld
+\end_inset 
+
+{\SpecialChar \ldots{}
+}
+\begin_inset Quotes erd
+\end_inset 
+
+ unless otherwise specified by this Style Sheet.
+\layout Description
+
+Dashes: Be sure to use the correct one.
+ A single 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+-
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ character is not a dash, it's a hyphen.
+ Use it only as a hyphen.
+ 
+\begin_deeper 
+\layout Standard
+
+Instead, use an 
+\begin_inset Quotes eld
+\end_inset 
+
+en-dash
+\begin_inset Quotes erd
+\end_inset 
+
+ or an 
+\begin_inset Quotes eld
+\end_inset 
+
+em- dash.
+\begin_inset Quotes erd
+\end_inset 
+
+ Two back-to-back 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+-
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ characters form the en-dash.
+ Three 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+-
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ characters create an em-dash, which is slightly longer than the en-dash.
+ In the printed version of any document, LyX will combine the two or three
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+-
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ characters into a single, unbroken line.
+\end_deeper 
+\layout Section
+
+Cross-References and Labels
+\layout Standard
+
+Use the following labelling conventions:
+\layout List
+\labelwidthstring 00.00.0000
+
+sec:xxx Use this for 
+\family sans 
+Section
+\family default 
+s as well as 
+\family sans 
+Chapter
+\family default 
+s, 
+\family sans 
+Subsection
+\family default 
+s, 
+\family sans 
+Subsubsection
+\family default 
+s, etc.
+\layout List
+\labelwidthstring 00.00.0000
+
+eqn:xxx Use this for Equations, should you need to create any.
+\layout List
+\labelwidthstring 00.00.0000
+
+tbl:xxxx Use this for tables inside of a table float.
+\layout List
+\labelwidthstring 00.00.0000
+
+fig:xxx Use this for figures inside of figure floats.
+\layout Standard
+
+Additionally, you should put the label at one of two locations:
+\layout Enumerate
+
+The 
+\emph on 
+beginning of the paragraph
+\emph default 
+, after a section heading, or at the beginning of captions, etc.
+ It should be the first thing on the first line.
+ Don't put a space betweeen it and the first word.
+\layout Enumerate
+
+If there is no paragraph after a section heading, put it at the 
+\emph on 
+end of the last line.
+
+\emph default 
+ 
+\begin_deeper 
+\layout Standard
+
+Example: You have a 
+\family sans 
+Section
+\family default 
+ which is immediately followed by a 
+\family sans 
+Subsection
+\family default 
+ heading.
+ This is a case where you need to put the label at the end of the 
+\family sans 
+Section
+\family default 
+ heading.
+ I know it looks ugly; not much we can do about that, though.
+\end_deeper 
+\layout Section
+
+Content --- What Goes Where
+\layout Standard
+
+This is 
+\emph on 
+very
+\emph default 
+ important to anyone documenting a new feature.
+ If you need to add new documentation, pay attention.
+ 
+\layout Standard
+
+In the dim and distant past, whenever someone wanted to document a new feature
+ they added, they either wrote a mini-doc and stuck it into the documentation
+ directory, or they added a new section to the lone manual.
+ No one paid much attention to organization in those days, either.
+ The result was a totally bloated, totally unnavigable, and incomplete manual
+ orbitted by a swarm of tiny, incomplete mini-docs.
+ I don't want the docs to fall back into that mess.
+\layout Standard
+
+With that in mind, I have some instructions for how to keep things organized:
+\layout List
+\labelwidthstring 00.00.0000
+
+
+\family typewriter 
+Intro.lyx 
+\family default 
+Please, don't touch this file.
+ It's essentially complete, anyhow.
+ Only the editor(s) should make changes to this, as this file contains info
+ about how to contribute to the doc project.
+ That's really the only stuff that should need to change, and even then,
+ only when a new maintainer comes along.
+\layout List
+\labelwidthstring 00.00.0000
+
+
+\family typewriter 
+UserGuide.lyx 
+\family default 
+This file is complete.
+ Any changes should be for updates 
+\emph on 
+only
+\emph default 
+.
+ DO NOT ADD new features to here willy-nilly.
+ Let the editor decide if --- and when --- new sections go in here.
+ Place any new features in\SpecialChar \ldots{}
+
+\layout List
+\labelwidthstring 00.00.0000
+
+
+\family typewriter 
+Extended.lyx
+\family default 
+ This is where all new features go from now on.
+ It's in the style of a bound journal --- each section is an 
+\begin_inset Quotes eld
+\end_inset 
+
+article
+\begin_inset Quotes erd
+\end_inset 
+
+ from the author of the feature.
+ Also, anyone who writes a 
+\family typewriter 
+.layout
+\family default 
+ file for a new document class should write a section describing that new
+ class and how to use it.
+ That also goes here.
+\begin_deeper 
+\layout Standard
+
+Note, however, that you are 
+\emph on 
+not
+\emph default 
+ excused from following this Style Sheet just because the sections of 
+\family typewriter 
+Extended.lyx
+\family default 
+ are in the form of a journal article.
+\end_deeper 
+\layout List
+\labelwidthstring 00.00.0000
+
+
+\family typewriter 
+Tutorial.lyx
+\family default 
+ This file is complete.
+ Do not change or add to without permission of the Documenation Project
+ Editor.
+\layout List
+\labelwidthstring 00.00.0000
+
+
+\family typewriter 
+Customization.lyx
+\family default 
+ This document describes advanced features, most of which alter the look,
+ feel, and behavior of LyX.
+ This manual is still a bit incomplete, although that may change soon.
+ Check for updates often.
+\begin_deeper 
+\layout Standard
+
+If you are unsure whether or not something belongs in 
+\family typewriter 
+Customization.lyx
+\family default 
+, then, most-likely, it 
+\emph on 
+really
+\emph default 
+ belongs in 
+\family typewriter 
+Extended.lyx
+\family default 
+.
+ Again, let the current editor of the LyX documentation decide if your new
+ section should be migrated to 
+\family typewriter 
+Customization.lyx
+\family default 
+.
+\end_deeper 
+\layout List
+\labelwidthstring 00.00.0000
+
+
+\family typewriter 
+Reference.lyx
+\family default 
+ I'd prefer to completely finish this one before doing anything else, but
+ that's unrealistic.
+ LyX keeps changing so much that I think the 
+\emph on 
+Reference Manual
+\emph default 
+ will be the last one completed.
+ However, I'd like it if the developer's would add entries anytime they
+ create a new function or popup.
+ That would help things immensely!
+\begin_deeper 
+\layout Standard
+
+Note that the 
+\emph on 
+Reference Manual
+\emph default 
+ follows this Style Sheet for the most part.
+ There are, however, additional rules to follow when making new entries.
+ At the top of this manual, there are examples of and a template for 
+\emph on 
+Reference Manual
+\emph default 
+ entries.
+ Use them.
+\end_deeper 
+\layout Section
+
+Writing Style: The Primary Manuals
+\layout Standard
+
+While I want to make contributing to the Documentation Project as painless
+ as possible for newcomers, I also want the newcomers to be painless on
+ the existing Documentation Team! Ergo, I've written this section to give
+ some flavor to guide everyone's individual style.
+ 
+\layout Subsection
+
+Language
+\layout Standard
+
+All contributions to the 
+\emph on 
+primary
+\emph default 
+ LyX documentation must be in English.
+ I don't care if it's British, Australian, or American English.
+ The DocTeam editor will proofread for glaring mistakes and fix them.
+\layout Standard
+
+Don't get hung up on semantics.
+ English is a flexible language, and just because your Mothertongue-to-English
+ dictionary gives only one translation for a word doesn't necessarily mean
+ it's so.
+ We've had some discussions and misunderstandings on the Developers' List
+ because of this very problem.
+ If something is unclear (or just plain weird) due to a translation problem,
+ one of the American/British/Australian developers can fix it.
+\layout Standard
+
+Nota Bene: by 
+\emph on 
+primary
+\emph default 
+ documentation, I exclude the translations.
+ We usually don't have enough people to cover the manuals in one language,
+ let alone more than one.
+ Subsequently, the tranlsations are just that --- translations of the English
+ version of the LyX manuals.
+ The translation efforts require have their own set of guidelines.
+ See section 
+\begin_inset LatexCommand \ref{sec:translations}
+
+\end_inset 
+
+ for more info.
+\layout Subsection
+
+Wearing Many Hats:
+\newline 
+Commentary from the Author (i.\SpecialChar ~
+e.: You)
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:author-notes}
+
+\end_inset 
+
+I want to make it easy for everyone when it comes to documenting things.
+ Some features are incomplete.
+ Some, you might not know everything about.
+ Sometimes, you may want to comminucate something to me or the reader or
+ other DocTeam members.
+ Sometimes, you may want to 
+\begin_inset Quotes eld
+\end_inset 
+
+speak for yourself;
+\begin_inset Quotes erd
+\end_inset 
+
+ you want to say something that is your personal opinion and using 
+\begin_inset Quotes eld
+\end_inset 
+
+we
+\begin_inset Quotes erd
+\end_inset 
+
+ would be inappropriate.
+\layout Standard
+
+In short, when you contribute to the LyX Docs, you wear many hats.
+\layout Standard
+
+For occasions when you need to switch hats, I've designed some special mechanism
+s.
+\layout Subsubsection
+
+Personal\SpecialChar ~
+Notes: The 
+\begin_inset Quotes eld
+\end_inset 
+
+Me
+\begin_inset Quotes erd
+\end_inset 
+
+ Hat
+\layout Standard
+
+These are footnotes.
+ They begin with the following:
+\layout Quote
+
+Note from 
+\noun on 
+Name of Person
+\noun default 
+:
+\layout Standard
+
+\SpecialChar \ldots{}
+using the 
+\noun on 
+Noun Style
+\noun default 
+ for the person's name and without the quotes.
+ The rest of the footnote is the actual comment.
+ 
+\layout Standard
+
+Use these when you need to quote a comment by someone (usually yourself),
+ and need to identify that person.
+ This includes occasions when you need wear the 
+\begin_inset Quotes eld
+\end_inset 
+
+me
+\begin_inset Quotes erd
+\end_inset 
+
+ hat, i.\SpecialChar ~
+e.\SpecialChar ~
+to speak for yourself instead of for the LyX Team.
+\layout Standard
+
+If the comment is too large to put in a footnote, don't use a Personal Note.
+ When quoting more than about 3 sentences or 5 lines of text, use a bona
+ fide quote.
+ Don't use any leading 
+\begin_inset Quotes eld
+\end_inset 
+
+Note from 
+\noun on 
+Name of Person
+\noun default 
+:
+\begin_inset Quotes erd
+\end_inset 
+
+ in that case.
+ In a real quote, you'll give credit to the original speaker in either the
+ paragraph before or after the body of the 
+\family sans 
+Quotation
+\family default 
+.
+\layout Subsubsection
+
+Author's\SpecialChar ~
+Notes: The 
+\begin_inset Quotes eld
+\end_inset 
+
+Author
+\begin_inset Quotes erd
+\end_inset 
+
+ Hat
+\layout Standard
+
+There will be times when you are not speaking for the LyX Team, yet you
+ are not entirely speaking for yourself.
+ Instead, you are speaking on behalf of the manual itself, as the author
+ of the manual.
+ Some examples of when you might need to do this are:
+\layout Itemize
+
+You need to contradict something you just wrote because the feature isn't
+ quite ready yet, but you wanted to document what it will do.
+\layout Itemize
+
+You need to leave a note for yourself.
+\layout Itemize
+
+You need to leave a note for the editor or the other DocTeam members.
+\layout Itemize
+
+You need to point out something about the manuals to the reader, something
+ that doesn't fit into the context of the current paragraph.
+\layout Standard
+
+At such times, you are wearing your 
+\begin_inset Quotes eld
+\end_inset 
+
+I am the Author
+\begin_inset Quotes erd
+\end_inset 
+
+ hat, if you will.
+\layout Standard
+
+The typography for an 
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Note
+\begin_inset Quotes erd
+\end_inset 
+
+ is as follows:
+\layout Itemize
+
+They go in the body of the text, in brackets, 
+\begin_inset Quotes eld
+\end_inset 
+
+[]
+\begin_inset Quotes erd
+\end_inset 
+
+, not any other form of parentheses.
+ The bracket are in the default character style.
+\layout Itemize
+
+The text of the note itself, however, is emphasized.
+ 
+\layout Itemize
+
+Begin with the words, 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\emph on 
+Author's Note:
+\emph default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ and end with an em-dash, 
+\begin_inset Quotes eld
+\end_inset 
+
+---
+\begin_inset Quotes erd
+\end_inset 
+
+, followed by your initials.
+ 
+\layout Standard
+
+Here's an example: [
+\emph on 
+Author's Note: This is an example note.
+ ---jw
+\emph default 
+].
+\layout Standard
+
+The form of the Author's Note, by the way, isn't a suggestion or request.
+ It is 
+\emph on 
+mandatory
+\emph default 
+.
+ All Author's Notes must begin with this text, verbatim: 
+\begin_inset Quotes eld
+\end_inset 
+
+[
+\emph on 
+Author's Note:
+\emph default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Abbreviations to 
+\begin_inset Quotes eld
+\end_inset 
+
+AN
+\begin_inset Quotes erd
+\end_inset 
+
+ are or any other variant are forbidden.
+ The Author's Note must end with an em-dash, which is 3 
+\begin_inset Quotes eld
+\end_inset 
+
+-
+\begin_inset Quotes erd
+\end_inset 
+
+ characters: 
+\begin_inset Quotes eld
+\end_inset 
+
+---
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Do not use 2 or 1 
+\begin_inset Quotes eld
+\end_inset 
+
+-
+\begin_inset Quotes erd
+\end_inset 
+
+; you must use 3 (and 5 is right out).
+\layout Standard
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Notes
+\begin_inset Quotes erd
+\end_inset 
+
+ are inherently transient, and should disapear as a manual matures.
+\layout Subsubsection
+
+Footnotes: 
+\layout Standard
+
+You are also free to use footnotes on their own in addition to the Personal
+ Notes and/or Author's Notes.
+ I've frequently used footnotes to \SpecialChar \ldots{}
+ well, to comment on parts of a section
+ without putting the commentary into the body of the text.
+\layout Paragraph*
+
+Mixing Footnotes and Personal Notes
+\layout Standard
+
+Personal Notes always go in footnotes, and should be 5 lines or fewer.
+ Any larger quotation should be quoted properly, using the rules of standard
+ English.
+ Place quotes in a 
+\family sans 
+Quotation
+\family default 
+ paragraph environment.
+\layout Paragraph*
+
+Mixing Footnotes and Author's Notes
+\layout Standard
+
+Author's Notes should 
+\emph on 
+never
+\emph default 
+ go in footnotes.
+ 
+\layout Paragraph*
+
+Mixing Personal Notes and Author's Notes
+\layout Standard
+
+Forbidden; these two are mutually exclusive.
+\layout Subsubsection
+
+Summary of Use
+\layout Itemize
+
+Personal Notes:
+\newline 
+A 
+\emph on 
+short
+\emph default 
+ opinion --- yours or another LyX developer's --- about anything.
+ Anywhere in the manuals you wish to speak for yourself instead the the
+ LyX Team, use this.
+ If you have a long rant, however, quote yourself (see section\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:quote}
+
+\end_inset 
+
+).
+\layout Itemize
+
+Author's Note:
+\newline 
+Use this to describe things in LyX (or the manuals) that may change in the
+ future or are somehow incomplete.
+ Author's Notes are supposed to disappear as a manual matures.
+\layout Itemize
+
+Plain Footnotes:
+\newline 
+Used for text fragments that almost fit into the flow of the text\SpecialChar \ldots{}
+but not
+ quite.
+\layout Standard
+
+When using these three mechanisms, in addition to rigorously following their
+ descriptions, please use them properly.
+ I listed some additional restrictions previously.
+ Some of you may balk at these restrictions.
+ Nevertheless, there is a reason for them: if you have an overwhemling desire
+ to mix or modify footnotes, Personal Notes, and Author's Notes, you shouldn't
+ be using any of them.
+ More specifically, you're trying to use a hammer to drive in a screw.
+ What you want to say probably needs to go into the main body of the text.
+\layout Subsection
+
+General Stylistic Guidelines
+\layout Standard
+
+Everything in this section is 
+\emph on 
+mandatory to all documenters
+\emph default 
+, regardless the language you're writing in.
+ 
+\layout Subsubsection
+
+Typography
+\layout Enumerate
+
+Use the typography rules outlined in the beginning sections of this document.
+\layout Enumerate
+
+Don't, however, mimic the typography of this file.
+ Yes, the Style Sheet doesn't follow the Style Sheet (grin).
+\layout Enumerate
+
+There is some typographic freedom in those rules in earlier sections.
+ Use that freedom wisely.
+ Most importanly, never sacrifice the online appearance for the printed
+ appearance and vice versa.
+\begin_deeper 
+\layout Standard
+
+An example is in the 
+\emph on 
+User's Guide
+\emph default 
+.
+ There is a footnote using the 
+\family typewriter 
+multcols
+\family default 
+ command to divide a long 
+\family sans 
+Itemize
+\family default 
+ environment into 3 columns.
+ It adds some LaTeX commands to the online version, the so-called 
+\begin_inset Quotes eld
+\end_inset 
+
+Evil Red Text
+\begin_inset Quotes erd
+\end_inset 
+
+ that some so vehemently oppose.
+ Without it, however, that footnote takes up over two pages, most of which
+ is empty space.
+ This is an example of permitting a little ugliness in the online version
+ to get the printed version to look right.
+\end_deeper 
+\layout Enumerate
+
+When in doubt, compromise.
+\begin_deeper 
+\layout Standard
+
+When in doubt, use good judgement.
+\end_deeper 
+\layout Subsubsection
+
+Semantics
+\layout Enumerate
+
+You are 
+\begin_inset Quotes eld
+\end_inset 
+
+we
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\begin_deeper 
+\layout Standard
+
+When you speak, you speak for the entire LyX Team, so use 
+\begin_inset Quotes eld
+\end_inset 
+
+we
+\begin_inset Quotes erd
+\end_inset 
+
+ instead of 
+\begin_inset Quotes eld
+\end_inset 
+
+I
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\end_deeper 
+\layout Enumerate
+
+The reader is 
+\begin_inset Quotes eld
+\end_inset 
+
+you
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\begin_deeper 
+\layout Standard
+
+Whenever you want to say something to the reader, use 
+\begin_inset Quotes eld
+\end_inset 
+
+you,
+\begin_inset Quotes erd
+\end_inset 
+
+ not some contorted construction to avoid being too informal.
+ 
+\end_deeper 
+\layout Enumerate
+
+Use the term 
+\begin_inset Quotes eld
+\end_inset 
+
+mouse
+\begin_inset Quotes erd
+\end_inset 
+
+ for both the physical pointing object (mouse, joystick, touch pad, track
+ ball, etc.) and the mouse cursor which the physical object moves about the
+ screen.
+\layout Enumerate
+
+Use the term 
+\begin_inset Quotes eld
+\end_inset 
+
+cursor
+\begin_inset Quotes erd
+\end_inset 
+
+ for the little blinking vertical bar that indicates where text can/will
+ appear next.
+\layout Enumerate
+
+When in doubt, compromise.
+\begin_deeper 
+\layout Standard
+
+When in doubt, use good judgement.
+\end_deeper 
+\layout Subsubsection
+
+
+\begin_inset LatexCommand \label{sec:quote}
+
+\end_inset 
+
+Quoting Yourself and Others
+\layout Standard
+
+In some cases, you'll have something to say, an opinion of yours.
+ Since this is your opinion, you're not speaking for the LyX Team.
+ You have so much to say, in fact, that it won't fit into a Personal Note
+ or an Author's Note.
+ In these cases you want to quote yourself.
+\layout Standard
+
+Any time you wish to quote someone, be it yourself or someone else, there
+ are standard rules one follows.
+ Every language has its own rules.
+ You should follow the rules that apply to the language of the document
+ to which you are contributing.
+ 
+\layout Standard
+
+This creates a problem for the primary documentation.
+ The primary documentation is written in English, yet the contributors come
+ from many countries.
+ The quoting rules for English (well, American English, at least) are outlined
+ in the following 
+\family sans 
+Figure\SpecialChar ~
+Float
+\family default 
+, for your convenience.
+ Read them if you need to.
+\layout Standard
+
+
+\begin_inset Float figure
+placement htbp
+wide false
+collapsed true
+
+\layout Standard
+
+Quoting rules for English:
+\layout Itemize
+
+The body of the quote belongs in a 
+\family sans 
+Quotation
+\family default 
+ environment.
+\layout Itemize
+
+The sentences prior to the quote should flow logically and smoothly into
+ the quote.
+\layout Itemize
+
+The sentences immediately following the quote should continue the flow of
+ the text.
+\layout Itemize
+
+You must, 
+\emph on 
+must
+\emph default 
+ credit the original author of the quote in the sentences immediately before
+ or after the quote.
+\layout Itemize
+
+Crediting the original author of the quote should not, however, disrupt
+ the flow of the text.
+\layout Itemize
+
+If you omit text from the beginning of the first sentence in the quote,
+ the quote must start with the text 
+\begin_inset Quotes eld
+\end_inset 
+
+[\SpecialChar \ldots{}
+]
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ This is an ellipsis in square brackets.
+\layout Itemize
+
+If you omit text from the end of the last sentence in the quote, the quote
+ must end with the text 
+\begin_inset Quotes eld
+\end_inset 
+
+[\SpecialChar \ldots{}
+]
+\begin_inset Quotes erd
+\end_inset 
+
+ followed by the sentence's punctuation mark.
+\layout Itemize
+
+If you omit any text from the middle of the quote, be it whole sentences
+ or parts of sentences, replace it with the text 
+\begin_inset Quotes eld
+\end_inset 
+
+[\SpecialChar \ldots{}
+]
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\layout Itemize
+
+The quote must be grammatically correct.
+ 
+\begin_deeper 
+\layout Itemize
+
+If the original is wrong, you must correct it.
+\layout Itemize
+
+If omitting part of the quote 
+\begin_inset Quotes eld
+\end_inset 
+
+breaks
+\begin_inset Quotes erd
+\end_inset 
+
+ it, you must correct the problem.
+\layout Itemize
+
+For missing words (e.\SpecialChar ~
+g.\SpecialChar ~
+
+\begin_inset Quotes eld
+\end_inset 
+
+the
+\begin_inset Quotes erd
+\end_inset 
+
+ goes missing), place the word in square brackets, 
+\begin_inset Quotes eld
+\end_inset 
+
+[\SpecialChar \ldots{}
+]
+\begin_inset Quotes erd
+\end_inset 
+
+ and insert in the quote where needed.
+\layout Itemize
+
+For mangled word order, correct the mangled text, following it with the
+ text 
+\begin_inset Quotes eld
+\end_inset 
+
+[sic]
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\end_deeper 
+\layout Itemize
+
+Spelling in the quote must be correct.
+ Correct any misspelled words and place the text 
+\begin_inset Quotes eld
+\end_inset 
+
+[sic]
+\begin_inset Quotes erd
+\end_inset 
+
+ after the corrected word.
+\layout Itemize
+
+Back-to-back bracket blocks merge together.
+ Example: 
+\begin_inset Quotes eld
+\end_inset 
+
+[\SpecialChar \ldots{}
+][the]
+\begin_inset Quotes erd
+\end_inset 
+
+ is wrong.
+ It should be 
+\begin_inset Quotes eld
+\end_inset 
+
+[\SpecialChar \ldots{}
+the]
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\layout Itemize
+
+If you correct the spelling in 2 or more consecutive words, you can get
+ away with one 
+\begin_inset Quotes eld
+\end_inset 
+
+[sic]
+\begin_inset Quotes erd
+\end_inset 
+
+ after the last mistake.
+\end_inset 
+
+
+\layout Subsubsection
+
+Coverage
+\layout Standard
+
+When describing a new feature or 
+\family typewriter 
+*.layout
+\family default 
+ file, be sure to:
+\layout Enumerate
+
+Be 
+\emph on 
+clear, concise, 
+\emph default 
+and 
+\emph on 
+to the point
+\emph default 
+.
+ KISS = 
+\begin_inset Quotes eld
+\end_inset 
+
+Keep It Short and Sweet
+\begin_inset Quotes erd
+\end_inset 
+
+ (or, 
+\begin_inset Quotes eld
+\end_inset 
+
+Keep It Simple, Stupid!
+\begin_inset Quotes erd
+\end_inset 
+
+)
+\begin_deeper 
+\layout Itemize
+
+Do 
+\emph on 
+not
+\emph default 
+ write paragraph after paragraph of verbage.
+ 
+\layout Itemize
+
+Get to the point.
+\layout Itemize
+
+Take a look at the manual for a commercial word processor --- it's a fine
+ example of how 
+\series bold 
+NOT
+\series default 
+ to write documentation.
+ It's all pithy, substanceless verbage, and its 
+\emph on 
+utterly useless!
+\emph default 
+ 
+\end_deeper 
+\layout Enumerate
+
+Avoid being pedantic like The Plague!
+\layout Enumerate
+
+In the same vein, don't write more than you have to.
+ You're not working in a vacuum --- refer freely to other parts of the manual
+ (and other parts of other manuals).
+ Even if that 
+\begin_inset Quotes eld
+\end_inset 
+
+other part of the manual
+\begin_inset Quotes erd
+\end_inset 
+
+ is incomplete or empty, refer to it.
+ Someone will fill it in eventually.
+\layout Enumerate
+
+On the other hand, BE THOROUGH!
+\begin_deeper 
+\layout Enumerate
+
+You are documenting 
+\emph on 
+features
+\emph default 
+, not widgets, not how the source code is organized.
+\layout Enumerate
+
+Group by feature, not by widget.
+\layout Enumerate
+
+Stay on topic --- one 
+\family sans 
+Section
+\family default 
+ should cover 
+\emph on 
+one
+\emph default 
+ feature.
+ Use 
+\family sans 
+Subsection
+\family default 
+s and further subdivisions to group things if you're documenting several
+ related features in a single 
+\family sans 
+Section
+\family default 
+.
+\layout Enumerate
+
+Describe EVERYTHING related to that feature, no matter where it is.
+\begin_deeper 
+\layout Enumerate
+
+Example: Paragraph Indenting.
+ Several popups control its behavior.
+ You would document 
+\emph on 
+all
+\emph default 
+ of this: which popups control it, when you use which setting on which popup
+ to do which operation, et cetera.
+\layout Enumerate
+
+Note from 
+\noun on 
+John Weiss
+\noun default 
+: 
+\newline 
+I've had people only document one popup --- literally.
+ This added off-topic information and only described half of the feature,
+ since other menus, popups, and even unbound functions contained additional
+ stuff.
+\newline 
+I got 
+\emph on 
+really
+\emph default 
+ cranky when that happens, because it means 
+\emph on 
+I 
+\emph default 
+ended up fixing it.
+ Bad help is worse than no help at all.
+\begin_deeper 
+\layout Standard
+
+These remarks still hold true: you'll piss of the DocTeam editor if you
+ do things wrong, because he'll have to fix your mistakes.
+\end_deeper 
+\end_deeper 
+\layout Enumerate
+
+Remember, there are people who will reference 
+\emph on 
+your
+\emph default 
+ section, just as you're referencing someone else's.
+ You do want what you write to be useful, don't you?
+\end_deeper 
+\layout Enumerate
+
+When in doubt, compromise.
+\begin_deeper 
+\layout Standard
+
+When in doubt, use good judgement.
+\end_deeper 
+\layout Subsubsection
+
+NEVER NEVER 
+\emph on 
+NEVER EVER
+\emph default 
+ Treat the Reader as if She is Stupid
+\layout Enumerate
+
+No dumbing-down.
+\layout Enumerate
+
+No talking down to the reader.
+\layout Enumerate
+
+The reader is smart enough to know what a mouse is.
+\layout Enumerate
+
+The reader is smart enough to know how to use a keyboard, including the
+ 
+\family sans 
+Shift-
+\family default 
+, 
+\family sans 
+Control-
+\family default 
+, and 
+\family sans 
+Meta-
+\family default 
+ keys.
+ (The introduction of most of the manuals takes care of the 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Meta-
+\family default 
+ is the 
+\family sans 
+Alt-
+\family default 
+ key
+\begin_inset Quotes erd
+\end_inset 
+
+ issue, so you don't need to.)
+\layout Enumerate
+
+The reader is smart enough to know that 
+\begin_inset Quotes eld
+\end_inset 
+
+at the cursor
+\begin_inset Quotes erd
+\end_inset 
+
+ means 
+\begin_inset Quotes eld
+\end_inset 
+
+where the text cursor is sitting right now, in the buffer currently visible.
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\size small 
+(Anything more than the word 
+\begin_inset Quotes eld
+\end_inset 
+
+cursor
+\begin_inset Quotes erd
+\end_inset 
+
+ is, IMO, superfluous and wll be deleted .
+ So, save yourself the typing, save the editor the cutting, and save the
+ reader the strain of sifting through extra verbage that adds no content.)
+\layout Enumerate
+
+Rule of thumb: the reader is not an imbecile.
+ The reader is merely lost; point them in the right direction, and they
+ can take it from there.
+\layout Subsection
+
+Tips for the English Version
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:english-only}
+
+\end_inset 
+
+When contributing to the primary --- i.\SpecialChar ~
+e.\SpecialChar ~
+the English language version ---
+ of the LyX manuals, keep the following in mind.
+\layout Subsubsection
+
+Write as if You're Talking with a Friend.
+ 
+\layout Enumerate
+
+Think that way when you write.
+ Play the dialogue in your mind.
+\layout Enumerate
+
+Be as informal as you please (without being rude).
+\layout Subsubsection
+
+AVOID the Passive Voice
+\layout Enumerate
+
+No: 
+\begin_inset Quotes eld
+\end_inset 
+
+It is felt that this name best explains the command's purpose.
+\begin_inset Quotes erd
+\end_inset 
+
+ We know full well who wrote the command: 
+\begin_inset Quotes eld
+\end_inset 
+
+The LyX Team felt ...
+\begin_inset Quotes erd
+\end_inset 
+
+ Or, better yet, 
+\begin_inset Quotes eld
+\end_inset 
+
+We felt that ...
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Enumerate
+
+Things don't happen by magic - somebody or something did it.
+ Only politicians use the passive voice to cover up who did something.
+ If LyX reformats a paragraph, write, 
+\begin_inset Quotes eld
+\end_inset 
+
+LyX reformatted the paragraph.
+\begin_inset Quotes erd
+\end_inset 
+
+ If 
+\family typewriter 
+ispell
+\family default 
+ makes changes, write, 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+ispell
+\family default 
+ changes the document.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\begin_deeper 
+\layout Standard
+
+Rule of thumb: any sentence you can express as, 
+\begin_inset Quotes eld
+\end_inset 
+
+It was done by foo,
+\begin_inset Quotes erd
+\end_inset 
+
+ you can express as, 
+\begin_inset Quotes eld
+\end_inset 
+
+Foo did it.
+\begin_inset Quotes erd
+\end_inset 
+
+ Much nicer.
+\end_deeper 
+\layout Enumerate
+
+I know it's tough.
+ We all hear way, way too much garbage English on the TV every day in the
+ passive voice.
+ Some people think it makes speech better.
+ It doesn't.
+ It makes speech baroque, if not outright byzantine.
+ With a little effort, you can wean yourself off of it.
+\layout Enumerate
+
+I 
+\emph on 
+will make you rewrite
+\emph default 
+ anything in the passive voice.
+ It's awkward and hard to read.
+\layout Enumerate
+
+Note to non-Americans:
+\begin_deeper 
+\layout Standard
+
+Using passive voice is generally considered bad style in the U.\SpecialChar ~
+S.\SpecialChar ~
+as it is
+ too easy to obfuscate your words with it.
+ It also bloats sentences, often unnecessarily.
+\end_deeper 
+\layout Subsubsection
+
+Short Sentences.
+ Short Paragraphs.
+\layout Standard
+
+In English, there is a grammatical error known as the 
+\begin_inset Quotes eld
+\end_inset 
+
+run-on sentence.
+\begin_inset Quotes erd
+\end_inset 
+
+ The classic example of a run-on sentence is 7 clauses strung together with
+ the word 
+\begin_inset Quotes eld
+\end_inset 
+
+and.
+\begin_inset Quotes erd
+\end_inset 
+
+ There are, however, less obvious run-on sentences, ones using too many
+ subordinate clauses.
+ Such sentences may look elegant because they are complex.
+ However, they are also extremely difficult to read because they are so
+ complex.
+\layout Standard
+
+In general, stick to short sentences in written English.
+ Getting rid of passive voice (
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \ldots{}
+was done by\SpecialChar \ldots{}
+
+\begin_inset Quotes erd
+\end_inset 
+
+) shortens and simplifies them.
+ Hacking apart sentences with many dependent clauses is another way to shorten
+ sentences.
+ There are ways to do this yet still have a smooth-flowing paragraph.
+\layout Standard
+
+While I'm talking about paragraphs, I'll apply the 
+\begin_inset Quotes eld
+\end_inset 
+
+shorter is better
+\begin_inset Quotes erd
+\end_inset 
+
+ motto to them, as well.
+ At the time I started with the manuals (and this Style Sheet), I didn't
+ pay too much attention to paragraph size.
+ I've since become a big proponent of short paragraphs, with one idea per
+ paragraph.
+ While long, flowing, multi-concept paragraphs can be nice in novels, we're
+ writing manuals.
+ Our goal is rapid information location and comprehension, not a literary
+ prize.
+\layout Standard
+
+There is a single exception to the short sentence, short paragraph rule.
+ Particularly complex ideas may need more 
+\begin_inset Quotes eld
+\end_inset 
+
+breathing room.
+\begin_inset Quotes erd
+\end_inset 
+
+ However, you shouldn't encounter such complex ideas often when documenting
+ LyX.
+ Try to keep things short, and use your judgement as needed.
+\layout Standard
+
+To reiterate, yet again, something I said before:
+\layout Quote
+
+When in doubt, compromise.
+\layout Quote
+
+When in doubt, use good judgement.
+\layout Standard
+
+Hopefully, you've got the idea (grin).
+\layout Section
+
+Translations
+\layout Subsection
+
+Rules of the Translating Trade
+\layout Standard
+
+While translating anything, there are certain 
+\begin_inset Quotes eld
+\end_inset 
+
+tools of the trade
+\begin_inset Quotes erd
+\end_inset 
+
+ you should use.
+ They will help you greatly.
+\layout Subsubsection
+
+Translate one paragraph at a time.
+\layout Standard
+
+Most people translate word by word.
+ Clearly, you lose all context if you do that.
+ A word may have multiple meanings.
+ You can't tell which unless you look at the rest of the sentence.
+\layout Standard
+
+There is another level to the context issue, however.
+ Your dictionary may translate multiple English words the same way.
+ All those words mean 
+\emph on 
+roughly
+\emph default 
+ the same thing.
+ Each one, however, covers a different shade of meaning, a different mood
+ or intent.
+ It is often difficult to resolve those shades of meaning in the context
+ of even one sentence.
+ A paragraph, however, will provide that context.
+\layout Subsubsection
+
+You will not translate it correctly on the first try.
+\layout Standard
+
+Alright, I admit that you may be able to translate some of the sentences
+ at first glance.
+ If you know a language well, you may even understand over half of the text.
+ Nevertheless, overconfidence can lead you astray.
+ There will be some sentences, no matter how few, that will simply confound
+ you.
+\layout Standard
+
+It is generally a good idea to make multiple passes over a paragraph you're
+ translating.
+ Even if you translate the entire paragraph on the first pass, make a second
+ one.
+ You'll often improve upon your first attempt.
+\layout Subsubsection
+
+When in doubt, write down all of the meanings for a word.
+\layout Standard
+
+You can often translate tricky parts of a text using the context of the
+ surrounding sentences.
+ So, if you hit a word or phrase you don't know, translate it more than
+ one way.
+ Picking the most likely translations, summarize them in one to three words
+ in place of an 
+\begin_inset Quotes eld
+\end_inset 
+
+exact
+\begin_inset Quotes erd
+\end_inset 
+
+ translation.
+ 
+\layout Subsubsection
+
+Using context, fix the meanings on the next pass.
+\layout Standard
+
+This is where your multiple translations of a single word become useful.
+ Using the other sentences you translated, you can now translate that mystery--s
+entence without reconsulting your dictionary.
+\layout Subsubsection
+
+Fix the grammar only after you've finished translating the sentence.
+\layout Standard
+
+If there's a mystery phrase in the middle of a sentence, you can't translate
+ the entire sentence.
+ Why grammatically rearrange the words you translated already? You may need
+ to restructure the sentence a second time once you figure out how to translate
+ that mystery phrase.
+ Better to wait until you've completely translated the sentence to clean
+ up its grammar.
+ That way, you do so only once.
+\layout Subsubsection
+
+If you can't translate it, skip it and come back to it on the next pass.
+\layout Standard
+
+Remember the earlier discussion of context and its immense usefulness? There
+ is no sin in making multiple passes over a tricky passage.
+\layout Subsubsection
+
+Translate the meaning first.
+ The rest can wait.
+\layout Standard
+
+The information content of the text under translation is the most important
+ part.
+ This is especially important for a manual, where the information 
+\emph on 
+is the only
+\emph default 
+ important part of the original document.
+ Lose that, and you lose the very point of performing the translation.
+\layout Subsection
+
+Tips for the Translators
+\layout Standard
+
+Those of you contributing to a translation of the LyX manuals must follow
+ a modified set of rules.
+ The first few rules are analogous to those in section\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:english-only}
+
+\end_inset 
+
+.
+ There are additional rules and regulations that follow those first few.
+ 
+\layout Subsubsection
+
+Write as if you are explaining LyX to a colleague you know well.
+\layout Enumerate
+
+Think that way when you write.
+ Play the dialogue in your mind.
+\layout Enumerate
+
+Use a conversational style in your writing.
+ Pretend you are teaching LyX to a colleague you know well.
+\layout Enumerate
+
+Use a style that is polite without being too formal.
+ If, in your culture, informal language is appropriate to use with a colleague,
+ use informal speech in the translation of the manual.
+\layout Subsubsection
+
+AVOID Snobby, Academic, Specialized, or 
+\begin_inset Quotes eld
+\end_inset 
+
+Dead
+\begin_inset Quotes erd
+\end_inset 
+
+ Writing.
+ 
+\layout Standard
+
+In English, the passive voice appears formal, dry, barren.
+ It also often adds unnecessary complexity.
+ In other langauges, however, this is not the case.
+ There is nothing wrong with passive voice, and people use it frequently
+ in everyday conversation.
+ Nevertheless, your translation of the LyX manuals must avoid 
+\begin_inset Quotes eld
+\end_inset 
+
+dead
+\begin_inset Quotes erd
+\end_inset 
+
+ writing.
+\layout Standard
+
+In Germany, there is a magazine known as 
+\begin_inset Quotes gld
+\end_inset 
+
+Der Spiegel.
+\begin_inset Quotes grd
+\end_inset 
+
+ The writing in it is so complex, it is extremely difficult for non-native
+ German speakers to understand.
+ While sophisticated, the writing style of 
+\begin_inset Quotes gld
+\end_inset 
+
+Der Spiegel
+\begin_inset Quotes grd
+\end_inset 
+
+ is not what a German uses in everyday conversation.
+ Nor is the writing style for a Russian mathematics journal.
+ Such specialized or overly-sophisticated styles are 
+\begin_inset Quotes eld
+\end_inset 
+
+dead
+\begin_inset Quotes erd
+\end_inset 
+
+ in the sense that they are seldom used by normal people in everyday speech.
+\layout Standard
+
+We who write the LyX manuals, original or translated, seek to 
+\emph on 
+inform
+\emph default 
+.
+ If we write in a style only a few people use, and use seldomly, we will
+ fail to inform.
+ Use a writing style that mirrors everyday speech (without being vulgar,
+ of course).
+ 
+\layout Subsubsection
+
+Keep the Writing Simple.
+\layout Standard
+
+For the English version, I wrote, 
+\begin_inset Quotes eld
+\end_inset 
+
+Use short sentences and short paragraphs.
+\begin_inset Quotes erd
+\end_inset 
+
+ What if, however, short sentences and paragraphs are something only children
+ use in your language? What if, in yet another language, short sentences
+ imply rudeness? Naturally, you would not want to use them in your translation.
+\layout Standard
+
+Nevertheless, the translations of the LyX manuals should be as clear as
+ the originals.
+ So, for our international colleagues, we apply this rule: Keep your sentences
+ and paragraphs as short as makes sense.
+\layout Standard
+
+Remember: we're translating manuals here, folks.
+ Our goal is rapid information location and comprehension, not a literary
+ prize.
+ Try to keep your writing concise yet smooth-flowing.
+ And use your judgement as needed:
+\layout Quote
+
+When in doubt, compromise.
+\layout Quote
+
+When in doubt, use good judgement.
+\layout Subsubsection
+
+Translators must follow the Style Sheet, too!
+\layout Standard
+
+Everything in this manual --- 
+\emph on 
+except section\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:english-only}
+
+\end_inset 
+
+
+\emph default 
+ --- applies to every LyX documenter, no matter what the language.
+\layout Subsubsection
+
+Translators must read the Style Sheet Supplement for their language.
+\layout Standard
+
+For every translation project, there is a Supplement to the Style Sheet.
+ It will be named:
+\layout Quote
+
+
+\family typewriter 
+DocStyle_Supplement_<cn>.lyx
+\layout Standard
+
+\SpecialChar \ldots{}
+where 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+<cn>
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ is your language's two-letter locale code.
+ The Translation Project Chief for your language wrote this.
+ If he hasn't, pester him to do so! <
+\emph on 
+wink!
+\emph default 
+>
+\layout Subsubsection
+
+The English versions of the manuals are not Sacred Text.
+\layout Standard
+
+You do not need to translate everything word for word.
+ In fact, you shouldn't.
+ Keep to the spirit of the originals, not the letter.
+ Be as creative as you want, as long as you 
+\emph on 
+accurately
+\emph default 
+ and 
+\emph on 
+completely
+\emph default 
+ convey all of the information contained in the English versions.
+\layout Subsubsection
+
+Any information in the LyX manuals must also be in the translations.
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:accuracy}
+
+\end_inset 
+
+This falls under translating the orignals accurately and completely.
+ 
+\layout Itemize
+
+Omitting any feature description is
+\emph on 
+ stricly forbidden
+\emph default 
+.
+\layout Itemize
+
+Misrepresenting or misdescribing any LyX feature or operation 
+\emph on 
+must be avoided
+\emph default 
+.
+\layout Itemize
+
+The translation 
+\emph on 
+cannot
+\emph default 
+ outpace the original.
+\newline 
+If no one has documented new feature in the primary LyX manuals (i.\SpecialChar ~
+e.\SpecialChar ~
+the English
+ versions), do not do so in the translations.
+ If you're really looking for something to do, either:
+\begin_deeper 
+\layout Itemize
+
+\SpecialChar \ldots{}
+focus on translating something you haven't yet,
+\newline 
+OR
+\layout Itemize
+
+\SpecialChar \ldots{}
+update or repair the primary manual.
+\layout Standard
+
+If you cannot or do not want to do one of the above, then take a break.
+ Relax.
+ Wait for the main manuals to catch up before translating anything else.
+\end_deeper 
+\layout Subsubsection
+
+What you cannot translate, you may omit (usually).
+\layout Standard
+
+Prepositions, idioms, metaphors, slang, Oh My! There's a jungle of potentially
+ untranslatable text you may face.
+ Happily, none of these untranslatables are essential to the original text\SpecialChar \ldots{}
+
+ usually.
+ If you can't translate a phrase or two, try omitting them.
+ If the rest of the paragraph still makes sense, then don't worry about
+ the omission.
+\layout Standard
+
+There may be special cases where omitting part of a sentence or paragraph
+ violates rule\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:accuracy}
+
+\end_inset 
+
+.
+ In those cases, 
+\emph on 
+do not omit!
+\emph default 
+ You must try and translate those tricky spots.
+\layout Subsubsection
+
+Translators may add their own fluff to the information content.
+\layout Standard
+
+After you do strip away all of the idioms, metaphors, slang, humor, and
+ other 
+\begin_inset Quotes eld
+\end_inset 
+
+expendable text,
+\begin_inset Quotes erd
+\end_inset 
+
+ you may find that your translated manual is dull and dry.
+ Why not add your own fluff? Add text that makes the manual a pleasure to
+ read, that engages the reader.
+ It may take the form of humor, or metaphors, or sayings.
+ Whatever you add, it should be 
+\begin_inset Quotes eld
+\end_inset 
+
+in context.
+\begin_inset Quotes erd
+\end_inset 
+
+ It should not clash with the explanation of LyX features and functions.
+\layout Subsection
+
+For Translation Project Chiefs
+\layout Subsubsection
+
+The First Is In Charge
+\layout Standard
+
+If you were the first person to start translating the manuals, you're the
+ LyXDoc Translation Project Chief for your language.
+ If you are the 
+\emph on 
+only
+\emph default 
+ person translating the LyXDocs, that automatically makes you the Translation
+ Project Chief.
+\layout Standard
+
+Amongst other things, that means that you must read this section and perform
+ the tasks described here.
+\layout Standard
+
+If you are a member of a LyX Documentation Translation Team, but 
+\emph on 
+are not
+\emph default 
+ its Chief, you may stop reading.
+ The remainder of this section will be of no interest to you.
+ If you came to the Style Sheet from the Supplement for your language, you
+ may return to it.
+\layout Standard
+
+If you have not read the Style Sheet Supplement for your language, you should
+ read it now.
+ 
+\layout Subsubsection
+
+Read the Style Sheet
+\layout Standard
+
+No documenter is excused from following the Style Sheet, not even a Translation
+ Project Chief.
+\layout Standard
+
+Actually, it is 
+\emph on 
+especially
+\emph default 
+ important that the Translation Project Chiefs read the Style Sheet.
+\layout Subsubsection
+
+Make your translators read the Style Sheet
+\layout Standard
+
+No documenter is excused from following the Style Sheet.
+\layout Standard
+
+Since your translation team is translating, they know 
+\emph on 
+some
+\emph default 
+ English, at least.
+ Therefore, they should be able to read the Style Sheet.
+\layout Subsubsection
+
+Provide a 
+\begin_inset Quotes eld
+\end_inset 
+
+Supplement
+\begin_inset Quotes erd
+\end_inset 
+
+ to this Style Sheet
+\layout Standard
+
+There are parts of this Style Sheet that are English-specific.
+ I have tried to provide a general, language-independent description of
+ certain details in this section.
+ Unfortunately, that general description doesn't cover the specifics of
+ each language.
+ 
+\layout Standard
+
+That's where you, as head of a LyXDoc Translation Team, come in.
+\layout Standard
+
+Every Translation Team Chief is 
+\emph on 
+required
+\emph default 
+ to write a Supplement to the official Documentation Style Sheet, with specifics
+ issues affecting your language.
+ (You are, after all, the LyX Team expert on your native tongue.) Follow
+ these guidelines when writing the Supplement:
+\layout Enumerate
+
+Name the file:
+\newline 
+
+\family typewriter 
+DocStyle_Supplement_<cn>.lyx
+\family default 
+
+\newline 
+\SpecialChar \ldots{}
+where 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+<cn>
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ is the two-letter code for your language.
+ This is the same two-letter code that is part of the filenames for the
+ translated manuals.
+ Example: 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+_de
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ for German, 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+_sv
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ for Swedish, and 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+_ru
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ for Russian.
+\layout Enumerate
+
+Do not worry about where the file goes.
+ The CVS maintainers will locate all documentation and Style Sheet Supplements
+ in an appropriate place.
+\layout Enumerate
+
+Document Properties: 
+\begin_deeper 
+\layout Itemize
+
+For consistency, use the same document class and other document properties
+ as the Style Sheet.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Specifically, check the settings in the 
+\family sans 
+Document Layout
+\family default 
+ popup.
+ Use those in your Supplement.
+\end_inset 
+
+
+\layout Itemize
+
+Exceptions: Use margins, indentation/paragraph separation, language, and
+ encoding appropriate for your language.
+\end_deeper 
+\layout Enumerate
+
+The title of the Supplement: 
+\begin_deeper 
+\layout Itemize
+
+The title will use the 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Title
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ paragraph environment.
+ In your native tongue, the title will read:
+\begin_deeper 
+\layout Standard
+
+
+\family typewriter 
+Documentation Project Style Sheet:
+\newline 
+Supplement for the <foo> Translation Project
+\layout Standard
+
+(Replace 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+<foo>
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ with the name of your language.)
+\end_deeper 
+\layout Itemize
+
+If, in your language, 
+\begin_inset Quotes eld
+\end_inset 
+
+supplement
+\begin_inset Quotes erd
+\end_inset 
+
+ translates into 
+\begin_inset Quotes eld
+\end_inset 
+
+appendix,
+\begin_inset Quotes erd
+\end_inset 
+
+ we have a problem.
+ In English, 
+\begin_inset Quotes eld
+\end_inset 
+
+Supplement
+\begin_inset Quotes erd
+\end_inset 
+
+ and 
+\begin_inset Quotes eld
+\end_inset 
+
+Appendix
+\begin_inset Quotes erd
+\end_inset 
+
+ have somewhat different meanings.
+ An appendix is an extra part of a document.
+ A supplement is an extra document.
+ 
+\begin_deeper 
+\layout Standard
+
+Choose a replacement word accordingly.
+ Whatever you choose to replace 
+\begin_inset Quotes eld
+\end_inset 
+
+Supplement,
+\begin_inset Quotes erd
+\end_inset 
+
+ it must not have the same translation as the word 
+\begin_inset Quotes eld
+\end_inset 
+
+appendix.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\end_deeper 
+\end_deeper 
+\layout Enumerate
+
+Below the title, in the 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Author
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ paragraph environment, place your name.
+\begin_deeper 
+\layout Standard
+
+There will be no abstract.
+\end_deeper 
+\layout Enumerate
+
+The first 
+\family sans 
+Section
+\family default 
+ of the Supplement:
+\begin_deeper 
+\layout Standard
+
+The first thing you will do is strongly yet politely encourage the reader
+ to stop reading the 
+\begin_inset Quotes eld
+\end_inset 
+
+Supplement
+\begin_inset Quotes erd
+\end_inset 
+
+ and go read the Style Sheet.
+ The reader should not return to the 
+\begin_inset Quotes eld
+\end_inset 
+
+Supplement
+\begin_inset Quotes erd
+\end_inset 
+
+ until he has read 
+\emph on 
+and
+\emph default 
+ understood the Style Sheet proper.
+\end_deeper 
+\layout Subsubsection
+
+Keep the Supplement Succinct
+\layout Standard
+
+This Style Sheet is already very detailed.
+ DocTeam members all have a lot to read.
+ We don't want to place an extra burden on translators.
+ Therefore, keep the Supplement as short as you can without losing information.
+\layout Subsubsection
+
+Font Issues
+\layout Standard
+
+The second 
+\family sans 
+Section
+\family default 
+ will be about font issues\SpecialChar \ldots{}
+ if you have any.
+ Not all Translation Project Chiefs will need to deal with this issue.
+ The fonts:
+\layout Itemize
+
+
+\family typewriter 
+Typewriter
+\layout Itemize
+
+
+\family sans 
+Sans Serif
+\layout Itemize
+
+Roman
+\newline 
+
+\emph on 
+Emphasized (actually Italics)
+\layout Itemize
+
+
+\bar under 
+Underlined
+\layout Itemize
+
+
+\series bold 
+Bold
+\layout Itemize
+
+
+\noun on 
+Noun (actually Small Caps)
+\layout Standard
+
+\SpecialChar \ldots{}
+certainly exist for all languages that use the Roman alphabet.
+ Do they exist, however, for Greek? How about Cyrillic? These different
+ fonts almost certainly do not exist for Devanagri, Chinese, Korean, Japanese,
+ Hebrew, Arabic, and other scripts.
+ 
+\layout Standard
+
+There will be some languages for which following the font-scheme specified
+ in this Style Sheet may not be possible.
+ If you are the Translation Project Chief for such a language, you have
+ extra work.
+\layout Standard
+
+In the font section of the Supplement, you will provide a new typographic
+ style, designed specifically for your writing system.
+ For consistency, the title of this section in every Supplement should translate
+ into English as 
+\begin_inset Quotes eld
+\end_inset 
+
+fonts.
+\begin_inset Quotes erd
+\end_inset 
+
+ Before adding anything to this section, however, determine what this new
+ typographic style will look like.
+ Stick to the font specifications in this Style Sheet as best you can, whenever
+ you can.
+ When you cannot, use the following suggestions:
+\layout Itemize
+
+Guidelines for 
+\begin_inset Quotes eld
+\end_inset 
+
+translating
+\begin_inset Quotes erd
+\end_inset 
+
+ fonts, 
+\newline 
+or
+\newline 
+What to do when a font doesn't exist:
+\begin_deeper 
+\layout List
+\labelwidthstring MMMMMMMM
+
+Roman Use the font that typesetters in your language use for printing books,
+ manuals, etc.
+ This will typically be the default font LyX (and LaTeX) uses in your language.
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\noun on 
+Noun\SpecialChar ~
+Style
+\noun default 
+ This is for people's names.
+ If there is special font for names in your alphabet/writing system, use
+ it in place of this.
+ Otherwise, write names in the default font, typeset according to the rules
+ of your language.
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\emph on 
+Emphasized
+\emph default 
+ Use the font with which your language normally emphasizes text.
+\begin_deeper 
+\layout Standard
+
+Use a font that is different from your language's equivalent of 
+\series bold 
+Boldface
+\series default 
+.
+ In other words, your 
+\family sans 
+Section
+\family default 
+, 
+\family sans 
+Subsection
+\family default 
+ and similar headers will be in one typeface, perhaps 
+\series bold 
+Boldface
+\series default 
+, perhaps not.
+ Whatever that font is, avoid using it for 
+\emph on 
+Emphasized
+\emph default 
+ if at all possible!
+\end_deeper 
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\family typewriter 
+Typewriter
+\family default 
+ Pick up a computer program manual written in your language.
+ It will use a special typeface for filenames, for command names, program
+ names, and such.
+ Use that same font in place of 
+\family typewriter 
+Typewriter
+\family default 
+.
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\family sans 
+Sans\SpecialChar ~
+Serif
+\family default 
+ Pick any other font that is different from the ones you're using in place
+ of 
+\emph on 
+Emphasized
+\emph default 
+, 
+\series bold 
+Boldface
+\series default 
+, and 
+\family typewriter 
+Typewriter
+\family default 
+.
+ If you're unlucky, and your language's writing system doesn't have enough
+ fonts, use the same font you picked to replace 
+\family typewriter 
+Typewriter
+\family default 
+.
+ Only do this, however, if your alphabet/writing system has very few fonts
+ to pick from.
+\layout List
+\labelwidthstring MMMMMMMM
+
+
+\family sans 
+\bar under 
+U
+\bar default 
+nderlined\SpecialChar ~
+Sans\SpecialChar ~
+Serif
+\family default 
+ Don't worry about this one.
+\begin_deeper 
+\layout Standard
+
+If you use some special font on-screen to highlight the accelerator keys
+ for menus, buttons, and other widgets, you might want to mimic that in
+ the translations.
+ It is not required, however.
+ Therefore, if you can't mimic this typographic convention in your native
+ writing system, don't.
+\end_deeper 
+\end_deeper 
+\layout Standard
+
+Note that you may also want to describe fonts that your Translation Team
+ should 
+\emph on 
+never
+\emph default 
+ use.
+ For example, no contributer to the English/European versions may ever use
+ 
+\series bold 
+Boldface
+\series default 
+, as this is used for section-headings.
+ Since there are enough other fonts, we who use the Roman alphabet and its
+ variants can afford to omit 
+\series bold 
+Boldface
+\series default 
+.
+ 
+\layout Standard
+
+Once you have determined which fonts in your native writing system will
+ replace one or more of the above, propose it to the LyX Developer's Mailing
+ List.
+ You may receive valuable feedback this way.
+ If not, that's okay.
+ If no one can read your writing system, and therefore cannot comment, that's
+ also okay.
+ Go ahead and describe the typographic standard you created in the Supplement.
+ 
+\layout Standard
+
+Remember: stick to the font specifications in this Style Sheet as best you
+ can, whenever you can.
+\layout Subsubsection
+
+Quoting Style and the 
+\family sans 
+Quote
+\family default 
+ vs.
+ 
+\family sans 
+Quotation
+\family default 
+ Issue
+\layout Standard
+
+The next section of the Supplement will cover the issue of quoting.
+ Give it an appropriate title.
+\layout Standard
+
+One of the first things you should do in that section is resolve the following
+ issue:
+\layout Itemize
+
+Decide whether 
+\family sans 
+Quote
+\family default 
+ or 
+\family sans 
+Quotation
+\family default 
+ is the correct paragraph environment for your language.
+\layout Itemize
+
+In the Supplement, specify which one to use.
+\layout Standard
+
+English has its own typography and style for quoting others.
+ The Style Sheet describes that typography in section\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:quote}
+
+\end_inset 
+
+.
+ Your language also has a specific typography and style for quotations.
+ Describe that style in this section of the Supplement, too.
+ Naturally, you do not need to go overboard.
+ Section\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:quote}
+
+\end_inset 
+
+ of this Style Sheet is overly detailed for a good reason.
+ Authors of the primary LyX manuals are not necessarily native English speakers.
+ The members of your Translation Team, however, will all likely be native
+ speakers of your language.
+ Therefore, discuss proper quoting style of your native tongue to an appropriate
+ level of detail.
+\layout Subsubsection
+
+Translations of Style Sheet Terminology
+\layout Standard
+
+In the Supplement, you must provide a standard translation of certain key
+ phrases for the members of your Translation Team.
+ Place this in a section following the one about quotations.
+\layout Standard
+
+In particular, standardize the translations of the phrases: 
+\layout Itemize
+
+Note from 
+\noun on 
+<foo>:
+\layout Itemize
+
+
+\emph on 
+Author's Note:
+\layout Standard
+
+Do 
+\emph on 
+not
+\emph default 
+ change the typography of the 
+\begin_inset Quotes eld
+\end_inset 
+
+Personal Note
+\begin_inset Quotes erd
+\end_inset 
+
+ and 
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Note,
+\begin_inset Quotes erd
+\end_inset 
+
+ however.
+ Only provide a translation for the opening phrases.
+ Insist that the members of your Translation Team use these two tools correctly.
+\layout Standard
+
+While we are discussing proper use of the 
+\begin_inset Quotes eld
+\end_inset 
+
+Personal Note
+\begin_inset Quotes erd
+\end_inset 
+
+ and 
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Note
+\begin_inset Quotes erd
+\end_inset 
+
+ in translations, let's talk about a related problem.
+ The 
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Note
+\begin_inset Quotes erd
+\end_inset 
+
+ is meant to be a note from the author of a manual to the reader.
+ In the case of a translation, however, the translator is 
+\emph on 
+not
+\emph default 
+ the author! How then should a translator translate an 
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Note?
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+You, as Translation Project Chief, must decide.
+ You can forbid translation of pre-existing 
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Notes,
+\begin_inset Quotes erd
+\end_inset 
+
+ omitting them entirely instead.
+ You could tell your translators to read any 
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Note
+\begin_inset Quotes erd
+\end_inset 
+
+ they may encounter, understand it, then write their own 
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Note
+\begin_inset Quotes erd
+\end_inset 
+
+ about the situation, not as a translation but as a personal opinion.
+ You may decide on some other policy.
+\layout Standard
+
+Whatever you decide, codify your policy in its own 
+\family sans 
+Section
+\family default 
+ or 
+\family sans 
+Subsection
+\family default 
+ or whatever.
+ Place it near the section where you translated 
+\begin_inset Quotes eld
+\end_inset 
+
+Personal Note
+\begin_inset Quotes erd
+\end_inset 
+
+ and 
+\begin_inset Quotes eld
+\end_inset 
+
+Author's Note
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\layout Subsubsection
+
+Lost in Translation
+\layout Standard
+
+After describing all of the previous issues, create a new 
+\family sans 
+Section
+\family default 
+.
+ Give it the name, 
+\begin_inset Quotes eld
+\end_inset 
+
+Lost in Translation,
+\begin_inset Quotes erd
+\end_inset 
+
+  or something similar.
+\layout Standard
+
+In this section you will discuss any common English metaphors, humor, connotatio
+n, or other difficult to translate text.
+ Try to balance brevity and completeness.
+ Devote a 
+\family sans 
+Subsection
+\family default 
+ --- or even 
+\family sans 
+Subsubsection
+\family default 
+s --- to each specific issue.
+\layout Subsubsection
+
+\SpecialChar \ldots{}
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+Yes, we mean now.
+\begin_inset Quotes erd
+\end_inset 
+
+ \SpecialChar \ldots{}
+
+\layout Standard
+
+Throughout the manuals, the DocTeam has used the following sentences:
+\layout Quote
+
+If you haven't read the <
+\emph on 
+Foo
+\emph default 
+> manual, go read it.
+ Yes, we mean now.
+\layout Standard
+
+This sentence will be tricky to translate, since it contains non-translatable
+ connotations.
+ Therefore, create a
+\family sans 
+ Subsection
+\family default 
+ for this issue in your 
+\begin_inset Quotes eld
+\end_inset 
+
+Lost in Translation
+\begin_inset Quotes erd
+\end_inset 
+
+ section.
+ Present the 
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \ldots{}
+ Yes, we mean now\SpecialChar \ldots{}
+
+\begin_inset Quotes erd
+\end_inset 
+
+ sentences, then present a translation, along with any explanation you feel
+ necessary.
+\layout Standard
+
+Here's what those two sentences, sitting alone in their own paragraph, mean:
+\layout Standard
+
+The first sentence uses the English conditional followed by an imperative.
+ We, as the LyX team, are commanding the reader to go back to another manual.
+ For example, the 
+\emph on 
+Intro
+\emph default 
+ manual is a prerequisite for all of the other manuals.
+ The conditional clause preceeding the command means, 
+\begin_inset Quotes eld
+\end_inset 
+
+You do not need to perform this command twice.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+The second sentence adds force to the command.
+ Culturally, the imperative tense of a verb in English is not necessarily
+ forceful.
+ The way we wrote that command, 
+\begin_inset Quotes eld
+\end_inset 
+
+go read it,
+\begin_inset Quotes erd
+\end_inset 
+
+ is firm, yet polite.
+ The reader may choose to ignore it.
+ By following with, 
+\begin_inset Quotes eld
+\end_inset 
+
+Yes, we mean now,
+\begin_inset Quotes erd
+\end_inset 
+
+ we imply two things.
+ First, we add some 
+\begin_inset Quotes eld
+\end_inset 
+
+resistive force
+\begin_inset Quotes erd
+\end_inset 
+
+ to the command.
+ That second sentence reinforces the command, making it a bit harder to
+ ignore.
+ Second, the sentence itself implies a certain sense of urgency.
+ You cannot merely wait until later to fulfill that command.
+ The brief pragraph, and its sudden end, add still further subtle reinforcement
+ to the command, 
+\begin_inset Quotes eld
+\end_inset 
+
+go do the required reading before using this manual.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+Note that all of this commanding and reinforcing is nevertheless in a polite
+ format.
+ Furthermore, it is in a subtle form.
+ We are commanding the reader to do something, but in an indirect fashion.
+ This way, the reader does not feel like we are bullying him.
+\layout Subsubsection
+
+Firm Convincing vs.
+ Rudeness
+\layout Standard
+
+In the same part of the Supplement that you place the 
+\begin_inset Quotes eld
+\end_inset 
+
+\SpecialChar \ldots{}
+Yes, we mean now\SpecialChar \ldots{}
+
+\begin_inset Quotes erd
+\end_inset 
+
+ translation, discuss the English version's use of 
+\begin_inset Quotes eld
+\end_inset 
+
+firm convincing.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+You see, here in America, we often say that everything is permitted unless
+ explicitly banned by law.
+ As a result, manuals for computer software are frequently ignored and the
+ software subsequently blamed for not being 
+\begin_inset Quotes eld
+\end_inset 
+
+user-friendly.
+\begin_inset Quotes erd
+\end_inset 
+
+ This is where the use of 
+\begin_inset Quotes eld
+\end_inset 
+
+firm convincing
+\begin_inset Quotes erd
+\end_inset 
+
+ comes in.
+ 
+\layout Standard
+
+We who wrote the manuals added sentences insisting that the reader not ignore
+ certain parts of the documentation.
+ We wrote in a manner that was polite, yet firmly asserted that the user
+ was misusing the software if he did not read the manual correctly.
+ We did not, however, want to sound threatening, coercive, or bullying.
+\layout Standard
+
+In your culture, cajoling the reader into using the manuals correctly may
+ not be necessary.
+ It may, in fact, be outright rude.
+ Additionally, translating the firm-but-convincing bits may not work.
+ The translation may sound weird, or rude, or hostile.
+ Therefore, you and your translation team will face many sentences that
+ you cannot translate.
+\layout Standard
+
+You, the Translation Project Chief, must discuss this issue.
+ Try and find parts of the original manuals where some friendly but firm
+ convincing does not translate properly.
+ Use these cases as the basis for examples of the problem.
+ Be sure to then offer a solution (i.\SpecialChar ~
+e.\SpecialChar ~
+how you want such sentences translated.)
+ If stumped, ask for help on the LyX Developer's List.
+\layout Subsubsection
+
+Anything Else?
+\layout Standard
+
+You can add more sections to the Supplement if you need to discuss other
+ issues.
+ There may be policies or guidelines that you want to set for your Translation
+ Team.
+ Be careful, however! Keep the Supplement 
+\emph on 
+short
+\emph default 
+.
+ 
+\the_end

@@ -1,0 +1,4737 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass article
+\language english
+\inputencoding latin2
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language german
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Title
+
+Prùvodce programem LyX 
+\layout Author
+
+napsal Amir Karger a LyX Team
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Part
+
+Úvod
+\layout Section
+
+Vítejte v LyXu!
+\layout Standard
+
+Tento soubor je urèen v¹em, kteøí dopusud nesly¹eli o LaTeXu èi jej dobøe
+ neznají.
+ Ale teï není tøeba panikaøit - pro pou¾ívání LyXu se nemusíte uèit LaTeX.
+ To je, konec koncù, celý vtip LyXu: vytvoøit WYSIWYG rozhraní pro LaTeX.
+ Na druhé stranì je tøeba øíci, ¾e se nìco nauèit musíte, abyste mohli pou¾ívat
+ LyX efektivnì.
+\layout Standard
+
+Nìkteøí z vás si mo¾ná otevøeli tento dokument poté, co jste napsali dvì
+ mezery za teèkou, èi se sna¾ili vlo¾it tøi prázdné øádky na oddìlení odstavcù.
+ Po nìkolika pokusech jste pravdìpodobnì zjistili, ¾e to nejde.
+ Ve skuteènosti zjistíte, ¾e vìt¹ina malých trikù, které jste pou¾ívali
+ v jiných textových procesorech prostì v LyXu nefunguje.
+ To je proto, ¾e vìt¹ina textových procesorù, které jste dosud pou¾ívali,
+ vy¾aduje ruèní nastavování velikosti, typu písma a podobnì.
+ Tak¾e najednou nejenom pí¹ete, ale i formátujete.
+ LyX formátuje za vás, a to konzistentnì v celém dokumentu, tak¾e se vy
+ mù¾ete plnì koncentrovat na dùle¾itìj¹í vìci, jako napøíklad na obsah textu.
+\layout Standard
+
+Pokraèujte ve ètení.
+ Rozhodnì to stojí za to.
+\layout Section
+
+O tomto dokumentu
+\layout Standard
+
+Ne¾ zaèneme, rádi bychom øekli nìco o tomto dokumentu.
+ Na rozdíl od jiných manuálù my pøedpokládáme, ¾e vy, jako u¾ivatel, 
+\series bold 
+\emph on 
+NEJSTE
+\series default 
+\emph default 
+ hlupák.
+ Pøedpokládáme, ¾e víte, jak se pracuje s klávesnicí, umíte najít v¹echny
+ klávesy, víte jak pracovat s my¹í, víte jak se orientovat v grafickém prostøedí
+ atd.
+ Pøedpokládáme také, ¾e nevíte absolutnì nic o LaTeXu.
+\layout Standard
+
+
+\emph on 
+Prùvodce
+\emph default 
+ pou¾ívá znaèení popsané v sekci 
+\emph on 
+Úvod
+\emph default 
+\SpecialChar \@.
+ Jestli¾e jste se sem dostali døíve, pøeètìte si nejprve 
+\emph on 
+Úvod
+\emph default 
+\SpecialChar \@.
+ Tím myslíme skuteènì teï.
+\layout Standard
+
+Teï, kdy¾ víte, co znamená který font, rádi bychom vám øekli nìco o úèelu
+ 
+\emph on 
+Prùvodce
+\emph default 
+.
+\layout Section
+
+O èem prùvodce 
+\emph on 
+je
+\emph default 
+ a o èem 
+\emph on 
+není
+\layout Subsection
+
+Jak èíst prùvodce
+\layout Standard
+
+Tento prùvodce sestává z pøíkladù a cvièení.
+ Abyste správnì porozumìli a získali pøi ètení maximum informací, je tøeba
+ abyste pøeèetli celý dokument, napsali v¹echna cvièení, která po vás chceme,
+ a vyzkou¹eli si v¹echna cvièení, aby vám byla úplnì jasná.
+ Pro pøehlednost si samozøejmì mù¾ete celý dokument vytisknout do Postscriptu.
+\layout Standard
+
+Jestli¾e ovládáte LaTeX, pravdìpodobnì budete schopen pøeèíst 
+\emph on 
+Prùvodce
+\emph default 
+ o nìco rychleji, proto¾e mnoho postupù v LyXu je vlastnì pøevzato z LaTeXu.
+ Aèkoli, LyX má idosynkracie,
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+nebo optimistiètìji 
+\begin_inset Quotes eld
+\end_inset 
+
+schopnosti
+\begin_inset Quotes erd
+\end_inset 
+
+
+\end_inset 
+
+ které se budete chtít nauèit.
+ I kdy¾ byste nechtìli èíst zbytek 
+\emph on 
+Prùvodce
+\emph default 
+, urèitì si prohlédnìte sekci 
+\begin_inset LatexCommand \ref{sec:latexusers}
+
+\end_inset 
+
+, která je urèena speciálnì pro zku¹ené u¾ivatele LaTeXu.
+\layout Standard
+
+Sekce 
+\begin_inset LatexCommand \ref{sec:what-is-lyx}
+
+\end_inset 
+
+ je pozùstatek z pøedchozí verze Prùvodce a je trochu neaktuální.
+ Je to v¹ak stále pìkný úvod 
+\begin_inset Quotes gld
+\end_inset 
+
+psaný z povzdálí
+\begin_inset Quotes grd
+\end_inset 
+
+ do LyXu, tak¾e si jej mù¾ete pøeèíst, abyste získali pocit, o èem LyX je.
+\layout Subsection
+
+Co zde 
+\emph on 
+ne
+\emph default 
+najdete
+\layout Itemize
+
+Instrukce, jak pou¾ívat my¹ a klávesnici.
+\begin_deeper 
+\layout Standard
+
+Jestli¾e s tìmito vìcmi nemáte zku¹enosti, neumíme vám pomoci.
+ Pøedpokládáme, ¾e vy, u¾ivatel, 
+\series bold 
+\emph on 
+NEJSTE 
+\series default 
+\emph default 
+hlupák.
+ Mo¾ná ztracený èi zmatený, ale ne hloupý.
+\end_deeper 
+\layout Itemize
+
+Detailní popis v¹ech vlastností LyXu.
+\begin_deeper 
+\layout Standard
+
+Vy snad chcete mít 
+\emph on 
+U¾ivatelskou pøíruèku
+\emph default 
+ dvakrát?
+\layout Standard
+
+Teï vá¾nì, jsme tu proto, abychom vás nastartovali a umo¾nili vám pokraèovat,
+ tak¾e posléze ji¾ budete potøebovat jen 
+\emph on 
+U¾ivatelskou pøíruèku
+\emph default 
+.
+ Jestli¾e se pokusíme zduplikovat ve¹keré informace, 
+\emph on 
+Prùvodce 
+\emph default 
+bude nadbyteèný, zbyteènì dlouhý a vìènì zastaralý.
+ V¹e, co zde dìláme, je úvod, domyslete si odkazy na 
+\emph on 
+U¾ivatelskou pøíruèku 
+\emph default 
+na konci ka¾dé sekce.
+\end_deeper 
+\layout Itemize
+
+Detailní výklad LaTeXu.
+\begin_deeper 
+\layout Standard
+
+Není nutný.
+ Jestli vás to skuteènì zajímá a chcete se nauèit mo¾nosti programu LaTeX,
+ kupte si nìm kní¾ku.
+ Na trhu jich je nìkolik velice dobrých.
+\end_deeper 
+\layout Standard
+
+No a teï je èas trochu pokroèit.
+ Mù¾ete si projít malou exkurzí v následující sekci nebo pou¾ít odkaz na
+ sekci 
+\begin_inset LatexCommand \ref{sec:first-doc-ex}
+
+\end_inset 
+
+.
+\layout Section
+
+Co je LyX?
+\begin_inset LatexCommand \label{sec:what-is-lyx}
+
+\end_inset 
+
+
+\layout Subsection
+
+Úvodem
+\layout Standard
+
+Jeden z podnìtù pro pou¾ívání LyXu vychází ze zmìny, kterou vy jako u¾ivatel
+ musíte projít.
+ Kdysi dávno, kdy¾ jsme v¹e psali na psacím stroji, v¹ichni jsme se nauèili,
+ jak obejít jejich omezení.
+ Podtrhávání je pøece jenom pøetiskávání podtr¾ítkem a je metodou jak zvýraznit
+ text.
+ Pro vytvoøení tabulky potøebujeme dopøedu vìdìt, jak ¹iroké budou sloupce,
+ abychom mohli správnì nastavit tabelátory.
+ Rozdìlování slov na konci øádku vy¾aduje pozorné oèi a pøedstavivost.
+\layout Standard
+
+Jinými slovy, v¹ichni jsme byli nauèeni starat se o tyto malé detaily, jako
+ napøíklad který znak pøijde kam.
+\layout Standard
+
+Logicky témìø v¹echny textové procesory pøevzaly tuto mentalitu.
+ Stále pou¾ívají tabelátory pro vkládání mezer.
+ Musíte se starat o to, kde se co na stránce objeví.
+ Zdùraznìní textu je jen zmìnou fontu, podobnì jako výmìna koleèka na psacím
+ stroji.
+ Myslím, ¾e na ukázku to staèí.
+\layout Standard
+
+A právì tady se LyX li¹í od bì¾ných textových procesorù.
+ Nestaráte se o to, kam který znak napsat.
+ Øíkáte LyXu 
+\emph on 
+co pí¹ete
+\emph default 
+ a LyX se stará o zbytek, poslu¹en souboru pravidel, zvaným 
+\emph on 
+styl
+\emph default 
+.
+ Podívejme se na malý pøíklad:
+\layout Standard
+
+Pøedpokládejme, ¾e pí¹ete zprávu.
+ Na zaèátek chcete umístit sekci zvanou Úvod.
+ Tak¾e si otevøete menu a zmìníte velikost fontu.
+ Zapnete ztuènìní.
+ Potom napí¹ete 
+\begin_inset Quotes eld
+\end_inset 
+
+1.__Úvod
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Jestli¾e se pozdìji rozhodnete, ¾e tato sekce patøí jinam v dokumentu,
+ nebo pøed ni vlo¾íte jinou sekci, musíte zmìnit èíslování v celém dokumentu,
+ stejnì tak jako jeho obsah.
+ 
+\layout Standard
+
+V LyXu, otevøete nabídku vlevo, vyberete 
+\family sans 
+Section
+\family default 
+, a napí¹ete 
+\begin_inset Quotes eld
+\end_inset 
+
+Úvod\SpecialChar \@.
+
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+Ano, to je v¹e.
+ Jestli¾e pøesunete sekci pomocí funkcí vystøihni a vlo¾, èíslování bude
+ automaticky zmìnìno - a to kdekoli v textu.
+ Dokonce existuje mo¾nost, ¾e LyX automaticky obnoví v¹echny odkazy uvnitø
+ dané sekce.
+\layout Standard
+
+Také je zde problém s konzistencí.
+ Po pìti dnech, kdy¾ znovu otevøete svoji zprávu zaènete psát sekci 4.
+ Zapomenete ov¹em, ¾e jste pou¾ili tuèné písmo o velikost 18 bodù místo
+ 16, tak¾e napí¹ete titulek sekce 4 v jiném písmu ne¾ sekci 1.
+ Toto se vám v LyXu nemù¾e stát.
+ Poèítaè pøevezme starost a zapamatuje si v¹echny tyto únavné detaily jako
+ je velikost písma.
+ Konec koncù, v tomto jsou poèítaèe dobré.
+\layout Standard
+
+Tady je dal¹í pøíklad.
+ Pøedpokládejme, ¾e dìláte seznam.
+ V textovém procesoru je seznam vlastnì hromada znakù nový øádek a tabelátor.
+ Vy musíte urèit, kam dát nadpisy, co v nich má být, jak mnoho prázdných
+ øádek je tøeba, apod.
+ V LyXu je tøeba vìdìt jen dvì vìci: co je to za seznam a co do nìj chcete
+ dát.
+ To je v¹e.
+\layout Standard
+
+Tak¾e, základní my¹lenkou LyXu je: øíkej mi co dìlá¹ a nikoli jak je to
+ tøeba udìlat.
+ Místo modelu 
+\begin_inset Quotes eld
+\end_inset 
+
+what you see is what you get,
+\begin_inset Quotes erd
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+co vidí¹ to dostane¹
+\end_inset 
+
+ je heslem LyXu 
+\begin_inset Quotes eld
+\end_inset 
+
+what you see is what you 
+\emph on 
+mean
+\emph default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ (WYSIWYM)
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+vidí¹ to, co jsi myslel
+\end_inset 
+
+.
+\layout Subsection
+
+Rozdíly mezi LyXem a jinými textovými procesory
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Ne, my nechceme zaèít (nebo vyhrát) svatou válku o textové procesory.
+ Ale domníváme se, ¾e je dùle¾ité popsat mo¾nosti a vlastnosti LyXu.
+ A jedna z jeho vlastností, WYSIWYM, je od základù jiný koncept ne¾ zná
+ 99% u¾ivatelù textových procesorù.
+\end_inset 
+
+
+\layout Standard
+
+Zde je seznam toho, co v LyXu nenajdete:
+\layout Itemize
+
+Pravítko nad stránkou dokumentu
+\layout Itemize
+
+Zará¾ky tabelátoru
+\layout Itemize
+
+Mezery navíc [t.j.
+ znaky 
+\family sans 
+Nový øádek 
+\family default 
+èi 
+\family sans 
+Mezera 
+\family default 
+vícekrát za sebou]
+\layout Standard
+
+Jak zará¾ky tabelátoru, tak i pravítko, podle kterého poznáte svoji polohu
+ na stránce jsou v LyXu zbyteèné.To je starostí programu, kam které vìci
+ vytisknout, ne va¹í.
+ S mezerami navíc je to obdobné; LyX je pøidá, pokud jsou v daném kontextu
+ potøeba.
+ Nemo¾nost napsat dva prázdné øádky za sebou vás mo¾ná nepotì¹í, ale je
+ velice výhodná, pokud uva¾ujete v termínech WYSIWYM.
+\layout Standard
+
+Zde je nìkolik termínù, jejich¾ pou¾ití v LyXu se li¹í od tzv.
+ obvyklého:
+\layout Itemize
+
+Øízení odsazení
+\layout Itemize
+
+Pøechod na novou stránku
+\layout Itemize
+
+Vý¹ka øádku [øádkování jednoduché, dvojité atd.]
+\layout Itemize
+
+Mezera, vodorovná a svislá
+\layout Itemize
+
+Písmo a velikost písma
+\layout Itemize
+
+Poloøezy [tuèné, kurzíva, podtr¾ené atd..]
+\layout Standard
+
+Aèkoli tyto parametry lze v LyXu nastavit, ve skuteènosti je nepotøebujete.
+ LyX si pøebírá starost o jejich správné nastavení na sebe, pøièem¾ se rozhoduje
+ podle toho, co zrovna dìláte.
+ Rùzné èásti dokumentu mají automaticky nastaveny rùzné poloøezy a velikosti
+ písma.
+ Odsazení odstavcù také závisí na kontextu: rùzné typy odstavcù jsou rùznì
+ odsazovány.
+ Stejnì tak je automatické rozdìlování stránek.
+ Obecnì lze øíci, ¾e vzdálenosti mezi slovy, øádky a odstavci se li¹í, a
+ jsou nastavovány LyXem.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Jsou zde cesty jak tyto hodnoty nastavit (zde je tøeba mít men¹í znalost
+ LaTeXu), a to jak pro celý dokument, tak i pro jeho specifickou èást.
+ Viz 
+\emph on 
+U¾ivatelská pøíruèka.
+\end_inset 
+
+ 
+\layout Standard
+
+Nakonec nìkolik oblastí, v nich¾ je LyX [a LaTeX] lep¹í ne¾ vìt¹ina textových
+ procesorù:
+\layout Itemize
+
+Rozdìlování slov
+\layout Itemize
+
+Seznamy
+\layout Itemize
+
+Matematika
+\layout Itemize
+
+Tabulky
+\layout Itemize
+
+Køí¾ové odkazy
+\layout Standard
+
+Je pravda, ¾e mnoho moderních textových procesorù umo¾òuje pracovat s matematick
+ými symboly, tabulkami, dìlením slov, nìkteré dokonce zvládají styly a koncept
+ WYSIWYM.
+ Na druhé stranì tyto výhody jsou zde zapracovány pomìrnì nedávno, zatímco
+ LyX je postaven nad systémem pro pøípravu dokumentù LaTeX.
+ LaTeX ji¾ existuje více ne¾ deset let a 
+\emph on 
+funguje
+\emph default 
+.
+ V¹echny jeho chyby jsou ji¾ dávno opraveny.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+OK, víme, ¾e v¹e není perfektní, ale LaTeX má jen tak málo chyb, kolik jen
+ poèítaèový program mù¾e mít.
+\end_inset 
+
+
+\layout Subsection
+
+Co to 
+\emph on 
+je
+\emph default 
+ LaTeX?
+\layout Standard
+
+LaTeX je systém pro pøípravu dokumentù navr¾ený Leslie Lamportem v roce
+ 1985.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Zdroj této informace pochází ze sekce 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\emph on 
+A Guide to LaTeX2e
+\emph default 
+,
+\begin_inset Quotes erd
+\end_inset 
+
+ Helmuta Kopka a Patricka Dalyho, která je zmiòována v odkazech do literatury
+ v 
+\emph on 
+U¾ivatelské pøíruèce
+\emph default 
+\SpecialChar \@.
+
+\end_inset 
+
+ Tento systém je postaven nad sázecím jazykem zvaným TeX, vytvoøeným Donaldem
+ Knuthem roku 1984.
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+TeX
+\begin_inset Quotes erd
+\end_inset 
+
+ se vyslovuje jako 
+\begin_inset Quotes eld
+\end_inset 
+
+tech!
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Mnoho lidí v¹ak neví, co TeX ve skuteènosti je.
+ TeX dostává sekvenci tiskových pøíkazù, napsaných jako skript v textovém
+ souboru, a vykoná je.
+ Výsledkem je soubor 
+\begin_inset Quotes gld
+\end_inset 
+
+nezávislý na zaøízení
+\begin_inset Quotes grd
+\end_inset 
+
+ nebo kratèeji
+\family typewriter 
+ dvi
+\family default 
+.
+ Nyní lze tento soubor poslat jakémukoli programu, který 
+\family typewriter 
+dvi
+\family default 
+ rozumí, èi jej pøevést do jiných formátù, jako je PostScript.
+ 
+\layout Standard
+
+Kdyby neumìl TeX více, byl by jen procesorem na sázení textu.
+ TeX v¹ak umo¾òuje definovat makra.
+ A zde celá akce zaèíná.
+ 
+\layout Standard
+
+Vìt¹ina u¾ivatelù TeXu ve skuteènosti pou¾ívá sady maker, které napsal Knuth
+ pro ukrytí mnoha detailù sázení.
+ O tom mluví u¾ivatelé, kdy¾ mluví o TeXu.
+ Bì¾ní u¾ivatelé nepracují se syrovým TeXem, který obsahuje jen základní
+ pøíkazy pro sázení, to obstarávají lidé, pí¹ící nové balíky maker.
+ A zde Leslie Lamport vstoupil do na¹eho pøíbìhu.
+ Chtìl mít balíèek maker více orientovaný na u¾ivatele a ménì na tiskové
+ pøíkazy; sadu pøíkazù, které umo¾ní konzistentní sazbu vìcí jako jsou sekce,
+ tabulky èi matematické formule s minimálními vstupy u¾ivatele.
+ Takto vznikl LaTeX.
+\layout Standard
+
+Nyní, soubì¾nì s vývojem a roz¹iøováním LaTeXu vytváøejí jiní lidé pro svoje
+ vlastní potøeby balíèky pro TeX.
+ Nìkteré pou¾ívali èistý TeX, jiné modifikovali LaTeX.
+ Jako pokus o sjednocení, tým LaTeX-nikù, [vèetnì Lamporta] zaèal koncem
+ roku 1980 pracovat na LaTeX2e, souèasné verzi LaTeXu.
+ Tato nová verze LaTeXu má pøíkazy, které jsou jednodu¹eji pou¾itelné pro
+ u¾ivatele ne¾ jsou pøíkazy TeXu je mo¾no pou¾ívat nová písma atd.
+ Ve skuteènosti, LaTeX je roz¹iøitelným jazykem sám o sobì! U¾ivatelé na
+ celém svìtì vytváøejí balíèky, které roz¹iøují mo¾nosti LaTeXu.
+\layout Standard
+
+Jsou dvì cesty, jak roz¹íøit LaTeX: tøídy a styly.
+ 
+\emph on 
+Tøída
+\emph default 
+ je skupina maker v LaTeXu [a TeXu], která popisuje nový typ dokumentu,
+ jako je kniha èi èlánek.
+ Jsou zde tøídy pro slidy, fyzikální a matematické èasopisy\SpecialChar \ldots{}
+ Nìkteré univerzity
+ dokonce mají tøídy pro diplomové práce.
+ 
+\emph on 
+Styl
+\emph default 
+ se li¹í od tøídy tím, ¾e nepopisuje nový typ dokumentu, ale nový typ 
+\emph on 
+vzhledu
+\emph default 
+, které mù¾e dokument pou¾ít.
+ Napøíklad, LyX øídí zará¾ky stránek a øádkování dvìma rùznými styly LaTeXu
+ vytvoøenými pro tento pøípad.
+ Jsou zde styly pro v¹echny parametry: tisk nálepek èi obálek, zmìna odsazování,
+ pøidávání nových písem, pro vkládání grafiky, vytváøení hlavièek a patièek
+ na stránce, rejstøíky, zmìny umístìní a vzhledu poznámek pod èarou, tabulek,
+ seznamù atd.
+\layout Standard
+
+Zde je seznam:
+\layout List
+\labelwidthstring 00.00.0000
+
+TeX: Jazyk pro sazbu s mo¾ností roz¹íøení makry.
+\layout List
+\labelwidthstring 00.00.0000
+
+LaTeX: Balíèek maker nad TeXem\SpecialChar \@.
+
+\layout List
+\labelwidthstring 00.00.0000
+
+tøídy: Popis typù dokumentù pomocí LaTeXu\SpecialChar \@.
+
+\layout List
+\labelwidthstring 00.00.0000
+
+styly: Zmìna chování LaTeXu v nìkterém smìru.
+\layout List
+\labelwidthstring 00.00.0000
+
+LyX: Vizuální, WYSIWYM textový procesor pou¾ívající LaTeX v celé jeho kráse
+ pro tisk.
+\layout Standard
+
+My¹lenkou této sekce je pokus vysvìtlit, 
+\emph on 
+proè
+\emph default 
+ LyX pracuje trochu jinak ne¾ ostatní textové procesory.
+ Dùvod je jednoduchý: LyX pou¾ívá LaTeX jako jeho tiskový výstup.
+ Tak jako LaTeX se LyX soustøeïuje na kontext va¹eho dokumentu --- 
+\emph on 
+co
+\emph default 
+ pí¹ete.
+ Poèítaè pak urèuje, jak to bude vypadat.
+\layout Standard
+
+Oh --- je¹tì jedna vìc.
+ LaTeX se vyslovuje stejnì jako TeX.
+ Rýmuje se to a 
+\begin_inset Quotes gld
+\end_inset 
+
+lej tech.
+\begin_inset Quotes grd
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+nebo 
+\begin_inset Quotes gld
+\end_inset 
+
+la tech
+\begin_inset Quotes grd
+\end_inset 
+
+ nebo\SpecialChar \ldots{}
+
+\end_inset 
+
+ 
+\layout Part
+
+Zaèínáme s LyXem
+\layout Section
+
+Vá¹ první dokument v LyXu
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:first-doc-ex}
+
+\end_inset 
+
+ OK\SpecialChar \@.
+ Teï jste pøipraveni zaèít psát.
+ Ne¾ zaènete, máme zde nìkolik vìcí, které chceme zmínit, a které vám, jak
+ doufáme, pomohou porozumìt 
+\emph on 
+Prùvodci
+\emph default 
+.
+ 
+\layout Standard
+
+Proto¾e zde zámìrnì neuvádíme v¹echny informace, 
+\series bold 
+nejprve 
+\series default 
+si najdìte ostatní soubory s nápovìdou.
+ Na¹tìstí je to velmi jednoduché.
+ Nastartujte LyX.
+ Vyberte 
+\emph on 
+Prùvodce 
+\emph default 
+z nabídky 
+\family sans 
+\bar under 
+N
+\bar default 
+ápovìda
+\family default 
+.
+ Také si mù¾ete pøeèíst 
+\emph on 
+Úvod 
+\emph default 
+(pokud jej ji¾ nemáte na obrazovce).
+ Takto si mù¾ete èíst, zatímco pí¹ete svùj vlastní dokument
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Toto také dává pìknou ukázku jak pou¾ívat LyX.
+\end_inset 
+
+.
+ Pov¹imnìte si, ¾e mù¾ete pou¾ívat nabídku 
+\family sans 
+\bar under 
+D
+\bar default 
+okumenty
+\family default 
+ pro pøepínání mezi nimi.
+ 
+\emph on 
+Prùvodce
+\emph default 
+ neuvádí v¹echny detaily v plné ¹íøi, tak jak jsou popsány v jiných manuálech
+ k LyXu.
+ Toto vám mo¾ná na zaèátku znepøíjemní ¾ivot, ale významnì to zkracuje délku
+ 
+\emph on 
+Prùvodce.
+
+\shape italic 
+\emph default 
+ 
+\shape default 
+Také vás to nauèí pou¾ívat jiné manuály, co¾ vám --- v del¹ím èasovém horizontu
+ --- u¹etøí mnoho èasu.
+\layout Standard
+
+V tomto 
+\emph on 
+Prùvodci,
+\emph default 
+ budeme pøedpokládat, ¾e máte plnì funkèní verzi LyXu, stejnì jako LaTeXu,
+ 
+\family typewriter 
+xdvi
+\family default 
+ nebo jiného prohlí¾eèe dvi, 
+\family typewriter 
+dvips
+\family default 
+ èi jinou metodu konverze dokumentù 
+\family typewriter 
+dvi
+\family default 
+ do PostScriptu, a funkèní tiskárnu.
+ To je mnoho pøedpokladù.
+ Jestli¾e nìkterý z nich není splnìn, vy (nebo systémový administrátor)
+ musí nainstalovat èi nastavit chybìjící komponenty.
+ Informace, jak to udìlat, najdete v jiných manuálech.
+\layout Standard
+
+A v neposlední øadì, napsali jsme pro vás soubor na vyzkou¹ení va¹í znalosti
+ LyXu.
+ Jmenuje se 
+\family typewriter 
+example_raw.lyx
+\family default 
+.
+ Pøedstavte si, ¾e byl napsán nìkým, kdo neznal ¾ádnou z velkých výhod LyXu
+ a my vám doporuèujeme, abyste jej opravili.
+ Soubor obsahuje nápovìdu, jak to udìlat.
+ Jestli chcete napovídat (nebo si ovìøit va¹e výsledky), je zde také soubor
+ 
+\family typewriter 
+example_lyxified.lyx
+\family default 
+, který obsahuje tentý¾ text napsaný zku¹eným u¾ivatelem LyXu.
+\layout Subsection
+
+Psaní, prohlí¾ení a tisk
+\layout Itemize
+
+Otevøete nový soubor pomocí 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->
+\bar under 
+N
+\bar default 
+ový
+\layout Itemize
+
+Napi¹te vìtu jako: 
+\family typewriter 
+Toto je mùj první dokument v LyXu!
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Dobøe.
+ V skuteènosti mù¾ete napsat cokoli chcete.
+ Na tom opravdu nezále¾í.
+ Omlouváme se stupiditu této vìty, stejnì jako za dal¹í podobné, které po
+ vás budeme chtít psát v budoucnu.
+ 
+\end_inset 
+
+
+\layout Itemize
+
+Ulo¾te vá¹ dokument pøíkazem 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->Ulo¾it\SpecialChar ~
+jako\SpecialChar \@.
+
+\layout Itemize
+
+Spus»te LaTeX pro vytvoøení souboru 
+\family typewriter 
+dvi
+\family default 
+, pøíkazem 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->Náhled\SpecialChar ~
+dvi
+\family default 
+\SpecialChar \@.
+ V oknì, z nìho¾ jste LyX spustili, mù¾ete vidìt nìjaké výstupy.
+ To jsou zprávy LaTeXu, které teï mù¾ete ignorovat.
+ LyX spustí 
+\family typewriter 
+xdvi
+\family default 
+ (nebo jiný prohlí¾eè 
+\family typewriter 
+dvi
+\family default 
+), který otevøe nové okno, v nìm¾ zobrazí náhled va¹eho dokumentu
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Mù¾ete u¹etøit èas spu¹tìním pøíkazu 
+\family typewriter 
+xdvi
+\family default 
+ na pozadí.
+ Poté mù¾ete pou¾ít pøíkaz
+\family sans 
+\bar under 
+ S
+\bar default 
+oubor->Obnov\SpecialChar ~
+dvi
+\family default 
+ a jen aktivujte okno s 
+\family typewriter 
+xdvi
+\family default 
+ (nebo jej obnovte) po ukonèení pøíkazù LaTeXu.
+\end_inset 
+
+.
+ 
+\layout Itemize
+
+Soubor vytisknete pøíkazem 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->
+\bar under 
+T
+\bar default 
+isk 
+\family default 
+stiskem 
+\family sans 
+OK\SpecialChar \@.
+
+\layout Standard
+
+Gratulujeme! Napsali a vytiskli jste svùj první dokument v LyXu.
+ V¹e ostatní jsou jen detaily, které jsou popsány ve zbytku 
+\emph on 
+Prùvodce
+\emph default 
+, 
+\emph on 
+U¾ivatelské pøíruèce 
+\emph default 
+a v 
+\emph on 
+Referenèní pøíruèce.
+\layout Subsection
+
+Jednoduché operace
+\layout Standard
+
+LyX samozøejmì zvládá vìt¹inu vìcí, které jste zvyklí dìlat s textovými
+ procesory.
+ Bude pøesouvat slova mezi øádky a automaticky odsazovat odstavce.
+ Prohlédnìte si nìkolik nabídek
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Jestli jste jako vìt¹ina u¾ivatelù 
+\noun on 
+unixu
+\noun default 
+, jistì jste tak ji¾ uèinili pøed otevøením 
+\emph on 
+Prùvodce
+\emph default 
+.
+\end_inset 
+
+ a uvidíte vìt¹inu jednoduchých pøíkazù (napø., 
+\family sans 
+Konec, 
+\bar under 
+V
+\bar default 
+lo¾it, 
+\bar under 
+T
+\bar default 
+isk)
+\family default 
+, jejich¾ jména ji¾ asi znáte, a které dìlají to, co od nich oèekáváte.
+ Zde je struèný návod, jak nìkteré jednoduché akce pou¾ít.
+\layout Description
+
+Zpìt LyX má
+\emph on 
+ schopnost
+\emph default 
+ 
+\begin_inset Quotes gld
+\end_inset 
+
+nekoneèného návratu
+\begin_inset Quotes grd
+\end_inset 
+
+, co¾ znamená, ¾e se mù¾ete vrátit ke kterémukoli stavu od zaèátku editování
+ souboru volbou 
+\family sans 
+Úpravy->
+\bar under 
+Z
+\bar default 
+pìt
+\family default 
+ znovu a znovu.
+ Jestli jste pøeskoèili pøíli¹ daleko, zvolte pouze 
+\family sans 
+Úpravy->
+\bar under 
+O
+\bar default 
+pakovat
+\family default 
+ pro krok zpátky.
+ 
+\emph on 
+V tuto chvíli --- v beta-verzi --- je poèet krokù zpìt omezen na 100, do
+ doby kompletního ovìøení funkènosti mechanismu návratu.
+ Zpìt také nebude funkèní pro 
+\emph default 
+v¹echny akce
+\emph on 
+, napøíklad pro zmìny vzhledu dokumentu.
+\layout Description
+
+Vystøihni/Vlo¾/Kopíruj Pou¾ijte 
+\family sans 
+Úpravy->Vystøihni
+\family default 
+ 
+\family sans 
+Úpravy->Vlo¾
+\family default 
+, a 
+\family sans 
+Úpravy->Kopíruj
+\family default 
+ pro vystøi¾ení, vlo¾ení a kopírování.
+ Nebo automaticky vlo¾te oznaèený text pomocí 
+\emph on 
+prostøedního tlaèítka my¹i.
+\layout Description
+
+Hledej/Nahraï Pou¾ijte 
+\family sans 
+Úpravy->Hledání\SpecialChar ~
+a\SpecialChar ~
+nahrazení 
+\family default 
+pro hledání s rozli¹ením malých a velkých písmen.
+ V novì otevøeném dialogu pokraèujte v hledání pomocí ¹ipek dopøedu a zpìt,
+ èi pou¾ijte tlaèítko 
+\family sans 
+\bar under 
+N
+\bar default 
+ahraï
+\family default 
+ pro výmìnu slova, je¾ bylo nalezeno.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Zavøete dialog po ukonèení hledání.
+ Nebo jej nechte otevøené, vyhovuje-li vám to více.
+ Vìt¹ina dialogù v LyXu --- vèetnì 
+\family sans 
+Hledání\SpecialChar ~
+a\SpecialChar ~
+
+\family default 
+nahrazení, 
+\family sans 
+Obsah
+\family default 
+ a 
+\family sans 
+Vzhled
+\family default 
+, stejnì jako rùzné matematické dialogy --- mohou být zmen¹eny stejnì jako
+ zavøeny.
+ Nìkteré dialogy jako 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->
+\bar under 
+O
+\bar default 
+tevøít
+\family default 
+, vám nedovolí napsat nic v hlavním oknì LyXu dokud neuzavøete dialog.
+\end_inset 
+
+
+\layout Description
+
+Formátování\SpecialChar ~
+znakù Znaky mù¾ete 
+\emph on 
+zvýraznit
+\emph default 
+ (co¾ typicky zmìní znaky do kurzívy), nebo je 
+\series bold 
+ztuènit
+\series default 
+, èi pou¾it 
+\noun on 
+Styl pro jména
+\noun default 
+ (obvykle kapitálky, pou¾ívají se pro jména lidí)pomocí pøepínaèù v nabídce
+ 
+\family sans 
+\bar under 
+F
+\bar default 
+ormát
+\family default 
+.
+\layout Description
+
+Li¹ta Tlaèítka na li¹tì (tìsnì pod nabídkou) vám zpøístupòují nìkteré bì¾né
+ funkce jako 
+\family sans 
+Vlo¾
+\family default 
+ a 
+\family sans 
+Tiskni
+\family default 
+.
+ Jestli¾e podr¾íte ukazovátko my¹i chvilku nad tlaèítkem, objeví se ¾lutá
+ vysvìtlivka jeho funkce.
+\layout Standard
+
+Samozøejmì jste zatím nenapsali dost, abyste docenili význam tìchto funkcí.
+ A¾ napí¹ete více, vyzkou¹ejte si funkce zpìt, vkládání atd.
+ 
+\layout Subsection
+
+WYSIWYM: Mezery v LyXu
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:whitespace}
+
+\end_inset 
+
+Jedna z nejtì¾¹ích vìcí pro nové u¾ivatele je metoda jakou LyX zpracovává
+ mezery.
+ Aèkoli tisknete 
+\family sans 
+Return
+\family default 
+ mnohokrát, dostanete jen jeden prázdný øádek.
+ Stejnì tak mnoho stiskù 
+\family sans 
+Mezerníku
+\family default 
+ vede k získání jen jedné mezery.
+ Na prázdné øádce nelze napsat ¾ádnou mezeru.
+ Klávesa 
+\family sans 
+Tab
+\family default 
+ vás nepøesune k dal¹í zará¾ce; ve skuteènost, zde 
+\emph on 
+nejsou
+\emph default 
+ ¾ádné zará¾ky! Navíc, na vrchní èásti okna nenajdete mìøítko se zará¾kami.
+\layout Standard
+
+Mnoho komerèních textových procesorù je zalo¾eno na principu WYSIWYG: 
+\begin_inset Quotes gld
+\end_inset 
+
+What You See Is What You Get --- Co vidí¹, to dostane¹
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Na druhé stranì je LyX zalo¾en na principu 
+\begin_inset Quotes gld
+\end_inset 
+
+What You See Is What You 
+\emph on 
+Mean
+\emph default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Vy se staráte o obsah a LyX se stará o to, aby výstup dobøe vypadal.
+ Klávesa
+\family sans 
+ Return
+\family default 
+ oddìluje odstavce a
+\family sans 
+ Mezera
+\family default 
+ oddìluje slova, tak¾e zde není dùvod napsat jich nìkolik za sebou; klávesa
+ 
+\family sans 
+Tab
+\family default 
+ nemá ¾ádný gramatický význam, tak¾e ji LyX nevyu¾ívá.
+ Pøi pou¾ívání LyXu strávíte více èasu starostí o 
+\emph on 
+obsah
+\emph default 
+ va¹eho dokumentu a ménì èasu starostí o jeho 
+\emph on 
+formát.
+
+\emph default 
+ Viz sekce 
+\begin_inset LatexCommand \ref{sec:what-is-lyx}
+
+\end_inset 
+
+ pro více informací o konceptu WYSIWYM.
+\layout Standard
+
+LyX má mnoho cest jak jemnì doladit vzhled va¹eho dokumentu.
+ Konec koncù, LyX nemusí vysázet 
+\emph on 
+pøesnì
+\emph default 
+ to, co jste chtìli.
+ 
+\emph on 
+U¾ivatelská pøíruèka 
+\emph default 
+vám o tom øekne mnohem víc
+\emph on 
+.
+
+\emph default 
+ Tam jsou informace o 
+\family sans 
+HFill
+\family default 
+s a o svislých mezerách --- které jsou mnohem univerzálnìj¹í ne¾ nìkolik
+ mezer èi prázdných øádkù --- a o cestì, jak ruènì zmìnit velikost písma,
+ poloøezy, stejnì tak jako zarovnání odstavcù.
+ Ale základem je, ¾e v dobì psaní dokumentu se zamìøujete na obsah a toto
+ dolaïování provádíte a¾ nakonec.
+ Bì¾ný textový procesor vás nutí starat se o tyto detaily v prùbìhu psaní.
+\layout Section
+
+Styl
+\layout Standard
+
+Rùzné èásti dokumentu mají rùzná urèení, my tyto èásti nazýváme 
+\emph on 
+prostøedí.
+
+\emph default 
+ Vìt¹ina dokumentu je obyèejný text.
+ Názvy oddílù (kapitoly, paragrafy atd.) umo¾òují ètenáøi oddìlit ètenáøi
+ jednotlivá témata od sebe.
+ Ka¾dý typ dokumentu má své zvlá¹tní prostøedí.
+ Èasopisový èlánek obsahuje shrnutí a titulek.
+ Naproti tomu dopis nemá ani titulek ani shrnutí, av¹ak pravdìpodobnì obsahuje
+ odesilatelovu adresu.
+\layout Standard
+
+Styly jsou nejvýznamnìj¹í èástí filozofie 
+\begin_inset Quotes gld
+\end_inset 
+
+What You See Is What You Mean
+\begin_inset Quotes grd
+\end_inset 
+
+.
+ Dané prostøedí má urèitý typ písma, odsazení, øádkování apod.
+ Ve skuteènosti je to je¹tì slo¾itìj¹í, nebo» pøesná pravidla pro formátování
+ se mohou li¹it: jeden èasopis mù¾e pou¾ívat tuèné, 18 bodù vysoké, vystøedìné
+ titulky kapitol, zatímco jiný pou¾ívá 15 bodù vysokou kurzívu, zarovnanou
+ doleva; rùzné jazyky mohou mít rùzné zvyklosti pro odsazování; formátù
+ pro rejstøík mù¾e existovat skuteènì mnoho.
+ LyX vás opro¹»uje od nutnosti toto v¹echno znát.
+\layout Standard
+
+Indikátor souèasného 
+\family sans 
+Stylu
+\family default 
+ je umístìn na li¹tì vlevo (pøímo pod nabídkou 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor
+\family default 
+).
+ Kdy¾ pí¹ete svùj první dokument, je nastaven na hodnotu Standard, co¾ je
+ implicitní hodnota pro bì¾ný text.
+ Nyní si vyzkou¹íte pou¾ít rùzná prostøedí ve va¹em novém dokumentu, tak¾e
+ uvidíte, jak se zmìna stylu projeví.
+ Styl se nastavuje pomocí nabídky, kterou zobrazíte kliknutím na ¹ipku dolù
+ hned vedle indikátoru 
+\family sans 
+Styl
+\family default 
+.
+\layout Subsection
+
+Oddíly a kapitoly
+\layout Standard
+
+Napi¹te slovo 
+\family typewriter 
+Úvod
+\family default 
+ na první øádku va¹eho souboru v LyXu, vyberte 
+\family sans 
+Section
+\family default 
+ z nabídky 
+\family sans 
+Styl
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Není tøeba 
+\emph on 
+zvýrazòovat 
+\emph default 
+tento øádek.
+ Není-li nic zvýraznìno, LyX pøenastaví souèasný odstavec.
+ Na druhé stranì, pokud zvýrazníte nìkolik odstavcù, bude zmìna uplatnìna
+ na v¹ech zvýraznìných.
+\end_inset 
+
+.
+ LyX èísluje oddíly od jedné a sází hlavièku oddílu (nadpis) vìt¹ím písmem.
+ (Pochopitelnì, v¹echno bude vysazeno korektnì i pøípadì 
+\family typewriter 
+dvi
+\family default 
+ èi tisku.) Nyní stisknìte tlaèítko 
+\family sans 
+Return
+\family default 
+\SpecialChar \@.
+ Pov¹imnìte si, ¾e indikátor
+\family sans 
+ Styl
+\family default 
+ se zmìnil ze Section zpìt na Standard.
+ Nadpisy oddílù jsou ve vìt¹inì prostøedí ukonèeny znakem 
+\family sans 
+Return
+\family default 
+\SpecialChar \@.
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+
+\emph on 
+U¾ivatelská pøíruèka
+\emph default 
+ popisuje, jak psát nadpisy s více øádky.
+ Styl 
+\family sans 
+Standard
+\family default 
+ samozøejmì pokraèuje i v následujícím odstavci.
+ Rùzné styly pro seznamy (viz dále) také nejsou ukonèeny ukonèením øádku.
+ Za v¹ech okolností jste schopni rozpoznat souèasný styl pohledem na indikátor
+ 
+\family sans 
+Stylu
+\family default 
+.
+\end_inset 
+
+ Napi¹te na úvod va¹eho dokumentu: 
+\layout LyX-Code
+
+Toto je úvod do mého prvního dokumentu v LyXu.
+\layout Standard
+
+Znovu stisknìte 
+\family sans 
+Return
+\family default 
+ a zvolte znovu 
+\family sans 
+Section
+\family default 
+ z nabídky
+\family sans 
+ Styl
+\family default 
+.
+ LyX napí¹e 
+\begin_inset Quotes gld
+\end_inset 
+
+2
+\begin_inset Quotes grd
+\end_inset 
+
+ a èeká, a¾ napí¹ete nadpis.
+ Napi¹te
+\family typewriter 
+ Dal¹í text
+\family default 
+ a uvidíte, ¾e LyX znovu nastavil tento text jako nadpis kapitoly.
+\layout Standard
+
+Teï to bude lep¹í.
+ Pøejdìte na konec první kapitoly (za mùj první dokument v LyXu) a stisknìte
+ znovu 
+\family sans 
+Return
+\family default 
+ , zvolte znovu 
+\family sans 
+Section
+\family default 
+ z nabídky
+\family sans 
+ Styl
+\family default 
+.
+ A znovu, LyX napí¹e 
+\begin_inset Quotes gld
+\end_inset 
+
+2
+\begin_inset Quotes grd
+\end_inset 
+
+ a èeká, a¾ napí¹ete nadpis.
+ Napi¹te 
+\family typewriter 
+O tomto dokumentu
+\family default 
+.
+ Oddíl 
+\begin_inset Quotes gld
+\end_inset 
+
+Dal¹í text
+\begin_inset Quotes grd
+\end_inset 
+
+, který byl døíve kapitolou 2, se automaticky stal kapitolou 3! Ve skuteèném
+ prostøedí WYSIWYM je tøeba jen øíci, co jsou nadpisy kapitol, a LyX se
+ postará o jejich èíslování a vysázení.
+\layout Standard
+
+Stisknìte 
+\family sans 
+Return, 
+\family default 
+abyste znovu zapnuli styl 
+\family sans 
+Standard
+\family default 
+, a napi¹te tìchto pìt øádek:
+\layout LyX-Code
+
+Oddíly a kapitoly jsou popsány ní¾e.
+\layout LyX-Code
+
+Popis oddílu
+\layout LyX-Code
+
+Oddíly jsou vìt¹í ne¾ kapitoly.
+\layout LyX-Code
+
+Popis kapitoly
+\layout LyX-Code
+
+Kapitoly jsou men¹í ne¾ oddíly.
+\layout Standard
+
+Kliknìte na druhou øádku a zvolte 
+\family sans 
+Subsection
+\family default 
+ z nabídky 
+\family sans 
+Styl.
+ 
+\family default 
+LyX oèísluje kapitolu jako 2.1 a zvolí písmo vìt¹í ne¾ bì¾né, ale men¹í ne¾
+ pro nadpis oddílu.
+ Zmìòte také ètvrtý øádek na 
+\family sans 
+Subsection
+\family default 
+.
+ Jak jste asi oèekávali, LyX mu pøiøadil èíslo 2.2.
+ Jestli¾e vlo¾íte dal¹í oddíl pøed oddíl 2, bude pøeèíslován na 3 a kapitoly
+ pak na 3.1 a 3.2.
+\layout Standard
+
+Dal¹í úrovnì èlenìní textu jsou 
+\family sans 
+Subsubsection
+\family default 
+, 
+\family sans 
+Paragraph
+\family default 
+, a 
+\family sans 
+Subparagraph
+\family default 
+.
+ Vyzkou¹ejte si je.
+ Pov¹imnìte si, ¾e paragrafy a ni¾¹í nejsou implicitnì èíslovány; návod
+ na zmìnu najdete v 
+\emph on 
+U¾ivatelské pøíruèce
+\emph default 
+.
+ Hlavièky knih (
+\family sans 
+Chapter
+\family default 
+) jsou nejvy¹¹í úrovní, ale je mo¾no je pou¾ít jen v urèitých dokumentech
+ LyXu.(viz 
+\begin_inset LatexCommand \ref{sec:textclasses}
+
+\end_inset 
+
+).
+ 
+\layout Standard
+
+Mù¾ete po¾adovat, aby se názvy oddílù a pododdílù neèíslovali.
+ Také na to jsou zde styly.
+ Jestli¾e zmìníte styl jednoho z nadpisù oddílu na 
+\family sans 
+Section*
+\family default 
+, (budete se potøebovat posunout v oknì se styly), LyX pou¾ije toté¾ písmo
+ i velikost jako pro normální nadpis oddílu, ale nebude jej èíslovat.
+ Obdobnì ohvìzdièkované styly jsou zde i pro 
+\family sans 
+Subsection
+\family default 
+ a 
+\family sans 
+Subsubsection
+\family default 
+.
+ Zkuste si zmìnit nìkteré styly ve va¹em dokumentu na ohvìzdièkované a pov¹imnìt
+e si, jaký to má vliv na èíslování.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Opravte nadpisy oddílù a pododdílù v 
+\family typewriter 
+example_raw.lyx
+\family default 
+.
+ Tento dokument najdete v adresáøi 
+\family typewriter 
+examples/
+\family default 
+, který zvolíte pomocí nabídky 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->
+\bar under 
+O
+\bar default 
+tevøít
+\family default 
+ a pak stisknutím tlaèítka 
+\family sans 
+Pøíklady
+\family default 
+.
+ Otevøete dokument, a pou¾ijte 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->Ulo¾it jako
+\family default 
+ pro ulo¾ení kopie tohoto dokumentu do va¹eho adresáøe.
+\layout Subsection
+
+Seznamy a podseznamy
+\layout Standard
+
+LyX má nìkolik rùzných stylù pro sázení seznamù.
+ Toto vám u¹etøí asi tak milion stiskù klávesy 
+\family sans 
+Tab
+\family default 
+, kdy¾ pí¹ete do tabulky, èi od pøeèíslovávání, kdy¾ chcete pøidat polo¾ku
+ doprostøed, a dovoluje vám se tak soustøedit na obsah.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Ano toto zdùrazòujeme v celém 
+\emph on 
+Prùvodci
+\emph default 
+.
+ Ale toto 
+\emph on 
+je
+\emph default 
+ hlavní filozofie LyXu, tak nám to odpus»te.
+\end_inset 
+
+ Rùzné typy dokumentù logicky vy¾adují rùzné typy stylù:
+\layout Itemize
+
+Prezentace na slidy mù¾e pou¾ívat styl 
+\family sans 
+Itemize
+\family default 
+ pro popis jednotlivých bodù.
+ 
+\layout Itemize
+
+Vnoøené èíslované (èísly i písmeny) seznamy vznikají stylem 
+\family sans 
+Enumerate
+\family default 
+ .
+ 
+\layout Itemize
+
+Dokument popisující nìkolik balíèkù programù mù¾e pou¾ít styl 
+\family sans 
+Description
+\family default 
+, který ztuèòuje první slovo ka¾dé polo¾ky seznamu.
+ 
+\layout Itemize
+
+Styl 
+\family sans 
+List
+\family default 
+ --- není obsa¾en v LaTeXu --- je jinou formou stylu 
+\family sans 
+Description
+\family default 
+.
+\layout Standard
+
+Zkusme tedy napsat seznam dùvodù, proè je LyX lep¹í ne¾ jiné textové procesory.
+ Nìkde ve va¹em dokumentu napi¹te:
+\layout Standard
+
+
+\family typewriter 
+Lyx je lep¹í ne¾ jiné textové procesory, proto¾e: 
+\layout Standard
+
+a stisknìte 
+\family sans 
+Return
+\family default 
+.
+ Nyní zvolte 
+\family sans 
+Itemize
+\family default 
+ 
+\family sans 
+z nabídky Environment
+\family default 
+.
+ LyX napí¹e 
+\begin_inset Quotes gld
+\end_inset 
+
+kouli
+\begin_inset Quotes grd
+\end_inset 
+
+ (ve skuteènosti hvìzdièku, která se na výstupu zmìní na kouli) na novou
+ øádku.
+ Napi¹te va¹e dùvody: 
+\layout LyX-Code
+
+Sázení je udìláno za vás.
+\layout LyX-Code
+
+Matematika je WYSIWYG.
+\layout LyX-Code
+
+Seznamy se pí¹í tak jednodu¹e!
+\layout Standard
+
+Styly seznamù, na rozdíl od nadpisù, nekonèí znakem 
+\family sans 
+Return
+\family default 
+.
+ Naproti tomu LyX pøedpokládá, ¾e chcete psát dal¹í polo¾ku seznamu.
+ Pøedchozí seznam sestává ze tøí jednoodstavcových polo¾ek.
+ Jestli¾e chcete napsat polo¾ku, která sestává z více odstavcù, jednou z
+ cest je pou¾ít tzv.
+ 
+\family sans 
+Protected\SpecialChar ~
+Return
+\family default 
+, který získáte stiskem
+\family sans 
+ C-Return
+\family default 
+.
+ Abyste ukonèili psaní seznamu, musí nastavit zpátky styl 
+\family sans 
+Standard
+\family default 
+ (buï z nabídky nebo stiskem klávesové kombinace
+\family sans 
+ M-p\SpecialChar ~
+s
+\family default 
+).
+\layout Standard
+
+Získali jste pìknì vysázený seznam.
+ Nyní si prohlédnìte, jak bude vypadat vyti¹tìný.
+ Chcete si polo¾ky oèíslovat? Oznaète si celý seznam
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+LyX vám nedovolí oznaèit první kulièku pokud souèasnì neoznaèíte odstavec
+ 
+\emph on 
+pøed
+\emph default 
+ seznamem, co¾ si pravdìpodobnì nepøejete.
+ Obdobnì se vám nepodaøí oznaèit èíslo polo¾ky.
+ Tak je to v poøádku.
+\end_inset 
+
+ a zvolte z nabídky styl 
+\family sans 
+Enumerate
+\family default 
+.
+ Jak jsme ji¾ zmínili, kdy¾ pøidáte èi odstraníte polo¾ku ze seznamu, LyX
+ jej pøeèísluje.
+\layout Standard
+
+Kdy¾ u¾ máte celý seznam oznaèený, prohlédnìte si také, jak vypadají ostatní
+ dva styly pro seznam, 
+\family sans 
+Description
+\family default 
+ a 
+\family sans 
+List
+\family default 
+.
+ Pro tyto dva styly, je se ka¾dá polo¾ka skládá ze dvou èástí: termínu,
+ co¾ je první slovo, a definice, co¾ je zbytek polo¾ky a¾ do konce odstavce.
+ (do stisku 
+\family sans 
+Return
+\family default 
+.) Termín je vysázen tuènì (
+\family sans 
+Description
+\family default 
+) nebo oddìlen od zbytku polo¾ky tabulátorem
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Tohle je sázecí zará¾ka, která mìní svou velikost podle nejdel¹ího termínu,
+ nikoli nemìnná a pevnì pøeddefinovaná jako na psacím stroji.
+\end_inset 
+
+ (
+\family sans 
+List
+\family default 
+).
+ Jestli¾e se termín skládá z nìkolika slov, oddìlte je pomocí pevných mezer
+ 
+\family sans 
+(Protected\SpecialChar ~
+Space
+\family default 
+s), které získáte stiskem 
+\family sans 
+C-Mezera,
+\family default 
+ a které se zobrazí jako malá fialová u.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Vysázejte seznam v souboru 
+\family typewriter 
+example_raw.lyx.
+\layout Standard
+
+Seznamy mù¾ete libovolnì vnoøovat.
+ Lze vnoøovat a kombinovat rùzné typy èíslovaných i neèíslovaných seznamù.
+ V 
+\emph on 
+U¾ivatelské pøíruèce 
+\emph default 
+najdete mnoho rùzných typù seznamù, stejnì jako pøíklady s 
+\emph on 
+mnoha
+\emph default 
+ úrovnìmi vnoøení.
+\layout Subsection
+
+Ostatní styly: Ver¹e, citace, a jiné
+\layout Standard
+
+LyX pøeddefinovává dva styly pro odli¹ení citace od okolního textu: 
+\family sans 
+Quote
+\family default 
+ pro krat¹í a 
+\family sans 
+Quotation
+\family default 
+ pro del¹í.
+ Programy (styl 
+\family sans 
+LyX-Code
+\family default 
+, pou¾itý v
+\emph on 
+ Prùvodci
+\emph default 
+ pro sázení del¹ích pøíkladù) je napsán v písmu 
+\family typewriter 
+psacího stroje
+\family default 
+; pouze v tomto stylu vám LyX dovolí napsat nìkolik mezer za sebou, aby
+ bylo mo¾no odsazovat.
+ Dokonce mù¾ete psát i poezii
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+\SpecialChar \ldots{}
+pøedpokládáme, ¾e jste tak dobrý básník, ¾e pí¹ete poezii zpatra.
+\end_inset 
+
+ ve stylu 
+\family sans 
+Verse
+\family default 
+, pøièem¾ 
+\family sans 
+Return
+\family default 
+ oddìluje strofy a 
+\family sans 
+C-Return
+\family default 
+ oddìluje jednotlivé ver¹e.
+ Viz 
+\emph on 
+U¾ivatelská pøíruèka
+\emph default 
+ pro detailní popis v¹ech stylù LyXu.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Opravte sázení 
+\family sans 
+Quote, LyX-Code
+\family default 
+ a 
+\family sans 
+Verse
+\family default 
+ v
+\family typewriter 
+ example_raw.lyx.
+\layout Part
+
+Psaní dokumentù
+\layout Standard
+
+Pøedchozí èást vám umo¾nila získat první zku¹enosti s psaním v LyXu.
+ Popsala vám základní úkony pøi zpracování textu, stejnì tak jako vás seznámila
+ s problematikou stylù.
+ Drtivá vìt¹ina lidi, kteøí pou¾ívají LyX, chce psát rùzné dokumenty: zprávy,
+ èlánky, knihy, návody èi dopisy.
+ Tato èást si klade za cíl vám popsat cestu od psaní textu a¾ po vytvoøení
+ celého dokumentu.
+ Seznámí vás s textovými tøídami, které vám umo¾òují psát rùzné typy dokumentù.
+ Také popisuje mnoho dodatkù, které mìní holý text v dokument, jako jsou
+ nadpisy, poznámky pod èarou, odkazy, seznamy literatury èi obsahy.
+\layout Section
+
+Textové tøídy a ¹ablony: psaní dopisù
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:textclasses}
+
+\end_inset 
+
+Rùzné typy dokumentù je tøeba vysázet rùznì.
+ Napøíklad, knihy jsou vìt¹inou sázeny na obì strany papíru, zatímco zprávy
+ pouze jednostrannì.
+ Navíc nìkteré dokumenty obsahují speciální èásti: dopisy vy¾adují speciální
+ styly --- jako odesilatelova adresa a podpis --- které nejsou v knize èi
+ èlánku potøeba.
+ 
+\emph on 
+Textové tøídy
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Pro u¾ivatele LaTeXu: toto je toté¾ jako v LaTeXu documentclass.
+\end_inset 
+
+ se starají o tyto rozdíly mezi rùznými typy dokumentù.
+ Tento Prùvodce
+\emph default 
+, napøíklad, byl napsán s pou¾itím textové tøídy 
+\family sans 
+Book
+\family default 
+.
+ Textové tøídy jsou dal¹í významnou èástí konceptu WYSIWYM; øíkají LyXu
+ jak sázet dokument, tak¾e vy to vìdìt nemusíte.
+\layout Standard
+
+Vá¹ dokument je pravdìpodobnì napsán v textové tøídì 
+\family sans 
+Article
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Toto je obvykle implicitní textová tøída, lze ji pøednastavit ve va¹em souboru
+ 
+\family typewriter 
+lyxrc
+\family default 
+.
+\end_inset 
+
+.
+ Zkuste ji zmìnit na jinou (pou¾ijte nabídku 
+\bar under 
+T
+\bar default 
+øída
+\family default 
+ v dialogu 
+\family sans 
+\bar under 
+F
+\bar default 
+ormát->
+\bar under 
+D
+\bar default 
+okument
+\family default 
+) a pov¹imnìte si, jak se li¹í.
+ Zmìníte-li tøídu va¹eho dokumentu na 
+\family sans 
+Book
+\family default 
+ a podíváte se na nabídku 
+\family sans 
+Environment
+\family default 
+, zjistíte, ¾e vìt¹ina stylù se neli¹í.
+ Aèkoli, pøibyl vám styl 
+\family sans 
+Chapter
+\family default 
+.
+ Jestli si nejste jistí, které styly mù¾ete v dané tøídì pou¾ít, prostì
+ se podívejte do její nabídky 
+\family sans 
+Environment
+\family default 
+.
+\layout Standard
+
+Velikost písma, jedno èi dvousloupcový tisk a hlavièky stránek jsou právì
+ ty rozdíly, kterými se jeden èasopis li¹í od jiného.
+ A tak jak postupuje poèítaèový vìk, èasopisy vám dovolují posílat va¹e
+ èlánky v LaTeXu, jestli¾e pou¾ijete jejich textovou tøídu.
+ LyX toto podporuje také.
+ Napøíklad LyX podporuje sazbu (a speciální styly) pro èasopisy American
+ Mathematics Society pomocí textové tøídy
+\family sans 
+ Article\SpecialChar ~
+(AMS)
+\family default 
+.
+\layout Standard
+
+Zde je rychlá reference pro jednotlivé styly.
+ Jako obvykle, detaily najdete v 
+\emph on 
+U¾ivatelské pøíruèce.
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Jméno
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Poznámka
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+article
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+jednostrannì, nemá kapitoly
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+article (AMS)
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+vzhled & styly pro American Math Society
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+report
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+del¹í ne¾ èlánek, oboustranný
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+book
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+zpráva + pøední a zadní obálka
+\end_inset 
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+slides
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+prùhlednost (vèetnì FoilTeX)
+\end_inset 
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+letter
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+mnoho speciálních stylù pro adresu, podpis\SpecialChar \ldots{}
+
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Section
+
+©ablony: psaní dopisu
+\layout Standard
+
+Jednou z nejpopulárnìj¹ích textových tøíd je 
+\family sans 
+Letter
+\family default 
+\SpecialChar \@.
+ Jednou z cest jak napsat dopis je vytvoøit 
+\family sans 
+\bar under 
+N
+\bar default 
+ový 
+\family default 
+soubor, zvolit 
+\family sans 
+Letter
+\family default 
+ z nabídky 
+\family sans 
+\bar under 
+T
+\bar default 
+øída
+\family default 
+ v dialogu 
+\family sans 
+\bar under 
+F
+\bar default 
+ormát->
+\bar under 
+D
+\bar default 
+okument
+\family default 
+.
+ Oproti obvyklé cestì jak psát dopis to vypadá jako práce navíc.
+ Kdykoli pí¹ete obchodní dopis, chcete tam mít svoji adresu, adresáta, text,
+ podpis a podobnì.
+ Proto má LyX 
+\emph on 
+¹ablonu
+\emph default 
+ pro dopisy, která obsahuje jednoduchý dopis; kdy¾ máte jednou ¹ablonu,
+ mù¾ete jen nahrazovat text v ¹ablonì textem, který chcete napsat.
+\layout Standard
+
+Otevøete nový soubor z nabídky 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->Nový\SpecialChar ~
+podle\SpecialChar ~
+¹ablony
+\family default 
+.
+ Po zadání jména, zvolte 
+\family typewriter 
+latex_letter.lyx
+\family default 
+ nabídky 
+\family sans 
+©ablony
+\family default 
+.
+ Ulo¾te a prohlédnìte si, jak jsou jednotlivé èásti souboru ti¹tìny.
+\layout Standard
+
+Kdy¾ se podíváte na nabídku 
+\family sans 
+Environment
+\family default 
+, uvidíte nìkolik rùzných stylù, jako napøíklad 
+\family sans 
+My\SpecialChar ~
+Address
+\family default 
+, který neexistuje ve vìt¹inì jiných textových tøíd.
+ Jiné, jako napøíklad 
+\family sans 
+Quote 
+\family default 
+a 
+\family sans 
+Description
+\family default 
+, jsou vám ji¾ známé.
+ Mù¾ete si s tím pohrát, abyste vidìli jak rùzné styly pracují.
+ Pov¹imnìte si napøíklad, ¾e styl 
+\family sans 
+Signature
+\family default 
+ obsahuje slovo 
+\begin_inset Quotes gld
+\end_inset 
+
+Signature:
+\begin_inset Quotes grd
+\end_inset 
+
+ napsané èervenì pøed vlastním textem podpisu.
+ Toto slovo se nevytiskne (o èem¾ se mù¾ete snadno pøesvìdèit), jen vás
+ upozoròuje, ¾e se v dopise bude podpis nacházet.
+ Také nezále¾í na tom, kde je øádka s podpisem.
+ LyX je WYSIWYM; mù¾ete dát tuto øádku kamkoli, ale LyX ví, ¾e podpis má
+ být na konci.
+\layout Standard
+
+©ablona je obyèejný dokument v LyXu.
+ To znamená, ¾e mù¾ete ulo¾it svou adresu a podpis do nové ¹ablony.
+ A od teï, chcete-li psát dopis, mù¾ete pro úsporu èasu pou¾ít svou novou
+ ¹ablonu.
+ Pravdìpodobnì zde nemusíme doporuèovat skuteèné cvièení; prostì nìkomu
+ napi¹te dopis
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Jedno varování, pokud mìníte ¹ablonu.
+ Jestli¾e sma¾ete celý text dokumentu --- napøíklad, sma¾ete-li celé pole
+ 
+\family sans 
+My\SpecialChar ~
+Address
+\family default 
+, abyste jej mohli nahradit svým --- a pak posunete kurzor bez psaní textu,
+ styl mù¾e zmizet.
+ To proto, ¾e styl nemù¾e existovat bez napojení na text.
+ Obnovíte jej ruèním znovunastavením z nabídky 
+\family sans 
+Environment
+\family default 
+ menu.
+\end_inset 
+
+!
+\layout Section
+
+Nadpisy dokumentu
+\layout Standard
+
+LyX (stejnì jako LaTeX) oddìluje titulek --- který mù¾e obsahovat nadpis,
+ autora, datum a dokonce shrnutí obsahu --- a vlastní text dokumentu.
+\layout Standard
+
+Vra»te se zpìt k va¹emu dokumentu 
+\family typewriter 
+newfile.lyx 
+\family default 
+a pøesvìdète se, ¾e pou¾ívá textovou tøídu 
+\family sans 
+Article
+\family default 
+.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Zde byste ji¾ nemìli pou¾ívat tøídu 
+\family sans 
+Letter
+\family default 
+, proto¾e ta nedefinuje titulky.
+\end_inset 
+
+ Napi¹te titulek na první øádku a nastavte styl na 
+\family sans 
+Title
+\family default 
+.
+ Na dal¹í øádek napi¹te svoje jméno a zmìòte styl na 
+\family sans 
+Author
+\family default 
+.
+ Na dal¹í øádku napi¹te datum a nastavte styl na 
+\family sans 
+Date
+\family default 
+.
+ Napi¹te jeden nebo dva odstavce o obsahu va¹eho dokumentu a nastavte na
+ styl 
+\family sans 
+Abstract
+\family default 
+.
+ Nyní se podívejte, jak se to vytiskne.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Opravte sázení titulku, data a autora v 
+\family typewriter 
+example_raw.lyx.
+\layout Section
+
+Znaèky a odkazy
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:labels}
+
+\end_inset 
+
+Máte mo¾nost oznaèit znaèkou jakoukoli sekci va¹eho dokumentu (v podstatì
+ libovolný výsek textu).
+ Jakmile to udìláte, máte mo¾nost se na ni odkázat odkudkoli z dokumentu
+ pomocí odkazu, a to vèetnì èísla oddílu èi strany, na které se nachází.
+ Stejnì tak jako s oddíly èi poznámkami pod èarou, LyX obhospodaøuje odkazy
+ pro vás.
+ Automatické znaèky a odkazy na nì jsou nejsilnìj¹í zbraní LyXu (a LaTeXu)
+ proti obvyklým textovým procesorùm.
+\layout Subsection*
+
+Va¹e první znaèka
+\layout Standard
+
+Oznaème si druhou èást tohoto dokumentu (jmenuje se O tomto dokumentu).
+ Kliknìte na konec øádky s titulkem a zvolte 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾ení->
+\bar under 
+Z
+\bar default 
+naèka
+\family default 
+.
+ Objeví se dotaz na jméno nové znaèky.
+ Napi¹te 
+\family typewriter 
+sec:aboutdocument
+\family default 
+, co¾ je docela dobrý popis, který se nesplete s jinými znaèkami, které
+ mù¾ete v budoucnu pøidat.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Pí¹eme 
+\begin_inset Quotes gld
+\end_inset 
+
+sec:
+\begin_inset Quotes grd
+\end_inset 
+
+ proto¾e také mù¾ete oznaèit rovnice, tabulky èi obrázky.
+\end_inset 
+
+ Kdy¾ kliknete na 
+\family sans 
+OK
+\family default 
+, bude vámi zadaná znaèka zobrazena v obdélníèku na konci øádku.
+\layout Standard
+
+Mimochodem, znaèku mù¾ete umístit kdekoli uvnitø sekce, odkazy pak budou
+ míøit na nejbli¾¹í pøedcházející titulek sekce nebo podsekce pøed znaèkou.
+ Ale jestli¾e zadáte znaèku do titulku (èi na první øádku textu pod titulkem),
+ budou odkazy v rejstøíku odkazovat na správné místo v textu.
+\layout Standard
+
+Zatím jste v¹ak nevytvoøili nic --- soubor 
+\family typewriter 
+dvi
+\family default 
+ bude vypadat úplnì stejnì.
+ Pøidali jste v¹ak znaèku, na kterou se mù¾ete odkazovat tzv.
+ odkazem.
+ Viz ní¾e.
+\layout Subsection*
+
+Va¹e první odkazy
+\layout Standard
+
+Umístìte kurzor nìkam do sekce 2 ve va¹em dokumentu.
+ Napi¹te 
+\layout LyX-Code
+
+Jestli¾e chcete vìdìt více o tomto dokumentu, tak se podívejte na sekci,
+ která je na stranì .
+\layout Standard
+
+Nyní --- s kurzorem za slovem 
+\begin_inset Quotes gld
+\end_inset 
+
+sekce
+\begin_inset Quotes grd
+\end_inset 
+
+ --- zvolte
+\family sans 
+\bar under 
+ V
+\bar default 
+lo¾ení->
+\bar under 
+O
+\bar default 
+dkaz
+\family default 
+.
+ Objeví se dialog
+\family sans 
+ Vlo¾te\SpecialChar ~
+odkaz
+\family default 
+.
+ V nìm se objeví seznam v¹ech znaèek, na které se mù¾ete odkázat.
+ V tuto chvíli je zde jen jeden --- sec:aboutdocument.
+ Oznaète jej (není-li ji¾ oznaèen) a kliknìte na 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾te\SpecialChar ~
+odkaz
+\family default 
+.
+ Nyní posuòte kurzor za slovo stránce a kliknìte na 
+\family sans 
+Vlo¾te\SpecialChar ~
+èíslo\SpecialChar ~
+strany
+\family default 
+.
+\layout Standard
+
+LyX umístí odkazovací obdélníèek na místo, kde byl kurzor.
+ Pøi tisku se odkaz zmìní na skuteèné èíslo sekce èi jeho stranu (podle
+ toho, co jste zvolili v dialogu).
+ Odkaz pøi editaci dokumentu funguje jako hyperlink; kliknutí na nìj vás
+ pøesune na odkazované místo.
+ Zvolte 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->
+\bar under 
+O
+\bar default 
+bnov\SpecialChar ~
+dvi
+\family default 
+, a uvidíte odkaz na sekci 2 a stranu 1 (nebo na tu, kde sekce 2 momentálnì
+ je).
+\layout Subsection*
+
+Dal¹í mo¾nosti znaèek
+\layout Standard
+
+Ji¾ jsme øekli, ¾e LyX se stará o èíslování odkazù; vyzkou¹ejme si to.
+ Pøidejte novou sekci pøed sekci 2.
+ Nyní nechte probìhnout LaTeX, a --- kupodivu --- èíslo sekce se zmìnilo
+ na 3! Zmìòte O tomto dokumentu na subsekci, a odkaz bude nyní na 2.1 místo
+ 3.
+ Èíslo stránky se nezmìní (samozøejmì pokud jste nepøidali celou stranu
+ textu).
+\layout Standard
+
+Jestli si chcete znaèky procvièit více, tak zkuste vlo¾it znaèku sec:myfirstlabe
+l na místo, kde byl vá¹ odkaz, a odka¾te se na nìj odjinud z dokumentu.
+ Jestli¾e bude vkládat odkazy èasto (napøíklad, pí¹ete-li èlánek do èasopisu),
+ mù¾ete si nechat dialog pro vlo¾ení odkazu otevøený.
+\layout Standard
+
+Jestli¾e si chcete být jist, ¾e èísla stránek v odkazech budou správnì i
+ ve velkém dokumentu, 
+\family sans 
+\bar under 
+K
+\bar default 
+opírujte
+\family default 
+ nìkolik stránek z 
+\emph on 
+U¾ivatelské Pøíruèky
+\emph default 
+ a 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾te
+\family default 
+ jej do va¹eho dokumentu
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Mimochodem, kopírování nadpisu kapitoly mù¾e zpùsobit chybu v LyXu, proto¾e
+ názvy kapitol nejsou povoleny pro èlánky.
+ Jestli¾e se to stalo, pak prostì onen nadpis vyma¾te.
+ Jestli chcete znát dùvod, podívejte se na kapitolu 
+\begin_inset LatexCommand \ref{sec:textclasses}
+
+\end_inset 
+
+.
+ 
+\end_inset 
+
+.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Opravte odkazy v 
+\family typewriter 
+example_raw.lyx.
+\layout Section
+
+Poznámky pod èarou a poznámky na okraji
+\layout Standard
+
+Poznámky pod èarou mù¾ete vkládat pomocí tlaèítka vlo¾te poznámku pod èarou
+ na li¹tì
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Tlaèítko má na sobì ¹ipku, ukazující na èervený text pod èerným textem.
+\end_inset 
+
+ nebo 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾ení->
+\bar under 
+P
+\bar default 
+oznámka\SpecialChar ~
+pod\SpecialChar ~
+èarou
+\family default 
+\SpecialChar \@.
+ Kliknìte na slovo LyX kdekoli ve va¹em dokumentu a stisknìte tlaèítko pro
+ vlo¾ení poznámky pod èarou.
+ Øádka pro text poznámky se objeví pod øádkou, na kterou teï pí¹ete.
+ Nalevo je slovo foot napsané èervenì v ¹edém obdélníku.
+ Zbytek øádky je èervenì orámován.
+ LyX posune kurzor na zaèátek øádky s poznámkou.
+ Napi¹te
+\layout LyX-Code
+
+LyX je textový procesor.
+\layout Standard
+
+Nyní kliknìte na slovo foot.
+ Øádka s poznámkou byla nahrazena slovem foot, napsaným èervenì v horním
+ indexu na místì, kde se bude na poznámku odkazovat; toto se nazývá zabalením
+ poznámky.
+ Tuto poznámku je mo¾no rozbalit --- a opravit, je-li tøeba --- kliknutím
+ na èervený nápis foot.
+\layout Standard
+
+Mo¾ná se ptáte, proè LyX ukazuje slovo místo èísla.
+ Odpovìï je jednoduchá, proto¾e èíslování poznámek se dìje a¾ pøi tisku
+ LaTeXem, co¾ mù¾ete vidìt v souboru 
+\family typewriter 
+dvi
+\family default 
+ nebo na výtisku, tak¾e skuteènì není tøeba tato èísla ukazovat v LyXu.
+\layout Standard
+
+Poznámku lze vystøihnout a vlo¾it tak, jako normální text.
+ Zkuste si to.
+ V¹e, co tøeba, je oznaèit znaèku pro poznámku
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Mo¾ná je jednodu¹¹í oznaèit ji pomocí klávesnice.
+ Mù¾ete toti¾ poznámku rozbalit místo jejího oznaèení jestli¾e se nestrefíte
+ pøesnì.
+\end_inset 
+
+ a 
+\family sans 
+\bar under 
+V
+\bar default 
+ystøihnout
+\family default 
+ a 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾it
+\family default 
+ ji.
+ Navíc, mù¾ete zmìnit normální text na poznámku oznaèení textu a stiskem
+ tlaèítka
+\family sans 
+ Vlo¾te \SpecialChar ~
+poznámku
+\family default 
+; zmìòte poznámku na normální text opìtovným stiskem tlaèítka 
+\family sans 
+Vlo¾te \SpecialChar ~
+poznámku
+\family default 
+, kdy¾ máte kurzor na poznámce.
+\layout Standard
+
+Poznámky po stranì lze vkládat pomocí tlaèítka
+\family sans 
+ Vlo¾te\SpecialChar ~
+poznámku\SpecialChar ~
+po\SpecialChar ~
+stranì
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Tlaèítko ukazuje ¹ipku ukazující na èervený text po stranì od èerného.
+\end_inset 
+
+ nebo z nabídky 
+\bar under 
+V
+\bar default 
+lo¾ení->Poznámka\SpecialChar ~
+na\SpecialChar ~
+okraji
+\family default 
+\SpecialChar \@.
+ Poznámky na okraji se chovají jako poznámky pod èarou vyjma: 
+\layout Itemize
+
+na obrazovce se objeví margin místo foot
+\layout Itemize
+
+poznámky se objeví po stranì místo pod textem 
+\layout Itemize
+
+poznámky po stranì nejsou èíslovány
+\layout Itemize
+
+kdy¾ je poznámka zabalená, zobrazí se po stranì vykøièník.
+ Tento vykøièník se netiskne.
+\layout Standard
+
+Zmìòte va¹i poznámku pod èarou na text a pak na poznámku po stranì.
+ Prohlédnìte si výstup z LaTeXu.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Opravte poznámky pod èarou v souboru 
+\family typewriter 
+example_raw.lyx.
+\layout Section
+
+Citace
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:bibliographies}
+
+\end_inset 
+
+Citace jsou podobné odkazùm.
+ Citace obsahuje seznam odkazù na konci dokumentu, které mohou být zmiòovány
+ v textu dokumentu.
+ Tak jako nadpisy sekcí, LyX a LaTeX vám ulehèuje ¾ivot automatickým èíslováním
+ citací, pøièem¾ mìní èísla, zmìní-li se jejich poèet nebo poøadí.
+\layout Standard
+
+Jdìte na konec dokumentu a pøepnìte se 
+\family sans 
+na styl Bibliography
+\family default 
+.
+ Nyní je ka¾dý odstavec jednou citací.
+ Napi¹te 
+\family typewriter 
+The Lyx Tutorial, by the LyX DocTeam
+\family default 
+ jako va¹i první citaci.
+ Pov¹imnìte si, ¾e LyX automaticky oèísluje ka¾dou citaci.
+ Kliknìte na obdélník s èíslem a objeví se dialog 
+\family sans 
+Polo¾ka\SpecialChar ~
+bibliografie
+\family default 
+.
+ První pole, 
+\family sans 
+Key
+\family default 
+, se pou¾ívá jako reference uvnitø dokumentu v LyXu.
+ Implicitnì se jedná o èíslo.
+ Zmìòte jeho hodnotu na lyxtutorial, abyste si jej mohli lépe zapamatovat.
+\layout Standard
+
+Nyní zvolte místo ve va¹em dokumentu, kam chcete vlo¾it citaci.
+ To se provede pomocí 
+\family sans 
+Vlo¾ení->Citace\SpecialChar \@.
+
+\family default 
+ LyX nakreslí ¹edivý obdélník s otazníkem v závorce a objeví se dialog pro
+ vlo¾ení citace.
+ První pole se také jmenuje 
+\family sans 
+Key
+\family default 
+, a v tomto poli zvolte, co chcete citovat
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Zde je vidìt, proè je vhodné pojmenovávat citace namísto jejich automatického
+ èíslování.
+\end_inset 
+
+.
+ Kliknìte na ¹ipku, rozbalí se nabídka, a v ní zvolte lyxtutorial (momentálnì
+ jediná polo¾ka v citacích).
+ Nyní spus»te LaTeX, a podívejte se jak se citace zobrazí.
+\layout Standard
+
+Jak se pou¾ívají ostatní pole? 
+\family sans 
+\bar under 
+P
+\bar default 
+oznámka
+\family default 
+ v 
+\family sans 
+Citacích
+\family default 
+ vlo¾í za citaci seznam stránek, kde je tato citace odkazována.
+ Jestli¾e chcete, aby byly citace zobrazovány jako text místo èísla (napøíklad
+ [Smi95] jako odkaz na èlánek od Smithe z roku 1995), pou¾ijte pole 
+\family sans 
+Label
+\family default 
+.
+ Jako obvykle, detaily najdete v 
+\emph on 
+U¾ivatelské pøíruèce.
+\layout Standard
+
+
+\series bold 
+Cvièení: 
+\series default 
+Opravte citace v 
+\family typewriter 
+example_raw.lyx.
+\layout Section
+
+Obsah
+\layout Standard
+
+Mo¾ná chcete vlo¾it obsah na zaèátek dokumentu.
+ LyX tento po¾adavek hravì splní.
+ Staèí stisknout 
+\family sans 
+Return
+\family default 
+ po nadpisu va¹eho dokumentu a pøed nadpisem první sekce
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Nezkou¹ejte mazat èíslo sekce.
+ Nepùjde to.
+ LyX toti¾ èísluje za vás.
+\end_inset 
+
+ a zvolte 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾ení->Seznamy \SpecialChar ~
+a\SpecialChar ~
+Obsah->Obsah
+\family default 
+.
+ Slovo obsah se objeví na první øádce dokumentu.
+ 
+\layout Standard
+
+Toto nemusí být velmi úèelné.
+ Podíváte-li se v¹ak na vá¹ soubor 
+\family typewriter 
+dvi
+\family default 
+, uvidíte, ¾e obsah byl vygenerován jako seznam v¹ech sekcí a podsekcí.
+ Jako obvykle, pøesunete-li sekce, uvidíte tyto zmìny po obnovení 
+\family typewriter 
+dvi.
+\layout Standard
+
+Obsah není zobrazen na obrazovce, proto¾e jej stejnì nemù¾ete upravovat.
+ Na druhé stranì mù¾ete zobrazit dialog s obsahem pomocí nabídky 
+\family sans 
+Ú
+\bar under 
+p
+\bar default 
+ravy->
+\bar under 
+O
+\bar default 
+bsah
+\family default 
+.
+ Toto je velmi u¾iteèná pomùcka.
+ Lze ji pou¾ít pro pohyb v dokumentu.
+ Kliknutím na jméno sekce èi podsekce se pøesunete kurzorem na odpovídající
+ místo v dokumentu.
+ Pro pohyb v obsahu mù¾ete také pou¾ít ¹ipky.
+ Toto okno lze také nechat otevøené celou dobu práce s dokumentem.
+\layout Standard
+
+Obsah lze vymazat jako jakýkoli jiný (obyèejný) znak.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Opravte obsah v souboru 
+\family typewriter 
+example_raw.lyx.
+\layout Part
+
+Pou¾ití matematického re¾imu
+\layout Standard
+
+LaTeX je pou¾íván mnoha vìdci, proto¾e umí tisknout velmi dobøe vypadající
+ rovnice bez nutností pou¾ívat speciální øídící znaky textových procesorù
+ a jejich editorù rovnic.
+ Na druhé stranì mnoho z tìchto vìdcù je nespokojených, proto¾e psaní rovnic
+ v LaTeXu je spí¹e programování ne¾ psaní.
+ Na¹tìstí LyX podporuje WYSIWYM pro rovnice.
+ Jestli¾e ovládáte LaTeX, mù¾ete zde pøímo psát v¹echny obvyklé matematické
+ pøíkazy, ale uvidíte je jako WYSIWYM.
+ Jestli¾e naopak, jste nikdy v LaTeXu nepsali, tak potom vám 
+\family sans 
+Math\SpecialChar ~
+Panel
+\family default 
+ umo¾ní psát profesionálnì vypadající text jednodu¹e a rychle
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+LyX pochopitelnì neumí kontrolovat, zda to, co jste napsali, je 
+\emph on 
+dobøe
+\emph default 
+.
+ Je nám líto.
+\end_inset 
+
+.
+\layout Section
+
+Matematický re¾im
+\layout Standard
+
+Nìkde ve va¹em dokumentu napi¹te:
+\layout LyX-Code
+
+Líbí se mi to Einsteinovo E=mc^2, proto¾e je to jednoduché.
+ 
+\layout Standard
+
+Tohle nevypadá nejlépe, dokonce i v 
+\family typewriter 
+dvi
+\family default 
+; není zde mezera mezi znaky a rovnítkem, a navíc jste chtìli napsat dvojku
+ jako mocninu.
+ Takto to dopadlo, proto¾e jste LyXu neøekli, ¾e pí¹ete matematický výraz,
+ tak¾e toto napsal jako obyèejný text.
+\layout Standard
+
+Matematika se pí¹e v Mathedu, jinak té¾ v matematickém re¾imu.
+ Pro vstup do tohoto re¾imu, stisknìte modré tlaèítko oznaèené 
+\begin_inset Formula $\frac{a+b}{c}$
+\end_inset 
+
+.
+ LyX otevøe malý modrý obdélníèek s fialovým okrajem.
+ Modrý obdélníèek je 
+\emph on 
+bod pro vkládání
+\emph default 
+, který øíká, ¾e Mathed èeká na vá¹ vstup, a obdélníèek vám oznamuje, ¾e
+ se nacházíte v Mathedu.
+ LyX posunul kurzor dovnitø modrého obdélníka, tak¾e znovu napi¹te E=mc
+\family typewriter 
+^2
+\family default 
+.
+ Výraz se napí¹e modøe a modrý obdélníèek zmizí, jakmile není bod pro vkládání
+ prázdný.
+ Nyní stisknìte 
+\family sans 
+Esc
+\family default 
+ pro opu¹tìní Mathedu.
+ (Poznámka: opìtovné kliknutí na tlaèítko 
+\family sans 
+math
+\family default 
+ nezpùsobí 
+\emph on 
+opu¹tìní
+\emph default 
+ Mathedu).
+ Zmizí fialový obdélník a jestli teï nìco napí¹ete, bude to obyèejný text.
+\layout Standard
+
+Spus»te LaTeX a prohlédnìte si soubor 
+\family typewriter 
+dvi
+\family default 
+.
+ Pov¹imnìte si, ¾e výraz je vysázen lépe, jsou zde mezery u rovnítka a dvojka
+ je v exponentu.
+ Písmenka v matematickém re¾imu se pova¾ují za promìnné (proto jsou v kurzívì)
+ a èísla jsou prostì èísla.
+\layout Standard
+
+Mathed je dal¹ím pøíkladem filozofie WYSIWYM.
+ V LaTeXu pí¹ete matematický výraz pomocí textu a pøíkazù jako 
+\family typewriter 
+
+\backslash 
+sqrt
+\family default 
+; toto mù¾e být velice nepøíjemné, proto¾e dokud nespustíte LaTeX nevidíte
+ jak bude vypadat výstup, abyste pak na¹li chybìjící závorky èi jiné chyby.
+ Na druhé stranì LyX vám na obrazovce neuká¾e výraz úplnì perfektnì (WYSIWYG),
+ ale dá vám dostateènì dobrou pøedstavu jak bude vypadat po vysázení.
+ LaTeX se pak postará o profesionální vysázení.
+ V 99% pøípadù není tøeba mìnit na výstupu z LaTeXu nic.
+ Takto (omlouváme se za mentorování) se mù¾ete soustøedit na 
+\emph on 
+obsah
+\emph default 
+ va¹eho výrazu, nikoli na jeho vzhled.
+\layout Section
+
+Pohyb kurzoru v rovnici
+\layout Standard
+
+Nyní zmìòme 
+\begin_inset Formula $E=mc^{2}$
+\end_inset 
+
+ na 
+\begin_inset Formula $E=1+mc^{2}$
+\end_inset 
+
+.
+ Pou¾ijte ¹ipky pro pohyb uvnitø výrazu.
+ Kdy¾ procházíte výrazem, objeví se opìt fialový obdélníèek, proto¾e jste
+ opìt v Mathedu.
+ Nyní pou¾ijte klávesy 
+\family sans 
+Vlevo
+\family default 
+ a 
+\family sans 
+Vpravo
+\family default 
+ pro pøesun za rovnítko a napi¹te 1+.
+ Znovu, mù¾ete tento re¾im opustí ¹ipkami nebo klávesou 
+\family sans 
+Esc
+\family default 
+ a fialový obdélníèek zmizí.
+ Mnoho lidí bude pou¾ívat ¹ipky, ale stejnì dobøe mù¾ete kliknout doprostøed
+ výrazu a zaèít upravovat.
+\layout Standard
+
+S výjimkou speciálních kláves popsaných ní¾e, je psaní v Mathedu podobné
+ jako psaní normálního textu.
+ Pou¾ijte 
+\family sans 
+Delete
+\family default 
+ (èi 
+\family sans 
+Backspace
+\family default 
+) pro mazaní.
+ Oznaèujte pomocí ¹ipek nebo my¹i.
+ 
+\family sans 
+Ú
+\bar under 
+p
+\bar default 
+ravy->Zpìt
+\family default 
+ v matematickém re¾imu funguje, stejnì jako vystøihování a vkládání.
+ Jen na jedno je tøeba dát si pozor: jste-li mimo výraz, pak 
+\family sans 
+Delete
+\family default 
+ (èi 
+\family sans 
+Backspace
+\family default 
+) sma¾e celý tento výraz.
+ Na¹tìstí mù¾ete pou¾ít 
+\family sans 
+Undo
+\family default 
+.
+\layout Standard
+
+Co kdy¾ chcete zmìnit 
+\begin_inset Formula $E=mc^{2}$
+\end_inset 
+
+ na 
+\begin_inset Formula $E=mc^{2.5}+1$
+\end_inset 
+
+? Mù¾ete kliknout na správné místo nebo si tam dojít ¹ipkami.
+ Je-li kurzor za c, ale pøed 2, stisknìte 
+\family sans 
+Nahoru
+\family default 
+ a posunete se do horního indexu (v tomto pøípadì se jedná o mocninu) pøesnì
+ pøed dvojku.
+ Pøidejte .5.
+ Stiskem
+\family sans 
+ Dolù
+\family default 
+ se pøesunete zpìt na základní úroveò a kurzor bude 
+\emph on 
+za
+\emph default 
+ mocninou (tak¾e teï napi¹te +1).
+\layout Standard
+
+K pohybu po výrazu také mù¾ete pou¾ít 
+\family sans 
+Mezeru.
+
+\family default 
+ Jestli¾e jste uvnitø struktury v Mathedu (jako je index, mocnina, zlomek,
+ oddìlovaè èi matice, které jsou popsány v dal¹ích oddílech), 
+\family sans 
+Mezera
+\family default 
+ vás pøesune za strukturu, ale stále zùstáváte uvnitø Mathedu.
+ Tak¾e, jste-li v mocninì, pak vás 
+\family sans 
+Mezera
+\family default 
+ pøesune na základní úroveò za tuto mocninu.
+ To znamená, ¾e výraz 
+\begin_inset Formula $E=mc^{1+x}-2$
+\end_inset 
+
+ lze napsat bez pou¾ití my¹i 
+\emph on 
+i
+\emph default 
+ ¹ipek, co¾ je cesta, kterou budete pozdìji pravdìpodobnì pou¾ívat.
+ V místì, kde by tato akce nemìla smysl (napøíklad mezi m a c), 
+\family sans 
+Mezera
+\family default 
+ neudìlá nic
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+
+\family sans 
+Space
+\family default 
+ a 
+\family sans 
+Tab
+\family default 
+ 
+\series bold 
+nelze
+\series default 
+ pou¾ít pro pøidávání mezer dovnitø výrazu.
+ Mezery jsou vìcí sázení, tak¾e jsou plnì v kompetenci LyXu (LaTeXu) (viz
+ sekce 
+\begin_inset LatexCommand \ref{sec:whitespace}
+
+\end_inset 
+
+).
+ Jestli¾e nejste s vysazením spokojeni, jsou zde cesty, jak jej jemnì doladit,
+ co¾ je popsáno v 
+\emph on 
+U¾ivatelské pøíruèce
+\emph default 
+ --- nestarejte se o to, dokud nedopí¹ete celý dokument.
+\end_inset 
+
+.
+\layout Standard
+
+Pov¹imnìte si, ¾e pokud ukonèíte výraz stiskem 
+\family sans 
+Esc
+\family default 
+, nebude za ním ¾ádná mezera, tak¾e budete-li ji vy¾adovat, musíte ji sami
+ napsat.
+ Napí¹ete-li v¹ak 
+\family sans 
+Mezeru
+\family default 
+ jako poslední znak v Mathedu, pak jej takto ukonèíte 
+\emph on 
+a
+\emph default 
+ napí¹ete tuto mezeru za výrazem.
+ Takto tedy lze psát 
+\begin_inset Quotes gld
+\end_inset 
+
+
+\begin_inset Formula $f=ma$
+\end_inset 
+
+ je moje oblíbená rovnice
+\begin_inset Quotes grd
+\end_inset 
+
+ místo 
+\begin_inset Quotes gld
+\end_inset 
+
+
+\begin_inset Formula $f=ma$
+\end_inset 
+
+je moje oblíbená rovnice
+\begin_inset Quotes grd
+\end_inset 
+
+.
+\layout Section
+
+Exponenty a indexy
+\layout Standard
+
+Exponent lze vlo¾it z nabídky 
+\family sans 
+\bar under 
+M
+\bar default 
+atematika
+\family default 
+, ale je daleko jednodu¹¹í napsat støí¹ku, 
+\begin_inset Quotes gld
+\end_inset 
+
+^
+\begin_inset Quotes grd
+\end_inset 
+
+.
+ LyX umístí vkládací bod (modrý obdélníèek, pamatujete se?) na místo exponentu,
+ tak¾e cokoli teï napí¹ete, bude umístìno nahoøe a bude vysázeno v men¹í
+ velikosti písma; a to a¾ do stisku 
+\family sans 
+Mezery
+\family default 
+ (nebo 
+\family sans 
+Esc
+\family default 
+ pro úplné opu¹tìní mathedu).
+ Psaní indexù je také tak jednoduché --- napi¹te podtr¾ítko, 
+\begin_inset Quotes gld
+\end_inset 
+
+_
+\begin_inset Quotes grd
+\end_inset 
+
+.
+ Indexy a exponenty lze libovolnì kombinovat, napøíklad i takto: 
+\begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
+\end_inset 
+
+.
+ 
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Pøedìlejte rovnici 1 z 
+\family typewriter 
+example_raw.lyx
+\family default 
+ do matematického re¾imu.
+\layout Section
+
+
+\family sans 
+Panel Math
+\family default 
+ 
+\layout Standard
+
+
+\family sans 
+Math\SpecialChar ~
+Panel
+\family default 
+ je jednoduchá cesta pro vkládání symbolù a vyu¾ívání komplikovaných funkcí
+ Mathedu.
+ Vìt¹inu z tìchto funkcí lze také vyvolat z klávesnice nebo z nabídky 
+\family sans 
+\bar under 
+M
+\bar default 
+ath
+\family default 
+.
+ Ale nyní se soustøedíme na pou¾ívání 
+\family sans 
+Math\SpecialChar ~
+Panelu
+\family default 
+, abyste vìdìli, co tam mù¾ete najít; klávesové zkratky se mù¾ete nauèit
+ pozdìji z ostatních manuálù.
+ Tak teï si otevøete 
+\family sans 
+Math\SpecialChar ~
+Panel
+\family default 
+ a nechte jej otevøený dokud budete èíst tuto kapitolu.
+\layout Subsection
+
+Øecká písmena a symboly
+\layout Standard
+
+Jestli¾e kliknete na tlaèítko oznaèené 
+\begin_inset Quotes gld
+\end_inset 
+
+
+\begin_inset Formula $\Gamma\rho\epsilon\epsilon\kappa$
+\end_inset 
+
+
+\begin_inset Quotes grd
+\end_inset 
+
+, otevøe se nabídka, ze které mù¾ete vybrat øecké písmeno, které se vlo¾í
+ na místo kurzoru.
+ Pov¹imnìte si, ¾e je zde nìkolik variant epsilonu, psí, theta a sigma.
+ Jako zkratka, zatímco pí¹ete text a zvolíte nìco z 
+\family sans 
+Math\SpecialChar ~
+Panelu
+\family default 
+, Mathed se automaticky otevøe.
+ 
+\layout Standard
+
+Dal¹í ètyøi tlaèítka na 
+\family sans 
+Math\SpecialChar ~
+Panelu
+\family default 
+ vám umo¾òují napsat rùzné symboly pou¾ité v matematických výrazech: ¹ipky,
+ relace, operátory, sumy a integrály.
+ Poznamenejme, ¾e indexy a exponenty vám umo¾òují psát meze sum a integrálù.
+ Poslední tlaèítko má oznaèení rùzné.
+ 
+\begin_inset Quotes gld
+\end_inset 
+
+Nic není nemo¾né\SpecialChar \ldots{}
+ V¹e co potøebuje¹ je 
+\begin_inset Formula $\heartsuit$
+\end_inset 
+
+.
+\begin_inset Quotes grd
+\end_inset 
+
+
+\layout Subsection
+
+Mocniny, zvýraznìní a oddìlovaèe
+\layout Standard
+
+Pro napsání odmocniny staèí kliknout na symbol odmocniny.
+ Objeví se odmocnina a vkládací bod se pøesune dovnitø, kam mù¾ete psát
+ promìnné, èísla, jiné odmocniny, zlomky, prostì cokoli chcete.
+ LyX bude automaticky mìnit velikost odmocniny podle jejího argumentu.
+\layout Standard
+
+Akcentování znaku (
+\begin_inset Formula $\overrightarrow{v}$
+\end_inset 
+
+) nebo skupiny znakù (
+\begin_inset Formula $\overrightarrow{a+b}$
+\end_inset 
+
+) se dosáhne stejnì.
+ Stisknìte tlaèítko s akcentací, které je oznaèeno modrým obdélníèkem nahoøe
+ s èernou vlnovkou\SpecialChar ~
+(~).
+ Po kliknutí LyX otevøe akcentaci s bodem pro vkládání pod (nebo nad) akcentem.
+ Jen kliknìte na typ akcentu, vlo¾te obsah a poté stisknìte 
+\family sans 
+Mezeru
+\family default 
+ pro ukonèení mathedu.
+\layout Standard
+
+Oddìlovaèe jako závorky v¹ech tvarù fungují podobnì, ale trochu slo¾itìji.
+ Stisknìte tlaèítko s oddìlovaèi, co¾ je modrý obdélníèek s hranatými závorkami
+ kolem, a objeví se dialog s oddìlovaèi.
+ Kliknìte na levý oddìlovaè 
+\emph on 
+levým tlaèítkem my¹i
+\emph default 
+ a na pravý oddìlovaè 
+\emph on 
+pravým tlaèítkem my¹i
+\emph default 
+.
+ 
+\layout Standard
+
+(Alternativnì lze pou¾ít tlaèítka 
+\begin_inset Quotes gld
+\end_inset 
+
+
+\bar under 
+L
+\bar default 
+evý
+\begin_inset Quotes grd
+\end_inset 
+
+ a 
+\bar under 
+
+\begin_inset Quotes gld
+\end_inset 
+
+P
+\bar default 
+ravý
+\begin_inset Quotes erd
+\end_inset 
+
+ a potom kliknout na oddìlovaèe 
+\emph on 
+levým tlaèítkem my¹i.
+\emph default 
+) Vá¹ souèasný výbìr je zobrazen nahoøe v dialogu.
+ Implicitnì je to nastaveno na pár kulatých závorek, ale toto mù¾ete zmìnit
+ na jakoukoli kombinaci, dokonce mù¾ete zvolit prázdný obdélníèek, abyste
+ získali nìco jako 
+\begin_inset Quotes gld
+\end_inset 
+
+
+\begin_inset Formula $a=\left\langle 7\right.$
+\end_inset 
+
+
+\begin_inset Quotes grd
+\end_inset 
+
+ (prázdný oddìlovaè se v LyXu zobrazí jako pøeru¹ená vertikální èerná èára,
+ která se pøi tisku nezobrazuje).
+\layout Standard
+
+Jakmile jednou vyberete va¹e oddìlovaèe, kliknìte na 
+\family sans 
+OK, 
+\family default 
+a tím vlo¾íte va¹i selekci na místo kurzoru (nebo stisknìte 
+\family sans 
+Pou¾ij
+\family default 
+, chcete-li nechat toto okno otevøené pro pøí¹tì).
+ Jste-li líní, mù¾ete psát závorky pøímo v matematickém re¾imu místo pou¾ití
+ dialogu s oddìlovaèi.
+ Na druhé stranì takto napsané oddìlovaèe budou mít stejnou velikost jako
+ text, který zrovna pí¹ete, co¾ nevypadá dobøe, je-li uvnitø velký zlomek
+ èi matice.
+ Pou¾ití dialogu 
+\family sans 
+Oddìlovaèe
+\family default 
+ vám zajistí, ¾e budou vysázeny v odpovídající velikosti.
+\layout Standard
+
+Také mù¾ete vlo¾it oddìlovaèe kolem textu, který je ji¾ napsán.
+ Oznaète jej a kliknìte na oddìlovaèe, které si pøejete vlo¾it.
+ Zkuste zmìnit Newtonùv druhý zákon ze skalárního na vektorový tvar (z 
+\begin_inset Formula $f=ma$
+\end_inset 
+
+ na 
+\begin_inset Formula $\overrightarrow{f}=m\overrightarrow{a}$
+\end_inset 
+
+).
+ Jakmile se nauèíte psát matice, tak ji¾ budete vìdìt, jak kolem udìlat
+ závorky.
+\layout Subsection
+
+Zlomky
+\layout Standard
+
+Zlomky jsou v mathedu jednoduché.
+ Kliknìte na tlaèítko 
+\family sans 
+zlomek
+\family default 
+ v 
+\family sans 
+Math\SpecialChar ~
+Panelu
+\family default 
+, které je oznaèeno zlomkem se dvìma modrými obdélníèky místo èitatele i
+ jmenovatele.
+ LyX vytvoøí dva vkládací body ve zlomku.
+ Tak, jak byste oèekávali, mù¾ete se po zlomku pohybovat my¹í i ¹ipkami.
+ Kliknìte na èitatele a napi¹te 
+\begin_inset Quotes gld
+\end_inset 
+
+1
+\begin_inset Quotes grd
+\end_inset 
+
+.
+ Nyní stisknìte 
+\family sans 
+Dolù
+\family default 
+ a stisknìte 
+\begin_inset Quotes gld
+\end_inset 
+
+2
+\begin_inset Quotes grd
+\end_inset 
+
+.
+ No a napsali jste zlomek! Samozøejmì, ¾e místo èísel mù¾ete napsat cokoli:
+ promìnné s exponenty, odmocniny èi jiné zlomky, skuteènì cokoli.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Pøedìlejte rovnici 2 z 
+\family typewriter 
+example_raw.lyx
+\family default 
+ do matematického re¾imu..
+\layout Subsection
+
+Re¾im TeX : Limity, log, sin a jiné
+\layout Standard
+
+Proto¾e jsou písmena v matematickém re¾imu pova¾ována za promìnné, napí¹ete-li
+ 
+\begin_inset Quotes gld
+\end_inset 
+
+sin
+\begin_inset Quotes grd
+\end_inset 
+
+, bude si LyX myslet, ¾e pí¹ete souèin 
+\begin_inset Formula $s$
+\end_inset 
+
+, 
+\begin_inset Formula $i$
+\end_inset 
+
+, a 
+\begin_inset Formula $n$
+\end_inset 
+
+.
+ Tato tøi písmena se napí¹ou kurzívou, zatímco jste ve skuteènosti oèekávali
+ slovo 
+\begin_inset Quotes gld
+\end_inset 
+
+sin
+\begin_inset Quotes grd
+\end_inset 
+
+ napsané normálním písmem.
+ Navíc, LyX neumístí mezeru mezi 
+\begin_inset Quotes gld
+\end_inset 
+
+sin
+\begin_inset Quotes grd
+\end_inset 
+
+ a 
+\begin_inset Quotes gld
+\end_inset 
+
+x
+\begin_inset Quotes grd
+\end_inset 
+
+ (
+\family sans 
+Mezera
+\family default 
+ pouze ukonèuje mathed).
+ Tak¾e jak dostanete 
+\begin_inset Quotes gld
+\end_inset 
+
+
+\begin_inset Formula $\sin x$
+\end_inset 
+
+
+\begin_inset Quotes grd
+\end_inset 
+
+namísto 
+\begin_inset Quotes gld
+\end_inset 
+
+
+\begin_inset Formula $sinx$
+\end_inset 
+
+
+\begin_inset Quotes grd
+\end_inset 
+
+?
+\layout Standard
+
+Kliknìte na 
+\begin_inset Quotes gld
+\end_inset 
+
+sin
+\begin_inset Quotes grd
+\end_inset 
+
+ v nabídce 
+\family sans 
+Funkce
+\family default 
+ na 
+\family sans 
+Math\SpecialChar ~
+Panelu.
+
+\family default 
+ Slovo 
+\begin_inset Quotes gld
+\end_inset 
+
+sin
+\begin_inset Quotes grd
+\end_inset 
+
+ je nyní napsáno èervenì a normálním písmem, jinak té¾ v tzv.
+ TeX módu.
+ Celé slovo se chová jako jeden symbol, tak¾e jedno stisknutí 
+\family sans 
+Backspace
+\family default 
+ jej celé vyma¾e.
+ Nyní stisknìte 
+\begin_inset Quotes gld
+\end_inset 
+
+x
+\begin_inset Quotes grd
+\end_inset 
+
+ a to se napí¹e v modré kurzívì, tak, jak byste oèekávali.
+ A v souboru 
+\family typewriter 
+dvi
+\family default 
+ bude v¹e vysázeno korektnì.
+ Zkuste si to.
+\layout Standard
+
+Mezi dal¹ími pøíkazy, které pí¹ete v TeXu pomocí nabídky 
+\family sans 
+Funkce
+\family default 
+ zahrnují dal¹í trigonometrické funkce a jejich inverze, hyperbolické funkce,
+ logaritmy, limity a dal¹í.
+ Tyto funkce lze také oindexovat a umocòovat, jako napøíklad pro 
+\begin_inset Quotes gld
+\end_inset 
+
+
+\begin_inset Formula $\cos^{2}\theta$
+\end_inset 
+
+
+\begin_inset Quotes grd
+\end_inset 
+
+ or 
+\begin_inset Quotes gld
+\end_inset 
+
+
+\begin_inset Formula $\lim_{n\rightarrow\infty}$
+\end_inset 
+
+
+\begin_inset Quotes grd
+\end_inset 
+
+.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Pøedìlejte rovnici 3 z 
+\family typewriter 
+example_raw.lyx
+\family default 
+ do matematického re¾imu.
+\layout Subsection
+
+Matice
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:matrices}
+
+\end_inset 
+
+Kliknìte na tlaèítko 
+\family sans 
+matrix
+\family default 
+ na 
+\family sans 
+Math\SpecialChar ~
+Panelu
+\family default 
+.
+ V dialogu matice najdete dva jezdce pro nastavení poètu sloupcù a øádkù.
+ Zvolte dva øádky a tøi sloupce a stisknìte buï 
+\family sans 
+Pou¾ít
+\family default 
+ nebo 
+\family sans 
+OK
+\family default 
+.
+ LyX vytiskne 6 bodù pro vkládání v matici 
+\begin_inset Formula $2\times3$
+\end_inset 
+
+.
+ Na ka¾dou pozici v matici mù¾ete samozøejmì vlo¾it jakýkoli výraz (odmocninu,
+ jinou matici atd.).
+ Také mù¾ete nechat nìkteré pozice úplnì prázdné.
+\layout Standard
+
+
+\family sans 
+Tab
+\family default 
+ lze pou¾ít pro pøesunutí mezi sloupci matice.
+ Alternativnì mù¾ete pou¾ít pro pohyb ¹ipky - stiskem 
+\family sans 
+Vpravo
+\family default 
+ na konci jednoho obdélníèku se pøesunete do dal¹ího, 
+\family sans 
+Dolù
+\family default 
+ vás pøesune na následující øádek apod.
+\layout Standard
+
+Viz 
+\emph on 
+U¾ivatelská pøíruèka
+\emph default 
+ pro informace o tom, jak zmìnit vodorovné zarovnávání sloupcù a jak zmìnit
+ svislou pozici celé matice.
+ Jestli¾e chcete psát tabulku obsahující text, pak vám doporuèujeme pou¾ít
+ tabulkovou podporu LyXu namísto snahy psát text dovnitø matice.
+\layout Subsection
+
+Re¾im zobrazení
+\layout Standard
+
+V¹echny výrazy, které jsme doposud napsali se nacházeli na jedné øádce spolu
+ s textem, který je obklopoval.
+ Tohle je výhodné pro jednoduché výrazy, ale jestli¾e chcete psát komplikovanìj¹
+í výrazy nebo je chcete umístit mimo text, potøebujete je napsat v tzv.
+ re¾imu zobrazení.
+ Navíc, jen takto napsané výrazy lze oznaèit znaèkou a èíslovat (viz 
+\emph on 
+U¾ivatelská pøíruèka
+\emph default 
+), toto je jediný zpùsob jak psát víceøádkové rovnice (viz 
+\begin_inset LatexCommand \ref{sec:multiline}
+
+\end_inset 
+
+).
+\layout Standard
+
+Kliknìte na tlaèítko 
+\family sans 
+zobrazení 
+\family default 
+na 
+\family sans 
+Math\SpecialChar ~
+Panelu
+\family default 
+, který je zobrazen jako nìkolik øádek nad a pod modrým obdélníèkem.
+ LyX vytvoøí vkládací bod, který se nachází na nové øádce a je na ní vystøedìn.
+ Nyní napi¹te výraz a spus»te LaTeX, abyste se podívali, jak to bude vypadat.
+ Tlaèítko 
+\family sans 
+zobrazení 
+\family default 
+je ve skuteènosti pøepínaè; zkuste ho pou¾ít na pøepnutí nìkolika výrazù
+ do a z re¾imu zobrazení.
+\layout Standard
+
+Tento re¾im má nìkolik rozdílù oproti regulérnímu Mathedu:
+\layout Itemize
+
+Nìkteré symboly mají trochu men¹í velikost, napøíklad 
+\begin_inset Formula $\sum$
+\end_inset 
+
+ a 
+\begin_inset Formula $\int$
+\end_inset 
+
+
+\layout Itemize
+
+Exponenty a indexy pro limity a sumy (nikoli pro integrály) se vysadí pod
+ a nad operaci, ne a¾ za ní.
+\layout Itemize
+
+Text je vystøedìn
+\layout Standard
+
+A¾ na tyto drobnosti jsou oba re¾imy zobrazení velice podobné.
+\layout Standard
+
+Jedna poznámka nakonec: dávejte si pozor, zda je vá¹ výraz na novém øádku
+ nebo ne.
+ Jestli¾e se vá¹ výraz nachází uprostøed vìty (nebo odstavce), neukonèujte
+ jej klávesou 
+\family sans 
+Return
+\family default 
+.
+ Toto by toti¾ vytvoøilo nový odstavec z textu 
+\emph on 
+za
+\emph default 
+ výrazem, co¾ pravdìpodobnì není to, co jste chtìli.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Zmìòte re¾im zobrazení pro rùzné rovnice v 
+\family typewriter 
+example_raw.lyx
+\family default 
+ a prohlédnìte si rozdíly.
+\layout Standard
+
+
+\series bold 
+Cvièení
+\series default 
+: Zkuste si sami s pou¾itím právì nabytých znalostí napsat výraz, jako je
+ tento: 
+\begin_inset Formula \[
+f(x)=\left\{ \begin{array}{cc}
+\log_{8}x & x>0\\
+0 & x=0\\
+\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0\end{array}\right.\]
+
+\end_inset 
+
+
+\layout Section
+
+Víceøádkové rovnice
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:multiline}
+
+\end_inset 
+
+Zkuste si napsat následující rovnice a podívejte se na soubor 
+\family typewriter 
+dvi
+\family default 
+.
+ Re¾im zobrazení musíte pøepnout pro ka¾dý øádek zvlá¹».
+\layout Standard
+
+
+\begin_inset Formula \[
+x=y+y+y+y+y\]
+
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset Formula \[
+=5y\]
+
+\end_inset 
+
+
+\layout Standard
+
+To vùbec nevypadá dobøe.
+ Jestli¾e pí¹ete dvì a více rovnic pod sebou, vypadají podstatnì lépe, jsou-li
+ rovnítka zarovnána pod sebou; zvlá¹», nemá-li druhá rovnice levou stranu.
+ LyX umo¾òuje psát víceøádkové rovnice s øízením jejich zarovnání.
+\begin_inset Formula \begin{eqnarray*}
+x & = & y+y+y+y+y\\
+ & = & 5y\end{eqnarray*}
+
+\end_inset 
+
+
+\layout Standard
+
+Tohle vypadá 
+\emph on 
+daleko
+\emph default 
+ lépe.
+ Rovnítka jsou pod sebou a rovnice jsou blí¾e u sebe.
+\layout Standard
+
+Víceøádkovou rovnici napí¹ete pomocí mathedu v re¾imu zobrazení, kdy¾ stisknete
+ 
+\family sans 
+C-Return
+\family default 
+.
+ LyX vypí¹e dvì øádky, ka¾dou se tøemi vkládacími body.
+ Pohybovat se mezi nimi mù¾ete stejnì jako v matici: my¹í, ¹ipkami nebo
+ klávesou 
+\family sans 
+Tab
+\family default 
+.
+ Zkuste si nyní pøepsat pøedchozí rovnice.
+ Pov¹imnìte si, ¾e je mo¾no nechat jeden i více vkládacích bodù prázdných.
+ To je výhodné pro rovnice podobné tìm nahoøe nebo pro zápis velmi dlouhých
+ výrazù, jako napøíklad:
+\begin_inset Formula \begin{eqnarray*}
+x & = & a+b+c+d\\
+ &  & +e+f+g\end{eqnarray*}
+
+\end_inset 
+
+
+\layout Standard
+
+LyX zarovná druhé (støední) pole na ka¾dé øádce, tak¾e obvykle toto pole
+ obsahuje rovnítko èi jiný relaèní operátor, i kdy¾ tam mù¾ete napsat jakýkoli
+ výraz.
+ Nepou¾ívejte víceøádkové rovnice pro vysázení polí, pro tento úèel pou¾ijte
+ matice (viz 
+\begin_inset LatexCommand \ref{sec:matrices}
+
+\end_inset 
+
+).
+\layout Standard
+
+Jestli¾e chcete napsat del¹í sadu rovnic, stisknìte znovu 
+\family sans 
+C-Return
+\family default 
+, a dostanete dal¹í tøi vkládací body.
+ Jestli¾e jste nebyli na konci øádky, text a¾ do konce øádky se pøesune
+ na novou.
+ Jestli¾e jste stiskli 
+\family sans 
+C-Return
+\family default 
+ kdy¾ jste psali jednoøádkovou rovnici, celá rovnice bude v prvním poli.
+ Umístìte kurzor pøed rovnítko a stisknìte 
+\family sans 
+C-Tab
+\family default 
+ pro pøesun do druhého pole.
+ Pak se pøesuòte za rovnítko a stisknìte 
+\family sans 
+C-Tab
+\family default 
+ znovu pro pøesun pravé èásti do tøetího pole.
+ Zkuste zmìnit 
+\begin_inset Formula $E=mc^{2}$
+\end_inset 
+
+ na
+\begin_inset Formula \begin{eqnarray*}
+E & = & mc^{2}\\
+ & = & mc\times c\end{eqnarray*}
+
+\end_inset 
+
+
+\layout Standard
+
+Jestli¾e jste napsali pøíli¹ mnoho øádek, posuòte kurzor na konec øádky
+ a pou¾ijte 
+\family sans 
+M-e\SpecialChar ~
+k
+\family default 
+ pro smazání následující øádky.
+ Tato klávesová kombinace vyma¾e znak konce øádku a pøipojí obsah v¹ech
+ vkládacích bodù na konec pøedchozího øádku.
+ Byli-li tyto body prázdné, pak je pouze vyma¾e.
+ Varování: stisk 
+\family sans 
+M-e\SpecialChar ~
+k
+\family default 
+ kdy¾ nejste na konci øádku nemusí v¾dy dopadnout ¹»astnì.
+\layout Section
+
+Více matematiky
+\layout Standard
+
+Mathed umí je¹tì mnohem více.
+ Nyní, kdy¾ jsme se seznámili se základy, se podívejte do 
+\emph on 
+U¾ivatelské pøíruèky
+\emph default 
+ na:
+\layout Itemize
+
+Oznaèování a èíslování výrazù
+\layout Itemize
+
+Zmìny poloøezu, tj.
+ ztuèòování.
+ Poznamenejme, ¾e kliknutí na tlaèítko 
+\family sans 
+matematika
+\family default 
+ na li¹tì zmìní typ písma z kurzívy na normální a¾ do stisku mezerníku.
+\layout Itemize
+
+Jemné doladìní velikostí znakù a mezer (tohle a¾ pøi finalizaci dokumentu)
+\layout Itemize
+
+Psaní maker.
+ Toto je velmi silná technika, proto¾e je jednou napí¹ete na zaèátku dokumentu
+ a mù¾ete jej pak pou¾ít kdekoli v nìm.
+ Jestli¾e zmìníte jeho definici, zmìní se i v¹echny odkazy na nìj.
+ Makra mohou mít argumenty.
+\layout Itemize
+
+Mnoho dal¹ích vìcí, na které v tomhle 
+\emph on 
+Prùvodci
+\emph default 
+ nemáme èas se ani zmínit.
+\layout Part
+
+Rùzné
+\layout Section
+
+Dal¹í významné mo¾nosti LyXu
+\layout Standard
+
+Nepro¹li jsme v¹echny mo¾né pøíkazy v LyXu, co¾ jsme ani neplánovali.
+ Jako obvykle vás odkazujeme na 
+\emph on 
+U¾ivatelskou pøíruèku 
+\emph default 
+pro dal¹í informace.
+ Pøesný popis ka¾dého pøíkazu najdete v 
+\emph on 
+Referenèní pøíruèce.
+ 
+\emph default 
+Zde chceme jen zmínit nìkteré dùle¾itìj¹í schopnosti LyXu\SpecialChar \ldots{}
+
+\layout Itemize
+
+LyX má WYSIWYG podporu pro tabulky.
+ Pou¾ijte 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾ení->Ta
+\bar under 
+b
+\bar default 
+ulka
+\family default 
+.
+ Kliknìte na tuto tabulku 
+\emph on 
+pravým
+\emph default 
+ tlaèítkem a otevøe se dialog 
+\family sans 
+Vzhled\SpecialChar ~
+tabulky, 
+\family default 
+který má ¹iroké mo¾nosti zmìny vzhledu a chování tabulky.
+\layout Itemize
+
+LyX také podporuje vkládání PostScriptových (a LaTeXových) obrázkù.
+ (Jak jste asi odhadli: 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾ení->Obrázek.
+ 
+\family default 
+Pak kliknìte na obrázek, který chcete vlo¾it, mù¾ete jej otoèit, zmen¹it
+ èi zvìt¹it atd.) Tabulky a obrázky lze pojmenovat a LyX automaticky vygeneruje
+ seznamy obrázkù èi tabulek.
+\layout Itemize
+
+LyX podporuje program pro správu verzí RCS (
+\family typewriter 
+man rcsintro
+\family default 
+ pro dal¹í informace).
+\layout Itemize
+
+LyX je velmi konfigurovatelný.
+ V¹e od vzhledu oken LyXu po výstup lze mnoha zpùsoby mìnit.
+ Pro informaci kliknìte na 
+\family sans 
+\bar under 
+N
+\bar default 
+ápovìda->
+\bar under 
+K
+\bar default 
+onfigurace\SpecialChar \@.
+
+\layout Itemize
+
+LyX je vyvíjen týmem programátorù na pìti kontinentech.
+ Proto má LyX lep¹í podporu pro neanglické (Holanïany, Nìmce, Øeky, Èechy,
+ Turky, \SpecialChar \ldots{}
+) jazyky ne¾ mnoho jiných textových procesorù.
+ A navíc, tato podpora se stále zlep¹uje.
+\layout Itemize
+
+LyX umí èíst dokumenty v LaTeXu.
+ Viz kapitola 
+\begin_inset LatexCommand \ref{sec:relyx}
+
+\end_inset 
+
+.
+\layout Itemize
+
+Pravopis lze kontrolovat pomocí 
+\family sans 
+Úpravy->Kontrola\SpecialChar ~
+pravopisu
+\family default 
+\SpecialChar \@.
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Kontrola se dìje v¾dy od pozice kurzoru do konce dokumentu.
+\end_inset 
+
+
+\layout Section
+
+LyX pro u¾ivatele LaTeXu
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:latexusers}
+
+\end_inset 
+
+Jestli¾e nevíte nic o LaTeXu, nemusíte èíst tento oddíl.
+ Mù¾ete se v¹ak
+\emph on 
+ chtít
+\emph default 
+ nauèit nìco o LaTeXu a pøeèíst si tuto sekci.
+ Na druhé stranì mnoho nových u¾ivatelù LyXu má ji¾ s LaTeXem své zku¹enosti.
+ Jestli je to vá¹ pøípad, pak se mo¾ná chcete pøesvìdèit, zda jsou mo¾nosti
+ LyXu stejné jako mo¾nosti LaTeXu.
+ Krátká odpovìï øíká, ¾e LyX umí toté¾ jako LaTex, a» u¾ tak èi onak, a
+ rozhodnì zjednodu¹uje vìt¹inu fází psaní dokumentu v LaTeXu.
+ Nyní sice vznikají nìkteré problémy s pøenosem starých dokumentù z LaTeXu,
+ a i nìkde jinde, nicménì následující verze LyXu postupnì tyto problémy
+ vyøe¹í.
+\layout Standard
+
+Proto¾e toto je 
+\emph on 
+Prùvodce
+\emph default 
+, omezíme se na vìci, které zajímají zaèínající u¾ivatele LyXu.
+ Proto¾e nechceme prodlu¾ovat tento dokument, najdete zde jen skuteèné minimum
+ informací.
+ 
+\emph on 
+U¾ivatelská pøíruèka 
+\emph default 
+obsahuje mnoho informací o rozdílech LyXu a LaTeXu, a také tipy, jak pou¾ít
+ nìkteré triky LaTeXu v LyXu.
+\layout Subsection
+
+Re¾im TeX  
+\layout Standard
+
+Cokoli napí¹ete v re¾imu TeX, bude zasláno pøímo do LaTeXu, a bude zobrazeno
+ na obrazovce èervenì.
+ Do re¾imu TeX se dostanete pomocí nabídky 
+\family sans 
+\bar under 
+F
+\bar default 
+ormát->
+\bar under 
+T
+\bar default 
+ex
+\family default 
+ nebo kliknutím na tlaèítko na li¹tì.
+\layout Standard
+
+V mathedu je TeX pou¾it trochu jinak.
+ Do re¾imu TeX se dostanete stiskem zpìtného lomítka.
+ To se nezobrazí, ale v¹e, co pí¹ete, se zobrazí èervenì.
+ Re¾im TeX ukonèíte 
+\family sans 
+Mezerou
+\family default 
+ nebo nìjakým nepísmenným znakem, jako je èíslo, støí¹ka èí závorka.
+ Jakmile opustíte re¾im TeX a LyX zná pøíkaz, který byl napsán, pøevede
+ jej do WYSIWYM.
+ Tak¾e kdy¾ napí¹ete v mathedu 
+\family typewriter 
+
+\backslash 
+gamma
+\family default 
+, a potom hned 
+\family sans 
+Mezeru
+\family default 
+, LyX zmìní èervené gamma na modrou 
+\begin_inset Formula $\gamma$
+\end_inset 
+
+.
+ Toto bude fungovat pro vìt¹inu nekomplikovaných maker (ale napøíklad funkce
+ jako
+\family typewriter 
+
+\backslash 
+sin
+\family default 
+ zùstanou èervené, proto¾e ji¾ jsou WYSIWYM).
+ Toto mù¾e být rychlej¹í ne¾ pou¾ití 
+\family sans 
+Math\SpecialChar ~
+Panelu
+\family default 
+, zvlá¹tì pro zku¹ené u¾ivatele LaTeXu.
+\layout Standard
+
+Jako zvlá¹tní pøípad, napí¹ete-li závorku v re¾imu TeX, mathed napí¹e otevírací
+ 
+\emph on 
+i
+\emph default 
+ uzavírací závorku èervenì a umístí kurzor mezi nì.
+ Takto lze pak jednodu¹e napsat pøíkazy, kterým mathed nerozumí nebo nezná
+ jejich argumenty.
+\layout Standard
+
+LyX neumí absolutnì v¹echno, co LaTeX (zatím?).
+ Nìkteré funkce nejsou podporovány vùbec, nìkteré fungují, ale nejsou WYSIWYG.
+ Re¾im TeX dává u¾ivateli plnou flexibilitu LaTeXu a pøitom zachovává pøednosti
+ LyXu, jako je WYSIWYG matematika, tabulky a upravování.
+ LyX nebude nikdy podporovat ¾ádný balíèek LaTeXu.
+ Aèkoli jej mù¾ete pou¾ívat pomocí 
+\family typewriter 
+
+\backslash 
+usepackage{foo}
+\family default 
+ v preambuli (viz 
+\begin_inset LatexCommand \ref{sec:preamble}
+
+\end_inset 
+
+) --- nebudete pro nìj mít k dispozici WYSIWYG podporu.
+\layout Subsection
+
+Import dokumentù v LaTeXu--- 
+\family typewriter 
+reLyX
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:relyx}
+
+\end_inset 
+
+Soubor v LaTeXu lze do LyXu dovézt pomocí 
+\family sans 
+\bar under 
+S
+\bar default 
+oubor->Import->LaTeX
+\family default 
+ v nabídce LyXu.
+ Tento pøíkaz vyvolá skript v Perlu jménem 
+\family typewriter 
+reLyX
+\family default 
+---který vytvoøí soubor 
+\family typewriter 
+foo.lyx
+\family default 
+ ze souboru 
+\family typewriter 
+foo.tex
+\family default 
+---a otevøe jej.
+ Jestli¾e pøevod nebude fungovat, zkuste zavolat 
+\family typewriter 
+reLyX
+\family default 
+ z pøíkazové øádky
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Kdy¾ je LyX instalován, do tého¾ adresáøe jako je program 
+\family typewriter 
+lyx
+\family default 
+ se ulo¾í skript 
+\family typewriter 
+reLyX
+\family default 
+ (napø., 
+\family typewriter 
+/usr/local/bin/reLyX
+\family default 
+).
+
+\family typewriter 
+ reLyX
+\family default 
+ vy¾aduje Perl (verze 5.002 v dobì psaní tohoto dokumentu).
+\end_inset 
+
+ mo¾ná s jinými parametry.
+\layout Standard
+
+
+\family typewriter 
+reLyX
+\family default 
+ pøelo¾í vìt¹inu legálních konstrukcí LaTeX, ale ne v¹echno, V¹e, èemu nerozumí,
+ ponechá v re¾imu TeX, tak¾e po dovezení souboru pomocí 
+\family typewriter 
+reLyX
+\family default 
+, mù¾ete hledat èervený text a ruènì jej upravit.
+\layout Standard
+
+
+\family typewriter 
+reLyX
+\family default 
+ má vlastní manuálovou stránku, na které si mù¾ete pøeèíst, co z LaTeXu
+ není LyXem podporováno, chyby (a jejich obcházení) a pou¾ití rùzných pøepínaèù.
+\layout Subsection
+
+Konverze dokumentù v LyXu do LaTeXu
+\layout Standard
+
+Mù¾ete také po¾adovat konverzi z LyXu do LaTeXu.
+ Napøíklad, vá¹ kolega, který nemá LyX mù¾e chtít èíst vá¹ dokument.
+ To je velmi jednoduché.
+ Zvolte
+\family sans 
+\bar under 
+ S
+\bar default 
+oubor->Export->jako\SpecialChar ~
+LaTeX
+\family default 
+.
+ Toto vytvoøí soubor 
+\family typewriter 
+cokoli.tex
+\family default 
+ ze souboru 
+\family typewriter 
+cokoli.lyx
+\family default 
+ --- ze souboru, který máte právì otevøený.
+ LyX v¾dy vytváøí doèasné soubory v LaTeXu pro náhled a tisk, tak¾e umí
+ generovat LaTeX docela dobøe.
+\layout Subsection
+
+Preambule LaTeX 
+\layout Subsubsection
+
+Tøída Document
+\layout Standard
+
+Dialog 
+\family sans 
+\bar under 
+F
+\bar default 
+ormát->
+\bar under 
+D
+\bar default 
+okument
+\family default 
+ obsahuje mnoho voleb, které jsou parametry pøíkazu 
+\family typewriter 
+
+\backslash 
+documentclass
+\family default 
+.
+ Zmìòte tøídu, implicitní typ písma a velikost papíru.
+ Nestandardní volby pro 
+\family typewriter 
+
+\backslash 
+documentclass
+\family default 
+ vlo¾te do políèka 
+\family sans 
+Dal¹í\SpecialChar ~
+volby
+\family default 
+.
+\layout Subsubsection
+
+Více o preambuli
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:preamble}
+
+\end_inset 
+
+Jestli¾e chcete umístit speciální pøíkazy do preambule LaTeXu, mù¾ete je
+ pou¾ít i v LyXu.
+ Zvolte 
+\family sans 
+\bar under 
+F
+\bar default 
+ormát->Preambule\SpecialChar ~
+LaTeXu
+\family default 
+ a pi¹te do dialogu.
+ Cokoli napí¹ete, bude posláno (tak jako v re¾imu TeX) pøímo do LaTeXu.
+\layout Subsection
+
+BibTeX
+\layout Standard
+
+LyX má dobrou, i kdy¾ ne úplnou podporu, pro BibTeX, který umo¾òuje budovat
+ databázi bibliografických odkazù pro pou¾ití v mnoha dokumentech.
+ Zvolte 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾ení->Seznamy\SpecialChar ~
+a\SpecialChar ~
+obsahy->Citace\SpecialChar ~
+z\SpecialChar ~
+BibTeXu 
+\family default 
+pro vlo¾ení souboru 
+\family typewriter 
+bib
+\family default 
+.
+ Kliknìte na výsledné 
+\begin_inset Quotes gld
+\end_inset 
+
+Odkazy vygenerované BibTeXem
+\begin_inset Quotes grd
+\end_inset 
+
+ a objeví se dialog BibTeX.
+ Cokoli napí¹ete v poli 
+\family sans 
+Databáze
+\family default 
+, jakoby jste napsali uvnitø závorek pøíkazu 
+\family typewriter 
+
+\backslash 
+bibliography{}
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Jako v obyèejném LaTeX, vícenásobné odkazy budou oddìleny èárkami bez mezer.
+\end_inset 
+
+.
+ Obsah pole 
+\family sans 
+Styl
+\family default 
+ se objeví uvnitø závorek pøíkazu 
+\family typewriter 
+
+\backslash 
+bibliographystyle{}
+\family default 
+.
+\layout Standard
+
+Poté mù¾ete pou¾ívat citace z jakékoli bibliografie pomocí 
+\family sans 
+Vlo¾ení->Citace
+\family default 
+ (viz kapitola 
+\begin_inset LatexCommand \ref{sec:bibliographies}
+
+\end_inset 
+
+).
+ LyX se postará o spu¹tìní BibTeXu.
+ Dùvod, proè podpora pro BibTeX není úplná, je v tom, ¾e LyX neumí generovat
+ soubory 
+\family typewriter 
+bib
+\family default 
+, a proto, ¾e nelze zobrazit seznam v¹ech citací v dialogu 
+\family sans 
+Citace
+\family default 
+.
+\layout Subsection
+
+Rùzné
+\layout Standard
+
+Pevnou mezeru vlo¾íte kombinací 
+\family sans 
+C-mezera
+\family default 
+.
+ Ta se zobrazí na monitoru jako malé fialové u.
+ V 
+\emph on 
+Prùvodci 
+\emph default 
+jich najdete mnoho.
+ V nabídce 
+\family sans 
+\bar under 
+V
+\bar default 
+lo¾ení->
+\bar under 
+S
+\bar default 
+peciální\SpecialChar ~
+znak
+\family default 
+ najdete dal¹í speciální znaky, jako jsou tøi teèky, pevné ukonèení øádku
+ a oddìlovací teèku.
+\layout Section
+
+Chyby!
+\layout Standard
+
+Nìkdy pøi spu¹tìní LaTeXu se objeví chyby, vìci, kterým LyX nebo LaTeX nerozumí.
+ Kdy¾ se to stane, LyX vytvoøí chybový obdélníèek (uvnitø se slovem error).
+ Kliknutím na nìj se objeví okénko s vysvìtlením chyby.
+ Jestli¾e jste udìlali nìco ¹patnì v LyXu, pùjde o chybu LyXu.
+ Tyto by mìly být velice øídké.
+ Jestli¾e se problém objevil v LaTeXu (obvykle chyba v re¾imu TeX), LyX
+ zobrazí chybovou zprávu LaTeXu.
+\the_end
