@@ -3,7 +3,7 @@
 	* QRefDialog.h:
 	* QRefDialog.C: set focus on the refs list. Don't
 	use "Goto" jargon. Add some accelerators. Make return/click
-	on a reference close the dialog.
+	on a reference close the dialog. Don't use obsolete inSort()
 
 2003-04-01  John Levon  <levon@movementarian.org>
 

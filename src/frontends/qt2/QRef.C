@@ -152,6 +152,7 @@ void QRef::gotoRef()
 void QRef::redoRefs()
 {
 	dialog_->refsLB->setAutoUpdate(false);
+	dialog_->refsLB->clear();
 
 	// need this because Qt will send a highlight() here for
 	// the first item inserted
@@ -159,11 +160,11 @@ void QRef::redoRefs()
 
 	for (std::vector<string>::const_iterator iter = refs_.begin();
 		iter != refs_.end(); ++iter) {
-		if (sort_)
-			dialog_->refsLB->inSort(toqstr(*iter));
-		else
-			dialog_->refsLB->insertItem(toqstr(*iter));
+		dialog_->refsLB->insertItem(toqstr(*iter));
 	}
+
+	if (sort_)
+		dialog_->refsLB->sort();
 
 	dialog_->referenceED->setText(tmp);
 
@@ -182,7 +183,6 @@ void QRef::updateRefs()
 	refs_.clear();
 	if (at_ref_)
 		gotoRef();
-	dialog_->refsLB->clear();
 	string const name = controller().getBufferName(dialog_->bufferCO->currentItem());
 	refs_ = controller().getLabelList(name);
 	dialog_->sortCB->setEnabled(!refs_.empty());

@@ -82,7 +82,6 @@ void QRefDialog::refSelected(const QString &)
 void QRefDialog::sortToggled(bool on)
 {
 	form_->sort_ = on;
-	refsLB->clear();
 	form_->redoRefs();
 }
 
