@@ -3,6 +3,7 @@
 #endif
 
 #include "math_spaceinset.h"
+#include "support.h"
 #include "LColor.h"
 #include "Painter.h"
 #include "support/LOstream.h"

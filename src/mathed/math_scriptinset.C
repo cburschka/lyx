@@ -4,6 +4,7 @@
 
 #include "math_scriptinset.h"
 #include "support/LOstream.h"
+#include "support.h"
 
 
 MathScriptInset::MathScriptInset()
@@ -239,8 +240,8 @@ void MathScriptInset::metrics(MathStyles st) const
 		dx0_   = (width_ - xcell(0).width()) / 2;
 		dx1_   = (width_ - xcell(1).width()) / 2;
 	} else {
-		int asc;
-		int des;
+		int asc = 0;
+		int des = 0;
 		int wid = 0;
 		mathed_char_height(LM_TC_VAR, st, 'I', asc, des);
 		if (symbol_) {

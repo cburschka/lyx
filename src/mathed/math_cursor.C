@@ -31,6 +31,7 @@
 #include "math_cursor.h"
 #include "math_arrayinset.h"
 #include "math_bigopinset.h"
+#include "math_charinset.h"
 #include "math_symbolinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
@@ -417,7 +418,7 @@ void MathCursor::insert(char c, MathTextCodes t)
 		}
 	}
 
-	array().insert(pos(), c, t);
+	array().insert(pos(), new MathCharInset(c, t));
 	posRight();
 }
 

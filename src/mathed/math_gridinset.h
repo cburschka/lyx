@@ -3,6 +3,7 @@
 #define MATH_GRID_H
 
 #include "math_nestinset.h"
+#include "LString.h"
 
 #ifdef __GNUG__
 #pragma interface

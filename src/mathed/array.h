@@ -19,12 +19,8 @@
 #include <vector>
 #include <iosfwd>
 
-#include "mathed/support.h"
-#include "math_defs.h"
-
 class MathInset;
 class MathMacro;
-class Painter;
 class LaTeXFeatures;
 
 #ifdef __GNUG__
@@ -72,8 +68,6 @@ public:
 	///
 	void insert(int pos, MathInset * inset);
 	///
-	void insert(int pos, unsigned char, MathTextCodes);
-	///
 	void insert(int pos, MathArray const &);
 
 	///
@@ -88,8 +82,6 @@ public:
 
 	///
 	void push_back(MathInset * inset);
-	///
-	void push_back(unsigned char, MathTextCodes);
 	///
 	void push_back(MathArray const &);
 	///

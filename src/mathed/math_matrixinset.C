@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "math_matrixinset.h"
+#include "support.h"
 #include "debug.h"
 #include "support/LOstream.h"
 #include "Painter.h"

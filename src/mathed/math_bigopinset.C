@@ -1,5 +1,6 @@
 #include "math_bigopinset.h"
 #include "mathed/math_parser.h"
+#include "mathed/support.h"
 #include "support/LOstream.h"
 
 

@@ -148,15 +148,6 @@ void MathNestInset::dump() const
 }
 
 
-void MathNestInset::push_back(unsigned char ch, MathTextCodes fcode)
-{
-	if (nargs())
-		cells_.back().data_.push_back(ch, fcode);
-	else
-		lyxerr << "can't push without a cell\n";
-}
-
-
 void MathNestInset::push_back(MathInset * p)
 {
 	if (nargs())

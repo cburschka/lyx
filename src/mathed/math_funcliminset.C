@@ -1,5 +1,6 @@
 #include "math_funcliminset.h"
 #include "mathed/math_parser.h"
+#include "mathed/support.h"
 #include "support/LOstream.h"
 
 

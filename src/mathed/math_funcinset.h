@@ -4,6 +4,7 @@
 
 #include "math_diminset.h"
 #include "math_defs.h"
+#include "LString.h"
 
 #ifdef __GNUG__
 #pragma interface

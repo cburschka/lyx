@@ -3,10 +3,8 @@
 #endif
 
 #include "math_inset.h"
-#include "math_charinset.h"
 #include "debug.h"
 #include "array.h"
-#include "math_scriptinset.h"
 #include "mathed/support.h"
 
 using std::ostream;
@@ -84,12 +82,6 @@ void MathArray::insert(int pos, MathInset * p)
 }
 
 
-void MathArray::insert(int pos, unsigned char b, MathTextCodes t)
-{
-	bf_.insert(begin() + pos, new MathCharInset(b, t));
-}
-
-
 void MathArray::insert(int pos, MathArray const & array)
 {
 	bf_.insert(begin() + pos, array.begin(), array.end());
@@ -100,12 +92,6 @@ void MathArray::insert(int pos, MathArray const & array)
 void MathArray::push_back(MathInset * p)
 {	
 	insert(size(), p);
-}
-
-
-void MathArray::push_back(unsigned char b, MathTextCodes c)
-{
-	insert(size(), b, c);
 }
 
 

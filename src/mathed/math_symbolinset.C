@@ -1,5 +1,6 @@
 #include "math_symbolinset.h"
-#include "mathed/math_parser.h"
+#include "math_parser.h"
+#include "support.h"
 #include "support/LOstream.h"
 
 

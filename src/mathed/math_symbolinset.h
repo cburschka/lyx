@@ -3,6 +3,7 @@
 #define MATH_SYMBOLINSET_H
 
 #include "math_diminset.h"
+#include "LString.h"
 
 struct latexkeys;
 

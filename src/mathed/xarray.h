@@ -5,6 +5,7 @@
 
 #include <iosfwd>
 #include "array.h"
+#include "math_defs.h"
 
 #ifdef __GNUG__
 #pragma interface

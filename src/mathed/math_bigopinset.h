@@ -6,6 +6,7 @@
 // larger in displayed formulae and take limits
 
 #include "math_diminset.h"
+#include "LString.h"
 
 struct latexkeys;
 

@@ -48,10 +48,12 @@ MathInset * MathMacro::clone() const
 	return new MathMacro(*this);
 }
 
-string const & MathMacro::name() const
+
+const char * MathMacro::name() const
 {
-	return tmplate_->name();
+	return tmplate_->name().c_str();
 }
+
 
 void MathMacro::metrics(MathStyles st) const
 {

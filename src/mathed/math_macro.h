@@ -69,7 +69,7 @@ private:
 	///
 	void operator=(MathMacro const &);
 	///
-	string const & name() const;
+	char const * name() const;
 
 	///
 	MathMacroTemplate const * const tmplate_;

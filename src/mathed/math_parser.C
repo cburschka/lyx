@@ -30,6 +30,7 @@
 #include "math_inset.h"
 #include "math_arrayinset.h"
 #include "math_bigopinset.h"
+#include "math_charinset.h"
 #include "math_dotsinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
@@ -553,7 +554,7 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			
 		case LM_TK_ALPHA:
 			if (!isspace(yylval.i) || yyvarcode == LM_TC_TEXTRM)
-				array.push_back(yylval.i, yyvarcode);
+				array.push_back(new MathCharInset(yylval.i, yyvarcode));
 			break;
 
 		case LM_TK_ARGUMENT: {
@@ -564,11 +565,11 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 		}
 
 		case LM_TK_SPECIAL:
-			array.push_back(yylval.i, LM_TC_SPECIAL);
+			array.push_back(new MathCharInset(yylval.i, LM_TC_SPECIAL));
 			break;
 
 		case LM_TK_STR:
-			array.push_back(yylval.i, LM_TC_CONST);
+			array.push_back(new MathCharInset(yylval.i, LM_TC_CONST));
 			break;
 
 		case LM_TK_OPEN:
@@ -576,7 +577,7 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			if (flags & FLAG_BRACE)
 				flags &= ~FLAG_BRACE;
 			else 
-				array.push_back('{', LM_TC_TEX);
+				array.push_back(new MathCharInset('{', LM_TC_TEX));
 			break;
 
 		case LM_TK_CLOSE:
@@ -594,18 +595,18 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			if (brace == 0 && (flags & FLAG_BRACE_LAST))
 				flags |= FLAG_LEAVE;
 			else
-				array.push_back('}', LM_TC_TEX);
+				array.push_back(new MathCharInset('}', LM_TC_TEX));
 			break;
 		
 		case '[':
-			array.push_back('[', LM_TC_CONST);
+			array.push_back(new MathCharInset('[', LM_TC_CONST));
 			break;
 
 		case ']':
 			if (flags & FLAG_BRACK_END)
 				flags |= FLAG_LEAVE;
 			else 
-				array.push_back(']', LM_TC_CONST);
+				array.push_back(new MathCharInset(']', LM_TC_CONST));
 			break;
 		
 		case '^':
@@ -662,7 +663,7 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			break;
 
 		case LM_TK_BOP:
-			array.push_back(yylval.i, LM_TC_BOP);
+			array.push_back(new MathCharInset(yylval.i, LM_TC_BOP));
 			break;
 
 		case LM_TK_SPACE:
