@@ -18,7 +18,7 @@
 #include "GraphicsCacheItem.h"
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
-#include "GraphicsSupport.h"
+#include "LoaderQueue.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Timeout.h"
@@ -66,8 +66,6 @@ private:
 	///
 	Params params_;
 
-	///
-	Timeout timer;
 	// Multiple Insets can share the same image
 	typedef std::list<Inset const *> InsetList;
 	///
@@ -196,10 +194,8 @@ Image const * Loader::image() const
 
 
 Loader::Impl::Impl(Params const & params)
-	: status_(WaitingToLoad), params_(params),
-	  timer(2000, Timeout::ONETIME)
+	: status_(WaitingToLoad), params_(params)
 {
-	timer.timeout.connect(boost::bind(&Impl::checkedLoading, this));
 }
 
 
@@ -293,7 +289,7 @@ void Loader::Impl::createPixmap()
 
 void Loader::Impl::startLoading(Inset const & inset, BufferView const & bv)
 {
-	if (status_ != WaitingToLoad || timer.running())
+	if (status_ != WaitingToLoad)
 		return;
 
 	InsetList::const_iterator it  = insets.begin();
@@ -303,46 +299,7 @@ void Loader::Impl::startLoading(Inset const & inset, BufferView const & bv)
 		insets.push_back(&inset);
 	view = bv.owner()->view();
 
-	timer.start();
-}
-
-
-namespace {
-
-struct FindVisibleInset {
-
-	FindVisibleInset(std::list<VisibleParagraph> const & vps) : vps_(vps) {}
-
-	bool operator()(Inset const * inset_ptr)
-	{
-		if (!inset_ptr)
-			return false;
-		return isInsetVisible(*inset_ptr, vps_);
-	}
-
-private:
-	std::list<VisibleParagraph> const & vps_;
-};
-
-} // namespace anon
-
-
-void Loader::Impl::checkedLoading()
-{
-	if (insets.empty() || !view.get())
-		return;
-
-	std::list<VisibleParagraph> const vps =
-		getVisibleParagraphs(*view.get());
-
-	InsetList::const_iterator it  = insets.begin();
-	InsetList::const_iterator end = insets.end();
-
-	it = std::find_if(it, end, FindVisibleInset(vps));
-
-	// One of the insets is visible, so start loading the image.
-	if (it != end)
-		cached_item_->startLoading();
+	LoaderQueue::get().touch(cached_item_);
 }
 
 

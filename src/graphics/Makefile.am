@@ -17,8 +17,8 @@ libgraphics_la_SOURCES = \
 	GraphicsLoader.C \
 	GraphicsParams.C \
 	GraphicsParams.h \
-	GraphicsSupport.h \
-	GraphicsSupport.C \
+	LoaderQueue.h \
+	LoaderQueue.C \
 	GraphicsTypes.h \
 	GraphicsTypes.C \
 	PreviewImage.h \

@@ -1,3 +1,11 @@
+2003-02-20  Alfredo Braunstein  <abraunst@libero.it>
+
+	* LoaderQueue.[Ch]: added. Implements a service queue that loads
+	images in background
+	* GraphicsSupport.[Ch]: removed
+	* Makefile.am: the changes above
+	* GraphicsLoader.C: use the loading queue
+
 2003-01-21  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C (dumpPreamble): ensure that \lyxlock does not prevent
