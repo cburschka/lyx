@@ -47,7 +47,7 @@ std::pair<string, string> parse_shortcut(string const & str)
 
 	string::value_type c = str[i + 1];
 	return make_pair(str.substr(0, i) + str.substr(i + 1),
-		string("#") + c);
+			 string("#") + c);
 }
 
 
@@ -172,7 +172,7 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 		fl_set_choice_text(choice, default_unit.c_str());
 	} else {
 		updateWidgetsFromLength(input, choice,
-				LyXLength(str), default_unit);
+					LyXLength(str), default_unit);
 	}
 }
 

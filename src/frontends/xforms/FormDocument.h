@@ -32,7 +32,7 @@ struct FD_document_options;
 struct FD_document_bullet;
 
 /** This class provides an XForms implementation of the FormDocument dialog.
-    The table-layout-form here changes values for latex-tabulars
+ *  The table-layout-form here changes values for latex-tabulars
  */
 class FormDocument : public FormCB<ControlDocument, FormDB<FD_document> > {
 public:

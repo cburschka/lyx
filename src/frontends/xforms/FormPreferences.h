@@ -48,7 +48,7 @@ struct FD_preferences_spelloptions;
 
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
-    The preferences dialog allows users to set/save their preferences.
+ *  The preferences dialog allows users to set/save their preferences.
  */
 class FormPreferences : public FormCB<ControlPrefs, FormDB<FD_preferences> > {
 public:

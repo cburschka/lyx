@@ -24,7 +24,7 @@ class Tooltips;
 class Combox;
 
 /** The LyX xforms toolbar class
-  */
+ */
 struct Toolbar::Pimpl {
 public:
 	/// called when user selects a layout from combox

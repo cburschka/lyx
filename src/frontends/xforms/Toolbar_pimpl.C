@@ -234,11 +234,10 @@ void ToolbarCB(FL_OBJECT * ob, long ac)
 
 extern "C" {
 
-	static
-	void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
-	{
-		ToolbarCB(ob, data);
-	}
+void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
+{
+	ToolbarCB(ob, data);
+}
 
 }
 

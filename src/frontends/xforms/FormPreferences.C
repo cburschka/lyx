@@ -535,11 +535,11 @@ FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
 		return _("Modify the LyX object's color. Note: you must then \"Apply\" the change.");
 
 	if (ob == dialog_->dial_hue ||
-		  ob == dialog_->slider_saturation ||
-		  ob == dialog_->slider_value ||
-		  ob == dialog_->slider_red ||
-		  ob == dialog_->slider_green ||
-		  ob == dialog_->slider_blue)
+	    ob == dialog_->slider_saturation ||
+	    ob == dialog_->slider_value ||
+	    ob == dialog_->slider_red ||
+	    ob == dialog_->slider_green ||
+	    ob == dialog_->slider_blue)
 		return  _("Find a new color.");
 
 	if (ob == dialog_->radio_rgb || ob == dialog_->radio_hsv)
@@ -995,9 +995,9 @@ bool FormPreferences::Converters::input(FL_OBJECT const * const ob)
 		return Browser();
 
 	if (ob == dialog_->choice_from
-		   || ob == dialog_->choice_to
-		   || ob == dialog_->input_converter
-		   || ob == dialog_->input_flags)
+	    || ob == dialog_->choice_to
+	    || ob == dialog_->input_converter
+	    || ob == dialog_->input_flags)
 		return Input();
 
 	if (ob == dialog_->button_add)
@@ -1137,7 +1137,7 @@ bool FormPreferences::Converters::Input()
 string const FormPreferences::Converters::GetFrom() const
 {
 	::Formats::FormatList::size_type const i =
-		fl_get_choice(dialog_->choice_from);
+		  fl_get_choice(dialog_->choice_from);
 
 	if (i > 0 && i <= local_formats.size())
 		return local_formats.get(i - 1).name();
@@ -1150,7 +1150,7 @@ string const FormPreferences::Converters::GetFrom() const
 string const FormPreferences::Converters::GetTo() const
 {
 	::Formats::FormatList::size_type const i =
-		fl_get_choice(dialog_->choice_to);
+		  fl_get_choice(dialog_->choice_to);
 
 	if (i > 0 && i <= local_formats.size())
 		return local_formats.get(i - 1).name();
@@ -1267,10 +1267,10 @@ bool FormPreferences::Formats::input(FL_OBJECT const * const ob)
 		return Browser();
 
 	if (ob == dialog_->input_format
-	 || ob == dialog_->input_gui_name
-	 || ob == dialog_->input_shrtcut
-	 || ob == dialog_->input_extension
-	 || ob == dialog_->input_viewer)
+	    || ob == dialog_->input_gui_name
+	    || ob == dialog_->input_shrtcut
+	    || ob == dialog_->input_extension
+	    || ob == dialog_->input_viewer)
 		return Input();
 
 	if (ob == dialog_->button_add)
@@ -1847,11 +1847,21 @@ void FormPreferences::LnFmisc::apply(LyXRC & rc) const
 	// See FIXME below
 	// grfx::DisplayType old_value = rc.display_graphics;
 	switch (fl_get_choice(dialog_->choice_display)) {
-		case 4: rc.display_graphics = grfx::NoDisplay; break;
-		case 3: rc.display_graphics = grfx::ColorDisplay; break;
-		case 2: rc.display_graphics = grfx::GrayscaleDisplay; break;
-		case 1: rc.display_graphics = grfx::MonochromeDisplay; break;
-		default: rc.display_graphics = grfx::ColorDisplay; break;
+	case 4:
+		rc.display_graphics = grfx::NoDisplay;
+		break;
+	case 3:
+		rc.display_graphics = grfx::ColorDisplay;
+		break;
+	case 2:
+		rc.display_graphics = grfx::GrayscaleDisplay;
+		break;
+	case 1:
+		rc.display_graphics = grfx::MonochromeDisplay;
+		break;
+	default:
+		rc.display_graphics = grfx::ColorDisplay;
+		break;
 	}
 
 #ifdef WITH_WARNINGS
@@ -1923,11 +1933,21 @@ void FormPreferences::LnFmisc::update(LyXRC const & rc)
 	fl_set_counter_value(dialog_->counter_wm_jump, rc.wheel_jump);
 
 	switch (rc.display_graphics) {
-		case grfx::NoDisplay:		fl_set_choice(dialog_->choice_display, 4); break;
-		case grfx::ColorDisplay:	fl_set_choice(dialog_->choice_display, 3); break;
-		case grfx::GrayscaleDisplay:	fl_set_choice(dialog_->choice_display, 2); break;
-		case grfx::MonochromeDisplay:	fl_set_choice(dialog_->choice_display, 1); break;
-		default:			fl_set_choice(dialog_->choice_display, 3); break;
+	case grfx::NoDisplay:
+		fl_set_choice(dialog_->choice_display, 4);
+		break;
+	case grfx::ColorDisplay:
+		fl_set_choice(dialog_->choice_display, 3);
+		break;
+	case grfx::GrayscaleDisplay:
+		fl_set_choice(dialog_->choice_display, 2);
+		break;
+	case grfx::MonochromeDisplay:
+		fl_set_choice(dialog_->choice_display, 1);
+		break;
+	default:
+		fl_set_choice(dialog_->choice_display, 3);
+		break;
 	}
 }
 
@@ -2665,16 +2685,16 @@ FormPreferences::ScreenFonts::feedback(FL_OBJECT const * const ob) const
 	if (ob == dialog_->counter_dpi)
 		return LyXRC::getDescription(LyXRC::RC_SCREEN_DPI);
 	if (ob == dialog_->input_tiny
-		 || ob == dialog_->input_script
-		 || ob == dialog_->input_footnote
-		 || ob == dialog_->input_small
-		 || ob == dialog_->input_large
-		 || ob == dialog_->input_larger
-		 || ob == dialog_->input_larger
-		 || ob == dialog_->input_largest
-		 || ob == dialog_->input_normal
-		 || ob == dialog_->input_huge
-		 || ob == dialog_->input_huger)
+	    || ob == dialog_->input_script
+	    || ob == dialog_->input_footnote
+	    || ob == dialog_->input_small
+	    || ob == dialog_->input_large
+	    || ob == dialog_->input_larger
+	    || ob == dialog_->input_larger
+	    || ob == dialog_->input_largest
+	    || ob == dialog_->input_normal
+	    || ob == dialog_->input_huge
+	    || ob == dialog_->input_huger)
 		return LyXRC::getDescription(LyXRC::RC_SCREEN_FONT_SIZES);
 	return string();
 }

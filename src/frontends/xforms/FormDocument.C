@@ -24,12 +24,9 @@
 #include "input_validators.h" // fl_unsigned_float_filter
 #include "xforms_helpers.h"
 
-//#include "buffer.h"
-//#include "BufferView.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "language.h"
-//#include "lyx_main.h" // for user_lyxdir
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
@@ -293,8 +290,8 @@ void FormDocument::build()
 
 	fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
 
-	fl_addto_choice(options_->choice_ams_math, 
-		_("Never | Automatically | Yes "));
+	fl_addto_choice(options_->choice_ams_math,
+			_("Never | Automatically | Yes "));
 
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		fl_addto_choice(options_->choice_postscript_driver,
@@ -440,7 +437,7 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		string const default_unit = metric ? "cm" : "in";
 		if (getString(class_->input_doc_skip).empty())
 			fl_set_choice_text(class_->choice_doc_skip_units,
-						default_unit.c_str());
+					   default_unit.c_str());
 
 	} else if (ob == options_->check_use_natbib) {
 		setEnabled(options_->choice_citation_format,
@@ -579,17 +576,17 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 	}
 
 	if (ob == paper_->choice_papersize || ob == paper_->radio_portrait
-			|| ob == paper_->radio_landscape) {
+	    || ob == paper_->radio_landscape) {
 		// either default papersize (preferences) or document
 		// papersize has to be A4
 		bool const enable = ( fl_get_choice(paper_->choice_papersize) == 1
-					&& lyxrc.default_papersize == BufferParams::PAPER_A4PAPER )
-				|| fl_get_choice(paper_->choice_papersize) == 7;
+				      && lyxrc.default_papersize == BufferParams::PAPER_A4PAPER )
+			|| fl_get_choice(paper_->choice_papersize) == 7;
 		if (!enable)
 			fl_set_choice(paper_->choice_paperpackage,
-				BufferParams::PACKAGE_NONE + 1);
+				      BufferParams::PACKAGE_NONE + 1);
 		setEnabled(paper_->choice_paperpackage,
-			enable && fl_get_button(paper_->radio_portrait));
+			   enable && fl_get_button(paper_->radio_portrait));
 	}
 
 	return ButtonPolicy::SMI_VALID;
@@ -844,13 +841,13 @@ void FormDocument::UpdateClassParams(BufferParams const & params)
 	fl_addto_choice(class_->choice_doc_fontsize,
 			tclass.opt_fontsize().c_str());
 	fl_set_choice_text(class_->choice_doc_fontsize,
-			params.fontsize.c_str());
+			   params.fontsize.c_str());
 	fl_clear_choice(class_->choice_doc_pagestyle);
 	fl_addto_choice(class_->choice_doc_pagestyle, "default");
 	fl_addto_choice(class_->choice_doc_pagestyle,
 			tclass.opt_pagestyle().c_str());
 	fl_set_choice_text(class_->choice_doc_pagestyle,
-			params.pagestyle.c_str());
+			   params.pagestyle.c_str());
 
 }
 
