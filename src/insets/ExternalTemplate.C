@@ -21,6 +21,8 @@
 #include "support/path.h"
 #include "support/path_defines.h"
 
+#include <algorithm>
+
 namespace support = lyx::support;
 
 using std::endl;
