@@ -1,3 +1,4 @@
+# translation of lyx-1.3.6.po to Basque
 # translation of lyx.1.3.5-2.po to Basque
 # translation of lyx.1.3.4.po to basque
 # translation of lyx.1.3.3.eu.new.po to basque
@@ -8,19 +9,21 @@
 # Arantzazu Azpillaga Landa <azpilla@euskalnet.net>, 2003.
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2003.
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx.1.3.5-2\n"
+"Project-Id-Version: lyx-1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-30 16:43+0200\n"
-"PO-Revision-Date: 2004-09-13 22:15+0200\n"
+"PO-Revision-Date: 2005-03-31 12:21+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -1394,9 +1397,8 @@ msgid "LyXServer pipe:|#S"
 msgstr "LyX zerbitzari-kanalizazioak:|#z"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2496
-#, fuzzy
 msgid "PATH prefix:|#T"
-msgstr "Mota:|#T"
+msgstr "BIDEIZEN aurrizkia:|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2538
 msgid "Date format:|#f"
@@ -1512,7 +1514,7 @@ msgstr "Berrabiatu klase-aukerak aldatzean|#e"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3130
 msgid "Use Cygwin Paths|#s"
-msgstr ""
+msgstr "Erabili Cygwin-eko bideizenak|#r"
 
 #: ../src/frontends/xforms/forms/form_print.fd:44
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -1574,7 +1576,6 @@ msgid "Name:|#N"
 msgstr "Izena:|#N"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:207
-#, fuzzy
 msgid "Label:|#e"
 msgstr "Etiketa:|#E"
 
@@ -1914,9 +1915,8 @@ msgid "Use &NatBib"
 msgstr "Erabili &NatBib"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-#, fuzzy
 msgid "Citation &Style:"
-msgstr "Zitazio-estiloa:"
+msgstr "Zitazio &estiloa:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:66
@@ -2219,21 +2219,18 @@ msgid "Bibliography Entry"
 msgstr "Bibliografia-sarrera"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-#, fuzzy
 msgid "&Key:"
-msgstr "&Gakoa"
+msgstr "&Gakoa:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-#, fuzzy
 msgid "The bibliography key"
-msgstr "Bibliografia gakoak:|#k"
+msgstr "Bibliografia gakoa"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-#, fuzzy
 msgid "&Label:"
-msgstr "&Etiketa"
+msgstr "&Etiketa:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
@@ -2259,9 +2256,8 @@ msgstr "&Ados"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
 #: src/frontends/qt2/QBibtex.C:39 src/frontends/xforms/FormBibtex.C:37
-#, fuzzy
 msgid "BibTeX Bibliography"
-msgstr "Bibliografia"
+msgstr "BibTex bibliografia"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
 msgid "Databa&ses"
@@ -2469,7 +2465,7 @@ msgstr "&Berrezarri"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
 msgid "Browse the available bibliography entries"
-msgstr ""
+msgstr "Arakatu bibliografia-sarrerak"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Regular E&xpression"
@@ -2505,19 +2501,16 @@ msgid "New Item"
 msgstr "Elementu berria"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
-#, fuzzy
 msgid "Available bibliography entries"
-msgstr "Bibliografia-ezarpenak"
+msgstr "Bibliografia-sarrerak"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
-#, fuzzy
 msgid "Add citation of the selected bibliography entry"
-msgstr "Informazioa, hautatutako sarrerei buruzkoa."
+msgstr "Gehitu zitazioa (hautatutako bibliografia-sarrerarena)"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
-#, fuzzy
 msgid "Remove citation of the selected bibliography entry"
-msgstr "Informazioa, hautatutako sarrerei buruzkoa."
+msgstr "Kendu zitazioa (hautatutako bibliografia-sarrerarena)"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
 msgid "Move the selected citation up"
@@ -2544,7 +2537,6 @@ msgid "Info"
 msgstr "Info"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
-#, fuzzy
 msgid "Bibliography entry"
 msgstr "Bibliografia-sarrera"
 
@@ -3552,11 +3544,11 @@ msgstr "&Aldatu"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:22
 msgid "Cygwin Paths"
-msgstr ""
+msgstr "Cygwin bideizenak"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
 msgid "&Use Cygwin-style paths"
-msgstr ""
+msgstr "&Erabili Cygwin gisako bideizenak"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2016
@@ -3565,7 +3557,7 @@ msgid ""
 "paths. Useful if you're using the Cygwin teTeX rather than a native Windows "
 "MikTeX. Note, however, that you'll need to write shell script wrappers for "
 "all your converters."
-msgstr ""
+msgstr "Hautatu LyX-ek Cygwin estiloko bide-izenak idatzi behar dituen zehazteko (Windows estiloko bide-izenen ordez). Windows-eko MikTeX erabili ordez Cygwin-eko teTeX erabiltzean hau hautatzea aholkatzen da. Oharra: hala ere komando lerroko scripta idatzi beharko duzu zure bihurtzaileak erabili erabiltzeko."
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
 msgid "Date Format"
@@ -3756,8 +3748,7 @@ msgstr "DVI ikustailearen paper-tamaina aukerak:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-"DVI ikustaile batzuen paper-tamaina ezartzeko hautazko bandera (-paper)"
+msgstr "DVI ikustaile batzuen paper-tamaina ezartzeko hautazko bandera (-paper)"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
 msgid "CheckTeX start options and flags"
@@ -3785,7 +3776,7 @@ msgstr "Ly&X Zerbitzari-kanalizazioak:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:250
 msgid "&PATH prefix:"
-msgstr ""
+msgstr "&BIDEIZEN aurrizkia:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
 msgid "Printer settings"
@@ -4078,9 +4069,8 @@ msgid "Print Destination"
 msgstr "Inprimaketaren helburua"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:409
-#, fuzzy
 msgid "P&rinter:"
-msgstr "I&nprimagailua"
+msgstr "I&nprimagailua:"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
@@ -4101,27 +4091,24 @@ msgid "Cross Reference"
 msgstr "Erreferentzia gurutzatua"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-#, fuzzy
 msgid "Update the label list"
-msgstr "Eguneratu erreferentzia-zerrenda"
+msgstr "Eguneratu etiketa-zerrenda"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
 msgid "&Goto"
 msgstr "&Joan"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-#, fuzzy
 msgid "Move the document cursor to label"
-msgstr "Mugitu kurtsorea erreferentziara"
+msgstr "Mugitu kurtsorea etiketara"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
 msgid "Sort"
 msgstr "Ordenatu"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-#, fuzzy
 msgid "Sort labels in alphabetical order"
-msgstr "Ordenatu erreferentziak alfabetikoki"
+msgstr "Ordenatu etiketak alfabetikoki"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
 msgid "<reference>"
@@ -4144,9 +4131,8 @@ msgid "Formatted reference"
 msgstr "Formatudun erreferentziak"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-#, fuzzy
 msgid "Cross reference as it appears in output"
-msgstr "Erreferentziatu irteeran ageri den bezala"
+msgstr "Erreferentzia gurutzatua, irteeran ageri den bezalakoa"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
 msgid "&Format:"
@@ -4158,14 +4144,12 @@ msgid "&Name:"
 msgstr "&Izena:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-#, fuzzy
 msgid "Available labels in selected document:"
-msgstr "Hautatutako dokumentuan dauden erreferentziak:"
+msgstr "Hautatutako dokumentuan dauden etiketak:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-#, fuzzy
 msgid "Available labels"
-msgstr "Dauden txantiloiak"
+msgstr "Dauden etiketak"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
 msgid "&Document:"
@@ -4223,8 +4207,7 @@ msgstr "&Esportatu formatua:"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Prozesatu komando honekin aldatutako artxibategia ($$FName= fitxategi-izena)"
+msgstr "Prozesatu komando honekin aldatutako artxibategia ($$FName= fitxategi-izena)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4550,17 +4533,15 @@ msgid "&Rescan"
 msgstr "&Berreskaneatu"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-#, fuzzy
 msgid "Rebuild the file lists"
-msgstr "Eraiki fitxategi-zerrenda berria"
+msgstr "Eraiki berriz fitxategi-zerrenda"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
 msgstr "&Ikusi"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Erakutsi markatutako fitxategi-edukia. Fitxategia bide-izenarekin erakusten "
 "bada soilik."
@@ -4613,9 +4594,8 @@ msgid "Insert URL"
 msgstr "Txertatu URLa"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
 msgid "&URL:"
-msgstr "&URLa"
+msgstr "&URLa:"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
@@ -5146,19 +5126,16 @@ msgid "NoteToEditor"
 msgstr "OharraEditoreari"
 
 #: ../lib/layouts/aastex.layout:121 ../lib/layouts/aastex.layout:541
-#, fuzzy
 msgid "Facility"
-msgstr "Egitatea"
+msgstr "Erraztasuna"
 
 #: ../lib/layouts/aastex.layout:123 ../lib/layouts/aastex.layout:567
-#, fuzzy
 msgid "Objectname"
-msgstr "Octave"
+msgstr "Objektu-izena"
 
 #: ../lib/layouts/aastex.layout:125 ../lib/layouts/aastex.layout:594
-#, fuzzy
 msgid "Dataset"
-msgstr "Data"
+msgstr "Datu-multzoa"
 
 #: ../lib/layouts/aastex.layout:526
 msgid "FigCaption"
@@ -6518,7 +6495,6 @@ msgid "Norsk"
 msgstr "Norskera"
 
 #: ../lib/languages:45
-#, fuzzy
 msgid "Nynorsk"
 msgstr "Norskera"
 
@@ -6987,9 +6963,8 @@ msgid "Special Character|S"
 msgstr "Hizki berezia|b"
 
 #: ../lib/ui/default.ui:197
-#, fuzzy
 msgid "Citation...|C"
-msgstr "Zitazioa"
+msgstr "Zitazioa...|Z"
 
 #: ../lib/ui/default.ui:198
 msgid "Cross Reference...|R"
@@ -7224,9 +7199,8 @@ msgid "Index List|I"
 msgstr "Indize-zerrenda|I"
 
 #: ../lib/ui/default.ui:286
-#, fuzzy
 msgid "BibTeX Bibliography...|B"
-msgstr "Bibliografia"
+msgstr "BibTeX bibliografia...|B"
 
 #: ../lib/ui/default.ui:290
 msgid "LyX Document...|X"
@@ -8365,8 +8339,7 @@ msgstr "Abisua!"
 msgid ""
 "The file was created with a newer version of LyX. This is likely to cause "
 "problems."
-msgstr ""
-"Dokumentua LyX bertsio berriagoarekin sortu da. Horrek arazoak sor ditzake."
+msgstr "Dokumentua LyX bertsio berriagoarekin sortu da. Horrek arazoak sor ditzake."
 
 #. "\\lyxformat" not found
 #: src/buffer.C:1219 src/buffer.C:1227 src/buffer.C:1241 src/buffer.C:1273
@@ -8376,8 +8349,7 @@ msgstr "ERROREA!"
 
 #: src/buffer.C:1220
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"LyX egitura zaharreko fitxategia aurkitu da. Irakurtzeko erabili  LyX 0.10.x!"
+msgstr "LyX egitura zaharreko fitxategia aurkitu da. Irakurtzeko erabili  LyX 0.10.x!"
 
 #: src/buffer.C:1228
 msgid "Can't find conversion script."
@@ -8804,8 +8776,7 @@ msgstr "Mesedez, ongi instalatu \n"
 
 #: src/frontends/controllers/ControlAboutlyx.C:50
 msgid "amount of work other people have done for the LyX project."
-msgstr ""
-"beste pertsona batzuek LyX proiektuan eginiko lan ikaragarria eskertzeko."
+msgstr "beste pertsona batzuek LyX proiektuan eginiko lan ikaragarria eskertzeko."
 
 #: src/frontends/controllers/ControlAboutlyx.C:57
 msgid ""
@@ -9118,9 +9089,8 @@ msgid " and "
 msgstr " eta "
 
 #: src/frontends/controllers/biblio.C:109
-#, fuzzy
 msgid " et al."
-msgstr "et al."
+msgstr " et al."
 
 #: src/frontends/controllers/biblio.C:148
 msgid "No year"
@@ -9707,9 +9677,8 @@ msgid "Go back"
 msgstr "Joan atzerantz"
 
 #: src/frontends/qt2/QRef.C:127
-#, fuzzy
 msgid "Go to label"
-msgstr "Eti&keta luzeena"
+msgstr "Joan etiketara"
 
 #: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
 msgid "Find and Replace"
@@ -9950,14 +9919,12 @@ msgstr "*.bst| BibTeX estiloak (*.bst)"
 
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
-#, fuzzy
 msgid "Add citation of the selected bibliography entry."
-msgstr "Informazioa, hautatutako sarrerei buruzkoa."
+msgstr "Gehitu zitazioa (hautatutako bibliografia-sarrerarena)."
 
 #: src/frontends/xforms/FormCitation.C:165
-#, fuzzy
 msgid "Delete citation of the selected bibliography entry."
-msgstr "Informazioa, hautatutako sarrerei buruzkoa."
+msgstr "Ezabatu zitazioa (hautatutako bibliografia-sarrerarena)."
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
@@ -9976,20 +9943,18 @@ msgstr ""
 "erabiliz."
 
 #: src/frontends/xforms/FormCitation.C:181
-#, fuzzy
 msgid ""
 "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX "
 "Bibliography\"). Move the ones you want to cite with the arrow buttons into "
 "the left browser window."
 msgstr ""
-"Kargatu dituzun datu-baseko sarrera guztiak (bidea \"Txertatu->Zerrendak eta "
-"&Aurk.->BibTex erreferentzia\"). Mugitu zitatu nahi dituzunak ezkerreko "
-"arakatze-leihoan, teklatu-geziak erabiliz."
+"Kargatu dituzun datu-baseko sarrera guztiak (\"Txertatu->Zerrendak eta "
+"&Aurk.->BibTex erreferentzia\" menua erabiliz). Mugitu zitatu nahi dituzunak "
+"ezkerreko arakatze-leihoan, teklatu-geziak erabiliz."
 
 #: src/frontends/xforms/FormCitation.C:188
-#, fuzzy
 msgid "Information about the selected bibliography entry"
-msgstr "Informazioa, hautatutako sarrerei buruzkoa."
+msgstr "Informazioa, hautatutako bibliografia-sarrerei buruzkoa"
 
 #: src/frontends/xforms/FormCitation.C:195
 msgid ""
@@ -10000,12 +9965,11 @@ msgstr ""
 "itxura."
 
 #: src/frontends/xforms/FormCitation.C:198
-#, fuzzy
 msgid ""
 "Activate if you want to print all authors in a citation with more than three "
 "authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
-"Aktibatu egile guztiak inprimatzeko (erreferentziak hiru egile baino gehiago "
+"Aktibatu zitazio bateko egile guztiak inprimatzeko (hiru egile baino gehiago "
 "dituenean) \"<First Author> et al.\"  (Natbib) erabili beharrean."
 
 #: src/frontends/xforms/FormCitation.C:201
@@ -10018,17 +9982,12 @@ msgstr ""
 "\", ez \"van Gogh\"). Erabilgarria esaldi hasieretan (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:204
-#, fuzzy
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
-msgstr ""
-"Aukerako testua, zitazio-erreferentzi aurretik agertzen dena, adib. \"ikus "
-"<Ref>\""
+msgstr "Aukerako testua, zitazioaren aurretik agertzen dena, adib. \"ikus <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:207
-#, fuzzy
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
-msgstr ""
-"Aukerako testua, zitazio-erreferentzi ondoren agertzen dena, adib. \"12 oo.\""
+msgstr "Aukerako testua, zitazioaren ondoren agertzen dena, adib. \"12 oo.\""
 
 #: src/frontends/xforms/FormCitation.C:210
 msgid "Search your database (all fields will be searched)."
@@ -10072,8 +10031,7 @@ msgstr " Ezer ez| Txikiak | Oso txikiak | Oso zabalak "
 
 #: src/frontends/xforms/FormDocument.C:286
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr ""
-" ``testua'' | ''testua'' | ,,testua`` | ,,testua'' | <<testua>> | >>testua<< "
+msgstr " ``testua'' | ''testua'' | ,,testua`` | ,,testua'' | <<testua>> | >>testua<< "
 
 #: src/frontends/xforms/FormDocument.C:311
 msgid " Author-year | Numerical "
@@ -10463,8 +10421,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX objektuak kolorea eslei dakiokenak."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Aldatu LyX objektuen kolorea. Oharra: ondoren aldaketa \"Aplikatu\" behar "
 "duzu."
@@ -10506,13 +10463,12 @@ msgid "Convert \"to\" this format"
 msgstr "Bihurtu formatu \"honetara\""
 
 #: src/frontends/xforms/FormPreferences.C:995
-#, fuzzy
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
 "used as the path to LyX's support directory."
 msgstr ""
-"Bihurtzeko komandoa. Sarrerako fitxategia $$i da, $$b luzapenik gabeko "
+"Bihurtzeko komandoa. $$i sarrerako fitxategia da, $$b luzapenik gabeko "
 "fitxategi beraren izena, eta $$o irteerako fitxategia. $$s erabil daiteke "
 "LyX-en bihurketa script multzora iristeko bide-izen bezala."
 
@@ -10615,8 +10571,7 @@ msgstr "Monokromoa|Gris-eskala|Kolorea|Ez erakutsi"
 
 #: src/frontends/xforms/FormPreferences.C:1981
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" Lehenetsia | US gutuna | US legala | US exekutiboa | A3 | A4 | A5 | B5"
+msgstr " Lehenetsia | US gutuna | US legala | US exekutiboa | A3 | A4 | A5 | B5"
 
 #: src/frontends/xforms/FormPreferences.C:2240
 msgid "Default path"
@@ -10719,29 +10674,24 @@ msgstr "Inprimatutako orrien alderantzizko ordena."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:66
-#, fuzzy
 msgid "Select a document for labels."
-msgstr "Hautatu dokumentua erreferentzientzat."
+msgstr "Hautatu dokumentua etiketentzat."
 
 #: src/frontends/xforms/FormRef.C:68
-#, fuzzy
 msgid "Sort the labels alphabetically."
-msgstr "Ordenatu erreferentziak alfabetikoki."
+msgstr "Ordenatu etiketak alfabetikoki."
 
 #: src/frontends/xforms/FormRef.C:70 src/frontends/xforms/FormRef.C:279
-#, fuzzy
 msgid "Go to selected label."
-msgstr "Joan hautatutako erreferentziara."
+msgstr "Joan hautatutako etiketara."
 
 #: src/frontends/xforms/FormRef.C:72
-#, fuzzy
 msgid "Update the list of labels."
-msgstr "Eguneratu erreferentzi-zerrenda."
+msgstr "Eguneratu etiketa-zerrenda."
 
 #: src/frontends/xforms/FormRef.C:74
-#, fuzzy
 msgid "Select format style of the cross reference."
-msgstr "Hautatu erreferentzi-estilo formatua."
+msgstr "Hautatu erreferentzia gurutzatuen estilo formatua."
 
 #: src/frontends/xforms/FormRef.C:178
 msgid "*** No labels found in document ***"
@@ -10790,10 +10740,8 @@ msgstr "Bilatu gorantz."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid ""
-"Export the buffer to this format before running the command below on it."
-msgstr ""
-"Esportatu bufferra formatu honetara beheko komandoa exekutatu aurretik."
+msgid "Export the buffer to this format before running the command below on it."
+msgstr "Esportatu bufferra formatu honetara beheko komandoa exekutatu aurretik."
 
 #: src/frontends/xforms/FormSendto.C:48
 msgid ""
@@ -10882,10 +10830,8 @@ msgid "Show full path or only file name."
 msgstr "Erakutsi bide-izen osoa edo edo fitxategi-izena soilik."
 
 #: src/frontends/xforms/FormTexinfo.C:54
-#, fuzzy
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr ""
-"Exekutatu  \"TexFiles.sh\" script-a fitxategi-zerrenda berria eraikitzeko."
+msgstr "Exekutatu  \"TexFiles.sh\" script-a fitxategi-zerrenda berriro eraikitzeko."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
@@ -11049,9 +10995,8 @@ msgid "Opened inset"
 msgstr "Irekitako barnekoa"
 
 #: src/insets/insetbib.C:142
-#, fuzzy
 msgid "BibTeX Generated Bibliography"
-msgstr "BibTeX-ek sortutako erreferentziak"
+msgstr "BibTeX-ek sortutako bibliografia"
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
@@ -11616,45 +11561,46 @@ msgid ""
 "%1$s. Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+"Ezin izan da aldi-baterako direktorioa %1$s direktoriopean sortu\n"
+"Ziurtatu bide-izen hori existitzen dela eta idazteko \n"
+"baimenak dituela, eta saiatu berriro."
 
 #: src/lyx_main.C:388
-#, fuzzy
 msgid "Could not create a temporary directory in\n"
-msgstr "Errorea! Ezin izan da behin-behineko direktorioa sortu:"
+msgstr "Ezin izan da aldi-baterako direktorioa hemen sortu:\n"
 
 #: src/lyx_main.C:390
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+". Ziurtatu zaitez bide-izena existitzen dela eta \n"
+"idazteko baimenak dituela, eta saiatu berriro."
 
 #: src/lyx_main.C:394
-#, fuzzy
 msgid "Could not create temporary directory"
-msgstr "Errorea! Ezin izan da behin-behineko direktorioa sortu:"
+msgstr "Ezin izan da aldi-baterako direktorioa sortu:"
 
 #: src/lyx_main.C:538
-#, fuzzy
 msgid "You have specified a non-existent user LyX directory."
-msgstr "LyX-en direktorio erabilkaitz bat zehaztu duzu."
+msgstr "Existitzen ez den erabiltzailearen LyX-en direktorio bat zehaztu duzu."
 
 #: src/lyx_main.C:539
 msgid "It is needed to keep your own configuration."
 msgstr "Beharrezkoa du egindako konfigurazioak mantentzeko."
 
 #: src/lyx_main.C:540
-#, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
-msgstr "Zure ordez konfigura dezaket (aholkatua)?"
+msgstr "Zure ordez konfigura dezaket? Irten egingo naiz \"Ez\" aukeratuz."
 
 #: src/lyx_main.C:541
 msgid "No user LyX directory. Exiting."
-msgstr ""
+msgstr "Ez dago erabiltzailearen LyX direktoriorik. Irtetzen."
 
 #: src/lyx_main.C:546
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Creating directory %1$s"
-msgstr "LyX: Direktorioa sortzen "
+msgstr "LyX: %1$s direktorioa sortzen"
 
 #: src/lyx_main.C:550
 msgid "LyX: Creating directory "
@@ -11662,9 +11608,8 @@ msgstr "LyX: Direktorioa sortzen "
 
 #. Failed, so let's exit.
 #: src/lyx_main.C:557
-#, fuzzy
 msgid "Failed to create directory. Exiting."
-msgstr "\"createDirektory\"-ri izen baliogabearekin deitzen"
+msgstr "Huts egin du direktorioa sortzean. Irtetzen."
 
 #: src/lyx_main.C:576 src/lyx_main.C:580
 msgid "LyX Warning!"
@@ -11751,13 +11696,11 @@ msgstr "Agindua falta da, --execute aukeraren atzetik"
 
 #: src/lyx_main.C:780
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr ""
-"Fitxategi mota falta, --export aukeraren atzetik [adibidez latex, ps...]"
+msgstr "Fitxategi mota falta, --export aukeraren atzetik [adibidez latex, ps...]"
 
 #: src/lyx_main.C:792
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr ""
-"Fitxategi mota falta, --import aukeraren atzetik [adibidez latex, ps...]"
+msgstr "Fitxategi mota falta, --import aukeraren atzetik [adibidez latex, ps...]"
 
 #: src/lyx_main.C:797
 msgid "Missing filename for --import"
@@ -11928,8 +11871,7 @@ msgstr "Huts egin du "
 
 #: src/lyxfunc.C:1500
 msgid " failed - color is undefined or may not be redefined"
-msgstr ""
-" kolorea ezartzean - kolorea definitu gabe dago edo ezin da berriz definitu"
+msgstr " kolorea ezartzean - kolorea definitu gabe dago edo ezin da berriz definitu"
 
 #: src/lyxfunc.C:1635
 msgid "Select template file"
@@ -12025,8 +11967,7 @@ msgstr ""
 
 #: src/lyxrc.C:1874
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
-msgstr ""
-"Inprimatzeko zure programarik gustokoena, adibidez, \"dvips\", \"dvilj4\"."
+msgstr "Inprimatzeko zure programarik gustokoena, adibidez, \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:1878
 msgid "The option to print only even pages."
@@ -12084,8 +12025,7 @@ msgstr ""
 
 #: src/lyxrc.C:1926
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr ""
-"Inprimatze-programak sortutako fitxategiaren luzapena, normalean \".ps\"."
+msgstr "Inprimatze-programak sortutako fitxategiaren luzapena, normalean \".ps\"."
 
 #: src/lyxrc.C:1930
 msgid ""
@@ -12154,8 +12094,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Menu/popup-etako letra-tipoen kodeketa."
 
 #: src/lyxrc.C:1980
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Automatikoki gordetzeko birtartea (segundutan). 0 ipiniz gero ez da "
 "automatikoki gordeko."
@@ -12313,8 +12252,7 @@ msgstr ""
 "lehenetsi gisa."
 
 #: src/lyxrc.C:2075
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Zehaztu aukerako hiztegi pertsonalaren fitxategia. Adbz.  \".ispell_english"
 "\"."
@@ -12375,8 +12313,7 @@ msgstr ""
 "jatorrizko fitxategiaren direktorio berean gordeko du babes-kopia."
 
 #: src/lyxrc.C:2112
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Hautatu eskuinetik-ezkerrerako hizkuntzen (adib. arabiera, hebreeera) "
 "euskarria gaitzeko."
@@ -12417,14 +12354,11 @@ msgstr ""
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr ""
-"Hautatu dokumentuaren hasieran hizkuntza aldatzeko komandoa beharrezkoa bada."
+msgstr "Hautatu dokumentuaren hasieran hizkuntza aldatzeko komandoa beharrezkoa bada."
 
 #: src/lyxrc.C:2136
-msgid ""
-"Select if a language switching command is needed at the end of the document."
-msgstr ""
-"Hautatu dokumentuaren amaieran hizkuntza aldatzeko komandoa beharrezkoa bada."
+msgid "Select if a language switching command is needed at the end of the document."
+msgstr "Hautatu dokumentuaren amaieran hizkuntza aldatzeko komandoa beharrezkoa bada."
 
 #: src/lyxrc.C:2140
 msgid ""
@@ -12475,13 +12409,11 @@ msgstr "Hitz kopuru maximoa, etiketa berri bateko katearen hasieraketarako."
 
 #: src/lyxrc.C:2182
 msgid "Shows a typeset preview of things such as math"
-msgstr ""
-"Gauzen konposaketaren aurrebista erakusten du, matematikarena bezalakoa."
+msgstr "Gauzen konposaketaren aurrebista erakusten du, matematikarena bezalakoa."
 
 #: src/lyxrc.C:2186
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr ""
-"Aurrebistako ekuazioek \"(#)\" motako etiketak dituzte, zenbakien ordez."
+msgstr "Aurrebistako ekuazioek \"(#)\" motako etiketak dituzte, zenbakien ordez."
 
 #: src/lyxrc.C:2190
 msgid "Scale the preview size to suit."
@@ -12491,7 +12423,7 @@ msgstr "Eskalatu aurrebista, bere tamaina egokitzeko"
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
-msgstr ""
+msgstr "Zehaztu itzazu zein direktorio inguruneko PATH aldagaian gehituta egon behar duten. Erabili jatorrizko Sist. Eragileak erabiltzen duen formatua."
 
 #: src/lyxtextclasslist.C:88
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -12623,13 +12555,12 @@ msgstr "Ezin izan da autogordetako fitxategia ezabatu!"
 
 #: src/support/package.C:374
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1%"
-msgstr ""
+msgid "Unable to determine the path to the LyX binary from the command line %1%"
+msgstr "Ezin izan da LyX liburutegien bide-izena zehaztu (%1% komando lerrotik)"
 
 #: src/support/package.C:379
 msgid "Unable to determine the path to the LyX binary from the command line "
-msgstr ""
+msgstr "Ezin izan da LyX liburutegien bide-izena zehaztu komando lerro honetatik "
 
 #: src/support/package.C:505
 #, c-format
@@ -12639,18 +12570,22 @@ msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"Ezin izan da egin den bilaketako sistemako direktorioa zehaztu\n"
+"\t%1%\n"
+"Saiatu '-sysdir' komando lerroko parametroarekin edo ezarri inguruneko "
+"LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' fitxategia duena)."
 
 #: src/support/package.C:515
 msgid "Unable to determine the system directory having searched\n"
-msgstr ""
+msgstr "Ezin izan da egin den bilaketako sistemako direktorioa zehaztu\n"
 
 #: src/support/package.C:518
-#, fuzzy
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
-"ezarri inguruneko LYX_DIR_11x aldagaia  `chkconfig.ltx' fitxategia daukan "
+"Saiatu '-sysdir' komando lerroko parametroarekin edo ezarri inguruneko "
+"LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' fitxategia duena)."
 
 #: src/support/package.C:601
 #, c-format
@@ -12658,25 +12593,25 @@ msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"%1% aldatzaile baliogabea.\n"
+"%2% direktorioak ez dauka %3%."
 
 #: src/support/package.C:606 src/support/package.C:641
 #: src/support/package.C:669
-#, fuzzy
 msgid "Invalid "
-msgstr "Baliogabeko luzera!"
+msgstr "Baliogabea "
 
 #: src/support/package.C:607
 msgid " switch.\n"
-msgstr ""
+msgstr " aldatzailea.\n"
 
 #: src/support/package.C:608 src/support/package.C:643
-#, fuzzy
 msgid "Directory "
-msgstr "Direktorioa:|#D"
+msgstr "Direktorioa "
 
 #: src/support/package.C:609 src/support/package.C:644
 msgid " does not contain "
-msgstr ""
+msgstr " ez dauka "
 
 #: src/support/package.C:636
 #, c-format
@@ -12684,11 +12619,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Inguruneko %1% aldagi baliogabea.\n"
+"%2% direktorioak ez dauka %3%."
 
 #: src/support/package.C:642 src/support/package.C:670
-#, fuzzy
 msgid " environment variable.\n"
-msgstr "Inguruneko LYX_DIR_11x aldagaia ez da ona."
+msgstr " inguruneko aldagaia.\n"
 
 #: src/support/package.C:664
 #, c-format
@@ -12696,11 +12632,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
+"Inguruneko %1% aldagaia baliogabea da.\n"
+"%2% ez da direktorioa."
 
 #: src/support/package.C:671
-#, fuzzy
 msgid " is not a directory."
-msgstr "Fitxategia eskatzen da, ez direktorio bat."
+msgstr " ez da direktorioa."
 
 #: src/tabular.C:1346
 msgid "Warning:"
@@ -12718,8 +12655,7 @@ msgstr "Lortu LyX-en (< 1.1.x) bertsio zaharkituago bat bihurketarako!"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"Paragrafo baten hasieran ezin duzu zuriune bat sartu. Irakurri Tutoretza."
+msgstr "Paragrafo baten hasieran ezin duzu zuriune bat sartu. Irakurri Tutoretza."
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -12794,180 +12730,3 @@ msgstr "Marka ezarrita"
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-eko 'layout' funtzioak argumentu bat behar du."
 
-#~ msgid "Forked child processes:|#F"
-#~ msgstr "Haur prozesu sardetuak:|#s"
-
-#~ msgid "Kill processes:|#K"
-#~ msgstr "Hil prozesuak:|#H"
-
-#~ msgid "All ->"
-#~ msgstr "Guztia ->"
-
-#~ msgid "@->"
-#~ msgstr "@->"
-
-#~ msgid "Reference:|#e"
-#~ msgstr "Erreferentzia:|#e"
-
-#~ msgid "Cite &Style:"
-#~ msgstr "Aipamen &estiloa:"
-
-#~ msgid "The citation key"
-#~ msgstr "Zitazio-gakoa"
-
-#~ msgid "Bibtex"
-#~ msgstr "Bibtex"
-
-#~ msgid "Search the available citations"
-#~ msgstr "Bilatu dauden zitazioak"
-
-#~ msgid "Available citation keys"
-#~ msgstr "Zitazio-gakoak"
-
-#~ msgid "Add the selected citation"
-#~ msgstr "Gehitu hautatutako zitazioa"
-
-#~ msgid "Remove the selected citation"
-#~ msgstr "Kendu hautatutako zitazioa"
-
-#~ msgid "Citation entry"
-#~ msgstr "Zitazio sarrera"
-
-#~ msgid "&File"
-#~ msgstr "&Fitxategia"
-
-#~ msgid "&Reference:"
-#~ msgstr "&Erreferentzia:"
-
-#~ msgid "Available references"
-#~ msgstr "Dauden erreferentziak"
-
-#~ msgid "&Type"
-#~ msgstr "&Mota"
-
-#~ msgid "&Name"
-#~ msgstr "&Izena"
-
-#~ msgid "Citation Reference...|C"
-#~ msgstr "Zitazio-erreferentzia...|Z"
-
-#~ msgid "BibTeX Reference...|B"
-#~ msgstr "BibTeX erreferentzia...|B"
-
-#~ msgid "Child Processes|C"
-#~ msgstr "Haur-prozesuak|P"
-
-#~ msgid "Show the processes forked by LyX"
-#~ msgstr "Erakutsi LyX-ek bikoiztutako prozesuak"
-
-#~ msgid "Kill the forked process with this PID"
-#~ msgstr "Hil PID honekin sortutako proz. sardetuak"
-
-#~ msgid "Bibliography Item"
-#~ msgstr "Bibliografi-elementua"
-
-#~ msgid "BibTeX"
-#~ msgstr "BibTeX"
-
-#~ msgid "LyX: Preferences"
-#~ msgstr "LyX: Hobespenak"
-
-#~ msgid "Go to reference"
-#~ msgstr "Joan erreferentzira"
-
-#~ msgid "ShowFile"
-#~ msgstr "Erakutsi Fitxategia"
-
-#~ msgid "Table of contents"
-#~ msgstr "Gaien aurkibidea"
-
-#~ msgid "VCLog"
-#~ msgstr "VCLog"
-
-#~ msgid "BibTeX Database"
-#~ msgstr "BibTeX datu-basea"
-
-#~ msgid "Add the selected entry to the current citation reference."
-#~ msgstr "Gehitu hautatutako sarrera uneko zitazio-errererentziari."
-
-#~ msgid "Delete the selected entry from the current citation reference."
-#~ msgstr "Ezabatu hautatutako sarrera uneko zitazio-erreferentzitik."
-
-#~ msgid "ERT Options"
-#~ msgstr "ERT aukerak"
-
-#~ msgid "Child processes"
-#~ msgstr "Haur-prozesuak"
-
-#~ msgid "All currently running child processes forked by LyX."
-#~ msgstr "Unean LyX-ek sardetutako haur-prozesu exekuzio guztiak."
-
-#~ msgid "A list of all child processes to kill."
-#~ msgstr "Hiltzeko dauden haur-prozesuen zerrenda."
-
-#~ msgid "Add all processes to the list of processes to kill."
-#~ msgstr "Gehitu prozesu guztiak hiltzeko prozesuen zerrendara."
-
-#~ msgid ""
-#~ "Add the currently selected child process to the list of processes to kill."
-#~ msgstr ""
-#~ "Gehitu unean hautatutako haur-prozesua hiltzeko prozesuen zerrendara."
-
-#~ msgid ""
-#~ "Remove the currently selected item from the list of processes to kill."
-#~ msgstr "Kendu unean hautatutako elementua hiltzeko prozesuen zerrendatik."
-
-#~ msgid "LaTeX preamble"
-#~ msgstr "LaTeX hitzaurrea"
-
-#~ msgid "Url"
-#~ msgstr "URLa"
-
-#~ msgid "Warning: could not determine path of binary."
-#~ msgstr "Abisua: ezin izan da bitarraren bide-izena zehaztu."
-
-#~ msgid "If you have problems, try starting LyX with an absolute path."
-#~ msgstr ""
-#~ "Arazoak badituzu, saiatu LyX-a bide-izen absolutoarekin exekutatzen."
-
-#~ msgid "System directory set to: "
-#~ msgstr "Sistema-direktorioa: "
-
-#~ msgid "LyX Warning! Couldn't determine system directory. "
-#~ msgstr "LyX abisua! Ezin sistemaren direktorioa zehaztu. "
-
-#~ msgid "Try the '-sysdir' command line parameter or "
-#~ msgstr "Saiatu komandoaren '-sysdir' parametroarekin edo "
-
-#~ msgid "containing the file `chkconfig.ltx'."
-#~ msgstr " LyX sistemaren direktoriora ."
-
-#~ msgid "Using built-in default %1$s but expect problems."
-#~ msgstr "%1$s eraikin lehenetsia erabiltzen, arazoak egotea espero da."
-
-#~ msgid "Using built-in default "
-#~ msgstr "Eraiki lehenetsia erabiltzen "
-
-#~ msgid " but expect problems."
-#~ msgstr " arazoak egon daitekeen arren."
-
-#~ msgid "Expect problems."
-#~ msgstr "Arazoak egon daiteke."
-
-#~ msgid "Running without personal LyX directory."
-#~ msgstr "LyX direktorio pertsonalik gabe exekutatzen."
-
-#~ msgid "LyX: Creating directory %1$s and running configure..."
-#~ msgstr "LyX:%1$s direktorioa sortzen eta konfigurazioa exekutatzen..."
-
-#~ msgid " and running configure..."
-#~ msgstr " eta konfigurazioa exekutatzen..."
-
-#~ msgid "Failed. Will use %1$s instead."
-#~ msgstr "Huts egin du. Horren ordez %1$s erabiliko da."
-
-#~ msgid "Failed. Will use "
-#~ msgstr "Huts egin du. Horren ordez "
-
-#~ msgid " instead."
-#~ msgstr " erabiliko da."
