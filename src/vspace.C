@@ -193,7 +193,7 @@ LaTeXLength table[] = {
 
 const char * stringFromUnit(int unit)
 {
-	if (unit < 0 || unit >= num_units)
+	if (unit < 0 || unit > num_units)
 		return 0;
 	return unit_name[unit];
 }
