@@ -1,6 +1,11 @@
+2002-11-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* configure.ac: use AH_TOP and AH_BOTTOM instead of
+	AH_VERBATIM
+
 2002-11-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* configure.ac (AH_VERBATIM): fix keys to be unique 
+	* configure.ac (AH_VERBATIM): fix keys to be unique
 
 2002-11-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
