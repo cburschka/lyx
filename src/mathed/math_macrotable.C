@@ -87,6 +87,7 @@ void MathMacroTable::builtinMacros()
    
 	//createTemplate("emptyset",     0, "\\not0");
 	createTemplate("notin",        0, "\\not\\in");
+	createTemplate("slash",        0, "/");
 
 	// fontmath.ltx
 
