@@ -33,6 +33,7 @@
 #   preferences   -> Einstellungen
 #   remove        -> entfernen
 #   restore       -> zurücksetzen
+#   run           -> ausführen
 #   scroll (bar)  -> verschieben / Rollbalken
 #   set           -> festlegen / ... ein / (set to -> setzen auf)
 #   setting       -> Einstellung
@@ -44,8 +45,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.0\n"
-"POT-Creation-Date: 2003-01-24 03:29+0100\n"
-"PO-Revision-Date: 2003-01-24 03:00+0100\n"
+"POT-Creation-Date: 2003-01-26 23:51+0100\n"
+"PO-Revision-Date: 2003-01-27 03:00+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -727,7 +728,7 @@ msgstr "Grafik-Anzeige:|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1259
 msgid "Spell command:|#S"
-msgstr "Befehl der Rechtschreibprüfung:|#R"
+msgstr "Befehl zur Rechtschreibprüfung:|#R"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1277
 msgid "Alternative language:|#a"
@@ -869,7 +870,7 @@ msgstr "Von:|#V"
 #: ../src/frontends/xforms/forms/form_preferences.fd:2087
 #: ../src/frontends/xforms/forms/form_print.fd:188
 msgid "To:|#T"
-msgstr "Nach/bis:|#N"
+msgstr "Nach:|#N"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2105
 msgid "Converter:|#C"
@@ -1003,7 +1004,7 @@ msgstr "Papiergröße:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2964
 msgid "ASCII line length:|#A"
-msgstr ""
+msgstr "ASCII-Zeilenlänge:|#A"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2986
 msgid "TeX encoding:|#T"
@@ -1015,7 +1016,7 @@ msgstr "Standard-Papiergröße:|#P"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3022
 msgid "Outside Code Interaction"
-msgstr ""
+msgstr "Aufruf externer Programme"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3040
 msgid "ASCII roff:|#r"
@@ -1100,7 +1101,7 @@ msgstr "Regulärer Ausdruck|#R"
 #: ../src/frontends/xforms/forms/form_search.fd:134
 msgid "Case sensitive|#C"
 msgstr ""
-"Groß-/Kleinschreibung\n"
+"Groß-/Kleinschr.\n"
 " beachten|#G"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:260
@@ -1215,16 +1216,17 @@ msgid "Replace|^R"
 msgstr "Ersetzen|#E"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
-msgid "Entry:"
-msgstr "Eintrag:"
+msgid "Keyword:"
+msgstr "Stichwort:"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
-msgid "Selection:"
-msgstr "Auswahl:"
+msgid "Selection:|#S"
+msgstr "Auswahl:|#A"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
-msgid "Meanings|#M"
-msgstr "Bedeutungen|#B"
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
+msgid "Thesaurus entries:"
+msgstr "Thesaurus-Einträge:"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:62
 #: ../src/frontends/xforms/forms/form_filedialog.fd:134
@@ -1233,11 +1235,11 @@ msgstr "Neu lesen|#N"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:80
 msgid "Show Path|#P"
-msgstr "Pfad zeigen|#P"
+msgstr "Pfad anzeigen|#P"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:134
 msgid "Run TeXhash|#T"
-msgstr ""
+msgstr "TeXhash ausführen|#T"
 
 #: ../src/frontends/xforms/forms/form_search.fd:44
 msgid "Find:|#F"
@@ -1731,7 +1733,7 @@ msgstr "Abstand|#t"
 #: ../src/frontends/xforms/forms/form_document.fd:1215
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
 msgid "Quote Style"
-msgstr "Anführungszeichen"
+msgstr "Stil von Anführungszeichen"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1287
 msgid "Single|#S"
@@ -1877,7 +1879,7 @@ msgstr "Umgekehrte Reihenfolge|#R"
 
 #: ../src/frontends/xforms/forms/form_print.fd:242
 msgid "Number:|#N"
-msgstr "Nummer:|#N"
+msgstr "Anzahl:|#A"
 
 #: ../src/frontends/xforms/forms/form_print.fd:301
 msgid "Odd numbered pages|#O"
@@ -2284,23 +2286,20 @@ msgid "Name of the default printer"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:119
-#, fuzzy
 msgid "Adapt outp&ut"
-msgstr "Namen verwenden"
+msgstr "&Namen angeben"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:123
 msgid "Use printer name explicitely"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:159
-#, fuzzy
 msgid "Command Options"
 msgstr "Befehlsoptionen"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:178
-#, fuzzy
 msgid "Re&verse:"
-msgstr "umgekehrt"
+msgstr "&Umgekehrt:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:207
 msgid "To p&rinter:"
@@ -2482,7 +2481,6 @@ msgid "Index"
 msgstr "Index"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
 msgid "&Keyword"
 msgstr "&Stichwort"
 
@@ -2791,13 +2789,12 @@ msgid "Find &Next"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
-#, fuzzy
 msgid "Replace &All"
-msgstr "&Alles Ersetzen"
+msgstr "&Alles ersetzen"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
 msgid "Search &backwards"
-msgstr ""
+msgstr "&Rückwärts suchen"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
 msgid "Insert URL"
@@ -2805,7 +2802,7 @@ msgstr "URL einfügen"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
 msgid "&URL"
-msgstr "URL"
+msgstr "&URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
@@ -2815,7 +2812,7 @@ msgstr "URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
 msgid "&Name"
-msgstr "Name"
+msgstr "&Name"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
@@ -2824,11 +2821,11 @@ msgstr "Name für die URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
 msgid "&Generate hyperlink"
-msgstr "Hyperlink anlegen"
+msgstr "&Hyperlink erzeugen"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
 msgid "Output as a hyperlink ?"
-msgstr "Als Hyperlink ausgeben?"
+msgstr "Als Hyperlink ausgeben ?"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:22
 #: src/frontends/xforms/FormPreferences.C:243
@@ -2836,14 +2833,12 @@ msgid "Spell checker"
 msgstr "Rechtschreibprüfung"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
-#, fuzzy
 msgid "Spell chec&ker program:"
-msgstr "Rechtschreibprüfung"
+msgstr "Programm zur &Rechtschreibprüfung:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:106
-#, fuzzy
 msgid "Al&ternative language:"
-msgstr "Andere Sprache verwenden|#A"
+msgstr "&Alternative Sprache:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:121
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:121
@@ -2915,7 +2910,7 @@ msgstr "Mathe-Schrift festlegen"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
 msgid "Insert fraction (\frac)"
-msgstr ""
+msgstr "Bruch einfügen (\frac)"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
 msgid "Toggle between display mode"
@@ -3123,7 +3118,7 @@ msgstr "LyX-Anzeige"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
 msgid "&Show in LyX"
-msgstr ""
+msgstr "In LyX &anzeigen"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
 msgid "Display image in LyX"
@@ -3581,7 +3576,7 @@ msgstr "Großer Abstand"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
 msgid "VFill"
-msgstr ""
+msgstr "Variabler Abstand"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
 msgid "Below paragraph"
@@ -3670,7 +3665,7 @@ msgstr "&Schließen"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
 msgid "Show ERT button only"
-msgstr "Nur ERT-Knopf zeigen"
+msgstr "Nur ERT-Knopf anzeigen"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
 msgid "&Open"
@@ -3678,7 +3673,7 @@ msgstr "Öffnen"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
 msgid "Show ERT contents"
-msgstr "ERT Inhalt anzeigen"
+msgstr "ERT-Inhalt anzeigen"
 
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
 msgid "Table Of Contents"
@@ -3772,21 +3767,21 @@ msgstr "&Dokument:"
 msgid "Thesaurus"
 msgstr "Thesaurus"
 
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
+msgid "&Keyword:"
+msgstr "&Stichwort:"
+
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
 msgid "Entry"
 msgstr "Eintrag"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
-msgid "Thesaurus entries"
-msgstr "Thessaurus Einträge"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
 msgid "Select a related word"
 msgstr "Wählen Sie ein verwandtes Wort"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-msgid "&Selection"
-msgstr "&Auswahl"
+msgid "&Selection:"
+msgstr "&Auswahl:"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
@@ -3871,11 +3866,11 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
 msgid "&Show preview"
-msgstr "&Zeige Vorschau"
+msgstr "&Vorschau anzeigen"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
 msgid "Show LaTeX preview"
-msgstr "Zeige LaTeX-Vorschau"
+msgstr "LaTeX-Vorschau anzeigen"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:22
 msgid "LyX: Enter text"
@@ -4849,7 +4844,7 @@ msgstr "Titel"
 #: ../lib/layouts/cl2emult.layout:59 ../lib/layouts/paper.layout:121
 #: ../lib/layouts/scrclass.inc:158
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: ../lib/layouts/broadway.layout:216 ../lib/layouts/hollywood.layout:311
 #: ../lib/layouts/egs.layout:261 ../lib/layouts/lyxmacros.inc:101
@@ -4972,7 +4967,7 @@ msgstr "Paragraph"
 #: ../lib/layouts/apa.layout:262 ../lib/layouts/stdlists.inc:9
 #: ../lib/layouts/manpage.layout:84 ../lib/layouts/db_stdlists.inc:11
 msgid "Itemize"
-msgstr ""
+msgstr "Auflistung"
 
 #: ../lib/layouts/aastex.layout:78 ../lib/layouts/linuxdoc.layout:193
 #: ../lib/layouts/aapaper.layout:49 ../lib/layouts/egs.layout:182
@@ -4980,7 +4975,7 @@ msgstr ""
 #: ../lib/layouts/stdlists.inc:27 ../lib/layouts/manpage.layout:67
 #: ../lib/layouts/db_stdlists.inc:17
 msgid "Enumerate"
-msgstr ""
+msgstr "Aufzählung"
 
 #: ../lib/layouts/aastex.layout:80 ../lib/layouts/hollywood.layout:131
 #: ../lib/layouts/linuxdoc.layout:226 ../lib/layouts/scrlettr.layout:16
@@ -4989,13 +4984,13 @@ msgstr ""
 #: ../lib/layouts/manpage.layout:102 ../lib/layouts/db_stdlists.inc:23
 #: ../lib/layouts/paper.layout:102 ../lib/layouts/scrclass.inc:23
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: ../lib/layouts/aastex.layout:82 ../lib/layouts/scrmacros.inc:6
 #: ../lib/layouts/aapaper.layout:53 ../lib/layouts/egs.layout:165
 #: ../lib/layouts/aa.layout:56 ../lib/layouts/stdlists.inc:69
 msgid "List"
-msgstr ""
+msgstr "Liste"
 
 #: ../lib/layouts/aastex.layout:88 ../lib/layouts/aastex.layout:238
 #: ../lib/layouts/apa.layout:148 ../lib/layouts/revtex4.layout:150
@@ -5024,7 +5019,7 @@ msgstr "Und"
 #: ../lib/layouts/revtex4.layout:139 ../lib/layouts/revtex.layout:123
 #: ../lib/layouts/amsdefs.inc:111 ../lib/layouts/scrclass.inc:165
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: ../lib/layouts/aastex.layout:96 ../lib/layouts/aastex.layout:219
 #: ../lib/layouts/llncs.layout:264 ../lib/layouts/svjog.layout:32
@@ -5092,7 +5087,7 @@ msgstr ""
 
 #: ../lib/layouts/aastex.layout:118 ../lib/layouts/aastex.layout:441
 msgid "NoteToEditor"
-msgstr ""
+msgstr "Hinweis für Herausgeber"
 
 #: ../lib/layouts/aastex.layout:519
 msgid "FigCaption"
@@ -5116,7 +5111,7 @@ msgstr "Unterparagraph"
 #: ../lib/layouts/aa.layout:62 ../lib/layouts/aa.layout:101
 #: ../lib/layouts/svjour.inc:164 ../lib/layouts/aapaper.inc:8
 msgid "Subtitle"
-msgstr ""
+msgstr "Untertitel"
 
 #: ../lib/layouts/llncs.layout:157 ../lib/layouts/svjour.inc:189
 msgid "Running_LaTeX_Title"
@@ -5137,7 +5132,7 @@ msgstr ""
 #: ../lib/layouts/llncs.layout:232 ../lib/layouts/svjour.inc:229
 #: ../lib/layouts/cl2emult.layout:71
 msgid "Institute"
-msgstr ""
+msgstr "Institut"
 
 #: ../lib/layouts/llncs.layout:256 ../lib/layouts/aa.layout:70
 #: ../lib/layouts/aa.layout:166 ../lib/layouts/svjour.inc:257
@@ -5169,7 +5164,7 @@ msgstr ""
 #: ../lib/layouts/heb-article.layout:70 ../lib/layouts/amsmaths.inc:389
 #: ../lib/layouts/amsmaths-plain.inc:197
 msgid "Claim"
-msgstr ""
+msgstr "Behauptung"
 
 #: ../lib/layouts/llncs.layout:345 ../lib/layouts/IEEEtran.layout:134
 #: ../lib/layouts/svjour.inc:403 ../lib/layouts/amsmaths-seq.inc:64
@@ -5191,19 +5186,19 @@ msgstr ""
 #: ../lib/layouts/scrmaths.inc:27 ../lib/layouts/heb-article.layout:79
 #: ../lib/layouts/amsmaths.inc:260 ../lib/layouts/amsmaths-plain.inc:131
 msgid "Definition"
-msgstr ""
+msgstr "Definition"
 
 #: ../lib/layouts/llncs.layout:374 ../lib/layouts/IEEEtran.layout:189
 #: ../lib/layouts/svjour.inc:432 ../lib/layouts/amsmaths-seq.inc:112
 #: ../lib/layouts/amsmaths.inc:294 ../lib/layouts/amsmaths-plain.inc:142
 msgid "Example"
-msgstr ""
+msgstr "Beispiel"
 
 #: ../lib/layouts/llncs.layout:380 ../lib/layouts/IEEEtran.layout:222
 #: ../lib/layouts/svjour.inc:438 ../lib/layouts/amsmaths-seq.inc:136
 #: ../lib/layouts/amsmaths.inc:342 ../lib/layouts/amsmaths-plain.inc:175
 msgid "Exercise"
-msgstr ""
+msgstr "Übung"
 
 #: ../lib/layouts/llncs.layout:386 ../lib/layouts/IEEEtran.layout:101
 #: ../lib/layouts/foils.layout:262 ../lib/layouts/svjour.inc:452
@@ -5211,20 +5206,20 @@ msgstr ""
 #: ../lib/layouts/heb-article.layout:52 ../lib/layouts/amsmaths.inc:128
 #: ../lib/layouts/amsmaths-plain.inc:54
 msgid "Lemma"
-msgstr ""
+msgstr "Lemma"
 
 #: ../lib/layouts/llncs.layout:392 ../lib/layouts/IEEEtran.layout:255
 #: ../lib/layouts/slides.layout:173 ../lib/layouts/svjour.inc:458
 #: ../lib/layouts/apa.layout:204 ../lib/layouts/amsmaths-seq.inc:160
 #: ../lib/layouts/amsmaths.inc:413 ../lib/layouts/amsmaths-plain.inc:208
 msgid "Note"
-msgstr ""
+msgstr "Hinweis"
 
 #: ../lib/layouts/llncs.layout:398 ../lib/layouts/IEEEtran.layout:211
 #: ../lib/layouts/svjour.inc:464 ../lib/layouts/amsmaths-seq.inc:128
 #: ../lib/layouts/amsmaths.inc:330 ../lib/layouts/amsmaths-plain.inc:164
 msgid "Problem"
-msgstr ""
+msgstr "Problem"
 
 #: ../lib/layouts/llncs.layout:404 ../lib/layouts/IEEEtran.layout:82
 #: ../lib/layouts/foils.layout:301 ../lib/layouts/svjour.inc:470
@@ -5246,17 +5241,17 @@ msgstr ""
 
 #: ../lib/layouts/llncs.layout:422 ../lib/layouts/svjour.inc:488
 msgid "Question"
-msgstr ""
+msgstr "Frage"
 
 #: ../lib/layouts/llncs.layout:428 ../lib/layouts/IEEEtran.layout:233
 #: ../lib/layouts/svjour.inc:494 ../lib/layouts/amsmaths-seq.inc:144
 #: ../lib/layouts/amsmaths.inc:354 ../lib/layouts/amsmaths-plain.inc:186
 msgid "Remark"
-msgstr ""
+msgstr "Anmerkung"
 
 #: ../lib/layouts/llncs.layout:434 ../lib/layouts/svjour.inc:500
 msgid "Solution"
-msgstr ""
+msgstr "Lösung"
 
 #: ../lib/layouts/llncs.layout:440 ../lib/layouts/IEEEtran.layout:90
 #: ../lib/layouts/foils.layout:232 ../lib/layouts/svjour.inc:506
@@ -5264,7 +5259,7 @@ msgstr ""
 #: ../lib/layouts/scrmaths.inc:17 ../lib/layouts/heb-article.layout:24
 #: ../lib/layouts/amsmaths.inc:59 ../lib/layouts/amsmaths-plain.inc:32
 msgid "Theorem"
-msgstr ""
+msgstr "Theorem"
 
 #: ../lib/layouts/hollywood.layout:55 src/frontends/xforms/Menubar_pimpl.C:260
 msgid "More"
@@ -5317,7 +5312,7 @@ msgstr ""
 #: ../lib/layouts/linuxdoc.layout:26 ../lib/layouts/egs.layout:149
 #: ../lib/layouts/stdlayouts.inc:49 ../lib/layouts/manpage.layout:27
 msgid "Quote"
-msgstr ""
+msgstr "Zitat (kurz)"
 
 #: ../lib/layouts/linuxdoc.layout:276 ../lib/layouts/db_lyxmacros.inc:11
 #: ../lib/layouts/manpage.layout:153
@@ -5331,19 +5326,19 @@ msgstr ""
 #: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/scrclass.inc:222 src/buffer.C:1517
 msgid "Abstract"
-msgstr ""
+msgstr "Abstrakt"
 
 #: ../lib/layouts/linuxdoc.layout:370 ../lib/layouts/db_stdlayouts.inc:11
 #: ../lib/layouts/manpage.layout:171
 msgid "SGML"
-msgstr ""
+msgstr "SGML"
 
 #: ../lib/layouts/stdsections.inc:11 ../lib/layouts/article.layout:20
 #: ../lib/layouts/db_stdsections.inc:11 ../lib/layouts/seminar.layout:26
 #: ../lib/layouts/scrartcl.layout:17 ../lib/layouts/paper.layout:33
 #: ../lib/layouts/scrclass.inc:52
 msgid "Part"
-msgstr ""
+msgstr "Teil"
 
 #: ../lib/layouts/scrlettr.layout:26 ../lib/layouts/scrclass.inc:33
 msgid "Labeling"
@@ -5351,19 +5346,19 @@ msgstr ""
 
 #: ../lib/layouts/scrlettr.layout:48 ../lib/layouts/g-brief-en.layout:31
 msgid "Letter"
-msgstr ""
+msgstr "Brief"
 
 #: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/dinbrief.layout:48
 #: ../lib/layouts/g-brief-en.layout:517 ../lib/layouts/stdletter.inc:59
 #: ../lib/layouts/heb-letter.layout:16
 msgid "Opening"
-msgstr ""
+msgstr "Eröffnung"
 
 #: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/dinbrief.layout:74
 #: ../lib/layouts/g-brief-en.layout:591 ../lib/layouts/stdletter.inc:106
 #: ../lib/layouts/heb-letter.layout:20
 msgid "Closing"
-msgstr ""
+msgstr "Abschluss"
 
 #: ../lib/layouts/scrlettr.layout:93
 msgid "PS"
@@ -5386,7 +5381,7 @@ msgstr "Name"
 #: ../lib/layouts/g-brief-en.layout:73 ../lib/layouts/stdletter.inc:83
 #: ../lib/layouts/heb-letter.layout:24
 msgid "Signature"
-msgstr ""
+msgstr "Unterschrift"
 
 #: ../lib/layouts/scrlettr.layout:155 ../lib/layouts/aapaper.layout:71
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/egs.layout:273
@@ -5440,7 +5435,7 @@ msgstr "Kunde"
 
 #: ../lib/layouts/scrlettr.layout:254
 msgid "Invoice"
-msgstr ""
+msgstr "Rechnung"
 
 #: ../lib/layouts/IEEEtran.layout:65 ../lib/layouts/scrmaths.inc:1
 msgid "TheoremTemplate"
@@ -5525,7 +5520,7 @@ msgstr ""
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
 #: ../lib/layouts/stdletter.inc:129 src/lengthcommon.C:35
 msgid "cc"
-msgstr ""
+msgstr "cc"
 
 #: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
 msgid "Betreff"
@@ -5560,12 +5555,12 @@ msgstr "Danksagung"
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/heb-article.layout:16
 #: ../lib/layouts/lyxmacros.inc:47
 msgid "Comment"
-msgstr ""
+msgstr "Kommentar"
 
 #: ../lib/layouts/db_lyxmacros.inc:25 ../lib/layouts/egs.layout:749
 #: ../lib/layouts/lyxmacros.inc:11
 msgid "LyX-Code"
-msgstr ""
+msgstr "LyX-Code"
 
 #: ../lib/layouts/cv.layout:57
 msgid "SubSection"
@@ -5596,11 +5591,11 @@ msgstr "Stichwort"
 #: ../lib/layouts/egs.layout:131 ../lib/layouts/db_stdlayouts.inc:34
 #: ../lib/layouts/stdlayouts.inc:31
 msgid "Quotation"
-msgstr ""
+msgstr "Zitat (lang)"
 
 #: ../lib/layouts/egs.layout:242 ../lib/layouts/stdlayouts.inc:65
 msgid "Verse"
-msgstr ""
+msgstr "Gedicht"
 
 #: ../lib/layouts/egs.layout:312 ../lib/layouts/obsolete.inc:10
 msgid "LaTeX_Title"
@@ -5738,7 +5733,7 @@ msgstr ""
 #: ../lib/layouts/article.layout:31 ../lib/layouts/seminar.layout:37
 #: ../lib/layouts/stdstarsections.inc:12 ../lib/layouts/scrartcl.layout:29
 msgid "Part*"
-msgstr ""
+msgstr "Teil*"
 
 #: ../lib/layouts/db_stdtitle.inc:25
 msgid "Authorgroup"
@@ -5746,11 +5741,11 @@ msgstr ""
 
 #: ../lib/layouts/db_stdtitle.inc:33
 msgid "FirstName"
-msgstr ""
+msgstr "Vorname"
 
 #: ../lib/layouts/db_stdtitle.inc:45
 msgid "Surname"
-msgstr ""
+msgstr "Nachname"
 
 #: ../lib/layouts/db_stdtitle.inc:65
 msgid "RevisionHistory"
@@ -5758,7 +5753,7 @@ msgstr ""
 
 #: ../lib/layouts/db_stdtitle.inc:86
 msgid "Revision"
-msgstr ""
+msgstr "Überarbeitung"
 
 #: ../lib/layouts/db_stdtitle.inc:102
 msgid "RevisionRemark"
@@ -5766,7 +5761,7 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-en.layout:93
 msgid "Street"
-msgstr ""
+msgstr "Straße"
 
 #: ../lib/layouts/g-brief-en.layout:113
 msgid "Addition"
@@ -5774,7 +5769,7 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-en.layout:133
 msgid "Town"
-msgstr ""
+msgstr "Stadt"
 
 #: ../lib/layouts/g-brief-en.layout:153
 msgid "State"
@@ -5782,7 +5777,7 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-en.layout:173
 msgid "ReturnAddress"
-msgstr ""
+msgstr "Rücksende-Adresse"
 
 #: ../lib/layouts/g-brief-en.layout:194
 msgid "MyRef"
@@ -5798,7 +5793,7 @@ msgstr ""
 
 #: ../lib/layouts/g-brief-en.layout:261
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: ../lib/layouts/g-brief-en.layout:282 ../lib/layouts/g-brief-de.layout:282
 msgid "Telefax"
@@ -5855,15 +5850,15 @@ msgstr "Algorithmus"
 
 #: ../lib/layouts/seminar.layout:49
 msgid "LandscapeSlide"
-msgstr ""
+msgstr "Folie (Querformat)"
 
 #: ../lib/layouts/seminar.layout:59
 msgid "PortraitSlide"
-msgstr ""
+msgstr "Folie (Hochformat)"
 
 #: ../lib/layouts/seminar.layout:72
 msgid "Slide*"
-msgstr ""
+msgstr "Folie*"
 
 #: ../lib/layouts/seminar.layout:76
 msgid "SlideHeading"
@@ -5951,15 +5946,15 @@ msgstr "Anrede"
 
 #: ../lib/layouts/g-brief-de.layout:536
 msgid "Anlagen"
-msgstr ""
+msgstr "Anlagen"
 
 #: ../lib/layouts/g-brief-de.layout:559
 msgid "Verteiler"
-msgstr ""
+msgstr "Verteiler"
 
 #: ../lib/layouts/g-brief-de.layout:584
 msgid "Gruss"
-msgstr ""
+msgstr "Gruß"
 
 #: ../lib/layouts/svjour.inc:103
 msgid "Headnote"
@@ -5984,7 +5979,7 @@ msgstr ""
 #: ../lib/layouts/spie.layout:88 ../lib/layouts/apa.layout:212
 #: ../lib/layouts/revtex4.layout:215
 msgid "Acknowledgments"
-msgstr ""
+msgstr "Danksagungen"
 
 #: ../lib/layouts/apa.layout:55
 msgid "RightHeader"
@@ -5996,27 +5991,27 @@ msgstr ""
 
 #: ../lib/layouts/apa.layout:130
 msgid "TwoAuthors"
-msgstr ""
+msgstr "Zwei Autoren"
 
 #: ../lib/layouts/apa.layout:136
 msgid "ThreeAuthors"
-msgstr ""
+msgstr "Drei Autoren"
 
 #: ../lib/layouts/apa.layout:142
 msgid "FourAuthors"
-msgstr ""
+msgstr "Vier Autoren"
 
 #: ../lib/layouts/apa.layout:168
 msgid "TwoAffiliations"
-msgstr ""
+msgstr "Zwei Zugehörigkeiten"
 
 #: ../lib/layouts/apa.layout:174
 msgid "ThreeAffiliations"
-msgstr ""
+msgstr "Drei Zugehörigkeiten"
 
 #: ../lib/layouts/apa.layout:180
 msgid "FourAffiliations"
-msgstr ""
+msgstr "Vier Zugehörigkeiten"
 
 #: ../lib/layouts/apa.layout:198
 msgid "CopNum"
@@ -6162,9 +6157,8 @@ msgid "Institution"
 msgstr ""
 
 #: ../lib/layouts/aguplus.inc:107
-#, fuzzy
 msgid "Revised"
-msgstr "Zurücksetzen"
+msgstr "Überarbeitet"
 
 #: ../lib/layouts/aguplus.inc:121
 msgid "CCC"
@@ -6199,19 +6193,19 @@ msgstr "Tabelle_Überschrift"
 
 #: ../lib/layouts/scrclass.inc:106
 msgid "Addchap"
-msgstr ""
+msgstr "Kapitel (Inhaltsverz.)"
 
 #: ../lib/layouts/scrclass.inc:112
 msgid "Addsec"
-msgstr ""
+msgstr "Abschnitt (Inhaltsverz.)"
 
 #: ../lib/layouts/scrclass.inc:118
 msgid "Addchap*"
-msgstr ""
+msgstr "Kapitel* (Inhaltsverz.)"
 
 #: ../lib/layouts/scrclass.inc:124
 msgid "Addsec*"
-msgstr ""
+msgstr "Abschnitt* (Inhaltsverz.)"
 
 #: ../lib/layouts/scrclass.inc:130
 msgid "Minisec"
@@ -6573,10 +6567,6 @@ msgstr "Tabellen|T"
 msgid "Math|M"
 msgstr "Mathe|M"
 
-#: ../lib/ui/default.ui:77
-msgid "Read Only"
-msgstr "Schreibgeschützt"
-
 #: ../lib/ui/default.ui:78
 msgid "Spellchecker...|S"
 msgstr "Rechtschreibprüfung...|p"
@@ -6689,34 +6679,6 @@ msgstr "Spalte kopieren"
 msgid "Swap Columns"
 msgstr "Spalten vertauschen"
 
-#: ../lib/ui/default.ui:121
-msgid "Make eqnarray|e"
-msgstr "Eqnarray anlegen|E"
-
-#: ../lib/ui/default.ui:122
-msgid "Make multline|m"
-msgstr "Multline anlegen"
-
-#: ../lib/ui/default.ui:123
-msgid "Make align 1 column|1"
-msgstr ""
-
-#: ../lib/ui/default.ui:124
-msgid "Make align 2 columns|2"
-msgstr ""
-
-#: ../lib/ui/default.ui:125
-msgid "Make align 3 columns|3"
-msgstr ""
-
-#: ../lib/ui/default.ui:126
-msgid "Make alignat 2 columns|2"
-msgstr ""
-
-#: ../lib/ui/default.ui:127
-msgid "Make alignat 3 columns|3"
-msgstr ""
-
 #: ../lib/ui/default.ui:129
 msgid "Toggle Numbering|N"
 msgstr "Nummerierung an/aus|N"
@@ -6724,10 +6686,6 @@ msgstr "Nummerierung an/aus|N"
 #: ../lib/ui/default.ui:130
 msgid "Toggle Numbering of Line|u"
 msgstr "Zeilennummerierung an/aus|Z"
-
-#: ../lib/ui/default.ui:131
-msgid "Toggle limits|l"
-msgstr "Limits an/aus"
 
 #: ../lib/ui/default.ui:132
 msgid "Change Limits Type|L"
@@ -6825,14 +6783,6 @@ msgstr "AlignAt-Umgebung"
 msgid "Flalign Environment|f"
 msgstr "Flalign-Umgebung|F"
 
-#: ../lib/ui/default.ui:175
-msgid "XAlignAt Environment"
-msgstr "XAlignAt-Umgebung"
-
-#: ../lib/ui/default.ui:176
-msgid "XXAlignAt Environment"
-msgstr "XXAlignAt-Umgebung"
-
 #: ../lib/ui/default.ui:177
 msgid "Gather Environment"
 msgstr "Gather-Umgebung"
@@ -6923,7 +6873,7 @@ msgstr "Grafik...|G"
 
 #: ../lib/ui/default.ui:211
 msgid "Tabular Material...|b"
-msgstr "Tabellen...|T"
+msgstr "Tabelle...|T"
 
 #: ../lib/ui/default.ui:212
 msgid "Floats|a"
@@ -7004,14 +6954,6 @@ msgstr "AMS alignat-Umgebung|t"
 #: ../lib/ui/default.ui:239
 msgid "AMS flalign Environment|f"
 msgstr "AMS flalign-Umgebung|f"
-
-#: ../lib/ui/default.ui:240
-msgid "AMS xalignat Environment|x"
-msgstr "AMS xalignat-Umgebung|x"
-
-#: ../lib/ui/default.ui:241
-msgid "AMS xxalignat Environment"
-msgstr "AMS xxalignat-Umgebung"
 
 #: ../lib/ui/default.ui:242
 msgid "AMS gather Environment"
@@ -7111,7 +7053,7 @@ msgstr "Inhaltsverzeichnis|I"
 
 #: ../lib/ui/default.ui:285
 msgid "Index List|I"
-msgstr "Index Liste|L"
+msgstr "Index-Liste|L"
 
 #: ../lib/ui/default.ui:286
 msgid "BibTeX Reference...|B"
@@ -7156,10 +7098,6 @@ msgstr "Kapitälchen|K"
 #: ../lib/ui/default.ui:306
 msgid "Bold Style|B"
 msgstr "Fettdruck|F"
-
-#: ../lib/ui/default.ui:307
-msgid "TeX Style|X"
-msgstr "TeX-Stil|X"
 
 #: ../lib/ui/default.ui:309
 msgid "Decrease Environment Depth|v"
@@ -7260,10 +7198,6 @@ msgstr "Profi-Tips|P"
 #: ../lib/ui/default.ui:374
 msgid "Customization|C"
 msgstr "Anpassung|A"
-
-#: ../lib/ui/default.ui:375
-msgid "Reference Manual|R"
-msgstr "Referenzhandbuch|R"
 
 #: ../lib/ui/default.ui:376
 msgid "FAQ|F"
@@ -7945,7 +7879,7 @@ msgstr "Index-Element einfügen"
 
 #: src/LyXAction.C:238
 msgid "Insert index list"
-msgstr "Indexliste einfügen"
+msgstr "Index-Liste einfügen"
 
 #: src/LyXAction.C:240
 msgid "Turn off keymap"
@@ -8101,7 +8035,7 @@ msgstr "Tabellen Einstellungen"
 
 #: src/LyXAction.C:369
 msgid "Open thesaurus"
-msgstr "Thessaurus öffnen"
+msgstr "Thesaurus öffnen"
 
 #: src/LyXAction.C:371
 msgid "Insert table of contents"
@@ -9327,7 +9261,7 @@ msgstr "Papiergröße und Ausrichtung"
 
 #: src/frontends/qt2/QDocumentDialog.C:267
 msgid "Language Settings and Quote Style"
-msgstr ""
+msgstr "Spracheinstellungen und Stil von Anführungszeichen"
 
 #: src/frontends/qt2/QDocumentDialog.C:270
 #, fuzzy
@@ -9618,7 +9552,7 @@ msgstr "Dokument an Shell-Befehl senden"
 
 #: src/frontends/qt2/QShowFile.C:31
 msgid "ShowFile"
-msgstr "Zeige Datei"
+msgstr "ZeigeDatei"
 
 #: src/frontends/qt2/QSpellchecker.C:133
 msgid "Spellcheck complete"
@@ -10320,7 +10254,7 @@ msgstr "Ungültige Länge!"
 
 #: src/frontends/xforms/FormParagraph.C:132
 msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
-msgstr "Kein|Standard|Klein|Mittel|Groß|VFill|Länge"
+msgstr "Kein|Standard|Klein|Mittel|Groß|Variabel|Länge"
 
 #: src/frontends/xforms/FormParagraph.C:136
 msgid "Default|Single|OneHalf|Double|Custom"
@@ -10441,14 +10375,14 @@ msgid "Convert \"to\" this format"
 msgstr "\"Nach\" diesem Format konvertieren"
 
 #: src/frontends/xforms/FormPreferences.C:972
-#, fuzzy
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
 "used as path to LyX's own collection of conversion scripts."
 msgstr ""
-"Der Konvertierungsbefehl.  $$i ist der Name der Eingabedatei, $$b der Name "
-"ohne Dateiendung und $$o ist der Name der Ausgabedatei."
+"Der Konvertierungsbefehl. $$i ist der Name der Eingabedatei, $$b ist der "
+"Dateiname ohne Endung und $$o ist der Name der Ausgabedatei. $$s kann als "
+"Pfad zur Sammlung der LyX-eigenen Konvertierungsskripte verwendet werden."
 
 #: src/frontends/xforms/FormPreferences.C:978
 msgid ""
@@ -10833,11 +10767,12 @@ msgstr "Zeige vollen Pfad oder nur den Dateinamen."
 
 #: src/frontends/xforms/FormTexinfo.C:58
 msgid "Runs the script \"TexFiles.sh\" to build new file lists."
-msgstr "Startet das Skript \"Texfiles.sh\" um die Dateiliste zu aktualisieren."
+msgstr ""
+"Führt das Skript \"TexFiles.sh\" aus, um die Dateilisten zu aktualisieren."
 
 #: src/frontends/xforms/FormTexinfo.C:61
 msgid "Double click to view contents of file."
-msgstr "Doppelklicken, um den Inhalt der Datei anzusehen."
+msgstr "Doppelklicken um den Inhalt der Datei anzusehen."
 
 #: src/frontends/xforms/FormTexinfo.C:66
 msgid ""
@@ -11511,151 +11446,151 @@ msgstr "Sie müssen LyX neu starten, um geänderte"
 msgid "updated document class specifications."
 msgstr "Dokumentklassen zu benutzen."
 
-#: src/lyx_main.C:110
+#: src/lyx_main.C:105
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Falsche Befehlszeilenoption `%1$s'. Das Programm terminiert."
 
-#: src/lyx_main.C:114
+#: src/lyx_main.C:109
 msgid "Wrong command line option `"
 msgstr "Falsche Befehlszeilenoption `"
 
-#: src/lyx_main.C:115
+#: src/lyx_main.C:110
 msgid "'. Exiting."
 msgstr "'. Das Programm terminiert."
 
-#: src/lyx_main.C:238
+#: src/lyx_main.C:233
 msgid "Warning: could not determine path of binary."
 msgstr "Achtung: Der volle Pfad des Programmes konnte nicht ermittelt werden."
 
-#: src/lyx_main.C:240
+#: src/lyx_main.C:235
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr ""
 "Falls Probleme auftreten, starten Sie LyX unter Angabe des vollen Pfades."
 
-#: src/lyx_main.C:347
+#: src/lyx_main.C:342
 msgid "LYX_DIR_13x environment variable no good."
 msgstr "Die Umgebungsvariable LYX_DIR_13x ist unbrauchbar."
 
-#: src/lyx_main.C:349
+#: src/lyx_main.C:344
 msgid "System directory set to: "
 msgstr "Nutzerverzeichnis: "
 
-#: src/lyx_main.C:357
+#: src/lyx_main.C:352
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Warnung! Das Systemverzeichnis konnte nicht bestimmt werden."
 
-#: src/lyx_main.C:358
+#: src/lyx_main.C:353
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Verwenden Sie die Befehlszeilenoption '-sysdir' oder "
 
-#: src/lyx_main.C:359
+#: src/lyx_main.C:354
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr ""
 "setzen Sie die Umgebungsvariable LYX_DIR_13x auf das LyX-Systemverzeichnis,"
 
-#: src/lyx_main.C:361
+#: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
 msgstr "in dem sich die Datei `chkconfig.ltx' befindet."
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:365
 #, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "Benutze den festen Standardwert %1$s, aber rechnen Sie mit Problemen."
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:370
 msgid "Using built-in default "
 msgstr "Benutze den festen Standardwert "
 
-#: src/lyx_main.C:376
+#: src/lyx_main.C:371
 msgid " but expect problems."
 msgstr ", aber rechnen Sie mit Problemen."
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:375
 msgid "Expect problems."
 msgstr "Rechnen Sie mit Problemen."
 
-#: src/lyx_main.C:598
+#: src/lyx_main.C:593
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Konfiguriere das Benutzerverzeichnis neu"
 
-#: src/lyx_main.C:602 src/lyx_main.C:650
+#: src/lyx_main.C:597 src/lyx_main.C:645
 msgid "Done!"
 msgstr "Fertig!"
 
-#: src/lyx_main.C:612
+#: src/lyx_main.C:607
 msgid "You have specified an invalid LyX directory."
 msgstr "Sie haben ein ungültiges LyX Verzeichnis angegeben."
 
-#: src/lyx_main.C:613
+#: src/lyx_main.C:608
 msgid "It is needed to keep your own configuration."
 msgstr "Es wird zum Speichern Ihrer persönlichen Konfiguration benötigt."
 
-#: src/lyx_main.C:614
+#: src/lyx_main.C:609
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Möchten Sie eines eingerichtet bekommen (empfohlen)?"
 
-#: src/lyx_main.C:615
+#: src/lyx_main.C:610
 msgid "Running without personal LyX directory."
 msgstr "Starte ohne persönliches LyX-Verzeichnis."
 
-#: src/lyx_main.C:622
+#: src/lyx_main.C:617
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr "LyX: Erzeuge Verzeichnis %1$s und konfiguriere neu..."
 
-#: src/lyx_main.C:627
+#: src/lyx_main.C:622
 msgid "LyX: Creating directory "
 msgstr "LyX: Erzeuge Verzeichnis "
 
-#: src/lyx_main.C:628
+#: src/lyx_main.C:623
 msgid " and running configure..."
 msgstr " und konfiguriere neu..."
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:631
 #, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Fehlgeschlagen. Verwende %1$s stattdessen."
 
-#: src/lyx_main.C:640
+#: src/lyx_main.C:635
 msgid "Failed. Will use "
 msgstr "Fehlgeschlagen. Verwende stattdessen "
 
-#: src/lyx_main.C:641
+#: src/lyx_main.C:636
 msgid " instead."
 msgstr "."
 
-#: src/lyx_main.C:664 src/lyx_main.C:668
+#: src/lyx_main.C:659 src/lyx_main.C:663
 msgid "LyX Warning!"
 msgstr "LyX Warnung!"
 
-#: src/lyx_main.C:665
+#: src/lyx_main.C:660
 #, c-format
 msgid "Error while reading %1$s."
 msgstr "Fehler beim Lesen von %1$s."
 
-#: src/lyx_main.C:666 src/lyx_main.C:670
+#: src/lyx_main.C:661 src/lyx_main.C:665
 msgid "Using built-in defaults."
 msgstr "Benutze feste Standardwerte."
 
-#: src/lyx_main.C:669
+#: src/lyx_main.C:664
 msgid "Error while reading "
 msgstr "Fehler beim Lesen von "
 
-#: src/lyx_main.C:779
+#: src/lyx_main.C:774
 msgid "List of supported debug flags:"
 msgstr "Liste der unterstützten Debug-Optionen:"
 
-#: src/lyx_main.C:784
+#: src/lyx_main.C:779
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Setze den Debug-Level auf %1$s"
 
-#: src/lyx_main.C:788
+#: src/lyx_main.C:783
 msgid "Setting debug level to "
 msgstr "Setze den Debug-Level auf "
 
-#: src/lyx_main.C:799
+#: src/lyx_main.C:794
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11698,29 +11633,29 @@ msgstr ""
 "\n"
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
-#: src/lyx_main.C:835
+#: src/lyx_main.C:830
 msgid "Missing directory for -sysdir switch"
 msgstr "Die Option -sysdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:845
+#: src/lyx_main.C:840
 msgid "Missing directory for -userdir switch"
 msgstr "Die Option -userdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:855
+#: src/lyx_main.C:850
 msgid "Missing command string after --execute switch"
 msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 
-#: src/lyx_main.C:868
+#: src/lyx_main.C:863
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Die Option --export verlangt die Angabe eines Datei-Typs [z.B. latex, ps...]"
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:875
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Die Option --import verlangt die Angabe eines Datei-Typs [z.B. latex, ps...]"
 
-#: src/lyx_main.C:885
+#: src/lyx_main.C:880
 msgid "Missing filename for --import"
 msgstr "Die Option --import verlangt die Angabe eines Dateinamens"
 
@@ -12340,9 +12275,8 @@ msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
-"Offene Dialogfenster werden zusammen mit dem Hauptfenster ikonisiert "
-"(betrifft nur Dialoge, die nach dem aktivieren dieser Option geöffnet "
-"werden)."
+"Dialoge werden minimiert, wenn das Hauptfenster minimiert wird. (Betrifft "
+"nur Dialoge, die nach dem Aktivieren dieser Option geöffnet werden)."
 
 #: src/lyxrc.C:2066
 msgid "Select how LyX will display any graphics."
@@ -12478,7 +12412,7 @@ msgstr ""
 
 #: src/lyxrc.C:2156
 msgid "Scale the preview size to suit."
-msgstr ""
+msgstr "Skaliere die Größe der Vorschau geeignet."
 
 #: src/lyxtextclasslist.C:92
 msgid "LyX wasn't able to find its layout descriptions!"
