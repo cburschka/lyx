@@ -3151,9 +3151,15 @@ void TocUpdateCB(FL_OBJECT *, long)
 	int type = fl_get_choice(fd_form_toc->toctype)-1;
 	//if (toclist == tmp[type])
 	//	return;
-	if (toclist.size() == tmp[type].size()
-	    && equal(toclist.begin(), toclist.end(), tmp[type].begin()))
-		return;
+	if (toclist.size() == tmp[type].size()) {
+		// Check if all elements are the same.
+		int i = 0;
+		for (; i < toclist.size(); ++i) {
+			if (toclist[i] !=  tmp[type][i])
+				break;
+		}
+		if (i >= toclist.size()) return;
+	}
 
 	toclist = tmp[type];
 

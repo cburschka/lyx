@@ -294,7 +294,7 @@ public:
 	string getBibkeyList(char delim = '|');
 	///
 	struct TocItem {
-		LyXParagraph *par;
+		LyXParagraph * par;
 		int depth;
 		string str;
 	};
