@@ -13,16 +13,14 @@
 
 MathBoxInset::MathBoxInset(string const & name)
 	: MathDimInset(), name_(name), text_(new InsetText), buffer_(0)
-{
-	lyxerr << "creating new " << name << endl;
-}
+{}
 
 
 MathBoxInset::MathBoxInset(MathBoxInset const & m)
 	:	MathDimInset(*this), name_(m.name_), text_(0), buffer_(m.buffer_)
 {
 	if (!m.buffer_)
-		cerr << "no buffer\n";
+		lyxerr << "no buffer\n";
 	else
 		text_ = static_cast<InsetText *>(m.text_->clone(*m.buffer_, false));
 }
