@@ -17,7 +17,7 @@
 #include <cassert>
 
 namespace boost {
-  namespace signals {
+  namespace BOOST_SIGNALS_NAMESPACE {
     void connection::disconnect() const
     {
       if (this->connected()) {
@@ -36,11 +36,10 @@ namespace boost {
         signal_disconnect(local_con->signal, local_con->signal_data);
       
         // Disconnect all bound objects
-        typedef std::list<signals::detail::bound_object>::iterator iterator;
+        typedef std::list<BOOST_SIGNALS_NAMESPACE::detail::bound_object>::iterator iterator;
         for (iterator i = local_con->bound_objects.begin(); 
              i != local_con->bound_objects.end(); ++i) {
-          // c-assert expects an int, so don't pass it a pointer
-          assert(i->disconnect != 0);
+          assert(i->disconnect);
           i->disconnect(i->obj, i->data);
         }
       }
@@ -50,5 +49,5 @@ namespace boost {
 
 #ifndef BOOST_MSVC
 // Explicit instantiations to keep everything in the library
-template class std::list<boost::signals::detail::bound_object>;
+template class std::list<boost::BOOST_SIGNALS_NAMESPACE::detail::bound_object>;
 #endif

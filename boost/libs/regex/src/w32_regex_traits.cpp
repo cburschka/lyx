@@ -163,8 +163,7 @@ std::list<syntax_map_t>* syntax;
 
 std::size_t BOOST_REGEX_CALL _re_get_message(char* buf, std::size_t len, unsigned id);
 
-template <class charT>
-std::size_t BOOST_REGEX_CALL get_message(charT* buf, std::size_t len, unsigned id)
+std::size_t BOOST_REGEX_CALL get_message(wchar_t* buf, std::size_t len, unsigned id)
 {
    std::size_t size = _re_get_message(static_cast<char*>(0), 0, id);
    if(len < size)
@@ -382,9 +381,12 @@ void BOOST_REGEX_CALL w32_traits_base::do_free()
 {
    BOOST_RE_GUARD_STACK
    delete[] pclasses;
+   pclasses = 0;
    delete pcoll_names;
+   pcoll_names = 0;
 #ifndef BOOST_NO_WREGEX
    delete syntax;
+   syntax = 0;
 #endif
    if(hresmod)
    {
@@ -399,6 +401,7 @@ void BOOST_REGEX_CALL w32_traits_base::do_free()
          re_custom_error_messages[i] = 0;
       }
    }
+   is_init = false;
 }
 
 std::string BOOST_REGEX_CALL w32_traits_base::error_string(unsigned id)
@@ -498,7 +501,9 @@ w32_regex_traits<char>::~w32_regex_traits()
 #ifdef BOOST_HAS_THREADS
    re_detail::cs_guard g(*re_detail::p_re_lock);
 #endif
-   if(--entry_count == 0)
+   // add reference to static member here to ensure
+   // that the linker includes it in the .exe:
+   if((--entry_count == 0) && (0 != &w32_regex_traits<char>::i))
       do_free();
 #ifdef BOOST_HAS_THREADS
    g.acquire(false);
@@ -665,7 +670,9 @@ w32_regex_traits<wchar_t>::~w32_regex_traits()
 #ifdef BOOST_HAS_THREADS
    re_detail::cs_guard g(*re_detail::p_re_lock);
 #endif
-   if(--entry_count == 0)
+   // add reference to static member here to ensure
+   // that the linker includes it in the .exe:
+   if((--entry_count == 0) && (0 != &w32_regex_traits<wchar_t>::init_))
       do_free();
 #ifdef BOOST_HAS_THREADS
    g.acquire(false);
@@ -1091,5 +1098,6 @@ unsigned short w32_regex_traits<wchar_t>::wide_unicode_classes[] = {
 } // namespace boost
 
 #endif // #if defined(_WIN32) && !defined(BOOST_REGEX_NO_W32)
+
 
 

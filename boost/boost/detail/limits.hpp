@@ -159,7 +159,7 @@ template <class _Int,
           _Int __imin,
           _Int __imax,
           int __idigits = -1>
-class _Integer_limits : public _Numeric_limits_base<_Int>
+class _Integer_limits : public _Numeric_limits_base<_Int> 
 {
 public:
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, is_specialized, true);
@@ -170,9 +170,9 @@ public:
   BOOST_STL_DECLARE_LIMITS_MEMBER(int,
                               digits,
                               (__idigits < 0) ? (int)(sizeof(_Int) * CHAR_BIT)
-                                                   - (__imin == 0 ? 0 : 1)
+                                                   - (__imin == 0 ? 0 : 1) 
                                               : __idigits);
-  BOOST_STL_DECLARE_LIMITS_MEMBER(int, digits10, (digits * 301) / 1000);
+  BOOST_STL_DECLARE_LIMITS_MEMBER(int, digits10, (digits * 301) / 1000); 
                                 // log 2 = 0.301029995664...
 
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, is_signed,  __imin != 0);
@@ -192,7 +192,7 @@ public:
     // sizeof(long double) == 16
     const unsigned int _S_word[4] = { Word, 0, 0, 0 };
     return *reinterpret_cast<const Number*>(&_S_word);
-  }
+  } 
 };
 
 #else
@@ -205,7 +205,7 @@ public:
     return *reinterpret_cast<const Number*>(
         reinterpret_cast<const char *>(&_S_word)+16-
                 (sizeof(Number) == 12 ? 10 : sizeof(Number)));
-  }
+  } 
 };
 
 #endif
@@ -244,7 +244,7 @@ public:
                               denorm_indeterminate);
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, has_denorm_loss,   false);
 
-
+ 
   static __number infinity() throw() {
     return float_helper<__number, __InfinityWord>::get_word();
   }
@@ -267,7 +267,7 @@ public:
 
 // The unspecialized class.
 
-template<class T>
+template<class T> 
 class numeric_limits : public _Numeric_limits_base<T> {};
 
 // Specializations for all built-in integral types.
@@ -356,7 +356,7 @@ class numeric_limits<unsigned long>
 
 #if !defined(LONGLONG_MIN)
 # define LONGLONG_MIN (-LONGLONG_MAX - 1)
-#endif
+#endif 
 
 template<>
 class numeric_limits<long long>
@@ -373,7 +373,7 @@ class numeric_limits<unsigned long long>
 // Specializations for all built-in floating-point type.
 
 template<> class numeric_limits<float>
-  : public _Floating_limits<float,
+  : public _Floating_limits<float, 
                             FLT_MANT_DIG,   // Binary digits of precision
                             FLT_DIG,        // Decimal digits of precision
                             FLT_MIN_EXP,    // Minimum exponent
@@ -401,7 +401,7 @@ public:
 };
 
 template<> class numeric_limits<double>
-  : public _Floating_limits<double,
+  : public _Floating_limits<double, 
                             DBL_MANT_DIG,   // Binary digits of precision
                             DBL_DIG,        // Decimal digits of precision
                             DBL_MIN_EXP,    // Minimum exponent
@@ -429,7 +429,7 @@ public:
 };
 
 template<> class numeric_limits<long double>
-  : public _Floating_limits<long double,
+  : public _Floating_limits<long double, 
                             LDBL_MANT_DIG,  // Binary digits of precision
                             LDBL_DIG,       // Decimal digits of precision
                             LDBL_MIN_EXP,   // Minimum exponent
@@ -463,3 +463,6 @@ public:
 // Local Variables:
 // mode:C++
 // End:
+
+
+

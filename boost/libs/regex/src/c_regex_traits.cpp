@@ -22,6 +22,12 @@
 
 #define BOOST_REGEX_SOURCE
 
+#include <boost/config.hpp>
+
+# ifdef BOOST_MSVC
+#  pragma warning(disable: 4702)
+#  endif
+
 #include <clocale>
 #include <cstdio>
 #include <list>
@@ -160,6 +166,8 @@ enum syntax_map_size
    map_size = UCHAR_MAX + 1
 };
 
+std::size_t BOOST_REGEX_CALL _re_get_message(char* buf, std::size_t len, std::size_t id);
+
 #ifndef BOOST_NO_WREGEX
 
 BOOST_REGEX_DECL wchar_t re_zero_w;
@@ -176,13 +184,7 @@ struct syntax_map_t
 
 std::list<syntax_map_t>* syntax;
 
-#endif
-
-
-std::size_t BOOST_REGEX_CALL _re_get_message(char* buf, std::size_t len, std::size_t id);
-
-template <class charT>
-std::size_t BOOST_REGEX_CALL re_get_message(charT* buf, std::size_t len, std::size_t id)
+std::size_t BOOST_REGEX_CALL re_get_message(wchar_t* buf, std::size_t len, std::size_t id)
 {
    std::size_t size = _re_get_message(static_cast<char*>(0), 0, id);
    if(len < size)
@@ -192,6 +194,7 @@ std::size_t BOOST_REGEX_CALL re_get_message(charT* buf, std::size_t len, std::si
    size = boost::c_regex_traits<wchar_t>::strwiden(buf, len, cb.get());
    return size;
 }
+#endif
 
 inline std::size_t BOOST_REGEX_CALL re_get_message(char* buf, std::size_t len, std::size_t id)
 {
@@ -661,7 +664,9 @@ void BOOST_REGEX_CALL c_regex_traits<char>::m_free()
    re_free_classes();
    re_free_collate();
    --entry_count;
-   if(entry_count == 0)
+   // add reference to static member here to ensure
+   // that the linker includes it in the .exe:
+   if((entry_count == 0) && (0 != &c_regex_traits<char>::i))
    {
       delete ctype_name;
       delete collate_name;
@@ -885,7 +890,9 @@ void BOOST_REGEX_CALL c_regex_traits<wchar_t>::m_free()
    re_message_free();
    re_free_classes();
    re_free_collate();
-   if(nlsw_count == 0)
+   // add reference to static member here to ensure
+   // that the linker includes it in the .exe:
+   if((nlsw_count == 0) && (0 != &c_regex_traits<wchar_t>::init_))
    {
       // cleanup:
       delete wlocale_name;

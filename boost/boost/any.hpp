@@ -82,7 +82,7 @@ namespace boost
         class placeholder
         {
         public: // structors
-
+    
             virtual ~placeholder()
             {
             }
@@ -92,7 +92,7 @@ namespace boost
             virtual const std::type_info & type() const = 0;
 
             virtual placeholder * clone() const = 0;
-
+    
         };
 
         template<typename ValueType>
