@@ -41,8 +41,16 @@ void MathBoxInset::rebreak()
 }
 
 
-void MathBoxInset::draw(MathPainterInfo & pain, int x, int y) const
+void MathBoxInset::metrics(MathMetricsInfo & mi) const
 {
-	MathGridInset::draw(pain, x, y);
-	mathed_draw_framebox(pain, x, y, this);
+	MathFontSetChanger dummy(mi.base, "textnormal");
+	MathGridInset::metrics(mi);
+}
+
+
+void MathBoxInset::draw(MathPainterInfo & pi, int x, int y) const
+{
+	MathFontSetChanger dummy(pi.base, "textnormal");
+	MathGridInset::draw(pi, x, y);
+	mathed_draw_framebox(pi, x, y, this);
 }

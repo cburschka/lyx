@@ -21,13 +21,13 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
-	void metricsT(TextMetricsInfo const & st) const;
+	void metricsT(TextMetricsInfo const & mi) const;
 	///
-	void drawT(TextPainter &, int x, int y) const;
+	void drawT(TextPainter & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	///

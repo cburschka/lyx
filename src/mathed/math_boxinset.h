@@ -16,9 +16,13 @@ class LyXFont;
 class MathBoxInset : public MathGridInset {
 public:
 	///
-	explicit MathBoxInset(string const &);
+	explicit MathBoxInset(string const & name);
 	///
 	MathInset * clone() const;
+	///
+	void metrics(MathMetricsInfo & mi) const;
+	///
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	/// identifies BoxInsets
 	MathBoxInset * asBoxInset() { return this; }
 	/// identifies BoxInsets
@@ -28,9 +32,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void normalize(NormalStream &) const;
-	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void normalize(NormalStream & ns) const;
 
 private:
 	///
