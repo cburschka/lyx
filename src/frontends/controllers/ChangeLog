@@ -1,3 +1,8 @@
+2002-01-30  Herbert Voss  <voss@lyx.org>
+
+	* ControlGraphic.[C]: do not search the whole file, when
+	getting the bb
+
 2002-01-29  Herbert Voss  <voss@lyx.org>
 
 	* ControlGraphic.[C]: added a button for document path

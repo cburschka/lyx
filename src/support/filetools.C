@@ -71,6 +71,7 @@ extern string system_lyxdir;
 extern string build_lyxdir;
 extern string user_lyxdir;
 extern string system_tempdir;
+extern string system_packageList;
 
 
 bool IsLyXFilename(string const & filename)
@@ -185,6 +186,7 @@ string const FileOpenSearch (string const & path, string const & name,
 			do {
 				tmppath = split(tmppath, path_element, ';');
 			} while (!tmppath.empty() && path_element.empty());
+				tmppath = split(tmppath, path_element, ';');
 		} else {
 			notfound = false;
 		}
@@ -962,6 +964,55 @@ string const GetExtension(string const & name)
 		return string();
 }
 
+// the different filetypes and what they contain in one of the first lines
+// (dots are any characters). 		(Herbert 20020131)
+// EPS	%!PS-Adobe-3.0 EPSF...
+// GIF	GIF...
+// JPG	JFIF
+// PDF	%PDF-...
+// PNG	.PNG...
+// PS	%!PS-Adobe-2.0
+// XBM	static char ...
+// XPM	/* XPM */
+/// return the "extension" which belongs to the contents
+string const getExtFromContents(string const & filename) {
+	if (filename.empty() || !IsFileReadable(filename)) 
+	    return string();	// paranoia check
+	ifstream ifs(filename.c_str());
+	if (!ifs) 
+	    return string();	// Couldn't open file...
+	int const max_count = 50; // Maximum strings to read to attempt recognition
+	int count = 0; // Counter of attempts.
+	string str;
+	for (; count < max_count; ++count) {
+		if (ifs.eof()) {
+			lyxerr[Debug::INFO] << "InsetGraphics (classifyFiletype)"
+				" End of file reached and it wasn't found to be a known Type!" << endl;
+			break;
+		}
+		ifs >> str;
+		if (contains(str,"EPSF"))
+		    return "eps";
+		else if (contains(str,"GIF"))
+		    return "gif";
+		else if (contains(str,"JFIF"))
+		    return "jpg";
+		else if (contains(str,"%PDF"))
+		    return "pdf";
+		else if (contains(str,"PNG"))
+		    return "png";
+		else if (contains(str,"%!PS-Adobe-"))
+		    return "ps";		// eps here no more possible
+		else if (contains(str,"static char"))
+		    return "xbm";
+		else if (contains(str,"XPM"))
+		    return "xpm";
+	}
+	lyxerr[Debug::INFO] << "InsetGraphics (classifyFiletype)"
+		" Couldn't find a known Type!" << endl;
+	return string();
+}
+
 
 // Creates a nice compact path for displaying
 string const
@@ -1116,3 +1167,4 @@ void removeAutosaveFile(string const & filename)
 		}
 	}
 }
+

@@ -81,6 +81,7 @@ TODO Before initial production release:
  *   	Image format
  *   	from        to
  *   	EPS         epstopdf
+ *   	PS          ps2pdf
  *   	JPG/PNG     direct
  *   	PDF         direct
  *   	others      PNG
@@ -161,8 +162,7 @@ InsetGraphics::~InsetGraphics()
 }
 
 
-string const
-InsetGraphics::statusMessage() const
+string const InsetGraphics::statusMessage() const
 {
 	string msg;
 	if (cacheHandle.get()) {
@@ -258,32 +258,25 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		paint.image(old_x + 2, baseline - lascent,
 		            lwidth - 4, lascent + ldescent,
 		            cacheHandle->getImage());
-	} else {
-		
+	} else {	
 		// Get the image status, default to unknown error.
 		GraphicsCacheItem::ImageStatus status = GraphicsCacheItem::UnknownError;
-		if (lyxrc.display_graphics != "no" && lyxrc.use_gui
-		    && params.display != InsetGraphicsParams::NONE &&
+		if (lyxrc.use_gui && params.display != InsetGraphicsParams::NONE &&
 		    cacheHandle.get())
 			status = cacheHandle->getImageStatus();
-		
 		// Check if the image is now ready.
 		if (status == GraphicsCacheItem::Loaded) {
 			imageLoaded = true;
-
 			// Tell BufferView we need to be updated!
 			bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
 			return;
 		}
-
 		paint.rectangle(old_x + 2, baseline - lascent,
 		                lwidth - 4,
 		                lascent + ldescent);
-
 		// Print the file name.
 		LyXFont msgFont(font);
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
-
 		string const justname = OnlyFilename (params.filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
@@ -291,7 +284,6 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 				   baseline - lyxfont::maxAscent(msgFont) - 4,
 				   justname, msgFont);
 		}
-
 		// Print the message.
 		string const msg = statusMessage();
 		if (!msg.empty()) {
@@ -498,84 +490,26 @@ string const InsetGraphics::createLatexOptions() const
 }
 
 namespace {
-
-enum FileType {
-	EPS,
-	PNG,
-	JPEG,
-	GIF,
-	PDF,
-	UNKNOWN
-};
-
-bool isEPS(string const & filename)
-{
-	if (filename.empty() || !IsFileReadable(filename)) return false;
-
-	ifstream ifs(filename.c_str());
-
-	if (!ifs) return false;	// Couldn't open file...
-
-	bool is_eps = false; // Have we recognized the file as EPS?
-	string to_find = "%!PS-Adobe-"; // The string we use to recognize
-	int const max_attempts = 500; // Maximum strings to read to attempt recognition
-	int count = 0; // Counter of attempts.
-	string str;
-	for (; count < max_attempts; ++count) {
-		if (ifs.eof()) {
-			lyxerr[Debug::INFO] << "InsetGraphics (isEPS)"
-				" End of file reached and it wasn't found to be EPS!" << endl;
-			break;
-		}
-
-		ifs >> str;
-		if (str.find(to_find)) {
-			is_eps = true;
-			break;
-		}
-	}
-
-	return is_eps;
-}
-
-enum FileType classifyFileType(string const & filename, string const & suffix)
-{
-	if (suffix == "png")
-		return PNG;
-	else if (suffix == "jpg" || suffix == "jpeg")
-		return JPEG;
-	else if (suffix == "gif")
-		return GIF;
-	else if (suffix == "pdf")
-		return PDF;
-	else if (isEPS(filename))
-		return EPS;
-
-	return UNKNOWN;
-}
-
-string decideOutputImageFormat(string const & suffix, enum FileType type)
+string decideOutputImageFormat(string const & suffix)
 {
 	// lyxrc.pdf_mode means:
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we using latex or pdflatex).	
+	lyxerr << "decideOutput::lyxrc.pdf_mode = " << lyxrc.pdf_mode << "\n";
 	if (lyxrc.pdf_mode) {
-		if (type == EPS || type == EPS || type == PDF)
+		if (contains(suffix,"ps") || suffix == "pdf")
 			return "pdf";
-		else if (type == JPEG)
+		else if (suffix == "jpg")
 			return suffix;
 		else
 			return "png";
 	}
-
 	// If it's postscript, we always do eps.
-	// There are many suffixes that are actually EPS (ask Garst for example)
-	// so we detect if it's an EPS by looking in the file, if it is, we return
-	// the same suffix of the file so it won't be converted.
-	if (type == EPS)
-		return suffix;
-	
-	return "eps";
+	lyxerr << "decideOutput: we have PostScript mode\n";
+	if (suffix != "ps")
+	    return "eps";
+	else
+	    return "ps";
 }
 
 } // Anon. namespace
@@ -585,10 +519,8 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	// do_convert = Do we need to convert the file?
 	// nice = Do we create a nice version?
 	//        This is used when exporting the latex file only.
-	// 
 	// if (!do_convert)
 	//   return original filename
-	// 
 	// if (!nice)
 	//   convert_place = temp directory
 	//   return new filename in temp directory
@@ -596,32 +528,28 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	//   convert_place = original file directory
 	//   return original filename without the extension
 	//
-	
 	// Get the extension (format) of the original file.
-	string const extension = GetExtension(params.filename);
-	FileType type = classifyFileType(params.filename, extension);
-	
+	// we handle it like a virtual one, so we can have
+	// different extensions with the same type
+	string const extension = getExtFromContents(params.filename);
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we usind latex or pdflatex).
-	string const image_target = decideOutputImageFormat(extension, type);
-
+	string const image_target = decideOutputImageFormat(extension);
 	if (extension == image_target)
 		return params.filename;
-
 	string outfile;
 	if (!buf->niceFile) {
 		string const temp = AddName(buf->tmppath, params.filename);
+		lyxerr << "temp = " << temp << "\n";
 		outfile = RemoveExtension(temp);
-		
-		//lyxerr << "buf::tmppath = " << buf->tmppath << "\n";
-		//lyxerr << "filename = " << params.filename << "\n";
-		//lyxerr << "temp = " << temp << "\n";
-		//lyxerr << "outfile = " << outfile << endl;
 	} else {
 		string const path = buf->filePath();
 		string const relname = MakeRelPath(params.filename, path);
 		outfile = RemoveExtension(relname);
 	}
+	lyxerr << "buf::tmppath = " << buf->tmppath << "\n";
+	lyxerr << "filename = " << params.filename << "\n";
+	lyxerr << "outfile = " << outfile << endl;
 	converters.convert(buf, params.filename, outfile, extension, image_target);
 	return outfile;
 }
@@ -665,14 +593,14 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 }
 
 
-int InsetGraphics::ascii(Buffer const *, ostream &, int) const
+int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
 	// images to ascii approximation.
-	
 	// 1. Convert file to ascii using gifscii
 	// 2. Read ascii output file and add it to the output stream.
-	
+	// at least we send the filename
+	os << '<' << _("Graphicfile:") << params.filename << ">\n";
 	return 0;
 }
 
@@ -728,7 +656,6 @@ void InsetGraphics::updateInset() const
 	// We do it this way so that in the face of some error, we will still
 	// be in a valid state.
 	if (!params.filename.empty() && lyxrc.use_gui
-	    && lyxrc.display_graphics != "no" 
 	    && params.display != InsetGraphicsParams::NONE) {
 		temp = gc.addFile(params.filename);
 	}

@@ -5,7 +5,8 @@
  *          Copyright 1995 Matthias Ettrich.
  *          Copyright 1995-2001 The LyX Team.
  *
- *          This file Copyright 2000 Baruch Even
+ * \author Baruch Even
+ * \author Herbert Voss <voss@lyx.org>
  * ================================================= */
 
 #include <config.h>
@@ -25,6 +26,8 @@
 #include "debug.h"
 #include "support/LAssert.h"
 #include "gettext.h"
+#include "support/syscall.h"
+#include "lyxfunc.h"
 
 using std::endl;
 
@@ -73,8 +76,7 @@ LyXImage *
 GraphicsCacheItem::getImage() const { return image_.get(); }
 
 
-void
-GraphicsCacheItem::imageConverted(bool success)
+void GraphicsCacheItem::imageConverted(bool success)
 {
 	// Debug output
 	string text = "succeeded";
@@ -109,56 +111,77 @@ string const findTargetFormat(string const & from)
 		if (converters.isReachable(from, *iter))
 			break;
 	}
-	
 	if (iter == end) {
 		// We do not know how to convert the image to something loadable.
 		lyxerr << "ERROR: Do not know how to convert image." << std::endl;
 		return string();
 	}
-
 	return (*iter);
 }
 
 } // anon namespace
 
 	
-bool
-GraphicsCacheItem::convertImage(string const & filename)
+bool GraphicsCacheItem::convertImage(string const & filename)
 {
-	string const from = GetExtension(filename);
+	setStatus(GraphicsCacheItem::Converting);
+	string filename_ = string(filename);
+	lyxerr << "try to convert image file: " << filename_ << endl;
+// maybe that other zip extensions also be useful, especially the
+// ones that may be declared in texmf/tex/latex/config/graphics.cfg.
+// for example:
+/* -----------snip-------------
+          {\DeclareGraphicsRule{.pz}{eps}{.bb}{}%
+           \DeclareGraphicsRule{.eps.Z}{eps}{.eps.bb}{}%
+           \DeclareGraphicsRule{.ps.Z}{eps}{.ps.bb}{}%
+           \DeclareGraphicsRule{.ps.gz}{eps}{.ps.bb}{}%
+           \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{}}}%
+   -----------snip-------------*/
+
+	lyxerr << "GetExtension: " << GetExtension(filename_) << endl;
+	bool zipped = GetExtension(filename_).compare("gz") == 0;
+	if (zipped)
+	    filename_ = ChangeExtension(filename_, string());	// snip the ".gz"
+	string const from = getExtFromContents(filename_);	// get the type
+	lyxerr << "GetExtFromContents: " << from << endl;
 	string const to = findTargetFormat(from);
+	lyxerr << "from: " << from << " -> " << to << endl;
 	if (to.empty()) 
 		return false;
-
+	// manage zipped files. unzip them first into the tempdir
+	if (zipped) {
+	    tempfile = lyx::tempName(string(), filename_);
+	    // Run gunzip
+	    string const command = "gunzip -c "+filename+" > "+tempfile;
+	    Systemcalls one(Systemcalls::System, command); 
+	    filename_ = tempfile;
+	}
 	if (from == to) {
 		// No conversion needed!
 		// Saves more than just time: prevents the deletion of
 		// the "to" file after loading when it's the same as the "from"!
-		tempfile = filename;
+		tempfile = filename_;
 		loadImage();	
 		return true;
 	}
-
 	// Take only the filename part of the file, without path or extension.
-	string temp = OnlyFilename(filename);
-	temp = ChangeExtension(filename, string());
+	string temp = OnlyFilename(filename_);
+	temp = ChangeExtension(filename_, string());
 	
 	// Add some stuff to have it a unique temp file.
 	// This tempfile is deleted in loadImage after it is loaded to memory.
 	tempfile = lyx::tempName(string(), temp);
 	// Remove the temp file, we only want the name...
 	lyx::unlink(tempfile);
-
-	bool result = converters.convert(0, filename, tempfile, from, to);
+	bool result = converters.convert(0, filename_, tempfile, from, to);
 	tempfile.append(".xpm");
-
 	// For now we are synchronous
 	imageConverted(result);
-
 	// Cleanup after the conversion.
 	lyx::unlink(tempfile);
+	if (zipped)
+	    lyx::unlink(filename_);
 	tempfile = string();
-
 	return true;
 }
 

@@ -40,7 +40,6 @@
 
 using std::pair;
 using std::make_pair;
-
 using std::ifstream;
 
 ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
@@ -107,7 +106,9 @@ string const ControlGraphics::readBB(string const & file)
 // to check a bit more. 
 //	ControlGraphics::bbChanged = false;
 	std::ifstream is(file.c_str());
-	while (is) {
+	int count = 0;
+	int const max_count = 50;	// don't search the whole file
+	while (is && (++count < max_count)) {
 		string s;
 		is >> s;
 		if (contains(s,"%%BoundingBox:")) {

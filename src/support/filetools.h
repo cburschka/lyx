@@ -132,6 +132,10 @@ ChangeExtension(string const & oldname, string const & extension);
 /// Return the extension of the file (not including the .)
 string const GetExtension(string const & name);
 
+/// Return the type of the file as an extension from contents
+///
+string const getExtFromContents(string const & name);
+
 /// Returns true is path is absolute
 bool AbsolutePath(string const & path);
 
@@ -190,5 +194,6 @@ string const findtexfile(string const & fil, string const & format);
 
 /// remove the autosave-file and give a Message if it can't be done
 void removeAutosaveFile(string const & filename);
+
 
 #endif

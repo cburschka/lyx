@@ -22,6 +22,7 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/LOstream.h"
+#include "lyxrc.h"
 
 #include "support/LAssert.h"
 
@@ -98,16 +99,23 @@ void InsetGraphicsParams::init()
 	bb = string();			// bounding box
 	draft = false;			// draft mode
 	clip = false;			// clip image
-	display = MONOCHROME;		// LyX-View
+	if (lyxrc.display_graphics == "mono") 
+	    display = MONOCHROME;
+	else if (lyxrc.display_graphics == "gray") 
+	    display = GRAYSCALE;
+	else if (lyxrc.display_graphics == "color") 
+	    display = COLOR;
+	else
+	    display = NONE;
 	subcaption = false;		// subfigure
 	width = LyXLength();		// set to 0pt
 	height = LyXLength();
 	lyxwidth = LyXLength();		// for the view in lyx
 	lyxheight = LyXLength();
 	scale = 0;
-	size_type = DEFAULT_SIZE;
-	keepAspectRatio = false;
-	rotateOrigin = string();	// 
+	size_type = DEFAULT_SIZE;	// do nothing
+	keepAspectRatio = false;	//
+	rotateOrigin = "center";	// 
 	rotateAngle = 0.0;		// in degrees
 	special = string();		// userdefined stuff
 
@@ -298,6 +306,9 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 		size_type = WH;
 	} else if (token == "keepAspectRatio") {
 		keepAspectRatio = true;
+	} else if (token == "scale") {
+		lex.next();
+		scale = lex.getInteger();
 	} else if (token == "rotateAngle") {
 		lex.next();
 		rotateAngle = lex.getFloat();

@@ -1,3 +1,8 @@
+2002-01-31  Herbert Voss  <voss@lyx.org>
+
+	* GraphicsCacheItem.h: handle filetype without the file extension;
+	getting type from contents; handle zipped files
+
 2002-01-27  Herbert Voss  <voss@lyx.org>
 
 	* GraphicsCacheItem.h: added Converting to the ImageStatus enum.

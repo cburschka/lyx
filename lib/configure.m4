@@ -371,6 +371,7 @@ if test "$TOXPM" = "convert"; then
 	eps_to_xpm="convert EPS:\$\$i XPM:\$\$o" 
 	jpg_to_xpm="convert JPG:\$\$i XPM:\$\$o"
 	png_to_xpm="convert PNG:\$\$i XPM:\$\$o"
+	ps_to_xpm="convert PS:\$\$i XPM:\$\$o" 
 fi
 
 SEARCH_PROG([For an EPS -> PDF converter], EPSTOPDF, epstopdf)
