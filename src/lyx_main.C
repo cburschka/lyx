@@ -402,7 +402,7 @@ void LyX::init(bool gui)
 	// Add the directory containing the LyX executable to the path
 	// so that LyX can find things like reLyX.
 	if (package().build_support().empty())
-		prependEnvPath("PATH", package.binary_dir());
+		prependEnvPath("PATH", package().binary_dir());
 #endif
 
 	// Check that user LyX directory is ok. We don't do that if
