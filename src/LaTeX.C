@@ -324,8 +324,8 @@ bool LaTeX::scanAux(DepTable & dep)
 	string aux = ChangeExtension(file, ".aux", true);
 	ifstream ifs(aux.c_str());
 	string token;
-	LRegex reg1("\\\\bibdata{([^}]+)}");
-	LRegex reg2("\\\\bibstyle{([^}]+)}");
+	LRegex reg1("\\\\bibdata\\{([^}]+)\\}");
+	LRegex reg2("\\\\bibstyle\\{([^}]+)\\}");
 	while (getline(ifs, token)) {
 		if (reg1.exact_match(token)) {
 			LRegex::SubMatches sub = reg1.exec(token);
@@ -379,8 +379,8 @@ bool LaTeX::runBibTeX(string const & f, DepTable & dep)
 	ifstream ifs(f.c_str());
 	string token;
 	bool using_bibtex = false;
-	LRegex reg1("\\\\bibdata{([^}]+)}");
-	LRegex reg2("\\\\bibstyle{([^}]+)}");
+	LRegex reg1("\\\\bibdata\\{([^}]+)\\}");
+	LRegex reg2("\\\\bibstyle\\{([^}]+)\\}");
 	while (getline(ifs, token)) {
 		if (reg1.exact_match(token)) {
 			using_bibtex = true;

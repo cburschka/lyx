@@ -1009,7 +1009,8 @@ string findtexfile(string const & fil, string const & format)
 		return OnlyFilename(fil);
 	
         // No we try to find it using kpsewhich.
-        string kpsecmd = "kpsewhich --format= " + format + " " + OnlyFilename(fil);
+        string kpsecmd = "kpsewhich --format=" + format + " " + OnlyFilename(fil);
+
         cmdret c = do_popen(kpsecmd);
 	
         lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"

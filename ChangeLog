@@ -1,3 +1,15 @@
+2000-01-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/LaTeX.C (scanAux): fix the regular expression used to scan
+	.aux files. 
+	(runBibTeX): ditto.
+
+	* autogen.sh: do not use "type -path" (what's that anyway?).
+
+	* src/support/filetools.C (findtexfile): remove extraneous space
+	which caused a kpsewhich warning (at least with kpathsea version
+	3.0). 
+
 2000-01-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/mathed/Makefile.am (noinst_LTLIBRARIES): use .la
