@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES = *.orig *.rej *~ *.bak textclass.lst packages.lst \
 		lyxrc.defaults doc/LaTeXConfig.lyx
-bin_SCRIPTS = configure
+pkgdata_SCRIPTS = configure
 MAINTAINERCLEANFILES = Makefile.in
 SUBDIRS    = reLyX
 
