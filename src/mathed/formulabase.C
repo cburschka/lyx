@@ -553,11 +553,12 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_SPACE:
 	{
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		MathSpaceInset * p = mathcursor->prevSpaceInset();
-		if (p) 
-			p->incSpace();
-		else
-			mathcursor->insert(new MathSpaceInset(1));
+		//MathSpaceInset * p = mathcursor->prevSpaceInset();
+		//if (p) 
+		//	p->incSpace();
+		//else
+		//	mathcursor->insert(new MathSpaceInset(1));
+		mathcursor->insert(new MathSpaceInset(1));
 		updateLocal(bv, true);
 		break;
 	}

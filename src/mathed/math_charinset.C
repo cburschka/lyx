@@ -2,6 +2,8 @@
 #pragma implementation
 #endif
 
+#include <cctype>
+
 #include "math_charinset.h"
 #include "LColor.h"
 #include "Painter.h"
@@ -11,9 +13,25 @@
 #include "debug.h"
 
 
+MathCharInset::MathCharInset(char c)
+	: char_(c), code_(nativeCode(c))
+{
+	if (isalpha(c))
+		code_ = LM_TC_VAR;
+}
+
+
 MathCharInset::MathCharInset(char c, MathTextCodes t)
-	: char_(c), code_(t)
+	: char_(c), code_((t == LM_TC_MIN) ? nativeCode(c) : t)
 {}
+
+
+MathTextCodes MathCharInset::nativeCode(char c) const
+{
+	if (isalpha(c))
+		return LM_TC_VAR;
+	return LM_TC_MIN;
+}
 
 
 MathInset * MathCharInset::clone() const

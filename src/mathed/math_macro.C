@@ -129,8 +129,8 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 		col = LColor::black;
 	}
 
-	if (nargs() > 0)
-		pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2, col);
+	//if (nargs() > 0)
+	//	pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2, col);
 }
 
 

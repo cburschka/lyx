@@ -16,6 +16,12 @@ using std::endl;
 using std::max;
 
 
+bool isBinaryOp(char c)
+{
+	return strchr("+-<>=/*", c); 
+}
+
+
 ///
 class Matrix {
 public:
@@ -533,7 +539,7 @@ int mathed_char_descent(MathTextCodes type, MathStyles size, unsigned char c)
 int mathed_char_width(MathTextCodes type, MathStyles size, unsigned char c)
 {
 	LyXFont const font = WhichFont(type, size);
-	if (type == LM_TC_BOP)
+	if (isBinaryOp(c))
 		return lyxfont::width(c, font) + 2 * lyxfont::width(' ', font);
 	else
 		return lyxfont::width(c, font);
@@ -655,12 +661,6 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 }
 
 
-bool isBinaryOp(char c)
-{
-	return true; 
-}
-
-
 // In a near future maybe we use a better fonts renderer
 void drawStr(Painter & pain, MathTextCodes type, MathStyles siz,
 	int x, int y, string const & s)
@@ -673,10 +673,10 @@ void drawChar
 	(Painter & pain, MathTextCodes type, MathStyles siz, int x, int y, char c)
 {
 	string s;
-	if (type == LM_TC_BOP)
+	if (isBinaryOp(c))
 		s += ' ';
 	s += c;
-	if (type == LM_TC_BOP)
+	if (isBinaryOp(c))
 		s += ' ';
 	drawStr(pain, type, siz, x, y, s);
 }

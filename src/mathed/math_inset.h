@@ -181,6 +181,8 @@ public:
 	///
 	virtual bool isRelOp() const { return false; }
 	///
+	virtual bool isMacro() const { return false; }
+	///
 	virtual char getChar() const { return 0; }
 	///
 	virtual MathTextCodes code() const { return LM_TC_MIN; }

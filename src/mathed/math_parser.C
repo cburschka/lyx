@@ -51,6 +51,12 @@ using std::endl;
 
 namespace {
 
+bool stared(string const & s)
+{
+	unsigned n = s.size();
+	return n && s[n - 1] == '*';
+}
+
 MathScriptInset * prevScriptInset(MathArray const & array)
 {
 	MathInset * p = array.back();
@@ -58,45 +64,50 @@ MathScriptInset * prevScriptInset(MathArray const & array)
 }
 
 
-MathInset * lastScriptInset(MathArray & array, bool up, bool down, int limits)
+MathInset * lastScriptInset(MathArray & array, bool up, int limits)
 {
 	MathScriptInset * p = prevScriptInset(array);
 	if (!p) {
 		MathInset * b = array.back();
 		if (b && b->isScriptable()) {
-			p = new MathScriptInset(up, down, b->clone());
+			p = new MathScriptInset(up, !up, b->clone());
 			array.pop_back();	
 		} else {
-			p = new MathScriptInset(up, down);
+			p = new MathScriptInset(up, !up);
 		}
 		array.push_back(p);
 	}
 	if (up)
 		p->up(true);
-	if (down)
-		p->down(down);
+	else
+		p->down(true);
 	if (limits)
 		p->limits(limits);
 	return p;
 }
 
 
-// These are lexical codes, not semantic
-enum lexcode_enum {
-	LexESC,
-	LexAlpha,
-	LexBOP,         // Binary operators or relations
-	LexComment,
-	LexArgument,
-	LexSpace,
-	LexNewLine,
-	LexOther,
-	LexMath,
-	LexSelf
+// These are TeX's catcodes
+enum CatCode {
+	catEscape,     // 0    backslash 
+	catBegin,      // 1    {
+	catEnd,        // 2    }
+	catMath,       // 3    $
+	catAlign,      // 4    &
+	catNewline,    // 5    ^^M
+	catParameter,  // 6    #
+	catSuper,      // 7    ^
+	catSub,        // 8    _
+	catIgnore,     // 9       
+	catSpace,      // 10   space
+	catLetter,     // 11   a-zA-Z
+	catOther,      // 12   none of the above
+	catActive,     // 13   ~
+	catComment,    // 14   %
+	catInvalid     // 15   <delete>
 };
 
-lexcode_enum lexcode[256];  
-
+CatCode catcode[256];  
 
 const unsigned char LM_TK_OPEN  = '{';
 const unsigned char LM_TK_CLOSE = '}';
@@ -104,75 +115,40 @@ const unsigned char LM_TK_CLOSE = '}';
 enum {
 	FLAG_BRACE      = 1 << 0,  //  an opening brace needed
 	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing process
-	FLAG_RIGHT      = 1 << 2,  //  next right ends the parsing process
-	FLAG_END        = 1 << 3,  //  next end ends the parsing process
+	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
+	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
 	FLAG_BRACK_END  = 1 << 4,  //  next closing bracket ends the parsing process
-	FLAG_AMPERSAND  = 1 << 5,  //  next & ends the parsing process
-	FLAG_NEWLINE    = 1 << 6,  //  next \\ ends the parsing process
+	FLAG_NEWLINE    = 1 << 6,  //  next \\\\ ends the parsing process
 	FLAG_ITEM       = 1 << 7,  //  read a (possibly braced token)
 	FLAG_BLOCK      = 1 << 8,  //  next block ends the parsing process
-	FLAG_LEAVE      = 1 << 9,  //  marker for leaving the 
+	FLAG_LEAVE      = 1 << 9,  //  leave the loop at the end
 };
 
 
-struct latex_mathenv_type {
-	char const *      name;
-	char const *      basename;
-	MathInsetTypes    typ;
-	bool              numbered;
-	bool              ams;
-};
-
-latex_mathenv_type latex_mathenv[] = { 
-	{"math",         "math",         LM_OT_SIMPLE,   0, 0},
-	{"equation*",    "equation",     LM_OT_EQUATION, 0, 0},
-	{"equation",     "equation",     LM_OT_EQUATION, 1, 0},
-	{"eqnarray*",    "eqnarray",     LM_OT_EQNARRAY, 0, 0},
-	{"eqnarray",     "eqnarray",     LM_OT_EQNARRAY, 1, 0},
-	{"align*",       "align",        LM_OT_ALIGN,    0, 1},
-	{"align",        "align",        LM_OT_ALIGN,    1, 1},
-	{"alignat*",     "alignat",      LM_OT_ALIGNAT,  0, 1},
-	{"alignat",      "alignat",      LM_OT_ALIGNAT,  1, 1},
-	{"multline*",    "multline",     LM_OT_MULTLINE, 0, 1},
-	{"multline",     "multline",     LM_OT_MULTLINE, 1, 1},
-	{"array",        "array",        LM_OT_MATRIX,   0, 1}
-};
-
-int const latex_mathenv_num = sizeof(latex_mathenv)/sizeof(latex_mathenv[0]);
-
-
-
-void lexInit()
+void catInit()
 {
-	for (int i = 0; i <= 255; ++i) {
-		if (isdigit(i))
-			lexcode[i] = LexOther;
-		else if (isspace(i))
-			lexcode[i] = LexSpace;
-		else
-			lexcode[i] = LexAlpha;
-	}
-	
-	lexcode['\t'] = lexcode['\f'] = lexcode[' '] = LexSpace;
-	lexcode['\n'] = LexNewLine;
-	lexcode['%'] = LexComment;
-	lexcode['#'] = LexArgument;
-	lexcode['$'] = LexMath;
-	lexcode['+'] = lexcode['-'] = lexcode['*'] = lexcode['/']
-		= lexcode['<'] = lexcode['>'] = lexcode['='] = LexBOP;
-	
-	lexcode['('] = lexcode[')'] = lexcode['|'] = lexcode['.'] =
-		lexcode['?'] = LexOther; 
-	
-	lexcode['\''] = lexcode['@'] = LexAlpha;
-	
-	lexcode['['] = lexcode[']'] = lexcode['^'] = lexcode['_'] = 
-		lexcode['&'] = LexSelf;  
-	
-	lexcode['{'] = LexSelf;
-	lexcode['}'] = LexSelf;
+	for (int i = 0; i <= 255; ++i) 
+		catcode[i] = catOther;
+	for (int i = 'a'; i <= 'z'; ++i) 
+		catcode[i] = catLetter;
+	for (int i = 'A'; i <= 'Z'; ++i) 
+		catcode[i] = catLetter;
 
-	lexcode['\\'] = LexESC;
+	catcode['\\'] = catEscape;	
+	catcode['{']  = catBegin;	
+	catcode['}']  = catEnd;	
+	catcode['$']  = catMath;	
+	catcode['&']  = catAlign;	
+	catcode['\n'] = catNewline;	
+	catcode['#']  = catParameter;	
+	catcode['^']  = catSuper;	
+	catcode['_']  = catSub;	
+	catcode[''] = catIgnore;	
+	catcode[' ']  = catSpace;	
+	catcode['\t'] = catSpace;	
+	catcode['\r'] = catSpace;	
+	catcode['~']  = catActive;	
+	catcode['%']  = catComment;	
 }
 
 
@@ -181,17 +157,62 @@ void lexInit()
 // Helper class for parsing
 //
 
-
-class Parser {
+class Token {
 public:
 	///
-	Parser(LyXLex & lex)
-		: is_(lex.getStream()), lineno_(lex.getLineNo()), putback_token_(0)
-	{}
+	Token() : cs_(), char_(0), cat_(catIgnore) {}
 	///
-	Parser(istream & is)
-		: is_(is), lineno_(0), putback_token_(0)
-	{}
+	Token(char c, CatCode cat) : cs_(), char_(c), cat_(cat) {}
+	///
+	Token(const string & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
+
+	///
+	bool operator==(Token const & t) const;
+	///
+	string const & cs() const { return cs_; }
+	///
+	CatCode cat() const { return cat_; }
+	///
+	char character() const { return char_; }
+	///
+	string asString() const;
+
+private:	
+	///
+	string cs_;
+	///
+	char char_;
+	///
+	CatCode cat_;
+};
+
+string Token::asString() const
+{
+	return cs_.size() ? cs_ : string(1, char_);
+}
+
+bool Token::operator==(Token const & t) const
+{
+	return char_ == t.char_ && cat_ == t.cat_ && cs_ == t.cs_; 
+}
+
+ostream & operator<<(ostream & os, Token const & t)
+{
+	if (t.cs().size())
+		os << "\\" << t.cs();
+	else
+		os << "[" << t.character() << "," << t.cat() << "]";
+	return os;
+}
+
+
+class Parser {
+
+public:
+	///
+	Parser(LyXLex & lex);
+	///
+	Parser(istream & is);
 
 	///
 	MathMacroTemplate * parse_macro();
@@ -202,204 +223,214 @@ public:
 	///
 	int lineno() const { return lineno_; }
 	///
-	void putback(int token);
+	void putback();
 
 private:
 	///
-	int yylex();
+	string getArg(char lf, char rf);
 	///
-	string lexArg(unsigned char lf, bool accept_spaces = false);
-	///
-	unsigned char getuchar();
+	char getChar();
 	///
 	void error(string const & msg);
 	///
-	void parse_lines(MathGridInset * p, int col, bool numbered, bool outmost);
+	void parse_lines(MathGridInset * p, bool numbered, bool outmost);
 	///
 	latexkeys const * read_delim();
 
 private:
 	///
-	istream & is_;
+	void tokenize(istream & is);
+	///
+	void tokenize(string const & s);
+	///
+	void push_back(Token const & t);
+	///
+	void pop_back();
+	///
+	Token const & prevToken() const;
+	///
+	Token const & nextToken() const;
+	///
+	Token const & getToken();
+	///
+	void lex(string const & s);
+	///
+	bool good() const;
+
 	///
 	int lineno_;
-
 	///
-	int ival_;
+	std::vector<Token> tokens_;
 	///
-	latexkeys const * lval_;
-	///
-	string sval_;
-
+	unsigned pos_;
 	///
 	bool   curr_num_;
 	///
 	string curr_label_;
 	///
 	string curr_skip_;
-
-	///
-	int putback_token_;
 };
 
 
-void Parser::putback(int token)
+Parser::Parser(LyXLex & lexer)
+	: lineno_(lexer.getLineNo()), pos_(0)
 {
-	putback_token_ = token;
+	tokenize(lexer.getStream());
 }
 
 
-unsigned char Parser::getuchar()
+Parser::Parser(istream & is)
+	: lineno_(0), pos_(0)
 {
-	char c = 0;
-	if (!is_.good())
+	tokenize(is);
+}
+
+
+void Parser::push_back(Token const & t)
+{
+	tokens_.push_back(t);
+}
+
+
+void Parser::pop_back()
+{
+	tokens_.pop_back();
+}
+
+
+Token const & Parser::prevToken() const
+{
+	static const Token dummy;
+	return pos_ > 0 ? tokens_[pos_ - 1] : dummy;
+}
+
+
+Token const & Parser::nextToken() const
+{
+	static const Token dummy;
+	return good() ? tokens_[pos_] : dummy;
+}
+
+
+Token const & Parser::getToken()
+{
+	static const Token dummy;
+	return good() ? tokens_[pos_++] : dummy;
+}
+
+
+void Parser::putback()
+{
+	--pos_;
+}
+
+
+bool Parser::good() const
+{
+	return pos_ < tokens_.size();
+}
+
+
+char Parser::getChar()
+{
+	if (!good())
 		lyxerr << "The input stream is not well..." << endl;
-	is_.get(c);
-	return static_cast<unsigned char>(c);
+	return tokens_[pos_++].character();
 }
 
 
-string Parser::lexArg(unsigned char lf, bool accept_spaces)
+string Parser::getArg(char lf, char rg)
 {
 	string result;
-	unsigned char c = 0;
-	while (is_.good()) {
-		c = getuchar();
-		if (!isspace(c))
-			break;
-	}
+	char c = getChar();
 
-	if (c != lf) {
-		is_.putback(c);
-		return result;
-	}
-		
-	unsigned char rg = 0;
-	if (lf == '{') rg = '}';
-	if (lf == '[') rg = ']';
-	if (lf == '(') rg = ')';
-	if (!rg) {
-		lyxerr[Debug::MATHED] << "Math parse error: unknown bracket '"
-			<< lf << "'" << endl;
-		return result;
-	}
-
-	int depth = 1;
-	do {
-		unsigned char c = getuchar();
-		if (c == lf)
-			++depth;
-		if (c == rg)
-			--depth;
-		if ((!isspace(c) || (c == ' ' && accept_spaces)) && depth > 0)
+	if (c != lf)  
+		putback();
+	else 
+		while ((c = getChar()) != rg && good())
 			result += c;
-	} while (depth > 0 && is_.good());
 
 	return result;
 }
 
 
-int Parser::yylex()
+void Parser::tokenize(istream & is)
+{
+	// eat everything up to the next \end_inset or end of stream
+	// and store it in s for further tokenization
+	string s;
+	char c;
+	while (is.get(c)) {
+		s += c;
+		if (s.size() >= 10 && s.substr(s.size() - 10) == "\\end_inset") {
+			s = s.substr(0, s.size() - 10);
+			break;
+		}
+	}
+
+	// tokenize buffer
+	tokenize(s);
+}
+
+
+void Parser::tokenize(string const & buffer)
 {
 	static bool init_done = false;
 	
 	if (!init_done) {
-		lexInit();
+		catInit();
 		init_done = true;
 	}
 
-	if (putback_token_) {
-		int token = putback_token_;
-		putback_token_ = 0;
-		return token;
-	}
-	
-	while (is_.good()) {
-		unsigned char c = getuchar();
+	istringstream is(buffer, ios::in || ios::binary);
 
-		//lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
+	unsigned char c;
+	while (is.get(c)) {
 
-		if (!is_.good())
-			break;
-		
-		if (lexcode[c] == LexNewLine) {
-			++lineno_; 
-			continue;
-		}
-
-		if (lexcode[c] == LexComment) {
-			do {
-				c = getuchar();
-			} while (c != '\n' && is_.good());  // eat comments
-		}
-
-		ival_ = c;
-		if (lexcode[c] == LexOther)
-			return LM_TK_STR;
-
-		if (lexcode[c] == LexAlpha || lexcode[c] == LexSpace)
-			return LM_TK_ALPHA;
-
-		if (lexcode[c] == LexBOP)
-			return LM_TK_BOP;
-
-		if (lexcode[c] == LexMath) {
-			ival_ = 0;
-			return LM_TK_MATH;
-		}
-
-		if (lexcode[c] == LexSelf)
-			return c;
-
-		if (lexcode[c] == LexArgument) {
-			c = getuchar();
-			ival_ = c - '0';
-			return LM_TK_ARGUMENT; 
-		}
-
-		if (lexcode[c] == LexESC)   {
-			c = getuchar();
-			//lyxerr << "reading second byte: '" << c
-			// << "' code: " << lexcode[c] << endl;
-			string s(1, c);
-			latexkeys const * l = in_word_set(s);
-			if (l) {
-				//lyxerr << "found key: " << l << endl;
-				//lyxerr << "found key name: " << l->name << endl;
-				//lyxerr << "found key token: " << l->token << endl;
-				lval_ = l;
-				ival_ = l->id;
-				return l->token;
-			}
-			if (lexcode[c] == LexAlpha) {
-				sval_.erase();
-				while (lexcode[c] == LexAlpha && is_.good()) {
-					sval_ += c;
-					c = getuchar();
+		switch (catcode[c]) {
+			case catNewline: {
+				++lineno_; 
+				is.get(c);
+				if (catcode[c] == catNewline)
+					; //push_back(Token("par"));
+				else {
+					push_back(Token(' ',catSpace));
+					is.putback(c);	
 				}
-				while (lexcode[c] == LexSpace && is_.good()) 
-					c = getuchar();
-				if (lexcode[c] != LexSpace)
-					is_.putback(c);
-			
-				//lyxerr[Debug::MATHED] << "reading: text '" << sval_ << "'\n";
-				//lyxerr << "reading: text '" << sval_ << "'\n";
-				lval_ = in_word_set(sval_);
-				if (!lval_) 
-					return LM_TK_UNDEF;
-
-				if (lval_->token == LM_TK_BEGIN || lval_->token == LM_TK_END) { 
-					string name = lexArg('{');
-					int i = 0;
-					while (i < latex_mathenv_num && name != latex_mathenv[i].name)
-						 ++i;
-					ival_ = i;
-				}
-				return lval_->token;
+				break;
 			}
+
+			case catComment: {
+				while (is.get(c) && catcode[c] != catNewline)
+					;
+				++lineno_; 
+				break;
+			}
+
+			case catEscape: {
+				is.get(c);
+				string s(1, c);
+				if (catcode[c] == catLetter) {
+					while (is.get(c) && catcode[c] == catLetter)
+						s += c;
+					if (catcode[c] == catSpace)
+						while (is.get(c) && catcode[c] == catSpace)
+							;
+					is.putback(c);
+				}	
+				push_back(Token(s));
+				break;
+			}
+
+			default:
+				push_back(Token(c, catcode[c]));
 		}
 	}
-	return 0;
+
+	//lyxerr << "\nTokens: ";
+	//for (unsigned i = 0; i < tokens_.size(); ++i)
+	//	lyxerr << tokens_[i];
+	//lyxerr << "\n";
 }
 
 
@@ -409,8 +440,10 @@ void Parser::error(string const & msg)
 }
 
 
-void Parser::parse_lines(MathGridInset * p, int col, bool numbered, bool outmost)
+void Parser::parse_lines(MathGridInset * p, bool numbered, bool outmost)
 {
+	const int cols = p->ncols();
+
 	// save global variables
 	bool   const saved_num   = curr_num_;
 	string const saved_label = curr_label_;
@@ -421,10 +454,17 @@ void Parser::parse_lines(MathGridInset * p, int col, bool numbered, bool outmost
 		curr_label_.erase();
 
 		// reading a row
-		int idx = p->nargs() - p->ncols();
-		for (int i = 0; i < col - 1; ++i, ++idx)
-			parse_into(p->cell(idx), FLAG_AMPERSAND);
-		parse_into(p->cell(idx), FLAG_NEWLINE | FLAG_END);
+		for (int col = 0; col < cols; ++col) {
+			//lyxerr << "reading cell " << row << " " << col << "\n";
+			parse_into(p->cell(col + row * cols), FLAG_BLOCK);
+
+			// no ampersand
+			if (prevToken().cat() != catAlign) {
+				//lyxerr << "less cells read than normal in row/col: "
+				//	<< row << " " << col << "\n";
+				break;
+			}
+		}
 
 		if (outmost) {
 			MathMatrixInset * m = static_cast<MathMatrixInset *>(p);
@@ -436,12 +476,11 @@ void Parser::parse_lines(MathGridInset * p, int col, bool numbered, bool outmost
 			}
 		}
 
-#ifdef WITH_WARNINGS
-#warning Hack!
-#endif
-		// no newline
-		if (ival_ != -1)
+		// no newline?
+		if (prevToken() != Token("\\")) {
+			//lyxerr << "no newline here\n";
 			break;
+		}
 
 		p->appendRow();
 	}
@@ -454,14 +493,29 @@ void Parser::parse_lines(MathGridInset * p, int col, bool numbered, bool outmost
 
 MathMacroTemplate * Parser::parse_macro()
 {
-	if (yylex() != LM_TK_NEWCOMMAND) {
+	while (nextToken().cat() == catSpace)
+		getToken();
+
+	if (getToken().cs() != "newcommand") {
 		lyxerr << "\\newcommand expected\n";
 		return 0;
 	}
 
-	string name = lexArg('{').substr(1);
-	string arg  = lexArg('[');
+	if (getToken().cat() != catBegin) {
+		lyxerr << "'{' expected\n";
+		return 0;
+	}
+
+	string name = getToken().cs();
+
+	if (getToken().cat() != catEnd) {
+		lyxerr << "'}' expected\n";
+		return 0;
+	}
+
+	string arg  = getArg('[', ']');
 	int    narg = arg.empty() ? 0 : atoi(arg.c_str()); 
+	//lyxerr << "creating macro " << name << " with " << narg <<  "args\n";
 	MathMacroTemplate * p = new MathMacroTemplate(name, narg);
 	parse_into(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
 	return p;
@@ -470,125 +524,98 @@ MathMacroTemplate * Parser::parse_macro()
 
 MathMatrixInset * Parser::parse_normal()
 {
-	MathMatrixInset * p = 0;
-	int t = yylex();
+	Token const & t = getToken();
 
-	switch (t) {
-		case LM_TK_MATH:
-		case LM_TK_BEGIN: {
-			int i = ival_;
-			lyxerr[Debug::MATHED]
-				<< "reading math environment " << i << " "
-				<< latex_mathenv[i].name << "\n";
-
-			MathInsetTypes typ = latex_mathenv[i].typ;
-			p = new MathMatrixInset(typ);
-
-			switch (typ) {
-
-				case LM_OT_SIMPLE: {
-					curr_num_ = latex_mathenv[i].numbered;
-					curr_label_.erase();
-					parse_into(p->cell(0), 0);
-					p->numbered(0, curr_num_);
-					p->label(0, curr_label_);
-					break;
-				}
-
-				case LM_OT_EQUATION: {
-					curr_num_ = latex_mathenv[i].numbered;
-					curr_label_.erase();
-					parse_into(p->cell(0), FLAG_END);
-					p->numbered(0, curr_num_);
-					p->label(0, curr_label_);
-					break;
-				}
-
-				case LM_OT_EQNARRAY: {
-					parse_lines(p, 3, latex_mathenv[i].numbered, true);
-					break;
-				}
-
-				case LM_OT_ALIGN: {
-					p->halign(lexArg('{'));
-					parse_lines(p, 2, latex_mathenv[i].numbered, true);
-					break;
-				}
-
-				case LM_OT_ALIGNAT: {
-					p->halign(lexArg('{'));
-					parse_lines(p, 2, latex_mathenv[i].numbered, true);
-					break;
-				}
-
-				default: 
-					lyxerr[Debug::MATHED]
-						<< "1: unknown math environment: " << typ << "\n";
-			}
-
-			break;
-		}
-		
-		default:
-			lyxerr[Debug::MATHED]
-				<< "2 unknown math environment: " << t << "\n";
+	if (t.cat() == catMath || t.cs() == "(") {
+		MathMatrixInset * p = new MathMatrixInset(LM_OT_SIMPLE);
+		parse_into(p->cell(0), 0);
+		return p;
 	}
 
-	return p;
+	if (!t.cs().size()) {
+		lyxerr << "start of math expected, got '" << t << "'\n";
+		return 0;
+	}
+
+	string const & cs = t.cs();
+
+	if (cs == "[") {
+		curr_num_ = 0;
+		curr_label_.erase();
+		MathMatrixInset * p = new MathMatrixInset(LM_OT_EQUATION);
+		parse_into(p->cell(0), 0);
+		p->numbered(0, curr_num_);
+		p->label(0, curr_label_);
+		return p;
+	}
+
+	if (cs != "begin") {
+		lyxerr << "'begin' of un-simple math expected, got '" << cs << "'\n";
+		return 0;
+	}
+
+	string const name = getArg('{', '}');
+
+	if (name == "equation" || name == "equation*") {
+		curr_num_ = stared(name);
+		curr_label_.erase();
+		MathMatrixInset * p = new MathMatrixInset(LM_OT_EQUATION);
+		parse_into(p->cell(0), FLAG_END);
+		p->numbered(0, curr_num_);
+		p->label(0, curr_label_);
+		return p;
+	}
+
+	if (name == "eqnarray" || name == "eqnarray*") {
+		MathMatrixInset * p = new MathMatrixInset(LM_OT_EQNARRAY);
+		parse_lines(p, stared(name), true);
+		return p;
+	}
+
+	if (name == "align" || name == "align*") {
+		MathMatrixInset * p = new MathMatrixInset(LM_OT_ALIGN);
+		p->halign(getArg('{', '}'));
+		parse_lines(p, stared(name), true);
+		return p;
+	}
+
+	if (name == "alignat" || name == "alignat*") {
+		MathMatrixInset * p = new MathMatrixInset(LM_OT_ALIGNAT);
+		p->halign(getArg('{', '}'));
+		parse_lines(p, stared(name), true);
+		return p;
+	}
+
+	lyxerr[Debug::MATHED] << "1: unknown math environment: " << name << "\n";
+	return 0;
 }
 
 
 latexkeys const * Parser::read_delim()
 {
-	int ld = yylex();
-	//lyxerr << "found symbol: " << ld << "\n";
-	latexkeys const * l = in_word_set(".");
-	switch (ld) {
-		case LM_TK_SYM:
-		case LM_TK_NOGLYPH:
-		case LM_TK_SPECIAL:
-		case LM_TK_BEGIN: {
-			l = lval_;
-			//lyxerr << "found key 1: '" << l << "'\n";
-			//lyxerr << "found key 1: '" << l->name << "'\n";
-			break;
-		}
-		case ']':
-		case '[': {
-			string s;
-			s += ld;
-			l = in_word_set(s);
-			//lyxerr << "found key 2: '" << l->name << "'\n";
-			break;
-		}
-		case LM_TK_STR: {
-			string s;
-			s += ival_;
-			l = in_word_set(s);
-			//lyxerr << "found key 2: '" << l->name << "'\n";
-		}
-	}
-	return l;
+	Token const & t = getToken();
+	latexkeys const * l = in_word_set(t.asString());
+	return l ? l : in_word_set(".");
 }
 
 
 void Parser::parse_into(MathArray & array, unsigned flags)
 {
-	MathTextCodes yyvarcode   = LM_TC_VAR;
+	MathTextCodes yyvarcode = LM_TC_MIN;
 
 	bool panic  = false;
 	int  limits = 0;
 
-	while (int t = yylex()) {
+	while (good()) {
+		Token const & t = getToken();
 		
-		//lyxerr << "t: " << t << " flags: " << flags << " i: " << ival_
-		//	<< " '" << sval_ << "'\n";
+		lyxerr << "t: " << t << " flags: " << flags << "'\n";
 		//array.dump(lyxerr);
-		//lyxerr << "\n";
+		lyxerr << "\n";
 
 		if (flags & FLAG_ITEM) {
 			flags &= ~FLAG_ITEM;
-			if (t == LM_TK_OPEN) { 
+			if (t.cat() == catBegin) { 
 				// skip the brace and collect everything to the next matching
 				// closing brace
 				flags |= FLAG_BRACE_LAST;
@@ -600,7 +627,7 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		}
 
 		if (flags & FLAG_BRACE) {
-			if (t != LM_TK_OPEN) {
+			if (t.cat() != catBegin) {
 				error("Expected {. Maybe you forgot to enclose an argument in {}");
 				panic = true;
 				break;
@@ -611,121 +638,110 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		}
 
 		if (flags & FLAG_BLOCK) {
-			if (t == LM_TK_CLOSE || t == '&' || t == LM_TK_NEWLINE || t == LM_TK_END){
-				putback(t);
+			if (t.cat() == catEnd || t.cat() == catAlign || t.cs() == "\\")
+				return;
+			if (t.cs() == "end") {
+				getArg('{', '}');
 				return;
 			}
 		}
 
-
-		switch (t) {
-			
-		case LM_TK_MATH:
-		case LM_TK_END:
-			return;
-
-		case LM_TK_ALPHA:
-			if (!isspace(ival_) || yyvarcode == LM_TC_TEXTRM)
-				array.push_back(new MathCharInset(ival_, yyvarcode));
+		//
+		// cat codes
+		//
+		if (t.cat() == catMath)
 			break;
 
-		case LM_TK_ARGUMENT: {
-			MathMacroArgument * p = new MathMacroArgument(ival_);
-			//p->code(yyvarcode);
+		else if (t.cat() == catLetter)
+			array.push_back(new MathCharInset(t.character(), yyvarcode));
+
+		else if (t.cat() == catSpace && yyvarcode == LM_TC_TEXTRM)
+			array.push_back(new MathCharInset(' ', yyvarcode));
+
+		else if (t.cat() == catParameter) {
+			Token const & n	= getToken();
+			MathMacroArgument * p = new MathMacroArgument(n.character() - '0');
 			array.push_back(p);
-			break;
 		}
 
-		case LM_TK_SPECIAL:
-			array.push_back(new MathCharInset(ival_, LM_TC_SPECIAL));
-			break;
-
-		case LM_TK_STR:
-			array.push_back(new MathCharInset(ival_, LM_TC_CONST));
-			break;
-
-		case '{':
+		else if (t.cat() == catBegin) {
 			//lyxerr << " creating ScopeInset\n";
 			array.push_back(new MathScopeInset);
 			parse_into(array.back()->cell(0), FLAG_BRACE_LAST);
-			break;
+		}
 
-		case '}':
-			if (flags & FLAG_BRACE_LAST)
-				flags |= FLAG_LEAVE;
-			break;
-		
-		case '[':
-			array.push_back(new MathCharInset('[', LM_TC_CONST));
-			break;
-
-		case ']':
-			if (flags & FLAG_BRACK_END)
-				flags |= FLAG_LEAVE;
-			else 
-				array.push_back(new MathCharInset(']', LM_TC_CONST));
-			break;
-		
-		case '^':
-			parse_into(
-				lastScriptInset(array, true, false, limits)->cell(0), FLAG_ITEM);
-			break;
-		
-		case '_':
-			parse_into(
-				lastScriptInset(array, false, true, limits)->cell(1), FLAG_ITEM);
-			break;
-		
-		case LM_TK_LIMIT:
-			limits = lval_->id;
-			//lyxerr << "setting limit to " << limits << "\n";
-			break;
-		
-		case '&':
-			if (flags & FLAG_AMPERSAND) {
-				flags &= ~FLAG_AMPERSAND;
-				return;
-			}
-			lyxerr[Debug::MATHED]
-				<< "found tab unexpectedly, array: '" << array << "'\n";
-			break;
-		
-		case LM_TK_NEWLINE:
-		{
-			curr_skip_ = lexArg('[');
-			if (flags & FLAG_NEWLINE) {
-				flags &= ~FLAG_NEWLINE;
-				return;
-			}
-			lyxerr[Debug::MATHED]
-				<< "found newline unexpectedly, array: '" << array << "'\n";
-			break;
+		else if (t.cat() == catEnd) {
+			if (!(flags & FLAG_BRACE_LAST))
+				lyxerr << " ##### unexpected end of block\n";
+			return;
 		}
 		
-		case LM_TK_PROTECT: 
+		else if (t.cat() == catAlign) {
+			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
+			return;
+		}
+		
+		else if (t.cat() == catSuper)
+			parse_into(lastScriptInset(array, true, limits)->cell(0), FLAG_ITEM);
+		
+		else if (t.cat() == catSub)
+			parse_into(lastScriptInset(array, false, limits)->cell(1), FLAG_ITEM);
+		
+		else if (t.character() == ']' && (flags & FLAG_BRACK_END))
+			return;
+
+		else if (t.cat() == catOther)
+			array.push_back(new MathCharInset(t.character(), yyvarcode));
+		
+		//
+		// codesequences
+		//	
+		else if (t.cs() == "protect") 
+			;
+
+		else if (t.cs() == "end")
 			break;
 
-		case LM_TK_BOP:
-			array.push_back(new MathCharInset(ival_, LM_TC_BOP));
+		else if (t.cs() == ")")
 			break;
 
-		case LM_TK_SQRT:
-		{
-			unsigned char c = getuchar();
+		else if (t.cs() == "]")
+			break;
+
+		else if (t.cs() == "\\") {
+			curr_skip_ = getArg('[', ']');
+			if (!(flags & FLAG_NEWLINE))
+				lyxerr[Debug::MATHED]
+					<< "found newline unexpectedly, array: '" << array << "'\n";
+			return;
+		}
+	
+		else if (t.cs() == "limits") 
+			limits = 1;
+		
+		else if (t.cs() == "nolimits") 
+			limits = -1;
+		
+		else if (t.cs() == "nonumber")
+			curr_num_ = false;
+
+		else if (t.cs() == "number")
+			curr_num_ = true;
+
+		else if (t.cs() == "sqrt") {
+			char c = getChar();
 			if (c == '[') {
 				array.push_back(new MathRootInset);
 				parse_into(array.back()->cell(0), FLAG_BRACK_END);
 				parse_into(array.back()->cell(1), FLAG_ITEM);
 			} else {
-				is_.putback(c);
+				putback();
 				array.push_back(new MathSqrtInset);
 				parse_into(array.back()->cell(0), FLAG_ITEM);
 			}
-			break;
 		}
 		
-		case LM_TK_LEFT:
-		{
+		else if (t.cs() == "left") {
 			latexkeys const * l = read_delim();
 			MathArray ar;
 			parse_into(ar, FLAG_RIGHT);
@@ -733,31 +749,15 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			MathDelimInset * dl = new MathDelimInset(l, r);
 			dl->cell(0) = ar;
 			array.push_back(dl);
-			break;
 		}
 		
-		case LM_TK_RIGHT:
-			if (flags & FLAG_RIGHT)
-				return;
-			error("Unmatched right delimiter");
-//	  panic = true;
-			break;
-		
-		case LM_TK_FONT:
-		{
-			MathTextCodes t = static_cast<MathTextCodes>(lval_->id);
-			MathArray ar;
-			parse_into(ar, FLAG_ITEM);
-			for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it)
-				(*it)->handleFont(t);
-			array.push_back(ar);
-			break;
+		else if (t.cs() == "right") {
+			if (!(flags & FLAG_RIGHT))
+				error("Unmatched right delimiter");
+			return;
 		}
 
-		case LM_TK_OLDFONT:
-			yyvarcode = static_cast<MathTextCodes>(lval_->id);
-			break;
-
+/*		
 		case LM_TK_STY:
 		{
 			lyxerr[Debug::MATHED] << "LM_TK_STY not implemented\n";
@@ -768,10 +768,6 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			break; 
 		}
 
-		case LM_TK_NONUM:
-			curr_num_ = false;
-			break;
-		
 		case LM_TK_UNDEF: 
 			if (MathMacroTable::hasTemplate(sval_)) {
 				MathMacro * m = MathMacroTable::cloneTemplate(sval_);
@@ -782,59 +778,83 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			} else
 				array.push_back(new MathFuncInset(sval_));
 			break;
-		
-		case LM_TK_BEGIN:
-		{
-			int i = ival_;
-			MathInsetTypes typ = latex_mathenv[i].typ;
 
-			if (typ == LM_OT_MATRIX) {
-				string const valign = lexArg('[') + 'c';
-				string const halign = lexArg('{');
-				//lyxerr << "valign: '" << valign << "'\n";
-				//lyxerr << "halign: '" << halign << "'\n";
+		else  LM_TK_SPECIAL:
+			array.push_back(new MathCharInset(ival_, LM_TC_SPECIAL));
+			break;
+*/
+		
+		else if (t.cs() == "begin") {
+			string const name = getArg('{', '}');	
+			if (name == "array") {
+				string const valign = getArg('[', ']') + 'c';
+				string const halign = getArg('{', '}');
 				MathArrayInset * m = new MathArrayInset(halign.size(), 1);
 				m->valign(valign[0]);
 				m->halign(halign);
-
-				parse_lines(m, halign.size(), latex_mathenv[i].numbered, false);
+				parse_lines(m, false, false);
 				array.push_back(m);
-				//lyxerr << "read matrix " << *m << "\n";	
-				break;
 			} else 
-				lyxerr[Debug::MATHED] << "unknow math inset " << typ << "\n";	
-			break;
+				lyxerr[Debug::MATHED] << "unknow math inset begin '" << name << "'\n";	
 		}
 	
-		case LM_TK_LABEL:
-			curr_label_ = lexArg('{', true);
-			break;
+		else if (t.cs() == "label") {
+			MathArray ar;
+			parse_into(ar, FLAG_ITEM);
+			ostringstream os;
+			ar.write(os, true);
+			curr_label_ = os.str();
+			// was: 
+			//curr_label_ = getArg('{', '}');
+		}
 
-		case LM_TK_CHOOSE:
-		case LM_TK_OVER:
-		{
+		else if (t.cs() == "choose" || t.cs() == "over") {
 			limits = 0;
-			MathInset * p = createMathInset(lval_);
+			MathInset * p = createMathInset(t.cs());
 			p->cell(0).swap(array);
 			array.push_back(p);
 			parse_into(p->cell(1), FLAG_BLOCK);
-			break;
 		}
-		
-		default:
+	
+		else if (t.cs().size()) {
 			limits = 0;
-			MathInset * p = createMathInset(lval_);
-			if (p) {
-				for (int i = 0; i < p->nargs(); ++i)
-					parse_into(p->cell(i), FLAG_ITEM);
-				array.push_back(p);
-			} else {
-				error("Unrecognized token");
-				//lyxerr[Debug::MATHED] << "[" << t << " " << sval_ << "]\n";
-				lyxerr << "[" << t << " " << sval_ << "]\n";
+			latexkeys const * l = in_word_set(t.cs());
+			if (l) {
+				if (l->token == LM_TK_FONT) {
+					//lyxerr << "starting font\n";
+					MathArray ar;
+					parse_into(ar, FLAG_ITEM);
+					for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it)
+						(*it)->handleFont(static_cast<MathTextCodes>(l->id));
+					array.push_back(ar);
+					//lyxerr << "ending font\n";
+				}
+
+				else if (l->token == LM_TK_OLDFONT)
+					yyvarcode = static_cast<MathTextCodes>(l->id);
+
+				else {
+					MathInset * p = createMathInset(t.cs());
+					for (int i = 0; i < p->nargs(); ++i) 
+						parse_into(p->cell(i), FLAG_ITEM);
+					array.push_back(p);
+				}
 			}
 
-		} // end of big switch
+			else {
+				MathInset * p = createMathInset(t.cs());
+				if (p) {
+					for (int i = 0; i < p->nargs(); ++i)
+						parse_into(p->cell(i), FLAG_ITEM);
+					array.push_back(p);
+				} else {
+					error("Unrecognized token");
+					//lyxerr[Debug::MATHED] << "[" << t << "]\n";
+					lyxerr << t << "\n";
+				}	
+			}
+		}
+
 
 		if (flags & FLAG_LEAVE) {
 			flags &= ~FLAG_LEAVE;
@@ -845,27 +865,10 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 	if (panic) {
 		lyxerr << " Math Panic, expect problems!\n";
 		//   Search for the end command. 
-		int t;
+		Token t;
 		do {
-			t = yylex();
-		} while (is_.good() && t != LM_TK_END && t);
-	}
-}
-
-
-void parse_end(LyXLex & lex, int lineno)
-{
-	// Update line number
-	lex.setLineNo(lineno);
-
-	// reading of end_inset
-	while (lex.isOK()) {
-		lex.nextToken();
-		if (lex.getString() == "\\end_inset")
-			break;
-		//lyxerr[Debug::MATHED] << "InsetFormula::Read: Garbage before \\end_inset,"
-		lyxerr << "InsetFormula::Read: Garbage before \\end_inset,"
-			" or missing \\end_inset!\n";
+			t = getToken();
+		} while (good() && t.cs() != "end");
 	}
 }
 
@@ -900,9 +903,7 @@ MathMacroTemplate * mathed_parse_macro(istream & is)
 MathMacroTemplate * mathed_parse_macro(LyXLex & lex)
 {
 	Parser parser(lex);
-	MathMacroTemplate * p = parser.parse_macro();
-	parse_end(lex, parser.lineno());
-	return p;
+	return parser.parse_macro();
 }
 
 
@@ -923,7 +924,5 @@ MathMatrixInset * mathed_parse_normal(istream & is)
 MathMatrixInset * mathed_parse_normal(LyXLex & lex)
 {
 	Parser parser(lex);
-	MathMatrixInset * p = parser.parse_normal();
-	parse_end(lex, parser.lineno());
-	return p;
+	return parser.parse_normal();
 }

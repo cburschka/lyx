@@ -64,8 +64,13 @@ void MathDelimInset::metrics(MathStyles st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;
-	ascent_  = std::max(xcell(0).ascent(), mathed_char_ascent(LM_TC_VAR, st,'I'));
-	descent_ = xcell(0).descent();
+	int a, d, w;
+	mathed_char_dim(LM_TC_VAR, st,'I', a, d, w);
+	int h0   = (a + d) / 2;
+	int a0   = std::max(xcell(0).ascent(), a)   - h0;
+	int d0   = std::max(xcell(0).descent(), d)  + h0;
+	ascent_  = max(a0, d0) + h0;
+	descent_ = max(a0, d0) - h0;
 	width_   = xcell(0).width() + 2 * dw() + 4;
 }
 
@@ -78,6 +83,6 @@ void MathDelimInset::draw(Painter & pain, int x, int y) const
 	int const w = dw();
 	int const b = y - ascent_ - 2;
 	xcell(0).draw(pain, x + w + 2, y);
-	mathed_draw_deco(pain, x, b, w, height() + 4, left_);
-	mathed_draw_deco(pain, x + width() - w, b, w, height() + 4, right_);
+	mathed_draw_deco(pain, x + 1, b, w, height() + 4, left_);
+	mathed_draw_deco(pain, x + width() - w - 1, b, w, height() + 4, right_);
 }

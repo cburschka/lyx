@@ -15,9 +15,13 @@
 class MathCharInset : public MathInset {
 public:
 	///
+	explicit MathCharInset(char c);
+	///
 	MathCharInset(char c, MathTextCodes t);
 	///
 	MathInset * clone() const;
+	///
+	MathTextCodes nativeCode(char c) const;
 	///
 	void metrics(MathStyles st) const;
 	///

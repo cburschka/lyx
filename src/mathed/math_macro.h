@@ -64,6 +64,8 @@ public:
 
 	///
 	void validate(LaTeXFeatures &) const;
+	///
+	bool isMacro() const { return true; }
 
 private:
 	///

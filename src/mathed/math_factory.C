@@ -11,6 +11,7 @@
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_noglyphinset.h"
+#include "math_notinset.h"
 #include "math_rootinset.h"
 #include "math_spaceinset.h"
 #include "math_sqrtinset.h"
@@ -38,6 +39,8 @@ MathInset * createMathInset(latexkeys const * l)
 		case LM_TK_OVER:
 		case LM_TK_FRAC:
 			return new MathFracInset;
+		case LM_TK_NOT:
+			return new MathNotInset;
 		case LM_TK_SQRT:
 			return new MathSqrtInset;
 		case LM_TK_ROOT:

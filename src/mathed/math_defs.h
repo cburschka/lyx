@@ -55,8 +55,6 @@ enum MathTextCodes  {
 
 	///
 	LM_FONT_BEGIN,
-	/// Internal code for constants  4
-	LM_TC_CONST,
 	/// Internal code for variables
 	LM_TC_VAR,
 	///
@@ -81,8 +79,6 @@ enum MathTextCodes  {
 	LM_TC_GREEK,
 	/// Internal code when typing a single greek character
 	LM_TC_GREEK1,
-	/// Internal code for operators 
-	LM_TC_BOP,
 	/// Internal code for symbols
 	LM_TC_SYMB,
 	/// Internal code for symbols that get bigger in displayed math

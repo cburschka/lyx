@@ -1277,16 +1277,9 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
-	if (('0' <= c && c <= '9') || strchr(";:!|[]().,?", c)) {
+	if (strchr("0123456789;:!|[]().,?+/-*<>=", c)) {
 		if (lastcode_ != LM_TC_TEXTRM)
-			lastcode_ = LM_TC_CONST;
-		insert(c, lastcode_);
-		return;
-	}
-
-	if (strchr("+/-*<>=", c)) {
-		if (lastcode_ != LM_TC_TEXTRM)
-			lastcode_ = LM_TC_BOP;
+			lastcode_ = LM_TC_VAR;
 		insert(c, lastcode_);
 		return;
 	}
@@ -1302,6 +1295,12 @@ void MathCursor::interpret(string const & s)
 		if (inMacroMode()) {
 			macroModeClose();
 			lastcode_ = LM_TC_VAR;
+			return;
+		}
+
+		MathSpaceInset * p = prevSpaceInset();
+		if (p) {
+			p->incSpace();
 			return;
 		}
 
