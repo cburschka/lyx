@@ -4,6 +4,7 @@
 	the stored file name as it breaks Window's version of stat().
 	(isLink): protect the code with #ifdef S_ISLNK.
 	(dostat): protect the code with #ifdef HAVE_LSTAT.
+	(typeIndicator): remove code testing the file's executable status.
 
 	* filetools.C (LyXReadLink): protect the code with
 	#ifdef HAVE_READLINK.
