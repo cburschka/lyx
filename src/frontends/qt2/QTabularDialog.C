@@ -84,6 +84,7 @@ void QTabularDialog::borderSet_clicked()
 	form_->controller().set(LyXTabular::SET_ALL_LINES);
 	form_->update_borders();
 	form_->changed();
+	//FIXME: qsetborder widget not updated
 }
 
 void QTabularDialog::borderUnset_clicked()
@@ -91,6 +92,7 @@ void QTabularDialog::borderUnset_clicked()
 	form_->controller().set(LyXTabular::UNSET_ALL_LINES);
 	form_->update_borders();
 	form_->changed();
+	//FIXME: qsetborder widget not updated
 }
  
 
@@ -146,13 +148,15 @@ void QTabularDialog::specialAlignment_changed()
 
 void QTabularDialog::width_changed()
 {
-	string const width =
-		LyXLength(widthED->text().toDouble(),
-			  widthUnit->currentLengthItem()).asString();
+	string const width = 
+		LyXLength(widthED->text().toDouble(), 
+			widthUnit->currentLengthItem()).asString();
 	if (form_->controller().isMulticolumnCell())
 		form_->controller().set(LyXTabular::SET_MPWIDTH, width);
 	else
 		form_->controller().set(LyXTabular::SET_PWIDTH, width);
+	form_->changed();
+	form_->update_contents();
 }
 
 
@@ -160,6 +164,7 @@ void QTabularDialog::multicolumn_clicked()
 {
 	form_->controller().set(LyXTabular::MULTICOLUMN);
 	form_->changed();
+	form_->update_contents();
 }
 
 
@@ -197,33 +202,33 @@ void QTabularDialog::rotateCell_checked(int state)
 
 void QTabularDialog::hAlign_changed(int align)
 {
-	LyXTabular::Feature num = LyXTabular::ALIGN_BLOCK;
+	LyXTabular::Feature num = LyXTabular::ALIGN_LEFT;
 	LyXTabular::Feature multi_num = LyXTabular::M_ALIGN_LEFT;
 
 	switch (align) {
 		case 0:
 		{
-			num = LyXTabular::ALIGN_BLOCK;
-			//FIXME: multi_num no equivalent
-			break;
-		}
-		case 1:
-		{
 			num = LyXTabular::ALIGN_LEFT;
 			multi_num = LyXTabular::M_ALIGN_LEFT;
 			break;
 		}
-		case 2:
+		case 1:
 		{
 			num = LyXTabular::ALIGN_CENTER;
 			multi_num = LyXTabular::M_ALIGN_CENTER;
 			break;
 		}
-		case 3:
+		case 2:
 		{
 			num = LyXTabular::ALIGN_RIGHT;
 			multi_num = LyXTabular::M_ALIGN_RIGHT;
 			break;
+		case 3:
+		{
+			num = LyXTabular::ALIGN_BLOCK;
+			//multi_num: no equivalent
+			break;
+		}
 		}
 	}
 	if (form_->controller().isMulticolumnCell())
@@ -235,8 +240,8 @@ void QTabularDialog::hAlign_changed(int align)
 
 void QTabularDialog::vAlign_changed(int align)
 {
-	LyXTabular::Feature num = LyXTabular::ALIGN_BLOCK;
-	LyXTabular::Feature multi_num = LyXTabular::M_ALIGN_LEFT;
+	LyXTabular::Feature num = LyXTabular::VALIGN_CENTER;
+	LyXTabular::Feature multi_num = LyXTabular::M_VALIGN_CENTER;
 
 	switch (align) {
 		case 0:

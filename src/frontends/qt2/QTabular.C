@@ -125,17 +125,30 @@ void QTabular::update_contents()
 	dialog_->widthED->setEnabled(!isReadonly);
 	dialog_->widthUnit->setEnabled(!isReadonly);
 
+	dialog_->hAlignCB->clear();
+	dialog_->hAlignCB->insertItem(_("Left"));
+	dialog_->hAlignCB->insertItem(_("Center"));
+	dialog_->hAlignCB->insertItem(_("Right"));
+	if (!multicol && !pwidth.zero())
+		dialog_->hAlignCB->insertItem(_("Block"));
+
 	int align = 0;
 	switch (tabular->GetAlignment(cell)) {
 	case LYX_ALIGN_LEFT:
-		align = 1;
+		align = 0;
 		break;
 	case LYX_ALIGN_CENTER:
-		align = 2;
+		align = 1;
 		break;
 	case LYX_ALIGN_RIGHT:
-		align = 3;
+		align = 2;
 		break;
+	case LYX_ALIGN_BLOCK:
+	{
+		if (!multicol && !pwidth.zero())
+			align = 3;
+		break;
+	}
 	default:
 		align = 0;
 		break;

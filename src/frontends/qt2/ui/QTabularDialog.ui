@@ -186,6 +186,10 @@
                                     <name>text</name>
                                     <string>A&amp;dd</string>
                                 </property>
+                                <property stdset="1">
+                                    <name>autoDefault</name>
+                                    <bool>false</bool>
+                                </property>
                                 <property>
                                     <name>toolTip</name>
                                     <string>Append column (right)</string>
@@ -200,6 +204,10 @@
                                 <property stdset="1">
                                     <name>text</name>
                                     <string>De&amp;lete</string>
+                                </property>
+                                <property stdset="1">
+                                    <name>autoDefault</name>
+                                    <bool>false</bool>
                                 </property>
                                 <property>
                                     <name>toolTip</name>
@@ -237,6 +245,10 @@
                                     <name>text</name>
                                     <string>&amp;Add</string>
                                 </property>
+                                <property stdset="1">
+                                    <name>autoDefault</name>
+                                    <bool>false</bool>
+                                </property>
                                 <property>
                                     <name>toolTip</name>
                                     <string>Append row (below)</string>
@@ -251,6 +263,10 @@
                                 <property stdset="1">
                                     <name>text</name>
                                     <string>Dele&amp;te</string>
+                                </property>
+                                <property stdset="1">
+                                    <name>autoDefault</name>
+                                    <bool>false</bool>
                                 </property>
                                 <property>
                                     <name>toolTip</name>
