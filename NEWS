@@ -1,3 +1,55 @@
+What's new in version 1.2.1?
+----------------------------
+
+LyX 1.2.1 is a maintenance release which fixes many bugs in version
+1.2.0. We hope in this way to enhance world happiness, allowing the
+developers to continue busily to prepare the next major release
+1.3.0. There are a lot of fixes in there, and upgrading is highly
+recommended.
+
+** Updates
+
+- it is now possible to build LyX with xforms 1.0rc4 (and probably 1.0
+  when this gets released) 
+
+- partial rewrite of the find & replace feature. This should solve most of
+  the performance problems
+
+- new option `keep aspect ratio' in graphics dialog
+
+- revert to the old behaviour when creating new floats (figure,
+  table...): the empty paragraph in the float now is a caption. It
+  seems that 1.2.0 behaviour was confusing too many people
+
+- it is now possible to set the float placement parameters to
+  "document defaults"
+
+- when the cursor is inside a collapsible inset, `Edit>Open/close
+  float' will leave it after the inset after closing it (this should
+  help entering of ERT insets)
+
+- update Finnish, Danish, French and Russian localizations
+
+- update Tutorial to 1.2.x features
+
+- better support for entering Cyrillic and Greek alphabets
+
+- cleanup shortcuts for section layouts. Starred versions are now
+  obtained by prepending a * to the section number (M-p asterisk 0, ...,
+  M-p asterisk 6)
+
+- add keyboard shortcuts to the Documents menu
+
+- support the numpad direction keys as equivalent to normal cursor
+  keys
+
+- it is now possible to specify a non-existent file name on the command
+  line and have this file created for you
+
+- new class cl2emult; update template for IEEEtran; small update to
+  heb-article and hollywood textclasses
+
+
 What's new in version 1.2.0?
 ----------------------------
 
