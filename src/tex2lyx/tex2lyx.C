@@ -364,6 +364,12 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		else if (t.cat() == catNewline)
 			os << t.character();
 
+		else if (t.cat() == catSuper)
+			os << t.character();
+
+		else if (t.cat() == catSub)
+			os << t.character();
+
 		else if (t.cat() == catParameter) {
 			Token const & n	= p.getToken();
 			os << wrap("macroarg", string(1, n.character()));
@@ -595,7 +601,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		}
 
 		else if (t.cs() == "index") {
-			begin_inset(os, "LatexCommand");
+			begin_inset(os, "LatexCommand ");
 			parse(p, os, FLAG_ITEM, TEXT_MODE);
 			end_inset(os);
 		}
