@@ -1,6 +1,11 @@
 2003-05-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* ParagraphList.C (splice): just return if pl is empty.
+
+2003-05-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* ParagraphList.C (splice): new function.
+
 	* CutAndPaste.C (pasteSelection): use it
 
 2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
