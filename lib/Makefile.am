@@ -27,6 +27,7 @@ dist_bind_DATA = \
 	bind/greekkeys.bind \
 	bind/hollywood.bind \
 	bind/latinkeys.bind \
+	bind/mac.bind \
 	bind/math.bind \
 	bind/menus.bind \
 	bind/pt_menus.bind \
