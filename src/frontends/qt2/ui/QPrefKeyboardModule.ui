@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>350</width>
+            <width>342</width>
             <height>253</height>
         </rect>
     </property>
@@ -75,6 +75,10 @@
                 <name>text</name>
                 <string>Bro&amp;wse...</string>
             </property>
+            <property stdset="1">
+                <name>autoDefault</name>
+                <bool>false</bool>
+            </property>
         </widget>
         <widget row="2"  column="0" >
             <class>QLabel</class>
@@ -116,6 +120,10 @@
                 <name>text</name>
                 <string>Br&amp;owse...</string>
             </property>
+            <property stdset="1">
+                <name>autoDefault</name>
+                <bool>false</bool>
+            </property>
         </widget>
         <widget row="0"  column="0"  rowspan="1"  colspan="3" >
             <class>QCheckBox</class>
@@ -130,4 +138,11 @@
         </widget>
     </grid>
 </widget>
+<tabstops>
+    <tabstop>keymapCB</tabstop>
+    <tabstop>firstKeymapED</tabstop>
+    <tabstop>firstKeymapPB</tabstop>
+    <tabstop>secondKeymapED</tabstop>
+    <tabstop>secondKeymapPB</tabstop>
+</tabstops>
 </UI>

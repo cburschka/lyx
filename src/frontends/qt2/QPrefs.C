@@ -40,6 +40,7 @@
 #include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qspinbox.h>
+#include <qcombobox.h> 
  
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
@@ -464,6 +465,7 @@ void QPrefs::update_contents()
 	if (rc.autosave && !mins)
 		mins = 1;
 	uimod->autoSaveSB->setValue(mins);
+	uimod->autoSaveCB->setChecked(rc.make_backup);
  
  
 	QPrefKeyboardModule * keymod(dialog_->keyboardModule);
@@ -492,6 +494,32 @@ void QPrefs::update_contents()
 	latexmod->latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexmod->latexDviPaperED->setText(rc.view_dvi_paper_option.c_str());
 
+
+	QPrefDisplayModule * displaymod(dialog_->displayModule);
+
+	displaymod->previewCB->setChecked(rc.preview);
+ 
+	int item = 2;
+ 
+	switch (rc.display_graphics) {
+		case grfx::NoDisplay:		item = 3; break;
+		case grfx::ColorDisplay:	item = 2; break;
+		case grfx::GrayscaleDisplay:	item = 1; break;
+		case grfx::MonochromeDisplay:	item = 0; break;
+	}
+	displaymod->displayGraphicsCO->setCurrentItem(item);
+ 
+
+	QPrefPathsModule * pathsmod(dialog_->pathsModule);
+ 
+	pathsmod->workingDirED->setText(rc.document_path.c_str());
+	pathsmod->templateDirED->setText(rc.template_path.c_str());
+	pathsmod->backupDirED->setText(rc.backupdir_path.c_str());
+	pathsmod->tempDirCB->setChecked(rc.use_tempdir);
+	pathsmod->tempDirED->setText(rc.tempdir_path.c_str());
+	// FIXME: should be a checkbox only
+	pathsmod->lyxserverDirED->setText(rc.lyxpipes.c_str());
+
 #if 0 
 	local_converters = converters;
 	local_converters.update(local_formats);
@@ -503,57 +531,11 @@ void QPrefs::update_contents()
 	int const pos = int(findPos(lang_, rc.default_language));
 	combo_default_lang->select(pos + 1);
 
-	fl_set_button(dialog_->check_preview_latex,
-		      rc.preview);
-
-	switch (rc.display_graphics) {
-		case grfx::NoDisplay:		fl_set_choice(dialog_->choice_display, 4); break;
-		case grfx::ColorDisplay:	fl_set_choice(dialog_->choice_display, 3); break;
-		case grfx::GrayscaleDisplay:	fl_set_choice(dialog_->choice_display, 2); break;
-		case grfx::MonochromeDisplay:	fl_set_choice(dialog_->choice_display, 1); break;
-		default:			fl_set_choice(dialog_->choice_display, 3); break;
-	}
-
 	fl_set_choice(dialog_->choice_default_papersize,
 		      rc.default_papersize + 1);
 
-	fl_set_input(dialog_->input_default_path,
-		     rc.document_path.c_str());
-	fl_set_input(dialog_->input_template_path,
-		     rc.template_path.c_str());
-
-	string str;
-	if (rc.make_backup)
-		str = rc.backupdir_path;
-
-	fl_set_button(dialog_->check_make_backups,
-		      rc.make_backup);
-	fl_set_input(dialog_->input_backup_path, str.c_str());
-
-	str.erase();
-	if (rc.use_tempdir)
-		str = rc.tempdir_path;
-
-	fl_set_button(dialog_->check_use_temp_dir,
-		      rc.use_tempdir);
-	fl_set_input(dialog_->input_temp_dir, str.c_str());
-
-	str.erase();
-	if (rc.check_lastfiles)
-		str = rc.lastfiles;
-
-	fl_set_button(dialog_->check_last_files,
-		      rc.check_lastfiles);
-	fl_set_input(dialog_->input_lastfiles, str.c_str());
 	fl_set_counter_value(dialog_->counter_lastfiles,
 			     rc.num_lastfiles);
-
-	fl_set_input(dialog_->input_serverpipe, rc.lyxpipes.c_str());
-
-	// Activate/Deactivate the input fields dependent on the state of the
-	// buttons.
-	input(0);
-
 
 	fl_set_button(dialog_->check_adapt_output,
 		      rc.print_adapt_output);

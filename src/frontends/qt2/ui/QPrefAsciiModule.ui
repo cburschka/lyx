@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>348</width>
+            <width>340</width>
             <height>99</height>
         </rect>
     </property>
@@ -21,7 +21,7 @@
         <name>caption</name>
         <string>ASCII settings</string>
     </property>
-    <grid>
+    <vbox>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -30,70 +30,125 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="0"  column="0" >
-            <class>QLabel</class>
+        <widget>
+            <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>asciiLinelengthLA</cstring>
+                <cstring>Layout3</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Output &amp;line length:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>asciiLinelengthSB</cstring>
-            </property>
+            <grid>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget row="1"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>asciiRoffLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;roff command:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>asciiRoffED</cstring>
+                    </property>
+                </widget>
+                <widget row="0"  column="1" >
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout2</cstring>
+                    </property>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QSpinBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>asciiLinelengthSB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>maxValue</name>
+                                <number>120</number>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Max. line length of exported ASCII/LaTeX/ SGML files</string>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property>
+                                <name>name</name>
+                                <cstring>Spacer6</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>orientation</name>
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property stdset="1">
+                                <name>sizeType</name>
+                                <enum>Expanding</enum>
+                            </property>
+                            <property>
+                                <name>sizeHint</name>
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </hbox>
+                </widget>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>asciiLinelengthLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Output &amp;line length:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>asciiLinelengthSB</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>asciiRoffED</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>External app for formating tables in ASCII output</string>
+                    </property>
+                </widget>
+            </grid>
         </widget>
-        <widget row="0"  column="1" >
-            <class>QSpinBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>asciiLinelengthSB</cstring>
-            </property>
-            <property stdset="1">
-                <name>maxValue</name>
-                <number>120</number>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Max. line length of exported ASCII/LaTeX/ SGML files</string>
-            </property>
-        </widget>
-        <widget row="1"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>asciiRoffLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>ASCII &amp;roff:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>asciiRoffED</cstring>
-            </property>
-        </widget>
-        <widget row="1"  column="1"  rowspan="1"  colspan="2" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>asciiRoffED</cstring>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>External app for formating tables in ASCII output</string>
-            </property>
-        </widget>
-        <spacer row="0"  column="2" >
+        <spacer>
             <property>
                 <name>name</name>
-                <cstring>Spacer6</cstring>
+                <cstring>Spacer2</cstring>
             </property>
             <property stdset="1">
                 <name>orientation</name>
-                <enum>Horizontal</enum>
+                <enum>Vertical</enum>
             </property>
             <property stdset="1">
                 <name>sizeType</name>
@@ -107,6 +162,6 @@
                 </size>
             </property>
         </spacer>
-    </grid>
+    </vbox>
 </widget>
 </UI>

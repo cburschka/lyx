@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>336</width>
-            <height>294</height>
+            <width>329</width>
+            <height>250</height>
         </rect>
     </property>
     <property stdset="1">
@@ -117,7 +117,7 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout1</cstring>
+                <cstring>Layout15</cstring>
             </property>
             <hbox>
                 <property stdset="1">
@@ -129,35 +129,84 @@
                     <number>6</number>
                 </property>
                 <widget>
-                    <class>QLabel</class>
+                    <class>QGroupBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>lastfilesLA</cstring>
+                        <cstring>scrollGB</cstring>
                     </property>
                     <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Maximum last files :</string>
+                        <name>title</name>
+                        <string>Scrolling</string>
                     </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>lastfilesSB</cstring>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QSpinBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>lastfilesSB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>maxValue</name>
-                        <number>20</number>
-                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>11</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout14</cstring>
+                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>wheelMouseLA</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>W&amp;heel mouse scroll :</string>
+                                    </property>
+                                    <property>
+                                        <name>buddy</name>
+                                        <cstring>wheelMouseSB</cstring>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QSpinBox</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>wheelMouseSB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>maxValue</name>
+                                        <number>250</number>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>cursorFollowsCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Cursor follo&amp;ws scrollbar</string>
+                            </property>
+                        </widget>
+                    </vbox>
                 </widget>
                 <spacer>
                     <property>
                         <name>name</name>
-                        <cstring>Spacer9</cstring>
+                        <cstring>Spacer30</cstring>
                     </property>
                     <property stdset="1">
                         <name>orientation</name>
@@ -181,7 +230,7 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout8</cstring>
+                <cstring>Layout17</cstring>
             </property>
             <hbox>
                 <property stdset="1">
@@ -196,7 +245,7 @@
                     <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout7</cstring>
+                        <cstring>Layout12</cstring>
                     </property>
                     <vbox>
                         <property stdset="1">
@@ -211,7 +260,7 @@
                             <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>Layout5</cstring>
+                                <cstring>Layout10</cstring>
                             </property>
                             <hbox>
                                 <property stdset="1">
@@ -223,49 +272,102 @@
                                     <number>6</number>
                                 </property>
                                 <widget>
-                                    <class>QLabel</class>
+                                    <class>QLayoutWidget</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>autoSaveLA</cstring>
+                                        <cstring>Layout9</cstring>
+                                    </property>
+                                    <hbox>
+                                        <property stdset="1">
+                                            <name>margin</name>
+                                            <number>0</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>spacing</name>
+                                            <number>6</number>
+                                        </property>
+                                        <widget>
+                                            <class>QCheckBox</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>autoSaveCB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string>B&amp;ackup documents </string>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QLabel</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>autoSaveLA</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string> every</string>
+                                            </property>
+                                            <property>
+                                                <name>buddy</name>
+                                                <cstring>autoSaveSB</cstring>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QSpinBox</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>autoSaveSB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>maxValue</name>
+                                                <number>300</number>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>minValue</name>
+                                                <number>1</number>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QLabel</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>TextLabel1</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string>minutes</string>
+                                            </property>
+                                        </widget>
+                                    </hbox>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer4</cstring>
                                     </property>
                                     <property stdset="1">
-                                        <name>text</name>
-                                        <string>B&amp;ackup document every</string>
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Expanding</enum>
                                     </property>
                                     <property>
-                                        <name>buddy</name>
-                                        <cstring>autoSaveSB</cstring>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
                                     </property>
-                                </widget>
-                                <widget>
-                                    <class>QSpinBox</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>autoSaveSB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>maxValue</name>
-                                        <number>1200</number>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QLabel</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>TextLabel1</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string>minutes</string>
-                                    </property>
-                                </widget>
+                                </spacer>
                             </hbox>
                         </widget>
                         <widget>
                             <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>Layout6</cstring>
+                                <cstring>Layout1</cstring>
                             </property>
                             <hbox>
                                 <property stdset="1">
@@ -280,28 +382,49 @@
                                     <class>QLabel</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>wheelMouseLA</cstring>
+                                        <cstring>lastfilesLA</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>text</name>
-                                        <string>W&amp;heel mouse jump:</string>
+                                        <string>&amp;Maximum last files :</string>
                                     </property>
                                     <property>
                                         <name>buddy</name>
-                                        <cstring>wheelMouseSB</cstring>
+                                        <cstring>lastfilesSB</cstring>
                                     </property>
                                 </widget>
                                 <widget>
                                     <class>QSpinBox</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>wheelMouseSB</cstring>
+                                        <cstring>lastfilesSB</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>maxValue</name>
-                                        <number>250</number>
+                                        <number>20</number>
                                     </property>
                                 </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer9</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
                             </hbox>
                         </widget>
                     </vbox>
@@ -309,7 +432,7 @@
                 <spacer>
                     <property>
                         <name>name</name>
-                        <cstring>Spacer2_2</cstring>
+                        <cstring>Spacer31</cstring>
                     </property>
                     <property stdset="1">
                         <name>orientation</name>
@@ -328,17 +451,6 @@
                     </property>
                 </spacer>
             </hbox>
-        </widget>
-        <widget>
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>cursorFollowsCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Cursor follo&amp;ws scrollbar</string>
-            </property>
         </widget>
         <spacer>
             <property>
@@ -363,4 +475,35 @@
         </spacer>
     </vbox>
 </widget>
+<connections>
+    <connection>
+        <sender>autoSaveCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>autoSaveLA</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>autoSaveCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>autoSaveSB</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>autoSaveCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>TextLabel1</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>uiFileED</tabstop>
+    <tabstop>uiFilePB</tabstop>
+    <tabstop>bindFileED</tabstop>
+    <tabstop>bindFilePB</tabstop>
+    <tabstop>wheelMouseSB</tabstop>
+    <tabstop>cursorFollowsCB</tabstop>
+    <tabstop>autoSaveCB</tabstop>
+    <tabstop>autoSaveSB</tabstop>
+    <tabstop>lastfilesSB</tabstop>
+</tabstops>
 </UI>

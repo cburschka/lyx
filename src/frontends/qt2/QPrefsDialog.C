@@ -68,8 +68,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	lnf->setOpen(true);
 	QListViewItem * lan(new QListViewItem(prefsLV, lnf, _("Language settings")));
 	lan->setSelectable(false);
-	QListViewItem * adv(new QListViewItem(prefsLV, lan, _("Advanced settings")));
-	adv->setSelectable(false);
+	QListViewItem * out(new QListViewItem(prefsLV, lan, _("Outputs")));
+	out->setSelectable(false);
 
 	asciiModule = new QPrefAsciiModule(prefsWS);
 	dateModule = new QPrefDateModule(prefsWS);
@@ -103,12 +103,6 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 	QListViewItem * i;
 
-	// advanced settings
-
-	i = new QListViewItem(adv, _("Converters"));
-	pane_map_[i] = convertersModule;
-	i = new QListViewItem(adv, i, _("File formats"));
-	pane_map_[i] = fileformatsModule;
 	// language settings
 
 	i = new QListViewItem(lan, _("Language"));
@@ -128,22 +122,27 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	pane_map_[i] = colorsModule;
 	i = new QListViewItem(lnf, i, _("Graphics"));
 	pane_map_[i] = displayModule;
-
-	// rag bag of crap
-
-	i = new QListViewItem(prefsLV, lan, _("Ascii output"));
-	pane_map_[i] = asciiModule;
-	i = new QListViewItem(prefsLV, i, _("Date output"));
-	pane_map_[i] = dateModule;
-	i = new QListViewItem(prefsLV, i, _("Keyboard"));
+	i = new QListViewItem(lnf, i, _("Keyboard"));
 	pane_map_[i] = keyboardModule;
-	i = new QListViewItem(prefsLV, i, _("LaTeX"));
+
+	// output
+ 
+	i = new QListViewItem(out, _("Ascii"));
+	pane_map_[i] = asciiModule;
+	i = new QListViewItem(out, i, _("Date format"));
+	pane_map_[i] = dateModule;
+	i = new QListViewItem(out, i, _("LaTeX"));
 	pane_map_[i] = latexModule;
-	i = new QListViewItem(prefsLV, i, _("Paths"));
-	pane_map_[i] = pathsModule;
-	i = new QListViewItem(prefsLV, i, _("Printer"));
+	i = new QListViewItem(out, i, _("Printer"));
 	pane_map_[i] = printerModule;
 
+	i = new QListViewItem(prefsLV, out, _("Paths"));
+	pane_map_[i] = pathsModule;
+	i = new QListViewItem(prefsLV, i,  _("Converters"));
+	pane_map_[i] = convertersModule;
+	i = new QListViewItem(prefsLV, i, _("File formats"));
+	pane_map_[i] = fileformatsModule;
+ 
 	prefsLV->setMinimumSize(prefsLV->sizeHint());
 
 	// Qt sucks

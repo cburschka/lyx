@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>318</width>
-            <height>258</height>
+            <width>333</width>
+            <height>323</height>
         </rect>
     </property>
     <property stdset="1">
@@ -57,61 +57,6 @@
             <property stdset="1">
                 <name>name</name>
                 <cstring>startCommandED</cstring>
-            </property>
-        </widget>
-        <widget row="5"  column="0" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>useBabelCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Use &amp;babel</string>
-            </property>
-        </widget>
-        <widget row="6"  column="0" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>globalCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Global</string>
-            </property>
-        </widget>
-        <widget row="8"  column="0" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>autoEndCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Auto &amp;end</string>
-            </property>
-        </widget>
-        <widget row="5"  column="1" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>markForeignCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Mark &amp;foreign languages</string>
-            </property>
-        </widget>
-        <widget row="6"  column="1" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>rtlCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;RtL support</string>
             </property>
         </widget>
         <widget row="1"  column="1" >
@@ -158,17 +103,6 @@
                 <cstring>endCommandED</cstring>
             </property>
         </widget>
-        <widget row="7"  column="0" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>autoBeginCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Auto &amp;begin</string>
-            </property>
-        </widget>
         <widget row="1"  column="0" >
             <class>QLabel</class>
             <property stdset="1">
@@ -184,7 +118,29 @@
                 <cstring>languagePackageED</cstring>
             </property>
         </widget>
-        <spacer row="7"  column="1"  rowspan="2"  colspan="1" >
+        <widget row="6"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>autoBeginCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Auto &amp;begin</string>
+            </property>
+        </widget>
+        <widget row="4"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>useBabelCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Use &amp;babel</string>
+            </property>
+        </widget>
+        <spacer row="6"  column="1"  rowspan="2"  colspan="1" >
             <property>
                 <name>name</name>
                 <cstring>Spacer1</cstring>
@@ -205,28 +161,51 @@
                 </size>
             </property>
         </spacer>
-        <spacer row="4"  column="1" >
-            <property>
+        <widget row="5"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
                 <name>name</name>
-                <cstring>Spacer2</cstring>
+                <cstring>globalCB</cstring>
             </property>
             <property stdset="1">
-                <name>orientation</name>
-                <enum>Vertical</enum>
+                <name>text</name>
+                <string>&amp;Global</string>
+            </property>
+        </widget>
+        <widget row="5"  column="1" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>rtlCB</cstring>
             </property>
             <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
+                <name>text</name>
+                <string>&amp;Right-to-left language support</string>
             </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
+        </widget>
+        <widget row="7"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>autoEndCB</cstring>
             </property>
-        </spacer>
-        <spacer row="4"  column="0" >
+            <property stdset="1">
+                <name>text</name>
+                <string>Auto &amp;end</string>
+            </property>
+        </widget>
+        <widget row="4"  column="1" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>markForeignCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Mark &amp;foreign languages</string>
+            </property>
+        </widget>
+        <spacer row="8"  column="0" >
             <property>
                 <name>name</name>
                 <cstring>Spacer3</cstring>
@@ -247,6 +226,39 @@
                 </size>
             </property>
         </spacer>
+        <spacer row="8"  column="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
     </grid>
 </widget>
+<tabstops>
+    <tabstop>defaultLanguageCO</tabstop>
+    <tabstop>languagePackageED</tabstop>
+    <tabstop>startCommandED</tabstop>
+    <tabstop>endCommandED</tabstop>
+    <tabstop>useBabelCB</tabstop>
+    <tabstop>globalCB</tabstop>
+    <tabstop>autoBeginCB</tabstop>
+    <tabstop>autoEndCB</tabstop>
+    <tabstop>markForeignCB</tabstop>
+    <tabstop>rtlCB</tabstop>
+</tabstops>
 </UI>

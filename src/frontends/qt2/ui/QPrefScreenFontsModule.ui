@@ -13,15 +13,15 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>302</width>
-            <height>296</height>
+            <width>278</width>
+            <height>353</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Screen Fonts</string>
     </property>
-    <grid>
+    <vbox>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -30,66 +30,230 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="1"  column="5"  rowspan="1"  colspan="2" >
-            <class>QPushButton</class>
+        <widget>
+            <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>screenSansPB</cstring>
+                <cstring>Layout17</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>C&amp;hoose...</string>
-            </property>
+            <grid>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget row="1"  column="2" >
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>screenSansPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>C&amp;hoose...</string>
+                    </property>
+                </widget>
+                <widget row="2"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>screenTypewriterED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>screenSansED</cstring>
+                    </property>
+                </widget>
+                <widget row="0"  column="2" >
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>screenRomanPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Ch&amp;oose...</string>
+                    </property>
+                </widget>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>screenRomanLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Roman:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>screenRomanED</cstring>
+                    </property>
+                </widget>
+                <widget row="0"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>screenRomanED</cstring>
+                    </property>
+                </widget>
+                <widget row="2"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>screenTypewriterLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>T&amp;ypewriter:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>screenTypewriterED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>screenSansLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Sa&amp;ns Serif:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>screenSansED</cstring>
+                    </property>
+                </widget>
+                <widget row="2"  column="2" >
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>screenTypewriterPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Choos&amp;e...</string>
+                    </property>
+                </widget>
+            </grid>
         </widget>
-        <widget row="4"  column="0" >
-            <class>QLabel</class>
+        <widget>
+            <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>screenZoomLA</cstring>
+                <cstring>Layout19</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Zoom %:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>screenZoomSB</cstring>
-            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout18</cstring>
+                    </property>
+                    <grid>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget row="1"  column="0" >
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>scrrenDpiLA</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Screen &amp;DPI:</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>screenDpiSB</cstring>
+                            </property>
+                        </widget>
+                        <widget row="1"  column="1" >
+                            <class>QSpinBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenDpiSB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>maxValue</name>
+                                <number>999</number>
+                            </property>
+                        </widget>
+                        <widget row="0"  column="0" >
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenZoomLA</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Zoom %:</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>screenZoomSB</cstring>
+                            </property>
+                        </widget>
+                        <widget row="0"  column="1" >
+                            <class>QSpinBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenZoomSB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>maxValue</name>
+                                <number>999</number>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer23</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
         </widget>
-        <widget row="2"  column="5"  rowspan="1"  colspan="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenTypewriterPB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Choos&amp;e...</string>
-            </property>
-        </widget>
-        <widget row="0"  column="5"  rowspan="1"  colspan="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenRomanPB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Ch&amp;oose...</string>
-            </property>
-        </widget>
-        <widget row="4"  column="1"  rowspan="1"  colspan="2" >
-            <class>QSpinBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenZoomSB</cstring>
-            </property>
-            <property stdset="1">
-                <name>maxValue</name>
-                <number>999</number>
-            </property>
-        </widget>
-        <widget row="3"  column="0"  rowspan="1"  colspan="7" >
+        <widget>
             <class>QGroupBox</class>
             <property stdset="1">
                 <name>name</name>
@@ -97,7 +261,7 @@
             </property>
             <property stdset="1">
                 <name>title</name>
-                <string>Size</string>
+                <string>Font sizes</string>
             </property>
             <grid>
                 <property stdset="1">
@@ -330,119 +494,26 @@
                 </widget>
             </grid>
         </widget>
-        <widget row="4"  column="6" >
-            <class>QSpinBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenDpiSB</cstring>
-            </property>
-            <property stdset="1">
-                <name>maxValue</name>
-                <number>999</number>
-            </property>
-        </widget>
-        <widget row="4"  column="4"  rowspan="1"  colspan="2" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>scrrenDpiLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Screen &amp;dpi:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>screenDpiSB</cstring>
-            </property>
-        </widget>
-        <spacer row="4"  column="3" >
-            <property>
-                <name>name</name>
-                <cstring>Spacer3</cstring>
-            </property>
-            <property stdset="1">
-                <name>orientation</name>
-                <enum>Horizontal</enum>
-            </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <widget row="0"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenRomanLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Roman:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>screenRomanED</cstring>
-            </property>
-        </widget>
-        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenSansLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Sa&amp;ns Serif:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>screenSansED</cstring>
-            </property>
-        </widget>
-        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenTypewriterLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>T&amp;ypewriter:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>screenTypewriterED</cstring>
-            </property>
-        </widget>
-        <widget row="0"  column="2"  rowspan="1"  colspan="3" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenRomanED</cstring>
-            </property>
-        </widget>
-        <widget row="1"  column="2"  rowspan="1"  colspan="3" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenSansED</cstring>
-            </property>
-        </widget>
-        <widget row="2"  column="2"  rowspan="1"  colspan="3" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>screenTypewriterED</cstring>
-            </property>
-        </widget>
-    </grid>
+    </vbox>
 </widget>
+<tabstops>
+    <tabstop>screenRomanED</tabstop>
+    <tabstop>screenRomanPB</tabstop>
+    <tabstop>screenSansED</tabstop>
+    <tabstop>screenSansPB</tabstop>
+    <tabstop>screenTypewriterED</tabstop>
+    <tabstop>screenTypewriterPB</tabstop>
+    <tabstop>screenZoomSB</tabstop>
+    <tabstop>screenDpiSB</tabstop>
+    <tabstop>scrrenTinyED</tabstop>
+    <tabstop>screenSmallestED</tabstop>
+    <tabstop>screenSmallerED</tabstop>
+    <tabstop>screenSmallED</tabstop>
+    <tabstop>screenNormalED</tabstop>
+    <tabstop>screenLargeED</tabstop>
+    <tabstop>screenLargerED</tabstop>
+    <tabstop>screenLargestED</tabstop>
+    <tabstop>screenHugeED</tabstop>
+    <tabstop>screenHugerED</tabstop>
+</tabstops>
 </UI>
