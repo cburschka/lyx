@@ -23,15 +23,17 @@ import sys
 import re
 import string
 
-##
-# file format version
-#
 version = "1.4.0cvs"
 default_debug_level = 2
+
+# Regular expressions used
 format_re = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
 original_version = re.compile(r"\#LyX (\S*)")
 
+##
+# file format information:
+#  file, supported formats, stable release versions
 format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
                    ("0_12",  [215], ["0.12","0.12.1","0.12"]),
                    ("1_0_0", [215], ["1.0.0","1.0"]),
@@ -46,6 +48,7 @@ format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
 
 
 def formats_list():
+    " Returns a list with supported file formats."
     formats = []
     for version in format_relation:
         for format in version[1]:
@@ -55,10 +58,12 @@ def formats_list():
 
 
 def get_end_format():
+    " Returns the more recent file format available."
     return format_relation[-1][1][-1]
 
 
 def get_backend(textclass):
+    " For _textclass_ returns its backend."
     if textclass == "linuxdoc" or textclass == "manpage":
         return "linuxdoc"
     if textclass[:7] == "docbook":
@@ -72,6 +77,13 @@ def get_backend(textclass):
 class LyX_Base:
     """This class carries all the information of the LyX file."""
     def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level):
+        """Arguments:
+        end_format: final format that the file should be converted. (integer)
+        input: the name of the input source, if empty resort to standard input.
+        output: the name of the output file, if empty use the standard output.
+        error: the name of the error file, if empty use the standard error.
+        debug: debug level, O means no debug, as its value increases be more verbose.
+        """
         if input and input != '-':
             self.input = self.open(input)
         else:
@@ -100,18 +112,20 @@ class LyX_Base:
 
 
     def warning(self, message, debug_level= default_debug_level):
+        " Emits warning to self.error, if the debug_level is less than the self.debug."
         if debug_level <= self.debug:
             self.err.write(message + "\n")
 
 
     def error(self, message):
+        " Emits a warning and exist incondicionally."
         self.warning(message)
         self.warning("Quiting.")
         sys.exit(1)
 
 
     def read(self):
-        """Reads a file into the self.header and self.body parts"""
+        """Reads a file into the self.header and self.body parts, from self.input."""
         preamble = 0
 
         while 1:
@@ -157,6 +171,7 @@ class LyX_Base:
 
 
     def write(self):
+        " Writes the LyX file to self.output."
         self.set_version()
         self.set_format()
 
@@ -180,6 +195,7 @@ class LyX_Base:
 
 
     def lyxformat(self, format):
+        " Returns the file format representation, an integer."
         result = format_re.match(format)
         if result:
             format = int(result.group(1) + result.group(2))
@@ -194,6 +210,8 @@ class LyX_Base:
 
 
     def read_version(self):
+        """ Searchs for clues of the LyX version used to write the file, returns the
+        most likely value, or None otherwise."""
         for line in self.header:
             if line[0] != "#":
                 return None
@@ -205,12 +223,14 @@ class LyX_Base:
 
 
     def set_version(self):
+        " Set the header with the version used."
         self.header[0] = "#LyX %s created this file. For more info see http://www.lyx.org/" % version
         if self.header[1][0] == '#':
             del self.header[1]
 
 
     def read_format(self):
+        " Read from the header the fileformat of the present LyX file."
         for line in self.header:
             result = fileformat.match(line)
             if result:
@@ -221,6 +241,7 @@ class LyX_Base:
 
 
     def set_format(self):
+        " Set the file format of the file, in the header."
         if self.format <= 217:
             format = str(float(format)/100)
         else:
@@ -230,6 +251,7 @@ class LyX_Base:
 
 
     def set_parameter(self, param, value):
+        " Set the value of the header parameter."
         i = find_token(self.header, '\\' + param, 0)
         if i == -1:
             self.warning(3, 'Parameter not found in the header: %s' % param)
@@ -238,7 +260,7 @@ class LyX_Base:
 
 
     def convert(self):
-        "Convert from old to new format."
+        "Convert from current (self.format) to self.end_format."
         mode, convertion_chain = self.chain()
         self.warning("convertion chain: " + str(convertion_chain), 3)
 
@@ -248,7 +270,9 @@ class LyX_Base:
 
 
     def chain(self):
-        """ This is where all the decisions related with the convertion are taken"""
+        """ This is where all the decisions related with the convertion are taken.
+        It returns a list of modules needed to convert the LyX file from
+        self.format to self.end_format"""
 
         self.start =  self.format
         format = self.format
@@ -309,7 +333,7 @@ class LyX_Base:
 
 
     def get_toc(self, depth = 4):
-        " Returns the TOC of a lyx document."
+        " Returns the TOC of this LyX document."
         paragraphs_filter = {'Title' : 0,'Chapter' : 1, 'Section' : 2, 'Subsection' : 3, 'Subsubsection': 4}
         allowed_insets = ['Quotes']
 
@@ -366,12 +390,14 @@ class LyX_Base:
 
 
 class File(LyX_Base):
+    " This class reads existing LyX files."
     def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level):
         LyX_Base.__init__(self, end_format, input, output, error, debug)
         self.read()
 
 
 class NewFile(LyX_Base):
+    " This class is to create new LyX files."
     def set_header(self, **params):
         # set default values
         self.header.extend([
@@ -419,13 +445,21 @@ class NewFile(LyX_Base):
 
 
 class Paragraph:
+    # unfinished implementation, it is missing the Text and Insets representation.
+    " This class represents the LyX paragraphs."
     def __init__(self, name, body=[], settings = [], child = []):
+        """ Parameters:
+        name: paragraph name.
+        body: list of lines of body text.
+        child: list of paragraphs that descend from this paragraph.
+        """
         self.name = name
         self.body = body
         self.settings = settings
         self.child = child
 
     def asLines(self):
+        " Converts the paragraph to a list of strings, representing it in the LyX file."
         result = ['','\\begin_layout %s' % self.name]
         result.extend(self.settings)
         result.append('')
@@ -441,3 +475,13 @@ class Paragraph:
         result.append('\\end_deeper')
 
         return result
+
+
+class Inset:
+    " This class represents the LyX insets."
+    pass
+
+
+class Text:
+    " This class represents simple chuncks of text."
+    pass
