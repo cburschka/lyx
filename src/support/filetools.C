@@ -315,12 +315,8 @@ i18nLibFileSearch(string const & dir, string const & name,
 	   variable. But we don't use the value if the currently
 	   selected locale is the C locale. This is a GNU extension. */
 	/* [Otherwise] We have to proceed with the POSIX methods of
-	   looking to `LC_ALL', `LC_xxx', and `LANG'. On some systems
-	   this can be done by the `setlocale' function itself.  */
+	   looking to `LC_ALL', `LC_xxx', and `LANG'. */
 
-#if defined HAVE_SETLOCALE && defined HAVE_LC_MESSAGES && defined HAVE_LOCALE_NULL
-	lang = setlocale(LC_MESSAGES, NULL);
-#else
 	string lang = GetEnv("LC_ALL");
 	if (lang.empty()) {
 		lang = GetEnv("LC_MESSAGES");
@@ -330,10 +326,9 @@ i18nLibFileSearch(string const & dir, string const & name,
 				lang = "C";
 		}
 	}
-#endif
 
 	string const language = GetEnv("LANGUAGE");
-	if (lang != "C" && !language.empty())
+	if (lang != "C" && lang != "POSIX" && !language.empty())
 		lang = language;
 
 	lang = token(lang, '_', 0);
