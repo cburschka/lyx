@@ -207,7 +207,7 @@ int const nr_latex_ams_rel = sizeof(latex_ams_rel) / sizeof(char const *);
 
 char const * latex_ams_nrel[] = {
 	"nless", "nleq", "nleqslant", "ngeqslant", "ngeqq", "gneq",
-	"nleqq", "lneq", "lneqq","gneqq", "gverteqq", "gnsim",
+	"nleqq", "lneq", "lneqq","gneqq", "gvertneqq", "gnsim",
 	"lvertneqq", "lnsim", "lnapprox", "gnapprox", "nsucc", "nsucceq",
 	"nprec", "npreceq", "precnsim","succnsim", "succnapprox", "ncong",
 	"precnapprox", "nsim", "nshortmid", "nshortparallel", "nparallel", "nvDash",
