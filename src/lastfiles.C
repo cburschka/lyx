@@ -15,12 +15,14 @@
 #pragma implementation
 #endif
 
-#include <fstream>
-#include <algorithm>
-
-#include "support/FileInfo.h"
 #include "lastfiles.h"
 #include "debug.h"
+
+#include "support/FileInfo.h"
+
+#include <fstream>
+#include <algorithm>
+#include <iterator>
 
 using std::getline;
 using std::endl;

@@ -2125,7 +2125,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 	if (!recursive && (cached_bview == lbv)) {
 		LyXText * lt = cached_text.get();
 		lyx::Assert(lt && lt->firstRow()->par() == par);
-		return cached_text.get();
+		return lt;
 	}
 	
 	// Super UGLY! (Lgb)

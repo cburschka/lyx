@@ -1,3 +1,7 @@
+2002-01-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lastfiles.C: include <iterator>
+
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView2.C (ChangeRefsIfUnique): use lyx::count rather than
@@ -24,7 +28,6 @@
 	char and append it to the existing string.
 	(peek_event): modify the positioning data passed to the completion
 	browser so that it can be placed above the minibuffer rather than below.
-
 2002-01-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* LyXAction.C (init): alloe error-next for readonly documents.
