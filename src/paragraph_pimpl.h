@@ -141,6 +141,11 @@ struct Paragraph::Pimpl {
 				   LyXLayout const & style,
 				   lyx::pos_type & i,
 				   int & column, value_type const c);
+
+	///
+	void validate(LaTeXFeatures & features,
+		      LyXLayout const & layout) const;
+
 	///
 	Paragraph * getParFromID(int id) const;
 	///
@@ -151,7 +156,7 @@ struct Paragraph::Pimpl {
 	ParagraphParameters params;
 private:
 	/// match a string against a particular point in the paragraph
-	bool isTextAt(string const & str, lyx::pos_type pos);
+	bool isTextAt(string const & str, lyx::pos_type pos) const;
 
 	/// Who owns us?
 	Paragraph * owner_;

@@ -1,5 +1,13 @@
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* version.C.in: update lyx_docversion
+
+	* LaTeXFeatures.C (getMacros): only define \LyX when needed
+
+	* paragraph.C (validate): remove from here...
+	* paragraph_pimpl.C (validate): ... and move here
+	(isTextAt): make it const
+
 	* buffer.C (getLists): ws cleanup
 
 2002-07-20  Dekel Tsur  <dekelts@tau.ac.il>

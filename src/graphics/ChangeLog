@@ -1,5 +1,8 @@
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* PreviewLoader.C (startLoading): pass an interger as resolution
+	to the lyxpreview converter
+
 	* GraphicsParams.C: include <cstdlib>
 
 2002-07-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>

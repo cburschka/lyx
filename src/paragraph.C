@@ -23,7 +23,6 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "debug.h"
-#include "LaTeXFeatures.h"
 #include "texrow.h"
 #include "BufferView.h"
 #include "encoding.h"
@@ -332,78 +331,7 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 
 void Paragraph::validate(LaTeXFeatures & features) const
 {
-	BufferParams const & bparams = features.bufferParams();
-
-	// check the params.
-	if (params().lineTop() || params().lineBottom())
-		features.require("lyxline");
-	if (!params().spacing().isDefault())
-		features.require("setspace");
-
-	// then the layouts
-	features.useLayout(layout()->name());
-
-	// then the fonts
-	Language const * doc_language = bparams.language;
-
-	Pimpl::FontList::const_iterator fcit = pimpl_->fontlist.begin();
-	Pimpl::FontList::const_iterator fend = pimpl_->fontlist.end();
-	for (; fcit != fend; ++fcit) {
-		if (fcit->font().noun() == LyXFont::ON) {
-			lyxerr[Debug::LATEX] << "font.noun: "
-					     << fcit->font().noun()
-					     << endl;
-			features.require("noun");
-			lyxerr[Debug::LATEX] << "Noun enabled. Font: "
-					     << fcit->font().stateText(0)
-					     << endl;
-		}
-		switch (fcit->font().color()) {
-		case LColor::none:
-		case LColor::inherit:
-		case LColor::ignore:
-			// probably we should put here all interface colors used for
-			// font displaying! For now I just add this ones I know of (Jug)
-		case LColor::latex:
-		case LColor::note:
-			break;
-		default:
-			features.require("color");
-			lyxerr[Debug::LATEX] << "Color enabled. Font: "
-					     << fcit->font().stateText(0)
-					     << endl;
-		}
-
-		Language const * language = fcit->font().language();
-		if (language->babel() != doc_language->babel() &&
-		    language != ignore_language &&
-#ifdef INHERIT_LANGUAGE
-		    language != inherit_language &&
-#endif
-		    language != latex_language)
-		{
-			features.useLanguage(language);
-			lyxerr[Debug::LATEX] << "Found language "
-					     << language->babel() << endl;
-		}
-	}
-
-	if (!params().leftIndent().zero())
-		features.require("ParagraphLeftIndent");
-
-	// then the insets
-	LyXLayout_ptr const & lout = layout();
-
-	InsetList::const_iterator icit = insetlist.begin();
-	InsetList::const_iterator iend = insetlist.end();
-	for (; icit != iend; ++icit) {
-		if (icit->inset) {
-			icit->inset->validate(features);
-			if (lout->needprotect &&
-			    icit->inset->lyxCode() == Inset::FOOT_CODE)
-				features.require("NeedLyXFootnoteCode");
-		}
-	}
+	pimpl_->validate(features, *layout());
 }
 
 

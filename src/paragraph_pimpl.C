@@ -15,6 +15,7 @@
 #endif
 
 #include "paragraph_pimpl.h"
+#include "LaTeXFeatures.h"
 #include "texrow.h"
 #include "language.h"
 #include "bufferparams.h"
@@ -41,14 +42,20 @@ unsigned int Paragraph::Pimpl::paragraph_id = 0;
 
 namespace {
 
-string special_phrases[][2] = {
-	{ "LyX", "\\LyX{}" },
-	{ "TeX", "\\TeX{}" },
-	{ "LaTeX2e", "\\LaTeXe{}" },
-	{ "LaTeX", "\\LaTeX{}" },
-	};
+struct special_phrase {
+	string phrase;
+	string macro;
+	bool builtin;
+};
+	
+special_phrase special_phrases[] = {
+	{ "LyX", "\\LyX{}", false },
+	{ "TeX", "\\TeX{}", true },
+	{ "LaTeX2e", "\\LaTeXe{}", true },
+	{ "LaTeX", "\\LaTeX{}", true },
+};
 
-size_t phrases_nr = sizeof(special_phrases)/sizeof(special_phrases[0]);
+size_t phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
 
 } // namespace anon
 
@@ -275,7 +282,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 }
 
 
-bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos)
+bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 {
 	pos_type const len = str.length();
 
@@ -511,17 +518,19 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 
 			// LyX, LaTeX etc.
 
-			// FIXME: if we have "LaTeX" with a font change in the middle (before
-			// the 'T', then the "TeX" part is still special cased. Really we
-			// should only operate this on "words" for some definition of word
+			// FIXME: if we have "LaTeX" with a font
+			// change in the middle (before the 'T', then
+			// the "TeX" part is still special cased.
+			// Really we should only operate this on
+			// "words" for some definition of word
 
 			size_t pnr = 0;
 
 			for (; pnr < phrases_nr; ++pnr) {
-				if (isTextAt(special_phrases[pnr][0], i)) {
-					os << special_phrases[pnr][1];
-					i += special_phrases[pnr][0].length() - 1;
-					column += special_phrases[pnr][1].length() - 1;
+				if (isTextAt(special_phrases[pnr].phrase, i)) {
+					os << special_phrases[pnr].macro;
+					i += special_phrases[pnr].phrase.length() - 1;
+					column += special_phrases[pnr].macro.length() - 1;
 					break;
 				}
 			}
@@ -555,6 +564,93 @@ Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
 	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << endl;
 
 	return par;
+}
+
+
+void Paragraph::Pimpl::validate(LaTeXFeatures & features,
+				LyXLayout const & layout) const
+{
+	BufferParams const & bparams = features.bufferParams();
+
+	// check the params.
+	if (params.lineTop() || params.lineBottom())
+		features.require("lyxline");
+	if (!params.spacing().isDefault())
+		features.require("setspace");
+
+	// then the layouts
+	features.useLayout(layout.name());
+
+	// then the fonts
+	Language const * doc_language = bparams.language;
+
+	FontList::const_iterator fcit = fontlist.begin();
+	FontList::const_iterator fend = fontlist.end();
+	for (; fcit != fend; ++fcit) {
+		if (fcit->font().noun() == LyXFont::ON) {
+			lyxerr[Debug::LATEX] << "font.noun: "
+					     << fcit->font().noun()
+					     << endl;
+			features.require("noun");
+			lyxerr[Debug::LATEX] << "Noun enabled. Font: "
+					     << fcit->font().stateText(0)
+					     << endl;
+		}
+		switch (fcit->font().color()) {
+		case LColor::none:
+		case LColor::inherit:
+		case LColor::ignore:
+			// probably we should put here all interface colors used for
+			// font displaying! For now I just add this ones I know of (Jug)
+		case LColor::latex:
+		case LColor::note:
+			break;
+		default:
+			features.require("color");
+			lyxerr[Debug::LATEX] << "Color enabled. Font: "
+					     << fcit->font().stateText(0)
+					     << endl;
+		}
+
+		Language const * language = fcit->font().language();
+		if (language->babel() != doc_language->babel() &&
+		    language != ignore_language &&
+#ifdef INHERIT_LANGUAGE
+		    language != inherit_language &&
+#endif
+		    language != latex_language)
+		{
+			features.useLanguage(language);
+			lyxerr[Debug::LATEX] << "Found language "
+					     << language->babel() << endl;
+		}
+	}
+
+	if (!params.leftIndent().zero())
+		features.require("ParagraphLeftIndent");
+
+	// then the insets
+	InsetList::const_iterator icit = owner_->insetlist.begin();
+	InsetList::const_iterator iend = owner_->insetlist.end();
+	for (; icit != iend; ++icit) {
+		if (icit->inset) {
+			icit->inset->validate(features);
+			if (layout.needprotect &&
+			    icit->inset->lyxCode() == Inset::FOOT_CODE)
+				features.require("NeedLyXFootnoteCode");
+		}
+	}
+
+	// then the contents
+	for (pos_type i = 0; i < size() ; ++i) {
+		for (size_t pnr = 0; pnr < phrases_nr; ++pnr) {
+			if (!special_phrases[pnr].builtin
+			    && isTextAt(special_phrases[pnr].phrase, i)) {
+				features.require(special_phrases[pnr].phrase);
+				break;
+			}
+		}
+	}		
 }
 
 

@@ -465,7 +465,7 @@ void PreviewLoader::Impl::startLoading()
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << " " << latexfile << " "
-	   << font_scaling_factor_;
+	   << int(font_scaling_factor_);
 
 	string const command = LibScriptSearch(cs.str().c_str());
 

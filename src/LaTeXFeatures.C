@@ -265,8 +265,7 @@ string const LaTeXFeatures::getMacros() const
 {
 	ostringstream macros;
 
-	// always include this
-	if (true || isRequired("lyx"))
+	if (isRequired("LyX"))
 		macros << lyx_def << '\n';
 
 	if (isRequired("lyxline"))
