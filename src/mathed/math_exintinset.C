@@ -10,6 +10,7 @@
 #include <boost/scoped_ptr.hpp>
 
 using std::auto_ptr;
+using std::endl;
 
 
 MathExIntInset::MathExIntInset(string const & name)
@@ -51,13 +52,13 @@ void MathExIntInset::normalize(NormalStream & os) const
 
 void MathExIntInset::metrics(MetricsInfo &, Dimension &) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }
 
 
 void MathExIntInset::draw(PainterInfo &, int, int) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }
 
 
@@ -127,5 +128,5 @@ void MathExIntInset::mathmlize(MathMLStream & os) const
 
 void MathExIntInset::write(WriteStream &) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }

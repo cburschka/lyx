@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
 #include "math_parser.h"
@@ -5,6 +7,7 @@
 #include "debug.h"
 
 using std::auto_ptr;
+using std::endl;
 
 
 MathMacroTemplate::MathMacroTemplate()
@@ -31,7 +34,7 @@ MathMacroTemplate::MathMacroTemplate(std::istream & is)
 	MathArray ar;
 	mathed_parse_cell(ar, is);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
-		lyxerr << "cannot read macro from '" << ar << "'\n";
+		lyxerr << "cannot read macro from '" << ar << "'" << endl;
 		return;
 	}
 	operator=( *(ar[0]->asMacroTemplate()) );
@@ -40,7 +43,7 @@ MathMacroTemplate::MathMacroTemplate(std::istream & is)
 
 auto_ptr<InsetBase> MathMacroTemplate::clone() const
 {
-	//lyxerr << "cloning MacroTemplate!\n";
+	//lyxerr << "cloning MacroTemplate!" << endl;
 	return auto_ptr<InsetBase>(new MathMacroTemplate(*this));
 }
 

@@ -130,7 +130,7 @@ string charSequence
 
 void extractStrings(MathArray & ar)
 {
-	//lyxerr << "\nStrings from: " << ar << "\n";
+	//lyxerr << "\nStrings from: " << ar << endl;
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		if (!ar[i]->asCharInset())
 			continue;
@@ -138,13 +138,13 @@ void extractStrings(MathArray & ar)
 		ar[i] = MathAtom(new MathStringInset(s));
 		ar.erase(i + 1, i + s.size());
 	}
-	//lyxerr << "\nStrings to: " << ar << "\n";
+	//lyxerr << "\nStrings to: " << ar << endl;
 }
 
 
 void extractMatrices(MathArray & ar)
 {
-	//lyxerr << "\nMatrices from: " << ar << "\n";
+	//lyxerr << "\nMatrices from: " << ar << endl;
 	// first pass for explicitly delimited stuff
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		if (!ar[i]->asDelimInset())
@@ -161,7 +161,7 @@ void extractMatrices(MathArray & ar)
 	for (MathArray::size_type i = 0; i < ar.size(); ++i)
 		if (ar[i]->asAMSArrayInset())
 			ar[i] = MathAtom(new MathMatrixInset(*(ar[i]->asGridInset())));
-	//lyxerr << "\nMatrices to: " << ar << "\n";
+	//lyxerr << "\nMatrices to: " << ar << endl;
 }
 
 
@@ -260,7 +260,7 @@ void replaceNested(
 
 void splitScripts(MathArray & ar)
 {
-	//lyxerr << "\nScripts from: " << ar << "\n";
+	//lyxerr << "\nScripts from: " << ar << endl;
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		// is this script inset?
 		if (!ar[i]->asScriptInset())
@@ -282,7 +282,7 @@ void splitScripts(MathArray & ar)
 		++i;
 		ar.insert(i, MathAtom(q));
 	}
-	//lyxerr << "\nScripts to: " << ar << "\n";
+	//lyxerr << "\nScripts to: " << ar << endl;
 }
 
 
@@ -292,7 +292,7 @@ void splitScripts(MathArray & ar)
 
 void extractExps(MathArray & ar)
 {
-	//lyxerr << "\nExps from: " << ar << "\n";
+	//lyxerr << "\nExps from: " << ar << endl;
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		// is this 'e'?
 		if (ar[i]->getChar() != 'e')
@@ -307,7 +307,7 @@ void extractExps(MathArray & ar)
 		ar[i] = MathAtom(new MathExFuncInset("exp", sup->cell(1)));
 		ar.erase(i + 1);
 	}
-	//lyxerr << "\nExps to: " << ar << "\n";
+	//lyxerr << "\nExps to: " << ar << endl;
 }
 
 
@@ -316,7 +316,7 @@ void extractExps(MathArray & ar)
 //
 void extractDets(MathArray & ar)
 {
-	//lyxerr << "\ndet from: " << ar << "\n";
+	//lyxerr << "\ndet from: " << ar << endl;
 	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
 		MathDelimInset const * del = (*it)->asDelimInset();
 		if (!del)
@@ -325,7 +325,7 @@ void extractDets(MathArray & ar)
 			continue;
 		*it = MathAtom(new MathExFuncInset("det", del->cell(0)));
 	}
-	//lyxerr << "\ndet to: " << ar << "\n";
+	//lyxerr << "\ndet to: " << ar << endl;
 }
 
 
@@ -355,7 +355,7 @@ string digitSequence
 
 void extractNumbers(MathArray & ar)
 {
-	//lyxerr << "\nNumbers from: " << ar << "\n";
+	//lyxerr << "\nNumbers from: " << ar << endl;
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		if (!ar[i]->asCharInset())
 			continue;
@@ -367,7 +367,7 @@ void extractNumbers(MathArray & ar)
 		ar[i] = MathAtom(new MathNumberInset(s));
 		ar.erase(i + 1, i + s.size());
 	}
-	//lyxerr << "\nNumbers to: " << ar << "\n";
+	//lyxerr << "\nNumbers to: " << ar << endl;
 }
 
 
@@ -397,9 +397,9 @@ MathAtom replaceDelims(const MathArray & ar)
 // replace '('...')' sequences by a real MathDelimInset
 void extractDelims(MathArray & ar)
 {
-	//lyxerr << "\nDelims from: " << ar << "\n";
+	//lyxerr << "\nDelims from: " << ar << endl;
 	replaceNested(ar, testOpenParan, testCloseParan, replaceDelims);
-	//lyxerr << "\nDelims to: " << ar << "\n";
+	//lyxerr << "\nDelims to: " << ar << endl;
 }
 
 
@@ -417,7 +417,7 @@ void extractFunctions(MathArray & ar)
 	if (ar.size() < 2)
 		return;
 
-	//lyxerr << "\nFunctions from: " << ar << "\n";
+	//lyxerr << "\nFunctions from: " << ar << endl;
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 		MathArray::iterator jt = it + 1;
@@ -462,7 +462,7 @@ void extractFunctions(MathArray & ar)
 
 		// re-insert exponent
 		ar.insert(i + 1, exp);
-		//lyxerr << "\nFunctions to: " << ar << "\n";
+		//lyxerr << "\nFunctions to: " << ar << endl;
 	}
 }
 
@@ -508,7 +508,7 @@ void extractIntegrals(MathArray & ar)
 	if (ar.size() < 3)
 		return;
 
-	//lyxerr << "\nIntegrals from: " << ar << "\n";
+	//lyxerr << "\nIntegrals from: " << ar << endl;
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
@@ -541,7 +541,7 @@ void extractIntegrals(MathArray & ar)
 		ar.erase(it + 1, tt);
 		*it = MathAtom(p);
 	}
-	//lyxerr << "\nIntegrals to: " << ar << "\n";
+	//lyxerr << "\nIntegrals to: " << ar << endl;
 }
 
 
@@ -580,7 +580,7 @@ void extractSums(MathArray & ar)
 	if (ar.size() < 2)
 		return;
 
-	//lyxerr << "\nSums from: " << ar << "\n";
+	//lyxerr << "\nSums from: " << ar << endl;
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
@@ -620,7 +620,7 @@ void extractSums(MathArray & ar)
 		ar.erase(it + 1, tt);
 		*it = MathAtom(p);
 	}
-	//lyxerr << "\nSums to: " << ar << "\n";
+	//lyxerr << "\nSums to: " << ar << endl;
 }
 
 
@@ -652,7 +652,7 @@ bool testDiffFrac(MathAtom const & at)
 
 void extractDiff(MathArray & ar)
 {
-	//lyxerr << "\nDiffs from: " << ar << "\n";
+	//lyxerr << "\nDiffs from: " << ar << endl;
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
@@ -662,7 +662,7 @@ void extractDiff(MathArray & ar)
 
 		MathFracInset const * f = (*it)->asFracInset();
 		if (!f) {
-			lyxerr << "should not happen\n";
+			lyxerr << "should not happen" << endl;
 			continue;
 		}
 
@@ -718,7 +718,7 @@ void extractDiff(MathArray & ar)
 		ar.erase(it + 1, jt);
 		*it = MathAtom(diff);
 	}
-	//lyxerr << "\nDiffs to: " << ar << "\n";
+	//lyxerr << "\nDiffs to: " << ar << endl;
 }
 
 
@@ -742,7 +742,7 @@ void extractLims(MathArray & ar)
 	if (ar.size() < 3)
 		return;
 
-	//lyxerr << "\nLimits from: " << ar << "\n";
+	//lyxerr << "\nLimits from: " << ar << endl;
 	for (MathArray::size_type i = 0; i + 2 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
@@ -775,7 +775,7 @@ void extractLims(MathArray & ar)
 		// create a proper inset as replacement
 		*it = MathAtom(new MathLimInset(f, x, x0));
 	}
-	//lyxerr << "\nLimits to: " << ar << "\n";
+	//lyxerr << "\nLimits to: " << ar << endl;
 }
 
 
@@ -785,7 +785,7 @@ void extractLims(MathArray & ar)
 
 void extractStructure(MathArray & ar)
 {
-	//lyxerr << "\nStructure from: " << ar << "\n";
+	//lyxerr << "\nStructure from: " << ar << endl;
 	extractIntegrals(ar);
 	extractSums(ar);
 	splitScripts(ar);
@@ -798,7 +798,7 @@ void extractStructure(MathArray & ar)
 	extractExps(ar);
 	extractLims(ar);
 	extractStrings(ar);
-	//lyxerr << "\nStructure to: " << ar << "\n";
+	//lyxerr << "\nStructure to: " << ar << endl;
 }
 
 
@@ -937,7 +937,7 @@ namespace {
 			// 2x;
 			//  ^
 			//
-			lyxerr << "checking expr: '" << expr << "'\n";
+			lyxerr << "checking expr: '" << expr << "'" << endl;
 			string full = header + "tex(" + expr + ");";
 			out = captureOutput("maxima", full);
 
@@ -958,7 +958,7 @@ namespace {
 			getline(is, line);
 			getline(is, line);
 			string::size_type pos = line.find('^');
-			lyxerr << "found caret at pos: '" << pos << "'\n";
+			lyxerr << "found caret at pos: '" << pos << "'" << endl;
 			if (pos == string::npos || pos < 4)
 				break; // caret position not found
 			pos -= 4; // skip the "tex(" part
@@ -972,7 +972,7 @@ namespace {
 			return MathArray();
 
 		out = subst(tmp[1],"\\>", "");
-		lyxerr << "out: '" << out << "'\n";
+		lyxerr << "out: '" << out << "'" << endl;
 
 		// Ugly code that tries to make the result prettier
 
@@ -1048,8 +1048,8 @@ namespace {
 		MapleStream ms(os);
 		ms << ar;
 		string expr = STRCONV(os.str());
-		lyxerr << "ar: '" << ar << "'\n";
-		lyxerr << "ms: '" << os.str() << "'\n";
+		lyxerr << "ar: '" << ar << "'\n"
+		       << "ms: '" << os.str() << "'" << endl;
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			// try to fix missing '*' the hard way by using mint
@@ -1059,7 +1059,7 @@ namespace {
 			//                 ^ syntax error -
 			//                   Probably missing an operator such as * p
 			//
-			lyxerr << "checking expr: '" << expr << "'\n";
+			lyxerr << "checking expr: '" << expr << "'" << endl;
 			string out = captureOutput("mint -i 1 -S -s -q -q", expr + ';');
 			if (out.empty())
 				break; // expression syntax is ok
@@ -1098,8 +1098,8 @@ namespace {
 		string expr = STRCONV(os.str());
 		string out;
 
-		lyxerr << "pipe: ar: '" << ar << "'\n";
-		lyxerr << "pipe: expr: '" << expr << "'\n";
+		lyxerr << "pipe: ar: '" << ar << "'\n"
+		       << "pipe: expr: '" << expr << "'" << endl;
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			//
@@ -1108,9 +1108,9 @@ namespace {
 			// >>> ([[1 2 3 ];[2 3 1 ];[3 1 2 ]])([[1 2 3 ];[2 3 1 ];[3 1 2 ]])
 			//                                   ^
 			//
-			lyxerr << "checking expr: '" << expr << "'\n";
+			lyxerr << "checking expr: '" << expr << "'" << endl;
 			out = captureOutput("octave -q 2>&1", expr);
-			lyxerr << "checking out: '" << out << "'\n";
+			lyxerr << "checking out: '" << out << "'" << endl;
 
 			// leave loop if expression syntax is probably ok
 			if (out.find("parse error:") == string::npos)
@@ -1121,7 +1121,7 @@ namespace {
 			string line;
 			while (is) {
 				getline(is, line);
-				lyxerr << "skipping line: '" << line << "'\n";
+				lyxerr << "skipping line: '" << line << "'" << endl;
 				if (line.find(">>> ") != string::npos)
 					break;
 			}
@@ -1129,8 +1129,8 @@ namespace {
 			// found line with error, next line is the one with caret
 			getline(is, line);
 			string::size_type pos = line.find('^');
-			lyxerr << "caret line: '" << line << "'\n";
-			lyxerr << "found caret at pos: '" << pos << "'\n";
+			lyxerr << "caret line: '" << line << "'" << endl;
+			lyxerr << "found caret at pos: '" << pos << "'" << endl;
 			if (pos == string::npos || pos < 4)
 				break; // caret position not found
 			pos -= 4; // skip the ">>> " part

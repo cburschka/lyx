@@ -276,7 +276,7 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << "\n";
+	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
 
 	textwidth_ = mi.base.textwidth;
 	BufferView * bv = mi.base.bv;
@@ -510,7 +510,7 @@ void InsetText::lockInset(BufferView * /*bv*/, UpdatableInset * inset)
 bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 {
 	lyxerr[Debug::INSETS] << "InsetText::LockInsetInInset("
-			      << inset << "): ";
+			      << inset << "): " << endl;
 	if (!inset)
 		return false;
 	if (!the_locking_inset) {
@@ -523,23 +523,23 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			InsetList::iterator const end = pit->insetlist.end();
 			for (; it != end; ++it) {
 				if (it->inset == inset) {
-					lyxerr << "InsetText::lockInsetInInset: 1 a\n";
+					lyxerr << "InsetText::lockInsetInInset: 1 a" << endl;
 					text_.setCursorIntern(pit, it->pos);
-					lyxerr << "InsetText::lockInsetInInset: 1 b\n";
-					lyxerr << "bv: " << bv << " inset: " << inset << "\n";
+					lyxerr << "InsetText::lockInsetInInset: 1 b" << endl;
+					lyxerr << "bv: " << bv << " inset: " << inset << endl;
 					lockInset(bv, inset);
 					lyxerr << "InsetText::lockInsetInInset: 1 c" << endl;
 					return true;
 				}
 				if (it->inset->getInsetFromID(id)) {
-					lyxerr << "InsetText::lockInsetInInset: 2\n";
+					lyxerr << "InsetText::lockInsetInInset: 2" << endl;
 					text_.setCursorIntern(pit, it->pos);
 					it->inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
 			}
 		}
-		lyxerr << "InsetText::lockInsetInInset: 3\n";
+		lyxerr << "InsetText::lockInsetInInset: 3" << endl;
 		return false;
 	}
 	if (inset == cpar()->getInset(cpos())) {

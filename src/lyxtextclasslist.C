@@ -161,10 +161,11 @@ bool LyXTextClassList::Read()
 // Global variable: textclass table.
 LyXTextClassList textclasslist;
 
+
 // Reads the style files
 void LyXSetStyle()
 {
-	lyxerr[Debug::TCLASS] << "LyXSetStyle: parsing configuration...\n";
+	lyxerr[Debug::TCLASS] << "LyXSetStyle: parsing configuration..." << endl;
 
 	if (!textclasslist.Read()) {
 		lyxerr[Debug::TCLASS] << "LyXSetStyle: an error occured "

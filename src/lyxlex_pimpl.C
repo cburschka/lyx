@@ -58,7 +58,7 @@ void LyXLex::Pimpl::printError(string const & message) const
 
 void LyXLex::Pimpl::printTable(ostream & os)
 {
-	os << "\nNumber of tags: " << no_items << '\n';
+	os << "\nNumber of tags: " << no_items << endl;
 	for (int i= 0; i < no_items; ++i)
 		os << "table[" << i
 		   << "]:  tag: `" << table[i].tag
@@ -75,11 +75,11 @@ void LyXLex::Pimpl::verifyTable()
 		lyxerr << "The table passed to LyXLex is not sorted!\n"
 		       << "Tell the developers to fix it!" << endl;
 		// We sort it anyway to avoid problems.
-		lyxerr << "\nUnsorted:\n";
+		lyxerr << "\nUnsorted:" << endl;
 		printTable(lyxerr);
 
 		sort(table, table + no_items, compare_tags());
-		lyxerr << "\nSorted:\n";
+		lyxerr << "\nSorted:" << endl;
 		printTable(lyxerr);
 	}
 }

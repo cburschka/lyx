@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "math_liminset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
@@ -5,6 +7,7 @@
 #include "debug.h"
 
 using std::auto_ptr;
+using std::endl;
 
 
 MathLimInset::MathLimInset
@@ -31,13 +34,13 @@ void MathLimInset::normalize(NormalStream & os) const
 
 void MathLimInset::metrics(MetricsInfo &, Dimension &) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }
 
 
 void MathLimInset::draw(PainterInfo &, int, int) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }
 
 
@@ -61,5 +64,5 @@ void MathLimInset::mathmlize(MathMLStream & os) const
 
 void MathLimInset::write(WriteStream &) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }

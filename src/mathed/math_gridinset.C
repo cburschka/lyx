@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "math_gridinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
@@ -16,6 +18,7 @@ using std::min;
 using std::vector;
 using std::istream;
 using std::auto_ptr;
+using std::endl;
 
 
 class GridInsetMailer : public MailInset {
@@ -115,7 +118,7 @@ MathGridInset::MathGridInset(char v, string const & h)
 	setDefaults();
 	valign(v);
 	halign(h);
-	//lyxerr << "created grid with " << ncols() << " columns\n";
+	//lyxerr << "created grid with " << ncols() << " columns" << endl;
 }
 
 
@@ -176,9 +179,9 @@ MathInset::idx_type MathGridInset::index(row_type row, col_type col) const
 void MathGridInset::setDefaults()
 {
 	if (ncols() <= 0)
-		lyxerr << "positive number of columns expected\n";
+		lyxerr << "positive number of columns expected" << endl;
 	//if (nrows() <= 0)
-	//	lyxerr << "positive number of rows expected\n";
+	//	lyxerr << "positive number of rows expected" << endl;
 	for (col_type col = 0; col < ncols(); ++col) {
 		colinfo_[col].align_ = defaultColAlign(col);
 		colinfo_[col].skip_  = defaultColSpace(col);
@@ -200,7 +203,7 @@ void MathGridInset::halign(string const & hh)
 			++col;
 			colinfo_[col].lines_ = 0;
 		} else {
-			lyxerr << "unknown column separator: '" << c << "'\n";
+			lyxerr << "unknown column separator: '" << c << "'" << endl;
 		}
 	}
 
@@ -1078,7 +1081,7 @@ dispatch_result MathGridInset::dispatch
 		}
 
 		case LFUN_TABULAR_FEATURE: {
-			//lyxerr << "handling tabular-feature " << cmd.argument << "\n";
+			//lyxerr << "handling tabular-feature " << cmd.argument << endl;
 			istringstream is(STRCONV(cmd.argument));
 			string s;
 			is >> s;
@@ -1130,12 +1133,12 @@ dispatch_result MathGridInset::dispatch
 				swapCol(col(idx));
 			else
 				return UNDISPATCHED;
-			lyxerr << "returning DISPATCHED_POP\n";
+			lyxerr << "returning DISPATCHED_POP" << endl;
 			return DISPATCHED_POP;
 		}
 
 		case LFUN_PASTE: {
-			//lyxerr << "pasting '" << cmd.argument << "'\n";
+			//lyxerr << "pasting '" << cmd.argument << "'" << endl;
 			MathGridInset grid(1, 1);
 			mathed_parse_normal(grid, cmd.argument);
 			if (grid.nargs() == 1) {

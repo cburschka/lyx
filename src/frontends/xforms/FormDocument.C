@@ -669,19 +669,19 @@ bool FormDocument::class_apply(BufferParams &params)
 	Spacing tmpSpacing = params.spacing;
 	switch (fl_get_choice(class_->choice_spacing)) {
 	case 1:
-		lyxerr[Debug::INFO] << "Spacing: SINGLE\n";
+		lyxerr[Debug::INFO] << "Spacing: SINGLE" << endl;
 		params.spacing.set(Spacing::Single);
 		break;
 	case 2:
-		lyxerr[Debug::INFO] << "Spacing: ONEHALF\n";
+		lyxerr[Debug::INFO] << "Spacing: ONEHALF" << endl;
 		params.spacing.set(Spacing::Onehalf);
 		break;
 	case 3:
-		lyxerr[Debug::INFO] << "Spacing: DOUBLE\n";
+		lyxerr[Debug::INFO] << "Spacing: DOUBLE" << endl;
 		params.spacing.set(Spacing::Double);
 		break;
 	case 4:
-		lyxerr[Debug::INFO] << "Spacing: OTHER\n";
+		lyxerr[Debug::INFO] << "Spacing: OTHER" << endl;
 		params.spacing.set(Spacing::Other,
 				   getString(class_->input_spacing));
 		break;

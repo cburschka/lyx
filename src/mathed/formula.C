@@ -52,6 +52,7 @@
 using std::ostream;
 using std::vector;
 using std::auto_ptr;
+using std::endl;
 
 
 class InsetFormula::PreviewImpl : public lyx::graphics::PreviewedInset {
@@ -104,7 +105,7 @@ InsetFormula::InsetFormula(string const & data)
 	if (!data.size())
 		return;
 	if (!mathed_parse_normal(par_, data))
-		lyxerr << "cannot interpret '" << data << "' as math\n";
+		lyxerr << "cannot interpret '" << data << "' as math" << endl;
 }
 
 
@@ -185,13 +186,13 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 	// remove extra 'mathrm' for chemistry stuff.
 	// will be re-added on write
 	if (par_->asHullInset()->getType() =="chemistry")  {
-		lyxerr << "this is chemistry\n";
+		lyxerr << "this is chemistry" << endl;
 		if (par_->cell(0).size() == 1) {
-			lyxerr << "this is size 1\n";
-	    if (par_->cell(0)[0]->asFontInset()) {
-				lyxerr << "this is a font inset \n";
-				lyxerr << "replacing " << par_.nucleus()->cell(0) <<
-					" with " << par_->cell(0)[0]->cell(0) << "\n";
+			lyxerr << "this is size 1" << endl;
+			if (par_->cell(0)[0]->asFontInset()) {
+				lyxerr << "this is a font inset "
+				       << "replacing " << par_.nucleus()->cell(0) <<
+					" with " << par_->cell(0)[0]->cell(0) << endl;
 			}
 		}
 	}
@@ -245,7 +246,7 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetFormula::getLabelList(std::vector<string> & res) const
+void InsetFormula::getLabelList(vector<string> & res) const
 {
 	par()->getLabelList(res);
 }

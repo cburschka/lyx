@@ -16,6 +16,7 @@
 #include "support/LOstream.h"
 
 using std::auto_ptr;
+using std::endl;
 
 
 RefInset::RefInset()
@@ -46,7 +47,7 @@ RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 	switch (cmd.action) {
 		case LFUN_MOUSE_RELEASE:
 			if (cmd.button() == mouse_button::button3) {
-				lyxerr << "trying to goto ref" << cell(0) << "\n";
+				lyxerr << "trying to goto ref" << cell(0) << endl;
 				cmd.view()->dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
 				return DISPATCHED;
 			}

@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "math_diffinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
@@ -5,6 +7,7 @@
 #include "debug.h"
 
 using std::auto_ptr;
+using std::endl;
 
 
 MathDiffInset::MathDiffInset()
@@ -35,13 +38,13 @@ void MathDiffInset::normalize(NormalStream & os) const
 
 void MathDiffInset::metrics(MetricsInfo &, Dimension &) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }
 
 
 void MathDiffInset::draw(PainterInfo &, int, int) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }
 
 
@@ -83,5 +86,5 @@ void MathDiffInset::mathmlize(MathMLStream & os) const
 
 void MathDiffInset::write(WriteStream &) const
 {
-	lyxerr << "should not happen\n";
+	lyxerr << "should not happen" << endl;
 }

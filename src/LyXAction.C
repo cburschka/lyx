@@ -398,7 +398,7 @@ FuncRequest LyXAction::retrieveActionArg(int pseudo) const
 	if (pit != lyx_pseudo_map.end()) {
 		lyxerr[Debug::ACTION] << "Found the pseudoaction: ["
 				      << pit->second.action << '|'
-				      << pit->second.argument << "]\n";
+				      << pit->second.argument << "]" << endl;
 		return pit->second;
 	} else {
 		lyxerr << "Lyx Error: Unrecognized pseudo-action "
@@ -417,8 +417,8 @@ int LyXAction::LookupFunc(string const & func)
 	// split action and arg
 	string actstr;
 	string const argstr = split(func2, actstr, ' ');
-	lyxerr[Debug::ACTION] << "Action: " << actstr << '\n';
-	lyxerr[Debug::ACTION] << "Arg   : " << argstr << '\n';
+	lyxerr[Debug::ACTION] << "Action: " << actstr << '\n'
+			      << "Arg   : " << argstr << endl;
 
 	func_map::const_iterator fit = lyx_func_map.find(actstr);
 

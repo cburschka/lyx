@@ -1,4 +1,5 @@
-#include "config.h"
+#include <config.h>
+
 #include "math_pos.h"
 #include "math_inset.h"
 #include "debug.h"
@@ -6,6 +7,9 @@
 #include "support/LOstream.h"
 
 using namespace lyx::support;
+
+using std::endl;
+
 
 CursorPos::CursorPos()
 	: inset_(0), idx_(0), pos_(0)
@@ -68,7 +72,8 @@ bool operator!=(CursorPos const & p, CursorPos const & q)
 bool operator<(CursorPos const & p, CursorPos const & q)
 {
 	if (p.inset_ != q.inset_) {
-		lyxerr << "can't compare cursor and anchor in different insets\n";
+		lyxerr << "can't compare cursor and anchor in different insets"
+		       << endl;
 		return true;
 	}
 	if (p.idx_ != q.idx_)

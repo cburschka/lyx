@@ -80,7 +80,7 @@ namespace {
 		if (s == "multline")  return 8;
 		if (s == "gather")    return 9;
 		if (s == "flalign")   return 10;
-		lyxerr << "unknown hull type '" << s << "'\n";
+		lyxerr << "unknown hull type '" << s << "'" << endl;
 		return 0;
 	}
 
@@ -435,7 +435,7 @@ void MathHullInset::addCol(col_type col)
 	if (colChangeOK())
 		MathGridInset::addCol(col);
 	else
-		lyxerr << "Can't change number of columns in '" << type_ << "'\n";
+		lyxerr << "Can't change number of columns in '" << type_ << "'" << endl;
 }
 
 
@@ -444,7 +444,7 @@ void MathHullInset::delCol(col_type col)
 	if (colChangeOK())
 		MathGridInset::delCol(col);
 	else
-		lyxerr << "Can't change number of columns in '" << type_ << "'\n";
+		lyxerr << "Can't change number of columns in '" << type_ << "'" << endl;
 }
 
 
@@ -485,7 +485,7 @@ void MathHullInset::setType(string const & type)
 
 void MathHullInset::mutate(string const & newtype)
 {
-	//lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'\n";
+	//lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'" << endl;
 
 	// we try to move along the chain
 	// none <-> simple <-> equation <-> eqnarray
@@ -683,7 +683,7 @@ void MathHullInset::doExtern
 	//if (selection()) {
 	//	MathArray ar;
 	//	selGet(ar);
-	//	lyxerr << "use selection: " << ar << "\n";
+	//	lyxerr << "use selection: " << ar << endl;
 	//	insert(pipeThroughExtern(lang, extra, ar));
 	//	return;
 	//}
@@ -703,10 +703,10 @@ void MathHullInset::doExtern
 			asArray(mathcursor->grabAndEraseSelection(), ar);
 		} else if (pos == cell(idx).size()) {
 			ar = cell(idx);
-			lyxerr << "use whole cell: " << ar << "\n";
+			lyxerr << "use whole cell: " << ar << endl;
 		} else {
 			ar = MathArray(cell(idx).begin() + pos + 1, cell(idx).end());
-			lyxerr << "use partial cell form pos: " << pos << "\n";
+			lyxerr << "use partial cell form pos: " << pos << endl;
 		}
 		cell(idx).append(eq);
 		cell(idx).append(pipeThroughExtern(lang, extra, ar));
@@ -715,10 +715,10 @@ void MathHullInset::doExtern
 	}
 
 	if (getType() == "equation") {
-		lyxerr << "use equation inset\n";
+		lyxerr << "use equation inset" << endl;
 		mutate("eqnarray");
 		MathArray & ar = cell(idx);
-		lyxerr << "use cell: " << ar << "\n";
+		lyxerr << "use cell: " << ar << endl;
 		cell(idx + 1) = eq;
 		cell(idx + 2) = pipeThroughExtern(lang, extra, ar);
 		// move to end of line
@@ -728,12 +728,12 @@ void MathHullInset::doExtern
 	}
 
 	{
-		lyxerr << "use eqnarray\n";
+		lyxerr << "use eqnarray" << endl;
 		idx -= idx % ncols();
 		idx += 2;
 		pos = 0;
 		MathArray ar = cell(idx);
-		lyxerr << "use cell: " << ar << "\n";
+		lyxerr << "use cell: " << ar << endl;
 #ifdef WITH_WARNINGS
 #warning temporarily disabled
 #endif
@@ -761,7 +761,7 @@ dispatch_result MathHullInset::dispatch
 			return MathGridInset::dispatch(cmd, idx, pos);
 
 		case LFUN_MATH_NUMBER:
-			//lyxerr << "toggling all numbers\n";
+			//lyxerr << "toggling all numbers" << endl;
 			if (display()) {
 				//recordUndo(bv, Undo::INSERT);
 				bool old = numberedType();

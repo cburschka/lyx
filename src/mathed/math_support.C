@@ -18,6 +18,7 @@
 #include <map>
 
 using std::max;
+using std::endl;
 
 
 ///
@@ -407,8 +408,8 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 
 	deco_struct const * mds = search_deco(name);
 	if (!mds) {
-		lyxerr << "Deco was not found. Programming error?\n";
-		lyxerr << "name: '" << name << "'\n";
+		lyxerr << "Deco was not found. Programming error?" << endl;
+		lyxerr << "name: '" << name << "'" << endl;
 		return;
 	}
 
@@ -608,11 +609,11 @@ fontinfo fontinfos[] = {
 
 fontinfo * lookupFont(string const & name)
 {
-	//lyxerr << "searching font '" << name << "'\n";
+	//lyxerr << "searching font '" << name << "'" << endl;
 	int const n = sizeof(fontinfos) / sizeof(fontinfo);
 	for (int i = 0; i < n; ++i)
 		if (fontinfos[i].cmd_ == name) {
-			//lyxerr << "found '" << i << "'\n";
+			//lyxerr << "found '" << i << "'" << endl;
 			return fontinfos + i;
 		}
 	return 0;
@@ -652,7 +653,8 @@ void fakeFont(string const & orig, string const & fake)
 		forig->shape_  = ffake->shape_;
 		forig->color_  = ffake->color_;
 	} else {
-		lyxerr << "Can't fake font '" << orig << "' with '" << fake << "'\n";
+		lyxerr << "Can't fake font '" << orig << "' with '"
+		       << fake << "'" << endl;
 	}
 }
 

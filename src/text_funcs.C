@@ -25,6 +25,8 @@
 using lyx::pos_type;
 using lyx::word_location;
 
+using std::endl;
+
 
 bool transposeChars(LyXCursor const & cursor)
 {
@@ -152,7 +154,8 @@ void getWord(LyXCursor & from, LyXCursor & to, word_location const loc,
 		cursorLeftOneWord(from, pars);
 		break;
 	case lyx::NEXT_WORD:
-		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet\n";
+		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet"
+		       << endl;
 		break;
 	case lyx::PARTIAL_WORD:
 		break;

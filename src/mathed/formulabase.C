@@ -90,10 +90,10 @@ InsetFormulaBase::InsetFormulaBase()
 {
 	// This is needed as long the math parser is not re-entrant
 	initMath();
-	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
-	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << "\n";
-	//lyxerr << "sizeof MathCharInset: " << sizeof(MathCharInset) << "\n";
-	//lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << "\n";
+	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << endl;
+	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
+	//lyxerr << "sizeof MathCharInset: " << sizeof(MathCharInset) << endl;
+	//lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << endl;
 }
 
 
@@ -331,9 +331,9 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	switch (cmd.action) {
 		case LFUN_INSET_EDIT:
-			lyxerr << "Called EDIT with '" << cmd.argument << "'\n";
+			lyxerr << "Called EDIT with '" << cmd.argument << "'" << endl;
 			if (!bv->lockInset(this))
-				lyxerr << "Cannot lock math inset in edit call!\n";
+				lyxerr << "Cannot lock math inset in edit call!" << endl;
 			releaseMathCursor(bv);
 			if (!cmd.argument.empty()) {
 				mathcursor = new MathCursor(this, cmd.argument == "left");
@@ -349,16 +349,16 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			return DISPATCHED;
 
 		case LFUN_MOUSE_PRESS:
-			//lyxerr << "Mouse single press\n";
+			//lyxerr << "Mouse single press" << endl;
 			return lfunMousePress(cmd);
 		case LFUN_MOUSE_MOTION:
-			//lyxerr << "Mouse motion\n";
+			//lyxerr << "Mouse motion" << endl;
 			return lfunMouseMotion(cmd);
 		case LFUN_MOUSE_RELEASE:
-			//lyxerr << "Mouse single release\n";
+			//lyxerr << "Mouse single release" << endl;
 			return lfunMouseRelease(cmd);
 		case LFUN_MOUSE_DOUBLE:
-			//lyxerr << "Mouse double\n";
+			//lyxerr << "Mouse double" << endl;
 			return localDispatch(FuncRequest(LFUN_WORDSEL));
 		default:
 			break;
@@ -398,7 +398,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		sel = true; // fall through...
 	case LFUN_RIGHT:
 		result = mathcursor->right(sel) ? DISPATCHED : FINISHED_RIGHT;
-		//lyxerr << "calling scroll 20\n";
+		//lyxerr << "calling scroll 20" << endl;
 		//scroll(bv, 20);
 		// write something to the minibuffer
 		//bv->owner()->message(mathcursor->info());
@@ -495,7 +495,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	//      dispatch_result = dispatch_buffer;
 	//      break;
 	case LFUN_SETXY: {
-		lyxerr << "LFUN_SETXY broken!\n";
+		lyxerr << "LFUN_SETXY broken!" << endl;
 		int x = 0;
 		int y = 0;
 		istringstream is(cmd.argument.c_str());
@@ -607,7 +607,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_MATH_DELIM:
 	{
-		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
+		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'" << endl;
 		string ls;
 		string rs = split(cmd.argument, ls, ' ');
 		// Reasonable default values
@@ -829,7 +829,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 	static string laststr;
 
 	if (lastformula != this || laststr != str) {
-		//lyxerr << "reset lastformula to " << this << "\n";
+		//lyxerr << "reset lastformula to " << this << endl;
 		lastformula = this;
 		laststr = str;
 		current	= ibegin(par().nucleus());
@@ -858,7 +858,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 		}
 	}
 
-	//lyxerr << "not found!\n";
+	//lyxerr << "not found!" << endl;
 	lastformula = 0;
 	return false;
 }
@@ -867,7 +867,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 bool InsetFormulaBase::searchBackward(BufferView * bv, string const & what,
 				      bool a, bool b)
 {
-	lyxerr[Debug::MATHED] << "searching backward not implemented in mathed\n";
+	lyxerr[Debug::MATHED] << "searching backward not implemented in mathed" << endl;
 	return searchForward(bv, what, a, b);
 }
 

@@ -1,8 +1,5 @@
 #include <config.h>
 
-#include <iostream>
-
-
 #include "math_macrotable.h"
 #include "math_macro.h"
 #include "math_macrotemplate.h"
@@ -11,6 +8,10 @@
 #include "debug.h"
 #include "math_support.h" // math_font_available
 
+#include <iostream>
+
+using std::endl;
+
 
 MathMacroTable::table_type MathMacroTable::macro_table;
 
@@ -18,13 +19,13 @@ MathMacroTable::table_type MathMacroTable::macro_table;
 void MathMacroTable::dump()
 {
 /*
-	lyxerr << "\n------------------------------------------\n";
+	lyxerr << "\n------------------------------------------" << endl;
 	table_type::const_iterator it;
 	for (it = macro_table.begin(); it != macro_table.end(); ++it)
 		lyxerr << it->first
 			<< " [" << it->second->asMacroTemplate()->nargs() << "] : "
-			<< it->second->cell(0) << "\n";
-	lyxerr << "------------------------------------------\n";
+			<< it->second->cell(0) << endl;
+	lyxerr << "------------------------------------------" << endl;
 */
 }
 
@@ -34,7 +35,7 @@ MathAtom & MathMacroTable::provide(string const & name)
 	table_type::iterator pos = macro_table.find(name);
 	if (pos == macro_table.end()) {
 		lyxerr << "MathMacroTable::provideTemplate: no template with name '"
-		       << name << "' available.\n";
+		       << name << "' available." << endl;
 	}
 	return pos->second;
 }

@@ -81,7 +81,7 @@ void MathCharInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	mathed_char_dim(font_, char_, dim_);
 	if (isBinaryOp(char_, code_))
 		width_ += 2 * font_metrics::width(' ', font_);
-	lyxerr << "MathCharInset::metrics: " << dim << "\n";
+	lyxerr << "MathCharInset::metrics: " << dim << endl;
 #endif
 }
 

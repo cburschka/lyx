@@ -1,3 +1,7 @@
+2003-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Always use std::endl with lyxerr
+
 2003-08-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* BufferView_pimpl.C: _Always_ use std::endl with lyxerr

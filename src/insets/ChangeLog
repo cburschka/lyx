@@ -1,3 +1,7 @@
+2003-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Always use std::endl with lyxerr
+
 2003-08-01	Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetnote.C: update \author list
@@ -53,7 +57,7 @@
 
 	* insetert.C (write): \layout -> \begin_layout.
 	Add missing \end_layout.
-	
+
 2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetquotes.C: document a bit the format
@@ -64,7 +68,7 @@
 	* insetnote.C: Umpf. Hope I *now* get it right :-(
 
 2003-07-28  Martin Vermeer  <martin.vermeer@hut.fi>
-	*insetnote.C: did the right fix to greyedout: \color 
+	*insetnote.C: did the right fix to greyedout: \color
 	instead of \textcolor.
 
 2003-07-28  Angus Leeming  <leeming@lyx.org>
@@ -72,7 +76,7 @@
 	* insetbibtex.h: remove extraneous forward declaration.
 
 	* insetbibitem.h:
-	* insetbibtex.h: Also remove long-dead Holder member class 
+	* insetbibtex.h: Also remove long-dead Holder member class
 	and variable.
 
 2003-07-27  Martin Vermeer  <martin.vermeer@hut.fi>

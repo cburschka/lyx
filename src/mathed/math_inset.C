@@ -29,6 +29,7 @@
 #include "formulabase.h"
 
 using std::ostream;
+using std::endl;
 
 
 BufferView * MathInset::view() const
@@ -47,14 +48,14 @@ MathArray dummyCell;
 
 MathArray & MathInset::cell(idx_type)
 {
-	lyxerr << "I don't have a cell 1\n";
+	lyxerr << "I don't have a cell 1" << endl;
 	return dummyCell;
 }
 
 
 MathArray const & MathInset::cell(idx_type) const
 {
-	lyxerr << "I don't have a cell 2\n";
+	lyxerr << "I don't have a cell 2" << endl;
 	return dummyCell;
 }
 
@@ -62,9 +63,9 @@ MathArray const & MathInset::cell(idx_type) const
 MathInset::idx_type MathInset::index(row_type row, col_type col) const
 {
 	if (row != 0)
-		lyxerr << "illegal row: " << row << "\n";
+		lyxerr << "illegal row: " << row << endl;
 	if (col != 0)
-		lyxerr << "illegal col: " << col << "\n";
+		lyxerr << "illegal col: " << col << endl;
 	return 0;
 }
 
@@ -134,17 +135,17 @@ bool MathInset::idxEnd(idx_type &, pos_type &) const
 
 void MathInset::getPos(idx_type, pos_type, int & x, int & y) const
 {
-	lyxerr << "MathInset::getPos() called directly!\n";
+	lyxerr << "MathInset::getPos() called directly!" << endl;
 	x = y = 0;
 }
 
 
 void MathInset::dump() const
 {
-	lyxerr << "---------------------------------------------\n";
+	lyxerr << "---------------------------------------------" << endl;
 	WriteStream wi(lyxerr, false, true);
 	write(wi);
-	lyxerr << "\n---------------------------------------------\n";
+	lyxerr << "\n---------------------------------------------" << endl;
 }
 
 
@@ -157,14 +158,14 @@ bool MathInset::idxBetween(idx_type idx, idx_type from, idx_type to) const
 void MathInset::drawSelection(PainterInfo &,
 	idx_type, pos_type, idx_type, pos_type) const
 {
-	lyxerr << "MathInset::drawSelection() called directly!\n";
+	lyxerr << "MathInset::drawSelection() called directly!" << endl;
 }
 
 
 void MathInset::metricsT(TextMetricsInfo const &, Dimension &) const
 {
 #ifdef WITH_WARNINGS
-	lyxerr << "MathInset::metricsT(Text) called directly!\n";
+	lyxerr << "MathInset::metricsT(Text) called directly!" << endl;
 #endif
 }
 
@@ -172,7 +173,7 @@ void MathInset::metricsT(TextMetricsInfo const &, Dimension &) const
 void MathInset::drawT(TextPainter &, int, int) const
 {
 #ifdef WITH_WARNINGS
-	lyxerr << "MathInset::drawT(Text) called directly!\n";
+	lyxerr << "MathInset::drawT(Text) called directly!" << endl;
 #endif
 }
 

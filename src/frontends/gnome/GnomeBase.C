@@ -52,7 +52,7 @@ void GnomeBase::loadXML()
 		lyx::Assert(true);
 	}
 
-	lyxerr[Debug::GUI] << "Glade file to open is " << file << '\n';
+	lyxerr[Debug::GUI] << "Glade file to open is " << file << endl;
 
 	xml_ = Gnome::Glade::Xml::create (file, widget_name_);
 }
@@ -77,25 +77,25 @@ bool GnomeBase::isValid()
 
 void GnomeBase::OKClicked()
 {
-	lyxerr[Debug::GUI] << "GnomeBase::OKClicked()\n";
+	lyxerr[Debug::GUI] << "GnomeBase::OKClicked()" << endl;
 	getController().OKButton();
 }
 
 void GnomeBase::CancelClicked()
 {
-	lyxerr[Debug::GUI] << "GnomeBase::CancelClicked()\n";
+	lyxerr[Debug::GUI] << "GnomeBase::CancelClicked()" << endl;
 	getController().CancelButton();
 }
 
 void GnomeBase::ApplyClicked()
 {
-	lyxerr[Debug::GUI] << "GnomeBase::ApplyClicked()\n";
+	lyxerr[Debug::GUI] << "GnomeBase::ApplyClicked()" << endl;
 	getController().ApplyButton();
 }
 
 void GnomeBase::RestoreClicked()
 {
-	lyxerr[Debug::GUI] << "GnomeBase::RestoreClicked()\n";
+	lyxerr[Debug::GUI] << "GnomeBase::RestoreClicked()" << endl;
 	getController().RestoreButton();
 }
 

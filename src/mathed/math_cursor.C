@@ -88,7 +88,7 @@ void MathCursor::push(MathAtom & t)
 
 void MathCursor::pushLeft(MathAtom & t)
 {
-	//lyxerr << "Entering atom " << t << " left\n";
+	//lyxerr << "Entering atom " << t << " left" << endl;
 	push(t);
 	t->idxFirst(idx(), pos());
 }
@@ -96,7 +96,7 @@ void MathCursor::pushLeft(MathAtom & t)
 
 void MathCursor::pushRight(MathAtom & t)
 {
-	//lyxerr << "Entering atom " << t << " right\n";
+	//lyxerr << "Entering atom " << t << " right" << endl;
 	posLeft();
 	push(t);
 	t->idxLast(idx(), pos());
@@ -105,7 +105,7 @@ void MathCursor::pushRight(MathAtom & t)
 
 bool MathCursor::popLeft()
 {
-	//lyxerr << "Leaving atom to the left\n";
+	//lyxerr << "Leaving atom to the left" << endl;
 	if (depth() <= 1) {
 		if (depth() == 1)
 			inset()->notifyCursorLeaves(idx());
@@ -119,7 +119,7 @@ bool MathCursor::popLeft()
 
 bool MathCursor::popRight()
 {
-	//lyxerr << "Leaving atom "; inset()->write(cerr, false); cerr << " right\n";
+	//lyxerr << "Leaving atom "; inset()->write(cerr, false); cerr << " right" << endl;
 	if (depth() <= 1) {
 		if (depth() == 1)
 			inset()->notifyCursorLeaves(idx());
@@ -328,14 +328,14 @@ void MathCursor::plainErase()
 
 void MathCursor::markInsert()
 {
-	//lyxerr << "inserting mark\n";
+	//lyxerr << "inserting mark" << endl;
 	array().insert(pos(), MathAtom(new MathCharInset(0)));
 }
 
 
 void MathCursor::markErase()
 {
-	//lyxerr << "deleting mark\n";
+	//lyxerr << "deleting mark" << endl;
 	array().erase(pos());
 }
 
@@ -358,7 +358,7 @@ void MathCursor::insert2(string const & str)
 
 void MathCursor::insert(string const & str)
 {
-	//lyxerr << "inserting '" << str << "'\n";
+	//lyxerr << "inserting '" << str << "'" << endl;
 	selClearOrDel();
 	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
 		plainInsert(MathAtom(new MathCharInset(*it)));
@@ -367,7 +367,7 @@ void MathCursor::insert(string const & str)
 
 void MathCursor::insert(char c)
 {
-	//lyxerr << "inserting '" << c << "'\n";
+	//lyxerr << "inserting '" << c << "'" << endl;
 	selClearOrDel();
 	plainInsert(MathAtom(new MathCharInset(c)));
 }
@@ -533,7 +533,7 @@ void MathCursor::macroModeClose()
 	// prevent entering of recursive macros
 	if (formula()->lyxCode() == InsetOld::MATHMACRO_CODE
 			&& formula()->getInsetName() == name)
-		lyxerr << "can't enter recursive macro\n";
+		lyxerr << "can't enter recursive macro" << endl;
 
 	niceInsert(createMathInset(name));
 }
@@ -869,12 +869,12 @@ MathArray & MathCursor::array() const
 	static MathArray dummy;
 
 	if (idx() >= inset()->nargs()) {
-		lyxerr << "############  idx_ " << idx() << " not valid\n";
+		lyxerr << "############  idx_ " << idx() << " not valid" << endl;
 		return dummy;
 	}
 
 	if (depth() == 0) {
-		lyxerr << "############  depth() == 0 not valid\n";
+		lyxerr << "############  depth() == 0 not valid" << endl;
 		return dummy;
 	}
 
@@ -961,7 +961,7 @@ bool MathCursor::goUpDown(bool up)
 			push(nextAtom());
 			idx() = up; // the superscript has index 1
 			pos() = size();
-			///lyxerr << "updown: handled by scriptinset to the left\n";
+			///lyxerr << "updown: handled by scriptinset to the left" << endl;
 			return true;
 		}
 	}
@@ -973,7 +973,7 @@ bool MathCursor::goUpDown(bool up)
 			push(nextAtom());
 			idx() = up;
 			pos() = 0;
-			///lyxerr << "updown: handled by scriptinset to the right\n";
+			///lyxerr << "updown: handled by scriptinset to the right" << endl;
 			return true;
 		}
 	}
@@ -988,13 +988,13 @@ bool MathCursor::goUpDown(bool up)
 	//else
 	//	ylow = yo + 4;
 	//if (bruteFind(xo, yo, xlow, xhigh, ylow, yhigh)) {
-	//	lyxerr << "updown: handled by brute find in the same cell\n";
+	//	lyxerr << "updown: handled by brute find in the same cell" << endl;
 	//	return true;
 	//}
 
 	// try to find an inset that knows better then we
 	while (1) {
-		///lyxerr << "updown: We are in " << *inset() << " idx: " << idx() << '\n';
+		///lyxerr << "updown: We are in " << *inset() << " idx: " << idx() << endl;
 		// ask inset first
 		if (inset()->idxUpDown(idx(), pos(), up, targetx_)) {
 			// try to find best position within this inset
@@ -1004,7 +1004,7 @@ bool MathCursor::goUpDown(bool up)
 		}
 
 		// no such inset found, just take something "above"
-		///lyxerr << "updown: handled by strange case\n";
+		///lyxerr << "updown: handled by strange case" << endl;
 		if (!popLeft())
 			return
 				bruteFind(xo, yo,
@@ -1149,7 +1149,7 @@ bool MathCursor::script(bool up)
 
 bool MathCursor::interpret(char c)
 {
-	//lyxerr << "interpret 2: '" << c << "'\n";
+	//lyxerr << "interpret 2: '" << c << "'" << endl;
 	targetx_ = -1; // "no target"
 	if (inMacroArgMode()) {
 		--pos();
@@ -1168,7 +1168,7 @@ bool MathCursor::interpret(char c)
 	// handle macroMode
 	if (inMacroMode()) {
 		string name = macroName();
-		//lyxerr << "interpret name: '" << name << "'\n";
+		//lyxerr << "interpret name: '" << name << "'" << endl;
 
 		if (isalpha(c)) {
 			activeMacro()->setName(activeMacro()->name() + c);
@@ -1221,7 +1221,7 @@ bool MathCursor::interpret(char c)
 	selClearOrDel();
 
 	if (c == '\\') {
-		//lyxerr << "starting with macro\n";
+		//lyxerr << "starting with macro" << endl;
 		insert(MathAtom(new MathUnknownInset("\\", false)));
 		return true;
 	}
@@ -1405,7 +1405,7 @@ CursorPos MathCursor::normalAnchor() const
 {
 	if (Anchor_.size() < depth()) {
 		Anchor_ = Cursor_;
-		lyxerr << "unusual Anchor size\n";
+		lyxerr << "unusual Anchor size" << endl;
 	}
 	//lyx::Assert(Anchor_.size() >= cursor.depth());
 	// use Anchor on the same level as Cursor

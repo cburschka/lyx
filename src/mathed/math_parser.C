@@ -84,7 +84,7 @@ namespace {
 
 MathInset::mode_type asMode(MathInset::mode_type oldmode, string const & str)
 {
-	//lyxerr << "handling mode: '" << str << "'\n";
+	//lyxerr << "handling mode: '" << str << "'" << endl;
 	if (str == "mathmode")
 		return MathInset::MATH_MODE;
 	if (str == "textmode" || str == "forcetext")
@@ -329,7 +329,7 @@ Token const & Parser::nextToken() const
 Token const & Parser::getToken()
 {
 	static const Token dummy;
-	//lyxerr << "looking at token " << tokens_[pos_] << " pos: " << pos_ << '\n';
+	//lyxerr << "looking at token " << tokens_[pos_] << " pos: " << pos_ << endl;
 	return good() ? tokens_[pos_++] : dummy;
 }
 
@@ -384,7 +384,7 @@ void Parser::skipSpaceTokens(istream & is, char c)
 	while (catcode(c) == catSpace || catcode(c) == catNewline)
 		if (!is.get(c))
 			break;
-	//lyxerr << "putting back: " << c << "\n";
+	//lyxerr << "putting back: " << c << endl;
 	is.putback(c);
 }
 
@@ -424,7 +424,7 @@ void Parser::tokenize(string const & buffer)
 
 	char c;
 	while (is.get(c)) {
-		//lyxerr << "reading c: " << c << "\n";
+		//lyxerr << "reading c: " << c << endl;
 
 		switch (catcode(c)) {
 			case catNewline: {
@@ -474,7 +474,7 @@ void Parser::tokenize(string const & buffer)
 			}
 
 			case catIgnore: {
-				lyxerr << "ignoring a char: " << int(c) << "\n";
+				lyxerr << "ignoring a char: " << int(c) << endl;
 				break;
 			}
 
@@ -497,7 +497,7 @@ void Parser::dump() const
 			lyxerr << " <#> ";
 		lyxerr << tokens_[i];
 	}
-	lyxerr << " pos: " << pos_ << "\n";
+	lyxerr << " pos: " << pos_ << endl;
 }
 
 
@@ -600,18 +600,18 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		grid.asHullInset()->numbered(cellrow, numbered);
 
 	//dump();
-	//lyxerr << " flags: " << flags << "\n";
-	//lyxerr << " mode: " << mode  << "\n";
+	//lyxerr << " flags: " << flags << endl;
+	//lyxerr << " mode: " << mode  << endl;
 	//lyxerr << "grid: " << grid << endl;
 
 	while (good()) {
 		Token const & t = getToken();
 
 #ifdef FILEDEBUG
-		lyxerr << "t: " << t << " flags: " << flags << "\n";
-		lyxerr << "mode: " << mode  << "\n";
+		lyxerr << "t: " << t << " flags: " << flags << endl;
+		lyxerr << "mode: " << mode  << endl;
 		cell->dump();
-		lyxerr << "\n";
+		lyxerr << endl;
 #endif
 
 		if (flags & FLAG_ITEM) {
@@ -681,7 +681,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			}
 
 			else {
-				error("something strange in the parser\n");
+				error("something strange in the parser");
 				break;
 			}
 		}
@@ -728,9 +728,9 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cat() == catAlign) {
 			++cellcol;
-			//lyxerr << " column now " << cellcol << " max: " << grid.ncols() << "\n";
+			//lyxerr << " column now " << cellcol << " max: " << grid.ncols() << endl;
 			if (cellcol == grid.ncols()) {
-				//lyxerr << "adding column " << cellcol << "\n";
+				//lyxerr << "adding column " << cellcol << endl;
 				grid.addCol(cellcol - 1);
 			}
 			cell = &grid.cell(grid.index(cellrow, cellcol));
@@ -764,7 +764,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
-			//lyxerr << "finished reading option\n";
+			//lyxerr << "finished reading option" << endl;
 			return;
 		}
 
@@ -810,19 +810,19 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					++nargs;
 				}
 				nargs /= 2;
-				//lyxerr << "read \\def parameter list '" << pars << "'\n";
+				//lyxerr << "read \\def parameter list '" << pars << "'" << endl;
 
 			} else { // t.cs() == "newcommand" || t.cs() == "renewcommand"
 
 				if (getToken().cat() != catBegin) {
-					error("'{' in \\newcommand expected (1) \n");
+					error("'{' in \\newcommand expected (1) ");
 					return;
 				}
 
 				name = getToken().cs();
 
 				if (getToken().cat() != catEnd) {
-					error("'}' in \\newcommand expected\n");
+					error("'}' in \\newcommand expected");
 					return;
 				}
 
@@ -839,7 +839,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			//MathArray test;
 			//test.push_back(createMathInset(name));
 			//if (ar1.contains(test)) {
-			//	error("we cannot handle recursive macros at all.\n");
+			//	error("we cannot handle recursive macros at all.");
 			//	return;
 			//}
 
@@ -908,13 +908,13 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			parse(count, FLAG_ITEM, mode);
 			int cols = 1;
 			if (!extractNumber(count, cols)) {
-				lyxerr << " can't extract number of cells from " << count << "\n";
+				lyxerr << " can't extract number of cells from " << count << endl;
 			}
 			// resize the table if necessary
 			for (int i = 0; i < cols; ++i) {
 				++cellcol;
 				if (cellcol == grid.ncols()) {
-					//lyxerr << "adding column " << cellcol << "\n";
+					//lyxerr << "adding column " << cellcol << endl;
 					grid.addCol(cellcol - 1);
 				}
 				cell = &grid.cell(grid.index(cellrow, cellcol));
@@ -993,7 +993,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		else if (t.cs() == "right") {
 			if (flags & FLAG_RIGHT)
 				return;
-			//lyxerr << "got so far: '" << cell << "'\n";
+			//lyxerr << "got so far: '" << cell << "'" << endl;
 			error("Unmatched right delimiter");
 			return;
 		}
@@ -1087,7 +1087,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 			else {
 				dump();
-				lyxerr << "found unknown math environment '" << name << "'\n";
+				lyxerr << "found unknown math environment '" << name << "'" << endl;
 				// create generic environment inset
 				cell->push_back(MathAtom(new MathEnvInset(name)));
 				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
@@ -1163,11 +1163,11 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				p->up_ = nextToken().cat() == catSuper;
 				getToken();
 				parse(p->cell(1), FLAG_ITEM, mode);
-				//lyxerr << "read label: " << p->cell(1) << "\n";
+				//lyxerr << "read label: " << p->cell(1) << endl;
 			}
 
 			cell->push_back(MathAtom(p));
-			//lyxerr << "read cell: " << cell << "\n";
+			//lyxerr << "read cell: " << cell << endl;
 		}
 #endif
 
@@ -1213,10 +1213,10 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				MathAtom at = createMathInset(t.cs());
 				MathInset::mode_type m = mode;
 				//if (m == MathInset::UNDECIDED_MODE)
-				//lyxerr << "default creation: m1: " << m << "\n";
+				//lyxerr << "default creation: m1: " << m << endl;
 				if (at->currentMode() != MathInset::UNDECIDED_MODE)
 					m = at->currentMode();
-				//lyxerr << "default creation: m2: " << m << "\n";
+				//lyxerr << "default creation: m2: " << m << endl;
 				MathInset::idx_type start = 0;
 				// this fails on \bigg[...\bigg]
 				//MathArray opt;

@@ -1,8 +1,11 @@
+#include <config.h>
+
 #include "math_textinset.h"
 #include "metricsinfo.h"
 #include "debug.h"
 
 using std::auto_ptr;
+using std::endl;
 
 
 MathTextInset::MathTextInset()
@@ -21,7 +24,7 @@ MathInset::idx_type MathTextInset::pos2row(pos_type pos) const
 	for (pos_type r = 0, n = cache_.nargs(); r < n; ++r)
 		if (pos >= cache_.cellinfo_[r].begin_ && pos <= cache_.cellinfo_[r].end_)
 			return r;
-	lyxerr << "illegal row for pos " << pos << "\n";
+	lyxerr << "illegal row for pos " << pos << endl;
 	return 0;
 }
 
@@ -89,7 +92,7 @@ void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const
 		// Special handling of spaces. We reached a safe position for breaking.
 		char const c = cell(0)[i]->getChar();
 		if (c == ' ') {
-			//lyxerr << "reached safe pos\n";
+			//lyxerr << "reached safe pos" << endl;
 			// we don't count the space into the safe pos
 			safe += curr;
 			// we reset to this safepos if the next chunk does not fit
@@ -109,7 +112,7 @@ void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 
 		// We passed the limit. Create a row entry.
-		//lyxerr << "passed limit\n";
+		//lyxerr << "passed limit" << endl;
 		cache_.appendRow();
 		MathArray & ar = cache_.cell(cache_.nargs() - 1);
 		MathGridInset::CellInfo & row = cache_.cellinfo_.back();
@@ -122,7 +125,7 @@ void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const
 		} else if (spaces) {
 			// but we had a space break before this position.
 			// so retreat to this position
-			//lyxerr << "... but had safe pos.\n";
+			//lyxerr << "... but had safe pos." << endl;
 			row.begin_ = begin;
 			row.end_   = safepos;  // this is position of the safe space
 			i          = safepos;  // i gets incremented at end of loop
@@ -131,13 +134,13 @@ void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const
 		} else {
 			// This item is too large and it is the only one.
 			// We have no choice but to produce an overfull box.
-			lyxerr << "... without safe pos\n";
+			lyxerr << "... without safe pos" << endl;
 			row.begin_ = begin;
 			row.end_   = i + 1;
 			begin      = i + 1;
 		}
 		ar = MathArray(cell(0).begin() + row.begin_, cell(0).begin() + row.end_);
-		//lyxerr << "line: " << ar << "\n";
+		//lyxerr << "line: " << ar << endl;
 		// in any case, start the new row with empty boxes
 		curr = 0;
 		safe = 0;
@@ -149,7 +152,7 @@ void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	row.begin_ = begin;
 	row.end_   = cell(0).size();
 	ar = MathArray(cell(0).begin() + row.begin_, cell(0).begin() + row.end_);
-	//lyxerr << "last line: " << ar.data() << "\n";
+	//lyxerr << "last line: " << ar.data() << endl;
 
 	// what to report?
 	cache_.metrics(mi, dim_);

@@ -258,7 +258,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	//lyxerr << "InsetTabular::metrics: " << mi.base.bv << " width: " <<
 	//	mi.base.textwidth << "\n";
 	if (!mi.base.bv) {
-		lyxerr << "InsetTabular::metrics: need bv\n";
+		lyxerr << "InsetTabular::metrics: need bv" << endl;
 		Assert(0);
 	}
 
@@ -273,7 +273,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "InsetTabular::draw: " << x << " " << y << "\n";
+	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
 
 	BufferView * bv = pi.base.bv;
 
@@ -429,7 +429,7 @@ void InsetTabular::insetUnlock(BufferView * bv)
 
 void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what) const
 {
-	lyxerr << "InsetTabular::updateLocal: " << what << "\n";
+	lyxerr << "InsetTabular::updateLocal: " << what << endl;
 	if (!locked && what == CELL)
 		what = FULL;
 	if (need_update < what) // only set this if it has greater update
@@ -2634,8 +2634,8 @@ bool InsetTabular::forceDefaultParagraphs(InsetOld const * in) const
 	if (owner())
 		return owner()->forceDefaultParagraphs(in);
 
-	// if we're here there is really something strange going on!!!
-	lyxerr << "if we're here there is really something strange going on!\n";
+	lyxerr << "If we're here there is really something strange going on!"
+	       << endl;
 	return false;
 }
 

@@ -21,6 +21,7 @@ using namespace lyx::support;
 using std::max;
 using std::min;
 using std::abs;
+using std::endl;
 
 
 MathArray::MathArray()
@@ -144,7 +145,7 @@ void MathArray::replace(ReplaceData & rep)
 	for (size_type i = 0; i < size(); ++i) {
 		if (find1(rep.from, i)) {
 			// match found
-			lyxerr << "match found!\n";
+			lyxerr << "match found!" << endl;
 			erase(i, i + rep.from.size());
 			insert(i, rep.to);
 		}
@@ -160,7 +161,7 @@ void MathArray::replace(ReplaceData & rep)
 
 bool MathArray::find1(MathArray const & ar, size_type pos) const
 {
-	//lyxerr << "finding '" << ar << "' in '" << *this << "'\n";
+	//lyxerr << "finding '" << ar << "' in '" << *this << "'" << endl;
 	for (size_type i = 0, n = ar.size(); i < n; ++i)
 		if (!operator[](pos + i)->match(ar[i]))
 			return false;

@@ -14,6 +14,7 @@
  *  This code is under the GNU General Public Licence version 2 or later.
  */
 
+#include <config.h>
 
 #include "math_macro.h"
 #include "math_support.h"
@@ -30,6 +31,7 @@
 
 using std::max;
 using std::auto_ptr;
+using std::endl;
 
 
 MathMacro::MathMacro(string const & name)
@@ -151,12 +153,12 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 void MathMacro::dump() const
 {
 	MathMacroTable::dump();
-	lyxerr << "\n macro: '" << this << "'\n";
-	lyxerr << " name: '" << name() << "'\n";
-	lyxerr << " template: '";
+	lyxerr << "\n macro: '" << this << "'\n"
+	       << " name: '" << name() << "'\n"
+	       << " template: '";
 	WriteStream wi(lyxerr);
 	tmplate_->write(wi);
-	lyxerr << "'\n";
+	lyxerr << "'" << endl;
 }
 
 

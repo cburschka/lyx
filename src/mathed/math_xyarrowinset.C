@@ -45,11 +45,11 @@ MathArray const & MathXYArrowInset::targetCell() const
 			case 'd': ++y; break;
 		}
 	}
-	//lyxerr << "target: x: " << x << " y: " << y << "\n";
+	//lyxerr << "target: x: " << x << " y: " << y << endl;
 	MathInset::idx_type n = mi_.idx + p->ncols() * y + x;
 	if (n >= p->nargs()) {
-		lyxerr << "source: n: " << mi_.idx << "\n";
-		lyxerr << "target: n: " << n << " out of range\n";
+		lyxerr << "source: n: " << mi_.idx << "\n"
+		       << "target: n: " << n << " out of range" << endl;
 		n = 0;
 	}
   return p->cell(n);

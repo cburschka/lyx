@@ -18,6 +18,7 @@
 
 using std::vector;
 using std::getline;
+using std::endl;
 
 
 FuncRequest::FuncRequest()
@@ -92,7 +93,7 @@ void FuncRequest::message(string const & msg) const
 	if (view_)
 		view_->owner()->getLyXFunc().setMessage(msg);
 	else
-		lyxerr  << "Dropping message '" << msg << "'\n";
+		lyxerr  << "Dropping message '" << msg << "'" << endl;
 }
 
 
@@ -101,7 +102,7 @@ void FuncRequest::errorMessage(string const & msg) const
 	if (view_)
 		view_->owner()->getLyXFunc().setErrorMessage(msg);
 	else
-		lyxerr  << "Dropping error message '" << msg << "'\n";
+		lyxerr  << "Dropping error message '" << msg << "'" << endl;
 }
 
 

@@ -94,7 +94,9 @@ void Paragraph::operator=(Paragraph const & lp)
 	// needed as we will destroy the pimpl_ before copying it
 	if (&lp != this)
 		return;
-	lyxerr << "Paragraph::operator=()\n";
+
+	lyxerr << "Paragraph::operator=()" << endl;
+
 	delete pimpl_;
 	pimpl_ = new Pimpl(*lp.pimpl_, this);
 
@@ -347,7 +349,8 @@ lyx::pos_type Paragraph::getEndPosOfFontSpan(lyx::pos_type pos) const
 			return cit->pos();
 
 	// This should not happen, but if so, we take no chances.
-	lyxerr << "Pararaph::getEndPosOfFontSpan: This should not happen!\n";
+	lyxerr << "Pararaph::getEndPosOfFontSpan: This should not happen!"
+	       << endl;
 	return pos;
 }
 

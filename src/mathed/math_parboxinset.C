@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "math_parboxinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
@@ -5,12 +7,13 @@
 #include "debug.h"
 
 using std::auto_ptr;
+using std::endl;
 
 
 MathParboxInset::MathParboxInset()
 	: lyx_width_(0), tex_width_("0mm"), position_('c')
 {
-	lyxerr << "constructing MathParboxInset\n";
+	lyxerr << "constructing MathParboxInset" << endl;
 }
 
 
@@ -30,7 +33,7 @@ void MathParboxInset::setWidth(string const & w)
 {
 	tex_width_ = w;
 	lyx_width_ = LyXLength(w).inBP();
-	lyxerr << "setting " << w << " to " << lyx_width_ << " pixel\n";
+	lyxerr << "setting " << w << " to " << lyx_width_ << " pixel" << endl;
 }
 
 

@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "math_scriptinset.h"
 #include "math_support.h"
 #include "math_symbolinset.h"
@@ -10,6 +12,7 @@ using namespace lyx::support;
 
 using std::max;
 using std::auto_ptr;
+using std::endl;
 
 
 MathScriptInset::MathScriptInset()
@@ -359,7 +362,8 @@ void MathScriptInset::write(WriteStream & os) const
 		//}
 	} else {
 		if (os.firstitem())
-			lyxerr[Debug::MATHED] << "suppressing {} when writing\n";
+			lyxerr[Debug::MATHED] << "suppressing {} when writing"
+					      << endl;
 		else
 			os << "{}";
 	}

@@ -117,7 +117,7 @@ string findTargetFormat(string const & suffix, LatexRunParams const & runparams)
 {
 	// Are we using latex or pdflatex).
 	if (runparams.flavor == LatexRunParams::PDFLATEX) {
-		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode\n";
+		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode" << endl;
 		if (contains(suffix, "ps") || suffix == "pdf")
 			return "pdf";
 		if (suffix == "jpg")	// pdflatex can use jpeg
@@ -125,7 +125,7 @@ string findTargetFormat(string const & suffix, LatexRunParams const & runparams)
 		return "png";         // and also png
 	}
 	// If it's postscript, we always do eps.
-	lyxerr[Debug::GRAPHICS] << "findTargetFormat: PostScript mode\n";
+	lyxerr[Debug::GRAPHICS] << "findTargetFormat: PostScript mode" << endl;
 	if (suffix != "ps")     // any other than ps
 		return "eps";         // is changed to eps
 	return suffix;          // let ps untouched
@@ -235,7 +235,7 @@ void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 	if (token == "Graphics")
 		readInsetGraphics(lex, buf->filePath());
 	else
-		lyxerr[Debug::GRAPHICS] << "Not a Graphics inset!\n";
+		lyxerr[Debug::GRAPHICS] << "Not a Graphics inset!" << endl;
 
 	graphic_->update(params().as_grfxParams());
 }
@@ -250,7 +250,7 @@ void InsetGraphics::readInsetGraphics(LyXLex & lex, string const & bufpath)
 
 		string const token = lex.getString();
 		lyxerr[Debug::GRAPHICS] << "Token: '" << token << '\''
-				    << std::endl;
+				    << endl;
 
 		if (token.empty()) {
 			continue;
@@ -264,7 +264,7 @@ void InsetGraphics::readInsetGraphics(LyXLex & lex, string const & bufpath)
 				<< "This document was created with a newer Graphics widget"
 				", You should use a newer version of LyX to read this"
 				" file."
-				<< std::endl;
+				<< endl;
 			// TODO: Possibly open up a dialog?
 		}
 		else {

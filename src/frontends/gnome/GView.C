@@ -23,7 +23,7 @@ GView::GView(string const & name)
 	  updating_(false),
 	  file_(name + ".glade"),
 	  title_(name),
-	  widget_name_(name), 
+	  widget_name_(name),
 	  xml_(0),
 	  dialog_(0)
 {
@@ -48,11 +48,11 @@ void GView::loadXML()
 	string const file = FileOpenSearch(path, file_, "glade");
 
 	if (file.empty()) {
-		lyxerr << "Cannot find glade file. Aborting." << std::endl;
+		lyxerr << "Cannot find glade file. Aborting." << endl;
 		lyx::Assert(true);
 	}
 
-	lyxerr[Debug::GUI] << "Glade file to open is " << file << '\n';
+	lyxerr[Debug::GUI] << "Glade file to open is " << file << endl;
 
 	xml_ = Gnome::Glade::Xml::create (file, widget_name_);
 }
@@ -77,25 +77,25 @@ bool GView::isValid()
 
 void GView::OKClicked()
 {
-	lyxerr[Debug::GUI] << "GView::OKClicked()\n";
+	lyxerr[Debug::GUI] << "GView::OKClicked()" << endl;
 	getController().OKButton();
 }
 
 void GView::CancelClicked()
 {
-	lyxerr[Debug::GUI] << "GView::CancelClicked()\n";
+	lyxerr[Debug::GUI] << "GView::CancelClicked()" << endl;
 	getController().CancelButton();
 }
 
 void GView::ApplyClicked()
 {
-	lyxerr[Debug::GUI] << "GView::ApplyClicked()\n";
+	lyxerr[Debug::GUI] << "GView::ApplyClicked()" << endl;
 	getController().ApplyButton();
 }
 
 void GView::RestoreClicked()
 {
-	lyxerr[Debug::GUI] << "GView::RestoreClicked()\n";
+	lyxerr[Debug::GUI] << "GView::RestoreClicked()" << endl;
 	getController().RestoreButton();
 }
 

@@ -126,7 +126,7 @@ int InsetCollapsable::height_collapsed() const
 
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	//lyxerr << "InsetCollapsable::metrics:  width: " << mi.base.textwidth << "\n";
+	//lyxerr << "InsetCollapsable::metrics:  width: " << mi.base.textwidth << endl;
 	dimension_collapsed(dim);
 	if (!collapsed_) {
 		Dimension insetdim;
@@ -297,7 +297,7 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 			if (!cmd.argument.empty()) {
 				UpdatableInset::localDispatch(cmd);
 				if (collapsed_) {
-					lyxerr << "branch collapsed_\n";
+					lyxerr << "branch collapsed_" << endl;
 					collapsed_ = false;
 					if (bv->lockInset(this)) {
 						inset.setUpdateStatus(InsetText::FULL);
@@ -307,7 +307,7 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 						first_after_edit = true;
 					}
 				} else {
-					lyxerr << "branch not collapsed_\n";
+					lyxerr << "branch not collapsed_" << endl;
 					if (bv->lockInset(this))
 						inset.localDispatch(cmd);
 				}

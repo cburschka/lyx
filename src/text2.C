@@ -684,7 +684,7 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 
 void LyXText::fullRebreak()
 {
-	lyxerr << "fullRebreak\n";
+	lyxerr << "fullRebreak" << endl;
 	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
 	setCursorIntern(cursor.par(), cursor.pos());
 	selection.cursor = cursor;
@@ -693,7 +693,7 @@ void LyXText::fullRebreak()
 
 void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
-	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << "\n";
+	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << endl;
 	//Assert(mi.base.textwidth);
 
 	// rebuild row cache
@@ -713,7 +713,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 			Dimension dim;
 			MetricsInfo m = mi;
 #warning FIXME: pos != 0
-			m.base.font = getFont(pit, 0); 
+			m.base.font = getFont(pit, 0);
 			ii->inset->metrics(m, dim);
 		}
 
@@ -726,11 +726,11 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	}
 
 	// compute height
-	//lyxerr << "height 0: " << height << "\n";
+	//lyxerr << "height 0: " << height << endl;
 	//for (RowList::iterator rit = rows().begin(); rit != rows().end(); ++rit) {
 	//	height += rit->height();
 	//}
-	//lyxerr << "height 1: " << height << "\n";
+	//lyxerr << "height 1: " << height << endl;
 
 	// final dimension
 	dim.asc = rows().begin()->ascent_of_text();

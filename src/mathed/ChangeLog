@@ -1,3 +1,7 @@
+2003-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* always use std::endl with lyxerr, and <config.h> in some places.
+
 2003-07-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* rename Inset to InsetOld
