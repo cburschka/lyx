@@ -180,7 +180,7 @@ void Toolbar::Pimpl::layoutSelected()
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
 		if (_(cit->name()) == layoutguiname) {
-			owner->getLyXFunc()->dispatch(LFUN_LAYOUT, cit->name());
+			owner->getLyXFunc()->verboseDispatch(LFUN_LAYOUT, cit->name(), true);
 			return;
 		}
 	}
