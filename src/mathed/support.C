@@ -472,7 +472,7 @@ named_deco_struct deco_table[] = {
 	{"underbrace",    brace,      1 },
 	{"overbrace",     brace,      3 },
 	{"overleftarrow", arrow,      1 },
-	{"overightarrow", arrow,      3 },
+	{"overrightarrow", arrow,      3 },
 	                                                  
 	// Delimiters 
 	{"(",            parenth,    0 },
