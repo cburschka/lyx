@@ -15,8 +15,9 @@
 #include "LString.h"
 #include "FormMathsPanel.h"
 
+#include <boost/shared_ptr.hpp>
+
 #include <vector>
-#include "support/smart_ptr.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -31,9 +32,9 @@ class FormMathsBitmap : public FormMathsSub {
 
 public:
 	///
-	typedef lyx::shared_c_ptr<FL_OBJECT> bm_ptr;
+	typedef boost::shared_ptr<FL_OBJECT> bm_ptr;
 	///
-	typedef lyx::shared_c_ptr<FL_FORM> fl_ptr;
+	typedef boost::shared_ptr<FL_FORM> fl_ptr;
 
 	///
 	FormMathsBitmap(LyXView &, Dialogs & d, FormMathsPanel const &,

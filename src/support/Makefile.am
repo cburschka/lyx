@@ -53,7 +53,6 @@ libsupport_la_SOURCES = \
 	putenv.C \
 	rename.C \
 	rmdir.C \
-	smart_ptr.h \
 	snprintf.h \
 	snprintf.c \
 	sstream.h \
@@ -63,5 +62,4 @@ libsupport_la_SOURCES = \
 	textutils.h \
 	translator.h \
 	types.h \
-	unlink.C \
-	utility.h
+	unlink.C

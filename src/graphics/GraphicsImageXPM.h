@@ -16,7 +16,8 @@
 
 #include "GraphicsImage.h"
 #include XPM_H_LOCATION
-#include "support/smart_ptr.h"
+
+#include <boost/shared_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
@@ -129,8 +130,8 @@ private:
 		unsigned int height_;
 		unsigned int cpp_;
 		unsigned int ncolors_;
-		lyx::shared_c_ptr<unsigned int> data_;
-		lyx::shared_c_ptr<XpmColor> colorTable_;
+		boost::shared_ptr<unsigned int> data_;
+		boost::shared_ptr<XpmColor> colorTable_;
 
 		unsigned int color_none_id() const;
 	};

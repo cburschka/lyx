@@ -38,7 +38,7 @@ FormMathsBitmap::FormMathsBitmap(LyXView & lv, Dialogs & d,
 				 FormMathsPanel const & p, string const & t,
 				 vector<string> const & l)
 	: FormMathsSub(lv, d, p, t, false),
-	  latex_(l), form_(0), ww_(0), x_(0), y_(0), w_(0), h_(0)
+	  latex_(l), ww_(0), x_(0), y_(0), w_(0), h_(0)
 {
 	ww_ = 2 * FL_abs(FL_BOUND_WIDTH);
 	x_ = y_ = ww_;
@@ -68,7 +68,7 @@ void FormMathsBitmap::build()
 
 	h_+= 50; // Allow room for a Close button
 
-	form_.reset(fl_bgn_form(FL_UP_BOX, w_, h_));
+	form_.reset(fl_bgn_form(FL_UP_BOX, w_, h_), fl_free_form);
 	form_->u_vdata = this;
 
 	fl_add_box(FL_UP_BOX, 0, 0, w_, h_, "");
@@ -135,7 +135,7 @@ void FormMathsBitmap::addBitmap(int nt, int nx, int ny, int bw, int bh,
 		h_ = max(y_ + wy + ww_, h_);
 	}
 
-	bitmaps_.push_back(bm_ptr(obj));
+	bitmaps_.push_back(bm_ptr(obj, fl_free_object));
 }
 
 

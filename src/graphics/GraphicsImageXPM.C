@@ -20,13 +20,15 @@
 #include "support/filetools.h"    // IsFileReadable
 #include "support/lstrings.h"
 #include "Lsstream.h"
+
+#include <boost/tuple/tuple.hpp>
+#include <boost/bind.hpp>
+
+#include FORMS_H_LOCATION
+
 #include <iomanip>                // std::setfill, etc
 #include <cmath>                  // cos, sin
 #include <cstdlib>                // malloc, free
-
-#include <boost/tuple/tuple.hpp>
-
-#include FORMS_H_LOCATION
 
 #ifndef CXX_GLOBAL_CSTD
 using std::cos;
@@ -433,8 +435,6 @@ ImageXPM::Data::Data()
 
 ImageXPM::Data::~Data()
 {
-	if (colorTable_.unique())
-		free_color_table(colorTable_.get(), ncolors_);
 }
 
 
@@ -445,7 +445,7 @@ void ImageXPM::Data::reset(XpmImage & image)
 	cpp_ = image.cpp;
 
 	// Move the data ptr into this store and free up image.data
-	data_.reset(image.data);
+	data_.reset(image.data, free);
 	image.data = 0;
 
 	// Don't just store the color table, but check first that it contains
@@ -478,13 +478,14 @@ void ImageXPM::Data::reset(XpmImage & image)
 		color.c_color = clone_c_string("none");
 
 		free_color_table(image.colorTable, image.ncolors);
-		colorTable_.reset(table);
+		colorTable_.reset(table, boost::bind(free_color_table, _1, ncolors_));
 
 	} else {
 
 		// Just move the pointer across
 		ncolors_ = image.ncolors;
-		colorTable_.reset(image.colorTable);
+		colorTable_.reset(image.colorTable,
+				  boost::bind(free_color_table, _1, ncolors_));
 		image.colorTable = 0;
 	}
 
@@ -535,7 +536,7 @@ void ImageXPM::Data::resetData(int w, int h, unsigned int * d)
 {
 	width_  = w;
 	height_ = h;
-	data_.reset(d);
+	data_.reset(d, free);
 }
 
 
@@ -685,8 +686,7 @@ void free_color_table(XpmColor * table, size_t size)
 		free(table[i].g4_color);
 		free(table[i].c_color);
 	}
-	// Don't free the table itself. Let the shared_c_ptr do that.
-	// free(table);
+	free(table);
 }
 
 
