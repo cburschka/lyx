@@ -800,11 +800,13 @@ int InsetGraphics::docbook(Buffer const &, ostream & os,
 	if (runparams.flavor == OutputParams::XML) {
 		runparams.exportdata->addExternalFile("docbook-xml",
 						      params().filename.absFilename());
-		os << "<inlinegraphic fileref=\"&" << graphic_label << ";\" " + createDocBookAttributes() + "/>";
+		os << "<inlinemediaobject><imageobject><imagedata fileref=\"&" 
+			<< graphic_label << ";\" " << createDocBookAttributes() 
+			<<  "/></imageobject></inlinemediaobject>";
 	} else {
 		runparams.exportdata->addExternalFile("docbook",
 						      params().filename.absFilename());
-		os << "<inlinegraphic fileref=\"&" << graphic_label << ";\" " + createDocBookAttributes() + "/>";
+		os << "<inlinegraphic fileref=\"&" << graphic_label << ";\" " + createDocBookAttributes() + ">";
 	}
 	return 0;
 }

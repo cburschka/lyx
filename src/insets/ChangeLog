@@ -1,4 +1,10 @@
+2004-10-05  Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* insetgraphics.C (docbook) : using mediaobject for XML;
+	correcting bug with SGML output (now '>' instead of '/>')
+
 2004-10-05  José Matos  <jamatos@lyx.org>
+
 	* insetfloatlist.C (read):
 	* insetquotes.C (read):
 	* insetspace.C (read):
