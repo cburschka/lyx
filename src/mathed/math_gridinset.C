@@ -469,14 +469,18 @@ void MathGridInset::draw(PainterInfo & pi, int x, int y) const
 		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
-			pi.pain.line(x + 1, yy, x + dim_.width() - 1, yy);
+			pi.pain.line(x + 1, yy,
+				     x + dim_.width() - 1, yy,
+				     LColor::foreground);
 		}
 
 	for (col_type col = 0; col <= ncols(); ++col)
 		for (int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
-			pi.pain.line(xx, y - dim_.ascent() + 1, xx, y + dim_.descent() - 1);
+			pi.pain.line(xx, y - dim_.ascent() + 1,
+				     xx, y + dim_.descent() - 1,
+				     LColor::foreground);
 		}
 }
 

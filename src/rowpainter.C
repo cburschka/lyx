@@ -600,8 +600,9 @@ int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp, int
 	font_metrics::rectText(str, font, w, a, d);
 
 	pain_.rectText(leftx + 2 * arrow_size + 5,
-			 start + ((end - start) / 2) + d,
-			 str, font);
+		       start + ((end - start) / 2) + d,
+		       str, font,
+		       LColor::none, LColor::none);
 
 	// top arrow
 	pain_.line(leftx, ty1, midx, ty2, LColor::added_space);
@@ -631,12 +632,12 @@ int RowPainter::paintPageBreak(string const & label, int y)
 	int const text_start = int(xo_ + (width_ - w) / 2);
 	int const text_end = text_start + w;
 
-	pain_.rectText(text_start, y + d, label, pb_font);
+	pain_.rectText(text_start, y + d, label, pb_font, LColor::none, LColor::none);
 
 	pain_.line(int(xo_), y, text_start, y,
-		LColor::pagebreak, Painter::line_onoffdash);
+		   LColor::pagebreak, Painter::line_onoffdash);
 	pain_.line(text_end, y, int(xo_ + width_), y,
-		LColor::pagebreak, Painter::line_onoffdash);
+		   LColor::pagebreak, Painter::line_onoffdash);
 
 	return 3 * defaultRowHeight();
 }
@@ -656,7 +657,7 @@ int RowPainter::paintAppendixStart(int y)
 	int const text_start = int(xo_ + (width_ - w) / 2);
 	int const text_end = text_start + w;
 
-	pain_.rectText(text_start, y + d, label, pb_font);
+	pain_.rectText(text_start, y + d, label, pb_font, LColor::none, LColor::none);
 
 	pain_.line(int(xo_ + 1), y, text_start, y, LColor::appendix);
 	pain_.line(text_end, y, int(xo_ + width_ - 2), y, LColor::appendix);

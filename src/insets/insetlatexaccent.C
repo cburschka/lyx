@@ -487,13 +487,15 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		case TIE:     // tie
 		{
 			pi.pain.arc(int(x2 + hg35), int(y + hg / 2.0),
-				 int(2 * hg), int(hg), 0, 360 * 32);
+				    int(2 * hg), int(hg), 0, 360 * 32,
+				    LColor::foreground);
 			break;
 		}
 		case BREVE:     // breve
 		{
 			pi.pain.arc(int(x2 - (hg / 2.0)), y,
-				 int(hg), int(hg), 0, -360*32);
+				    int(hg), int(hg), 0, -360*32,
+				    LColor::foreground);
 			break;
 		}
 		case CARON:    // caron
@@ -503,7 +505,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			xp[0] = int(x2 - hg35); yp[0] = int(y + hg35);
 			xp[1] = int(x2);        yp[1] = int(y + hg);
 			xp[2] = int(x2 + hg35); yp[2] = int(y + hg35);
-			pi.pain.lines(xp, yp, 3);
+			pi.pain.lines(xp, yp, 3, LColor::foreground);
 			break;
 		}
 		case SPECIAL_CARON:    // special caron
@@ -522,7 +524,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			xp[2] = int(x + dim_.wid + (hg35 / 2.0));
 			yp[2] = y + int(hg);
 
-			pi.pain.lines(xp, yp, 3);
+			pi.pain.lines(xp, yp, 3, LColor::foreground);
 			break;
 		}
 		case HUNGARIAN_UMLAUT:    // hung. umlaut
@@ -569,7 +571,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			xp[3] = int(x2 + hg / 4.0);
 			yp[3] = y + int(hg);
 
-			pi.pain.lines(xp, yp, 4);
+			pi.pain.lines(xp, yp, 4, LColor::foreground);
 			break;
 		}
 		case lSLASH:
@@ -583,7 +585,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			xp[1] = int(x + float(dim_.wid) * 0.75);
 			yp[1] = y + int(hg);
 
-			pi.pain.lines(xp, yp, 2);
+			pi.pain.lines(xp, yp, 2, LColor::foreground);
 			break;
 		}
 		case DOT_LESS_I: // dotless-i
@@ -595,10 +597,12 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		}
 	} else {
 		pi.pain.fillRectangle(x + 1,
-				   baseline - dim_.asc + 1, dim_.wid - 2,
-				   dim_.asc + dim_.des - 2, backgroundColor());
+				      baseline - dim_.asc + 1, dim_.wid - 2,
+				      dim_.asc + dim_.des - 2,
+				      backgroundColor());
 		pi.pain.rectangle(x + 1, baseline - dim_.asc + 1,
-			       dim_.wid - 2, dim_.asc + dim_.des - 2);
+				  dim_.wid - 2, dim_.asc + dim_.des - 2,
+				  LColor::foreground);
 		pi.pain.text(x + 2, baseline, contents, font);
 	}
 }

@@ -1,3 +1,8 @@
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
+	* renderers.C (draw):
+	* insetlatexaccent.C (draw): explicitly define the color passed to the painter.
+
 2003-09-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettext.C: remove block causing problems in lockInsetInInset
