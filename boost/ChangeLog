@@ -1,3 +1,7 @@
+2003-08-21  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* boost/integer_traits.hpp: fix compile error on NetBSD
+
 2003-08-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* boost/config/user.hpp: do not use BOOST_NO_EXCEPTIONS here, that
