@@ -88,6 +88,10 @@ libxforms_la_SOURCES = \
 	FormRef.h \
 	form_ref.C \
 	form_ref.h \
+	FormSearch.C \
+	FormSearch.h \
+	form_search.C \
+	form_search.h \
 	FormSplash.C \
 	FormSplash.h \
 	form_splash.C \

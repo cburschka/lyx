@@ -2383,26 +2383,6 @@ LyXParagraph * LyXText::FirstParagraph() const
 }
 
 
-// returns true if the specified string is at the specified position
-bool LyXText::IsStringInText(LyXParagraph * par,
-			     LyXParagraph::size_type pos,
-			     string const & str) const
-{
-	if (!par)
-		return false;
-
-	LyXParagraph::size_type i = 0;
-	while (pos + i < par->Last()
-	       && string::size_type(i) < str.length()
-	       && str[i] == par->GetChar(pos + i)) {
-		++i;
-	}
-	if (str.length() == string::size_type(i))
-		return true;
-	return false;
-}
-
-
 // sets the selection over the number of characters of string, no check!!
 void LyXText::SetSelectionOverString(BufferView * bview, string const & str)
 {
@@ -2441,55 +2421,6 @@ void LyXText::ReplaceSelectionWithString(BufferView * bview,
 	CutSelection(bview);
 
 	UnFreezeUndo();
-}
-
-
-// if the string can be found: return true and set the cursor to
-// the new position
-bool LyXText::SearchForward(BufferView * bview, string const & str) const
-{
-	LyXParagraph * par = cursor.par();
-	LyXParagraph::size_type pos = cursor.pos();
-	while (par && !IsStringInText(par, pos, str)) {
-		if (pos < par->Last() - 1)
-			++pos;
-		else {
-			pos = 0;
-			par = par->Next();
-		}
-	}
-	if (par) {
-		SetCursor(bview, par, pos);
-		return true;
-	}
-	else
-		return false;
-}
-
-
-bool LyXText::SearchBackward(BufferView * bview, string const & str) const
-{
-	LyXParagraph * par = cursor.par();
-	int pos = cursor.pos();
-
-	do {
-		if (pos > 0)
-			--pos;
-		else {
-			// We skip empty paragraphs (Asger)
-			do {
-				par = par->Previous();
-				if (par)
-					pos = par->Last() - 1;
-			} while (par && pos < 0);
-		}
-	} while (par && !IsStringInText(par, pos, str));
-  
-	if (par) {
-		SetCursor(bview, par, pos);
-		return true;
-	} else
-		return false;
 }
 
 

@@ -8,13 +8,6 @@
 extern "C" void GraphicsCB(FL_OBJECT *, long);
 
 
-extern "C" void SearchForwardCB(FL_OBJECT *, long);
-extern "C" void SearchBackwardCB(FL_OBJECT *, long);
-extern "C" void SearchReplaceCB(FL_OBJECT *, long);
-extern "C" void SearchCancelCB(FL_OBJECT *, long);
-extern "C" void SearchReplaceAllCB(FL_OBJECT *, long);
-
-
 /**** Forms and Objects ****/
 typedef struct {
 	FL_FORM *KeyMap;
@@ -106,7 +99,5 @@ typedef struct {
 	FL_OBJECT *btnMatchWord;
 	FL_OBJECT *replaceall_button;
 } FD_form_search;
-
-extern FD_form_search * create_form_form_search(void);
 
 #endif /* FD_KeyMap_h_ */

@@ -151,10 +151,8 @@ lyx_SOURCES = \
 	lyxcursor.h \
 	lyxfont.C \
 	lyxfont.h \
-	lyxfr0.C \
-	lyxfr0.h \
-	lyxfr1.C \
-	lyxfr1.h \
+	lyxfind.C \
+	lyxfind.h \
 	lyxfunc.C \
 	lyxfunc.h \
 	lyxlex.C \

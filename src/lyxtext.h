@@ -402,12 +402,6 @@ public:
 
 	/* these things are for search and replace */
 
-	/** returns true if the specified string is at the specified
-	  position
-	  */
-	bool IsStringInText(LyXParagraph * par,
-			    LyXParagraph::size_type pos,
-			    string const & str) const;
 	/** sets the selection over the number of characters of string,
 	  no check!!
 	  */
@@ -417,12 +411,6 @@ public:
 	  is used
 	  */
 	void ReplaceSelectionWithString(BufferView *, string const & str);
-
-	/** if the string can be found: return true and set the cursor to
-	  the new position */
-	bool SearchForward(BufferView *, string const & str) const;
-	///
-	bool SearchBackward(BufferView *, string const & str) const;
 
 	/// needed to insert the selection
 	void InsertStringA(BufferView *, string const & str);

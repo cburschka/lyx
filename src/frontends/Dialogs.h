@@ -134,6 +134,8 @@ public:
 	Signal1<void, InsetCommand *> showRef;
 	///
 	Signal1<void, string const &> createRef;
+	///
+	Signal0<void> showSearch;
 	/// pop up the splash
 	Signal0<void> showSplash;
 	/// hide the splash immediately

@@ -1,3 +1,11 @@
+2001-03-06  Juergen Vigna  <jug@sad.it>
+
+	* lyxfind.C (IsStringInText): put parentes around expressions.
+
+2001-03-05  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* lyxfind.[Ch]: find stuff moved out of text2.C/lyxtext.h
+	
 2001-02-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_main.C: add ISO_Left_Tab as bind synonym for Tab

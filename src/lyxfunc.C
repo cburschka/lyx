@@ -75,7 +75,6 @@
 #include "trans_mgr.h"
 #include "layout.h"
 #include "WorkArea.h"
-#include "lyxfr1.h"
 #include "bufferview_funcs.h"
 #include "frontends/Dialogs.h"
 #include "frontends/Toolbar.h"
@@ -86,6 +85,7 @@
 #include "importer.h"
 #include "FontLoader.h"
 #include "TextCache.h"
+#include "lyxfind.h"
 
 using std::pair;
 using std::endl;
@@ -708,8 +708,8 @@ string const LyXFunc::Dispatch(int ac,
 
 		if (!searched_string.empty() &&
 		    ((action == LFUN_WORDFINDBACKWARD) ? 
-		     TEXT()->SearchBackward(owner->view(), searched_string) :
-		     TEXT()->SearchForward(owner->view(), searched_string))) {
+		     SearchBackward(owner->view(), searched_string) :
+		     SearchForward(owner->view(), searched_string))) {
 
 			// ??? What is that ???
 			owner->view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
@@ -903,11 +903,8 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_MENUSEARCH:
 	{
-		// Ok this is one _very_ bad solution, but I think that some
-		// of this will be rewritten as part of GUI indep anyway.
-		// Lgb
-		static LyXFindReplace FR_;
-		FR_.StartSearch(owner->view());
+		owner->getDialogs()->showSearch();
+		break;
 	}
 	break;
 		
