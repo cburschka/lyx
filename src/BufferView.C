@@ -132,6 +132,8 @@ void BufferView::buffer(Buffer * b)
 
 		// Put the old text into the TextCache, but
 		// only if the buffer is still loaded.
+		// Also set the owner of the test to 0
+		text->owner(0);
 		textcache.add(text);
 		if (lyxerr.debugging())
 			textcache.show(lyxerr, "BufferView::buffer");
@@ -431,6 +433,8 @@ int BufferView::resizeCurrentBuffer()
 				lyxerr << "Found a LyXText that fits:\n";
 				textcache.show(lyxerr, text);
 			}
+			// Set the owner of the newly found text
+			text->owner(this);
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "resizeCurrentBuffer");
 		} else {

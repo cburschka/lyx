@@ -236,7 +236,7 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 }
 
 
-PainterBase & Painter::pixmap(int x, int y, Pixmap bitmap)
+PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 {
 	if (lyxerr.debugging()) {
 		if (!Lgb_bug_find_hack)
@@ -249,7 +249,6 @@ PainterBase & Painter::pixmap(int x, int y, Pixmap bitmap)
 	val.function = GXcopy;
 	GC gc = XCreateGC(display, drawable,
 			  GCFunction, &val);
-        int w = 0, h = 0;
 	XCopyArea(display, bitmap, drawable, gc,
 		  0, 0, w, h, x, y);
 	XFreeGC(display, gc);

@@ -99,7 +99,7 @@ LyXText::~LyXText()
 
 void LyXText::owner(BufferView * bv)
 {
-	if (owner_) lyxerr << "LyXText::owner_ already set!" << endl;
+	if (owner_ && bv) lyxerr << "LyXText::owner_ already set!" << endl;
 	owner_ = bv;
 }
 

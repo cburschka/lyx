@@ -1,3 +1,18 @@
+2000-02-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/text2.C (owner): only complain if owner_ is set and bv != 0
+
+	* src/BufferView.C (resizeCurrentBuffer): set the owner of the
+	newly found text in textcache to this.
+	(buffer): set the owner of the text put into the textcache to 0
+
+	* src/insets/figinset.C (draw): fixed the drawing of figures with
+	the new Painter.
+
+	* src/text.C src/mathed/math_cursor.C: nailed and fixed the
+	drawing of mathframe, hfills, protected space, table lines. I have
+	now no outstanding drawing problems with the new Painter code. 
+
 2000-02-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/PainterBase.C (ellipse, circle): do not specify the default

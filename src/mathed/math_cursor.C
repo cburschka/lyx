@@ -162,9 +162,7 @@ void MathedCursor::draw(Painter & pain, int x, int y)
 	int h = par->Height() + 1;
 	if (par->GetType() > LM_OT_PAR) { a += 4;  h += 8; }
 	
-	pain.rectangle(x - 1, y - a,
-		       x - 1 + w, y - a + h,
-		       LColor::mathframe);
+	pain.rectangle(x - 1, y - a, w, h, LColor::mathframe);
 	
 	par->draw(pain, x, y);
 	cursor->Adjust();

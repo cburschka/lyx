@@ -4112,12 +4112,12 @@ void LyXText::GetVisibleRow(int offset,
 		    sel_end_cursor.row == row_ptr) {
 		        if (sel_start_cursor.x < sel_end_cursor.x)
 				pain.fillRectangle(sel_start_cursor.x, offset,
-						   sel_end_cursor.x,
+						   sel_end_cursor.x - sel_start_cursor.x,
 						   row_ptr->height,
 						   LColor::selection);
 			else
 				pain.fillRectangle(sel_end_cursor.x, offset,
-						   sel_start_cursor.x,
+						   sel_start_cursor.x - sel_end_cursor.x,
 						   row_ptr->height,
 						   LColor::selection);
 		}
@@ -4172,7 +4172,7 @@ void LyXText::GetVisibleRow(int offset,
 	if (row_ptr->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
 		LyXFont font(LyXFont::ALL_SANE);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
-		font.setColor(LColor::red);
+		font.setColor(LColor::footnote);
 		
 		int box_x = LYX_PAPER_MARGIN;
 		box_x += font.textWidth(" wide-tab ", 10);
@@ -4279,9 +4279,9 @@ void LyXText::GetVisibleRow(int offset,
 		
 		 /* start of appendix? */
 		if (row_ptr->par->start_of_appendix){
-			owner_->painter().line(1, offset,
-					       paperwidth - 2, offset,
-					       LColor::appendixline);
+			pain.line(1, offset,
+				  paperwidth - 2, offset,
+				  LColor::appendixline);
 		}
 
 		/* think about the margins */ 
@@ -4290,7 +4290,8 @@ void LyXText::GetVisibleRow(int offset,
 		
 		if (row_ptr->par->pagebreak_top){ /* draw a top pagebreak  */
 			pain.line(0, offset + y_top + 2 * DefaultHeight(),
-				  paperwidth, offset + y_top + 2 * DefaultHeight(),
+				  paperwidth,
+				  offset + y_top + 2 * DefaultHeight(),
 				  LColor::pagebreak, Painter::line_onoffdash);
 			y_top += 3 * DefaultHeight();
 		}
@@ -4505,9 +4506,10 @@ void LyXText::GetVisibleRow(int offset,
 				    !row_ptr->par->table->IsContRow(cell))
 					pain.line(int(x_old),
 						  offset + row_ptr->baseline - row_ptr->ascent_of_text,
-						  int(x - x_old),
+						  int(x),
 						  offset + row_ptr->baseline - row_ptr->ascent_of_text,
-						  LColor::tableline);
+						  LColor::tableline,
+						  on_off ? Painter::line_onoffdash : Painter::line_solid);
 				
 				on_off = !row_ptr->par->table->BottomLine(cell);
 				if ((!on_off && !row_ptr->par->table->RowHasContRow(cell)) ||
@@ -4515,18 +4517,19 @@ void LyXText::GetVisibleRow(int offset,
 
 					pain.line(int(x_old),
 						  offset + y_bottom - 1,
-						  int(x - x_old),
+						  int(x),
 						  offset + y_bottom - 1,
-						  LColor::tableline);
+						  LColor::tableline,
+						  on_off ? Painter::line_onoffdash : Painter::line_solid);
 
 				on_off = !row_ptr->par->table->LeftLine(cell);
 
 				pain.line(int(x_old),
 					  offset + row_ptr->baseline - row_ptr->ascent_of_text,
 					  int(x_old),
-					  offset + y_bottom,
+					  offset + y_bottom - 1,
 					  LColor::tableline,
-					  Painter::line_onoffdash);
+					  on_off ? Painter::line_onoffdash : Painter::line_solid);
 				
 				on_off = !row_ptr->par->table->RightLine(cell);
 
@@ -4535,7 +4538,7 @@ void LyXText::GetVisibleRow(int offset,
 					  int(x) - row_ptr->par->table->AdditionalWidth(cell),
 					  offset + y_bottom - 1,
 					  LColor::tableline,
-					  Painter::line_onoffdash);
+					  on_off ? Painter::line_onoffdash : Painter::line_solid);
 				
 				x_old = x;
                 /* take care about the alignment and other spaces */
@@ -4570,7 +4573,7 @@ void LyXText::GetVisibleRow(int offset,
 						
 						pain.line(int(tmpx),
 							  offset + row_ptr->baseline - 1,
-							  int(x - tmpx - 2),
+							  int(x - 2),
 							  offset + row_ptr->baseline - 1,
 							  LColor::vfillline);
 						
@@ -4607,20 +4610,20 @@ void LyXText::GetVisibleRow(int offset,
 
 				pain.line(int(x_old),
 					  offset + row_ptr->baseline - row_ptr->ascent_of_text,
-					  int(x - x_old),
+					  int(x),
 					  offset + row_ptr->baseline - row_ptr->ascent_of_text,
 					  LColor::tableline,
-					  Painter::line_onoffdash);
+					  on_off ? Painter::line_onoffdash : Painter::line_solid);
 			on_off = !row_ptr->par->table->BottomLine(cell);
 			if ((!on_off && !row_ptr->par->table->RowHasContRow(cell)) ||
 			    row_ptr->par->table->VeryLastRow(cell))
 
 				pain.line(int(x_old),
 					  offset + y_bottom - 1,
-					  int(x - x_old),
+					  int(x),
 					  offset + y_bottom - 1,
 					  LColor::tableline,
-					  Painter::line_onoffdash);
+					  on_off ? Painter::line_onoffdash : Painter::line_solid);
 			
 			on_off = !row_ptr->par->table->LeftLine(cell);
 
@@ -4629,7 +4632,7 @@ void LyXText::GetVisibleRow(int offset,
 				  int(x_old),
 				  offset + y_bottom - 1,
 				  LColor::tableline,
-				  Painter::line_onoffdash);
+				  on_off ? Painter::line_onoffdash : Painter::line_solid);
 			
 			on_off = !row_ptr->par->table->RightLine(cell);
 
@@ -4638,7 +4641,7 @@ void LyXText::GetVisibleRow(int offset,
 				  int(x) - row_ptr->par->table->AdditionalWidth(cell),
 				  offset + y_bottom - 1,
 				  LColor::tableline,
-				  Painter::line_onoffdash);
+				  on_off ? Painter::line_onoffdash : Painter::line_solid);
 		}
 	} else {
 		/* table stuff -- end*/
@@ -4669,7 +4672,7 @@ void LyXText::GetVisibleRow(int offset,
 					if (pos >= main_body) {
 						pain.line(int(x),
 							  offset + row_ptr->baseline - DefaultHeight() / 4,
-							  int(fill_hfill),
+							  int(x + fill_hfill),
 							  offset + row_ptr->baseline - DefaultHeight() / 4,
 							  LColor::vfillline,
 							  Painter::line_onoffdash);
@@ -4677,7 +4680,7 @@ void LyXText::GetVisibleRow(int offset,
                     } else {
 			    pain.line(int(x),
 				      offset + row_ptr->baseline - DefaultHeight() / 4,
-				      int(fill_label_hfill),
+				      int(x + fill_label_hfill),
 				      offset + row_ptr->baseline - DefaultHeight() / 4,
 				      LColor::vfillline,
 				      Painter::line_onoffdash);
@@ -4710,7 +4713,7 @@ void LyXText::GetVisibleRow(int offset,
 						
 						pain.line(int(tmpx),
 							  offset + row_ptr->baseline - 1,
-							  int(tmpx),
+							  int(x - 2),
 							  offset + row_ptr->baseline - 1,
 							  LColor::vfillline);
 

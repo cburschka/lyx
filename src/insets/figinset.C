@@ -1101,19 +1101,17 @@ void InsetFig::draw(Painter & pain, LyXFont const & f,
 	// but the figinset code is so complicated so
 	// I don't want to fiddle with it now.
 
-#if 0
-	unsigned long pm = pain.getScreen()->getForeground();
 	if (figure && figure->data && figure->data->bitmap &&
 	    !figure->data->reading && !figure->data->broken) {
 		// draw the bitmap
-		XCopyArea(fl_display, figure->data->bitmap, pm, getGC(gc_copy),
-			  0, 0, wid, hgh, int(x+1), baseline-hgh);
-		XFlush(fl_display);
-		if (flags & 4) XDrawRectangle(fl_display, pm, getGC(gc_copy),
-					      int(x), baseline - hgh - 1,
-					      wid+1, hgh+1);
+		pain.pixmap(int(x + 1), baseline - hgh,
+			    wid, hgh, figure->data->bitmap);
+
+		if (flags & 4)
+			pain.rectangle(int(x), baseline - hgh - 1,
+				       wid + 1, hgh + 1);
+		
 	} else {
-#endif
 		char * msg = 0;
 		// draw frame
 		pain.rectangle(x, baseline - hgh - 1, wid + 1, hgh + 1);
@@ -1136,9 +1134,7 @@ void InsetFig::draw(Painter & pain, LyXFont const & f,
 		
 		font.setSize(LyXFont::SIZE_TINY);
 		pain.text(int(x + 8), baseline - 4, msg, strlen(msg), font);
-#if 0
 	}
-#endif
 	x += width(pain, font);    // ?
 }
 #else

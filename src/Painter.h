@@ -89,7 +89,7 @@ public:
 	/**@Image stuff */
 	
 	/// For the figure inset
-	PainterBase & pixmap(int x, int y, Pixmap bitmap);
+	PainterBase & pixmap(int x, int y, int w, int h, Pixmap bitmap);
 
 	/**@String functions */
 	
