@@ -38,6 +38,8 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void maple(MapleStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };

@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "LaTeXFeatures.h"
 #include "math_substackinset.h"
 #include "math_data.h"
 #include "math_mathmlstream.h"
@@ -74,4 +75,11 @@ void MathSubstackInset::maple(MapleStream & os) const
 	os << "substack(";
 	MathGridInset::maple(os);
 	os << ')';
+}
+
+
+void MathSubstackInset::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	MathGridInset::validate(features);
 }

@@ -35,7 +35,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-
+	///
+	void validate(LaTeXFeatures & features) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///

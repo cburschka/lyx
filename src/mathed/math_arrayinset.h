@@ -25,7 +25,7 @@ public:
 		char valign, std::string const & halign);
 	///
 	MathArrayInset(std::string const &, char valign, std::string const & halign);
-	/// convienience constructor from whitespace/newline seperated data
+	/// convenience constructor from whitespace/newline separated data
 	MathArrayInset(std::string const &, std::string const & str);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -44,7 +44,8 @@ public:
 	void normalize(NormalStream & os) const;
 	///
 	void maple(MapleStream & os) const;
-
+	///
+	void validate(LaTeXFeatures & features) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
