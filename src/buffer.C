@@ -414,7 +414,7 @@ void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
 	for(string::const_iterator cit = str.begin();
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
-			if (autobreakrows && (!par->empty() || layout->keepempty)) {
+			if (autobreakrows && (!par->empty() || par->allowEmpty())) {
 				breakParagraph(params, paragraphs, par, pos,
 					       layout->isEnvironment());
 				++par;
@@ -425,12 +425,10 @@ void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
 			}
 			// do not insert consecutive spaces if !free_spacing
 		} else if ((*cit == ' ' || *cit == '\t') &&
-			   space_inserted && !layout->free_spacing &&
-				   !par->isFreeSpacing())
-		{
+			   space_inserted && !par->isFreeSpacing()) {
 			continue;
 		} else if (*cit == '\t') {
-			if (!layout->free_spacing && !par->isFreeSpacing()) {
+			if (!par->isFreeSpacing()) {
 				// tabs are like spaces here
 				par->insertChar(pos, ' ', font);
 				++pos;
@@ -1522,7 +1520,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 			bool ws;
 			string str;
 			boost::tie(ws, str) = sgml::escapeChar(c);
-			if (ws && !style->free_spacing && !par->isFreeSpacing()) {
+			if (ws && !par->isFreeSpacing()) {
 				// in freespacing mode, spaces are
 				// non-breaking characters
 				if (desc_on) {// if char is ' ' then...
@@ -1907,9 +1905,9 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 
 			if (style->pass_thru) {
 				os << c;
-			} else if (style->free_spacing || par->isFreeSpacing() || c != ' ') {
+			} else if (par->isFreeSpacing() || c != ' ') {
 					os << str;
-			} else if (desc_on ==1) {
+			} else if (desc_on == 1) {
 				++char_line_count;
 				os << "\n</term><listitem><para>";
 				desc_on = 2;

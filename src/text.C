@@ -1461,10 +1461,9 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	LyXLayout_ptr const & layout = cursor.par()->layout();
 
 	// this is only allowed, if the current paragraph is not empty or caption
-	// and if it has not the keepempty flag aktive
-	if (cursor.par()->empty()
-	   && layout->labeltype != LABEL_SENSITIVE
-	   && !layout->keepempty)
+	// and if it has not the keepempty flag active
+	if (cursor.par()->empty() && !cursor.par()->allowEmpty()
+	   && layout->labeltype != LABEL_SENSITIVE)
 		return;
 
 	setUndo(bv(), Undo::FINISH, cursor.par());
@@ -1487,7 +1486,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// breakParagraph call should return a bool if it inserts the
 	// paragraph before or behind and we should react on that one
 	// but we can fix this in 1.3.0 (Jug 20020509)
-	bool const isempty = (layout->keepempty && cursor.par()->empty());
+	bool const isempty = (cursor.par()->allowEmpty() && cursor.par()->empty());
 	::breakParagraph(bv()->buffer()->params, paragraphs, cursor.par(), cursor.pos(),
 		       keep_layout);
 

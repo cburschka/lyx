@@ -429,8 +429,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 	    && getChar(i - 1) != ' '
 	    && (i < size() - 1)
 	    // same in FreeSpacing mode
-	    && !style.free_spacing
-		&& !owner_->isFreeSpacing()
+	    && !owner_->isFreeSpacing()
 	    // In typewriter mode, we want to avoid
 	    // ! . ? : at the end of a line
 	    && !(font.family() == LyXFont::TYPEWRITER_FAMILY

@@ -2224,7 +2224,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		return false;
 
 	// Do not delete empty paragraphs with keepempty set.
-	if (old_cursor.par()->layout()->keepempty)
+	if (old_cursor.par()->allowEmpty())
 		return false;
 
 	// only do our magic if we changed paragraph

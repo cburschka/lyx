@@ -346,8 +346,8 @@ int InsetERT::latex(Buffer const *, ostream & os,
 		}
 		++par;
 		if (par != end) {
-			os << "\n\n";
-			lines += 2;
+			os << "\n";
+			++lines;
 		}
 	}
 

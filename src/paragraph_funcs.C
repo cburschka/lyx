@@ -71,7 +71,7 @@ void breakParagraph(BufferParams const & bparams,
 		tmp->setLabelWidthString(par->params().labelWidthString());
 	}
 
-	bool const isempty = (par->layout()->keepempty && par->empty());
+	bool const isempty = (par->allowEmpty() && par->empty());
 
 	if (!isempty && (par->size() > pos || par->empty() || flag == 2)) {
 		tmp->layout(par->layout());
@@ -937,10 +937,9 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		lex.next();
 		font.setLyXColor(lex.getString());
 	} else if (token == "\\InsetSpace" || token == "\\SpecialChar") {
-		LyXLayout_ptr const & layout = par.layout();
 
 		// Insets don't make sense in a free-spacing context! ---Kayvan
-		if (layout->free_spacing || par.isFreeSpacing()) {
+		if (par.isFreeSpacing()) {
 			if (token == "\\InsetSpace")
 				par.insertChar(par.size(), ' ', font, change);
 			else if (lex.isOK()) {

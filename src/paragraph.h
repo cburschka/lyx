@@ -283,8 +283,11 @@ public:
 	///
 	int stripLeadingSpaces();
 
-	///
+	/// return true if we allow multiple spaces
 	bool isFreeSpacing() const;
+
+	/// return true if we allow this par to stay empty
+	bool allowEmpty() const;
 
 	///
 	ParagraphParameters & params();

@@ -623,7 +623,7 @@ void Paragraph::makeSameLayout(Paragraph const & par)
 
 int Paragraph::stripLeadingSpaces()
 {
-	if (layout()->free_spacing || isFreeSpacing())
+	if (isFreeSpacing())
 		return 0;
 
 	int i = 0;
@@ -1409,8 +1409,21 @@ ParagraphParameters const & Paragraph::params() const
 
 bool Paragraph::isFreeSpacing() const
 {
+	if (layout()->free_spacing)
+		return true;
+
 	// for now we just need this, later should we need this in some
 	// other way we can always add a function to Inset::() too.
+	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
+		return (pimpl_->inset_owner->owner()->lyxCode() == Inset::ERT_CODE);
+	return false;
+}
+
+
+bool Paragraph::allowEmpty() const
+{
+	if (layout()->keepempty)
+		return true;
 	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
 		return (pimpl_->inset_owner->owner()->lyxCode() == Inset::ERT_CODE);
 	return false;

@@ -330,8 +330,12 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 	string orig_file = params().filename;
 	string const rel_file = MakeRelPath(orig_file, buf->filePath());
 
-	if (!IsFileReadable(rel_file))
+	if (!IsFileReadable(orig_file)) {
+		lyxerr[Debug::GRAPHICS]
+			<< "InsetGraphics::prepareFile\n"
+			<< "No file '" << orig_file << "' can be found!" << endl;
 		return rel_file;
+	}
 
 	bool const zipped = zippedFile(orig_file);
 
@@ -521,6 +525,8 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os,
 		(before + '{' + relative_file + " not found!}" + after);
 	os << latex_str;
 
+	lyxerr[Debug::GRAPHICS] << "InsetGraphics::latex outputting:\n"
+				<< latex_str << endl;
 	// Return how many newlines we issued.
 	return int(lyx::count(latex_str.begin(), latex_str.end(),'\n') + 1);
 }
