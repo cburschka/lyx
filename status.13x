@@ -57,8 +57,12 @@ What's new
 
 - the Home/End keys no longer mark the document as "(changed)"
 
-- fix support for \framebox macro: the argument is handled as text,
-  and a second optional argument is now supported
+- fix support for \framebox macro in mathed: the argument is handled
+  as text, and a second optional argument is now supported
+
+- add support for macro \bmod in mathed
+
+- add macro \Pr in the list of selectable functions of the math panel
 
 - fix building of xforms dialogs' source on SMP machines [Bug #944,
   xforms only]

@@ -119,7 +119,7 @@ char const * function_names[] = {
 	"det", "dim", "exp", "gcd", "hom", "inf", "ker",
 	"lg", "lim", "liminf", "limsup", "ln", "log",
 	"max", "min", "sec", "sin", "sinh", "sup",
-	"tan", "tanh", ""
+	"tan", "tanh", "Pr", ""
 };
 
 int const nr_function_names = sizeof(function_names) / sizeof(char const *) - 1;
