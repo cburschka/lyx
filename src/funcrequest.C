@@ -24,39 +24,39 @@ using std::endl;
 
 
 FuncRequest::FuncRequest()
-	: view_(0), action(LFUN_UNKNOWN_ACTION), button_(mouse_button::none)
+	: view_(0), action(LFUN_UNKNOWN_ACTION), x(0), y(0), button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(kb_action act)
-	: view_(0), action(act), button_(mouse_button::none)
+	: view_(0), action(act), x(0), y(0), button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(kb_action act, string const & arg)
-	: view_(0), action(act), argument(arg), button_(mouse_button::none)
+	: view_(0), action(act), argument(arg), x(0), y(0), button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest
 		(kb_action act, int ax, int ay, mouse_button::state button)
-	: view_(0), action(act), argument(), x(ax), y(ay), button_(button)
+	: view_(0), action(act), x(ax), y(ay), button_(button)
 {}
 
 
 FuncRequest::FuncRequest(BufferView * view, kb_action act)
-	: view_(view), action(act), button_(mouse_button::none)
+	: view_(view), action(act), x(0), y(0), button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(BufferView * view, kb_action act, string const & arg)
-	: view_(view), action(act), argument(arg), button_(mouse_button::none)
+	: view_(view), action(act), argument(arg), x(0),  y(0), button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest
 		(BufferView * view, kb_action act, int ax, int ay, mouse_button::state but)
-	: view_(view), action(act), argument(), x(ax), y(ay), button_(but)
+	: view_(view), action(act), x(ax), y(ay), button_(but)
 {}
 
 
