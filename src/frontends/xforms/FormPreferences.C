@@ -342,10 +342,10 @@ void FormPreferences::feedback(FL_OBJECT * ob)
 		str = spellchecker_.feedback(ob);
 	}
 
-	str = formatted(str, dialog_->text_warning->w-10,
+	str = formatted(_(str), dialog_->text_warning->w-10,
 			FL_SMALL_SIZE, FL_NORMAL_STYLE);
 
-	fl_set_object_label(dialog_->text_warning, _(str.c_str()));
+	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 }
 
@@ -3005,11 +3005,11 @@ void FormPreferences::printWarning(string const & warning)
 {
 	warningPosted = true;
 
-	string str = N_("WARNING!") + string(" ") + warning;
+	string str = _("WARNING!") + string(" ") + warning;
 	str = formatted(str, dialog_->text_warning->w-10,
 			 FL_SMALL_SIZE, FL_NORMAL_STYLE);
 
-	fl_set_object_label(dialog_->text_warning, _(str.c_str()));
+	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 }
 

@@ -242,8 +242,14 @@ void deco_cb(FL_OBJECT *, long data)
     case MM_OK:
       { 
 	 int i = fl_get_bmtable(fd_deco->menu);
-	 lyxfunc->Dispatch(LFUN_INSERT_MATH, deco_code[i]);
-	 if (data == MM_APPLY) break;
+	 // ideally the callback should not be called if the index is
+	 // greater than the maxitem of the bmtable, but I do not know
+	 // how to enforce that (JMarc)
+	 if (i <= sizeof(deco_code)/sizeof(deco_code[0])) {
+	   lyxfunc->Dispatch(LFUN_INSERT_MATH, deco_code[i]);
+	   if (data == MM_APPLY) break;
+	 }
+	 else break;
       }
     case MM_CLOSE: fl_hide_form(fd_deco->deco); break;
    }

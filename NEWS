@@ -2,9 +2,8 @@ What's new in LyX version 1.1.6?
 --------------------------------
 
 As with all of the 1.1.x versions of LyX, this release contains a lot
-of new code: in particular, half of the changes described in the
-ChangeLog (which dates back to the 1.1.0 release) describe changes in
-LyX 1.1.6!
+of new code: in particular, more than half of the changes described in
+the ChangeLog (which dates back to the 1.1.0 release) concern LyX 1.1.6!
 
 Besides the usual under-the-hood changes, LyX 1.1.6 has many
 new user-visible features. The main visible feature is that the
@@ -18,7 +17,7 @@ from the older development version:
   have been overhauled.
 
 - LyX now has a Preference popup where you can change most of your
-  lyxrc settings [Allan, details?]
+  lyxrc settings.
 
 - the menus can now be defined in a text file, and they automatically
   display the keyboard bindings associated with commands.
@@ -80,7 +79,7 @@ And finally, there have been a lot of smaller changes, which are
 mentioned here for your information
 
 - the menu entry File->New does not prompt for a file name by default
-  (this can be changed in lyxrc).
+  (this can be changed in preferences).
 
 - new -geometry command line option, which replaces the old -width,
   -height, etc.

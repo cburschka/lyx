@@ -7,19 +7,26 @@
 
 char const * _(char const * str)
 {
-	return gettext(str);
+	if (str && str[0])
+		return gettext(str);
+	else
+		return "";
 }
 
 
 string const _(string const & str) 
 {
-	int const s = str.length();
-	char * tmp = new char[s + 1];
-	str.copy(tmp, s);
-	tmp[s] = '\0';
-	string ret(gettext(tmp));
-	delete [] tmp;
-	return ret;
+	if (!str.empty()) {
+		int const s = str.length();
+		char * tmp = new char[s + 1];
+		str.copy(tmp, s);
+		tmp[s] = '\0';
+		string ret(gettext(tmp));
+		delete [] tmp;
+		return ret;
+	}
+	else
+		return string();
 }
 
 #endif

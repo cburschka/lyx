@@ -1,3 +1,21 @@
+2001-01-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/math_panel.C (deco_cb): check the decoration index is
+	valid. 
+
+	* src/frontends/xforms/FormPreferences.C (feedback): apply
+	formatting to the translated string, not to the original one.
+	(printWarning): ditto.
+
+	* src/gettext.C (_): translate empty string with empty string.
+
+	* src/frontends/xforms/FormCopyright.C (build): use _() instead of
+	N_(). 
+
+	* NEWS: small update
+
+	* UPGRADING: mention that tabular format has been changed.
+
 2001-01-03  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (InsetButtonPress): look for button==2
