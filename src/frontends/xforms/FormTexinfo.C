@@ -80,11 +80,8 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long ob_value) {
 
 	} else if (ob == dialog_->browser && ob_value == 2) {
 		// double click in browser: view selected file
-		string selection = string();
-		if (fl_get_button(dialog_->check_fullpath)) {
-			// contents in browser has full path
-			selection = getString(dialog_->browser);
-		} else {
+		string selection = getString(dialog_->browser);
+		if (!fl_get_button(dialog_->check_fullpath)) {
 			// contents in browser has filenames without path
 			// reconstruct path from controller getContents
 			string const files = controller().getContents(activeStyle, true);
@@ -92,12 +89,13 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long ob_value) {
 
 			// find line in files vector
 			vector<string>::const_iterator it = vec.begin();
-			int const line = fl_get_browser(dialog_->browser);
-			for (int i = line; it != vec.end() && i > 0; ++it, --i) {
-				if (i == 1) selection = *it;
+			for (; it != vec.end(); ++it) {
+				if ((*it).find(selection) != string::npos) {
+					selection = *it;
+					break;
+				}
 			}
 		}
-
 		if (!selection.empty()) {
 			controller().viewFile(selection);
 		}
