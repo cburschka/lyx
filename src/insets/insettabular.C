@@ -740,6 +740,31 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv,
     if ((action < 0) && arg.empty())
         return FINISHED;
 
+    bool hs = hasSelection();
+
+    result=DISPATCHED;
+    // this one have priority over the locked InsetText!
+    switch (action) {
+    case LFUN_SHIFT_TAB:
+    case LFUN_TAB:
+    {
+	HideInsetCursor(bv);
+	if (the_locking_inset) {
+	    UnlockInsetInInset(bv, the_locking_inset);
+	    the_locking_inset = 0;
+	}
+	if (action == LFUN_TAB)
+	    moveNextCell(bv, old_locking_inset != 0);
+	else
+	    movePrevCell(bv, old_locking_inset != 0);
+	sel_cell_start = sel_cell_end = actcell;
+	if (hs)
+	    UpdateLocal(bv, SELECTION, false);
+	ShowInsetCursor(bv);
+	return result;
+    }
+    }
+
     if (the_locking_inset) {
         result=the_locking_inset->LocalDispatch(bv, action, arg);
 	if (result == DISPATCHED_NOUPDATE) {
@@ -760,7 +785,6 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv,
 	}
     }
 
-    bool hs = hasSelection();
     HideInsetCursor(bv);
     result=DISPATCHED;
     switch (action) {
@@ -874,22 +898,6 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv,
 	break;
     case LFUN_END:
 	break;
-    case LFUN_SHIFT_TAB:
-    case LFUN_TAB:
-    {
-	if (the_locking_inset) {
-	    UnlockInsetInInset(bv, the_locking_inset);
-	    the_locking_inset = 0;
-	}
-	if (action == LFUN_TAB)
-	    moveNextCell(bv, old_locking_inset != 0);
-	else
-	    movePrevCell(bv, old_locking_inset != 0);
-	sel_cell_start = sel_cell_end = actcell;
-	if (hs)
-	    UpdateLocal(bv, SELECTION, false);
-	break;
-    }
     case LFUN_LAYOUT_TABULAR:
     {
 	bv->owner()->getDialogs()->showTabular(this);

@@ -109,6 +109,7 @@ void InsetText::init(InsetText const * ins)
     frame_color = LColor::insetframe;
     locked = false;
     old_par = 0;
+    last_drawn_width = -1;
 }
 
 
@@ -323,9 +324,15 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     xpos = x;
     UpdatableInset::draw(bv, f, baseline, x, cleared);
 
+    // update insetWidth and insetHeight with dummy calls
+    (void)ascent(bv, f);
+    (void)descent(bv, f);
+    (void)width(bv, f);
+
     // if top_x differs we have a rule down and we don't have to clear anything
     if (!cleared && (top_x == int(x)) &&
-	((need_update==INIT)||(need_update==FULL)||(top_baseline!=baseline)))
+	((need_update==INIT)||(need_update==FULL)||(top_baseline!=baseline)||
+	 (last_drawn_width!=insetWidth)))
     {
 	int w =  insetWidth;
 	int h = insetAscent + insetDescent;
@@ -352,8 +359,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	bv->text->status = LyXText::CHANGED_IN_DRAW;
 	return;
     }
-    if (cleared)
-	need_update = FULL;
+    if (cleared || (last_drawn_width != insetWidth)) {
+	need_update |= FULL;
+	last_drawn_width = insetWidth;
+    }
 
     top_baseline = baseline;
     top_y = baseline - ascent(bv, f);

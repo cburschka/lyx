@@ -251,7 +251,9 @@ void InsetCollapsable::InsetUnlock(BufferView * bv)
 void InsetCollapsable::InsetButtonPress(BufferView * bv,int x,int y,int button)
 {
     if (!collapsed && (x >= button_length)) {
-	inset->InsetButtonPress(bv, x - widthCollapsed, y, button);
+	inset->InsetButtonPress(bv, x - widthCollapsed,
+				y + (top_baseline - inset->y()),
+				button);
     }
 }
 
@@ -271,7 +273,9 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 	    bv->updateInset(this, false);
 	}
     } else if (!collapsed && (x >= button_length) && (y >= button_top_y)) {
-	inset->InsetButtonRelease(bv, x - widthCollapsed, y, button);
+	inset->InsetButtonRelease(bv, x - widthCollapsed,
+				  y + (top_baseline - inset->y()),
+				  button);
     }
 }
 
@@ -280,7 +284,9 @@ void InsetCollapsable::InsetMotionNotify(BufferView * bv,
 					 int x, int y, int state)
 {
     if (x >= button_length) {
-	inset->InsetMotionNotify(bv, x-widthCollapsed, y, state);
+	inset->InsetMotionNotify(bv, x-widthCollapsed,
+				 y + (top_baseline - inset->y()),
+				 state);
     }
 }
 

@@ -1,5 +1,9 @@
 2001-03-23  Juergen Vigna  <jug@sad.it>
 
+	* insetcollapsable.C (InsetMotionNotify):
+	(InsetButtonRelease): 
+	(InsetButtonPress): fixed y-offset (minipages).
+
 	* insettext.C (draw): force a FULL update if cleared == true.
 
 	* insetcollapsable.C (draw): Lars forgotten entry for changing this

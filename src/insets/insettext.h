@@ -290,5 +290,7 @@ private:
     LyXParagraph * old_par;
     /// The cache.
     mutable Cache cache;
+    ///
+    mutable int last_drawn_width;
 };
 #endif
