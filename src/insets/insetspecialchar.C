@@ -265,13 +265,47 @@ int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 
 int InsetSpecialChar::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return ascii(buf, os, 0);
+	switch (kind_) {
+	case HYPHENATION:
+	case LIGATURE_BREAK:
+		break;
+	case END_OF_SENTENCE:
+		os << ".";
+		break;
+	case LDOTS:
+		os << "...";	
+		break;
+	case MENU_SEPARATOR:      
+		os << "&lyxarrow;"; 
+		break;
+	case PROTECTED_SEPARATOR:
+		os << "&nbsp;";
+		break;
+	}
+	return 0;
 }
 
 
 int InsetSpecialChar::docbook(Buffer const * buf, ostream & os) const
 {
-	return ascii(buf, os, 0);
+	switch (kind_) {
+	case HYPHENATION:
+	case LIGATURE_BREAK:
+		break;
+	case END_OF_SENTENCE:
+		os << ".";
+		break;
+	case LDOTS:
+		os << "...";	
+		break;
+	case MENU_SEPARATOR:
+		os << "&lyxarrow;";
+		break;
+	case PROTECTED_SEPARATOR:
+		os << "&nbsp;";
+		break;
+	}
+	return 0;
 }
 
 

@@ -1,3 +1,17 @@
+2001-10-23  José Matos  <jamatos@fep.up.pt>
+
+	* LaTeXFeatures.h:
+	* LaTeXFeatures.C (getLyXSGMLEntities): new function to get the name
+	of the lyx defined sgml entities used in a docbook/linuxdoc document.
+
+	* buffer.C (makeLinuxDocFile):
+	(makeDocBookFile): reworked the preamble, more clean, and with
+	support for lyx defined entities. Changed the document declaration
+	to be more XML friendly.
+
+	* tabular.C (DocBook): removed / terminator to be more SGML friendly,
+	if we need to output XML that should be done with a filter.
+	
 2001-10-22  Juergen Vigna  <jug@sad.it>
 
 	* sp_pspell.h (class PSpell): add alive function needed in the

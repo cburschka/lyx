@@ -41,6 +41,8 @@ struct LaTeXFeatures {
 	string const getMacros() const;
 	/// The definitions needed by the document's textclass
 	string const getTClassPreamble() const;
+	/// The sgml definitions needed by the document (dobook/linuxdoc)
+	string const getLyXSGMLEntities() const;
 	///
 	string const getIncludedFiles(string const & fname) const;
 	///

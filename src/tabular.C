@@ -2308,7 +2308,7 @@ int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 			os << "center";
 			break;
 		}
-		os << "\"/>\n";
+		os << "\">\n";
 		++ret;
 	}
 

@@ -2561,14 +2561,16 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	string top_element = textclasslist.LatexnameOfClass(params.textclass);
 
 	if (!body_only) {
-		string sgml_includedfiles=features.getIncludedFiles(fname);
+		ofs << "<!doctype linuxdoc system";
 
-		if (params.preamble.empty() && sgml_includedfiles.empty()) {
-			ofs << "<!doctype linuxdoc system>\n\n";
-		} else {
-			ofs << "<!doctype linuxdoc system [ "
-			    << params.preamble << sgml_includedfiles << " \n]>\n\n";
+		string preamble = params.preamble;
+		preamble += features.getIncludedFiles(fname);
+		preamble += features.getLyXSGMLEntities();
+
+		if (!preamble.empty()) {
+			ofs << " [ " << preamble << " ]";
 		}
+		ofs << ">\n\n";
 
 		if (params.options.empty())
 			sgmlOpenTag(ofs, 0, top_element);
@@ -3025,16 +3027,17 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	string top_element = textclasslist.LatexnameOfClass(params.textclass);
 
 	if (!only_body) {
-		string sgml_includedfiles = features.getIncludedFiles(fname);
+		ofs << "<!DOCTYPE " << top_element
+		    << "  PUBLIC \"-//OASIS//DTD DocBook V3.1//EN\"";
 
-		ofs << "<!doctype " << top_element
-		    << " public \"-//OASIS//DTD DocBook V3.1//EN\"";
+		string preamble = params.preamble;
+		preamble += features.getIncludedFiles(fname);
+		preamble += features.getLyXSGMLEntities();
 
-		if (params.preamble.empty() && sgml_includedfiles.empty())
-			ofs << ">\n\n";
-		else
-			ofs << "\n [ " << params.preamble 
-			    << sgml_includedfiles << " \n]>\n\n";
+		if (!preamble.empty()) {
+			ofs << "\n [ " << preamble << " ]";
+		}
+		ofs << ">\n\n";
 	}
 
 	string top = top_element;	

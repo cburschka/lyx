@@ -375,6 +375,20 @@ string const LaTeXFeatures::getTClassPreamble() const
 }	
 
 
+string const LaTeXFeatures::getLyXSGMLEntities() const
+{
+	// Definition of entities used in the document that are LyX related.
+	ostringstream entities;
+
+	if (lyxarrow) {
+		entities << "<!ENTITY lyxarrow \"-&gt;\">"
+			 << '\n';
+	}
+
+	return entities.str().c_str();
+}
+
+
 string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 {
 	ostringstream sgmlpreamble;
