@@ -155,14 +155,17 @@ string const unique_id()
 
 
 InsetGraphics::InsetGraphics()
-	: cached_status_(grfx::ErrorUnknown), cache_filled_(false),
-	  graphic_label(unique_id())
+	: graphic_label(unique_id()),
+	  cached_status_(grfx::ErrorUnknown), cache_filled_(false)
+	  
 {}
 
 
 InsetGraphics::InsetGraphics(InsetGraphics const & ig, bool same_id)
-	: cached_status_(grfx::ErrorUnknown), cache_filled_(false),
-	  graphic_label(unique_id())
+	: Inset(ig, same_id),
+	  SigC::Object(),
+	  graphic_label(unique_id()),
+	  cached_status_(grfx::ErrorUnknown), cache_filled_(false)
 {
 	setParams(ig.params());
 	if (same_id)

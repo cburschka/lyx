@@ -1,3 +1,8 @@
+2002-02-28  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetgraphics.C (c-tors): initialise parent classes explicitly in
+	copy c-tor and initialise member variables in the correct order.
+
 2002-02-28  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (localDispatch): clear selection on PgUp/Down.
