@@ -17,7 +17,7 @@
 
 #include <vector>
 
-class EnumLColor;
+class LColor_color;
 class QPrefs;
 class QPrefAsciiModule;
 class QPrefDateModule;
@@ -83,7 +83,7 @@ protected:
 
 private:
 
-	std::vector<EnumLColor> colors_;
+	std::vector<LColor_color> colors_;
 
 	QPrefAsciiModule * asciiModule;
 	QPrefDateModule * dateModule;

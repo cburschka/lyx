@@ -134,7 +134,7 @@ void ControlPrefs::redrawGUI()
 }
 
 
-void ControlPrefs::setColor(EnumLColor col, string const & hex)
+void ControlPrefs::setColor(LColor_color col, string const & hex)
 {
 	string const s = lcolor.getLyXName(col) + ' ' + hex;
 	lv_.dispatch(FuncRequest(LFUN_SET_COLOR, s));

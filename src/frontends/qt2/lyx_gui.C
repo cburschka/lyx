@@ -193,13 +193,13 @@ FuncStatus getStatus(FuncRequest const & ev)
 }
 
 
-string const hexname(EnumLColor col)
+string const hexname(LColor_color col)
 {
 	return ltrim(fromqstr(lcolorcache.get(col).name()), "#");
 }
 
 
-void update_color(EnumLColor)
+void update_color(LColor_color)
 {
 	// FIXME: Bleh, can't we just clear them all at once ?
 	lcolorcache.clear();

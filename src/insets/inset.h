@@ -20,7 +20,7 @@
 #include "ParagraphList_fwd.h"
 
 class Buffer;
-class EnumLColor;
+class LColor_color;
 class FuncRequest;
 class LatexRunParams;
 class LyXCursor;
@@ -204,9 +204,9 @@ public:
 	///
 	UpdatableInset * owner() const { return owner_; }
 	///
-	void setBackgroundColor(EnumLColor);
+	void setBackgroundColor(LColor_color);
 	///
-	EnumLColor backgroundColor() const;
+	LColor_color backgroundColor() const;
 	///
 	int x() const { return top_x; }
 	///

@@ -1,4 +1,12 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
+	
+	* LColor.h:
+	* lyxfont.C:
+	* lyxfont.h:
+	* lyxtext.h:
+	* text.C: rename EnumLColor as LColor_color.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
 
 	* cursor.[Ch]: use the dispatch_result wrapper class DispatchResult to remove
 	#include "insets/insetbase.h" from cursor.h.

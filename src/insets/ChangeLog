@@ -1,5 +1,12 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
+	* inset.C:
+	* inset.h:
+	* insettext.C:
+	* insettext.h: rename EnumLColor as LColor_color.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
 	* inset.h: add the InsetOld::Code wrapper class InsetOld_code.
 	* insetbase.h: add the dispatch_result wrapper class DispatchResult.
 

@@ -59,8 +59,8 @@ Painter & Painter::buttonFrame(int x, int y, int w, int h)
 Painter & Painter::rectText(int x, int baseline,
 	string const & str,
 	LyXFont const & font,
-	EnumLColor back,
-	EnumLColor frame)
+	LColor_color back,
+	LColor_color frame)
 {
 	int width;
 	int ascent;

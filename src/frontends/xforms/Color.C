@@ -50,7 +50,7 @@ int hexstrToInt(string const & str)
 
 
 
-bool getRGBColor(EnumLColor col,
+bool getRGBColor(LColor_color col,
 		 unsigned int & r, unsigned int & g, unsigned int & b)
 {
 	string const name = lcolor.getX11Name(col);

@@ -63,7 +63,7 @@ int QLPainter::paperHeight() const
 }
 
 
-QPainter & QLPainter::setPen(EnumLColor c,
+QPainter & QLPainter::setPen(LColor_color c,
 	Painter::line_style ls, Painter::line_width lw)
 {
 	QPen pen = qp_->pen();
@@ -85,7 +85,7 @@ QPainter & QLPainter::setPen(EnumLColor c,
 }
 
 
-Painter & QLPainter::point(int x, int y, EnumLColor c)
+Painter & QLPainter::point(int x, int y, LColor_color c)
 {
 	setPen(c).drawPoint(x, y);
 	return *this;
@@ -94,7 +94,7 @@ Painter & QLPainter::point(int x, int y, EnumLColor c)
 
 Painter & QLPainter::line(int x1, int y1,
 	int x2, int y2,
-	EnumLColor col,
+	LColor_color col,
 	line_style ls,
 	line_width lw)
 {
@@ -105,7 +105,7 @@ Painter & QLPainter::line(int x1, int y1,
 
 Painter & QLPainter::lines(int const * xp, int const * yp,
 	int np,
-	EnumLColor col,
+	LColor_color col,
 	line_style ls,
 	line_width lw)
 {
@@ -127,7 +127,7 @@ Painter & QLPainter::lines(int const * xp, int const * yp,
 
 Painter & QLPainter::rectangle(int x, int y,
 	int w, int h,
-	EnumLColor col,
+	LColor_color col,
 	line_style ls,
 	line_width lw)
 {
@@ -138,7 +138,7 @@ Painter & QLPainter::rectangle(int x, int y,
 
 Painter & QLPainter::fillRectangle(int x, int y,
 	int w, int h,
-	EnumLColor col)
+	LColor_color col)
 {
 	qp_->fillRect(x, y, w, h, lcolorcache.get(col));
 	return *this;
@@ -146,7 +146,7 @@ Painter & QLPainter::fillRectangle(int x, int y,
 
 
 Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
-	int np, EnumLColor col)
+	int np, LColor_color col)
 {
 	// Must use new as np is not known at compile time.
 	boost::scoped_array<QCOORD> points(new QCOORD[np * 2]);
@@ -169,7 +169,7 @@ Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
 
 Painter & QLPainter::arc(int x, int y,
 	unsigned int w, unsigned int h,
-	int a1, int a2, EnumLColor col)
+	int a1, int a2, LColor_color col)
 {
 	// LyX usings 1/64ths degree, Qt usings 1/16th
 	setPen(col).drawArc(x, y, w, h, a1 / 4, a2 / 4);

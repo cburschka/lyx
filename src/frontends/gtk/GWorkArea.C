@@ -30,27 +30,27 @@ ColorCache::~ColorCache()
 }
 
 
-Gdk::Color * ColorCache::getColor(EnumLColor clr)
+Gdk::Color * ColorCache::getColor(LColor_color clr)
 {
 	MapIt it = cache_.find(clr);
 	return it == cache_.end() ? 0 : it->second;
 }
 
 
-XftColor * ColorCache::getXftColor(EnumLColor clr)
+XftColor * ColorCache::getXftColor(LColor_color clr)
 {
 	MapIt2 it = cache2_.find(clr);
 	return it == cache2_.end() ? 0 : it->second;
 }
 
 
-void ColorCache::cacheColor(EnumLColor clr, Gdk::Color * gclr)
+void ColorCache::cacheColor(LColor_color clr, Gdk::Color * gclr)
 {
 	cache_[clr] = gclr;
 }
 
 
-void ColorCache::cacheXftColor(EnumLColor clr, XftColor * xclr)
+void ColorCache::cacheXftColor(LColor_color clr, XftColor * xclr)
 {
 	cache2_[clr] = xclr;
 }
@@ -69,7 +69,7 @@ void ColorCache::clear()
 }
 
 
-XftColor * ColorHandler::getXftColor(EnumLColor clr)
+XftColor * ColorHandler::getXftColor(LColor_color clr)
 {
 	XftColor * xclr = colorCache.getXftColor(clr);
 	if (!xclr) {
@@ -86,7 +86,7 @@ XftColor * ColorHandler::getXftColor(EnumLColor clr)
 }
 
 
-Gdk::Color * ColorHandler::getGdkColor(EnumLColor clr)
+Gdk::Color * ColorHandler::getGdkColor(LColor_color clr)
 {
 	Gdk::Color * gclr = colorCache.getColor(clr);
 	if (!gclr) {

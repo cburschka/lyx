@@ -363,7 +363,7 @@ FuncStatus lyx_gui::getStatus(FuncRequest const & /*ev*/)
 }
 
 
-string const lyx_gui::hexname(EnumLColor col)
+string const lyx_gui::hexname(LColor_color col)
 {
 	Gdk::Color gdkColor;
 	Gdk::Color * gclr = colorCache.getColor(col);
@@ -385,7 +385,7 @@ string const lyx_gui::hexname(EnumLColor col)
 }
 
 
-void lyx_gui::update_color(EnumLColor /*col*/)
+void lyx_gui::update_color(LColor_color /*col*/)
 {
 	colorCache.clear();
 }

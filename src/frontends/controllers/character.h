@@ -19,7 +19,7 @@
 #include <vector>
 
 
-class EnumLColor;
+class LColor_color;
 
 
 /** Functions of use to the character GUI controller and view */
@@ -50,7 +50,7 @@ typedef std::pair<string, LyXFont::FONT_SIZE>   SizePair;
 ///
 typedef std::pair<string, FONT_STATE> BarPair;
 ///
-typedef std::pair<string, EnumLColor> ColorPair;
+typedef std::pair<string, LColor_color> ColorPair;
 
 ///
 std::vector<FamilyPair>   const getFamilyData();

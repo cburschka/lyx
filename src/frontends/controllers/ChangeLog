@@ -1,3 +1,11 @@
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
+	* ControlCharacter.C:
+	* ControlCharacter.h:
+	* ControlPrefs.C:
+	* ControlPrefs.h:
+	* character.h: rename EnumLColor as LColor_color.
+
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
 	* ControlCharacter.C: add #include "LColor.h".

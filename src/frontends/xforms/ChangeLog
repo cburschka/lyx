@@ -1,3 +1,14 @@
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
+	* Color.C:
+	* Color.h:
+	* ColorHandler.C:
+	* ColorHandler.h:
+	* FormCharacter.h:
+	* XPainter.C:
+	* XPainter.h:
+	* lyx_gui.C: rename EnumLColor as LColor_color.
+
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
 	* xformsImage.[Ch]: separate interface from implementation. Make all the virtual

@@ -22,7 +22,7 @@
 // This is only included to provide stuff for the non-public sections
 #include <X11/Xlib.h>
 
-class EnumLColor;
+class LColor_color;
 class LyXFont;
 
 /**
@@ -36,14 +36,14 @@ public:
 	///
 	~LyXColorHandler();
 	///
-	unsigned long colorPixel(EnumLColor c);
+	unsigned long colorPixel(LColor_color c);
 	///
-	GC getGCForeground(EnumLColor c);
+	GC getGCForeground(LColor_color c);
 	///
 	GC getGCLinepars(Painter::line_style,
-			 Painter::line_width, EnumLColor c);
+			 Painter::line_width, LColor_color c);
 	/// update the cache after a color definition change
-	void updateColor(EnumLColor c);
+	void updateColor(LColor_color c);
 
 private:
 	///

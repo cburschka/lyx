@@ -1,4 +1,10 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
+	
+	* Painter.C:
+	* Painter.h:
+	* lyx_gui.h: rename EnumLColor as LColor_color.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.[Ch] (find): renamed as find_or_build.
 	(update, hideSlot): don't call find_or_build to find the requested dialog.

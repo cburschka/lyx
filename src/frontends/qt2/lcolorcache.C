@@ -22,7 +22,7 @@ LColorCache::LColorCache()
 }
 
 
-QColor const & LColorCache::get(EnumLColor col) const
+QColor const & LColorCache::get(LColor_color col) const
 {
 	lcolor_map::const_iterator cit = colormap.find(col);
 	if (cit != colormap.end())

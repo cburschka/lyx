@@ -1452,13 +1452,13 @@ void InsetText::setDrawFrame(DrawFrame how)
 }
 
 
-EnumLColor InsetText::frameColor() const
+LColor_color InsetText::frameColor() const
 {
 	return LColor::color(frame_color_);
 }
 
 
-void InsetText::setFrameColor(EnumLColor col)
+void InsetText::setFrameColor(LColor_color col)
 {
 	frame_color_ = col;
 }

@@ -20,13 +20,13 @@
 #include "support/std_string.h"
 
 
-class EnumLColor;
+class LColor_color;
 
 
 /** Given col, fills r, g, b in the range 0-255.
     The function returns true if successful.
     It returns false on failure and sets r, g, b to 0. */
-bool getRGBColor(EnumLColor col,
+bool getRGBColor(LColor_color col,
 		 unsigned int & r, unsigned int & g, unsigned int & b);
 
 struct RGBColor;

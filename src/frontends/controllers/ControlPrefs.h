@@ -19,7 +19,7 @@
 
 
 class Converters;
-class EnumLColor;
+class LColor_color;
 class Formats;
 
 class ControlPrefs : public ControlDialogBI {
@@ -50,7 +50,7 @@ public:
 	void redrawGUI();
 
 	/// set a color
-	void setColor(EnumLColor col, string const & hex);
+	void setColor(LColor_color col, string const & hex);
 
 	/// update the screen fonts after change
 	void updateScreenFonts();

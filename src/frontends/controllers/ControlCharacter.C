@@ -175,7 +175,7 @@ void ControlCharacter::setBar(frnt::FONT_STATE val)
 }
 
 
-EnumLColor ControlCharacter::getColor() const
+LColor_color ControlCharacter::getColor() const
 {
 	if (!font_.get())
 		return LColor::ignore;
@@ -184,7 +184,7 @@ EnumLColor ControlCharacter::getColor() const
 }
 
 
-void ControlCharacter::setColor(EnumLColor val)
+void ControlCharacter::setColor(LColor_color val)
 {
 	switch (val) {
 	case LColor::ignore:

@@ -18,7 +18,7 @@
 #include <vector>
 
 class Dialogs;
-class EnumLColor;
+class LColor_color;
 class LyXFont;
 class LyXComm;
 class FuncRequest;
@@ -72,12 +72,12 @@ FuncStatus getStatus(FuncRequest const & ev);
 /** Eg, passing LColor::black returns "000000",
  *      passing LColor::white returns "ffffff".
  */
-string const hexname(EnumLColor col);
+string const hexname(LColor_color col);
 
 /**
  * update an altered GUI color
  */
-void update_color(EnumLColor col);
+void update_color(LColor_color col);
 
 /**
  * update the font cache

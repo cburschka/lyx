@@ -51,7 +51,7 @@ int GPainter::paperHeight() const
 }
 
 
-void GPainter::setForeground(Glib::RefPtr<Gdk::GC> gc, EnumLColor clr)
+void GPainter::setForeground(Glib::RefPtr<Gdk::GC> gc, LColor_color clr)
 {
 	Gdk::Color * gclr = owner_.getColorHandler().getGdkColor(clr);
 	gc->set_foreground(*gclr);
@@ -85,7 +85,7 @@ void GPainter::setLineParam(Glib::RefPtr<Gdk::GC> gc,
 }
 
 
-Painter & GPainter::point(int x, int y, EnumLColor c)
+Painter & GPainter::point(int x, int y, LColor_color c)
 {
 	setForeground(owner_.getGC(), c);
 	owner_.getPixmap()->draw_point(owner_.getGC(), x, y);
@@ -95,7 +95,7 @@ Painter & GPainter::point(int x, int y, EnumLColor c)
 
 Painter & GPainter::line(int x1, int y1,
 	int x2, int y2,
-	EnumLColor col,
+	LColor_color col,
 	line_style ls,
 	line_width lw)
 {
@@ -108,7 +108,7 @@ Painter & GPainter::line(int x1, int y1,
 
 Painter & GPainter::lines(int const * xp, int const * yp,
 	int np,
-	EnumLColor col,
+	LColor_color col,
 	line_style ls,
 	line_width lw)
 {
@@ -127,7 +127,7 @@ Painter & GPainter::lines(int const * xp, int const * yp,
 
 Painter & GPainter::rectangle(int x, int y,
 	int w, int h,
-	EnumLColor col,
+	LColor_color col,
 	line_style ls,
 	line_width lw)
 {
@@ -140,7 +140,7 @@ Painter & GPainter::rectangle(int x, int y,
 
 Painter & GPainter::fillRectangle(int x, int y,
 	int w, int h,
-	EnumLColor col)
+	LColor_color col)
 {
 	setForeground(owner_.getGC(), col);
 	owner_.getPixmap()->draw_rectangle(owner_.getGC(), true, x, y, w, h);
@@ -149,7 +149,7 @@ Painter & GPainter::fillRectangle(int x, int y,
 
 
 Painter & GPainter::fillPolygon(int const * xp, int const * yp,
-	int np, EnumLColor col)
+	int np, LColor_color col)
 {
 	setForeground(owner_.getGC(), col);
 	std::vector<Gdk::Point> points(np);
@@ -165,7 +165,7 @@ Painter & GPainter::fillPolygon(int const * xp, int const * yp,
 
 Painter & GPainter::arc(int x, int y,
 	unsigned int w, unsigned int h,
-	int a1, int a2, EnumLColor col)
+	int a1, int a2, LColor_color col)
 {
 	setForeground(owner_.getGC(), col);
 	owner_.getPixmap()->draw_arc(owner_.getGC(),

@@ -239,18 +239,18 @@ private:
 };
 
 
-/** \c EnumLColor is a wrapper for LColor::color. It can be forward-declared and
+/** \c LColor_color is a wrapper for LColor::color. It can be forward-declared and
  *  passed as a function argument without having to expose LColor.h.
  */
-class EnumLColor {
+class LColor_color {
         LColor::color val_;
 public:
         /** The default constructor is nasty,
-	 *  but allows us to use EnumLColor in STL containers.
+	 *  but allows us to use LColor_color in STL containers.
 	 */
-	EnumLColor() : val_(static_cast<LColor::color>(-1)) {}
+	LColor_color() : val_(static_cast<LColor::color>(-1)) {}
 
-	EnumLColor(LColor::color val) : val_(val) {}
+	LColor_color(LColor::color val) : val_(val) {}
         operator LColor::color() const{ return val_; }
 };
 

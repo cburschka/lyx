@@ -20,20 +20,20 @@
 
 #include <X11/Xft/Xft.h>
 
-class EnumLColor;
+class LColor_color;
 
 class ColorCache
 {
-	typedef std::map<EnumLColor, Gdk::Color *> Map;
+	typedef std::map<LColor_color, Gdk::Color *> Map;
 	typedef Map::iterator MapIt;
-	typedef std::map<EnumLColor, XftColor *> Map2;
+	typedef std::map<LColor_color, XftColor *> Map2;
 	typedef Map2::iterator MapIt2;
 public:
 	~ColorCache();
-	Gdk::Color * getColor(EnumLColor);
-	XftColor * getXftColor(EnumLColor);
-	void cacheColor(EnumLColor, Gdk::Color *);
-	void cacheXftColor(EnumLColor, XftColor *);
+	Gdk::Color * getColor(LColor_color);
+	XftColor * getXftColor(LColor_color);
+	void cacheColor(LColor_color, Gdk::Color *);
+	void cacheXftColor(LColor_color, XftColor *);
 	void clear();
 private:
 	Map cache_;
@@ -46,8 +46,8 @@ class ColorHandler
 {
 public:
 	ColorHandler(GWorkArea& owner) : owner_(owner) {}
-	XftColor * getXftColor(EnumLColor clr);
-	Gdk::Color * getGdkColor(EnumLColor clr);
+	XftColor * getXftColor(LColor_color clr);
+	Gdk::Color * getGdkColor(LColor_color clr);
 private:
 	GWorkArea & owner_;
 };

@@ -332,7 +332,7 @@ FuncStatus getStatus(FuncRequest const & /*ev*/)
 	return FuncStatus();
 }
 
-string const hexname(EnumLColor col)
+string const hexname(LColor_color col)
 {
 	unsigned int r, g, b;
 	bool const success = getRGBColor(col, r, g, b);
@@ -353,7 +353,7 @@ string const hexname(EnumLColor col)
 }
 
 
-void update_color(EnumLColor col)
+void update_color(LColor_color col)
 {
 	lyxColorHandler->updateColor(col);
 }
