@@ -118,7 +118,7 @@ private:
 	// I think the following should be moved to BufferView. (Asger)
 
 	///
-	void menuNew(bool fromTemplate);
+	void menuNew(string const & argument, bool fromTemplate);
 
 	///
 	void open(string const &);

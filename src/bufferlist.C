@@ -489,7 +489,7 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 			b->paragraph->layout(textclasslist[b->params.textclass].defaultLayout());
 	}
 
-	if (!lyxrc.new_ask_filename && !isNamed) {
+	if (!isNamed) {
 		b->setUnnamed();
 		b->setFileName(name);
 	}

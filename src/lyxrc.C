@@ -88,7 +88,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\lastfiles", LyXRC::RC_LASTFILES },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
-	{ "\\new_ask_filename", LyXRC::RC_NEW_ASK_FILENAME },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
 	{ "\\override_x_deadkeys", LyXRC::RC_OVERRIDE_X_DEADKEYS },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
@@ -250,8 +249,6 @@ void LyXRC::setDefaults() {
 	language_command_begin = "\\selectlanguage{$$lang}";
 	language_command_local = "\\foreignlanguage{$$lang}{";
 	default_language = "english";
-	//
-	new_ask_filename = false;
 
 	//
 	date_insert_format = "%A, %e %B %Y";
@@ -882,10 +879,6 @@ int LyXRC::read(string const & filename)
 				mark_foreign_language = lexrc.getBool();
 			break;
 
-		case RC_NEW_ASK_FILENAME:
-			if (lexrc.next())
-				new_ask_filename = lexrc.getBool();
-			break;
 		case RC_CONVERTER: {
 			string from, to, command, flags;
 			if (lexrc.next())
@@ -1594,11 +1587,6 @@ void LyXRC::output(ostream & os) const
 	case RC_AUTO_NUMBER:
 		if (auto_number != system_lyxrc.auto_number) {
 			os << "\\auto_number " << tostr(auto_number) << "\n";
-		}
-	case RC_NEW_ASK_FILENAME:
-		if (new_ask_filename != system_lyxrc.new_ask_filename) {
-			os << "\\new_ask_filename " << tostr(new_ask_filename)
-			   << "\n";
 		}
 	case RC_DEFAULT_LANGUAGE:
 		if (default_language != system_lyxrc.default_language) {

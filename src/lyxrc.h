@@ -337,8 +337,6 @@ enum LyXRCTags {
 	/// Do we have to use a GUI?
 	bool use_gui;
 	///
-	bool new_ask_filename;
-	///
 	string default_language;
 	///
 	bool cursor_follows_scrollbar;

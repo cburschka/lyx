@@ -1069,11 +1069,11 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 
 		// --- Menus -----------------------------------------------
 	case LFUN_MENUNEW:
-		menuNew(false);
+		menuNew(argument, false);
 		break;
 
 	case LFUN_MENUNEWTMPLT:
-		menuNew(true);
+		menuNew(argument, true);
 		break;
 
 	case LFUN_CLOSEBUFFER:
@@ -1690,9 +1690,10 @@ void LyXFunc::setupLocalKeymap()
 }
 
 
-void LyXFunc::menuNew(bool fromTemplate)
+void LyXFunc::menuNew(string const & name, bool fromTemplate)
 {
 	string initpath = lyxrc.document_path;
+	string filename(name);
 
 	if (owner->view()->available()) {
 		string const trypath = owner->buffer()->filePath();
@@ -1702,86 +1703,17 @@ void LyXFunc::menuNew(bool fromTemplate)
 	}
 
 	static int newfile_number;
-	string s;
 
-	if (lyxrc.new_ask_filename) {
-		FileDialog fileDlg(owner, _("Enter filename for new document"),
-				   LFUN_SELECT_FILE_SYNC,
-			make_pair(string(_("Documents|#o#O")),
-				  string(lyxrc.document_path)),
-			make_pair(string(_("Templates|#T#t")),
-				  string(lyxrc.template_path)));
-
-		FileDialog::Result result =
-			fileDlg.Select(initpath,
-				       _("*.lyx|LyX Documents (*.lyx)"),
-				       _("newfile"));
-
-		if (result.second.empty()) {
-			owner->message(_("Canceled."));
-			lyxerr[Debug::INFO] << "New Document Cancelled." << endl;
-			return;
-		}
-
-		// get absolute path of file and make sure the filename ends
-		// with .lyx
-		s = MakeAbsPath(result.second);
-		if (!IsLyXFilename(s))
-			s += ".lyx";
-
-		// Check if the document already is open
-		if (bufferlist.exists(s)) {
-			switch (Alert::askConfirmation(_("Document is already open:"),
-						MakeDisplayPath(s, 50),
-						_("Do you want to close that document now?\n"
-						  "('No' will just switch to the open version)")))
-			{
-			case 1: // Yes: close the document
-				if (!bufferlist.close(bufferlist.getBuffer(s)))
-				// If close is canceled, we cancel here too.
-					return;
-				break;
-			case 2: // No: switch to the open document
-				owner->view()->buffer(bufferlist.getBuffer(s));
-				return;
-			case 3: // Cancel: Do nothing
-				owner->message(_("Canceled."));
-				return;
-			}
-		}
-		// Check whether the file already exists
-		FileInfo fi(s);
-		if (fi.readable() &&
-		    Alert::askQuestion(_("File already exists:"),
-				MakeDisplayPath(s, 50),
-				_("Do you want to open the document?"))) {
-				// loads document
-			string const disp_fn(MakeDisplayPath(s));
-
-			ostringstream str;
-			str << _("Opening  document") << ' '
-			    << disp_fn << "...";
-
-			owner->message(str.str().c_str());
-			owner->view()->buffer(bufferlist.loadLyXFile(s));
-			ostringstream str2;
-			str2 << _("Document") << ' '
-			     << disp_fn << ' ' << _("opened.");
-
-			owner->message(str2.str().c_str());
-
-			return;
-		}
-	} else {
-		s = AddName(lyxrc.document_path,
+	if (filename.empty()) {
+		filename = AddName(lyxrc.document_path,
 			    "newfile" + tostr(++newfile_number) + ".lyx");
-		FileInfo fi(s);
-		while (bufferlist.exists(s) || fi.readable()) {
+		FileInfo fi(filename);
+		while (bufferlist.exists(filename) || fi.readable()) {
 			++newfile_number;
-			s = AddName(lyxrc.document_path,
+			filename = AddName(lyxrc.document_path,
 				    "newfile" +	tostr(newfile_number) +
 				    ".lyx");
-			fi.newFile(s);
+			fi.newFile(filename);
 		}
 	}
 
@@ -1809,9 +1741,7 @@ void LyXFunc::menuNew(bool fromTemplate)
 		templname = fname;
 	}
 
-	// find a free buffer
-	lyxerr[Debug::INFO] << "Find a free buffer." << endl;
-	owner->view()->buffer(bufferlist.newFile(s, templname));
+	owner->view()->buffer(bufferlist.newFile(filename, templname, !name.empty()));
 }
 
 

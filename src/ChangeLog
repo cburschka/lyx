@@ -1,5 +1,14 @@
 2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
 
+	* bufferlist.C:
+	* lyxfunc.h: 
+	* lyxfunc.C:
+	* lyxrc.h:
+	* lyxrc.C: remove file->new asks for name option, and let
+	  buffer-new take an argument
+ 
+2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
+
 	* BufferView_pimpl.C: remove unneeded extra repaint()
  
 2002-07-10  John Levon  <moz@compsoc.man.ac.uk>
