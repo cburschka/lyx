@@ -54,10 +54,6 @@ string ImportNoweb::documentclass()
 {
 	string result = "literate-article"; // Default
 
-#warning If you use literate programming you should verify that this works
-	// This method has been rewritten to use ifstream, but since I
-	// don't use literate programming myself I am unable to check
-	// this correclty. (Lgb)
 	ifstream ifs(file.c_str());
 
 	if (!ifs) return "nofile"; // Should not happen!
@@ -67,7 +63,7 @@ string ImportNoweb::documentclass()
 		if (p != string::npos) {
 			p = line.find('{', p);
 			string::size_type q = line.find('}', p);
-			result = "literate-" + line.substr(p, q - p);
+			result = "literate-" + line.substr(p + 1, q - p - 1);
 			break;
 		}
 	}
