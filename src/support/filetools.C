@@ -26,7 +26,7 @@
 #include "support/systemcall.h"
 
 #include "filetools.h"
-#include "format.h"
+//#include "format.h"
 #include "lstrings.h"
 #include "FileInfo.h"
 #include "forkedcontr.h"
@@ -895,6 +895,7 @@ string const GetExtension(string const & name)
 }
 
 
+#if 0
 namespace {
 
 class FormatExtensionsEqual : public std::unary_function<Format, bool> {
@@ -910,6 +911,7 @@ private:
 };
 
 } // namespace anon
+#endif
 
 
 // the different filetypes and what they contain in one of the first lines
@@ -948,7 +950,6 @@ string const getFormatFromContents(string const & filename)
 	if (filename.empty() || !IsFileReadable(filename))
 		return string();
 
-
 	ifstream ifs(filename.c_str());
 	if (!ifs)
 		// Couldn't open file...
@@ -967,7 +968,8 @@ string const getFormatFromContents(string const & filename)
 	int const max_count = 50;
 	int count = 0;
 
-	string str, format;
+	string str;
+	string format;
 	bool firstLine = true;
 	while ((count++ < max_count) && format.empty()) {
 		if (ifs.eof()) {
@@ -1091,6 +1093,12 @@ string const getFormatFromContents(string const & filename)
 	lyxerr[Debug::GRAPHICS]
 		<< "filetools(getFormatFromContents)\n"
 		<< "\tCouldn't find a known format!\n";
+#if 0
+	// This just cannot be here. It is a blatant violation of interfaces.
+	// Nothing in support should have any knowledge of internal structures
+	// in the rest of lyx. This case needs to be explictly checked for
+	// in the places where this function is called. Also it makes the
+	// function name a lie. (Lgb)
 	if (!ext.empty()) {
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing
@@ -1104,6 +1112,7 @@ string const getFormatFromContents(string const & filename)
 			return cit->name();
 		}
 	}
+#endif
 	lyxerr[Debug::GRAPHICS]
 		<< "\twill use a \"user\" defined format" << endl;
 	return "user";
