@@ -1,3 +1,8 @@
+2003-01-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* importer.C (Loaders): do not preallocate 3 elements in the
+	vector, since one ends up with 6 elements otherwise
+
 2002-12-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* DepTable.C (write): write the file name as last element of the

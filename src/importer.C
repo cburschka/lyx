@@ -116,7 +116,7 @@ vector<Format const *> const Importer::GetImportableFormats()
 
 vector<string> const Importer::Loaders()
 {
-	vector<string> v(3);
+	vector<string> v;
 	v.push_back("lyx");
 	v.push_back("text");
 	v.push_back("textparagraph");
