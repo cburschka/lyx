@@ -148,7 +148,7 @@ void FormPreferences::ok()
 void FormPreferences::hide()
 {
 	// We need to hide the active tabfolder otherwise we get a
-	// BadDrawable error from X windows and LyX crashes without saving.
+	// BadDrawable error from X window and LyX crashes without saving.
 	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabfolder_prefs);
 	if (outer_form
 	    && outer_form->visible) {

@@ -232,7 +232,7 @@ FD_form_interface * FormPreferences::build_interface()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Override X-Windows dead-keys|#O");
+    char const * const dummy = N_("Override X Window dead-keys|#O");
     fdui->check_override_x_dead_keys = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 95, 265, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

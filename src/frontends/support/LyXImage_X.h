@@ -15,7 +15,7 @@
 #include "frontends/support/LyXImage.h"
 #include <X11/Xlib.h>
 
-// This class actually acts as a base class when X-Windows is used.
+// This class actually acts as a base class when X Window is used.
 
 class LyXImage {
 public:
