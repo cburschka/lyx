@@ -13,7 +13,14 @@ lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(SIGC_LIBS) \
 	$(PSPELL_LIBS) @AIKSAURUS_LIBS@
 
 #lyx_LDFLAGS=-Wl,-O1
-EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in
+EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
+	Sectioning.h \
+	Sectioning.C \
+	Variables.C \
+	Variables.h \
+	counters.C \
+	counters.h
+ 
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES) @FRONTEND_INCLUDES@
@@ -78,8 +85,6 @@ lyx_SOURCES = \
 	ToolbarDefaults.h \
 	UpdateInset.C \
 	UpdateInset.h \
-	Variables.C \
-	Variables.h \
 	WorkArea.C \
 	WorkArea.h \
 	XFormsView.C \
@@ -99,8 +104,6 @@ lyx_SOURCES = \
 	config.h.in \
 	converter.C \
 	converter.h \
-	counters.C \
-	counters.h \
 	debug.C \
 	debug.h \
 	encoding.C \
