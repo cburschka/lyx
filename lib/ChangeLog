@@ -1,3 +1,7 @@
+2004-11-04  José Matos  <jamatos@lyx.org>
+
+	* layouts/db_stdclasses.inc: allowed non alphanumeric chars in ids.
+
 2004-11-04  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* Makefile.am: fix installation of lyx2lyx and scripts for
@@ -12,8 +16,8 @@
 
 2004-10-30  José Matos  <jamatos@lyx.org>
 
-	* db_stdclasses.inc:
-	* db_stdcharstyles.inc: new file to hold docbook Character Styles.
+	* layouts/db_stdclasses.inc:
+	* layouts/db_stdcharstyles.inc: new file to hold docbook Character Styles.
 
 2004-10-30  José Matos  <jamatos@lyx.org>
 

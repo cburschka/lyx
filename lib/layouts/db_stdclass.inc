@@ -14,7 +14,8 @@ TocDepth                3
 DefaultStyle            Standard
 
 ClassOptions
-#	Header             "PUBLIC &quot;-//OASIS//DTD DocBook V4.1//EN&quot;"
+#	Header		"PUBLIC &quot;-//OASIS//DTD DocBook V4.3//EN&quot;"
+	Other		".-"
 End
 
 Style Standard
