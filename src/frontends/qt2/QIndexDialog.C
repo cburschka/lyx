@@ -8,11 +8,11 @@
 
 #include <config.h>
 
-#include "QIndexDialog.h"
-#include "Dialogs.h"
-#include "QIndex.h"
 #include "gettext.h"
 
+#include "QIndex.h"
+#include "QIndexDialog.h"
+ 
 #include <qpushbutton.h>
 #include <qlineedit.h>
 #include <qwhatsthis.h>

@@ -11,8 +11,8 @@
 
 #include <config.h>
 
-#include "ui/QERTDialogBase.h"
 #include "QERT.h"
+#include "ui/QERTDialogBase.h"
 
 class QERTDialog : public QERTDialogBase
 { Q_OBJECT

@@ -15,7 +15,7 @@
 const unsigned int cellsize = 20;
 
 EmptyTable::EmptyTable(QWidget * parent, const char * name)
-	: QtTableView(parent,name)
+	: QtTableView(parent, name, WRepaintNoErase)
 {
 	setNumCols(5);
 	setNumRows(5);
@@ -38,6 +38,22 @@ void EmptyTable::paintCell(QPainter *p, int row, int col)
 	p->fillRect(0, 0, x2, y2, QColor("white"));
 	p->drawLine(x2, 0, x2, y2);
 	p->drawLine(0, y2, x2, y2);
+
+	if (row + 1 != numRows() || col + 1 != numCols())
+		return;
+ 
+	// draw handle
+	int const step = cellsize / 5;
+	int const space = 4;
+	int x = cellsize - step;
+	int const y = cellsize - space;
+	int const ex = cellsize - space;
+	int ey = cellsize - step;
+	while (x > space) {
+		p->drawLine(x, y, ex, ey);
+		x -= step;
+		ey -= step;
+	}
 }
 
 void EmptyTable::setNumberColumns(int nr_cols)

@@ -8,12 +8,13 @@
 
 #include <config.h>
 
-#include "QShowFileDialog.h"
 #include "ControlShowFile.h"
-#include "QShowFile.h"
-#include "Qt2BC.h"
 #include "gettext.h"
 
+#include "QShowFile.h"
+#include "QShowFileDialog.h"
+#include "Qt2BC.h"
+ 
 #include <qtextview.h>
 #include <qpushbutton.h>
 

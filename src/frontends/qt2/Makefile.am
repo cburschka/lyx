@@ -21,19 +21,42 @@ libqt2_la_SOURCES = \
 	$(DIALOGSOURCES) \
 	Alert_pimpl.C \
 	Dialogs.C \
-	GUIRunTime.C \
 	FileDialog.C \
 	FileDialog_private.C \
-	Timeout_pimpl.h \
+	LyXScreenFactory.C \
+	Menubar_pimpl.C \
+	Menubar_pimpl.h \
 	Timeout_pimpl.C \
-	Qt2Base.C	\
-	Qt2Base.h	\
+	Timeout_pimpl.h \
+	Toolbar_pimpl.C \
+	Toolbar_pimpl.h \
+	QContentPane.C \
+	QContentPane.h \
+	QLPainter.C \
+	QLPainter.h \
+	QLyXKeySym.C \
+	QLyXKeySym.h \
+	Qt2Base.C \
+	Qt2Base.h \
 	Qt2BC.C	\
 	Qt2BC.h	\
+	QtView.h \
+	QtView.C \
+	QWorkArea.h \
+	QWorkArea.C \
+	WorkAreaFactory.C \
 	emptytable.C \
 	emptytable.h \
+	guiapi.C \
 	lengthcombo.C \
 	lengthcombo.h \
+	lyx_gui.C \
+	qfont_loader.h \
+	qfont_loader.C \
+	qfont_metrics.C \
+	qlkey.h \
+	qscreen.h \
+	qscreen.C \
 	qttableview.h \
 	qttableview.C
 

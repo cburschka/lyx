@@ -12,12 +12,12 @@
 
 #include <config.h>
 
-#include <qfiledialog.h>
-
 #include "LString.h"
 #include "lyxfunc.h"
 
 #include "frontends/FileDialog.h"
+
+#include <qfiledialog.h>
 
 class LyXView;
 

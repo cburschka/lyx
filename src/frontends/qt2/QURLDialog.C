@@ -8,12 +8,11 @@
 
 #include <config.h>
 
-#include <qpushbutton.h>
-
-#include "QURLDialog.h"
-#include "Dialogs.h"
 #include "QURL.h"
+#include "QURLDialog.h"
 
+#include <qpushbutton.h>
+ 
 QURLDialog::QURLDialog(QURL * form)
 	: QURLDialogBase(0, 0, false, 0),
 	form_(form)

@@ -1,0 +1,137 @@
+/**
+ * \file qfont_loader.C
+ * Copyright 1997 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Asger Alstrup
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include "qfont_loader.h"
+#include "gettext.h"
+#include "debug.h"
+#include "lyxrc.h"
+#include "BufferView.h"
+#include "frontends/LyXView.h"
+
+ 
+qfont_loader::qfont_loader()
+{
+}
+
+
+qfont_loader::~qfont_loader()
+{
+}
+
+
+void qfont_loader::update()
+{
+	int i1,i2,i3,i4;
+
+	// fuck this !
+ 
+	for (i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) {
+		for (i2 = 0; i1 < 2; ++i2) {
+			for (i3 = 0; i1 < 4; ++i3) {
+				for (i4 = 0; i1 < 10; ++i4) {
+					fontinfo_[i1][i2][i3][i4].reset(0);
+				}
+			}
+		}
+	}
+}
+
+ 
+qfont_loader::font_info::font_info(LyXFont const & f)
+	: metrics(font)
+{
+	font.setPointSize(int((lyxrc.font_sizes[f.size()] * lyxrc.dpi * 
+		(lyxrc.zoom / 100.0)) / 72.27 + 0.5));
+ 
+	// FIXME: lyxrc, check for failure etc.
+ 
+	switch (f.family()) {
+		case LyXFont::SYMBOL_FAMILY:
+			font.setRawName("-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific");
+			break;
+		case LyXFont::CMR_FAMILY:
+			font.setRawName("-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*");
+			break;
+		case LyXFont::CMSY_FAMILY:
+			font.setRawName("-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*");
+			break;
+		case LyXFont::CMM_FAMILY:
+			font.setRawName("-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*");
+			break;
+		case LyXFont::CMEX_FAMILY:
+			font.setRawName("-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*");
+			break;
+		case LyXFont::MSA_FAMILY:
+			font.setRawName("-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*");
+			break;
+		case LyXFont::MSB_FAMILY:
+			font.setRawName("-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*");
+			break;
+		case LyXFont::EUFRAK_FAMILY:
+			font.setRawName("-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*");
+			break;
+		case LyXFont::ROMAN_FAMILY:
+			font.setFamily("times");
+			break;
+		case LyXFont::SANS_FAMILY:
+			font.setFamily("helvetica");
+			break;
+		case LyXFont::TYPEWRITER_FAMILY:
+			font.setFamily("courier");
+			break;
+	}
+ 
+	switch (f.series()) {
+		case LyXFont::MEDIUM_SERIES:
+			font.setWeight(QFont::Normal);
+			break;
+		case LyXFont::BOLD_SERIES:
+			font.setWeight(QFont::Bold);
+			break;
+	}
+ 
+	switch (f.shape()) {
+		case LyXFont::ITALIC_SHAPE:
+		case LyXFont::SLANTED_SHAPE:
+			font.setItalic(true);
+			break;
+	}
+
+	metrics = QFontMetrics(font);
+}
+
+
+qfont_loader::font_info const * qfont_loader::getfontinfo(LyXFont const & f)
+{
+	if (!lyxrc.use_gui) {
+		// FIXME
+	}
+
+	font_info * fi = fontinfo_[f.family()][f.series()][f.shape()][f.size()].get();
+	if (fi) {
+		return fi;
+	} else {
+		fi = new font_info(f); 
+		fontinfo_[f.family()][f.series()][f.shape()][f.size()].reset(fi);
+		return fi;
+	}
+}
+
+ 
+bool qfont_loader::available(LyXFont const &)
+{
+	// FIXME (see getRawName docs)
+	return true;
+}

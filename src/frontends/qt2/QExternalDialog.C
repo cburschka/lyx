@@ -8,6 +8,9 @@
 
 #include <config.h>
 
+#include "gettext.h"
+#include "ControlExternal.h"
+ 
 #include <qwidget.h>
 #include <qpushbutton.h>
 #include <qfiledialog.h>
@@ -15,10 +18,7 @@
 #include <qtextview.h>
 #include <qlineedit.h>
 
-#include "gettext.h"
 #include "QExternalDialog.h"
-#include "ControlExternal.h"
-#include "Dialogs.h"
 #include "QExternal.h"
 
 QExternalDialog::QExternalDialog(QExternal * form)

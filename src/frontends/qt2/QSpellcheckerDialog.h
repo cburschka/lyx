@@ -11,9 +11,8 @@
 
 #include <config.h>
 
-#include "ui/QSpellcheckerDialogBase.h"
-
 #include "QSpellchecker.h"
+#include "ui/QSpellcheckerDialogBase.h"
 
 class QSpellcheckerDialog : public QSpellcheckerDialogBase
 { Q_OBJECT

@@ -12,16 +12,16 @@
 #include "Lsstream.h"
 #include "debug.h"
 #include "gettext.h"
-#include "QAboutDialog.h"
-
+#include "LyXView.h"
+#include "ButtonControllerBase.h"
+#include "ControlAboutlyx.h"
+ 
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <qtextview.h>
-#include "QtLyXView.h"
 
-#include "ButtonControllerBase.h"
+#include "QAboutDialog.h"
 #include "Qt2BC.h"
-#include "ControlAboutlyx.h"
 #include "QAbout.h"
 
 using std::getline;

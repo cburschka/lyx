@@ -12,8 +12,8 @@
 #include <config.h>
 #include "support/lstrings.h"
 
-#include "ui/QCitationDialogBase.h"
 #include "QCitation.h"
+#include "ui/QCitationDialogBase.h"
 #include "controllers/biblio.h"
 
 class QCitationDialog : public QCitationDialogBase

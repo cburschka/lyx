@@ -18,8 +18,6 @@
 
 #include "frontends/Timeout.h"
 
-#include <sigc++/signal_system.h>
-
 #include <qobject.h>
 // stupid Qt
 #undef emit

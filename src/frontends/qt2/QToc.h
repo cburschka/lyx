@@ -15,9 +15,9 @@
 #pragma interface
 #endif
 
-#include "Qt2Base.h"
-
 #include "ControlToc.h"
+
+#include "Qt2Base.h"
 
 class ControlToc;
 class QTocDialog;

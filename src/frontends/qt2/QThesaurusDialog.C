@@ -13,7 +13,6 @@
 
 #include "ControlThesaurus.h"
 #include "QThesaurusDialog.h"
-#include "Dialogs.h"
 #include "QThesaurus.h"
 
 #include <qpushbutton.h>

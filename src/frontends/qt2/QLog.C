@@ -13,16 +13,16 @@
 #pragma implementation
 #endif
 
+#include "LyXView.h"
+#include "gettext.h"
+#include "ControlLog.h"
+
 #include <qtextview.h>
 #include <qpushbutton.h>
 
 #include "QLogDialog.h"
 #include "QLog.h"
 #include "Qt2BC.h"
-#include "gettext.h"
-
-#include "QtLyXView.h"
-#include "ControlLog.h"
 
 using std::ifstream;
 using std::getline;

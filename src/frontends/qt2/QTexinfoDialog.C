@@ -13,7 +13,6 @@
 
 #include "ControlTexinfo.h"
 #include "QTexinfoDialog.h"
-#include "Dialogs.h"
 #include "QTexinfo.h"
 
 #include <qlistbox.h>

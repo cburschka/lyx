@@ -11,8 +11,8 @@
 
 #include <config.h>
 
-#include "ui/QSearchDialogBase.h"
 #include "QSearch.h"
+#include "ui/QSearchDialogBase.h"
 
 class QCloseEvent;
 class QComboBox;

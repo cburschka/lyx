@@ -9,17 +9,16 @@
 #include <config.h>
 #include <vector>
 
+#include "ControlInclude.h"
+#include "debug.h"
+#include "LString.h"
+
 #include <qwidget.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 
-#include "LString.h"
-
 #include "QIncludeDialog.h"
-#include "ControlInclude.h"
-#include "Dialogs.h"
 #include "QInclude.h"
-#include "debug.h"
 
 QIncludeDialog::QIncludeDialog(QInclude * form)
 	: QIncludeDialogBase(0, 0, false, 0),

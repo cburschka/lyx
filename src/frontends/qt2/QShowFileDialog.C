@@ -6,9 +6,8 @@
  * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
-#include "QShowFileDialog.h"
-#include "Dialogs.h"
 #include "QShowFile.h"
+#include "QShowFileDialog.h"
 
 #include <qwidget.h>
 #include <qpushbutton.h>

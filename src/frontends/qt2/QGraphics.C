@@ -13,6 +13,18 @@
 #pragma implementation
 #endif
 
+#include "QtLyXView.h"
+#include "ControlGraphics.h"
+
+#include "support/lstrings.h"
+#include "support/FileInfo.h"
+#include "support/filetools.h"
+#include "insets/insetgraphicsParams.h"
+#include "lyxrc.h"
+#include "lengthcombo.h"
+#include "gettext.h"
+#include "debug.h"
+
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
@@ -22,22 +34,9 @@
 #include <qbuttongroup.h>
 #include <qlabel.h>
 
-#include "lengthcombo.h"
-
 #include "QGraphicsDialog.h"
 #include "QGraphics.h"
 #include "Qt2BC.h"
-#include "gettext.h"
-#include "debug.h"
-
-#include "QtLyXView.h"
-#include "ControlGraphics.h"
-
-#include "support/lstrings.h"
-#include "support/FileInfo.h"
-#include "support/filetools.h"  // for MakeAbsPath etc
-#include "insets/insetgraphicsParams.h"
-#include "lyxrc.h" // for lyxrc.display_graphics
 
 
 typedef Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > base_class;

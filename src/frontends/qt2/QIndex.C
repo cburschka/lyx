@@ -8,12 +8,12 @@
 
 #include <config.h>
 
-#include "QIndexDialog.h"
 #include "ControlIndex.h"
-#include "QIndex.h"
-#include "Qt2BC.h"
 #include "gettext.h"
 
+#include "QIndexDialog.h"
+#include "QIndex.h"
+#include "Qt2BC.h"
 #include <qlineedit.h>
 #include <qpushbutton.h>
 

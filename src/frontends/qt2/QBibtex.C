@@ -10,10 +10,7 @@
 
 #include "support/lstrings.h"
 
-#include "QBibtexDialog.h"
 #include "ControlBibtex.h"
-#include "QBibtex.h"
-#include "Qt2BC.h"
 #include "gettext.h"
 #include "debug.h"
 
@@ -23,6 +20,10 @@
 #include <qlistbox.h>
 #include <qcheckbox.h>
 
+#include "QBibtexDialog.h"
+#include "QBibtex.h"
+#include "Qt2BC.h"
+ 
 typedef Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> > base_class;
 
 QBibtex::QBibtex(ControlBibtex & c)

@@ -8,16 +8,17 @@
 
 #include <config.h>
 
+#include "ControlUrl.h"
+#include "debug.h"
+#include "gettext.h"
+ 
+#include "QURL.h"
 #include "QURLDialog.h"
+#include "Qt2BC.h"
+
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 #include <qlineedit.h>
-
-#include "ControlUrl.h"
-#include "Qt2BC.h"
-#include "QURL.h"
-#include "debug.h"
-#include "gettext.h"
 
 typedef Qt2CB<ControlUrl, Qt2DB<QURLDialog> > base_class;
 

@@ -13,22 +13,23 @@
 #pragma implementation
 #endif
 
+#include "LyXView.h"
+#include "ControlPrint.h"
+#include "support/lstrings.h"
+#include "gettext.h"
+
+#include "QPrint.h"
+#include "QPrintDialog.h"
+#include "Qt2BC.h"
+
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qradiobutton.h>
 #include <qspinbox.h>
 #include <qpushbutton.h>
 
-#include "QPrintDialog.h"
-#include "QPrint.h"
-#include "Qt2BC.h"
-#include "gettext.h"
-
-#include "QtLyXView.h"
-#include "ControlPrint.h"
-
-#include "support/lstrings.h"
-
+// FIXME FIXME QPrintDialog is getting destructed twice !!!!
+ 
 typedef Qt2CB<ControlPrint, Qt2DB<QPrintDialog> > base_class;
 
 QPrint::QPrint(ControlPrint & c)

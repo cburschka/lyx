@@ -13,16 +13,16 @@
 #pragma implementation
 #endif
 
+#include "gettext.h"
+#include "LyXView.h"
+#include "ControlPreamble.h"
+ 
+#include "QPreamble.h"
+#include "QPreambleDialog.h"
+#include "Qt2BC.h"
+
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
-
-#include "QPreambleDialog.h"
-#include "QPreamble.h"
-#include "Qt2BC.h"
-#include "gettext.h"
-
-#include "QtLyXView.h"
-#include "ControlPreamble.h"
 
 typedef Qt2CB<ControlPreamble, Qt2DB<QPreambleDialog> > base_class;
 

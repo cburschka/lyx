@@ -14,19 +14,19 @@
 
 #include <stack>
 
-#include <qslider.h>
-#include <qlistview.h>
-#include <qpushbutton.h>
-#include <qcombobox.h>
-
-#include "QTocDialog.h"
-#include "QToc.h"
-#include "Qt2BC.h"
+#include "LyXView.h"
 #include "gettext.h"
 #include "support/lstrings.h"
 #include "debug.h"
 
-#include "QtLyXView.h"
+#include "QToc.h"
+#include "QTocDialog.h"
+#include "Qt2BC.h"
+
+#include <qslider.h>
+#include <qlistview.h>
+#include <qpushbutton.h>
+#include <qcombobox.h>
 
 using std::endl;
 using std::pair;

@@ -9,15 +9,15 @@
 #include <config.h>
 #include <vector>
 
-#include <qpushbutton.h>
-#include <qtextview.h>
-#include "QVCLogDialog.h"
-#include "Dialogs.h"
-#include "QVCLog.h"
-
-#include "QtLyXView.h"
+#include "LyXView.h"
 #include "ControlVCLog.h"
 
+#include "QVCLog.h"
+#include "QVCLogDialog.h"
+
+#include <qpushbutton.h>
+#include <qtextview.h>
+ 
 QVCLogDialog::QVCLogDialog(QVCLog * form)
 	: QVCLogDialogBase(0, 0, false, 0),
 	form_(form)

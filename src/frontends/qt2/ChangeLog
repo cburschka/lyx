@@ -1,3 +1,54 @@
+2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am: add the new files ...
+ 
+	* Dialogs.C:
+	* guiapi.C:
+	* all dialogs: implement new dialog stuff, fix compile
+
+	* FileDialog_private.h:
+
+	* GUIRunTime.C:
+	* lyx_gui.C: update for lyx_gui namespace
+
+	* LyXScreenFactory.C: add
+
+	* QContentPane.h:
+	* QContentPane.C: new widget for containing a lyx document
+ 
+	* QLPainter.h:
+	* QLPainter.C: qt painter object
+ 
+	* QWorkArea.h:
+	* QWorkArea.C: Qt version of the work area
+ 
+	* QtView.h:
+	* QtView.C: Qt version of LyXView
+
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C:
+	* Menubar_pimpl.h:
+	* Menubar_pimpl.C: initial Qt versions
+ 
+	* WorkAreaFactory.C: generate a QWorkArea
+ 
+	* emptytable.C: add a resize grippie 
+ 
+	* qfont_loader.h:
+	* qfont_loader.C: font loader for Qt
+ 
+	* qfont_metrics.h:
+	* qfont_metrics.C: font metrics for Qt
+ 
+	* qlkey.h: convert Qt key symbol into a name
+ 
+	* qscreen.h:
+	* qscreen.C: Qt version of screen
+ 
+	* moc/Makefile.am: add new files
+ 
+	* xforms/Makefile.am: remove all xforms dialogs
+ 
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Qt2BC.C: do not include ButtonController.tmpl

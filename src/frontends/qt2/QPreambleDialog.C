@@ -9,21 +9,19 @@
 #include <config.h>
 #include <fstream>
 
-#include <qpushbutton.h>
-#include <qmultilineedit.h>
-#include <qinputdialog.h>
-
-#include "QPreambleDialog.h"
-#include "Dialogs.h"
-#include "QPreamble.h"
-
 #include "support/lyxlib.h"
 #include "support/forkedcall.h"
 #include "support/filetools.h"
 #include "gettext.h"
-
-#include "QtLyXView.h"
+#include "LyXView.h"
 #include "ControlPreamble.h"
+
+#include "QPreamble.h"
+#include "QPreambleDialog.h"
+
+#include <qpushbutton.h>
+#include <qmultilineedit.h>
+#include <qinputdialog.h>
 
 using std::getline;
 

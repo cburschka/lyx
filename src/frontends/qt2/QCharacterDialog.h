@@ -12,8 +12,8 @@
 
 #include <config.h>
 
-#include "ui/QCharacterDialogBase.h"
 #include "QCharacter.h"
+#include "ui/QCharacterDialogBase.h"
 
 #include <qevent.h>
 #include <qcheckbox.h>

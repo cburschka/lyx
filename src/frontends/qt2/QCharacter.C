@@ -43,7 +43,7 @@ void QCharacter::build_dialog()
 	size   = getSizeData();
 	bar    = getBarData();
 	color  = getColorData();
-	language = getLanguageData();
+	language = getLanguageData(true);
 
 	for (vector<FamilyPair>::const_iterator cit = family.begin();
 		cit != family.end(); ++cit) {

@@ -9,10 +9,7 @@
 #include <config.h>
 #include <vector>
 
-#include "QExternalDialog.h"
 #include "ControlExternal.h"
-#include "QExternal.h"
-#include "Qt2BC.h"
 #include "gettext.h"
 
 #include <qlineedit.h>
@@ -20,6 +17,10 @@
 #include <qcombobox.h>
 #include <qtextview.h>
 
+#include "QExternalDialog.h"
+#include "QExternal.h"
+#include "Qt2BC.h"
+ 
 typedef Qt2CB<ControlExternal, Qt2DB<QExternalDialog> > base_class;
 
 QExternal::QExternal(ControlExternal & c)

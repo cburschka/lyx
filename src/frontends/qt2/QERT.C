@@ -8,15 +8,16 @@
 
 #include <config.h>
 
-#include "QERTDialog.h"
 #include "ControlERT.h"
-#include "QERT.h"
-#include "Qt2BC.h"
 #include "gettext.h"
 
 #include <qradiobutton.h>
 #include <qpushbutton.h>
 
+#include "QERTDialog.h"
+#include "QERT.h"
+#include "Qt2BC.h"
+ 
 typedef Qt2CB<ControlERT, Qt2DB<QERTDialog> > base_class;
 
 QERT::QERT(ControlERT & c)

@@ -9,16 +9,14 @@
 #include <config.h>
 #include <vector>
 
+#include "ControlMinipage.h"
+
+#include "QMinipage.h"
+#include "QMinipageDialog.h"
+
 #include <qpushbutton.h>
 #include <qtextview.h>
 #include "lengthcombo.h"
-
-#include "QMinipageDialog.h"
-#include "Dialogs.h"
-#include "QMinipage.h"
-
-#include "QtLyXView.h"
-#include "ControlMinipage.h"
 
 QMinipageDialog::QMinipageDialog(QMinipage * form)
 	: QMinipageDialogBase(0, 0, false, 0),

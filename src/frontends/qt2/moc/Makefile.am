@@ -21,7 +21,11 @@ nodist_libqt2moc_la_SOURCES = \
 	emptytable_moc.C \
 	lengthcombo_moc.C \
 	qttableview_moc.C \
-	Qt2Base_moc.C
+	Toolbar_pimpl_moc.C \
+	QContentPane_moc.C \
+	Qt2Base_moc.C \
+	QtView_moc.C \
+	$(MOCDIALOGS)
 
 libqt2moc.la: $(libqt2moc_la_OBJECTS) $(libqt2moc_la_DEPENDENCIES)
 

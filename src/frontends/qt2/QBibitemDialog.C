@@ -6,14 +6,16 @@
  * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
+#include <config.h>
+
+#include "ControlBibitem.h"
+
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
 #include "QBibitemDialog.h"
 #include "QBibitem.h"
-#include "Dialogs.h"
-#include "ControlBibitem.h"
-
+ 
 QBibitemDialog::QBibitemDialog(QBibitem * form)
 	: QBibitemDialogBase(0, 0, false, 0),
 	form_(form)

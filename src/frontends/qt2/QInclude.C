@@ -12,12 +12,13 @@
 #pragma implementation
 #endif
 
-#include "QIncludeDialog.h"
 #include "ControlInclude.h"
-#include "QInclude.h"
-#include "Qt2BC.h"
 #include "gettext.h"
 #include "debug.h"
+ 
+#include "QIncludeDialog.h"
+#include "QInclude.h"
+#include "Qt2BC.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>

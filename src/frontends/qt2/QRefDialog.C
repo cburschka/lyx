@@ -9,16 +9,16 @@
 
 #include <config.h>
 
+#include "ControlRef.h"
+#include "debug.h"
+
+#include "QRef.h"
+#include "QRefDialog.h"
+ 
 #include <qpushbutton.h>
 #include <qlineedit.h>
 #include <qcombobox.h>
 #include <qlistbox.h>
-
-#include "QRefDialog.h"
-#include "ControlRef.h"
-#include "Dialogs.h"
-#include "QRef.h"
-#include "debug.h"
 
 QRefDialog::QRefDialog(QRef * form)
 	: QRefDialogBase(0, 0, false, 0),

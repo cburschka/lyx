@@ -8,15 +8,15 @@
 
 #include <config.h>
 
-#include <qpushbutton.h>
-
 #include "LString.h"
 
 #include "ControlFloat.h"
-#include "QFloatDialog.h"
-#include "Dialogs.h"
-#include "QFloat.h"
 
+#include <qpushbutton.h>
+
+#include "QFloatDialog.h"
+#include "QFloat.h"
+ 
 QFloatDialog::QFloatDialog(QFloat * form)
 	: QFloatDialogBase(0, 0, false, 0),
 	form_(form)

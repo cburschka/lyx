@@ -8,15 +8,16 @@
 
 #include <config.h>
 
-#include "QErrorDialog.h"
 #include "ControlError.h"
-#include "QError.h"
-#include "Qt2BC.h"
 #include "gettext.h"
 
 #include <qtextview.h>
 #include <qpushbutton.h>
 
+#include "QErrorDialog.h"
+#include "QError.h"
+#include "Qt2BC.h"
+ 
 typedef Qt2CB<ControlError, Qt2DB<QErrorDialog> > base_class;
 
 QError::QError(ControlError & c)

@@ -12,21 +12,21 @@
 #pragma implementation
 #endif
 
+#include "debug.h"
+#include "gettext.h"
+#include "support/lstrings.h"
+#include "LyXView.h"
+#include "ControlMinipage.h"
+
+#include "QMinipage.h"
+#include "QMinipageDialog.h"
+#include "Qt2BC.h"
+#include "lengthcombo.h"
+ 
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
-#include "lengthcombo.h"
 
-#include "QMinipageDialog.h"
-#include "QMinipage.h"
-#include "Qt2BC.h"
-#include "gettext.h"
-#include "support/lstrings.h"
-
-#include "QtLyXView.h"
-#include "ControlMinipage.h"
-
-#include "debug.h"
 typedef Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> > base_class;
 
 QMinipage::QMinipage(ControlMinipage & c)

@@ -6,11 +6,11 @@
  * \author John Levon
  */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
-#include <config.h>
 
 #include "Timeout_pimpl.h"
 #include "debug.h"

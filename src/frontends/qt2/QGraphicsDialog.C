@@ -9,17 +9,16 @@
 #include <config.h>
 #include <vector>
 
+#include "ControlGraphics.h"
+#include "debug.h"
+#include "LString.h"
+
 #include <qwidget.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 
-#include "LString.h"
-
 #include "QGraphicsDialog.h"
-#include "ControlGraphics.h"
-#include "Dialogs.h"
 #include "QGraphics.h"
-#include "debug.h"
 
 QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	: QGraphicsDialogBase(0, 0, false, 0),

@@ -10,10 +10,10 @@
 #include <config.h>
 #include <gettext.h>
 
-#include "QTabularCreateDialog.h"
-#include "QTabularCreate.h"
-
 #include "support/lstrings.h"
+
+#include "QTabularCreate.h"
+#include "QTabularCreateDialog.h"
 
 #include <qpushbutton.h>
 #include <qspinbox.h>

@@ -9,13 +9,13 @@
 #include <config.h>
 
 #include "support/lstrings.h"
-
-#include "QRefDialog.h"
 #include "ControlRef.h"
-#include "QRef.h"
-#include "Qt2BC.h"
 #include "gettext.h"
 #include "insets/insetref.h"
+ 
+#include "QRef.h"
+#include "QRefDialog.h"
+#include "Qt2BC.h"
 
 #include <qlineedit.h>
 #include <qcheckbox.h>

@@ -10,16 +10,17 @@
 
 #include "support/lstrings.h"
 
-#include "QBibitemDialog.h"
 #include "ControlBibitem.h"
-#include "QBibitem.h"
-#include "Qt2BC.h"
 #include "gettext.h"
 #include "debug.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
+#include "QBibitemDialog.h"
+#include "QBibitem.h"
+#include "Qt2BC.h"
+ 
 typedef Qt2CB<ControlBibitem, Qt2DB<QBibitemDialog> > base_class;
 
 QBibitem::QBibitem(ControlBibitem & c)

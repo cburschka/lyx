@@ -17,7 +17,6 @@
 
 #include "lyx_gui_misc.h"
 
-#include "Dialogs.h"
 #include "layout.h"
 #include "tex-strings.h"
 #include "bufferparams.h"

@@ -1,11 +1,5 @@
 This file contains some do's and dont's for the Qt2 frontend.
 
-Random crashes
---------------
-
-Both xforms and Qt use X error handlers which collide - if you get
-crashes, try lyx -sync, which seems to help.
- 
 General rules
 -------------
 
@@ -75,7 +69,7 @@ Include		John		Done
 Index		Kalle		Done
 Log		John		Done
 Minipage	John		Done 
-Paragraph	Edwin		Waiting for MVC
+Paragraph	Edwin		Waiting to be updated
 Preamble	John		Done
 Print		Edwin		Done
 Ref		Kalle		Done

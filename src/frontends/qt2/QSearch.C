@@ -13,17 +13,17 @@
 #pragma implementation
 #endif
 
+#include "LyXView.h"
+#include "ControlSearch.h"
+#include "gettext.h"
+
+#include "QSearch.h"
+#include "QSearchDialog.h"
+#include "Qt2BC.h"
+
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
-
-#include "QSearchDialog.h"
-#include "QSearch.h"
-#include "Qt2BC.h"
-#include "gettext.h"
-
-#include "QtLyXView.h"
-#include "ControlSearch.h"
 
 typedef Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > base_class;
 

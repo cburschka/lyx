@@ -7,9 +7,9 @@
  */
 
 #include <config.h>
-#include "QTocDialog.h"
-#include "Dialogs.h"
+ 
 #include "QToc.h"
+#include "QTocDialog.h"
 
 #include <qlistview.h>
 #include <qpushbutton.h>

@@ -9,14 +9,14 @@
 #include <config.h>
 #include <vector>
 
+#include "LyXView.h"
+#include "ControlLog.h"
+
 #include <qpushbutton.h>
 #include <qtextview.h>
+ 
 #include "QLogDialog.h"
-#include "Dialogs.h"
 #include "QLog.h"
-
-#include "QtLyXView.h"
-#include "ControlLog.h"
 
 QLogDialog::QLogDialog(QLog * form)
 	: QLogDialogBase(0, 0, false, 0),

@@ -7,6 +7,15 @@
  * \author Edwin Leuven, leuven@fee.uva.nl
  */
 
+#include <config.h>
+ 
+#include <gettext.h>
+#include "support/filetools.h"
+#include "support/lstrings.h"
+
+#include "QPrint.h"
+#include "QPrintDialog.h"
+
 #include <qfiledialog.h>
 #include <qcheckbox.h>
 #include <qlabel.h>
@@ -14,17 +23,6 @@
 #include <qpushbutton.h>
 #include <qradiobutton.h>
 #include <qspinbox.h>
-
-#include "QPrintDialog.h"
-#include "QPrint.h"
-
-#include <config.h>
-
-#include "support/filetools.h"
-#include "support/lstrings.h"
-
-#include <gettext.h>
-
 
 QPrintDialog::QPrintDialog(QPrint * f)
 	: QPrintDialogBase(0, 0, false, 0),

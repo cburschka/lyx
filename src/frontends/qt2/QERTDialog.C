@@ -6,9 +6,10 @@
  * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
-#include "QERTDialog.h"
-#include "Dialogs.h"
+#include <config.h>
+ 
 #include "QERT.h"
+#include "QERTDialog.h"
 
 #include <qpushbutton.h>
 

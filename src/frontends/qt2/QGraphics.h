@@ -14,8 +14,8 @@
 #pragma interface
 #endif
 
-#include "Qt2Base.h"
 #include "insets/insetgraphics.h"
+#include "Qt2Base.h"
 
 class ControlGraphics;
 class QGraphicsDialog;

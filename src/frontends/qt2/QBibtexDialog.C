@@ -6,6 +6,14 @@
  * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
+#include <config.h>
+ 
+#include "ControlBibtex.h"
+#include "gettext.h"
+#include "debug.h"
+
+#include "support/filetools.h"
+
 #include <qwidget.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
@@ -16,13 +24,7 @@
 
 #include "QBibtexDialog.h"
 #include "QBibtex.h"
-#include "Dialogs.h"
-#include "ControlBibtex.h"
-#include "gettext.h"
-#include "debug.h"
-
-#include "support/filetools.h"
-
+ 
 QBibtexDialog::QBibtexDialog(QBibtex * form)
 	: QBibtexDialogBase(0, 0, false, 0),
 	form_(form)

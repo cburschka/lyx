@@ -9,7 +9,6 @@
 #include <config.h>
 
 #include "QSpellcheckerDialog.h"
-#include "Dialogs.h"
 #include "QSpellchecker.h"
 #include "gettext.h"
 

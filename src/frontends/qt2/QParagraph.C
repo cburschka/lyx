@@ -11,7 +11,6 @@
 #include "QParagraphDialog.h"
 
 #include "QParagraph.h"
-#include "Dialogs.h"
 #include "Liason.h"
 #include "gettext.h"
 #include "buffer.h"

@@ -6,12 +6,14 @@
  * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
-#include "QErrorDialog.h"
-#include "Dialogs.h"
+#include <config.h>
+ 
 #include "QError.h"
-
+ 
 #include <qwidget.h>
 #include <qpushbutton.h>
+
+#include "QErrorDialog.h"
 
 QErrorDialog::QErrorDialog(QError * form)
 	: QErrorDialogBase(0, 0, false, 0),

@@ -13,16 +13,16 @@
 #pragma implementation
 #endif
 
+#include "gettext.h"
+#include "LyXView.h"
+#include "ControlVCLog.h"
+ 
+#include "QVCLog.h"
+#include "QVCLogDialog.h"
+#include "Qt2BC.h"
+
 #include <qtextview.h>
 #include <qpushbutton.h>
-
-#include "QVCLogDialog.h"
-#include "QVCLog.h"
-#include "Qt2BC.h"
-#include "gettext.h"
-
-#include "QtLyXView.h"
-#include "ControlVCLog.h"
 
 typedef Qt2CB<ControlVCLog, Qt2DB<QVCLogDialog> > base_class;
 

@@ -7,12 +7,13 @@
  */
 
 #include <config.h>
+ 
+#include <algorithm>
 
 #include "gettext.h"
-
-#include "QCitationDialog.h"
-#include "Dialogs.h"
 #include "controllers/ControlCitation.h"
+#include "LyXView.h"
+#include "buffer.h"
 
 #include <qcheckbox.h>
 #include <qcombobox.h>
@@ -21,11 +22,8 @@
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
 
-#include "QtLyXView.h"
-
-#include <algorithm>
-#include "buffer.h"
-
+#include "QCitationDialog.h"
+ 
 using std::vector;
 using std::find;
 using std::max;
