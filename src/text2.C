@@ -1647,13 +1647,12 @@ void LyXText::insertInset(BufferView * bview, Inset * inset)
 {
 	if (!cursor.par()->insetAllowed(inset->lyxCode()))
 		return;
-	// I don't know if this is necessary here (Jug 20020102)
-	setUndo(bview, Undo::INSERT, cursor.par(), cursor.par()->next());
+	setUndo(bview, Undo::FINISH, cursor.par(), cursor.par()->next());
+	freezeUndo();
 	cursor.par()->insertInset(cursor.pos(), inset);
 	// Just to rebreak and refresh correctly.
 	// The character will not be inserted a second time
 	insertChar(bview, Paragraph::META_INSET);
-#if 1
 	// If we enter a highly editable inset the cursor should be to before
 	// the inset. This couldn't happen before as Undo was not handled inside
 	// inset now after the Undo LyX tries to call inset->Edit(...) again
@@ -1662,7 +1661,7 @@ void LyXText::insertInset(BufferView * bview, Inset * inset)
 	if (isHighlyEditableInset(inset)) {
 		cursorLeft(bview, true);
 	}
-#endif
+	unFreezeUndo();
 }
 
 

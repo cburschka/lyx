@@ -1,5 +1,8 @@
 2002-04-12  Juergen Vigna  <jug@sad.it>
 
+	* text2.C (insertInset): freeze Undo after setUndo so that it is not
+	again called in insertChar().
+
 	* text.C (leftMargin): return LYX_PAPER_MARGIN if this row contains
 	an inset which uses the whole row!
 	(rightMargin): ditto.

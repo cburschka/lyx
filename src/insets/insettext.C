@@ -1860,21 +1860,11 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 			return the_locking_inset->insertInset(bv, inset);
 		return false;
 	}
-	bool clear = false;
-	if (!lt) {
-		lt = getLyXText(bv);
-		clear = true;
-	}
-	setUndo(bv, Undo::FINISH, lt->cursor.par(), lt->cursor.par()->next());
-	freezeUndo();
 	inset->setOwner(this);
 	hideInsetCursor(bv);
-	lt->insertInset(bv, inset);
+	getLyXText(bv)->insertInset(bv, inset);
 	bv->fitCursor();
-	if (clear)
-		lt = 0;
 	updateLocal(bv, CURSOR_PAR|CURSOR, true);
-	unFreezeUndo();
 	return true;
 }
 
