@@ -173,6 +173,8 @@ public:
 	void edit(BufferView * bv, bool);
 	///
 	void edit(BufferView * bv, int, int);
+	/// can we go further down on mouse click?
+	bool descendable() const { return true; }
 protected:
 	///
 	virtual
