@@ -1,3 +1,9 @@
+2004-11-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlSpellchecker.C (nextWord): rewrite to skip words
+	containing digits.
+	(isLetter): honor lyxrc.isp_esc_chars
+
 2004-11-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ControlTabular.C (initialiseParams): Compute the active cell

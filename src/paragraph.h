@@ -335,12 +335,9 @@ public:
 	bool isSeparator(lyx::pos_type pos) const;
 	///
 	bool isLineSeparator(lyx::pos_type pos) const;
-	///
-	bool isKomma(lyx::pos_type pos) const;
-	/// Used by the spellchecker
+	/// True if the character/inset at this point can be part of a word
+	// Note that digits in particular are considered as letters
 	bool isLetter(lyx::pos_type pos) const;
-	///
-	bool isWord(lyx::pos_type pos) const;
 
 	/// returns -1 if inset not found
 	int getPositionOfInset(InsetBase const * inset) const;

@@ -32,6 +32,7 @@
 #endif
 #endif
 
+#include "support/textutils.h"
 #include "support/tostr.h"
 
 #include "frontends/Alert.h"
@@ -44,6 +45,7 @@ using std::string;
 namespace lyx {
 
 using support::bformat;
+using support::contains;
 
 namespace frontend {
 
@@ -121,7 +123,10 @@ bool isLetter(DocIterator const & cur)
 	return cur.inTexted()
 		&& cur.inset().allowSpellCheck()
 		&& cur.pos() != cur.lastpos()
-		&& cur.paragraph().isLetter(cur.pos())
+		&& (cur.paragraph().isLetter(cur.pos()) 
+		    // We want to pass the ' and escape chars to ispell
+		    || contains(lyxrc.isp_esc_chars + '\'', 
+				cur.paragraph().getChar(cur.pos())))
 		&& !isDeletedText(cur.paragraph(), cur.pos());
 }
 
@@ -129,25 +134,40 @@ bool isLetter(DocIterator const & cur)
 WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
 	BufferParams & bp)
 {
-	// skip until we have real text (will jump paragraphs)
-	for (; cur.size() && !isLetter(cur); cur.forwardPos());
+	bool inword = false;
+	bool ignoreword = false;
+	string word, lang_code;
+
+	while(cur.size()) {
+		if (isLetter(cur)) {
+			if (!inword) {
+				inword = true;
+				ignoreword = false;
+				word.clear();
+				lang_code = cur.paragraph().getFontSettings(bp, cur.pos()).language()->code();
+			}
+			// Insets like optional hyphens and ligature
+			// break are part of a word. 
+			if (!cur.paragraph().isInset(cur.pos())) {
+				Paragraph::value_type const c = 
+					cur.paragraph().getChar(cur.pos());
+				word += c;
+				if (IsDigit(c))
+					ignoreword = true;
+			} 
+		} else { // !isLetter(cur)
+			if (inword) 
+				if (!ignoreword)
+					return WordLangTuple(word, lang_code);
+				else
+					inword = false;
+		}
+		
+		cur.forwardPos();
 		++progress;
-
-	// hit end
-	if (cur.empty())
-		return WordLangTuple(string(), string());
-
-	string lang_code = cur.paragraph().
-		getFontSettings(bp, cur.pos()).language()->code();
-	string str;
-	// and find the end of the word (insets like optional hyphens
-	// and ligature break are part of a word)
-	for (; cur && isLetter(cur); cur.forwardPos(), ++progress) {
-		if (!cur.paragraph().isInset(cur.pos()))
-			str += cur.paragraph().getChar(cur.pos());
 	}
 
-	return WordLangTuple(str, lang_code);
+	return WordLangTuple(string(), string());
 }
 
 } // namespace anon

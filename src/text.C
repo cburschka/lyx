@@ -1355,10 +1355,10 @@ void LyXText::cursorRightOneWord(LCursor & cur)
 	} else {
 		// Skip through initial nonword stuff.
 		// Treat floats and insets as words.
-		while (cur.pos() != cur.lastpos() && !cur.paragraph().isWord(cur.pos()))
+		while (cur.pos() != cur.lastpos() && !cur.paragraph().isLetter(cur.pos()))
 			++cur.pos();
 		// Advance through word.
-		while (cur.pos() != cur.lastpos() && cur.paragraph().isWord(cur.pos()))
+		while (cur.pos() != cur.lastpos() && cur.paragraph().isLetter(cur.pos()))
 			++cur.pos();
 	}
 	setCursor(cur, cur.par(), cur.pos());
@@ -1374,10 +1374,10 @@ void LyXText::cursorLeftOneWord(LCursor & cur)
 	} else {
 		// Skip through initial nonword stuff.
 		// Treat floats and insets as words.
-		while (cur.pos() != 0 && !cur.paragraph().isWord(cur.pos() - 1))
+		while (cur.pos() != 0 && !cur.paragraph().isLetter(cur.pos() - 1))
 			--cur.pos();
 		// Advance through word.
-		while (cur.pos() != 0 && cur.paragraph().isWord(cur.pos() - 1))
+		while (cur.pos() != 0 && cur.paragraph().isLetter(cur.pos() - 1))
 			--cur.pos();
 	}
 	setCursor(cur, cur.par(), cur.pos());
@@ -1797,8 +1797,8 @@ void LyXText::getWord(CursorSlice & from, CursorSlice & to,
 	switch (loc) {
 	case lyx::WHOLE_WORD_STRICT:
 		if (from.pos() == 0 || from.pos() == from_par.size()
-		    || !from_par.isWord(from.pos())
-		    || !from_par.isWord(from.pos() - 1)) {
+		    || !from_par.isLetter(from.pos())
+		    || !from_par.isLetter(from.pos() - 1)) {
 			to = from;
 			return;
 		}
@@ -1806,13 +1806,13 @@ void LyXText::getWord(CursorSlice & from, CursorSlice & to,
 
 	case lyx::WHOLE_WORD:
 		// If we are already at the beginning of a word, do nothing
-		if (!from.pos() || !from_par.isWord(from.pos() - 1))
+		if (!from.pos() || !from_par.isLetter(from.pos() - 1))
 			break;
 		// no break here, we go to the next
 
 	case lyx::PREVIOUS_WORD:
 		// always move the cursor to the beginning of previous word
-		while (from.pos() && from_par.isWord(from.pos() - 1))
+		while (from.pos() && from_par.isLetter(from.pos() - 1))
 			--from.pos();
 		break;
 	case lyx::NEXT_WORD:
@@ -1825,7 +1825,7 @@ void LyXText::getWord(CursorSlice & from, CursorSlice & to,
 	}
 	to = from;
 	Paragraph & to_par = pars_[to.par()];
-	while (to.pos() < to_par.size() && to_par.isWord(to.pos()))
+	while (to.pos() < to_par.size() && to_par.isLetter(to.pos()))
 		++to.pos();
 }
 

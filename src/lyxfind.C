@@ -85,10 +85,10 @@ public:
 
 		// if necessary, check whether string matches word
 		if (mw) {
-			if (pos > 0 && par.isWord(pos - 1))
+			if (pos > 0 && par.isLetter(pos - 1))
 				return false;
 			if (pos + lyx::pos_type(size) < parsize
-			    && par.isWord(pos + size));
+			    && par.isLetter(pos + size));
 				return false;
 		}
 

@@ -1,9 +1,18 @@
+2004-11-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* paragraph.C (isLetter): remove special spellchecker-related
+	code; return true also for digits
+	(isWord, isKomma): remove
+
+	* text.C (cursorRightOneWord, cursorLeftOneWord, getWord): 
+	* lyxfind.C (MatchString()): use isLetter instead of isWord
+
 2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pariterator.h (operatir=): comment out un-implemented member
 	function. 
 
-	* paragraph.h: resolv ambiguity found by gcc 4.0 with the use of a
+	* paragraph.h: resolve ambiguity found by gcc 4.0 with the use of a
 	static cast.
 
 2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>

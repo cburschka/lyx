@@ -31,36 +31,6 @@ bool IsLineSeparatorChar(char c)
 }
 
 
-/// return true if the char is "punctuation"
-inline
-bool IsKommaChar(char c)
-{
-	return c == ','
-		|| c == '('
-		|| c == ')'
-		|| c == '['
-		|| c == ']'
-		|| c == '{'
-		|| c == '}'
-		|| c == ';'
-		|| c == '.'
-		|| c == ':'
-		|| c == '-'
-		|| c == '?'
-		|| c == '!'
-		|| c == '&'
-		|| c == '@'
-		|| c == '+'
-		|| c == '-'
-		|| c == '~'
-		|| c == '#'
-		|| c == '%'
-		|| c == '^'
-		|| c == '/'
-		|| c == '\\';
-}
-
-
 /// return true if a char is alphabetical (including accented chars)
 inline
 bool IsLetterChar(unsigned char c)

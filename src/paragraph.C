@@ -53,7 +53,6 @@
 
 using lyx::pos_type;
 
-using lyx::support::contains;
 using lyx::support::subst;
 
 using std::distance;
@@ -1510,34 +1509,15 @@ bool Paragraph::isLineSeparator(pos_type pos) const
 }
 
 
-bool Paragraph::isKomma(pos_type pos) const
-{
-	return IsKommaChar(getChar(pos));
-}
-
-
 /// Used by the spellchecker
 bool Paragraph::isLetter(pos_type pos) const
 {
-	value_type const c = getChar(pos);
-	if (IsLetterChar(c))
-		return true;
 	if (isInset(pos))
 		return getInset(pos)->isLetter();
-	// We want to pass the ' and escape chars to ispell
-	string const extra = lyxrc.isp_esc_chars + '\'';
-	return contains(extra, c);
-}
-
-
-bool Paragraph::isWord(pos_type pos) const
-{
-	if (isInset(pos))
-		return getInset(pos)->isLetter();
-	value_type const c = getChar(pos);
-	return !(IsSeparatorChar(c)
-		  || IsKommaChar(c)
-		  || IsInsetChar(c));
+	else {
+		value_type const c = getChar(pos);
+		return IsLetterChar(c) || IsDigit(c);
+	}
 }
 
 
