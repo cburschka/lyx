@@ -30,6 +30,7 @@
 
 #include "array.h"
 
+
 ///
 enum math_align {
 	///
@@ -50,93 +51,93 @@ enum math_align {
 /// Standard Math Sizes (Math mode styles)
 enum MathedStyles {
 	///
-   LM_ST_DISPLAY = 0,
-   ///
-   LM_ST_TEXT,
-   ///
-   LM_ST_SCRIPT,
-   ///
-   LM_ST_SCRIPTSCRIPT
+	LM_ST_DISPLAY = 0,
+	///
+	LM_ST_TEXT,
+	///
+	LM_ST_SCRIPT,
+	///
+	LM_ST_SCRIPTSCRIPT
 };
 
 
 /// Standard LaTeX Math Environments
 enum MathedEnvironment {
 	///
-   LM_EN_INTEXT = 0,
-   ///
-   LM_EN_DISPLAY,
-   ///
-   LM_EN_EQUATION,
-   ///
-   LM_EN_EQNARRAYAST,
-   ///
-   LM_EN_EQNARRAY,
-   ///
-   LM_EN_ARRAY
+	LM_EN_INTEXT = 0,
+	///
+	LM_EN_DISPLAY,
+	///
+	LM_EN_EQUATION,
+	///
+	LM_EN_EQNARRAYAST,
+	///
+	LM_EN_EQNARRAY,
+	///
+	LM_EN_ARRAY
 };
 
 
 /** The restrictions of a standard LaTeX math paragraph
   allows to get a small number of text codes (<30) */
 enum MathedTextCodes  {
-   /// This must be >= 0
-   LM_TC_MIN = 0,
-   /// Open and Close group
-   LM_TC_OPEN,
-   ///
-   LM_TC_CLOSE,
-   /// Tabulator
-   LM_TC_TAB,
-   /// New line
-   LM_TC_CR,
-   /// Math Inset
-   LM_TC_INSET,
-   /// Super and sub scripts
-   LM_TC_UP,
-   ///
-   LM_TC_DOWN,
-   /// Editable Math Inset
-   LM_TC_ACTIVE_INSET,
-   /// Editable Text Inset
-   LM_TC_TEXT_INSET,
-   ///
-   LM_FONT_BEGIN,
-   /// Internal code for constants
-   LM_TC_CONST,
-   /// Internal code for variables
-   LM_TC_VAR,
-   ///
-   LM_TC_RM,
-   ///
-   LM_TC_CAL,
-   ///
-   LM_TC_BF,
-   ///
-   LM_TC_SF,
-   ///
-   LM_TC_TT,
-   ///
-   LM_TC_IT,
-   ///
-   LM_TC_TEXTRM,
-   /// Math mode TeX characters ",;:{}"
-   LM_TC_TEX,
-   /// Special characters "{}&#_%"
-   LM_TC_SPECIAL,
-   /// Internal code for operators
-   LM_TC_BOP,
-   /// Internal code for symbols
-   LM_TC_SYMB,
-   ///
-   LM_TC_BOPS,
-   ///
-   LM_TC_BSYM,
-   ///
-   LM_FONT_END,
-   
-   /// This must be < 32 
-   LM_TC_MAX
+	/// This must be >= 0
+	LM_TC_MIN = 0,
+	/// Open and Close group
+	LM_TC_OPEN,
+	///
+	LM_TC_CLOSE,
+	/// Tabulator
+	LM_TC_TAB,
+	/// New line
+	LM_TC_CR,
+	/// Math Inset
+	LM_TC_INSET,
+	/// Super and sub scripts
+	LM_TC_UP,
+	///
+	LM_TC_DOWN,
+	/// Editable Math Inset
+	LM_TC_ACTIVE_INSET,
+	/// Editable Text Inset
+	LM_TC_TEXT_INSET,
+	///
+	LM_FONT_BEGIN,
+	/// Internal code for constants
+	LM_TC_CONST,
+	/// Internal code for variables
+	LM_TC_VAR,
+	///
+	LM_TC_RM,
+	///
+	LM_TC_CAL,
+	///
+	LM_TC_BF,
+	///
+	LM_TC_SF,
+	///
+	LM_TC_TT,
+	///
+	LM_TC_IT,
+	///
+	LM_TC_TEXTRM,
+	/// Math mode TeX characters ",;:{}"
+	LM_TC_TEX,
+	/// Special characters "{}&#_%"
+	LM_TC_SPECIAL,
+	/// Internal code for operators
+	LM_TC_BOP,
+	/// Internal code for symbols
+	LM_TC_SYMB,
+	///
+	LM_TC_BOPS,
+	///
+	LM_TC_BSYM,
+	///
+	LM_FONT_END,
+	
+	/// This must be < 32 
+	LM_TC_MAX
 };
 
 ostream & operator<<(ostream &, MathedTextCodes mtc);
@@ -147,69 +148,67 @@ ostream & operator<<(ostream &, MathedTextCodes mtc);
        
 /// Types of lyx-math insets 
 enum MathedInsetTypes  {
-   ///
-   LM_OT_MIN = 0,
-   /// A simple paragraph
-   LM_OT_PAR,
-   /// A simple numbered paragraph
-   LM_OT_PARN,
-   /// A multiline paragraph
-   LM_OT_MPAR,
-   /// A multiline numbered paragraph
-   LM_OT_MPARN,
-   /// An array
-   LM_OT_MATRIX,
-   /// A big operator
-   LM_OT_BIGOP,
-   /// A LaTeX macro
-   LM_OT_UNDEF,
-   ///
-   LM_OT_FUNC,
-   ///
-   LM_OT_FUNCLIM,
-   ///
-   LM_OT_SCRIPT,
-   ///
-   LM_OT_SPACE,
-   ///
-   LM_OT_DOTS,
-   /// A fraction
-   LM_OT_FRAC,
-   ///
-   LM_OT_ATOP,
-   ///
-   LM_OT_STACKREL,
-   /// A radical
-   LM_OT_SQRT,
-   /// A delimiter
-   LM_OT_DELIM,
-   /// A decoration
-   LM_OT_DECO,
-   /// An accent
-   LM_OT_ACCENT,
-   ///
-   LM_OT_MACRO,
-   ///
-   LM_OT_MACRO_ARG,
-   ///
-   LM_OT_MAX
+	///
+	LM_OT_MIN = 0,
+	/// A simple paragraph
+	LM_OT_PAR,
+	/// A simple numbered paragraph
+	LM_OT_PARN,
+	/// A multiline paragraph
+	LM_OT_MPAR,
+	/// A multiline numbered paragraph
+	LM_OT_MPARN,
+	/// An array
+	LM_OT_MATRIX,
+	/// A big operator
+	LM_OT_BIGOP,
+	/// A LaTeX macro
+	LM_OT_UNDEF,
+	///
+	LM_OT_FUNC,
+	///
+	LM_OT_FUNCLIM,
+	///
+	LM_OT_SCRIPT,
+	///
+	LM_OT_SPACE,
+	///
+	LM_OT_DOTS,
+	/// A fraction
+	LM_OT_FRAC,
+	///
+	LM_OT_ATOP,
+	///
+	LM_OT_STACKREL,
+	/// A radical
+	LM_OT_SQRT,
+	/// A delimiter
+	LM_OT_DELIM,
+	/// A decoration
+	LM_OT_DECO,
+	/// An accent
+	LM_OT_ACCENT,
+	///
+	LM_OT_MACRO,
+	///
+	LM_OT_MACRO_ARG,
+	///
+	LM_OT_MAX
 };
 
 ///
 enum MathedBinaryTypes {
 	///
-    LMB_NONE = 0,
-    ///
-    LMB_RELATION,
-    ///
-    LMB_OPERATOR,
-    ///
-    LMB_BOP = (LMB_RELATION | LMB_OPERATOR)
+	LMB_NONE = 0,
+	///
+	LMB_RELATION,
+	///
+	LMB_OPERATOR,
+	///
+	LMB_BOP = (LMB_RELATION | LMB_OPERATOR)
 };
 
-class MathedInset;
 class MathParInset;
-
 
 /** Abstract base class for all math objects.
     A math insets is for use of the math editor only, it isn't a
@@ -227,9 +226,10 @@ class MathedInset  {
     
     /// Draw the object 
     virtual void Draw(int x, int baseline) = 0;
-    
+
     /// Write LaTeX and Lyx code
-    virtual void Write(FILE * file) = 0;
+    virtual void Write(ostream &) = 0;
+
     /// Write LaTeX and Lyx code
     virtual void Write(string & file) = 0;
    
@@ -301,19 +301,19 @@ struct MathedRowSt;
 
 /// Paragraph permissions
 enum MathedParFlag {
-    LMPF_BASIC = 0,
-    /// If false can use a non-standard size
-    LMPF_FIXED_SIZE = 1,
-    /// If true can insert newlines 
-    LMPF_ALLOW_CR  = 2,
-    /// If true can use tabs
-    LMPF_ALLOW_TAB = 4,
-    /// If true can insert new columns
-    LMPF_ALLOW_NEW_COL = 8,
-    /// Smaller than current size (frac)
-    LMPF_SMALLER = 16,
-    /// Script size (subscript, stackrel)
-    LMPF_SCRIPT = 32
+	LMPF_BASIC = 0,
+	/// If false can use a non-standard size
+	LMPF_FIXED_SIZE = 1,
+	/// If true can insert newlines 
+	LMPF_ALLOW_CR  = 2,
+	/// If true can use tabs
+	LMPF_ALLOW_TAB = 4,
+	/// If true can insert new columns
+	LMPF_ALLOW_NEW_COL = 8,
+	/// Smaller than current size (frac)
+	LMPF_SMALLER = 16,
+	/// Script size (subscript, stackrel)
+	LMPF_SCRIPT = 32
 };
 
 
@@ -321,8 +321,8 @@ enum MathedParFlag {
 class MathParInset: public MathedInset  {
  public: 
     ///
-    MathParInset(short st= LM_ST_TEXT, char const * nm= 0,
-		 short ot= LM_OT_MIN);
+    MathParInset(short st = LM_ST_TEXT, char const * nm = 0,
+		 short ot = LM_OT_MIN);
     ///
     MathParInset(MathParInset *);
     ///
@@ -332,9 +332,10 @@ class MathParInset: public MathedInset  {
 
     /// Draw the object on a drawable
     virtual void Draw(int x, int baseline);
-   
+
     /// Write LaTeX code
-    virtual void Write(FILE * file);
+    virtual void Write(ostream &);
+
     /// Write LaTeX code
     virtual void Write(string & file);
     ///
@@ -425,9 +426,9 @@ struct MathedRowSt {
     /// 
     MathedRowSt(int n) {
 	    w = new int[n + 1]; // this leaks
-	next = 0;
-	label = 0;
-	numbered = true;
+	    next = 0;
+	    label = 0;
+	    numbered = true;
     }
     ///
     ~MathedRowSt() {
@@ -488,7 +489,7 @@ class MathMatrixInset: public MathParInset {
     ///
     void Draw(int, int);
     ///
-    void Write(FILE * file);
+    void Write(ostream &);
     ///
     void Write(string & file);
     ///
@@ -537,8 +538,11 @@ class MathMatrixInset: public MathParInset {
 LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * data,
 			    MathParInset ** mt);
 ///
-void mathed_write(MathParInset *, FILE *, int *, char fragile,
+void mathed_write(MathParInset *, ostream &, int *, char fragile,
 		  char const * label = 0);
+///
+//void mathed_write(MathParInset *, FILE *, int *, char fragile,
+//		  char const * label = 0);
 ///
 void mathed_write(MathParInset *, string &, int *, char fragile,
 		  char const * label = 0);

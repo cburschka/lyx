@@ -1108,22 +1108,22 @@ void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
 }
 
 
-void InsetFig::Write(FILE * file)
+void InsetFig::Write(ostream & os)
 {
 	Regenerate();
-	fprintf(file, "Figure size %d %d\n", wid, hgh);
+	os << "Figure size " << wid << " " << hgh << "\n";
 	if (!fname.empty()) {
 	  string buf1 = OnlyPath(owner->getFileName());
 	  string fname2 = MakeRelPath(fname, buf1);
-	  fprintf(file, "file %s\n", fname2.c_str());
+	  os << "file " << fname2 << "\n";
 	}
 	if (!subcaption.empty())
-	  fprintf(file, "subcaption %s\n", subcaption.c_str());
-	if (wtype) fprintf(file, "width %d %g\n", wtype, xwid);
-	if (htype) fprintf(file, "height %d %g\n", htype, xhgh);
-	if (angle != 0) fprintf(file, "angle %g\n", angle);
-	fprintf(file, "flags %d\n", flags);
-	if (subfigure) fprintf(file, "subfigure\n");
+		os << "subcaption " << subcaption << "\n";
+	if (wtype) os << "width " << wtype << " " << xwid << "\n";
+	if (htype) os << "height " << htype << " " << xhgh << "\n";
+	if (angle != 0) os << "angle " << angle << "\n";
+	os << "flags " << flags << "\n";
+	if (subfigure) os << "subfigure\n";
 }
 
 
@@ -1211,10 +1211,10 @@ void InsetFig::Read(LyXLex & lex)
 }
 
 
-int InsetFig::Latex(FILE * file, signed char /* fragile*/ )
+int InsetFig::Latex(ostream & os, signed char /* fragile*/ )
 {
 	Regenerate();
-	if (!cmd.empty()) fprintf(file, "%s ", cmd.c_str());
+	if (!cmd.empty()) os << cmd << " ";
 	return 0;
 }
 

@@ -1,5 +1,5 @@
-#This file was created by <ale> Wed Oct 29 15:21:35 1997
-#LyX 0.11 (C) 1995-1997 Matthias Ettrich and the LyX Team
+#This file was created by <larsbj> Sun Dec  5 17:47:02 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
 \language default
@@ -11,6 +11,7 @@
 \papersize Default
 \paperpackage a4
 \use_geometry 0
+\use_amsmath 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -235,7 +236,7 @@ mouse: As usual, click on the desired argument box.
 Currently the user can only define command macros, but internally it's possible
  to define also environment macros.
 \layout Standard
-\cursor 358 
+
 There are several predefined macros, mainly to allow AMS-LaTeX users to
  use AMS macros in a WYSIWYM way, like 
 \family typewriter 

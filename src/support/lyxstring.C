@@ -62,13 +62,8 @@ using std::min;
 ///////////////////////////////////////
 // The internal string representation
 ///////////////////////////////////////
-#define NEW_ALLOC 1
 
 struct lyxstring::Srep {
-#ifndef NEW_ALLOC
-	///
-	static size_t const xtra = static_cast<size_t>(8);
-#endif
 	/// size
 	size_t sz;
 	/// Reference count
@@ -116,17 +111,14 @@ private:
 };
 
 
+inline
 lyxstring::Srep::Srep(lyxstring::size_type nsz, const value_type * p)
 {
 // can be called with p == 0 by lyxstring::assign(const value_type *, size_type)
 
 	sz = nsz;
 	ref = 1;
-#ifdef NEW_ALLOC
 	res = sz ? sz : 1;
-#else
-	res = sz + xtra;
-#endif
 	s = new value_type[res + 1]; // add space for terminator
 	if (p && sz) {
 		// if sz = 0 nothing gets copied and we have an error
@@ -139,15 +131,12 @@ lyxstring::Srep::Srep(lyxstring::size_type nsz, const value_type * p)
 }
 
 
+inline
 lyxstring::Srep::Srep(lyxstring::size_type nsz, value_type ch)
 {
 	sz = nsz;
 	ref = 1;
-#ifdef NEW_ALLOC
 	res = sz ? sz : 1;
-#else
-	res = sz + xtra;
-#endif
 	s = new value_type[res + 1]; // add space for terminator
 	memset(s, ch, sz);
 	if (!ch) {
@@ -158,6 +147,7 @@ lyxstring::Srep::Srep(lyxstring::size_type nsz, value_type ch)
 }
 	
 
+inline
 void lyxstring::Srep::assign(lyxstring::size_type nsz, const value_type * p)
 {
 // can be called with p == 0 by lyxstring::assign(const value_type *, size_type)
@@ -165,11 +155,7 @@ void lyxstring::Srep::assign(lyxstring::size_type nsz, const value_type * p)
 	if (res < nsz) {
 		delete[] s;
 		sz = nsz;
-#ifdef NEW_ALLOC
 		res = sz ? sz : 1;
-#else
-		res = sz + xtra;
-#endif
 		s = new value_type[res + 1]; // add space for terminator
 	} else {
 		sz = nsz;
@@ -185,16 +171,13 @@ void lyxstring::Srep::assign(lyxstring::size_type nsz, const value_type * p)
 }
 
 
+inline
 void lyxstring::Srep::assign(lyxstring::size_type nsz, value_type ch)
 {
 	sz = nsz;
 	if (res < nsz) {
 		delete[] s;
-#ifdef NEW_ALLOC
 		res = sz ? sz : 1;
-#else
-		res = sz + xtra;
-#endif
 		s = new value_type[res + 1]; // add space for terminator
 	}
 	memset(s, ch, sz);
@@ -206,17 +189,14 @@ void lyxstring::Srep::assign(lyxstring::size_type nsz, value_type ch)
 }
 
 
+inline
 void lyxstring::Srep::append(lyxstring::size_type asz, const value_type * p)
 {
 	register unsigned int const len = sz + asz;
 	if (res < len) {
-#ifdef NEW_ALLOC
 		do {
 			res *= 2;
 		} while (res < len);
-#else
-		res = len + xtra;
-#endif
 		value_type * tmp = new value_type[res + 1];
 		memcpy(tmp, s, sz);
 		memcpy(tmp + sz, p, asz);
@@ -230,18 +210,15 @@ void lyxstring::Srep::append(lyxstring::size_type asz, const value_type * p)
 }
 
 
+inline
 void lyxstring::Srep::push_back(value_type c)
 {
 	s[sz] = c; // it is always room to put a value_type at the end
 	++sz;
 	if (res < sz) {
-#ifdef NEW_ALLOC
 		do {
 			res *= 2;
 		} while (res < sz);
-#else
-		res = sz + xtra;
-#endif
 		value_type * tmp = new value_type[res + 1];
 		memcpy(tmp, s, sz);
 		delete[] s;
@@ -250,32 +227,30 @@ void lyxstring::Srep::push_back(value_type c)
 }
 
 
+inline
 void lyxstring::Srep::insert(lyxstring::size_type pos, const value_type * p,
 			   lyxstring::size_type n)
 {
 	if (res < n + sz) {
-#ifdef NEW_ALLOC
 		do {
 			res *= 2;
 		} while (res < n + sz);
-#else
-		res = sz + n + xtra;
-#endif
 		value_type * tmp = new value_type[res + 1];
 		memcpy(tmp, s, pos);
 		memcpy(tmp + pos, p, n);
-		memcpy(tmp + pos + n, & s[pos], sz - pos);
+		memcpy(tmp + pos + n, &s[pos], sz - pos);
 		sz += n;
 		delete[] s;
 		s = tmp;
 	} else {
-		memmove(s + pos + n, & s[pos], sz - pos);
+		memmove(s + pos + n, &s[pos], sz - pos);
 		memcpy(s + pos, p, n);
 		sz += n;
 	}
 }
 
 
+inline
 void lyxstring::Srep::resize(size_type n, value_type c)
 {
 	// This resets sz to res_arg
@@ -290,6 +265,7 @@ void lyxstring::Srep::resize(size_type n, value_type c)
 }
 
 
+inline
 void lyxstring::Srep::reserve(lyxstring::size_type res_arg)
 {
 	// This keeps the old sz, but
@@ -302,6 +278,7 @@ void lyxstring::Srep::reserve(lyxstring::size_type res_arg)
 }
 
 
+inline
 void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 			    value_type const * p, size_type n2)
 {
@@ -313,13 +290,9 @@ void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 		memcpy(s + i, p, n2);
 		sz += n2;
 	} else {
-#ifdef NEW_ALLOC
 		do {
 			res *= 2;
 		} while (res < n2 + sz);
-#else
-		res = sz + n2 + xtra;
-#endif
 		value_type * tmp = new value_type[res + 1];
 		memcpy(tmp, s, i);
 		memcpy(tmp + i, p, n2);
@@ -378,18 +351,23 @@ private:
 // NOTE: The easiest way to catch this snippet of the output is to wait for
 //       the splash screen to disappear and then open and close Help->Credits
 //
+inline
 lyxstringInvariant::lyxstringInvariant(lyxstring const * ls) : object(ls)
 {
 	// printf("lyxstringInvariant constructor\n");
 	helper();
 }
 
+
+inline
 lyxstringInvariant::~lyxstringInvariant()
 {
 	helper();
 	// printf("lyxstringInvariant destructor completed\n");
 }
 
+
+inline
 void lyxstringInvariant::helper() const
 {
 	// Some of these tests might look pointless but they are
@@ -421,6 +399,8 @@ void lyxstringInvariant::helper() const
 lyxstring::size_type const lyxstring::npos =
 static_cast<lyxstring::size_type>(-1);
 
+
+inline
 lyxstring::lyxstring()
 {
 	static Srep empty_rep(0, "");
@@ -429,6 +409,7 @@ lyxstring::lyxstring()
 }
 
 
+inline
 lyxstring::lyxstring(lyxstring const & x, size_type pos, size_type n)
 {
 	Assert(pos <= x.rep->sz); // STD!
@@ -441,6 +422,7 @@ lyxstring::lyxstring(lyxstring const & x, size_type pos, size_type n)
 }
 
 
+inline
 lyxstring::lyxstring(value_type const * s, size_type n)
 {
 	Assert(s && n < npos); // STD!
@@ -454,6 +436,7 @@ lyxstring::lyxstring(value_type const * s, size_type n)
 }
 
 
+inline
 lyxstring::lyxstring(value_type const * s)
 {
 	Assert(s); // STD!
@@ -467,6 +450,7 @@ lyxstring::lyxstring(value_type const * s)
 }
 
 
+inline
 lyxstring::lyxstring(size_type n, value_type c)
 {
 	Assert(n < npos); // STD!
@@ -474,12 +458,14 @@ lyxstring::lyxstring(size_type n, value_type c)
 }
 
 
+inline
 lyxstring::lyxstring(const_iterator first, const_iterator last)
 {
 	rep = new Srep(last - first, first);
 }
 
 
+inline
 lyxstring::~lyxstring()
 {
 	if (--rep->ref == 0) delete rep;
@@ -489,48 +475,56 @@ lyxstring::~lyxstring()
 // Iterators
 ///////////////////////
 
+inline
 lyxstring::iterator lyxstring::begin()
 {
 	return rep->s;
 }
 
 
+inline
 lyxstring::const_iterator lyxstring::begin() const
 {
 	return rep->s;
 }
 
 
+inline
 lyxstring::iterator lyxstring::end()
 {
 	return rep->s + rep->sz;
 }
 
 
+inline
 lyxstring::const_iterator lyxstring::end() const
 {
 	return rep->s + rep->sz;
 }
 
 #if 0
+inline
 reverse_iterator lyxstring::rbegin()
 {
 	return reverse_iterator( end() );
 }
 
 
+inline
 const_reverse_iterator lyxstring::rbegin() const
 {
 	return const_reverse_iterator( end() );
 }
 
 
+inline
 reverse_iterator lyxstring::rend()
 {
 	return reverse_iterator( begin() );
 }
 
 
+inline
 const_reverse_iterator lyxstring::rend() const
 {
 	return const_reverse_iterator( begin() );
@@ -542,12 +536,14 @@ const_reverse_iterator lyxstring::rend() const
 // Size and Capacity
 ///////////////////////
 
+inline
 lyxstring::size_type lyxstring::size() const
 { 
 	return rep->sz;
 }
 
 
+inline
 void lyxstring::resize(size_type n, value_type c)
 {
 	Assert(n <= npos); // STD!
@@ -559,12 +555,14 @@ void lyxstring::resize(size_type n, value_type c)
 }
 
 
+inline
 lyxstring::size_type lyxstring::capacity() const
 {
 	return rep->res;
 }
 
 
+inline
 void lyxstring::reserve(size_type res_arg)
 {
 	TestlyxstringInvariant(this);
@@ -578,6 +576,7 @@ void lyxstring::reserve(size_type res_arg)
 // Assignment
 ////////////////
 
+inline
 lyxstring & lyxstring::operator= (lyxstring const & x)
 {
 	TestlyxstringInvariant(this);
@@ -586,6 +585,7 @@ lyxstring & lyxstring::operator= (lyxstring const & x)
 }
 
 
+inline
 lyxstring & lyxstring::operator= (value_type const * s)
 {
 	Assert(s); // OURS!
@@ -596,6 +596,7 @@ lyxstring & lyxstring::operator= (value_type const * s)
 }
 
 
+inline
 lyxstring & lyxstring::operator=(value_type c)
 {
 	TestlyxstringInvariant(this);
@@ -612,6 +613,7 @@ lyxstring & lyxstring::operator=(value_type c)
 }
 
 
+inline
 lyxstring & lyxstring::assign(lyxstring const & x)
 {
 	TestlyxstringInvariant(this);
@@ -623,6 +625,7 @@ lyxstring & lyxstring::assign(lyxstring const & x)
 }
 	
 
+inline
 lyxstring & lyxstring::assign(lyxstring const & x, size_type pos, size_type n)
 {
 	Assert(pos <= x.rep->sz); // STD!
@@ -632,6 +635,7 @@ lyxstring & lyxstring::assign(lyxstring const & x, size_type pos, size_type n)
 }
 	
 
+inline
 lyxstring & lyxstring::assign(value_type const * s, size_type n)
 {
 	Assert(s); // OURS!
@@ -648,6 +652,7 @@ lyxstring & lyxstring::assign(value_type const * s, size_type n)
 }
 	
 
+inline
 lyxstring & lyxstring::assign(value_type const * s)
 {
 	Assert(s); // OURS!
@@ -657,6 +662,7 @@ lyxstring & lyxstring::assign(value_type const * s)
 }
 
 
+inline
 lyxstring & lyxstring::assign(size_type n, value_type ch)
 {
 	TestlyxstringInvariant(this);
@@ -667,6 +673,7 @@ lyxstring & lyxstring::assign(size_type n, value_type ch)
 }
 
 
+inline
 lyxstring & lyxstring::assign(const_iterator first, const_iterator last)
 {
 	TestlyxstringInvariant(this);
@@ -681,6 +688,7 @@ lyxstring & lyxstring::assign(const_iterator first, const_iterator last)
 // Element Access
 ////////////////////
 
+inline
 lyxstring::const_reference lyxstring::operator[](size_type pos) const
 {
 	Assert(pos <= rep->sz); // OURS!
@@ -689,6 +697,7 @@ lyxstring::const_reference lyxstring::operator[](size_type pos) const
 }
 
 
+inline
 lyxstring::reference lyxstring::operator[](size_type pos)
 {
 	Assert(pos < rep->sz); // OURS!
@@ -699,6 +708,7 @@ lyxstring::reference lyxstring::operator[](size_type pos)
 }
 
 
+inline
 lyxstring::const_reference lyxstring::at(size_type n) const
 {
 	Assert(n < rep->sz); // STD!
@@ -706,6 +716,7 @@ lyxstring::const_reference lyxstring::at(size_type n) const
 }
 
 
+inline
 lyxstring::reference lyxstring::at(size_type n)
 {
 	Assert(n < rep->sz); // STD!
@@ -720,6 +731,7 @@ lyxstring::reference lyxstring::at(size_type n)
 // Insert
 /////////////
 
+inline
 lyxstring & lyxstring::operator+=(lyxstring const & x)
 {
 	TestlyxstringInvariant(this);
@@ -728,6 +740,7 @@ lyxstring & lyxstring::operator+=(lyxstring const & x)
 }
 
 
+inline
 lyxstring & lyxstring::operator+=(value_type const * x)
 {
 	Assert(x); // OURS!
@@ -737,6 +750,7 @@ lyxstring & lyxstring::operator+=(value_type const * x)
 }
 
 
+inline
 lyxstring & lyxstring::operator+=(value_type c)
 {
 	TestlyxstringInvariant(this);
@@ -746,6 +760,7 @@ lyxstring & lyxstring::operator+=(value_type c)
 }
 
 
+inline
 void lyxstring::push_back(value_type c)
 {
 	TestlyxstringInvariant(this);
@@ -755,6 +770,7 @@ void lyxstring::push_back(value_type c)
 }
 
 
+inline
 lyxstring & lyxstring::append(lyxstring const & x)
 {
 	TestlyxstringInvariant(this);
@@ -766,6 +782,7 @@ lyxstring & lyxstring::append(lyxstring const & x)
 }
 
 
+inline
 lyxstring & lyxstring::append(lyxstring const & x, size_type pos, size_type n)
 {
 	Assert(pos <= x.rep->sz); // STD!
@@ -775,6 +792,7 @@ lyxstring & lyxstring::append(lyxstring const & x, size_type pos, size_type n)
 }
 
 
+inline
 lyxstring & lyxstring::append(value_type const * p, size_type n)
 {
 	Assert(p); // OURS!
@@ -787,6 +805,7 @@ lyxstring & lyxstring::append(value_type const * p, size_type n)
 }
 
 
+inline
 lyxstring & lyxstring::append(value_type const * p)
 {
 	Assert(p); // OURS!
@@ -799,6 +818,7 @@ lyxstring & lyxstring::append(value_type const * p)
 }
 
 
+inline
 lyxstring & lyxstring::append(size_type n, value_type c)
 {
 	TestlyxstringInvariant(this);
@@ -812,6 +832,7 @@ lyxstring & lyxstring::append(size_type n, value_type c)
 }
 
 
+inline
 lyxstring & lyxstring::append(iterator first, iterator last)
 {
 	TestlyxstringInvariant(this);
@@ -823,6 +844,7 @@ lyxstring & lyxstring::append(iterator first, iterator last)
 
 // insert value_typeacters before (*this)[pos]
 
+inline
 lyxstring & lyxstring::insert(size_type pos, lyxstring const & x)
 {
 	TestlyxstringInvariant(this);
@@ -831,6 +853,7 @@ lyxstring & lyxstring::insert(size_type pos, lyxstring const & x)
 }
 
 
+inline
 lyxstring & lyxstring::insert(size_type pos, lyxstring const & x,
 			  size_type pos2, size_type n)
 {
@@ -843,6 +866,7 @@ lyxstring & lyxstring::insert(size_type pos, lyxstring const & x,
 }
 
 
+inline
 lyxstring & lyxstring::insert(size_type pos, value_type const * p, size_type n)
 {
 	Assert(p); // OURS!
@@ -857,6 +881,7 @@ lyxstring & lyxstring::insert(size_type pos, value_type const * p, size_type n)
 }
 
 
+inline
 lyxstring & lyxstring::insert(size_type pos, value_type const * p)
 {
 	Assert(p); // OURS!
@@ -871,6 +896,7 @@ lyxstring & lyxstring::insert(size_type pos, value_type const * p)
 }
 
 
+inline
 lyxstring & lyxstring::insert(size_type pos, size_type n, value_type c)
 {
 	TestlyxstringInvariant(this);
@@ -884,6 +910,7 @@ lyxstring & lyxstring::insert(size_type pos, size_type n, value_type c)
 }
 
 
+inline
 lyxstring::iterator lyxstring::insert(iterator p, value_type c)
 {
 	TestlyxstringInvariant(this);
@@ -895,6 +922,7 @@ lyxstring::iterator lyxstring::insert(iterator p, value_type c)
 }
 
 
+inline
 void lyxstring::insert(iterator p, size_type n , value_type c)
 {
 	TestlyxstringInvariant(this);
@@ -903,6 +931,7 @@ void lyxstring::insert(iterator p, size_type n , value_type c)
 }
 
 
+inline
 void lyxstring::insert(iterator p, iterator first, iterator last)
 {
 	TestlyxstringInvariant(this);
@@ -920,6 +949,7 @@ void lyxstring::insert(iterator p, iterator first, iterator last)
          // some of the parameters wrong, also some of the funcs can surely
          // be written more effectively.
 
+inline
 lyxstring::size_type lyxstring::find(lyxstring const & a, size_type i) const
 {
 	if (!rep->sz || i >= rep->sz) return npos;
@@ -944,6 +974,7 @@ lyxstring::size_type lyxstring::find(lyxstring const & a, size_type i) const
 }
 
 
+inline
 lyxstring::size_type lyxstring::find(value_type const * ptr, size_type i,
 				 size_type n) const
 {
@@ -975,6 +1006,7 @@ lyxstring::size_type lyxstring::find(value_type const * ptr, size_type i,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find(value_type const * s, size_type i) const
 {
 	Assert(s); // OURS!
@@ -987,6 +1019,7 @@ lyxstring::size_type lyxstring::find(value_type const * s, size_type i) const
 }
 
 
+inline
 lyxstring::size_type lyxstring::find(value_type c, size_type i) const
 {
 	if (!rep->sz || i >= rep->sz) return npos;
@@ -1000,6 +1033,7 @@ lyxstring::size_type lyxstring::find(value_type c, size_type i) const
 }
 
 
+inline
 lyxstring::size_type lyxstring::rfind(lyxstring const & a, size_type i) const
 {
 	TestlyxstringInvariant(this);
@@ -1019,6 +1053,7 @@ lyxstring::size_type lyxstring::rfind(lyxstring const & a, size_type i) const
 }
 
 
+inline
 lyxstring::size_type lyxstring::rfind(value_type const * ptr, size_type i,
 				  size_type n) const
 {
@@ -1041,6 +1076,7 @@ lyxstring::size_type lyxstring::rfind(value_type const * ptr, size_type i,
 }
 
 
+inline
 lyxstring::size_type lyxstring::rfind(value_type const * ptr,
 				      size_type i) const
 {
@@ -1063,6 +1099,7 @@ lyxstring::size_type lyxstring::rfind(value_type const * ptr,
 }
 
 
+inline
 lyxstring::size_type lyxstring::rfind(value_type c, size_type i) const
 {
 	TestlyxstringInvariant(this);
@@ -1075,8 +1112,9 @@ lyxstring::size_type lyxstring::rfind(value_type c, size_type i) const
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_first_of(lyxstring const & a,
-					  size_type i) const
+					      size_type i) const
 {
 	Assert(i < rep->sz); // OURS!
 	TestlyxstringInvariant(this);
@@ -1088,8 +1126,10 @@ lyxstring::size_type lyxstring::find_first_of(lyxstring const & a,
 }
 
 
-lyxstring::size_type lyxstring::find_first_of(value_type const * ptr, size_type i,
-					  size_type n) const
+inline
+lyxstring::size_type lyxstring::find_first_of(value_type const * ptr,
+					      size_type i,
+					      size_type n) const
 {
 	Assert(ptr && i < rep->sz); // OURS!
 	TestlyxstringInvariant(this);
@@ -1102,8 +1142,9 @@ lyxstring::size_type lyxstring::find_first_of(value_type const * ptr, size_type 
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_first_of(value_type const * ptr,
-					  size_type i) const
+					      size_type i) const
 {
 	Assert(ptr && i < rep->sz); // OURS!
 	TestlyxstringInvariant(this);
@@ -1115,6 +1156,7 @@ lyxstring::size_type lyxstring::find_first_of(value_type const * ptr,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_first_of(value_type c, size_type i) const
 {
 	Assert(i < rep->sz); // OURS!
@@ -1127,8 +1169,9 @@ lyxstring::size_type lyxstring::find_first_of(value_type c, size_type i) const
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_last_of(lyxstring const & a,
-					 size_type i) const
+					     size_type i) const
 {
 	TestlyxstringInvariant(this);
 
@@ -1139,8 +1182,11 @@ lyxstring::size_type lyxstring::find_last_of(lyxstring const & a,
 	return npos;
 }
 
-lyxstring::size_type lyxstring::find_last_of(value_type const * ptr, size_type i,
-					 size_type n) const
+
+inline
+lyxstring::size_type lyxstring::find_last_of(value_type const * ptr,
+					     size_type i,
+					     size_type n) const
 {
 	Assert(ptr); // OURS!
 	TestlyxstringInvariant(this);
@@ -1154,8 +1200,9 @@ lyxstring::size_type lyxstring::find_last_of(value_type const * ptr, size_type i
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_last_of(value_type const * ptr,
-					 size_type i) const
+					     size_type i) const
 {
 	Assert(ptr); // OURS!
 	TestlyxstringInvariant(this);
@@ -1168,6 +1215,7 @@ lyxstring::size_type lyxstring::find_last_of(value_type const * ptr,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_last_of(value_type c, size_type i) const
 {
 	TestlyxstringInvariant(this);
@@ -1181,6 +1229,7 @@ lyxstring::size_type lyxstring::find_last_of(value_type c, size_type i) const
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_first_not_of(lyxstring const & a,
 						  size_type i) const
 {
@@ -1195,6 +1244,7 @@ lyxstring::size_type lyxstring::find_first_not_of(lyxstring const & a,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
 						  size_type i,
 						  size_type n) const
@@ -1210,6 +1260,7 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
 						  size_type i) const
 {
@@ -1223,6 +1274,7 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_first_not_of(value_type c,
 						  size_type i) const
 {
@@ -1237,6 +1289,7 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type c,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_last_not_of(lyxstring const & a,
 						 size_type i) const
 {
@@ -1250,6 +1303,7 @@ lyxstring::size_type lyxstring::find_last_not_of(lyxstring const & a,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 						 size_type i,
 						 size_type n) const
@@ -1267,6 +1321,7 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 						 size_type i) const
 {
@@ -1281,6 +1336,7 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 }
 
 
+inline
 lyxstring::size_type lyxstring::find_last_not_of(value_type c,
 						 size_type i) const
 {
@@ -1298,6 +1354,7 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type c,
 // Replace
 /////////////////
 
+inline
 lyxstring & lyxstring::replace(size_type i, size_type n, lyxstring const & x)
 {
 	Assert(i <= rep->sz); // OURS!
@@ -1307,6 +1364,7 @@ lyxstring & lyxstring::replace(size_type i, size_type n, lyxstring const & x)
 }
 
 
+inline
 lyxstring & lyxstring::replace(size_type i, size_type n, lyxstring const & x,
 			       size_type i2, size_type n2)
 {
@@ -1319,6 +1377,7 @@ lyxstring & lyxstring::replace(size_type i, size_type n, lyxstring const & x,
 }
 
 
+inline
 lyxstring & lyxstring::replace(size_type i, size_type n,
 			       value_type const * p, size_type n2)
 {
@@ -1331,6 +1390,7 @@ lyxstring & lyxstring::replace(size_type i, size_type n,
 }
 
 
+inline
 lyxstring & lyxstring::replace(size_type i, size_type n, value_type const * p)
 {
 	Assert(p && i < rep->sz); // OURS!
@@ -1340,6 +1400,7 @@ lyxstring & lyxstring::replace(size_type i, size_type n, value_type const * p)
 }
 
 
+inline
 lyxstring & lyxstring::replace(size_type i, size_type n,
 			       size_type n2, value_type c)
 {
@@ -1355,6 +1416,7 @@ lyxstring & lyxstring::replace(size_type i, size_type n,
 }
 
 
+inline
 lyxstring & lyxstring::replace(iterator i, iterator i2, const lyxstring & str)
 {
 	TestlyxstringInvariant(this);
@@ -1363,6 +1425,7 @@ lyxstring & lyxstring::replace(iterator i, iterator i2, const lyxstring & str)
 }
 
 
+inline
 lyxstring & lyxstring::replace(iterator i, iterator i2,
 			       value_type const * p, size_type n)
 {
@@ -1373,6 +1436,7 @@ lyxstring & lyxstring::replace(iterator i, iterator i2,
 }
 
 
+inline
 lyxstring & lyxstring::replace(iterator i, iterator i2, value_type const * p)
 {
 	Assert(p); // OURS!
@@ -1382,6 +1446,7 @@ lyxstring & lyxstring::replace(iterator i, iterator i2, value_type const * p)
 }
 
 
+inline
 lyxstring & lyxstring::replace(iterator i, iterator i2,
 			       size_type n , value_type c)
 {
@@ -1391,6 +1456,7 @@ lyxstring & lyxstring::replace(iterator i, iterator i2,
 }
 	
 
+inline
 lyxstring & lyxstring::replace(iterator i, iterator i2,
 			       iterator j, iterator j2)
 {
@@ -1400,6 +1466,7 @@ lyxstring & lyxstring::replace(iterator i, iterator i2,
 }
 
 
+inline
 void lyxstring::swap(lyxstring & str)
 {
 	if (rep == str.rep) return;
@@ -1409,6 +1476,7 @@ void lyxstring::swap(lyxstring & str)
 }
 
 
+inline
 lyxstring & lyxstring::erase(size_type i, size_type n)
 {
 	Assert(i <= rep->sz); // STD!
@@ -1426,6 +1494,7 @@ lyxstring & lyxstring::erase(size_type i, size_type n)
 }
 
 
+inline
 lyxstring::iterator lyxstring::erase(iterator i)
 {
 	TestlyxstringInvariant(this);
@@ -1437,6 +1506,7 @@ lyxstring::iterator lyxstring::erase(iterator i)
 }
 
 
+inline
 lyxstring::iterator lyxstring::erase(iterator first, iterator last)
 {
 	TestlyxstringInvariant(this);
@@ -1450,6 +1520,7 @@ lyxstring::iterator lyxstring::erase(iterator first, iterator last)
 // Conversion to C-style Strings
 /////////////////////////////////////
 
+inline
 lyxstring::value_type const * lyxstring::c_str() const
 {
 	rep->s[length()] = '\0';
@@ -1457,12 +1528,14 @@ lyxstring::value_type const * lyxstring::c_str() const
 }
 
 
+inline
 lyxstring::value_type const * lyxstring::data() const
 {
 	return rep->s;
 }
 
 
+inline
 lyxstring::size_type lyxstring::copy(value_type * buf, size_type len,
 				     size_type pos) const
 {
@@ -1482,6 +1555,7 @@ lyxstring::size_type lyxstring::copy(value_type * buf, size_type len,
 
 // Compare funcs should be verified.
 
+inline
 int lyxstring::internal_compare(size_type pos, size_type n,
 				value_type const * s,
 				size_type slen, size_type n2) const
@@ -1505,6 +1579,7 @@ int lyxstring::internal_compare(size_type pos, size_type n,
 }
 
 
+inline
 int lyxstring::compare(lyxstring const & str) const
 {
 	TestlyxstringInvariant(this);
@@ -1513,6 +1588,7 @@ int lyxstring::compare(lyxstring const & str) const
 }
 
 
+inline
 int lyxstring::compare(value_type const * s) const
 {
 	Assert(s); //OURS!
@@ -1522,7 +1598,9 @@ int lyxstring::compare(value_type const * s) const
 }
 
 
-int lyxstring::compare(size_type pos, size_type n, lyxstring const & str) const
+inline
+int lyxstring::compare(size_type pos, size_type n,
+		       lyxstring const & str) const
 {
 	Assert(pos <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
@@ -1530,6 +1608,7 @@ int lyxstring::compare(size_type pos, size_type n, lyxstring const & str) const
 }
 
 
+inline
 int lyxstring::compare(size_type pos, size_type n, lyxstring const & str,
 		       size_type pos2, size_type n2) const
 {
@@ -1542,6 +1621,7 @@ int lyxstring::compare(size_type pos, size_type n, lyxstring const & str,
 }
 
 
+inline
 int lyxstring::compare(size_type pos, size_type n, value_type const * s,
 		       size_type n2) const
 {
@@ -1556,6 +1636,7 @@ int lyxstring::compare(size_type pos, size_type n, value_type const * s,
 /////////////////
 
 // i = index, n = length
+inline
 lyxstring lyxstring::substr(size_type i, size_type n) const
 {
 	Assert(i <= rep->sz); // STD!
@@ -1764,10 +1845,12 @@ istream & operator>>(istream & is, lyxstring & s)
 	return is;
 }
 
+
 ostream & operator<<(ostream & o, lyxstring const & s)
 {
 	return o.write(s.data(), s.length());
 }
+
 
 istream & getline(istream & is, lyxstring & s,
 		  lyxstring::value_type delim)

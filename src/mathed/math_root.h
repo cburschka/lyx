@@ -40,7 +40,7 @@ class MathRootInset: public MathSqrtInset {
     ///
     void Draw(int x, int baseline);
     ///
-    void Write(FILE * file);
+    void Write(ostream &);
     ///
     void Write(string & file);
     ///

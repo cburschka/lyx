@@ -19,6 +19,7 @@
 #include "lyxlex.h"
 #include "LString.h"
 
+
 /* The features the text class offers for tables */ 
 
 ///
@@ -68,11 +69,11 @@ public:
 	///
 	LyXTable(int columns_arg, int rows_arg);
 	///
-	LyXTable(LyXLex &lex);
+	LyXTable(LyXLex & lex);
 	///
 	~LyXTable();
 	///
-	LyXTable* Clone();
+	LyXTable * Clone();
 
 	/// Returns true if there is a topline, returns false if not
 	bool TopLine(int cell);
@@ -159,20 +160,20 @@ public:
 	void Init(int columns_arg, int rows_arg);
 
 	///
-	void Write(FILE* file);
+	void Write(ostream &);
 	///
-	void Read(FILE* file);
+	void Read(FILE * file);
 
 	// cell <0 will tex the preamble
 	// returns the number of printed newlines
 	///
 	int TexEndOfCell(string & file, int cell);
 	///
-	int RoffEndOfCell(FILE* file, int cell);
+	int RoffEndOfCell(ostream &, int cell);
 	///
-	char const *getDocBookAlign(int cell, bool isColumn= false);
+	char const * getDocBookAlign(int cell, bool isColumn = false);
 	///
-	int DocBookEndOfCell(string &file, int cell, int &depth);
+	int DocBookEndOfCell(string & file, int cell, int & depth);
 
 	///
 	bool IsMultiColumn(int cell);
@@ -253,9 +254,9 @@ private:
             ///
             int width_of_cell;
             ///
-            char  multicolumn; // add approp. signedness
+            int  multicolumn; // add approp. signedness
             ///
-            char alignment; // add approp. signedness
+            int alignment; // add approp. signedness
             ///
             bool top_line;
             ///
@@ -281,7 +282,7 @@ private:
         };
         ///
         struct columnstruct {
-                char alignment; // add approp. signedness
+                int alignment; // add approp. signedness
                 bool left_line;
                 bool right_line;
                 int  width_of_column;
@@ -291,18 +292,18 @@ private:
 	///
 	int numberofcells;
 	///
-	int* rowofcell;
+	int * rowofcell;
 	///
-	int* columnofcell;
+	int * columnofcell;
 	///
 	void set_row_column_number_info();
 
 	///
-        rowstruct *row_info;
+        rowstruct * row_info;
         ///
-        columnstruct *column_info;
+        columnstruct * column_info;
         ///
-	cellstruct** cell_info;
+	cellstruct ** cell_info;
 	///
 	int width_of_table;
         ///
@@ -326,7 +327,7 @@ private:
 	int right_column_of_cell(int cell);
 
 	///
-	cellstruct* cellinfo_of_cell(int cell);
+	cellstruct * cellinfo_of_cell(int cell);
 
 	///
 	void delete_column(int column);

@@ -100,7 +100,7 @@ string QuoteName(string const & name)
 #endif
   	string qname = name;
 	while (qname.find("'") != string::npos) 
-	  LSubstring(qname,"'") = "\\'";
+		LSubstring(qname, "'") = "\\'";
 	return '\'' + qname + '\'';
 }
 
@@ -121,9 +121,9 @@ string TmpFileName(string const & dir, string const & mask)
 	// a short string...
 	string ret;
 	FileInfo fnfo;
-	for (int a= 'a'; a<= 'z'; ++a)
-		for (int b= 'a'; b<= 'z'; ++b)
-			for (int c= 'a'; c<= 'z'; ++c) {
+	for (int a = 'a'; a <= 'z'; ++a)
+		for (int b = 'a'; b <= 'z'; ++b)
+			for (int c = 'a'; c <= 'z'; ++c) {
 				// if this is not enough I have no idea what
 				// to do.
 				ret = tmpfl + char(a) + char(b) + char(c);
@@ -190,7 +190,7 @@ int IsDirWriteable (string const & path)
 		}
 		}
 	}
-		if (remove (tmpfl.c_str())) {
+		if (remove(tmpfl.c_str())) {
 			WriteFSAlert(_("LyX Internal Error!"), 
 				    _("Created test file but cannot remove it?"));
  			return -1;
@@ -269,10 +269,10 @@ string FileSearch(string const & path, string const & name,
 //   2) build_lyxdir (if not empty)
 //   3) system_lyxdir
 string LibFileSearch(string const & dir, string const & name, 
-		      string const & ext)
+		     string const & ext)
 {
-        string fullname = FileSearch(AddPath(user_lyxdir, dir), name,
-				      ext); 
+        string fullname = FileSearch(AddPath(user_lyxdir, dir),
+				     name, ext); 
 	if (!fullname.empty())
 		return fullname;
 
@@ -287,7 +287,7 @@ string LibFileSearch(string const & dir, string const & name,
 
 
 string i18nLibFileSearch(string const & dir, string const & name, 
-			  string const & ext)
+			 string const & ext)
 {
 	string lang = token(string(GetEnv("LANG")), '_', 0);
 
@@ -330,17 +330,16 @@ bool PutEnv(string const & envstr)
 #warning Look at and fix this.
 #endif
         // f.ex. what about error checking?
-        int retval = 0;
 #if HAVE_PUTENV
         // this leaks, but what can we do about it?
         //   Is doing a getenv() and a free() of the older value 
         //   a good idea? (JMarc)
-        retval = putenv((new string(envstr))->c_str());
+        int retval = putenv((new string(envstr))->c_str());
 #else
 #ifdef HAVE_SETENV 
         string varname;
         string str = envstr.split(varname,'=');
-        retval = setenv(varname.c_str(), str.c_str(), true);
+        int retval = setenv(varname.c_str(), str.c_str(), true);
 #endif
 #endif
         return retval == 0;
@@ -356,12 +355,12 @@ bool PutEnvPath(string const & envstr)
 static
 int DeleteAllFilesInDir (string const & path)
 {
-	struct dirent * de;
 	DIR * dir = opendir(path.c_str());
 	if (!dir) {
 		WriteFSAlert (_("Error! Cannot open directory:"), path);
 		return -1;
 	}
+	struct dirent * de;
 	while ((de = readdir(dir))) {
 		string temp = de->d_name;
 		if (temp == "." || temp == "..") 
@@ -370,11 +369,11 @@ int DeleteAllFilesInDir (string const & path)
 
 		lyxerr.debug() << "Deleting file: " << unlinkpath << endl;
 
- 		if (remove (unlinkpath.c_str()))
+ 		if (remove(unlinkpath.c_str()))
 			WriteFSAlert (_("Error! Could not remove file:"), 
 				      unlinkpath);
         }
-	closedir (dir);
+	closedir(dir);
 	return 0;
 }
 
@@ -411,26 +410,24 @@ int DestroyTmpDir (string const & tmpdir, bool Allfiles)
 
 string CreateBufferTmpDir (string const & pathfor)
 {
-	return CreateTmpDir (pathfor, "lyx_bufrtmp");
+	return CreateTmpDir(pathfor, "lyx_bufrtmp");
 }
 
 
 int DestroyBufferTmpDir (string const & tmpdir)
 {
-	return DestroyTmpDir (tmpdir, true);
+	return DestroyTmpDir(tmpdir, true);
 }
 
 
 string CreateLyXTmpDir (string const & deflt)
 {
-	string t;        
-
 	if ((!deflt.empty()) && (deflt  != "/tmp")) {
-		if (mkdir (deflt.c_str(), 0777)) {
+		if (mkdir(deflt.c_str(), 0777)) {
 #ifdef __EMX__
                         Path p(user_lyxdir);
 #endif
-			t = CreateTmpDir (deflt.c_str(), "lyx_tmp");
+			string t = CreateTmpDir (deflt.c_str(), "lyx_tmp");
                         return t;
 		} else
                         return deflt;
@@ -438,7 +435,7 @@ string CreateLyXTmpDir (string const & deflt)
 #ifdef __EMX__
 		Path p(user_lyxdir);
 #endif
-		t = CreateTmpDir ("/tmp", "lyx_tmp");
+		string t = CreateTmpDir ("/tmp", "lyx_tmp");
 		return t;
 	}
 }
@@ -475,7 +472,6 @@ string GetCWD ()
   	int n = 256;	// Assume path is less than 256 chars
 	char * err;
   	char * tbuf = new char[n];
-	string result;
   	
   	// Safe. Hopefully all getcwds behave this way!
   	while (((err = lyx::getcwd (tbuf, n)) == 0) && (errno == ERANGE)) {
@@ -485,6 +481,7 @@ string GetCWD ()
     		tbuf = new char[n];
   	}
 
+	string result;
 	if (err) result = tbuf;
 	delete[] tbuf;
 	return result;
@@ -553,7 +550,7 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 		if (Temp == ".") continue;
 		if (Temp == "..") {
 			// Remove one level of TempBase
-			int i = TempBase.length()-2;
+			int i = TempBase.length() - 2;
 #ifndef __EMX__
 			if (i < 0) i = 0;
 			while (i > 0 && TempBase[i] != '/') --i;
@@ -575,7 +572,7 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 	}
 
 	// returns absolute path
-	return TempBase;	
+	return TempBase;
 }
 
 
@@ -675,11 +672,11 @@ string NormalizePath(string const & path)
 			TempBase = "./";
 		} else if (Temp == "..") {
 			// Remove one level of TempBase
-			int i = TempBase.length()-2;
-			while (i>0 && TempBase[i] != '/')
+			int i = TempBase.length() - 2;
+			while (i > 0 && TempBase[i] != '/')
 				--i;
-			if (i>= 0 && TempBase[i] == '/')
-				TempBase.erase(i+1, string::npos);
+			if (i >= 0 && TempBase[i] == '/')
+				TempBase.erase(i + 1, string::npos);
 			else
 				TempBase = "../";
 		} else {
@@ -759,12 +756,12 @@ string ReplaceEnvironmentPath(string const & path)
 		if (*res1_contents != FirstChar) {
 			// Again No Environmentvariable
 			result1 += CompareString;
-			result0  = res0;
+			result0 = res0;
 		}
 
 		// Check for variable names
 		// Situation ${} is detected as "No Environmentvariable"
-		char const * cp1 = res1_contents+1;
+		char const * cp1 = res1_contents + 1;
 		bool result = isalpha(*cp1) || (*cp1 == UnderscoreChar);
 		++cp1;
 		while (*cp1 && result) {
@@ -844,7 +841,7 @@ string MakeRelPath(string const & abspath0, string const & basepath0)
 
 	// Append relative stuff from common directory to abspath
 	if (abspath[i] == '/') ++i;
-	for (; i<abslen; ++i)
+	for (; i < abslen; ++i)
 		buf += abspath[i];
 	// Remove trailing /
 	if (suffixIs(buf, '/'))
@@ -865,7 +862,6 @@ string AddPath(string const & path, string const & path_2)
 	if (!path.empty() && path != "." && path != "./") {
 		buf = CleanupPath(path);
 		if (path[path.length() - 1] != '/')
-							   
 			buf += '/';
 	}
 
@@ -911,7 +907,6 @@ string ChangeExtension(string const & oldname, string const & extension,
 		ret_str = oldname.substr(0, last_dot) + ext;
 	return CleanupPath(ret_str);
 }
-
 
 
 // Creates a nice compact path for displaying
@@ -967,9 +962,8 @@ string MakeDisplayPath (string const & path, unsigned int threshold)
 bool LyXReadLink(string const & File, string & Link)
 {
 	char LinkBuffer[512];
-                // Should be PATH_MAX but that needs autconf support
-	int nRead;
-	nRead = readlink(File.c_str(), LinkBuffer, sizeof(LinkBuffer)-1);
+	// Should be PATH_MAX but that needs autconf support
+	int nRead = readlink(File.c_str(), LinkBuffer, sizeof(LinkBuffer)-1);
 	if (nRead <= 0)
 		return false;
 	LinkBuffer[nRead] = 0;

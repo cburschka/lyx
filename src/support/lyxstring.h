@@ -195,7 +195,7 @@ public:
 	size_type size() const;
 
 	/// largest possible string
-	size_type max_size() const { return npos -1; }
+	size_type max_size() const { return npos - 1; }
 
 	///
 	size_type length() const { return size(); }

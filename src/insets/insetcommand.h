@@ -41,13 +41,13 @@ public:
 	///
 	void Draw(LyXFont, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE * file);
+	void Write(ostream &);
 	/// Parse the command.
 	void scanCommand(string const & cmd);
 	/// Will not be used when lyxf3
 	void Read(LyXLex & lex);
 	/// 
-	virtual int Latex(FILE * file, signed char fragile);
+	virtual int Latex(ostream &, signed char fragile);
 	///
 	virtual int Latex(string & file, signed char fragile);
 	///

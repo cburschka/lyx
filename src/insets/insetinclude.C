@@ -210,6 +210,7 @@ InsetInclude::~InsetInclude()
 	}
 }
 
+
 Inset * InsetInclude::Clone() const
 { 
 	InsetInclude * ii = new InsetInclude (contents, master); 
@@ -224,6 +225,7 @@ Inset * InsetInclude::Clone() const
 	}
 	return ii;
 }
+
 
 void InsetInclude::Edit(int, int)
 {
@@ -258,9 +260,9 @@ void InsetInclude::Edit(int, int)
 }
 
 
-void InsetInclude::Write(FILE * file)
+void InsetInclude::Write(ostream & os)
 {
-	fprintf(file, "Include %s\n", getCommand().c_str());
+	os << "Include " << getCommand() << "\n";
 }
 
 
@@ -314,12 +316,12 @@ bool InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::Latex(FILE * file, signed char /*fragile*/)
+int InsetInclude::Latex(ostream & os, signed char /*fragile*/)
 {
 	string include_file;
 	signed char dummy = 0;
 	Latex(include_file, dummy);
-	fprintf(file, "%s", include_file.c_str());
+	os << include_file;
 	return 0;
 }
 
@@ -336,7 +338,7 @@ int InsetInclude::Latex(string & file, signed char /*fragile*/)
 	incfile += contents;
 
 	if (loadIfNeeded()) {
-		Buffer *tmp = bufferlist.getBuffer(getFileName());
+		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
 		if (tmp->params.textclass != master->params.textclass) {
 			lyxerr << "ERROR: Cannot handle include file `"
@@ -354,9 +356,9 @@ int InsetInclude::Latex(string & file, signed char /*fragile*/)
 		if (!master->tmppath.empty()
 		    && !master->niceFile) {
 			incfile = subst(incfile, '/','@');
-			#ifdef __EMX__
+#ifdef __EMX__
 			incfile = subst(incfile, ':', '$');
-			#endif
+#endif
 			writefile = AddName(master->tmppath, incfile);
 		} else
 			writefile = getFileName();
@@ -434,9 +436,9 @@ string InsetInclude::getLabel(int) const
 }
 
 
-int InsetInclude::GetNumberOfLabels() const {
+int InsetInclude::GetNumberOfLabels() const
+{
     string label;
-    int nl;
 
     if (loadIfNeeded()) {
 	Buffer * tmp = bufferlist.getBuffer(getFileName());
@@ -444,7 +446,7 @@ int InsetInclude::GetNumberOfLabels() const {
 	label = tmp->getReferenceList('\n');
 	tmp->setParentName(getMasterFilename());
     }
-	nl = (label.empty())? 0: 1;
+    int nl = (label.empty())? 0: 1;
 	
     return nl;
 }

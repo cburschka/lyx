@@ -42,9 +42,10 @@ string InsetLabel::getLabel(int) const
 	return contents;
 }
 
-int InsetLabel::Latex(FILE * file, signed char /*fragile*/)
+
+int InsetLabel::Latex(ostream & os, signed char /*fragile*/)
 {
-	fprintf(file, "%s", escape(getCommand()).c_str());
+	os << escape(getCommand());
 	return 0;
 }
 

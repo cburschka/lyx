@@ -121,8 +121,7 @@ public:
 	~LyXParagraph();
 
 	///
-	void writeFile(FILE *, BufferParams &, char, char);
-
+	void writeFile(ostream &, BufferParams &, char, char);
 	///
 	void validate(LaTeXFeatures &);
 	
@@ -461,8 +460,7 @@ public:
 	///
         void UnsetPExtraType();
 	///
-	bool RoffContTableRows(FILE * file, size_type i,
-			       int actcell);
+	bool RoffContTableRows(ostream &, size_type i, int actcell);
 	///
 	void DocBookContTableRows(string & file, string & extra, int & desc_on,
 				  size_type i,

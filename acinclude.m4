@@ -184,16 +184,22 @@ dnl Check the version of g++
   elif test $ac_cv_prog_cxx_g = yes; then
     case $gxx_version in
       2.7*) CXXFLAGS="$lyx_opt";;
-      2.95.*) CXXFLAGS="-g $lyx_opt -fno-exceptions -fno-rtti -fpermissive";;
+      2.95.*) CXXFLAGS="-g $lyx_opt";;
       *)    CXXFLAGS="-g $lyx_opt -fno-exceptions -fno-rtti";;
     esac
   else
     CXXFLAGS="$lyx_opt"
   fi
   if test x$with_warnings = xyes ; then
-    CXXFLAGS="$CXXFLAGS -ansi -Wall"
+    case $gxx_version in
+	2.95.*) CXXFLAGS="$CXXFLAGS -Wall";;
+	*) CXXFLAGS="$CXXFLAGS -ansi -Wall";;
+    esac
     if test $lyx_devel_version = yes ; then
-	CXXFLAGS="$CXXFLAGS -pedantic"
+	case $gxx_version in
+	    2.95.*) ;;
+	    *) CXXFLAGS="$CXXFLAGS -pedantic";;
+        esac
     fi
   fi
 else
@@ -284,7 +290,7 @@ dnl   supports modern STL streams
 AC_DEFUN(LYX_CXX_STL_MODERN_STREAMS,[
 AC_CACHE_CHECK(for modern STL streams,lyx_cv_modern_streams,
  [AC_TRY_COMPILE([
-#include <fstream>
+#include <iostream>
 ],[
  std::streambuf * test = std::cerr.rdbuf();
  test->pubsync();

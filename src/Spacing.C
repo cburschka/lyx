@@ -1,21 +1,21 @@
 #include <config.h>
 
-#include <stdio.h>
+#include <cstdio>
 #include "Spacing.h"
 
 /// how can I put this inside of Spacing (class)
 static
-char const *spacing_string[] = {"single", "onehalf", "double", "other"};
+char const * spacing_string[] = {"single", "onehalf", "double", "other"};
 
 
-void Spacing::writeFile(FILE *file)
+void Spacing::writeFile(ostream & os)
 {
 	if (getSpace() == Spacing::Other) {
-		fprintf(file, "\\spacing %s %.2f \n",
-			spacing_string[getSpace()],
-			getValue());
+		os.setf(ios::showpoint|ios::fixed);
+		os.precision(2);
+		os << "\\spacing " << spacing_string[getSpace()]
+		   << " " << getValue() << " \n";
 	} else {
-		fprintf(file, "\\spacing %s \n",
-			spacing_string[getSpace()]);
+		os << "\\spacing " << spacing_string[getSpace()] << " \n";
 	}	
 }

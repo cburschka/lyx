@@ -72,9 +72,10 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
         }
 }
 
-FD_citation_form *create_form_citation_form(void)
+
+FD_citation_form * create_form_citation_form(void)
 {
-	FL_OBJECT *obj;
+	FL_OBJECT * obj;
 	FD_citation_form *fdui = (FD_citation_form *) fl_calloc(1, sizeof(FD_citation_form));
 
 	fdui->citation_form = fl_bgn_form(FL_NO_BOX, 220, 130);
@@ -104,9 +105,9 @@ FD_citation_form *create_form_citation_form(void)
 }
 /*---------------------------------------*/
 
-FD_bibitem_form *create_form_bibitem_form(void)
+FD_bibitem_form * create_form_bibitem_form(void)
 {
-	FL_OBJECT *obj;
+	FL_OBJECT * obj;
 	FD_bibitem_form *fdui = (FD_bibitem_form *) fl_calloc(1, sizeof(FD_bibitem_form));
 
 	fdui->bibitem_form = fl_bgn_form(FL_NO_BOX, 220, 130);
@@ -133,11 +134,13 @@ FD_bibitem_form *create_form_bibitem_form(void)
 /*---------------------------------------*/
 
 
-InsetCitation::InsetCitation(string const & key, string const & note):
-	InsetCommand("cite", key, note)
+InsetCitation::InsetCitation(string const & key, string const & note)
+	: InsetCommand("cite", key, note)
 {
 
 }
+
+
 InsetCitation::~InsetCitation()
 {
 	if(citation_form && citation_form->citation_form
@@ -196,7 +199,7 @@ InsetBibKey::InsetBibKey(string const & key, string const & label):
 }
 
 
-InsetBibKey::InsetBibKey(InsetBibKey const *b):
+InsetBibKey::InsetBibKey(InsetBibKey const * b):
 	InsetCommand("bibitem", b->contents, b->options)
 {
 	counter = b->counter;
@@ -223,7 +226,7 @@ void InsetBibKey::setCounter(int c)
 // as a LyX 2.x command, and lyxlex is not enough smart to understand
 // real LaTeX commands. Yes, that could be fixed, but would be a waste 
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
-void InsetBibKey::Write(FILE * file)
+void InsetBibKey::Write(ostream & os)
 {
 	string s;
 	if (!options.empty()) {
@@ -232,7 +235,7 @@ void InsetBibKey::Write(FILE * file)
 	}
 	s += '{';
 	s += contents + '}';
-	fprintf(file, "\\bibitem %s\n", s.c_str());
+	os << "\\bibitem " << s << "\n";
 }
 
 
@@ -281,8 +284,8 @@ void InsetBibKey::Edit(int, int)
 
 
 InsetBibtex::InsetBibtex(string const & dbase, string const & style,
-			 Buffer *o)
-	:InsetCommand("BibTeX", dbase, style), owner(o)
+			 Buffer * o)
+	: InsetCommand("BibTeX", dbase, style), owner(o)
 {
 }
 
@@ -293,17 +296,17 @@ string InsetBibtex::getScreenLabel() const
 }
 
 
-int InsetBibtex::Latex(FILE *file, signed char /*fragile*/)
+int InsetBibtex::Latex(ostream & os, signed char /*fragile*/)
 {
 	string bib;
 	signed char dummy = 0;
 	int result = Latex(bib, dummy);
-	fprintf(file, "%s", bib.c_str());
+	os << bib;
 	return result;
 }
 
 
-int InsetBibtex::Latex(string &file, signed char /*fragile*/)
+int InsetBibtex::Latex(string & file, signed char /*fragile*/)
 {
 	// this looks like an horrible hack and it is :) The problem
 	// is that owner is not initialized correctly when the bib
@@ -315,9 +318,9 @@ int InsetBibtex::Latex(string &file, signed char /*fragile*/)
 	// If we generate in a temp dir, we might need to give an
 	// absolute path there. This is a bit complicated since we can
 	// have a comma-separated list of bibliographies
-	string db_in, adb, db_out;
-	db_in = getContents();
-	db_in= split(db_in, adb, ',');
+	string adb, db_out;
+	string db_in = getContents();
+	db_in = split(db_in, adb, ',');
 	while(!adb.empty()) {
 		if (!owner->niceFile &&
 		    IsFileReadable(MakeAbsPath(adb, owner->filepath)+".bib")) 
@@ -453,15 +456,14 @@ bool InsetBibtex::delDatabase(string const & db)
 void BibitemUpdate(Combox * combox)
 {
 	combox->clear();
-    
-	if (!current_view->available())
-		return;
-
+	
+	if (!current_view->available()) return;
+	
 	string tmp, bibkeys = current_view->buffer()->getBibkeyList(',');
 	bibkeys = split(bibkeys, tmp,',');
 	while (!tmp.empty()) {
-	  combox->addto(tmp.c_str());
-	  bibkeys = split(bibkeys, tmp,',');
+		combox->addto(tmp.c_str());
+		bibkeys = split(bibkeys, tmp,',');
 	}
 }
 

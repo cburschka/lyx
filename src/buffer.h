@@ -34,6 +34,7 @@
 #include "lyxtext.h"
 #include "support/filetools.h"
 
+
 class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
@@ -222,7 +223,7 @@ public:
 		dvi_clean_orgd = false;
                 nw_clean = false;
 		bak_clean = false;
-		DEPCLEAN* tmp = dep_clean;
+		DEPCLEAN * tmp = dep_clean;
 		while (tmp) {
 			tmp->clean = false;
 			tmp = tmp->next;
@@ -369,27 +370,27 @@ protected:
 private:
 	///
 	void insertErrors(TeXErrors &);
-	
+
         ///
-        void linuxDocHandleFootnote(FILE * file,
+        void linuxDocHandleFootnote(ostream & os,
 				    LyXParagraph * & par, int const depth);
         ///
-	void DocBookHandleCaption(FILE * file, string & inner_tag,
+	void DocBookHandleCaption(ostream & os, string & inner_tag,
 				  int const depth, int desc_on,
 				  LyXParagraph * &par);
         ///
-	void DocBookHandleFootnote(FILE * file,
+	void DocBookHandleFootnote(ostream & os,
 				   LyXParagraph * & par, int const depth);
 	///
-        void sgmlOpenTag(FILE * file, int depth,
+        void sgmlOpenTag(ostream & os, int depth,
 			 string const & latexname) const;
         ///
-        void sgmlCloseTag(FILE * file, int depth,
+        void sgmlCloseTag(ostream & os, int depth,
 			  string const & latexname) const;
 	///
 	void LinuxDocError(LyXParagraph * par, int pos, char const * message);
         ///
-	void SimpleLinuxDocOnePar(FILE * file, LyXParagraph * par,
+	void SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 				  int desc_on, int const depth);
         ///
 	void SimpleDocBookOnePar(string & file, string & extra,
@@ -397,15 +398,15 @@ private:
 				 int const depth);
 
 	/// LinuxDoc.
-	void push_tag(FILE * file, char const * tag,
+	void push_tag(ostream & os, char const * tag,
 		      int & pos, char stack[5][3]);
 	
 	/// LinuxDoc.
-	void pop_tag(FILE * file, char const * tag,
+	void pop_tag(ostream & os, char const * tag,
 		     int & pos, char stack[5][3]);
-
+	
 	///
-	void RoffAsciiTable(FILE * file, LyXParagraph * par);
+	void RoffAsciiTable(ostream &, LyXParagraph * par);
 
 	/// is save needed
 	bool lyx_clean;

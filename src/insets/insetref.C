@@ -43,11 +43,6 @@ InsetRef::InsetRef(InsetCommand const & inscmd, Buffer * bf)
 }
 
 
-InsetRef::~InsetRef()
-{
-}
-
-
 void InsetRef::Edit(int, int)
 {
         current_view->owner()->getLyXFunc()
@@ -72,14 +67,15 @@ string InsetRef::getScreenLabel() const
 }
 
 
-int InsetRef::Latex(FILE * file, signed char /*fragile*/)
+int InsetRef::Latex(ostream & os, signed char /*fragile*/)
 {
 	if(getOptions().empty())
-		fprintf(file, "%s", escape(getCommand()).c_str());
+		os << escape(getCommand());
 	else {
 		string ns;
-		InsetCommand clone = InsetCommand(getCmdName(), getContents(), ns);
-		fprintf(file, "%s", escape(clone.getCommand()).c_str());
+		InsetCommand clone = InsetCommand(getCmdName(),
+						  getContents(), ns);
+		os << escape(clone.getCommand());
 	}
 	return 0;
 }
@@ -91,7 +87,8 @@ int InsetRef::Latex(string & file, signed char /*fragile*/)
 		file += escape(getCommand());
 	else {
 		string ns;
-		InsetCommand clone= InsetCommand(getCmdName(), getContents(), ns);
+		InsetCommand clone = InsetCommand(getCmdName(),
+						  getContents(), ns);
 		file += escape(clone.getCommand());
 	}
 	return 0;
@@ -118,7 +115,8 @@ int InsetRef::DocBook(string & file)
 
 // This function escapes 8-bit characters and other problematic characters
 // It's exactly the same code as in insetlabel.C.
-string InsetRef::escape(string const & lab) const {
+string InsetRef::escape(string const & lab) const
+{
 	char hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
 			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	string enc;

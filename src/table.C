@@ -809,42 +809,44 @@ int LyXTable::right_column_of_cell(int cell)
 }
 
 
-void LyXTable::Write(FILE* file)
+void LyXTable::Write(ostream & os)
 {
     int i, j;
-    fprintf(file, "multicol5\n");
-    fprintf(file, "%d %d %d %d %d %d %d %d\n", rows, columns, is_long_table,
-            rotate, endhead, endfirsthead, endfoot, endlastfoot);
-    for (i = 0; i<rows; i++){
-        fprintf(file, "%d %d %d %d\n", row_info[i].top_line,
-                row_info[i].bottom_line, row_info[i].is_cont_row,
-                row_info[i].newpage);
+    os << "multicol5\n"
+       << rows << " " << columns << " " << is_long_table << " "
+       << rotate << " " << endhead << " " << endfirsthead << " "
+       << endfoot << " " << endlastfoot << "\n";
+    for (i = 0; i < rows; ++i) {
+	    os << row_info[i].top_line << " "
+	       << row_info[i].bottom_line << " "
+	       << row_info[i].is_cont_row << " "
+	       << row_info[i].newpage << "\n";
     }
-    for (i = 0; i<columns; i++){
-        fprintf(file, "%d %d %d \"%s\" \"%s\"\n",
-                column_info[i].alignment, column_info[i].left_line,
-                column_info[i].right_line,
-                VSpace(column_info[i].p_width).asLyXCommand().c_str(),
-                column_info[i].align_special.c_str());
+    for (i = 0; i < columns; ++i) {
+	    os << column_info[i].alignment << " "
+	       << column_info[i].left_line << " "
+	       << column_info[i].right_line << " \""
+	       << VSpace(column_info[i].p_width).asLyXCommand() << "\" \""
+	       << column_info[i].align_special << "\"\n";
     }
 
-    for (i = 0; i<rows;i++){
-        for (j = 0;j<columns;j++){
-            fprintf(file, "%d %d %d %d %d %d %d \"%s\" \"%s\"\n",
-                    cell_info[i][j].multicolumn,
-                    cell_info[i][j].alignment,
-                    cell_info[i][j].top_line,
-                    cell_info[i][j].bottom_line,
-                    cell_info[i][j].has_cont_row,
-                    cell_info[i][j].rotate,
-                    cell_info[i][j].linebreaks,
-                    cell_info[i][j].align_special.c_str(),
-                    cell_info[i][j].p_width.c_str());
+    for (i = 0; i < rows; ++i) {
+        for (j = 0; j < columns; ++j) {
+		os << cell_info[i][j].multicolumn << " "
+		   << cell_info[i][j].alignment << " "
+		   << cell_info[i][j].top_line << " "
+		   << cell_info[i][j].bottom_line << " "
+		   << cell_info[i][j].has_cont_row << " "
+		   << cell_info[i][j].rotate << " "
+		   << cell_info[i][j].linebreaks << " \""
+		   << cell_info[i][j].align_special << "\" \""
+		   << cell_info[i][j].p_width << "\"\n";
         }
     }
 }
 
-void LyXTable::Read(FILE* file)
+
+void LyXTable::Read(FILE * file)
 {
     int version;
     int i, j;
@@ -866,7 +868,7 @@ void LyXTable::Read(FILE* file)
     fscanf(file, "%s\n", vtmp);
     s = vtmp;
     if (s.length() > 8)
-        version = atoi(s.c_str()+8);
+        version = atoi(s.c_str() + 8);
     else
         version = 1;
 #ifdef WITH_WARNINGS
@@ -1297,7 +1299,7 @@ int LyXTable::TexEndOfCell(string & file, int cell)
 
 // cell <0 will tex the preamble
 // returns the number of printed newlines
-int LyXTable::RoffEndOfCell(FILE* file, int cell)
+int LyXTable::RoffEndOfCell(ostream & os, int cell)
 {
     int i, j;
     int ret = 0;
@@ -1305,89 +1307,90 @@ int LyXTable::RoffEndOfCell(FILE* file, int cell)
     if (cell == GetNumberOfCells() - 1){
         // the very end at the very beginning
         if (CellHasContRow(cell) >= 0) {
-            fprintf(file, "\nT}");
-            ret++;
+		os << "\nT}";
+            ++ret;
         }
-        fprintf(file, "\n");
+        os << "\n";
         ret++;
         if (row_info[row_of_cell(cell)].bottom_line) {
-            fprintf(file, "_\n");
-            ret++;
+		os << "_\n";
+            ++ret;
         }
-        fprintf(file, ".TE\n.pl 1c");
+        os << ".TE\n.pl 1c";
     } else {  
         if (cell < 0){
             int fcell = 0;
             // preamble
-            fprintf(file, "\n.pl 500c\n.TS\n");
-            for (j = 0; j<rows; j++) {
-                for (i = 0; i<columns;i++, fcell++) {
+            os << "\n.pl 500c\n.TS\n";
+            for (j = 0; j<rows; ++j) {
+                for (i = 0; i<columns; ++i, ++fcell) {
                     if (column_info[i].left_line)
-                        fprintf(file, " | ");
+			    os << " | ";
                     if (cell_info[j][i].multicolumn == CELL_PART_OF_MULTICOLUMN)
-                        fprintf(file, "s");
+			    os << "s";
                     else {
                         switch (column_info[i].alignment) {
                           case LYX_ALIGN_LEFT:
-                              fprintf(file, "l");
+				  os << "l";
                               break;
                           case LYX_ALIGN_RIGHT:
-                              fprintf(file, "r");
+				  os << "r";
                               break;
                           default:
-                              fprintf(file, "c");
+				  os << "c";
                               break;
                         }
                     }
                     if (!column_info[i].p_width.empty())
-                        fprintf(file, "w(%s)", column_info[i].p_width.c_str());
+			    os << "w(" << column_info[i].p_width << ")";
                     if (column_info[i].right_line)
-                        fprintf(file, " | ");
+			    os << " | ";
                 }
-                if ((j+1) < rows) {
-                    fprintf(file, "\n");
-                    ret++;
+                if ((j + 1) < rows) {
+			os << "\n";
+                    ++ret;
                 }
             }
-            fprintf(file, ".\n");
-            ret++;
+            os << ".\n";
+            ++ret;
             if (row_info[0].top_line) {
-                fprintf(file, "_\n");
-                ret++;
+		    os << "_\n";
+                ++ret;
             }
             if (CellHasContRow(0) >= 0) {
-                fprintf(file, "T{\n");
-                ret++;
+		    os << "T{\n";
+                ++ret;
             }
         } else {
             // usual cells
             if (CellHasContRow(cell) >= 0) {
-                fprintf(file, "\nT}");
-                ret++;
+		    os << "\nT}";
+                ++ret;
             }
             if (right_column_of_cell(cell) == columns -1){
-                fprintf(file, "\n");
-                ret++;
+		    os << "\n";
+                ++ret;
                 int row = row_of_cell(cell);
                 if (row_info[row++].bottom_line) {
-                    fprintf(file, "_\n");
-                    ret++;
+			os << "_\n";
+                    ++ret;
                 }
                 if ((row < rows) && row_info[row].top_line) {
-                    fprintf(file, "_\n");
-                    ret++;
+			os << "_\n";
+                    ++ret;
                 }
             } else
-                fprintf(file, "\t");
+		    os << "\t";
             if ((cell < GetNumberOfCells() - 1) &&
                 (CellHasContRow(cell+1) >= 0)) {
-                fprintf(file, "T{\n");
-                ret++;
+		    os << "T{\n";
+                ++ret;
             }
         }
     }
     return ret;
 }
+
 
 char const *LyXTable::getDocBookAlign(int cell, bool isColumn)
 {

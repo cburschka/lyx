@@ -13,6 +13,8 @@
 #define SPACING_H
 
 #include <cstdio>
+#include "support/LOstream.h"
+
 
 ///
 class Spacing {
@@ -71,7 +73,7 @@ public:
 		set(sp, fval);
 	}
 	///
-	void writeFile(FILE * file);
+	void writeFile(ostream &);
 	///
 	friend bool operator!=(Spacing const & a, Spacing const & b)
 	{

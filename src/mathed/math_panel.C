@@ -143,7 +143,6 @@ void delim_cb(FL_OBJECT *, long data)
 {
    int left= fd_delim->left->u_ldata, right= fd_delim->right->u_ldata;
    int side= (fl_get_button(fd_delim->right)!= 0);
-   Pixmap p1, p2;
    
    switch (data) {
     case MM_APPLY:
@@ -171,6 +170,7 @@ void delim_cb(FL_OBJECT *, long data)
 		    right = delim_rversion[i];
 	      }	  
 	  }
+	  Pixmap p1, p2;
 	  p1 = fl_get_pixmap_pixmap(fd_delim->pix, &p1, &p2);
 	  fl_draw_bmtable_item(fd_delim->menu, left, p1, 0, 0);
 	  fl_draw_bmtable_item(fd_delim->menu, right, p1, 16, 0);
@@ -189,7 +189,6 @@ void delim_cb(FL_OBJECT *, long data)
 /* callbacks for form matrix */
 void matrix_cb(FL_OBJECT *, long data)
 {
-   int nx, ny;
    static char v_align_c[] = "tcb";
  
    switch (data) {
@@ -199,8 +198,8 @@ void matrix_cb(FL_OBJECT *, long data)
 	 char s[80];
 	 char c = v_align_c[fl_get_choice(fd_matrix->valign)-1];
 	 char const * sh = fl_get_input(fd_matrix->halign);
-	 nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
-	 ny = int(fl_get_slider_value(fd_matrix->rows)+0.5);
+	 int nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
+	 int ny = int(fl_get_slider_value(fd_matrix->rows)+0.5);
 	 sprintf(s, "%d %d %c%s", nx, ny, c, sh);      
 	 if (data == MM_OK) fl_hide_form(fd_matrix->matrix);
 	 lyxfunc->Dispatch(LFUN_INSERT_MATRIX, s);
@@ -209,7 +208,7 @@ void matrix_cb(FL_OBJECT *, long data)
     case MM_CLOSE: fl_hide_form(fd_matrix->matrix); break;
     case 2: 
       {
-	 nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
+	 int nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
 	 for (int i= 0; i<nx; i++) h_align_str[i] = 'c';
 	 //memset(h_align_str, 'c', nx);
 	 h_align_str[nx] = '\0';

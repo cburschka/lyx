@@ -28,32 +28,36 @@
 extern BufferView * current_view;
 
 
-InsetParent::InsetParent(string fn, Buffer * owner): InsetCommand("lyxparent")
+InsetParent::InsetParent(string const & fn, Buffer * owner)
+	: InsetCommand("lyxparent")
 {
-    if (owner)
-	setContents(MakeAbsPath(fn, OnlyPath(owner->getFileName())));
-    else
-	setContents(fn);
+	if (owner)
+		setContents(MakeAbsPath(fn, OnlyPath(owner->getFileName())));
+	else
+		setContents(fn);
 }
+
 
 void InsetParent::Edit(int, int)
 {    
-    current_view->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, 
-						     getContents().c_str());
+	current_view->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, 
+						      getContents().c_str());
 }
 
+
 // LaTeX must just ignore this command
-int InsetParent::Latex(FILE * file, signed char fragile)
+int InsetParent::Latex(ostream & os, signed char fragile)
 {
-    fprintf(file, "%%#{lyx}");
-    InsetCommand::Latex(file, fragile);
-    return 0;
+	os << "%%#{lyx}";
+	InsetCommand::Latex(os, fragile);
+	return 0;
 }
+
 
 // LaTeX must just ignore this command
 int InsetParent::Latex(string & file, signed char fragile)
 {
-    file += "%%#{lyx}";
-    InsetCommand::Latex(file, fragile);
-    return 0;
+	file += "%%#{lyx}";
+	InsetCommand::Latex(file, fragile);
+	return 0;
 }

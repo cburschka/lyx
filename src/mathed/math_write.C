@@ -41,14 +41,15 @@ char const * math_font_name[] = {
 
 
 void
-MathSpaceInset::Write(FILE * outf)
+MathSpaceInset::Write(ostream & os)
 { 
    if (space >= 0 && space < 6) {
        string output;
        MathSpaceInset::Write(output);
-       fprintf(outf, "%s", output.c_str());
+       os << output;
    }
 }
+
 
 void
 MathSpaceInset::Write(string & outf)
@@ -62,12 +63,13 @@ MathSpaceInset::Write(string & outf)
 
 
 void
-MathDotsInset::Write(FILE * outf)
+MathDotsInset::Write(ostream & os)
 {
    string output;
    MathDotsInset::Write(output);
-   fprintf(outf, "%s", output.c_str());
-}   
+   os << output;
+}
+
 
 void
 MathDotsInset::Write(string & outf)
@@ -78,12 +80,13 @@ MathDotsInset::Write(string & outf)
 }   
 
 
-void MathSqrtInset::Write(FILE * outf)
+void MathSqrtInset::Write(ostream & os)
 { 
    string output;
-   MathSqrtInset::Write(output);  
-   fprintf(outf, "%s", output.c_str());
+   MathSqrtInset::Write(output);
+   os << output;
 }
+
 
 void MathSqrtInset::Write(string & outf)
 { 
@@ -95,12 +98,13 @@ void MathSqrtInset::Write(string & outf)
 }
 
 
-void MathDelimInset::Write(FILE * outf)
+void MathDelimInset::Write(ostream & os)
 { 
     string output;
     MathDelimInset::Write(output);
-    fprintf(outf, "%s", output.c_str());
+    os << output;
 }
+
 
 void MathDelimInset::Write(string & outf)
 { 
@@ -140,12 +144,13 @@ void MathDelimInset::Write(string & outf)
 }
 
 
-void MathDecorationInset::Write(FILE * outf)
+void MathDecorationInset::Write(ostream & os)
 {
    string output;
    MathDecorationInset::Write(output);
-   fprintf(outf, "%s", output.c_str());
+   os << output;
 }
+
 
 void MathDecorationInset::Write(string & outf)
 { 
@@ -158,12 +163,13 @@ void MathDecorationInset::Write(string & outf)
 }
 
 
-void MathAccentInset::Write(FILE * outf)
+void MathAccentInset::Write(ostream & os)
 { 
     string output;
     MathAccentInset::Write(output);
-    fprintf(outf, "%s", output.c_str());
+    os << output;
 }
+
 
 void MathAccentInset::Write(string & outf)
 { 
@@ -202,12 +208,13 @@ void MathAccentInset::Write(string & outf)
 }
 
 
-void MathBigopInset::Write(FILE * outf)
+void MathBigopInset::Write(ostream & os)
 { 
    string output;
    MathBigopInset::Write(output);
-   fprintf(outf, "%s", output.c_str());
+   os << output;
 }
+
 
 void MathBigopInset::Write(string & outf)
 { 
@@ -226,12 +233,13 @@ void MathBigopInset::Write(string & outf)
 }
 
 
-void MathFracInset::Write(FILE * outf)
+void MathFracInset::Write(ostream & os)
 { 
    string output;
-   MathFracInset::Write(output);  
-   fprintf(outf, "%s", output.c_str());
+   MathFracInset::Write(output);
+   os << output;
 }
+
 
 void MathFracInset::Write(string & outf)
 { 
@@ -245,12 +253,12 @@ void MathFracInset::Write(string & outf)
 }
 
 
-void MathParInset::Write(FILE * outf)
+void MathParInset::Write(ostream & os)
 {
    if (!array) return;
    string output;
    MathParInset::Write(output);
-   fprintf(outf, "%s", output.c_str());
+   os << output;
 }
 
 
@@ -373,14 +381,15 @@ void MathParInset::Write(string & outf)
 }
 
 
-void MathMatrixInset::Write(FILE *outf)
+void MathMatrixInset::Write(ostream & os)
 {
     string output;
     MathMatrixInset::Write(output);
-    fprintf(outf, "%s", output.c_str());
+    os << output;
 }
 
-void MathMatrixInset::Write(string &outf)
+
+void MathMatrixInset::Write(string & outf)
 {
     if (GetType() == LM_OT_MATRIX){
 	outf += "\\begin{";
@@ -406,17 +415,19 @@ void MathMatrixInset::Write(string &outf)
 }
 
 
-void mathed_write(MathParInset* p,  FILE* outf, int* newlines,  char fragile, char const* label)
+void mathed_write(MathParInset * p, ostream & os, int * newlines,
+		  char fragile, char const * label)
 {
    string output;
    mathed_write(p, output, newlines, fragile, label);
-   fprintf(outf, "%s", output.c_str());
+   os << output;
 }
+
 
 extern int tex_code_break_column;
 
-void mathed_write(MathParInset* p, string & outf, int* newlines,
-                  char fragile, char const* label)
+void mathed_write(MathParInset * p, string & outf, int * newlines,
+                  char fragile, char const * label)
 {  
    number_of_newlines = 0;
    short mathed_env = p->GetType();

@@ -481,6 +481,19 @@ inline void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 	p1 = static_cast<LyXTextClass::Provides>(p1 | p2);
 }
 
+///
+inline ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
+{
+	switch (p) {
+	case LyXTextClass::OneSide:
+		os << "1";
+		break;
+	case LyXTextClass::TwoSides:
+		os << "2";
+		break;
+	}
+	return os;
+}
 
 ///
 class LyXTextClassList {

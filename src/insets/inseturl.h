@@ -70,7 +70,7 @@ public:
         ///
         void gotoLabel();
 	///
-	int Latex(FILE * file, signed char fragile);
+	int Latex(ostream &, signed char fragile);
 	///
 	int Latex(string & file, signed char fragile);
 	///

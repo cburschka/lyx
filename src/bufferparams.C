@@ -60,116 +60,108 @@ BufferParams::BufferParams()
 }
 
 
-void BufferParams::writeFile(FILE * file)
+void BufferParams::writeFile(ostream & os)
 {
 	// The top of the file is written by the buffer.
 	// Prints out the buffer info into the .lyx file given by file
 
  	// the textclass
- 	fprintf(file, "\\textclass %s\n",
- 		textclasslist.NameOfClass(textclass).c_str());
+ 	os << "\\textclass " << textclasslist.NameOfClass(textclass) << '\n';
 	
 	// then the the preamble
 	if (!preamble.empty()) {
-		fprintf(file, "\\begin_preamble\n");
-		{
-			// remove '\n' from the end of preamble
-			preamble = strip(preamble, '\n');
-			
-			// write out the whole preamble  in one go
-			fwrite(preamble.c_str(),
-			       sizeof(char),
-			       preamble.length(),
-			       file);
-			fprintf(file, "\n\\end_preamble\n");
-		}
+		// remove '\n' from the end of preamble
+		preamble = strip(preamble, '\n');
+		os << "\\begin_preamble\n"
+		   << preamble
+		   << "\n\\end_preamble\n";
 	}
       
 	/* the options */ 
 	if (!options.empty()) {
-		fprintf(file,
-			"\\options %s\n",
-			options.c_str());
+		os << "\\options " << options << '\n';
 	}
    
-	/* then the text parameters */ 
-	fprintf(file, "\\language %s\n", language.c_str());
-	fprintf(file, "\\inputencoding %s\n", inputenc.c_str());
-	fprintf(file, "\\fontscheme %s\n", fonts.c_str());
-	fprintf(file, "\\graphics %s\n", graphicsDriver.c_str());
+	/* then the text parameters */
+	os << "\\language " << language
+	   << "\n\\inputencoding " << inputenc
+	   << "\n\\fontscheme " << fonts
+	   << "\n\\graphics " << graphicsDriver << '\n';
 
 	if (!float_placement.empty()) {
-		fprintf(file,
-			"\\float_placement %s\n",
-			float_placement.c_str());
+		os << "\\float_placement " << float_placement << '\n';
 	}
-	fprintf(file, "\\paperfontsize %s\n", fontsize.c_str());
+	os << "\\paperfontsize " << fontsize << '\n';
 
-	spacing.writeFile(file);
+	spacing.writeFile(os);
 
-	fprintf(file, "\\papersize %s\n", string_papersize[papersize2]);
-	fprintf(file, "\\paperpackage %s\n",
-                string_paperpackages[paperpackage]);
-	fprintf(file, "\\use_geometry %d\n", use_geometry);
-	fprintf(file, "\\use_amsmath %d\n", use_amsmath);
-	fprintf(file, "\\paperorientation %s\n",
-		string_orientation[orientation]);
+	os << "\\papersize " << string_papersize[papersize2]
+	   << "\n\\paperpackage " << string_paperpackages[paperpackage]
+	   << "\n\\use_geometry " << use_geometry
+	   << "\n\\use_amsmath " << use_amsmath
+	   << "\n\\paperorientation " << string_orientation[orientation]
+	   << '\n';
         if (!paperwidth.empty())
-            fprintf(file, "\\paperwidth %s\n",
-                    VSpace(paperwidth).asLyXCommand().c_str());
+		os << "\\paperwidth "
+		   << VSpace(paperwidth).asLyXCommand() << '\n';
         if (!paperheight.empty())
-            fprintf(file, "\\paperheight %s\n",
-                    VSpace(paperheight).asLyXCommand().c_str());
+		os << "\\paperheight "
+		   << VSpace(paperheight).asLyXCommand() << '\n';
         if (!leftmargin.empty())
-            fprintf(file, "\\leftmargin %s\n",
-                    VSpace(leftmargin).asLyXCommand().c_str());
+		os << "\\leftmargin "
+		   << VSpace(leftmargin).asLyXCommand() << '\n';
         if (!topmargin.empty())
-            fprintf(file, "\\topmargin %s\n",
-                    VSpace(topmargin).asLyXCommand().c_str());
+		os << "\\topmargin "
+		   << VSpace(topmargin).asLyXCommand() << '\n';
         if (!rightmargin.empty())
-            fprintf(file, "\\rightmargin %s\n",
-                    VSpace(rightmargin).asLyXCommand().c_str());
+		os << "\\rightmargin "
+		   << VSpace(rightmargin).asLyXCommand() << '\n';
         if (!bottommargin.empty())
-            fprintf(file, "\\bottommargin %s\n",
-                    VSpace(bottommargin).asLyXCommand().c_str());
+		os << "\\bottommargin "
+		   << VSpace(bottommargin).asLyXCommand() << '\n';
         if (!headheight.empty())
-            fprintf(file, "\\headheight %s\n",
-                    VSpace(headheight).asLyXCommand().c_str());
+		os << "\\headheight "
+		   << VSpace(headheight).asLyXCommand() << '\n';
         if (!headsep.empty())
-            fprintf(file, "\\headsep %s\n",
-                    VSpace(headsep).asLyXCommand().c_str());
+		os << "\\headsep "
+		   << VSpace(headsep).asLyXCommand() << '\n';
         if (!footskip.empty())
-            fprintf(file, "\\footskip %s\n",
-                    VSpace(footskip).asLyXCommand().c_str());
-	fprintf(file, "\\secnumdepth %d\n", secnumdepth);
-	fprintf(file, "\\tocdepth %d\n", tocdepth);
-	fprintf(file, "\\paragraph_separation %s\n",
-		string_paragraph_separation[paragraph_separation]);
-	fprintf(file, "\\defskip %s\n", defskip.asLyXCommand().c_str());
-	fprintf(file, "\\quotes_language %s\n",
-		string_quotes_language[quotes_language]);
+		os << "\\footskip "
+		   << VSpace(footskip).asLyXCommand() << '\n';
+	os << "\\secnumdepth " << secnumdepth
+	   << "\n\\tocdepth " << tocdepth
+	   << "\n\\paragraph_separation "
+	   << string_paragraph_separation[paragraph_separation]
+	   << "\n\\defskip " << defskip.asLyXCommand()
+	   << "\n\\quotes_language "
+	   << string_quotes_language[quotes_language] << '\n';
 	switch(quotes_times) {
-	case InsetQuotes::SingleQ: 
-		fprintf(file, "\\quotes_times 1\n"); break;
+		// An output operator for insetquotes would be nice
+	case InsetQuotes::SingleQ:
+		os << "\\quotes_times 1\n"; break;
 	case InsetQuotes::DoubleQ: 
-		fprintf(file, "\\quotes_times 2\n"); break;
-	}		
-	fprintf(file, "\\papercolumns %d\n", columns);
-	fprintf(file, "\\papersides %d\n", sides);
-	fprintf(file, "\\paperpagestyle %s\n", pagestyle.c_str());
+		os << "\\quotes_times 2\n"; break;
+	}
+	os << "\\papercolumns " << columns
+	   << "\n\\papersides " << sides
+	   << "\n\\paperpagestyle " << pagestyle << '\n';
 	for (int i = 0; i < 4; ++i) {
 		if (user_defined_bullets[i] != ITEMIZE_DEFAULTS[i]) {
 			if (user_defined_bullets[i].getFont() != -1) {
-				fprintf(file, "\\bullet %d\n\t%d\n\t%d\n\t%d\n\\end_bullet\n",
-						i,
-						user_defined_bullets[i].getFont(),
-						user_defined_bullets[i].getCharacter(),
-						user_defined_bullets[i].getSize());
+				os << "\\bullet " << i
+				   << "\n\t"
+				   << user_defined_bullets[i].getFont()
+				   << "\n\t"
+				   << user_defined_bullets[i].getCharacter()
+				   << "\n\t"
+				   << user_defined_bullets[i].getSize()
+				   << "\n\\end_bullet\n";
 			}
 			else {
-				fprintf(file, "\\bulletLaTeX %d\n\t%s\n\\end_bullet\n",
-						i,
-						user_defined_bullets[i].c_str());
+				os << "\\bulletLaTeX " << i
+				   << "\n\t"
+				   << user_defined_bullets[i].c_str()
+				   << "\n\\end_bullet\n";
 			}
 		}
 	}

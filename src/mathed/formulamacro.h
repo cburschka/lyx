@@ -46,9 +46,9 @@ public:
 	///
 	void Read(LyXLex & lex);
         ///
-	void Write(FILE * file);
+	void Write(ostream & os);
 	///
-	int Latex(FILE * file, signed char fragile);
+	int Latex(ostream & os, signed char fragile);
 	///
 	int Latex(string & file, signed char fragile);
 	///
@@ -64,18 +64,18 @@ public:
 	void Edit(int x, int y);
 	///
 	void InsetUnlock();
-   
+	///
 	bool LocalDispatch(int, char const *);
-   
 protected:
+	///
 	void UpdateLocal();
 private:
+	///
         bool opened;
-        string name; 
-        class MathMacroTemplate * tmacro;
-
+	///
+        string name;
+	///
+        MathMacroTemplate * tmacro;
 };
 
-
 #endif
-

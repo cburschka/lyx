@@ -54,11 +54,11 @@ public:
 		return 1;
 	}
         /// With lyx3 we won't overload these 3 methods
-        void Write(FILE *);
+        void Write(ostream &);
         ///
 	void Read(LyXLex &);
 	/// 
-	int Latex(FILE * file, signed char fragile);
+	int Latex(ostream &, signed char fragile);
 	///
 	int Latex(string & file, signed char fragile);
 	

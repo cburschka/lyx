@@ -39,7 +39,7 @@ public:
 	///
 	unsigned char Editable() const { return 0; }
 	///
-	int Latex(FILE * file, signed char fragile);
+	int Latex(ostream &, signed char fragile);
 	///
 	int Latex(string & file, signed char fragile);
 	///

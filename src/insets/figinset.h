@@ -11,8 +11,9 @@
 #include "buffer.h"
 #include "LString.h"
 #include "LaTeXFeatures.h"
-
+#include "insets/lyxinset.h"
 /* the rest is figure stuff */
+
 
 struct Figref;
 
@@ -32,11 +33,11 @@ public:
 	///
 	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE * file);
+	void Write(ostream &);
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(FILE * file, signed char fragile);
+	int Latex(ostream &, signed char fragile);
 	///
 	int Latex(string & file, signed char fragile);
 	///

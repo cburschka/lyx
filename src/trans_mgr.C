@@ -276,9 +276,7 @@ void TransManager::DisableKeymap()
 
 void  TransManager::TranslateAndInsert(char c, LyXText * text)
 {
-    string res;
-	
-    res = active_->process(c,*this);
+    string res = active_->process(c, *this);
     
     // Process with tokens
     string temp;

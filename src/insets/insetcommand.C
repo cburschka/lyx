@@ -89,9 +89,9 @@ void InsetCommand::Draw(LyXFont font, LyXScreen & scr,
 
 
 // In lyxf3 this will be just LaTeX
-void InsetCommand::Write(FILE * file)
+void InsetCommand::Write(ostream & os)
 {
-	fprintf(file, "LatexCommand %s\n", getCommand().c_str());
+	os << "LatexCommand " << getCommand() << "\n";
 }
 
 
@@ -169,9 +169,9 @@ void InsetCommand::Read(LyXLex & lex)
 }
 
 
-int InsetCommand::Latex(FILE * file, signed char /*fragile*/)
+int InsetCommand::Latex(ostream & os, signed char /*fragile*/)
 {
-	fprintf(file, "%s", getCommand().c_str());
+	os << getCommand();
 	return 0;
 }
 

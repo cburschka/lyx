@@ -117,7 +117,8 @@ void InsetUrl::Edit(int, int)
 	if (!fd_form_url) {
 		fd_form_url = create_form_form_url();
 		fd_form_url->button_close->u_vdata = this;
-		fl_set_form_atclose(fd_form_url->form_url, CancelCloseBoxCB, 0);
+		fl_set_form_atclose(fd_form_url->form_url,
+				    CancelCloseBoxCB, 0);
 	}
 	fl_set_input(fd_form_url->url_name, getContents().c_str());
 	fl_set_input(fd_form_url->name_name, getOptions().c_str());
@@ -161,17 +162,17 @@ string InsetUrl::getScreenLabel() const
 }
 
 
-int InsetUrl::Latex(FILE * file, signed char fragile)
+int InsetUrl::Latex(ostream & os, signed char fragile)
 {
 	string latex_output;
 	int res = Latex(latex_output, fragile);
-	fprintf(file, "%s", latex_output.c_str());
+	os << latex_output;
 
 	return res;
 }
 
 
-int InsetUrl::Latex(string &file, signed char fragile)
+int InsetUrl::Latex(string & file, signed char fragile)
 {
 	if (!getOptions().empty())
 		file += getOptions() + ' ';

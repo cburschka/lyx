@@ -347,17 +347,13 @@ bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i)
 
 string Trans::process(char c, TransManager & k)
 {
-	lyxerr << "enter process" << endl;
 	char dummy[2] = "?";
 	char * dt = dummy;
 	char * t = Match(c);
-	lyxerr << "finished variables" << endl;
     
 	if ((t == 0 && (dt[0] = c)) || (t[0] != 0 && (dt = t)) ){
-		lyxerr << "normalkey" << endl;
 		return k.normalkey(c, dt);
 	} else {
-		lyxerr << "deadkey" << endl;
 		return k.deadkey(c, *kmod_list_[(tex_accent)t[1]]);
 	}
 }

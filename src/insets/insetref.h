@@ -38,8 +38,6 @@ public:
 	InsetRef(string const &, Buffer *);
 	///
 	InsetRef(InsetCommand const &, Buffer *);
-	///
-	~InsetRef();
         ///
         Inset * Clone() const {
 		return new InsetRef (getCommand(), master);
@@ -63,7 +61,7 @@ public:
         ///
         void gotoLabel();
 	///
-	int Latex(FILE * file, signed char fragile);
+	int Latex(ostream &, signed char fragile);
 	///
 	int Latex(string & file, signed char fragile);
 	///

@@ -26,7 +26,7 @@
 class InsetCitation: public InsetCommand {
 public:
 	///
-	InsetCitation(): InsetCommand("cite") {}
+	InsetCitation() : InsetCommand("cite") {}
 	///
 	InsetCitation(string const & key, string const & note = string());
         ///
@@ -64,7 +64,7 @@ public:
 	///
         Inset * Clone() const { return new InsetBibKey(this); }
 	/// Currently \bibitem is used as a LyX2.x command, so we need this method.
-        void Write(FILE *);
+        void Write(ostream &);
 	///
 	virtual string getScreenLabel() const;
         ///
@@ -93,7 +93,7 @@ public:
 class InsetBibtex: public InsetCommand {
 public:
 	/// 
-	InsetBibtex(): InsetCommand("BibTeX") { owner = 0; }
+	InsetBibtex() : InsetCommand("BibTeX") { owner = 0; }
 	///
 	InsetBibtex(string const & dbase, string const & style,
 		    Buffer *);
@@ -111,7 +111,7 @@ public:
 	///
 	void Edit(int, int);
 	/// 
-	int Latex(FILE *, signed char);
+	int Latex(ostream &, signed char);
 	///
 	int Latex(string & file, signed char fragile);
 	///

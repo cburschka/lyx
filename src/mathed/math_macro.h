@@ -25,21 +25,21 @@
 #include "debug.h"
 
 ///
-typedef MathParInset* MathParInsetP;
+typedef MathParInset * MathParInsetP;
 ///
-typedef LyxArrayBase *LyxArrayBaseP;
+typedef LyxArrayBase * LyxArrayBaseP;
 
 class MathMacroTemplate;
 
 
 /// This class contains the data for a macro
-class MathMacro: public MathParInset
+class MathMacro : public MathParInset
 {
  public:
     /// A macro can only be builded from an existing template
     MathMacro(MathMacroTemplate *);
     /// or from another macro.
-    MathMacro(MathMacro*);
+    MathMacro(MathMacro *);
 	///
     ~MathMacro();
 	///
@@ -49,7 +49,7 @@ class MathMacro: public MathParInset
 	///
     MathedInset * Clone();
 	///
-    void Write(FILE *);
+    void Write(ostream &);
 	///
     void Write(string &);
 	///
@@ -61,13 +61,13 @@ class MathMacro: public MathParInset
 	///
     int GetColumns();
 	///
-    void GetXY(int&, int&) const;
+    void GetXY(int &, int &) const;
 	///
     void SetFocus(int, int);
 	///
-    LyxArrayBase *GetData();
+    LyxArrayBase * GetData();
 	///
-    MathedRowSt *getRowSt() const { return args[idx].row; }
+    MathedRowSt * getRowSt() const { return args[idx].row; }
 	///
     void SetData(LyxArrayBase *);
 	///
@@ -77,26 +77,27 @@ class MathMacro: public MathParInset
     
  private:
 	///
-    MathMacroTemplate *tmplate;
+	MathMacroTemplate * tmplate;
 	///
-    struct MacroArgumentBase {
-	/// Position of the macro
-	int x, y;
-	    ///
-	MathedRowSt *row;
-	    ///
-	LyxArrayBase *array;
-	    ///
-	MacroArgumentBase() { x = y = 0;  array = 0; row = 0; }
-    } *args;
+	struct MacroArgumentBase {
+		/// Position of the macro
+		int x, y;
+		///
+		MathedRowSt * row;
+		///
+		LyxArrayBase * array;
+		///
+		MacroArgumentBase() { x = y = 0;  array = 0; row = 0; }
+	};
+	MacroArgumentBase * args;
 	///
-    int idx;
+	int idx;
 	///
-    int nargs;
+	int nargs;
 	///
-    MathedTextCodes tcode;
+	MathedTextCodes tcode;
 	///
-    friend class MathMacroTemplate;
+	friend class MathMacroTemplate;
 };
 
 
@@ -117,7 +118,7 @@ class MathMacroArgument: public MathParInset
 	///
     void Draw(int x, int baseline);
 	///
-    void Write(FILE*);
+    void Write(ostream &);
 	///
     void Write(string &);
     ///
@@ -140,7 +141,7 @@ class MathMacroTemplate: public MathParInset
 {
  public:
     /// A template constructor needs all the data
-    MathMacroTemplate(char const*, int na= 0, int f= 0);
+    MathMacroTemplate(char const *, int na = 0, int f = 0);
 	///
     ~MathMacroTemplate();
 	///
@@ -148,7 +149,7 @@ class MathMacroTemplate: public MathParInset
 	///
     void Metrics();
 	///
-    void WriteDef(FILE *); 
+    void WriteDef(ostream &);
 	///
     void WriteDef(string &); 
     /// useful for special insets
@@ -160,16 +161,16 @@ class MathMacroTemplate: public MathParInset
     /// Number of arguments
     int getNoArgs() { return nargs; }
     ///
-    void GetMacroXY(int, int&, int&) const;
+    void GetMacroXY(int, int &, int &) const;
     ///
-    MathParInset *getMacroPar(int) const;
+    MathParInset * getMacroPar(int) const;
     ///
-    void SetMacroFocus(int&, int, int);
+    void SetMacroFocus(int &, int, int);
 	///
     void setEditMode(bool);
 
     /// Replace the appropriate arguments with a specific macro's data
-    void update(MathMacro* m= 0);
+    void update(MathMacro * m = 0);
       
  private:
     ///
@@ -177,7 +178,7 @@ class MathMacroTemplate: public MathParInset
     ///
     MathedTextCodes tcode;
     ///
-    MathMacroArgument *args;
+    MathMacroArgument * args;
     ///
     int nargs;
     ///
@@ -186,9 +187,9 @@ class MathMacroTemplate: public MathParInset
      
 
 ///
-typedef MathMacro *MathMacroP;
+typedef MathMacro * MathMacroP;
 ///
-typedef MathMacroTemplate *MathMacroTemplateP;
+typedef MathMacroTemplate * MathMacroTemplateP;
 
 ///
 class MathMacroTable 
@@ -201,9 +202,9 @@ class MathMacroTable
 	///
     void addTemplate(MathMacroTemplate *);
 	///
-    MathMacro *getMacro(char const*) const;
+    MathMacro * getMacro(char const *) const;
 	///
-    MathMacroTemplate *getTemplate(char const*) const;
+    MathMacroTemplate * getTemplate(char const *) const;
 	///
     void builtinMacros();
 	///
@@ -217,7 +218,7 @@ class MathMacroTable
 	///
     int num_macros;
 	///
-    MathMacroTemplateP *macro_table;
+    MathMacroTemplateP * macro_table;
 };
 
 
@@ -227,7 +228,7 @@ class MathMacroTable
 inline
 bool MathMacro::setArgumentIdx(int i)
 {
-    if (i>= 0 && i<nargs) {
+    if (i >= 0 && i < nargs) {
 	idx = i;
 	return true;
     } else
@@ -243,28 +244,28 @@ int  MathMacro::getArgumentIdx()
 inline
 int  MathMacro::getMaxArgumentIdx() 
 { 
-    return nargs-1; 
+    return nargs - 1; 
 } 
 
 
 inline
-LyxArrayBase *MathMacro::GetData() 
+LyxArrayBase * MathMacro::GetData() 
 { 
     return args[idx].array; 
 } 
 
 
 inline
-void MathMacro::SetData(LyxArrayBase *a)
+void MathMacro::SetData(LyxArrayBase * a)
 {
    args[idx].array = a;
 }
 
 
 inline 
-MathMacro *MathMacroTable::getMacro(char const* name) const
+MathMacro * MathMacroTable::getMacro(char const * name) const
  {
-     MathMacroTemplate *mt = getTemplate(name);
+     MathMacroTemplate * mt = getTemplate(name);
      return (mt) ? new MathMacro(mt): 0;
  }
 

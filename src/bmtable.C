@@ -24,7 +24,7 @@ typedef struct   {
    int dx, dy;   /* Size of each item */ 
    int bx, by;   /* Bitmap's position */
    int bw, bh;   /* Bitmap dimensions */
-   unsigned char * bdata;  /* Bitmap data */
+   unsigned char const * bdata;  /* Bitmap data */
    int maxi;     /* Number of items */
    int i;        /* Current position */
    int mousebut; /* mouse button pushed */  
@@ -32,14 +32,14 @@ typedef struct   {
 } BMTABLE_SPEC;
                  
 
-extern "C" int handle_bitmaptable(FL_OBJECT *ob, int event, FL_Coord mx, 
-				  FL_Coord my, int key, void *xev);
+extern "C" int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx, 
+				  FL_Coord my, int key, void * xev);
 
 
-FL_OBJECT *fl_create_bmtable(int type, FL_Coord x, FL_Coord y, 
-				 FL_Coord w, FL_Coord h, char const *label)
+FL_OBJECT * fl_create_bmtable(int type, FL_Coord x, FL_Coord y, 
+			      FL_Coord w, FL_Coord h, char const * label)
 {
-   FL_OBJECT *ob;
+   FL_OBJECT * ob;
    
    ob = fl_make_object(FL_BMTABLE, type, x, y, w, h, label, handle_bitmaptable);
    ob->boxtype = FL_BMTABLE_BOXTYPE;
@@ -88,8 +88,8 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 	/* draw the background bitmap */
 	if (sp->bdata)  {
 		if (!sp->pix) {
-			sp->pix =  XCreatePixmapFromBitmapData(fl_display, fl_winget(), 
-					reinterpret_cast<char*>(sp->bdata),
+			sp->pix = XCreatePixmapFromBitmapData(fl_display, fl_winget(), 
+		  const_cast<char*>(reinterpret_cast<char const *>(sp->bdata)),
 							       sp->bw, sp->bh,
 					fl_get_flcolor(ob->lcol), fl_get_flcolor(ob->col1),
 							       /*DefaultDepth(fl_display, DefaultScreen(fl_display))*/ fl_state[fl_get_vclass()].depth);
@@ -166,11 +166,11 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 }
 
 
-extern "C" int handle_bitmaptable(FL_OBJECT *ob, int event, FL_Coord mx, 
+extern "C" int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx, 
 				  FL_Coord my, int key, void */*xev*/)
 {
 	int i, j;
-	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
+	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
    
 	switch (event)  {
     case FL_DRAW: 
@@ -239,7 +239,7 @@ void fl_set_bmtable_data(FL_OBJECT * ob, int nx, int ny, int bw, int bh,
      sp->maxi = sp->nx * sp->ny;
      sp->bw = bw;
      sp->bh = bh;
-     sp->bdata = const_cast<unsigned char *>(bdata);
+     sp->bdata = bdata;
    }
 }
 
@@ -284,11 +284,11 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
  */
 #if XlibSpecificationRelease > 5 
 
-void fl_set_bmtable_file(FL_OBJECT *ob, int nx, int ny, char const *filename)
+void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
 {	
    int xh, yh;
    unsigned int bw, bh;
-   unsigned char *bdata;
+   unsigned char * bdata;
    
    if(XReadBitmapFileData(filename, &bw, &bh,
 			  &bdata, &xh, &yh) == BitmapSuccess)
@@ -443,9 +443,9 @@ void fl_draw_bmtable_item(FL_OBJECT *ob, int i, Drawable d, int xx, int yy)
 }
 
 /* Free the current bitmap and pixmap in preparation for installing a new one */
-void fl_free_bmtable_bitmap(FL_OBJECT *ob)
+void fl_free_bmtable_bitmap(FL_OBJECT * ob)
 {
-  BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
+  BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 
   /* dump the temporary pixmap */
   if (sp && sp->pix) { 
@@ -456,7 +456,7 @@ void fl_free_bmtable_bitmap(FL_OBJECT *ob)
 
   /* and free the space taken by bdata etc. */
   if (sp && sp->bdata) {
-    fl_free(sp->bdata);
+    fl_free((void*)sp->bdata);
     sp->bdata = 0;
   }
 }
@@ -465,7 +465,7 @@ void fl_free_bmtable_bitmap(FL_OBJECT *ob)
 /* This is needed when using data instead of files to set bitmaps  */
 void fl_free_bmtable_pixmap(FL_OBJECT *ob)
 {
-  BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
+  BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 
   /* dump the temporary pixmap */
   if (sp && sp->pix) { 

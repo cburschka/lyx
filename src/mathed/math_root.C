@@ -47,7 +47,7 @@ MathedInset * MathRootInset::Clone()
 }
 
 
-void MathRootInset::SetData(LyxArrayBase *d)
+void MathRootInset::SetData(LyxArrayBase * d)
 {
    if (idx == 1)
      MathParInset::SetData(d);
@@ -67,7 +67,7 @@ bool MathRootInset::setArgumentIdx(int i)
 }
 
 
-void MathRootInset::GetXY(int& x, int& y) const
+void MathRootInset::GetXY(int & x, int & y) const
 {
    if (idx == 1)
      MathParInset::GetXY(x, y);
@@ -75,7 +75,8 @@ void MathRootInset::GetXY(int& x, int& y) const
      uroot->GetXY(x, y);
 }
 
-LyxArrayBase *MathRootInset::GetData()
+
+LyxArrayBase * MathRootInset::GetData()
 {
    if (idx == 1)
      return array;
@@ -134,11 +135,11 @@ void MathRootInset::SetFocus(int x, int)
 }
 
 
-void MathRootInset::Write(FILE *outf)
+void MathRootInset::Write(ostream & os)
 { 
    string output;
-   MathRootInset::Write(output);  
-   fprintf(outf, "%s", output.c_str());
+   MathRootInset::Write(output);
+   os << output;
 }
 
 

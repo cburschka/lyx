@@ -106,7 +106,7 @@ void InsetSpecialChar::Draw(LyXFont font, LyXScreen & scr,
 
 
 // In lyxf3 this will be just LaTeX
-void InsetSpecialChar::Write(FILE * file)
+void InsetSpecialChar::Write(ostream & os)
 {
 	string command;
 	switch (kind) {
@@ -115,7 +115,7 @@ void InsetSpecialChar::Write(FILE * file)
 	case LDOTS:		command = "\\ldots{}";	break;
 	case MENU_SEPARATOR:    command = "\\menuseparator"; break;
 	}
-	fprintf(file, "\\SpecialChar %s\n", command.c_str());
+	os << "\\SpecialChar " << command << "\n";
 }
 
 
@@ -138,12 +138,12 @@ void InsetSpecialChar::Read(LyXLex & lex)
 }
 
 
-int InsetSpecialChar::Latex(FILE * file, signed char /*fragile*/)
+int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/)
 {
 	string command;
 	signed char dummy = 0;
 	Latex(command, dummy);
-	fprintf(file, "%s", command.c_str());
+	os << command;
 	return 0;
 }
 

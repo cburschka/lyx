@@ -29,6 +29,7 @@
 
 extern BufferView * current_view;
 
+
 InsetInfo::InsetInfo()
 {
 	form = 0;
@@ -90,9 +91,9 @@ void InsetInfo::Draw(LyXFont font, LyXScreen & scr,
 }
 
 
-void InsetInfo::Write(FILE * file)
+void InsetInfo::Write(ostream & os)
 {
-	fprintf(file, "Info %s", contents.c_str());
+	os << "Info " << contents;
 }
 
 
@@ -123,7 +124,7 @@ void InsetInfo::Read(LyXLex & lex)
 }
       
 
-int InsetInfo::Latex(FILE *, signed char /*fragile*/)
+int InsetInfo::Latex(ostream &, signed char /*fragile*/)
 {
 	return 0;
 }

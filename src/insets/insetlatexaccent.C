@@ -33,13 +33,13 @@ InsetLatexAccent::InsetLatexAccent()
 
 
 InsetLatexAccent::InsetLatexAccent(InsetLatexAccent const & other)
-    :contents(other.contents),
-     candisp(other.candisp),
-     modtype(other.modtype),
-     remdot(other.remdot),
-     plusasc(other.plusasc),
-     plusdesc(other.plusdesc),
-     ic(other.ic)
+    : contents(other.contents),
+      candisp(other.candisp),
+      modtype(other.modtype),
+      remdot(other.remdot),
+      plusasc(other.plusasc),
+      plusdesc(other.plusdesc),
+      ic(other.ic)
 {}
 
 
@@ -243,7 +243,7 @@ void InsetLatexAccent::checkContents()
 		    for(string::size_type j = 4; j < contents.length(); ++j)
 				temp+= contents[j];
 		    contents= temp;
-		    i++;
+		    ++i;
 			remdot = true;
 		}    
 
@@ -271,9 +271,9 @@ int InsetLatexAccent::Ascent(LyXFont const & font) const
 		else
 			max = font.ascent(ic);
 		if (plusasc) 
-			max += (font.maxAscent()+3) / 3;
+			max += (font.maxAscent() + 3) / 3;
 	} else
-		max = font.maxAscent()+4;
+		max = font.maxAscent() + 4;
 	return max;
 }
 
@@ -576,9 +576,9 @@ void InsetLatexAccent::Draw(LyXFont font,
 }
 
 
-void InsetLatexAccent::Write(FILE * file)
+void InsetLatexAccent::Write(ostream & os)
 {
-	fprintf(file, "\\i %s\n", contents.c_str());
+	os << "\\i " << contents << "\n";
 }
 
 
@@ -590,9 +590,9 @@ void InsetLatexAccent::Read(LyXLex & lex)
 }
 
 
-int InsetLatexAccent::Latex(FILE * file, signed char /*fragile*/)
+int InsetLatexAccent::Latex(ostream & os, signed char /*fragile*/)
 {
-	fprintf(file, "%s", contents.c_str());
+	os << contents;
 	return 0;
 }
 

@@ -26,7 +26,7 @@
 #pragma interface
 #endif
 
-#include <stdio.h>
+#include <cstdio>
 #include "math_defs.h"
 #include "symbol_def.h"
 #include "LString.h"
@@ -38,144 +38,138 @@
 class MathFuncInset: public MathedInset  {
 public:
 	///
-   MathFuncInset(char const * nm,
-		 short ot = LM_OT_FUNC, short st = LM_ST_TEXT);
+	MathFuncInset(char const * nm,
+		      short ot = LM_OT_FUNC, short st = LM_ST_TEXT);
 	///
-   ~MathFuncInset();
+	~MathFuncInset();
 	///
-   MathedInset * Clone();
+	MathedInset * Clone();
 	///
-   void Draw(int, int);
+	void Draw(int, int);
 	///
-   void Write(FILE * file);
+	void Write(ostream &);
 	///
-   void Write(string & file);
+	void Write(string & file);
 	///
-   void Metrics();
+	void Metrics();
 	///
-   inline bool GetLimits() const;
+	inline bool GetLimits() const;
 protected:
 	///
-   int ln;
+	int ln;
 	///
-   bool lims;
+	bool lims;
 	///
-   char * fname;
+	char * fname;
 };
 
 
 /// Accents
 class MathAccentInset: public MathedInset {
- public:
+public:
 	///
-   MathAccentInset(byte, MathedTextCodes, int, short st = LM_ST_TEXT);
+	MathAccentInset(byte, MathedTextCodes, int, short st = LM_ST_TEXT);
 	///
-   MathAccentInset(MathedInset *, int, short st = LM_ST_TEXT);
+	MathAccentInset(MathedInset *, int, short st = LM_ST_TEXT);
 	///
-   ~MathAccentInset();
+	~MathAccentInset();
 	///
-   MathedInset * Clone();
+	MathedInset * Clone();
 	///
-   void Draw(int, int);
+	void Draw(int, int);
 	///
-   void Write(FILE * file);
+	void Write(ostream &);
 	///
-   void Write(string & file);
+	void Write(string & file);
 	///
-   void Metrics();
+	void Metrics();
 	///
-   int getAccentCode() const { return code; }
-
- protected:
+	int getAccentCode() const { return code; }
+	
+protected:
 	///
-   byte c;
+	byte c;
 	///
-   MathedTextCodes fn;
+	MathedTextCodes fn;
 	///
-   int code;
+	int code;
 	///
-   MathedInset * inset;
+	MathedInset * inset;
 	///
-   int dh, dy;
+	int dh, dy;
 };
 
 
 ///
 class MathDotsInset: public MathedInset {
- public:
+public:
 	///
-   MathDotsInset(char const *, int, short st = LM_ST_TEXT);
+	MathDotsInset(char const *, int, short st = LM_ST_TEXT);
 	///
-   ~MathDotsInset() {}
+	MathedInset * Clone();
 	///
-   MathedInset * Clone();
+	void Draw(int, int);
 	///
-   void Draw(int, int);
+	void Write(ostream &);
 	///
-   void Write(FILE * file);
+	void Write(string & file);
 	///
-   void Write(string & file);
+	void Metrics();
+protected:
 	///
-   void Metrics();
- protected:
-	///
-   int dh, code;
+	int dh, code;
 };   
 
 
 /// Smart spaces
 class MathSpaceInset: public MathedInset  {
- public:
+public:
 	///
-   MathSpaceInset(int sp, short ot = LM_OT_SPACE, short st = LM_ST_TEXT);
+	MathSpaceInset(int sp, short ot = LM_OT_SPACE, short st = LM_ST_TEXT);
 	///
-   ~MathSpaceInset() {}
+	MathedInset * Clone();
 	///
-   MathedInset * Clone();
+	void Draw(int, int);
 	///
-  void Draw(int, int);
+	void Write(ostream &);
 	///
-   void Write(FILE * file);
+	void Write(string & file);
 	///
-   void Write(string & file);
+	inline void Metrics();
 	///
-   inline void Metrics();
+	inline void SetSpace(int sp);
 	///
-   inline void SetSpace(int sp);
+	int GetSpace() { return space; }
+protected:
 	///
-   int GetSpace() { return space; }
- protected:
-	///
-   int space;
+	int space;
 };
 
 
 /// big operators
 class MathBigopInset: public MathedInset {
- public:
+public:
 	///
-   MathBigopInset(char const *, int, short st = LM_ST_TEXT);
+	MathBigopInset(char const *, int, short st = LM_ST_TEXT);
 	///
-   ~MathBigopInset() {}
+	MathedInset * Clone();
 	///
-   MathedInset * Clone();
+	void Draw(int, int);
 	///
-   void Draw(int, int);
+	void Write(ostream &);
 	///
-   void Write(FILE * file);
+	void Write(string & file);
 	///
-   void Write(string & file);
+	void Metrics();
 	///
-   void Metrics();
+	inline bool GetLimits() const;
 	///
-   inline bool GetLimits() const;
+	inline void SetLimits(bool);
+protected:
 	///
-   inline void SetLimits(bool);
- protected:
+	int lims;
 	///
-   int lims;
-	///
-   int sym;   
+	int sym;   
 };
 
  
@@ -183,131 +177,124 @@ class MathBigopInset: public MathedInset {
 
 ///
 class MathSqrtInset: public MathParInset {
- public:
-    ///
-    MathSqrtInset(short st = LM_ST_TEXT);
-    ///
-    ~MathSqrtInset() {}
-    ///
-    MathedInset * Clone();
-    ///
-    void Draw(int x, int baseline);
-    ///
-    void Write(FILE * file);
-    ///
-    void Write(string & file);
-    ///
-    void Metrics();
-    ///
-    bool Inside(int, int);
-    
- private:
-    ///
-   int hmax, wbody;
+public:
+	///
+	MathSqrtInset(short st = LM_ST_TEXT);
+	///
+	MathedInset * Clone();
+	///
+	void Draw(int x, int baseline);
+	///
+	void Write(ostream &);
+	///
+	void Write(string & file);
+	///
+	void Metrics();
+	///
+	bool Inside(int, int);
+private:
+	///
+	int hmax, wbody;
 };
 
 
 /// Fraction like objects (frac, stackrel, binom) 
 class MathFracInset: public MathParInset {
- public:
+public:
 	///
-    MathFracInset(short ot = LM_OT_FRAC);
+	MathFracInset(short ot = LM_OT_FRAC);
 	///
-    ~MathFracInset();
+	~MathFracInset();
 	///
-    MathedInset * Clone();
+	MathedInset * Clone();
 	///
-    void Draw(int x, int baseline);
+	void Draw(int x, int baseline);
 	///
-    void Write(FILE * file);
+	void Write(ostream &);
 	///
-    void Write(string & file);
+	void Write(string & file);
 	///
-    void Metrics();
- 
-    /** This does the same that SetData(LyxArrayBase*) but for both
-         numerator and denominator at once.
-     */
-    void SetData(LyxArrayBase *, LyxArrayBase *);
+	void Metrics();
+	
+	/** This does the same that SetData(LyxArrayBase*) but for both
+	    numerator and denominator at once.
+	*/
+	void SetData(LyxArrayBase *, LyxArrayBase *);
 	///
-    void SetData(LyxArrayBase *);
+	void SetData(LyxArrayBase *);
 	///
-    void GetXY(int & x, int & y) const;
+	void GetXY(int & x, int & y) const;
 	///
-    void SetFocus(int, int);
-    ///
-    bool Inside(int, int);
-    ///
-    LyxArrayBase * GetData();
-    ///
-    bool setArgumentIdx(int i); // was bool Up/down(void);
-    ///
-    int  getArgumentIdx() { return int(idx); }
-    ///
-    int  getMaxArgumentIdx() { return 1; }
+	void SetFocus(int, int);
 	///
-    void  SetStyle(short);
- protected:
+	bool Inside(int, int);
 	///
-    short idx;
+	LyxArrayBase * GetData();
 	///
-    MathParInset * den;
+	bool setArgumentIdx(int i); // was bool Up/down(void);
 	///
-    int w0, w1, des0, dh;
+	int  getArgumentIdx() { return int(idx); }
+	///
+	int  getMaxArgumentIdx() { return 1; }
+	///
+	void  SetStyle(short);
+protected:
+	///
+	short idx;
+	///
+	MathParInset * den;
+	///
+	int w0, w1, des0, dh;
 };
 
 
 /// A delimiter
 class MathDelimInset: public MathParInset {
- public:
+public:
 	///
-   MathDelimInset(int, int, short st = LM_ST_TEXT);
+	MathDelimInset(int, int, short st = LM_ST_TEXT);
 	///
-   ~MathDelimInset() {}
+	MathedInset * Clone();
 	///
-   MathedInset * Clone();
+	void Draw(int, int);
 	///
-   void Draw(int, int);
+	void Write(ostream &);
 	///
-   void Write(FILE * file);
+	void Write(string & file);
 	///
-   void Write(string & file);
+	void Metrics();
+protected:
 	///
-   void Metrics();
- protected:
+	int left, right;
 	///
-   int left, right;
-	///
-   int dw, dh;
+	int dw, dh;
 };
 
 
 /// Decorations over (below) a math object
 class MathDecorationInset: public MathParInset {
- public:
+public:
 	///
-   MathDecorationInset(int, short st = LM_ST_TEXT);
+	MathDecorationInset(int, short st = LM_ST_TEXT);
 	///
-   ~MathDecorationInset() {}
+	MathedInset * Clone();
 	///
-   MathedInset * Clone();
+	void Draw(int, int);
 	///
-   void Draw(int, int);
+	void Write(ostream &);
 	///
-   void Write(FILE * file);
+	void Write(string & file);
 	///
-   void Write(string & file);
+	void Metrics();
 	///
-   void Metrics();
+	inline bool GetLimits() const;
+protected:
 	///
-   inline bool GetLimits() const;
- protected:
+	int deco;
 	///
-   int deco;
+	bool upper;
 	///
-   bool upper;
-	///
-   int dw, dh, dy;
+	int dw, dh, dy;
 };
 
 
@@ -329,9 +316,9 @@ bool MathFuncInset::GetLimits() const
 
 
 inline
-void MathFuncInset::Write(FILE * file)
+void MathFuncInset::Write(ostream & os)
 {
-   fprintf(file, "\\%s ", name);
+	os << "\\" << name;
 }
 
 
@@ -347,8 +334,8 @@ void MathFuncInset::Write(string & file)
 inline
 void MathSpaceInset::Metrics()
 {
-   width = (space) ? space * 2 : 2;
-   if (space>3) width *= 2;
+   width = space ? space * 2 : 2;
+   if (space > 3) width *= 2;
    if (space == 5) width *= 2;
    width += 4;
    ascent = 4; descent = 0;

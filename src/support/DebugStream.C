@@ -15,6 +15,7 @@
 // Since the current C++ lib in egcs does not have a standard implementation
 // of basic_streambuf and basic_filebuf we don't have to include this
 // header.
+//#define MODERN_STL_STREAMS
 #ifdef MODERN_STL_STREAMS
 #include <fstream>
 #endif

@@ -29,9 +29,9 @@ public:
 	/// Non-standard LyX macro
 	InsetParent() : InsetCommand("lyxparent") {}
 	///
-        InsetParent(string fn, Buffer * owner = 0);
+        InsetParent(string const & fn, Buffer * owner = 0);
 	/// 
-	int Latex(FILE * file, signed char fragile);
+	int Latex(ostream &, signed char fragile);
 	///
 	int Latex(string & file, signed char fragile);
         ///

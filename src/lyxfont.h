@@ -19,6 +19,7 @@
 #include "LString.h"
 #include "debug.h"
 
+
 // It might happen that locale.h defines ON and OFF. This is not good
 // for us, since we use these names below. But of course this is due
 // to some old compilers. Than is broken when it comes to C++ scoping.
@@ -296,25 +297,14 @@ public:
 	LyXFont & lyxRead(LyXLex&);
  
 	/// Writes the changes from this font to orgfont in .lyx format in file
-	void lyxWriteChanges(LyXFont const & orgfont, FILE *) const;
- 
-	/** Writes the head of the LaTeX needed to change to this font.
-	  Writes to file, the head of the LaTeX needed to change to this font.
-	    Returns number of chars written. Base is the font state active now.
-	*/
-	int latexWriteStartChanges(FILE *, LyXFont const & base) const;
+	void lyxWriteChanges(LyXFont const & orgfont, ostream &) const;
 
-	/** Writes to string, the head of the LaTeX needed to change
-	  to this font. Returns number of chars written. Base is the
-	  font state active now.
+	/** Writes the head of the LaTeX needed to change to this font.
+	    Writes to string, the head of the LaTeX needed to change
+	    to this font. Returns number of chars written. Base is the
+	    font state active now.
 	*/
 	int latexWriteStartChanges(string &, LyXFont const & base) const;
-
-	/** Writes the tail of the LaTeX needd to change to this font.
-	  Returns number of chars written. Base is the font state we want
-	  to achieve.
-	*/
-	int latexWriteEndChanges(FILE *, LyXFont const & base) const;
 
 	/** Writes tha tail of the LaTeX needed to chagne to this font.
 	  Returns number of chars written. Base is the font state we want

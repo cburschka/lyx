@@ -38,9 +38,9 @@ static char const * const times_char = "sd";
 static char const * const quote_char = ",'`<>";
 
 // Index of chars used for the quote. Index is [side, language]
-int quote_index[2][6] = 
-{ { 2, 1, 0, 0, 3, 4 },    // "'',,<>" 
-  { 1, 1, 2, 1, 4, 3 } };  // "`'`'><"
+int quote_index[2][6] = {
+	{ 2, 1, 0, 0, 3, 4 },    // "'',,<>" 
+	{ 1, 1, 2, 1, 4, 3 } };  // "`'`'><"
 
 // Corresponding LaTeX code, for double and single quotes.
 static char const * const latex_quote_t1[2][5] = 
@@ -63,6 +63,7 @@ InsetQuotes::InsetQuotes(string const & str)
 {
 	ParseString(str);
 }
+
 
 InsetQuotes::InsetQuotes(InsetQuotes::quote_language l,
 			 InsetQuotes::quote_side s,
@@ -99,42 +100,43 @@ void InsetQuotes::ParseString(string const & s)
 		str = "eld";
 	}
 
-	for (i= 0;i<6;i++) {
+	for (i = 0; i < 6; ++i) {
 		if (str[0] == language_char[i]) {
 			language = (InsetQuotes::quote_language)i;
 			break;
 		}
 	}
-	if (i>= 6) {
+	if (i >= 6) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad language specification." << endl;
 		language = InsetQuotes::EnglishQ; 
 	}
 
-	for (i= 0;i<2;i++) {
+	for (i = 0; i < 2; ++i) {
 		if (str[1] == side_char[i]) {
 			side = (InsetQuotes::quote_side)i;
 			break;
 		}
 	}
-	if (i>= 2) {
+	if (i >= 2) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad side specification." << endl;
 		side = InsetQuotes::LeftQ; 
 	}
 
-	for (i= 0;i<2;i++) {
+	for (i = 0; i < 2; ++i) {
 		if (str[2] == times_char[i]) {
 			times = (InsetQuotes::quote_times)i;
 			break;
 		}
 	}
-	if (i>= 2) {
+	if (i >= 2) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad times specification." << endl;
 		times = InsetQuotes::DoubleQ; 
 	}
 }
+
 
 string InsetQuotes::DispString() const
 {
@@ -201,13 +203,13 @@ void InsetQuotes::Draw(LyXFont font, LyXScreen & scr,
 }
 
 
-void InsetQuotes::Write(FILE * file)
+void InsetQuotes::Write(ostream & os)
 {
 	string text;
 	text += language_char[language];
 	text += side_char[side];
 	text += times_char[times]; 
-	fprintf(file, "Quotes %s", text.c_str());
+	os << "Quotes " << text;
 }
 
 
@@ -218,13 +220,14 @@ void InsetQuotes::Read(LyXLex & lex)
 }
 
 
-int InsetQuotes::Latex(FILE * file, signed char /*fragile*/)
+int InsetQuotes::Latex(ostream & os, signed char /*fragile*/)
 {
 	string quote;
 	int res = Latex(quote, 0);
-	fprintf(file, "%s", quote.c_str()); 
+	os << quote;
 	return res;
 }
+
 
 int InsetQuotes::Latex(string & file, signed char /*fragile*/)
 {

@@ -34,16 +34,16 @@
 #include "gettext.h"
 
 
-InsetFormulaMacro::InsetFormulaMacro():
-        InsetFormula(true)
+InsetFormulaMacro::InsetFormulaMacro()
+       : InsetFormula(true)
 {
     tmacro = 0;
     opened = false;
 }
 
 
-InsetFormulaMacro::InsetFormulaMacro(string nm, int na, bool /*e*/):
-        InsetFormula(true), name(nm)
+InsetFormulaMacro::InsetFormulaMacro(string nm, int na, bool /*e*/)
+        : InsetFormula(true), name(nm)
 {
     tmacro = MathMacroTable::mathMTable.getTemplate(name.c_str());
     if (!tmacro) {
@@ -66,17 +66,17 @@ Inset * InsetFormulaMacro::Clone() const
 }
 
 
-void InsetFormulaMacro::Write(FILE *file)
+void InsetFormulaMacro::Write(ostream & os)
 {
-    fprintf(file, "FormulaMacro ");
-    Latex(file, 0);
+	os << "FormulaMacro ";
+	Latex(os, 0);
 }
 
 
-int InsetFormulaMacro::Latex(FILE *file, signed char /*fragile*/)
+int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/)
 {
     int ret = 1;
-    tmacro->WriteDef(file);
+    tmacro->WriteDef(os);
     return ret;
 }
 
@@ -101,9 +101,9 @@ int InsetFormulaMacro::DocBook(string &/*file*/)
 }
 
 
-void InsetFormulaMacro::Read(LyXLex &lex)
+void InsetFormulaMacro::Read(LyXLex & lex)
 {
-    FILE *file = lex.getFile();
+    FILE * file = lex.getFile();
     mathed_parser_file(file, lex.GetLineNo());   
     mathed_parse(0, 0, (MathParInset **)&tmacro);
     
@@ -116,7 +116,7 @@ void InsetFormulaMacro::Read(LyXLex &lex)
 }
 
 
-int InsetFormulaMacro::Ascent(LyXFont const &f) const
+int InsetFormulaMacro::Ascent(LyXFont const & f) const
 {
     if (opened) {
 	tmacro->update();
@@ -126,7 +126,7 @@ int InsetFormulaMacro::Ascent(LyXFont const &f) const
 }
 
 
-int InsetFormulaMacro::Descent(LyXFont const &f) const
+int InsetFormulaMacro::Descent(LyXFont const & f) const
 {
     if (opened) {
 	tmacro->update();
@@ -136,7 +136,7 @@ int InsetFormulaMacro::Descent(LyXFont const &f) const
 }
 
 
-int InsetFormulaMacro::Width(LyXFont const &f) const
+int InsetFormulaMacro::Width(LyXFont const & f) const
 {
     if (opened) {
 	tmacro->update();
@@ -148,8 +148,8 @@ int InsetFormulaMacro::Width(LyXFont const &f) const
 }
 
 
-void InsetFormulaMacro::Draw(LyXFont font, LyXScreen &scr,
-			     int baseline, float &x)
+void InsetFormulaMacro::Draw(LyXFont font, LyXScreen & scr,
+			     int baseline, float & x)
 {
     tmacro->update();
     if (opened) {
@@ -159,8 +159,8 @@ void InsetFormulaMacro::Draw(LyXFont font, LyXScreen &scr,
     } else {
 	font.setColor(LyXFont::MATH);
 	
-	int y= baseline - Ascent(font)+1;
-	int w= Width(font) - 2, h= (Ascent(font)+Descent(font)-2);
+	int y = baseline - Ascent(font) + 1;
+	int w = Width(font) - 2, h = (Ascent(font) + Descent(font) - 2);
 
 	
 	scr.fillRectangle(gc_lighted, int(x), y,  w,  h);
@@ -194,7 +194,7 @@ void InsetFormulaMacro::InsetUnlock()
 }
 
 
-bool InsetFormulaMacro::LocalDispatch(int action, char const *arg)
+bool InsetFormulaMacro::LocalDispatch(int action, char const * arg)
 {
     if (action == LFUN_MATH_MACROARG) {
 	int i = atoi(arg) - 1;

@@ -14,6 +14,8 @@
 #pragma implementation "lyxparagraph.h"
 #endif
 
+#include <fstream>
+
 #include "lyxparagraph.h"
 #include "support/textutils.h"
 #include "lyxrc.h"
@@ -112,7 +114,7 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 }
 
 
-void LyXParagraph::writeFile(FILE * file, BufferParams & params,
+void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 			     char footflag, char dth)
 {
 	LyXFont font1, font2;
@@ -129,11 +131,12 @@ void LyXParagraph::writeFile(FILE * file, BufferParams & params,
 		if (footflag != footnoteflag) {
 			footflag = footnoteflag;
 			if (footflag) {
-				fprintf(file, "\n\\begin_float %s ", 
-					string_footnotekinds[footnotekind]);
+				os << "\n\\begin_float "
+				   << string_footnotekinds[footnotekind]
+				   << " ";
 			}
 			else {
-				fprintf(file, "\n\\end_float ");
+				os << "\n\\end_float ";
 			}
 		}
 
@@ -141,55 +144,55 @@ void LyXParagraph::writeFile(FILE * file, BufferParams & params,
 		if (dth != depth) {
 			if (depth > dth) {
 				while (depth > dth) {
-					fprintf(file, "\n\\begin_deeper ");
+					os << "\n\\begin_deeper ";
 					dth++;
 				}
 			}
 			else {
 				while (depth < dth) {
-					fprintf(file, "\n\\end_deeper ");
+					os << "\n\\end_deeper ";
 					dth--;
 				}
 			}
 		}
 
 		/* First write the layout */ 
-		fprintf(file, "\n\\layout %s\n",
-			textclasslist.NameOfLayout(params.textclass, layout)
-			.c_str());
+		os << "\n\\layout "
+		   << textclasslist.NameOfLayout(params.textclass, layout)
+		   << "\n";
 
 		/* maybe some vertical spaces */ 
 		if (added_space_top.kind() != VSpace::NONE)
-			fprintf(file, "\\added_space_top %s ", 
-				added_space_top.asLyXCommand().c_str());
+			os << "\\added_space_top "
+			   << added_space_top.asLyXCommand() << " ";
 		if (added_space_bottom.kind() != VSpace::NONE)
-			fprintf(file, "\\added_space_bottom %s ",
-				added_space_bottom.asLyXCommand().c_str());
+			os << "\\added_space_bottom "
+			   << added_space_bottom.asLyXCommand() << " ";
 			
 		/* The labelwidth string used in lists */
 		if (!labelwidthstring.empty())
-			fprintf(file, "\\labelwidthstring %s\n",
-				labelwidthstring.c_str());
+			os << "\\labelwidthstring "
+			   << labelwidthstring << '\n';
 
 		/* Lines above or below? */
 		if (line_top)
-			fprintf(file, "\\line_top ");
+			os << "\\line_top ";
 		if (line_bottom)
-			fprintf(file, "\\line_bottom ");
+			os << "\\line_bottom ";
 
 		/* Pagebreaks above or below? */
 		if (pagebreak_top)
-			fprintf(file, "\\pagebreak_top ");
+			os << "\\pagebreak_top ";
 		if (pagebreak_bottom)
-			fprintf(file, "\\pagebreak_bottom ");
+			os << "\\pagebreak_bottom ";
 			
 		/* Start of appendix? */
 		if (start_of_appendix)
-			fprintf(file, "\\start_of_appendix ");
+			os << "\\start_of_appendix ";
 
 		/* Noindent? */
 		if (noindent)
-			fprintf(file, "\\noindent ");
+			os << "\\noindent ";
 			
 		/* Alignment? */
 		if (align != LYX_ALIGN_LAYOUT) {
@@ -199,61 +202,59 @@ void LyXParagraph::writeFile(FILE * file, BufferParams & params,
 			case LYX_ALIGN_CENTER: h = 3; break;
 			default: h = 0; break;
 			}
-			fprintf(file, "\\align %s ", string_align[h]);
+			os << "\\align " << string_align[h] << " ";
 		}
                 if (pextra_type != PEXTRA_NONE) {
-                        fprintf(file, "\\pextra_type %d", pextra_type);
+                        os << "\\pextra_type " << pextra_type;
                         if (pextra_type == PEXTRA_MINIPAGE) {
-				fprintf(file, " \\pextra_alignment %d",
-					pextra_alignment);
+				os << " \\pextra_alignment "
+				   << pextra_alignment;
 				if (pextra_hfill)
-					fprintf(file, " \\pextra_hfill %d",
-						pextra_hfill);
+					os << " \\pextra_hfill "
+					   << pextra_hfill;
 				if (pextra_start_minipage)
-					fprintf(file,
-						" \\pextra_start_minipage %d",
-						pextra_start_minipage);
+					os << " \\pextra_start_minipage "
+					   << pextra_start_minipage;
                         }
                         if (!pextra_width.empty()) {
-				fprintf(file, " \\pextra_width %s",
-                                        VSpace(pextra_width)
-					.asLyXCommand().c_str());
+				os << " \\pextra_width "
+				   << VSpace(pextra_width).asLyXCommand();
                         } else if (!pextra_widthp.empty()) {
-				fprintf(file, " \\pextra_widthp %s",
-					pextra_widthp.c_str());
+				os << " \\pextra_widthp "
+				   << pextra_widthp;
                         }
-                        fprintf(file, "\n");
+			os << '\n';
                 }
 	}
 	else {
    		/* Dummy layout. This means that a footnote ended */
-		fprintf(file, "\n\\end_float ");
+		os << "\n\\end_float ";
 		footflag = LyXParagraph::NO_FOOTNOTE;
 	}
 		
 	/* It might be a table */ 
 	if (table){
-		fprintf(file, "\\LyXTable\n");
-		table->Write(file);
+		os << "\\LyXTable\n";
+		table->Write(os);
 	}
 
 	// bibitem  ale970302
 	if (bibkey)
-		bibkey->Write(file);
+		bibkey->Write(os);
 
 	font1 = LyXFont(LyXFont::ALL_INHERIT);
 
 	column = 0;
 	for (size_type i = 0; i < size(); i++) {
 		if (!i){
-			fprintf(file, "\n");
+			os << "\n";
 			column = 0;
 		}
 		
 		// Write font changes
 		font2 = GetFontSettings(i);
 		if (font2 != font1) {
-			font2.lyxWriteChanges(font1, file);
+			font2.lyxWriteChanges(font1, os);
 			column = 0;
 			font1 = font2;
 		}
@@ -267,48 +268,47 @@ void LyXParagraph::writeFile(FILE * file, BufferParams & params,
 					// international char, let it write
 					// code directly so it's shorter in
 					// the file
-					inset->Write(file);
+					inset->Write(os);
 				} else {
-					fprintf(file, "\n\\begin_inset ");
-					inset->Write(file);
-					fprintf(file, "\n\\end_inset \n");
-					fprintf(file, "\n");
+					os << "\n\\begin_inset ";
+					inset->Write(os);
+					os << "\n\\end_inset \n\n";
 					column = 0;
 				}
 			break;
 		case META_NEWLINE: 
-			fprintf(file, "\n\\newline \n");
+			os << "\n\\newline \n";
 			column = 0;
 			break;
 		case META_HFILL: 
-			fprintf(file, "\n\\hfill \n");
+			os << "\n\\hfill \n";
 			column = 0;
 			break;
 		case META_PROTECTED_SEPARATOR: 
-			fprintf(file, "\n\\protected_separator \n");
+			os << "\n\\protected_separator \n";
 			column = 0;
 			break;
-		case '\\': 
-			fprintf(file, "\n\\backslash \n");
+		case '\\':
+			os << "\n\\backslash \n";
 			column = 0;
 			break;
 		case '.':
 			if (i + 1 < size() && GetChar(i + 1) == ' ') {
-				fprintf(file, ".\n");
+				os << ".\n";
 				column = 0;
 			} else
-				fprintf(file, ".");
+				os << ".";
 			break;
 		default:
 			if ((column > 70 && c == ' ')
 			    || column > 79){
-				fprintf(file, "\n");
+				os << "\n";
 				column = 0;
 			}
 			// this check is to amend a bug. LyX sometimes
 			// inserts '\0' this could cause problems.
 			if (c != '\0')
-				fprintf(file, "%c", c);
+				os << c;
 			else
 				lyxerr << "ERROR (LyXParagraph::writeFile):"
 					" NULL char in structure." << endl;
@@ -319,7 +319,7 @@ void LyXParagraph::writeFile(FILE * file, BufferParams & params,
 
 	// now write the next paragraph
 	if (next)
-		next->writeFile(file, params, footflag, dth);
+		next->writeFile(os, params, footflag, dth);
 }
 
 
@@ -3530,7 +3530,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 }
 
 
-bool LyXParagraph::RoffContTableRows(FILE * fp,
+bool LyXParagraph::RoffContTableRows(ostream & os,
 				     LyXParagraph::size_type i,
 				     int actcell)
 {
@@ -3541,7 +3541,6 @@ bool LyXParagraph::RoffContTableRows(FILE * fp,
 	LyXFont	font2;
 	Inset * inset;
 	char c;
-	FILE * fp2;
 
 	string fname2 = TmpFileName(string(), "RAT2");
 	int lastpos = i;
@@ -3558,7 +3557,7 @@ bool LyXParagraph::RoffContTableRows(FILE * fp,
 		lastpos = i;
 		c = GetChar(i);
 		if ((c != ' ') && (c != LyXParagraph::META_NEWLINE))
-			fprintf(fp, " ");
+			os << " ";
 		for (; i < size()
 			     && (c = GetChar(i)) != LyXParagraph::META_NEWLINE;
 		     ++i) {
@@ -3571,23 +3570,24 @@ bool LyXParagraph::RoffContTableRows(FILE * fp,
 			switch (c) {
 			case LyXParagraph::META_INSET:
 				if ((inset = GetInset(i))) {
-					if (!(fp2= fopen(fname2.c_str(), "w+"))) {
+					fstream fs(fname2.c_str(), ios::in|ios::out);
+					if (!fs) {
 						WriteAlert(_("LYX_ERROR:"),
 							   _("Cannot open temporary file:"),
 							   fname2);
 						return false;
 					}
-					inset->Latex(fp2,-1);
-					rewind(fp2);
-					c = fgetc(fp2);
-					while(!feof(fp2)) {
+					inset->Latex(fs, -1);
+					fs.seekp(0);
+					fs.get(c);
+					while (!fs) {
 						if (c == '\\')
-							fprintf(fp, "\\\\");
+							os << "\\\\";
 						else
-							fputc(c, fp);
-						c = fgetc(fp2);
+							os << c;
+						fs.get(c);
 					}
-					fclose(fp2);
+					fs.close();
 				}
 				break;
 			case LyXParagraph::META_NEWLINE:
@@ -3597,11 +3597,11 @@ bool LyXParagraph::RoffContTableRows(FILE * fp,
 			case LyXParagraph::META_PROTECTED_SEPARATOR:
 				break;
 			case '\\': 
-				fprintf(fp, "\\\\");
+				os << "\\\\";
 				break;
 			default:
 				if (c != '\0')
-					fprintf(fp, "%c", c);
+					os << c;
 				else
 					lyxerr.debug() << "RoffAsciiTable: NULL char in structure." << endl;
 				break;

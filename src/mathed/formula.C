@@ -38,6 +38,7 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 #include "lyx_gui_misc.h"
+#include "support/LOstream.h"
 
 extern void UpdateInset(Inset * inset, bool mark_dirty = true);
 extern void LockedInsetStoreUndo(Undo::undo_kind);
@@ -324,21 +325,21 @@ Inset * InsetFormula::Clone() const
 }
 
 
-void InsetFormula::Write(FILE * file)
+void InsetFormula::Write(ostream & os)
 {
-   fprintf(file, "Formula ");
-   Latex(file, 0);
+	os << "Formula ";
+	Latex(os, 0);
 }
 
 
-int InsetFormula::Latex(FILE * file, signed char fragile)
+int InsetFormula::Latex(ostream & os, signed char fragile)
 {
     int ret = 0;      
 //#warning Alejandro, the number of lines is not returned in this case
 // This problem will disapear at 0.13.
     string output;
     InsetFormula::Latex(output, fragile);
-    fprintf(file, "%s", output.c_str());
+    os << output;
     return ret;
 }
 
@@ -742,7 +743,7 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 //   extern char *dispatch_result;
     MathedTextCodes varcode = LM_TC_MIN;       
    bool was_macro = mathcursor->InMacroMode();
-   bool sel= false;
+   bool sel = false;
    bool space_on = false;
    bool was_selection = mathcursor->Selection();
    bool result = true;

@@ -1,3 +1,23 @@
+1999-12-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C: added a lot of inline for no good
+	reason
+	
+	* src/lyxfont.[Ch]: removed latexWriteStartChanges, and
+	latexWriteEndChanges, they were not used.
+	
+	* src/layout.h (operator<<): output operator for PageSides
+
+	* src/mathed/math_iter.C (my_memcpy): slightly changed.
+
+	* some example files: loaded in LyX 1.0.4 and saved again to update
+	certain constructs (table format) 
+
+	* a lot of files: did the change to use fstream/iostream for all
+	writing of files. Done with a close look at Andre Poenitz's patch.
+
+	* some files: whitespace changes.
+	
 1999-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_iter.C (my_memcpy): new function. Since the

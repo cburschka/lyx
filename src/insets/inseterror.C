@@ -26,6 +26,7 @@ InsetError::InsetError()
 	form = 0;
 }
 
+
 InsetError::InsetError(string const & str)
 	: contents(str)
 {
@@ -88,16 +89,17 @@ void InsetError::Draw(LyXFont font, LyXScreen & scr,
 }
 
 
-void InsetError::Write(FILE *)
+void InsetError::Write(ostream &)
 {
 }
+
 
 void InsetError::Read(LyXLex &)
 {
 }
 
 
-int InsetError::Latex(FILE *, signed char /*fragile*/)
+int InsetError::Latex(ostream &, signed char /*fragile*/)
 {
 	return 0;
 }

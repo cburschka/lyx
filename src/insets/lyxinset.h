@@ -21,6 +21,7 @@
 #include "lyxlex.h"
 #include "lyxscreen.h"
 
+
 class Buffer;
 struct LaTeXFeatures;
 
@@ -99,14 +100,15 @@ public:
 	///
 	virtual bool AutoDelete() const;
 	///
-	virtual void Write(FILE * file) = 0;
+	virtual void Write(ostream &) = 0;
 	///
 	virtual void Read(LyXLex & lex) = 0;
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile != 0 means, that the inset should take care about
 	 fragile commands by adding a \protect before.
 	 */
-	virtual int Latex(FILE * file, signed char fragile) = 0;
+	virtual int Latex(ostream &, signed char fragile) = 0;
+	///
 	virtual int Latex(string & file, signed char fragile) = 0;
 	///
 	virtual int Linuxdoc(string & /*file*/) = 0;

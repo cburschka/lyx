@@ -1,5 +1,5 @@
-#This file was created by <larsbj> Fri Sep 12 18:47:36 1997
-#LyX 0.11 (C) 1995-1997 Matthias Ettrich and the LyX Team
+#This file was created by <larsbj> Sun Dec  5 17:46:35 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
 \language default
@@ -11,6 +11,7 @@
 \papersize letterpaper
 \paperpackage a4
 \use_geometry 0
+\use_amsmath 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -53,7 +54,6 @@ Or a
 
 \begin_inset Formula 
 \begin{equation}
-\label{}
 x=y^{2}-3
 \end{equation}
 
@@ -126,7 +126,7 @@ It's possible to label more than one line.
 
 ) using their corresponding labels.
 \layout Standard
-\cursor 0 
+
 
 \begin_inset Formula 
 \begin{eqnarray}

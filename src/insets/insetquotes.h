@@ -81,11 +81,11 @@ public:
 	///
 	LyXFont ConvertFont(LyXFont font);
 	///
-	void Write(FILE * file);
+	void Write(ostream &);
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(FILE * file, signed char fragile);
+	int Latex(ostream &, signed char fragile);
 	///
 	int Latex(string & file, signed char fragile);
 	///
