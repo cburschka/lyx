@@ -1,5 +1,12 @@
 2002-04-18  Juergen Vigna  <jug@sad.it>
 
+	* BufferView_pimpl.C (Dispatch): fixed to change layout also if one
+	of the selected paragraph does not have the selected layout also if
+	the last one had!
+
+	* text2.C (setLayout): fixed bug which did not change last selected
+	paragraph.
+
 	* tabular.C (OldFormatRead): check also for \\end_inset as Lars
 	changed the read and substituted \\end_float with \\end_inset!
 

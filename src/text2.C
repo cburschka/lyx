@@ -500,14 +500,16 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 	// ok we have a selection. This is always between sstart_cur
 	// and sel_end cursor
 	cur = sstart_cur;
+	Paragraph * par = sstart_cur.par();
+	Paragraph * epar = send_cur.par()->next();
 
 	LyXLayout const & lyxlayout =
 		textclasslist[bview->buffer()->params.textclass][layout];
 
 	do {
-		cur.par()->applyLayout(layout);
-		makeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
-		Paragraph * fppar = cur.par();
+		par->applyLayout(layout);
+		makeFontEntriesLayoutSpecific(bview->buffer(), par);
+		Paragraph * fppar = par;
 		fppar->params().spaceTop(lyxlayout.fill_top ?
 					 VSpace(VSpace::VFILL)
 					 : VSpace(VSpace::NONE));
@@ -515,15 +517,15 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 					    VSpace(VSpace::VFILL)
 					    : VSpace(VSpace::NONE));
 		if (lyxlayout.margintype == MARGIN_MANUAL)
-			cur.par()->setLabelWidthString(lyxlayout.labelstring());
+			par->setLabelWidthString(lyxlayout.labelstring());
 		if (lyxlayout.labeltype != LABEL_BIBLIO
 		    && fppar->bibkey) {
 			delete fppar->bibkey;
 			fppar->bibkey = 0;
 		}
-		if (cur.par() != send_cur.par())
-			cur.par(cur.par()->next());
-	} while (cur.par() != send_cur.par());
+		cur.par(par);
+		par = par->next();
+	} while (par != epar);
 
 	return endpar;
 }

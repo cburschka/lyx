@@ -1789,8 +1789,21 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			break;
 		}
 
-		if (current_layout != layout) {
-			LyXText * lt = bv_->getLyXText();
+		bool change_layout = (current_layout != layout);
+		LyXText * lt = bv_->getLyXText();
+		if (!change_layout && lt->selection.set() &&
+			lt->selection.start.par() != lt->selection.end.par())
+		{
+			Paragraph * spar = lt->selection.start.par();
+			Paragraph * epar = lt->selection.end.par()->next();
+			while(spar != epar) {
+				if (spar->layout() != current_layout) {
+					change_layout = true;
+					break;
+				}
+			}
+		}
+		if (change_layout) {
 			hideCursor();
 			current_layout = layout;
 			update(lt,
