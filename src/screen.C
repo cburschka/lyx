@@ -50,7 +50,7 @@ LyXScreen::LyXScreen(WorkArea & o, LyXText * text_ptr)
 {
 	first = 0;
    
-	/* the cursor isnt yet visible */ 
+	// the cursor isnt yet visible
 	cursor_visible = false;
 	cursor_pixmap = 0;
 	cursor_pixmap_x = 0;
@@ -91,12 +91,12 @@ void LyXScreen::DrawFromTo(int y1, int y2)
 {
 	long y_text = first + y1;
    
-	/* get the first needed row */ 
+	// get the first needed row 
 	Row * row = text->GetRowNearY(y_text);
-	/* y_text is now the real beginning of the row */
+	// y_text is now the real beginning of the row
    
 	long y = y_text - first;
-	/* y1 is now the real beginning of row on the screen */
+	// y1 is now the real beginning of row on the screen
 	
 	while (row != 0 && y < y2) {
 		text->GetVisibleRow(y, row, y + first);
@@ -104,7 +104,7 @@ void LyXScreen::DrawFromTo(int y1, int y2)
 		row = row->next;
 	}
    
-	/* maybe we have to clear the screen at the bottom */ 
+	// maybe we have to clear the screen at the bottom
 	if (y < y2) {
 		owner.getPainter().fillRectangle(0, y,
 						 owner.workWidth(),
@@ -131,11 +131,10 @@ void LyXScreen::Draw(unsigned long y)
 {
 	if (cursor_visible) HideCursor();
 
-	//if (y < 0) y = 0;
 	unsigned long old_first = first;
 	first = y;
 
-	/* is any optimiziation possible? */ 
+	// is any optimiziation possible?
 	if ((y - old_first) < owner.height()
 	    && (old_first - y) < owner.height()) {
 		if (first < old_first) {
@@ -174,7 +173,7 @@ void LyXScreen::Draw(unsigned long y)
 			       owner.workWidth(), first - old_first);
 		}
 	} else {
-		/* make a dumb new-draw */ 
+		// make a dumb new-draw 
 		DrawFromTo(0, owner.height());
 		expose(0, 0, owner.workWidth(), owner.height());
 	}
@@ -205,12 +204,12 @@ bool LyXScreen::FitManualCursor(long /*x*/, long y, int asc, int desc)
 	long newtop = first;
   
 	if (y + desc - first >= owner.height())
-		newtop = y - 3 * owner.height() / 4;   /* the scroll region must be so big!! */
+		newtop = y - 3 * owner.height() / 4;  // the scroll region must be so big!!
 	else if (y - asc < long(first)
 		&& first > 0) {
 		newtop = y - owner.height() / 4;
 	}
-	//if (newtop < 0)
+
 	newtop = max(newtop, 0L); // can newtop ever be < 0? (Lgb)
   
 	if (newtop != long(first)) {
@@ -231,7 +230,6 @@ void LyXScreen::ShowManualCursor(long x, long y, int asc, int desc,
 	unsigned long y2 = min(y - first + desc, ulong(owner.height()));
 
 	// Secure against very strange situations
-	//if (y2 < y1) y2 = y1;
 	y2 = max(y2, y1);
 	
 	if (cursor_pixmap){
@@ -351,12 +349,10 @@ unsigned long LyXScreen::TopCursorVisible()
 			newtop = text->cursor.y - text->cursor.row->baseline;
 		else {
 			newtop = text->cursor.y - owner.height() / 4;
-			//if (newtop > long(first))
 			newtop = min(newtop, long(first));
 		}
 	}
-	//if (newtop < 0)
-	//	newtop = 0;
+
 	newtop = max(newtop, 0L);
 
 	return newtop;
@@ -392,7 +388,7 @@ void LyXScreen::Update()
 	break;
 	case LyXText::NEED_VERY_LITTLE_REFRESH:
 	{
-		/* ok I will update the current cursor row */
+		// ok I will update the current cursor row
 		DrawOneRow(text->refresh_row, text->refresh_y);
 		text->status = LyXText::UNCHANGED;
 		expose(0, text->refresh_y - first,
@@ -408,20 +404,9 @@ void LyXScreen::Update()
 
 void LyXScreen::ToggleSelection(bool kill_selection)
 {
-	/* only if there is a selection */ 
+	// only if there is a selection
 	if (!text->selection) return;
 
-	//long top = text->sel_start_cursor.y
-	//	- text->sel_start_cursor.row->baseline;
-	//long bottom = text->sel_end_cursor.y
-	//	- text->sel_end_cursor.row->baseline 
-	//	+ text->sel_end_cursor.row->height;
-
-	//top = max(top, first);
-	//bottom = max(bottom, first);
-	
-	//bottom = min(max(bottom, first), first + owner.height());
-	//top = min(max(top, first), first + owner.height());
 	long bottom = min(max(text->sel_end_cursor.y
 			      - text->sel_end_cursor.row->baseline
 			      + text->sel_end_cursor.row->height, first),
@@ -451,8 +436,6 @@ void LyXScreen::ToggleToggle()
 		- text->toggle_end_cursor.row->baseline 
 		+ text->toggle_end_cursor.row->height;
 	
-	//top = max(top, first);
-	//bottom = max(bottom, first);
 	typedef unsigned long ulong;
 	
 	bottom = min(max(ulong(bottom), first), first + owner.height());

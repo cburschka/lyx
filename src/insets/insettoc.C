@@ -5,8 +5,6 @@
 #endif
 
 #include "insettoc.h"
-#include "buffer.h"
-#include "bufferlist.h"
 #include "commandtags.h"
 #include "lyxfunc.h"
 #include "LyXView.h"

@@ -19,6 +19,10 @@
 
 #include "insetloa.h"
 #include "LaTeXFeatures.h"
+#include "BufferView.h"
+#include "LyXView.h"
+#include "lyxfunc.h"
+#include "commandtags.h"
 
 void InsetLOA::Validate(LaTeXFeatures & features) const 
 {
@@ -29,4 +33,9 @@ void InsetLOA::Validate(LaTeXFeatures & features) const
 string InsetLOA::getScreenLabel() const 
 {
 	return _("List of Algorithms");
+}
+
+void InsetLOA::Edit(BufferView * bv, int, int, unsigned int)
+{
+	bv->owner()->getLyXFunc()->Dispatch(LFUN_LOAVIEW);
 }

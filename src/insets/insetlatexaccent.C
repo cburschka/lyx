@@ -345,7 +345,7 @@ bool InsetLatexAccent::DisplayISO8859_9(Painter & pain, LyXFont const & font,
 	}
 	if (tmpic != ic) {
 		char ch = char(tmpic);
-		pain.text(x, baseline, ch, font);
+		pain.text(int(x), baseline, ch, font);
 		x += width(pain, font);
 		return true;
 	}
@@ -417,56 +417,56 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		switch (modtype) {
 		case ACUTE:     // acute 0xB4
  		{
-			pain.text(x2 - (lyxfont::rbearing(0xB4, font) - lyxfont::lbearing(0xB4, font)) / 2,
+			pain.text(int(x2 - (lyxfont::rbearing(0xB4, font) - lyxfont::lbearing(0xB4, font)) / 2),
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xB4, font) - (lyxfont::ascent(0xB4, font) + lyxfont::descent(0xB4, font)) / 2,
 				  char(0xB4), font);
 			break;
 		}
 		case GRAVE:     // grave 0x60
 		{
-			pain.text(x2 - (lyxfont::rbearing(0x60, font) - lyxfont::lbearing(0x60, font)) / 2,
-				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0x60, font) - (lyxfont::ascent(0x60, font) + lyxfont::descent(0x60, font)) / 2.0,
+			pain.text(int(x2 - (lyxfont::rbearing(0x60, font) - lyxfont::lbearing(0x60, font)) / 2),
+				  int(baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0x60, font) - (lyxfont::ascent(0x60, font) + lyxfont::descent(0x60, font)) / 2.0),
 				  char(0x60), font);
 			break;
 		}
 		case MACRON:     // macron
 		{
-			pain.text(x2 - (lyxfont::rbearing(0xAF, font) - lyxfont::lbearing(0xAF, font)) / 2,
+			pain.text(int(x2 - (lyxfont::rbearing(0xAF, font) - lyxfont::lbearing(0xAF, font)) / 2),
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xAF, font) - (lyxfont::ascent(0xAF, font) + lyxfont::descent(0xAF, font)),
 				  char(0xAF), font);
 			break;
 		}
 		case TILDE:     // tilde
 		{
-			pain.text(x2 - (lyxfont::rbearing('~', font) - lyxfont::lbearing('~', font)) / 2,
+			pain.text(int(x2 - (lyxfont::rbearing('~', font) - lyxfont::lbearing('~', font)) / 2),
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('~', font) - (lyxfont::ascent('~', font) + lyxfont::descent('~', font)) / 2,
 				  '~', font);
 			break;
 		}
 		case UNDERBAR:     // underbar 0x5F
 		{
-			pain.text(x2 - (lyxfont::rbearing(0x5F, font) - lyxfont::lbearing(0x5F, font)) / 2, baseline,
+			pain.text(int(x2 - (lyxfont::rbearing(0x5F, font) - lyxfont::lbearing(0x5F, font)) / 2), baseline,
 				  char(0x5F), font);
 			break;
 		}
 		case CEDILLA:     // cedilla
 		{
-			pain.text(x2 - (lyxfont::rbearing(0xB8, font) - lyxfont::lbearing(0xB8, font)) / 2, baseline,
+			pain.text(int(x2 - (lyxfont::rbearing(0xB8, font) - lyxfont::lbearing(0xB8, font)) / 2), baseline,
 				  char(0xB8), font);
 			
 			break;
 		}
 		case UNDERDOT:     // underdot
 		{
-			pain.text(x2 - (lyxfont::rbearing('.', font) - lyxfont::lbearing('.', font)) / 2.0,
-				  baseline + 3.0 / 2.0 * (lyxfont::ascent('.', font) + lyxfont::descent('.', font)),
+			pain.text(int(x2 - (lyxfont::rbearing('.', font) - lyxfont::lbearing('.', font)) / 2.0),
+				  int(baseline + 3.0 / 2.0 * (lyxfont::ascent('.', font) + lyxfont::descent('.', font))),
 				  '.', font);
 			break;
 		}
 
 		case DOT:    // dot
 		{
-			pain.text(x2 - (lyxfont::rbearing('.', font) - lyxfont::lbearing('.', font)) / 2.0,
+			pain.text(int(x2 - (lyxfont::rbearing('.', font) - lyxfont::lbearing('.', font)) / 2.0),
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('.', font) - (lyxfont::ascent('.', font) + lyxfont::descent('.', font)) / 2,
 				  '.', font);
 			break;
@@ -476,21 +476,21 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		{
 			LyXFont tmpf(font);
 			tmpf.decSize().decSize();
-			pain.text(x2 - (lyxfont::rbearing(0xB0, tmpf) - lyxfont::lbearing(0xB0, tmpf)) / 2.0,
-				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xB0, tmpf) - (lyxfont::ascent(0xB0, tmpf) + lyxfont::descent(0xB0, tmpf)) / 3.0,
+			pain.text(int(x2 - (lyxfont::rbearing(0xB0, tmpf) - lyxfont::lbearing(0xB0, tmpf)) / 2.0),
+				  int(baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xB0, tmpf) - (lyxfont::ascent(0xB0, tmpf) + lyxfont::descent(0xB0, tmpf)) / 3.0),
 				  char(0xB0), tmpf);
 			break;
 		}
 		case TIE:     // tie
 		{
-			pain.arc(int(x2 + hg35), y + hg / 2.0,
-				 2 * hg, hg, 0, 360 * 32);
+			pain.arc(int(x2 + hg35), int(y + hg / 2.0),
+				 int(2 * hg), int(hg), 0, 360 * 32);
 			break;
 		}
 		case BREVE:     // breve
 		{
 			pain.arc(int(x2 - (hg / 2.0)), y,
-				 hg, hg, 0, -360*32);
+				 int(hg), int(hg), 0, -360*32);
 			break;
 		}
 		case CARON:    // caron
@@ -524,17 +524,17 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		}
 		case HUNGARIAN_UMLAUT:    // hung. umlaut
 		{
-			pain.text(x2 - (lyxfont::rbearing('´', font) - lyxfont::lbearing('´', font)),
+			pain.text(int(x2 - (lyxfont::rbearing('´', font) - lyxfont::lbearing('´', font))),
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('´', font) - (lyxfont::ascent('´', font) + lyxfont::descent('´', font)) / 2,
 				  '´', font);
-			pain.text(x2,
+			pain.text(int(x2),
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('´', font) - (lyxfont::ascent('´', font) + lyxfont::descent('´', font)) / 2,
 				  '´', font);
 			break;
 		}
 		case UMLAUT:    // umlaut
 		{
-			pain.text(x2 - (lyxfont::rbearing('¨', font) - lyxfont::lbearing('¨', font)) / 2,
+			pain.text(int(x2 - (lyxfont::rbearing('¨', font) - lyxfont::lbearing('¨', font)) / 2),
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('¨', font) - ( lyxfont::ascent('¨', font) + lyxfont::descent('¨', font)) / 2,
 				  '¨', font);
 			break;
@@ -543,8 +543,8 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		{
 			LyXFont tmpf(font);
 			tmpf.decSize().decSize().decSize();
-			pain.text(x2 - (lyxfont::rbearing(0x5E, tmpf) - lyxfont::lbearing(0x5E, tmpf)) / 2,
-				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0x5E, tmpf) - (lyxfont::ascent(0x5E, tmpf) + lyxfont::descent(0x5E, tmpf)) / 3.0,
+			pain.text(int(x2 - (lyxfont::rbearing(0x5E, tmpf) - lyxfont::lbearing(0x5E, tmpf)) / 2),
+				  int(baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0x5E, tmpf) - (lyxfont::ascent(0x5E, tmpf) + lyxfont::descent(0x5E, tmpf)) / 3.0),
 				  char(0x5E), tmpf);
 			break;
 		}

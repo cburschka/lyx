@@ -363,7 +363,8 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 static string clipboard_selection;
 static bool clipboard_read = false;
 
-static
+extern "C" {
+	static
 int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
 			void const * data, long size) 
 {
@@ -372,12 +373,12 @@ int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
 	 
 	clipboard_selection.reserve(size);
 	for (int i = 0; i < size; ++i) {
-		clipboard_selection.push_back(static_cast<char*>(data)[i]);
+		clipboard_selection += static_cast<char const *>(data)[i];
 	}
 	clipboard_read = true;
 	return 0;
 }
-
+}
 
 string WorkArea::getClipboard() const 
 {

@@ -167,7 +167,7 @@ int LyXLookupString(XEvent * event,
 		if (event->type != KeyPress)
 			lyxerr << "LyXLookupString: wrong event type" 
 			       <<  event->type << endl;
-		Status status_return;
+		Status status_return = 0;
 		
 		result =  XmbLookupString(xic, &event->xkey, buffer_return,
 				       bytes_buffer, keysym_return,

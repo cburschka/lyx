@@ -57,6 +57,7 @@ using std::istream_iterator;
 using std::pair;
 using std::vector;
 using std::sort;
+using std::equal;
 
 extern Combox * combo_language;
 extern Combox * combo_language2;
@@ -3134,7 +3135,8 @@ extern "C" void TocCancelCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void TocUpdateCB(FL_OBJECT *, long)
+extern "C"
+void TocUpdateCB(FL_OBJECT *, long)
 {
 	if (!current_view->available()) {
 		toclist.clear();
@@ -3146,9 +3148,14 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 
 	vector<vector<Buffer::TocItem> > tmp =
 		current_view->buffer()->getTocList();
-	if (toclist == tmp[0])
+	int type = fl_get_choice(fd_form_toc->toctype)-1;
+	//if (toclist == tmp[type])
+	//	return;
+	if (toclist.size() == tmp[type].size()
+	    && equal(toclist.begin(), toclist.end(), tmp[type].begin()))
 		return;
-	toclist = tmp[0];
+
+	toclist = tmp[type];
 
 	static Buffer * buffer = 0;
 	int topline = 0;

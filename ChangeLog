@@ -1,5 +1,32 @@
 2000-05-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/WorkArea.C (request_clipboard_cb): give "C" linkage.
+
+2000-05-19  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/commandtags.h
+		
+	* src/LyXAction.C
+	
+	* src/lyxfunc.C (Dispatch): Added LFUN_LOFVIEW, LFUN_LOTVIEW
+	and LFUN_LOAVIEW
+	
+	* src/insets/insetlo*.[Ch]: Made editable
+
+2000-05-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/text2.C (SetSelection): call BufferView::stuffClipboard with
+	the current selection.
+
+	* src/BufferView_pimpl.C (stuffClipboard): new method
+
+	* src/BufferView.C (stuffClipboard): new method
+
+	* src/paragraph.C (String): new method
+
+	* src/LColor.C (getFromLyXName): return LColor::inherit instead of
+	LColor::ignore when lyxname is not found.
+
 	* src/BufferView.C (pasteSelection): new method
 
 	* src/BufferView_pimpl.C (pasteSelection): new method

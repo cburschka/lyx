@@ -1006,8 +1006,8 @@ bool LyXText::FullRebreak()
 
 
 /* the cursor set functions have a special mechanism. When they
-* realize, that you left an empty paragraph, they will delete it.
-* They also delet the corresponding row */
+ * realize, that you left an empty paragraph, they will delete it.
+ * They also delete the corresponding row */
    
 // need the selection cursor:
 void LyXText::SetSelection()
@@ -1021,12 +1021,12 @@ void LyXText::SetSelection()
 	selection = true;
    
 	// first the toggling area
-	if (cursor.y < last_sel_cursor.y ||
-	    (cursor.y == last_sel_cursor.y && cursor.x < last_sel_cursor.x)) {
+	if (cursor.y < last_sel_cursor.y
+	    || (cursor.y == last_sel_cursor.y
+	     && cursor.x < last_sel_cursor.x)) {
 		toggle_end_cursor = last_sel_cursor;
 		toggle_cursor = cursor;
-	}
-	else {
+	} else {
 		toggle_end_cursor = cursor;
 		toggle_cursor = last_sel_cursor;
 	}
@@ -1057,6 +1057,49 @@ void LyXText::SetSelection()
 	if (sel_start_cursor.x == sel_end_cursor.x && 
 	    sel_start_cursor.y == sel_end_cursor.y)
 		selection = false;
+
+	// Stuff what we got on the clipboard. Even if there is no selection.
+
+	// There is a problem with having the stuffing here in that the
+	// larger the selection the slower LyX will get. This can be
+	// solved by running the line below only when the selection has
+	// finished. The solution used currently just works, to make it
+	// faster we need to be more clever and probably also have more
+	// calls to stuffClipboard. (Lgb)
+	owner_->stuffClipboard(selectionAsString());
+}
+
+
+string LyXText::selectionAsString() const
+{
+	if (!selection) return string();
+	string result;
+	
+	// Special handling if the whole selection is within one paragraph
+	if (sel_start_cursor.par == sel_end_cursor.par) {
+		result += sel_start_cursor.par->String(sel_start_cursor.pos,
+						       sel_end_cursor.pos);
+		return result;
+	}
+	
+	// The selection spans more than one paragraph
+
+	// First paragraph in selection
+	result += sel_start_cursor.par->String(sel_start_cursor.pos,
+					       sel_start_cursor.par->Last());
+	
+	// The paragraphs in between (if any)
+	LyXCursor tmpcur(sel_start_cursor);
+	tmpcur.par = tmpcur.par->Next();
+	while (tmpcur.par != sel_end_cursor.par) {
+		result += tmpcur.par->String(false);
+		tmpcur.par = tmpcur.par->Next(); // Or NextAfterFootnote??
+	}
+
+	// Last paragraph in selection
+	result += sel_end_cursor.par->String(0, sel_end_cursor.pos);
+	
+	return result;
 }
 
 

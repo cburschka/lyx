@@ -142,7 +142,9 @@ struct BufferView::Pimpl {
 	UpdateInset updatelist;
 #ifdef XFORMS_CLIPBOARD
 	///
-	void pasteSelection(bool asPara);
+	void pasteClipboard(bool asPara);
+	///
+	void stuffClipboard(string const &) const;
 #endif
 private:
 	bool using_xterm_cursor;

@@ -226,7 +226,9 @@ public:
 	bool ChangeRefs(string const & from, string const & to);
 #ifdef XFORMS_CLIPBOARD
 	///
-	void pasteSelection(bool asPara);
+	void pasteClipboard(bool asPara);
+	///
+	void stuffClipboard(string const &) const;
 #endif
 private:
 	struct Pimpl;

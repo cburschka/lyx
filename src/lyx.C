@@ -130,6 +130,9 @@ FD_form_toc *create_form_form_toc(void)
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, TocUpdateCB, 0);
+  fdui->toctype = obj = fl_add_choice(FL_NORMAL_CHOICE, 60, 300, 130, 30, idex(_("Type|Tt#t")));fl_set_button_shortcut(obj,scex(_("Type|Tt#t")),1);
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, TocUpdateCB, 0);
   fl_end_form();
 
   //fdui->form_toc->fdui = fdui;

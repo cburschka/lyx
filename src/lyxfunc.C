@@ -811,6 +811,18 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_TOCVIEW:
+	case LFUN_LOFVIEW:
+	case LFUN_LOTVIEW:
+	case LFUN_LOAVIEW:
+	{
+		Buffer::TocType type = Buffer::TOC_TOC;
+		if (action == LFUN_LOFVIEW)
+			type = Buffer::TOC_LOF;
+		else if (action == LFUN_LOTVIEW)
+			type = Buffer::TOC_LOT;
+		else if (action == LFUN_LOAVIEW)
+			type = Buffer::TOC_LOA;
+		fl_set_choice(fd_form_toc->toctype,type + 1);
 		TocUpdateCB(0, 0);
 		if (fd_form_toc->form_toc->visible) {
 			fl_raise_form(fd_form_toc->form_toc);
@@ -827,7 +839,7 @@ string LyXFunc::Dispatch(int ac,
 			fl_set_form_minsize(fd_form_toc->form_toc, ow, oh);
 		}
 		break;
-		
+	}	
 	case LFUN_TOC_INSERT:
 	{
 		Inset * new_inset = new InsetTOC(owner->buffer());
@@ -908,7 +920,7 @@ string LyXFunc::Dispatch(int ac,
 	        bool asPara = false;
 		if (argument == "paragraph") asPara = true;
 #ifdef XFORMS_CLIPBOARD
-		owner->view()->pasteSelection(asPara);
+		owner->view()->pasteClipboard(asPara);
 #else
 		MenuPasteSelection(asPara);
 #endif

@@ -247,6 +247,9 @@ enum kb_action {
 	LFUN_INSET_NUMBER,		// Dekel 20000402
 	LFUN_PARAGRAPH_SPACING,         // Lgb 20000411
 	LFUN_INSET_TABULAR,		// Jug 20000412
+	LFUN_LOFVIEW,			// Dekel 20000519	
+	LFUN_LOTVIEW,			// Dekel 20000519
+	LFUN_LOAVIEW,			// Dekel 20000519
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

@@ -657,7 +657,7 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 	if (orgfont.color() != color()) {
 		// To make us file compatible with older
 		// lyx versions we emit "default" instead
-		// of "ignore"
+		// of "inherit"
 		string col_str(lcolor.getLyXName(color()));
 		if (col_str == "inherit") col_str = "default";
 		os << "\\color " << col_str << "\n";

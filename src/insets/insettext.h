@@ -184,12 +184,19 @@ private:
     void setPos(Painter &, int x, int y) const;
     ///
     UpdatableInset::RESULT moveRight(BufferView *, bool activate_inset = true);
+	///
     UpdatableInset::RESULT moveLeft(BufferView *, bool activate_inset = true);
+	///
     UpdatableInset::RESULT moveUp(BufferView *);
+	///
     UpdatableInset::RESULT moveDown(BufferView *);
+	///
     bool Delete();
+	///
     bool cutSelection();
+	///
     bool copySelection();
+	///
     bool pasteSelection();
     ///
     bool hasSelection() const
@@ -246,6 +253,7 @@ private:
     typedef std::vector<row_struct> RowList;
     ///
     mutable RowList rows;
+	///
     InsetText & operator = (InsetText const & it) {
 	par = it.par;
 	buffer = it.buffer; // suspect

@@ -227,7 +227,9 @@ public:
 	void SetSelection();
 	///
 	void ClearSelection() const;
-
+	///
+	string selectionAsString() const;
+	
 	/// just selects the word the cursor is in
 	void SelectWord();
 

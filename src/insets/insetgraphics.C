@@ -138,7 +138,7 @@ void InsetGraphics::draw(Painter & pain, LyXFont const & font,
 {
 	// This will draw the graphics. As for now we only draw a
 	// placeholder rectangele.
-	pain.rectangle(x, baseline - ascent(pain, font),
+	pain.rectangle(int(x), baseline - ascent(pain, font),
 		       width(pain, font),
 		       ascent(pain, font) + descent(pain, font));
 }

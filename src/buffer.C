@@ -3797,14 +3797,14 @@ vector<vector<Buffer::TocItem> > Buffer::getTocList()
 				switch (par->footnotekind) {
 				case LyXParagraph::FIG:
 				case LyXParagraph::WIDE_FIG:
-					l[1].push_back(tmp);
+					l[TOC_LOF].push_back(tmp);
 					break;
 				case LyXParagraph::TAB:
 				case LyXParagraph::WIDE_TAB:
-					l[2].push_back(tmp);
+					l[TOC_LOT].push_back(tmp);
 					break;
 				case LyXParagraph::ALGORITHM:
-					l[3].push_back(tmp);
+					l[TOC_LOA].push_back(tmp);
 					break;
 				case LyXParagraph::FOOTNOTE:
 				case LyXParagraph::MARGIN:
@@ -3824,7 +3824,7 @@ vector<vector<Buffer::TocItem> > Buffer::getTocList()
 						labeltype - 
 						textclasslist.TextClass(params.textclass).maxcounter());
 				tmp.str =  par->String(true);
-				l[0].push_back(tmp);
+				l[TOC_TOC].push_back(tmp);
 			}
 		}
 		par = par->next;
@@ -3980,4 +3980,5 @@ void Buffer::inset_iterator::SetParagraph() {
 		par = par->next;
 	}
 	//it = 0;
+	// We maintain an invariant that whenever par = 0 then it = 0
 }

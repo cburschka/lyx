@@ -299,6 +299,17 @@ public:
 		string str;
 	};
 	///
+	enum TocType {
+		///
+		TOC_TOC = 0,
+		///
+		TOC_LOF,
+		///
+		TOC_LOT,
+		///
+		TOC_LOA
+	};
+	///
 	std::vector<std::vector<TocItem> > getTocList();
 	///
 	std::vector<string> getLabelList();
@@ -420,6 +431,7 @@ private:
 	*/
 	BufferView * users;
 
+public:
 	class inset_iterator {
 	public:
 		inset_iterator() : par(0) /*, it(0)*/ {}
@@ -440,18 +452,23 @@ private:
 		Inset * operator*() {return *it; }
 		LyXParagraph * getPar() { return par; }
 		LyXParagraph::size_type getPos() {return it.getPos(); }
-		bool operator==(inset_iterator const & iter) const {
-			return it == iter.it && par == iter.par;
+		friend
+		bool operator==(inset_iterator const & iter1,
+				inset_iterator const & iter2) {
+			return iter1.par == iter2.par
+				&& (iter1.par == 0 || iter1.it == iter2.it);
 		}
-		bool operator!=(inset_iterator const & iter) const {
-			return it != iter.it || par != iter.par;
+		friend
+		bool operator!=(inset_iterator const & iter1,
+				inset_iterator const & iter2) {
+			return !(iter1 == iter2);
 		}
 	private:
 		void SetParagraph();
 		LyXParagraph * par;
 		LyXParagraph::inset_iterator it;
 	};
-public:
+
 	///
 	inset_iterator inset_iterator_begin() {
 		return inset_iterator(paragraph);

@@ -160,6 +160,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	owner_->updateWindowTitle();
 }
 
+
 void BufferView::Pimpl::resize(int xpos, int ypos, int width, int height)
 {
 	workarea->resize(xpos, ypos, width, height);
@@ -497,11 +498,11 @@ int BufferView::Pimpl::scrollDown(long time)
 
 void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 {
-	if (buffer_ == 0 || !screen) return;
-
 	// Only use motion with button 1
-	if (!state & Button1MotionMask)
-		return; 
+	if (!(state & Button1MotionMask))
+		return;
+
+	if (buffer_ == 0 || !screen) return;
 
 	// Check for inset locking
 	if (bv_->the_locking_inset) {
@@ -844,7 +845,6 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	// Do we want to close a float? (click on the float-label)
 	if (bv_->text->cursor.row->par->footnoteflag == 
 	    LyXParagraph::OPEN_FOOTNOTE
-	    //&& text->cursor.pos == 0
 	    && bv_->text->cursor.row->previous &&
 	    bv_->text->cursor.row->previous->par->
 	    footnoteflag != LyXParagraph::OPEN_FOOTNOTE){
@@ -1493,7 +1493,7 @@ void BufferView::Pimpl::center()
 
 
 #ifdef XFORMS_CLIPBOARD
-void BufferView::Pimpl::pasteSelection(bool asPara) 
+void BufferView::Pimpl::pasteClipboard(bool asPara) 
 {
 	if (buffer_ == 0) return;
 
@@ -1510,5 +1510,11 @@ void BufferView::Pimpl::pasteSelection(bool asPara)
 		bv_->text->InsertStringA(clip);
 	}
 	update(1);
+}
+
+
+void BufferView::Pimpl::stuffClipboard(string const & stuff) const
+{
+	workarea->putClipboard(stuff);
 }
 #endif

@@ -1058,7 +1058,7 @@ void InsetFig::draw(Painter & pain, LyXFont const & f,
 	} else {
 		char * msg = 0;
 		// draw frame
-		pain.rectangle(x, baseline - hgh - 1, wid + 1, hgh + 1);
+		pain.rectangle(int(x), baseline - hgh - 1, wid + 1, hgh + 1);
 
 		if (figure && figure->data) {
 			if (figure->data->broken)  msg = _("[render error]");

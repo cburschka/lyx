@@ -1133,7 +1133,10 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 				  "|Table%m"
 				  "|Spellchecker...."
 				  "|Check TeX"
-				  "|Table of Contents...%l"
+				  "|Table of Contents..."
+				  "|List of Figures..."
+				  "|List of Tables..."
+				  "|List of Algorithms...%l"
 				  "|Version Control%m%l"
 				  "|View LaTeX log file%l"
 				  "|Paste Primary Selection as Lines"
@@ -1149,14 +1152,17 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(EditMenu, 7, scex(_("EM|Ee#e#E")));
 	fl_setpup_shortcut(EditMenu, 8, scex(_("EM|Nn#n#N")));
 	fl_setpup_shortcut(EditMenu, 9, scex(_("EM|Ii#i#I")));
-	fl_setpup_shortcut(EditMenu, 10, scex(_("EM|Tt#t#T")));
+	//fl_setpup_shortcut(EditMenu, 10, scex(_("EM|Tt#t#T")));
 	fl_setpup_shortcut(EditMenu, 11, scex(_("EM|Ss#s#S")));
 	fl_setpup_shortcut(EditMenu, 12, scex(_("EM|hH#h#H")));
-	fl_setpup_shortcut(EditMenu, 13, scex(_("EM|aA#a#A")));
-	fl_setpup_shortcut(EditMenu, 14, scex(_("EM|Vv#v#V")));
-	fl_setpup_shortcut(EditMenu, 15, scex(_("EM|wW#w#W")));
-	fl_setpup_shortcut(EditMenu, 16, scex(_("EM|Ll#l#L")));
-	fl_setpup_shortcut(EditMenu, 17, scex(_("EM|gG#g#G")));
+	fl_setpup_shortcut(EditMenu, 13, scex(_("EM|Tt#t#T")));
+	//fl_setpup_shortcut(EditMenu, 14, scex(_("EM|Ff#f#F")));
+	//fl_setpup_shortcut(EditMenu, 15, scex(_("EM|bB#b#B")));
+	//fl_setpup_shortcut(EditMenu, 16, scex(_("EM|mM#m#M")));
+	fl_setpup_shortcut(EditMenu, 17, scex(_("EM|Vv#v#V")));
+	fl_setpup_shortcut(EditMenu, 18, scex(_("EM|wW#w#W")));
+	fl_setpup_shortcut(EditMenu, 19, scex(_("EM|Ll#l#L")));
+	fl_setpup_shortcut(EditMenu, 20, scex(_("EM|gG#g#G")));
       
 	// disable unavailable entries.
 	if(tmpbuffer->undostack.empty())
@@ -1173,8 +1179,8 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
                 fl_setpup_mode(EditMenu, 2, FL_PUP_GREY); 
                 fl_setpup_mode(EditMenu, 3, FL_PUP_GREY); 
                 fl_setpup_mode(EditMenu, 5, FL_PUP_GREY); 
-                fl_setpup_mode(EditMenu, 16, FL_PUP_GREY); 
-                fl_setpup_mode(EditMenu, 17, FL_PUP_GREY);
+                fl_setpup_mode(EditMenu, 19, FL_PUP_GREY); 
+                fl_setpup_mode(EditMenu, 20, FL_PUP_GREY);
 	}
 	
 	fl_setpup_position(men->_view->getForm()->x + ob->x,
@@ -1203,11 +1209,14 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	case 11: tmpfunc->Dispatch(LFUN_SPELLCHECK); break;
 	case 12: tmpfunc->Dispatch(LFUN_RUNCHKTEX); break;
 	case 13: tmpfunc->Dispatch(LFUN_TOCVIEW); break;
-	case 14: // version control
+	case 14: tmpfunc->Dispatch(LFUN_LOFVIEW); break;
+	case 15: tmpfunc->Dispatch(LFUN_LOTVIEW); break;
+	case 16: tmpfunc->Dispatch(LFUN_LOAVIEW); break;
+	case 17: // version control
 		break;
-	case 15: tmpfunc->Dispatch(LFUN_LATEX_LOG); break;
-	case 16: tmpfunc->Dispatch(LFUN_PASTESELECTION, "line"); break;
-	case 17: tmpfunc->Dispatch(LFUN_PASTESELECTION, "paragraph"); break;
+	case 18: tmpfunc->Dispatch(LFUN_LATEX_LOG); break;
+	case 19: tmpfunc->Dispatch(LFUN_PASTESELECTION, "line"); break;
+	case 20: tmpfunc->Dispatch(LFUN_PASTESELECTION, "paragraph"); break;
 
 		// floats & insets sub-menu
 	case 21: men->currentView()->toggleFloat(); break;
@@ -1442,10 +1451,9 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 	fl_addtopup(RefsMenu, _("Insert Reference:%d%x0"));
 	Add_to_refs_menu(label_list, 1, RefsMenu, menus, ob);
 
-	if (label_list.empty()) {
-		fl_setpup_mode(RefsMenu, 1, FL_PUP_GREY);
-		fl_setpup_mode(RefsMenu, 2, FL_PUP_GREY);
-	}
+	if (label_list.empty())
+		for (int j = 1; j <= 5; ++j)
+			fl_setpup_mode(RefsMenu, j, FL_PUP_GREY);
 
 	fl_setpup_position(
 		men->_view->getForm()->x + ob->x,

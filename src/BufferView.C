@@ -328,8 +328,14 @@ void BufferView::center()
 
 
 #ifdef XFORMS_CLIPBOARD
-void BufferView::pasteSelection(bool asPara)
+void BufferView::pasteClipboard(bool asPara)
 {
-	pimpl_->pasteSelection(asPara);
+	pimpl_->pasteClipboard(asPara);
+}
+
+
+void BufferView::stuffClipboard(string const & stuff) const
+{
+	pimpl_->stuffClipboard(stuff);
 }
 #endif

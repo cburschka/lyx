@@ -134,6 +134,8 @@ public:
 	bool isMultiLingual();
 	///
 	string String(bool label);
+	///
+	string String(size_type beg, size_type end);
 	
 	///
 	void writeFile(std::ostream &, BufferParams const &, char, char) const;

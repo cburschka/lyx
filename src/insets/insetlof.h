@@ -21,7 +21,7 @@
 #pragma interface
 #endif
 
-class Buffer;
+class Buffer; 
 
 /** Used to insert table of contents
  */
@@ -36,10 +36,11 @@ public:
         Inset * Clone() const { return new InsetLOF(owner); }
     	///
 	string getScreenLabel() const;
-        
+	///
+	void Edit(BufferView * bv, int, int, unsigned int);
         ///
 	EDITABLE Editable() const {
-		return NOT_EDITABLE; // not yet
+		return IS_EDITABLE; // Finally!
 	}
 	///
 	bool display() const { return true; }

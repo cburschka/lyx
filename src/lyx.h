@@ -63,6 +63,7 @@ typedef struct {
 	char *cdata;
 	long  ldata;
 	FL_OBJECT *browser_toc;
+	FL_OBJECT *toctype;
 } FD_form_toc;
 
 extern FD_form_toc * create_form_form_toc(void);

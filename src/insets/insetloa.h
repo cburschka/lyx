@@ -36,10 +36,11 @@ public:
         Inset * Clone() const { return new InsetLOA(owner); }
     	///
 	string getScreenLabel() const;
-
+	///
+	void Edit(BufferView * bv, int, int, unsigned int);
         ///
 	EDITABLE Editable() const {
-		return NOT_EDITABLE; // not yet
+		return IS_EDITABLE; // not yet
 	}
 	///
 	bool display() const { return true; }

@@ -594,8 +594,8 @@ void LyXText::draw(Row const * row,
 	
 	// what about underbars?
 	if (font.underbar() == LyXFont::ON && font.latex() != LyXFont::ON) {
-		pain.line(tmpx, offset + row->baseline + 2,
-			  x, offset + row->baseline + 2);
+		pain.line(int(tmpx), offset + row->baseline + 2,
+			  int(x), offset + row->baseline + 2);
 		
 	}
 
@@ -2998,13 +2998,13 @@ void LyXText::CursorLeftOneWord()  const
 
 void LyXText::SelectWord() 
 {
-	/* Move cursor to the beginning, when not already there. */
+	// Move cursor to the beginning, when not already there.
 	if ( cursor.pos
 	     && !cursor.par->IsSeparator(cursor.pos-1)
 	     && !cursor.par->IsKomma(cursor.pos-1) )
 		CursorLeftOneWord();
 
-	/* set the sel cursor */
+	// set the sel cursor
 	sel_cursor = cursor;
 
 	while ( cursor.pos < cursor.par->Last()
@@ -3013,7 +3013,7 @@ void LyXText::SelectWord()
 		cursor.pos++;
 	SetCursor( cursor.par, cursor.pos );
 	
-	/* finally set the selection */ 
+	// finally set the selection
 	SetSelection();
 }
 
@@ -3702,7 +3702,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			if ( (sel_start_cursor.row != row_ptr && !is_rtl) ||
 			     (sel_end_cursor.row != row_ptr && is_rtl))
 				pain.fillRectangle(0, offset,
-						   tmpx, row_ptr->height,
+						   int(tmpx), row_ptr->height,
 						   LColor::selection);
 			if (row_ptr->par->table) {
 				float x_old = x;
@@ -3721,8 +3721,8 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 					      sel_start_cursor.pos <= pos) &&
 					     (sel_end_cursor.row != row_ptr ||
 					      pos < sel_end_cursor.pos) )
-						pain.fillRectangle(old_tmpx, offset,
-								   tmpx - old_tmpx + 1,
+						pain.fillRectangle(int(old_tmpx), offset,
+								   int(tmpx - old_tmpx + 1),
 								   row_ptr->height,
 								   LColor::selection);
 				}
@@ -3759,16 +3759,16 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 					      sel_start_cursor.pos <= pos) &&
 					     (sel_end_cursor.row != row_ptr ||
 					      pos < sel_end_cursor.pos) )
-						pain.fillRectangle(old_tmpx, offset,
-								   tmpx - old_tmpx + 1,
+						pain.fillRectangle(int(old_tmpx), offset,
+								   int(tmpx - old_tmpx + 1),
 								   row_ptr->height,
 							   LColor::selection);
 				}
 			}
 			if ( (sel_start_cursor.row != row_ptr && is_rtl) ||
 			     (sel_end_cursor.row != row_ptr && !is_rtl) )
-				pain.fillRectangle(tmpx, offset,
-						   paperwidth - tmpx,
+				pain.fillRectangle(int(tmpx), offset,
+						   int(paperwidth - tmpx),
 						   row_ptr->height,
 						   LColor::selection);
 		}

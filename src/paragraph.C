@@ -40,6 +40,7 @@ using std::fstream;
 using std::ios;
 using std::lower_bound;
 using std::upper_bound;
+using std::reverse;
 
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can LyXParagraph find its buffer to get
@@ -4268,7 +4269,7 @@ string LyXParagraph::String(bool label)
 		s += labelstring + ' ';
 	string::size_type len = s.size();
 
-	for (LyXParagraph::size_type i = 0;i < size(); ++i) {
+	for (LyXParagraph::size_type i = 0; i < size(); ++i) {
 		unsigned char c = GetChar(i);
 		if (IsPrintable(c))
 			s += c;
@@ -4292,6 +4293,39 @@ string LyXParagraph::String(bool label)
 	if (!IsDummy()) {
 		if (isRightToLeftPar())
 			reverse(s.begin() + len,s.end());
+	}
+	return s;
+}
+
+
+string LyXParagraph::String(LyXParagraph::size_type beg,
+			    LyXParagraph::size_type end)
+{
+	string s;
+
+	for (LyXParagraph::size_type i = beg; i < end; ++i) {
+		unsigned char c = GetChar(i);
+		if (IsPrintable(c))
+			s += c;
+		else if (c == META_INSET) {
+#ifdef HAVE_SSTREAM
+			std::ostringstream ost;
+			GetInset(i)->Ascii(ost);
+#else
+			ostrstream ost;
+			GetInset(i)->Ascii(ost);
+			ost << '\0';
+#endif
+			s += subst(ost.str(),'\n',' ');
+		}
+	}
+
+	if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE)
+		s += NextAfterFootnote()->String(false);
+
+	if (!IsDummy()) {
+		if (isRightToLeftPar())
+			reverse(s.begin(), s.end());
 	}
 	return s;
 }

@@ -558,6 +558,8 @@ void LyXGUI::create_forms()
 
 	// the toc form
 	fd_form_toc = create_form_form_toc();
+	fl_addto_choice(fd_form_toc->toctype,
+			_(" TOC | LOF | LOT | LOA "));
 	fl_set_form_atclose(fd_form_toc->form_toc, CancelCloseBoxCB, 0);
 
 	// the ref form

@@ -165,12 +165,13 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 
 LColor::color LColor::getFromLyXName(string const & lyxname) const
 {
+	
 	InfoTab::const_iterator ici = infotab.begin();
 	for (; ici != infotab.end(); ++ici) {
 		if (!compare_no_case((*ici).second.lyxname, lyxname))
 			return (*ici).first;
 	}
-	return LColor::ignore;
+	return LColor::inherit;
 }
 
 // The evil global LColor instance
