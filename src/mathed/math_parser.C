@@ -302,6 +302,10 @@ int yylex()
 				yylval.i = LM_OT_EQUATION;
 				return LM_TK_END;
 			}
+			if (c == '|') {
+				yytext = "|";
+				return LM_TK_UNDEF;
+			}
 			if (contains(latex_special_chars, c)) {
 				yylval.i = c;
 				return LM_TK_SPECIAL;
