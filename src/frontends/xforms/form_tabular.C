@@ -63,7 +63,7 @@ FD_form_tabular_options * FormTabular::build_tabular_options()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 505, 227);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 505, 227, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 505, 227, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 280, 20, 120, 75, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
   fdui->button_append_column = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 40, 120, 30, idex(_("Append Column|#A")));
@@ -121,7 +121,7 @@ FD_form_column_options * FormTabular::build_column_options()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 505, 227);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 505, 227, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 505, 227, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 20, 20, 170, 105, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -220,7 +220,7 @@ FD_form_cell_options * FormTabular::build_cell_options()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 505, 227);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 505, 227, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 505, 227, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 335, 115, 155, 100, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 115, 180, 100, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
@@ -331,7 +331,7 @@ FD_form_longtable_options * FormTabular::build_longtable_options()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 505, 227);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 505, 227, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 505, 227, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 20, 100, 75, "");
   obj = fl_add_text(FL_NORMAL_TEXT, 15, 10, 85, 20, _("Header"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

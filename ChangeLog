@@ -1,3 +1,27 @@
+2000-08-29  Allan Rae  <rae@lyx.org>
+
+	* lib/bind/xemacs.bind: update a binding due to Juergen's recent work
+
+	* src/frontends/xforms/FormDocument.C (checkReadOnly): new function
+	(EnableDocumentLayout): removed
+	(DisableDocumentLayout): removed
+	(build): make use of ButtonController's read-only handling to
+	de/activate various objects. Replaces both of the above functions.
+
+	* src/frontends/xforms/ButtonController.h (readWrite): was read_write
+	(readOnly): was read_only
+	(refresh): fixed dumb mistakes with read_only_ handling
+
+	* src/frontends/xforms/forms/form_document.fd:
+	* src/frontends/xforms/forms/form_tabular.fd: Use FL_FLAT_BOX for the
+	tabbed dialogs so the tabs look more like tabs and so its easier to
+	work out which is the current tab.
+
+	* src/lyx_gui_misc.C (updateAllVisibleBufferRelatedDialogs): fix
+	segfault with form_table
+
+	* src/frontends/ButtonPolicies.C: All policies now support UNDO_ALL.
+
 2000-08-28  Juergen Vigna  <jug@sad.it>
 
 	* acconfig.h: added USE_PSPELL.

@@ -84,10 +84,6 @@ public:
 
 private:
     ///
-    void EnableDocumentLayout();
-    ///
-    void DisableDocumentLayout();
-    ///
     bool CheckDocumentInput(FL_OBJECT * ob, long);
     ///
     void ChoiceBulletSize(FL_OBJECT * ob, long);
@@ -101,6 +97,8 @@ private:
     void BulletBMTable(FL_OBJECT * ob, long);
     ///
     void checkMarginValues();
+    ///
+    void checkReadOnly();
     ///
     void CheckChoiceClass(FL_OBJECT * ob, long);
     ///

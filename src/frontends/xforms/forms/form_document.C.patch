@@ -14,7 +14,7 @@
    fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
    fdui->form->u_vdata = this;
 +  fl_set_border_width(-1);
-   obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
+   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
 -  fdui->bmtable_bullet_panel = obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 90, 105, 260, 180, "");
 -    fl_set_object_boxtype(obj, FL_NO_BOX);
 -    fl_set_pixmapbutton_file(obj, _("/nfs/sinco/source/lyx/lyx-devel/lib/images/psnfss2.xpm"));

@@ -147,9 +147,9 @@ Number of Objects: 28
 
 --------------------
 class: FL_BOX
-type: UP_BOX
+type: FLAT_BOX
 box: 0 0 440 345
-boxtype: FL_UP_BOX
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -377,7 +377,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_portrait
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -395,7 +395,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_landscape
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_END_GROUP
@@ -467,7 +467,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: push_use_geometry
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -657,9 +657,9 @@ Number of Objects: 25
 
 --------------------
 class: FL_BOX
-type: UP_BOX
+type: FLAT_BOX
 box: 0 0 440 345
-boxtype: FL_UP_BOX
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -743,7 +743,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_doc_fonts
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -761,7 +761,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_doc_fontsize
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -797,7 +797,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_doc_pagestyle
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -833,7 +833,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_doc_extra
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -905,7 +905,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_sides_one
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -923,7 +923,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_sides_two
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_END_GROUP
@@ -977,7 +977,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_columns_one
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -995,7 +995,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_columns_two
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_END_GROUP
@@ -1049,7 +1049,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_indent
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1067,7 +1067,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_skip
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 	value: 1
 
 --------------------
@@ -1114,9 +1114,9 @@ Number of Objects: 9
 
 --------------------
 class: FL_BOX
-type: UP_BOX
+type: FLAT_BOX
 box: 0 0 440 345
-boxtype: FL_UP_BOX
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -1164,7 +1164,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_inputenc
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -1182,7 +1182,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_quotes_language
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_BEGIN_GROUP
@@ -1218,7 +1218,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_single
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1236,7 +1236,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_double
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_END_GROUP
@@ -1272,7 +1272,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_language
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 =============== FORM ===============
 Name: form_doc_options
@@ -1282,9 +1282,9 @@ Number of Objects: 6
 
 --------------------
 class: FL_BOX
-type: UP_BOX
+type: FLAT_BOX
 box: 0 0 440 345
-boxtype: FL_UP_BOX
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -1314,7 +1314,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_float_placement
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_COUNTER
@@ -1332,7 +1332,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: slider_secnumdepth
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_COUNTER
@@ -1350,7 +1350,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: slider_tocdepth
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -1368,7 +1368,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_postscript_driver
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1386,7 +1386,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_use_amsmath
 callback: C_FormDocumentInputCB
-argument: 
+argument: 0
 
 =============== FORM ===============
 Name: form_doc_bullet
@@ -1396,9 +1396,9 @@ Number of Objects: 20
 
 --------------------
 class: FL_BOX
-type: UP_BOX
+type: FLAT_BOX
 box: 0 0 440 345
-boxtype: FL_UP_BOX
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE

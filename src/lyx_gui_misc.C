@@ -221,10 +221,11 @@ void updateAllVisibleBufferRelatedDialogs()
 		if (fd_form_character->form_character->visible) {
 			fl_hide_form(fd_form_character->form_character);
 		}
+#ifndef NEW_TABULAR
 		if (fd_form_table->form_table->visible) {
 			fl_hide_form(fd_form_table->form_table);
 		}
-
+#endif
 #ifndef ALWAYS_CLOSE_MATH_PANELS
 		// The math popups should be closed only if we switch
 		// to a readonly buffer

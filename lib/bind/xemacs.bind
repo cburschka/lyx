@@ -275,7 +275,7 @@
 \bind "C-c C-e v"		"layout Quote"
 
 \bind "C-c C-e f"		"figure-insert"  ## should be figure-float
-\bind "C-c C-e t"		"table-insert"   ## should be table-float
+\bind "C-c C-e t"		"dialog-tabular-insert" ## should be table-float
 
 \bind "C-c percent"		"layout Comment"
 

@@ -89,7 +89,7 @@ void FormDocument::build()
     // the tabbed folder
     dialog_ = build_tabbed_document();
 
-    // manage the restore, save, apply and cancel/close buttons
+    // manage the restore, ok, apply and cancel/close buttons
     bc_->setOK(dialog_->button_ok);
     bc_->setApply(dialog_->button_apply);
     bc_->setCancel(dialog_->button_cancel);
@@ -116,6 +116,22 @@ void FormDocument::build()
     fl_set_input_return(paper_->input_head_sep, FL_RETURN_ALWAYS);
     fl_set_input_return(paper_->input_foot_skip, FL_RETURN_ALWAYS);
 
+    bc_->addReadOnly (paper_->choice_paperpackage);
+    bc_->addReadOnly (paper_->greoup_radio_orientation);
+    bc_->addReadOnly (paper_->radio_portrait);
+    bc_->addReadOnly (paper_->radio_landscape);
+    bc_->addReadOnly (paper_->choice_papersize2);
+    bc_->addReadOnly (paper_->push_use_geometry);
+    bc_->addReadOnly (paper_->input_custom_width);
+    bc_->addReadOnly (paper_->input_custom_height);
+    bc_->addReadOnly (paper_->input_top_margin);
+    bc_->addReadOnly (paper_->input_bottom_margin);
+    bc_->addReadOnly (paper_->input_left_margin);
+    bc_->addReadOnly (paper_->input_right_margin);
+    bc_->addReadOnly (paper_->input_head_height);
+    bc_->addReadOnly (paper_->input_head_sep);
+    bc_->addReadOnly (paper_->input_foot_skip);
+
     // the document class form
     class_ = build_doc_class();
     fl_clear_choice(class_->choice_doc_class);
@@ -136,6 +152,22 @@ void FormDocument::build()
 		    _(" Smallskip | Medskip | Bigskip | Length "));
     fl_set_input_return(class_->input_doc_skip, FL_RETURN_ALWAYS);
     fl_set_input_return(class_->input_doc_spacing, FL_RETURN_ALWAYS);
+
+    bc_->addReadOnly (class_->radio_doc_indent);
+    bc_->addReadOnly (class_->radio_doc_skip);
+    bc_->addReadOnly (class_->choice_doc_class);
+    bc_->addReadOnly (class_->choice_doc_pagestyle);
+    bc_->addReadOnly (class_->choice_doc_fonts);
+    bc_->addReadOnly (class_->choice_doc_fontsize);
+    bc_->addReadOnly (class_->radio_doc_sides_one);
+    bc_->addReadOnly (class_->radio_doc_sides_two);
+    bc_->addReadOnly (class_->radio_doc_columns_one);
+    bc_->addReadOnly (class_->radio_doc_columns_two);
+    bc_->addReadOnly (class_->input_doc_extra);
+    bc_->addReadOnly (class_->input_doc_skip);
+    bc_->addReadOnly (class_->choice_doc_skip);
+    bc_->addReadOnly (class_->choice_doc_spacing);
+    bc_->addReadOnly (class_->input_doc_spacing);
 
     // the document language form
     language_ = build_doc_language();
@@ -161,6 +193,9 @@ void FormDocument::build()
 		    _(" ``text'' | ''text'' | ,,text`` | ,,text'' |"
 		      " «text» | »text« "));
 
+    bc_->addReadOnly (language_->choice_language);
+    bc_->addReadOnly (language_->choice_inputenc);
+
     // the document options form
     options_ = build_doc_options();
     fl_set_counter_bounds(options_->slider_secnumdepth,-2,5);
@@ -172,7 +207,13 @@ void FormDocument::build()
     for (n=0; tex_graphics[n][0]; ++n) {
 	fl_addto_choice(options_->choice_postscript_driver, tex_graphics[n]);
     }
-    
+
+    bc_->addReadOnly (options_->slider_secnumdepth);
+    bc_->addReadOnly (options_->slider_tocdepth);
+    bc_->addReadOnly (options_->check_use_amsmath);
+    bc_->addReadOnly (options_->input_float_placement);
+    bc_->addReadOnly (options_->choice_postscript_driver);
+
     // the document bullets form
     bullets_ = build_doc_bullet();
     fl_addto_choice(bullets_->choice_bullet_size,
@@ -500,15 +541,8 @@ void FormDocument::update()
 {
     if (!dialog_)
         return;
-    fl_hide_object(dialog_->text_warning);
-    EnableDocumentLayout();
-    if (lv_->buffer()->isReadonly()) {
-	DisableDocumentLayout();
-	fl_set_object_label(dialog_->text_warning,
-			    _("Document is read-only."
-			      " No changes to layout permitted."));
-	fl_show_object(dialog_->text_warning);
-    }
+
+    checkReadOnly();
 
     BufferParams
 	const & params = lv_->buffer()->params;
@@ -787,6 +821,20 @@ void FormDocument::ChoiceClassCB(FL_OBJECT * ob, long)
     pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
 
+void FormDocument::checkReadOnly()
+{
+    if (bc_->readOnly(lv_->buffer()->isReadonly())) {
+	combo_language->deactivate();
+	fl_set_object_label(dialog_->text_warning,
+			    _("Document is read-only."
+			      " No changes to layout permitted."));
+	fl_show_object(dialog_->text_warning);
+    } else {
+	combo_language->activate();
+	fl_hide_object(dialog_->text_warning);
+    }	
+}
+
 void FormDocument::checkMarginValues()
 {
     int allEmpty;
@@ -1033,97 +1081,6 @@ void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/ )
 		 param.temp_bullets[current_bullet_depth].c_str());
 }
 
-void FormDocument::EnableDocumentLayout()
-{
-	fl_activate_object (class_->radio_doc_indent);
-	fl_activate_object (class_->radio_doc_skip);
-	fl_activate_object (class_->choice_doc_class);
-	fl_activate_object (class_->choice_doc_pagestyle);
-	fl_activate_object (class_->choice_doc_fonts);
-	fl_activate_object (class_->choice_doc_fontsize);
-	fl_activate_object (class_->radio_doc_sides_one);
-	fl_activate_object (class_->radio_doc_sides_two);
-	fl_activate_object (class_->radio_doc_columns_one);
-	fl_activate_object (class_->radio_doc_columns_two);
-	fl_activate_object (class_->input_doc_extra);
-	fl_activate_object (class_->input_doc_skip);
-	fl_activate_object (class_->choice_doc_skip);
-	fl_activate_object (class_->choice_doc_spacing);
-	fl_activate_object (class_->input_doc_spacing);
-
-	fl_activate_object (language_->choice_language);
-	combo_language->activate();
-	fl_activate_object (language_->choice_language);
-	fl_activate_object (language_->choice_inputenc);
-
-	fl_activate_object (options_->slider_secnumdepth);
-	fl_activate_object (options_->slider_tocdepth);
-	fl_activate_object (options_->check_use_amsmath);
-	fl_activate_object (options_->input_float_placement);
-	fl_activate_object (options_->choice_postscript_driver);
-
-        fl_activate_object (paper_->choice_paperpackage);
-	fl_activate_object (paper_->greoup_radio_orientation);
-	fl_activate_object (paper_->radio_portrait);
-	fl_activate_object (paper_->radio_landscape);
-	fl_activate_object (paper_->choice_papersize2);
-	fl_activate_object (paper_->push_use_geometry);
-	fl_activate_object (paper_->input_custom_width);
-	fl_activate_object (paper_->input_custom_height);
-	fl_activate_object (paper_->input_top_margin);
-	fl_activate_object (paper_->input_bottom_margin);
-	fl_activate_object (paper_->input_left_margin);
-	fl_activate_object (paper_->input_right_margin);
-	fl_activate_object (paper_->input_head_height);
-	fl_activate_object (paper_->input_head_sep);
-	fl_activate_object (paper_->input_foot_skip);
-}
-
-void FormDocument::DisableDocumentLayout()
-{
-	fl_deactivate_object (class_->radio_doc_indent);
-	fl_deactivate_object (class_->radio_doc_skip);
-	fl_deactivate_object (class_->choice_doc_class);
-	fl_deactivate_object (class_->choice_doc_pagestyle);
-	fl_deactivate_object (class_->choice_doc_fonts);
-	fl_deactivate_object (class_->choice_doc_fontsize);
-	fl_deactivate_object (class_->radio_doc_sides_one);
-	fl_deactivate_object (class_->radio_doc_sides_two);
-	fl_deactivate_object (class_->radio_doc_columns_one);
-	fl_deactivate_object (class_->radio_doc_columns_two);
-	fl_deactivate_object (class_->input_doc_extra);
-	fl_deactivate_object (class_->input_doc_skip);
-	fl_deactivate_object (class_->choice_doc_skip);
-	fl_deactivate_object (class_->choice_doc_spacing);
-	fl_deactivate_object (class_->input_doc_spacing);
-
-	fl_deactivate_object (language_->choice_language);
-	combo_language->deactivate();
-	fl_deactivate_object (language_->choice_inputenc);
-
-	fl_deactivate_object (options_->slider_secnumdepth);
-	fl_deactivate_object (options_->slider_tocdepth);
-	fl_deactivate_object (options_->check_use_amsmath);
-	fl_deactivate_object (options_->input_float_placement);
-	fl_deactivate_object (options_->choice_postscript_driver);
-
-        fl_deactivate_object (paper_->choice_paperpackage);
-	fl_deactivate_object (paper_->greoup_radio_orientation);
-	fl_deactivate_object (paper_->radio_portrait);
-	fl_deactivate_object (paper_->radio_landscape);
-	fl_deactivate_object (paper_->choice_papersize2);
-	fl_deactivate_object (paper_->push_use_geometry);
-	fl_deactivate_object (paper_->input_custom_width);
-	fl_deactivate_object (paper_->input_custom_height);
-	fl_deactivate_object (paper_->input_top_margin);
-	fl_deactivate_object (paper_->input_bottom_margin);
-	fl_deactivate_object (paper_->input_left_margin);
-	fl_deactivate_object (paper_->input_right_margin);
-	fl_deactivate_object (paper_->input_head_height);
-	fl_deactivate_object (paper_->input_head_sep);
-	fl_deactivate_object (paper_->input_foot_skip);
-}
-
 void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 {
     ProhibitInput(lv_->view());
@@ -1152,15 +1109,8 @@ void FormDocument::UpdateLayoutDocument(BufferParams const & params)
 {
     if (!dialog_)
         return;
-    fl_hide_object(dialog_->text_warning);
-    EnableDocumentLayout();
-    if (lv_->buffer()->isReadonly()) {
-	DisableDocumentLayout();
-	fl_set_object_label(dialog_->text_warning,
-			    _("Document is read-only."
-			      " No changes to layout permitted."));
-	fl_show_object(dialog_->text_warning);
-    }
+
+    checkReadOnly();
     class_update(params);
     paper_update(params);
     language_update(params);

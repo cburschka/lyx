@@ -68,7 +68,7 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 230, 85, 200, 100, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
@@ -189,7 +189,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 200, 120, 80, _("Separation"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
@@ -298,7 +298,7 @@ FD_form_doc_language * FormDocument::build_doc_language()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 40, 120, 290, 110, _("Quote Style    "));
   fdui->choice_inputenc = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 70, 190, 30, idex(_("Encoding:|#D")));
     fl_set_button_shortcut(obj, scex(_("Encoding:|#D")), 1);
@@ -348,7 +348,7 @@ FD_form_doc_options * FormDocument::build_doc_options()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   fdui->input_float_placement = obj = fl_add_input(FL_NORMAL_INPUT, 155, 60, 120, 30, idex(_("Float Placement:|#L")));
     fl_set_button_shortcut(obj, scex(_("Float Placement:|#L")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -393,7 +393,7 @@ FD_form_doc_bullet * FormDocument::build_doc_bullet()
   fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
   fdui->form->u_vdata = this;
   fl_set_border_width(-1);
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 440, 345, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   fl_set_border_width(-3);
   fdui->bmtable_bullet_panel = obj = fl_add_bmtable(1, 90, 105, 265, 180, "");
   fl_set_object_callback(obj, BulletBMTableCB, 0);

@@ -103,7 +103,7 @@ public:
 	void hide()
 		{ input(ButtonPolicy::SMI_HIDE); }
 	/// Passthrough function -- returns its input value
-	bool read_only(bool ro = true)
+	bool readOnly(bool ro = true)
 		{
 			if (ro) {
 				input(ButtonPolicy::SMI_READ_ONLY);
@@ -113,7 +113,7 @@ public:
 			return ro;
 		}
 	///
-	void read_write()
+	void readWrite()
 		{ read_only(false); }
 	/// Passthrough function -- returns its input value
 	bool valid(bool v = true)
@@ -175,7 +175,7 @@ public:
 					     iter != read_only_.end();
 					     ++iter) {
 						fl_deactivate_object(*iter);
-						fl_set_object_lcol(undo_all_,
+						fl_set_object_lcol(*iter,
 								   FL_INACTIVE);
 					}
 				} else {
@@ -183,8 +183,8 @@ public:
 						     iter = read_only_.begin();
 					     iter != read_only_.end();
 					     ++iter) {
-						fl_activate_object(undo_all_);
-						fl_set_object_lcol(undo_all_,
+						fl_activate_object(*iter);
+						fl_set_object_lcol(*iter,
 								   FL_BLACK);
 					}
 				}

@@ -129,8 +129,8 @@ OkCancelPolicy::OkCancelPolicy()
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
-	outputs_[VALID] = OKAY | CANCEL;
-	outputs_[INVALID] = CANCEL;
+	outputs_[VALID] = UNDO_ALL | OKAY | CANCEL;
+	outputs_[INVALID] = UNDO_ALL | CANCEL;
 
 	// Build the state machine one state at a time
 	// NOTE:  Since CANCEL and HIDE always go to INITIAL they are
@@ -148,11 +148,13 @@ OkCancelPolicy::OkCancelPolicy()
 	state_machine_[VALID][SMI_READ_WRITE] = VALID;
 	state_machine_[VALID][SMI_INVALID] = INVALID;
 	state_machine_[VALID][SMI_OKAY] = INITIAL;
+	state_machine_[VALID][SMI_UNDO_ALL] = INITIAL;
 	// State::INVALID
 	state_machine_[INVALID][SMI_VALID] = VALID;
 	state_machine_[INVALID][SMI_INVALID] = INVALID;
 	state_machine_[INVALID][SMI_READ_ONLY] = INVALID;
 	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
+	state_machine_[INVALID][SMI_UNDO_ALL] = INITIAL;
 }
 
 
@@ -182,11 +184,11 @@ OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
-	outputs_[VALID] = OKAY | CANCEL;
-	outputs_[INVALID] = CANCEL;
+	outputs_[VALID] = UNDO_ALL | OKAY | CANCEL;
+	outputs_[INVALID] = UNDO_ALL | CANCEL;
 	outputs_[RO_INITIAL] = CLOSE;
-	outputs_[RO_VALID] = CANCEL;
-	outputs_[RO_INVALID] = CANCEL;
+	outputs_[RO_VALID] = UNDO_ALL | CANCEL;
+	outputs_[RO_INVALID] = UNDO_ALL | CANCEL;
 
 	// Build the state machine one state at a time
 	// NOTE:  Since CANCEL and HIDE always go to INITIAL they are
@@ -203,11 +205,13 @@ OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
 	state_machine_[VALID][SMI_READ_WRITE] = VALID;
 	state_machine_[VALID][SMI_INVALID] = INVALID;
 	state_machine_[VALID][SMI_OKAY] = INITIAL;
+	state_machine_[VALID][SMI_UNDO_ALL] = INITIAL;
 	state_machine_[VALID][SMI_READ_ONLY] = RO_VALID;
 	// State::INVALID
 	state_machine_[INVALID][SMI_INVALID] = INVALID;
 	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
 	state_machine_[INVALID][SMI_VALID] = VALID;
+	state_machine_[INVALID][SMI_UNDO_ALL] = INITIAL;
 	state_machine_[INVALID][SMI_READ_ONLY] = RO_INVALID;
 	// State::RO_INITIAL
 	state_machine_[RO_INITIAL][SMI_READ_ONLY] = RO_INITIAL;
@@ -219,11 +223,13 @@ OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
 	state_machine_[RO_VALID][SMI_READ_ONLY] = RO_VALID;
 	state_machine_[RO_VALID][SMI_INVALID] = RO_INVALID;
 	state_machine_[RO_VALID][SMI_READ_WRITE] = VALID;
+	state_machine_[RO_VALID][SMI_UNDO_ALL] = RO_INITIAL;
 	// State::RO_INVALID
 	state_machine_[RO_INVALID][SMI_READ_ONLY] = RO_INVALID;
 	state_machine_[RO_INVALID][SMI_INVALID] = RO_INVALID;
 	state_machine_[RO_INVALID][SMI_VALID] = RO_VALID;
 	state_machine_[RO_INVALID][SMI_READ_WRITE] = INVALID;
+	state_machine_[RO_INVALID][SMI_UNDO_ALL] = RO_INITIAL;
 }
 
 
@@ -255,11 +261,11 @@ NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
-	outputs_[VALID] = OKAY | APPLY | CANCEL;
-	outputs_[INVALID] = CANCEL;
+	outputs_[VALID] = UNDO_ALL | OKAY | APPLY | CANCEL;
+	outputs_[INVALID] = UNDO_ALL | CANCEL;
 	outputs_[RO_INITIAL] = CLOSE;
-	outputs_[RO_VALID] = CANCEL;
-	outputs_[RO_INVALID] = CANCEL;
+	outputs_[RO_VALID] = UNDO_ALL | CANCEL;
+	outputs_[RO_INVALID] = UNDO_ALL | CANCEL;
 
 	// Build the state machine one state at a time
 	// NOTE:  Since CANCEL and HIDE always go to INITIAL they are
@@ -277,11 +283,13 @@ NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
 	state_machine_[VALID][SMI_INVALID] = INVALID;
 	state_machine_[VALID][SMI_OKAY] = INITIAL;
 	state_machine_[VALID][SMI_APPLY] = INITIAL;
+	state_machine_[VALID][SMI_UNDO_ALL] = INITIAL;
 	state_machine_[VALID][SMI_READ_ONLY] = RO_VALID;
 	// State::INVALID
 	state_machine_[INVALID][SMI_INVALID] = INVALID;
 	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
 	state_machine_[INVALID][SMI_VALID] = VALID;
+	state_machine_[INVALID][SMI_UNDO_ALL] = INITIAL;
 	state_machine_[INVALID][SMI_READ_ONLY] = RO_INVALID;
 	// State::RO_INITIAL
 	state_machine_[RO_INITIAL][SMI_READ_ONLY] = RO_INITIAL;
@@ -293,11 +301,13 @@ NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
 	state_machine_[RO_VALID][SMI_READ_ONLY] = RO_VALID;
 	state_machine_[RO_VALID][SMI_INVALID] = RO_INVALID;
 	state_machine_[RO_VALID][SMI_READ_WRITE] = VALID;
+	state_machine_[RO_VALID][SMI_UNDO_ALL] = RO_INITIAL;
 	// State::RO_INVALID
 	state_machine_[RO_INVALID][SMI_INVALID] = RO_INVALID;
 	state_machine_[RO_INVALID][SMI_READ_ONLY] = RO_INVALID;
 	state_machine_[RO_INVALID][SMI_VALID] = RO_VALID;
 	state_machine_[RO_INVALID][SMI_READ_WRITE] = INVALID;
+	state_machine_[RO_INVALID][SMI_UNDO_ALL] = RO_INITIAL;
 }
 
 
@@ -329,13 +339,13 @@ OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
-	outputs_[VALID] = OKAY | APPLY | CANCEL;
-	outputs_[INVALID] = CANCEL;
+	outputs_[VALID] = UNDO_ALL | OKAY | APPLY | CANCEL;
+	outputs_[INVALID] = UNDO_ALL | CANCEL;
 	outputs_[APPLIED] = OKAY | APPLY | CLOSE;
 	outputs_[RO_INITIAL] = CLOSE;
-	outputs_[RO_VALID] = CANCEL;
-	outputs_[RO_INVALID] = CANCEL;
-	outputs_[RO_APPLIED] = CANCEL;
+	outputs_[RO_VALID] = UNDO_ALL | CANCEL;
+	outputs_[RO_INVALID] = UNDO_ALL | CANCEL;
+	outputs_[RO_APPLIED] = CLOSE;
 
 	// Build the state machine one state at a time
 	// NOTE:  Since CANCEL and HIDE always go to INITIAL they are
@@ -352,12 +362,14 @@ OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
 	state_machine_[VALID][SMI_READ_WRITE] = VALID;
 	state_machine_[VALID][SMI_INVALID] = INVALID;
 	state_machine_[VALID][SMI_OKAY] = INITIAL;
+	state_machine_[VALID][SMI_UNDO_ALL] = INITIAL;
 	state_machine_[VALID][SMI_APPLY] = APPLIED;
 	state_machine_[VALID][SMI_READ_ONLY] = RO_VALID;
 	// State::INVALID
 	state_machine_[INVALID][SMI_INVALID] = INVALID;
 	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
 	state_machine_[INVALID][SMI_VALID] = VALID;
+	state_machine_[INVALID][SMI_UNDO_ALL] = INITIAL;
 	state_machine_[INVALID][SMI_READ_ONLY] = RO_INVALID;
 	// State::APPLIED
 	state_machine_[APPLIED][SMI_APPLY] = APPLIED;
@@ -376,11 +388,13 @@ OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
 	state_machine_[RO_VALID][SMI_READ_ONLY] = RO_VALID;
 	state_machine_[RO_VALID][SMI_INVALID] = RO_INVALID;
 	state_machine_[RO_VALID][SMI_READ_WRITE] = VALID;
+	state_machine_[RO_VALID][SMI_UNDO_ALL] = RO_INITIAL;
 	// State::RO_INVALID
 	state_machine_[RO_INVALID][SMI_INVALID] = RO_INVALID;
 	state_machine_[RO_INVALID][SMI_READ_ONLY] = RO_INVALID;
 	state_machine_[RO_INVALID][SMI_VALID] = RO_VALID;
 	state_machine_[RO_INVALID][SMI_READ_WRITE] = INVALID;
+	state_machine_[RO_INVALID][SMI_UNDO_ALL] = RO_INITIAL;
 	// State::RO_APPLIED
 	state_machine_[RO_APPLIED][SMI_READ_ONLY] = RO_APPLIED;
 	state_machine_[RO_APPLIED][SMI_INVALID] = RO_INVALID;
@@ -417,8 +431,8 @@ OkApplyCancelPolicy::OkApplyCancelPolicy()
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
-	outputs_[VALID] = OKAY | APPLY | CANCEL;
-	outputs_[INVALID] = CANCEL;
+	outputs_[VALID] = UNDO_ALL | OKAY | APPLY | CANCEL;
+	outputs_[INVALID] = UNDO_ALL | CANCEL;
 	outputs_[APPLIED] = OKAY | APPLY | CLOSE;
 
 	// Build the state machine one state at a time
@@ -437,12 +451,14 @@ OkApplyCancelPolicy::OkApplyCancelPolicy()
 	state_machine_[VALID][SMI_READ_WRITE] = VALID;
 	state_machine_[VALID][SMI_INVALID] = INVALID;
 	state_machine_[VALID][SMI_OKAY] = INITIAL;
+	state_machine_[VALID][SMI_UNDO_ALL] = INITIAL;
 	state_machine_[VALID][SMI_APPLY] = APPLIED;
 	// State::INVALID
 	state_machine_[INVALID][SMI_INVALID] = INVALID;
 	state_machine_[INVALID][SMI_READ_ONLY] = INVALID;
 	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
 	state_machine_[INVALID][SMI_VALID] = VALID;
+	state_machine_[INVALID][SMI_UNDO_ALL] = INITIAL;
 	// State::APPLIED
 	state_machine_[APPLIED][SMI_APPLY] = APPLIED;
 	state_machine_[APPLIED][SMI_READ_ONLY] = APPLIED;
@@ -481,8 +497,8 @@ NoRepeatedApplyPolicy::NoRepeatedApplyPolicy()
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
-	outputs_[VALID] = OKAY | APPLY | CANCEL;
-	outputs_[INVALID] = CANCEL;
+	outputs_[VALID] = UNDO_ALL | OKAY | APPLY | CANCEL;
+	outputs_[INVALID] = UNDO_ALL | CANCEL;
 
 	// Build the state machine one state at a time
 	// NOTE:  Since CANCEL and HIDE always go to INITIAL they are
@@ -501,11 +517,13 @@ NoRepeatedApplyPolicy::NoRepeatedApplyPolicy()
 	state_machine_[VALID][SMI_INVALID] = INVALID;
 	state_machine_[VALID][SMI_OKAY] = INITIAL;
 	state_machine_[VALID][SMI_APPLY] = INITIAL;
+	state_machine_[VALID][SMI_UNDO_ALL] = INITIAL;
 	// State::INVALID
 	state_machine_[INVALID][SMI_INVALID] = INVALID;
 	state_machine_[INVALID][SMI_READ_ONLY] = INVALID;
 	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
 	state_machine_[INVALID][SMI_VALID] = VALID;
+	state_machine_[INVALID][SMI_UNDO_ALL] = INITIAL;
 }
 
 
