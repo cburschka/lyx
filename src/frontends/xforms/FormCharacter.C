@@ -24,8 +24,6 @@
 #include "helper_funcs.h"
 
 using std::vector;
-using std::back_inserter;
-using std::transform;
 using namespace character;
 
 typedef FormCB<ControlCharacter, FormDB<FD_form_character> > base_class;

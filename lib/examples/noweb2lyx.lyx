@@ -1,6 +1,5 @@
-#This file was created by <kayvan> Sun May  2 15:56:35 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass literate-article
 \begin_preamble
 %
@@ -22,6 +21,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -98,30 +99,22 @@ noweb
 # Copyright (C) 1999 Kayvan A.
  Sylvan <kayvan@sylvan.com>
 \newline 
-#
-\protected_separator 
-You are free to use and modify this code under the terms of
+# You are free to use and modify this code under the terms of
 \newline 
 # the GNU General Public Licence version 2 or later.
 \newline 
 #
 \newline 
-#
-\protected_separator 
-Written with assistance from:
+# Written with assistance from:
 \newline 
-# 
-\protected_separator 
- Edmar Wienskoski Jr.
+#   Edmar Wienskoski Jr.
  <edmar-w-jr@technologist.com>
 \newline 
-# 
-\protected_separator 
- Amir Karger <karger@post.harvard.edu>
+#   Amir Karger <karger@post.harvard.edu>
 \newline 
 #
 \newline 
-# $Id: noweb2lyx.lyx,v 1.2 2000/11/03 11:21:36 lasgouttes Exp $
+# $Id: noweb2lyx.lyx,v 1.3 2002/01/07 10:17:42 lasgouttes Exp $
 \newline 
 #
 \newline 
@@ -160,7 +153,23 @@ We can do arbitrary LaTeX code here.
 Code chunks look like this:
 \layout LyX-Code
 
-<<Name of chunk here>>=
+<
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+{}
+\end_inset 
+
+<Name of chunk here>
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+{}
+\end_inset 
+
+>=
 \newline 
 {...
  code for the chunk goes here ...}
@@ -172,7 +181,23 @@ The ``@'' is a necessary delimiter to end the code chunk.
  The other form that the ``@'' line takes is as follows:
 \layout LyX-Code
 
-<<Name of chunk here>>=
+<
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+{}
+\end_inset 
+
+<Name of chunk here>
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+{}
+\end_inset 
+
+>=
 \newline 
 {...
  code for the chunk ...}
@@ -198,11 +223,14 @@ noweb
 \noun default 
  code chunks.
  This proved to be too hard and presents other problems
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Not the least of these problems is the fact that << is a quote in French.
-\end_float 
+\end_inset 
+
 .
  On the other hand, it turns out that reLyX contains a very useful literal
  quoting mechanism.
@@ -251,13 +279,57 @@ noweb2lyx
  We want to be able to run it as a simple pre-processor and post-processor
  from within reLyX.
  We can accomplish this by setting the flags 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[pre_only]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  and 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[post_only]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  before we reach the main conversion code.
 \layout Standard
 
@@ -269,31 +341,19 @@ With all that preamble out of the way, we now have the basic high-level
 \newline 
 if (!$post_only) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-<<Transform noweb for reLyX>>
+  <<Transform noweb for reLyX>>
 \newline 
 }
 \newline 
 if ((!$pre_only) && (!$post_only)) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-<<Run reLyX on intermediate file>>
+  <<Run reLyX on intermediate file>>
 \newline 
 }
 \newline 
 if (!$pre_only) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-<<Fix up LyX file>>
+  <<Fix up LyX file>>
 \newline 
 }
 \newline 
@@ -319,11 +379,7 @@ inputline: while(<INPUT>)
 \newline 
 {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-if (/^
+  if (/^
 \backslash 
 s*
 \backslash 
@@ -335,39 +391,15 @@ s*
 \backslash 
 >=/) { # Beginning of a noweb scrap
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-<<Read in and output the noweb code chunk>>
+    <<Read in and output the noweb code chunk>>
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-} elsif (/^@
+  } elsif (/^@
 \backslash 
 s+(.*)/) { # Beginning of a documentation chunk
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-print OUTPUT $1; # We do not need the ``@'' part
+    print OUTPUT $1; # We do not need the ``@'' part
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-} elsif (/
+  } elsif (/
 \backslash 
 [
 \backslash 
@@ -377,37 +409,13 @@ print OUTPUT $1; # We do not need the ``@'' part
 \backslash 
 ]/) { # noweb quoted code
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-<<Perform special input quoting of [[var]]>>
+    <<Perform special input quoting of [[var]]>>
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-} else {
+  } else {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-print OUTPUT; # Just let the line pass through
+    print OUTPUT; # Just let the line pass through
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-}
+  }
 \newline 
 }
 \newline 
@@ -437,9 +445,31 @@ print OUTPUT;
 \layout Standard
 
 While reading in the 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[INPUT]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  file, once we have identified a 
 \noun on 
 noweb
@@ -466,13 +496,57 @@ In
 noweb2lyx
 \noun default 
 , we will use 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[INPUT]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  and 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[OUTPUT]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  to read and write files.
  In the code fragment above, we need to read from the input file and write
  to a file that will be later transformed by reLyX.
@@ -484,25 +558,13 @@ noweb2lyx
 \newline 
 if ($pre_only) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-&setup_files($input_file, $output_file);
+  &setup_files($input_file, $output_file);
 \newline 
 } else {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-$relyx_file = "temp$$";
+  $relyx_file = "temp$$";
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-&setup_files($input_file, $relyx_file);
+  &setup_files($input_file, $relyx_file);
 \newline 
 }
 \newline 
@@ -510,9 +572,31 @@ $relyx_file = "temp$$";
 \layout Standard
 
 This code uses a small perl subroutine, 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[setup_files]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
 , which we define below:
 \layout Scrap
 
@@ -520,35 +604,19 @@ This code uses a small perl subroutine,
 \newline 
 sub setup_files {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-my($in, $out) = @_;
+  my($in, $out) = @_;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-open(INPUT, "<$in") || die "Can not read $in: $!
+  open(INPUT, "<$in") || die "Can not read $in: $!
 \backslash 
 n";
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-open(OUTPUT, ">$out") || die "Can not write $out: $!
+  open(OUTPUT, ">$out") || die "Can not write $out: $!
 \backslash 
 n";
 \newline 
 }
 \newline 
-@ %def setup_files 
-\protected_separator 
-
-\protected_separator 
-
+@ %def setup_files   
 \layout Subsection
 
 Reading in the 
@@ -575,45 +643,25 @@ $endLine = "";
 \newline 
 scrapline: while (<INPUT>) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-last scrapline if /^@
+  last scrapline if /^@
 \backslash 
 s+/;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-$savedScrap .= $_;
+  $savedScrap .= $_;
 \newline 
 };
 \newline 
 switch: {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-if (/^@
+  if (/^@
 \backslash 
 s+$/) {$savedScrap .= $_; last switch; }
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-if (/^@
+  if (/^@
 \backslash 
 s+%def.*$/) {$savedScrap .= $_; last switch; }
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-if (/^@
+  if (/^@
 \backslash 
 s+(.*)$/) {$savedScrap .= "@
 \backslash 
@@ -660,13 +708,57 @@ print OUTPUT "$endLine";
 \layout Standard
 
 Finally, we need to close the 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[INPUT]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  and 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[OUTPUT]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  files.
 \layout Scrap
 
@@ -684,9 +776,31 @@ Running reLyX
 
 In this section, we describe and implement the code that runs reLyX on the
  intermediate file 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[relyx_file]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
 .
  
 \layout Subsection
@@ -719,7 +833,9 @@ noweb2lyx
 noweb2lyx.nw
 \emph default 
  file that is generated by LyX
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 reLyX searches for 
@@ -727,15 +843,60 @@ reLyX searches for
 
 \backslash 
 doc
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 {}
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
 ument
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 {}
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
 class and gets confused, so we have to obfuscate it slightly.
-\end_float 
+\end_inset 
+
 .
  With the regular expression as it is, we can actually run 
 \noun on 
@@ -748,11 +909,7 @@ noweb2lyx
 \newline 
 open(INPUT, "<$relyx_file") ||
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-die "Can not read $relyx_file: $!
+  die "Can not read $relyx_file: $!
 \backslash 
 n";
 \newline 
@@ -760,41 +917,17 @@ $class = "article"; # default if none found
 \newline 
 parse: while(<INPUT>) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-if (/
+  if (/
 \backslash 
 
 \backslash 
 docu[m]entclass{(.*)}/) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-$class = $1;
+    $class = $1;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-last parse;
+    last parse;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-}
+  }
 \newline 
 }
 \newline 
@@ -818,11 +951,7 @@ die "reLyX returned non-zero: $!
 \backslash 
 n"
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-if (system("reLyX -c $doc_class $relyx_file"));
+  if (system("reLyX -c $doc_class $relyx_file"));
 \newline 
 @
 \layout Standard
@@ -856,23 +985,11 @@ line: while(<INPUT>)
 \newline 
 {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-<<Fix code chunks in latex layout>>
+  <<Fix code chunks in latex layout>>
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-<<Fix [[var]] noweb construct>>
+  <<Fix [[var]] noweb construct>>
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-print OUTPUT; # default
+  print OUTPUT; # default
 \newline 
 } 
 \newline 
@@ -882,13 +999,57 @@ print OUTPUT; # default
 \layout Standard
 
 Note that in the perl code that is contained in the 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[while(<INPUT>)]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  loop above, the perl construct 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[next line]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  is sufficient to restart the loop.
  We can use this construct to do some relatively complex parsing of the
  reLyX generated file.
@@ -898,13 +1059,57 @@ File input and output for the post-processing
 \layout Standard
 
 Setting up the 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[INPUT]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  and 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [[OUTPUT]]
-\latex default 
+\end_inset 
+
+
+\family default 
+\series default 
+\shape default 
+\size default 
+\emph default 
+\bar default 
+\noun default 
+\color default
  is taken care of by this code:
 \layout Scrap
 
@@ -912,17 +1117,11 @@ Setting up the
 \newline 
 if ($post_only) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-&setup_files("$input_file", "$output_file");
+  &setup_files("$input_file", "$output_file");
 \newline 
 } else {
 \newline 
-
-\protected_separator 
- &setup_files("$relyx_file.lyx", "$output_file");
+  &setup_files("$relyx_file.lyx", "$output_file");
 \newline 
 }
 \newline 
@@ -944,61 +1143,23 @@ if (/
 \backslash 
 latex latex/) { # Beginning of some latex code
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-if (($line = <INPUT>) =~ /^
+  if (($line = <INPUT>) =~ /^
 \backslash 
 s*<</) { # code scrap
 \newline 
-
-\protected_separator 
-
-\protected_separator 
- 
-\protected_separator 
-<<Transform this chunk into layout scrap>>
+    <<Transform this chunk into layout scrap>>
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-} else {
+  } else {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-# print the 
+    # print the 
 \backslash 
 latex latex line + next line
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-
-\protected_separator 
-print OUTPUT "$_$line";
+    print OUTPUT "$_$line";
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-}
+  }
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-next line;
+  next line;
 \newline 
 }
 \newline 
@@ -1023,17 +1184,9 @@ n$line";
 \newline 
 codeline: while (<INPUT>) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-$savedScrap .= $_;
+  $savedScrap .= $_;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-last codeline if /^@
+  last codeline if /^@
 \backslash 
 s+/;
 \newline 
@@ -1054,39 +1207,23 @@ Okay, now we just need to eat the rest of the latex layout.
 \newline 
 slurp: while (<INPUT>) {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-last slurp if /
+  last slurp if /
 \backslash 
 
 \backslash 
 latex /;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-next slurp if /
+  next slurp if /
 \backslash 
 
 \backslash 
 newline/;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-next slurp if /^
+  next slurp if /^
 \backslash 
 s*$/;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-warn "confused by line: $_";
+  warn "confused by line: $_";
 \newline 
 }
 \newline 
@@ -1136,11 +1273,7 @@ if (/
 \backslash 
 ]/) { # special code for [[var]]
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-s/
+  s/
 \backslash 
 [
 \backslash 
@@ -1164,17 +1297,9 @@ latex default
 \backslash 
 n/g;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-print OUTPUT;
+  print OUTPUT;
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-next line;
+  next line;
 \newline 
 }
 \newline 
@@ -1212,53 +1337,23 @@ noweb2lyx
 \newline 
 if ($ARGV[0] eq "-pre") {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-&usage unless ($#ARGV == 2);
+  &usage unless ($#ARGV == 2);
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-$input_file = $ARGV[1]; $output_file = $ARGV[2]; $pre_only = 1;
+  $input_file = $ARGV[1]; $output_file = $ARGV[2]; $pre_only = 1;
 \newline 
 } elsif ($ARGV[0] eq "-post") {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-&usage unless ($#ARGV == 2);
+  &usage unless ($#ARGV == 2);
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-$input_file = $ARGV[1]; $output_file = $ARGV[2]; $post_only = 1;
+  $input_file = $ARGV[1]; $output_file = $ARGV[2]; $post_only = 1;
 \newline 
 } else {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-&usage unless ($#ARGV == 1);
+  &usage unless ($#ARGV == 1);
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-$input_file = $ARGV[0];
-\protected_separator 
-$output_file = $ARGV[1];
+  $input_file = $ARGV[0]; $output_file = $ARGV[1];
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-$pre_only = 0; $post_only = 0;
+  $pre_only = 0; $post_only = 0;
 \newline 
 }
 \newline 
@@ -1269,11 +1364,7 @@ $pre_only = 0; $post_only = 0;
 \newline 
 sub usage() {
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-print "Usage: noweb2lyx [-pre | -post] input-file output-file
+  print "Usage: noweb2lyx [-pre | -post] input-file output-file
 \newline 
 
 \newline 
@@ -1287,11 +1378,7 @@ In case of bugs, Email Kayvan Sylvan <kayvan
 \backslash 
 n";
 \newline 
-
-\protected_separator 
-
-\protected_separator 
-exit;
+  exit;
 \newline 
 }
 \newline 
@@ -1341,18 +1428,48 @@ Macros
 \layout Standard
 
 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 nowebchunks
+\end_inset 
+
+
 \layout Section*
 
 Identifiers
 \layout Standard
 
 
-\latex latex 
+\family roman 
+\series medium 
+\shape up 
+\size normal 
+\emph off 
+\bar no 
+\noun off 
+\color none
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 nowebindex
+\end_inset 
+
+
 \the_end

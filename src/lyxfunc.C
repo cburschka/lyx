@@ -723,7 +723,6 @@ func_status::value_type LyXFunc::getStatus(int ac,
 			break;
 		}
 	}
-#if 0
 	else {
 		MathTextCodes tc = mathcursor->getLastCode();
 		switch (action) {
@@ -752,7 +751,6 @@ func_status::value_type LyXFunc::getStatus(int ac,
 			break;
 		}
 	}
-	#endif
 	
 	return flag;
 }

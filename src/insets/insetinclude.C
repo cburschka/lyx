@@ -218,7 +218,7 @@ bool InsetInclude::loadIfNeeded() const
 	
 	// the readonly flag can/will be wrong, not anymore I think.
 	FileInfo finfo(getFileName());
-	bool const ro = !finfo.writable();
+	bool const ro = !(!finfo.isOK() || finfo.writable());
 	return bufferlist.readFile(getFileName(), ro) != 0;
 }
 

@@ -1,3 +1,19 @@
+2002-01-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* box.h: make signed dimensions to allow insets wider than
+	  the screen (bug #162)
+
+	* BufferView_pimpl.C: add some insetHit debug
+ 
+2002-01-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* vc-backend.C: add FIXME
+ 
+2002-01-03  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (getStatus): enable code for showing math font status
+	in toolbar/menu.
+
 2002-01-07  Juergen Vigna  <jug@sad.it>
 
 	* text.C (nextBreakPoint): removed debug output not needed anymore.
@@ -20,24 +36,21 @@
 
 	* lyxfunc.C (dispatch): add a finishUndo() in LFUN_ESCAPE.
 
-2002-01-03	Martin Vermeer <martin.vermeer@hut.fi>
+2002-01-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* FormMathsPanel.C:
 	* FormMathsPanel.h
 	* MathsSymbols.C:
 	* form_maths_panel.C:
 	* form_maths_panel.h:
-	* form_maths_panel.fd:
-	implemented sub- and super- buttons in math panel.
+	* form_maths_panel.fd: implemented sub- and super- buttons in math
+	panel. 
 
-	* lyx_main.C:
-	Revised hardwired bindings to allow original _ and ^ (or ^ space)
-	to be used as in TeX (req'd byAndré).
+	* lyx_main.C: Revised hardwired bindings to allow original _ and ^
+	(or ^ space) to be used as in TeX (req'd by André).
 
-	* lyxfunc.C:
-	Allow ^and _ again to be used both as super/subscript (mathed)
-	and as themselves (in text).
-
+	* lyxfunc.C: Allow ^ and _ again to be used both as
+	super/subscript (mathed) and as themselves (in text).
 
 2002-01-03  Allan Rae  <rae@lyx.org>
 
@@ -47,7 +60,7 @@
 
 	* XFormsView.C (setWindowTitle): also set icon title.
 
-	* LyXView.h: (setWindowTitle): signature changed.
+	* LyXView.h (setWindowTitle): signature changed.
 	* XFormsView.h (setWindowTitle): ditto.
 
 2002-01-02  Juergen Vigna  <jug@sad.it>

@@ -1,3 +1,10 @@
+2002-01-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* filetools.C: fix use of FileInfo
+
+	* FileInfo.h:
+	* FileInfo.C: add Asserts and documentation
+ 
 2001-12-20  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* os_win32.C: compilation fixes

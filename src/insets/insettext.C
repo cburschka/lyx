@@ -394,7 +394,8 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (!cleared && (top_x == int(x))
 	    && ((need_update&(INIT|FULL)) || (top_baseline != baseline)
 		||(last_drawn_width != insetWidth))) {
-		clearInset(bv, baseline, cleared);
+		// Condition necessary to eliminate bug 59 attachment 37
+		if (baseline > 0) clearInset(bv, baseline, cleared);
 	}
 
 	top_x = int(x);

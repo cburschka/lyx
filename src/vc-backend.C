@@ -254,6 +254,7 @@ void CVS::scanMaster()
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
 			FileInfo fi(file_);
+			// FIXME: must double check file is stattable/existing
 			time_t mod = fi.getModificationTime();
 			string mod_date = strip(asctime(gmtime(&mod)), '\n');
 			lyxerr[Debug::LYXVC]

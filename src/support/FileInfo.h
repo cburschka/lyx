@@ -30,6 +30,9 @@
 #endif
 
 /** Use objects of this class to get information about files.
+ *
+ * Users must make sure to check fi.isOK() before any operations
+ * requiring the file to exist such as fi.isDir()
  */
 class FileInfo : boost::noncopyable {
 public:

@@ -910,6 +910,8 @@ Inset * BufferView::Pimpl::checkInset(LyXText const & text, LyXCursor const & cu
 	Box b(insetDimensions(text, cursor));
 
 	if (!b.contained(x, y)) {
+		lyxerr[Debug::GUI] << "Missed inset at x,y " << x << "," << y 
+			<< " box " << b << endl;
 		return 0;
 	}
  

@@ -19,6 +19,7 @@
 
 #include <cerrno>
 #include "FileInfo.h"
+#include "LAssert.h"
 
 #if !S_IRUSR
 # if S_IREAD
@@ -174,6 +175,8 @@ FileInfo & FileInfo::newFile(int fildes)
 // should not be in FileInfo
 char const * FileInfo::typeIndicator() const
 {
+	lyx::Assert(isOK());
+ 
 	if (S_ISDIR(buf.st_mode)) return ("/");
 #ifdef S_ISLNK
 	if (S_ISLNK(buf.st_mode)) return ("@");
@@ -192,6 +195,8 @@ char const * FileInfo::typeIndicator() const
 
 mode_t FileInfo::getMode() const
 {
+	lyx::Assert(isOK());
+ 
 	return buf.st_mode;
 }
 
@@ -211,6 +216,8 @@ void FileInfo::modeString(char * szString) const
 // should not be in FileInfo
 char FileInfo::typeLetter() const
 {
+	lyx::Assert(isOK());
+ 
 #ifdef S_ISBLK
 	if (S_ISBLK(buf.st_mode)) return 'b';
 #endif
@@ -248,6 +255,8 @@ void FileInfo::flagRWX(mode_t i, char * szString) const
 // should not be in FileInfo
 void FileInfo::setSticky(char * szString) const
 {
+	lyx::Assert(isOK());
+ 
 #ifdef S_ISUID
 	if (buf.st_mode & S_ISUID) {
 		if (szString[3] != 'x') szString[3] = 'S';
@@ -271,42 +280,49 @@ void FileInfo::setSticky(char * szString) const
 
 time_t FileInfo::getModificationTime() const
 {
+	lyx::Assert(isOK());
 	return buf.st_mtime;
 }
 
 
 time_t FileInfo::getAccessTime() const
 {
+	lyx::Assert(isOK());
 	return buf.st_atime;
 }
 
 
 time_t FileInfo::getStatusChangeTime() const
 {
+	lyx::Assert(isOK());
 	return buf.st_ctime;
 }
 
 
 nlink_t FileInfo::getNumberOfLinks() const
 {
+	lyx::Assert(isOK());
 	return buf.st_nlink;
 }
 
 
 uid_t FileInfo::getUid() const
 {
+	lyx::Assert(isOK());
 	return buf.st_uid;
 }
 
 
 gid_t FileInfo::getGid() const
 {
+	lyx::Assert(isOK());
 	return buf.st_gid;
 }
 
 
 off_t FileInfo::getSize() const
 {
+	lyx::Assert(isOK());
 	return buf.st_size;
 }
 
@@ -328,42 +344,49 @@ bool FileInfo::isOK() const
 
 bool FileInfo::isLink() const
 {
+	lyx::Assert(isOK());
 	return S_ISLNK(buf.st_mode);
 }
 
 
 bool FileInfo::isRegular() const
 {
+	lyx::Assert(isOK());
 	return S_ISREG(buf.st_mode);
 }
 
 
 bool FileInfo::isDir() const
 {
+	lyx::Assert(isOK());
 	return S_ISDIR(buf.st_mode);
 }
 
 
 bool FileInfo::isChar() const
 {
+	lyx::Assert(isOK());
 	return S_ISCHR(buf.st_mode);
 }
 
 
 bool FileInfo::isBlock() const
 {
+	lyx::Assert(isOK());
 	return S_ISBLK(buf.st_mode);
 }
 
 
 bool FileInfo::isFifo() const
 {
+	lyx::Assert(isOK());
 	return S_ISFIFO(buf.st_mode);
 }
 
 
 bool FileInfo::isSocket() const
 {
+	lyx::Assert(isOK());
 #ifdef S_ISSOCK
 	return S_ISSOCK(buf.st_mode);
 #else
@@ -386,6 +409,3 @@ bool FileInfo::access(int p) const
 		return false;
 	}
 }
-
-
-

@@ -241,7 +241,6 @@ void FileDialog::Private::Reread()
 	iDepth = 0;
 	string line, Temp;
 	char szMode[15];
-	FileInfo fileInfo;
 	string File = pszDirectory;
 	if (File != "/") {
 		File = split(File, Temp, '/');
@@ -276,7 +275,8 @@ void FileDialog::Private::Reread()
 		// gets file status
 		File = AddName(pszDirectory, fname);
 
-		fileInfo.newFile(File, true);
+		// FIXME: we don't get this file exists/stattable
+		FileInfo fileInfo(File, true);
 		fileInfo.modeString(szMode);
 		unsigned int nlink = fileInfo.getNumberOfLinks();
 		string user = 	lyxUserCache.find(fileInfo.getUid());

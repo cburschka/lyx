@@ -435,7 +435,8 @@ int DeleteAllFilesInDir (string const & path)
 				     << endl;
 
 		bool deleted = true;
-		if (FileInfo(unlinkpath).isDir())
+		FileInfo fi(unlinkpath);
+		if (fi.isOK() && fi.isDir())
 			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
 		deleted &= (lyx::unlink(unlinkpath) == 0);
  		if (!deleted) {

@@ -400,7 +400,7 @@ bool RWInfo::WriteableDir(string const & name)
 	}
 
 	FileInfo const tp(name);
-	if (!tp.isDir()) {
+	if (!tp.isOK() || !tp.isDir()) {
 		error_message = N_("Directory does not exist.");
 		return false;
 	}
@@ -424,7 +424,7 @@ bool RWInfo::ReadableDir(string const & name)
 	}
 
 	FileInfo const tp(name);
-	if (!tp.isDir()) {
+	if (!tp.isOK() || !tp.isDir()) {
 		error_message = N_("Directory does not exist.");
 		return false;
 	}
@@ -459,7 +459,10 @@ bool RWInfo::WriteableFile(string const & name)
 	}
 
 	FileInfo d(name);
-	if (!d.isDir()) {
+
+	// FIXME: what is this supposed to do ?
+	// .newFile doesn't do what you think it does ... 
+	if (!d.isOK() || !d.isDir()) {
 		d.newFile(dir);
 	}
 
@@ -474,12 +477,12 @@ bool RWInfo::WriteableFile(string const & name)
 	}
 
 	FileInfo f(name);
-	if (dir == name || f.isDir()) {
+	if (dir == name || (f.isOK() && f.isDir())) {
 		error_message = N_("A file is required, not a directory.");
 		return false;
 	}
 
-	if (f.exist() && !f.writable()) {
+	if (f.isOK() && f.exist() && !f.writable()) {
 		error_message = N_("Cannot write to this file.");
 		return false;
 	}
@@ -504,7 +507,8 @@ bool RWInfo::ReadableFile(string const & name)
 	}
 
 	FileInfo d(name);
-	if (!d.isDir()) {
+	// FIXME: what is this supposed to do ?
+	if (!d.isOK() && !d.isDir()) {
 		d.newFile(dir);
 	}
 
@@ -519,7 +523,7 @@ bool RWInfo::ReadableFile(string const & name)
 	}
 
 	FileInfo f(name);
-	if (dir == name || f.isDir()) {
+	if (dir == name || (f.isOK() && f.isDir())) {
 		error_message = N_("A file is required, not a directory.");
 		return false;
 	}
