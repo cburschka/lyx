@@ -147,7 +147,7 @@ void docbookParagraphs(Buffer const & buf,
 			// more WYSIWYM handling.
 			// This is a hack while paragraphs can't have
 			// attributes, like id in this case.
-			if (par->isInset(0)) {
+			if (par->size() && par->isInset(0)) {
 				InsetOld * inset = par->getInset(0);
 				InsetOld::Code lyx_code = inset->lyxCode();
 				if (lyx_code == InsetOld::LABEL_CODE) {

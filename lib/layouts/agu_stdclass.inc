@@ -100,7 +100,7 @@ End
 Input agu_stdlists.inc
 Input agu_stdsections.inc
 Input db_stdstarsections.inc
-Input db_stdtitle.inc
+Input agu_stdtitle.inc
 Input db_stdstruct.inc
 Input db_lyxmacros.inc
 Input db_stdlayouts.inc
