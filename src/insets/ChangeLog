@@ -4,6 +4,11 @@
 	when using natbib and make it work efficiently. Must emphasise that the
 	real work is Herbert's.
 
+2002-04-23  Herbert Voss  <voss@perce.de>
+
+	* insetgraphic.C (prepareFile): fix bug with overwriting and
+	deleting an existing *.eps-file in the doc-dir
+
 2002-04-23  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (drawCellSelection): fix off by 1 error.

@@ -94,6 +94,7 @@ TODO Before initial production release:
 #include "LaTeXFeatures.h"
 
 #include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
 #include "frontends/controllers/helper_funcs.h" // getVectorFromString
 
 #include "support/LAssert.h"
@@ -293,7 +294,6 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	// But I still don't know the best way to go. So let's do this like this
 	// for now (Jug 20020311)
 	if (lascent != oasc) {
-//		lyxerr << "IG(" << this << "): " << x << endl;
 		return;
 	}
 
@@ -312,7 +312,6 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	Painter & paint = bv->painter();
 
 	if (drawImage()) {
-//		lyxerr << "IG(" << this << "): " << old_x << endl;
 		paint.image(old_x + 2, baseline - lascent,
 			    lwidth - 4, lascent + ldescent,
 			    *cached_image_.get());
@@ -575,7 +574,7 @@ string findTargetFormat(string const & suffix)
 	// lyxrc.pdf_mode means:
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we using latex or pdflatex).
-	lyxerr[Debug::GRAPHICS] << "decideOutput: lyxrc.pdf_mode = "
+	lyxerr[Debug::GRAPHICS] << "findTargetFormat: lyxrc.pdf_mode = "
 			    << lyxrc.pdf_mode << std::endl;
 	if (lyxrc.pdf_mode) {
 		if (contains(suffix,"ps") || suffix == "pdf")
@@ -586,7 +585,7 @@ string findTargetFormat(string const & suffix)
 			return "png";
 	}
 	// If it's postscript, we always do eps.
-	lyxerr[Debug::GRAPHICS] << "decideOutput: we have PostScript mode\n";
+	lyxerr[Debug::GRAPHICS] << "findTargetFormat: PostScript mode\n";
 	if (suffix != "ps")
 	    return "eps";
 	else
@@ -598,56 +597,103 @@ string findTargetFormat(string const & suffix)
 
 string const InsetGraphics::prepareFile(Buffer const *buf) const
 {
-	// do_convert = Do we need to convert the file?
-	// nice = Do we create a nice version?
-	//        This is used when exporting the latex file only.
-	// if (!do_convert)
-	//   return original filename
-	// if (!nice)
-	//   convert_place = temp directory
-	//   return new filename in temp directory
-	// else
-	//   convert_place = original file directory
-	//   return original filename without the extension
-	//
-	// if it's a zipped one, than let LaTeX do the rest!!!
-	string filename_  = params().filename;
-	bool const zipped = zippedFile(filename_);
+	// LaTeX can cope if the graphics file doesn't exist, so just return the
+	// filename.
+	string const orig_file = params().filename;
+	string const orig_file_with_path =
+		MakeAbsPath(orig_file, buf->filePath());
 
+	if (!IsFileReadable(orig_file_with_path))
+		return orig_file;
+
+	// If the file is compressed and we have specified that it should not be
+	// uncompressed, then just return its name and let LaTeX do the rest!
+	bool const zipped = zippedFile(orig_file);
 	if (zipped && params().noUnzip) {
-		lyxerr[Debug::GRAPHICS] << "don't unzip file or export latex"
-				    << filename_ << endl;
-		return filename_;
+		return orig_file;
 	}
-	// only export latex without compiling the file
+
+	// "nice" means that the buffer is exported to LaTeX format but not
+	//        run through the LaTeX compiler.
+	// if (nice)
+	//     No conversion of the graphics file is needed.
+	//     Return the original filename without any extension.
 	if (buf->niceFile)
-		return RemoveExtension(filename_);
+		return RemoveExtension(orig_file);
 
-	// Enable these helper functions to find the file if it is stored as
-	// a relative path.
-	Path p(buf->filePath());
+	// We're going to be running the exported buffer through the LaTeX
+	// compiler, so must ensure that LaTeX can cope with the graphics
+	// file format.
 
-	if (zipped)
-		filename_ = unzipFile(filename_);
+	// Perform all these manipulations on a temporary file if possible.
+	// If we are not using a temp dir, then temp_file contains the
+	// original file.
+	string temp_file = MakeAbsPath(OnlyFilename(orig_file), buf->tmppath);
 
-	string const from = getExtFromContents(filename_);
+	lyxerr[Debug::GRAPHICS]
+		<< "InsetGraphics::prepareFile. The temp file is: "
+		<< temp_file << endl;
+
+	// If we are using a temp dir, then copy the file into it.
+	if (lyxrc.use_tempdir && !IsFileReadable(temp_file)) {
+		bool const success = lyx::copy(orig_file_with_path, temp_file);
+		lyxerr[Debug::GRAPHICS]
+			<< "InsetGraphics::prepareFile. Copying from " 
+			<< orig_file << " to " << temp_file
+			<< (success ? " succeeded\n" : " failed\n");
+		if (!success) {
+			Alert::alert(_("Cannot copy file"), orig_file,
+					_("into tempdir"));
+			return orig_file;
+		}
+	}
+
+	// Uncompress the file if necessary. If it has been uncompressed in
+	// a previous call to prepareFile, do nothing.
+        if (zipped) {
+		// What we want to end up with:
+		string const temp_file_unzipped =
+			ChangeExtension(temp_file, string());
+
+		if (!IsFileReadable(temp_file_unzipped)) {
+			// unzipFile generates a random filename, so move this
+			// file where we want it to go.
+			string const tmp = unzipFile(temp_file);
+			lyx::copy(tmp, temp_file_unzipped);
+			lyx::unlink(tmp);
+
+			lyxerr[Debug::GRAPHICS]
+				<< "InsetGraphics::prepareFile. Unzipped to "
+				<< temp_file_unzipped << endl;
+		}
+
+		// We have an uncompressed file where we expect it,
+		// so rename temp_file and continue.
+		temp_file = temp_file_unzipped;
+	}
+
+	// Ascertain the graphics format that LaTeX requires.
+	string const from = getExtFromContents(temp_file);
 	string const to   = findTargetFormat(from);
 
+	// No conversion is needed. LaTeX can handle the graphics file as it is.
+	// This is true even if the orig_file is compressed.
 	if (from == to) {
-		// No conversion needed!
-		return filename_;
+		return orig_file;
 	}
 
-	string const temp = MakeAbsPath(filename_, buf->tmppath);
-	string const outfile_base = RemoveExtension(temp);
+	string const outfile_base = RemoveExtension(temp_file);
 
-	lyxerr[Debug::GRAPHICS] << "tempname = " << temp << "\n";
-	lyxerr[Debug::GRAPHICS] << "buf::tmppath = " << buf->tmppath << "\n";
-	lyxerr[Debug::GRAPHICS] << "filename_ = " << filename_ << "\n";
-	lyxerr[Debug::GRAPHICS] << "outfile_base = " << outfile_base << endl;
+	lyxerr[Debug::GRAPHICS]
+		<< "InsetGraphics::prepareFile. The original file is "
+		<< orig_file << ".\n"
+		<< "A copy has been made and convert is to be called with:\n"
+		<< "\tfile to convert = " << temp_file << '\n'
+		<< "\toutfile_base = " << outfile_base << '\n'
+		<< "\t from " << from << " to " << to << '\n';
 
-	converters.convert(buf, filename_, outfile_base, from, to);
-	return RemoveExtension(filename_);
+	converters.convert(buf, temp_file, outfile_base, from, to);
+	return RemoveExtension(temp_file);
 }
 
 
@@ -656,14 +702,17 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 {
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
-	lyxerr[Debug::GRAPHICS] << "[latex]filename = "
-				<< params().filename << endl;
+	lyxerr[Debug::GRAPHICS]
+		<< "InsetGraphics::latex. Filename = "
+		<< params().filename << endl;
+
 	string const message =
 	    (IsFileReadable(MakeAbsPath(params().filename, buf->filePath()))
 		&& !params().filename.empty()) ?
 		    string() :
 		    string("bb = 0 0 200 100, draft, type=eps]");
-	lyxerr[Debug::GRAPHICS] << "[latex]Messagestring = " << message << endl;
+	lyxerr[Debug::GRAPHICS]
+		<< "InsetGraphics::latex. Message = " << message << endl;
 
 	// These variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
@@ -679,15 +728,19 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 
 	// Write the options if there are any.
 	string const opts = createLatexOptions();
-	lyxerr[Debug::GRAPHICS] << "[latex]opts = " << opts << endl;
+	lyxerr[Debug::GRAPHICS]
+		<< "InsetGraphics::latex. Opts = " << opts << endl;
+
 	if (!opts.empty() && !message.empty())
 		before += ("[" + opts + ',' + message);
 	else if (!message.empty())
 		before += ('[' + message);
 	else if (!opts.empty())
 		before += ("[" + opts + ']');
-	lyxerr[Debug::GRAPHICS] << "[latex]before = " << before << endl;
-	lyxerr[Debug::GRAPHICS] << "[latex]after = " << after << endl;
+
+	lyxerr[Debug::GRAPHICS]
+		<< "InsetGraphics::latex. Before = " << before
+		<< "\nafter = " << after << endl;
 
 	// Make the filename relative to the lyx file
 	// and remove the extension so the LaTeX will use whatever is
