@@ -95,8 +95,6 @@ libxforms_la_SOURCES = \
 	FormInclude.h \
 	FormIndex.C \
 	FormIndex.h \
-	FormInset.C \
-	FormInset.h \
 	FormLog.C \
 	FormLog.h \
 	FormMathsBitmap.C \
