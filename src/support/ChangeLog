@@ -1,3 +1,13 @@
+2004-11-26  Angus Leeming  <leeming@lyx.org>
+
+	* filefilterlist.C (convert_brace_glob): moved here from
+	globbing.[Ch].
+
+	* filefilterlist.[Ch]: clean-up FileFilterList API.
+
+	* globbing.[Ch] (convert_brace_glob): moved to filefilterlist.C.
+	(expand_globs): moved to xforms/FormFiledialog.C.
+
 2004-11-25  Angus Leeming  <leeming@lyx.org>
 
 	* filefilterlist.[Ch]:

@@ -28,25 +28,41 @@ class FileFilterList {
 public:
 	class Filter {
 		std::string desc_;
-		std::string globs_;
+		std::vector<std::string> globs_;
 	public:
-		Filter(std::string const & d, std::string const & g)
-			: desc_(d), globs_(g) {}
+		/* \param description text describing the filters.
+		 * \param one or more wildcard patterns, separated by
+		 * whitespace.
+		 */
+		Filter(std::string const & description,
+		       std::string const & globs);
+
 		std::string const & description() const { return desc_; }
-		std::string const & globs() const { return globs_; }
+
+		typedef std::vector<std::string>::const_iterator glob_iterator;
+		glob_iterator begin() const { return globs_.begin(); }
+		glob_iterator end() const { return globs_.end(); }
 	};
 
 	/** \param qt_style_filter a list of available file filters.
 	 *  Eg. "TeX documents (*.tex);;LyX Documents (*.lyx)".
 	 *  The "All files (*)" filter is always added to the list.
 	 */
-	explicit FileFilterList(std::string const & qt_style_filter = std::string());
-	std::vector<Filter> const & filters() const { return filters_; }
+	explicit FileFilterList(std::string const & qt_style_filter =
+				std::string());
 
-	/** \param expand pass each glob through \c convert_brace_glob.
-	 *  \returns the equivalent of the string passed to the c-tor.
+	typedef std::vector<Filter>::size_type size_type;
+
+	bool empty() const { return filters_.empty(); }
+	size_type size() const { return filters_.size(); }
+	Filter & operator[](size_type i) { return filters_[i]; }
+	Filter const & operator[](size_type i) const { return filters_[i]; }
+
+	/** \returns the equivalent of the string passed to the c-tor
+	 *  although any brace expressions are expanded.
+	 *  (E.g. "*.{png,jpg}" -> "*.png *.jpg")
 	 */
-	std::string const str(bool expand) const;
+	std::string const as_string() const;
 
 private:
 	void parse_filter(std::string const & filter);

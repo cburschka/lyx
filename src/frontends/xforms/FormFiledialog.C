@@ -25,15 +25,19 @@
 #include "support/globbing.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/path.h"
 #include "support/tostr.h"
 
 #include "lyx_forms.h"
 
 #include <boost/bind.hpp>
 #include <boost/regex.hpp>
+#include <boost/tokenizer.hpp>
 
 #include <algorithm>
 #include <map>
+#include <sstream>
+
 #include <grp.h>
 #include <pwd.h>
 
@@ -66,6 +70,7 @@ using lyx::support::GetEnvPath;
 using lyx::support::LyXReadLink;
 using lyx::support::MakeAbsPath;
 using lyx::support::OnlyFilename;
+using lyx::support::Path;
 using lyx::support::split;
 using lyx::support::subst;
 using lyx::support::suffixIs;
@@ -73,6 +78,7 @@ using lyx::support::trim;
 
 using std::max;
 using std::sort;
+using std::ostringstream;
 using std::string;
 using std::map;
 using std::vector;
@@ -80,6 +86,36 @@ using std::vector;
 using namespace lyx::frontend;
 
 namespace {
+
+/** Given a string "<glob> <glob> <glob>", expand each glob in turn.
+ *  Any glob that cannot be expanded is ignored silently.
+ *  Invokes \c convert_brace_glob and \c glob internally, so use only
+ *  on systems supporting the Posix function 'glob'.
+ *  \param mask the string "<glob> <glob> <glob>".
+ *  \param directory the current working directory from
+ *  which \c glob is invoked.
+ *  \returns a vector of all matching file names.
+ */
+vector<string> const expand_globs(string const & mask,
+				  string const & directory)
+{
+	Path p(directory);
+
+	// Split into individual globs and then call 'glob' on each one.
+	typedef boost::tokenizer<boost::char_separator<char> > Tokenizer;
+	boost::char_separator<char> const separator(" ");
+
+	vector<string> matches;
+	Tokenizer const tokens(mask, separator);
+	Tokenizer::const_iterator it = tokens.begin();
+	Tokenizer::const_iterator const end = tokens.end();
+	for (; it != end; ++it) {
+		vector<string> const tmp = lyx::support::glob(*it);
+		matches.insert(matches.end(), tmp.begin(), tmp.end());
+	}
+	return matches;
+}
+
 
 // six months, in seconds
 long const SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L;
@@ -241,8 +277,7 @@ void FileDialog::Private::Reread()
 		++depth_;
 	}
 
-	vector<string> const glob_matches =
-		lyx::support::expand_globs(mask_, directory_);
+	vector<string> const glob_matches = expand_globs(mask_, directory_);
 
 	time_t curTime = time(0);
 	rewinddir(dir);
@@ -404,8 +439,24 @@ void FileDialog::Private::SetFilters(string const & mask)
 
 void FileDialog::Private::SetFilters(FileFilterList const & filters)
 {
+	if (filters.empty())
+		return;
+
 	// Just take the first one for now.
-	mask_ = filters.filters()[0].globs();
+	typedef FileFilterList::Filter::glob_iterator glob_iterator;
+	glob_iterator const begin = filters[0].begin();
+	glob_iterator const end = filters[0].end();
+	if (begin == end)
+		return;
+
+	ostringstream ss;
+	for (glob_iterator it = begin; it != end; ++it) {
+		if (it != begin)
+			ss << ' ';
+		ss << *it;
+	}
+		
+	mask_ = ss.str();
 	fl_set_input(file_dlg_form_->PatBox, mask_.c_str());
 }
 

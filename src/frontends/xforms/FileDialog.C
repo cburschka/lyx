@@ -71,7 +71,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 					  string const & suggested)
 {
 	lyxerr[Debug::GUI] << "filedialog open  with path \"" << path
-			   << "\", mask \"" << filters.str(false)
+			   << "\", mask \"" << filters.as_string()
 			   << "\", suggested \"" << suggested << '"' << endl;
 
 	// no support for asynchronous selection yet

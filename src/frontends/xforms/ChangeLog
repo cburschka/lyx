@@ -1,3 +1,11 @@
+2004-11-26  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C:
+	* FormFiledialog.C: changes due to the changed FileFilterList API.
+
+	* FormFiledialog.C (expand_globs): moved here from
+	support/globbing.[Ch].
+
 2004-11-25  Angus Leeming  <leeming@lyx.org>
 
 	* FileDialog.C: s/globbing.h/filefilterlist.h/ in #includes.

@@ -47,7 +47,7 @@ LyXFileDialog::LyXFileDialog(string const & p,
 			     string const & t,
 			     FileDialog::Button const & b1,
 			     FileDialog::Button const & b2)
-	: QFileDialog(toqstr(p), toqstr(filters.str(true)),
+	: QFileDialog(toqstr(p), toqstr(filters.as_string()),
 		      qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), toqstr(t), true),
 	  b1_(0), b2_(0)
 {

@@ -72,7 +72,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 					  string const & suggested)
 {
 	lyxerr[Debug::GUI] << "Select with path \"" << path
-			   << "\", mask \"" << filters.str(false)
+			   << "\", mask \"" << filters.as_string()
 			   << "\", suggested \"" << suggested << '"' << endl;
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
@@ -81,7 +81,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 	string const startsWith = MakeAbsPath(suggested, path);
 	result.second = fromqstr(
 		QFileDialog::getSaveFileName(toqstr(startsWith),
-					     toqstr(filters.str(true)),
+					     toqstr(filters.as_string()),
 					     qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
 					     title_.c_str()));
 #else
@@ -107,7 +107,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 					  string const & suggested)
 {
 	lyxerr[Debug::GUI] << "Select with path \"" << path
-			   << "\", mask \"" << filters.str(false)
+			   << "\", mask \"" << filters.as_string()
 			   << "\", suggested \"" << suggested << '"' << endl;
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
@@ -116,7 +116,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 	string const startsWith = MakeAbsPath(suggested, path);
 	result.second = fromqstr(
 		QFileDialog::getOpenFileName(toqstr(startsWith),
-					     toqstr(filters.str(true)),
+					     toqstr(filters.as_string()),
 					     qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
 					     title_.c_str()));
 #else
