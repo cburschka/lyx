@@ -1,3 +1,10 @@
+2000-10-27  Juergen Vigna  <jug@sad.it>
+
+	* src/tabular.C (~LyXTabular): removed not needed anymore.
+
+	* src/tabular.h: changed rowofcell and columnofcell to vector<int>
+	(from Andre).
+
 2000-10-27  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/frontends/Dialogs.h: remove hideTabular signal as it is no

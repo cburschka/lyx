@@ -104,13 +104,6 @@ LyXTabular::LyXTabular(Buffer const * buf, InsetTabular * inset, LyXLex & lex)
 }
 
 
-LyXTabular::~LyXTabular()
-{
-    delete[] rowofcell;
-    delete[] columnofcell;
-}
-
-
 LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 {
     // If this and lt is not of the same size we have a serious bug
@@ -185,8 +178,8 @@ void LyXTabular::Init(int rows_arg, int columns_arg)
    
     calculate_width_of_tabular();
 
-    rowofcell = 0;
-    columnofcell = 0;
+    rowofcell = vector<int>();
+    columnofcell = vector<int>();
     set_row_column_number_info();
     is_long_tabular = false;
     rotate = false;
@@ -335,10 +328,8 @@ void LyXTabular::set_row_column_number_info(bool oldformat)
     row = 0;
     column = 0;
 
-    delete [] rowofcell;
-    rowofcell = new int[numberofcells];
-    delete [] columnofcell;
-    columnofcell = new int[numberofcells];
+		rowofcell.resize(numberofcells);
+		columnofcell.resize(numberofcells);
   
     while (c < numberofcells && row < rows_ && column < columns_) {
 	rowofcell[c] = row;

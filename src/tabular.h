@@ -161,8 +161,6 @@ public:
     explicit
     LyXTabular(Buffer const *, InsetTabular *, LyXLex & lex);
     ///
-    ~LyXTabular();
-    ///
     LyXTabular & operator=(LyXTabular const &);
     ///
     LyXTabular * Clone(InsetTabular *);
@@ -462,9 +460,9 @@ private: //////////////////////////////////////////////////////////////////
     ///
     int numberofcells;
     ///
-    int * rowofcell;
+    std::vector<int> rowofcell;
     ///
-    int * columnofcell;
+    std::vector<int> columnofcell;
     ///
     row_vector row_info;
     ///
