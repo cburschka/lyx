@@ -37,4 +37,3 @@ void LyXFileDialog::done(int what)
 		lv_->getLyXFunc()->dispatch(action_, selectedFile().data());
 	delete this;
 }
-
