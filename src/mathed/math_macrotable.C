@@ -10,9 +10,6 @@
 #include "math_macro.h"
 #include "math_macrotemplate.h"
 #include "math_parser.h"
-#include "math_fracinset.h"
-#include "math_cheatinset.h"
-#include "math_charinset.h"
 #include "debug.h"
 
 
@@ -99,19 +96,12 @@ void MathMacroTable::builtinMacros()
 	createTemplate("perp",         0, "\\bot");
 	createTemplate("owns",         0, "\\ni");
 	createTemplate("to",           0, "\\rightarrow");
+#ifdef WITH_WARNINGS
+#warning 9em looks like too much but it is somehow working on screen..
+#endif WITH_WARNINGS
+	createTemplate("ll",           0, "<\\kern-9em<");
+	createTemplate("gg",           0, ">\\kern-9em>");
 	//createTemplate("lint",       4, "\\int_#1^#2#3 d#4");
 	//createTemplate("silentmult", 0, "\\cdot");
 	//createTemplate("binom",        2, "\\left(\\frac#1#2\\right)");
-	
-	MathMacroTemplate ll("ll", 0);
-	ll.cell(0).push_back(new MathCharInset('<', LM_TC_CONST));
-	ll.cell(0).push_back(new MathCheatInset(-0.9));
-	ll.cell(0).push_back(new MathCharInset('<', LM_TC_CONST));
-	insertTemplate(ll);
-
-	MathMacroTemplate gg("gg", 0);
-	gg.cell(0).push_back(new MathCharInset('>', LM_TC_CONST));
-	gg.cell(0).push_back(new MathCheatInset(-0.9));
-	gg.cell(0).push_back(new MathCharInset('>', LM_TC_CONST));
-	insertTemplate(gg);
 }

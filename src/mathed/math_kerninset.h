@@ -3,17 +3,23 @@
 #define MATH_CHEATINSET_H
 
 #include "math_diminset.h"
+#include "vspace.h"
+#include "LString.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-/// Some cheating for displaying things like \ll etc
+/// The \kern primitive
 
-class MathCheatInset : public MathDimInset {
+class MathKernInset : public MathDimInset {
 public:
 	///
-	explicit MathCheatInset(double wid);
+	MathKernInset();
+	///
+	explicit MathKernInset(LyXLength const & wid);
+	///
+	explicit MathKernInset(string const & wid);
 	///
 	MathInset * clone() const;
 	///
@@ -26,6 +32,6 @@ public:
 	void metrics(MathStyles st) const;
 private:
 	/// width in em
-	double wid_;
+	LyXLength wid_;
 };
 #endif

@@ -8,6 +8,7 @@
 #include "math_funcinset.h"
 #include "math_funcliminset.h"
 #include "math_fracinset.h"
+#include "math_kerninset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_noglyphinset.h"
@@ -33,6 +34,8 @@ MathInset * createMathInset(latexkeys const * l)
 			return new MathSymbolInset(l);
 		case LM_TK_STACK:
 			return new MathStackrelInset;
+		case LM_TK_KERN: 
+			return new MathKernInset;
 		case LM_TK_BINOM:
 		case LM_TK_CHOOSE:
 			return new MathBinomInset;

@@ -153,6 +153,7 @@ latexkeys wordlist[] =
 	{"jmath",  LM_TK_NOGLYPH, 0, LMB_NONE},
 	{"kappa",  LM_TK_SYM, LM_kappa, LMB_NONE},
 	{"ker",  LM_TK_FUNC, 0, LMB_NONE},
+	{"kern",  LM_TK_KERN, 0, LMB_NONE},
 	{"label",  LM_TK_LABEL, 0, LMB_NONE},
 	{"lambda",  LM_TK_SYM, LM_lambda, LMB_NONE},
 	{"langle",  LM_TK_SYM, LM_langle, LMB_NONE},

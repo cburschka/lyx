@@ -31,6 +31,7 @@
 #include "math_deliminset.h"
 #include "math_factory.h"
 #include "math_funcinset.h"
+#include "math_kerninset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
@@ -812,6 +813,24 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 				lyxerr[Debug::MATHED] << "unknow math inset begin '" << name << "'\n";	
 		}
 	
+		else if (t.cs() == "kern") {
+#ifdef WITH_WARNINGS
+#warning A hack...
+#endif
+			string s;
+			while (1) {
+				Token const & t = getToken();
+				if (!good()) {
+					putback();	
+					break;
+				}
+				s += t.character();
+				if (isValidLength(s))
+					break;
+			}
+			array.push_back(new MathKernInset(s));
+		}
+
 		else if (t.cs() == "label") {
 			//MathArray ar;
 			//parse_into(ar, FLAG_ITEM);

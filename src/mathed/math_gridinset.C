@@ -27,7 +27,7 @@ MathGridInset::RowInfo::RowInfo()
 int MathGridInset::RowInfo::skipPixels() const
 {
 #ifdef WITH_WARNINGS
-#warning fix this once the interface to LyXLength has oimproved
+#warning fix this once the interface to LyXLength has improved
 #endif
 	return int(skip_.value());
 }

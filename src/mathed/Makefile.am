@@ -26,8 +26,6 @@ libmathed_la_SOURCES = \
 	math_bigopinset.h \
 	math_binominset.C \
 	math_binominset.h \
-	math_cheatinset.C \
-	math_cheatinset.h \
 	math_charinset.C \
 	math_charinset.h \
 	math_cursor.C \
@@ -56,6 +54,8 @@ libmathed_la_SOURCES = \
 	math_hash.C \
 	math_inset.C \
 	math_inset.h \
+	math_kerninset.C \
+	math_kerninset.h \
 	math_macro.C \
 	math_macro.h \
 	math_macroarg.C \
