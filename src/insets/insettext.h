@@ -22,6 +22,7 @@
 #include "support/types.h"
 
 #include <boost/shared_ptr.hpp>
+#include <map>
 
 class Painter;
 class BufferView;

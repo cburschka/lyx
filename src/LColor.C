@@ -15,19 +15,12 @@
 #include "gettext.h"
 #include "support/lstrings.h"
 
+#include <map>
+
 using std::endl;
 
-void LColor::fill(LColor::color col, string const & gui,
-		  string const & latex, string const & x11,
-		  string const & lyx) {
-	information in;
-	in.guiname = gui;
-	in.latexname = latex;
-	in.x11name = x11;
-	in.lyxname = lyx;
 
-	infotab[col] = in;
-}
+namespace {
 
 struct ColorEntry {
 	LColor::color lcolor;
@@ -37,11 +30,44 @@ struct ColorEntry {
 	char const * lyxname;
 };
 
+}
+
+
+struct LColor::Pimpl {
+	///
+	struct information {
+		/// the name as it appears in the GUI
+		string guiname;
+		/// the name used in LaTeX
+		string latexname;
+		/// the name for X11
+		string x11name;
+		/// the name for LyX
+		string lyxname;
+	};
+
+	/// initialise a color entry
+	void fill(ColorEntry const & entry)
+	{
+		information & in = infotab[entry.lcolor];
+		in.guiname   = entry.guiname;
+		in.latexname = entry.latexname;
+		in.x11name   = entry.x11name;
+		in.lyxname   = entry.lyxname;
+	}
+
+	///
+	typedef std::map<LColor::color, information> InfoTab;
+	/// the table of color information
+	InfoTab infotab;
+};
+
 
 LColor::LColor()
+	: pimpl_(new Pimpl)
 {
 	//  LColor::color, gui, latex, x11, lyx
-	ColorEntry items[] = {
+	static ColorEntry const items[] = {
 	{ none, N_("none"), "none", "black", "none" },
 	{ black, N_("black"), "black", "black", "black" },
 	{ white, N_("white"), "white", "white", "white" },
@@ -100,29 +126,43 @@ LColor::LColor()
 	{ ignore, 0, 0, 0, 0 }
 	};
 
-	int i = 0;
-	while (items[i].guiname) {
-		fill(items[i].lcolor, items[i].guiname, items[i].latexname,
-		     items[i].x11name, items[i].lyxname);
-		++i;
-	}
+	for (int i = 0; items[i].guiname; ++i)
+		pimpl_->fill(items[i]);
 }
+
+
+LColor::LColor(LColor const & c)
+	: pimpl_(new Pimpl(*c.pimpl_))
+{}
+
+
+LColor::~LColor()
+{
+	delete pimpl_;
+}
+
+
+void LColor::operator=(LColor const & c)
+{
+	LColor tmp(c);
+	std::swap(pimpl_, tmp.pimpl_);
+}
+
 
 
 string const LColor::getGUIName(LColor::color c) const
 {
-	InfoTab::const_iterator ici = infotab.find(c);
-	if (ici != infotab.end())
+	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
+	if (ici != pimpl_->infotab.end())
 		return _(ici->second.guiname);
-
 	return "none";
 }
 
 
 string const LColor::getX11Name(LColor::color c) const
 {
-	InfoTab::const_iterator ici = infotab.find(c);
-	if (ici != infotab.end())
+	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
+	if (ici != pimpl_->infotab.end())
 		return ici->second.x11name;
 
 	lyxerr << "LyX internal error: Missing color"
@@ -134,8 +174,8 @@ string const LColor::getX11Name(LColor::color c) const
 
 string const LColor::getLaTeXName(LColor::color c) const
 {
-	InfoTab::const_iterator ici = infotab.find(c);
-	if (ici != infotab.end())
+	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
+	if (ici != pimpl_->infotab.end())
 		return ici->second.latexname;
 	return "black";
 }
@@ -143,8 +183,8 @@ string const LColor::getLaTeXName(LColor::color c) const
 
 string const LColor::getLyXName(LColor::color c) const
 {
-	InfoTab::const_iterator ici = infotab.find(c);
-	if (ici != infotab.end())
+	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
+	if (ici != pimpl_->infotab.end())
 		return ici->second.lyxname;
 	return "black";
 }
@@ -152,8 +192,8 @@ string const LColor::getLyXName(LColor::color c) const
 
 void LColor::setColor(LColor::color col, string const & x11name)
 {
-	InfoTab::iterator iti = infotab.find(col);
-	if (iti != infotab.end()) {
+	Pimpl::InfoTab::iterator iti = pimpl_->infotab.find(col);
+	if (iti != pimpl_->infotab.end()) {
 		iti->second.x11name = x11name;
 		return;
 	}
@@ -164,7 +204,7 @@ void LColor::setColor(LColor::color col, string const & x11name)
 
 bool LColor::setColor(string const & lyxname, string const & x11name)
 {
-	color col = getFromLyXName (lyxname);
+	color col = getFromLyXName(lyxname);
 
 	// "inherit" is returned for colors not in the database
 	// (and anyway should not be redefined)
@@ -180,8 +220,8 @@ bool LColor::setColor(string const & lyxname, string const & x11name)
 
 LColor::color LColor::getFromGUIName(string const & guiname) const
 {
-	InfoTab::const_iterator ici = infotab.begin();
-	InfoTab::const_iterator end = infotab.end();
+	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.begin();
+	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
 	for (; ici != end; ++ici) {
 		if (!compare_ascii_no_case(_(ici->second.guiname), guiname))
 			return ici->first;
@@ -192,15 +232,15 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 
 LColor::color LColor::getFromLyXName(string const & lyxname) const
 {
-
-	InfoTab::const_iterator ici = infotab.begin();
-	InfoTab::const_iterator end = infotab.end();
+	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.begin();
+	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
 	for (; ici != end; ++ici) {
 		if (!compare_ascii_no_case(ici->second.lyxname, lyxname))
 			return ici->first;
 	}
 	return LColor::inherit;
 }
+
 
 // The evil global LColor instance
 LColor lcolor;

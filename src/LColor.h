@@ -11,8 +11,6 @@
 #ifndef LCOLOR_H
 #define LCOLOR_H
 
-#include <map>
-
 #include "LString.h"
 
 /**
@@ -35,7 +33,7 @@
  * - A logical color, such as no color, inherit, math
  */
 
-class LColor // : public boost::noncopyable {
+class LColor 
 // made copyable for same reasons as LyXRC was made copyable. See there for
 // explanation.
 {
@@ -170,6 +168,12 @@ public:
 
 	///
 	LColor();
+	///
+	LColor(LColor const &);
+	///
+	~LColor();
+	///
+	void operator=(LColor const &);
 	/// set the given LyX color to the color defined by the X11 name given
 	void setColor(LColor::color col, string const & x11name);
 	/// set the given LyX color to the color defined by the X11 name given
@@ -193,26 +197,9 @@ public:
 	LColor::color getFromLyXName(string const & lyxname) const;
 private:
 	///
-	struct information {
-		/// the name as it appears in the GUI
-		string guiname;
-		/// the name used in LaTeX
-		string latexname;
-		/// the name for X11
-		string x11name;
-		/// the name for LyX
-		string lyxname;
-	};
-
-	/// initialise a color entry
-	void fill(LColor::color col, string const & gui,
-		  string const & latex, string const & x11,
-		  string const & lyx);
-
+	struct Pimpl;
 	///
-	typedef std::map<LColor::color, information> InfoTab;
-	/// the table of color information
-	InfoTab infotab;
+	Pimpl * pimpl_;
 };
 
 /// the current color definitions

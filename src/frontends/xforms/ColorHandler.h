@@ -15,6 +15,7 @@
 
 #include "frontends/Painter.h"
 
+#include <map>
 #include <boost/scoped_ptr.hpp>
 
 // This is only included to provide stuff for the non-public sections
