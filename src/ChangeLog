@@ -1,5 +1,12 @@
 2004-04-08  Angus Leeming  <leeming@lyx.org>
 
+	* lyx_sty.C (boldsymbol_def): modify so that it outputs
+	"\providecommand" rather than "\newcommand", thereby preventing
+	clashes with packages that define "\boldsymbol" themselves.
+	Eg, beamer.
+
+2004-04-08  Angus Leeming  <leeming@lyx.org>
+
 	* lyxrc.C (read): don't try to set the color of none, inherit, ignore
 	thereby squashing an unnecessary warning.
 
