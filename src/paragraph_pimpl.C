@@ -90,7 +90,7 @@ void Paragraph::Pimpl::setContentsFromPar(Paragraph const * par)
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
 	// This is in the critical path for loading!
-	pos_type siz = size();
+	pos_type const siz = size();
 	lyx::Assert(pos <= siz);
 	// This is stronger, and I belive that this is the assertion
 	// that we should really use. (Lgb)
