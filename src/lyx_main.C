@@ -632,7 +632,7 @@ void LyX::readUIFile(string const & name)
 			    << " in " << ui_path << endl;
 	LyXLex lex(uitags, ui_last - 1);
 	lex.setFile(ui_path);
-	if (!lex.IsOK()) {
+	if (!lex.isOK()) {
 		lyxerr << "Unable to set LyXLeX for ui file: " << ui_path
 		       << endl;
 	}
@@ -640,7 +640,7 @@ void LyX::readUIFile(string const & name)
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
 
-	while (lex.IsOK()) {
+	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case ui_menuset: 
 			menubackend.read(lex);
@@ -651,7 +651,7 @@ void LyX::readUIFile(string const & name)
 			break;
 
 		default:
-			if(!strip(lex.GetString()).empty())
+			if(!strip(lex.getString()).empty())
 				lex.printError("LyX::ReadUIFile: "
 					       "Unknown menu tag: `$$Token'");
 			break;
