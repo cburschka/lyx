@@ -18,6 +18,7 @@
 #include <config.h>
 
 #include <cctype>
+#include <stack>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -51,6 +52,7 @@ using std::istream;
 using std::ostream;
 using std::ios;
 using std::endl;
+using std::stack;
 
 
 namespace {
@@ -640,7 +642,8 @@ bool Parser::parse_normal(MathAtom & matrix)
 
 void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 {
-	MathTextCodes yyvarcode = LM_TC_MIN;
+	stack<MathTextCodes> fontcodes;
+	fontcodes.push(LM_TC_MIN);
 
 	bool panic  = false;
 	int  limits = 0;
@@ -692,11 +695,11 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			break;
 
 		else if (t.cat() == catLetter)
-			add(array, t.character(), yyvarcode);
+			add(array, t.character(), fontcodes.top());
 
 		else if (t.cat() == catSpace &&
-				(yyvarcode == LM_TC_TEXTRM || code == LM_TC_TEXTRM))
-			add(array, ' ', yyvarcode);
+				(fontcodes.top() == LM_TC_TEXTRM || code == LM_TC_TEXTRM))
+			add(array, ' ', fontcodes.top());
 
 		else if (t.cat() == catParameter) {
 			Token const & n	= getToken();
@@ -705,12 +708,14 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cat() == catBegin) {
 			add(array, '{', LM_TC_TEX);
+			fontcodes.push(LM_TC_MIN);
 		}
 
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
 			add(array, '}', LM_TC_TEX);
+			fontcodes.pop();
 		}
 		
 		else if (t.cat() == catAlign) {
@@ -737,7 +742,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			return;
 
 		else if (t.cat() == catOther)
-			add(array, t.character(), yyvarcode);
+			add(array, t.character(), fontcodes.top());
 		
 		//
 		// codesequences
@@ -924,8 +929,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 					//lyxerr << "ending font\n";
 				}
 
-				else if (l->token == LM_TK_OLDFONT)
-					yyvarcode = static_cast<MathTextCodes>(l->id);
+				else if (l->token == LM_TK_OLDFONT) {
+					fontcodes.pop();
+					fontcodes.push(static_cast<MathTextCodes>(l->id));
+				}
 
 				else {
 					MathAtom p = createMathInset(t.cs());
