@@ -37,7 +37,7 @@ ControlErrorList::ControlErrorList(Dialog & d)
 
 void ControlErrorList::clearParams()
 {
-	logfilename_.clear();
+	logfilename_.erase();
 	clearErrors();
 }
 

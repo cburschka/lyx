@@ -41,7 +41,7 @@ void QErrorList::build_dialog()
 void QErrorList::select(int item)
 {
 	controller().goTo(item);
-	dialog_->descriptionTB->setText(controller().ErrorList()[item].description);
+	dialog_->descriptionTB->setText(toqstr(controller().ErrorList()[item].description));
 }
 
 

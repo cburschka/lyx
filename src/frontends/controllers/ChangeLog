@@ -1,8 +1,13 @@
+2003-05-14  Rob Lahaye <lahaye@users.sourceforge.net>
+
+	* ControlErrorList.C (clearParams): replace string::clear by
+	string::erase
+
 2003-05-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlErrorList.C (goTo): use lyxerr not cout.
 
-2003-05-12  Alfredo Braunstein: <abraunst@libero.it>
+2003-05-13  Alfredo Braunstein: <abraunst@libero.it>
 
 	* ControlErrorList.[Ch]: added
 	* Makefile.am: the above adittion

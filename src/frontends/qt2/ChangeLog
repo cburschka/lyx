@@ -1,3 +1,7 @@
+2003-05-14  Juergen Spitzmueller <juergen.sp@t-online.de>
+
+	* QErrorList.C (select): added a missing toqstr()
+
 2003-05-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Menubar_pimpl.C (~Pimpl): move out of line
@@ -5,7 +9,7 @@
 	(view): ditto
 	(backend): ditto
 
-2003-05-12  Alfredo Braunstein  <abraunst@libero.it>
+2003-05-13  Alfredo Braunstein  <abraunst@libero.it>
 
 	* QErrorList.[Ch]:
 	* QErrorListDialog.[Ch]: added
