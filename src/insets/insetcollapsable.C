@@ -330,9 +330,9 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetCollapsable::getCursorPos(BufferView * bv, int & x, int & y) const
+void InsetCollapsable::getCursorPos(int & x, int & y) const
 {
-	inset.getCursorPos(bv, x , y);
+	inset.getCursorPos(x , y);
 	y += - ascent() + height_collapsed() + inset.ascent();
 }
 

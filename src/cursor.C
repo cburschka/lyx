@@ -180,7 +180,7 @@ void LCursor::getDim(int & asc, int & desc) const
 		asc = row.baseline();
 		desc = row.height() - asc;
 	} else
-		innerInset()->getCursorDim(bv_, asc, desc);
+		innerInset()->getCursorDim(asc, desc);
 }
 
 
@@ -202,7 +202,7 @@ void LCursor::getPos(int & x, int & y) const
 		// Ugly as you like.
 		//inset->getCursorPos(bv_, x, y);
 		//y = inset->insetInInsetY() + bv_->text->cursor.y();
-		inset->getCursorPos(bv_, x, y);
+		inset->getCursorPos(x, y);
 		x += inset->x();
 		y += cached_y_;
 	}

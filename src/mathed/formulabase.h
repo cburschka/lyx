@@ -45,9 +45,9 @@ public:
 	/// what appears in the minibuffer when opening
 	virtual std::string const editMessage() const;
 	///
-	virtual void getCursorPos(BufferView *, int &, int &) const;
+	virtual void getCursorPos(int &, int &) const;
 	///
-	virtual void getCursorDim(BufferView *, int &, int &) const;
+	virtual void getCursorDim(int &, int &) const;
 	/// get the absolute document x,y of the cursor
 	virtual void getCursor(BufferView & bv, int & x, int & y) const;
 	///

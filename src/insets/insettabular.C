@@ -970,7 +970,7 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 }
 
 
-void InsetTabular::getCursorPos(BufferView *, int & x, int & y) const
+void InsetTabular::getCursorPos(int & x, int & y) const
 {
 	x = TEXT_TO_INSET_OFFSET + cursorx_ - xo_;
 	y = TEXT_TO_INSET_OFFSET + cursory_;

@@ -30,9 +30,9 @@ public:
 	virtual EDITABLE editable() const;
 
 	/// return the cursor pos, relative to the inset pos
-	virtual void getCursorPos(BufferView *, int &, int &) const {}
+	virtual void getCursorPos(int &, int &) const {}
 	/// return the cursor dim
-	virtual void getCursorDim(BufferView *, int &, int &) const;
+	virtual void getCursorDim(int &, int &) const;
 	///
 	virtual bool insertInset(BufferView *, InsetOld *) { return false; }
 	///

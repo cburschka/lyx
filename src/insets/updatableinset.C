@@ -107,7 +107,7 @@ UpdatableInset::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 }
 
 
-void UpdatableInset::getCursorDim(BufferView *, int &, int &) const
+void UpdatableInset::getCursorDim(int &, int &) const
 {
 	BOOST_ASSERT(false);
 }

@@ -110,7 +110,7 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::TABULAR_CODE; }
 	/// get the absolute screen x,y of the cursor
-	void getCursorPos(BufferView *, int & x, int & y) const;
+	void getCursorPos(int & x, int & y) const;
 	///
 	bool tabularFeatures(BufferView * bv, std::string const & what);
 	///

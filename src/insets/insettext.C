@@ -438,7 +438,7 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetText::getCursorPos(BufferView *, int & x, int & y) const
+void InsetText::getCursorPos(int & x, int & y) const
 {
 	x = text_.cursor.x() + TEXT_TO_INSET_OFFSET;
 	y = text_.cursor.y() - dim_.asc + TEXT_TO_INSET_OFFSET;

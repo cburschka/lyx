@@ -170,7 +170,7 @@ void InsetFormulaBase::getCursor(BufferView &, int & x, int & y) const
 }
 
 
-void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
+void InsetFormulaBase::getCursorPos(int & x, int & y) const
 {
 	if (!mathcursor) {
 		lyxerr << "getCursorPos - should not happen";
@@ -186,7 +186,7 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 }
 
 
-void InsetFormulaBase::getCursorDim(BufferView *, int & asc, int & desc) const
+void InsetFormulaBase::getCursorDim(int & asc, int & desc) const
 {
 	if (!mathcursor)
 		return;

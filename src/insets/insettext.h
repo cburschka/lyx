@@ -89,7 +89,7 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::TEXT_CODE; }
 	/// FIXME, document
-	void getCursorPos(BufferView *, int & x, int & y) const;
+	void getCursorPos(int & x, int & y) const;
 	///
 	int insetInInsetY() const;
 	///
