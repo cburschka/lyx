@@ -404,6 +404,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		//lyxerr << "old float: " << tmptok << endl;
 		
 		Inset * inset = 0;
+		string old_float;
 		
 		if (tmptok == "footnote") {
 			inset = new InsetFoot;
@@ -411,31 +412,53 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			inset = new InsetMarginal;
 		} else if (tmptok == "fig") {
 			inset = new InsetFloat("figure");
-			//inset = new InsetFigure;
+			old_float += "placement htbp\n";
 		} else if (tmptok == "tab") {
 			inset = new InsetFloat("table");
-			//inset = new InsetTable;
+			old_float += "placement htbp\n";
 		} else if (tmptok == "alg") {
 			inset = new InsetFloat("algorithm");
-			//inset = new InsetAlgorithm;
+			old_float += "placement htbp\n";
 		} else if (tmptok == "wide-fig") {
 			InsetFloat * tmp = new InsetFloat("figure");
 			tmp->wide(true);
 			inset = tmp;
-			//inset = new InsetFigure(true);
+			old_float += "placement htbp\n";
 		} else if (tmptok == "wide-tab") {
 			InsetFloat * tmp = new InsetFloat("table");
 			tmp->wide(true);
 			inset = tmp;
-			//inset = new InsetTable(true);
+			old_float += "placement htbp\n";
 		}
 
 		if (!inset) return false; // no end read yet
 		
-		string old_float = "\ncollapsed true\n";
+		old_float += "collapsed true\n";
+
+		// Here we need to check for \end_deeper and handle that
+		// before we do the footnote parsing.
+		// This _is_ a hack! (Lgb)
+		while(true) {
+			lex.next();
+			string tmp = lex.GetString();
+			if (tmp == "\\end_deeper") {
+				lyxerr << "\\end_deeper caught!" << endl;
+				if (!depth) {
+					lex.printError("\\end_deeper: "
+						       "depth is already null");
+				} else
+					--depth;
+				
+			} else {
+				old_float += tmp;
+				old_float += ' ';
+				break;
+			}
+		}
+		
 		old_float += lex.getLongString("\\end_float");
 		old_float += "\n\\end_inset\n";
-		lyxerr << "float body: " << old_float << endl;
+		//lyxerr << "float body: " << old_float << endl;
 
 #ifdef HAVE_SSTREAM
 		istringstream istr(old_float.c_str());

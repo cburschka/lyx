@@ -2576,17 +2576,15 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 
 		// Fully instantiated font
 		LyXFont font = getFont(bparams, i);
+#ifndef NEW_INSETS
 		LyXParagraph * p = 0;
 		if (i == 0
-#ifndef NEW_INSETS
 		    && previous && 
 		    previous->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
 		    (p = PreviousBeforeFootnote()) != 0)
-#else
-			&& (p = previous))
-#endif
 			last_font = p->getFont(bparams, p->size() - 1);
 		else
+#endif
 			last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
