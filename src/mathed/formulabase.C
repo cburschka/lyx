@@ -174,7 +174,7 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 {
 	mathcursor->getPos(x, y);
 	x += xo_;
-	y += yo_ - 3;
+	y += yo_;
 	//lyxerr << "getCursorPos: " << x << " " << y << "\n";
 }
 
@@ -191,7 +191,6 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 		int x;
 		int y;
 		mathcursor->getPos(x, y);
-		y -= 3;
 		y -= yo_;
 		int asc = 0;
 		int des = 0;

@@ -335,8 +335,7 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 			int y, float & xx, bool) const
 {
-	int x = int(xx) - 1;
-	y -= 2;
+	int x = int(xx);
 
 	Painter & pain = bv->painter();
 
@@ -597,13 +596,13 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
-	return par_->ascent() + 2;
+	return par_->ascent() + 1;
 }
 
 
 int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
-	return par_->descent() - 2;
+	return par_->descent() + 1;
 }
 
 

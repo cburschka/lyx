@@ -59,8 +59,8 @@ void MathDelimInset::normalize(NormalStream & os) const
 int MathDelimInset::dw() const
 {
 	int w = height() / 5;
-	if (w > 15)
-		w = 15;
+	if (w > 12)
+		w = 12;
 	if (w < 4)
 		w = 4;
 	return w;

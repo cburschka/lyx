@@ -38,7 +38,7 @@ string verboseHLine(int n)
 
 
 MathGridInset::RowInfo::RowInfo()
-	: skip_(0), lines_(0)
+	: lines_(0), skip_(0)
 {}
 
 
@@ -220,8 +220,7 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 	// let the cells adjust themselves
 	MathNestInset::metrics(mi);
 
-	// adjust vertical structure
-	rowinfo_[0].offset_ = 0;
+	// compute absolute sizes of vertical structure
 	for (row_type row = 0; row < nrows(); ++row) {
 		int asc  = 0;
 		int desc = 0;
@@ -232,17 +231,22 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 		}
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
-		rowinfo_[row].offset_  += asc + HLINESEP * rowinfo_[row].lines_;
-
-		rowinfo_[row + 1].offset_ =
-				rowinfo_[row].offset_ +
-				rowinfo_[row].descent_ +
-				rowinfo_[row].skipPixels() +
-				ROWSEP;
 	}
+	rowinfo_[0].ascent_       += HLINESEP * rowinfo_[0].lines_;
 	rowinfo_[nrows()].ascent_  = 0;
 	rowinfo_[nrows()].descent_ = 0;
-	rowinfo_[nrows()].offset_  += HLINESEP * rowinfo_[nrows()].lines_;
+
+	// compute vertical offsets
+	rowinfo_[0].offset_ = 0;
+	for (row_type row = 1; row <= nrows(); ++row) {
+		rowinfo_[row].offset_  =	
+			rowinfo_[row - 1].offset_  +
+			rowinfo_[row - 1].descent_ +
+			rowinfo_[row - 1].skipPixels() +
+			ROWSEP +
+			rowinfo_[row].lines_ * HLINESEP +
+			rowinfo_[row].ascent_;
+	}
 
 	// adjust vertical offset
 	int h = 0;
@@ -251,35 +255,34 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 			h = 0;
 			break;
 		case 'b':
-			h = rowinfo_[nrows()].offset_;
+			h = rowinfo_[nrows() - 1].offset_;
 			break;
 		default:
-			h = rowinfo_[nrows()].offset_ / 2;
+			h = rowinfo_[nrows() - 1].offset_ / 2;
 	}
-	//lyxerr << "\nnrows: " << nrows() << " h: " << h << '\n';
-	for (row_type row = 0; row <= nrows(); ++row) {
+	for (row_type row = 0; row <= nrows(); ++row)
 		rowinfo_[row].offset_ -= h;
-		//lyxerr << "row: " << row << " off: " << rowinfo_[row].offset_  << '\n';
-	}
-
 	
-	// adjust horizontal structure
-	colinfo_[0].offset_ = BORDER;
+
+	// compute absolute sizes of horizontal structure
 	for (col_type col = 0; col < ncols(); ++col) {
 		int wid = 0;
 		for (row_type row = 0; row < nrows(); ++row) 
 			wid = std::max(wid, xcell(index(row, col)).width());
-		colinfo_[col].width_  = wid;
-		colinfo_[col].offset_ += VLINESEP * colinfo_[col].lines_;
-
-		colinfo_[col + 1].offset_ =
-			colinfo_[col].offset_ +
-			colinfo_[col].width_ + 
-			colinfo_[col].skip_ +
-			COLSEP;
+		colinfo_[col].width_ = wid;
 	}
 	colinfo_[ncols()].width_  = 0;
-	colinfo_[ncols()].offset_ += VLINESEP * colinfo_[ncols()].lines_;
+
+	// compute horizontal offsets
+	colinfo_[0].offset_ = BORDER;
+	for (col_type col = 1; col <= ncols(); ++col) {
+		colinfo_[col].offset_ =
+			colinfo_[col - 1].offset_ +
+			colinfo_[col - 1].width_ + 
+			colinfo_[col - 1].skip_ +
+			COLSEP + 
+			colinfo_[col].lines_ * VLINESEP;
+	}
 
 
 	width_   =   colinfo_[ncols() - 1].offset_      
@@ -360,7 +363,6 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * HLINESEP - HLINESEP/2 - ROWSEP/2;
-			//lyxerr << "i: " << i << " yy: " << yy << '\n';
 			pain.line(x + 1, yy, x + width_ - 1, yy);
 		}
 
@@ -368,7 +370,6 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 		for (int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + colinfo_[col].offset_
 				- i * VLINESEP - VLINESEP/2 - COLSEP/2;
-			//lyxerr << "i: " << i << " xx: " << xx << '\n';
 			pain.line(xx, y - ascent_ + 1, xx, y + descent_ - 1);
 		}
 }
@@ -714,5 +715,4 @@ void MathGridInset::write(WriteStream & os) const
 	if (s.size())
 		os << "\\\\" << s.c_str();
 }
-
 
