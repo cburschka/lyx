@@ -59,13 +59,17 @@ int descent(char c, LyXFont const & f)
 
 int lbearing(char c, LyXFont const & f)
 {
+	lyxerr << "lb of " << c << " is " << metrics(f).leftBearing(c) << endl; 
 	return metrics(f).leftBearing(c);
 }
 
 
 int rbearing(char c, LyXFont const & f)
 {
-	return metrics(f).rightBearing(c);
+	QFontMetrics const & m(metrics(f));
+ 
+	// Qt rbearing is from the right edge of the char's width(). 
+	return (m.width(c) - m.rightBearing(c));
 }
 
 
