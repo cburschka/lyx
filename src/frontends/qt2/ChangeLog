@@ -1,5 +1,10 @@
 2002-09-12  John Levon  <levon@movementarian.org>
 
+	* qscreen.h:
+	* qscreen.C: be even smarter about repaint() vs. update()
+ 
+2002-09-12  John Levon  <levon@movementarian.org>
+
 	* QPrint.C: don't reset unless different buffer
  
 2002-09-12  John Levon  <levon@movementarian.org>

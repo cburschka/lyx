@@ -58,6 +58,9 @@ protected:
 	/// get the work area
 	virtual WorkArea & workarea() const { return owner_; }
  
+	/// repaint the whole content immediately
+	void repaint();
+ 
 	/// copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int exp_width, int exp_height); 
 

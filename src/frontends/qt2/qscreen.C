@@ -146,17 +146,19 @@ void QScreen::hideCursor()
 }
 
  
+void QScreen::repaint()
+{
+	QWidget * content(owner_.getContent());
+	content->repaint(0, 0, content->width(), content->height());
+}
+
+ 
 void QScreen::expose(int x, int y, int w, int h)
 {
 	lyxerr[Debug::GUI] << "expose " << w << "x" << h
 		<< "+" << x << "+" << y << endl;
  
-	// if we're scrolling, we want immediate paint, otherwise not.
-	QWidget * content(owner_.getContent());
-	if (content->width() == w && content->height() == h) 
-		content->repaint(x, y, w, h);
-	else
-		content->update(x, y, w, h);
+	owner_.getContent()->update(x, y, w, h);
 }
 
 
@@ -172,9 +174,12 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	bool const internal = (text == bv->text);
 	text->first_y = y;
 
+	// If you want to fix the warning below, fix it so it
+	// actually scrolls properly. Hint: a cast won't do.
+ 
 	// is any optimization possible?
-	if ((y - old_first) < owner_.workHeight()
-	    && (old_first - y) < owner_.workHeight()) {
+	if (y - old_first < owner_.workHeight()
+	    && old_first - y < owner_.workHeight()) {
 		if (text->first_y < old_first) {
 			int const dest_y = old_first - text->first_y;
 			drawFromTo(text, bv, 0, dest_y, 0, 0, internal);
@@ -187,9 +192,9 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 			expose(0, owner_.height() - src_y, owner_.workWidth(), src_y);
 		}
 	} else {
-		// make a dumb redraw
+		lyxerr[Debug::GUI] << "dumb full redraw" << endl; 
 		drawFromTo(text, bv, 0, owner_.height(), 0, 0, internal);
-		expose(0, 0, owner_.workWidth(), owner_.height());
+		repaint();
 	}
  
 	owner_.getPainter().end();
