@@ -62,6 +62,9 @@ What's new
 
 - fix bad latex output with language changes in nested environment
 
+- fix bad latex output with math array environment included in an
+  eqnarray environment
+
 - add bindings for M-< and M-> in emacs mode
 
 - fix crash when using the koi8-u keyboard mapping
