@@ -126,7 +126,7 @@ void FormCitation::apply()
 			ControlCitation::getCiteStyles();
 
 		int const choice =
-			fl_get_choice(dialog_->choice_style) - 1;
+			std::max(0, fl_get_choice(dialog_->choice_style) - 1);
 		bool const full  =
 			fl_get_button(dialog_->check_full_author_list);
 		bool const force =
@@ -429,7 +429,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		currentCitekey = citekeys[0];
 
 	if (topCitekey != currentCitekey) {
-		int choice = fl_get_choice(dialog_->choice_style);
+		int choice = std::max(1, fl_get_choice(dialog_->choice_style));
 		fillChoice(dialog_.get(),
 			   controller().getCiteStrings(currentCitekey));
 		fl_set_choice(dialog_->choice_style, choice);
