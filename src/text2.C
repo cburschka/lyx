@@ -3427,13 +3427,15 @@ bool LyXText::TextHandleUndo(Undo * undo)
 				if (undo->kind == Undo::EDIT){
 					tmppar2->text = tmppar->text;
 					tmppar->text.clear();
-					//tmppar->text.erase(tmppar->text.begin(),
-					//		   tmppar->text.end());
 					tmppar2 = tmppar2->next;
 				}
 				if ( currentrow && currentrow->par == tmppar )
 					currentrow = currentrow -> previous;
-				delete tmppar;
+				// Commenting out this might remove the error
+				// reported by Purify, but it might also
+				// introduce a memory leak. We need to
+				// check this (Lgb)
+				//delete tmppar;
 			}
 		}
     

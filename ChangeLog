@@ -1,5 +1,11 @@
 2000-02-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/lyxrow.h: make sure that all Row variables are initialized.
+
+	* src/text2.C (TextHandleUndo): comment out a delete, this might
+	introduce a memory leak, but should also help us to not try to
+	read freed memory. We need to look at this one.
+
 	* src/paragraph.C (SimpleDocBookOneTablePar): initialize column to 0
 	(LyXParagraph): initalize footnotekind.
 

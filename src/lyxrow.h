@@ -17,6 +17,11 @@
 ///
 struct Row {
 	///
+	Row()
+		: par(0), pos(0), baseline(0), fill(0), height(0),
+		  ascent_of_text(0), next(0), previous(0)
+		{}
+	///
 	LyXParagraph * par;
 	///
 	LyXParagraph::size_type pos;
