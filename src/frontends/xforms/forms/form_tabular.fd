@@ -514,7 +514,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 205 55 115 25
+box: 205 80 115 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -532,7 +532,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 205 80 115 25
+box: 205 55 115 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -582,60 +582,6 @@ gravity: FL_NoGravity FL_NoGravity
 name: 
 callback: 
 argument: 
-
---------------------
-class: FL_CHECKBUTTON
-type: RADIO_BUTTON
-box: 345 30 110 25
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Top|#p
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_valign_top
-callback: C_FormTabularInputCB
-argument: 0
-
---------------------
-class: FL_CHECKBUTTON
-type: RADIO_BUTTON
-box: 345 55 115 25
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Center|#n
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_valign_center
-callback: C_FormTabularInputCB
-argument: 0
-
---------------------
-class: FL_CHECKBUTTON
-type: RADIO_BUTTON
-box: 345 80 115 25
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Bottom|#o
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_valign_bottom
-callback: C_FormTabularInputCB
-argument: 0
 
 --------------------
 class: FL_TEXT
@@ -709,6 +655,60 @@ name:
 callback: 
 argument: 
 
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 345 30 125 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Top|#p
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_valign_top
+callback: C_FormTabularInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 345 55 125 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Center|#n
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_valign_center
+callback: C_FormTabularInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 345 80 120 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Bottom|#o
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_valign_bottom
+callback: C_FormTabularInputCB
+argument: 0
+
 =============== FORM ===============
 Name: form_cell_options
 Width: 505
@@ -721,6 +721,24 @@ type: UP_BOX
 box: 0 0 505 227
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 335 110 155 100
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
@@ -798,24 +816,6 @@ style: FL_BOLD_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: H. Alignment
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 340 110 130 100
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -934,7 +934,7 @@ argument: 0
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 165 15 305 85
+box: 165 15 325 85
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -952,7 +952,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 175 30 280 30
+box: 175 30 310 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -988,7 +988,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 360 65 95 30
+box: 360 65 125 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1096,7 +1096,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 195 145 115 25
+box: 195 170 115 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1114,7 +1114,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 195 170 115 25
+box: 195 145 115 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1131,8 +1131,8 @@ argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
-type: RADIO_BUTTON
-box: 340 120 110 25
+type: PUSH_BUTTON
+box: 345 120 140 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1149,8 +1149,8 @@ argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
-type: RADIO_BUTTON
-box: 340 145 115 25
+type: PUSH_BUTTON
+box: 345 145 140 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1167,8 +1167,8 @@ argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
-type: RADIO_BUTTON
-box: 340 170 115 25
+type: PUSH_BUTTON
+box: 345 170 140 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER

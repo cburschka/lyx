@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Fri Jul 14 15:53:33 2000.**/
+/** Header file generated with fdesign on Mon Jul 17 13:48:45 2000.**/
 
 #ifndef FD_form_tabular_h_
 #define FD_form_tabular_h_
@@ -52,10 +52,10 @@ struct FD_form_column_options {
 	FL_OBJECT *radio_align_right;
 	FL_OBJECT *radio_align_center;
 	FL_OBJECT *input_column_width;
+	FL_OBJECT *input_special_alignment;
 	FL_OBJECT *radio_valign_top;
 	FL_OBJECT *radio_valign_center;
 	FL_OBJECT *radio_valign_bottom;
-	FL_OBJECT *input_special_alignment;
 };
 struct FD_form_cell_options {
 

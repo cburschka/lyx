@@ -1,3 +1,12 @@
+2000-07-17  Juergen Vigna  <jug@sad.it>
+
+	* src/tabular.C (Validate): check if array-package is needed.
+	(SetVAlignment): added support for vertical alignment.
+	(SetLTFoot): better support for longtable header/footers
+	(Latex): modified to support added features.
+
+	* src/LaTeXFeatures.[Ch]: added array-package.
+
 2000-07-17  R. Lahaye  <lahaye@postech.ac.kr>
 
 	* src/lyx_gui.C (LyXGUI): make sure that the height is large

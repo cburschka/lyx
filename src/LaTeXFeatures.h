@@ -55,6 +55,8 @@ struct LaTeXFeatures {
 	//@Man: Packages
 	//@{
 	///
+	bool array;
+	///
 	bool color;     // color.sty
 #ifdef USE_GRAPHICX
 	///

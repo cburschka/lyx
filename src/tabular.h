@@ -30,7 +30,7 @@ class Buffer;
 ///
 class LyXTabular  {
 public:
-    // Are the values of these enums important? (Lgb)
+
     enum {
 	APPEND_ROW = 0,
 	APPEND_COLUMN,
@@ -40,9 +40,22 @@ public:
 	TOGGLE_LINE_BOTTOM,
 	TOGGLE_LINE_LEFT,
 	TOGGLE_LINE_RIGHT,
-	ALIGN_LEFT, // what are these alignment enums used for?
+	ALIGN_LEFT,
 	ALIGN_RIGHT,
 	ALIGN_CENTER,
+	VALIGN_TOP,
+	VALIGN_BOTTOM,
+	VALIGN_CENTER,
+	M_TOGGLE_LINE_TOP,
+	M_TOGGLE_LINE_BOTTOM,
+	M_TOGGLE_LINE_LEFT,
+	M_TOGGLE_LINE_RIGHT,
+	M_ALIGN_LEFT,
+	M_ALIGN_RIGHT,
+	M_ALIGN_CENTER,
+	M_VALIGN_TOP,
+	M_VALIGN_BOTTOM,
+	M_VALIGN_CENTER,
 	DELETE_TABULAR,
 	MULTICOLUMN,
 	SET_ALL_LINES,
@@ -50,6 +63,7 @@ public:
 	SET_LONGTABULAR,
 	UNSET_LONGTABULAR,
 	SET_PWIDTH,
+	SET_MPWIDTH,
 	SET_ROTATE_TABULAR,
 	UNSET_ROTATE_TABULAR,
 	SET_ROTATE_CELL,
@@ -69,6 +83,17 @@ public:
 	CELL_BEGIN_OF_MULTICOLUMN,
 	CELL_PART_OF_MULTICOLUMN
     };
+
+    ///
+    enum VAlignment {
+	///
+	LYX_VALIGN_TOP = 0,
+	///
+	LYX_VALIGN_BOTTOM = 1,
+	///
+	LYX_VALIGN_CENTER = 2
+    };
+
     /* konstruktor */
     ///
     LyXTabular(InsetTabular *, int columns_arg, int rows_arg);
@@ -86,13 +111,13 @@ public:
     LyXTabular * Clone(InsetTabular *);
     
     /// Returns true if there is a topline, returns false if not
-    bool TopLine(int cell) const;
+    bool TopLine(int cell, bool onlycolumn=false) const;
     /// Returns true if there is a topline, returns false if not
-    bool BottomLine(int cell) const;
+    bool BottomLine(int cell, bool onlycolumn=false) const;
     /// Returns true if there is a topline, returns false if not
-    bool LeftLine(int cell) const;
+    bool LeftLine(int cell, bool onlycolumn=false) const;
     /// Returns true if there is a topline, returns false if not
-    bool RightLine(int cell) const;
+    bool RightLine(int cell, bool onlycolumn=false) const;
     
     ///
     bool TopAlreadyDrawed(int cell) const;
@@ -126,23 +151,33 @@ public:
     /// Returns true if a complete update is necessary, otherwise false
     bool SetAllLines(int cell, bool line);
     /// Returns true if a complete update is necessary, otherwise false
-    bool SetTopLine(int cell, bool line);
+    bool SetTopLine(int cell, bool line, bool onlycolumn=false);
     /// Returns true if a complete update is necessary, otherwise false
-    bool SetBottomLine(int cell, bool line);
+    bool SetBottomLine(int cell, bool line, bool onlycolumn=false);
     /// Returns true if a complete update is necessary, otherwise false
-    bool SetLeftLine(int cell, bool line);
+    bool SetLeftLine(int cell, bool line, bool onlycolumn=false);
     /// Returns true if a complete update is necessary, otherwise false
-    bool SetRightLine(int cell, bool line);
+    bool SetRightLine(int cell, bool line, bool onlycolumn=false);
     /// Returns true if a complete update is necessary, otherwise false
-    bool SetAlignment(int cell, char align);
+    bool SetAlignment(int cell, char align, bool onlycolumn = false);
+    /// Returns true if a complete update is necessary, otherwise false
+    bool SetVAlignment(int cell, char align, bool onlycolumn = false);
     ///
-    bool SetPWidth(int cell, string const & width);
+    bool SetColumnPWidth(int cell, string const & width);
+    ///
+    bool SetMColumnPWidth(int cell, string const & width);
     ///
     bool SetAlignSpecial(int cell, string const & special, int what);
     ///
-    char GetAlignment(int cell) const; // add approp. signedness
+    char GetAlignment(int cell, bool onlycolumn = false) const;
+    ///
+    char GetVAlignment(int cell, bool onlycolumn = false) const;
     ///
     string GetPWidth(int cell) const;
+    ///
+    string GetColumnPWidth(int cell) const;
+    ///
+    string GetMColumnPWidth(int cell) const;
     ///
     string GetAlignSpecial(int cell, int what) const;
     ///
@@ -242,15 +277,15 @@ public:
     ///
     void SetLTHead(int cell, bool first);
     ///
-    bool GetRowOfLTHead(int cell) const;
+    bool GetRowOfLTHead(int cell, int & row) const;
     ///
-    bool GetRowOfLTFirstHead(int cell) const;
+    bool GetRowOfLTFirstHead(int cell, int & row) const;
     ///
     void SetLTFoot(int cell, bool last);
     ///
-    bool GetRowOfLTFoot(int cell) const;
+    bool GetRowOfLTFoot(int cell, int & row) const;
     ///
-    bool GetRowOfLTLastFoot(int cell) const;
+    bool GetRowOfLTLastFoot(int cell, int & row) const;
     ///
     void SetLTNewPage(int cell, bool what);
     ///
@@ -284,9 +319,11 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	int width_of_cell;
 	///
-	int  multicolumn; // add approp. signedness
+	int multicolumn;
 	///
-	int alignment; // add approp. signedness
+	int alignment;
+	///
+	int valignment;
 	///
 	bool top_line;
 	///
@@ -336,7 +373,8 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	    //columnstruct & operator=(columnstruct const &);
 	///
-	int alignment; // add approp. signedness
+	int alignment;
+	int valignment;
 	bool left_line;
 	bool right_line;
 	int  width_of_column;

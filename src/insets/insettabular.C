@@ -1038,14 +1038,29 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
         what;
 
     switch (feature) {
+      case LyXTabular::M_ALIGN_LEFT:
       case LyXTabular::ALIGN_LEFT:
           setAlign=LYX_ALIGN_LEFT;
           break;
+      case LyXTabular::M_ALIGN_RIGHT:
       case LyXTabular::ALIGN_RIGHT:
           setAlign=LYX_ALIGN_RIGHT;
           break;
+      case LyXTabular::M_ALIGN_CENTER:
       case LyXTabular::ALIGN_CENTER:
           setAlign=LYX_ALIGN_CENTER;
+          break;
+      case LyXTabular::M_VALIGN_TOP:
+      case LyXTabular::VALIGN_TOP:
+          setAlign=LyXTabular::LYX_VALIGN_TOP;
+          break;
+      case LyXTabular::M_VALIGN_BOTTOM:
+      case LyXTabular::VALIGN_BOTTOM:
+          setAlign=LyXTabular::LYX_VALIGN_BOTTOM;
+          break;
+      case LyXTabular::M_VALIGN_CENTER:
+      case LyXTabular::VALIGN_CENTER:
+          setAlign=LyXTabular::LYX_VALIGN_CENTER;
           break;
       default:
           break;
@@ -1078,16 +1093,30 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 
     int row = tabular->row_of_cell(actcell);
     int column = tabular->column_of_cell(actcell);
-
+    bool flag = true;
+    
     switch (feature) {
     case LyXTabular::SET_PWIDTH:
     {
-	bool update = (tabular->GetPWidth(actcell) != val);
-	tabular->SetPWidth(actcell,val);
+	bool update = (tabular->GetColumnPWidth(actcell) != val);
+	tabular->SetColumnPWidth(actcell,val);
 	if (update) {
 	    for (int i=0; i < tabular->rows(); ++i) {
 		tabular->GetCellInset(tabular->GetCellNumber(i, column))->
-		    deleteLyXText(bv);
+		    resizeLyXText(bv);
+	    }
+	    UpdateLocal(bv, INIT, true);
+	}
+    }
+    break;
+    case LyXTabular::SET_MPWIDTH:
+    {
+	bool update = (tabular->GetPWidth(actcell) != val);
+	tabular->SetMColumnPWidth(actcell,val);
+	if (update) {
+	    for (int i=0; i < tabular->rows(); ++i) {
+		tabular->GetCellInset(tabular->GetCellNumber(i, column))->
+		    resizeLyXText(bv);
 	    }
 	    UpdateLocal(bv, INIT, true);
 	}
@@ -1123,43 +1152,75 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 	actcell = tabular->GetCellNumber(row, column);
 	UpdateLocal(bv, INIT, true);
 	break;
+    case LyXTabular::M_TOGGLE_LINE_TOP:
+	flag = false;
     case LyXTabular::TOGGLE_LINE_TOP:
-	lineSet = !tabular->TopLine(actcell);
+	lineSet = !tabular->TopLine(actcell, flag);
 	for(i=sel_row_start; i<=sel_row_end; ++i)
 	    for(j=sel_col_start; j<=sel_col_end; ++j)
-		tabular->SetTopLine(tabular->GetCellNumber(i,j),lineSet);
+		tabular->SetTopLine(tabular->GetCellNumber(i,j),lineSet, flag);
 	UpdateLocal(bv, INIT, true);
 	break;
     
+    case LyXTabular::M_TOGGLE_LINE_BOTTOM:
+	flag = false;
     case LyXTabular::TOGGLE_LINE_BOTTOM:
-	lineSet = !tabular->BottomLine(actcell); 
+	lineSet = !tabular->BottomLine(actcell, flag); 
 	for(i=sel_row_start; i<=sel_row_end; ++i)
 	    for(j=sel_col_start; j<=sel_col_end; ++j)
-		tabular->SetBottomLine(tabular->GetCellNumber(i,j),lineSet);
+		tabular->SetBottomLine(tabular->GetCellNumber(i,j),lineSet,
+				       flag);
 	UpdateLocal(bv, INIT, true);
 	break;
 		
+    case LyXTabular::M_TOGGLE_LINE_LEFT:
+	flag = false;
     case LyXTabular::TOGGLE_LINE_LEFT:
-	lineSet = !tabular->LeftLine(actcell);
+	lineSet = !tabular->LeftLine(actcell, flag);
 	for(i=sel_row_start; i<=sel_row_end; ++i)
 	    for(j=sel_col_start; j<=sel_col_end; ++j)
-		tabular->SetLeftLine(tabular->GetCellNumber(i,j),lineSet);
+		tabular->SetLeftLine(tabular->GetCellNumber(i,j),lineSet,
+				     flag);
 	UpdateLocal(bv, INIT, true);
 	break;
 
+    case LyXTabular::M_TOGGLE_LINE_RIGHT:
+	flag = false;
     case LyXTabular::TOGGLE_LINE_RIGHT:
-	lineSet = !tabular->RightLine(actcell);
+	lineSet = !tabular->RightLine(actcell, flag);
 	for(i=sel_row_start; i<=sel_row_end; ++i)
 	    for(j=sel_col_start; j<=sel_col_end; ++j)
-		tabular->SetRightLine(tabular->GetCellNumber(i,j),lineSet);
+		tabular->SetRightLine(tabular->GetCellNumber(i,j),lineSet,
+				      flag);
 	UpdateLocal(bv, INIT, true);
 	break;
+    case LyXTabular::M_ALIGN_LEFT:
+    case LyXTabular::M_ALIGN_RIGHT:
+    case LyXTabular::M_ALIGN_CENTER:
+	flag = false;
     case LyXTabular::ALIGN_LEFT:
     case LyXTabular::ALIGN_RIGHT:
     case LyXTabular::ALIGN_CENTER:
 	for(i=sel_row_start; i<=sel_row_end; ++i)
 	    for(j=sel_col_start; j<=sel_col_end; ++j)
-		tabular->SetAlignment(tabular->GetCellNumber(i,j),setAlign);
+		tabular->SetAlignment(tabular->GetCellNumber(i,j),setAlign,
+				      flag);
+	if (hasSelection())
+	    UpdateLocal(bv, INIT, true);
+	else
+	    UpdateLocal(bv, CELL, true);
+	break;
+    case LyXTabular::M_VALIGN_TOP:
+    case LyXTabular::M_VALIGN_BOTTOM:
+    case LyXTabular::M_VALIGN_CENTER:
+	flag = false;
+    case LyXTabular::VALIGN_TOP:
+    case LyXTabular::VALIGN_BOTTOM:
+    case LyXTabular::VALIGN_CENTER:
+	for(i=sel_row_start; i<=sel_row_end; ++i)
+	    for(j=sel_col_start; j<=sel_col_end; ++j)
+		tabular->SetVAlignment(tabular->GetCellNumber(i,j), setAlign,
+				       flag);
 	if (hasSelection())
 	    UpdateLocal(bv, INIT, true);
 	else

@@ -29,6 +29,7 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
 	: layout(n, false), params(p)
 {
 	// packages
+	array = false;
 	color = false;
 	graphics = false;
 	setspace = false;
@@ -73,7 +74,9 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
 }
 
 void LaTeXFeatures::require(string const & name) {
-	if (name == "color") {
+	if (name == "array") {
+		array = true;
+	} else if (name == "color") {
 		color = true;
 	} else if (name == "graphics") {
 #ifdef USE_GRAPHICX
@@ -125,6 +128,10 @@ string LaTeXFeatures::getPackages()
 	string packages;
 	LyXTextClass const & tclass =
 		textclasslist.TextClass(params.textclass);
+
+	// array-package
+	if (array)
+		packages += "\\usepackage{array}\n";
 
 	// color.sty
 	if (color) {
