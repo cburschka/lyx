@@ -1,3 +1,8 @@
+2003-01-21  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C (dumpPreamble): ensure that \lyxlock does not prevent
+	previews from being generated.
+
 2003-01-13  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsCacheItem.C (findTargetFormat): define the default conversion

@@ -562,6 +562,19 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	// Dump the preamble only.
 	tmp.makeLaTeXFile(os, buffer_.filePath(), true, false, true);
 
+	// FIXME! This is a HACK! The proper fix is to control the 'true'
+	// passed to WriteStream below:
+	// int InsetFormula::latex(Buffer const *, ostream & os,
+	//                         bool fragile, bool) const
+	// {
+	//	WriteStream wi(os, fragile, true);
+	//	par_->write(wi);
+	//	return wi.line();
+	// }
+	os << "\n"
+	   << "\\def\\lyxlock{}\n"
+	   << "\n";
+
 	// Loop over the insets in the buffer and dump all the math-macros.
 	Buffer::inset_iterator it  = buffer_.inset_const_iterator_begin();
 	Buffer::inset_iterator end = buffer_.inset_const_iterator_end();
