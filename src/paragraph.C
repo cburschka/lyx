@@ -286,25 +286,20 @@ void Paragraph::cutIntoMinibuffer(BufferParams const & bparams, pos_type pos)
 			minibuffer_char = ' ';
 			// This reflects what GetInset() does (ARRae)
 		}
-
 	}
-
-	// Erase(pos); now the caller is responsible for that.
 }
 
 
 bool Paragraph::insertFromMinibuffer(pos_type pos)
 {
 	if (minibuffer_char == Paragraph::META_INSET) {
-		if (!insetAllowed(minibuffer_inset->lyxCode())) {
+		if (!insetAllowed(minibuffer_inset->lyxCode()))
 			return false;
-		}
 		insertInset(pos, minibuffer_inset, minibuffer_font);
 	} else {
 		LyXFont f = minibuffer_font;
-		if (!checkInsertChar(f)) {
+		if (!checkInsertChar(f))
 			return false;
-		}
 		insertChar(pos, minibuffer_char, f);
 	}
 	return true;
@@ -341,8 +336,7 @@ bool Paragraph::checkInsertChar(LyXFont & font)
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c)
 {
-	LyXFont const f(LyXFont::ALL_INHERIT);
-	insertChar(pos, c, f);
+	insertChar(pos, c, LyXFont(LyXFont::ALL_INHERIT));
 }
 
 
@@ -355,8 +349,7 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 
 void Paragraph::insertInset(pos_type pos, InsetOld * inset)
 {
-	LyXFont const f(LyXFont::ALL_INHERIT);
-	insertInset(pos, inset, f);
+	insertInset(pos, inset, LyXFont(LyXFont::ALL_INHERIT));
 }
 
 
@@ -397,21 +390,19 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
-	for (; cit != end; ++cit) {
+	for (; cit != end; ++cit)
 		if (cit->pos() >= pos)
 			break;
-	}
 
-	LyXFont retfont;
 	if (cit != end)
-		retfont = cit->font();
-	else if (pos == size() && !empty())
-		retfont = getFontSettings(bparams, pos - 1);
-	else
-		retfont = LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
+		return cit->font();
 
-	return retfont;
+	if (pos == size() && !empty())
+		return getFontSettings(bparams, pos - 1);
+
+	return LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
 }
+
 
 lyx::pos_type 
 Paragraph::getEndPosOfFontSpan(lyx::pos_type pos) const 
@@ -420,11 +411,12 @@ Paragraph::getEndPosOfFontSpan(lyx::pos_type pos) const
 
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
-	for (; cit != end; ++cit) {
+	for (; cit != end; ++cit)
 		if (cit->pos() >= pos)
 			return cit->pos();
-	}
+
 	// This should not happen, but if so, we take no chances.
+	lyxerr << "Pararaph::getEndPosOfFontSpan: This should not happen!\n";
 	return pos;
 }
 
@@ -471,13 +463,10 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 LyXFont const Paragraph::getLabelFont(BufferParams const & bparams,
 				      LyXFont const & outerfont) const
 {
-	LyXLayout_ptr const & lout = layout();
-
-	LyXFont tmpfont = lout->labelfont;
+	LyXFont tmpfont = layout()->labelfont;
 	tmpfont.setLanguage(getParLanguage(bparams));
 	tmpfont.realize(outerfont);
 	tmpfont.realize(bparams.getLyXTextClass().defaultfont());
-
 	return tmpfont;
 }
 
@@ -485,13 +474,10 @@ LyXFont const Paragraph::getLabelFont(BufferParams const & bparams,
 LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams,
 				       LyXFont const & outerfont) const
 {
-	LyXLayout_ptr const & lout = layout();
-
-	LyXFont tmpfont = lout->font;
+	LyXFont tmpfont = layout()->font;
 	tmpfont.setLanguage(getParLanguage(bparams));
 	tmpfont.realize(outerfont);
 	tmpfont.realize(bparams.getLyXTextClass().defaultfont());
-
 	return tmpfont;
 }
 
