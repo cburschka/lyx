@@ -1,3 +1,9 @@
+2004-09-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* output_latex.C (TeXOnePar): make sure font setting is the first
+	thing that gets output (and the last at the end). Should fix bug
+	1404.
+
 2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pch.h: use proper signal include

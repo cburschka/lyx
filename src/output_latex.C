@@ -223,38 +223,12 @@ TeXOnePar(Buffer const & buf,
 	bool further_blank_line = false;
 	LyXLayout_ptr style;
 
-	// well we have to check if we are in an inset with unlimited
-	// length (all in one row) if that is true then we don't allow
-	// any special options in the paragraph and also we don't allow
-	// any environment other then "Standard" to be valid!
-	if (!pit->forceDefaultParagraphs()) {
+	// In an an inset with unlimited length (all in one row),
+	// force layout to default
+	if (!pit->forceDefaultParagraphs()) 
 		style = pit->layout();
-
-		if (pit->params().startOfAppendix()) {
-			os << "\\appendix\n";
-			texrow.newline();
-		}
-
-		if (!pit->params().spacing().isDefault()
-			&& (pit == paragraphs.begin()
-			    || !boost::prior(pit)->hasSameLayout(*pit)))
-		{
-			os << pit->params().spacing().writeEnvirBegin() << '\n';
-			texrow.newline();
-		}
-
-		if (style->isCommand()) {
-			os << '\n';
-			texrow.newline();
-		}
-
-		if (further_blank_line) {
-			os << '\n';
-			texrow.newline();
-		}
-	} else {
+	else
 		style = bparams.getLyXTextClass().defaultLayout();
-	}
 
 	Language const * language = pit->getParLanguage(bparams);
 	Language const * doc_language = bparams.language;
@@ -297,6 +271,33 @@ TeXOnePar(Buffer const & buf,
 		   << "}\n";
 		texrow.newline();
 	}
+
+	// In an an inset with unlimited length (all in one row),
+	// don't allow any special options in the paragraph
+	if (!pit->forceDefaultParagraphs()) {
+		if (pit->params().startOfAppendix()) {
+			os << "\\appendix\n";
+			texrow.newline();
+		}
+
+		if (!pit->params().spacing().isDefault()
+			&& (pit == paragraphs.begin()
+			    || !boost::prior(pit)->hasSameLayout(*pit)))
+		{
+			os << pit->params().spacing().writeEnvirBegin() << '\n';
+			texrow.newline();
+		}
+
+		if (style->isCommand()) {
+			os << '\n';
+			texrow.newline();
+		}
+
+		if (further_blank_line) {
+			os << '\n';
+			texrow.newline();
+		}
+	} 
 
 	switch (style->latextype) {
 	case LATEX_COMMAND:
@@ -387,6 +388,23 @@ paragraphs);
 		}
 	}
 
+	if (!pit->forceDefaultParagraphs()) {
+		further_blank_line = false;
+
+		if (further_blank_line) {
+			os << '\n';
+			texrow.newline();
+		}
+
+		if (!pit->params().spacing().isDefault()
+			&& (boost::next(pit) == paragraphs.end()
+			    || !boost::next(pit)->hasSameLayout(*pit)))
+		{
+			os << pit->params().spacing().writeEnvirEnd() << '\n';
+			texrow.newline();
+		}
+	}
+
 	if (boost::next(pit) == const_cast<ParagraphList&>(paragraphs).end()
 	    && language->babel() != doc_language->babel()) {
 		// Since \selectlanguage write the language to the aux file,
@@ -404,23 +422,6 @@ paragraphs);
 				    language->babel())
 			   << endl;
 		texrow.newline();
-	}
-
-	if (!pit->forceDefaultParagraphs()) {
-		further_blank_line = false;
-
-		if (further_blank_line) {
-			os << '\n';
-			texrow.newline();
-		}
-
-		if (!pit->params().spacing().isDefault()
-			&& (boost::next(pit) == paragraphs.end()
-			    || !boost::next(pit)->hasSameLayout(*pit)))
-		{
-			os << pit->params().spacing().writeEnvirEnd() << '\n';
-			texrow.newline();
-		}
 	}
 
 	// we don't need it for the last paragraph!!!
