@@ -24,11 +24,12 @@ Toolbar::Toolbar(LyXView * o, int x, int y, ToolbarBackend const & backend)
 {
 	pimpl_ = new Pimpl(o, x, y);
 
-	// extracts the toolbar actions from  the backend
-	for (ToolbarBackend::const_iterator cit = backend.begin();
-	     cit != backend.end(); ++cit) {
-		pimpl_->add(cit->first, cit->second);
-	}
+	// extracts the toolbars from the backend
+	ToolbarBackend::Toolbars::const_iterator cit = backend.begin();
+	ToolbarBackend::Toolbars::const_iterator end = backend.end();
+
+	for (; cit != end; ++cit)
+		pimpl_->add(*cit);
 }
 
 

@@ -38,28 +38,30 @@ public:
 	/// the toolbar items
 	typedef std::vector<std::pair<int, string> > Items;
 
-	typedef Items::iterator iterator;
+	/// a toolbar
+	struct Toolbar {
+		/// toolbar UI name
+		string name;
+		/// toolbar contents
+		Items items;
+	};
 
-	typedef Items::const_iterator const_iterator;
-	///
+	typedef std::vector<Toolbar> Toolbars;
+
+	typedef Items::const_iterator item_iterator;
+
 	ToolbarBackend();
-	///
-	iterator begin() {
-		return items.begin();
+
+	/// iterator for all toolbars
+	Toolbars::const_iterator begin() const {
+		return toolbars.begin();
 	}
-	///
-	const_iterator begin() const {
-		return items.begin();
+
+	Toolbars::const_iterator end() const {
+		return toolbars.end();
 	}
-	///
-	iterator end() {
-		return items.end();
-	}
-	///
-	const_iterator end() const {
-		return items.end();
-	}
-	///
+
+	/// read a toolbar from the file
 	void read(LyXLex &);
 
 	/// return a full path of an XPM for the given action
@@ -67,11 +69,13 @@ public:
 
 private:
 	/// add the given lfun with tooltip if relevant
-	void add(int, string const & tooltip = string());
+	void add(Toolbar & tb, int, string const & tooltip = string());
+
 	/// add the given lfun with tooltip if relevant
-	void add(string const &, string const & tooltip);
-	/// all the items
-	Items items;
+	void add(Toolbar & tb, string const &, string const & tooltip);
+
+	/// all the toolbars
+	Toolbars toolbars;
 };
 
 /// The global instance

@@ -26,7 +26,6 @@
 #include "Tooltips.h"
 #include FORMS_H_LOCATION
 #include "combox.h"
-#include "ToolbarBackend.h"
 #include "xforms_helpers.h"
 
 #include "LyXAction.h"
@@ -264,6 +263,19 @@ void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
 }
 
 } // namespace anon
+
+
+void Toolbar::Pimpl::add(ToolbarBackend::Toolbar const & tb)
+{
+	// we can only handle one toolbar
+	if (!toollist_.empty())
+		return;
+
+	ToolbarBackend::item_iterator it = tb.items.begin();
+	ToolbarBackend::item_iterator end = tb.items.end();
+	for (; it != end; ++it)
+		add(it->first, it->second);
+}
 
 
 void Toolbar::Pimpl::add(int action, string const & tooltip)

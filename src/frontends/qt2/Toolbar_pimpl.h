@@ -14,6 +14,7 @@
 
 
 #include "frontends/Toolbar.h"
+#include "ToolbarBackend.h"
 
 #include "qt_helpers.h"
 
@@ -37,8 +38,11 @@ public:
 
 	~Pimpl();
 
-	/// add a new button to the toolbar.
-	void add(int action, string const & tooltip);
+	/// add a new toolbar
+	void add(ToolbarBackend::Toolbar const & tb);
+
+	/// add an item to a toolbar
+	void add(QToolBar * tb, int action, string const & tooltip);
 
 	/// update the state of the icons
 	void update();

@@ -28,12 +28,11 @@ ToolbarBackend toolbarbackend;
 
 namespace {
 
-enum _tooltags {
+enum tooltags {
 	TO_ADD = 1,
 	TO_ENDTOOLBAR,
 	TO_SEPARATOR,
 	TO_LAYOUTS,
-	TO_NEWLINE,
 	TO_LAST
 };
 
@@ -42,7 +41,6 @@ struct keyword_item toolTags[TO_LAST - 1] = {
 	{ "end", TO_ENDTOOLBAR },
 	{ "item", TO_ADD },
 	{ "layouts", TO_LAYOUTS },
-	{ "newline", TO_NEWLINE },
 	{ "separator", TO_SEPARATOR }
 };
 
@@ -54,12 +52,6 @@ ToolbarBackend::ToolbarBackend()
 }
 
 
-void ToolbarBackend::add(int action, string const & tooltip)
-{
-	items.push_back(make_pair(action, tooltip));
-}
-
-
 void ToolbarBackend::read(LyXLex & lex)
 {
 	//consistency check
@@ -67,6 +59,11 @@ void ToolbarBackend::read(LyXLex & lex)
 		lyxerr << "ToolbarBackend::read: ERROR wrong token:`"
 		       << lex.getString() << '\'' << endl;
 	}
+
+	lex.next(true);
+
+	Toolbar tb;
+	tb.name = lex.getString();
 
 	bool quit = false;
 
@@ -85,20 +82,16 @@ void ToolbarBackend::read(LyXLex & lex)
 				lyxerr[Debug::PARSER]
 					<< "ToolbarBackend::read TO_ADD func: `"
 					<< func << '\'' << endl;
-				add(func, tooltip);
+				add(tb, func, tooltip);
 			}
 			break;
 
 		case TO_SEPARATOR:
-			add(SEPARATOR);
+			add(tb, SEPARATOR);
 			break;
 
 		case TO_LAYOUTS:
-			add(LAYOUTS);
-			break;
-
-		case TO_NEWLINE:
-			add(NEWLINE);
+			add(tb, LAYOUTS);
 			break;
 
 		case TO_ENDTOOLBAR:
@@ -110,11 +103,20 @@ void ToolbarBackend::read(LyXLex & lex)
 			break;
 		}
 	}
+
+	toolbars.push_back(tb);
+
 	lex.popTable();
 }
 
 
-void ToolbarBackend::add(string const & func, string const & tooltip)
+void ToolbarBackend::add(Toolbar & tb, int action, string const & tooltip)
+{
+	tb.items.push_back(make_pair(action, tooltip));
+}
+
+
+void ToolbarBackend::add(Toolbar & tb, string const & func, string const & tooltip)
 {
 	int const tf = lyxaction.LookupFunc(func);
 
@@ -122,7 +124,7 @@ void ToolbarBackend::add(string const & func, string const & tooltip)
 		lyxerr << "ToolbarBackend::add: no LyX command called `"
 		       << func << "' exists!" << endl;
 	} else {
-		add(tf, tooltip);
+		add(tb, tf, tooltip);
 	}
 }
 

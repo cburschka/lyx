@@ -282,6 +282,13 @@ $(srcdir)/default_ui_l10n.pot: $(top_srcdir)/lib/ui/default.ui
 	        printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
                        FILENAME, FNR, line); \
             } \
+	    /^[^#]*Toolbar/ { \
+		line=$$0; \
+                sub(/[^"]*"/, "", line); \
+                sub(/".*/, "", line); \
+	        printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
+                       FILENAME, FNR, line); \
+            } \
             /^[^#]*Item/ { \
 		line=$$0; \
                 sub(/[^"]*"/, "", line); \

@@ -17,6 +17,7 @@
 #include "forms_fwd.h"
 
 #include "frontends/Toolbar.h"
+#include "ToolbarBackend.h"
 
 
 class XFormsView;
@@ -31,7 +32,10 @@ public:
 
 	~Pimpl();
 
-	/// add a new button to the toolbar.
+	/// add a new toolbar
+	void add(ToolbarBackend::Toolbar const & tb);
+
+	/// add an item to a toolbar
 	void add(int action, string const & tooltip);
 
 	/// update the state of the icons

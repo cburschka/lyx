@@ -12,7 +12,6 @@
 #include <config.h>
 
 
-#include "ToolbarBackend.h"
 #include "debug.h"
 #include "gettext.h"
 #include "lyxfunc.h"
@@ -193,21 +192,27 @@ void Toolbar::Pimpl::openLayoutList()
 }
 
 
-void Toolbar::Pimpl::add(int action, string const & tooltip)
+void Toolbar::Pimpl::add(ToolbarBackend::Toolbar const & tb)
 {
-	if (!toolbars_.size()) {
-		toolbars_.push_back(new QToolBar(owner_));
-	}
+	QToolBar * qtb = new QToolBar(qt_(tb.name), owner_);
 
+	ToolbarBackend::item_iterator it = tb.items.begin();
+	ToolbarBackend::item_iterator end = tb.items.end();
+	for (; it != end; ++it)
+		add(qtb, it->first, it->second);
+
+	toolbars_.push_back(qtb);
+}
+
+
+void Toolbar::Pimpl::add(QToolBar * tb, int action, string const & tooltip)
+{
 	switch (action) {
 	case ToolbarBackend::SEPARATOR:
-		toolbars_.back()->addSeparator();
-		break;
-	case ToolbarBackend::NEWLINE:
-		toolbars_.push_back(new QToolBar(owner_));
+		tb->addSeparator();
 		break;
 	case ToolbarBackend::LAYOUTS: {
-		combo_ = new QLComboBox(toolbars_.back());
+		combo_ = new QLComboBox(tb);
 		QSizePolicy p(QSizePolicy::Minimum, QSizePolicy::Fixed);
 		combo_->setSizePolicy(p);
 		combo_->setFocusPolicy(QWidget::ClickFocus);
@@ -219,11 +224,11 @@ void Toolbar::Pimpl::add(int action, string const & tooltip)
 	}
 	default: {
 		QPixmap p = QPixmap(toolbarbackend.getIcon(action).c_str());
-		QToolButton * tb =
+		QToolButton * button =
 			new QToolButton(p, toqstr(tooltip), "",
-			proxy_.get(), SLOT(button_selected()), toolbars_.back());
+			proxy_.get(), SLOT(button_selected()), tb);
 
-		map_[tb] = action;
+		map_[button] = action;
 		break;
 	}
 	}
