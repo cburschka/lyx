@@ -52,12 +52,12 @@ libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)
 # These are used to generate the .[Ch] files from the .fd ones.
 SHELL = /bin/sh
 SCRIPT = $(srcdir)/fdfix.sh
-SUFFIXES = .fd
+SUFFIX = .fd
 
 # Make the .Ch files dependent on the fdfix files.
 $(libfdesign_la_SOURCES): $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed
 
 libfdesign.la: $(libfdesign_la_OBJECTS) $(libfdesign_la_DEPENDENCIES)
 
-%.C: %.fd
+.fd.C:
 	$(SHELL) $(SCRIPT) $<
