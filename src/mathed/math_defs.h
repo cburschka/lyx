@@ -24,10 +24,13 @@
 #pragma interface
 #endif
 
+#include "support/LIstream.h"
+
 #include "LString.h"
 #include "debug.h"
 
 #include "array.h"
+
 
 ///
 enum math_align {

@@ -18,7 +18,7 @@ my $mainscript = "reLyXmain.pl";
 # Do this in a BEGIN block so it's done before the 'use lib' below
 BEGIN{
 # This points to LyX library dir, e.g. /usr/local/share/lyx
-$lyxdir = "@LYX_DIR@";
+$lyxdir = "@pkgdatadir@";
 # This is just "." if you compiled from the source directory
 my $srcdir = "@srcdir@";
 # This is the name of the program, usually just "lyx"
@@ -34,8 +34,8 @@ my $dir = &dirname($name);
 my $i = 0;
 # case 1: for developers, e.g. - reLyX and $mainscript in same directory
 $maybe_dir[$i++] = ".";
-# case 2: environment variable LYX_DIR_12 has been set
-if (exists $ENV{LYX_DIR_10x}) { $maybe_dir[$i++] = "$ENV{LYX_DIR_10x}/reLyX"};
+# case 2: environment variable LYX_DIR_11x has been set
+if (exists $ENV{LYX_DIR_11x}) { $maybe_dir[$i++] = "$ENV{LYX_DIR_11x}/reLyX"};
 # case 3: ran make but not make install.
 $maybe_dir[$i++] = "$dir/$srcdir";
 # case 4: e.g., reLyX in /opt/bin, $mainscript in /opt/share/lyx/reLyX

@@ -3,27 +3,27 @@ AC_INIT(reLyX.in)
 AC_PREREQ(2.13) dnl We want to use autoconf 2.13
 AC_CONFIG_AUX_DIR(../../config)
 
+dnl PACKAGE=reLyX
+dnl Do this to install in $datadir/lyx/reLyX instead of $datadir/reLyX/reLyX
+
+AC_ARG_WITH(lyxname,
+  [  --with-lyxname          the name under which lyx will be installed],
+  [lyxname=$withval],[lyxname=lyx])
+
+dnl must make a macro that gets the reLyX version
+VERSION=2.0
+AM_INIT_AUTOMAKE($lyxname, $VERSION)
+
 AC_PREFIX_PROGRAM(reLyX)
 # fix the value of the prefixes.
 test "x$prefix" = xNONE && prefix=$ac_default_prefix
 test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
-
-dnl PACKAGE=reLyX
-dnl Do this to install in $datadir/lyx/reLyX instead of $datadir/reLyX/reLyX
-PACKAGE=lyx
-VERSION=2.0
-dnl must make a macro that gets the reLyX version
-AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 
 dnl Checks for programs.
 AC_PROG_INSTALL
 RELYX_CHECK_PERL
 
 dnl Finish the work
-test $program_suffix = NONE && program_suffix=
-LYX_DIR=`eval "echo \`eval \"echo ${datadir}/lyx${program_suffix}\"\`"`
-AC_SUBST(LYX_DIR)
-
 AC_OUTPUT(Makefile reLyX noweb2lyx, chmod 755 reLyX noweb2lyx)
 
 RELYX_CHECK_ERRORS

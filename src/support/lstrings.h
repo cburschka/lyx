@@ -32,8 +32,12 @@ T * lstrchr(T const * t, int c)
 {
   Assert(t); // we don't want null pointers
   T * r = const_cast<T*>(t);
-  while(*r != 0) 
-    if (*r == c) return r; else ++r;
+  while(*r != 0) { 
+    if (*r == c) 
+      return r; 
+    else 
+      ++r;
+  }
   return 0;
 }
 

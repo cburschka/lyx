@@ -18,6 +18,11 @@ In the user-visible department, we find:
 - improved translations, in particular in finnish (overhauled UI
   translation), dutch (tutorial and examples), german
 
+- new configure flag --with-lyxname which allows to choose the name
+  under which lyx is installed. Default is "lyx", of course. It used
+  to be possible to do this with --program-suffix, but the later has
+  in fact a different meaning for autoconf.
+
 And of course, a lot of old bugs have been replaced by new ones ;)
 
 

@@ -14,6 +14,8 @@
 #include <fstream>
 using std::filebuf;
 
+#include "support/LIstream.h"
+
 #include "LString.h"
 
 ///

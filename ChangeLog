@@ -1,3 +1,29 @@
+2000-01-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/block.h: disable operator T* (), since it causes
+	problems with both compilers I tried. See comments in the file.
+
+	* lib/reLyX/configure.in: do not define LYX_DIR. support flag
+	--with-lyxname. 
+
+	* lib/reLyX/reLyX.in: change LYX_DIR to pkgdatadir; change env.
+	variable LYX_DIR_10x to LYX_DIR_11x.
+
+	* src/Makefile.am: replace variable LYX_DIR with pkgdatadir.
+
+	* INSTALL: document --with-lyxname.
+	* NEWS: ditto.
+
+	* configure.in: new configure flag --with-lyxname which allows to
+	choose the name under which lyx is installed. Default is "lyx", of
+	course. It used to be possible to do this with --program-suffix,
+	but the later has in fact a different meaning for autoconf.
+
+	* src/support/lstrings.h (lstrchr): reformat a bit.
+
+	* src/lyxlex.h: include LIstream.h, for Sun CC this time.
+	* src/mathed/math_defs.h: ditto.
+
 2000-01-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/bufferlist.C (close): don't call insetUnlock if the buffer

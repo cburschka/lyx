@@ -7,7 +7,6 @@ lyx_DEPENDENCIES = mathed/libmathed.o insets/libinsets.o support/libsupport.la
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS)
 EXTRA_DIST = config.h.in stamp-h.in cheaders
 ETAGS_ARGS = --c++
-LYX_DIR = $(datadir)/$(PACKAGE)
 INCLUDES = -I${top_srcdir}/images
 localedir = $(datadir)/locale
 lyx_SOURCES = \
@@ -180,8 +179,8 @@ lyx_main.o: lyx_main.C lyx_main.h config.h version.h debug.h gettext.h \
 	lyx_gui.h lyx_gui_misc.h lyxrc.h support/path.h support/filetools.h \
 	bufferlist.h support/FileInfo.h lastfiles.h intl.h \
 	lyxserver.h layout.h gettext.h
-	$(CXXCOMPILE) -DLYX_DIR=\"$(LYX_DIR)\" -DTOP_SRCDIR=\"$(top_srcdir)\" \
-	-c $(top_srcdir)/src/lyx_main.C
+	$(CXXCOMPILE) -DLYX_DIR=\"$(pkgdatadir)\" \
+	  -DTOP_SRCDIR=\"$(top_srcdir)\" -c $(top_srcdir)/src/lyx_main.C
 
 main.o: main.C config.h lyx_main.h gettext.h LString.h support/filetools.h
 	$(CXXCOMPILE) -DLOCALEDIR=\"$(localedir)\" -c $(top_srcdir)/src/main.C

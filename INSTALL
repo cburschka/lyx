@@ -119,7 +119,12 @@ flags:
 
   o --with-extra-prefix[=DIRECTORY] that is equivalent to
        --with-extra-lib=DIRECTORY/lib --with-extra-inc=DIRECTORY/include
-   If DIRECTORY is not specified, the current prefix is used.
+    If DIRECTORY is not specified, the current prefix is used.
+
+  o --with-lyxname=STRING sets the name of the installed LyX binary and 
+    of the LyX library directory to STRING. This may be used to
+    compile lyx as lyx-1.1 and avoid clashes with earlier/later
+    versions. Default is "lyx". 
 
   o --with-two-colors=[yes|no] that forces LyX to use two colors pixmaps
     (bitmaps) instead of the full-colored standard ones.  Defaults to no.
@@ -150,10 +155,6 @@ Moreover, the following generic configure flags may be useful:
   o --prefix=DIRECTORY specifies the root directory to use for
     installation. [defaults to where lyx has already been installed or
     /usr/local]
-
-  o --program-suffix=STRING sets the name of the installed LyX binary and 
-      of the LyX library directory to lyxSTRING. This may be used to
-      compile lyx as lyx-1.0.0 and avoid clashes with earlier/later versions.
 
   o --datadir=DIRECTORY gives the directory where all extra LyX 
     files (lyxrc example, documentation, templates and layouts
