@@ -997,7 +997,8 @@ string const GetExtension(string const & name)
 // TGIF	%TGIF...
 // TIFF	II... or MM...
 // XBM	..._bits[]...
-// XPM	/* XPM */
+// XPM	/* XPM */    sometimes missing (f.ex. tgif-export)
+//      ...static char *...
 // XWD	\000\000\000\151	(0x00006900) decimal 105
 //
 // GZIP	\037\213\010\010...	http://www.ietf.org/rfc/rfc1952.txt
@@ -1042,9 +1043,9 @@ string const getExtFromContents(string const & filename)
 			break;
 		}
 
-		ifs >> str;
-		lyxerr[Debug::GRAPHICS]
-		    << "Scanstring: " << str << endl;
+		getline(ifs, str);
+		lyxerr[Debug::GRAPHICS] << "Scanstring: " << str << endl;
+		
 		string const stamp = str.substr(0,2);
 		if (firstLine && str.size() >= 2) {
 			// at first we check for a zipped file, because this
@@ -1130,7 +1131,7 @@ string const getExtFromContents(string const & filename)
 		else if (contains(str,"_bits[]"))
 			format = "xbm";
 
-		else if (contains(str,"XPM"))
+		else if (contains(str,"XPM") || contains(str, "static char *"))
 			format = "xpm";
 
 		else if (contains(str,"BITPIX"))

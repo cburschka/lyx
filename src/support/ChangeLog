@@ -1,3 +1,7 @@
+2002-04-07  Herbert Voss  <voss@perce.de>
+
+	* filetools.C: fix bug for eps. scans now a whole line
+
 2002-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxstring.C (operator>>): use the better solution, this fixes a
