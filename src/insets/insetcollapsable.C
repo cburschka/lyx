@@ -51,7 +51,7 @@ InsetCollapsable::InsetCollapsable()
 
 bool InsetCollapsable::insertInset(BufferView * bv, Inset * in)
 {
-	if (!insertInsetAllowed(in)) {
+	if (!insetAllowed(in->lyxCode())) {
 		lyxerr << "InsetCollapsable::InsertInset: "
 			"Unable to insert inset." << endl;
 		return false;
@@ -524,10 +524,10 @@ Inset * InsetCollapsable::getInsetFromID(int id_arg) const
 	return inset.getInsetFromID(id_arg);
 }
 
-void InsetCollapsable::collapsed(BufferView * bv, bool flag)
+void InsetCollapsable::open(BufferView * bv, bool flag)
 {
-	if (flag == collapsed_)
+	if (flag == !collapsed_)
 		return;
-	collapsed_ = flag;
+	collapsed_ = !flag;
 	bv->updateInset(this, false);
 }

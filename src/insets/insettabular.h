@@ -123,7 +123,7 @@ public:
 	///
 	bool insertInset(BufferView *, Inset *);
 	///
-	bool insertInsetAllowed(Inset *) const {
+	bool insetAllowed(Inset::Code) const {
 		return the_locking_inset != 0;
 	}
 	///

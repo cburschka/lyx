@@ -430,7 +430,7 @@ void Paragraph::cutIntoMinibuffer(BufferParams const & bparams,
 bool Paragraph::insertFromMinibuffer(Paragraph::size_type pos)
 {
 	if ((minibuffer_char == Paragraph::META_INSET) &&
-	    !insertInsetAllowed(minibuffer_inset))
+	    !insetAllowed(minibuffer_inset->lyxCode()))
 		return false;
 	if (minibuffer_char == Paragraph::META_INSET)
 		insertInset(pos, minibuffer_inset, minibuffer_font);
@@ -489,12 +489,12 @@ void Paragraph::insertInset(Paragraph::size_type pos,
 }
 
 
-bool Paragraph::insertInsetAllowed(Inset * inset)
+bool Paragraph::insetAllowed(Inset::Code code)
 {
 	//lyxerr << "Paragraph::InsertInsetAllowed" << endl;
 	
 	if (pimpl_->inset_owner)
-		return pimpl_->inset_owner->insertInsetAllowed(inset);
+		return pimpl_->inset_owner->insetAllowed(code);
 	return true;
 }
 

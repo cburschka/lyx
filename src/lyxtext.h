@@ -271,6 +271,8 @@ public:
 	void getWord(LyXCursor & from, LyXCursor & to, word_location) const;
 	/// just selects the word the cursor is in
 	void selectWord(BufferView *);
+	/// returns the inset at cursor (if it exists), 0 otherwise
+	Inset * getInset() const;
 
 	/** 'selects" the next word, where the cursor is not in 
 	 and returns this word as string. THe cursor will be moved 
@@ -377,7 +379,7 @@ public:
 			   Row * row_ptr, int y, bool cleared=false);
 
 	/// 
-	void openStuff(BufferView *);
+	void toggleInset(BufferView *);
 	///
 	void cutSelection(BufferView *, bool = true);
 	///

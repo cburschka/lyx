@@ -1,3 +1,17 @@
+2001-07-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* many files: update to match the change below
+
+	* inset.h (insetAllowed): renamed from insertInsetAllowed;
+	implement the version which takes an inset here.
+
+	* insetcollapsable.[Ch]: implement open and isOpen
+
+	* inset.h: remove insertInsetAllowed from Inset
+	(open): new method, to open or close an inset
+	(isOpen): returns the status of an inset
+	(isCollapsable, colapse): removed
+
 2001-07-13  Yves Bastide  <stid@libd-pc11.univ-bpclermont.fr>
 
 	* insetquotes.C (dispString): display french guillemets when using

@@ -234,18 +234,12 @@ int InsetFloat::docBook(Buffer const * buf, ostream & os) const
 }
 
 
-bool InsetFloat::insertInsetAllowed(Inset * in) const
-{
-	return insertInsetAllowed(in->lyxCode());
-}
-
-
-bool InsetFloat::insertInsetAllowed(Inset::Code code) const
+bool InsetFloat::insetAllowed(Inset::Code code) const
 {
 	if (code == Inset::FLOAT_CODE)
 		return false;
 	if (inset.getLockingInset() != const_cast<InsetFloat *>(this))
-		return inset.insertInsetAllowed(code);
+		return inset.insetAllowed(code);
 	if ((code == Inset::FOOT_CODE) || (code == Inset::MARGIN_CODE))
 		return false;
 	return true;

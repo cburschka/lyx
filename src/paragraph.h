@@ -274,7 +274,7 @@ public:
 	///
 	void insertInset(size_type pos, Inset * inset, LyXFont const &);
 	///
-	bool insertInsetAllowed(Inset * inset);
+	bool insetAllowed(Inset::Code code);
 	///
 	Inset * getInset(size_type pos);
 	///

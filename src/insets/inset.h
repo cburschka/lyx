@@ -161,6 +161,12 @@ public:
 	virtual bool doClearArea() const { return true; }
 	///
 	virtual bool autoDelete() const;
+	/// returns true the inset can hold an inset of given type
+	virtual bool insetAllowed(Inset::Code) const { return false; }
+	/// wrapper around the above
+	bool insetAllowed(Inset * in) const { 
+		return insetAllowed(in->lyxCode()); 
+	}
 	///
 	virtual void write(Buffer const *, std::ostream &) const = 0;
 	///
@@ -206,8 +212,6 @@ public:
 	/// returns true if this inset needs a row on it's own
 	///
 	virtual bool needFullRow() const { return false; }
-	///
-	virtual bool insertInsetAllowed(Inset *) const { return false; }
 	///
 	void setInsetName(string const & s) { name = s; }
 	///
@@ -258,6 +262,11 @@ public:
 	int id() const;
 	void id(int id_arg);
 
+	/// used to toggle insets
+	// is the inset open?
+	virtual bool isOpen() const { return false; }
+	// open or close the inset, depending on the bool
+	virtual void open(BufferView *, bool) {}
 protected:
 	///
 	mutable int top_x;
@@ -367,9 +376,6 @@ public:
 	///
 	virtual bool insertInset(BufferView *, Inset *) { return false; }
 	///
-	virtual bool insertInsetAllowed(Inset *) const { return false; }
-	virtual bool insertInsetAllowed(Inset::Code) const { return false; }
-	///
 	virtual UpdatableInset * getLockingInset() const {
 		return const_cast<UpdatableInset *>(this);
 	}
@@ -409,11 +415,6 @@ public:
 	virtual bool nodraw() const {
 		return block_drawing_;
 	}
-	///
-	virtual bool isCollapsable() const { return false; }
-	///
-	virtual bool collapsed() const { return false; }
-	virtual void collapsed(BufferView *, bool) {}
 	///
 	// needed for spellchecking text
 	///

@@ -40,14 +40,9 @@ void InsetFootlike::write(Buffer const * buf, std::ostream & os) const
 }
 
 
-bool InsetFootlike::insertInsetAllowed(Inset * in) const
-{
-	return insertInsetAllowed(in->lyxCode());
-}
-
-bool InsetFootlike::insertInsetAllowed(Inset::Code code) const
+bool InsetFootlike::insetAllowed(Inset::Code code) const
 {
 	if ((code == Inset::FOOT_CODE) || (code == Inset::MARGIN_CODE))
 		return false;
-	return InsetCollapsable::insertInsetAllowed(code);
+	return InsetCollapsable::insetAllowed(code);
 }

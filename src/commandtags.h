@@ -49,7 +49,7 @@ enum kb_action {
 	LFUN_COPY,
 	LFUN_GOTOERROR,
 	LFUN_GOTONOTE,
-	LFUN_OPENSTUFF,
+	LFUN_INSET_TOGGLE,
 	LFUN_HYPHENATION,
 	LFUN_HFILL,
 	LFUN_DEPTH,
@@ -233,7 +233,10 @@ enum kb_action {
 	LFUN_VC_UNDO,                   // Lgb 97-07-01
 	LFUN_VC_HISTORY,                // Lgb 97-07-01
 	LFUN_EXPORT,                    // Lgb 97-07-29
+#if 0
 	LFUN_INSERTFOOTNOTE,            // Bernhard 97-08-07
+// schedule for deletion
+#endif
 	LFUN_REF_GOTO, // 200           // Ale 970806
 	//LFUN_REF_BACK,                  // Ale 970806
 	LFUN_PARENTINSERT,		// Ale 970813

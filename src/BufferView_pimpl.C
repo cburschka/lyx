@@ -2637,13 +2637,13 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 	
-	case LFUN_OPENSTUFF:
+	case LFUN_INSET_TOGGLE:
 	{
 		LyXText * lt = bv_->getLyXText();
 		hideCursor();
 		beforeChange(lt);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		lt->openStuff(bv_);
+		lt->toggleInset(bv_);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		setState();
 	}	
@@ -3343,7 +3343,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 	// if we are in a locking inset we should try to insert the
 	// inset there otherwise this is a illegal function now
 	if (bv_->theLockingInset()) {
-		if (bv_->theLockingInset()->insertInsetAllowed(inset))
+		if (bv_->theLockingInset()->insetAllowed(inset))
 		    return bv_->theLockingInset()->insertInset(bv_, inset);
 		return false;
 	}

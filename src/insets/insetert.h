@@ -40,7 +40,7 @@ public:
 	///
 	virtual bool insertInset(BufferView *, Inset *);
 	///
-	virtual bool insertInsetAllowed(Inset *) const { return false; }
+	virtual bool insetAllowed(Inset::Code) const { return false; }
 	///
 	virtual void setFont(BufferView *, LyXFont const &,
 			     bool toggleall = false, bool selectall = false);

@@ -42,7 +42,7 @@
 # Numbering equations. Should perhaps simplify math-number and math-nonumber into one command since they are used in very different contexts. This and also math-macro stuff should be available in the Lyx menus!
 \bind "C-n"	"math-number"
 \bind "S-C-n" "math-nonumber"
-\bind "C-o"	"open-stuff"
+\bind "C-o"	"inset-toggle"
 
 # Insert a quote character. Do I need this?
 \bind "C-q"	"quote-insert"

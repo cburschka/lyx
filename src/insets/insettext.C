@@ -1410,7 +1410,7 @@ InsetText::moveDown(BufferView * bv)
 bool InsetText::insertInset(BufferView * bv, Inset * inset)
 {
 	if (the_locking_inset) {
-		if (the_locking_inset->insertInsetAllowed(inset))
+		if (the_locking_inset->insetAllowed(inset))
 			return the_locking_inset->insertInset(bv, inset);
 		return false;
 	}
@@ -1435,17 +1435,10 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 }
 
 
-bool InsetText::insertInsetAllowed(Inset * in) const
+bool InsetText::insetAllowed(Inset::Code code) const
 {
 	if (the_locking_inset)
-		return the_locking_inset->insertInsetAllowed(in);
-	return true;
-}
-
-bool InsetText::insertInsetAllowed(Inset::Code code) const
-{
-	if (the_locking_inset)
-		return the_locking_inset->insertInsetAllowed(code);
+		return the_locking_inset->insetAllowed(code);
 	return true;
 }
 

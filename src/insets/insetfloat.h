@@ -44,8 +44,7 @@ public:
 	///
 	string const editMessage() const;
 	///
-	bool insertInsetAllowed(Inset * inset) const;
-	bool insertInsetAllowed(Inset::Code) const;
+	bool insetAllowed(Inset::Code) const;
 	///
 	void insetButtonRelease(BufferView * bv, int x, int y, int button);
 	///

@@ -1,3 +1,26 @@
+2001-07-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (getStatus): add support for all the inset insertion
+	commands.
+
+	* text2.C (insertInset): 
+	* paragraph.C (insetAllowed): 
+	* BufferView_pimpl.C (insertInset): update to take in account the
+	renaming of insertInsetAllowed
+
+	* lyxfunc.C (getStatus): add support for LFUN_INSET_TOGGLE.
+
+	* text2.C (getInset): new method. returns inset at cursor position. 
+
+	* BufferView_pimpl.C (Dispatch): changes because of this.
+
+	* LyXAction.C (init): rename open-stuff to inset-toggle.
+
+	* commandtags.h: rename LFUN_OPENSTUFF to LFUN_INSET_TOGGLE.
+
+	* text2.C (toggleInset): renamed from openStuff; use
+	Inset::open().
+
 2001-07-13  Yves Bastide  <stid@libd-pc11.univ-bpclermont.fr>
 
 	* lyxrc.C (set_font_norm_type): recognise ISO_8859_15.

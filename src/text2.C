@@ -360,20 +360,29 @@ void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 	}
 }
 
-void LyXText::openStuff(BufferView * bview)
+Inset * LyXText::getInset() const
 {
+	Inset * inset = 0;
      	if (cursor.pos() == 0 && cursor.par()->bibkey){
-		cursor.par()->bibkey->edit(bview, 0, 0, 0);
+		inset =	cursor.par()->bibkey;
 	} else if (cursor.pos() < cursor.par()->size() 
 		   && cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET) {
-		Inset * inset = cursor.par()->getInset(cursor.pos());
-		if (!inset->editable())
-			return;
-		bview->owner()->message(inset->editMessage());
-		if (inset->editable() != Inset::HIGHLY_EDITABLE)
-			setCursorParUndo(bview);
-		inset->edit(bview, 0, 0, 0);
+		inset = cursor.par()->getInset(cursor.pos());
 	}
+	return inset;
+}
+
+void LyXText::toggleInset(BufferView * bview)
+{
+	Inset * inset = getInset();
+	if (!inset->editable())
+		return;
+	//bview->owner()->message(inset->editMessage());
+
+	// do we want to keep this?? (JMarc)
+	if (inset->editable() != Inset::HIGHLY_EDITABLE)
+		setCursorParUndo(bview);
+	inset->open(bview, !inset->isOpen());
 }
 
 
@@ -1534,7 +1543,7 @@ void LyXText::updateCounters(BufferView * bview, Row * row) const
 
 void LyXText::insertInset(BufferView * bview, Inset * inset)
 {
-	if (!cursor.par()->insertInsetAllowed(inset))
+	if (!cursor.par()->insetAllowed(inset->lyxCode()))
 		return;
 	setUndo(bview, Undo::INSERT,
 		cursor.par(), cursor.par()->next());

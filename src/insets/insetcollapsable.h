@@ -64,11 +64,8 @@ public:
 	///
 	bool insertInset(BufferView *, Inset * inset);
 	///
-	bool insertInsetAllowed(Inset * in) const {
-		return inset.insertInsetAllowed(in);
-	}
-	bool insertInsetAllowed(Inset::Code code) const {
-		return inset.insertInsetAllowed(code);
+	bool insetAllowed(Inset::Code code) const {
+		return inset.insetAllowed(code);
 	}
 	///
 	bool isTextInset() const { return true; }
@@ -157,9 +154,8 @@ public:
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
-	bool isCollapsable() const { return true; }
-	bool collapsed() const { return collapsed_; }
-	void collapsed(BufferView *, bool);
+	bool isOpen() const { return !collapsed_; }
+	void open(BufferView *, bool);
 	///
 	string selectNextWord(BufferView * bv, float & value) const {
 		return inset.selectNextWord(bv, value);

@@ -428,15 +428,6 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		disable = !Exporter::IsExportable(buf, "program");
 		break;
 
-	case LFUN_INSERTFOOTNOTE:
-		// Disable insertion of floats in a tabular.
-		disable = false;
-		if (owner->view()->theLockingInset()) {
-			disable = (owner->view()->theLockingInset()->lyxCode() == Inset::TABULAR_CODE) ||
-				owner->view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE);
-		}
-		break;
-
 	case LFUN_LAYOUT_TABULAR:
 		disable = true;
 		if (owner->view()->theLockingInset()) {
@@ -490,6 +481,12 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_BOOKMARK_GOTO:
 		disable =  !owner->view()->
 			isSavedPosition(strToUnsignedInt(argument));
+		break;
+
+
+	case LFUN_INSET_TOGGLE:
+		disable = (TEXT(false)->getInset() == 0);
+		break;
 
 	case LFUN_MATH_VALIGN: {
     // I think this test can be simplified (Andre')
@@ -592,43 +589,127 @@ func_status::value_type LyXFunc::getStatus(int ac,
 
 	default:
 		break;
-        }
-        if (disable)
-                flag |= func_status::Disabled;
-
-	if (buf) {
-		func_status::value_type box = func_status::ToggleOff;
-		LyXFont const & font =
-			TEXT(false)->real_current_font;
-		switch (action) {
-		case LFUN_EMPH:
-			if (font.emph() == LyXFont::ON)
-				box = func_status::ToggleOn;
-			break;
-		case LFUN_NOUN:
-			if (font.noun() == LyXFont::ON)
-				box = func_status::ToggleOn;
-			break;
-		case LFUN_BOLD:
-			if (font.series() == LyXFont::BOLD_SERIES)
-				box = func_status::ToggleOn;
-			break;
-#ifndef NO_LATEX
-		case LFUN_TEX:
-			if (font.latex() == LyXFont::ON)
-				box = func_status::ToggleOn;
-			break;
-#endif
-		case LFUN_READ_ONLY_TOGGLE:
-			if (buf->isReadonly())
-				box = func_status::ToggleOn;
-			break;
-		default:
-			box = func_status::OK;
-			break;
-		}
-		flag |= box;
 	}
+
+	// the functions which insert insets
+	Inset::Code code = Inset::NO_CODE;
+	switch (action) {
+	case LFUN_INSET_TEXT:
+		code = Inset::TEXT_CODE;
+		break;
+	case LFUN_INSET_ERT:
+		code = Inset::ERT_CODE;		
+		break;
+	case LFUN_INSET_GRAPHICS:
+		code = Inset::GRAPHICS_CODE;
+		break;
+	case LFUN_INSET_FOOTNOTE:
+		code = Inset::FOOT_CODE;
+		break;
+	case LFUN_INSET_TABULAR:
+		code = Inset::TABULAR_CODE;
+		break;
+	case LFUN_INSET_EXTERNAL:
+		code = Inset::EXTERNAL_CODE;
+		break;
+	case LFUN_INSET_MARGINAL:
+		code = Inset::MARGIN_CODE;
+		break;
+	case LFUN_INSET_MINIPAGE:
+		code = Inset::MINIPAGE_CODE;
+		break;
+	case LFUN_INSET_FLOAT:
+	case LFUN_INSET_WIDE_FLOAT:
+		code = Inset::FLOAT_CODE;
+		break;
+#if 0
+	case LFUN_INSET_LIST:
+		code = Inset::LIST_CODE;
+		break;
+#endif
+	case LFUN_INSET_THEOREM:
+		code = Inset::THEOREM_CODE;
+		break;
+	case LFUN_INSET_CAPTION:
+		code = Inset::CAPTION_CODE;
+		break;
+	case LFUN_INSERT_NOTE:
+		code = Inset::IGNORE_CODE;
+		break;
+	case LFUN_INSERT_LABEL:
+		code = Inset::LABEL_CODE;
+		break;
+	case LFUN_REF_INSERT:
+		code = Inset::REF_CODE;
+		break;
+	case LFUN_CITATION_INSERT:
+		code = Inset::CITE_CODE;
+		break;
+	case LFUN_INSERT_BIBTEX:
+		code = Inset::BIBTEX_CODE;
+		break;
+	case LFUN_INDEX_INSERT:
+	case LFUN_INDEX_INSERT_LAST:
+		code = Inset::INDEX_CODE;
+		break;
+#if 0
+	case LFUN_CHILD_INSERT:
+		code = Inset::CHILD_CODE;
+		break;
+#endif
+	case LFUN_TOC_INSERT:
+		code = Inset::TOC_CODE;
+		break;
+	case LFUN_PARENTINSERT:
+		code = Inset::PARENT_CODE;
+		break;
+	case LFUN_INSERT_URL:
+		code = Inset::URL_CODE;
+		break;
+	default:
+		break;
+	}
+	if (code != Inset::NO_CODE 
+	    && owner->view()->theLockingInset()
+	    && !owner->view()->theLockingInset()->insetAllowed(code)) {
+		disable = true;
+	}
+
+	if (disable)
+	        flag |= func_status::Disabled;
+	
+	// the font related functions
+	func_status::value_type box = func_status::ToggleOff;
+	LyXFont const & font =
+		TEXT(false)->real_current_font;
+	switch (action) {
+	case LFUN_EMPH:
+		if (font.emph() == LyXFont::ON)
+			box = func_status::ToggleOn;
+		break;
+	case LFUN_NOUN:
+		if (font.noun() == LyXFont::ON)
+			box = func_status::ToggleOn;
+		break;
+	case LFUN_BOLD:
+		if (font.series() == LyXFont::BOLD_SERIES)
+			box = func_status::ToggleOn;
+		break;
+#ifndef NO_LATEX
+	case LFUN_TEX:
+		if (font.latex() == LyXFont::ON)
+			box = func_status::ToggleOn;
+		break;
+#endif
+	case LFUN_READ_ONLY_TOGGLE:
+		if (buf->isReadonly())
+			box = func_status::ToggleOn;
+		break;
+	default:
+		box = func_status::OK;
+		break;
+	}
+	flag |= box;
 
 	return flag;
 }

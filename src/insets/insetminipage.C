@@ -269,17 +269,12 @@ int InsetMinipage::latex(Buffer const * buf,
 }
 
 
-bool InsetMinipage::insertInsetAllowed(Inset * in) const
-{
-	return insertInsetAllowed(in->lyxCode());
-}
-
-bool InsetMinipage::insertInsetAllowed(Inset::Code code) const
+bool InsetMinipage::insetAllowed(Inset::Code code) const
 {
 	if ((code == Inset::FLOAT_CODE) || (code == Inset::MARGIN_CODE))
 		return false;
 
-	return InsetCollapsable::insertInsetAllowed(code);
+	return InsetCollapsable::insetAllowed(code);
 }
 
 

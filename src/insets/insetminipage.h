@@ -59,8 +59,7 @@ public:
 	///
 	string const editMessage() const;
 	///
-	bool insertInsetAllowed(Inset * inset) const;
-	bool insertInsetAllowed(Inset::Code) const;
+	bool insetAllowed(Inset::Code) const;
 	///
 	Position pos() const;
 	///
