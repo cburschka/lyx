@@ -1,3 +1,4 @@
+// -*- C++ -*-
 #ifndef LYXFIND_H
 #define LYXFIND_H
 

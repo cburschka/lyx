@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /*
  *  File:        math_macro.C
  *  Purpose:     Implementation of macro class for mathed 

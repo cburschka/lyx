@@ -1,3 +1,10 @@
+2001-06-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GraphicsCache.C:
+	* GraphicsCacheItem.C:
+	* ImageLoader.C:
+	* ImageLoaderXPM.C: removed // -*- C++ -*- as first line.
+
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* GraphicsCache.h: inherit privately from noncopyable

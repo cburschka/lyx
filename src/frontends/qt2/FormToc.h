@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /* FormToc.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk

@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file Timeout.h
  * Copyright 2001 LyX Team

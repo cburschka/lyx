@@ -1,3 +1,21 @@
+2001-06-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* BufferView.C:
+	* Bullet.C
+	* ColorHandler.C:
+	* FontInfo.C:
+	* FontLoader.C:
+	* LColor.C:
+	* LaTeXFeatures.C:
+	* Painter.C:
+	* gettext.C:
+	* lyx_gui_misc.C:
+	* lyxserver.C:
+	* vspace.C: removed // -*- C++ -*- as first line.
+
+	* lyxfind.h:
+	* version.h: added // -*- C++ -*- as first line.
+
 2001-06-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfunc.C (getStatus): support LFUN_READ_ONLY_TOGGLE

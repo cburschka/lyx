@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /* Version and release date definition */
 ///
 #define LYX_VERSION "1.2.0cvs"

@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* Completes the implementation of the Bullet class
  * It defines the various LaTeX commands etc. required to
  * generate the bullets in the bullet-panel's.

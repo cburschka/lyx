@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /*
  *  File:        math_root.C
  *  Purpose:     Implementation of the root object 

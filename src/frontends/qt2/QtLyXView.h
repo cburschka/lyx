@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /*
  * QtLyXView.h
  * (C) 2000 LyX Team

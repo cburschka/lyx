@@ -1,3 +1,25 @@
+2001-06-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FileDialog.C:
+	* FormCitation.C:
+	* FormCopyright.C:
+	* FormCredits.C:
+	* FormError.C:
+	* FormIndex.C:
+	* FormPrint.C:
+	* FormRef.C:
+	* FormTabularCreate.C:
+	* FormToc.C:
+	* FormUrl.C:
+	* GnomeBase.C:
+	* Menubar_pimpl.C:
+	* gnome_helpers.C:
+	* mainapp.C: removed // -*- C++ -*- as first line.
+
+	* FormTabularCreate.h:
+	* FormToc.h:
+	* Timeout_pimpl.h: added // -*- C++ -*- as first line.
+
 2001-05-08  Michael A. Koziarski  <michael@koziarski.org>
 
 	* FormTabularCreate[Ch]:

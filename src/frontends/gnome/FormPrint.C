@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* FormPrint.C
  * FormPrint Interface Class Implementation
  * This file is part of
