@@ -41,7 +41,7 @@ Style Dialogue
   LatexType             Command
   LatexName             dialogue
   LeftMargin            MMMMMMMMMM
-  RightMargin		MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+  RightMargin		MMMMMMMMMMMMMMMMMMMMMMM
   ParSkip               0.0
   TopSep		0.0
   BottomSep		0.0
@@ -124,8 +124,9 @@ Style EXT.
   LabelString		"EXT. "
 End
 
+
 # Narrative description of Scene
-# same as narrative, but glued to INT. or EXT.
+# same as narrative, but glued to INT., EXT., or Scene
 Style Description
   Margin                Static
   LatexType             Command
@@ -140,6 +141,7 @@ Style Description
 End
 
 # Speaker style definition, identifies speaker  ALL CAPS
+# Use this also for THE END
 Style Speaker
   Margin                Static
   LatexType             Command
@@ -160,7 +162,7 @@ Style Parenthetical
   LatexType             Command
   LatexName             parenthetical
   LeftMargin            MMMMMMMMMMMMMMMMMMM
-  RightMargin		MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+  RightMargin		MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
   TopSep		0.0
   BottomSep		0.0
   ParSkip		0.0
@@ -177,6 +179,32 @@ Font
   Shape                 Up
   Size                  Normal
   Color                 Blue
+EndFont
+
+End
+
+# Used when the same speaker continues after a narrative. Don't type
+# anything.
+Style Continuing  
+  Margin                Static
+  LatexType             Command
+  LatexName             continuing
+  LeftMargin		MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+  TopSep		0.5
+  BottomSep		0.5
+  ParSkip		0.0
+  KeepEmpty		1
+  Align                 Left
+  AlignPossible         Left
+  LabelType		Static
+  LabelString		"(continuing)"
+
+Font
+  Family                Typewriter
+  Series                Medium
+  Shape                 Up
+  Size                  Normal
+  Color                 Green
 EndFont
 
 End
@@ -222,7 +250,7 @@ Style TITLE_OVER:
   AlignPossible         Left
   KeepEmpty		1
   LabelType             Static
-  LabelString		"TITLE OVER:"
+  LabelString		"TITLE OVER: "
 End
 
 Style INTERCUT
@@ -236,7 +264,7 @@ Style INTERCUT
   AlignPossible         Left
   KeepEmpty		1
   LabelType             Static
-  LabelString		"INTERCUT WITH:"
+  LabelString		"INTERCUT WITH: "
 End
 
 Style FADE_OUT
@@ -250,11 +278,11 @@ Style FADE_OUT
   AlignPossible         Left
   KeepEmpty		1
   LabelType             Static
-  LabelString		"FADE OUT"
+  LabelString		"FADE OUT "
 End
 
-# Standard style definition (I kept this one to provide a general case)
-Style Standard
+# Same as Standard, Standard deprecated 
+Style General
   Margin                Static
   LatexType             Paragraph
   LatexName             dummy
@@ -265,7 +293,18 @@ Style Standard
   Labeltype             No_Label
 End
 
-
+# General Left aligned CAPS
+Style Scene
+  Margin                Dynamic
+  LatexType             Command
+  LatexName             scene
+  ParIndent             ""
+  ParSkip               0.25
+  TopSep		0.25
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+End
 
 # Right Address style
 Style Right_Address
@@ -305,6 +344,29 @@ Style Title
   AlignPossible		Left, Right, Center
 
 End
+
+# Standard style definition (I kept this one to provide a general case)
+Style Standard
+ObsoletedBy General
+End
+Style FADE_OUT:
+ObsoletedBy FADE_OUT
+End
+
+# For shooting scripts only, puts CONTINUED in rfoot, CONTINUED: in
+# nextpage lhead and clears that rfoot. It is used when a scene continues
+# onto the next page. This command is provided in case a production unit
+# wants to convert the spec script into a shooting script.
+ 
+#Style CONTINUED
+#  LatexType		Command
+#  LatexName		continued
+#End
+# Clears rfoot, does a pagebreak, and clears lhead.
+#Style NOT_CONTD
+#  LatexType		Command
+#  LatexName		endcontinued
+#End
  
 Input stdtitle.inc
 Input stdstruct.inc

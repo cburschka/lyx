@@ -16,21 +16,112 @@
 \paperorientation portrait
 \leftmargin 1.5in
 \topmargin 48bp
-\rightmargin 1in
-\bottommargin 0.5in
+\rightmargin 0.75in
+\bottommargin 30bp
 \headheight 12bp
 \headsep 24bp
-\footskip 0bp
+\footskip 6bp
 \secnumdepth 2
 \tocdepth 2
 \paragraph_separation indent
-\defskip smallskip
+\defskip medskip
 \quotes_language english
 \quotes_times 2
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle fancy
 
+\layout General
+
+[NICHOLL FELLOWSHIPS in SCREENWRITING]
+\layout General
+
+http://www.oscars.org/academy/nichollindex.html
+\layout General
+
+
+\begin_inset ERT
+status Open
+
+\layout Dialogue
+
+\backslash 
+thispagestyle{empty}
+\end_inset 
+
+
+\layout General
+
+Formatted text courtesy of Ann Garretson
+\layout General
+
+http://www.halcyon.com/aga
+\layout General
+
+Copyright 1998 by the Academy of Motion Picture Arts and Sciences
+\layout General
+
+----------
+\layout General
+
+FILE NOTES
+\layout General
+
+----------
+\layout General
+
+Source: Academy of Motion Picture Arts and Sciences (A.M.P.A.S.)
+\layout General
+
+- The NICHOLL FELLOWSHIPS in SCREENWRITING
+\layout General
+
+- http://www.oscars.org/nicholl/index.html
+\layout General
+
+- E-mail: Greg Beal, gbeal@oscars.org
+\layout General
+
+File Info: April, 1998 (online)
+\layout General
+
+- http://www.oscars.org/nicholl/format_a.txt
+\layout General
+
+- View in a monospaced font -- preferably 12-point Courier.
+\layout General
+
+Copyright 1998 by the Academy of Motion Picture Arts and Sciences
+\layout General
+
+----------
+\layout General
+
+Permission to use this script as a LyX example file was kindly granted by
+ Greg Beal, gbeal@oscars.org.
+\layout General
+
+I added a few lines at the end of script about binding.
+ The original script ended with the words 
+\begin_inset Quotes eld
+\end_inset 
+
+I'd never let you miss a meal.
+\begin_inset Quotes erd
+\end_inset 
+
+ There were also references to tabs, which don't exist in LyX, so I made
+ minor changes in the text.
+ Apologies and kudos to Ann Garretson.
+ Be sure to thank her when you get your Oscar.
+ 
+\layout General
+
+Garst R.
+ Reese
+\layout General
+\pagebreak_bottom 
+reese@isn.net
 \layout Title
 
 FOR A FEW DAYS MORE
@@ -62,83 +153,137 @@ Kaplan, ND 77777
 \end_inset 
 
 
-\layout Standard
+\layout General
 
 
 \begin_inset Note
 collapsed true
 
-\layout Dialogue
+\layout General
 
 Use Layout->Document
-\layout Dialogue
+\layout General
 
 Spacing Other to set the spacing between lines.
  A value of .85 is probably the minimum.
 \end_inset 
 
 
-\layout Standard
+\layout General
 
 
 \begin_inset Note
 collapsed true
 
-\layout Dialogue
+\layout General
 
-To change 
-\backslash 
-dialogindent{1in}, 
-\backslash 
-parenindent{1.75in}, 
-\backslash 
-dialogLength{3in}, 
-\backslash 
-parenLength{1.5in},
-\layout Dialogue
+To change:
+\layout General
 
 
 \backslash 
-speakerindent{2.25in}
-\layout Dialogue
+setlength{
+\backslash 
+dialogindent}{1in},
+\layout General
+
+
+\backslash 
+setlength{
+\backslash 
+parenoffset}{.5in},
+\layout General
+
+
+\backslash 
+setlength{
+\backslash 
+dialogLength}{4in},
+\layout General
+
+
+\backslash 
+setlength{
+\backslash 
+parenLength}{2in},
+\layout General
+
+
+\backslash 
+setlength{
+\backslash 
+speakeroffset}{1.2in}
+\layout General
 
 click TeX and enter new values as above.
+\layout General
+
+Parenoffset is the offset to the left of parentheticals from speaker names.
+\layout General
+
+Speakeroffset is the offset to the right of the dialog margin, so changing
+ dialogindent will automatically change the position of parentheticals and
+ speaker names.
 \end_inset 
 
 
 \begin_inset Note
 collapsed true
 
-\layout Dialogue
+\layout General
 
 You can put your Speaker names in labels, the insert cross references to
  the labels.
  The printed version will automatically be capitalized in Speaker even if
  the label is not capped.
  This way you can use them in dialogue also, and change all references to
- your character's names just by changing the label.
+ your Speaker's names just by changing the label.
  
+\end_inset 
+
+
+\layout General
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Dialogue
+
+\backslash 
+setlength{
+\backslash 
+parenLength}{1.7in}
+\layout Dialogue
+
+\backslash 
+setlength{
+\backslash 
+dialogLength}{3.2in}
 \end_inset 
 
 
 \layout INT.
 
-DRISKILL HOTEL SEMINAR ROOM DAY
+DRISKILL HOTEL SEMINAR ROOM - DAY
 \layout Description
 
-JOE and APRIL burst through the doors into a clean, well-lit seminar room.
-\layout Dialogue
+JOE and APRIL burst through the doors into a clean, well-lit seminar room
+\layout General
 
 
 \begin_inset Note
 collapsed true
 
-\layout Dialogue
+\layout General
 
 Use the description after INT.
  or EXT.
  to keep it on the same page.
  Narrative is the same, except that it allows a pagebreak before it.
+ Notice that I did not use the labels for Joe and April here because they
+ are upper-cased in discriptions only the first time they are used.
+ You could make extra labels, but I think it would be error-prone.
 \end_inset 
 
 
@@ -238,17 +383,8 @@ Okay, okay, don't panic.
 
 She takes three deep breaths.
  Then she looks at her watch and smiles.
-\layout Speaker
+\layout Continuing
 
-
-\begin_inset LatexCommand \ref{April}
-
-\end_inset 
-
-
-\layout Parenthetical
-
-continuing
 \layout Dialogue
 
 We're an hour early.
@@ -276,8 +412,8 @@ Okay, you start.
 \layout Dialogue
 
 Left, 1.5 inches.
- Right, 1.0 inches.
- Top, 1.0 inches to the body, 0.5 inches to the number.
+ Right, 0.75 inches.
+ Top, 1.0 inch to the body, 0.5 inches to the number.
  Bottom, 0.5 to 1.5 inches, depending on where the page break comes.
 \layout Speaker
 
@@ -301,10 +437,11 @@ Page break?
 \layout Dialogue
 
 Right above me.
- There are rules for breaking a page.
- Scene headers remain attached to description.
- A single line of dialogue is pushed to the following page.
- A long dialogue passage would be split -- but I'll get to that later.
+ Rules for breaking a page.
+ Scene headers, like INT., remain attached to Description.
+ If a page breaks between a Speaker and a one sentence Dialogue, move it
+ above the Speaker.
+ A long Dialogue passage would be split -- but I'll get to that later.
 \layout Speaker
 
 
@@ -328,7 +465,9 @@ What about fonts?
 
 Courier, 12 point, 10 pitch.
  Make sure it's a non-proportional version of Courier.
- 
+\layout Narrative
+
+
 \begin_inset LatexCommand \ref{Joe}
 
 \end_inset 
@@ -344,7 +483,8 @@ Courier, 12 point, 10 pitch.
 
 \layout Dialogue
 
-What about bold-face or italics? Or a Gothic font? I love to jazzup my scripts.
+What about bold-face or italics? Or a Gothic font? I love to jazz up my
+ scripts.
 \layout Speaker
 
 
@@ -379,7 +519,7 @@ Suddenly,
  bolts from behind the podium and runs out into:
 \layout INT.
 
-DRISKILL HOTEL HALLWAY DAY
+DRISKILL HOTEL HALLWAY - DAY
 \layout Description
 
 
@@ -427,7 +567,7 @@ Ah, a scene heading.
 
 \layout EXT.
 
-TEXAS CAPITOL BUILDING DAY
+TEXAS CAPITOL BUILDING - DAY
 \layout Description
 
 
@@ -488,6 +628,21 @@ Dialogue margins.
 Left, 3.0 inches.
  Right, 2.5 inches.
  Of course, you can cheat those a tad.
+\layout Dialogue
+
+
+\begin_inset Note
+collapsed true
+
+\layout General
+
+These are from the paper edge, but you specify them from
+\layout General
+
+the left margin using dialoglength and dialogIndent.
+\end_inset 
+
+
 \layout Speaker
 
 
@@ -534,7 +689,7 @@ You've got it.
 looking up
 \layout Dialogue
 
-And the position of the character's name?
+And the position of the speaker's name?
 \layout Speaker
 
 
@@ -545,12 +700,15 @@ And the position of the character's name?
 
 \layout Dialogue
 
-All CAPS, and tabbed to about 4.2 inches.
- Some writers center all the characters' names.
+All CAPS, and about 2.7 inches from the left margin.
+ Some writers center all the speakers' names.
+\layout General
+
+
 \begin_inset Note
 collapsed true
 
-\layout Dialogue
+\layout General
 
 Use More to break up a dialogue across a page boundary.
  It will put (MORE) at the bottom of the page, and insert the current speaker
@@ -587,9 +745,9 @@ Hey, what happened?
 \layout Dialogue
 
 A page break appeared in the middle of my dialogue.
- You use MORE at the bottom of the page to show that the character's dialogue
+ You use (MORE) at the bottom of the page to show that the speaker's dialogue
  continues onto the next page.
- Then CONT'D next to the character to show that it has roots in the previous
+ Then (CONT'D) next to the speaker to show that it has roots in the previous
  page.
 \layout Speaker
 
@@ -604,7 +762,7 @@ A page break appeared in the middle of my dialogue.
 But not everybody uses MOREs and CONT'Ds, do they?
 \layout INT.
 
-CAPITOL BUILDING DAY
+CAPITOL BUILDING - DAY
 \layout Description
 
 
@@ -654,8 +812,8 @@ What about parentheticals?
 
 \layout Dialogue
 
-Start them about 0.5 inches to the left of the character name tab mark.
- In our case that would be at 3.7 inches.
+Start them about a half-inch to the left of the speaker name.
+ In our case that would be at 2.2 inches from the left margin.
 \layout Speaker
 
 
@@ -678,7 +836,7 @@ And what are they for?
 \layout Dialogue
 
 For years, parentheticals were used to express emotion, the manner in which
- a character spoke her lines.
+ a speaker spoke her lines.
  Loudly, passionately, sadly, and so on.
  In recent years writers have often used them for brief bits of action.
 \layout Speaker
@@ -742,7 +900,7 @@ If you place a parenthetical in the middle of a dialogue passage, it should
  remain distinct from the dialogue.
 \layout EXT.
 
-MISSISSIPPI RIVERBOAT NIGHT
+MISSISSIPPI RIVERBOAT - NIGHT
 \layout Description
 
 A gambling boat rolls slowly along the mighty river.
@@ -837,13 +995,13 @@ If you'd like \SpecialChar \ldots{}
 
 \layout EXT.
 
-AIRPLANE SUNSET
+AIRPLANE - SUNSET
 \layout Description
 
 A jet liner cruises East across Texas.
 \layout INT.
 
-AIRPLANE SUNSET
+AIRPLANE - SUNSET
 \layout Description
 
 A customized interior, replete with lounge chairs and sofas.
@@ -884,17 +1042,29 @@ Or it could be tomorrow.
 \layout TITLE OVER:
 
 October 19, 1997
-\layout Speaker
+\layout Continuing
+
+\layout General
 
 
-\begin_inset LatexCommand \ref{April}
+\begin_inset Note
+collapsed true
 
+\layout General
+
+Selecting 
+\begin_inset Quotes eld
+\end_inset 
+
+Continuing
+\begin_inset Quotes erd
+\end_inset 
+
+ will insert the current Speaker followed by (continuing) as a parenthetical.
+ Don't worry, it will look right on the printed version.
 \end_inset 
 
 
-\layout Parenthetical
-
-continuing
 \layout Dialogue
 
 You see, a few weeks have passed.
@@ -996,7 +1166,7 @@ You really think so?
 That's my recommendation.
 \layout INT.
 
-BLUE CAMARO DAY
+BLUE CAMARO - DAY
 \layout Description
 
 
@@ -1116,7 +1286,7 @@ But other writers just use normal description and standard scene headers
 Many do.
 \layout INT.
 
-DRISKILL HOTEL ENTRANCE HALL -- PHONE BOOTH DAY
+DRISKILL HOTEL ENTRANCE HALL -- PHONE BOOTH - DAY
 \layout Description
 
 A slightly less dazed 
@@ -1165,7 +1335,7 @@ You're filtered?
 
 \layout EXT.
 
-STATE CAPITOL PHONE BOOTH DAY
+STATE CAPITOL PHONE BOOTH - DAY
 \layout Description
 
 With the dome looming large behind her, 
@@ -1212,11 +1382,11 @@ Let's try something easy.
 Number each and every page, though you can start with page two.
  The numbers should appear in the upper right hand corner, about 0.5 inches
  down and 0.75 inches from the right page edge.
- Those dimensions are not set in stone, but the numbers should always be
+ Those dimensions are not set in stone, but page numbers should always be
  placed in the upper right hand corner.
 \layout INT.
 
-DRISKILL HOTEL HALLWAY DAY
+DRISKILL HOTEL HALLWAY - DAY
 \layout Description
 
 
@@ -1285,7 +1455,7 @@ Oftentimes for narration, for a narrator's voice.
  Documentary films are filled with voice over.
 \layout INT.
 
-DRISKILL HOTEL SEMINAR ROOM DAY
+DRISKILL HOTEL SEMINAR ROOM - DAY
 \layout Description
 
 
@@ -1438,23 +1608,14 @@ That's the story.
 
  jumps down from the podium and runs out the door just as conference ATTENDEES
  begin to enter.
-\layout Speaker
+\layout Continuing
 
-
-\begin_inset LatexCommand \ref{April}
-
-\end_inset 
-
-
-\layout Parenthetical
-
-continuing
 \layout Dialogue
 
-By the way, the first time you introduce a character in description, you
- CAP his name.
+By the way, the first time you introduce a speaker in description, you CAP
+ his name.
  And when you break dialogue with description, the standard is to place
- "continuing" within parentheses when a character chatters on and on.
+ "continuing" within parentheses when a speaker chatters on and on.
 \layout Narrative
 
 
@@ -1463,20 +1624,11 @@ By the way, the first time you introduce a character in description, you
 \end_inset 
 
  watches as a number of people sit down before her.
-\layout Speaker
+\layout Continuing
 
-
-\begin_inset LatexCommand \ref{April}
-
-\end_inset 
-
-
-\layout Parenthetical
-
-continuing
 \layout Dialogue
 
-Of course, many writers have dropped "continuing" from their repetoire.
+Of course, many writers have dropped "continuing" from their repertoire.
  I mean, it's obvious that I'm still speaking, isn't it? And that I never
  stopped speaking.
 \layout Speaker
@@ -1570,109 +1722,14 @@ A script sandwich?
 \layout Dialogue
 
 You need your script, two sheets of plain manila binding stock, a three
- hole punch, and three one inch brass brads.
+ hole punch, and three 1.5 inch brass brads.
  No title or name on the binding stock.
  When you get it all assembled, you can hammer the brass brads down to make
  it good and tight.
  Now lets go eat.
 \layout FADE OUT
 
-
-\begin_inset Note
-collapsed true
-
-\layout Dialogue
-
-FADE OUT used to be FADE OUT:
-\layout Dialogue
-
-This will cause minor breakage in old scripts.
-\end_inset 
-
-
 \layout Speaker
-\pagebreak_bottom 
+
 THE END
-\layout Standard
-
-<-------------------- FORMAT GUIDE STOPS HERE ------------------->
-\layout Standard
-
-[NICHOLL FELLOWSHIPS in SCREENWRITING]
-\layout Standard
-
-http://www.oscars.org/academy/nichollindex.html
-\layout Standard
-
-Formatted text courtesy of Ann Garretson
-\layout Standard
-
-http://www.halcyon.com/aga
-\layout Standard
-
-Copyright 1998 by the Academy of Motion Picture Arts and Sciences
-\layout Standard
-
-###
-\layout Standard
-
-----------
-\layout Standard
-
-FILE NOTES
-\layout Standard
-
-----------
-\layout Standard
-
-Source: Academy of Motion Picture Arts and Sciences (A.M.P.A.S.)
-\layout Standard
-
-- The NICHOLL FELLOWSHIPS in SCREENWRITING
-\layout Standard
-
-- http://www.oscars.org/nicholl/index.html
-\layout Standard
-
-- E-mail: Greg Beal, gbeal@oscars.org
-\layout Standard
-
-File Info: April, 1998 (online)
-\layout Standard
-
-- http://www.oscars.org/nicholl/format_a.txt
-\layout Standard
-
-- View in a monospaced font -- preferably 12-point Courier.
-\layout Standard
-
-Copyright 1998 by the Academy of Motion Picture Arts and Sciences
-\layout Standard
-
-----------
-\layout Standard
-
-Permission to use this script as a LyX example file was kindly granted by
- Greg Beal, gbeal@oscars.org.
-\layout Standard
-
-I added a few lines at the end of script about binding.
- The original script ended with the words 
-\begin_inset Quotes eld
-\end_inset 
-
-I'd never let you miss a meal.
-\begin_inset Quotes erd
-\end_inset 
-
- Apologies and kudos to Ann Garretson.
- Be sure to thank her when you get your Oscar.
- 
-\layout Dialogue
-
-Garst R.
- Reese
-\layout Dialogue
-
-reese@isn.net
 \the_end
