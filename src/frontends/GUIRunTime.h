@@ -31,5 +31,8 @@ public:
 	///
 	static
 	void runTime();
+	/// This is run first in the LyXGUI constructor.
+	static
+	void setDefaults();
 };
 #endif

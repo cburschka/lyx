@@ -60,14 +60,15 @@ int GUIRunTime::initApplication(int , char **)
 	return 0;
 }
 
+
 void GUIRunTime::processEvents() 
 {
-    XEvent ev;
+	XEvent ev;
 
-    if (fl_do_forms() == FL_EVENT) {
-	lyxerr << "LyX: This shouldn't happen..." << endl;
-	fl_XNextEvent(&ev);
-    }
+	if (fl_do_forms() == FL_EVENT) {
+		lyxerr << "LyX: This shouldn't happen..." << endl;
+		fl_XNextEvent(&ev);
+	}
 }
 
 
@@ -82,3 +83,24 @@ void GUIRunTime::runTime()
 	}
 }
 
+
+void GUIRunTime::setDefaults()
+{
+	FL_IOPT cntl;
+	cntl.buttonFontSize = FL_NORMAL_SIZE;
+	cntl.browserFontSize = FL_NORMAL_SIZE;
+	cntl.labelFontSize = FL_NORMAL_SIZE;
+	cntl.choiceFontSize = FL_NORMAL_SIZE;
+	cntl.inputFontSize = FL_NORMAL_SIZE;
+	cntl.menuFontSize  = FL_NORMAL_SIZE;
+	cntl.borderWidth = -1;
+	cntl.vclass = FL_DefaultVisual;
+	fl_set_defaults(FL_PDVisual
+			| FL_PDButtonFontSize
+			| FL_PDBrowserFontSize
+			| FL_PDLabelFontSize
+			| FL_PDChoiceFontSize
+			| FL_PDInputFontSize
+			| FL_PDMenuFontSize
+			| FL_PDBorderWidth, &cntl);
+}

@@ -109,6 +109,7 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	if (!gui)
 		return;
 
+	// 
 	setDefaults();
 	
 	static const int num_res = sizeof(res)/sizeof(FL_resource);
@@ -172,7 +173,6 @@ LyXGUI::~LyXGUI()
 	delete lyxserver;
 	lyxserver = 0;
 	delete lyxViews;
-	lyxViews = 0;
 
 	CloseLyXLookup();
 }
@@ -180,23 +180,7 @@ LyXGUI::~LyXGUI()
 
 void LyXGUI::setDefaults()
 {
-	FL_IOPT cntl;
-	cntl.buttonFontSize = FL_NORMAL_SIZE;
-	cntl.browserFontSize = FL_NORMAL_SIZE;
-	cntl.labelFontSize = FL_NORMAL_SIZE;
-	cntl.choiceFontSize = FL_NORMAL_SIZE;
-	cntl.inputFontSize = FL_NORMAL_SIZE;
-	cntl.menuFontSize  = FL_NORMAL_SIZE;
-	cntl.borderWidth = -1;
-	cntl.vclass = FL_DefaultVisual;
-	fl_set_defaults(FL_PDVisual
-			| FL_PDButtonFontSize
-			| FL_PDBrowserFontSize
-			| FL_PDLabelFontSize
-			| FL_PDChoiceFontSize
-			| FL_PDInputFontSize
-			| FL_PDMenuFontSize
-			| FL_PDBorderWidth, &cntl);
+	GUIRunTime::setDefaults();
 }
 
 

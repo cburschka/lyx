@@ -1,5 +1,14 @@
 2000-09-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/tabular.C: some more const to local vars move some loop vars
+	
+	* src/spellchecker.C: added some c_str after some word for pspell
+
+	* src/frontends/GUIRunTime.h: add new static method setDefaults
+	* src/frontends/xforms/GUIRunTime.C (setDefaults): 
+	* src/frontends/kde/GUIRunTime.C (setDefaults): 
+	* src/frontends/gnome/GUIRunTime.C (setDefaults): new method
+
 	* src/mathed/math_cursor.C (MacroModeClose): don't call SetName
 	with strnew in arg, use correct emptystring when calling SetName.
 

@@ -143,7 +143,7 @@ class MathedCursor {
     ///
 //    LyxArrayBase *selarray; 
     ///
-    Bool is_visible;
+    bool is_visible;
     ///
     long unsigned win;
     ///

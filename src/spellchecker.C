@@ -624,14 +624,15 @@ static
 isp_result * sc_check_word(string const & word)
 {
 	isp_result * result = new isp_result;
-	int word_ok = pspell_manager_check(sc, word);
+	int word_ok = pspell_manager_check(sc, word.c_str());
 	Assert(word_ok != -1);
 
 	if (word_ok) {
 		result->flag = ISP_OK;
 	} else {
 
-		PspellWordList const * sugs = pspell_manager_suggest(sc, word);
+		PspellWordList const * sugs =
+			pspell_manager_suggest(sc, word.c_str());
 		Assert(sugs != 0);
 		result->els = pspell_word_list_elements(sugs);
 		if (pspell_word_list_empty(sugs)) 
@@ -653,14 +654,14 @@ void close_spell_checker()
 static inline 
 void sc_insert_word(string const & word)
 {
-	pspell_manager_add_to_personal(sc, word);
+	pspell_manager_add_to_personal(sc, word.c_str());
 }
 
 
 static inline 
 void sc_accept_word(string const & word) 
 {
-	pspell_manager_add_to_session(sc, word);
+	pspell_manager_add_to_session(sc, word.c_str());
 }
 
 

@@ -53,23 +53,9 @@ bool IsMacro(short tok, int id)
 	   !(tok == LM_TK_SYM && id < 255));
 }
 
-
-// Yes, mathed isn't using string yet.
-static inline
-char * strnew(char const * s)
-{
-    char * s1 = new char[strlen(s)+1];
-    strcpy(s1, s);
-    return s1;
-}
-
-
-
 static int const MAX_STACK_ITEMS = 32;
 
-
 struct MathStackXIter {
-    
     int i, imax;
     MathedXIter * item;
     
@@ -114,7 +100,8 @@ struct MathStackXIter {
 } mathstk, *selstk = 0;
 
 
-MathStackXIter::MathStackXIter(MathStackXIter & stk) {
+MathStackXIter::MathStackXIter(MathStackXIter & stk)
+{
     imax = stk.imax;
     item = new MathedXIter[imax];
     i = stk.i;
@@ -777,7 +764,6 @@ void MathedCursor::MacroModeClose()
       if (macroln > 0 && (!l || (l && IsMacro(l->token, l->id))) && 
 	  !MathMacroTable::mathMTable.getMacro(macrobf)) {
 	  if (!l) {
-		  //imacro->SetName(strnew(macrobf));
 	    imacro->SetName(macrobf);
 	      // This guarantees that the string will be removed by destructor
 	    imacro->SetType(LM_OT_UNDEF);

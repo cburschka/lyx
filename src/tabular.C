@@ -1341,12 +1341,8 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 
 string const LyXTabular::GetDocBookAlign(int cell, bool isColumn) const
 {
-	int i = isColumn ? cell : column_of_cell(cell);
+    int i = isColumn ? cell : column_of_cell(cell);
 	
-	//if (isColumn)
-	//i = cell;
-	//else
-	//i = column_of_cell(cell);
     if (!isColumn && IsMultiColumn(cell)) {
        if (!cellinfo_of_cell(cell)->align_special.empty()) {
            return cellinfo_of_cell(cell)->align_special;
@@ -1389,10 +1385,8 @@ string const LyXTabular::GetDocBookAlign(int cell, bool isColumn) const
 // returns the number of printed newlines
 int LyXTabular::DocBookEndOfCell(ostream & os, int cell, int & depth) const
 {
-    int i;
     int ret = 0;
-    //int tmp; // tmp2; // unused
-    int nvcell; // fcell; // unused
+    int nvcell;
     if (IsLastCell(cell)) {
 	    os << newlineAndDepth(--depth)
 	       << "</ENTRY>"
@@ -1420,7 +1414,7 @@ int LyXTabular::DocBookEndOfCell(ostream & os, int cell, int & depth) const
 	       << "' COLSEP='1' ROWSEP='1'>"
 	       << newlineAndDepth(++depth);
             ++ret;
-            for (i = 0; i < columns_; ++i) {
+            for (int i = 0; i < columns_; ++i) {
 		    os << "<COLSPEC ALIGN='"
 		       << GetDocBookAlign(i, true)
 		       << "' COLNAME='col"
@@ -1474,7 +1468,7 @@ int LyXTabular::DocBookEndOfCell(ostream & os, int cell, int & depth) const
 		       << "' VALIGN='middle'";
                if (IsMultiColumn(cell + 1)) {
 		       os << " NAMEST='col"
-			  << column_of_cell(cell+1) + 1
+			  << column_of_cell(cell + 1) + 1
 			  << "' NAMEEND='col"
 			  << column_of_cell(cell + 1) +
 			       cells_in_multicolumn(cell + 1)
@@ -1492,10 +1486,10 @@ int LyXTabular::DocBookEndOfCell(ostream & os, int cell, int & depth) const
 		       << "' VALIGN='middle'";
                if (IsMultiColumn(cell + 1)) {
 		       os << " NAMEST='col"
-			  << column_of_cell(cell+1) + 1
+			  << column_of_cell(cell + 1) + 1
 			  << "' NAMEEND='col"
-			  << column_of_cell(cell+1) +
-			       cells_in_multicolumn(cell+1)
+			  << column_of_cell(cell + 1) +
+			       cells_in_multicolumn(cell + 1)
 			  << "'";
                }
                os << ">"
@@ -1517,8 +1511,8 @@ bool LyXTabular::IsMultiColumn(int cell, bool real) const
 
 LyXTabular::cellstruct * LyXTabular::cellinfo_of_cell(int cell) const
 {
-    int row = row_of_cell(cell);
-    int column = column_of_cell(cell);
+    int const row = row_of_cell(cell);
+    int const column = column_of_cell(cell);
     return  &cell_info[row][column];
 }
    
@@ -1538,7 +1532,7 @@ void LyXTabular::SetMultiColumn(int cell, int number)
 
 int LyXTabular::cells_in_multicolumn(int cell) const
 {
-    int row = row_of_cell(cell);
+    int const row = row_of_cell(cell);
     int column = column_of_cell(cell);
     int result = 1;
     ++column;
@@ -1554,7 +1548,7 @@ int LyXTabular::cells_in_multicolumn(int cell) const
 
 int LyXTabular::UnsetMultiColumn(int cell)
 {
-    int row = row_of_cell(cell);
+    int const row = row_of_cell(cell);
     int column = column_of_cell(cell);
     
     int result = 0;
@@ -1627,7 +1621,7 @@ bool LyXTabular::NeedRotating() const
 
 bool LyXTabular::IsLastCell(int cell) const
 {
-    if ((cell+1) < GetNumberOfCells())
+    if ((cell + 1) < GetNumberOfCells())
         return false;
     return true;
 }
@@ -1643,7 +1637,7 @@ int LyXTabular::GetCellAbove(int cell) const
 
 int LyXTabular::GetCellBelow(int cell) const
 {
-    if (row_of_cell(cell)+1 < rows_)
+    if (row_of_cell(cell) + 1 < rows_)
         return cell_info[row_of_cell(cell)+1][column_of_cell(cell)].cellno;
     return cell;
 }
@@ -1655,17 +1649,17 @@ int LyXTabular::GetLastCellAbove(int cell) const
 	return cell;
     if (!IsMultiColumn(cell))
 	return GetCellAbove(cell);
-    return cell_info[row_of_cell(cell)-1][right_column_of_cell(cell)].cellno;
+    return cell_info[row_of_cell(cell) - 1][right_column_of_cell(cell)].cellno;
 }
 
 
 int LyXTabular::GetLastCellBelow(int cell) const
 {
-    if (row_of_cell(cell)+1 >= rows_)
+    if (row_of_cell(cell) + 1 >= rows_)
 	return cell;
     if (!IsMultiColumn(cell))
 	return GetCellBelow(cell);
-    return cell_info[row_of_cell(cell)+1][right_column_of_cell(cell)].cellno;
+    return cell_info[row_of_cell(cell) + 1][right_column_of_cell(cell)].cellno;
 }
 
 
@@ -1704,7 +1698,7 @@ int LyXTabular::GetUsebox(int cell) const
 void LyXTabular::SetLTHead(int cell, bool first)
 {
     int const row = row_of_cell(cell);
-    int const val = (row+1) * (column_of_cell(cell)? 1:-1);
+    int const val = (row + 1) * (column_of_cell(cell) ? 1 : -1);
 
     if (first) {
         if (endfirsthead == val)
@@ -1725,7 +1719,7 @@ bool LyXTabular::GetRowOfLTHead(int cell, int & row) const
     row = endhead;
     if (abs(endhead) > rows_)
         return false;
-    return (row_of_cell(cell) == (abs(endhead)-1));
+    return (row_of_cell(cell) == abs(endhead) - 1);
 }
 
 
@@ -1734,14 +1728,14 @@ bool LyXTabular::GetRowOfLTFirstHead(int cell, int & row) const
     row = endfirsthead;
     if (abs(endfirsthead) > rows_)
         return false;
-    return (row_of_cell(cell) == (abs(endfirsthead)-1));
+    return (row_of_cell(cell) == abs(endfirsthead) - 1);
 }
 
 
 void LyXTabular::SetLTFoot(int cell, bool last)
 {
     int const row = row_of_cell(cell);
-    int const val = (row + 1) * (column_of_cell(cell)? 1:-1);
+    int const val = (row + 1) * (column_of_cell(cell) ? 1 : -1);
 
     if (last) {
         if (endlastfoot == val)
@@ -1760,9 +1754,9 @@ void LyXTabular::SetLTFoot(int cell, bool last)
 bool LyXTabular::GetRowOfLTFoot(int cell, int & row) const
 {
     row = endfoot;
-    if ((endfoot+1) > rows_)
+    if ((endfoot + 1) > rows_)
         return false;
-    return (row_of_cell(cell) == (abs(endfoot)-1));
+    return (row_of_cell(cell) == abs(endfoot) - 1);
 }
 
 
@@ -1842,19 +1836,19 @@ bool LyXTabular::IsPartOfMultiColumn(int row, int column) const
 
 int LyXTabular::TeXTopHLine(ostream & os, int row) const
 {
-    int fcell = GetFirstCellInRow(row);
-    int n = NumberOfCellsInRow(fcell) + fcell;
-    int tmp=0;
-    int i;
+#warning should this return a bool? (Lgb)
+    int const fcell = GetFirstCellInRow(row);
+    int const n = NumberOfCellsInRow(fcell) + fcell;
+    int tmp = 0;
 
-    for (i = fcell; i < n; ++i) {
+    for (int i = fcell; i < n; ++i) {
 	if (TopLine(i))
 	    ++tmp;
     }
     if (tmp == (n - fcell)){
 	os << "\\hline ";
     } else {
-	for (i = fcell; i < n; ++i) {
+	for (int i = fcell; i < n; ++i) {
 	    if (TopLine(i)) {
 		os << "\\cline{"
 		   << column_of_cell(i) + 1
@@ -1874,6 +1868,7 @@ int LyXTabular::TeXTopHLine(ostream & os, int row) const
 
 int LyXTabular::TeXBottomHLine(ostream & os, int row) const
 {
+#warning should this return a bool? (Lgb)
     int const fcell = GetFirstCellInRow(row);
     int const n = NumberOfCellsInRow(fcell) + fcell;
     int tmp = 0;
@@ -2178,9 +2173,9 @@ void LyXTabular::Validate(LaTeXFeatures & features) const
 
 bool LyXTabular::UseParbox(int cell) const
 {
-    LyXParagraph *par = GetCellInset(cell)->par;
+    LyXParagraph * par = GetCellInset(cell)->par;
 
-    for(;par; par = par->next) {
+    for(; par; par = par->next) {
 	for(int i = 0; i < par->Last(); ++i) {
 	    if (par->GetChar(i)	== LyXParagraph::META_NEWLINE)
 		return true;

@@ -879,9 +879,10 @@ int InsetTabular::Latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetTabular::Ascii(Buffer const *, ostream &) const
+int InsetTabular::Ascii(Buffer const * buf, ostream & os) const
 {
-    return 0;
+    // This should be changed to a real ascii export
+    return tabular->Latex(buf, os, false, false);
 }
 
 
