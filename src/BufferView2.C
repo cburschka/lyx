@@ -102,7 +102,8 @@ bool BufferView::removeAutoInsets()
 	bool a = false;
 	while (par) {
 		// this has to be done before the delete
-		text->SetCursor(cursor, par, 0);
+		if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE)
+			text->SetCursor(cursor, par, 0);
 		if (par->AutoDeleteInsets()){
 			a = true;
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){

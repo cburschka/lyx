@@ -89,6 +89,8 @@ struct BufferView::Pimpl {
 	///
 	void restorePosition();
 	///
+	bool NoSavedPositions();
+	///
 	void setState();
 	///
 	void insetSleep();

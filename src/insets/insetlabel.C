@@ -48,7 +48,7 @@ vector<string> InsetLabel::getLabelList() const
 
 void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 {
-	if(bv->buffer()->isReadonly()) {
+	if (bv->buffer()->isReadonly()) {
 		WarnReadonly(bv->buffer()->fileName());
 		return;
 	}
@@ -59,6 +59,7 @@ void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 		string new_contents = frontStrip(strip(result.second));
 		if (!new_contents.empty() &&
 		    contents != new_contents) {
+			bv->buffer()->markDirty();
 			bool flag = bv->ChangeRefs(contents,new_contents);
 			contents = new_contents;
 			bv->text->RedoParagraph();

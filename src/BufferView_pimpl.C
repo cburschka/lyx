@@ -1380,6 +1380,11 @@ void BufferView::Pimpl::restorePosition()
 	update(0);
 } 
 
+bool BufferView::Pimpl::NoSavedPositions()
+{
+	return backstack.empty();
+}
+
 
 void BufferView::Pimpl::setState()
 {

@@ -502,7 +502,7 @@ argument: 0
 Name: form_ref
 Width: 590
 Height: 400
-Number of Objects: 12
+Number of Objects: 13
 
 --------------------
 class: FL_BOX
@@ -720,6 +720,24 @@ gravity: FL_SouthWest FL_SouthWest
 name: prettyref
 callback: RefSelectCB
 argument: 4
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 310 320 160 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Go Back|#B
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
+name: back
+callback: RefSelectCB
+argument: 6
 
 ==============================
 create_the_forms

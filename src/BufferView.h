@@ -73,6 +73,8 @@ public:
         void savePosition();
         ///
         void restorePosition();
+	///
+	bool NoSavedPositions();
 	/** This holds the mapping between buffer paragraphs and screen rows.
 	    This should be private...but not yet. (Lgb)
 	*/

@@ -3203,10 +3203,21 @@ extern "C" void RefSelectCB(FL_OBJECT *, long data)
 	if (s.empty())
 		return;
 
-        if (data >= 5) {
+        if (data == 5) {
                 current_view->owner()->getLyXFunc()->Dispatch(LFUN_REFGOTO, s.c_str());
+		if (!current_view->NoSavedPositions()) {
+			fl_activate_object(fd_form_ref->back);
+			fl_set_object_lcol(fd_form_ref->back, FL_BLACK);
+		}
 	        return;
-	}
+	} else if (data >= 6) {
+		current_view->owner()->getLyXFunc()->Dispatch(LFUN_REFBACK);
+		if (current_view->NoSavedPositions()) {
+			fl_deactivate_object(fd_form_ref->back);
+			fl_set_object_lcol(fd_form_ref->back, FL_INACTIVE);
+		}
+	        return;
+	}	
 
 	static string const commands[5]
 		= { "\\ref", "\\pageref", "\\vref", "\\vpageref",
@@ -3261,6 +3272,14 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 	bool empty = refs.empty();
 	bool sgml = current_view->buffer()->isSGML();
 	bool readonly = current_view->buffer()->isReadonly();
+
+	if (current_view->NoSavedPositions()) {
+		fl_deactivate_object(fd_form_ref->back);
+		fl_set_object_lcol(fd_form_ref->back, FL_INACTIVE);
+	} else {
+		fl_activate_object(fd_form_ref->back);
+		fl_set_object_lcol(fd_form_ref->back, FL_BLACK);
+	}
 
 	if (empty) {
 		fl_add_browser_line(brow, 

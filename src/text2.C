@@ -3175,9 +3175,11 @@ void LyXText::SetCursor(LyXCursor & cur, LyXParagraph * par,
 
 	if (pos > last + 1)   // This shouldn't happen.
 		pos = last+1;
+	else if (pos < row->pos)
+		pos = row->pos;
 
 	if (last < row->pos)
-                cursor_vpos = 0;
+                cursor_vpos = row->pos;
 	else if (pos > last && !boundary)
 		cursor_vpos = (row->par->isRightToLeftPar())
 			? row->pos : last+1; 

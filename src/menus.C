@@ -1417,12 +1417,17 @@ void Add_to_refs_menu(vector<string> const & label_list, int offset,
 	typedef vector<string>::size_type size_type;
 	size_type const max_number_of_items = 25;
 	size_type const max_number_of_items2 = 20;
+	string::size_type const max_item_length = 40;
+	string::size_type const max_item_length2 = 20;
 
 	if (label_list.size() <= max_number_of_items)
-		for (size_type i = 0; i < label_list.size(); ++i)
-			fl_addtopup(menu,
-				    (label_list[i] + "%x"
-				     +tostr(i+offset)).c_str());
+		for (size_type i = 0; i < label_list.size(); ++i) {
+			string entry = label_list[i];
+			if (entry.size() > max_item_length)
+				entry = entry.substr(0, max_item_length-1) + "$";
+			entry += "%x" + tostr(i+offset);
+			fl_addtopup(menu, entry.c_str());
+		}
 	else {
 		size_type count = 0;
 		for (size_type i = 0; i < label_list.size();
@@ -1434,15 +1439,28 @@ void Add_to_refs_menu(vector<string> const & label_list, int offset,
 			}
 			size_type j = std::min(label_list.size(),
 					       i+max_number_of_items2);
-			string entry = label_list[i]+".."+label_list[j-1];
+
+			string entry;
+			if (label_list[i].size() > max_item_length2)
+				entry += label_list[i].substr(0, max_item_length2-1) + "$";
+			else
+				entry += label_list[i];
+			entry += "..";
+			if (label_list[j-1].size() > max_item_length2)
+				entry += label_list[j-1].substr(0, max_item_length2-1) + "$";
+			else
+				entry += label_list[j-1];
 
 			if (menus.size() < max_number_of_menus) {
 				int menu2 = fl_newpup(FL_ObjWin(ob));
 				menus.push_back(menu2);
-				for (size_type k = i;  k < j; ++k)
-					fl_addtopup(menu2,
-						    (label_list[k] + "%x"
-						     + tostr(k+offset)).c_str());
+				for (size_type k = i;  k < j; ++k) {
+					string entry2 = label_list[k];
+					if (entry2.size() > max_item_length)
+						entry2 = entry2.substr(0, max_item_length-1) + "$";
+					entry2 += "%x" + tostr(k+offset);
+					fl_addtopup(menu2, entry2.c_str());
+				}
 				entry += "%m";
 				fl_addtopup(menu, entry.c_str(), menu2);
 			} else {
@@ -1487,7 +1505,7 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 		if (menus.size() < max_number_of_menus) {
 			int menu2 = fl_newpup(FL_ObjWin(ob));
 			menus.push_back(menu2);
-			Add_to_refs_menu(label_list, 1+j*BIG_NUM, menu2, menus, ob);
+			Add_to_refs_menu(label_list, (j+1)*BIG_NUM, menu2, menus, ob);
 			fl_addtopup(RefsMenu, _(MenuNames[j]), menu2);
 		} else {
 			string tmp = _(MenuNames[j]);
@@ -1495,6 +1513,7 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 			fl_addtopup(RefsMenu, tmp.c_str());	
 		}
 	}
+	fl_addtopup(RefsMenu, _("Go Back"));
 
 	bool empty = label_list.empty();
 	bool sgml = buffer->isSGML();
@@ -1511,6 +1530,8 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 		fl_setpup_mode(RefsMenu, 4, FL_PUP_GREY);
 		fl_setpup_mode(RefsMenu, 5, FL_PUP_GREY);
 	}
+	if (men->currentView()->NoSavedPositions())
+		fl_setpup_mode(RefsMenu, 7, FL_PUP_GREY);	
 
 	fl_setpup_position(
 		men->_view->getForm()->x + ob->x,
@@ -1522,9 +1543,11 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 	fl_set_object_boxtype(ob, FL_FLAT_BOX);
 	fl_redraw_object(ob);
 
-	if (choice > 0) {
-		int type = choice / BIG_NUM;
-		int num = (choice % BIG_NUM) - 1;
+	if (choice == 7)
+		men->_view->getLyXFunc()->Dispatch(LFUN_REFBACK);
+	else if (choice >= BIG_NUM) {
+		int type = (choice / BIG_NUM) - 1;
+		int num = choice % BIG_NUM;
 		if (type >= 5)
 			men->_view->getLyXFunc()->Dispatch(LFUN_REFGOTO,
 							   label_list[num].c_str());

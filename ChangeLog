@@ -1,3 +1,32 @@
+2000-06-02  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/BufferView2.C (removeAutoInsets): Fix a bug: 
+	Do not call to SetCursor when the paragraph is a closed footnote!
+
+2000-06-01  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/insets/insetlabel.C (Edit): Mark buffer as dirty when a
+	label is changed.
+
+	* src/text.C (SetCursor): Made the computation of cursor_vpos safer.
+
+2000-05-31 Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* forms/lyx.fd
+	* src/lyx_cb.C (RefSelectCB): Added "Go Back" button in the insert
+	reference popup, that activates the reference-back action
+
+	* src/menus.C (ShowRefsMenu): Added "Go Back" menu item.
+
+	* src/menus.C (Add_to_refs_menu): Limit the size of each item in
+	the menus. Also fixed a bug.
+
+	* src/lyx_cb.C (updateAllVisibleBufferRelatedPopups): Do not close 
+	the math panels when switching buffers (unless new buffer is readonly).
+
+	* src/BufferView.C (NoSavedPositions)
+	* src/BufferView_pimpl.C (NoSavedPositions): New methods
+
 2000-06-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_cb.C (MakeLaTeXOutput): we run MakeLaTeXOutput regard

@@ -81,6 +81,7 @@ typedef struct {
 	FL_OBJECT *vref;
 	FL_OBJECT *vpageref;
 	FL_OBJECT *prettyref;
+	FL_OBJECT *back;
 } FD_form_ref;
 
 extern FD_form_ref * create_form_form_ref(void);

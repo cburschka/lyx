@@ -190,6 +190,10 @@ FD_form_ref *create_form_form_ref(void)
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
     fl_set_object_callback(obj, RefSelectCB, 4);
+  fdui->back = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 320, 160, 30, idex(_("Go Back|#B")));fl_set_button_shortcut(obj,scex(_("Go Back|#B")), 1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
+    fl_set_object_callback(obj,RefSelectCB, 6);
   fl_end_form();
 
   //fdui->form_ref->fdui = fdui;

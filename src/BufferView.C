@@ -237,6 +237,12 @@ void BufferView::restorePosition()
 }
 
 
+bool BufferView::NoSavedPositions()
+{
+	return pimpl_->NoSavedPositions();
+}
+
+
 void BufferView::update(signed char f)
 {
 	pimpl_->update(f);
