@@ -46,6 +46,36 @@ using std::endl;
 using std::ostream;
 
 
+namespace {
+
+bool moveItem(Paragraph & from, Paragraph & to,
+	BufferParams const & params, pos_type i, pos_type j)
+{
+	char const tmpchar = from.getChar(i);
+	LyXFont tmpfont = from.getFontSettings(params, i);
+
+	if (tmpchar == Paragraph::META_INSET) {
+		InsetOld * tmpinset = 0;
+		if (from.getInset(i)) {
+			// the inset is not in a paragraph anymore
+			tmpinset = from.insetlist.release(i);
+			tmpinset->parOwner(0);
+		}
+
+		if (!to.insetAllowed(tmpinset->lyxCode()))
+			return false;
+		to.insertInset(j, tmpinset, tmpfont);
+	} else {
+		if (!to.checkInsertChar(tmpfont))
+			return false;
+		to.insertChar(j, tmpchar, tmpfont);
+	}
+	return true;
+}
+
+}
+
+
 void breakParagraph(BufferParams const & bparams,
 		    ParagraphList & paragraphs,
 		    ParagraphList::iterator par,
@@ -106,16 +136,15 @@ void breakParagraph(BufferParams const & bparams,
 		pos_type j = pos;
 
 		for (; i <= pos_end; ++i) {
-			Change::Type change(par->lookupChange(i));
-			par->cutIntoMinibuffer(bparams, i);
-			if (tmp->insertFromMinibuffer(j - pos)) {
+			Change::Type change = par->lookupChange(i);
+			if (moveItem(*par, *tmp, bparams, i, j - pos)) {
 				tmp->setChange(j - pos, change);
 				++j;
 			}
 		}
-		for (i = pos_end; i >= pos; --i) {
+
+		for (i = pos_end; i >= pos; --i)
 			par->eraseIntern(i);
-		}
 	}
 
 	if (pos)
@@ -163,15 +192,12 @@ void breakParagraphConservative(BufferParams const & bparams,
 		// paragraph
 		pos_type pos_end = par->size() - 1;
 
-		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
-			par->cutIntoMinibuffer(bparams, i);
-			if (tmp->insertFromMinibuffer(j - pos))
+		for (pos_type i = pos, j = pos; i <= pos_end; ++i)
+			if (moveItem(*par, *tmp, bparams, i, j - pos))
 				++j;
-		}
 
-		for (pos_type k = pos_end; k >= pos; --k) {
+		for (pos_type k = pos_end; k >= pos; --k)
 			par->erase(k);
-		}
 	}
 }
 
@@ -191,11 +217,9 @@ void mergeParagraph(BufferParams const & bparams,
 	pos_type pos_insert = par->size();
 
 	// ok, now copy the paragraph
-	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {
-		the_next->cutIntoMinibuffer(bparams, i);
-		if (par->insertFromMinibuffer(pos_insert + j))
+	for (pos_type i = 0, j = 0; i <= pos_end; ++i)
+		if (moveItem(*the_next, *par, bparams, i, pos_insert + j))
 			++j;
-	}
 
 	paragraphs.erase(the_next);
 }

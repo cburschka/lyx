@@ -258,12 +258,6 @@ public:
 	InsetOld * getInset(lyx::pos_type pos);
 	///
 	InsetOld const * getInset(lyx::pos_type pos) const;
-	/** important for cut and paste
-	    Temporary change from BufferParams to Buffer. Will revert when we
-	    get rid of the argument to InsetOld::clone(Buffer const &) */
-	void cutIntoMinibuffer(BufferParams const &, lyx::pos_type pos);
-	///
-	bool insertFromMinibuffer(lyx::pos_type pos);
 
 	///
 	bool isHfill(lyx::pos_type pos) const;

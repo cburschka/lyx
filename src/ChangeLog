@@ -1,7 +1,12 @@
 
 2003-07-30  André Pönitz  <poenitz@gmx.net>
 
-	* Paragraph.[Ch] (copyIntoMinibuffer) removed unused function
+	* paragraph.[Ch] (copyIntoMinibuffer): removed unused function
+
+	* paragraph.[Ch] (cutIntoMinibuffer, insertFromMinibuffer):
+	  create a single function...
+
+	* paragraph_funcs.C (moveItem): ... here.
 
 2003-07-30  Martin Vermeer  <martin.vermeer@hut.fi>
 

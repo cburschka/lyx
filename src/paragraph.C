@@ -58,17 +58,6 @@ using std::upper_bound;
 using lyx::pos_type;
 
 
-// this is a minibuffer
-
-namespace {
-
-char minibuffer_char;
-LyXFont minibuffer_font;
-InsetOld * minibuffer_inset;
-
-} // namespace anon
-
-
 Paragraph::Paragraph()
 	: pimpl_(new Paragraph::Pimpl(this))
 {
@@ -249,44 +238,6 @@ void Paragraph::validate(LaTeXFeatures & features) const
 {
 	pimpl_->validate(features, *layout());
 }
-
-
-void Paragraph::cutIntoMinibuffer(BufferParams const & bparams, pos_type pos)
-{
-	minibuffer_char = getChar(pos);
-	minibuffer_font = getFontSettings(bparams, pos);
-	minibuffer_inset = 0;
-	if (minibuffer_char == Paragraph::META_INSET) {
-		if (getInset(pos)) {
-			// the inset is not in a paragraph anymore
-			minibuffer_inset = insetlist.release(pos);
-			minibuffer_inset->parOwner(0);
-		} else {
-			minibuffer_inset = 0;
-			minibuffer_char = ' ';
-			// This reflects what GetInset() does (ARRae)
-		}
-	}
-}
-
-
-bool Paragraph::insertFromMinibuffer(pos_type pos)
-{
-	if (minibuffer_char == Paragraph::META_INSET) {
-		if (!insetAllowed(minibuffer_inset->lyxCode()))
-			return false;
-		insertInset(pos, minibuffer_inset, minibuffer_font);
-	} else {
-		LyXFont f = minibuffer_font;
-		if (!checkInsertChar(f))
-			return false;
-		insertChar(pos, minibuffer_char, f);
-	}
-	return true;
-}
-
-
-// end of minibuffer
 
 
 void Paragraph::eraseIntern(lyx::pos_type pos)
