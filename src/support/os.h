@@ -8,7 +8,7 @@
  *
  * Full author contact details are available in file CREDITS.
  *
- * wrap OS specific stuff
+ * wrap OS-specific stuff
  */
 
 #ifndef OS_H
