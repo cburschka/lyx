@@ -1,3 +1,13 @@
+2002-03-12  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (resizeCurrentBuffer): only resize insets if we
+	did resize the LyXText too.
+
+	* buffer.C (readLyXformat2): set layout information on newly allocated
+	paragraphs.
+
+	* tabular.C (OldFormatRead): set layout information on the paragraph.
+
 2002-03-12  José Abílio Oliveira Matos  <jamatos@novalis.fc.up.pt>
 
 	* buffer.C (simpleDocBookOnePar): fix empty definition case for now.

@@ -311,6 +311,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	pos_type selendpos = 0;
 	bool selection = false;
 	bool mark_set  = false;
+	bool text_found = false;
 
 	owner_->prohibitInput();
 
@@ -334,6 +335,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		// the new buffer_ with the correct width.
 		bv_->text = textcache.findFit(buffer_, workarea_.workWidth());
 		if (bv_->text) {
+			text_found = true;
 			if (lyxerr.debugging()) {
 				lyxerr << "Found a LyXText that fits:\n";
 				textcache.show(lyxerr, make_pair(buffer_, make_pair(workarea_.workWidth(), bv_->text)));
@@ -372,7 +374,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	// please tell me WHY the heck you deactivated this code, whoever
 	// 'you' are (Jug 20020311)
 #if 1
-	buffer_->resizeInsets(bv_);
+	if (!text_found)
+		buffer_->resizeInsets(bv_);
 #endif
 	// this will scroll the screen such that the cursor becomes visible
 	updateScrollbar();

@@ -35,6 +35,7 @@
 #include "frontends/Alert.h"
 #include "gettext.h"
 #include "tabular_funcs.h"
+#include "lyxtextclasslist.h"
 
 #include <algorithm>
 #include <cstdlib>
@@ -197,7 +198,7 @@ LyXTabular * LyXTabular::clone(BufferParams const & bp,
 
 /* activates all lines and sets all widths to 0 */ 
 void LyXTabular::Init(BufferParams const & bp,
-		      int rows_arg, int columns_arg, LyXTabular const * lt)
+                      int rows_arg, int columns_arg, LyXTabular const * lt)
 {
 	rows_ = rows_arg;
 	columns_ = columns_arg;
@@ -1309,7 +1310,7 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 
 
 void LyXTabular::OldFormatRead(BufferParams const & bp,
-			       LyXLex & lex, string const & fl)
+                               LyXLex & lex, string const & fl)
 {
 	int version;
 	int i;
@@ -1443,6 +1444,7 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 	Paragraph * par = new Paragraph;
 	Paragraph * return_par = 0;
 
+	par->layout(textclasslist[bp.textclass].defaultLayoutName());
 	string tmptok;
 	int pos = 0;
 	Paragraph::depth_type depth = 0;

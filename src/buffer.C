@@ -333,6 +333,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 
 	if (!par) {
 		par = new Paragraph;
+		par->layout(textclasslist[params.textclass].defaultLayoutName());
 	} else {
 		// We are inserting into an existing document
 		users->text->breakParagraph(users);
@@ -544,6 +545,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				first_par = par;
 			else {
 				par = new Paragraph(par);
+				par->layout(textclasslist[params.textclass].defaultLayoutName());
 			}
 			pos = 0;
 			par->layout(layoutname);
