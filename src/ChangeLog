@@ -1,3 +1,8 @@
+2004-04-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lengthcommon.C: compilation fix: remove explicit array size from
+	unit_name[] and friends
+
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
 	* LyXAction.C (init): set LFUN_DIALOG_UPDATE's atrib flag to NoBuffer.

@@ -225,7 +225,7 @@ Moreover, the following generic configure flags may be useful:
   o --mandir=DIRECTORY gives the directory where the man pages will go.
     [defaults to ${prefix}/man]
 
-  o --enable-mainainer-mode enables some code that automatically
+  o --enable-maintainer-mode enables some code that automatically
     rebuilds the configure script, makefiles templates and other useful
     files when needed. This is off by default, to avoid surprises.
 
