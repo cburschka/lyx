@@ -225,10 +225,12 @@ int InsetGraphics::Latex(ostream & os, signed char /*fragile*/) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetGraphics::Latex(string & /*file*/, signed char /*fragile*/) const
 {
 	return 0;
 }
+#endif
 
 
 int InsetGraphics::Linuxdoc(string & /*file*/) const

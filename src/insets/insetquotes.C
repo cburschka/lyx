@@ -226,13 +226,52 @@ void InsetQuotes::Read(LyXLex & lex)
 
 int InsetQuotes::Latex(ostream & os, signed char /*fragile*/) const
 {
+#ifdef USE_OSTREAM_ONLY
+	string doclang = 
+		current_view->buffer()->GetLanguage();
+	int quoteind = quote_index[side][language];
+	string qstr;
+	
+	if (lyxrc->fontenc == "T1") {
+		qstr = latex_quote_t1[times][quoteind];
+	}
+	else if (doclang == "default") {
+		qstr = latex_quote_ot1[times][quoteind];
+	} 
+	else if (language == InsetQuotes::FrenchQ 
+		 && times == InsetQuotes::DoubleQ
+		 && doclang == "frenchb") {
+		if (side == InsetQuotes::LeftQ) 
+			qstr = "\\og{}";
+		else 
+			qstr = " \\fg{}";
+	} 
+	else 
+		qstr = latex_quote_babel[times][quoteind];
+
+	// protect against !` and ?` ligatures.
+	// Is it very bad of us to always protect against those ligatures?
+#if 0
+	if ((suffixIs(file, '?') || suffixIs(file, '!'))
+	    && qstr[0] == '`')
+		qstr = "{}" + qstr;
+#else
+	// Always guard against unfortunate ligatures (!` ?`)
+	qstr.insert(0, "{}");
+#endif
+
+	os << qstr;
+	return 0;
+#else
 	string quote;
 	int res = Latex(quote, 0);
 	os << quote;
 	return res;
+#endif
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetQuotes::Latex(string & file, signed char /*fragile*/) const
 {
 	string doclang = 
@@ -265,6 +304,7 @@ int InsetQuotes::Latex(string & file, signed char /*fragile*/) const
 	file += qstr;
 	return 0;
 }
+#endif
 
 
 int InsetQuotes::Linuxdoc(string & file) const

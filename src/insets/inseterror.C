@@ -107,10 +107,12 @@ int InsetError::Latex(ostream &, signed char /*fragile*/) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetError::Latex(string &, signed char /*fragile*/) const
 {
 	return 0;
 }
+#endif
 
 
 int InsetError::Linuxdoc(string &) const

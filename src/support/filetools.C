@@ -1025,6 +1025,25 @@ string findtexfile(string const & fil, string const & /*format*/)
 		return MakeAbsPath(fil);
 
         // No we try to find it using kpsewhich.
+	// It seems from the kpsewhich manual page that it is safe to use
+	// kpsewhich without --format: "When the --format option is not
+	// given, the search path used when looking for a file is inferred
+	// from the name given, by looking for a known extension. If no
+	// known extension is found, the search path for TeX source files
+	// is used."
+	// However, we want to take advantage of the format sine almost all
+	// the different formats has environment variables that can be used
+	// to controll which paths to search. f.ex. bib looks in
+	// BIBINPUTS and TEXBIB. Small list follows:
+	// bib - BIBINPUTS, TEXBIB
+	// bst - BSTINPUTS
+	// graphic/figure - TEXPICTS, TEXINPUTS
+	// ist - TEXINDEXSTYLE, INDEXSTYLE
+	// pk - PROGRAMFONTS, PKFONTS, TEXPKS, GLYPHFONTS, TEXFONTS
+	// tex - TEXINPUTS
+	// tfm - TFMFONTS, TEXFONTS
+	// This means that to use kpsewhich in the best possible way we
+	// should help it by setting additional path in the approp. envir.var.
         string kpsecmd = "kpsewhich " + fil;
 
         cmdret c = do_popen(kpsecmd);

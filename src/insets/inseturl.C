@@ -168,14 +168,24 @@ string InsetUrl::getScreenLabel() const
 
 int InsetUrl::Latex(ostream & os, signed char fragile) const
 {
+#ifdef USE_OSTREAM_ONLY
+	if (!getOptions().empty())
+		os << getOptions() + ' ';
+	if (fragile)
+		os << "\\protect";
+	os << "\\url{" << getContents() << '}';
+	return 0;
+#else
 	string latex_output;
 	int res = Latex(latex_output, fragile);
 	os << latex_output;
 
 	return res;
+#endif
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetUrl::Latex(string & file, signed char fragile) const
 {
 	if (!getOptions().empty())
@@ -187,6 +197,7 @@ int InsetUrl::Latex(string & file, signed char fragile) const
 
 	return 0;
 }
+#endif
 
 
 int InsetUrl::Linuxdoc(string & file) const

@@ -99,16 +99,18 @@ void InsetText::Write(ostream & os) const
     WriteParagraphData(os);
 }
 
+
 void InsetText::WriteParagraphData(ostream & os) const
 {
     par->writeFile(os, buffer->params, 0, 0);
 }
 
+
 void InsetText::Read(LyXLex & lex)
 {
     string token, tmptok;
     int pos = 0;
-    LyXParagraph *return_par = 0;
+    LyXParagraph * return_par = 0;
     char depth = 0; // signed or unsigned?
     LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
     LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
@@ -425,8 +427,9 @@ void InsetText::InsetKeyPress(XKeyEvent * xke)
 }
 
 
-UpdatableInset::RESULT InsetText::LocalDispatch(BufferView * bv,
-						int action, string const & arg)
+UpdatableInset::RESULT
+InsetText::LocalDispatch(BufferView * bv,
+			 int action, string const & arg)
 {
     no_selection = false;
     if (UpdatableInset::LocalDispatch(bv, action, arg)) {
@@ -590,22 +593,32 @@ UpdatableInset::RESULT InsetText::LocalDispatch(BufferView * bv,
 }
 
 
-int InsetText::Latex(ostream & os, signed char fragile) const
+int InsetText::Latex(ostream & os, signed char /*fragile*/) const
 {
+#ifdef USE_OSTREAM_ONLY
+	string fstr;
+	TexRow texrow;
+	int ret = par->SimpleTeXOnePar(fstr, texrow);
+	os << fstr;
+	return ret;
+#else
     string fstr;
 
     int i = Latex(fstr, fragile);
     os << fstr;
     return i;
+#endif
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetText::Latex(string & file, signed char /* fragile */) const
 {
     TexRow texrow;
 
     return par->SimpleTeXOnePar(file, texrow);
 }
+#endif
 
 
 void InsetText::Validate(LaTeXFeatures & features) const

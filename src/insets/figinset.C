@@ -1202,12 +1202,14 @@ int InsetFig::Latex(ostream & os, signed char /* fragile*/ ) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetFig::Latex(string & file, signed char /* fragile*/ ) const
 {
 	Regenerate();
 	file += cmd + ' ';
 	return 0;
 }
+#endif
 
 
 int InsetFig::Linuxdoc(string &/*file*/) const

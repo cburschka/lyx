@@ -1,3 +1,18 @@
+2000-03-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/mathed/math_utils.C (MathedLookupBOP): using only res->id ==
+	id in the check of the result from lower_bound is not enough since
+	lower_bound can return last too, and then res->id will not be a
+	valid construct.
+
+	*  all insets and some code that use them: I have conditionalized
+	removed the Latex(string & out, ...) this means that only the
+	Latex(ostream &, ...) will be used. This is a work in progress to
+	move towards using streams for all output of files. 
+
+	* src/text.C (GetColumnNearX): initialize LyXParagraph::size_type
+	c to 0.
+
 2000-03-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_utils.C (MathedLookupBOP): fix the search

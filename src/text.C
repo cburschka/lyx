@@ -2958,18 +2958,39 @@ char * LyXText::SelectNextWord(float & value)
 	/* Start the selection from here */
 	sel_cursor = cursor;
 
+#ifdef USE_OSTREAM_ONLY
+#ifdef HAVE_SSTREAM
+	ostringstream latex;
+#else
+	ostrstream latex;
+#endif
+#else
 	string latex;
-   
+#endif
 	/* and find the end of the word 
 	   (optional hyphens are part of a word) */
 	while (cursor.pos < cursor.par->Last()
 	       && (cursor.par->IsLetter(cursor.pos)) 
-	           || (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET &&
-		       cursor.par->GetInset(cursor.pos) != 0 &&
-		       cursor.par->GetInset(cursor.pos)->Latex(latex, 0) == 0 &&
-		       latex == "\\-"))
+	           || (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
+		       && cursor.par->GetInset(cursor.pos) != 0
+		       && cursor.par->GetInset(cursor.pos)->Latex(latex, 0) == 0
+#ifdef USE_OSTREAM_ONLY
+#ifdef HAVE_SSTREAM
+		       && latex.str() == "\\-"
+#else
+		&& string(latex.str(), 3) == "\\-" // this is not nice at all
+#endif
+#else
+		       && latex == "\\-"
+#endif
+			   ))
 		cursor.pos++;
 
+#ifdef USE_OSTREAM_ONLY
+#ifndef HAVE_SSTREAM
+	delete [] latex.str();
+#endif
+#endif
 	// Finally, we copy the word to a string and return it
 	char * str = 0;
 
@@ -2995,17 +3016,39 @@ void LyXText::SelectSelectedWord()
 	/* set the sel cursor */
 	sel_cursor = cursor;
 
+#ifdef USE_OSTREAM_ONLY
+#ifdef HAVE_SSTREAM
+	ostringstream latex;
+#else
+	ostrstream latex;
+#endif
+#else
 	string latex;
+#endif
 	
 	/* now find the end of the word */
 	while (cursor.pos < cursor.par->Last()
 	       && (cursor.par->IsLetter(cursor.pos)
-	           || (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET &&
-		       cursor.par->GetInset(cursor.pos) != 0 &&
-		       cursor.par->GetInset(cursor.pos)->Latex(latex, 0) == 0 &&
-		       latex == "\\-")))
+	           || (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
+		       && cursor.par->GetInset(cursor.pos) != 0
+		       && cursor.par->GetInset(cursor.pos)->Latex(latex, 0) == 0
+#ifdef USE_OSTREAM_ONLY
+#ifdef HAVE_SSTREAM
+		       && latex.str() == "\\-"
+#else
+		       && string(latex.str(), 3) == "\\-"
+#endif
+#else
+		       && latex == "\\-"
+#endif
+			   )))
 		cursor.pos++;
 	
+#ifdef USE_OSTREAM_ONLY
+#ifndef HAVE_SSTREAM
+	delete [] latex.str();
+#endif
+#endif
 	SetCursor(cursor.par, cursor.pos);
 	
 	/* finally set the selection */ 
@@ -4149,7 +4192,7 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 	LyXDirection direction = row->par->getParDirection();
 	LyXParagraph::size_type vc = row->pos;
 	LyXParagraph::size_type last = RowLast(row);
-	LyXParagraph::size_type c;
+	LyXParagraph::size_type c = 0;
 
 	LyXLayout const & layout = textclasslist.Style(parameters->textclass,
 						       row->par->GetLayout());

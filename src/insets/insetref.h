@@ -62,8 +62,10 @@ public:
         void gotoLabel();
 	///
 	int Latex(ostream &, signed char fragile) const;
+#ifndef USE_OSTREAM_ONLY
 	///
 	int Latex(string & file, signed char fragile) const;
+#endif
 	///
 	int Linuxdoc(string & file) const;
 	///

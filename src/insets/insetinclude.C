@@ -317,24 +317,14 @@ bool InsetInclude::loadIfNeeded() const
 
 int InsetInclude::Latex(ostream & os, signed char /*fragile*/) const
 {
-	string include_file;
-	signed char dummy = 0;
-	Latex(include_file, dummy);
-	os << include_file;
-	return 0;
-}
-
-
-int InsetInclude::Latex(string & file, signed char /*fragile*/) const
-{
-	string writefile, incfile;
-
+#ifdef USE_OSTREAM_ONLY
 	// Do nothing if no file name has been specified
 	if (contents.empty())
 		return 0;
     
 	// Use += to force a copy of contents (JMarc)
-	incfile += contents;
+	// How does that force anything? (Lgb)
+	string incfile(contents);
 
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
@@ -351,7 +341,85 @@ int InsetInclude::Latex(string & file, signed char /*fragile*/) const
 		}
 		
 		// write it to a file (so far the complete file)
-		writefile = ChangeExtension(getFileName(), ".tex", false);
+		string writefile = ChangeExtension(getFileName(), ".tex", false);
+		if (!master->tmppath.empty()
+		    && !master->niceFile) {
+			incfile = subst(incfile, '/','@');
+#ifdef __EMX__
+			incfile = subst(incfile, ':', '$');
+#endif
+			writefile = AddName(master->tmppath, incfile);
+		} else
+			writefile = getFileName();
+		writefile = ChangeExtension(writefile, ".tex", false);
+		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
+		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
+		
+		tmp->markDepClean(master->tmppath);
+		
+		tmp->makeLaTeXFile(writefile,
+				   OnlyPath(getMasterFilename()), 
+				   master->niceFile, true);
+	} 
+
+	if (isVerb()) {
+		os << '\\' << command << '{' << incfile << '}';
+	} 
+	else if (isInput()) {
+		// \input wants file with extension (default is .tex)
+		if (!IsLyXFilename(getFileName())) {
+			os << '\\' << command << '{' << incfile << '}';
+		} else {
+			os << '\\' << command << '{'
+			   << ChangeExtension(incfile, ".tex", false)
+			   <<  '}';
+		}
+	} else {
+		// \include don't want extension and demands that the
+		// file really have .tex
+		os << '\\' << command << '{'
+		   << ChangeExtension(incfile, string(), false)
+		   << '}';
+	}
+
+	return 0;
+#else
+	string include_file;
+	signed char dummy = 0;
+	Latex(include_file, dummy);
+	os << include_file;
+	return 0;
+#endif
+}
+
+
+#ifndef USE_OSTREAM_ONLY
+int InsetInclude::Latex(string & file, signed char /*fragile*/) const
+{
+	// Do nothing if no file name has been specified
+	if (contents.empty())
+		return 0;
+    
+	// Use += to force a copy of contents (JMarc)
+	string incfile += contents;
+
+	if (loadIfNeeded()) {
+		Buffer * tmp = bufferlist.getBuffer(getFileName());
+
+		if (tmp->params.textclass != master->params.textclass) {
+			lyxerr << "ERROR: Cannot handle include file `"
+			       << MakeDisplayPath(getFileName())
+			       << "' which has textclass `"
+			       << textclasslist.NameOfClass(tmp->params.textclass)
+			       << "' instead of `"
+			       << textclasslist.NameOfClass(master->params.textclass)
+			       << "'." << endl;
+			return 0;
+		}
+		
+		// write it to a file (so far the complete file)
+		string writefile =
+			ChangeExtension(getFileName(), ".tex", false);
 		if (!master->tmppath.empty()
 		    && !master->niceFile) {
 			incfile = subst(incfile, '/','@');
@@ -400,6 +468,7 @@ int InsetInclude::Latex(string & file, signed char /*fragile*/) const
 
 	return 0;
 }
+#endif
 
 
 void InsetInclude::Validate(LaTeXFeatures & features) const

@@ -1930,9 +1930,24 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 		file += style.latexparam();
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
-	        if (bibkey) 
+	        if (bibkey) {
+#ifdef USE_OSTREAM_ONLY
+#ifdef HAVE_SSTREAM
+			ostringstream ost;
+			bibkey->Latex(ost, false);
+			file += ost.str().c_str();
+#else
+			ostrstream ost;
+			bibkey->Latex(ost, false);
+			ost << '\0';
+			char * tmp = ost.str();
+			file += tmp;
+			delete [] tmp;
+#endif
+#else
 			bibkey->Latex(file, false);
-		else
+#endif
+		} else
 			file += "\\item ";
 		break;
 	case LATEX_LIST_ENVIRONMENT:
@@ -2942,7 +2957,22 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 				file += "\\L{";
 				close = true;
 			}
+#ifdef USE_OSTREAM_ONLY
+#ifdef HAVE_SSTREAM
+			ostringstream ost;
+			int tmp = inset->Latex(ost, style.isCommand());
+			file += ost.str().c_str();
+#else
+			ostrstream ost;
+			int tmp = inset->Latex(ost, style.isCommand());
+			ost << '\0';
+			char * chtmp = ost.str();
+			file += chtmp;
+			delete [] chtmp;
+#endif		
+#else
 			int tmp = inset->Latex(file, style.isCommand());
+#endif
 			if (close)
 				file += "}";
 			

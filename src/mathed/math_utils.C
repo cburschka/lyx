@@ -65,11 +65,13 @@ binary_op_pair binary_op_table[] = {
 
 struct compara {
 	// used by sort
+	inline
 	int operator()(binary_op_pair const & a,
 		       binary_op_pair const & b) const {
 		return a.id < b.id;
 	}
 	// used by lower_bound
+	inline
 	int operator()(binary_op_pair const & a, short int id) const {
 		return a.id < id;
 	}
@@ -78,7 +80,8 @@ struct compara {
 
 int MathedLookupBOP(short id)
 {
-	static int bopCount = sizeof(binary_op_table) / sizeof(binary_op_pair);
+	static int const bopCount =
+		sizeof(binary_op_table) / sizeof(binary_op_pair);
 	static bool issorted = false;
 	
 	if (!issorted) {
@@ -89,7 +92,7 @@ int MathedLookupBOP(short id)
 	binary_op_pair * res = lower_bound(binary_op_table,
 					   binary_op_table + bopCount,
 					   id, compara());
-	if (res->id == id)
+	if (res != binary_op_table + bopCount && res->id == id)
 		return res->isrel;
 	else
 		return LMB_NONE;

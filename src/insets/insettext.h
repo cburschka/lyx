@@ -81,8 +81,10 @@ public:
     UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
     ///
     int Latex(ostream &, signed char) const;
+#ifndef USE_OSTREAM_ONLY
     ///
     int Latex(string &, signed char) const;
+#endif
     ///
     int Linuxdoc(string &) const { return 0; }
     ///

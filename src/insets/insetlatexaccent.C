@@ -752,11 +752,13 @@ int InsetLatexAccent::Latex(ostream & os, signed char /*fragile*/) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetLatexAccent::Latex(string & file, signed char /*fragile*/) const
 {
 	file += contents;
 	return 0;
 }
+#endif
 
 
 int InsetLatexAccent::Linuxdoc(string & file) const

@@ -128,8 +128,10 @@ public:
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	/// 
 	int Latex(ostream &, signed char) const;
+#ifndef USE_OSTREAM_ONLY
 	///
 	int Latex(string & file, signed char fragile) const;
+#endif
 	///
 	string getKeys(char delim);
 	///

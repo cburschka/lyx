@@ -50,11 +50,13 @@ int InsetLabel::Latex(ostream & os, signed char /*fragile*/) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetLabel::Latex(string & file, signed char /*fragile*/) const
 {
 	file += escape(getCommand());
 	return 0;
 }
+#endif
 
 
 int InsetLabel::Linuxdoc(string & file) const

@@ -78,12 +78,14 @@ int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetFormulaMacro::Latex(string &file, signed char /*fragile*/) const
 {
     int ret = 1;
     tmacro->WriteDef(file);
     return ret;
 }
+#endif
 
 
 int InsetFormulaMacro::Linuxdoc(string &/*file*/) const

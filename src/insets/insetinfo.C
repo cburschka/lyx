@@ -132,10 +132,12 @@ int InsetInfo::Latex(ostream &, signed char /*fragile*/) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetInfo::Latex(string &, signed char /*fragile*/) const
 {
 	return 0;
 }
+#endif
 
 
 int InsetInfo::Linuxdoc(string &) const

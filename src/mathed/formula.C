@@ -59,7 +59,8 @@ int MathedInset::df_des;
 int MathedInset::df_width;
 
 
-inline bool IsMacro(short token, int id)
+inline
+bool IsMacro(short token, int id)
 {
    return (token != LM_TK_FRAC && token != LM_TK_SQRT &&
 	  !((token == LM_TK_SYM || token == LM_TC_BSYM) && id < 255));
@@ -147,7 +148,7 @@ void mathed_init_fonts() //removed 'static' because DEC cxx does not
 
     Math_Fonts = new LyXFont[8]; //DEC cxx cannot initialize all fonts
 				 //at once (JMarc) rc
-    for (int i = 0 ; i < 8 ; ++i){ 
+    for (int i = 0 ; i < 8 ; ++i) { 
     	Math_Fonts[i] = LyXFont(LyXFont::ALL_SANE);
     }
     Math_Fonts[0].setShape(LyXFont::ITALIC_SHAPE);
@@ -307,12 +308,21 @@ int InsetFormula::Latex(ostream & os, signed char fragile) const
 //#warning Alejandro, the number of lines is not returned in this case
 // This problem will disapear at 0.13.
     string output;
+#ifdef USE_OSTREAM_ONLY
+    if (fragile < 0)
+	    par->Write(output);
+    else
+	    mathed_write(par, output, &ret, fragile, label.c_str());
+    
+#else
     InsetFormula::Latex(output, fragile);
+#endif
     os << output;
     return ret;
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetFormula::Latex(string & file, signed char fragile) const
 {
     int ret = 0;
@@ -324,6 +334,7 @@ int InsetFormula::Latex(string & file, signed char fragile) const
         mathed_write(par, file, &ret, fragile, label.c_str());
     return ret;
 }
+#endif
 
 
 int InsetFormula::Linuxdoc(string &/*file*/) const

@@ -81,6 +81,7 @@ int InsetRef::Latex(ostream & os, signed char /*fragile*/) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetRef::Latex(string & file, signed char /*fragile*/) const
 {
 	if(getOptions().empty())
@@ -93,6 +94,7 @@ int InsetRef::Latex(string & file, signed char /*fragile*/) const
 	}
 	return 0;
 }
+#endif
 
 
 int InsetRef::Linuxdoc(string & file) const

@@ -26,6 +26,8 @@ class BufferView;
 
 struct LaTeXFeatures;
 
+#define USE_OSTREAM_ONLY 1
+
 /// Insets
 class Inset {
 public:
@@ -113,8 +115,10 @@ public:
 	 fragile commands by adding a \protect before.
 	 */
 	virtual int Latex(ostream &, signed char fragile) const = 0;
+#ifndef USE_OSTREAM_ONLY
 	///
 	virtual int Latex(string & file, signed char fragile) const = 0;
+#endif
 	///
 	virtual int Linuxdoc(string & /*file*/) const = 0;
 	///

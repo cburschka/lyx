@@ -251,11 +251,13 @@ int InsetCommand::Latex(ostream & os, signed char /*fragile*/) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetCommand::Latex(string & file, signed char /*fragile*/) const
 {
 	file += getCommand();
 	return 0;
 }
+#endif
 
 
 int InsetCommand::Linuxdoc(string &/*file*/) const

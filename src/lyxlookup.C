@@ -20,6 +20,7 @@
 #ifdef HAVE_LOCALE_H
 #include <locale.h>
 #endif
+#include <clocale>
 
 #include "debug.h"
 

@@ -48,8 +48,10 @@ public:
 	void Read(LyXLex & lex);
 	/// 
 	virtual int Latex(ostream &, signed char fragile) const;
+#ifndef USE_OSTREAM_ONLY
 	///
 	virtual int Latex(string & file, signed char fragile) const;
+#endif
 	///
 	virtual int Linuxdoc(string & file) const;
 	///

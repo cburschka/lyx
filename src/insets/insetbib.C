@@ -313,14 +313,52 @@ string InsetBibtex::getScreenLabel() const
 
 int InsetBibtex::Latex(ostream & os, signed char /*fragile*/) const
 {
+#ifdef USE_OSTREAM_ONLY
+	// this looks like an horrible hack and it is :) The problem
+	// is that owner is not initialized correctly when the bib
+	// inset is cut and pasted. Such hacks will not be needed
+	// later (JMarc)
+	if (!owner) {
+		owner = current_view->buffer();
+	}
+	// If we generate in a temp dir, we might need to give an
+	// absolute path there. This is a bit complicated since we can
+	// have a comma-separated list of bibliographies
+	string adb, db_out;
+	string db_in = getContents();
+	db_in = split(db_in, adb, ',');
+	while(!adb.empty()) {
+		if (!owner->niceFile &&
+		    IsFileReadable(MakeAbsPath(adb, owner->filepath)+".bib")) 
+			adb = MakeAbsPath(adb, owner->filepath);
+		db_out += adb;
+		db_out += ',';
+		db_in= split(db_in, adb,',');
+	}
+	db_out = strip(db_out, ',');
+	// Idem, but simpler
+	string style;
+	if (!owner->niceFile 
+	    && IsFileReadable(MakeAbsPath(getOptions(), owner->filepath)
+			      + ".bst")) 
+		style = MakeAbsPath(getOptions(), owner->filepath);
+	else
+		style = getOptions();
+
+	os << "\\bibliographystyle{" << style << "}\n"
+	   << "\\bibliography{" << db_out << "}\n";
+	return 2;
+#else
 	string bib;
 	signed char dummy = 0;
 	int result = Latex(bib, dummy);
 	os << bib;
 	return result;
+#endif
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 int InsetBibtex::Latex(string & file, signed char /*fragile*/) const
 {
 	// this looks like an horrible hack and it is :) The problem
@@ -362,7 +400,7 @@ int InsetBibtex::Latex(string & file, signed char /*fragile*/) const
 	file += "}\n";
 	return 2;
 }
-
+#endif
 
 // This method returns a comma separated list of Bibtex entries
 string InsetBibtex::getKeys(char delim)

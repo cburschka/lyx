@@ -51,6 +51,7 @@ int InsetParent::Latex(ostream & os, signed char fragile) const
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 // LaTeX must just ignore this command
 int InsetParent::Latex(string & file, signed char fragile) const
 {
@@ -58,3 +59,4 @@ int InsetParent::Latex(string & file, signed char fragile) const
 	InsetCommand::Latex(file, fragile);
 	return 0;
 }
+#endif
