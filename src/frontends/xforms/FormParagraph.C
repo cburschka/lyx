@@ -77,7 +77,7 @@ void FormParagraph::changedParagraph()
 {
 	/// Record the paragraph
 	Paragraph const * const p = getCurrentParagraph();
-	if (p == 0 || p == par_)
+	if (p == 0) // this is wrong as we don't set par_ here! /* || p == par_) */
 		return;
 
 	// For now, don't bother checking if the params are different.

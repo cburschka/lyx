@@ -1,3 +1,9 @@
+2002-04-19  Juergen Vigna  <jug@sad.it>
+
+	* FormParagraph.C (changedParagraph): don't check for p == par_ as
+	we don't set par_ on a changedParagraph call so we don't resete the
+	buttons and message when we return to the original paragraph!
+
 2002-04-17  Rob Lahaye <lahaye@users.sourceforge.net>
 
 	* forms/cvsignore: add Makefile.

@@ -1,3 +1,8 @@
+2002-04-19  Juergen Vigna  <jug@sad.it>
+
+	* lyxfunc.C (dispatch): update paragraph layout after LFUN_ESCAPE when
+	really leaving an inset.
+
 2002-04-18  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (Dispatch): fixed to change layout also if one

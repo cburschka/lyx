@@ -1021,6 +1021,8 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 							true);
 			}
 			finishUndo();
+			// Tell the paragraph dialog that we changed paragraph
+			owner->getDialogs()->updateParagraph();
 		}
 	}
 	break;
