@@ -192,43 +192,42 @@ FuncRequest InsetCollapsable::adjustCommand(FuncRequest const & cmd)
 
 DispatchResult InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 {
-	DispatchResult result(true, true);
 	BufferView * bv = cmd.view();
 
 	if (cmd.button() == mouse_button::button3) {
 		lyxerr << "InsetCollapsable::lfunMouseRelease 0" << endl;
 		if (hitButton(cmd))
 			showInsetDialog(bv);
-	} else {
-		if (collapsed_) {
-			lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
-			collapsed_ = false;
-			edit(bv, true);
-			bv->buffer()->markDirty();
-			bv->update();
-			return result;
-		}
-
-		if (hitButton(cmd)) {
-			if (collapsed_) {
-				lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
-				collapsed_ = false;
-			} else {
-				collapsed_ = true;
-				result.update(true);
-				result.val(FINISHED_RIGHT);
-				return result;
-			}
-			result.update(true);
-			bv->update();
-			bv->buffer()->markDirty();
-		} else if (!collapsed_ && cmd.y > button_dim.y2) {
-			lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
-			result = inset.dispatch(adjustCommand(cmd));
-		}
+		return DispatchResult(true, true);
 	}
-	lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
-	return result;
+
+	if (collapsed_) {
+		lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
+		collapsed_ = false;
+		edit(bv, true);
+		bv->buffer()->markDirty();
+		bv->update();
+		return DispatchResult(true, true);
+	}
+
+	if (hitButton(cmd)) {
+		if (!collapsed_) {
+			collapsed_ = true;
+			lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
+			bv->update();
+			return DispatchResult(false, FINISHED_RIGHT);
+		}
+		collapsed_ = false;
+		bv->update();
+		bv->buffer()->markDirty();
+		lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
+	} else if (!collapsed_ && cmd.y > button_dim.y2) {
+		lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
+		return inset.dispatch(adjustCommand(cmd));
+	}
+
+	lyxerr << "InsetCollapsable::lfunMouseRelease 5" << endl;
+	return DispatchResult(true, true);
 }
 
 

@@ -948,12 +948,25 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			if (res.update())
 				bv_->update();
 			res.update(false);
+			switch (res.val()) {
+				case FINISHED:
+				case FINISHED_RIGHT:
+				case FINISHED_UP: 
+				case FINISHED_DOWN:
+					theTempCursor.pop();
+					bv_->cursor() = theTempCursor;
+					bv_->cursor().innerText()->setCursorFromCoordinates(cmd.x, cmd.y);
+					return true;
+				default:
+					lyxerr << "not dispatched by inner inset val: " << res.val() << endl;
+					break;
+			}
 		}
 
 		// otherwise set cursor to surrounding LyXText
 		if (!res.dispatched()) {
 			lyxerr << "cursor is: " << bv_->cursor() << endl;
-			lyxerr << "dispatching to surrounding LyXText "
+			lyxerr << "dispatching " << cmd1 << " to surrounding LyXText "
 				<< bv_->cursor().innerText() << endl;
 			bv_->cursor().innerText()->dispatch(cmd1);
 			//return DispatchResult(true, true);
