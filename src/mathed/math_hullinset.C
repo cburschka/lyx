@@ -782,7 +782,7 @@ DispatchResult MathHullInset::priv_dispatch
 				mutate("eqnarray");
 				idx = 1;
 				pos = 0;
-				return DISPATCHED_POP;
+				return FINISHED_POP;
 			}
 			return MathGridInset::priv_dispatch(cmd, idx, pos);
 
@@ -837,7 +837,7 @@ DispatchResult MathHullInset::priv_dispatch
 
 		case LFUN_MATH_EXTERN:
 			doExtern(cmd, idx, pos);
-			return DISPATCHED_POP;
+			return FINISHED_POP;
 
 		case LFUN_MATH_MUTATE: {
 			lyxerr << "Hull: MUTATE: " << cmd.argument << endl;
@@ -849,14 +849,14 @@ DispatchResult MathHullInset::priv_dispatch
 				idx = nargs() - 1;
 			if (pos > cell(idx).size())
 				pos = cell(idx).size();
-			return DISPATCHED_POP;
+			return FINISHED_POP;
 		}
 
 		case LFUN_MATH_DISPLAY: {
 			mutate(type_ == "simple" ? "equation" : "simple");
 			idx = 0;
 			pos = cell(idx).size();
-			return DISPATCHED_POP;
+			return FINISHED_POP;
 		}
 
 		default:

@@ -598,18 +598,18 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 
 bool InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 {
-	bool ret = false;
+	DispatchResult ret = UNDISPATCHED;
 	if (the_locking_inset) {
 		FuncRequest cmd1 = cmd;
 		cmd1.x -= inset_x;
 		cmd1.y -= inset_y;
 		ret = the_locking_inset->dispatch(cmd1);
 	}
-	if (cmd.button() == mouse_button::button3 && !ret) {
+	if (cmd.button() == mouse_button::button3 && ret == UNDISPATCHED) {
 		InsetTabularMailer(*this).showDialog(cmd.view());
 		return true;
 	}
-	return ret;
+	return ret >= DISPATCHED;
 }
 
 
@@ -1111,7 +1111,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		}
 		break;
 	}
-	if (result < FINISHED) {
+	if (!(result >= FINISHED)) {
 		if (!the_locking_inset && bv->fitCursor())
 			updateLocal(bv);
 	} else

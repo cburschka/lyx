@@ -547,7 +547,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 
 	no_selection = true;
 	if (the_locking_inset)
-		return the_locking_inset->dispatch(cmd1);
+		return the_locking_inset->dispatch(cmd1) >= DISPATCHED;
 
 	int tmp_x = cmd.x;
 	int tmp_y = cmd.y + dim_.asc - bv->top_y();
@@ -557,7 +557,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 
 	// We still need to deal properly with the whole relative vs.
 	// absolute mouse co-ords thing in a realiable, sensible way
-	bool ret = inset->dispatch(cmd1);
+	bool ret = inset->dispatch(cmd1) >= DISPATCHED;
 	updateLocal(bv, false);
 	return ret;
 }
@@ -687,7 +687,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			return result;
 		}
 		if (result >= FINISHED) {
-			switch (result) {
+			switch (result.val()) {
 			case FINISHED_RIGHT:
 				moveRightIntern(bv, false, false);
 				result = DISPATCHED;

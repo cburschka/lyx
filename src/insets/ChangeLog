@@ -1,5 +1,12 @@
 2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* insettext.C (lfunMouseRelease): dont use implicit conversion to bool
+	(priv_dispatch): adjust for operator dispatch_result_t removal
+
+	* insettabular.C (lfunMouseRelease): put the result of a dispatch
+	in a DispatchResult, adjust accordingly.
+	(priv_dispatch): use strange >= construct... (will be removed later)
+
 	* most insets: dispatch_result -> DispatchResult
 
 	* insetbase.h: move DispatchResult out to dispatchresult.h

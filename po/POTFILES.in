@@ -38,6 +38,9 @@ src/frontends/controllers/helper_funcs.C
 src/frontends/gnome/GLog.C
 src/frontends/gtk/Dialogs.C
 src/frontends/gtk/GBC.h
+src/frontends/gtk/GMathPanel.C
+src/frontends/gtk/GTableCreate.C
+src/frontends/gtk/GUrl.C
 src/frontends/qt2/Alert_pimpl.C
 src/frontends/qt2/BulletsModule.C
 src/frontends/qt2/Dialogs.C
@@ -162,6 +165,7 @@ src/insets/insetmarginal.C
 src/insets/insetminipage.C
 src/insets/insetnote.C
 src/insets/insetoptarg.C
+src/insets/insetpagebreak.C
 src/insets/insetref.C
 src/insets/insettabular.C
 src/insets/insettext.C

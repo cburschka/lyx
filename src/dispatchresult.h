@@ -36,7 +36,7 @@ enum dispatch_result_t {
 	FINISHED_RIGHT,
 	FINISHED_UP,
 	FINISHED_DOWN,
-	DISPATCHED_POP
+	FINISHED_POP
 };
 
 /** \c DispatchResult is a wrapper for dispatch_result_t.
@@ -44,12 +44,36 @@ enum dispatch_result_t {
  *  having to expose insetbase.h.
  */
 class DispatchResult {
-	dispatch_result_t val_;
 public:
 	DispatchResult()
 		: val_(UNDISPATCHED) {}
 	DispatchResult(dispatch_result_t val) : val_(val) {}
-	operator dispatch_result_t() const{ return val_; }
+	dispatch_result_t val() const { return val_; }
+private:
+	dispatch_result_t val_;
 };
+
+
+inline
+bool operator==(DispatchResult const & lhs, DispatchResult const & rhs)
+{
+	return lhs.val() == rhs.val();
+}
+
+
+inline
+bool operator!=(DispatchResult const & lhs, DispatchResult const & rhs)
+{
+	return !(lhs == rhs);
+}
+
+
+// This operator is temporary, will be removed with the introduction of
+// a status field in DispatchResult.
+inline
+bool operator>=(DispatchResult const & lhs, DispatchResult const & rhs)
+{
+	return lhs.val() >= rhs.val();
+}
 
 #endif // DISPATCH_RESULT_H

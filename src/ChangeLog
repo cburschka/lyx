@@ -1,17 +1,28 @@
 2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* text3.C: 
-	* text2.C: 
-	* text.C: 
-	* lyxtext.h: 
-	* lyxfunc.C: 
-	* cursor.C: 
+	* dispatchresult.h: rename DISPATCHED_POP to FINISHED_POP, remove
+	operator dispatch_result_t, and operators for == != and >=
+
+	* cursor.C (dispatch): adjust for operator dispatch_result_t
+	removal. comment out call to update
+
+	* BufferView_pimpl.C (dispatch): dont implicit covert to bool
+	
+2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text3.C:
+	* text2.C:
+	* text.C:
+	* lyxtext.h:
+	* lyxfunc.C:
+	* cursor.C:
 	* BufferView_pimpl.C: dispatch_result -> DispatchResult changes.
+	(dispatch): 
 
 	* dispatchresult.h: new file, DispatchResult broken out of
-	insets/insetbase.h 
+	insets/insetbase.h
 
-	* Makefile.am (lyx_SOURCES): add dispatchresult.h 
+	* Makefile.am (lyx_SOURCES): add dispatchresult.h
 
 2003-10-28  Alfredo Braunstein  <abraunst@libero.it>
 
