@@ -1074,10 +1074,10 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cs() == "begin") {
 			string const name = getArg('{', '}');	
-			if (name == "array") {
+			if (name == "array" || name == "subarray") {
 				string const valign = getArg('[', ']') + 'c';
 				string const halign = getArg('{', '}');
-				array.push_back(MathAtom(new MathArrayInset(valign[0], halign)));
+				array.push_back(MathAtom(new MathArrayInset(name, valign[0], halign)));
 				parse_lines(array.back(), false, false);
 			} else if (name == "split" || name == "cases") {
 				array.push_back(createMathInset(name));
@@ -1118,6 +1118,12 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			parse_into(p->cell(1), flags, code);
 			array.push_back(p);
 			return;
+		}
+
+		else if (t.cs() == "substack") {
+			array.push_back(createMathInset(t.cs()));
+			skipBegin();
+			parse_lines2(array.back(), true);
 		}
 
 		else if (t.cs() == "xymatrix") {

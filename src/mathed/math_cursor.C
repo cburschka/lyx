@@ -1265,7 +1265,7 @@ bool MathCursor::interpret(string const & s)
 		m = std::max(1u, m);
 		n = std::max(1u, n);
 		v_align += 'c';
-		niceInsert(MathAtom(new MathArrayInset(m, n, v_align[0], h_align)));
+		niceInsert(MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
 		return true;
 	}
 

@@ -1,6 +1,7 @@
 #include <config.h>
 
 #include "math_parser.h"
+#include "math_arrayinset.h"
 #include "math_amsarrayinset.h"
 #include "math_binominset.h"
 #include "math_boxinset.h"
@@ -23,6 +24,7 @@
 #include "math_specialcharinset.h"
 #include "math_sqrtinset.h"
 #include "math_stackrelinset.h"
+#include "math_substackinset.h"
 #include "math_symbolinset.h"
 #include "math_undersetinset.h"
 #include "math_unknowninset.h"
@@ -107,6 +109,12 @@ MathAtom createMathInset(string const & s)
 
 	if (s == "cases")
 		return MathAtom(new MathCasesInset);
+
+	if (s == "substack")
+		return MathAtom(new MathSubstackInset);
+
+	if (s == "subarray" || s == "array")
+		return MathAtom(new MathArrayInset(s, 1, 1));
 
 	if (s == "pmatrix" || s == "bmatrix" || s == "vmatrix" || s == "Vmatrix") 
 		return MathAtom(new MathAMSArrayInset(s));

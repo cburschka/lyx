@@ -12,13 +12,14 @@
 class MathArrayInset : public MathGridInset {
 public: 
 	///
-	MathArrayInset(int m, int n);
+	MathArrayInset(string const &, int m, int n);
 	///
-	MathArrayInset(int m, int n, char valign, string const & halign);
+	MathArrayInset(string const &, int m, int n,
+		char valign, string const & halign);
 	///
-	MathArrayInset(char valign, string const & halign);
+	MathArrayInset(string const &, char valign, string const & halign);
 	/// convienience constructor from whitespace/newline seperated data
-	MathArrayInset(string const & str);
+	MathArrayInset(string const &, string const & str);
 	///
 	MathInset * clone() const;
 	///
@@ -32,6 +33,10 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void maplize(MapleStream &) const;
+
+private:
+	///
+	string name_;
 };
 
 #endif

@@ -17,23 +17,25 @@ using std::istringstream;
 using std::getline;
 
 
-MathArrayInset::MathArrayInset(int m, int n)
-	: MathGridInset(m, n)
+MathArrayInset::MathArrayInset(string const & name, int m, int n)
+	: MathGridInset(m, n), name_(name)
 {}
 
 
-MathArrayInset::MathArrayInset(int m, int n, char valign, string const & halign)
-	: MathGridInset(m, n, valign, halign)
+MathArrayInset::MathArrayInset(string const & name, int m, int n,
+		char valign, string const & halign)
+	: MathGridInset(m, n, valign, halign), name_(name)
 {}
 
 
-MathArrayInset::MathArrayInset(char valign, string const & halign)
-	: MathGridInset(valign, halign)
+MathArrayInset::MathArrayInset(string const & name, char valign,
+		string const & halign)
+	: MathGridInset(valign, halign), name_(name)
 {}
 
 
-MathArrayInset::MathArrayInset(string const & str)
-	: MathGridInset(1, 1)
+MathArrayInset::MathArrayInset(string const & name, string const & str)
+	: MathGridInset(1, 1), name_(name)
 {
 	vector< vector<string> > dat;
 	istringstream is(str.c_str());
@@ -76,7 +78,7 @@ void MathArrayInset::write(WriteStream & os) const
 {
 	if (os.fragile())
 		os << "\\protect";
-	os << "\\begin{array}";
+	os << "\\begin{" << name_ << "}";
 
 	if (v_align_ == 't' || v_align_ == 'b') 
 		os << '[' << char(v_align_) << ']';
@@ -86,13 +88,13 @@ void MathArrayInset::write(WriteStream & os) const
 
 	if (os.fragile())
 		os << "\\protect";
-	os << "\\end{array}\n";
+	os << "\\end{" << name_ << "}\n";
 }
 
 
 void MathArrayInset::normalize(NormalStream & os) const
 {
-	os << "[array ";
+	os << "[" << name_ << " ";
 	MathGridInset::normalize(os);
 	os << "]";
 }

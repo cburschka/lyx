@@ -196,7 +196,7 @@ namespace {
 		out = out.substr(6);
 
 		// parse output as matrix or single number
-		MathAtom at(new MathArrayInset(out));
+		MathAtom at(new MathArrayInset("array", out));
 		MathArrayInset const * mat = at.nucleus()->asArrayInset();
 		MathArray res;
 		if (mat->ncols() == 1 && mat->nrows() == 1)

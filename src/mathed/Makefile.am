@@ -123,6 +123,8 @@ libmathed_la_SOURCES = \
 	math_streamstr.h \
 	math_stringinset.C \
 	math_stringinset.h \
+	math_substackinset.C \
+	math_substackinset.h \
 	math_support.C \
 	math_support.h \
 	math_symbolinset.C \
