@@ -374,6 +374,15 @@ void LyXGUI::create_forms()
 	fl_end_form();
 	lyxerr[Debug::INIT] << "Initializing form_character...done" << endl;
 
+	// build up the combox entries
+	combo_language2->addto(_("No change"));
+	combo_language2->addto(_("Reset"));
+	for(Languages::const_iterator cit = languages.begin();
+	    cit != languages.end(); ++cit) {
+		combo_language2->addto((*cit).second.lang().c_str());
+	}
+	combo_language2->select_text(_("No change"));
+
 #ifdef USE_OLD_DOCUMENT_LAYOUT
 	// the document form
 	fd_form_document = create_form_form_document();
@@ -397,14 +406,10 @@ void LyXGUI::create_forms()
 
 	// "default" is not part of the languages array any more.
 	combo_language->addto("default");
-	combo_language2->addto(_("No change"));
-	combo_language2->addto(_("Reset"));
 	for(Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
 		combo_language->addto((*cit).second.lang().c_str());
-		combo_language2->addto((*cit).second.lang().c_str());
 	}
-	combo_language2->select_text(_("No change"));
 
 	// not really necessary, but we can do it anyway.
 	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");
