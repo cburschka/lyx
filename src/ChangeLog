@@ -1,3 +1,8 @@
+2003-11-16  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* lyxfind.C (replace): adjust to locking removal + some
+	code simplification
+
 2003-11-14  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* cursor.C (dispatch): dispatch to BufferView::dispatch at the end

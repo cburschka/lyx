@@ -53,7 +53,7 @@ public:
 	{			
 		string::size_type size = str.length();
 		pos_type i = 0;
-		pos_type parsize = par.size();
+		pos_type const parsize = par.size();
 		while ((pos + i < parsize)
 		       && (string::size_type(i) < size)
 		       && (cs ? (str[i] == par.getChar(pos + i))
@@ -81,27 +81,25 @@ private:
 
 
 bool findForward(PosIterator & cur, PosIterator const & end,
-		 MatchString & match)
+		 MatchString const & match)
 {
-	for (; cur != end && !match(*cur.pit(), cur.pos()); ++cur)
-		;
-
-	return cur != end;
+	for (; cur != end; ++cur) {
+		if (match(*cur.pit(), cur.pos()))
+			return true;
+	}
+	return false;
 }
 
 
 bool findBackwards(PosIterator & cur, PosIterator const & beg,
-		   MatchString & match)
+		   MatchString const & match)
 {
-	if (beg == cur)
-		return false;
-	do {
+	while (beg != cur) {
 		--cur;
 		if (match(*cur.pit(), cur.pos()))
-			break;
-	} while (cur != beg);
-
-	return match(*cur.pit(), cur.pos());
+			return true;
+	}
+	return false;
 }
 
 
@@ -110,10 +108,9 @@ bool findChange(PosIterator & cur, PosIterator const & end)
 	for (; cur != end; ++cur) {
 		if ((!cur.pit()->size() || !cur.at_end())
 		    && cur.pit()->lookupChange(cur.pos()) != Change::UNCHANGED)
-			break;
+			return true;
 	}
-	
-	return cur != end;
+	return false;
 }
 
 
@@ -138,18 +135,14 @@ bool find(BufferView * bv, string const & searchstr,
 
 	PosIterator cur = PosIterator(*bv);
 
-	MatchString match(searchstr, cs, mw);
-	
-	bool found;
+	MatchString const match(searchstr, cs, mw);
 
-	if (fw) {
-		PosIterator const end = bv->buffer()->pos_iterator_end();
-		found = findForward(cur, end, match);
-	} else {
-		PosIterator const beg = bv->buffer()->pos_iterator_begin();
-		found = findBackwards(cur, beg, match);
-	}
-	
+	PosIterator const end = bv->buffer()->pos_iterator_end();
+	PosIterator const beg = bv->buffer()->pos_iterator_begin();
+
+	bool found = fw ? findForward(cur, end, match)
+		: findBackwards(cur, beg, match);
+
 	if (found)
 		put_selection_at(bv, cur, searchstr.length(), !fw);
 
@@ -171,11 +164,12 @@ int replaceAll(BufferView * bv,
 	
 	PosIterator cur = buf.pos_iterator_begin();
 	PosIterator const end = buf.pos_iterator_end();
-	MatchString match(searchstr, cs, mw);
+	MatchString const match(searchstr, cs, mw);
 	int num = 0;
 
 	int const rsize = replacestr.size();
 	int const ssize = searchstr.size();
+
 	while (findForward(cur, end, match)) {
 		pos_type pos = cur.pos();
 		LyXFont const font
@@ -185,6 +179,7 @@ int replaceAll(BufferView * bv,
 		advance(cur, rsize + striked);
 		++num;
 	}
+
 	PosIterator beg = buf.pos_iterator_begin();
 	bv->text->init(bv);
 	put_selection_at(bv, beg, 0, false);
@@ -194,40 +189,45 @@ int replaceAll(BufferView * bv,
 }
 
 
+namespace {
+
+bool stringSelected(BufferView * bv,
+		    string const & searchstr, 
+		    bool cs, bool mw, bool fw)
+{
+	LyXText * text = bv->getLyXText();
+	// if nothing selected or selection does not equal search
+	// string search and select next occurance and return
+	string const & str1 = searchstr;
+	string const str2 = text->selectionAsString(*bv->buffer(),
+						    false);
+	if ((cs && str1 != str2)
+	    || lowercase(str1) != lowercase(str2)) {
+		find(bv, searchstr, cs, mw, fw);
+		return false;
+	}
+
+	return true;
+}
+
+} //namespace anon
+
+
 int replace(BufferView * bv,
 	    string const & searchstr, string const & replacestr,
 	    bool cs, bool mw, bool fw)
 {
 	if (!searchAllowed(bv, searchstr) || bv->buffer()->isReadonly())
 		return 0;
-	
-	{
-		LyXText * text = bv->getLyXText();
-		// if nothing selected or selection does not equal search
-		// string search and select next occurance and return
-		string const str1 = searchstr;
-		string const str2 = text->selectionAsString(*bv->buffer(),
-							    false);
-		if ((cs && str1 != str2)
-		    || lowercase(str1) != lowercase(str2)) {
-			find(bv, searchstr, cs, mw, fw);
-			return 0;
-		}
-	}
 
-#ifdef LOCK
+	if (!stringSelected(bv, searchstr, cs, mw, fw))
+		return 0;
+
 	LyXText * text = bv->getLyXText();
-	// We have to do this check only because mathed insets don't
-	// return their own LyXText but the LyXText of it's parent!
-	if (!bv->innerInset() ||
-	    ((text != bv->text) &&
-	     (text->inset_owner == text->inset_owner->getLockingInset()))) {
-		text->replaceSelectionWithString(replacestr);
-		text->setSelectionRange(replacestr.length());
-		text->cursor = fw ? text->selection.end
-			: text->selection.start;
-	}
-#endif
+
+	text->replaceSelectionWithString(replacestr);
+	text->setSelectionRange(replacestr.length());
+	text->cursor = fw ? text->selection.end : text->selection.start;
 
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);
@@ -247,7 +247,6 @@ bool findNextChange(BufferView * bv)
 
 	if (!findChange(cur, endit))
 		return false;
-	
 	
 	ParagraphList::iterator pit = cur.pit();
 	pos_type pos = cur.pos();
