@@ -1538,8 +1538,7 @@ msgid "From:|#F"
 msgstr "Von:|#V"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1960
-#: src/frontends/xforms/forms/form_print.fd:188
-msgid "To:|#T"
+msgid "To:|#T[[as in 'From format x to format y']]"
 msgstr "Nach:|#N"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1978
@@ -1725,6 +1724,10 @@ msgstr "Kopien"
 #: src/frontends/xforms/forms/form_print.fd:170
 msgid "Sorted|#S"
 msgstr "Sortiert|#S"
+
+#: src/frontends/xforms/forms/form_print.fd:188
+msgid "To:|#T[[as in 'From page x to page y']]"
+msgstr "Bis:|#B"
 
 #: src/frontends/xforms/forms/form_print.fd:224
 msgid "Reverse order|#R"
@@ -3998,7 +4001,7 @@ msgid "C&onverter:"
 msgstr "&Konverter:"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:220
-msgid "&To:"
+msgid "&To:[[as in 'From format x to format y']]"
 msgstr "&Nach:"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:235
@@ -4516,8 +4519,8 @@ msgid "Page number to print from"
 msgstr "Drucke ab Seite Nr."
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:112
-msgid "&to"
-msgstr "&bis"
+msgid "&To:[[as in 'From page x to page y']]"
+msgstr "&Bis:"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:131
 msgid "Page number to print to"

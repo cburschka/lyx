@@ -17,9 +17,9 @@
 ///
 class Messages {
 public:
-	///
+	/// messages in the language defined by the environment
 	Messages();
-	///
+	/// messages in the language \p l
 	Messages(std::string const & l);
 	///
 	~Messages();

@@ -13,6 +13,8 @@
 #include "support/filetools.h"
 #include "support/path_defines.h"
 
+#include <boost/regex.hpp>
+
 using lyx::support::GetEnvPath;
 using lyx::support::lyx_localedir;
 
@@ -98,11 +100,24 @@ public:
 		bindtextdomain(PACKAGE, lyx_localedir().c_str());
 		textdomain(PACKAGE);
 		const char* msg = gettext(m.c_str());
-		setlocale(LC_ALL, old);
-		free(old);
+		// Some english words have different translations, depending
+		// on context. In these cases the original string is
+		// augmented by context information (e.g.
+		// "To:[[as in 'From page x to page y']]" and
+		// "To:[[as in 'From format x to format y']]".
+		// This means that we need to filter out everything in
+		// double square brackets at the end of the string,
+		// otherwise the user sees bogus messages.
 		// If we are unable to honour the request we just
 		// return what we got in.
-		return (!n ? m : string(msg));
+		string translated(n ? msg : m);
+		static boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
+		boost::smatch sub;
+		if (regex_match(translated, sub, reg))
+			translated = sub.str(1);
+		setlocale(LC_ALL, old);
+		free(old);
+		return translated;
 	}
 private:
 	///

@@ -2814,6 +2814,78 @@ README
 LYX-SOURCE-DIR/po/
 \family default 
  directory for more instructions.
+\layout Subsubsection
+
+Ambigous messages
+\layout Standard
+
+Sometimes it turns out that one english message needs to be translated into
+ different messages in the target language.
+ One example is the message 
+\family typewriter 
+To
+\family default 
+ which has the german translation 
+\family typewriter 
+\lang german
+Nach
+\family default 
+\lang english
+ or 
+\family typewriter 
+\lang german
+Bis
+\family default 
+\lang english
+.
+ 
+\family typewriter 
+gettext
+\family default 
+ does not handle such ambigous translations.
+ Therefore you have to add some context information to the message: Instead
+ of 
+\family typewriter 
+To
+\family default 
+ it becomes 
+\family typewriter 
+To[[as in 'From format x to format y']]
+\family default 
+ and 
+\family typewriter 
+To[[as in 'From page x to page y']].
+
+\family default 
+ Now the two occurences of 
+\family typewriter 
+To
+\family default 
+ are different for 
+\family typewriter 
+gettext
+\family default 
+ and can be translated correctly to 
+\family typewriter 
+\lang german
+Nach
+\family default 
+\lang english
+ and 
+\family typewriter 
+\lang german
+Bis
+\family default 
+\lang english
+, respectively.
+\layout Standard
+
+Of course the context information needs to be stripped off the original
+ message when no translation is used.
+ Therefore you have to put it in double square brackets at the end of the
+ message (see the example above).
+ The translation mechanism of LyX ensures that everything in double square
+ brackets at the end of messages is removed before displaying the message.
 \layout Subsection
 
 Translating the documentation.
@@ -2839,7 +2911,7 @@ As of February 2003, almost all of the docs have been translated into German
 \emph on 
 Tutorial
 \emph default 
- has been translated into at least 12 ther languages, with other translations
+ has been translated into at least 12 other languages, with other translations
  in progress.
  The library of translated documents is growing rapidly.
 \end_inset 

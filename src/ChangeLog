@@ -1,3 +1,7 @@
+2004-10-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* messages.C (Pimpl): strip off translation context information
+
 2004-10-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView_pimpl.C (setBuffer): when closing a buffer, make sure

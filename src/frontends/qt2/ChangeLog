@@ -1,3 +1,8 @@
+2004-10-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ui/QPrefConvertersModule.ui: Add translation context to "To:"
+	* ui/QPrintDialogBase.ui: ditto
+
 2004-10-11  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* qfont_loader.C (initFontPath, addToFontPath): two new static
@@ -5,7 +10,7 @@
 	(available): remove special MacOSX code; use addToFontPath
 
 	* lyx_gui.C (parse_init): add call to qfont_loader::initFontPath()
-        
+
 2004-10-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QLPopupMenu.C (populate): move the code below to here, so that
