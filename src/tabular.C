@@ -1461,7 +1461,8 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 		if (token.empty())
 			continue;
 		if (token == "\\layout"
-			|| token == "\\end_float"
+			|| token == "\\end_float" // this should not exist anymore
+			|| token == "\\end_inset" // as it is substituted by this
 			|| token == "\\end_deeper")
 		{
 			lex.pushToken(token);

@@ -1,5 +1,8 @@
 2002-04-18  Juergen Vigna  <jug@sad.it>
 
+	* tabular.C (OldFormatRead): check also for \\end_inset as Lars
+	changed the read and substituted \\end_float with \\end_inset!
+
 	* BufferView_pimpl.C (cursorPrevious): 
 	(cursorNext): fixed to make it work with rows heigher than the work
 	area without moving the cursor only the draw of the row.
