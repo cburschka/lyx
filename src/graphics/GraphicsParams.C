@@ -14,6 +14,7 @@
 
 #include "GraphicsParams.h"
 #include "Lsstream.h"
+#include "lyxlength.h"
 
 
 namespace grfx {

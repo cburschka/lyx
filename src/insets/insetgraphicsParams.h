@@ -95,6 +95,9 @@ struct InsetGraphicsParams
 	/// If the token belongs to our parameters, read it.
 	bool Read(LyXLex & lex, string const & token);
 	/// convert 
+  // Only a subset of InsetGraphicsParams is needed for display purposes.
+  // This function also interrogates lyxrc to ascertain whether
+  // to display or not.
 	grfx::GParams asGParams(string const & filepath) const;
 
 private:

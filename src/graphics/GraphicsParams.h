@@ -20,7 +20,6 @@
 #endif
 
 #include "LString.h"
-#include "lyxlength.h"
 
 
 namespace grfx {
