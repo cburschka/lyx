@@ -457,7 +457,7 @@ void QDocumentDialog::classChanged()
 
 	lyx::textclass_type const tc = layoutModule->classCO->currentItem();
 
-	if (controller().loadTextclass(tc)) {
+	if (form_->controller().loadTextclass(tc)) {
 		params.textclass = tc;
 
 		if (lyxrc.auto_reset_options) {
