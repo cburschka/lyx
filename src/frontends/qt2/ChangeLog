@@ -1,3 +1,13 @@
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* QDialogView.h: make controller methods of QController public to
+	enable the QXyzDialog classes to access the controller if need be.
+	* Qt2Base.h: ditto for the controller methods of Qt2CB.
+
+	* QTabular.C:
+	* QTabularDialog.C: changes due to the changed ControlTabular
+	interface.
+
 2003-03-07  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* QPrefs.C:

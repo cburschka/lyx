@@ -152,13 +152,14 @@ public:
 		return controller().bufferIsReadonly();
 	}
 
-protected:
-	///
-	Qt2CB(QString const &);
 	/// The parent controller
 	Controller & controller();
 	/// The parent controller
 	Controller const & controller() const;
+
+protected:
+	///
+	Qt2CB(QString const &);
 };
 
 

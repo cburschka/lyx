@@ -124,17 +124,10 @@ void ControlTabular::connectInset(InsetTabular * inset)
 }
 
 
-InsetTabular * ControlTabular::inset() const
+LyXTabular const & ControlTabular::tabular() const
 {
 	lyx::Assert(inset_);
-	return inset_;
-}
-
-
-LyXTabular * ControlTabular::tabular() const
-{
-	lyx::Assert(inset_);
-	return inset_->tabular.get();
+	return *inset_->tabular.get();
 }
 
 
@@ -145,13 +138,14 @@ void ControlTabular::set(LyXTabular::Feature f, string const & arg)
 }
 
 
-bool ControlTabular::metric() const
+bool ControlTabular::useMetricUnits() const
 {
 	return lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER;
 }
 
-bool ControlTabular::isMulticolumnCell() const
+
+int ControlTabular::getActiveCell() const
 {
-	int cell(inset()->getActCell());
-	return tabular()->IsMultiColumn(cell);
+	lyx::Assert(inset_);
+	return inset_->getActCell();
 }

@@ -92,9 +92,21 @@ void QTabularDialog::borderUnset_clicked()
 }
 
 
+namespace {
+
+bool isMulticolumnCell(QTabular * form) 
+{
+	LyXTabular const & tabular = form->controller().tabular();
+	int const cell = form->controller().getActiveCell();
+	return tabular.IsMultiColumn(cell);
+}
+
+}
+
+
 void QTabularDialog::leftBorder_changed()
 {
-	if (form_->controller().isMulticolumnCell())
+	if (isMulticolumnCell(form_))
 		form_->controller().set(LyXTabular::M_TOGGLE_LINE_LEFT);
 	else
 		form_->controller().set(LyXTabular::TOGGLE_LINE_LEFT);
@@ -104,7 +116,7 @@ void QTabularDialog::leftBorder_changed()
 
 void QTabularDialog::rightBorder_changed()
 {
-	if (form_->controller().isMulticolumnCell())
+	if (isMulticolumnCell(form_))
 		form_->controller().set(LyXTabular::M_TOGGLE_LINE_RIGHT);
 	else
 		form_->controller().set(LyXTabular::TOGGLE_LINE_RIGHT);
@@ -114,7 +126,7 @@ void QTabularDialog::rightBorder_changed()
 
 void QTabularDialog::topBorder_changed()
 {
-	if (form_->controller().isMulticolumnCell())
+	if (isMulticolumnCell(form_))
 		form_->controller().set(LyXTabular::M_TOGGLE_LINE_TOP);
 	else
 		form_->controller().set(LyXTabular::TOGGLE_LINE_TOP);
@@ -124,7 +136,7 @@ void QTabularDialog::topBorder_changed()
 
 void QTabularDialog::bottomBorder_changed()
 {
-	if (form_->controller().isMulticolumnCell())
+	if (isMulticolumnCell(form_))
 		form_->controller().set(LyXTabular::M_TOGGLE_LINE_BOTTOM);
 	else
 		form_->controller().set(LyXTabular::TOGGLE_LINE_BOTTOM);
@@ -135,7 +147,7 @@ void QTabularDialog::bottomBorder_changed()
 void QTabularDialog::specialAlignment_changed()
 {
 	string special = fromqstr(specialAlignmentED->text());
-	if (form_->controller().isMulticolumnCell())
+	if (isMulticolumnCell(form_))
 		form_->controller().set(LyXTabular::SET_SPECIAL_MULTI, special);
 	else
 		form_->controller().set(LyXTabular::SET_SPECIAL_COLUMN, special);
@@ -147,7 +159,7 @@ void QTabularDialog::width_changed()
 	string const width =
 		LyXLength(widthED->text().toDouble(),
 			widthUnit->currentLengthItem()).asString();
-	if (form_->controller().isMulticolumnCell())
+	if (isMulticolumnCell(form_))
 		form_->controller().set(LyXTabular::SET_MPWIDTH, width);
 	else
 		form_->controller().set(LyXTabular::SET_PWIDTH, width);
@@ -227,7 +239,7 @@ void QTabularDialog::hAlign_changed(int align)
 		}
 		}
 	}
-	if (form_->controller().isMulticolumnCell())
+	if (isMulticolumnCell(form_))
 		form_->controller().set(multi_num);
 	else
 		form_->controller().set(num);
@@ -259,7 +271,7 @@ void QTabularDialog::vAlign_changed(int align)
 			break;
 		}
 	}
-	if (form_->controller().isMulticolumnCell())
+	if (isMulticolumnCell(form_))
 		form_->controller().set(multi_num);
 	else
 		form_->controller().set(num);

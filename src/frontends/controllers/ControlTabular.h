@@ -29,11 +29,14 @@ public:
 
 	ControlTabular(LyXView &, Dialogs &);
 
-	/// get the inset
-	InsetTabular * inset() const;
+	///
+	int getActiveCell() const;
 
 	/// get the contained tabular
-	LyXTabular * tabular() const;
+	LyXTabular const & tabular() const;
+
+	/// return true if units should default to metric
+	bool useMetricUnits() const;
 
 	/// set a parameter
 	void set(LyXTabular::Feature, string const & arg = string());
@@ -43,12 +46,6 @@ public:
 
 	/// update inset
 	void updateInset(InsetTabular *);
-
-	/// return true if units should default to metric
-	bool metric() const;
-
-	/// return true if actual cell is multicolumn
-	bool isMulticolumnCell() const;
 
 private:
 

@@ -85,36 +85,37 @@ bool QTabular::isValid()
 
 void QTabular::update_borders()
 {
-	LyXTabular * tabular(controller().tabular());
-	int cell(controller().inset()->getActCell());
+	LyXTabular const & tabular = controller().tabular();
+	int const cell = controller().getActiveCell();
+	bool const isMulticolumnCell = tabular.IsMultiColumn(cell);
 
-	if (!controller().isMulticolumnCell()) {
+	if (!isMulticolumnCell) {
 		dialog_->borders->setLeftEnabled(true);
 		dialog_->borders->setRightEnabled(true);
-		dialog_->borders->setTop(tabular->TopLine(cell, true));
-		dialog_->borders->setBottom(tabular->BottomLine(cell, true));
-		dialog_->borders->setLeft(tabular->LeftLine(cell, true));
-		dialog_->borders->setRight(tabular->RightLine(cell, true));
+		dialog_->borders->setTop(tabular.TopLine(cell, true));
+		dialog_->borders->setBottom(tabular.BottomLine(cell, true));
+		dialog_->borders->setLeft(tabular.LeftLine(cell, true));
+		dialog_->borders->setRight(tabular.RightLine(cell, true));
 		// repaint the setborder widget
 		dialog_->borders->repaint();
 		return;
 	}
 
-	dialog_->borders->setTop(tabular->TopLine(cell));
-	dialog_->borders->setBottom(tabular->BottomLine(cell));
+	dialog_->borders->setTop(tabular.TopLine(cell));
+	dialog_->borders->setBottom(tabular.BottomLine(cell));
 	// pay attention to left/right lines: they are only allowed
 	// to set if we are in first/last cell of row or if the left/right
 	// cell is also a multicolumn.
-	if (tabular->IsFirstCellInRow(cell) || tabular->IsMultiColumn(cell - 1)) {
+	if (tabular.IsFirstCellInRow(cell) || tabular.IsMultiColumn(cell - 1)) {
 		dialog_->borders->setLeftEnabled(true);
-		dialog_->borders->setLeft(tabular->LeftLine(cell));
+		dialog_->borders->setLeft(tabular.LeftLine(cell));
 	} else {
 		dialog_->borders->setLeft(false);
 		dialog_->borders->setLeftEnabled(false);
 	}
-	if (tabular->IsLastCellInRow(cell) || tabular->IsMultiColumn(cell + 1)) {
+	if (tabular.IsLastCellInRow(cell) || tabular.IsMultiColumn(cell + 1)) {
 		dialog_->borders->setRightEnabled(true);
-		dialog_->borders->setRight(tabular->RightLine(cell));
+		dialog_->borders->setRight(tabular.RightLine(cell));
 	} else {
 		dialog_->borders->setRight(false);
 		dialog_->borders->setRightEnabled(false);
@@ -126,23 +127,23 @@ void QTabular::update_borders()
 
 void QTabular::update_contents()
 {
-	LyXTabular * tabular(controller().tabular());
-	int cell(controller().inset()->getActCell());
+	LyXTabular const & tabular(controller().tabular());
+	int const cell = controller().getActiveCell();
 
-	int const row(tabular->row_of_cell(cell));
-	int const col(tabular->column_of_cell(cell));
+	int const row(tabular.row_of_cell(cell));
+	int const col(tabular.column_of_cell(cell));
 
 	dialog_->tabularRowED->setText(toqstr(tostr(row + 1)));
 	dialog_->tabularColumnED->setText(toqstr(tostr(col + 1)));
 
-	bool const multicol(controller().isMulticolumnCell());
+	bool const multicol(tabular.IsMultiColumn(cell));
 
 	dialog_->multicolumnCB->setChecked(multicol);
 
-	dialog_->rotateCellCB->setChecked(tabular->GetRotateCell(cell));
-	dialog_->rotateTabularCB->setChecked(tabular->GetRotateTabular());
+	dialog_->rotateCellCB->setChecked(tabular.GetRotateCell(cell));
+	dialog_->rotateTabularCB->setChecked(tabular.GetRotateTabular());
 
-	dialog_->longTabularCB->setChecked(tabular->IsLongTabular());
+	dialog_->longTabularCB->setChecked(tabular.IsLongTabular());
 
 	update_borders();
 
@@ -150,11 +151,11 @@ void QTabular::update_contents()
 	string special;
 
 	if (multicol) {
-		special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
-		pwidth = tabular->GetMColumnPWidth(cell);
+		special = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
+		pwidth = tabular.GetMColumnPWidth(cell);
 	} else {
-		special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
-		pwidth = tabular->GetColumnPWidth(cell);
+		special = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+		pwidth = tabular.GetColumnPWidth(cell);
 	}
 
 	dialog_->specialAlignmentED->setText(toqstr(special));
@@ -162,7 +163,7 @@ void QTabular::update_contents()
 	bool const isReadonly = bc().bp().isReadOnly();
 	dialog_->specialAlignmentED->setEnabled(!isReadonly);
 
-	LyXLength::UNIT default_unit = controller().metric() ? LyXLength::CM : LyXLength::IN;
+	LyXLength::UNIT default_unit = controller().useMetricUnits() ? LyXLength::CM : LyXLength::IN;
 	if (!pwidth.zero()) {
 		dialog_->widthED->setText(toqstr(tostr(pwidth.value())));
 		dialog_->widthUnit->setCurrentItem(pwidth.unit());
@@ -181,7 +182,7 @@ void QTabular::update_contents()
 		dialog_->hAlignCB->insertItem(qt_("Block"));
 
 	int align = 0;
-	switch (tabular->GetAlignment(cell)) {
+	switch (tabular.GetAlignment(cell)) {
 	case LYX_ALIGN_LEFT:
 		align = 0;
 		break;
@@ -204,7 +205,7 @@ void QTabular::update_contents()
 	dialog_->hAlignCB->setCurrentItem(align);
 
 	int valign = 0;
-	switch (tabular->GetVAlignment(cell)) {
+	switch (tabular.GetVAlignment(cell)) {
 	case LyXTabular::LYX_VALIGN_TOP:
 		valign = 0;
 		break;
@@ -225,7 +226,7 @@ void QTabular::update_contents()
 	dialog_->hAlignCB->setEnabled(true);
 	dialog_->vAlignCB->setEnabled(!pwidth.zero());
 
-	if (!tabular->IsLongTabular()) {
+	if (!tabular.IsLongTabular()) {
 		dialog_->headerStatusCB->setChecked(false);
 		dialog_->headerBorderAboveCB->setChecked(false);
 		dialog_->headerBorderBelowCB->setChecked(false);
@@ -246,7 +247,7 @@ void QTabular::update_contents()
 
 	LyXTabular::ltType ltt;
 	bool use_empty;
-	bool row_set = tabular->GetRowOfLTHead(row, ltt);
+	bool row_set = tabular.GetRowOfLTHead(row, ltt);
 	dialog_->headerStatusCB->setChecked(row_set);
 	if (ltt.set) {
 		dialog_->headerBorderAboveCB->setChecked(ltt.topDL);
@@ -262,7 +263,7 @@ void QTabular::update_contents()
 		use_empty = false;
 	}
 
-	row_set = tabular->GetRowOfLTFirstHead(row, ltt);
+	row_set = tabular.GetRowOfLTFirstHead(row, ltt);
 	dialog_->firstheaderStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		dialog_->firstheaderBorderAboveCB->setChecked(ltt.topDL);
@@ -279,7 +280,7 @@ void QTabular::update_contents()
 		}
 	}
 
-	row_set = tabular->GetRowOfLTFoot(row, ltt);
+	row_set = tabular.GetRowOfLTFoot(row, ltt);
 	dialog_->footerStatusCB->setChecked(row_set);
 	if (ltt.set) {
 		dialog_->footerBorderAboveCB->setChecked(ltt.topDL);
@@ -295,7 +296,7 @@ void QTabular::update_contents()
 		use_empty = false;
 	}
 
-	row_set = tabular->GetRowOfLTLastFoot(row, ltt);
+	row_set = tabular.GetRowOfLTLastFoot(row, ltt);
 		dialog_->lastfooterStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		dialog_->lastfooterBorderAboveCB->setChecked(ltt.topDL);
@@ -311,7 +312,7 @@ void QTabular::update_contents()
 				dialog_->lastfooterStatusCB->setEnabled(false);
 		}
 	}
-	dialog_->newpageCB->setChecked(tabular->GetLTNewPage(row));
+	dialog_->newpageCB->setChecked(tabular.GetLTNewPage(row));
 }
 
 
@@ -320,17 +321,16 @@ void QTabular::closeGUI()
 	// ugly hack to auto-apply the stuff that hasn't been
 	// yet. don't let this continue to exist ...
 
-	InsetTabular * inset(controller().inset());
-	LyXTabular * tabular(controller().tabular());
+	LyXTabular const & tabular(controller().tabular());
 
 	// apply the fixed width values
-	int cell = inset->getActCell();
-	bool const multicol(controller().isMulticolumnCell());
+	int const cell = controller().getActiveCell();
+	bool const multicol(tabular.IsMultiColumn(cell));
 	string str1 = widgetsToLength(dialog_->widthED, dialog_->widthUnit);
 	string str2;
 
-	LyXLength llen(tabular->GetColumnPWidth(cell));
-	LyXLength llenMulti(tabular->GetMColumnPWidth(cell));
+	LyXLength llen(tabular.GetColumnPWidth(cell));
+	LyXLength llenMulti(tabular.GetMColumnPWidth(cell));
 
 	if (multicol && !llenMulti.zero())
 			str2 = llenMulti.asString();
@@ -347,9 +347,9 @@ void QTabular::closeGUI()
 	// apply the special alignment
 	str1 = fromqstr(dialog_->specialAlignmentED->text());
 	if (multicol)
-		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
+		str2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 	else
-		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+		str2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
 
 	if (str1 != str2) {
 		if (multicol)

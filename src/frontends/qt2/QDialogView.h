@@ -155,6 +155,7 @@ class QController: public Base
 protected:
 	///
 	QController(Dialog &, QString const &);
+public:
 	/// The parent controller
 	Controller & controller();
 	/// The parent controller
