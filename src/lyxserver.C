@@ -272,38 +272,40 @@ void LyXComm::read_ready()
 		if (status > 0) {
 			charbuf[status] = '\0'; // turn it into a c string
 			read_buffer_ += rtrim(charbuf, "\r");
-
-		} else if (errno != EAGAIN) {
+			// commit any commands read
+			while (read_buffer_.find('\n') != string::npos) {
+				// split() grabs the entire string if
+				// the delim /wasn't/ found. ?:-P
+				string cmd;
+				read_buffer_= split(read_buffer_, cmd,'\n');
+				lyxerr[Debug::LYXSERVER]
+					<< "LyXComm: status:" << status
+					<< ", read_buffer_:" << read_buffer_
+					<< ", cmd:" << cmd << endl;
+				if (!cmd.empty())
+					clientcb(client, cmd);
+					//\n or not \n?
+			}
+		}
+		if (errno == EAGAIN) {
+			errno = 0;
+			return;
+		}
+		if (errno != 0) {
+			lyxerr << "LyXComm: " << strerror(errno) << endl;
 			if (!read_buffer_.empty()) {
 				lyxerr << "LyXComm: truncated command: "
-				       << read_buffer_ << '\n'
-				       << "Resetting connection" << endl;
+				       << read_buffer_ << endl;
 				read_buffer_.erase();
 			}
-
-			// reset connection
-			closeConnection();
-			openConnection();
-			break;
-
-		} else {
-			// errno == EAGAIN
-			// Nothing new has arrived, so now's the time
-			// to tell the outside world if there's anything
-			// in the read buffer.
-			break;
+			break; // reset connection
 		}
 	}
 
-	if (!read_buffer_.empty()) {
-		read_buffer_ = rtrim(read_buffer_, "\n");
-		lyxerr[Debug::LYXSERVER]
-			<< "LyXComm: Received from fd "
-			<< infd << '\n'
-			<< '\"' << read_buffer_ << '\"' << endl;
-		clientcb(client, read_buffer_);
-	}
-
+	// The connection gets reset in errno != EAGAIN
+	// Why does it need to be reset if errno == 0?
+	closeConnection();
+	openConnection();
 	errno = 0;
 }
 

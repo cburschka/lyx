@@ -1,3 +1,9 @@
+2003-02-05  Angus Leeming  <leeming@lyx.org>
+
+	* lyxserver.C (read_ready): revert my patch of 11 September last year
+	as it sends PC cpu through the roof. Presumably this means that
+	the lyxserver will no longer run on an Alpha...
+
 2003-01-30  Angus Leeming  <leeming@lyx.org>
 
 	* factory.C (createInset): create an InsetCommandParam of type "index"
@@ -9,7 +15,7 @@
 2003-01-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfunc.C (getStatus): "buffer-export custom" should never be
-	disabled. 
+	disabled.
 
 2003-01-20  Michael Schmitt <michael.schmitt@teststep.org>
 
@@ -24,10 +30,10 @@
 	in "View" menu
 
 	* buffer.C (parseSingleLyXformat2Token): Fix misleading error
-	message 
+	message
 
 	* lyxfunc.C (getStatus): Make sure that formats other than
-	"fax" can also be disabled 
+	"fax" can also be disabled
 
 2003-01-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
