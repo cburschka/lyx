@@ -25,15 +25,16 @@
 #include "lyxfunc.h"
 #include "support/filetools.h"
 
-using std::vector;
-using std::pair;
+using std::find;
 using std::max;
 using std::min;
-using std::find;
+using std::pair;
+using std::sort;
+using std::vector;
 
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Citation"), new OkApplyCancelReadOnlyPolicy),
+	: FormCommand(lv, d, _("Citation"), new NoRepeatedApplyReadOnlyPolicy),
 	  dialog_(0)
 {
 	// let the dialog be shown
@@ -59,7 +60,7 @@ FL_FORM * FormCitation::form() const
 
 void FormCitation::connect()
 {
-	fl_set_form_maxsize( dialog_->form, 3*minw_, minh_ );
+	//fl_set_form_maxsize( dialog_->form, 3*minw_, minh_ );
 	FormCommand::connect();
 }
 
@@ -105,6 +106,7 @@ void FormCitation::update()
 
 	vector<pair<string,string> > blist =
 		lv_->buffer()->getBibkeyList();
+	sort(blist.begin(), blist.end());
 
 	for (unsigned int i = 0; i < blist.size(); ++i) {
 		bibkeys.push_back(blist[i].first);

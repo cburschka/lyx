@@ -27,14 +27,13 @@
 
 #include <algorithm>
 
+using std::find;
+using std::max;
 using std::sort;
 using std::vector;
 
-static int const minw_hb = 250;
-static int minw_sb;
-
 FormRef::FormRef(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Reference"), new OkCancelReadOnlyPolicy),
+	: FormCommand(lv, d, _("Reference"), new NoRepeatedApplyPolicy),
 	  toggle(GOBACK), dialog_(0)
 {
 	// let the dialog be shown
@@ -58,13 +57,6 @@ FL_FORM * FormRef::form() const
 }
 
 
-void FormRef::connect()
-{
-	fl_set_form_maxsize(form(), 2 * minw_, minh_);
-	FormCommand::connect();
-}
-	
-
 void FormRef::disconnect()
 {
 	refs.clear();
@@ -82,23 +74,19 @@ void FormRef::build()
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
-	minw_sb = minw_;
 
-	// Name is irrelevant to LaTeX documents
-	if (lv_->buffer()->isLatex()) {
-		fl_deactivate_object(dialog_->name);
-		fl_set_object_lcol(dialog_->name, FL_INACTIVE);
-	}
-	  
-	// Can change reference only through browser
+	// Force the user to use the browser to change refs.
 	fl_deactivate_object(dialog_->ref);
 
         // Manage the ok and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
+	bc_.setApply(dialog_->button_apply);
 	bc_.setCancel(dialog_->button_cancel);
+	bc_.setUndoAll(dialog_->button_restore);
 	bc_.refresh();
 
 	bc_.addReadOnly(dialog_->type);
+	bc_.addReadOnly(dialog_->name);
 }
 
 
@@ -108,19 +96,24 @@ void FormRef::update()
 	fl_set_input(dialog_->name, params.getOptions().c_str());
 
 	Type type = getType();
-	fl_set_choice(dialog_->type, type + 1);
+	fl_set_choice(dialog_->type, type+1);
 
 	toggle = GOBACK;
 	fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
-	refs.clear();
-	if (inset_ == 0) {
-		refs = lv_->buffer()->getLabelList();
-		updateBrowser(refs);
-		showBrowser();
-	} else {
-		hideBrowser();
+	// Name is irrelevant to LaTeX documents
+	if (lv_->buffer()->isLatex()) {
+		fl_deactivate_object(dialog_->name);
+		fl_set_object_lcol(dialog_->name, FL_INACTIVE);
 	}
+	  
+	refs = lv_->buffer()->getLabelList();
+	updateBrowser(refs);
+
+	if (inset_ == 0) {
+	} else {
+	}
+
 	bc_.readOnly(lv_->buffer()->isReadonly());
 }
 
@@ -154,81 +147,17 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 		fl_set_object_lcol(dialog_->button_update, FL_BLACK);
 		fl_activate_object(dialog_->sort);
 		fl_set_object_lcol(dialog_->sort, FL_BLACK);
+
+		string ref = fl_get_input(dialog_->ref);
+		vector<string>::const_iterator cit =
+			find(refs.begin(), refs.end(), ref);
+
+		if (cit != refs.end()) {
+			int const i = static_cast<int>(cit - refs.begin());
+			fl_set_browser_topline(dialog_->browser, max(i-5, 1));
+			fl_select_browser_line(dialog_->browser, i+1);
+		}
 	}
-}
-
-
-void FormRef::showBrowser() const
-{
-	fl_show_object(dialog_->browser);
-	fl_show_object(dialog_->button_update);
-	fl_show_object(dialog_->sort);
-
-	setSize(minw_sb, 0);
-
-	fl_deactivate_object(dialog_->type);
-	fl_set_object_lcol(dialog_->type, FL_INACTIVE);
-	fl_deactivate_object(dialog_->button_go);
-	fl_set_object_lcol(dialog_->button_go, FL_INACTIVE);
-	fl_set_object_lcol(dialog_->ref, FL_INACTIVE);
-	bc_.valid(false);
-}
-
-
-void FormRef::hideBrowser() const
-{
-	fl_hide_object(dialog_->browser);
-	fl_hide_object(dialog_->button_update);
-	fl_hide_object(dialog_->sort);
-
-	setSize(minw_hb, 280);
-
-	fl_activate_object(dialog_->type);
-	fl_set_object_lcol(dialog_->type, FL_BLACK);
-	fl_activate_object(dialog_->button_go);
-	fl_set_object_lcol(dialog_->button_go, FL_BLACK);
-	fl_set_object_lcol(dialog_->ref, FL_BLACK);
-	bc_.invalid();
-}
-
-
-void FormRef::setSize(int w, int dx) const
-{
-	static int x1 = dialog_->name->x;
-	static int y1 = dialog_->name->y;
-	static int x2 = dialog_->ref->x;
-	static int y2 = dialog_->ref->y;
-	static int x3 = dialog_->type->x;
-	static int y3 = dialog_->type->y;
-	static int x4 = dialog_->button_go->x;
-	static int y4 = dialog_->button_go->y;
-	static int x5 = dialog_->button_ok->x;
-	static int y5 = dialog_->button_ok->y;
-	static int x6 = dialog_->button_cancel->x;
-	static int y6 = dialog_->button_cancel->y;
-
-	if (form()->w != w) {
-		minw_ = w;
-		fl_set_form_size(form(), minw_, minh_);
-	} else
-		return;
-	
-	fl_set_object_position(dialog_->name,   x1 - dx, y1);
-	fl_set_object_position(dialog_->ref,    x2 - dx, y2);
-	fl_set_object_position(dialog_->type,   x3 - dx, y3);
-	fl_set_object_position(dialog_->button_go,     x4 - dx, y4);
-	fl_set_object_position(dialog_->button_ok,     x5 - dx, y5);
-	fl_set_object_position(dialog_->button_cancel, x6 - dx, y6);
-
-	// These two must be reset apparently
-	// Name is irrelevant to LaTeX documents
-	if (lv_->buffer()->isLatex()) {
-		fl_deactivate_object(dialog_->name);
-		fl_set_object_lcol(dialog_->name, FL_INACTIVE);
-	}
-	  
-	// Can change reference only through browser
-	fl_deactivate_object(dialog_->ref);
 }
 
 
@@ -241,6 +170,7 @@ void FormRef::apply()
 	params.setCmdName(getName(type));
 
 	params.setOptions(fl_get_input(dialog_->name));
+	params.setContents(fl_get_input(dialog_->ref));
 
 	if (inset_ != 0) {
 		// Only update if contents have changed
@@ -255,11 +185,6 @@ void FormRef::apply()
 }
 
 
-#ifdef WITH_WARNINGS
-#warning check use of buttoncontroller
-// Seems okay except that goref and goback shouldn't
-// affect the status of ok.
-#endif
 bool FormRef::input(FL_OBJECT *, long data)
 {
 	bool activate(true);
@@ -267,6 +192,9 @@ bool FormRef::input(FL_OBJECT *, long data)
 	// goto reference / go back
 	case 1:
 	{
+		// No change to data
+		activate = false;
+		
 		toggle = static_cast<Goto>(toggle + 1);
 		if (toggle == GOFIRST ) toggle = GOREF;
 	
@@ -300,9 +228,10 @@ bool FormRef::input(FL_OBJECT *, long data)
 		unsigned int sel = fl_get_browser(dialog_->browser);
 		if (sel < 1 || sel > refs.size()) break;
 
-		string s = fl_get_browser_line(dialog_->browser, sel);
-		fl_set_input(dialog_->ref, s.c_str());
-		params.setContents(s);
+		if (!lv_->buffer()->isReadonly()) {
+			string s = fl_get_browser_line(dialog_->browser, sel);
+			fl_set_input(dialog_->ref, s.c_str());
+		}
 
 		toggle = GOBACK;
 		lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
@@ -340,6 +269,7 @@ bool FormRef::input(FL_OBJECT *, long data)
 	default:
 		break;
 	}
+
 	return activate;
 }
 

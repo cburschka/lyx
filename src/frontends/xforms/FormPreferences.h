@@ -150,6 +150,12 @@ private:
 	class Colors {
 	public:
 		///
+		enum GuiColors {
+			GUI_COLOR_CHOICE = FL_FREE_COL1,
+			GUI_COLOR_HUE_DIAL = FL_FREE_COL2,
+			GUI_COLOR_CURSOR = FL_FREE_COL3
+		};
+		///
 		Colors( FormPreferences & p ) : parent_(p), dialog_(0) {}
 		///
 		~Colors();

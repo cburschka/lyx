@@ -32,7 +32,7 @@
 // confusing to the button controller so I've made an IgnorantPolicy to cover
 // this situation since the dialog doesn't care about buttons. ARRae 20001013
 FormToc::FormToc(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Table of Contents"), new OkApplyCancelPolicy),
+	: FormCommand(lv, d, _("Table of Contents"), new OkCancelPolicy),
 	  dialog_(0)
 {
 	// let the dialog be shown

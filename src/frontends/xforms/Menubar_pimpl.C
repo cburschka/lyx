@@ -562,11 +562,9 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			
 			lyxerr[Debug::GUI] << "Command: \""  
 					   << lyxaction.getActionName(item.action())
-					   << "\", Binding " << accel 
-					   << ", shortcut " << shortcut 
-					   << endl;
-
-
+					   << "\", binding \"" << accel
+					   << "\", shortcut \"" << shortcut 
+					   << "\"" << endl;
 			break;
 		}
 

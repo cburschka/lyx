@@ -26,7 +26,7 @@
 #include "lyxfunc.h"
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Url"), new OkApplyCancelReadOnlyPolicy),
+	: FormCommand(lv, d, _("Url"), new NoRepeatedApplyReadOnlyPolicy),
 	  dialog_(0)
 {
 	// let the dialog be shown

@@ -156,7 +156,8 @@ void FormDocument::build()
     obj = class_->choice_doc_class;
     fl_addto_form(class_->form);
     combo_doc_class = new Combox(FL_COMBOX_DROPLIST);
-    combo_doc_class->add(obj->x, obj->y, obj->w, obj->h, 400);
+    combo_doc_class->add(obj->x, obj->y, obj->w, obj->h, 400,
+	 		 dialog_->tabbed_folder);
     combo_doc_class->shortcut("#C",1);
     combo_doc_class->setcallback(ComboInputCB, this);
     fl_end_form();
@@ -215,7 +216,8 @@ void FormDocument::build()
     obj = language_->choice_language;
     fl_addto_form(language_->form);
     combo_language = new Combox(FL_COMBOX_DROPLIST);
-    combo_language->add(obj->x, obj->y, obj->w, obj->h, 400);
+    combo_language->add(obj->x, obj->y, obj->w, obj->h, 400,
+			dialog_->tabbed_folder);
     combo_language->shortcut("#L",1);
     combo_language->setcallback(ComboInputCB, this);
     fl_end_form();

@@ -51,8 +51,6 @@ private:
 		GOFIRST
 	};
 
-	/// Connect signals etc. Set form's max size.
-	virtual void connect();
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 
@@ -69,12 +67,6 @@ private:
 
 	///
 	void updateBrowser(std::vector<string> const &) const;
-	///
-	void showBrowser() const;
-	///
-	void hideBrowser() const;
-	///
-	void setSize(int, int) const;
 	///
 	FD_form_ref * build_ref();
 	///

@@ -26,7 +26,7 @@
 #include "lyxfunc.h"
 
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Index"), new OkApplyCancelReadOnlyPolicy),
+	: FormCommand(lv, d, _("Index"), new NoRepeatedApplyPolicy),
 	  dialog_(0)
 {
 	// let the dialog be shown

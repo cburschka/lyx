@@ -49,7 +49,7 @@ extern "C" void C_Combox_combo_cb(FL_OBJECT *ob, long data) ;
 extern "C" int C_Combox_peek_event(FL_FORM * form, void *xev);
 
 Combox::Combox(combox_type t)
-	: type(t)
+	: type(t), tabfolder1(0), tabfolder2(0)
 {
    browser = button = 0;
    callback = 0;
@@ -156,8 +156,13 @@ void Combox::select(int i)
 }
 
 
-void Combox::add(int x, int y, int w, int hmin, int hmax)
-{  
+void Combox::add(int x, int y, int w, int hmin, int hmax,
+		 FL_OBJECT * tabfolder1_, FL_OBJECT * tabfolder2_)
+{
+	// Store these for later use in working round an xforms bug in Show()
+	tabfolder1 = tabfolder1_;
+	tabfolder2 = tabfolder2_;
+
 	FL_OBJECT * obj;
 	
 	switch (type) {
@@ -253,8 +258,38 @@ void Combox::Show()
 		fl_set_object_label(button, "@2<-");	      
 		fl_redraw_object(button);
 	}
-	int x = label->form->x + label->x, y = label->form->y + label->y;
-	fl_set_form_position(form, x, y + label->h);
+
+	int x = label->x;
+	int y = label->y + label->h;
+	if (tabfolder1) {
+		// This is a bug work around suggested by Steve Lamont on the
+		// xforms mailing list. It correctly positions the browser form
+		// after the main window has been moved.
+		// The bug only occurs in tabbed folders.
+		int folder_x, folder_y, folder_w, folder_h;
+		fl_get_folder_area( tabfolder1,
+				    &folder_x, &folder_y,
+				    &folder_w, &folder_h );
+		x += folder_x;
+		y += folder_y;
+
+		if (tabfolder2) {
+			fl_get_folder_area( tabfolder2,
+					    &folder_x, &folder_y,
+					    &folder_w, &folder_h );
+			x += tabfolder2->form->x + folder_x;
+			y += tabfolder2->form->y + folder_y;
+		} else {
+			x += tabfolder1->form->x;
+			y += tabfolder1->form->y;
+		}
+		
+	} else {
+		x += label->form->x;
+		y += label->form->y;
+	}
+
+	fl_set_form_position(form, x, y);
 	fl_show_form(form, FL_PLACE_POSITION, FL_NOBORDER, "");
         if (sel>0) {
 		fl_set_browser_topline(browser, sel);

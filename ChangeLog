@@ -1,3 +1,42 @@
+2000-11-29  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/combox.[Ch] )(add, Show): workaround xforms bug when Show()ing
+	the browser form for a combox in a tabbed folder. Bug fix courtesy of
+	Steve Lamont <spl@ncmir.ucsd.edu>.
+
+	* src/frontends/xforms/FormDocument.C (build):
+	* src/frontends/xforms/FormPreferences.C (Language::build):
+	pass tabfolders to Combox::add() in order to use this work around.
+
+	* src/frontends/xforms/FormCitation.C (connect): remove max size
+	limitation.
+	(update): sort list of bibliography keys.
+
+	* src/frontends/xforms/FormRef.[Ch] (connect, showBrowser, hideBrowser,
+	setSize): removed.
+	No max size limitation. Same popup for new and existing insets. Fixes
+	bugs reported by Rob Lahaye.
+	
+	* src/frontends/xforms/FormCitation.C (c-tor):
+	* src/frontends/xforms/FormCopyright.C (c-tor):
+	* src/frontends/xforms/FormError.C (c-tor):
+	* src/frontends/xforms/FormGraphics.C (c-tor):
+	* src/frontends/xforms/FormIndex.C (c-tor):
+	* src/frontends/xforms/FormRef.C (c-tor):
+	* src/frontends/xforms/FormToc.C (c-tor):
+	* src/frontends/xforms/FormUrl.C (c-tor):
+	use correct policy for ButtonController.
+
+	* src/frontends/xforms/FormPreferences.[Ch]: cleaned up a little more.
+
+	* src/frontends/xforms/Menubar_pimpl.C (create_submenu): modified lyxerr
+	call a little.
+
+	* src/frontends/xforms/forms/form_citation.fd: some resizing changes.
+
+	* src/frontends/xforms/forms/form_ref.fd: new Restore, Apply buutons.
+	Some resizing changes.
+
 2000-11-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.in: fix typo

@@ -446,7 +446,14 @@ void FormPreferences::Colors::apply()
 
 				AdjustVal(FL_RIGHT_BCOL,  FL_COL1, -0.5);
 				AdjustVal(FL_BOTTOM_BCOL, FL_COL1, -0.5);
-			}	
+			}
+
+			if ((*cit).colorID == GUI_COLOR_CURSOR) {
+				fl_mapcolor(GUI_COLOR_CURSOR,
+					    (*cit).r, (*cit).g, (*cit).b);
+				fl_set_cursor_color(FL_DEFAULT_CURSOR,
+						    GUI_COLOR_CURSOR, FL_WHITE);
+			}
 		}
 		Dialogs::redrawGUI();
 	}
@@ -464,11 +471,12 @@ void FormPreferences::Colors::apply()
 		if (cit2 == colorDB.end()) continue;
 
 		if (lcolor.getX11Name(lc) != (*cit2).getname()) {
-			lyxerr << "FormPreferences::Colors::apply: "
-			       << "resetting LColor " << lcolor.getGUIName(lc)
-			       << " from \"" << lcolor.getX11Name(lc)
-			       << "\" to \"" << (*cit2).getname() << "\"."
-			       << endl;
+			lyxerr[Debug::GUI]
+				<< "FormPreferences::Colors::apply: "
+				<< "resetting LColor " << lcolor.getGUIName(lc)
+				<< " from \"" << lcolor.getX11Name(lc)
+				<< "\" to \"" << (*cit2).getname() << "\"."
+				<< endl;
 
 			string const arg =
 				lcolor.getLyXName(lc) + string(" ") +
@@ -484,9 +492,10 @@ void FormPreferences::Colors::build()
 {
 	dialog_ = parent_.build_colors();
 
-	fl_set_object_color(dialog_->button_color, FL_FREE_COL1, FL_FREE_COL1);
+	fl_set_object_color(dialog_->button_color,
+			    GUI_COLOR_CHOICE, GUI_COLOR_CHOICE);
 
-	fl_set_object_color(dialog_->dial_hue, FL_FREE_COL2, FL_BLACK);
+	fl_set_object_color(dialog_->dial_hue, GUI_COLOR_HUE_DIAL, FL_BLACK);
 	fl_set_dial_return(dialog_->dial_hue, FL_RETURN_CHANGED);
 	fl_set_dial_bounds(dialog_->dial_hue, 0.0, 360.0);
 
@@ -640,7 +649,7 @@ void FormPreferences::Colors::InputBrowserLyX() const
 
 	vector<NamedColor>::const_iterator cit =
 		find(colorDB.begin(), colorDB.end(), color);
-	if (cit == colorDB.end())  return;
+	if (cit == colorDB.end()) return;
 
 	int const j = static_cast<int>(cit - colorDB.begin());
 
@@ -661,7 +670,7 @@ void FormPreferences::Colors::InputBrowserX11() const
 	fl_freeze_form(dialog_->form);
 	RGBColor const & col = colorDB[i-1].color();
 	
-	fl_mapcolor(FL_FREE_COL1, col.r, col.g, col.b);
+	fl_mapcolor(GUI_COLOR_CHOICE, col.r, col.g, col.b);
 	fl_redraw_object(dialog_->button_color);
 
 	HSVColor hsv(col);
@@ -671,7 +680,7 @@ void FormPreferences::Colors::InputBrowserX11() const
 	fl_set_slider_value(dialog_->slider_value, hsv.v);
 
 	RGBColor col2 = HSVColor(hsv.h, 1.0, 1.0);
-	fl_mapcolor(FL_FREE_COL2, col2.r, col2.g, col2.b);
+	fl_mapcolor(GUI_COLOR_HUE_DIAL, col2.r, col2.g, col2.b);
 	fl_redraw_object(dialog_->dial_hue);
 
 	// Is it valid to activate the "Modify" button?
@@ -704,7 +713,7 @@ void FormPreferences::Colors::InputHSV()
 	fl_set_browser_topline(dialog_->browser_x11, max(i-5, 1));
 	fl_select_browser_line(dialog_->browser_x11, i+1);
 
-	fl_mapcolor(FL_FREE_COL1, col.r, col.g, col.b);
+	fl_mapcolor(GUI_COLOR_CHOICE, col.r, col.g, col.b);
 	fl_redraw_object(dialog_->button_color);
 
 	// Only activate the "Modify" button if the browser and slider colors
@@ -724,7 +733,7 @@ void FormPreferences::Colors::InputHSV()
 
 	// Finally, modify the color of the dial.
 	col = HSVColor(hue, 1.0, 1.0);
-	fl_mapcolor(FL_FREE_COL2, col.r, col.g, col.b);
+	fl_mapcolor(GUI_COLOR_HUE_DIAL, col.r, col.g, col.b);
 	fl_redraw_object(dialog_->dial_hue);
 
 	fl_unfreeze_form(dialog_->form);
@@ -749,18 +758,20 @@ void FormPreferences::Colors::LoadBrowserLyX()
 	xcol.colorID = FL_BLACK;
 	fl_getmcolor(FL_BLACK, &xcol.r, &xcol.g, &xcol.b);
 
-	xformColorDB.push_back(xcol);
+	fl_mapcolor(GUI_COLOR_CURSOR, xcol.r, xcol.g, xcol.b);
+	fl_set_cursor_color(FL_DEFAULT_CURSOR, GUI_COLOR_CURSOR, FL_WHITE);
 
-	// FL_LIGHTER_COL1 does not exist in xforms 0.88
-	// xcol.name = "GUI active tab";
-	// xcol.colorID = FL_LIGHTER_COL1;
-	// fl_getmcolor(FL_LIGHTER_COL1, &xcol.r, &xcol.g, &xcol.b);
-	// 
-	// xformColorDB.push_back(xcol);
+	xformColorDB.push_back(xcol);
 
 	xcol.name = "GUI selection";
 	xcol.colorID = FL_YELLOW;
 	fl_getmcolor(FL_YELLOW, &xcol.r, &xcol.g, &xcol.b);
+
+	xformColorDB.push_back(xcol);
+
+	xcol.name = "GUI pointer";
+	xcol.colorID = GUI_COLOR_CURSOR;
+	fl_getmcolor(GUI_COLOR_CURSOR, &xcol.r, &xcol.g, &xcol.b);
 
 	xformColorDB.push_back(xcol);
 
@@ -1827,7 +1838,9 @@ void FormPreferences::Language::build()
 	FL_OBJECT * obj = dialog_->choice_default_lang;
 	fl_deactivate_object(dialog_->choice_default_lang);
 	combo_default_lang = new Combox(FL_COMBOX_DROPLIST);
-	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400);
+	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400,
+				parent_.lang_opts_tab_->tabfolder_outer,
+				parent_.dialog_->tabfolder_prefs);
 	combo_default_lang->shortcut("#L",1);
 	combo_default_lang->setcallback(ComboCB, &parent_);
 
@@ -1845,6 +1858,7 @@ void FormPreferences::Language::build()
 
 	// This is safe, as nothing is done to the pointer, other than
 	// to use its address in a block-if statement.
+	// No it's not! Leads to crash.
 	// setPreHandler(
 	// 		reinterpret_cast<FL_OBJECT *>(combo_default_lang),
 	//		C_FormPreferencesFeedbackCB);

@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_ref
 Width: 530
 Height: 340
-Number of Objects: 10
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 10 10 270 280
+box: 10 10 270 240
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -42,8 +42,8 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_NoGravity
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_South
 name: browser
 callback: C_FormBaseInputCB
 argument: 2
@@ -51,7 +51,7 @@ argument: 2
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 40 300 90 30
+box: 40 260 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -61,7 +61,7 @@ lcol: FL_BLACK
 label: Update|#U
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_SouthWest FL_SouthWest
 name: button_update
 callback: C_FormBaseInputCB
 argument: 3
@@ -69,7 +69,7 @@ argument: 3
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 170 300 30 30
+box: 170 260 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_RIGHT
@@ -79,7 +79,7 @@ lcol: FL_BLACK
 label: Sort|#S
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_SouthWest FL_SouthWest
 name: sort
 callback: C_FormBaseInputCB
 argument: 3
@@ -159,7 +159,7 @@ argument: 1
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 330 300 90 30
+box: 230 300 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -190,6 +190,42 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_cancel
 callback: C_FormBaseCancelCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 330 300 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Apply|#A
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
+name: button_apply
+callback: C_FormBaseApplyCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 300 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Restore|#R
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
+name: button_restore
+callback: C_FormBaseRestoreCB
 argument: 0
 
 ==============================

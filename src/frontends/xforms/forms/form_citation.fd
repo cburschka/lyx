@@ -24,7 +24,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_X
+resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: box
 callback: 
@@ -43,7 +43,7 @@ lcol: FL_BLACK
 label: Inset keys|#I
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_NorthWest FL_South
 name: citeBrsr
 callback: C_FormBaseInputCB
 argument: CITEBRSR
@@ -61,7 +61,7 @@ lcol: FL_BLACK
 label: Bibliography keys|#B
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_North FL_SouthEast
 name: bibBrsr
 callback: C_FormBaseInputCB
 argument: BIBBRSR
@@ -79,7 +79,7 @@ lcol: FL_BLACK
 label: @4->
 shortcut: #&D
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_North FL_North
 name: addBtn
 callback: C_FormBaseInputCB
 argument: ADD
@@ -97,7 +97,7 @@ lcol: FL_BLACK
 label: @9+
 shortcut: #X
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_North FL_North
 name: delBtn
 callback: C_FormBaseInputCB
 argument: DELETE
@@ -115,7 +115,7 @@ lcol: FL_BLACK
 label: @8->
 shortcut: #&A
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_North FL_North
 name: upBtn
 callback: C_FormBaseInputCB
 argument: UP
@@ -133,7 +133,7 @@ lcol: FL_BLACK
 label: @2->
 shortcut: #&B
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_North FL_North
 name: downBtn
 callback: C_FormBaseInputCB
 argument: DOWN
@@ -150,8 +150,8 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Info
 shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthEast
 name: infoBrsr
 callback: 
 argument: 
@@ -168,8 +168,8 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Citation style|#s
 shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthEast
 name: style
 callback: 
 argument: 
@@ -186,8 +186,8 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Text before|#T
 shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthEast
 name: textBefore
 callback: 
 argument: 
@@ -204,8 +204,8 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Text after|#e
 shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthEast
 name: textAftr
 callback: 
 argument: 
