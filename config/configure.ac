@@ -274,6 +274,8 @@ ${FRONTEND_INFO}\
 
 
 AC_SUBST(VERSION_INFO)
+AC_SUBST(RPM_FRONTEND)
+AC_SUBST(RPM_FRONTEND_DEPS)
 
 ## Some config.h stuff
 
@@ -379,9 +381,6 @@ AC_CONFIG_FILES([Makefile \
        src/frontends/qt2/ui/moc/Makefile \
        src/frontends/gnome/Makefile \
 ])
-
-AC_SUBST(RPM_FRONTEND, 'xforms')
-AC_SUBST(RPM_FRONTEND_DEPS, 'libforms >= 1.0')
 
 AC_OUTPUT
 # show version information

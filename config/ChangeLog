@@ -1,3 +1,10 @@
+2003-03-20  Kayvan Sylvan  <kayvan@sylvan.com>
+
+	* configure.ac:
+	* configure.in: Move the RPM_FRONTEND_* stuff and eliminate the
+	value in AC_SUBST. This makes configure work as expected with
+	autoconf-2.5x
+
 2003-03-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.ac (VERSION): 
