@@ -1,3 +1,12 @@
+2005-01-31  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* chdir.C (chdir):
+	* getcwd.C (l_getcwd):
+	* kill.C (kill):
+	* mkdir.C (mkdir): add Win32 specializations.
+
+	* os_win32.h: remove cruft.
+
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (libsupport_la_SOURCES): remove rmdir.C 

@@ -19,6 +19,10 @@
 # include <unistd.h>
 #endif
 
+#ifdef _WIN32
+# include <windows.h>
+#endif
+
 using boost::scoped_array;
 
 using std::string;
@@ -29,10 +33,13 @@ namespace {
 inline
 char * l_getcwd(char * buffer, size_t size)
 {
-#ifndef __EMX__
-	return ::getcwd(buffer, size);
-#else
+#ifdef __EMX
 	return ::_getcwd2(buffer, size);
+#elif defined(_WIN32)
+	GetCurrentDirectory(size, buffer);
+	return buffer;
+#else
+	return ::getcwd(buffer, size);
 #endif
 }
 

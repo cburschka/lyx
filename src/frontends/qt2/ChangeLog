@@ -1,3 +1,12 @@
+2005-01-31  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* QDialogView.h (form): add cast for MSVC.
+
+	* QLPainter.C (smllCapsText, text): MSVC doesn't like the use
+	of operator[](i) here, so use at(i) instead.
+
+	* lengthvalidator.h: remove incorrect Q_EXPORT spec.
+
 2005-01-31  Angus Leeming  <leeming@lyx.org>
 
 	* QGraphics.[Ch] (slotEdit): unused cruft, so removed.

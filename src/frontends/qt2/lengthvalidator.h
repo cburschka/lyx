@@ -19,7 +19,7 @@
 class QWidget;
 
 
-class Q_EXPORT LengthValidator : public QValidator
+class LengthValidator : public QValidator
 {
 	Q_OBJECT
 public:

@@ -16,11 +16,17 @@
 # include <unistd.h>
 #endif
 
+#ifdef _WIN32
+# include <windows.h>
+#endif
+
 int lyx::support::chdir(std::string const & name)
 {
-#ifndef __EMX__
-	return ::chdir(name.c_str());
-#else
+#ifdef __EMX__
 	return ::_chdir2(name.c_str());
+#elif defined(_WIN32)
+	return SetCurrentDirectory(name.c_str()) != 0 ? 0 : -1;
+#else
+	return ::chdir(name.c_str());
 #endif
 }

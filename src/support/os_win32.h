@@ -65,16 +65,6 @@ extern "C" {
 #define O_NONBLOCK      0x4000
 inline int fcntl (int, int, ...) {return -1;}
 
-//signal.h
-#define SIGHUP 1
-#define SIGKILL 9
-
-//sys/time.h
-//struct timeval {
-//  long tv_sec;
-//  long tv_usec;
-//};
-
 //unistd.h
 inline int fork () {return -1;}
 #define pipe(a) _pipe(a,0,0)

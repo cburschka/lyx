@@ -202,8 +202,9 @@ void QLPainter::smallCapsText(int x, int y,
 	int tmpx = x;
 	size_t ls = s.length();
 	for (size_t i = 0; i < ls; ++i) {
-		QChar const c = s[i].upper();
-		if (c != s[i]) {
+		// Brain-dead MSVC wants at(i) rather than operator[]
+		QChar const c = s.at(i).upper();
+		if (c != s.at(i)) {
 			qp_->setFont(qsmallfont);
 			qp_->drawText(tmpx, y, c);
 			tmpx += qsmallfontm.width(c);
@@ -229,7 +230,8 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 #if QT_VERSION >= 300
 	str.setLength(ls);
 	for (size_t i = 0; i < ls; ++i)
-		str[i] = QChar(encoding->ucs(s[i]));
+		// Brain-dead MSVC wants at(i) rather than operator[]
+		str.at(i) = QChar(encoding->ucs(s[i]));
 	// HACK: QT3 refuses to show single compose characters
 	if (ls == 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
 		str = ' ' + str;

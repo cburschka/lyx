@@ -13,6 +13,7 @@
 #define QDIALOGVIEW_H
 
 #include "Dialog.h"
+
 #include <boost/scoped_ptr.hpp>
 
 #include <qapplication.h>
@@ -110,7 +111,11 @@ QView<GUIDialog>::QView(Dialog & p, std::string const & t)
 template <class GUIDialog>
 QDialog * QView<GUIDialog>::form() const
 {
-	return dialog_.get();
+	/* Brain dead MSVC compiler wants to know the class hierarchy at the
+	   definition site of the template, rather than the instantation point
+	   to downcast correctly. So, rather than including all dialogs to 
+	   provide that, we just cast it with the ugly hammer. */
+	return (QDialog *) dialog_.get();
 }
 
 

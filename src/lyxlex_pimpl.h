@@ -20,6 +20,7 @@
 
 #include <boost/utility.hpp>
 
+#include <fstream>
 #include <istream>
 #include <stack>
 #include <vector>
