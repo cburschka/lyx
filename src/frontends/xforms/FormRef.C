@@ -144,6 +144,7 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 		fl_deactivate_object(dialog_->sort);
 		fl_set_object_lcol(dialog_->browser, FL_INACTIVE);
 		fl_set_object_lcol(dialog_->sort, FL_INACTIVE);
+		fl_set_input(dialog_->ref, "");
 	} else {
 		fl_activate_object(dialog_->browser);
 		fl_set_object_lcol(dialog_->browser, FL_BLACK);
@@ -155,6 +156,8 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 			find(keys.begin(), keys.end(), ref);
 		if (cit == keys.end())
 			cit = keys.begin();
+		if (ref.empty())
+			fl_set_input(dialog_->ref, (*cit).c_str());
 
 		int const i = static_cast<int>(cit - keys.begin());
 		fl_set_browser_topline(dialog_->browser, max(i-5, 1));
