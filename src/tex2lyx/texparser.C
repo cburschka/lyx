@@ -218,7 +218,7 @@ string Parser::getArg(char left, char right)
 
 string Parser::getOpt()
 {
-	string res = getArg('[', ']');
+	string const res = getArg('[', ']');
 	return res.size() ? '[' + res + ']' : string();
 }
 
@@ -252,14 +252,21 @@ void Parser::tokenize(istream & is)
 				break;
 			}
 
-/*
 			case catComment: {
+				push_back(Token(c, catComment));
 				while (is.get(c) && catcode(c) != catNewline)
-					;
+					push_back(Token(c, catLetter));
+				push_back(Token(c, catNewline));
 				++lineno_;
+				is.get(c);
+				if (catcode(c) == catNewline) {
+					push_back(Token("par"));
+					++lineno_;
+				} else {
+					is.putback(c);
+				}
 				break;
 			}
-*/
 
 			case catEscape: {
 				is.get(c);

@@ -21,7 +21,8 @@ using std::vector;
 bool is_math_env(string const & name)
 {
 	static char const * known_math_envs[] = { "equation", "equation*",
-	"eqnarray", "eqnarray*", "align", "align*", 0};
+	"eqnarray", "eqnarray*", "align", "align*", "gather", "gather*",
+	"multline", "multline*", 0};
 
 	for (char const ** what = known_math_envs; *what; ++what)
 		if (*what == name)

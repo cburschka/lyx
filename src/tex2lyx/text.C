@@ -113,8 +113,10 @@ void handle_par(ostream & os)
 		return;
 	os << "\n\\layout ";
 	string s = active_environment();
-	if (s == "document" || s == "table" || s == "center")
+	if (s == "document" || s == "table")
 		os << "Standard\n\n";
+	else if (s == "center")
+		os << "Standard\n\n\\align center\n";
 	else if (s == "lyxcode")
 		os << "LyX-Code\n\n";
 	else if (s == "lyxlist")
@@ -285,10 +287,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 				parse_text(p, os, FLAG_END, outer);
 				end_inset(os);
 			} else if (name == "center") {
-				active_environments.pop_back();
-				handle_par(os);	
-				active_environments.push_back(name);
-				os << "\\align center\n";
+				handle_par(os);
 				parse_text(p, os, FLAG_END, outer);
 			} else if (name == "enumerate" || name == "itemize"
 					|| name == "lyxlist") {
