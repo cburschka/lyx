@@ -169,6 +169,57 @@ Style Abstract
   EndFont
 End
 
+# Header definitions:
+Style My_Logo
+  Margin        Static
+  LatexType     Command
+  LatexName     MyLogo
+  LeftMargin        My_Logo:xx
+  LabelSep      xxx
+  Align         Left
+  AlignPossible     Left
+  LabelType     Static
+  LabelString       "My Logo:"
+
+  # standard font definition
+  LabelFont
+    Series      Bold
+    Shape       Italic
+    Color       red
+  EndFont
+
+End
+
+Style Restriction
+ CopyStyle		"My Logo"
+  LatexName     Restriction
+  LeftMargin        Restriction:xx
+  LabelString       "Restriction:"
+End
+
+Style Left_Header
+ CopyStyle		"My Logo"
+  LatexName     leftheader
+  LeftMargin        Left_Header:xx
+  LabelString       "Left Header:"
+End
+
+
+Style Right_Header
+ CopyStyle		"My Logo"
+  LatexName     rightheader
+  LeftMargin        Right_Header:xx
+  LabelString       "Right Header:"
+End
+
+Style Right_Footer
+ CopyStyle		"My Logo"
+  LatexName     rightfooter
+  LeftMargin        Right_Footer:xx
+  LabelString       "Right Footer:"
+End
+
+
 # Bibliography style definition
 Style Bibliography
   LabelFont 
