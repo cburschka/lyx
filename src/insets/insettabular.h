@@ -205,8 +205,8 @@ public:
 	virtual std::string const & name() const { return name_; }
 	///
 	virtual std::string const inset2string(Buffer const &) const;
-	/// Returns the active cell if successful, else -1.
-	static int string2params(std::string const &, InsetTabular &);
+	///
+	static void string2params(std::string const &, InsetTabular &);
 	///
 	static std::string const params2string(InsetTabular const &);
 private:

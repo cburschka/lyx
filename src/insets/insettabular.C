@@ -1762,64 +1762,37 @@ string const InsetTabularMailer::inset2string(Buffer const &) const
 }
 
 
-int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
+void InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 {
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
-#ifdef WITH_WARNINGS
-#warning CHECK verify that this is a sane value to return.
-#endif
 	if (in.empty())
-		return -1;
+		return;
 
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != name_)
-			return -1;
-	}
-
-	int cell = -1;
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != "\\active_cell")
-			return -1;
-		lex.next();
-		cell = lex.getInteger();
-	}
+	string token;
+	lex >> token;
+	if (!lex || token != name_)
+		return print_mailer_error("InsetTabularMailer", in, 1,
+		                          name_);
 
 	// This is part of the inset proper that is usually swallowed
 	// by Buffer::readInset
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != "Tabular")
-			return -1;
-	}
-
-	if (!lex.isOK())
-		return -1;
+	lex >> token;
+	if (!lex || token != "Tabular")
+		return print_mailer_error("InsetTabularMailer", in, 2,
+		                          "Tabular");
 
 	Buffer const & buffer = inset.buffer();
 	inset.read(buffer, lex);
-
-	// We can't set the active cell, but we can tell the frontend
-	// what it is.
-	return cell;
 }
 
 
 string const InsetTabularMailer::params2string(InsetTabular const & inset)
 {
 	ostringstream data;
-#ifdef WITH_WARNINGS
-#warning wrong!
-#endif
-	//data << name_ << " \\active_cell " << inset.getActCell() << '\n';
-	data << name_ << " \\active_cell " << 0 << '\n';
+	data << name_ << ' ';
 	inset.write(inset.buffer(), data);
 	data << "\\end_inset\n";
 	return data.str();

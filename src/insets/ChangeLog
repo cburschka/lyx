@@ -1,3 +1,8 @@
+2004-11-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insettabular.[Ch] (string2params): Don't pretend to return the
+	active cell anymore and simplify keyword parsing.
+
 2004-11-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetlatexaccent.h (isLetter): implement, so that word selection

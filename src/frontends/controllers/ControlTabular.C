@@ -10,7 +10,9 @@
 
 #include <config.h>
 
+#include "BufferView.h"
 #include "ControlTabular.h"
+#include "cursor.h"
 #include "funcrequest.h"
 #include "lyxrc.h"
 #include "paragraph.h"
@@ -29,14 +31,21 @@ ControlTabular::ControlTabular(Dialog & parent)
 
 bool ControlTabular::initialiseParams(string const & data)
 {
-	Buffer & buffer = kernel().buffer();
-
-	InsetTabular tmp(buffer);
-	int cell = InsetTabularMailer::string2params(data, tmp);
-	if (cell != -1) {
-		params_.reset(new LyXTabular(tmp.tabular));
-		active_cell_ = cell;
+	// try to get the current cell
+	BufferView const * const bv = kernel().bufferview();
+	if (bv) {
+		LCursor const & cur = bv->cursor();
+		// get the innermost tabular inset;
+		// assume that it is "ours"
+		for (int i = cur.size() - 1; i >= 0; --i)
+			if (cur[i].inset().lyxCode() == InsetBase::TABULAR_CODE) {
+				active_cell_ = cur[i].idx();
+				break;
+			}
 	}
+	InsetTabular tmp(kernel().buffer());
+	InsetTabularMailer::string2params(data, tmp);
+	params_.reset(new LyXTabular(tmp.tabular));
 	return true;
 }
 
