@@ -8,11 +8,6 @@ INCLUDES = $(FRONTEND_INCLUDES) -I$(top_srcdir)/src/ \
 	-I$(top_srcdir)/src/frontends/controllers \
 	$(BOOST_INCLUDES)
 
-if USE_BASIC_IMAGE_LOADER
-else
-XFORMSIMAGE = ../xforms/xformsImage.lo
-endif
-
 # alphabetised
 xforms_objects = \
 	../xforms/Alert_pimpl.lo \
@@ -52,7 +47,8 @@ xforms_objects = \
 	../xforms/xformsBC.lo \
 	../xforms/XFormsView.lo \
 	../xforms/XPainter.lo \
-	../xforms/XWorkArea.lo $(XFORMSIMAGE)
+	../xforms/XWorkArea.lo \
+	../xforms/xformsImage.lo
 
 libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)
 
