@@ -49,8 +49,8 @@ public:
 	  window manager. */
 	static int atCloseMainFormCB(FL_FORM *, void *);
 private:
-	///
-	virtual void setWindowTitle(string const &);
+	/// pass the title, and the iconified title
+	virtual void setWindowTitle(string const &, string const &);
 	/// makes the main form.
 	void create_form_form_main(int width, int height);
 	/// A pointer to the form.	

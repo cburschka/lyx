@@ -123,7 +123,7 @@ private:
 	///
 	Dialogs * dialogs_;
 	///
-	virtual void setWindowTitle(string const &) = 0;
+	virtual void setWindowTitle(string const &, string const &) = 0;
 	/** The last textclass layout list in the layout choice selector
 	  This should probably be moved to the toolbar, but for now it's
 	here. (Asger) */

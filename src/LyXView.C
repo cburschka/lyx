@@ -222,6 +222,7 @@ void LyXView::updateWindowTitle()
 {
 	static string last_title = "LyX";
 	string title = "LyX";
+	string icon_title = "LyX";
 
 	if (view()->available()) {
 		string const cur_title = buffer()->fileName();
@@ -231,13 +232,14 @@ void LyXView::updateWindowTitle()
 				title += _(" (Changed)");
 			if (buffer()->isReadonly())
 				title += _(" (read only)");
+			/* Show only the filename if it's available. */
+			icon_title = OnlyFilename(cur_title);
 		}
 	}
 	if (title != last_title) {
-		setWindowTitle(title);
+		setWindowTitle(title, icon_title);
 		last_title = title;
 	}
-	last_title = title;
 }
 
 

@@ -1,3 +1,14 @@
+2002-01-03  Allan Rae  <rae@lyx.org>
+
+	* LyXView.C (updateWindowTitle): Setup a short icon title of either
+	"LyX" or the filename of the current buffer if it has one.  This is a
+	modified form of John Levon's patch.
+
+	* XFormsView.C (setWindowTitle): also set icon title.
+
+	* LyXView.h: (setWindowTitle): signature changed.
+	* XFormsView.h (setWindowTitle): ditto.
+
 2002-01-02  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (AppendColumn): hopefully fixed this memory access problem.

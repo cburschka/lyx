@@ -212,9 +212,10 @@ void XFormsView::init()
 }
 
 
-void XFormsView::setWindowTitle(string const & title)
+void XFormsView::setWindowTitle(string const & title, string const & icon_title)
 {
 	fl_set_form_title(form_, title.c_str());
+	fl_winicontitle(form_->window, icon_title.c_str());
 }
 
 

@@ -255,7 +255,7 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 	} else {
 		// make sure we end up at the end of the text,
 		// not the start point of the last search
-               text->setCursor(bv, prev_par, prev_par->size());
+		text->setCursor(bv, prev_par, prev_par->size());
 		return SR_NOT_FOUND;
 	}
 }
@@ -303,7 +303,7 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 		return SR_FOUND;
 	} else {
 		// go to the last part of the unsuccessful search
-               text->setCursor(bv, prev_par, 0);
+		text->setCursor(bv, prev_par, 0);
 		return SR_NOT_FOUND;
 	}
 }
