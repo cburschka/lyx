@@ -1,5 +1,16 @@
 2003-03-25  Angus Leeming  <leeming@lyx.org>
 
+	* lfuns.h:
+	* LyXAction.C (init): new LFUN_INSET_INSERT.
+
+	* BufferView_pimpl.C (dispatch): split out part of the
+	LFUN_INSET_APPLY block LFUN_INSET_INSERT.
+
+	* factory.C (createInset): act on LFUN_INSET_INSERT rather than
+	LFUN_INSET_APPLY.
+
+2003-03-25  Angus Leeming  <leeming@lyx.org>
+
 	* lyxfunc.C (dispatch): changes to the Dialogs interface.
 
 2003-03-25  Alfredo Braunstein  <abraunst@libero.it>

@@ -172,7 +172,7 @@ Inset * createInset(FuncRequest const & cmd)
 		return new InsetTheorem;
 #endif
 
-	case LFUN_INSET_APPLY: {
+	case LFUN_INSET_INSERT: {
 		string const name = cmd.getArg(0);
 
 		if (name == "bibitem") {

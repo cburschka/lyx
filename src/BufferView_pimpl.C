@@ -1115,33 +1115,40 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_INSET_APPLY: {
 		string const name = ev.getArg(0);
 
-		InsetBase * base = owner_->getDialogs().getOpenInset(name);
-		if (base) {
+		InsetBase * inset = owner_->getDialogs().getOpenInset(name);
+		if (inset) {
 			// This works both for 'original' and 'mathed' insets.
 			// Note that the localDispatch performs updateInset
 			// also.
 			FuncRequest fr(bv_, LFUN_INSET_MODIFY, ev.argument);
-			base->localDispatch(fr);
+			inset->localDispatch(fr);
 		} else {
-			Inset * inset = createInset(ev);
-			if (inset && insertInset(inset)) {
-				updateInset(inset);
-			} else {
-				delete inset;
-			}
-		}
-
-		if (name == "bibitem") {
-			// We need to do a redraw because the maximum
-			// InsetBibitem width could have changed
-#warning please check you mean repaint() not update(),
-#warning and whether the repaint() is needed at all
-			bv_->repaint();
-			bv_->fitCursor();
+			FuncRequest fr(bv_, LFUN_INSET_INSERT, ev.argument);
+			dispatch(fr);
 		}
 	}
 	break;
 
+	case LFUN_INSET_INSERT: {
+		Inset * inset = createInset(ev);
+		if (inset && insertInset(inset)) {
+			updateInset(inset);
+
+			string const name = ev.getArg(0);
+			if (name == "bibitem") {
+				// We need to do a redraw because the maximum
+				// InsetBibitem width could have changed
+#warning please check you mean repaint() not update(),
+#warning and whether the repaint() is needed at all
+				bv_->repaint();
+				bv_->fitCursor();
+			}
+		} else {
+			delete inset;
+		}
+	}
+	break;
+	
 	case LFUN_FLOAT_LIST:
 		if (tclass.floats().typeExist(ev.argument)) {
 			Inset * inset = new InsetFloatList(ev.argument);

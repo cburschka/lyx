@@ -415,6 +415,7 @@ void LyXAction::init()
 		{ LFUN_DIALOG_DISCONNECT_INSET, "dialog-disconnect-inset",
 		  N_("Disconnect the dialog from the current inset"), Noop },
 		{ LFUN_INSET_APPLY, "inset-apply", "", Noop },
+		{ LFUN_INSET_INSERT, "inset-insert", "", Noop },
 		{ LFUN_INSET_MODIFY, "", "internal only", Noop },
 		{ LFUN_INSET_DIALOG_UPDATE, "", "internal only", Noop },
 		{ LFUN_PARAGRAPH_APPLY, "paragraph-params-apply",

@@ -1,3 +1,8 @@
+2003-03-25  Angus Leeming  <leeming@lyx.org>
+
+	* insetbibitem.C (localDispatch): repaint the view after modifying
+	a bibitem inset in case the maximum InsetBibitem width has changed.
+
 2003-03-25  John Levon  <levon@movementarian.org>
 
 	* insettext.C:
