@@ -1,5 +1,11 @@
 2002-04-12  Juergen Vigna  <jug@sad.it>
 
+	* text.C (breakParagraph): honor keepempty flag and break the paragraph
+	also with no chars on this paragraph.
+
+	* paragraph.C (breakParagraph): honor keepempty flag and break the
+	paragraph always below not above.
+
 	* BufferView2.C (unlockInset): update the paragraph layout on inset
 	unlock as we changed paragraph in such a case.
 

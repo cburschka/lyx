@@ -1710,8 +1710,10 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
    LyXLayout const & layout = tclass[cursor.par()->layout()];
 
    // this is only allowed, if the current paragraph is not empty or caption
+   // and if it has not the keepempty flag aktive
    if ((cursor.par()->size() <= 0)
-       && layout.labeltype!= LABEL_SENSITIVE)
+       && layout.labeltype != LABEL_SENSITIVE
+	   && !layout.keepempty)
 	   return;
 
    setUndo(bview, Undo::FINISH, cursor.par(), cursor.par()->next());
@@ -1747,7 +1749,8 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
     * This touches only the screen-update. Otherwise we would may have
     * an empty row on the screen */
    if (cursor.pos() && !cursor.row()->par()->isNewline(cursor.row()->pos() - 1)
-       && cursor.row()->pos() == cursor.pos()) {
+       && cursor.row()->pos() == cursor.pos())
+   {
 	   cursorLeft(bview);
    }
 
@@ -1780,7 +1783,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 
    /* This check is necessary. Otherwise the new empty paragraph will
     * be deleted automatically. And it is more friendly for the user! */
-   if (cursor.pos())
+   if (cursor.pos() || layout.keepempty)
 	   setCursor(bview, cursor.par()->next(), 0);
    else
 	   setCursor(bview, cursor.par(), 0);
@@ -1907,13 +1910,14 @@ void LyXText::insertChar(BufferView * bview, char c)
 		}
 	} else if (IsNewlineChar(c)) {
 		if (cursor.pos() <= beginningOfMainBody(bview->buffer(),
-							cursor.par())) {
+							cursor.par()))
+		{
 			charInserted();
 			return;
 		}
 		/* No newline at first position
 		 * of a paragraph or behind labels.
-		 * TeX does not allow that. */
+		 * TeX does not allow that */
 
 		if (cursor.pos() < cursor.par()->size() &&
 		    cursor.par()->isLineSeparator(cursor.pos()))
