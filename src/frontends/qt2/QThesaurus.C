@@ -24,7 +24,7 @@
 
 typedef Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> > base_class;
 
-QThesaurus::QThesaurus(ControlThesaurus & c)
+QThesaurus::QThesaurus(ControlThesaurus & c, Dialogs &)
 	: base_class(c, _("Thesaurus"))
 {
 }

@@ -23,7 +23,7 @@
  
 typedef Qt2CB<ControlExternal, Qt2DB<QExternalDialog> > base_class;
 
-QExternal::QExternal(ControlExternal & c)
+QExternal::QExternal(ControlExternal & c, Dialogs &)
 	: base_class(c, _("External"))
 {
 }

@@ -19,7 +19,7 @@
 
 typedef Qt2CB<ControlIndex, Qt2DB<QIndexDialog> > base_class;
 
-QIndex::QIndex(ControlIndex & c)
+QIndex::QIndex(ControlIndex & c, Dialogs &)
 	: base_class(c, _("Index"))
 {
 }

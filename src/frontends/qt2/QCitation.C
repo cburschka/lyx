@@ -41,7 +41,7 @@ using std::vector;
 
 typedef Qt2CB<ControlCitation, Qt2DB<QCitationDialog> > base_class;
 
-QCitation::QCitation(ControlCitation & c)
+QCitation::QCitation(ControlCitation & c, Dialogs &)
 	: base_class(c, _("Citation"))
 {}
 
@@ -181,7 +181,7 @@ void QCitation::updateBrowser(QListBox* browser,
 		it < keys.end(); ++it) {
 		string const key = frontStrip(strip(*it));
 		// FIXME: why the .empty() test ?
-		if(!key.empty())
+		if (!key.empty())
 			browser->insertItem(key.c_str());
 	}
 }

@@ -20,7 +20,7 @@
  
 typedef Qt2CB<ControlERT, Qt2DB<QERTDialog> > base_class;
 
-QERT::QERT(ControlERT & c)
+QERT::QERT(ControlERT & c, Dialogs &)
 	: base_class(c, _("LaTeX ERT"))
 {
 }

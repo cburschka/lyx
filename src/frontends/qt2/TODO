@@ -1,0 +1,152 @@
+This file is intended to be a list of stuff that must be done before
+we can say the first iteration of the Qt frontend is "finished".
+
+Those with asterisks are what I perceive as being "big jobs"
+
+ColorHandler
+
+	- remove mentions in core code
+ 
+FileDialog
+
+	- add buttons for Documents, Templates, etc. to the file dialog toolbar
+	- work around Qt crash bug with double click
+ 
+GraphicsImage
+
+	- remove X dependencies here (?) (*)
+ 
+LyXServer
+
+	- remove xforms dependency
+ 
+lyx_gui (qt)
+
+	- move out lyxserver
+	- do dpi
+	- initialise graphics
+ 
+Menubar_pimpl
+
+	- remove menubar-switching as discussed
+	- implement menu key shortcuts
+	- implement on/off switches in menus, enable/disable
+	- parse the submenus (*)
+	- implement dynamic menus (may need serious backend changes) (*)(*)
+		- dynamic last files
+		- import/export/view/update
+		- navigate
+	- remove openByName
+
+QAbout
+
+	- give good default size 
+
+QBibtex 
+
+	- implement H. Voss's style browser facility, style tooltip, check for duplicates
+
+QCitation
+
+	- loop round searching not working perhaps ??
+
+QContentPane 
+
+	- triple click
+	- figure out why a scroll doesn't update quickly, which leaves cursor artifacts
+	  whilst holding down page down etc. 
+ 
+QDocument
+
+	- implement me. Need MVC (*)
+
+qfont_loader
+
+	- use lyxrc, check for failure, implement available()
+	- fix usage outside of qt2/ (frontends/font_laoder.h)
+ 
+qfont_metrics
+
+	- per char ascent/descent
+ 
+QForks
+
+	- don't implement me
+ 
+QGraphics
+	
+	- UI cleanups. Maybe not vital
+ 
+QInclude
+
+	- check no load stuff works ?
+
+qlkey
+
+	- finish off the lists
+ 
+QLPainter
+
+	- work out why buttons look ugly and fix
+	- check ::arc() works
+	- implement ::image + image loader grfx stuff etc. (*)(*)
+
+QLyXKeySym
+
+	- isOK() - meaningful or not ?
+	- getISOEncoded - get this to work (*)
+	 
+QMiniBuffer
+
+	- implement as a QStatusBar and a separate QToolbar containing a QComboBox (*)
+	- make the necessary GUII API changes for this to work (*)
+
+QParagraph
+
+	- implement me (MVCed already) (*)
+
+QPreferences
+
+	- implement me (*)
+ 
+QRef
+
+	- need buffer combo
+
+QSendTo
+
+	- implement me
+ 
+QShowInfo
+
+	- dunno about this one
+ 
+QTabular
+
+	- implement me (need MVC) (*)
+ 
+QTexinfo
+
+	- fix "View" when path not shown
+
+QWorkArea
+
+	- clipboard code missing
+
+QtView
+
+	- decide what to do about prohibit/allowInput 
+	- fix show() 
+	- remove redraw() and others
+	- add minibuffer
+	- add autosave timeout
+
+ 
+Toolbar_pimpl (variously maybe *)
+
+	- mathed symbols
+	- activate/deactivate
+	- openLayoutList() (?)
+	- ::set() ???
+	- push() ??
+	- tooltips

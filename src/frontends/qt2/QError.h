@@ -14,6 +14,7 @@
 
 class ControlError;
 class QErrorDialog;
+class Dialogs;
 
 class QError :
 	public Qt2CB<ControlError, Qt2DB<QErrorDialog> >
@@ -21,7 +22,7 @@ class QError :
 	friend class QErrorDialog;
 
 public:
-	QError(ControlError &);
+	QError(ControlError &, Dialogs &);
 
 private:
 	/// Apply changes

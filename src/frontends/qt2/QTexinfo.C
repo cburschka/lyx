@@ -31,7 +31,7 @@ using std::vector;
 
 typedef Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> > base_class;
 
-QTexinfo::QTexinfo(ControlTexinfo & c)
+QTexinfo::QTexinfo(ControlTexinfo & c, Dialogs &)
 	: base_class(c, _("LaTeX Information")), warningPosted(false), activeStyle(ControlTexinfo::cls)
 
 {

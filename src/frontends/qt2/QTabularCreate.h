@@ -18,6 +18,7 @@
 
 class ControlTabularCreate;
 class QTabularCreateDialog;
+class Dialogs;
 
 ///
 class QTabularCreate
@@ -27,7 +28,7 @@ public:
 	///
 	friend class QTabularCreateDialog;
 	///
-	QTabularCreate(ControlTabularCreate &);
+	QTabularCreate(ControlTabularCreate &, Dialogs &);
 
 private:
 	/// Apply changes

@@ -18,7 +18,6 @@ AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 include $(srcdir)/Makefile.dialogs
 
 libqt2_la_SOURCES = \
-	$(DIALOGSOURCES) \
 	Alert_pimpl.C \
 	Dialogs.C \
 	FileDialog.C \
@@ -37,6 +36,8 @@ libqt2_la_SOURCES = \
 	QLPainter.h \
 	QLyXKeySym.C \
 	QLyXKeySym.h \
+	QMiniBuffer.C \
+	QMiniBuffer.h \
 	Qt2Base.C \
 	Qt2Base.h \
 	Qt2BC.C	\
@@ -59,6 +60,7 @@ libqt2_la_SOURCES = \
 	qscreen.h \
 	qscreen.C \
 	qttableview.h \
-	qttableview.C
+	qttableview.C \
+	$(DIALOGSOURCES)
 
 libqt2.la: $(libqt2_la_OBJECTS) $(libqt2_la_DEPENDENCIES)

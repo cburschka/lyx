@@ -19,6 +19,7 @@
 
 class ControlPrint;
 class QPrintDialog;
+class Dialogs;
 
 ///
 class QPrint
@@ -28,7 +29,7 @@ public:
 	///
 	friend class QPrintDialog;
 	///
-	QPrint(ControlPrint &);
+	QPrint(ControlPrint &, Dialogs &);
 
 private:
 	/// Apply changes

@@ -21,6 +21,7 @@ class QListBox;
 
 class ControlCitation;
 class QCitationDialog;
+class Dialogs;
 
 class QCitation : public Qt2CB<ControlCitation, Qt2DB<QCitationDialog> >
 {
@@ -28,7 +29,7 @@ class QCitation : public Qt2CB<ControlCitation, Qt2DB<QCitationDialog> >
 
 public:
 	///
-	QCitation(ControlCitation &);
+	QCitation(ControlCitation &, Dialogs &);
 
 private:
 	///

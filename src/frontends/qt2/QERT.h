@@ -14,6 +14,7 @@
 
 class ControlERT;
 class QERTDialog;
+class Dialogs;
 
 class QERT :
 	public Qt2CB<ControlERT, Qt2DB<QERTDialog> >
@@ -21,7 +22,7 @@ class QERT :
 	friend class QERTDialog;
 
 public:
-	QERT(ControlERT &);
+	QERT(ControlERT &, Dialogs &);
 
 private:
 	/// Apply changes

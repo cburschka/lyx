@@ -27,7 +27,7 @@
 
 typedef Qt2CB<ControlInclude, Qt2DB<QIncludeDialog> > base_class;
 
-QInclude::QInclude(ControlInclude & c)
+QInclude::QInclude(ControlInclude & c, Dialogs &)
 	: base_class(c, _("Include"))
 {
 }

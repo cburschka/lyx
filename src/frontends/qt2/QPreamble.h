@@ -27,7 +27,7 @@ public:
 	///
 	friend class QPreambleDialog;
 	///
-	QPreamble(ControlPreamble &);
+	QPreamble(ControlPreamble &, Dialogs &);
 
 private:
 	/// Apply changes

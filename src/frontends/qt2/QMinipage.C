@@ -29,7 +29,7 @@
 
 typedef Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> > base_class;
 
-QMinipage::QMinipage(ControlMinipage & c)
+QMinipage::QMinipage(ControlMinipage & c, Dialogs &)
 	: base_class(c, _("Minipage"))
 {
 }

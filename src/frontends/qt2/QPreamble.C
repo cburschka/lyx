@@ -26,7 +26,7 @@
 
 typedef Qt2CB<ControlPreamble, Qt2DB<QPreambleDialog> > base_class;
 
-QPreamble::QPreamble(ControlPreamble & c)
+QPreamble::QPreamble(ControlPreamble & c, Dialogs &)
 	: base_class(c, _("LaTeX Preamble"))
 {
 }

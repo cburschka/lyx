@@ -13,12 +13,12 @@
 #pragma implementation
 #endif
 
-//#include "minibuffer.h"
 #include "debug.h"
 #include "intl.h"
 #include "lyx_cb.h"
 #include "support/filetools.h"
 #include "MenuBackend.h"
+#include "QMiniBuffer.h"
 #include "ToolbarDefaults.h"
 #include "lyxfunc.h"
 #include "BufferView.h"
@@ -54,10 +54,10 @@ QtView::QtView(unsigned int width, unsigned int height)
 	connect(menuBar(), SIGNAL(activated(int)),
 		this, SLOT(activated(int)));
  
-	toolbar_.reset(new Toolbar(this, 0, 0, toolbardefaults));
+	toolbar_.reset(new Toolbar(this, *getDialogs(), 0, 0, toolbardefaults));
 	toolbar_->set(true);
 
-	// FIXME minibuffer_.reset(new MiniBuffer(this, 0, 0, 30, 30));
+	minibuffer_.reset(new QMiniBuffer(this)); 
  
 	bufferview_.reset(new BufferView(this, 0, 0, width, height));
 	::current_view = bufferview_.get();
@@ -71,19 +71,6 @@ QtView::QtView(unsigned int width, unsigned int height)
 	if (!iconname.empty())
 		setIcon(QPixmap(iconname.c_str()));
 
-#if 0
-	minibuffer_.reset(new MiniBuffer(this, air, height - (25 + air), 
-		width - (2 * air), 25));
-
-	// connect the minibuffer signals
-	minibuffer_->stringReady.connect(SigC::slot(getLyXFunc(),
-						&LyXFunc::miniDispatch));
-	minibuffer_->timeout.connect(SigC::slot(getLyXFunc(),
-					       &LyXFunc::initMiniBuffer));
-	minibuffer_->dd_init(); 
- 
-#endif
-	
 	// make sure the buttons are disabled if needed
 	updateToolbar();
 }

@@ -24,7 +24,7 @@
 
 typedef Qt2CB<ControlTabularCreate, Qt2DB<QTabularCreateDialog> > base_class;
 
-QTabularCreate::QTabularCreate(ControlTabularCreate & c)
+QTabularCreate::QTabularCreate(ControlTabularCreate & c, Dialogs &)
 	: base_class(c, _("Insert table"))
 {
 }

@@ -1,3 +1,19 @@
+2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dialog files: add unused Dialogs paramater to allow compile
+ 
+	* QtView.C:
+	* QMiniBuffer.h:
+	* QMiniBuffer.C:
+	* Makefile.am: add QMiniBuffer (placeholder)
+ 
+	* TODO: add
+ 
+	* Toolbar_pimpl.h:
+	* Toolbar_pimpl.C: compile fix
+
+	* lyx_gui.C: add hexname() place holder
+ 
 2002-07-04  André Pönitz  <poenitz@lyx.org>
 
 	* xforms/Makefile.am: replace XFORMSGIMAGE by XFORMSIMAGE

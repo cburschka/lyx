@@ -27,7 +27,7 @@ public:
 	///
 	friend class QLogDialog;
 	///
-	QLog(ControlLog &);
+	QLog(ControlLog &, Dialogs &);
 
 private:
 	/// Apply changes

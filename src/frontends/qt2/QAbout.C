@@ -28,7 +28,7 @@ using std::getline;
 
 typedef Qt2CB<ControlAboutlyx, Qt2DB<QAboutDialog> > base_class;
 
-QAbout::QAbout(ControlAboutlyx & c)
+QAbout::QAbout(ControlAboutlyx & c, Dialogs &)
 	: base_class(c, _("About LyX"))
 {
 }

@@ -26,7 +26,7 @@
  
 typedef Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> > base_class;
 
-QBibtex::QBibtex(ControlBibtex & c)
+QBibtex::QBibtex(ControlBibtex & c, Dialogs &)
 	: base_class(c, _("BibTeX"))
 {
 }

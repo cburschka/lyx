@@ -22,7 +22,7 @@ class QAbout
 	: public Qt2CB<ControlAboutlyx, Qt2DB<QAboutDialog> >
 {
 public:
-	QAbout(ControlAboutlyx &);
+	QAbout(ControlAboutlyx &, Dialogs &);
 
 private:
 	/// not needed

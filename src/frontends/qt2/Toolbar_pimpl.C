@@ -90,7 +90,7 @@ string const getPixmap(int action)
 } // namespace anon
 
  
-Toolbar::Pimpl::Pimpl(LyXView * o, int, int)
+Toolbar::Pimpl::Pimpl(LyXView * o, Dialogs &, int, int)
 	: owner_(static_cast<QtView *>(o)), 
 	combo_(0)
 {
@@ -158,8 +158,8 @@ void Toolbar::Pimpl::changed_layout(string const & sel)
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
-		if (_(cit->name()) == sel) {
-			owner_->getLyXFunc()->dispatch(LFUN_LAYOUT, cit->name());
+		if (_((*cit)->name()) == sel) {
+			owner_->getLyXFunc()->dispatch(LFUN_LAYOUT, (*cit)->name());
 			return;
 		}
 	}
@@ -173,7 +173,7 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 	LyXTextClass const & tc =
 		textclasslist[owner_->buffer()->params.textclass];
  
-	string const & name = _(tc[layout].name());
+	string const & name = _(tc[layout]->name());
  
 	int i;
  
@@ -209,8 +209,8 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 	LyXTextClass::const_iterator end = tc.end();
 	for (; cit != end; ++cit) {
 		// ignore obsolete entries
-		if (cit->obsoleted_by().empty())
-			combo_->insertItem(_(cit->name()).c_str());
+		if ((*cit)->obsoleted_by().empty())
+			combo_->insertItem(_((*cit)->name()).c_str());
 	}
 
 	// needed to recalculate size hint

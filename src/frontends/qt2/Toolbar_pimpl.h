@@ -37,7 +37,7 @@ struct Toolbar::Pimpl {
  
 public:
 	///
-	Pimpl(LyXView * o, int x, int y);
+	Pimpl(LyXView * o, Dialogs &, int x, int y);
 	///
 	~Pimpl();
 	

@@ -27,7 +27,7 @@
 
 typedef Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > base_class;
 
-QSearch::QSearch(ControlSearch & c)
+QSearch::QSearch(ControlSearch & c, Dialogs &)
 	: base_class(c, _("Search"))
 {
 }

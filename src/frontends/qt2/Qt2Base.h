@@ -1,16 +1,13 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *		   LyX, The Document Processor
- *
- *		   Copyright 2000 The LyX Team.
- *
- * ======================================================
+/**
+ * \file Qt2Base.h
+ * Copyright 2000-2002 the LyX Team
+ * Read the file COPYING
  *
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
+ 
 #ifndef QT2BASE_H
 #define QT2BASE_H
 

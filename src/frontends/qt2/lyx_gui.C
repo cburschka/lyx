@@ -111,3 +111,10 @@ void lyx_gui::init_graphics()
 {
 	// FIXME
 }
+
+
+string const lyx_gui::hexname(LColor::color col)
+{
+	// FIXME
+	return "";
+}

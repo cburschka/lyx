@@ -16,6 +16,7 @@
 
 class ControlSpellchecker;
 class QSpellcheckerDialog;
+class Dialogs;
 
 class QSpellchecker :
 	public Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> >
@@ -23,7 +24,7 @@ class QSpellchecker :
 	friend class QSpellcheckerDialog;
 
 public:
-	QSpellchecker(ControlSpellchecker &);
+	QSpellchecker(ControlSpellchecker &, Dialogs &);
 
 	/// update from controller
 	void partialUpdate(int id);

@@ -41,7 +41,7 @@
 
 typedef Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > base_class;
 
-QGraphics::QGraphics(ControlGraphics & c)
+QGraphics::QGraphics(ControlGraphics & c, Dialogs &)
 	: base_class(c, _("Graphics"))
 {
 }

@@ -32,7 +32,7 @@
  
 typedef Qt2CB<ControlPrint, Qt2DB<QPrintDialog> > base_class;
 
-QPrint::QPrint(ControlPrint & c)
+QPrint::QPrint(ControlPrint & c, Dialogs &)
 	: base_class(c, _("Print"))
 {
 }

@@ -27,7 +27,7 @@ public:
 	///
 	friend class QThesaurusDialog;
 	///
-	QThesaurus(ControlThesaurus &);
+	QThesaurus(ControlThesaurus &, Dialogs &);
 private:
 	/// Apply changes
 	virtual void apply() { };
