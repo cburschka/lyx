@@ -135,7 +135,7 @@ qfont_loader::font_info const * qfont_loader::getfontinfo(LyXFont const & f)
 	if (fi) {
 		return fi;
 	} else {
-		fi = new font_info(f); 
+		fi = new font_info(f);
 		fontinfo_[f.family()][f.series()][f.realShape()][f.size()].reset(fi);
 		return fi;
 	}

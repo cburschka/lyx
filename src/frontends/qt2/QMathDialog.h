@@ -17,6 +17,7 @@
 
 class QMath;
 class IconPalette;
+class QPopupMenu;
 
 class QMathDialog : public QMathDialogBase
 {
@@ -37,6 +38,7 @@ public slots:
 	virtual void subscriptClicked();
 	virtual void superscriptClicked();
 	void symbol_clicked(string str);
+	void insertSpace(int id);
 
 	/// about to show a symbol panel
 	void showingPanel(int);
@@ -53,6 +55,9 @@ private:
  
 	/// owning form
 	QMath * form_;
+
+	/// menu on click of space
+	QPopupMenu * space_menu_;
 };
 
 #endif // QMATHDIALOG_H

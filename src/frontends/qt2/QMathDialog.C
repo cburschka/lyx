@@ -9,6 +9,7 @@
 #include <config.h>
 
 #include "support/filetools.h"
+#include "gettext.h"
 #include "debug.h"
  
 #include "QMathDialog.h"
@@ -20,10 +21,13 @@
 #include <qapplication.h>
 #include <qwidgetstack.h>
 #include <qcombobox.h>
+#include <qpushbutton.h>
 #include <qlistbox.h>
 #include <qpixmap.h>
 #include <qscrollview.h>
 #include <qlayout.h>
+#include <qpopupmenu.h>
+#include <qcursor.h>
  
 using std::min;
 using std::max;
@@ -96,6 +100,15 @@ QMathDialog::QMathDialog(QMath * form)
 	panel_initialised[0] = true;
  
 	connect(symbolsWS, SIGNAL(aboutToShow(int)), this, SLOT(showingPanel(int)));
+ 
+	space_menu_ = new QPopupMenu(spacePB);
+	space_menu_->insertItem(_("Thin space	\\,"), 1); 
+	space_menu_->insertItem(_("Medium space	\\:"), 2); 
+	space_menu_->insertItem(_("Thick space	\\;"), 3); 
+	space_menu_->insertItem(_("Quadratin space	\\quad"), 4); 
+	space_menu_->insertItem(_("Double quadratin space	\\qquad"), 5); 
+	space_menu_->insertItem(_("Negative space	\\!"), 6);
+	connect(space_menu_, SIGNAL(activated(int)), this, SLOT(insertSpace(int)));
 }
 
 
@@ -131,6 +144,21 @@ void QMathDialog::addPanel(int num)
 	QScrollViewSingle * view = static_cast<QScrollViewSingle*>(symbolsWS->visibleWidget());
 	IconPalette * p = makePanel(view->viewport(), panels[num]);
 	view->setChild(p);
+}
+
+ 
+void QMathDialog::insertSpace(int id)
+{
+	string str;
+	switch (id) {
+		case 1: str = ","; break;
+		case 2: str = ":"; break;
+		case 3: str = ";"; break;
+		case 4: str = "quad"; break;
+		case 5: str = "qquad"; break;
+		case 6: str = "!"; break;
+	}
+	form_->insert_symbol(str);
 }
 
  
@@ -183,6 +211,7 @@ void QMathDialog::matrixClicked()
  
 void QMathDialog::spaceClicked()
 {
+	space_menu_->exec(QCursor::pos());
 }
 
  
