@@ -43,24 +43,24 @@ public:
 	void getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
 	/// order of movement through the cells when pressing the left key
-	bool idxLeft(BufferView &) const;
+	bool idxLeft(LCursor &) const;
 	/// order of movement through the cells when pressing the right key
-	bool idxRight(BufferView &) const;
+	bool idxRight(LCursor &) const;
 
 	/// move one physical cell up
-	bool idxNext(BufferView &) const;
+	bool idxNext(LCursor &) const;
 	/// move one physical cell down
-	bool idxPrev(BufferView &) const;
+	bool idxPrev(LCursor &) const;
 
 	/// target pos when we enter the inset from the left by pressing "Right"
-	bool idxFirst(BufferView &) const;
+	bool idxFirst(LCursor &) const;
 	/// target pos when we enter the inset from the right by pressing "Left"
-	bool idxLast(BufferView &) const;
+	bool idxLast(LCursor &) const;
 
 	/// where should we go if we press home?
-	bool idxHome(BufferView &) const;
+	bool idxHome(LCursor &) const;
 	/// where should we go if we press end?
-	bool idxEnd(BufferView &) const;
+	bool idxEnd(LCursor &) const;
 
 	/// number of cells currently governed by us
 	idx_type nargs() const;

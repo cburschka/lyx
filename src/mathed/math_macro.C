@@ -155,14 +155,13 @@ void MathMacro::dump() const
 }
 
 
-bool MathMacro::idxUpDown(BufferView & bv, bool up, int x) const
+bool MathMacro::idxUpDown(LCursor & cur, bool up, int x) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (up) {
-		if (!MathNestInset::idxLeft(bv))
+		if (!MathNestInset::idxLeft(cur))
 			return false;
 	} else {
-		if (!MathNestInset::idxRight(bv))
+		if (!MathNestInset::idxRight(cur))
 			return false;
 	}
 	cur.pos() = cur.cell().x2pos(x);
@@ -170,13 +169,13 @@ bool MathMacro::idxUpDown(BufferView & bv, bool up, int x) const
 }
 
 
-bool MathMacro::idxLeft(BufferView &) const
+bool MathMacro::idxLeft(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathMacro::idxRight(BufferView &) const
+bool MathMacro::idxRight(LCursor &) const
 {
 	return false;
 }

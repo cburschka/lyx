@@ -37,10 +37,14 @@ public:
 	typedef CursorSlice::par_type par_type;
 	/// type for cursor positions within a cell
 	typedef CursorSlice::pos_type pos_type;
+	/// type for row indices
+	typedef CursorSlice::row_type row_type;
+	/// type for col indices
+	typedef CursorSlice::col_type col_type;
 
 	/// create 'empty' cursor. REMOVE ME
 	LCursor();
-	/// create 'empty' cursor
+	/// create the cursor of a BufferView
 	explicit LCursor(BufferView & bv);
 	/// dispatch from innermost inset upwards
 	DispatchResult dispatch(FuncRequest const & cmd);
@@ -54,11 +58,41 @@ public:
 	CursorSlice & top() { return cursor_.back(); }
 	/// access to cursor 'tip'
 	CursorSlice const & top() const { return cursor_.back(); }
+	/// how many nested insets do we have?
+	size_t depth() const { return cursor_.size(); }
 
-	/// set the cell the cursor is in
-	void cell(int);
-	/// return the cell this cursor is in
-	int cell() const;
+	/// access to the topmost slice
+	/// the current inset
+	InsetBase * inset() const { return top().inset(); }
+	/// return the text-ed cell this cursor is in
+	idx_type idx() const { return top().idx(); }
+	/// return the text-ed cell this cursor is in
+	idx_type & idx() { return top().idx(); }
+	/// return the mathed cell this cursor is in
+	MathArray const & cell() const { return top().cell(); }
+	/// return the mathed cell this cursor is in
+	MathArray & cell() { return top().cell(); }
+	/// return the paragraph this cursor is in
+	par_type par() const { return top().par(); }
+	/// return the paragraph this cursor is in
+	par_type & par() { return top().par(); }
+	/// return the position within the paragraph
+	pos_type pos() const { return top().pos(); }
+	/// return the position within the paragraph
+	pos_type & pos() { return top().pos(); }
+	/// return the last position within the paragraph
+	pos_type lastpos() const { return top().lastpos(); }
+	/// return the number of embedded cells
+	size_t nargs() const { return top().nargs(); }
+	/// return the number of embedded cells
+	size_t ncols() const { return top().ncols(); }
+	/// return the number of embedded cells
+	size_t nrows() const { return top().nrows(); }
+	/// return the grid row of the current cell
+	row_type row() const { return top().row(); }
+	/// return the grid row of the current cell
+	col_type col() const { return top().col(); }
+
 	///
 	UpdatableInset * innerInset() const;
 	///
@@ -75,7 +109,7 @@ public:
 	void updatePos();
 	/// sets anchor to cursor position
 	void resetAnchor(); 
-	/// sets anchor to cursor position
+	/// access to owning BufferView
 	BufferView & bv() const; 
 	///
 	friend std::ostream & operator<<(std::ostream &, LCursor const &);

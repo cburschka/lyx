@@ -20,11 +20,11 @@ public:
 	///
 	MathFracbaseInset();
 	///
-	bool idxUpDown(BufferView &, bool up, int targetx) const;
+	bool idxUpDown(LCursor &, bool up, int targetx) const;
 	///
-	bool idxLeft(BufferView &) const;
+	bool idxLeft(LCursor &) const;
 	///
-	bool idxRight(BufferView &) const;
+	bool idxRight(LCursor &) const;
 };
 
 #endif

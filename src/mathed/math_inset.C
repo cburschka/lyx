@@ -56,61 +56,61 @@ void MathInset::substitute(MathMacro const &)
 {}
 
 
-bool MathInset::idxNext(BufferView &) const
+bool MathInset::idxNext(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxRight(BufferView &) const
+bool MathInset::idxRight(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxPrev(BufferView &) const
+bool MathInset::idxPrev(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxLeft(BufferView &) const
+bool MathInset::idxLeft(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxUpDown(BufferView &, bool, int) const
+bool MathInset::idxUpDown(LCursor &, bool, int) const
 {
 	return false;
 }
 
 
-bool MathInset::idxUpDown2(BufferView &, bool, int) const
+bool MathInset::idxUpDown2(LCursor &, bool, int) const
 {
 	return false;
 }
 
 
-bool MathInset::idxFirst(BufferView &) const
+bool MathInset::idxFirst(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxLast(BufferView &) const
+bool MathInset::idxLast(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxHome(BufferView &) const
+bool MathInset::idxHome(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxEnd(BufferView &) const
+bool MathInset::idxEnd(LCursor &) const
 {
 	return false;
 }

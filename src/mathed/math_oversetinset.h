@@ -25,9 +25,9 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	bool idxFirst(BufferView &) const;
+	bool idxFirst(LCursor &) const;
 	///
-	bool idxLast(BufferView &) const;
+	bool idxLast(LCursor &) const;
 
 	///
 	void write(WriteStream & os) const;

@@ -48,15 +48,15 @@ public:
 	/// write content as something readable by Octave
 	void octave(OctaveStream &) const;
 	/// move cursor left
-	bool idxLeft(BufferView &) const;
+	bool idxLeft(LCursor &) const;
 	/// move cursor right
-	bool idxRight(BufferView &) const;
+	bool idxRight(LCursor &) const;
 	/// move cursor up or down
-	bool idxUpDown(BufferView &, bool up, int targetx) const;
+	bool idxUpDown(LCursor &, bool up, int targetx) const;
 	/// Target pos when we enter the inset from the left by pressing "Right"
-	bool idxFirst(BufferView &) const;
+	bool idxFirst(LCursor &) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
-	bool idxLast(BufferView &) const;
+	bool idxLast(LCursor &) const;
 	/// can we enter this cell?
 	bool validCell(idx_type i) const { return i == 2 || script_[i]; }
 

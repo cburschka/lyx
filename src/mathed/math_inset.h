@@ -13,7 +13,7 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-#include "cursor_slice.h"
+#include "cursor.h"
 #include "insets/insetbase.h"
 
 #include <string>
@@ -64,13 +64,10 @@ class MathMLStream;
 class WriteStream;
 class InfoStream;
 
-class BufferView;
-class UpdatableInset;
 class MathMacroTemplate;
 class MathMacro;
 class MathPosFinder;
 class Dimension;
-class FuncRequest;
 class TextPainter;
 class TextMetricsInfo;
 class ReplaceData;
@@ -95,28 +92,28 @@ public:
 	virtual void drawT(TextPainter &, int x, int y) const;
 
 	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown(BufferView & bv, bool up, int targetx) const;
+	virtual bool idxUpDown(LCursor & cur, bool up, int targetx) const;
 	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown2(BufferView & bv, bool up, int targetx) const;
+	virtual bool idxUpDown2(LCursor & cur, bool up, int targetx) const;
 	/// The left key
-	virtual bool idxLeft(BufferView & bv) const;
+	virtual bool idxLeft(LCursor & cur) const;
 	/// The right key
-	virtual bool idxRight(BufferView & bv) const;
+	virtual bool idxRight(LCursor & cur) const;
 
 	/// Move one physical cell up
-	virtual bool idxNext(BufferView & bv) const;
+	virtual bool idxNext(LCursor & cur) const;
 	/// Move one physical cell down
-	virtual bool idxPrev(BufferView & bv) const;
+	virtual bool idxPrev(LCursor & cur) const;
 
 	/// Target pos when we enter the inset from the left by pressing "Right"
-	virtual bool idxFirst(BufferView & bv) const;
+	virtual bool idxFirst(LCursor & cur) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
-	virtual bool idxLast(BufferView & bv) const;
+	virtual bool idxLast(LCursor & cur) const;
 
 	/// Where should we go if we press home?
-	virtual bool idxHome(BufferView & bv) const;
+	virtual bool idxHome(LCursor & cur) const;
 	/// Where should we go if we press end?
-	virtual bool idxEnd(BufferView & bv) const;
+	virtual bool idxEnd(LCursor & cur) const;
 
 	/// Delete a cell and move cursor
 	virtual bool idxDelete(idx_type &) { return false; }

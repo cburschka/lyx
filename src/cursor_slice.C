@@ -128,14 +128,14 @@ bool CursorSlice::boundary() const
 CursorSlice::row_type CursorSlice::row() const
 {
 	BOOST_ASSERT(asMathInset());
-	asMathInset()->row(idx_);
+	return asMathInset()->row(idx_);
 }
 
 
 CursorSlice::col_type CursorSlice::col() const
 {
 	BOOST_ASSERT(asMathInset());
-	asMathInset()->col(idx_);
+	return asMathInset()->col(idx_);
 }
 
 

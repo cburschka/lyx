@@ -56,7 +56,7 @@ limited_stack<string> theCutBuffer;
 MathCursor::MathCursor(BufferView * bv, InsetFormulaBase * formula, bool front)
 	:	formula_(formula), autocorrect_(false), selection_(false)
 {
-	front ? first(*bv) : last(*bv);
+	front ? first(bv->fullCursor()) : last(bv->fullCursor());
 }
 
 
@@ -68,56 +68,54 @@ MathCursor::~MathCursor()
 }
 
 
-void MathCursor::push(BufferView & bv, MathAtom & t)
+void MathCursor::push(LCursor & cur, MathAtom & t)
 {
-	bv.fullCursor().push(t.nucleus());
+	cur.push(t.nucleus());
 }
 
 
-void MathCursor::pushLeft(BufferView & bv, MathAtom & t)
+void MathCursor::pushLeft(LCursor & cur, MathAtom & t)
 {
 	//lyxerr << "Entering atom " << t << " left" << endl;
-	push(bv, t);
-	t->idxFirst(bv);
+	push(cur, t);
+	t->idxFirst(cur);
 }
 
 
-void MathCursor::pushRight(BufferView & bv, MathAtom & t)
+void MathCursor::pushRight(LCursor & cur, MathAtom & t)
 {
 	//lyxerr << "Entering atom " << t << " right" << endl;
-	posLeft(bv);
-	push(bv, t);
-	t->idxLast(bv);
+	posLeft(cur);
+	push(cur, t);
+	t->idxLast(cur);
 }
 
 
-bool MathCursor::popLeft(BufferView & bv)
+bool MathCursor::popLeft(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	//lyxerr << "Leaving atom to the left" << endl;
-	if (depth(bv) <= 1) {
-		if (depth(bv) == 1)
+	if (cur.depth() <= 1) {
+		if (cur.depth() == 1)
 			cur.inset()->asMathInset()->notifyCursorLeaves(cur.idx());
 		return false;
 	}
 	cur.inset()->asMathInset()->notifyCursorLeaves(cur.idx());
-	bv.fullCursor().pop();
+	cur.pop();
 	return true;
 }
 
 
-bool MathCursor::popRight(BufferView & bv)
+bool MathCursor::popRight(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	//lyxerr << "Leaving atom "; bv.inset->asMathInset()->write(cerr, false); cerr << " right" << endl;
-	if (depth(bv) <= 1) {
-		if (depth(bv) == 1)
+	if (cur.depth() <= 1) {
+		if (cur.depth() == 1)
 			cur.inset()->asMathInset()->notifyCursorLeaves(cur.idx());
 		return false;
 	}
 	cur.inset()->asMathInset()->notifyCursorLeaves(cur.idx());
-	bv.fullCursor().pop();
-	posRight(bv);
+	cur.pop();
+	posRight(cur);
 	return true;
 }
 
@@ -127,8 +125,8 @@ bool MathCursor::popRight(BufferView & bv)
 	void MathCursor::dump(char const * what) const
 	{
 		lyxerr << "MC: " << what << endl;
-		lyxerr << " Cursor: " << depth() << endl;
-		for (unsigned i = 0; i < depth(); ++i)
+		lyxerr << " Cursor: " << cur.depth() << endl;
+		for (unsigned i = 0; i < cur.depth(); ++i)
 			lyxerr << "    i: " << i << ' ' << Cursor_[i] << endl;
 		lyxerr << " Anchor: " << Anchor_.size() << endl;
 		for (unsigned i = 0; i < Anchor_.size(); ++i)
@@ -144,7 +142,7 @@ bool MathCursor::isInside(MathInset const *) const
 {
 #warning FIXME
 /*
-	for (unsigned i = 0; i < depth(); ++i)
+	for (unsigned i = 0; i < cur.depth(); ++i)
 		if (Cursor_[i].asMathInset() == p)
 			return true;
 */
@@ -164,9 +162,9 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 #if 0
 	if (sel) {
 		// we can't move into anything new during selection
-		if (depth() == Anchor_.size())
+		if (cur.depth() == Anchor_.size())
 			return false;
-		if (t.operator->() != Anchor_[depth()].asMathInset())
+		if (t.operator->() != Anchor_[cur.depth()].asMathInset())
 			return false;
 	}
 #else
@@ -178,16 +176,14 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 }
 
 
-bool MathCursor::inNucleus(BufferView & bv) const
+bool MathCursor::inNucleus(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);	
 	return cur.inset()->asMathInset()->asScriptInset() && cur.idx() == 2;
 }
 
 
-bool MathCursor::posLeft(BufferView & bv)
+bool MathCursor::posLeft(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);	
 	if (cur.pos() == 0)
 		return false;
 	--cur.pos();
@@ -195,9 +191,8 @@ bool MathCursor::posLeft(BufferView & bv)
 }
 
 
-bool MathCursor::posRight(BufferView & bv)
+bool MathCursor::posRight(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);	
 	if (cur.pos() == cur.lastpos())
 		return false;
 	++cur.pos();
@@ -205,63 +200,63 @@ bool MathCursor::posRight(BufferView & bv)
 }
 
 
-bool MathCursor::left(BufferView & bv, bool sel)
+bool MathCursor::left(LCursor & cur, bool sel)
 {
 	dump("Left 1");
 	autocorrect_ = false;
-	bv.x_target(-1); // "no target"
-	if (inMacroMode(bv)) {
-		macroModeClose(bv);
+	cur.bv().x_target(-1); // "no target"
+	if (inMacroMode(cur)) {
+		macroModeClose(cur);
 		return true;
 	}
-	selHandle(bv, sel);
+	selHandle(cur, sel);
 
-	if (hasPrevAtom(bv) && openable(prevAtom(bv), sel)) {
-		pushRight(bv, prevAtom(bv));
+	if (hasPrevAtom(cur) && openable(prevAtom(cur), sel)) {
+		pushRight(cur, prevAtom(cur));
 		return true;
 	}
 
-	return posLeft(bv) || idxLeft(bv) || popLeft(bv) || selection_;
+	return posLeft(cur) || idxLeft(cur) || popLeft(cur) || selection_;
 }
 
 
-bool MathCursor::right(BufferView & bv, bool sel)
+bool MathCursor::right(LCursor & cur, bool sel)
 {
 	dump("Right 1");
 	autocorrect_ = false;
-	bv.x_target(-1); // "no target"
-	if (inMacroMode(bv)) {
-		macroModeClose(bv);
+	cur.bv().x_target(-1); // "no target"
+	if (inMacroMode(cur)) {
+		macroModeClose(cur);
 		return true;
 	}
-	selHandle(bv, sel);
+	selHandle(cur, sel);
 
-	if (hasNextAtom(bv) && openable(nextAtom(bv), sel)) {
-		pushLeft(bv, nextAtom(bv));
+	if (hasNextAtom(cur) && openable(nextAtom(cur), sel)) {
+		pushLeft(cur, nextAtom(cur));
 		return true;
 	}
 
-	return posRight(bv) || idxRight(bv) || popRight(bv) || selection_;
+	return posRight(cur) || idxRight(cur) || popRight(cur) || selection_;
 }
 
 
-void MathCursor::first(BufferView & bv)
+void MathCursor::first(LCursor & cur)
 {
 #warning FIXME
 	//Cursor_.clear();
-	push(bv, formula_->par());
-	bv.cursor().inset()->asMathInset()->idxFirst(bv);
-	bv.resetAnchor();
+	push(cur, formula_->par());
+	cur.inset()->asMathInset()->idxFirst(cur);
+	cur.resetAnchor();
 }
 
 
-void MathCursor::last(BufferView & bv)
+void MathCursor::last(LCursor & cur)
 {
 #warning FIXME
 	//Cursor_.clear();
-	push(bv, formula_->par());
-	bv.cursor().inset()->asMathInset()->idxLast(bv);
-	bv.resetAnchor();
+	push(cur, formula_->par());
+	cur.inset()->asMathInset()->idxLast(cur);
+	cur.resetAnchor();
 }
 
 
@@ -281,206 +276,199 @@ bool positionable(CursorBase const & cursor, CursorBase const & anchor)
 }
 
 
-void MathCursor::setScreenPos(BufferView & bv, int x, int y)
+void MathCursor::setScreenPos(LCursor & cur, int x, int y)
 {
 	dump("setScreenPos 1");
-	bool res = bruteFind(bv, x, y,
+	bool res = bruteFind(cur, x, y,
 		formula()->xlow(), formula()->xhigh(),
 		formula()->ylow(), formula()->yhigh());
 	if (!res) {
 		// this can happen on creation of "math-display"
 		dump("setScreenPos 1.5");
-		first(bv);
+		first(cur);
 	}
-	bv.x_target(-1); // "no target"
+	cur.bv().x_target(-1); // "no target"
 	dump("setScreenPos 2");
 }
 
 
 
-bool MathCursor::home(BufferView & bv, bool sel)
+bool MathCursor::home(LCursor & cur, bool sel)
 {
 	dump("home 1");
 	autocorrect_ = false;
-	selHandle(bv, sel);
-	macroModeClose(bv);
-	if (!bv.cursor().inset()->asMathInset()->idxHome(bv))
-		return popLeft(bv);
+	selHandle(cur, sel);
+	macroModeClose(cur);
+	if (!cur.inset()->asMathInset()->idxHome(cur))
+		return popLeft(cur);
 	dump("home 2");
-	bv.x_target(-1); // "no target"
+	cur.bv().x_target(-1); // "no target"
 	return true;
 }
 
 
-bool MathCursor::end(BufferView & bv, bool sel)
+bool MathCursor::end(LCursor & cur, bool sel)
 {
 	dump("end 1");
 	autocorrect_ = false;
-	selHandle(bv, sel);
-	macroModeClose(bv);
-	if (!bv.cursor().inset()->asMathInset()->idxEnd(bv))
-		return popRight(bv);
+	selHandle(cur, sel);
+	macroModeClose(cur);
+	if (!cur.inset()->asMathInset()->idxEnd(cur))
+		return popRight(cur);
 	dump("end 2");
-	bv.x_target(-1); // "no target"
+	cur.bv().x_target(-1); // "no target"
 	return true;
 }
 
 
-void MathCursor::plainErase(BufferView & bv)
+void MathCursor::plainErase(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.cell().erase(cur.pos());
 }
 
 
-void MathCursor::markInsert(BufferView & bv)
+void MathCursor::markInsert(LCursor & cur)
 {
 	//lyxerr << "inserting mark" << endl;
-	CursorSlice & cur = cursorTip(bv);
 	cur.cell().insert(cur.pos(), MathAtom(new MathCharInset(0)));
 }
 
 
-void MathCursor::markErase(BufferView & bv)
+void MathCursor::markErase(LCursor & cur)
 {
 	//lyxerr << "deleting mark" << endl;
-	CursorSlice & cur = cursorTip(bv);
 	cur.cell().erase(cur.pos());
 }
 
 
-void MathCursor::plainInsert(BufferView & bv, MathAtom const & t)
+void MathCursor::plainInsert(LCursor & cur, MathAtom const & t)
 {
 	dump("plainInsert");
-	CursorSlice & cur = cursorTip(bv);
 	cur.cell().insert(cur.pos(), t);
 	++cur.pos();
 }
 
 
-void MathCursor::insert2(BufferView & bv, string const & str)
+void MathCursor::insert2(LCursor & cur, string const & str)
 {
 	MathArray ar;
 	asArray(str, ar);
-	insert(bv, ar);
+	insert(cur, ar);
 }
 
 
-void MathCursor::insert(BufferView & bv, string const & str)
+void MathCursor::insert(LCursor & cur, string const & str)
 {
 	//lyxerr << "inserting '" << str << "'" << endl;
-	selClearOrDel(bv);
+	selClearOrDel(cur);
 	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
-		plainInsert(bv, MathAtom(new MathCharInset(*it)));
+		plainInsert(cur, MathAtom(new MathCharInset(*it)));
 }
 
 
-void MathCursor::insert(BufferView & bv, char c)
+void MathCursor::insert(LCursor & cur, char c)
 {
 	//lyxerr << "inserting '" << c << "'" << endl;
-	selClearOrDel(bv);
-	plainInsert(bv, MathAtom(new MathCharInset(c)));
+	selClearOrDel(cur);
+	plainInsert(cur, MathAtom(new MathCharInset(c)));
 }
 
 
-void MathCursor::insert(BufferView & bv, MathAtom const & t)
+void MathCursor::insert(LCursor & cur, MathAtom const & t)
 {
-	macroModeClose(bv);
-	selClearOrDel(bv);
-	plainInsert(bv, t);
+	macroModeClose(cur);
+	selClearOrDel(cur);
+	plainInsert(cur, t);
 }
 
 
-void MathCursor::niceInsert(BufferView & bv, string const & t)
+void MathCursor::niceInsert(LCursor & cur, string const & t)
 {
 	MathArray ar;
 	asArray(t, ar);
 	if (ar.size() == 1)
-		niceInsert(bv, ar[0]);
+		niceInsert(cur, ar[0]);
 	else
-		insert(bv, ar);
+		insert(cur, ar);
 }
 
 
-void MathCursor::niceInsert(BufferView & bv, MathAtom const & t)
+void MathCursor::niceInsert(LCursor & cur, MathAtom const & t)
 {
-	macroModeClose(bv);
-	string safe = grabAndEraseSelection(bv);
-	plainInsert(bv, t);
+	macroModeClose(cur);
+	string safe = grabAndEraseSelection(cur);
+	plainInsert(cur, t);
 	// enter the new inset and move the contents of the selection if possible
 	if (t->isActive()) {
-		posLeft(bv);
-		pushLeft(bv, nextAtom(bv));
-		paste(bv, safe);
+		posLeft(cur);
+		pushLeft(cur, nextAtom(cur));
+		paste(cur, safe);
 	}
 }
 
 
-void MathCursor::insert(BufferView & bv, MathArray const & ar)
+void MathCursor::insert(LCursor & cur, MathArray const & ar)
 {
-	CursorSlice & cur = cursorTip(bv);
-	macroModeClose(bv);
+	macroModeClose(cur);
 	if (selection_)
-		eraseSelection(bv);
+		eraseSelection(cur);
 	cur.cell().insert(cur.pos(), ar);
 	cur.pos() += ar.size();
 }
 
 
-void MathCursor::paste(BufferView & bv, string const & data)
+void MathCursor::paste(LCursor & cur, string const & data)
 {
-	dispatch(bv, FuncRequest(LFUN_PASTE, data));
+	dispatch(cur, FuncRequest(LFUN_PASTE, data));
 }
 
 
-bool MathCursor::backspace(BufferView & bv)
+bool MathCursor::backspace(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	autocorrect_ = false;
 
 	if (selection_) {
-		selDel(bv);
+		selDel(cur);
 		return true;
 	}
 
 	if (cur.pos() == 0) {
 		if (cur.inset()->asMathInset()->nargs() == 1 &&
-			  depth(bv) == 1 &&
+			  cur.depth() == 1 &&
 			  cur.lastpos() == 0)
 			return false;
-		pullArg(bv);
+		pullArg(cur);
 		return true;
 	}
 
-	if (inMacroMode(bv)) {
-		MathUnknownInset * p = activeMacro(bv);
+	if (inMacroMode(cur)) {
+		MathUnknownInset * p = activeMacro(cur);
 		if (p->name().size() > 1) {
 			p->setName(p->name().substr(0, p->name().size() - 1));
 			return true;
 		}
 	}
 
-	if (hasPrevAtom(bv) && prevAtom(bv)->nargs() > 0) {
+	if (hasPrevAtom(cur) && prevAtom(cur)->nargs() > 0) {
 		// let's require two backspaces for 'big stuff' and
 		// highlight on the first
-		left(bv, true);
+		left(cur, true);
 	} else {
 		--cur.pos();
-		plainErase(bv);
+		plainErase(cur);
 	}
 	return true;
 }
 
 
-bool MathCursor::erase(BufferView & bv)
+bool MathCursor::erase(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	autocorrect_ = false;
-	if (inMacroMode(bv))
+	if (inMacroMode(cur))
 		return true;
 
 	if (selection_) {
-		selDel(bv);
+		selDel(cur);
 		return true;
 	}
 
@@ -492,30 +480,30 @@ bool MathCursor::erase(BufferView & bv)
 	// special behaviour when in last position of cell
 	if (cur.pos() == cur.lastpos()) {
 		bool one_cell = cur.inset()->asMathInset()->nargs() == 1;
-		if (one_cell && depth(bv) == 1 && cur.lastpos() == 0)
+		if (one_cell && cur.depth() == 1 && cur.lastpos() == 0)
 			return false;
 		// remove markup
 		if (one_cell)
-			pullArg(bv);
+			pullArg(cur);
 		else
 			cur.inset()->asMathInset()->idxGlue(cur.idx());
 		return true;
 	}
 
-	if (hasNextAtom(bv) && nextAtom(bv)->nargs() > 0)
-		right(bv, true);
+	if (hasNextAtom(cur) && nextAtom(cur)->nargs() > 0)
+		right(cur, true);
 	else
-		plainErase(bv);
+		plainErase(cur);
 
 	return true;
 }
 
 
-bool MathCursor::up(BufferView & bv, bool sel)
+bool MathCursor::up(LCursor & cur, bool sel)
 {
 	dump("up 1");
-	macroModeClose(bv);
-	selHandle(bv, sel);
+	macroModeClose(cur);
+	selHandle(cur, sel);
 #warning FIXME
 #if 0
 	CursorBase save = Cursor_;
@@ -528,11 +516,11 @@ bool MathCursor::up(BufferView & bv, bool sel)
 }
 
 
-bool MathCursor::down(BufferView & bv, bool sel)
+bool MathCursor::down(LCursor & cur, bool sel)
 {
 	dump("down 1");
-	macroModeClose(bv);
-	selHandle(bv, sel);
+	macroModeClose(cur);
+	selHandle(cur, sel);
 #warning FIXME
 #if 0
 	CursorBase save = Cursor_;
@@ -545,12 +533,11 @@ bool MathCursor::down(BufferView & bv, bool sel)
 }
 
 
-void MathCursor::macroModeClose(BufferView & bv)
+void MathCursor::macroModeClose(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);	
-	if (!inMacroMode(bv))
+	if (!inMacroMode(cur))
 		return;
-	MathUnknownInset * p = activeMacro(bv);
+	MathUnknownInset * p = activeMacro(cur);
 	p->finalize();
 	string s = p->name();
 	--cur.pos();
@@ -567,28 +554,28 @@ void MathCursor::macroModeClose(BufferView & bv)
 			&& formula()->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
-	niceInsert(bv, createMathInset(name));
+	niceInsert(cur, createMathInset(name));
 }
 
 
-string MathCursor::macroName(BufferView & bv) const
+string MathCursor::macroName(LCursor & cur) const
 {
-	return inMacroMode(bv) ? activeMacro(bv)->name() : string();
+	return inMacroMode(cur) ? activeMacro(cur)->name() : string();
 }
 
 
-void MathCursor::selClear(BufferView & bv)
+void MathCursor::selClear(LCursor & cur)
 {
-	bv.resetAnchor();
-	bv.clearSelection();
+	cur.resetAnchor();
+	cur.bv().clearSelection();
 }
 
 
-void MathCursor::selCopy(BufferView & bv)
+void MathCursor::selCopy(LCursor & cur)
 {
 	dump("selCopy");
 	if (selection_) {
-		theCutBuffer.push(grabSelection(bv));
+		theCutBuffer.push(grabSelection(cur));
 		selection_ = false;
 	} else {
 		//theCutBuffer.erase();
@@ -596,58 +583,58 @@ void MathCursor::selCopy(BufferView & bv)
 }
 
 
-void MathCursor::selCut(BufferView & bv)
+void MathCursor::selCut(LCursor & cur)
 {
 	dump("selCut");
-	theCutBuffer.push(grabAndEraseSelection(bv));
+	theCutBuffer.push(grabAndEraseSelection(cur));
 }
 
 
-void MathCursor::selDel(BufferView & bv)
+void MathCursor::selDel(LCursor & cur)
 {
 	dump("selDel");
 	if (selection_) {
-		eraseSelection(bv);
+		eraseSelection(cur);
 		selection_ = false;
 	}
 }
 
 
-void MathCursor::selPaste(BufferView & bv, size_t n)
+void MathCursor::selPaste(LCursor & cur, size_t n)
 {
 	dump("selPaste");
-	selClearOrDel(bv);
+	selClearOrDel(cur);
 	if (n < theCutBuffer.size())
-		paste(bv, theCutBuffer[n]);
-	//grabSelection(bv);
+		paste(cur, theCutBuffer[n]);
+	//grabSelection(cur);
 	selection_ = false;
 }
 
 
-void MathCursor::selHandle(BufferView & bv, bool sel)
+void MathCursor::selHandle(LCursor & cur, bool sel)
 {
 	if (sel == selection_)
 		return;
 	//clear();
-	bv.resetAnchor();
+	cur.resetAnchor();
 	selection_ = sel;
 }
 
 
-void MathCursor::selStart(BufferView & bv)
+void MathCursor::selStart(LCursor & cur)
 {
 	dump("selStart 1");
 	//clear();
-	bv.resetAnchor();
+	cur.resetAnchor();
 	selection_ = true;
 	dump("selStart 2");
 }
 
 
-void MathCursor::selClearOrDel(BufferView & bv)
+void MathCursor::selClearOrDel(LCursor & cur)
 {
 	if (lyxrc.auto_region_delete)
-		selDel(bv);
+		selDel(cur);
 	else
 		selection_ = false;
 }
@@ -659,34 +646,33 @@ void MathCursor::drawSelection(PainterInfo & pi) const
 		return;
 	CursorSlice i1;
 	CursorSlice i2;
-	getSelection(*pi.base.bv, i1, i2);
+	getSelection(pi.base.bv->fullCursor(), i1, i2);
 	i1.asMathInset()->drawSelection(pi, i1.idx_, i1.pos_, i2.idx_, i2.pos_);
 }
 
 
-void MathCursor::handleNest(BufferView & bv, MathAtom const & a, int c)
+void MathCursor::handleNest(LCursor & cur, MathAtom const & a, int c)
 {
 	MathAtom at = a;
-	asArray(grabAndEraseSelection(bv), at.nucleus()->cell(c));
-	insert(bv, at);
-	pushRight(bv, prevAtom(bv));
+	asArray(grabAndEraseSelection(cur), at.nucleus()->cell(c));
+	insert(cur, at);
+	pushRight(cur, prevAtom(cur));
 }
 
 
-void MathCursor::getScreenPos(BufferView & bv, int & x, int & y) const
+void MathCursor::getScreenPos(LCursor & cur, int & x, int & y) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.inset()->asMathInset()->getScreenPos(cur.idx(), cur.pos(), x, y);
 }
 
 
-int MathCursor::targetX(BufferView & bv) const
+int MathCursor::targetX(LCursor & cur) const
 {
-	if (bv.x_target() != -1)
-		return bv.x_target();
+	if (cur.bv().x_target() != -1)
+		return cur.bv().x_target();
 	int x = 0;
 	int y = 0;
-	getScreenPos(bv, x, y);
+	getScreenPos(cur, x, y);
 	return x;
 }
 
@@ -697,9 +683,8 @@ InsetFormulaBase * MathCursor::formula() const
 }
 
 
-void MathCursor::adjust(BufferView & bv, pos_type from, difference_type diff)
+void MathCursor::adjust(LCursor & cur, pos_type from, difference_type diff)
 {	
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.pos() > from)
 		cur.pos() += diff;
 #warning FIXME
@@ -709,34 +694,34 @@ void MathCursor::adjust(BufferView & bv, pos_type from, difference_type diff)
 	// just to be on the safe side
 	// theoretically unecessary
 #endif
-	normalize(bv);
+	normalize(cur);
 }
 
 
-bool MathCursor::inMacroMode(BufferView & bv) const
+bool MathCursor::inMacroMode(LCursor & cur) const
 {
-	if (!hasPrevAtom(bv))
+	if (!hasPrevAtom(cur))
 		return false;
-	MathUnknownInset const * p = prevAtom(bv)->asUnknownInset();
+	MathUnknownInset const * p = prevAtom(cur)->asUnknownInset();
 	return p && !p->final();
 }
 
 
-MathUnknownInset * MathCursor::activeMacro(BufferView & bv)
+MathUnknownInset * MathCursor::activeMacro(LCursor & cur)
 {
-	return inMacroMode(bv) ? prevAtom(bv).nucleus()->asUnknownInset() : 0;
+	return inMacroMode(cur) ? prevAtom(cur).nucleus()->asUnknownInset() : 0;
 }
 
 
-MathUnknownInset const * MathCursor::activeMacro(BufferView & bv) const
+MathUnknownInset const * MathCursor::activeMacro(LCursor & cur) const
 {
-	return inMacroMode(bv) ? prevAtom(bv)->asUnknownInset() : 0;
+	return inMacroMode(cur) ? prevAtom(cur)->asUnknownInset() : 0;
 }
 
 
-bool MathCursor::inMacroArgMode(BufferView & bv) const
+bool MathCursor::inMacroArgMode(LCursor & cur) const
 {
-	return bv.cursor().pos() > 0 && prevAtom(bv)->getChar() == '#';
+	return cur.pos() > 0 && prevAtom(cur)->getChar() == '#';
 }
 
 
@@ -746,53 +731,52 @@ bool MathCursor::selection() const
 }
 
 
-MathGridInset * MathCursor::enclosingGrid
-	(BufferView &, MathCursor::idx_type &) const
+MathGridInset *
+MathCursor::enclosingGrid(LCursor & cur, MathCursor::idx_type & idx) const
 {
-#warning FIXME
-#if 0
-	for (MathInset::difference_type i = depth() - 1; i >= 0; --i) {
-		MathGridInset * p = Cursor_[i].asMathInset()->asGridInset();
+	for (MathInset::difference_type i = cur.depth() - 1; i >= 0; --i) {
+		MathInset * m = cur.cursor_[i].inset()->asMathInset();
+		if (!m)
+			return 0;
+		MathGridInset * p = m->asGridInset();
 		if (p) {
-			idx = Cursor_[i].idx_;
+			idx = cur.cursor_[i].idx_;
 			return p;
 		}
 	}
-#endif
 	return 0;
 }
 
 
-void MathCursor::popToHere(BufferView & bv, MathInset const * p)
+void MathCursor::popToHere(LCursor & cur, MathInset const * p)
 {
-	while (depth(bv) && bv.cursor().asMathInset() != p)
-		bv.fullCursor().cursor_.pop_back();
+	while (cur.depth() && cur.inset()->asMathInset() != p)
+		cur.pop();
 }
 
 
-void MathCursor::popToEnclosingGrid(BufferView & bv)
+void MathCursor::popToEnclosingGrid(LCursor & cur)
 {
-	while (depth(bv) && !bv.cursor().asMathInset()->asGridInset())
-		bv.fullCursor().cursor_.pop_back();
+	while (cur.depth() && !cur.inset()->asMathInset()->asGridInset())
+		cur.pop();
 }
 
 
-void MathCursor::popToEnclosingHull(BufferView & bv)
+void MathCursor::popToEnclosingHull(LCursor & cur)
 {
-	while (depth(bv) && !bv.cursor().asMathInset()->asGridInset())
-		bv.fullCursor().cursor_.pop_back();
+	while (cur.depth() && !cur.inset()->asMathInset()->asGridInset())
+		cur.pop();
 }
 
 
-void MathCursor::pullArg(BufferView & bv)
+void MathCursor::pullArg(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	dump("pullarg");
 	MathArray ar = cur.cell();
-	if (popLeft(bv)) {
-		plainErase(bv);
+	if (popLeft(cur)) {
+		plainErase(cur);
 		cur.cell().insert(cur.pos(), ar);
-		bv.resetAnchor();
+		cur.resetAnchor();
 	} else {
 		formula()->mutateToText();
 	}
@@ -811,9 +795,8 @@ void MathCursor::touch()
 }
 
 
-void MathCursor::normalize(BufferView & bv)
+void MathCursor::normalize(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.idx() >= cur.nargs()) {
 		lyxerr << "this should not really happen - 1: "
 		       << cur.idx() << ' ' << cur.nargs()
@@ -835,133 +818,125 @@ void MathCursor::normalize(BufferView & bv)
 }
 
 
-bool MathCursor::hasPrevAtom(BufferView & bv) const
+bool MathCursor::hasPrevAtom(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	return cur.pos() > 0;
 }
 
 
-bool MathCursor::hasNextAtom(BufferView & bv) const
+bool MathCursor::hasNextAtom(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	return cur.pos() < cur.lastpos();
 }
 
 
-MathAtom const & MathCursor::prevAtom(BufferView & bv) const
+MathAtom const & MathCursor::prevAtom(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	BOOST_ASSERT(cur.pos() > 0);
 	return cur.cell()[cur.pos() - 1];
 }
 
 
-MathAtom & MathCursor::prevAtom(BufferView & bv)
+MathAtom & MathCursor::prevAtom(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	BOOST_ASSERT(cur.pos() > 0);
 	return cur.cell()[cur.pos() - 1];
 }
 
 
-MathAtom const & MathCursor::nextAtom(BufferView & bv) const
+MathAtom const & MathCursor::nextAtom(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	BOOST_ASSERT(cur.pos() < cur.lastpos());
 	return cur.cell()[cur.pos()];
 }
 
 
-MathAtom & MathCursor::nextAtom(BufferView & bv)
+MathAtom & MathCursor::nextAtom(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	BOOST_ASSERT(cur.pos() < cur.lastpos());
 	return cur.cell()[cur.pos()];
 }
 
 
-void MathCursor::idxNext(BufferView & bv)
+void MathCursor::idxNext(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
-	cur.inset()->asMathInset()->idxNext(bv);
+	cur.inset()->asMathInset()->idxNext(cur);
 }
 
 
-void MathCursor::idxPrev(BufferView & bv)
+void MathCursor::idxPrev(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
-	cur.inset()->asMathInset()->idxPrev(bv);
+	cur.inset()->asMathInset()->idxPrev(cur);
 }
 
 
-char MathCursor::valign(BufferView & bv) const
+char MathCursor::valign(LCursor & cur) const
 {
 	idx_type idx;
-	MathGridInset * p = enclosingGrid(bv, idx);
+	MathGridInset * p = enclosingGrid(cur, idx);
 	return p ? p->valign() : '\0';
 }
 
 
-char MathCursor::halign(BufferView & bv) const
+char MathCursor::halign(LCursor & cur) const
 {
 	idx_type idx;
-	MathGridInset * p = enclosingGrid(bv, idx);
+	MathGridInset * p = enclosingGrid(cur, idx);
 	return p ? p->halign(idx % p->ncols()) : '\0';
 }
 
 
-void MathCursor::getSelection(BufferView & bv,
+void MathCursor::getSelection(LCursor & cur,
 	CursorSlice & i1, CursorSlice & i2) const
 {
-	CursorSlice anc = normalAnchor(bv);
-	if (anc < bv.cursor()) {
+	CursorSlice anc = normalAnchor(cur);
+	if (anc < cur.top()) {
 		i1 = anc;
-		i2 = bv.cursor();
+		i2 = cur.top();
 	} else {
-		i1 = bv.cursor();
+		i1 = cur.top();
 		i2 = anc;
 	}
 }
 
 
-bool MathCursor::goUpDown(BufferView & bv, bool up)
+bool MathCursor::goUpDown(LCursor & cur, bool up)
 {
 	// Be warned: The 'logic' implemented in this function is highly fragile.
 	// A distance of one pixel or a '<' vs '<=' _really_ matters.
 	// So fiddle around with it only if you know what you are doing!
   int xo = 0;
 	int yo = 0;
-	getScreenPos(bv, xo, yo);
+	getScreenPos(cur, xo, yo);
 
 	// check if we had something else in mind, if not, this is the future goal
-	if (bv.x_target() == -1)
-		bv.x_target(xo);
+	if (cur.bv().x_target() == -1)
+		cur.bv().x_target(xo);
 	else
-		xo = bv.x_target();
+		xo = cur.bv().x_target();
 
 	// try neigbouring script insets
 	if (!selection()) {
 		// try left
-		if (hasPrevAtom(bv)) {
-			MathScriptInset const * p = prevAtom(bv)->asScriptInset();
+		if (hasPrevAtom(cur)) {
+			MathScriptInset const * p = prevAtom(cur)->asScriptInset();
 			if (p && p->has(up)) {
-				--bv.cursor().pos();
-				push(bv, nextAtom(bv));
-				bv.cursor().idx() = up; // the superscript has index 1
-				bv.cursor().pos() = bv.cursor().lastpos();
+				--cur.pos();
+				push(cur, nextAtom(cur));
+				cur.idx() = up; // the superscript has index 1
+				cur.pos() = cur.lastpos();
 				//lyxerr << "updown: handled by scriptinset to the left" << endl;
 				return true;
 			}
 		}
 
 		// try right
-		if (hasNextAtom(bv)) {
-			MathScriptInset const * p = nextAtom(bv)->asScriptInset();
+		if (hasNextAtom(cur)) {
+			MathScriptInset const * p = nextAtom(cur)->asScriptInset();
 			if (p && p->has(up)) {
-				push(bv, nextAtom(bv));
-				bv.cursor().idx() = up;
-				bv.cursor().pos() = 0;
+				push(cur, nextAtom(cur));
+				cur.idx() = up;
+				cur.pos() = 0;
 				//lyxerr << "updown: handled by scriptinset to the right" << endl;
 				return true;
 			}
@@ -969,7 +944,7 @@ bool MathCursor::goUpDown(BufferView & bv, bool up)
 	}
 
 	// try current cell for e.g. text insets
-	if (bv.cursor().inset()->asMathInset()->idxUpDown2(bv, up, bv.x_target()))
+	if (cur.inset()->asMathInset()->idxUpDown2(cur, up, cur.bv().x_target()))
 		return true;
 
 	//xarray().boundingBox(xlow, xhigh, ylow, yhigh);
@@ -986,18 +961,18 @@ bool MathCursor::goUpDown(BufferView & bv, bool up)
 	while (1) {
 		//lyxerr << "updown: We are in " << inset() << " idx: " << idx() << endl;
 		// ask inset first
-		if (bv.cursor().inset()->asMathInset()->idxUpDown(bv, up, bv.x_target())) {
+		if (cur.inset()->asMathInset()->idxUpDown(cur, up, cur.bv().x_target())) {
 			// try to find best position within this inset
 			if (!selection())
-				bruteFind2(bv, xo, yo);
+				bruteFind2(cur, xo, yo);
 			return true;
 		}
 
 		// no such inset found, just take something "above"
 		//lyxerr << "updown: handled by strange case" << endl;
-		if (!popLeft(bv))
+		if (!popLeft(cur))
 			return
-				bruteFind(bv, xo, yo,
+				bruteFind(cur, xo, yo,
 					formula()->xlow(),
 					formula()->xhigh(),
 					up ? formula()->ylow() : yo + 4,
@@ -1006,7 +981,7 @@ bool MathCursor::goUpDown(BufferView & bv, bool up)
 
 		// any improvement so far?
 		int xnew, ynew;
-		getScreenPos(bv, xnew, ynew);
+		getScreenPos(cur, xnew, ynew);
 		if (up ? ynew < yo : ynew > yo)
 			return true;
 	}
@@ -1014,7 +989,7 @@ bool MathCursor::goUpDown(BufferView & bv, bool up)
 
 
 bool MathCursor::bruteFind
-	(BufferView & bv, int x, int y, int xlow, int xhigh, int ylow, int yhigh)
+	(LCursor & cur, int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
 	CursorBase best_cursor;
 	double best_dist = 1e10;
@@ -1023,7 +998,7 @@ bool MathCursor::bruteFind
 	CursorBase et = iend(formula()->par().nucleus());
 	while (1) {
 		// avoid invalid nesting when selecting
-		if (!selection_ || positionable(it, bv.fullCursor().anchor_)) {
+		if (!selection_ || positionable(it, cur.anchor_)) {
 			int xo, yo;
 			it.back().getScreenPos(xo, yo);
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
@@ -1044,18 +1019,18 @@ bool MathCursor::bruteFind
 	}
 
 	if (best_dist < 1e10)
-		bv.fullCursor().cursor_ = best_cursor;
+		cur.cursor_ = best_cursor;
 	return best_dist < 1e10;
 }
 
 
-void MathCursor::bruteFind2(BufferView & bv, int x, int y)
+void MathCursor::bruteFind2(LCursor & cur, int x, int y)
 {
 	double best_dist = 1e10;
 
-	CursorBase it = bv.fullCursor().cursor_;
+	CursorBase it = cur.cursor_;
 	it.back().pos(0);
-	CursorBase et = bv.fullCursor().cursor_;
+	CursorBase et = cur.cursor_;
 	int n = et.back().asMathInset()->cell(et.back().idx_).size();
 	et.back().pos(n);
 	for (int i = 0; ; ++i) {
@@ -1067,7 +1042,7 @@ void MathCursor::bruteFind2(BufferView & bv, int x, int y)
 		lyxerr << "i: " << i << " d: " << d << " best: " << best_dist << endl;
 		if (d <= best_dist) {
 			best_dist = d;
-			bv.fullCursor().cursor_ = it;
+			cur.cursor_ = it;
 		}
 		if (it == et)
 			break;
@@ -1076,9 +1051,8 @@ void MathCursor::bruteFind2(BufferView & bv, int x, int y)
 }
 
 
-bool MathCursor::idxLineLast(BufferView & bv)
+bool MathCursor::idxLineLast(LCursor & cur)
 {
-	CursorSlice & cur = bv.cursor();
 	cur.idx() -= cur.idx() % cur.ncols();
 	cur.idx() += cur.ncols() - 1;
 	cur.pos() = cur.lastpos();
@@ -1086,113 +1060,112 @@ bool MathCursor::idxLineLast(BufferView & bv)
 }
 
 
-bool MathCursor::idxLeft(BufferView & bv)
+bool MathCursor::idxLeft(LCursor & cur)
 {
-	return bv.cursor().inset()->asMathInset()->idxLeft(bv);
+	return cur.inset()->asMathInset()->idxLeft(cur);
 }
 
 
-bool MathCursor::idxRight(BufferView & bv)
+bool MathCursor::idxRight(LCursor & cur)
 {
-	return bv.cursor().inset()->asMathInset()->idxRight(bv);
+	return cur.inset()->asMathInset()->idxRight(cur);
 }
 
 
-bool MathCursor::script(BufferView & bv, bool up)
+bool MathCursor::script(LCursor & cur, bool up)
 {
 	// Hack to get \\^ and \\_ working
-	if (inMacroMode(bv) && macroName(bv) == "\\") {
+	if (inMacroMode(cur) && macroName(cur) == "\\") {
 		if (up)
-			niceInsert(bv, createMathInset("mathcircumflex"));
+			niceInsert(cur, createMathInset("mathcircumflex"));
 		else
-			interpret(bv, '_');
+			interpret(cur, '_');
 		return true;
 	}
 
-	macroModeClose(bv);
-	string safe = grabAndEraseSelection(bv);
-	if (inNucleus(bv)) {
+	macroModeClose(cur);
+	string safe = grabAndEraseSelection(cur);
+	if (inNucleus(cur)) {
 		// we are in a nucleus of a script inset, move to _our_ script
-		bv.cursor().inset()->asMathInset()->asScriptInset()->ensure(up);
-		bv.cursor().idx() = up;
-		bv.cursor().pos() = 0;
-	} else if (hasPrevAtom(bv) && prevAtom(bv)->asScriptInset()) {
-		prevAtom(bv).nucleus()->asScriptInset()->ensure(up);
-		pushRight(bv, prevAtom(bv));
-		bv.cursor().idx() = up;
-		bv.cursor().pos() = bv.cursor().lastpos();
-	} else if (hasPrevAtom(bv)) {
-		--bv.cursor().pos();
-		bv.cursor().cell()[bv.cursor().pos()]
-			= MathAtom(new MathScriptInset(nextAtom(bv), up));
-		pushLeft(bv, nextAtom(bv));
-		bv.cursor().idx() = up;
-		bv.cursor().pos() = 0;
+		cur.inset()->asMathInset()->asScriptInset()->ensure(up);
+		cur.idx() = up;
+		cur.pos() = 0;
+	} else if (hasPrevAtom(cur) && prevAtom(cur)->asScriptInset()) {
+		prevAtom(cur).nucleus()->asScriptInset()->ensure(up);
+		pushRight(cur, prevAtom(cur));
+		cur.idx() = up;
+		cur.pos() = cur.lastpos();
+	} else if (hasPrevAtom(cur)) {
+		--cur.pos();
+		cur.cell()[cur.pos()]
+			= MathAtom(new MathScriptInset(nextAtom(cur), up));
+		pushLeft(cur, nextAtom(cur));
+		cur.idx() = up;
+		cur.pos() = 0;
 	} else {
-		plainInsert(bv, MathAtom(new MathScriptInset(up)));
-		prevAtom(bv).nucleus()->asScriptInset()->ensure(up);
-		pushRight(bv, prevAtom(bv));
-		bv.cursor().idx() = up;
-		bv.cursor().pos() = 0;
+		plainInsert(cur, MathAtom(new MathScriptInset(up)));
+		prevAtom(cur).nucleus()->asScriptInset()->ensure(up);
+		pushRight(cur, prevAtom(cur));
+		cur.idx() = up;
+		cur.pos() = 0;
 	}
-	paste(bv, safe);
+	paste(cur, safe);
 	dump("1");
 	return true;
 }
 
 
-bool MathCursor::interpret(BufferView & bv, char c)
+bool MathCursor::interpret(LCursor & cur, char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
-	CursorSlice & cur = bv.cursor();
-	bv.x_target(-1); // "no target"
-	if (inMacroArgMode(bv)) {
+	cur.bv().x_target(-1); // "no target"
+	if (inMacroArgMode(cur)) {
 		--cur.pos();
-		plainErase(bv);
+		plainErase(cur);
 		int n = c - '0';
 		MathMacroTemplate const * p = formula()->par()->asMacroTemplate();
 		if (p && 1 <= n && n <= p->numargs())
-			insert(bv, MathAtom(new MathMacroArgument(c - '0')));
+			insert(cur, MathAtom(new MathMacroArgument(c - '0')));
 		else {
-			insert(bv, createMathInset("#"));
-			interpret(bv, c); // try again
+			insert(cur, createMathInset("#"));
+			interpret(cur, c); // try again
 		}
 		return true;
 	}
 
 	// handle macroMode
-	if (inMacroMode(bv)) {
-		string name = macroName(bv);
+	if (inMacroMode(cur)) {
+		string name = macroName(cur);
 		//lyxerr << "interpret name: '" << name << "'" << endl;
 
 		if (isalpha(c)) {
-			activeMacro(bv)->setName(activeMacro(bv)->name() + c);
+			activeMacro(cur)->setName(activeMacro(cur)->name() + c);
 			return true;
 		}
 
 		// handle 'special char' macros
 		if (name == "\\") {
 			// remove the '\\'
-			backspace(bv);
+			backspace(cur);
 			if (c == '\\') {
-				if (currentMode(bv) == MathInset::TEXT_MODE)
-					niceInsert(bv, createMathInset("textbackslash"));
+				if (currentMode(cur) == MathInset::TEXT_MODE)
+					niceInsert(cur, createMathInset("textbackslash"));
 				else
-					niceInsert(bv, createMathInset("backslash"));
+					niceInsert(cur, createMathInset("backslash"));
 			} else if (c == '{') {
-				niceInsert(bv, MathAtom(new MathBraceInset));
+				niceInsert(cur, MathAtom(new MathBraceInset));
 			} else {
-				niceInsert(bv, createMathInset(string(1, c)));
+				niceInsert(cur, createMathInset(string(1, c)));
 			}
 			return true;
 		}
 
 		// leave macro mode and try again if necessary
-		macroModeClose(bv);
+		macroModeClose(cur);
 		if (c == '{')
-			niceInsert(bv, MathAtom(new MathBraceInset));
+			niceInsert(cur, MathAtom(new MathBraceInset));
 		else if (c != ' ')
-			interpret(bv, c);
+			interpret(cur, c);
 		return true;
 	}
 
@@ -1213,57 +1186,57 @@ bool MathCursor::interpret(BufferView & bv, char c)
 		return true;
 	}
 
-	selClearOrDel(bv);
+	selClearOrDel(cur);
 
 	if (c == '\\') {
 		//lyxerr << "starting with macro" << endl;
-		insert(bv, MathAtom(new MathUnknownInset("\\", false)));
+		insert(cur, MathAtom(new MathUnknownInset("\\", false)));
 		return true;
 	}
 
 	if (c == '\n') {
-		if (currentMode(bv) == MathInset::TEXT_MODE)
-			insert(bv, c);
+		if (currentMode(cur) == MathInset::TEXT_MODE)
+			insert(cur, c);
 		return true;
 	}
 
 	if (c == ' ') {
-		if (currentMode(bv) == MathInset::TEXT_MODE) {
+		if (currentMode(cur) == MathInset::TEXT_MODE) {
 			// insert spaces in text mode,
 			// but suppress direct insertion of two spaces in a row
 			// the still allows typing  '<space>a<space>' and deleting the 'a', but
 			// it is better than nothing...
-			if (!hasPrevAtom(bv) || prevAtom(bv)->getChar() != ' ')
-				insert(bv, c);
+			if (!hasPrevAtom(cur) || prevAtom(cur)->getChar() != ' ')
+				insert(cur, c);
 			return true;
 		}
-		if (hasPrevAtom(bv) && prevAtom(bv)->asSpaceInset()) {
-			prevAtom(bv).nucleus()->asSpaceInset()->incSpace();
+		if (hasPrevAtom(cur) && prevAtom(cur)->asSpaceInset()) {
+			prevAtom(cur).nucleus()->asSpaceInset()->incSpace();
 			return true;
 		}
-		if (popRight(bv))
+		if (popRight(cur))
 			return true;
 		// if are at the very end, leave the formula
 		return cur.pos() != cur.lastpos();
 	}
 
 	if (c == '_') {
-		script(bv, false);
+		script(cur, false);
 		return true;
 	}
 
 	if (c == '^') {
-		script(bv, true);
+		script(cur, true);
 		return true;
 	}
 
 	if (c == '{' || c == '}' || c == '#' || c == '&' || c == '$') {
-		niceInsert(bv, createMathInset(string(1, c)));
+		niceInsert(cur, createMathInset(string(1, c)));
 		return true;
 	}
 
 	if (c == '%') {
-		niceInsert(bv, MathAtom(new MathCommentInset));
+		niceInsert(cur, MathAtom(new MathCommentInset));
 		return true;
 	}
 
@@ -1272,56 +1245,48 @@ bool MathCursor::interpret(BufferView & bv, char c)
 	//	return true;
 
 	// no special circumstances, so insert the character without any fuss
-	insert(bv, c);
+	insert(cur, c);
 	autocorrect_ = true;
 	return true;
 }
 
 
 void MathCursor::setSelection
-	(BufferView & bv, CursorBase const & where, size_t n)
+	(LCursor & cur, CursorBase const & where, size_t n)
 {
 	selection_ = true;
-	bv.fullCursor().cursor_ = where;
-	bv.fullCursor().anchor_ = where;
-	bv.cursor().pos_ += n;
+	cur.cursor_ = where;
+	cur.anchor_ = where;
+	cur.pos() += n;
 }
 
 
-void MathCursor::insetToggle(BufferView & bv)
+void MathCursor::insetToggle(LCursor & cur)
 {
-	if (hasNextAtom(bv)) {
+	if (hasNextAtom(cur)) {
 		// toggle previous inset ...
-		nextAtom(bv).nucleus()->lock(!nextAtom(bv)->lock());
-	} else if (popLeft(bv) && hasNextAtom(bv)) {
+		nextAtom(cur).nucleus()->lock(!nextAtom(cur)->lock());
+	} else if (popLeft(cur) && hasNextAtom(cur)) {
 		// ... or enclosing inset if we are in the last inset position
-		nextAtom(bv).nucleus()->lock(!nextAtom(bv)->lock());
-		posRight(bv);
+		nextAtom(cur).nucleus()->lock(!nextAtom(cur)->lock());
+		posRight(cur);
 	}
 }
 
 
-string MathCursor::info(BufferView & bv) const
+string MathCursor::info(LCursor & cur) const
 {
 	ostringstream os;
 	os << "Math editor mode.  ";
-	for (int i = 0, n = depth(bv); i < n; ++i) {
-		bv.fullCursor().cursor_[i].asMathInset()->infoize(os);
+	for (int i = 0, n = cur.depth(); i < n; ++i) {
+		cur.cursor_[i].asMathInset()->infoize(os);
 		os << "  ";
 	}
-	if (hasPrevAtom(bv))
-		prevAtom(bv)->infoize2(os);
+	if (hasPrevAtom(cur))
+		prevAtom(cur)->infoize2(os);
 	os << "                    ";
 	return os.str();
 }
-
-
-unsigned MathCursor::depth(BufferView & bv) const
-{
-	return bv.fullCursor().cursor_.size();
-}
-
-
 
 
 namespace {
@@ -1344,14 +1309,14 @@ void region(CursorSlice const & i1, CursorSlice const & i2,
 }
 
 
-string MathCursor::grabSelection(BufferView & bv) const
+string MathCursor::grabSelection(LCursor & cur) const
 {
 	if (!selection_)
 		return string();
 
 	CursorSlice i1;
 	CursorSlice i2;
-	getSelection(bv, i1, i2);
+	getSelection(cur, i1, i2);
 
 	if (i1.idx_ == i2.idx_) {
 		MathArray::const_iterator it = i1.cell().begin();
@@ -1376,11 +1341,11 @@ string MathCursor::grabSelection(BufferView & bv) const
 }
 
 
-void MathCursor::eraseSelection(BufferView & bv)
+void MathCursor::eraseSelection(LCursor & cur)
 {
 	CursorSlice i1;
 	CursorSlice i2;
-	getSelection(bv, i1, i2);
+	getSelection(cur, i1, i2);
 	if (i1.idx_ == i2.idx_)
 		i1.cell().erase(i1.pos_, i2.pos_);
 	else {
@@ -1392,44 +1357,44 @@ void MathCursor::eraseSelection(BufferView & bv)
 			for (col_type col = c1; col <= c2; ++col)
 				p->cell(p->index(row, col)).clear();
 	}
-	bv.cursor() = i1;
+	cur.top() = i1;
 }
 
 
-string MathCursor::grabAndEraseSelection(BufferView & bv)
+string MathCursor::grabAndEraseSelection(LCursor & cur)
 {
 	if (!selection_)
 		return string();
-	string res = grabSelection(bv);
-	eraseSelection(bv);
+	string res = grabSelection(cur);
+	eraseSelection(cur);
 	selection_ = false;
 	return res;
 }
 
 
-CursorSlice MathCursor::normalAnchor(BufferView & bv) const
+CursorSlice MathCursor::normalAnchor(LCursor & cur) const
 {
 #warning FIXME
 #if 0
-	if (Anchor_.size() < depth()) {
-		bv.resetAnchor();
+	if (Anchor_.size() < cur.depth()) {
+		cur.resetAnchor();
 		lyxerr << "unusual Anchor size" << endl;
 	}
-	//lyx::BOOST_ASSERT(Anchor_.size() >= cursor.depth());
+	//lyx::BOOST_ASSERT(Anchor_.size() >= cursor.cur.depth());
 	// use Anchor on the same level as Cursor
-	CursorSlice normal = Anchor_[depth() - 1];
-	if (depth() < Anchor_.size() && !(normal < cursor())) {
+	CursorSlice normal = Anchor_[cur.depth() - 1];
+	if (cur.depth() < Anchor_.size() && !(normal < cursor())) {
 		// anchor is behind cursor -> move anchor behind the inset
 		++normal.pos_;
 	}
 	return normal;
 #else
-	return bv.cursor();
+	return cur.top();
 #endif
 }
 
 
-DispatchResult MathCursor::dispatch(BufferView &, FuncRequest const & cmd)
+DispatchResult MathCursor::dispatch(LCursor &, FuncRequest const & cmd)
 {
 	// mouse clicks are somewhat special
 	// check
@@ -1445,13 +1410,13 @@ DispatchResult MathCursor::dispatch(BufferView &, FuncRequest const & cmd)
 			getScreenPos(x, y);
 			if (x < cmd.x && hasPrevAtom()) {
 				DispatchResult const res =
-					prevAtom().nucleus()->dispatch(bv, cmd);
+					prevAtom().nucleus()->dispatch(cur, cmd);
 				if (res.dispatched())
 					return res;
 			}
 			if (x > cmd.x && hasNextAtom()) {
 				DispatchResult const res =
-					nextAtom().nucleus()->dispatch(bv, cmd);
+					nextAtom().nucleus()->dispatch(cur, cmd);
 				if (res.dispatched())
 					return res;
 			}
@@ -1462,10 +1427,10 @@ DispatchResult MathCursor::dispatch(BufferView &, FuncRequest const & cmd)
 	}
 
 /*
-	for (int i = Cursor_.size() - 1; i >= 0; --i) {
-		CursorBase tmp = bv->Cursor_;
+	for (int i = cur.depth() - 1; i >= 0; --i) {
+		CursorBase tmp = cur->cursor_;
 		CursorSlice & pos = tmp.back()
-		DispatchResult const res = pos.asMathInset()->dispatch(bv, cmd);
+		DispatchResult const res = pos.asMathInset()->dispatch(cur, cmd);
 		if (res.dispatched()) {
 			if (res.val() == FINISHED) {
 				if (i + 1 < Cursor_.size())
@@ -1480,7 +1445,7 @@ DispatchResult MathCursor::dispatch(BufferView &, FuncRequest const & cmd)
 }
 
 
-MathInset::mode_type MathCursor::currentMode(BufferView &) const
+MathInset::mode_type MathCursor::currentMode(LCursor &) const
 {
 #if 0
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
@@ -1493,38 +1458,37 @@ MathInset::mode_type MathCursor::currentMode(BufferView &) const
 }
 
 
-void MathCursor::handleFont(BufferView & bv, string const & font)
+void MathCursor::handleFont(LCursor & cur, string const & font)
 {
-	CursorSlice cur = cursorTip(bv);
 	string safe;
 	if (selection()) {
-		macroModeClose(bv);
-		safe = grabAndEraseSelection(bv);
+		macroModeClose(cur);
+		safe = grabAndEraseSelection(cur);
 	}
 
 	if (cur.lastpos() != 0) {
 		// something left in the cell
 		if (cur.pos() == 0) {
 			// cursor in first position
-			popLeft(bv);
+			popLeft(cur);
 		} else if (cur.pos() == cur.lastpos()) {
 			// cursor in last position
-			popRight(bv);
+			popRight(cur);
 		} else {
 			// cursor in between. split cell
 			MathArray::iterator bt = cur.cell().begin();
 			MathAtom at = createMathInset(font);
 			at.nucleus()->cell(0) = MathArray(bt, bt + cur.pos());
 			cur.cell().erase(bt, bt + cur.pos());
-			popLeft(bv);
-			plainInsert(bv, at);
+			popLeft(cur);
+			plainInsert(cur, at);
 		}
 	} else {
 		// nothing left in the cell
-		pullArg(bv);
-		plainErase(bv);
+		pullArg(cur);
+		plainErase(cur);
 	}
-	insert(bv, safe);
+	insert(cur, safe);
 }
 
 

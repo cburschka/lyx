@@ -71,9 +71,8 @@ void MathNestInset::metrics(MetricsInfo const & mi) const
 }
 
 
-bool MathNestInset::idxNext(BufferView & bv) const
+bool MathNestInset::idxNext(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.idx() + 1 >= nargs())
 		return false;
 	++cur.idx();
@@ -82,15 +81,14 @@ bool MathNestInset::idxNext(BufferView & bv) const
 }
 
 
-bool MathNestInset::idxRight(BufferView & bv) const
+bool MathNestInset::idxRight(LCursor & cur) const
 {
-	return idxNext(bv);
+	return idxNext(cur);
 }
 
 
-bool MathNestInset::idxPrev(BufferView & bv) const
+bool MathNestInset::idxPrev(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.idx() == 0)
 		return false;
 	--cur.idx();
@@ -99,15 +97,14 @@ bool MathNestInset::idxPrev(BufferView & bv) const
 }
 
 
-bool MathNestInset::idxLeft(BufferView & bv) const
+bool MathNestInset::idxLeft(LCursor & cur) const
 {
-	return idxPrev(bv);
+	return idxPrev(cur);
 }
 
 
-bool MathNestInset::idxFirst(BufferView & bv) const
+bool MathNestInset::idxFirst(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (nargs() == 0)
 		return false;
 	cur.idx() = 0;
@@ -116,9 +113,8 @@ bool MathNestInset::idxFirst(BufferView & bv) const
 }
 
 
-bool MathNestInset::idxLast(BufferView & bv) const
+bool MathNestInset::idxLast(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (nargs() == 0)
 		return false;
 	cur.idx() = nargs() - 1;
@@ -127,9 +123,8 @@ bool MathNestInset::idxLast(BufferView & bv) const
 }
 
 
-bool MathNestInset::idxHome(BufferView & bv) const
+bool MathNestInset::idxHome(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.pos() == 0)
 		return false;
 	cur.pos() = 0;
@@ -137,9 +132,8 @@ bool MathNestInset::idxHome(BufferView & bv) const
 }
 
 
-bool MathNestInset::idxEnd(BufferView & bv) const
+bool MathNestInset::idxEnd(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.lastpos() == cur.lastpos())
 		return false;
 	cur.pos() = cur.lastpos();

@@ -72,18 +72,16 @@ MathScriptInset * MathScriptInset::asScriptInset()
 }
 
 
-bool MathScriptInset::idxFirst(BufferView & bv) const
+bool MathScriptInset::idxFirst(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.idx() = 2;
 	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathScriptInset::idxLast(BufferView & bv) const
+bool MathScriptInset::idxLast(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.idx() = 2;
 	cur.pos() = nuc().size();
 	return true;
@@ -315,21 +313,20 @@ bool MathScriptInset::hasDown() const
 }
 
 
-bool MathScriptInset::idxRight(BufferView &) const
+bool MathScriptInset::idxRight(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathScriptInset::idxLeft(BufferView &) const
+bool MathScriptInset::idxLeft(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathScriptInset::idxUpDown(BufferView & bv, bool up, int) const
+bool MathScriptInset::idxUpDown(LCursor & cur, bool up, int) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.idx() == 1) {
 		// if we are 'up' we can't go further up
 		if (up)

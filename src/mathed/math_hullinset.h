@@ -81,9 +81,9 @@ public:
 	///
 	char defaultColAlign(col_type col);
 	///
-	bool idxFirst(BufferView &) const;
+	bool idxFirst(LCursor &) const;
 	///
-	bool idxLast(BufferView &) const;
+	bool idxLast(LCursor &) const;
 
 	///
 	std::string fileInsetLabel() const;
@@ -116,7 +116,7 @@ private:
 	///
 	std::string nicelabel(row_type row) const;
 	///
-	void doExtern(FuncRequest const & func, BufferView &);
+	void doExtern(LCursor & cur, FuncRequest const & func);
 	///
 	void glueall();
 	///

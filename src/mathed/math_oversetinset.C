@@ -47,18 +47,16 @@ void MathOversetInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool MathOversetInset::idxFirst(BufferView & bv) const
+bool MathOversetInset::idxFirst(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.idx() = 1;
 	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathOversetInset::idxLast(BufferView & bv) const
+bool MathOversetInset::idxLast(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.idx() = 1;
 	cur.pos() = cur.lastpos();
 	return true;

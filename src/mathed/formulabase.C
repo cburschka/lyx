@@ -111,31 +111,31 @@ void InsetFormulaBase::mutateToText()
 
 
 void InsetFormulaBase::handleFont
-	(BufferView & bv, string const & arg, string const & font)
+	(LCursor & cur, string const & arg, string const & font)
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
-	recordUndo(bv, Undo::ATOMIC);
+	recordUndo(cur.bv(), Undo::ATOMIC);
 
-	if (bv.cursor().inset()->asMathInset()->name() == font)
-		mathcursor->handleFont(bv, font);
+	if (cur.inset()->asMathInset()->name() == font)
+		mathcursor->handleFont(cur, font);
 	else {
-		mathcursor->handleNest(bv, createMathInset(font));
-		mathcursor->insert(bv, arg);
+		mathcursor->handleNest(cur, createMathInset(font));
+		mathcursor->insert(cur, arg);
 	}
 }
 
 
-void InsetFormulaBase::handleFont2(BufferView & bv, string const & arg)
+void InsetFormulaBase::handleFont2(LCursor & cur, string const & arg)
 {
-	recordUndo(bv, Undo::ATOMIC);
+	recordUndo(cur.bv(), Undo::ATOMIC);
 	LyXFont font;
 	bool b;
 	bv_funcs::string2font(arg, font, b);
 	if (font.color() != LColor::inherit) {
 		MathAtom at = createMathInset("color");
 		asArray(lcolor.getGUIName(font.color()), at.nucleus()->cell(0));
-		mathcursor->handleNest(bv, at, 1);
+		mathcursor->handleNest(cur, at, 1);
 	}
 }
 
@@ -154,8 +154,8 @@ string const InsetFormulaBase::editMessage() const
 void InsetFormulaBase::insetUnlock(BufferView & bv)
 {
 	if (mathcursor) {
-		if (mathcursor->inMacroMode(bv))
-			mathcursor->macroModeClose(bv);
+		if (mathcursor->inMacroMode(bv.fullCursor()))
+			mathcursor->macroModeClose(bv.fullCursor());
 		releaseMathCursor(bv);
 	}
 	if (bv.buffer())
@@ -164,17 +164,11 @@ void InsetFormulaBase::insetUnlock(BufferView & bv)
 }
 
 
-void InsetFormulaBase::getCursor(BufferView & bv, int & x, int & y) const
-{
-	mathcursor->getScreenPos(bv, x, y);
-}
-
-
 void InsetFormulaBase::getCursorPos(BufferView & bv, int & x, int & y) const
 {
 	if (mathcursor) {
-		mathcursor->getScreenPos(bv, x, y);
-		x = mathcursor->targetX(bv);
+		mathcursor->getScreenPos(bv.fullCursor(), x, y);
+		x = mathcursor->targetX(bv.fullCursor());
 		x -= xo_;
 		y -= yo_;
 		lyxerr << "InsetFormulaBase::getCursorPos: " << x << ' ' << y << endl;
@@ -196,13 +190,6 @@ void InsetFormulaBase::getCursorDim(int & asc, int & desc) const
 }
 
 
-void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
-{
-	if (mathcursor)
-		bv->update();
-}
-
-
 DispatchResult
 InsetFormulaBase::lfunMouseRelease(BufferView & bv, FuncRequest const & cmd)
 {
@@ -213,7 +200,7 @@ InsetFormulaBase::lfunMouseRelease(BufferView & bv, FuncRequest const & cmd)
 
 	if (cmd.button() == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
-		if (!mathcursor->dispatch(bv, cmd).dispatched()) {
+		if (!mathcursor->dispatch(bv.fullCursor(), cmd).dispatched()) {
 			// launch math panel for right mouse button
 			lyxerr << "lfunMouseRelease: undispatched: " << cmd.button() << endl;
 			bv.owner()->getDialogs().show("mathpanel");
@@ -224,17 +211,17 @@ InsetFormulaBase::lfunMouseRelease(BufferView & bv, FuncRequest const & cmd)
 	if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
 		asArray(bv.getClipboard(), ar);
-		mathcursor->selClear(bv);
-		mathcursor->setScreenPos(bv, cmd.x + xo_, cmd.y + yo_);
-		mathcursor->insert(bv, ar);
+		mathcursor->selClear(bv.fullCursor());
+		mathcursor->setScreenPos(bv.fullCursor(), cmd.x + xo_, cmd.y + yo_);
+		mathcursor->insert(bv.fullCursor(), ar);
 		bv.update();
 		return DispatchResult(true, true);
 	}
 
 	if (cmd.button() == mouse_button::button1) {
 		// try to dispatch to enclosed insets first
-		mathcursor->dispatch(bv, cmd);
-		bv.stuffClipboard(mathcursor->grabSelection(bv));
+		mathcursor->dispatch(bv.fullCursor(), cmd);
+		bv.stuffClipboard(mathcursor->grabSelection(bv.fullCursor()));
 		// try to set the cursor
 		//delete mathcursor;
 		//mathcursor = new MathCursor(bv, this, x == 0);
@@ -257,20 +244,20 @@ InsetFormulaBase::lfunMousePress(BufferView & bv, FuncRequest const & cmd)
 		releaseMathCursor(bv);
 		mathcursor = new MathCursor(&bv, this, cmd.x == 0);
 		//metrics(bv);
-		mathcursor->setScreenPos(bv, cmd.x + xo_, cmd.y + yo_);
+		mathcursor->setScreenPos(bv.fullCursor(), cmd.x + xo_, cmd.y + yo_);
 	}
 
 	if (cmd.button() == mouse_button::button3) {
-		mathcursor->dispatch(bv, cmd);
+		mathcursor->dispatch(bv.fullCursor(), cmd);
 		return DispatchResult(true, true);
 	}
 
 	if (cmd.button() == mouse_button::button1) {
 		first_x = cmd.x;
 		first_y = cmd.y;
-		mathcursor->selClear(bv);
-		mathcursor->setScreenPos(bv, cmd.x + xo_, cmd.y + yo_);
-		mathcursor->dispatch(bv, cmd);
+		mathcursor->selClear(bv.fullCursor());
+		mathcursor->setScreenPos(bv.fullCursor(), cmd.x + xo_, cmd.y + yo_);
+		mathcursor->dispatch(bv.fullCursor(), cmd);
 		return DispatchResult(true, true);
 	}
 
@@ -285,7 +272,7 @@ InsetFormulaBase::lfunMouseMotion(BufferView & bv, FuncRequest const & cmd)
 	if (!mathcursor)
 		return DispatchResult(true, true);
 
-	if (mathcursor->dispatch(bv, FuncRequest(cmd)).dispatched())
+	if (mathcursor->dispatch(bv.fullCursor(), FuncRequest(cmd)).dispatched())
 		return DispatchResult(true, true);
 
 	// only select with button 1
@@ -299,9 +286,9 @@ InsetFormulaBase::lfunMouseMotion(BufferView & bv, FuncRequest const & cmd)
 	first_y = cmd.y;
 
 	if (!mathcursor->selection())
-		mathcursor->selStart(bv);
+		mathcursor->selStart(bv.fullCursor());
 
-	mathcursor->setScreenPos(bv, cmd.x + xo_, cmd.y + yo_);
+	mathcursor->setScreenPos(bv.fullCursor(), cmd.x + xo_, cmd.y + yo_);
 	bv.update();
 	return DispatchResult(true, true);
 }
@@ -325,7 +312,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y)
 	releaseMathCursor(*bv);
 	mathcursor = new MathCursor(bv, this, true);
 	//metrics(bv);
-	mathcursor->setScreenPos(*bv, x + xo_, y + yo_);
+	mathcursor->setScreenPos(bv->fullCursor(), x + xo_, y + yo_);
 	bv->fullCursor().push(this);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
@@ -344,6 +331,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 
 	// delete empty mathbox (LFUN_BACKSPACE and LFUN_DELETE)
 	bool remove_inset = false;
+	LCursor & cur = bv.fullCursor();
 
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
@@ -368,10 +356,9 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	DispatchResult result(true);
 	string argument    = cmd.argument;
 	bool sel           = false;
-	bool was_macro     = mathcursor->inMacroMode(bv);
-	bool was_selection = mathcursor->selection();
+	bool was_macro     = mathcursor->inMacroMode(cur);
 
-	mathcursor->normalize(bv);
+	mathcursor->normalize(cur);
 	mathcursor->touch();
 
 	switch (cmd.action) {
@@ -389,13 +376,13 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	case LFUN_PASTESELECTION:
 	case LFUN_MATH_LIMITS:
 		recordUndo(bv, Undo::ATOMIC);
-		mathcursor->dispatch(bv, cmd);
+		mathcursor->dispatch(cur, cmd);
 		break;
 
 	case LFUN_RIGHTSEL:
 		sel = true; // fall through...
 	case LFUN_RIGHT:
-		result = mathcursor->right(bv, sel) ?
+		result = mathcursor->right(cur, sel) ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
 		//lyxerr << "calling scroll 20" << endl;
 		//scroll(&bv, 20);
@@ -406,27 +393,27 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	case LFUN_LEFTSEL:
 		sel = true; // fall through
 	case LFUN_LEFT:
-		result = mathcursor->left(bv, sel) ?
+		result = mathcursor->left(cur, sel) ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED);
 		break;
 
 	case LFUN_UPSEL:
 		sel = true; // fall through
 	case LFUN_UP:
-		result = mathcursor->up(bv, sel) ?
+		result = mathcursor->up(cur, sel) ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED_UP);
 		break;
 
 	case LFUN_DOWNSEL:
 		sel = true; // fall through
 	case LFUN_DOWN:
-		result = mathcursor->down(bv, sel) ?
+		result = mathcursor->down(cur, sel) ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED_DOWN);
 		break;
 
 	case LFUN_WORDSEL:
-		mathcursor->home(bv, false);
-		mathcursor->end(bv, true);
+		mathcursor->home(cur, false);
+		mathcursor->end(cur, true);
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
@@ -441,7 +428,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		sel = true; // fall through
 	case LFUN_HOME:
 	case LFUN_WORDLEFT:
-		result = mathcursor->home(bv, sel)
+		result = mathcursor->home(cur, sel)
 			? DispatchResult(true, true) : DispatchResult(true, FINISHED);
 		break;
 
@@ -450,7 +437,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		sel = true; // fall through
 	case LFUN_END:
 	case LFUN_WORDRIGHT:
-		result = mathcursor->end(bv, sel)
+		result = mathcursor->end(cur, sel)
 			? DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
 		break;
 
@@ -469,17 +456,17 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		break;
 
 	case LFUN_CELL_FORWARD:
-		mathcursor->idxNext(bv);
+		mathcursor->idxNext(cur);
 		break;
 
 	case LFUN_CELL_BACKWARD:
-		mathcursor->idxPrev(bv);
+		mathcursor->idxPrev(cur);
 		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
 		recordUndo(bv, Undo::ATOMIC);
-		if (!mathcursor->backspace(bv)) {
+		if (!mathcursor->backspace(cur)) {
 			result = DispatchResult(true, FINISHED);
 			remove_inset = true;
 		}
@@ -488,7 +475,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
 		recordUndo(bv, Undo::ATOMIC);
-		if (!mathcursor->erase(bv)) {
+		if (!mathcursor->erase(cur)) {
 			result = DispatchResult(true, FINISHED);
 			remove_inset = true;
 		}
@@ -504,7 +491,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		int y = 0;
 		istringstream is(cmd.argument.c_str());
 		is >> x >> y;
-		mathcursor->setScreenPos(bv, x, y);
+		mathcursor->setScreenPos(cur, x, y);
 		break;
 	}
 
@@ -513,19 +500,19 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		istringstream is(cmd.argument.c_str());
 		is >> n;
 		if (was_macro)
-			mathcursor->macroModeClose(bv);
+			mathcursor->macroModeClose(cur);
 		recordUndo(bv, Undo::ATOMIC);
-		mathcursor->selPaste(bv, n);
+		mathcursor->selPaste(cur, n);
 		break;
 	}
 
 	case LFUN_CUT:
 		recordUndo(bv, Undo::DELETE);
-		mathcursor->selCut(bv);
+		mathcursor->selCut(cur);
 		break;
 
 	case LFUN_COPY:
-		mathcursor->selCopy(bv);
+		mathcursor->selCopy(cur);
 		break;
 
 
@@ -536,7 +523,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 			// do superscript if LyX handles
 			// deadkeys
 			recordUndo(bv, Undo::ATOMIC);
-			mathcursor->script(bv, true);
+			mathcursor->script(cur, true);
 		}
 		break;
 
@@ -559,26 +546,26 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	//  Math fonts
 	case LFUN_FREEFONT_APPLY:
 	case LFUN_FREEFONT_UPDATE:
-		handleFont2(bv, cmd.argument);
+		handleFont2(cur, cmd.argument);
 		break;
 
-	case LFUN_BOLD:         handleFont(bv, cmd.argument, "mathbf"); break;
-	case LFUN_SANS:         handleFont(bv, cmd.argument, "mathsf"); break;
-	case LFUN_EMPH:         handleFont(bv, cmd.argument, "mathcal"); break;
-	case LFUN_ROMAN:        handleFont(bv, cmd.argument, "mathrm"); break;
-	case LFUN_CODE:         handleFont(bv, cmd.argument, "texttt"); break;
-	case LFUN_FRAK:         handleFont(bv, cmd.argument, "mathfrak"); break;
-	case LFUN_ITAL:         handleFont(bv, cmd.argument, "mathit"); break;
-	case LFUN_NOUN:         handleFont(bv, cmd.argument, "mathbb"); break;
-	//case LFUN_FREEFONT_APPLY:  handleFont(bv, cmd.argument, "textrm"); break;
-	case LFUN_DEFAULT:      handleFont(bv, cmd.argument, "textnormal"); break;
+	case LFUN_BOLD:         handleFont(cur, cmd.argument, "mathbf"); break;
+	case LFUN_SANS:         handleFont(cur, cmd.argument, "mathsf"); break;
+	case LFUN_EMPH:         handleFont(cur, cmd.argument, "mathcal"); break;
+	case LFUN_ROMAN:        handleFont(cur, cmd.argument, "mathrm"); break;
+	case LFUN_CODE:         handleFont(cur, cmd.argument, "texttt"); break;
+	case LFUN_FRAK:         handleFont(cur, cmd.argument, "mathfrak"); break;
+	case LFUN_ITAL:         handleFont(cur, cmd.argument, "mathit"); break;
+	case LFUN_NOUN:         handleFont(cur, cmd.argument, "mathbb"); break;
+	//case LFUN_FREEFONT_APPLY:  handleFont(cur, cmd.argument, "textrm"); break;
+	case LFUN_DEFAULT:      handleFont(cur, cmd.argument, "textnormal"); break;
 
 	case LFUN_MATH_MODE:
-		if (mathcursor->currentMode(bv) == MathInset::TEXT_MODE)
-			mathcursor->niceInsert(bv, MathAtom(new MathHullInset("simple")));
+		if (mathcursor->currentMode(cur) == MathInset::TEXT_MODE)
+			mathcursor->niceInsert(cur, MathAtom(new MathHullInset("simple")));
 		else
-			handleFont(bv, cmd.argument, "textrm");
-		//bv.owner()->message(_("math text mode toggled"));
+			handleFont(cur, cmd.argument, "textrm");
+		//cur.owner()->message(_("math text mode toggled"));
 		break;
 
 	case LFUN_MATH_SIZE:
@@ -601,7 +588,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		m = max(1u, m);
 		n = max(1u, n);
 		v_align += 'c';
-		mathcursor->niceInsert(bv,
+		mathcursor->niceInsert(cur,
 			MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
 		break;
 	}
@@ -616,14 +603,14 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		if (rs.empty())
 			rs = ')';
 		recordUndo(bv, Undo::ATOMIC);
-		mathcursor->handleNest(bv, MathAtom(new MathDelimInset(ls, rs)));
+		mathcursor->handleNest(cur, MathAtom(new MathDelimInset(ls, rs)));
 		break;
 	}
 
 	case LFUN_SPACE_INSERT:
 	case LFUN_MATH_SPACE:
 		recordUndo(bv, Undo::ATOMIC);
-		mathcursor->insert(bv, MathAtom(new MathSpaceInset(",")));
+		mathcursor->insert(cur, MathAtom(new MathSpaceInset(",")));
 		break;
 
 	case LFUN_UNDO:
@@ -638,7 +625,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	case LFUN_INSET_ERT:
 		// interpret this as if a backslash was typed
 		recordUndo(bv, Undo::ATOMIC);
-		mathcursor->interpret(bv, '\\');
+		mathcursor->interpret(cur, '\\');
 		break;
 
 	case LFUN_BREAKPARAGRAPH:
@@ -652,7 +639,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 // math-insert only handles special math things like "matrix".
 	case LFUN_INSERT_MATH:
 		recordUndo(bv, Undo::ATOMIC);
-		mathcursor->niceInsert(bv, argument);
+		mathcursor->niceInsert(cur, argument);
 		break;
 
 	case -1:
@@ -660,22 +647,22 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		if (!argument.empty()) {
 			recordUndo(bv, Undo::ATOMIC);
 			if (argument.size() == 1)
-				result = mathcursor->interpret(bv, argument[0])
+				result = mathcursor->interpret(cur, argument[0])
 					? DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
 			else
-				mathcursor->insert(bv, argument);
+				mathcursor->insert(cur, argument);
 		}
 		break;
 
 	case LFUN_ESCAPE:
 		if (mathcursor->selection())
-			mathcursor->selClear(bv);
+			mathcursor->selClear(cur);
 		else
 			result = DispatchResult(false);
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		mathcursor->insetToggle(bv);
+		mathcursor->insetToggle(cur);
 		break;
 
 	case LFUN_DIALOG_SHOW:
@@ -707,7 +694,7 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		} else {
 			MathArray ar;
 			if (createMathInset_fromDialogStr(cmd.argument, ar)) {
-				mathcursor->insert(bv, ar);
+				mathcursor->insert(cur, ar);
 				result = DispatchResult(true, true);
 			} else {
 				result = DispatchResult(false);
@@ -731,17 +718,14 @@ InsetFormulaBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	if (result == DispatchResult(true, true))
 		bv.update();
 
-	mathcursor->normalize(bv);
+	mathcursor->normalize(cur);
 	mathcursor->touch();
 
 	BOOST_ASSERT(mathcursor);
 
-	if (mathcursor->selection() || was_selection)
-		toggleInsetSelection(&bv);
-
 	if (result.dispatched()) {
 		revealCodes(bv);
-		bv.stuffClipboard(mathcursor->grabSelection(bv));
+		bv.stuffClipboard(mathcursor->grabSelection(cur));
 	} else {
 		releaseMathCursor(bv);
 		if (remove_inset)
@@ -756,7 +740,7 @@ void InsetFormulaBase::revealCodes(BufferView & bv) const
 {
 	if (!mathcursor)
 		return;
-	bv.owner()->message(mathcursor->info(bv));
+	bv.owner()->message(mathcursor->info(bv.fullCursor()));
 /*
 	// write something to the minibuffer
 	// translate to latex
@@ -849,7 +833,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 			delete mathcursor;
 			mathcursor = new MathCursor(bv, this, true);
 			//metrics(bv);
-			mathcursor->setSelection(*bv, it, ar.size());
+			mathcursor->setSelection(bv->fullCursor(), it, ar.size());
 			current = it;
 			top.pos_ += ar.size();
 			bv->update();
@@ -879,7 +863,7 @@ bool InsetFormulaBase::display() const
 
 string InsetFormulaBase::selectionAsString(BufferView & bv) const
 {
-	return mathcursor ? mathcursor->grabSelection(bv) : string();
+	return mathcursor ? mathcursor->grabSelection(bv.fullCursor()) : string();
 }
 
 /////////////////////////////////////////////////////////////////////

@@ -14,11 +14,14 @@
 #include "math_data.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+#include "BufferView.h"
 #include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
+
 #include "frontends/Painter.h"
+
 #include "support/std_sstream.h"
 
 #include "insets/mailinset.h"
@@ -751,9 +754,8 @@ int MathGridInset::cellYOffset(idx_type idx) const
 }
 
 
-bool MathGridInset::idxUpDown(BufferView & bv, bool up, int targetx) const
+bool MathGridInset::idxUpDown(LCursor & cur, bool up, int targetx) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (up) {
 		if (cur.idx() < ncols())
 			return false;
@@ -768,10 +770,9 @@ bool MathGridInset::idxUpDown(BufferView & bv, bool up, int targetx) const
 }
 
 
-bool MathGridInset::idxLeft(BufferView & bv) const
+bool MathGridInset::idxLeft(LCursor & cur) const
 {
 	// leave matrix if on the left hand edge
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.col() == 0)
 		return false;
 	--cur.idx();
@@ -780,10 +781,9 @@ bool MathGridInset::idxLeft(BufferView & bv) const
 }
 
 
-bool MathGridInset::idxRight(BufferView & bv) const
+bool MathGridInset::idxRight(LCursor & cur) const
 {
 	// leave matrix if on the right hand edge
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.col() + 1 == ncols())
 		return false;
 	++cur.idx();
@@ -792,9 +792,8 @@ bool MathGridInset::idxRight(BufferView & bv) const
 }
 
 
-bool MathGridInset::idxFirst(BufferView & bv) const
+bool MathGridInset::idxFirst(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	switch (v_align_) {
 		case 't':
 			cur.idx() = 0;
@@ -810,9 +809,8 @@ bool MathGridInset::idxFirst(BufferView & bv) const
 }
 
 
-bool MathGridInset::idxLast(BufferView & bv) const
+bool MathGridInset::idxLast(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	switch (v_align_) {
 		case 't':
 			cur.idx() = ncols() - 1;
@@ -828,9 +826,8 @@ bool MathGridInset::idxLast(BufferView & bv) const
 }
 
 
-bool MathGridInset::idxHome(BufferView & bv) const
+bool MathGridInset::idxHome(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.pos() > 0) {
 		cur.pos() = 0;
 		return true;
@@ -849,9 +846,8 @@ bool MathGridInset::idxHome(BufferView & bv) const
 }
 
 
-bool MathGridInset::idxEnd(BufferView & bv) const
+bool MathGridInset::idxEnd(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.pos() < cur.lastpos()) {
 		cur.pos() = cur.lastpos();
 		return true;
@@ -1033,9 +1029,8 @@ int MathGridInset::border() const
 }
 
 
-void MathGridInset::splitCell(BufferView & bv)
+void MathGridInset::splitCell(LCursor & cur)
 {
-	CursorSlice & cur = cursorTip(bv);
 	if (cur.idx() + 1 == nargs())
 		return;
 	MathArray ar = cur.cell();
@@ -1050,7 +1045,7 @@ void MathGridInset::splitCell(BufferView & bv)
 DispatchResult
 MathGridInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
-	CursorSlice & cur = cursorTip(bv);
+	LCursor & cur = bv.fullCursor();
 	switch (cmd.action) {
 
 		case LFUN_MOUSE_RELEASE:
@@ -1082,7 +1077,7 @@ MathGridInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 
 		case LFUN_CELL_SPLIT:
 			//recordUndo(bv, Undo::ATOMIC);
-			splitCell(bv);
+			splitCell(cur);
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_BREAKLINE: {
@@ -1095,7 +1090,7 @@ MathGridInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 				std::swap(cell(index(r, c)), cell(index(r + 1, c)));
 
 			// split cell
-			splitCell(bv);
+			splitCell(cur);
 			std::swap(cell(cur.idx()), cell(cur.idx() + ncols() - 1));
 			if (cur.idx() > 0)
 				--cur.idx();

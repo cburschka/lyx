@@ -18,6 +18,7 @@
 #include "math_extern.h"
 #include "math_charinset.h"
 #include "textpainter.h"
+#include "BufferView.h"
 #include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -135,18 +136,16 @@ MathInset::mode_type MathHullInset::currentMode() const
 }
 
 
-bool MathHullInset::idxFirst(BufferView & bv) const
+bool MathHullInset::idxFirst(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.idx() = 0;
 	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathHullInset::idxLast(BufferView & bv) const
+bool MathHullInset::idxLast(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.idx() = nargs() - 1;
 	cur.pos() = cur.lastpos();
 	return true;
@@ -696,9 +695,8 @@ void MathHullInset::check() const
 }
 
 
-void MathHullInset::doExtern(FuncRequest const & func, BufferView & bv)
+void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
 {
-	CursorSlice & cur = cursorTip(bv);
 	string lang;
 	string extra;
 	istringstream iss(func.argument.c_str());
@@ -728,7 +726,7 @@ void MathHullInset::doExtern(FuncRequest const & func, BufferView & bv)
 		size_type pos = cur.cell().find_last(eq);
 		MathArray ar;
 		if (mathcursor && mathcursor->selection()) {
-			asArray(mathcursor->grabAndEraseSelection(bv), ar);
+			asArray(mathcursor->grabAndEraseSelection(cur), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
@@ -841,7 +839,7 @@ MathHullInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		}
 
 		case LFUN_MATH_EXTERN:
-			doExtern(cmd, bv);
+			doExtern(bv.fullCursor(), cmd);
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_MATH_MUTATE: {

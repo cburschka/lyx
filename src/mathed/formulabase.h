@@ -20,6 +20,7 @@ class Buffer;
 class BufferView;
 class MathAtom;
 class CursorSlice;
+class LCursor;
 
 
 /// An abstract base class for all math related LyX insets
@@ -45,14 +46,10 @@ public:
 	virtual InsetOld::Code lyxCode() const;
 	/// what appears in the minibuffer when opening
 	virtual std::string const editMessage() const;
-	///
+	/// get the absolute document x,y of the cursor
 	virtual void getCursorPos(BufferView & bv, int & x, int & y) const;
 	///
 	virtual void getCursorDim(int &, int &) const;
-	/// get the absolute document x,y of the cursor
-	virtual void getCursor(BufferView & bv, int & x, int & y) const;
-	///
-	virtual void toggleInsetSelection(BufferView * bv);
 	///
 	virtual void insetUnlock(BufferView & bv);
 
@@ -113,9 +110,9 @@ protected:
 	virtual void generatePreview(Buffer const &) const {}
 
 	///
-	void handleFont(BufferView & bv, std::string const & arg, std::string const & font);
+	void handleFont(LCursor &, std::string const & arg, std::string const & font);
 	///
-	void handleFont2(BufferView & bv, std::string const & arg);
+	void handleFont2(LCursor &, std::string const & arg);
 };
 
 // We don't really mess want around with mathed stuff outside mathed.

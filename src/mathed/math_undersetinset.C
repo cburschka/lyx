@@ -47,27 +47,24 @@ void MathUndersetInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool MathUndersetInset::idxFirst(BufferView & bv) const
+bool MathUndersetInset::idxFirst(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.idx() = 1;
 	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathUndersetInset::idxLast(BufferView & bv) const
+bool MathUndersetInset::idxLast(LCursor & cur) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	cur.idx() = 1;
 	cur.pos() = cur.lastpos();
 	return true;
 }
 
 
-bool MathUndersetInset::idxUpDown(BufferView & bv, bool up, int targetx) const
+bool MathUndersetInset::idxUpDown(LCursor & cur, bool up, int targetx) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	idx_type target = up; // up ? 1 : 0, since upper cell has idx 1
 	if (cur.idx() == target)
 		return false;

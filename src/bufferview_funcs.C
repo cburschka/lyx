@@ -168,7 +168,7 @@ string const currentState(BufferView * bv)
 		return string();
 
 	if (mathcursor)
-		return mathcursor->info(*bv);
+		return mathcursor->info(bv->fullCursor());
 
 	ostringstream state;
 

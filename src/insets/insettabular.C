@@ -398,12 +398,12 @@ void InsetTabular::lfunMousePress(BufferView & bv, FuncRequest const & cmd)
 		tablemode = true;
 		bv.fullCursor(theTempCursor);
 		bv.fullCursor().push(this);
-		bv.fullCursor().cell(cell);
+		bv.fullCursor().idx() = cell;
 	} else {
 		tablemode = false;
 		setPos(bv, cmd.x, cmd.y);
 		bv.fullCursor(theTempCursor);
-		bv.fullCursor().cell(cell);
+		bv.fullCursor().idx() = cell;
 	}
 	lyxerr << bv.cursor() << endl;
 
@@ -422,7 +422,7 @@ void InsetTabular::lfunMouseMotion(BufferView & bv, FuncRequest const & cmd)
 		setSelection(actcell, actcell);
 		bv.setSelection();
 	} else {
-		bv.cursor().idx(actcell);
+		bv.cursor().idx() = actcell;
 		setSelection(sel_cell_start, actcell);
 		tablemode = (sel_cell_start != actcell);
 	}
@@ -460,7 +460,7 @@ void InsetTabular::edit(BufferView * view, bool left)
 	resetPos(bv);
 	bv.fitCursor();
 	bv.fullCursor().push(this);
-	bv.fullCursor().cell(cell);
+	bv.fullCursor().idx() = cell;
 	lyxerr << bv.cursor() << endl;
 }
 

@@ -78,9 +78,8 @@ void MathRootInset::normalize(NormalStream & os) const
 }
 
 
-bool MathRootInset::idxUpDown(BufferView & bv, bool up, int) const
+bool MathRootInset::idxUpDown(LCursor & cur, bool up, int) const
 {
-	CursorSlice & cur = cursorTip(bv);
 	bool target = !up; // up ? 0 : 1;
 	if (cur.idx() == target)
 		return false;

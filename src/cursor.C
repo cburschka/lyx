@@ -217,21 +217,13 @@ InsetTabular * LCursor::innerInsetTabular() const
 }
 
 
-void LCursor::cell(int idx)
-{
-	BOOST_ASSERT(!cursor_.empty());
-	cursor_.back().idx_ = idx;
-}
-
-
-int LCursor::cell() const
-{
-	BOOST_ASSERT(!cursor_.empty());
-	return cursor_.back().idx_;
-}
-
-
 void LCursor::resetAnchor()
 {
 	anchor_ = cursor_;
+}
+
+
+BufferView & LCursor::bv() const
+{
+	return *bv_;
 }
