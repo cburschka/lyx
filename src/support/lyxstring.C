@@ -888,12 +888,14 @@ lyxstring::size_type lyxstring::find(lyxstring const & a, size_type i) const
 	
 	TestlyxstringInvariant(this);
 
-	for (size_type t = i; rep->sz - t >= a.length(); ++t) {
+	size_type n = a.length();
+	if (!n) return npos;
+	for (size_type t = i; rep->sz - t >= n; ++t) {
 		// search until (*this)[i] == a[0]
 		if (rep->s[t] == a[0]) {
 			// check if the rest of the value_types match
 			bool equal = true;
-			for (size_type j = 0; j < a.length(); ++j) {
+			for (size_type j = 1; j < n; ++j) {
 				if (rep->s[t + j] != a[j]) {
 					equal = false;
 					break;
@@ -919,12 +921,13 @@ lyxstring::size_type lyxstring::find(value_type const * ptr, size_type i,
 	// for ptr in? For now I will assume that "n" tells the length
 	// of ptr. (Lgb)
 	n = min(n, strlen(ptr));
+	if (!n) return npos;
 	for (size_type t = i; rep->sz - t >= n; ++t) {
 		// search until (*this)[i] == a[0]
 		if (rep->s[t] == ptr[0]) {
 			// check if the rest of the value_types match
 			bool equal = true;
-			for (size_type j = 0; j < n; ++j) {
+			for (size_type j = 1; j < n; ++j) {
 				if (rep->s[t + j] != ptr[j]) {
 					equal = false;
 					break;
@@ -966,17 +969,24 @@ lyxstring::size_type lyxstring::rfind(lyxstring const & a, size_type i) const
 {
 	TestlyxstringInvariant(this);
 
-	size_type ii = min(rep->sz - 1, i);
+	size_type n = a.length();
+	if (!n || rep->sz < n)
+		return npos;
+
+	size_type t = min(rep->sz - n, i);
 	do {
-		if (a[a.length() - 1] == rep->s[ii]) {
-			int t = rep->sz - 2;
-			size_type l = ii - 1;
-			for (; t >= 0; --t, --l) {
-				if (a[t] != rep->s[l]) break;
+		if (rep->s[t] == a[0]) {
+			// check if the rest of the value_types match
+			bool equal = true;
+			for (size_type j = 1; j < n; ++j) {
+				if (rep->s[t + j] != a[j]) {
+					equal = false;
+					break;
+				}
 			}
-			if (a[t] == rep->s[l]) return l;
+			if (equal) return t;
 		}
-	} while(ii-- > 0);
+	} while(t-- > 0);
 	return npos;
 }
 
@@ -986,19 +996,25 @@ lyxstring::size_type lyxstring::rfind(value_type const * ptr, size_type i,
 {
 	Assert(ptr); // OURS!
 	TestlyxstringInvariant(this);
-	if (!*ptr) return npos;
 
-	size_type ii = min(rep->sz - 1, i);
+	n = min(n, strlen(ptr));
+	if (!n || rep->sz < n)
+		return npos;
+
+	size_type t = min(rep->sz - n, i);
 	do {
-		if (ptr[n - 1] == rep->s[ii]) {
-			int t = n - 2;
-			size_type l = ii - 1;
-			for (; t >= 0; --t, --l) {
-				if (ptr[t] != rep->s[l]) break;
+		if (rep->s[t] == ptr[0]) {
+			// check if the rest of the value_types match
+			bool equal = true;
+			for (size_type j = 1; j < n; ++j) {
+				if (rep->s[t + j] != ptr[j]) {
+					equal = false;
+					break;
+				}
 			}
-			if (ptr[t] == rep->s[l]) return l;
+			if (equal) return t;
 		}
-	} while (ii-- > 0);
+	} while (t-- > 0);
 	return npos;
 }
 
@@ -1007,21 +1023,9 @@ lyxstring::size_type lyxstring::rfind(value_type const * ptr,
 				      size_type i) const
 {
 	Assert(ptr); // OURS!
-	TestlyxstringInvariant(this);
-	if (!*ptr) return npos;
 
-	size_type ii = min(rep->sz - 1, i);
-	do {
-		if (ptr[strlen(ptr) - 1] == rep->s[ii]) {
-			int t = strlen(ptr) - 2;
-			size_type l = ii - 1;
-			for (; t >= 0; --t, --l) {
-				if (ptr[t] != rep->s[l]) break;
-			}
-			if (ptr[t] == rep->s[l]) return l;
-		}
-	} while (ii-- > 0);
-	return npos;
+	if (!ptr || !*ptr) return npos;
+	return rfind(ptr, i, strlen(ptr));
 }
 
 
@@ -1755,3 +1759,12 @@ istream & getline(istream & is, lyxstring & s,
 	}
 	return is;
 }
+
+#ifdef TEST_MAIN
+int main() {
+	lyxstring a = "abcac";
+	cout << a.rfind("ab") << endl;
+	cout << a.rfind("c") << endl;
+	cout << a.rfind("d") << endl;
+}
+#endif
