@@ -227,7 +227,12 @@ public:
 	 */
 	Row * getRow(Paragraph * par,
 		     lyx::pos_type pos, int & y) const;
-
+	/** returns the firstrow, this could be done with the above too but
+	    IMO it's stupid to have to allocate a dummy y all the time I need
+	    the first row
+	*/
+	Row * firstRow() { return firstrow; }
+			
 	/** returns the height of a default row, needed  for scrollbar
 	 */
 	int defaultHeight() const;
@@ -501,10 +506,9 @@ public:
 		return bidi_start == -1 ||
 			(bidi_start <= pos && pos <= bidi_end);
 	}
-public:
+private:
 	///
 	mutable Row * firstrow;
-private:
 	///
 	mutable Row * lastrow;
 

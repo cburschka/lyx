@@ -69,7 +69,8 @@ Debug::type const Debug::ANY = Debug::type(
 	Debug::PARSER | Debug::LYXRC | Debug::KBMAP | Debug::LATEX |
 	Debug::MATHED | Debug::FONT | Debug::TCLASS | Debug::LYXVC |
 	Debug::LYXSERVER | Debug::ROFF | Debug::ACTION | Debug::LYXLEX |
-	Debug::DEPEND | Debug::INSETS | Debug::FILES | Debug::WORKAREA);
+	Debug::DEPEND | Debug::INSETS | Debug::FILES | Debug::WORKAREA |
+	Debug::INSETTEXT);
 
 
 Debug::type Debug::value(string const & val) 

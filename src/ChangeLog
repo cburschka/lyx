@@ -1,5 +1,8 @@
 2001-11-29  Juergen Vigna  <jug@sad.it>
 
+	* lyxtext.h: added helper function firstRow returning firstrow and
+	made firstrow private again.
+
 	* BufferView2.C (lockInset): don't relock if we're already locked!
 
 	* text2.C (deleteEmptyParagraphMechanism): don't do anything if it's

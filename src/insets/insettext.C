@@ -291,9 +291,14 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 
 int InsetText::ascent(BufferView * bv, LyXFont const &) const
 {
-	int y_temp = 0;
-	Row * row = getLyXText(bv)->getRowNearY(y_temp);
-	insetAscent = row->ascent_of_text() + TEXT_TO_INSET_OFFSET;
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
+	insetAscent = lt->firstRow()->ascent_of_text() + TEXT_TO_INSET_OFFSET;
+	if (clear)
+		lt = 0;
 	return insetAscent;
 }
 
@@ -305,10 +310,8 @@ int InsetText::descent(BufferView * bv, LyXFont const &) const
 		lt = getLyXText(bv);
 		clear = true;
 	}
-	int y_temp = 0;
-	Row * row = lt->getRowNearY(y_temp);
-	insetDescent = lt->height - row->ascent_of_text() +
-	TEXT_TO_INSET_OFFSET;
+	insetDescent = lt->height - lt->firstRow()->ascent_of_text() +
+		TEXT_TO_INSET_OFFSET;
 	if (clear)
 		lt = 0;
 	return insetDescent;
@@ -440,12 +443,11 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	}
 	x += TEXT_TO_INSET_OFFSET;
 
-	int y = 0;
-	Row * row = lt->getRowNearY(y);
+	Row * row = lt->firstRow();
 	int y_offset = baseline - row->ascent_of_text();
 	int ph = pain.paperHeight();
 	int first = 0;
-	y = y_offset;
+	int y = y_offset;
 	while ((row != 0) && ((y+row->height()) <= 0)) {
 		y += row->height();
 		first += row->height();
@@ -2042,7 +2044,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 {
 	if (!recursive && (cached_bview == lbv)) {
 		LyXText * lt = cached_text.get();
-		lyx::Assert(lt && lt->firstrow->par() == par);
+		lyx::Assert(lt && lt->firstRow()->par() == par);
 		return cached_text.get();
 	}
 	
@@ -2420,10 +2422,9 @@ void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 
 	int x = top_x + TEXT_TO_INSET_OFFSET;
 
-	int y = 0;
-	Row * row = lt->getRowNearY(y);
+	Row * row = lt->firstRow();
 	int y_offset = top_baseline - row->ascent_of_text();
-	y = y_offset;
+	int y = y_offset;
 	while ((row != 0) && ((y+row->height()) <= 0)) {
 		y += row->height();
 		row = row->next();
