@@ -565,22 +565,7 @@ string const InsetInclude::PreviewImpl::latexString() const
 	ostringstream os;
 	parent().latex(view()->buffer(), os, false, false);
 
-	// This fails if the file has a relative path.
-	// return os.str().c_str();
-
-	// I would /really/ like not to do this, but don't know how to tell
-	// LaTeX where to find a \input-ed file...
-	// HELP!
-	string command;
-	string file = rtrim(split(os.str().c_str(), command, '{'), "}");
-
-	if (!AbsolutePath(file))
-		file = MakeAbsPath(file, view()->buffer()->filePath());
-
-	ostringstream out;
-	out << command << '{' << file << '}' << endl;
-	
-	return out.str().c_str();
+	return os.str().c_str();
 }
 
 

@@ -1,3 +1,9 @@
+2002-08-09  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C (dumpPreamble): pass Buffer::filePath() to
+	Buffer::makeLaTeXFile() so that LaTeX can find \input files because
+	input@path is now set correctly.
+
 2002-08-06  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C: add support for preview.sty 0.73 (currently

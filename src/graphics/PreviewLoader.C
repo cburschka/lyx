@@ -577,7 +577,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	// Why on earth is Buffer::makeLaTeXFile a non-const method?
 	Buffer & tmp = const_cast<Buffer &>(buffer_);
 	// Dump the preamble only.
-	tmp.makeLaTeXFile(os, string(), true, false, true);
+	tmp.makeLaTeXFile(os, buffer_.filePath(), true, false, true);
 
 	// Loop over the insets in the buffer and dump all the math-macros.
 	Buffer::inset_iterator it  = buffer_.inset_const_iterator_begin();
