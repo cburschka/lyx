@@ -393,79 +393,83 @@ void LyXText::setLayout(string const & layout)
 }
 
 
-bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
+namespace {
+
+
+void getSelectionSpan(LyXText & text,
+	ParagraphList::iterator & beg,
+	ParagraphList::iterator & end)
 {
-	ParagraphList::iterator pit = cursorPar();
-	ParagraphList::iterator end = pit;
-	ParagraphList::iterator start = pit;
-
-	if (selection.set()) {
-		pit = getPar(selection.start);
-		end = getPar(selection.end);
-		start = pit;
+	if (!text.selection.set()) {
+		beg = text.cursorPar();
+		end = boost::next(beg);
+	} else {
+		beg = text.getPar(text.selection.start);
+		end = boost::next(text.getPar(text.selection.end));
 	}
+}
 
-	if (!test_only)
-		recUndo(parOffset(start), parOffset(end));
 
-	bool changed = false;
+bool changeDepthAllowed(bv_funcs::DEPTH_CHANGE type,
+			Paragraph const & par,
+			int max_depth)
+{
+	if (par.layout()->labeltype == LABEL_BIBLIO)
+		return false;
+	int const depth = par.params().depth();
+	if (type == bv_funcs::INC_DEPTH && depth < max_depth)
+		return true;
+	if (type == bv_funcs::DEC_DEPTH && depth > 0)
+		return true;
+	return false;
+}
 
-	int prev_after_depth = 0;
-#warning parlist ... could be nicer ?
-	if (start != ownerParagraphs().begin()) {
-		prev_after_depth = boost::prior(start)->getMaxDepthAfter();
+
+}
+
+
+bool LyXText::changeDepthAllowed(bv_funcs::DEPTH_CHANGE type)
+{
+	ParagraphList::iterator beg, end; 
+	getSelectionSpan(*this, beg, end);
+	int max_depth = 0;
+	if (beg != ownerParagraphs().begin())
+		max_depth = boost::prior(beg)->getMaxDepthAfter();
+
+	for (ParagraphList::iterator pit = beg; pit != end; ++pit) {
+		if (::changeDepthAllowed(type, *pit, max_depth))
+			return true;
+		max_depth = pit->getMaxDepthAfter();
 	}
+	return false;
+}
 
-	while (true) {
-		int const depth = pit->params().depth();
-		if (type == bv_funcs::INC_DEPTH) {
-			if (depth < prev_after_depth
-			    && pit->layout()->labeltype != LABEL_BIBLIO) {
-				changed = true;
-				if (!test_only)
-					pit->params().depth(depth + 1);
-			}
-		} else if (depth) {
-			changed = true;
-			if (!test_only)
+
+void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
+{
+	ParagraphList::iterator beg, end;
+	getSelectionSpan(*this, beg, end);
+	
+	recUndo(parOffset(beg), parOffset(end) - 1);
+
+	int max_depth = 0;
+	if (beg != ownerParagraphs().begin())
+		max_depth = boost::prior(beg)->getMaxDepthAfter();
+
+	for (ParagraphList::iterator pit = beg; pit != end; ++pit) {
+		if (::changeDepthAllowed(type, *pit, max_depth)) {
+			int const depth = pit->params().depth();
+			if (type == bv_funcs::INC_DEPTH)
+				pit->params().depth(depth + 1);
+			else
 				pit->params().depth(depth - 1);
 		}
-
-		prev_after_depth = pit->getMaxDepthAfter();
-
-#warning SERIOUS: Uahh... does this mean we access end->getMaxDepthAfter?
-		if (pit == end) {
-			break;
-		}
-
-		++pit;
+		max_depth = pit->getMaxDepthAfter();
 	}
-
-	if (test_only)
-		return changed;
-
-	redoParagraphs(start, boost::next(end));
-
-	// We need to actually move the text->cursor. I don't
-	// understand why ...
-	LyXCursor tmpcursor = cursor;
-
-	// we have to reset the visual selection because the
-	// geometry could have changed
-	if (selection.set()) {
-		setCursor(selection.start.par(), selection.start.pos());
-		selection.cursor = cursor;
-		setCursor(selection.end.par(), selection.end.pos());
-	}
-
 	// this handles the counter labels, and also fixes up
 	// depth values for follow-on (child) paragraphs
 	updateCounters();
-
-	setSelection();
-	setCursor(tmpcursor.par(), tmpcursor.pos());
-
-	return changed;
+	redoCursor();
 }
 
 
@@ -654,8 +658,7 @@ string LyXText::getStringToIndex()
 // they do not duplicate themself and you cannot play dirty tricks with
 // them!
 
-void LyXText::setParagraph(
-			   VSpace const & space_top,
+void LyXText::setParagraph(VSpace const & space_top,
 			   VSpace const & space_bottom,
 			   Spacing const & spacing,
 			   LyXAlignment align,
@@ -720,7 +723,6 @@ void LyXText::setParagraph(
 	setCursor(selection.end.par(), selection.end.pos());
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos());
-	bv()->update();
 }
 
 
@@ -980,17 +982,18 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 }
 
 
-// Updates all counters. Paragraphs with changed label string will be
-// not be rebroken as this is too expensive. The next round will get it
-// right anyway...
+// Updates all counters.
 void LyXText::updateCounters()
 {
 	// start over
 	bv()->buffer()->params().getLyXTextClass().counters().reset();
 
+	bool update_pos = false;
+	
 	ParagraphList::iterator beg = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
 	for (ParagraphList::iterator pit = beg; pit != end; ++pit) {
+		string const oldLabel = pit->params().labelString();
 		size_t maxdepth = 0;
 		if (pit != beg)
 			maxdepth = boost::prior(pit)->getMaxDepthAfter();
@@ -1000,7 +1003,15 @@ void LyXText::updateCounters()
 
 		// setCounter can potentially change the labelString.
 		setCounter(*bv()->buffer(), pit);
+		string const & newLabel = pit->params().labelString();
+		if (oldLabel != newLabel) {
+			redoParagraphInternal(pit);
+			update_pos = true;
+		}
+		
 	}
+	if (update_pos)
+		updateParPositions();
 }
 
 
@@ -1268,8 +1279,16 @@ bool LyXText::setCursor(paroffset_type par, pos_type pos, bool setfont, bool bou
 
 void LyXText::redoCursor()
 {
-#warning maybe the same for selections?
 	setCursor(cursor, cursor.par(), cursor.pos(), cursor.boundary());
+
+	if (!selection.set())
+		return;
+
+	LyXCursor tmpcursor = cursor;
+	setCursor(selection.cursor.par(), selection.cursor.pos());
+	selection.cursor = cursor;
+	setCursor(tmpcursor.par(), tmpcursor.pos());
+	setSelection();
 }
 
 

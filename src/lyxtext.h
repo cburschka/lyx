@@ -87,12 +87,11 @@ public:
 	///
 	void setLayout(std::string const & layout);
 
-	/**
-	 * Increase or decrease the nesting depth of the selected paragraph(s)
-	 * if test_only, don't change any depths. Returns whether something
-	 * (would have) changed
-	 */
-	bool changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only);
+	/// Increase or decrease the nesting depth of the selected paragraph(s)
+	void changeDepth(bv_funcs::DEPTH_CHANGE type);
+
+	/// Returns whether something would be changed by changeDepth
+	bool changeDepthAllowed(bv_funcs::DEPTH_CHANGE type);
 
 	/// get the depth at current cursor position
 	int getDepth() const;

@@ -22,14 +22,8 @@ using std::string;
 
 void TextCursor::setSelection()
 {
-	if (!selection.set()) {
-		selection.start = selection.cursor;
-		selection.end = selection.cursor;
-	}
-
 	selection.set(true);
 
-	// and now the whole selection
 	if (selection.cursor.par() == cursor.par())
 		if (selection.cursor.pos() < cursor.pos()) {
 			selection.end = cursor;
@@ -43,8 +37,7 @@ void TextCursor::setSelection()
 		  && selection.cursor.pos() < cursor.pos())) {
 		selection.end = cursor;
 		selection.start = selection.cursor;
-	}
-	else {
+	} else {
 		selection.end = selection.cursor;
 		selection.start = cursor;
 	}

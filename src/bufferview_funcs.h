@@ -48,12 +48,11 @@ enum DEPTH_CHANGE {
 	DEC_DEPTH
 };
 
-/**
- * Increase or decrease the nesting depth of the selected paragraph(s)
- * if test_only, don't change any depths. Returns whether something
- * (would have) changed
- */
-bool changeDepth(BufferView *, LyXText *, DEPTH_CHANGE, bool test_only);
+/// Increase or decrease the nesting depth of the selected paragraph(s)
+void changeDepth(BufferView *, LyXText *, DEPTH_CHANGE);
+
+/// Returns whether something would be changed by changeDepth
+bool changeDepthAllowed(BufferView *, LyXText *, DEPTH_CHANGE);
 
 /// Returns the current font and depth as a message.
 std::string const currentState(BufferView *);

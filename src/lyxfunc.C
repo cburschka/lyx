@@ -349,11 +349,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_DEPTH_MIN:
-		disable = !changeDepth(view(), view()->getLyXText(), DEC_DEPTH, true);
+		disable = !changeDepthAllowed(view(), view()->getLyXText(), DEC_DEPTH);
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		disable = !changeDepth(view(), view()->getLyXText(), INC_DEPTH, true);
+		disable = !changeDepthAllowed(view(), view()->getLyXText(), INC_DEPTH);
 		break;
 
 	case LFUN_LAYOUT:

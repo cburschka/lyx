@@ -1436,14 +1436,12 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_DEPTH_MIN:
-		clearSelection();
-		bv_funcs::changeDepth(bv, this, bv_funcs::DEC_DEPTH, false);
+		bv_funcs::changeDepth(bv, this, bv_funcs::DEC_DEPTH);
 		bv->update();
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		clearSelection();
-		bv_funcs::changeDepth(bv, this, bv_funcs::INC_DEPTH, false);
+		bv_funcs::changeDepth(bv, this, bv_funcs::INC_DEPTH);
 		bv->update();
 		break;
 

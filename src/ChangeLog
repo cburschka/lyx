@@ -1,3 +1,12 @@
+2003-11-26  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* bufferview_funcs.[Ch]: split changeDepthAllowed from changeDepth
+	* lyxtext.h: ditto
+	* text2.C: same thing + updateCounters fix + redoCursor also adjusts
+	selection cursors
+	* lyxfunc.C: adjust
+	* text3.C: adjust + re-allow multi par depth changes
+	* textcursor.C: simplify a bit
 
 2003-11-25  Martin Vermeer  <martin.vermeer@hut.fi>
 
