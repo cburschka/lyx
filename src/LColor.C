@@ -82,6 +82,10 @@ LColor::LColor()
 	fill(vfillline, _("vfill line"), "vfillline", "Brown", "vfillline");
 	fill(topline, _("top/bottom line"), "topline", "Brown", "topline");
 	fill(tableline, _("table line"), "tableline", "black", "tableline");
+	fill(tabularline, _("tabular line"), "tabularline", "black",
+	     "tabularline");
+	fill(tabularonoffline, _("tabularonoff line"), "tabularonoffline",
+	     "LightSteelBlue", "tabularonoffline");
 	fill(bottomarea, _("bottom area"), "bottomarea", "grey40", "bottomarea");
 	fill(pagebreak, _("page break"), "pagebreak", "RoyalBlue", "pagebreak");
 	fill(top, _("top of button"), "top", "grey80", "top");

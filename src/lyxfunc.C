@@ -2059,7 +2059,10 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_INSET_TABULAR:
 	{
-		InsetTabular * new_inset = new InsetTabular(owner->buffer(),2,2);
+		int r = 2, c = 2;
+		if (!argument.empty())
+			sscanf(argument.c_str(),"%d%d",&r,&c);
+		InsetTabular * new_inset = new InsetTabular(owner->buffer(),r,c);
 		owner->view()->insertInset(new_inset);
 		new_inset->Edit(owner->view(), 0, 0, 0);
 	}

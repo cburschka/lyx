@@ -179,6 +179,8 @@ lyx_SOURCES = \
 	stl_string_fwd.h \
 	table.C \
 	table.h \
+	tabular.C \
+	tabular.h \
 	tex-accent.C \
 	tex-accent.h \
 	tex-defs.h \

@@ -50,14 +50,14 @@
 #endif
 
 #include "lyxinset.h"
-#include "table.h"
+#include "tabular.h"
 #include "LString.h"
+#include "lyxcursor.h"
 
 class LyXLex;
 class Painter;
 class BufferView;
 class Buffer;
-class TexRow;
 
 class InsetTabular : public UpdatableInset {
 public:
@@ -96,7 +96,7 @@ public:
     ///
     bool UpdateInsetInInset(BufferView *, Inset *);
     ///
-    bool display() const { return tabular->IsLongTable(); }
+    bool display() const { return tabular->IsLongTabular(); }
     ///
     void InsetButtonRelease(BufferView *, int, int, int);
     ///
@@ -122,7 +122,7 @@ public:
     ///
     void ToggleInsetCursor(BufferView *);
     ///
-    void TableFeatures(int feature, string val="");
+    void TabularFeatures(int feature, string val="");
     ///
     int GetActCell() { return actcell; }
     ///
@@ -130,32 +130,32 @@ public:
     ///
     /// Public structures and variables
     ///
-    LyXTable * tabular;
+    LyXTabular * tabular;
 
 private:
     void calculate_width_of_cells(Painter &, LyXFont const &) const;
     ///
-    void DrawCellLines(Painter &, int x, int baseline, int row, int cell);
+    void DrawCellLines(Painter &, int x, int baseline, int row, int cell) const;
     ///
     void ShowInsetCursor(BufferView *);
     ///
     void HideInsetCursor(BufferView *);
     ///
-    void setPos(int x, int y, bool activate_inset=true);
+    void setPos(Painter &, int x, int y) const;
     ///
     void setWidthOfCell(int pos, int cell, int row);
     ///
-    bool moveRight(bool activate_inset=true);
-    bool moveLeft(bool activate_inset=true);
-    bool moveUp(bool activate_inset=true);
-    bool moveDown(bool activate_inset=true);
+    UpdatableInset::RESULT moveRight(BufferView *);
+    UpdatableInset::RESULT moveLeft();
+    UpdatableInset::RESULT moveUp();
+    UpdatableInset::RESULT moveDown();
     bool moveNextCell();
     bool movePrevCell();
     bool Delete();
     ///
-    void resetPos();
+    void resetPos(BufferView *);
     ///
-    void RemoveTableRow();
+    void RemoveTabularRow();
     ///
     bool hasCharSelection() const {return (sel_pos_start != sel_pos_end);}
     bool hasCellSelection() const {return hasCharSelection() &&
@@ -167,16 +167,16 @@ private:
         * the_locking_inset;
     Buffer
         * buffer;
-    int
+    mutable LyXCursor
+        cursor,
+	old_cursor;
+    mutable int
         inset_pos,
         inset_x, inset_y,
         sel_pos_start,
 	sel_pos_end,
 	sel_cell_start,
 	sel_cell_end,
-        old_x,
-        cx, cy,
-        actpos,
         actcell,
         actcol,
         actrow;

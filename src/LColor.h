@@ -136,6 +136,10 @@ public:
 		topline,
 		/// Table line color
 		tableline,
+		/// Table line color
+		tabularline,
+		/// Table line color
+		tabularonoffline,
 		/// Bottom area color
 		bottomarea,
 		/// Page break color
