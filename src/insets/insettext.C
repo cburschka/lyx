@@ -1436,6 +1436,13 @@ bool InsetText::insertInsetAllowed(Inset * in) const
 	return true;
 }
 
+bool InsetText::insertInsetAllowed(Inset::Code code) const
+{
+	if (the_locking_inset)
+		return the_locking_inset->insertInsetAllowed(code);
+	return true;
+}
+
 
 UpdatableInset * InsetText::getLockingInset() const
 {

@@ -36,7 +36,7 @@ InsetCollapsable::InsetCollapsable()
 	: UpdatableInset()
 {
 	inset.setOwner(this);
-	collapsed = false;
+	collapsed_ = false;
 	label = "Label";
 	autocollapse = true;
 	inset.setAutoBreakRows(true);
@@ -62,7 +62,7 @@ bool InsetCollapsable::insertInset(BufferView * bv, Inset * in)
 
 void InsetCollapsable::write(Buffer const * buf, ostream & os) const
 {
-	os << "collapsed " << tostr(collapsed) << "\n";
+	os << "collapsed " << tostr(collapsed_) << "\n";
 	inset.writeParagraphData(buf, os);
 }
 
@@ -75,7 +75,7 @@ void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
 		string const token = lex.GetString();
 		if (token == "collapsed") {
 			lex.next();
-			collapsed = lex.GetBool();
+			collapsed_ = lex.GetBool();
 		} else {
 			lyxerr << "InsetCollapsable::Read: Missing collapsed!"
 			       << endl;
@@ -126,7 +126,7 @@ int InsetCollapsable::ascent(BufferView * bv, LyXFont const & font) const
 
 int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
 {
-	if (collapsed) 
+	if (collapsed_) 
 		return descent_collapsed(bv->painter(), font);
 
 	return descent_collapsed(bv->painter(), font)
@@ -138,7 +138,7 @@ int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
 
 int InsetCollapsable::width(BufferView * bv, LyXFont const & font) const
 {
-	if (collapsed) 
+	if (collapsed_) 
 		return widthCollapsed;
 
 	return (inset.width(bv, font) > widthCollapsed) ?
@@ -169,7 +169,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	button_bottom_y = -ascent(bv, f) + ascent_collapsed(pain,f) +
 		descent_collapsed(pain, f);
 
-	if (collapsed) {
+	if (collapsed_) {
 		draw_collapsed(pain, f, baseline, x);
 		x += TEXT_TO_INSET_OFFSET;
 		return;
@@ -229,8 +229,8 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 {
 	UpdatableInset::edit(bv, xp, yp, button);
 
-	if (collapsed) {
-		collapsed = false;
+	if (collapsed_) {
+		collapsed_ = false;
 		if (!bv->lockInset(this))
 			return;
 		bv->updateInset(this, false);
@@ -245,7 +245,7 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 
 Inset::EDITABLE InsetCollapsable::editable() const
 {
-	if (collapsed)
+	if (collapsed_)
 		return IS_EDITABLE;
 	return HIGHLY_EDITABLE;
 }
@@ -254,7 +254,7 @@ Inset::EDITABLE InsetCollapsable::editable() const
 void InsetCollapsable::insetUnlock(BufferView * bv)
 {
 	if (autocollapse) {
-		collapsed = true;
+		collapsed_ = true;
 	}
 	inset.insetUnlock(bv);
 	if (scroll())
@@ -266,7 +266,7 @@ void InsetCollapsable::insetUnlock(BufferView * bv)
 void InsetCollapsable::insetButtonPress(BufferView * bv, int x, int y,
 					int button)
 {
-	if (!collapsed && (y > button_bottom_y)) {
+	if (!collapsed_ && (y > button_bottom_y)) {
 		inset.insetButtonPress(bv, x, y + (top_baseline - inset.y()),
 				       button);
 	}
@@ -278,16 +278,16 @@ void InsetCollapsable::insetButtonRelease(BufferView * bv,
 {
 	if ((x >= 0)  && (x < button_length) &&
 	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
-		if (collapsed) {
-			collapsed = false;
+		if (collapsed_) {
+			collapsed_ = false;
 			inset.insetButtonRelease(bv, 0, 0, button);
 			bv->updateInset(this, false);
 		} else {
-			collapsed = true;
+			collapsed_ = true;
 			bv->unlockInset(this);
 			bv->updateInset(this, false);
 		}
-	} else if (!collapsed && (y > button_top_y)) {
+	} else if (!collapsed_ && (y > button_top_y)) {
 		inset.insetButtonRelease(bv, x, y + (top_baseline-inset.y()),
 					 button);
 	}
@@ -522,4 +522,12 @@ Inset * InsetCollapsable::getInsetFromID(int id_arg) const
 	if (id_arg == id())
 		return const_cast<InsetCollapsable *>(this);
 	return inset.getInsetFromID(id_arg);
+}
+
+void InsetCollapsable::collapsed(BufferView * bv, bool flag)
+{
+	if (flag == collapsed_)
+		return;
+	collapsed_ = flag;
+	bv->updateInset(this, false);
 }

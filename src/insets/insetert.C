@@ -74,7 +74,7 @@ Inset * InsetERT::clone(Buffer const &, bool same_id) const
 	InsetERT * result = new InsetERT;
 	result->inset.init(&inset, same_id);
 	
-	result->collapsed = collapsed;
+	result->collapsed_ = collapsed_;
 	if (same_id)
 		result->id_ = id_;
 	return result;

@@ -153,6 +153,7 @@ public:
 	bool insertInset(BufferView *, Inset *);
 	///
 	bool insertInsetAllowed(Inset *) const;
+	bool insertInsetAllowed(Inset::Code) const;
 	///
 	UpdatableInset * getLockingInset() const;
 	///

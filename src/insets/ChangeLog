@@ -1,5 +1,14 @@
 2001-07-12  Juergen Vigna  <jug@sad.it>
 
+	* insetcollapsable.h: added implementation of new function for
+	collapsable status.
+
+	* various files: added implementation of new insertInsetAllowed-func
+	and redone the function a bit more.
+	
+	* inset.h: added isCollapsable(), bool collapsed(),
+	collapsed(BufferView *, bool) and insertInsetAllowed(Inset::Code).
+
 	* insetfloat.C (insertInsetAllowed): make a bit more checks.
 
 	* insettext.C (getLyXText): use 'lt' to assure we're not erasing the

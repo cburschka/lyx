@@ -31,6 +31,9 @@ public:
 	InsetFootlike();
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
+	///
+	bool insertInsetAllowed(Inset * inset) const;
+	bool insertInsetAllowed(Inset::Code) const;
 };
 
 #endif

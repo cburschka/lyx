@@ -179,7 +179,7 @@ Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
 	InsetMinipage * result = new InsetMinipage;
 	result->inset.init(&inset, same_id);
 	
-	result->collapsed = collapsed;
+	result->collapsed_ = collapsed_;
 	result->pos_ = pos_;
 	result->inner_pos_ = inner_pos_;
 	result->height_ = height_;
@@ -192,7 +192,7 @@ Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
 
 int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
 {
-	if (collapsed)
+	if (collapsed_)
 		return ascent_collapsed(bv->painter(), font);
 	else {
 		// Take placement into account.
@@ -216,7 +216,7 @@ int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
 
 int InsetMinipage::descent(BufferView * bv, LyXFont const & font) const
 {
-	if (collapsed)
+	if (collapsed_)
 		return descent_collapsed(bv->painter(), font);
 	else {
 		// Take placement into account.
@@ -271,11 +271,15 @@ int InsetMinipage::latex(Buffer const * buf,
 
 bool InsetMinipage::insertInsetAllowed(Inset * in) const
 {
-	if ((in->lyxCode() == Inset::FLOAT_CODE) ||
-	    (in->lyxCode() == Inset::MARGIN_CODE)) {
+	return insertInsetAllowed(in->lyxCode());
+}
+
+bool InsetMinipage::insertInsetAllowed(Inset::Code code) const
+{
+	if ((code == Inset::FLOAT_CODE) || (code == Inset::MARGIN_CODE))
 		return false;
-	}
-	return true;
+
+	return InsetCollapsable::insertInsetAllowed(code);
 }
 
 

@@ -67,6 +67,9 @@ public:
 	bool insertInsetAllowed(Inset * in) const {
 		return inset.insertInsetAllowed(in);
 	}
+	bool insertInsetAllowed(Inset::Code code) const {
+		return inset.insertInsetAllowed(code);
+	}
 	///
 	bool isTextInset() const { return true; }
 	///
@@ -74,7 +77,7 @@ public:
 	///
 	void insetUnlock(BufferView *);
 	///
-	bool needFullRow() const { return !collapsed; }
+	bool needFullRow() const { return !collapsed_; }
 	///
 	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
@@ -153,6 +156,10 @@ public:
 	Paragraph * firstParagraph() const;
 	///
 	LyXCursor const & cursor(BufferView *) const;
+	///
+	bool isCollapsable() const { return true; }
+	bool collapsed() const { return collapsed_; }
+	void collapsed(BufferView *, bool);
 
 protected:
 	///
@@ -167,7 +174,7 @@ protected:
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
 	
 	///
-	bool collapsed;
+	bool collapsed_;
 	///
 	LColor::color framecolor;
 	///

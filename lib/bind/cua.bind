@@ -47,7 +47,6 @@
 \bind "C-e"			"font-emph"
 # used below for line-delete-forward
 #\bind "C-k"			"font-noun"		# 'k' for capitals
-\bind "C-l"			"tex-mode"		# 'l' for LaTeX
 \bind "C-u"			"font-underline"
 \bind "C-S-P"			"font-code"		# 'P' for program
 
@@ -73,6 +72,7 @@
 \bind "M-S-Right"		"depth-increment"
 \bind "M-S-Left"		"depth-decrement"
 \bind "C-S-space"		"protected-space-insert"
+\bind "C-l"			"ert-insert"		# 'l' for LaTeX
 
 #bind "F1"			"help"			# Not yet implemented!
 #bind "C-F1"			"help-context"		# Not yet implemented!

@@ -176,7 +176,7 @@ Inset * InsetFloat::clone(Buffer const &, bool same_id) const
 	InsetFloat * result = new InsetFloat(floatType_);
 	result->inset.init(&inset, same_id);
 
-	result->collapsed = collapsed;
+	result->collapsed_ = collapsed_;
 	if (same_id)
 		result->id_ = id_;
 	return result;
@@ -236,15 +236,18 @@ int InsetFloat::docBook(Buffer const * buf, ostream & os) const
 
 bool InsetFloat::insertInsetAllowed(Inset * in) const
 {
-	if (in->lyxCode() == Inset::FLOAT_CODE)
+	return insertInsetAllowed(in->lyxCode());
+}
+
+
+bool InsetFloat::insertInsetAllowed(Inset::Code code) const
+{
+	if (code == Inset::FLOAT_CODE)
 		return false;
 	if (inset.getLockingInset() != this)
-		return inset.insertInsetAllowed(in);
-	if ((in->lyxCode() == Inset::FOOT_CODE) ||
-	    (in->lyxCode() == Inset::MARGIN_CODE))
-	{
+		return inset.insertInsetAllowed(code);
+	if ((code == Inset::FOOT_CODE) || (code == Inset::MARGIN_CODE))
 		return false;
-	}
 	return true;
 }
 

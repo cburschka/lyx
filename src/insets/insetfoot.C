@@ -37,7 +37,7 @@ Inset * InsetFoot::clone(Buffer const &, bool same_id) const
 	InsetFoot * result = new InsetFoot;
 	result->inset.init(&inset, same_id);
 
-	result->collapsed = collapsed;
+	result->collapsed_ = collapsed_;
 	if (same_id)
 		result->id_ = id_;
 	return result;
@@ -59,14 +59,4 @@ int InsetFoot::latex(Buffer const * buf,
 	os << "%\n}";
 	
 	return i + 2;
-}
-
-
-bool InsetFoot::insertInsetAllowed(Inset * in) const
-{
-	if ((in->lyxCode() == Inset::FOOT_CODE) ||
-	    (in->lyxCode() == Inset::MARGIN_CODE)) {
-		return false;
-	}
-	return true;
 }

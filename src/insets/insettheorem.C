@@ -59,7 +59,7 @@ Inset * InsetTheorem::clone(Buffer const &, bool) const
 #warning Is this inset used? If YES this is WRONG!!! (Jug)
 	InsetTheorem * result = new InsetTheorem;
 	
-	result->collapsed = collapsed;
+	result->collapsed_ = collapsed_;
 	return result;
 }
 
@@ -79,16 +79,4 @@ int InsetTheorem::latex(Buffer const * buf,
 	os << "\\end{theorem}%\n";
 	
 	return i + 2;
-}
-
-
-bool InsetTheorem::insertInsetAllowed(Inset * inset) const
-{
-	lyxerr << "InsetTheorem::InsertInsetAllowed" << endl;
-	
-	if ((inset->lyxCode() == Inset::FOOT_CODE) ||
-	    (inset->lyxCode() == Inset::MARGIN_CODE)) {
-		return false;
-	}
-	return true;
 }

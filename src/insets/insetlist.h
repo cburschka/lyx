@@ -35,8 +35,6 @@ public:
 	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
 	string const editMessage() const;
-	///
-	bool insertInsetAllowed(Inset * inset) const;
 };
 
 #endif

@@ -368,6 +368,7 @@ public:
 	virtual bool insertInset(BufferView *, Inset *) { return false; }
 	///
 	virtual bool insertInsetAllowed(Inset *) const { return false; }
+	virtual bool insertInsetAllowed(Inset::Code) const { return false; }
 	///
 	virtual UpdatableInset * getLockingInset() const {
 		return const_cast<UpdatableInset *>(this);
@@ -408,6 +409,11 @@ public:
 	virtual bool nodraw() const {
 		return block_drawing_;
 	}
+	///
+	virtual bool isCollapsable() const { return false; }
+	///
+	virtual bool collapsed() const { return false; }
+	virtual void collapsed(BufferView *, bool) {}
 
 protected:
 	///
