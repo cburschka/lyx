@@ -1,3 +1,11 @@
+// Baruch Even  baruch@ev-en.org  2001-02-20
+//  This version is a modified version for use in LyX
+//  The modifications are done in order to use it where exceptions are disabled
+//  Currently it has no "no memory" checks in place, asserts are probably the
+//  only real way.
+//  all changed are #ifded'ed by LYX_NO_EXCEPTIONS
+#define LYX_NO_EXCEPTIONS
+
 //  Boost smart_ptr.hpp header file  -----------------------------------------//
 
 //  (C) Copyright Greg Colvin and Beman Dawes 1998, 1999. Permission to copy,
@@ -129,8 +137,12 @@ template<typename T> class shared_ptr {
    typedef T element_type;
 
    explicit shared_ptr(T* p =0) : px(p) {
+#ifndef LYX_NO_EXCEPTIONS
       try { pn = new long(1); }  // fix: prevent leak if new throws
       catch (...) { delete p; throw; } 
+#else
+	  pn = new long(1);
+#endif
    }
 
    shared_ptr(const shared_ptr& r) : px(r.px) { ++*(pn = r.pn); }  // never throws
@@ -200,12 +212,16 @@ template<typename T> class shared_ptr {
       if ( px == p ) return;  // fix: self-assignment safe
       if (--*pn == 0) { delete px; }
       else { // allocate new reference counter
+#ifndef LYX_NO_EXCEPTIONS		  
         try { pn = new long; }  // fix: prevent leak if new throws
         catch (...) {
           ++*pn;  // undo effect of --*pn above to meet effects guarantee 
           delete p;
           throw;
         } // catch
+#else
+		pn = new long;
+#endif
       } // allocate new reference counter
       *pn = 1;
       px = p;
@@ -277,8 +293,12 @@ template<typename T> class shared_array {
    typedef T element_type;
 
    explicit shared_array(T* p =0) : px(p) {
+#ifndef LYX_NO_EXCEPTIONS
       try { pn = new long(1); }  // fix: prevent leak if new throws
       catch (...) { delete [] p; throw; } 
+#else
+	  pn = new long(1);
+#endif
    }
 
    shared_array(const shared_array& r) : px(r.px)  // never throws
@@ -299,12 +319,16 @@ template<typename T> class shared_array {
       if ( px == p ) return;  // fix: self-assignment safe
       if (--*pn == 0) { delete [] px; }
       else { // allocate new reference counter
+#ifndef LYX_NO_EXCEPTIONS
         try { pn = new long; }  // fix: prevent leak if new throws
         catch (...) {
           ++*pn;  // undo effect of --*pn above to meet effects guarantee 
           delete [] p;
           throw;
         } // catch
+#else
+		pn = new long;
+#endif
       } // allocate new reference counter
       *pn = 1;
       px = p;
