@@ -61,6 +61,16 @@ private:
 	QWidget * w_; 
 };
  
+namespace { 
+	char const ** panels[] = {
+		latex_bop, latex_varsz, latex_brel, latex_greek, latex_arrow,
+		latex_dots, latex_deco, latex_misc, latex_ams_ops,
+		latex_ams_rel, latex_ams_nrel, latex_ams_arrows,
+		latex_ams_misc
+	};
+	int const nr_panels = sizeof(panels)/sizeof(panels[0]);
+}
+ 
  
 QMathDialog::QMathDialog(QMath * form)
 	: QMathDialogBase(0, 0, false, 0),
@@ -72,37 +82,32 @@ QMathDialog::QMathDialog(QMath * form)
 		functionsLB->insertItem(function_names[i]);
 	}
  
-	addPanel("operators", latex_bop);
-	addPanel("bigoperators", latex_varsz);
-	addPanel("relations", latex_brel);
-	addPanel("greek", latex_greek);
-	addPanel("arrows", latex_arrow);
-	addPanel("dots", latex_dots);
-	addPanel("deco", latex_deco);
-	addPanel("misc", latex_misc);
-	addPanel("amsoperators", latex_ams_ops);
-	addPanel("amsrelations", latex_ams_rel);
-	addPanel("amsnegrelations", latex_ams_nrel);
-	addPanel("amsarrows", latex_ams_arrows);
-	addPanel("amsmisc", latex_ams_misc);
+	for (int i = 0; i < nr_panels; ++i) {
+		addPanel(panels[i]);
+	}
 	symbolsWS->raiseWidget(0);
 	symbolsWS->resize(symbolsWS->sizeHint());
 }
 
  
-void QMathDialog::addPanel(string const & name, char const ** entries)
+IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 {
-	static int id = 0;
- 
-	QScrollViewSingle * view = new QScrollViewSingle(symbolsWS);
-	IconPalette * p = new IconPalette(view->viewport());
- 
+	IconPalette * p = new IconPalette(parent);
 	for (int i = 0; *entries[i]; ++i) {
 		string xpm_name = LibFileSearch("images/math/", entries[i], "xpm");
 		p->add(QPixmap(xpm_name.c_str()), entries[i], string("\\") + entries[i]);
 	}
 	connect(p, SIGNAL(button_clicked(string)), this, SLOT(symbol_clicked(string)));
+	return p;
+}
+
  
+void QMathDialog::addPanel(char const ** entries)
+{
+	static int id = 0;
+ 
+	QScrollViewSingle * view = new QScrollViewSingle(symbolsWS);
+	IconPalette * p = makePanel(view->viewport(), entries);
 	view->setChild(p);
 	symbolsWS->addWidget(view, id++);
 }
@@ -133,8 +138,10 @@ void QMathDialog::delimiterClicked()
  
 void QMathDialog::expandClicked()
 {
+	int const id = symbolsWS->id(symbolsWS->visibleWidget());
+	IconPalette * p = makePanel(0, panels[id]);
+	p->show();
 }
-
  
  
 void QMathDialog::functionSelected(const QString & str)

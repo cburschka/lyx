@@ -16,6 +16,7 @@
 #include "ui/QMathDialogBase.h"
 
 class QMath;
+class IconPalette;
 
 class QMathDialog : public QMathDialogBase
 {
@@ -41,8 +42,11 @@ protected:
 	//needed ? virtual void closeEvent(QCloseEvent * e);
 
 private:
+	/// make a symbol panel
+	IconPalette * makePanel(QWidget * parent, char const ** entries);
+
 	/// add a symbol panel
-	void addPanel(string const & name, char const ** entries);
+	void addPanel(char const ** entries);
  
 	/// owning form
 	QMath * form_;
