@@ -1,3 +1,16 @@
+2000-06-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* NEWS: update.
+
+	* lib/CREDITS: update entry for Martin Vermeer.
+
+2000-06-06  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/text.C (draw): Draw foreign language bars at the bottom of
+	the row instead of at the baseline.
+
+	* lib/examples/Minipage.lyx: Use the new multi-lingual support.
+
 2000-06-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* lib/bind/de_menus.bind: updated
@@ -6,9 +19,6 @@
 
 	* forms/lyx.fd: Correct gravity for objects in form_toc and form_ref
 
-2000-06-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
-  
-  	* src/bufferlist.C (close): test of buf->getuser() == NULL
 2000-06-05  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/menus.C (Limit_string_length): New function
@@ -18,6 +28,7 @@
 	* src/paragraph.C (String): Correct result for a paragraph inside
  	a footnote.
 
+>>>>>>> 1.359
 2000-06-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/bufferlist.C (close): test of buf->getuser() == NULL

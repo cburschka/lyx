@@ -551,7 +551,7 @@ void LyXText::draw(Row const * row,
 
 		if (lyxrc.mark_foreign_language &&
 		    font.language() != buffer->params.language_info) {
-			int y = offset + row->baseline + 2;
+			int y = offset + row->height - 1;
 			pain.line(int(tmpx), y, int(x), y,
 				  LColor::language);
 		}
@@ -643,7 +643,7 @@ void LyXText::draw(Row const * row,
 		
 	} else if (lyxrc.mark_foreign_language &&
 	    font.language() != buffer->params.language_info) {
-		int y = offset + row->baseline + 2;
+		int y = offset + row->height - 1;
 		pain.line(int(tmpx), y, int(x), y,
 			  LColor::language);
 	}

@@ -21,20 +21,30 @@ User-visible changes:
 - Right-to-Left support for Hebrew and Arabic, this is a first attempt
   only and is likely to improve in future versions.
 
-- New visual feedback for environment depth of paragraphs (also the !
-  in the margin for margin notes has been removed). 
-
 - Per-paragraph spacing, currently only settable from the
   command-line/window:
       paragraph-spacing (default,single,onehalf,double,other) [float]
 
-- More accurate error reporting from LaTeX runs.
+- New visual feedback for environment depth of paragraphs (also the !
+  in the margin for margin notes has been removed). 
+
+- End-of-proof box, for layouts where it makes sense.
+
+- labels are now editable (not in equations, though).
 
 - Much faster spellchecking (50x faster!).
 
+- The parsing of the LaTex log has improved flagging more errors that
+  earlier versions of LyX did not see at all. So if you suddenly have
+  errors in documents that used to have none, this might be the casue.
+  (And you probably had the error always.)
+
 - Better definition for LyXList style.
 
-- End-of-proof box, for layouts where it makes sense.
+- hollywood.layout and broadway.layout have improved. New classes
+  LLNCS (Lecture Notes in Computer Science), svjog (Journal of Geodesy)
+
+- support for varioref and pretty ref (preliminary support)
 
 - A couple of changes to the LyX format, so that files written with
   1.1.5 will not be parsed correctly by older LyX versions if protected
@@ -54,14 +64,6 @@ User-visible changes:
   by lyx should be stored, and \override_x_deadkeys to tell whether 
   lyx should provide its own accent keys handling (default is true). 
 
-- hollywood.layout and broadway.layout have improved.
-
-- support for varioref and pretty ref (preliminary support)
-
-- The parsing of the LaTex log has improved flagging more errors that
-  earlier versions of LyX did not see at all. So if you suddenly have
-  errors in documents that used to have none, this might be the casue.
-  (And you probably had the error always.)
 
 What's new in LyX version 1.1.4?
 --------------------------------
