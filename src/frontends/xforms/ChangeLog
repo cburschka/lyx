@@ -1,3 +1,8 @@
+2002-11-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* FileDialog.C (save): actually return the result from
+	FileDialog::open 
+
 2002-11-26  Jürgen Spitzmüller  <juergen.sp@t-online.de>
 
 	* FormTabular.C: correct lots of bugs in the setting/getting of

@@ -50,7 +50,7 @@ FileDialog::~FileDialog()
 
 FileDialog::Result const FileDialog::save(string const & path, string const & mask, string const & suggested)
 {
-	open(path, mask, suggested);
+	return open(path, mask, suggested);
 }
 
  
