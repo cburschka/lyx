@@ -21,7 +21,6 @@
 
 #include "Alert.h"
 #include "Alert_pimpl.h"
-#include "xforms_helpers.h"
 
 using std::pair;
 using std::make_pair;

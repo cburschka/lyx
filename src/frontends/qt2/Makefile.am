@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-SUBDIRS = xforms ui moc
+SUBDIRS = ui moc
 
 EXTRA_DIST = Makefile.dialogs QDocument.C QDocument.h \
 	QDocumentDialog.C QDocumentDialog.h QParagraph.h QParagraph.C \

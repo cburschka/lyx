@@ -142,3 +142,9 @@ bool lyx_gui::font_available(LyXFont const & font)
 {
 	return fontloader.available(font);
 }
+
+
+void lyx_gui::set_read_callback(int fd, LyXComm * comm)
+{
+	// FIXME 
+}

@@ -17,6 +17,9 @@
 #endif
 
 #include "LString.h"
+
+#include <boost/signals/trackable.hpp>
+ 
 class LyXFunc;
 class LyXServer;
 
@@ -29,7 +32,7 @@ class LyXServer;
  This class encapsulates all the dirty communication and thus provides
  a clean string interface.
  */
-class LyXComm {
+class LyXComm : public boost::signals::trackable {
 public:
 	/** When we receive a message, we send it to a client.
 	  This is one of the small things that would have been a lot
@@ -55,8 +58,8 @@ public:
 	/// Send message
 	void send(string const &);
 
-	/// We receive messages via XForms through this callback
-	static void callback(int fd, void *v);
+	/// asynch ready-to-be-read notification
+	void read_ready();
 
 private:
 	/// the filename of the in pipe

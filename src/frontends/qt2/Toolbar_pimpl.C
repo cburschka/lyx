@@ -20,9 +20,7 @@
 #include "buffer.h"
 #include "lyxtextclasslist.h"
 #include "LyXAction.h"
-#include "MathsSymbols.h" 
 #include "gettext.h"
-#include "Tooltips.h"
 
 #include "support/LAssert.h"
 #include "support/filetools.h"

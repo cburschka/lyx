@@ -16,6 +16,7 @@
 
 class Dialogs;
 class LyXFont;
+class LyXComm;
 
 /// GUI interaction
 namespace lyx_gui {
@@ -54,6 +55,11 @@ namespace lyx_gui {
 	 * is the given font available ?
 	 */
 	bool font_available(LyXFont const & font);
+
+	/**
+	 * add a callback for I/O read notification
+	 */
+	void set_read_callback(int fd, LyXComm * comm);
 }
 
 #endif // LYX_GUI_H

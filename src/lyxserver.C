@@ -53,6 +53,7 @@
 #include "lyxfunc.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "frontends/lyx_gui.h"
 
 #ifdef __EMX__
 #include <cstdlib>
@@ -75,23 +76,6 @@ int mkfifo(char const * __path, mode_t __mode) {
 #endif
 
 
-/* === variables ========================================================= */
-
-extern "C" {
-
-	// C wrapper
-	static
-	void C_LyXComm_callback(int fd, void *v)
-	{
-		LyXComm::callback(fd, v);
-	}
-
-}
-
-
-// LyXComm class
-
-// Open pipes
 void LyXComm::openConnection()
 {
 	lyxerr[Debug::LYXSERVER] << "LyXComm: Opening connection" << endl;
@@ -215,8 +199,9 @@ int LyXComm::startPipe(string const & filename, bool write)
 		return -1;
 	}
 
-	if (!write)
-		fl_add_io_callback(fd, FL_READ, C_LyXComm_callback, this);
+	if (!write) {
+		lyx_gui::set_read_callback(fd, this);
+	}
 
 	return fd;
 }
@@ -267,15 +252,13 @@ void LyXComm::emergencyCleanup()
 
 
 // Receives messages and sends then to client
-void LyXComm::callback(int fd, void *v)
+void LyXComm::read_ready()
 {
-	LyXComm * c = static_cast<LyXComm*>(v);
-
 	if (lyxerr.debugging(Debug::LYXSERVER)) {
-		lyxerr << "LyXComm: Receiving from fd " << fd << endl;
+		lyxerr << "LyXComm: Receiving from fd " << infd << endl;
 	}
 
-	const int CMDBUFLEN = 100;
+	int const CMDBUFLEN = 100;
 	char charbuf[CMDBUFLEN];
 	string cmd;
 // nb! make lsbuf a class-member for multiple sessions
@@ -284,17 +267,12 @@ void LyXComm::callback(int fd, void *v)
 	errno = 0;
 	int status;
 	// the single = is intended here.
-	while ((status = read(fd, charbuf, CMDBUFLEN-1)))
-	{// break and return in loop
-		if (status > 0) // got something
-		{
+	while ((status = read(infd, charbuf, CMDBUFLEN-1))) {
+		if (status > 0) {
 			charbuf[status]= '\0'; // turn it into a c string
 			lsbuf += strip(charbuf, '\r');
 			// commit any commands read
-			while (lsbuf.find('\n') != string::npos) // while still
-							// commands
-							// left
-			{
+			while (lsbuf.find('\n') != string::npos) {
 				// split() grabs the entire string if
 				// the delim /wasn't/ found. ?:-P
 				lsbuf= split(lsbuf, cmd,'\n');
@@ -303,19 +281,15 @@ void LyXComm::callback(int fd, void *v)
 					<< ", lsbuf:" << lsbuf
 					<< ", cmd:" << cmd << endl;
 				if (!cmd.empty())
-					c->clientcb(c->client, cmd);
+					clientcb(client, cmd);
 					//\n or not \n?
 			}
 		}
-		if (errno == EAGAIN)
-		{  // EAGAIN is not really an error , it means we're
-		   // only reading too fast for the writing process on
-		   // the other end of the pipe.
+		if (errno == EAGAIN) {
 			errno = 0;
-			return; // up to libforms select-loop (*crunch*)
+			return;
 		}
-		if (errno != 0)
-		{
+		if (errno != 0) {
 			lyxerr << "LyXComm: " << strerror(errno) << endl;
 			if (!lsbuf.empty())
 			{
@@ -326,8 +300,8 @@ void LyXComm::callback(int fd, void *v)
 			break; // reset connection
 		}
 	}
-	c->closeConnection();
-	c->openConnection();
+	closeConnection();
+	openConnection();
 	errno= 0;
 }
 

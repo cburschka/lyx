@@ -122,39 +122,6 @@ extern tex_accent_struct get_accent(kb_action action);
 extern void ShowLatexLog();
 
 
-#if 0
-
-///
-class MiniBufferController : public SigC::Object {
-public:
-	///
-	MiniBufferController() {
-		minibuffer
-			.cmdReady
-			.connect(slot(this,
-				      &MiniBufferController::receiveCommand));
-		minibuffer
-			.argReady
-			.connect(slot(this,
-				      &MiniBufferController::receiveArg));
-	}
-	///
-	void receiveCmd(string const & cmd) {}
-	///
-	void receiveArg(string const & arg) {}
-
-
-private:
-};
-
-namespace {
-
-MiniBufferController mb_ctrl;
-
-}
-#endif
-
-
 /* === globals =========================================================== */
 
 

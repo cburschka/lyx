@@ -352,3 +352,16 @@ bool lyx_gui::font_available(LyXFont const & font)
 {
 	return fontloader.available(font);
 }
+
+namespace {
+	void C_read_callback(int, void * data)
+	{
+		LyXComm * comm = static_cast<LyXComm *>(data); 
+		comm->read_ready();
+	}
+}
+
+void lyx_gui::set_read_callback(int fd, LyXComm * comm)
+{
+	fl_add_io_callback(fd, FL_READ, C_read_callback, comm);
+}
