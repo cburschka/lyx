@@ -3030,9 +3030,11 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 			}
 		}
 
-
-		if (par->isInset(i)) {
-			Inset * inset = par->getInset(i);
+		char c = par->getChar(i);
+		switch (c) {
+		case Paragraph::META_INSET:
+		{
+			Inset const * inset = par->getInset(i);
 			// don't print the inset in position 0 if desc_on == 3 (label)
 			if (i || desc_on != 3) {
 				if (style->latexparam() == "CDATA")
@@ -3041,8 +3043,18 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 				if (style->latexparam() == "CDATA")
 					os << "<![CDATA[";
 			}
-		} else {
-			char c = par->getChar(i);
+			
+			break;
+		}
+		case Paragraph::META_NEWLINE:
+			os << "\n";
+			break;
+
+		case Paragraph::META_HFILL:
+			os << " ";
+			break;
+
+		default:
 			bool ws;
 			string str;
 			boost::tie(ws, str) = sgml::escapeChar(c);

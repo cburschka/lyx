@@ -1,5 +1,10 @@
 2003-06-06  José Matos  <jamatos@fep.up.pt>
 
+	* buffer.C (simpleDocBookOnePar): output meta::newline and
+	meta::hfill correctly, fixes bug #1148
+
+2003-06-06  José Matos  <jamatos@fep.up.pt>
+
 	* buffer.C (makeDocBookFile): fix bug #821
 
 2003-05-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
