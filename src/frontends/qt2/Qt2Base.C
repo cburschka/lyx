@@ -17,15 +17,14 @@
 #endif
 
 #include <qdialog.h>
+#include <qapplication.h> 
 
+#include "debug.h" 
 #include "QtLyXView.h" 
 #include "Dialogs.h"
 #include "Qt2Base.h"
 #include "Qt2BC.h"
 #include "support/LAssert.h"
-
-#include <stdio.h>
-
 
 Qt2Base::Qt2Base(ControlButtons & c, QString const & t)
 	: ViewBC<Qt2BC>(c), title_(t)
@@ -51,6 +50,12 @@ void Qt2Base::show()
 }
 
 
+void Qt2Base::reset()
+{
+	qApp->processEvents();
+}
+
+ 
 void Qt2Base::hide()
 {
 	if (form() && form()->isVisible())
@@ -79,7 +84,6 @@ void Qt2Base::slotWMHide()
 }
 
 
-
 void Qt2Base::slotApply()
 {
 	ApplyButton();
@@ -92,7 +96,7 @@ void Qt2Base::slotOK()
 }
 
 
-void Qt2Base::slotCancel()
+void Qt2Base::slotClose()
 {
 	CancelButton();
 }
@@ -102,10 +106,3 @@ void Qt2Base::slotRestore()
 {
 	RestoreButton();
 }
-
-
-// PENDING(kalle) How to handle this?
-// extern "C" void C_Qt2BaseInputCB(FL_OBJECT * ob, long d)
-// {
-// 	GetForm(ob)->InputCB(ob, d);
-// }

@@ -22,11 +22,9 @@ public:
 	QIndexDialog(QIndex * form);
 	~QIndexDialog();
 
-public slots:
-	virtual void ok_adaptor();
-	virtual void close_adaptor();
+protected slots:
 	virtual void change_adaptor();
-
+ 
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

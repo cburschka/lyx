@@ -12,22 +12,18 @@
 #define QINDEX_H
 
 #include "Qt2Base.h"
-#include "ControlIndex.h"
-#include "LString.h"
-#include "boost/utility.hpp"
 
-class Dialogs;
-class LyXView;
+class ControlIndex;
 class QIndexDialog;
 
 class QIndex :
-	public Qt2CB<ControlIndex, Qt2DB<QIndexDialog> > {
-
+	public Qt2CB<ControlIndex, Qt2DB<QIndexDialog> > 
+{
 	friend class QIndexDialog;
  
 public: 
 	QIndex(ControlIndex &);
-	~QIndex();
+
 private: 
 	/// Apply changes
 	virtual void apply();
@@ -35,11 +31,6 @@ private:
 	virtual void update();
 	/// build the dialog
 	virtual void build();
-
-	/// create an Index inset
-	void createIndex(string const &);
-	/// edit an Index  inset
-	void showIndex(InsetCommand * const);
 };
 
 #endif // QINDEX_H

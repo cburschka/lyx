@@ -15,7 +15,6 @@ libqt2moc_la_SOURCES := FileDialog_private_moc.C \
 	emptytable_moc.C \
 	Qt2Base_moc.C \
 	$(MOCDIALOGS)
-	#$(patsubst, %, %Dialog_moc.C, $(DIALOGS))
  
 DISTCLEANFILES = $(libqt2moc_la_SOURCES) *.orig *.rej *~ *.bak core
 
@@ -23,4 +22,3 @@ ETAGS_ARGS = --lang=c++
  
 %_moc.C: ../%.h
 	$(MOC) -o $@ $<
- 

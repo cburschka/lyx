@@ -1,5 +1,26 @@
 This file contains some do's and dont's for the Qt2 frontend.
 
+General rules
+-------------
+
+Every editable field that affects the state of the dialog contents
+from LyX's point of view should connect its xxxChanged() signal to
+a the dialog's changed_adaptor() slot, which in turn should call
+form_->changed(). If you are using a more complicated thing anyway,
+then remember to call form_->changed() at the end (if it has changed !)
+ 
+Every non-trivial widget should have a tooltip. If you don't know
+what to write, write "FIXME", and it can fixed later.
+ 
+If necessary, you should override Qt2Base::isValid() for determining the validity
+of the current dialog's contents.
+ 
+OK/Apply/Restore/Close should be connected in the derived class's constructor
+to call form_->slotOK() etc. Refer to close/cancel as close in the source.
+ 
+Every overridden update() must call reset() to ensure the beginning state of the dialog
+is correct !
+ 
 Don't #undef emit - #include "QtLyXView.h" instead
  
 Naming conventions
@@ -17,7 +38,7 @@ Widgets should be named like "fooXX", where XX is one of the following
 widget types :
 
 CB - check box 
-CO -
+CO - combo box
 ED - line edit
 LA - label
 ML -
@@ -28,15 +49,15 @@ PB - push button
 Dialog		Maintainer	MVC conversion
 ----------------------------------------------
 Character	Edwin
-Citation	Kalle		Done ?
-Document	Kalle		In progress (Not yet prepared)
+Citation	Kalle		Done
+Document	Kalle		Waiting for MVC
 Index		Kalle		Done
-Paragraph	Edwin		Not yet prepared
+Paragraph	Edwin		Waiting for MVC
 Print		Edwin
 Ref		Kalle
 Search		Edwin
 Splash		Edwin
-Tabular				Not yet prepared
+Tabular				Waiting for MVC
 TabularCreate	Edwin
 Toc		Kalle
 Url		Kalle

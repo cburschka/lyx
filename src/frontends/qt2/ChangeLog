@@ -1,3 +1,28 @@
+2001-08-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: include the right files
+
+	* QCitation.C: closePB not cancelPB
+ 
+	* QCitationDialog.C:
+	* QCitationDialog.h:
+	* ui/QCitationDialog.ui: small fixes
+
+	* QIndex.h:
+	* QIndex.C:
+	* QIndexDialog.C:
+	* QIndexDialog.h: 
+	* ui/QIndexDialog.ui: more fixes
+	 
+	* Qt2Base.h:
+	* Qt2Base.C: add reset() to workaround problem. 
+
+	* README: update
+
+	* Makefile.am: 
+	* Timeout_pimpl.h:
+	* Timeout_pimpl.C: add the timer
+
 2001-08-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:

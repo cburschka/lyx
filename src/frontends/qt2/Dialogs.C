@@ -12,8 +12,9 @@
 #endif
 
 // the dialog definitions
-#include "QCitationDialog.h"
 #include "QAboutDialog.h"
+#include "QCitationDialog.h"
+#include "QIndexDialog.h"
  
 // the controller interface
 #include "QAbout.h"

@@ -14,6 +14,7 @@
 #endif
 
 #include "Qt2BC.h"
+#include "debug.h"
 
 #include <qbutton.h>
 

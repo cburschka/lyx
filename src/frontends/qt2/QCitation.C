@@ -15,7 +15,7 @@
 
 #include "QCitationDialog.h"
 #include "QCitation.h"
-
+ 
 #include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
@@ -26,6 +26,7 @@
 #include "QtLyXView.h" 
 #include "Qt2BC.h"
 #include "ControlCitation.h"
+#include "debug.h"
 #include "gettext.h"
 #include "support/lstrings.h"
 #include "helper_funcs.h"
@@ -74,7 +75,7 @@ void QCitation::build()
 	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->okPB);
 	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->cancelPB);
+	bc().setCancel(dialog_->closePB);
 	bc().setRestore(dialog_->restorePB);
 
 	bc().addReadOnly(dialog_->addPB);
@@ -82,7 +83,8 @@ void QCitation::build()
 	bc().addReadOnly(dialog_->upPB);
 	bc().addReadOnly(dialog_->downPB);
 	bc().addReadOnly(dialog_->citationStyleCO);
-	bc().addReadOnly(dialog_->textBeforeED);
+	// add when enabled ! 
+	//bc().addReadOnly(dialog_->textBeforeED);
 	bc().addReadOnly(dialog_->textAfterED);
 }
 
@@ -102,7 +104,9 @@ void QCitation::update()
 	setBibButtons(OFF);
 	setCiteButtons(OFF);
 
-	dialog_->textAfterED->setText( controller().params().getOptions().c_str());
+	dialog_->textAfterED->setText(controller().params().getOptions().c_str());
+
+	reset();
 }
 
 

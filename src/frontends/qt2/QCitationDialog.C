@@ -7,18 +7,20 @@
  */
 
 #include <config.h>
- 
+
+#include "gettext.h"
+
 #include "QCitationDialog.h"
 #include "Dialogs.h"
-#include "QCitation.h"
 #include "controllers/ControlCitation.h"
 
 #include <qcheckbox.h>
+#include <qcombobox.h>
 #include <qlineedit.h>
 #include <qlistbox.h>
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
- 
+
 #include "QtLyXView.h"
 
 #include <algorithm>
@@ -28,29 +30,46 @@ using std::vector;
 using std::find;
 using std::max;
 
-QCitationDialog::QCitationDialog(QCitation * form, QWidget * parent,  const char * name, bool modal, WFlags fl)
-	: QCitationDialogBase(parent, name, modal, fl),
+QCitationDialog::QCitationDialog(QCitation * form)
+	: QCitationDialogBase(0, 0, false, 0),
 	form_(form)
 {
-	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
-	connect(cancelPB, SIGNAL(clicked()),
-		form, SLOT(slotCancel()));
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
+	connect(okPB, SIGNAL(clicked()),
+		form, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()),
 		form, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
 	connect(searchED, SIGNAL(returnPressed()),
-		form, SLOT(slotNextClicked()));
+		this, SLOT(slotNextClicked()));
+
+	textBeforeED->setText(_("Not yet supported"));
+	textBeforeED->setReadOnly(true);
+	textBeforeED->setFocusPolicy(QWidget::NoFocus);
+	citationStyleCO->setEnabled(false);
+	citationStyleCO->setFocusPolicy(QWidget::NoFocus);
 }
 
- 
+
 QCitationDialog::~QCitationDialog()
 {
 }
 
 
-void QCitationDialog::slotBibSelected( int sel )
+void QCitationDialog::slotBibSelected(int sel)
+{
+	slotBibHighlighted(sel);
+ 
+	if (form_->controller().isReadonly()) 
+		return;
+ 
+	slotAddClicked();
+}
+
+ 
+void QCitationDialog::slotBibHighlighted(int sel)
 {
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
 
@@ -91,7 +110,7 @@ void QCitationDialog::slotBibSelected( int sel )
 }
 
 
-void QCitationDialog::slotCiteSelected(int sel)
+void QCitationDialog::slotCiteHighlighted(int sel)
 {
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
 
@@ -107,7 +126,7 @@ void QCitationDialog::slotCiteSelected(int sel)
 
 	// Highlight the selected browser_cite key in browser_bib
 	vector<string>::const_iterator cit =
-		std::find(form_->bibkeys.begin(), 
+		std::find(form_->bibkeys.begin(),
 		form_->bibkeys.end(), form_->citekeys[sel]);
 
 	if (cit != form_->bibkeys.end()) {
@@ -149,7 +168,7 @@ void QCitationDialog::slotDelClicked()
 {
 	int const sel = citeLB->currentItem();
 
-	// FIXME: why ? 
+	// FIXME: why ?
 	if (sel < 0 || sel >= (int)form_->citekeys.size()) {
 		return;
 	}
@@ -192,7 +211,7 @@ void QCitationDialog::slotDownClicked()
 {
 	int const sel = citeLB->currentItem();
 
-	// FIXME: ? 
+	// FIXME: ?
 	if (sel < 0 || sel >= (int)form_->citekeys.size() - 1) {
 		return;
 	}
@@ -263,23 +282,5 @@ void QCitationDialog::doFind(biblio::Direction const dir)
 	int const top = max(found - 5, 1);
 	bibLB->setTopItem(top);
 	bibLB->setSelected(found, true);
-	slotBibSelected(0);
-}
-
-
-void QCitationDialog::slotCitationStyleSelected( int )
-{
-	form_->changed();
-}
-
-
-void QCitationDialog::slotTextBeforeReturn()
-{
-	form_->changed();
-}
-
-
-void QCitationDialog::slotTextAfterReturn()
-{
-	form_->changed();
+	slotBibHighlighted(0);
 }

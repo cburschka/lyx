@@ -167,6 +167,8 @@ void QRef::do_ref_update()
 
 void QRef::update()
 {
+	// FIXME: needs updating
+ 
 	dialog_->referenceED->setText(params.getContents().c_str());
 	dialog_->nameED->setText(params.getOptions().c_str());
 

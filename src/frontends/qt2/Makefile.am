@@ -46,7 +46,6 @@ libqt2_la_OBJADD = \
 	../xforms/MathsSymbols.lo \
 	../xforms/Menubar_pimpl.lo \
 	../xforms/RadioButtonGroup.lo \
-	../xforms/Timeout_pimpl.lo \
 	../xforms/Toolbar_pimpl.lo \
 	../xforms/bmtable.lo \
 	../xforms/form_bibitem.lo \
@@ -80,6 +79,8 @@ libqt2_la_SOURCES = \
 	GUIRunTime.C \
 	FileDialog.C \
 	FileDialog_private.C \
+	Timeout_pimpl.h \
+	Timeout_pimpl.C \
 	Qt2Base.C	\
 	Qt2Base.h	\
 	Qt2BC.C	\

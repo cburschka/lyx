@@ -9,6 +9,7 @@
 #include <config.h>
 
 #include "QIndexDialog.h"
+#include "ControlIndex.h"
 #include "QtLyXView.h" 
 #include "BufferView.h"
 
@@ -30,17 +31,12 @@ QIndex::QIndex(ControlIndex & c)
 }
 
 
-QIndex::~QIndex()
-{
-}
-
-
 void QIndex::build()
 {
 	dialog_.reset(new QIndexDialog(this));
 
 	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->cancelPB);
+	bc().setCancel(dialog_->closePB);
 	bc().addReadOnly(dialog_->keywordED);
 }
 
@@ -48,6 +44,7 @@ void QIndex::build()
 void QIndex::update()
 {
 	dialog_->keywordED->setText(controller().params().getContents().c_str());
+	reset();
 }
 
  

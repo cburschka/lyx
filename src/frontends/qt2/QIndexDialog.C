@@ -10,29 +10,22 @@
 #include "Dialogs.h"
 #include "QIndex.h"
 
+#include <qwidget.h>
+#include <qpushbutton.h>
+
 QIndexDialog::QIndexDialog(QIndex * form)
 	: QIndexDialogBase(0, 0, false, 0),
 	form_(form)
 {
+	connect(okPB, SIGNAL(clicked()),
+		form, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
 }
 
  
 QIndexDialog::~QIndexDialog()
 {
-}
-
-
-void QIndexDialog::ok_adaptor()
-{
-	form_->slotOK();
-	hide();
-}
-
-
-void QIndexDialog::close_adaptor()
-{
-	form_->slotCancel();
-	hide();
 }
 
 

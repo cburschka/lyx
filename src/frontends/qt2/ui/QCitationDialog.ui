@@ -11,7 +11,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>483</width>
+            <width>439</width>
             <height>585</height>
         </rect>
     </property>
@@ -631,6 +631,10 @@
                     </property>
                     <property stdset="1">
                         <name>default</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
                         <bool>true</bool>
                     </property>
                 </widget>
@@ -649,7 +653,7 @@
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>cancelPB</cstring>
+                        <cstring>closePB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
@@ -698,12 +702,6 @@
         <slot>slotDownClicked()</slot>
     </connection>
     <connection>
-        <sender>restorePB</sender>
-        <signal>clicked()</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotRestoreClicked()</slot>
-    </connection>
-    <connection>
         <sender>previousPB</sender>
         <signal>clicked()</signal>
         <receiver>QCitationDialogBase</receiver>
@@ -716,53 +714,63 @@
         <slot>slotNextClicked()</slot>
     </connection>
     <connection>
-        <sender>citationStyleCO</sender>
-        <signal>activated(int)</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotCitationStyleSelected(int)</slot>
-    </connection>
-    <connection>
-        <sender>textBeforeED</sender>
-        <signal>returnPressed()</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotTextBeforeReturn()</slot>
-    </connection>
-    <connection>
-        <sender>textAfterED</sender>
-        <signal>returnPressed()</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotTextAfterReturn()</slot>
-    </connection>
-    <connection>
-        <sender>bibLB</sender>
-        <signal>highlighted(int)</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotBibSelected(int)</slot>
-    </connection>
-    <connection>
-        <sender>citeLB</sender>
-        <signal>highlighted(int)</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotCiteSelected(int)</slot>
-    </connection>
-    <connection>
         <sender>upPB</sender>
         <signal>clicked()</signal>
         <receiver>QCitationDialogBase</receiver>
         <slot>slotUpClicked()</slot>
     </connection>
+    <connection>
+        <sender>textBeforeED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>textAfterED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>citationStyleCO</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>citeLB</sender>
+        <signal>highlighted(int)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>slotCiteHighlighted(int)</slot>
+    </connection>
+    <connection>
+        <sender>citeLB</sender>
+        <signal>selected(int)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>slotBibHighlighted(int)</slot>
+    </connection>
+    <connection>
+        <sender>bibLB</sender>
+        <signal>highlighted(int)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>slotBibHighlighted(int)</slot>
+    </connection>
+    <connection>
+        <sender>bibLB</sender>
+        <signal>selected(int)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>slotBibSelected(int)</slot>
+    </connection>
+    <slot access="public">changed_adaptor()</slot>
+    <slot access="public">slotBibSelected(int)</slot>
     <slot access="protected">slotAddClicked()</slot>
-    <slot access="protected">slotBibSelected(int)</slot>
-    <slot access="protected">slotCitationStyleSelected(int)</slot>
-    <slot access="protected">slotCiteSelected(int)</slot>
+    <slot access="public">slotBibHighlighted(int)</slot>
+    <slot access="public">slotCiteHighlighted(int)</slot>
     <slot access="protected">slotDelClicked()</slot>
     <slot access="protected">slotDownClicked()</slot>
-    <slot access="protected">slotUpClicked()</slot>
     <slot access="protected">slotNextClicked()</slot>
     <slot access="protected">slotPreviousClicked()</slot>
-    <slot access="protected">slotRestoreClicked()</slot>
     <slot access="protected">slotSearchTypeSelected(bool)</slot>
-    <slot access="protected">slotTextAfterReturn()</slot>
-    <slot access="protected">slotTextBeforeReturn()</slot>
+    <slot access="protected">slotUpClicked()</slot>
 </connections>
 </UI>

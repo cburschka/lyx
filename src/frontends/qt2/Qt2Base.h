@@ -49,31 +49,33 @@ protected:
 	/// Build the dialog
 	virtual void build() = 0;
 	/// Hide the dialog.
-	void hide();
+	virtual void hide();
 	/// Create the dialog if necessary, update it and display it.
-	void show();
+	virtual void show();
+	/// reset after an update
+	virtual void reset();
 
 	/// the dialog has changed contents
 	virtual void changed(); 
 
 	/// is the dialog currently valid ? 
 	virtual bool isValid();
- 
+
 protected slots:
 	// dialog closed from WM
 	void slotWMHide();
 
-	// Apply button clicked
-	void slotApply();
-
+	// Restore button clicked
+	void slotRestore();
+ 
 	// OK button clicked
 	void slotOK();
 
-	// Cancel button clicked
-	void slotCancel();
+	// Apply button clicked
+	void slotApply();
 
-	// Restore button clicked
-	void slotRestore();
+	// Close button clicked
+	void slotClose();
 
 private:
 	/// Pointer to the actual instantiation of xform's form
@@ -89,12 +91,13 @@ template <class Dialog>
 class Qt2DB: public Qt2Base
 {
 protected:
-	///
 	Qt2DB(ControlButtons &, const QString&);
+ 
 	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QDialog* form() const;
 	/// Real GUI implementation.
 	boost::scoped_ptr<Dialog> dialog_;
+
 };
 
 

@@ -11,7 +11,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>208</width>
+            <width>204</width>
             <height>82</height>
         </rect>
     </property>
@@ -130,7 +130,7 @@
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>cancelPB</cstring>
+                        <cstring>closePB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
@@ -143,25 +143,11 @@
 </widget>
 <connections>
     <connection>
-        <sender>okPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QIndexDialogBase</receiver>
-        <slot>ok_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>cancelPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QIndexDialogBase</receiver>
-        <slot>close_adaptor()</slot>
-    </connection>
-    <connection>
         <sender>keywordED</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>QIndexDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
-    <slot access="public">close_adaptor()</slot>
     <slot access="public">change_adaptor()</slot>
-    <slot access="public">ok_adaptor()</slot>
 </connections>
 </UI>

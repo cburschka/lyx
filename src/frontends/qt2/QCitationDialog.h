@@ -9,34 +9,35 @@
 #ifndef QCITATIONDIALOG_H
 #define QCITATIONDIALOG_H
 
-class QCitation;
-
 #include <config.h>
 #include "support/lstrings.h"
  
 #include "ui/QCitationDialogBase.h"
+#include "QCitation.h"
 #include "controllers/biblio.h"
 
 class QCitationDialog : public QCitationDialogBase
 { Q_OBJECT
 
 public:
-	QCitationDialog(QCitation * form, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);
+	QCitationDialog(QCitation * form);
 	~QCitationDialog();
 
 protected slots:
+	virtual void slotBibHighlighted(int sel);
 	virtual void slotBibSelected(int sel);
-	virtual void slotCiteSelected(int sel);
+	virtual void slotCiteHighlighted(int sel);
 	virtual void slotAddClicked();
 	virtual void slotDelClicked();
 	virtual void slotUpClicked();
 	virtual void slotDownClicked();
 	virtual void slotPreviousClicked();
 	virtual void slotNextClicked();
-	virtual void slotCitationStyleSelected(int);
-	virtual void slotTextBeforeReturn();
-	virtual void slotTextAfterReturn();
 
+	virtual void changed_adaptor() {
+		form_->changed();
+	}
+ 
 private:
 	void doFind(biblio::Direction dir);
     

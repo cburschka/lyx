@@ -22,7 +22,8 @@ class QListBox;
 class ControlCitation;
 class QCitationDialog;
 
-class QCitation : public Qt2CB<ControlCitation, Qt2DB<QCitationDialog> > {
+class QCitation : public Qt2CB<ControlCitation, Qt2DB<QCitationDialog> > 
+{
 	friend class QCitationDialog;
     
 public:
@@ -47,7 +48,7 @@ private:
 	/// Update dialog before/whilst showing it.
 	virtual void update();
 
-	void updateBrowser(QListBox*, std::vector<string> const &) const;
+	void updateBrowser(QListBox *, std::vector<string> const &) const;
 	///
 	void setBibButtons(State) const;
 	///

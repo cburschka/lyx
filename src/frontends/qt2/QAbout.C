@@ -36,7 +36,7 @@ void QAbout::build()
 {
 	dialog_.reset(new QAboutDialog());
 	connect(dialog_.get()->closePB, SIGNAL(clicked()),
-		this, SLOT(slotCancel()));
+		this, SLOT(slotClose()));
 
 	dialog_->copyrightLA->setText(controller().getCopyright().c_str());
 	dialog_->licenseLA->setText(controller().getLicense().c_str());
