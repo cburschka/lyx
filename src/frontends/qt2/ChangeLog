@@ -1,5 +1,14 @@
 2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
 
+	* QTabularCreateDialog.C: fix warnings
+
+	* emptytable.h:
+	* emptytable.C:
+	* ui/QTabularCreateDialog.ui: fix layout
+	  when table size is changed
+ 
+2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
+
 	* Dialogs.C:
 	* QSearch.[Ch]:
 	* QSearchDialog.[Ch]:

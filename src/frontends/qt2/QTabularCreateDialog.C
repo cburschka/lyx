@@ -34,13 +34,13 @@ QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
 }
 
  
-void QTabularCreateDialog::columnsChanged(int nr_cols)
+void QTabularCreateDialog::columnsChanged(int)
 {
 	form_->changed();
 }
 
  
-void QTabularCreateDialog::rowsChanged(int nr_rows)
+void QTabularCreateDialog::rowsChanged(int)
 {
 	form_->changed();
 }

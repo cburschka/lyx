@@ -23,6 +23,8 @@ public:
 	
 	~EmptyTable() {};
 
+	virtual QSize sizeHint() const;
+ 
 public slots:
 	/// set the number of columns in the table and emit colsChanged() signal 
 	void setNumberColumns(int nr_cols);

@@ -24,6 +24,12 @@ EmptyTable::EmptyTable(QWidget * parent, const char * name)
 	setTableFlags(Tbl_autoScrollBars);
 }
 
+QSize EmptyTable::sizeHint() const
+{
+	return QSize(cellsize * numCols(), cellsize * numRows());
+}
+
+ 
 void EmptyTable::paintCell(QPainter *p, int row, int col)
 {
 	int const x2 = cellWidth(col) - 1;
@@ -42,6 +48,7 @@ void EmptyTable::setNumberColumns(int nr_cols)
 		return;
 	setAutoUpdate(false);
 	setNumCols(nr_cols);
+	updateGeometry();
 	setAutoUpdate(true);
 	update();
 	emit colsChanged(nr_cols);
@@ -55,6 +62,7 @@ void EmptyTable::setNumberRows(int nr_rows)
 		return;
 	setAutoUpdate(false);
 	setNumRows(nr_rows);
+	updateGeometry();
 	setAutoUpdate(true);
 	update();
 	emit rowsChanged(nr_rows);
