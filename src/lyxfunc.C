@@ -1017,15 +1017,15 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_DEPTH:
-		changeDepth(owner->view(), 0);
+		changeDepth(owner->view(), text, 0);
 		break;
 		
 	case LFUN_DEPTH_MIN:
-		changeDepth(owner->view(), -1);
+		changeDepth(owner->view(), text, -1);
 		break;
 		
 	case LFUN_DEPTH_PLUS:
-		changeDepth(owner->view(), 1);
+		changeDepth(owner->view(), text, 1);
 		break;
 		
 	case LFUN_FREE:

@@ -20,6 +20,7 @@
 
 class BufferView;
 class LyXFont;
+class LyXText;
 
 #ifndef NEW_INSETS
 ///
@@ -50,7 +51,7 @@ extern void Melt(BufferView *);
 ///
 extern void Tex(BufferView *);
 ///
-extern void changeDepth(BufferView *, int);
+extern void changeDepth(BufferView *, LyXText *, int);
 ///
 extern void Free(BufferView *);
 ///

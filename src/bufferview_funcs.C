@@ -127,16 +127,19 @@ void Tex(BufferView * bv)
 // Change environment depth.
 // if decInc >= 0, increment depth
 // if decInc <  0, decrement depth
-void changeDepth(BufferView * bv, int decInc)
+void changeDepth(BufferView * bv, LyXText * text, int decInc)
 {
-	if (!bv->available()) return;
+	if (!bv->available() || !text)
+	    return;
 	
 	bv->hideCursor();
 	bv->update(BufferView::SELECT|BufferView::FITCUR);
 	if (decInc >= 0)
-		bv->text->IncDepth(bv);
+		text->IncDepth(bv);
 	else
-		bv->text->DecDepth(bv);
+		text->DecDepth(bv);
+	if (text->inset_owner)
+	    bv->updateInset((Inset *)text->inset_owner, true);
 	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	bv->owner()->getMiniBuffer()
 		->Set(_("Changed environment depth"

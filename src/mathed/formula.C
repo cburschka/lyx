@@ -1235,6 +1235,8 @@ InsetFormula::LocalDispatch(BufferView * bv,
 	       mathcursor->setLastCode(LM_TC_TEX);
 	   } 
 	 UpdateLocal(bv);
+      } else if (action == LFUN_MATH_PANEL) {
+        result = UNDISPATCHED;
       } else {
 	// lyxerr << "Closed by action " << action << endl;
 	result =  FINISHED;
@@ -1248,7 +1250,8 @@ InsetFormula::LocalDispatch(BufferView * bv,
    if (mathcursor->Selection() || was_selection)
        ToggleInsetSelection(bv);
     
-   if ((result == DISPATCHED) || (result == DISPATCHED_NOUPDATE))
+   if ((result == DISPATCHED) || (result == DISPATCHED_NOUPDATE) ||
+       (result == UNDISPATCHED))
       ShowInsetCursor(bv);
    else
       bv->unlockInset(this);

@@ -3391,7 +3391,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 
 		for (int i = 1; i <= depth; ++i) {
 			int const line_x = (LYX_PAPER_MARGIN / 5) *
-				(i + minipage) + box_x;
+				(i + minipage) + box_x + x_offset;
 			pain.line(line_x, y_offset, line_x,
 				  y_offset + row_ptr->height() - 1 - (i - next_depth - 1) * 3,
 				  LColor::depthbar);

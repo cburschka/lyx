@@ -1,3 +1,30 @@
+2000-12-22  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (InsetButtonPress): do nothing if we
+	have a selection and button == 3.
+	(UpdateLocal): if what == INIT clear selection if existent!
+	(InsetButtonPress): don't activate the cell inset on button==3
+	(Edit): ditto
+	(LocalDispatch): move curor up/down if exiting an inset which this
+	keys.
+
+2000-12-20  Juergen Vigna  <jug@sad.it>
+
+	* src/mathed/formula.C (LocalDispatch): return UNDISPATCHED when
+	calling for the math-panel (do not unlock the math-inset if locked)!
+
+	* src/text.C (GetVisibleRow): fixed drawing of depth lines inside
+	text-insets (with x-offset).
+
+	* src/tabular.C (TeXCellPreamble): fixed wrong output of special
+	alignment of multicolumn-cells.
+
+2000-12-19  Juergen Vigna  <jug@sad.it>
+
+	* src/lyxfunc.C (Dispatch): 
+	* src/bufferview_funcs.C (changeDepth): implemented DEPTH functions
+	for insettext.
+
 2000-12-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/WorkArea.C (work_area_handler): simplify the key/keysym

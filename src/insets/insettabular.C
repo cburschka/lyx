@@ -494,7 +494,7 @@ void InsetTabular::Edit(BufferView * bv, int x, int y, unsigned int button)
     sel_pos_start = sel_pos_end = cursor.pos();
     sel_cell_start = sel_cell_end = actcell;
     bv->text->FinishUndo();
-    if (InsetHit(bv, x, y)) {
+    if (InsetHit(bv, x, y) && (button != 3)) {
 	ActivateCellInset(bv, x, y, button);
     }
 //    UpdateLocal(bv, NONE, false);
@@ -529,6 +529,8 @@ void InsetTabular::UpdateLocal(BufferView * bv, UpdateCodes what,
 {
     if (need_update < what) // only set this if it has greater update
 	need_update = what;
+    if ((what == INIT) && hasSelection())
+	clearSelection();
     // Dirty Cast! (Lgb)
     if (need_update != NONE) {
 	bv->updateInset(const_cast<InsetTabular *>(this), mark_dirty);
@@ -645,10 +647,14 @@ bool InsetTabular::InsertInset(BufferView * bv, Inset * inset)
 
 void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
 {
-    if (hasSelection() && (button != 3)) {
+    if (hasSelection() && (button == 3))
+	return;
+
+    if (hasSelection()) {
 	clearSelection();
 	UpdateLocal(bv, SELECTION, false);
     }
+
     no_selection = false;
 
     int const ocell = actcell;
@@ -660,6 +666,14 @@ void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	UpdateLocal(bv, NONE, false);
     sel_pos_start = sel_pos_end = cursor.pos();
     sel_cell_start = sel_cell_end = actcell;
+    if (button == 3) {
+	if ((ocell != actcell) && the_locking_inset) {
+	    the_locking_inset->InsetUnlock(bv);
+	    the_locking_inset = 0;
+	}
+	ShowInsetCursor(bv);
+	return;
+    }
 
     bool const inset_hit = InsetHit(bv, x, y);
 
@@ -767,15 +781,25 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	    the_locking_inset->ToggleInsetCursor(bv);
             return result;
         } else if (result == FINISHED) {
+	    result = DISPATCHED;
 	    if ((action == LFUN_RIGHT) || (action == -1)) {
 		cursor.pos(inset_pos + 1);
 		resetPos(bv);
+	    } else if (action == LFUN_DOWN) {
+		if (moveDown(bv) == FINISHED) {
+		    bv->unlockInset(this);
+		    result = FINISHED;
+		}
+	    } else if (action == LFUN_UP) {
+		if (moveUp(bv) == FINISHED) {
+		    bv->unlockInset(this);
+		    result = FINISHED;
+		}
 	    }
 	    sel_pos_start = sel_pos_end = cursor.pos();
 	    sel_cell_start = sel_cell_end = actcell;
 	    the_locking_inset=0;
 	    ShowInsetCursor(bv);
-	    result = DISPATCHED;
 	    return result;
 	}
     }
