@@ -235,6 +235,8 @@ void InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 {
+	xo_ = x;
+	yo_ = y;
 	graphic_->draw(pi, x, y);
 }
 
