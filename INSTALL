@@ -293,10 +293,17 @@ notify us.
     the xforms or Xpm library, use the --with-extra-lib and --with-extra-inc 
     options of configure to specify where these libraries reside.  
 
-  o Configure will seemingly fail to find xpm.h and forms.h on linux if
-    you did a 'make mrproper' in the kernel directory, because this
-    removes some symbolic links that are needed for compilation. A 'make
-    symlinks' in linux kernel sources fixes that.
+  o Configure will seemingly fail to find xpm.h and forms.h on linux
+    if the kernel headers are not available. Two cases are possible: 
+
+      - you have not installed the kernel sources. The you should
+        install them or at least the kernel-headers package (or
+        whatever it is called in your distribution).
+
+      - you have the sources, but you did a 'make mrproper' in the
+	kernel directory (this  this removes some symbolic links that
+	are needed for compilation). A 'make symlinks' in linux kernel
+	sources fixes that. 
 
   o If you have GNU gettext installed on your system (e.g. on linux),
     you will get tons of warnings like:
