@@ -22,9 +22,9 @@ FD_form_print * FormPrint::build_print()
   FL_OBJECT *obj;
   FD_form_print *fdui = new FD_form_print;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 340, 360);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 340, 390);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 340, 360, "");
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 340, 390, "");
   fdui->input_printer = obj = fl_add_input(FL_NORMAL_INPUT, 90, 225, 230, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -49,19 +49,19 @@ FD_form_print * FormPrint::build_print()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();
 
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 10, 315, 100, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 10, 350, 100, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
   {
     char const * const dummy = N_("Apply|#A");
-    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 120, 315, 100, 30, idex(_(dummy)));
+    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 120, 350, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   {
     char const * const dummy = N_("Cancel|C#C^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 315, 100, 30, idex(_(dummy)));
+    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 350, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -135,9 +135,16 @@ FD_form_print * FormPrint::build_print()
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 180, 110, 150, 90, _("Copies"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 210, 320, 100, _("Print to"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 210, 320, 130, _("Print to"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+  {
+    char const * const dummy = N_("Browse|#B");
+    fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 220, 300, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

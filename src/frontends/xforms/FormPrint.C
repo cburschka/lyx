@@ -21,7 +21,8 @@
 #include "Liason.h"
 #include "debug.h"
 #include "BufferView.h"
-#include "lyx_gui_misc.h"	// WriteAlert
+#include "lyx_gui_misc.h"      // WriteAlert
+#include "xform_helpers.h"     // for browseFile
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -32,6 +33,7 @@ using Liason::printBuffer;
 using Liason::getPrinterParams;
 #endif
 
+using std::make_pair;
 
 FormPrint::FormPrint(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Print"), new OkApplyCancelPolicy),
@@ -202,7 +204,7 @@ void FormPrint::update()
 // It would be nice if we checked for cases like:
 // Print only-odd-pages and from_page == an even number
 //
-bool FormPrint::input(FL_OBJECT *, long)
+bool FormPrint::input(FL_OBJECT * ob, long)
 {
 	bool activate = true;
 
@@ -237,6 +239,10 @@ bool FormPrint::input(FL_OBJECT *, long)
 		activate = false;
 	}
 
+	if (ob == dialog_->button_browse) {
+		browse();
+	}
+		
 	// it is probably legal to have no printer name since the system will
 	// have a default printer set.  Or should have.
 //  	if (fl_get_button(dialog_->radio_printer)
@@ -244,4 +250,26 @@ bool FormPrint::input(FL_OBJECT *, long)
 //  		activate = false;
 //  	}
 	return activate;
+}
+
+
+void FormPrint::browse()
+{
+	// Get the filename from the dialog
+	string const filename = fl_get_input(dialog_->input_file);
+
+	string const title = N_("Print to file");
+	string const pattern = "*.ps";
+
+	// Show the file browser dialog
+	string const new_filename =
+		browseFile(filename, title, pattern,
+			   make_pair(string(), string()),
+			   make_pair(string(), string()));
+
+	// Save the filename to the dialog
+	if (new_filename != filename && !new_filename.empty()) {
+		fl_set_input(dialog_->input_file, new_filename.c_str());
+		input(0, 0);
+	}
 }

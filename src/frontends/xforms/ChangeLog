@@ -1,3 +1,9 @@
+2001-01-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormPrint.[Ch] (browse): new method to browse for file to print to.
+
+	* forms/form_print.fd: give the form a Browse button.
+
 2001-01-17  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormRef.C (input): Fix the behavior of goto reference button.

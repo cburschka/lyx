@@ -49,6 +49,8 @@ private:
 	virtual FL_FORM * form() const;
 	/// Build the dialog
 	virtual void build();
+	/// Open the file browse dialog.
+	void browse();
 
 	///
 	FD_form_print * build_print();

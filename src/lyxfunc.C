@@ -2749,7 +2749,7 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_CHILDINSERT:
 	{
-		InsetCommandParams p( "Include", argument );
+		InsetCommandParams p( "include", argument );
 		Inset * inset = new InsetInclude(p, *owner->buffer());
 		if (owner->view()->insertInset(inset, "Standard", true))
 			inset->Edit(owner->view(), 0, 0, 0);

@@ -35,6 +35,7 @@ struct FD_form_print {
 	FL_OBJECT *input_count;
 	FL_OBJECT *radio_collated;
 	FL_OBJECT *input_to_page;
+	FL_OBJECT *button_browse;
 };
 
 #endif /* FD_form_print_h_ */

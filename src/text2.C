@@ -45,7 +45,9 @@
 #include "FloatList.h"
 
 using std::copy;
+using std::find;
 using std::endl;
+using std::find;
 using std::pair;
 
 
