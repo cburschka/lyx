@@ -26,7 +26,6 @@
 #include "lyx_main.h" // for global dispatch method
 #include "support/LAssert.h"
 #include "support/filetools.h"
-#include "frontends/Alert.h"
 
 // Very, Very UGLY!
 extern BufferView * current_view;
@@ -485,9 +484,6 @@ void GCacheItem::convertToDisplayFormat()
 		<< "The file contains " << from << " format data." << endl;
 
 	if (to.empty()) {
-		Alert::alert(_("Unable to convert file ") +
-			     displayed_filename +
-			     _(" to a loadable format."));
 		setStatus(ErrorConverting);
 		return;
 	}

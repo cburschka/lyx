@@ -1,3 +1,10 @@
+2002-04-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GraphicsCacheItem.C (convertToDisplayFormat):
+	* GraphicsConverter.C (build_script): remove the Alerts when things go
+	wrong as the inset displays the message anyway. Moreover, Alert seems
+	pretty temperamemtal at the moment.
+
 2002-04-16  Rob Lahaye  <lahaye@users.sourceforge.net>
 	* GraphicsImageXPM.C: fix clipping for boundingbox y-coordinates
 

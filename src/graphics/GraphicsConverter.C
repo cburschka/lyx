@@ -18,8 +18,6 @@
 #include "debug.h"
 #include "gettext.h"
 
-#include "frontends/Alert.h"
-
 #include "support/filetools.h"
 #include "support/forkedcall.h"
 #include "support/path.h"
@@ -174,10 +172,6 @@ bool GConverter::build_script(string const & from_file,
 	EdgePath edgepath = converters.getPath(from_format, to_format);
 
 	if (edgepath.empty()) {
-		Alert::alert(_("Cannot convert file"),
-			   _("No information for converting from ")
-			   + formats.prettyName(from_format) + _(" to ")
-			   + formats.prettyName(to_format));
 		return false;
 	}
 
