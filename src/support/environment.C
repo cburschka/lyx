@@ -19,10 +19,11 @@
 
 #include <cstdlib>
 #include <map>
-
+#include <sstream>
 
 using std::string;
 using std::vector;
+
 
 namespace lyx {
 namespace support {

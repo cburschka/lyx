@@ -1,5 +1,9 @@
 2005-02-15  Angus Leeming  <leeming@lyx.org>
 
+	* environment.C: add missing #include.
+
+2005-02-15  Angus Leeming  <leeming@lyx.org>
+
 	* environment.[Ch]: new files. Move the environment setter/getter
 	functions here from filetools.[Ch]. In the process:
 	rename GetEnv as getEnv.
