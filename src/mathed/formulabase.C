@@ -423,6 +423,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_INSERT_LABEL:
 	case LFUN_MATH_EXTERN:
 	case LFUN_TABULAR_FEATURE:
+	case LFUN_PASTESELECTION:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->dispatch(cmd);
 		updateLocal(bv, true);
@@ -526,15 +527,6 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		updateLocal(bv, false);
 		break;
 	}
-
-/*
-	case LFUN_PASTESELECTION: {
-		string const clip = bv->getClipboard();
-		if (!clip.empty())
-			mathed_parse_normal(par_, clip);
-		break;
-	}
-*/
 
 	case LFUN_PASTE:
 		if (was_macro)

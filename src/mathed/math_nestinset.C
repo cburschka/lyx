@@ -8,6 +8,7 @@
 #include "math_parser.h"
 #include "funcrequest.h"
 #include "debug.h"
+#include "BufferView.h"
 #include "frontends/Painter.h"
 
 
@@ -315,6 +316,8 @@ void MathNestInset::notifyCursorLeaves()
 MathInset::result_type MathNestInset::dispatch
 	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
+	BufferView * bv = cmd.view();
+
 	switch (cmd.action) {
 
 		case LFUN_PASTE: {
@@ -327,6 +330,15 @@ MathInset::result_type MathNestInset::dispatch
 			pos += ar.size();
 			return DISPATCHED;
 		}
+
+		case LFUN_PASTESELECTION:
+			return
+				dispatch(FuncRequest(bv, LFUN_PASTE, bv->getClipboard()), idx, pos);
+			
+		case LFUN_MOUSE_PRESS:
+			if (cmd.button() == mouse_button::button2)
+				return dispatch(FuncRequest(bv, LFUN_PASTESELECTION), idx, pos);
+			return UNDISPATCHED;
 
 		default:	
 			return MathInset::dispatch(cmd, idx, pos);

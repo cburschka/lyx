@@ -63,12 +63,12 @@
 \bind "M-m t e"   "math-mutate eqnarray"
 \bind "M-m t m"   "math-mutate multline"
 
-\bind "M-m c i"   "tabular-feature insert-column"
+\bind "M-m c i"   "tabular-feature append-column"
 \bind "M-m c d"   "tabular-feature delete-column"
 \bind "M-m c c"   "tabular-feature copy-column"
 \bind "M-m c s"   "tabular-feature swap-column"
 
-\bind "M-m w i"   "tabular-feature insert-row"
+\bind "M-m w i"   "tabular-feature append-row"
 \bind "M-m w d"   "tabular-feature delete-row"
 \bind "M-m w c"   "tabular-feature copy-row"
 \bind "M-m w s"   "tabular-feature swap-row"
