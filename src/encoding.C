@@ -266,7 +266,7 @@ unsigned char Encodings::TransformChar(unsigned char c,
 	if (!is_arabic(c))
 		return c;
 
-	if (lyxrc.font_norm == "iso10646-1")
+	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 		return arabic_table2[c-arabic_start][form];
 	else
 		return arabic_table[c-arabic_start][form >> 1];

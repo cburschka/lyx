@@ -1,3 +1,8 @@
+2001-08-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* encoding.C (TransformChar): Use lyxrc.font_norm_type instead of
+	lyxrc.font_norm.
+
 2001-08-13  Juergen Vigna  <jug@sad.it>
 
 	* lyxfind.C (LyXReplace): fixed not single-replacing characters with
