@@ -1,3 +1,25 @@
+
+2003-12-01  André Pönitz  <poenitz@gmx.net>
+
+	* buffer.[Ch]:
+	* lyxtext.h: move ParagraphList member to LyXText
+	rename LyXText::ownerParagraphs to LyXText::paragraph
+
+	* CutAndPaste.C:
+	* bufferview_funcs.C:
+	* iterators.[Ch]:
+	* lyx_cb.C:
+	* paragraph.C:
+	* rowpainter.C:
+	* tabular.C:
+	* text.C:
+	* text2.C:
+	* text3.C: adjust
+
+	* lyxfunc.C: move LFUN_INSET_TOGGLE handling to insets.
+
+	* undo.C: fix cursor positioning 
+
 2003-12-01  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C: fix a crash on exit with

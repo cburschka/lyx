@@ -146,7 +146,6 @@ struct Buffer::Impl
 	limited_stack<Undo> undostack;
 	limited_stack<Undo> redostack;
 	BufferParams params;
-	ParagraphList paragraphs;
 	LyXVC lyxvc;
 	string temppath;
 	bool nicefile;
@@ -190,7 +189,7 @@ Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	: nicefile(true),
 	  lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), filepath(OnlyPath(file)), file_fully_loaded(false),
-		text(0, 0, 0, paragraphs)
+		text(0, 0)
 {
 	lyxvc.buffer(&parent);
 	if (readonly_ || lyxrc.use_tempdir)
@@ -217,8 +216,6 @@ Buffer::~Buffer()
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"), temppath()));
 	}
-
-	paragraphs().clear();
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
 	lyx::graphics::Previews::get().removeLoader(*this);
@@ -269,13 +266,13 @@ BufferParams const & Buffer::params() const
 
 ParagraphList & Buffer::paragraphs()
 {
-	return pimpl_->paragraphs;
+	return pimpl_->text.paragraphs();
 }
 
 
 ParagraphList const & Buffer::paragraphs() const
 {
-	return pimpl_->paragraphs;
+	return pimpl_->text.paragraphs();
 }
 
 
@@ -527,7 +524,7 @@ int Buffer::readParagraph(LyXLex & lex, string const & token,
 
 // needed to insert the selection
 void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
-				 LyXFont const & fn,string const & str)
+				 LyXFont const & fn, string const & str)
 {
 	LyXLayout_ptr const & layout = par->layout();
 

@@ -599,7 +599,7 @@ void RowPainter::paintFirst()
 	LyXLayout_ptr const & layout = pit_->layout();
 
 	if (buffer.params().paragraph_separation == BufferParams::PARSEP_SKIP) {
-		if (pit_ != text_.ownerParagraphs().begin()) {
+		if (pit_ != text_.paragraphs().begin()) {
 			if (layout->latextype == LATEX_PARAGRAPH
 				&& !pit_->getDepth()) {
 				y_top += buffer.params().getDefSkip().inPixels(bv_);
@@ -618,7 +618,7 @@ void RowPainter::paintFirst()
 	int const ww = bv_.workWidth();
 
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
-	bool const is_seq = isFirstInSequence(pit_, text_.ownerParagraphs());
+	bool const is_seq = isFirstInSequence(pit_, text_.paragraphs());
 	//lyxerr << "paintFirst: " << pit_->id() << " is_seq: " << is_seq << std::endl;
 
 	// should we print a label?
@@ -712,7 +712,7 @@ void RowPainter::paintLast()
 {
 	int const ww = bv_.workWidth();
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
-	int const endlabel = getEndLabel(pit_, text_.ownerParagraphs());
+	int const endlabel = getEndLabel(pit_, text_.paragraphs());
 
 	// draw an endlabel
 	switch (endlabel) {
@@ -860,7 +860,7 @@ int paintPars(BufferView const & bv, LyXText const & text,
 	int const y2 = bv.painter().paperHeight();
 	y -= bv.top_y();
 
-	ParagraphList::iterator end = text.ownerParagraphs().end();
+	ParagraphList::iterator end = text.paragraphs().end();
 
 	for ( ; pit != end; ++pit) {
 		RowList::iterator row = pit->rows.begin();
@@ -890,5 +890,5 @@ int paintText(BufferView const & bv)
 
 void paintTextInset(BufferView const & bv, LyXText const & text, int xo, int yo)
 {
-	paintPars(bv, text, text.ownerParagraphs().begin(), xo, yo, 0);
+	paintPars(bv, text, text.paragraphs().begin(), xo, yo, 0);
 }

@@ -145,13 +145,8 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	setInsetName(type);
 	LyXTextClass const & tclass = bp.getLyXTextClass();
 	if (tclass.hasLayout(caplayout))
-		inset.paragraphs.begin()->layout(tclass[caplayout]);
+		inset.paragraphs().begin()->layout(tclass[caplayout]);
 }
-
-
-InsetFloat::InsetFloat(InsetFloat const & in)
-	: InsetCollapsable(in), params_(in.params_)
-{}
 
 
 InsetFloat::~InsetFloat()
@@ -363,11 +358,9 @@ int InsetFloat::docbook(Buffer const & buf, ostream & os,
 
 bool InsetFloat::insetAllowed(InsetOld::Code code) const
 {
-	if (code == InsetOld::FLOAT_CODE)
-		return false;
-	if (code == InsetOld::FOOT_CODE || code == InsetOld::MARGIN_CODE)
-		return false;
-	return true;
+	return code != InsetOld::FLOAT_CODE
+ 	    && code != InsetOld::FOOT_CODE 
+	    && code != InsetOld::MARGIN_CODE;
 }
 
 
@@ -391,8 +384,8 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 
 void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
-	ParIterator pit(inset.paragraphs.begin(), inset.paragraphs);
-	ParIterator end(inset.paragraphs.end(), inset.paragraphs);
+	ParIterator pit(inset.paragraphs().begin(), inset.paragraphs());
+	ParIterator end(inset.paragraphs().end(), inset.paragraphs());
 
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {

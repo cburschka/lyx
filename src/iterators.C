@@ -15,6 +15,7 @@
 #include "paragraph.h"
 #include "PosIterator.h"
 #include "cursor.h"
+#include "buffer.h"
 #include "BufferView.h"
 #include "dispatchresult.h"
 
@@ -149,11 +150,11 @@ ParIterator & ParIterator::operator++()
 }
 
 
-LyXText * ParIterator::text(BufferView * bv) const
+LyXText * ParIterator::text(Buffer & buf) const
 {
 	//lyxerr << "positions.size: " << pimpl_->positions.size() << std::endl;
 	if (pimpl_->positions.size() <= 1)
-		return bv->text();
+		return &buf.text();
 
 	ParPosition const & pos = pimpl_->positions[pimpl_->positions.size() - 2];
 	return (*pos.it)->inset->getText(*pos.index);
@@ -355,7 +356,8 @@ PosIterator ParIterator::asPosIterator(lyx::pos_type pos) const
 	for (int i = 0; i < last; ++i) {
 		ParPosition & pp = pimpl_->positions[i];
 		p.stack_.push_back(
-			PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, (*pp.it)->pos, *pp.index + 1));
+			PosIteratorItem(const_cast<ParagraphList *>(pp.plist),
+				pp.pit, (*pp.it)->pos, *pp.index + 1));
 	}
 	ParPosition const & pp = pimpl_->positions[last];
 	p.stack_.push_back(

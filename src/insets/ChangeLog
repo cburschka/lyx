@@ -1,3 +1,23 @@
+
+2003-12-01  André Pönitz  <poenitz@gmx.net>
+
+	* insetbase.h: whitespace
+
+	* inset.[Ch]: remove latexTextWidth
+	make setBackgroundColor virtual
+
+	* insettext.[Ch]:  move ParagraphList member to LyXText
+
+	* insetcollapsable.[Ch]: handle LFUN_INSET_TOGGLE
+
+	* insetcharstyle.C:
+	* insetenv.C:
+	* insetert.[Ch]:
+	* insetfloat.[Ch]:
+	* insetminipage.[Ch]:
+	* insettabular.C:
+	* insetwrap.[Ch]: adjust paragraphs and background color handling,
+
 2003-11-28  Angus Leeming  <leeming@lyx.org>
 
 	* insetvspace.[Ch] (d-tor, priv_dispatch): new member functions,

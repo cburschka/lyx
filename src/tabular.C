@@ -241,9 +241,7 @@ bool getTokenValue(string const & str, const char * token, int & num)
 bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
 {
 	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return string2type(tmp, num);
+	return getTokenValue(str, token, tmp) && string2type(tmp, num);
 }
 
 
@@ -251,9 +249,7 @@ bool getTokenValue(string const & str, const char * token,
 				   LyXTabular::VAlignment & num)
 {
 	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return string2type(tmp, num);
+	return getTokenValue(str, token, tmp) && string2type(tmp, num);
 }
 
 
@@ -261,9 +257,7 @@ bool getTokenValue(string const & str, const char * token,
 				   LyXTabular::BoxType & num)
 {
 	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return string2type(tmp, num);
+	return getTokenValue(str, token, tmp) && string2type(tmp, num);
 }
 
 
@@ -273,9 +267,7 @@ bool getTokenValue(string const & str, const char * token, bool & flag)
 	// not in the file-format.
 	flag = false;
 	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return string2type(tmp, flag);
+	return getTokenValue(str, token, tmp) && string2type(tmp, flag);
 }
 
 
@@ -285,9 +277,7 @@ bool getTokenValue(string const & str, const char * token, LyXLength & len)
 	// in the file format.
 	len = LyXLength();
 	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return isValidLength(tmp, &len);
+	return getTokenValue(str, token, tmp) && isValidLength(tmp, &len);
 }
 
 
@@ -1397,7 +1387,7 @@ void LyXTabular::setMultiColumn(Buffer * buffer, int cell, int number)
 	for (int i = 1; i < number; ++i) {
 		cellstruct & cs1 = cellinfo_of_cell(cell + i);
 		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
-		cs.inset.appendParagraphs(buffer, cs1.inset.paragraphs);
+		cs.inset.appendParagraphs(buffer, cs1.inset.paragraphs());
 		cs1.inset.clear(false);
 	}
 	set_row_column_number_info();
@@ -2018,8 +2008,8 @@ int LyXTabular::TeXRow(ostream & os, int i, Buffer const & buf,
 		ret += TeXCellPreamble(os, cell);
 		InsetText & inset = getCellInset(cell);
 
-		bool rtl = inset.paragraphs.begin()->isRightToLeftPar(bufferparams) &&
-			!inset.paragraphs.begin()->empty() && getPWidth(cell).zero();
+		bool rtl = inset.paragraphs().begin()->isRightToLeftPar(bufferparams) &&
+			!inset.paragraphs().begin()->empty() && getPWidth(cell).zero();
 
 		if (rtl)
 			os << "\\R{";
@@ -2601,7 +2591,7 @@ void LyXTabular::getLabelList(Buffer const & buffer,
 
 LyXTabular::BoxType LyXTabular::useParbox(int cell) const
 {
-	ParagraphList const & parlist = getCellInset(cell).paragraphs;
+	ParagraphList const & parlist = getCellInset(cell).paragraphs();
 	ParagraphList::const_iterator cit = parlist.begin();
 	ParagraphList::const_iterator end = parlist.end();
 

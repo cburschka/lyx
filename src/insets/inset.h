@@ -213,7 +213,7 @@ public:
 	///
 	UpdatableInset * owner() const { return owner_; }
 	///
-	void setBackgroundColor(LColor_color);
+	virtual void setBackgroundColor(LColor_color);
 	///
 	LColor_color backgroundColor() const;
 	///
@@ -238,9 +238,6 @@ public:
 	virtual void open() {}
 	/// close the inset
 	virtual void close() const {}
-	/// check if the font of the char we want inserting is correct
-	/// and modify it if it is not.
-	virtual bool checkInsertChar(LyXFont &);
 	// should this inset be handled like a normal charater
 	virtual bool isChar() const { return false; }
 	// is this equivalent to a letter?
@@ -261,11 +258,6 @@ public:
 	virtual bool noFontChange() const { return false; }
 	//
 	virtual void getDrawFont(LyXFont &) const {}
-	/* needed for widths which are % of something
-	   returns the value of \textwidth in this inset. Most of the
-	   time this is the width of the workarea, but if there is a
-	   minipage somewhere, it will be the width of this minipage */
-	virtual int latexTextWidth(BufferView *) const;
 
 	/// mark the inset contents as erased (for change tracking)
 	virtual void markErased() {}

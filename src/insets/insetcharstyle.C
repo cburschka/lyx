@@ -126,8 +126,8 @@ namespace {
 int outputVerbatim(std::ostream & os, InsetText inset)
 {
 	int lines = 0;
-	ParagraphList::iterator par = inset.paragraphs.begin();
-	ParagraphList::iterator end = inset.paragraphs.end();
+	ParagraphList::iterator par = inset.paragraphs().begin();
+	ParagraphList::iterator end = inset.paragraphs().end();
 	while (par != end) {
 		lyx::pos_type siz = par->size();
 		for (lyx::pos_type i = 0; i < siz; ++i) {

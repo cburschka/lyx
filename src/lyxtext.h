@@ -30,7 +30,6 @@ class BufferParams;
 class BufferView;
 class Dimension;
 class LColor_color;
-class InsetText;
 class LyXCursor;
 class MetricsInfo;
 class Paragraph;
@@ -53,7 +52,7 @@ class LyXText : public TextCursor {
 	// Public Functions
 public:
 	/// Constructor
-	LyXText(BufferView *, InsetText *, bool ininset, ParagraphList & plist);
+	LyXText(BufferView *, bool ininset);
 	///
 	void init(BufferView *);
 
@@ -131,7 +130,7 @@ public:
 	/// draw text (only used for insets)
 	void draw(PainterInfo & pi, int x, int y) const;
 
-	///
+	/// try to handle that request
 	DispatchResult dispatch(FuncRequest const & cmd);
 
 	BufferView * bv();
@@ -252,8 +251,8 @@ public:
 	/// Change the case of the word at cursor position.
 	void changeCase(TextCase action);
 
-	///
-	void toggleInset();
+	/// returns success
+	bool toggleInset();
 	///
 	void cutSelection(bool doclear = true, bool realcut = true);
 	///
@@ -334,7 +333,7 @@ public:
 	//
 	// special owner functions
 	///
-	ParagraphList & ownerParagraphs() const;
+	ParagraphList & paragraphs() const;
 
 	/// return true if this is owned by an inset.
 	bool isInInset() const;
@@ -405,7 +404,7 @@ public:
 	/// our buffer's default layout font
 	LyXFont defaultfont_;
 	///
-	InsetText * inset_owner;
+	int background_color_;
 
 	/// only the top-level LyXText has this non-zero
 	BufferView * bv_owner;
@@ -415,7 +414,7 @@ public:
 	///
 	bool in_inset_;
 	///
-	ParagraphList * paragraphs_;
+	ParagraphList paragraphs_;
 
 	/// absolute document pixel coordinates of this LyXText
 	mutable int xo_;

@@ -110,6 +110,8 @@ public:
 	void markErased();
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
+	///
+	void setBackgroundColor(LColor_color);
 
 protected:
 	///

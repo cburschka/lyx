@@ -20,6 +20,7 @@
 class LyXText;
 class InsetOld;
 class Cursor;
+class Buffer;
 class BufferView;
 class PosIterator;
 
@@ -49,7 +50,7 @@ public:
 	///
 	ParagraphList & plist() const;
 	/// returns 'innermost' LyXText
-	LyXText * text(BufferView *) const;
+	LyXText * text(Buffer &) const;
 	/// returns innermost inset
 	InsetOld * inset() const;
 	/// returns index of cell in innermost inset

@@ -308,7 +308,7 @@ void BufferView::gotoLabel(string const & label)
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
 			text()->clearSelection();
 			text()->setCursor(
-				std::distance(text()->ownerParagraphs().begin(), it.getPar()),
+				std::distance(text()->paragraphs().begin(), it.getPar()),
 				it.getPos());
 			text()->selection.cursor = text()->cursor;
 			update();
@@ -413,7 +413,7 @@ Encoding const * BufferView::getEncoding() const
 	return t->cursorPar()->getFont(
 		buffer()->params(),
 		t->cursor.pos(),
-		outerFont(t->cursorPar(), t->ownerParagraphs())
+		outerFont(t->cursorPar(), t->paragraphs())
 	).language()->encoding();
 }
 

@@ -271,10 +271,8 @@ void Paragraph::insert(pos_type start, string const & str,
 }
 
 
-bool Paragraph::checkInsertChar(LyXFont & font)
+bool Paragraph::checkInsertChar(LyXFont &)
 {
-	if (pimpl_->inset_owner)
-		return pimpl_->inset_owner->checkInsertChar(font);
 	return true;
 }
 
@@ -593,9 +591,7 @@ int Paragraph::stripLeadingSpaces()
 
 bool Paragraph::hasSameLayout(Paragraph const & par) const
 {
-	return
-		par.layout() == layout() &&
-		params().sameLayout(par.params());
+	return par.layout() == layout() && params().sameLayout(par.params());
 }
 
 
@@ -718,8 +714,8 @@ InsetBibitem * Paragraph::bibitem() const
 
 namespace {
 
-/* paragraphs inside floats need different alignment tags to avoid
-unwanted space */
+// paragraphs inside floats need different alignment tags to avoid
+// unwanted space 
 
 bool noTrivlistCentering(UpdatableInset const * inset)
 {
@@ -1278,8 +1274,7 @@ void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 
 
 		if (c == Paragraph::META_INSET) {
-			InsetOld const * inset = getInset(i);
-			inset->linuxdoc(buf, os, runparams);
+			getInset(i)->linuxdoc(buf, os, runparams);
 			font_old = font;
 			continue;
 		}
@@ -1296,8 +1291,7 @@ void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 			if (ws && !isFreeSpacing()) {
 				// in freespacing mode, spaces are
 				// non-breaking characters
-				if (desc_on) {// if char is ' ' then...
-
+				if (desc_on) { // if char is ' ' then...
 					++char_line_count;
 					sgmlLineBreak(os, char_line_count, 6);
 					os << "</tag>";
@@ -1338,10 +1332,11 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	bool emph_flag = false;
 
 	LyXLayout_ptr const & style = layout();
-	LyXLayout_ptr const & defaultstyle 
-		= buf.params().getLyXTextClass().defaultLayout();
+	LyXLayout_ptr const & defaultstyle =
+		buf.params().getLyXTextClass().defaultLayout();
 
-	LyXFont font_old = (style->labeltype == LABEL_MANUAL ? style->labelfont : style->font);
+	LyXFont font_old =
+		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
 	int char_line_count = depth;
 	bool label_closed = true;

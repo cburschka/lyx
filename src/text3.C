@@ -258,7 +258,7 @@ InsetOld * LyXText::checkInsetHit(int x, int y)
 	ParagraphList::iterator pit;
 	ParagraphList::iterator end;
 
-	getParsInRange(ownerParagraphs(),
+	getParsInRange(paragraphs(),
 		       bv()->top_y() - yo_,
 		       bv()->top_y() - yo_ + bv()->workHeight(),
 		       pit, end);
@@ -293,7 +293,7 @@ InsetOld * LyXText::checkInsetHit(int x, int y)
 bool LyXText::gotoNextInset(vector<InsetOld::Code> const & codes,
 			    string const & contents)
 {
-	ParagraphList::iterator end = ownerParagraphs().end();
+	ParagraphList::iterator end = paragraphs().end();
 	ParagraphList::iterator pit = cursorPar();
 	pos_type pos = cursor.pos();
 
@@ -337,7 +337,7 @@ void LyXText::gotoInset(vector<InsetOld::Code> const & codes,
 	}
 
 	if (!gotoNextInset(codes, contents)) {
-		if (cursor.pos() || cursorPar() != ownerParagraphs().begin()) {
+		if (cursor.pos() || cursorPar() != paragraphs().begin()) {
 			LyXCursor tmp = cursor;
 			cursor.par(0);
 			cursor.pos(0);
@@ -467,8 +467,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		bool start = !pit->params().startOfAppendix();
 
 		// ensure that we have only one start_of_appendix in this document
-		ParagraphList::iterator tmp = ownerParagraphs().begin();
-		ParagraphList::iterator end = ownerParagraphs().end();
+		ParagraphList::iterator tmp = paragraphs().begin();
+		ParagraphList::iterator end = paragraphs().end();
 
 		for (; tmp != end; ++tmp) {
 			if (tmp->params().startOfAppendix()) {
@@ -889,7 +889,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_TOGGLE:
 		clearSelection();
-		toggleInset();
+		if (!toggleInset())
+			return DispatchResult(false);
 		bv->update();
 		bv->switchKeyMap();
 		break;
@@ -996,14 +997,14 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BEGINNINGBUFSEL:
-		if (inset_owner)
+		if (in_inset_)
 			return DispatchResult(false);
 		cursorTop();
 		finishChange(bv, true);
 		break;
 
 	case LFUN_ENDBUFSEL:
-		if (inset_owner)
+		if (in_inset_)
 			return DispatchResult(false);
 		cursorBottom();
 		finishChange(bv, true);

@@ -71,7 +71,7 @@ int InsetEnvironment::latex(Buffer const & buf, ostream & os,
 {
 	os << layout_->latexheader;
 	TexRow texrow;
-	latexParagraphs(buf, paragraphs, os, texrow, runparams,
+	latexParagraphs(buf, paragraphs(), os, texrow, runparams,
 			layout_->latexparagraph);
 	os << layout_->latexfooter;
 	return texrow.rows();

@@ -288,7 +288,7 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 	
 	bv->getLyXText()->clearSelection();
 
-	LyXText * text = par.text(bv);
+	LyXText * text = par.text(*bv->buffer());
 	par.lockPath(bv);
 	//hack for the chicken and egg problem
 	if (par.inset())

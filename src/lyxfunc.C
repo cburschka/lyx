@@ -459,15 +459,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		disable = !buf->params().tracking_changes;
 		break;
 
-	case LFUN_INSET_TOGGLE: {
-		LyXText * lt = view()->getLyXText();
-		disable = !(isEditableInset(lt->getInset())
-			    || (lt->inset_owner
-				&& lt->inset_owner->owner()
-				&& lt->inset_owner->owner()->isOpen()));
-		break;
-	}
-
 	case LFUN_INSET_SETTINGS: {
 		disable = true;
 		UpdatableInset * inset = view()->cursor().innerInset();
@@ -1166,7 +1157,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			}
 
 			par.lockPath(view());
-			LyXText * lt = par.text(view());
+			LyXText * lt = par.text(*view()->buffer());
 
 			// Set the cursor
 			lt->setCursor(par.pit(), 0);

@@ -94,7 +94,7 @@ InsetERT::InsetERT(BufferParams const & bp,
 	string::const_iterator end = contents.end();
 	pos_type pos = 0;
 	for (; cit != end; ++cit) {
-		inset.paragraphs.begin()->insertChar(pos++, *cit, font);
+		inset.paragraphs().begin()->insertChar(pos++, *cit, font);
 	}
 	// the init has to be after the initialization of the paragraph
 	// because of the label settings (draw_label for ert insets).
@@ -142,8 +142,8 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
 
-	ParagraphList::iterator pit = inset.paragraphs.begin();
-	ParagraphList::iterator pend = inset.paragraphs.end();
+	ParagraphList::iterator pit = inset.paragraphs().begin();
+	ParagraphList::iterator pend = inset.paragraphs().end();
 	for (; pit != pend; ++pit) {
 		pos_type siz = pit->size();
 		for (pos_type i = 0; i < siz; ++i) {
@@ -182,8 +182,8 @@ void InsetERT::write(Buffer const & buf, ostream & os) const
 
 	//inset.writeParagraphData(buf, os);
 	string const layout(buf.params().getLyXTextClass().defaultLayoutName());
-	ParagraphList::iterator par = inset.paragraphs.begin();
-	ParagraphList::iterator end = inset.paragraphs.end();
+	ParagraphList::iterator par = inset.paragraphs().begin();
+	ParagraphList::iterator end = inset.paragraphs().end();
 	for (; par != end; ++par) {
 		os << "\n\\begin_layout " << layout << "\n";
 		pos_type siz = par->size();
@@ -296,8 +296,8 @@ void InsetERT::lfunMouseMotion(FuncRequest const & cmd)
 int InsetERT::latex(Buffer const &, ostream & os,
 		    OutputParams const &) const
 {
-	ParagraphList::iterator par = inset.paragraphs.begin();
-	ParagraphList::iterator end = inset.paragraphs.end();
+	ParagraphList::iterator par = inset.paragraphs().begin();
+	ParagraphList::iterator end = inset.paragraphs().end();
 
 	int lines = 0;
 	while (par != end) {
@@ -335,8 +335,8 @@ int InsetERT::plaintext(Buffer const &, ostream &,
 int InsetERT::linuxdoc(Buffer const &, ostream & os,
 		       OutputParams const &)const
 {
-	ParagraphList::iterator par = inset.paragraphs.begin();
-	ParagraphList::iterator end = inset.paragraphs.end();
+	ParagraphList::iterator par = inset.paragraphs().begin();
+	ParagraphList::iterator end = inset.paragraphs().end();
 
 	int lines = 0;
 	while (par != end) {
@@ -363,8 +363,8 @@ int InsetERT::linuxdoc(Buffer const &, ostream & os,
 int InsetERT::docbook(Buffer const &, ostream & os,
 		      OutputParams const &) const
 {
-	ParagraphList::iterator par = inset.paragraphs.begin();
-	ParagraphList::iterator end = inset.paragraphs.end();
+	ParagraphList::iterator par = inset.paragraphs().begin();
+	ParagraphList::iterator end = inset.paragraphs().end();
 
 	int lines = 0;
 	while (par != end) {
@@ -405,7 +405,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	BufferView * bv = cmd.view();
 
-	if (inset.paragraphs.begin()->empty())
+	if (inset.paragraphs().begin()->empty())
 		setLatexFont(bv);
 
 	switch (cmd.action) {
@@ -431,7 +431,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 		return DispatchResult(true, true);
 
 	case LFUN_LAYOUT:
-		bv->owner()->setLayout(inset.paragraphs.begin()->layout()->name());
+		bv->owner()->setLayout(inset.paragraphs().begin()->layout()->name());
 		return DispatchResult(true);
 
 	case LFUN_BREAKPARAGRAPH:
@@ -455,17 +455,17 @@ string const InsetERT::getNewLabel() const
 {
 	string la;
 	pos_type const max_length = 15;
-	pos_type const p_siz = inset.paragraphs.begin()->size();
+	pos_type const p_siz = inset.paragraphs().begin()->size();
 	pos_type const n = min(max_length, p_siz);
 	pos_type i = 0;
 	pos_type j = 0;
 	for( ; i < n && j < p_siz; ++j) {
-		if (inset.paragraphs.begin()->isInset(j))
+		if (inset.paragraphs().begin()->isInset(j))
 			continue;
-		la += inset.paragraphs.begin()->getChar(j);
+		la += inset.paragraphs().begin()->getChar(j);
 		++i;
 	}
-	if (inset.paragraphs.size() > 1 || (i > 0 && j < p_siz)) {
+	if (inset.paragraphs().size() > 1 || (i > 0 && j < p_siz)) {
 		la += "...";
 	}
 	if (la.empty()) {
@@ -478,17 +478,6 @@ string const InsetERT::getNewLabel() const
 void InsetERT::setButtonLabel() const
 {
 	setLabel(status_ == Collapsed ? getNewLabel() : _("ERT"));
-}
-
-
-bool InsetERT::checkInsertChar(LyXFont & /* font */)
-{
-#ifdef SET_HARD_FONT
-	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
-	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
-	font.setColor(LColor::latex);
-#endif
-	return true;
 }
 
 

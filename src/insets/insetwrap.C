@@ -69,7 +69,7 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	setInsetName(type);
 	LyXTextClass const & tclass = bp.getLyXTextClass();
 	if (tclass.hasLayout(caplayout))
-		inset.paragraphs.begin()->layout(tclass[caplayout]);
+		inset.paragraphs().begin()->layout(tclass[caplayout]);
 }
 
 
@@ -218,18 +218,10 @@ bool InsetWrap::insetAllowed(InsetOld::Code code) const
 }
 
 
-int InsetWrap::latexTextWidth(BufferView * bv) const
-{
-	return params_.width.inPixels(InsetCollapsable::latexTextWidth(bv));
-}
-
-
 bool InsetWrap::showInsetDialog(BufferView * bv) const
 {
-	if (!inset.showInsetDialog(bv)) {
-		InsetWrap * tmp = const_cast<InsetWrap *>(this);
-		InsetWrapMailer(*tmp).showDialog(bv);
-	}
+	if (!inset.showInsetDialog(bv))
+		InsetWrapMailer(const_cast<InsetWrap &>(*this)).showDialog(bv);
 	return true;
 }
 
@@ -237,8 +229,8 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
 	// Now find the caption in the float...
-	ParagraphList::iterator tmp = inset.paragraphs.begin();
-	ParagraphList::iterator end = inset.paragraphs.end();
+	ParagraphList::iterator tmp = inset.paragraphs().begin();
+	ParagraphList::iterator end = inset.paragraphs().end();
 
 	for (; tmp != end; ++tmp) {
 		if (tmp->layout()->name() == caplayout) {

@@ -50,8 +50,7 @@ public:
 	DispatchResult
 	dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	// the real dispatcher
-	DispatchResult
-	dispatch(FuncRequest const & cmd);
+	DispatchResult dispatch(FuncRequest const & cmd);
 
 	/// cursor enters
 	virtual void edit(BufferView * bv, bool left);

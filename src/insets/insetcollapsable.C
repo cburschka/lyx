@@ -149,7 +149,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 	xo_ = x;
 	yo_ = y;
 
-	if (!isOpen()) {
+	if (collapsed_) {
 		draw_collapsed(pi, x, y);
 		return;
 	}
@@ -171,7 +171,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
-	// by default, we are not inlined-drawing
+	// by default we don't draw inline
 	draw(pi, x, y, false);
 }
 
@@ -274,16 +274,13 @@ void InsetCollapsable::edit(BufferView * bv, int x, int y)
 	lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (collapsed_) {
 		collapsed_ = false;
-		// set this only here as it should be recollapsed only if
-		// it was already collapsed!
-		inset.edit(bv, x, y);
 	} else {
 		if (y <= button_dim.y2)
-			inset.edit(bv, x, 0);
+			y = 0;
 		else
-			inset.edit(bv, x, ascent() + y - height_collapsed() + inset.ascent());
+			y += inset.ascent() - height_collapsed();
 	}
-	
+	inset.edit(bv, x, y);
 	bv->cursor().push(this);
 }
 
@@ -311,6 +308,11 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 				return lfunMouseRelease(cmd);
 			return DispatchResult(true, true);
 
+		case LFUN_INSET_TOGGLE:
+			if (!inset.text_.toggleInset())
+				close();
+			return DispatchResult(true, true);
+
 		default:
 			return inset.dispatch(adjustCommand(cmd));
 	}
@@ -326,7 +328,7 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 
 void InsetCollapsable::getCursorPos(int & x, int & y) const
 {
-	inset.getCursorPos(x , y);
+	inset.getCursorPos(x, y);
 	y += - ascent() + height_collapsed() + inset.ascent();
 }
 
@@ -369,18 +371,12 @@ LyXText * InsetCollapsable::getText(int i) const
 
 void InsetCollapsable::open()
 {
-	if (!collapsed_)
-		return;
-
 	collapsed_ = false;
 }
 
 
 void InsetCollapsable::close() const
 {
-	if (collapsed_)
-		return;
-
 	collapsed_ = true;
 }
 
@@ -420,6 +416,7 @@ void InsetCollapsable::setLabelFont(LyXFont & f)
 	labelfont_ = f;
 }
 
+
 #if 0
 void InsetCollapsable::setAutoCollapse(bool f)
 {
@@ -427,13 +424,14 @@ void InsetCollapsable::setAutoCollapse(bool f)
 }
 #endif
 
-void InsetCollapsable::scroll(BufferView *bv, float sx) const
+
+void InsetCollapsable::scroll(BufferView * bv, float sx) const
 {
 	UpdatableInset::scroll(bv, sx);
 }
 
 
-void InsetCollapsable::scroll(BufferView *bv, int offset) const
+void InsetCollapsable::scroll(BufferView * bv, int offset) const
 {
 	UpdatableInset::scroll(bv, offset);
 }
@@ -450,3 +448,9 @@ Box const & InsetCollapsable::buttonDim() const
 	return button_dim;
 }
 
+
+void InsetCollapsable::setBackgroundColor(LColor_color color)
+{
+	InsetOld::setBackgroundColor(color);
+	inset.setBackgroundColor(color);
+}

@@ -41,8 +41,6 @@ public:
 	///
 	InsetFloat(BufferParams const &, std::string const &);
 	///
-	InsetFloat(InsetFloat const &);
-	///
 	~InsetFloat();
 	///
 	void write(Buffer const & buf, std::ostream & os) const;

@@ -1160,7 +1160,7 @@ bool InsetTabular::moveNextCell(BufferView * bv, bool lock)
 		++actcell;
 	}
 	if (lock) {
-		bool rtl = tabular.getCellInset(actcell).paragraphs.begin()->
+		bool rtl = tabular.getCellInset(actcell).paragraphs().begin()->
 			isRightToLeftPar(bv->buffer()->params());
 		activateCellInset(bv, 0, 0, !rtl);
 	}
@@ -1193,7 +1193,7 @@ bool InsetTabular::movePrevCell(BufferView * bv, bool lock)
 	}
 	lyxerr << "move prevcell 2" << endl;
 	if (lock) {
-		bool rtl = tabular.getCellInset(actcell).paragraphs.begin()->
+		bool rtl = tabular.getCellInset(actcell).paragraphs().begin()->
 			isRightToLeftPar(bv->buffer()->params());
 		activateCellInset(bv, 0, 0, !rtl);
 	}
@@ -2082,7 +2082,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 			if (cols < columns) {
 				InsetText & inset = loctab->getCellInset(cell);
 				LyXFont const font = inset.text_.
-					getFont(inset.paragraphs.begin(), 0);
+					getFont(inset.paragraphs().begin(), 0);
 				inset.setText(buf.substr(op, p - op), font);
 				++cols;
 				++cell;
@@ -2093,7 +2093,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 			if (cols < columns) {
 				InsetText & inset = tabular.getCellInset(cell);
 				LyXFont const font = inset.text_.
-					getFont(inset.paragraphs.begin(), 0);
+					getFont(inset.paragraphs().begin(), 0);
 				inset.setText(buf.substr(op, p - op), font);
 			}
 			cols = ocol;
@@ -2108,7 +2108,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
 		InsetText & inset = loctab->getCellInset(cell);
-		LyXFont const font = inset.text_.getFont(inset.paragraphs.begin(), 0);
+		LyXFont const font = inset.text_.getFont(inset.paragraphs().begin(), 0);
 		inset.setText(buf.substr(op, len - op), font);
 	}
 

@@ -182,12 +182,11 @@ bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 	BOOST_ASSERT(0 <= end && end <= endpit->size());
 	BOOST_ASSERT(startpit != endpit || start <= end);
 
-	ParagraphList paragraphs;
 
 	// Clone the paragraphs within the selection.
 	ParagraphList::iterator postend = boost::next(endpit);
 
-	paragraphs.assign(startpit, postend);
+	ParagraphList paragraphs(startpit, postend);
 	for_each(paragraphs.begin(), paragraphs.end(), resetOwnerAndChanges());
 
 	// Cut out the end of the last paragraph.

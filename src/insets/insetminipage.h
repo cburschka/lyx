@@ -83,8 +83,6 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	int latexTextWidth(BufferView *) const;
-	///
 	void params(Params const & p) { params_ = p; }
 	///
 	Params const & params() const { return params_; }

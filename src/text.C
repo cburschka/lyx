@@ -108,8 +108,8 @@ BufferView * LyXText::bv() const
 
 void LyXText::updateParPositions()
 {
-	ParagraphList::iterator pit = ownerParagraphs().begin();
-	ParagraphList::iterator end = ownerParagraphs().end();
+	ParagraphList::iterator pit = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 	for (height = 0; pit != end; ++pit) {
 		pit->y = height;
 		height += pit->height;
@@ -192,9 +192,9 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 	if (pit->getDepth() == 0) {
 		if (pit->layout() == tclass.defaultLayout()) {
 			// find the previous same level paragraph
-			if (pit != ownerParagraphs().begin()) {
+			if (pit != paragraphs().begin()) {
 				ParagraphList::iterator newpit =
-					depthHook(pit, ownerParagraphs(), pit->getDepth());
+					depthHook(pit, paragraphs(), pit->getDepth());
 				if (newpit == pit && newpit->layout()->nextnoindent)
 					parindent.erase();
 			}
@@ -202,16 +202,16 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 	} else {
 		// find the next level paragraph
 		ParagraphList::iterator newpar =
-			outerHook(pit, ownerParagraphs());
+			outerHook(pit, paragraphs());
 
 		// Make a corresponding row. Need to call leftMargin()
 		// to check whether it is a sufficent paragraph.
-		if (newpar != ownerParagraphs().end()
+		if (newpar != paragraphs().end()
 		    && newpar->layout()->isEnvironment()) {
 			x = leftMargin(newpar);
 		}
 
-		if (newpar != ownerParagraphs().end()
+		if (newpar != paragraphs().end()
 		    && pit->layout() == tclass.defaultLayout()) {
 			if (newpar->params().noindent())
 				parindent.erase();
@@ -266,7 +266,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 			   // theorems (JMarc)
 			   || (layout->labeltype == LABEL_STATIC
 			       && layout->latextype == LATEX_ENVIRONMENT
-			       && !isFirstInSequence(pit, ownerParagraphs()))) {
+			       && !isFirstInSequence(pit, paragraphs()))) {
 			x += font_metrics::signedWidth(layout->leftmargin,
 						  labelfont);
 		} else if (layout->labeltype != LABEL_TOP_ENVIRONMENT
@@ -298,11 +298,8 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 	}
 	}
 
-	if (!pit->params().leftIndent().zero()) {
-		int const tw = inset_owner ?
-			inset_owner->latexTextWidth(bv()) : textWidth();
-		x += pit->params().leftIndent().inPixels(tw);
-	}
+	if (!pit->params().leftIndent().zero())
+		x += pit->params().leftIndent().inPixels(textWidth());
 
 	LyXAlignment align;
 
@@ -318,7 +315,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 		     || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
 		     || (layout->labeltype == LABEL_STATIC
 			 && layout->latextype == LATEX_ENVIRONMENT
-			 && !isFirstInSequence(pit, ownerParagraphs())))
+			 && !isFirstInSequence(pit, paragraphs())))
 		    && align == LYX_ALIGN_BLOCK
 		    && !pit->params().noindent()
 			// in tabulars and ert paragraphs are never indented!
@@ -578,9 +575,7 @@ int LyXText::labelFill(ParagraphList::iterator pit, Row const & row) const
 
 LColor_color LyXText::backgroundColor() const
 {
-	if (inset_owner)
-		return inset_owner->backgroundColor();
-	return LColor::background;
+	return LColor_color(LColor::color(background_color_));
 }
 
 
@@ -649,7 +644,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 		// some parksips VERY EASY IMPLEMENTATION
 		if (bv()->buffer()->params().paragraph_separation
 		    == BufferParams::PARSEP_SKIP
-			&& pit != ownerParagraphs().begin()
+			&& pit != paragraphs().begin()
 			&& ((layout->isParagraph() && pit->getDepth() == 0)
 			    || (boost::prior(pit)->layout()->isParagraph()
 			        && boost::prior(pit)->getDepth() == 0)))
@@ -671,7 +666,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 		if ((layout->labeltype == LABEL_TOP_ENVIRONMENT
 		     || layout->labeltype == LABEL_BIBLIO
 		     || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
-		    && isFirstInSequence(pit, ownerParagraphs())
+		    && isFirstInSequence(pit, paragraphs())
 		    && !pit->getLabelstring().empty())
 		{
 			labeladdon = int(
@@ -686,22 +681,22 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 		// environment.
 
 		ParagraphList::iterator prev =
-			depthHook(pit, ownerParagraphs(), pit->getDepth());
+			depthHook(pit, paragraphs(), pit->getDepth());
 		if (prev != pit
 		    && prev->layout() == layout
 		    && prev->getDepth() == pit->getDepth()
 		    && prev->getLabelWidthString() == pit->getLabelWidthString())
 		{
 			layoutasc = layout->itemsep * dh;
-		} else if (pit != ownerParagraphs().begin() || row.pos() != 0) {
+		} else if (pit != paragraphs().begin() || row.pos() != 0) {
 			if (layout->topsep > 0)
 				layoutasc = layout->topsep * dh;
 		}
 
-		prev = outerHook(pit, ownerParagraphs());
-		if (prev != ownerParagraphs().end()) {
+		prev = outerHook(pit, paragraphs());
+		if (prev != paragraphs().end()) {
 			maxasc += int(prev->layout()->parsep * dh);
-		} else if (pit != ownerParagraphs().begin()) {
+		} else if (pit != paragraphs().begin()) {
 			ParagraphList::iterator prior_pit = boost::prior(pit);
 			if (prior_pit->getDepth() != 0 ||
 					prior_pit->layout() == layout) {
@@ -716,14 +711,14 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 		// a section, or between the items of a itemize or enumerate
 		// environment
 		ParagraphList::iterator nextpit = boost::next(pit);
-		if (nextpit != ownerParagraphs().end()) {
+		if (nextpit != paragraphs().end()) {
 			ParagraphList::iterator cpit = pit;
 			double usual = 0;
 			double unusual = 0;
 
 			if (cpit->getDepth() > nextpit->getDepth()) {
 				usual = cpit->layout()->bottomsep * dh;
-				cpit = depthHook(cpit, ownerParagraphs(), nextpit->getDepth());
+				cpit = depthHook(cpit, paragraphs(), nextpit->getDepth());
 				if (cpit->layout() != nextpit->layout()
 					|| nextpit->getLabelWidthString() != cpit->getLabelWidthString())
 				{
@@ -1242,7 +1237,7 @@ void LyXText::changeCase(LyXText::TextCase action)
 	pos_type pos = from.pos();
 	int par = from.par();
 
-	while (par != int(ownerParagraphs().size()) &&
+	while (par != int(paragraphs().size()) &&
 	       (pos != to.pos() || par != to.par())) {
 		ParagraphList::iterator pit = getPar(par);
 		if (pos == pit->size()) {
@@ -1400,8 +1395,8 @@ ParagraphList::iterator LyXText::getPar(LyXCursor const & cur) const
 ParagraphList::iterator LyXText::getPar(int par) const
 {
 	BOOST_ASSERT(par >= 0);
-	BOOST_ASSERT(par < int(ownerParagraphs().size()));
-	ParagraphList::iterator pit = ownerParagraphs().begin();
+	BOOST_ASSERT(par < int(paragraphs().size()));
+	ParagraphList::iterator pit = paragraphs().begin();
 	std::advance(pit, par);
 	return pit;
 }
@@ -1413,8 +1408,8 @@ LyXText::getRowNearY(int y, ParagraphList::iterator & pit) const
 	//lyxerr << "getRowNearY: y " << y << endl;
 #if 1
 	ParagraphList::iterator const
-		pend = boost::prior(ownerParagraphs().end());
-	pit = ownerParagraphs().begin();
+		pend = boost::prior(paragraphs().end());
+	pit = paragraphs().begin();
 	while (int(pit->y + pit->height) < y && pit != pend)
 		++pit;
 
@@ -1426,7 +1421,7 @@ LyXText::getRowNearY(int y, ParagraphList::iterator & pit) const
 
 	return rit;
 #else
-	pit = boost::prior(ownerParagraphs().end());
+	pit = boost::prior(paragraphs().end());
 
 	RowList::iterator rit = lastRow();
 	RowList::iterator rbegin = firstRow();
@@ -1447,13 +1442,13 @@ int LyXText::getDepth() const
 
 RowList::iterator LyXText::firstRow() const
 {
-	return ownerParagraphs().front().rows.begin();
+	return paragraphs().front().rows.begin();
 }
 
 
 ParagraphList::iterator LyXText::firstPar() const
 {
-	return ownerParagraphs().begin();
+	return paragraphs().begin();
 }
 
 
@@ -1471,13 +1466,13 @@ ParagraphList::iterator LyXText::lastPar() const
 
 RowList::iterator LyXText::endRow() const
 {
-	return ownerParagraphs().back().rows.end();
+	return paragraphs().back().rows.end();
 }
 
 
 ParagraphList::iterator LyXText::endPar() const
 {
-	return ownerParagraphs().end();
+	return paragraphs().end();
 }
 
 
@@ -1487,7 +1482,7 @@ void LyXText::nextRow(ParagraphList::iterator & pit,
 	++rit;
 	if (rit == pit->rows.end()) {
 		++pit;
-		if (pit == ownerParagraphs().end())
+		if (pit == paragraphs().end())
 			--pit;
 		else
 			rit = pit->rows.begin();
@@ -1501,7 +1496,7 @@ void LyXText::previousRow(ParagraphList::iterator & pit,
 	if (rit != pit->rows.begin())
 		--rit;
 	else {
-		BOOST_ASSERT(pit != ownerParagraphs().begin());
+		BOOST_ASSERT(pit != paragraphs().begin());
 		--pit;
 		rit = boost::prior(pit->rows.end());
 	}
@@ -1540,7 +1535,7 @@ string LyXText::selectionAsString(Buffer const & buffer, bool label) const
 
 int LyXText::parOffset(ParagraphList::iterator pit) const
 {
-	return std::distance(ownerParagraphs().begin(), pit);
+	return std::distance(paragraphs().begin(), pit);
 }
 
 
@@ -1603,7 +1598,7 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 
 void LyXText::fullRebreak()
 {
-	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
+	redoParagraphs(paragraphs().begin(), paragraphs().end());
 	redoCursor();
 	selection.cursor = cursor;
 }
@@ -1618,9 +1613,9 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	//	<< " textWidth: " << textWidth() << "\nfont: " << mi.base.font << endl;
 
 	// Rebuild row cache. This recomputes height as well.
-	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
+	redoParagraphs(paragraphs().begin(), paragraphs().end());
 
-	width = maxParagraphWidth(ownerParagraphs());
+	width = maxParagraphWidth(paragraphs());
 
 	// final dimension
 	dim.asc = firstRow()->ascent_of_text();
@@ -1641,13 +1636,13 @@ void LyXText::draw(PainterInfo & pi, int x, int y) const
 bool LyXText::isLastRow(ParagraphList::iterator pit, Row const & row) const
 {
 	return row.endpos() >= pit->size()
-	       && boost::next(pit) == ownerParagraphs().end();
+	       && boost::next(pit) == paragraphs().end();
 }
 
 
 bool LyXText::isFirstRow(ParagraphList::iterator pit, Row const & row) const
 {
-	return row.pos() == 0 && pit == ownerParagraphs().begin();
+	return row.pos() == 0 && pit == paragraphs().begin();
 }
 
 
@@ -1671,7 +1666,7 @@ void LyXText::cursorLeftOneWord(LyXCursor & cursor)
 	     pit->isHfill(pos - 1))) {
 		--pos;
 	} else if (!pos) {
-		if (pit != ownerParagraphs().begin()) {
+		if (pit != paragraphs().begin()) {
 			--pit;
 			pos = pit->size();
 		}
@@ -1692,7 +1687,7 @@ void LyXText::cursorRightOneWord(LyXCursor & cursor)
 	pos_type pos = cursor.pos();
 
 	if (pos == pit->size() &&
-		boost::next(pit) != ownerParagraphs().end()) {
+		boost::next(pit) != paragraphs().end()) {
 		++pit;
 		pos = 0;
 	} else {

@@ -9,9 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef InsetWrap_H
-#define InsetWrap_H
-
+#ifndef INSETWRAP_H
+#define INSETWRAP_H
 
 #include "insetcollapsable.h"
 #include "toc.h"
@@ -64,9 +63,7 @@ public:
 	///
 	void addToToc(lyx::toc::TocList &, Buffer const &) const;
 	///
-	bool  showInsetDialog(BufferView *) const;
-	///
-	int latexTextWidth(BufferView *) const;
+	bool showInsetDialog(BufferView *) const;
 	///
 	InsetWrapParams const & params() const { return params_; }
 protected:

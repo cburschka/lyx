@@ -26,15 +26,16 @@ using std::string;
 
 InsetOld::InsetOld()
 	: InsetBase(),
-	xo_(0), yo_(0), scx(0), owner_(0),
-	background_color_(LColor::inherit)
+	  xo_(0), yo_(0), scx(0), owner_(0),
+	  //background_color_(LColor::inherit)
+	  background_color_(LColor::background)
 {}
 
 
 InsetOld::InsetOld(InsetOld const & in)
 	: InsetBase(),
-	xo_(0), yo_(0), scx(0), owner_(0),
-	name_(in.name_), background_color_(in.background_color_)
+	  xo_(0), yo_(0), scx(0), owner_(0), name_(in.name_),
+	  background_color_(in.background_color_)
 {}
 
 
@@ -56,18 +57,6 @@ bool InsetOld::autoDelete() const
 }
 
 
-#if 0
-LyXFont const InsetOld::convertFont(LyXFont const & font) const
-{
-#if 1
-	return font;
-#else
-	return LyXFont(font);
-#endif
-}
-#endif
-
-
 string const InsetOld::editMessage() const
 {
 	return _("Opened inset");
@@ -82,13 +71,7 @@ void InsetOld::setBackgroundColor(LColor_color color)
 
 LColor_color InsetOld::backgroundColor() const
 {
-	if (background_color_ == LColor::inherit) {
-		if (owner())
-			return owner()->backgroundColor();
-		else
-			return LColor::background;
-	} else
-		return LColor::color(background_color_);
+	return LColor::color(background_color_);
 }
 
 
@@ -97,13 +80,6 @@ bool InsetOld::forceDefaultParagraphs(InsetOld const * inset) const
 	if (owner())
 		return owner()->forceDefaultParagraphs(inset);
 	return false;
-}
-
-int InsetOld::latexTextWidth(BufferView * bv) const
-{
-	if (owner())
-		return (owner()->latexTextWidth(bv));
-	return bv->workWidth();
 }
 
 
@@ -128,12 +104,6 @@ int InsetOld::width() const
 bool InsetOld::insetAllowed(InsetOld * in) const
 {
 	return insetAllowed(in->lyxCode());
-}
-
-
-bool InsetOld::checkInsertChar(LyXFont &)
-{
-	return false;
 }
 
 

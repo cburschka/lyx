@@ -37,6 +37,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
@@ -71,11 +72,10 @@ using std::ostringstream;
 using std::string;
 
 
-LyXText::LyXText(BufferView * bv, InsetText * inset, bool in_inset,
-	  ParagraphList & paragraphs)
+LyXText::LyXText(BufferView * bv, bool in_inset)
 	: height(0), width(0), textwidth_(bv ? bv->workWidth() : 100),
-	  inset_owner(inset), bv_owner(bv),
-	  in_inset_(in_inset), paragraphs_(&paragraphs), xo_(0), yo_(0)
+		background_color_(LColor::background),
+	  bv_owner(bv), in_inset_(in_inset), xo_(0), yo_(0)
 {}
 
 
@@ -83,8 +83,8 @@ void LyXText::init(BufferView * bview)
 {
 	bv_owner = bview;
 
-	ParagraphList::iterator const beg = ownerParagraphs().begin();
-	ParagraphList::iterator const end = ownerParagraphs().end();
+	ParagraphList::iterator const beg = paragraphs().begin();
+	ParagraphList::iterator const end = paragraphs().end();
 	for (ParagraphList::iterator pit = beg; pit != end; ++pit)
 		pit->rows.clear();
 
@@ -140,7 +140,7 @@ LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 		pit->inInset()->getDrawFont(font);
 
 	// Realize with the fonts of lesser depth.
-	//font.realize(outerFont(pit, ownerParagraphs()));
+	//font.realize(outerFont(pit, paragraphs()));
 	font.realize(defaultfont_);
 
 	return font;
@@ -156,7 +156,7 @@ LyXFont LyXText::getLayoutFont(ParagraphList::iterator pit) const
 
 	LyXFont font = layout->font;
 	// Realize with the fonts of lesser depth.
-	//font.realize(outerFont(pit, ownerParagraphs()));
+	//font.realize(outerFont(pit, paragraphs()));
 	font.realize(defaultfont_);
 
 	return font;
@@ -172,7 +172,7 @@ LyXFont LyXText::getLabelFont(ParagraphList::iterator pit) const
 
 	LyXFont font = layout->labelfont;
 	// Realize with the fonts of lesser depth.
-	font.realize(outerFont(pit, ownerParagraphs()));
+	font.realize(outerFont(pit, paragraphs()));
 	font.realize(defaultfont_);
 
 	return font;
@@ -197,10 +197,10 @@ void LyXText::setCharFont(
 	if (pit->getDepth()) {
 		ParagraphList::iterator tp = pit;
 		while (!layoutfont.resolved() &&
-		       tp != ownerParagraphs().end() &&
+		       tp != paragraphs().end() &&
 		       tp->getDepth()) {
-			tp = outerHook(tp, ownerParagraphs());
-			if (tp != ownerParagraphs().end())
+			tp = outerHook(tp, paragraphs());
+			if (tp != paragraphs().end())
 				layoutfont.realize(tp->layout()->font);
 		}
 	}
@@ -226,21 +226,12 @@ InsetOld * LyXText::getInset() const
 }
 
 
-void LyXText::toggleInset()
+bool LyXText::toggleInset()
 {
 	InsetOld * inset = getInset();
 	// is there an editable inset at cursor position?
-	if (!isEditableInset(inset)) {
-		// No, try to see if we are inside a collapsable inset
-		if (inset_owner && inset_owner->owner()
-		    && inset_owner->owner()->isOpen()) {
-			finishUndo();
-			inset_owner->owner()->close();
-			bv()->getLyXText()->cursorRight(true);
-			bv()->updateParagraphDialog();
-		}
-		return;
-	}
+	if (!isEditableInset(inset))
+		return false;
 	//bv()->owner()->message(inset->editMessage());
 
 	// do we want to keep this?? (JMarc)
@@ -251,6 +242,7 @@ void LyXText::toggleInset()
 		inset->close();
 	else
 		inset->open();
+	return true;
 }
 
 
@@ -283,7 +275,7 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 {
 	ParagraphList::iterator endpit = boost::next(getPar(send_cur));
 	ParagraphList::iterator undoendpit = endpit;
-	ParagraphList::iterator pars_end = ownerParagraphs().end();
+	ParagraphList::iterator pars_end = paragraphs().end();
 
 	if (endpit != pars_end && endpit->getDepth()) {
 		while (endpit != pars_end && endpit->getDepth()) {
@@ -312,7 +304,7 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 		makeFontEntriesLayoutSpecific(bufparams, *pit);
 		if (lyxlayout->margintype == MARGIN_MANUAL)
 			pit->setLabelWidthString(lyxlayout->labelstring());
-		cur.par(std::distance(ownerParagraphs().begin(), pit));
+		cur.par(std::distance(paragraphs().begin(), pit));
 		++pit;
 	} while (pit != epit);
 
@@ -391,7 +383,7 @@ bool LyXText::changeDepthAllowed(bv_funcs::DEPTH_CHANGE type)
 	ParagraphList::iterator beg, end; 
 	getSelectionSpan(*this, beg, end);
 	int max_depth = 0;
-	if (beg != ownerParagraphs().begin())
+	if (beg != paragraphs().begin())
 		max_depth = boost::prior(beg)->getMaxDepthAfter();
 
 	for (ParagraphList::iterator pit = beg; pit != end; ++pit) {
@@ -411,7 +403,7 @@ void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
 	recUndo(parOffset(beg), parOffset(end) - 1);
 
 	int max_depth = 0;
-	if (beg != ownerParagraphs().begin())
+	if (beg != paragraphs().begin())
 		max_depth = boost::prior(beg)->getMaxDepthAfter();
 
 	for (ParagraphList::iterator pit = beg; pit != end; ++pit) {
@@ -464,8 +456,8 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	ParagraphList::iterator beg = getPar(selection.start.par());
 	ParagraphList::iterator end = getPar(selection.end.par());
 	
-	PosIterator pos(&ownerParagraphs(), beg, selection.start.pos());
-	PosIterator posend(&ownerParagraphs(), end, selection.end.pos());
+	PosIterator pos(&paragraphs(), beg, selection.start.pos());
+	PosIterator posend(&paragraphs(), end, selection.end.pos());
 
 	BufferParams const & params = bv()->buffer()->params();
 
@@ -524,14 +516,14 @@ void LyXText::cursorEnd()
 
 void LyXText::cursorTop()
 {
-	setCursor(ownerParagraphs().begin(), 0);
+	setCursor(paragraphs().begin(), 0);
 }
 
 
 void LyXText::cursorBottom()
 {
 	ParagraphList::iterator lastpit =
-		boost::prior(ownerParagraphs().end());
+		boost::prior(paragraphs().end());
 	setCursor(lastpit, lastpit->size());
 }
 
@@ -599,7 +591,7 @@ string LyXText::getStringToIndex()
 }
 
 
-// the DTP switches for paragraphs. LyX will store them in the first
+// the DTP switches for paragraphs(). LyX will store them in the first
 // physical paragraph. When a paragraph is broken, the top settings rest,
 // the bottom settings are given to the new one. So I can make sure,
 // they do not duplicate themself and you cannot play dirty tricks with
@@ -615,7 +607,7 @@ void LyXText::setParagraph(
 	// make sure that the depth behind the selection are restored, too
 	ParagraphList::iterator endpit = boost::next(getPar(selection.end));
 	ParagraphList::iterator undoendpit = endpit;
-	ParagraphList::iterator pars_end = ownerParagraphs().end();
+	ParagraphList::iterator pars_end = paragraphs().end();
 
 	if (endpit != pars_end && endpit->getDepth()) {
 		while (endpit != pars_end && endpit->getDepth()) {
@@ -765,7 +757,7 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 	BufferParams const & bufparams = buf.params();
 	LyXTextClass const & textclass = bufparams.getLyXTextClass();
 	LyXLayout_ptr const & layout = pit->layout();
-	ParagraphList::iterator first_pit = ownerParagraphs().begin();
+	ParagraphList::iterator first_pit = paragraphs().begin();
 	Counters & counters = textclass.counters();
 
 	// Always reset
@@ -866,7 +858,7 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 
 		// the caption hack:
 		if (layout->labeltype == LABEL_SENSITIVE) {
-			ParagraphList::iterator end = ownerParagraphs().end();
+			ParagraphList::iterator end = paragraphs().end();
 			ParagraphList::iterator tmppit = pit;
 			InsetOld * in = 0;
 			bool isOK = false;
@@ -923,8 +915,8 @@ void LyXText::updateCounters()
 
 	bool update_pos = false;
 	
-	ParagraphList::iterator beg = ownerParagraphs().begin();
-	ParagraphList::iterator end = ownerParagraphs().end();
+	ParagraphList::iterator beg = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 	for (ParagraphList::iterator pit = beg; pit != end; ++pit) {
 		string const oldLabel = pit->params().labelString();
 		size_t maxdepth = 0;
@@ -992,7 +984,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// make sure that the depth behind the selection are restored, too
 	ParagraphList::iterator endpit = boost::next(getPar(selection.end.par()));
 	ParagraphList::iterator undoendpit = endpit;
-	ParagraphList::iterator pars_end = ownerParagraphs().end();
+	ParagraphList::iterator pars_end = paragraphs().end();
 
 	if (endpit != pars_end && endpit->getDepth()) {
 		while (endpit != pars_end && endpit->getDepth()) {
@@ -1012,13 +1004,13 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	BufferParams const & bufparams = bv()->buffer()->params();
 	boost::tie(endpit, endpos) = realcut ?
 		CutAndPaste::cutSelection(bufparams,
-					  ownerParagraphs(),
+					  paragraphs(),
 					  getPar(selection.start.par()), endpit,
 					  selection.start.pos(), endpos,
 					  bufparams.textclass,
 					  doclear)
 		: CutAndPaste::eraseSelection(bufparams,
-					      ownerParagraphs(),
+					      paragraphs(),
 					      getPar(selection.start.par()), endpit,
 					      selection.start.pos(), endpos,
 					      doclear);
@@ -1083,7 +1075,7 @@ void LyXText::pasteSelection(size_t sel_index)
 
 	boost::tie(ppp, endpit) =
 		CutAndPaste::pasteSelection(*bv()->buffer(),
-					    ownerParagraphs(),
+					    paragraphs(),
 					    cursorPar(), cursor.pos(),
 					    bv()->buffer()->params().textclass,
 					    sel_index, el);
@@ -1168,8 +1160,8 @@ void LyXText::insertStringAsLines(string const & str)
 }
 
 
-// turns double-CR to single CR, others where converted into one
-// blank. Then InsertStringAsLines is called
+// turn double CR to single CR, others are converted into one
+// blank. Then insertStringAsLines is called
 void LyXText::insertStringAsParagraphs(string const & str)
 {
 	string linestr(str);
@@ -1180,7 +1172,7 @@ void LyXText::insertStringAsParagraphs(string const & str)
 		if (linestr[i] == '\n') {
 			if (newline_inserted) {
 				// we know that \r will be ignored by
-				// InsertStringA. Of course, it is a dirty
+				// insertStringAsLines. Of course, it is a dirty
 				// trick, but it works...
 				linestr[i - 1] = '\r';
 				linestr[i] = '\n';
@@ -1202,7 +1194,8 @@ void LyXText::setCursor(ParagraphList::iterator pit, pos_type pos)
 }
 
 
-bool LyXText::setCursor(paroffset_type par, pos_type pos, bool setfont, bool boundary)
+bool LyXText::setCursor(paroffset_type par, pos_type pos, bool setfont,
+	bool boundary)
 {
 	LyXCursor old_cursor = cursor;
 	setCursorIntern(par, pos, setfont, boundary);
@@ -1228,14 +1221,14 @@ void LyXText::redoCursor()
 void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 	pos_type pos, bool boundary)
 {
-	BOOST_ASSERT(par != int(ownerParagraphs().size()));
+	BOOST_ASSERT(par != int(paragraphs().size()));
 
 	cur.par(par);
 	cur.pos(pos);
 	cur.boundary(boundary);
 
 	// no rows, no fun...
-	if (ownerParagraphs().begin()->rows.empty())
+	if (paragraphs().begin()->rows.empty())
 		return;
 
 	// get the cursor y position in text
@@ -1413,8 +1406,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	double last_tmpx = tmpx;
 
 	if (body_pos > 0 &&
-	    (body_pos > end ||
-	     !pit->isLineSeparator(body_pos - 1)))
+	    (body_pos > end || !pit->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
 	// check for empty row
@@ -1557,7 +1549,7 @@ DispatchResult LyXText::moveLeft()
 DispatchResult LyXText::moveRightIntern(bool front, bool activate_inset, bool selecting)
 {
 	ParagraphList::iterator c_par = cursorPar();
-	if (boost::next(c_par) == ownerParagraphs().end()
+	if (boost::next(c_par) == paragraphs().end()
 		&& cursor.pos() >= c_par->size())
 		return DispatchResult(false, FINISHED_RIGHT);
 	if (activate_inset && checkAndActivateInset(front))
@@ -1639,7 +1631,7 @@ bool LyXText::cursorRight(bool internal)
 		return true;
 	}
 
-	if (cursor.par() + 1 != int(ownerParagraphs().size())) {
+	if (cursor.par() + 1 != int(paragraphs().size())) {
 		setCursor(cursor.par() + 1, 0);
 		return true;
 	}
@@ -1685,7 +1677,7 @@ void LyXText::cursorUpParagraph()
 	ParagraphList::iterator cpit = cursorPar();
 	if (cursor.pos() > 0)
 		setCursor(cpit, 0);
-	else if (cpit != ownerParagraphs().begin())
+	else if (cpit != paragraphs().begin())
 		setCursor(boost::prior(cpit), 0);
 }
 
@@ -1695,7 +1687,7 @@ void LyXText::cursorDownParagraph()
 	ParagraphList::iterator pit = cursorPar();
 	ParagraphList::iterator next_pit = boost::next(pit);
 
-	if (next_pit != ownerParagraphs().end())
+	if (next_pit != paragraphs().end())
 		setCursor(next_pit, 0);
 	else
 		setCursor(pit, pit->size());
@@ -1747,7 +1739,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	   Copy and Paste to hopefully do some sensible things.
 	   There are still some small problems that can lead to
 	   double spaces stored in the document file or space at
-	   the beginning of paragraphs. This happens if you have
+	   the beginning of paragraphs(). This happens if you have
 	   the cursor between to spaces and then save. Or if you
 	   cut and paste and the selection have a space at the
 	   beginning and then save right after the paste. I am
@@ -1794,7 +1786,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	}
 
 	// don't delete anything if this is the ONLY paragraph!
-	if (ownerParagraphs().size() == 1)
+	if (paragraphs().size() == 1)
 		return false;
 
 	// Do not delete empty paragraphs with keepempty set.
@@ -1824,7 +1816,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		cursor = old_cursor; // that undo can restore the right cursor position
 
 		ParagraphList::iterator endpit = boost::next(old_pit);
-		while (endpit != ownerParagraphs().end() && endpit->getDepth())
+		while (endpit != paragraphs().end() && endpit->getDepth())
 			++endpit;
 
 		recUndo(parOffset(old_pit), parOffset(endpit) - 1);
@@ -1833,7 +1825,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		// cache cursor pit
 		ParagraphList::iterator tmppit = cursorPar();
 		// delete old par
-		ownerParagraphs().erase(old_pit);
+		paragraphs().erase(old_pit);
 		// update cursor par offset
 		cursor.par(parOffset(tmppit));
 		redoParagraph();
@@ -1860,9 +1852,9 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 }
 
 
-ParagraphList & LyXText::ownerParagraphs() const
+ParagraphList & LyXText::paragraphs() const
 {
-	return *paragraphs_;
+	return const_cast<ParagraphList &>(paragraphs_);
 }
 
 
@@ -1880,13 +1872,11 @@ void LyXText::recUndo(lyx::paroffset_type par) const
 
 bool LyXText::isInInset() const
 {
-	// Sub-level has non-null bv owner and non-null inset owner.
-	return inset_owner != 0;
+	return in_inset_;
 }
 
 
 int defaultRowHeight()
 {
-	LyXFont const font(LyXFont::ALL_SANE);
-	return int(font_metrics::maxHeight(font) *  1.2);
+	return int(font_metrics::maxHeight(LyXFont(LyXFont::ALL_SANE)) *  1.2);
 }

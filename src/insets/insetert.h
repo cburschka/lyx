@@ -77,8 +77,6 @@ public:
 	///
 	void validate(LaTeXFeatures &) const {}
 	///
-	bool checkInsertChar(LyXFont &);
-	///
 	// these are needed here because of the label/inlined functionallity
 	///
 	bool isOpen() const { return status_ == Open || status_ == Inlined; }

@@ -143,8 +143,6 @@ public:
 	void markNew(bool track_changes = false);
 
 	///
-	bool checkInsertChar(LyXFont &);
-	///
 	void getDrawFont(LyXFont &) const;
 	/// append text onto the existing text
 	void appendParagraphs(Buffer * bp, ParagraphList &);
@@ -160,7 +158,8 @@ public:
 	///
 	int numParagraphs() const { return 1; }
 	///
-	mutable ParagraphList paragraphs;
+	ParagraphList & paragraphs() const;
+
 private:
 	///
 	DispatchResult

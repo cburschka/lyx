@@ -71,23 +71,19 @@ using std::vector;
 
 
 InsetText::InsetText(BufferParams const & bp)
-	: UpdatableInset(),
-	  paragraphs(1),
-	  autoBreakRows_(false),
-	  drawFrame_(NEVER),
-	  frame_color_(LColor::insetframe),
-	  text_(0, this, true, paragraphs)
+	: autoBreakRows_(false), drawFrame_(NEVER),
+	  frame_color_(LColor::insetframe), text_(0, true)
 {
-	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
+	paragraphs().push_back(Paragraph());
+	paragraphs().begin()->layout(bp.getLyXTextClass().defaultLayout());
 	if (bp.tracking_changes)
-		paragraphs.begin()->trackChanges();
+		paragraphs().begin()->trackChanges();
 	init();
 }
 
 
 InsetText::InsetText(InsetText const & in)
-	: UpdatableInset(in),
-	  text_(in.text_.bv_owner, this, true, paragraphs)
+	: UpdatableInset(in), text_(in.text_.bv_owner, true)
 {
 	// this is ugly...
 	operator=(in);
@@ -97,22 +93,21 @@ InsetText::InsetText(InsetText const & in)
 void InsetText::operator=(InsetText const & in)
 {
 	UpdatableInset::operator=(in);
-	paragraphs = in.paragraphs;
 	autoBreakRows_ = in.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
 	frame_color_ = in.frame_color_;
-	text_ = LyXText(in.text_.bv_owner, this, true, paragraphs);
+	text_ = LyXText(in.text_.bv_owner, true);
+	text_.paragraphs() = in.text_.paragraphs();
 	init();
 }
 
 
 void InsetText::init()
 {
-	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
+	ParagraphList::iterator pit = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 	for (; pit != end; ++pit)
 		pit->setInsetOwner(this);
-	text_.paragraphs_ = &paragraphs;
 	old_par = -1;
 	in_insetAllowed = false;
 }
@@ -120,21 +115,22 @@ void InsetText::init()
 
 void InsetText::clear(bool just_mark_erased)
 {
+	ParagraphList & pars = paragraphs();
 	if (just_mark_erased) {
-		ParagraphList::iterator it = paragraphs.begin();
-		ParagraphList::iterator end = paragraphs.end();
+		ParagraphList::iterator it = pars.begin();
+		ParagraphList::iterator end = pars.end();
 		for (; it != end; ++it)
 			it->markErased();
 		return;
 	}
 
 	// This is a gross hack...
-	LyXLayout_ptr old_layout = paragraphs.begin()->layout();
+	LyXLayout_ptr old_layout = pars.begin()->layout();
 
-	paragraphs.clear();
-	paragraphs.push_back(Paragraph());
-	paragraphs.begin()->setInsetOwner(this);
-	paragraphs.begin()->layout(old_layout);
+	pars.clear();
+	pars.push_back(Paragraph());
+	pars.begin()->setInsetOwner(this);
+	pars.begin()->layout(old_layout);
 }
 
 
@@ -153,8 +149,8 @@ void InsetText::write(Buffer const & buf, ostream & os) const
 
 void InsetText::writeParagraphData(Buffer const & buf, ostream & os) const
 {
-	ParagraphList::const_iterator it = paragraphs.begin();
-	ParagraphList::const_iterator end = paragraphs.end();
+	ParagraphList::const_iterator it = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
 	Paragraph::depth_type dth = 0;
 	for (; it != end; ++it) {
 		it->write(buf, os, buf.params(), dth);
@@ -171,12 +167,12 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 
 #warning John, look here. Doesnt make much sense.
 	if (buf.params().tracking_changes)
-		paragraphs.begin()->trackChanges();
+		paragraphs().begin()->trackChanges();
 
 	// delete the initial paragraph
-	Paragraph oldpar = *paragraphs.begin();
-	paragraphs.clear();
-	ParagraphList::iterator pit = paragraphs.begin();
+	Paragraph oldpar = *paragraphs().begin();
+	paragraphs().clear();
+	ParagraphList::iterator pit = paragraphs().begin();
 
 	while (lex.isOK()) {
 		lex.nextToken();
@@ -193,11 +189,11 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 		}
 
 		// FIXME: ugly.
-		const_cast<Buffer&>(buf).readParagraph(lex, token, paragraphs, pit, depth);
+		const_cast<Buffer&>(buf).readParagraph(lex, token, paragraphs(), pit, depth);
 	}
 
-	pit = paragraphs.begin();
-	ParagraphList::iterator const end = paragraphs.end();
+	pit = paragraphs().begin();
+	ParagraphList::iterator const end = paragraphs().end();
 	for (; pit != end; ++pit)
 		pit->setInsetOwner(this);
 
@@ -208,8 +204,8 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 
 	// sanity check
 	// ensure we have at least one par.
-	if (paragraphs.empty())
-		paragraphs.push_back(oldpar);
+	if (paragraphs().empty())
+		paragraphs().push_back(oldpar);
 }
 
 
@@ -270,7 +266,7 @@ void InsetText::updateLocal(BufferView * bv)
 	if (!bv)
 		return;
 
-	if (!autoBreakRows_ && paragraphs.size() > 1)
+	if (!autoBreakRows_ && paragraphs().size() > 1)
 		collapseParagraphs(bv);
 
 	if (!text_.selection.set())
@@ -294,8 +290,8 @@ string const InsetText::editMessage() const
 
 void InsetText::sanitizeEmptyText(BufferView * bv)
 {
-	if (paragraphs.size() == 1
-	    && paragraphs.begin()->empty()
+	if (paragraphs().size() == 1
+	    && paragraphs().begin()->empty()
 	    && bv->getParentLanguage(this) != text_.current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
@@ -317,7 +313,7 @@ void InsetText::edit(BufferView * bv, bool left)
 	if (left)
 		text_.setCursorIntern(0, 0);
 	else
-		text_.setCursor(paragraphs.size() - 1, paragraphs.back().size());
+		text_.setCursor(paragraphs().size() - 1, paragraphs().back().size());
 
 	sanitizeEmptyText(bv);
 	updateLocal(bv);
@@ -352,7 +348,7 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 	DispatchResult result;
 	result.dispatched(true);
 
-	bool was_empty = paragraphs.begin()->empty() && paragraphs.size() == 1;
+	bool was_empty = paragraphs().begin()->empty() && paragraphs().size() == 1;
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
@@ -366,8 +362,8 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 	// If the action has deleted all text in the inset, we need
 	// to change the language to the language of the surronding
 	// text.
-	if (!was_empty && paragraphs.begin()->empty() &&
-	    paragraphs.size() == 1) {
+	if (!was_empty && paragraphs().begin()->empty() &&
+	    paragraphs().size() == 1) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
 		text_.setFont(font, false);
@@ -382,7 +378,7 @@ int InsetText::latex(Buffer const & buf, ostream & os,
 		     OutputParams const & runparams) const
 {
 	TexRow texrow;
-	latexParagraphs(buf, paragraphs, os, texrow, runparams);
+	latexParagraphs(buf, paragraphs(), os, texrow, runparams);
 	return texrow.rows();
 }
 
@@ -390,8 +386,8 @@ int InsetText::latex(Buffer const & buf, ostream & os,
 int InsetText::plaintext(Buffer const & buf, ostream & os,
 		     OutputParams const & runparams) const
 {
-	ParagraphList::const_iterator beg = paragraphs.begin();
-	ParagraphList::const_iterator end = paragraphs.end();
+	ParagraphList::const_iterator beg = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
 	ParagraphList::const_iterator it = beg;
 	for (; it != end; ++it)
 		asciiParagraph(buf, *it, os, runparams, it == beg);
@@ -404,7 +400,7 @@ int InsetText::plaintext(Buffer const & buf, ostream & os,
 int InsetText::linuxdoc(Buffer const & buf, ostream & os,
 			OutputParams const & runparams) const
 {
-	linuxdocParagraphs(buf, paragraphs, os, runparams);
+	linuxdocParagraphs(buf, paragraphs(), os, runparams);
 	return 0;
 }
 
@@ -412,14 +408,14 @@ int InsetText::linuxdoc(Buffer const & buf, ostream & os,
 int InsetText::docbook(Buffer const & buf, ostream & os,
 		       OutputParams const & runparams) const
 {
-	docbookParagraphs(buf, paragraphs, os, runparams);
+	docbookParagraphs(buf, paragraphs(), os, runparams);
 	return 0;
 }
 
 
 void InsetText::validate(LaTeXFeatures & features) const
 {
-	for_each(paragraphs.begin(), paragraphs.end(),
+	for_each(paragraphs().begin(), paragraphs().end(),
 		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
 }
 
@@ -467,8 +463,8 @@ bool InsetText::showInsetDialog(BufferView *) const
 void InsetText::getLabelList(Buffer const & buffer,
 			     std::vector<string> & list) const
 {
-	ParagraphList::const_iterator pit = paragraphs.begin();
-	ParagraphList::const_iterator pend = paragraphs.end();
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	ParagraphList::const_iterator pend = paragraphs().end();
 	for (; pit != pend; ++pit) {
 		InsetList::const_iterator beg = pit->insetlist.begin();
 		InsetList::const_iterator end = pit->insetlist.end();
@@ -480,8 +476,8 @@ void InsetText::getLabelList(Buffer const & buffer,
 
 void InsetText::markNew(bool track_changes)
 {
-	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
+	ParagraphList::iterator pit = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 	for (; pit != end; ++pit) {
 		if (track_changes) {
 			pit->trackChanges();
@@ -497,7 +493,7 @@ void InsetText::setText(string const & data, LyXFont const & font)
 {
 	clear(false);
 	for (unsigned int i = 0; i < data.length(); ++i)
-		paragraphs.begin()->insertChar(i, data[i], font);
+		paragraphs().begin()->insertChar(i, data[i], font);
 }
 
 
@@ -541,8 +537,8 @@ void InsetText::setViewCache(BufferView const * bv) const
 
 void InsetText::removeNewlines()
 {
-	ParagraphList::iterator it = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
+	ParagraphList::iterator it = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 	for (; it != end; ++it)
 		for (int i = 0; i < it->size(); ++i)
 			if (it->isNewline(i))
@@ -576,7 +572,7 @@ void InsetText::clearInset(Painter & pain, int x, int y) const
 
 ParagraphList * InsetText::getParagraphs(int i) const
 {
-	return (i == 0) ? const_cast<ParagraphList*>(&paragraphs) : 0;
+	return (i == 0) ? const_cast<ParagraphList*>(&paragraphs()) : 0;
 }
 
 
@@ -586,16 +582,10 @@ LyXText * InsetText::getText(int i) const
 }
 
 
-bool InsetText::checkInsertChar(LyXFont & font)
-{
-	return owner() ? owner()->checkInsertChar(font) : true;
-}
-
-
 void InsetText::collapseParagraphs(BufferView * bv)
 {
-	while (paragraphs.size() > 1) {
-		ParagraphList::iterator const first = paragraphs.begin();
+	while (paragraphs().size() > 1) {
+		ParagraphList::iterator const first = paragraphs().begin();
 		ParagraphList::iterator second = first;
 		++second;
 		size_t const first_par_size = first->size();
@@ -618,7 +608,7 @@ void InsetText::collapseParagraphs(BufferView * bv)
 			}
 		}
 
-		mergeParagraph(bv->buffer()->params(), paragraphs, first);
+		mergeParagraph(bv->buffer()->params(), paragraphs(), first);
 	}
 }
 
@@ -636,20 +626,20 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 // And it probably does. You have to take a look at this John. (Lgb)
 #warning John, have a look here. (Lgb)
 	ParagraphList::iterator pit = plist.begin();
-	ParagraphList::iterator ins = paragraphs.insert(paragraphs.end(), *pit);
+	ParagraphList::iterator ins = paragraphs().insert(paragraphs().end(), *pit);
 	++pit;
-	mergeParagraph(buffer->params(), paragraphs, boost::prior(ins));
+	mergeParagraph(buffer->params(), paragraphs(), boost::prior(ins));
 
 	ParagraphList::iterator pend = plist.end();
 	for (; pit != pend; ++pit)
-		paragraphs.push_back(*pit);
+		paragraphs().push_back(*pit);
 }
 
 
 void InsetText::addPreview(PreviewLoader & loader) const
 {
-	ParagraphList::const_iterator pit = paragraphs.begin();
-	ParagraphList::const_iterator pend = paragraphs.end();
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	ParagraphList::const_iterator pend = paragraphs().end();
 
 	for (; pit != pend; ++pit) {
 		InsetList::const_iterator it  = pit->insetlist.begin();
@@ -657,4 +647,10 @@ void InsetText::addPreview(PreviewLoader & loader) const
 		for (; it != end; ++it)
 			it->inset->addPreview(loader);
 	}
+}
+
+
+ParagraphList & InsetText::paragraphs() const
+{
+	return const_cast<ParagraphList &>(text_.paragraphs());
 }

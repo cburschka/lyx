@@ -281,16 +281,8 @@ bool InsetMinipage::showInsetDialog(BufferView * bv) const
 }
 
 
-int InsetMinipage::latexTextWidth(BufferView * bv) const
-{
-	return params_.width.inPixels(InsetCollapsable::latexTextWidth(bv));
-}
-
-
 InsetMinipage::Params::Params()
-	: pos(center),
-	  inner_pos(inner_center),
-	  width(100, LyXLength::PCW)
+	: pos(center), inner_pos(inner_center), width(100, LyXLength::PCW)
 {}
 
 
