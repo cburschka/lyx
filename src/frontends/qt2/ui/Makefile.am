@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libqt2ui.o
+noinst_LTLIBRARIES = libqt2ui.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ -I$(top_srcdir)/src/frontends/qt2/ \
 	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
@@ -13,7 +13,9 @@ include ../Makefile.dialogs
 
 DISTCLEANFILES = $(UIDIALOGS) *.orig *.rej *~ *.bak core
 
-libqt2ui_o_SOURCES = $(UIDIALOGS)
+libqt2ui_la_SOURCES = $(UIDIALOGS)
+
+libqt2ui.la: $(libqt2ui_la_OBJECTS) $(libqt2ui_la_DEPENDENCIES)
 
 # a pattern to change tr() to _()
 

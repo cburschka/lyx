@@ -12,6 +12,9 @@ INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
 
 libgnome_la_LIBADD = \
+	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+
+xforms_objects = \
 	../xforms/xforms_helpers.lo \
 	../xforms/Toolbar_pimpl.lo \
 	../xforms/combox.lo \
@@ -24,8 +27,12 @@ libgnome_la_LIBADD = \
 	../xforms/FormMathsSpace.lo \
 	../xforms/DropDown.lo \
 	../xforms/Alert_pimpl.lo \
-	../xforms/Menubar_pimpl.lo \
-	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+	../xforms/Menubar_pimpl.lo
+
+libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)
+
+xforms.lo: $(xforms_objects)
+	$(CXXLINK) $(xforms_objects)
 
 #	../xforms/FileDialog.lo \
 #	../xforms/FormFiledialog.lo \

@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libqt2.o
+noinst_LTLIBRARIES = libqt2.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 SUBDIRS=ui moc
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
@@ -10,12 +10,37 @@ AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
+LIBS=
+ETAGS_ARGS = --lang=c++
+
 include Makefile.dialogs
 
-libqt2_o_LIBADD = \
+libqt2_la_LIBADD = \
 	ui/libqt2ui.o \
 	moc/libqt2moc.o \
 	ui/moc/libqt2uimoc.o \
+	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+
+libqt2_la_SOURCES = \
+	$(DIALOGSOURCES) \
+	Dialogs.C \
+	GUIRunTime.C \
+	FileDialog.C \
+	FileDialog_private.C \
+	Timeout_pimpl.h \
+	Timeout_pimpl.C \
+	Qt2Base.C	\
+	Qt2Base.h	\
+	Qt2BC.C	\
+	Qt2BC.h	\
+	emptytable.C \
+	emptytable.h \
+	lengthcombo.C \
+	lengthcombo.h \
+	qttableview.h \
+	qttableview.C
+
+xforms_objects = \
 	../xforms/combox.o \
 	../xforms/Alert_pimpl.o \
 	../xforms/Color.o \
@@ -47,28 +72,9 @@ libqt2_o_LIBADD = \
 	../xforms/form_maths_style.o \
 	../xforms/input_validators.o \
 	../xforms/xformsBC.o \
-	../xforms/xforms_helpers.o \
-	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
- 
-LIBS=
-#LDFLAGS= $(libqt2_la_OBJADD)
-ETAGS_ARGS = --lang=c++
+	../xforms/xforms_helpers.o
 
-libqt2_o_SOURCES = \
-	$(DIALOGSOURCES) \
-	Dialogs.C \
-	GUIRunTime.C \
-	FileDialog.C \
-	FileDialog_private.C \
-	Timeout_pimpl.h \
-	Timeout_pimpl.C \
-	Qt2Base.C	\
-	Qt2Base.h	\
-	Qt2BC.C	\
-	Qt2BC.h	\
-	emptytable.C \
-	emptytable.h \
-	lengthcombo.C \
-	lengthcombo.h \
-	qttableview.h \
-	qttableview.C
+libqt2.la: xforms.lo $(libqt2_la_OBJECTS) $(libqt2_la_DEPENDENCIES)
+
+xforms.lo: $(xforms_objects)
+	$(CXXLINK) $(xforms_objects)
