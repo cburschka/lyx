@@ -26,6 +26,8 @@ What's new
 
 - add new icon for buffer-new
 
+- add support for entering cyrillic and greek alphabets
+
 - update template for IEEEtran
 
 ** Bugfixes
@@ -48,6 +50,9 @@ What's new
 - fix translation of "reset" and "no change" in language combobox
 
 - fix drawing of math delimiters in the math panel
+
+- fix drawing of double quotes when they are not available in the
+  screen font
 
 - when a document is registered though version control, make sure it
   has been saved
