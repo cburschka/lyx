@@ -615,10 +615,10 @@ void MathCursor::drawSelection(PainterInfo & pi) const
 }
 
 
-void MathCursor::handleNest(MathAtom const & a)
+void MathCursor::handleNest(MathAtom const & a, int c)
 {
 	MathAtom at = a;
-	asArray(grabAndEraseSelection(), at.nucleus()->cell(0));
+	asArray(grabAndEraseSelection(), at.nucleus()->cell(c));
 	insert(at);
 	pushRight(prevAtom());
 }

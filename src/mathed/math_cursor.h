@@ -159,8 +159,9 @@ public:
 	void selClearOrDel();
 	/// draws light-blue selection background
 	void drawSelection(PainterInfo & pi) const;
-	///
-	void handleNest(MathAtom const & at);
+	/// replace selected stuff with at, placing the former 
+	// selection in given cell of atom
+	void handleNest(MathAtom const & at, int cell = 0);
 	/// remove this as soon as LyXFunc::getStatus is "localized"
 	string getLastCode() const { return "mathnormal"; }
 	///

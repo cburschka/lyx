@@ -39,6 +39,8 @@ void MathColorInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	w_ = mathed_char_width(mi.base.font, '[');
 	MathNestInset::metrics(mi);
 	dim_   = cell(0).dim();
+	dim_.asc += 4;
+	dim_.des += 4;
 	dim_  += cell(1).dim();
 	dim_.wid += 2 * w_ + 4;
 	metricsMarkers();

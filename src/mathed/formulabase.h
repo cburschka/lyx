@@ -108,6 +108,8 @@ protected:
 protected:
 	///
 	void handleFont(BufferView * bv, string const & arg, string const & font);
+	///
+	void handleFont2(BufferView * bv, string const & arg);
 
 	///
 	mutable int xo_;

@@ -12,18 +12,15 @@
 #include <config.h>
 
 #include "formulabase.h"
-#include "support/std_sstream.h"
 #include "formula.h"
 #include "formulamacro.h"
 #include "funcrequest.h"
 #include "BufferView.h"
+#include "bufferview_funcs.h"
 #include "lyxtext.h"
 #include "gettext.h"
 #include "debug.h"
 #include "math_support.h"
-#include "support/lstrings.h"
-#include "support/lyxlib.h"
-#include "frontends/LyXView.h"
 #include "math_arrayinset.h"
 #include "math_deliminset.h"
 #include "math_cursor.h"
@@ -32,8 +29,15 @@
 #include "math_parser.h"
 #include "math_spaceinset.h"
 #include "undo_funcs.h"
-#include "frontends/Dialogs.h"
 #include "ref_inset.h"
+#include "LColor.h"
+
+#include "support/std_sstream.h"
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
+
+#include "frontends/LyXView.h"
+#include "frontends/Dialogs.h"
 
 using lyx::support::atoi;
 using lyx::support::split;
@@ -117,6 +121,21 @@ void InsetFormulaBase::handleFont
 		mathcursor->insert(arg);
 	}
 }
+
+
+void InsetFormulaBase::handleFont2(BufferView * bv, string const & arg)
+{
+	recordUndo(bv, Undo::ATOMIC);
+	LyXFont font;
+	bool b;
+	bv_funcs::string2font(arg, font, b);
+	if (font.color() != LColor::inherit) {
+		MathAtom at = createMathInset("color"); 
+		asArray(lcolor.getGUIName(font.color()), at.nucleus()->cell(0));
+		mathcursor->handleNest(at, 1);
+	}
+}
+
 
 
 BufferView * InsetFormulaBase::view() const
@@ -538,6 +557,11 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		break;
 
 	//  Math fonts
+	case LFUN_FREEFONT_APPLY:
+	case LFUN_FREEFONT_UPDATE:
+		handleFont2(bv, cmd.argument);
+		break;
+
 	case LFUN_BOLD:         handleFont(bv, cmd.argument, "mathbf"); break;
 	case LFUN_SANS:         handleFont(bv, cmd.argument, "mathsf"); break;
 	case LFUN_EMPH:         handleFont(bv, cmd.argument, "mathcal"); break;
@@ -546,7 +570,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_FRAK:         handleFont(bv, cmd.argument, "mathfrak"); break;
 	case LFUN_ITAL:         handleFont(bv, cmd.argument, "mathit"); break;
 	case LFUN_NOUN:         handleFont(bv, cmd.argument, "mathbb"); break;
-	case LFUN_FREEFONT_APPLY:  handleFont(bv, cmd.argument, "textrm"); break;
+	//case LFUN_FREEFONT_APPLY:  handleFont(bv, cmd.argument, "textrm"); break;
 	case LFUN_DEFAULT:      handleFont(bv, cmd.argument, "textnormal"); break;
 
 	case LFUN_MATH_MODE:
