@@ -1,3 +1,8 @@
+2005-03-15  Eitan Frachtenberg  <sky8an@gmail.com>
+
+	* biblio.C (getInfo): Show BibTeX annotation in citation preview
+	(parseBibTex): Treat \% as percent, not comment
+
 2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* ControlSpellchecker.C (nextWord): size() -> depth()

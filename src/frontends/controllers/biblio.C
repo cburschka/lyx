@@ -324,6 +324,7 @@ string const getInfo(InfoMap const & map, string const & key)
 	string number     = parseBibTeX(data, "number");
 	string volume     = parseBibTeX(data, "volume");
 	string pages      = parseBibTeX(data, "pages");
+	string annote     = parseBibTeX(data, "annote");
 
 	string media      = parseBibTeX(data, "journal");
 	if (media.empty())
@@ -352,6 +353,8 @@ string const getInfo(InfoMap const & map, string const & key)
 		result << ", pp. " << pages;
 	if (!year.empty())
 		result << ", " << year;
+	if (!annote.empty())
+		result << "\n\n" << annote;
 
 	string const result_str = rtrim(result.str());
 	if (!result_str.empty())
@@ -480,7 +483,11 @@ string const parseBibTeX(string data, string const & findkey)
 		string::size_type const idx =
 			dummy.empty() ? string::npos : dummy.find('%');
 		if (idx != string::npos)
-			dummy.erase(idx, string::npos);
+			// Check if this is really a comment or just "\%"
+			if (idx == 0 || dummy[idx - 1] != '\\')
+				dummy.erase(idx, string::npos);
+			else  //  This is "\%", so just erase the '\'
+				dummy.erase(idx - 1, 1);
 		// do we have a new token or a new line of
 		// the same one? In the first case we ignore
 		// the \n and in the second we replace it
