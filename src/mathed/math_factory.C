@@ -255,8 +255,8 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathDotsInset(l));
 		if (inset == "mbox")
 			return MathAtom(new MathBoxInset(l->name));
-		if (inset == "parbox")
-			return MathAtom(new MathParboxInset);
+	//	if (inset == "parbox")
+	//		return MathAtom(new MathParboxInset);
 		if (inset == "fbox")
 			return MathAtom(new MathFboxInset(l));
 		if (inset == "style")
