@@ -44,7 +44,7 @@ public:
 	/// This method is connected to the tooltipsToggled signal.
 	void set();
 
-#if FL_REVISION < 89
+#if FL_VERSION < 1 && FL_REVISION < 89
 
 	/** Return the tooltip associated with this object.
 	 *  Required by an xforms callback routine.
@@ -73,7 +73,7 @@ private:
 
 	TooltipsMap tooltipsMap;
 
-#if FL_REVISION < 89
+#if FL_VERSION < 1 && FL_REVISION < 89
 
 	/** A timer is started once the mouse enters an object, so that the
 	 *  tip appears a short delay afterwards.

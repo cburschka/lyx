@@ -22,6 +22,10 @@
   e.g. <forms.h> */
 #undef FORMS_H_LOCATION
 
+/* define this to the location of flimage.h to be used with #include,
+  e.g. <flimage.h> */
+#undef FORMS_IMAGE_H_LOCATION
+
 /* define this to the location of xpm.h to be used with #include,
   e.g. <xpm.h> */
 #undef XPM_H_LOCATION

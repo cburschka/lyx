@@ -15,7 +15,7 @@
 #endif
 
 #include "XFormsView.h"
-#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
+#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "frontends/xforms/lyxlookup.h"
 #endif
 #include "minibuffer.h"
@@ -103,7 +103,7 @@ void XFormsView::show(int place, int border, string const & title)
 	fl_set_form_minsize(form_, form_->w, form_->h);
 	fl_show_form(form_, place, border, title.c_str());
 	getLyXFunc()->initMiniBuffer();
-#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
+#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 	InitLyXLookup(fl_get_display(), form_->window);
 #endif
 }

@@ -183,7 +183,7 @@ double scale_to_fit_tabs(FL_OBJECT * folder)
 // A nasty hack for older xforms versions
 int get_tabfolder_numfolders(FL_OBJECT * folder)
 {
-#if FL_REVISION > 88
+#if FL_VERSION > 0 || FL_REVISION > 88
 	return fl_get_tabfolder_numfolders(folder);
 #else
 	if (folder->objclass != FL_TABFOLDER)

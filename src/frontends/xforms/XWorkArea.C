@@ -20,7 +20,7 @@
 #include "lyxrc.h" // lyxrc.show_banner
 #include "version.h" // lyx_version
 
-#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
+#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "frontends/xforms/lyxlookup.h"
 #endif
 
@@ -425,7 +425,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				      ev->xbutton.y - ob->y,
 				      x_button_state(ev->xbutton.button));
 		break;
-#if FL_REVISION < 89
+#if FL_VERSION < 1 && FL_REVISION < 89
 	case FL_MOUSE:
 #else
 	case FL_DRAG:
@@ -441,7 +441,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					     x_motion_state(ev->xbutton.state));
 		}
 		break;
-#if FL_REVISION < 89
+#if FL_VERSION < 1 && FL_REVISION < 89
 	case FL_KEYBOARD:
 #else
 	case FL_KEYPRESS:
@@ -452,7 +452,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		KeySym keysym = 0;
 		char dummy[1];
 		XKeyEvent * xke = reinterpret_cast<XKeyEvent *>(ev);
-#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
+#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 		// XForms < 0.89.5 does not have compose support
 		// so we are using our own compose support
 		LyXLookupString(ev, dummy, 1, &keysym);
@@ -474,7 +474,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			       << keysym << "]" << endl;
 		}
 
-#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
+#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 		if (keysym == NoSymbol) {
 			lyxerr[Debug::KEY]
 				<< "Empty kdb action (probably composing)"
@@ -551,7 +551,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	}
 	break;
 
-#if FL_REVISION >= 89
+#if FL_VERSION > 0 || FL_REVISION >= 89
 	case FL_KEYRELEASE:
 		lyxerr[Debug::WORKAREA] << "Workarea event: KEYRELEASE" << endl;
 		break;
