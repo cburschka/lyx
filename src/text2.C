@@ -2913,7 +2913,9 @@ void LyXText::SetCurrentFont(BufferView * bview) const
 		Language const * lang =
 			cursor.par()->getParLanguage(bview->buffer()->params);
 		current_font.setLanguage(lang);
+		current_font.setNumber(LyXFont::OFF);
 		real_current_font.setLanguage(lang);
+		real_current_font.setNumber(LyXFont::OFF);
 	}
 }
 

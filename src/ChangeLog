@@ -1,3 +1,7 @@
+2001-02-26  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* text2.C (SetCurrentFont): Disable number property at boundary.
+
 2001-02-26  Juergen Vigna  <jug@sad.it>
 
 	* lyxfunc.C (getStatus): added a string argument override function so
