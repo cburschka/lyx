@@ -1,3 +1,15 @@
+2000-12-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_cb.C (InsertAsciiFile): use a vector to temporary store
+	the file when std::string does not have push_back.
+
+	* config/lyxinclude.m4 (public): add LYX_CXX_GOOD_STD_STRING
+
+	* configure.in (INSTALL_SCRIPT): call LYX_CXX_GOOD_STD_STRING
+
+	* src/support/lstrings.C (prefixIs): use STD_STRING_IS_GOOD
+	(suffixIs): ditto
+
 2000-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/layouts/lyxmacros.inc: do not use \verbatim@font in lyxcode.

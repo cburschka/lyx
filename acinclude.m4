@@ -376,6 +376,43 @@ dnl    AC_MSG_RESULT([$with_included_string])
 ])
 
 
+dnl Usage: LYX_CXX_GOOD_STD_STRING : checks whether the C++ compiler
+dnl   has a std::string that is close to the standard. So close that
+dnl   methods not found in "unstandard" std::strings are present here.
+AC_DEFUN(LYX_CXX_GOOD_STD_STRING,[
+    AC_REQUIRE([LYX_PROG_CXX])
+    AC_CACHE_CHECK([whether the systems std::string is really good],
+    [lyx_cv_std_string_good],
+    [AC_TRY_COMPILE([
+	    #include <string>
+	    using std::string;
+	],[
+	    // From a std::string that is supposed to be close to the
+	    // standard we require at least three things:
+	    // - clear() and erase()
+	    // - the strncmp of compare()
+	    // - push_back()
+	    string a("hello there");
+	    a.erase();
+	    a = "hey";
+	    char s[] = "y";
+	    int t = a.compare(a.length() - 1, 1, s);
+	    a.push_back('g');
+	    a.clear();
+	],[
+	    lyx_cv_std_string_good=yes
+	],[
+	    lyx_cv_std_string_good=no
+	    
+	])
+    ])
+    if test x$lyx_cv_std_string_good = xyes ; then
+	AC_DEFINE(STD_STRING_IS_GOOD, 1,
+	    [Define if the systems std::string is really good.])
+    fi
+])
+
+
 dnl Usage: LYX_REGEX : checks if the header regex.h is available
 dnl   if it is not available the automake variable USE_REGEX will be
 dnl   defined and the regex.h and regex.c that we provide will be used.

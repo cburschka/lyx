@@ -1147,10 +1147,16 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	ifs.unsetf(ios::skipws);
 	istream_iterator<char> ii(ifs);
 	istream_iterator<char> end;
+#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
+	vector<char> tmp;
+	copy(ii, end, back_inserter(tmp));
+	string tmpstr(tmp.begin(), tmp.end());
+#else
 	//string tmpstr(ii, end); // yet a reason for using std::string
 	// alternate approach to get the file into a string:
 	string tmpstr;
 	copy(ii, end, back_inserter(tmpstr));
+#endif
 	// insert the string
 	current_view->hideCursor();
 	

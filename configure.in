@@ -77,6 +77,7 @@ dnl we do not use stl stack, or at least not on gcc 2.7, which was the
 dnl cause for this test. 
 dnl LYX_CXX_STL_STACK
 LYX_CXX_STL_STRING
+LYX_CXX_GOOD_STD_STRING
 LYX_CXX_NAMESPACES
 LYX_CXX_CHEADERS
 LYX_STD_COUNT
