@@ -44,9 +44,8 @@ using std::endl;
 using std::max;
 using std::string;
 
-extern int PAPER_MARGIN;
+extern int NEST_MARGIN;
 extern int CHANGEBAR_MARGIN;
-extern int LEFT_MARGIN;
 
 namespace {
 
@@ -122,7 +121,7 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
      int xo, int yo)
 	: bv_(bv), pain_(bv_.painter()), text_(text), rit_(rit), row_(*rit),
 	  pit_(pit), xo_(xo), yo_(yo), x_(row_.x()),
-		width_(text_.workWidth()),
+		width_(text_.textWidth()),
 		separator_(row_.fill_separator()),
 		hfill_(row_.fill_hfill()),
 		label_hfill_(row_.fill_label_hfill())
@@ -185,7 +184,7 @@ LyXFont const RowPainter::getLabelFont() const
 
 int RowPainter::leftMargin() const
 {
-	return text_.leftMargin(pit_, row_);
+	return text_.leftMargin(pit_, row_.pos());
 }
 
 
@@ -482,7 +481,7 @@ void RowPainter::paintSelection()
 	if ((startpit != pit_ && startrow != rit_ && is_rtl) ||
 	    (endpit != pit_ && endrow != rit_ && !is_rtl)) {
 		pain_.fillRectangle(int(xo_ + tmpx),
-			yo_, int(bv_.workWidth() - tmpx), h, LColor::selection);
+			yo_, int(width_ - tmpx), h, LColor::selection);
 	}
 }
 
@@ -509,7 +508,7 @@ void RowPainter::paintAppendix()
 		return;
 
 	// FIXME: can be just width_ ?
-	int const ww = bv_.workWidth();
+	int const ww = width_;
 
 	int y = yo_;
 
@@ -545,7 +544,7 @@ void RowPainter::paintDepthBar()
 	}
 
 	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
-		int const w = PAPER_MARGIN / 5;
+		int const w = NEST_MARGIN / 5;
 		int x = int(w * i + xo_);
 		// only consider the changebar space if we're drawing outer left
 		if (xo_ == 0)
@@ -663,10 +662,6 @@ void RowPainter::paintFirst()
 	if (parparams.startOfAppendix())
 		y_top += paintAppendixStart(yo_ + y_top + 2 * defaultRowHeight());
 
-	// the top margin
-	if (text_.isFirstRow(pit_, row_) && !text_.isInInset())
-		y_top += PAPER_MARGIN;
-
 	// draw the additional space if needed:
 	y_top += paintLengthMarker(_("Space above"), parparams.spaceTop(),
 			yo_ + y_top);
@@ -771,7 +766,7 @@ void RowPainter::paintFirst()
 			double x = x_;
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				x = ((is_rtl ? leftMargin() : x_)
-					 + ww - text_.rightMargin(*pit_, *bv_.buffer())) / 2;
+					 + ww - text_.rightMargin(*pit_)) / 2;
 				x -= font_metrics::width(str, font) / 2;
 			} else if (is_rtl) {
 				x = ww - leftMargin() -
@@ -789,11 +784,6 @@ void RowPainter::paintLast()
 {
 	ParagraphParameters const & parparams = pit_->params();
 	int y_bottom = row_.height() - 1;
-
-	// the bottom margin
-	if (text_.isLastRow(pit_, row_) && !text_.isInInset())
-		y_bottom -= PAPER_MARGIN;
-
 	int const ww = bv_.workWidth();
 
 	// draw the additional space if needed:
@@ -811,7 +801,7 @@ void RowPainter::paintLast()
 		LyXFont const font = getLabelFont();
 		int const size = int(0.75 * font_metrics::maxAscent(font));
 		int const y = yo_ + row_.baseline() - size;
-		int x = is_rtl ? LEFT_MARGIN : ww - PAPER_MARGIN - size;
+		int x = is_rtl ? NEST_MARGIN + CHANGEBAR_MARGIN: ww - size;
 
 		if (row_.fill() <= size)
 			x += (size - row_.fill() + 1) * (is_rtl ? -1 : 1);
@@ -828,7 +818,7 @@ void RowPainter::paintLast()
 		string const & str = pit_->layout()->endlabelstring();
 		double const x = is_rtl ?
 			x_ - font_metrics::width(str, font)
-			: ww - text_.rightMargin(*pit_, *bv_.buffer()) - row_.fill();
+			: ww - text_.rightMargin(*pit_) - row_.fill();
 		pain_.text(int(x), yo_ + row_.baseline(), str, font);
 		break;
 	}

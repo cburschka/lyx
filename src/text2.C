@@ -70,38 +70,12 @@ using std::ostringstream;
 using std::string;
 
 
-LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,
+LyXText::LyXText(BufferView * bv, InsetText * inset, bool in_inset,
 	  ParagraphList & paragraphs)
-	: height(0), width(0), inset_owner(inset), bv_owner(bv),
-	  in_inset_(ininset), paragraphs_(&paragraphs), xo_(0), yo_(0),
-	  cache_pos_(-1)
+	: height(0), width(0), textwidth_(bv ? bv->workWidth() : 100),
+	  inset_owner(inset), bv_owner(bv),
+	  in_inset_(in_inset), paragraphs_(&paragraphs), xo_(0), yo_(0)
 {}
-
-
-LyXText & LyXText::operator=(LyXText const & lt)
-{
-	// Copy all public variables
-	height = lt.height;
-	width = lt.width;
-	current_font = lt.current_font;
-	real_current_font = lt.real_current_font;
-	defaultfont_ = lt.defaultfont_;
-	inset_owner = lt.inset_owner;
-	bv_owner = lt.bv_owner;
-	bidi = lt.bidi;
-	in_inset_ = lt.in_inset_;
-	paragraphs_ = lt.paragraphs_;
-	xo_ = lt.xo_;
-	yo_ = lt.yo_;
-
-	// Copy all the private variables
-
-	// we cannot initailize a iterator with a singular iterator.
-	//cache_par_ = lt.cache_par_;
-	cache_pos_ = lt.cache_pos_;
-
-	return *this;
-}
 
 
 void LyXText::init(BufferView * bview)
@@ -115,7 +89,6 @@ void LyXText::init(BufferView * bview)
 
 	width = 0;
 	height = 0;
-	cache_pos_ = -1;
 
 	current_font = getFont(beg, 0);
 
@@ -432,8 +405,6 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 		start = pit;
 	}
 
-	ParagraphList::iterator pastend = boost::next(end);
-
 	if (!test_only)
 		recUndo(parOffset(start), parOffset(end));
 
@@ -473,7 +444,7 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 	if (test_only)
 		return changed;
 
-	redoParagraphs(start, pastend);
+	redoParagraphs(start, boost::next(end));
 
 	// We need to actually move the text->cursor. I don't
 	// understand why ...
@@ -619,7 +590,8 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
 		// Could only happen with user style
-		bv()->owner()->message(_("No font change defined. Use Character under the Layout menu to define font change."));
+		bv()->owner()->message(_("No font change defined. "
+			"Use Character under the Layout menu to define font change."));
 		return;
 	}
 
@@ -781,8 +753,7 @@ void incrementItemDepth(ParagraphList::iterator pit,
 {
 	int const cur_labeltype = pit->layout()->labeltype;
 
-	if (cur_labeltype != LABEL_ENUMERATE &&
-	    cur_labeltype != LABEL_ITEMIZE)
+	if (cur_labeltype != LABEL_ENUMERATE && cur_labeltype != LABEL_ITEMIZE)
 		return;
 
 	int const cur_depth = pit->getDepth();
@@ -1045,7 +1016,7 @@ void LyXText::insertInset(InsetOld * inset)
 	// The character will not be inserted a second time
 	insertChar(Paragraph::META_INSET);
 	// If we enter a highly editable inset the cursor should be before
-	// the inset. After an Undo LyX tries to call inset->edit(...)
+	// the inset. After an undo LyX tries to call inset->edit(...)
 	// and fails if the cursor is behind the inset and getInset
 	// does not return the inset!
 	if (isHighlyEditableInset(inset))
@@ -1582,7 +1553,7 @@ void LyXText::setCursorFromCoordinates(int x, int y)
 	deleteEmptyParagraphMechanism(old_cursor);
 }
 
-//x,y are coordinates relative to this LyXText
+// x,y are coordinates relative to this LyXText
 void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 {
 	// Get the row first.
@@ -1599,7 +1570,6 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 
 	cur.boundary(bound);
 }
-
 
 
 bool LyXText::checkAndActivateInset(bool front)

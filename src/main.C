@@ -23,7 +23,6 @@
 
 namespace os = lyx::support::os;
 
-
 int main(int argc, char * argv[])
 {
 #ifdef HAVE_IOS

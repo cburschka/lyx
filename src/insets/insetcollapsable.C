@@ -356,7 +356,7 @@ int InsetCollapsable::scroll(bool recursive) const
 	int sx = UpdatableInset::scroll(false);
 
 	if (recursive)
-		sx += inset.scroll(recursive);
+		sx += inset.scroll(false);
 
 	return sx;
 }

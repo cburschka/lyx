@@ -362,8 +362,7 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 		// only allow the actual removal if it was /new/ text
 		if (changetype != Change::INSERTED) {
 			if (owner_->text_[pos] == Paragraph::META_INSET) {
-				InsetOld * i(owner_->getInset(pos));
-				i->markErased();
+				owner_->getInset(pos)->markErased();
 			}
 			return false;
 		}
@@ -377,12 +376,9 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 int Paragraph::Pimpl::erase(pos_type start, pos_type end)
 {
 	pos_type i = start;
-	pos_type count = end - start;
-	while (count) {
-		if (!erase(i)) {
+	for (pos_type count = end - start; count; --count) {
+		if (!erase(i))
 			++i;
-		}
-		--count;
 	}
 	return end - i;
 }

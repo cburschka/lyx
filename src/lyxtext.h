@@ -53,15 +53,12 @@ class LyXText : public TextCursor {
 public:
 	/// Constructor
 	LyXText(BufferView *, InsetText *, bool ininset, ParagraphList & plist);
-
-	// Copy assignment
-	LyXText & operator=(LyXText const &);
-
+	///
 	void init(BufferView *);
 
 
-	/// update all cached row positions
-	void updateRowPositions();
+	/// update y coordinate cache of all paragraphs
+	void updateParPositions();
 	///
 	LyXFont getFont(ParagraphList::iterator pit, lyx::pos_type pos) const;
 	///
@@ -152,9 +149,9 @@ public:
 	///
 	RowList::iterator cursorRow() const;
 
-	/** returns a pointer to the row near the specified y-coordinate
-	  (relative to the whole text). y is set to the real beginning
-	  of this row
+	/** returns an iterator pointing to the row near the specified
+	  * y-coordinate (relative to the whole text). y is set to the
+	  * real beginning of this row
 	  */
 	RowList::iterator getRowNearY(int y,
 		ParagraphList::iterator & pit) const;
@@ -302,15 +299,12 @@ public:
 	///
 	void gotoInset(InsetOld::Code code, bool same_content);
 
-	///
-	int workWidth() const;
+	/// current max text width
+	int textWidth() const;
 
-	/** Updates all counters starting BEHIND the row. Changed paragraphs
-	 * with a dynamic left margin will be rebroken. */
+	/// updates all counters
 	void updateCounters();
-	/**
-	 * Returns an inset if inset was hit, or 0 if not.
-	 */
+	/// Returns an inset if inset was hit, or 0 if not.
 	InsetOld * checkInsetHit(int x, int y);
 
 	///
@@ -328,9 +322,10 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(ParagraphList::iterator pit, Row const & row) const;
+	int leftMargin(ParagraphList::iterator pit, lyx::pos_type pos) const;
+	int leftMargin(ParagraphList::iterator pit) const;
 	///
-	int rightMargin(Paragraph const & par, Buffer const &) const;
+	int rightMargin(Paragraph const & par) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
@@ -396,12 +391,13 @@ public:
 	bool checkAndActivateInset(bool front);
 
 
-	// Public Variables
 public:
 	///
 	int height;
 	///
 	unsigned int width;
+	///
+	int textwidth_;
 	/// the current font settings
 	LyXFont current_font;
 	/// the current font
@@ -426,7 +422,6 @@ public:
 	int yo_;
 
 
-	// Private Functions
 private:
 	/// rebreaks the given par
 	void redoParagraphInternal(ParagraphList::iterator pit);
@@ -470,7 +465,7 @@ private:
 	int labelFill(ParagraphList::iterator pit, Row const & row) const;
 
 	/// FIXME
-	int labelEnd(ParagraphList::iterator pit, Row const & row) const;
+	int labelEnd(ParagraphList::iterator pit) const;
 
 	///
 	void charInserted();
@@ -478,16 +473,6 @@ private:
 	void number();
 	/// is the cursor paragraph right-to-left?
 	bool rtl() const;
-
-	// Private Variables
-private:
-
-	/// prohibit this as long as there are back pointers...
-	LyXText(LyXText const &);
-
-	// cache for cursorPar()
-	mutable ParagraphList::iterator cache_par_;
-	mutable int cache_pos_;
 };
 
 /// return the default height of a row in pixels, considering font zoom

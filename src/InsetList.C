@@ -53,30 +53,6 @@ InsetList::~InsetList()
 }
 
 
-InsetList::iterator InsetList::begin()
-{
-	return list.begin();
-}
-
-
-InsetList::iterator InsetList::end()
-{
-	return list.end();
-}
-
-
-InsetList::const_iterator InsetList::begin() const
-{
-	return list.begin();
-}
-
-
-InsetList::const_iterator InsetList::end() const
-{
-	return list.end();
-}
-
-
 InsetList::iterator InsetList::insetIterator(pos_type pos)
 {
 	InsetTable search_elem(pos, 0);

@@ -218,38 +218,30 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
-	textwidth_ = max(40, mi.base.textwidth - 30);
-	BufferView * bv = mi.base.bv;
-	setViewCache(bv);
+	textwidth_ = mi.base.textwidth;
+	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
+	setViewCache(mi.base.bv);
 	text_.metrics(mi, dim);
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
+	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	dim_ = dim;
-}
-
-
-int InsetText::textWidth() const
-{
-	return textwidth_;
 }
 
 
 void InsetText::draw(PainterInfo & pi, int x, int y) const
 {
-	// update our idea of where we are. Clearly, we should
-	// not have to know this information.
+	// update our idea of where we are
 	xo_ = x;
 	yo_ = y;
-
-	int const start_x = x;
 
 	BufferView * bv = pi.base.bv;
 	Painter & pain = pi.pain;
 
 	// repaint the background if needed
 	if (backgroundColor() != LColor::background)
-		clearInset(bv, start_x + TEXT_TO_INSET_OFFSET, y);
+		clearInset(bv, xo_ + TEXT_TO_INSET_OFFSET, y);
 
 	bv->hideCursor();
 
@@ -264,7 +256,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	paintTextInset(*bv, text_, x, y);
 
 	if (drawFrame_ == ALWAYS || drawFrame_ == LOCKED)
-		drawFrame(pain, start_x);
+		drawFrame(pain, xo_);
 }
 
 
@@ -627,12 +619,12 @@ void InsetText::clearSelection(BufferView *)
 }
 
 
-void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
+void InsetText::clearInset(BufferView * bv, int x, int y) const
 {
 	Painter & pain = bv->painter();
 	int w = dim_.wid;
 	int h = dim_.asc + dim_.des;
-	int ty = baseline - dim_.asc;
+	int ty = y - dim_.asc;
 
 	if (ty < 0) {
 		h += ty;
@@ -642,7 +634,7 @@ void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 		h = pain.paperHeight();
 	if (xo_ + w > pain.paperWidth())
 		w = pain.paperWidth();
-	pain.fillRectangle(start_x + 1, ty + 1, w - 3, h - 1, backgroundColor());
+	pain.fillRectangle(x + 1, ty + 1, w - 3, h - 1, backgroundColor());
 }
 
 

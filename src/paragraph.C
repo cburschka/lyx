@@ -706,9 +706,11 @@ int Paragraph::getPositionOfInset(InsetOld const * inset) const
 
 InsetBibitem * Paragraph::bibitem() const
 {
-	InsetList::const_iterator it = insetlist.begin();
-	if (it != insetlist.end() && it->inset->lyxCode() == InsetOld::BIBTEX_CODE)
-		return static_cast<InsetBibitem *>(it->inset);
+	if (!insetlist.empty()) {
+		InsetOld * inset = insetlist.begin()->inset;
+		if (inset->lyxCode() == InsetOld::BIBTEX_CODE)
+			return static_cast<InsetBibitem *>(inset);
+	}
 	return 0;
 }
 

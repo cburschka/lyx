@@ -61,16 +61,10 @@ using std::endl;
 using std::string;
 
 
-/// top, right, bottom pixel margin
-extern int const PAPER_MARGIN = 20;
+/// some space for drawing the 'nested' markers (in pixel)
+extern int const NEST_MARGIN = 20;
 /// margin for changebar
 extern int const CHANGEBAR_MARGIN = 10;
-/// left margin
-extern int const LEFT_MARGIN = PAPER_MARGIN + CHANGEBAR_MARGIN;
-
-
-
-int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
 namespace {
@@ -110,7 +104,7 @@ BufferView * LyXText::bv() const
 }
 
 
-void LyXText::updateRowPositions()
+void LyXText::updateParPositions()
 {
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
@@ -121,9 +115,9 @@ void LyXText::updateRowPositions()
 }
 
 
-int LyXText::workWidth() const
+int LyXText::textWidth() const
 {
-	return inset_owner ? inset_owner->textWidth() : bv()->workWidth();
+	return textwidth_;
 }
 
 
@@ -133,8 +127,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit, pos_type pos) const
 		return 0;
 
 	char const c = pit->getChar(pos);
-	LyXFont const & font = getFont(pit, pos);
-	return singleWidth(pit, pos, c, font);
+	return singleWidth(pit, pos, c, getFont(pit, pos));
 }
 
 
@@ -173,7 +166,13 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 }
 
 
-int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
+int LyXText::leftMargin(ParagraphList::iterator pit) const
+{
+	return leftMargin(pit, pit->size());
+}
+
+
+int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 {
 	LyXTextClass const & tclass =
 		bv()->buffer()->params().getLyXTextClass();
@@ -181,11 +180,11 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 
 	string parindent = layout->parindent;
 
-	int x = LEFT_MARGIN;
+	int x = NEST_MARGIN + CHANGEBAR_MARGIN;
 
 	x += font_metrics::signedWidth(tclass.leftmargin(), tclass.defaultfont());
 
-	// this is the way, LyX handles the LaTeX-Environments.
+	// This is the way LyX handles LaTeX-Environments.
 	// I have had this idea very late, so it seems to be a
 	// later added hack and this is true
 	if (pit->getDepth() == 0) {
@@ -203,11 +202,11 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 		ParagraphList::iterator newpar =
 			outerHook(pit, ownerParagraphs());
 
-		// make a corresponding row. Needed to call leftMargin()
-		// check wether it is a sufficent paragraph
+		// Make a corresponding row. Need to call leftMargin()
+		// to check whether it is a sufficent paragraph.
 		if (newpar != ownerParagraphs().end()
 		    && newpar->layout()->isEnvironment()) {
-			x = leftMargin(newpar, Row(newpar->size()));
+			x = leftMargin(newpar);
 		}
 
 		if (newpar != ownerParagraphs().end()
@@ -237,7 +236,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 	case MARGIN_MANUAL:
 		x += font_metrics::signedWidth(layout->labelindent, labelfont);
 		// The width of an empty par, even with manual label, should be 0
-		if (!pit->empty() && row.pos() >= pit->beginOfBody()) {
+		if (!pit->empty() && pos >= pit->beginOfBody()) {
 			if (!pit->getLabelWidthString().empty()) {
 				x += font_metrics::width(pit->getLabelWidthString(),
 					       labelfont);
@@ -253,14 +252,14 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 
 	case MARGIN_FIRST_DYNAMIC:
 		if (layout->labeltype == LABEL_MANUAL) {
-			if (row.pos() >= pit->beginOfBody()) {
+			if (pos >= pit->beginOfBody()) {
 				x += font_metrics::signedWidth(layout->leftmargin,
 							  labelfont);
 			} else {
 				x += font_metrics::signedWidth(layout->labelindent,
 							  labelfont);
 			}
-		} else if (row.pos()
+		} else if (pos != 0
 			   // Special case to fix problems with
 			   // theorems (JMarc)
 			   || (layout->labeltype == LABEL_STATIC
@@ -286,22 +285,21 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 		RowList::iterator rit = pit->rows.begin();
 		RowList::iterator end = pit->rows.end();
 #warning This is wrong.
-		int minfill = workWidth() / 2;
+		int minfill = textwidth_;
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
 		x += font_metrics::signedWidth(layout->leftmargin,
 			tclass.defaultfont());
 		x += minfill;
+		break;
 	}
-	break;
 	}
 
-	if (workWidth() > 0 && !pit->params().leftIndent().zero()) {
-		LyXLength const len = pit->params().leftIndent();
+	if (!pit->params().leftIndent().zero()) {
 		int const tw = inset_owner ?
-			inset_owner->latexTextWidth(bv()) : workWidth();
-		x += len.inPixels(tw);
+			inset_owner->latexTextWidth(bv()) : textWidth();
+		x += pit->params().leftIndent().inPixels(tw);
 	}
 
 	LyXAlignment align;
@@ -312,7 +310,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 		align = pit->params().align();
 
 	// set the correct parindent
-	if (row.pos() == 0) {
+	if (pos == 0) {
 		if ((layout->labeltype == LABEL_NO_LABEL
 		     || layout->labeltype == LABEL_TOP_ENVIRONMENT
 		     || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
@@ -330,9 +328,6 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 			BufferParams::PARSEP_INDENT)) {
 			x += font_metrics::signedWidth(parindent,
 						  tclass.defaultfont());
-		} else if (layout->labeltype == LABEL_BIBLIO) {
-			// ale970405 Right width for bibitems
-			x += bibitemMaxWidth(bv(), tclass.defaultfont());
 		}
 	}
 
@@ -340,30 +335,26 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 }
 
 
-int LyXText::rightMargin(Paragraph const & par, Buffer const & buf) const
+int LyXText::rightMargin(Paragraph const & par) const
 {
-	LyXTextClass const & tclass = buf.params().getLyXTextClass();
-	LyXLayout_ptr const & layout = par.layout();
+	LyXTextClass const & tclass = bv()->buffer()->params().getLyXTextClass();
 
-	return PAPER_MARGIN
+	return 
 		+ font_metrics::signedWidth(tclass.rightmargin(),
 				       tclass.defaultfont())
-		+ font_metrics::signedWidth(layout->rightmargin,
+		+ font_metrics::signedWidth(par.layout()->rightmargin,
 				       tclass.defaultfont())
 		* 4 / (par.getDepth() + 4);
 }
 
 
-int LyXText::labelEnd(ParagraphList::iterator pit, Row const & row) const
+int LyXText::labelEnd(ParagraphList::iterator pit) const
 {
 	// labelEnd is only needed if the layout fills a flushleft label.
 	if (pit->layout()->margintype != MARGIN_MANUAL)
 		return 0;
-
-	Row tmprow = row;
-	tmprow.pos(pit->size());
 	// return the beginning of the body
-	return leftMargin(pit, tmprow);
+	return leftMargin(pit);
 }
 
 
@@ -393,12 +384,8 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		return;
 	}
 
-	// maximum pixel width of a row.
-	int width = workWidth() - rightMargin(*pit, *bv()->buffer());
-//		- leftMargin(pit, row);
-
-	// inset->textWidth() returns -1 via workWidth(),
-	// but why ?
+	// maximum pixel width of a row
+	int width = textWidth() - rightMargin(*pit); // - leftMargin(pit, row);
 	if (width < 0) {
 		row.endpos(end);
 		return;
@@ -418,7 +405,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 	// or the end of the par, then choose the possible break
 	// nearest that.
 
-	int const left = leftMargin(pit, row);
+	int const left = leftMargin(pit, pos);
 	int x = left;
 
 	// pixel width since last breakpoint
@@ -438,14 +425,12 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		}
 		// Break before...
 		if (i + 1 < end) {
-			InsetOld * in = pit->getInset(i + 1);
-			if (in && in->display()) {
+			if (pit->isInset(i + 1) && pit->getInset(i + 1)->display()) {
 				point = i + 1;
 				break;
 			}
 			// ...and after.
-			in = pit->getInset(i);
-			if (in && in->display()) {
+			if (pit->isInset(i) && pit->getInset(i)->display()) {
 				point = i + 1;
 				break;
 			}
@@ -467,7 +452,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 				if (pit->isLineSeparator(i - 1))
 					add -= singleWidth(pit, i - 1);
 
-				add = std::max(add, labelEnd(pit, row) - x);
+				add = std::max(add, labelEnd(pit) - x);
 				thiswidth += add;
 			}
 
@@ -476,7 +461,6 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			//<< x << " width: " << width << endl;
 			chunkwidth += thiswidth;
 		}
-
 
 		// break before a character that will fall off
 		// the right of the row
@@ -489,15 +473,10 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 				}
 			}
 			// exit on last registered breakpoint:
-#if 0
-			// hack removed:
-			if (i + 1 < end)
-#endif
 			break;
 		}
 
-		InsetOld * in = pit->getInset(i);
-		if (!in || in->isChar()) {
+		if (!pit->isInset(i) || pit->getInset(i)->isChar()) {
 			// some insets are line separators too
 			if (pit->isLineSeparator(i)) {
 				// register breakpoint:
@@ -507,13 +486,6 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		}
 	}
 
-#if 0
-	// hack removed (connected with the #if 0 above):
-	if (point == end && i != end && x >= width) {
-		// didn't find one, break at the point we reached the edge
-		point = i + 1;
-	} else
-#endif
 	if (i == end && x < width) {
 		// maybe found one, but the par is short enough.
 		point = end;
@@ -535,8 +507,8 @@ void LyXText::fill(ParagraphList::iterator pit, Row & row, int workwidth) const
 	// get the pure distance
 	pos_type const end = row.endpos();
 
-	LyXLayout_ptr const & layout = pit->layout();
-	int w = leftMargin(pit, row);
+	string labelsep = pit->layout()->labelsep;
+	int w = leftMargin(pit, row.pos());
 
 	pos_type const body_pos = pit->beginOfBody();
 	pos_type i = row.pos();
@@ -547,10 +519,10 @@ void LyXText::fill(ParagraphList::iterator pit, Row & row, int workwidth) const
 		lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 		for ( ; i < end; ++i) {
 			if (body_pos > 0 && i == body_pos) {
-				w += font_metrics::width(layout->labelsep, getLabelFont(pit));
+				w += font_metrics::width(labelsep, getLabelFont(pit));
 				if (pit->isLineSeparator(i - 1))
 					w -= singleWidth(pit, i - 1);
-				w = max(w, labelEnd(pit, row));
+				w = max(w, labelEnd(pit));
 			}
 			char const c = pit->getChar(i);
 			if (IsPrintable(c) && i > endPosOfFontSpan) {
@@ -563,13 +535,13 @@ void LyXText::fill(ParagraphList::iterator pit, Row & row, int workwidth) const
 	}
 
 	if (body_pos > 0 && body_pos >= end) {
-		w += font_metrics::width(layout->labelsep, getLabelFont(pit));
+		w += font_metrics::width(labelsep, getLabelFont(pit));
 		if (end > 0 && pit->isLineSeparator(end - 1))
 			w -= singleWidth(pit, end - 1);
-		w = max(w, labelEnd(pit, row));
+		w = max(w, labelEnd(pit));
 	}
 
-	int const fill = workwidth - w - rightMargin(*pit, *bv()->buffer());
+	int const fill = workwidth - w - rightMargin(*pit);
 	row.fill(fill);
 	row.width(workwidth - fill);
 }
@@ -682,10 +654,6 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 				maxasc += bufparams.getDefSkip().inPixels(*bv());
 		}
 
-		// the top margin
-		if (pit == ownerParagraphs().begin() && !isInInset())
-			maxasc += PAPER_MARGIN;
-
 		// add user added vertical space
 		maxasc += getLengthMarkerHeight(*bv(), pit->params().spaceTop());
 
@@ -744,17 +712,13 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 
 	// is it a bottom line?
 	if (row.endpos() >= pit->size()) {
-		// the bottom margin
-		ParagraphList::iterator nextpit = boost::next(pit);
-		if (nextpit == ownerParagraphs().end() && !isInInset())
-			maxdesc += PAPER_MARGIN;
-
 		// add the vertical spaces, that the user added
 		maxdesc += getLengthMarkerHeight(*bv(), pit->params().spaceBottom());
 
 		// and now the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
+		ParagraphList::iterator nextpit = boost::next(pit);
 		if (nextpit != ownerParagraphs().end()) {
 			ParagraphList::iterator cpit = pit;
 			double usual = 0;
@@ -1010,9 +974,9 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 	bool const is_rtl =
 		pit->isRightToLeftPar(bv()->buffer()->params());
 	if (is_rtl)
-		x = workWidth() > 0 ? rightMargin(*pit, *bv()->buffer()) : 0;
+		x = rightMargin(*pit);
 	else
-		x = workWidth() > 0 ? leftMargin(pit, row) : 0;
+		x = leftMargin(pit, row.pos());
 
 	// is there a manual margin with a manual label
 	LyXLayout_ptr const & layout = pit->layout();
@@ -1043,7 +1007,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
 	// if the row is already larger then the permitted width as then
 	// we force the LEFT_ALIGN'edness!
-	} else if (int(row.width()) < workWidth()) {
+	} else if (int(row.width()) < textWidth()) {
 		// is it block, flushleft or flushright?
 		// set x how you need it
 		int align;
@@ -1430,14 +1394,6 @@ void LyXText::backspace()
 ParagraphList::iterator LyXText::cursorPar() const
 {
 	return getPar(cursor.par());
-#warning have a look at this again later.
-	// We need some method to mark the cache as invalidated when
-	// the paragraph it points get removed, for this to work.
-	if (cursor.par() != cache_pos_) {
-		cache_pos_ = cursor.par();
-		cache_par_ = getPar(cache_pos_);
-	}
-	return cache_par_;
 }
 
 
@@ -1615,19 +1571,19 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 	InsetList::iterator iend = pit->insetlist.end();
 	for (; ii != iend; ++ii) {
 		Dimension dim;
-		MetricsInfo mi(bv(), getFont(pit, ii->pos), workWidth());
+		int const w = textWidth() - leftMargin(pit) - rightMargin(*pit);
+		MetricsInfo mi(bv(), getFont(pit, ii->pos), w);
 		ii->inset->metrics(mi, dim);
 	}
 
 	// rebreak the paragraph
 	pit->setBeginOfBody();
-	int const ww = workWidth();
 	pos_type z = 0;
 	do {
 		Row row(z);
 		rowBreakPoint(pit, row);
 		z = row.endpos();
-		fill(pit, row, ww);
+		fill(pit, row, textwidth_);
 		prepareToPrint(pit, row);
 		setHeightOfRow(pit, row);
 		row.y_offset(pit->height);
@@ -1646,14 +1602,14 @@ void LyXText::redoParagraphs(ParagraphList::iterator pit,
 {
 	for ( ; pit != end; ++pit)
 		redoParagraphInternal(pit);
-	updateRowPositions();
+	updateParPositions();
 }
 
 
 void LyXText::redoParagraph(ParagraphList::iterator pit)
 {
 	redoParagraphInternal(pit);
-	updateRowPositions();
+	updateParPositions();
 }
 
 
@@ -1667,11 +1623,13 @@ void LyXText::fullRebreak()
 
 void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
-	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
-	//	<< " workWidth: " << workWidth() << "\nfont: " << mi.base.font << endl;
 	//BOOST_ASSERT(mi.base.textwidth);
+	if (mi.base.textwidth)
+		textwidth_ = mi.base.textwidth;
+	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
+	//	<< " textWidth: " << textWidth() << "\nfont: " << mi.base.font << endl;
 
-	// rebuild row cache. This recomputes height as well.
+	// Rebuild row cache. This recomputes height as well.
 	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
 
 	width = maxParagraphWidth(ownerParagraphs());

@@ -42,13 +42,15 @@ public:
 	///
 	~InsetList();
 	///
-	iterator begin();
+	iterator begin() { return list.begin(); }
 	///
-	iterator end();
+	iterator end() { return list.end(); }
 	///
-	const_iterator begin() const;
+	const_iterator begin() const { return list.begin(); }
 	///
-	const_iterator end() const;
+	const_iterator end() const { return list.end(); }
+	///
+	bool empty() const { return list.empty(); }
 	///
 	iterator insetIterator(lyx::pos_type pos); 
 	///

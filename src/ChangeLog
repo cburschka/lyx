@@ -1,3 +1,15 @@
+
+2003-11-25  André Pönitz  <poenitz@gmx.net>
+
+	* InsetList.[Ch] (begein, end): inline as suggested by profiler
+
+	* lyxtext.h (leftMargin/rightMargin): simplify interface
+
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C: adjust
+
 2003-11-24  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyxfunc.C (dispatch): propogate the bibtex databases from the

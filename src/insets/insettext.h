@@ -65,8 +65,6 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	int textWidth() const;
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	std::string const editMessage() const;

@@ -67,7 +67,6 @@ using std::vector;
 
 
 extern string current_layout;
-extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 // the selection possible is needed, that only motion events are
 // used, where the bottom press event was on the drawing area too
@@ -458,7 +457,6 @@ bool LyXText::rtl() const
 DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 {
 	//lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
-	lyxerr << "LyXText::dispatch: cmd: " << cmd << endl;
 
 	BufferView * bv = cmd.view();
 
