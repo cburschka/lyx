@@ -2,13 +2,13 @@
 #  \DeclareLaTeXClass{article (IEEEtran)}
 # Based on Article textclass definition file. 
 #
-# Author : Allan Rae <rae@elec.uq.edu.au>
+# Author : Allan Rae <rae@lyx.org>
 #
 # IEEEtran is the class used for submitting to any of the IEEE Transactions.
 # The on-screen display in LyX is set to reflect the appearance of two column
 # text.  The section counters appear correctly in the output but are
 # in arabic numerals in LyX -- this requires some additional code in LyX
-# to get right (maybe LyX-1.0.1).
+# to get right (maybe LyX-2.0 ;-).
 #
 # IEEEtran.cls can be obtained from the www.ieee.org website -- look for
 # the author information area.  There is a LaTeX 2.09 IEEEtran.sty available
@@ -50,6 +50,240 @@ End
 ## stdlists
 ##
 Input stdlists.inc
+
+# 
+# First cut at theorem environment support.
+# What other theorem-like environments are needed?
+# How many of these should be discarded?
+# I got this list from amsmaths*.inc but I haven't
+# found an official list of theorem environments for
+# IEEE Transactions.
+# OH!  and all theorems are numbered.  Is that a problem?
+# Tell me:  rae@lyx.org
+#
+# Theorem-numbered style *Template* declaration
+Style TheoremTemplate
+  Margin		First_Dynamic
+  LatexType		Environment
+  LabelSep		M
+  ParIndent		MM
+  ParSep		0.4
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+
+  # label font definition
+  LabelFont
+    Shape		Italic
+  EndFont
+End
+
+# Proof style declaration
+Style Proof
+  CopyStyle		TheoremTemplate
+  LatexName		proof
+  LabelString		"Proof:"
+End
+
+# Theorem-numbered style declaration
+Style Theorem
+  CopyStyle		TheoremTemplate
+  LatexName		thm
+  LabelString		"Theorem #:"
+
+  Preamble
+    \newtheorem{thm}{Theorem}
+  EndPreamble
+End  
+
+# Lemma-numbered style declaration
+Style Lemma
+  CopyStyle		TheoremTemplate
+  LatexName		lemma
+  LabelString		"Lemma #:"
+
+  Preamble
+    \newtheorem{lemma}{Lemma}
+  EndPreamble
+End  
+
+# Corollary-numbered style declaration
+Style Corollary
+  CopyStyle		TheoremTemplate
+  LatexName	        cor
+  LabelString		"Corollary #:"
+
+  Preamble
+    \newtheorem{cor}{Corollary}
+  EndPreamble
+End
+
+# Proposition-numbered style declaration
+Style Proposition
+  CopyStyle		TheoremTemplate
+  LatexName		prop
+  LabelString		"Proposition #:"
+
+  Preamble
+    \newtheorem{prop}{Proposition}
+  EndPreamble
+End  
+
+# Conjecture-numbered style declaration
+Style Conjecture
+  CopyStyle		TheoremTemplate
+  LatexName		conject
+  LabelString		"Conjecture #:"
+
+  Preamble
+    \newtheorem{conject}{Conjecture}
+  EndPreamble
+End  
+
+# Criterion-numbered style declaration
+Style Criterion
+  CopyStyle		TheoremTemplate
+  LatexName		criter
+  LabelString		"Criterion #:"
+
+  Preamble
+    \newtheorem{criter}{Criterion}
+  EndPreamble
+End  
+
+# Fact-numbered style declaration
+Style Fact
+  CopyStyle		TheoremTemplate
+  LatexName		fact
+  LabelString		"Fact #:"
+
+  Preamble
+    \newtheorem{fact}{Fact}
+  EndPreamble
+End  
+
+# Axiom-numbered style declaration
+Style Axiom
+  CopyStyle		TheoremTemplate
+  LatexName		axi
+  LabelString		"Axiom #:"
+
+  Preamble
+    \newtheorem{axi}{Axiom}
+  EndPreamble
+End  
+
+# Definition-numbered style declaration
+Style Definition
+  CopyStyle		TheoremTemplate
+  LatexName		definitn
+  LabelString		"Definition #:"
+
+  Preamble
+    \newtheorem{definitn}{Definition}
+  EndPreamble
+End
+
+# Example-numbered style declaration
+Style Example
+  CopyStyle		TheoremTemplate
+  LatexName		example
+  LabelString		"Example #:"
+
+  Preamble
+    \newtheorem{example}{Example}
+  EndPreamble
+End
+
+# Condition-numbered style declaration
+Style Condition
+  CopyStyle		TheoremTemplate
+  LatexName		condition
+  LabelString		"Condition #:"
+
+  Preamble
+    \newtheorem{condition}{Condition}
+  EndPreamble
+End
+
+# Problem-numbered style declaration
+Style Problem
+  CopyStyle		TheoremTemplate
+  LatexName		problem
+  LabelString		"Problem #:"
+
+  Preamble
+    \newtheorem{problem}{Problem}
+  EndPreamble
+End
+
+# Exercise-numbered style declaration
+Style Exercise
+  CopyStyle		TheoremTemplate
+  LatexName		exacise
+  LabelString		"Exercise #:"
+
+  Preamble
+    \newtheorem{exacise}{Exercise}
+  EndPreamble
+End
+
+# Remark-numbered style declaration
+Style Remark
+  CopyStyle		TheoremTemplate
+  LatexName		remrk
+  LabelString		"Remark #:"
+
+  Preamble
+    \newtheorem{remrk}{Remark}
+  EndPreamble
+End
+
+# Claim-numbered style declaration
+Style Claim
+  CopyStyle		TheoremTemplate
+  LatexName		claim
+  LabelString		"Claim #:"
+
+  Preamble
+    \newtheorem{claim}{Claim}
+  EndPreamble
+End
+
+# Note-numbered style declaration
+Style Note
+  CopyStyle		TheoremTemplate
+  LatexName		note
+  LabelString		"Note #:"
+
+  Preamble
+    \newtheorem{note}{Note}
+  EndPreamble
+End
+
+# Notation-numbered style declaration
+Style Notation
+  CopyStyle		TheoremTemplate
+  LatexName		notation
+  LabelString		"Notation #:"
+
+  Preamble
+    \newtheorem{notation}{Notation}
+  EndPreamble
+End
+
+# Case-numbered style declaration
+Style Case
+  CopyStyle		TheoremTemplate
+  LatexName		case
+  LabelString		"Case #:"
+
+  Preamble
+    \newtheorem{case}{Case}
+  EndPreamble
+End
+
+NoStyle TheoremTemplate
 
 ##
 ## stdsections and stdstarsections
@@ -222,6 +456,16 @@ Style Appendices
   EndFont
 End
 
+Style Biography
+  LaTeXType		Environment
+  LaTeXName		biography
+  Align			Block
+  AlignPossible		Block
+  TextFont
+    Size		Small
+  EndFont
+End
+
 ##
 ##  stdlayouts
 ##
@@ -255,6 +499,14 @@ Style Footernote
     Size                Small
   EndFont
 End
+
+Style MarkBoth
+  LaTeXType		Command
+  LaTeXName		markboth
+  Align			Center
+  AlignPossible		Center
+End
+
 ##
 ## Others
 ##

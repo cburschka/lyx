@@ -1,5 +1,4 @@
-#This file was created by <lasgoutt> Thu Nov 18 16:34:00 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 2.15
 \textclass article
 \language default
@@ -113,7 +112,8 @@ Note that most of these packages will be available if you use a modern TeX
 \bar under 
 O
 \bar default 
-ptions->
+ptions\SpecialChar \menuseparator
+
 \bar under 
 R
 \bar default 
@@ -643,7 +643,12 @@ FTP: Currently, the IEEE ftp site only has an old version at:
 \newline 
 
 \family sans 
-ftp://ftp.ieee.org/info/publish/latex/ieeetran.cls
+
+\begin_inset LatexCommand \url{ftp://ftp.ieee.org/info/publish/latex/ieeetran.cls}
+
+\end_inset 
+
+
 \family default 
  
 \family sans 
@@ -655,7 +660,12 @@ A newer version is available from:
 \newline 
 
 \family sans 
-ftp://ftp.isi.edu/pub/graham/infocom99/latest/IEEEtran.cls
+
+\begin_inset LatexCommand \url{ftp://ftp.isi.edu/pub/graham/infocom99/latest/IEEEtran.cls}
+
+\end_inset 
+
+
 \layout Description
 
 Notes: The class
@@ -680,12 +690,21 @@ IEEEtran.sty
 \emph on 
 must
 \emph default 
- get the .cls file for use with LyX as the .sty file is for LaTeX 2.09 only.
+ get the 
+\family sans 
+.cls
+\family default 
+ file for use with LyX as the 
+\family sans 
+.sty
+\family default 
+ file is for LaTeX 2.09 only.
  Also note that if your 
 \family sans 
 ieeetran.cls
 \family default 
- is in lowercase like this example LyX will not find it.
+ is in lowercase like this example LyX will not find it and you should upgrade
+ to a newer version which has IEEE in capitals.
 \layout Subsection
 
 latex8

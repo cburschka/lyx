@@ -1,12 +1,12 @@
-#This file was created by <rae> Mon Dec 20 11:59:31 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 2.15
 \textclass IEEEtran
-\language english
+\language default
 \inputencoding default
 \fontscheme default
 \graphics default
-\paperfontsize 10
+\float_placement hbt
+\paperfontsize default
 \spacing single 
 \papersize Default
 \paperpackage a4
@@ -20,12 +20,12 @@
 \quotes_language english
 \quotes_times 2
 \papercolumns 2
-\papersides 2
-\paperpagestyle empty
+\papersides 1
+\paperpagestyle default
 
 \layout Title
 
-Your Title
+Your Title: And maybe a bit extra
 \layout Author
 
 
@@ -43,11 +43,6 @@ Your name is with xyz Department\SpecialChar \ldots{}
 
 \latex latex 
 }
-\layout LaTeX
-
-
-\backslash 
-thispagestyle{empty}
 \layout Abstract
 
 This paper presents a simple template for IEEEtran documents.
@@ -55,6 +50,13 @@ This paper presents a simple template for IEEEtran documents.
 \layout Keywords
 
 simplicity, beauty, elegance
+\layout MarkBoth
+
+This is for left pages
+\latex latex 
+}{
+\latex default 
+and this is for right pages
 \layout Section
 
 Introduction
@@ -86,9 +88,72 @@ This is only a template remember.
 \layout Section
 
 Methodology
+\layout Theorem
+
+
+\latex latex 
+[
+\latex default 
+Theorem name
+\latex latex 
+]
+\latex default 
+ For a named theorem or theorem-like environment you need to use a little
+ evil red text (LaTeX mode) around the name.
+\layout Lemma
+
+If you don't want a theorem or lemma name don't add one.
+\layout Proof
+
+And here's the proof!
 \layout Section
 
 Results
+\layout Standard
+
+\begin_float fig 
+\layout Standard
+\align center 
+
+\family sans 
+A single column figure goes here
+\layout Caption
+
+Captions go 
+\emph on 
+under
+\emph default 
+ the figure
+\end_float 
+\begin_float tab 
+\layout Caption
+
+Table captions go 
+\emph on 
+above
+\emph default 
+ the table
+\layout Standard
+\align center \LyXTable
+multicol5
+2 2 0 0 -1 -1 -1 -1
+1 1 0 0
+1 1 0 0
+8 1 0 "" ""
+8 1 1 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+
+delete
+\newline 
+this
+\newline 
+example
+\newline 
+table
+\end_float 
 \layout Section
 
 Conclusions
@@ -97,25 +162,47 @@ Conclusions
 
 \begin_inset Info Change this paragraphs style to 'Standard' to enable
 BibTeX bibliography generation.
+
+Remember though that your final submission is supposed to have
+all the bibliography entries embedded in the latex file.  This means
+you eventually have to copy the .bbl file into the latex file and
+remove the bibtex lines.
 \end_inset 
 
 
-\begin_inset LatexCommand \BibTeX[IEEEbib]{biblio}
+\begin_inset LatexCommand \BibTeX[IEEEbib]{your_biblio_file}
 
 \end_inset 
 
 
+\layout Biography
+
+
+\latex latex 
+{
+\latex default 
+Your Name
+\latex latex 
+}
+\latex default 
+ All about you and the what your interests are.
+ Don't forget to put your name in between a pair of {}'s that are set as
+ raw TeX.
 \layout LaTeX
 
+% This LaTeX comment is needed to force LyX to generate two separate environment
+s
+\newline 
 
-\backslash 
-begin{biography}{Your Name}
-\layout Standard
-
-All about you.
-\layout LaTeX
+\layout Biography
 
 
-\backslash 
-end{biography}
+\latex latex 
+{
+\latex default 
+Coauthor
+\latex latex 
+} 
+\latex default 
+Same again for the co-author.
 \the_end

@@ -1,3 +1,13 @@
+2000-01-20  Allan Rae <rae@lyx.org>
+
+	* lib/layouts/IEEEtran.layout: Added several theorem environments
+
+	* lib/templates/IEEEtran.lyx: Example theorem environments and a
+	couple of minor additions.
+
+	* lib/doc/LaTeXConfig.lyx.in:  Use URL insets for ftp sites 
+	(except for those in footnotes of course)
+
 2000-01-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/LAssert.h: do not do partial specialization. We do
