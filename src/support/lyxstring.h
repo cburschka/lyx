@@ -149,7 +149,7 @@ const_reference> const_reverse_iterator;
 	static const size_type npos;
 
 	/// #lyxstring x;# 
-	inline lyxstring();
+	lyxstring();
 	
 	/// #lyxstring x(lyxstring ...)# 
 	lyxstring(lyxstring const &, size_type pos = 0, size_type n = npos);
@@ -264,7 +264,7 @@ const_reference> const_reverse_iterator;
 	lyxstring & operator+=(value_type const *);
 	
 	///
-	inline lyxstring & operator+=(value_type);
+	lyxstring & operator+=(value_type);
 
 	///
 	void push_back(value_type);
