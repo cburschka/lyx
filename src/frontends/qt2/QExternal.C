@@ -291,6 +291,7 @@ void QExternal::build_dialog()
 	bcview().addReadOnly(dialog_->browsePB);
 	bcview().addReadOnly(dialog_->editPB);
 	bcview().addReadOnly(dialog_->externalCO);
+	bcview().addReadOnly(dialog_->draftCB);
 	bcview().addReadOnly(dialog_->displayscaleED);
 	bcview().addReadOnly(dialog_->showCO);
 	bcview().addReadOnly(dialog_->displayCB);
@@ -351,6 +352,8 @@ void QExternal::update_contents()
 	dialog_->externalCO->setCurrentItem(
 		controller().getTemplateNumber(params.templatename()));
 	updateTemplate();
+
+	dialog_->draftCB->setChecked(params.draft);
 
 	setDisplay(*dialog_->displayCB, *dialog_->showCO,
 		   *dialog_->displayscaleED,
@@ -443,6 +446,8 @@ void QExternal::apply()
 
 	params.settemplate(controller().getTemplate(
 				   dialog_->externalCO->currentItem()).lyxName);
+
+	params.draft = dialog_->draftCB->isChecked();
 
 	getDisplay(params.display, params.lyxscale,
 		   *dialog_->displayCB, *dialog_->showCO,

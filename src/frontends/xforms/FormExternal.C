@@ -341,6 +341,7 @@ void FormExternal::build()
 	bcview().addReadOnly(file_->button_browse);
 	bcview().addReadOnly(file_->button_edit);
 	bcview().addReadOnly(file_->choice_template);
+	bcview().addReadOnly(file_->check_draft);
 
 	bcview().addReadOnly(lyxview_->check_show);
 	bcview().addReadOnly(lyxview_->choice_show);
@@ -476,6 +477,8 @@ void FormExternal::update()
 
 	updateComboChange();
 
+	fl_set_button(file_->check_draft, params.draft);
+
 	setDisplay(lyxview_->check_show, lyxview_->choice_show,
 		   lyxview_->input_displayscale,
 		   params.display, params.lyxscale,
@@ -583,6 +586,8 @@ void FormExternal::apply()
 
 	int const choice = fl_get_choice(file_->choice_template) - 1;
 	params.settemplate(controller().getTemplate(choice).lyxName);
+
+	params.draft = fl_get_button(file_->check_draft);
 
 	getDisplay(params.display, params.lyxscale,
 		   lyxview_->check_show, lyxview_->choice_show,

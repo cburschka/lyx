@@ -1,5 +1,10 @@
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* lyxrevert_227.py: InsetExternal gains a 'draft' option, so remove
+	this when reverting to format 226.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
 	* lyx2lyx: up the format to 227.
 	(lyxformat): squash latent bug when reporting an inability to convert
 	to the desired format.

@@ -137,6 +137,7 @@ Translator<DisplayType, string> const & displayTranslator()
 InsetExternalParams::InsetExternalParams()
 	: display(defaultDisplayType),
 	  lyxscale(defaultLyxScale),
+	  draft(false),
 	  templatename_(defaultTemplateName)
 {}
 
@@ -199,6 +200,9 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 	if (lyxscale != defaultLyxScale)
 		os << "\tlyxscale " << tostr(lyxscale) << '\n';
 
+	if (draft)
+		os << "\tdraft\n";
+
 	if (!clipdata.bbox.empty())
 		os << "\tboundingBox " << clipdata.bbox << '\n';
 	if (clipdata.clip)
@@ -247,6 +251,7 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 		EX_FILENAME,
 		EX_DISPLAY,
 		EX_LYXSCALE,
+		EX_DRAFT,
 		EX_BOUNDINGBOX,
 		EX_CLIP,
 		EX_EXTRA,
@@ -264,6 +269,7 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 		{ "boundingBox",     EX_BOUNDINGBOX },
 		{ "clip",            EX_CLIP },
 		{ "display",         EX_DISPLAY},
+		{ "draft",           EX_DRAFT},
 		{ "extra",           EX_EXTRA },
 		{ "filename",        EX_FILENAME},
 		{ "height",          EX_HEIGHT },
@@ -305,6 +311,10 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 		case EX_LYXSCALE:
 			lex.next();
 			lyxscale = lex.getInteger();
+			break;
+
+		case EX_DRAFT:
+			draft = true;
 			break;
 
 		case EX_BOUNDINGBOX:
@@ -665,6 +675,13 @@ void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
 int InsetExternal::latex(Buffer const & buf, ostream & os,
 			 OutputParams const & runparams) const
 {
+	if (params_.draft) {
+		os << "\\fbox{\\ttfamily{}"
+		   << params_.filename.outputFilename(buf.filePath())
+		   << "}\n";
+		return 1;
+	}
+
 	// "nice" means that the buffer is exported to LaTeX format but not
 	// run through the LaTeX compiler.
 	// If we're running through the LaTeX compiler, we should write the
@@ -716,6 +733,9 @@ int InsetExternal::docbook(Buffer const & buf, ostream & os,
 
 void InsetExternal::validate(LaTeXFeatures & features) const
 {
+	if (params_.draft)
+		return;
+
 	external::Template const * const et_ptr =
 		external::getTemplatePtr(params_);
 	if (!et_ptr)

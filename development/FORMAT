@@ -3,6 +3,12 @@ LyX file-format changes
 
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* format NOT incremented.
+	* add a 'draft' option to InsetExternal.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* format incremented to 227.
 	* Change the output of InsetBox:
 	\begin_inset Boxed -> \begin_inset Box Boxed
 	\begin_inset Doublebox -> \begin_inset Box Doublebox
@@ -13,6 +19,7 @@ LyX file-format changes
 
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* format incremented to 226.
 	* Change the output of InsetNote:
 	\begin_inset Note -> \begin_inset Note Note
 	\begin_inset Comment -> \begin_inset Note Comment

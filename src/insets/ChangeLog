@@ -1,5 +1,10 @@
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* insetexternal.[Ch]: add a draft option and respect it when
+	outputting LaTeX.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
 	* insetbox.C: (read, write): now prepend the inset contents with
 	'Box' to identify the inset as a box inset.
 

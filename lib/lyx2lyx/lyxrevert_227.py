@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-from parser_tools import find_token
+from parser_tools import find_token, find_end_of_inset
 
 def convert_box(lines):
     box_header = "\\begin_inset Box "
@@ -28,8 +28,25 @@ def convert_box(lines):
         lines[i] = "\\begin_inset " + lines[i][len(box_header):]
         i = i + 1
 
+def convert_external(lines):
+    draft_token = '\tdraft'
+    i = 0
+    while 1:
+        i = find_token(lines, '\\begin_inset External', i)
+        if i == -1:
+            break
+        j = find_end_of_inset(lines, i + 1)
+        if j == -1:
+            #this should not happen
+            break
+        k = find_token(lines, draft_token, i+1, j-1)
+        if (k != -1 and len(draft_token) == len(lines[k])):
+            del lines[k]
+        i = j + 1
+
 def convert(header, body):
     convert_box(body)
+    convert_external(body)
 
 if __name__ == "__main__":
     pass

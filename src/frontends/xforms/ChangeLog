@@ -1,5 +1,10 @@
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* FormExternal.C, forms/form_external.fd: add a 'draft' check box
+	and use it to fill InsetExternalParams::draft.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
 	* FormNote.C: changes due to the change of type of InsetNoteParams::type
 	from string to an enum.
 

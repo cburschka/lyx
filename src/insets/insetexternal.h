@@ -86,6 +86,11 @@ struct InsetExternalParams {
 	lyx::external::ResizeData   resizedata;
 	lyx::external::RotationData rotationdata;
 
+	/** if \c true, simply output the filename, maybe wrapped in a
+	 *  box, rather than generate and display the image etc.
+	 */
+	bool draft;
+
 private:
 	lyx::external::TempName tempname_;
 	std::string templatename_;

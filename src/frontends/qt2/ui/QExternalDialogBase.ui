@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>331</width>
-            <height>320</height>
+            <width>386</width>
+            <height>419</height>
         </rect>
     </property>
     <property stdset="1">
@@ -228,6 +228,42 @@
                             </widget>
                         </hbox>
                     </widget>
+                    <spacer row="1"  column="1" >
+                        <property>
+                            <name>name</name>
+                            <cstring>Spacer8</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>orientation</name>
+                            <enum>Horizontal</enum>
+                        </property>
+                        <property stdset="1">
+                            <name>sizeType</name>
+                            <enum>Expanding</enum>
+                        </property>
+                        <property>
+                            <name>sizeHint</name>
+                            <size>
+                                <width>20</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <widget row="1"  column="0" >
+                        <class>QPushButton</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>editPB</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>text</name>
+                            <string>&amp;Edit File...</string>
+                        </property>
+                        <property>
+                            <name>toolTip</name>
+                            <string>Edit the file externally</string>
+                        </property>
+                    </widget>
                     <widget row="2"  column="0"  rowspan="1"  colspan="2" >
                         <class>QGroupBox</class>
                         <property stdset="1">
@@ -299,40 +335,15 @@
                             </spacer>
                         </grid>
                     </widget>
-                    <spacer row="1"  column="1" >
-                        <property>
-                            <name>name</name>
-                            <cstring>Spacer8</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>orientation</name>
-                            <enum>Horizontal</enum>
-                        </property>
-                        <property stdset="1">
-                            <name>sizeType</name>
-                            <enum>Expanding</enum>
-                        </property>
-                        <property>
-                            <name>sizeHint</name>
-                            <size>
-                                <width>20</width>
-                                <height>20</height>
-                            </size>
-                        </property>
-                    </spacer>
-                    <widget row="1"  column="0" >
-                        <class>QPushButton</class>
+                    <widget row="3"  column="0"  rowspan="1"  colspan="2" >
+                        <class>QCheckBox</class>
                         <property stdset="1">
                             <name>name</name>
-                            <cstring>editPB</cstring>
+                            <cstring>draftCB</cstring>
                         </property>
                         <property stdset="1">
                             <name>text</name>
-                            <string>&amp;Edit File...</string>
-                        </property>
-                        <property>
-                            <name>toolTip</name>
-                            <string>Edit the file externally</string>
+                            <string>&amp;Draft</string>
                         </property>
                     </widget>
                 </grid>
@@ -1388,6 +1399,12 @@
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>QExternalDialogBase</receiver>
         <slot>bbChanged()</slot>
+    </connection>
+    <connection>
+        <sender>draftCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QExternalDialogBase</receiver>
+        <slot>change_adaptor()</slot>
     </connection>
     <slot access="public">browseClicked()</slot>
     <slot access="public">change_adaptor()</slot>
