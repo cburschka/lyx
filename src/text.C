@@ -1870,6 +1870,8 @@ int LyXText::cursorY() const
 int LyXText::cursorX(LyXCursor const & cur) const
 {
 	ParagraphList::iterator pit = getPar(cur);
+	if (pit->rows.empty())
+		return 0;
 	Row const & row         = *pit->getRow(cur.pos());
 	pos_type pos            = cur.pos();
 	pos_type cursor_vpos    = 0;

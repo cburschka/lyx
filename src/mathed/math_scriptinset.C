@@ -525,7 +525,7 @@ MathScriptInset::priv_dispatch(FuncRequest const & cmd,
 			else
 				limits_ = 0;
 		} else if (limits_ == 0)
-			limits_ =  (hasLimits()) ? -1 : 1;
+			limits_ = hasLimits() ? -1 : 1;
 		else
 			limits_ = 0;
 		return DispatchResult(true, true);
