@@ -326,17 +326,16 @@ void InsetCitation::setLoadingBuffer(Buffer const * buffer, bool state) const
 dispatch_result InsetCitation::localDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
-		case LFUN_INSET_EDIT:
-			// A call to edit indicates that we're no longer loading the
-			// buffer but doing some real work.
-			setLoadingBuffer(cmd.view()->buffer(), false);
-			InsetCommandMailer("citation", *this).showDialog(cmd.view());
-			break;
+	case LFUN_INSET_EDIT:
+		// A call to edit indicates that we're no longer loading the
+		// buffer but doing some real work.
+		setLoadingBuffer(cmd.view()->buffer(), false);
+		InsetCommandMailer("citation", *this).showDialog(cmd.view());
+		break;
 
-		default:
-			return InsetCommand::localDispatch(cmd);
+	default:
+		return InsetCommand::localDispatch(cmd);
 	}
-	return DISPATCHED;
 }
 
 
