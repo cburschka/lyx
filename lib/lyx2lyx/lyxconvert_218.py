@@ -171,10 +171,8 @@ def remove_oldert(lines):
 	i = find_tokens(lines, ["\\latex latex", "\\layout LaTeX"], i)
 	if i == -1:
 	    break
-	j = find_tokens(lines, ["\\latex default", "\\layout", "\\end_float"],
+	j = find_tokens(lines, ["\\latex default", "\\layout", "\\end_float", "\\the_end"],
 			i+1)
-	if j == -1:
-	    j = len(lines)-1
 	if check_token(lines[j], "\\layout"):
 	    while j-1 >= 0 and check_token(lines[j-1], "\\begin_deeper"):
 		j = j-1
@@ -257,7 +255,8 @@ def combine_ert(lines):
 		break
 
 	if count >= 2:
-	    lines[i+1:k] = text
+	    j = find_token(lines, "\\layout", i+1)
+	    lines[j:k] = text
 
 	i = i+1
 	

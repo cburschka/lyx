@@ -17,7 +17,7 @@
 
 import getopt, sys, string, re
 from error import error, warning
-from parser_tools import set_format
+from parser_tools import set_comment, set_format
 
 version = "0.0.2"
 
@@ -38,8 +38,7 @@ opt.quiet = 0
 format = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
 lst_ft = ["210", "215", "216", "217", "218", "220"]
-format_name = {"210" : "2.10", "215":"2.15", "216": "2.16",
-               "217" : "2.17", "218":"218" , "220":"220"}
+
 def usage():
     print """Usage: lyx2lyx [options] file1
 Convert old lyx file <file1> to newer format.
@@ -164,9 +163,10 @@ def main(argv):
     end = lst_ft.index(opt.end)
 
     for fmt in lst_ft[start:end]:
-        __import__("lyxconvert_" + fmt).convert(header,body)
+	__import__("lyxconvert_" + fmt).convert(header,body)
 
-    set_format(header,format_name[opt.end])
+    set_comment(header, opt.end)
+    set_format(header, opt.end)
     write_file(opt.output, header, body)
     
 if __name__ == "__main__":
