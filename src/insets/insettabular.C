@@ -920,7 +920,6 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 			return DISPATCHED;
 
 		case LFUN_MOUSE_RELEASE:
-			lfunMouseRelease(cmd);
 			return lfunMouseRelease(cmd) ? DISPATCHED : UNDISPATCHED;
 
 		case LFUN_SHIFT_TAB:

@@ -1239,6 +1239,18 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 	int updwhat = 0;
 	int updflag = false;
 	switch (ev.action) {
+
+	case LFUN_MOUSE_PRESS:
+		lfunMousePress(ev);
+		return DISPATCHED;
+ 
+	case LFUN_MOUSE_MOTION:
+		lfunMouseMotion(ev);
+		return DISPATCHED;
+ 
+	case LFUN_MOUSE_RELEASE:
+		return lfunMouseRelease(ev) ? DISPATCHED : UNDISPATCHED;
+ 
 	// Normal chars
 	case LFUN_SELFINSERT:
 		if (bv->buffer()->isReadonly()) {
