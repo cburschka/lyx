@@ -81,7 +81,8 @@ void LyXText::init(BufferView * bview)
 	bv_owner = bview;
 
 	rowlist_.clear();
-	width = height = 0;
+	width = 0;
+	height = 0;
 
 	anchor_row_ = rows().end();
 	anchor_row_offset_ = 0;
@@ -641,7 +642,6 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 	// insert a new row, starting at position 0
 	Row newrow(pit, 0);
 	rit = rowlist_.insert(rit, newrow);
-	//newrow.dump("newrow: ");
 
 	// and now append the whole paragraph before the new row
 	pos_type const last = rit->par()->size();
@@ -651,12 +651,10 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 		pos_type z = rowBreakPoint(*rit);
 
 		RowList::iterator tmprow = rit;
-		//tmprow->dump("tmprow: ");
 
 		if (z < last) {
 			++z;
 			Row newrow(rit->par(), z);
-			//newrow.dump("newrow2: ");
 			rit = rowlist_.insert(boost::next(rit), newrow);
 		} else {
 			done = true;
@@ -665,12 +663,8 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 		// Set the dimensions of the row
 		// fixed fill setting now by calling inset->update() in
 		// SingleWidth when needed!
-		//tmprow->dump("tmprow 1: ");
 		tmprow->fill(fill(tmprow, workWidth()));
-		//tmprow->dump("tmprow 2: ");
 		setHeightOfRow(tmprow);
-		//tmprow->dump("tmprow 3: ");
-		height += rit->height();
 
 	} while (!done);
 
@@ -680,7 +674,6 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 
 void LyXText::fullRebreak()
 {
-	lyxerr << "fullRebreak" << endl;
 	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
 	setCursorIntern(cursor.par(), cursor.pos());
 	selection.cursor = cursor;
@@ -694,7 +687,8 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 
 	// rebuild row cache
 	rowlist_.clear();
-	width = height = 0;
+	width = 0;
+	height = 0;
 
 	anchor_row_ = rows().end();
 	anchor_row_offset_ = 0;
