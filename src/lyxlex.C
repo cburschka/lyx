@@ -118,9 +118,9 @@ int LyXLex::lex()
 
 int LyXLex::getInteger() const
 {
-	if (isStrInt(pimpl_->getString()))
+	if (isStrInt(pimpl_->getString())) {
 		return strToInt(pimpl_->getString());
-	else {
+	} else {
 		pimpl_->printError("Bad integer `$$Token'");
 		return -1;
 	}
@@ -191,8 +191,9 @@ string const LyXLex::getLongString(string const & endtoken)
 		else // token == endtoken
 			break;
 	}
-	if (!isOK())
+	if (!isOK()) {
 		printError("Long string not ended by `" + endtoken + '\'');
+	}
 
 	return str;
 }
@@ -200,10 +201,11 @@ string const LyXLex::getLongString(string const & endtoken)
 
 bool LyXLex::getBool() const
 {
-	if (compare(pimpl_->buff, "true") == 0)
+	if (compare(pimpl_->buff, "true") == 0) {
 		return true;
-	else if (compare(pimpl_->buff, "false") != 0)
+	} else if (compare(pimpl_->buff, "false") != 0) {
 		pimpl_->printError("Bad boolean `$$Token'. Use \"false\" or \"true\"");
+	}
 	return false;
 }
 
@@ -233,34 +235,22 @@ void LyXLex::pushToken(string const & pt)
 
 
 int LyXLex::findToken(char const * str[])
-{  
-   int i = -1;
+{
+	int i = 0;
    
-   if (next()) {
-      if (compare(pimpl_->buff, "default")) {
-	 for (i = 0; str[i][0] && compare(str[i], pimpl_->buff); ++i);
-	 if (!str[i][0]) {
-	    pimpl_->printError("Unknown argument `$$Token'");
-	    i = -1;
-	 }
-      }  
-   } else
-     pimpl_->printError("file ended while scanning string token");
-   return i;
-}
-
-
-int LyXLex::checkToken(char const * str[], int print_error)
-{  
-   int i = -1;
-   
-   if (compare(pimpl_->buff, "default")) {
-       for (i = 0; str[i][0] && compare(str[i], pimpl_->buff); ++i);
-       if (!str[i][0]) {
-           if (print_error)
-               pimpl_->printError("Unknown argument `$$Token'");
-           i = -1;
-       }
-   }
-   return i;
+	if (next()) {
+		if (compare(pimpl_->buff, "default")) {
+			while (str[i][0] && compare(str[i], pimpl_->buff)) {
+				++i;
+			}
+			if (!str[i][0]) {
+				pimpl_->printError("Unknown argument `$$Token'");
+				i = -1;
+			}
+		}
+	} else {
+		pimpl_->printError("file ended while scanning string token");
+		i = -1;
+	}
+	return i;
 }

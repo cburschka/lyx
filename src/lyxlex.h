@@ -102,8 +102,6 @@ public:
 	bool eatLine();
 	///
 	int findToken(char const * str[]);
-	///
-	int checkToken(char const * str[], int print_error);
 
 	///
 	string const text() const;
