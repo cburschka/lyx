@@ -46,7 +46,7 @@ void MathBoxInset::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
 	cell(0).draw(pi, x, y);
-	drawMarkers2(pi, x + 1, y);
+	drawMarkers2(pi, x, y);
 }
 
 

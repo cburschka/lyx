@@ -1,3 +1,13 @@
+2003-05-06  Ling Li  <ling@caltech.edu>
+ 
+ 	* Makefile, math_makeboxinset.[Ch]:
+ 	* math_factory.C (createMathInset):
+ 	* math_parser.C (parse1): New support for \makebox.
+ 
+ 	* math_nestinset.C (drawMarkers, drawMarkers2):
+ 	* math_boxinset.C, math_frameboxinset.C (draw):
+ 	Fix spacing and marker length.
+ 
 2003-05-03  John Levon  <levon@movementarian.org>
 
 	* formula.C:

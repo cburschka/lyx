@@ -201,7 +201,7 @@ void MathNestInset::drawMarkers(PainterInfo & pi, int x, int y) const
 	pi.pain.line(x, d - 3, x, d, LColor::mathframe);
 	pi.pain.line(t, d - 3, t, d, LColor::mathframe);
 	pi.pain.line(x, d, x + 3, d, LColor::mathframe);
-	pi.pain.line(t - 2, d, t, d, LColor::mathframe);
+	pi.pain.line(t - 3, d, t, d, LColor::mathframe);
 }
 
 
@@ -215,7 +215,7 @@ void MathNestInset::drawMarkers2(PainterInfo & pi, int x, int y) const
 	pi.pain.line(x, a + 3, x, a, LColor::mathframe);
 	pi.pain.line(t, a + 3, t, a, LColor::mathframe);
 	pi.pain.line(x, a, x + 3, a, LColor::mathframe);
-	pi.pain.line(t - 2, a, t, a, LColor::mathframe);
+	pi.pain.line(t - 3, a, t, a, LColor::mathframe);
 }
 
 

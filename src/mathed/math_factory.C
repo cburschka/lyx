@@ -22,6 +22,7 @@
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_macroarg.h"
+#include "math_makeboxinset.h"
 #include "math_parboxinset.h"
 #include "math_rootinset.h"
 #include "math_sizeinset.h"
@@ -259,6 +260,8 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
 	if (s == "framebox")
 		return MathAtom(new MathFrameboxInset);
+	if (s == "makebox")
+		return MathAtom(new MathMakeboxInset);
 	if (s == "kern")
 		return MathAtom(new MathKernInset);
 	if (s == "xymatrix")
