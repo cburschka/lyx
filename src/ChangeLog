@@ -1,3 +1,8 @@
+2002-03-14  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* Makefile.am (lyx_DEPENDENCIES): Swap the order of libfrontend
+	and libgraphics to build on Cygwin.
+
 2002-03-15  Juergen Vigna  <jug@sad.it>
 
 	* CutAndPaste.C (SwitchLayoutsBetweenClasses): fix the wrong use of

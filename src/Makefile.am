@@ -9,8 +9,8 @@ SUBDIRS = mathed insets graphics support frontends
 bin_PROGRAMS = lyx
 
 lyx_DEPENDENCIES = mathed/libmathed.o insets/libinsets.o \
-	graphics/libgraphics.o \
 	frontends/libfrontends.o \
+	graphics/libgraphics.o \
 	support/libsupport.o \
 	@INCLUDED_SIGC@
 
