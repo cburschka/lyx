@@ -381,6 +381,8 @@ void LyXAction::init()
 #ifndef NEW_TABULAR
 		{ LFUN_TABLE, "table-insert", N_("Insert Table"), Noop },
 #endif
+		{ LFUN_TABULAR_FEATURE, "tabular-feature",
+		  N_("Tabular Features"), Noop },
 		{ LFUN_INSET_TABULAR, "tabular-insert",
 		  N_("Insert a new Tabular Inset"), Noop },
 		{ LFUN_TEX, "tex-mode", N_("Toggle TeX style"), Noop },

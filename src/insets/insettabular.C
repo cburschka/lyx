@@ -44,11 +44,68 @@ using std::max;
 using std::endl;
 using std::swap;
 
+    
+struct tabular_features {
+    int action;
+    string feature;
+};
+
+//static tabular_features * tabularFeatures = 0;
+
+static tabular_features tabularFeatures[] =
+{
+    { LyXTabular::APPEND_ROW, "append-row" },
+    { LyXTabular::APPEND_COLUMN, "append-column" },
+    { LyXTabular::DELETE_ROW, "delete-row" },
+    { LyXTabular::DELETE_COLUMN, "delete-column" },
+    { LyXTabular::TOGGLE_LINE_TOP, "toggle-line-top" },
+    { LyXTabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom" },
+    { LyXTabular::TOGGLE_LINE_LEFT, "toggle-line-left" },
+    { LyXTabular::TOGGLE_LINE_RIGHT, "toggle-line-right" },
+    { LyXTabular::ALIGN_LEFT, "align-left" },
+    { LyXTabular::ALIGN_RIGHT, "align-right" },
+    { LyXTabular::ALIGN_CENTER, "align-center" },
+    { LyXTabular::VALIGN_TOP, "valign-top" },
+    { LyXTabular::VALIGN_BOTTOM, "valign-bottom" },
+    { LyXTabular::VALIGN_CENTER, "valign-center" },
+    { LyXTabular::M_TOGGLE_LINE_TOP, "m-toggle-line-top" },
+    { LyXTabular::M_TOGGLE_LINE_BOTTOM, "m-toggle-line-bottom" },
+    { LyXTabular::M_TOGGLE_LINE_LEFT, "m-toggle-line-left" },
+    { LyXTabular::M_TOGGLE_LINE_RIGHT, "m-toggle-line-right" },
+    { LyXTabular::M_ALIGN_LEFT, "m-align-left" },
+    { LyXTabular::M_ALIGN_RIGHT, "m-align-right" },
+    { LyXTabular::M_ALIGN_CENTER, "m-align-center" },
+    { LyXTabular::M_VALIGN_TOP, "m-valign-top" },
+    { LyXTabular::M_VALIGN_BOTTOM, "m-valign-bottom" },
+    { LyXTabular::M_VALIGN_CENTER, "m-valign-center" },
+    { LyXTabular::DELETE_TABULAR, "delete-tabular" },
+    { LyXTabular::MULTICOLUMN, "multicolumn" },
+    { LyXTabular::SET_ALL_LINES, "set-all-lines" },
+    { LyXTabular::UNSET_ALL_LINES, "unset-all-lines" },
+    { LyXTabular::SET_LONGTABULAR, "set-longtabular" },
+    { LyXTabular::UNSET_LONGTABULAR, "unset-longtabular" },
+    { LyXTabular::SET_PWIDTH, "set-pwidth" },
+    { LyXTabular::SET_MPWIDTH, "set-mpwidth" },
+    { LyXTabular::SET_ROTATE_TABULAR, "set-rotate-tabular" },
+    { LyXTabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular" },
+    { LyXTabular::SET_ROTATE_CELL, "set-rotate-cell" },
+    { LyXTabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
+    { LyXTabular::SET_LINEBREAKS, "set-linebreaks" },
+    { LyXTabular::SET_LTHEAD, "set-lthead" },
+    { LyXTabular::SET_LTFIRSTHEAD, "set-ltfirsthead" },
+    { LyXTabular::SET_LTFOOT, "set-ltfoot" },
+    { LyXTabular::SET_LTLASTFOOT, "set-ltlastfoot" },
+    { LyXTabular::SET_LTNEWPAGE, "set-ltnewpage" },
+    { LyXTabular::SET_SPECIAL_COLUMN, "set-special-column" },
+    { LyXTabular::SET_SPECIAL_MULTI, "set-special-multi" },
+    { LyXTabular::LAST_ACTION, "" }
+};
+
 //#define cellstart(p) ((p % 2) == 0)
 static inline
 bool cellstart(LyXParagraph::size_type p) 
 {
-	return ((p & 2) == 0);
+	return ((p % 2) == 0);
 }
 
 
@@ -71,6 +128,7 @@ InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
     dialogs_ = 0;
     need_update = INIT;
+    initFeatures();
 }
 
 
@@ -87,6 +145,61 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer * buf)
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
     dialogs_ = 0;
     need_update = INIT;
+}
+
+
+void InsetTabular::initFeatures()
+{
+    if (tabularFeatures)
+	return;
+
+    tabular_features tf[] = {
+	{ LyXTabular::APPEND_ROW, "append-row" },
+	{ LyXTabular::APPEND_COLUMN, "append-column" },
+	{ LyXTabular::DELETE_ROW, "delete-row" },
+	{ LyXTabular::DELETE_COLUMN, "delete-column" },
+	{ LyXTabular::TOGGLE_LINE_TOP, "toggle-line-top" },
+	{ LyXTabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom" },
+	{ LyXTabular::TOGGLE_LINE_LEFT, "toggle-line-left" },
+	{ LyXTabular::TOGGLE_LINE_RIGHT, "toggle-line-right" },
+	{ LyXTabular::ALIGN_LEFT, "align-left" },
+	{ LyXTabular::ALIGN_RIGHT, "align-right" },
+	{ LyXTabular::ALIGN_CENTER, "align-center" },
+	{ LyXTabular::VALIGN_TOP, "valign-top" },
+	{ LyXTabular::VALIGN_BOTTOM, "valign-bottom" },
+	{ LyXTabular::VALIGN_CENTER, "valign-center" },
+	{ LyXTabular::M_TOGGLE_LINE_TOP, "m-toggle-line-top" },
+	{ LyXTabular::M_TOGGLE_LINE_BOTTOM, "m-toggle-line-bottom" },
+	{ LyXTabular::M_TOGGLE_LINE_LEFT, "m-toggle-line-left" },
+	{ LyXTabular::M_TOGGLE_LINE_RIGHT, "m-toggle-line-right" },
+	{ LyXTabular::M_ALIGN_LEFT, "m-align-left" },
+	{ LyXTabular::M_ALIGN_RIGHT, "m-align-right" },
+	{ LyXTabular::M_ALIGN_CENTER, "m-align-center" },
+	{ LyXTabular::M_VALIGN_TOP, "m-valign-top" },
+	{ LyXTabular::M_VALIGN_BOTTOM, "m-valign-bottom" },
+	{ LyXTabular::M_VALIGN_CENTER, "m-valign-center" },
+	{ LyXTabular::DELETE_TABULAR, "delete-tabular" },
+	{ LyXTabular::MULTICOLUMN, "multicolumn" },
+	{ LyXTabular::SET_ALL_LINES, "set-all-lines" },
+	{ LyXTabular::UNSET_ALL_LINES, "unset-all-lines" },
+	{ LyXTabular::SET_LONGTABULAR, "set-longtabular" },
+	{ LyXTabular::UNSET_LONGTABULAR, "unset-longtabular" },
+	{ LyXTabular::SET_PWIDTH, "set-pwidth" },
+	{ LyXTabular::SET_MPWIDTH, "set-mpwidth" },
+	{ LyXTabular::SET_ROTATE_TABULAR, "set-rotate-tabular" },
+	{ LyXTabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular" },
+	{ LyXTabular::SET_ROTATE_CELL, "set-rotate-cell" },
+	{ LyXTabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
+	{ LyXTabular::SET_LINEBREAKS, "set-linebreaks" },
+	{ LyXTabular::SET_LTHEAD, "set-lthead" },
+	{ LyXTabular::SET_LTFIRSTHEAD, "set-ltfirsthead" },
+	{ LyXTabular::SET_LTFOOT, "set-ltfoot" },
+	{ LyXTabular::SET_LTLASTFOOT, "set-ltlastfoot" },
+	{ LyXTabular::SET_LTNEWPAGE, "set-ltnewpage" },
+	{ LyXTabular::SET_SPECIAL_COLUMN, "set-special-column" },
+	{ LyXTabular::SET_SPECIAL_MULTI, "set-special-multi" },
+	{ LyXTabular::LAST_ACTION, "" }
+    };
 }
 
 
@@ -722,6 +835,11 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
         dialogs_->showTabular(this);
     }
     break;
+    case LFUN_TABULAR_FEATURE:
+	if (!TabularFeatures(bv, arg))
+	    result = UNDISPATCHED;
+	break;
+
     default:
 	result = UNDISPATCHED;
 	break;
@@ -1028,6 +1146,28 @@ void InsetTabular::SetFont(BufferView * bv, LyXFont const & font, bool tall)
 {
     if (the_locking_inset)
 	the_locking_inset->SetFont(bv, font, tall);
+}
+
+
+bool InsetTabular::TabularFeatures(BufferView * bv, string what)
+{
+    int action = LyXTabular::LAST_ACTION;
+    string val;
+    int i;
+    
+    for(i=0; tabularFeatures[i].action != LyXTabular::LAST_ACTION; ++i) {
+	if (!strncmp(tabularFeatures[i].feature.c_str(), what.c_str(),
+		     tabularFeatures[i].feature.length())) {
+	    action = tabularFeatures[i].action;
+	    break;
+	}
+    }
+    if (action == LyXTabular::LAST_ACTION)
+	return false;
+
+    val = frontStrip(what.substr(tabularFeatures[i].feature.length()));
+    TabularFeatures(bv, action, val);
+    return true;
 }
 
 
@@ -1405,10 +1545,9 @@ int InsetTabular::getMaxWidth(Painter & pain,
     if (cell >= n)
 	return -1;
     int w = GetMaxWidthOfCell(pain, cell);
-    // this because text insets remove the xpos from the maxwidth because
-    // otherwise the would not break good!!!
-//    w += getCellXPos(cell) + tabular->GetBeginningOfTextInCell(cell);
-//    w += inset->x();
+    if (w > 0)
+	// because the inset then subtracts it's top_x
+	w += inset->x();
     return w;
 }
 

@@ -1,3 +1,12 @@
+2000-07-28  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (LocalDispatch): 
+	(TabularFeatures): added support for lyx-functions of tabular features.
+	(cellstart): refixed this function after someone wrongly changed it.
+
+	* src/commandtags.h:
+	* src/LyXAction.C (init): added support for tabular-features
+
 2000-07-28  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/FormPreferences.C (build): Setup input return

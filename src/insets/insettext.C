@@ -234,19 +234,14 @@ int InsetText::textWidth(Painter & pain) const
 {
     int w = getMaxWidth(pain, this);
     if (w < 0) {
-//	printf("WW1: %d\n",w);
 	return w;
     }
-#if 1
     if (owner()) {
 	w = w - top_x + owner()->x();
-//	printf("WW2: %d\n",w);
-	return w; // - top_x + owner()->x();
+	return w;
     }
-#endif
     w -= (2 * TEXT_TO_INSET_OFFSET);
-//    printf("WW2: %d\n",w);
-    return w - top_x; // - top_x - (2 * TEXT_TO_INSET_OFFSET);
+    return w - top_x;
 }
 
 

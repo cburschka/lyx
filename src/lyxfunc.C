@@ -911,6 +911,12 @@ string LyXFunc::Dispatch(int ac,
 #endif
 		break;
 		
+	case LFUN_TABULAR_FEATURE:
+		// this is not handled here as this funktion is only aktive
+		// if we have a locking_inset and that one is (or contains)
+		// a tabular-inset
+		break;
+
 	case LFUN_FIGURE:
 		Figure();
 		break;

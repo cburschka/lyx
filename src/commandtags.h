@@ -271,6 +271,7 @@ enum kb_action {
 	LFUN_INSET_CAPTION,             // Lgb 20000718
 	LFUN_SWITCHBUFFER,  // and where is this comming from?
 	LFUN_INSERT_URL,                // Angus 20000726
+	LFUN_TABULAR_FEATURE,           // Jug 20000728
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

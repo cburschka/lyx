@@ -148,6 +148,8 @@ public:
     ///
     void ToggleInsetCursor(BufferView *);
     ///
+    bool TabularFeatures(BufferView * bv, string what);
+    ///
     void TabularFeatures(BufferView * bv, int feature, string val = string());
     ///
     int GetActCell() { return actcell; }
@@ -167,6 +169,7 @@ public:
     LyXTabular * tabular;
 
 private:
+	
     bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
 				       bool =false) const;
     ///
@@ -206,6 +209,8 @@ private:
     int GetMaxWidthOfCell(Painter &, int cell) const;
     ///
     void recomputeTextInsets(BufferView *, const LyXFont &) const;
+    ///
+    void initFeatures();
 
     ///
     /// Private structures and variables
