@@ -14,7 +14,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>369</width>
+            <width>364</width>
             <height>111</height>
         </rect>
     </property>
@@ -234,6 +234,10 @@
                         <string>&amp;Restore</string>
                     </property>
                     <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
                         <name>default</name>
                         <bool>false</bool>
                     </property>
@@ -275,7 +279,7 @@
                     </property>
                     <property stdset="1">
                         <name>default</name>
-                        <bool>false</bool>
+                        <bool>true</bool>
                     </property>
                     <property>
                         <name>toolTip</name>
@@ -291,6 +295,10 @@
                     <property stdset="1">
                         <name>text</name>
                         <string>&amp;Apply</string>
+                    </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
                     </property>
                     <property stdset="1">
                         <name>default</name>
@@ -312,8 +320,12 @@
                         <string>&amp;Close</string>
                     </property>
                     <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
                         <name>default</name>
-                        <bool>true</bool>
+                        <bool>false</bool>
                     </property>
                 </widget>
             </hbox>

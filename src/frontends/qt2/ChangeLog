@@ -1,3 +1,16 @@
+2003-02-25  John Levon  <levon@movementarian.org>
+
+	From Nathan Weston
+
+	* QBibtexDialogBase.ui:
+	* QCharacterDialogBase.ui:
+	* QCitationDialogBase.ui:
+	* QDocumentDialogBase.ui:
+	* QExternalDialogBase.ui:
+	* QFloatDialogBase.ui:
+	* QMinipageDialogBase.ui:
+	* QParagraphDialogBase.ui: fix default button to be OK (bug #921)
+
 2003-02-23  John Levon  <levon@movementarian.org>
 
 	* ui/QParagraphDialogBase.ui: fix dupe accelerator (bug #918)
