@@ -34,7 +34,7 @@ error () {
 # $1 is a string like
 # '588 translated messages, 1248 fuzzy translations, 2 untranslated messages.'
 # Any one of these substrings may not appear if the associated number is 0.
-# 
+#
 # $2 is the word following the number to be extracted,
 # ie, 'translated', 'fuzzy', or 'untranslated'.
 #
@@ -68,7 +68,7 @@ run_msgfmt () {
 
 	output=
 	test -f $1 || {
-		warning "File $1 does not exist"  
+		warning "File $1 does not exist"
 		return
 	}
 
@@ -77,7 +77,7 @@ run_msgfmt () {
 	pofile=`basename $1`
 	gmofile=`echo $pofile | sed 's/po$/gmo/'`
 	test $pofile != '' -a $pofile != $gmofile || {
-		warning "File $1 is not a po file"  
+		warning "File $1 is not a po file"
 		unset origdir dir pofile gmofile
 		return
 	}
@@ -287,7 +287,7 @@ EOF
 
 # The main body of the script
 msgfmt=`which msgfmt`
-test $msgfmt != '' || error "Unable to find 'msgfmt'. Cannot proceed." 
+test $msgfmt != '' || error "Unable to find 'msgfmt'. Cannot proceed."
 
 dump_head
 
