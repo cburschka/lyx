@@ -122,3 +122,22 @@ MathArray::size_type MathXArray::x2pos(int targetx) const
 		--it;
 	return it - begin();
 }
+
+
+int MathXArray::dist(int x, int y) const
+{
+	int xx = 0;
+	int yy = 0;
+
+	if (x < xo_)
+		xx = xo_ - x;
+	else if (x > xo_ + width_)
+		xx = x - xo_ - width_;
+
+	if (y < yo_ - ascent_)
+		yy = yo_ - ascent_ - y;
+	else if (y > yo_ + descent_)
+		yy = y - yo_ - descent_;
+
+	return xx + yy;	
+}

@@ -389,17 +389,11 @@ void MathCursor::setPos(int x, int y)
 		int distmin = 1 << 30; // large enough
 		for (unsigned int i = 0; i < par()->nargs(); ++i) {
 			MathXArray const & ar = par()->xcell(i);
-			int x1 = x - ar.xo();
-			int y1 = y - ar.yo();
-			MathXArray::size_type c  = ar.x2pos(x1);
-			int xx = abs(x1 - ar.pos2x(c));
-			int yy = abs(y1);
-			//lyxerr << "idx: " << i << " xx: " << xx << " yy: " << yy
-			//	<< " c: " << c  << " xo: " << ar.xo() << "\n";
-			if (yy + xx <= distmin) {
-				distmin = yy + xx;
+			int d = ar.dist(x, y);
+			if (d <= distmin) {
+				distmin = d;
 				idx()   = i;
-				pos()   = c;
+				pos()   = ar.x2pos(x - ar.xo());
 			}
 		}
 		//lyxerr << "found idx: " << idx() << " cursor: " << pos()  << "\n";

@@ -37,6 +37,9 @@ public:
 	int pos2x(size_type pos) const;
 	///
 	size_type x2pos(int pos) const;
+	/// returns distance of this cell to the point given by x and y
+	// assumes valid position and size cache
+	int dist(int x, int y) const;
 
 	///
 	int ascent() const { return ascent_; }
