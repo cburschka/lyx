@@ -2,6 +2,8 @@
 
 	* math_cursor.C: fix "pullArg" behaviour
 
+	* math_cursor.C: keep empty super/subscript a bit longer
+
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* formula.C (insetAllowed): allow insertion of label

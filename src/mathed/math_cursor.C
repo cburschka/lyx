@@ -54,7 +54,6 @@ using std::min;
 using std::max;
 using std::isalnum;
 
-#define RECTANGULAR_SELECT 1
 
 namespace {
 
@@ -90,37 +89,16 @@ struct Selection
 		if (i1.idx_ == i2.idx_) {
 			i1.cell().erase(i1.pos_, i2.pos_);
 		} else {
-#ifdef RECTANGULAR_SELECT
 			std::vector<int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
 				i1.cell(indices[i]).erase();
-#else
-			i1.cell().erase(i1.pos_, i1.cell().size());
-			for (int i = i1.idx_ + 1; i < i2.idx_; ++i)
-				i1.cell(i).erase();
-			i2.cell().erase(0, i2.pos_);
-
-			int from = i1.cell().size() ? i1.idx_ + 1 : i1.idx_; 
-			int to   = i2.cell().size() ? i2.idx_ : i2.idx_ + 1; 
-			i1.par_->idxDeleteRange(from, to);
-#endif
 		}
 		cursor.cursor() = i1;
 	}
 
 	void paste(MathCursor & cursor) const
 	{
-#ifdef RECTANGULAR_SELECT
 		cursor.cursor().cell().push_back(glue());
-#else
-		unsigned na  = cursor.cursor().par_->nargs();
-		unsigned idx = cursor.cursor().idx_;
-		unsigned end = std::min(idx + data_.size(), na);
-		for (int i = 0; i < end - idx; ++i)
-			cursor.cursor().cell(idx + i).push_back(data_[i]);
-		for (unsigned i = end - idx; i < data_.size(); ++i)
-			cursor.cursor().cell(end - 1).push_back(data_[i]);
-#endif
 	}
 
 	// glues selection to one cell
@@ -486,9 +464,6 @@ void MathCursor::Delete()
 		return;
 	}
 
-	if (cursor().pos_ < array().size())
-		array().erase(cursor().pos_);
-
 	// delete empty cells if necessary
 	if (cursor().pos_ == 0 && array().size() == 0) {
 		bool popit;
@@ -496,7 +471,11 @@ void MathCursor::Delete()
 		cursor().par_->idxDelete(cursor().idx_, popit, removeit);
 		if (popit && pop() && removeit)
 			Delete();
+		return;
 	}
+
+	if (cursor().pos_ < array().size())
+		array().erase(cursor().pos_);
 
 	dump("Delete 2");
 }
@@ -898,7 +877,6 @@ void MathCursor::drawSelection(Painter & pain) const
 		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
 
-#if RECTANGULAR_SELECT
 		std::vector<int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 		for (unsigned i = 0; i < indices.size(); ++i) {
 			MathXArray & c = i1.xcell(indices[i]);
@@ -908,31 +886,6 @@ void MathCursor::drawSelection(Painter & pain) const
 			int y2 = c.yo() + c.descent();
 			pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 		}
-#else
-		// leftmost cell
-		MathXArray & c = i1.xcell();
-		int x1 = c.xo() + c.pos2x(i1.pos_);
-		int y1 = c.yo() - c.ascent();
-		int x2 = c.xo() + c.width();
-		int y2 = c.yo() + c.descent();
-		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-		// middle cells
-		for (int idx = i1.idx_ + 1; idx < i2.idx_; ++idx) { 
-			MathXArray & c = i1.xcell(idx);
-			int x1 = c.xo();
-			int y1 = c.yo() - c.ascent();
-			int x2 = c.xo() + c.width();
-			int y2 = c.yo() + c.descent();
-			pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-		}
-		// rightmost cell
-		MathXArray & cr = i2.xcell();
-		x1 = cr.xo();
-		y1 = cr.yo() - cr.ascent();
-		x2 = cr.xo() + cr.pos2x(i2.pos_);
-		y2 = cr.yo() + cr.descent();
-		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-#endif
 	}
 }
 
