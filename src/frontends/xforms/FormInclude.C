@@ -21,7 +21,7 @@
 #include "form_include.h"
 #include "insets/insetinclude.h"
 #include "xforms_helpers.h" // setEnabled
-#include "support/lstrings.h" // compare
+#include "support/lstrings.h" // strip
 
 typedef FormCB<ControlInclude, FormDB<FD_form_include> > base_class;
 
@@ -33,6 +33,8 @@ FormInclude::FormInclude(ControlInclude & c)
 void FormInclude::build()
 {
 	dialog_.reset(build_include());
+
+	fl_set_input_return(dialog_->input_filename, FL_RETURN_CHANGED);
 
 	// Manage the ok and cancel buttons
 	bc().setOK(dialog_->button_ok);
@@ -106,6 +108,8 @@ void FormInclude::apply()
 
 ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 {
+	ButtonPolicy::SMInput action = ButtonPolicy::SMI_VALID;
+
 	if (ob == dialog_->button_browse) {
 		ControlInclude::Type type;
 		if (fl_get_button(dialog_->check_useinput))
@@ -121,24 +125,26 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 		fl_set_input(dialog_->input_filename, out_name.c_str());
 		fl_unfreeze_form(form()); 
 
-		return ButtonPolicy::SMI_VALID;
-	}
-
-	if (ob == dialog_->button_load) {
-		if (compare(fl_get_input(dialog_->input_filename),"")) {
+	} else if (ob == dialog_->button_load) {
+		string const in_name = fl_get_input(dialog_->input_filename);
+		if (!strip(in_name).empty()) {
 			ApplyButton();
-			return ButtonPolicy::SMI_NOOP;
+			action = ButtonPolicy::SMI_NOOP;
 		}
-	}
 
-	if (ob == dialog_->check_verbatim) {
+	} else if (ob == dialog_->check_verbatim) {
 		setEnabled(dialog_->check_visiblespace, true);
 
 	} else if (ob == dialog_->check_useinclude ||
 		   ob == dialog_->check_useinput) {
 		fl_set_button(dialog_->check_visiblespace, 0);
 		setEnabled(dialog_->check_visiblespace, false);
+
+	} else if (ob == dialog_->input_filename) {
+		string const in_name = fl_get_input(dialog_->input_filename);
+		if (strip(in_name).empty())
+			action = ButtonPolicy::SMI_INVALID;
 	}
 	
-	return ButtonPolicy::SMI_VALID;
+	return action;
 }

@@ -63,6 +63,7 @@ FD_form_include * FormInclude::build_include()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Visible space|#s");
     fdui->check_visiblespace = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 100, 150, 30, idex(_(dummy)));

@@ -153,7 +153,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_filename
-callback: 
+callback: C_FormBaseInputCB
 argument: 
 
 --------------------
