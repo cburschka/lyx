@@ -50,7 +50,7 @@ class MathNestInset;
 class MathScriptInset;
 class MathStringInset;
 class MathSpaceInset;
-class MathMacroTemplate;
+class MathSymbolInset;
 
 class NormalStream;
 class OctaveStream;
@@ -62,6 +62,7 @@ class MathArray;
 class LaTeXFeatures;
 class BufferView;
 class UpdatableInset;
+class MathMacroTemplate;
 
 
 class MathInset {
@@ -188,6 +189,7 @@ public:
 	virtual MathScriptInset const * asScriptInset() const { return 0; }
 	virtual MathSpaceInset        * asSpaceInset()        { return 0; }
 	virtual MathStringInset       * asStringInset()       { return 0; }
+	virtual MathSymbolInset       * asSymbolInset()       { return 0; }
 	virtual UpdatableInset   * asHyperActiveInset() const { return 0; }
 
 	/// identifies things that can get scripts

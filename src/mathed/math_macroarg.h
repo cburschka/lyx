@@ -18,17 +18,18 @@ public:
 	///
 	MathInset * clone() const;
 	///
+	bool isActive() const { return false; }
+	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void write(WriteStream & os) const;
+	void substitute(MathMacro const & macro);
+
 	///
 	void normalize(NormalStream &) const;
 	///
-	void substitute(MathMacro const & macro);
-	///
-	bool isActive() const { return false; }
+	void write(WriteStream & os) const;
 
 private:
 	/// A number between 1 and 9

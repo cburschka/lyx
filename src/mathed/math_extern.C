@@ -12,6 +12,7 @@
 #include "math_mathmlstream.h"
 #include "math_scriptinset.h"
 #include "math_stringinset.h"
+#include "math_symbolinset.h"
 #include "debug.h"
 
 
@@ -43,8 +44,6 @@ string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 	MathCharInset const * p = it->nucleus()->asCharInset();
 	if (p) {
 		for (MathTextCodes c = p->code(); it != end; ++it) {
-			if (!it->nucleus())
-				break;
 			p = it->nucleus()->asCharInset();
 			if (!p || p->code() != c)
 				break;
@@ -76,36 +75,8 @@ void extractStrings(MathArray & dat)
 }
 
 
-bool needAsterisk(MathAtom const &, MathAtom const &)
-{
-	return false;
-}
-
-
-void guessAsterisks(MathArray & dat)
-{
-	if (dat.size() <= 1)
-		return;
-	MathArray ar;
-	ar.push_back(*dat.begin());
-	MathArray::const_iterator it = dat.begin();
-	MathArray::const_iterator jt = it + 1;
-	for (; jt != dat.end(); ++it, ++jt) {
-		if (needAsterisk(*it, *jt))
-			ar.push_back(MathAtom(new MathCharInset('*')));
-		ar.push_back(*it);
-	}
-	ar.push_back(*dat.end());
-	ar.swap(dat);
-}
-
-
 MathInset * singleItem(MathArray & ar)
 {
-	lyxerr << "ar.size: " << ar.size() << "\n";
-	//lyxerr << "ar.begin: " << ar.begin() << "\n";
-	//lyxerr << "ar.nuc: " << ar.begin()->nucleus() << "\n";
-	lyxerr << "ar.nuc: " << *ar.begin()->nucleus() << "\n";
 	return ar.size() == 1 ? ar.begin()->nucleus() : 0;
 }
 
@@ -114,9 +85,7 @@ void extractMatrices(MathArray & ar)
 {
 	lyxerr << "\nMatrices from: " << ar << "\n";
 	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
-		if (!it->nucleus())
-			continue;	
-		MathDelimInset * del = it->nucleus()->asDelimInset();
+		MathDelimInset * del = (*it)->asDelimInset();
 		if (!del)
 			continue;
 		MathInset * arr = singleItem(del->cell(0));
@@ -138,41 +107,89 @@ string extractString(MathInset * p)
 }
 
 
-// replace '('...')' sequences by a real MathDelimInset
-void extractDelims(MathArray & ar) {
+// define a function for tests
+typedef bool TestItemFunc(MathInset *);
+
+// define a function for replacing pa
+typedef MathInset * ReplaceArgumentFunc(const MathArray & ar);
+
+// search end of nested sequence
+MathArray::iterator searchNestedEnd(
+	MathArray::iterator it,
+	MathArray::iterator last,
+	TestItemFunc testOpen,
+	TestItemFunc testClose
+)
+{
+	for (int level = 0; it != last; ++it) {
+		if (testOpen(it->nucleus()))
+			++level;
+		if (testClose(it->nucleus()))
+			--level;
+		if (level == 0)
+			break;
+	}
+	return it;
+}
+
+
+// replace nested sequences by a real Insets
+void replaceNested(
+	MathArray & ar,
+	TestItemFunc testOpen,
+	TestItemFunc testClose,
+	ReplaceArgumentFunc replaceArg
+)
+{
 	// use indices rather than iterators for the loop  because we are going
 	// to modify the array.
-	lyxerr << "\nDelims from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+		// check whether this is the begin of the sequence
 		MathArray::iterator it = ar.begin() + i;
-		if (extractString(it->nucleus()) != "(")
+		if (!testOpen(it->nucleus()))
 			continue;
 
-		// search matching closing paranthesis
-		int level = 1;
-		MathArray::iterator jt = it + 1;
-		for (; jt != ar.end(); ++jt) {
-			string s = extractString(jt->nucleus());
-			if (s == "(")
-				++level;
-			if (s == ")")
-				--level;
-			if (level == 0)
-				break;
-		}
+		// search end of sequence
+		MathArray::iterator jt = searchNestedEnd(it, ar.end(), testOpen, testClose);
 		if (jt == ar.end())
 			continue;
 
-		// create a proper deliminset
-		MathAtom at(new MathDelimInset("(", ")"));
-		at->cell(0) = MathArray(it + 1, jt);
+		// create a proper inset as replacement
+		MathInset * p = replaceArg(MathArray(it + 1, jt));
 
 		// replace the original stuff by the new inset
 		ar.erase(it + 1, jt + 1);
-		*it = at;
-		lyxerr << "\nDelims to: " << ar << "\n";
+		(*it).reset(p);
 	}
 } 
+
+
+bool testParanOpen(MathInset * p)
+{
+	return extractString(p) == "(";
+}
+
+
+bool testParanClose(MathInset * p)
+{
+	return extractString(p) == ")";
+}
+
+
+MathInset * replaceByDelimInset(const MathArray & ar)
+{
+	MathDelimInset * del = new MathDelimInset("(", ")");
+	del->cell(0) = ar;
+	return del;
+}
+
+
+// replace '('...')' sequences by a real MathDelimInset
+void extractDelims(MathArray & ar) {
+	lyxerr << "\nDelims from: " << ar << "\n";
+	replaceNested(ar, testParanOpen, testParanClose, replaceByDelimInset);
+	lyxerr << "\nDelims to: " << ar << "\n";
+}
 
 
 // replace 'f' '(...)' and 'f' '^n' '(...)' sequences by a real MathExFuncInset
@@ -188,8 +205,6 @@ void extractFunctions(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a function name?
-		if (!it->nucleus())
-			continue;	
 		MathFuncInset * func = (*it)->asFuncInset();
 		if (!func)
 			continue;
@@ -226,12 +241,56 @@ void extractFunctions(MathArray & ar)
 } 
 
 
+bool testIntSymbol(MathInset * p)
+{
+	return p->asSymbolInset() && p->asSymbolInset()->name() == "int";
+}
+
+
+bool testSmallD(MathInset * p)
+{
+	string s = extractString(p);
+	return s.size() && s[0] == 'd';
+}
+
+
+// replace '\int' ['_^'] x 'd''x'(...)' sequences by a real MathExIntInset
+// assume 'extractDelims' ran before
+void extractIntegrals(MathArray & ar)
+{
+	// we need at least three items...
+	if (ar.size() <= 2)
+		return;
+
+	lyxerr << "\nIntegrals from: " << ar << "\n";
+	for (MathArray::size_type i = 0; i < ar.size() - 1; ++i) {
+		MathArray::iterator it = ar.begin() + i;
+
+		// is this a integral name?
+		if (!testIntSymbol(it->nucleus()))
+			continue;
+
+		// search 'd'
+		MathArray::iterator jt =
+			searchNestedEnd(it, ar.end(), testIntSymbol, testSmallD);
+
+		// create a proper inset as replacement
+		//MathInset * p = replaceArg(MathArray(it + 1, jt));
+
+		// replace the original stuff by the new inset
+		//ar.erase(it + 1, jt + 1);
+		//(*it).reset(p);
+	}
+}
+
+
 void extractStructure(MathArray & ar)
 {
 	extractStrings(ar);
 	extractMatrices(ar);
 	extractDelims(ar);
 	extractFunctions(ar);
+	extractIntegrals(ar);
 }
 
 

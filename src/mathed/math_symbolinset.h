@@ -18,10 +18,6 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(WriteStream & os) const;
-	///
-	void normalize(NormalStream &) const;
-	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
@@ -31,13 +27,21 @@ public:
 	bool isScriptable() const;
 	/// identifies things that can get \limits or \nolimits
 	bool takesLimits() const;
+	///
+	MathSymbolInset * asSymbolInset() { return this; }
 
+	///
+	void normalize(NormalStream &) const;
 	///
 	void maplize(MapleStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
 	///
 	void octavize(OctaveStream &) const;
+	///
+	void write(WriteStream & os) const;
+	///
+	string name() const;
 private:
 	///
 	MathTextCodes code() const;

@@ -1,16 +1,16 @@
 // -*- C++ -*-
-#ifndef MATH_EXINTINSET_H
-#define MATH_EXINTINSET_H
+#ifndef MATH_LIMITOPINSET_H
+#define MATH_LIMITOPINSET_H
 
-// /\int_l^u f(x) dxin one block (as opposed to 'f','(','x',')' or 'f','x')
+// /\sum_l^u f(x) in one block
 // for interfacing external programs
 
 #include "math_scriptinset.h"
 
-class MathExIntInset : public MathInset {
+class MathLimitOpInset : public MathInset {
 public:
 	///
-	MathExIntInset(MathScriptInset const &, MathArray const &, MathArray const &);
+	MathLimitOpInset(MathScriptInset const &, MathArray const &);
 	///
 	MathInset * clone() const;
 	///
