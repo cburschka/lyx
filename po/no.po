@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.2.0\n"
 "POT-Creation-Date: 2002-04-24 17:37+0200\n"
-"PO-Revision-Date: 2002-04-16 23:55+0200\n"
+"PO-Revision-Date: 2002-04-25 11:02+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -8334,17 +8334,15 @@ msgstr "No image"
 
 #: src/insets/insetgraphics.C:208
 msgid "Loaded but not displaying"
-msgstr "Loaded but not displaying"
+msgstr "Lest men ikke vist"
 
 #: src/insets/insetgraphics.C:645
-#, fuzzy
 msgid "Cannot copy file"
-msgstr "Kan ikke åpne fil"
+msgstr "Kan ikke kopiere fil"
 
 #: src/insets/insetgraphics.C:646
-#, fuzzy
 msgid "into tempdir"
-msgstr "Temp dir"
+msgstr "into tempdir"
 
 #. No graphics in ascii output. Possible to use gifscii to convert
 #. images to ascii approximation.
@@ -10394,9 +10392,3 @@ msgstr "Ny side (bunn)"
 #: src/text.C:3528
 msgid "Space below"
 msgstr "Space below"
-
-#~ msgid "Caesar et al."
-#~ msgstr "Caesar et al."
-
-#~ msgid "No database"
-#~ msgstr "Ingen database"
