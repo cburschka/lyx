@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "LyXView.h"
+#include "errorlist.h"
 #include "qt_helpers.h"
 #include "support/lstrings.h"
 #include "debug.h"
@@ -27,7 +28,7 @@
 typedef QController<ControlErrorList, QView<QErrorListDialog> > base_class;
 
 QErrorList::QErrorList(Dialog & parent)
-	: base_class(parent, qt_("LyX: LaTeX error list"))
+	: base_class(parent, "")
 {}
 
 
@@ -41,28 +42,22 @@ void QErrorList::build_dialog()
 void QErrorList::select(int item)
 {
 	controller().goTo(item);
-	dialog_->descriptionTB->setText(toqstr(controller().ErrorList()[item].description));
+	dialog_->descriptionTB->setText(toqstr(controller().errorList()[item].description));
 }
 
 
 void QErrorList::update_contents()
 {
-	string const caption = string(_("LyX: LaTex error List")) + '(' +
-		controller().docName() + ')';
-
-	dialog_->setCaption(qt_(caption));
+	dialog_->setCaption(toqstr(controller().name()));
 	dialog_->errorsLB->clear();
-	dialog_->descriptionTB->clear();
+	dialog_->descriptionTB->setText(QString());
 
-	std::vector<ControlErrorList::ErrorItem>::const_iterator 
-		it = controller().ErrorList().begin();
-	std::vector<ControlErrorList::ErrorItem>::const_iterator 
-		end = controller().ErrorList().end();
+	ErrorList::const_iterator it = controller().errorList().begin();
+	ErrorList::const_iterator end = controller().errorList().end();
 	for(; it != end; ++it) {
-		QListBoxItem * error = new QListBoxText(dialog_->errorsLB, 
-							toqstr(it->error));
+		new QListBoxText(dialog_->errorsLB, toqstr(it->error));
 	}
 
-	dialog_->errorsLB->setSelected(controller().currentItem(), true);
+	dialog_->errorsLB->setSelected(0, true);
 }
 

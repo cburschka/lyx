@@ -1532,7 +1532,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			break;
 
 		case LATEX_COMMAND:
-			buf->sgmlError(&*pit, 0,  _("Error: LatexType Command not allowed here.\n"));
+			buf->sgmlError(pit, 0,  _("Error: LatexType Command not allowed here.\n"));
 			return -1;
 			break;
 

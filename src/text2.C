@@ -19,6 +19,7 @@
 #include "undo_funcs.h"
 #include "buffer.h"
 #include "bufferparams.h"
+#include "errorlist.h"
 #include "gettext.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
@@ -1406,10 +1407,15 @@ void LyXText::pasteSelection()
 	ParagraphList::iterator endpit;
 	PitPosPair ppp;
 
+	ErrorList el;
+
 	boost::tie(ppp, endpit) =
 		CutAndPaste::pasteSelection(ownerParagraphs(),
 					    cursor.par(), cursor.pos(),
-					    bv()->buffer()->params.textclass);
+					    bv()->buffer()->params.textclass,
+					    el);
+	bv()->setErrorList(el);
+	bv()->showErrorList(_("Paste"));
 
 	redoParagraphs(cursor, endpit);
 

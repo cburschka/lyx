@@ -12,7 +12,7 @@
 
 #include "ControlErrorList.h"
 #include "support/lstrings.h" // tostr
-#include "LaTeX.h"
+#include "errorlist.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "lyxtext.h"
@@ -22,84 +22,33 @@
 using std::endl;
 
 
-ControlErrorList::ErrorItem::ErrorItem(string const & error,
-				       string const & description,
-				       int par_id, int pos_start, int pos_end)
-	: error(error), description(description), par_id(par_id),
-	  pos_start(pos_start),  pos_end(pos_end)
-{}
-
-
 ControlErrorList::ControlErrorList(Dialog & d)
-	: Dialog::Controller(d), current_(0)
+	: Dialog::Controller(d)
 {}
 
 
 void ControlErrorList::clearParams()
+{}
+
+
+ErrorList const &
+ControlErrorList::errorList() const
 {
-	logfilename_.erase();
-	clearErrors();
+	return errorlist_;
 }
 
 
-std::vector<ControlErrorList::ErrorItem> const &
-ControlErrorList::ErrorList() const
+bool ControlErrorList::initialiseParams(string const & name)
 {
-	return ErrorList_;
-}
-
-
-int ControlErrorList::currentItem() const
-{
-	return current_;
-}
-
-
-bool ControlErrorList::initialiseParams(string const &)
-{
-	logfilename_ = kernel().buffer()->getLogName().second;
-	clearErrors();
-	fillErrors();
-	current_ = 0;
+	errorlist_ = kernel().bufferview()->getErrorList();
+	name_ = name;
 	return true;
 }
 
 
-void ControlErrorList::clearErrors()
+string const & ControlErrorList::name()
 {
-	ErrorList_.clear();
-	current_ = 0;
-}
-
-
-void ControlErrorList::fillErrors()
-{
-	LaTeX latex("", logfilename_, "");
-	TeXErrors terr;
-	latex.scanLogFile(terr);
-
-	Buffer * const buf = kernel().buffer();
-
-	TeXErrors::Errors::const_iterator cit = terr.begin();
-	TeXErrors::Errors::const_iterator end = terr.end();
-
-	for (; cit != end; ++cit) {
-		int par_id = -1;
-		int posstart = -1;
-		int const errorrow = cit->error_in_line;
-		buf->texrow.getIdFromRow(errorrow, par_id, posstart);
-		int posend = -1;
-		buf->texrow.getIdFromRow(errorrow + 1, par_id, posend);
-		ErrorList_.push_back(ErrorItem(cit->error_desc,
-					       cit->error_text,
-					       par_id, posstart, posend));
-	}
-}
-
-
-string const & ControlErrorList::docName()
-{
-	return kernel().buffer()->fileName();
+	return name_;
 }
 
 
@@ -108,9 +57,7 @@ void ControlErrorList::goTo(int item)
 	BufferView * const bv = kernel().bufferview();
 	Buffer * const buf = kernel().buffer();
 
-	current_ = item;
-
-	ControlErrorList::ErrorItem const & err = ErrorList_[item];
+	ErrorItem const & err = errorlist_[item];
 
 
 	if (err.par_id == -1)

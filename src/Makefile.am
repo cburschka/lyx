@@ -127,6 +127,8 @@ lyx_SOURCES = \
 	dimension.h \
 	encoding.C \
 	encoding.h \
+	errorlist.C \
+	errorlist.h \
 	exporter.C \
 	exporter.h \
 	gettext.C \

@@ -28,6 +28,7 @@
 #include "gettext.h"
 #include "language.h"
 #include "exporter.h"
+#include "errorlist.h"
 #include "Lsstream.h"
 #include "format.h"
 #include "BufferView.h"
@@ -1167,6 +1168,8 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	string item_name;
 	vector<string> environment_stack(5);
 
+	users->resetErrorList();
+
 	ParagraphList::iterator pit = paragraphs.begin();
 	ParagraphList::iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit) {
@@ -1205,7 +1208,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		case LATEX_COMMAND:
 			if (depth != 0)
-				sgmlError(&*pit, 0,
+				sgmlError(pit, 0,
 					  _("Error: Wrong depth for LatexType Command.\n"));
 
 			if (!environment_stack[depth].empty()) {
@@ -1296,6 +1299,8 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 	// we want this to be true outside previews (for insetexternal)
 	niceFile = true;
+
+	users->showErrorList(_("LinuxDoc"));
 }
 
 
@@ -1549,23 +1554,10 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 
 
 // Print an error message.
-void Buffer::sgmlError(ParagraphList::iterator /*par*/, int /*pos*/,
-	string const & /*message*/) const
+void Buffer::sgmlError(ParagraphList::iterator pit, int pos,
+		       string const & message) const
 {
-#ifdef WITH_WARNINGS
-#warning This is wrong we cannot insert an inset like this!!!
-	// I guess this was Jose' so I explain you more or less why this
-	// is wrong. This way you insert something in the paragraph and
-	// don't tell it to LyXText (row rebreaking and undo handling!!!)
-	// I deactivate this code, have a look at BufferView::insertErrors
-	// how you should do this correctly! (Jug 20020315)
-#endif
-#if 0
-	// insert an error marker in text
-	InsetError * new_inset = new InsetError(message);
-	par->insertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT,
-			 params.language));
-#endif
+	users->addError(ErrorItem(message, string(), pit->id(), pos, pos));
 }
 
 
@@ -1632,6 +1624,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	string item_name;
 	string command_name;
+
+	users->resetErrorList();
 
 	ParagraphList::iterator par = paragraphs.begin();
 	ParagraphList::iterator pend = paragraphs.end();
@@ -1849,6 +1843,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	// we want this to be true outside previews (for insetexternal)
 	niceFile = true;
+	users->showErrorList(_("DocBook"));
 }
 
 
@@ -1974,7 +1969,9 @@ int Buffer::runChktex()
 			_("Could not run chktex successfully."));
 	} else if (res > 0) {
 		// Insert all errors as errors boxes
-		users->showErrorList();
+		ErrorList el (*this, terr); 
+		users->setErrorList(el);
+		users->showErrorList(_("ChkTeX"));
 	}
 
 	// if we removed error insets before we ran chktex or if we inserted

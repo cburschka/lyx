@@ -10,6 +10,7 @@
 #ifndef BUFFERVIEW_PIMPL_H
 #define BUFFERVIEW_PIMPL_H
 
+#include "errorlist.h"
 #include "BufferView.h"
 #include "frontends/Timeout.h"
 #include "frontends/key_state.h"
@@ -103,6 +104,9 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	/// a function should be executed
 	bool dispatch(FuncRequest const & ev);
 private:
+	/// An error list (replaces the error insets)
+	ErrorList errorlist_;
+
 	/// track changes for the document
 	void trackChanges();
 

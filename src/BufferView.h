@@ -28,6 +28,8 @@ class Painter;
 class UpdatableInset;
 class WordLangTuple;
 class Encoding;
+class ErrorList;
+class ErrorItem;
 
 /**
  * A buffer view encapsulates a view onto a particular
@@ -153,8 +155,16 @@ public:
 
 	/// removes all autodeletable insets
 	bool removeAutoInsets();
+	/// get the stored error list
+	ErrorList const & getErrorList() const;
+	/// clears the stored error list
+	void resetErrorList();
+	/// stored this  error list
+	void setErrorList(ErrorList const &);
+	/// adds a single error to the list
+	void addError(ErrorItem const &);
 	/// show the error list to the user
-	void showErrorList();
+	void showErrorList(string const &) const;
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
 

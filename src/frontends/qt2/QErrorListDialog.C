@@ -27,6 +27,8 @@ QErrorListDialog::QErrorListDialog(QErrorList * form)
 {
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+	connect(errorsLB, SIGNAL(returnPressed(QListBoxItem *)),
+		form, SLOT(slotClose()));
 }
 
 

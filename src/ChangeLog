@@ -1,3 +1,13 @@
+
+2003-05-08  Alfredo Braunstein  <abraunst@libero.it>
+
+	* errorlist.[Ch]: added
+	* buffer.C:
+	* BufferView.[Ch]:
+	* BufferView_pimpl.C:
+	* CutAndPaste.[Ch]: get rid of InsetError users, use ErrorList
+	instead
+
 2003-05-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am: ensure that lyx is relinked upon changes to the

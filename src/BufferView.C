@@ -19,6 +19,7 @@
 #include "bufferlist.h"
 #include "debug.h"
 #include "gettext.h"
+#include "errorlist.h"
 #include "iterators.h"
 #include "language.h"
 #include "lyxcursor.h"
@@ -466,9 +467,38 @@ bool BufferView::removeAutoInsets()
 }
 
 
-void BufferView::showErrorList()
+void BufferView::resetErrorList()
 {
-	owner()->getDialogs().show("errorlist");
+	pimpl_->errorlist_.clear();
+}
+
+
+void BufferView::setErrorList(ErrorList const & el)
+{
+	pimpl_->errorlist_ = el;
+}
+
+
+void BufferView::addError(ErrorItem const & ei)
+{
+	pimpl_->errorlist_.push_back(ei);
+
+}
+
+
+void BufferView::showErrorList(string const & action) const
+{
+	if (getErrorList().size()) {
+		string const title = bformat(_("LyX: %1$s errors (%2$s)"), action, buffer()->fileName());
+		owner()->getDialogs().show("errorlist", title);
+	}
+}
+
+
+ErrorList const & 
+BufferView::getErrorList() const
+{
+	return pimpl_->errorlist_;
 }
 
 

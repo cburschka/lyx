@@ -1,3 +1,12 @@
+2003-05-20  Alfredo Braunstein  <abraunst@libero.it>
+
+	* QErrorList.[Ch]: small bugs fixed. 
+
+2003-05-17  Alfredo Braunstein  <abraunst@libero.it>
+
+	* QErrorList.C (update_contents): replace TextBrowser::clear() by
+	TextBrowser::setText(QString()) 
+
 2003-05-14  Juergen Spitzmueller <juergen.sp@t-online.de>
 
 	* QErrorList.C (select): added a missing toqstr()

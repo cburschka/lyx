@@ -19,6 +19,7 @@
 #include "lyxfind.h"
 
 #include "buffer.h"
+#include "errorlist.h"
 #include "language.h"
 #include "lyx_main.h"
 #include "lyxtextclass.h"
@@ -117,24 +118,14 @@ void ControlDocument::classApply()
 	buffer()->params = *bp_;
 
 	lv_.message(_("Converting document to new document class..."));
-	int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
-		old_class, new_class,
-		lv_.buffer()->paragraphs);
 
-	if (!ret)
-		return;
+	ErrorList el;
+	CutAndPaste::SwitchLayoutsBetweenClasses(old_class, new_class,
+						 lv_.buffer()->paragraphs,
+						 el);
 
-	string s;
-	if (ret == 1) {
-		s = bformat(_("One paragraph could not be converted\n"
-			"into the document class %1$s."),
-			textclasslist[new_class].name());
-	} else {
-		s = bformat(_("%1$s paragraphs could not be converted\n"
-			"into the document class %2$s."),
-			textclasslist[new_class].name());
-	}
-	Alert::warning(_("Class conversion errors"), s);
+	bufferview()->setErrorList(el);
+	bufferview()->showErrorList(_("Class switch"));
 }
 
 

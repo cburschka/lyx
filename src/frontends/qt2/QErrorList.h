@@ -34,8 +34,6 @@ private:
 	virtual void build_dialog();
 	/// update contents
 	virtual void update_contents();
-	/// run latex
-	void runLaTeX();
 };
 
 #endif // QERRORLIST_H

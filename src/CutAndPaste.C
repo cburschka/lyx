@@ -13,6 +13,7 @@
 #include "CutAndPaste.h"
 #include "BufferView.h"
 #include "buffer.h"
+#include "errorlist.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
 #include "lyxtext.h"
@@ -197,15 +198,17 @@ bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 pair<PitPosPair, ParagraphList::iterator>
 CutAndPaste::pasteSelection(ParagraphList & pars,
 			    ParagraphList::iterator pit, int pos,
-			    textclass_type tc)
+			    textclass_type tc,
+			    ErrorList & errorlist)
 {
-	return pasteSelection(pars, pit, pos, tc, 0);
+	return pasteSelection(pars, pit, pos, tc, 0, errorlist);
 }
 
 pair<PitPosPair, ParagraphList::iterator>
 CutAndPaste::pasteSelection(ParagraphList & pars,
 			    ParagraphList::iterator pit, int pos,
-			    textclass_type tc, size_t cut_index)
+			    textclass_type tc, size_t cut_index,
+			    ErrorList & errorlist)
 {
 	if (!checkPastePossible())
 		return make_pair(PitPosPair(pit, pos), pit);
@@ -220,7 +223,8 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// new environment and set also another font if that is required.
 
 	// Make sure there is no class difference.
-	SwitchLayoutsBetweenClasses(textclass, tc, simple_cut_clone);
+	SwitchLayoutsBetweenClasses(textclass, tc, simple_cut_clone, 
+				    errorlist);
 
 	ParagraphList::iterator tmpbuf = simple_cut_clone.begin();
 	int depth_delta = pit->params().depth() - tmpbuf->params().depth();
@@ -329,7 +333,8 @@ int CutAndPaste::nrOfParagraphs()
 
 int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 					     textclass_type c2,
-					     ParagraphList & pars)
+					     ParagraphList & pars,
+					     ErrorList & errorlist)
 {
 	lyx::Assert(!pars.empty());
 
@@ -359,7 +364,9 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 				"because of class conversion from\n%3$s to %4$s"),
 			 name, par->layout()->name(), tclass1.name(), tclass2.name());
 			// To warn the user that something had to be done.
-			par->insertInset(0, new InsetError(s));
+			errorlist.push_back(ErrorItem("Changed Layout", s, 
+						      par->id(), 0, 
+						      par->size()));
 		}
 	}
 	return ret;

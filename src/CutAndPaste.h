@@ -18,6 +18,7 @@
 class Paragraph;
 class BufferParams;
 class LyXTextClass;
+class ErrorList;
 
 ///
 namespace CutAndPaste {
@@ -40,14 +41,14 @@ bool copySelection(ParagraphList::iterator startpit,
 std::pair<PitPosPair, ParagraphList::iterator>
 pasteSelection(ParagraphList & pars,
 	       ParagraphList::iterator pit, int pos,
-	       lyx::textclass_type tc);
+	       lyx::textclass_type tc, ErrorList &);
 
 ///
 std::pair<PitPosPair, ParagraphList::iterator>
 pasteSelection(ParagraphList & pars,
 	       ParagraphList::iterator pit, int pos,
 	       lyx::textclass_type tc,
-	       size_t cuts_index);
+	       size_t cuts_indexm, ErrorList &);
 
 ///
 int nrOfParagraphs();
@@ -58,7 +59,8 @@ int nrOfParagraphs();
 */
 int SwitchLayoutsBetweenClasses(lyx::textclass_type c1,
 				lyx::textclass_type c2,
-				ParagraphList & par);
+				ParagraphList & par, 
+				ErrorList &);
 ///
 bool checkPastePossible();
 
