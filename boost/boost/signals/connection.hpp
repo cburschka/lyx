@@ -151,7 +151,8 @@ namespace boost {
     inline void 
     connection::add_bound_object(const signals::detail::bound_object& b)
     {
-      assert(con.get());
+      // c-assert expects an int, so don't pass it a pointer
+      assert(con.get() != 0);
       con->bound_objects.push_back(b);
     }
 

@@ -39,7 +39,8 @@ namespace boost {
         typedef std::list<signals::detail::bound_object>::iterator iterator;
         for (iterator i = local_con->bound_objects.begin(); 
              i != local_con->bound_objects.end(); ++i) {
-          assert(i->disconnect);
+          // c-assert expects an int, so don't pass it a pointer
+          assert(i->disconnect != 0);
           i->disconnect(i->obj, i->data);
         }
       }

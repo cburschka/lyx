@@ -1,3 +1,9 @@
+2002-06-12  Angus Leeming  <leeming@lyx.org>
+
+	* boost/signals/connection.hpp:
+	* libs/signals/src/connection.cpp: c-assert expects an int, so don't
+	pass it a pointer.
+
 2002-06-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* libs/regex/src/Makefile.am: only compile the source files that
