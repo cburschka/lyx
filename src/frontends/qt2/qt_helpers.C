@@ -20,6 +20,8 @@
 #include <qlineedit.h>
 #include <qtextcodec.h>
 
+#include <algorithm>
+
 using std::pair;
 using std::make_pair;
 using std::min;

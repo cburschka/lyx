@@ -1,3 +1,7 @@
+2003-05-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qt_helpers.C: include <algorithm> for std::min.
+
 2003-05-20  Alfredo Braunstein  <abraunst@libero.it>
 
 	* QErrorList.[Ch]: small bugs fixed. 
