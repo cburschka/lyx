@@ -22,6 +22,7 @@
 #include "support/LIstream.h"
 
 using std::istream;
+using std::getline;
 
 // Perfect case for a template... (Lgb)
 // or perhaps not...
@@ -229,7 +230,7 @@ void l_getline(istream & is, string & str)
 {
 	str.erase();
 	while (str.empty()) {
-		std::getline(is, str);
+		getline(is, str);
 		if (!str.empty() && str[str.length() - 1] == '\r')
 			str.erase(str.length() - 1);
 	}
