@@ -953,7 +953,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			}
 
 			if (result == FINISHED_UP) {
-				RowList::iterator const irow = view()->text->cursorIRow();
+				RowList::iterator const irow = view()->text->cursorRow();
 				if (irow != view()->text->firstRow()) {
 #if 1
 					view()->text->setCursorFromCoordinates(
@@ -973,7 +973,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			}
 
 			if (result == FINISHED_DOWN) {
-				RowList::iterator const irow = view()->text->cursorIRow();
+				RowList::iterator const irow = view()->text->cursorRow();
 				if (irow != view()->text->lastRow()) {
 #if 1
 					view()->text->setCursorFromCoordinates(

@@ -38,7 +38,6 @@
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
-#include "metricsinfo.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -542,103 +541,6 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos(), true,
 		  tmpcursor.boundary());
-}
-
-
-int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
-{
-	RowList::iterator rit = pit->rows.begin();
-	RowList::iterator end = pit->rows.end();
-
-	// remove rows of paragraph, keep track of height changes
-	for (int i = 0; rit != end; ++rit, ++i)
-		height -= rit->height();
-	pit->rows.clear();
-
-	// redo insets
-	InsetList::iterator ii = pit->insetlist.begin();
-	InsetList::iterator iend = pit->insetlist.end();
-	for (; ii != iend; ++ii) {
-		Dimension dim;
-		MetricsInfo mi(bv(), getFont(pit, ii->pos), workWidth());
-		ii->inset->metrics(mi, dim);
-	}
-
-	// rebreak the paragraph
-	for (pos_type z = 0; z < pit->size() + 1; ) {
-		Row row(z);
-		z = rowBreakPoint(pit, row) + 1;
-		row.end(z);
-		pit->rows.push_back(row);
-	}
-
-	int par_width = 0;
-	// set height and fill and width of rows
-	int const ww = workWidth();
-	pit->height = 0;
-	for (rit = pit->rows.begin(); rit != end; ++rit) {
-		int const f = fill(pit, rit, ww);
-		int const w = ww - f;
-		par_width = std::max(par_width, w);
-		rit->fill(f);
-		rit->width(w);
-		prepareToPrint(pit, rit);
-		setHeightOfRow(pit, rit);
-		rit->y_offset(pit->height);
-		pit->height += rit->height();
-	}
-	height += pit->height;
-
-	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
-	return par_width;
-}
-
-
-int LyXText::redoParagraphs(ParagraphList::iterator start,
-  ParagraphList::iterator end)
-{
-	int pars_width = 0;
-	for ( ; start != end; ++start) {
-		int par_width = redoParagraphInternal(start);
-		pars_width = std::max(par_width, pars_width);
-	}
-	updateRowPositions();
-	return pars_width;
-}
-
-
-void LyXText::redoParagraph(ParagraphList::iterator pit)
-{
-	redoParagraphInternal(pit);
-	updateRowPositions();
-}
-
-
-void LyXText::fullRebreak()
-{
-	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
-	redoCursor();
-	selection.cursor = cursor;
-}
-
-
-void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
-{
-	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
-	//	<< " workWidth: " << workWidth() << endl;
-	//BOOST_ASSERT(mi.base.textwidth);
-
-	// rebuild row cache
-	width  = 0;
-	///height = 0;
-
-	//anchor_y_ = 0;
-	width = redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
-
-	// final dimension
-	dim.asc = firstRow()->ascent_of_text();
-	dim.des = height - dim.asc;
-	dim.wid = std::max(mi.base.textwidth, int(width));
 }
 
 
@@ -1406,11 +1308,11 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 	// get the cursor y position in text
 
 	ParagraphList::iterator pit = getPar(par);
-	RowList::iterator row = getRow(pit, pos);
-	int y = pit->y + row->y_offset();
+	Row const & row = *getRow(*pit, pos);
+	int y = pit->y + row.y_offset();
 
 	// y is now the beginning of the cursor row
-	y += row->baseline();
+	y += row.baseline();
 	// y is now the cursor baseline
 	cur.y(y);
 
@@ -1426,9 +1328,9 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 		// This shouldn't happen.
 		pos = last + 1;
 		cur.pos(pos);
-	} else if (pos < row->pos()) {
+	} else if (pos < row.pos()) {
 		lyxerr << "dont like 3 please report" << endl;
-		pos = row->pos();
+		pos = row.pos();
 		cur.pos(pos);
 	}
 
@@ -1439,22 +1341,22 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 }
 
 
-float LyXText::getCursorX(ParagraphList::iterator pit, RowList::iterator rit,
+float LyXText::getCursorX(ParagraphList::iterator pit, Row const & row,
 			  pos_type pos, pos_type last, bool boundary) const
 {
 	pos_type cursor_vpos    = 0;
-	double x                = rit->x();
-	double fill_separator   = rit->fill_separator();
-	double fill_hfill       = rit->fill_hfill();
-	double fill_label_hfill = rit->fill_label_hfill();
-	pos_type const rit_pos  = rit->pos();
+	double x                = row.x();
+	double fill_separator   = row.fill_separator();
+	double fill_hfill       = row.fill_hfill();
+	double fill_label_hfill = row.fill_label_hfill();
+	pos_type const row_pos  = row.pos();
 
-	if (last < rit_pos)
-		cursor_vpos = rit_pos;
+	if (last < row_pos)
+		cursor_vpos = row_pos;
 	else if (pos > last && !boundary)
 		cursor_vpos = (pit->isRightToLeftPar(bv()->buffer()->params()))
-			? rit_pos : last + 1;
-	else if (pos > rit_pos && (pos > last || boundary))
+			? row_pos : last + 1;
+	else if (pos > row_pos && (pos > last || boundary))
 		// Place cursor after char at (logical) position pos - 1
 		cursor_vpos = (bidi_level(pos - 1) % 2 == 0)
 			? log2vis(pos - 1) + 1 : log2vis(pos - 1);
@@ -1468,7 +1370,7 @@ float LyXText::getCursorX(ParagraphList::iterator pit, RowList::iterator rit,
 	    (body_pos - 1 > last || !pit->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
-	for (pos_type vpos = rit_pos; vpos < cursor_vpos; ++vpos) {
+	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
 		pos_type pos = vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
 			x += fill_label_hfill +
@@ -1478,7 +1380,7 @@ float LyXText::getCursorX(ParagraphList::iterator pit, RowList::iterator rit,
 				x -= singleWidth(pit, body_pos - 1);
 		}
 
-		if (hfillExpansion(*pit, rit, pos)) {
+		if (hfillExpansion(*pit, row, pos)) {
 			x += singleWidth(pit, pos);
 			if (pos >= body_pos)
 				x += fill_hfill;
@@ -1546,15 +1448,15 @@ void LyXText::setCurrentFont()
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
 pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
-	RowList::iterator rit, int & x, bool & boundary) const
+	Row const & row, int & x, bool & boundary) const
 {
-	double tmpx             = rit->x();
-	double fill_separator   = rit->fill_separator();
-	double fill_hfill       = rit->fill_hfill();
-	double fill_label_hfill = rit->fill_label_hfill();
+	double tmpx             = row.x();
+	double fill_separator   = row.fill_separator();
+	double fill_hfill       = row.fill_hfill();
+	double fill_label_hfill = row.fill_label_hfill();
 
-	pos_type vc = rit->pos();
-	pos_type last = lastPos(*pit, rit);
+	pos_type vc = row.pos();
+	pos_type last = lastPos(*pit, row);
 	pos_type c = 0;
 	LyXLayout_ptr const & layout = pit->layout();
 
@@ -1584,7 +1486,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 				tmpx -= singleWidth(pit, body_pos - 1);
 		}
 
-		if (hfillExpansion(*pit, rit, c)) {
+		if (hfillExpansion(*pit, row, c)) {
 			tmpx += singleWidth(pit, c);
 			if (c >= body_pos)
 				tmpx += fill_hfill;
@@ -1611,8 +1513,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	boundary = false;
 	// This (rtl_support test) is not needed, but gives
 	// some speedup if rtl_support == false
-	bool const lastrow = lyxrc.rtl_support
-			&& boost::next(rit) == pit->rows.end();
+	bool const lastrow = lyxrc.rtl_support && row.end() == pit->size();
 
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
@@ -1620,10 +1521,10 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		? pit->isRightToLeftPar(bv()->buffer()->params())
 		: false;
 	if (lastrow &&
-		 ((rtl  &&  left_side && vc == rit->pos() && x < tmpx - 5) ||
+		 ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
 		  (!rtl && !left_side && vc == last + 1   && x > tmpx + 5)))
 		c = last + 1;
-	else if (vc == rit->pos()) {
+	else if (vc == row.pos()) {
 		c = vis2log(vc);
 		if (bidi_level(c) % 2 == 1)
 			++c;
@@ -1636,7 +1537,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		}
 	}
 
-	if (rit->pos() <= last && c > last && pit->isNewline(last)) {
+	if (row.pos() <= last && c > last && pit->isNewline(last)) {
 		if (bidi_level(last) % 2 == 0)
 			tmpx -= singleWidth(pit, last);
 		else
@@ -1644,7 +1545,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		c = last;
 	}
 
-	c -= rit->pos();
+	c -= row.pos();
 	x = int(tmpx);
 	return c;
 }
@@ -1663,15 +1564,15 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 {
 	// Get the row first.
 	ParagraphList::iterator pit;
-	RowList::iterator rit = getRowNearY(y, pit);
-	y = pit->y + rit->y_offset();
+	Row const & row = *getRowNearY(y, pit);
+	y = pit->y + row.y_offset();
 
 	bool bound = false;
-	pos_type const column = getColumnNearX(pit, rit, x, bound);
+	pos_type const column = getColumnNearX(pit, row, x, bound);
 	cur.par(parOffset(pit));
-	cur.pos(rit->pos() + column);
+	cur.pos(row.pos() + column);
 	cur.x(x);
-	cur.y(y + rit->baseline());
+	cur.y(y + row.baseline());
 
 	cur.boundary(bound);
 }
@@ -1742,7 +1643,7 @@ void LyXText::cursorDown(bool selecting)
 	int x = cursor.x_fix();
 	int y = cursor.y() - cursorRow()->baseline() + cursorRow()->height() + 1;
 	setCursorFromCoordinates(x, y);
-	if (!selecting && cursorRow() == cursorIRow()) {
+	if (!selecting) {
 		int topy = bv_owner->top_y();
 		int y1 = cursor.y() - topy;
 		int y2 = y1;

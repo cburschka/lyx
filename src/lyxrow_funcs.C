@@ -15,10 +15,7 @@
 #include "debug.h"
 #include "lyxlayout.h"
 #include "lyxrow.h"
-#include "lyxtext.h"
 #include "paragraph.h"
-
-#include <boost/next_prior.hpp>
 
 using lyx::pos_type;
 
@@ -27,51 +24,28 @@ using std::min;
 using std::endl;
 
 
-bool isParEnd(Paragraph const & par, RowList::iterator rit)
+bool isParEnd(Paragraph const & par, Row const & row)
 {
-#if 0
-	if ((boost::next(rit) == par.rows.end()) != (rit->end() >= par.size())) {
-		lyxerr << endl;
-		lyxerr << "broken row 1: end: " << rit->end() << " next: "
-			<< boost::next(rit)->pos() << endl;
-		lyxerr << endl;
-		BOOST_ASSERT(false);
-	}
-#endif
-	return boost::next(rit) == par.rows.end();
+	return row.end() == par.size();
 }
 
-#if 1
-pos_type lastPos(Paragraph const & par, RowList::iterator rit)
+
+pos_type lastPos(Paragraph const & par, Row const & row)
 {
 	if (par.empty())
 		return 0;
-
-	if (isParEnd(par, rit))
-		return par.size() - 1;
-
-	if (1 && boost::next(rit)->pos() != rit->end()) {
-		lyxerr << endl;
-		lyxerr << "broken row 2: end: " << rit->end() << " next: "
-			<< boost::next(rit)->pos() << endl;
-		lyxerr << endl;
-		BOOST_ASSERT(false);
-	}
-	return boost::next(rit)->pos() - 1;
+	pos_type pos = row.end() - 1;
+	if (pos == par.size())
+		--pos;
+	return pos;
 }
-#else
-pos_type lastPos(Paragraph const &, RowList::iterator rit)
-{
-	return rit->end() - 1;
-}
-#endif
 
 
-int numberOfSeparators(Paragraph const & par, RowList::iterator rit)
+int numberOfSeparators(Paragraph const & par, Row const & row)
 {
-	pos_type const last = lastPos(par, rit);
+	pos_type const last = lastPos(par, row);
 	int n = 0;
-	pos_type p = max(rit->pos(), par.beginningOfBody());
+	pos_type p = max(row.pos(), par.beginningOfBody());
 	for ( ; p < last; ++p)
 		if (par.isSeparator(p))
 			++n;
@@ -81,10 +55,10 @@ int numberOfSeparators(Paragraph const & par, RowList::iterator rit)
 
 // This is called _once_ from LyXText and should at least be moved into
 // an anonymous namespace there. (Lgb)
-int numberOfHfills(Paragraph const & par, RowList::iterator rit)
+int numberOfHfills(Paragraph const & par, Row const & row)
 {
-	pos_type const last = lastPos(par, rit);
-	pos_type first = rit->pos();
+	pos_type const last = lastPos(par, row);
+	pos_type first = row.pos();
 
 	// hfill *DO* count at the beginning of paragraphs!
 	if (first) {
@@ -97,9 +71,10 @@ int numberOfHfills(Paragraph const & par, RowList::iterator rit)
 	int n = 0;
 
 	// last, because the end is ignored!
-	for (pos_type p = first; p < last; ++p)
+	for (pos_type p = first; p < last; ++p) {
 		if (par.isHfill(p))
 			++n;
+	}
 
 	return n;
 }
@@ -107,10 +82,10 @@ int numberOfHfills(Paragraph const & par, RowList::iterator rit)
 
 // This is called _once_ from LyXText and should at least be moved into
 // an anonymous namespace there. (Lgb)
-int numberOfLabelHfills(Paragraph const & par, RowList::iterator rit)
+int numberOfLabelHfills(Paragraph const & par, Row const & row)
 {
-	pos_type last = lastPos(par, rit);
-	pos_type first = rit->pos();
+	pos_type last = lastPos(par, row);
+	pos_type first = row.pos();
 
 	// hfill *DO* count at the beginning of paragraphs!
 	if (first) {
@@ -121,29 +96,30 @@ int numberOfLabelHfills(Paragraph const & par, RowList::iterator rit)
 	last = min(last, par.beginningOfBody());
 	int n = 0;
 
-	// last, because the end is ignored!
+	// last, because the end is ignored
 	for (pos_type p = first; p < last; ++p) {
 		if (par.isHfill(p))
 			++n;
 	}
+
 	return n;
 }
 
 
-bool hfillExpansion(Paragraph const & par, RowList::iterator rit, pos_type pos)
+bool hfillExpansion(Paragraph const & par, Row const & row, pos_type pos)
 {
 	if (!par.isHfill(pos))
 		return false;
 
 	// at the end of a row it does not count
 	// unless another hfill exists on the line
-	if (pos >= lastPos(par, rit))
-		for (pos_type i = rit->pos(); i < pos && !par.isHfill(i); ++i)
+	if (pos >= lastPos(par, row))
+		for (pos_type i = row.pos(); i < pos && !par.isHfill(i); ++i)
 			return false;
 
 	// at the beginning of a row it does not count, if it is not
 	// the first row of a paragaph
-	if (rit->isParStart())
+	if (row.isParStart())
 		return true;
 
 	// in some labels it does not count
@@ -154,7 +130,7 @@ bool hfillExpansion(Paragraph const & par, RowList::iterator rit, pos_type pos)
 	// if there is anything between the first char of the row and
 	// the specified position that is not a newline and not a hfill,
 	// the hfill will count, otherwise not
-	pos_type i = rit->pos();
+	pos_type i = row.pos();
 	while (i < pos && (par.isNewline(i) || par.isHfill(i)))
 		++i;
 

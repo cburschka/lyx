@@ -399,8 +399,8 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 	if (font.language() != ignore_language ||
 	    font.number() != LyXFont::IGNORE) {
 		LyXCursor & cursor = text->cursor;
-		text->computeBidiTables(text->cursorPar(), *bv->buffer(),
-			text->cursorRow());
+		text->computeBidiTables(*text->cursorPar(), *bv->buffer(),
+			*text->cursorRow());
 		if (cursor.boundary() !=
 		    text->isBoundary(*bv->buffer(), *text->cursorPar(), cursor.pos(),
 				     text->real_current_font))
@@ -411,11 +411,11 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 
 
 // deletes a selection during an insertion
-void replaceSelection(LyXText * lt)
+void replaceSelection(LyXText * text)
 {
-	if (lt->selection.set()) {
-		lt->cutSelection(true, false);
-		lt->bv()->update();
+	if (text->selection.set()) {
+		text->cutSelection(true, false);
+		text->bv()->update();
 	}
 }
 

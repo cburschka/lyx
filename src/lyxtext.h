@@ -167,8 +167,7 @@ public:
 
 private:
 	/// returns a pointer to a specified row.
-	RowList::iterator
-	getRow(ParagraphList::iterator pit, lyx::pos_type pos) const;
+	RowList::iterator getRow(Paragraph & par, lyx::pos_type pos) const;
 public:
 	/// returns an iterator pointing to a cursor row
 	RowList::iterator getRow(LyXCursor const & cursor) const;
@@ -182,13 +181,6 @@ public:
 	int parOffset(ParagraphList::iterator pit) const;
 	/// convenience
 	ParagraphList::iterator cursorPar() const;
-	/**
-	 * Return the next row, when cursor is at the end of the
-	 * previous row, for insets that take a full row.
-	 *
-	 * FIXME: explain why we need this ? especially for y...
-	 */
-	RowList::iterator cursorIRow() const;
 
 	/** returns a pointer to the row near the specified y-coordinate
 	  (relative to the whole text). y is set to the real beginning
@@ -201,7 +193,7 @@ public:
 	 x is set to the real beginning of this column
 	 */
 	lyx::pos_type getColumnNearX(ParagraphList::iterator pit,
-		RowList::iterator rit, int & x, bool & boundary) const;
+		Row const & row, int & x, bool & boundary) const;
 
 	/// need the selection cursor:
 	void setSelection();
@@ -234,19 +226,14 @@ public:
 	///
 	void setCursor(ParagraphList::iterator pit, lyx::pos_type pos);
 	/// returns true if par was empty and was removed
-	bool setCursor(lyx::paroffset_type par,
-		       lyx::pos_type pos,
-		       bool setfont = true,
-		       bool boundary = false);
+	bool setCursor(lyx::paroffset_type par, lyx::pos_type pos,
+		       bool setfont = true, bool boundary = false);
 	///
 	void setCursor(LyXCursor &, lyx::paroffset_type par,
-		       lyx::pos_type pos,
-		       bool boundary = false);
+		       lyx::pos_type pos, bool boundary = false);
 	///
-	void setCursorIntern(lyx::paroffset_type par,
-			     lyx::pos_type pos,
-			     bool setfont = true,
-			     bool boundary = false);
+	void setCursorIntern(lyx::paroffset_type par, lyx::pos_type pos,
+			     bool setfont = true, bool boundary = false);
 	///
 	void setCurrentFont();
 
@@ -255,8 +242,7 @@ public:
 			lyx::pos_type pos) const;
 	///
 	bool isBoundary(Buffer const &, Paragraph const & par,
-			 lyx::pos_type pos,
-			 LyXFont const & font) const;
+			 lyx::pos_type pos, LyXFont const & font) const;
 
 	///
 	void recUndo(lyx::paroffset_type first, lyx::paroffset_type last) const;
@@ -265,8 +251,7 @@ public:
 	///
 	void setCursorFromCoordinates(int x, int y);
 	///
-	void setCursorFromCoordinates(LyXCursor &,
-				      int x, int y);
+	void setCursorFromCoordinates(LyXCursor &, int x, int y);
 	///
 	void cursorUp(bool selecting = false);
 	///
@@ -368,8 +353,8 @@ public:
 	int workWidth() const;
 
 	///
-	void computeBidiTables(ParagraphList::iterator pit,
-		Buffer const &, RowList::iterator row) const;
+	void computeBidiTables(Paragraph const & par,
+		Buffer const &, Row & row) const;
 	/// Maps positions in the visual string to positions in logical string.
 	lyx::pos_type log2vis(lyx::pos_type pos) const;
 	/// Maps positions in the logical string to positions in visual string.
@@ -381,13 +366,13 @@ public:
 private:
 	///
 	float getCursorX(ParagraphList::iterator pit,
-	     RowList::iterator rit, lyx::pos_type pos,
+	     Row const & row, lyx::pos_type pos,
 			 lyx::pos_type last, bool boundary) const;
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
 
 	/// Calculate and set the height of the row
-	void setHeightOfRow(ParagraphList::iterator, RowList::iterator rit);
+	void setHeightOfRow(ParagraphList::iterator, Row & row);
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
@@ -429,7 +414,7 @@ public:
 	 */
 	int leftMargin(ParagraphList::iterator pit, Row const & row) const;
 	///
-	int rightMargin(ParagraphList::iterator pit, Buffer const &, Row const & row) const;
+	int rightMargin(Paragraph const & par, Buffer const &, Row const & row) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
@@ -446,19 +431,13 @@ private:
 	///
 	void deleteLineForward();
 
-	/*
-	 * some low level functions
-	 */
-
-
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
 	lyx::pos_type rowBreakPoint(ParagraphList::iterator pit,
 		Row const & row) const;
 
 	/// returns the minimum space a row needs on the screen in pixel
-	int fill(ParagraphList::iterator pit,
-		RowList::iterator row, int workwidth) const;
+	int fill(ParagraphList::iterator pit, Row & row, int workwidth) const;
 
 	/**
 	 * returns the minimum space a manual label needs on the

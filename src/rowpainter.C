@@ -257,7 +257,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 {
 	pos_type pos = text_.vis2log(vpos);
-	pos_type const last = lastPos(*pit_, row_);
+	pos_type const last = lastPos(*pit_, *row_);
 	LyXFont orig_font = getFont(pos);
 
 	// first character
@@ -434,7 +434,7 @@ void RowPainter::paintSelection()
 			int(x_), row_->height(), LColor::selection);
 
 	pos_type const body_pos = pit_->beginningOfBody();
-	pos_type const last = lastPos(*pit_, row_);
+	pos_type const last = lastPos(*pit_, *row_);
 	double tmpx = x_;
 
 	for (pos_type vpos = row_->pos(); vpos <= last; ++vpos)  {
@@ -450,7 +450,7 @@ void RowPainter::paintSelection()
 				tmpx -= singleWidth(body_pos - 1);
 		}
 
-		if (hfillExpansion(*pit_, row_, pos)) {
+		if (hfillExpansion(*pit_, *row_, pos)) {
 			tmpx += singleWidth(pos);
 			if (pos >= body_pos)
 				tmpx += hfill_;
@@ -486,7 +486,7 @@ void RowPainter::paintSelection()
 void RowPainter::paintChangeBar()
 {
 	pos_type const start = row_->pos();
-	pos_type const end = lastPos(*pit_, row_);
+	pos_type const end = lastPos(*pit_, *row_);
 
 	if (!pit_->isChanged(start, end))
 		return;
@@ -809,7 +809,7 @@ void RowPainter::paintFirst()
 			double x = x_;
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				x = ((is_rtl ? leftMargin() : x_)
-					 + ww - text_.rightMargin(pit_, *bv_.buffer(), *row_)) / 2;
+					 + ww - text_.rightMargin(*pit_, *bv_.buffer(), *row_)) / 2;
 				x -= font_metrics::width(str, font) / 2;
 			} else if (is_rtl) {
 				x = ww - leftMargin() -
@@ -889,7 +889,7 @@ void RowPainter::paintLast()
 		string const & str = pit_->layout()->endlabelstring();
 		double const x = is_rtl ?
 			x_ - font_metrics::width(str, font)
-			: ww - text_.rightMargin(pit_, *bv_.buffer(), *row_) - row_->fill();
+			: ww - text_.rightMargin(*pit_, *bv_.buffer(), *row_) - row_->fill();
 		pain_.text(int(x), yo_ + row_->baseline(), str, font);
 		break;
 	}
@@ -901,7 +901,7 @@ void RowPainter::paintLast()
 
 void RowPainter::paintText()
 {
-	pos_type const last = lastPos(*pit_, row_);
+	pos_type const last = lastPos(*pit_, *row_);
 	pos_type body_pos = pit_->beginningOfBody();
 	if (body_pos > 0 &&
 		(body_pos - 1 > last || !pit_->isLineSeparator(body_pos - 1))) {
@@ -966,7 +966,7 @@ void RowPainter::paintText()
 
 			pain_.line(int(x_), y1, int(x_), y0, LColor::added_space);
 
-			if (hfillExpansion(*pit_, row_, pos)) {
+			if (hfillExpansion(*pit_, *row_, pos)) {
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= body_pos) {
@@ -1039,7 +1039,7 @@ void RowPainter::paint()
 	if (row_->isParStart())
 		paintFirst();
 
-	if (isParEnd(*pit_, row_))
+	if (isParEnd(*pit_, *row_))
 		paintLast();
 
 	// paint text

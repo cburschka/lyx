@@ -637,7 +637,7 @@ int Paragraph::beginningOfBody() const
 
 	// Unroll the first two cycles of the loop
 	// and remember the previous character to
-	// remove unnecessary GetChar() calls
+	// remove unnecessary getChar() calls
 	pos_type i = 0;
 	if (i < size() && !isNewline(i)) {
 		++i;

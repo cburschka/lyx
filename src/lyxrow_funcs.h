@@ -13,22 +13,22 @@
 #ifndef LYXROW_FUNCS_H
 #define LYXROW_FUNCS_H
 
-#include "RowList_fwd.h"
 #include "support/types.h"
 
 class Paragraph;
+class Row;
 
-bool isParEnd(Paragraph const & par, RowList::iterator rit);
+bool isParEnd(Paragraph const & par, Row const & row);
 
-lyx::pos_type lastPos(Paragraph const & par, RowList::iterator rit);
+lyx::pos_type lastPos(Paragraph const & par, Row const & row);
 
-int numberOfSeparators(Paragraph const & par, RowList::iterator rit);
+int numberOfSeparators(Paragraph const & par, Row const & row);
 
-int numberOfHfills(Paragraph const & par, RowList::iterator rit);
+int numberOfHfills(Paragraph const & par, Row const & row);
 
-int numberOfLabelHfills(Paragraph const & par, RowList::iterator rit);
+int numberOfLabelHfills(Paragraph const & par, Row const & row);
 
-bool hfillExpansion(Paragraph const & par, RowList::iterator rit,
+bool hfillExpansion(Paragraph const & par, Row const & row,
 	lyx::pos_type pos);
 
 #endif
