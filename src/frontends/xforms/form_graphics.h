@@ -5,11 +5,10 @@
 #define FD_form_graphics_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormGraphicsInputCB(FL_OBJECT *, long);
-extern  "C" void C_FormGraphicsBrowseCB(FL_OBJECT *, long);
-extern  "C" void C_FormGraphicsOKCB(FL_OBJECT *, long);
-extern  "C" void C_FormGraphicsApplyCB(FL_OBJECT *, long);
-extern  "C" void C_FormGraphicsCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

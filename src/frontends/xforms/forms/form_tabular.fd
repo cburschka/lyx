@@ -3,7 +3,7 @@ Magic: 13000
 Internal Form Definition File
     (do not change)
 
-Number of forms: 6
+Number of forms: 5
 Unit of measure: FL_COORD_PIXEL
 SnapGrid: 5
 
@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_close
-callback: C_FormTabularCloseCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
@@ -178,7 +178,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_append_column
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -196,7 +196,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_delete_column
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -214,7 +214,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_append_row
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -232,7 +232,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_delete_row
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -250,7 +250,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_set_borders
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -268,7 +268,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_unset_borders
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -286,7 +286,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_longtable
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -304,7 +304,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_rotate_tabular
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -400,7 +400,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_top
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -418,7 +418,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_bottom
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -436,7 +436,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_left
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -454,7 +454,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_right
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -508,7 +508,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_left
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -526,7 +526,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_right
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -544,7 +544,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_center
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -562,7 +562,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_column_width
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -634,7 +634,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_special_alignment
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -670,7 +670,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_top
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -688,7 +688,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_center
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -706,7 +706,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_bottom
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 =============== FORM ===============
@@ -892,7 +892,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_multicolumn
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -910,7 +910,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_rotate_cell
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -946,7 +946,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_special_multialign
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -982,7 +982,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_mcolumn_width
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1000,7 +1000,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_top
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1018,7 +1018,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_bottom
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1036,7 +1036,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_left
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1054,7 +1054,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_right
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1072,7 +1072,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_left
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1090,7 +1090,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_right
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1108,7 +1108,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_center
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1126,7 +1126,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_top
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1144,7 +1144,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_center
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1162,7 +1162,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_bottom
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1180,7 +1180,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_useminipage
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 =============== FORM ===============
@@ -1258,7 +1258,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_firsthead
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1276,7 +1276,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_head
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1330,7 +1330,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_foot
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1348,7 +1348,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_lastfoot
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1402,122 +1402,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_newpage
-callback: C_FormTabularInputCB
+callback: C_FormBaseInputCB
 argument: 0
-
-=============== FORM ===============
-Name: form_create_tabular
-Width: 310
-Height: 130
-Number of Objects: 6
-
---------------------
-class: FL_BOX
-type: UP_BOX
-box: 0 0 310 130
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_BUTTON
-type: RETURN_BUTTON
-box: 10 90 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: OK
-shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_ok
-callback: C_FormTabularOKCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 110 90 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Apply|#A
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_apply
-callback: C_FormTabularApplyCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 210 90 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Cancel|^[
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
-callback: C_FormTabularCancelCB
-argument: 0
-
---------------------
-class: FL_VALSLIDER
-type: HOR_SLIDER
-box: 80 50 220 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Columns
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
-name: slider_columns
-callback: 
-argument: 
-
---------------------
-class: FL_VALSLIDER
-type: HOR_SLIDER
-box: 80 10 220 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Rows
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
-name: slider_rows
-callback: 
-argument: 
 
 ==============================
 create_the_forms

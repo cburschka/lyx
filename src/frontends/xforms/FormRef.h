@@ -61,7 +61,7 @@ private:
 	/// Filter the input
 	virtual bool input( FL_OBJECT *, long );
 	/// Update dialog before showing it
-	virtual void update(bool switched = false);
+	virtual void update();
 	/// Not used but must be instantiated
 	virtual void apply();
 	/// Pointer to the actual instantiation of the xform's form

@@ -36,7 +36,7 @@ private:
 	/// Slot launching dialog to an existing inset
 	void showInset( InsetError * );
 	/// Update dialog before showing it
-	virtual void update(bool switched = false);
+	virtual void update();
 	/// Build the dialog
 	virtual void build();
 	/// Pointer to the actual instantiation of the xform's form

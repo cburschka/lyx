@@ -24,8 +24,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_SouthEast
 name: 
 callback: 
 argument: 
@@ -81,8 +81,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_filename
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_BUTTON
@@ -99,8 +99,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_browse
-callback: C_FormGraphicsBrowseCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: BROWSE
 
 --------------------
 class: FL_LABELFRAME
@@ -153,8 +153,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_width
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_INPUT
@@ -171,8 +171,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_height
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_LABELFRAME
@@ -207,7 +207,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: C_FormGraphicsOKCB
+callback: C_FormBaseOKCB
 argument: 0
 
 --------------------
@@ -225,7 +225,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_apply
-callback: C_FormGraphicsApplyCB
+callback: C_FormBaseApplyCB
 argument: 0
 
 --------------------
@@ -243,7 +243,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
-callback: C_FormGraphicsCancelCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
@@ -279,8 +279,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_width_percent_page
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -297,8 +297,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_width_default
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 	value: 1
 
 --------------------
@@ -316,8 +316,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_width_cm
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -334,8 +334,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_width_inch
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -352,8 +352,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_width_percent_column
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_END_GROUP
@@ -406,8 +406,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_height_percent_page
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -424,8 +424,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_height_inch
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -442,8 +442,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_height_cm
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -460,8 +460,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_height_default
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 	value: 1
 
 --------------------
@@ -624,8 +624,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_rotate_angle
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -642,8 +642,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_inline
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_INPUT
@@ -660,8 +660,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_subcaption
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 --------------------
 class: FL_CHECKBUTTON
@@ -678,8 +678,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_subcaption
-callback: C_FormGraphicsInputCB
-argument: 0
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 ==============================
 create_the_forms

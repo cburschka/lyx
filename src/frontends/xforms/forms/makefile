@@ -31,6 +31,7 @@ SRCS := form_citation.fd \
 	form_print.fd \
 	form_ref.fd \
 	form_tabular.fd \
+	form_tabular_create.fd \
 	form_toc.fd \
 	form_url.fd
 

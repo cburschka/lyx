@@ -303,8 +303,7 @@ void FormDocument::cancel()
 }
 
 
-// we can safely ignore the parameter because we can always update
-void FormDocument::update(bool)
+void FormDocument::update()
 {
     if (!dialog_)
         return;

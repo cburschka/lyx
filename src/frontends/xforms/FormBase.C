@@ -167,7 +167,7 @@ FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
 void FormBaseBD::connect()
 {
 	u_ = d_->updateBufferDependent.
-		 connect(slot(this, &FormBaseBD::update));
+		 connect(slot(this, &FormBaseBD::updateSlot));
 	h_ = d_->hideBufferDependent.
 		 connect(slot(this, &FormBaseBD::hide));
 	FormBase::connect();

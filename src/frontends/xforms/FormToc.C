@@ -78,8 +78,7 @@ void FormToc::build()
 }
 
 
-// we can safely ignore the parameter because we can always update
-void FormToc::update(bool)
+void FormToc::update()
 {
 	Buffer::TocType type;
 

@@ -17,19 +17,15 @@
 #define FORMGRAPHICS_H
 
 #include "LString.h"
-#include "frontends/DialogBase.h"
 #include "RadioButtonGroup.h"
-#include <boost/utility.hpp>
-#include "ButtonController.h"
 #include "ButtonPolicies.h"
+#include "FormInset.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif 
 
 // Forward declarations for classes we use only as pointers.
-class Dialogs;
-class LyXView;
 class InsetGraphics;
 
 struct FD_form_graphics;
@@ -38,26 +34,12 @@ struct FD_form_graphics;
  *
  *  @Author Baruch Even <baruch.even@writeme.com>
  */
-class FormGraphics: public DialogBase, public noncopyable {
+class FormGraphics : public FormInset {
 public:
 	/// #FormGraphics x(LyXFunc ..., Dialogs ...);#
 	FormGraphics(LyXView *, Dialogs *);
 	///
 	~FormGraphics();
-	///
-	static int WMHideCB(FL_FORM *, void *);
-	///
-	static void OKCB(FL_OBJECT *, long);
-	///
-	static void ApplyCB(FL_OBJECT *, long);
-	///
-	static void CancelCB(FL_OBJECT *, long);
-	///
-	static void BrowseCB(FL_OBJECT *, long);
-	///
-	static void AdvancedOptionsCB(FL_OBJECT *, long);
-	///
-	static void InputCB(FL_OBJECT *, long);
 
 private:
 	/// The maximum digits for the image width (cm, inch, percent)
@@ -80,43 +62,46 @@ private:
 	    ///
 	    FILENAME_MAXCHARS = 1024
 	};
+	///
+	enum State {
+		///
+		CHECKINPUT,
+		///
+		BROWSE,
+		///
+		ADVANCEDINPUT
+	};
+
+	/// Build the dialog
+	virtual void build();
+	/// Filter the inputs
+	virtual bool input( FL_OBJECT *, long );
+	/// Update the popup.
+	virtual void update();
+	/// Apply from popup
+	virtual void apply();
+
+	/// Disconnect signals. Also perform any necessary housekeeping.
+	virtual void disconnect();
 
 	/// Save the active inset and show the dialog.
-	void showDialog(InsetGraphics * inset);
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
-	/// Update the dialog
-	void update(bool switched = false);
-
-	/// Apply the changes to the inset.
-	void apply();
+	void showDialog(InsetGraphics *);
+	/// Explicitly free the dialog.
+	void free();
 	/// Verify that the input is correct. If not disable ok/apply buttons.
 	bool checkInput();
 	/// Open the file browse dialog to select an image file.
 	void browse();
-
-	/// Build the dialog
-	void build();
-	///
-	FD_form_graphics * build_graphics();
-	/// Explicitly free the dialog.
-	void free();
 	/// Display a file browser dialog and return the file chosen.
 	string browseFile(string const & filename);
 
+	/// Pointer to the actual instantiation of the xform's form
+	virtual FL_FORM * form() const;
+	/// Fdesign generated method
+	FD_form_graphics * build_graphics();
+
 	/// Real GUI implementation.
 	FD_form_graphics * dialog_;
-	/** Which LyXFunc do we use?
-	    We could modify Dialogs to have a visible LyXFunc* instead and
-	    save a couple of bytes per dialog.
-	*/
-	LyXView * lv_;
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
-	Dialogs * d_;
 	/** Which Inset do we belong to?
 	   Used to set and update data to/from the inset.
 	*/
@@ -127,15 +112,6 @@ private:
 	RadioButtonGroup heightButtons;
 	///
 	RadioButtonGroup displayButtons;
-	/// Controls the actions of the buttons.
-	ButtonController * bc_;
-
-	/// Inset Hide connection, connected to the calling inset hide signal.
-	Connection ih_;
-	/// Hide connection.
-	Connection h_;
-	/// Update connection.
-	Connection u_;
 	/// Last used figure path
 	string last_image_path;
 };

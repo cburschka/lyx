@@ -40,7 +40,7 @@ public:
 
 private:
 	/// Update the dialog.
-	virtual void update(bool switched = false);
+	virtual void update();
 	/// Apply from dialog
 	virtual void apply();
 	/// Filter the inputs

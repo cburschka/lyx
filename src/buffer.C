@@ -105,7 +105,6 @@ using std::pair;
 using std::vector;
 using std::max;
 using std::set;
-using std::istringstream;
 
 // all these externs should eventually be removed.
 extern BufferList bufferlist;

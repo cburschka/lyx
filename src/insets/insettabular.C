@@ -132,7 +132,6 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
     actcell = 0;
     cursor.pos(0);
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
-    dialogs_ = 0;
     need_update = INIT;
 }
 
@@ -148,7 +147,6 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf)
     actcell = 0;
     cursor.pos(0);
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
-    dialogs_ = 0;
     need_update = INIT;
 }
 
@@ -156,8 +154,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf)
 InsetTabular::~InsetTabular()
 {
     delete tabular;
-    if (dialogs_)
-	dialogs_->hideTabular(this);
+    hideDialog();
 }
 
 
@@ -534,9 +531,8 @@ bool InsetTabular::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 	if (inset->LyxCode() == TABULAR_CODE &&
 	    !the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE))
 	{
-	    dialogs_ = bv->owner()->getDialogs();
-	    dialogs_->updateTabular(this);
-	    oldcell = actcell;
+		bv->owner()->getDialogs()->updateTabular(this);
+		oldcell = actcell;
 	}
 	return true;
     }
@@ -639,8 +635,7 @@ void InsetTabular::InsetButtonRelease(BufferView * bv,
 		return;
 	    }
 	}
-	dialogs_ = bv->owner()->getDialogs();
-        dialogs_->showTabular(this);
+	bv->owner()->getDialogs()->showTabular(this);
 	return;
     }
     if (the_locking_inset) {
@@ -848,8 +843,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	break;
     case LFUN_LAYOUT_TABULAR:
     {
-	dialogs_ = bv->owner()->getDialogs();
-        dialogs_->showTabular(this);
+	bv->owner()->getDialogs()->showTabular(this);
     }
     break;
     case LFUN_TABULAR_FEATURE:
@@ -1135,9 +1129,9 @@ void InsetTabular::resetPos(BufferView * bv) const
     if ((!the_locking_inset ||
 	 !the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE)) &&
 	(actcell != oldcell)) {
-	dialogs_ = bv->owner()->getDialogs();
-        dialogs_->updateTabular(const_cast<InsetTabular *>(this));
-	oldcell = actcell;
+	    InsetTabular * inset = const_cast<InsetTabular *>(this);
+	    bv->owner()->getDialogs()->updateTabular(inset);
+	    oldcell = actcell;
     }
 }
 
@@ -1673,8 +1667,7 @@ void InsetTabular::OpenLayoutDialog(BufferView * bv) const
 	    return;
 	}
     }
-    dialogs_ = bv->owner()->getDialogs();
-    dialogs_->showTabular(const_cast<InsetTabular *>(this));
+    bv->owner()->getDialogs()->showTabular(const_cast<InsetTabular *>(this));
 }
 
 //

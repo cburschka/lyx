@@ -15,109 +15,68 @@
 #ifndef FORMTABULAR_H
 #define FORMTABULAR_H
 
-#include "DialogBase.h"
-#include <boost/utility.hpp>
+#include "FormInset.h"
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-#endif
-
-class LyXView;
-class Dialogs;
 class InsetTabular;
 struct FD_form_tabular;
 struct FD_form_tabular_options;
 struct FD_form_column_options;
 struct FD_form_cell_options;
 struct FD_form_longtable_options;
-struct FD_form_create_tabular;
 
 /** This class provides an XForms implementation of the FormTabular Dialog.
     The tabular dialog allows users to set/save their tabular.
  */
-class FormTabular : public DialogBase, public noncopyable {
+class FormTabular : public FormInset {
 public:
-    /// #FormTabular x(LyXFunc ..., Dialogs ...);#
-    FormTabular(LyXView *, Dialogs *);
-    ///
-    ~FormTabular();
-    ///
-    static  int WMHideCB(FL_FORM *, void *);
-    ///
-    static void CloseCB(FL_OBJECT *, long);
-    ///
-    static void OKCB(FL_OBJECT *, long);
-    ///
-    static void CancelCB(FL_OBJECT *, long);
-    ///
-    static void ApplyCB(FL_OBJECT *, long);
-    ///
-    static void InputCB(FL_OBJECT *, long);
+	/// #FormTabular x(LyXFunc ..., Dialogs ...);#
+	FormTabular(LyXView *, Dialogs *);
+	///
+	~FormTabular();
 
 private:
-    /// Create the dialog if necessary, update it and display it.
-    void show();
-    ///
-    void show_create();
-    ///
-    void showInset(InsetTabular *);
-    /// Hide the dialog.
-    void hide();
-    ///
-    void hide_create();
-    ///
-    void hideInset(InsetTabular *);
-    /// Update the dialog.
-    void update(bool = false);
-    ///
-    void updateInset(InsetTabular *);
-    ///
-    bool local_update(bool);
-    
-    /// Apply from dialog
-    void apply_create();
-    /// Build the dialog
-    void build();
-    ///
-    void SetTabularOptions(FL_OBJECT *, long);
-    ///
-    FD_form_tabular * build_tabular();
-    ///
-    FD_form_tabular_options * build_tabular_options();
-    ///
-    FD_form_column_options * build_column_options();
-    ///
-    FD_form_cell_options * build_cell_options();
-    ///
-    FD_form_longtable_options * build_longtable_options();
-    ///
-    FD_form_create_tabular * build_create_tabular();
+	/// Disconnect signals. Also perform any necessary housekeeping.
+	virtual void disconnect();
 
-    /// Real GUI implementation.
-    FD_form_tabular * dialog_;
-    ///
-    FD_form_tabular_options * tabular_options_;
-    ///
-    FD_form_column_options * column_options_;
-    ///
-    FD_form_cell_options * cell_options_;
-    ///
-    FD_form_longtable_options * longtable_options_;
-    ///
-    FD_form_create_tabular * create_tabular_;
+	/// Slot launching dialog to an existing inset
+	void showInset(InsetTabular *);
+	/// Slot launching dialog to an existing inset
+	void updateInset(InsetTabular *);
+	/// Update dialog before showing it
+	virtual void update();
+	/// Build the dialog
+	virtual void build();
+	/// Filter the inputs
+	virtual bool input(FL_OBJECT *, long);
+	/// Pointer to the actual instantiation of the xform's form
+	virtual FL_FORM * form() const;
 
-    /// Which LyXView do we belong to?
-    LyXView * lv_;
-    ///
-    Dialogs * d_;
-    /// Update connection.
-    Connection u_;
-    /// Hide connection.
-    Connection h_;
-    ///
-    InsetTabular * inset_;
-    ///
-    int actCell_;
+	/// Fdesign generated methods
+	FD_form_tabular * build_tabular();
+	///
+	FD_form_tabular_options * build_tabular_options();
+	///
+	FD_form_column_options * build_column_options();
+	///
+	FD_form_cell_options * build_cell_options();
+	///
+	FD_form_longtable_options * build_longtable_options();
+
+	/// Real GUI implementation.
+	FD_form_tabular * dialog_;
+	///
+	FD_form_tabular_options * tabular_options_;
+	///
+	FD_form_column_options * column_options_;
+	///
+	FD_form_cell_options * cell_options_;
+	///
+	FD_form_longtable_options * longtable_options_;
+
+	/// pointer to the inset passed through showInset
+	InsetTabular * inset_;
+	///
+	int actCell_;
 };
 
 #endif

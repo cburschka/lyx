@@ -10,9 +10,6 @@
  */
 
 #include <config.h>
-
-#include FORMS_H_LOCATION
-
 #include <algorithm>
 
 #ifdef __GNUG__
@@ -86,13 +83,8 @@ void FormCitation::build()
 }
 
 
-void FormCitation::update(bool switched)
+void FormCitation::update()
 {
-	if (switched) {
-		hide();
-		return;
-	}
-
 	bibkeys.clear();
 	bibkeysInfo.clear();
 

@@ -54,12 +54,16 @@
 #include "LString.h"
 #include "lyxcursor.h"
 #include "lyxfunc.h"
+#include <sigc++/signal_system.h>
+
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Signal0;
+#endif
 
 class LyXLex;
 class Painter;
 class BufferView;
 class Buffer;
-class Dialogs;
 
 class InsetTabular : public UpdatableInset {
 public:
@@ -174,6 +178,8 @@ public:
     // Public structures and variables
     ///
     LyXTabular * tabular;
+	///
+	Signal0<void> hideDialog;
 
 private:
     ///
@@ -268,7 +274,5 @@ private:
     mutable bool locked;
     ///
     mutable UpdateCodes need_update;
-    ///
-    mutable Dialogs * dialogs_;
 };
 #endif

@@ -16,10 +16,6 @@
 #endif 
 
 #include "lyx_gui_misc.h"
-#include "gettext.h"
-#include FORMS_H_LOCATION
-
-#include "xform_macros.h"
 #include "input_validators.h"
 #include "FormGraphics.h"
 #include "form_graphics.h"
@@ -42,30 +38,15 @@
 
 using std::endl;
 
-C_RETURNCB(FormGraphics, WMHideCB)
-C_GENERICCB(FormGraphics, OKCB)
-C_GENERICCB(FormGraphics, ApplyCB)
-C_GENERICCB(FormGraphics, CancelCB)
-C_GENERICCB(FormGraphics, BrowseCB)
-C_GENERICCB(FormGraphics, AdvancedOptionsCB)
-C_GENERICCB(FormGraphics, InputCB)
-
 
 FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
-		: dialog_(0), lv_(lv), d_(d), inset_(0),
-		// The buttons c-tor values are the number of buttons we use
-		// This is only to reduce memory waste.
-		widthButtons(5), heightButtons(4), displayButtons(4),
-		bc_(new ButtonController
-			(new NoRepeatedApplyReadOnlyPolicy, _("Cancel"), _("Close") )
-		),
-		ih_(0), h_(0), u_(0),
-		last_image_path(".")
+	: FormInset( lv, d, _("Graphics"), new NoRepeatedApplyReadOnlyPolicy ),
+	  dialog_(0), inset_(0),
+	  // The buttons c-tor values are the number of buttons we use
+	  // This is only to reduce memory waste.
+	  widthButtons(5), heightButtons(4), displayButtons(4),
+	  last_image_path(".")
 {
-	Assert(lv_ != 0);
-	Assert(d   != 0);
-	Assert(bc_ != 0);
-	
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
@@ -76,9 +57,6 @@ FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
 FormGraphics::~FormGraphics()
 {
 	free();
-	
-	// Free the button controller.
-	delete bc_;
 }
 
 
@@ -90,6 +68,10 @@ void FormGraphics::build()
 		lyxerr << "ERROR: Failed to create the Graphics Inset dialog." << endl;
 		return ;
 	}
+
+	// Workaround dumb xforms sizing bug
+	minw_ = form()->w;
+	minh_ = form()->h;
 
 	// This is the place to add settings of the dialog that did not go
 	// to the .fd file.
@@ -154,81 +136,39 @@ void FormGraphics::build()
 	displayButtons.registerRadioButton(dialog_->radio_no_display,
 	                                   InsetGraphicsParams::NONE);
 
-	// Connect a signal to hide the window when the window manager orders it.
-	fl_set_form_atclose(dialog_->form,
-	                    C_FormGraphicsWMHideCB, 0);
-
-	bc_->setOK(dialog_->button_ok);
-	bc_->setApply(dialog_->button_apply);
-	bc_->setCancel(dialog_->button_cancel);
-	bc_->setUndoAll(0);
-	bc_->refresh();
+        // manage the ok, apply and cancel/close buttons
+	bc_.setOK(dialog_->button_ok);
+	bc_.setApply(dialog_->button_apply);
+	bc_.setCancel(dialog_->button_cancel);
+	bc_.setUndoAll(0);
+	bc_.refresh();
 }
 
-void FormGraphics::show()
+
+FL_FORM * FormGraphics::form() const
 {
-	// If the dialog doesn't exist yet, build it.
-	if (!dialog_) {
-		build();
-	}
-
-	// Update the form with the data from the inset.
-	update();
-
-	// If the form is visible
-	if (dialog_->form->visible) {
-		// Raise it.
-		fl_raise_form(dialog_->form);
-	} else {
-		// Otherwise (invisible), show it.
-		fl_show_form(dialog_->form,
-		             FL_PLACE_MOUSE,
-		             FL_TRANSIENT,
-		             _("Graphics"));
-
-		// And connect the signals 'updateBufferDependent',
-		// 'hideBufferDependent' and 'hideGraphics'.
-		u_ = d_->updateBufferDependent.connect(slot(this,
-		                                       &FormGraphics::update));
-		h_ = d_->hideBufferDependent.connect(slot(this,
-		                                     &FormGraphics::hide));
-	}
+	if ( dialog_ ) return dialog_->form;
+	return 0;
 }
 
-void FormGraphics::showDialog(InsetGraphics* inset)
-{
-	Assert(inset != 0);
 
+void FormGraphics::disconnect()
+{
+	inset_ = 0;
+	FormInset::disconnect();
+}
+
+
+void FormGraphics::showDialog(InsetGraphics * inset)
+{
 	// If we are connected to another inset, disconnect.
 	if (inset_)
 		ih_.disconnect();
 
 	inset_ = inset;
 
-	if (inset_) {
-		ih_ = inset_->hide.connect(slot(this, &FormGraphics::hide));
-		show();
-	}
-}
-
-
-void FormGraphics::hide()
-{
-	// If the dialog exists, and the form is allocated and visible.
-	if (dialog_
-	        && dialog_->form
-	        && dialog_->form->visible) {
-		// Hide the form
-		fl_hide_form(dialog_->form);
-
-		// And disconnect the signals.
-		u_.disconnect();
-		h_.disconnect();
-		ih_.disconnect();
-
-		// Forget the inset.
-		inset_ = 0;
-	}
+	ih_ = inset_->hide.connect(slot(this, &FormGraphics::hide));
+	show();
 }
 
 
@@ -244,6 +184,7 @@ void FormGraphics::free()
 	delete dialog_;
 	dialog_ = 0;
 }
+
 
 void FormGraphics::apply()
 {
@@ -289,16 +230,8 @@ void FormGraphics::apply()
 }
 
 
-// it doesn't look this is capable of updating on a buffer switch
-// inset_ would be accessible but it's not in the new buffer so
-// ok or apply will call something that won't like it. ARRae.
-void FormGraphics::update(bool switched)
+void FormGraphics::update()
 {
-	if (switched) {
-		hide();
-		return;
-	}
-
 	Assert(inset_ != 0);
 
 	// Update dialog with details from inset
@@ -336,8 +269,35 @@ void FormGraphics::update(bool switched)
 	              igp.inlineFigure);
 
 	// Now make sure that the buttons are set correctly.
-	checkInput();
+	input(0, 0);
 }
+
+
+bool FormGraphics::input(FL_OBJECT *, long data )
+{
+	State cb = static_cast<State>( data );
+
+	bool inputOK = true;
+
+	switch( cb ) {
+	case CHECKINPUT:
+		inputOK = checkInput();
+		break;
+	case BROWSE:
+		browse();
+		break;
+	case ADVANCEDINPUT:
+		lyxerr << "Advanced Options button depressed, "
+		       << "show advanced options dialog"
+		       << endl;
+		break;
+	default:
+		break;
+	}
+	
+	return inputOK;
+}
+
 
 bool FormGraphics::checkInput()
 {
@@ -392,6 +352,7 @@ extern string system_lyxdir;
 extern string user_lyxdir;
 //extern string system_tempdir;
 
+
 // Need to move this to the form_graphics
 string FormGraphics::browseFile(string const & filename)
 {
@@ -434,6 +395,7 @@ string FormGraphics::browseFile(string const & filename)
 	return buf;
 }
 
+
 void FormGraphics::browse()
 {
 	// Get the filename from the dialog
@@ -449,67 +411,7 @@ void FormGraphics::browse()
 		// The above set input doesn't cause an input event so we do
 		// it manually. Otherwise the user needs to cause an input event
 		// to get the ok/apply buttons to be activated.
-		checkInput();
+		input(0, 0);
 	}
 
 }
-
-int FormGraphics::WMHideCB(FL_FORM * form, void *)
-{
-	// Ensure that the signal h is disconnected even if the
-	// window manager is used to close the dialog.
-	FormGraphics * pre = static_cast < FormGraphics* > (form->u_vdata);
-	pre->hide();
-
-	pre->bc_->hide();
-	
-	return FL_CANCEL;
-}
-
-
-void FormGraphics::OKCB(FL_OBJECT * ob, long)
-{
-	FormGraphics * pre = static_cast < FormGraphics* > (ob->form->u_vdata);
-	pre->apply();
-	pre->hide();
-	
-	pre->bc_->ok();
-}
-
-void FormGraphics::ApplyCB(FL_OBJECT * ob, long)
-{
-	FormGraphics * pre = static_cast < FormGraphics* > (ob->form->u_vdata);
-	pre->apply();
-	
-	pre->bc_->apply();
-}
-
-void FormGraphics::CancelCB(FL_OBJECT * ob, long)
-{
-	FormGraphics * pre = static_cast < FormGraphics* > (ob->form->u_vdata);
-	pre->hide();
-	
-	pre->bc_->cancel();
-}
-
-void FormGraphics::BrowseCB(FL_OBJECT * ob, long)
-{
-	FormGraphics * pre = static_cast < FormGraphics* > (ob->form->u_vdata);
-	pre->browse();
-}
-
-void FormGraphics::AdvancedOptionsCB(FL_OBJECT * /* ob */, long)
-{
-	//  FormGraphics * pre = static_cast<FormGraphics*>(ob->form->u_vdata);
-	//	pre->showAdvancedOptions();
-	lyxerr << "Advanced Options button depressed, "
-	"show advanced options dialog"
-	<< endl;
-}
-
-void FormGraphics::InputCB(FL_OBJECT * ob, long)
-{
-	FormGraphics * pre = static_cast < FormGraphics* > (ob->form->u_vdata);
-	pre->bc_->valid(pre->checkInput());
-}
-

@@ -70,7 +70,7 @@ template<typename T>
 inline
 string const tostr(T const & t) 
 {
-	std::ostringstream ostr;
+	ostringstream ostr;
 	ostr << t;
 	return ostr.str().c_str();
 	// We need to use the .c_str since we sometimes are using

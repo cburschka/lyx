@@ -84,7 +84,7 @@ private:
 	/// Filter the inputs
 	virtual bool input( FL_OBJECT *, long );
 	/// Update the popup.
-	virtual void update(bool switched = false);
+	virtual void update();
 	/// Apply from popup
 	virtual void apply();
 	/// Cancel from popup

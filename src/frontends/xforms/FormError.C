@@ -60,19 +60,15 @@ void FormError::showInset( InsetError * inset )
 	if (inset_)
 		ih_.disconnect();
 
-	inset_    = inset;
-	message_  = inset->getContents();
+	inset_ = inset;
+	message_ = inset->getContents();
+	ih_ = inset->hide.connect(slot(this, &FormError::hide));
 	show();
 }
 
 
-void FormError::update(bool switched)
+void FormError::update()
 {
-	if (switched) {
-		hide();
-		return;
-	}
-
 	fl_set_object_label(dialog_->message, message_.c_str());
 }
 

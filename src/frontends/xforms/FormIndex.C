@@ -69,13 +69,8 @@ void FormIndex::build()
 }
 
 
-void FormIndex::update(bool switched)
+void FormIndex::update()
 {
-	if (switched) {
-		hide();
-		return;
-	}
-
 	fl_set_input(dialog_->key, params.getContents().c_str());
 
 	if ( lv_->buffer()->isReadonly() ) {

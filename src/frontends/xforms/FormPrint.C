@@ -158,8 +158,7 @@ void FormPrint::apply()
 }
 
 
-// we can safely ignore the parameter because we can always update
-void FormPrint::update(bool)
+void FormPrint::update()
 {
 	if (dialog_
 	    && lv_->view()->available()) {

@@ -1,3 +1,56 @@
+2000-10-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/kde/*data.[Ch]: _("") is not
+	allowed
+
+2000-10-24  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/buffer.C: removed redundant using directive.
+
+	* src/frontends/DialogBase.h: revert to original definition of
+	update(). 
+	
+	* src/frontends/xforms/Dialogs.C (c-tor): splitting the tabular
+	stuff into two classes, one for each dialog, requires a new
+	element in the dialogs vector, FormTabularCreate.
+
+	* src/frontends/xforms/FormXXX.[Ch] (update): revert to original
+	definition.
+
+	* src/frontends/xforms/FormBase.[Ch] (FormBaseBD::updateSlot): new
+	method. Continues Allan's idea, but means that derived classes
+	don't need to worry about "update or hide?".
+
+	* src/frontends/xforms/FormError.C (showInset): add connection
+	again ;-) 
+
+	* src/frontends/xforms/FormTabular.[Ch]: split into two classes,
+	one for each dialog. FormTabular now contains main tabular dialog
+	only.
+
+	* src/frontends/xforms/FormTabularCreate.[Ch]:
+	* src/frontends/xforms/forms/form_tabular_create.fd: the create
+	dialog. 
+
+	* src/frontends/xforms/FormGraphics.[Ch]:
+	* src/frontends/xforms/forms/form_graphics.fd
+	* src/frontends/xforms/FormTabular.[Ch]:
+	* src/frontends/xforms/forms/form_tabular.fd: made daughter
+	classes of FormInset.
+
+	* src/frontends/xforms/forms/fdfix.sh: small fix. Can now create
+	class names properly. Eg, form_my_new_dialog -> FormMyNewDialog.
+
+	* src/frontends/xforms/Makefile.am:
+	* src/frontends/xforms/forms/makefile: added new files.
+
+	* src/insets/insettabular.[Ch]: removed (Dialogs *) member
+	variable. added Signal0 hide signal, in keeping with other GUI-I
+	insets.
+
+	* src/support/lstrings.h: removed redundant std:: qualifier as
+	it's already declared in Lsstream.h.
+
 2000-10-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/insets/figinset.C (GhostscriptMsg): use DisplayString() to
@@ -90,23 +143,23 @@
 
 2000-10-18  Angus Leeming <a.leeming@ic.ac.uk>
 
-       * src/support/lstrings.C (lowercase, uppercase):
-       use explicit casts to remove compiler warnings.
+	* src/support/lstrings.C (lowercase, uppercase):
+	use explicit casts to remove compiler warnings.
 
-       * src/support/LRegex.C (Impl):
-       * src/support/StrPool.C (add):
-       * src/support/filetools.C (MakeAbsPath, NormalizePath, MakeRelPath)
-       (AddPath, MakeDisplayPath):
-       * src/support/lstrings.C (prefixIs, subst):
-       use correct type to remove compiler warnings.
+	* src/support/LRegex.C (Impl):
+	* src/support/StrPool.C (add):
+	* src/support/filetools.C (MakeAbsPath, NormalizePath, MakeRelPath)
+	(AddPath, MakeDisplayPath):
+	* src/support/lstrings.C (prefixIs, subst):
+	use correct type to remove compiler warnings.
 
-       * src/support/lstrings.[Ch] (countChar): returns string::size_type.
+	* src/support/lstrings.[Ch] (countChar): returns string::size_type.
 
-       * src/support/lyxlib.h:
-       * src/support/mkdir.C (mkdir): change parameter to mode_t for
-       portability and to remove compiler warning with DEC cxx.
+	* src/support/lyxlib.h:
+	* src/support/mkdir.C (mkdir): change parameter to mode_t for
+	portability and to remove compiler warning with DEC cxx.
 
-       * src/support/FileInfo.[Ch] (flagRWX): ditto.
+	* src/support/FileInfo.[Ch] (flagRWX): ditto.
 
 2000-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

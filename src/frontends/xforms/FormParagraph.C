@@ -136,8 +136,7 @@ void FormParagraph::apply()
 }
 
 
-// we can safely ignore the parameter because we can always update
-void FormParagraph::update(bool)
+void FormParagraph::update()
 {
     if (!dialog_)
         return;

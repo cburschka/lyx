@@ -33,7 +33,7 @@ private:
 	/// Build the dialog
 	virtual void build();
 	/// Update dialog before showing it
-	virtual void update(bool switched = false);
+	virtual void update();
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();
 	/// Pointer to the actual instantiation of the xform's form

@@ -372,8 +372,7 @@ void FormPreferences::apply()
 }
 
 
-// we can safely ignore the parameter because we can always update
-void FormPreferences::update(bool)
+void FormPreferences::update()
 {
 	if (dialog_) {
 		// read lyxrc entries

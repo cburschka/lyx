@@ -34,8 +34,10 @@ private:
 
 	/// Build the dialog
 	virtual void build();
+	/// bool indicates if a buffer switch took place
+	virtual void updateSlot(bool) { update(); }
 	/// Update dialog before showing it
-	virtual void update(bool switched = false);
+	virtual void update();
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();
 	/// Pointer to the actual instantiation of the xform's form

@@ -40,7 +40,7 @@ private:
 	/// Apply from popup
 	virtual void apply();
 	/// Update the popup.
-	virtual void update(bool);
+	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual bool input(FL_OBJECT * ob, long);
 

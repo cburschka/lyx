@@ -46,7 +46,7 @@ public:
 	~FormPreferences();
 private:
 	/// Update the dialog.
-	virtual void update(bool = false);
+	virtual void update();
 	///
 	virtual void hide();
 	/// OK from dialog

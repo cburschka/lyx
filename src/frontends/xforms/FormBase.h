@@ -59,8 +59,8 @@ protected: // methods
 	void show();
 	/// Hide the dialog.
 	virtual void hide();
-	/// bool indicates if a buffer switch took place
-	virtual void update(bool = false) {}
+	/// Update the dialog.
+	virtual void update() {}
 	/// Connect signals. Also perform any necessary initialisation.
 	virtual void connect();
 	/// Disconnect signals. Also perform any necessary housekeeping.
@@ -146,6 +146,8 @@ protected:
 	virtual void connect();
 	/// Disconnect signals
 	virtual void disconnect();
+	/// bool indicates if a buffer switch took place
+	virtual void updateSlot(bool) { update(); }
 
 	/// Update connection.
 	Connection u_;

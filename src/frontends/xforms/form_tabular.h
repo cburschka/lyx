@@ -5,19 +5,15 @@
 #define FD_form_tabular_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormTabularCloseCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormTabularInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormTabularInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormTabularInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormTabularInputCB(FL_OBJECT *, long);
-
-extern  "C" void C_FormTabularOKCB(FL_OBJECT *, long);
-extern  "C" void C_FormTabularApplyCB(FL_OBJECT *, long);
-extern  "C" void C_FormTabularCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
@@ -90,16 +86,6 @@ struct FD_form_longtable_options {
 	FL_OBJECT *radio_lt_foot;
 	FL_OBJECT *radio_lt_lastfoot;
 	FL_OBJECT *radio_lt_newpage;
-};
-struct FD_form_create_tabular {
-	~FD_form_create_tabular();
-
-	FL_FORM *form;
-	FL_OBJECT *button_ok;
-	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
-	FL_OBJECT *slider_columns;
-	FL_OBJECT *slider_rows;
 };
 
 #endif /* FD_form_tabular_h_ */

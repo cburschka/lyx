@@ -95,13 +95,8 @@ void FormRef::build()
 }
 
 
-void FormRef::update(bool switched)
+void FormRef::update()
 {
-	if (switched) {
-		hide();
-		return;
-	}
-
 	fl_set_input(dialog_->ref,  params.getContents().c_str());
 	fl_set_input(dialog_->name, params.getOptions().c_str());
 
