@@ -18,9 +18,9 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	int defaultColSpace(int) { return 0; }
+	int defaultColSpace(col_type) { return 0; }
 	///
-	char defaultColAlign(int) { return 'l'; }
+	char defaultColAlign(col_type) { return 'l'; }
 };
 
 #endif

@@ -55,8 +55,6 @@ namespace {
 
 
 // local global
-int sel_x;
-int sel_y;
 int first_x;
 int first_y;
 
@@ -126,7 +124,7 @@ string const InsetFormulaBase::editMessage() const
 }
 
 
-void InsetFormulaBase::edit(BufferView * bv, int x, int y, unsigned int button)
+void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 {
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
@@ -282,7 +280,7 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 				mathcursor->setPos(x + xo_, y + yo_);
 				string sel =
 					bv->getLyXText()->selectionAsString(bv->buffer(), false);
-				//mathed_parse_cell(ar, sel);
+				mathed_parse_cell(ar, sel);
 				mathcursor->insert(ar);
 			}	
 			break;

@@ -70,7 +70,7 @@ void MathRootInset::normalize(NormalStream & os) const
 }
 
 
-bool MathRootInset::idxUp(int & idx, int & pos) const
+bool MathRootInset::idxUp(idx_type & idx, pos_type & pos) const
 {
 	if (idx == 0)
 		return false;
@@ -80,7 +80,7 @@ bool MathRootInset::idxUp(int & idx, int & pos) const
 }
 
 
-bool MathRootInset::idxDown(int & idx, int & pos) const
+bool MathRootInset::idxDown(idx_type & idx, pos_type & pos) const
 {
 	if (idx == 1)
 		return false;
