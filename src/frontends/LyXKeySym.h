@@ -38,7 +38,7 @@ public:
 
 	/// Is this normal insertable text ? (last ditch attempt only)
 	virtual bool isText() const { return false; }
- 
+
 	/// What is the symbolic name of this key? F.ex. "Return" or "c"
 	virtual string getSymbolName() const = 0;
 

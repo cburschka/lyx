@@ -71,16 +71,16 @@ void GAbout::update()
 	addDefaultTags(buf);
 	while (getline(ss, s)) {
 
-		if (prefixIs(s, "@b")) 
-			buf->insert_with_tag(buf->end(), 
-					     Glib::locale_to_utf8(s.substr(2)), 
+		if (prefixIs(s, "@b"))
+			buf->insert_with_tag(buf->end(),
+					     Glib::locale_to_utf8(s.substr(2)),
 					     "bold");
 		else if (prefixIs(s, "@i"))
-			buf->insert_with_tag(buf->end(), 
-					     Glib::locale_to_utf8(s.substr(2)), 
+			buf->insert_with_tag(buf->end(),
+					     Glib::locale_to_utf8(s.substr(2)),
 					     "italic");
 		else
-			buf->insert(buf->end(), 
+			buf->insert(buf->end(),
 				    Glib::locale_to_utf8(s.substr(2)));
 		buf->insert(buf->end(),"\n");
 

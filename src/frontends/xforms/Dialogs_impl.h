@@ -37,7 +37,7 @@
 #include "ControlChanges.h"
 #include "FormChanges.h"
 #include "forms/form_changes.h"
- 
+
 #include "ControlCharacter.h"
 #include "FormCharacter.h"
 #include "forms/form_character.h"
@@ -173,7 +173,7 @@ BibtexDialog;
 
 typedef GUI<ControlChanges, FormChanges, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 ChangesDialog;
- 
+
 typedef GUI<ControlCharacter, FormCharacter, OkApplyCancelReadOnlyPolicy, xformsBC>
 CharacterDialog;
 

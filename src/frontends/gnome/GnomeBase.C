@@ -23,7 +23,7 @@ GnomeBase::GnomeBase(string const & name)
 	  updating_(false),
 	  file_(name + ".glade"),
 	  title_(name),
-	  widget_name_(name), 
+	  widget_name_(name),
 	  xml_(0),
 	  dialog_(0)
 {

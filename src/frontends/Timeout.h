@@ -77,7 +77,7 @@ public:
 		///
 		Timeout & owner_;
 	};
-	
+
 private:
 	///
 	friend class Impl;

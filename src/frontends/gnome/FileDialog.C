@@ -54,7 +54,7 @@ string const FileDialog::Private::exec()
 	canceled_ = false;
 	sel_.set_modal(modal_);
 	sel_.show();
-	
+
 	sel_.run();
 	// Find if its canceled or oked and return as needed.
 

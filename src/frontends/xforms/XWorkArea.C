@@ -262,7 +262,7 @@ void XWorkArea::scroll_cb()
 	waitForX(false);
 }
 
- 
+
 int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				 FL_Coord, FL_Coord,
 				 int key, void * xev)
