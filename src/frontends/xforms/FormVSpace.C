@@ -167,8 +167,10 @@ void FormVSpace::build()
 	// disable for read-only documents
 	bcview().addReadOnly(dialog_->choice_space);
 	bcview().addReadOnly(dialog_->input_space);
+	bcview().addReadOnly(dialog_->choice_unit_space);
 
-	// check validity of "length + unit" input
+	// check validity of "length + unit" input.
+	// If invalid, the label of choice_space is displayed in red.
 	addCheckedGlueLength(bcview(),
 			     dialog_->input_space,
 			     dialog_->choice_space);
@@ -177,6 +179,10 @@ void FormVSpace::build()
 	setPrehandler(dialog_->input_space);
 
 	fl_set_input_return(dialog_->input_space, FL_RETURN_CHANGED);
+
+	string const spacing =
+		_("None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length");
+	fl_addto_choice(dialog_->choice_space, spacing.c_str());
 
 	// Create the contents of the unit choices; don't include the "%" terms.
 	vector<string> units_vec = getLatexUnits();
@@ -236,6 +242,10 @@ void FormVSpace::update()
 			     dialog_->input_space,
 			     dialog_->choice_unit_space);
 
+	bool const custom_length =
+		fl_get_choice(dialog_->choice_space) == 7;
+	setEnabled(dialog_->input_space, custom_length);
+	setEnabled(dialog_->choice_unit_space, custom_length);
 }
 
 
@@ -246,6 +256,8 @@ ButtonPolicy::SMInput FormVSpace::input(FL_OBJECT * ob, long)
 	if (ob == dialog_->choice_space) {
 		bool const custom_length =
 			fl_get_choice(dialog_->choice_space) == 7;
+		setEnabled(dialog_->input_space, custom_length);
+		setEnabled(dialog_->choice_unit_space, custom_length);
 	}
 	return ButtonPolicy::SMI_VALID;
 }

@@ -14,19 +14,20 @@
 #include "insetvspace.h"
 
 #include "buffer.h"
-#include "debug.h"
+#include "BufferView.h"
+#include "dispatchresult.h"
+#include "funcrequest.h"
+#include "gettext.h"
 #include "LColor.h"
 #include "lyxlex.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
-#include "gettext.h"
 
-#include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
+#include "frontends/Painter.h"
 
 #include "support/std_sstream.h"
 
-using std::endl;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -40,11 +41,38 @@ InsetVSpace::InsetVSpace(VSpace const & space)
 {}
 
 
+InsetVSpace::~InsetVSpace()
+{
+	InsetVSpaceMailer(*this).hideDialog();
+}
+
+
 std::auto_ptr<InsetBase> InsetVSpace::clone() const
 {
 	return std::auto_ptr<InsetBase>(new InsetVSpace(*this));
 }
 
+
+DispatchResult
+InsetVSpace::priv_dispatch(FuncRequest const & cmd,
+			   idx_type & idx, pos_type & pos)
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY: {
+		InsetVSpaceMailer::string2params(cmd.argument, space_);
+		return DispatchResult(true, true);
+	}
+
+	case LFUN_MOUSE_PRESS:
+		InsetVSpaceMailer(*this).showDialog(cmd.view());
+		return DispatchResult(true, true);
+
+	default:
+		return InsetOld::priv_dispatch(cmd, idx, pos);
+	}
+}
+		
 
 void InsetVSpace::read(Buffer const &, LyXLex & lex)
 {
@@ -200,8 +228,6 @@ string const InsetVSpaceMailer::inset2string(Buffer const &) const
 
 void InsetVSpaceMailer::string2params(string const & in, VSpace & vspace)
 {
-	//lyxerr << "\nInsetVSpaceMailer::string2params, got: '" << in << "'" << endl;
-
 	vspace = VSpace();
 
 	if (in.empty())

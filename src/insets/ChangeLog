@@ -1,5 +1,11 @@
 2003-11-28  Angus Leeming  <leeming@lyx.org>
 
+	* insetvspace.[Ch] (d-tor, priv_dispatch): new member functions,
+	hiding and showing the dialog respectively.
+	(priv_dispatch): also actually update the inset contents.
+
+2003-11-28  Angus Leeming  <leeming@lyx.org>
+
 	* insetbox.C (d-tor):
 	* insetbranch.C (d-tor):
 	* insetcite.C (d-tor):

@@ -24,6 +24,8 @@ public:
 	///
 	InsetVSpace(VSpace const &);
 	///
+	~InsetVSpace();
+	///
 	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -47,6 +49,12 @@ public:
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	bool display() const { return true; }
+
+protected:
+	///
+	virtual
+	DispatchResult
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 
 public:
 	/// how much
