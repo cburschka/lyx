@@ -19,6 +19,7 @@
 #include "debug.h"
 #include "lyxlex.h"
 #include "counters.h"
+#include "FloatList.h"
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"
@@ -49,7 +50,8 @@ struct compare_name {
 
 LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 			   string const & desc)
-	: name_(fn), latexname_(cln), description_(desc), ctrs_(new Counters)
+	: name_(fn), latexname_(cln), description_(desc),
+	  floatlist_(new FloatList), ctrs_(new Counters)
 {
 	outputType_ = LATEX;
 	columns_ = 1;
@@ -104,7 +106,8 @@ enum TextClassTags {
 	TC_LEFTMARGIN,
 	TC_RIGHTMARGIN,
 	TC_FLOAT,
-	TC_COUNTER
+	TC_COUNTER,
+	TC_NOFLOAT
 };
 
 
@@ -121,6 +124,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		{ "input",           TC_INPUT },
 		{ "leftmargin",      TC_LEFTMARGIN },
 		{ "maxcounter",      TC_MAXCOUNTER },
+		{ "nofloat",         TC_NOFLOAT },
 		{ "nostyle",         TC_NOSTYLE },
 		{ "outputtype",      TC_OUTPUTTYPE },
 		{ "pagestyle",       TC_PAGESTYLE },
@@ -145,7 +149,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				     << MakeDisplayPath(filename)
 				     << endl;
 
-	LyXLex lexrc(textClassTags, TC_COUNTER);
+	LyXLex lexrc(textClassTags, TC_NOFLOAT);
 	bool error = false;
 
 	lexrc.setFile(filename);
@@ -322,6 +326,13 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		case TC_COUNTER:
 			readCounter(lexrc);
 			break;
+		case TC_NOFLOAT:
+			if (lexrc.next()) {
+				string const nofloat = lexrc.getString();
+				floatlist_->erase(nofloat);
+			}
+			break;
+
 		}
 	}
 
@@ -588,7 +599,7 @@ void LyXTextClass::readFloat(LyXLex & lexrc)
 	if (getout) {
 		Floating newfloat(type, placement, ext, within,
 				  style, name, listname, builtin);
-		floatlist_.newFloat(newfloat);
+		floatlist_->newFloat(newfloat);
 	}
 
 	lexrc.popTable();
@@ -757,13 +768,13 @@ bool LyXTextClass::load() const
 
 FloatList & LyXTextClass::floats()
 {
-	return floatlist_;
+	return *floatlist_.get();
 }
 
 
 FloatList const & LyXTextClass::floats() const
 {
-	return floatlist_;
+	return *floatlist_.get();
 }
 
 

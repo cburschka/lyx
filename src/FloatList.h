@@ -43,6 +43,8 @@ public:
 	///
 	Floating const & getType(string const & t) const;
 	///
+	void erase(string const & t);
+	///
 	const_iterator operator[](string const & t) const;
 private:
 	///

@@ -26,29 +26,6 @@
 
 FloatList::FloatList()
 {
-#if 0
-	// Insert the latex builtin float-types
-	// (these will later be read from a layout file)
-
-	// table
-	Floating table("table", "tbp", "lot", "", "plain", N_("Table"),
-		       N_("List of Tables"), true);
-	newFloat(table);
-
-	// figure
-	Floating figure("figure", "tbp", "lof",
-			"", "plain", N_("Figure"),
-			N_("List of Figures"), true);
-	newFloat(figure);
-
-	// And we add algorithm too since LyX has
-	// supported that for a long time,
-	// but support for this should probably be moved to a layout file.
-	Floating algorithm("algorithm", "htbp", "loa",
-			   "", "ruled", N_("Algorithm"),
-			   N_("List of Algorithms"));
-	newFloat(algorithm);
-#endif
 }
 
 
@@ -98,6 +75,12 @@ Floating const & FloatList::getType(string const & t) const
 	static Floating empty_float;
 	return empty_float;
 #endif
+}
+
+
+void FloatList::erase(string const & t)
+{
+	list.erase(t);
 }
 
 

@@ -19,7 +19,6 @@
 #include "lyxlayout.h"
 #include "LString.h"
 #include "lyxlayout_ptr_fwd.h"
-#include "FloatList.h"
 
 #include "support/types.h"
 
@@ -29,6 +28,7 @@
 
 class LyXLex;
 class Counters;
+class FloatList;
 
 ///
 class LyXTextClass {
@@ -196,7 +196,7 @@ private:
 	LayoutList layoutlist_;
 
 	///
-	FloatList floatlist_;
+	boost::shared_ptr<FloatList> floatlist_;
 
 	///
 	boost::shared_ptr<Counters> ctrs_;

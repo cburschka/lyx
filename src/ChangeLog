@@ -1,7 +1,24 @@
+2002-09-11  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxtextclass.h: don't include FloatList.h, forward declare instead.
+	make floatlist_ a boost::shared_ptr<FloatList>
+
+	* lyxtextclass.C: include FloatList.h
+	(LyXTextClass): initialize floatlist_
+	(TextClassTags): add TC_NOFLOAT
+	(Read): match "nofloat" to TC_NOFLOAT and use it.
+	(readFloat): modify call to floatlist_
+	(floats): ditto
+	(floats): ditto
+
+	* FloatList.[Ch] (FloatList): remove commented out float
+	initialization.
+	(erase): new function
+
 2002-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* MenuBackend.C (expandToc): fix crash when there is no document
-	open 
+	open
 
 2002-09-10  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -10,17 +27,17 @@
 2002-09-09  John Levon  <levon@movementarian.org>
 
 	* text2.C: remove confusing and awkward depth wraparound
- 
+
 2002-09-09  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C: Don't use empty arg for LFUN_CHILD_INSERT
 
 	* buffer.h:
 	* buffer.C: remove getIncludeonlyList()
- 
-	* paragraph.C: 
+
+	* paragraph.C:
 	* lyxfunc.C: remove headers
- 
+
 2002-09-09  Juergen Vigna  <jug@sad.it>
 
 	* text.C (getColumnNearX): fix form Michael this is most
