@@ -12,36 +12,45 @@
 # It contains the instructions that sed requires to manipulate
 # the .h files produced by fdesign into a form usable by LyX
 
-# Strip multiple blank lines, leaving only one
-/^$/{
-N
-/^\n$/D
-}
+# Remove trailing whitespace.
+s/[ 	]*$//
 
-# Rewrite FD_form_xxx as FD_xxx
-# This is done both for the structs and for the #define bounding the header
-s/\(.*\) FD_form_\(.*\)/\1 FD_\2/
 
-# Forward declare FL_FORM and FL_OBJECT
-/#define FD/a\
-\
-#include "forms_fwd.h"
-
-# Delete the fdesign comments
+# Delete blank lines, "extern void" function declarations and fdesign comments.
+/^$/d
+/^extern void/d
+/Forms and Objects/d
 /Callbacks, globals/d
 /generated with fdesign/d
-/Forms and Objects/d
 
-# Replace lines such as "extern void func(args);"
-# with "extern "C" void func(args);"
-# Note that these should not occur because we should be using signals. See the
-# README file for further information.
-s/\(extern \)\(void \)\(.*\)/\1 "C" \2\3/
 
-# Rename the function create_form_form_xxx(void) as build_xxx(void * parent)
-s/extern \(.*\) create_form_form_\(.*\)\([(]void[)]\)/\1 build_\2(void *)/
+# Pretty formatting; add an empty line before "#endif"
+/#endif/i\
 
-# Manipulate the structs
+
+# Immediately after line "#define FD_xxx_h_" that starts off the header file,
+# forward declare FL_FORM and FL_OBJECT and append the contents of file
+# "extern.tmp". This latter is a sorted, unique list of any function
+# declarations.
+/#define FD/{
+a\
+\
+#include "forms_fwd.h"\
+
+r extern.tmp
+}
+
+
+# Rewrite FD_form_xxx as FD_xxx.
+# This is done both for the structs and for the #define bounding the header.
+s/\(.*\) FD_form_\(.*\)/\1 FD_\2/
+
+
+# Rename the function create_form_form_xxx(void) as build_xxx(void *).
+s/extern \(.*\) create_form_form_\(.*\)[(]void[)]/\1 build_\2(void *)/
+
+
+# Manipulate the structs:
 #
 # Rewrite                       as
 # typedef struct {              struct FD_xxx {
@@ -64,32 +73,27 @@ s/extern \(.*\) create_form_form_\(.*\)\([(]void[)]\)/\1 build_\2(void *)/
 # Place all lines containing FL_FORM and FL_OBJECT in the hold space, deleting
 # them from the pattern space.
 
-# For all lines containing FL_FORM...
-/FL_FORM/{
+# For all lines starting with FL_FORM...
+/^	FL_FORM/{
 
-# Rewrite "FL_FORM *form_xxx;" as "FL_FORM   * form;
-# Note that the spaces before FL_FORM are replaced with a <tab>
-s/\(.*\)FL_FORM \(.*\)/	FL_FORM   * form;/
+# 1. Rewrite "FL_FORM *form_xxx;" as "FL_FORM   * form;
+s/FL_FORM[ ]*\*form.*/FL_FORM   * form;/
 
-# We know that FL_FORM comes before any FL_OBJECT, so can initialise
-# the hold space with it.
+# 2. We know that FL_FORM comes before any FL_OBJECT, so can initialise
+# the hold space with it. Delete from the pattern space.
 h
 d
-
 }
 
-# For all lines containing FL_OBJECT and not containing extern...
-/FL_OBJECT/{
-/extern/!{
+# For all lines starting with FL_OBJECT...
+/^	FL_OBJECT/{
 
-# perform a little pretty formatting
-s/\(.*\)FL_OBJECT \([*]\)\(.*\)/	FL_OBJECT * \3/
+# 1. Perform a little pretty formatting.
+s/FL_OBJECT \*\(.*\)/FL_OBJECT * \1/
 
-# append to the hold space
+# 2. Append to the hold space and delete from the pattern space.
 H
 d
-
-}
 }
 
 # The struct is ended by "} FD_xxx;", so now's the time to paste back the
@@ -102,10 +106,11 @@ i\
 s/} \(.*\);/struct \1 {\
 	~\1();/
 
-# 3. Paste the contents of the hold space beneath it
+# 3. Paste the contents of the hold space beneath it.
 G
 
-# 4. Close the struct
+# 4. Close the struct and append an empty line.
 a\
-};
+};\
+
 }

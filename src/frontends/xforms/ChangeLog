@@ -1,5 +1,11 @@
 2002-11-20  Angus Leeming  <leeming@lyx.org>
 
+	* forms/fdfix.sh: 
+	* forms/fdfixh.sed: strengthen the sed in the sed script and further
+	beautify the contents of the resultant .h file.
+
+2002-11-20  Angus Leeming  <leeming@lyx.org>
+
 	* MathsCallbacks.h: removed.
 	* Makefile.am: remove MathsCallbacks.h.
 

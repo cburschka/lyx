@@ -29,6 +29,7 @@ cat - > ${OUTPUT_FILE} <<EOF
 
 // This file is part of LyX, the document processor.
 // Licence details can be found in the file COPYING.
+
 EOF
 }
 
@@ -51,7 +52,7 @@ fi
 # Create the initial .c and .h files
 FDESIGN=fdesign
 FDFILE=${BASENAME}.fd
-(cd ${DIRNAME}; ${FDESIGN} -convert ${FDFILE})
+(cd ${DIRNAME} && ${FDESIGN} -convert ${FDFILE})
 if [ $? -ne 0 ]; then
     echo "\"${FDESIGN} -convert ${FDFILE}\" failed. Please investigate."
     exit 1
@@ -63,12 +64,27 @@ HIN=${DIRNAME}/${BASENAME}.h
 HPATCH=${DIRNAME}/${BASENAME}.h.patch
 HOUT=${BASENAME}.hpp
 
+# First clean up the "extern void func(arg);" declarations and
+# put the sorted, unique list in file ${EXTERN_FUNCS}
+# The contents of this file are used by ${FDFIXH} to replace the mess
+# output by fdesign
+EXTERN_FUNCS=extern.tmp
+sed -n 's/extern void \(.*\)/void \1/p' ${HIN} > ${EXTERN_FUNCS}
+
+if [ -s ${EXTERN_FUNCS} ]; then
+	sort -u ${EXTERN_FUNCS} > tmp
+	echo "extern \"C\" {" > ${EXTERN_FUNCS}
+	cat tmp >> ${EXTERN_FUNCS}
+	echo "}" >> ${EXTERN_FUNCS}
+	rm -f tmp
+fi
+
 FDFIXH=${DIRNAME}/fdfixh.sed
 
-OUTPUT_FILE=${HOUT}
-INTRO_MESSAGE
+OUTPUT_FILE=${HOUT}; INTRO_MESSAGE
 
-sed -f $FDFIXH < $HIN >> ${HOUT}
+sed -f ${FDFIXH} < ${HIN} >> ${HOUT}
+rm -f ${EXTERN_FUNCS}
 
 # Patch the .h file if a patch exists
 if [ -f "${HPATCH}" ] ; then
@@ -104,10 +120,8 @@ FINAL_COUT=${BASENAME}.C
 
 FDFIXC=${DIRNAME}/fdfixc.sed
 
-OUTPUT_FILE=${COUT}
-INTRO_MESSAGE
+OUTPUT_FILE=${COUT}; INTRO_MESSAGE
 
-echo >> ${COUT}
 echo "#include <config.h>" >> ${COUT}
 echo "#include \"forms_gettext.h\"" >> ${COUT}
 echo "#include \"gettext.h\"" >> ${COUT}
@@ -117,14 +131,12 @@ if [ $? -eq 0 ]; then
     echo "#include \"bmtable.h\"" >> ${COUT}
 fi
 
-echo >> ${COUT}
-
 sed -f ${FDFIXC} < ${CIN} >> ${COUT}
 
 # Patch the .C file if a patch exists
-if [ -f "$CPATCH" ] ; then
-    echo "Patching ${COUT} with $CPATCH"
-    patch -s ${COUT} < $CPATCH
+if [ -f "${CPATCH}" ] ; then
+    echo "Patching ${COUT} with ${CPATCH}"
+    patch -s ${COUT} < ${CPATCH}
 fi
 
 # Clean up, to leave the finished .C file
