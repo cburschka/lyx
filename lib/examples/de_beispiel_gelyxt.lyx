@@ -1,6 +1,5 @@
-#This file was created by <pit> Wed Mar  3 01:35:41 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language german
 \inputencoding latin1
@@ -12,12 +11,14 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \defskip medskip
-\quotes_language english
+\quotes_language german
 \quotes_times 2
 \papercolumns 1
 \papersides 1
@@ -136,11 +137,14 @@ LyX-Merkmale
 \layout Standard
 
 LyX hat viele Merkmale, die das Schreiben von Dokumenten erleichtern.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Warum sollte man es sonst benutzen?
-\end_float 
+\end_inset 
+
  Ich bin 
 \emph on 
 sehr aufgegergt,
@@ -209,11 +213,11 @@ Mathematik
 
 Meine Lieblingsformel ist die Lösung einer quadratischen Gleichung.
  Aus 
-\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset 
 
  (Gl.1) folgt 
-\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
 \end_inset 
 
  (Gl.
@@ -221,7 +225,7 @@ Meine Lieblingsformel ist die Lösung einer quadratischen Gleichung.
 \layout Standard
 
 Eine weitere Lieblingsformel ist die Ableitung: 
-\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset 
 
  (Gl.
@@ -251,20 +255,20 @@ beschrieben wurde.
 \layout Itemize
 
 Ich mußte das Wort 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset 
 
 Literatur
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset 
 
  nicht schreiben.
  LyX schreibt es automatisch (oder das Wort 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset 
 
 Referenzen
-\begin_inset Quotes eld
+\begin_inset Quotes grd
 \end_inset 
 
 , abhängig von der Dokumentklasse), wenn man als Umgebung 
