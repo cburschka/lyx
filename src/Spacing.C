@@ -56,7 +56,7 @@ void Spacing::set(Spacing::Space sp, float val)
 void Spacing::set(Spacing::Space sp, string const & val)
 {
 	float fval;
-	istringstream istr(val);
+	istringstream istr(val.c_str());
 	istr >> fval;
 	set(sp, fval);
 }

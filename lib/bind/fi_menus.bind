@@ -149,12 +149,12 @@
 # Math menu
 #
 
-\bind "M-e m"                   "symbol-insert frac"
-\bind "M-e n"                   "symbol-insert sqrt"
-\bind "M-e e"                   "symbol-insert ^"
-\bind "M-e a"                   "symbol-insert _"
-\bind "M-e s"                   "symbol-insert sum"
-\bind "M-e i"                   "symbol-insert int"
+\bind "M-e m"                   "math-insert frac"
+\bind "M-e n"                   "math-insert sqrt"
+\bind "M-e e"                   "math-insert ^"
+\bind "M-e a"                   "math-insert _"
+\bind "M-e s"                   "math-insert sum"
+\bind "M-e i"                   "math-insert int"
 \bind "M-e t"                   "math-mode"
 \bind "M-e k"                   "math-display"
 #bind "M-e p"                  "display-math-panel-or-something" # What function to use?

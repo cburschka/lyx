@@ -3935,7 +3935,7 @@ string const LyXParagraph::String(Buffer const * buffer, bool label)
 			 GetInset(i)->LyxCode() == Inset::MATH_CODE) {
 			std::ostringstream ost;
 			GetInset(i)->Ascii(buffer, ost);
-			s += subst(ost.str(),'\n',' ');
+			s += subst(ost.str().c_str(),'\n',' ');
 		}
 	}
 
@@ -3975,7 +3975,7 @@ string const LyXParagraph::String(Buffer const * buffer,
 		else if (c == META_INSET) {
 			std::ostringstream ost;
 			GetInset(i)->Ascii(buffer, ost);
-			s += ost.str();
+			s += ost.str().c_str();
 		}
 	}
 

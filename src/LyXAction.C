@@ -381,7 +381,6 @@ void LyXAction::init()
 		{ LFUN_SETXY, "server-set-xy", "", ReadOnly },
 		{ LFUN_SET_COLOR, "set-color", "", Noop },
 		{ LFUN_SPELLCHECK, "spellchecker", "", Noop },
-		{ LFUN_INSERT_MATH, "symbol-insert", "", Noop },
 		{ LFUN_SHIFT_TAB, "tab-backward", "", Noop },
 		{ LFUN_TAB, "tab-forward", "", Noop },
 		{ LFUN_TABINSERT, "tab-insert", "", Noop },

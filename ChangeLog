@@ -1,5 +1,24 @@
 2000-11-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/support/lyxstring.C: add a couple "using" directives.
+
+	* src/frontends/xforms/FormPreferences.C (ColoursLoadBrowser): add
+	a .c_str() here too for good measure.
+	* src/Spacing.C (set): ditto.
+	* src/lyxfunc.C (Dispatch): ditto.
+
+	* src/insets/insettabular.C (copySelection): change .str() to
+	.str().c_str() to fix problems with lyxstring.
+	* src/support/filetools.C (GetFileContents): ditto.
+	* src/buffer.C (asciiParagraph): ditto.
+	* src/paragraph.C (String): ditto.
+
+	* lib/bind/fi_menus.bind: change symbol-insert to math-insert.
+	* lib/bind/sciword.bind: ditto.
+
+	* src/LyXAction.C (init): remove "symbol-insert" function, which
+	shared LFUN_INSERT_MATH with "math-insert".
+
 	* lib/configure.m4: == is not a valid operator for command test.
 
 	* src/lyxrc.C: add using directive.

@@ -438,7 +438,7 @@ bool FormPreferences::ColoursLoadBrowser(string const & filename)
 			RGB col;
 			string name;
 			
-			istringstream iss(line);
+			istringstream iss(line.c_str());
 			iss >> col.r >> col.g >> col.b;
 			while (iss.good()) {
 				string next;

@@ -24,6 +24,8 @@
 #include "LAssert.h"
 
 using std::min;
+using std::istream;
+using std::ostream;
 
 // This class is supposed to be functionaly equivalent to a
 // standard conformant string. This mean among others that we

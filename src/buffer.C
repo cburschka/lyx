@@ -1647,7 +1647,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 			if ((inset = par->GetInset(i))) {
 				if (!inset->Ascii(this, buffer)) {
 					string dummy;
-					string s = rsplit(buffer.str(),
+					string s = rsplit(buffer.str().c_str(),
 							  dummy, '\n');
 					currlinelen += s.length();
 				} else {
@@ -1698,7 +1698,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 			break;
 		}
 	}
-	return buffer.str();
+	return buffer.str().c_str();
 }
 
 

@@ -2051,7 +2051,7 @@ string const LyXFunc::Dispatch(int ac,
 			cur_value = par->spacing.getValue();
 		}
 		
-		istringstream istr(argument);
+		istringstream istr(argument.c_str());
 
 		string tmp;
 		istr >> tmp;
@@ -2350,7 +2350,7 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_GOTO_PARAGRAPH:
 	{
-                istringstream istr(argument);
+                istringstream istr(argument.c_str());
 
 		int id;
 		istr >> id;

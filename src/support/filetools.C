@@ -746,7 +746,7 @@ string const GetFileContents(string const & fname)
 		if (ifs && ofs) {
 			ofs << ifs.rdbuf();
 			ifs.close();
-			return ofs.str();
+			return ofs.str().c_str();
 		}
 	}
 	lyxerr << "LyX was not able to read file '" << fname << "'" << endl;
