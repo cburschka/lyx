@@ -100,6 +100,16 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 		cerr << "t: " << t << "  c: '" << t.character() << "'\n";
 #endif
 
+		// We cannot handle comments here
+		if (t.cat() == catComment) {
+			if (t.cs().empty()) {
+				// "%\n" combination
+				p.skip_spaces();
+			} else
+				cerr << "Ignoring comment: " << t.asInput();
+			continue;
+		}
+
 		switch (t.character()) {
 			case 'c':
 			case 'l':
@@ -379,7 +389,19 @@ void handle_tabular(Parser & p, ostream & os,
 					split(arg, t, '-');
 					t.resize(2);
 					size_t from = string2int(t[0]) - 1;
+					if (from >= colinfo.size()) {
+						cerr << "cline starts at non "
+						        "existing column "
+						     << from << endl;
+						from = colinfo.size() - 1;
+					}
 					size_t to = string2int(t[1]);
+					if (to >= colinfo.size()) {
+						cerr << "cline ends at non "
+						        "existing column "
+						     << to << endl;
+						to = colinfo.size() - 1;
+					}
 					for (size_t col = from; col < to; ++col) {
 						//cerr << "row: " << row << " col: " << col << " i: " << i << endl;
 						if (i == 0) {

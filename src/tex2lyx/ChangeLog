@@ -1,3 +1,9 @@
+2004-11-27  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* table.C (handle_colalign): handle comments
+	* table.C (handle_tabular): don't crash on clines with out of range
+	columns
+
 2004-11-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* tex2lyx.C: remove format hack
