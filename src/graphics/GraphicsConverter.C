@@ -134,33 +134,25 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		<< "\n\tfrom_format:  " << from_format
 		<< "\n\tto_format:    " << to_format << endl;
 
+	// The converted image is to be stored in this file
+	to_file_ = ChangeExtension(to_file_base, formats.extension(to_format));
+
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
 	script << "#!/bin/sh\n";
 	bool const success = build_script(from_file, to_file_base,
 					  from_format, to_format, script);
 
-	// The converted image is to be stored in this file
-	to_file_ = ChangeExtension(to_file_base, formats.extension(to_format));
-
 	if (!success) {
-		script_file_ = string();
-		if (from_format == "lyxpreview") {
-			script_command_ =
-				LibFileSearch("scripts", "lyxpreview2xpm.sh")
-					+ " " +from_file + " " + to_file_;
-			lyxerr[Debug::GRAPHICS]
-				<< "\tI use lyxpreview2xpm for the conversion\n\t"
-				<< script_command_ << endl;
-		} else {
-			script_command_ =
-				LibFileSearch("scripts", "convertDefault.sh") +
-					' ' + from_format + ':' + from_file + ' ' +
-					to_format + ':' + to_file_;
-			lyxerr[Debug::GRAPHICS]
-				<< "\tNo converter defined! I use convertDefault.sh\n\t"
-				<< script_command_ << endl;
-		}
+		script_command_ =
+			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
+			' ' + from_format + ':' + from_file + ' ' +
+			to_format + ':' + to_file_;
+
+		lyxerr[Debug::GRAPHICS]
+			<< "\tNo converter defined! I use convertDefault.sh\n\t"
+			<< script_command_ << endl;
+
 	} else {
 
 		lyxerr[Debug::GRAPHICS] << "\tConversion script:"
