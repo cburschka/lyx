@@ -1,3 +1,8 @@
+2003-09-04  Johnathan Burchill  <jkerrb@shaw.ca>
+
+	* external_templates: add some clever LaTeX to the XFIG template so that
+	we input the file if it exists, else print a warning encased in an fbox.
+
 2003-09-03  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/fig2pdftex.sh: 
