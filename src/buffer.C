@@ -128,6 +128,7 @@ Buffer::Buffer(string const & file, bool ronly)
 	bak_clean = true;
 	dep_clean = 0;
 	read_only = ronly;
+	unnamed = false;
 	users = 0;
 	lyxvc.buffer(this);
 	if (read_only || (lyxrc.use_tempdir)) {

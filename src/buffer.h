@@ -223,7 +223,13 @@ public:
 	
         ///
         void markNwDirty() { nw_clean = false; }
-       
+
+	///
+	void setUnnamed(bool flag=true) { unnamed = flag; }
+
+	///
+	bool isUnnamed() { return unnamed; }
+
 	///
 	void markDirty() {
 		if (lyx_clean) {
@@ -396,6 +402,9 @@ private:
 	
         /// do we need to run weave/tangle
         bool nw_clean;
+
+	/// is this a unnamed file (New...)
+	bool unnamed;
 
 	/// is regenerating .tex necessary
 	DEPCLEAN * dep_clean;

@@ -89,6 +89,7 @@ bool BufferList::empty() const
 
 
 extern void MenuWrite(Buffer *);
+extern bool MenuWriteAs(Buffer *);
 
 bool BufferList::QwriteAll()
 {
@@ -97,21 +98,31 @@ bool BufferList::QwriteAll()
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
 		if (!(*it)->isLyxClean()) {
-			switch(AskConfirmation(_("Changes in document:"),
-					       MakeDisplayPath((*it)->fileName(),
-							       50),
-					       _("Save document?"))) {
-			case 1: // Yes
-				MenuWrite((*it));
-				break;
-			case 2: // No
-				askMoreConfirmation = true;
-				unsaved += MakeDisplayPath((*it)->fileName(),
-							   50);
-				unsaved += "\n";
-				break;
-			case 3: // Cancel
-				return false;
+			string fname;
+			if ((*it)->isUnnamed())
+				fname = OnlyFilename((*it)->fileName());
+			else
+				fname = MakeDisplayPath((*it)->fileName(), 50);
+			bool reask = true;
+			while(reask) {
+				switch(AskConfirmation(_("Changes in document:"),
+						       fname,
+						       _("Save document?"))) {
+				case 1: // Yes
+					if ((*it)->isUnnamed())
+						reask = !MenuWriteAs((*it));
+					else
+						MenuWrite((*it));
+					break;
+				case 2: // No
+					askMoreConfirmation = true;
+					unsaved += MakeDisplayPath(fname, 50);
+					unsaved += "\n";
+					reask = false;
+					break;
+				case 3: // Cancel
+					return false;
+				}
 			}
 		}
 	}
@@ -157,23 +168,40 @@ bool BufferList::close(Buffer * buf)
 	
         if (buf->getUser()) buf->getUser()->insetUnlock();
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
-		if (buf->getUser()) ProhibitInput(buf->getUser());
-                switch(AskConfirmation(_("Changes in document:"),
-				       MakeDisplayPath(buf->fileName(), 50),
-				       _("Save document?"))){
-		case 1: // Yes
-			if (buf->save()) {
-				lastfiles->newFile(buf->fileName());
-			} else {
-				if (buf->getUser()) AllowInput(buf->getUser());
+		if (buf->getUser())
+			ProhibitInput(buf->getUser());
+		string fname;
+		if (buf->isUnnamed())
+			fname = OnlyFilename(buf->fileName());
+		else
+			fname = MakeDisplayPath(buf->fileName(), 50);
+		bool reask = true;
+		while(reask) {
+			switch(AskConfirmation(_("Changes in document:"),
+					       fname,
+					       _("Save document?"))){
+			case 1: // Yes
+				if (buf->isUnnamed())
+					reask = !MenuWriteAs(buf);
+				else if (buf->save()) {
+					lastfiles->newFile(buf->fileName());
+				} else {
+					if (buf->getUser())
+						AllowInput(buf->getUser());
+					return false;
+				}
+				break;
+			case 2:
+				reask = false;
+				break;
+			case 3: // Cancel
+				if (buf->getUser())
+					AllowInput(buf->getUser());
 				return false;
 			}
-                        break;
-		case 3: // Cancel
-                        if (buf->getUser()) AllowInput(buf->getUser());
-                        return false;
-                }
-		if (buf->getUser()) AllowInput(buf->getUser());
+		}
+		if (buf->getUser())
+			AllowInput(buf->getUser());
 	}
 
 	bstore.release(buf);
@@ -245,9 +273,12 @@ void BufferList::emergencyWriteAll()
 			bool madeit = false;
 			
 			lyxerr <<_("lyx: Attempting to save"
-				   " document ")
-			       << (*it)->fileName()
-			       << _(" as...") << endl;
+				   " document ");
+			if ((*it)->isUnnamed())
+			    lyxerr << OnlyFilename((*it)->fileName());
+			else
+			    lyxerr << (*it)->fileName();
+			lyxerr << _(" as...") << endl;
 			
 			for (int i = 0; i < 3 && !madeit; ++i) {
 				string s;
@@ -257,6 +288,8 @@ void BufferList::emergencyWriteAll()
 				// 2) In HOME directory.
 				// 3) In "/tmp" directory.
 				if (i == 0) {
+					if ((*it)->isUnnamed())
+						continue;
 					s = (*it)->fileName();
 				} else if (i == 1) {
 					s = AddName(GetEnvPath("HOME"),
@@ -418,7 +451,12 @@ Buffer * BufferList::newFile(string const & name, string tname)
 		b->paragraph = new LyXParagraph;
 	}
 
+#ifdef NEW_WITH_FILENAME
 	b->markDirty();
+#else
+#warning Why mark a new document dirty? I deactivate this for unnamed docs! (Jug)
+	b->setUnnamed();
+#endif
 	b->setReadonly(false);
 	
 	return b;

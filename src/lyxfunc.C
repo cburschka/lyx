@@ -113,7 +113,7 @@ extern bool selection_possible;
 extern kb_keymap * toplevel_keymap;
 
 extern void MenuWrite(Buffer *);
-extern void MenuWriteAs(Buffer *);
+extern bool MenuWriteAs(Buffer *);
 extern int  MenuRunLaTeX(Buffer *);
 extern int  MenuBuildProg(Buffer *);
 extern int  MenuRunChktex(Buffer *);
@@ -775,16 +775,20 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_MENUWRITE:
-		owner->getMiniBuffer()->Set(_("Saving document"),
-					    MakeDisplayPath(owner->buffer()->fileName()),
-					    "...");
-		MenuWrite(owner->buffer());
-		//owner->getMiniBuffer()-> {
-		//	Set(_("Document saved as"),
-		//	    MakeDisplayPath(owner->buffer()->fileName()));
-		//} else {
-		//owner->getMiniBuffer()->Set(_("Save failed!"));
-		//}
+		if (!owner->buffer()->isUnnamed()) {
+			owner->getMiniBuffer()->Set(_("Saving document"),
+						    MakeDisplayPath(owner->buffer()->fileName()),
+						    "...");
+			MenuWrite(owner->buffer());
+			//owner->getMiniBuffer()-> {
+			//	Set(_("Document saved as"),
+			//	    MakeDisplayPath(owner->buffer()->fileName()));
+			//} else {
+			//owner->getMiniBuffer()->Set(_("Save failed!"));
+			//}
+		} else {
+			MenuWriteAs(owner->buffer());
+		}
 		break;
 		
 	case LFUN_MENUWRITEAS:
@@ -2183,7 +2187,7 @@ string LyXFunc::Dispatch(int ac,
 		// Do we have a locking inset...
 		if (owner->view()->the_locking_inset) {
 			lyxerr << "Locking inset code: "
-			       << owner->view()->the_locking_inset->LyxCode();
+			       << static_cast<int>(owner->view()->the_locking_inset->LyxCode());
 			InsetCaption * new_inset = new InsetCaption;
 			new_inset->setOwner(owner->view()->the_locking_inset);
 			new_inset->SetAutoBreakRows(true);
@@ -2883,6 +2887,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			initpath = trypath;
 	}
 
+#ifdef NEW_WITH_FILENAME
 	ProhibitInput(owner->view());
 	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 	fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
@@ -2895,7 +2900,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 		lyxerr.debug() << "New Document Cancelled." << endl;
 		return;
 	}
-        
+	
 	// get absolute path of file and make sure the filename ends
 	// with .lyx
 	string s = MakeAbsPath(fname);
@@ -2903,7 +2908,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 		s += ".lyx";
 
 	// Check if the document already is open
-	if (bufferlist.exists(s)){
+	if (bufferlist.exists(s)) {
 		switch(AskConfirmation(_("Document is already open:"), 
 				       MakeDisplayPath(s, 50),
 				       _("Do you want to close that document now?\n"
@@ -2922,7 +2927,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 				return;
 			}
 	}
-        
+
 	// Check whether the file already exists
 	if (IsLyXFilename(s)) {
 		FileInfo fi(s);
@@ -2942,6 +2947,16 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			return;
 		}
 	}
+#else
+	static int newfile_number = 0;
+	string s = "/lyx/dummy/dirname/newfile ["+tostr(++newfile_number)+"]";
+	FileInfo fi(s);
+	while (bufferlist.exists(s) || fi.readable()) {
+		++newfile_number;
+		s = "/lyx/dummy/dirname/newfile ["+tostr(newfile_number)+"]";
+		fi.newFile(s);
+	}
+#endif
 
 	// The template stuff
 	string templname;

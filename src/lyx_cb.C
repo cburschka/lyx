@@ -160,7 +160,7 @@ void ToggleLockedInsetCursor(long x, long y, int asc, int desc);
 int RunLinuxDoc(BufferView *, int, string const &);
 int RunDocBook(int, string const &);
 void MenuWrite(Buffer * buf);
-void MenuWriteAs(Buffer * buffer);
+bool MenuWriteAs(Buffer * buffer);
 void MenuReload(Buffer * buf);
 void MenuLayoutSave();
 
@@ -208,7 +208,7 @@ void MenuWrite(Buffer * buffer)
 
 // should be moved to BufferView.C
 // Half of this func should be in LyXView, the rest in BufferView.
-void MenuWriteAs(Buffer * buffer)
+bool MenuWriteAs(Buffer * buffer)
 {
 	// Why do we require BufferView::text to be able to write a
 	// document? I see no point in that. (Lgb)
@@ -225,14 +225,21 @@ void MenuWriteAs(Buffer * buffer)
 	if (!IsLyXFilename(fname))
 		fname += ".lyx";
 
-	fname = fileDlg.Select(_("Enter Filename to Save Document as"), 
-			       OnlyPath(fname),
-			       "*.lyx", 
-			       OnlyFilename(fname));
+	if (buffer->isUnnamed()) {
+		fname = fileDlg.Select(_("Enter Filename to Save Document as"), 
+				       "",
+				       "*.lyx", 
+				       "");
+	} else {
+		fname = fileDlg.Select(_("Enter Filename to Save Document as"), 
+				       OnlyPath(fname),
+				       "*.lyx", 
+				       OnlyFilename(fname));
+	}
 	AllowInput(current_view);
 
 	if (fname.empty()) {
-		return;
+		return false;
 	}
 	// Make sure the absolute filename ends with appropriate suffix
 	string s = MakeAbsPath(fname);
@@ -244,7 +251,7 @@ void MenuWriteAs(Buffer * buffer)
 		if (!AskQuestion(_("Same name as document already has:"),
 				 MakeDisplayPath(s, 50),
 				 _("Save anyway?")))
-			return;
+			return false;
 		// Falls through to name change and save
 	} 
 	// No, but do we have another file with this name open?
@@ -262,23 +269,25 @@ void MenuWriteAs(Buffer * buffer)
 				ShowMessage(buffer, _("Document renamed to '"),
 						MakeDisplayPath(s), _("', but not saved..."));
 			}
-		return;
+		return false;
 	} // Check whether the file exists
 	else {
 		FileInfo myfile(s);
 		if (myfile.isOK() && !AskQuestion(_("Document already exists:"), 
 						  MakeDisplayPath(s, 50),
 						  _("Replace file?")))
-			return;
+			return false;
 	}
 
 	// Ok, change the name of the buffer
 	buffer->fileName(s);
 	buffer->markDirty();
+	buffer->setUnnamed(false);
 	// And save
 	// Small bug: If the save fails, we have irreversible changed the name
 	// of the document.
 	MenuWrite(buffer);
+	return true;
 }    
 
 
@@ -974,8 +983,8 @@ void AutoSave(BufferView * bv)
 	if (!bv->available())
 		return;
 
-	if (bv->buffer()->isBakClean()
-	    || bv->buffer()->isReadonly()) {
+	if (bv->buffer()->isBakClean() ||
+	    bv->buffer()->isReadonly() || bv->buffer()->isUnnamed()) {
 		// We don't save now, but we'll try again later
 		bv->owner()->resetAutosaveTimer();
 		return;

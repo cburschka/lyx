@@ -1,3 +1,18 @@
+2000-07-26  Juergen Vigna  <jug@sad.it>
+
+	* src/buffer.h: added functions setUnnamed(bool) and isUnnamed().
+
+	* src/lyx_cb.C (MenuWriteAs): Changed to react right for unnamed docs
+	and return a bool if it did actual save the file.
+	(AutoSave): don't autosave a unnamed doc.
+
+	* src/bufferlist.C (close) (QwriteAll) (emergencyWriteAll):
+	check if this is an UNNAMED new file and react to it.
+	(newFile): set buffer to unnamed and change to not mark a new
+	buffer dirty if I didn't do anything with it.
+
+	* src/lyxfunc.C (MenuNew): Changed to not ask for filename on new.
+
 2000-07-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/frontends/Menubar.h: make "struct Pimpl;" public + the
