@@ -90,7 +90,14 @@ int InsetCitation::latex(Buffer const * buffer, std::ostream & os,
 	if (!getOptions().empty())
 		os << "[" << getOptions() << "]";
 
-	os << "{" << getContents() << "}";
+	// Paranoia check: make sure that there is no whitespace in here
+	string content;
+	for (string::const_iterator it = getContents().begin();
+	     it != getContents().end(); ++it) {
+		if (*it != ' ') content += *it;
+	}
+	
+	os << "{" << content << "}";
 
 	return 0;
 }

@@ -1,3 +1,8 @@
+2001-08-01  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetcite.C (latex): Paranoia check. Make sure that there is no
+	whitespace between the citation keys.
+
 2001-07-31  Juergen Vigna  <jug@sad.it>
 
 	* insetcollapsable.h: removed inline variable and moved it over
