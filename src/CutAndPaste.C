@@ -134,7 +134,6 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 				if (next) {
 					next->previous(pit->previous());
 				}
-				lyxerr << "deleting pit " << pit << endl;
 	 
 				delete pit;
 			}
