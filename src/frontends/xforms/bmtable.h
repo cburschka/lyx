@@ -1,10 +1,11 @@
 /**
  * \file bmtable.h
- * Copyright 2002 the LyX Team
  * Copyright 1995-1996 Alejandro Aguilar Sierra
  * Read the file COPYING
  *
  * \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 /* A bitmap table uses a single bitmap to simulate a 2d array

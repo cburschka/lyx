@@ -1,11 +1,12 @@
 /**
  * \file xforms/Dialogs.C
  * Copyright 1995 Matthias Ettrich
- * Copyright 1995-2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Allan Rae, rae@lyx.org
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Allan Rae
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

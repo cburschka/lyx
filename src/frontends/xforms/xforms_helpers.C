@@ -1,9 +1,10 @@
 /**
  * \file xforms_helpers.C
- * Copyright 2000-2002 The LyX Team.
  * See the file COPYING.
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
@@ -314,17 +315,10 @@ bool XformsColor::write(string const & filename)
 	if (!os)
 		return false;
 
-	os << "### This file is part of\n"
-	   << "### ========================================================\n"
-	   << "###          LyX, The Document Processor\n"
-	   << "###\n"
-	   << "###          Copyright 1995 Matthias Ettrich\n"
-	   << "###          Copyright 1995-2002 The LyX Team.\n"
-	   << "###\n"
-	   << "### ========================================================\n"
-	   << "\n"
-	   << "# This file is written by LyX, if you want to make your own\n"
-	   << "# modifications you should do them from inside LyX and save\n"
+	os << "###"
+	   << "### file " << filename << "\n\n"
+	   << "### This file is written by LyX, if you want to make your own\n"
+	   << "### modifications you should do them from inside LyX and save\n"
 	   << "\n";
 
 	for (int i = 0; i < xformCount; ++i) {

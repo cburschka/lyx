@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  *  \file xformsImage.h
- *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- *  \author Angus Leeming <leeming@lyx.org>
+ *  \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 /* An instantiation of Image that makes use of the xforms lirary routines

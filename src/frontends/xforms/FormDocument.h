@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  * \file FormDocument.h
- * Copyright 2000-2002 the LyX Team
  * Read the file COPYING
  *
- * \author Jürgen Vigna, jug@sad.it
+ * \author Jürgen Vigna
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FORM_DOCUMENT_H

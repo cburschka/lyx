@@ -1,15 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file helper_funcs.h
+ * See the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Angus Leeming
  *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
- * \file ControlCitation.h
- * \author Angus Leeming <leeming@lyx.org>
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef HELPERFUNCS_H

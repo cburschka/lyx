@@ -1,9 +1,10 @@
 /**
  * \file FormForks.C
- * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  * \date 2001-10-22
  */
 

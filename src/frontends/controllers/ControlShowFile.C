@@ -1,9 +1,10 @@
 /**
  * \file ControlShowFile.C
- * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Herbert Voss <voss@perce.de>
+ * \author Herbert Voss 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

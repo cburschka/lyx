@@ -1,9 +1,10 @@
 /**
  * \file xforms_resize.C
- * Copyright 2000-2002 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

@@ -1,12 +1,13 @@
 // -*- C++ -*-
 /**
  * \file FormExternal.h
- * Copyright 2000-2001 the LyX Team
  * Read the file COPYING
  *
  * \author Asger Alstrup Nielsen
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming <leeming@lyx.org>
+ * \author John Levon
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FORMEXTERNAL_H

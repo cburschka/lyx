@@ -1,12 +1,13 @@
 // -*- C++ -*-
-/*
+/**
  * \file ButtonController.h
- * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
- * \author Allan Rae, rae@lyx.org
- * \author Angus Leeming <leeming@lyx.org>
- * \author Baruch Even, baruch.even@writeme.com
+ * \author Allan Rae
+ * \author Angus Leeming 
+ * \author Baruch Even
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef BUTTONCONTROLLER_H

@@ -1,16 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *          Copyright 2001 The LyX Team.
- *
- *======================================================
- *
+/**
  * \file ControlMinipage.h
- * \author Juergen Vigna, jug@sad.it
- * \author Angus Leeming <leeming@lyx.org>
+ * Read the file COPYING
+ *
+ * \author Jürgen Vigna
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef CONTROLMINIPAGE_H

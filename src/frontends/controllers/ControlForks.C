@@ -1,9 +1,10 @@
 /**
  * \file ControlForks.C
- * Copyright 2001 The LyX Team
  * Read COPYING
  *
  * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

@@ -1,12 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file xfont_loader.C
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * \author Asger Alstrup
  *
- *	    Copyright 1997 Asger Alstrup
- *           and the LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 #include <cmath>	// fabs()

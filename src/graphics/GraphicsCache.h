@@ -6,7 +6,7 @@
  * \author Baruch Even
  * \author Angus Leeming
  *
- * Full author contact details available in file CREDITS
+ * Full author contact details are available in file CREDITS
  *
  *  grfx::Cache is the manager of the image cache.
  *  It is responsible for creating the grfx::CacheItem's and maintaining them.

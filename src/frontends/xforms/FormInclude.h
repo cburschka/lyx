@@ -1,12 +1,13 @@
 // -*- C++ -*-
 /**
  * \file FormInclude.h
- * Copyright 2001 the LyX Team
  * See the file COPYING
  *
  * \author Alejandro Aguilar Sierra
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming <leeming@lyx.org>
+ * \author John Levon
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 #ifndef FORMINCLUDE_H
 #define FORMINCLUDE_H

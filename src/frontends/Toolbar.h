@@ -1,15 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file Toolbar.h
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
+ * \author Lars Gullik Bjønnes
  *
- *           This file is Copyright 1996-2001
- *           Lars Gullik Bjønnes
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef TOOLBAR_H
 #define TOOLBAR_H

@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  * \file xforms/FormERT.h
- * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Jürgen Vigna, jug@sad.it
+ * \author Jürgen Vigna
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FORMERT_H

@@ -1,9 +1,10 @@
 /**
  * \file FormLog.C
- * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author John Levon, moz@compsoc.man.ac.uk
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

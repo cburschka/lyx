@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  * \file combox.h
- * Copyright 2002 the LyX Team
  * Copyright 1996 Alejandro Aguilar Sierra
  * Read the file COPYING
  *
- * \author Alejandro Aguilar Sierra, asierra@servidor.unam.mx
+ * \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 /* A combination of two objects (a button and a browser) is encapsulated to

@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  * \file ControlCharacter.h
- * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef CONTROLCHARACTER_H

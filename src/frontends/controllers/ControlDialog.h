@@ -1,10 +1,11 @@
 // -*- C++ -*-
-/*
+/**
  * \file ControlDialog.h
- * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  *
  * ControlDialog is to be used as a parent class for dialogs that are not
  * views onto parameters of insets. (An ugly description I know, but I hope

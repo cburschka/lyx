@@ -1,9 +1,10 @@
 /**
  * \file Toolbar.C
- * Copyright 1995-2002 the LyX Team
  * Read the file COPYING
  *
- * \author Lars Gullik Bjønnes <larsbj@lyx.org>
+ * \author Lars Gullik Bjønnes 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

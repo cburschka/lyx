@@ -1,11 +1,12 @@
 /**
  * \file FormExternal.C
- * Copyright 2000-2001 The LyX Team.
  * See the file COPYING.
  *
  * \author Asger Alstrup
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming <leeming@lyx.org>
+ * \author John Levon
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

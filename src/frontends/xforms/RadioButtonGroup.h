@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  * \file RadioButtonGroup.h
- * Copyright 2002 the LyX Team
  * Copyright 2000 Baruch Even
  * Read the file COPYING
  *
- * \author Baruch Even, baruch.even@writeme.com
+ * \author Baruch Even
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 

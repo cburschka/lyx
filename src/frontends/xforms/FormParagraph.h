@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  * \file FormParagraph.h
- * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Jürgen Vigna, jug@sad.it
+ * \author Jürgen Vigna
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FORM_PARAGRAPH_H

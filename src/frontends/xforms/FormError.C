@@ -1,9 +1,10 @@
-/*
+/**
  * \file FormError.C
- * Copyright 2000-2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifdef __GNUG__

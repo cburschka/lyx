@@ -1,11 +1,12 @@
 /**
  * \file ControlCommandBuffer.C
- * Copyright 1995-2002 the LyX Team
  * Read the file COPYING
  *
  * \author Lars
  * \author Asger and Juergen
- * \author John Levon <levon@movementarian.org>
+ * \author John Levon 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

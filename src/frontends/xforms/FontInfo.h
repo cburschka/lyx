@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  * \file FontInfo.h
- * Copyright 1997-2002 the LyX Team
  * Read the file COPYING
  *
  * \author Asger Alstrup
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FONTINFO_H

@@ -1,11 +1,12 @@
 /**
  * \file Toolbar_pimpl.C
  * Copyright 1995 Matthias Ettrich
- * Copyright 1995-2001 The LyX Team.
  * Copyright 1996-1998 Lars Gullik Bjønnes
  * See the file COPYING.
  *
- * \author Lars Gullik Bjønnes, larsbj@lyx.org
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 //  Added pseudo-action handling, asierra 180296

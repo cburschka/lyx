@@ -1,9 +1,10 @@
 /**
  * \file ControlSpellchecker.C
- * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Edwin Leuven <leuven@fee.uva.nl>
+ * \author Edwin Leuven 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

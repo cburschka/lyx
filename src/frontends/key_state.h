@@ -1,11 +1,12 @@
 /**
  * \file key_state.h
- * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
  * Keyboard modifier state representation.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef KEY_STATE_H

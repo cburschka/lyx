@@ -1,10 +1,11 @@
 /**
  * \file combox.C
- * Copyright 1996-2002 The LyX Team.
  * Copyright 1996Alejandro Aguilar Sierra
  * See the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 /* A combination of two objects (a button and a browser) is encapsulated to

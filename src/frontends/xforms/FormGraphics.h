@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  * \file FormGraphics.h
- * Copyright 2000-2001 the LyX Team
  * Read the file COPYING
  *
- * \author Baruch Even, baruch.even@writeme.com
- * \author Herbert Voss, voss@lyx.org
+ * \author Baruch Even
+ * \author Herbert Voss
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FORMGRAPHICS_H

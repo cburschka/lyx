@@ -1,12 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file ColorHandler.h
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * \author unknown
  *
- *	    Copyright 1995-2001 The LyX Team
- *
- * ======================================================*/
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef COLOR_HANDLER_H
 #define COLOR_HANDLER_H

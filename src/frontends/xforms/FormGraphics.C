@@ -1,10 +1,11 @@
 /**
  * \file FormGraphics.C
- * Copyright 2000-2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Baruch Even, baruch.even@writeme.com
- * \author Herbert Voss, voss@perce.de
+ * \author Baruch Even
+ * \author Herbert Voss
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

@@ -5,7 +5,7 @@
  *
  *  \author Angus Leeming 
  *
- * Full author contact details available in file CREDITS
+ * Full author contact details are available in file CREDITS
  *
  *  Used internally by the grfx::Image.
  */

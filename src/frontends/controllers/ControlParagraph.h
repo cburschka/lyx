@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  * \file ControlParagraph.h
- * Copyright 2002 The LyX Team.
  * See the file COPYING.
  *
- * \author Edwin Leuven <leuven@fee.uva.nl>
+ * \author Edwin Leuven 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef CONTROLPARAGRAPH_H

@@ -1,12 +1,13 @@
 // -*- C++ -*-
 /**
  * \file ControlInclude.h
- * Copyright 2001 the LyX Team
  * See the file COPYING
  *
  * \author Alejandro Aguilar Sierra
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author John Levon
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef CONTROLINCLUDE_H

@@ -2,10 +2,11 @@
 /**
  * \file Color.h
  * Copyright 1995 Matthias Ettrich
- * Copyright 1995-2002 The LyX Team.
  * Read the file COPYING
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 /* structs RGBColor and HSVColor to enable simple conversion between

@@ -1,10 +1,11 @@
 /**
  * \file LyXView.C
- * Copyright 1995-2002 the LyX Team
  * Read the file COPYING
  *
- * \author Lars Gullik Bjornes
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author Lars Gullik Bjønnes
+ * \author John Levon 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

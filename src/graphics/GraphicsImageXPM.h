@@ -6,7 +6,7 @@
  *  \author Baruch Even 
  *  \author Angus Leeming 
  *
- * Full author contact details available in file CREDITS
+ * Full author contact details are available in file CREDITS
  *
  *  An instantiation of Image that makes use of libXPM to load and store
  *  the image in memory.

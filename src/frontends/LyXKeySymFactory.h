@@ -1,9 +1,10 @@
 /**
  * \file LyXKeySymFactory.h
- * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
  * \author Asger & Juergen
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef LYXKEYSYMFACTORY_H

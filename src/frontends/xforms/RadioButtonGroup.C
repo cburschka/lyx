@@ -1,11 +1,12 @@
 /**
  * \file RadioButtonGroup.C
  * Copyright 1995 Matthias Ettrich.
- * Copyright 1995-2001 The LyX Team.
  * Copyright 2000 Baruch Even
  * See the file COPYING.
  *
- * \author Baruch Even, baruch.even@writeme.com
+ * \author Baruch Even
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

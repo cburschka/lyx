@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  * \file Menubar.h
- * Copyright 1995-2002 the LyX Team
  * Read the file COPYING
  *
  * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef MENUBAR_H

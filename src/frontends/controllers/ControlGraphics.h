@@ -1,17 +1,14 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file ControlGraphics.h
- * \author Angus Leeming <leeming@lyx.org>
- * \author Herbert Voss <voss@perce.de>
-*/
+ * Read the file COPYING
+ *
+ * \author Baruch Even
+ * \author Angus Leeming
+ * \author Herbert Voss
+ *
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef CONTROLGRAPHICS_H
 #define CONTROLGRAPHICS_H

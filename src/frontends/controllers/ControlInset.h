@@ -1,15 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file ControlInset.h
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * \author Angus Leeming
  *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
- * \file ControlInsets.h
- * \author Angus Leeming <leeming@lyx.org>
+ * Full author contact details are available in file CREDITS
  *
  * ControlInset is to be used as a parent class for dialogs that display and
  * can perhaps modify the contents of an individual inset. An example being the

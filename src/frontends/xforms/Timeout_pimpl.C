@@ -3,8 +3,10 @@
  * Copyright 2001 LyX Team
  * Read COPYING
  *
- * \author Lars Gullik Bjønnes, larsbj@lyx.org
- * \author John Levon, moz@compsoc.man.ac.uk
+ * \author Lars Gullik Bjønnes
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  * \file FormTexinfo.h
- * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Herbert Voss, voss@perce.de
+ * \author Herbert Voss
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FORMTEXINFO_H

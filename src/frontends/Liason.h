@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/* Liason.h
+/** Liason.h
  * Temporary namespace to hold the various frontend functions until XTL and
  * the compilers of the world are ready for something more elaborate.
  * This is basically the Communicator class from the lyx cvs module all
@@ -16,7 +16,6 @@
  *           LyX, The Document Processor
  *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
  *
  *           This file Copyright 2000
  *           Allan Rae

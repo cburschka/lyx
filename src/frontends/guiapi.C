@@ -1,10 +1,11 @@
 /**
  * \file guiapi.C
- * Copyright 2002 The LyX Team.
  * See the file COPYING.
  *
- * \author Lars Gullik Bjønnes <larsbj@lyx.org>
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Lars Gullik Bjønnes 
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

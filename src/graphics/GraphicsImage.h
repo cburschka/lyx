@@ -6,7 +6,7 @@
  *  \author Baruch Even 
  *  \author Angus Leeming 
  *
- * Full author contact details available in file CREDITS
+ * Full author contact details are available in file CREDITS
  *
  *  An abstract base class for the images themselves.
  *  Allows the user to retrieve the pixmap, once loaded and to issue commands

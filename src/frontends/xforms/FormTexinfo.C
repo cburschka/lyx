@@ -1,9 +1,10 @@
 /**
  * \file FormTexinfo.C
- * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Herbert Voss, voss@lyx.org
+ * \author Herbert Voss
+ *
+ * Full author contact details are available in file CREDITS
  * \date 2001-10-01
  */
 

@@ -1,10 +1,11 @@
 /**
  * \file FormBibitem.C
- * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming <leeming@lyx.org>
- * \author John Levon, moz@compsoc.man.ac.uk
+ * \author Angus Leeming 
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifdef __GNUG__

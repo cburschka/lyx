@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  * \file FormThesaurus.h
- * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author John Levon, moz@compsoc.man.ac.uk
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FORMTHESAURUS_H

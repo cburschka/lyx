@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  * \file Painter.h
- * Copyright 1998-2002 the LyX Team
  * Read the file COPYING
  *
  * \author unknown
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef PAINTER_H

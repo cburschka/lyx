@@ -1,13 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file XFormsView.h
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * \author unknown
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef LyXView_H
 #define LyXView_H

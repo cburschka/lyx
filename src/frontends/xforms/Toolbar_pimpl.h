@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  * \file Toolbar_pimpl.h
- * Copyright 2002 the LyX Team
  * Copyright 1996-2001 Lars Gullik Bjønnes
  * Read the file COPYING
  *
- * \author Lars Gullik Bjønnes, larsbj@lyx.org
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef TOOLBAR_PIMPL_H

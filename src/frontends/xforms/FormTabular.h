@@ -2,10 +2,11 @@
 /**
  * \file FormTabular.h
  * Copyright 1995 Matthias Ettrich
- * Copyright 1995-2001 the LyX Team
  * Read the file COPYING
  *
- * \author Jürgen Vigna, jug@sad.it
+ * \author Jürgen Vigna
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FORMTABULAR_H

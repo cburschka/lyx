@@ -1,16 +1,12 @@
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file ControlBibtex.C
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming <leeming@lyx.org>
- * \author Herbert Voss <voss@lyx.org>
+ * Read the file COPYING
+ *
+ * \author John Levon
+ * \author Angus Leeming
+ * \author Herbert Voss
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

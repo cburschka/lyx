@@ -13,7 +13,7 @@
 namespace grfx {
 
 /// The translator between the Display enum and corresponding lyx string.
-Translator< DisplayType, string > displayTranslator(DefaultDisplay, "default");
+Translator<DisplayType, string> displayTranslator(DefaultDisplay, "default");
 
 void setDisplayTranslator()
 {

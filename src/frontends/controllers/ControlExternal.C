@@ -1,16 +1,12 @@
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file ControlExternal.C
+ * Read the file COPYING
+ *
  * \author Asger Alstrup
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming <leeming@lyx.org>
+ * \author John Levon
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

@@ -1,15 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file ButtonControllerBase.h
- * \author Allan Rae, rae@lyx.org
+ * Read the file COPYING
+ *
+ * \author Allan Rae
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef BUTTONCONTROLLERBASE_H

@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
- * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
  * \file ControlShowFile.h
- * \author Herbert Voss <voss@perce.de>
+ * \author Herbert Voss 
+ *
+ * Full author contact details are available in file CREDITS
  */
 #ifndef CONTROLSHOWFILE_H
 #define CONTROLSHOWFILE_H

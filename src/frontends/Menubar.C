@@ -1,15 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file Menubar.C
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * \author Jean-Marc Lasgouttes
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file is Copyright 2000 Jean-Marc Lasgouttes
- *
- * ====================================================== */
-
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 

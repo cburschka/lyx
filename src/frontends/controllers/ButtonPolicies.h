@@ -1,22 +1,14 @@
 // -*- C++ -*-
-/*
+/**
  * \file ButtonPolicies.h
- * \author Allan Rae, rae@lyx.org
+ * Read the file COPYING
+ *
+ * \author Allan Rae
+ *
+ * Full author contact details are available in file CREDITS
  *
  * Provides a state machine implementation of the various button policies
  * used by the dialogs.
- *
- * This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file Copyright 2000
- *           Allan Rae
- * ======================================================
  */
 
 #ifndef BUTTONPOLICIES_H

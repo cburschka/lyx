@@ -1,12 +1,11 @@
-/* This file is part of                   -*- C++ -*-
-* ======================================================
-*
-*           LyX, The Document Processor
-*
-*           Copyright 1995 Matthias Ettrich
-*           Copyright 1995-2001 The LyX Team.
-*
-* ====================================================== */
+/**
+ * \file lyxlookup.h
+ * Read the file COPYING
+ *
+ * \author unknown
+ *
+ * Full author contact details are available in file CREDITS
+ */
 
 /* This header file defines wrappers around the X input method related
    functions. This should probably be moved into LyXView (to have

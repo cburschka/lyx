@@ -1,11 +1,12 @@
 /**
  * \file FormMathsBitmap.C
- * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
  * \author Alejandro Aguilar Sierra
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming <leeming@lyx.org>
+ * \author John Levon
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

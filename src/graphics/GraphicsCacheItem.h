@@ -6,7 +6,7 @@
  * \author Baruch Even 
  * \author Angus Leeming 
  *
- * Full author contact details available in file CREDITS
+ * Full author contact details are available in file CREDITS
  *
  * The graphics cache is a container of grfx::CacheItems.
  * Each grfx::CacheItem, defined here represents a separate image file.

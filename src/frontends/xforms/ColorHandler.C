@@ -1,11 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file ColorHandler.C
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- * 	
- *	    Copyright 1998-2001 The LyX Team
+ * \author unknown
  *
- *======================================================*/
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 

@@ -1,11 +1,12 @@
 /**
  * \file xformsBC.C
- * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Allan Rae, rae@lyx.org
- * \author Angus Leeming <leeming@lyx.org>
- * \author Baruch Even, baruch.even@writeme.com
+ * \author Allan Rae
+ * \author Angus Leeming 
+ * \author Baruch Even
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

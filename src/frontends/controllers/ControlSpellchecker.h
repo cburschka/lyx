@@ -1,15 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file ControlSpellchecker.h
- * \author Edwin Leuven <leuven@fee.uva.nl>
+ * See the file COPYING.
+ *
+ * \author Edwin Leuven
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef CONTROLSPELLCHECKER_H

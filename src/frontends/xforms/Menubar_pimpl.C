@@ -1,9 +1,10 @@
 /**
  * \file Menubar_pimpl.C
- * Copyright 1999-2001 The LyX Team.
  * See the file COPYING.
  *
- * \author  Lars Gullik Bjønnes, larsbj@lyx.org
+ * \author  Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

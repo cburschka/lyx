@@ -1,14 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file ControlMinipage.C
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * \author Jürgen Vigna
+ * \author Angus Leeming
  *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
- * \author Jürgen Vigna, jug@sad.it
- * \author Angus Leeming <leeming@lyx.org>
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

@@ -1,12 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file XFormsView.C
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * \author unknown
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 

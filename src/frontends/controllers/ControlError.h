@@ -1,16 +1,11 @@
 // -*- C++ -*-
-/*
+/**
  * \file ControlError.h
- * This file is part of
- * ======================================================
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * \author Angus Leeming
  *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
- * \author Angus Leeming, a.leeming@.ac.uk
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef CONTROLERROR_H

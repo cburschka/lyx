@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  * \file xforms/FormToc.h
- * Copyright 2000-2001 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef FORMTOC_H

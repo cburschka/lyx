@@ -1,12 +1,13 @@
 /**
  * \file FormMathsDelim.C
- * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
- * \author Pablo De Napoli, pdenapo@dm.uba.ar
- * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Pablo De Napoli
+ * \author John Levon
+ * \author Angus Leeming 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

@@ -1,18 +1,10 @@
-/* ButtonPolicies.C
- * Provides a state machine implementation of the various button policies
- * used by the dialogs.
- * Author: Allan Rae <rae@lyx.org>
- * This file is part of
- * ======================================================
+/**
+ * \file ButtonPolicies.C
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * \author Allan Rae
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file Copyright 2000
- *           Allan Rae
- * ======================================================
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

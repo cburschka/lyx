@@ -2,11 +2,12 @@
 /**
  * \file Menubar_pimpl.h
  * Copyright 1995 Matthias Ettrich
- * Copyright 1995-2002 the LyX Team
  * Copyright 1996-2001 Lars Gullik Bjønnes
  * Read the file COPYING
  *
- * \author Lars Gullik Bjønnes, larsbj@lyx.org
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef MENUBAR_PIMPL_H

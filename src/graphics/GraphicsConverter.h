@@ -5,7 +5,7 @@
  *
  *  \author Angus Leeming 
  *
- * Full author contact details available in file CREDITS
+ * Full author contact details are available in file CREDITS
  *
  *  The controller of a conversion process from file AA of format A to
  *  file BB of format B.

@@ -1,14 +1,10 @@
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file ControlCommand.C
- * \author Angus Leeming <leeming@lyx.org>
+ * Read the file COPYING
+ *
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

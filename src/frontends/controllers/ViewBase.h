@@ -1,14 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file ViewBase.h
+ * See the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Angus Leeming
  *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
- * Author: Angus Leeming <leeming@lyx.org>
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef VIEWBASE_H

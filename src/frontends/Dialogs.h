@@ -1,9 +1,10 @@
 // -*- C++ -*-
 /**
  * \file Dialogs.h
- * Copyright 1995-2002 The LyX Team.
  * See the file COPYING.
- * \author Allan Rae, rae@lyx.org
+ * \author Allan Rae
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef DIALOGS_H

@@ -1,9 +1,10 @@
 /**
  * \file tex_helpers.h
- * Copyright 1995-2002 the LyX Team
  * Read the file COPYING
  *
- * \author Herbert Voss <voss@lyx.org>
+ * \author Herbert Voss 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef TEX_HELPERS_H

@@ -1,10 +1,11 @@
 /**
  * \file ControlAboutlyx.C
- * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Edwin Leuven, leuven@fee.uva.nl
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author Edwin Leuven
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

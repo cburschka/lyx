@@ -5,7 +5,7 @@
  *
  * \author Angus Leeming 
  *
- * Full author contact details available in file CREDITS
+ * Full author contact details are available in file CREDITS
  *
  *  grfx::PreviewedInset is an abstract base class that can help insets to
  *  generate previews. The daughter class must instantiate three small

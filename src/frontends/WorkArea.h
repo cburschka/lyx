@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  * \file WorkArea.h
- * Copyright 1995-2002 the LyX Team
  * Read the file COPYING
  *
  * \author unknown
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef WORKAREA_H

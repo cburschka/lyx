@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  * \file input_validators.h
- * Copyright 2002 the LyX Team
  * Copyright 1999-2001 Allan Rae
  * Read the file COPYING
  *
- * \author Allan Rae, rae@lyx.org
+ * \author Allan Rae
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 /* Input validators and filters for xforms.
