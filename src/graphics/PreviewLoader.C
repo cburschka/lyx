@@ -89,7 +89,7 @@ private:
 // Given a base-10 number return the number of digits needed to store it.
 // Eg 2 requires 1 digit, 22 requires 2 digits and 999 requires 3 digits.
 // Note that André suggests just returning '12' here...
-int ndigits(int num)
+    int ndigits(int /*num*/)
 {
 	//return 1 + int(std::log10(double(num)));
 	return 5;
