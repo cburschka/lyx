@@ -171,9 +171,9 @@ void BufferParams::writeFile(ostream & os) const
 			}
 			else {
 				os << "\\bulletLaTeX " << i
-				   << "\n\t"
+				   << "\n\t\""
 				   << user_defined_bullets[i].getText()
-				   << "\n\\end_bullet\n";
+				   << "\"\n\\end_bullet\n";
 			}
 		}
 	}

@@ -895,6 +895,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				//how can I put it back?
 		}
 	} else if (token == "\\bulletLaTeX") {
+		// The bullet class should be able to read this.
 		lex.nextToken();
 		int const index = lex.getInteger();
 		lex.next();
@@ -911,6 +912,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			lex.next();
 			temp_str = lex.getString();
 		}
+
 		params.user_defined_bullets[index].setText(sum_str);
 		params.temp_bullets[index].setText(sum_str);
 	} else if (token == "\\secnumdepth") {
