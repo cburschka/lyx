@@ -1,3 +1,7 @@
+2001-07-07  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* text2.C (setCounter): Fix counters bug with bibliography layout.
+
 2001-07-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* paragraph_pimpl.C (simpleTeXBlanks): don't go through owner_ for

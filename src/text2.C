@@ -1202,13 +1202,8 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	LyXTextClass const & textclass =
 		textclasslist.TextClass(buf->params.textclass);
 
-	/* copy the prev-counters to this one, unless this is the start of a 
-	   footnote or of a bibliography or the very first paragraph */
-	if (par->previous()
-	    && !(textclasslist.Style(buf->params.textclass,
-				par->previous()->getLayout()
-				).labeltype != LABEL_BIBLIO
-		 && layout.labeltype == LABEL_BIBLIO)) {
+	// copy the prev-counters to this one, unless this is the first paragraph
+	if (par->previous()) {
 		for (int i = 0; i < 10; ++i) {
 			par->setCounter(i, par->previous()->getFirstCounter(i));
 		}
