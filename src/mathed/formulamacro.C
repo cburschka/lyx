@@ -194,3 +194,8 @@ Inset::Code InsetFormulaMacro::lyxCode() const
 	return Inset::MATHMACRO_CODE;
 }
 
+
+MathInsetTypes InsetFormulaMacro::getType() const
+{
+	return LM_OT_MACRO;
+}

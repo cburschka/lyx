@@ -550,7 +550,7 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_MATH_MUTATE: {
 		Inset * tli = owner->view()->theLockingInset();
 		if (tli && (tli->lyxCode() == Inset::MATH_CODE)) {
-			MathInsetTypes type = mathcursor->par()->GetType();
+			MathInsetTypes type = mathcursor->formula()->getType();
 			func_status::value_type box = func_status::ToggleOff;
 			if (argument == "inline") {
 				if (type == LM_OT_SIMPLE)

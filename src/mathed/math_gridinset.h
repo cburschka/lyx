@@ -52,7 +52,7 @@ class MathGridInset : public MathInset {
 
 public: 
 	///
-	MathGridInset(int m, int n, string const & nm, MathInsetTypes ot);
+	MathGridInset(int m, int n, string const & nm);
 	///
 	virtual MathInset * clone() const = 0;
 	///
@@ -77,6 +77,8 @@ public:
 	const RowInfo & rowinfo(int row) const;
 	///
 	RowInfo & rowinfo(int row);
+	///
+	bool isGrid() const { return true; }
 
 	///
 	int ncols() const { return colinfo_.size(); }

@@ -78,12 +78,12 @@ int firstRelOp(MathArray const & array)
 }
 
 MathMatrixInset::MathMatrixInset(MathInsetTypes t)
-	: MathGridInset(getCols(t), 1, "formula", t), nonum_(1), label_(1)
+	: MathGridInset(getCols(t), 1, "formula"), objtype_(t), nonum_(1), label_(1)
 {}
 
 
 MathMatrixInset::MathMatrixInset()
-	: MathGridInset(1, 1, "formula", LM_OT_SIMPLE), nonum_(1), label_(1)
+	: MathGridInset(1, 1, "formula"), objtype_(LM_OT_SIMPLE), nonum_(1), label_(1)
 {}
 
 MathInset * MathMatrixInset::clone() const
@@ -409,6 +409,20 @@ void MathMatrixInset::glueall()
 	*this = MathMatrixInset(LM_OT_SIMPLE);
 	cell(0) = ar;
 }
+
+
+MathInsetTypes MathMatrixInset::getType() const
+{
+	return objtype_;
+}
+
+
+void MathMatrixInset::setType(MathInsetTypes t)
+{
+	objtype_ = t;
+}
+
+
 
 void MathMatrixInset::mutate(short newtype)
 {

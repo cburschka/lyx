@@ -33,7 +33,7 @@
 using std::endl;
 
 MathMacro::MathMacro(MathMacroTemplate const & t)
-	: MathInset(t.numargs(), t.name(), LM_OT_MACRO), tmplate_(&t)
+	: MathInset(t.numargs(), t.name()), tmplate_(&t)
 {}
 
 

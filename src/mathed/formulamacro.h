@@ -64,6 +64,8 @@ public:
 	Inset::Code lyxCode() const;
 	///
 	RESULT localDispatch(BufferView *, kb_action, string const &);
+	///
+	MathInsetTypes getType() const;
 private:
 	/// prefix in inset
 	string prefix() const;

@@ -104,24 +104,16 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 }
 
 
-} // namespaces
-
-
-
-namespace {
-
-
-// returns the nearest enclosing matrix
+// returns the nearest enclosing grid
 MathArrayInset * matrixpar(int & idx)
 {
 	idx = 0;
-	return
-		static_cast<MathArrayInset *> 
-			(mathcursor ? mathcursor->enclosing(LM_OT_MATRIX, idx) : 0); 
+	return (mathcursor ? mathcursor->enclosingArray(idx) : 0); 
 }
 
 
 } // namespace anon
+
 
 
 InsetFormulaBase::InsetFormulaBase(MathInset * par)
@@ -131,6 +123,7 @@ InsetFormulaBase::InsetFormulaBase(MathInset * par)
 #warning This is needed as long the math parser is not re-entrant
 #endif
 	MathMacroTable::builtinMacros();
+	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
 }
 
 

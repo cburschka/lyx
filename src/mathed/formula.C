@@ -307,7 +307,7 @@ void InsetFormula::handleExtern(const string & arg, BufferView *)
 
 bool InsetFormula::display() const
 {
-	return par_->getType() != LM_OT_SIMPLE;
+	return par()->getType() != LM_OT_SIMPLE;
 }
 
 
@@ -356,4 +356,10 @@ int InsetFormula::width(BufferView *, LyXFont const &) const
 {
 	metrics();
 	return par()->width();
+}
+
+
+MathInsetTypes InsetFormula::getType() const
+{
+	return par()->getType();;
 }

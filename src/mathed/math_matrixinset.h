@@ -65,7 +65,12 @@ public:
 	///
 	void mutate(short);
 
+	///
+	MathInsetTypes getType() const;
+
 private:
+	///
+	virtual void setType(MathInsetTypes t);
 	///
 	void validate1(LaTeXFeatures & features);
 	///
@@ -77,6 +82,8 @@ private:
 	///
 	string nicelabel(int row) const;
 
+	///
+	MathInsetTypes objtype_;
 	///
 	std::vector<int> nonum_;
 	///

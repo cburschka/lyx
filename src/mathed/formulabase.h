@@ -22,6 +22,9 @@
 #include <iosfwd>
 #include "insets/inset.h"
 
+// only for getType():
+#include "math_defs.h"
+
 class Buffer;
 class BufferView;
 class MathInset;
@@ -58,6 +61,8 @@ public:
 	virtual int linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	virtual int docBook(Buffer const *, std::ostream &) const;
+	///
+	virtual MathInsetTypes getType() const = 0;
 
 protected:
 	/// the actual functions don't use the Buffer * parameter

@@ -80,6 +80,8 @@ public:
 	bool display() const;
 	///
 	bool ams() const;
+	///
+	MathInsetTypes getType() const;
 private:
 	/// Safe setting of contents
 	void par(MathInset *);

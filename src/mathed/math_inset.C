@@ -26,8 +26,8 @@
 int MathInset::workwidth;
 
 
-MathInset::MathInset(int nargs, string const & name, MathInsetTypes ot)
-	: name_(name), objtype(ot), width_(0), ascent_(0), descent_(0),
+MathInset::MathInset(int nargs, string const & name)
+	: name_(name), width_(0), ascent_(0), descent_(0),
 		size_(LM_ST_DISPLAY), cells_(nargs), xo_(0), yo_(0)
 {}
 
@@ -63,24 +63,12 @@ int MathInset::limits() const
 
 
 void MathInset::limits(int)
-{
-}
+{}
+
 
 string const & MathInset::name() const
 {
 	return name_;
-}
-
-
-MathInsetTypes MathInset::getType() const
-{
-	return objtype;
-}
-
-
-void MathInset::setType(MathInsetTypes t)
-{
-	objtype = t;
 }
 
 

@@ -7,7 +7,7 @@
 
 
 MathArrayInset::MathArrayInset(int m, int n)
-	: MathGridInset(m, n, "array", LM_OT_MATRIX)
+	: MathGridInset(m, n, "array")
 {}
 
 

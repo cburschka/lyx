@@ -27,6 +27,7 @@ class MathInset;
 class MathFuncInset;
 class MathScriptInset;
 class MathSpaceInset;
+class MathArrayInset;
 class InsetFormulaBase;
 class MathArray;
 class MathXArray;
@@ -109,9 +110,8 @@ public:
 	void getPos(int & x, int & y);
 	///
 	MathInset * par() const;
-	/// return the next enclosing par of the given type and the cursor's
-	//index in it
-	MathInset * enclosing(MathInsetTypes, int &) const;
+	/// return the next enclosing grid inset and the cursor's index in it
+	MathArrayInset * enclosingArray(int &) const;
 	///
 	InsetFormulaBase const * formula();
 	///

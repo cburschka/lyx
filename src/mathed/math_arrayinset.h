@@ -17,6 +17,8 @@ public:
 	virtual MathInset * clone() const;
 	///
 	void write(std::ostream &, bool fragile) const;
+	///
+	bool isArray() const { return true; }
 };
 
 #endif

@@ -44,8 +44,7 @@ class LaTeXFeatures;
 class MathInset {
 public: 
 	///
-	explicit MathInset
-	(int na = 0, string const & nm = string(), MathInsetTypes ot = LM_OT_SIMPLE);
+	explicit MathInset(int na = 0, string const & nm = string());
 
 	/// the virtual base destructor
 	virtual ~MathInset() {}
@@ -76,13 +75,6 @@ public:
 	virtual void limits(int);
 	///
 	string const & name() const;
-	///
-	MathInsetTypes getType() const;
-	///
-	MathInsetTypes GetType() const { return getType(); }
-	//Man:  Avoid to use these functions if it's not strictly necessary 
-	///
-	virtual void setType(MathInsetTypes t);
 	///
 	virtual void setName(string const & n);
 	///
@@ -177,12 +169,16 @@ public:
 	void getXY(int & x, int & y) const;
 	///
 	bool covers(int x, int y) const;
-	/// Identifies things that can get scripts
+	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
-	/// Identifies ScriptInsets
+	/// identifies ScriptInsets
 	virtual bool isScriptInset() const { return false; }
-	/// Identifies SpaceInsets
+	/// identifies SpaceInsets
 	virtual bool isSpaceInset() const { return false; }
+	/// identifies GridInsets
+	virtual bool isGrid() const { return false; }
+	/// identifies ArrayInsets
+	virtual bool isArray() const { return false; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
 
@@ -202,8 +198,6 @@ public:
 protected:
 	/// usually the LaTeX name of the thingy
 	string name_;
-	///  
-	MathInsetTypes objtype;
 	/// the width of this inset as computed by metrics()
 	int width_;
 	/// 

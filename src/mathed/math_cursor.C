@@ -958,13 +958,12 @@ MathTextCodes MathCursor::getLastCode() const
 }
 
 
-MathInset * MathCursor::enclosing(MathInsetTypes t, int & idx) const
+MathArrayInset * MathCursor::enclosingArray(int & idx) const
 {
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
-		//lyxerr << "checking level " << i << "\n";
-		if (Cursor_[i].par_->getType() == t) {
+		if (Cursor_[i].par_->isArray()) {
 			idx = Cursor_[i].idx_;
-			return Cursor_[i].par_;
+			return static_cast<MathArrayInset *>(Cursor_[i].par_);
 		}
 	}
 	return 0;
@@ -998,10 +997,10 @@ void MathCursor::normalize() const
 #endif
 	MathCursor * it = const_cast<MathCursor *>(this);
 
-	if (cursor().idx_ < 0 || cursor().idx_ > cursor().par_->nargs())
+	if (cursor().idx_ < 0 || cursor().idx_ > cursor().par_->nargs() - 1)
 		lyxerr << "this should not really happen - 1\n";
 	it->cursor().idx_    = max(cursor().idx_, 0);
- 	it->cursor().idx_    = min(cursor().idx_, cursor().par_->nargs());
+ 	it->cursor().idx_    = min(cursor().idx_, cursor().par_->nargs() - 1);
 
 	if (cursor().pos_ < 0 || cursor().pos_ > array().size())
 		lyxerr << "this should not really happen - 2\n";
@@ -1177,8 +1176,7 @@ void MathCursor::breakLine()
 char MathCursor::valign() const
 {
 	int idx;
-	MathGridInset * p =
-		static_cast<MathGridInset *>(enclosing(LM_OT_MATRIX, idx));
+	MathArrayInset * p = enclosingArray(idx);
 	return p ? p->valign() : 0;
 }
 
@@ -1186,8 +1184,7 @@ char MathCursor::valign() const
 char MathCursor::halign() const
 {
 	int idx;
-	MathGridInset * p =
-		static_cast<MathGridInset *>(enclosing(LM_OT_MATRIX, idx));
+	MathArrayInset * p = enclosingArray(idx);
 	return p ? p->halign(idx % p->ncols()) : 0;
 }
 

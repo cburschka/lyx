@@ -1,3 +1,11 @@
+2001-08-01  André Pönitz <poenitz@gmx.net>
+
+	* lyxfunc.C: small change due to changed mathed interface
+
+2001-08-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* bufferlist.C (loadLyXFile): add .lyx to file name if necessary
+
 2001-08-01  John Levon  <moz@compsoc.man.ac.uk>
  
 	* lyxfunc.c: fail gracefully if file doesn't exist 
@@ -21,7 +29,7 @@
 
 2001-07-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* converter.[hC] + affected fiels: move to (inital-char)lowercase
+	* converter.[hC] + affected files: move to (inital-char)lowercase
 	function names.
 
 	* ParagraphParameters.C (ParagraphParameters): remove commented code
@@ -157,6 +165,8 @@
 	* commandtags.h:
 	* LyXAction.C:
 	* lyxfunc.C:  new LFUN 'math-space'
+
+	* BufferView.[Ch]: remove unneeded reference to 'WorkArea'
 
 2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
