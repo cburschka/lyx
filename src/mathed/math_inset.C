@@ -120,6 +120,12 @@ bool MathInset::idxUpDown(idx_type &, pos_type &, bool, int) const
 }
 
 
+bool MathInset::idxUpDown2(idx_type &, pos_type &, bool, int) const
+{
+	return false;
+}
+
+
 bool MathInset::idxFirst(idx_type &, pos_type &) const
 {
 	return false;

@@ -132,6 +132,9 @@ public:
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(idx_type & idx, pos_type & pos, bool up,
 		int targetx) const;
+	/// Where should we go when we press the up or down cursor key?
+	virtual bool idxUpDown2(idx_type & idx, pos_type & pos, bool up,
+		int targetx) const;
 	/// The left key
 	virtual bool idxLeft(idx_type & idx, pos_type & pos) const;
 	/// The right key

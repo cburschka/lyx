@@ -694,8 +694,10 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				cell->push_back(MathAtom(new MathCharInset(t.character())));
 		}
 
-		else if (t.cat() == catNewline && mode != MathInset::MATH_MODE)
-			cell->push_back(MathAtom(new MathCharInset(t.character())));
+		else if (t.cat() == catNewline && mode != MathInset::MATH_MODE) {
+			if (cell->empty() || cell->back()->getChar() != ' ')
+				cell->push_back(MathAtom(new MathCharInset(' ')));
+		}
 
 		else if (t.cat() == catParameter) {
 			Token const & n	= getToken();
@@ -1209,7 +1211,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			else {
 				MathAtom at = createMathInset(t.cs());
 				MathInset::mode_type m = mode;
-				if (m == MathInset::UNDECIDED_MODE)
+				//if (m == MathInset::UNDECIDED_MODE)
+				if (at->currentMode() != MathInset::UNDECIDED_MODE)
 					m = at->currentMode();
 				MathInset::idx_type start = 0;
 				// this fails on \bigg[...\bigg]

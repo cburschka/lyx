@@ -25,21 +25,23 @@ MathInset::idx_type MathTextInset::pos2row(pos_type pos) const
 }
 
 
-void MathTextInset::getPos(idx_type, pos_type pos, int & x, int & y) const
+void MathTextInset::getPos(idx_type /*idx*/, pos_type pos, int & x, int & y) const
 {
 	idx_type const i = pos2row(pos);
 	pos_type const p = pos - cache_.cellinfo_[i].begin_;
 	cache_.getPos(i, p, x, y);
+	y = cache_.cell(i).yo();
 }
 
 
-bool MathTextInset::idxUpDown(idx_type &, pos_type & pos, bool up,
+bool MathTextInset::idxUpDown2(idx_type &, pos_type & pos, bool up,
 	int /*targetx*/) const
 {
 	// try to move only one screen row up or down if possible
 	idx_type i = pos2row(pos);
+	//lyxerr << "\nMathTextInset::idxUpDown()  i: " << i << endl;
 	MathGridInset::CellInfo const & cell1 = cache_.cellinfo_[i];
-	int const x = cells_[0].pos2x(cell1.begin_, pos, cell1.glue_);
+	int const x = cache_.cell(i).pos2x(pos - cell1.begin_, cell1.glue_);
 	if (up) {
 		if (i == 0)
 			return false;
@@ -50,7 +52,7 @@ bool MathTextInset::idxUpDown(idx_type &, pos_type & pos, bool up,
 			return false;
 	}
 	MathGridInset::CellInfo const & cell2 = cache_.cellinfo_[i];
-	pos = cell(0).x2pos(cell2.begin_, x, cell2.glue_);
+	pos = cell2.begin_ + cache_.cell(i).x2pos(x, cell2.glue_);
 	return true;
 }
 
@@ -60,6 +62,10 @@ void MathTextInset::metrics(MetricsInfo & mi) const
 	cell(0).metrics(mi);
 
 	// we do our own metrics fiddling
+	// save old positional information
+	int const old_xo = cache_.cell(0).xo();
+	int const old_yo = cache_.cell(0).yo();
+
 	// delete old cache
 	cache_ = MathGridInset(1, 0);
 
@@ -148,6 +154,11 @@ void MathTextInset::metrics(MetricsInfo & mi) const
 	cache_.metrics(mi);
 	dim_ = cache_.dimensions();
 	//lyxerr << "outer dim: " << dim_ << endl;
+
+	// reset position cache
+	for (idx_type i = 0; i < cache_.nargs(); ++i)
+		cache_.cell(i).setXY(old_xo, old_yo);
+
 }
 
 

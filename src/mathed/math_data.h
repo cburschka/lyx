@@ -128,11 +128,11 @@ public:
 	/// returns x coordinate of given position in the array
 	int pos2x(size_type pos) const;
 	/// returns position of given x coordinate
-	int pos2x(size_type pos1, size_type pos2, int glue) const;
+	int pos2x(size_type pos, int glue) const;
 	/// returns position of given x coordinate
 	size_type x2pos(int pos) const;
 	/// returns position of given x coordinate fstarting from a certain pos
-	size_type x2pos(size_type startpos, int targetx, int glue) const;
+	size_type x2pos(int targetx, int glue) const;
 	/// returns distance of this cell to the point given by x and y
 	// assumes valid position and size cache
 	int dist(int x, int y) const;

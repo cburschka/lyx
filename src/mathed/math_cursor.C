@@ -102,7 +102,7 @@ void MathCursor::pushRight(MathAtom & t)
 
 bool MathCursor::popLeft()
 {
-	//cerr << "Leaving atom to the left\n";
+	//lyxerr << "Leaving atom to the left\n";
 	if (depth() <= 1) {
 		if (depth() == 1)
 			par()->notifyCursorLeaves(idx());
@@ -116,7 +116,7 @@ bool MathCursor::popLeft()
 
 bool MathCursor::popRight()
 {
-	//cerr << "Leaving atom "; par()->write(cerr, false); cerr << " right\n";
+	//lyxerr << "Leaving atom "; par()->write(cerr, false); cerr << " right\n";
 	if (depth() <= 1) {
 		if (depth() == 1)
 			par()->notifyCursorLeaves(idx());
@@ -965,7 +965,10 @@ bool MathCursor::goUpDown(bool up)
 		}
 	}
 
-	// try current cell
+	// try current cell for e.g. text insets
+	if (par()->idxUpDown2(idx(), pos(), up, targetx_))
+		return true;
+
 	//xarray().boundingBox(xlow, xhigh, ylow, yhigh);
 	//if (up)
 	//	yhigh = yo - 4;
@@ -1022,6 +1025,7 @@ bool MathCursor::bruteFind
 			it.back().getPos(xo, yo);
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
+				//lyxerr << "x: " << x << " y: " << y << " d: " << endl;
 				// '<=' in order to take the last possible position
 				// this is important for clicking behind \sum in e.g. '\sum_i a'
 				if (d <= best_dist) {
@@ -1050,12 +1054,13 @@ void MathCursor::bruteFind2(int x, int y)
 	it.back().setPos(0);
 	MathIterator et = Cursor_;
 	et.back().setPos(it.cell().size());
-	while (1) {
+	for (int i = 0; ; ++i) {
 		int xo, yo;
 		it.back().getPos(xo, yo);
 		double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 		// '<=' in order to take the last possible position
 		// this is important for clicking behind \sum in e.g. '\sum_i a'
+		lyxerr << "i: " << i << " d: " << d << " best: " << best_dist << endl;
 		if (d <= best_dist) {
 			best_dist = d;
 			Cursor_   = it;

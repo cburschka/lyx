@@ -22,7 +22,7 @@ public:
 	void drawSelection(PainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
 	/// moves cursor up or down
-	bool idxUpDown(idx_type &, pos_type & pos, bool up, int targetx) const;
+	bool idxUpDown2(idx_type &, pos_type & pos, bool up, int targetx) const;
 protected:
 	/// row corresponding to given position
 	idx_type pos2row(pos_type pos) const;

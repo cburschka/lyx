@@ -286,15 +286,15 @@ void MathArray::drawT(TextPainter & pain, int x, int y) const
 
 int MathArray::pos2x(size_type pos) const
 {
-	return pos2x(0, pos, 0);
+	return pos2x(pos, 0);
 }
 
 
-int MathArray::pos2x(size_type pos1, size_type pos2, int glue) const
+int MathArray::pos2x(size_type pos, int glue) const
 {
 	int x = 0;
-	size_type target = min(pos2, size());
-	for (size_type i = pos1; i < target; ++i) {
+	size_type target = min(pos, size());
+	for (size_type i = 0; i < target; ++i) {
 		const_iterator it = begin() + i;
 		if ((*it)->getChar() == ' ')
 			x += glue;
@@ -306,14 +306,13 @@ int MathArray::pos2x(size_type pos1, size_type pos2, int glue) const
 
 MathArray::size_type MathArray::x2pos(int targetx) const
 {
-	return x2pos(0, targetx, 0);
+	return x2pos(targetx, 0);
 }
 
 
-MathArray::size_type MathArray::x2pos(size_type startpos, int targetx,
-	int glue) const
+MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 {
-	const_iterator it = begin() + startpos;
+	const_iterator it = begin();
 	int lastx = 0;
 	int currx = 0;
 	for (; currx < targetx && it < end(); ++it) {
@@ -322,7 +321,7 @@ MathArray::size_type MathArray::x2pos(size_type startpos, int targetx,
 			currx += glue;
 		currx += (*it)->width();
 	}
-	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin() + startpos)
+	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin())
 		--it;
 	return it - begin();
 }
