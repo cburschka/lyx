@@ -72,6 +72,7 @@ using std::make_pair;
 using std::min;
 
 using lyx::pos_type;
+using namespace bv_funcs;
 
 extern BufferList bufferlist;
 

@@ -1,13 +1,15 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxtext.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author unknown
+ * \author Lars Gullik Bjønnes
+ * \author John Levon
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef LYXTEXT_H
 #define LYXTEXT_H
@@ -18,6 +20,7 @@
 #include "LColor.h"
 #include "insets/inset.h"
 #include "RowList.h"
+#include "bufferview_funcs.h"
 
 class Buffer;
 class BufferParams;
@@ -126,14 +129,8 @@ public:
 	///
 	void setLayout(string const & layout);
 
-	/** increment depth over selection and make a total rebreak of those
-	  paragraphs
-	  */
-	void incDepth();
-
-	/** decrement depth over selection and make a total rebreak of those
-	  paragraphs */
-	void decDepth();
+	/// increase or decrease the nesting depth of the selected paragraph(s)
+	void changeDepth(bv_funcs::DEPTH_CHANGE type);
 
 	/// get the depth at current cursor position
 	int getDepth() const;

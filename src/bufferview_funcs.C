@@ -38,10 +38,13 @@
 #include "support/BoostFormat.h"
 
 namespace {
+
 LyXFont freefont(LyXFont::ALL_IGNORE);
 bool toggleall(false);
+
 }
 
+namespace bv_funcs {
 
 // Set data using font and toggle
 // If successful, returns true
@@ -214,20 +217,14 @@ void lang(BufferView * bv, string const & l)
 }
 
 
-// Change environment depth.
-// if decInc >= 0, increment depth
-// if decInc <	0, decrement depth
-void changeDepth(BufferView * bv, LyXText * text, int decInc)
+void changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type)
 {
 	if (!bv->available() || !text)
 	    return;
 
 	bv->hideCursor();
 	bv->update(BufferView::SELECT);
-	if (decInc >= 0)
-		text->incDepth();
-	else
-		text->decDepth();
+	text->changeDepth(type);
 	if (text->inset_owner)
 		bv->updateInset((Inset *)text->inset_owner);
 	bv->update(BufferView::SELECT);
@@ -401,3 +398,5 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 					false, !cursor.boundary());
 	}
 }
+
+}; // namespace bv_funcs

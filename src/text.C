@@ -48,6 +48,7 @@ using std::min;
 using std::endl;
 using std::pair;
 using lyx::pos_type;
+using namespace bv_funcs;
 
 /// top, right, bottom pixel margin
 extern int const PAPER_MARGIN = 20;

@@ -252,7 +252,7 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
-#if 0
+#if 1
 	// This is in the critical path for loading!
 	pos_type const siz = size();
 

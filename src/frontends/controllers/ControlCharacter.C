@@ -19,6 +19,7 @@
 #include "gettext.h"
 #include "language.h"
 
+using namespace bv_funcs;
 
 ControlCharacter::ControlCharacter(Dialog & parent)
 	: Dialog::Controller(parent),

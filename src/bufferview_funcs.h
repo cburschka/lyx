@@ -20,6 +20,8 @@ class BufferView;
 class LyXFont;
 class LyXText;
 
+namespace bv_funcs {
+
 /** Set \param data using \param font and \param toggle.
  *  If successful, returns true.
  */
@@ -40,6 +42,14 @@ void update_and_apply_freefont(BufferView * bv, string const & data);
  */
 void apply_freefont(BufferView * bv);
 
+/// what type of depth change to make
+enum DEPTH_CHANGE {
+	INC_DEPTH,
+	DEC_DEPTH
+};
+
+/// change the nesting depth of the selection
+extern void changeDepth(BufferView *, LyXText *, DEPTH_CHANGE);
 
 ///
 extern void emph(BufferView *);
@@ -53,8 +63,6 @@ extern void lang(BufferView *, string const &);
 extern void number(BufferView *);
 ///
 extern void tex(BufferView *);
-///
-extern void changeDepth(BufferView *, LyXText *, int);
 ///
 extern void code(BufferView *);
 ///
@@ -72,4 +80,7 @@ extern string const currentState(BufferView *);
 ///
 extern void toggleAndShow(BufferView *, LyXFont const &,
 			  bool toggleall = true);
+
+}; // namespace bv_funcs
+
 #endif

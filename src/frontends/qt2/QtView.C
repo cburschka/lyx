@@ -41,6 +41,7 @@
 #include <qstatusbar.h>
 
 using std::endl;
+using namespace bv_funcs;
 
 namespace {
 

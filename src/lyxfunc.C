@@ -85,6 +85,7 @@ using std::find_if;
 using std::vector;
 using std::transform;
 using std::back_inserter;
+using namespace bv_funcs;
 
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
@@ -1109,11 +1110,11 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_DEPTH_MIN:
-		changeDepth(view(), TEXT(false), -1);
+		changeDepth(view(), TEXT(false), bv_funcs::DEC_DEPTH);
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		changeDepth(view(), TEXT(false), 1);
+		changeDepth(view(), TEXT(false), bv_funcs::INC_DEPTH);
 		break;
 
 	case LFUN_FREEFONT_APPLY:

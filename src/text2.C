@@ -457,7 +457,7 @@ void LyXText::setLayout(string const & layout)
 }
 
 
-void LyXText::incDepth()
+void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
 {
 	ParagraphList::iterator pit(cursor.par());
 	ParagraphList::iterator end(cursor.par());
@@ -480,10 +480,14 @@ void LyXText::incDepth()
 
 	while (true) {
 		int const depth = pit->params().depth();
-
-		if (depth < prev_after_depth
-		    && pit->layout()->labeltype != LABEL_BIBLIO) {
-			pit->params().depth(depth + 1);
+		if (type == bv_funcs::INC_DEPTH) {
+			if (depth < prev_after_depth
+			    && pit->layout()->labeltype != LABEL_BIBLIO) {
+				pit->params().depth(depth + 1);
+			}
+		} else {
+			if (depth)
+				pit->params().depth(depth - 1);
 		}
 
 		prev_after_depth = pit->getMaxDepthAfter();
@@ -511,61 +515,6 @@ void LyXText::incDepth()
 		setCursor(selection.end.par(), selection.end.pos());
 	}
 
-	updateCounters();
-	setSelection();
-	setCursor(tmpcursor.par(), tmpcursor.pos());
-}
-
-
-// decrement depth over selection and
-// make a total rebreak of those paragraphs
-void  LyXText::decDepth()
-{
-	// if there is no selection just set the layout
-	// of the current paragraph
-	if (!selection.set()) {
-		selection.start = cursor; // dummy selection
-		selection.end = cursor;
-	}
-	Paragraph * endpar = selection.end.par()->next();
-	Paragraph * undoendpar = endpar;
-
-	if (endpar && endpar->getDepth()) {
-		while (endpar && endpar->getDepth()) {
-			endpar = endpar->next();
-			undoendpar = endpar;
-		}
-	} else if (endpar) {
-		endpar = endpar->next(); // because of parindents etc.
-	}
-
-	setUndo(bv(), Undo::EDIT,
-		selection.start.par(), undoendpar);
-
-	LyXCursor tmpcursor = cursor; // store the current cursor
-
-	// ok we have a selection. This is always between sel_start_cursor
-	// and sel_end cursor
-	cursor = selection.start;
-
-	while (true) {
-		if (cursor.par()->params().depth()) {
-			cursor.par()->params()
-				.depth(cursor.par()->params().depth() - 1);
-		}
-		if (cursor.par() == selection.end.par()) {
-			break;
-		}
-		cursor.par(cursor.par()->next());
-	}
-
-	redoParagraphs(selection.start, endpar);
-
-	// we have to reset the visual selection because the
-	// geometry could have changed
-	setCursor(selection.start.par(), selection.start.pos());
-	selection.cursor = cursor;
-	setCursor(selection.end.par(), selection.end.pos());
 	updateCounters();
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos());
