@@ -82,8 +82,6 @@ int LyXText::top_y() const
 	     row && row != anchor_row_; row = row->next()) {
 		y += row->height();
 	}
-	lyxerr <<  "Returning y as " << y << endl;
-	lyxerr << "But row->y is " << anchor_row_->y() << endl;
 	return y + anchor_row_offset_;
 }
 
