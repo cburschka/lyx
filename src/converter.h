@@ -1,8 +1,4 @@
 // -*- C++ -*-
-
-#ifndef CONVERTER_H
-#define CONVERTER_H
-
 /**
  * \file converter.h
  * This file is part of LyX, the document processor.
@@ -10,8 +6,11 @@
  *
  * \author Dekel Tsur
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
+
+#ifndef CONVERTER_H
+#define CONVERTER_H
 
 #include "latexrunparams.h"
 #include "graph.h"

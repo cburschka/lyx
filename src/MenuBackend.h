@@ -1,15 +1,14 @@
-/* This file is part of              -*- C++ -*-
-* ======================================================
-*
-*           LyX, The Document Processor
-*
-*           Copyright 1995 Matthias Ettrich
-*           Copyright 1995-2001 The LyX Team.
-*
-*           This file is Copyright 1999
-*           Jean-Marc Lasgouttes
-*
-*======================================================*/
+// -*- C++ -*-
+/**
+ * \file MenuBackend.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef MENUBACKEND_H
 #define MENUBACKEND_H

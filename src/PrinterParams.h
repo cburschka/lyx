@@ -1,15 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file PrinterParams.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *	    LyX, The Document Processor
+ * \author Allan Rae
  *
- *	    Copyright 1995 Matthias Ettrich
- *	    Copyright 1995-2001 The LyX Team
- *
- *	    This file Copyright 1999-2001
- *	    Allan Rae
- *======================================================
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef PRINTERPARAMS_H

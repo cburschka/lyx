@@ -1,15 +1,15 @@
 // -*- C++ -*-
 /**
- *  \file paper.h
+ * \file paper.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Jean-Marc Lasgouttes
+ * \author Jean-Marc Lasgouttes
  *
- *  Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
- *  A trivial header file to hold paper-related enums. It should later
- *  expand to contain many paper-related horrors access.
+ * A trivial header file to hold paper-related enums. It should later
+ * expand to contain many paper-related horrors access.
  */
 
 #ifndef PAPER_H

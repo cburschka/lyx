@@ -1,14 +1,14 @@
 // -*- C++ -*-
 /**
- *  \file GraphicsLoader.h
+ * \file GraphicsLoader.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Angus Leeming
+ * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
- *  The public face of the graphics cache.
+ * The public face of the graphics cache.
  *
  *  * The user supplies an image file and the display parameters.
  *  * He can change the file or the display parameters through a reset() method.
@@ -18,7 +18,7 @@
  *  * When (status() == Ready), he can use image() to access the loaded image
  *    and pass it to the Painter.
  *
- *  What could be simpler?
+ * What could be simpler?
  */
 
 #ifndef GRAPHICSLOADER_H

@@ -9,7 +9,7 @@
  * Interface cleaned up by
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * An instance of Class Forkedcall represents a single child process.
  *

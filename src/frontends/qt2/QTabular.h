@@ -9,7 +9,7 @@
  * \author Juergen Spitzmueller
  * \author Herbert Voss
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef QTABULAR_H

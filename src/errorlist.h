@@ -1,8 +1,4 @@
 // -*- C++ -*-
-
-#ifndef ERRORLIST_H
-#define ERRORLIST_H
-
 /**
  * \file errorlist.h
  * This file is part of LyX, the document processor.
@@ -10,8 +6,11 @@
  *
  * \author Alfredo Braunstein
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
+
+#ifndef ERRORLIST_H
+#define ERRORLIST_H
 
 #include "LString.h"
 

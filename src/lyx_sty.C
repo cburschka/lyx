@@ -1,9 +1,11 @@
 /**
  * \file lyx_sty.C
- * Copyright 1995-2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjornes <larsbj@lyx.org>
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

@@ -1,13 +1,15 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file undo.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Asger Alstrup
+ * \author Lars Gullik Bjønnes
+ * \author André Pönitz
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef UNDO_H
 #define UNDO_H

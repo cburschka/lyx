@@ -1,13 +1,14 @@
 // -*- C++ -*-
-/* This file is part of
-* ======================================================
-*
-*           LyX, The Document Processor
-*
-*           Copyright 1995 Matthias Ettrich
-*           Copyright 1995-2001 The LyX Team.
-*
-* ====================================================== */
+/**
+ * \file lyxserver.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef LYXSERVER_H
 #define LYXSERVER_H

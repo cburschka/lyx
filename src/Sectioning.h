@@ -1,4 +1,13 @@
 // -*- C++ -*-
+/**
+ * \file Sectioning.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef SECTIONING_H
 #define SECTIONING_H

@@ -1,12 +1,14 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file encoding.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ * \author Dekel Tsur
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS.
+ */
 
 #include <config.h>
 

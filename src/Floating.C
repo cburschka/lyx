@@ -5,6 +5,7 @@
  *
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */

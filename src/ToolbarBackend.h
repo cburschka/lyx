@@ -4,9 +4,10 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author unknown
+ * \author Jean-Marc Lasgouttes
+ * \author John Levon
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef TOOLBAR_BACKEND_H

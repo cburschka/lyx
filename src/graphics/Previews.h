@@ -6,7 +6,7 @@
  *
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * lyx::graphics::Previews is a singleton class that stores the
  * lyx::graphics::PreviewLoader for each buffer requiring one.

@@ -6,7 +6,7 @@
  *
  * \author André Pönitz
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * A collection of string helper functions that works with string.
  * Some of these would certainly benefit from a rewrite/optimization.

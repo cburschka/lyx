@@ -6,7 +6,7 @@
  *
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 /* Tooltips for xforms. xforms 0.89 supports them directly, but 0.88 needs

@@ -4,8 +4,14 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
+ * \author Alfredo Braunstein
+ * \author Lars Gullik Bjønnes
+ * \author Jean Marc Lasgouttes
+ * \author Angus Leeming
+ * \author John Levon
+ * \author André Pönitz
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

@@ -8,7 +8,7 @@
  * \author John Levon
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef FORMEXTERNAL_H

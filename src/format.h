@@ -1,10 +1,4 @@
 // -*- C++ -*-
-
-
-#ifndef FORMAT_H
-#define FORMAT_H
-
-
 /**
  * \file format.h
  * This file is part of LyX, the document processor.
@@ -12,9 +6,11 @@
  *
  * \author Dekel Tsur
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
+#ifndef FORMAT_H
+#define FORMAT_H
 
 
 #include "LString.h"

@@ -5,7 +5,7 @@
  *
  * \author Ruurd A. Reitsma
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * Various OS specific functions
  */

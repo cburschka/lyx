@@ -1,4 +1,16 @@
 // -*- C++ -*-
+/**
+ * \file lyxfind.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ * \author John Levon
+ * \author Jürgen Vigna
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef LYXFIND_H
 #define LYXFIND_H
 

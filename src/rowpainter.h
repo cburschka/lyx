@@ -7,13 +7,11 @@
  * \author various
  * \author John Levon
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef ROWPAINTER_H
 #define ROWPAINTER_H
-
-#include <config.h>
 
 class LyXText;
 class BufferView;

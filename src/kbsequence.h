@@ -1,14 +1,17 @@
 // -*- C++ -*-
 /**
  * \file kbsequence.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ *
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef KBSEQUENCE_H
 #define KBSEQUENCE_H
-
-#include <config.h>
 
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"

@@ -4,8 +4,12 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
+ * \author Lars Gullik Bjønnes
+ * \author John Levon
+ * \author André Pönitz
+ * \author Jürgen Vigna
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * Metrics for an on-screen text row.
  */

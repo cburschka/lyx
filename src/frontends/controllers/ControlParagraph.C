@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file ControlParagraph.C
  * This file is part of LyX, the document processor.
@@ -7,7 +6,7 @@
  * \author Edwin Leuven
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

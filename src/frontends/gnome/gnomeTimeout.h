@@ -6,7 +6,7 @@
  *
  * \author Baruch Even
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 #ifndef GNOMETIMEOUT_H
 #define GNOMETIMEOUT_H

@@ -7,7 +7,7 @@
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 #ifndef GETTEXT_H
 #define GETTEXT_H

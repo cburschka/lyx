@@ -1,10 +1,12 @@
 /**
- * \file aspell.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * \file aspell_local.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Kevin Atkinson
- * \author John Levon <levon@movementarian.org>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

@@ -6,7 +6,7 @@
  *
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * ControlCommand is a controller class for dialogs that create or modify
  * an inset derived from InsetCommand.

@@ -5,7 +5,7 @@
  *
  * \author Edwin Leuven
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

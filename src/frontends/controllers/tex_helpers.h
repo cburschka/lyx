@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file tex_helpers.h
  * This file is part of LyX, the document processor.
@@ -5,7 +6,7 @@
  *
  * \author Herbert Voss
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef TEX_HELPERS_H

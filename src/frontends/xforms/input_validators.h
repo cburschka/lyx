@@ -6,7 +6,7 @@
  *
  * \author Allan Rae
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 /* Input validators and filters for xforms.

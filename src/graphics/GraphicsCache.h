@@ -1,20 +1,20 @@
 // -*- C++ -*-
 /**
- *  \file GraphicsCache.h
+ * \file GraphicsCache.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Baruch Even
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
- *  lyx::graphics::Cache is the manager of the image cache.
- *  It is responsible for creating the lyx::graphics::CacheItem's
- *  and maintaining them.
+ * lyx::graphics::Cache is the manager of the image cache.
+ * It is responsible for creating the lyx::graphics::CacheItem's
+ * and maintaining them.
  *
- *  lyx::graphics::Cache is a singleton class. It is possible to have only one
- *  instance of it at any moment.
+ * lyx::graphics::Cache is a singleton class. It is possible to have only one
+ * instance of it at any moment.
  */
 
 #ifndef GRAPHICSCACHE_H

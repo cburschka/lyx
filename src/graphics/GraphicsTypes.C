@@ -1,12 +1,11 @@
-// -*- C++ -*-
 /**
- *  \file GraphicsTypes.C
+ * \file GraphicsTypes.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Rob Lahaye
+ * \author Rob Lahaye
  *
- * Full author contact details available in file CREDITS
+ * Full author contact details available in file CREDITS.
  */
 
 #include <config.h>

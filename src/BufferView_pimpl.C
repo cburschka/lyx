@@ -1,10 +1,19 @@
 /**
  * \file BufferView_pimpl.C
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
+ * \author Asger Alstrup
+ * \author Alfredo Braustein
  * \author Lars Gullik Bjønnes
- * \author various
+ * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
+ * \author John Levon
+ * \author André Pönitz
+ * \author Dekel Tsur
+ * \author Jürgen Vigna
+ *
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

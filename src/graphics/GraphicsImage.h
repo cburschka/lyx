@@ -1,24 +1,24 @@
 // -*- C++ -*-
 /**
- *  \file GraphicsImage.h
+ * \file GraphicsImage.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Baruch Even
- *  \author Angus Leeming
+ * \author Baruch Even
+ * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
- *  An abstract base class for the images themselves.
- *  Allows the user to retrieve the pixmap, once loaded and to issue commands
- *  to modify it.
+ * An abstract base class for the images themselves.
+ * Allows the user to retrieve the pixmap, once loaded and to issue commands
+ * to modify it.
  *
- *  The boost::functions newImage and loadableFormats are connected to the
- *  appropriate derived classes elsewhere, allowing the graphics cache to
- *  access them without knowing anything about their instantiation.
+ * The boost::functions newImage and loadableFormats are connected to the
+ * appropriate derived classes elsewhere, allowing the graphics cache to
+ * access them without knowing anything about their instantiation.
  *
- *  The loading process can be asynchronous, but cropping, rotating and
- *  scaling block execution.
+ * The loading process can be asynchronous, but cropping, rotating and
+ * scaling block execution.
  */
 
 #ifndef GRAPHICSIMAGE_H

@@ -7,7 +7,7 @@
  * \author Matthias Ettrich
  * \author Lars Gullik Bjønnes
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * Metrics for an on-screen text row.
  */

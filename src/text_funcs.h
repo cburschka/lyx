@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file text_funcs.h
  * This file is part of LyX, the document processor.
@@ -6,7 +7,7 @@
  * \author Lars Gullik Bjønnes
  * \author John Levon
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * This file contains some utility functions for actually mutating
  * the text contents of a document 
@@ -14,8 +15,6 @@
 
 #ifndef TEXT_FUNCS_H
 #define TEXT_FUNCS_H
-
-#include <config.h>
 
 #include "support/types.h"
 

@@ -6,7 +6,7 @@
  *
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * ControlButtons serves only to control the activation of the Ok, Apply, Cancel
  * and Restore buttons on the View dialog.

@@ -1,11 +1,11 @@
 /**
- *  \file GraphicsConverter.C
+ * \file GraphicsConverter.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Angus Leeming
+ * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

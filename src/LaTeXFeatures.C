@@ -1,12 +1,16 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file LaTeXFeatures.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author José Matos
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ * \author Jürgen Vigna
+ * \author André Pönitz
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 the LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS.
+ */
 
 #include <config.h>
 

@@ -5,7 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 /** A bitmap table uses a single bitmap to simulate a 2d array

@@ -6,7 +6,7 @@
  *
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * This class is just a dummy version of that in the main LyX source tree
  * to enable tex2lyx to use LyX's textclass classes and not have to

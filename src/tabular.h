@@ -1,14 +1,17 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file tabular.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
+ * \author André Pönitz
+ * \author Jürgen Vigna
  *
- *           Copyright 2000-2001 The LyX Team.
- *
- *           @author: Jürgen Vigna
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef TABULAR_H
 #define TABULAR_H
 

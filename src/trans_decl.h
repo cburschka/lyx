@@ -1,6 +1,17 @@
 // -*- C++ -*-
-#ifndef Trans_Decl_h
-#define Trans_Decl_h
+/**
+ * \file trans_decl.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#ifndef TRANS_DECL_H
+#define TRANS_DECL_H
 
 #include "LString.h"
 #include "tex-accent.h"

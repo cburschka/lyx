@@ -1,11 +1,13 @@
 /**
  * \file changes.C
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS.
  *
  * Record changes in a paragraph.
- *
- * \author John Levon <levon@movementarian.org>
  */
 
 #include <config.h>

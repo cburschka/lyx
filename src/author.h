@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file author.h
  * This file is part of LyX, the document processor.
@@ -5,7 +6,7 @@
  *
  * \author John Levon
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef AUTHOR_H

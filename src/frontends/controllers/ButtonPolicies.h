@@ -6,7 +6,7 @@
  *
  * \author Allan Rae
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * Provides a state machine implementation of the various button policies
  * used by the dialogs.

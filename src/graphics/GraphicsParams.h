@@ -1,14 +1,14 @@
 // -*- C++ -*-
 /**
- *  \file GraphicsParams.h
+ * \file GraphicsParams.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Angus Leeming
+ * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
- *  Used internally by the lyx::graphics::Image.
+ * Used internally by the lyx::graphics::Image.
  */
 
 #ifndef GRAPHICSPARAMS_H

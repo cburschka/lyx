@@ -1,16 +1,14 @@
 // -*- C++ -*-
-/* This is the bullet class definition file.
- * This file is part of
- * ======================================================
+/**
+ * \file Bullet.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
+ * \author Allan Rae
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file Copyright 1997-1999
- *           Allan Rae
- * ====================================================== */
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef BULLET_H
 #define BULLET_H

@@ -6,7 +6,7 @@
  *
  * \author John Levon
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * This is pretty icky, we should really be able to use
  * ControlInset. We can't because there are no params for

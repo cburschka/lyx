@@ -1,11 +1,16 @@
 // -*- C++ -*-
 /**
  * \file BufferView.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  \author Lars Gullik Bjønnes
-*/
+ * \author Alfredo Braustein
+ * \author Lars Gullik Bjønnes
+ * \author John Levon
+ * \author Jürgen Vigna
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H

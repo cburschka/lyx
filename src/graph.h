@@ -1,8 +1,4 @@
 // -*- C++ -*-
-
-#ifndef GRAPH_H
-#define GRAPH_H
-
 /**
  * \file graph.h
  * This file is part of LyX, the document processor.
@@ -10,8 +6,11 @@
  *
  * \author Dekel Tsur
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
+
+#ifndef GRAPH_H
+#define GRAPH_H
 
 #include "LString.h"
 

@@ -6,7 +6,7 @@
  *
  * \author Asger Alstrup
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef FONTLOADER_H_

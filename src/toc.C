@@ -1,16 +1,12 @@
-// -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2002 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file toc.C
- * \author Angus Leeming <a.leeming@ic.ac.uk>
- * \author Jean-Marc Lasgouttes <lasgouttes@freesurf.fr>
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

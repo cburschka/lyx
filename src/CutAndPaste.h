@@ -1,5 +1,6 @@
 // -*- C++ -*-
-/* \file CutAndPaste.h
+/**
+ * \file CutAndPaste.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -7,7 +8,7 @@
  * \author Lars Gullik Bjønnes
  * \author Alfredo Braunstein
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef CUTANDPASTE_H

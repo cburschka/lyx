@@ -1,13 +1,14 @@
 /**
  * \file lyxlex.C
- * Copyright 1996-2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * Generalized simple lexical analyzer.
- * It can be used for simple syntax parsers, like lyxrc,
- * texclass and others to come.
+ * \author Alejandro Aguilar Sierra
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ * \author John Levon
  *
- * \author Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

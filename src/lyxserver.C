@@ -1,12 +1,15 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxserver.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
+ * \author John Levon
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS.
+ */
 
 /**
   Docu   : To use the lyxserver define the name of the pipe in your

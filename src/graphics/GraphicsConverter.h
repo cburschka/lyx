@@ -1,17 +1,17 @@
 // -*- C++ -*-
 /**
- *  \file GraphicsConverter.h
+ * \file GraphicsConverter.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Angus Leeming
+ * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
- *  The controller of a conversion process from file AA of format A to
- *  file BB of format B.
- *  Once finished, a signal is emitted to inform any listeners (connected
- *  through the connect() method).
+ * The controller of a conversion process from file AA of format A to
+ * file BB of format B.
+ * Once finished, a signal is emitted to inform any listeners (connected
+ * through the connect() method).
  */
 
 #ifndef GRAPHICSCONVERTER_H

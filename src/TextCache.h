@@ -1,15 +1,13 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file TextCache.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team
+ * \author Lars Gullik Bjønnes
  *
- *           This file is Copyright 2000-2001
- *           Lars Gullik Bjønnes
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef TEXT_CACHE_H
 #define TEXT_CACHE_H

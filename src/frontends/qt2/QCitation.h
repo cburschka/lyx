@@ -7,7 +7,7 @@
  * \author Angus Leeming
  * \author Kalle Dalheimer
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef QCITATION_H

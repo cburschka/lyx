@@ -6,7 +6,7 @@
  *
  * \author Alfredo Braunstein (based on an idea from Angus Leeming)
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * This class implements a queue of forked processes. In order not to
  * hose the system with multiple processes running simultaneously, you can

@@ -6,7 +6,7 @@
  *
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * Instatiate the two possible instantiations of the ControlDialog template
  * class, thus reducing file dependencies enormously.

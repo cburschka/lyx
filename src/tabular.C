@@ -1,13 +1,18 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file tabular.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
+ * \author José Matos
+ * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
+ * \author John Levon
+ * \author André Pönitz
+ * \author Jürgen Vigna
  *
- *           Copyright 2000-2002 The LyX Team.
- *
- *           @author: Jürgen Vigna
- *
- * ======================================================
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

@@ -5,7 +5,7 @@
  *
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * A freebrowser is a browser widget in its own form.
  * It is used for example to instantiate the drop-down list beneath a

@@ -1,15 +1,15 @@
 // -*- C++ -*-
 /**
- *  \file GraphicsTypes.h
+ * \file GraphicsTypes.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Angus Leeming
+ * \author Angus Leeming
  *
- *  Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
- *  All that header files outside the graphics subdirectory should need to
- *  access.
+ * All that header files outside the graphics subdirectory should need to
+ * access.
  */
 
 #ifndef GRAPHICSTYPES_H

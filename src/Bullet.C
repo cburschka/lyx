@@ -1,16 +1,18 @@
+/**
+ * \file Bullet.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ * \author Allan Rae
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 /* Completes the implementation of the Bullet class
  * It defines the various LaTeX commands etc. required to
  * generate the bullets in the bullet-panel's.
- *
- * This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 1997-1998 Allan Rae
- *           and the LyX Team
- *
- * ====================================================== */
+ */
 
 #include <config.h>
 

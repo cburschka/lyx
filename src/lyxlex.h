@@ -1,9 +1,19 @@
 // -*- C++ -*-
+/**
+ * \file lyxlex.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 //  Generalized simple lexical analizer.
 //  It can be used for simple syntax parsers, like lyxrc,
-//  texclass and others to come.   [asierra30/03/96]
-//
-//   Copyright 1996 Lyx Team.
+//  texclass and others to come.
+
 #ifndef LYXLEX_H
 #define LYXLEX_H
 

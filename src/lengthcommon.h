@@ -1,4 +1,16 @@
 // -*- C++ -*-
+/**
+ * \file lengthcommon.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
+ * \author Jean-Marc Lasgouttes
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef LENGTH_COMMON_H
 #define LENGTH_COMMON_H

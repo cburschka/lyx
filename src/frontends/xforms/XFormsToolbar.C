@@ -6,7 +6,7 @@
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 //  Added pseudo-action handling, asierra 180296

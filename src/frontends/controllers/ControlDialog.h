@@ -6,7 +6,7 @@
  *
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * ControlDialog is to be used as a parent class for dialogs that are not
  * views onto parameters of insets. (An ugly description I know, but I hope

@@ -5,7 +5,7 @@
  *
  * \author Angus Leeming
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  *
  * A combination of two objects (a button and a browser) is encapsulated to
  * get a combobox-like object.

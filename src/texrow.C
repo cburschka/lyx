@@ -1,9 +1,13 @@
 /**
  * \file texrow.C
- * Copyright 1995-2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Matthias Ettrich
+ * \author Lars Gullik Bjønnes
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

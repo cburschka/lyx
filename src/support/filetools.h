@@ -1,4 +1,4 @@
-// -*- C++-*-
+// -*- C++ -*-
 /**
  * \file filetools.h
  * This file is part of LyX, the document processor.
@@ -6,7 +6,7 @@
  *
  * \author Lars Gullik Bjønnes
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef LYX_FILETOOL_H
