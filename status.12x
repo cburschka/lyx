@@ -20,6 +20,9 @@ What's new
 
 ** Updates
 
+- it is now possible to build LyX with xforms 1.0rc4 (and probably 1.0
+  when this gets released) 
+
 - new option `keep aspect ratio' in graphics dialog
 
 - update finnish, danish, french and russian localizations
@@ -101,6 +104,8 @@ What's new
 - when a document is registered though version control, make sure it
   has been saved
 
+- fix bug where the math parser would drop some pairs of braces
+
 - only use the amsmath package when it is needed
 
 - fix the spacing around fraction insets in math editor
@@ -123,9 +128,6 @@ What's new
 
 - make latex import script (reLyX) honor the LYX_DIR_12x envirnment
   variable, like the rest of LyX
-
-- rework the configuration script wrt xforms 1.0.  This version is now
-  supported. 
 
 - honor --with-extra-XXX when searching for AikSaurus library
 

@@ -932,10 +932,6 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 {
 	parse_into1(array, flags, code);
 	// remove 'unnecessary' braces:
-	if (array.size() == 1 && array.back()->asBraceInset()) {
-		lyxerr << "extra braces removed\n";
-		array = array.back()->asBraceInset()->cell(0);
-	}
 }
 
 
@@ -1012,15 +1008,9 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cat() == catBegin) {
 			MathArray ar;
 			parse_into(ar, FLAG_BRACE_LAST);
-#ifndef WITH_WARNINGS
-#warning this might be wrong in general!
-#endif
-			// ignore braces around simple items
-			if ((ar.size() == 1 && !ar.front()->needsBraces()
-       || (ar.size() == 2 && !ar.front()->needsBraces()
-					    && ar.back()->asScriptInset()))
-       || (ar.size() == 0 && array.size() == 0))
-			{
+			// do not create a BraceInset if they were written by LyX
+			// this helps to keep the annoyance of  "a choose b"  to a minimum
+			if (ar.size() == 1 && ar.front()->extraBraces()) {
 				array.push_back(ar);
 			} else {
 				array.push_back(MathAtom(new MathBraceInset));
@@ -1177,7 +1167,9 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 */
 
 		else if (t.cs() == "label") {
-			curr_label_ = getArg('{', '}');
+			MathArray ar;
+			parse_into(ar, FLAG_ITEM, code);
+			curr_label_ = asString(ar);
 		}
 
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {

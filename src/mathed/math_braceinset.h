@@ -21,6 +21,8 @@ public:
 	MathInset * clone() const;
 	///
 	MathBraceInset * asBraceInset() { return this; }
+	/// identifies things that add {...} when written
+	bool extraBraces() const { return true; }
 	///
 	void draw(Painter &, int x, int y) const;
 	///

@@ -26,6 +26,7 @@
 #include "math_scriptinset.h"
 #include "math_mathmlstream.h"
 #include "debug.h"
+#include "math_parser.h"
 
 
 using std::ostream;
@@ -234,4 +235,21 @@ void MathInset::mathmlize(MathMLStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);
+}
+
+
+string asString(MathArray const & ar)
+{
+	std::ostringstream os;
+	WriteStream ws(os);
+	ws << ar;
+	return os.str();
+}
+
+
+MathArray asArray(string const & str)
+{
+	MathArray ar;
+	mathed_parse_cell(ar, str);
+	return ar;
 }

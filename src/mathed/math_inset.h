@@ -220,8 +220,8 @@ public:
 	virtual MathTextCodes code() const { return LM_TC_MIN; }
 	/// identifies things that can get \limits or \nolimits
 	virtual bool takesLimits() const { return false; }
-	/// identifies complicated things that need braces if used as arg
-	virtual bool needsBraces() const { return true; }
+	/// identifies things that add {...} when written
+	virtual bool extraBraces() const { return false; }
 
 	///
 	virtual void edit(BufferView *, int, int, unsigned int) {}
@@ -255,5 +255,8 @@ public:
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);
+
+string asString(MathArray const & ar);
+MathArray asArray(string const & str);
 
 #endif

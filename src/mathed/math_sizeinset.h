@@ -21,6 +21,8 @@ public:
 	explicit MathSizeInset(latexkeys const * l);
 	///
 	MathInset * clone() const;
+	/// identifies things that add {...} when written
+	bool extraBraces() const { return true; }
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
