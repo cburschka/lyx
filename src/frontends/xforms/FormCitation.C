@@ -34,7 +34,6 @@ using std::max;
 using std::min;
 using std::find;
 
-static int min_wform;
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Citation")), dialog_(0)
@@ -60,6 +59,13 @@ FL_FORM * FormCitation::form() const
 }
 
 
+void FormCitation::connect()
+{
+	fl_set_form_maxsize( dialog_->form, 3*minw_, minh_ );
+	FormCommand::connect();
+}
+
+
 void FormCitation::disconnect()
 {
 	citekeys.clear();
@@ -73,7 +79,10 @@ void FormCitation::disconnect()
 void FormCitation::build()
 {
 	dialog_ = build_citation();
-	min_wform = dialog_->form->w;
+
+	// Workaround dumb xforms sizing bug
+	minw_ = form()->w;
+	minh_ = form()->h;
 }
 
 
@@ -223,25 +232,20 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 	static int const htext  = dialog_->textAftr->h;
 	static int const hok    = dialog_->button_ok->h;
 
-	int const wform = dialog_->form->w;
 	int hform = dh1 + hbrsr + dh1;
 	if ( bibPresent ) hform += hinfo + dh1;
 	if ( natbib ) hform += hstyle + dh1 + htext + dh2;
 	hform += htext + dh1 + hok + dh2;
 
-	bool const sizeSet = ( hform != dialog_->form->h );
-	if ( sizeSet ) fl_set_form_size( dialog_->form, wform, hform );
-
-	// No vertical resizing is allowed
-	// min_wform set in build()
-	fl_set_form_minsize( dialog_->form, min_wform,   hform );
-	fl_set_form_maxsize( dialog_->form, 3*min_wform, hform );
-
-	if ( !sizeSet ) return;
+	if ( hform != minh_ ) {
+		minh_ = hform;
+		fl_set_form_size( dialog_->form, minw_, minh_ );
+	} else
+		return;
 
 	int x = 0;
 	int y = 0;
-	fl_set_object_geometry( dialog_->box, x, y, wform, hform );
+	fl_set_object_geometry( dialog_->box, x, y, minw_, minh_ );
 
 	x = dialog_->citeBrsr->x;
 	y += dh1; 

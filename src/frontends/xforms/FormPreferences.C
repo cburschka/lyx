@@ -31,7 +31,7 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
 	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
 	  lnf_general_(0), screen_fonts_(0), interface_(0),
-	  printer_(0), paths_(0), outputs_general_(0), minw_(0), minh_(0)
+	  printer_(0), paths_(0), outputs_general_(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -80,8 +80,8 @@ void FormPreferences::build()
 	bc_.refresh();
 
 	// Workaround dumb xforms sizing bug
-	minw_ = dialog_->form->w;
-	minh_ = dialog_->form->h;
+	minw_ = form()->w;
+	minh_ = form()->h;
 
 	// build the tab folders
 	outputs_tab_ = build_outer_tab();
@@ -222,15 +222,6 @@ FL_FORM * FormPreferences::form() const
 {
 	if (dialog_) return dialog_->form;
 	return 0;
-}
-
-
-void FormPreferences::connect()
-{
-	FormBaseBI::connect();
-	fl_set_form_minsize(dialog_->form,
-			    minw_,
-			    minh_);
 }
 
 

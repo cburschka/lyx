@@ -42,4 +42,8 @@ FL_FORM * FormCopyright::form() const
 void FormCopyright::build()
 {
 	dialog_ = build_copyright();
+
+	// Workaround dumb xforms sizing bug
+	minw_ = form()->w;
+	minh_ = form()->h;
 }

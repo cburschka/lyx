@@ -32,13 +32,20 @@ C_GENERICCB(FormBase, RestoreCB)
 
 FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t,
 		   ButtonPolicy * bp, char const * close, char const * cancel)
-	: lv_(lv), bc_(bp, cancel, close), d_(d), h_(0), title(t), bp_(bp)
+	: lv_(lv), bc_(bp, cancel, close), d_(d), h_(0), title(t), bp_(bp),
+	  minw_(0), minh_(0)
 {}
 
 
 FormBase::~FormBase()
 {
 	delete bp_;
+}
+
+
+void FormBase::connect()
+{
+	fl_set_form_minsize( form(), minw_, minh_ );
 }
 
 
@@ -57,11 +64,13 @@ void FormBase::show()
 	if (form()->visible) {
 		fl_raise_form(form());
 	} else {
+		// calls to fl_set_form_minsize/maxsize apply only to the next
+		// fl_show_form(), so connect() comes first.
+		connect();
 		fl_show_form(form(),
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,
 			     FL_TRANSIENT,
 			     title.c_str());
-		connect();
 	}
 }
 
@@ -137,6 +146,7 @@ FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t,
 void FormBaseBI::connect()
 {
 	h_ = d_->hideAll.connect(slot(this, &FormBaseBI::hide));
+	FormBase::connect();
 }
 
 
@@ -160,6 +170,7 @@ void FormBaseBD::connect()
 		 connect(slot(this, &FormBaseBD::update));
 	h_ = d_->hideBufferDependent.
 		 connect(slot(this, &FormBaseBD::hide));
+	FormBase::connect();
 }
 
 

@@ -33,14 +33,6 @@ class LyXView;
  */
 class FormBase : public DialogBase, public noncopyable {
 public:
-	/** Constructor.
-	    #FormBase(lv, d, _("DialogName"), BUFFER_DEPENDENT, new ButtonPolicy)#
-	 */
-	FormBase(LyXView *, Dialogs *, string const &,
-		 ButtonPolicy *, char const *, char const *);
-	///
-	virtual ~FormBase();
-
 	/// Callback functions
 	static  int WMHideCB(FL_FORM *, void *);
 	///
@@ -55,6 +47,14 @@ public:
 	static void RestoreCB(FL_OBJECT *, long);
 
 protected: // methods
+	/** Constructor.
+	    #FormBase(lv, d, _("DialogName"), BUFFER_DEPENDENT, new ButtonPolicy)#
+	 */
+	FormBase(LyXView *, Dialogs *, string const &,
+		 ButtonPolicy *, char const *, char const *);
+	///
+	virtual ~FormBase();
+
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
@@ -62,7 +62,7 @@ protected: // methods
 	/// bool indicates if a buffer switch took place
 	virtual void update(bool = false) {}
 	/// Connect signals. Also perform any necessary initialisation.
-	virtual void connect() = 0;
+	virtual void connect();
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect() = 0;
 	/// Build the dialog
@@ -91,7 +91,6 @@ protected: // methods
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const = 0;
 
-protected: // data
 	/** Which LyXFunc do we use?
 	    We could modify Dialogs to have a visible LyXFunc* instead and
 	    save a couple of bytes per dialog.
@@ -107,6 +106,10 @@ protected: // data
   	string title;
 	///
 	ButtonPolicy * bp_;
+	/// Overcome a dumb xforms sizing bug
+	mutable int minw_;
+	///
+	mutable int minh_;
 };
 
 
@@ -115,14 +118,13 @@ protected: // data
     an update() function which is also supported by restore().
  */
 class FormBaseBI : public FormBase {
-public:
+protected:
 	/// Constructor
 	FormBaseBI(LyXView *, Dialogs *, string const &,
 		   ButtonPolicy * bp = new OkApplyCancelPolicy,
 		   char const * close = N_("Close"),
 		   char const * cancel = N_("Cancel"));
 
-protected:
 	/// Connect signals
 	virtual void connect();
 	/// Disconnect signals
@@ -133,14 +135,13 @@ protected:
 /** This class is an XForms GUI base class for Buffer Dependent dialogs
  */
 class FormBaseBD : public FormBase {
-public:
+protected:
 	/// Constructor
 	FormBaseBD(LyXView *, Dialogs *, string const &,
 		   ButtonPolicy * bp = new OkApplyCancelReadOnlyPolicy,
 		   char const * close = N_("Close"),
 		   char const * cancel = N_("Cancel"));
 
-protected:
 	/// Connect signals
 	virtual void connect();
 	/// Disconnect signals

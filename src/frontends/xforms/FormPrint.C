@@ -54,6 +54,10 @@ void FormPrint::build()
 {
 	dialog_ = build_print();
 
+	// Workaround dumb xforms sizing bug
+	minw_ = form()->w;
+	minh_ = form()->h;
+
 	// manage the ok, apply and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setApply(dialog_->button_apply);
@@ -104,15 +108,6 @@ void FormPrint::build()
 				   PrinterParams::EVEN);
 	which_.registerRadioButton(dialog_->radio_all_pages,
 				   PrinterParams::ALL);
-}
-
-
-void FormPrint::connect()
-{
-	FormBaseBD::connect();
-	fl_set_form_minsize(dialog_->form,
-			    dialog_->form->w,
-			    dialog_->form->h);
 }
 
 

@@ -1,7 +1,7 @@
 What's new in LyX version 1.1.6?
 --------------------------------
 
-As for all of the 1.1.x versions of LyX, this release contains a lot
+As with all of the 1.1.x versions of LyX, this release contains a lot
 of new code: in particular, half of the changes described in the
 ChangeLog (which dates back to the 1.1.0 release) describe changes in
 LyX 1.1.6!
@@ -12,7 +12,7 @@ GUI-independent branch of development has been merged, as well as code
 from the older development version:
 
 - many popups have been rewritten to use the new GUI-I scheme. In the
-  process they have gotten a nice cleanup: the Document and Paragraph
+  process they have received a nice cleanup: the Document and Paragraph
   popups now contain in one single place what was previously scattered
   in many places. Similarly, the citation and cross reference popups
   have been overhauled.
@@ -20,26 +20,26 @@ from the older development version:
 - LyX now has a Preference popup where you can change most of your
   lyxrc settings [Allan, details?]
 
-- The menus can now be defined in a text file, and they automatically
+- the menus can now be defined in a text file, and they automatically
   display the keyboard bindings associated with commands.
 
 - it is now possible to provide your own icons for the toolbar.
 
 - last but not least, work has begun on a KDE and a Gnome frontend for
   LyX. They are not officially supported for this version, but this
-  can give you an idea of what is happening.
+  will give you an idea of what is happening.
 
 Other major changes in 1.1.6 include:
 
 - the table support has been completely rewritten. It is now a modular
-  object (inset) which owns for each cell a (also) newly written text
+  object (inset), each cell of which owns a (also) newly written text
   inset. This now permits automatic text-wrap inside a tabular
   cell (if you define a width), multiparagraph mode AND setting of
   layouts for the paragraphs (lists inside a tabular cell!). Last but
-  not least, a wide tabular now scroll automatically so that all of it
+  not least, a wide tabular now scrolls automatically so that all of it
   is visible without the need to enlarge the window!
 
-  While there are yet no other new features, they will be now MUCH
+  While there are as yet no other new features, they will be now MUCH
   easier to add. It may be that because of being "young" code some
   features may not work right now, but at least it is much
   better than before.
@@ -60,7 +60,7 @@ Other major changes in 1.1.6 include:
 
 - LyX can do command line exports without opening any GUI components.
 
-- The multilingual support was improved. It is now possible to use in a
+- The multilingual support has been improved. It is now possible to use in a
   document languages with different encodings, e.g. German (iso8859-1) and
   Czech (iso8859-2). Such a document can be viewed on screen using an
   iso10646-1 (Unicode) font. However, it is (currently) not possible to

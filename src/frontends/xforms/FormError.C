@@ -20,8 +20,6 @@
 #include "form_error.h"
 #include "insets/inseterror.h"
 
-static int minh, minw;
-
 FormError::FormError( LyXView * lv, Dialogs * d )
 	: FormInset( lv, d, _("LaTeX Error") ),
 	  dialog_(0), inset_(0), message_("")
@@ -75,7 +73,6 @@ void FormError::update(bool switched)
 		return;
 	}
 
-	fl_set_form_minsize(form(), minw, minh);
 	fl_set_object_label(dialog_->message, message_.c_str());
 }
 
@@ -84,7 +81,7 @@ void FormError::build()
 {
 	dialog_ = build_error();
 
-	// XFORMS bug workaround
-	// Define the min/max dimensions. Actually applied in update()
-	minw = form()->w; minh = form()->h;
+	// Workaround dumb xforms sizing bug
+	minw_ = form()->w;
+	minh_ = form()->h;
 }

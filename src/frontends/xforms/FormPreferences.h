@@ -45,8 +45,6 @@ public:
 	///
 	~FormPreferences();
 private:
-	///
-	virtual void connect();
 	/// Update the dialog.
 	virtual void update(bool = false);
 	///
@@ -100,10 +98,6 @@ private:
 	FD_form_paths * paths_;
 	///
 	FD_form_outputs_general * outputs_general_;
-	/// Overcome a dumb xforms sizing bug
-	int minw_;
-	///
-	int minh_;
 };
 
 #endif

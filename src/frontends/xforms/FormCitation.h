@@ -47,6 +47,8 @@ private:
 		///
 		OFF
 	};
+	/// Connect signals etc. Set form's max size.
+	virtual void connect();
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 

@@ -23,20 +23,18 @@
 /** This class is an XForms GUI base class to insets
  */
 class FormInset : public FormBaseBD {
-public:
+protected:
 	/// Constructor
 	FormInset( LyXView *, Dialogs *, string const &,
 		   ButtonPolicy * bp = new OkCancelReadOnlyPolicy,
 		   char const * close = N_("Close"),
 		   char const * cancel = N_("Cancel"));
 
-protected: // methods
 	/// Connect signals. Also perform any necessary initialisation.
 	virtual void connect();
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 
-protected: // data
 	/// inset::hide connection.
 	Connection ih_;
 };
@@ -46,14 +44,13 @@ protected: // data
     InsetCommand
  */
 class FormCommand : public FormInset {
-public:
+protected:
 	/// Constructor
 	FormCommand( LyXView *, Dialogs *, string const &,
 		     ButtonPolicy * = new OkCancelReadOnlyPolicy,
 		     char const * close = N_("Close"),
 		     char const * cancel = N_("Cancel"));
 
-protected:
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 

@@ -66,10 +66,15 @@ void FormToc::disconnect()
 void FormToc::build()
 {
 	dialog_ = build_toc();
+
 	fl_addto_choice(dialog_->type,
 			_(" TOC | LOF | LOT | LOA "));
 
 	// Don't need to limit size of this dialog
+	// (but fixing min size is a GOOD thing).
+	// Workaround dumb xforms sizing bug
+	minw_ = form()->w;
+	minh_ = form()->h;
 }
 
 

@@ -94,6 +94,10 @@ void FormDocument::build()
     bc_.setUndoAll(dialog_->button_restore);
     bc_.refresh();
 
+    // Workaround dumb xforms sizing bug
+    minw_ = form()->w;
+    minh_ = form()->h;
+
     // the document paper form
     paper_ = build_doc_paper();
     fl_addto_choice(paper_->choice_papersize2,

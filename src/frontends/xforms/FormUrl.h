@@ -28,6 +28,8 @@ public:
 	///
 	~FormUrl();
 private:
+	/// Connect signals etc. Set form's max size.
+	virtual void connect();
 	/// Build the dialog
 	virtual void build();
 	/// Update dialog before showing it
@@ -38,10 +40,6 @@ private:
 	virtual FL_FORM * form() const;
 	///
 	FD_form_url * build_url();
-	/// 
-	int minh;
-	///
-	int minw;
 	/// Real GUI implementation.
 	FD_form_url * dialog_;
 };

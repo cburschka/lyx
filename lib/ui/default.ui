@@ -178,7 +178,7 @@ Menuset
 	Item "Figure...|g" "figure-insert"
 	Item "Tabular...|T" "dialog-tabular-insert"
 	Separator
-	Item "Include File...|I" "buffer-child-insert"
+	Item "Include File...|c" "buffer-child-insert"
 	Submenu "Import ascii file|a" "insert_ascii"
 	Item "Insert LyX file...|X" "file-insert"
 	Item "Insert external material...|e" "external-insert"

@@ -26,7 +26,7 @@
 #include "lyxfunc.h"
 
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Index")), minh(0), minw(0), dialog_(0)
+	: FormCommand(lv, d, _("Index")), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -49,6 +49,13 @@ FL_FORM * FormIndex::form() const
 }
 
 
+void FormIndex::connect()
+{
+	fl_set_form_maxsize( form(), 2*minw_, minh_ );
+	FormCommand::connect();
+}
+	
+
 void FormIndex::build()
 {
 	dialog_ = build_index();
@@ -56,9 +63,9 @@ void FormIndex::build()
 #ifdef WITH_WARNINGS
 #warning use the buttoncontroller
 #endif
-	// XFORMS bug workaround
-	// Define the min/max dimensions. Actually applied in update()
-	minw = form()->w; minh = form()->h;
+	// Workaround dumb xforms sizing bug
+	minw_ = form()->w;
+	minh_ = form()->h;
 }
 
 
@@ -68,9 +75,6 @@ void FormIndex::update(bool switched)
 		hide();
 		return;
 	}
-
-	fl_set_form_minsize(form(), minw, minh);
-	fl_set_form_maxsize(form(), 2*minw, minh);
 
 	fl_set_input(dialog_->key, params.getContents().c_str());
 

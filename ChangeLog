@@ -1,4 +1,21 @@
+2000-10-19  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormBase.[Ch]:
+	* src/frontends/xforms/FormXXX.[Ch] where XXX is a FormBase daughter:
+	read the xforms manual to discover that fl_set_form_minsize()/maxsize()
+	work only for the next call to fl_show_form(). The correct place to set
+	them, therefore is in connect() immediately BEFORE fl_show_form(). Now
+	done. FormBase also stores minw_, minh_ itself. All dialogs derived
+	from FormBase have the minimum size set; no more stupid crashes with
+	tabbed folders etc.
+
+2000-10-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/ui/default.ui: fix shortcut for Insert->Include File.
+
 2000-10-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/CREDITS: add Andre' Poenitz and Kornelia Pietsch
 
 	* src/support/lyxlib.h: changed second argument of mkdir to
 	unsigned long int (unsigned int would probably have been enough,
@@ -1469,7 +1486,7 @@
 2000-09-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insettext.C (Ascii): return numer of '\n' in the text
-	outputed to the ostream.
+	output to the ostream.
 
 	* several files: fixed types based on warnings from cxx 
 

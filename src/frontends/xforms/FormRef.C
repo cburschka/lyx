@@ -30,9 +30,6 @@
 using std::sort;
 using std::vector;
 
-static int formw;
-static int formh;
-
 FormRef::FormRef(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Reference")), toggle(GOBACK), dialog_(0)
 {
@@ -57,6 +54,13 @@ FL_FORM * FormRef::form() const
 }
 
 
+void FormRef::connect()
+{
+	fl_set_form_maxsize( form(), 2*minw_, minh_ );
+	FormCommand::connect();
+}
+	
+
 void FormRef::disconnect()
 {
 	refs.clear();
@@ -71,9 +75,9 @@ void FormRef::build()
 	fl_addto_choice(dialog_->type,
 			_(" Ref | Page | TextRef | TextPage | PrettyRef "));
 
-	// XFORMS bug workaround
-	// Define the min/max dimensions. Actually applied in update()
-	formw = form()->w, formh = form()->h;
+	// Workaround dumb xforms sizing bug
+	minw_ = form()->w;
+	minh_ = form()->h;
 
 	// Name is irrelevant to LaTeX documents
 	if ( lv_->buffer()->isLatex() ) {
@@ -157,7 +161,7 @@ void FormRef::showBrowser() const
 	fl_show_object( dialog_->button_update );
 	fl_show_object( dialog_->sort );
 
-	setSize( formw, formh, 0 );
+	setSize( minw_, minh_, 0 );
 
 	fl_deactivate_object( dialog_->type );
 	fl_set_object_lcol( dialog_->type, FL_INACTIVE );
@@ -174,7 +178,7 @@ void FormRef::hideBrowser() const
 	fl_hide_object( dialog_->button_update );
 	fl_hide_object( dialog_->sort );
 
-	setSize( 250, formh, 280 );
+	setSize( 250, minh_, 280 );
 
 	fl_activate_object( dialog_->type );
 	fl_set_object_lcol( dialog_->type, FL_BLACK );
@@ -200,14 +204,13 @@ void FormRef::setSize( int w, int h, int dx ) const
 	static int x6 = dialog_->button_cancel->x;
 	static int y6 = dialog_->button_cancel->y;
 
-	if ( form()->w != w )
-		fl_set_form_size( form(), w, h );
-
-	fl_set_form_minsize( form(), w, h );
-	fl_set_form_maxsize( form(), 2*w, h );
-
-	if ( form()->w == w ) return;
-
+	if ( form()->w != w ) {
+		minw_ = w;
+		minh_ = h;
+		fl_set_form_size( form(), minw_, minh_ );
+	} else
+		return;
+	
 	fl_set_object_position( dialog_->name,   x1-dx, y1 );
 	fl_set_object_position( dialog_->ref,    x2-dx, y2 );
 	fl_set_object_position( dialog_->type,   x3-dx, y3 );

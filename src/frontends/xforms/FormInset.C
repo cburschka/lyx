@@ -35,6 +35,7 @@ void FormInset::connect()
 		 connect(slot(this, &FormInset::update));
 	h_ = d_->hideBufferDependent.
 		 connect(slot(this, &FormInset::hide));
+	FormBase::connect();
 }
 
 
