@@ -24,7 +24,7 @@ string const InsetTOC::getScreenLabel() const
 }
 
 
-Inset::Code InsetTOC::LyxCode() const
+Inset::Code InsetTOC::lyxCode() const
 {
 	string const cmdname(getCmdName());
 	if (cmdname == "tableofcontents")
@@ -33,13 +33,13 @@ Inset::Code InsetTOC::LyxCode() const
 }
 
 
-void InsetTOC::Edit(BufferView * bv, int, int, unsigned int)
+void InsetTOC::edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showTOC(this);
 }
 
 
-int InsetTOC::Ascii(Buffer const * buffer, std::ostream & os, int) const
+int InsetTOC::ascii(Buffer const * buffer, std::ostream & os, int) const
 {
 	os << getScreenLabel() << "\n\n";
 
@@ -63,7 +63,7 @@ int InsetTOC::Ascii(Buffer const * buffer, std::ostream & os, int) const
 }
 
 
-int InsetTOC::Linuxdoc(Buffer const *, std::ostream & os) const
+int InsetTOC::linuxdoc(Buffer const *, std::ostream & os) const
 {
 	if (getCmdName() == "tableofcontents")
 		os << "<toc>";

@@ -1,3 +1,11 @@
+2001-06-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* insettoc.h:
+	* insettoc.C:
+	* inseturl.h:
+	* inseturl.C: fix method names in these to begin
+	  with small char too, so they inherit
+ 
 2001-06-28  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Change a lot of method names to begin with a small char.

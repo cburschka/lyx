@@ -656,7 +656,14 @@ string const LyXFunc::Dispatch(int ac,
 		if (!do_not_use_this_arg.empty())
 			argument = do_not_use_this_arg; // except here
 	}
-    
+
+#ifdef NEW_DISPATCHER
+	// We try do call the most specific dispatcher first:
+	//  1. the lockinginset's dispatch
+	//  2. the bufferview's dispatch
+	//  3. the lyxview's dispatch
+#endif
+	
 	selection_possible = false;
 	
 	if (owner->view()->available())
@@ -1250,19 +1257,26 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_GOTOFILEROW:
 	{
+#if 0
 	        char file_name[100];
 		int row;
 		::sscanf(argument.c_str(), " %s %d", file_name, &row);
-
+#else
+		string file_name;
+		int row;
+		istringstream istr(argument);
+		istr >> filename >> row;
+#endif
 		// Must replace extension of the file to be .lyx and get full path
-		string s = ChangeExtension(string(file_name), ".lyx");
+		string const s(ChangeExtension(file_name, ".lyx"));
 
 		// Either change buffer or load the file
-		if (bufferlist.exists(s))
+		if (bufferlist.exists(s)) {
 		        owner->view()->buffer(bufferlist.getBuffer(s));
-		else
+		} else {
 		        owner->view()->buffer(bufferlist.loadLyXFile(s));
-
+		}
+		
 		// Set the cursor  
 		owner->view()->setCursorFromRow(row);
 
@@ -1273,13 +1287,16 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_GOTO_PARAGRAPH:
 	{
-                istringstream istr(argument.c_str());
+                istringstream istr(argument);
 
 		int id;
 		istr >> id;
 		Paragraph * par = TEXT()->getParFromID(id);
-		if (par == 0)
+		if (par == 0) {
+			lyxerr[Debug::INFO] << "No matching paragraph found! ["
+					    << id << "]" << std::endl;
 			break;
+		}
 
 		// Set the cursor
 		TEXT()->setCursor(owner->view(), par, 0);

@@ -31,24 +31,24 @@ public:
 		return new InsetUrl(params());
 	}
 	///
-	Inset::Code LyxCode() const { return Inset::URL_CODE; }
+	Inset::Code lyxCode() const { return Inset::URL_CODE; }
 	///
-	void Validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const;
 	///
 	string const getScreenLabel() const;
 	///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
         ///
 	bool display() const { return false; }
 	///
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
 };

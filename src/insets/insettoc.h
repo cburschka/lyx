@@ -31,17 +31,17 @@ public:
     	///
 	string const getScreenLabel() const;
 	///
-	void Edit(BufferView * bv, int, int, unsigned int);
+	void edit(BufferView * bv, int, int, unsigned int);
         ///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	bool display() const { return true; }
 	///
-	Inset::Code LyxCode() const;
+	Inset::Code lyxCode() const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
 };

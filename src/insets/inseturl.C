@@ -20,7 +20,7 @@ InsetUrl::InsetUrl(InsetCommandParams const & p)
 {}
 
 
-void InsetUrl::Edit(BufferView * bv, int, int, unsigned int)
+void InsetUrl::edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showUrl( this );
 }
@@ -43,7 +43,7 @@ string const InsetUrl::getScreenLabel() const
 }
 
 
-int InsetUrl::Latex(Buffer const *, ostream & os,
+int InsetUrl::latex(Buffer const *, ostream & os,
 		    bool fragile, bool /*free_spc*/) const
 {
 	if (!getOptions().empty())
@@ -55,7 +55,7 @@ int InsetUrl::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetUrl::Ascii(Buffer const *, ostream & os, int) const
+int InsetUrl::ascii(Buffer const *, ostream & os, int) const
 {
 	if (getOptions().empty())
 		os << "[" << getContents() << "]";
@@ -65,7 +65,7 @@ int InsetUrl::Ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetUrl::Linuxdoc(Buffer const *, ostream & os) const
+int InsetUrl::linuxdoc(Buffer const *, ostream & os) const
 {
 	os << "<" << getCmdName()
 	   << " url=\""  << getContents() << "\""
@@ -83,7 +83,7 @@ int InsetUrl::DocBook(Buffer const *, ostream & os) const
 }
 
 
-void InsetUrl::Validate(LaTeXFeatures & features) const
+void InsetUrl::validate(LaTeXFeatures & features) const
 {
 	features.url = true;
 }

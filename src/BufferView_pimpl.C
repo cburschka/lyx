@@ -398,17 +398,16 @@ void BufferView::Pimpl::updateScrollbar()
 	current_scrollbar_value = tmp_scrollbar_value;
 
 	long const height_diff = text_height - work_height;
-	
+
 	if (height_diff <= 0) {
 		workarea_.setScrollbar(0, 1.0);
 		return;
 	}
-
 	
 	workarea_.setScrollbarBounds(0, height_diff);
 	double const lineh = bv_->text->defaultHeight();
 	workarea_.setScrollbarIncrements(lineh);
-	double const slider_size = 1.0 / double(height_diff) ;
+	double const slider_size = 1.0 / (double(height_diff) + work_height);
 	workarea_.setScrollbar(current_scrollbar_value, slider_size);
 }
 
@@ -2599,7 +2598,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			cur_value = par->params().spacing().getValue();
 		}
 		
-		istringstream istr(argument.c_str());
+		istringstream istr(argument);
 
 		string tmp;
 		istr >> tmp;

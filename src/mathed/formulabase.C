@@ -549,8 +549,11 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_SETXY:
 	{
 		lyxerr << "LFUN_SETXY broken!\n";
-		int x, y, x1, y1;
-		istringstream is(arg.c_str());
+		int x;
+		int y;
+		int x1;
+		int y1;
+		istringstream is(arg);
 		is >> x >> y;
 		lyxerr << "LFUN_SETXY: x: " << x << " y: " << y << "\n";
 		par_->GetXY(x1, y1);
@@ -662,8 +665,9 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 			int m = 1;
 			int n = 1;
-			string v_align, h_align;
-			istringstream is(arg.c_str());
+			string v_align;
+			string h_align;
+			istringstream is(arg);
 			is >> m >> n >> v_align >> h_align;
 			MathArrayInset * p = new MathArrayInset(m, n);
 			p->valign(v_align[0]);
@@ -684,8 +688,9 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (arg.empty())
 			break;
 
-		istringstream is(arg.c_str());
-		string lt, rt;
+		istringstream is(arg);
+		string lt;
+		string rt;
 		is >> lt >> rt;
 		lyxerr << "formulabase::LFUN_MATH_DELIM, lt: '" << lt << "'\n";
 		lyxerr << "formulabase::LFUN_MATH_DELIM, rt: '" << rt << "'\n";
