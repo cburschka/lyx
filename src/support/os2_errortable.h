@@ -1,15 +1,12 @@
 /* -*- C++ -*- */
-/* This file is part of
-* ======================================================
-*
-*           LyX, The Document Processor
-*
-*           Copyright 1995 Matthias Ettrich
-*           Copyright 1995-2001 The LyX Team.
-*
-* ======================================================
- A table for translating OS/2 API return code into errno.
- Copied from emx library source.			 */
+/**
+ * \file os2_errortable.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * A table for translating OS/2 API return code into errno.
+ * Copied from emx library source.
+ */
 
 #ifndef OS2_ERRORTABLE_H
 #define OS2_ERRORTABLE_H

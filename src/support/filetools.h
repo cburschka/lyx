@@ -1,8 +1,9 @@
 // -*- C++-*-
-/* lyx-filetool.h : tools functions for file/path handling
-   this file is part of LyX, the High Level Word Processor
-   Copyright 1995-2001, Matthias Ettrich and the LyX Team
-*/
+/**
+ * \file filetools.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ */
 
 #ifndef LYX_FILETOOL_H
 #define LYX_FILETOOL_H

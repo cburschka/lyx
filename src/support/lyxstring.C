@@ -1,12 +1,12 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxstring.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
  *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2000 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -1751,7 +1751,7 @@ istream & operator>>(istream & is, lyxstring & s)
 		if (isspace(c)) {
 			if (!skipspace) {
 				is.putback(c);
-				break; 
+				break;
 			}
 		} else {
 			s += c;

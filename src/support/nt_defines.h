@@ -1,19 +1,13 @@
-/* -*- C++ -*- */
-/* This file is part of
- * ======================================================
+// -*- C++ -*-
+/**
+ * \file nt_defines.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, the High Level Word Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1998 The LyX Team.
- *
- * ======================================================
- A few prototypes and definitions needed for Windows NT */
-
-/* Hacks to get LyX running under Win-NT w. Cygnus b19 (steven@cs.uu.nl) */
+ * Prototypes and definitions needed for Windows NT.
+ */
 
 #ifndef NT_DEFINES_H
 #define NT_DEFINES_H
 
-
-#endif /* NT_DEFINES_H */
+#endif // NT_DEFINES_H

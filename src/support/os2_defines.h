@@ -1,14 +1,11 @@
 /* -*- C++ -*- */
-/* This file is part of
-* ======================================================
-*
-*           LyX, The Document Processor
-*
-*           Copyright 1995 Matthias Ettrich
-*           Copyright 1995-2001 The LyX Team.
-*
-* ======================================================
- A few prototypes and definitions needed for OS/2 */
+/**
+ * \file os2_defines.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * Prototypes and definitions needed for OS/2.
+ */
 
 #ifndef OS2_DEFINES_H
 #define OS2_DEFINES_H

@@ -1,12 +1,12 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file FileInfo.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 
@@ -102,7 +102,7 @@ void flagRWX(mode_t i, char * str)
 void setSticky(mode_t i, char * str)
 {
 #ifdef S_ISUID
-	if (i & S_ISUID) 
+	if (i & S_ISUID)
 		str[3] = (str[3] == 'x') ? 's' : 'S';
 #endif
 #ifdef S_ISGID
@@ -110,7 +110,7 @@ void setSticky(mode_t i, char * str)
 		str[6] = (str[6] == 'x') ? 's' : 'S';
 #endif
 #ifdef S_ISVTX
-	if (i & S_ISVTX) 
+	if (i & S_ISVTX)
 		str[9] = (str[9] == 'x') ? 's' : 'S';
 #endif
 }

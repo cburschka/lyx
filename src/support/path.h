@@ -1,10 +1,12 @@
 // -*- C++ -*-
 /**
  * \file path.h
- * Copyright 1995-2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author unknown
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef PATH_H
@@ -40,7 +42,7 @@ public:
 	Path(string const & path)
 		: popped_(false)
 	{
-		if (!path.empty()) { 
+		if (!path.empty()) {
 			pushedDir_ = lyx::getcwd();
 			if (pushedDir_.empty() || lyx::chdir(path))
 				/* FIXME: throw */;
@@ -48,13 +50,13 @@ public:
 			popped_ = true;
 		}
 	}
- 
+
 	/// set cwd to the previous value if needed
 	~Path()
 	{
 		if (!popped_) pop();
 	}
- 
+
 	/// set cwd to the previous value if needed
 	int pop();
 private:

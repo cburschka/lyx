@@ -1,12 +1,14 @@
 /**
  *  \file forkedcall.C
- *  Copyright 2002 the LyX Team
- *  Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
  *
  * Interface cleaned up by
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  *
  * An instance of Class Forkedcall represents a single child process.
  *

@@ -1,10 +1,12 @@
 /**
  * \file forkedcontr.C
- * Copyright 2001 The LyX Team
- * Read COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup Nielsen
  * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  *
  * A class for the control of child processes launched using
  * fork() and execvp().

@@ -1,13 +1,17 @@
 // -*- C++ -*-
-
-/** String helper functions.
-    \file lstrings.h
-    This is a collection of string helper functions that works
-    together with string (and later also with STL String. Some of these
-    would certainly benefit from a rewrite/optimization.
-    \author Lars Gullik Bjønnes
-    \author Jean-Marc Lasgouttes
-*/
+/**
+ * \file lstrings.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ *
+ * Full author contact details are available in file CREDITS
+ *
+ * A collection of string helper functions that works with string.
+ * Some of these would certainly benefit from a rewrite/optimization.
+ */
 
 #ifndef LSTRINGS_H
 #define LSTRINGS_H

@@ -1,10 +1,12 @@
 // -*- C++ -*-
 /**
  * \file limited_stack.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef LIMITED_STACK_H
@@ -24,7 +26,7 @@ public:
 	typedef std::list<T> container_type;
 	typedef typename container_type::value_type value_type;
 	typedef typename container_type::size_type size_type;
- 
+
 	/// limit is the maximum size of the stack
 	limited_stack(size_type limit = 100) {
 		limit_ = limit;
@@ -39,7 +41,7 @@ public:
 	void pop() {
 		c_.pop_front();
 	}
- 
+
 	/// return true if the stack is empty
 	bool empty() const {
 		return c_.size() == 0;
@@ -51,16 +53,16 @@ public:
 			c_.pop_back();
 		}
 	}
- 
+
 	/// push an item on to the stack, deleting the
 	/// bottom item on overflow.
 	void push(value_type const & v) {
 		c_.push_front(v);
 		if (c_.size() > limit_) {
-			c_.pop_back(); 
+			c_.pop_back();
 		}
 	}
- 
+
 private:
 	/// internal contents
 	container_type c_;
@@ -71,5 +73,5 @@ private:
 // make pointer type an error.
 template <typename T>
 class limited_stack<T*>;
- 
+
 #endif // LIMITED_STACK_H

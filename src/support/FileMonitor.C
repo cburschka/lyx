@@ -1,9 +1,11 @@
-/*
+/**
  * \file FileMonitor.C
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
@@ -65,7 +67,7 @@ void FileMonitor::reset(string const & file_with_path) const
 	bool const monitor = pimpl_->timer_.running();
 	if (monitor)
 		stop();
-	
+
 	pimpl_->filename_ = file_with_path;
 
 	if (monitor)

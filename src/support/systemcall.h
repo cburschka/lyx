@@ -1,13 +1,15 @@
 // -*- C++ -*-
 /**
  *  \file systemcall.h
- *  Copyright 2002 the LyX Team
- *  Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
  *
  * Interface cleaned up by
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef SYSTEMCALL_H
@@ -19,7 +21,7 @@
 #pragma interface
 #endif
 
-/** 
+/**
  * An instance of Class Systemcall represents a single child process.
  *
  * Class Systemcall uses system() to launch the child process.
@@ -36,7 +38,7 @@ public:
 		Wait, //< wait for completion before returning from startscript()
 		DontWait //< don't wait for completion
 	};
- 
+
 	/** Start child process.
 	 *  The string "what" contains a commandline with arguments separated
 	 *  by spaces.

@@ -1,18 +1,20 @@
-/*
-	filetools.C (former paths.C) - part of LyX project
-	General path-mangling functions
-	Copyright 1996 Ivan Schreter
-	Parts Copyright 1996 Dirk Niggemann
-	Parts Copyright 1985, 1990, 1993 Free Software Foundation, Inc.
-	Parts Copyright 1996 Asger Alstrup
-
-	See also filetools.h.
-
-	lyx-filetool.C : tools functions for file/path handling
-	this file is part of LyX, the High Level Word Processor
-	Copyright 1995-1996, Matthias Ettrich and the LyX Team
-
-*/
+/**
+ * \file filetools.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * parts Copyright 1985, 1990, 1993 Free Software Foundation, Inc.
+ *
+ * \author Ivan Schreter
+ * \author Dirk Niggemann
+ * \author Asger Alstrup
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ *
+ * Full author contact details are available in file CREDITS
+ *
+ * General path-mangling functions
+ */
 
 #include <config.h>
 

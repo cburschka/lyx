@@ -1,13 +1,13 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxstring.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
  *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2000 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 // This one is heavily based on the string class in The C++
 // Programming Language by Bjarne Stroustrup
