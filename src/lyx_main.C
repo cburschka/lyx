@@ -361,7 +361,7 @@ void LyX::init(bool gui)
 				exit(1);
 			}
 			lyxerr << bformat(_("Using built-in default %1$s but expect problems."),
-				static_cast<char *>(LYX_DIR)) << endl;
+				LYX_DIR) << endl;
 		} else {
 			lyxerr << _("Expect problems.") << endl;
 		}

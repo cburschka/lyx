@@ -1,16 +1,20 @@
 
-2003-05-14 André Pönitz <poenitz@gmx.net>
+2003-05-14  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyx_main.C (init): remove spurious static_cast
+
+2003-05-14  André Pönitz  <poenitz@gmx.net>
 	
 	* BufferView.C: fix format string
 
-2003-05-12 Alfredo Braunstein <abraunst@libero.it>
+2003-05-12  Alfredo Braunstein  <abraunst@libero.it>
 
 	* BufferView.[Ch] (insertErrors): removed
 	* BufferView.[Ch] (showErrorList): added
 	* buffer.C (runChkTeX):
 	* converter.C (scanLog): call showErrorList instead of inserterrors
 
-2003-05-13 André Pönitz <poenitz@gmx.net>
+2003-05-13  André Pönitz  <poenitz@gmx.net>
 	
 	* BufferView_pimpl.C:
 	* buffer.C:
@@ -30,7 +34,7 @@
 	* lyxlex_pimpl.C:
 	* text3.C: STRCONV()
 
-2003-05-12 André Pönitz <poenitz@gmx.net>
+2003-05-12  André Pönitz  <poenitz@gmx.net>
 
 	* BufferView.C:
 	* BufferView_pimpl.C:
@@ -61,7 +65,7 @@
 	* text3.C:  boost::format -> bformat  all over the place
 
 
-2003-05-09 André Pönitz <poenitz@gmx.net>
+2003-05-09  André Pönitz  <poenitz@gmx.net>
 
 	* LColor.[Ch]: Pimpl the #include <map> away
 
@@ -117,7 +121,7 @@
 
 	* text2.C: don't cast wrap inset to float
 
-2003-05-05 André Pönitz <poenitz@gmx.net>
+2003-05-05  André Pönitz  <poenitz@gmx.net>
 
 	* iterator.C:
 	* undo_funcs.C: use getParagraphs() instead of getFirstParagraph()
@@ -152,7 +156,7 @@
 	* text.C:
 	* text3.C: remove explicit cursor hides
 
-2003-05-02 André Pönitz <poenitz@gmx.net>
+2003-05-02  André Pönitz  <poenitz@gmx.net>
 
 	* buffer.[Ch]: two instances of Paragraph * -> ParagraphList::iterator
 
