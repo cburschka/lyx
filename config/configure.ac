@@ -132,6 +132,9 @@ LYX_PROG_LIBTOOL
 ### Check if we want pspell libraries
 CHECK_WITH_PSPELL
 
+### Check for some Cygwin-specific details.
+CHECK_WITH_CYGWIN
+
 ### Check for X libraries
 # The real thing.
 AC_PATH_XTRA

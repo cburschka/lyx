@@ -1,3 +1,16 @@
+2003-03-12  Kayvan Sylvan  <kayvan@sylvan.com>
+
+	* configure.ac: 
+	* configure.in: Add the CHECK_WITH_CYGWIN macro call.
+
+	* Makefile.am: add cygwin.m4 to EXTRA_DIST
+
+	* cygwin.m4: Add CHECK_WITH_CYGWIN function to encapuslate
+	some checks for Win32 GCC based on info from the following URL:
+	http://bugzilla.gnome.org/showattachment.cgi?attach_id=12253
+
+	* libtool.m4: TAB to SPACE fixes. Now impgen.c compiles on Cygwin.
+
 2003-03-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.in: 
