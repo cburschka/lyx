@@ -25,6 +25,11 @@ LyX 1.2.0 can read all documents saved with lyx 1.1.6 correctly.
 However, older LyX versions will almost certainly fail to read files
 produced by LyX 1.2.0.
 
+Note that your document may rely on the floatflt package (for example,
+you may use \floatingfigure via LaTeX commands). If your document does
+not have "\usepackage{floatflt}" already in the user pre-amble, you will
+need to add it.
+ 
 Note that the babel package is now loaded after the user-defined
 preamble (because some packages really need to be loaded before
 babel). If you relied, on babel being loaded before your own
