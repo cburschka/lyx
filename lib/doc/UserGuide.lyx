@@ -11238,18 +11238,53 @@ Those of you reading this from within LyX will see no difference, though
  there is one in the printed version.
 \layout Standard
 
-One last note about hyphenation --- LyX automatically breaks up words and
+One more note about hyphenation --- LyX automatically breaks up words and
  inserts hyphens in English text.
- (Actually, it's LaTeX that does this, and it will also hyphenate words
- in 
+ The words won't be hyphenated until you generate the final output.
+\layout Standard
+
+Actually, it's LaTeX that does this, and it will also hyphenate words in
+ 
 \emph on 
 some
 \emph default 
- other languages.) The words won't be hyphenated until you generate the final
- output.
+ other languages.
+ To know whether (PDF)LaTeX hyphenates for 
+\emph on 
+your
+\emph default 
+ language, look at any log file produced by a LaTeX run: it will say
+\layout Quote
+
+
+\family typewriter 
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman,
+ nohyphenation, loaded.
 \layout Standard
 
-If, for some reason, LaTeX can't break a word correctly, you can set hyphenation
+This tells you that, e.g., if you write in Finnish, you're out of luck.
+ Study (for the teTeX distribution of LaTeX) the utilities 
+\family typewriter 
+texconfig
+\family default 
+ and 
+\family typewriter 
+fmtutil
+\family default 
+ in order to switch hyphenation on for your language by ''uncommenting''
+ the relevant line in a file typically named 
+\family typewriter 
+language.dat
+\family default 
+.
+ Sorry for the inconvenience.
+\layout Standard
+
+If, for whatever reason, LaTeX 
+\emph on 
+still
+\emph default 
+ can't break a word correctly (e.g., a compound word), you can set hyphenation
  points manually.
  This is done with the menu item 
 \family sans 
