@@ -1070,10 +1070,10 @@ string MathCursorPos::readString()
 MathInset * MathCursor::prevInset() const
 {
 	normalize();
-	int c = cursor().pos_;
-	if (!c)
+	int pos = cursor().pos_;
+	if (!pos)
 		return 0;
-	return array().nextInset(c);
+	return array().nextInset(pos - 1);
 }
 
 
