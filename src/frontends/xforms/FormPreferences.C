@@ -29,7 +29,8 @@ using SigC::slot;
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBase(lv, d, BUFFER_INDEPENDENT, _("Preferences"), new PreferencesPolicy),
-	  dialog_(0), bind_(0), misc_(0), screen_fonts_(0), interface_fonts_(0),
+	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
+	  lnf_general_(0), screen_fonts_(0), interface_fonts_(0),
 	  printer_(0), paths_(0), minw_(0), minh_(0)
 {
 	// let the dialog be shown
@@ -42,8 +43,10 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 FormPreferences::~FormPreferences()
 {
 	delete dialog_;
-	delete bind_;
-	delete misc_;
+	delete look_n_feel_tab_;
+	delete inputs_tab_;
+	delete outputs_tab_;
+	delete lnf_general_;
 	delete screen_fonts_;
 	delete interface_fonts_;
 	delete printer_;
@@ -66,19 +69,24 @@ void FormPreferences::build()
 	minw_ = dialog_->form->w;
 	minh_ = dialog_->form->h;
 
-	bind_ =	build_bind();
+	// build the tab folders
+	outputs_tab_ = build_outer_tab();
+	look_n_feel_tab_ = build_outer_tab();
+	inputs_tab_  = build_outer_tab();
+
+	// build actual tabfolder contents
+	// these will become nested tabfolders
 	screen_fonts_ = build_screen_fonts();
 	interface_fonts_ = build_interface_fonts();
-	misc_ = build_misc();
+	lnf_general_ = build_lnf_general();
 	printer_ = build_printer();
 	paths_ = build_paths();
 
 	// setup the input returns
-	// Bind tab
-	fl_set_input_return(bind_->input_bind, FL_RETURN_CHANGED);
-	// Misc tab
-	fl_set_counter_return(misc_->counter_autosave, FL_RETURN_CHANGED);
-	fl_set_counter_return(misc_->counter_line_len, FL_RETURN_CHANGED);
+	// Lnf_General tab
+	fl_set_input_return(lnf_general_->input_bind, FL_RETURN_CHANGED);
+	fl_set_counter_return(lnf_general_->counter_autosave, FL_RETURN_CHANGED);
+	fl_set_counter_return(lnf_general_->counter_line_len, FL_RETURN_CHANGED);
 	// Screen fonts
 	fl_set_input_return(screen_fonts_->input_roman, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_sans, FL_RETURN_CHANGED);
@@ -132,33 +140,47 @@ void FormPreferences::build()
 
 	// Now add them to the tabfolder
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Bindings"),
-			   bind_->form);
+			   _("Look and Feel"),
+			   look_n_feel_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
+			   _("Inputs"),
+			   inputs_tab_->form);
+	fl_addto_tabfolder(dialog_->tabfolder_prefs,
+			   _("Outputs"),
+			   outputs_tab_->form);
+
+	// now build the nested tabfolders
+	// Starting with look and feel
+	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_outer,
 			   _("Screen Fonts"),
 			   screen_fonts_->form);
-	fl_addto_tabfolder(dialog_->tabfolder_prefs,
+	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_outer,
 			   _("Interface Fonts"),
 			   interface_fonts_->form);
-	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Miscellaneous"),
-			   misc_->form);
-	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Printer"),
-			   printer_->form);
-	fl_addto_tabfolder(dialog_->tabfolder_prefs,
+	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_outer,
+			   _("General"),
+			   lnf_general_->form);
+
+	// then build inputs
+	// Paths should probably go in a few outer_tab called Files
+	fl_addto_tabfolder(inputs_tab_->tabfolder_outer,
 			   _("Paths"),
 			   paths_->form);
 
+	// then building outputs
+	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
+			   _("Printer"),
+			   printer_->form);
+
 	// deactivate the various browse buttons because they
 	// currently aren't implemented
-	fl_deactivate_object(bind_->button_bind_file_browse);
+	fl_deactivate_object(lnf_general_->button_bind_file_browse);
 	fl_deactivate_object(paths_->button_document_browse);
 	fl_deactivate_object(paths_->button_template_browse);
 	fl_deactivate_object(paths_->button_temp_dir_browse);
 	fl_deactivate_object(paths_->button_lastfiles_browse);
 	fl_deactivate_object(paths_->button_backup_path_browse);
-	fl_set_object_lcol(bind_->button_bind_file_browse, FL_INACTIVE);
+	fl_set_object_lcol(lnf_general_->button_bind_file_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_document_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_template_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_temp_dir_browse, FL_INACTIVE);
@@ -167,7 +189,7 @@ void FormPreferences::build()
 }
 
 
-FL_FORM * const FormPreferences::form() const
+FL_FORM * FormPreferences::form() const
 {
 	if (dialog_) return dialog_->form;
 	return 0;
@@ -195,19 +217,18 @@ void FormPreferences::apply()
 	// like update the screen fonts because that flushes the textcache
 	// and other stuff which may cost us a lot on slower/high-load machines.
 	
-	// Bind tab
-	lyxrc.bind_file = fl_get_input(bind_->input_bind);
-	// Misc tab
-	lyxrc.show_banner = fl_get_button(misc_->check_banner);
-	lyxrc.auto_region_delete = fl_get_button(misc_->
+	// Look 'n Feel General tab
+	lyxrc.show_banner = fl_get_button(lnf_general_->check_banner);
+	lyxrc.auto_region_delete = fl_get_button(lnf_general_->
 						 check_auto_region_delete);
-	lyxrc.exit_confirmation = fl_get_button(misc_->check_exit_confirm);
+	lyxrc.exit_confirmation = fl_get_button(lnf_general_->check_exit_confirm);
 	lyxrc.display_shortcuts =
-		fl_get_button(misc_->check_display_shortcuts);
+		fl_get_button(lnf_general_->check_display_shortcuts);
+	lyxrc.bind_file = fl_get_input(lnf_general_->input_bind);
 	lyxrc.autosave = static_cast<unsigned int>
-		(fl_get_counter_value(misc_->counter_autosave));
+		(fl_get_counter_value(lnf_general_->counter_autosave));
 	lyxrc.ascii_linelen = static_cast<unsigned int>
-		(fl_get_counter_value(misc_->counter_line_len));
+		(fl_get_counter_value(lnf_general_->counter_line_len));
 	// Interface fonts
 	lyxrc.popup_font_name =
 		fl_get_input(interface_fonts_->input_popup_font);
@@ -325,20 +346,20 @@ void FormPreferences::update()
 {
 	if (dialog_) {
 		// read lyxrc entries
-		// Bind tab
-		fl_set_input(bind_->input_bind, lyxrc.bind_file.c_str());
-		// Misc tab
-		fl_set_button(misc_->check_banner,
+		// Lnf_General tab
+		fl_set_button(lnf_general_->check_banner,
 			      lyxrc.show_banner);
-		fl_set_button(misc_->check_auto_region_delete,
+		fl_set_button(lnf_general_->check_auto_region_delete,
 			      lyxrc.auto_region_delete);
-		fl_set_button(misc_->check_exit_confirm,
+		fl_set_button(lnf_general_->check_exit_confirm,
 			      lyxrc.exit_confirmation);
-		fl_set_button(misc_->check_display_shortcuts,
+		fl_set_button(lnf_general_->check_display_shortcuts,
 			      lyxrc.display_shortcuts);
-		fl_set_counter_value(misc_->counter_autosave,
+		fl_set_input(lnf_general_->input_bind,
+			     lyxrc.bind_file.c_str());
+		fl_set_counter_value(lnf_general_->counter_autosave,
 				     lyxrc.autosave);
-		fl_set_counter_value(misc_->counter_line_len,
+		fl_set_counter_value(lnf_general_->counter_line_len,
 				     lyxrc.ascii_linelen);
 		// Screen fonts
 		fl_set_input(screen_fonts_->input_roman,

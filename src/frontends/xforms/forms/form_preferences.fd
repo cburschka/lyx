@@ -8,70 +8,10 @@ Unit of measure: FL_COORD_PIXEL
 SnapGrid: 5
 
 =============== FORM ===============
-Name: form_bind
+Name: form_lnf_general
 Width: 450
 Height: 320
-Number of Objects: 3
-
---------------------
-class: FL_BOX
-type: FLAT_BOX
-box: 0 0 450 320
-boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_INPUT
-type: NORMAL_INPUT
-box: 145 80 190 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Bind file
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: input_bind
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 335 80 80 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Browse...
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_bind_file_browse
-callback: 
-argument: 
-
-=============== FORM ===============
-Name: form_misc
-Width: 450
-Height: 320
-Number of Objects: 7
+Number of Objects: 9
 
 --------------------
 class: FL_BOX
@@ -210,6 +150,42 @@ argument: 0
   precision: 0
   value: 75
   sstep: 1
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 140 175 190 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Bind file
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_bind
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 330 175 80 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Browse...
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_bind_file_browse
+callback: 
+argument: 
 
 =============== FORM ===============
 Name: form_screen_fonts
@@ -1239,14 +1215,14 @@ argument:
 
 =============== FORM ===============
 Name: form_preferences
-Width: 625
+Width: 485
 Height: 435
 Number of Objects: 6
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 625 435
+box: 0 0 485 435
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1318,7 +1294,7 @@ argument: 0
 --------------------
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
-box: 5 5 585 385
+box: 5 5 470 385
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -1350,6 +1326,48 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_restore
 callback: C_FormBaseRestoreCB
 argument: 0
+
+=============== FORM ===============
+Name: form_outer_tab
+Width: 475
+Height: 365
+Number of Objects: 2
+
+--------------------
+class: FL_BOX
+type: FLAT_BOX
+box: 0 0 475 365
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TABFOLDER
+type: TOP_TABFOLDER
+box: 10 10 455 345
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_NoGravity FL_NoGravity
+name: tabfolder_outer
+callback: 
+argument: 
 
 ==============================
 create_the_forms

@@ -16,14 +16,14 @@ struct FD_form_ref {
 
 	FL_FORM *form;
 	FL_OBJECT *browser;
-	FL_OBJECT *update;
+	FL_OBJECT *button_update;
 	FL_OBJECT *sort;
 	FL_OBJECT *name;
 	FL_OBJECT *ref;
 	FL_OBJECT *type;
-	FL_OBJECT *go;
-	FL_OBJECT *ok;
-	FL_OBJECT *cancel;
+	FL_OBJECT *button_go;
+	FL_OBJECT *button_ok;
+	FL_OBJECT *button_cancel;
 };
 
 #endif /* FD_form_ref_h_ */

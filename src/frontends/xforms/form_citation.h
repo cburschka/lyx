@@ -26,8 +26,8 @@ struct FD_form_citation {
 	FL_OBJECT *style;
 	FL_OBJECT *textBefore;
 	FL_OBJECT *textAftr;
-	FL_OBJECT *ok;
-	FL_OBJECT *cancel;
+	FL_OBJECT *button_ok;
+	FL_OBJECT *button_cancel;
 };
 
 #endif /* FD_form_citation_h_ */

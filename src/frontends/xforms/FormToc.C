@@ -44,6 +44,13 @@ FormToc::~FormToc()
 }
 
 
+FL_FORM * FormToc::form() const
+{
+	if ( dialog_ ) return dialog_->form;
+	return 0;
+}
+
+
 void FormToc::clearStore()
 {
 	toclist.clear();
@@ -60,26 +67,17 @@ void FormToc::build()
 }
 
 
-FL_FORM * const FormToc::form() const
-{
-	if ( dialog_ ) // no need to test for dialog_->form
-		return dialog_->form;
-	else
-		return 0;
-}
-
-
 void FormToc::update()
 {
 	Buffer::TocType type;
 
-	if( params.getCmdName() == "tableofcontents" )
+	if ( params.getCmdName() == "tableofcontents" )
 		type = Buffer::TOC_TOC;
 
-	else if( params.getCmdName() == "listofalgorithms" )
+	else if ( params.getCmdName() == "listofalgorithms" )
 		type = Buffer::TOC_LOA;
 
-	else if( params.getCmdName() == "listoffigures" )
+	else if ( params.getCmdName() == "listoffigures" )
 		type = Buffer::TOC_LOF;
 
 	else

@@ -32,14 +32,14 @@ FormCopyright::~FormCopyright()
 }
 
 
-void FormCopyright::build()
-{
-	dialog_ = build_copyright();
-}
-
-
-FL_FORM * const FormCopyright::form() const
+FL_FORM * FormCopyright::form() const
 {
 	if ( dialog_ ) return dialog_->form;
 	return 0;
+}
+
+
+void FormCopyright::build()
+{
+	dialog_ = build_copyright();
 }

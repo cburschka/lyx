@@ -38,7 +38,7 @@ private:
 	/// delete derived class variables from hide()
 	virtual void clearStore();
 	/// Pointer to the actual instantiation of the xform's form
-	virtual FL_FORM * const form() const;
+	virtual FL_FORM * form() const;
 	///
 	void updateToc();
 	///

@@ -56,10 +56,10 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_resize(obj, FL_RESIZE_X);
   fdui->textAftr = obj = fl_add_input(FL_NORMAL_INPUT, 100, 570, 250, 30, _("Text after"));
     fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->ok = obj = fl_add_button(FL_RETURN_BUTTON, 230, 630, 90, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 230, 630, 90, 30, _("OK"));
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
-  fdui->cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 330, 630, 90, 30, _("Cancel"));
+  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 330, 630, 90, 30, _("Cancel"));
     fl_set_button_shortcut(obj, _("^["), 1);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);

@@ -86,7 +86,7 @@ FormDocument::~FormDocument()
 }
 
 
-FL_FORM * const FormDocument::form() const
+FL_FORM * FormDocument::form() const
 {
     if (dialog_) return dialog_->form;
     return 0;

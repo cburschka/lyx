@@ -17,8 +17,8 @@ struct FD_form_url {
 	FL_OBJECT *url;
 	FL_OBJECT *name;
 	FL_OBJECT *radio_html;
-	FL_OBJECT *cancel;
-	FL_OBJECT *ok;
+	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_ok;
 };
 
 #endif /* FD_form_url_h_ */

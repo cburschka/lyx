@@ -15,7 +15,7 @@ struct FD_form_index {
 
 	FL_FORM *form;
 	FL_OBJECT *key;
-	FL_OBJECT *cancel;
+	FL_OBJECT *button_cancel;
 	FL_OBJECT *ok;
 };
 

@@ -103,7 +103,7 @@ protected:
 	/// delete derived class variables when hide()ing
 	virtual void clearStore() {}
 	/// Pointer to the actual instantiation of xform's form
-	virtual FL_FORM * const form() const = 0;
+	virtual FL_FORM * form() const = 0;
 
 	/// block opening of form twice at the same time
 	bool dialogIsOpen;

@@ -29,7 +29,7 @@ FD_form_ref * FormRef::build_ref()
     fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
     fl_set_object_resize(obj, FL_RESIZE_X);
     fl_set_object_callback(obj, C_FormBaseInputCB, 2);
-  fdui->update = obj = fl_add_button(FL_NORMAL_BUTTON, 40, 300, 90, 30, _("Update"));
+  fdui->button_update = obj = fl_add_button(FL_NORMAL_BUTTON, 40, 300, 90, 30, _("Update"));
     fl_set_button_shortcut(obj, scex(_("Update|#U#u")), 1);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 3);
@@ -47,14 +47,14 @@ FD_form_ref * FormRef::build_ref()
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 4);
-  fdui->go = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 200, 140, 40, _("Goto reference"));
+  fdui->button_go = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 200, 140, 40, _("Goto reference"));
     fl_set_button_shortcut(obj, scex(_("Goto reference|#G")), 1);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 1);
-  fdui->ok = obj = fl_add_button(FL_RETURN_BUTTON, 330, 300, 90, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 330, 300, 90, 30, _("OK"));
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
-  fdui->cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 430, 300, 90, 30, _("Cancel"));
+  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 430, 300, 90, 30, _("Cancel"));
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   fl_end_form();

@@ -27,12 +27,12 @@ class LyXView;
 class Dialogs;
 
 struct FD_form_preferences;
-struct FD_form_bind;
-struct FD_form_misc;
+struct FD_form_lnf_general;
 struct FD_form_screen_fonts;
 struct FD_form_interface_fonts;
 struct FD_form_printer;
 struct FD_form_paths;
+struct FD_form_outer_tab;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
@@ -59,13 +59,13 @@ private:
 	/// Build the dialog
 	virtual void build();
 	///
-	virtual FL_FORM * const form() const;
+	virtual FL_FORM * form() const;
 	///
 	FD_form_preferences * build_preferences();
 	///
-	FD_form_bind * build_bind();
+	FD_form_outer_tab * build_outer_tab();
 	///
-	FD_form_misc * build_misc();
+	FD_form_lnf_general * build_lnf_general();
 	///
 	FD_form_screen_fonts * build_screen_fonts();
 	///
@@ -77,10 +77,14 @@ private:
 
 	/// Real GUI implementation.
 	FD_form_preferences * dialog_;
+	/// Outputs tabfolder
+	FD_form_outer_tab * outputs_tab_;
+	/// HCI configuration
+	FD_form_outer_tab * look_n_feel_tab_;
+	/// reLyX and other import/input stuff
+	FD_form_outer_tab * inputs_tab_;
 	///
-	FD_form_bind * bind_;
-	///
-	FD_form_misc * misc_;
+	FD_form_lnf_general * lnf_general_;
 	///
 	FD_form_screen_fonts * screen_fonts_;
 	///

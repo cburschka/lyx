@@ -113,7 +113,7 @@ private:
     /// Build the popup
     virtual void build();
     ///
-    virtual FL_FORM * const form() const;
+    virtual FL_FORM * form() const;
 
     /// Typedefinitions from the fdesign produced Header file
     FD_form_tabbed_document * build_tabbed_document();

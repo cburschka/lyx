@@ -116,7 +116,7 @@ void FormPrint::connect()
 }
 
 
-FL_FORM * const FormPrint::form() const
+FL_FORM * FormPrint::form() const
 {
 	if (dialog_) return dialog_->form;
 	return 0;

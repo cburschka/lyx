@@ -1,3 +1,43 @@
+2000-10-03  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/forms/form_preferences.fd:
+	* src/frontends/xforms/FormPreferences.[Ch]: redesign of dialog using
+	nested tabfolders has begun.  The old "Miscellaneous" was renamed as
+	"Look and Feel"->"General" but will need to be split up further into
+	general output and general input tabs.  Current plan is for four outer
+	tabfolders: "Look and Feel" for colours, bindings, fonts and other HCI
+	stuff; "Inputs" for input and import configuration; "Outputs" for
+	output and export configuration; and one more whatever is left over
+	called "General".  The leftovers at present look like being which
+	viewers to use, spellchecker, language support and might be better
+	named "Support".  I've put "Paths" in "Inputs" for the moment as this
+	seems reasonable for now at least.
+	One problem remains: X error kills LyX when you close Preferences.
+
+2000-10-02  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormBase.[Ch]: removed "meaningless" const.
+	qualifier from form()
+	* src/frontends/xforms/FormCitation.[Ch]:
+	* src/frontends/xforms/FormCopyright.[Ch]:
+	* src/frontends/xforms/FormDocument.[Ch]:
+	* src/frontends/xforms/FormError.[Ch]:
+	* src/frontends/xforms/FormIndex.[Ch]:
+	* src/frontends/xforms/FormPreferences.[Ch]:
+	* src/frontends/xforms/FormPrint.[Ch]:
+	* src/frontends/xforms/FormRef.[Ch]:
+	* src/frontends/xforms/FormToc.[Ch]:
+	* src/frontends/xforms/FormUrl.[Ch]: ditto.
+
+	* src/frontends/xforms/FormCitation.[Ch]:
+	* src/frontends/xforms/FormIndex.[Ch]:
+	* src/frontends/xforms/FormRef.[Ch]:
+	* src/frontends/xforms/FormUrl.[Ch]: Renamed a few buttons, consistent
+	with Allan's naming policy
+	
+	* src/frontends/xforms/FormCitation.C: some static casts to remove
+	compiler warnings.
+
 2000-10-02  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (LocalDispatch): fixed selection code,

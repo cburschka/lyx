@@ -62,7 +62,7 @@ label: Update
 shortcut: Update|#U#u
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: update
+name: button_update
 callback: C_FormBaseInputCB
 argument: 3
 
@@ -152,7 +152,7 @@ label: Goto reference
 shortcut: Goto reference|#G
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: go
+name: button_go
 callback: C_FormBaseInputCB
 argument: 1
 
@@ -170,7 +170,7 @@ label: OK
 shortcut: ^M
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: ok
+name: button_ok
 callback: C_FormBaseOKCB
 argument: 0
 
@@ -188,7 +188,7 @@ label: Cancel
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: cancel
+name: button_cancel
 callback: C_FormBaseCancelCB
 argument: 0
 

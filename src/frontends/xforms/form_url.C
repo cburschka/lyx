@@ -40,12 +40,12 @@ FD_form_url * FormUrl::build_url()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 410, 100, 100, 30, _("Cancel"));
+  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 410, 100, 100, 30, _("Cancel"));
     fl_set_button_shortcut(obj, _("^["), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
-  fdui->ok = obj = fl_add_button(FL_RETURN_BUTTON, 300, 100, 100, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 300, 100, 100, 30, _("OK"));
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
   fl_end_form();

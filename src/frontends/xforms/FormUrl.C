@@ -52,12 +52,10 @@ void FormUrl::build()
 }
 
 
-FL_FORM * const FormUrl::form() const
+FL_FORM * FormUrl::form() const
 {
-	if( dialog_ ) // no need to test for dialog_->form
-		return dialog_->form;
-	else
-		return 0;
+	if ( dialog_ ) return dialog_->form;
+	return 0;
 }
 
 
@@ -74,25 +72,25 @@ void FormUrl::update()
 	else
 		fl_set_button(dialog_->radio_html, 1);
 
-	if( lv_->buffer()->isReadonly() ) {
+	if ( lv_->buffer()->isReadonly() ) {
 		fl_deactivate_object( dialog_->url );
 		fl_deactivate_object( dialog_->name );
 		fl_deactivate_object( dialog_->radio_html );
-		fl_deactivate_object( dialog_->ok );
-		fl_set_object_lcol( dialog_->ok, FL_INACTIVE );
+		fl_deactivate_object( dialog_->button_ok );
+		fl_set_object_lcol( dialog_->button_ok, FL_INACTIVE );
 	} else {
 		fl_activate_object( dialog_->url );
 		fl_activate_object( dialog_->name );
 		fl_activate_object( dialog_->radio_html );
-		fl_activate_object( dialog_->ok );
-		fl_set_object_lcol( dialog_->ok, FL_BLACK );
+		fl_activate_object( dialog_->button_ok );
+		fl_set_object_lcol( dialog_->button_ok, FL_BLACK );
 	}
 }
 
 
 void FormUrl::apply()
 {
-	if(lv_->buffer()->isReadonly()) return;
+	if (lv_->buffer()->isReadonly()) return;
 
 	params.setContents(fl_get_input(dialog_->url));
 	params.setOptions(fl_get_input(dialog_->name));
@@ -102,9 +100,9 @@ void FormUrl::apply()
 	else
 		params.setCmdName("url");
 
-	if(inset_ != 0) {
+	if (inset_ != 0) {
 		// Only update if contents have changed
-		if(params != inset_->params()) {
+		if (params != inset_->params()) {
 			inset_->setParams(params);
 			lv_->view()->updateInset(inset_, true);
 		}

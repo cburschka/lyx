@@ -48,7 +48,7 @@ private:
 	///
 	virtual void connect();
 	/// Pointer to the actual instantiation of the xform's form
-	virtual FL_FORM * const form() const;
+	virtual FL_FORM * form() const;
 	/// Build the dialog
 	virtual void build();
 

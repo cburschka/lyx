@@ -39,9 +39,23 @@ FormError::~FormError()
 }
 
 
+FL_FORM * FormError::form() const
+{
+	if ( dialog_ ) return dialog_->form;
+	return 0;
+}
+
+
+void FormError::clearStore()
+{
+	ih_.disconnect();
+	message_.empty();
+}
+
+
 void FormError::showInset( InsetError * const inset )
 {
-	if( dialogIsOpen || inset == 0 ) return;
+	if ( dialogIsOpen || inset == 0 ) return;
 
 	ih_ = inset->hide.connect(slot(this, &FormError::hide));
 
@@ -64,20 +78,4 @@ void FormError::build()
 	// XFORMS bug workaround
 	// Define the min/max dimensions. Actually applied in update()
 	minw = form()->w; minh = form()->h;
-}
-
-
-void FormError::clearStore()
-{
-	ih_.disconnect();
-	message_.empty();
-}
-
-
-FL_FORM * const FormError::form() const
-{
-	if( dialog_ ) // no need to test for dialog_->form
-		return dialog_->form;
-	else
-		return 0;
 }

@@ -39,7 +39,7 @@ private:
 	/// Reset data when hide() is called
 	virtual void clearStore();
 	/// Pointer to the actual instantiation of the xform's form
-	virtual FL_FORM * const form() const;
+	virtual FL_FORM * form() const;
 	/// Fdesign generated method
 	FD_form_error * build_error();
 

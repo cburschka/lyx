@@ -1,12 +1,10 @@
 // File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
 /** Header file generated with fdesign **/
 
-#ifndef FD_form_bind_h_
-#define FD_form_bind_h_
+#ifndef FD_form_lnf_general_h_
+#define FD_form_lnf_general_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
-
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
@@ -23,16 +21,10 @@ extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
 
-/**** Forms and Objects ****/
-struct FD_form_bind {
-	~FD_form_bind();
 
-	FL_FORM *form;
-	FL_OBJECT *input_bind;
-	FL_OBJECT *button_bind_file_browse;
-};
-struct FD_form_misc {
-	~FD_form_misc();
+/**** Forms and Objects ****/
+struct FD_form_lnf_general {
+	~FD_form_lnf_general();
 
 	FL_FORM *form;
 	FL_OBJECT *check_banner;
@@ -41,6 +33,8 @@ struct FD_form_misc {
 	FL_OBJECT *check_display_shortcuts;
 	FL_OBJECT *counter_autosave;
 	FL_OBJECT *counter_line_len;
+	FL_OBJECT *input_bind;
+	FL_OBJECT *button_bind_file_browse;
 };
 struct FD_form_screen_fonts {
 	~FD_form_screen_fonts();
@@ -123,5 +117,11 @@ struct FD_form_preferences {
 	FL_OBJECT *tabfolder_prefs;
 	FL_OBJECT *button_restore;
 };
+struct FD_form_outer_tab {
+	~FD_form_outer_tab();
 
-#endif /* FD_form_bind_h_ */
+	FL_FORM *form;
+	FL_OBJECT *tabfolder_outer;
+};
+
+#endif /* FD_form_lnf_general_h_ */

@@ -35,7 +35,7 @@ private:
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();
 	/// Pointer to the actual instantiation of the xform's form
-	virtual FL_FORM * const form() const;
+	virtual FL_FORM * form() const;
 	///
 	FD_form_index * build_index();
 	/// 

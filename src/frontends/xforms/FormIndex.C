@@ -42,6 +42,13 @@ FormIndex::~FormIndex()
 }
 
 
+FL_FORM * FormIndex::form() const
+{
+	if ( dialog_ ) return dialog_->form;
+	return 0;
+}
+
+
 void FormIndex::build()
 {
 	dialog_ = build_index();
@@ -52,15 +59,6 @@ void FormIndex::build()
 }
 
 
-FL_FORM * const FormIndex::form() const
-{
-	if( dialog_ ) // no need to test for dialog_->form
-		return dialog_->form;
-	else
-		return 0;
-}
-
-
 void FormIndex::update()
 {
 	fl_set_form_minsize(form(), minw, minh);
@@ -68,7 +66,7 @@ void FormIndex::update()
 
 	fl_set_input(dialog_->key, params.getContents().c_str());
 
-	if( lv_->buffer()->isReadonly() ) {
+	if ( lv_->buffer()->isReadonly() ) {
 		fl_deactivate_object( dialog_->key );
 		fl_deactivate_object( dialog_->ok );
 		fl_set_object_lcol( dialog_->ok, FL_INACTIVE );
@@ -82,7 +80,7 @@ void FormIndex::update()
 
 void FormIndex::apply()
 {
-	if(lv_->buffer()->isReadonly()) return;
+	if (lv_->buffer()->isReadonly()) return;
 
 	params.setContents(fl_get_input(dialog_->key));
 
