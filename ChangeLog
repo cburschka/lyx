@@ -1,5 +1,13 @@
 2000-12-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/lyxlookup.C: do not condition on FL_REVISION.
+
+	* forms/sp_form.fd:
+	* src/sp_form.C: fix the font size of some text entries
+
+	* src/frontends/xforms/Menubar_pimpl.C (add_toc): honor separator
+	after TOC when there is no TOC. 
+
 	* src/lyxrc.C (readBindFileIfNeeded): new method. Reads the main
 	bind file if it has not been done yet.
 	(read): remove local bindFile variable. Try to fix the handling of

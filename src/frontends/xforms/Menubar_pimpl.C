@@ -336,7 +336,8 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 
 	// Handle normal TOC
 	if (max_nonempty == 0 && toc_list[0].empty()) {
-		fl_addtopup(menu,_("No Table of Contents%i"));
+		fl_addtopup(menu, (_("No Table of Contents%i")
+				   + extra_label).c_str());
 		return;
 	}
 

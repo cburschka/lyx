@@ -30,7 +30,7 @@ FD_form_spell_options *create_form_form_spell_options(void)
   fl_end_group();
 
   fdui->altlang_input = obj = fl_add_input(FL_NORMAL_INPUT, 40, 90, 240, 30, "");
-    fl_set_object_lsize(obj, 0);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fdui->compounds = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 160, 320, 30, idex(_("Treat run-together words as legal|#T")));fl_set_button_shortcut(obj, scex(_("Treat run-together words as legal|#T")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fdui->inpenc = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 190, 320, 30, idex(_("Input Encoding switch to ispell|#I")));fl_set_button_shortcut(obj, scex(_("Input Encoding switch to ispell|#I")), 1);
@@ -48,9 +48,9 @@ FD_form_spell_options *create_form_form_spell_options(void)
   fdui->esc_chars = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 280, 320, 30, idex(_("Extra special chars allowed in words:|#E")));fl_set_button_shortcut(obj, scex(_("Extra special chars allowed in words:|#E")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fdui->perdict_input = obj = fl_add_input(FL_NORMAL_INPUT, 40, 250, 240, 30, "");
-    fl_set_object_lsize(obj, 0);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fdui->esc_chars_input = obj = fl_add_input(FL_NORMAL_INPUT, 40, 310, 240, 30, "");
-    fl_set_object_lsize(obj, 0);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   obj = fl_add_text(FL_NORMAL_TEXT, 20, 10, 90, 20, _("Dictionary"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
@@ -81,7 +81,7 @@ FD_form_spell_check *create_form_form_spell_check(void)
     fl_set_object_lsize(obj, 0);
   fdui->text = obj = fl_add_text(FL_NORMAL_TEXT, 80, 10, 220, 30, "");
     fl_set_object_boxtype(obj, FL_DOWN_BOX);
-    fl_set_object_lsize(obj, 0);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
   fdui->input = obj = fl_add_input(FL_NORMAL_INPUT, 80, 40, 220, 30, _("Replace"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

@@ -17,11 +17,9 @@
 #ifdef HAVE_XOPENIM
 // This part is the full blown Input Method manager for X11R5 and up.
 // For the plain-and-old-X11R4 version, see later.
-#include FORMS_H_LOCATION
-//#include <X11/Xlib.h>
-//#include <X11/Xutil.h>
-//#include <X11/keysym.h>
-#if FL_REVISION < 89
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/keysym.h>
 #ifdef HAVE_LOCALE_H
 #include <locale.h>
 #endif
@@ -41,7 +39,11 @@ XComposeStatus compose_status= {0, 0};
 void InitLyXLookup(Display * display, Window window) 
 {
 	xic = 0;
-	
+
+	lyxerr[Debug::KEY]
+			<< "InitLyXLookup: creating an input context."
+			<< endl;
+
 	// This part could be done before opening display
 	setlocale(LC_CTYPE, "");
        	if (!XSupportsLocale()) {
@@ -185,7 +187,7 @@ int LyXLookupString(XEvent * event,
 			lyxerr[Debug::KEY] << "XBufferOverflow" << endl;
 			break;
 		case XLookupBoth:
-			lyxerr[Debug::KEY] << "XLookupBoth"
+			lyxerr[Debug::KEY] << "XLookupBoth "
 					   << string(buffer_return, result)
 					   << endl;
 			break;
@@ -264,4 +266,3 @@ void CloseLyXLookup()
 
 #endif // HAVE_XOPENIM
 
-#endif
