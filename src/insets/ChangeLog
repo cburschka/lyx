@@ -1,4 +1,4 @@
-2004-04-13  Angus Leeming  <angus@localhost.localdomain>
+2004-04-13  Angus Leeming  <leeming@lyx.org>
 
 	* render_base.[Ch] (clone): now takes an InsetBase ptr to enable
 	the renderer to inform LyX::updateInset that the inset's status
@@ -30,7 +30,7 @@
 	* insetinclude.C (validate): set/reset features.buffer_ when
 	validating the child
 
-2004-04-07  Angus Leeming  <angus@localhost.localdomain>
+2004-04-07  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.C (priv_dispatch): 
 	* insetinclude.C (priv_dispatch): prevent crash by invoking
@@ -90,7 +90,7 @@
 	* insettext.C (edit): comment the call to updateLocal (dangling now)
 	* insettext.h: add allowSpellCheck() returning true
 
-2004-03-31  Angus Leeming  <angus@localhost.localdomain>
+2004-03-31  Angus Leeming  <leeming@lyx.org>
 
 	* insetcollapsable.[Ch]: (leaveInset): renaming of getOutOfInset.
 
