@@ -1,5 +1,11 @@
 2004-01-02  Angus Leeming  <leeming@lyx.org>
 
+	* forms/fdfix.sh: no need to assume that the fdfix files are in
+	the same directory as the .fd files. Rather assume that all fdfix
+	files are in the same directory as each other.
+
+2004-01-02  Angus Leeming  <leeming@lyx.org>
+
 	* combox.h: correct a couple of spelling mistakes in the comments.
 
 2004-01-02  Angus Leeming  <leeming@lyx.org>

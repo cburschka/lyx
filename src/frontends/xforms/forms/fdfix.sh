@@ -47,6 +47,10 @@ fi
 DIRNAME=`dirname $1`
 BASENAME=`basename $1 .fd`
 
+FDFIXH_SED=`dirname $0`/fdfixh.sed
+FDFIXC_SED=`dirname $0`/fdfixc.sed
+TMP_STR_SED=`dirname $0`/tmp_str.sed
+
 if [ $1 = ${BASENAME} ]; then
 	echo "Input file is not a .fd file. Cannot continue"
 	exit 1
@@ -89,7 +93,7 @@ fi
 
 # First ensure that the sed script knows where to find ${EXTERN_FUNCS}
 FDFIXH=fdfixh.$$
-sed "s/EXTERN_FUNCS/${EXTERN_FUNCS}/" ${DIRNAME}/fdfixh.sed > ${FDFIXH}
+sed "s/EXTERN_FUNCS/${EXTERN_FUNCS}/" ${FDFIXH_SED} > ${FDFIXH}
 
 INTRO_MESSAGE ${HOUT}
 
@@ -132,8 +136,6 @@ FINAL_COUT=${BASENAME}.C
 # keeping the sed clean also.
 
 # Pass 1. The bulk of the clean-up
-FDFIXC=${DIRNAME}/fdfixc.sed
-
 TMP=tmp.$$
 INTRO_MESSAGE ${TMP}
 
@@ -147,12 +149,11 @@ grep combox ${CIN} > /dev/null &&
 	echo "#include \"combox.h\"" >> ${TMP}
 echo "using std::string;" >> ${TMP}
 
-sed -f ${FDFIXC} < ${CIN} >> ${TMP}
+sed -f ${FDFIXC_SED} < ${CIN} >> ${TMP}
 
 # Pass 2. Ensure that any tmp_str variables inserted by fdfixc.sed
 # are declared at the top of the appropriate function.
-FDFIXC=${DIRNAME}/tmp_str.sed
-sed -f ${FDFIXC} < ${TMP} > ${COUT}
+sed -f ${TMP_STR_SED} < ${TMP} > ${COUT}
 rm -f ${TMP}
 
 if [ -f "${CPATCH}" ] ; then
