@@ -24,8 +24,11 @@ using SigC::slot;
 #endif
 
 C_RETURNCB(FormTabular,  WMHideCB)
-C_GENERICCB(FormTabular, TabularCloseCB)
-C_GENERICCB(FormTabular, TabularInputCB)
+C_GENERICCB(FormTabular, CloseCB)
+C_GENERICCB(FormTabular, InputCB)
+C_GENERICCB(FormTabular, OKCB)
+C_GENERICCB(FormTabular, ApplyCB)
+C_GENERICCB(FormTabular, CancelCB)
 
 
 FormTabular::FormTabular(LyXView * lv, Dialogs * d)
@@ -194,14 +197,14 @@ int FormTabular::WMHideCB(FL_FORM * form, void *)
 }
 
 
-void FormTabular::TabularCloseCB(FL_OBJECT * ob, long)
+void FormTabular::CloseCB(FL_OBJECT * ob, long)
 {
     FormTabular * pre = static_cast<FormTabular*>(ob->form->u_vdata);
     pre->hide();
 }
 
 
-void FormTabular::TabularInputCB(FL_OBJECT * ob, long)
+void FormTabular::InputCB(FL_OBJECT * ob, long)
 {
     FormTabular * pre = static_cast<FormTabular*>(ob->form->u_vdata);
     pre->input();
@@ -404,7 +407,7 @@ void FormTabular::apply_create()
 }
 
 
-void FormTabular::TabularOKCB(FL_OBJECT * ob, long)
+void FormTabular::OKCB(FL_OBJECT * ob, long)
 {
     FormTabular * pre = (FormTabular*)ob->form->u_vdata;
     pre->apply_create();
@@ -412,15 +415,17 @@ void FormTabular::TabularOKCB(FL_OBJECT * ob, long)
 }
 
 
-void FormTabular::TabularApplyCB(FL_OBJECT * ob, long)
+void FormTabular::ApplyCB(FL_OBJECT * ob, long)
 {
     FormTabular * pre = (FormTabular*)ob->form->u_vdata;
     pre->apply_create();
 }
 
 
-void FormTabular::TabularCancelCB(FL_OBJECT * ob, long)
+void FormTabular::CancelCB(FL_OBJECT * ob, long)
 {
     FormTabular * pre = (FormTabular*)ob->form->u_vdata;
     pre->hide_create();
 }
+
+

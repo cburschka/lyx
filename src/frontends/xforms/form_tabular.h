@@ -1,22 +1,22 @@
-/** Header file generated with fdesign on Tue Jul 11 16:33:31 2000.**/
+/** Header file generated with fdesign on Wed Jul 12 15:19:16 2000.**/
 
 #ifndef FD_form_tabular_h_
 #define FD_form_tabular_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void TabularCloseCB(FL_OBJECT *, long);
+extern  "C" void C_FormTabularCloseCB(FL_OBJECT *, long);
 
-extern  "C" void TabularInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormTabularInputCB(FL_OBJECT *, long);
 
-extern  "C" void TabularInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormTabularInputCB(FL_OBJECT *, long);
 
-extern  "C" void TabularInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormTabularInputCB(FL_OBJECT *, long);
 
-extern  "C" void TabularInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormTabularInputCB(FL_OBJECT *, long);
 
-extern  "C" void TabularOKCB(FL_OBJECT *, long);
-extern  "C" void TabularApplyCB(FL_OBJECT *, long);
-extern  "C" void TabularCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormTabularOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormTabularApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormTabularCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

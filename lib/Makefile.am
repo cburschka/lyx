@@ -4,6 +4,7 @@ DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
 pkgdata_SCRIPTS = configure configure.cmd
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 SUBDIRS    = reLyX
+bin_SCRIPTS = listerrors
 
 BIND = bind/*.bind
 CLIPART = clipart/*.eps
@@ -29,7 +30,7 @@ pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
 LYXLIBDIRS = bind clipart doc examples images kbd layouts scripts templates tex
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
-	external_templates $(LYXLIBDIRS)
+	external_templates $(LYXLIBDIRS) build-listerrors
 
 libinstalldirs:
 	for dir in $(LYXLIBDIRS) ; do \
@@ -55,3 +56,5 @@ dist-hook:
 	{ cvs -Q export -r HEAD -d doc lyxdoc || \
 	  echo "WARNING: Unable to get LyX Documentation from CVS!" ; true ; }
 
+listerrors: examples/Literate.lyx
+	./build-listerrors

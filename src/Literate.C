@@ -51,6 +51,7 @@ int Literate::weave(TeXErrors & terr, MiniBuffer * minib)
         string tmp1, tmp2;
         int ret1, ret2;
         Systemcalls one, two;
+	string logfile = OnlyFilename(ChangeExtension(file, ".log"));
 
         // The class LaTeX does not know the temp path.
         bufferlist.updateIncludedTeXfiles(GetCWD());
@@ -62,17 +63,18 @@ int Literate::weave(TeXErrors & terr, MiniBuffer * minib)
         // Run the literate program to convert \literate_extension file to .tex file
         //
         tmp1 = literate_cmd + " < " + litfile + " > " + file + " 2> " + litfile + ".out";
-        tmp2 = literate_filter + " < " + litfile + ".out" + " > " + litfile + ".log";
+        tmp2 = literate_filter + " < " + litfile + ".out" + " > " + logfile;
         ret1 = one.startscript(Systemcalls::System, tmp1);
         ret2 = two.startscript(Systemcalls::System, tmp2);
         lyxerr.debug() << "LITERATE {" << tmp1 << "} {" << tmp2 << "}" << endl;
-	scanres = scanLiterateLogFile();
+
+	scanres = scanLogFile(terr);
 	if (scanres & Literate::ERRORS) return scanres; // return on literate error
 	return run(terr, minib);
 }
 
 
-int Literate::build(TeXErrors & /*terr*/, MiniBuffer * minib)
+int Literate::build(TeXErrors & terr, MiniBuffer * minib)
         // We know that this function will only be run if the lyx buffer
         // has been changed. 
 {
@@ -81,6 +83,8 @@ int Literate::build(TeXErrors & /*terr*/, MiniBuffer * minib)
         string tmp1, tmp2;
         int ret1, ret2;
         Systemcalls one, two;
+	string logfile = OnlyFilename(ChangeExtension(file, ".log"));
+
         
         // The class LaTeX does not know the temp path.
         bufferlist.updateIncludedTeXfiles(GetCWD());
@@ -92,69 +96,12 @@ int Literate::build(TeXErrors & /*terr*/, MiniBuffer * minib)
         // Run the build program
         //
         tmp1 = build_cmd + ' ' + litfile + " > " + litfile + ".out 2>&1";
-        tmp2 = build_filter + " < " + litfile + ".out" + " > " + litfile + ".log";
+        tmp2 = build_filter + " < " + litfile + ".out" + " > " + logfile;
         ret1 = one.startscript(Systemcalls::System, tmp1);
         ret2 = two.startscript(Systemcalls::System, tmp2);
-        scanres = scanBuildLogFile();
+
+	scanres = scanLogFile(terr);
         lyxerr[Debug::LATEX] << "Done." << endl;
 
         return scanres;
-}
-
-
-int Literate::scanLiterateLogFile()
-{
-        string token;
-        int retval = NO_ERRORS;
-        
-        string tmp = litfile + ".log";
-        
-        ifstream ifs(tmp.c_str());
-	while (getline(ifs, token)) {
-                lyxerr[Debug::LATEX] << token << endl;
-                
-                if (prefixIs(token, "Build Warning:")) {
-                        // Here shall we handle different
-                        // types of warnings
-                        retval |= LATEX_WARNING;
-                        lyxerr[Debug::LATEX] << "Build Warning." << endl;
-                } else if (prefixIs(token, "! Build Error:")) {
-                        // Here shall we handle different
-                        // types of errors
-                        retval |= LATEX_ERROR;
-                        lyxerr[Debug::LATEX] << "Build Error." << endl;
-                        // this is not correct yet
-                        ++num_errors;
-                }
-        }       
-        return retval;
-}
-
-
-int Literate::scanBuildLogFile()
-{
-        string token;
-        int retval = NO_ERRORS;
- 
-        string tmp = litfile + ".log";
-        
-        ifstream ifs(tmp.c_str());
-	while (getline(ifs, token)) {
-                lyxerr[Debug::LATEX] << token << endl;
-                
-                if (prefixIs(token, "Build Warning:")) {
-                        // Here shall we handle different
-                        // types of warnings
-                        retval |= LATEX_WARNING;
-                        lyxerr[Debug::LATEX] << "Build Warning." << endl;
-                } else if (prefixIs(token, "! Build Error:")) {
-                        // Here shall we handle different
-                        // types of errors
-                        retval |= LATEX_ERROR;
-                        lyxerr[Debug::LATEX] << "Build Error." << endl;
-                        // this is not correct yet
-                        ++num_errors;
-                }
-        }       
-        return retval;
 }

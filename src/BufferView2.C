@@ -281,6 +281,7 @@ bool BufferView::open_new_inset(UpdatableInset * new_inset)
 	text->CursorLeft(this);
 	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
     	new_inset->Edit(this, 0, 0, 0);
+	return true;
 }
 
 /* This is also a buffer property (ale) */

@@ -43,11 +43,11 @@ public:
     /**@name Real per-instance Callback Methods */
     //@{
     static  int WMHideCB(FL_FORM *, void *);
-    static void TabularCloseCB(FL_OBJECT *, long);
-    static void TabularOKCB(FL_OBJECT *, long);
-    static void TabularCancelCB(FL_OBJECT *, long);
-    static void TabularApplyCB(FL_OBJECT *, long);
-    static void TabularInputCB(FL_OBJECT *, long);
+    static void CloseCB(FL_OBJECT *, long);
+    static void OKCB(FL_OBJECT *, long);
+    static void CancelCB(FL_OBJECT *, long);
+    static void ApplyCB(FL_OBJECT *, long);
+    static void InputCB(FL_OBJECT *, long);
     //@}
 
 private:

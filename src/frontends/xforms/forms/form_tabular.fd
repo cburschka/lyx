@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_close
-callback: TabularCloseCB
+callback: C_FormTabularCloseCB
 argument: 0
 
 --------------------
@@ -178,7 +178,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_append_column
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -196,7 +196,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_delete_column
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -214,7 +214,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_append_row
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -232,7 +232,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_delete_row
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -250,7 +250,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_set_borders
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -268,7 +268,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_unset_borders
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -286,7 +286,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_longtable
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -304,7 +304,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_rotate_tabular
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -400,7 +400,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_top
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -418,7 +418,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_bottom
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -436,7 +436,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_left
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -454,7 +454,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_right
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -508,7 +508,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_left
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -526,7 +526,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_right
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -544,7 +544,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_center
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -562,7 +562,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_column_width
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -598,7 +598,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_top
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -616,7 +616,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_center
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -634,7 +634,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_bottom
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -688,7 +688,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_special_alignment
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -892,7 +892,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_multicolumn
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -910,7 +910,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_linebreak_cell
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -928,7 +928,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_rotate_cell
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -964,7 +964,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_special_multialign
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1000,7 +1000,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_mcolumn_width
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1018,7 +1018,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_top
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1036,7 +1036,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_bottom
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1054,7 +1054,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_left
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1072,7 +1072,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_border_right
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1090,7 +1090,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_left
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1108,7 +1108,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_right
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1126,7 +1126,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_center
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1144,7 +1144,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_top
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1162,7 +1162,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_center
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1180,7 +1180,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_bottom
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 =============== FORM ===============
@@ -1258,7 +1258,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_firsthead
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1276,7 +1276,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_head
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1330,7 +1330,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_foot
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1348,7 +1348,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_lastfoot
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 --------------------
@@ -1402,7 +1402,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_lt_newpage
-callback: TabularInputCB
+callback: C_FormTabularInputCB
 argument: 0
 
 =============== FORM ===============
@@ -1444,7 +1444,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: TabularOKCB
+callback: C_FormTabularOKCB
 argument: 0
 
 --------------------
@@ -1462,7 +1462,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_apply
-callback: TabularApplyCB
+callback: C_FormTabularApplyCB
 argument: 0
 
 --------------------
@@ -1480,7 +1480,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
-callback: TabularCancelCB
+callback: C_FormTabularCancelCB
 argument: 0
 
 --------------------

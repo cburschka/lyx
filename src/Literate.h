@@ -34,12 +34,6 @@ public:
         int build(TeXErrors &, MiniBuffer *);
 private:
         ///
-        int scanLiterateLogFile();
-
-        ///
-        int scanBuildLogFile();
-
-        ///
         string litfile;
         
         ///
@@ -56,3 +50,5 @@ private:
 };
 
 #endif
+
+

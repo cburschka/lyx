@@ -19,6 +19,26 @@
 	* src/lyx_main.C (commandLineHelp): remove -display from command
 	line help.
 
+2000-07-09  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* lib/Makefile.am: added lib/build-listerrors to DIST tarfile.
+	Also put in Makefile rules for building the ``listerrors''
+	program for parsing errors from literate programs written in LyX.
+
+	* lib/build-listerrors: Added small shell script as part of compile
+	process. This builds a working ``listerrors'' binary if noweb is
+	installed and either 1) the VNC X server is installed on the machine,
+	or 2) the user is compiling from within a GUI. The existence of a GUI
+	is necessary to use the ``lyx --export'' feature for now. This
+	hack can be removed once ``lyx --export'' no longer requires a GUI to
+	function.
+
+2000-07-09  Bernard Michael Hurley <bernardh@westherts.ac.uk>
+
+	* lib/examples/Literate.lyx, src/Literate.[Ch]: Error messages are
+	now passed back correctly from gcc and placed "under" error
+	buttons in a Literate LyX source.
+
 2000-07-08  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/text.C (GetColumnNearX): Better behavior when a RTL
