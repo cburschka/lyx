@@ -138,8 +138,8 @@ inline
 LyXText * LyXFunc::TEXT(bool flag = true) const
 {
 	if (flag)
-		return owner->view()->text;
-	return owner->view()->getLyXText();
+		return view()->text;
+	return view()->getLyXText();
 }
 
 
@@ -147,14 +147,14 @@ inline
 void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 {
 	if (selecting || TEXT(flag)->selection.mark()) {
-		TEXT(flag)->setSelection(owner->view().get());
+		TEXT(flag)->setSelection(view());
 		if (TEXT(flag)->bv_owner)
-		    owner->view()->toggleToggle();
+		    view()->toggleToggle();
 	}
-	owner->view()->update(TEXT(flag), BufferView::SELECT|BufferView::FITCUR);
-	owner->view()->showCursor();
+	view()->update(TEXT(flag), BufferView::SELECT|BufferView::FITCUR);
+	view()->showCursor();
 
-	owner->view()->switchKeyMap();
+	view()->switchKeyMap();
 }
 
 
@@ -172,7 +172,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	// actions
 	keyseq.clear();
 	// copied verbatim from do_accent_char
-	owner->view()->update(TEXT(false),
+	view()->update(TEXT(false),
 	       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	TEXT(false)->selection.cursor = TEXT(false)->cursor;
 }
@@ -263,7 +263,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		if (c != 0)
 			argument = c;
 
-		dispatch(FuncRequest(LFUN_SELFINSERT, argument));
+		dispatch(FuncRequest(view(), LFUN_SELFINSERT, argument));
 		lyxerr[Debug::KEY] << "SelfInsert arg[`"
 				   << argument << "']" << endl;
 	} else {
@@ -277,7 +277,7 @@ FuncStatus LyXFunc::getStatus(int ac) const
 	kb_action action;
 	string arg;
 	boost::tie(action, arg) = lyxaction.retrieveActionArg(ac);
-	return getStatus(FuncRequest(action, arg));
+	return getStatus(FuncRequest(view(), action, arg));
 }
 
 
@@ -320,7 +320,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		}
 	}
 
-	UpdatableInset * tli = owner->view()->theLockingInset();
+	UpdatableInset * tli = view()->theLockingInset();
 
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
@@ -410,11 +410,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		disable = !buf->lyxvc.inUse();
 		break;
 	case LFUN_BOOKMARK_GOTO:
-		disable =  !owner->view()->
+		disable =  !view()->
 			isSavedPosition(strToUnsignedInt(ev.argument));
 		break;
 	case LFUN_INSET_TOGGLE: {
-		LyXText * lt = owner->view()->getLyXText();
+		LyXText * lt = view()->getLyXText();
 		disable = !(isEditableInset(lt->getInset())
 			    || (lt->inset_owner
 				&& lt->inset_owner->owner()
@@ -706,7 +706,7 @@ void LyXFunc::dispatch(int ac, bool verbose)
 	kb_action action;
 	string arg;
 	boost::tie(action, arg) = lyxaction.retrieveActionArg(ac);
-	dispatch(FuncRequest(action, arg), verbose);
+	dispatch(FuncRequest(view(), action, arg), verbose);
 }
 
 
@@ -729,8 +729,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	selection_possible = false;
 
-	if (owner->view()->available())
-		owner->view()->hideCursor();
+	if (view()->available())
+		view()->hideCursor();
 
 	string argument = ev.argument;
 	kb_action action = ev.action;
@@ -745,16 +745,16 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		goto exit_with_message;
 	}
 
-	if (owner->view()->available() && owner->view()->theLockingInset()) {
+	if (view()->available() && view()->theLockingInset()) {
 		UpdatableInset::RESULT result;
 		if ((action > 1) || ((action == LFUN_UNKNOWN_ACTION) &&
 				     (!keyseq.deleted())))
 		{
-			UpdatableInset * inset = owner->view()->theLockingInset();
+			UpdatableInset * inset = view()->theLockingInset();
 #if 1
 			int inset_x;
 			int dummy_y;
-			inset->getCursorPos(owner->view().get(), inset_x, dummy_y);
+			inset->getCursorPos(view(), inset_x, dummy_y);
 #endif
 			if ((action == LFUN_UNKNOWN_ACTION)
 			    && argument.empty()) {
@@ -762,14 +762,14 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			}
 			// Undo/Redo is a bit tricky for insets.
 			if (action == LFUN_UNDO) {
-				owner->view()->menuUndo();
+				view()->menuUndo();
 				goto exit_with_message;
 			} else if (action == LFUN_REDO) {
-				owner->view()->menuRedo();
+				view()->menuRedo();
 				goto exit_with_message;
 			} else if (((result=inset->
 				     // Hand-over to inset's own dispatch:
-				     localDispatch(owner->view().get(), FuncRequest(action, argument))) ==
+				     localDispatch(FuncRequest(view(), action, argument))) ==
 				    UpdatableInset::DISPATCHED) ||
 				   (result == UpdatableInset::DISPATCHED_NOUPDATE))
 				goto exit_with_message;
@@ -780,7 +780,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				// FINISHED means that the cursor should be
 				// one position after the inset.
 			} else if (result == UpdatableInset::FINISHED_RIGHT) {
-				TEXT()->cursorRight(owner->view().get());
+				TEXT()->cursorRight(view());
 				moveCursorUpdate(true, false);
 				owner->view_state_changed();
 				goto exit_with_message;
@@ -788,33 +788,33 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				if (TEXT()->cursor.irow()->previous()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
-						owner->view().get(), TEXT()->cursor.ix() + inset_x,
+						view(), TEXT()->cursor.ix() + inset_x,
 						TEXT()->cursor.iy() -
 						TEXT()->cursor.irow()->baseline() - 1);
 					TEXT()->cursor.x_fix(TEXT()->cursor.x());
 #else
-					TEXT()->cursorUp(owner->view().get());
+					TEXT()->cursorUp(view());
 #endif
 					moveCursorUpdate(true, false);
 					owner->view_state_changed();
 				} else {
-					owner->view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
+					view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
 				}
 				goto exit_with_message;
 			} else if (result == UpdatableInset::FINISHED_DOWN) {
 				if (TEXT()->cursor.irow()->next()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
-						owner->view().get(), TEXT()->cursor.ix() + inset_x,
+						view(), TEXT()->cursor.ix() + inset_x,
 						TEXT()->cursor.iy() -
 						TEXT()->cursor.irow()->baseline() +
 						TEXT()->cursor.irow()->height() + 1);
 					TEXT()->cursor.x_fix(TEXT()->cursor.x());
 #else
-					TEXT()->cursorDown(owner->view().get());
+					TEXT()->cursorDown(view());
 #endif
 				} else {
-					TEXT()->cursorRight(owner->view().get());
+					TEXT()->cursorRight(view());
 				}
 				moveCursorUpdate(true, false);
 				owner->view_state_changed();
@@ -827,29 +827,29 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				case LFUN_UNKNOWN_ACTION:
 				case LFUN_BREAKPARAGRAPH:
 				case LFUN_BREAKLINE:
-					TEXT()->cursorRight(owner->view().get());
-					owner->view()->switchKeyMap();
+					TEXT()->cursorRight(view());
+					view()->switchKeyMap();
 					owner->view_state_changed();
 					break;
 				case LFUN_RIGHT:
 					if (!TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-						TEXT()->cursorRight(owner->view().get());
+						TEXT()->cursorRight(view());
 						moveCursorUpdate(true, false);
 						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_LEFT:
 					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-						TEXT()->cursorRight(owner->view().get());
+						TEXT()->cursorRight(view());
 						moveCursorUpdate(true, false);
 						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_DOWN:
 					if (TEXT()->cursor.row()->next())
-						TEXT()->cursorDown(owner->view().get());
+						TEXT()->cursorDown(view());
 					else
-						TEXT()->cursorRight(owner->view().get());
+						TEXT()->cursorRight(view());
 					moveCursorUpdate(true, false);
 					owner->view_state_changed();
 					goto exit_with_message;
@@ -864,20 +864,20 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_ESCAPE:
 	{
-		if (!owner->view()->available()) break;
+		if (!view()->available()) break;
 		// this function should be used always [asierra060396]
 		UpdatableInset * tli =
-			owner->view()->theLockingInset();
+			view()->theLockingInset();
 		if (tli) {
 			UpdatableInset * lock = tli->getLockingInset();
 
 			if (tli == lock) {
-				owner->view()->unlockInset(tli);
-				TEXT()->cursorRight(owner->view().get());
+				view()->unlockInset(tli);
+				TEXT()->cursorRight(view());
 				moveCursorUpdate(true, false);
 				owner->view_state_changed();
 			} else {
-				tli->unlockInsetInInset(owner->view().get(),
+				tli->unlockInsetInInset(view(),
 							lock,
 							true);
 			}
@@ -902,16 +902,16 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		}
 		bool fw = (action == LFUN_WORDFINDBACKWARD);
 		if (!searched_string.empty()) {
-			lyxfind::LyXFind(owner->view().get(), searched_string, fw);
+			lyxfind::LyXFind(view(), searched_string, fw);
 		}
-//		owner->view()->showCursor();
+//		view()->showCursor();
 	}
 	break;
 
 	case LFUN_PREFIX:
 	{
-		if (owner->view()->available() && !owner->view()->theLockingInset()) {
-			owner->view()->update(TEXT(),
+		if (view()->available() && !view()->theLockingInset()) {
+			view()->update(TEXT(),
 					      BufferView::SELECT|BufferView::FITCUR);
 		}
 		owner->message(keyseq.printOptions());
@@ -926,7 +926,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	case LFUN_CANCEL:                   // RVDK_PATCH_5
 		keyseq.reset();
 		meta_fake_bit = key_modifier::none;
-		if (owner->view()->available())
+		if (view()->available())
 			// cancel any selection
 			dispatch(LFUN_MARK_OFF);
 		setMessage(N_("Cancel"));
@@ -949,7 +949,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_CENTER: // this is center and redraw.
-		owner->view()->center();
+		view()->center();
 		break;
 
 		// --- Menus -----------------------------------------------
@@ -971,15 +971,15 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			s1 << _("Saving document") << ' '
 			   << MakeDisplayPath(owner->buffer()->fileName() + "...");
 			owner->message(s1.str().c_str());
-			MenuWrite(owner->view().get(), owner->buffer());
+			MenuWrite(view(), owner->buffer());
 			s1 << _(" done.");
 			owner->message(s1.str().c_str());
 		} else
-			WriteAs(owner->view().get(), owner->buffer());
+			WriteAs(view(), owner->buffer());
 		break;
 
 	case LFUN_WRITEAS:
-		WriteAs(owner->view().get(), owner->buffer(), argument);
+		WriteAs(view(), owner->buffer(), argument);
 		break;
 
 	case LFUN_MENURELOAD:
@@ -1047,15 +1047,15 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	}
 
 	case LFUN_AUTOSAVE:
-		AutoSave(owner->view().get());
+		AutoSave(view());
 		break;
 
 	case LFUN_UNDO:
-		owner->view()->menuUndo();
+		view()->menuUndo();
 		break;
 
 	case LFUN_REDO:
-		owner->view()->menuRedo();
+		view()->menuRedo();
 		break;
 
 	case LFUN_MENUSEARCH:
@@ -1063,19 +1063,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_REMOVEERRORS:
-		if (owner->view()->removeAutoInsets()) {
+		if (view()->removeAutoInsets()) {
 #warning repaint() or update() or nothing ?
-			owner->view()->repaint();
-			owner->view()->fitCursor();
+			view()->repaint();
+			view()->fitCursor();
 		}
 		break;
 
 	case LFUN_DEPTH_MIN:
-		changeDepth(owner->view().get(), TEXT(false), -1);
+		changeDepth(view(), TEXT(false), -1);
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		changeDepth(owner->view().get(), TEXT(false), 1);
+		changeDepth(view(), TEXT(false), 1);
 		break;
 
 	case LFUN_FREE:
@@ -1083,19 +1083,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_RECONFIGURE:
-		Reconfigure(owner->view().get());
+		Reconfigure(view());
 		break;
 
 #if 0
 	case LFUN_FLOATSOPERATE:
 		if (argument == "openfoot")
-			owner->view()->allFloats(1,0);
+			view()->allFloats(1,0);
 		else if (argument == "closefoot")
-			owner->view()->allFloats(0,0);
+			view()->allFloats(0,0);
 		else if (argument == "openfig")
-			owner->view()->allFloats(1,1);
+			view()->allFloats(1,1);
 		else if (argument == "closefig")
-			owner->view()->allFloats(0,1);
+			view()->allFloats(0,1);
 		break;
 #else
 #ifdef WITH_WARNINGS
@@ -1129,7 +1129,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		str << _("Opening help file") << ' '
 		    << MakeDisplayPath(fname) << "...";
 		owner->message(str.str().c_str());
-		owner->view()->buffer(bufferlist.loadLyXFile(fname, false));
+		view()->buffer(bufferlist.loadLyXFile(fname, false));
 		owner->allowInput();
 		break;
 	}
@@ -1179,7 +1179,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	// --- buffers ----------------------------------------
 
 	case LFUN_SWITCHBUFFER:
-		owner->view()->buffer(bufferlist.getBuffer(argument));
+		view()->buffer(bufferlist.getBuffer(argument));
 		break;
 
 	case LFUN_FILE_NEW:
@@ -1187,7 +1187,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		// servercmd: argument must be <file>:<template>
 		Buffer * tmpbuf = NewFile(argument);
 		if (tmpbuf)
-			owner->view()->buffer(tmpbuf);
+			view()->buffer(tmpbuf);
 	}
 	break;
 
@@ -1212,16 +1212,16 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-	    if (owner->view()->theLockingInset()) {
-		if (owner->view()->theLockingInset()->lyxCode()==Inset::TABULAR_CODE) {
+	    if (view()->theLockingInset()) {
+		if (view()->theLockingInset()->lyxCode()==Inset::TABULAR_CODE) {
 		    InsetTabular * inset = static_cast<InsetTabular *>
-			(owner->view()->theLockingInset());
-		    inset->openLayoutDialog(owner->view().get());
-		} else if (owner->view()->theLockingInset()->
+			(view()->theLockingInset());
+		    inset->openLayoutDialog(view());
+		} else if (view()->theLockingInset()->
 			   getFirstLockingInsetOfType(Inset::TABULAR_CODE)!=0) {
 		    InsetTabular * inset = static_cast<InsetTabular *>(
-			owner->view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE));
-		    inset->openLayoutDialog(owner->view().get());
+			view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE));
+		    inset->openLayoutDialog(view());
 		}
 	    }
 	    break;
@@ -1270,16 +1270,16 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 		// Either change buffer or load the file
 		if (bufferlist.exists(s)) {
-			owner->view()->buffer(bufferlist.getBuffer(s));
+			view()->buffer(bufferlist.getBuffer(s));
 		} else {
-			owner->view()->buffer(bufferlist.loadLyXFile(s));
+			view()->buffer(bufferlist.loadLyXFile(s));
 		}
 
-		owner->view()->setCursorFromRow(row);
+		view()->setCursorFromRow(row);
 
-		owner->view()->center();
+		view()->center();
 		// see BufferView_pimpl::center()
-		owner->view()->updateScrollbar();
+		view()->updateScrollbar();
 	}
 	break;
 
@@ -1299,19 +1299,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					    << " found." << endl;
 		}
 
-		if (owner->view()->theLockingInset())
-			owner->view()->unlockInset(owner->view()->theLockingInset());
+		if (view()->theLockingInset())
+			view()->unlockInset(view()->theLockingInset());
 		if (par->inInset()) {
-			par->inInset()->edit(owner->view().get());
+			par->inInset()->edit(view());
 		}
 		// Set the cursor
-		owner->view()->getLyXText()->setCursor(owner->view().get(), par, 0);
-		owner->view()->switchKeyMap();
+		view()->getLyXText()->setCursor(view(), par, 0);
+		view()->switchKeyMap();
 		owner->view_state_changed();
 
-		owner->view()->center();
+		view()->center();
 		// see BufferView_pimpl::center()
-		owner->view()->updateScrollbar();
+		view()->updateScrollbar();
 	}
 	break;
 
@@ -1337,10 +1337,10 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	// passthrough hat and underscore outside mathed:
 	case LFUN_SUBSCRIPT:
-		dispatch(FuncRequest(LFUN_SELFINSERT, "_"));
+		dispatch(FuncRequest(view(), LFUN_SELFINSERT, "_"));
 		break;
 	case LFUN_SUPERSCRIPT:
-		dispatch(FuncRequest(LFUN_SELFINSERT, "^"));
+		dispatch(FuncRequest(view(), LFUN_SELFINSERT, "^"));
 		break;
 
 	case LFUN_MATH_PANEL:
@@ -1362,7 +1362,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			} else {
 				p.setContents(argument);
 			}
-			dispatch(FuncRequest(LFUN_CITATION_INSERT, p.getAsString()));
+			dispatch(FuncRequest(view(), LFUN_CITATION_INSERT, p.getAsString()));
 		} else
 			owner->getDialogs().createCitation(p.getAsString());
 	}
@@ -1375,11 +1375,11 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				    owner->buffer()->filePath());
 		setMessage(N_("Opening child document ") +
 			   MakeDisplayPath(filename) + "...");
-		owner->view()->savePosition(0);
+		view()->savePosition(0);
 		if (bufferlist.exists(filename))
-			owner->view()->buffer(bufferlist.getBuffer(filename));
+			view()->buffer(bufferlist.getBuffer(filename));
 		else
-			owner->view()->buffer(bufferlist.loadLyXFile(filename));
+			view()->buffer(bufferlist.loadLyXFile(filename));
 	}
 	break;
 
@@ -1437,8 +1437,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		// Of course we should only do the resize and the textcache.clear
 		// if values really changed...but not very important right now. (Lgb)
 		// All visible buffers will need resize
-		owner->view()->resize();
-		owner->view()->repaint();
+		view()->resize();
+		view()->repaint();
 	}
 	break;
 
@@ -1477,7 +1477,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 #endif
 		}
 
-		owner->view()->repaint();
+		view()->repaint();
 		break;
 	}
 
@@ -1507,7 +1507,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	default:
 		// Then if it was none of the above
 		// Trying the BufferView::pimpl dispatch:
-		if (!owner->view()->dispatch(ev))
+		if (!view()->dispatch(ev))
 			lyxerr << "A truly unknown func ["
 			       << lyxaction.getActionName(ev.action) << "]!"
 			       << endl;
@@ -1583,7 +1583,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	string initpath = lyxrc.document_path;
 	string filename(name);
 
-	if (owner->view()->available()) {
+	if (view()->available()) {
 		string const trypath = owner->buffer()->filePath();
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath))
@@ -1629,7 +1629,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 		templname = fname;
 	}
 
-	owner->view()->buffer(bufferlist.newFile(filename, templname, !name.empty()));
+	view()->buffer(bufferlist.newFile(filename, templname, !name.empty()));
 }
 
 
@@ -1637,7 +1637,7 @@ void LyXFunc::open(string const & fname)
 {
 	string initpath = lyxrc.document_path;
 
-	if (owner->view()->available()) {
+	if (view()->available()) {
 		string const trypath = owner->buffer()->filePath();
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath))
@@ -1690,7 +1690,7 @@ void LyXFunc::open(string const & fname)
 		}
 		// the user specifically chose this name. Believe them.
 		Buffer * buffer =  bufferlist.newFile(filename, "", true);
-		owner->view()->buffer(buffer);
+		view()->buffer(buffer);
 		return;
 	}
 
@@ -1701,7 +1701,7 @@ void LyXFunc::open(string const & fname)
 
 	Buffer * openbuf = bufferlist.loadLyXFile(filename);
 	if (openbuf) {
-		owner->view()->buffer(openbuf);
+		view()->buffer(openbuf);
 		ostringstream str;
 		str << _("Document") << ' ' << disp_fn << ' ' << _("opened.");
 		owner->message(str.str().c_str());
@@ -1725,7 +1725,7 @@ void LyXFunc::doImport(string const & argument)
 	if (filename.empty()) {
 		string initpath = lyxrc.document_path;
 
-		if (owner->view()->available()) {
+		if (view()->available()) {
 			string const trypath = owner->buffer()->filePath();
 			// If directory is writeable, use this as default.
 			if (IsDirWriteable(trypath))
@@ -1780,7 +1780,7 @@ void LyXFunc::doImport(string const & argument)
 					return;
 				break;
 			case 2:
-				owner->view()->buffer(bufferlist.getBuffer(lyxfile));
+				view()->buffer(bufferlist.getBuffer(lyxfile));
 				return;
 			case 3:
 				owner->message(_("Canceled."));
@@ -1806,7 +1806,7 @@ void LyXFunc::reloadBuffer()
 {
 	string const fn = owner->buffer()->fileName();
 	if (bufferlist.close(owner->buffer()))
-		owner->view()->buffer(bufferlist.loadLyXFile(fn));
+		view()->buffer(bufferlist.loadLyXFile(fn));
 }
 
 
@@ -1819,7 +1819,7 @@ void LyXFunc::closeBuffer()
 			// since there's no current buffer
 			owner->getDialogs().hideBufferDependent();
 		} else {
-			owner->view()->buffer(bufferlist.first());
+			view()->buffer(bufferlist.first());
 		}
 	}
 }
@@ -1863,8 +1863,14 @@ string const LyXFunc::view_status_message()
 		return keyseq.printOptions();
 	}
 
-	if (!owner->view()->available())
+	if (!view()->available())
 		return _("Welcome to LyX!");
 
-	return currentState(owner->view().get());
+	return currentState(view());
+}
+
+
+BufferView * LyXFunc::view() const
+{
+	return owner->view().get();
 }

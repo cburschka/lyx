@@ -305,17 +305,17 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 ///  An updatable inset could handle lyx editing commands
 UpdatableInset::RESULT
-UpdatableInset::localDispatch(BufferView * bv, FuncRequest const & ev)
+UpdatableInset::localDispatch(FuncRequest const & ev)
 {
 	if (!ev.argument.empty() && ev.action == LFUN_SCROLL_INSET) {
 		if (ev.argument.find('.') != ev.argument.npos) {
 			float const xx = static_cast<float>(strToDbl(ev.argument));
-			scroll(bv, xx);
+			scroll(ev.view(), xx);
 		} else {
 			int const xx = strToInt(ev.argument);
-			scroll(bv, xx);
+			scroll(ev.view(), xx);
 		}
-		bv->updateInset(this, false);
+		ev.view()->updateInset(this, false);
 
 		return DISPATCHED;
 	}

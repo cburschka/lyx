@@ -36,6 +36,7 @@ class Dialogs;
 class LyXFunc;
 class LyXFont;
 class Timeout;
+class FuncRequest;
 
 /**
  * LyXView - main LyX window
@@ -132,8 +133,11 @@ public:
 	/// reset autosave timer
 	void resetAutosaveTimer();
 
+	/// dispatch to current BufferView
+	void dispatch(FuncRequest const & req);
+ 
 protected:
-	/// view of a buffer. Eventtually there will be several.
+	/// view of a buffer. Eventually there will be several.
 	boost::shared_ptr<BufferView> bufferview_;
 
 	/// view's menubar

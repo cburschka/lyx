@@ -24,6 +24,7 @@
 #include "lyxlex.h"
 #include "lyxtext.h"
 #include "WordLangTuple.h"
+#include "funcrequest.h"
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
@@ -445,11 +446,11 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 
 
 UpdatableInset::RESULT
-InsetCollapsable::localDispatch(BufferView * bv, FuncRequest const & ev)
+InsetCollapsable::localDispatch(FuncRequest const & ev)
 {
-	UpdatableInset::RESULT result = inset.localDispatch(bv, ev);
+	UpdatableInset::RESULT result = inset.localDispatch(ev);
 	if (result >= FINISHED)
-		bv->unlockInset(this);
+		ev.view()->unlockInset(this);
 	first_after_edit = false;
 	return result;
 }

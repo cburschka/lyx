@@ -821,7 +821,7 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, mouse_button:
 		the_locking_inset = 0;
 	}
 	if (button == mouse_button::button2) {
-		localDispatch(bv, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
+		localDispatch(FuncRequest(bv, LFUN_PASTESELECTION, "paragraph"));
 		return;
 	}
 	if (inset_hit && bv->theLockingInset()) {
@@ -877,14 +877,14 @@ void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, mouse_button
 }
 
 
-UpdatableInset::RESULT
-InsetTabular::localDispatch(BufferView * bv, FuncRequest const & ev)
+UpdatableInset::RESULT InsetTabular::localDispatch(FuncRequest const & ev)
 {
 	// We need to save the value of the_locking_inset as the call to
 	// the_locking_inset->LocalDispatch might unlock it.
 	old_locking_inset = the_locking_inset;
-	UpdatableInset::RESULT result =
-		UpdatableInset::localDispatch(bv, ev);
+	RESULT result = UpdatableInset::localDispatch(ev);
+
+	BufferView * bv = ev.view();
 	if (result == DISPATCHED || result == DISPATCHED_NOUPDATE) {
 		resetPos(bv);
 		return result;
@@ -925,7 +925,7 @@ InsetTabular::localDispatch(BufferView * bv, FuncRequest const & ev)
 	kb_action action = ev.action;
 	string    arg    = ev.argument;
 	if (the_locking_inset) {
-		result = the_locking_inset->localDispatch(bv, ev);
+		result = the_locking_inset->localDispatch(ev);
 		if (result == DISPATCHED_NOUPDATE) {
 			int sc = scroll();
 			resetPos(bv);
@@ -1251,7 +1251,7 @@ InsetTabular::localDispatch(BufferView * bv, FuncRequest const & ev)
 			case LFUN_DEFAULT:
 			case LFUN_UNDERLINE:
 			case LFUN_FONT_SIZE:
-				if (bv->dispatch(FuncRequest(action, arg)))
+				if (bv->dispatch(FuncRequest(bv, action, arg)))
 					result = DISPATCHED;
 				break;
 			default:
@@ -1266,7 +1266,7 @@ InsetTabular::localDispatch(BufferView * bv, FuncRequest const & ev)
 		if (activateCellInset(bv)) {
 			// reset need_update setted in above function!
 			need_update = NONE;
-			result = the_locking_inset->localDispatch(bv, FuncRequest(action, arg));
+			result = the_locking_inset->localDispatch(FuncRequest(bv, action, arg));
 			if ((result == UNDISPATCHED) || (result >= FINISHED)) {
 				unlockInsetInInset(bv, the_locking_inset);
 				nodraw(false);

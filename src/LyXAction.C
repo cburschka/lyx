@@ -475,7 +475,7 @@ int LyXAction::getPseudoAction(kb_action action, string const & arg)
 	static unsigned int pseudo_counter = LFUN_LASTACTION;
 
 	// Create new pseudo action.
-	lyx_pseudo_map[++pseudo_counter] = FuncRequest(action, arg);
+	lyx_pseudo_map[++pseudo_counter] = FuncRequest(0, action, arg);
 
 	// First ensure that the action is in lyx_arg_map;
 	lyx_arg_map[action];

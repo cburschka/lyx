@@ -58,6 +58,8 @@ public:
 	///
 	void set(Paragraph *);
 	///
+	void push_back(Paragraph *);
+	///
 	int size() const;
 	///
 	bool empty() const;

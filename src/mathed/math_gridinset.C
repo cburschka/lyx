@@ -6,6 +6,7 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "lyxfont.h"
+#include "funcrequest.h"
 #include "frontends/Painter.h"
 #include "debug.h"
 
@@ -902,3 +903,66 @@ int MathGridInset::border() const
 	return 1;
 }
 
+
+void MathGridInset::splitCell(idx_type & idx, pos_type & pos)
+{
+	if (idx + 1 == nargs())
+		return;
+	MathArray ar = cell(idx);
+	ar.erase(0, pos);
+	cell(idx).erase(pos, cell(idx).size());
+	++idx;
+	pos = 0;
+	cell(idx).insert(0, ar);
+}
+
+
+MathInset::result_type MathGridInset::dispatch
+	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+{
+	switch (cmd.action) {
+
+		case LFUN_DELETE_LINE_FORWARD:
+			//autocorrect_ = false;
+			//macroModeClose();
+			//if (selection_) {
+			//	selDel();
+			//	return;
+			//}
+			if (nrows() > 1)
+				delRow(row(idx));
+			if (idx >= nargs())
+				idx = nargs() - 1;
+			if (pos > cell(idx).size())
+				pos = cell(idx).size();
+			return DISPATCHED_POP;
+
+		case LFUN_TABINSERT:
+			//bv->lockedInsetStoreUndo(Undo::EDIT);
+			splitCell(idx, pos);
+			//updateLocal(bv, true);
+			return DISPATCHED_POP;
+
+		case LFUN_BREAKLINE: {
+			//bv->lockedInsetStoreUndo(Undo::INSERT);
+			row_type const r = row(idx);
+			addRow(r);
+
+			// split line
+			for (col_type c = col(idx) + 1; c < ncols(); ++c)
+				std::swap(cell(index(r, c)), cell(index(r + 1, c)));
+
+			// split cell
+			splitCell(idx, pos);
+			std::swap(cell(idx), cell(idx + ncols() - 1));
+		
+			//mathcursor->normalize();
+			//updateLocal(bv, true);
+			return DISPATCHED_POP;
+		}
+
+		default:	
+			break;
+	}
+	return UNDISPATCHED;
+}

@@ -119,6 +119,29 @@ void MathIterator::jump(difference_type i)
 }
 
 
+/*
+void MathIterator::shrink(size_type i)
+{
+	if (i < size())
+		erase(begin() + i, end());
+}
+
+
+void MathIterator::shrink(size_type i)
+{
+	if (i < size())
+		erase(begin() + i, end());
+}
+*/
+
+
+void MathIterator::shrink(size_type i)
+{
+	if (i < size())
+		erase(begin() + i, end());
+}
+
+
 bool operator==(MathIterator const & it, MathIterator const & jt)
 {
 	return MathIterator::base_type(it) == MathIterator::base_type(jt);

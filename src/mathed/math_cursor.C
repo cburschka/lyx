@@ -520,30 +520,6 @@ void MathCursor::erase()
 }
 
 
-void MathCursor::delLine()
-{
-	autocorrect_ = false;
-	macroModeClose();
-
-	if (selection_) {
-		selDel();
-		return;
-	}
-
-	if (par()->nrows() > 1) {
-		// grid are the only things with more than one row...
-		lyx::Assert(par()->asGridInset());
-		par()->asGridInset()->delRow(hullRow());
-	}
-
-	if (idx() >= par()->nargs())
-		idx() = par()->nargs() - 1;
-
-	if (pos() > size())
-		pos() = size();
-}
-
-
 bool MathCursor::up(bool sel)
 {
 	dump("up 1");
@@ -807,6 +783,13 @@ MathHullInset * MathCursor::enclosingHull(MathCursor::idx_type & idx) const
 }
 
 
+void MathCursor::popToHere(MathInset const * p)
+{
+	while (depth() && Cursor_.back().par_ != p)
+		Cursor_.pop_back();
+}
+
+
 void MathCursor::popToEnclosingGrid()
 {
 	while (depth() && !Cursor_.back().par_->asGridInset())
@@ -971,57 +954,6 @@ void MathCursor::idxPrev()
 {
 	par()->idxPrev(idx(), pos());
 }
-
-
-void MathCursor::splitCell()
-{
-	if (idx() + 1 == par()->nargs())
-		return;
-	MathArray ar = array();
-	ar.erase(0, pos());
-	array().erase(pos(), size());
-	++idx();
-	pos() = 0;
-	array().insert(0, ar);
-}
-
-
-void MathCursor::breakLine()
-{
-	// leave inner cells
-	while (popRight())
-		;
-
-	idx_type dummy;
-	MathHullInset * p = enclosingHull(dummy);
-	if (!p)
-		return;
-
-	if (p->getType() == "simple" || p->getType() == "equation") {
-		p->mutate("eqnarray");
-		idx() = 1;
-		pos() = 0;
-	} else {
-		p->addRow(hullRow());
-
-		// split line
-		const row_type r = hullRow();
-		for (col_type c = hullCol() + 1; c < p->ncols(); ++c)
-			std::swap(p->cell(p->index(r, c)), p->cell(p->index(r + 1, c)));
-
-		// split cell
-		splitCell();
-		std::swap(p->cell(idx()), p->cell(idx() + p->ncols() - 1));
-	}
-}
-
-
-//void MathCursor::readLine(MathArray & ar) const
-//{
-//	idx_type base = row() * par()->ncols();
-//	for (idx_type off = 0; off < par()->ncols(); ++off)
-//		ar.push_back(par()->cell(base + off));
-//}
 
 
 char MathCursor::valign() const
@@ -1637,7 +1569,6 @@ void MathCursor::handleExtern(const string & arg)
 	if (extra.empty())
 		extra = "noextra";
 
-
 	if (selection()) {
 		MathArray ar;
 		selGet(ar);
@@ -1690,10 +1621,13 @@ void MathCursor::handleExtern(const string & arg)
 		idxLineLast();
 		MathArray ar = cursor().cell();
 		lyxerr << "use cell: " << ar << "\n";
-		breakLine();
-		idxRight();
+#ifdef WITH_WARNINGS
+#warning temporarily disabled
+#endif
+		//breakLine();
+		//idxRight();
 		cursor().cell() = eq;
-		idxRight();
+		//idxRight();
 		cursor().cell() = pipeThroughExtern(lang, extra, ar);
 		idxLineLast();
 	}
@@ -1701,24 +1635,36 @@ void MathCursor::handleExtern(const string & arg)
 }
 
 
-int MathCursor::dispatch(FuncRequest const & cmd)
+MathInset::result_type MathCursor::dispatch(FuncRequest const & cmd)
 {
 	// try to dispatch to adajcent items if they are not editable
 	// actually, this should only happen for mouse clicks...
-	if (hasNextAtom() && !openable(nextAtom(), false))
-		if (int res = nextAtom().nucleus()->dispatch(cmd, 0, 0))
+	idx_type d1;
+	pos_type d2;
+	if (hasNextAtom() && !openable(nextAtom(), false)) {
+		MathInset::result_type res = nextAtom().nucleus()->dispatch(cmd, d1, d2);
+		if (res != MathInset::UNDISPATCHED)
 			return res;
-	if (hasPrevAtom() && !openable(prevAtom(), false))
-		if (int res = prevAtom().nucleus()->dispatch(cmd, 0, 0))
+	}
+	if (hasPrevAtom() && !openable(prevAtom(), false)) {
+		MathInset::result_type res = prevAtom().nucleus()->dispatch(cmd, d1, d2);
+		if (res != MathInset::UNDISPATCHED)
 			return res;
+	}
 
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		MathCursorPos & pos = Cursor_[i];
-		int const res = pos.par_->dispatch(cmd, pos.idx_, pos.pos_);
-		if (res)
+		MathInset::result_type const res
+			= pos.par_->dispatch(cmd, pos.idx_, pos.pos_);
+		if (res != MathInset::UNDISPATCHED) {
+			if (res == MathInset::DISPATCHED_POP) {
+				Cursor_.shrink(i + 1);
+				selClear();
+			}
 			return res;
+		}
 	}
-	return 0;
+	return MathInset::UNDISPATCHED;
 }
 
 

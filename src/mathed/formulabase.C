@@ -118,7 +118,7 @@ void InsetFormulaBase::mutateToText()
 		view_->owner()->getIntl()->getTransManager().TranslateAndInsert(*cit, lt);
 
 	// remove ourselves
-	//view_->owner()->getLyXFunc().dispatch(LFUN_ESCAPE);
+	//view_->owner()->dispatch(LFUN_ESCAPE);
 #endif
 }
 
@@ -299,7 +299,7 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 
 	if (button == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_RELEASE, x, y, 3)))
+		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_RELEASE, x, y, 3)))
 			return true;
 
 		// launch math panel for right mouse button
@@ -309,7 +309,7 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 
 	if (button == mouse_button::button1) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_RELEASE, x, y, 1)))
+		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_RELEASE, x, y, 1)))
 			return true;
 
 		// try to set the cursor
@@ -343,14 +343,14 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 		mathcursor->selClear();
 		mathcursor->setPos(x + xo_, y + yo_);
 
-		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_PRESS, x, y, 1))) {
+		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_PRESS, x, y, 1))) {
 			//delete mathcursor;
 			return;
 		}
 
 	}
 	if (button == mouse_button::button3) {
-		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_PRESS, x, y, 3))) {
+		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_PRESS, x, y, 3))) {
 			//delete mathcursor;
 			return;
 		}
@@ -366,11 +366,11 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 		return;
 
 	if (button == mouse_button::button1)
-		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_MOTION, x, y, 1)))
+		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_MOTION, x, y, 1)))
 			return;
 
 	if (button == mouse_button::button3)
-		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_MOTION, x, y, 3)))
+		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_MOTION, x, y, 3)))
 			return;
 
 	if (abs(x - first_x) < 2 && abs(y - first_y) < 2) {
@@ -393,7 +393,7 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 
 
 UpdatableInset::RESULT
-InsetFormulaBase::localDispatch(BufferView * bv, FuncRequest const & ev)
+InsetFormulaBase::localDispatch(FuncRequest const & ev)
 {
 	//lyxerr << "InsetFormulaBase::localDispatch: act: " << action
 	//	<< " arg: '" << arg
@@ -402,6 +402,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, FuncRequest const & ev)
 	if (!mathcursor)
 		return UNDISPATCHED;
 
+	BufferView * bv    = ev.view();
 	string argument    = ev.argument;
 	RESULT result      = DISPATCHED;
 	bool sel           = false;
@@ -414,6 +415,16 @@ InsetFormulaBase::localDispatch(BufferView * bv, FuncRequest const & ev)
 	mathcursor->touch();
 
 	switch (ev.action) {
+
+	case LFUN_MATH_NUMBER:
+	case LFUN_MATH_NONUMBER:
+	case LFUN_TABINSERT:
+	case LFUN_BREAKLINE:
+	case LFUN_DELETE_LINE_FORWARD:
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+		mathcursor->dispatch(ev);
+		updateLocal(bv, true);
+		break;
 
 	case LFUN_WORDRIGHTSEL:
 	case LFUN_RIGHTSEL:
@@ -475,12 +486,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, FuncRequest const & ev)
 		updateLocal(bv, false);
 		break;
 
-	case LFUN_DELETE_LINE_FORWARD:
-		bv->lockedInsetStoreUndo(Undo::DELETE);
-		mathcursor->delLine();
-		updateLocal(bv, true);
-		break;
-
 	case LFUN_TAB:
 		mathcursor->idxNext();
 		updateLocal(bv, false);
@@ -489,12 +494,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, FuncRequest const & ev)
 	case LFUN_SHIFT_TAB:
 		mathcursor->idxPrev();
 		updateLocal(bv, false);
-		break;
-
-	case LFUN_TABINSERT:
-		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->splitCell();
-		updateLocal(bv, true);
 		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
@@ -936,8 +935,8 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 			// always changing to mathrm when opening an inlined inset
 			// -- I really hate "LyXfunc overloading"...
 			if (display)
-				f->localDispatch(bv, FuncRequest(LFUN_MATH_DISPLAY));
-			f->localDispatch(bv, FuncRequest(LFUN_INSERT_MATH, arg));
+				f->localDispatch(FuncRequest(bv, LFUN_MATH_DISPLAY));
+			f->localDispatch(FuncRequest(bv, LFUN_INSERT_MATH, arg));
 		}
 	} else {
 		// create a macro if we see "\\newcommand" somewhere, and an ordinary
@@ -995,7 +994,7 @@ void mathDispatchMathDelim(BufferView * bv, string const & arg)
 	InsetFormula * f = new InsetFormula(bv);
 	if (openNewInset(bv, f)) {
 		f->mutate("simple");
-		bv->theLockingInset()->localDispatch(bv, FuncRequest(LFUN_MATH_DELIM, arg));
+		bv->theLockingInset()->localDispatch(FuncRequest(bv, LFUN_MATH_DELIM, arg));
 	}
 }
 
@@ -1007,7 +1006,7 @@ void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
 	InsetFormula * f = new InsetFormula(bv);
 	if (openNewInset(bv, f)) {
 		f->mutate("simple");
-		bv->theLockingInset()->localDispatch(bv, FuncRequest(LFUN_INSERT_MATRIX, arg));
+		bv->theLockingInset()->localDispatch(FuncRequest(bv, LFUN_INSERT_MATRIX, arg));
 	}
 }
 
@@ -1019,7 +1018,7 @@ void mathDispatchInsertMath(BufferView * bv, string const & arg)
 	InsetFormula * f = new InsetFormula(bv);
 	if (openNewInset(bv, f)) {
 		f->mutate("simple");
-    bv->theLockingInset()->localDispatch(bv, FuncRequest(LFUN_INSERT_MATH, arg));
+    bv->theLockingInset()->localDispatch(FuncRequest(bv, LFUN_INSERT_MATH, arg));
 	}
 }
 
@@ -1031,7 +1030,7 @@ void mathDispatchGreek(BufferView * bv, string const & arg)
 	InsetFormula * f = new InsetFormula(bv);
 	if (openNewInset(bv, f)) {
 		f->mutate("simple");
-		bv->theLockingInset()->localDispatch(bv, FuncRequest(LFUN_GREEK, arg));
+		bv->theLockingInset()->localDispatch(FuncRequest(bv, LFUN_GREEK, arg));
 		bv->unlockInset(f);
 	}
 }

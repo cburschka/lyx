@@ -23,7 +23,6 @@
 #include "toc.h"
 #include "buffer.h"
 #include "frontends/LyXView.h"
-#include "lyxfunc.h"
 #include "LyXAction.h"
 #include "paragraph.h"
 #include "insets/insetfloat.h"
@@ -46,7 +45,7 @@ string const TocItem::asString() const
 void TocItem::goTo(LyXView & lv_) const
 {
 	string const tmp = tostr(par->id());
-	lv_.getLyXFunc().dispatch(FuncRequest(LFUN_GOTO_PARAGRAPH, tmp));
+	lv_.dispatch(FuncRequest(LFUN_GOTO_PARAGRAPH, tmp));
 }
 
 

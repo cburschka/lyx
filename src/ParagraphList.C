@@ -65,14 +65,15 @@ ParagraphList::iterator::operator--(int)
 
 
 bool operator==(ParagraphList::iterator const & i1,
-		ParagraphList::iterator const & i2)
+                ParagraphList::iterator const & i2)
 {
-	return &(*const_cast<ParagraphList::iterator&>(i1)) == &(*const_cast<ParagraphList::iterator&>(i2));
+	return &(*const_cast<ParagraphList::iterator&>(i1))
+	    == &(*const_cast<ParagraphList::iterator&>(i2));
 }
 
 
 bool operator!=(ParagraphList::iterator const & i1,
-		ParagraphList::iterator const & i2)
+                ParagraphList::iterator const & i2)
 {
 	return !(i1 == i2);
 }
@@ -121,6 +122,21 @@ ParagraphList::iterator ParagraphList::end() const
 void ParagraphList::set(Paragraph * p)
 {
 	parlist = p;
+}
+
+
+void ParagraphList::push_back(Paragraph * p)
+{
+	if (!parlist) {
+		parlist = p;
+		return;
+	}
+
+	Paragraph * pos = parlist;
+	while (pos->next())
+		pos = pos->next();
+	pos->next(p);
+	p->previous(pos);
 }
 
 

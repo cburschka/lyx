@@ -251,55 +251,19 @@ vector<string> const InsetFormula::getLabelList() const
 
 
 UpdatableInset::RESULT
-InsetFormula::localDispatch(BufferView * bv, FuncRequest const & ev)
+InsetFormula::localDispatch(FuncRequest const & ev)
 {
 	RESULT result = DISPATCHED;
+	BufferView *bv = ev.view();
 
 	switch (ev.action) {
-
-		case LFUN_BREAKLINE:
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			mathcursor->breakLine();
-			mathcursor->normalize();
-			updateLocal(bv, true);
-			break;
-
-		case LFUN_MATH_NUMBER:
-		{
-			if (!hull())
-				break;
-			//lyxerr << "toggling all numbers\n";
-			if (display()) {
-				bv->lockedInsetStoreUndo(Undo::INSERT);
-				bool old = par()->numberedType();
-				for (MathInset::row_type row = 0; row < par_->nrows(); ++row)
-					hull()->numbered(row, !old);
-				bv->owner()->message(old ? _("No number") : _("Number"));
-				updateLocal(bv, true);
-			}
-			break;
-		}
-
-		case LFUN_MATH_NONUMBER:
-		{
-			//lyxerr << "toggling line number\n";
-			if (display()) {
-				bv->lockedInsetStoreUndo(Undo::INSERT);
-				MathCursor::row_type row = mathcursor->hullRow();
-				bool old = hull()->numbered(row);
-				bv->owner()->message(old ? _("No number") : _("Number"));
-				hull()->numbered(row, !old);
-				updateLocal(bv, true);
-			}
-			break;
-		}
 
 		case LFUN_INSERT_LABEL:
 		{
 			if (!hull())
 				break;
 
-			bv->lockedInsetStoreUndo(Undo::INSERT);
+			bv->lockedInsetStoreUndo(Undo::EDIT);
 
 			MathCursor::row_type row = mathcursor->hullRow();
 			string old_label = hull()->label(row);
@@ -383,7 +347,7 @@ InsetFormula::localDispatch(BufferView * bv, FuncRequest const & ev)
 		}
 
 		default:
-			result = InsetFormulaBase::localDispatch(bv, ev);
+			result = InsetFormulaBase::localDispatch(ev);
 	}
 
 	return result;

@@ -21,19 +21,20 @@
 #include "frontends/LyXView.h"
 #include "bmtable.h"
 #include "debug.h"
-#include "support/lstrings.h"
-#include "lyxfunc.h"
 #include "funcrequest.h"
+#include "Lsstream.h"
 #include FORMS_H_LOCATION
 
 #include "delim.xbm"
 #include "delim0.xpm"
 #include "delim1.xpm"
 
+
 static int const delim_rversion[] = {
 	1,1,3,3,4,5,7,7,9,9,10,11,
 	13,13,14,15,16,17,19,19,20,21,22,23
 };
+
 
 static char const * delim_values[] = {
 	"(", ")", "lceil",  "rceil",  "uparrow",  "Uparrow",
@@ -87,14 +88,13 @@ void FormMathsDelim::build()
 
 void FormMathsDelim::apply()
 {
-	int const left = int(dialog_->radio_left->u_ldata);
-	int const right= int(dialog_->radio_right->u_ldata);
+	int const left  = int(dialog_->radio_left->u_ldata);
+	int const right = int(dialog_->radio_right->u_ldata);
 
-	ostringstream ost;
-	ost << delim_values[left] << ' ' << delim_values[right];
+	ostringstream os;
+	os << delim_values[left] << ' ' << delim_values[right];
 
-	lv_->getLyXFunc().
-		dispatch(FuncRequest(LFUN_MATH_DELIM, ost.str().c_str()), false);
+	lv_->dispatch(FuncRequest(LFUN_MATH_DELIM, os.str().c_str()));
 }
 
 

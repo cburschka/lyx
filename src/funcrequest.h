@@ -12,29 +12,35 @@
 #include "commandtags.h"
 #include "LString.h"
 
+class BufferView;
+
 /** 
  * This class encapsulates a LyX action and its argument
  * in order to pass it around easily.
  */
-struct FuncRequest {
-
-	FuncRequest()
-		: action(LFUN_UNKNOWN_ACTION)
-	{}
-
-	FuncRequest(kb_action act)
-		: action(act)
-	{}
-
-	FuncRequest(kb_action act, string const & arg)
-		: action(act), argument(arg)
-	{}
-
+class FuncRequest {
+public:
+	/// just for putting thes things in std::container
+	FuncRequest();
+	/// actions without extra argument
+	explicit FuncRequest(kb_action act);
+	/// actions with extra argument
+	FuncRequest(kb_action act, string const & arg);
+	/// actions without extra argument
+	FuncRequest(BufferView * view, kb_action act);
+	/// actions with extra argument
+	FuncRequest(BufferView * view, kb_action act, string const & arg);
 	/// for mouse events
-	FuncRequest(kb_action act, int ax, int ay, int aextra)
-		: action(act), argument(), x(ax), y(ay), extra(aextra)
-	{}
+	FuncRequest(BufferView * view, kb_action act, int ax, int ay, int aextra);
+	/// access to the view
+	BufferView * view() const;
+	/// access to the view
+	void setView(BufferView * view);
 
+private:
+	/// the BufferView we are talking to
+	BufferView * view_;
+public:  // should be private, too...
 	/// the action
 	kb_action action;
 	/// the action's string argument

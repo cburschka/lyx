@@ -545,7 +545,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	// we have to check this first
 	bool paste_internally = false;
 	if (button == mouse_button::button2 && bv_->getLyXText()->selection.set()) {
-		owner_->getLyXFunc().dispatch(LFUN_COPY);
+		owner_->dispatch(FuncRequest(LFUN_COPY));
 		paste_internally = true;
 	}
 
@@ -616,9 +616,9 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	// insert this
 	if (button == mouse_button::button2) {
 		if (paste_internally)
-			owner_->getLyXFunc().dispatch(LFUN_PASTE);
+			owner_->dispatch(FuncRequest(LFUN_PASTE));
 		else
-			owner_->getLyXFunc().dispatch(FuncRequest(LFUN_PASTESELECTION, "paragraph"));
+			owner_->dispatch(FuncRequest(LFUN_PASTESELECTION, "paragraph"));
 		selection_possible = false;
 		return;
 	}
@@ -3265,8 +3265,7 @@ void BufferView::Pimpl::smartQuote()
 
 	if (style->pass_thru ||
 		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
-		bv_->owner()->getLyXFunc().
-			dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
+		bv_->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 }
 
 
@@ -3288,7 +3287,7 @@ void BufferView::Pimpl::insertAndEditInset(Inset * inset)
 	if (insertInset(inset)) {
 		inset->edit(bv_);
 		if (gotsel)
-			owner_->getLyXFunc().dispatch(LFUN_PASTESELECTION);
+			owner_->dispatch(FuncRequest(LFUN_PASTESELECTION));
 	}
 	else
 		delete inset;

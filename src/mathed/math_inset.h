@@ -228,6 +228,13 @@ public:
 	virtual bool isRelOp() const { return false; }
 	/// -1: text mode, 1: math mode, 0 undecided
 	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE, VERBATIM_MODE};
+	/// Dispatch result codes, see inset/inset.h
+	enum result_type {
+		UNDISPATCHED = 0, DISPATCHED, DISPATCHED_NOUPDATE,
+		FINISHED, FINISHED_RIGHT, FINISHED_UP, FINISHED_DOWN,
+		DISPATCHED_POP
+	};
+
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
 	/// will this get written as a single block in {..}
 	virtual bool extraBraces() const { return false; }
@@ -281,7 +288,8 @@ public:
 	/// dump content to stderr for debugging
 	virtual void dump() const;
 	/// local dispatcher
-	virtual int dispatch(FuncRequest const & cmd, idx_type idx, pos_type pos);
+	virtual result_type dispatch
+		(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 
 	/// LyXInset stuff
 	/// write labels into a list

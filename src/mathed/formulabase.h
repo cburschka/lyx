@@ -89,7 +89,7 @@ public:
 	virtual void insetUnlock(BufferView *);
 
 	/// To allow transparent use of math editing functions
-	virtual RESULT localDispatch(BufferView *, FuncRequest const &);
+	virtual RESULT localDispatch(FuncRequest const &);
 
 	///
 	virtual std::vector<string> const getLabelList() const;

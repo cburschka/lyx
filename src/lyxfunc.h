@@ -17,6 +17,7 @@
 class LyXView;
 class LyXText;
 class FuncRequest;
+class BufferView;
 
 
 /** This class encapsulates all the LyX command operations.
@@ -71,6 +72,9 @@ public:
 	void handleKeyFunc(kb_action action);
 
 private:
+	///
+	BufferView * view() const;
+
 	///
 	LyXView * owner;
 	///

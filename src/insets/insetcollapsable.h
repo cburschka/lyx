@@ -95,7 +95,7 @@ public:
 	///
 	void insetMotionNotify(BufferView *, int, int, mouse_button::state);
 	///
-	UpdatableInset::RESULT localDispatch(BufferView *, FuncRequest const &);
+	RESULT localDispatch(FuncRequest const &);
 	///
 	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;

@@ -46,7 +46,9 @@ public:
 	bool display() const;
 	///
 	bool ams() const;
-	///
+	/// local dispatcher
+	result_type dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	/// 
 	void getLabelList(std::vector<string> &) const;
 	///
 	void validate(LaTeXFeatures & features) const;

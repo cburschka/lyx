@@ -9,8 +9,8 @@
 #include "debug.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "lyxfunc.h"
 #include "gettext.h"
+#include "funcrequest.h"
 
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
@@ -113,14 +113,13 @@ void LyXVC::registrer()
 			MakeDisplayPath(filename, 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
-			->getLyXFunc().dispatch(LFUN_MENUWRITE);
+			->dispatch(FuncRequest(LFUN_MENUWRITE));
 	}
 
 	// Maybe the save fails, or we answered "no". In both cases,
 	// the document will be dirty, and we abort.
-	if (!vcs->owner()->isClean()) {
+	if (!vcs->owner()->isClean())
 		return;
-	}
 
 	lyxerr[Debug::LYXVC] << "LyXVC: registrer" << endl;
 	pair<bool, string> tmp =
@@ -146,14 +145,13 @@ void LyXVC::checkIn()
 			MakeDisplayPath(vcs->owner()->fileName(), 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
-			->getLyXFunc().dispatch(LFUN_MENUWRITE);
+			->dispatch(FuncRequest(LFUN_MENUWRITE));
 	}
 
 	// Maybe the save fails, or we answered "no". In both cases,
 	// the document will be dirty, and we abort.
-	if (!vcs->owner()->isClean()) {
+	if (!vcs->owner()->isClean())
 		return;
-	}
 
 	lyxerr[Debug::LYXVC] << "LyXVC: checkIn" << endl;
 	pair<bool, string> tmp = Alert::askForText(_("LyX VC: Log Message"));

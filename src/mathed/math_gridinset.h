@@ -128,6 +128,8 @@ public:
 	MathGridInset * asGridInset() { return this; }
 	/// identifies GridInset
 	MathGridInset const * asGridInset() const { return this; }
+	/// local dispatcher
+	result_type dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 
 	///
 	col_type ncols() const;
@@ -219,6 +221,8 @@ protected:
 	string eocString(col_type col) const;
 	/// extract number of columns from alignment string
 	col_type guessColumns(string const & halign) const;
+	/// splits cells and shifts right part to the next cell
+	void splitCell(idx_type &, pos_type & pos);
 
 public:
 	/// row info

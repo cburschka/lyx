@@ -21,7 +21,6 @@
 #include "XFormsView.h"
 #include "lyxfunc.h"
 #include "FuncStatus.h"
-#include "BufferView.h"
 #include "buffer.h"
 #include "funcrequest.h"
 #include "MathsSymbols.h"

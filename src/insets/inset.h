@@ -512,7 +512,7 @@ public:
 					bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
-	virtual RESULT localDispatch(BufferView *, FuncRequest const & ev);
+	virtual RESULT localDispatch(FuncRequest const & ev);
 	///
 	bool isCursorVisible() const { return cursor_visible_; }
 	///

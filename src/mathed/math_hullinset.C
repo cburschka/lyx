@@ -11,6 +11,7 @@
 #include "debug.h"
 #include "frontends/Painter.h"
 #include "textpainter.h"
+#include "funcrequest.h"
 #include "Lsstream.h"
 #include "LaTeXFeatures.h"
 #include "support/LAssert.h"
@@ -645,3 +646,47 @@ void MathHullInset::check() const
 	lyx::Assert(nonum_.size() == nrows());
 	lyx::Assert(label_.size() == nrows());
 }
+
+
+MathInset::result_type MathHullInset::dispatch
+	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+{
+	switch (cmd.action) {
+
+		case LFUN_BREAKLINE:
+			if (type_ == "simple" || type_ == "equation") {
+				mutate("eqnarray");
+				idx = 1;
+				pos = 0;
+				return DISPATCHED_POP;
+			} 
+			return MathGridInset::dispatch(cmd, idx, pos);
+
+		case LFUN_MATH_NUMBER:
+			//lyxerr << "toggling all numbers\n";
+			if (display()) {
+				//bv->lockedInsetStoreUndo(Undo::INSERT);
+				bool old = numberedType();
+				for (row_type row = 0; row < nrows(); ++row)
+					numbered(row, !old);
+				//bv->owner()->message(old ? _("No number") : _("Number"));
+				//updateLocal(bv, true);
+			}
+			return DISPATCHED; 
+		
+		case LFUN_MATH_NONUMBER:	
+			if (display()) {
+				//bv->lockedInsetStoreUndo(Undo::INSERT);
+				bool old = numbered(row(idx));
+				//bv->owner()->message(old ? _("No number") : _("Number"));
+				numbered(row(idx), !old);
+				//updateLocal(bv, true);
+			}
+			return DISPATCHED; 
+
+		default:
+			return UNDISPATCHED; 
+	}
+	return UNDISPATCHED;
+}
+

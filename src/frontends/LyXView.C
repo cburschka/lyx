@@ -22,6 +22,7 @@
 #include "MenuBackend.h"
 #include "gettext.h"
 #include "lyxfunc.h"
+#include "funcrequest.h"
 #include "lyx_cb.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
@@ -169,4 +170,13 @@ void LyXView::updateWindowTitle()
 		setWindowTitle(title, icon_title);
 		last_title = title;
 	}
+}
+
+
+void LyXView::dispatch(FuncRequest const & req)
+{
+	// substitute the correct BufferView here
+	FuncRequest r = req;
+	r.setView(view().get());
+	getLyXFunc().dispatch(r); 
 }

@@ -28,7 +28,6 @@
 #include "lyxfont.h"
 #include "lyxcursor.h"
 #include "lyxfind.h"
-#include "lyxfunc.h"
 #include "lyxlex.h"
 #include "lyxrow.h"
 #include "lyxrc.h"
@@ -1036,7 +1035,7 @@ void InsetText::insetButtonPress(BufferView * bv,
 	if (bv->theLockingInset()) {
 		if (isHighlyEditableInset(inset)) {
 			// We just have to lock the inset before calling a
-			// PressFuncRequest on it!
+			// PressEvent on it!
 			UpdatableInset * uinset = static_cast<UpdatableInset*>(inset);
 			if (!bv->lockInset(uinset)) {
 				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
@@ -1050,7 +1049,7 @@ void InsetText::insetButtonPress(BufferView * bv,
 	if (!inset) { // && (button == mouse_button::button2)) {
 		bool paste_internally = false;
 		if ((button == mouse_button::button2) && getLyXText(bv)->selection.set()) {
-			localDispatch(bv, FuncRequest(LFUN_COPY));
+			localDispatch(FuncRequest(bv, LFUN_COPY));
 			paste_internally = true;
 		}
 		bool clear = false;
@@ -1089,9 +1088,9 @@ void InsetText::insetButtonPress(BufferView * bv,
 		// insert this
 		if (button == mouse_button::button2) {
 			if (paste_internally)
-				localDispatch(bv, FuncRequest(LFUN_PASTE));
+				localDispatch(FuncRequest(bv, LFUN_PASTE));
 			else
-				localDispatch(bv, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
+				localDispatch(FuncRequest(bv, LFUN_PASTESELECTION, "paragraph"));
 		}
 	} else {
 		getLyXText(bv)->clearSelection();
@@ -1169,12 +1168,12 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::s
 
 
 UpdatableInset::RESULT
-InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
+InsetText::localDispatch(FuncRequest const & ev)
 {
+	BufferView * bv = ev.view();
 	bool was_empty = (paragraphs.begin()->empty() && !paragraphs.begin()->next());
 	no_selection = false;
-	UpdatableInset::RESULT
-		result= UpdatableInset::localDispatch(bv, ev);
+	RESULT result= UpdatableInset::localDispatch(ev);
 	if (result != UNDISPATCHED)
 		return DISPATCHED;
 
@@ -1183,7 +1182,7 @@ InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 		return FINISHED;
 
 	if (the_locking_inset) {
-		result = the_locking_inset->localDispatch(bv, ev);
+		result = the_locking_inset->localDispatch(ev);
 		if (result == DISPATCHED_NOUPDATE)
 			return result;
 		else if (result == DISPATCHED) {
@@ -1453,7 +1452,7 @@ InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 			// see if we found the layout number:
 			if (!hasLayout) {
 				FuncRequest lf(LFUN_MESSAGE, N_("Layout ") + ev.argument + N_(" not known"));
-				bv->owner()->getLyXFunc().dispatch(lf);
+				bv->owner()->dispatch(lf);
 				break;
 			}
 

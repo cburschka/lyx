@@ -445,10 +445,10 @@ int InsetERT::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-UpdatableInset::RESULT
-InsetERT::localDispatch(BufferView * bv, FuncRequest const & ev)
+UpdatableInset::RESULT InsetERT::localDispatch(FuncRequest const & ev)
 {
 	UpdatableInset::RESULT result = DISPATCHED_NOUPDATE;
+	BufferView * bv = ev.view();
 
 	if (inset.paragraph()->empty()) {
 		set_latex_font(bv);
@@ -459,7 +459,7 @@ InsetERT::localDispatch(BufferView * bv, FuncRequest const & ev)
 		bv->owner()->setLayout(inset.paragraph()->layout()->name());
 		break;
 	default:
-		result = InsetCollapsable::localDispatch(bv, ev);
+		result = InsetCollapsable::localDispatch(ev);
 	}
 	switch (ev.action) {
 	case LFUN_BREAKPARAGRAPH:

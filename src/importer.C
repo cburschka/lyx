@@ -19,7 +19,7 @@
 #include "importer.h"
 #include "converter.h"
 #include "frontends/LyXView.h"
-#include "lyxfunc.h"
+#include "funcrequest.h"
 
 #include "bufferlist.h"
 #include "support/filetools.h"
@@ -78,7 +78,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 			: ChangeExtension(filename,
 					  formats.extension(loader_format));
 		InsertAsciiFile(lv->view().get(), filename2, as_paragraphs);
-		lv->getLyXFunc().dispatch(LFUN_MARK_OFF);
+		lv->dispatch(FuncRequest(LFUN_MARK_OFF));
 	}
 
 	// we are done

@@ -123,6 +123,7 @@ lyx_SOURCES = \
 	gettext.C \
 	gettext.h \
 	funcrequest.h \
+	funcrequest.C \
 	importer.C \
 	importer.h \
 	intl.C \

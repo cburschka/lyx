@@ -72,7 +72,7 @@ public:
 	///
 	bool insetAllowed(Inset::Code code) const;
 	///
-	virtual RESULT localDispatch(BufferView *, FuncRequest const &);
+	virtual RESULT localDispatch(FuncRequest const &);
 	///
 	std::vector<string> const getLabelList() const;
 	///

@@ -1,7 +1,6 @@
 #include <config.h>
 
 #include "ref_inset.h"
-#include "math_cursor.h"
 #include "funcrequest.h"
 #include "formulabase.h"
 #include "BufferView.h"
@@ -36,33 +35,32 @@ void RefInset::infoize(std::ostream & os) const
 }
 
 
-int RefInset::dispatch(FuncRequest const & cmd, idx_type, pos_type)
+MathInset::result_type
+RefInset::dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
 	switch (cmd.action) {
 		case LFUN_MOUSE_RELEASE:
 			if (cmd.extra == 3) {
 				lyxerr << "trying to goto ref" << cell(0) << "\n";
-				mathcursor->formula()->view()->owner()->getLyXFunc().
-					dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
-				return 1; // dispatched
+				cmd.view()->dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
+				return DISPATCHED;
 			}
 			if (cmd.extra == 1) {
 				lyxerr << "trying to open ref" << cell(0) << "\n";
 				// Eventually trigger dialog with button 3 not 1
-		//		mathcursor->formula()->view()->owner()->getDialogs()
-		//			->showRef(this);
-				return 1; // dispatched
+		//	cmd.view()->owner()->getDialogs()->showRef(this);
+				return DISPATCHED;
 			}
 			break;
 		case LFUN_MOUSE_PRESS:	
 		case LFUN_MOUSE_MOTION:
 			// eat other mouse commands
-			return 1;
+			return DISPATCHED;
 		default:
 			break;
 	}
 	// not our business
-	return 0;
+	return UNDISPATCHED;
 }
 
 

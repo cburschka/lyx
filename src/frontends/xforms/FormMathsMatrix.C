@@ -22,7 +22,6 @@
 #include "Dialogs.h"
 #include "frontends/LyXView.h"
 #include "Lsstream.h"
-#include "lyxfunc.h"
 #include "funcrequest.h"
 #include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
@@ -97,11 +96,10 @@ void FormMathsMatrix::apply()
 	int const nx = int(fl_get_slider_value(dialog_->slider_columns) + 0.5);
 	int const ny = int(fl_get_slider_value(dialog_->slider_rows) + 0.5);
 
-	ostringstream ost;
-	ost << nx << ' ' << ny << ' ' << c << ' ' << sh;
+	ostringstream os;
+	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
 
-	lv_->getLyXFunc().
-		dispatch(FuncRequest(LFUN_INSERT_MATRIX, ost.str().c_str()));
+	lv_->dispatch(FuncRequest(LFUN_INSERT_MATRIX, os.str().c_str()));
 }
 
 
@@ -124,7 +122,7 @@ bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 
 int FormMathsMatrix::AlignFilter(char const * cur, int c)
 {
-	size_t len = strlen(cur);
+	size_t const len = strlen(cur);
 
 	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5)
 		- int(len)

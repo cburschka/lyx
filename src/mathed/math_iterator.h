@@ -18,6 +18,7 @@ public:
 	using base_type::back;
 	using base_type::begin;
 	using base_type::end;
+	using base_type::erase;
 	using base_type::operator[];
 	using base_type::size_type;
 	using base_type::difference_type;
@@ -45,6 +46,8 @@ public:
 	void goEnd();
 	/// read access to top most item
 	MathArray const & cell() const;
+	/// shrinks to at most i levels
+	void shrink(size_type i);
 
 private:
 	/// own level down

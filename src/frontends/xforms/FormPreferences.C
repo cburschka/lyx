@@ -22,7 +22,6 @@
 #include "frontends/LyXView.h"
 #include "language.h"
 #include "frnt_lang.h"
-#include "lyxfunc.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "LColor.h"
@@ -132,7 +131,7 @@ void FormPreferences::ok()
 		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
 	}
 
-	lv_->getLyXFunc().dispatch(LFUN_SAVEPREFERENCES);
+	lv_->dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
 }
 
 
@@ -437,7 +436,7 @@ void FormPreferences::Colors::apply()
 
 			string const s = lcolor.getLyXName(lc) + string(" ") +
 				hexname;
-			parent_.lv_->getLyXFunc().dispatch(FuncRequest(LFUN_SET_COLOR, s));
+			parent_.lv_->dispatch(FuncRequest(LFUN_SET_COLOR, s));
 		}
 	}
 }
@@ -744,8 +743,7 @@ void FormPreferences::Colors::LoadBrowserLyX()
 			       << "\". Set to \"black\"!" << endl;
 
 			string const arg = lcolor.getLyXName(lc) + " black";
-			parent_.lv_->getLyXFunc().
-				dispatch(FuncRequest(LFUN_SET_COLOR, arg));
+			parent_.lv_->dispatch(FuncRequest(LFUN_SET_COLOR, arg));
 			continue;
 		}
 
@@ -2557,7 +2555,7 @@ void FormPreferences::ScreenFonts::apply() const
 	if (changed) {
 		// Now update the buffers
 		// Can anything below here affect the redraw process?
-		parent_.lv_->getLyXFunc().dispatch(LFUN_SCREEN_FONT_UPDATE);
+		parent_.lv_->dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 	}
 }
 

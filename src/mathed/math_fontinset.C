@@ -5,14 +5,12 @@
 #endif
 
 #include "math_fontinset.h"
-#include "debug.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"
 #include "math_parser.h"
 #include "LaTeXFeatures.h"
 #include "textpainter.h"
-#include "frontends/Painter.h"
 
 
 
@@ -47,8 +45,6 @@ void MathFontInset::metrics(MathMetricsInfo & mi) const
 
 void MathFontInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "MathFontInset::draw\n";
-	//MathNestInset::draw(pi, x, y);
 	MathFontSetChanger dummy(pi.base, key_->name.c_str());
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
@@ -63,7 +59,6 @@ void MathFontInset::metricsT(TextMetricsInfo const & mi) const
 
 void MathFontInset::drawT(TextPainter & pain, int x, int y) const
 {
-	//lyxerr << "drawing font code: " << code_ << '\n';
 	cell(0).drawT(pain, x, y);
 }
 

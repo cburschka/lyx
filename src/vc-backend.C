@@ -9,7 +9,7 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "frontends/LyXView.h"
-#include "lyxfunc.h"
+#include "funcrequest.h"
 
 #include "support/FileInfo.h"
 #include "support/path.h"
@@ -159,7 +159,7 @@ void RCS::registrer(string const & msg)
 	cmd += OnlyFilename(owner_->fileName());
 	cmd += "\"";
 	doVCCommand(cmd, owner_->filePath());
-	owner_->getUser()->owner()->getLyXFunc().dispatch(LFUN_MENURELOAD);
+	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
 
@@ -167,7 +167,7 @@ void RCS::checkIn(string const & msg)
 {
 	doVCCommand("ci -q -u -m\"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
-	owner_->getUser()->owner()->getLyXFunc().dispatch(LFUN_MENURELOAD);
+	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
 
@@ -176,7 +176,7 @@ void RCS::checkOut()
 	owner_->markClean();
 	doVCCommand("co -q -l \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
-	owner_->getUser()->owner()->getLyXFunc().dispatch(LFUN_MENURELOAD);
+	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
 
@@ -186,8 +186,7 @@ void RCS::revert()
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
 	// We ignore changes and just reload!
 	owner_->markClean();
-	owner_->getUser()->owner()
-		->getLyXFunc().dispatch(LFUN_MENURELOAD);
+	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
 
@@ -289,7 +288,7 @@ void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
-	owner_->getUser()->owner()->getLyXFunc().dispatch(LFUN_MENURELOAD);
+	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
 
@@ -298,7 +297,7 @@ void CVS::checkIn(string const & msg)
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"",
 		    owner_->filePath());
-	owner_->getUser()->owner()->getLyXFunc().dispatch(LFUN_MENURELOAD);
+	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
 
@@ -318,8 +317,7 @@ void CVS::revert()
 	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + "\"",
 		    owner_->filePath());
 	owner_->markClean();
-	owner_->getUser()->owner()
-		->getLyXFunc().dispatch(LFUN_MENURELOAD);
+	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
 

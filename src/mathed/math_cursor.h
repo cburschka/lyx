@@ -99,8 +99,6 @@ public:
 	///
 	void niceInsert(MathAtom const &);
 
-	///
-	void delLine();
 	/// in pixels from top of screen
 	void setPos(int x, int y);
 	/// in pixels from top of screen
@@ -115,6 +113,8 @@ public:
 	void popToEnclosingGrid();
 	/// go up to the hull inset
 	void popToEnclosingHull();
+	/// go up to the hull inset
+	void popToHere(MathInset const * p);
 	///
 	InsetFormulaBase * formula() const;
 	/// current offset in the current cell
@@ -169,12 +169,6 @@ public:
 	void drawSelection(MathPainterInfo & pain) const;
 	///
 	void handleNest(MathAtom const & at);
-	/// splits cells and shifts right part to the next cell
-	void splitCell();
-	/// splits line and insert new row of cell
-	void breakLine();
-	/// read contents of line into an array
-	void readLine(MathArray & ar) const;
 	/// remove this as soon as LyXFunc::getStatus is "localized"
 	string getLastCode() const { return "mathnormal"; }
 	///
@@ -238,7 +232,7 @@ public:
 	unsigned depth() const;
 
 	/// local dispatcher
-	int dispatch(FuncRequest const & cmd);
+	MathInset::result_type dispatch(FuncRequest const & cmd);
 	/// describe the situation
 	string info() const;
 	/// dump selection information for debugging

@@ -94,7 +94,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const {}
 	///
-	UpdatableInset::RESULT localDispatch(BufferView *, FuncRequest const &);
+	RESULT localDispatch(FuncRequest const &);
 	///
 	bool checkInsertChar(LyXFont &);
 	///

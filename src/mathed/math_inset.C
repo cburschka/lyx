@@ -265,9 +265,10 @@ int MathInset::docbook(std::ostream &, bool) const
 }
 
 
-int MathInset::dispatch(FuncRequest const &, idx_type, pos_type) 
+MathInset::result_type
+	MathInset::dispatch(FuncRequest const &, idx_type &, pos_type &) 
 {
-	return 0; // undispatched
+	return UNDISPATCHED;
 }
 
 
