@@ -174,7 +174,10 @@ Point coordOffset(DocIterator const & dit)
 		y += par.rows()[rit].height();
 	y += par.rows()[par.pos2row(sl.pos())].ascent();
 	x += dit.bottom().text()->cursorX(dit.bottom());
-	return Point(x,y);
+	// The following correction should not be there at all.
+	// The cusor looks much better with the -1, though.
+	--x;
+	return Point(x, y);
 }
 
 

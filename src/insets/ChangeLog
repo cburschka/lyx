@@ -1,3 +1,9 @@
+2005-02-13  André Pönitz  <poenitz@gmx.net>
+
+	* insettext.[Ch] (border_): new 
+	* insettext.C (metrics, draw, drawFrame, clearInset, getCursorPos):
+	use border_
+
 2005-02-14  Angus Leeming  <leeming@lyx.org>
 
 	* insetlatexaccent.C (draw): squash a couple of MSVC warnings

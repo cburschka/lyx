@@ -165,6 +165,8 @@ private:
 	int frame_color_;
 	///
 	mutable lyx::pit_type old_pit;
+	///
+	static int border_;
 public:
 	///
 	mutable LyXText text_;

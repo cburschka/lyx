@@ -70,6 +70,9 @@ using std::ostream;
 using std::vector;
 
 
+int InsetText::border_ = 2;
+
+
 InsetText::InsetText(BufferParams const & bp)
 	: drawFrame_(false), frame_color_(LColor::insetframe), text_(0)
 {
@@ -92,7 +95,8 @@ InsetText::InsetText(InsetText const & in)
 }
 
 
-InsetText::InsetText() : text_(0)
+InsetText::InsetText()
+	: text_(0)
 {}
 
 
@@ -168,9 +172,14 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
 	setViewCache(mi.base.bv);
+	mi.base.textwidth -= 2 * border_;
 	font_ = mi.base.font;
 	text_.font_ = mi.base.font;
 	text_.metrics(mi, dim);
+	dim.asc += border_;
+	dim.des += border_;
+	dim.wid += 2 * border_;
+	mi.base.textwidth += 2 * border_;
 	dim_ = dim;
 }
 
@@ -185,10 +194,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	bv->hideCursor();
 
 	x += scroll();
-	//y -= text_.ascent();
-
-
-	text_.draw(pi, x, y);
+	text_.draw(pi, x + border_, y);
 
 	if (drawFrame_)
 		drawFrame(pi.pain, x, y);
@@ -206,18 +212,18 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 
 void InsetText::drawFrame(Painter & pain, int x, int y) const
 {
-	int const w = max(1, text_.width());
-	int const h = text_.height();
-	int const a = text_.ascent();
+	int const w = text_.width() + border_;
+	int const a = text_.ascent() + border_;
+	int const h = a + text_.descent() + border_;
 	pain.rectangle(x, y - a, w, h, frameColor());
 }
 
 
 void InsetText::clearInset(Painter & pain, int x, int y) const
 {
-	int const w = text_.width();
-	int const h = text_.height();
-	int const a = text_.ascent();
+	int const w = text_.width() + border_;
+	int const a = text_.ascent() + border_;
+	int const h = a + text_.descent() + border_;
 	pain.fillRectangle(x, y - a, w, h, backgroundColor());
 }
 
@@ -356,7 +362,7 @@ void InsetText::validate(LaTeXFeatures & features) const
 
 void InsetText::getCursorPos(CursorSlice const & sl, int & x, int & y) const
 {
-	x = text_.cursorX(sl);
+	x = text_.cursorX(sl) + border_;
 	y = text_.cursorY(sl);
 }
 

@@ -5,6 +5,10 @@
 
 2005-02-13  André Pönitz  <poenitz@gmx.net>
 
+	* bufferview_funcs.C (coordOffset): improve cursor drawing
+
+2005-02-13  André Pönitz  <poenitz@gmx.net>
+
 	* Cursor.[Ch] (fixIfBroken): new method, try to fix a broken cursor
 	* Cursor.C (dispatch): use fixIfBroken
 	* lyxfunc.C (getStatus): use fixIfBroken
