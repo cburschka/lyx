@@ -1,3 +1,8 @@
+2004-06-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetfloatlist.C (latex,getScreenLabel): translate according to
+	the document language (bug #1312)
+
 2004-06-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ExternalSupport.[Ch] (doSubstitution): exchange filename argument

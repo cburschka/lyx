@@ -51,7 +51,7 @@ string const InsetFloatList::getScreenLabel(Buffer const & buf) const
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	FloatList::const_iterator it = floats[getCmdName()];
 	if (it != floats.end())
-		return _(it->second.listName());
+		return buf.B_(it->second.listName());
 	else
 		return _("ERROR: Nonexistent float type!");
 }
@@ -113,7 +113,7 @@ int InsetFloatList::latex(Buffer const & buf, ostream & os,
 			}
 		} else {
 			os << "\\listof{" << getCmdName() << "}{"
-			   << cit->second.listName() << "}\n";
+			   << buf.B_(cit->second.listName()) << "}\n";
 		}
 	} else {
 		os << "%%\\listof{" << getCmdName() << "}{"

@@ -436,6 +436,16 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 		/GuiName/ { \
 			line=$$0; \
 			sub(/[[:space:]]*GuiName[[:space:]]*/, "", line); \
+			gsub(/"/, "", line); \
+			fna=FILENAME;\
+			sub("(\\.\\./)+", "", fna);\
+			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
+				fna, FNR, line); \
+		} \
+		/ListName/ { \
+			line=$$0; \
+			sub(/[[:space:]]*ListName[[:space:]]*/, "", line); \
+			gsub(/"/, "", line); \
 			fna=FILENAME;\
 			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
