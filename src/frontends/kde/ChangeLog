@@ -1,3 +1,8 @@
+2001-03-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormParagraph.C: changes associated with Lars' creation of a
+	params struct, needed to get the class to compile once again.
+
 2001-02-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* <various>: remove noncopyable (now inherited from DialogBase)
