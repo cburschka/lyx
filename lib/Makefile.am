@@ -15,7 +15,7 @@ HELP = help/*.hlp
 IMAGES = images/*.xpm images/math/*.xpm
 KBD = kbd/*.kmap kbd/*.cdef
 LAYOUT = layouts/*.layout layouts/*.inc
-LYXSCRIPTS = configure configure.cmd scripts/*
+LYXSCRIPTS = configure configure.cmd scripts/* lyx2lyx/*
 TEMPL = templates/*.lyx
 TEXSUPPORT = tex/*.cls tex/*.sty
 UI = ui/*.ui
@@ -30,7 +30,7 @@ pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
 	       textclass.lst packages.lst external_templates \
 	       encodings languages symbols
 
-LYXLIBDIRS = bind clipart doc examples help images images/math kbd layouts scripts \
+LYXLIBDIRS = bind clipart doc examples help images images/math kbd layouts lyx2lyx scripts \
 	     templates tex ui
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
