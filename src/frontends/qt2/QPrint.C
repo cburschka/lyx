@@ -60,52 +60,28 @@ void QPrint::update_contents()
 
 	dialog_->reverseCB->setChecked(pp.reverse_order);
 
-	QRadioButton * button;
-	switch (pp.which_pages) {
-		case PrinterParams::ALL: button = dialog_->allRB; break;
-		case PrinterParams::ODD: button = dialog_->oddRB; break;
-		case PrinterParams::EVEN: button = dialog_->evenRB; break;
-	}
-	button->setChecked(true);
-
-	// hmmm... maybe a bit weird but maybe not
-	// we might just be remembering the last
-	// time this was printed.
-	if (!pp.from_page.empty()) {
-		dialog_->fromED->setText(pp.from_page.c_str());
-
-		dialog_->toED->setText("");
-		if (pp.to_page)
-			dialog_->toED->setText(tostr(pp.to_page).c_str());
-	} else {
-		dialog_->fromED->setText("");
-		dialog_->toED->setText("");
-	}
-
 	dialog_->copiesSB->setValue(pp.count_copies);
+ 
+	dialog_->oddCB->setChecked(pp.odd_pages);
+	dialog_->evenCB->setChecked(pp.even_pages);
+ 
+	if (pp.all_pages) {
+		dialog_->allRB->setChecked(true);
+		return;
+	}
+
+	dialog_->rangeRB->setChecked(true);
+ 
+	QString s;
+	s.setNum(pp.from_page);
+	dialog_->fromED->setText(s);
+	s.setNum(pp.to_page);
+	dialog_->toED->setText(s);
 }
 
 
 void QPrint::apply()
 {
-	PrinterParams::WhichPages wp;
-
-	if (dialog_->allRB->isChecked())
-		wp = PrinterParams::ALL;
-	else if (dialog_->oddRB->isChecked())
-		wp = PrinterParams::ODD;
-	else
-		wp = PrinterParams::EVEN;
-
-	string from;
-	int to(0);
-	if (!dialog_->fromED->text().isEmpty()) {
-		// we have at least one page requested
-		from = dialog_->fromED->text().latin1();
-		if (!dialog_->toED->text().isEmpty())
-			to = strToInt(dialog_->toED->text().latin1());
-	}
-
 	PrinterParams::Target t = PrinterParams::PRINTER;
 	if (dialog_->fileRB->isChecked())
 		t = PrinterParams::FILE;
@@ -113,10 +89,14 @@ void QPrint::apply()
 	PrinterParams const pp(t,
 		dialog_->printerED->text().latin1(),
 		dialog_->fileED->text().latin1(),
-		wp, from, to,
-		dialog_->reverseCB->isChecked(),
-		!dialog_->collateCB->isChecked(),
-		strToInt(dialog_->copiesSB->text().latin1()));
+		dialog_->allRB->isChecked(), 
+		dialog_->fromED->text().toUInt(),
+		dialog_->toED->text().toUInt(), 
+		dialog_->oddCB->isChecked(),
+		dialog_->evenCB->isChecked(),
+		dialog_->copiesSB->text().toUInt(),
+		dialog_->collateCB->isChecked(),
+		dialog_->reverseCB->isChecked());
 
 	controller().params() = pp;
 }
