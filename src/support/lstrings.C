@@ -23,6 +23,7 @@
 #include "lstrings.h"
 #include "LRegex.h"
 #include "LAssert.h"
+#include "debug.h"
 
 using std::count;
 using std::transform;
