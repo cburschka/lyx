@@ -13,7 +13,7 @@
 
 namespace {
 
-string const getAlign(short int type, int cols)
+string getAlign(MathInsetTypes type, int cols)
 {
 	string align;
 	switch (type) {
@@ -79,7 +79,9 @@ int firstRelOp(MathArray const & array)
 
 MathMatrixInset::MathMatrixInset(MathInsetTypes t)
 	: MathGridInset(getCols(t), 1, "formula"), objtype_(t), nonum_(1), label_(1)
-{}
+{
+	halign(getAlign(t, ncols()));
+}
 
 
 MathMatrixInset::MathMatrixInset()
