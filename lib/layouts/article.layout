@@ -28,6 +28,7 @@ Style Part
 	EndFont
 End
 
+
 Style Part*
 	Align                 Left
 	AlignPossible         Left
@@ -37,4 +38,22 @@ Style Part*
 	Font
 	  Size                Larger
 	EndFont
+End
+
+
+Style Section
+	LabelString           "\arabic{section}"
+	LabelStringAppendix   "\Alph{section}"
+End
+
+
+Style Subsection
+	LabelString           "@Section@.\arabic{subsection}"
+	LabelStringAppendix   "@Section@.\arabic{subsection}"
+End
+
+
+Style Subsubsection
+	LabelString           "@Subsection@.\arabic{subsubsection}"
+	LabelStringAppendix   "@Subsection@.\arabic{subsubsection}"
 End

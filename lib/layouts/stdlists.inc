@@ -6,7 +6,7 @@
 
 # This include files contains various standard environments for lists.
 
-# Itemize style definition
+
 Style Itemize
 	Margin                Static
 	LatexType             Item_Environment
@@ -20,11 +20,11 @@ Style Itemize
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelString           *
 End
 
-# Enumerate style definition
+
 Style Enumerate
 	Margin                Static
 	LatexType             Item_Environment
@@ -39,10 +39,10 @@ Style Enumerate
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_EnumI
+	LabelType             Enumerate
 End
 
-# Description style definition
+
 Style Description
 	Margin                First_Dynamic
 	LatexType             Item_environment
@@ -59,14 +59,12 @@ Style Description
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           MM
-
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# List style definition
+
 Style List
 	Margin                Manual
 	LatexType             List_Environment
@@ -84,17 +82,15 @@ Style List
 
 	#define the environment lyxlist
 	Preamble
-	\newenvironment{lyxlist}[1]
-	  {\begin{list}{}
-	    {\settowidth{\labelwidth}{#1}
-	     \setlength{\leftmargin}{\labelwidth}
-	     \addtolength{\leftmargin}{\labelsep}
-	     \renewcommand{\makelabel}[1]{##1\hfil}}}
-	  {\end{list}}
+		\newenvironment{lyxlist}[1]
+			{\begin{list}{}
+				{\settowidth{\labelwidth}{#1}
+				 \setlength{\leftmargin}{\labelwidth}
+				 \addtolength{\leftmargin}{\labelsep}
+				 \renewcommand{\makelabel}[1]{##1\hfil}}}
+			{\end{list}}
 	EndPreamble
-
 End
-
 
 
 Style Bibliography
@@ -111,7 +107,7 @@ Style Bibliography
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_EnumI
+	LabelType             Enumerate
 End
 
 
@@ -131,8 +127,8 @@ End
 #  TopSep               0.7
 #  BottomSep            0.7
 #  ParSep               0.3
-#  Align                        Block
-#  AlignPossible                Block, Left
+#  Align                Block
+#  AlignPossible        Block, Left
 #  LabelType            Static
 #End
 
@@ -148,8 +144,8 @@ End
 #  TopSep               0.7
 #  BottomSep            0.7
 #  ParSep               0.3
-#  Align                        Block
-#  AlignPossible                Block, Left
-#  LabelType            Counter_EnumI
+#  Align                Block
+#  AlignPossible        Block, Left
+#  LabelType            Enumerate
 #End
 

@@ -7,7 +7,6 @@
 # commands that are useful for article-like document classes, but not
 # for letters.
 
-# Part style definition
 Style Part
 	Margin                Dynamic
 	LatexType             Command
@@ -21,19 +20,16 @@ Style Part
 	ParSep                0.8
 	Align                 Center         
 	Alignpossible         Center
-	LabelType             Static
-	LabelString           "Part #"
-
-	# standard font definition
+	LabelType             Counter
+	LabelCounter          part
+	LabelString           "Part \arabic{part}"
 	Font 
 	  Series              Bold
 	  Size                Huge
 	EndFont
-
 End
 	
 
-# Chapter style definition
 Style Chapter
 	Margin                Static
 	LatexType             Command
@@ -46,20 +42,18 @@ Style Chapter
 	ParSep                0.8
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Chapter
-	LabelString           "Chapter "
-	LabelStringAppendix   "Appendix "
-	OptionalArgs                          1
-
-	# standard font definition
+	LabelType             Counter
+	LabelCounter          chapter
+	LabelString           "\arabic{chapter}"
+	LabelStringAppendix   "Appendix \Alph{chapter}"
+	OptionalArgs          1
 	Font 
 	  Series              Bold
 	  Size                Huge
 	EndFont
-
 End
 
-# Section style definition
+
 Style Section
 	Margin                Dynamic
 	LatexType             Command
@@ -73,114 +67,63 @@ Style Section
 	ParSep                0.7
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Section
-	OptionalArgs                          1
-
-	# standard font definition
+	LabelType             Counter
+	LabelCounter          section
+	LabelString           "\arabic{chapter}.\arabic{section}"
+	LabelStringAppendix   "\Alph{chapter}.\arabic{section}"
+	OptionalArgs          1
 	Font 
 	  Series              Bold
 	  Size                Larger
 	EndFont
-
 End
 
-# Subsection style definition
+
 Style Subsection
-	Margin                Dynamic
-	LatexType             Command
+	CopyStyle             Section
 	LatexName             subsection
-	NeedProtect           1
-	NextNoIndent          1
-	LabelSep              xxx
-	ParSkip               0.4
 	TopSep                0.9
 	BottomSep             0.5
 	ParSep                0.5
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Counter_Subsection
-	OptionalArgs                          1
-
-	# standard font definition
+	LabelCounter          subsection
+	LabelString           "@Section@.\arabic{subsection}
 	Font 
 	  Series              Bold
 	  Size                Large
 	EndFont
-
 End
 
-# Subsubsection style definition
+
 Style Subsubsection
-	Margin                Dynamic
-	LatexType             Command
+	CopyStyle             Subsection
 	LatexName             subsubsection
-	NeedProtect           1
-	NextNoIndent          1
-	LabelSep              xxx
-	ParSkip               0.4
 	TopSep                0.7
 	BottomSep             0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Counter_SubSubSection
-	OptionalArgs                          1
-
-	# standard font definition
+	LabelCounter          subsubsection
+	LabelString           "@Subsection@.\arabic{subsubsection}
 	Font 
 	  Series              Bold
 	  Size                Normal
 	EndFont
-
 End
 
-# Paragraph style definition
+
 Style Paragraph
-	Margin                Dynamic
-	LatexType             Command
+	CopyStyle             Subsubsection
 	LatexName             paragraph
-	NeedProtect           1
-	NextNoIndent          1
-	LabelSep              xxx
-	ParSkip               0.4
 	TopSep                0.4
 	BottomSep             0
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Counter_Paragraph
-	OptionalArgs                          1
-
-	# standard font definition
-	Font 
-	  Series              Bold
-	  Size                Normal
-	EndFont
-
+	LabelCounter          paragraph
+	LabelString           "@Subsubsection@.\arabic{paragraph}
 End
 
-# Subparagraph style definition
+
 Style Subparagraph
-	Margin                Dynamic
-	LatexType             Command
+	CopyStyle             Paragraph
 	LatexName             subparagraph
-	NeedProtect           1
 	NextNoIndent          0
 	LeftMargin            MM
 	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                0.4
-	BottomSep             0
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Counter_SubParagraph
-	OptionalArgs                          1
-
-	# standard font definition
-	Font 
-	  Series              Bold
-	  Size                Normal
-	EndFont
-
+	LabelCounter          subparagraph
+	LabelString           "@Paragraph@.\arabic{subparagraph}
 End

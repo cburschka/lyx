@@ -66,7 +66,8 @@ Style ACT
 #  KeepEmpty            1
 	Align                 Center
 	AlignPossible         Center
-	LabelType             Counter_Chapter
+	LabelType             Counter
+	LabelCounter          chapter
 	LabelString           "ACT "
 End
 
@@ -81,7 +82,8 @@ Style SCENE
 #  KeepEmpty            1
 	Align                 Center
 	AlignPossible         Center
-	LabelType             Counter_Section
+	LabelType             Counter
+	LabelCounter          section
 	LabelString           "SCENE "
 End
 
