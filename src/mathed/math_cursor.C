@@ -1391,6 +1391,8 @@ bool MathCursor::interpret(char c)
 
 		if (c == '\\')
 			insert(c, LM_TC_TEX);
+		else
+			insert(c, lastcode_);
 
 		return true;
 	}
