@@ -1,5 +1,15 @@
 #!/bin/sh
-# file: ~/bin/TeXFiles.sh
+
+# file TeXFiles.sh
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author Herbert Voß
+# author Jean-Marc Lasgouttes
+# author Jürgen Spitzmüller
+
+# Full author contact details are available in file CREDITS.
+
 # all files		-> without option
 # TeX class files	-> option cls 
 # TeX style files 	-> option sty
