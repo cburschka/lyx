@@ -179,6 +179,7 @@ bool math_font_available(string & name)
 
 void readSymbols(string const & filename)
 {
+	lyxerr[Debug::MATHED] << "read symbols from " << filename << "\n";
 	std::ifstream fs(filename.c_str());
 	while (fs) {
 		int charid     = 0;
