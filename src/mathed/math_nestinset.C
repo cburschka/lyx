@@ -1009,7 +1009,7 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 				cur.niceInsert(MathAtom(new MathBraceInset));
 			} else if (c == '%') {
 				cur.backspace();
-				cur.niceInsert(MathAtom(new MathSymbolInset("%")));
+				cur.niceInsert(MathAtom(new MathCommentInset));
 			} else if (c == '#') {
 				lyxerr << "setting name to " << name + c << endl;
 				BOOST_ASSERT(cur.activeMacro());
