@@ -1,5 +1,7 @@
 2002-08-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* paragraph_funcs.h: remove some unneeded includes
+
 	* text.C (backspace): pasteParagraph now in global scipe
 
 	* CutAndPaste.C (cutSelection): pasteParagraph now in global scope

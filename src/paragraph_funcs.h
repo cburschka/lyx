@@ -12,12 +12,10 @@
 #ifndef PARAGRAPH_FUNCS_H
 #define PARAGRAPH_FUNCS_H
 
-#include "ParagraphList.h"
-#include "paragraph.h"
-
 #include "support/types.h"
 
 class BufferParams;
+class Paragraph;
 
 ///
 void breakParagraph(BufferParams const & bparams,
