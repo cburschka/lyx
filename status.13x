@@ -38,11 +38,12 @@ What's new
   keyboard; update to Scientific Word-compatible bindings
   (documentation has been updated too)
 
-- updates to the danish, dutch, french, german, norwegian and polish
-  translation of menus
+- updates to the danish, dutch, french, german, norwegian, polish and
+  spanish translation of menus
 
-- updates to the Extended and Customization manuals; updates to the
-  french translations of the manuals
+- Most of the documentation has been updated for the current version
+  of LyX. If you find some problems with the documentation in this
+  release, please contact lyx-docs@lists.lyx.org
 
 ** Bug fixes
 
@@ -133,9 +134,9 @@ What's new
 
 - fix a lyx2lyx bug that rejected csv2lyx files as badly formed
 
-- enable the debug level to be set in lyx2lyx
-
 - fix conversion of 1.1.x minipages that contain tabulars by lyx2lyx
+
+- enable the debug level to be set in lyx2lyx
 
 - fix detection of fax programs
 
