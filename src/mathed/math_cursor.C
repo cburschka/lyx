@@ -936,28 +936,30 @@ bool MathCursor::goUpDown(bool up)
 		xo = targetx_;
 
 	// try neigbouring script insets
-	// try left
-	if (hasPrevAtom()) {
-		MathScriptInset const * p = prevAtom()->asScriptInset();
-		if (p && p->has(up)) {
-			--pos();
-			push(nextAtom());
-			idx() = up; // the superscript has index 1
-			pos() = size();
-			///lyxerr << "updown: handled by scriptinset to the left" << endl;
-			return true;
+	if (!selection()) {
+		// try left
+		if (hasPrevAtom()) {
+			MathScriptInset const * p = prevAtom()->asScriptInset();
+			if (p && p->has(up)) {
+				--pos();
+				push(nextAtom());
+				idx() = up; // the superscript has index 1
+				pos() = size();
+				//lyxerr << "updown: handled by scriptinset to the left" << endl;
+				return true;
+			}
 		}
-	}
 
-	// try right
-	if (hasNextAtom()) {
-		MathScriptInset const * p = nextAtom()->asScriptInset();
-		if (p && p->has(up)) {
-			push(nextAtom());
-			idx() = up;
-			pos() = 0;
-			///lyxerr << "updown: handled by scriptinset to the right" << endl;
-			return true;
+		// try right
+		if (hasNextAtom()) {
+			MathScriptInset const * p = nextAtom()->asScriptInset();
+			if (p && p->has(up)) {
+				push(nextAtom());
+				idx() = up;
+				pos() = 0;
+				//lyxerr << "updown: handled by scriptinset to the right" << endl;
+				return true;
+			}
 		}
 	}
 
@@ -977,7 +979,7 @@ bool MathCursor::goUpDown(bool up)
 
 	// try to find an inset that knows better then we
 	while (1) {
-		///lyxerr << "updown: We are in " << *inset() << " idx: " << idx() << endl;
+		//lyxerr << "updown: We are in " << inset() << " idx: " << idx() << endl;
 		// ask inset first
 		if (inset()->idxUpDown(idx(), pos(), up, targetx_)) {
 			// try to find best position within this inset
@@ -987,7 +989,7 @@ bool MathCursor::goUpDown(bool up)
 		}
 
 		// no such inset found, just take something "above"
-		///lyxerr << "updown: handled by strange case" << endl;
+		//lyxerr << "updown: handled by strange case" << endl;
 		if (!popLeft())
 			return
 				bruteFind(xo, yo,

@@ -80,8 +80,8 @@ bool operator!=(CursorPos const & p, CursorPos const & q)
 bool operator<(CursorPos const & p, CursorPos const & q)
 {
 	if (p.inset_ != q.inset_) {
-		lyxerr << "can't compare cursor and anchor in different insets"
-		       << endl;
+		lyxerr << "can't compare cursor and anchor in different insets\n"
+		       << "p: " << p << '\n' << "q: " << q << endl;
 		return true;
 	}
 	if (p.idx_ != q.idx_)
