@@ -595,7 +595,10 @@ for file in $outfile textclass.lst packages.lst \
     mv $file.new $file
   fi
 done
-
+if test ! -r xfonts/fonts.dir ; then
+    echo "removing font links"
+    rm -r xfonts/*.pfb xfonts/fonts.scale
+fi
 
 # Final clean-up
 if test $lyx_keep_temps = no ; then
