@@ -1,3 +1,8 @@
+2003-02-25  Alfredo Braunstein <abraunst@libero.it>
+
+	* formula.C (draw): eliminate BufferView argument in call to 
+	PreviewImage::image
+
 2003-02-25  Angus Leeming  <leeming@lyx.org>
 
 	* ref_inset.C (dispatch): add an '\end_inset' to the string passed to
