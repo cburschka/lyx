@@ -1,3 +1,11 @@
+2001-09-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* forms/form_document.fd: Removed "Auto Reset", renamed the "Reset"
+	button to "Use Class Defaults" and moved it outside the tab.
+	Some more minor tweaking.
+
+	* FormDocument.C: handled this changes.
+
 2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Dialogs.C: remove splash dialog code.
@@ -9,7 +17,8 @@
 	* Makefile.am:
 	* forms/makefile: remove splash dialog files.
 
-	* Menubar_pimpl.C (MenuCallback): no longer call Dialogs::destroySplash.
+	* Menubar_pimpl.C (MenuCallback): no longer call
+	Dialogs::destroySplash.
 
 2001-09-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

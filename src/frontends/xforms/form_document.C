@@ -25,40 +25,46 @@ FD_form_tabbed_document * FormDocument::build_tabbed_document()
   FL_OBJECT *obj;
   FD_form_tabbed_document *fdui = new FD_form_tabbed_document;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 465, 475);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 465, 500);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 465, 475, "");
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 465, 500, "");
   fdui->tabbed_folder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 20, 15, 435, 365, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 430, 100, 30, idex(_(dummy)));
+    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 460, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, INPUT);
   {
     char const * const dummy = N_("Apply|#A");
-    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 245, 430, 100, 30, idex(_(dummy)));
+    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 245, 460, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedApplyCB, INPUT);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 135, 430, 100, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 135, 460, 100, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, INPUT);
-  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 10, 390, 435, 30, "");
+  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 15, 385, 435, 30, "");
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 430, 100, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 460, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedRestoreCB, INPUT);
   {
-    char const * const dummy = N_("Save as Defaults|#v");
-    fdui->button_save_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 390, 170, 30, idex(_(dummy)));
+    char const * const dummy = N_("Save as Class Defaults|#v");
+    fdui->button_save_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 420, 195, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  {
+    char const * const dummy = N_("Use Class Defaults|#C");
+    fdui->button_reset_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 260, 420, 195, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
@@ -274,7 +280,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
-    char const * const dummy = N_("Class:|#C");
+    char const * const dummy = N_("Class:|#l");
     fdui->choice_doc_class = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 20, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
@@ -373,15 +379,6 @@ FD_form_doc_class * FormDocument::build_doc_class()
   fdui->input_doc_spacing = obj = fl_add_input(FL_NORMAL_INPUT, 220, 240, 60, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  {
-    char const * const dummy = N_("Reset|#R");
-    fdui->button_reset_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 190, 300, 100, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->radio_auto_reset = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 25, 300, 30, 30, _("Auto Reset"));
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 15, 290, 285, 45, _("Class Defaults"));
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -510,7 +507,7 @@ FD_form_doc_options * FormDocument::build_doc_options()
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
-    char const * const dummy = N_("Citation style|#C");
+    char const * const dummy = N_("Citation style|#i");
     fdui->choice_citation_format = obj = fl_add_choice(FL_NORMAL_CHOICE, 200, 285, 190, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

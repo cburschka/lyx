@@ -10,13 +10,13 @@ SnapGrid: 5
 =============== FORM ===============
 Name: form_tabbed_document
 Width: 465
-Height: 475
-Number of Objects: 8
+Height: 500
+Number of Objects: 9
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 465 475
+box: 0 0 465 500
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -52,7 +52,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 355 430 100 30
+box: 355 460 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -70,7 +70,7 @@ argument: INPUT
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 245 430 100 30
+box: 245 460 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -88,7 +88,7 @@ argument: INPUT
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 135 430 100 30
+box: 135 460 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -106,7 +106,7 @@ argument: INPUT
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 10 390 435 30
+box: 15 385 435 30
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -124,7 +124,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 430 100 30
+box: 10 460 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -142,18 +142,36 @@ argument: INPUT
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 390 170 30
+box: 10 420 195 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Save as Defaults|#v
+label: Save as Class Defaults|#v
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_save_defaults
+callback: C_FormBaseDeprecatedInputCB
+argument: INPUT
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 260 420 195 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Use Class Defaults|#C
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_reset_defaults
 callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
@@ -671,7 +689,7 @@ argument:
 Name: form_doc_class
 Width: 440
 Height: 345
-Number of Objects: 28
+Number of Objects: 25
 
 --------------------
 class: FL_BOX
@@ -791,7 +809,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Class:|#C
+label: Class:|#l
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -1124,60 +1142,6 @@ name: input_doc_spacing
 callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 190 300 100 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Reset|#R
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_reset_defaults
-callback: C_FormBaseDeprecatedInputCB
-argument: INPUT
-
---------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 25 300 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Auto Reset
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_auto_reset
-callback: C_FormBaseDeprecatedInputCB
-argument: INPUT
-
---------------------
-class: FL_LABELFRAME
-type: ENGRAVED_FRAME
-box: 15 290 285 45
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_TOP_LEFT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Class Defaults
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
 =============== FORM ===============
 Name: form_doc_language
 Width: 440
@@ -1488,7 +1452,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Citation style|#C
+label: Citation style|#i
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity

@@ -34,6 +34,7 @@ struct FD_form_tabbed_document {
 	FL_OBJECT *text_warning;
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_save_defaults;
+	FL_OBJECT *button_reset_defaults;
 };
 struct FD_form_doc_paper {
 	~FD_form_doc_paper();
@@ -78,8 +79,6 @@ struct FD_form_doc_class {
 	FL_OBJECT *radio_doc_indent;
 	FL_OBJECT *radio_doc_skip;
 	FL_OBJECT *input_doc_spacing;
-	FL_OBJECT *button_reset_defaults;
-	FL_OBJECT *radio_auto_reset;
 };
 struct FD_form_doc_language {
 	~FD_form_doc_language();

@@ -92,6 +92,7 @@ void FormDocument::build()
     bc().setCancel(dialog_->button_cancel);
     bc().setRestore(dialog_->button_restore);
     bc().addReadOnly (dialog_->button_save_defaults);
+    bc().addReadOnly (dialog_->button_reset_defaults);
 
     // the document paper form
     paper_.reset(build_doc_paper());
@@ -178,8 +179,6 @@ void FormDocument::build()
     bc().addReadOnly (class_->choice_doc_skip);
     bc().addReadOnly (class_->choice_doc_spacing);
     bc().addReadOnly (class_->input_doc_spacing);
-    bc().addReadOnly (class_->radio_auto_reset);
-    bc().addReadOnly (class_->button_reset_defaults);
 
 
     // the document language form
@@ -309,10 +308,14 @@ void FormDocument::update()
 
     checkReadOnly();
 
+    BufferParams const & params = lv_->buffer()->params;
+
     fl_set_object_label(dialog_->button_save_defaults,
     	_("Save as Defaults"));
-
-    BufferParams const & params = lv_->buffer()->params;
+    fl_set_object_label(dialog_->button_reset_defaults,
+    	_("Reset"));
+    setEnabled(dialog_->button_reset_defaults,
+    	!params.hasClassDefaults());
 
     class_update(params);
     paper_update(params);
@@ -362,15 +365,11 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 			   fl_get_button(options_->check_use_natbib));
 	}
 
-	if (ob == class_->radio_auto_reset) {
-		lyxrc.auto_reset_options = fl_get_button(class_->radio_auto_reset);
-	}
-
 	if (ob == dialog_->button_save_defaults) {
 		lv_->getLyXFunc()->dispatch(LFUN_LAYOUT_SAVE_DEFAULT);
 	}
 
-	if (ob == class_->button_reset_defaults) {
+	if (ob == dialog_->button_reset_defaults) {
 		BufferParams params = lv_->buffer()->params;
 		params.textclass = combo_doc_class->get() - 1;
 		params.useClassDefaults();
@@ -378,7 +377,7 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 	}
 
 
-	setEnabled(class_->button_reset_defaults,
+	setEnabled(dialog_->button_reset_defaults,
 		lv_->buffer()->params.hasClassDefaults());
 
 
@@ -726,10 +725,6 @@ void FormDocument::class_update(BufferParams const & params)
 	fl_set_input(class_->input_doc_extra, params.options.c_str());
     else
 	fl_set_input(class_->input_doc_extra, "");
-    fl_set_button(class_->radio_auto_reset, lyxrc.auto_reset_options);
-    fl_set_object_label(class_->button_reset_defaults, _("Reset"));
-    setEnabled(class_->button_reset_defaults, !params.hasClassDefaults());
-
 }
 
 
