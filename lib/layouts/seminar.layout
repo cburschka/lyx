@@ -3,45 +3,40 @@
 # Initial attemt at makeing a LyX layout file for the seminar class.
 # Author : Lars Gullik Bjønnes <larsbj@lyx.org>
 
-# Input general definitions
 Input stdclass.inc
 
-Sides   1
-Columns 1
-
-ClassOptions
-	      FontSize 8|9|10|11|12|14|17
-	      Other slidesec
-End
-
-# There are no chapters in an article.
 NoStyle Chapter
 NoStyle Chapter*
 
+Sides                   1
+Columns                 1
 MaxCounter              Counter_Section
 SecNumDepth             3
 TocDepth                3
 
 
-# Change Part and Part* a bit
+ClassOptions
+	FontSize              8|9|10|11|12|14|17
+	Other                 slidesec
+End
+
 
 Style Part
 	Align                 Left
 	AlignPossible         Left
 	TopSep                2
 	BottomSep             1.5
-
 	Font
 	  Size                Larger
 	EndFont
 End
+
 
 Style Part*
 	Align                 Left
 	AlignPossible         Left
 	TopSep                2
 	BottomSep             1.5
-
 	Font
 	  Size                Larger
 	EndFont
@@ -49,73 +44,73 @@ End
 
 
 Style LandscapeSlide
-	      CopyStyle       Standard
-	      LatexType       Environment
-	      LatexName       slide
-	      KeepEmpty       1
-	      Labeltype       Static
-	      LabelString     "Landscape Slide"
-	      LabelSep        "MMMMMMM"
+	CopyStyle             Standard
+	LatexType             Environment
+	LatexName             slide
+	KeepEmpty             1
+	Labeltype             Static
+	LabelString           "Landscape Slide"
+	LabelSep              "MMMMMMM"
 End
 
 
 Style PortraitSlide
-	      CopyStyle       Standard
-	      LatexType       Environment
-	      LatexName       slide*
-	      KeepEmpty       1
-	      Labeltype       Static
-	      LabelString     "Portrait Slide"
+	CopyStyle             Standard
+	LatexType             Environment
+	LatexName             slide*
+	KeepEmpty             1
+	Labeltype             Static
+	LabelString           "Portrait Slide"
 End
 
 
 Style Slide
-	      Obsoletedby     LandscapeSlide
+	Obsoletedby           LandscapeSlide
 End
 
 
 Style Slide*
-	      Obsoletedby     PortraitSlide
+	Obsoletedby           PortraitSlide
 End
 
 
 Style SlideHeading
-	      CopyStyle       Section
-	      LatexName       slideheading
+	CopyStyle             Section
+	LatexName             slideheading
 End
 
 
 Style SlideSubHeading
-	      CopyStyle       Subsection
-	      LatexName       slidesubheading
+	CopyStyle             Subsection
+	LatexName             slidesubheading
 End
 
 
 Style ListOfSlides
-	      KeepEmpty       1
-	      Align           Center
-	      LatexType       Command
-	      LatexName       listofslides
-	      Labeltype       Static
-	      LabelString     "List Of Slides"
+	KeepEmpty             1
+	Align                 Center
+	LatexType             Command
+	LatexName             listofslides
+	Labeltype             Static
+	LabelString           "List Of Slides"
 End
 
 
 Style SlideContents
-	      KeepEmpty       1
-	      Align           Center
-	      LatexType       Command
-	      LatexName       slidecontents
-	      Labeltype       Static
-	      LabelString     "Slidecontents"
+	KeepEmpty             1
+	Align                 Center
+	LatexType             Command
+	LatexName             slidecontents
+	Labeltype             Static
+	LabelString           "Slidecontents"
 End
 
 
 Style ProgressContents
-	      KeepEmpty       1
-	      Align           Center
-	      LatexType       Command
-	      LatexName       Slidecontents
-	      Labeltype       Static
-	      LabelString     "Progress Contents"
+	KeepEmpty             1
+	Align                 Center
+	LatexType             Command
+	LatexName             Slidecontents
+	Labeltype             Static
+	LabelString           "Progress Contents"
 End
