@@ -151,15 +151,15 @@ void MathArray::setCode(int pos, MathTextCodes t)
 }
 
 
-void MathArray::insert(int pos, MathInset * p)
+void MathArray::replace(int pos, MathInset * p)
 {
-	bf_.insert(bf_.begin() + pos, 2 + sizeof(p), LM_TC_INSET);
 	memcpy(&bf_[pos + 1], &p, sizeof(p));
 }
 
 
-void MathArray::replace(int pos, MathInset * p)
+void MathArray::insert(int pos, MathInset * p)
 {
+	bf_.insert(bf_.begin() + pos, 2 + sizeof(p), LM_TC_INSET);
 	memcpy(&bf_[pos + 1], &p, sizeof(p));
 }
 

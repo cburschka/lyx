@@ -628,29 +628,23 @@ void MathCursor::Interpret(string const & s)
 	lyxerr << "Interpret: '" << s << "'  ('" << s.substr(0, 7)  << "' " <<
 in_word_set(s) << " \n";
 
-	if (s[0] == '^') {
-		MathUpDownInset * p = nearbyUpDownInset();
+	if (s[0] == '^' || s[0] == '_') {
+		bool const up = (s[0] == '^');
+		SelCut();	
+		MathUpDownInset * p = prevUpDownInset();
 		if (!p) {
-			p = new MathScriptInset(true, false);
+			p = new MathScriptInset(up, !up);
 			insert(p);
 			plainLeft();
 		}
 		push(p, true);
-		p->up(true);
-		cursor().idx_ = 0;
-		return;
-	}
-
-	if (s[0] == '_') {
-		MathUpDownInset * p = nearbyUpDownInset();
-		if (!p) {
-			p = new MathScriptInset(false, true);
-			insert(p);
-			plainLeft();
-		}
-		push(p, true);
-		p->down(true);
-		cursor().idx_ = 1;
+		if (up)
+			p->up(true);
+		else
+			p->down(true);
+		cursor().idx_ = up ? 0 : 1;
+		cursor().pos_ = 0;
+		SelPaste();
 		return;
 	}
 
@@ -1103,16 +1097,11 @@ MathInset * MathCursor::nextInset() const
 }
 
 
-MathUpDownInset * MathCursor::nearbyUpDownInset() const
+MathUpDownInset * MathCursor::prevUpDownInset() const
 {
 	normalize();
 	MathInset * p = array().prevInset(cursor().pos_);
-	if (p && p->isUpDownInset())
-		return static_cast<MathUpDownInset *>(p);
-	//p = array().nextInset(cursor().pos_);
-	//if (p && p->isUpDownInset())
-	//	return static_cast<MathUpDownInset *>(p);
-	return 0;
+	return (p && p->isUpDownInset()) ? static_cast<MathUpDownInset *>(p) : 0;
 }
 
 

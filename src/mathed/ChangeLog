@@ -8,6 +8,8 @@
 
 	* formulabase.C: fix memory leak
 
+	* math_cursor.C: ^ now copies selection into new srriptinset
+
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* formula.C (insetAllowed): allow insertion of label

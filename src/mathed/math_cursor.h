@@ -258,7 +258,7 @@ public:
 	///
 	MathInset * prevInset() const;
 	///
-	MathUpDownInset * nearbyUpDownInset() const;
+	MathUpDownInset * prevUpDownInset() const;
 
 	///
 	MathFuncInset * imacro;
