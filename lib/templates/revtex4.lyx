@@ -16,8 +16,17 @@ Author1
 \layout Author Email
 
 foo@bar.edu
-\begin_inset Info Make sure to put any Email, URL, and Thanks layouts IN
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Make sure to put any Email, URL, and Thanks layouts IN
+\layout Standard
+
 BETWEEN the Author layout and the corresponding Address
+\layout Standard
+
 layout for that author.
 \end_inset 
 
@@ -29,7 +38,14 @@ http://bar.com/~foo
 
 Thanks to you, Mrs.
  Robinson!
-\begin_inset Info Use Thanks layout instead of inserting footnotes.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Use Thanks layout instead of inserting footnotes.
+\layout Standard
+
 Footnotes in the title will do weird things in REVTeX 4!
 \end_inset 
 
@@ -53,7 +69,15 @@ Insert your abstract here.
 \layout Standard
 
 
-\begin_inset Info You don't have to write \maketitle.. LyX does this by itself.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+You don't have to write 
+\backslash 
+maketitle..
+ LyX does this by itself.
 \end_inset 
 
 
@@ -110,7 +134,7 @@ openone{}
 .
  REVTeX macros can also be used freely in the math editor, so you can type
  
-\begin_inset Formula \( \sqrt{\overstar {a}}>b \)
+\begin_inset Formula $\sqrt{\overstar{a}}>b$
 \end_inset 
 
 , for example, which uses the REVTeX 
