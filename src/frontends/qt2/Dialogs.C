@@ -22,6 +22,7 @@
 #include "QExternalDialog.h"
 #include "QIndexDialog.h"
 #include "QRefDialog.h"
+#include "QThesaurusDialog.h"
 #include "QURLDialog.h"
  
 #include "QAbout.h"
@@ -39,6 +40,7 @@
 #include "QSearch.h"
 #include "QSplash.h"
 #include "QTabularCreate.h"
+#include "QThesaurus.h"
 #include "QURL.h"
 
 #include "QtLyXView.h" 
@@ -59,6 +61,7 @@
 #include "controllers/ControlIndex.h"
 #include "controllers/ControlRef.h"
 #include "controllers/ControlSplash.h"
+#include "controllers/ControlThesaurus.h"
 #include "controllers/ControlUrl.h" 
 #if 0
 #include "controllers/ControlButtons.h"
@@ -75,7 +78,6 @@
 #include "controllers/ControlSearch.h"
 #include "controllers/ControlSpellchecker.h"
 #include "controllers/ControlTabularCreate.h"
-#include "controllers/ControlThesaurus.h"
 #include "controllers/ControlToc.h"
 #include "controllers/ControlVCLog.h"
 #endif
@@ -101,6 +103,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIExternal<QExternal, Qt2BC>(*lv, *this)); 
 	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
+	add(new GUIThesaurus<QThesaurus, Qt2BC>(*lv, *this)); 
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
 
 	// reduce the number of connections needed in

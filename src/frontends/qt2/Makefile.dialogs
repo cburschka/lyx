@@ -17,6 +17,7 @@ DIALOGS = \
 	QSearch \
 	QSplash \
 	QTabularCreate \
+	QThesaurus \
 	QToc \
 	QURL
  
@@ -53,6 +54,8 @@ DIALOGSOURCES = \
 	QSplash.C QSplashDialog.C \
 	QTabularCreate.h QTabularCreateDialog.h \
 	QTabularCreate.C QTabularCreateDialog.C \
+	QThesaurus.h QThesaurusDialog.h \
+	QThesaurus.C QThesaurusDialog.C \
 	QToc.h QTocDialog.h \
 	QToc.C QTocDialog.C \
 	QURL.h QURLDialog.h \
@@ -75,6 +78,7 @@ MOCDIALOGS = \
 	QSearchDialog_moc.C \
 	QSplashDialog_moc.C \
 	QTabularCreateDialog_moc.C \
+	QThesaurusDialog_moc.C \
 	QTocDialog_moc.C \
 	QURLDialog_moc.C
  
@@ -109,6 +113,8 @@ UIDIALOGS = \
 	QSearchDialogBase.C \
 	QTabularCreateDialogBase.h \
 	QTabularCreateDialogBase.C \
+	QThesaurusDialogBase.h \
+	QThesaurusDialogBase.C \
 	QTocDialogBase.h \
 	QTocDialogBase.C \
 	QURLDialogBase.h \
@@ -130,5 +136,6 @@ UIMOCDIALOGS = \
 	QRefDialogBase_moc.C \
 	QSearchDialogBase_moc.C \
 	QTabularCreateDialogBase_moc.C \
+	QThesaurusDialogBase_moc.C \
 	QTocDialogBase_moc.C \
 	QURLDialogBase_moc.C

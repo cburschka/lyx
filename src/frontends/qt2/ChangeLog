@@ -1,6 +1,14 @@
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
+	* Makefile.dialogs: 
+	* QThesaurus.[Ch]:
+	* QThesaurusDialog.[Ch]:
+	* ui/QThesaurusDialog.ui: add thesaurus dialog
+ 
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
 	* Makefile.am:
 	* Makefile.dialogs:
 	* QExternal.[Ch]:
