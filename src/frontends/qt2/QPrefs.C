@@ -460,8 +460,8 @@ void QPrefs::update_contents()
 	uimod->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar); 
 	uimod->wheelMouseSB->setValue(rc.wheel_jump);
 	// convert to minutes
-	int mins(rc.wheel_jump / 60);
-	if (rc.wheel_jump && !mins)
+	int mins(rc.autosave / 60);
+	if (rc.autosave && !mins)
 		mins = 1;
 	uimod->autoSaveSB->setValue(mins);
  
@@ -600,10 +600,6 @@ void QPrefs::update_contents()
 		     rc.sans_font_name.c_str());
 	fl_set_input(dialog_->input_typewriter,
 		     rc.typewriter_font_name.c_str());
-	fl_set_input(dialog_->input_screen_encoding,
-		     rc.font_norm.c_str());
-	fl_set_button(dialog_->check_scalable,
-		      rc.use_scalable_fonts);
 	fl_set_counter_value(dialog_->counter_zoom, rc.zoom);
 	fl_set_counter_value(dialog_->counter_dpi,  rc.dpi);
 	fl_set_input(dialog_->input_tiny,
