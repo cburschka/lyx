@@ -308,7 +308,7 @@ Inset * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (cmdName == "bibitem") {
 			lex.printError("Wrong place for bibitem");
 			inset = new InsetBibitem(inscmd);
-		} else if (cmdName == "BibTeX") {
+		} else if (cmdName == "bibtex") {
 			inset = new InsetBibtex(inscmd);
 		} else if (cmdName == "index") {
 			inset = new InsetIndex(inscmd);
