@@ -3377,9 +3377,23 @@ void LyXText::Backspace()
 				cursor.par->ParFromPos(cursor.pos)->next);
 		}
 		
-		LyXParagraph * tmppar = cursor.par;
-		Row * tmprow = cursor.row;
-		CursorLeftIntern();
+  		LyXParagraph * tmppar = cursor.par;
+  		Row * tmprow = cursor.row;
+
+		// We used to do CursorLeftIntern() here, but it is
+		// not a good idea since it triggers the auto-delete
+		// mechanism. So we do a CursorLeftIntern()-lite,
+		// without the dreaded mechanism. (JMarc)
+		if (cursor.pos > 0) {
+			SetCursorIntern(cursor.par, cursor.pos - 1);
+		}
+		else if (cursor.par->Previous()) { 
+			// steps into the above paragraph.
+			SetCursorIntern(cursor.par->Previous(), 
+					cursor.par->Previous()->Last());
+		}
+
+
 #warning See comment on top of text.C
 		/* Pasting is not allowed, if the paragraphs have different
 		   layout. I think it is a real bug of all other
