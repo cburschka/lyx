@@ -2126,7 +2126,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 			|| par->pextra_type != pextra_type))
 			break;
 	default:
-		if (!(footnoteflag != LyXParagraph::NO_FOOTNOTE
+		// we don't need it for the last paragraph!!!
+		if (next && !(footnoteflag != LyXParagraph::NO_FOOTNOTE
 		      && footnotekind != LyXParagraph::FOOTNOTE
 		      && footnotekind != LyXParagraph::MARGIN
 		      && (table
@@ -2168,7 +2169,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		texrow.newline();
 	}
 	
-	if (!(footnoteflag != LyXParagraph::NO_FOOTNOTE && par &&
+	// we don't need it for the last paragraph!!!
+	if (next && !(footnoteflag != LyXParagraph::NO_FOOTNOTE && par &&
               par->footnoteflag == LyXParagraph::NO_FOOTNOTE)) {
 		os << '\n';
 		texrow.newline();

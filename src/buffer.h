@@ -153,6 +153,12 @@ public:
 	void makeLaTeXFile(string const & filename,
 			   string const & original_path,
 			   bool nice, bool only_body = false);
+	//
+	// LaTeX all paragraphs from par to endpar,
+	// if endpar == 0 then to the end
+	//
+	void latexParagraphs(ostream & os, LyXParagraph *par,
+			     LyXParagraph *endpar, TexRow & texrow);
 
 	///
 	int runLaTeX();

@@ -54,15 +54,12 @@ char const * InsetFoot::EditMessage() const
 
 int InsetFoot::Latex(ostream & os, bool fragile, bool fp) const
 {
-    if (fragile) 
-	os << "\\footnote{"; // was footnotemark but that won't work
-    else 
-	os << "\\footnote{";
+    os << "\\footnote{%" << endl;
     
     int i = InsetText::Latex(os, fragile, fp);
-    os << "}";
+    os << "}%" << endl;
     
-    return i;
+    return i + 2;
 }
 
 

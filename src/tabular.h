@@ -68,50 +68,52 @@ public:
     };
     /* konstruktor */
     ///
-    LyXTabular(int columns_arg, int rows_arg, Buffer *buf = 0);
+    LyXTabular(int columns_arg, int rows_arg, Buffer *buf);
     ///
     ///
-    LyXTabular(LyXTabular const &, Buffer *buf = 0);
+    LyXTabular(LyXTabular const &, Buffer *buf);
     ///
     explicit
-    LyXTabular(LyXLex & lex, Buffer *buf = 0);
+    LyXTabular(LyXLex & lex, Buffer *buf);
     ///
     ~LyXTabular();
     ///
     LyXTabular & operator=(LyXTabular const &);
     ///
-    LyXTabular * Clone();
+    LyXTabular * Clone(Buffer * buf);
     
     /// Returns true if there is a topline, returns false if not
-    bool TopLine(int cell);
+    bool TopLine(int cell) const;
     /// Returns true if there is a topline, returns false if not
-    bool BottomLine(int cell);
+    bool BottomLine(int cell) const;
     /// Returns true if there is a topline, returns false if not
-    bool LeftLine(int cell);
+    bool LeftLine(int cell) const;
     /// Returns true if there is a topline, returns false if not
-    bool RightLine(int cell);
+    bool RightLine(int cell) const;
     
     ///
-    bool TopAlreadyDrawed(int cell);
+    bool TopAlreadyDrawed(int cell) const;
     ///
-    bool VeryLastRow(int cell);
+    bool LeftAlreadyDrawed(int cell) const;
+    ///
+    bool IsLastRow(int cell) const;
     
     ///
-    int AdditionalHeight(int cell);
+    int GetAdditionalHeight(int cell) const;
     ///
-    int AdditionalWidth(int cell);
+    int GetAdditionalWidth(int cell) const;
     
     /* returns the maximum over all rows */
     ///
-    int WidthOfColumn(int cell);
+    int GetWidthOfColumn(int cell) const;
     ///
-    int WidthOfTabular();
+    int GetWidthOfTabular() const;
     ///
-    int AscentOfRow(int row);
+    int GetAscentOfRow(int row) const;
     ///
-    int DescentOfRow(int row);
+    int GetDescentOfRow(int row) const;
     ///
-    int HeightOfTabular();
+    int GetHeightOfTabular() const;
     ///
     void SetAscentOfRow(int row, int height);
     ///
@@ -135,15 +137,15 @@ public:
     ///
     bool SetAlignSpecial(int cell, string special, int what);
     ///
-    char GetAlignment(int cell); // add approp. signedness
+    char GetAlignment(int cell) const; // add approp. signedness
     ///
-    string GetPWidth(int cell);
+    string GetPWidth(int cell) const;
     ///
-    string GetAlignSpecial(int cell, int what);
+    string GetAlignSpecial(int cell, int what) const;
     ///
-    int GetWidthOfCell(int cell);
+    int GetWidthOfCell(int cell) const;
     ///
-    int GetBeginningOfTextInCell(int cell);
+    int GetBeginningOfTextInCell(int cell) const;
     ///
     void AppendRow(int cell);
     ///
@@ -153,49 +155,51 @@ public:
     ///
     void DeleteColumn(int cell);
     ///
-    bool IsFirstCellInRow(int cell);
+    bool IsFirstCellInRow(int cell) const;
     ///
-    bool IsLastCellInRow(int cell);
+    bool IsLastCellInRow(int cell) const;
     ///
-    int GetNumberOfCells();
+    int GetNumberOfCells() const;
     ///
     int AppendCellAfterCell(int append_cell, int question_cell);
     ///
     int DeleteCellIfColumnIsDeleted(int cell, int delete_column_cell);
     ///
-    int NumberOfCellsInRow(int cell);
+    int NumberOfCellsInRow(int cell) const;
     ///
     void Reinit();
     ///
     void Init(int columns_arg, int rows_arg);
     ///
-    void Write(std::ostream &, bool old_format=true);
+    void Write(std::ostream &) const;
     ///
-    void Read(std::istream &);
+    void Read(LyXLex &);
     ///
-    int Latex(std::ostream &);
+    void OldFormatRead(std::istream &, string);
+    ///
+    int Latex(std::ostream &) const;
 
     // cell <0 will tex the preamble
     // returns the number of printed newlines
     ///
-    int TexEndOfCell(std::ostream &, int cell);
+    int TexEndOfCell(std::ostream &, int cell) const;
     ///
-    int DocBookEndOfCell(std::ostream &, int cell, int & depth);
+    int DocBookEndOfCell(std::ostream &, int cell, int & depth) const;
 #if 0
     ///
     int RoffEndOfCell(std::ostream &, int cell);
 #endif
     ///
-    char const * getDocBookAlign(int cell, bool isColumn = false);
+    char const * GetDocBookAlign(int cell, bool isColumn = false) const;
 
     ///
-    bool IsMultiColumn(int cell);
+    bool IsMultiColumn(int cell) const;
     ///
     void SetMultiColumn(int cell, int number);
     ///
     int UnsetMultiColumn(int cell); // returns number of new cells
     ///
-    bool IsPartOfMultiColumn(int row, int column);
+    bool IsPartOfMultiColumn(int row, int column) const;
     ///
     int row_of_cell(int cell) const;
     ///
@@ -203,47 +207,45 @@ public:
     ///
     void SetLongTabular(int what);
     ///
-    bool IsLongTabular();
+    bool IsLongTabular() const;
     ///
     void SetRotateTabular(int what);
     ///
-    bool RotateTabular();
+    bool GetRotateTabular() const;
     ///
     void SetRotateCell(int cell, int what);
     ///
-    bool RotateCell(int cell);
+    bool GetRotateCell(int cell) const;
     ///
-    bool NeedRotating();
+    bool NeedRotating() const;
     ///
-    bool ShouldBeVeryLastCell(int cell);
+    bool IsLastCell(int cell) const;
     ///
-    bool IsLastRow(int cell);
+    int GetCellAbove(int cell) const;
     ///
-    int GetCellAbove(int cell);
-    ///
-    int GetCellNumber(int column, int row);
+    int GetCellNumber(int column, int row) const;
     ///
     void SetLinebreaks(int cell, bool what);
     ///
-    bool Linebreaks(int cell);
+    bool GetLinebreaks(int cell) const;
     ///
     /// Long Tabular Options
     ///
     void SetLTHead(int cell, bool first);
     ///
-    bool RowOfLTHead(int cell);
+    bool GetRowOfLTHead(int cell) const;
     ///
-    bool RowOfLTFirstHead(int cell);
+    bool GetRowOfLTFirstHead(int cell) const;
     ///
     void SetLTFoot(int cell, bool last);
     ///
-    bool RowOfLTFoot(int cell);
+    bool GetRowOfLTFoot(int cell) const;
     ///
-    bool RowOfLTLastFoot(int cell);
+    bool GetRowOfLTLastFoot(int cell) const;
     ///
     void SetLTNewPage(int cell, bool what);
     ///
-    bool LTNewPage(int cell);
+    bool GetLTNewPage(int cell) const;
     ///
     InsetText * GetCellInset(int cell) const;
     ///
@@ -255,7 +257,7 @@ private: //////////////////////////////////////////////////////////////////
     ///
     struct cellstruct {
 	///
-        cellstruct(Buffer * buf = 0);
+        cellstruct(Buffer * buf);
 	///
 	~cellstruct();
 	///
@@ -355,16 +357,16 @@ private: //////////////////////////////////////////////////////////////////
     void calculate_width_of_tabular();
 
     ///
-    int right_column_of_cell(int cell);
+    int right_column_of_cell(int cell) const;
 
     ///
-    cellstruct * cellinfo_of_cell(int cell);
+    cellstruct * cellinfo_of_cell(int cell) const;
 
     ///
     void delete_column(int column);
 
     ///
-    int cells_in_multicolumn(int cell);
+    int cells_in_multicolumn(int cell) const;
     ///
     int is_long_tabular;
     ///

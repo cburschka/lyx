@@ -474,12 +474,78 @@ void LyXText::MakeFontEntriesLayoutSpecific(LyXParagraph * par)
 	}
 }
 
+LyXParagraph * LyXText::SetLayout(LyXCursor & cur, LyXCursor & sstart_cur,
+				  LyXCursor & send_cur,
+				  LyXTextClass::size_type layout)
+{
+	LyXParagraph * endpar = send_cur.par->LastPhysicalPar()->Next();
+	LyXParagraph * undoendpar = endpar;
+
+	if (endpar && endpar->GetDepth()) {
+		while (endpar && endpar->GetDepth()) {
+			endpar = endpar->LastPhysicalPar()->Next();
+			undoendpar = endpar;
+		}
+	} else if (endpar) {
+		endpar = endpar->Next(); // because of parindents etc.
+	}
+   
+	SetUndo(Undo::EDIT,
+		sstart_cur.par->ParFromPos(sstart_cur.pos)->previous, 
+		undoendpar);
+
+	/* ok we have a selection. This is always between sstart_cur
+	 * and sel_end cursor */ 
+	cur = sstart_cur;
+   
+	LyXLayout const & lyxlayout =
+		textclasslist.Style(buffer->params.textclass, layout);
+   
+	while (cur.par != send_cur.par) {
+		if (cur.par->footnoteflag == sstart_cur.par->footnoteflag) {
+			cur.par->SetLayout(layout);
+			MakeFontEntriesLayoutSpecific(cur.par);
+			LyXParagraph* fppar = cur.par->FirstPhysicalPar();
+			fppar->added_space_top = lyxlayout.fill_top ?
+				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE);
+			fppar->added_space_bottom = lyxlayout.fill_bottom ? 
+				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE); 
+			if (lyxlayout.margintype == MARGIN_MANUAL)
+				cur.par->SetLabelWidthString(lyxlayout.labelstring());
+			if (lyxlayout.labeltype != LABEL_BIBLIO
+			    && fppar->bibkey) {
+				delete fppar->bibkey;
+				fppar->bibkey = 0;
+			}
+		}
+		cur.par = cur.par->Next();
+	}
+	if (cur.par->footnoteflag == sstart_cur.par->footnoteflag) {
+		cur.par->SetLayout(layout);
+		MakeFontEntriesLayoutSpecific(cur.par);
+		LyXParagraph* fppar = cur.par->FirstPhysicalPar();
+		fppar->added_space_top = lyxlayout.fill_top ?
+			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE);
+		fppar->added_space_bottom = lyxlayout.fill_bottom ? 
+			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE); 
+		if (lyxlayout.margintype == MARGIN_MANUAL)
+			cur.par->SetLabelWidthString(lyxlayout.labelstring());
+		if (lyxlayout.labeltype != LABEL_BIBLIO
+		    && fppar->bibkey) {
+			delete fppar->bibkey;
+			fppar->bibkey = 0;
+		}
+	}
+	return endpar;
+}
 
 // set layout over selection and make a total rebreak of those paragraphs
 void LyXText::SetLayout(LyXTextClass::size_type layout)
 {
-	LyXCursor tmpcursor;
+	LyXCursor
+		tmpcursor = cursor;  /* store the current cursor  */
 
+#ifdef USE_OLD_SET_LAYOUT
 	// if there is no selection just set the layout
 	// of the current paragraph  */
 	if (!selection) {
@@ -503,8 +569,6 @@ void LyXText::SetLayout(LyXTextClass::size_type layout)
 	SetUndo(Undo::EDIT, 
 		sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->previous, 
 		undoendpar);
-
-	tmpcursor = cursor;		       /* store the current cursor  */
 
 	/* ok we have a selection. This is always between sel_start_cursor
 	 * and sel_end cursor */ 
@@ -550,7 +614,16 @@ void LyXText::SetLayout(LyXTextClass::size_type layout)
 			fppar->bibkey = 0;
 		}
 	}
-   
+#else
+	// if there is no selection just set the layout
+	// of the current paragraph  */
+	if (!selection) {
+		sel_start_cursor = cursor;  // dummy selection
+		sel_end_cursor = cursor;
+	}
+	LyXParagraph *
+	endpar = SetLayout(cursor, sel_start_cursor, sel_end_cursor, layout);
+#endif
 	RedoParagraphs(sel_start_cursor, endpar);
    
 	// we have to reset the selection, because the
@@ -2210,7 +2283,7 @@ void LyXText::CopySelection()
 	DeleteSimpleCutBuffer();
 
 	// set the textclass
-	simple_cut_buffer_textclass = buffer->params->textclass;
+	simple_cut_buffer_textclass = buffer->params.textclass;
 
 	// copy behind a space if there is one
 	while (sel_start_cursor.par->Last() > sel_start_cursor.pos
@@ -2457,7 +2530,7 @@ void LyXText::PasteSelection()
      
 		// make sure there is no class difference
 		cap.SwitchLayoutsBetweenClasses(simple_cut_buffer_textclass,
-						buffer->params->textclass,
+						buffer->params.textclass,
 						simple_cut_buffer);
      
 		// make the simple_cut_buffer exactly the same layout than

@@ -45,6 +45,9 @@ public:
 	/// Appends another TexRow
 	TexRow & operator+= (TexRow const &);
 
+	/// Returns the number of rows in this texrow
+	int rows() { return count; }
+
 private:
 	/// Linked list of items
 	struct RowItem {

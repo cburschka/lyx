@@ -1403,8 +1403,7 @@ int LyXTable::TexEndOfCell(ostream & os, int cell)
             }
         }
         if (nvcell < numberofcells && Linebreaks(nvcell)) {
-//            !column_info[column_of_cell(nvcell)].p_width.empty()) {
-		os << "\\parbox{"
+		os << "\\parbox[t]{"
 		   << GetPWidth(nvcell)
 		   << "}{\\smallskip{}";
 	}

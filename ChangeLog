@@ -1,3 +1,37 @@
+2000-05-04  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C: Prepared all for inserting of multiple
+	paragraphs. Still display stuff to do (alignment and other things),
+	but I would like to use LyXText to do this when we cleaned out the
+	table-support stuff.
+
+	* src/insets/insettabular.C: Changed lot of stuff and added lots
+	of functionality still a lot to do.
+
+	* src/tabular.C: Various functions changed name and moved to be
+	const functions. Added new Read and Write functions and changed
+	lots of things so it works good with tabular-insets (also removed
+	some stuff which is not needed anymore * hacks *).
+
+	* src/lyxcursor.h: added operators == and != which just look if
+	par and pos are (not) equal.
+
+	* src/buffer.C (latexParagraphs): inserted this function to latex
+	all paragraphs form par to endpar as then I can use this too for
+	text-insets.
+
+	* src/text2.C (SetLayout): Changed this to use a cursor this is needed
+	so that I can call this to from text insets with their own cursor.
+
+	* src/buffer.C (makeLaTeXFile): added the output of one \n after the
+	output off all paragraphs (because of the fix below)!
+
+	* src/paragraph.C (TeXOnePar): removed output of \n when we are in
+	the very last paragraph (this could be also the last paragraph of an
+	inset!)
+
+	* src/texrow.h: added rows() call which returns the count-variable.
+
 2000-05-03  Jose Abilio Oliveira Matos <jamatos@novalis.fc.up.pt>
 
 	* lib/lyxrc.example: fix examples for exporting SGML to HTML.

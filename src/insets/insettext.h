@@ -34,10 +34,10 @@ class Buffer;
 */
 class InsetText : public UpdatableInset {
 public:
-	///
-	enum { TEXT_TO_INSET_OFFSET = 1 };
     ///
-	explicit
+    enum { TEXT_TO_INSET_OFFSET = 1 };
+    ///
+    explicit
     InsetText(Buffer *);
     ///
     InsetText(InsetText const &, Buffer *);
@@ -107,6 +107,8 @@ public:
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
     void init(Buffer *, InsetText const * ins = 0);
+    ///
+    void SetParagraphData(LyXParagraph *);
 
     LyXParagraph * par;
 
@@ -178,7 +180,8 @@ private:
     bool copySelection();
     bool pasteSelection();
     ///
-    bool hasSelection() const { return selection_start != selection_end; }
+    bool hasSelection() const
+		{ return (selection_start_cursor != selection_end_cursor); }
     ///
     void SetCharFont(int pos, LyXFont const & font);
     ///
@@ -197,9 +200,9 @@ private:
     ///
     int interline_space;
     ///
-    int selection_start;
+    LyXCursor selection_start_cursor;
     ///
-    int selection_end;
+    LyXCursor selection_end_cursor;
     ///
     mutable LyXCursor cursor;
     ///
@@ -241,9 +244,7 @@ private:
 	inset_x = it.inset_x;
 	inset_y = it.inset_y;
 	interline_space = it.interline_space;
-	selection_start = it.selection_start;
-	selection_end = it.selection_end;
-	cursor = it.cursor;
+	selection_start_cursor = selection_end_cursor = cursor = it.cursor;
 	actrow = it.actrow;
 	no_selection = it.no_selection;
 	the_locking_inset = it.the_locking_inset; // suspect

@@ -88,6 +88,10 @@ public:
 	/** set layout over selection and make a total rebreak of
 	  those paragraphs
 	  */
+	LyXParagraph * SetLayout(LyXCursor & actual_cursor,
+				 LyXCursor & selection_start,
+				 LyXCursor & selection_end,
+				 LyXTextClass::size_type layout);
 	void SetLayout(LyXTextClass::size_type layout);
 	
 	/// used in setlayout

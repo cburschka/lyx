@@ -177,8 +177,6 @@ public:
 		return 0;
 	}
 	///
-	virtual void init(BufferView *) {}
-	///
 	virtual bool InsertInsetAllowed(Inset *) const { return false; }
 	///
 	virtual void setInsetName(const char * s) { name = s; }

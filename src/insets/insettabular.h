@@ -88,13 +88,15 @@ public:
     ///
     void InsetUnlock(BufferView *);
     ///
-    bool LockInsetInInset(UpdatableInset *);
+    void UpdateLocal(BufferView *, bool flag = true);
+    ///
+    bool LockInsetInInset(BufferView *, UpdatableInset *);
     ///
     bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr=false);
     ///
-    void UpdateLocal(BufferView *, bool flag = true);
-    ///
     bool UpdateInsetInInset(BufferView *, Inset *);
+    ///
+    int InsetInInsetY();
     ///
     bool display() const { return tabular->IsLongTabular(); }
     ///
@@ -120,7 +122,7 @@ public:
     ///
     Inset::Code LyxCode() const { return Inset::TABULAR_CODE; }
     ///
-    void GetCursorPos(int & x, int & y);
+    void GetCursorPos(int & x, int & y) const;
     ///
     void ToggleInsetCursor(BufferView *);
     ///
@@ -128,7 +130,7 @@ public:
     ///
     int GetActCell() { return actcell; }
     ///
-    void SetFont(LyXFont const &);
+    void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
     /// Public structures and variables
     ///
@@ -145,17 +147,17 @@ private:
     ///
     void setPos(Painter &, int x, int y) const;
     ///
-    void setWidthOfCell(int pos, int cell, int row);
+    bool SetCellDimensions(Painter & pain, int cell, int row);
     ///
-    UpdatableInset::RESULT moveRight(BufferView *);
-    UpdatableInset::RESULT moveLeft();
+    UpdatableInset::RESULT moveRight(BufferView *, bool lock=true);
+    UpdatableInset::RESULT moveLeft(BufferView *, bool lock=true);
     UpdatableInset::RESULT moveUp();
     UpdatableInset::RESULT moveDown();
     bool moveNextCell();
     bool movePrevCell();
     bool Delete();
     ///
-    void resetPos(BufferView *);
+    void resetPos(Painter &) const;
     ///
     void RemoveTabularRow();
     ///
@@ -163,9 +165,14 @@ private:
     bool hasCellSelection() const {return hasCharSelection() &&
 				 (sel_cell_start != sel_cell_end);}
     ///
+    bool ActivateCellInset(BufferView *, int x=0, int y=0, int button=0);
+    ///
+    bool InsetHit(BufferView * bv, int x, int y) const;
+
+    ///
     /// Private structures and variables
     ///
-    UpdatableInset
+    InsetText
         * the_locking_inset;
     Buffer
         * buffer;

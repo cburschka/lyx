@@ -31,6 +31,11 @@ struct LyXCursor {
 	unsigned long y;
 	///
 	Row * row;
+	///
+	inline bool operator==(const LyXCursor &a) const
+		{ return (a.par == par) && (a.pos == pos); }
+	inline bool operator!=(const LyXCursor &a) const
+		{ return (a.par != par) || (a.pos != pos); }
 };
 
 #endif

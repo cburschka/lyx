@@ -71,6 +71,7 @@
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetfoot.h"
+#include "insets/insettabular.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "LaTeX.h"
@@ -817,6 +818,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			++pos;
 		} else if (tmptok == "ERT") {
 			Inset * inset = new InsetERT(this);
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "Tabular") {
+			Inset * inset = new InsetTabular(this);
 			inset->Read(lex);
 			par->InsertChar(pos, LyXParagraph::META_INSET);
 			par->InsertInset(pos, inset);
@@ -2025,6 +2033,52 @@ void Buffer::makeLaTeXFile(string const & fname,
 		texrow.newline();
 	}
 	
+	latexParagraphs(ofs, paragraph, 0, texrow);
+
+	// add this just in case after all the paragraphs
+	ofs << endl;
+	texrow.newline();
+
+	if (!lyxrc.language_auto_end && params.language != "default") {
+		ofs << subst(lyxrc.language_command_end, "$$lang",
+			     params.language)
+		    << endl;
+		texrow.newline();
+	}
+
+	if (!only_body) {
+		ofs << "\\end{document}\n";
+		texrow.newline();
+	
+		lyxerr[Debug::LATEX] << "makeLaTeXFile...done" << endl;
+	} else {
+		lyxerr[Debug::LATEX] << "LaTeXFile for inclusion made."
+				     << endl;
+	}
+
+	// Just to be sure. (Asger)
+	texrow.newline();
+
+	// tex_code_break_column's value is used to decide
+	// if we are in batchmode or not (within mathed_write()
+	// in math_write.C) so we must set it to a non-zero
+	// value when we leave otherwise we save incorrect .lyx files.
+	tex_code_break_column = lyxrc.ascii_linelen;
+
+	ofs.close();
+	if (ofs.fail()) {
+		lyxerr << "File was not closed properly." << endl;
+	}
+	
+	lyxerr.debug() << "Finished making latex file." << endl;
+}
+
+//
+// LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
+//
+void Buffer::latexParagraphs(ostream & ofs, LyXParagraph *par,
+			     LyXParagraph *endpar, TexRow & texrow)
+{
 	bool was_title = false;
 	bool already_title = false;
 #ifdef HAVE_SSTREAM
@@ -2035,10 +2089,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 	TexRow ft_texrow;
 	int ftcount = 0;
 
-	LyXParagraph * par = paragraph;
-
 	// if only_body
-	while (par) {
+	while (par != endpar) {
 #ifndef HAVE_SSTREAM
 		ostrstream ftnote;
 		if (tmpholder) {
@@ -2048,7 +2100,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		}
 #endif
 		if (par->IsDummy())
-			lyxerr[Debug::LATEX] << "Error in MakeLateXFile."
+			lyxerr[Debug::LATEX] << "Error in latexParagraphs."
 					     << endl;
 		LyXLayout const & layout =
 			textclasslist.Style(params.textclass,
@@ -2056,7 +2108,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	    
 	        if (layout.intitle) {
 			if (already_title) {
-				lyxerr <<"Error in MakeLatexFile: You"
+				lyxerr <<"Error in latexParagraphs: You"
 					" should not mix title layouts"
 					" with normal ones." << endl;
 			} else
@@ -2114,41 +2166,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		ofs << "\\maketitle\n";
 		texrow.newline();
 	}
-
-	if (!lyxrc.language_auto_end && params.language != "default") {
-		ofs << subst(lyxrc.language_command_end, "$$lang",
-			     params.language)
-		    << endl;
-		texrow.newline();
-	}
-
-	if (!only_body) {
-		ofs << "\\end{document}\n";
-		texrow.newline();
-	
-		lyxerr[Debug::LATEX] << "makeLaTeXFile...done" << endl;
-	} else {
-		lyxerr[Debug::LATEX] << "LaTeXFile for inclusion made."
-				     << endl;
-	}
-
-	// Just to be sure. (Asger)
-	texrow.newline();
-
-	// tex_code_break_column's value is used to decide
-	// if we are in batchmode or not (within mathed_write()
-	// in math_write.C) so we must set it to a non-zero
-	// value when we leave otherwise we save incorrect .lyx files.
-	tex_code_break_column = lyxrc.ascii_linelen;
-
-	ofs.close();
-	if (ofs.fail()) {
-		lyxerr << "File was not closed properly." << endl;
-	}
-	
-	lyxerr.debug() << "Finished making latex file." << endl;
 }
-
 
 bool Buffer::isLatex() const
 {
