@@ -286,6 +286,7 @@ void BufferView::Pimpl::redoCurrentBuffer()
 	lyxerr[Debug::INFO] << "BufferView::redoCurrentBuffer" << endl;
 	if (buffer_ && bv_->text) {
 		resizeCurrentBuffer();
+		updateScrollbar();
 		owner_->updateLayoutChoice();
 		repaint();
 	}
@@ -372,9 +373,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	switchKeyMap();
 	owner_->allowInput();
 
-	/// clear the "Formatting Document" message
-	owner_->message("");
-
+	updateScrollbar();
+ 
 	return 0;
 }
 
@@ -647,6 +647,7 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, mouse_button::state bu
 		/* This will fit the cursor on the screen
 		 * if necessary */
 		update(text, BufferView::SELECT|BufferView::FITCUR);
+		workarea().haveSelection(bv_->getLyXText()->selection.set());
 	}
 }
 
@@ -676,6 +677,7 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, mouse_button::state bu
 		/* This will fit the cursor on the screen
 		 * if necessary */
 		update(text, BufferView::SELECT|BufferView::FITCUR);
+		workarea().haveSelection(bv_->getLyXText()->selection.set());
 	}
 }
 

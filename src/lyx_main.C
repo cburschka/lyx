@@ -141,7 +141,7 @@ LyX::LyX(int & argc, char * argv[])
 		// try to dispatch to last loaded buffer first
 		bool const dispatched = last_loaded->dispatch(batch_command, &success);
 
-		if (success) { 
+		if (dispatched) {
 			QuitLyX();
 			exit(!success);
 		}

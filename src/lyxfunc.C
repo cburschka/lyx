@@ -1427,18 +1427,17 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	case LFUN_SCREEN_FONT_UPDATE:
 	{
 		// handle the screen font changes.
-		//
 		lyxrc.set_font_norm_type();
 		lyx_gui::update_fonts();
+		// We also need to empty the textcache so that
+		// the buffer will be formatted correctly after
+		// a zoom change.
+		textcache.clear();
 		// Of course we should only do the resize and the textcache.clear
 		// if values really changed...but not very important right now. (Lgb)
 		// All visible buffers will need resize
 		owner->view()->resize();
 		owner->view()->repaint();
-		// We also need to empty the textcache so that
-		// the buffer will be formatted correctly after
-		// a zoom change.
-		textcache.clear();
 	}
 	break;
 
