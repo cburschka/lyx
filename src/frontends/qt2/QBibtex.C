@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
  */
@@ -71,14 +72,14 @@ void QBibtex::update_contents()
 		bibs = split(bibs, bib, ',');
 		bib = trim(bib);
 		if (!bib.empty())
-			dialog_->databaseLB->inSort(bib.c_str());
+			dialog_->databaseLB->insertItem(bib.c_str());
 	}
 
 	string bibtotoc = "bibtotoc";
 	string bibstyle(controller().params().getOptions().c_str());
 
 	// bibtotoc exists?
-	if (prefixIs(bibstyle,bibtotoc)) {
+	if (prefixIs(bibstyle, bibtotoc)) {
 		dialog_->bibtocCB->setChecked(true);
 
 		// bibstyle exists?
@@ -90,29 +91,42 @@ void QBibtex::update_contents()
 		dialog_->bibtocCB->setChecked(false);
 
 
+	dialog_->styleCB->clear();
+ 
+	int item_nr(-1);
+ 
 	vector<string> const str = getVectorFromString(
-		controller().getBibStyles(),"\n");
+		controller().getBibStyles(), "\n");
 	for (vector<string>::const_iterator it = str.begin();
 		it != str.end(); ++it) {
-		dialog_->styleCB->insertItem(ChangeExtension(*it, "").c_str());
+		string item(ChangeExtension(*it, "")); 
+		if (item == bibstyle)
+			item_nr = int(it - str.begin());
+		dialog_->styleCB->insertItem(item.c_str());
 	}
-	dialog_->styleCB->insertItem(bibstyle.c_str(),0);
+
+	if (item_nr == -1) {
+		dialog_->styleCB->insertItem(bibstyle.c_str());
+		item_nr = dialog_->styleCB->count() - 1;
+	}
+
+	dialog_->styleCB->setCurrentItem(item_nr);
 }
 
 
 void QBibtex::apply()
 {
-	string dbs;
+	string dbs(dialog_->databaseLB->text(0).latin1());
 
-	for (unsigned int i = 0; i < dialog_->databaseLB->count(); ++i) {
+	unsigned int maxCount = dialog_->databaseLB->count();
+	for (unsigned int i = 1; i < maxCount; i++) {
+		dbs += ',';
 		dbs += dialog_->databaseLB->text(i).latin1();
-		if (i != dialog_->databaseLB->count())
-			dbs += ",";
 	}
+
 	controller().params().setContents(dbs);
 
-	string bibstyle(dialog_->styleCB->text(0).latin1());
-
+	string const bibstyle(dialog_->styleCB->currentText().latin1());
 	bool const bibtotoc(dialog_->bibtocCB->isChecked());
 
 	if (bibtotoc && (!bibstyle.empty())) {
@@ -121,8 +135,8 @@ void QBibtex::apply()
 	} else if (bibtotoc) {
 		// bibtotoc and no style
 		controller().params().setOptions("bibtotoc");
-	} else if (!bibstyle.empty()){
-		// only style
+	} else {
+		// only style. An empty one is valid!
 		controller().params().setOptions(bibstyle);
 	}
 }

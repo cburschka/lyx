@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>301</width>
+            <width>293</width>
             <height>318</height>
         </rect>
     </property>
@@ -313,10 +313,22 @@
         <slot>deletePressed()</slot>
     </connection>
     <connection>
+        <sender>styleCB</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QBibtexDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
         <sender>databaseLB</sender>
         <signal>selectionChanged()</signal>
         <receiver>QBibtexDialogBase</receiver>
         <slot>databaseChanged()</slot>
+    </connection>
+    <connection>
+        <sender>databaseLB</sender>
+        <signal>selectionChanged()</signal>
+        <receiver>QBibtexDialogBase</receiver>
+        <slot>change_adaptor()</slot>
     </connection>
     <slot access="public">addPressed()</slot>
     <slot access="public">browsePressed()</slot>
