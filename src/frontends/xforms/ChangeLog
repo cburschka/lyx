@@ -1,3 +1,7 @@
+2001-04-24  Allan Rae  <rae@lyx.org>
+
+	* xforms_helpers.C (formatted): two consecutive spaces would kill it.
+
 2001-04-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* xforms_helpers.C (formatted): do not use string::substr(1) on a

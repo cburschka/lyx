@@ -50,8 +50,10 @@ string formatted(string const & sin, int w, int size, int style)
 	for (string::const_iterator sit = sin.begin();
 	     sit != sin.end(); ++sit) {
 		if ((*sit) == ' ' || (*sit) == '\n') {
-			sentence.push_back(word);
-			word.erase();
+			if (!word.empty()) {
+				sentence.push_back(word);
+				word.erase();
+			}
 			if ((*sit) == '\n') word += '\n';
 			
 		} else {
