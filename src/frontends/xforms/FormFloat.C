@@ -83,7 +83,6 @@ void FormFloat::update()
 	bool here_definitely = false;
 
 	string placement(controller().params().placement);
-	std::cerr << "FormFloat::update() " << placement << std::endl;
 	
 	if (contains(placement, "H")) {
 		here_definitely = true;
@@ -123,4 +122,6 @@ ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 			fl_set_button(dialog_->button_here_definitely, false);
 		}
 	}
+
+	return ButtonPolicy::SMI_VALID;
 }
