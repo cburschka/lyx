@@ -313,10 +313,16 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			++cell;
 		}
 
+// Would be nice, but for some completely unfathomable reason,
+// on a col resize to a new fixed width, even though the insettexts
+// are resized, the cell isn't, but drawing all cells in a tall table
+// has the desired effect somehow. Complete dark magic.
+#if 0
 		// avoiding drawing the rest of a long table is
 		// a pretty big speedup
 		if (y > bv->workHeight())
 			break;
+#endif
 
 		y += tabular->GetDescentOfRow(i) +
 			tabular->GetAscentOfRow(i + 1) +
