@@ -1,5 +1,11 @@
 2003-03-07  Angus Leeming  <leeming@lyx.org>
 
+	* insetexternal.C: remove operator== and operator!= for
+	InsetExternal::Params. They were used only by the old controller
+	scheme.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
 	* insetcommand.C (localDispatch):
 	* insetexternal.C (localDispatch):
 	* insetfloat.C (localDispatch):

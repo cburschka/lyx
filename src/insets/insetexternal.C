@@ -359,22 +359,6 @@ void InsetExternal::editExternal() const
 }
 
 
-bool operator==(InsetExternal::Params const & left,
-		InsetExternal::Params const & right)
-{
-	return ((left.filename   == right.filename) &&
-		(left.parameters == right.parameters) &&
-		(left.templ.lyxName == right.templ.lyxName));
-}
-
-
-bool operator!=(InsetExternal::Params const & left,
-		InsetExternal::Params const & right)
-{
-	return	!(left == right);
-}
-
-
 string const InsetExternalMailer::name_("external");
 
 InsetExternalMailer::InsetExternalMailer(InsetExternal & inset)

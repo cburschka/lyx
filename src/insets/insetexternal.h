@@ -123,10 +123,6 @@ private:
 	string tempname_;
 };
 
-///
-bool operator==(InsetExternal::Params const &, InsetExternal::Params const &);
-///
-bool operator!=(InsetExternal::Params const &, InsetExternal::Params const &);
 
 #include "mailinset.h"
 
