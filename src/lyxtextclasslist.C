@@ -20,7 +20,6 @@
 #include "debug.h"
 #include "lyxlex.h"
 #include "gettext.h"
-
 #include "frontends/Alert.h"
 
 #include "support/lyxfunctional.h"

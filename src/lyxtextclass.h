@@ -23,9 +23,12 @@
 
 #include "support/types.h"
 
+#include <boost/shared_ptr.hpp>
+
 #include <vector>
 
 class LyXLex;
+class Counters;
 
 ///
 class LyXTextClass {
@@ -36,9 +39,9 @@ public:
 	typedef LayoutList::const_iterator const_iterator;
 	///
 	explicit
-	LyXTextClass (string const & = string(),
-		      string const & = string(),
-		      string const & = string());
+	LyXTextClass(string const & = string(),
+		     string const & = string(),
+		     string const & = string());
 
 	///
 	const_iterator begin() const { return layoutlist_.begin(); }
@@ -56,6 +59,8 @@ public:
 	///
 	void readFloat(LyXLex &);
 	///
+	void readCounter(LyXLex &);
+	///
 	bool hasLayout(string const & name) const;
 
 	///
@@ -68,9 +73,10 @@ public:
 	FloatList & floats();
 	/// the list of floats defined in the class
 	FloatList const & floats() const;
-
+	/// The Counters present in this textclass.
+	Counters & counters() const;
 	///
-	string const defaultLayoutName() const;
+	string const & defaultLayoutName() const;
 	///
 	LyXLayout_ptr const & defaultLayout() const;
 	///
@@ -191,6 +197,9 @@ private:
 
 	///
 	FloatList floatlist_;
+
+	///
+	boost::shared_ptr<Counters> ctrs_;
 
 	/// Has this layout file been loaded yet?
 	mutable bool loaded;

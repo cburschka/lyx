@@ -20,7 +20,6 @@
 
 #include "buffer.h"
 #include "bufferlist.h"
-#include "counters.h"
 #include "LyXAction.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
@@ -154,7 +153,7 @@ const int LYX_FORMAT = 221;
 Buffer::Buffer(string const & file, bool ronly)
 	: niceFile(true), lyx_clean(true), bak_clean(true),
 	  unnamed(false), dep_clean(0), read_only(ronly),
-	  filename_(file), users(0), ctrs(new Counters)
+	  filename_(file), users(0)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 	filepath_ = OnlyPath(file);
@@ -1171,7 +1170,7 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 						     "Use LyX 0.10.x to read this!"));
 					return false;
 				} else {
-					string command = 
+					string command =
 						LibFileSearch("lyx2lyx", "lyx2lyx");
 					if (command.empty()) {
 						Alert::alert(_("ERROR!"),
@@ -3221,7 +3220,7 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 
 	if (!keys.empty())
 		return keys;
- 
+
 	// Might be either using bibtex or a child has bibliography
 	for (inset_iterator it = inset_const_iterator_begin();
 		it != inset_const_iterator_end(); ++it) {
@@ -3337,12 +3336,6 @@ bool Buffer::isMultiLingual()
 			return true;
 
 	return false;
-}
-
-
-Counters & Buffer::counters() const
-{
-	return *ctrs.get();
 }
 
 

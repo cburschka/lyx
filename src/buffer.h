@@ -27,11 +27,9 @@
 #include "ParagraphList.h"
 #include "paragraph.h"
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
 class BufferView;
-class Counters;
 class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
@@ -311,9 +309,6 @@ public:
 
 	/// Used when typesetting to place errorboxes.
 	TexRow texrow;
-	/// Buffer-wide counter array
-	Counters & counters() const;
-
 private:
 	/// is save needed
 	mutable bool lyx_clean;
@@ -346,10 +341,6 @@ private:
 	    of the buffers in the list of users to do a #updateLayoutChoice#.
 	*/
 	BufferView * users;
-
-	/// The pointer is const although its contents may not be
-	boost::scoped_ptr<Counters> const ctrs;
-
 public:
 	///
 	class inset_iterator {

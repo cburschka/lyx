@@ -55,10 +55,6 @@ private:
 /// Every instantiation is an array of counters of type Counter.
 class Counters {
 public:
-	///
-	Counters();
-	///
-	//~Counters();
 	/// Add a new counter to array.
 	void newCounter(string const & newc);
 	/// Add new counter having oldc as its master.

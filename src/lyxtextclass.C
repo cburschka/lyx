@@ -18,6 +18,7 @@
 #include "lyxtextclass.h"
 #include "debug.h"
 #include "lyxlex.h"
+#include "counters.h"
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"
@@ -48,7 +49,7 @@ struct compare_name {
 
 LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 			   string const & desc)
-	: name_(fn), latexname_(cln), description_(desc)
+	: name_(fn), latexname_(cln), description_(desc), ctrs_(new Counters)
 {
 	outputType_ = LATEX;
 	columns_ = 1;
@@ -108,7 +109,8 @@ enum TextClassTags {
 	TC_PROVIDESURL,
 	TC_LEFTMARGIN,
 	TC_RIGHTMARGIN,
-	TC_FLOAT
+	TC_FLOAT,
+	TC_COUNTER
 };
 
 
@@ -118,6 +120,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 	keyword_item textClassTags[] = {
 		{ "classoptions",    TC_CLASSOPTIONS },
 		{ "columns",         TC_COLUMNS },
+		{ "counter",         TC_COUNTER },
 		{ "defaultfont",     TC_DEFAULTFONT },
 		{ "defaultstyle",    TC_DEFAULTSTYLE },
 		{ "float",           TC_FLOAT },
@@ -148,7 +151,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				     << MakeDisplayPath(filename)
 				     << endl;
 
-	LyXLex lexrc(textClassTags, TC_FLOAT);
+	LyXLex lexrc(textClassTags, TC_COUNTER);
 	bool error = false;
 
 	lexrc.setFile(filename);
@@ -326,6 +329,9 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			break;
 		case TC_FLOAT:
 			readFloat(lexrc);
+			break;
+		case TC_COUNTER:
+			readCounter(lexrc);
 			break;
 		}
 	}
@@ -600,6 +606,64 @@ void LyXTextClass::readFloat(LyXLex & lexrc)
 }
 
 
+enum CounterTags {
+	CT_NAME = 1,
+	CT_WITHIN,
+	CT_END
+};
+
+void LyXTextClass::readCounter(LyXLex & lexrc)
+{
+	keyword_item counterTags[] = {
+		{ "end", CT_END },
+		{ "name", CT_NAME },
+		{ "within", CT_WITHIN }
+	};
+
+	lexrc.pushTable(counterTags, CT_END);
+
+	string name;
+	string within;
+
+	bool getout = false;
+	while (!getout && lexrc.isOK()) {
+		int le = lexrc.lex();
+		switch (le) {
+		case LyXLex::LEX_UNDEF:
+			lexrc.printError("Unknown ClassOption tag `$$Token'");
+			continue;
+		default: break;
+		}
+		switch (static_cast<CounterTags>(le)) {
+		case CT_NAME:
+			lexrc.next();
+			name = lexrc.getString();
+			break;
+		case CT_WITHIN:
+			lexrc.next();
+			within = lexrc.getString();
+			if (within == "none")
+				within.erase();
+			break;
+		case CT_END:
+			getout = true;
+			break;
+		}
+	}
+
+	// Here if have a full float if getout == true
+	if (getout) {
+		if (within.empty()) {
+			ctrs_->newCounter(name);
+		} else {
+			ctrs_->newCounter(name, within);
+		}
+	}
+
+	lexrc.popTable();
+}
+
+
 LyXFont const & LyXTextClass::defaultfont() const
 {
 	return defaultfont_;
@@ -714,7 +778,13 @@ FloatList const & LyXTextClass::floats() const
 }
 
 
-string const LyXTextClass::defaultLayoutName() const
+Counters & LyXTextClass::counters() const
+{
+	return *ctrs_.get();
+}
+
+
+string const & LyXTextClass::defaultLayoutName() const
 {
 	// This really should come from the actual layout... (Lgb)
 	return defaultlayout_;

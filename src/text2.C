@@ -98,6 +98,8 @@ void LyXText::init(BufferView * bview, bool reinit)
 	}
 	setCursorIntern(bview, firstrow->par(), 0);
 	selection.cursor = cursor;
+
+	updateCounters(bview);
 }
 
 
@@ -382,9 +384,6 @@ void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 {
 	// insert a new row, starting at position 0
 	insertRow(row, par, 0);
-
-	// set the counters
-	setCounter(bview->buffer(), par);
 
 	// and now append the whole paragraph behind the new row
 	if (!row) {
@@ -1218,7 +1217,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		par->params().appendix(par->previous()->params().appendix());
 		if (!par->params().appendix() && par->params().startOfAppendix()) {
 			par->params().appendix(true);
-			buf->counters().reset();
+			textclass.counters().reset();
 		}
 		par->enumdepth = par->previous()->enumdepth;
 		par->itemdepth = par->previous()->itemdepth;
@@ -1272,7 +1271,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 		if (i >= 0 && i <= buf->params.secnumdepth) {
 
-			buf->counters().step(layout->latexname());
+			textclass.counters().step(layout->latexname());
 
 			// Is there a label? Useful for Chapter layout
 			if (!par->params().appendix()) {
@@ -1299,7 +1298,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 					langtype = "latin";
 			}
 
-			s << buf->counters()
+			s << textclass.counters()
 				.numberLabel(layout->latexname(),
 					     numbertype, langtype, head);
 
@@ -1308,9 +1307,9 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 			// possible...
 
 			// reset enum counters
-			buf->counters().reset("enum");
+			textclass.counters().reset("enum");
 		} else if (layout->labeltype < LABEL_COUNTER_ENUMI) {
-			buf->counters().reset("enum");
+			textclass.counters().reset("enum");
 		} else if (layout->labeltype == LABEL_COUNTER_ENUMI) {
 			// FIXME
 			// Yes I know this is a really, really! bad solution
@@ -1333,16 +1332,16 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				break;
 			}
 
-			buf->counters().step(enumcounter);
+			textclass.counters().step(enumcounter);
 
-			s << buf->counters()
+			s << textclass.counters()
 				.numberLabel(enumcounter,
 					     "enumeration", langtype);
 			par->params().labelString(s.str().c_str());
 		}
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
-		buf->counters().step("bibitem");
-		int number = buf->counters().value("bibitem");
+		textclass.counters().step("bibitem");
+		int number = textclass.counters().value("bibitem");
 		if (!par->bibkey) {
 			InsetCommandParams p("bibitem");
 			par->bibkey = new InsetBibKey(p);
@@ -1374,7 +1373,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				Floating const & fl
 					= textclass.floats().getType(static_cast<InsetFloat*>(in)->type());
 
-				buf->counters().step(fl.type());
+				textclass.counters().step(fl.type());
 
 				// Doesn't work... yet.
 				ostringstream o;
@@ -1390,17 +1389,19 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		}
 		par->params().labelString(s);
 
-		// reset the enumeration counter. They are always resetted
+		// reset the enumeration counter. They are always reset
 		// when there is any other layout between
+		// Just fall-through between the cases so that all
+		// enum counters deeper than enumdepth is also reset.
 		switch (par->enumdepth) {
 		case 0:
-			buf->counters().reset("enumi");
+			textclass.counters().reset("enumi");
 		case 1:
-			buf->counters().reset("enumii");
+			textclass.counters().reset("enumii");
 		case 2:
-			buf->counters().reset("enumiii");
+			textclass.counters().reset("enumiii");
 		case 3:
-			buf->counters().reset("enumiv");
+			textclass.counters().reset("enumiv");
 		}
 	}
 }
@@ -1415,7 +1416,9 @@ void LyXText::updateCounters(BufferView * bview) const
 	Row * row = firstrow;
 	par = row->par();
 
-	bview->buffer()->counters().reset();
+	// CHECK if this is really needed. (Lgb)
+	bview->buffer()->params.getLyXTextClass().counters().reset();
+
 	while (par) {
 		while (row->par() != par)
 			row = row->next();

@@ -1,23 +1,50 @@
+2002-09-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (init): update counters after init
+	(insertParagraph): no need to set counter on idividual paragraphs.
+	(setCounter): access the counters object in the textclass object
+	on in the buffer object.
+	(updateCounters): ditto
+
+	* lyxtextclass.C: include counters.h, add variable ctrs_ as
+	shared_ptr<Counters> to avoid loading counters.h in all
+	compilation units.
+	(LyXTextClass): initialize ctrs_
+	(TextClassTags): add TC_COUNTER, and ...
+	(Read): use it here.
+	(CounterTags): new tags
+	(readCounter): new function
+	(counters): new funtion
+	(defaultLayoutName): return a const reference
+
+	* counters.C (Counters): remove contructor
+	(newCounter): remove a couple of unneeded statements.
+	(newCounter): simplify a bit.
+	(numberLabel): some small formatting changes.
+
+	* buffer.[Ch]: remove all traces of counters, move the Counters
+	object to the LyXTextClass.
+
 2002-09-06  Alain Castera  <castera@in2p3.fr>
 
-        * tabular.C: uses \tabularnewline; uses >{...} construct from array
+	* tabular.C: uses \tabularnewline; uses >{...} construct from array
 	package to set the horizontal alignment on fixed width columns.
 
-        * lyx_sty.C: 
+	* lyx_sty.C:
 	* lyx_sty.h: added tabularnewline macro def.
 
-        * LaTeXFeatures.C: added NeedTabularnewline macro feature
+	* LaTeXFeatures.C: added NeedTabularnewline macro feature
 
 2002-09-06  John Levon  <levon@movementarian.org>
 
 	* LyXAction.C: tooltips for sub/superscript
 
 	* MenuBackend.C: a bit more verbose
- 
+
 	* lyxfunc.C: tiny clean
 
-	* undo_funcs.C: document undo_frozen 
- 
+	* undo_funcs.C: document undo_frozen
+
 2002-09-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* counters.C (Counters): add missing algorithm counter.
@@ -37,7 +64,7 @@
 
 2002-09-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* lyxtextclass.C (TextClassTags): add TC_FLOAT 
+	* lyxtextclass.C (TextClassTags): add TC_FLOAT
 	(Read): add float->TC_FLOAT to textclassTags
 	(Read): and handle it in the switch
 	(readFloat): new function

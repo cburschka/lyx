@@ -17,6 +17,7 @@
 
 #include "counters.h"
 #include "debug.h"
+
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 
@@ -59,44 +60,18 @@ void Counter::reset()
 	value_ = 0;
 }
 
+
 string Counter::master() const
 {
 	return master_;
 }
+
 
 void Counter::setMaster(string const & m)
 {
 	master_ = m;
 }
 
-
-Counters::Counters()
-{
-	// Ehh, should this take a textclass arg?
-
-	// Sectioning counters:
-	newCounter("part");
-	newCounter("chapter");
-	newCounter("section", "chapter");
-	newCounter("subsection", "section");
-	newCounter("subsubsection", "subsection");
-	newCounter("paragraph", "subsubsection");
-	newCounter("subparagraph", "paragraph");
-
-	// Enumeration counters:
-	newCounter("enumi");
-	newCounter("enumii", "enumi");
-	newCounter("enumiii", "enumii");
-	newCounter("enumiv", "enumiii");
-
-	// Biblio:
-	newCounter("bibitem");
-
-	// Float counters:
-	newCounter("figure");
-	newCounter("table");
-	newCounter("algorithm");
-}
 
 
 void Counters::newCounter(string const & newc)
@@ -109,8 +84,6 @@ void Counters::newCounter(string const & newc)
 		return;
 	}
 	counterList[newc];
-	cit = counterList.find(newc);
-	cit->second.setMaster("");
 }
 
 
@@ -131,9 +104,7 @@ void Counters::newCounter(string const & newc, string const & masterc)
 		return;
 	}
 
-	counterList[newc];
-	cit = counterList.find(newc);
-	cit->second.setMaster(masterc);
+	counterList[newc].setMaster(masterc);
 }
 
 
@@ -343,9 +314,11 @@ string Counters::numberLabel(string const & ctr,
 		}
 
 	} else if (numbertype == "enumeration") {
-		ostringstream ei, eii, eiii, eiv;
-		//string ei, eiii, eiv;
-		//char eii;
+		ostringstream ei;
+		ostringstream eii;
+		ostringstream eiii;
+		ostringstream eiv;
+
 		if (langtype == "hebrew") {
 			ei << '.' << value("enumi");
 			eii << '(' << hebrewCounter(value("enumii")) << ')';

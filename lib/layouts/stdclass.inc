@@ -43,4 +43,5 @@ Input stdstruct.inc
 Input lyxmacros.inc
 Input stdlayouts.inc
 Input stdfloats.inc
+Input stdcounters.inc
 Input obsolete.inc
