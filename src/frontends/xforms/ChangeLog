@@ -5,6 +5,8 @@
 
 2001-09-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormDocument.C (c-tor): initialise some variables.
+
 	* forms/form_citation.fd: remove spurious shortcut to a labelframe!
 	(Thereby removing a warning message when the dialog is built.)
 

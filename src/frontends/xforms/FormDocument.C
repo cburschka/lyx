@@ -46,7 +46,9 @@ using Liason::setMinibuffer;
 using SigC::slot;
 
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Document Layout")), fbullet(0)
+	: FormBaseBD(lv, d, _("Document Layout")),
+	  ActCell(0), Confirmed(0),
+	  current_bullet_panel(0), current_bullet_depth(0), fbullet(0)
 {
     // let the dialog be shown
     // This is a permanent connection so we won't bother
