@@ -138,6 +138,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
+	{ "\\tex_allows_spaces", LyXRC::RC_TEX_ALLOWS_SPACES },
 	{ "\\ui_file", LyXRC::RC_UIFILE },
 	{ "\\use_alt_language", LyXRC::RC_USE_ALT_LANG },
 	{ "\\use_escape_chars", LyXRC::RC_USE_ESC_CHARS },
@@ -250,6 +251,7 @@ void LyXRC::setDefaults() {
 	default_language = "english";
 	show_banner = true;
 	cygwin_path_fix = false;
+	tex_allows_spaces = false;
 	date_insert_format = "%A, %e %B %Y";
 	cursor_follows_scrollbar = false;
 	dialogs_iconify_with_main = false;
@@ -384,6 +386,12 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next()) {
 				cygwin_path_fix = lexrc.getBool();
 				os::cygwin_path_fix(cygwin_path_fix);
+ 			}
+ 			break;
+ 
+		case RC_TEX_ALLOWS_SPACES:
+			if (lexrc.next()) {
+				tex_allows_spaces = lexrc.getBool();
  			}
  			break;
  
@@ -1257,6 +1265,11 @@ void LyXRC::output(ostream & os) const
 		if (cygwin_path_fix != system_lyxrc.cygwin_path_fix) {
 			os << "\\cygwin_path_fix_needed "
 			   << tostr(cygwin_path_fix) << '\n';
+  		}
+	case RC_TEX_ALLOWS_SPACES:
+		if (tex_allows_spaces != system_lyxrc.tex_allows_spaces) {
+			os << "\\tex_allows_spaces "
+			   << tostr(tex_allows_spaces) << '\n';
   		}
 	case RC_KBMAP_PRIMARY:
 		if (primary_kbmap != system_lyxrc.primary_kbmap) {

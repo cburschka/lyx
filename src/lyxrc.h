@@ -124,6 +124,7 @@ enum LyXRCTags {
 	RC_USE_PSPELL,
 #endif
  	RC_CYGWIN_PATH_FIX,
+	RC_TEX_ALLOWS_SPACES,
 	RC_PATH_PREFIX,
 	RC_LAST
 };
@@ -357,6 +358,8 @@ enum LyXRCTags {
 	float preview_scale_factor;
 	///
 	bool cygwin_path_fix;
+	/// True if the TeX engine can handle file names containing spaces
+	bool tex_allows_spaces;
 	/** Prepend paths to the PATH environment variable.
 	 *  The string is input, stored and output in native format.
 	 */

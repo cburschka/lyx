@@ -83,7 +83,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	// LaTeX backend
 	else if (backend_format == format)
 		buffer->makeLaTeXFile(filename, string(), true);
-	else if (contains(buffer->filePath(), ' ')) {
+	else if (!lyxrc.tex_allows_spaces 
+		 && contains(buffer->filePath(), ' ')) {
 		Alert::alert(_("Cannot run LaTeX."),
 			   _("The path to the lyx file cannot contain spaces."));
 		return false;

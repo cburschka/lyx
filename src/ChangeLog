@@ -1,3 +1,14 @@
+2005-03-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxrc.C (setDefaults, read, output): add support for
+	tex_allows_spaces. 
+
+	* exporter.C (Export): allows files in directory containing spaces
+	if tex_allows_spaces is true.
+
+	* buffer.C (makeLaTeXFile): if the document path contains spaces,
+	output it in double quotes.
+
 2005-03-21  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lyx_main.C: fix binding of tabulator key (especially S-Tab).

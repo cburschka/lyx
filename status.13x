@@ -19,6 +19,10 @@ What's new
 
 ** Updates
 
+- It is now possible to typeset files which reside in a directory with
+  spaces in its name; this requires a modern TeX implementation (such
+  as teTeX 3.0).
+
 - Implement new functions buffer-next and buffer-previous that allow
   to cycle through open buffers; they are respectively bound to
   Ctrl-PageDown and Control-PageUp (except with mac bindings, where
@@ -30,6 +34,8 @@ What's new
   holds for ligature breaks and hyphenation marks. This impacts word
   level operation like selection by double-click or index entry
   defaults.
+
+- The ``annote'' field of BibTeX entries is now shown in citation preview.
 
 - update the aastex textclass to AASTeX 5.2
 
@@ -82,6 +88,9 @@ What's new
   documents upside-down should select 'swap landscape' in gv options.
 
 - Semantic improvements in the Insert>Cross reference dialog.
+
+- When showing a preview of a bibtex entry in the Insert>Citation
+  Reference dialog, handle \% correctly.
 
 - Fix display of citations when using 'et al.'
 
