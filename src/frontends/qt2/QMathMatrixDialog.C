@@ -79,8 +79,8 @@ void QMathMatrixDialog::slotOK()
 {
 	char const c = v_align_c[valignCO->currentItem()];
 	char const * sh = halignED->text().latin1();
-	int const nx = int(rowsSB->value());
-	int const ny = int(columnsSB->value());
+	int const nx = int(columnsSB->value());
+	int const ny = int(rowsSB->value());
 
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
