@@ -3264,7 +3264,7 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 					 LyXLayout const & style,
 					 LyXParagraph::size_type & i,
 					 int & column,
-					 LyXParagraph::value_type c)
+					 LyXParagraph::value_type const c)
 {
 	// Two major modes:  LaTeX or plain
 	// Handle here those cases common to both modes

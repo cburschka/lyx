@@ -620,7 +620,7 @@ private:
 				   LyXFont & basefont, bool & open_font,
 				   LyXLayout const & style,
 				   size_type & i,
-				   int & column, char const c);
+				   int & column, value_type const c);
 	///
 	unsigned int id_;
 	///
