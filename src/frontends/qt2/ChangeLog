@@ -1,3 +1,18 @@
+2002-07-24  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog_private.C (done): add a false to the arguments passed to
+	getLyXFunc.
+
+	* QBibtex.C:
+	* QCommandBuffer.C: add a using std::vector directive.
+
+	* QBibtexDialog.C: s/<vector.h>/<vector>/
+
+	* QCommandBuffer.C: remove trailing semi-colon at the end of the
+	namespace scope.
+
+	* QTexinfo.h: s/vector<string>/std::vector<string>/
+
 2002-07-23  Edwin Leuven <leuven@fee.uva.nl>
 
 	* QBibtex.C: syle combobox instead of listbox

@@ -7,7 +7,7 @@
  */
 
 #include <config.h>
-#include <vector.h> 
+#include <vector> 
 #include "ControlBibtex.h"
 #include "gettext.h"
 #include "debug.h"

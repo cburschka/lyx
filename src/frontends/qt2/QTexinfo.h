@@ -45,11 +45,11 @@ private:
 	///
 	ControlTexinfo::texFileSuffix activeStyle;
 	///
-	vector<string> cls_;
+	std::vector<string> cls_;
 	///
-	vector<string> sty_;
+	std::vector<string> sty_;
 	///
-	vector<string> bst_;
+	std::vector<string> bst_;
 };
 
 #endif // QTEXINFO_H

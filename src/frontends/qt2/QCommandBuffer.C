@@ -19,7 +19,9 @@
 #include <qcombobox.h>
 #include <qtoolbutton.h>
 #include <qpixmap.h>
- 
+
+using std::vector;
+
 namespace {
  
 class QTempComboBox : public QComboBox {
@@ -31,7 +33,7 @@ public:
 	void popup() { QComboBox::popup(); }
 };
 
-};
+}
  
 QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
 	: QToolBar(view), view_(view), controller_(control)

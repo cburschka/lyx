@@ -24,7 +24,9 @@
 #include "QBibtexDialog.h"
 #include "QBibtex.h"
 #include "Qt2BC.h"
- 
+
+using std::vector;
+
 typedef Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> > base_class;
 
 QBibtex::QBibtex(ControlBibtex & c, Dialogs &)
