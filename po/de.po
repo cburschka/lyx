@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.1.5pre3\n"
+"Project-Id-Version: LyX 1.1.5\n"
 "POT-Creation-Date: 2000-06-06 13:45+0200\n"
-"PO-Revision-Date: 2000-05-23 10:14+02:00\n"
+"PO-Revision-Date: 2000-06-07 11:47+02:00\n"
 "Last-Translator: Peter Sütterlin <P.Suetterlin@astro.uu.nl>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -548,18 +548,16 @@ msgstr ""
 "  Verwende stattdessen ähnliche Farbe (r,g,b)=("
 
 #: src/ColorHandler.C:147
-#, fuzzy
 msgid ") instead.\n"
-msgstr "."
+msgstr ".\n"
 
 #: src/ColorHandler.C:148
 msgid "Pixel ["
-msgstr ""
+msgstr "Pixel ["
 
 #: src/ColorHandler.C:148
-#, fuzzy
 msgid "] is used."
-msgstr "."
+msgstr "] wurde verwendet."
 
 #: src/credits.C:55
 msgid "ERROR: LyX wasn't able to read CREDITS file"
@@ -636,18 +634,17 @@ msgstr ""
 
 #: src/CutAndPaste.C:391
 msgid "Layout had to be changed from\n"
-msgstr ""
+msgstr "Das Layout mußte von\n"
 
 #: src/CutAndPaste.C:392 src/CutAndPaste.C:395
-#, fuzzy
 msgid " to "
-msgstr " vom "
+msgstr " in "
 
 #: src/CutAndPaste.C:394
 msgid ""
 "\n"
 "because of class conversion from\n"
-msgstr ""
+msgstr "\ngeändert werden; Grund: Klassenumwandlung von\n"
 
 #: src/CutAndPaste.C:422 src/CutAndPaste.C:431 src/insets/insettext.C:1508
 #: src/text.C:4634 src/text.C:4642 src/text.C:4659 src/text.C:4674
@@ -2048,7 +2045,6 @@ msgid "depth bar"
 msgstr "Umgebungstiefe Balken"
 
 #: src/LColor.C:69
-#, fuzzy
 msgid "language"
 msgstr "Sprache"
 
@@ -2158,7 +2154,7 @@ msgstr "Tabulator Strich"
 
 #: src/LColor.C:98
 msgid "tabularonoff line"
-msgstr ""
+msgstr "Tabular an/aus Linie"
 
 #: src/LColor.C:100
 msgid "bottom area"
@@ -2686,7 +2682,7 @@ msgstr "vReference einfügen|#V"
 
 #: src/lyx.C:186
 msgid "Insert vPage Number|#N"
-msgstr "vPage Nummer einfügen|#N"
+msgstr "vPage Nummer einfügen|#U"
 
 #: src/lyx.C:190
 msgid "Insert Pretty Ref|#T"
@@ -2694,7 +2690,7 @@ msgstr "Pretty Ref einfügen|#P"
 
 #: src/lyx.C:194
 msgid "Go Back|#B"
-msgstr ""
+msgstr "Gehe zurück|#Z"
 
 #: src/lyx_cb.C:224
 msgid "Save failed. Rename and try again?"
@@ -3565,11 +3561,11 @@ msgstr "Das Dokument ist schreibgeschützt:"
 
 #: src/lyx_main.C:85
 msgid "Wrong command line option `"
-msgstr ""
+msgstr "Falsche Kommandozeilenoption `"
 
 #: src/lyx_main.C:87
 msgid "'. Exiting."
-msgstr ""
+msgstr "'.  Abbruch."
 
 #: src/lyx_main.C:209
 msgid "Warning: could not determine path of binary."
@@ -3617,9 +3613,8 @@ msgid "Expect problems."
 msgstr "Rechnen Sie mit Problemen."
 
 #: src/lyx_main.C:528
-#, fuzzy
 msgid "You have specified an invalid LyX directory."
-msgstr "Sie haben kein persönliches LyX-Verzeichnis."
+msgstr "Sie haben ein ungültiges LyX Verzeichnis angegeben."
 
 #: src/lyx_main.C:529
 msgid "You don't have a personal LyX directory."
@@ -3675,7 +3670,6 @@ msgid "Setting debug level to "
 msgstr "Setze Debug-Level auf "
 
 #: src/lyx_main.C:592
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -3694,7 +3688,8 @@ msgstr ""
 "Aufruf: lyx [ Befehlsoptionen ] [ name.lyx ... ]\n"
 "Kommandozeilenoptionen (groß/klein beachten):\n"
 "\t-help           LyX Benutzung zusammenfassen\n"
-"\t-sysdir x       Setze das Systemverzeichnis auf x\n"
+"\t-userdir dir    Setze das Benutzerverzeichnis auf dir\n"
+"\t-sysdir dir     Setze das Systemverzeichnis auf dir\n"
 "\t-width x        Legt die Breite des LyX Fensters fest\n"
 "\t-height y       Legt die Höhe des LyX Fensters fest\n"
 "\t-xpos x         Legt die hor. Position des LyX Fensters fest\n"
@@ -3716,9 +3711,8 @@ msgid "Missing directory for -sysdir switch!"
 msgstr "Die Option -sysdir benötigt ein Verzeichnis!"
 
 #: src/lyx_main.C:643
-#, fuzzy
 msgid "Missing directory for -userdir switch!"
-msgstr "Die Option -sysdir benötigt ein Verzeichnis!"
+msgstr "Die Option -userdir benötigt ein Verzeichnis!"
 
 #: src/lyx_main.C:666
 msgid "Missing command string after  -x switch!"
@@ -4621,24 +4615,20 @@ msgid "EM|gG#g#G"
 msgstr "EM|bB#b#B"
 
 #: src/menus.C:1366
-#, fuzzy, no-c-format
 msgid "List of Figures%m"
-msgstr "Liste der Abbildungen%m%l"
+msgstr "Liste der Abbildungen%m"
 
 #: src/menus.C:1368
-#, fuzzy, no-c-format
 msgid "List of Tables%m"
-msgstr "Liste der Tabellen%m%l"
+msgstr "Liste der Tabellen%m"
 
 #: src/menus.C:1370
-#, fuzzy, no-c-format
 msgid "List of Algorithms%m"
-msgstr "Liste der Algorithmen%m%l"
+msgstr "Liste der Algorithmen%m"
 
 #: src/menus.C:1503
-#, fuzzy, no-c-format
 msgid "Insert Reference%m"
-msgstr "Querverweis einfügen"
+msgstr "Querverweis einfügen%m"
 
 #: src/menus.C:1505
 #, no-c-format
@@ -4661,16 +4651,14 @@ msgid "Insert Pretty Ref%m"
 msgstr "Pretty Ref einfügen%m"
 
 #: src/menus.C:1513
-#, fuzzy, no-c-format
 msgid "Goto Reference%m"
-msgstr "Gehe zu Referenz%m%l"
+msgstr "Gehe zu Referenz%m"
 
 #: src/menus.C:1527
 msgid "Go Back"
-msgstr ""
+msgstr "Gehe zurück"
 
 #: src/menus.C:1595
-#, fuzzy
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b%l|Change Environment "
@@ -4678,7 +4666,7 @@ msgid ""
 msgstr ""
 "Zeichensätze...|Absatzformat...|Dokument...|Seite...|Tabelle...|Anführungszei"
 "chen...%l|Hervorhebung%b|Kapitälchen%b|Fettdruck%b|TeX Stil%b|Umgebungstiefe "
-"ändern|LaTeX Vorspann...%l|Layout als Standard speichern"
+"ändern|LaTeX Vorspann...%l|Begin d. Anhangs%l|Layout als Standard speichern"
 
 #: src/menus.C:1609
 msgid "LM|Cc#c#C"
@@ -4729,9 +4717,8 @@ msgid "LM|Ll#l#L"
 msgstr "LM|Vv#v#V"
 
 #: src/menus.C:1621
-#, fuzzy
 msgid "LM|xX#x#X"
-msgstr "FM|Bb#b#B"
+msgstr "LM|Bb#b#B"
 
 #: src/menus.C:1622
 msgid "LM|Ss#s#S"
