@@ -5,6 +5,8 @@
 	* GraphicsImageXPM.C: properly resolve more warnings about comparison
 	between signed and unsigned integer expressions.
 
+	* Makefile.am: add GraphicsTypes.h which I'd carelessly left out.
+
 2002-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsCache.C: improve commentary to graphicsInit and where it

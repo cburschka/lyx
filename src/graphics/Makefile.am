@@ -19,7 +19,8 @@ libgraphics_la_SOURCES = \
 	GraphicsImageXPM.h \
 	GraphicsImageXPM.C \
 	GraphicsParams.C \
-	GraphicsParams.h
+	GraphicsParams.h \
+	GraphicsTypes.h
 
 libgraphics.la: libgraphics.o
 
