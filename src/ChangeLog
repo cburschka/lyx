@@ -1,3 +1,8 @@
+2004-08-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* text3.C (dispatch): remove special handling of button 4 and 5,
+	it is now taken care of in the frontend code.
+
 2004-07-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* Spacing.h: add <string> (STLPort compile fix)
@@ -5,7 +10,7 @@
 2004-07-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxlex_pimpl.C (compare_tags): chagne return type of operator()
-	to bool. 
+	to bool.
 
 	* converter.C (showMessage): inherit from unary_function, make
 	operator() const.

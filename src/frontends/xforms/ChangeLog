@@ -1,3 +1,8 @@
+2004-08-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* XWorkArea.C (work_area_handler): handle wheel events more
+	explict here, make the way of handlig it similar to qt.
+
 2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyx_gui.C, FormMathsMatrix.C, FormLog.C:

@@ -333,6 +333,30 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 	case FL_PUSH:
 		if (!ev || ev->xbutton.button == 0) break;
+
+		if (ev->xbutton.button == 4 || ev->xbutton.button == 5) {
+			static long last_wheel;
+
+			long cur_wheel = ev->xbutton.time;
+			if (last_wheel == cur_wheel)
+				break;
+
+			last_wheel = cur_wheel;
+
+			float l, r;
+			fl_get_scrollbar_increment(area->scrollbar, &l, &r);
+
+			if (ev->xbutton.button == 4)
+				l *= -1.0;
+
+			fl_set_scrollbar_value(
+				area->scrollbar,
+				fl_get_scrollbar_value(area->scrollbar) + l);
+
+			area->scroll_cb();
+			break;
+		}
+
 		// Should really have used xbutton.state
 		lyxerr[Debug::WORKAREA] << "Workarea event: PUSH" << endl;
 		area->dispatch(
@@ -345,7 +369,14 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_RELEASE:
 		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
+
+		if (ev->xbutton.button == 4 || ev->xbutton.button == 5) {
+			// We ingnore wheel event here
+			break;
+		}
+
 		lyxerr[Debug::WORKAREA] << "Workarea event: RELEASE" << endl;
+
 		area->dispatch(
 			FuncRequest(LFUN_MOUSE_RELEASE,
 				    ev->xbutton.x - ob->x,
@@ -526,6 +557,12 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 	case FL_DBLCLICK:
 		if (ev) {
+			if (ev->xbutton.button == 4 || ev->xbutton.button == 5) {
+				// Ignore wheel events
+				break;
+			}
+
+
 			lyxerr[Debug::WORKAREA] << "Workarea event: DBLCLICK" << endl;
 			FuncRequest cmd(LFUN_MOUSE_DOUBLE,
 					ev->xbutton.x - ob->x,
@@ -537,6 +574,11 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 	case FL_TRPLCLICK:
 		if (ev) {
+			if (ev->xbutton.button == 4 || ev->xbutton.button == 5) {
+				// Ignore wheel events
+				break;
+			}
+
 			lyxerr[Debug::WORKAREA] << "Workarea event: TRPLCLICK" << endl;
 			FuncRequest cmd(LFUN_MOUSE_TRIPLE,
 					ev->xbutton.x - ob->x,

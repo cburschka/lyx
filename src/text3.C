@@ -1118,20 +1118,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	// Single-click on work area
 	case LFUN_MOUSE_PRESS: {
-		// ok ok, this is a hack (for xforms)
-		// We shouldn't go further down as we really need to. Only do the
-		// scrolling and be done with this. Otherwise we may open some
-		// dialogs (Jug 20020424).
-		if (cmd.button() == mouse_button::button4) {
-			bv->scroll(-lyxrc.wheel_jump);
-			break;
-		}
-
-		if (cmd.button() == mouse_button::button5) {
-			bv->scroll(lyxrc.wheel_jump);
-			break;
-		}
-
 		// Right click on a footnote flag opens float menu
 		if (cmd.button() == mouse_button::button3) {
 			cur.clearSelection();
@@ -1185,13 +1171,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MOUSE_RELEASE: {
-		// do nothing if we used the mouse wheel
-		if (cmd.button() == mouse_button::button4
-		 || cmd.button() == mouse_button::button5) {
-			cur.undispatched();
-			break;
-		}
-
 		selection_possible = false;
 
 		if (cmd.button() == mouse_button::button2)

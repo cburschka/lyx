@@ -355,7 +355,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	// This is done after the layout combox has been populated
 	if (buffer_)
 		owner_->setLayout(cursor_.paragraph().layout()->name());
-		
 
 	if (buffer_ && lyx::graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);

@@ -1,3 +1,8 @@
+2004-08-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* QContentPane.C (keyPressEvent): make sure to use the smart
+	pointer as soon as possible.
+
 2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* QPrefs.C, QMathMatrixDialog.C:
