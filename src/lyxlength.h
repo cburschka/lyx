@@ -68,7 +68,7 @@ public:
 	/// return string representation for LaTeX
 	string const asLatexString() const;
 	/// return the on-screen size of this length
-	int inPixels(int default_width, int default_height) const;
+	int inPixels(int text_width, int em_width = 0) const;
 	/// return the on-screen size of this length of an image
 	int inBP() const;
 

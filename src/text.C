@@ -847,7 +847,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		LyXLength const len = row->par()->params().leftIndent();
 		int const tw = inset_owner ?
 			inset_owner->latexTextWidth(bview) : workWidth(bview);
-		x += len.inPixels(tw, bview->text->defaultHeight());
+		x += len.inPixels(tw);
 	}
 
 	LyXAlignment align; // wrong type

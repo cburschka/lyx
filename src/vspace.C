@@ -505,7 +505,7 @@ int VSpace::inPixels(BufferView const * bv) const
 		break;
 
 	case LENGTH:
-		retval = len_.len().inPixels(bv->workWidth(), default_height);
+		retval = len_.len().inPixels(bv->workWidth());
 		break;
 
 	}

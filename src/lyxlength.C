@@ -123,7 +123,7 @@ bool LyXLength::zero() const
 }
 
 
-int LyXLength::inPixels(int default_width, int default_height) const
+int LyXLength::inPixels(int text_width, int em_width_base) const
 {
 	// Zoom factor specified by user in percent
 	double const zoom = lyxrc.zoom / 100.0; // [percent]
@@ -131,12 +131,18 @@ int LyXLength::inPixels(int default_width, int default_height) const
 	// DPI setting for monitor: pixels/inch
 	double const dpi = lyxrc.dpi; // screen resolution [pixels/inch]
 
+	double const em_width = (em_width_base > 0)
+		? em_width_base
+		: 10*(dpi/72.27)*zoom;
+	// A different estimate for em_width is 
+	// font_metrics::width('M', LyXFont(LyXFont::ALL_SANE))
+	// but this estimate might not be more accurate as the screen font
+	// is different then the latex font.
+
 	// Pixel values are scaled so that the ratio
 	// between lengths and font sizes on the screen
 	// is the same as on paper.
 
-	// we don't care about sign of value, we
-	// display negative space with text too
 #ifdef WITH_WARNINGS
 #warning if you don't care than either call this function differently or let it return negative values and call abs() explicitly when needed (Andre')
 #endif
@@ -191,26 +197,30 @@ int LyXLength::inPixels(int default_width, int default_height) const
 	case LyXLength::EX:
 		// Ex: The height of an "x"
 		// 0.4305 is the ration between 1ex and 1em in cmr10
-		result = zoom * val_ * default_height * 0.4305;
+		result = val_ * em_width * 0.4305;
 		break;
 	case LyXLength::EM:
 		// Em: The width of an "m"
-		// 1em is approx 10points in cmr10
-		result = zoom * val_ * default_height;
+		result = val_ * em_width;
 		break;
 	case LyXLength::MU:
 		// math unit = 1/18em
-		result = val_ * default_height / 18;
+		result = val_ * em_width / 18;
 		break;
 	case LyXLength::PCW: // Always % of workarea
 	case LyXLength::PTW:
-	case LyXLength::PPW:
 	case LyXLength::PLW:
-		result = val_ * default_width / 100;
+		result = val_ * text_width / 100;
+		break;
+	case LyXLength::PPW:
+		// paperwidth/textwidth is 1.7 for A4 paper with default margins
+		result = val_ * text_width * 1.7 / 100;
 		break;
 	case LyXLength::PTH:
+		result = val_ * text_width * 1.787 / 100;
+		break;
 	case LyXLength::PPH:
-		result = val_ * default_height / 100;
+		result = val_ * text_width * 2.2 / 100;
 		break;
 	case LyXLength::UNIT_NONE:
 		result = 0;  // this cannot happen

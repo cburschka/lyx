@@ -351,6 +351,5 @@ int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 
 int InsetMinipage::latexTextWidth(BufferView * bv) const
 {
-	return width_.inPixels(InsetCollapsable::latexTextWidth(bv),
-			       bv->text->defaultHeight());
+	return width_.inPixels(InsetCollapsable::latexTextWidth(bv));
 }
