@@ -15,6 +15,7 @@
 
 #include "buffer.h"
 #include "lyxrc.h"
+#include "paragraph.h"
 
 #include "insets/inset.h"
 

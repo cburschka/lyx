@@ -20,6 +20,7 @@
 #include "LColor.h"
 #include "lyxrc.h"
 #include "outputparams.h"
+#include "paragraph.h"
 
 #include "frontends/lyx_gui.h" // hexname
 

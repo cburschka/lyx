@@ -1,3 +1,8 @@
+2003-11-20  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Previews.C: include paragraph.h
+	* PreviewLoader.C: ditto
+
 2003-11-05  José Matos  <jamatos@lyx.org>
 
 	* PreviewLoader.C (dumpPreamble): rename ascii to plaintext
