@@ -26,7 +26,7 @@ public:
 	typedef typename container_type::size_type size_type;
  
 	/// limit is the maximum size of the stack
-	limited_stack(size_type limit = 10) {
+	limited_stack(size_type limit = 100) {
 		limit_ = limit;
 	}
 
