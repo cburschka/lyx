@@ -1,3 +1,8 @@
+2003-02-10  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* FormDocument.C: Reset paperpackage to NONE when 
+	papersize != A4 (bug 844)
+
 2003-01-31  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* FormDocument.C:

@@ -331,6 +331,10 @@ void QDocument::apply()
 		margin = margin - 1;
 	}
 	params.paperpackage = char(margin);
+	
+	// set params.papersize from params.papersize2 
+	// and params.paperpackage
+	params.setPaperStuff();
 
 	MarginsModuleBase const * m(dialog_->marginsModule);
 

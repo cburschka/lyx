@@ -1,3 +1,13 @@
+2003-02-10  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QDocument.C: Allow qt users actually to use another 
+	papersize than default (set params.paperpackage).
+
+2003-02-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QDocumentDialog.[Ch]: Show A4 packages also when default
+	papersize is A4 (and default chosen) and only in portrait mode.
+
 2003-02-10  João Luis Meloni Assirati  <assirati@fma.if.usp.br>
 
 	* ui/QMathMatrixDialogBase.ui: Fix horizontal alignment tooltip

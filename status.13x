@@ -42,11 +42,11 @@ What's new
 
 - delete lyxserver pipes on exit [bug #865, Qt only]
 
+- fix various problems with paper size selection [bug #844 and more]
+
 - in the dialogs, replace LaTeX font size names by LyX names for
   consistency reasons and to resolve a translation conflict
 
 - enable the debug level to be set in lyx2lyx
 
 - fix strerror() build problem with some gcc/glibc versions [bug #874]
-
-- enable the lyx2lyx debug level to be set
