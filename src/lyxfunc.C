@@ -99,8 +99,6 @@
 #include <utility>
 #include <algorithm>
 
-#include "frontends/font_loader.h"
-
 using std::pair;
 using std::make_pair;
 using std::endl;
@@ -1578,7 +1576,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		// handle the screen font changes.
 		//
 		lyxrc.set_font_norm_type();
-		fontloader.update();
+		lyx_gui::update_fonts();
 		// Of course we should only do the resize and the textcache.clear
 		// if values really changed...but not very important right now. (Lgb)
 		// All visible buffers will need resize

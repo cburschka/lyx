@@ -32,13 +32,13 @@ class qfont_loader {
 public:
 	qfont_loader();
 
-	virtual ~qfont_loader();
+	~qfont_loader();
 
 	/// update fonts after zoom, dpi, font names, or norm change
-	virtual void update();
+	void update();
 
 	/// do we have anything matching?
-	virtual bool available(LyXFont const & f);
+	bool available(LyXFont const & f);
  
 	/// get the QFont for this LyXFont
 	QFont const & get(LyXFont const & f) {

@@ -20,6 +20,7 @@
 
 #include "lyx_main.h"
 #include "lyxrc.h"
+#include "lyxfont.h"
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
@@ -31,6 +32,7 @@
 #include FORMS_H_LOCATION
 #include "ColorHandler.h"
 #include "xforms_helpers.h"
+#include "xfont_loader.h"
 #ifdef USE_XFORMS_IMAGE_LOADER
 #include "xformsImage.h"
 #else
@@ -343,4 +345,16 @@ string const lyx_gui::hexname(LColor::color col)
 void lyx_gui::update_color(LColor::color col)
 {
 	lyxColorHandler->updateColor(col);
+}
+
+
+void lyx_gui::update_fonts()
+{
+	fontloader.update();
+}
+
+
+bool lyx_gui::font_available(LyXFont const & font)
+{
+	return fontloader.available(font);
 }

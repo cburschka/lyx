@@ -15,6 +15,7 @@
 #include <vector>
 
 class Dialogs;
+class LyXFont;
 
 /// GUI interaction
 namespace lyx_gui {
@@ -46,6 +47,16 @@ namespace lyx_gui {
 	 * update an altered GUI color
 	 */
 	void update_color(LColor::color col);
+
+	/**
+	 * update the font cache
+	 */
+	void update_fonts();
+
+	/**
+	 * is the given font available ?
+	 */
+	bool font_available(LyXFont const & font);
 }
 
 #endif // LYX_GUI_H

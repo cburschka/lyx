@@ -9,7 +9,7 @@
 #include "math_parser.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
-#include "frontends/font_loader.h"
+#include "frontends/lyx_gui.h"
 #include "debug.h"
 #include "commandtags.h"
 #include "dimension.h"
@@ -632,9 +632,9 @@ void augmentFont(LyXFont & font, string const & name)
 		initialized = true;
 
 		// fake fonts if necessary
-		if (!fontloader.available(getFont("mathfrak")))
+		if (!lyx_gui::font_available(getFont("mathfrak")))
 			fakeFont("mathfrak", "lyxfakefrak");
-		if (!fontloader.available(getFont("mathcal")))
+		if (!lyx_gui::font_available(getFont("mathcal")))
 			fakeFont("mathcal", "lyxfakecal");
 	}
 	fontinfo * info = searchFont(name);

@@ -21,6 +21,7 @@
 #include "lyx_gui.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
+#include "lyxfont.h"
  
 // FIXME: move this stuff out again
 #include "bufferlist.h"
@@ -36,6 +37,7 @@
  
 #include "QtView.h"
 #include "QLImage.h"
+#include "qfont_loader.h"
  
 #include <qapplication.h>
  
@@ -128,7 +130,19 @@ string const lyx_gui::hexname(LColor::color col)
 }
 
 
-void lyx_gui::update_color(LColor::color col)
+void lyx_gui::update_color(LColor::color)
 {
 	// no need
+}
+
+
+void lyx_gui::update_fonts()
+{
+	fontloader.update();
+}
+
+
+bool lyx_gui::font_available(LyXFont const & font)
+{
+	return fontloader.available(font);
 }

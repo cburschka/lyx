@@ -41,7 +41,6 @@ libfrontends_la_SOURCES = \
 	WorkArea.C \
 	WorkArea.h \
 	WorkAreaFactory.h \
-	font_loader.h \
 	font_metrics.h \
 	guiapi.h \
 	key_state.h \
