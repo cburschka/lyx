@@ -100,26 +100,25 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_greek[i];
 	}
-	greek_.reset(new FormMathsBitmap(lv, d, *this, _("Greek"),latex));
+	greek_.reset(new FormMathsBitmap(lv, d, *this, _("Greek"), latex));
 
 	latex.resize(nr_latex_misc);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_misc[i];
 	}
-	misc_.reset(new FormMathsBitmap(lv, d, *this, _("Misc"),latex));
+	misc_.reset(new FormMathsBitmap(lv, d, *this, _("Misc"), latex));
 
 	latex.resize(nr_latex_dots);
 	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
 		latex[i] = latex_dots[i];
 	}
-
 	dots_.reset(new FormMathsBitmap(lv, d, *this, _("Dots"), latex));
 
 	latex.resize(nr_latex_varsz);
 	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
 		latex[i] = latex_varsz[i];
 	}
-	varsize_.reset(new FormMathsBitmap(lv, d, *this, _("Big Operators"),latex));
+	varsize_.reset(new FormMathsBitmap(lv, d, *this, _("Big Operators"), latex));
 
 	latex.resize(nr_latex_ams_misc);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
