@@ -39,6 +39,24 @@ else
 	exit
 fi
 
+# Autogenerate lib/configure.m4. We need GNU m4 for that and thus have
+# to try several ones.  
+ok=no
+for prog in $M4 gm4 gnum4 m4 ; do
+  case `$prog --help < /dev/null 2>&1 | grep traditional` in
+    *traditional*) echo "Building lib/configure"
+		   rm -f lib/configure
+		   $prog lib/configure.m4 >lib/configure
+		   ok=yes
+		   break ;;
+    *) ;;
+  esac
+done
+if test $ok = no ; then
+    echo "GNU m4 not found -- aborting"
+    exit
+fi
+
 echo "Creating POTFILES.in..."
 cat <<EOF > tmppot
 #

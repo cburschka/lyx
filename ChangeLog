@@ -1,3 +1,15 @@
+1999-11-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/configure, po/POTFILES.in: regenerated
+
+	* autogen.sh: autogenerate lib/configure from lib/configure.m4
+
+	* config/lib_configure.m4: removed
+	
+	* lib/configure.m4: new file (was config/lib_configure.m4)
+
+	* configure.in: do not test for rtti, since we do not use it.
+	
 1999-11-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (lyxstring::Srep): Changed to use a
