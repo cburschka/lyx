@@ -1311,18 +1311,27 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos > pit->size()) {
-		lyxerr << "dont like 1, pos: " << pos << " size: " << pit->size() << endl;
+		lyxerr << "dont like 1, pos: " << pos
+		       << " size: " << pit->size()
+		       << " row.pos():" << row.pos()
+		       << " paroffset: " << par << endl;
 		pos = 0;
 		cur.pos(0);
+		BOOST_ASSERT(false);
 	} else if (pos > last + 1) {
 		lyxerr << "dont like 2 please report" << endl;
 		// This shouldn't happen.
 		pos = last + 1;
 		cur.pos(pos);
+		BOOST_ASSERT(false);
 	} else if (pos < row.pos()) {
-		lyxerr << "dont like 3 please report" << endl;
+		lyxerr << "dont like 3 please report pos:" << pos
+		       << " size: " << pit->size()
+		       << " row.pos():" << row.pos()
+		       << " paroffset: " << par << endl;
 		pos = row.pos();
 		cur.pos(pos);
+		BOOST_ASSERT(false);
 	}
 
 	// now get the cursors x position

@@ -1,3 +1,11 @@
+2003-10-24  Alfredo Braunstein  <abraunst@libero.it>
+
+	* paragraph.C (getChar): add strong asserts
+
+	* lyxrow_funcs.C (lastPos): remove hideous hack
+
+	* text.C (addressBreakPoint, rowBreakPoint): put endpos in place
+	(fill): adjust to that (avoid an infinite loop)
 
 2003-10-23  Alfredo Braunstein  <abraunst@libero.it>
 

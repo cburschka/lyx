@@ -456,7 +456,7 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 {
 	for (; i < par.size(); ++i)
 		if (par.isNewline(i))
-			return i;
+			return i + 1;
 
 	return par.size();
 }
@@ -466,6 +466,11 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 
 void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 {
+	if (pit->empty()) {
+		row.endpos(pit->size());
+		return;
+	}
+	
 	// maximum pixel width of a row.
 	int width = workWidth()
 		- rightMargin(*pit, *bv()->buffer(), row)
@@ -474,24 +479,24 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 	// inset->textWidth() returns -1 via workWidth(),
 	// but why ?
 	if (width < 0) {
-		row.endpos(pit->size() + 1);
+		row.endpos(pit->size());
 		return;
 	}
 
 	LyXLayout_ptr const & layout = pit->layout();
 
 	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		row.endpos(addressBreakPoint(row.pos(), *pit) + 1);
+		row.endpos(addressBreakPoint(row.pos(), *pit));
 		return;
 	}
 
 	pos_type const pos = row.pos();
 	pos_type const body_pos = pit->beginningOfBody();
-	pos_type const last = pit->size();
-	pos_type point = last;
+	pos_type const end = pit->size();
+	pos_type point = end - 1;
 
-	if (pos == last) {
-		row.endpos(last + 1);
+	if (pos == end) {
+		row.endpos(end);
 		return;
 	}
 
@@ -511,13 +516,13 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 	LyXFont font = getFont(pit, i);
 	lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 
-	for ( ; i < last; ++i) {
+	for ( ; i < end; ++i) {
 		if (pit->isNewline(i)) {
 			point = i;
 			break;
 		}
 		// Break before...	
-		if (i + 1 < last) {
+		if (i + 1 < end) {
 			InsetOld * in = pit->getInset(i + 1);
 			if (in && in->display()) {
 				point = i;
@@ -560,7 +565,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		// the right of the row
 		if (x >= width) {
 			// if no break before, break here
-			if (point == last || chunkwidth >= width - left) {
+			if (point == end || chunkwidth >= width - left) {
 				if (pos < i) {
 					point = i - 1;
 					// exit on last registered breakpoint:
@@ -568,7 +573,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 				}
 			}
 			// emergency exit:
-			if (i + 1 < last)		
+			if (i + 1 < end)
 				break;  
 		}
 
@@ -583,13 +588,13 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		}
 	}
 
-	if (point == last && x >= width) {
+	if (point == end && x >= width) {
 		// didn't find one, break at the point we reached the edge
 		point = i;
-	} else if (i == last && x < width) {
+	} else if (i == end && x < width) {
 		// found one, but we fell off the end of the par, so prefer
 		// that.
-		point = last;
+		point = end - 1;
 	}
 
 	// manual labels cannot be broken in LaTeX. But we
@@ -1227,8 +1232,10 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 		// The test on pit->size() is to catch zero-size pars, which
 		// would trigger the assert in Paragraph::getInset().
 		//inset = pit->size() ? pit->getInset(row.pos()) : 0;
-		inset = pit->isInset(row.pos()) ? pit->getInset(row.pos()) : 0;
-		if (inset && inset->display()) {
+		if (!pit->empty()
+		    && pit->isInset(row.pos())
+		    && pit->getInset(row.pos())->display())
+		{
 			align = LYX_ALIGN_CENTER;
 		}
 		
@@ -1895,7 +1902,8 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 
 	// rebreak the paragraph
 	int const ww = workWidth();
-	for (pos_type z = 0; z < pit->size() + 1; ) {
+	pos_type z = 0;
+	do {
 		Row row(z);
 		rowBreakPoint(pit, row);
 		z = row.endpos();
@@ -1906,7 +1914,8 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		pit->rows.push_back(row);
 		pit->width = std::max(pit->width, row.width());
 		pit->height += row.height();
-	}
+	} while (z < pit->size());
+
 	height += pit->height;
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
 }

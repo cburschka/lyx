@@ -29,8 +29,8 @@ pos_type lastPos(Paragraph const & par, Row const & row)
 	if (par.empty())
 		return 0;
 	pos_type pos = row.endpos() - 1;
-	if (pos == par.size())
-		--pos;
+//	if (pos == par.size())
+//		--pos;
 	return pos;
 }
 

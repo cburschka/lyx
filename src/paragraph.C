@@ -1327,12 +1327,13 @@ Paragraph::value_type Paragraph::getChar(pos_type pos) const
 	// This is in the critical path!
 	pos_type const siz = text_.size();
 
-	BOOST_ASSERT(pos <= siz);
+	BOOST_ASSERT(0 <= pos && pos <= siz);
 
 	if (pos == siz) {
 		lyxerr << "getChar() on pos " << pos << " in par id "
 		       << id() << " of size " << siz
 		       << "  is a bit silly !" << endl;
+		BOOST_ASSERT(false);
 		return '\0';
 	}
 
