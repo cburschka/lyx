@@ -60,6 +60,10 @@ What's new
 - Fix the LaTeX output of Short Titles (aka optional inset) that did
   not get \protect added when needed [bug 1739].
 
+- When reading an equation, don't parse \| following a \left or \right as |.
+
+- When executing generating PDF, handle properly pdfTeX warnings [bug 1824]
+
 - Fix lyxpreview2ppm.py to work with python versions older than 2.1.
 
 
