@@ -18,7 +18,6 @@
  
 #include <qcombobox.h>
 #include <qtoolbutton.h>
-#include <qsize.h>
 #include <qpixmap.h>
  
 namespace {
@@ -42,11 +41,9 @@ QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
 	QPixmap qp(LibFileSearch("images", "unknown", "xpm").c_str());
 
 	QToolButton * upb = new QToolButton(qp, _("Up"), "", this, SLOT(up()), this);
-	upb->setMinimumSize(upb->sizeHint());
 	upb->show();
  
 	QToolButton * downb = new QToolButton(qp, _("Down"), "", this, SLOT(down()), this);
-	downb->setMinimumSize(downb->sizeHint());
 	downb->show();
  
 	edit_ = new QCommandEdit(this);
