@@ -523,6 +523,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_EMPH:         handleFont(bv, LM_TC_CAL); break;
 	case LFUN_ROMAN:        handleFont(bv, LM_TC_RM); break;
 	case LFUN_CODE:         handleFont(bv, LM_TC_TT); break;
+	case LFUN_NOUN:         handleFont(bv, LM_TC_BB); break;
 	case LFUN_DEFAULT:      handleFont(bv, LM_TC_VAR); break;
 
 	case LFUN_MATH_MODE:

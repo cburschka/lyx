@@ -39,9 +39,9 @@ using std::strlen;
 
 namespace {
 
-char const * GUIFamilyNames[11] = 
+char const * GUIFamilyNames[12] = 
 { N_("Roman"), N_("Sans serif"), N_("Typewriter"), N_("Symbol"),
-  "cmsy", "cmm", "cmex", "msa", "msb",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb",
   N_("Inherit"), N_("Ignore") };
 
 char const * GUISeriesNames[4] = 
@@ -63,9 +63,9 @@ char const * GUIMiscNames[5] =
 //
 // Strings used to read and write .lyx format files
 //
-char const * LyXFamilyNames[11] = 
+char const * LyXFamilyNames[12] = 
 { "roman", "sans", "typewriter", "symbol",
-  "cmsy", "cmm", "cmex", "msa", "msb",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb",
   "default", "error" };
 
 char const * LyXSeriesNames[4] = 

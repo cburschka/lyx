@@ -45,6 +45,8 @@ public:
 		///
 		SYMBOL_FAMILY,
 		///
+		CMR_FAMILY,
+		///
 		CMSY_FAMILY,
 		///
 		CMM_FAMILY,
@@ -57,7 +59,9 @@ public:
 		///
 		INHERIT_FAMILY,
 		///
-		IGNORE_FAMILY
+		IGNORE_FAMILY,
+		///
+		NUM_FAMILIES = INHERIT_FAMILY
 	};
 
 	///

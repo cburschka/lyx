@@ -31,7 +31,12 @@ void MathNotInset::writeNormal(ostream & os) const
 void MathNotInset::metrics(MathStyles st) const
 {
 	size(st);
-	mathed_char_dim(LM_TC_VAR, size_, '/', ascent_, descent_, width_);
+	if (math_font_available(LM_TC_CMSY))
+		mathed_char_dim(LM_TC_CMSY, size_, 54,
+				ascent_, descent_, width_);
+		else
+			mathed_char_dim(LM_TC_VAR, size_, '/',
+					ascent_, descent_, width_);
 	width_ = 0;
 }
 
@@ -41,5 +46,8 @@ void MathNotInset::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(y);
 
-	drawChar(pain, LM_TC_VAR, size_, x, y, '/');
+	if (math_font_available(LM_TC_CMSY))
+		drawChar(pain, LM_TC_CMSY, size_, x, y, 54);
+	else
+		drawChar(pain, LM_TC_VAR, size_, x, y, '/');
 }

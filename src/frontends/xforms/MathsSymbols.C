@@ -301,8 +301,13 @@ char const ** get_pixmap_from_symbol(char const * arg, int wx, int hx)
 	case LM_TK_SQRT:
 		data = mathed_get_pixmap_from_icon(MM_SQRT);
 		break;
-	case LM_TK_BIGSYM:
 	case LM_TK_SYM:
+	case LM_TK_CMR:
+	case LM_TK_CMSY:
+	case LM_TK_CMEX:
+	case LM_TK_CMM:
+	case LM_TK_MSA:
+	case LM_TK_MSB:
 		// I have to use directly the bitmap data since the
 		// bitmap tables are not yet created when this
 		// function is called.

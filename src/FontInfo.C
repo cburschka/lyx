@@ -134,6 +134,8 @@ void FontInfo::query()
 		// We have matches. Run them through
 		for (int i = 0; i < matches; ++i) {
 			string name(list[i]);
+			lyxerr[Debug::FONT] << "match #" << i << " "
+					    << name << endl; 
 			sizes[i] = lyx::atoi(token(name, '-', 7));
 			strings[i] = name;
 			if (sizes[i] == 0) {

@@ -60,7 +60,7 @@ void FontLoader::update()
 void FontLoader::reset()
 {
 	// Clear font infos, font structs and font metrics
-	for (int i1 = 0; i1 < 9; ++i1)
+	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3) {
 				fontinfo[i1][i2][i3] = 0;
@@ -75,7 +75,7 @@ void FontLoader::reset()
 void FontLoader::unload() 
 {
 	// Unload all fonts
-	for (int i1 = 0; i1 < 9; ++i1)
+	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3) {
 				if (fontinfo[i1][i2][i3]) {
@@ -109,6 +109,11 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 		case LyXFont::SYMBOL_FAMILY:
 			fontinfo[family][series][shape] =
 				new FontInfo("-*-symbol-*-*-*-*-*-*-*-*-*-*-*-*");
+			return;
+
+		case LyXFont::CMR_FAMILY:
+			fontinfo[family][series][shape] =
+				new FontInfo("-*-cmr-medium-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		case LyXFont::CMSY_FAMILY:

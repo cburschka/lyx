@@ -22,8 +22,6 @@ libmathed_la_SOURCES = \
 	formulamacro.h \
 	math_arrayinset.C \
 	math_arrayinset.h \
-	math_bigopinset.C \
-	math_bigopinset.h \
 	math_binominset.C \
 	math_binominset.h \
 	math_charinset.C \
@@ -70,8 +68,6 @@ libmathed_la_SOURCES = \
 	math_nestinset.h \
 	math_notinset.C \
 	math_notinset.h \
-	math_noglyphinset.C \
-	math_noglyphinset.h \
 	math_parser.C \
 	math_parser.h \
 	math_rootinset.C \

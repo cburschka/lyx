@@ -100,6 +100,24 @@ void MathMacroTable::builtinMacros()
 	createTemplate("gets",         0, "\\leftarrow");
 	createTemplate("to",           0, "\\rightarrow");
 
+	createTemplate("longleftrightarrow", 0, "\\leftarrow\\kern-6mu\\rightarrow");
+	createTemplate("Longleftrightarrow", 0, "\\Leftarrow\\kern-6mu\\Rightarrow");
+	createTemplate("doteq", 0, "\\stackrel{\\cdot}{=}");
+
+#if 0
+	// The following either require using the latex fonts,
+	// or don't look good, so they are disabled
+
+	createTemplate("hookrightarrow", 0, "\\lhook\\kern-3mu\\rightarrow");
+	createTemplate("hookleftarrow",  0, "\\leftarrow\\kern-3mu\\rhook");
+	createTemplate("bowtie",         0, "\\triangleright\\kern-3mu\\triangleleft");
+
+	createTemplate("models",         0, "|\\kern-9mu=");
+	createTemplate("longrightarrow", 0, "-\\kern-9mu\\rightarrow");
+	createTemplate("longleftarrow",  0, "\\leftarrow\\kern-9mu-");
+	createTemplate("Longrightarrow", 0, "=\\kern-9mu\\Rightarrow");
+	createTemplate("Longleftarrow",  0, "\\Leftarrow\\kern-9mu=");
+
 	//amsfonts.sty
 
 	createTemplate("dasharrow",    0, "\\dashrightarrow");
@@ -115,12 +133,7 @@ void MathMacroTable::builtinMacros()
 	createTemplate("doublecap",    0, "\\Cap");
 	createTemplate("llless",       0, "\\lll");
 	createTemplate("gggtr",        0, "\\ggg");
-
-// #ifdef WITH_WARNINGS
-// #warning 9em looks like too much but it is somehow working on screen..
-// #endif WITH_WARNINGS
-// 	createTemplate("ll",           0, "<\\kern-9em<");
-// 	createTemplate("gg",           0, ">\\kern-9em>");
+#endif
 
   	//createTemplate("lint",       4, "\\int_#1^#2#3 d#4");
   	//createTemplate("silentmult", 0, "\\cdot");

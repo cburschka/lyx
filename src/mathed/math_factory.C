@@ -1,7 +1,6 @@
 #include <config.h>
 
 #include "math_parser.h"
-#include "math_bigopinset.h"
 #include "math_binominset.h"
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
@@ -11,7 +10,6 @@
 #include "math_kerninset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
-#include "math_noglyphinset.h"
 #include "math_notinset.h"
 #include "math_rootinset.h"
 #include "math_spaceinset.h"
@@ -24,16 +22,12 @@
 MathInset * createMathInset(latexkeys const * l)
 {
 	switch (l->token) {
-	case LM_TK_NOGLYPH:
-	case LM_TK_NOGLYPHB:
-		return new MathNoglyphInset(l);
-	case LM_TK_BIGSYM:
-		return new MathBigopInset(l);
 	case LM_TK_FUNCLIM:
 		return new MathFuncLimInset(l);
 	case LM_TK_SPECIAL:
 		return new MathSpecialCharInset(l->id);
 	case LM_TK_SYM:
+	case LM_TK_CMR:
 	case LM_TK_CMSY:
 	case LM_TK_CMM:
 	case LM_TK_CMEX:

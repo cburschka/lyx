@@ -75,11 +75,7 @@ enum MathTokenEnum
 	///
 	LM_TK_FUNCLIM,
 	///
-	LM_TK_BIGSYM,
-	///
-	LM_TK_NOGLYPH,
-	///
-	LM_TK_NOGLYPHB,
+	LM_TK_CMR,
 	///
 	LM_TK_CMSY,
 	///

@@ -19,6 +19,7 @@ char const * math_font_name[] = {
 	"mathrm",
 	"mathcal",
 	"mathbf",
+	"mathbb",
 	"mathsf",
 	"mathtt",
 	"mathit",

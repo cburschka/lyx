@@ -65,6 +65,8 @@ enum MathTextCodes  {
 	LM_TC_CAL,
 	///
 	LM_TC_BF,
+	//
+	LM_TC_BB,
 	///
 	LM_TC_SF,
 	///
@@ -82,7 +84,9 @@ enum MathTextCodes  {
 	/// Internal code for symbols
 	LM_TC_SYMB,
 	/// internal code for symbols that get bigger in displayed math
-	LM_TC_BSYM,
+	LM_TC_BOLDSYMB,
+	///
+	LM_TC_CMR,
 	///
 	LM_TC_CMSY,
 	///

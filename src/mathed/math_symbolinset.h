@@ -31,6 +31,8 @@ public:
 private:
 	///
 	MathTextCodes code() const;
+	///
+	MathTextCodes code2() const;
 
 	///
 	latexkeys const * sym_;

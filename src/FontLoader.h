@@ -53,10 +53,10 @@ public:
 	
 private:
 	/// Array of font structs
-	XFontStruct * fontstruct[9][2][4][10];
+	XFontStruct * fontstruct[LyXFont::NUM_FAMILIES][2][4][10];
 
 	/// Array of font infos
-	FontInfo * fontinfo[9][2][4];
+	FontInfo * fontinfo[LyXFont::NUM_FAMILIES][2][4];
 
 	/// Reset font handler
 	void reset();

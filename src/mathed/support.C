@@ -103,38 +103,61 @@ LyXFont * MathFonts = 0;
 bool font_available[LM_FONT_END];
 bool font_available_initialized[LM_FONT_END];
 
+enum MathFont {
+	FONT_IT,
+	FONT_SYMBOL,
+	FONT_SYMBOLI,
+	FONT_BF,
+	FONT_BB,
+	FONT_CAL,
+	FONT_TT,
+	FONT_RM,
+	FONT_SF,
+	FONT_CMR,
+	FONT_CMSY,
+	FONT_CMM,
+	FONT_CMEX,
+	FONT_MSA,
+	FONT_MSB,
+	FONT_NUM
+};
+
 void mathed_init_fonts()
 {
-	MathFonts = new LyXFont[13]; //DEC cxx cannot initialize all fonts
+	MathFonts = new LyXFont[FONT_NUM]; //DEC cxx cannot initialize all fonts
 	//at once (JMarc) rc
 
-	for (int i = 0 ; i < 13 ; ++i) {
+	for (int i = 0 ; i < FONT_NUM ; ++i) {
 		MathFonts[i] = LyXFont(LyXFont::ALL_SANE);
 	}
 
-	MathFonts[0].setShape(LyXFont::ITALIC_SHAPE);
+	MathFonts[FONT_IT].setShape(LyXFont::ITALIC_SHAPE);
 
-	MathFonts[1].setFamily(LyXFont::SYMBOL_FAMILY);
+	MathFonts[FONT_SYMBOL].setFamily(LyXFont::SYMBOL_FAMILY);
 
-	MathFonts[2].setFamily(LyXFont::SYMBOL_FAMILY);
-	MathFonts[2].setShape(LyXFont::ITALIC_SHAPE);
+	MathFonts[FONT_SYMBOLI].setFamily(LyXFont::SYMBOL_FAMILY);
+	MathFonts[FONT_SYMBOLI].setShape(LyXFont::ITALIC_SHAPE);
 
-	MathFonts[3].setSeries(LyXFont::BOLD_SERIES);
+	MathFonts[FONT_BF].setSeries(LyXFont::BOLD_SERIES);
 
-	MathFonts[4].setFamily(LyXFont::SANS_FAMILY);
-	MathFonts[4].setShape(LyXFont::ITALIC_SHAPE);
+	MathFonts[FONT_BB].setSeries(LyXFont::BOLD_SERIES);
+	MathFonts[FONT_BB].setFamily(LyXFont::TYPEWRITER_FAMILY);
 
-	MathFonts[5].setFamily(LyXFont::TYPEWRITER_FAMILY);
+	MathFonts[FONT_CAL].setFamily(LyXFont::SANS_FAMILY);
+	MathFonts[FONT_CAL].setShape(LyXFont::ITALIC_SHAPE);
 
-	MathFonts[6].setFamily(LyXFont::ROMAN_FAMILY);
+	MathFonts[FONT_TT].setFamily(LyXFont::TYPEWRITER_FAMILY);
 
-	MathFonts[7].setFamily(LyXFont::SANS_FAMILY);
+	MathFonts[FONT_RM].setFamily(LyXFont::ROMAN_FAMILY);
 
-	MathFonts[8].setFamily(LyXFont::CMSY_FAMILY);
-	MathFonts[9].setFamily(LyXFont::CMM_FAMILY);
-	MathFonts[10].setFamily(LyXFont::CMEX_FAMILY);
-	MathFonts[11].setFamily(LyXFont::MSA_FAMILY);
-	MathFonts[12].setFamily(LyXFont::MSB_FAMILY);
+	MathFonts[FONT_SF].setFamily(LyXFont::SANS_FAMILY);
+
+	MathFonts[FONT_CMR].setFamily(LyXFont::CMR_FAMILY);
+	MathFonts[FONT_CMSY].setFamily(LyXFont::CMSY_FAMILY);
+	MathFonts[FONT_CMM].setFamily(LyXFont::CMM_FAMILY);
+	MathFonts[FONT_CMEX].setFamily(LyXFont::CMEX_FAMILY);
+	MathFonts[FONT_MSA].setFamily(LyXFont::MSA_FAMILY);
+	MathFonts[FONT_MSB].setFamily(LyXFont::MSB_FAMILY);
 
 	for (int i = 0; i < LM_FONT_END; ++i)
 		font_available_initialized[i] = false;
@@ -148,45 +171,57 @@ LyXFont const & whichFontBase(MathTextCodes type)
 
 	switch (type) {
 	case LM_TC_SYMB:	
-	case LM_TC_BSYM:	
-		return MathFonts[2];
+	case LM_TC_BOLDSYMB:	
+		return MathFonts[FONT_SYMBOLI];
 
 	case LM_TC_VAR:
 	case LM_TC_IT:
-		return MathFonts[0];
+		return MathFonts[FONT_IT];
 
 	case LM_TC_BF:
-		return MathFonts[3];
+		return MathFonts[FONT_BF];
+
+	case LM_TC_BB:
+		if (math_font_available(LM_TC_MSB))
+			return MathFonts[FONT_MSB];
+		else
+			return MathFonts[FONT_BB];
 
 	case LM_TC_CAL:
-		return MathFonts[4];
+		if (math_font_available(LM_TC_CMSY))
+			return MathFonts[FONT_CMSY];
+		else
+			return MathFonts[FONT_CAL];
 
 	case LM_TC_TT:
-		return MathFonts[5];
+		return MathFonts[FONT_TT];
 
 	case LM_TC_TEXTRM:
 	case LM_TC_CONST:
 	case LM_TC_TEX:
 	case LM_TC_RM:
-		return MathFonts[6];
+		return MathFonts[FONT_RM];
 
 	case LM_TC_SF:
-		return MathFonts[7];
+		return MathFonts[FONT_SF];
+
+	case LM_TC_CMR:
+		return MathFonts[FONT_CMR];
 
 	case LM_TC_CMSY:
-		return MathFonts[8];
+		return MathFonts[FONT_CMSY];
 
 	case LM_TC_CMM:
-		return MathFonts[9];
+		return MathFonts[FONT_CMM];
 
 	case LM_TC_CMEX:
-		return MathFonts[10];
+		return MathFonts[FONT_CMEX];
 
 	case LM_TC_MSA:
-		return MathFonts[11];
+		return MathFonts[FONT_MSA];
 
 	case LM_TC_MSB:
-		return MathFonts[12];
+		return MathFonts[FONT_MSB];
 
 	default:
 		break;
@@ -201,7 +236,7 @@ LyXFont whichFont(MathTextCodes type, MathStyles size)
 
 	switch (size) {
 	case LM_ST_DISPLAY:
-		if (type == LM_TC_BSYM || type == LM_TC_CMEX) {
+		if (type == LM_TC_BOLDSYMB || type == LM_TC_CMEX) {
 			f.incSize();
 			f.incSize();
 		}
