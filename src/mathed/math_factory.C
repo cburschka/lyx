@@ -267,8 +267,8 @@ latexkeys const * in_word_set(string const & str)
 	}
 
 	WordList::iterator it = theWordList.find(str);
-	lyxerr << "looking up '" << str << "' found: " << (it !=
-		theWordList.end()) << "\n";
+	//lyxerr << "looking up '" << str << "' found: "
+	// << (it != theWordList.end()) << "\n";
 	return (it != theWordList.end()) ? &(it->second) : 0;
 }
 

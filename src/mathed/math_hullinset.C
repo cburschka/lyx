@@ -440,14 +440,6 @@ void MathHullInset::addRow(row_type row)
 }
 
 
-void MathHullInset::appendRow()
-{
-	nonum_.push_back(!numberedType());
-	label_.push_back(string());
-	MathGridInset::appendRow();
-}
-
-
 void MathHullInset::delRow(row_type row)
 {
 	MathGridInset::delRow(row);
@@ -456,7 +448,7 @@ void MathHullInset::delRow(row_type row)
 }
 
 
-void MathHullInset::addCol(col_type col)
+void MathHullInset::addFancyCol(col_type col)
 {
 	switch (getType()) {
 		case LM_OT_EQUATION:
@@ -465,12 +457,12 @@ void MathHullInset::addCol(col_type col)
 
 		case LM_OT_EQNARRAY:
 			mutate(LM_OT_ALIGN);
-			addCol(col);
+			addFancyCol(col);
 			break;
 
 		case LM_OT_ALIGN:
 			mutate(LM_OT_ALIGNAT);
-			addCol(col);
+			addFancyCol(col);
 			break;
 
 		case LM_OT_ALIGNAT:
@@ -486,7 +478,7 @@ void MathHullInset::addCol(col_type col)
 }
 
 
-void MathHullInset::delCol(col_type col)
+void MathHullInset::delFancyCol(col_type col)
 {
 	switch (getType()) {
 		case LM_OT_ALIGNAT:

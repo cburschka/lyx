@@ -139,9 +139,17 @@ public:
 	///
 	virtual void delRow(row_type);
 	///
+	virtual void addFancyRow(row_type r) { addRow(r); }
+	///
+	virtual void delFancyRow(row_type r) { addRow(r); }
+	///
 	virtual void addCol(col_type);
 	///
 	virtual void delCol(col_type);
+	///
+	virtual void addFancyCol(col_type c) { addCol(c); }
+	///
+	virtual void delFancyCol(col_type c) { addCol(c); }
 	///
 	virtual void appendRow();
 	///

@@ -62,11 +62,9 @@ public:
 	///
 	void delRow(row_type);
 	///
-	void addCol(col_type);
+	void addFancyCol(col_type);
 	///
-	void delCol(col_type);
-	///
-	void appendRow();
+	void delFancyCol(col_type);
 
 	/// change type
 	void mutate(string const &);

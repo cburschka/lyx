@@ -684,8 +684,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 				case LFUN_MATH_VALIGN: p->valign(align); break;
 				case LFUN_MATH_ROW_INSERT: p->addRow(p->row(idx)); break;
 				case LFUN_MATH_ROW_DELETE: p->delRow(p->row(idx)); break;
-				case LFUN_MATH_COLUMN_INSERT: p->addCol(p->col(idx)); break;
-				case LFUN_MATH_COLUMN_DELETE: p->delCol(p->col(idx)); break;
+				case LFUN_MATH_COLUMN_INSERT: p->addFancyCol(p->col(idx)); break;
+				case LFUN_MATH_COLUMN_DELETE: p->delFancyCol(p->col(idx)); break;
 				default: ;
 			}
 			updateLocal(bv, true);
