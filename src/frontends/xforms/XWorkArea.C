@@ -21,6 +21,7 @@
 #include "XLyXKeySym.h"
 #include "ColorHandler.h"
 #include "funcrequest.h"
+#include "Timeout.h"
 
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "lyxlookup.h"
@@ -319,6 +320,8 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	static int x_old = -1;
 	static int y_old = -1;
 	static double scrollbar_value_old = -1.0;
+	static int const motion_interval = 200;
+	static Timeout timdel(motion_interval);
 
 	XEvent * ev = static_cast<XEvent*>(xev);
 	XWorkArea * area = static_cast<XWorkArea*>(ob->u_vdata);
@@ -358,6 +361,21 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 #else
 	case FL_DRAG:
 #endif
+	{
+		int const drag_y = ev->xmotion.y;
+		int const area_y = ob->y;
+		int const area_h = ob->h;
+
+		// Check if the mouse is above or below the workarea
+		if (drag_y >= area_y + area_h || drag_y <= area_y) {
+			// we are outside, then we must not give too many
+			// motion events.
+			if (timdel.running())
+				break;
+			else
+				timdel.start();
+		}
+
 		if (!ev || !area->scrollbar)
 			break;
 		if (ev->xmotion.x != x_old ||
@@ -389,6 +407,8 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 		}
 		break;
+	}
+
 #if FL_VERSION < 1 && FL_REVISION < 89
 	case FL_KEYBOARD:
 #else

@@ -1,3 +1,8 @@
+2002-12-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* XWorkArea.C (work_area_handler): send fewer motion events if the
+	mouse is outside the workarea.
+
 2002-12-02  Angus Leeming  <leeming@lyx.org>
 
 	* FormIndex.C (update): if the contents aren't empty, then activate the
