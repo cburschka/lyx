@@ -186,7 +186,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		// FIXME: needed when ?
 		bv_->text->top_y(screen().topCursorVisible(bv_->text->cursor, bv_->text->top_y()));
 
-		// Similarly, buffer-dependent dialogs should be updated or
+		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		owner_->getDialogs().updateBufferDependent(true);
@@ -208,6 +208,13 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	owner_->updateToolbar();
 	owner_->updateLayoutChoice();
 	owner_->updateWindowTitle();
+
+	if (buffer_) {
+		// Don't forget to update the Layout
+		string const layoutname =
+			bv_->text->cursor.par()->layout()->name();
+		owner_->setLayout(layoutname);
+	}
 
 	if (grfx::Previews::activated() && buffer_)
 		grfx::Previews::get().generateBufferPreviews(*buffer_);
