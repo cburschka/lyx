@@ -1340,9 +1340,8 @@ void MathCursor::interpret(char c)
 	}
 
 	if (c == ' ') {
-		MathSpaceInset * p = prevSpaceInset();
-		if (p) {
-			p->incSpace();
+		if (hasPrevAtom() && prevAtom()->asSpaceInset()) {
+			prevAtom()->asSpaceInset()->incSpace();
 			return;
 		}
 
@@ -1465,9 +1464,3 @@ MathCursorPos MathCursor::normalAnchor() const
 }
 
 
-MathSpaceInset * MathCursor::prevSpaceInset() const
-{
-	if (!hasPrevAtom())
-		return 0;
-	return prevAtom()->asSpaceInset();
-}

@@ -242,22 +242,10 @@ public:
 	///
 	MathCursorPos const & cursor() const;
 
-
-	///  
-	pos_type last() const;
 	///
 	void seldump(char const * str) const;
 	///
 	void dump(char const * str) const;
-
-	///
-	void merge(MathArray const & arr);
-	///
-	MathScriptInset * prevScriptInset() const;
-	///
-	MathSpaceInset * prevSpaceInset() const;
-	/// glue adjacent atoms if possible
-	bool glueAdjacentAtoms();
 
 	///
 	friend class Selection;
