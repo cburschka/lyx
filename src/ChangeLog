@@ -1,3 +1,10 @@
+2002-04-12  Juergen Vigna  <jug@sad.it>
+
+	* text.C (leftMargin): return LYX_PAPER_MARGIN if this row contains
+	an inset which uses the whole row!
+	(rightMargin): ditto.
+	(insertChar): force a rebreak if we inserted an inset!
+
 2002-03-28  Herbert Voss  <voss@lyx.org>
 
 	* lyxlength.[Ch]: add inBP() to get the right PS-point
@@ -6,6 +13,7 @@
 2002-04-11  Juergen Vigna  <jug@sad.it>
 
 	* text2.C (setCursorFromCoordinates): set iy to the right value.
+	(setCursor): add check if row->previous exists!
 
 	* buffer.C (parseSingleLyXformat2Token): reset font after read of
 	an old float_type as this was the case in the old code!

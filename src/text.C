@@ -690,6 +690,12 @@ void LyXText::draw(DrawRowParams & p, pos_type & vpos)
 // exactly the label-width.
 int LyXText::leftMargin(BufferView * bview, Row const * row) const
 {
+	Inset * ins;
+	if ((row->par()->getChar(row->pos()) == Paragraph::META_INSET) &&
+		(ins=row->par()->getInset(row->pos())) &&
+		(ins->needFullRow() || ins->display()))
+		return LYX_PAPER_MARGIN;
+
 	LyXTextClass const & tclass =
 		textclasslist[bview->buffer()->params.textclass];
 	LyXLayout const & layout = tclass[row->par()->layout()];
@@ -866,6 +872,12 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 
 int LyXText::rightMargin(Buffer const * buf, Row const * row) const
 {
+	Inset * ins;
+	if ((row->par()->getChar(row->pos()) == Paragraph::META_INSET) &&
+		(ins=row->par()->getInset(row->pos())) &&
+		(ins->needFullRow() || ins->display()))
+		return LYX_PAPER_MARGIN;
+
 	LyXTextClass const & tclass = textclasslist[buf->params.textclass];
 	LyXLayout const & layout = tclass[row->par()->layout()];
 
@@ -1937,12 +1949,12 @@ void LyXText::insertChar(BufferView * bview, char c)
 	}
 
 	// Is there a break one row above
-	if ((cursor.par()->isLineSeparator(cursor.pos())
-	     || cursor.par()->isNewline(cursor.pos())
-		 || ((cursor.pos() < cursor.par()->size()) &&
-			 cursor.par()->isInset(cursor.pos()+1))
-	     || cursor.row()->fill() == -1)
-	    && row->previous() && row->previous()->par() == row->par())
+	if (row->previous() && row->previous()->par() == row->par()
+	    && (cursor.par()->isLineSeparator(cursor.pos())
+	        || cursor.par()->isNewline(cursor.pos())
+	        || ((cursor.pos() < cursor.par()->size()) &&
+	            cursor.par()->isInset(cursor.pos()+1))
+	        || cursor.row()->fill() == -1))
 	{
 		pos_type z = nextBreakPoint(bview,
 							   row->previous(),
@@ -1990,7 +2002,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 				* will set fill to -1. Otherwise
 				* we would not get a rebreak! */
 		row->fill(fill(bview, row, workWidth(bview)));
-	if (row->fill() < 0) {
+	if (c == Paragraph::META_INSET || row->fill() < 0) {
 		refresh_y = y;
 		refresh_row = row;
 		refresh_x = cursor.x();
@@ -2088,7 +2100,8 @@ void LyXText::prepareToPrint(BufferView * bview,
 		x = (workWidth(bview) > 0)
 			? rightMargin(bview->buffer(), row) : 0;
 	} else
-		x = (workWidth(bview) > 0) ? leftMargin(bview, row) : 0;
+		x = (workWidth(bview) > 0)
+			? leftMargin(bview, row) : 0;
 
 	// is there a manual margin with a manual label
 	LyXTextClass const & tclass = textclasslist[bview->buffer()->params.textclass];

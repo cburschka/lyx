@@ -2070,7 +2070,8 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	// the end of the previous row
 	cur.iy(y + row->baseline());
 	Inset * ins;
-	if (pos && par->getChar(pos) == Paragraph::META_INSET &&
+	if (row->previous() && pos &&
+		par->getChar(pos) == Paragraph::META_INSET &&
 		(ins=par->getInset(pos)) && (ins->needFullRow() || ins->display()))
 	{
 		row = row->previous();
