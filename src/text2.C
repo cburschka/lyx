@@ -811,6 +811,11 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		c = end - 1;
 	}
 
+	if (row.pos() < end && c >= end 
+	    && par.isInset(end) && par.getInset(end)->display()) {
+		c = end - 1;
+	}
+
 	x = int(tmpx) + xo;
 	return c - row.pos();
 }

@@ -1,3 +1,6 @@
+2005-03-08  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text2.C: fix for cursor up/down stuck in math [bug 1792]
 
 2005-03-07  Alfredo Braunstein  <abraunst@lyx.org>
 
@@ -13,6 +16,7 @@
 	* dociterator.C: include <boost/current_function.hpp>, which is
 	needed when assertions are disabled.
 
+>>>>>>> 1.2135
 2005-03-05  Johnathan Burchill  <jkerrb@users.sourceforge.net> 
 
 	* text2.C: fix for stuck cursor when traversing two 
@@ -28,7 +32,7 @@
 	* paragraph.C: fix for confused change tracker when pasting
 	text that begins with a lineseparator. [bug 1827]
 	(setChange(0, Change::INSERTED);)
-       
+
 	* paragraph_funcs.C: fix for lost changes on triple-paste
 	in change tracking mode [bug 1827] (par.setChange()).
 
