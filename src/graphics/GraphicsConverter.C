@@ -81,6 +81,7 @@ Converter::Converter(string const & from_file,   string const & to_file_base,
 {}
 
 
+// Empty d-tor out-of-line to keep boost::scoped_ptr happy.
 Converter::~Converter()
 {}
 
