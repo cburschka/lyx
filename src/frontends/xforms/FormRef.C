@@ -197,6 +197,9 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 	} else if (ob == dialog_->button_update || 
 		   ob == dialog_->sort ||
 		   ob == dialog_->buffer) {
+		if (ob == dialog_->buffer &&
+		    fl_get_choice(dialog_->buffer) < 1)
+			fl_set_choice(dialog_->buffer, 1);
 
 		if (ob == dialog_->button_update ||
 		    ob == dialog_->buffer) {
@@ -210,6 +213,8 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		fl_unfreeze_form(form());
 
 	} else if (ob == dialog_->type) {
+		if (fl_get_choice(dialog_->type) < 1)
+			fl_set_choice(dialog_->type, 1);
 
 		int const type = fl_get_choice(dialog_->type) - 1;
 		if (controller().params().getCmdName() ==
