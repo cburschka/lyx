@@ -61,7 +61,9 @@ public:
 	///
 	void clear();
 	///
-	void erase(iterator it);
+	iterator erase(iterator it);
+	///
+	iterator erase(iterator first, iterator last);
 	///
 	iterator begin();
 	///

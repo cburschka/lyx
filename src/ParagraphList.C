@@ -257,7 +257,7 @@ void ParagraphList::clear()
 }
 
 
-void ParagraphList::erase(ParagraphList::iterator it)
+ParagraphList::iterator ParagraphList::erase(ParagraphList::iterator it)
 {
 #ifndef NO_NEXT
 	Paragraph * prev = it->previous_;
@@ -274,6 +274,7 @@ void ParagraphList::erase(ParagraphList::iterator it)
 	it->previous_ = 0;
 	it->next_ = 0;
 	delete &*it;
+	return next;
 #else
 	Paragraph * prev = it->prev_par_;
 	Paragraph * next = it->next_par_;
@@ -287,7 +288,18 @@ void ParagraphList::erase(ParagraphList::iterator it)
 		next->prev_par_ = prev;
 
 	delete &*it;
+	return next;
 #endif
+}
+
+
+ParagraphList::iterator ParagraphList::erase(ParagraphList::iterator first,
+			      ParagraphList::iterator last)
+{
+	while (first != last) {
+		erase(first++);
+	}
+	return last;
 }
 
 
