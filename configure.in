@@ -210,6 +210,7 @@ AC_ARG_WITH(debug,[  --with-debug            output debug information by default
 ### Finish the work.
 AC_CONFIG_SUBDIRS(lib lib/reLyX)
 AC_OUTPUT([Makefile \
+       development/lyx.spec \
        lib/Makefile \
        intl/Makefile \
        po/Makefile.in \

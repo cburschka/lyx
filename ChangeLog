@@ -1,5 +1,11 @@
 1999-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* configure.in (AC_OUTPUT): added lyx.spec
+
+	* development/lyx.spec: removed file
+
+	* development/lyx.spec.in: new file
+
 	* po/*.po: merged with lyx.pot becuase of make distcheck
 	
 	* lib/Makefile.am (dist-hook): added dist-hook so that
