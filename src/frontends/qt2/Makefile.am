@@ -33,12 +33,10 @@ libqt2_la_OBJADD = \
 	../controllers/ButtonController.lo \
 	../xforms/combox.lo \
 	../xforms/Color.lo \
-	../xforms/FormBase.lo \
 	../xforms/FormBaseDeprecated.lo	\
 	../xforms/FormBibitem.lo \
 	../xforms/FormBibtex.lo \
 	../xforms/FormBrowser.lo \
-	../xforms/FormCopyright.lo	\
 	../xforms/FormDocument.lo \
 	../xforms/FormError.lo \
 	../xforms/FormExternal.lo \
@@ -99,12 +97,20 @@ libqt2_la_SOURCES = \
 	chardlgimpl.h \
 	FileDialog.C \
 	FileDialog_private.C \
+	FormBase.C	\
+	FormBase.h	\
 	FormCitation.C	\
 	FormCitation.h	\
 	FormCitationDialog.C	\
 	FormCitationDialog.h	\
 	FormCitationDialogImpl.C	\
 	FormCitationDialogImpl.h	\
+	FormCopyright.C	\
+	FormCopyright.h	\
+	FormCopyrightDialog.C	\
+	FormCopyrightDialog.h	\
+	FormCopyrightDialogImpl.C	\
+	FormCopyrightDialogImpl.h	\
 	FormParagraph.C	\
 	FormParagraph.h	\
 	paragraphdlg.C \
@@ -134,7 +140,9 @@ libqt2_la_SOURCES = \
 	tabularcreatedlg.C \
 	tabularcreatedlg.h \
 	tabularcreatedlgimpl.C \
-	tabularcreatedlgimpl.h
+	tabularcreatedlgimpl.h	\
+	qt2BC.C	\
+	qt2BC.h	
 
 # just copied from old lyx repository
 dist-hook:
@@ -158,6 +166,16 @@ FormCitationDialog.C: FormCitationDialog.ui
 moc_FormCitationDialog.C: FormCitationDialog.h
 	$(MOC) -o $@ $<
 moc_FormCitationDialogImpl.C: FormCitationDialogImpl.h
+	$(MOC) -o $@ $<
+
+FormCopyright.C: FormCopyrightDialogImpl.h
+FormCopyrightDialog.h: FormCopyrightDialog.ui
+	$(UIC) -o $@ $<
+FormCopyrightDialog.C: FormCopyrightDialog.ui
+	$(UIC) -impl FormCopyrightDialog.h -o $@ $<
+moc_FormCopyrightDialog.C: FormCopyrightDialog.h
+	$(MOC) -o $@ $<
+moc_FormCopyrightDialogImpl.C: FormCopyrightDialogImpl.h
 	$(MOC) -o $@ $<
 
 FormParagraph.C: paragraphdlg.h

@@ -2,8 +2,8 @@
                           formcopyright.cpp  -  description
                              -------------------
     begin                : Thu Feb 3 2000
-    copyright            : (C) 2000 by Jürgen Vigna
-    email                : jug@sad.it
+    copyright            : (C) 2000 by Jürgen Vigna, 2001 by Kalle Dalheimer
+    email                : kalle@klaralvdalens-datakonsult.se
  ***************************************************************************/
 
 /***************************************************************************
@@ -17,37 +17,36 @@
 
 #include <config.h>
 
-#include "Dialogs.h"
+
+#include "FormCopyrightDialogImpl.h"
+#include <qlabel.h>
+#include <qpushbutton.h>
+#undef emit
+#include "qt2BC.h"
+#include "ControlCopyright.h"
 #include "FormCopyright.h"
-#include "FormCopyrightDialog.h"
-#include "gettext.h"
 
-FormCopyright::FormCopyright(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), h_(0)
+typedef FormCB<ControlCopyright, FormDB<FormCopyrightDialogImpl> > base_class;
+
+FormCopyright::FormCopyright( ControlCopyright& c ) :
+    base_class( c, _( "Copyright and Warranty" ) )
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showCopyright.connect(slot(this, &FormCopyright::show));
 }
 
-FormCopyright::~FormCopyright()
+
+void FormCopyright::build()
 {
-	delete dialog_;
+    // PENDING(kalle) Parent???
+    dialog_.reset( new FormCopyrightDialogImpl() );
+
+    dialog_->copyrightLA->setText( controller().getCopyright().c_str() );
+    dialog_->licenseLA->setText( controller().getLicence().c_str() );
+    dialog_->disclaimerLA->setText( controller().getDisclaimer().c_str() );
+    
+    // Manage the cancel/close button
+    bc().setCancel(dialog_->okPB);
+    bc().refresh();
 }
 
-void FormCopyright::show()
-{
-	if (!dialog_)
-		dialog_ = new FormCopyrightDialog(0, _("Copyright and Warranty"),
-						  false);
-	if (!dialog_->isVisible())
-		h_ = d_->hideAll.connect(slot(this, &FormCopyright::hide));
-	dialog_->show();
-}
 
-void FormCopyright::hide()
-{
-	dialog_->hide();
-	h_.disconnect();
-}
+

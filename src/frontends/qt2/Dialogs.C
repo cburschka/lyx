@@ -17,10 +17,13 @@
 
 #include "Dialogs.h"
 
+#include "FormCopyrightDialogImpl.h"
+#undef emit
+
 #include "FormCharacter.h"
 #include "FormCitation.h"
 #include "FormCredits.h"
-//#include "FormCopyright.h"
+#include "FormCopyright.h"
 //#include "FormDocument.h"
 #include "FormError.h"
 #include "FormGraphics.h"
@@ -36,6 +39,11 @@
 //#include "FormToc.h"
 //#include "FormUrl.h"
 
+#include "BufferView.h"
+
+#include "controllers/ControlCopyright.h"
+
+#include "qt2BC.h"
 
 // Signal enabling all visible popups to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
@@ -45,6 +53,14 @@ SigC::Signal0<void> Dialogs::redrawGUI;
 Dialogs::Dialogs(LyXView * lv)
 {
     splash_.reset( new FormSplash(lv, this) );
+
+    // dialogs that have been converted to new scheme
+    add( new GUICopyright<FormCopyright, qt2BC>( *lv, *this ) );
+
+
+    // ------------------------------------------
+
+    // dialogs that are still old-style
     add( new FormCharacter(lv, this));
     add( new FormCitation(lv, this));
     //	add(new FormCopyright(lv, this));
