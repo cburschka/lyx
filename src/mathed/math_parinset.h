@@ -30,6 +30,8 @@ public:
 	virtual void draw(Painter &, int x, int baseline);
 	/// Write LaTeX code
 	virtual void Write(std::ostream &, bool fragile);
+	/// Write normalized content
+	virtual void WriteNormal(std::ostream &);
 	///
 	virtual void Metrics();
 	///

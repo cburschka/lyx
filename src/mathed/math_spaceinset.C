@@ -24,8 +24,7 @@ MathedInset * MathSpaceInset::Clone()
 }
 
 
-void
-MathSpaceInset::draw(Painter & pain, int x, int y)
+void MathSpaceInset::draw(Painter & pain, int x, int y)
 { 
 	
 // XPoint p[4] = {{++x, y-3}, {x, y}, {x+width-2, y}, {x+width-2, y-3}};
@@ -44,20 +43,26 @@ MathSpaceInset::draw(Painter & pain, int x, int y)
 }
 
 
-void
-MathSpaceInset::Write(ostream & os, bool /* fragile */)
+void MathSpaceInset::Write(ostream & os, bool /* fragile */)
 {
 	if (space_ >= 0 && space_ < 6) {
 		os << '\\' << latex_mathspace[space_] << ' ';
 	}
 }
 
+void MathSpaceInset::WriteNormal(ostream & os)
+{
+	os << "{space " << space_ << "} ";
+}
+
 
 void MathSpaceInset::Metrics()
 {
 	width = space_ ? space_ * 2 : 2;
-	if (space_ > 3) width *= 2;
-	if (space_ == 5) width *= 2;
+	if (space_ > 3)
+		width *= 2;
+	if (space_ == 5)
+		width *= 2;
 	width += 4;
 	ascent = 4;
 	descent = 0;

@@ -408,6 +408,110 @@ void MathParInset::Write(ostream & os, bool fragile)
 }
 
 
+void MathParInset::WriteNormal(ostream & os)
+{
+	if (array.empty()) {
+		os << "{}";
+		return;
+	}
+
+	os << "{par ";
+
+	int brace = 0;
+	latexkeys const * l;
+	MathedIter data(&array);
+	// hack
+	MathedRowContainer::iterator crow = getRowSt().begin();   
+	data.Reset();
+	
+	if (!Permit(LMPF_FIXED_SIZE)) { 
+		l = lm_get_key_by_id(size(), LM_TK_STY);
+		if (l)
+			os << l->name << ' ';
+	}
+	while (data.OK()) {
+		byte cx = data.GetChar();
+		if (cx >= ' ') {
+			string str = data.GetString();
+			
+			if (data.fcode() >= LM_TC_RM && data.fcode() <= LM_TC_TEXTRM) {
+				os << "{font " << math_font_name[data.fcode()-LM_TC_RM] << '{';
+			}
+			for (string::const_iterator s = str.begin();
+			     s != str.end(); ++s) {
+				byte c = *s;
+				if (MathIsSymbol(data.fcode())) {
+					l = lm_get_key_by_id(c, (data.fcode() == LM_TC_BSYM) ?
+							     LM_TK_BIGSYM : LM_TK_SYM);
+					if (l) {
+						os << '{' << l->name << '}';
+					} else {
+#ifdef WITH_WARNINGS
+#warning this does not compile on gcc 2.97
+#endif
+						//lyxerr << "Illegal symbol code[" << c
+						//   << " " << str.end() - s << " " << data.fcode() << "]";
+					}
+				} else {
+					// Is there a standard logical XOR?
+					if ((data.fcode() == LM_TC_TEX && c != '{' && c != '}') ||
+					    (data.fcode() == LM_TC_SPECIAL))
+						os << '{';
+					else {
+						if (c == '{')
+							++brace;
+						if (c == '}')
+							--brace;
+					}
+					if (c == '}' && data.fcode() == LM_TC_TEX && brace < 0) 
+						lyxerr <<"Math warning: Unexpected closing brace."
+						       << endl;
+					else	       
+						os << char(c);
+				}
+			}
+			if (data.fcode()>= LM_TC_RM && data.fcode()<= LM_TC_TEXTRM)
+				os << "} ";
+		} else {
+			if (MathIsInset(cx)) {
+				MathedInset * p = data.GetInset();
+				if (cx == LM_TC_UP)
+					os << "{superscript ";
+				if (cx == LM_TC_DOWN)
+					os << "{subscript ";
+				p->WriteNormal(os);
+				if (cx == LM_TC_UP || cx == LM_TC_DOWN)
+					os << "} ";
+				data.Next();
+			} else {
+				switch (cx) {
+				case LM_TC_TAB:
+				{
+					os << "} {";
+					data.Next();
+					break;
+				}
+				case LM_TC_CR:
+				{
+					os << "}} ";
+					data.Next();
+					break;
+				}
+				default:
+					lyxerr << "WMath Error: unrecognized code[" << cx << "]";
+					return;
+				}     
+			}
+		}
+	}
+	
+	if (brace > 0)
+		os << string(brace, '}');
+
+	os << "} ";
+}
+
+
 void MathParInset::clear()
 {
 	array.clear();

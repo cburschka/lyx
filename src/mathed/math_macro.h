@@ -47,6 +47,8 @@ public:
 	MathedInset * Clone();
 	///
 	void Write(std::ostream &, bool fragile);
+	///
+	void WriteNormal(std::ostream &);
 	/// Index 0 is the template, index 1..nargs() are the parameters
 	bool setArgumentIdx(int);
 	///

@@ -55,8 +55,7 @@ void MathDelimInset::Write(ostream & os, bool fragile)
 }
 
 
-void
-MathDelimInset::draw(Painter & pain, int x, int y)
+void MathDelimInset::draw(Painter & pain, int x, int y)
 { 
 	xo(x);
 	yo(y); 
@@ -78,8 +77,7 @@ MathDelimInset::draw(Painter & pain, int x, int y)
 }
 
 
-void
-MathDelimInset::Metrics()
+void MathDelimInset::Metrics()
 {
 	MathParInset::Metrics();
 

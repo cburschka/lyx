@@ -46,6 +46,8 @@ enum MathTokenEnum
 	///
 	LM_TK_FRAC,
 	///
+	LM_TK_CHOOSE,
+	///
 	LM_TK_SQRT,
 	///
 	LM_TK_BEGIN,
@@ -112,16 +114,9 @@ struct latexkeys {
 
 
 ///
-latexkeys const *
-in_word_set (register char const * str, register int len);
-
-///
 latexkeys const * in_word_set(string const & str);
 
 ///
-latexkeys * lm_get_key(int index);
-
-///
-latexkeys const * lm_get_key_by_id(int id, short tc = LM_TK_SYM);
+latexkeys const * lm_get_key_by_id(int id, short tc);
 
 #endif

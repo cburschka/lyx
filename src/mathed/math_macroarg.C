@@ -64,3 +64,8 @@ void MathMacroArgument::Write(std::ostream & os, bool /*fragile*/)
 	os << '#' << number_ << ' ';
 }
 
+
+void MathMacroArgument::WriteNormal(std::ostream & os)
+{
+	os << "{macroarg " << number_ << "} ";
+}

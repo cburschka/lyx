@@ -19,6 +19,7 @@ MathMacroTemplate::MathMacroTemplate() :
 	na_(0), users_()
 {}
 
+
 MathMacroTemplate::MathMacroTemplate(string const & nm, int na) :
 	MathParInset(LM_ST_TEXT, nm, LM_OT_MACRO),
 	na_(na), users_()
@@ -35,7 +36,7 @@ void MathMacroTemplate::WriteDef(ostream & os, bool fragile) const
 {
 	os << "\n\\newcommand{\\" << name << "}";
 
-	if (na_ > 0 )
+	if (na_ > 0)
 		os << "[" << na_ << "]";
 
 	os << "{";
@@ -64,3 +65,4 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y)
 	int h = Height();
 	pain.rectangle(x, y - a, w, h, LColor::blue);
 }
+

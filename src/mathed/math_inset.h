@@ -49,6 +49,8 @@ public:
 	virtual void draw(Painter &, int x, int baseline) = 0;	
 	/// Write LaTeX and Lyx code
 	virtual void Write(std::ostream &, bool fragile) = 0;
+	/// Write normalized content
+	virtual void WriteNormal(std::ostream &) = 0;
 	/// Reproduces itself
 	virtual MathedInset * Clone() = 0;
 	/// Reproduces itself with macro arguments substituted

@@ -48,7 +48,7 @@ MathMacro::MathMacro(MathMacroTemplate const & t)
 	: MathParInset(LM_ST_TEXT, t.GetName(), LM_OT_MACRO),
 	  tmplate_(const_cast<MathMacroTemplate *>(&t)),
 		args_(t.nargs()),
-		idx_(-1)
+		idx_(t.nargs() ? 0 : -1)
 {
 	array = tmplate_->GetData();
 	for (int i = 0; i < nargs(); ++i) 
@@ -77,9 +77,9 @@ MathParInset const * MathMacro::arg(int i) const
 		lyx::Assert(0);
 		return 0;
 	}
-
 	return i >= 0 ? args_[i].get() : static_cast<MathParInset const *>(this);
 }
+
 
 MathParInset * MathMacro::arg(int i) 
 {
@@ -88,7 +88,6 @@ MathParInset * MathMacro::arg(int i)
 		lyx::Assert(0);
 		return 0;
 	}
-
 	return i >= 0 ? args_[i].get() : static_cast<MathParInset *>(this);
 }
 
@@ -101,12 +100,9 @@ MathMacroTemplate * MathMacro::tmplate() const
 
 extern bool is_mathcursor_inside(MathParInset *);
 
-
 void MathMacro::Metrics()
 {
-
 	if (is_mathcursor_inside(this)) {
-
 		tmplate_->Metrics();
 		width   = tmplate_->Width()   + 4;
 		ascent  = tmplate_->Ascent()  + 2;
@@ -124,10 +120,9 @@ void MathMacro::Metrics()
 	} else {
 		expand();
 		expanded_->Metrics();
-		width   = expanded_->Width()   + 4;
-		ascent  = expanded_->Ascent()  + 2;
-		descent = expanded_->Descent() + 2;
-
+		width   = expanded_->Width()   + 6;
+		ascent  = expanded_->Ascent()  + 3;
+		descent = expanded_->Descent() + 3;
 	}
 }
 
@@ -144,25 +139,25 @@ void MathMacro::draw(Painter & pain, int x, int y)
 			p->draw(pain, x + 30, h);
 			char str[] = "#1:";
 			str[1] += i;
-			drawStr(pain, LM_TC_TEX, size(), x + 1, h, str);
+			drawStr(pain, LM_TC_TEX, size(), x + 3, h, str);
 			h -= p->Ascent() + 5;
 		}
 
 		h -= tmplate_->Descent();
 		int w =  mathed_string_width(LM_TC_TEXTRM, size(), GetName());
-		drawStr(pain, LM_TC_TEXTRM, size(), x + 2, h, GetName());
+		drawStr(pain, LM_TC_TEXTRM, size(), x + 3, h, GetName());
 		tmplate_->draw(pain, x + w + 12, h);
 
 		col = LColor::red;
 	} else {
-		expanded_->draw(pain, x + 2, y - 1);
+		expanded_->draw(pain, x + 3, y);
 		col = LColor::black;
 	}
 
 	int w = Width();
 	int a = Ascent();
 	int h = Height();
-	pain.rectangle(x, y - a, w, h, col);
+	pain.rectangle(x + 1, y - a + 1, w - 2, h - 2, col);
 }
 
 
@@ -287,4 +282,13 @@ void MathMacro::Write(ostream & os, bool fragile)
 	}
 	if (nargs() == 0) 
 		os << ' ';
+}
+
+
+void MathMacro::WriteNormal(ostream & os)
+{
+	os << "{macro " << name << " ";
+	for (int i = 0; i < nargs(); ++i) 
+		arg(i)->WriteNormal(os);
+	os << "} ";
 }

@@ -22,6 +22,8 @@ public:
 	///
 	void Write(std::ostream &, bool fragile);
 	///
+	void WriteNormal(std::ostream &);
+	///
 	void Metrics();
 	///
 	bool Inside(int, int);

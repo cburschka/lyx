@@ -1,43 +1,12 @@
-/* C code produced by gperf version 2.5 (GNU C++ version) */
-/* Command-line: gperf -a -p -o -t -G -D keywords  */
+
 #include <config.h>
+
+#include <map>
 
 #include "math_defs.h"
 #include "math_parser.h"
-#include "support/lstrings.h"
-
-int const TOTAL_KEYWORDS = 269;
-int const MIN_WORD_LENGTH = 2;
-int const MAX_WORD_LENGTH = 18;
-int const MIN_HASH_VALUE = 8;
-int const MAX_HASH_VALUE = 490;
-
-/* maximum key range = 483, duplicates = 40 */
 
 namespace {
-
-unsigned int
-math_hash (register char const * str, register int len)
-{
-	static unsigned short asso_values[] = 
-	{
-		491, 491, 491, 491, 491, 491, 491, 491, 491, 491,
-		491, 491, 491, 491, 491, 491, 491, 491, 491, 491,
-		491, 491, 491, 491, 491, 491, 491, 491, 491, 491,
-		491, 491, 491, 491, 491, 491, 491, 491, 491, 491,
-		491, 491, 491, 491, 491, 491, 491, 491, 491, 491,
-		491, 491, 491, 491, 491, 491, 491, 491, 491, 491,
-		491, 491, 491, 491, 491, 491, 491, 491,  95, 491,
-		491,  45, 491,  10, 491, 491, 255, 491, 491,  65,
-		30, 491,   0,  70,  80,  70,  15, 491,  10, 491,
-		491, 491, 491, 491, 491, 491, 491,  50, 200, 140,
-		219,  35, 135, 237, 230,  69,   0,  20,  10, 180,
-		105, 247,  55, 208, 125,   0,  25,  42, 255,  75,
-		5,   0,   0, 491, 491, 491, 491, 491,
-	};
-	return len + asso_values[str[len - 1]] + asso_values[str[0]];
-}
-
 
 latexkeys const wordlist[] = 
 {
@@ -315,104 +284,54 @@ latexkeys const wordlist[] =
 };
 
 
-short lookup[] = 
-{
-        -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,   8,  -1,  -1,  -1,  -1,  -1,
-        -1,   9,  10,  -1,  11,  -1,  -1,  -1,  12,  -1,  -1, 491, -13,  -2,
-        -1,  15,  16, 491, -17,  -2,  19,  -1,  -1,  20,  -1,  21,  22,  23,
-        -1,  -1,  24,  -1,  25,  26,  27,  -1,  -1,  28,  29,  -1,  30,  31,
-        32,  -1,  33,  -1, 635,  37,  38,  39,  -1,  40,  41,  -1, 617,  44,
-        45,  46,  47,  48,  49,  50,  51,  -1,  52,  -1,  53,  54, 588,  57,
-        -1,  58,  59,  60,  61,  -1, 491, -62,  -2,  64,  65,  66,  -1,  67,
-        68, 565,  71,  72, 499,  75,  -1,  76,  -1,  77,  78,  -1,  79, -73,
-        -2,  80,  81,  82,  -1,  83,  -1,  84,  85,  -1,  86,  87,  88,  89,
-        90, 501,  93,  94,  95,  -1,  96, 493,  -1,  99, -97,  -2, -91,  -2,
-	100, 101, 102, 517, 105, 106,  -1, 107, 108, 109, 110, 497, 113,  -1,
-	114, 115, 116, 117,-111,  -2, 118, 491,-119,  -2, 121, 122, 123,  -1,
-	124, 125,-103,  -2,  -1, 126, -69,  -2, 491,-127,  -2, 129, -55,  -2,
-	130, 491,-131,  -2, 133, 492, 136,-134,  -2,  -1, 137, 138, 139, -42,
-        -2, 140, 495, 143, 144,  -1, 145,-141,  -2, -34,  -3, 146, 613, 149,
-	150, 605, 154, 155, 156, 157, 503,  -1, 491,-160,  -2, 162,  -1, 163,
-	491,-164,  -2,  -1, 166,-158,  -2, 167, 168,  -1, 169, 170,  -1, 577,
-	173,  -1, 174, 554,  -1, 177,  -1, 178, 179, 543, 182, 183, 184,  -1,
-	185, 509, 188, 189, 190, 191, 192, 193, 194, 499,  -1, 197, 198,  -1,
-	199, 200, 201, 202,-195,  -2,-186,  -2, 203,  -1, 500, 206, 492, 209,
-	-207,  -2,  -1, 210, 211, 212,-204,  -2, 213,  -1, 498, 216, 494, 219,
-        -1, 220,-217,  -2,-214,  -2,-180,  -2, 221, 222, 223,-175,  -2,  -1,
-	224,  -1, 225, 226,  -1, 491,-227,  -2, 229,  -1, 230, 231, 232, 491,
-	-233,  -2,-171,  -2,-151,  -3, 235, 236, 237,-147,  -2,  -1, 238, 239,
-	240,  -1,  -1, 241,  -1,  -1,  -1, 242, 498, 245,  -1, 246, 247,  -1,
-	248, 249,-243,  -2,  -1,  -1,  -1,  -1,  -1, 250,  -1,  -1,  -1,  -1,
-        -1, 251, 252,  -1,  -1,  -1, 253,  -1,  -1,  -1, 492, 256,-254,  -2,
-        -1,  -1,  -1, 257,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,
-        -1,  -1,  -1,  -1,  -1,  -1, 258,  -1,  -1,  -1, 491,-259,  -2,  -1,
-        -1,  -1,  -1,  -1,  -1,  -1,  -1, 261,  -1,  -1,  -1,  -1,  -1,  -1,
-        -1,  -1,  -1, 262,  -1,  -1,  -1,  -1,  -1,  -1,  -1, 263, 492, 266,
-	-264,  -2,  -1,  -1,  -1, 267,  -1,  -1,  -1,  -1,  -1, 268,  -1,  -1,
-	269,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1, 491,-270,  -2,
-        -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,
-	272, 273,  -1, 274,  -1,  -1,  -1, 275,  -1,  -1,  -1,  -1,  -1,  -1,
-	276,
+
+struct symbolindex {
+	int   id;
+	short token;
+
+	symbolindex(int i, short t) : id(i), token(t)
+	{}
+	
+	bool operator<(symbolindex const & s) const
+	{
+		return (id < s.id) || (id == s.id && token < s.token);
+	}
 };
+
+
+// global maps 
+std::map<symbolindex, int>  LatexkeyById;
+std::map<string, int>       LatexkeyByName;
+
+
+// helper structure to initialize the maps on startup:
+struct init {
+	init() {
+		int const n = sizeof(wordlist)/sizeof(wordlist[0]);
+		for (latexkeys const * it = wordlist; it != wordlist + n; ++it) {
+			LatexkeyByName[it->name] = it - wordlist;
+			LatexkeyById[symbolindex(it->id, it->token)] = it - wordlist;
+		}
+	}
+};
+
+// the "Initializer": Its default constructor is executed on loading and
+// fills the maps
+static init dummy;
 
 } // namespace anon
 
 
-latexkeys const *
-in_word_set (register char const * str, register int len)
+latexkeys const * in_word_set(string const & str)
 {
-	if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH) {
-		int const key = math_hash (str, len);
-		
-		if (key <= MAX_HASH_VALUE && key >= 0) {
-			int const idx = lookup[key];
-			
-			if (idx >= 0 && idx < MAX_HASH_VALUE) {
-				char const * s = wordlist[idx].name;
-				
-				if (*s == *str && !compare(str + 1, s + 1))
-					return &wordlist[idx];
-			} else if (idx < 0 && idx >= -MAX_HASH_VALUE) {
-				return 0;
-			} else {
-				int const offset = key + idx + (idx > 0 ? -MAX_HASH_VALUE : MAX_HASH_VALUE);
-				latexkeys const * base = &wordlist[-lookup[offset]];
-				latexkeys const * ptr = base + -lookup[offset + 1];
-				
-				while (--ptr >= base)
-					if (*str == *ptr->name
-					    && !compare(str + 1,
-							ptr->name + 1))
-						return ptr;
-			}
-		}
-	}
-	return 0;
+	std::map<string, int>::const_iterator pos = LatexkeyByName.find(str);
+	return pos == LatexkeyByName.end() ? 0 : &wordlist[pos->second];
 }
 
 
-latexkeys const * in_word_set(string const & str) 
+latexkeys const * lm_get_key_by_id(int id, short tc)
 {
-	return in_word_set(str.c_str(), str.length());
-}
-
-
-latexkeys const * lm_get_key_by_id(int t, short tk)
-{
-	latexkeys const * l = &wordlist[MIN_HASH_VALUE+TOTAL_KEYWORDS];
-	latexkeys const * base = &wordlist[MIN_HASH_VALUE];
-	while (--l >= base) {
-		if (t == l->id && tk == l->token)
-			return l;
-	}
-	return 0;
-}
-
-
-latexkeys const * lm_get_key_by_index(int i)
-{
-	if (i > 0 && i < TOTAL_KEYWORDS + 2)
-		return &wordlist[i];
-	else
-		return 0;
+	std::map<symbolindex, int>::const_iterator pos
+		= LatexkeyById.find(symbolindex(id, tc));
+	return pos == LatexkeyById.end() ? 0 : &wordlist[pos->second];
 }

@@ -41,6 +41,16 @@ bool MathFracInset::setArgumentIdx(int i)
 		return false;
 }
 
+int MathFracInset::getArgumentIdx() const
+{
+  return idx_;
+}
+
+
+int MathFracInset::getMaxArgumentIdx() const
+{
+  return 1;
+}
 
 void MathFracInset::SetStyle(short st)
 {
@@ -114,8 +124,7 @@ void MathFracInset::SetFocus(int /*x*/, int y)
 }
 
 
-void
-MathFracInset::draw(Painter & pain, int x, int y)
+void MathFracInset::draw(Painter & pain, int x, int y)
 { 
 	int const idxp = idx_;
 	int const sizex = size();
@@ -132,8 +141,7 @@ MathFracInset::draw(Painter & pain, int x, int y)
 }
 
 
-void
-MathFracInset::Metrics()
+void MathFracInset::Metrics()
 {
 	if (!dh_) {
 		int a;
@@ -165,4 +173,13 @@ void MathFracInset::Write(ostream & os, bool fragile)
 	os << "}{";
 	den_.Write(os, fragile);
 	os << '}';
+}
+
+void MathFracInset::WriteNormal(ostream & os)
+{
+	os << '{' << name << ' ';
+	MathParInset::WriteNormal(os);
+	os << " ";
+	den_.WriteNormal(os);
+	os << "} ";
 }

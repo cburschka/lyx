@@ -17,6 +17,8 @@ public:
 	///
 	void Write(std::ostream &, bool fragile);
 	///
+	void WriteNormal(std::ostream &);
+	///
 	void Metrics();
 	///
 	bool GetLimits() const;

@@ -38,6 +38,8 @@ public:
 	///
 	void Write(std::ostream &, bool fragile);
 	///
+	void WriteNormal(std::ostream &);
+	///
 	void Metrics();
 	///
 	bool Inside(int, int);
@@ -69,19 +71,5 @@ private:
 	///
 	int dh_;
 };
-
-
-inline
-int MathRootInset::getArgumentIdx() const
-{
-	return idx_;
-}
-
-
-inline
-int MathRootInset::getMaxArgumentIdx() const
-{
-	return 1;
-}
 
 #endif

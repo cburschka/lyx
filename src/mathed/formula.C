@@ -14,6 +14,7 @@
 */
 
 #include <config.h>
+#include <fstream>
 
 #include "Lsstream.h"
 
@@ -33,10 +34,11 @@
 #include "debug.h"
 #include "lyx_gui_misc.h"
 #include "support/LOstream.h"
+#include "support/lyxlib.h"
+#include "support/syscall.h"
 #include "LyXView.h"
 #include "Painter.h"
 #include "font.h"
-#include "support/lyxlib.h"
 #include "lyxrc.h"
 #include "math_inset.h"
 #include "math_parinset.h"
@@ -46,7 +48,9 @@
 #include "math_deliminset.h"
 #include "mathed/support.h"
 
+using std::ostringstream;
 using std::ostream;
+using std::ifstream;
 using std::istream;
 using std::pair;
 using std::endl;
@@ -1007,7 +1011,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 				ilf = lyx::atoi(lf);
 			else
 				if (lf[1]) {
-					l = in_word_set(lf, strlen(lf));
+					l = in_word_set(lf);
 					// Long words will cause l == 0; so check.
 					if (l)
 						ilf = l->id;
@@ -1019,7 +1023,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 					irg = lyx::atoi(rg);
 				else
 					if (rg[1]) {
-						l = in_word_set(rg, strlen(rg));
+						l = in_word_set(rg);
 						if (l)
 							irg = l->id;
 					} else if (vdelim.find(rg[0]) != string::npos)
@@ -1124,6 +1128,10 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_UNDO:
 		bv->owner()->message(_("Invalid action in math mode!"));
+		break;
+
+	case LFUN_MATH_EXTERN:
+		HandleExtern(arg, bv);
 		break;
 
 		//------- dummy actions
@@ -1403,3 +1411,25 @@ bool math_insert_greek(BufferView * bv, char c)
 	}
 	return false;
 }
+
+void InsetFormula::HandleExtern(const string & arg, BufferView * bv)
+{
+	//string outfile = lyx::tempName("maple.out");
+	string outfile = "/tmp/lyx2" + arg + ".out";
+	ostringstream os;
+	par->WriteNormal(os); 
+	string code = os.str();
+	string script = "lyx2" + arg + " '" + code + "' " + outfile;
+	lyxerr << "calling: " << script << endl;
+	Systemcalls cmd(Systemcalls::System, script, 0);
+
+	ifstream is(outfile.c_str());
+	MathedArray ar;
+	mathed_parser_file(is, 0);
+	mathed_parse(ar, par, 0);
+	par->array = ar;
+
+	UpdateLocal(bv);
+}
+
+

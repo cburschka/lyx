@@ -318,7 +318,7 @@ int yylex(void)
 				if (yyis->good())
 					yyis->putback(c);
 				//lyxerr << "reading: '" << yytext.data() << "'\n";
-				latexkeys const * l = in_word_set (yytext.data(), strlen(yytext.data()));
+				latexkeys const * l = in_word_set(yytext.data());
 				if (l) {
 					if (l->token == LM_TK_BEGIN || l->token == LM_TK_END) { 
 						int i;
@@ -447,7 +447,7 @@ void mathed_parse(MathedArray & array, MathParInset * & par, unsigned flags)
 				break;
 			}
 		}
-		MathedInsetTypes fractype = LM_OT_FRAC;
+
 		switch (t) {
 			
 		case LM_TK_ALPHA:
@@ -674,12 +674,11 @@ void mathed_parse(MathedArray & array, MathParInset * & par, unsigned flags)
 			break;
 		}
 		
+		case LM_TK_CHOOSE:
 		case LM_TK_STACK:
-			fractype = LM_OT_STACKREL;
-			// fallthru
 		case LM_TK_FRAC:
 		{
-			MathFracInset fc(fractype);
+			MathFracInset fc(t);
 			MathedArray num;
 			mathed_parse(num, par, FLAG_BRACE|FLAG_BRACE_LAST);
 			MathedArray den;

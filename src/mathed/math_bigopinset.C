@@ -59,8 +59,24 @@ void MathBigopInset::Write(ostream & os, bool /* fragile */)
 }
 
 
-void
-MathBigopInset::Metrics()
+void MathBigopInset::WriteNormal(ostream & os)
+{
+	bool const limp = GetLimits();
+	
+	os << "{bigop " << name;
+	
+	if (limp && !(sym_ != LM_int && sym_ != LM_oint
+		      && (GetStyle() == LM_ST_DISPLAY)))
+		os << " limits";
+	else 
+		if (!limp && (sym_ != LM_int && sym_ != LM_oint
+			      && (GetStyle() == LM_ST_DISPLAY)))
+			os << " nolimits";
+	
+	os << "} ";
+}
+
+void MathBigopInset::Metrics()
 {
 	//char c;
 	string s;

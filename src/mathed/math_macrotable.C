@@ -88,6 +88,15 @@ void MathMacroTable::builtinMacros()
 				 LM_TC_INSET);
 	}
 
+	// This macro doesn't have arguments
+	{
+		MathMacroTemplate & m = provideTemplate("silentmult", 0);
+		istringstream is("\\cdot\0");
+		mathed_parser_file(is, 0);
+		MathParInset * p = &m;
+  	mathed_parse(m.array, p, 0);
+	}
+
 	// These two are only while we are still with LyX 2.x
 	{
 		MathMacroTemplate & m = provideTemplate("emptyset", 0);
@@ -102,9 +111,25 @@ void MathMacroTable::builtinMacros()
 		iter.insert(LM_bot, LM_TC_BOP);
 	}
 
-	// binom has two arguments
+	{
+		MathMacroTemplate & m = provideTemplate("lint", 4);
+		istringstream is("\\int_{#1}^{#2}#3 d#4\0");
+		mathed_parser_file(is, 0);
+		MathParInset * p = &m;
+  	mathed_parse(m.array, p, 0);
+	}
+
 	{
 		MathMacroTemplate & m = provideTemplate("binom", 2);
+		istringstream is("\\choose{#1}{#2}");
+		mathed_parser_file(is, 0);
+		MathParInset * p = &m;
+  	mathed_parse(m.array, p, 0);
+	}
+
+	// binom has two arguments
+	{
+		MathMacroTemplate & m = provideTemplate("binom1", 2);
 		MathedIter iter(&m.GetData());
 
 		MathParInset * inset = new MathDelimInset('(', ')');

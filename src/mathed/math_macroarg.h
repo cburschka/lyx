@@ -26,8 +26,9 @@ public:
 	///
 	void Write(std::ostream &, bool fragile);
 	///
+	void WriteNormal(std::ostream &);
+	///
 	int number() const;
-
 
 private:
 	/// A number between 1 and 9

@@ -322,6 +322,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MODE, "math-mode", N_("Math mode"), Noop },
 		{ LFUN_MATH_NONUMBER, "math-nonumber", "", Noop },
 		{ LFUN_MATH_NUMBER, "math-number", "", Noop },
+		{ LFUN_MATH_EXTERN, "math-extern", "", Noop },
 		{ LFUN_MATH_PANEL, "math-panel", "", Noop },
 		{ LFUN_MATH_SIZE, "math-size", "", Noop },
 #if 0

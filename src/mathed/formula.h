@@ -107,6 +107,8 @@ public:
 	bool SetNumber(bool);
 	///
 	std::vector<string> const getLabelList() const;
+	///
+	void HandleExtern(string const & arg, BufferView * bv);
    
 protected:
 	///

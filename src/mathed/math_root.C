@@ -57,6 +57,18 @@ bool MathRootInset::setArgumentIdx(int i)
 }
 
 
+int MathRootInset::getArgumentIdx() const
+{
+	return idx_;
+}
+
+
+int MathRootInset::getMaxArgumentIdx() const
+{
+	return 1;
+}
+
+
 void MathRootInset::GetXY(int & x, int & y) const
 {
 	if (idx_ == 1)
@@ -140,4 +152,13 @@ void MathRootInset::Write(ostream & os, bool fragile)
 	os << "]{";
 	MathParInset::Write(os, fragile);
 	os << '}';
+}
+
+void MathRootInset::WriteNormal(ostream & os)
+{
+	os << "{root ";
+	uroot_.WriteNormal(os);  
+	os << " ";
+	MathParInset::WriteNormal(os);
+	os << "} ";
 }

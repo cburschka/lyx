@@ -282,8 +282,10 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
  
 char const ** get_pixmap_from_symbol(char const * arg, int wx, int hx)
 {
+	lyx::Assert(arg);
+	
 	char const ** data = 0;
-	latexkeys const * l = in_word_set (arg, strlen(arg));
+	latexkeys const * l = in_word_set(arg);
 	if (!l)
 		return 0;
 

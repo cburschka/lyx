@@ -22,6 +22,8 @@ public:
 	///
 	void Write(std::ostream &, bool fragile);
 	///
+	void WriteNormal(std::ostream &);
+	///
 	void Metrics();
 	
 	/** This does the same that SetData(MathedArray const &) but for both
@@ -63,17 +65,4 @@ private:
 	int dh_;
 };
 
-
-inline
-int MathFracInset::getArgumentIdx() const
-{
-  return idx_;
-}
-
-
-inline
-int MathFracInset::getMaxArgumentIdx() const
-{
-  return 1;
-}
 #endif

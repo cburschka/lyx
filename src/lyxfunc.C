@@ -1374,11 +1374,11 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 	
+	case LFUN_MATH_EXTERN:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_LIMITS:
 	{
 		setErrorMessage(N_("This is only allowed in math mode!"));
-	
 	}
 	break;
 

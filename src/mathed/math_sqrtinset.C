@@ -49,6 +49,14 @@ void MathSqrtInset::Write(ostream & os, bool fragile)
 }
 
 
+void MathSqrtInset::WriteNormal(ostream & os)
+{
+	os << "{sqrt ";
+	MathParInset::WriteNormal(os); 
+	os << "} ";
+}
+
+
 void MathSqrtInset::Metrics()
 {
 	MathParInset::Metrics();
