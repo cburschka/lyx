@@ -38,6 +38,8 @@
 #include "support/lyxalgo.h"
 #include "support/path.h"
 #include "support/tostr.h"
+#include "support/LAssert.h"
+#include "support/translator.h"
 
 #include <boost/bind.hpp>
 
@@ -49,6 +51,13 @@ using namespace lyx::support;
 using std::ostream;
 using std::endl;
 using std::auto_ptr;
+
+namespace lyx {
+namespace graphics {
+/// The translator between the DisplayType and the corresponding lyx string.
+extern Translator<DisplayType, string> displayTranslator;
+}
+}
 
 namespace {
 

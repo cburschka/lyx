@@ -167,16 +167,16 @@ void FormParagraph::build()
 
 	// set default unit for custom length
 	switch (lyxrc.default_papersize) {
-		case BufferParams::PAPER_DEFAULT:
-		case BufferParams::PAPER_USLETTER:
-		case BufferParams::PAPER_LEGALPAPER:
-		case BufferParams::PAPER_EXECUTIVEPAPER:
+		case PAPER_DEFAULT:
+		case PAPER_USLETTER:
+		case PAPER_LEGALPAPER:
+		case PAPER_EXECUTIVEPAPER:
 			defaultUnit = "in";
 			break;
-		case BufferParams::PAPER_A3PAPER:
-		case BufferParams::PAPER_A4PAPER:
-		case BufferParams::PAPER_A5PAPER:
-		case BufferParams::PAPER_B5PAPER:
+		case PAPER_A3PAPER:
+		case PAPER_A4PAPER:
+		case PAPER_A5PAPER:
+		case PAPER_B5PAPER:
 			defaultUnit = "cm";
 			break;
 	}

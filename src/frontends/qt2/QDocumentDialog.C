@@ -243,7 +243,7 @@ void QDocumentDialog::setMargins(int papersize)
 	marginsModule->marginCO->insertItem(qt_("Default"));
 	marginsModule->marginCO->insertItem(qt_("Custom"));
 	bool a4size = (papersize == 6 || papersize == 0
-			&& lyxrc.default_papersize == BufferParams::PAPER_A4PAPER);
+			&& lyxrc.default_papersize == PAPER_A4PAPER);
 	if (a4size && pageLayoutModule->portraitRB->isChecked()) {
 		marginsModule->marginCO->insertItem(qt_("Small margins"));
 		marginsModule->marginCO->insertItem(qt_("Very small margins"));

@@ -68,12 +68,12 @@ string const dvipdfm_options(BufferParams const & bp)
 {
 	string result;
 
-	if (bp.papersize2 != BufferParams::VM_PAPER_CUSTOM) {
+	if (bp.papersize2 != VM_PAPER_CUSTOM) {
 		string const paper_size = bp.paperSizeName();
 		if (paper_size != "b5" && paper_size != "foolscap")
 			result = "-p "+ paper_size;
 
-		if (bp.orientation == BufferParams::ORIENTATION_LANDSCAPE)
+		if (bp.orientation == ORIENTATION_LANDSCAPE)
 			result += " -l";
 	}
 

@@ -96,10 +96,6 @@ LyX::LyX(int & argc, char * argv[])
 	// we need to parse for "-dbg" and "-help"
 	bool const want_gui = easyParse(argc, argv);
 
-	// Global bindings (this must be done as early as possible.) (Lgb)
-	toplevel_keymap.reset(new kb_keymap);
-	defaultKeyBindings(toplevel_keymap.get());
-
 	// set the DisplayTranslator only once; should that be done here??
 	// if this should not be in this file, please also remove
 	// #include "graphics/GraphicsTypes.h" at the top -- Rob Lahaye.
@@ -470,12 +466,15 @@ void LyX::init(bool gui)
 	lyxerr[Debug::INIT] << "Reading layouts..." << endl;
 	LyXSetStyle();
 
-	// Ensure that we have really read a bind file, so that LyX is
-	// usable.
-	lyxrc.readBindFileIfNeeded();
+	if (gui) {
+		// Set up bindings
+		toplevel_keymap.reset(new kb_keymap);
+		defaultKeyBindings(toplevel_keymap.get());
+		toplevel_keymap->read(lyxrc.bind_file);
 
-	// Read menus
-	readUIFile(lyxrc.ui_file);
+		// Read menus
+		readUIFile(lyxrc.ui_file);
+	}
 
 	if (lyxerr.debugging(Debug::LYXRC))
 		lyxrc.print();

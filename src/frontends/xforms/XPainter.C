@@ -16,6 +16,7 @@
 #include "debug.h"
 #include "XWorkArea.h"
 #include "xfont_metrics.h"
+#include "lyxfont.h"
 #include "ColorHandler.h"
 #include "lyxrc.h"
 #include "encoding.h"

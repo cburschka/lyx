@@ -21,6 +21,7 @@
 #include "support/LOstream.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
+#include "support/translator.h"
 #include "lyxrc.h"
 #include "debug.h"
 #include "lyxlex.h"
@@ -29,6 +30,13 @@
 using namespace lyx::support;
 
 using std::ostream;
+
+namespace lyx {
+namespace graphics {
+/// The translator between the DisplayType and the corresponding lyx string.
+extern Translator<DisplayType, string> displayTranslator;
+}
+}
 
 
 InsetGraphicsParams::InsetGraphicsParams()

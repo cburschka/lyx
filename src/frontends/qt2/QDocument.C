@@ -335,7 +335,7 @@ void QDocument::apply()
 	params.float_placement = dialog_->floatModule->get();
 
 	// paper
-	params.papersize2 = BufferParams::VMARGIN_PAPER_TYPE(
+	params.papersize2 = VMARGIN_PAPER_TYPE(
 		dialog_->pageLayoutModule->papersizeCO->currentItem());
 
 	params.paperwidth = widgetsToLength(dialog_->pageLayoutModule->paperwidthLE,
@@ -350,9 +350,9 @@ void QDocument::apply()
 		params.sides = LyXTextClass::OneSide;
 
 	if (dialog_->pageLayoutModule->landscapeRB->isChecked())
-		params.orientation = BufferParams::ORIENTATION_LANDSCAPE;
+		params.orientation = ORIENTATION_LANDSCAPE;
 	else
-		params.orientation = BufferParams::ORIENTATION_PORTRAIT;
+		params.orientation = ORIENTATION_PORTRAIT;
 
 	// margins
 	params.use_geometry =
@@ -362,7 +362,7 @@ void QDocument::apply()
 	if (margin > 0) {
 		margin = margin - 1;
 	}
-	params.paperpackage = BufferParams::PAPER_PACKAGES(margin);
+	params.paperpackage = PAPER_PACKAGES(margin);
 
 	// set params.papersize from params.papersize2
 	// and params.paperpackage
@@ -416,18 +416,18 @@ void QDocument::update_contents()
 	// FIXME: move to controller
 	LyXLength::UNIT defaultUnit = LyXLength::CM;
 	switch (lyxrc.default_papersize) {
-		case BufferParams::PAPER_DEFAULT: break;
+		case PAPER_DEFAULT: break;
 
-		case BufferParams::PAPER_USLETTER:
-		case BufferParams::PAPER_LEGALPAPER:
-		case BufferParams::PAPER_EXECUTIVEPAPER:
+		case PAPER_USLETTER:
+		case PAPER_LEGALPAPER:
+		case PAPER_EXECUTIVEPAPER:
 			defaultUnit = LyXLength::IN;
 			break;
 
-		case BufferParams::PAPER_A3PAPER:
-		case BufferParams::PAPER_A4PAPER:
-		case BufferParams::PAPER_A5PAPER:
-		case BufferParams::PAPER_B5PAPER:
+		case PAPER_A3PAPER:
+		case PAPER_A4PAPER:
+		case PAPER_A5PAPER:
+		case PAPER_B5PAPER:
 			defaultUnit = LyXLength::CM;
 			break;
 	}
@@ -581,7 +581,7 @@ void QDocument::update_contents()
 	dialog_->setCustomPapersize(psize);
 
 	bool const landscape =
-		params.orientation == BufferParams::ORIENTATION_LANDSCAPE;
+		params.orientation == ORIENTATION_LANDSCAPE;
 	dialog_->pageLayoutModule->landscapeRB->setChecked(landscape);
 	dialog_->pageLayoutModule->portraitRB->setChecked(!landscape);
 

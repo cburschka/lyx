@@ -30,6 +30,9 @@ public:
 	 */
 	string::size_type bind(string const & seq, int action);
 
+	// Parse a bind file
+	bool kb_keymap::read(string const & bind_file);
+
 	/// print all available keysyms
 	string const print() const;
 

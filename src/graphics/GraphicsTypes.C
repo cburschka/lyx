@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "graphics/GraphicsTypes.h"
-
+#include "support/translator.h"
 
 namespace lyx {
 namespace graphics {

@@ -1753,7 +1753,7 @@ void FormPreferences::OutputsMisc::apply(LyXRC & rc) const
 
 	int const choice =
 		fl_get_choice(dialog_->choice_default_papersize) - 1;
-	rc.default_papersize = static_cast<BufferParams::PAPER_SIZE>(choice);
+	rc.default_papersize = static_cast<PAPER_SIZE>(choice);
 
 	rc.ascii_roff_command = fl_get_input(dialog_->input_ascii_roff);
 	rc.chktex_command = fl_get_input(dialog_->input_checktex);

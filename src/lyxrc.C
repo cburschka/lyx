@@ -16,13 +16,12 @@
 #include "lyxrc.h"
 
 #include "debug.h"
-#include "kbmap.h"
-#include "LyXAction.h"
 #include "intl.h"
 #include "converter.h"
 #include "format.h"
 #include "gettext.h"
 #include "lyxlex.h"
+#include "lyxfont.h"
 
 #include "support/path.h"
 #include "support/tostr.h"
@@ -30,6 +29,7 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/userinfo.h"
+#include "support/translator.h"
 
 using namespace lyx::support;
 
@@ -40,9 +40,12 @@ using std::ios;
 using std::endl;
 using std::vector;
 
-class kb_keymap;
-
-extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
+namespace lyx {
+namespace graphics {
+/// The translator between the DisplayType and the corresponding lyx string.
+extern Translator<DisplayType, string> displayTranslator;
+}
+}
 
 namespace {
 
@@ -57,7 +60,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\auto_reset_options", LyXRC::RC_AUTORESET_OPTIONS },
 	{ "\\autosave", LyXRC::RC_AUTOSAVE },
 	{ "\\backupdir_path", LyXRC::RC_BACKUPDIR_PATH },
-	{ "\\bind", LyXRC::RC_BIND },
 	{ "\\bind_file", LyXRC::RC_BINDFILE },
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
@@ -170,7 +172,6 @@ LyXRC::LyXRC()
 
 void LyXRC::setDefaults() {
 	bind_file = "cua";
-	hasBindFile = false;
 	ui_file = "default";
 	// Get printer from the environment. If fail, use default "",
 	// assuming that everything is set up correctly.
@@ -194,7 +195,7 @@ void LyXRC::setDefaults() {
 	use_tempdir = true;
 	ps_command = "gs";
 	view_dvi_paper_option.erase();
-	default_papersize = BufferParams::PAPER_USLETTER;
+	default_papersize = PAPER_USLETTER;
 	custom_export_format = "ps";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	fontenc = "default";
@@ -271,25 +272,6 @@ void LyXRC::setDefaults() {
 }
 
 
-int LyXRC::ReadBindFile(string const & name)
-{
-	hasBindFile = true;
-	string const tmp = i18nLibFileSearch("bind", name, "bind");
-	lyxerr[Debug::LYXRC] << "Reading bindfile:" << tmp << endl;
-	int const result = read(tmp);
-	if (result) {
-		lyxerr << "Error reading bind file: " << tmp << endl;
-	}
-	return result;
-}
-
-void LyXRC::readBindFileIfNeeded()
-{
-	if (!hasBindFile)
-		ReadBindFile(bind_file);
-}
-
-
 namespace {
 
 void oldFontFormat(string & family, string & foundry)
@@ -347,18 +329,7 @@ int LyXRC::read(string const & filename)
 			break;
 		case RC_BINDFILE:                     // RVDK_PATCH_5
 			if (lexrc.next()) {
-				string const tmp(lexrc.getString());
-				if (hasBindFile) {
-					// We are already in the
-					// "actually read bind file"
-					// mode.
-					ReadBindFile(tmp);
-				} else {
-					// We are still in the "just
-					// remember the name of the
-					// bind file" mode.
-					bind_file = tmp;
-				}
+				bind_file = lexrc.getString();
 			}
 			break;
 
@@ -546,25 +517,25 @@ int LyXRC::read(string const & filename)
 					ascii_lowercase(lexrc.getString());
 				if (size == "usletter")
 					default_papersize =
-						BufferParams::PAPER_USLETTER;
+						PAPER_USLETTER;
 				else if (size == "legal")
 					default_papersize =
-						BufferParams::PAPER_LEGALPAPER;
+						PAPER_LEGALPAPER;
 				else if (size == "executive")
-					default_papersize =
-						BufferParams::PAPER_EXECUTIVEPAPER;
+					default_papersize = 
+						PAPER_EXECUTIVEPAPER;
 				else if (size == "a3")
 					default_papersize =
-						BufferParams::PAPER_A3PAPER;
+						PAPER_A3PAPER;
 				else if (size == "a4")
 					default_papersize =
-						BufferParams::PAPER_A4PAPER;
+						PAPER_A4PAPER;
 				else if (size == "a5")
 					default_papersize =
-						BufferParams::PAPER_A5PAPER;
+						PAPER_A5PAPER;
 				else if (size == "b5")
 					default_papersize =
-						BufferParams::PAPER_B5PAPER;
+						PAPER_B5PAPER;
 			}
 			break;
 
@@ -801,53 +772,6 @@ int LyXRC::read(string const & filename)
 			}
 			break;
 
-		case RC_BIND:
-		{
-			// we should not do an explicit binding before
-			// loading a bind file. So, in this case, load
-			// the default bind file.
-			readBindFileIfNeeded();
-
-			// !!!chb, dynamic key binding...
-			int action = 0;
-			string::size_type res = 0;
-			string seq, cmd;
-
-			if (lexrc.next()) {
-				seq = lexrc.getString();
-			} else {
-				lexrc.printError("RC_BIND: Missing key sequence");
-				break;
-			}
-
-			if (lexrc.next(true)) {
-				cmd = lexrc.getString();
-			} else {
-				lexrc.printError("RC_BIND: missing command");
-				break;
-			}
-
-			if ((action = lyxaction.LookupFunc(cmd)) >= 0) {
-				if (lyxerr.debugging(Debug::LYXRC)) {
-					lyxerr << "RC_BIND: Sequence `"
-					       << seq << "' Command `"
-					       << cmd << "' Action `"
-					       << action << '\'' << endl;
-				}
-				res = toplevel_keymap->bind(seq, kb_action(action));
-				if (res != string::npos
-				    && lyxerr.debugging(Debug::LYXRC)) {
-					lexrc.printError(
-						"RC_BIND: "
-						"Invalid key sequence `"
-						+ seq + '\'');
-				}
-			} else {// cmd is the last token read.
-				lexrc.printError(
-					"Unknown LyX function `$$Token'");
-			}
-			break;
-		}
 		case RC_SERVERPIPE:
 			if (lexrc.next()) {
 				lyxpipes = ExpandPath(lexrc.getString());
@@ -1160,8 +1084,6 @@ void LyXRC::output(ostream & os) const
 	case RC_LAST:
 	case RC_INPUT:
 		// input/include files are not done here
-	case RC_BIND:
-		// bindings is not written to the preferences file.
 	case RC_BINDFILE:
 		if (bind_file != system_lyxrc.bind_file) {
 			os << "\\bind_file " << bind_file << "\n";
@@ -1219,21 +1141,21 @@ void LyXRC::output(ostream & os) const
 			os << "# The default papersize to use.\n"
 			   << "\\default_papersize \"";
 			switch (default_papersize) {
-			case BufferParams::PAPER_USLETTER:
+			case PAPER_USLETTER:
 				os << "usletter"; break;
-			case BufferParams::PAPER_LEGALPAPER:
+			case PAPER_LEGALPAPER:
 				os << "legal"; break;
-			case BufferParams::PAPER_EXECUTIVEPAPER:
+			case PAPER_EXECUTIVEPAPER:
 				os << "executive"; break;
-			case BufferParams::PAPER_A3PAPER:
+			case PAPER_A3PAPER:
 				os << "a3"; break;
-			case BufferParams::PAPER_A4PAPER:
+			case PAPER_A4PAPER:
 				os << "a4"; break;
-			case BufferParams::PAPER_A5PAPER:
+			case PAPER_A5PAPER:
 				os << "a5"; break;
-			case BufferParams::PAPER_B5PAPER:
+			case PAPER_B5PAPER:
 				os << "b5"; break;
-			case BufferParams::PAPER_DEFAULT: break;
+			case PAPER_DEFAULT: break;
 			}
 			os << "\"\n";
 		}

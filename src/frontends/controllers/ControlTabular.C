@@ -70,7 +70,7 @@ void ControlTabular::set(LyXTabular::Feature f, string const & arg)
 
 bool ControlTabular::useMetricUnits() const
 {
-	return lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER;
+	return lyxrc.default_papersize > PAPER_EXECUTIVEPAPER;
 }
 
 

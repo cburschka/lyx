@@ -21,7 +21,7 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "insets/insetgraphicsParams.h"
-#include "bufferparams.h"
+//#include "bufferparams.h"
 #include "lyxrc.h"
 #include "lengthcombo.h"
 #include "qt_helpers.h"
@@ -144,18 +144,18 @@ void QGraphics::update_contents()
 	// set the right default unit
 	LyXLength::UNIT unitDefault = LyXLength::CM;
 	switch (lyxrc.default_papersize) {
-		case BufferParams::PAPER_DEFAULT: break;
+		case PAPER_DEFAULT: break;
 
-		case BufferParams::PAPER_USLETTER:
-		case BufferParams::PAPER_LEGALPAPER:
-		case BufferParams::PAPER_EXECUTIVEPAPER:
+		case PAPER_USLETTER:
+		case PAPER_LEGALPAPER:
+		case PAPER_EXECUTIVEPAPER:
 			unitDefault = LyXLength::IN;
 			break;
 
-		case BufferParams::PAPER_A3PAPER:
-		case BufferParams::PAPER_A4PAPER:
-		case BufferParams::PAPER_A5PAPER:
-		case BufferParams::PAPER_B5PAPER:
+		case PAPER_A3PAPER:
+		case PAPER_A4PAPER:
+		case PAPER_A5PAPER:
+		case PAPER_B5PAPER:
 			unitDefault = LyXLength::CM;
 			break;
 	}

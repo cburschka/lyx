@@ -444,7 +444,7 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		// Default unit choice is cm if metric, inches if US paper.
 		// If papersize is default, check the lyxrc-settings
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
-		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER)
+		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > PAPER_EXECUTIVEPAPER)
 			|| paperchoice == 2 || paperchoice > 5;
 		string const default_unit = metric ? "cm" : "in";
 		if (getString(class_->input_skip).empty())
@@ -467,7 +467,7 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 
 	} else if (ob == paper_->radio_landscape) {
 		fl_set_choice(paper_->choice_paperpackage,
-			      BufferParams::PACKAGE_NONE + 1);
+			      PACKAGE_NONE + 1);
 
 	} else if (ob == paper_->choice_papersize) {
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
@@ -510,7 +510,7 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 
 		// Default unit choice is cm if metric, inches if US paper.
 		// If papersize is default, use the lyxrc-settings
-		bool const metric = (defsize && lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER)
+		bool const metric = (defsize && lyxrc.default_papersize > PAPER_EXECUTIVEPAPER)
 			|| paperchoice == 2 || paperchoice > 5;
 		string const default_unit = metric ? "cm" : "in";
 		if (getString(paper_->input_custom_width).empty())
@@ -568,7 +568,7 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 			fl_set_button(paper_->check_use_geometry, 1);
 
 		fl_set_choice(paper_->choice_paperpackage,
-			      BufferParams::PACKAGE_NONE + 1);
+			      PACKAGE_NONE + 1);
 
 		bool const use_geom = fl_get_button(paper_->check_use_geometry);
 		setEnabled(paper_->input_top_margin,    use_geom);
@@ -592,11 +592,11 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		// either default papersize (preferences) or document
 		// papersize has to be A4
 		bool const enable = ( fl_get_choice(paper_->choice_papersize) == 1
-				      && lyxrc.default_papersize == BufferParams::PAPER_A4PAPER )
+				      && lyxrc.default_papersize == PAPER_A4PAPER )
 			|| fl_get_choice(paper_->choice_papersize) == 7;
 		if (!enable)
 			fl_set_choice(paper_->choice_paperpackage,
-				      BufferParams::PACKAGE_NONE + 1);
+				      PACKAGE_NONE + 1);
 		setEnabled(paper_->choice_paperpackage,
 			   enable && fl_get_button(paper_->radio_portrait));
 	}
@@ -697,10 +697,10 @@ bool FormDocument::class_apply(BufferParams &params)
 
 void FormDocument::paper_apply(BufferParams & params)
 {
-	params.papersize2 = BufferParams::VMARGIN_PAPER_TYPE(fl_get_choice(paper_->choice_papersize) - 1);
+	params.papersize2 = VMARGIN_PAPER_TYPE(fl_get_choice(paper_->choice_papersize) - 1);
 
 	params.paperpackage =
-		BufferParams::PAPER_PACKAGES(fl_get_choice(paper_->choice_paperpackage) - 1);
+		PAPER_PACKAGES(fl_get_choice(paper_->choice_paperpackage) - 1);
 
 	// set params.papersize from params.papersize2 and params.paperpackage
 	params.setPaperStuff();
@@ -708,9 +708,9 @@ void FormDocument::paper_apply(BufferParams & params)
 	params.use_geometry = fl_get_button(paper_->check_use_geometry);
 
 	if (fl_get_button(paper_->radio_landscape))
-		params.orientation = BufferParams::ORIENTATION_LANDSCAPE;
+		params.orientation = ORIENTATION_LANDSCAPE;
 	else
-		params.orientation = BufferParams::ORIENTATION_PORTRAIT;
+		params.orientation = ORIENTATION_PORTRAIT;
 
 	params.paperwidth =
 		getLengthFromWidgets(paper_->input_custom_width,
@@ -890,7 +890,7 @@ void FormDocument::class_update(BufferParams const & params)
 	bool const length_input = pos == 4;
 	if (length_input) {
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
-		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER)
+		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > PAPER_EXECUTIVEPAPER)
 			|| paperchoice == 2 || paperchoice > 5;
 		string const default_unit = metric ? "cm" : "in";
 		string const length = params.getDefSkip().asLyXCommand();
@@ -999,7 +999,7 @@ void FormDocument::paper_update(BufferParams const & params)
 	fl_set_button(paper_->radio_landscape, 0);
 	setEnabled(paper_->radio_landscape, !useCustom);
 
-	if (params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
+	if (params.orientation == ORIENTATION_LANDSCAPE)
 		fl_set_button(paper_->radio_landscape, 1);
 	else
 		fl_set_button(paper_->radio_portrait, 1);
@@ -1007,11 +1007,11 @@ void FormDocument::paper_update(BufferParams const & params)
 		   //either default papersize (preferences)
 		   //or document papersize has to be A4
 		   (paperchoice == 7
-		    || paperchoice == 1 && lyxrc.default_papersize == BufferParams::PAPER_A4PAPER)
+		    || paperchoice == 1 && lyxrc.default_papersize == PAPER_A4PAPER)
 		   && fl_get_button(paper_->radio_portrait));
 
 	// Default unit choice is cm if metric, inches if US paper.
-	bool const metric = (paperchoice == 1 && lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER)
+	bool const metric = (paperchoice == 1 && lyxrc.default_papersize > PAPER_EXECUTIVEPAPER)
 		|| paperchoice == 2 || paperchoice > 5;
 	string const default_unit = metric ? "cm" : "in";
 	updateWidgetsFromLengthString(paper_->input_custom_width,

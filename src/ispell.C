@@ -17,6 +17,7 @@
 #include "ispell.h"
 #include "WordLangTuple.h"
 #include "gettext.h"
+#include "bufferparams.h"
 
 #include "support/forkedcall.h"
 #include "support/lstrings.h"

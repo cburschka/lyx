@@ -1,3 +1,11 @@
+2003-07-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* XPainter.C: include lyxfont.h
+
+	* FormParagraph.C: 
+	* FormGraphics.C:
+	* FormDocument.C: adapt PAPER_* enums
+
 2003-07-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* XFormsMenubar.h: 

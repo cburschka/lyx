@@ -179,7 +179,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 			paper_size = "us";
 		command += ' ' + paper_size;
 		if (buffer->params.orientation
-		    == BufferParams::ORIENTATION_LANDSCAPE)
+		    == ORIENTATION_LANDSCAPE)
 			command += 'r';
 	}
 

@@ -119,7 +119,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		if (tmpret == -1)
 			++tmpret;
 		paragraph_separation =
-			static_cast<BufferParams::PARSEP>(tmpret);
+			static_cast<PARSEP>(tmpret);
 	} else if (token == "\\defskip") {
 		lex.nextToken();
 		defskip = VSpace(lex.getString());
@@ -172,7 +172,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		int tmpret = lex.findToken(string_paperpackages);
 		if (tmpret == -1) {
 			++tmpret;
-			paperpackage = BufferParams::PACKAGE_NONE;
+			paperpackage = PACKAGE_NONE;
 		} else
 			paperpackage = PAPER_PACKAGES(tmpret);
 	} else if (token == "\\use_geometry") {
@@ -180,7 +180,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		use_geometry = lex.getInteger();
 	} else if (token == "\\use_amsmath") {
 		lex.nextToken();
-		use_amsmath = static_cast<BufferParams::AMS>(
+		use_amsmath = static_cast<AMS>(
 			lex.getInteger());
 	} else if (token == "\\use_natbib") {
 		lex.nextToken();
@@ -202,7 +202,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		if (tmpret == -1)
 			++tmpret;
 		orientation =
-			static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
+			static_cast<PAPER_ORIENTATION>(tmpret);
 	} else if (token == "\\paperwidth") {
 		lex.next();
 		paperwidth = lex.getString();

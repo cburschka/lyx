@@ -510,9 +510,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\size " << known_coded_sizes[where - known_sizes] << "\n";
 		}
 
-		else if (t.cs() == "LyX" || t.cs() == "TeX"
-		      || t.cs() == "LaTeX" || t.cs() == "LaTeXe") {
+		else if (t.cs() == "LyX" || t.cs() == "TeX" 
+			 || t.cs() == "LaTeX") {
 			os << t.cs();
+			skip_braces(p); // eat {}
+		}
+
+		else if (t.cs() == "LaTeXe") {
+			os << "LaTeX2e";
 			skip_braces(p); // eat {}
 		}
 

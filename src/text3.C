@@ -29,6 +29,7 @@
 #include "language.h"
 #include "support/tostr.h"
 #include "support/lstrings.h"
+#include "support/LAssert.h"
 #include "frontends/LyXView.h"
 #include "frontends/screen.h"
 #include "frontends/Dialogs.h"

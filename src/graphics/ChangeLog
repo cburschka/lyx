@@ -1,3 +1,8 @@
+2003-07-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* GraphicsTypes.h: do not declare displayTranstor here (and remove
+	extra include)
+
 2003-07-27  José Matos  <jamatos@fep.up.pt>
 
 	* PreviewLoader.C (Impl::dumpPreamble): comply with makeLaTeXFile

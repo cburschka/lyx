@@ -55,6 +55,7 @@
 
 #include "graphics/Previews.h"
 
+#include "support/LAssert.h"
 #include "support/textutils.h"
 #include "support/filetools.h"
 #include "support/path.h"

@@ -24,7 +24,7 @@
 #include "graphics/GraphicsImage.h"
 
 #include "support/filetools.h"
-
+#include "support/LAssert.h"
 
 using namespace lyx::support;
 

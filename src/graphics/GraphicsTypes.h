@@ -16,7 +16,6 @@
 #define GRAPHICSTYPES_H
 
 #include "LString.h"
-#include "support/translator.h"
 
 namespace lyx {
 namespace graphics {
@@ -63,8 +62,6 @@ enum DisplayType {
 	NoDisplay
 };
 
-/// The translator between the DisplayType and the corresponding lyx string.
-extern Translator<DisplayType, string> displayTranslator;
 
 ///
 void setDisplayTranslator();

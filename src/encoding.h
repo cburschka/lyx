@@ -15,6 +15,8 @@
 #include "LString.h"
 #include "lyxrc.h"
 
+#include <map>
+
 ///
 typedef unsigned short int Uchar;
 

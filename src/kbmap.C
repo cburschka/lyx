@@ -12,9 +12,13 @@
 #include "kbmap.h"
 #include "lfuns.h"
 #include "kbsequence.h"
+#include "LyXAction.h"
+#include "support/filetools.h"
+#include "lyxlex.h"
 #include "debug.h"
 
 using std::endl;
+using lyx::support::i18nLibFileSearch;
 
 string const kb_keymap::printKeysym(LyXKeySymPtr key,
 				    key_modifier::state mod)
@@ -61,6 +65,93 @@ string::size_type kb_keymap::bind(string const & seq, int action)
 	}
 
 	return res;
+}
+
+
+namespace {
+
+enum BindTags {
+	BN_BIND,
+	BN_BINDFILE
+};
+
+keyword_item bindTags[] = {
+	{ "\\bind", BN_BIND },
+	{ "\\bind_file", BN_BINDFILE }
+};
+
+}
+
+
+bool kb_keymap::read(string const & bind_file) 
+{
+	const int bindCount = sizeof(bindTags) / sizeof(keyword_item);
+
+	LyXLex lexrc(bindTags, bindCount);
+	if (lyxerr.debugging(Debug::PARSER))
+		lexrc.printTable(lyxerr);
+
+	string const tmp = i18nLibFileSearch("bind", bind_file, "bind");
+	lexrc.setFile(tmp);
+	if (!lexrc.isOK()) return false;
+
+	lyxerr[Debug::KBMAP] << "Reading bindfile:" << tmp << endl;
+
+	bool error = false;
+	while (lexrc.isOK()) {
+		switch (lexrc.lex()) {
+		case LyXLex::LEX_UNDEF:
+			lexrc.printError("Unknown tag `$$Token'");
+			continue;
+		case LyXLex::LEX_FEOF:
+			continue;
+		case BN_BIND:
+		{
+			string seq, cmd;
+			
+			if (lexrc.next()) {
+				seq = lexrc.getString();
+			} else {
+				lexrc.printError("BN_BIND: Missing key sequence");
+				break;
+			}
+			
+			if (lexrc.next(true)) {
+				cmd = lexrc.getString();
+			} else {
+				lexrc.printError("BN_BIND: missing command");
+				break;
+			}
+			
+			int action = lyxaction.LookupFunc(cmd);
+			if (!action == LFUN_UNKNOWN_ACTION) {
+				lexrc.printError("BN_BIND: Unknown LyX"
+						 " function `$$Token'");
+				break;
+			}
+			
+			error = (bind(seq, kb_action(action)) != string::npos);
+			break;
+		}
+		case BN_BINDFILE:
+			if (lexrc.next()) {
+				string const tmp(lexrc.getString());
+				error = read(tmp);
+			} else {
+				lexrc.printError("BN_BINDFILE: Missing file name");
+				error = true;
+				break;
+
+			}
+			break;
+		}
+	}
+
+	if (error) {
+		lyxerr << "Error reading bind file: " << tmp << endl;
+	}
+
+	return error;
 }
 
 

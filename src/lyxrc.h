@@ -10,7 +10,7 @@
 #ifndef LYXRC_H
 #define LYXRC_H
 
-#include "bufferparams.h" // Just to get the enum BufferParams::PAPER_SIZE (sic)
+#include "paper.h" 
 #include "graphics/GraphicsTypes.h"
 
 // #include <boost/utility.hpp>
@@ -65,7 +65,6 @@ enum LyXRCTags {
 	RC_LASTFILES,
 	RC_AUTOREGIONDELETE,
 	RC_AUTORESET_OPTIONS,
-	RC_BIND,
 	RC_SERVERPIPE,
 	RC_INPUT,
 	RC_BINDFILE,
@@ -132,8 +131,6 @@ enum LyXRCTags {
 	///
 	int read(string const & filename);
 	///
-	void readBindFileIfNeeded();
-	///
 	void write(string const & filename) const;
 	///
 	void print() const;
@@ -190,7 +187,7 @@ enum LyXRCTags {
 	/// option for telling the dvi viewer about the paper size
 	string view_dvi_paper_option;
 	/// default paper size for local xdvi/dvips/ghostview/whatever
-	BufferParams::PAPER_SIZE default_papersize;
+	PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
 	string chktex_command;
 	///
@@ -350,12 +347,6 @@ enum LyXRCTags {
 	string user_name;
 	/// user email
 	string user_email;
-
-private:
-	/// Is a bind file already (or currently) read?
-	bool hasBindFile;
-	///
-	int ReadBindFile(string const & name);
 };
 
 ///

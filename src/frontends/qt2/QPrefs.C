@@ -36,6 +36,7 @@
 #include "QPrefs.h"
 #include "Qt2BC.h"
 #include "lyxrc.h"
+#include "lyxfont.h"
 #include "frnt_lang.h"
 #include "helper_funcs.h"
 #include "qt_helpers.h"
@@ -164,8 +165,7 @@ void QPrefs::apply()
 	rc.auto_reset_options = latexmod->latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = fromqstr(latexmod->latexDviPaperED->text());
 	rc.default_papersize =
-		static_cast<BufferParams::PAPER_SIZE>(latexmod->latexPaperSizeCO->currentItem());
-
+		static_cast<PAPER_SIZE>(latexmod->latexPaperSizeCO->currentItem());
 
 	QPrefDisplayModule * displaymod(dialog_->displayModule);
 
