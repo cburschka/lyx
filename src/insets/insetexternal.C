@@ -63,7 +63,9 @@ namespace {
 
 external::DisplayType const defaultDisplayType = external::NoDisplay;
 
-unsigned int defaultLyxScale = 100;
+unsigned int const defaultLyxScale = 100;
+
+string const defaultTemplateName = "RasterImage";
 
 } // namespace anon
 
@@ -134,7 +136,8 @@ Translator<DisplayType, string> const & displayTranslator()
 
 InsetExternalParams::InsetExternalParams()
 	: display(defaultDisplayType),
-	  lyxscale(defaultLyxScale)
+	  lyxscale(defaultLyxScale),
+	  templatename_(defaultTemplateName)
 {}
 
 
@@ -372,7 +375,7 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 	}
 
 	if (!found_end)
-		lex.printError("ExternalInset::read: Missing \\end_inset.");
+		lex.printError("ExternalInsetParams::read: Missing \\end_inset.");
 
 	// This is a trick to make sure that the data are self-consistent.
 	settemplate(templatename_);

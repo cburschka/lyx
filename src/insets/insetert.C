@@ -29,18 +29,18 @@
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
 
-#include "support/tostr.h"
+#include "support/std_sstream.h"
 
 using lyx::pos_type;
 
-using lyx::support::split;
-using lyx::support::strToInt;
-
 using std::endl;
 using std::min;
-using std::string;
+
 using std::auto_ptr;
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
+using std::string;
 
 
 void InsetERT::init()
@@ -479,22 +479,33 @@ string const InsetERTMailer::inset2string(Buffer const &) const
 
 
 void InsetERTMailer::string2params(string const & in,
-				   InsetCollapsable::InsetCollapsable::CollapseStatus & status)
+				   InsetCollapsable::CollapseStatus & status)
 {
 	status = InsetCollapsable::Collapsed;
 
+	istringstream data(in);
+	LyXLex lex(0,0);
+	lex.setStream(data);
+
 	string name;
-	string body = split(in, name, ' ');
-
-	if (body.empty())
+	lex >> name;
+	if (name != name_) {
+		lyxerr << "InsetERTMailer::string2params(" << in << ")\n"
+		       << "Missing identifier \"" << name_ << '"' << std::endl;
 		return;
+	}
 
-	status = static_cast<InsetCollapsable::CollapseStatus>(strToInt(body));
+	int s;
+	lex >> s;
+	if (lex)
+		status = static_cast<InsetCollapsable::CollapseStatus>(s);
 }
 
 
 string const
 InsetERTMailer::params2string(InsetCollapsable::CollapseStatus status)
 {
-	return name_ + ' ' + tostr(status);
+	ostringstream data;
+	data << name_ << ' ' << status;
+	return data.str();
 }

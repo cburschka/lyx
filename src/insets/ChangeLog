@@ -1,5 +1,12 @@
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* insetert.C (string2params): clean-up using the new lyxlex interface.
+
+	* insetexternal.C: ensure that InsetExternalParams has a default
+	template, 'RasterImage'.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
 	* insetnote.[Ch]: change the storage type of InsetNoteParams::type
 	to an enum. Ensuing clean-ups through out the class.
 	(read, write): now prepend the inset contents with 'Note' to identify
