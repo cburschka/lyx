@@ -1,3 +1,8 @@
+2002-08-06  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C: add support for preview.sty 0.73 (currently
+	#ifdef-ed out, awaiting the formal release).
+
 2002-08-05  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C (dumpPreamble): add lyx to the list of options output

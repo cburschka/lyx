@@ -12,11 +12,17 @@
 #pragma implementation
 #endif
 
+// Set to 1 if using preview.sty >= 0.73 and a version of lyxpreview2ppm.sh
+// that extracts the metrics info from the latex log file.
+#define USING_NEW_PREVIEW_STY 0
+
 #include "PreviewLoader.h"
 #include "PreviewImage.h"
 
 #include "buffer.h"
+#if !USING_NEW_PREVIEW_STY
 #include "bufferparams.h"
+#endif
 #include "converter.h"
 #include "debug.h"
 #include "lyxrc.h"
@@ -70,7 +76,9 @@ typedef list<string> PendingSnippets;
 typedef vector<StrPair> BitmapFile;
 
 
+#if !USING_NEW_PREVIEW_STY
 double setFontScalingFactor(Buffer &);
+#endif
 
 string const unique_filename(string const bufferpath);
 
@@ -313,7 +321,12 @@ namespace grfx {
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b), font_scaling_factor_(0.0)
 {
+#if USING_NEW_PREVIEW_STY
+	font_scaling_factor_ = 0.01 * lyxrc.dpi * lyxrc.zoom *
+		lyxrc.preview_scale_factor;
+#else
 	font_scaling_factor_ = setFontScalingFactor(const_cast<Buffer &>(b));
+#endif
 
 	lyxerr[Debug::GRAPHICS] << "The font scaling factor is "
 				<< font_scaling_factor_ << endl;
@@ -661,6 +674,7 @@ Converter const * setConverter()
 }
 
 
+#if !USING_NEW_PREVIEW_STY
 double setFontScalingFactor(Buffer & buffer)
 {
 	double scale_factor = 0.01 * lyxrc.dpi * lyxrc.zoom *
@@ -719,6 +733,7 @@ double setFontScalingFactor(Buffer & buffer)
 
 	return scaling;
 }
+#endif
 
 
 void setAscentFractions(vector<double> & ascent_fractions,
@@ -730,37 +745,110 @@ void setAscentFractions(vector<double> & ascent_fractions,
 	vector<double>::iterator end = ascent_fractions.end();
 	fill(it, end, 0.5);
 
-	ifstream ifs(metrics_file.c_str());
-	if (!ifs.good()) {
-		lyxerr[Debug::GRAPHICS] << "setAscentFractions("
-					<< metrics_file << ")\n"
-					<< "Unable to open file!"
-					<< endl;
+	ifstream in(metrics_file.c_str());
+	if (!in.good()) {
+		lyxerr[Debug::GRAPHICS]
+			<< "setAscentFractions(" << metrics_file << ")\n"
+			<< "Unable to open file!" << endl;
 		return;
 	}
 
+	bool error = false;
+
+#if USING_NEW_PREVIEW_STY
+	// Tightpage dimensions affect all subsequent dimensions
+	int tp_ascent;
+	int tp_descent;
+
+	int snippet_counter = 0;
+	while (!in.eof()) {
+		// Expecting lines of the form
+		// Preview: Tightpage tp_bl_x tp_bl_y tp_tr_x tp_tr_y
+		// Preview: Snippet id ascent descent width
+		string preview;
+		string type;
+		in >> preview >> type;
+
+		if (!in.good())
+			// eof after all
+			break;
+
+		error = preview != "Preview:"
+			|| (type != "Tightpage" && type != "Snippet");
+		if (error)
+			break;
+
+		if (type == "Tightpage") {
+			int dummy;
+			in >> dummy >> tp_descent >> dummy >> tp_ascent;
+
+			error = !in.good();
+			if (error)
+				break;
+
+		} else {
+			int dummy;
+			int snippet_id;
+			int ascent;
+			int descent;
+			in >> snippet_id >> ascent >> descent >> dummy;
+
+			error = !in.good() || ++snippet_counter != snippet_id;
+			if (error)
+				break;
+
+			double const a = ascent + tp_ascent;
+			double const d = descent - tp_descent;
+
+			if (!lyx::float_equal(a + d, 0, 0.1))
+				*it = a / (a + d);
+
+			if (++it == end)
+				break;
+		}
+	}
+
+#else
+	int snippet_counter = 0;
 	for (; it != end; ++it) {
+		// Extracting lines of the form
+		// %%Page id: tp_bl_x tp_bl_y tp_tr_x tp_tr_y asc desc width
 		string page;
 		string page_id;
 		int dummy;
-		double ascent;
-		double descent;
+		int tp_ascent;
+		int tp_descent;
+		int ascent;
+		int descent;
+		in >> page >> page_id
+		   >> dummy >> tp_descent >> dummy >> tp_ascent
+		   >> ascent >> descent >> dummy;
 
-		ifs >> page >> page_id >> dummy >> dummy >> dummy >> dummy
-		    >> ascent >> descent >> dummy;
+		page_id = rtrim(page_id, ":");
 
-		if (!ifs.good() ||
-		    page != "%%Page" ||
-		    !isStrUnsignedInt(rtrim(page_id, ":"))) {
-			lyxerr[Debug::GRAPHICS] << "setAscentFractions("
-						<< metrics_file << ")\n"
-						<< "Error reading file!"
-						<< endl;
+		error = !in.good()
+			|| !isStrUnsignedInt(page_id);
+		if (error)
 			break;
-		}
 
-		if (ascent + descent != 0)
-			*it = ascent / (ascent + descent);
+		int const snippet_id = strToInt(page_id);
+		error = page != "%%Page"
+			|| ++snippet_counter != snippet_id;
+		if (error)
+			break;
+
+		double const a = ascent + tp_ascent;
+		double const d = descent - tp_descent;
+
+		if (!lyx::float_equal(a + d, 0, 0.1))
+			*it = a / (a + d);
+	}
+#endif
+
+	if (error) {
+		lyxerr[Debug::GRAPHICS]
+			<< "setAscentFractions(" << metrics_file << ")\n"
+			<< "Error reading file!\n" << endl;
 	}
 }
 
