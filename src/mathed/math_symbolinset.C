@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "math_symbolinset.h"
@@ -12,12 +11,12 @@
 #include "debug.h"
 
 
-MathSymbolInset::MathSymbolInset(const latexkeys * l)
+MathSymbolInset::MathSymbolInset(latexkeys const * l)
 	: sym_(l), h_(0)
 {}
 
 
-MathSymbolInset::MathSymbolInset(const char * name)
+MathSymbolInset::MathSymbolInset(char const * name)
 	: sym_(in_word_set(name)), h_(0)
 {}
 

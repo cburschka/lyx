@@ -1332,7 +1332,7 @@ string const readBB_from_PSFile(string const & file)
 }
 
 
-string copyFileToDir(string const & path, string const & file_in)
+string const copyFileToDir(string const & path, string const & file_in)
 {
 	lyx::Assert(AbsolutePath(path));
 

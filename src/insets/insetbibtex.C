@@ -183,8 +183,8 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 
 
 // This method returns a comma separated list of Bibtex entries
-void InsetBibtex::fillWithBibKeys
-	(Buffer const * buffer, vector<pair<string, string> > & keys) const
+void InsetBibtex::fillWithBibKeys(Buffer const * buffer,
+				  std::vector<std::pair<string, string> > & keys) const
 {
 	lyx::Assert(buffer);
 	vector<string> const files = getFiles(*buffer);

@@ -81,7 +81,7 @@ public:
 	Templates & getTemplates();
 	Templates const & getTemplates() const;
 	/// return the template by LyX name
-	ExternalTemplate const & getTemplateByName(const string & name);
+	ExternalTemplate const & getTemplateByName(string const & name);
 private:
 	ExternalTemplateManager();
 	void readTemplates(string const & path);

@@ -249,7 +249,7 @@ public:
 	RowList::iterator getRow(LyXCursor const & cursor) const;
 	/// convenience
 	RowList::iterator cursorRow() const;
-	
+
 	/** returns a pointer to the row near the specified y-coordinate
 	  (relative to the whole text). y is set to the real beginning
 	  of this row
@@ -272,7 +272,7 @@ public:
 		return rowlist_;
 	}
 
-	
+
 	/// need the selection cursor:
 	void setSelection();
 	///
@@ -280,9 +280,9 @@ public:
 
 	/// select the word we need depending on word_location
 	void getWord(LyXCursor & from, LyXCursor & to,
-		     word_location const);
+		     word_location loc);
 	/// just selects the word the cursor is in
-	void selectWord(word_location const);
+	void selectWord(word_location loc);
 	/// returns the inset at cursor (if it exists), 0 otherwise
 	Inset * getInset() const;
 

@@ -29,11 +29,11 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	virtual bool initialiseParams(const string & params);
+	virtual bool initialiseParams(string const & params);
 	///
-	virtual void ControlErrorList::clearParams();
+	virtual void clearParams();
 	///
-	virtual void ControlErrorList::dispatchParams() {}
+	virtual void dispatchParams() {}
 
 	/// goto this error in the parent bv
 	void goTo(int item);

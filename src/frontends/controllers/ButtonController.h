@@ -22,7 +22,7 @@
 class BCView;
 
 
-/** \class ButtonController controls the activation of the OK, Apply and
+/** \c ButtonController controls the activation of the OK, Apply and
  *  Cancel buttons.
  *
  * It actually supports 4 buttons in all and it's up to the user to decide on
@@ -72,7 +72,6 @@ public:
 	 *  of the BC to reflect the read-only status of the underlying buffer.
 	 */
 	void refreshReadOnly() const;
-	//@}
 
 	/** Passthrough function -- returns its input value
 	 *  Tell the BC about the read-only status of the underlying buffer.

@@ -36,7 +36,7 @@ char const * delim[] = {
 };
 
 
-string do_match(string const & str)
+string do_match(const string & str)
 {
 	if (str == "(") return ")";
 	if (str == ")") return "(";
@@ -57,7 +57,7 @@ string do_match(string const & str)
 }
 
 
-string fix_name(string const & str)
+string fix_name(const string & str)
 {
 	if (str == "slash")
 		return "/";
@@ -100,7 +100,7 @@ void QDelimiterDialog::insertClicked()
 }
 
 
-void QDelimiterDialog::set_label(QLabel * label, string const & str)
+void QDelimiterDialog::set_label(QLabel * label, const string & str)
 {
 	label->setUpdatesEnabled(false);
 	label->setPixmap(QPixmap(toqstr(find_xpm(str))));
@@ -109,7 +109,7 @@ void QDelimiterDialog::set_label(QLabel * label, string const & str)
 }
 
 
-void QDelimiterDialog::ldelim_clicked(string const & str)
+void QDelimiterDialog::ldelim_clicked(const string & str)
 {
 	left_ = str;
 
@@ -121,7 +121,7 @@ void QDelimiterDialog::ldelim_clicked(string const & str)
 }
 
 
-void QDelimiterDialog::rdelim_clicked(string const & str)
+void QDelimiterDialog::rdelim_clicked(const string & str)
 {
 	right_ = str;
 

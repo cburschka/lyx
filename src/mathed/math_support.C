@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "math_support.h"
@@ -398,7 +397,7 @@ int mathed_string_width(LyXFont const & font, string const & s)
 
 
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
-	const string & name)
+	string const & name)
 {
 	if (name == ".") {
 		pi.pain.line(x + w/2, y, x + w/2, y + h,
@@ -694,5 +693,3 @@ void asArray(string const & str, MathArray & ar)
 {
 	mathed_parse_cell(ar, str);
 }
-
-

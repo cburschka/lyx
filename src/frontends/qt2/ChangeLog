@@ -1,7 +1,18 @@
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QLPopupMenu.C: fix \file
+
+	* BulletsModule.C (BulletsModule): fix type const order (opposite
+	of everywhere else in the lyx code)
+	* QAboutDialog.C (QAboutDialog): ditto
+	* QBrowseBox.C (QBrowseBox): ditto
+	(exec): ditto
+	* and several more files the same...
+
 2003-06-27  Alfredo Braunstein  <abraunst@libero.it>
 
 	* lyx_gui.C (start): use BufferView::loadLyXFile
-	
+
 2003-06-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Toolbar_pimpl.C (add): do not add unknown lfuns
@@ -11,13 +22,13 @@
 	* QError.[Ch]:
 	* QErrorDialog.[Ch]:
 	* ui/QErrorDialogBase.ui: removed
-	* Makefile.am: 
-	* Makefile.dialogs: 
+	* Makefile.am:
+	* Makefile.dialogs:
 	* Dialogs.C: adjust
 
 2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
 
-	* QDocumentDialog.C: header reordering to handle qt/boost "signals" 
+	* QDocumentDialog.C: header reordering to handle qt/boost "signals"
 	symbol clash
 
 2003-06-20  Angus Leeming  <leeming@lyx.org>
@@ -33,9 +44,9 @@
 
 2003-06-19  Alfredo Braunstein  <abraunst@libero.it>
 
-	* lyx_gui.C (start): call ::loadLyXFile instead 
+	* lyx_gui.C (start): call ::loadLyXFile instead
 	of BufferList::loadLyXFile
-	
+
 2003-06-19  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C:
@@ -70,7 +81,7 @@
 	* QMathMatrixDialog.[Ch]: store a QMathMatrix*, not a QMath*.
 
 	* QMathDialog.C (delimiterClicked, matrixClicked): fix memory leaks.
-	
+
 2003-06-14  John Levon  <levon@movementarian.org>
 
 	* ui/QPrintDialogBase.ui: make "OK" default
@@ -235,12 +246,12 @@
 
 2003-05-20  Alfredo Braunstein  <abraunst@libero.it>
 
-	* QErrorList.[Ch]: small bugs fixed. 
+	* QErrorList.[Ch]: small bugs fixed.
 
 2003-05-17  Alfredo Braunstein  <abraunst@libero.it>
 
 	* QErrorList.C (update_contents): replace TextBrowser::clear() by
-	TextBrowser::setText(QString()) 
+	TextBrowser::setText(QString())
 
 2003-05-14  Juergen Spitzmueller <juergen.sp@t-online.de>
 

@@ -1,6 +1,21 @@
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Kernel.h: fix some \class issues
+
+	* Kernel.C: fix \file
+
+	* Dialog.h: fix some \class issues
+
+	* ControlErrorList.h: correct const type order, remove some
+	ControlErrorList:: from declarations.
+
+	* BCView.h: fix usage of \class to \c
+	* ControlAboutlyx.h: ditto
+	* ButtonController.h: ditto + remove misplaced end doxy group tag
+
 2003-06-24  Alfredo Braunstein  <abraunst@libero.it>
 
-	* ControlDocument.C (classApply): removed the call to resetErrorList, 
+	* ControlDocument.C (classApply): removed the call to resetErrorList,
 	replaced setErrorList by parseErrors
 
 2003-06-21  Alfredo Braunstein  <abraunst@libero.it>

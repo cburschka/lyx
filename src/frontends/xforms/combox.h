@@ -39,10 +39,13 @@ typedef enum {
 
 /** A function to create a combox widget.
  *  \param type is, as yet, unused. there is only one type of combox.
- *  \param x, \param y: the x,y coordinates of the upper left hand corner
- *  of the widget, relative to the parent form'd origin.
- *  \param w, \param h: the widget's dimensions.
- *  \param label: the widget's label as it appears on the GUI.
+ *  \param x the x coordinate of the upper left hand corner of the widget,
+ *  relative to the parent form'd origin.
+ *  \param y the y coordinate of the upper left hand corner of the widget,
+ *  relative to the parent form'd origin.
+ *  \param w the widget's width
+ *  \param h the widget's height
+ *  \param label the widget's label as it appears on the GUI.
  */
 FL_EXPORT FL_OBJECT *
 fl_create_combox(FL_COMBOX_TYPE type,
@@ -53,8 +56,8 @@ fl_create_combox(FL_COMBOX_TYPE type,
  *  \see fl_create_combox() for an explanation of the argument list.
  */
 FL_EXPORT FL_OBJECT *
-fl_add_combox(FL_COMBOX_TYPE type, 
-	      FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h, 
+fl_add_combox(FL_COMBOX_TYPE type,
+	      FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
 	      char const * label);
 
 /** The combox browser has a default height of 100 pixels. Adjust to suit. */
@@ -62,20 +65,20 @@ FL_EXPORT void
 fl_set_combox_browser_height(FL_OBJECT * ob, int bh);
 
 /** The browser will be displayed either below or above the button,
- *  dependent upon \param position.
+ *  dependent upon \c position.
  */
 FL_EXPORT void
 fl_set_combox_position(FL_OBJECT * ob, FL_COMBOX_POSITION position);
 
-/** Empty the browser and the combox, \param ob. */
+/** Empty the browser and the combox. */
 FL_EXPORT void
 fl_clear_combox(FL_OBJECT * ob);
 
-/** Add a line to the combox browser.*/
+/** Add a line to the combox browser. */
 FL_EXPORT void
 fl_addto_combox(FL_OBJECT * ob, char const * text);
 
-/** Set the combox to return line \param choice of the combox browser. */
+/** Set the combox to return line \c choice of the combox browser. */
 FL_EXPORT void
 fl_set_combox(FL_OBJECT * ob, int choice);
 
@@ -89,7 +92,7 @@ fl_get_combox(FL_OBJECT * ob);
 FL_EXPORT char const *
 fl_get_combox_text(FL_OBJECT * ob);
 
-/** \return the contents of \param line of the combox browser. */
+/** \return the contents of \c line of the combox browser. */
 FL_EXPORT char const *
 fl_get_combox_line(FL_OBJECT * ob, int line);
 

@@ -207,12 +207,14 @@ void removeAutosaveFile(string const & filename);
 /// read the BoundingBox entry from a ps/eps/pdf-file
 string const readBB_from_PSFile(string const & file);
 
-/** Copy \param file to directory \param path. The file name is manipulated
+/** Copy \c file to directory \c path. The file name is manipulated
     so that eg some/path/to/file becomes some_path_to_file.
+    \param path where to put the file
+    \param file the file that is copied
     \returns this file name if the file is copied successfully, else
     \returns an empty string.
  */
-string copyFileToDir(string const & path, string const & file);
+string const copyFileToDir(string const & path, string const & file);
 
 typedef std::pair<int, string> cmd_ret;
 

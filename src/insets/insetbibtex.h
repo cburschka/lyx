@@ -42,8 +42,8 @@ public:
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	void fillWithBibKeys(Buffer const *,
-		std::vector<std::pair<string,string> > &) const;
+	void fillWithBibKeys(Buffer const * buffer,
+		std::vector<std::pair<string,string> > & keys) const;
 	///
 	std::vector<string> const getFiles(Buffer const &) const;
 	///

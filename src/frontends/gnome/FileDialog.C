@@ -25,8 +25,8 @@ public:
 	Private(string const & title);
 
 	void set_modal(bool modal) { modal_ = modal; }
-	void set_complete(const string & pattern) { sel_.complete(pattern); }
-	void set_filename(const string & filename) { sel_.set_filename(filename);}
+	void set_complete(string const & pattern) { sel_.complete(pattern); }
+	void set_filename(string const & filename) { sel_.set_filename(filename);}
 
 	string const exec();
 

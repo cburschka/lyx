@@ -243,7 +243,7 @@ string const & LyXVC::locker() const
 }
 
 
-const string LyXVC::getLogFile() const
+string const LyXVC::getLogFile() const
 {
 	if (!vcs)
 		return string();

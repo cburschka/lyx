@@ -1,3 +1,4 @@
+#include <config.h>
 
 #include "textcursor.h"
 
@@ -51,7 +52,7 @@ bool TextCursor::setSelection()
 	if (selection.start.par() == selection.end.par() &&
 	    selection.start.pos() == selection.end.pos())
 		selection.set(false);
-	
+
 	return lsel;
 }
 

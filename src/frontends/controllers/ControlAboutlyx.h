@@ -16,7 +16,7 @@
 #include "Dialog.h"
 #include <iosfwd>
 
-/** \class ControlAboutlyx is a controller for the "About LyX" dialogs.
+/** \c ControlAboutlyx is a controller for the "About LyX" dialogs.
  */
 class ControlAboutlyx : public Dialog::Controller {
 public:

@@ -1,4 +1,3 @@
-
 // This file contains most of the magic that extracts "context
 // information" from the unstructered layout-oriented stuff in an
 // MathArray.
@@ -196,7 +195,7 @@ bool extractNumber(MathArray const & ar, double & d)
 }
 
 
-bool testString(MathAtom const & at, const string & str)
+bool testString(MathAtom const & at, string const & str)
 {
 	string s;
 	return extractString(at, s) && str == s;

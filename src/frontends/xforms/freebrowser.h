@@ -50,7 +50,7 @@ typedef struct fl_freebrowser_ {
 } FL_FREEBROWSER;
 
 
-/** A function to create a freebrowser widget, "owned" by \param parent. */
+/** A function to create a freebrowser widget, "owned" by \c parent. */
 FL_EXPORT FL_FREEBROWSER *
 fl_create_freebrowser(void * parent);
 
@@ -58,9 +58,9 @@ fl_create_freebrowser(void * parent);
 FL_EXPORT void
 fl_free_freebrowser(FL_FREEBROWSER * ptr);
 
-/** \param abs_x, \param abs_y are the coordinates of the top left corner
+/** \c abs_x, \c abs_y are the coordinates of the top left corner
  *  of the browser relative to the top left hand corner of the _screen_.
- *  \param w, \param h are the browser dimensions.
+ *  \c w, \c h are the browser dimensions.
  */
 FL_EXPORT void
 fl_show_freebrowser(FL_FREEBROWSER *,

@@ -24,7 +24,7 @@ class ButtonController;
 class ButtonPolicy;
 
 
-/** \class CheckedWidget is an abstract base class that can be stored
+/** \c CheckedWidget is an abstract base class that can be stored
  *  in the button controller's view and can be interrogated by it
  *  when the activation state of the Ok, Apply buttons is refreshed.
  *  Ideally, the user will be prevented from returning invalid data
@@ -32,7 +32,7 @@ class ButtonPolicy;
  *
  *  Many widgets can be grouped together in the derived class if they
  *  make a logical whole. E.g., an input and a choice widget that together
- *  are used to set a LyXLength can be interrogated together. 
+ *  are used to set a LyXLength can be interrogated together.
  */
 struct CheckedWidget {
 	///
@@ -46,7 +46,7 @@ struct CheckedWidget {
 };
 
 
-/** \class BCView is the View to ButtonController's Controller. It
+/** \c BCView is the View to ButtonController's Controller. It
  *  stores the individual GUI widgets and sets their activation state
  *  upon receipt of instructions from the controller.
  *

@@ -1,15 +1,20 @@
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* combox.h: fix some usage of \param
+	* freebrowser.h: ditto
+
 2003-06-27  Alfredo Braunstein  <abraunst@libero.it>
 
 	* lyx_gui.C (start): use BufferView::loadLyXFile
-	
+
 2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
 
 	* FormError.[Ch]:
 	* forms/form_error.fd: removed
-	* forms/Makefile.am: 
-	* Makefile.am: adjust 
+	* forms/Makefile.am:
+	* Makefile.am: adjust
 	* Dialogs.C: adjust
-	
+
 2003-06-20  Angus Leeming  <leeming@lyx.org>
 
 	* FormBibtex.C (input, update): changes due to changed controller
@@ -19,9 +24,9 @@
 
 2003-06-19  Alfredo Braunstein  <abraunst@libero.it>
 
-	* lyx_gui.C (start): call ::loadLyXFile instead 
+	* lyx_gui.C (start): call ::loadLyXFile instead
 	of BufferList::loadLyXFile
-	
+
 2003-06-19  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C:
@@ -31,7 +36,7 @@
 
 2003-06-19  Juergen Spitzmueller <juergen.sp@t-online.de>
 
-	* forms/form_preferences.fd Revert Rob Lahaye's patch. 
+	* forms/form_preferences.fd Revert Rob Lahaye's patch.
 	Weird xforms sizing issues.
 
 2003-06-17  Angus Leeming  <leeming@lyx.org>

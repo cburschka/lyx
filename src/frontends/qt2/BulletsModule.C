@@ -27,7 +27,7 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 
-BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
+BulletsModule::BulletsModule(QWidget * parent,  const char * name, WFlags fl)
 	: BulletsModuleBase(parent, name, fl), tmpbulletset(0)
 {
 	for (int iter = 0; iter < 4; ++iter) {

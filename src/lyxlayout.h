@@ -119,7 +119,7 @@ public:
 	///
 	LyXAlignment alignpossible;
 	///
-	char labeltype; // add approp. type
+	LYX_LABEL_TYPES labeltype;
 	///
 	LYX_END_LABEL_TYPES endlabeltype;
 	///

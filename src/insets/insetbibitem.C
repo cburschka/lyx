@@ -25,7 +25,7 @@ using std::max;
 
 
 int InsetBibitem::key_counter = 0;
-const string key_prefix = "key-";
+string const key_prefix = "key-";
 
 
 InsetBibitem::InsetBibitem(InsetCommandParams const & p)

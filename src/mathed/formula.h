@@ -29,7 +29,7 @@ public:
 	///
 	explicit InsetFormula(BufferView *);
 	///
-	explicit InsetFormula(const string & data);
+	explicit InsetFormula(string const & data);
 	///
 	InsetFormula(InsetFormula const &);
 	///

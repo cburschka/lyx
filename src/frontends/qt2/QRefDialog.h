@@ -28,8 +28,8 @@ public:
 public slots:
 	void changed_adaptor();
 	void gotoClicked();
-	void refHighlighted(QString const &);
-	void refSelected(QString const &);
+	void refHighlighted(const QString &);
+	void refSelected(const QString &);
 	void sortToggled(bool);
 	void updateClicked();
 

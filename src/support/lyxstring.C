@@ -448,10 +448,14 @@ lyxstring::lyxstring(size_type n, value_type c)
 }
 
 
+#warning lyxstring user, have a look here. (Lgb)
+#if 0
+// Commented out to avoid warnings from doxygen. (Lgb)
 lyxstring::lyxstring(const_iterator first, const_iterator last)
 {
 	rep = new Srep(last - first, first);
 }
+#endif
 
 
 lyxstring::~lyxstring()

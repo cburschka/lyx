@@ -501,7 +501,7 @@ void InsetInclude::getLabelList(std::vector<string> & list) const
 }
 
 
-void InsetInclude::fillWithBibKeys(vector<pair<string,string> > & keys) const
+void InsetInclude::fillWithBibKeys(std::vector<std::pair<string,string> > & keys) const
 {
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());

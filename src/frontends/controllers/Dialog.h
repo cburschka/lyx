@@ -23,12 +23,12 @@ class LyXView;
 class ButtonController;
 
 
-/** \class Dialog collects the different parts of a Model-Controller-View
+/** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
  */
 class Dialog : boost::noncopyable {
 public:
-	/** \param name is the identifier given to the dialog by its parent
+	/** \param name the identifier given to the dialog by its parent
 	 *  container.
 	 */
 	Dialog(LyXView &, string const & name);
@@ -118,7 +118,7 @@ private:
 };
 
 
-/** \class Dialog::Controller is an abstract base class for the Controller
+/** \c Dialog::Controller is an abstract base class for the Controller
  *  of a Model-Controller-View split of a generic dialog.
  */
 class Dialog::Controller : boost::noncopyable {
@@ -174,7 +174,7 @@ private:
 };
 
 
-/** \class Dialog::View is an abstract base class to the View
+/** \c Dialog::View is an abstract base class to the View
  *  of a Model-Controller-View split of a generic dialog.
  */
 class Dialog::View : boost::noncopyable {

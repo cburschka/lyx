@@ -14,7 +14,7 @@
 #include "QAboutDialog.h"
 
 
-QAboutDialog::QAboutDialog(QWidget * parent, char const * name,
+QAboutDialog::QAboutDialog(QWidget * parent, const char * name,
 			   bool modal, WFlags fl)
     : QAboutDialogBase(parent, name, modal, fl)
 {
@@ -22,5 +22,4 @@ QAboutDialog::QAboutDialog(QWidget * parent, char const * name,
 
 
 QAboutDialog::~QAboutDialog()
-{
-}
+{}

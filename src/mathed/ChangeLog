@@ -1,3 +1,19 @@
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* math_symbolinset.C (MathSymbolInset): fix type const order
+
+	* math_support.C (mathed_draw_deco): fix type const order
+
+	* math_gridinset.C (GrinInsetMailer::name): fix type const order
+
+	* math_extern.C (testString): fix type const order
+
+	* math_data.C (operator[]): fix arg type
+
+	* math_binaryopinset.C (metrics): comment out
+
+	* formula.h: fix type const order
+
 2003-06-19  Angus Leeming  <leeming@lyx.org>
 
 	* formulabase.C (localDiapatch): replace LFUN_MATH_PANEL with

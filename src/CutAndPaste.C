@@ -2,8 +2,9 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Jurgen Vigna
+ * \author Juergen Vigna
  * \author Lars Gullik Bjønnes
+ * \author Alfredo Braunstein
  *
  * Full author contact details are available in file CREDITS
  */
@@ -49,7 +50,8 @@ CutStack cuts(10);
 
 } // namespace anon
 
-vector<string>
+
+std::vector<string>
 CutAndPaste::availableSelections(Buffer const & buffer)
 {
 	vector<string> selList;

@@ -25,7 +25,7 @@
 #include <cmath>
 
 
-QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char* name, WFlags f)
+QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char * name, WFlags f)
 	: QGridView(parent,name,f)
 {
 	setNumRows(rows);
@@ -103,13 +103,13 @@ QPixmap QBrowseBox::pixmap(int row, int col)
 }
 
 
-int QBrowseBox::exec(const QPoint& pos)
+int QBrowseBox::exec(const QPoint & pos)
 {
 	return exec(pos.x(),pos.y());
 }
 
 
-int QBrowseBox::exec(const QWidget* trigger)
+int QBrowseBox::exec(const QWidget * trigger)
 {
 	QPoint globalpos = trigger->parentWidget()->mapToGlobal( trigger->pos());
 	// is there enough space to put the box below the trigger?

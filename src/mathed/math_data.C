@@ -39,14 +39,14 @@ void MathArray::substitute(MathMacro const & m)
 }
 
 
-MathAtom & MathArray::operator[](size_type pos)
+MathAtom & MathArray::operator[](pos_type pos)
 {
 	lyx::Assert(pos < size());
 	return base_type::operator[](pos);
 }
 
 
-MathAtom const & MathArray::operator[](size_type pos) const
+MathAtom const & MathArray::operator[](pos_type pos) const
 {
 	lyx::Assert(pos < size());
 	return base_type::operator[](pos);

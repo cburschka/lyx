@@ -68,6 +68,7 @@ Converter::Converter(string const & f, string const & t, string const & c,
 			     original_dir(false), need_aux(false)
 {}
 
+
 void Converter::readFlags()
 {
 	string flag_list(flags);
@@ -581,6 +582,7 @@ string const Converters::dvipdfm_options(Buffer const * buffer)
 	return result;
 }
 
+
 void Converters::buildGraph()
 {
 	G_.init(formats.size());
@@ -593,7 +595,8 @@ void Converters::buildGraph()
 	}
 }
 
-vector<Format const *> const
+
+std::vector<Format const *> const
 Converters::intToFormat(std::vector<int> const & input)
 {
 	vector<Format const *> result(input.size());
@@ -616,6 +619,7 @@ Converters::getReachableTo(string const & target, bool clear_visited)
 	return intToFormat(reachablesto);
 }
 
+
 vector<Format const *> const
 Converters::getReachable(string const & from, bool only_viewable,
 	     bool clear_visited)
@@ -628,11 +632,13 @@ Converters::getReachable(string const & from, bool only_viewable,
 	return intToFormat(reachables);
 }
 
+
 bool Converters::isReachable(string const & from, string const & to)
 {
 	return G_.isReachable(formats.getNumber(from),
 			      formats.getNumber(to));
 }
+
 
 Graph::EdgePath const
 Converters::getPath(string const & from, string const & to)
@@ -640,6 +646,7 @@ Converters::getPath(string const & from, string const & to)
 	return G_.getPath(formats.getNumber(from),
 			  formats.getNumber(to));
 }
+
 
 /// The global instance
 Converters converters;

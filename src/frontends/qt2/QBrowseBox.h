@@ -26,16 +26,16 @@ class QBrowseBox : public QGridView
 {
 	Q_OBJECT
 public:
-	QBrowseBox(int rows, int cols, QWidget* parent=0, char const * name=0, WFlags f=0);
+	QBrowseBox(int rows, int cols, QWidget * parent = 0, const char * name = 0, WFlags f = 0);
 	~QBrowseBox();
 
 	void insertItem(QPixmap pixmap);
 
 	QPixmap pixmap(int row, int col);
 
-	int exec(QPoint const & pos);
+	int exec(const QPoint & pos);
 	int exec(int x, int y);
-	int exec(QWidget const * trigger);
+	int exec(const QWidget * trigger);
 
 signals:
 	void selected(int, int);

@@ -1,23 +1,35 @@
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetspace.h: fix \file
+
+	* insetbibtex.C (fillWithBibKeys): use std:: on stdlib types
+	* insetinclude.C (fillWithBibKeys): ditto
+
+	* insetbibitem.C: fix type const order
+
+	* inset.C (getLyXText): add varname for arg
+
+	* ExternalTemplate.h: fix type const order
 
 2003-06-27  André Pönitz  <poenitz@gmx.net>
 
 	* insettext.C: take care of removed LyXCursor::row_ member
-	
+
 	* insettext.[Ch]: use new TextCursor struct for sstate
 
 2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
 
-	* inseterror.[Ch]: removed 
-	
+	* inseterror.[Ch]: removed
+
 2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
 
-	* insetinclude.C (docbook): use parseError instead of sgmlError 
-	
+	* insetinclude.C (docbook): use parseError instead of sgmlError
+
 2003-06-19  Alfredo Braunstein  <abraunst@libero.it>
 
-	* insetinclude.C (loadIfNeeded): call ::loadLyXFile instead 
+	* insetinclude.C (loadIfNeeded): call ::loadLyXFile instead
 	of BufferList::loadLyXFile
-	
+
 2003-06-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insettext.C (update): simplify

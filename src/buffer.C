@@ -282,10 +282,10 @@ int Buffer::readHeader(LyXLex & lex)
 			} else {
 				++unknown_tokens;
 				string const s = bformat(_("Unknown token: "
-							   "%1$s %2$s\n"), 
-							 token, 
+							   "%1$s %2$s\n"),
+							 token,
 							 lex.getString());
-				parseError(ErrorItem(_("Header error"), s, 
+				parseError(ErrorItem(_("Header error"), s,
 						     -1, 0, 0));
 			}
 		}
@@ -1119,7 +1119,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		ofs << "<!doctype linuxdoc system";
 
 		string preamble = params.preamble;
-		const string name = nice ? ChangeExtension(filename_, ".sgml")
+		string const name = nice ? ChangeExtension(filename_, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
@@ -1553,7 +1553,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		    << "  PUBLIC \"-//OASIS//DTD DocBook V4.1//EN\"";
 
 		string preamble = params.preamble;
-		const string name = nice ? ChangeExtension(filename_, ".sgml")
+		string const name = nice ? ChangeExtension(filename_, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
@@ -2008,7 +2008,7 @@ void Buffer::getLabelList(std::vector<string> & list) const
 
 
 // This is also a buffer property (ale)
-void Buffer::fillWithBibKeys(vector<pair<string, string> > & keys) const
+void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys) const
 {
 	/// if this is a child document and the parent is already loaded
 	/// use the parent's list instead  [ale990412]

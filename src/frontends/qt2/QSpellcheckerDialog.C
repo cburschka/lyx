@@ -54,7 +54,7 @@ void QSpellcheckerDialog::ignoreClicked()
 }
 
 
-void QSpellcheckerDialog::suggestionChanged(QString const & str)
+void QSpellcheckerDialog::suggestionChanged(const QString & str)
 {
 	if (replaceCO->count() != 0)
 		replaceCO->changeItem(str, 0);
@@ -65,7 +65,7 @@ void QSpellcheckerDialog::suggestionChanged(QString const & str)
 }
 
 
-void QSpellcheckerDialog::replaceChanged(QString const & str)
+void QSpellcheckerDialog::replaceChanged(const QString & str)
 {
 	if (suggestionsLB->currentText() == str)
 		return;

@@ -32,8 +32,8 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
-	///
-	//void infoize(std::ostream & os) const;
+	//
+	// void infoize(std::ostream & os) const;
 	///
 	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	///

@@ -1,3 +1,27 @@
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* textcursor.C: add <config.h>
+
+	* text.C (getWord): remove const from word_location arg
+
+	* lyxvc.C (getLogFile): fix const type order
+
+	* lyxtext.h: remove const from word_location arg, add arg name
+
+	* lyxlayout.h: currect type on labeltype.
+
+	* importer.C: correct \file
+
+	* converter.C (intToFormat): use std:: on ret val, ws changes
+
+	* bufferlist.h: correct \file
+
+	* buffer.C (makeLinuxDocFile): fix const type order
+	(makeDocBookFile): ditto
+	(fillWithBibKeys): use std:: on stdlib args.
+
+	* CutAndPaste.C: fix authors.
+	(availableSelections): use std:: on return vector
 
 2003-06-27  André Pönitz  <poenitz@gmx.net>
 
@@ -20,21 +44,21 @@
 
 2003-06-26  Alfredo Brauntein  <abraunst@lyx.org>
 
-	* lyx_main.C (LyX): get full path of document loaded on the 
-	command line	
+	* lyx_main.C (LyX): get full path of document loaded on the
+	command line
 
 2003-06-26  André Pönitz  <poenitz@gmx.net>
 
 	* lyxcursor.[Ch]: move rarely used operator==,!= out of line
 	  remove unused/broken operator>,<,>=.
-	
+
 	*	text.C: remove only use of broken operator<= in an Assert().
 
 2003-06-24  Alfredo Brauntein  <abraunst@lyx.org>
 
-	* BufferView.[Ch] (getErrorList): removed unneeded forward declare, 
+	* BufferView.[Ch] (getErrorList): removed unneeded forward declare,
 	moved errorlist_.clear to showErrorList
-	
+
 2003-06-24  Alfredo Brauntein  <abraunst@lyx.org>
 
 	* converter.C (scanLog, runLaTeX):
@@ -47,7 +71,7 @@
 	namespace, the second to...
 	* buffer_funcs (BufferFormat, parseErrors): added
 	* errorlist.C (ErrorList(TeXErrors const &)): removed
-	
+
 2003-06-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ToolbarBackend.C (getIcon): complain when icon cannot be found
@@ -65,28 +89,28 @@
 2003-06-22  Alfredo Braunstein  <abraunst@libero.it>
 
 	* buffer.C: fix a bug just introduced
-	
+
 2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
 
-	* buffer.[Ch]: added the parseError signal and use it, removed 
+	* buffer.[Ch]: added the parseError signal and use it, removed
 	sgmlError
 	* BufferView.[Ch] (addError): moved to ...
-	* BufferView_pimpl.[Ch] (addError, loadLyXFile): ... here. Attach 
+	* BufferView_pimpl.[Ch] (addError, loadLyXFile): ... here. Attach
 	to the Buffer::parseError signal to catch (guess what) parse errors
 	* lyx_main.[Ch] (printError,LyX): added gui-less parsing error feedback
-	
+
 2003-06-19  Alfredo Braunstein  <abraunst@libero.it>
 
-	* bufferlist.[Ch] (loadLyXFile, readFile, newFile): removed the 
-	ability to create a buffer and to return an existing one from 
+	* bufferlist.[Ch] (loadLyXFile, readFile, newFile): removed the
+	ability to create a buffer and to return an existing one from
 	the list. Moved these functions to...
 	* buffer_funcs.[Ch]: added
 	* BufferView.[Ch] (loadLyXFile): added
-	* BufferView_pimpl.[Ch] (loadLyXFile): Added. Does the guessing 
+	* BufferView_pimpl.[Ch] (loadLyXFile): Added. Does the guessing
 	job removed from bufferlist::loadLyXFile.
-	* buffer.C (setReadOnly): make it work without view 
+	* buffer.C (setReadOnly): make it work without view
 	(i.e added an if (users))
-	
+
 2003-06-19  Angus Leeming  <leeming@lyx.org>
 
 	* lfuns.h:

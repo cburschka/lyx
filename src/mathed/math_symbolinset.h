@@ -13,11 +13,11 @@ struct latexkeys;
 class MathSymbolInset : public MathInset {
 public:
 	///
-	explicit MathSymbolInset(latexkeys const *);
+	explicit MathSymbolInset(latexkeys const * l);
 	///
-	explicit MathSymbolInset(char const *);
+	explicit MathSymbolInset(char const * name);
 	///
-	explicit MathSymbolInset(string const &);
+	explicit MathSymbolInset(string const & name);
 	///
 	InsetBase * clone() const;
 	///

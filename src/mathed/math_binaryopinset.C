@@ -28,6 +28,10 @@ int MathBinaryOpInset::opwidth() const
 }
 
 
+#warning Andre, have a look here. (Lgb)
+#if 0
+// That this is not declared in class MathBinaryOpInset makes
+// Doxygen give warnings. (Lgb)
 void MathBinaryOpInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mi_ = mi;
@@ -37,7 +41,7 @@ void MathBinaryOpInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	ascent_  = max(cell(0).ascent(),  cell(1).ascent());
 	descent_ = max(cell(0).descent(), cell(1).descent());
 }
-
+#endif
 
 void MathBinaryOpInset::draw(PainterInfo & pain, int x, int y) const
 {

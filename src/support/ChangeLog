@@ -1,3 +1,11 @@
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* filetools.h: fix some \param issue
+
+	* boost-inst.C: fix \file
+
+	* LAssert.h: fix \file
+
 2003-06-20  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.[Ch] (NormalizePath): also change /foo//bar ==> /foo/bar.

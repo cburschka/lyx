@@ -1,3 +1,7 @@
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* FileDialog.C: fix const type order
+
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
 	* Timeout_pimpl.[Ch]: removed.
@@ -11,7 +15,7 @@
 2003-02-14  John Levon  <levon@movementarian.org>
 
 	* FileDialog.C: remove spurious allow/prohibitInput()
- 
+
 2003-02-12  Michael A. Koziarski  <michael@koziarski.com>
 
 	* GChanges.C

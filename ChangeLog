@@ -1,3 +1,8 @@
+2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* sourcedoc/Doxyfile.in (EXCLUDE): exclude gnome and generated
+	files in qt dir.
+
 2003-06-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyx.man: change env variable from foo_13x to foo_14x

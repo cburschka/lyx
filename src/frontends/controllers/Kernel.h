@@ -22,7 +22,7 @@ class FuncRequest;
 class LyXView;
 
 
-/** \class Kernel is a wrapper making the LyX kernel available to the dialog.
+/** \c Kernel is a wrapper making the LyX kernel available to the dialog.
  * (Ie, it provides an interface to the Model part of the Model-Controller-
  *  View split.
  *  In an ideal world, it will shrink as more info is passed to the

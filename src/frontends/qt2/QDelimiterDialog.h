@@ -31,7 +31,7 @@ public slots:
 protected:
 	//needed ? virtual void closeEvent(QCloseEvent * e);
 private:
-	void set_label(QLabel * label, string const & str);
+	void set_label(QLabel * label, const string & str);
 
 	/// symbol of left delimiter
 	string left_;

@@ -192,7 +192,7 @@ void QMathDialog::addPanel(int num)
 }
 
 
-void QMathDialog::symbol_clicked(string const & str)
+void QMathDialog::symbol_clicked(const string & str)
 {
 	form_->controller().dispatchInsert(str);
 }

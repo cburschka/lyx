@@ -23,7 +23,7 @@ public:
 	///
 	virtual string const & name() const
 	{
-		static const string theName = "tabular";
+		static string const theName = "tabular";
 		return theName;
 	}
 	///
@@ -39,7 +39,7 @@ public:
 
 protected:
 	InsetBase & inset() const { return inset_; }
-	MathGridInset & inset_;	
+	MathGridInset & inset_;
 };
 
 
@@ -1031,7 +1031,7 @@ dispatch_result MathGridInset::dispatch
 			//}
 			return UNDISPATCHED;
 
-		case LFUN_INSET_DIALOG_UPDATE: 
+		case LFUN_INSET_DIALOG_UPDATE:
 			GridInsetMailer(*this).updateDialog(cmd.view());
 			return UNDISPATCHED;
 
@@ -1096,25 +1096,25 @@ dispatch_result MathGridInset::dispatch
 			else if (s == "append-row")
 				for (int i = 0, n = extractInt(is); i < n; ++i)
 					addRow(row(idx));
-			else if (s == "delete-row") 
+			else if (s == "delete-row")
 				for (int i = 0, n = extractInt(is); i < n; ++i) {
 					delRow(row(idx));
 					if (idx > nargs())
 						idx -= ncols();
 				}
-			else if (s == "copy-row") 
+			else if (s == "copy-row")
 				for (int i = 0, n = extractInt(is); i < n; ++i)
 					copyRow(row(idx));
 			else if (s == "swap-row")
 				swapRow(row(idx));
-			else if (s == "append-column") 
+			else if (s == "append-column")
 				for (int i = 0, n = extractInt(is); i < n; ++i) {
 					row_type r = row(idx);
 					col_type c = col(idx);
 					addCol(c);
 					idx = index(r, c);
 				}
-			else if (s == "delete-column") 
+			else if (s == "delete-column")
 				for (int i = 0, n = extractInt(is); i < n; ++i) {
 					row_type r = row(idx);
 					col_type c = col(idx);
