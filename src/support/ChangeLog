@@ -1,3 +1,8 @@
+2002-02-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Makefile.am (SIGC_INCLUDES): add a -I directive for when
+	building outside of source tree.
+
 2002-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* forkedcall.[Ch]:

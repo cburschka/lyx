@@ -122,8 +122,9 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 		FL_OBJECT * obj;
 		if (i->kind() != MenuItem::Submenu) {
 			lyxerr << "ERROR: Menubar::Pimpl::createMenubar:"
-				" only submenus can appear in a menubar";
-			break;
+				" only submenus can appear in a menubar"
+			       << endl;
+			continue;
 		}
 		string const label = i->label();
 		string const shortcut = "#" + i->shortcut();
