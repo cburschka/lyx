@@ -171,6 +171,9 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 
 Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 {
+	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << cmd.action
+			      <<"] arg[" << cmd.argument << "]" << endl;
+
 	BufferView * bv = cmd.view();
 
 	switch (cmd.action) {
