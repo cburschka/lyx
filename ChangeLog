@@ -1,3 +1,8 @@
+2001-10-01  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/paragraph.C (asString): Do not ignore newline/hfill chars when
+ 	copying to the clipboard.
+
 2001-09-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/CREDITS: add Michael Schmitt.
