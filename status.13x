@@ -57,18 +57,20 @@ What's new
 - when the autodetection of latex classes cannot be done for some
   reason, provide a sensible list of textclasses
 
-- fix an annoying "could not delete temp dir" warning
-
 - honor correctly the various locale-related environment variables when 
   looking for translated help files
 
 - prevent activation of the Ok and Apply buttons in the reference
   dialog when simply manipulating the list of references in the dialog.
 
+- set the default button in the print dialog, activated on Return, 
+  to be the Ok button rather than the Close button. [bug #1465, Qt only]
+
 - enable instant preview to work on solaris machines.
 
-- set the default button in the print dialog, activated on Return, 
-  to be the Ok button rather than the Close button. [Qt bug only]
+- fix an annoying "could not delete temp dir" warning
+
+- fix some math bindings like "M-m [" for german or french keyboards
 
 * Configuration/Installation:
 
