@@ -42,10 +42,6 @@ public:
 	virtual int workHeight() const = 0;
   
 	///
-	virtual int xpos() const = 0;
-	///
-	virtual int ypos() const = 0;
-	///
 	virtual void resize(int xpos, int ypos, int width, int height) = 0;
 	///
 	virtual void redraw() const = 0;
@@ -53,8 +49,6 @@ public:
 	virtual void setFocus() const = 0;
 	///
 	virtual bool hasFocus() const = 0;
-	///
-	virtual bool visible() const = 0;
 	///
 	virtual void greyOut() const = 0;
         ///

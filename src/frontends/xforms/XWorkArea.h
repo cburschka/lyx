@@ -34,10 +34,6 @@ public:
 	///
 	virtual int workHeight() const { return work_area->h; }
 	///
-	virtual int xpos() const { return work_area->x; }
-	///
-	virtual int ypos() const { return work_area->y; }
-	///
 	virtual void resize(int xpos, int ypos, int width, int height);
 	///
 	virtual void redraw() const {
@@ -51,8 +47,6 @@ public:
 	///
 	virtual bool hasFocus() const { return work_area->focus; }
 	///
-	virtual bool visible() const { return work_area->form->visible; }
-	///
 	virtual void greyOut() const;
         ///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
@@ -62,6 +56,11 @@ public:
 	static int work_area_handler(FL_OBJECT *, int event,
 				     FL_Coord, FL_Coord,
 				     int /*key*/, void * xev);
+ 
+	/// return x position of window
+	int xpos() const { return work_area->x; }
+	/// return y position of window
+	int ypos() const { return work_area->y; }
  
 	/// xforms callback from scrollbar
 	void scroll_cb();

@@ -42,9 +42,6 @@ public:
 	QWorkArea(int x, int y, int w, int h);
 
 	// FIXME:
-	virtual int xpos() const { return 0; }
-	virtual int ypos() const { return 0; }
-	virtual bool visible() const { return true; }
 	virtual void greyOut() const { }
 
 	virtual ~QWorkArea();
