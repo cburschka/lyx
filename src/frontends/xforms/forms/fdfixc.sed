@@ -41,9 +41,9 @@ s/#include \"forms\.h\"/#include FORMS_H_LOCATION/
 # "fl_add_bmtable"
 /bmtable/ s/fl_add_button/fl_add_bmtable/
 
-#  For all lines containing "shortcut" and a string containing |, 
+#  For all lines containing "_shortcut" and a string containing |, 
 #  replace the string with scex(_(string))
-/shortcut/ s/".*[|].*"/scex(_(&))/
+/_shortcut/ s/".*[|].*"/scex(_(&))/
 
 #  gettext will get confused if the string contains a "%" unless the line is
 #  preceeded immediately by // xgettext:no-c-format

@@ -2,6 +2,19 @@
 
 	* FormCitation.C (apply, input): ensure that the choice is always valid.
 
+	* forms/fdfixc.sed: use "_shortcut" rather than "shortcut" as an
+	identifier when performing one of the substitutions. "shortcut" can
+	reasonably appear in the label.
+
+2002-04-25  Rob Lahaye <lahaye@users.sourceforge.net>
+
+	* Makefile.am: fix typo "shoul go to" -> "should go to".
+
+	* forms/form_preferences.fd: Modify naming for Converter flags
+	("Extra flags") and remove a couple of shortcut-clashes.
+
+	* FormPreferences.C: Modify 'tooltip' info for Converter flags.
+
 2002-04-23  Juergen Spitzmueller <j.spitzmueller@gmx.de>
 
 	* FormBibtex.C: Do not use a blank after the comma for multiple

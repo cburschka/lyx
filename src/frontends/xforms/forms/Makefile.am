@@ -5,7 +5,7 @@ EXTRA_DIST = $(SRCS) form_document.C.patch form_ert.C.patch form_filedialog.C.pa
 updatesrc:
 	@echo Note:
 	@echo   To update the C files generated from XForms fd files
-	@echo   You shoul go to the source dir and do a
+	@echo   You should go to the source dir and do a
 	@echo        make -f makefile.old updatesrc
 
 SRCS =  form_aboutlyx.fd \

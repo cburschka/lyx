@@ -971,7 +971,7 @@ FormPreferences::Converters::feedback(FL_OBJECT const * const ob) const
 	} else if (ob == dialog_->input_converter) {
 		str = _("The conversion command. $$i is the input file name, $$b is the file name without its extension and $$o is the name of the output file.");
 	} else if (ob == dialog_->input_flags) {
-		str = _("Flags that control the converter behavior");
+		str = _("Extra information for the Converter class, whether and how to parse the result, and various other things.");
 	} else if (ob == dialog_->button_delete) {
 		str = _("Remove the current converter from the list of available converters. Note: you must then \"Apply\" the change.");
 	} else if (ob == dialog_->button_add) {
