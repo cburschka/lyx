@@ -1,3 +1,11 @@
+1999-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/BufferView.C (restorePosition): don't do anything if the
+	backstack is empty.
+
+	* src/BackStack.h: added member empty, use this to test if there
+	is anything to pop...
+
 1999-10-25  Juergen Vigna  <jug@sad.it>
 
 	* forms/form1.fd +

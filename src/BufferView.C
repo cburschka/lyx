@@ -1514,6 +1514,8 @@ void BufferView::savePosition()
 
 void BufferView::restorePosition()
 {
+	if (backstack->empty()) return;
+	
 	int  x, y;
 	string fname = backstack->pop(&x, &y);
 	
