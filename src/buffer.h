@@ -123,6 +123,8 @@ public:
 				 LyXFont const &, string const &);
 	///
 	ParagraphList::iterator getParFromID(int id) const;
+	/// do we have a paragraph with this id?
+	bool hasParWithID(int id) const;
 
 public:
 	/** Save file.

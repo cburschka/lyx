@@ -2293,6 +2293,25 @@ ParagraphList::iterator Buffer::getParFromID(int id) const
 }
 
 
+bool Buffer::hasParWithID(int id) const
+{
+	ParIterator it(const_cast<Buffer*>(this)->par_iterator_begin());
+	ParIterator end(const_cast<Buffer*>(this)->par_iterator_end());
+
+	if (id < 0) {
+		// John says this is called with id == -1 from undo
+		lyxerr << "hasParWithID(), id: " << id << endl;
+		return 0;
+	}
+
+	for (; it != end; ++it)
+		if ((*it)->id() == id)
+			return true;
+
+	return false;
+}
+
+
 ParIterator Buffer::par_iterator_begin()
 {
 	return ParIterator(&*(paragraphs.begin()));

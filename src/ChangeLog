@@ -4,6 +4,9 @@
 	* iterator.C: 
 	* undo_funcs.C: use getParagraphs() instead of getFirstParagraph()
 
+	* buffer.[Ch]: new function hasParWithId() to help to get rid of a
+	  few naked Paragraph *.
+
 2003-05-02  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* bufferparams.C: Output warning if a document with missing

@@ -46,15 +46,15 @@ LyXCursor const & undoCursor(BufferView * bv)
  * we are so it will return the first paragraph of the buffer or the
  * first paragraph of the textinset we're in.
  */
-Paragraph * firstUndoParagraph(BufferView * bv, int inset_id)
+ParagraphList undoParagraphs(BufferView * bv, int inset_id)
 {
 	Inset * inset = bv->buffer()->getInsetFromID(inset_id);
 	if (inset) {
 		ParagraphList * result = inset->getParagraphs(0);
 		if (result && !result->empty())
-			return &result->front();
+			return *result;
 	}
-	return &bv->text->ownerParagraphs().front();
+	return bv->text->ownerParagraphs();
 }
 
 
@@ -93,7 +93,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 				num = -1;
 			}
 		}
-		t->setCursorIntern(firstUndoParagraph(bv, num), 0);
+		t->setCursorIntern(undoParagraphs(bv, num).begin(), 0);
 	}
 
 	// Set the right(new) inset-owner of the paragraph if there is any. 
@@ -116,7 +116,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		if (before)
 			deletepar = before->next();
 		else
-			deletepar = firstUndoParagraph(bv, undo.number_of_inset_id);
+			deletepar = &undoParagraphs(bv, undo.number_of_inset_id).front();
 		// this surprisingly fills the undo! (Andre')
 		size_t par = 0;
 		while (deletepar && deletepar != behind) {
@@ -152,7 +152,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		if (before)
 			before->next(undopar);
 		else {
-			int id = firstUndoParagraph(bv, undo.number_of_inset_id)->id();
+			int id = undoParagraphs(bv, undo.number_of_inset_id).front().id();
 			Paragraph * op = &*bv->buffer()->getParFromID(id);
 			if (op && op->inInset()) {
 				static_cast<InsetText*>(op->inInset())->paragraph(undopar);
@@ -165,7 +165,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		// have to substitue the second paragraph with the
 		// first if the removed one is the first.
 		if (!before && behind) {
-			int id = firstUndoParagraph(bv, undo.number_of_inset_id)->id();
+			int id = undoParagraphs(bv, undo.number_of_inset_id).front().id();
 			Paragraph * op = &*bv->buffer()->getParFromID(id);
 			if (op && op->inInset()) {
 				static_cast<InsetText*>(op->inInset())->paragraph(behind);
@@ -382,7 +382,7 @@ bool textUndoOrRedo(BufferView * bv,
 		if (first && first->next())
 			first = first->next();
 		else if (!first)
-			first = firstUndoParagraph(bv, undo->number_of_inset_id);
+			first = &*undoParagraphs(bv, undo->number_of_inset_id).begin();
 		if (first) {
 			shared_ptr<Undo> u;
 			if (createUndo(bv, undo->kind, first,
