@@ -91,17 +91,6 @@ void Dialogs::showMergeChanges()
 	pimpl_->changes.controller().show();
 }
 
-void Dialogs::showMinipage(InsetMinipage * im)
-{
-	pimpl_->minipage.controller().showInset(im);
-}
-
-
-void Dialogs::updateMinipage(InsetMinipage * im)
-{
-	pimpl_->minipage.controller().showInset(im);
-}
-
 
 void Dialogs::showParagraph()
 {

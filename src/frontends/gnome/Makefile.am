@@ -41,7 +41,6 @@ xforms_objects = \
 	../xforms/FormMathsPanel.lo \
 	../xforms/FormMathsSpace.lo \
 	../xforms/FormMathsStyle.lo \
-	../xforms/FormMinipage.lo \
 	../xforms/FormParagraph.lo \
 	../xforms/FormPreferences.lo \
 	../xforms/FormPrint.lo \
@@ -98,7 +97,6 @@ xforms_objects = \
 	../xforms/forms/form_maths_panel.lo \
 	../xforms/forms/form_maths_space.lo \
 	../xforms/forms/form_maths_style.lo \
-	../xforms/forms/form_minipage.lo \
 	../xforms/forms/form_paragraph.lo \
 	../xforms/forms/form_preamble.lo \
 	../xforms/forms/form_preferences.lo \

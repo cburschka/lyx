@@ -30,7 +30,6 @@
 #include "ControlInclude.h"
 #include "ControlLog.h"
 #include "ControlMath.h"
-#include "ControlMinipage.h"
 #include "ControlNote.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
@@ -63,7 +62,6 @@
 #include "FormMathsMatrix.h"
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
-#include "FormMinipage.h"
 #include "FormNote.h"
 #include "FormParagraph.h"
 #include "FormRef.h"
@@ -121,7 +119,7 @@ char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "branch", 
 "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations", "mathamsoperators",
 "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
-"minipage", "note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
+"box", "note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -411,10 +409,6 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new FormMathsStyle(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
-	} else if (name == "minipage") {
-		dialog->setController(new ControlMinipage(*dialog));
-		dialog->setView(new FormMinipage(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "note") {
 		dialog->setController(new ControlNote(*dialog));
 		dialog->setView(new FormNote(*dialog));

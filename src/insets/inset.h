@@ -95,8 +95,6 @@ public:
 		///
 		WRAP_CODE,
 		///
-		MINIPAGE_CODE,
-		///
 		SPACE_CODE, // 25
 		///
 		SPECIALCHAR_CODE,

@@ -75,10 +75,6 @@
 #include "FormMathsPanel.h"
 #include "forms/form_maths_panel.h"
 
-#include "ControlMinipage.h"
-#include "FormMinipage.h"
-#include "forms/form_minipage.h"
-
 #include "ControlParagraph.h"
 #include "FormParagraph.h"
 #include "forms/form_paragraph.h"
@@ -178,9 +174,6 @@ LogFileDialog;
 typedef GUI<ControlMath, FormMathsPanel, OkCancelReadOnlyPolicy, xformsBC>
 MathPanelDialog;
 
-typedef GUI<ControlMinipage, FormMinipage, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-MinipageDialog;
-
 typedef GUI<ControlParagraph, FormParagraph, OkApplyCancelReadOnlyPolicy, xformsBC>
 ParagraphDialog;
 
@@ -237,7 +230,6 @@ struct Dialogs::Impl {
 	IncludeDialog       include;
 	LogFileDialog       logfile;
 	MathPanelDialog     mathpanel;
-	MinipageDialog      minipage;
 	ParagraphDialog     paragraph;
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;

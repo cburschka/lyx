@@ -98,7 +98,6 @@ xforms_objects = \
 	../xforms/FormMathsMatrix.lo \
 	../xforms/FormMathsSpace.lo \
 	../xforms/FormMathsStyle.lo \
-	../xforms/FormMinipage.lo \
 	../xforms/FormNote.lo \
 	../xforms/FormParagraph.lo \
 	../xforms/FormPreamble.lo \
