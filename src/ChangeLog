@@ -1,3 +1,11 @@
+2001-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyx_main.C (commandLineHelp): remove version information
+
+2001-09-08  Rob Lahaye  <lahaye@users.sourceforge.net>
+
+	* lyx_main.C: add -version commandline option
+
 2001-09-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* paragraph.h: make the optional constructor arg required instead.

@@ -1,3 +1,13 @@
+2001-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxinclude.m4: 
+	* configure.in: add VERSION_INFO to config.h
+	(from a first proposal by Rob Lahaye)
+
+2001-09-08  Rob Lahaye  <lahaye@users.sourceforge.net>
+
+	* lyx.man: add -version commandline flag
+
 2001-08-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in: output new qt2 makefiles

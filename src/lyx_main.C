@@ -752,7 +752,6 @@ void setDebuggingLevel(string const & dbgLevel)
 // Give command line help
 void commandLineHelp()
 {
-	lyxerr << "LyX " LYX_VERSION << " of " LYX_RELEASE << endl;
 	lyxerr <<
 		_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 		  "Command line switches (case sensitive):\n"
@@ -770,8 +769,19 @@ void commandLineHelp()
 		  "\t-i [--import] fmt file.xxx\n"
 		  "                  where fmt is the import format of choice\n"
 		  "                  and file.xxx is the file to be imported.\n"
+		  "\t-version        summarize version and build info\n"
 		  "Check the LyX man page for more details.") << endl;
 }
+
+// Give command line version information
+void commandLineVersionInfo()
+{
+	lyxerr << "LyX " LYX_VERSION << " of " LYX_RELEASE << endl;
+	lyxerr << "Built on " << __DATE__ << ", " << __TIME__ << endl;
+
+	lyxerr << VERSION_INFO << endl;
+}
+
 
 } // namespace anon
 
@@ -822,6 +832,11 @@ bool LyX::easyParse(int * argc, char * argv[])
 			commandLineHelp();
 			exit(0);
 		} 
+		// Check for --version or -version
+		else if (arg == "--version" || arg == "-version") {
+			commandLineVersionInfo();
+			exit(0);
+		}
 		// Check for "-nw": No XWindows as for emacs this should
 		// give a LyX that could be used in a terminal window.
 		//else if (arg == "-nw") {

@@ -212,6 +212,8 @@ dnl normal versions of a library), tasteless as that idea is.
   CXXFLAGS=
 dnl Check the version of g++
   gxx_version=`${CXX} --version`
+  dnl Useful for global version info
+  CXX_VERSION="($gxx_version)"
   
   AC_PROG_CXX_G
   if test "$ac_test_CXXFLAGS" = set; then
@@ -560,6 +562,7 @@ changequote([,])
     esac
     lyx_cv_xpmversion="$lyx_cv_xpmv.$lyx_cv_xpmr$lyxxpmv_alpha"
     rm -f conftest*])
+  XPM_VERSION=${lyx_cv_xpmversion}
   case "$lyx_cv_xpmr" in 
 changequote(,)
         [789]|[0-9][0-9]*) ;;
@@ -605,6 +608,7 @@ lyx_cv_xfversion=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
   grep '^"%%%"'  2>/dev/null | \
   sed -e 's/^"%%%"\(.*\)"%%%"/\1/' -e 's/ //g'`
 rm -f conftest*])
+XFORMS_VERSION=$lyx_cv_xfversion
 case "$lyx_cv_xfversion" in 
   "(unknown)"|0.8[1-7]*) 
          LYX_ERROR(dnl
@@ -916,7 +920,6 @@ AC_ARG_WITH(frontend,
                             Possible values: xforms, qt2, gnome],
   [lyx_use_frontend="$withval"], [lyx_use_frontend="xforms"])
 AC_MSG_RESULT($lyx_use_frontend)
-lyx_flags="$lyx_flags frontend-$lyx_use_frontend"
 AC_SUBST(FRONTEND)
 AC_SUBST(FRONTEND_GUILIB)
 AC_SUBST(FRONTEND_LDFLAGS)

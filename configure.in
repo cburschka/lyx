@@ -185,8 +185,7 @@ dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.  
 case "$lyx_use_frontend" in 
   xforms) 
-  # for now don't set it for xforms as this is always entered
-    FRONTEND=""
+    FRONTEND="xforms"
     FRONTEND_GUILIB="xforms/libxforms.la";;
   gnome)    
     AM_PATH_GTKMM(1.2.1,,
@@ -227,6 +226,11 @@ if test "$have_x" = yes ; then
 # version numbers... 
 LYX_PATH_XPM
 LYX_PATH_XFORMS
+FRONTEND_INFO=`cat <<EOF
+    libXpm version:               ${XPM_VERSION}\n\
+    libforms version:             ${XFORMS_VERSION}\n
+EOF`
+
 AC_SUBST(LYX_LIBS)
 else
 LYX_ERROR(dnl
@@ -304,6 +308,26 @@ AC_REPLACE_FUNCS(strerror atexit)
 
 LYX_CHECK_DECL_HDRS(mkstemp,[unistd.h stdlib.h])
 
+### Some information on what just happened
+real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
+real_datadir=`eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
+VERSION_INFO=`cat <<EOF
+Configuration\n\
+  Host type:                      ${host_alias}\n\
+  Special build flags:           ${lyx_flags}\n\
+  C   Compiler:                   ${CC}\n\
+  C   Compiler flags:             ${CFLAGS}\n\
+  C++ Compiler:                   ${CXX} ${CXX_VERSION}\n\
+  C++ Compiler flags:             ${CXXFLAGS}\n\
+  Linker flags:                   ${LDFLAGS}\n\
+  Frontend:                       ${FRONTEND}\n\
+${FRONTEND_INFO}\
+  LyX binary dir:                 ${real_bindir}\n\
+  LyX files dir:                  ${real_datadir}\n
+EOF`
+
+AC_DEFINE_UNQUOTED(VERSION_INFO, "${VERSION_INFO}", Version information on the current build of LyX)
+
 ### Finish the work.
 AC_CONFIG_SUBDIRS(sigc++ lib lib/reLyX)
 AC_OUTPUT([Makefile \
@@ -329,20 +353,10 @@ AC_OUTPUT([Makefile \
        src/frontends/gnome/Makefile \
 ])
 
-
-cat <<EOF
-
-Configuration:
-  Source code location:       ${srcdir}
-  C++ Compiler:                   ${CXX}
-  C++ Compiler flags:             ${CXXFLAGS}
-  C   Compiler:                   ${CC}
-  C   Compiler flags:             ${CFLAGS}
-  LyX binary dir:             `eval "echo \`eval \"echo ${bindir}\"\`"`
-  LyX files dir:              `eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
-  Special flags:              ${lyx_flags}
-
-EOF
+# show version information
+echo
+printf "$VERSION_INFO" 
+echo
 
 # Display a final warning if there has been a LYX_ERROR
 LYX_CHECK_ERRORS
