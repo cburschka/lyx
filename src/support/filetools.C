@@ -67,6 +67,7 @@ using std::pair;
 using std::endl;
 using std::ifstream;
 using std::vector;
+using std::getline;
 
 extern string system_lyxdir;
 extern string build_lyxdir;
@@ -1043,7 +1044,7 @@ string const getExtFromContents(string const & filename)
 			break;
 		}
 
-		std::getline(ifs, str);
+		getline(ifs, str);
 		lyxerr[Debug::GRAPHICS] << "Scanstring: " << str << endl;
 
 		string const stamp = str.substr(0,2);
@@ -1371,7 +1372,7 @@ string const readBB_from_PSFile(string const & file)
 	std::ifstream is(file_.c_str());
 	while (is) {
 		string s;
-		std::getline(is,s);
+		getline(is,s);
 		if (contains(s,"%%BoundingBox:") && !contains(s,"atend"))
 			return (frontStrip(s.substr(14)));
 	}
