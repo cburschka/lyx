@@ -779,7 +779,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		} else {
 			//mathcursor->handleNest(new InsetRef2);
 			//mathcursor->insert(arg);
-			mathcursor->insert(MathAtom(new InsetRef2(arg)));
+			mathcursor->insert(MathAtom(new RefInset(arg)));
 		}
 		updateLocal(bv, true);
 		break;
