@@ -28,7 +28,7 @@ dist-hook:
 	rm -rf `find images -name \*CVS\*`
 
 rpmdist: dist
-	ln -s lib/images/lyx.xpm . ; \
+	ln -s $(srcdir)/lib/images/lyx.xpm . ; \
 	if [ -z "`type -path rpmbuild`" ]; \
 	then \
 		RPMBUILD=rpm; \
