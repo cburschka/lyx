@@ -70,6 +70,10 @@ public:
 	void mathmlize(MathMLStream &) const;
 	///
 	void octavize(OctaveStream &) const;
+	///
+	void infoize(std::ostream &) const;
+	///
+	void infoize2(std::ostream &) const;
 
 private:
 	///

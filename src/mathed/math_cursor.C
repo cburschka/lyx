@@ -1288,8 +1288,7 @@ string MathCursor::info() const
 		os << "  ";
 	}
 	if (hasPrevAtom())
-		if (prevAtom()->asSymbolInset() || prevAtom()->asScriptInset())
-			prevAtom()->infoize(os);
+		prevAtom()->infoize2(os);
 	os << "                    ";
 	return STRCONV(os.str());
 }

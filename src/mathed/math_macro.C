@@ -223,3 +223,15 @@ void MathMacro::updateExpansion() const
 	expand();
 	expanded_.substitute(*this);
 }
+
+
+void MathMacro::infoize(std::ostream & os) const
+{
+	os << "Macro: " << name();
+}
+
+
+void MathMacro::infoize2(std::ostream & os) const
+{
+	os << "Macro: " << name();
+}

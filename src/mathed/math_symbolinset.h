@@ -57,7 +57,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize2(std::ostream & os) const;
 
 private:
 	///

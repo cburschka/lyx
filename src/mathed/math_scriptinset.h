@@ -89,8 +89,10 @@ public:
 	void removeScript(bool up);
 	/// make sure a script is accessible
 	void ensure(bool up);
-	///
+	/// say that we have scripts
 	void infoize(std::ostream & os) const;
+	/// say whether we have displayed limits
+	void infoize2(std::ostream & os) const;
 	/// local dispatcher
 	result_type dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 

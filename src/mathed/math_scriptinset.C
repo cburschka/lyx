@@ -472,6 +472,11 @@ void MathScriptInset::octavize(OctaveStream & os) const
 void MathScriptInset::infoize(std::ostream & os) const
 {
 	os << "Scripts";
+}
+
+
+void MathScriptInset::infoize2(std::ostream & os) const
+{
 	if (limits_)
 		os << (limits_ == 1 ? ", Displayed limits" : ", Inlined limits");
 }

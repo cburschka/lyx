@@ -282,8 +282,10 @@ public:
 	virtual void mathmlize(MathMLStream &) const;
 	/// write content as something readable by Octave
 	virtual void octavize(OctaveStream &) const;
-	/// describe content
+	/// describe content if cursor inside
 	virtual void infoize(std::ostream &) const {}
+	/// describe content if cursor behind
+	virtual void infoize2(std::ostream &) const {}
 	/// plain ascii output
 	virtual int ascii(std::ostream & os, int) const;
 	/// linuxdoc output

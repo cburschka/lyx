@@ -192,7 +192,7 @@ void MathSymbolInset::write(WriteStream & os) const
 }
 
 
-void MathSymbolInset::infoize(std::ostream & os) const
+void MathSymbolInset::infoize2(std::ostream & os) const
 {
 	os << "Symbol: " << name();
 }
