@@ -1,3 +1,8 @@
+2005-02-15  Angus Leeming  <leeming@lyx.org>
+
+	* rowpainter.C (paintText): Ensure that "paragraphs().size() - 1"
+	can be used meaningfully in a comparison.
+
 2005-02-13  André Pönitz  <poenitz@gmx.net>
 
 	* Cursor.[Ch] (fixIfBroken): new method, try to fix a broken cursor

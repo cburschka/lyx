@@ -794,7 +794,7 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 			 vi.y1 -  text->getPar(vi.p1 - 1).descent());
 	}
 
-	if (vi.p2 < text->paragraphs().size() - 1) {
+	if (vi.p2 < lyx::pit_type(text->paragraphs().size()) - 1) {
 		text->redoParagraph(vi.p2 + 1);
 		paintPar(pi, *bv.text(), vi.p2 + 1, 0,
 			 vi.y2 + text->getPar(vi.p2 + 1).ascent());
