@@ -36,11 +36,11 @@ public:
 		OK = 0,			
 		ImageFormatUnknown, // This loader doesn't know how to load this file.
 		NoFile,				// File doesn't exists.
-		ErrorWhileLoading,  // Unknown error when loading.
+		ErrorWhileLoading  // Unknown error when loading.
 	};
 	
 	/// A list of supported formats.
-	typedef vector<string> FormatList;
+	typedef std::vector<string> FormatList;
 	
 	/// c-tor.
 	ImageLoader();

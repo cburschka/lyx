@@ -18,6 +18,8 @@
 
 #include "support/filetools.h"
 
+using std::endl;
+
 ImageLoader::ImageLoader()
 		: image_(0)
 {
