@@ -73,12 +73,10 @@ string QLyXKeySym::getSymbolName() const
 {
 	string sym(qkey_to_string(key_));
 
-	if (sym.empty()) {
-		lyxerr[Debug::KEY] << "sym empty in getSymbolName()" << endl;
-		if (!text_.isEmpty())
-			sym = fromqstr(text_);
-	}
-	lyxerr[Debug::KEY] << "getSymbolName() -> " << sym << endl;
+	// e.g. A-Za-z, and others
+	if (sym.empty())
+		sym = fromqstr(text_);
+
 	return sym;
 }
 
@@ -107,10 +105,14 @@ bool QLyXKeySym::isText() const
  
 bool operator==(LyXKeySym const & k1, LyXKeySym const & k2)
 {
-	// note we ignore text_ here (non-strict ==), because
-	// text_ is not filled out by keymap initialisation
+	QLyXKeySym const & q1(static_cast<QLyXKeySym const &>(k1));
+	QLyXKeySym const & q2(static_cast<QLyXKeySym const &>(k2));
 
-	return static_cast<QLyXKeySym const &>(k1).key()
-		== static_cast<QLyXKeySym const &>(k2).key();
+	// we do not have enough info for a fair comparison, so return
+	// false. This works out OK because unknown text from Qt will
+	// get inserted anyway after the isText() check
+	if (q1.key() == Qt::Key_unknown || q2.key() == Qt::Key_unknown)
+		return false;
 
+	return q1.key() == q2.key();
 }
