@@ -146,6 +146,9 @@ namespace {
 bool getStatus(LCursor cursor,
 	       FuncRequest const & cmd, FuncStatus & status)
 {
+	// Try to fix cursor in case it is broken.
+	cursor.fixIfBroken();
+
 	// This is, of course, a mess. Better create a new doc iterator and use
 	// this in Inset::getStatus. This might require an additional
 	// BufferView * arg, though (which should be avoided)
@@ -155,30 +158,15 @@ bool getStatus(LCursor cursor,
 		//lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
 		DocIterator::idx_type & idx = cursor.idx();
 		DocIterator::idx_type const lastidx = cursor.lastidx();
-
-		if (idx > lastidx) {
-			lyxerr << "wrong idx " << idx << ", max is " << lastidx
-				<< ". Trying to correct this."  << endl;
-			idx = lastidx;
-		}
+		BOOST_ASSERT(idx <= lastidx);
 
 		DocIterator::pit_type & pit = cursor.pit();
 		DocIterator::pit_type const lastpit = cursor.lastpit();
-
-		if (pit > lastpit) {
-			lyxerr << "wrong par " << pit << ", max is " << lastpit
-				<< ". Trying to correct this."  << endl;
-			pit = lastpit;
-		}
+		BOOST_ASSERT(pit <= lastpit);
 
 		DocIterator::pos_type & pos = cursor.pos();
 		DocIterator::pos_type const lastpos = cursor.lastpos();
-
-		if (pos > lastpos) {
-			lyxerr << "wrong pos " << pos << ", max is " << lastpos
-				<< ". Trying to correct this."  << endl;
-			pos = lastpos;
-		}
+		BOOST_ASSERT(pos <= lastpos);
 
 		// The inset's getStatus() will return 'true' if it made
 		// a definitive decision on whether it want to handle the

@@ -152,6 +152,8 @@ public:
 	void needsUpdate();
 	/// don't call update() when done
 	void noUpdate();
+	/// fix cursor in circumstances that should never happen
+	void fixIfBroken();
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, LCursor const & cur);

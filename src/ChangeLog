@@ -1,3 +1,9 @@
+2005-02-13  André Pönitz  <poenitz@gmx.net>
+
+	* Cursor.[Ch] (fixIfBroken): new method, try to fix a broken cursor
+	* Cursor.C (dispatch): use fixIfBroken
+	* lyxfunc.C (getStatus): use fixIfBroken
+
 2005-02-15  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (error_handler):
