@@ -742,6 +742,9 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 
 void BufferView::Pimpl::selectionRequested()
 {
+	if (!available())
+		return;
+ 
 	string const sel(bv_->getLyXText()->selectionAsString(bv_->buffer(),
 							      false)); 
 	if (!sel.empty()) {

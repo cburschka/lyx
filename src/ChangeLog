@@ -1,3 +1,8 @@
+2002-02-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: fix crash on close buffer 
+	during selection (#227)
+ 
 2002-01-27  Herbert Voss  <voss@lyx.org>
 
 	* buffer.C: link old Figure to new graphic inset

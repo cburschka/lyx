@@ -34,6 +34,7 @@
 #include "lyxrc.h"
 #include "BufferView.h"
 #include "LyXView.h" 
+#include "lyxtext.h"
 #include "gettext.h"
 #include "support/lstrings.h"
 #include "language.h"
@@ -109,6 +110,11 @@ void ControlSpellchecker::check()
 	result_ = SpellBase::ISP_OK;
 	stop_ = false;
 	
+	// clear any old selection
+	LyXText * text = lv_.view()->getLyXText();
+	lv_.view()->toggleSelection(true);
+	lv_.view()->update(text, BufferView::SELECT);
+ 
 	while ((result_==SpellBase::ISP_OK || result_==SpellBase::ISP_IGNORE) &&
 	       !stop_) {
 		word_ = lv_.view()->nextWord(newval_);
