@@ -137,7 +137,7 @@ int LyXText::SingleWidth(BufferView * bview, LyXParagraph * par,
 int LyXText::SingleWidth(BufferView * bview, LyXParagraph * par,
 			 LyXParagraph::size_type pos, char c) const
 {
-	LyXFont font = GetFont(bview->buffer(), par, pos);
+	LyXFont const font = GetFont(bview->buffer(), par, pos);
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
@@ -380,7 +380,7 @@ bool LyXText::IsBoundary(Buffer const * buf, LyXParagraph * par,
 	}
 
 	bool const rtl = bidi_level(pos - 1) % 2;
-	bool rtl2 = bidi_InRange(pos)
+	bool const rtl2 = bidi_InRange(pos)
 		? bidi_level(pos) % 2
 		: par->isRightToLeftPar(buf->params);
 	return rtl != rtl2;
@@ -395,7 +395,7 @@ bool LyXText::IsBoundary(Buffer const * buf, LyXParagraph * par,
 		return false;    // This is just for speedup
 
 	bool const rtl = font.isVisibleRightToLeft();
-	bool rtl2 = bidi_InRange(pos)
+	bool const rtl2 = bidi_InRange(pos)
 		? bidi_level(pos) % 2
 		: par->isRightToLeftPar(buf->params);
 	return rtl != rtl2;
@@ -419,7 +419,8 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		int const wid = lyxfont::width('n', font);
 		int const asc = lyxfont::maxAscent(font);
 		int const y = offset + row->baseline();
-		int xp[3], yp[3];
+		int xp[3];
+		int yp[3];
 		
 		if (bidi_level(pos) % 2 == 0) {
 			xp[0] = int(x + wid * 0.375);
@@ -1447,10 +1448,10 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 
    row_ptr->ascent_of_text(maxasc);
    
-   /* is it a top line? */ 
+   // is it a top line?
    if (!row_ptr->pos() && (row_ptr->par() == firstpar)) {
       
-      /* some parksips VERY EASY IMPLEMENTATION */ 
+	   // some parksips VERY EASY IMPLEMENTATION
       if (bview->buffer()->params.paragraph_separation ==
 	  BufferParams::PARSEP_SKIP) {
 	 if (layout.isParagraph()
@@ -1465,7 +1466,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 	   maxasc += bview->buffer()->params.getDefSkip().inPixels(bview);
       }
       
-      /* the paper margins */
+      // the paper margins
 #ifndef NEW_INSETS
       if (!row_ptr->par()->previous_ && bv_owner)
       	 maxasc += LYX_PAPER_MARGIN;
@@ -1474,22 +1475,22 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
       	 maxasc += LYX_PAPER_MARGIN;
 #endif
       
-      /* add the vertical spaces, that the user added */
+      // add the vertical spaces, that the user added
       if (firstpar->params.spaceTop().kind() != VSpace::NONE)
       	 maxasc += int(firstpar->params.spaceTop().inPixels(bview));
       
-      /* do not forget the DTP-lines! 
-       * there height depends on the font of the nearest character */
+      // do not forget the DTP-lines!
+      // there height depends on the font of the nearest character
       if (firstpar->params.lineTop())
       	 maxasc += 2 * lyxfont::ascent('x', GetFont(bview->buffer(),
 						    firstpar, 0));
       
-      /* and now the pagebreaks */ 
+      // and now the pagebreaks
       if (firstpar->params.pagebreakTop())
       	 maxasc += 3 * DefaultHeight();
       
-      /*  this is special code for the chapter, since the label of this
-       * layout is printed in an extra row */ 
+      // This is special code for the chapter, since the label of this
+      // layout is printed in an extra row
       if (layout.labeltype == LABEL_COUNTER_CHAPTER
 	  && bview->buffer()->params.secnumdepth >= 0) {
 	      float spacing_val = 1.0;
@@ -1507,7 +1508,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 			    spacing_val);
       }
       
-      /* special code for the top label */ 
+      // special code for the top label
       if ((layout.labeltype == LABEL_TOP_ENVIRONMENT
 	   || layout.labeltype == LABEL_BIBLIO
 	   || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
@@ -1531,8 +1532,8 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 		      + layout.labelbottomsep *  DefaultHeight());
       }
    
-      /* and now the layout spaces, for example before and after a section, 
-       * or between the items of a itemize or enumerate environment */ 
+      // and now the layout spaces, for example before and after a section, 
+      // or between the items of a itemize or enumerate environment
       
       if (!firstpar->params.pagebreakTop()) {
 	 LyXParagraph * prev = row_ptr->par()->previous();
@@ -1571,7 +1572,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 		if (firstpar->previous()
 		    && firstpar->previous()->GetDepth() == 0
 		    && firstpar->previous()->GetLayout() != firstpar->GetLayout()) {
-		   /* avoid parsep */ 
+			// avoid parsep
 		}
 	    else if (firstpar->previous()){
 	       maxasc += int(layout.parsep * DefaultHeight());
@@ -1580,7 +1581,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
       }
    }
    
-   /* is it a bottom line? */ 
+   // is it a bottom line?
    if (
 #ifndef NEW_INSETS
 	   row_ptr->par()->ParFromPos(RowLast(row_ptr) + 1) == par
@@ -1589,7 +1590,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 #endif
        && (!row_ptr->next() || row_ptr->next()->par() != row_ptr->par())) {
 	  
-	  /* the paper margins */
+	   // the paper margins
 #ifndef NEW_INSETS
 	  if (!par->next_ && bv_owner)
 	    maxdesc += LYX_PAPER_MARGIN;
@@ -1598,12 +1599,12 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 	    maxdesc += LYX_PAPER_MARGIN;
 #endif
 	  
-	  /* add the vertical spaces, that the user added */
+	  // add the vertical spaces, that the user added
 	  if (firstpar->params.spaceBottom().kind() != VSpace::NONE)
 		  maxdesc += int(firstpar->params.spaceBottom().inPixels(bview));
 	  
-	  /* do not forget the DTP-lines! 
-	   * there height depends on the font of the nearest character */
+	  // do not forget the DTP-lines!
+	  // there height depends on the font of the nearest character
 #ifndef NEW_INSETS
 	  if (firstpar->params.lineBottom())
 		  maxdesc += 2 * lyxfont::ascent('x', GetFont(bview->buffer(),
@@ -1615,12 +1616,13 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 							 par, par->size() - 1));
 #endif
 	  
-	  /* and now the pagebreaks */
+	  // and now the pagebreaks
 	  if (firstpar->params.pagebreakBottom())
 	    maxdesc += 3 * DefaultHeight();
 	  
-	  /* and now the layout spaces, for example before and after a section, 
-	   * or between the items of a itemize or enumerate environment */
+	  // and now the layout spaces, for example before and after
+	  // a section, or between the items of a itemize or enumerate
+	  // environment
 	  if (!firstpar->params.pagebreakBottom() && row_ptr->par()->next()) {
 	     LyXParagraph * nextpar = row_ptr->par()->next();
 	     LyXParagraph * comparepar = row_ptr->par();
@@ -1650,11 +1652,11 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 	  }
        }
    
-   /* incalculate the layout spaces */ 
+   // incalculate the layout spaces
    maxasc += int(layoutasc * 2 / (2 + firstpar->GetDepth()));
    maxdesc += int(layoutdesc * 2 / (2 + firstpar->GetDepth()));
 
-   /* calculate the new height of the text */ 
+   // calculate the new height of the text
    height -= row_ptr->height();
    
    row_ptr->height(maxasc + maxdesc + labeladdon);
@@ -1718,7 +1720,7 @@ void LyXText::BreakAgain(BufferView * bview, Row * row) const
    bool not_ready = true;
    
    do  {
-      /* get the next breakpoint */
+	   // get the next breakpoint
 	LyXParagraph::size_type z = NextBreakPoint(bview, row, workWidth(bview));
       Row * tmprow = row;
 
@@ -1858,10 +1860,18 @@ void LyXText::BreakParagraph(BufferView * bview, char keep_layout)
    if (layout.labeltype == LABEL_SENSITIVE) {
      if (!cursor.pos())
 	     // set to standard-layout
+#ifndef NEW_INSETS
 	     cursor.par()->SetLayout(bview->buffer()->params, 0);
+#else
+	     cursor.par()->SetLayout(0);
+#endif
      else
 	     // set to standard-layout
+#ifndef NEW_INSETS
 	     cursor.par()->next()->SetLayout(bview->buffer()->params, 0);
+#else
+	     cursor.par()->next()->SetLayout(0);
+#endif
    }
    
    /* if the cursor is at the beginning of a row without prior newline, 
@@ -3274,7 +3284,7 @@ void LyXText::Backspace(BufferView * bview)
 void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			    Row * row_ptr, int y, bool cleared)
 {
-	/* returns a printed row */
+	// returns a printed row
 	Painter & pain = bview->painter();
 	
 	bool const is_rtl =
@@ -3282,11 +3292,10 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	
 	LyXParagraph::size_type const last = RowLastPrintable(row_ptr);
 
-	LyXParagraph::size_type vpos, pos;
-	float x;
+	LyXParagraph::size_type vpos;
+	LyXParagraph::size_type pos;
+
 	float tmpx;
-	int y_top;
-	int y_bottom;
 
 	LyXFont font(LyXFont::ALL_SANE);
 	int maxdesc;
@@ -3296,6 +3305,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		return;
 	}
 
+	float x;
 	float fill_separator;
 	float fill_hfill;
 	float fill_label_hfill;
@@ -3307,7 +3317,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	x += x_offset;
 	
 	// clear the area where we want to paint/print
-	int ww = bview->workWidth();
+	int const ww = bview->workWidth();
 
 	bool clear_area = true;
 	Inset * inset = 0;
@@ -3356,7 +3366,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	if (selection) {
 		int const w = (inset_owner ?
 			       inset_owner->width(bview, font) : ww);
-		/* selection code */
+		// selection code
 		if (bidi_same_direction) {
 			if (sel_start_cursor.row() == row_ptr &&
 			    sel_end_cursor.row() == row_ptr) {
@@ -3451,7 +3461,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				      sel_start_cursor.pos() <= pos) &&
 				     (sel_end_cursor.row() != row_ptr ||
 				      pos < sel_end_cursor.pos()) )
-					/// Here we do not use x_offset as x_offset was
+					// Here we do not use x_offset as x_offset was
 					// added to x.
 					pain.fillRectangle(int(old_tmpx),
 							   y_offset,
@@ -3670,28 +3680,30 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		textclasslist.Style(bview->buffer()->params.textclass,
 				    row_ptr->par()->GetLayout());
 
-	y_top = 0;
-	y_bottom = row_ptr->height();
+	int y_top = 0;
+	int y_bottom = row_ptr->height();
 	
-	/* is it a first row? */ 
+	// is it a first row?
 	if (!row_ptr->pos() && (row_ptr->par() == firstpar)) {
 		
-		/* start of appendix? */
+		// start of appendix?
 		if (row_ptr->par()->params.startOfAppendix()) {
 			pain.line(1, y_offset,
 				  ww - 2, y_offset,
 				  LColor::appendixline);
 		}
 		
-		/* think about the margins */ 
+		// think about the margins
 		if (!row_ptr->previous() && bv_owner)
 			y_top += LYX_PAPER_MARGIN;
 		
-		 /* draw a top pagebreak  */
+		// draw a top pagebreak
 		if (row_ptr->par()->params.pagebreakTop()) {
 			LyXFont pb_font;
 			pb_font.setColor(LColor::pagebreak).decSize();
-			int w = 0, a = 0, d = 0;
+			int w = 0;
+			int a = 0;
+			int d = 0;
 			pain.line(0, y_offset + y_top + 2*DefaultHeight(),
 				  ww, 
 				  y_offset + y_top + 2 * DefaultHeight(),
@@ -3713,7 +3725,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		}
 		
 		if (row_ptr->par()->params.spaceTop().kind() == VSpace::VFILL) {
-			/* draw a vfill top  */
+			// draw a vfill top
 			pain.line(0, y_offset + 2 + y_top,
 				  LYX_PAPER_MARGIN, y_offset + 2 + y_top,
 				  LColor::vfillline);
@@ -3731,11 +3743,11 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			y_top += 3 * DefaultHeight();
 		}
 		
-		/* think about user added space */ 
+		// think about user added space
 		y_top += int(row_ptr->par()->params.spaceTop().inPixels(bview));
 		
-		/* think about the parskip */ 
-		/* some parskips VERY EASY IMPLEMENTATION */ 
+		// think about the parskip
+		// some parskips VERY EASY IMPLEMENTATION
 		if (bview->buffer()->params.paragraph_separation == BufferParams::PARSEP_SKIP) {
 			if (layout.latextype == LATEX_PARAGRAPH
 			    && firstpar->GetDepth() == 0
@@ -3749,7 +3761,8 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				y_top += bview->buffer()->params.getDefSkip().inPixels(bview);
 		}
 		
-		if (row_ptr->par()->params.lineTop()) {      /* draw a top line  */
+		if (row_ptr->par()->params.lineTop()) {
+			// draw a top line
 			y_top +=  lyxfont::ascent('x',
 						  GetFont(bview->buffer(),
 							  row_ptr->par(), 0));
@@ -3766,7 +3779,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 							      row_ptr->par(), 0));
 		}
 		
-		/* should we print a label? */ 
+		// should we print a label?
 		if (layout.labeltype >= LABEL_STATIC
 		    && (layout.labeltype != LABEL_STATIC
 			|| layout.latextype != LATEX_ENVIRONMENT
@@ -3779,8 +3792,11 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				
 				if (layout.labeltype == LABEL_COUNTER_CHAPTER) {
 					if (bview->buffer()->params.secnumdepth >= 0) {
-						/* this is special code for the chapter layout. This is printed in
-						 * an extra row and has a pagebreak at the top. */
+						// this is special code for
+						// the chapter layout. This is
+						// printed in an extra row
+						// and has a pagebreak at
+						// the top.
 						float spacing_val = 1.0;
 						if (!row_ptr->par()->params.spacing().isDefault()) {
 							spacing_val = row_ptr->par()->params.spacing().getValue();
@@ -3812,13 +3828,14 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 						tmpx = x - lyxfont::width(layout.labelsep, font)
 							- lyxfont::width(tmpstring, font);
 
-					/* draw it! */
+					// draw it!
 					pain.text(int(tmpx),
 						  y_offset + row_ptr->baseline(),
 						  tmpstring, font);
 				}
 			}
-			/* the labels at the top of an environment. More or less for bibliography */ 
+			// the labels at the top of an environment.
+			// More or less for bibliography
 		} else if (layout.labeltype == LABEL_TOP_ENVIRONMENT ||
 			   layout.labeltype == LABEL_BIBLIO ||
 			   layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
@@ -3868,7 +3885,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		}
 	}
 	
-	/* is it a last row? */
+	// is it a last row?
 #ifndef NEW_INSETS
 	LyXParagraph * par = row_ptr->par()->LastPhysicalPar();
 #else
@@ -3882,29 +3899,30 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 #endif
 		&& (!row_ptr->next() || row_ptr->next()->par() != row_ptr->par()))
 	{
-		/* think about the margins */ 
+		// think about the margins
 		if (!row_ptr->next() && bv_owner)
 			y_bottom -= LYX_PAPER_MARGIN;
 		
-		/* draw a bottom pagebreak */ 
+		// draw a bottom pagebreak
 		if (firstpar->params.pagebreakBottom()) {
 			LyXFont pb_font;
 			pb_font.setColor(LColor::pagebreak).decSize();
-			int w = 0, a = 0, d = 0;
-			pain.line(0,
-				  y_offset + y_bottom - 2 * DefaultHeight(), 
-				  ww, 
-				  y_offset + y_bottom - 2 * DefaultHeight(),
-				  LColor::pagebreak,
-				  Painter::line_onoffdash)
-				.rectText(0,
-					  0,
+			int const y_place = y_offset + y_bottom
+				- 2 * DefaultHeight();
+			
+			int w = 0;
+			int a = 0;
+			int d = 0;
+			pain
+				.line(0, y_place, ww, y_place,
+				      LColor::pagebreak,
+				      Painter::line_onoffdash)
+				.rectText(0, 0,
 					  _("Page Break (bottom)"),
 					  pb_font,
 					  LColor::background,
 					  LColor::background, false, w, a, d);
-			pain.rectText((ww - w) / 2,
-				      y_offset + y_top + 2 * DefaultHeight() + d,
+			pain.rectText((ww - w) / 2, y_place + d,
 				      _("Page Break (bottom)"),
 				      pb_font,
 				      LColor::background,
@@ -3913,28 +3931,30 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		}
 		
 		if (firstpar->params.spaceBottom().kind() == VSpace::VFILL) {
-			/* draw a vfill bottom  */
-			pain.line(0, y_offset + y_bottom - 3 * DefaultHeight(),
-				  LYX_PAPER_MARGIN,
-				  y_offset + y_bottom - 3 * DefaultHeight(),
+			// draw a vfill bottom
+			int const y_place = y_offset + y_bottom
+				- 3 * DefaultHeight();
+			
+			pain.line(0, y_place,
+				  LYX_PAPER_MARGIN, y_place,
 				  LColor::vfillline);
 			pain.line(0, y_offset + y_bottom - 2,
 				  LYX_PAPER_MARGIN,
 				  y_offset + y_bottom - 2,
 				  LColor::vfillline);
 			pain.line(LYX_PAPER_MARGIN / 2,
-				  y_offset + y_bottom - 3 * DefaultHeight(),
+				  y_place,
 				  LYX_PAPER_MARGIN / 2,
 				  y_offset + y_bottom - 2,
 				  LColor::vfillline);
 			y_bottom -= 3 * DefaultHeight();
 		}
 		
-		/* think about user added space */ 
+		// think about user added space
 		y_bottom -= int(firstpar->params.spaceBottom().inPixels(bview));
 		
 		if (firstpar->params.lineBottom()) {
-			/* draw a bottom line */
+			// draw a bottom line
 #ifndef NEW_INSETS
 			y_bottom -= lyxfont::ascent('x',
 						    GetFont(bview->buffer(),
@@ -4022,7 +4042,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		}
 	}
 	
-	/* draw the text in the pixmap */  
+	// draw the text in the pixmap
 	
 	vpos = row_ptr->pos();
 
@@ -4353,7 +4373,7 @@ Row * LyXText::GetRow(LyXParagraph * par,
 {
 	if (!firstrow)
 		return 0;
-
+	
 	Row * tmprow = firstrow;
 	y = 0;
 	

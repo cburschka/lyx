@@ -1,5 +1,15 @@
 2001-04-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* text.C (SingleWidth): constify font
+	(IsBoundary): constify rtl2
+	(GetVisibleRow): constify ww
+
+	* LaTeX.C (deplog): constify logfile
+
+	* BufferView_pimpl.C (checkInsetHit): constify width, inset_x,
+	start_x, end_x
+	(workAreaExpose): constify widthChange, heightChange
+
 	* lyxrow.C (par): moved
 	(height): moved
 	(next): moved

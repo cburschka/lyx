@@ -937,17 +937,16 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 		Inset * tmpinset = cursor.par()->GetInset(cursor.pos());
 		LyXFont font = text->GetFont(bv_->buffer(),
 						  cursor.par(), cursor.pos());
-		int width = tmpinset->width(bv_, font);
-		int inset_x = font.isVisibleRightToLeft()
+		int const width = tmpinset->width(bv_, font);
+		int const inset_x = font.isVisibleRightToLeft()
 			? cursor.x() - width : cursor.x();
-		int start_x = inset_x + tmpinset->scroll();
-		int end_x = inset_x + width;
+		int const start_x = inset_x + tmpinset->scroll();
+		int const end_x = inset_x + width;
 
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)
-		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font))
-		{
-			text->SetCursor(bv_, cursor.par(),cursor.pos(),true);
+		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font)) {
+			text->SetCursor(bv_, cursor.par(),cursor.pos(), true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
 			y = y_tmp - (text->cursor.y()); 
@@ -962,11 +961,11 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 		Inset * tmpinset = cursor.par()->GetInset(cursor.pos()-1);
 		LyXFont font = text->GetFont(bv_->buffer(), cursor.par(),
 						  cursor.pos()-1);
-		int width = tmpinset->width(bv_, font);
-		int inset_x = font.isVisibleRightToLeft()
+		int const width = tmpinset->width(bv_, font);
+		int const inset_x = font.isVisibleRightToLeft()
 			? cursor.x() : cursor.x() - width;
-		int start_x = inset_x + tmpinset->scroll();
-		int end_x = inset_x + width;
+		int const start_x = inset_x + tmpinset->scroll();
+		int const end_x = inset_x + width;
 
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)
@@ -990,8 +989,8 @@ void BufferView::Pimpl::workAreaExpose()
 	static int work_area_width = 0;
 	static unsigned int work_area_height = 0;
 
-	bool widthChange = workarea_.workWidth() != work_area_width;
-	bool heightChange = workarea_.height() != work_area_height;
+	bool const widthChange = workarea_.workWidth() != work_area_width;
+	bool const heightChange = workarea_.height() != work_area_height;
 
 	// update from work area
 	work_area_width = workarea_.workWidth();
