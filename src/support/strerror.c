@@ -5,10 +5,10 @@
 
 #include <config.h>
 
-// 	$Id: strerror.c,v 1.2 1999/10/02 16:21:10 larsbj Exp $	
+/* 	$Id: strerror.c,v 1.2.12.1 2000/09/04 15:11:11 lasgouttes Exp $	*/
 
 #if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: strerror.c,v 1.2 1999/10/02 16:21:10 larsbj Exp $";
+static char vcid[] = "$Id: strerror.c,v 1.2.12.1 2000/09/04 15:11:11 lasgouttes Exp $";
 #endif /* lint */
 
 extern	int 	sys_nerr ;

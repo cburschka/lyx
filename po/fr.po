@@ -112,10 +112,15 @@
 # JPC 04 Juillet 2000
 # correction menus Edit (manque les listes)
 # + revue des menus déroulants principaux, quelques manques corrigés
+# -------------------------------------------------------------------------
+# JPC 07 août 2000
+# correction mineures suite à la diffusion de la 1.1.5fix1
+# + puissance -> exposant (EG)
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.4\n"
-"POT-Creation-Date: 2000-07-04 17:46+0200\n"
+"POT-Creation-Date: 2000-07-17 23:44-0700\n"
 "PO-Revision-Date: 2000-03-10 02:56+01:00\n"
 "Last-Translator:  Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr <http://www.bde.enseeiht.fr/~faucheo/lyxfr.html>\n"
@@ -382,7 +387,7 @@ msgstr "Impossible d'ouvrir le fichier spécifié : "
 
 # à revoir
 #: src/BufferView2.C:203 src/insets/insetert.C:66
-#: src/insets/insettabular.C:1130 src/lyx_cb.C:2648 src/text.C:2294
+#: src/insets/insettabular.C:1130 src/lyx_cb.C:2646 src/text.C:2344
 msgid "Impossible Operation!"
 msgstr "Opération interdite !"
 
@@ -393,8 +398,8 @@ msgstr "Interdiction d'insérer une table ou une liste dans une table"
 
 #: src/BufferView2.C:205 src/CutAndPaste.C:424 src/CutAndPaste.C:433
 #: src/insets/insetert.C:68 src/insets/insettabular.C:1132
-#: src/insets/insettext.C:1510 src/lyx_cb.C:2650 src/text.C:2296
-#: src/text.C:4637 src/text.C:4645 src/text.C:4660 src/text.C:4677
+#: src/insets/insettext.C:1510 src/lyx_cb.C:2648 src/text.C:2346
+#: src/text.C:4687 src/text.C:4695 src/text.C:4710 src/text.C:4727
 #: src/text2.C:2483 src/text2.C:2493
 msgid "Sorry."
 msgstr "Désolé."
@@ -761,7 +766,7 @@ msgstr ""
 
 # à revoir
 #: src/CutAndPaste.C:422 src/CutAndPaste.C:431 src/insets/insettext.C:1508
-#: src/text.C:4635 src/text.C:4643 src/text.C:4660 src/text.C:4675
+#: src/text.C:4685 src/text.C:4693 src/text.C:4710 src/text.C:4725
 #: src/text2.C:2010 src/text2.C:2022 src/text2.C:2215 src/text2.C:2227
 #: src/text2.C:2306 src/text2.C:2319 src/text2.C:2423 src/text2.C:2436
 #: src/text2.C:2481 src/text2.C:2491
@@ -1190,7 +1195,7 @@ msgstr ""
 msgid "Opened inset"
 msgstr "Insert ouvert"
 
-#: src/insets/inseterror.C:70 src/insets/inseterror.C:91 src/lyx_cb.C:3124
+#: src/insets/inseterror.C:70 src/insets/inseterror.C:91 src/lyx_cb.C:3122
 #: src/lyxfunc.C:1344
 msgid "Error"
 msgstr "Erreur"
@@ -1364,7 +1369,7 @@ msgstr "PrettyRef : "
 msgid "Opened Tabular Inset"
 msgstr "Insert de tableau ouvert"
 
-#: src/insets/insettabular.C:1131 src/text.C:2295
+#: src/insets/insettabular.C:1131 src/text.C:2345
 msgid "Multicolumns can only be horizontally."
 msgstr "Les multicolonnes ne peuvent être qu'horizontales."
 
@@ -1586,15 +1591,15 @@ msgstr ""
 msgid "Welsh"
 msgstr "Gallois"
 
-#: src/LaTeX.C:178 src/LaTeX.C:203 src/LaTeX.C:269 src/LaTeX.C:319
+#: src/LaTeX.C:179 src/LaTeX.C:204 src/LaTeX.C:270 src/LaTeX.C:320
 msgid "LaTeX run number "
 msgstr "Exécution LaTeX n°"
 
-#: src/LaTeX.C:230 src/LaTeX.C:297
+#: src/LaTeX.C:231 src/LaTeX.C:298
 msgid "Running MakeIndex."
 msgstr "Exécution de MakeIndex"
 
-#: src/LaTeX.C:244
+#: src/LaTeX.C:245
 msgid "Running BibTeX."
 msgstr "Exécution de BibTeX"
 
@@ -1806,9 +1811,10 @@ msgstr "Avant|#o"
 msgid "Below|#l"
 msgstr "Après|#l"
 
+# contrainte de longueur
 #: src/layout_forms.C:321
 msgid "No Indent|#I"
-msgstr "Pas d'indentation|#I"
+msgstr "Pas d'indent.|#I"
 
 # contrainte de longueur
 #: src/layout_forms.C:325 src/layout_forms.C:589 src/mathed/math_forms.C:92
@@ -2533,7 +2539,7 @@ msgstr "Enlever toutes les marques d'erreur"
 msgid "Insert a new ERT Inset"
 msgstr "Insérer un nouveau ERT"
 
-#: src/LyXAction.C:186 src/lyx_cb.C:2927
+#: src/LyXAction.C:186 src/lyx_cb.C:2925
 msgid "Insert Figure"
 msgstr "Insérer figure"
 
@@ -2746,7 +2752,7 @@ msgstr "Reconfigurer"
 msgid "Insert cross reference"
 msgstr "Insérer une référence croisée"
 
-#: src/LyXAction.C:348 src/lyx_cb.C:2939
+#: src/LyXAction.C:348 src/lyx_cb.C:2937
 msgid "Insert Table"
 msgstr "Insérer un tableau"
 
@@ -3119,145 +3125,145 @@ msgid "as default for new documents?"
 msgstr "comme paramètres par défaut pour les nouveaux documents ?"
 
 # à revoir
-#: src/lyx_cb.C:2212
+#: src/lyx_cb.C:2210
 msgid "Paragraph layout set"
 msgstr "Le style du paragraphe a été paramétré"
 
-#: src/lyx_cb.C:2287
+#: src/lyx_cb.C:2285
 msgid "Should I set some parameters to"
 msgstr "Dois-je allouer moi-même"
 
-#: src/lyx_cb.C:2289
+#: src/lyx_cb.C:2287
 msgid "the defaults of this document class?"
 msgstr "les paramètres par défaut de cette classe de documents ?"
 
 #. unable to load new style
-#: src/lyx_cb.C:2298 src/lyx_cb.C:2443 src/lyx_cb.C:2450
+#: src/lyx_cb.C:2296 src/lyx_cb.C:2441 src/lyx_cb.C:2448
 msgid "Conversion Errors!"
 msgstr "Erreurs de conversion !"
 
-#: src/lyx_cb.C:2299 src/lyx_cb.C:2451
+#: src/lyx_cb.C:2297 src/lyx_cb.C:2449
 msgid "Unable to switch to new document class."
 msgstr "Impossible de passer à la nouvelle classe de documents."
 
-#: src/lyx_cb.C:2300 src/lyx_cb.C:2452
+#: src/lyx_cb.C:2298 src/lyx_cb.C:2450
 msgid "Reverting to original document class."
 msgstr "Retour à la classe originelle."
 
-#: src/lyx_cb.C:2428
+#: src/lyx_cb.C:2426
 msgid "Converting document to new document class..."
 msgstr "Conversion du document vers sa nouvelle classe..."
 
-#: src/lyx_cb.C:2438
+#: src/lyx_cb.C:2436
 msgid "One paragraph couldn't be converted"
 msgstr "Un paragraphe n'a pu être converti"
 
-#: src/lyx_cb.C:2441
+#: src/lyx_cb.C:2439
 msgid " paragraphs couldn't be converted"
 msgstr " paragraphes n'ont pu être convertis"
 
-#: src/lyx_cb.C:2444
+#: src/lyx_cb.C:2442
 msgid "into chosen document class"
 msgstr "dans la classe choisie"
 
-#: src/lyx_cb.C:2530
+#: src/lyx_cb.C:2528
 msgid "Document layout set"
 msgstr "Mise en page du document paramétrée"
 
-#: src/lyx_cb.C:2566
+#: src/lyx_cb.C:2564
 msgid "Quotes type set"
 msgstr "Guillemets paramétrés"
 
-#: src/lyx_cb.C:2628
+#: src/lyx_cb.C:2626
 msgid "LaTeX preamble set"
 msgstr "Préambule LaTeX paramétré"
 
 # à revoir
-#: src/lyx_cb.C:2649
+#: src/lyx_cb.C:2647
 msgid "Cannot insert table in table."
 msgstr "Interdiction d'insérer un tableau dans un autre tableau."
 
-#: src/lyx_cb.C:2654
+#: src/lyx_cb.C:2652
 msgid "Inserting table..."
 msgstr "Insertion tableau..."
 
-#: src/lyx_cb.C:2721
+#: src/lyx_cb.C:2719
 msgid "Table inserted"
 msgstr "Tableau inséré"
 
-#: src/lyx_cb.C:2779 src/lyx_cb.C:2797
+#: src/lyx_cb.C:2777 src/lyx_cb.C:2795
 msgid "ERROR!  Unable to print!"
 msgstr "ERREUR ! Impossible d'imprimer"
 
-#: src/lyx_cb.C:2780
+#: src/lyx_cb.C:2778
 msgid "Check 'range of pages'!"
 msgstr "Vérifier les pages !"
 
-#: src/lyx_cb.C:2798
+#: src/lyx_cb.C:2796
 msgid "Check 'number of copies'!"
 msgstr "Vérifier le nombre de copies !"
 
-#: src/lyx_cb.C:2907
+#: src/lyx_cb.C:2905
 msgid "Error:"
 msgstr "Erreur :"
 
-#: src/lyx_cb.C:2908
+#: src/lyx_cb.C:2906
 msgid "Unable to print"
 msgstr "Impossible d'imprimer"
 
-#: src/lyx_cb.C:2909
+#: src/lyx_cb.C:2907
 msgid "Check that your parameters are correct"
 msgstr "Vérifier que les paramètres sont corrects"
 
-#: src/lyx_cb.C:2954
+#: src/lyx_cb.C:2952
 msgid "Inserting figure..."
 msgstr "Insertion figure..."
 
-#: src/lyx_cb.C:2959 src/lyx_cb.C:3011
+#: src/lyx_cb.C:2957 src/lyx_cb.C:3009
 msgid "Figure inserted"
 msgstr "Figure insérée"
 
-#: src/lyx_cb.C:3049
+#: src/lyx_cb.C:3047
 msgid "Screen options set"
 msgstr "Options écran paramétrées"
 
-#: src/lyx_cb.C:3079
+#: src/lyx_cb.C:3077
 msgid "LaTeX Options"
 msgstr "Options LaTeX"
 
-#: src/lyx_cb.C:3088
+#: src/lyx_cb.C:3086
 msgid "Running configure..."
 msgstr "Lancement de configure..."
 
-#: src/lyx_cb.C:3095
+#: src/lyx_cb.C:3093
 msgid "Reloading configuration..."
 msgstr "Rechargement de la configuration"
 
-#: src/lyx_cb.C:3097
+#: src/lyx_cb.C:3095
 msgid "The system has been reconfigured."
 msgstr "Le système a été reconfiguré."
 
-#: src/lyx_cb.C:3098
+#: src/lyx_cb.C:3096
 msgid "You need to restart LyX to make use of any"
 msgstr "Il faut redémarrer LyX pour utiliser"
 
-#: src/lyx_cb.C:3099
+#: src/lyx_cb.C:3097
 msgid "updated document class specifications."
 msgstr "les classes modifiées"
 
-#: src/lyx_cb.C:3125 src/lyxfunc.C:1345
+#: src/lyx_cb.C:3123 src/lyxfunc.C:1345
 msgid "Couldn't find this label"
 msgstr "Impossible de trouver cette étiquette"
 
-#: src/lyx_cb.C:3126 src/lyxfunc.C:1346
+#: src/lyx_cb.C:3124 src/lyxfunc.C:1346
 msgid "in current document."
 msgstr "dans le document courant."
 
-#: src/lyx_cb.C:3144
+#: src/lyx_cb.C:3142
 msgid "*** No Document ***"
 msgstr "*** Pas de Document ***"
 
-#: src/lyx_cb.C:3283
+#: src/lyx_cb.C:3281
 msgid "*** No labels found in document ***"
 msgstr "*** Pas d´étiquettes dans ce document ***"
 
@@ -3682,19 +3688,27 @@ msgstr ""
 msgid " Single | OneHalf | Double | Other "
 msgstr "Simple | Un et demi | Double | Autre "
 
-#: src/lyx_gui.C:427
+#: src/lyx_gui.C:400
+msgid "No change"
+msgstr "Idem"
+
+#: src/lyx_gui.C:401
+msgid "Reset"
+msgstr "RAZ"
+
+#: src/lyx_gui.C:428
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr "Petit | Moyen | Grand | Valeur "
 
-#: src/lyx_gui.C:439
+#: src/lyx_gui.C:440
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
 msgstr ""
-"Défaut | Personnalisée | Lettre US | Legal US | Executive US | A3 | A4 | A5 "
+" Défaut | Personnalisée | Lettre US | Legal US | Executive US | A3 | A4 | A5 "
 "| B3 | B4 | B5 "
 
-#: src/lyx_gui.C:442
+#: src/lyx_gui.C:443
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
@@ -3702,15 +3716,15 @@ msgstr ""
 "Aucune | A4 petites marges (portrait seulement) | A4 très petites marges "
 "(portrait seulement) | A4 très grandes marges (portrait seulement) "
 
-#: src/lyx_gui.C:488
+#: src/lyx_gui.C:489
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr " ``texte'' | ''texte'' | ,,texte`` | ,,texte'' | «texte» | »texte« "
 
-#: src/lyx_gui.C:534
+#: src/lyx_gui.C:535
 msgid " TOC | LOF | LOT | LOA "
 msgstr "Plan | LDF | LDT | LDA "
 
-#: src/lyx_gui.C:574
+#: src/lyx_gui.C:575
 msgid "LyX Banner"
 msgstr "Étendard de LyX"
 
@@ -5119,7 +5133,7 @@ msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
 msgstr ""
-"Fraction|Racine carrée|Puissance|Indice|Somme|Intégrale%l|Mode "
+"Fraction|Racine carrée|Exposant|Indice|Somme|Intégrale%l|Mode "
 "mathématique|Déploiement%l|Palette mathématique..."
 
 #: src/menus.C:1901
@@ -5410,15 +5424,15 @@ msgstr ""
 msgid "Ascii|#s"
 msgstr ""
 
-#: src/spellchecker.C:219
+#: src/spellchecker.C:223
 msgid "Spellchecker Options"
 msgstr "Options correcteur orthographique"
 
-#: src/spellchecker.C:553
+#: src/spellchecker.C:557
 msgid "Spellchecker"
 msgstr "Correcteur orthographique"
 
-#: src/spellchecker.C:658
+#: src/spellchecker.C:662
 msgid ""
 "\n"
 "\n"
@@ -5436,19 +5450,19 @@ msgstr ""
 "Vérifier /usr/lib/ispell ou paramétrer un autre\n"
 "dictionnaire dans le menu Options-> Dictionnaire."
 
-#: src/spellchecker.C:794
+#: src/spellchecker.C:798
 msgid " words checked."
 msgstr " mots vérifiés."
 
-#: src/spellchecker.C:796
+#: src/spellchecker.C:800
 msgid " word checked."
 msgstr " mot vérifié."
 
-#: src/spellchecker.C:798
+#: src/spellchecker.C:802
 msgid "Spellchecking completed!"
 msgstr "Correction orthographique terminée !"
 
-#: src/spellchecker.C:802
+#: src/spellchecker.C:806
 msgid ""
 "The ispell-process has died for some reason.\n"
 "Maybe it has been killed."
@@ -5582,15 +5596,15 @@ msgstr "Erreur ! Impossible de créer le répertoire :"
 msgid "unknown"
 msgstr "inconnu"
 
-#: src/table.C:989 src/tabular.C:1172
+#: src/table.C:990 src/tabular.C:1172
 msgid "Warning:"
 msgstr "Attention !"
 
-#: src/table.C:990 src/tabular.C:1173
+#: src/table.C:991 src/tabular.C:1173
 msgid "Tabular format < 5 is not supported anymore\n"
 msgstr "Le format Tabular < 5 n'est plus supporté\n"
 
-#: src/table.C:991 src/tabular.C:1174
+#: src/table.C:992 src/tabular.C:1174
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Utilisez une ancienne version de LyX (< 1.1.x) pour convertir"
 
@@ -5647,7 +5661,7 @@ msgstr "désolé."
 msgid "Don't know what to do with half tables."
 msgstr "Je ne sais pas manipuler les parties de tableaux."
 
-#: src/text.C:2651
+#: src/text.C:2701
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -5655,31 +5669,31 @@ msgstr ""
 "Vous ne pouvez pas entrer d'espace en début de paragraphe. Lisez le manuel "
 "d'apprentissage."
 
-#: src/text.C:2653
+#: src/text.C:2703
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Vous ne pouvez pas entrer deux espaces ici. Lisez le manuel d'apprentissage."
 
-#: src/text.C:4028 src/text.C:4034
+#: src/text.C:4078 src/text.C:4084
 msgid "Page Break (top)"
 msgstr "Saut de Page (Haut)"
 
-#: src/text.C:4210 src/text.C:4216
+#: src/text.C:4260 src/text.C:4266
 msgid "Page Break (bottom)"
 msgstr "Saut de Page (Bas)"
 
-#: src/text.C:4636
+#: src/text.C:4686
 msgid "You can't insert a float in a float!"
 msgstr "Insérer un flottant dans un flottant est interdit !"
 
-#: src/text.C:4644
+#: src/text.C:4694
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Insérer un [marginpar] dans une minipage est interdit !"
 
-#: src/text.C:4660
+#: src/text.C:4710
 msgid "Cannot cut table."
 msgstr "Impossible de couper le tableau."
 
-#: src/text.C:4676
+#: src/text.C:4726
 msgid "Float would include float!"
 msgstr "Un flottant inclurait un flottant !"

@@ -1,3 +1,22 @@
+2000-08-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/bmtable.c (fl_set_bmtable_pixmap_file): use C-style
+	comments, not C++ ones.
+	* src/support/strerror.c: ditto.
+
+2000-08-01  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/mathed/math_write.C (MathDecorationInset::Write) Put \protect 
+	before \overbrace, \underbrace, \overleftarrow, or \overrightarrow.
+	
+2000-07-31  Matej Cepl <CeplM@seznam.cz>
+
+	* lib/kbd/czech.kmap: new file. standard Czech keyboard as found
+	on usual typewriter.
+
+	* lib/kbd/czech-prg.kmap: simpler czech kmap (which was the
+	earlier czech.kmap), useful only for programming.
+
 2000-07-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/version.h (LYX_VERSION): reset version number to

@@ -343,7 +343,7 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 				XFreePixmap(fl_display, dummy_shapemask);
 			}
 		}
-		//XFlush(fl_display);
+		/* XFlush(fl_display); */
 	}
 }
 
