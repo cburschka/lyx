@@ -38,10 +38,11 @@ CharStyle Firstname
 	  Shape               SmallCaps
 	EndFont
 	LabelFont
-	  Shape               Italic
-	  Color               red
+	  Shape               Up
+	  Color               blue
 	EndFont
 End
+
 
 CharStyle Surname
 	LatexType             Command
@@ -50,10 +51,11 @@ CharStyle Surname
 	  Shape               SmallCaps
 	EndFont
 	LabelFont
-	  Shape               Italic
-	  Color               red
+	  Shape               Up
+	  Color               blue
 	EndFont
 End
+
 
 CharStyle Filename
 	LatexType             Command
@@ -62,10 +64,11 @@ CharStyle Filename
 	  Family              Typewriter
 	EndFont
 	LabelFont
-	  Shape               Italic
-	  Color               red
+	  Family              Roman
+	  Color               blue
 	EndFont
 End
+
 
 CharStyle Literal
 	LatexType             Command
@@ -74,8 +77,22 @@ CharStyle Literal
 	  Family              Typewriter
 	EndFont
 	LabelFont
+	  Family              Roman
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Emph
+	LatexType             Command
+	LatexName             emph
+	LatexParam            "type=&quot;italic&quot;"
+	Font
 	  Shape               Italic
-	  Color               red
+	EndFont
+	LabelFont
+	  Shape               Up
+	  Color               blue
 	EndFont
 End
 

@@ -60,9 +60,9 @@ public:
 	///
 	void read(Buffer const & buf, LyXLex & lex);
 	///
-	void setButtonLabel();
-	///
 	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	void draw(PainterInfo &, int, int) const;
 	///
 	void getDrawFont(LyXFont &) const;
 	///
@@ -96,6 +96,8 @@ private:
 	void init();
 	///
 	InsetCharStyleParams params_;
+	///
+	bool has_label_;
 };
 
 #endif

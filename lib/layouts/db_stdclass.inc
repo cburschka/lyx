@@ -36,8 +36,8 @@ CharStyle Filename
 	  Family              Typewriter
 	EndFont
 	LabelFont
-	  Shape               Italic
-	  Color               red
+	  Family              Roman
+	  Color               blue
 	EndFont
 End
 
@@ -48,8 +48,8 @@ CharStyle Firstname
 	  Shape               SmallCaps	
 	EndFont
 	LabelFont
-	  Shape               Italic
-	  Color               red
+	  Shape               Up
+	  Color               blue
 	EndFont
 End
 
@@ -60,8 +60,8 @@ CharStyle Surname
 	  Shape               SmallCaps	
 	EndFont
 	LabelFont
-	  Shape               Italic
-	  Color               red
+	  Shape               Up
+	  Color               blue
 	EndFont
 End
 
@@ -72,8 +72,8 @@ CharStyle Literal
 	  Family              Typewriter
 	EndFont
 	LabelFont
-	  Shape               Italic
-	  Color               red
+	  Family              Roman
+	  Color               blue
 	EndFont
 End
 

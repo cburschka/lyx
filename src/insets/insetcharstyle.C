@@ -25,6 +25,8 @@
 #include "metricsinfo.h"
 #include "paragraph.h"
 
+#include "frontends/font_metrics.h"
+#include "frontends/Painter.h"
 #include "support/std_sstream.h"
 
 
@@ -38,13 +40,13 @@ using std::ostringstream;
 void InsetCharStyle::init()
 {
 	setInsetName("CharStyle");
-	setButtonLabel();
+	setStatus(Inlined);
 }
 
 
 InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 				CharStyles::iterator cs)
-	: InsetCollapsable(bp)
+	: InsetCollapsable(bp), has_label_(true)
 {
 	params_.type = cs->name;
 	params_.latextype = cs->latextype;
@@ -57,7 +59,7 @@ InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 
 
 InsetCharStyle::InsetCharStyle(InsetCharStyle const & in)
-	: InsetCollapsable(in), params_(in.params_)
+	: InsetCollapsable(in), params_(in.params_), has_label_(true)
 {
 	init();
 }
@@ -85,17 +87,7 @@ void InsetCharStyle::write(Buffer const & buf, ostream & os) const
 void InsetCharStyle::read(Buffer const & buf, LyXLex & lex)
 {
 	InsetCollapsable::read(buf, lex);
-	setButtonLabel();
-}
-
-
-void InsetCharStyle::setButtonLabel()
-{
-	LyXFont font(params_.labelfont);
-	font.realize(LyXFont(LyXFont::ALL_SANE));
-	string const s = "Style: " + params_.type;
-	setLabel(isOpen() ? s : getNewLabel(s) );
-	setLabelFont(font);
+	setStatus(Inlined);
 }
 
 
@@ -103,6 +95,43 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetCollapsable::metrics(mi, dim);
 	dim_ = dim;
+	if (has_label_)
+		dim_.des += ascent();
+}
+
+
+void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
+{
+	xo_ = x;
+	yo_ = y;
+
+	status_ = Inlined;
+	inset.setDrawFrame(InsetText::NEVER);
+	inset.draw(pi, x, y);
+
+	pi.pain.line(x + 2, y + inset.descent() - 4, x + 2,
+		y + inset.descent(), params_.labelfont.color());
+	pi.pain.line(x + 2, y + inset.descent(), x + dim_.wid - 2,
+		y + inset.descent(), params_.labelfont.color());
+	pi.pain.line(x + dim_.wid - 2, y + inset.descent(), x + dim_.wid - 2,
+		y + inset.descent() - 4, params_.labelfont.color());
+
+	if (has_label_) {
+		if (!owner())
+			x += scroll();
+
+	LyXFont font(params_.labelfont);
+	font.realize(LyXFont(LyXFont::ALL_SANE));
+	font.decSize();
+	font.decSize();
+	int w = 0;
+	int a = 0;
+	int d = 0;
+	font_metrics::rectText(params_.type, font, w, a, d);
+	pi.pain.rectText(x + 0.5 * (dim_.wid - w), 
+		y + inset.descent() + a,
+		params_.type, font, LColor::none, LColor::none);
+	}
 }
 
 
@@ -116,9 +145,19 @@ DispatchResult
 InsetCharStyle::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)
 {
-	DispatchResult dr = InsetCollapsable::priv_dispatch(cmd, idx, pos);
-	setButtonLabel();
-	return dr;
+	setStatus(Inlined);
+	switch (cmd.action) {
+		case LFUN_MOUSE_PRESS:
+			if (cmd.button() == mouse_button::button3) {
+				has_label_ = !has_label_;
+				return DispatchResult(true);
+			}
+			inset.dispatch(cmd);
+			return DispatchResult(true, true);
+			break;
+		default:
+			return InsetCollapsable::priv_dispatch(cmd, idx, pos);
+	}
 }
 
 
