@@ -51,11 +51,6 @@ InsetBibKey::InsetBibKey(InsetCommandParams const & p)
 }
 
 
-InsetBibKey::~InsetBibKey()
-{
-}
-
-
 Inset * InsetBibKey::clone(Buffer const &, bool) const
 {
 	InsetBibKey * b = new InsetBibKey(params());
@@ -101,12 +96,12 @@ void InsetBibKey::read(Buffer const *, LyXLex & lex)
 	}
 }
 
+
 string const InsetBibKey::getBibLabel() const
 {
-	if (! getOptions().empty())
-		return getOptions();
-	return tostr(counter);
+	return getOptions().empty() ? tostr(counter) : getOptions();
 }
+
 
 string const InsetBibKey::getScreenLabel(Buffer const *) const
 {
@@ -126,14 +121,11 @@ void InsetBibKey::edit(BufferView * bv, bool)
 }
 
 
+
+
 InsetBibtex::InsetBibtex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
-
-
-InsetBibtex::~InsetBibtex()
-{
-}
 
 
 string const InsetBibtex::getScreenLabel(Buffer const *) const
@@ -241,8 +233,10 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 	return vec;
 }
 
+
 // This method returns a comma separated list of Bibtex entries
-vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) const
+vector<pair<string, string> > const
+	InsetBibtex::getKeys(Buffer const * buffer) const
 {
 	vector<pair<string,string> > keys;
 

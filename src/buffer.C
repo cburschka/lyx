@@ -2884,24 +2884,6 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 	}
 
 	vector<StringPair> keys;
-	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.end();
-	for (; pit != pend; ++pit) {
-		InsetBibKey * bib = pit->bibkey();
-		if (bib) {
-			string const key = bib->getContents();
-			string const opt = bib->getOptions();
-			string const ref = pit->asString(this, false);
-			string const info = opt + "TheBibliographyRef" + ref;
-
-			keys.push_back(StringPair(key, info));
-		}
-	}
-
-	if (!keys.empty())
-		return keys;
-
-	// Might be either using bibtex or a child has bibliography
 	for (inset_iterator it = inset_const_iterator_begin();
 		it != inset_const_iterator_end(); ++it) {
 		// Search for Bibtex or Include inset
@@ -2913,6 +2895,13 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 			vector<StringPair> const tmp =
 				static_cast<InsetInclude &>(*it).getKeys();
 			keys.insert(keys.end(), tmp.begin(), tmp.end());
+		} else if (it->lyxCode() == Inset::BIBKEY_CODE) {
+			InsetBibKey & bib = static_cast<InsetBibKey &>(*it);
+			string const key = bib.getContents();
+			string const opt = bib.getOptions();
+			string const ref; // = pit->asString(this, false);
+			string const info = opt + "TheBibliographyRef" + ref;
+			keys.push_back(StringPair(key, info));
 		}
 	}
 

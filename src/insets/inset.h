@@ -122,7 +122,9 @@ public:
 		///
 		INDEX_PRINT_CODE,
 		///
-		OPTARG_CODE
+		OPTARG_CODE,
+		///
+		BIBKEY_CODE
 	};
 
 	///

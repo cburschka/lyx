@@ -48,8 +48,7 @@ void fillChoice(FD_citation * dialog, vector<string> vec)
 {
 	// Check whether the current contents of the browser will be
 	// changed by loading the contents of the vec...
-	vector<string> const choice_style =
-		getVector(dialog->choice_style);
+	vector<string> const choice_style = getVector(dialog->choice_style);
 
 	if (vec == choice_style)
 		return;
@@ -320,8 +319,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			// with the selected browser_cite key
 			fl_clear_browser(dialog_->browser_info);
 			string const tmp =
-				formatted(biblio::getInfo(theMap,
-							  citekeys[sel - 1]),
+				formatted(biblio::getInfo(theMap, citekeys[sel - 1]),
 					  dialog_->browser_info->w - 10);
 			fl_add_browser_line(dialog_->browser_info, tmp.c_str());
 		}
@@ -433,7 +431,8 @@ void FormCitation::update()
 
 	// Use the first citekey to fill choice_style
 	string key;
-	if (!citekeys.empty()) key = citekeys[0];
+	if (!citekeys.empty())
+		key = citekeys[0];
 
 	fillChoice(dialog_.get(), controller().getCiteStrings(key));
 
@@ -477,7 +476,7 @@ void FormCitation::updateBrowser(FL_OBJECT * browser,
 	fl_clear_browser(browser);
 
 	for (vector<string>::const_iterator it = keys.begin();
-	     it < keys.end(); ++it) {
+	     it != keys.end(); ++it) {
 		string key = trim(*it);
 		if (!key.empty())
 			fl_add_browser_line(browser, key.c_str());

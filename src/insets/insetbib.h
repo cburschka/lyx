@@ -28,8 +28,6 @@ public:
 	///
 	InsetBibKey(InsetCommandParams const &);
 	///
-	~InsetBibKey();
-	///
 	Inset * clone(Buffer const &, bool same_id = false) const;
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.
@@ -45,6 +43,8 @@ public:
 	void edit(BufferView * bv, bool front = true);
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
+	///
+	Inset::Code lyxCode() const { return Inset::BIBKEY_CODE; }
 	/// keep .lyx format compatible
 	bool directWrite() const { return true; }
 	///
@@ -75,8 +75,6 @@ class InsetBibtex : public InsetCommand {
 public:
 	///
 	InsetBibtex(InsetCommandParams const &, bool same_id = false);
-	///
-	~InsetBibtex();
 	///
 	Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetBibtex(params(), same_id);

@@ -55,9 +55,9 @@ private:
 	///
 	void setCiteButtons(State) const;
 
-	///
+	/// used keys (left panel)
 	std::vector<string> citekeys;
-	///
+	/// available keys (right panel)
 	std::vector<string> bibkeys;
 };
 
