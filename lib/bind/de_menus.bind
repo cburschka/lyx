@@ -104,9 +104,9 @@
 \bind "M-a Right"		"depth-increment"
 
 # Veraltete Tastenbelegung; für rückwärtige Kompatibilität beibehalten
-\bind "M-a S-at"		"layout Section*"	# M-a S-2
+\bind "M-a S-quotedbl"		"layout Section*"	# M-a S-2
+\bind "M-a S-§"			"layout Subsection*"	# M-a S-3
 \bind "M-a S-dollar"		"layout Subsubsection*"	# M-a S-4
-\bind "M-a S-numbersign"	"layout Subsection*"	# M-a S-3
 
 
 #
