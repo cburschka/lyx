@@ -1,16 +1,20 @@
+2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxinclude.m4 (lyx_warning): turn off exceptions for 2.96 and 3.1
+
 2002-06-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* xforms.m4: don't insist on building with flimage linked
- 
+
 2002-06-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* xforms.m4: don't warn about missing flimage.h
- 
+
 2002-06-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* xforms.m4: moved out of lyxinclude.m4, some
 	  fixes for 1.0
- 
+
 2002-05-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* pkg.m4: new file

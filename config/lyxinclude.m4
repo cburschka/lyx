@@ -209,9 +209,9 @@ if test x$GXX = xyes; then
       2.95.1)  CXXFLAGS="$lyx_opt -fpermissive";;
       2.95.2)  CXXFLAGS="$lyx_opt";;
       2.95.*)  CXXFLAGS="$lyx_opt";;
-      2.96*)  CXXFLAGS="$lyx_opt";;
+      2.96*)  CXXFLAGS="$lyx_opt -fno-exceptions";;
       3.0*)    CXXFLAGS="$lyx_opt";;
-      3.1*)    CXXFLAGS="$lyx_opt";;
+      3.1*)    CXXFLAGS="$lyx_opt -finline-limit=500 -fno-exceptions";;
       3.2*)    CXXFLAGS="$lyx_opt";;
       *)       CXXFLAGS="$lyx_opt";;
     esac
@@ -223,6 +223,7 @@ if test x$GXX = xyes; then
     case $gxx_version in
 	2.95.*) CXXFLAGS="$CXXFLAGS -W -Wall";;
 	2.96*)  CXXFLAGS="$CXXFLAGS -W -Wall";;
+	3.1*)  CXXFLAGS="$CXXFLAGS -W -Wall -Winline";;
 	*)      CXXFLAGS="$CXXFLAGS -W -Wall";;
     esac
     if test $lyx_devel_version = yes ; then
