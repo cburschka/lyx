@@ -1013,30 +1013,33 @@ InsetText::localDispatch(BufferView * bv,
 		else if (result == DISPATCHED) {
 			updateLocal(bv, CURSOR_PAR, false);
 			return result;
-		} else if (result == FINISHED) {
-			bool dispatched = false;
-			switch (action) {
-			case LFUN_UNKNOWN_ACTION:
-			case LFUN_BREAKPARAGRAPH:
-			case LFUN_BREAKLINE:
+		} else if (result >= FINISHED) {
+			switch(result) {
+			case FINISHED_RIGHT:
 				moveRightIntern(bv, false, false);
+				result = DISPATCHED;
 				break;
-			case LFUN_RIGHT:
-				if (!getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
-					moveRightIntern(bv, false, false);
-				dispatched = true;
+			case FINISHED_UP:
+				if ((result = moveUp(bv)) >= FINISHED) {
+					updateLocal(bv, CURSOR, false);
+					bv->unlockInset(this);
+				}
 				break;
-			case LFUN_LEFT:
-				if (getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
-					moveRightIntern(bv, false, false);
-				dispatched = true;
+			case FINISHED_DOWN:
+				if ((result = moveDown(bv)) >= FINISHED) {
+					updateLocal(bv, CURSOR, false);
+					bv->unlockInset(this);
+				}
 				break;
 			default:
+				result = DISPATCHED;
 				break;
 			}
 			the_locking_inset = 0;
-			if (dispatched)
-				return DISPATCHED;
+#ifdef WITH_WARNINGS
+#warning I changed this to always return Dispatched maybe it is wrong (20011001 Jug)
+#endif
+			return result;
 		}
 	}
 	hideInsetCursor(bv);

@@ -878,6 +878,12 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			updateLocal(bv, CELL, false);
 			the_locking_inset->toggleInsetCursor(bv);
 			return result;
+		} else if (result == FINISHED_UP) {
+			action = LFUN_UP;
+		} else if (result == FINISHED_DOWN) {
+			action = LFUN_DOWN;
+		} else if (result == FINISHED_RIGHT) {
+			action = LFUN_RIGHT;
 		}
 	}
 
