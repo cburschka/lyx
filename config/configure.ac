@@ -73,7 +73,7 @@ LYX_CXX_GLOBAL_CSTD
 LYX_STD_COUNT
 dnl we disable rtti for now
 dnl LYX_CXX_RTTI
-AC_CHECK_HEADERS(ostream istream sstream locale limits)
+AC_CHECK_HEADERS(ostream istream sstream locale limits ios)
 LYX_CXX_STL_MODERN_STREAMS
 
 ### and now some special lyx flags.
