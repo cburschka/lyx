@@ -1052,13 +1052,20 @@ ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset)
 	ParIterator pit = const_cast<Buffer &>(buf).par_iterator_begin();
 	ParIterator end = const_cast<Buffer &>(buf).par_iterator_end();
 	for ( ; pit != end; ++pit) {
+
+		ParagraphList * plist;
+		// the second '=' below is intentional
+		for (int i = 0; (plist = inset->getParagraphs(i)); ++i)
+			if (plist == &pit.plist())
+				return pit.outerPar();
+
 		InsetList::iterator ii = pit->insetlist.begin();
 		InsetList::iterator iend = pit->insetlist.end();
 		for ( ; ii != iend; ++ii)
 			if (ii->inset == inset)
 				return pit.outerPar();
 	}
-	lyxerr << "outerPar: should not happen\n";
+	lyxerr << "outerPar: should not happen" << endl;
 	Assert(false);
 	return const_cast<Buffer &>(buf).paragraphs.end(); // shut up compiler
 }
@@ -1075,7 +1082,7 @@ Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset)
 			if (ii->inset == inset)
 				return *pit.pit();
 	}
-	lyxerr << "ownerPar: should not happen\n";
+	lyxerr << "ownerPar: should not happen" << endl;
 	Assert(false);
 	return buf.paragraphs.front(); // shut up compiler
 }
