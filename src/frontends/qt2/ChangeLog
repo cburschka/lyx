@@ -1,5 +1,9 @@
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
+	* lyx_gui.C: add exit() so we don't busy loop !
+ 
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
 	* QCommandEdit.C: complete if right at end of line
  
 	* QLyXKeySym.C: cleanup comments

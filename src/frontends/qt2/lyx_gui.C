@@ -50,7 +50,6 @@ using std::vector;
 using std::hex;
 using std::endl;
  
-extern bool finished;
 extern BufferList bufferlist;
  
 // FIXME: wrong place !
@@ -111,15 +110,18 @@ void lyx_gui::start(string const & batch, vector<string> files)
 		view.getLyXFunc()->dispatch(batch);
 	}
 
-	// FIXME: something somewhere is EATING CPU
-	while (!finished) {
-		qApp->processEvents();
-	}
+	qApp->exec();
 		 
-	// FIXME 
+	// FIXME
 	delete lyxserver;
 }
  
+ 
+void lyx_gui::exit()
+{
+	qApp->exit(0);
+}
+
  
 string const lyx_gui::hexname(LColor::color col)
 {

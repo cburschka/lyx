@@ -55,13 +55,15 @@ using std::setbase;
 using std::setfill;
 using std::setw;
 
-extern bool finished;
 extern BufferList bufferlist;
 
 // FIXME: wrong place !
 LyXServer * lyxserver;
 
 namespace {
+
+/// quit lyx
+bool finished = false;
 
 /// set default GUI configuration
 void setDefaults()
@@ -309,6 +311,12 @@ void lyx_gui::start(string const & batch, vector<string> files)
 }
 
 
+void lyx_gui::exit()
+{
+	finished = true;
+}
+
+ 
 string const lyx_gui::hexname(LColor::color col)
 {
 	string const name = lcolor.getX11Name(col);

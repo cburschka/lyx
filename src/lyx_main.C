@@ -68,9 +68,6 @@ boost::scoped_ptr<LastFiles> lastfiles;
 // This is the global bufferlist object
 BufferList bufferlist;
 
-// this should be static, but I need it in buffer.C
-bool finished = false;	// flag, that we are quitting the program
-
 // convenient to have it here.
 boost::scoped_ptr<kb_keymap> toplevel_keymap;
 

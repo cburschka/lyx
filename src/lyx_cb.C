@@ -17,7 +17,6 @@
 #include "bufferview_funcs.h"
 #include "debug.h"
 #include "lastfiles.h"
-#include "frontends/LyXView.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "gettext.h"
@@ -25,6 +24,8 @@
 
 #include "insets/insetlabel.h"
 
+#include "frontends/lyx_gui.h"
+#include "frontends/LyXView.h"
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
 
@@ -52,7 +53,6 @@ using std::make_pair;
 extern BufferList bufferlist;
 // this should be static, but I need it in buffer.C
 bool quitting;	// flag, that we are quitting the program
-extern bool finished; // all cleanup done just let it run through now.
 
 
 void ShowMessage(Buffer const * buf,
@@ -239,7 +239,7 @@ void QuitLyX()
 
 	DestroyLyXTmpDir(system_tempdir);
 
-	finished = true;
+	lyx_gui::exit();
 }
 
 

@@ -36,6 +36,11 @@ namespace lyx_gui {
 	 */
 	void start(string const & batch, std::vector<std::string> files);
 
+	/**
+	 * quit running LyX
+	 */
+	void exit();
+ 
 	/** Eg, passing LColor::black returns "000000",
 	 *      passing LColor::white returns "ffffff".
 	 */
