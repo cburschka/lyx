@@ -1,13 +1,13 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2001, The LyX team.
 # Roman Maurer <roman.maurer@amis.net>, 2001.
-# $Id: sl.po,v 1.35 2001/01/03 15:14:46 lasgouttes Exp $
+# $Id: sl.po,v 1.36 2001/01/08 14:19:28 lasgouttes Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.5\n"
 "POT-Creation-Date: 2000-12-29 22:25+0100\n"
-"PO-Revision-Date: 2001-01-01 11:00+0200\n"
+"PO-Revision-Date: 2001-01-07 12:30+0200\n"
 "Last-Translator:  Roman Maurer <roman.maurer@amis.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,17 +15,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/buffer.C:488
-#, fuzzy
 msgid "Textclass error"
-msgstr "Napaka pri nalaganju besedilnega razreda!"
+msgstr "Napaka v razredu besedila"
 
 #: src/buffer.C:489
 msgid "The document uses an unknown textclass \""
-msgstr ""
+msgstr "Spis uporablja neznani razred besedila \""
 
 #: src/buffer.C:491
 msgid "LyX will not be able to produce output correctly."
-msgstr ""
+msgstr "LyX ne bo mogel izdelati pravilnega izhoda."
 
 #. if the textclass wasn't loaded properly
 #. we need to either substitute another
@@ -45,12 +44,12 @@ msgid "-- substituting default"
 msgstr "-- zamenjana privzeta vrednost"
 
 #: src/buffer.C:1059
-#, fuzzy, c-format
+#, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
 msgstr "Pozor: potreben format LyXa %.2f, a najden %.2f"
 
 #: src/buffer.C:1063
-#, fuzzy, c-format
+#, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f"
 msgstr "NAPAKA: potreben format LyXa %.2f, a najden %.2f"
 
@@ -343,23 +342,23 @@ msgstr " za "
 
 #: src/ColorHandler.C:85
 msgid "     Using black instead, sorry!."
-msgstr ""
+msgstr "     Namesto tega ¾al uporabljamo èrno!"
 
 #: src/ColorHandler.C:92
 msgid "LyX: X11 color "
-msgstr ""
+msgstr "LyX: barva v X11 "
 
 #: src/ColorHandler.C:93 src/ColorHandler.C:99
 msgid " allocated for "
-msgstr ""
+msgstr " dodeljena za "
 
 #: src/ColorHandler.C:98
 msgid "LyX: Using approximated X11 color "
-msgstr ""
+msgstr "LyX: Uporabljamo pribli¾no barvo za X11 "
 
 #: src/ColorHandler.C:139
 msgid "LyX: Couldn't allocate '"
-msgstr ""
+msgstr "LyX: Ne moremo dodeliti ,"
 
 #: src/ColorHandler.C:140
 msgid "' for "
@@ -371,11 +370,11 @@ msgstr " z (r,g,b)=("
 
 #: src/ColorHandler.C:144
 msgid "     Using closest allocated color with (r,g,b)=("
-msgstr ""
+msgstr "     Uporabljamo najbli¾jo dodeljeno barvo z (r,g,b)=("
 
 #: src/ColorHandler.C:148
 msgid ") instead.\n"
-msgstr ") namesto tega.\n"
+msgstr ") namesto tiste.\n"
 
 #: src/ColorHandler.C:149
 msgid "Pixel ["
@@ -390,34 +389,30 @@ msgid "Done"
 msgstr "Opravljeno"
 
 #: src/converter.C:165 src/converter.C:192
-#, fuzzy
 msgid "Can not view file"
 msgstr "Ni moè pogledati datoteke"
 
 #: src/converter.C:166
 msgid "No information for viewing "
-msgstr ""
+msgstr "Ni podatkov za ogled "
 
 #: src/converter.C:185 src/converter.C:612
 msgid "Executing command:"
 msgstr "Izvajamo ukaz:"
 
 #: src/converter.C:193
-#, fuzzy
 msgid "Error while executing"
 msgstr "Napaka med izvajanjem"
 
 #: src/converter.C:549 src/converter.C:639
-#, fuzzy
 msgid "Can not convert file"
 msgstr "Datoteke ni moè pretvoriti"
 
 #: src/converter.C:550
 msgid "No information for converting from "
-msgstr ""
+msgstr "Ni podatkov za pretvarjanje iz "
 
 #: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:551
-#, fuzzy
 msgid " to "
 msgstr " za "
 
@@ -430,12 +425,10 @@ msgid "You should try to fix them."
 msgstr "Morali bi jih poskusiti odpraviti."
 
 #: src/converter.C:662
-#, fuzzy
 msgid "Error while trying to move directory:"
 msgstr "Napaka pri poskusu premaknitve imenika:"
 
 #: src/converter.C:697
-#, fuzzy
 msgid "Error while trying to move file:"
 msgstr "Napaka pri poskusu premaknitve datoteke:"
 
@@ -526,13 +519,13 @@ msgstr "Vsi ti ljudje so prispevali k projektu LyX. Hvala,"
 
 #: src/CutAndPaste.C:447
 msgid "Layout had to be changed from\n"
-msgstr ""
+msgstr "Videz je treba spremeniti iz\n"
 
 #: src/CutAndPaste.C:450
 msgid ""
 "\n"
 "because of class conversion from\n"
-msgstr ""
+msgstr "\nzaradi spremembe razreda iz\n"
 
 #: src/CutAndPaste.C:476 src/insets/insettext.C:946 src/text.C:3942
 #: src/text.C:3950 src/text.C:3977 src/text2.C:2200 src/text2.C:2313
@@ -727,7 +720,6 @@ msgid "Version Control|V"
 msgstr "Nadzor razlièic|r"
 
 #: src/ext_l10n.h:26
-#, fuzzy
 msgid "Export|E"
 msgstr "Izvozi|z"
 
@@ -760,9 +752,8 @@ msgid "Undo Last Check In|U"
 msgstr "Razveljavi zadnje spremembe|R"
 
 #: src/ext_l10n.h:35
-#, fuzzy
 msgid "Show History|H"
-msgstr "Prika¾i zgodovino"
+msgstr "Prika¾i zgodovino|z"
 
 #: src/ext_l10n.h:36 src/ext_l10n.h:51
 msgid "Preferences...|P"
@@ -809,12 +800,10 @@ msgid "Floats & Insets|I"
 msgstr ""
 
 #: src/ext_l10n.h:47
-#, fuzzy
 msgid "Math Panel|l"
-msgstr "Matematièna plo¹èa"
+msgstr "Matematièna plo¹èa|l"
 
 #: src/ext_l10n.h:48
-#, fuzzy
 msgid "Spellchecker...|S"
 msgstr "Èrkovalnik...|k"
 
@@ -923,14 +912,12 @@ msgid "Math Formula|h"
 msgstr ""
 
 #: src/ext_l10n.h:77
-#, fuzzy
 msgid "Display Formula|D"
-msgstr "Prika¾i okvir|#F"
+msgstr "Prikazna formula|P"
 
 #: src/ext_l10n.h:78
-#, fuzzy
 msgid "Special Character|S"
-msgstr ""
+msgstr "Posebni znak|z"
 
 #: src/ext_l10n.h:85
 msgid "Citation Reference...|C"
@@ -973,7 +960,6 @@ msgid "Lists & TOC|O"
 msgstr ""
 
 #: src/ext_l10n.h:89
-#, fuzzy
 msgid "Figure...|g"
 msgstr "Slika...|S"
 
@@ -986,18 +972,16 @@ msgid "Floats|a"
 msgstr "Plovke|P"
 
 #: src/ext_l10n.h:92
-#, fuzzy
 msgid "Include File|e"
-msgstr "Vkljuèi"
+msgstr "Vkljuèi datoteko|V"
 
 #: src/ext_l10n.h:93
-#, fuzzy
 msgid "Insert File|t"
-msgstr "Vstavi sliko"
+msgstr "Vstavi datoteko|t"
 
 #: src/ext_l10n.h:94
 msgid "External Material...|x"
-msgstr ""
+msgstr "Zunanji material...|Z"
 
 #: src/ext_l10n.h:98
 msgid "Superscript|S"
@@ -1036,362 +1020,320 @@ msgid "Ordinary Quote|Q"
 msgstr ""
 
 #: src/ext_l10n.h:104
-#, fuzzy
 msgid "Menu Separator|M"
-msgstr "Separacija"
+msgstr "Loènica v menuju|L"
 
 #: src/ext_l10n.h:105
-#, fuzzy
 msgid "Figure Float|F"
-msgstr "Slika"
+msgstr "Plovka s sliko|s"
 
 #: src/ext_l10n.h:106
-#, fuzzy
 msgid "Table Float|T"
-msgstr "Naèrt tabele"
+msgstr "Plovka s tabelo|t"
 
 #: src/ext_l10n.h:107
-#, fuzzy
 msgid "Wide Figure Float|W"
-msgstr "prazna pot do slike"
+msgstr "Plovka s ¹iroko tabelo|i"
 
 #: src/ext_l10n.h:108
-#, fuzzy
 msgid "Wide Table Float|d"
-msgstr "Preglej kazalo vsebine"
+msgstr "Plovka s ¹iroko tabelo|a"
 
 #: src/ext_l10n.h:109
-#, fuzzy
 msgid "Algorithm Float|A"
-msgstr "Seznam algoritmov"
+msgstr "Plovka z algoritmom|a"
 
 #: src/ext_l10n.h:110
-#, fuzzy
 msgid "Table of Contents|C"
-msgstr "Vsebinsko kazalo"
+msgstr "Vsebinsko kazalo|V"
 
 #: src/ext_l10n.h:111
-#, fuzzy
 msgid "List of Figures|F"
-msgstr "Seznam slik"
+msgstr "Seznam slik|m"
 
 #: src/ext_l10n.h:112
-#, fuzzy
 msgid "List of Tables|T"
-msgstr "Seznam tabel"
+msgstr "Seznam tabel|b"
 
 #: src/ext_l10n.h:113
-#, fuzzy
 msgid "List of Algorithms|A"
-msgstr "Seznam algoritmov"
+msgstr "Seznam algoritmov|a"
 
 #: src/ext_l10n.h:114
-#, fuzzy
 msgid "Index List|I"
-msgstr "Zamik|#Z"
+msgstr "Stvarno kazalo|v"
 
 #: src/ext_l10n.h:115
-#, fuzzy
 msgid "BibTeX Reference...|B"
-msgstr "Reference, generirane z BibTeXom"
+msgstr "Sklic z BibTeXom...|B"
 
 #: src/ext_l10n.h:116
-#, fuzzy
 msgid "LyX Document...|X"
-msgstr "Spis"
+msgstr "Dokument v LyXu...|X"
 
 #: src/ext_l10n.h:117
-#, fuzzy
 msgid "Ascii as Lines...|L"
-msgstr "Èrte"
+msgstr "Ascii kot vrstice...|v"
 
 #: src/ext_l10n.h:118
-#, fuzzy
 msgid "Ascii as Paragraphs...|P"
-msgstr "Izberi naslednji odstavek"
+msgstr "Ascii kot odstavki...|o"
 
 #: src/ext_l10n.h:119
-#, fuzzy
 msgid "Character...|C"
-msgstr "Znakovni nabor:|#Z"
+msgstr "Znak...|Z"
 
 #: src/ext_l10n.h:120
 msgid "Paragraph...|P"
-msgstr ""
+msgstr "Odstavek...|O"
 
 #: src/ext_l10n.h:121
-#, fuzzy
 msgid "Document...|D"
-msgstr "Spis"
+msgstr "Spis...|S"
 
 #: src/ext_l10n.h:122
 msgid "Tabular...|T"
-msgstr ""
+msgstr "Tabela...|T"
 
 #: src/ext_l10n.h:123
-#, fuzzy
 msgid "Emphasize Style|E"
-msgstr "Poudari "
+msgstr "Poudari slog|P"
 
 #: src/ext_l10n.h:124
 msgid "Noun Style|N"
-msgstr ""
+msgstr "Slog velikih èrk|v"
 
 #: src/ext_l10n.h:125
 msgid "Bold Style|B"
-msgstr ""
+msgstr "Polkrepki slog|k"
 
 #: src/ext_l10n.h:126
 msgid "TeX Style|X"
-msgstr ""
+msgstr "Slog TeXa|X"
 
 #: src/ext_l10n.h:127
-#, fuzzy
 msgid "Change Environment Depth|v"
-msgstr "Spremeni globino okolja"
+msgstr "Spremeni globino okolja|g"
 
 #: src/ext_l10n.h:128
-#, fuzzy
 msgid "LaTeX Preamble...|L"
-msgstr "Vzglavje LaTeXa"
+msgstr "Vzglavje LaTeXa...|L"
 
 #: src/ext_l10n.h:129
-#, fuzzy
 msgid "Toggle Appendix|A"
-msgstr "Odprt vstavek"
+msgstr "Spremeni dodatek|d"
 
 #: src/ext_l10n.h:130
-#, fuzzy
 msgid "Save Layout as Default|S"
-msgstr "Nastavi naèrt papirja"
+msgstr "Shrani videz kot privzet|S"
 
 #: src/ext_l10n.h:131
-#, fuzzy
 msgid "Build Program|B"
-msgstr "Zgradi program"
+msgstr "Zgradi program|Z"
 
 #: src/ext_l10n.h:132
-#, fuzzy
 msgid "Update|U"
-msgstr "Osve¾i|#U"
+msgstr "Osve¾i|O"
 
 #: src/ext_l10n.h:133
-#, fuzzy
 msgid "LaTeX Logfile|L"
-msgstr "Dnevnik LaTeXa"
+msgstr "Dnevnik LaTeXa|L"
 
 #: src/ext_l10n.h:134
-#, fuzzy
 msgid "Table of Contents|T"
-msgstr "Vsebinsko kazalo"
+msgstr "Vsebinsko kazalo|V"
 
 #: src/ext_l10n.h:135
-#, fuzzy
 msgid "Error|E"
-msgstr "Napaka"
+msgstr "Napaka|N"
 
 #: src/ext_l10n.h:136
-#, fuzzy
 msgid "Note|N"
-msgstr "drugo..."
+msgstr "Opomba|O"
 
 #: src/ext_l10n.h:137
 msgid "Introduction|I"
-msgstr ""
+msgstr "Uvod|U"
 
 #: src/ext_l10n.h:138
 msgid "Tutorial|T"
-msgstr ""
+msgstr "Uèbenik|b"
 
 #: src/ext_l10n.h:139
-#, fuzzy
 msgid "User's Guide|U"
-msgstr "Uporabi vkljuèitev|#U"
+msgstr "Uporabni¹ki vodnik|v"
 
 #: src/ext_l10n.h:140
 msgid "Extended Features|E"
-msgstr ""
+msgstr "Dodatne lastnosti|l"
 
 #: src/ext_l10n.h:141
-#, fuzzy
 msgid "Customization|C"
-msgstr "Citat"
+msgstr "Prilagoditev|P"
 
 #: src/ext_l10n.h:142
 msgid "Reference Manual|R"
-msgstr ""
+msgstr "Referenèni priroènik|R"
 
 #: src/ext_l10n.h:143
 msgid "FAQ|F"
-msgstr ""
+msgstr "Pogosta vpra¹anja|v"
 
 #: src/ext_l10n.h:144
-#, fuzzy
 msgid "Table of Contents|a"
-msgstr "Vsebinsko kazalo"
+msgstr "Vsebinsko kazalo|k"
 
 #: src/ext_l10n.h:145
 msgid "Known Bugs|K"
-msgstr ""
+msgstr "Znani hro¹èi|h"
 
 #: src/ext_l10n.h:146
 msgid "LaTeX Configuration|L"
-msgstr ""
+msgstr "Prikrojitev LaTeXa|L"
 
 #: src/ext_l10n.h:147
-#, fuzzy
 msgid "Copyright and Warranty...|o"
-msgstr "Pravice raz¹irjanja in jamstvo"
+msgstr "Pravice raz¹irjanja in jamstvo...|j"
 
 #: src/ext_l10n.h:148
-#, fuzzy
 msgid "Credits...|d"
-msgstr "Zasluge"
+msgstr "Zasluge...|Z"
 
 #: src/ext_l10n.h:149
 msgid "Version...|V"
-msgstr ""
+msgstr "Razlièica...|i"
 
 #: src/ext_l10n.h:150
 msgid "A&A"
-msgstr ""
+msgstr "A&A"
 
 #: src/ext_l10n.h:151
 msgid "Abstract"
-msgstr ""
+msgstr "Povzetek"
 
 #: src/ext_l10n.h:152
 msgid "Accepted"
-msgstr ""
+msgstr "Sprejeto"
 
 #: src/ext_l10n.h:153
 msgid "Acknowledgement"
-msgstr ""
+msgstr "Priznanje"
 
 #: src/ext_l10n.h:154
 msgid "Acknowledgement*"
-msgstr ""
+msgstr "Priznanje*"
 
 #: src/ext_l10n.h:155
 msgid "Acknowledgement-numbered"
-msgstr ""
+msgstr "Priznanje-¹tevilèeno"
 
 #: src/ext_l10n.h:156
 msgid "Acknowledgements"
-msgstr ""
+msgstr "Priznanja"
 
 #: src/ext_l10n.h:157
 msgid "Acknowledgement(s)"
-msgstr ""
+msgstr "Priznanje/a"
 
 #: src/ext_l10n.h:158
 msgid "Acknowledgement-unnumbered"
-msgstr ""
+msgstr "Priznanja-ne¹tevilèena"
 
 #: src/ext_l10n.h:159
 msgid "Acknowledgments"
-msgstr ""
+msgstr "Priznanja"
 
 #: src/ext_l10n.h:160
-#, fuzzy
 msgid "Acnowledgement"
-msgstr "Poravnava"
+msgstr "Priznanje"
 
 #: src/ext_l10n.h:161
 msgid "ACT"
-msgstr ""
+msgstr "ACT"
 
 #: src/ext_l10n.h:162
 msgid "Addchap"
-msgstr ""
+msgstr "Dodajpogl"
 
 #: src/ext_l10n.h:163
 msgid "Addchap*"
-msgstr ""
+msgstr "Dodajpogl*"
 
 #: src/ext_l10n.h:164
-#, fuzzy
 msgid "Addition"
-msgstr "Citat"
+msgstr "Se¹tevanje"
 
 #: src/ext_l10n.h:165
 msgid "Address"
-msgstr ""
+msgstr "Naslov"
 
 #: src/ext_l10n.h:166
 msgid "Addsec"
-msgstr ""
+msgstr "Dodajrazd"
 
 #: src/ext_l10n.h:167
 msgid "Addsec*"
-msgstr ""
+msgstr "Dodajrazd*"
 
 #: src/ext_l10n.h:168
-#, fuzzy
 msgid "Adresse"
-msgstr "zmanj¹aj"
+msgstr "Naslovnik"
 
 #: src/ext_l10n.h:169
 msgid "Affil"
 msgstr ""
 
 #: src/ext_l10n.h:170
-#, fuzzy
 msgid "Affiliation"
-msgstr "Citat"
+msgstr ""
 
 #: src/ext_l10n.h:171
-#, fuzzy
 msgid "Algorithm"
-msgstr "Seznam algoritmov"
+msgstr "Algoritem"
 
 #: src/ext_l10n.h:172
 msgid "Algorithm-numbered"
-msgstr ""
+msgstr "Algoritem-¹tevilèen"
 
 #: src/ext_l10n.h:173
 msgid "Algorithm-plain"
-msgstr ""
+msgstr "Algoritem-navaden"
 
 #: src/ext_l10n.h:174
 msgid "AMS"
-msgstr ""
+msgstr "AMS"
 
 #: src/ext_l10n.h:175
 msgid "And"
-msgstr ""
+msgstr "in"
 
 #: src/ext_l10n.h:176
-#, fuzzy
 msgid "Anlagen"
-msgstr "velike"
+msgstr ""
 
 #: src/ext_l10n.h:177
-#, fuzzy
 msgid "Anrede"
-msgstr "Rdeèa"
+msgstr ""
 
 #: src/ext_l10n.h:178
-#, fuzzy
 msgid "Appendices"
-msgstr "Odprt vstavek"
+msgstr "Dodatki"
 
 #: src/ext_l10n.h:179
-#, fuzzy
 msgid "Appendix"
-msgstr "Odprt vstavek"
+msgstr "Dodatek"
 
 #: src/ext_l10n.h:180
 msgid "AT_RISE:"
-msgstr ""
+msgstr "AT_RISE:"
 
 #: src/ext_l10n.h:181
 msgid "Author"
-msgstr ""
+msgstr "Avtor"
 
 #: src/ext_l10n.h:182
 msgid "Author_Email"
-msgstr ""
+msgstr "Epo¹ta_avtorja"
 
 #: src/ext_l10n.h:183
 msgid "AuthorRunning"
@@ -1403,50 +1345,47 @@ msgstr ""
 
 #: src/ext_l10n.h:185
 msgid "Author_URL"
-msgstr ""
+msgstr "URL_avtorja"
 
 #: src/ext_l10n.h:186
 msgid "Axiom"
-msgstr ""
+msgstr "Aksiom"
 
 #: src/ext_l10n.h:187
-#, fuzzy
 msgid "Axiom-numbered"
-msgstr "Brez ¹tevilke"
+msgstr "Aksiom-¹tevilèen"
 
 #: src/ext_l10n.h:188
 msgid "Axiom-plain"
-msgstr ""
+msgstr "Aksiom-navaden"
 
 #: src/ext_l10n.h:189
 msgid "Backaddress"
-msgstr ""
+msgstr "Povratninaslov"
 
 #: src/ext_l10n.h:190
 msgid "Bank"
-msgstr ""
+msgstr "Banka"
 
 #: src/ext_l10n.h:191
 msgid "BankAccount"
-msgstr ""
+msgstr "BanèniRaèun"
 
 #: src/ext_l10n.h:192
 msgid "BankCode"
-msgstr ""
+msgstr "BanènaKoda"
 
 #: src/ext_l10n.h:193
 msgid "Betreff"
 msgstr ""
 
 #: src/ext_l10n.h:194
-#, fuzzy
 msgid "Bibliography"
-msgstr "Postavka literature"
+msgstr "Literatura"
 
 #: src/ext_l10n.h:195
-#, fuzzy
 msgid "Biography"
-msgstr "Postavka literature"
+msgstr "Biografija"
 
 #: src/ext_l10n.h:196
 msgid "BLZ"
@@ -1457,354 +1396,324 @@ msgid "Brieftext"
 msgstr ""
 
 #: src/ext_l10n.h:198
-#, fuzzy
 msgid "Caption"
-msgstr "Pojasnilo|#k"
+msgstr "Pojasnilo"
 
 #: src/ext_l10n.h:199
-#, fuzzy
 msgid "Case"
-msgstr "Prilepi"
+msgstr "Primer"
 
 #: src/ext_l10n.h:200
 msgid "Case-numbered"
-msgstr ""
+msgstr "Primer-¹tevilèen"
 
 #: src/ext_l10n.h:201
 msgid "cc"
-msgstr ""
+msgstr "cc"
 
 #: src/ext_l10n.h:202
 msgid "CC"
-msgstr ""
+msgstr "CC"
 
 #: src/ext_l10n.h:203
-#, fuzzy
 msgid "CenteredCaption"
-msgstr "Usmeritev"
+msgstr "SredinjenoPojasnilo"
 
 #: src/ext_l10n.h:204
 msgid "Chapter"
-msgstr ""
+msgstr "Poglavje"
 
 #: src/ext_l10n.h:205
 msgid "Chapter*"
-msgstr ""
+msgstr "Poglavje*"
 
 #: src/ext_l10n.h:206
 msgid "Chapter_Exercises"
-msgstr ""
+msgstr "Poglavje_Vaje"
 
 #: src/ext_l10n.h:207
-#, fuzzy
 msgid "Citta"
-msgstr "Citat"
+msgstr ""
 
 #: src/ext_l10n.h:208
 msgid "Claim"
-msgstr ""
+msgstr "Trditev"
 
 #: src/ext_l10n.h:209
 msgid "Claim*"
-msgstr ""
+msgstr "Trditev*"
 
 #: src/ext_l10n.h:210
 msgid "Claim-numbered"
-msgstr ""
+msgstr "Trditev-¹tevilèena"
 
 #: src/ext_l10n.h:211
 msgid "Claim-plain"
-msgstr ""
+msgstr "Trditev-navadna"
 
 #: src/ext_l10n.h:212
 msgid "Claim-unnumbered"
-msgstr ""
+msgstr "Trditev-ne¹tevilèena"
 
 #: src/ext_l10n.h:213
-#, fuzzy
 msgid "Closing"
-msgstr "Zapri"
+msgstr "Zakljuèek"
 
 #: src/ext_l10n.h:214
-#, fuzzy
 msgid "Code"
-msgstr "Zapri"
+msgstr "Koda"
 
 #: src/ext_l10n.h:215
-#, fuzzy
 msgid "Comment"
-msgstr "Komentar:"
+msgstr "Komentar"
 
 #: src/ext_l10n.h:216
-#, fuzzy
 msgid "Conclusion"
-msgstr "Stolpec"
+msgstr "Sklep"
 
 #: src/ext_l10n.h:217
 msgid "Conclusion*"
-msgstr ""
+msgstr "Sklep*"
 
 #: src/ext_l10n.h:218
 msgid "Conclusion-numbered"
-msgstr ""
+msgstr "Sklep-¹tevilèen"
 
 #: src/ext_l10n.h:219
 msgid "Conclusion-unnumbered"
-msgstr ""
+msgstr "Sklep-ne¹tevilèen"
 
 #: src/ext_l10n.h:220
-#, fuzzy
 msgid "Condition"
-msgstr "Citat"
+msgstr "Pogoj"
 
 #: src/ext_l10n.h:221
 msgid "Condition-numbered"
-msgstr ""
+msgstr "Pogoj-¹tevilèen"
 
 #: src/ext_l10n.h:222
 msgid "Condition-plain"
-msgstr ""
+msgstr "Pogoj-navaden"
 
 #: src/ext_l10n.h:223
 msgid "Conjecture"
-msgstr ""
+msgstr "Domneva"
 
 #: src/ext_l10n.h:224
 msgid "Conjecture*"
-msgstr ""
+msgstr "Domneva*"
 
 #: src/ext_l10n.h:225
 msgid "Conjecture-numbered"
-msgstr ""
+msgstr "Domneva-¹tevilèena"
 
 #: src/ext_l10n.h:226
 msgid "Conjecture-plain"
-msgstr ""
+msgstr "Domneva-navadna"
 
 #: src/ext_l10n.h:227
 msgid "Conjecture-unnumbered"
-msgstr ""
+msgstr "Domneva-ne¹tevilèena"
 
 #: src/ext_l10n.h:228
-#, fuzzy
 msgid "CopNum"
-msgstr "Stolpec"
+msgstr ""
 
 #: src/ext_l10n.h:229
-#, fuzzy
 msgid "Copyright"
-msgstr "pokonèna"
+msgstr "Copyright"
 
 #: src/ext_l10n.h:230
 msgid "Corollary"
-msgstr ""
+msgstr "Korolar"
 
 #: src/ext_l10n.h:231
 msgid "Corollary*"
-msgstr ""
+msgstr "Korolar*"
 
 #: src/ext_l10n.h:232
 msgid "Corollary-numbered"
-msgstr ""
+msgstr "Korolar-¹tevilèen"
 
 #: src/ext_l10n.h:233
 msgid "Corollary-plain"
-msgstr ""
+msgstr "Korolar-navaden"
 
 #: src/ext_l10n.h:234
 msgid "Corollary-unnumbered"
-msgstr ""
+msgstr "Korolar-ne¹tevilèen"
 
 #: src/ext_l10n.h:235
 msgid "Correspondence"
-msgstr ""
+msgstr "Korespondenca"
 
 #: src/ext_l10n.h:236
-#, fuzzy
 msgid "Criterion"
-msgstr "Citat"
+msgstr "Kriterij"
 
 #: src/ext_l10n.h:237
 msgid "Criterion-numbered"
-msgstr ""
+msgstr "Kriterij-¹tevilèen"
 
 #: src/ext_l10n.h:238
 msgid "Criterion-plain"
-msgstr ""
+msgstr "Kriterij-navaden"
 
 #: src/ext_l10n.h:239
 msgid "CrossList"
-msgstr ""
+msgstr "Navzkri¾enSeznam"
 
 #: src/ext_l10n.h:240
-#, fuzzy
 msgid "Current"
-msgstr "©tevec:"
+msgstr "Trenutno"
 
 #: src/ext_l10n.h:241
 msgid "Current_Address"
-msgstr ""
+msgstr "Trenutni_naslov"
 
 #: src/ext_l10n.h:242
 msgid "CURTAIN"
-msgstr ""
+msgstr "ZAVESA"
 
 #: src/ext_l10n.h:243
-#, fuzzy
 msgid "Customer"
-msgstr "Uporabni¹ka velikost papirja"
+msgstr "Kupec"
 
 #: src/ext_l10n.h:244
-#, fuzzy
 msgid "Data"
-msgstr "Zbirka podatkov:"
+msgstr "Podatki"
 
 #: src/ext_l10n.h:245
-#, fuzzy
 msgid "Date"
-msgstr "Prilepi"
+msgstr "Datum"
 
 #: src/ext_l10n.h:246
 msgid "Datum"
-msgstr ""
+msgstr "Datum"
 
 #: src/ext_l10n.h:247
-#, fuzzy
 msgid "Dedication"
-msgstr "Okrasek"
+msgstr "Posvetilo"
 
 #: src/ext_l10n.h:248
-#, fuzzy
 msgid "Dedicatory"
-msgstr "Slovar"
+msgstr "Posveèeno"
 
 #: src/ext_l10n.h:249
-#, fuzzy
 msgid "Definition"
-msgstr "Cilj:"
+msgstr "Definicija"
 
 #: src/ext_l10n.h:250
-#, fuzzy
 msgid "Definition*"
-msgstr "Cilj:"
+msgstr "Definicija"
 
 #: src/ext_l10n.h:251
-#, fuzzy
 msgid "Definition-numbered"
-msgstr "Globina ¹tevilk razdelkov"
+msgstr "Definicija-¹tevilèena"
 
 #: src/ext_l10n.h:252
 msgid "Definition-plain"
-msgstr ""
+msgstr "Definicija-navadna"
 
 #: src/ext_l10n.h:253
 msgid "Definition-unnumbered"
-msgstr ""
+msgstr "Definicija-ne¹tevilèena"
 
 #: src/ext_l10n.h:254
-#, fuzzy
 msgid "Description"
-msgstr "Okrasek"
+msgstr "Opis"
 
 #: src/ext_l10n.h:255
 msgid "Dialogue"
-msgstr ""
+msgstr "Pogovor"
 
 #: src/ext_l10n.h:256
-#, fuzzy
 msgid "Email"
-msgstr "majhna"
+msgstr "Enaslov"
 
 #: src/ext_l10n.h:257
 msgid "EMail"
-msgstr ""
+msgstr "E-naslov"
 
 #: src/ext_l10n.h:258
-#, fuzzy
 msgid "encl"
-msgstr "Preklièi"
+msgstr "encl"
 
 #: src/ext_l10n.h:259
-#, fuzzy
 msgid "Encl"
-msgstr "Preklièi"
+msgstr "Encl"
 
 #: src/ext_l10n.h:260
 msgid "Encl."
-msgstr ""
+msgstr "Encl."
 
 #: src/ext_l10n.h:261
 msgid "End_All_Slides"
-msgstr ""
+msgstr "Konec_vseh_prosojnic"
 
 #: src/ext_l10n.h:262
 msgid "Enumerate"
-msgstr ""
+msgstr "O¹tevilèi"
 
 #: src/ext_l10n.h:263
-#, fuzzy
 msgid "Example"
-msgstr "Zgledi"
+msgstr "Zgled"
 
 #: src/ext_l10n.h:264
-#, fuzzy
 msgid "Example*"
-msgstr "Zgledi"
+msgstr "Zgled*"
 
 #: src/ext_l10n.h:265
 msgid "Example-numbered"
-msgstr ""
+msgstr "Zgled-¹tevilèen"
 
 #: src/ext_l10n.h:266
-#, fuzzy
 msgid "Example-plain"
-msgstr "Zgledi"
+msgstr "Zgled-navaden"
 
 #: src/ext_l10n.h:267
 msgid "Example-unnumbered"
-msgstr ""
+msgstr "Zgled-ne¹tevilèen"
 
 #: src/ext_l10n.h:268
 msgid "Exercise"
-msgstr ""
+msgstr "Vaja"
 
 #: src/ext_l10n.h:269
 msgid "Exercise-numbered"
-msgstr ""
+msgstr "Vaja-¹tevilèena"
 
 #: src/ext_l10n.h:270
 msgid "Exercise-plain"
-msgstr ""
+msgstr "Vaja-navadna"
 
 #: src/ext_l10n.h:271
 msgid "EXT."
-msgstr ""
+msgstr "EXT."
 
 #: src/ext_l10n.h:272
-#, fuzzy
 msgid "Extratitle"
-msgstr "Dodatne izbire"
+msgstr "DodatniNaslov"
 
 #: src/ext_l10n.h:273
-#, fuzzy
 msgid "Fact"
-msgstr "Nadrejeni:"
+msgstr "Dejstvo"
 
 #: src/ext_l10n.h:274
 msgid "Fact*"
-msgstr ""
+msgstr "Dejstvo*"
 
 #: src/ext_l10n.h:275
 msgid "Fact-numbered"
-msgstr ""
+msgstr "Dejstvo-¹tevilèeno"
 
 #: src/ext_l10n.h:276
 msgid "Fact-plain"
-msgstr ""
+msgstr "Dejstvo-navadno"
 
 #: src/ext_l10n.h:277
 msgid "Fact-unnumbered"
-msgstr ""
+msgstr "Dejstvo-ne¹tevilèeno"
 
 #: src/ext_l10n.h:278
 msgid "FADE_IN:"
@@ -1815,46 +1724,40 @@ msgid "FADE_OUT:"
 msgstr ""
 
 #: src/ext_l10n.h:280
-#, fuzzy
 msgid "FigCaption"
-msgstr "Pojasnilo|#k"
+msgstr "PojasniloSlike"
 
 #: src/ext_l10n.h:281
-#, fuzzy
 msgid "first"
-msgstr "Vstavi"
+msgstr "prvi"
 
 #: src/ext_l10n.h:282
 msgid "FirstAuthor"
-msgstr ""
+msgstr "PrviAvtor"
 
 #: src/ext_l10n.h:283
-#, fuzzy
 msgid "FirstName"
-msgstr "Prva glava"
+msgstr "PrvoIme"
 
 #: src/ext_l10n.h:284
 msgid "FitBitmap"
-msgstr ""
+msgstr "PrilagodiBitnoSliko"
 
 #: src/ext_l10n.h:285
-#, fuzzy
 msgid "FitFigure"
-msgstr "Slika"
+msgstr "PrilagodiSliko"
 
 #: src/ext_l10n.h:286
 msgid "foilhead"
-msgstr ""
+msgstr "glavaProsojnice"
 
 #: src/ext_l10n.h:287
-#, fuzzy
 msgid "Foilhead"
-msgstr "Datoteka"
+msgstr "GlavaProsojnice"
 
 #: src/ext_l10n.h:288
-#, fuzzy
 msgid "Footernote"
-msgstr "Vstavi opombo pod èrto"
+msgstr "OpombaPodÈrto"
 
 #: src/ext_l10n.h:289
 msgid "FourAffiliations"
@@ -1862,25 +1765,23 @@ msgstr ""
 
 #: src/ext_l10n.h:290
 msgid "FourAuthors"
-msgstr ""
+msgstr "©tirjeAvtorji"
 
 #: src/ext_l10n.h:291
 msgid "Gruss"
 msgstr ""
 
 #: src/ext_l10n.h:292
-#, fuzzy
 msgid "Headnote"
-msgstr "Glava"
+msgstr ""
 
 #: src/ext_l10n.h:293
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 #: src/ext_l10n.h:294
-#, fuzzy
 msgid "Idea"
-msgstr "Stvarno kazalo"
+msgstr "Zamisel"
 
 #: src/ext_l10n.h:295
 msgid "IhrSchreiben"
@@ -1891,124 +1792,108 @@ msgid "IhrZeichen"
 msgstr ""
 
 #: src/ext_l10n.h:297
-#, fuzzy
 msgid "Institute"
-msgstr "Vstavi narekovaj"
+msgstr "In¹titut"
 
 #: src/ext_l10n.h:298
-#, fuzzy
 msgid "Institution"
-msgstr "Vnesi citat"
+msgstr "Ustanova"
 
 #: src/ext_l10n.h:299
 msgid "INT."
-msgstr ""
+msgstr "INT."
 
 #: src/ext_l10n.h:300
 msgid "InvisibleText"
-msgstr ""
+msgstr "NevidnoBesedilo"
 
 #: src/ext_l10n.h:301
-#, fuzzy
 msgid "Invoice"
-msgstr "Prezri"
+msgstr "Faktura"
 
 #: src/ext_l10n.h:302
 msgid "Itemize"
-msgstr ""
+msgstr "Alineje"
 
 #: src/ext_l10n.h:303
-#, fuzzy
 msgid "journal"
-msgstr "navadna"
+msgstr "revija"
 
 #: src/ext_l10n.h:304 src/frontends/gnome/FormCitation.C:531
-#, fuzzy
 msgid "Journal"
-msgstr "navadna"
+msgstr "Revija"
 
 #: src/ext_l10n.h:305
-#, fuzzy
 msgid "Keywords"
-msgstr "Kljuèna beseda:|#K"
+msgstr "Kljuène besede"
 
 #: src/ext_l10n.h:306
 msgid "Konto"
-msgstr ""
+msgstr "Raèun"
 
 #: src/ext_l10n.h:307
-#, fuzzy
 msgid "Labeling"
-msgstr "Tabela vstavljena"
+msgstr "Oznaèevanje"
 
 #: src/ext_l10n.h:308
 msgid "Land"
-msgstr ""
+msgstr "De¾ela"
 
 #: src/ext_l10n.h:309 src/frontends/xforms/form_preferences.C:920
-#, fuzzy
 msgid "landscape"
-msgstr "Preèno|#L"
+msgstr "preèno"
 
 #: src/ext_l10n.h:310
-#, fuzzy
 msgid "LandscapeSlide"
-msgstr "Preèno|#L"
+msgstr "PreènaProsojnica"
 
 #: src/ext_l10n.h:311
-#, fuzzy
 msgid "LaTeX"
-msgstr "LaTeX|#L"
+msgstr "LaTeX"
 
 #: src/ext_l10n.h:312
-#, fuzzy
 msgid "LaTeX_Title"
-msgstr "Datoteka za LaTeX "
+msgstr "Naslov_za_LaTeX "
 
 #: src/ext_l10n.h:313
 msgid "Lemma"
-msgstr ""
+msgstr "Lema"
 
 #: src/ext_l10n.h:314
 msgid "Lemma*"
-msgstr ""
+msgstr "Lema*"
 
 #: src/ext_l10n.h:315
 msgid "Lemma-numbered"
-msgstr ""
+msgstr "Lema-¹tevilèena"
 
 #: src/ext_l10n.h:316
 msgid "Lemma-plain"
-msgstr ""
+msgstr "Lema-navadna"
 
 #: src/ext_l10n.h:317
-#, fuzzy
 msgid "Lemma-unnumbered"
-msgstr "Tek LaTeXa ¹tevilka "
+msgstr "Lema-ne¹tevilèena"
 
 #: src/ext_l10n.h:318
-#, fuzzy
 msgid "Letter"
-msgstr "Levo|#e"
+msgstr "Pismo"
 
 #: src/ext_l10n.h:319
-#, fuzzy
 msgid "List"
-msgstr "Èrte"
+msgstr "Seznam"
 
 #: src/ext_l10n.h:320
-#, fuzzy
 msgid "ListOfSlides"
-msgstr "Seznam tabel"
+msgstr "SeznamProsojnic"
 
 #: src/ext_l10n.h:321
 msgid "Literal"
-msgstr ""
+msgstr "Dobesedno"
 
 #: src/ext_l10n.h:322
-#, fuzzy
 msgid "Location"
-msgstr "Zasuk"
+msgstr "Lokacija"
 
 #: src/ext_l10n.h:323
 msgid "Lowertitleback"
@@ -2016,77 +1901,67 @@ msgstr ""
 
 #: src/ext_l10n.h:324
 msgid "Lyx-Code"
-msgstr ""
+msgstr "Koda-Lyxa"
 
 #: src/ext_l10n.h:325
 msgid "LyX-Code"
-msgstr ""
+msgstr "Koda-LyXa"
 
 #: src/ext_l10n.h:326
-#, fuzzy
 msgid "Mail"
-msgstr "Matrika"
+msgstr "Po¹ta"
 
 #: src/ext_l10n.h:327
-#, fuzzy
 msgid "MarkBoth"
-msgstr "Znak vkljuèen"
+msgstr "OznaèiOboje"
 
 #: src/ext_l10n.h:328
 msgid "MathLetters"
-msgstr ""
+msgstr "MatematièneÈrke"
 
 #: src/ext_l10n.h:329
-#, fuzzy
 msgid "MeinZeichen"
-msgstr "palcev|#p"
+msgstr "MojiZnaki"
 
 #: src/ext_l10n.h:330
-#, fuzzy
 msgid "Minisec"
-msgstr "Razno"
+msgstr "Minirazd"
 
 #: src/ext_l10n.h:331
-#, fuzzy
 msgid "modying"
-msgstr "Uvoz%m"
+msgstr ""
 
 #: src/ext_l10n.h:332
-#, fuzzy
 msgid "msnumber"
-msgstr "©tevilka"
+msgstr ""
 
 #: src/ext_l10n.h:333
 msgid "My_Address"
-msgstr ""
+msgstr "Moj_naslov"
 
 #: src/ext_l10n.h:334
 msgid "Myref"
-msgstr ""
+msgstr "Moja_ref"
 
 #: src/ext_l10n.h:335
-#, fuzzy
 msgid "MyRef"
-msgstr "Ref: "
+msgstr "MojaRef:"
 
 #: src/ext_l10n.h:336 src/frontends/gnome/FormUrl.C:119
 msgid "Name"
 msgstr "Ime"
 
 #: src/ext_l10n.h:337
-#, fuzzy
 msgid "Narrative"
-msgstr "Negativno|#N"
+msgstr "Narativno"
 
 #: src/ext_l10n.h:338
-#, fuzzy
 msgid "Notation"
-msgstr "Zasuk"
+msgstr "Zapis"
 
 #: src/ext_l10n.h:339
-#, fuzzy
 msgid "Notation-numbered"
-msgstr "Brez ¹tevilke"
+msgstr "Zapis-¹tevilèen"
 
 #: src/ext_l10n.h:340 src/insets/insetinfo.C:77 src/insets/insetinfo.C:102
 #: src/insets/insetinfo.C:231
@@ -2094,166 +1969,144 @@ msgid "Note"
 msgstr "Opomba"
 
 #: src/ext_l10n.h:341
-#, fuzzy
 msgid "Note*"
-msgstr "Opomba"
+msgstr "Opomba*"
 
 #: src/ext_l10n.h:342
-#, fuzzy
 msgid "Note-numbered"
-msgstr "Brez ¹tevilke"
+msgstr "Opomba-¹tevilèena"
 
 #: src/ext_l10n.h:343
 msgid "Note-plain"
-msgstr ""
+msgstr "Opomba-navadna"
 
 #: src/ext_l10n.h:344
 msgid "Notetoeditor"
-msgstr ""
+msgstr "Opombauredniku"
 
 #: src/ext_l10n.h:345
 msgid "NoteToEditor"
-msgstr ""
+msgstr "OpombaUredniku"
 
 #: src/ext_l10n.h:346
-#, fuzzy
 msgid "Note-unnumbered"
-msgstr "Brez ¹tevilke"
+msgstr "Opomba-ne¹tevilèena"
 
 #: src/ext_l10n.h:347
-#, fuzzy
 msgid "Offprint"
-msgstr "Tiskaj"
+msgstr ""
 
 #: src/ext_l10n.h:348
-#, fuzzy
 msgid "Offprints"
-msgstr "Izbire"
+msgstr ""
 
 #: src/ext_l10n.h:349
 msgid "offsets"
 msgstr ""
 
 #: src/ext_l10n.h:350
-#, fuzzy
 msgid "Offsets"
-msgstr "izkljuèeno"
+msgstr ""
 
 #: src/ext_l10n.h:351
 msgid "Oggetto"
 msgstr ""
 
 #: src/ext_l10n.h:352
-#, fuzzy
 msgid "Opening"
-msgstr "Odpri"
+msgstr "Uvod"
 
 #: src/ext_l10n.h:353
-#, fuzzy
 msgid "Ort"
-msgstr "Vstavi"
+msgstr "Kraj"
 
 #: src/ext_l10n.h:354
 msgid "Overlay"
-msgstr ""
+msgstr "Prekrivanje"
 
 #: src/ext_l10n.h:355
 msgid "PACS"
 msgstr ""
 
 #: src/ext_l10n.h:356
-#, fuzzy
 msgid "Paragraph"
-msgstr "Nastavljen videz odstavka"
+msgstr "Odstavek"
 
 #: src/ext_l10n.h:357
-#, fuzzy
 msgid "Paragraph*"
-msgstr "Nastavljen videz odstavka"
+msgstr "Odstavek*"
 
 #: src/ext_l10n.h:358
-#, fuzzy
 msgid "Paragraph-numbered"
-msgstr "Okolje odstavka"
+msgstr "Odstavek-¹tevilèen"
 
 #: src/ext_l10n.h:359
-#, fuzzy
 msgid "Parenthetical"
-msgstr "Nadrejeni:"
+msgstr ""
 
 #: src/ext_l10n.h:360
-#, fuzzy
 msgid "Part"
-msgstr "Nadrejeni:"
+msgstr "Del"
 
 #: src/ext_l10n.h:361
-#, fuzzy
 msgid "Part*"
-msgstr "Nadrejeni:"
+msgstr "Del*"
 
 #: src/ext_l10n.h:362
-#, fuzzy
 msgid "Petit"
-msgstr "Tiskaj"
+msgstr "Petit"
 
 #: src/ext_l10n.h:363
-#, fuzzy
 msgid "Phone"
-msgstr "Telefonski imenik"
+msgstr "Telefon"
 
 #: src/ext_l10n.h:364
-#, fuzzy
 msgid "Place"
-msgstr "Zamenjaj"
+msgstr "Umesti"
 
 #: src/ext_l10n.h:365
-#, fuzzy
 msgid "Placefigure"
-msgstr "Vnovièno ukroji"
+msgstr "UmestiSliko"
 
 #: src/ext_l10n.h:366
-#, fuzzy
 msgid "PlaceFigure"
-msgstr "Slika"
+msgstr "UmestiSliko"
 
 #: src/ext_l10n.h:367
 msgid "Placetable"
-msgstr ""
+msgstr "Umestitabelo"
 
 #: src/ext_l10n.h:368
 msgid "PlaceTable"
-msgstr ""
+msgstr "UmestiTabelo"
 
 #: src/ext_l10n.h:369
-#, fuzzy
 msgid "PortraitSlide"
-msgstr "Pokonèno|#o"
+msgstr "PokonènaProsojnica"
 
 #: src/ext_l10n.h:370
 msgid "PostalCommend"
-msgstr ""
+msgstr "Po¹tniUkaz"
 
 #: src/ext_l10n.h:371
 msgid "Postvermerk"
 msgstr ""
 
 #: src/ext_l10n.h:372
-#, fuzzy
 msgid "Preprint"
-msgstr "Tiskaj"
+msgstr ""
 
 #: src/ext_l10n.h:373
-#, fuzzy
 msgid "Problem"
-msgstr "Dvojni"
+msgstr "Problem"
 
 #: src/ext_l10n.h:374
 msgid "Problem-numbered"
-msgstr ""
+msgstr "Problem-¹tevilèen"
 
 #: src/ext_l10n.h:375
 msgid "Problem-plain"
-msgstr ""
+msgstr "Problem-navaden"
 
 #: src/ext_l10n.h:376
 msgid "ProgressContents"
@@ -2261,116 +2114,108 @@ msgstr ""
 
 #: src/ext_l10n.h:377
 msgid "Proof"
-msgstr ""
+msgstr "Dokaz"
 
 #: src/ext_l10n.h:378
 msgid "Property"
-msgstr ""
+msgstr "Lastnost"
 
 #: src/ext_l10n.h:379
 msgid "Proposition"
-msgstr ""
+msgstr "Podmena"
 
 #: src/ext_l10n.h:380
 msgid "Proposition*"
-msgstr ""
+msgstr "Podmena*"
 
 #: src/ext_l10n.h:381
 msgid "Proposition-numbered"
-msgstr ""
+msgstr "Podmena-¹tevilèena"
 
 #: src/ext_l10n.h:382
 msgid "Proposition-plain"
-msgstr ""
+msgstr "Podmena-navadna"
 
 #: src/ext_l10n.h:383
 msgid "Proposition-unnumbered"
-msgstr ""
+msgstr "Podmena-ne¹tevilèena"
 
 #: src/ext_l10n.h:384
 msgid "ps"
-msgstr ""
+msgstr "ps"
 
 #: src/ext_l10n.h:385
 msgid "PS"
-msgstr ""
+msgstr "PS"
 
 #: src/ext_l10n.h:386
 msgid "Publishers"
-msgstr ""
+msgstr "Zalo¾niki"
 
 #: src/ext_l10n.h:387
-#, fuzzy
 msgid "Question"
-msgstr "Cilj:"
+msgstr "Vpra¹anje"
 
 #: src/ext_l10n.h:388
-#, fuzzy
 msgid "Quotation"
-msgstr "Zasuk"
+msgstr "Navedek"
 
 #: src/ext_l10n.h:389
-#, fuzzy
 msgid "Quote"
-msgstr "Narekovaji"
+msgstr "Narekovaj"
 
 #: src/ext_l10n.h:390
 msgid "Received"
-msgstr ""
+msgstr "Prejeto"
 
 #: src/ext_l10n.h:391
 msgid "Recieved"
-msgstr ""
+msgstr "Prejeto"
 
 #: src/ext_l10n.h:392
 msgid "Recieved/Accepted"
-msgstr ""
+msgstr "Prejeto/sprejeto"
 
 #: src/ext_l10n.h:393 src/frontends/kde/refdlg.C:62
 #: src/frontends/xforms/FormRef.C:36
-#, fuzzy
 msgid "Reference"
-msgstr "Vstavi referenco"
+msgstr "Sklic"
 
 #: src/ext_l10n.h:394
-#, fuzzy
 msgid "References"
-msgstr "Vstavi referenco"
+msgstr "Sklici"
 
 #: src/ext_l10n.h:395
-#, fuzzy
 msgid "Remark"
-msgstr "Opomba:|#O"
+msgstr "Pripomba"
 
 #: src/ext_l10n.h:396
-#, fuzzy
 msgid "Remark*"
-msgstr "Opomba:|#O"
+msgstr "Pripomba*"
 
 #: src/ext_l10n.h:397
 msgid "Remark-numbered"
-msgstr ""
+msgstr "Pripomba-¹tevilèena"
 
 #: src/ext_l10n.h:398
 msgid "Remark-plain"
-msgstr ""
+msgstr "Pripomba-navadna"
 
 #: src/ext_l10n.h:399
-#, fuzzy
 msgid "Remarks"
-msgstr "Opomba:|#O"
+msgstr "Pripombe"
 
 #: src/ext_l10n.h:400
 msgid "Remark-unnumbered"
-msgstr ""
+msgstr "Pripombe-ne¹tevilèene"
 
 #: src/ext_l10n.h:401
 msgid "RetourAdresse"
-msgstr ""
+msgstr "PovratniNaslov"
 
 #: src/ext_l10n.h:402
 msgid "ReturnAddress"
-msgstr ""
+msgstr "PovratniNaslov"
 
 #: src/ext_l10n.h:403
 msgid "REVTEX_Title"
@@ -2378,20 +2223,19 @@ msgstr ""
 
 #: src/ext_l10n.h:404
 msgid "Right_Address"
-msgstr ""
+msgstr "Desni_naslov"
 
 #: src/ext_l10n.h:405
 msgid "RightHeader"
-msgstr ""
+msgstr "DesnaGlava"
 
 #: src/ext_l10n.h:406
 msgid "Rotatefoilhead"
-msgstr ""
+msgstr "Zavrtiglavoprosojnice"
 
 #: src/ext_l10n.h:407
-#, fuzzy
 msgid "Running_LaTeX_Title"
-msgstr "LaTeX se izvaja..."
+msgstr ""
 
 #: src/ext_l10n.h:408
 msgid "SCENE"
@@ -2406,278 +2250,248 @@ msgid "Scrap"
 msgstr ""
 
 #: src/ext_l10n.h:411
-#, fuzzy
 msgid "Section"
-msgstr "Okrasek"
+msgstr "Razdelek"
 
 #: src/ext_l10n.h:412
-#, fuzzy
 msgid "Section*"
-msgstr "Okrasek"
+msgstr "Razdelek*"
 
 #: src/ext_l10n.h:413
-#, fuzzy
 msgid "Section-numbered"
-msgstr "Globina ¹tevilk razdelkov"
+msgstr "Razdelek-¹tevilèen"
 
 #: src/ext_l10n.h:414
-#, fuzzy
 msgid "Send"
-msgstr "Drugotni"
+msgstr "Po¹lji"
 
 #: src/ext_l10n.h:415
 msgid "Send_To_Address"
-msgstr ""
+msgstr "Po¹lji_na_naslov"
 
 #: src/ext_l10n.h:416
-#, fuzzy
 msgid "Seriate"
-msgstr "Vstavi"
+msgstr ""
 
 #: src/ext_l10n.h:417
 msgid "SGML"
-msgstr ""
+msgstr "SGML"
 
 #: src/ext_l10n.h:418
 msgid "Shortfoilhead"
-msgstr ""
+msgstr "Kratkaglavaprosojnice"
 
 #: src/ext_l10n.h:419
 msgid "ShortFoilhead"
-msgstr ""
+msgstr "KratkaGlavaProsojnice"
 
 #: src/ext_l10n.h:420
 msgid "ShortRotatefoilhead"
-msgstr ""
+msgstr "KratkaVrtenaglavaprosojnice"
 
 #: src/ext_l10n.h:421
 msgid "ShortTitle"
-msgstr ""
+msgstr "KratekNaslov"
 
 #: src/ext_l10n.h:422
-#, fuzzy
 msgid "Signature"
-msgstr "Slika"
+msgstr "Podpis"
 
 #: src/ext_l10n.h:423
-#, fuzzy
 msgid "Slide"
-msgstr "Strani"
+msgstr "Prosojnica"
 
 #: src/ext_l10n.h:424
-#, fuzzy
 msgid "Slide*"
-msgstr "Strani"
+msgstr "Prosojnica*"
 
 #: src/ext_l10n.h:425
-#, fuzzy
 msgid "SlideContents"
-msgstr "Vsebinsko kazalo"
+msgstr "VsebinaProsojnice"
 
 #: src/ext_l10n.h:426
 msgid "SlideHeading"
-msgstr ""
+msgstr "GlavaProsojnice"
 
 #: src/ext_l10n.h:427
 msgid "SlideSubHeading"
-msgstr ""
+msgstr "PodGlavaProsojnice"
 
 #: src/ext_l10n.h:428
-#, fuzzy
 msgid "Solution"
-msgstr "Zasuk"
+msgstr "Re¹itev"
 
 #: src/ext_l10n.h:429
-#, fuzzy
 msgid "Speaker"
-msgstr "Èrkovalnik"
+msgstr "Govorec"
 
 #: src/ext_l10n.h:430
-#, fuzzy
 msgid "Specialmail"
-msgstr "Posebna celica"
+msgstr "Posebnopismo"
 
 #: src/ext_l10n.h:431
 msgid "Stadt"
-msgstr ""
+msgstr "Mesto"
 
 #: src/ext_l10n.h:432
-#, fuzzy
 msgid "Standard"
-msgstr "Standardno|#S"
+msgstr "Standardno"
 
 #: src/ext_l10n.h:433
-#, fuzzy
 msgid "State"
-msgstr "Shrani"
+msgstr "Dr¾ava"
 
 #: src/ext_l10n.h:434
 msgid "Strasse"
-msgstr ""
+msgstr "Cesta"
 
 #: src/ext_l10n.h:435
 msgid "Street"
-msgstr ""
+msgstr "Ulica"
 
 #: src/ext_l10n.h:436
-#, fuzzy
 msgid "style"
-msgstr "Slog:  "
+msgstr "slog"
 
 #: src/ext_l10n.h:437
-#, fuzzy
 msgid "Style"
-msgstr "Slog:  "
+msgstr "Slog"
 
 #: src/ext_l10n.h:438
-#, fuzzy
 msgid "Subitle"
-msgstr "Enojni"
+msgstr "Podnaslov"
 
 #: src/ext_l10n.h:439
 msgid "Subject"
-msgstr ""
+msgstr "Predmet"
 
 #: src/ext_l10n.h:440
 msgid "Subjectclass"
-msgstr ""
+msgstr "Razredpredmeta"
 
 #: src/ext_l10n.h:441
-#, fuzzy
 msgid "Subparagraph"
-msgstr "Izberi naslednji odstavek"
+msgstr "Pododstavek"
 
 #: src/ext_l10n.h:442
 msgid "Subparagraph*"
-msgstr ""
+msgstr "Pododstavek*"
 
 #: src/ext_l10n.h:443
-#, fuzzy
 msgid "Subsection"
-msgstr "Okrasek"
+msgstr "Podrazdelek"
 
 #: src/ext_l10n.h:444
-#, fuzzy
 msgid "Subsection*"
-msgstr "Okrasek"
+msgstr "Podrazdelek*"
 
 #: src/ext_l10n.h:445
-#, fuzzy
 msgid "Subsection-numbered"
-msgstr "Globina ¹tevilk razdelkov"
+msgstr "Podrazdelek-¹tevilèen"
 
 #: src/ext_l10n.h:446
-#, fuzzy
 msgid "Subsubsection"
-msgstr "Okrasek"
+msgstr "Podpodrazdelek"
 
 #: src/ext_l10n.h:447
-#, fuzzy
 msgid "Subsubsection*"
-msgstr "Okrasek"
+msgstr "Podpodrazdelek*"
 
 #: src/ext_l10n.h:448
-#, fuzzy
 msgid "Subsubsection-numbered"
-msgstr "Globina ¹tevilk razdelkov"
+msgstr "Podpodrazdelek-¹tevilèen"
 
 #: src/ext_l10n.h:449
 msgid "Subtitle"
-msgstr ""
+msgstr "Podnaslov"
 
 #: src/ext_l10n.h:450
 msgid "SubTitle"
-msgstr ""
+msgstr "PodNaslov"
 
 #: src/ext_l10n.h:451
 msgid "Suggested"
-msgstr ""
+msgstr "Predlagano"
 
 #: src/ext_l10n.h:452
 msgid "Summary"
-msgstr ""
+msgstr "Povzetek"
 
 #: src/ext_l10n.h:453
 msgid "Summary-numbered"
-msgstr ""
+msgstr "Povzetek-¹tevilèen"
 
 #: src/ext_l10n.h:454
 msgid "surname"
-msgstr ""
+msgstr "priimek"
 
 #: src/ext_l10n.h:455
 msgid "Surname"
-msgstr ""
+msgstr "Priimek"
 
 #: src/ext_l10n.h:456
-#, fuzzy
 msgid "TableComments"
-msgstr "Vsebinsko kazalo"
+msgstr "VsebinskoKazalo"
 
 #: src/ext_l10n.h:457
-#, fuzzy
 msgid "TableRefs"
-msgstr "Tabela%t"
+msgstr "TabelaSklicev"
 
 #: src/ext_l10n.h:458
 msgid "Telefax"
-msgstr ""
+msgstr "Faks"
 
 #: src/ext_l10n.h:459
-#, fuzzy
 msgid "Telefon"
-msgstr "Okrasek"
+msgstr "Telefon"
 
 #: src/ext_l10n.h:460
 msgid "Telephone"
-msgstr ""
+msgstr "Telefon"
 
 #: src/ext_l10n.h:461
-#, fuzzy
 msgid "Telex"
-msgstr "Besedilo"
+msgstr "Teleks"
 
 #: src/ext_l10n.h:462
 msgid "Thanks"
-msgstr ""
+msgstr "Zahvala"
 
 #: src/ext_l10n.h:463
 msgid "Theorem"
-msgstr ""
+msgstr "Izrek"
 
 #: src/ext_l10n.h:464
 msgid "Theorem*"
-msgstr ""
+msgstr "Izrek*"
 
 #: src/ext_l10n.h:465
 msgid "Theorem-numbered"
-msgstr ""
+msgstr "Izrek-¹tevilèen"
 
 #: src/ext_l10n.h:466
 msgid "Theorem-plain"
-msgstr ""
+msgstr "Izrek-navaden"
 
 #: src/ext_l10n.h:467
-#, fuzzy
 msgid "TheoremTemplate"
-msgstr "Vzorci"
+msgstr "VzorecIzreka"
 
 #: src/ext_l10n.h:468
-#, fuzzy
 msgid "Theorem-unnumbered"
-msgstr "Tek LaTeXa ¹tevilka "
+msgstr "Izrek-ne¹tevilèen"
 
 #: src/ext_l10n.h:469
 msgid "Thesaurus"
-msgstr ""
+msgstr "Tezaver"
 
 #: src/ext_l10n.h:470
 msgid "ThickLine"
-msgstr ""
+msgstr "TankaÈrta"
 
 #: src/ext_l10n.h:471
 msgid "This"
-msgstr ""
+msgstr "To"
 
 #: src/ext_l10n.h:472
 msgid "ThreeAffiliations"
@@ -2685,24 +2499,23 @@ msgstr ""
 
 #: src/ext_l10n.h:473
 msgid "ThreeAuthors"
-msgstr ""
+msgstr "TrijeAvtorji"
 
 #: src/ext_l10n.h:474
 msgid "TickList"
 msgstr ""
 
 #: src/ext_l10n.h:475 src/frontends/gnome/FormCitation.C:529
-#, fuzzy
 msgid "Title"
-msgstr "Datoteka"
+msgstr "Naslov"
 
 #: src/ext_l10n.h:476
 msgid "Titlehead"
-msgstr ""
+msgstr "Glavanaslova"
 
 #: src/ext_l10n.h:477
 msgid "Title_Running"
-msgstr ""
+msgstr "Tekoèi_naslov"
 
 #: src/ext_l10n.h:478
 msgid "TOC_Author"
@@ -2713,14 +2526,12 @@ msgid "TOC_Title"
 msgstr ""
 
 #: src/ext_l10n.h:480
-#, fuzzy
 msgid "Town"
-msgstr "Dve|#v"
+msgstr "Kraj"
 
 #: src/ext_l10n.h:481
-#, fuzzy
 msgid "Transition"
-msgstr "Izvedi preslikave|#r"
+msgstr ""
 
 #: src/ext_l10n.h:482
 msgid "Trans_Keywords"
@@ -2728,20 +2539,19 @@ msgstr ""
 
 #: src/ext_l10n.h:483
 msgid "Translated"
-msgstr ""
+msgstr "Prevedeno"
 
 #: src/ext_l10n.h:484
 msgid "TranslatedAbstract"
-msgstr ""
+msgstr "PrevedeniPovzetek"
 
 #: src/ext_l10n.h:485
 msgid "Translated_Title"
-msgstr ""
+msgstr "Prevedeni_Naslov"
 
 #: src/ext_l10n.h:486
-#, fuzzy
 msgid "Translator"
-msgstr "Izvedi preslikave|#r"
+msgstr "Prevajalec"
 
 #: src/ext_l10n.h:487
 msgid "TwoAffiliations"
@@ -2749,11 +2559,11 @@ msgstr ""
 
 #: src/ext_l10n.h:488
 msgid "TwoAuthors"
-msgstr ""
+msgstr "DvaAvtorja"
 
 #: src/ext_l10n.h:489
 msgid "Unterschrift"
-msgstr ""
+msgstr "Podpis"
 
 #: src/ext_l10n.h:490
 msgid "Uppertitleback"
@@ -2762,23 +2572,20 @@ msgstr ""
 #. tooltips
 #: src/ext_l10n.h:491 src/frontends/gnome/FormUrl.C:117
 #: src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
-#, fuzzy
 msgid "URL"
-msgstr "URL..."
+msgstr "URL"
 
 #: src/ext_l10n.h:492
 msgid "Use"
 msgstr ""
 
 #: src/ext_l10n.h:493
-#, fuzzy
 msgid "Verbatim"
-msgstr "Dobesedno|#D"
+msgstr "Dobesedno"
 
 #: src/ext_l10n.h:494
-#, fuzzy
 msgid "Verse"
-msgstr "Zmanj¹aj"
+msgstr "Verz"
 
 #: src/ext_l10n.h:495
 msgid "Verteiler"
@@ -2786,24 +2593,23 @@ msgstr ""
 
 #: src/ext_l10n.h:496
 msgid "VisibleText"
-msgstr ""
+msgstr "VidnoBesedilo"
 
 #: src/ext_l10n.h:497
-#, fuzzy
 msgid "Yourmail"
-msgstr "navadna"
+msgstr "Va¹apo¹ta"
 
 #: src/ext_l10n.h:498
 msgid "YourMail"
-msgstr ""
+msgstr "Va¹aPo¹ta"
 
 #: src/ext_l10n.h:499
 msgid "Yourref"
-msgstr ""
+msgstr "Va¹sklic"
 
 #: src/ext_l10n.h:500
 msgid "YourRef"
-msgstr ""
+msgstr "Va¹Sklic"
 
 #: src/ext_l10n.h:501
 msgid "Zusatz"
@@ -2811,19 +2617,19 @@ msgstr ""
 
 #: src/ext_l10n.h:502
 msgid "Afrikaans"
-msgstr ""
+msgstr "afrikaans"
 
 #: src/ext_l10n.h:503
 msgid "American"
-msgstr ""
+msgstr "ameri¹ko"
 
 #: src/ext_l10n.h:504
 msgid "Arabic"
-msgstr ""
+msgstr "arabsko"
 
 #: src/ext_l10n.h:505
 msgid "Austrian"
-msgstr ""
+msgstr "avstrijsko"
 
 #: src/ext_l10n.h:506
 msgid "Bahasa"
@@ -2831,69 +2637,67 @@ msgstr ""
 
 #: src/ext_l10n.h:507
 msgid "Brazil"
-msgstr ""
+msgstr "brazilsko"
 
 #: src/ext_l10n.h:508
 msgid "Breton"
-msgstr ""
+msgstr "bretonsko"
 
 #: src/ext_l10n.h:509
 msgid "British"
-msgstr ""
+msgstr "britansko"
 
 #: src/ext_l10n.h:510
-#, fuzzy
 msgid "Canadian"
-msgstr "Zasuk"
+msgstr "kanadsko"
 
 #: src/ext_l10n.h:511
 msgid "French Canadian"
-msgstr ""
+msgstr "francosko kanadsko"
 
 #: src/ext_l10n.h:512
 msgid "Catalan"
-msgstr ""
+msgstr "katalonsko"
 
 #: src/ext_l10n.h:513
-#, fuzzy
 msgid "Croatian"
-msgstr "Zasuk"
+msgstr "hrva¹ko"
 
 #: src/ext_l10n.h:514
 msgid "Czech"
-msgstr ""
+msgstr "èe¹ko"
 
 #: src/ext_l10n.h:515
 msgid "Danish"
-msgstr ""
+msgstr "dansko"
 
 #: src/ext_l10n.h:516
 msgid "Dutch"
-msgstr ""
+msgstr "nizozemsko"
 
 #: src/ext_l10n.h:517 src/language.C:35
 msgid "English"
-msgstr ""
+msgstr "angle¹ko"
 
 #: src/ext_l10n.h:518
 msgid "Esperanto"
-msgstr ""
+msgstr "esperanto"
 
 #: src/ext_l10n.h:519
 msgid "Estonian"
-msgstr ""
+msgstr "estonsko"
 
 #: src/ext_l10n.h:520
 msgid "Finnish"
-msgstr ""
+msgstr "finsko"
 
 #: src/ext_l10n.h:521
 msgid "French"
-msgstr ""
+msgstr "francosko"
 
 #: src/ext_l10n.h:522
 msgid "French (GUTenberg)"
-msgstr ""
+msgstr "francosko (GUTenberg)"
 
 #: src/ext_l10n.h:523
 msgid "Galician"
@@ -2901,91 +2705,87 @@ msgstr ""
 
 #: src/ext_l10n.h:524
 msgid "German"
-msgstr ""
+msgstr "nem¹ko"
 
 #: src/ext_l10n.h:525
 msgid "German (new spelling)"
-msgstr ""
+msgstr "nem¹ko (novo èrkovanje)"
 
 #: src/ext_l10n.h:526 src/mathed/math_forms.C:26
 msgid "Greek"
-msgstr "Gr¹ko"
+msgstr "gr¹ko"
 
 #: src/ext_l10n.h:527
 msgid "Hebrew"
-msgstr ""
+msgstr "hebrejsko"
 
 #: src/ext_l10n.h:528
 msgid "Hungarian"
-msgstr ""
+msgstr "mad¾arsko"
 
 #: src/ext_l10n.h:529
 msgid "Irish"
-msgstr ""
+msgstr "irsko"
 
 #: src/ext_l10n.h:530
-#, fuzzy
 msgid "Italian"
-msgstr "le¾eèa"
+msgstr "italijansko"
 
 #: src/ext_l10n.h:531
 msgid "Lsorbian"
-msgstr ""
+msgstr "lu¾i¹ko srbsko"
 
 #: src/ext_l10n.h:532
-#, fuzzy
 msgid "Magyar"
-msgstr "Vijolièna"
+msgstr "mad¾arsko"
 
 #: src/ext_l10n.h:533
 msgid "Norsk"
-msgstr ""
+msgstr "njorsk"
 
 #: src/ext_l10n.h:534
 msgid "Polish"
-msgstr ""
+msgstr "poljsko"
 
 #: src/ext_l10n.h:535
 msgid "Portuges"
-msgstr ""
+msgstr "portugalsko"
 
 #: src/ext_l10n.h:536
-#, fuzzy
 msgid "Romanian"
-msgstr "pokonèna"
+msgstr "romunsko"
 
 #: src/ext_l10n.h:537
 msgid "Russian"
-msgstr ""
+msgstr "rusko"
 
 #: src/ext_l10n.h:538
 msgid "Scottish"
-msgstr ""
+msgstr "¹kotsko"
 
 #: src/ext_l10n.h:539
 msgid "Spanish"
-msgstr ""
+msgstr "¹pansko"
 
 #: src/ext_l10n.h:540
 msgid "Slovak"
-msgstr ""
+msgstr "slova¹ko"
 
 #: src/ext_l10n.h:541
 msgid "Slovene"
-msgstr ""
+msgstr "slovensko"
 
 #: src/ext_l10n.h:542
 msgid "Swedish"
-msgstr ""
+msgstr "¹vedsko"
 
 #: src/ext_l10n.h:543
 msgid "Turkish"
-msgstr ""
+msgstr "tur¹ko"
 
 #: src/ext_l10n.h:544
-#, fuzzy
 msgid "Ukraninian"
-msgstr "Izvedi preslikave|#r"
+msgstr "ukrajinsko"
 
 #: src/ext_l10n.h:545
 msgid "Usorbian"
@@ -2993,7 +2793,7 @@ msgstr ""
 
 #: src/ext_l10n.h:546
 msgid "Welsh"
-msgstr ""
+msgstr "vel¹ko"
 
 #: src/filedlg.C:204
 msgid "Warning! Couldn't open directory."
@@ -3235,14 +3035,12 @@ msgid "Replace with|#W"
 msgstr "Nadomesti z|#Z"
 
 #: src/form1.C:294
-#, fuzzy
 msgid "@>|#F^s"
-msgstr "@>|#F"
+msgstr ""
 
 #: src/form1.C:298
-#, fuzzy
 msgid "@<|#B^r"
-msgstr "@<|#B"
+msgstr ""
 
 #: src/form1.C:302
 msgid "Replace|#R#r"
@@ -3265,87 +3063,79 @@ msgid "Replace All|#A#a"
 msgstr "Nadomesti vse|#V#v"
 
 #: src/frontends/gnome/FormCitation.C:371
-#, fuzzy
 msgid "_Add new citation"
-msgstr "Vnesi citat"
+msgstr "_Vnesi nov citat"
 
 #: src/frontends/gnome/FormCitation.C:372
 msgid "_Edit/remove citation(s)"
-msgstr ""
+msgstr "_Uredi/odstrani citat(e)"
 
 #: src/frontends/gnome/FormCitation.C:397
 msgid " Citation: Select action "
-msgstr ""
+msgstr " Citat: izberite dejanje "
 
 #: src/frontends/gnome/FormCitation.C:451
 msgid "Use Regular Expression"
-msgstr ""
+msgstr "Uporabi regularni izraz"
 
 #: src/frontends/gnome/FormCitation.C:453
 msgid "Search"
-msgstr ""
+msgstr "I¹èi"
 
 #: src/frontends/gnome/FormCitation.C:471
 msgid " Insert Citation: Enter keyword(s) or regular expression "
-msgstr ""
+msgstr " Vnesi citat: vnesite kljuène besede ali regularni izraz "
 
 #: src/frontends/gnome/FormCitation.C:527
-#, fuzzy
 msgid "Key"
-msgstr "Kljuè:"
+msgstr "Kljuè"
 
 #: src/frontends/gnome/FormCitation.C:528
 msgid "Author(s)"
-msgstr ""
+msgstr "Avtor(ji)"
 
 #: src/frontends/gnome/FormCitation.C:530
 msgid "Year"
-msgstr ""
+msgstr "Leto"
 
 #: src/frontends/gnome/FormCitation.C:549
 #: src/frontends/gnome/FormCitation.C:639 src/frontends/kde/citationdlg.C:54
-#, fuzzy
 msgid "Text after"
-msgstr "` po "
+msgstr "Besedilo po"
 
 #: src/frontends/gnome/FormCitation.C:560
-#, fuzzy
 msgid " Insert Citation: Select citation "
-msgstr "Vnesi citat"
+msgstr " Vnesi citat: izberite citat "
 
 #: src/frontends/gnome/FormCitation.C:607
 msgid "_Remove"
-msgstr ""
+msgstr "_Odstrani"
 
 #: src/frontends/gnome/FormCitation.C:608
 msgid "_Up"
-msgstr ""
+msgstr "_Gor"
 
 #: src/frontends/gnome/FormCitation.C:609
-#, fuzzy
 msgid "_Down"
-msgstr "Opravljeno"
+msgstr "_Dol"
 
 #: src/frontends/gnome/FormCitation.C:657
-#, fuzzy
 msgid " Citation: Edit "
-msgstr "Citat"
+msgstr " Citat: uredi "
 
 #: src/frontends/gnome/FormCitation.C:756
 msgid "--- No such key in the database ---"
-msgstr ""
+msgstr "--- Tak¹nega kljuèa ni v zbirki ---"
 
 #: src/frontends/gnome/FormCopyright.C:46
-#, fuzzy
 msgid ""
 "(C) 1995 by Matthias Ettrich, \n"
 "1995-2000 LyX Team"
 msgstr ""
-"LyX je za¹èitil (C) 1995 Matthias Ettrich,\n"
-"1995-2000 LyX Team"
+"(C) 1995 Matthias Ettrich, \n"
+"1995-2001 LyX Team"
 
 #: src/frontends/gnome/FormCopyright.C:48
-#, fuzzy
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -3358,32 +3148,18 @@ msgid ""
 "along with this program; if not, write to the Free Software Foundation, "
 "Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."
 msgstr ""
-"LyX se raz¹irja v upanju, da bo uporaben,\n"
-"vendar BREZ KAKR©NEGAKOLI JAMSTVA; tudi brez\n"
-"implicitnega jamstva VREDNOSTI SVOJE CENE\n"
-"ali PRIMERNOSTI ZA DOLOÈEN NAMEN.\n"
-"Veè o tem si oglejte v GNUjevski splo¹ni\n"
-"licenci (GNU General Public License, GPL).\n"
-"Poleg tega programa bi morali dobiti izvod\n"
-"licence GNU General Public License v angle¹èini;\n"
-"èe ga niste, pi¹ite na naslov:\n"
-"Free Software Foundation, Inc.,\n"
-"675 Mass Ave, Cambridge, MA 02139, USA."
 
 #: src/frontends/gnome/FormError.C:89
-#, fuzzy
 msgid " Error "
-msgstr "Napaka"
+msgstr " Napaka "
 
 #: src/frontends/gnome/FormIndex.C:89 src/frontends/xforms/form_index.C:28
-#, fuzzy
 msgid "Keyword"
-msgstr "Kljuèna beseda:|#K"
+msgstr "Kljuèna beseda"
 
 #: src/frontends/gnome/FormIndex.C:119
-#, fuzzy
 msgid " Index "
-msgstr "Stvarno kazalo"
+msgstr " Stvarno kazalo "
 
 #: src/frontends/gnome/FormPrint.C:165 src/frontends/xforms/FormPrint.C:154
 msgid "Error:"
@@ -3400,67 +3176,56 @@ msgstr "Preverite, ali so va¹i parametri pravilni"
 #. goto button labels
 #: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:102
 #: src/frontends/xforms/FormRef.C:211 src/frontends/xforms/FormRef.C:234
-#, fuzzy
 msgid "Goto reference"
-msgstr "Pojdi na referenco|#G"
+msgstr "Pojdi na sklic"
 
 #: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:203
-#, fuzzy
 msgid "Go back"
-msgstr "Èrna"
+msgstr "Vrni se"
 
 #: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:130
 msgid "*** No labels found in document ***"
 msgstr "*** V spisu ni najdenih oznak ***"
 
 #: src/frontends/gnome/FormRef.C:116
-#, fuzzy
 msgid " Reference "
-msgstr "Vstavi referenco"
+msgstr " Sklic "
 
 #: src/frontends/gnome/FormRef.C:185
 msgid " Reference: Select reference "
-msgstr ""
+msgstr " Sklic: izberite sklic "
 
 #: src/frontends/gnome/FormRef.C:254
-#, fuzzy
 msgid "Ref"
-msgstr "Ref: "
+msgstr "Skl"
 
 #: src/frontends/gnome/FormRef.C:259
-#, fuzzy
 msgid "Page"
-msgstr "Stran: "
+msgstr "Stran"
 
 #: src/frontends/gnome/FormRef.C:264
-#, fuzzy
 msgid "TextRef"
-msgstr "Besedilo"
+msgstr "BesediloSkl"
 
 #: src/frontends/gnome/FormRef.C:269
-#, fuzzy
 msgid "TextPage"
-msgstr "Besedilo"
+msgstr "StranZBesedilom"
 
 #: src/frontends/gnome/FormRef.C:274
-#, fuzzy
 msgid "PrettyRef"
-msgstr "Ref: "
+msgstr "LepSkl"
 
 #: src/frontends/gnome/FormRef.C:300
-#, fuzzy
 msgid "Type:"
-msgstr "Vrsta"
+msgstr "Vrsta:"
 
 #: src/frontends/gnome/FormRef.C:301
-#, fuzzy
 msgid "Name:"
-msgstr "Ime"
+msgstr "Ime:"
 
 #: src/frontends/gnome/FormRef.C:311
-#, fuzzy
 msgid " Reference: "
-msgstr "Vstavi referenco"
+msgstr " Sklic: "
 
 #: src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
 #: src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
@@ -3497,56 +3262,51 @@ msgstr "Tip HTML"
 
 #: src/frontends/gnome/FormUrl.C:131
 msgid " URL "
-msgstr ""
+msgstr " URL "
 
 #: src/frontends/gnome/Menubar_pimpl.C:119
-#, fuzzy
 msgid "Refresh"
-msgstr "Ref: "
+msgstr "Osve¾i"
 
 #: src/frontends/gnome/Menubar_pimpl.C:149
-#, fuzzy
 msgid "<No Name>"
-msgstr "Ime"
+msgstr "<brez imena>"
 
 #: src/frontends/kde/citationdlg.C:28
-#, fuzzy
 msgid "Selected keys"
-msgstr "Izberi naslednjo vrstico"
+msgstr "Izberite tipke"
 
 #: src/frontends/kde/citationdlg.C:35
 msgid "Available keys"
-msgstr ""
+msgstr "Dostopne tipke"
 
 #: src/frontends/kde/citationdlg.C:42
 msgid "Reference entry"
-msgstr ""
+msgstr "Vnos sklica"
 
 #: src/frontends/kde/citationdlg.C:61
 msgid "&Add"
-msgstr ""
+msgstr "&Dodaj"
 
 #: src/frontends/kde/citationdlg.C:66
 msgid "&Up"
-msgstr ""
+msgstr "&Gor"
 
 #: src/frontends/kde/citationdlg.C:71
-#, fuzzy
 msgid "&Down"
-msgstr "Opravljeno"
+msgstr "&Dol"
 
 #: src/frontends/kde/citationdlg.C:76
 msgid "&Remove"
-msgstr ""
+msgstr "&Odstrani"
 
 #: src/frontends/kde/FormPrint.C:108 src/frontends/kde/citationdlg.C:81
 #: src/frontends/kde/dlg/copyrightdlgdata.C:40
 #: src/frontends/kde/dlg/indexdlgdata.C:68
 #: src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:86
 #: src/frontends/kde/urldlg.C:52
-#, fuzzy
 msgid "&OK"
-msgstr "V redu"
+msgstr "&V redu"
 
 #: src/frontends/kde/FormCitation.C:166 src/frontends/kde/FormRef.C:203
 #: src/frontends/kde/citationdlg.C:87 src/frontends/kde/dlg/indexdlgdata.C:85
@@ -3554,35 +3314,33 @@ msgstr "V redu"
 #: src/frontends/kde/dlg/printdlgdata.C:133
 #: src/frontends/kde/dlg/tabcreatedlgdata.C:60 src/frontends/kde/indexdlg.C:65
 #: src/frontends/kde/refdlg.C:92 src/frontends/kde/urldlg.C:58
-#, fuzzy
 msgid "&Cancel"
-msgstr "Preklièi"
+msgstr "&Preklièi"
 
 #. tooltips
 #: src/frontends/kde/citationdlg.C:93
 msgid "Keys currently selected"
-msgstr ""
+msgstr "Trenutno izbrane tipke"
 
 #: src/frontends/kde/citationdlg.C:94
 msgid "Reference keys available"
-msgstr ""
+msgstr "Dostopne tipke za sklic"
 
 #: src/frontends/kde/citationdlg.C:95
 msgid "Reference entry text"
-msgstr ""
+msgstr "Besedilo vnosa sklica"
 
 #: src/frontends/kde/citationdlg.C:96
 msgid "Text to place after citation"
-msgstr ""
+msgstr "Besedilo za umestitev po citatu"
 
 #: src/frontends/kde/dlg/copyrightdlgdata.C:61
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich, \n"
 "1995-2000 LyX Team"
 msgstr ""
-"LyX je za¹èitil (C) 1995 Matthias Ettrich,\n"
-"1995-2000 LyX Team"
+"LyX je za¹èitil (C) 1995 Matthias Ettrich, \n"
+"1995-2001 LyX Team"
 
 #: src/frontends/kde/dlg/copyrightdlgdata.C:78
 msgid ""
@@ -3599,7 +3357,6 @@ msgstr ""
 "poznej¹o razlièico."
 
 #: src/frontends/kde/dlg/copyrightdlgdata.C:95
-#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will\n"
 "be useful, but WITHOUT ANY WARRANTY;\n"
@@ -3625,55 +3382,49 @@ msgstr ""
 "675 Mass Ave, Cambridge, MA 02139, USA."
 
 #: src/frontends/kde/dlg/indexdlgdata.C:42
-#, fuzzy
 msgid "Keyword:"
-msgstr "Kljuèna beseda:|#K"
+msgstr "Kljuèna beseda:"
 
 #: src/frontends/kde/dlg/paraabovedlgdata.C:39
 #: src/frontends/kde/dlg/parabelowdlgdata.C:39
-#, fuzzy
 msgid "Page break"
-msgstr "Prelomi strani"
+msgstr "Prelom strani"
 
 #: src/frontends/kde/dlg/paraabovedlgdata.C:52
 msgid "Keep space when at top of page"
-msgstr ""
+msgstr "Ohrani prostor na vrhu strani"
 
 #: src/frontends/kde/dlg/paraabovedlgdata.C:70
 #: src/frontends/kde/dlg/parabelowdlgdata.C:70
-#, fuzzy
 msgid "Extra Space"
-msgstr "Navpièni presledki"
+msgstr "Dodatni prostor"
 
 #: src/frontends/kde/dlg/paraabovedlgdata.C:101
 #: src/frontends/kde/dlg/parabelowdlgdata.C:101
-#, fuzzy
 msgid "Value"
-msgstr "Modra"
+msgstr "Vrednost"
 
 #: src/frontends/kde/dlg/paraabovedlgdata.C:118
 #: src/frontends/kde/dlg/parabelowdlgdata.C:118
 msgid "Plus"
-msgstr ""
+msgstr "Plus"
 
 #: src/frontends/kde/dlg/paraabovedlgdata.C:135
 #: src/frontends/kde/dlg/parabelowdlgdata.C:135
-#, fuzzy
 msgid "Minus"
-msgstr "Robovi"
+msgstr "Minus"
 
 #: src/frontends/kde/dlg/parabelowdlgdata.C:52
 msgid "Keep space when at bottom of page"
-msgstr ""
+msgstr "Ohrani prostor na dnu strani"
 
 #: src/frontends/kde/dlg/paradlgdata.C:65
-#, fuzzy
 msgid "&Apply"
-msgstr "Uporabi|#U"
+msgstr "Uporabi"
 
 #: src/frontends/kde/dlg/paradlgdata.C:82
 msgid "&Restore"
-msgstr ""
+msgstr "&Obnovi"
 
 #: src/frontends/kde/dlg/paraextradlgdata.C:43
 #: src/frontends/kde/dlg/parageneraldlgdata.C:43
@@ -3687,74 +3438,60 @@ msgid "Type"
 msgstr "Vrsta"
 
 #: src/frontends/kde/dlg/paraextradlgdata.C:116
-#, fuzzy
 msgid "&HFill between minipage paragraphs"
-msgstr "HFill med odstavki ministrani"
+msgstr "&HFill med odstavki ministrani"
 
 #: src/frontends/kde/dlg/paraextradlgdata.C:129
-#, fuzzy
 msgid "&Start new minipage"
-msgstr "Zaèni novo ministran"
+msgstr "&Zaèni novo ministran"
 
 #: src/frontends/kde/dlg/paraextradlgdata.C:142
-#, fuzzy
 msgid "&Top"
-msgstr "Zgoraj|#T"
+msgstr "&Vrh"
 
 #: src/frontends/kde/dlg/paraextradlgdata.C:155
-#, fuzzy
 msgid "&Middle"
-msgstr "Sredina|#d"
+msgstr "Sredina"
 
 #: src/frontends/kde/dlg/paraextradlgdata.C:168
-#, fuzzy
 msgid "&Bottom"
-msgstr "Spodaj|#B"
+msgstr "&Dno"
 
 #: src/frontends/kde/dlg/parageneraldlgdata.C:55
-#, fuzzy
 msgid "Draw line above paragraph"
-msgstr "Izberi naslednji odstavek"
+msgstr "Nad odstavkom nari¹i èrto"
 
 #: src/frontends/kde/dlg/parageneraldlgdata.C:68
-#, fuzzy
 msgid "Draw line below paragraph"
-msgstr "Izberi naslednji odstavek"
+msgstr "Pod odstavkom nari¹i èrto"
 
 #: src/frontends/kde/dlg/parageneraldlgdata.C:81
-#, fuzzy
 msgid "Don't indent paragraph"
-msgstr "Izberi naslednji odstavek"
+msgstr "Ne zamikaj odstavka"
 
 #: src/frontends/kde/dlg/parageneraldlgdata.C:94
-#, fuzzy
 msgid "Block"
-msgstr "Blok|#k"
+msgstr "Blok"
 
 #: src/frontends/kde/dlg/parageneraldlgdata.C:107
-#, fuzzy
 msgid "Center"
-msgstr "Sredina|#n"
+msgstr "Sredina"
 
 #: src/frontends/kde/dlg/parageneraldlgdata.C:120
-#, fuzzy
 msgid "Left"
-msgstr "Levo|#l"
+msgstr "Levo"
 
 #: src/frontends/kde/dlg/parageneraldlgdata.C:133
-#, fuzzy
 msgid "Right"
-msgstr "Desno|#R"
+msgstr "Desno"
 
 #: src/frontends/kde/dlg/parageneraldlgdata.C:151
-#, fuzzy
 msgid "Label width"
-msgstr "©irina oznake:|#i"
+msgstr "©irina oznake"
 
 #: src/frontends/kde/dlg/printdlgdata.C:42
-#, fuzzy
 msgid "Pages"
-msgstr "Strani:"
+msgstr "Strani"
 
 #: src/frontends/kde/dlg/printdlgdata.C:73
 #: src/frontends/xforms/form_print.C:135
@@ -3767,66 +3504,56 @@ msgid "Print to"
 msgstr "Tiskaj na"
 
 #: src/frontends/kde/dlg/printdlgdata.C:116
-#, fuzzy
 msgid "&Print"
-msgstr "Tiskaj"
+msgstr "&Tiskaj"
 
 #: src/frontends/kde/dlg/printdlgdata.C:149
-#, fuzzy
 msgid "&All pages"
-msgstr "Vse strani|#G"
+msgstr "&Vse strani"
 
 #: src/frontends/kde/dlg/printdlgdata.C:162
-#, fuzzy
 msgid "&Even pages"
-msgstr "Le sode strani|#S"
+msgstr "&Sode strani"
 
 #: src/frontends/kde/dlg/printdlgdata.C:192
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 #: src/frontends/kde/dlg/printdlgdata.C:208
 msgid "To"
-msgstr ""
+msgstr "Za"
 
 #: src/frontends/kde/dlg/printdlgdata.C:220
 msgid "&Odd pages"
-msgstr ""
+msgstr "&Lihe strani"
 
 #: src/frontends/kde/dlg/printdlgdata.C:233
-#, fuzzy
 msgid "&Printer"
-msgstr "Tiskalnik|#T"
+msgstr "&Tiskalnik"
 
 #: src/frontends/kde/dlg/printdlgdata.C:246
-#, fuzzy
 msgid "&File"
-msgstr "Datoteka"
+msgstr "&Datoteka"
 
 #: src/frontends/kde/dlg/printdlgdata.C:272
-#, fuzzy
 msgid "&Reverse order"
-msgstr "Obrnjeni vrstni red|#R"
+msgstr "&Obrnjeni vrstni red"
 
 #: src/frontends/kde/dlg/printdlgdata.C:298
-#, fuzzy
 msgid "Co&llate"
-msgstr "LaTeX "
+msgstr ""
 
 #: src/frontends/kde/dlg/printdlgdata.C:312
-#, fuzzy
 msgid "&Browse"
-msgstr "Brskaj|#B"
+msgstr "&Brskaj"
 
 #: src/frontends/kde/dlg/printdlgdata.C:346
-#, fuzzy
 msgid "Count"
-msgstr "©tevec:"
+msgstr "©tevec"
 
 #: src/frontends/kde/dlg/tabcreatedlgdata.C:42
-#, fuzzy
 msgid "&Insert"
-msgstr "Vstavi"
+msgstr "&Vstavi"
 
 #: src/frontends/kde/dlg/tabcreatedlgdata.C:90
 #: src/frontends/xforms/form_tabular_create.C:49 src/mathed/math_forms.C:133
@@ -3840,28 +3567,24 @@ msgstr "Stolpci"
 
 #: src/frontends/kde/FormCitation.C:160 src/frontends/kde/FormRef.C:201
 #: src/frontends/kde/indexdlg.C:60 src/frontends/kde/tocdlg.C:48
-#, fuzzy
 msgid "&Close"
-msgstr "Zapri"
+msgstr "&Zapri"
 
 #: src/frontends/kde/FormCitation.C:199
-#, fuzzy
 msgid "LyX: Citation Reference"
-msgstr "Pojdi na referenco|#G"
+msgstr "LyX: Sklic na citat"
 
 #: src/frontends/kde/FormCitation.C:382
 msgid "Key not found in references."
-msgstr ""
+msgstr "Kljuèa ni med sklici."
 
 #: src/frontends/kde/FormCopyright.C:42
-#, fuzzy
 msgid "LyX: Copyright and Warranty"
-msgstr "Pravice raz¹irjanja in jamstvo"
+msgstr "LyX: Pravice raz¹irjanja in jamstvo"
 
 #: src/frontends/kde/FormIndex.C:96
-#, fuzzy
 msgid "LyX: Index"
-msgstr "Stvarno kazalo"
+msgstr "LyX: Stvarno kazalo"
 
 #: src/frontends/kde/FormParagraph.C:183
 #: src/frontends/xforms/FormParagraph.C:148
@@ -3869,57 +3592,48 @@ msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
 #: src/frontends/kde/FormParagraph.C:189
-#, fuzzy
 msgid "LyX: Paragraph Options"
-msgstr "Okolje odstavka"
+msgstr "LyX: Okolje odstavka"
 
 #. FIXME: should have a utility class for this
 #: src/frontends/kde/FormPrint.C:106
 msgid ""
 "An error occured while printing.\n"
 "\n"
-msgstr ""
+msgstr "Med tiskanjem je pri¹lo do napake.\n\n"
 
 #: src/frontends/kde/FormPrint.C:107
-#, fuzzy
 msgid "Check the parameters are correct.\n"
-msgstr "Preverite, ali so va¹i parametri pravilni"
+msgstr "Preverite, ali so va¹i parametri pravilni.\n"
 
 #: src/frontends/kde/FormPrint.C:108
-#, fuzzy
 msgid "LyX: Print Error"
-msgstr "Notranja napaka LyXa!"
+msgstr "LyX: Napaka pri tiskanju"
 
 #: src/frontends/kde/FormPrint.C:118
-#, fuzzy
 msgid "LyX: Print"
-msgstr "Tiskaj"
+msgstr "LyX: Tiskaj"
 
 #: src/frontends/kde/FormRef.C:103
-#, fuzzy
 msgid "&Go back"
-msgstr "Èrna"
+msgstr "&Vrni se"
 
 #: src/frontends/kde/FormRef.C:108 src/frontends/kde/FormRef.C:119
 #: src/frontends/kde/FormRef.C:184 src/frontends/kde/refdlg.C:76
-#, fuzzy
 msgid "&Goto reference"
-msgstr "Pojdi na referenco|#G"
+msgstr "&Pojdi na sklic"
 
 #: src/frontends/kde/FormRef.C:249
-#, fuzzy
 msgid "LyX: Cross Reference"
-msgstr "Vstavi navzkri¾no referenco"
+msgstr "LyX: Navzkri¾ni sklic"
 
 #: src/frontends/kde/FormTabularCreate.C:53
-#, fuzzy
 msgid "LyX: Insert Table"
-msgstr "Vstavi tabelo"
+msgstr "LyX: Vstavi tabelo"
 
 #: src/frontends/kde/FormToc.C:246
-#, fuzzy
 msgid "LyX: Table of Contents"
-msgstr "Vsebinsko kazalo"
+msgstr "LyX: Vsebinsko kazalo"
 
 #: src/LyXAction.C:123 src/frontends/kde/FormUrl.C:86
 #: src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:137
@@ -3938,22 +3652,20 @@ msgstr "Preklièi"
 
 #: src/frontends/kde/FormUrl.C:123
 msgid "LyX: Url"
-msgstr ""
+msgstr "LyX: Url"
 
 #. tooltips
 #: src/frontends/kde/indexdlg.C:27 src/frontends/kde/indexdlg.C:28
-#, fuzzy
 msgid "Index entry"
-msgstr "Zamik"
+msgstr "Vnos v stvarno kazalo"
 
 #: src/frontends/kde/paradlg.C:34
 msgid "&General"
-msgstr ""
+msgstr "&Splo¹no"
 
 #: src/frontends/kde/paradlg.C:35
-#, fuzzy
 msgid "&Extra"
-msgstr "Dodatno|#X"
+msgstr "&Dodatno"
 
 #. FIXME: should be cleverer here
 #: src/frontends/kde/paradlg.C:95 src/paragraph.C:1913
@@ -3965,82 +3677,75 @@ msgid "Normal"
 msgstr "navadna"
 
 #: src/frontends/kde/paraextradlg.C:26
-#, fuzzy
 msgid "Indented paragraph"
-msgstr "Zamaknjen odstavek|#I"
+msgstr "Zamaknjen odstavek"
 
 #: src/frontends/kde/paraextradlg.C:27
-#, fuzzy
 msgid "Minipage"
-msgstr "Ministran|#M"
+msgstr "Ministran"
 
 #: src/frontends/kde/paraextradlg.C:28
 msgid "Wrap text around floats (floatflt)"
-msgstr ""
+msgstr "Ovij besedilo okoli plovk (floatflt)"
 
 #. if you change this, remember to change ParaDialog::get/setUnits()
 #: src/frontends/kde/paraextradlg.C:30 src/frontends/kde/parageneraldlg.C:63
-#, fuzzy
 msgid "Centimetres"
-msgstr "Sredina|#n"
+msgstr "Centimetri"
 
 #: src/frontends/kde/paraextradlg.C:31 src/frontends/kde/parageneraldlg.C:64
-#, fuzzy
 msgid "Inches"
-msgstr "Poveèaj"
+msgstr "Palci"
 
 #: src/frontends/kde/paraextradlg.C:32 src/frontends/kde/parageneraldlg.C:65
 msgid "Points (1/72.27 inch)"
-msgstr ""
+msgstr "Pike (1/72.27 palca)"
 
 #: src/frontends/kde/paraextradlg.C:33 src/frontends/kde/parageneraldlg.C:66
 msgid "Millimetres"
-msgstr ""
+msgstr "Milimetri"
 
 #: src/frontends/kde/paraextradlg.C:34 src/frontends/kde/parageneraldlg.C:67
-#, fuzzy
 msgid "Picas"
-msgstr "poveèaj"
+msgstr "Pice"
 
 #: src/frontends/kde/paraextradlg.C:35 src/frontends/kde/parageneraldlg.C:68
 msgid "ex units"
-msgstr ""
+msgstr "Enote ex"
 
 #: src/frontends/kde/paraextradlg.C:36 src/frontends/kde/parageneraldlg.C:69
 msgid "em units"
-msgstr ""
+msgstr "Enote em"
 
 #: src/frontends/kde/paraextradlg.C:37 src/frontends/kde/parageneraldlg.C:70
 msgid "Scaled points (1/65536 pt)"
-msgstr ""
+msgstr "Zmanj¹ane pike (1/65536 pt)"
 
 #: src/frontends/kde/paraextradlg.C:38 src/frontends/kde/parageneraldlg.C:71
 msgid "Big/PS points (1/72 inch)"
-msgstr ""
+msgstr "Velike/PS pike (1/72 palca)"
 
 #: src/frontends/kde/paraextradlg.C:39 src/frontends/kde/parageneraldlg.C:72
 msgid "Didot points"
-msgstr ""
+msgstr "Pike didot"
 
 #: src/frontends/kde/paraextradlg.C:40 src/frontends/kde/parageneraldlg.C:73
 msgid "Cicero points"
-msgstr ""
+msgstr "Pike cicero"
 
 #: src/frontends/kde/paraextradlg.C:41
 msgid "Percent of column"
-msgstr ""
+msgstr "Odstotek stolpca"
 
 #. FIXME: free punctuation to whoever can make the value
 #. boxes not be overly large
 #: src/frontends/kde/parageneraldlg.C:31
-#, fuzzy
 msgid "&Spacing Above"
-msgstr "Presledki"
+msgstr "&Presledek zgoraj"
 
 #: src/frontends/kde/parageneraldlg.C:32
-#, fuzzy
 msgid "Spacing &Below"
-msgstr "Presledki"
+msgstr "Presledek &spodaj"
 
 #: src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:44
 msgid "None"
@@ -4048,223 +3753,200 @@ msgstr "Niè"
 
 #: src/frontends/kde/parageneraldlg.C:38 src/frontends/kde/parageneraldlg.C:45
 msgid "Defskip"
-msgstr ""
+msgstr "Privzpresl"
 
 #: src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:46
-#, fuzzy
 msgid "Small skip"
-msgstr "najmanj¹a"
+msgstr "Mali razmak"
 
 #: src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
-#, fuzzy
 msgid "Medium skip"
-msgstr "navadna"
+msgstr "Srednji razmak"
 
 #: src/frontends/kde/parageneraldlg.C:41 src/frontends/kde/parageneraldlg.C:48
 msgid "Big skip"
-msgstr ""
+msgstr "Velik razmak"
 
 #: src/frontends/kde/parageneraldlg.C:42 src/frontends/kde/parageneraldlg.C:49
-#, fuzzy
 msgid "VFill"
-msgstr "Datoteka"
+msgstr "VFill"
 
 #: src/frontends/kde/parageneraldlg.C:43 src/frontends/kde/parageneraldlg.C:50
-#, fuzzy
 msgid "Length"
-msgstr "Dol¾ina|#L"
+msgstr "Dol¾ina"
 
 #: src/frontends/kde/printdlg.C:25
 msgid "Print every page"
-msgstr ""
+msgstr "Natisni vse strani"
 
 #: src/frontends/kde/printdlg.C:26
 msgid "Print odd-numbered pages only"
-msgstr ""
+msgstr "Natisni le lihe strani"
 
 #: src/frontends/kde/printdlg.C:27
 msgid "Print even-numbered pages only"
-msgstr ""
+msgstr "Natisni le sode strani"
 
 #: src/frontends/kde/printdlg.C:28
 msgid "Print from page number"
-msgstr ""
+msgstr "Natisni od ¹tevilke strani"
 
 #: src/frontends/kde/printdlg.C:29
-#, fuzzy
 msgid "Print to page number"
-msgstr "Vstavi ¹tevilko strani|#P"
+msgstr "Natisni do ¹tevilke strani"
 
 #: src/frontends/kde/printdlg.C:30
 msgid "Print in reverse order (last page first)"
-msgstr ""
+msgstr "Natisni v obrnjenem vrstem redu (najprej zadnjo stran)"
 
 #: src/frontends/kde/printdlg.C:31
-#, fuzzy
 msgid "Number of copies to print"
-msgstr "Preverite ,¹tevilo izvodov`!"
+msgstr "©tevilo izvodov za tiskanje"
 
 #: src/frontends/kde/printdlg.C:32
 msgid "Collate multiple copies"
 msgstr ""
 
 #: src/frontends/kde/printdlg.C:33
-#, fuzzy
 msgid "Printer name"
-msgstr "Stvarno kazalo"
+msgstr "Ime tiskalnika"
 
 #: src/frontends/kde/printdlg.C:34
 msgid "Output filename"
-msgstr ""
+msgstr "Izhodna datoteka"
 
 #: src/frontends/kde/printdlg.C:35
-#, fuzzy
 msgid "Select output filename"
-msgstr "Izberi naslednjo vrstico"
+msgstr "Izberite ime izhodne datoteke"
 
 #: src/frontends/kde/refdlg.C:30
-#, fuzzy
 msgid "Available References"
-msgstr "Vstavi referenco"
+msgstr "Dostopni sklici"
 
 #: src/frontends/kde/refdlg.C:45 src/frontends/kde/urldlg.C:39
-#, fuzzy
 msgid "Name :"
-msgstr "Ime"
+msgstr "Ime :"
 
 #: src/frontends/kde/refdlg.C:51
-#, fuzzy
 msgid "Reference :"
-msgstr "Vstavi referenco"
+msgstr "Sklic :"
 
 #: src/frontends/kde/refdlg.C:57
-#, fuzzy
 msgid "Sort"
-msgstr "®al."
+msgstr "Uredi"
 
 #: src/frontends/kde/refdlg.C:63
-#, fuzzy
 msgid "Page number"
-msgstr "Brez ¹tevilke"
+msgstr "©tevilka strani"
 
 #: src/frontends/kde/refdlg.C:64
 msgid "Ref on page xxx"
-msgstr ""
+msgstr "Sklic na strani xxx"
 
 #: src/frontends/kde/refdlg.C:65
 msgid "on page xxx"
-msgstr ""
+msgstr "na strani xxx"
 
 #: src/frontends/kde/refdlg.C:66
-#, fuzzy
 msgid "Pretty reference"
-msgstr "Vstavi referenco"
+msgstr "Lep sklic"
 
 #: src/frontends/kde/refdlg.C:70
-#, fuzzy
 msgid "Reference Type"
-msgstr "Vstavi referenco"
+msgstr "Vrsta sklica"
 
 #: src/frontends/kde/refdlg.C:81 src/frontends/kde/tocdlg.C:43
-#, fuzzy
 msgid "&Update"
-msgstr "Osve¾i|#U"
+msgstr "&Osve¾i"
 
 #. tooltips
 #: src/frontends/kde/refdlg.C:98
 msgid "Reference as it appears in output"
-msgstr ""
+msgstr "Sklic, kot je videti v izhodu"
 
 #: src/frontends/kde/refdlg.C:99
 msgid "Sort references in alphabetical order ?"
-msgstr ""
+msgstr "Uredimo sklice po abecedi?"
 
 #: src/frontends/kde/tocdlg.C:57
-#, fuzzy
 msgid "Depth"
-msgstr ", globina: "
+msgstr "Globina"
 
 #: src/frontends/kde/urldlg.C:33
-#, fuzzy
 msgid "Url :"
-msgstr "Url: "
+msgstr "Url :"
 
 #: src/frontends/kde/urldlg.C:45
 msgid "Generate hyperlink"
-msgstr ""
+msgstr "Naredi nadpovezavo"
 
 #: src/frontends/kde/urldlg.C:64 src/frontends/kde/urldlg.C:65
 msgid "Name associated with the URL"
-msgstr ""
+msgstr "URL-ju priredi ime"
 
 #: src/frontends/kde/urldlg.C:66
 msgid "Output as a hyperlink ?"
-msgstr ""
+msgstr "Izhod kot nadpovezava?"
 
 #: src/frontends/xforms/FormCitation.C:37
 msgid "Citation"
 msgstr "Citat"
 
 #: src/frontends/xforms/form_citation.C:29
-#, fuzzy
 msgid "Inset keys|#I"
-msgstr "Vstavi oznako"
+msgstr "Tipke z vstavki|#v"
 
 #: src/frontends/xforms/form_citation.C:38
-#, fuzzy
 msgid "Bibliography keys|#B"
-msgstr "Postavka literature"
+msgstr "Tipke za literaturo|#l"
 
 #: src/frontends/xforms/form_citation.C:46
 msgid "@4->"
-msgstr ""
+msgstr "@4->"
 
 #: src/frontends/xforms/form_citation.C:47
 msgid "#&D"
-msgstr ""
+msgstr "#&D"
 
 #: src/frontends/xforms/form_citation.C:51
 msgid "@9+"
-msgstr ""
+msgstr "@9+"
 
 #: src/frontends/xforms/form_citation.C:52
 msgid "#X"
-msgstr ""
+msgstr "#X"
 
 #: src/frontends/xforms/form_citation.C:56
 msgid "@8->"
-msgstr ""
+msgstr "@8->"
 
 #: src/frontends/xforms/form_citation.C:57
 msgid "#&A"
-msgstr ""
+msgstr "#&A"
 
 #: src/frontends/xforms/form_citation.C:61
 msgid "@2->"
-msgstr ""
+msgstr "@2->"
 
 #: src/frontends/xforms/form_citation.C:62
 msgid "#&B"
-msgstr ""
+msgstr "#&B"
 
 #: src/frontends/xforms/form_citation.C:66 src/lyxvc.C:112
 msgid "Info"
 msgstr "Podatki"
 
 #: src/frontends/xforms/form_citation.C:71
-#, fuzzy
 msgid "Citation style|#s"
-msgstr "Citat"
+msgstr "Stil citiranja|#c"
 
 #: src/frontends/xforms/form_citation.C:79
-#, fuzzy
 msgid "Text before|#T"
-msgstr "Besedilni naèin"
+msgstr "Besedilo prej|#p"
 
 #: src/frontends/xforms/form_citation.C:86
-#, fuzzy
 msgid "Text after|#e"
-msgstr "` po "
+msgstr "Besedilo po|#p"
 
 #: src/frontends/xforms/form_citation.C:93
 #: src/frontends/xforms/form_document.C:52
@@ -4272,46 +3954,38 @@ msgstr "` po "
 #: src/frontends/xforms/form_paragraph.C:334
 #: src/frontends/xforms/form_preferences.C:48
 #: src/frontends/xforms/form_ref.C:89 src/frontends/xforms/form_url.C:76
-#, fuzzy
 msgid "Restore|#R"
-msgstr "Obrnjeni vrstni red|#R"
+msgstr "Obnovi|#O"
 
 #: src/frontends/xforms/form_citation.C:110
 #: src/frontends/xforms/form_document.C:33
 #: src/frontends/xforms/form_index.C:53 src/frontends/xforms/form_ref.C:75
 #: src/frontends/xforms/form_tabular_create.C:39
 #: src/frontends/xforms/form_url.C:57 src/lyx.C:110
-#, fuzzy
 msgid "Cancel|#C^["
-msgstr "Preklièi|^["
+msgstr "Preklièi|#P^["
 
 #: src/frontends/xforms/FormCopyright.C:20
 msgid "Copyright and Warranty"
 msgstr "Pravice raz¹irjanja in jamstvo"
 
 #: src/frontends/xforms/FormCopyright.C:51
-#, fuzzy
 msgid "LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2000 LyX Team"
-msgstr ""
-"LyX je za¹èitil (C) 1995 Matthias Ettrich,\n"
-"1995-2000 LyX Team"
+msgstr "LyX je za¹èitil (C) 1995 Matthias Ettrich, 1995-2001 LyX Team"
 
 #: src/frontends/xforms/FormCopyright.C:56
-#, fuzzy
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Ta program sodi k prostemu programju; lahko ga raz¹irjate\n"
-"in/ali spreminjate pod pogoji gnujevske splo¹ne licence (GPL),\n"
-"kot jo je objavila ustanova Free Software Foundation; bodisi\n"
-"pod razlièico 2 te licence, ali (po va¹i izbiri) katerokoli\n"
-"poznej¹o razlièico."
+"Ta program sodi k prostemu programju; lahko ga raz¹irjate in/ali "
+"spreminjate pod pogoji gnujevske splo¹ne licence (GPL), kot jo je "
+"objavila ustanova Free Software Foundation; bodisi pod razlièico 2 te "
+"licence, ali (po va¹i izbiri) katerokoli poznej¹o razlièico."
 
 #: src/frontends/xforms/FormCopyright.C:61
-#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -4320,23 +3994,18 @@ msgid ""
 "along with this program; if not, write to the Free Software Foundation, "
 "Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
 msgstr ""
-"LyX se raz¹irja v upanju, da bo uporaben,\n"
-"vendar BREZ KAKR©NEGAKOLI JAMSTVA; tudi brez\n"
-"implicitnega jamstva VREDNOSTI SVOJE CENE\n"
-"ali PRIMERNOSTI ZA DOLOÈEN NAMEN.\n"
-"Veè o tem si oglejte v GNUjevski splo¹ni\n"
-"licenci (GNU General Public License, GPL).\n"
-"Poleg tega programa bi morali dobiti izvod\n"
-"licence GNU General Public License v angle¹èini;\n"
-"èe ga niste, pi¹ite na naslov:\n"
-"Free Software Foundation, Inc.,\n"
-"675 Mass Ave, Cambridge, MA 02139, USA."
+"LyX se raz¹irja v upanju, da bo uporaben, vendar BREZ KAKR©NEGAKOLI "
+"JAMSTVA; tudi brez implicitnega jamstva VREDNOSTI SVOJE CENE ali "
+"PRIMERNOSTI ZA DOLOÈEN NAMEN.  Veè o tem si oglejte v GNUjevski "
+"splo¹ni licenci (GNU General Public License, GPL).  Poleg tega "
+"programa bi morali dobiti izvod licence GNU General Public License v "
+"angle¹èini; èe ga niste, pi¹ite na naslov: Free Software Foundation, "
+"Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
 
 #: src/frontends/xforms/form_copyright.C:41
 #: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
-#, fuzzy
 msgid "Close|#C^[^M"
-msgstr "Zapri|#Z^["
+msgstr "Zapri|#Z^[^M"
 
 #: src/frontends/xforms/FormDocument.C:48
 msgid "Document Layout"
@@ -4387,20 +4056,17 @@ msgid "Document"
 msgstr "Spis"
 
 #: src/frontends/xforms/FormDocument.C:274
-#, fuzzy
 msgid "Paper"
-msgstr "Prilepi"
+msgstr "Papir"
 
 #: src/frontends/xforms/FormDocument.C:278
 #: src/frontends/xforms/FormParagraph.C:133
-#, fuzzy
 msgid "Extra"
-msgstr "Dodatno|#X"
+msgstr "Dodatno"
 
 #: src/frontends/xforms/FormDocument.C:280
-#, fuzzy
 msgid "Bullets"
-msgstr "Globina pike"
+msgstr "Pike"
 
 #: src/frontends/xforms/FormDocument.C:283
 msgid ""
@@ -4436,9 +4102,8 @@ msgid "into chosen document class"
 msgstr "v izbrani razred spisa"
 
 #: src/frontends/xforms/FormDocument.C:445
-#, fuzzy
 msgid "Errors loading new document class."
-msgstr "Ni moè preklopiti na novi razred spisa."
+msgstr "Napaka pri nalaganju razreda novega dokumenta."
 
 #: src/frontends/xforms/FormDocument.C:446
 #: src/frontends/xforms/FormDocument.C:1105
@@ -4544,9 +4209,8 @@ msgid "Separation"
 msgstr "Separacija"
 
 #: src/frontends/xforms/form_document.C:247
-#, fuzzy
 msgid "Page cols"
-msgstr "Strani:"
+msgstr "Stolpci strani"
 
 #: src/frontends/xforms/form_document.C:250
 msgid "Sides"
@@ -4605,9 +4269,8 @@ msgid "Skip|#K"
 msgstr "Preskok|#P"
 
 #: src/frontends/xforms/form_document.C:392
-#, fuzzy
 msgid "Quote Style    "
-msgstr "Nastavitev vrste narekovajev"
+msgstr "Slog narekovajev    "
 
 #: src/frontends/xforms/form_document.C:394
 msgid "Encoding:|#D"
@@ -4626,9 +4289,8 @@ msgid "Double|#D"
 msgstr "Dvojni|#D"
 
 #: src/frontends/xforms/form_document.C:427
-#, fuzzy
 msgid "Language:|#L"
-msgstr "Jezik:"
+msgstr "Jezik:|#J"
 
 #: src/frontends/xforms/form_document.C:458
 msgid "Float Placement:|#L"
@@ -4716,9 +4378,8 @@ msgid "Clipart"
 msgstr "Izrezek"
 
 #: src/frontends/xforms/form_graphics.C:33
-#, fuzzy
 msgid "Graphics File|#F"
-msgstr "Datoteko|#D"
+msgstr "Grafièna datoteka|#D"
 
 #: src/frontends/xforms/form_graphics.C:39 src/insets/insetinclude.C:45
 #: src/insets/insetinclude.C:46
@@ -4727,9 +4388,9 @@ msgstr "Brskaj|#B"
 
 #: src/frontends/xforms/form_graphics.C:59
 #: src/frontends/xforms/form_graphics.C:76
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "% of Page"
-msgstr "% strani|#g"
+msgstr "% strani"
 
 #: src/frontends/xforms/form_graphics.C:61
 #: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:409
@@ -4739,81 +4400,70 @@ msgstr "privzeta"
 #: src/frontends/xforms/form_graphics.C:64
 #: src/frontends/xforms/form_graphics.C:80
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/frontends/xforms/form_graphics.C:66
 #: src/frontends/xforms/form_graphics.C:78
 msgid "Inch"
-msgstr ""
+msgstr "palcev"
 
 #: src/frontends/xforms/form_graphics.C:69
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "% of Column"
-msgstr "% stolpca|#o"
+msgstr "% stolpca"
 
 #: src/frontends/xforms/form_graphics.C:90
-#, fuzzy
 msgid "in Monochrome|#M"
-msgstr "Prika¾i èrno-belo|#b"
+msgstr "v èrno-belem|#r"
 
 #: src/frontends/xforms/form_graphics.C:96
-#, fuzzy
 msgid "in Grayscale|#G"
-msgstr "Prika¾i v sivini|#s"
+msgstr "v sivini|#s"
 
 #: src/frontends/xforms/form_graphics.C:101
-#, fuzzy
 msgid "in Color|#C"
-msgstr "Barva:|#B"
+msgstr "v barvah|#b"
 
 #: src/frontends/xforms/form_graphics.C:106
-#, fuzzy
 msgid "Don't display|#D"
-msgstr "[ni prikazano]"
+msgstr "Ne prika¾i|#N"
 
 #: src/frontends/xforms/form_graphics.C:112
-#, fuzzy
 msgid "Rotate"
-msgstr "Zasuèi za 90°"
+msgstr "Zasuèi"
 
 #: src/frontends/xforms/form_graphics.C:114
-#, fuzzy
 msgid "Angle|#A"
-msgstr "Kot:|#L"
+msgstr "Kot|#K"
 
 #: src/frontends/xforms/form_graphics.C:120
-#, fuzzy
 msgid "Inline Figure|#I"
-msgstr "Vstavi sliko"
+msgstr "Vstavi sliko|#V"
 
 #: src/frontends/xforms/form_graphics.C:128
-#, fuzzy
 msgid "Subcaption|#S"
-msgstr "Pojasnilo|#k"
+msgstr "Podpojasnilo|#k"
 
 #: src/frontends/xforms/form_graphics.C:135 src/frontends/xforms/form_ref.C:33
 #: src/frontends/xforms/form_toc.C:32
-#, fuzzy
 msgid "Update|#U"
-msgstr "Osve¾i|#Oo"
+msgstr "Osve¾i|#O"
 
 #: src/frontends/xforms/form_graphics.C:141
 msgid "Ok"
-msgstr ""
+msgstr "V redu"
 
 #: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
 msgid "Index"
 msgstr "Stvarno kazalo"
 
 #: src/frontends/xforms/form_index.C:29
-#, fuzzy
 msgid "Keyword|#K"
-msgstr "Kljuèna beseda:|#K"
+msgstr "Kljuèna beseda|#K"
 
 #: src/frontends/xforms/FormParagraph.C:33
-#, fuzzy
 msgid "Paragraph Layout"
-msgstr "Naèrt OdstavkaEkstra"
+msgstr "Videz odstavka"
 
 #: src/frontends/xforms/FormParagraph.C:92
 #: src/frontends/xforms/FormParagraph.C:95
@@ -4822,9 +4472,8 @@ msgstr " Niè | Standarden | Smallskip | Medskip | Bigskip | VFill | Dol¾ina "
 
 #. now make them fit together
 #: src/frontends/xforms/FormParagraph.C:132
-#, fuzzy
 msgid "General"
-msgstr "normalne"
+msgstr "Splo¹no"
 
 #: src/frontends/xforms/FormParagraph.C:680
 #: src/frontends/xforms/FormParagraph.C:717
@@ -4960,51 +4609,45 @@ msgstr "Floatflt|#F"
 #: src/frontends/xforms/form_paragraph.C:317
 #: src/frontends/xforms/form_preferences.C:38
 #: src/frontends/xforms/form_print.C:63
-#, fuzzy
 msgid "Cancel|C#C^["
-msgstr "Preklièi|^["
+msgstr "Preklièi|P#P^["
 
 #: src/frontends/xforms/FormPreferences.C:68
-#, fuzzy
 msgid "Preferences"
-msgstr "Vstavi referenco"
+msgstr "Izbire"
 
 #: src/frontends/xforms/FormPreferences.C:220
 msgid "Look & Feel"
-msgstr ""
+msgstr "Videz in obèutek"
 
 #: src/frontends/xforms/FormPreferences.C:223
 msgid "Lang Opts"
-msgstr ""
+msgstr "Jezikovne izbire"
 
 #: src/frontends/xforms/FormPreferences.C:226
 #: src/frontends/xforms/FormPreferences.C:255
-#, fuzzy
 msgid "Converters"
-msgstr "Sredina|#n"
+msgstr "Pretvorniki"
 
 #: src/frontends/xforms/FormPreferences.C:229
-#, fuzzy
 msgid "Inputs"
-msgstr "Vhod"
+msgstr "Vhodi"
 
 #: src/frontends/xforms/FormPreferences.C:232
 msgid "Outputs"
-msgstr ""
+msgstr "Izhodi"
 
 #: src/frontends/xforms/FormPreferences.C:238
-#, fuzzy
 msgid "Screen Fonts"
-msgstr "Zaslonske izbire"
+msgstr "Zaslonske pisave"
 
 #: src/frontends/xforms/FormPreferences.C:241
 msgid "Interface"
-msgstr ""
+msgstr "Vmesnik"
 
 #: src/frontends/xforms/FormPreferences.C:244
-#, fuzzy
 msgid "Colors"
-msgstr "Zapri"
+msgstr "Barve"
 
 #: src/frontends/xforms/FormPreferences.C:247
 #: src/frontends/xforms/FormPreferences.C:264
@@ -5013,113 +4656,116 @@ msgid "Misc"
 msgstr "Razno"
 
 #: src/frontends/xforms/FormPreferences.C:252
-#, fuzzy
 msgid "Formats"
-msgstr "Floatflt|#F"
+msgstr "Formati"
 
 #: src/frontends/xforms/FormPreferences.C:261
-#, fuzzy
 msgid "Paths"
-msgstr "Matematika"
+msgstr "Poti"
 
 #: src/frontends/xforms/FormPreferences.C:269
-#, fuzzy
 msgid "Printer"
-msgstr "Tiskaj"
+msgstr "Tiskalnik"
 
 #: src/frontends/xforms/FormPreferences.C:277
-#, fuzzy
 msgid "Spell checker"
 msgstr "Èrkovalnik"
 
 #: src/frontends/xforms/FormPreferences.C:533
 msgid "LyX objects that can be assigned a color."
-msgstr ""
+msgstr "LyX pravi, da temu ne more biti prirejena barva."
 
 #: src/frontends/xforms/FormPreferences.C:536
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
+"Spremenite barvo predmeta v LyXu. Pozor: potem morate "
+"\"Uveljaviti\" spremembo."
 
 #: src/frontends/xforms/FormPreferences.C:544
 msgid "Find a new color."
-msgstr ""
+msgstr "Najdi novo barvo."
 
 #: src/frontends/xforms/FormPreferences.C:547
 msgid "Toggle between RGB and HSV color spaces."
-msgstr ""
+msgstr "Preklopi med barvnim prostorom RGB in HSV."
 
 #: src/frontends/xforms/FormPreferences.C:742
 msgid "GUI background"
-msgstr ""
+msgstr "Ozadje grafiènega vmesnika"
 
 #: src/frontends/xforms/FormPreferences.C:748
 msgid "GUI text"
-msgstr ""
+msgstr "Besedilo grafiènega vmesnika"
 
 #: src/frontends/xforms/FormPreferences.C:757
-#, fuzzy
 msgid "GUI selection"
-msgstr "Okrasek"
+msgstr "Izbira grafiènega vmesnika"
 
 #: src/frontends/xforms/FormPreferences.C:763
-#, fuzzy
 msgid "GUI pointer"
-msgstr "Ni moè tiskati"
+msgstr "Kazalec grafiènega vmesnika"
 
 #: src/frontends/xforms/FormPreferences.C:896
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: src/frontends/xforms/FormPreferences.C:928
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: src/frontends/xforms/FormPreferences.C:1004
 msgid "All the currently defined converters known to LyX."
-msgstr ""
+msgstr "Vsi trenutno definirani pretvorniki, ki jih pozna LyX."
 
 #: src/frontends/xforms/FormPreferences.C:1006
 msgid "Convert \"from\" this format"
-msgstr ""
+msgstr "Pretvori \"iz\" tega formata"
 
 #: src/frontends/xforms/FormPreferences.C:1008
 msgid "Convert \"to\" this format"
-msgstr ""
+msgstr "Pretvori \"v\" ta format"
 
 #: src/frontends/xforms/FormPreferences.C:1010
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
 msgstr ""
+"Ukaz za pretvorbo.  $$i je ime vhodne datoteke, $$b je ime datoteke "
+"brez pripone in $$o ime izhodne datoteke."
 
 #: src/frontends/xforms/FormPreferences.C:1012
 msgid "Flags that control the converter behavior"
-msgstr ""
+msgstr "Izbire, ki nadzorujejo obna¹anje pretvornika"
 
 #: src/frontends/xforms/FormPreferences.C:1014
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
 msgstr ""
+"Odstranite trenutni pretvornik s seznama dostopnih. Vedite: po "
+"spremembi jo morate ¹e \"Uveljaviti\"."
 
 #: src/frontends/xforms/FormPreferences.C:1016
 #: src/frontends/xforms/FormPreferences.C:1288
-#, fuzzy
 msgid "Add"
-msgstr "Dodaj v|#t"
+msgstr "Dodaj"
 
 #: src/frontends/xforms/FormPreferences.C:1017
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
 msgstr ""
+"Dodajte trenutni pretvornik v seznam dostopnih. Vedite: po spremembi "
+"jo morate ¹e \"Uveljaviti\"."
 
 #: src/frontends/xforms/FormPreferences.C:1019
 msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
 msgstr ""
+"Spremenite vsebino trenutnega pretvornika. Vedite: po spremembi jo "
+"morate ¹e \"Uveljaviti\"."
 
 #: src/frontends/xforms/FormPreferences.C:1112
 #: src/frontends/xforms/FormPreferences.C:1114
@@ -5130,9 +4776,8 @@ msgstr ""
 #: src/frontends/xforms/FormPreferences.C:1438
 #: src/frontends/xforms/FormPreferences.C:1440
 #: src/frontends/xforms/form_preferences.C:504
-#, fuzzy
 msgid "Modify|#M"
-msgstr "Srednje|#M"
+msgstr "Spremeni|#S"
 
 #: src/frontends/xforms/FormPreferences.C:1148
 #: src/frontends/xforms/FormPreferences.C:1150

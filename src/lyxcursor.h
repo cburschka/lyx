@@ -24,6 +24,7 @@ struct Row;
  */
 class LyXCursor {
 public:
+	LyXCursor();
 	///
 	void par(LyXParagraph * p);
 	///

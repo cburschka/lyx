@@ -17,6 +17,12 @@
 #include "lyxcursor.h"
 
 
+LyXCursor::LyXCursor() : par_(0), pos_(0), boundary_(false),
+			 x_(0), x_fix_(0), y_(0), row_(0)
+{
+}
+
+
 void LyXCursor::par(LyXParagraph * p) 
 {
 	par_ = p;

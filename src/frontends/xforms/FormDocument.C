@@ -154,6 +154,7 @@ void FormDocument::build()
 #ifdef USE_CLASS_COMBO
     // The language is a combo-box and has to be inserted manually
     obj = class_->choice_doc_class;
+    fl_deactivate_object(obj);
     fl_addto_form(class_->form);
     combo_doc_class = new Combox(FL_COMBOX_DROPLIST);
     combo_doc_class->add(obj->x, obj->y, obj->w, obj->h, 400,
@@ -214,6 +215,7 @@ void FormDocument::build()
 
     // The language is a combo-box and has to be inserted manually
     obj = language_->choice_language;
+    fl_deactivate_object(obj);
     fl_addto_form(language_->form);
     combo_language = new Combox(FL_COMBOX_DROPLIST);
     combo_language->add(obj->x, obj->y, obj->w, obj->h, 400,
@@ -234,7 +236,6 @@ void FormDocument::build()
 		    _(" ``text'' | ''text'' | ,,text`` | ,,text'' |"
 		      " «text» | »text« "));
 
-    bc_.addReadOnly (language_->choice_language);
     bc_.addReadOnly (language_->choice_inputenc);
 
     // the document options form

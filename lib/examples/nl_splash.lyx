@@ -1,6 +1,5 @@
-#This file was created by <maarten> Fri Jul 23 14:44:46 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 2.17
 \textclass article
 \language dutch
 \inputencoding default
@@ -28,29 +27,32 @@
 Welkom bij LyX!
 \layout Section*
 
-De Belangrijkste N Dingen die je moet weten om LyX te gebruiken
+De Belangrijkste Dingen die je moet weten als je LyX gebruikt
 \layout Enumerate
 
 LyX komt met zeer goede documentatie---gebruik die! De documentatie is momenteel
- nog niet in het Nederlands vertaald maar wordt in het Engels meegeleverd.
+ nog niet volledig in het Nederlands vertaald maar wordt tevens in het Engels
+ meegeleverd.
  Begin met 
 \family sans 
 \bar under 
 H
 \bar default 
-elp->
+elp\SpecialChar \menuseparator
+
 \bar under 
 I
 \bar default 
 ntroduction
 \family default 
-, dat je een korte introductie tot de documentatie geeft.
+, wat je een korte inleiding tot de documentatie zal geven.
  Leer daarna LyX te gebruiken met 
 \family sans 
 \bar under 
 H
 \bar default 
-elp->
+elp\SpecialChar \menuseparator
+
 \bar under 
 T
 \bar default 
@@ -68,8 +70,8 @@ document verwerker.
 \end_inset 
 
  LyX is bewust anders ontworpen dan normale tekstverwerkers---met LyX wordt
- het schrijven van documenten makkelijker.
- Maar alleen een beetje anders, dus geen reden om bang te zijn.
+ het schrijven van teksten makkelijker.
+ Een beetje anders maar geen reden om bang te zijn.
  De documentatie zal het allemaal duidelijk maken
 \begin_float footnote 
 \layout Standard
@@ -79,23 +81,23 @@ Hebben we al verteld dat je de documentatie moet lezen?
 .
 \layout Enumerate
 
-Het resultaat van LyX ziet er goed uit! Selecteer 
+Het resultaat van LyX ziet er prachtig uit! Doe 
 \family sans 
+nu 
 \bar under 
-F
+V
 \bar default 
-ile->View
-\protected_separator 
+iew\SpecialChar \menuseparator
 
 \bar under 
-d
+D
 \bar default 
-vi
+VI
 \family default 
- nu om het zelf te zien.
+ om het zelf te zien.
 \layout Enumerate
 
-Ja, LyX kan (bijna) alle LaTeX functionaliteit nabootsen.
+Jazeker, LyX kan (bijna) alle LaTeX functionaliteit nabootsen.
  En ja, LyX kan LaTeX bestanden importeren.
  Ervaren LaTeX gebruikers kunnen de rest van de 
 \emph on 
@@ -114,10 +116,10 @@ LyX for LaTeX Users
  te gebruiken.) 
 \layout Enumerate
 
-LyX heeft veel mogelijkheden voor mensen die lezen en schrijven in een andere
- taal dan Engels.
- Daarnaast zijn de bindingen voor het toetsenbord, de knoppenbalk en veel
- andere zaken uiterst configureerbaar.
+LyX heeft veel extras voor mensen die in een andere taal lezen of schrijven
+ dan het Engels.
+ Daarnaast zijn de sneltoetsen, de knoppenbalk en veel andere zaken uiterst
+ configureerbaar.
  (Meestal door je 
 \family typewriter 
 lyxrc
@@ -128,7 +130,8 @@ lyxrc
 \bar under 
 H
 \bar default 
-elp->
+elp\SpecialChar \menuseparator
+
 \bar under 
 C
 \bar default 
@@ -137,11 +140,16 @@ ustomization
  voor de details.
 \layout Enumerate
 
-De LyX homepage is 
+De LyX home page is 
 \family typewriter 
-www.lyx.org
+
+\begin_inset LatexCommand \url{http://www.lyx.org/}
+
+\end_inset 
+
+
 \family default 
 .
- Leer over LyX, abonneer op LyX email lijst(en), doe de LyX Graphical Tour,
- en meer.
+ Haal informatie over LyX, abonneer je op LyX email lijst(en), doe de LyX
+ Graphical Tour, en meer.
 \the_end

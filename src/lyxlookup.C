@@ -45,31 +45,40 @@ void InitLyXLookup(Display * display, Window window)
 			<< endl;
 
 	// This part could be done before opening display
+	string oldlocale = setlocale(LC_CTYPE, 0);
 	setlocale(LC_CTYPE, "");
        	if (!XSupportsLocale()) {
 		lyxerr[Debug::KEY]
 			<< "InitLyXLookup: X does not support this locale."
 			<< endl;
 		return;
-	} 
-	if (!XSetLocaleModifiers("")) {
+	}
+	// reset the LC_CTYPE locale to previous value.
+	setlocale(LC_CTYPE, oldlocale.c_str());
+	
+	char const * locmod;
+	if (!(locmod = XSetLocaleModifiers(""))) {
 		lyxerr[Debug::KEY] << "InitLyXLookup: Could not set modifiers "
 			"for this locale." << endl;
 		return;
 	}
+	else
+		lyxerr[Debug::KEY] << "InitLyXLookup: X locale modifiers are `"
+				   << locmod << '\'' << endl;
 	
 	// This part will have to be done for each frame
 	xim = XOpenIM (display, 0, 0, 0);
 	if (xim) {
-		xic = XCreateIC(xim, XNInputStyle,
-				XIMPreeditNothing | XIMStatusNothing,
+		xic = XCreateIC(xim,
+				XNInputStyle,
+				XIMPreeditNothing|XIMStatusNothing,
 				XNClientWindow, window,
 				XNFocusWindow, window, 
 				0);
 		
 		if (!xic) {
-			lyxerr[Debug::KEY] << "InitLyXLookup: could not create "
-				"an input context" << endl;
+			lyxerr[Debug::KEY] << "InitLyXLookup: "
+				"could not create an input context" << endl;
 			XCloseIM (xim);
 			xim = 0;
 		} 
@@ -81,21 +90,11 @@ void InitLyXLookup(Display * display, Window window)
 
 
 static
-bool isDeadEvent(XEvent * event,
-		  char * buffer_return, int bytes_buffer,
-		  KeySym * keysym_return)
+bool isDeadEvent(KeySym keysym)
 {
-	XLookupString(&event->xkey, buffer_return,
-		      bytes_buffer, keysym_return,
-		      0);
-
-	// somehow it is necessary to do the lookup. Why? (JMarc)
-	if (!lyxrc.override_x_deadkeys)
-		return false;
-
 	// Can this be done safely in any other way?
 	// This is all the dead keys I know of in X11R6.1
-	switch (*keysym_return) {
+	switch (keysym) {
 #ifdef XK_dead_grave
 	case XK_dead_grave:
 #endif
@@ -159,14 +158,27 @@ int LyXLookupString(XEvent * event,
 		    char * buffer_return, int bytes_buffer,
 		    KeySym * keysym_return) 
 {
+	if (event->type != KeyPress) {
+		lyxerr << "LyXLookupString: wrong event type: "
+		       << event->type << endl;
+		return 0;
+	}
+	
 	int result = 0;
 	if (xic) {
-		if (isDeadEvent(event, buffer_return, bytes_buffer,
-				keysym_return)) {
+#if 1
+		// somehow it is necessary to do the lookup. Why? (JMarc)
+		XLookupString(&event->xkey, buffer_return,
+			      bytes_buffer, keysym_return,
+			      0);
+		
+		if (lyxrc.override_x_deadkeys &&
+		    isDeadEvent(*keysym_return)) {
 			lyxerr[Debug::KEY]  
 				<< "LyXLookupString: found DeadEvent" << endl;
 			return 0;
 		}
+#endif
 #if 1
 		if (XFilterEvent (event, None)) {
 			lyxerr[Debug::KEY] <<"XFilterEvent" << endl;
@@ -174,9 +186,6 @@ int LyXLookupString(XEvent * event,
                         return 0;
 		}
 #endif
-		if (event->type != KeyPress)
-			lyxerr << "LyXLookupString: wrong event type" 
-			       <<  event->type << endl;
 		Status status_return = 0;
 		
 		result =  XmbLookupString(xic, &event->xkey, buffer_return,

@@ -1,3 +1,23 @@
+2001-01-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/Toolbar_pimpl.C (BubbleTimerCB): translate
+	the tooltip.
+	(set): ditto.
+
+	* src/spellchecker.C (sigchldhandler): add an #ifndef USE_PSPELL
+	around some ispell code.
+
+	* src/lyxcursor.[Ch]: add proper constructor, to avoid tons of
+	Unitialized Memory Read in purify.
+
+	* lib/examples/nl_splash.lyx: update from Tino Meinen.
+
+2001-01-04  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/frontends/xforms/FormDocument.C (FormDocument::build):
+	Disable class_->choice_doc_class and language_->choice_language to
+	allow using the class/language combox with keyboard.
+
 2001-01-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/snprintf.c (va_copy): only define va_copy if undefined

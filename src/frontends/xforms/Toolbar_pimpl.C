@@ -99,7 +99,7 @@ void BubbleTimerCB(FL_OBJECT *, long data)
 	// The trick we use to get the help text is to read the
 	// argument of the callback that has been registered for
 	// ToolBarCB.  (JMarc)
-	string help = lyxaction.helpText(ob->argument);
+	string help = _(lyxaction.helpText(ob->argument));
 	fl_show_oneliner(help.c_str(), ob->form->x + ob->x,
 			 ob->form->y + ob->y + ob->h);
 }
@@ -384,7 +384,7 @@ void Toolbar::Pimpl::set(bool doingmain)
 
 			// Set the tooltip
 #if FL_REVISION >= 89
-			string help = lyxaction.helpText(item->action);
+			string help = _(lyxaction.helpText(item->action));
 			fl_set_object_helper(obj, help.c_str());	
 #else
 			fl_set_object_posthandler(obj, C_Toolbar_BubblePost);

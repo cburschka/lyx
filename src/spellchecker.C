@@ -968,7 +968,8 @@ bool RunSpellChecker(BufferView * bv)
 
 #warning should go somewhere more sensible
 void sigchldhandler(pid_t pid, int * status)
-{ 
+{
+#ifndef USE_PSPELL
 	if (isp_pid > 0)
 		if (pid == isp_pid) {
 			isp_pid= -1;
@@ -976,5 +977,6 @@ void sigchldhandler(pid_t pid, int * status)
 							       to nonblocking so we can 
 							       continue */
 		}
+#endif
 	sigchldchecker(pid, status);
 }
