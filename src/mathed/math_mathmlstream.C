@@ -4,6 +4,7 @@
 #include "math_inset.h"
 #include "math_extern.h"
 #include "support/lyxalgo.h"
+#include "support/LOstream.h"
 
 
 using std::ostream;
