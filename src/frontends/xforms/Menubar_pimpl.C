@@ -43,6 +43,7 @@ namespace {
 
 // Some constants
 int const MENU_LABEL_SIZE = FL_NORMAL_SIZE;
+int const MENU_LABEL_STYLE = FL_BOLD_STYLE;
 int const mheight = 30;
 int const mbheight= 22;
 // where to place the menubar?
@@ -62,7 +63,7 @@ int const action_offset = 1000;
 inline
 int string_width(string const & str) 
 {
-	return fl_get_string_widthTAB(FL_NORMAL_STYLE, MENU_LABEL_SIZE,
+	return fl_get_string_widthTAB(MENU_LABEL_STYLE, MENU_LABEL_SIZE,
 				      str.c_str(),
 				      static_cast<int>(str.length()));
 }
@@ -134,7 +135,7 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 		fl_set_object_boxtype(obj, FL_FLAT_BOX);
 		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 		fl_set_object_lsize(obj, MENU_LABEL_SIZE);
-		fl_set_object_lstyle(obj, FL_NORMAL_STYLE);
+		fl_set_object_lstyle(obj, MENU_LABEL_STYLE);
 		fl_set_object_resize(obj, FL_RESIZE_ALL);
 		fl_set_object_gravity(obj, NorthWestGravity, 
 				      NorthWestGravity);

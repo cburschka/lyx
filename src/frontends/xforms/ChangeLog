@@ -1,3 +1,15 @@
+2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormFiledialog.C (Reread): used locally stored modtime variable
+	rather than make repeated calls to fileInfo.getModificationTime().
+
+	* xforms_helpers.C (ReadableFile, WriteableFile): added a couple of
+	isOK() checks to the use of the FileInfo instance and removed those
+	FIXMEs.
+
+	* Menubar_pimpl.C: added a variable MENU_LABEL_STYLE and use it.
+	Set it to FL_BOLD_STYLE, thereby fixing bugzilla bug #32.
+
 2002-01-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* form_*:

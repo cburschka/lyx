@@ -237,7 +237,7 @@ void LyXGUI::init()
 	// in setDefaults() (Matthias 140496)
 	// Moved from ::LyXGUI to ::init to allow popup font customization 
 	// (petr 120997).
- 	fl_setpup_fontstyle(FL_NORMAL_STYLE);
+ 	fl_setpup_fontstyle(FL_BOLD_STYLE);
  	fl_setpup_fontsize(FL_NORMAL_SIZE);
  	fl_setpup_color(FL_MCOL, FL_BLACK);
 	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);

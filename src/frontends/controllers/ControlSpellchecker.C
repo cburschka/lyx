@@ -233,17 +233,18 @@ void ControlSpellchecker::clearParams()
 	
 	lv_.view()->endOfSpellCheck();
 
-	// show closing message
-	view().partialUpdate(2);
+	// show closing message if any words were checked.
+	if (count_ > 0)
+		view().partialUpdate(2);
 
 	// reset values to initial
 	rtl_ = false;
-	word_ = "";
+	word_.erase();
 	newval_ = 0.0;
 	oldval_ = 0;
 	newvalue_ = 0;
 	count_ = 0;
-	message_ = "";
+	message_.erase();
 	stop_ = false;
 	result_ = SpellBase::ISP_OK;
 	speller_ = 0;

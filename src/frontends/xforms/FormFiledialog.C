@@ -285,9 +285,8 @@ void FileDialog::Private::Reread()
 		time_t modtime = fileInfo.getModificationTime();
 		string Time = ctime(&modtime);
 		
-		if (curTime > fileInfo.getModificationTime() + SIX_MONTH_SEC
-		    || curTime < fileInfo.getModificationTime()
-		    + ONE_HOUR_SEC) {
+		if (curTime > modtime + SIX_MONTH_SEC
+		    || curTime < modtime + ONE_HOUR_SEC) {
 			// The file is fairly old or in the future. POSIX says
 			// the cutoff is 6 months old. Allow a 1 hour slop
 			// factor for what is considered "the future", to

@@ -1,3 +1,8 @@
+2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* lyx_gui.C (init): set the style of the menu popups to
+	FL_BOLD_STYLE, thereby fixing bugzilla bug #32.
+
 2002-01-07  Juergen Vigna  <jug@sad.it>
 
 	* text.C (setHeightOfRow): small fix

@@ -1,3 +1,9 @@
+2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlSpellchecker.C (clearParams): show the closing message
+	only if some words have been checked, thereby fixing
+	bugzilla bug #52.
+
 2001-12-11  Michael A. Koziarski <michael@koziarski.org>
 
 	* ControlFloat.[Ch]: changes to prevent here definitely being used

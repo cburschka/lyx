@@ -460,13 +460,11 @@ bool RWInfo::WriteableFile(string const & name)
 
 	FileInfo d(name);
 
-	// FIXME: what is this supposed to do ?
-	// .newFile doesn't do what you think it does ... 
 	if (!d.isOK() || !d.isDir()) {
 		d.newFile(dir);
 	}
 
-	if (!d.isDir()) {
+	if (!d.isOK() || !d.isDir()) {
 		error_message = N_("Directory does not exist.");
 		return false;
 	}
@@ -507,12 +505,12 @@ bool RWInfo::ReadableFile(string const & name)
 	}
 
 	FileInfo d(name);
-	// FIXME: what is this supposed to do ?
+
 	if (!d.isOK() && !d.isDir()) {
 		d.newFile(dir);
 	}
 
-	if (!d.isDir()) {
+	if (!d.isOK() || !d.isDir()) {
 		error_message = N_("Directory does not exist.");
 		return false;
 	}
