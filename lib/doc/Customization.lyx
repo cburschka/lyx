@@ -1691,6 +1691,74 @@ odify
 .
 \layout Section
 
+BibTeX and makeindex
+\layout Standard
+
+Both the bibliography generating command (default 
+\family typewriter 
+bibtex
+\family default 
+) and the index generating command (default 
+\family typewriter 
+makeindex
+\family default 
+ with options 
+\family typewriter 
+-c
+\family default 
+ and 
+\family typewriter 
+-q
+\family default 
+) can be changed.
+ As an alternative for 
+\family typewriter 
+makeindex
+\family default 
+, 
+\family typewriter 
+xindy
+\family default 
+ can be recommended.
+ 
+\layout Standard
+
+The command to enter is
+\layout Quote
+
+
+\family typewriter 
+makeindex.sh -m $$lang
+\layout Standard
+
+where the placeholder 
+\family typewriter 
+$$lang
+\family default 
+ will be replaced by the chosen document (babel) language.
+ For this, you must 
+\layout Standard
+
+have installed the packages 
+\family typewriter 
+xindy
+\family default 
+ and 
+\family typewriter 
+make-rules
+\family default 
+ (
+\family typewriter 
+xindy-make-rules
+\family default 
+).
+ Type 
+\family typewriter 
+makeindex.sh
+\family default 
+ at a shell prompt for a help page.
+\layout Section
+
 ASCII export options
 \layout Standard
 \added_space_top bigskip \noindent 
