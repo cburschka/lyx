@@ -272,6 +272,7 @@ fi
 AC_CHECK_FUNCS(snprintf vsnprintf)
 LYX_CHECK_DECL(snprintf, stdio.h)
 LYX_CHECK_DECL(vsnprintf, stdio.h)
+LYX_CHECK_DECL(istreambuf_iterator, iterator)
 
 AC_CHECK_FUNCS(memmove memset strchr putenv setenv mkfifo \
   mkstemp mktemp)

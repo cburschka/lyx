@@ -1,3 +1,8 @@
+2001-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C (CutSelection): make the cursor valid before the call to
+	ClearSelection.
+
 2001-05-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* kbsequence.C (parse): de-uglify a bit the parsing code, which

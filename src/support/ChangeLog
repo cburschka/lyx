@@ -1,3 +1,7 @@
+2001-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxsum.C (sum): use istreambuf_iterator when available.
+
 2001-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxsum.C (sum): don't use sstream anymore, use istream_iterator

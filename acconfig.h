@@ -53,6 +53,10 @@
 /* Define if you have the function prototype for vsnprintf().  */
 #undef HAVE_DECL_VSNPRINTF
 
+/* Define if you have the function prototype istreambuf_iterator in
+   <iterator> */
+#undef HAVE_DECL_ISTREAMBUF_ITERATOR
+
 @BOTTOM@ 
 
 /************************************************************ 

@@ -1684,7 +1684,7 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 	// more than one paragraph
 	if (sel_start_cursor.par() == sel_end_cursor.par()) {
 		// only within one paragraph
-		endpar = sel_start_cursor.par();
+		endpar = sel_end_cursor.par();
 		int pos = sel_end_cursor.pos();
 		cap.cutSelection(sel_start_cursor.par(), &endpar,
 				 sel_start_cursor.pos(), pos,
@@ -1692,7 +1692,6 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 		sel_end_cursor.pos(pos);
 	} else {
 		endpar = sel_end_cursor.par();
-
 		int pos = sel_end_cursor.pos();
 		cap.cutSelection(sel_start_cursor.par(), &endpar,
 				 sel_start_cursor.pos(), pos,
@@ -1709,9 +1708,14 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 		sel_start_cursor.par()->StripLeadingSpaces(bview->buffer()->params.textclass);
 
 	RedoParagraphs(bview, sel_start_cursor, endpar);
-   
-	ClearSelection(bview);
+
+	// cutSelection can invalidate the cursor so we need to set
+	// it anew. (Lgb)
 	cursor = sel_start_cursor;
+
+	// need a valid cursor. (Lgb)
+	ClearSelection(bview);
+
 	SetCursor(bview, cursor.par(), cursor.pos());
 	sel_cursor = cursor;
 	UpdateCounters(bview, cursor.row());
@@ -2197,7 +2201,8 @@ void LyXText::SetCurrentFont(BufferView * bview) const
 	if (pos > 0) {
 		if (pos == cursor.par()->size())
 			--pos;
-		else if (cursor.par()->IsSeparator(pos)) {
+		else // potentional bug... BUG (Lgb)
+		if (cursor.par()->IsSeparator(pos)) {
 			if (pos > cursor.row()->pos() &&
 			    bidi_level(pos) % 2 == 
 			    bidi_level(pos - 1) % 2)

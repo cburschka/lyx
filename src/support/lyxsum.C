@@ -20,10 +20,6 @@
 
 #include "support/lyxlib.h"
 
-using std::ifstream;
-using std::ios;
-using std::istream_iterator;
-
 namespace {
 
 // DO _NOT_ CHANGE _ANYTHING_ IN THIS TABLE
@@ -111,10 +107,18 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 // And this would be the file interface.
 unsigned long lyx::sum(string const & file)
 {
-	ifstream ifs(file.c_str());
+#ifdef HAVE_DECL_ISTREAMBUF_ITERATOR
+	std::ifstream ifs(file.c_str());
 	if (!ifs) return 0;
-	ifs.unsetf(ios::skipws);
-	istream_iterator<char> beg(ifs);
-	istream_iterator<char> end;
+	std::istreambuf_iterator<char> beg(ifs);
+	std::istreambuf_iterator<char> end;
 	return do_crc(beg, end);
+#else
+	std::ifstream ifs(file.c_str());
+	if (!ifs) return 0;
+	ifs.unsetf(std::ios::skipws);
+	std::istream_iterator<char> beg(ifs);
+	std::istream_iterator<char> end;
+	return do_crc(beg, end);
+#endif
 }
