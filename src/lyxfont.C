@@ -700,33 +700,33 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 {
 	os << "\n";
 	if (orgfont.family() != family()) {
-		os << "\\family " << LyXFamilyNames[family()] << " \n";
+		os << "\\family " << LyXFamilyNames[family()] << "\n";
 	}
 	if (orgfont.series() != series()) {
-		os << "\\series " << LyXSeriesNames[series()] << " \n";
+		os << "\\series " << LyXSeriesNames[series()] << "\n";
 	}
 	if (orgfont.shape() != shape()) {
-		os << "\\shape " << LyXShapeNames[shape()] << " \n";
+		os << "\\shape " << LyXShapeNames[shape()] << "\n";
 	}
 	if (orgfont.size() != size()) {
-		os << "\\size " << LyXSizeNames[size()] << " \n";
+		os << "\\size " << LyXSizeNames[size()] << "\n";
 	}
 	if (orgfont.emph() != emph()) {
-		os << "\\emph " << LyXMiscNames[emph()] << " \n";
+		os << "\\emph " << LyXMiscNames[emph()] << "\n";
 	}
 	if (orgfont.number() != number()) {
-		os << "\\numeric " << LyXMiscNames[number()] << " \n";
+		os << "\\numeric " << LyXMiscNames[number()] << "\n";
 	}
 	if (orgfont.underbar() != underbar()) {
 		// This is only for backwards compatibility
 		switch (underbar()) {
-		case OFF:	os << "\\bar no \n"; break;
-		case ON:        os << "\\bar under \n"; break;
+		case OFF:	os << "\\bar no\n"; break;
+		case ON:        os << "\\bar under\n"; break;
 		case TOGGLE:	lyxerr << "LyXFont::lyxWriteFontChanges: "
 					"TOGGLE should not appear here!"
 				       << endl;
 		break;
-		case INHERIT:   os << "\\bar default \n"; break;
+		case INHERIT:   os << "\\bar default\n"; break;
 		case IGNORE:    lyxerr << "LyXFont::lyxWriteFontChanges: "
 					"IGNORE should not appear here!"
 				       << endl;
@@ -734,7 +734,7 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 		}
 	}
 	if (orgfont.noun() != noun()) {
-		os << "\\noun " << LyXMiscNames[noun()] << " \n";
+		os << "\\noun " << LyXMiscNames[noun()] << "\n";
 	}
 	if (orgfont.color() != color()) {
 		// To make us file compatible with older

@@ -1,3 +1,9 @@
+2004-08-14  José Matos  <jamatos@lyx.org>
+
+	* insetbibitem.[Ch] (plaintext): added.
+
+	* insetcite.[Ch]: fix plaintext export.
+
 2004-08-14  Lars Gullik Bjonnes  <larsbj@lyx.org>
 
 	* insettext.[Ch] (setDrawFrame): take a bool, get rid of the

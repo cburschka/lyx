@@ -95,7 +95,7 @@ public:
 	    \param par if != 0 insert the file.
 	    \return \c false if file is not completely read.
 	*/
-	bool readBody(LyXLex &);
+	bool readDocument(LyXLex &);
 
 	///
 	void insertStringAsLines(ParagraphList & plist,

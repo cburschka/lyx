@@ -1873,7 +1873,6 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 {
 	static Change current_change;
 
-	bool the_end_read = false;
 	Paragraph::depth_type depth = 0;
 
 	while (lex.isOK()) {
@@ -1884,17 +1883,10 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 			continue;
 
 		if (token == "\\end_inset") {
-			the_end_read = true;
 			break;
 		}
 
 		if (token == "\\end_document") {
-#ifdef WITH_WARNINGS
-#warning Look here!
-#endif
-#if 0
-			lex.printError("\\end_document read in inset! Error in document!");
-#endif
 			return false;
 		}
 
@@ -1928,7 +1920,7 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 		}
 
 	}
-	return the_end_read;
+	return true;
 }
 
 

@@ -35,7 +35,7 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::CITE_CODE; }
 	///
-	int plaintext(Buffer const &, std::ostream &, int linelen) const;
+	int plaintext(Buffer const &, std::ostream &, OutputParams const &) const;
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;

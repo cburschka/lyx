@@ -1,3 +1,20 @@
+2004-08-14  José Matos  <jamatos@lyx.org>
+
+	* Buffer.[Ch] (readDocument): new name for old readBody.
+	* Buffer.C: new file format, new keywords: \begin_document,
+	\begin_header, \begin_body, \end_body.
+
+	* bufferparams.C (readToken): replace all calls to lex.nextToken
+	by lex.next(). Do the same to eatLine except where really needed.
+
+	* lyxfont.C (lyxWriteChanges): remove whitespaces in the end of
+	line when writing to the lyx file.
+
+	* output_plaintext.C (asciiParagraph): fix Bibliography style
+	handling.
+
+	* text.C (read): fix end of file handling.
+
 2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* MenuBackend.C (Menu::operator[]): new method to access

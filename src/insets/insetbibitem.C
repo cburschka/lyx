@@ -24,6 +24,7 @@
 #include "frontends/font_metrics.h"
 
 #include "support/lstrings.h"
+#include "support/std_ostream.h"
 #include "support/tostr.h"
 
 using lyx::support::prefixIs;
@@ -32,7 +33,7 @@ using lyx::support::strToInt;
 using std::max;
 using std::string;
 using std::auto_ptr;
-
+using std::ostream;
 
 int InsetBibitem::key_counter = 0;
 string const key_prefix = "key-";
@@ -123,6 +124,12 @@ string const InsetBibitem::getScreenLabel(Buffer const &) const
 	return getContents() + " [" + getBibLabel() + ']';
 }
 
+int InsetBibitem::plaintext(Buffer const &, ostream & os,
+			    OutputParams const &) const
+{
+	os << '[' << getCounter() << "] ";
+	return 0;
+}
 
 // ale070405 This function maybe shouldn't be here. We'll fix this at 0.13.
 int bibitemMaxWidth(BufferView * bv, LyXFont const &)

@@ -218,7 +218,7 @@ void BufferParams::setDefSkip(VSpace const & vs)
 string const BufferParams::readToken(LyXLex & lex, string const & token)
 {
 	if (token == "\\textclass") {
-		lex.eatLine();
+		lex.next();
 		string const classname = lex.getString();
 		pair<bool, lyx::textclass_type> pp =
 			textclasslist.NumberOfClass(classname);
@@ -242,12 +242,12 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\language") {
 		readLanguage(lex);
 	} else if (token == "\\inputencoding") {
-		lex.eatLine();
+		lex.next();
 		inputenc = lex.getString();
 	} else if (token == "\\graphics") {
 		readGraphicsDriver(lex);
 	} else if (token == "\\fontscheme") {
-		lex.eatLine();
+		lex.next();
 		fonts = lex.getString();
 	} else if (token == "\\paragraph_separation") {
 		int tmpret = lex.findToken(string_paragraph_separation);
@@ -256,7 +256,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		paragraph_separation =
 			static_cast<PARSEP>(tmpret);
 	} else if (token == "\\defskip") {
-		lex.nextToken();
+		lex.next();
 		pimpl_->defskip = VSpace(lex.getString());
 	} else if (token == "\\quotes_language") {
 		// FIXME: should be params.readQuotes()
@@ -288,7 +288,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		quotes_language = tmpl;
 	} else if (token == "\\quotes_times") {
 		// FIXME: should be params.readQuotes()
-		lex.nextToken();
+		lex.next();
 		switch (lex.getInteger()) {
 		case 1:
 			quotes_times = InsetQuotes::SingleQ;
@@ -311,14 +311,14 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		} else
 			paperpackage = PAPER_PACKAGES(tmpret);
 	} else if (token == "\\use_geometry") {
-		lex.nextToken();
+		lex.next();
 		use_geometry = lex.getInteger();
 	} else if (token == "\\use_amsmath") {
-		lex.nextToken();
+		lex.next();
 		use_amsmath = static_cast<AMS>(
 			lex.getInteger());
 	} else if (token == "\\cite_engine") {
-		lex.nextToken();
+		lex.next();
 		string const engine = lex.getString();
 
 		cite_engine = biblio::ENGINE_BASIC;
@@ -330,29 +330,29 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			cite_engine = biblio::ENGINE_JURABIB;
 
 	} else if (token == "\\use_bibtopic") {
-		lex.nextToken();
+		lex.next();
 		use_bibtopic = lex.getInteger();
 	} else if (token == "\\tracking_changes") {
-		lex.nextToken();
+		lex.next();
 		tracking_changes = lex.getInteger();
 	} else if (token == "\\branch") {
-		lex.nextToken();
+		lex.next();
 		string branch = lex.getString();
 		branchlist().add(branch);
 		while (true) {
-			lex.nextToken();
+			lex.next();
 			string const tok = lex.getString();
 			if (tok == "\\end_branch")
 				break;
 			Branch * branch_ptr = branchlist().find(branch);
 			if (tok == "\\selected") {
-				lex.nextToken();
+				lex.next();
 				if (branch_ptr)
 					branch_ptr->setSelected(lex.getInteger());
 			}
 			// not yet operational
 			if (tok == "\\color") {
-				lex.nextToken();
+				lex.eatLine();
 				string color = lex.getString();
 				if (branch_ptr)
 					branch_ptr->setColor(color);
@@ -364,7 +364,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			}
 		}
 	} else if (token == "\\author") {
-		lex.nextToken();
+		lex.next();
 		istringstream ss(lex.getString());
 		Author a;
 		ss >> a;
@@ -403,77 +403,55 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		lex.next();
 		footskip = lex.getString();
 	} else if (token == "\\paperfontsize") {
-		lex.nextToken();
-		fontsize = rtrim(lex.getString());
+		lex.next();
+		fontsize = lex.getString();
 	} else if (token == "\\papercolumns") {
-		lex.nextToken();
+		lex.next();
 		columns = lex.getInteger();
 	} else if (token == "\\papersides") {
-		lex.nextToken();
+		lex.next();
 		switch (lex.getInteger()) {
 		default:
 		case 1: sides = LyXTextClass::OneSide; break;
 		case 2: sides = LyXTextClass::TwoSides; break;
 		}
 	} else if (token == "\\paperpagestyle") {
-		lex.nextToken();
-		pagestyle = rtrim(lex.getString());
+		lex.next();
+		pagestyle = lex.getString();
 	} else if (token == "\\bullet") {
 		// FIXME: should be params.readBullets()
-		lex.nextToken();
+		lex.next();
 		int const index = lex.getInteger();
-		lex.nextToken();
+		lex.next();
 		int temp_int = lex.getInteger();
 		user_defined_bullet(index).setFont(temp_int);
 		temp_bullet(index).setFont(temp_int);
-		lex.nextToken();
+		lex.next();
 		temp_int = lex.getInteger();
 		user_defined_bullet(index).setCharacter(temp_int);
 		temp_bullet(index).setCharacter(temp_int);
-		lex.nextToken();
+		lex.next();
 		temp_int = lex.getInteger();
 		user_defined_bullet(index).setSize(temp_int);
 		temp_bullet(index).setSize(temp_int);
-		lex.nextToken();
-		string const temp_str = lex.getString();
-		if (temp_str != "\\end_bullet") {
-				// this element isn't really necessary for
-				// parsing but is easier for humans
-				// to understand bullets. Put it back and
-				// set a debug message?
-			lex.printError("\\end_bullet expected, got" + temp_str);
-				//how can I put it back?
-		}
 	} else if (token == "\\bulletLaTeX") {
 		// The bullet class should be able to read this.
-		lex.nextToken();
-		int const index = lex.getInteger();
 		lex.next();
+		int const index = lex.getInteger();
+		lex.next(true);
 		string temp_str = lex.getString();
-		string sum_str;
-		while (temp_str != "\\end_bullet") {
-				// this loop structure is needed when user
-				// enters an empty string since the first
-				// thing returned will be the \\end_bullet
-				// OR
-				// if the LaTeX entry has spaces. Each element
-				// therefore needs to be read in turn
-			sum_str += temp_str;
-			lex.next();
-			temp_str = lex.getString();
-		}
 
-		user_defined_bullet(index).setText(sum_str);
-		temp_bullet(index).setText(sum_str);
+		user_defined_bullet(index).setText(temp_str);
+		temp_bullet(index).setText(temp_str);
 	} else if (token == "\\secnumdepth") {
-		lex.nextToken();
+		lex.next();
 		secnumdepth = lex.getInteger();
 	} else if (token == "\\tocdepth") {
-		lex.nextToken();
+		lex.next();
 		tocdepth = lex.getInteger();
 	} else if (token == "\\spacing") {
 		lex.next();
-		string const tmp = rtrim(lex.getString());
+		string const tmp = lex.getString();
 		Spacing::Space tmp_space = Spacing::Default;
 		float tmp_val = 0.0;
 		if (tmp == "single") {
@@ -489,15 +467,9 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		} else {
 			lex.printError("Unknown spacing token: '$$Token'");
 		}
-#if 0 // FIXME: Handled in lyx2lyx ?
-		// Small hack so that files written with klyx will be
-		// parsed correctly.
-		if (first_par)
-			par->params().spacing(Spacing(tmp_space, tmp_val));
-#endif
 		spacing().set(tmp_space, tmp_val);
 	} else if (token == "\\float_placement") {
-		lex.nextToken();
+		lex.next();
 		float_placement = lex.getString();
 	} else {
 		return token;
@@ -624,20 +596,15 @@ void BufferParams::writeFile(ostream & os) const
 	for (int i = 0; i < 4; ++i) {
 		if (user_defined_bullet(i) != ITEMIZE_DEFAULTS[i]) {
 			if (user_defined_bullet(i).getFont() != -1) {
-				os << "\\bullet " << i
-				   << "\n\t"
-				   << user_defined_bullet(i).getFont()
-				   << "\n\t"
-				   << user_defined_bullet(i).getCharacter()
-				   << "\n\t"
-				   << user_defined_bullet(i).getSize()
-				   << "\n\\end_bullet\n";
+				os << "\\bullet " << i << " "
+				   << user_defined_bullet(i).getFont() << " "
+				   << user_defined_bullet(i).getCharacter() << " "
+				   << user_defined_bullet(i).getSize() << "\n";
 			}
 			else {
-				os << "\\bulletLaTeX " << i
-				   << "\n\t\""
+				os << "\\bulletLaTeX " << i << " \""
 				   << user_defined_bullet(i).getText()
-				   << "\"\n\\end_bullet\n";
+				   << "\"\n";
 			}
 		}
 	}

@@ -313,7 +313,7 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 }
 
 
-int InsetCitation::plaintext(Buffer const & buffer, ostream & os, int) const
+int InsetCitation::plaintext(Buffer const & buffer, ostream & os, OutputParams const &) const
 {
 	if (cache.params == params() &&
 	    cache.engine == biblio::getEngine(buffer))

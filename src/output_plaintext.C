@@ -84,7 +84,7 @@ void asciiParagraph(Buffer const & buf,
 {
 	int ltype = 0;
 	Paragraph::depth_type ltype_depth = 0;
-	bool ref_printed = false;
+	static bool ref_printed = false;
 	Paragraph::depth_type depth = par.params().depth();
 
 	// First write the layout

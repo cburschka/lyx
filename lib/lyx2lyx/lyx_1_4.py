@@ -1335,6 +1335,9 @@ def revert_cite_engine(header, opt):
     header.insert(i, "\\use_natbib " + use_natbib)
 
 
+##
+# Paper package
+#
 def convert_paperpackage(header, opt):
     i = find_token(header, "\\paperpackage", 0)
     if i == -1:
@@ -1359,9 +1362,91 @@ def revert_paperpackage(header, opt):
 
 
 ##
+# Bullets
+#
+def convert_bullets(header, opt):
+    i = 0
+    while 1:
+        i = find_token(header, "\\bullet", i)
+        if i == -1:
+            return
+        if header[i][:12] == '\\bulletLaTeX':
+            header[i] = header[i] + ' ' + strip(header[i+1])
+            n = 3
+        else:
+            header[i] = header[i] + ' ' + strip(header[i+1]) +\
+                        ' ' + strip(header[i+2]) + ' ' + strip(header[i+3])
+            n = 5
+        del header[i+1:i + n]
+        i = i + 1
+
+
+def revert_bullets(header, opt):
+    i = 0
+    while 1:
+        i = find_token(header, "\\bullet", i)
+        if i == -1:
+            return
+        if header[i][:12] == '\\bulletLaTeX':
+            n = find(header[i], '"')
+            if n == -1:
+                opt.warn("Malformed header")
+                return
+            else:
+                header[i:i+1] = [header[i][:n-1],'\t' + header[i][n:], '\\end_bullet']
+            i = i + 3
+        else:
+            frag = split(header[i])
+            if len(frag) != 5:
+                opt.warn("Malformed header")
+                return
+            else:
+                header[i:i+1] = [frag[0] + ' ' + frag[1],
+                                 '\t' + frag[2],
+                                 '\t' + frag[3],
+                                 '\t' + frag[4],
+                                 '\\end_bullet']
+                i = i + 5
+
+
+##
+# \begin_header and \begin_document
+#
+def add_begin_header(header, opt):
+    i = find_token(header, '\\lyxformat', 0)
+    header.insert(i+1, '\\begin_header')
+    header.insert(i+1, '\\begin_document')
+
+
+def remove_begin_header(header, opt):
+    i = find_token(header, "\\begin_header", 0)
+    if i != -1:
+        del header[i]
+    i = find_token(header, "\\begin_document", 0)
+    if i != -1:
+        del header[i]
+
+
+##
+# \begin_body and \end_body
+#
+def add_begin_body(body, opt):
+    body.insert(0, '\\begin_body')
+    i = find_token(body, "\\end_document", 0)
+    body.insert(i, '\\end_body')
+
+def remove_begin_body(body, opt):
+    i = find_token(body, "\\begin_body", 0)
+    if i != -1:
+        del body[i]
+    i = find_token(body, "\\end_body", 0)
+    if i != -1:
+        del body[i]
+
+
+##
 # Convertion hub
 #
-
 def convert(header, body, opt):
     if opt.format < 223:
         insert_tracking_changes(header)
@@ -1438,8 +1523,22 @@ def convert(header, body, opt):
     if opt.format < 235:
         convert_paperpackage(header, opt)
 	opt.format = 235
+    if opt.end == opt.format: return
+
+    if opt.format < 236:
+        convert_bullets(header, opt)
+        add_begin_header(header, opt)
+        add_begin_body(body, opt)
+        opt.format = 236
 
 def revert(header, body, opt):
+    if opt.format > 235:
+        remove_begin_body(body, opt)
+        remove_begin_header(header, opt)
+        revert_bullets(header, opt)
+        opt.format = 235
+    if opt.end == opt.format: return
+
     if opt.format > 234:
         revert_paperpackage(header, opt)
 	opt.format = 234

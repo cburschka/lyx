@@ -15,8 +15,6 @@
 
 #include "insetcommand.h"
 
-class Buffer;
-
 /** Used to insert bibitem's information (key and label)
 
   Must be automatically inserted as the first object in a
@@ -48,6 +46,9 @@ public:
 	int getCounter() const { return counter; }
 	///
 	std::string const getBibLabel() const;
+	///
+	int plaintext(Buffer const &, std::ostream &,
+		      OutputParams const &) const;
 protected:
 	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);

@@ -137,7 +137,7 @@ extern BufferList bufferlist;
 
 namespace {
 
-const int LYX_FORMAT = 235;
+const int LYX_FORMAT = 236;
 
 } // namespace anon
 
@@ -393,9 +393,11 @@ void unknownClass(string const & unknown)
 int Buffer::readHeader(LyXLex & lex)
 {
 	int unknown_tokens = 0;
+	int line = -1;
+	int begin_header_line = -1;
 
 	while (lex.isOK()) {
-		lex.nextToken();
+		lex.next();
 		string const token = lex.getString();
 
 		if (token.empty())
@@ -404,13 +406,18 @@ int Buffer::readHeader(LyXLex & lex)
 		if (token == "\\end_header")
 			break;
 
+		++line;
+		if (token == "\\begin_header") {
+			begin_header_line = line;
+			continue;
+		}
+
 		lyxerr[Debug::PARSER] << "Handling header token: `"
 				      << token << '\'' << endl;
 
-
 		string unknown = params().readToken(lex, token);
 		if (!unknown.empty()) {
-			if (unknown[0] != '\\') {
+			if (unknown[0] != '\\' and token == "\\textclass") {
 				unknownClass(unknown);
 			} else {
 				++unknown_tokens;
@@ -423,6 +430,10 @@ int Buffer::readHeader(LyXLex & lex)
 			}
 		}
 	}
+	if (begin_header_line) {
+		string const s = _("\\begin_header is missing");
+		error(ErrorItem(_("Header error"), s, -1, 0, 0));
+	}
 	return unknown_tokens;
 }
 
@@ -430,8 +441,15 @@ int Buffer::readHeader(LyXLex & lex)
 // Uwe C. Schroeder
 // changed to be public and have one parameter
 // Returns false if "\end_document" is not read (Asger)
-bool Buffer::readBody(LyXLex & lex)
+bool Buffer::readDocument(LyXLex & lex)
 {
+	lex.next();
+	string const token = lex.getString();
+	if (token != "\\begin_document") {
+		string const s = _("\\begin_document is missing");
+		error(ErrorItem(_("Header error"), s, -1, 0, 0));
+	}
+
 	if (paragraphs().empty()) {
 		readHeader(lex);
 		if (!params().getLyXTextClass().load()) {
@@ -581,7 +599,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, par_type pit)
 		return false;
 	}
 
-	lex.eatLine();
+	lex.next();
 	string tmp_format = lex.getString();
 	//lyxerr << "LyX Format: `" << tmp_format << '\'' << endl;
 	// if present remove ".," from string.
@@ -592,13 +610,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, par_type pit)
 	int file_format = strToInt(tmp_format);
 	//lyxerr << "format: " << file_format << endl;
 
-	if (file_format > LYX_FORMAT) {
-		Alert::warning(_("Document format failure"),
-			       bformat(_("%1$s was created with a newer"
-					 " version of LyX. This is likely to"
-					 " cause problems."),
-					 filename));
-	} else if (file_format < LYX_FORMAT) {
+	if (file_format != LYX_FORMAT) {
 		string const tmpfile = tempName();
 		if (tmpfile.empty()) {
 			Alert::error(_("Conversion failed"),
@@ -642,26 +654,18 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, par_type pit)
 
 	}
 
-	bool the_end = readBody(lex);
-	//lyxerr << "removing " << MacroTable::localMacros().size()
-	//	<< " temporary macro entries" << endl;
-	//MacroTable::localMacros().clear();
-	params().setPaperStuff();
-
-#ifdef WITH_WARNINGS
-#warning Look here!
-#endif
-#if 0
-	if (token == "\\end_document")
-		the_end_read = true;
-
-	if (!the_end) {
+	if (readDocument(lex)) {
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s ended unexpectedly, which means"
 				       " that it is probably corrupted."),
 				       filename));
 	}
-#endif
+
+	//lyxerr << "removing " << MacroTable::localMacros().size()
+	//	<< " temporary macro entries" << endl;
+	//MacroTable::localMacros().clear();
+	params().setPaperStuff();
+
 	pimpl_->file_fully_loaded = true;
 	return true;
 }
@@ -784,18 +788,21 @@ bool Buffer::do_writeFile(ostream & ofs) const
 	// write out a comment in the top of the file
 	ofs << "#LyX " << lyx_version
 	    << " created this file. For more info see http://www.lyx.org/\n"
-	    << "\\lyxformat " << LYX_FORMAT << "\n";
+	    << "\\lyxformat " << LYX_FORMAT << "\n"
+	    << "\\begin_document\n";
 
 	// now write out the buffer parameters.
+	ofs << "\n\\begin_header\n";
 	params().writeFile(ofs);
-
 	ofs << "\\end_header\n";
-
+	
 	// write the text
+	ofs << "\n\\begin_body\n";
 	text().write(*this, ofs);
+	ofs << "\n\\end_body\n";
 
 	// Write marker that shows file is complete
-	ofs << "\n\\end_document" << endl;
+	ofs << "\\end_document" << endl;
 
 	// Shouldn't really be needed....
 	//ofs.close();
