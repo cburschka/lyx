@@ -1,3 +1,9 @@
+2003-06-07  José Matos  <jamatos@fep.up.pt>
+
+	* insethfill.[Ch] (linuxdoc, docbook): implement output
+	* insetspace.C (linuxdoc, docbook): remove coments as the code
+	is correct.
+
 2003-06-06  José Matos  <jamatos@fep.up.pt>
 
 	* insetnewline.C (linuxdoc,docbook): return newline, fix bug 1148.

@@ -33,6 +33,10 @@ public:
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
+	int linuxdoc(Buffer const *, std::ostream &) const;
+	///
+	int docbook(Buffer const *, std::ostream &, bool) const;
+	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }

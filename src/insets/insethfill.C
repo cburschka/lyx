@@ -36,6 +36,19 @@ int InsetHFill::ascii(Buffer const *, ostream & os, int) const
 }
 
 
+int InsetHFill::linuxdoc(Buffer const *, std::ostream & os) const
+{
+	os << '\n';
+	return 0;
+}
+
+
+int InsetHFill::docbook(Buffer const *, std::ostream & os, bool) const
+{
+	os << '\n';
+	return 0;
+}
+
 void InsetHFill::write(Buffer const *, ostream & os) const
 {
 	os << "\n\\hfill \n";

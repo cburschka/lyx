@@ -213,7 +213,6 @@ int InsetSpace::ascii(Buffer const *, ostream & os, int) const
 int InsetSpace::linuxdoc(Buffer const *, ostream & os) const
 {
 	switch (kind_) {
-	// fixme: correct?
 	case NORMAL:
 	case QUAD:
 	case QQUAD:
@@ -234,7 +233,6 @@ int InsetSpace::linuxdoc(Buffer const *, ostream & os) const
 int InsetSpace::docbook(Buffer const *, ostream & os, bool) const
 {
 	switch (kind_) {
-	// fixme: correct?
 	case NORMAL:
 	case QUAD:
 	case QQUAD:
