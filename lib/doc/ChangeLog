@@ -1,3 +1,18 @@
+2004-10-17  José Matos  <jamatos@lyx.org>
+
+	* Depend.pl: removed.
+
+	* depend.py: new script to generate Makefile file to build TOCs.
+
+	* Doc_toc.pl: removed.
+
+	* doc_toc.py: script to extract TOC from documentation files and
+	create a new files with that information.
+
+	* TOC_top/* : removed.
+
+	* Makefile.am: change accordingly.
+
 2004-10-11  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* Customization.lyx: added description of BibTeX,

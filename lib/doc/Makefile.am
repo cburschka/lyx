@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += LyXConfig.lyx LaTeXConfig.lyx Makefile.depend
 
-EXTRA_DIST = Depend.pl Doc_toc.pl LyXConfig.lyx.in README.Documentation $(docfiles) $(toc_DATA)
+EXTRA_DIST = depend.py doc_toc.py LyXConfig.lyx.in README.Documentation $(docfiles)
 
 docfiles = \
 	cs_TOC.lyx \
@@ -89,16 +89,6 @@ doc_DATA = \
 	$(docfiles) \
 	LaTeXConfig.lyx
 
-tocdir = $(docdir)/TOC_top
-toc_DATA = \
-	TOC_top/da_TOC_top.lyx \
-	TOC_top/de_TOC_top.lyx \
-	TOC_top/fr_TOC_top.lyx \
-	TOC_top/ru_TOC_top.lyx \
-	TOC_top/sl_TOC_top.lyx \
-	TOC_top/TOC_top.lyx
-
-
 # TODO can we instead just #include the DEPENDFILE in this Makefile?
 # problem with this is that the DEPENDFILE that's included won't be the updated
 # one. JMarc should know how to handle this.
@@ -109,6 +99,6 @@ TOCs : depend
 	make -f $(DEPENDFILE) TOCs
 
 depend:
-	perl Depend.pl > $(DEPENDFILE)
+	python depend.py > $(DEPENDFILE)
 
 .PHONY: depend
