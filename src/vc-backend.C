@@ -4,20 +4,21 @@
 #pragma implementation
 #endif
 
-#include <fstream>
-
 #include "vc-backend.h"
 #include "debug.h"
+#include "buffer.h"
+#include "BufferView.h"
+#include "LyXView.h"
+#include "lyxfunc.h"
+
 #include "support/FileInfo.h"
 #include "support/LRegex.h"
 #include "support/LSubstring.h"
 #include "support/path.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "buffer.h"
-#include "BufferView.h"
-#include "LyXView.h"
-#include "lyxfunc.h"
+
+#include <fstream>
 
 using std::endl;
 using std::ifstream;

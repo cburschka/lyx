@@ -18,6 +18,8 @@
 
 #include "LString.h"
 
+#include <boost/smart_ptr.hpp>
+
 /** This class manages a font.
     The idea is to create a FontInfo object with a font name pattern with a 
     wildcard at the size field. Then this object can host request for font-
@@ -35,9 +37,6 @@ public:
 	explicit FontInfo(string const & pat)
 		: pattern(pat) { init(); }
 
-	/// Destructor
-	~FontInfo() { release(); }
-
 	/// Does any font match our pattern?
 	bool exist() {
 		query();
@@ -51,7 +50,7 @@ public:
 	}
 
 	/// Get existing pattern
-	string const getPattern() const { return pattern; }
+	string const & getPattern() const { return pattern; }
 
 	/// Set new pattern
 	void setPattern(string const & pat);
@@ -64,10 +63,10 @@ private:
 	string pattern;
 
 	/// Available size list
-	int * sizes;
+	boost::scoped_array<int> sizes;
 
 	/// Corresponding name list
-	string * strings;
+	boost::scoped_array<string> strings;
 
 	/// Number of matches
 	int matches;
@@ -83,9 +82,6 @@ private:
 
 	/// Initialize empty record
 	void init();
-
-	/// Release allocated stuff
-	void release();
 
 	/// Ask X11 about this font pattern
 	void query();

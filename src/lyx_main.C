@@ -62,7 +62,7 @@ string user_lyxdir;	// Default $HOME/.lyx
 // Should this be kept global? Asger says Yes.
 DebugStream lyxerr;
 
-LastFiles * lastfiles;
+boost::scoped_ptr<LastFiles> lastfiles;
 
 // This is the global bufferlist object
 BufferList bufferlist;
@@ -77,10 +77,6 @@ boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 LyX::LyX(int * argc, char * argv[])
 {
-	// Prevent crash with --help
-	lyxGUI = 0;
-	lastfiles = 0;
-
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
 	bool gui = easyParse(argc, argv);
@@ -92,7 +88,7 @@ LyX::LyX(int * argc, char * argv[])
 	// Make the GUI object, and let it take care of the
 	// command line arguments that concerns it.
 	lyxerr[Debug::INIT] << "Initializing LyXGUI..." << endl;
-	lyxGUI = new LyXGUI(this, argc, argv, gui);
+	lyxGUI.reset(new LyXGUI(this, argc, argv, gui));
 	lyxerr[Debug::INIT] << "Initializing LyXGUI...done" << endl;
 
 	// Now the GUI and LyX have taken care of their arguments, so
@@ -181,8 +177,6 @@ LyX::LyX(int * argc, char * argv[])
 // A destructor is always necessary  (asierra-970604)
 LyX::~LyX()
 {
-	delete lastfiles;
-	delete lyxGUI;
 }
 
 
@@ -491,9 +485,9 @@ void LyX::init(bool gui)
 	// load the lastfiles mini-database
 	lyxerr[Debug::INIT] << "Reading lastfiles `"
 			    << lyxrc.lastfiles << "'..." << endl; 
-	lastfiles = new LastFiles(lyxrc.lastfiles, 
-				  lyxrc.check_lastfiles,
-				  lyxrc.num_lastfiles);
+	lastfiles.reset(new LastFiles(lyxrc.lastfiles, 
+				      lyxrc.check_lastfiles,
+				      lyxrc.num_lastfiles));
 
 	// start up the lyxserver. (is this a bit early?) (Lgb)
 	// 0.12 this will be way to early, we need the GUI to be initialized
@@ -887,8 +881,8 @@ bool LyX::easyParse(int * argc, char * argv[])
 		}
 		else if (arg == "-i" || arg == "--import") {
 			if (i + 1 < *argc) {
-				string type(argv[i+1]);
-				string file(argv[i+2]);
+				string const type(argv[i+1]);
+				string const file(argv[i+2]);
 				removeargs = 3;
 	
 				batch_command = "buffer-import " + type + " " + file;

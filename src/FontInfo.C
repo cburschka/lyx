@@ -9,24 +9,25 @@
  * ====================================================== */
 
 #include <config.h>
-#include <cmath>	// fabs()
 
 #ifdef __GNUG__
-#pragma implementation "FontInfo.h"
+#pragma implementation
 #endif
 
 #include "FontInfo.h"
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.use_scalable_fonts
+
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+
 #include "frontends/GUIRunTime.h"
 
-using std::endl;
+#include <cmath>	// abs()
 
-#ifndef CXX_GLOBAL_CSTD
-using std::fabs;
-#endif
+using std::endl;
+using std::abs;
+
 
 /// Load font close to this size
 string const FontInfo::getFontname(int size)
@@ -44,8 +45,8 @@ string const FontInfo::getFontname(int size)
 			lyxerr[Debug::FONT] << "Exact font match with\n"
 					    << strings[i] << endl;
 			return strings[i];
-		} else if (fabs(sizes[i] - size - 0.1) < error) {
-			error = fabs(sizes[i] - size - 0.1);
+		} else if (abs(sizes[i] - size - 0.1) < error) {
+			error = abs(sizes[i] - size - 0.1);
 			closestind = i;
 		}
 	}
@@ -98,7 +99,6 @@ string const FontInfo::resize(string const & font, int size) const
 /// Set new pattern
 void FontInfo::setPattern(string const & pat)
 {
-	release();
 	init();
 	pattern = pat;
 }
@@ -125,11 +125,10 @@ void FontInfo::query()
 	if (list == 0) {
 		// No fonts matched
 		scalable = false;
-		sizes = 0;
+		sizes.reset();
 	} else {
-		release();
-		sizes = new int[matches];
-		strings = new string[matches];
+		sizes.reset(new int[matches]);
+		strings.reset(new string[matches]);
 
 		// We have matches. Run them through
 		for (int i = 0; i < matches; ++i) {
@@ -153,24 +152,10 @@ void FontInfo::query()
 
 void FontInfo::init()
 {
-	sizes = 0;
-	strings = 0;
+	sizes.reset();
+	strings.reset();
 	matches = 0;
 	queried = false;
 	scalable = false;
 	scaleindex = -1;
-}
-
-
-/// Release allocated stuff
-void FontInfo::release()
-{
-	if (sizes) {
-		delete [] sizes;
-		sizes = 0;
-	}
-	if (strings) {
-		delete [] strings;
-		strings = 0;
-	}
 }

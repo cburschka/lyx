@@ -22,6 +22,8 @@
 #include <csignal>
 
 #include "LString.h"
+
+#include <boost/smart_ptr.hpp>
 #include <boost/utility.hpp>
 
 class LyXGUI;
@@ -37,8 +39,9 @@ extern string user_lyxdir;
 ///
 extern string system_tempdir;
 ///
-extern LastFiles * lastfiles; /* we should hopefully be able to move this
-			      * inside the LyX class */
+extern boost::scoped_ptr<LastFiles> lastfiles;
+/* we should hopefully be able to move this
+ * inside the LyX class */
 
 
 /**
@@ -56,7 +59,7 @@ public:
 
 private:
 	/// Should be a maximum of 1 LyXGUI.
-	LyXGUI * lyxGUI;
+	boost::scoped_ptr<LyXGUI> lyxGUI;
 	/// does this user start lyx for the first time?
 	bool first_start;
 	///

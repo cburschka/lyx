@@ -16,6 +16,8 @@
 
 #include "LString.h"
 
+#include <boost/smart_ptr.hpp>
+
 #ifdef ENABLE_NLS
 
 #  if HAVE_GETTEXT
@@ -40,16 +42,16 @@ string const _(string const & str)
 {
 	if (!str.empty()) {
 		int const s = str.length();
-		char * tmp = new char[s + 1];
-		str.copy(tmp, s);
+		boost::scoped_array<char> tmp(new char[s + 1]);
+		str.copy(tmp.get(), s);
 		tmp[s] = '\0';
-		string const ret(gettext(tmp));
-		delete [] tmp;
+		string const ret(gettext(tmp.get()));
 		return ret;
 	} else {
 		return string();
 	}
 }
+
 
 void locale_init()
 {
@@ -59,6 +61,7 @@ void locale_init()
 	setlocale(LC_CTYPE, "");
 	setlocale(LC_NUMERIC, "C");
 }
+
 
 void gettext_init(string const & localedir)
 {
@@ -73,6 +76,7 @@ void locale_init()
 {
 	setlocale(LC_NUMERIC, "C");
 }
+
 
 void gettext_init(string const &)
 {

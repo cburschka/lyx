@@ -14,13 +14,15 @@
 #pragma implementation
 #endif
 
-#include <cctype>
-
 #include "font.h"
 #include "FontLoader.h"
 #include "lyxrc.h"
 #include "encoding.h"
 #include "language.h"
+
+#include <boost/smart_ptr.hpp>
+
+#include <cctype>
 
 namespace {
 
@@ -110,16 +112,13 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 		return n;
 
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {
-		XChar2b * xs = new XChar2b[n];
+		boost::scoped_array<XChar2b> xs(new XChar2b[n]);
 		Encoding const * encoding = f.language()->encoding();
-		//LyXFont const * font = &f;
 		LyXFont font(f);
 		if (f.isSymbolFont()) {
 #ifdef USE_UNICODE_FOR_SYMBOLS
-			//LyXFont font2 = f;
 			font.setFamily(LyXFont::ROMAN_FAMILY);
 			font.setShape(LyXFont::UP_SHAPE);
-			//font = &font2;
 #endif
 			encoding = encodings.symbol_encoding();
 		}
@@ -128,8 +127,7 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
                 }
-		int result = width(xs, n, font);
-		delete[] xs;
+		int result = width(xs.get(), n, font);
 		return result;
 	}
 

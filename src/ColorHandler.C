@@ -108,7 +108,6 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 		// the color closest to the one we want.
 		Visual * vi = DefaultVisual(display, DefaultScreen(display));
 
-		//XColor * cmap = new XColor[vi->map_entries];
 		boost::scoped_array<XColor> cmap(new XColor[vi->map_entries]);
 
 		for (int i = 0; i < vi->map_entries; ++i) {
@@ -154,7 +153,6 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 		       << _("Pixel [") << closest_pixel << _("] is used.") 
 		       << endl;
 		val.foreground = cmap[closest_pixel].pixel;
-		//delete[] cmap;
 	}
 
 	val.function = GXcopy;

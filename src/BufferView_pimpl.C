@@ -367,7 +367,9 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		bv_->theLockingInset(the_locking_inset);
 	}
 	bv_->text->first = screen_->topCursorVisible(bv_->text);
+#if 0
 	buffer_->resizeInsets(bv_);
+#endif
 	// this will scroll the screen such that the cursor becomes visible
 	updateScrollbar();
 	redraw();
@@ -1554,7 +1556,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_PASTESELECTION:
 	{
 	        bool asPara = false;
-		if (argument == "paragraph") asPara = true;
+		if (argument == "paragraph")
+			asPara = true;
 		pasteClipboard(asPara);
 	}
 	break;

@@ -32,12 +32,9 @@
 #include <cctype>
 
 using std::endl;
+using std::abs;
 
 FL_OBJECT * figinset_canvas;
-
-// needed to make the c++ compiler find the correct version of abs.
-// This is at least true for g++.
-//using std::abs;
 
 namespace {
 
@@ -83,7 +80,7 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 		       << width << 'x' << height << endl;
 	//
 	FL_OBJECT * obj;
-	int const bw = int(std::abs(float(fl_get_border_width())));
+	int const bw = int(abs(fl_get_border_width()));
 
 	// We really want to get rid of figinset_canvas.
 	::figinset_canvas = figinset_canvas = obj =
@@ -205,7 +202,7 @@ void WorkArea::resize(int xpos, int ypos, int width, int height)
 {
 	fl_freeze_all_forms();
 	
-	int const bw = int(std::abs(float(fl_get_border_width())));
+	int const bw = int(abs(fl_get_border_width()));
 
 	// a box
 	fl_set_object_geometry(backgroundbox, xpos, ypos, width - 15, height);
