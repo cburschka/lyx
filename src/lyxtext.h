@@ -20,7 +20,6 @@
 #include "lyxfont.h"
 #include "layout.h"
 #include "lyxlayout_ptr_fwd.h"
-#include "RowList_fwd.h"
 #include "ParagraphList_fwd.h"
 
 #include <iosfwd>
@@ -144,7 +143,7 @@ public:
 	  * y-coordinate (relative to the whole text). y is set to the
 	  * real beginning of this row
 	  */
-	RowList::iterator getRowNearY(int y, par_type & pit) const;
+	Row const & getRowNearY(int y, par_type & pit) const;
 
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
@@ -301,15 +300,7 @@ public:
 	bool isMainText() const;
 
 	/// return first row of text
-	RowList::iterator firstRow() const;
-	/// return last row of text
-	RowList::iterator lastRow() const;
-	/// return row "behind" last row of text
-	RowList::iterator endRow() const;
-	/// return next row crossing paragraph boundaries
-	void nextRow(par_type & pit, RowList::iterator & rit) const;
-	/// return previous row crossing paragraph boundaries
-	void previousRow(par_type & pit, RowList::iterator & rit) const;
+	Row const & firstRow() const;
 
 	/// is this row the last in the text?
 	bool isLastRow(par_type pit, Row const & row) const;

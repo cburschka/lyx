@@ -1697,11 +1697,10 @@ Paragraph & LyXText::getPar(par_type par) const
 
 
 // y is relative to this LyXText's top
-RowList::iterator LyXText::getRowNearY(int y, par_type & pit) const
+Row const & LyXText::getRowNearY(int y, par_type & pit) const
 {
 	BOOST_ASSERT(!paragraphs().empty());
 	BOOST_ASSERT(!paragraphs().begin()->rows.empty());
-#if 1
 	par_type const pend = paragraphs().size() - 1;
 	pit = 0;
 	while (int(pars_[pit].y + pars_[pit].height) < y && pit != pend)
@@ -1713,61 +1712,13 @@ RowList::iterator LyXText::getRowNearY(int y, par_type & pit) const
 		--rit;
 	} while (rit != rbegin && int(pars_[pit].y + rit->y_offset()) > y);
 
-	return rit;
-#else
-	pit = paragraphs().size() - 1;
-
-	RowList::iterator rit = lastRow();
-	RowList::iterator rbegin = firstRow();
-
-	while (rit != rbegin && int(pars_[pit].y + rit->y_offset()) > y)
-		previousRow(pit, rit);
-
-	return rit;
-#endif
+	return *rit;
 }
 
 
-RowList::iterator LyXText::firstRow() const
+Row const & LyXText::firstRow() const
 {
-	return paragraphs().front().rows.begin();
-}
-
-
-RowList::iterator LyXText::lastRow() const
-{
-	return boost::prior(endRow());
-}
-
-
-RowList::iterator LyXText::endRow() const
-{
-	return paragraphs().back().rows.end();
-}
-
-
-void LyXText::nextRow(par_type & pit, RowList::iterator & rit) const
-{
-	++rit;
-	if (rit == pars_[pit].rows.end()) {
-		++pit;
-		if (pit == par_type(paragraphs().size()))
-			--pit;
-		else
-			rit = pars_[pit].rows.begin();
-	}
-}
-
-
-void LyXText::previousRow(par_type & pit, RowList::iterator & rit) const
-{
-	if (rit != pars_[pit].rows.begin())
-		--rit;
-	else {
-		BOOST_ASSERT(pit != 0);
-		--pit;
-		rit = boost::prior(pars_[pit].rows.end());
-	}
+	return *paragraphs().front().rows.begin();
 }
 
 
@@ -1849,7 +1800,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	width_ = maxParagraphWidth(paragraphs());
 
 	// final dimension
-	dim.asc = firstRow()->ascent_of_text();
+	dim.asc = firstRow().ascent_of_text();
 	dim.des = height_ - dim.asc;
 	dim.wid = width_;
 }
@@ -2009,13 +1960,13 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 
 int LyXText::ascent() const
 {
-	return firstRow()->ascent_of_text();
+	return firstRow().ascent_of_text();
 }
 
 
 int LyXText::descent() const
 {
-	return height_ - firstRow()->ascent_of_text();
+	return height_ - firstRow().ascent_of_text();
 }
 
 

@@ -1124,7 +1124,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int x, int y)
 	x -= xo_;
 	y -= yo_;
 	par_type pit;
-	Row const & row = *getRowNearY(y, pit);
+	Row const & row = getRowNearY(y, pit);
 	lyxerr << "setCursorFromCoordinates:: hit row at: " << row.pos() << endl;
 	bool bound = false;
 	int xx = x + xo_; // getRowNearX get absolute x coords
@@ -1137,7 +1137,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int x, int y)
 InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 {
 	par_type pit;
-	Row const & row = *getRowNearY(y - yo_, pit);
+	Row const & row = getRowNearY(y - yo_, pit);
 	bool bound = false;
 
 	int xx = x; // is modified by getColumnNearX
