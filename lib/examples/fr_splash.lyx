@@ -1,6 +1,5 @@
-#This file was created by <chretien> Tue Apr 27 17:38:30 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
 \textclass article
 \language french
 \inputencoding default
@@ -31,7 +30,7 @@ Bienvenue dans l'univers de LyX!
 Le Top N des choses à connaître pour utiliser LyX
 \layout Enumerate
 
-LyX est fourni avec une excellente documentation --- servez-vous-en s'il
+LyX est fourni avec une excellente documentation -- servez-vous-en s'il
  vous plaît! Vous pouvez commencer par 
 \family sans 
 \bar under 
@@ -51,8 +50,7 @@ ntroduction
 A
 \bar default 
 ide\SpecialChar \menuseparator
-Manuel
-\protected_separator 
+Manuel\SpecialChar ~
 d'Apprentissage.
  
 \family default 
@@ -63,13 +61,13 @@ LyX est ce qu'on appelle un
 \begin_inset Quotes fld
 \end_inset 
 
-constructeur de documents
+ constructeur de documents 
 \begin_inset Quotes frd
 \end_inset 
 
 .
  Par sa conception, il se distingue des traitements de texte ordinaires
- --- en ce sens qu'il facilite l'écriture des documents.
+ -- en ce sens qu'il facilite l'écriture des documents.
  Mais la distinction est minime, ne vous inquiétez pas.
  La documentation est là pour faire toute la lumière la-dessus
 \begin_float footnote 
@@ -84,16 +82,14 @@ Les résultats de mise en page de LyX sont très esthétiques! Sélectionnez
  
 \family sans 
 \bar under 
-F
+V
 \bar default 
-ichier\SpecialChar \menuseparator
-Visualisez
-\protected_separator 
+isualiser\SpecialChar \menuseparator
 
 \bar under 
-d
+D
 \bar default 
-vi
+VI
 \family default 
  pour vous en convaincre.
 \layout Enumerate
@@ -102,17 +98,14 @@ Oui! LyX est capable d'imiter (presque) toutes les fonctionnalités de LaTeX.
  Et de nouveau Oui! LyX sait lire les fichiers LaTeX.
  Les utilisateurs de LaTeX peuvent survoler le 
 \emph on 
-Manuel
-\emph default 
- 
-\emph on 
+Manuel\SpecialChar ~
 d'Apprentissage
 \emph default 
  et passer au chapitre 
 \begin_inset Quotes fld
 \end_inset 
 
-LyX pour les connaisseurs de LaTeX
+ LyX pour les connaisseurs de LaTeX 
 \begin_inset Quotes frd
 \end_inset 
 
@@ -135,12 +128,8 @@ lyxrc
 \bar under 
 A
 \bar default 
-ide
-\bar under 
-\SpecialChar \menuseparator
-P
-\bar default 
-ersonnalisation 
+ide\SpecialChar \menuseparator
+Personnalisation 
 \family default 
 pour les détails.
 \layout Enumerate
@@ -151,5 +140,5 @@ www.lyx.org
 \family default 
 .
  Vous pouvez y piocher des informations, souscrire à l'une ou l'autre des
- listes de distributions, faire le tour de LyX (par l'image), et plus encore.
+ listes de diffusion, faire le tour de LyX (par l'image), et plus encore.
 \the_end
