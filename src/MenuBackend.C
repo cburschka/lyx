@@ -226,6 +226,13 @@ void Menu::checkShortcuts() const
 	}
 }
 
+class compare_format {
+public:
+	bool operator()(Format const * p1, Format const * p2) {
+		return *p1 < *p2;	
+	}
+};
+
 void Menu::expand(Menu & tomenu, Buffer * buf) const
 {
 	for (const_iterator cit = begin();
@@ -292,7 +299,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				formats = Exporter::GetExportableFormats(buf, false); 
 				action = LFUN_EXPORT;
 			}
-			sort(formats.begin(), formats.end());
+			sort(formats.begin(), formats.end(), compare_format());
 
 			for (vector<Format const *>::const_iterator fit = formats.begin();
 			     fit != formats.end() ; ++fit) {
