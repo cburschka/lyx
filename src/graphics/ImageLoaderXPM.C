@@ -99,7 +99,7 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 
 	// If setting color_key failed, then fail gracefully!
 	if (color_key != 0) {
-		attrib.valuemask = attrib.valuemask | XpmColorKey;
+		attrib.valuemask |= XpmColorKey;
 		attrib.color_key = color_key;
 
 	} else {
@@ -110,6 +110,7 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 		       << endl;
 	}		
 
+	// Load up the pixmap
 	int status = XpmReadFileToPixmap(
 			display, 
 			XRootWindowOfScreen(screen), 
