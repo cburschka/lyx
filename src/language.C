@@ -124,6 +124,9 @@ void LangInit::initL()
 				 items[i].encoding, items[i].code);
 		++i;
 	}
+#if 0
+	// This code does not make sense as it is run even before
+	// main() is invoked.  (JMarc)
 	if (languages.find(lyxrc.default_language) == languages.end()) {
 	    string l1 = _("Default language \"") + lyxrc.default_language +
 		_("\" not found!");
@@ -131,6 +134,9 @@ void LangInit::initL()
 	    default_language = &languages["english"];
 	} else
 	    default_language = &languages[lyxrc.default_language];
+#else
+	default_language = &languages["english"];
+#endif
 }
 
 

@@ -69,12 +69,7 @@ enum LyXRCTags {
 	RC_PRINTPAPERDIMENSIONFLAG,
 	RC_CUSTOM_EXPORT_COMMAND,
 	RC_CUSTOM_EXPORT_FORMAT,
-	RC_LATEX_COMMAND,
-        RC_LITERATE_COMMAND,
         RC_LITERATE_EXTENSION,
-        RC_LITERATE_ERROR_FILTER,
-        RC_BUILD_COMMAND,
-        RC_BUILD_ERROR_FILTER,
 	RC_SCREEN_DPI,
 	RC_SCREEN_ZOOM,
 	RC_SCREEN_FONT_SIZES,
@@ -109,12 +104,9 @@ enum LyXRCTags {
 	RC_ASCII_LINELEN,
 	RC_NUMLASTFILES,
 	RC_CHECKLASTFILES,
-	RC_VIEWDVI_COMMAND,
 	RC_VIEWDVI_PAPEROPTION,
 	RC_DEFAULT_PAPERSIZE,
 	RC_PS_COMMAND,
-	RC_VIEWPS_COMMAND,
-	RC_VIEWPSPIC_COMMAND,
 	RC_ACCEPT_COMPOUND,
 	RC_SPELL_COMMAND,
 	RC_USE_INP_ENC,
@@ -130,7 +122,6 @@ enum LyXRCTags {
 	RC_EXIT_CONFIRMATION,
 	RC_DISPLAY_SHORTCUTS,
 	RC_RELYX_COMMAND,
-	RC_HTML_COMMAND,
 	RC_MAKE_BACKUP,
 	RC_BACKUPDIR_PATH,
 	RC_RTL_SUPPORT,
@@ -141,20 +132,9 @@ enum LyXRCTags {
 	RC_LANGUAGE_AUTO_END,
 	RC_LANGUAGE_COMMAND_BEGIN,
 	RC_LANGUAGE_COMMAND_END,
-	RC_PDFLATEX_COMMAND,
-	RC_PDF_MODE,
-	RC_VIEWPDF_COMMAND,
-	RC_PDF_TO_PS_COMMAND,
-	RC_DVI_TO_PS_COMMAND,
 	RC_DATE_INSERT_FORMAT,
 	RC_SHOW_BANNER,
-	RC_USE_GUI,
 	RC_LINUXDOC_TO_LYX_COMMAND,
-	RC_LINUXDOC_TO_HTML_COMMAND,
-	RC_LINUXDOC_TO_LATEX_COMMAND,
-	RC_DOCBOOK_TO_DVI_COMMAND,
-	RC_DOCBOOK_TO_HTML_COMMAND,
-	RC_DOCBOOK_TO_PDF_COMMAND,
 	RC_WHEEL_JUMP,
 	RC_CONVERTER,
 	RC_VIEWER,
@@ -176,8 +156,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\backupdir_path", RC_BACKUPDIR_PATH },
 	{ "\\bind", RC_BIND },
 	{ "\\bind_file", RC_BINDFILE },
-	{ "\\build_command", RC_BUILD_COMMAND },
-	{ "\\build_error_filter", RC_BUILD_ERROR_FILTER },
 	{ "\\check_lastfiles", RC_CHECKLASTFILES },
 	{ "\\chktex_command", RC_CHKTEX_COMMAND },
 	{ "\\converter", RC_CONVERTER },
@@ -188,17 +166,12 @@ keyword_item lyxrcTags[] = {
 	{ "\\default_language", RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", RC_DEFAULT_PAPERSIZE },
 	{ "\\display_shortcuts", RC_DISPLAY_SHORTCUTS },
-	{ "\\docbook_to_dvi_command", RC_DOCBOOK_TO_DVI_COMMAND },
-	{ "\\docbook_to_html_command", RC_DOCBOOK_TO_HTML_COMMAND },
-	{ "\\docbook_to_pdf_command", RC_DOCBOOK_TO_PDF_COMMAND },
 	{ "\\document_path", RC_DOCUMENTPATH },
-	{ "\\dvi_to_ps_command", RC_DVI_TO_PS_COMMAND },
 	{ "\\escape_chars", RC_ESC_CHARS },
 	{ "\\exit_confirmation", RC_EXIT_CONFIRMATION },
 	{ "\\fax_command", RC_FAX_COMMAND },
 	{ "\\fax_program", RC_FAXPROGRAM },
 	{ "\\font_encoding", RC_FONT_ENCODING },
-	{ "\\html_command", RC_HTML_COMMAND },
 	{ "\\input", RC_INPUT },
 	{ "\\kbmap", RC_KBMAP },
 	{ "\\kbmap_primary", RC_KBMAP_PRIMARY },
@@ -209,21 +182,13 @@ keyword_item lyxrcTags[] = {
 	{ "\\language_command_end", RC_LANGUAGE_COMMAND_END },
 	{ "\\language_package", RC_LANGUAGE_PACKAGE },
 	{ "\\lastfiles", RC_LASTFILES },
-	{ "\\latex_command", RC_LATEX_COMMAND },
-	{ "\\linuxdoc_to_html_command", RC_LINUXDOC_TO_HTML_COMMAND },
-	{ "\\linuxdoc_to_latex_command", RC_LINUXDOC_TO_LATEX_COMMAND },
 	{ "\\linuxdoc_to_lyx_command", RC_LINUXDOC_TO_LYX_COMMAND },
-        { "\\literate_command", RC_LITERATE_COMMAND },
-        { "\\literate_error_filter", RC_LITERATE_ERROR_FILTER },
         { "\\literate_extension", RC_LITERATE_EXTENSION },
 	{ "\\make_backup", RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", RC_MARK_FOREIGN_LANGUAGE },
 	{ "\\new_ask_filename", RC_NEW_ASK_FILENAME },
 	{ "\\num_lastfiles", RC_NUMLASTFILES },
 	{ "\\override_x_deadkeys", RC_OVERRIDE_X_DEADKEYS },
-	{ "\\pdf_mode", RC_PDF_MODE },
-	{ "\\pdf_to_ps_command", RC_PDF_TO_PS_COMMAND },
-	{ "\\pdflatex_command", RC_PDFLATEX_COMMAND },
 	{ "\\personal_dictionary", RC_PERS_DICT },
 	{ "\\phone_book", RC_PHONEBOOK },
 	{ "\\print_adapt_output", RC_PRINT_ADAPTOUTPUT },
@@ -267,15 +232,10 @@ keyword_item lyxrcTags[] = {
 	{ "\\ui_file", RC_UIFILE },
 	{ "\\use_alt_language", RC_USE_ALT_LANG },
 	{ "\\use_escape_chars", RC_USE_ESC_CHARS },
-	{ "\\use_gui", RC_USE_GUI },
 	{ "\\use_input_encoding", RC_USE_INP_ENC },
 	{ "\\use_personal_dictionary", RC_USE_PERS_DICT },
 	{ "\\use_tempdir", RC_USETEMPDIR },
-	{ "\\view_dvi_command", RC_VIEWDVI_COMMAND },
 	{ "\\view_dvi_paper_option", RC_VIEWDVI_PAPEROPTION },
-	{ "\\view_pdf_command", RC_VIEWPDF_COMMAND },
-	{ "\\view_ps_command", RC_VIEWPS_COMMAND },
-        { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND },
 	{ "\\viewer" ,RC_VIEWER}, 
 	{ "\\wheel_jump", RC_WHEEL_JUMP }
 };
@@ -312,27 +272,13 @@ void LyXRC::setDefaults() {
 	document_path = GetEnvPath("HOME");
 	tempdir_path = "/tmp";
 	use_tempdir = true;
-	pdf_mode = false;
-	latex_command = "latex";
-	pdflatex_command = "pdflatex";
-	pdf_to_ps_command = "pdf2ps";
-	dvi_to_ps_command = "dvips";
-        literate_command = "none";
         literate_extension = "none";
-        literate_error_filter = "cat";
-        build_command = "make";
-        build_error_filter = "cat";
 	relyx_command = "reLyX";
 	ps_command = "gs";
-	view_ps_command = "ghostview -swap";
-	view_pspic_command = "ghostview";
-	view_dvi_command = "xdvi";
 	view_dvi_paper_option = "-paper";
-	view_pdf_command = "xpdf";
 	default_papersize = BufferParams::PAPER_USLETTER;
 	custom_export_format = "ps";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
-	html_command = "tth -t";
 	fontenc = "default";
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
@@ -392,16 +338,14 @@ void LyXRC::setDefaults() {
 	///
 	date_insert_format = "%A, %e %B %Y";
 	show_banner = true;
-	use_gui = true;
 
 	///
-	linuxdoc_to_latex_command="none";
 	linuxdoc_to_lyx_command="none";
-	linuxdoc_to_html_command="none";
 
-	docbook_to_dvi_command="none";
-	docbook_to_html_command="none";
-	docbook_to_pdf_command="none";
+	/// These variables are not stored on disk (perhaps they
+	// should be moved from the LyXRC class).
+	use_gui = true;
+	pdf_mode = false;
 }
 
 
@@ -625,55 +569,10 @@ int LyXRC::read(string const & filename)
 				custom_export_format = lexrc.GetString();
 			break;
 
-		case RC_PDF_MODE:
-			if (lexrc.next())
-				pdf_mode = lexrc.GetBool();
-			break;
-			
-		case RC_LATEX_COMMAND:
-			if (lexrc.next())
-				latex_command = lexrc.GetString();
-			break;
-
-		case RC_PDFLATEX_COMMAND:
-			if (lexrc.next())
-				pdflatex_command = lexrc.GetString();
-			break;
-
-		case RC_PDF_TO_PS_COMMAND:
-			if (lexrc.next())
-				pdf_to_ps_command = lexrc.GetString();
-			break;
-
-		case RC_DVI_TO_PS_COMMAND:
-			if (lexrc.next())
-				dvi_to_ps_command = lexrc.GetString();
-			break;
-			
-                case RC_LITERATE_COMMAND:
-                        if (lexrc.next())
-                                literate_command = lexrc.GetString();
-                        break;
-			
                 case RC_LITERATE_EXTENSION:
                         if (lexrc.next())
                                 literate_extension = lexrc.GetString();
                         break;
-			
-                case RC_LITERATE_ERROR_FILTER:
-                        if (lexrc.next())
-                                literate_error_filter = lexrc.GetString();
-                        break;
-			
-                case RC_BUILD_COMMAND:
-                        if (lexrc.next())
-                                build_command = lexrc.GetString();
-                        break;
-			
-                case RC_BUILD_ERROR_FILTER:
-                        if (lexrc.next())
-                                build_error_filter = lexrc.GetString();
-			break;
 			
 		case RC_RELYX_COMMAND:
 			if (lexrc.next())
@@ -706,10 +605,6 @@ int LyXRC::read(string const & filename)
 						BufferParams::PAPER_B5PAPER;
 			}
 			break;
-		case RC_VIEWDVI_COMMAND:
-			if (lexrc.next())
-				view_dvi_command = lexrc.GetString();
-			break;
 
 		case RC_VIEWDVI_PAPEROPTION:
 			if (lexrc.next())
@@ -718,34 +613,14 @@ int LyXRC::read(string const & filename)
 				view_dvi_paper_option = "";
 			break;
 
-		case RC_VIEWPDF_COMMAND:
-			if (lexrc.next())
-				view_pdf_command = lexrc.GetString();
-			break;
-			
 		case RC_PS_COMMAND:
 			if (lexrc.next())
 				ps_command = lexrc.GetString();
 			break;
 			
-		case RC_VIEWPS_COMMAND:
-			if (lexrc.next())
-				view_ps_command = lexrc.GetString();
-			break;
-			
-		case RC_VIEWPSPIC_COMMAND:
-			if (lexrc.next())
-				view_pspic_command = lexrc.GetString();
-			break;
-			
 		case RC_CHKTEX_COMMAND:
 			if (lexrc.next())
 				chktex_command = lexrc.GetString();
-			break;
-			
-		case RC_HTML_COMMAND:
-			if (lexrc.next())
-				html_command = lexrc.GetString();
 			break;
 			
 		case RC_SCREEN_DPI:
@@ -1080,33 +955,9 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				show_banner = lexrc.GetBool();
 			break;
-		case RC_USE_GUI:
-			if (lexrc.next())
-				use_gui = lexrc.GetBool();
-			break;
 		case RC_LINUXDOC_TO_LYX_COMMAND:
 			if ( lexrc.next())
 				linuxdoc_to_lyx_command = lexrc.GetString();
-			break;
-		case RC_LINUXDOC_TO_HTML_COMMAND:
-			if ( lexrc.next())
-				linuxdoc_to_html_command = lexrc.GetString();
-			break;
-		case RC_LINUXDOC_TO_LATEX_COMMAND:
-			if ( lexrc.next())
-				linuxdoc_to_latex_command = lexrc.GetString();
-			break;
-		case RC_DOCBOOK_TO_DVI_COMMAND:
-			if ( lexrc.next())
-				docbook_to_dvi_command = lexrc.GetString();
-			break;
-		case RC_DOCBOOK_TO_HTML_COMMAND:
-			if ( lexrc.next())
-				docbook_to_html_command = lexrc.GetString();
-			break;
-		case RC_DOCBOOK_TO_PDF_COMMAND:
-			if ( lexrc.next())
-				docbook_to_pdf_command = lexrc.GetString();
 			break;
 			
 		case RC_NEW_ASK_FILENAME:
@@ -1229,9 +1080,6 @@ void LyXRC::output(ostream & os) const
 		   << "# list of short-cuts in the minibuffer.\n" 
 		   << "\\display_shortcuts " << tostr(display_shortcuts)
 		   << "\n";
-	case RC_VIEWDVI_COMMAND:
-		os << "# Program used to view dvi files.\n"
-		   << "\\view_dvi_command \"" << view_dvi_command << "\"\n";
 	case RC_VIEWDVI_PAPEROPTION:
 		os << "# Options used to specify paper size to the\n"
 		   << "# view_dvi_command\n"
@@ -1258,24 +1106,11 @@ void LyXRC::output(ostream & os) const
 		case BufferParams::PAPER_DEFAULT: break;
 		}
 		os << "\"\n";
-	case RC_VIEWPDF_COMMAND:
-		os << "# Command used to view PDF files.\n"
-		   << "\\view_pdf_command \"" << view_pdf_command << "\"\n";
-	case RC_VIEWPS_COMMAND:
-		os << "# Command used to view PostScript files.\n"
-		   << "\\view_ps_command \"" << view_ps_command << "\"\n";
-	case RC_VIEWPSPIC_COMMAND:
-		os << "# Command used to view full screen included PS\n"
-		   << "# pictures.\n"
-		   << "\\view_pspic_command \"" << view_pspic_command
-		   << "\"\n";
 	case RC_PS_COMMAND:
 		os << "# Program used for interpreting postscript.\n"
 		   << "\\ps_command \"" << ps_command << "\"\n";
 	case RC_CHKTEX_COMMAND:
 		os << "\\chktex_command \"" << chktex_command << "\"\n";
-	case RC_HTML_COMMAND:
-		os << "\\html_command \"" << html_command << "\"\n";
 	case RC_KBMAP:
 		os << "\\kbmap " << tostr(use_kbmap) << "\n";
 	case RC_KBMAP_PRIMARY:
@@ -1407,12 +1242,6 @@ void LyXRC::output(ostream & os) const
 		   << "# TEX SECTION #######################################\n"
 		   << "#\n\n";
 		
-	case RC_LATEX_COMMAND:
-		os << "\\latex_command \"" << latex_command << "\"\n";
-	case RC_PDFLATEX_COMMAND:
-		os << "\\pdflatex_command \"" << pdflatex_command << "\"\n";
-	case RC_PDF_MODE:
-		os << "\\pdf_mode " << tostr(pdf_mode) << "\n";
 	case RC_FONT_ENCODING:
 		os << "\\font_encoding \"" << fontenc << "\"\n";
 
@@ -1420,30 +1249,10 @@ void LyXRC::output(ostream & os) const
 		   << "# LINUXDOC SECTION ##################################\n"
 		   << "#\n\n";
 
-	case RC_LINUXDOC_TO_LATEX_COMMAND:
-		os << "\\linuxdoc_to_latex_command \"" << linuxdoc_to_latex_command
-		   << "\"\n";
-	case RC_LINUXDOC_TO_HTML_COMMAND:
-		os << "\\linuxdoc_to_html_command \"" << linuxdoc_to_html_command
-		   << "\"\n";
 	case RC_LINUXDOC_TO_LYX_COMMAND:
 		os << "\\linuxdoc_to_lyx_command \"" << linuxdoc_to_lyx_command
 		   << "\"\n";
 		
-		os << "\n#\n"
-		   << "# DOCBOOK SECTION ###################################\n"
-		   << "#\n\n";
-
-	case RC_DOCBOOK_TO_DVI_COMMAND:
-		os << "\\docbook_to_dvi_command \"" << docbook_to_dvi_command
-		   << "\"\n";
-	case RC_DOCBOOK_TO_HTML_COMMAND:
-		os << "\\docbook_to_html_command \"" << docbook_to_html_command
-		   << "\"\n";
-	case RC_DOCBOOK_TO_PDF_COMMAND:
-		os << "\\docbook_to_pdf_command \"" << docbook_to_pdf_command
-		   << "\"\n";
-
 		os << "\n#\n"
 		   << "# FILE SECTION ######################################\n"
 		   << "#\n\n";
@@ -1543,22 +1352,8 @@ void LyXRC::output(ostream & os) const
 		   << "# 2nd MISC SUPPORT SECTION ##########################\n"
 		   << "#\n\n";
 
-	case RC_PDF_TO_PS_COMMAND:
-		os << "\\pdf_to_ps_command \"" << pdf_to_ps_command << "\"\n";
-	case RC_DVI_TO_PS_COMMAND:
-		os << "\\dvi_to_ps_command \"" << dvi_to_ps_command << "\"\n";
-	case RC_LITERATE_COMMAND:
-		os << "\\literate_command \"" << literate_command << "\"\n";
 	case RC_LITERATE_EXTENSION:
 		os << "\\literate_extension \"" << literate_extension
-		   << "\"\n";
-	case RC_LITERATE_ERROR_FILTER:
-		os << "\\literate_error_filter \"" << literate_error_filter
-		   << "\"\n";
-	case RC_BUILD_COMMAND:
-		os << "\\build_command \"" << build_command << "\"\n";
-	case RC_BUILD_ERROR_FILTER:
-		os << "\\build_error_filter \"" << build_error_filter
 		   << "\"\n";
 	case RC_OVERRIDE_X_DEADKEYS:
 		os << "\\override_x_deadkeys " 
@@ -1568,8 +1363,6 @@ void LyXRC::output(ostream & os) const
 		   << "\"\n";
 	case RC_AUTO_NUMBER:
 		os << "\\auto_number " << tostr(auto_number) << "\n";
-	case RC_USE_GUI:
-		os << "\\use_gui " << tostr(use_gui) << "\n";
 	case RC_NEW_ASK_FILENAME:
 		os << "\\new_ask_filename " << tostr(new_ask_filename) << "\n";
 	case RC_DEFAULT_LANGUAGE:

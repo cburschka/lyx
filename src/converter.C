@@ -66,6 +66,7 @@ Format::Format(string const & n)
 		{ "txt", "Ascii" },
 		{ "html", "HTML" },
 		{ "pdf", "PDF" },
+		{ "nw", "NoWeb/LaTeX"},
 		{ 0, 0}
 	};
 
@@ -88,9 +89,9 @@ void Formats::Add(string const & name)
 void Formats::SetViewer(string const & name, string const & command)
 {
 
-	string command2 = subst(command, "$$FName", "'$$FName'");
-	if (!contains(command,"$$FName"))
-		command2 += " '$$FName'";
+	string command2 = command;
+	if (!contains(command2,"$$FName"))
+		command2 += " $$FName";
 
 	Add(name);
 	GetFormat(name)->viewer = command2;
@@ -127,7 +128,7 @@ bool Formats::View(Buffer * buffer, string const & filename)
 	lyxerr << "Executing command: " << command2 << endl;
 	ShowMessage(buffer, _("Executing command:"), command2);
 
-	command = subst(command, "$$FName", filename);
+	command = subst(command, "$$FName", QuoteName(filename));
 	Systemcalls one;
 	int res = one.startscript(Systemcalls::SystemDontWait, command);
 
@@ -171,16 +172,12 @@ void Converter::Add(string const & from, string const & to,
 	if (command == "none")
 		return;
 
-	string command2 = 
-		   subst(command, "$$FName", "'$$FName'");
-	command2 = subst(command2, "$$BaseName", "'$$BaseName'");
-	command2 = subst(command2, "$$OutName", "'$$OutName'");
-	Command Com(from, to, command2);
+	Command Com(from, to, command);
 
 	if (from == "tex" &&
 	    (to == "dvi" ||
 	     (to == "pdf" && latex_command.empty())))
-		latex_command = command2;
+		latex_command = command;
 
 	// Read the flags
 	string flag_name,flag_value;
@@ -197,6 +194,8 @@ void Converter::Add(string const & from, string const & to,
 				? "$$BaseName" : flag_value;
 		else if (flag_name == "resultfile")
 			Com.result_file = flag_value;
+		else if (flag_name == "parselog")
+			Com.parselog = flag_value;
 	}
 	if (!Com.result_dir.empty() && Com.result_file.empty())
 		Com.result_file = "index." + to;
@@ -370,9 +369,12 @@ bool Converter::Convert(Buffer * buffer, string const & from_file,
 				? outfile : MakeRelPath(outfile, path);
 
 			string command = (*it).command;
-			command = subst(command, "$$FName", infile2);
-			command = subst(command, "$$BaseName", from_base);
-			command = subst(command, "$$OutName", outfile2);
+			command = subst(command, "$$FName", QuoteName(infile2));
+			command = subst(command, "$$BaseName", QuoteName(from_base));
+			command = subst(command, "$$OutName", QuoteName(outfile2));
+
+			if (!(*it).parselog.empty())
+				command += " 2> " + QuoteName(infile2 + ".out");
 
 			if ((*it).from == "dvi" && (*it).to == "ps")
 				command = add_options(command,
@@ -388,10 +390,25 @@ bool Converter::Convert(Buffer * buffer, string const & from_file,
 				res = one.startscript(Systemcalls::System, command);
 			} else
 				res = one.startscript(Systemcalls::System, command);
+
+			if (!(*it).parselog.empty()) {
+				string const logfile =  infile2 + ".log";
+				string const command2 = (*it).parselog +
+					" < " + QuoteName(infile2 + ".out") +
+					" > " + QuoteName(logfile);
+				one.startscript(Systemcalls::System, command2);
+				if (!scanLog(buffer, command, logfile))
+					return false;
+			}
+
 			if (res) {
-				WriteAlert(_("Can not convert file"),
-					   "Error while executing",
-					   command.substr(0, 50));
+				if ((*it).to == "Program")
+					WriteAlert(_("There were errors during the Build process."),
+						   _("You should try to fix them."));
+				else
+					WriteAlert(_("Can not convert file"),
+						   "Error while executing",
+						   command.substr(0, 50));
 				return false;
 			}
 		}
@@ -430,6 +447,52 @@ string const Converter::SplitFormat(string const & str, string & format)
 	return using_format;
 }
 
+bool Converter::scanLog(Buffer * buffer, string const & command,
+			string const & filename)
+{
+	BufferView * bv = buffer->getUser();
+	bool need_redraw = false;
+	if (bv) {
+		ProhibitInput(bv);
+		// Remove all error insets
+		need_redraw = bv->removeAutoInsets();
+	}
+
+	LaTeX latex("", filename, "");
+	TeXErrors terr;
+	int result = latex.scanLogFile(terr);
+	if (bv) {
+		if ((result & LaTeX::ERRORS)) {
+			// Insert all errors as errors boxes
+			bv->insertErrors(terr);
+			need_redraw = true;
+		}
+		if (need_redraw) {
+			bv->redraw();
+			bv->fitCursor(bv->text);
+		}
+		AllowInput(bv);
+	}
+	if ((result & LaTeX::ERRORS)) {
+		int num_errors = latex.getNumErrors();
+		string s;
+		string t;
+		if (num_errors == 1) {
+			s = _("One error detected");
+			t = _("You should try to fix it.");
+		} else {
+			s = tostr(num_errors);
+			s += _(" errors detected.");
+			t = _("You should try to fix them.");
+		}
+		string head;
+		split(command, head, ' ');
+		WriteAlert(_("There were errors during running of ") + head,
+			   s, t);
+		return false;
+	}
+	return true;
+}
 
 bool Converter::runLaTeX(Buffer * buffer, string const & command)
 {

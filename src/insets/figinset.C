@@ -61,6 +61,7 @@
 #include "font.h"
 #include "bufferview_funcs.h"
 #include "ColorHandler.h"
+#include "converter.h"
 
 using std::ostream;
 using std::istream;
@@ -1904,31 +1905,14 @@ void InsetFig::RestoreForm()
 
 void InsetFig::Preview(string const & p)
 {
- 	int pid = fork();
-
-  	if (pid == -1) {
-  		lyxerr << "Cannot fork process!" << endl;
-  		return;		// error
-  	}
-  	if (pid > 0) {
-  		addpidwait(pid);
-  		return;		// parent process
-  	}
-
 	string tfname = p;
 	if (GetExtension(tfname).empty())
 	    tfname += ".eps";
 	string buf1 = OnlyPath(owner->fileName());
 	string buf2 = MakeAbsPath(tfname, buf1);
-	
-	lyxerr << "Error during rendering "
-	       << execlp(lyxrc.view_pspic_command.c_str(),
-			 lyxrc.view_pspic_command.c_str(),
-			 buf2.c_str(), 0)
-	       << endl;
-	_exit(0);
+	if (!Formats::View(owner, buf2))
+		lyxerr << "Can't view " << buf2 << endl;
 }
-
 
 void InsetFig::BrowseFile()
 {

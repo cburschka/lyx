@@ -292,36 +292,6 @@ bool MenuWriteAs(Buffer * buffer)
 }
 
 
-int MenuBuildProg(Buffer * buffer)
-{
-	int ret = 0;
-	
-	if (buffer->isLiterate())
-		ret = buffer->buildProgram();
-	else {
-		string s = _("Wrong type of document");
-		string t = _("The Build operation is not allowed in this document");
-		WriteAlert(_("There were errors during the Build process."), s, t);
-		return 1;
-	}
-	
-	if (ret > 0) {
-		string s;
-		string t;
-		if (ret == 1) {
-			s = _("One error detected");
-			t = _("You should try to fix it.");
-		} else {
-			s += tostr(ret);
-			s += _(" errors detected.");
-			t = _("You should try to fix them.");
-		}
-		WriteAlert(_("There were errors during the Build process."), s, t);
-	}
-	return ret;
-}
-
-
 int MenuRunChktex(Buffer * buffer)
 {
 	int ret;

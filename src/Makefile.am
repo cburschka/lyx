@@ -55,8 +55,6 @@ lyx_SOURCES = \
 	LaTeXFeatures.C \
 	LaTeXFeatures.h \
 	LaTeXLog.C \
-	Literate.C \
-	Literate.h \
 	Lsstream.h \
 	LyXAction.C \
 	LyXAction.h \

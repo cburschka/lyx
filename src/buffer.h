@@ -165,12 +165,6 @@ public:
 	void latexParagraphs(std::ostream & os, LyXParagraph * par,
 			     LyXParagraph * endpar, TexRow & texrow) const;
 
-        ///
-        int runLiterate();
-
-        ///
-        int buildProgram();
-
 	///
 	int runChktex();
 
@@ -189,9 +183,6 @@ public:
 	///
 	bool isLyxClean() const { return lyx_clean; }
 	
-        ///
-        bool isNwClean() const { return nw_clean; }
-       
 	///
 	bool isBakClean() const { return bak_clean; }
 	
@@ -209,18 +200,12 @@ public:
 		bak_clean = true;
 	}
 
-        ///
-        void markNwClean() { nw_clean = true; }
-       
 	///
 	void markBakClean() { bak_clean = true; }
 	
 	///
 	void markDepClean(string const & name);
 	
-        ///
-        void markNwDirty() { nw_clean = false; }
-
 	///
 	void setUnnamed(bool flag=true) { unnamed = flag; }
 
@@ -233,7 +218,6 @@ public:
 			lyx_clean = false;
 			updateTitles();
 		}
-		nw_clean = false;
 		bak_clean = false;
 		DEPCLEAN * tmp = dep_clean;
 		while (tmp) {
@@ -400,9 +384,6 @@ private:
 	/// is autosave needed
 	mutable bool bak_clean;
 	
-        /// do we need to run weave/tangle
-        bool nw_clean;
-
 	/// is this a unnamed file (New...)
 	bool unnamed;
 

@@ -44,9 +44,12 @@ struct Command {
 	/// If the converter put the result in a directory, then result_file
 	/// is the name of the main file in that directory
 	string result_file;
-	///
+	/// Command to convert the program output to a LaTeX log file format
+	string parselog;
+
+	/// Used by the BFS algorithm
 	bool visited;
-	///
+	/// Used by the BFS algorithm
 	std::vector<Command>::iterator previous;
 };
 
@@ -118,6 +121,10 @@ public:
 	static
 	string const dvips_options(Buffer const * buffer);
 private:
+	///
+	static
+	bool scanLog(Buffer * buffer, string const & command, 
+		     string const & filename);
 	///
 	static
 	bool runLaTeX(Buffer * buffer, string const & command);

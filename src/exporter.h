@@ -33,6 +33,9 @@ public:
 	bool Preview(Buffer * buffer, string const & format);
 	///
 	static
+	bool IsExportable(Buffer const * buffer, string const & format);
+	///
+	static
 	std::vector<std::pair<string, string> > const
 	GetExportableFormats(Buffer const * buffer);
 	///

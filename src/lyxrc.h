@@ -84,44 +84,18 @@ public:
 	string custom_export_format;
 	///
 	bool pdf_mode;
-	/// program for running latex
-	string latex_command;
-	///
-	string pdflatex_command;
-	///
-	string pdf_to_ps_command;
-	///
-	string dvi_to_ps_command;
-        /// program for performing literate programming
-        string literate_command;
 	///
         string literate_extension;
-	///
-        string literate_error_filter;
-        /// program for compiling
-        string build_command;
-	///
-        string build_error_filter;
 	/// program for running relyx
 	string relyx_command;
 	/// postscript interpreter (in general "gs", if it is installed)
 	string ps_command;
-	/// program for viewing postscript output (default "ghostview -swap")
-	string view_ps_command;
-	/// program for viewing postscript pictures (default "ghostview")
-	string view_pspic_command;
-	/// program for viewing dvi output (default "xdvi")
-	string view_dvi_command;
 	/// option for telling the dvi viewer about the paper size
 	string view_dvi_paper_option;
-	/// program for viewing pdf output (default "xpdf")
-	string view_pdf_command;
         /// default paper size for local xdvi/dvips/ghostview/whatever
         BufferParams::PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
 	string chktex_command;
-	/// command to run an html converter incl. options
-	string html_command;
 	///
 	string document_path;
 	///
@@ -249,16 +223,6 @@ public:
 	bool use_gui;
 	///
 	string linuxdoc_to_lyx_command;
-	///
-	string linuxdoc_to_html_command;
-	///
-	string linuxdoc_to_latex_command;
-	///
-	string docbook_to_dvi_command;
-	///
-	string docbook_to_html_command;
-	///
-	string docbook_to_pdf_command;
 	///
 	bool new_ask_filename;
 	///

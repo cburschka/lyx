@@ -466,14 +466,15 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
-        static bool noLaTeX = lyxrc.latex_command == "none";
         bool disable = false;
         switch (action) {
 	case LFUN_MENUPRINT:
-		disable = noLaTeX || lyxrc.print_command == "none";
+		disable = !Exporter::IsExportable(buf, "dvi")
+			|| lyxrc.print_command == "none";
 		break;
 	case LFUN_FAX:
-		disable = noLaTeX || lyxrc.fax_command == "none";
+		disable = !Exporter::IsExportable(buf, "ps")
+			|| lyxrc.fax_command == "none";
 		break;
 	case LFUN_IMPORT:
 		if (argument == "latex" || argument == "noweb")
@@ -494,8 +495,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = lyxrc.chktex_command == "none";
 		break;
 	case LFUN_BUILDPROG:
-		disable = (lyxrc.literate_command == "none" 
-			   || ! buf->isLiterate());
+		disable = !Exporter::IsExportable(buf, "Program");
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
@@ -610,6 +610,7 @@ string const LyXFunc::Dispatch(int ac,
 {
 	string argument;
 	kb_action action;
+	LyXText * text = 0;
         
         // we have not done anything wrong yet.
         errorstat = false;
@@ -685,7 +686,6 @@ string const LyXFunc::Dispatch(int ac,
 		}
         }
 
-	LyXText * text = 0;
 	if (owner->view()->available() && owner->view()->the_locking_inset) {
 		text = owner->view()->the_locking_inset->getLyXText(owner->view());
 		UpdatableInset::RESULT result;
@@ -929,7 +929,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
         case LFUN_BUILDPROG:
-                MenuBuildProg(owner->buffer());
+		Exporter::Export(owner->buffer(), "Program", true);
                 break;
                 
  	case LFUN_RUNCHKTEX:
@@ -3130,14 +3130,14 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			}
 		}
 	} else {
-		s = lyxrc.document_path +
-		    "newfile" + tostr(++newfile_number) + ".lyx";
+		s = AddName(lyxrc.document_path,
+			    "newfile" + tostr(++newfile_number) + ".lyx");
 		FileInfo fi(s);
 		while (bufferlist.exists(s) || fi.readable()) {
 			++newfile_number;
-			s = lyxrc.document_path +
-			    "newfile" +	tostr(newfile_number) +
-			    ".lyx";
+			s = AddName(lyxrc.document_path,
+				    "newfile" +	tostr(newfile_number) +
+				    ".lyx");
 			fi.newFile(s);
 		}
 	}

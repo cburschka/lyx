@@ -82,6 +82,17 @@ bool Exporter::Preview(Buffer * buffer, string const & format0)
 }
 
 
+bool Exporter::IsExportable(Buffer const * buffer, string const & format)
+{
+	// This is not efficient
+	vector<pair<string, string> > const v = GetExportableFormats(buffer);
+	for (vector<pair<string, string> >::const_iterator it = v.begin();
+	     it != v.end(); ++it)
+		if ((*it).first == format)
+			return true;
+	return false;
+}
+
 vector<pair<string, string> > const
 Exporter::GetExportableFormats(Buffer const * buffer)
 {
@@ -96,7 +107,7 @@ vector<pair<string, string> > const
 Exporter::GetViewableFormats(Buffer const * buffer)
 {
 	vector<pair<string, string> > result = 
-		Converter::GetReachable(BufferExtension(buffer), false);
+		Converter::GetReachable(BufferExtension(buffer), true);
 	Format * format = Formats::GetFormat("txt");
 	if (format && !format->viewer.empty())
 		result.push_back(pair<string,string>("txt", "Ascii"));
@@ -110,6 +121,8 @@ string const Exporter::BufferExtension(Buffer const * buffer)
 		return "sgml";
 	else if (buffer->isDocBook())
 		return "docbook";
+	else if (buffer->isLiterate())
+		return lyxrc.literate_extension;
 	else
 		return "tex";
 }

@@ -123,15 +123,16 @@ public:
 
 	/// use this for running LaTeX once
 	int operator() ();
+
+	///
+	int scanLogFile(TeXErrors &);
+
 protected:
 	/// The dependency file.
 	string depfile;
 
 	///
 	void deplog(DepTable & head);
-
-	///
-	int scanLogFile(TeXErrors &);
 
 	///
 	bool runMakeIndex(string const &);
