@@ -41,6 +41,7 @@
 #include <fstream>
 #include <algorithm>
 #include <utility>
+#include <cerrno>
 
 using std::vector;
 using std::ifstream;
