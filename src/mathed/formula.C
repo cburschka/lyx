@@ -31,6 +31,7 @@
 #include "gettext.h"
 #include "debug.h"
 #include "lyx_gui_misc.h"
+#include "lyxtext.h"
 #include "support/LOstream.h"
 #include "support/LAssert.h"
 #include "support/lyxlib.h"
@@ -324,6 +325,13 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 }
 
 
+//std::ostream & operator<<(std::ostream & os, LyXCursor const & c)
+//{
+//	os << '[' << c.x() << ' ' << c.y() << ' ' << c.pos() << ']';
+//	return os;
+//}
+
+
 void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 			int y, float & xx, bool) const
 {
@@ -336,11 +344,27 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	int w = par_->width();
 	int h = par_->height();
 	int a = par_->ascent();
-	pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
-	if (mathcursor && mathcursor->formula() == this) {
-		mathcursor->drawSelection(pain);
-		pain.rectangle(x, y - a, w, h, LColor::mathframe);
+	bool done = false;
+/*
+	if (LyXText * t = bv->getLyXText()) {
+		LyXText::Selection & sel = t->selection;
+		lyxerr << "sel.start: " << sel.start << "\n";
+		lyxerr << "sel.end: " << sel.end << "\n";
+		lyxerr << "t->cursor: " << t->cursor << "\n";
+		if (sel.set() && sel.start < t->cursor && t->cursor < sel.end) {
+			pain.fillRectangle(x, y - a, w, h, LColor::selection);
+			done = true;
+		}
+	}
+*/
+
+	if (!done) {
+		pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
+		if (mathcursor && mathcursor->formula() == this) {
+			mathcursor->drawSelection(pain);
+			pain.rectangle(x, y - a, w, h, LColor::mathframe);
+		}
 	}
 
 	par_->draw(pain, x, y);

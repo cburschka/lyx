@@ -62,10 +62,6 @@ InsetFormulaMacro::InsetFormulaMacro(string const & s)
 {
 	string name = mathed_parse_macro(s);
 	setInsetName(name);
-#ifdef WITH_WARNINGS
-#warning "metrics disabled"
-#endif
-	//metrics();
 }
 
 

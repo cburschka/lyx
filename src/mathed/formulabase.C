@@ -41,6 +41,7 @@
 #include "math_spaceinset.h"
 #include "math_macrotable.h"
 #include "math_factory.h"
+#include "math_parser.h"
 #include "undo_funcs.h"
 
 using std::endl;
@@ -125,12 +126,14 @@ string const InsetFormulaBase::editMessage() const
 }
 
 
-void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
+void InsetFormulaBase::edit(BufferView * bv, int x, int y, unsigned int button)
 {
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
-	mathcursor = new MathCursor(this, x == 0);
+	//lyxerr << "edit: " << x  << " " << y << " button: " << button << "\n";
+	if (!mathcursor)
+		mathcursor = new MathCursor(this, x == 0);
 	metrics(bv);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
@@ -242,7 +245,7 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 
 
 void InsetFormulaBase::insetButtonRelease(BufferView * bv,
-					  int x, int y, int /*button*/)
+					  int /*x*/, int /*y*/, int /*button*/)
 {
 	if (!mathcursor)
 		return;
@@ -254,21 +257,42 @@ void InsetFormulaBase::insetButtonRelease(BufferView * bv,
 
 
 void InsetFormulaBase::insetButtonPress(BufferView * bv,
-					int x, int y, int /*button*/)
+					int x, int y, int button)
 {
-	//lyxerr << "insetButtonPress: " << x + xo_ << " " << y + yo_ << "\n";
-	first_x = x;
-	first_y = y;
-	if (mathcursor) {
-		mathcursor->selClear();
-		mathcursor->setPos(x + xo_, y + yo_);
+	//lyxerr << "insetButtonPress: " << x + xo_ << " " << y + yo_
+	//	<< " but: " << button << "\n";
+	switch (button) {
+		default:
+		case 1:
+			// just click
+			first_x = x;
+			first_y = y;
+			if (mathcursor) {
+				mathcursor->selClear();
+				mathcursor->setPos(x + xo_, y + yo_);
+			}
+			break;
+		case 2:
+			lyxerr << "insetButtonPress: 2\n";
+			// insert stuff
+			if (mathcursor) {
+				bv->lockedInsetStoreUndo(Undo::EDIT);
+				MathArray ar;
+				mathcursor->selGet(ar);
+				mathcursor->setPos(x + xo_, y + yo_);
+				string sel =
+					bv->getLyXText()->selectionAsString(bv->buffer(), false);
+				//mathed_parse_cell(ar, sel);
+				mathcursor->insert(ar);
+			}	
+			break;
 	}
 	bv->updateInset(this, false);
 }
 
 
 void InsetFormulaBase::insetMotionNotify(BufferView * bv,
-					 int x, int y, int button)
+					 int x, int y, int /*button*/)
 {
 	if (!mathcursor)
 		return;

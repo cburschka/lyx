@@ -483,10 +483,6 @@ void MathCursor::niceInsert(MathAtom const & t)
 		right();  // do not push for e.g. MathSymbolInset
 		selPaste();
 	}
-#ifdef WITH_WARNINGS
-#warning "redraw disabled"
-#endif
-	//p->metrics(p->size());
 }
 
 
