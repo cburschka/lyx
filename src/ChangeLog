@@ -1,3 +1,8 @@
+2001-11-28  Allan Rae  <rae@lyx.org>
+
+	* text.C (paintLastRow): g++-2.95.3 and others don't like variable
+	declaration & definition that looks like a function declaration.
+
 2001-11-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* BufferView2.C (copy): 

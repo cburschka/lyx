@@ -3402,9 +3402,10 @@ void LyXText::paintLastRow(DrawRowParams & p)
  
 		y_bottom -= 3 * defaultHeight();
 	} else if (parparams.spaceBottom().kind() == VSpace::LENGTH) {
-		string str(string(_("Space below")) + " ("
+		string str = string(_("Space below"))
+			+ " ("
 			+ parparams.spaceBottom().asLyXCommand()
-			+ ")");
+			+ ")";
  
 		int const space = int(parparams.spaceBottom().inPixels(p.bv));
 		int const y = p.yo + y_bottom - space / 2;
