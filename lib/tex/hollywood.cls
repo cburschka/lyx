@@ -151,26 +151,35 @@
 \else
   \onecolumn
 \fi
-\newenvironment{fadein}%
-{\begin{list}{}{%
-\leftmargin \rightmargin}
-\item[]FADE IN:\ignorespaces}
-{\unskip \end{list}}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{ifthen}
+\usepackage{lastpage}
+\pagestyle{fancy}
+% This stuff is for a shooting script
+% \lhead{\ifthenelse{ \not \value{page} = 1}{CONTINUED:}{}}
+% \rfoot{\ifthenelse{ \not \value{page}=\pageref{LastPage}}{(CONT'D)}
+%  {\ifthenelse{\value{page}=\pageref{LastPage}}{(END)}{}}}
 
-\newenvironment{interior}%
-{\filbreak
-\begin{list}{}{%
-\leftmargin \rightmargin}
-\item[]INT. \ignorespaces}
-{\unskip \end{list}}
 
-\newenvironment{exterior}%
-{filbreak
-\begin{list}{}{%
-\leftmargin \rightmargin}
-\item[]EXT. \ignorespaces}
-{\unskip \end{list}}
-
+% This is what we want for a spec script
+\rhead{\thepage.}
+\cfoot{}
+% \renewcommand{\headrulewitdh}{0pt}
+  % This one is needed to get real adobe courier, but you can use
+  % cmtt which is also correct
+  \renewcommand{\familydefault}{pcr}
+  % This is to negate the effect of the ~ that LyX adds everywhere
+ \let~=\space
+  % this protects you against the fact that TeX does not want to
+  % hyphenate in typewriter font. It is possible to enable
+  % hyphenation, but I do not remember how.
+  % That's good because we -do not- want any hyphenation.
+  \sloppy
+\newcommand{\fadein}{\filbreak\raggedright\par FADE IN: }%
+\newcommand{\fadeout}{\filbreak\raggedright\par FADE OUT }%
+\newcommand{\interiorshot}{\filbreak\raggedright\par INT. }%
+\newcommand{\exteriorshot}{\filbreak\raggedright\par EXT. }%
 \newenvironment{dialogue}%
 {\raggedright
 \begin{list}{}{%
@@ -209,12 +218,7 @@
 	\item[](\ignorespaces}
 {\unskip)\end{list}}
 
-\newenvironment{fadeout}%
-{\filbreak
-\begin{list}{}{%
-\leftmargin \rightmargin}
-\item[]FADE OUT: \ignorespaces}
-{\unskip \end{list}}
+
 
 
 \endinput

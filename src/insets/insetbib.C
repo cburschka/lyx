@@ -18,6 +18,7 @@
 #include "bibforms.h"
 #include "lyxtext.h"
 #include "support/filetools.h"
+#include "support/path.h"
 
 using std::ostream;
 using std::ifstream;
@@ -339,13 +340,10 @@ int InsetBibtex::Latex(ostream & os,
 	string db_in = getContents();
 	db_in = split(db_in, adb, ',');
 	while(!adb.empty()) {
-		if (!owner->niceFile) {
-			string fname 
-				= findtexfile(ChangeExtension(adb, "bib"),
-					      "bib");
-			if (!fname.empty())
-				adb = ChangeExtension(fname, string());
-		}
+		if (!owner->niceFile &&
+		    IsFileReadable(MakeAbsPath(adb, owner->filepath)+".bib")) 
+                         adb = MakeAbsPath(adb, owner->filepath);
+
 		db_out += adb;
 		db_out += ',';
 		db_in= split(db_in, adb,',');
@@ -379,6 +377,8 @@ string InsetBibtex::getKeys(char delim)
 	//	owner = current_view->buffer();
 	//}
 	
+	Path p(owner->filepath);
+
 	string tmp, keys;
 	string bibfiles = getContents();
 	bibfiles = split(bibfiles, tmp, ',');

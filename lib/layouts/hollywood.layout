@@ -34,33 +34,6 @@ DefaultFont
   Color                 None
 EndFont
 
-Preamble
-\usepackage{fancyhdr}
-\usepackage{extramarks}
-\usepackage{ifthen}
-\usepackage{lastpage}
-\pagestyle{fancy}
-% This stuff is for a shooting script
-% \lhead{\ifthenelse{ \not \value{page} = 1}{CONTINUED:}{}}
-% \rfoot{\ifthenelse{ \not \value{page}=\pageref{LastPage}}{(CONT'D)}
-%  {\ifthenelse{\value{page}=\pageref{LastPage}}{(END)}{}}}
-
-
-% This is what we want for a spec script
-\rhead{\thepage.}
-\cfoot{}
-% \renewcommand{\headrulewitdh}{0pt}
-  % This one is needed to get real adobe courier, but you can use
-  % cmtt which is also correct
-  \renewcommand{\familydefault}{pcr}
-  % This is to negate the effect of the ~ that LyX adds everywhere
- \let~=\space
-  % this protects you against the fact that TeX does not want to
-  % hyphenate in typewriter font. It is possible to enable
-  % hyphenation, but I do not remember how.
-  % That's good because we -do not- want any hyphenation.
-  \sloppy
-EndPreamble
 
 # Standard style definition (I kept this one to provide a general case)
 Style Standard
@@ -91,9 +64,9 @@ End
 # FADE_IN: and FADE_OUT: usually stand alone. If you want a more complicated
 # FADE_IN e.g. FADE_IN on STELLA:, use the Narrative Style.
 Style FADE_IN:
-  Margin                Dynamic
+  Margin                Static
   LatexType             Environment
-  LatexName             fadein
+  LatexName             flushleft
   ParIndent             ""
   ParSkip               0.8
   TopSep		1.0
@@ -111,8 +84,8 @@ End
 # - DAY, or - NIGHT or similar to define lighting.
 Style INT.
   Margin                Dynamic
-  LatexType             Environment
-  LatexName             interior
+  LatexType             Command
+  LatexName             interiorshot
   ParIndent             ""
   ParSkip               0.8
   TopSep		1.0
@@ -124,8 +97,8 @@ End
 
 Style EXT.
   Margin                Dynamic
-  LatexType             Environment
-  LatexName             exterior
+  LatexType             Command
+  LatexName             exteriorshot
   ParIndent             ""
   ParSkip               0.8
   TopSep		1.0
@@ -135,20 +108,6 @@ Style EXT.
   LabelString		"EXT. "
 End
 
-# Dialogue style definition. Actor dialog
-Style Dialogue
-  Margin                Static
-  LatexType             Environment
-  LatexName             dialogue
-  LeftMargin            MMMMMMMMMMMM
-  RightMargin		MMMMMMMMMMMM
-  ParSkip               0.0
-  TopSep		0.0
-  BottomSep		0.0
-  Align                 Left
-  AlignPossible         Left
-  LabelType             No_Label
-End
 # Speaker style definition, identifies speaker  ALL CAPS
 Style Speaker
   Margin                Static
@@ -190,6 +149,21 @@ EndFont
 
 End
 
+# Dialogue style definition. Actor dialog
+Style Dialogue
+  Margin                Static
+  LatexType             Environment
+  LatexName             dialogue
+  LeftMargin            MMMMMMMMMMMM
+  RightMargin		MMMMMMMMMMMM
+  ParSkip               0.0
+  TopSep		0.0
+  BottomSep		0.0
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+End
+
 # Transition style definition ALL CAPS
 Style Transition
   Margin                Static
@@ -205,7 +179,7 @@ End
 
 Style FADE_OUT:
   Margin                Dynamic
-  LatexType             Environment
+  LatexType             Command
   LatexName             fadeout
   ParIndent             ""
   ParSkip               0.8

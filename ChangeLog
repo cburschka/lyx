@@ -1,3 +1,20 @@
+2000-05-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/debug.C (showTags): enlarge the first column, now that we
+	have 6-digits debug codes.
+
+	* lib/layouts/hollywood.layout:
+	* lib/tex/hollywood.cls: 	
+	* lib/tex/brodway.cls: 
+	* lib/layouts/brodway.layout: more commands and fewer
+	environments. Preambles moved in the .cls files. Broadway now has 
+	more options on scene numbering and less whitespace (from Garst)
+
+	* src/insets/insetbib.C (getKeys): make sure that we are in the
+	document directory, in case the bib file is there.
+
+	* src/insets/insetbib.C (Latex): revert bogus change.
+
 2000-05-16  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (UnlockInsetInInset): Changes to update

@@ -1,16 +1,11 @@
 %% Author: Garst R. Reese  reese@isn.net
-%% This is file `broadway.cls', which provides the current
-%% preferred format for submission of "spec" scripts
-%% It is a pretty dull and uninteresting format, but it sells
+%% This is file `broadway.cls', which provides a format for writing
+%% plays.
 %% Derived from report.cls. There is probably still a lot of stuff
 %% that could be deleted. 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{broadway} [1999/02/09 v1.0 uses broadway.layout]
-\newcounter{act}
-%\newcounter{scene}[act]
 \renewcommand{\ref}[1]{#1}
-\renewcommand{\theact}{\Roman{act}}
-%\renewcommand{\thescene}{SCENE\arabic{scene}}
 \newcommand\@ptsize{}
 \newif\if@restonecol
 \newif\if@titlepage
@@ -112,10 +107,6 @@
 \@beginparpenalty -\@lowpenalty
 \@endparpenalty   -\@lowpenalty
 \@itempenalty     -\@lowpenalty
-%\renewcommand\theenumi{\@arabic\c@enumi}
-%\newcommand\labelenumi{SCENE\theenumi.}
-%\renewcommand\p@enumii{\theenumi}
-%\newcommand\labelitemi{\textbullet}
 \newenvironment{titlepage}
     {%
       \if@twocolumn
@@ -166,30 +157,21 @@
 \else
   \onecolumn
 \fi
-
-\newenvironment{atrise}%
-{\filbreak
-\begin{list}{}{%
-\leftmargin \rightmargin}
-\item[]AT RISE:\ignorespaces}
-{\unskip \end{list}}
-
-\newenvironment{scene}%
-{\filbreak
-\stepcounter{scene}
-\begin{center}{}{%
-\center}
-\item[]SCENE \ignorespaces}
-{\unskip \end{center}}
-
-\newenvironment{act}%
-{\filbreak
-\stepcounter{act}
-%\setcounter{scene}{0}
-\begin{center}{}{%
-\center}
-\item[]ACT \theact \ignorespaces}
-{\unskip \end{center}}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{ifthen}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\lhead{\TheTitle}
+\chead{\TheAuthor}
+\cfoot{}
+\rhead{\thepage}
+% We do not want any hyphenation
+  \sloppy
+\newcommand{\TheAuthor}{}
+\newcommand{\Author}[1]{\renewcommand{\TheAuthor}{#1}}
+\newcommand{\TheTitle}{}
+\newcommand{\Title}[1]{\renewcommand{\TheTitle}{#1}}
 
 \newenvironment{dialogue}%
 {\raggedright
@@ -199,7 +181,7 @@
 \setlength{\parsep}{0mm}
 \setlength{\topsep}{0mm}}
 \item[] \ignorespaces}
-{\unskip \end{list}}
+{\unskip \end{list}}%
 
 \newenvironment{narrative}%
 {\raggedright
@@ -219,6 +201,7 @@
 \center
 \setlength{\parsep}{0mm}
 \setlength{\topsep}{2mm}}
+\vspace{-24bp}
 \item[] \ignorespaces}
 {\unskip \end{center}}
 
@@ -226,10 +209,22 @@
 {\fontshape{it}\selectfont{}
 \begin{center}{}{%
 \center
+\vspace{-30bp}
 \setlength{\parsep}{0mm}
 \setlength{\topsep}{0mm}}
 	\item[](\ignorespaces}
-{\unskip)\end{center}}
+{\unskip )\end{center}}
+\newcounter{actctr}
+\newcounter{scenectr}[actctr]
+\renewcommand{\theactctr}{\Roman{actctr}}
+\renewcommand{\thescenectr}{\arabic{scenectr}}
+\providecommand{\atrise}{\par\raggedright AT RISE: }%
+\providecommand{\scenestar}{\filbreak\par\centering SCENE }%
+\providecommand{\scene}{%
+\filbreak\par\stepcounter{scenectr}\centering SCENE \thescenectr}%
+\providecommand{\act}{%
+\stepcounter{actctr}\filbreak\setcounter{scenectr}{0}\par\centering ACT \theactctr\par}%
+\providecommand{\curtain}{\filbreak\par\centering CURTAIN \par}%
 
 \endinput
 %%

@@ -22,25 +22,6 @@ DefaultFont
   Color                 None
 EndFont
 
-Preamble
-\usepackage{fancyhdr}
-\usepackage{extramarks}
-\usepackage{ifthen}
-\usepackage{lastpage}
-\pagestyle{fancy}
-\newcommand{\TheAuthor}{}
-\newcommand{\Author}[1]{\renewcommand{\TheAuthor}{#1}}
-\newcommand{\TheTitle}{}
-\newcommand{\Title}[1]{\renewcommand{\TheTitle}{#1}}
-
-
-\rhead{\thepage}
-\lhead{\TheTitle}
-\chead{\TheAuthor}
-\cfoot{}
-% We do not want any hyphenation
-  \sloppy
-EndPreamble
 
 # Standard style definition (I kept this one to provide a general case)
 Style Standard
@@ -75,48 +56,51 @@ EndFont
 End
 
 Style ACT
-  Margin                Dynamic
-  LatexType             Environment
+  Margin                Static
+  LatexType             Command
   LatexName             act
   ParIndent             ""
   ParSkip               0.8
   TopSep		1.0
-  KeepEmpty		1
+#  KeepEmpty		1
   Align                 Center
   AlignPossible         Center
   LabelType             Counter_Chapter
   LabelString		"ACT "
 End
 
-Style ACT*
-  Margin                Dynamic
-  LatexType             Paragraph
-  LatexName             dummy
+
+Style SCENE
+  Margin                Static
+  LatexType             Command
+  LatexName             scene
   ParIndent             ""
   ParSkip               0.8
   TopSep		1.0
+#  KeepEmpty		1
   Align                 Center
   AlignPossible         Center
-  LabelType		No_Label
+  LabelType             Counter_Section
+  LabelString		"SCENE "
 End
 
-Style SCENE
+Style SCENE*
   Margin                Dynamic
-  LatexType             Environment
-  LatexName             scene
+  LatexType             Command
+  LatexName             scenestar
   ParIndent             ""
   ParSkip               0.8
   TopSep		1.0
   KeepEmpty		1
   Align                 Center
   AlignPossible         Center
-  LabelType             Static       # Counter_EnumI
+  LabelType             Static
   LabelString		"SCENE "
 End
 
 Style AT_RISE:
   Margin                Dynamic
-  LatexType             Environment
+  LatexType             Command
   LatexName             atrise
   ParIndent             ""
   ParSkip               0.8
@@ -187,9 +171,9 @@ Style Dialogue
 End
 
 Style CURTAIN
-  Margin                Dynamic
-  LatexType             Paragraph
-  LatexName             dummy
+  Margin                Static
+  LatexType             Command
+  LatexName             curtain
   ParIndent             ""
   ParSkip               0.8
   TopSep		1.0

@@ -27,6 +27,7 @@ struct error_item {
 };
 
 static error_item errorTags[] = {
+	{ Debug::NONE,		"none",		"No debugging message"},
 	{ Debug::INFO,		"info",		"General information"},
 	{ Debug::INIT,		"init",		"Program initialisation"},
 	{ Debug::KEY,		"key",		"Keyboard events handling"},
@@ -35,7 +36,6 @@ static error_item errorTags[] = {
 	{ Debug::LYXRC,		"lyxrc",	"Configuration files reading"},
 	{ Debug::KBMAP,		"kbmap",	"Custom keyboard definition"},
 	{ Debug::LATEX,		"latex",	"LaTeX generation/execution"},
-	{ Debug::DEPEND,        "depend",       "Dependency information"},
 	{ Debug::MATHED,	"mathed",	"Math editor"},
 	{ Debug::FONT,		"font",		"Font handling"},
 	{ Debug::TCLASS,	"tclass",	"Textclass files reading"},
@@ -44,8 +44,8 @@ static error_item errorTags[] = {
 	{ Debug::ROFF,		"roff",		"Keep *roff temporary files"},
 	{ Debug::ACTION,	"action",	"User commands"},
 	{ Debug::LYXLEX,        "lyxlex",       "The LyX Lexxer"},
+	{ Debug::DEPEND,        "depend",       "Dependency information"},
 	{ Debug::INSETS,	"insets",	"LyX Insets"},
-	{ Debug::NONE,		"none",		"No debugging message"},
         { Debug::ANY,		"any",          "All debugging messages"}
 };
 
@@ -94,7 +94,7 @@ void Debug::showLevel(ostream & o, Debug::type level)
 void Debug::showTags(ostream & os) 
 {
 	for (int i = 0 ; i < numErrorTags ; ++i)
-		os << setw(5) << errorTags[i].level
+		os << setw(7) << errorTags[i].level
 		   << setw(10) << errorTags[i].name
 		   << "  " << errorTags[i].desc << '\n';
 	os.flush();
