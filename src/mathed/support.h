@@ -6,10 +6,6 @@
 #include "lyxfont.h"
 #include "math_defs.h"
 
-#ifndef byte
-#define byte unsigned char
-#endif
-
 class Painter;
 class MathArray;
 class MathMatrixInset;
@@ -17,9 +13,11 @@ class MathMatrixInset;
 extern char const * math_font_name[];
 extern char const * latex_mathspace[];
 
-int mathed_char_height(short type, int size, byte c, int & asc, int & des);
-int mathed_char_width(short type, int size, byte c);
-void mathed_char_dim(short type, int size, byte c, int & asc, int & des, int & wid);
+int mathed_char_height(short type, int size, unsigned char c,
+	int & asc, int & des);
+int mathed_char_width(short type, int size, unsigned char c);
+void mathed_char_dim(short type, int size, unsigned char c,
+	int & asc, int & des, int & wid);
 
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code);
 
@@ -34,9 +32,8 @@ int mathed_string_width(short type, int size, string const & s);
 bool MathIsInset(short x);
 bool MathIsAlphaFont(short x);
 bool MathIsBOPS(short x);
-bool MathIsBinary(short x);
 bool MathIsSymbol(short x);
-bool MathIsRelOp(byte c, MathTextCodes f);
+bool MathIsRelOp(unsigned char c, MathTextCodes f);
 
 void drawStr(Painter & pain, short type, int siz,
 	int x, int y, string const & s);

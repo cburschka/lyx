@@ -69,6 +69,7 @@ InsetFormula::InsetFormula(string const & s)
 {
 	istringstream is(s.c_str());
 	par(mathed_parse(is));
+	Metrics();
 }
 
 
@@ -114,6 +115,7 @@ int InsetFormula::docBook(ostream & os) const
 void InsetFormula::read(LyXLex & lex)
 {
 	par(mathed_parse(lex));
+	Metrics();
 }
 
 
@@ -131,7 +133,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 	pain.fillRectangle(int(x), y - a, w, h, LColor::mathbg);
 
 	if (mathcursor) {
-		par()->Metrics(LM_ST_TEXT);
+		Metrics();
 
 		if (mathcursor->formula() == this) {
 			if (mathcursor->Selection()) {
@@ -151,6 +153,11 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 	setCursorVisible(false);
 }
 
+
+void InsetFormula::Metrics() const 
+{
+	const_cast<MathInset *>(par_)->Metrics(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+}
 
 vector<string> const InsetFormula::getLabelList() const
 {
@@ -295,6 +302,7 @@ void InsetFormula::handleExtern(const string & arg, BufferView *)
 
 	ifstream is(outfile.c_str());
 	par(mathed_parse(is));
+	Metrics();
 }
 
 bool InsetFormula::display() const
@@ -329,7 +337,7 @@ void InsetFormula::validate(LaTeXFeatures & features) const
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
-	return par()->ascent() + 4;
+	return par()->ascent();
 }
 
 
@@ -341,6 +349,5 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 
 int InsetFormula::width(BufferView *, LyXFont const &) const
 {
-	par()->Metrics(LM_ST_TEXT);
 	return par()->width();
 }

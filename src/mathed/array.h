@@ -62,7 +62,7 @@ public:
 	///
 	void insert(int pos, MathInset * inset);
 	///
-	void insert(int pos, byte, MathTextCodes);
+	void insert(int pos, unsigned char, MathTextCodes);
 	///
 	void insert(int pos, MathArray const &);
 
@@ -83,7 +83,7 @@ public:
 	///
 	void push_back(MathInset * inset);
 	///
-	void push_back(byte, MathTextCodes);
+	void push_back(unsigned char, MathTextCodes);
 	///
 	void push_back(MathArray const &);
 	///
@@ -102,7 +102,7 @@ public:
 	///
 	MathInset * prevInset(int pos) const;
 	///
-	byte GetChar(int pos) const;
+	unsigned char GetChar(int pos) const;
 	/// read subsequent chars of the same kind.
 	// pos is afterwards one behind the last char belonging to the string
 	string GetString(int & pos) const;
@@ -118,9 +118,9 @@ public:
 	void WriteNormal(std::ostream &) const;
 private:
 	///
-	typedef std::vector<byte>           buffer_type;
+	typedef std::vector<unsigned char>           buffer_type;
 	///
-	typedef byte                        value_type;
+	typedef unsigned char                        value_type;
 
 	///
 	int item_size(int pos) const;

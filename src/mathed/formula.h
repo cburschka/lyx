@@ -43,6 +43,8 @@ public:
 	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
+	///
+	void Metrics() const;
 
 	///
 	void write(std::ostream &) const;

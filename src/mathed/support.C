@@ -17,6 +17,38 @@ using std::lower_bound;
 using std::endl;
 using std::max;
 
+
+bool MathIsInset(short x)
+{
+	return LM_TC_INSET == x;
+}
+
+
+bool MathIsAlphaFont(short x)
+{
+	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
+}
+
+
+bool MathIsBOPS(short x)
+{
+	return MathLookupBOP(x) > LMB_NONE;
+}
+
+
+bool MathIsBinary(short x)
+{
+	return x == LM_TC_BOP || x == LM_TC_BOPS;
+}
+
+
+bool MathIsSymbol(short x)
+{
+	return x == LM_TC_SYMB || x == LM_TC_BOPS || x == LM_TC_BSYM;
+}
+     
+
+
 ///
 class Matrix {
 public:
@@ -375,7 +407,8 @@ static init_deco_table idt;
 
 } // namespace anon
 
-void mathed_char_dim (short type, int size, byte c, int & asc, int & des, int & wid)
+void mathed_char_dim (short type, int size, unsigned char c,
+	int & asc, int & des, int & wid)
 {
 	LyXFont const font = WhichFont(type, size);
 	des = lyxfont::descent(c, font);
@@ -383,7 +416,8 @@ void mathed_char_dim (short type, int size, byte c, int & asc, int & des, int & 
 	wid = mathed_char_width(type, size, c);
 }
 
-int mathed_char_height(short type, int size, byte c, int & asc, int & des)
+int mathed_char_height(short type, int size, unsigned char c,
+	int & asc, int & des)
 {
 	LyXFont const font = WhichFont(type, size);
 	des = lyxfont::descent(c, font);
@@ -392,7 +426,7 @@ int mathed_char_height(short type, int size, byte c, int & asc, int & des)
 }
 
 
-int mathed_char_width(short type, int size, byte c)
+int mathed_char_width(short type, int size, unsigned char c)
 {
 	if (MathIsBinary(type)) {
 		string s;
@@ -546,41 +580,6 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 
 
 
-bool MathIsInset(short x)
-{
-	return LM_TC_INSET == x;
-}
-
-
-bool MathIsAlphaFont(short x)
-{
-	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
-}
-
-
-bool MathIsBOPS(short x)
-{
-	return MathLookupBOP(x) > LMB_NONE;
-}
-
-
-bool MathIsBinary(short x)
-{
-	return x == LM_TC_BOP || x == LM_TC_BOPS;
-}
-
-
-bool MathIsSymbol(short x)
-{
-	return x == LM_TC_SYMB || x == LM_TC_BOPS || x == LM_TC_BSYM;
-}
-     
-
-bool is_matrix_type(short int type)
-{
-	return type == LM_OT_MATRIX;
-}
-
 // In a near future maybe we use a better fonts renderer
 void drawStr(Painter & pain, short type, int siz,
 	int x, int y, string const & s)
@@ -629,7 +628,7 @@ MathStyles smallerStyleFrac(MathStyles st)
 	return st;
 }
 
-bool MathIsRelOp(byte c, MathTextCodes f)
+bool MathIsRelOp(unsigned char c, MathTextCodes f)
 {
 	if (f == LM_TC_BOP && (c == '=' || c == '<' || c == '>'))
 		return true;

@@ -614,14 +614,10 @@ in_word_set(s) << " \n";
 					break;
 				
 			case LM_TK_SYM: 
-				if (l->id < 255) {
-					insert(static_cast<byte>(l->id), 
-					       MathIsBOPS(l->id) ?
-						LM_TC_BOPS : LM_TC_SYMB);
-					
-				} else {
+				if (l->id < 255)
+					insert(l->id, MathIsBOPS(l->id) ? LM_TC_BOPS : LM_TC_SYMB);
+				else
 					p = new MathFuncInset(l->name);
-				}
 				break;
 
 			case LM_TK_STACK:

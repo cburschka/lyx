@@ -331,7 +331,7 @@ void MathInset::dump() const
 }
 
 
-void MathInset::push_back(byte ch, MathTextCodes fcode)
+void MathInset::push_back(unsigned char ch, MathTextCodes fcode)
 {
 	if (nargs())
 		cells_.back().data_.push_back(ch, fcode);

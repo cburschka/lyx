@@ -106,7 +106,7 @@ MathInset * MathArray::prevInset(int pos) const
 	return nextInset(pos);
 }
 
-byte MathArray::GetChar(int pos) const
+unsigned char MathArray::GetChar(int pos) const
 {
 	return pos < size() ? bf_[pos + 1] : '\0';
 }
@@ -151,7 +151,7 @@ void MathArray::replace(int pos, MathInset * p)
 	memcpy(&bf_[pos + 1], &p, sizeof(p));
 }
 
-void MathArray::insert(int pos, byte b, MathTextCodes t)
+void MathArray::insert(int pos, unsigned char b, MathTextCodes t)
 {
 	bf_.insert(bf_.begin() + pos, 3, t);
 	bf_[pos + 1] = b;
@@ -172,7 +172,7 @@ void MathArray::push_back(MathInset * p)
 	insert(size(), p);
 }
 
-void MathArray::push_back(byte b, MathTextCodes c)
+void MathArray::push_back(unsigned char b, MathTextCodes c)
 {
 	insert(size(), b, c);
 }
@@ -284,7 +284,7 @@ void MathArray::Write(ostream & os, bool fragile) const
 		} else {
 
 			MathTextCodes fcode = GetCode(pos);
-			byte c = GetChar(pos);
+			unsigned char c = GetChar(pos);
 
 			if (MathIsSymbol(fcode)) {
 				latexkeys const * l = lm_get_key_by_id(c, LM_TK_SYM);

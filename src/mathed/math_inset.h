@@ -182,7 +182,7 @@ public:
 	///
 	void push_back(MathInset *);
 	///
-	void push_back(byte ch, MathTextCodes fcode);
+	void push_back(unsigned char ch, MathTextCodes fcode);
 	///
 	void dump() const;
 
