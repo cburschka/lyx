@@ -124,8 +124,7 @@ def find_end_of(lines, i, start_token, end_token):
 # Finds the matching \end_inset
 def find_beginning_of(lines, i, start_token, end_token):
     count = 1
-    n = len(lines)
-    while i < n:
+    while i > 0:
 	i = find_tokens_backwards(lines, [start_token, end_token], i-1)
 	if check_token(lines[i], end_token):
 	    count = count+1
