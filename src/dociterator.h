@@ -185,6 +185,9 @@ public:
 	/// move backward one inset
 	void backwardInset();
 
+	/// are we some 'extension' (i.e. deeper nested) of the given iterator
+	bool hasPart(DocIterator const & it) const;
+
 	/// output
 	friend std::ostream &
 	operator<<(std::ostream & os, DocIterator const & cur);

@@ -1129,9 +1129,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		// ignore motions deeper nested than the real anchor
 		LCursor & bvcur = cur.bv().cursor();
-		if (bvcur.anchor_.size() < cur.size())
+		if (!bvcur.anchor_.hasPart(cur))
 			break;
-
+ 
 		CursorSlice old = cur.top();
 		setCursorFromCoordinates(cur, cmd.x, cmd.y);
 

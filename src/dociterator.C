@@ -410,6 +410,17 @@ void DocIterator::backwardPos()
 }
 
 
+bool DocIterator::hasPart(DocIterator const & it) const
+{
+	// it can't be a part if it is larger
+	if (it.size() > size())
+		return false;
+
+	// as inset adresses are the 'last' level
+	return &it.back().inset() == &operator[](it.size() - 1).inset();
+}
+
+
 std::ostream & operator<<(std::ostream & os, DocIterator const & dit)
 {
 	for (size_t i = 0, n = dit.size(); i != n; ++i)
