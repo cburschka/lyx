@@ -52,7 +52,8 @@
 # where ${FORMAT} is either ppm or png.
 
 # Three helper functions.
-FIND_IT () {
+FIND_IT ()
+{
 	which ${EXECUTABLE} > /dev/null ||
 	{
 		echo "Unable to find \"${EXECUTABLE}\". Please install."
@@ -60,7 +61,8 @@ FIND_IT () {
 	}
 }
 
-BAIL_OUT () {
+BAIL_OUT ()
+{
 	# Remove everything except the original .tex file.
 	FILES=`ls ${BASE}* | sed -e "/${BASE}.tex/d"`
 	rm -f ${FILES} texput.log
@@ -68,7 +70,8 @@ BAIL_OUT () {
 	exit 1
 }
 
-REQUIRED_VERSION () {
+REQUIRED_VERSION ()
+{
 	echo "We require preview.sty version 0.73 or newer. You're using"
 	grep 'Package: preview' ${LOGFILE}
 }
