@@ -1,5 +1,10 @@
 2003-11-06  Alfredo Braunstein  <abraunst@libero.it>
 
+	* lyxfind.C (replaceAll): mark the buffer dirty if something was
+	replaced
+
+2003-11-06  Alfredo Braunstein  <abraunst@libero.it>
+
 	* iterators.[Ch] (ParIterator): new PosIterator-based ctor
 	* bufferview_funcs.C (put_selection_at): use the above
 

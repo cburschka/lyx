@@ -209,6 +209,8 @@ int replaceAll(BufferView * bv,
 	PosIterator beg = buf.pos_iterator_begin();
 	bv->text->init(bv);
 	put_selection_at(bv, beg, 0, false);
+	if (num)
+		buf.markDirty();
 	return num;
 }
 
