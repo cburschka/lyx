@@ -17,11 +17,11 @@
 #include "context.h"
 #include "FloatList.h"
 #include "lengthcommon.h"
-#include "support/FileInfo.h"
 #include "support/lstrings.h"
 #include "support/convert.h"
 #include "support/filetools.h"
 
+#include <boost/filesystem/operations.hpp>
 #include <boost/tuple/tuple.hpp>
 
 #include <iostream>
@@ -29,7 +29,6 @@
 #include <sstream>
 #include <vector>
 
-using lyx::support::FileInfo;
 using lyx::support::MakeAbsPath;
 using lyx::support::rtrim;
 using lyx::support::suffixIs;
@@ -45,6 +44,8 @@ using std::ostringstream;
 using std::istringstream;
 using std::string;
 using std::vector;
+
+namespace fs = boost::filesystem;
 
 
 /// thin wrapper around parse_text using a string
@@ -316,7 +317,7 @@ string find_file(string const & name, string const & path,
 		// We don't use ChangeExtension() because it does the wrong
 		// thing if name contains a dot.
 		string const trial = name + '.' + (*what);
-		if (FileInfo(MakeAbsPath(trial, path)).exist())
+		if (fs::exists(MakeAbsPath(trial, path)))
 			return trial;
 	}
 	return string();
@@ -1162,7 +1163,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const path = getMasterFilePath();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
-			if (!FileInfo(MakeAbsPath(name, path)).exist()) {
+			if (!fs::exists(MakeAbsPath(name, path))) {
 				// The file extension is probably missing.
 				// Now try to find it out.
 				string const dvips_name =
@@ -1191,7 +1192,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				} else if (!pdftex_name.empty())
 					name = pdftex_name;
 
-				if (!FileInfo(MakeAbsPath(name, path)).exist())
+				if (!fs::exists(MakeAbsPath(name, path)))
 					cerr << "Warning: Could not find graphics file '"
 					     << name << "'." << endl;
 			}

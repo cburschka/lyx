@@ -19,8 +19,6 @@
 
 #include "frontends/Dialogs.h"
 
-#include "support/convert.h"
-#include "support/FileInfo.h"
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
 #include "support/globbing.h"
@@ -31,47 +29,21 @@
 #include "lyx_forms.h"
 
 #include <boost/bind.hpp>
-#include <boost/regex.hpp>
+#include <boost/filesystem/operations.hpp>
 #include <boost/tokenizer.hpp>
 
 #include <algorithm>
-#include <map>
 #include <sstream>
-
-#include <grp.h>
-#include <pwd.h>
-
-//#ifdef HAVE_ERRNO_H
-//#include <cerrno>
-//#endif
-
-#if HAVE_DIRENT_H
-# include <dirent.h>
-#else
-# define dirent direct
-# if HAVE_SYS_NDIR_H
-#  include <sys/ndir.h>
-# endif
-# if HAVE_SYS_DIR_H
-#  include <sys/dir.h>
-# endif
-# if HAVE_NDIR_H
-#  include <ndir.h>
-# endif
-#endif
 
 using lyx::support::AbsolutePath;
 using lyx::support::AddName;
 using lyx::support::ExpandPath;
 using lyx::support::FileFilterList;
-using lyx::support::FileInfo;
 using lyx::support::getcwd;
-using lyx::support::LyXReadLink;
 using lyx::support::MakeAbsPath;
 using lyx::support::OnlyFilename;
 using lyx::support::package;
 using lyx::support::split;
-using lyx::support::subst;
 using lyx::support::suffixIs;
 using lyx::support::trim;
 
@@ -79,11 +51,10 @@ using std::max;
 using std::sort;
 using std::ostringstream;
 using std::string;
-using std::map;
 using std::vector;
 
 using namespace lyx::frontend;
-
+namespace fs = boost::filesystem;
 
 namespace {
 
@@ -114,11 +85,6 @@ vector<string> const expand_globs(string const & mask,
 }
 
 
-// six months, in seconds
-long const SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L;
-//static
-long const ONE_HOUR_SEC = 60L * 60L;
-
 extern "C" {
 
 	static
@@ -141,72 +107,6 @@ extern "C" {
 
 }
 
-// *** User cache class implementation
-/// User cache class definition
-class UserCache {
-public:
-	/// seeks user name from group ID
-	string const & find(uid_t ID) const {
-		Users::const_iterator cit = users.find(ID);
-		if (cit == users.end()) {
-			add(ID);
-			return users[ID];
-		}
-		return cit->second;
-	}
-private:
-	///
-	void add(uid_t ID) const;
-	///
-	typedef map<uid_t, string> Users;
-	///
-	mutable Users users;
-};
-
-
-void UserCache::add(uid_t ID) const
-{
-	struct passwd const * entry = getpwuid(ID);
-	users[ID] = entry ? entry->pw_name : convert<string>(int(ID));
-}
-
-
-/// Group cache class definition
-class GroupCache {
-public:
-	/// seeks group name from group ID
-	string const & find(gid_t ID) const ;
-private:
-	///
-	void add(gid_t ID) const;
-	///
-	typedef map<gid_t, string> Groups;
-	///
-	mutable Groups groups;
-};
-
-
-string const & GroupCache::find(gid_t ID) const
-{
-	Groups::const_iterator cit = groups.find(ID);
-	if (cit == groups.end()) {
-		add(ID);
-		return groups[ID];
-	}
-	return cit->second;
-}
-
-
-void GroupCache::add(gid_t ID) const
-{
-	struct group const * entry = getgrgid(ID);
-	groups[ID] = entry ? entry->gr_name : convert<string>(int(ID));
-}
-
-
-// local instances
-UserCache lyxUserCache;
-GroupCache lyxGroupCache;
 
 // compares two LyXDirEntry objects content (used for sort)
 class comp_direntry : public std::binary_function<DirEntry, DirEntry, bool> {
@@ -240,15 +140,13 @@ int FileDialog::Private::minh_ = 0;
 void FileDialog::Private::Reread()
 {
 	// Opens directory
-	DIR * dir = ::opendir(directory_.c_str());
-	if (!dir) {
+	if (!fs::exists(directory_) || !fs::is_directory(directory_)) {
 // FIXME: re-add ...
 #if 0
 		Alert::err_alert(_("Warning! Couldn't open directory."),
 			directory_);
 #endif
 		directory_ = getcwd();
-		dir = ::opendir(directory_.c_str());
 	}
 
 	// Clear the present namelist
@@ -261,14 +159,14 @@ void FileDialog::Private::Reread()
 
 	// Splits complete directory name into directories and compute depth
 	depth_ = 0;
-	string line, Temp;
-	string mode;
+	string line;
+	string Temp;
 	string File = directory_;
 	if (File != "/")
 		File = split(File, Temp, '/');
 
 	while (!File.empty() || !Temp.empty()) {
-		string dline = "@b" + line + Temp + '/';
+		string const dline = "@b" + line + Temp + '/';
 		fl_add_browser_line(file_dlg_form_->List, dline.c_str());
 		File = split(File, Temp, '/');
 		line += ' ';
@@ -277,117 +175,36 @@ void FileDialog::Private::Reread()
 
 	vector<string> const glob_matches = expand_globs(mask_, directory_);
 
-	time_t curTime = time(0);
-	rewinddir(dir);
-	while (dirent * entry = readdir(dir)) {
-		bool isLink = false, isDir = false;
+	fs::directory_iterator beg(directory_);
+	fs::directory_iterator end;
+	for (; beg != end; ++beg) {
+		string const fname = beg->leaf();
 
 		// If the pattern doesn't start with a dot, skip hidden files
-		if (!mask_.empty() && mask_[0] != '.' &&
-		    entry->d_name[0] == '.')
+		if (!mask_.empty() && mask_[0] != '.' && fname[0] == '.')
 			continue;
 
-		// Gets filename
-		string fname = entry->d_name;
-
-		// Under all circumstances, "." and ".." are not wanted
-		if (fname == "." || fname == "..")
-			continue;
-
-		// gets file status
-		File = AddName(directory_, fname);
-
-		FileInfo fileInfo(File, true);
-
-		// can this really happen?
-		if (!fileInfo.isOK())
-			continue;
-
-		mode = fileInfo.modeString();
-		string const user  = lyxUserCache.find(fileInfo.getUid());
-		string const group = lyxGroupCache.find(fileInfo.getGid());
-
-		time_t modtime = fileInfo.getModificationTime();
-		string Time = ctime(&modtime);
-
-		if (curTime > modtime + SIX_MONTH_SEC
-		    || curTime < modtime + ONE_HOUR_SEC) {
-			// The file is fairly old or in the future. POSIX says
-			// the cutoff is 6 months old. Allow a 1 hour slop
-			// factor for what is considered "the future", to
-			// allow for NFS server/client clock disagreement.
-			// Show the year instead of the time of day.
-			Time.erase(10, 9);
-			Time.erase(15, string::npos);
-		} else {
-			Time.erase(16, string::npos);
-		}
-
-		string buffer = mode + ' ' +
-			user + ' ' +
-			group + ' ' +
-			Time.substr(4, string::npos) + ' ';
-
-		buffer += entry->d_name;
-		buffer += fileInfo.typeIndicator();
-
-		isLink = fileInfo.isLink();
-		if (isLink) {
-			string Link;
-
-			if (LyXReadLink(File, Link)) {
-				buffer += " -> ";
-				buffer += Link;
-
-				// This gives the FileType of the file that
-				// is really pointed to after resolving all
-				// symlinks. This is not necessarily the same
-				// as the type of Link (which could again be a
-				// link). Is that intended?
-				//                              JV 199902
-				fileInfo.newFile(File);
-				if (fileInfo.isOK())
-					buffer += fileInfo.typeIndicator();
-				else
-					continue;
-			}
-		}
+		bool const isDir = fs::is_directory(*beg);
 
 		// filters files according to pattern and type
-		if (fileInfo.isRegular()
-		    || fileInfo.isChar()
-		    || fileInfo.isBlock()
-		    || fileInfo.isFifo()) {
 			typedef vector<string>::const_iterator viterator;
 			viterator gbegin = glob_matches.begin();
 			viterator const gend = glob_matches.end();
-			if (std::find(gbegin, gend, fname) == gend)
-				continue;
-		} else if (!(isDir = fileInfo.isDir()))
+
+		if (!isDir && std::find(gbegin, gend, fname) == gend)
 			continue;
 
 		DirEntry tmp;
-
-		// Note ls_entry_ is an string!
-		tmp.ls_entry_ = buffer;
 		// creates used name
-		string temp = fname;
+		tmp.name_ = fname;
+
 		if (isDir)
-			temp += '/';
+			tmp.name_ += '/';
 
-		tmp.name_ = temp;
 		// creates displayed name
-		temp = entry->d_name;
-		if (isLink)
-			temp += '@';
-		else
-			temp += fileInfo.typeIndicator();
-		tmp.displayed_ = temp;
-
+		tmp.displayed_ = fname;
 		dir_entries_.push_back(tmp);
 	}
-
-	closedir(dir);
 
 	// Sort the names
 	sort(dir_entries_.begin(), dir_entries_.end(), comp_direntry());
@@ -414,14 +231,12 @@ void FileDialog::Private::SetDirectory(string const & path)
 		tmp = MakeAbsPath(ExpandPath(path), directory_);
 
 	// must check the directory exists
-	DIR * dir = ::opendir(tmp.c_str());
-	if (!dir) {
+	if (!fs::exists(tmp) || !fs::is_directory(tmp)) {
 // FIXME: re-add ...
 #if 0
 		Alert::err_alert(_("Warning! Couldn't open directory."), tmp);
 #endif
 	} else {
-		::closedir(dir);
 		directory_ = tmp;
 	}
 }
@@ -454,14 +269,6 @@ void FileDialog::Private::SetFilters(FileFilterList const & filters)
 
 	mask_ = ss.str();
 	fl_set_input(file_dlg_form_->PatBox, mask_.c_str());
-}
-
-
-// SetInfoLine: sets dialog information line
-void FileDialog::Private::SetInfoLine(string const & line)
-{
-	info_line_ = line;
-	fl_set_object_label(file_dlg_form_->FileInfo, info_line_.c_str());
 }
 
 
@@ -644,10 +451,12 @@ void FileDialog::Private::HandleListHit()
 {
 	// set info line
 	int const select_ = fl_get_browser(file_dlg_form_->List);
-	if (select_ > depth_)
-		SetInfoLine(dir_entries_[select_ - depth_ - 1].ls_entry_);
-	else
-		SetInfoLine(string());
+       string line = (select_ > depth_ ?
+			    dir_entries_[select_ - depth_ - 1].name_ :
+			    string());
+       if (suffixIs(line, '/'))
+	       line.clear();
+       fl_set_input(file_dlg_form_->Filename, line.c_str());
 }
 
 
@@ -670,14 +479,11 @@ bool FileDialog::Private::HandleDoubleClick()
 	int const select_ = fl_get_browser(file_dlg_form_->List);
 	if (select_ > depth_) {
 		tmp = dir_entries_[select_ - depth_ - 1].name_;
-		SetInfoLine(dir_entries_[select_ - depth_ - 1].ls_entry_);
 		if (!suffixIs(tmp, '/')) {
 			isDir = false;
 			fl_set_input(file_dlg_form_->Filename, tmp.c_str());
 		}
-	} else if (select_ != 0) {
-		SetInfoLine(string());
-	} else
+	} else if (select_ == 0)
 		return true;
 
 	// executes action
@@ -696,7 +502,7 @@ bool FileDialog::Private::HandleDoubleClick()
 			// Directory higher up
 			Temp.erase();
 			for (int i = 0; i < select_; ++i) {
-				string piece = fl_get_browser_line(file_dlg_form_->List, i+1);
+				string const piece = fl_get_browser_line(file_dlg_form_->List, i + 1);
 				// The '+2' is here to count the '@b' (JMarc)
 				Temp += piece.substr(i + 2);
 			}
@@ -808,7 +614,6 @@ string const FileDialog::Private::Select(string const & title,
 	current_dlg_ = this;
 
 	// runs dialog
-	SetInfoLine(string());
 	setEnabled(file_dlg_form_->Filename, true);
 	fl_set_input(file_dlg_form_->Filename, suggested.c_str());
 	fl_set_button(file_dlg_form_->Cancel, 0);
@@ -858,11 +663,10 @@ string const FileDialog::Private::SelectDir(string const & title,
 			string tmp = suggested;
 			if (!suffixIs(tmp, '/'))
 				tmp += '/';
-			string full_path = path;
-			full_path += tmp;
+			string const full_path = path + tmp;
 			// check if this is really a directory
-			DIR * dir = ::opendir(full_path.c_str());
-			if (dir)
+			if (fs::exists(full_path)
+			    && fs::is_directory(full_path))
 				SetDirectory(full_path);
 			else
 				SetDirectory(path);
@@ -879,7 +683,6 @@ string const FileDialog::Private::SelectDir(string const & title,
 	current_dlg_ = this;
 
 	// runs dialog
-	SetInfoLine(string());
 	fl_set_input(file_dlg_form_->Filename, "");
 	setEnabled(file_dlg_form_->Filename, false);
 	fl_set_button(file_dlg_form_->Cancel, 0);

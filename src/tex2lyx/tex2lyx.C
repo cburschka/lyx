@@ -20,12 +20,14 @@
 
 #include "support/convert.h"
 #include "support/filetools.h"
+#include "support/fs_extras.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/package.h"
 
 #include <boost/function.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include <cctype>
 #include <fstream>
@@ -53,7 +55,9 @@ using lyx::support::isStrUnsignedInt;
 using lyx::support::ltrim;
 using lyx::support::rtrim;
 using lyx::support::IsFileReadable;
-using lyx::support::IsFileWriteable;
+
+namespace fs = boost::filesystem;
+
 
 // Hacks to allow the thing to link in the lyxlayout stuff
 LyXErr lyxerr(std::cerr.rdbuf());
@@ -358,7 +362,7 @@ void tex2lyx(std::istream &is, std::ostream &os)
 
 bool tex2lyx(string const &infilename, string const &outfilename)
 {
-	if (!(IsFileReadable(infilename) && IsFileWriteable(outfilename))) {
+	if (!(IsFileReadable(infilename) && fs::is_writable(outfilename))) {
 		return false;
 	}
 	if (!overwrite_files && IsFileReadable(outfilename)) {

@@ -1,3 +1,10 @@
+2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* xforms_helpers.C: rewrite to use boost.filesystem
+
+	* FormFiledialog.[Ch]: simplify and rewrite to use boost.filesystem,
+	remove lot of now unused code.
+
 2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Several files: use convert<> instead of atoi,strToXXX and friends

@@ -36,15 +36,16 @@
 #include "frontends/LyXView.h"
 
 #include "support/filefilterlist.h"
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcall.h"
+#include "support/fs_extras.h"
 #include "support/lyxlib.h"
 #include "support/package.h"
 #include "support/path.h"
 #include "support/systemcall.h"
 
 #include <boost/shared_ptr.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include <cerrno>
 #include <fstream>
@@ -53,7 +54,6 @@ using lyx::support::AddName;
 using lyx::support::bformat;
 using lyx::support::destroyDir;
 using lyx::support::FileFilterList;
-using lyx::support::FileInfo;
 using lyx::support::ForkedProcess;
 using lyx::support::IsLyXFilename;
 using lyx::support::LibFileSearch;
@@ -72,6 +72,8 @@ using lyx::support::tempName;
 using lyx::support::unlink;
 
 using boost::shared_ptr;
+
+namespace fs = boost::filesystem;
 
 using std::back_inserter;
 using std::copy;
@@ -154,8 +156,7 @@ bool WriteAs(Buffer * buffer, string const & filename)
 	} else
 		fname = filename;
 
-	FileInfo const myfile(fname);
-	if (myfile.isOK()) {
+	if (fs::exists(fname)) {
 		string const file = MakeDisplayPath(fname, 30);
 		string text = bformat(_("The document %1$s already exists.\n\n"
 			"Do you want to over-write that document?"), file);
@@ -204,10 +205,11 @@ void QuitLyX()
 	// do any other cleanup procedures now
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
 
-	if (destroyDir(package().temp_dir()) != 0) {
-		string msg = bformat(_("Could not remove the temporary directory %1$s"),
+	if (!destroyDir(package().temp_dir())) {
+		string const msg =
+			bformat(_("Unable to remove the temporary directory %1$s"),
 			package().temp_dir());
-		Alert::warning(_("Could not remove temporary directory"), msg);
+		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
 
 	lyx_gui::exit();
@@ -392,9 +394,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 			return string();
 	}
 
-	FileInfo fi(fname);
-
-	if (!fi.readable()) {
+	if (!fs::is_readable(fname)) {
 		string const error = strerror(errno);
 		string const file = MakeDisplayPath(fname, 50);
 		string const text = bformat(_("Could not read the specified document\n"

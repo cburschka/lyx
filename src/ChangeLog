@@ -1,7 +1,44 @@
+2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* vc-backend.C (find_file): rewrite to use boost.filesystem
+	(scanMaster): ditto
+
+	* main.C (main): sett default name check for boost.filesystem to
+	no check
+
+	* lyxfunc.C (menuNew): rewrite to use boost.filesystem
+	(open): ditto
+	(doImport): ditto
+	(actOnUpdatedPrefs): ditto
+
+	* lyx_main.C (init): rewrite to use boost.filesystem
+	(queryUserLyXDir): ditto
+
+	* lyx_cb.C (WriteAs): rewrite to use boost.filesystem
+	(getContentsOfAsciiFile): ditto
+
+	* lastfiles.C (readFile): rewrite to use boost.filesystem
+
+	* exporter.C (checkOverwrite): rewrite to use boost.filesystem
+
+	* buffer_funcs.C (readFile): rewrite to use boost.filesystem
+	(loadLyXFile): ditto
+
+	* buffer.C (Buffer): adjust for destroydir
+	(getLogName): rewrite to use boost.filesystem
+	(setFileName): ditto
+	(save): use fs::copy_file (from fs_extras)
+
+	* Makefile.am (BOOST_LIBS): add BOOST_FILESYSTEM
+
+	* LaTeX.C (run): rewrite to use boost.filesystem
+	(scanAuxFiles): ditto
+	(handleFoundFile): ditto
+
 2005-01-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* LaTeXFeatures.C (getAvailable): always clear packages_ list.
-	
+
 	* lyx_cb.C (Reconfigure): call LaTeXFeatures::getAvailable()
 
 2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>

@@ -19,8 +19,8 @@
 namespace lyx {
 namespace support {
 
-/// remove directory and all contents, returns 0 on success
-int destroyDir(std::string const & tmpdir);
+/// remove directory and all contents, returns true on success
+bool destroyDir(std::string const & tmpdir);
 
 /// Creates the per buffer temporary directory
 std::string const createBufferTmpDir();
@@ -69,14 +69,6 @@ bool IsDirWriteable (std::string const & path);
   Returns true if the file `path' is readable.
  */
 bool IsFileReadable (std::string const & path);
-
-/** Is file read only?
-  returns
-    1: read-write
-    0: read_only
-   -1: error (doesn't exist, no access, anything else)
-  */
-int IsFileWriteable (std::string const & path);
 
 ///
 bool IsLyXFilename(std::string const & filename);

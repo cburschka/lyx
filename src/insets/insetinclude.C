@@ -39,7 +39,6 @@
 
 #include "insets/render_preview.h"
 
-#include "support/FileInfo.h"
 #include "support/filename.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
@@ -47,6 +46,7 @@
 #include "support/convert.h"
 
 #include <boost/bind.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include "support/std_ostream.h"
 
@@ -58,7 +58,6 @@ using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
 using lyx::support::copy;
-using lyx::support::FileInfo;
 using lyx::support::FileName;
 using lyx::support::GetFileContents;
 using lyx::support::IsFileReadable;
@@ -78,6 +77,7 @@ using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 
+namespace fs = boost::filesystem;
 
 extern BufferList bufferlist;
 
@@ -294,8 +294,7 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 	Buffer * buf = bufferlist.getBuffer(included_file);
 	if (!buf) {
 		// the readonly flag can/will be wrong, not anymore I think.
-		FileInfo finfo(included_file);
-		if (!finfo.isOK())
+		if (!fs::exists(included_file))
 			return false;
 		buf = bufferlist.newBuffer(included_file);
 		if (!loadLyXFile(buf, included_file))

@@ -11,18 +11,19 @@
 #include <config.h>
 
 #include "support/FileMonitor.h"
-#include "support/FileInfo.h"
 #include "support/lyxlib.h"
 
 // FIXME Interface violation
 #include "frontends/Timeout.h"
 
 #include <boost/bind.hpp>
+#include <boost/filesystem/operations.hpp>
 #include <boost/signals/trackable.hpp>
 
 
 using std::string;
 
+namespace fs = boost::filesystem;
 
 namespace lyx {
 namespace support {
@@ -90,11 +91,10 @@ void FileMonitor::start() const
 	if (monitoring())
 		return;
 
-	FileInfo finfo(pimpl_->filename_);
-	if (!finfo.isOK())
+	if (!fs::exists(pimpl_->filename_))
 		return;
 
-	pimpl_->timestamp_ = finfo.getModificationTime();
+	pimpl_->timestamp_ = fs::last_write_time(pimpl_->filename_);
 	pimpl_->checksum_ = sum(pimpl_->filename_);
 
 	if (pimpl_->timestamp_ && pimpl_->checksum_) {
@@ -156,14 +156,13 @@ void FileMonitor::Impl::monitorFile()
 {
 	bool changed = false;
 
-	FileInfo finfo(filename_);
-	if (!finfo.isOK()) {
+	if (!fs::exists(filename_)) {
 		changed = timestamp_ || checksum_;
 		timestamp_ = 0;
 		checksum_ = 0;
 
 	} else {
-		time_t const new_timestamp = finfo.getModificationTime();
+		time_t const new_timestamp = fs::last_write_time(filename_);
 
 		if (new_timestamp != timestamp_) {
 			timestamp_ = new_timestamp;

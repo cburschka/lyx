@@ -17,8 +17,6 @@ BUILT_SOURCES = package.C
 AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 libsupport_la_SOURCES = \
-	FileInfo.C \
-	FileInfo.h \
 	FileMonitor.h \
 	FileMonitor.C \
 	abort.C \
@@ -41,6 +39,8 @@ libsupport_la_SOURCES = \
 	forkedcallqueue.h \
 	forkedcontr.C \
 	forkedcontr.h \
+	fs_extras.C \
+	fs_extras.h \
 	getcwd.C \
 	globbing.C \
 	globbing.h \

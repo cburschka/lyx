@@ -26,22 +26,24 @@
 #include "insets/insetgraphics.h"
 
 #include "support/convert.h"
-#include "support/FileInfo.h"
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
 #include "support/package.h"
 #include "support/types.h"
+
+#include <boost/filesystem/operations.hpp>
 
 using std::make_pair;
 using std::string;
 using std::pair;
 using std::vector;
 
+namespace fs = boost::filesystem;
+
 namespace lyx {
 
 using support::AddName;
 using support::FileFilterList;
-using support::FileInfo;
 using support::IsFileReadable;
 using support::MakeAbsPath;
 using support::package;
@@ -85,8 +87,7 @@ string const ControlGraphics::browse(string const & in_name) const
 
 	// Does user clipart directory exist?
 	string clipdir = AddName (package().user_support(), "clipart");
-	FileInfo fileInfo(clipdir);
-	if (!(fileInfo.isOK() && fileInfo.isDir()))
+	if (!(fs::exists(clipdir) && fs::is_directory(clipdir)))
 		// No - bail out to system clipart directory
 		clipdir = AddName (package().system_support(), "clipart");
 	pair<string, string> dir1(_("Clipart|#C#c"), clipdir);

@@ -1,3 +1,10 @@
+2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* tex2lyx.C: rewrite to use boost.filesystem
+	* text.C: ditto
+
+	* Makefile.am (BOOST_LIBS): add BOOST_FILESYSTEM
+
 2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Spacing (set): take double instead of float

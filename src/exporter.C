@@ -30,10 +30,11 @@
 #include "outputparams.h"
 #include "frontends/Alert.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/package.h"
+
+#include <boost/filesystem/operations.hpp>
 
 using lyx::support::AddName;
 using lyx::support::bformat;
@@ -50,6 +51,7 @@ using std::find;
 using std::string;
 using std::vector;
 
+namespace fs = boost::filesystem;
 
 namespace {
 
@@ -66,7 +68,7 @@ vector<string> const Backends(Buffer const & buffer)
 /// ask the user what to do if a file already exists
 int checkOverwrite(string const & filename)
 {
-	if (lyx::support::FileInfo(filename, true).exist()) {
+	if (fs::exists(filename)) {
 		string text = bformat(_("The file %1$s already exists.\n\n"
 					"Do you want to over-write that file?"),
 		                      MakeDisplayPath(filename));

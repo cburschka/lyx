@@ -63,8 +63,8 @@
 
 #include "graphics/Previews.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/fs_extras.h"
 #ifdef USE_COMPRESSION
 # include "support/gzstream.h"
 #endif
@@ -75,6 +75,7 @@
 #include "support/convert.h"
 
 #include <boost/bind.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include <utime.h>
 
@@ -93,11 +94,8 @@ using lyx::support::ChangeExtension;
 using lyx::support::cmd_ret;
 using lyx::support::createBufferTmpDir;
 using lyx::support::destroyDir;
-using lyx::support::FileInfo;
-using lyx::support::FileInfo;
 using lyx::support::getFormatFromContents;
 using lyx::support::IsDirWriteable;
-using lyx::support::IsFileWriteable;
 using lyx::support::LibFileSearch;
 using lyx::support::ltrim;
 using lyx::support::MakeAbsPath;
@@ -116,6 +114,7 @@ using lyx::support::tempName;
 using lyx::support::trim;
 
 namespace os = lyx::support::os;
+namespace fs = boost::filesystem;
 
 using std::endl;
 using std::for_each;
@@ -222,7 +221,7 @@ Buffer::~Buffer()
 
 	closing();
 
-	if (!temppath().empty() && destroyDir(temppath()) != 0) {
+	if (!temppath().empty() && !destroyDir(temppath())) {
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"), temppath()));
 	}
@@ -348,11 +347,8 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 
 	// If no Latex log or Build log is newer, show Build log
 
-	FileInfo const f_fi(fname);
-	FileInfo const b_fi(bname);
-
-	if (b_fi.exist() &&
-	    (!f_fi.exist() || f_fi.getModificationTime() < b_fi.getModificationTime())) {
+	if (fs::exists(bname) &&
+	    (!fs::exists(fname) || fs::last_write_time(fname) < fs::last_write_time(bname))) {
 		lyxerr[Debug::FILES] << "Log name calculated as: " << bname << endl;
 		return make_pair(Buffer::buildlog, bname);
 	}
@@ -374,7 +370,7 @@ void Buffer::setFileName(string const & newfile)
 {
 	pimpl_->filename = MakeAbsPath(newfile);
 	pimpl_->filepath = OnlyPath(pimpl_->filename);
-	setReadonly(IsFileWriteable(pimpl_->filename) == 0);
+	setReadonly(fs::is_readonly(pimpl_->filename));
 	updateTitles();
 }
 
@@ -687,51 +683,18 @@ bool Buffer::save() const
 			s = AddName(lyxrc.backupdir_path,
 				    subst(os::internal_path(s),'/','!'));
 
-		// Rename is the wrong way of making a backup,
-		// this is the correct way.
-		/* truss cp fil fil2:
-		   lstat("LyXVC3.lyx", 0xEFFFF898)                 Err#2 ENOENT
-		   stat("LyXVC.lyx", 0xEFFFF688)                   = 0
-		   open("LyXVC.lyx", O_RDONLY)                     = 3
-		   open("LyXVC3.lyx", O_WRONLY|O_CREAT|O_TRUNC, 0600) = 4
-		   fstat(4, 0xEFFFF508)                            = 0
-		   fstat(3, 0xEFFFF508)                            = 0
-		   read(3, " # T h i s   f i l e   w".., 8192)     = 5579
-		   write(4, " # T h i s   f i l e   w".., 5579)    = 5579
-		   read(3, 0xEFFFD4A0, 8192)                       = 0
-		   close(4)                                        = 0
-		   close(3)                                        = 0
-		   chmod("LyXVC3.lyx", 0100644)                    = 0
-		   lseek(0, 0, SEEK_CUR)                           = 46440
-		   _exit(0)
-		*/
-
-		// Should probably have some more error checking here.
-		// Doing it this way, also makes the inodes stay the same.
-		// This is still not a very good solution, in particular we
-		// might loose the owner of the backup.
-		FileInfo finfo(fileName());
-		if (finfo.exist()) {
-			mode_t fmode = finfo.getMode();
-			struct utimbuf times = {
-				finfo.getAccessTime(),
-				finfo.getModificationTime() };
-
-			ifstream ifs(fileName().c_str());
-			ofstream ofs(s.c_str(), ios::out|ios::trunc);
-			if (ifs && ofs) {
-				ofs << ifs.rdbuf();
-				ifs.close();
-				ofs.close();
-				::chmod(s.c_str(), fmode);
-
-				if (::utime(s.c_str(), &times)) {
-					lyxerr << "utime error." << endl;
-				}
-			} else {
-				lyxerr << "LyX was not able to make "
-					"backup copy. Beware." << endl;
-			}
+		// It might very well be that this variant is just
+		// good enough. (Lgb)
+		// But to use this we need fs::copy_file to actually do a copy,
+		// even when the target file exists. (Lgb)
+		if (fs::exists(fileName())) {
+		  //try {
+		    fs::copy_file(fileName(), s, false);
+		    //}
+		    //catch (fs::filesystem_error const & fe) {
+		    //lyxerr << "LyX was not able to make backup copy. Beware.\n"
+		    //	   << fe.what() << endl;
+		    //}
 		}
 	}
 
@@ -753,15 +716,11 @@ bool Buffer::writeFile(string const & fname) const
 	if (pimpl_->read_only && fname == fileName())
 		return false;
 
-	FileInfo finfo(fname);
-	if (finfo.exist() && !finfo.writable())
-		return false;
-
 	bool retval = false;
 
 	if (params().compressed) {
 #ifdef USE_COMPRESSION
-		gz::ogzstream ofs(fname.c_str());
+		gz::ogzstream ofs(fname.c_str(), ios::out|ios::trunc);
 		if (!ofs)
 			return false;
 
@@ -770,7 +729,7 @@ bool Buffer::writeFile(string const & fname) const
 		return false;
 #endif
 	} else {
-		ofstream ofs(fname.c_str());
+		ofstream ofs(fname.c_str(), ios::out|ios::trunc);
 		if (!ofs)
 			return false;
 

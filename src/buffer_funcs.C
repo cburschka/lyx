@@ -28,15 +28,14 @@
 
 #include "frontends/Alert.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/fs_extras.h"
 #include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
+#include <boost/filesystem/operations.hpp>
 
 using lyx::support::bformat;
-using lyx::support::FileInfo;
-using lyx::support::IsFileWriteable;
 using lyx::support::LibFileSearch;
 using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
@@ -45,6 +44,7 @@ using lyx::support::unlink;
 
 using std::string;
 
+namespace fs = boost::filesystem;
 
 extern BufferList bufferlist;
 
@@ -55,8 +55,7 @@ bool readFile(Buffer * const b, string const & s)
 	BOOST_ASSERT(b);
 
 	// File information about normal file
-	FileInfo fileN(s);
-	if (!fileN.exist()) {
+	if (!fs::exists(s)) {
 		string const file = MakeDisplayPath(s, 50);
 		string text = bformat(_("The specified document\n%1$s"
 					"\ncould not be read."), file);
@@ -66,10 +65,9 @@ bool readFile(Buffer * const b, string const & s)
 
 	// Check if emergency save file exists and is newer.
 	string const e = OnlyPath(s) + OnlyFilename(s) + ".emergency";
-	FileInfo fileE(e);
 
-	if (fileE.exist() && fileN.exist()
-	    && fileE.getModificationTime() > fileN.getModificationTime())
+	if (fs::exists(e) && fs::exists(s)
+	    && fs::last_write_time(e) > fs::last_write_time(s))
 	{
 		string const file = MakeDisplayPath(s, 20);
 		string const text =
@@ -93,10 +91,9 @@ bool readFile(Buffer * const b, string const & s)
 
 	// Now check if autosave file is newer.
 	string const a = OnlyPath(s) + '#' + OnlyFilename(s) + '#';
-	FileInfo fileA(a);
 
-	if (fileA.exist() && fileN.exist()
-	    && fileA.getModificationTime() > fileN.getModificationTime())
+	if (fs::exists(a) && fs::exists(s)
+	    && fs::last_write_time(a) > fs::last_write_time(s))
 	{
 		string const file = MakeDisplayPath(s, 20);
 		string const text =
@@ -131,17 +128,14 @@ bool loadLyXFile(Buffer * b, string const & s)
 {
 	BOOST_ASSERT(b);
 
-	switch (IsFileWriteable(s)) {
-	case 0:
-		b->setReadonly(true);
-		// Fall through
-	case 1:
+	if (fs::is_readable(s)) {
 		if (readFile(b, s)) {
 			b->lyxvc().file_found_hook(s);
+			if (!fs::is_writable(s))
+				b->setReadonly(true);
 			return true;
 		}
-		break;
-	case -1:
+	} else {
 		string const file = MakeDisplayPath(s, 20);
 		// Here we probably should run
 		if (LyXVC::file_not_found_hook(s)) {
@@ -159,7 +153,6 @@ bool loadLyXFile(Buffer * b, string const & s)
 				return loadLyXFile(b, s);
 			}
 		}
-		break;
 	}
 	return false;
 }

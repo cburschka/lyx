@@ -18,15 +18,16 @@
 #include "lyxgluelength.h"
 #include "lyxlex.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // frontStrip, strip
 #include "support/convert.h"
+#include "support/fs_extras.h"
 
 #include "lyx_forms.h"
 #include "combox.h"
 
 #include <boost/assert.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include <fstream>
 
@@ -36,10 +37,11 @@ using std::ofstream;
 using std::vector;
 using std::string;
 
+namespace fs = boost::filesystem;
+
 namespace lyx {
 
 using support::AbsolutePath;
-using support::FileInfo;
 using support::isStrDbl;
 using support::OnlyPath;
 using support::subst;
@@ -336,9 +338,8 @@ const int xformCount = sizeof(xformTags) / sizeof(keyword_item);
 
 bool XformsColor::read(string const & filename)
 {
-	FileInfo const f(filename);
 	LyXLex lexrc(xformTags, xformCount);
-	if (f.readable() && !lexrc.setFile(filename)) {
+	if (fs::is_readable(filename) && !lexrc.setFile(filename)) {
 		lyxerr << "XformsColor::read(" << filename << ")\n"
 		       << _("Failed to open file.") << std::endl;
 		return false;
@@ -421,13 +422,12 @@ bool RWInfo::WriteableDir(string const & name)
 		return false;
 	}
 
-	FileInfo const tp(name);
-	if (!tp.isOK() || !tp.isDir()) {
+	if (!fs::exists(name) || !fs::is_directory(name)) {
 		error_message = _("Directory does not exist.");
 		return false;
 	}
 
-	if (!tp.writable()) {
+	if (!fs::is_writable(name)) {
 		error_message = _("Cannot write to this directory.");
 		return false;
 	}
@@ -445,13 +445,12 @@ bool RWInfo::ReadableDir(string const & name)
 		return false;
 	}
 
-	FileInfo const tp(name);
-	if (!tp.isOK() || !tp.isDir()) {
+	if (!fs::exists(name) || !fs::is_directory(name)) {
 		error_message = _("Directory does not exist.");
 		return false;
 	}
 
-	if (!tp.readable()) {
+	if (!fs::is_readable(name)) {
 		error_message = _("Cannot read this directory.");
 		return false;
 	}
@@ -480,29 +479,28 @@ bool RWInfo::WriteableFile(string const & name)
 		return false;
 	}
 
-	FileInfo d(name);
+	string checkFile = name;
 
-	if (!d.isOK() || !d.isDir()) {
-		d.newFile(dir);
+	if (!fs::exists(checkFile) || !fs::is_directory(checkFile)) {
+		checkFile = dir;
 	}
 
-	if (!d.isOK() || !d.isDir()) {
-		error_message = _("Directory does not exist.");
+	if (!fs::exists(checkFile) || !fs::is_directory(checkFile)) {
+		error_message = _("Directory does not exists.");
 		return false;
 	}
 
-	if (!d.writable()) {
+	if (!fs::is_writable(checkFile)) {
 		error_message = _("Cannot write to this directory.");
 		return false;
 	}
 
-	FileInfo f(name);
-	if (dir == name || (f.isOK() && f.isDir())) {
+	if (dir == name || (fs::exists(name) && fs::is_directory(name))) {
 		error_message = _("A file is required, not a directory.");
 		return false;
 	}
 
-	if (f.isOK() && f.exist() && !f.writable()) {
+	if (fs::exists(name) && !fs::is_writable(name)) {
 		error_message = _("Cannot write to this file.");
 		return false;
 	}
@@ -526,34 +524,33 @@ bool RWInfo::ReadableFile(string const & name)
 		return false;
 	}
 
-	FileInfo d(name);
+	string checkFile = name;
 
-	if (!d.isOK() && !d.isDir()) {
-		d.newFile(dir);
+	if (!fs::exists(checkFile) && !fs::is_directory(checkFile)) {
+		checkFile = dir;
 	}
 
-	if (!d.isOK() || !d.isDir()) {
+	if (!fs::exists(checkFile) || !fs::is_directory(checkFile)) {
 		error_message = _("Directory does not exist.");
 		return false;
 	}
 
-	if (!d.readable()) {
+	if (!fs::is_readable(checkFile)) {
 		error_message = _("Cannot read from this directory.");
 		return false;
 	}
 
-	FileInfo f(name);
-	if (dir == name || (f.isOK() && f.isDir())) {
+	if (dir == name || (fs::exists(name) && fs::is_directory(name))) {
 		error_message = _("A file is required, not a directory.");
 		return false;
 	}
 
-	if (!f.exist()) {
+	if (!fs::exists(name)) {
 		error_message = _("File does not exist.");
 		return false;
 	}
 
-	if (!f.readable()) {
+	if (!fs::is_readable(name)) {
 		error_message = _("Cannot read from this file.");
 		return false;
 	}

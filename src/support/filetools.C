@@ -25,8 +25,8 @@
 #include "support/systemcall.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/FileInfo.h"
 #include "support/forkedcontr.h"
+#include "support/fs_extras.h"
 #include "support/package.h"
 #include "support/path.h"
 #include "support/lyxlib.h"
@@ -37,6 +37,7 @@
 #include "debug.h"
 
 #include <boost/assert.hpp>
+#include <boost/filesystem/operations.hpp>
 #include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>
 
@@ -50,25 +51,6 @@
 #include <utility>
 #include <fstream>
 #include <sstream>
-
-
-// Which part of this is still necessary? (JMarc).
-#if HAVE_DIRENT_H
-# include <dirent.h>
-# define NAMLEN(dirent) strlen((dirent)->d_name)
-#else
-# define dirent direct
-# define NAMLEN(dirent) (dirent)->d_namlen
-# if HAVE_SYS_NDIR_H
-#  include <sys/ndir.h>
-# endif
-# if HAVE_SYS_DIR_H
-#  include <sys/dir.h>
-# endif
-# if HAVE_NDIR_H
-#  include <ndir.h>
-# endif
-#endif
 
 #ifndef CXX_GLOBAL_CSTD
 using std::fgetc;
@@ -84,6 +66,7 @@ using std::ifstream;
 using std::ostringstream;
 using std::vector;
 
+namespace fs = boost::filesystem;
 
 namespace lyx {
 namespace support {
@@ -135,24 +118,7 @@ string const QuoteName(string const & name)
 // Is a file readable ?
 bool IsFileReadable(string const & path)
 {
-	FileInfo file(path);
-	return file.isOK() && file.isRegular() && file.readable();
-}
-
-
-// Is a file read_only?
-// return 1 read-write
-//	  0 read_only
-//	 -1 error (doesn't exist, no access, anything else)
-int IsFileWriteable(string const & path)
-{
-	FileInfo fi(path);
-
-	if (fi.access(FileInfo::wperm|FileInfo::rperm)) // read-write
-		return 1;
-	if (fi.readable()) // read-only
-		return 0;
-	return -1; // everything else.
+	return fs::exists(path) && !fs::is_directory(path) && fs::is_readable(path);
 }
 
 
@@ -217,51 +183,30 @@ string const FileOpenSearch(string const & path, string const & name,
 /// Returns a vector of all files in directory dir having extension ext.
 vector<string> const DirList(string const & dir, string const & ext)
 {
-	// This is a non-error checking C/system implementation
-	string extension;
-	if (!ext.empty() && ext[0] != '.')
-		extension += '.';
-	extension += ext;
-
+	// EXCEPTIONS FIXME. Rewrite needed when we turn on exceptions. (Lgb)
 	vector<string> dirlist;
-	DIR * dirp = ::opendir(dir.c_str());
-	if (!dirp) {
+
+	if (!(fs::exists(dir) && fs::is_directory(dir))) {
 		lyxerr[Debug::FILES]
 			<< "Directory \"" << dir
 			<< "\" does not exist to DirList." << endl;
 		return dirlist;
 	}
 
-	dirent * dire;
-	while ((dire = ::readdir(dirp))) {
-		string const fil = dire->d_name;
+	string extension;
+	if (!ext.empty() && ext[0] != '.')
+		extension += '.';
+	extension += ext;
+
+	fs::directory_iterator dit(dir);
+	fs::directory_iterator end;
+	for (; dit != end; ++dit) {
+		string const & fil = dit->leaf();
 		if (suffixIs(fil, extension)) {
 			dirlist.push_back(fil);
 		}
 	}
-	::closedir(dirp);
 	return dirlist;
-	/* I would have prefered to take a vector<string>& as parameter so
-	   that we could avoid the copy of the vector when returning.
-	   Then we would use:
-	   dirlist.swap(argvec);
-	   to avoid the copy. (Lgb)
-	*/
-	/* A C++ implementaion will look like this:
-	   string extension(ext);
-	   if (extension[0] != '.') extension.insert(0, 1, '.');
-	   vector<string> dirlist;
-	   directory_iterator dit("dir");
-	   while (dit != directory_iterator()) {
-		   string fil = dit->filename;
-		   if (prefixIs(fil, extension)) {
-			   dirlist.push_back(fil);
-		   }
-		   ++dit;
-	   }
-	   dirlist.swap(argvec);
-	   return;
-	*/
 }
 
 
@@ -498,55 +443,6 @@ bool putEnv(string const & envstr)
 
 namespace {
 
-int DeleteAllFilesInDir(string const & path)
-{
-	// I have decided that we will be using parts from the boost
-	// library. Check out http://www.boost.org/
-	// For directory access we will then use the directory_iterator.
-	// Then the code will be something like:
-	// directory_iterator dit(path);
-	// directory_iterator dend;
-	// if (dit == dend) {
-	//         return -1;
-	// }
-	// for (; dit != dend; ++dit) {
-	//         string filename(*dit);
-	//         if (filename == "." || filename == "..")
-	//                 continue;
-	//         string unlinkpath(AddName(path, filename));
-	//         lyx::unlink(unlinkpath);
-	// }
-	// return 0;
-	DIR * dir = ::opendir(path.c_str());
-	if (!dir)
-		return -1;
-
-	struct dirent * de;
-	int return_value = 0;
-	while ((de = readdir(dir))) {
-		string const temp = de->d_name;
-		if (temp == "." || temp == "..")
-			continue;
-		string const unlinkpath = AddName (path, temp);
-
-		lyxerr[Debug::FILES] << "Deleting file: " << unlinkpath
-				     << endl;
-
-		bool deleted = true;
-		FileInfo fi(unlinkpath);
-		if (fi.isOK() && fi.isDir()) {
-			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
-			deleted &= (rmdir(unlinkpath) == 0);
-		} else
-			deleted &= (unlink(unlinkpath) == 0);
-		if (!deleted)
-			return_value = -1;
-	}
-	closedir(dir);
-	return return_value;
-}
-
-
 string const createTmpDir(string const & tempdir, string const & mask)
 {
 	lyxerr[Debug::FILES]
@@ -572,18 +468,13 @@ string const createTmpDir(string const & tempdir, string const & mask)
 } // namespace anon
 
 
-int destroyDir(string const & tmpdir)
+bool destroyDir(string const & tmpdir)
 {
+
 #ifdef __EMX__
 	Path p(user_lyxdir());
 #endif
-	if (DeleteAllFilesInDir(tmpdir))
-		return -1;
-
-	if (rmdir(tmpdir))
-		return -1;
-
-	return 0;
+	return fs::remove_all(tmpdir) > 0;
 }
 
 
@@ -844,8 +735,7 @@ string const NormalizePath(string const & path)
 
 string const GetFileContents(string const & fname)
 {
-	FileInfo finfo(fname);
-	if (finfo.exist()) {
+	if (fs::exists(fname)) {
 		ifstream ifs(fname.c_str());
 		ostringstream ofs;
 		if (ifs && ofs) {
@@ -1319,7 +1209,7 @@ string const findtexfile(string const & fil, string const & /*format*/)
 
 	// If the file can be found directly, we just return a
 	// absolute path version of it.
-	if (FileInfo(fil).exist())
+	if (fs::exists(fil))
 		return MakeAbsPath(fil);
 
 	// No we try to find it using kpsewhich.
@@ -1362,8 +1252,7 @@ void removeAutosaveFile(string const & filename)
 	a += '#';
 	a += OnlyFilename(filename);
 	a += '#';
-	FileInfo const fileinfo(a);
-	if (fileinfo.exist())
+	if (fs::exists(a))
 		unlink(a);
 }
 
@@ -1421,19 +1310,17 @@ int compare_timestamps(string const & file1, string const & file2)
 
 	// If the original is newer than the copy, then copy the original
 	// to the new directory.
-	FileInfo f1(file1);
-	FileInfo f2(file2);
 
 	int cmp = 0;
-	if (f1.exist() && f2.exist()) {
-		double const tmp = difftime(f1.getModificationTime(),
-					    f2.getModificationTime());
+	if (fs::exists(file1) && fs::exists(file2)) {
+		double const tmp = difftime(fs::last_write_time(file1),
+					    fs::last_write_time(file2));
 		if (tmp != 0)
 			cmp = tmp > 0 ? 1 : -1;
 
-	} else if (f1.exist()) {
+	} else if (fs::exists(file1)) {
 		cmp = 1;
-	} else if (f2.exist()) {
+	} else if (fs::exists(file2)) {
 		cmp = -1;
 	}
 

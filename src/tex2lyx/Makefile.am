@@ -15,6 +15,8 @@ bin_PROGRAMS = tex2lyx
 
 AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
+BOOST_LIBS = $(BOOST_REGEX) $(BOOST_FILESYSTEM)
+
 BUILT_SOURCES = \
 	FloatList.C \
 	Floating.C \
@@ -48,7 +50,7 @@ tex2lyx_SOURCES = \
 
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/libsupport.la \
-	$(BOOST_REGEX) -lz
+	$(BOOST_LIBS) -lz
 
 $(BUILT_SOURCES) :
 	@rm -f $@ ; \

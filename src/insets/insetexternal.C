@@ -37,7 +37,6 @@
 
 #include "graphics/PreviewLoader.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"

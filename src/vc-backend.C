@@ -14,12 +14,13 @@
 #include "debug.h"
 #include "buffer.h"
 
-#include "support/FileInfo.h"
 #include "support/path.h"
 #include "support/filetools.h"
+#include "support/fs_extras.h"
 #include "support/lstrings.h"
 #include "support/systemcall.h"
 
+#include <boost/filesystem/operations.hpp>
 #include <boost/regex.hpp>
 
 #include <fstream>
@@ -27,7 +28,6 @@
 using lyx::support::AddName;
 using lyx::support::AddPath;
 using lyx::support::contains;
-using lyx::support::FileInfo;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
 using lyx::support::Path;
@@ -48,6 +48,8 @@ using std::endl;
 using std::getline;
 using std::string;
 using std::ifstream;
+
+namespace fs = boost::filesystem;
 
 
 int VCS::doVCCommand(string const & cmd, string const & path)
@@ -72,10 +74,9 @@ string const RCS::find_file(string const & file)
 	string tmp(file);
 	// Check if *,v exists.
 	tmp += ",v";
-	FileInfo f;
 	lyxerr[Debug::LYXVC] << "Checking if file is under rcs: "
 			     << tmp << endl;
-	if (f.newFile(tmp).readable()) {
+	if (fs::is_readable(tmp)) {
 		lyxerr[Debug::LYXVC] << "Yes " << file
 				     << " is under rcs." << endl;
 		return tmp;
@@ -85,7 +86,7 @@ string const RCS::find_file(string const & file)
 		tmp += ",v";
 		lyxerr[Debug::LYXVC] << "Checking if file is under rcs: "
 				     << tmp << endl;
-		if (f.newFile(tmp).readable()) {
+		if (fs::is_readable(tmp)) {
 			lyxerr[Debug::LYXVC] << "Yes " << file
 					     << " it is under rcs."<< endl;
 			return tmp;
@@ -239,8 +240,7 @@ string const CVS::find_file(string const & file)
 	string const tmpf = "/" + OnlyFilename(file) + "/";
 	lyxerr[Debug::LYXVC] << "LyXVC: checking in `" << dir
 			     << "' for `" << tmpf << '\'' << endl;
-	FileInfo const f(dir);
-	if (f.readable()) {
+	if (fs::is_readable(dir)) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
 		// and see if we can find this file. We do a fast and
 		// dirty parse here.
@@ -280,9 +280,8 @@ void CVS::scanMaster()
 
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
-			FileInfo fi(file_);
 			// FIXME: must double check file is stattable/existing
-			time_t mod = fi.getModificationTime();
+			time_t mod = fs::last_write_time(file_);
 			string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
 			lyxerr[Debug::LYXVC]
 				<<  "Date in Entries: `" << file_date

@@ -1,10 +1,30 @@
+2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* .cvsignore: add package.C
+
+	* FileInfo.C, FileInfo.h: delete files
+
+	* fs_extras.C, fs_extras.h: new files
+
+	* FileMonitor.C, filetools.C: rewrite to use boost.filesystem
+
+	* Makefile.am (libsupport_la_SOURCES: delete FileInfo.[Ch], add
+	fs_extras.[Ch]
+
+	* filetools.C: make destroydir return true if something was
+	deleted. adjust callers.
+	(IsFileWritable): replace with is_readonly in fs_extras, adjust
+	callers
+
+	* package.C.in: rewrite to use boost.filesystem
+
 2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* tests: add some code for automatic regression testing, can be
 	improved or removed as we see fit
-	
+
 	* lyxlib.h (atoi): delete func
-	
+
 	* lstrings.[Ch] (strToInt): delete func
 	(strToUnsignedInt): delete func
 	(strToDbl): delete func

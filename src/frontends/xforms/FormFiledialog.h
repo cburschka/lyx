@@ -43,8 +43,6 @@ public:
 	std::string name_;
 	///
 	std::string displayed_;
-	///
-	std::string ls_entry_;
 };
 
 
@@ -115,8 +113,6 @@ private:
 	///
 	long last_time_;
 	///
-	std::string info_line_;
-	///
 	typedef std::vector<lyx::frontend::DirEntry> DirEntries;
 	///
 	DirEntries dir_entries_;
@@ -136,8 +132,6 @@ private:
 	/// sets dialog file mask
 	void SetFilters(std::string const & filters);
 	void SetFilters(lyx::support::FileFilterList const & filters);
-	/// sets dialog information line
-	void SetInfoLine(std::string const & pszLine);
 	/// handle dialog during file selection
 	bool RunDialog();
 	/// Handle callback from list

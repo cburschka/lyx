@@ -45,7 +45,6 @@
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -53,6 +52,7 @@
 #include "support/path.h"
 
 #include <boost/bind.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include <iostream>
 #include <csignal>
@@ -62,7 +62,6 @@ using lyx::support::AddPath;
 using lyx::support::bformat;
 using lyx::support::createDirectory;
 using lyx::support::createLyXTmpDir;
-using lyx::support::FileInfo;
 using lyx::support::FileSearch;
 using lyx::support::GetEnv;
 using lyx::support::i18nLibFileSearch;
@@ -74,6 +73,7 @@ using lyx::support::QuoteName;
 using lyx::support::rtrim;
 
 namespace os = lyx::support::os;
+namespace fs = boost::filesystem;
 
 using std::endl;
 using std::string;
@@ -483,8 +483,7 @@ void LyX::init(bool gui)
 	if (reconfigure)
 		reconfigureUserLyXDir();
 
-	FileInfo fi(lyxrc.document_path);
-	if (fi.isOK() && fi.isDir())
+	if (fs::is_directory(lyxrc.document_path))
 		package().document_dir() = lyxrc.document_path;
 
 	package().temp_dir() = createLyXTmpDir(lyxrc.tempdir_path);
@@ -612,15 +611,16 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	bool reconfigure = false;
 
 	// Does user directory exist?
-	FileInfo fileInfo(package().user_support());
-	if (fileInfo.isOK() && fileInfo.isDir()) {
+	if (fs::is_directory(package().user_support())) {
 		first_start = false;
 		string const configure_script =
 			AddName(package().system_support(), "configure");
-		FileInfo script(configure_script);
-		FileInfo defaults(AddName(package().user_support(), "lyxrc.defaults"));
-		if (defaults.isOK() && script.isOK()
-		    && defaults.getModificationTime() < script.getModificationTime()) {
+		string const userDefaults =
+			AddName(package().user_support(), "lyxrc.defaults");
+		if (fs::exists(configure_script) &&
+		    fs::exists(userDefaults) &&
+		    fs::last_write_time(configure_script)
+		    < fs::last_write_time(userDefaults)) {
 			reconfigure = true;
 		}
 		return reconfigure;

@@ -13,13 +13,13 @@
 #include "lastfiles.h"
 #include "debug.h"
 
-#include "support/FileInfo.h"
+#include <boost/filesystem/operations.hpp>
 
 #include <algorithm>
 #include <fstream>
 #include <iterator>
 
-using lyx::support::FileInfo;
+namespace fs = boost::filesystem;
 
 using std::copy;
 using std::endl;
@@ -58,14 +58,10 @@ void LastFiles::readFile(string const & filename)
 	// we issue a warning. (Lgb)
 	ifstream ifs(filename.c_str());
 	string tmp;
-	FileInfo fileInfo;
 
 	while (getline(ifs, tmp) && files.size() < num_files) {
-		if (dostat) {
-			if (!(fileInfo.newFile(tmp).exist() &&
-			      fileInfo.isRegular()))
+		if (dostat && !fs::exists(tmp))
 				continue;
-		}
 		files.push_back(tmp);
 	}
 }

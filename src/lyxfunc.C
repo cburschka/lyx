@@ -79,15 +79,17 @@
 #include "frontends/Toolbars.h"
 
 #include "support/filefilterlist.h"
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcontr.h"
+#include "support/fs_extras.h"
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/package.h"
 #include "support/systemcall.h"
 #include "support/convert.h"
 #include "support/os.h"
+
+#include <boost/filesystem/operations.hpp>
 
 #include <sstream>
 
@@ -99,7 +101,6 @@ using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
 using lyx::support::FileFilterList;
-using lyx::support::FileInfo;
 using lyx::support::FileSearch;
 using lyx::support::ForkedcallsController;
 using lyx::support::i18nLibFileSearch;
@@ -126,6 +127,7 @@ using std::string;
 using std::istringstream;
 
 namespace biblio = lyx::biblio;
+namespace fs = boost::filesystem;
 
 
 extern BufferList bufferlist;
@@ -1610,13 +1612,11 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	if (filename.empty()) {
 		filename = AddName(lyxrc.document_path,
 			    "newfile" + convert<string>(++newfile_number) + ".lyx");
-		FileInfo fi(filename);
-		while (bufferlist.exists(filename) || fi.readable()) {
+		while (bufferlist.exists(filename) || fs::is_readable(filename)) {
 			++newfile_number;
 			filename = AddName(lyxrc.document_path,
 					   "newfile" +	convert<string>(newfile_number) +
 				    ".lyx");
-			fi.newFile(filename);
 		}
 	}
 
@@ -1695,8 +1695,7 @@ void LyXFunc::open(string const & fname)
 	string const disp_fn(MakeDisplayPath(filename));
 
 	// if the file doesn't exist, let the user create one
-	FileInfo const f(filename, true);
-	if (!f.exist()) {
+	if (!fs::exists(filename)) {
 		// the user specifically chose this name. Believe them.
 		view()->newFile(filename, "", true);
 		return;
@@ -1779,7 +1778,7 @@ void LyXFunc::doImport(string const & argument)
 
 	// if the file exists already, and we didn't do
 	// -i lyx thefile.lyx, warn
-	if (FileInfo(lyxfile, true).exist() && filename != lyxfile) {
+	if (fs::exists(lyxfile) && filename != lyxfile) {
 		string const file = MakeDisplayPath(lyxfile, 30);
 
 		string text = bformat(_("The document %1$s already exists.\n\n"
@@ -1903,8 +1902,8 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DISPLAY_GRAPHICS:
 	case LyXRC::RC_DOCUMENTPATH:
 		if (lyxrc_orig.document_path != lyxrc_new.document_path) {
-			FileInfo fi(lyxrc_new.document_path);
-			if (fi.isOK() && fi.isDir()) {
+			if (fs::exists(lyxrc_new.document_path) &&
+			    fs::is_directory(lyxrc_new.document_path)) {
 				using lyx::support::package;
 				package().document_dir() = lyxrc.document_path;
 			}

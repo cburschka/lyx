@@ -19,12 +19,12 @@
 #include "debug.h"
 #include "gettext.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 
 #include <boost/assert.hpp>
+#include <boost/filesystem/operations.hpp>
 #include <boost/tuple/tuple.hpp>
 
 #include <list>
@@ -51,6 +51,7 @@
 
 using std::string;
 
+namespace fs = boost::filesystem;
 
 namespace lyx {
 namespace support {
@@ -257,8 +258,7 @@ std::pair<string, string> const get_build_dirs(string const & abs_binary)
 
 		// Check whether binary is a symbolic link.
 		// If so, resolve it and repeat the exercise.
-		FileInfo const file(binary, true);
-		if (!file.isOK() || !file.isLink())
+		if (!fs::symbolic_link_exists(binary))
 			break;
 
 		string link;
@@ -317,14 +317,12 @@ string const get_locale_dir(string const & system_support_dir)
 	// be "../locale/".)
 	path = NormalizePath(AddPath(system_support_dir, relative_locale_dir()));
 
-	FileInfo fi(path);
-	if (fi.isOK() && fi.isDir())
+	if (fs::exists(path) && fs::is_directory(path))
 		return path;
 
 	// 3. Fall back to the hard-coded LOCALEDIR.
 	path = hardcoded_localedir();
-	FileInfo fi2(path);
-	if (fi2.isOK() && fi2.isDir())
+	if (fs::exists(path) && fs::is_directory(path))
 		return path;
 
 	return string();
@@ -378,7 +376,7 @@ string const get_binary_path(string const & exe)
 	// Two possibilities present themselves.
 	// 1. The binary is relative to the CWD.
 	string const abs_exe_path = MakeAbsPath(exe_path);
-	if (FileInfo(abs_exe_path, true).isOK())
+	if (fs::exists(abs_exe_path))
 		return abs_exe_path;
 
 	// 2. exe must be the name of the binary only and it
@@ -395,7 +393,7 @@ string const get_binary_path(string const & exe)
 		string const exe_dir = MakeAbsPath(*it);
 
 		string const exe_path = AddName(exe_dir, exe_name);
-		if (FileInfo(exe_path, true).isOK())
+		if (fs::exists(exe_path))
 			return exe_path;
 	}
 
@@ -473,8 +471,7 @@ get_system_support_dir(string const & abs_binary,
 
 		// Check whether binary is a symbolic link.
 		// If so, resolve it and repeat the exercise.
-		FileInfo const file(binary, true);
-		if (!file.isOK() || !file.isLink())
+		if (!fs::symbolic_link_exists(binary))
 			break;
 
 		string link;
@@ -492,8 +489,7 @@ get_system_support_dir(string const & abs_binary,
 		// This time test whether the directory is a symbolic link
 		// *before* looking for "chkconfig.ltx".
 		// (We've looked relative to the original already.)
-		FileInfo const file(binary_dir, true);
-		if (!file.isOK() || !file.isLink())
+		if (!fs::symbolic_link_exists(binary))
 			break;
 
 		string link;
@@ -657,8 +653,7 @@ bool check_env_var_dir(string const & dir,
 bool check_env_var_dir(string const & dir,
 		       string const & env_var)
 {
-	FileInfo fi(dir);
-	bool const success = (fi.isOK() && fi.isDir());
+	bool const success = (fs::exists(dir) && fs::is_directory(dir));
 
 	if (!success) {
 		// Put this string on a single line so that the gettext
