@@ -9,6 +9,7 @@
 #include <vector>
 #include <algorithm>
 
+using std::endl;
 
 bool operator<(const latexkeys & a, const latexkeys & b)
 {
