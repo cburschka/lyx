@@ -160,7 +160,8 @@ bool isLetter(PosIterator & cur)
 
 
 WordLangTuple nextWord(PosIterator & cur, PosIterator const & end,
-		       int & progress, BufferParams & bp)
+		       PosIterator::difference_type & progress, 
+		       BufferParams & bp)
 {
 	// skip until we have real text (will jump paragraphs)
 	for (; cur != end && !isLetter(cur); ++cur, ++progress);

@@ -645,7 +645,7 @@ void Paragraph::applyLayout(LyXLayout_ptr const & new_layout)
 }
 
 
-int Paragraph::beginOfBody() const
+pos_type Paragraph::beginOfBody() const
 {
 	return begin_of_body_;
 }

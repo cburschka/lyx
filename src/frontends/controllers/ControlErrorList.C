@@ -68,9 +68,9 @@ void ControlErrorList::goTo(int item)
 		return;
 	}
 
-	int const end = std::min(err.pos_end, pit->size());
-	int const start = std::min(err.pos_start, end);
-	int const range = end - start;
+	lyx::pos_type const end = std::min(err.pos_end, pit->size());
+	lyx::pos_type const start = std::min(err.pos_start, end);
+	lyx::pos_type const range = end - start;
 
 	// Now make the selection.
 	PosIterator const pos(pit, start);

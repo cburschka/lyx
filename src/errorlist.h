@@ -12,6 +12,8 @@
 #ifndef ERRORLIST_H
 #define ERRORLIST_H
 
+#include "support/types.h"
+
 #include <vector>
 #include <string>
 
@@ -22,10 +24,10 @@ struct ErrorItem {
 	std::string error;
 	std::string description;
 	int par_id;
-	int pos_start;
-	int pos_end;
+	lyx::pos_type pos_start;
+	lyx::pos_type pos_end;
 	ErrorItem(std::string const & error, std::string const & description,
-		  int parid, int posstart, int posend);
+		  int parid, lyx::pos_type posstart, lyx::pos_type posend);
 	ErrorItem();
 };
 

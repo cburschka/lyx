@@ -202,7 +202,7 @@ public:
 	/// the paragraph alongside the text of the rest of the paragraph
 	/// (the body). This function returns the starting position of the
 	/// body of the text in the paragraph.
-	int beginOfBody() const;
+	lyx::pos_type beginOfBody() const;
 	/// recompute this value
 	void setBeginOfBody();
 
@@ -353,7 +353,7 @@ private:
 	// for average tasks as buffer loading/switching etc.
 	TextContainer text_;
 	/// end of label
-	int begin_of_body_;
+	lyx::pos_type begin_of_body_;
 
 	struct Pimpl;
 	///

@@ -1341,7 +1341,8 @@ void LyXText::Delete(LCursor & cur)
 	CursorSlice sl = cur.top();
 	cursorRight(cur);
 	if (sl == cur.top()) {
-		recordUndo(cur, Undo::DELETE, cur.par(), max(0, cur.par() - 1));
+		recordUndo(cur, Undo::DELETE, cur.par(), 
+		           max(par_type(0), cur.par() - 1));
 		backspace(cur);
 	}
 }
@@ -1442,7 +1443,7 @@ ParagraphList::iterator LyXText::getPar(CursorSlice const & cur) const
 }
 
 
-ParagraphList::iterator LyXText::getPar(int par) const
+ParagraphList::iterator LyXText::getPar(par_type par) const
 {
 	//lyxerr << "getPar: " << par << " from " << paragraphs().size() << endl;
 	BOOST_ASSERT(par >= 0);

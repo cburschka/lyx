@@ -1,3 +1,17 @@
+2004-03-24  Angus Leeming  <leeming@lyx.org>
+
+	64-bit compile fixes.
+
+	* errorlist.[Ch] (pos_start, pos_end): store as lyx::pos_type.
+	(c-tor): pass lyx::pos_types rather than ints.
+
+	* paragraph.[Ch] (beginOfBody, begin_of_body_): return, store as
+	lyx::pos_type.
+
+	* text.C (Delete): compile fix.
+	(getPar): ensure that function declaration is the same as that in
+	the header file.
+
 2004-03-23  Angus Leeming  <leeming@lyx.org>
 
 	* ispell.C (LaunchIspell):
