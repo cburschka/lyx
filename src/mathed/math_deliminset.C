@@ -50,37 +50,13 @@ void MathDelimInset::write(std::ostream & os, bool fragile) const
 }
 
 
-void MathDelimInset::draw(Painter & pain, int x, int y) const
-{ 
-	xo(x);
-	yo(y); 
-
-	int w = dw();
-	xcell(0).draw(pain, x + w, y);
-	
-	if (latexName(left_) == ".") {
-		pain.line(x + 4, yo() - ascent_, x + 4, yo() + descent_,
-			  LColor::mathcursor, Painter::line_onoffdash);
-	} else
-		mathed_draw_deco(pain, x, y - ascent_, w, height(), left_);
-
-	x += width() - w - 2;
-
-	if (latexName(right_) == ".") {
-		pain.line(x + 4, yo() - ascent_, x + 4, yo() + descent_,
-			  LColor::mathcursor, Painter::line_onoffdash);
-	} else
-		mathed_draw_deco(pain, x, y - ascent_, w, height(), right_);
-}
-
-
 int MathDelimInset::dw() const
 {
-	int w = height()/5;
+	int w = height() / 5;
 	if (w > 15)
 		w = 15;
-	if (w < 6)
-		w = 6;
+	if (w < 4)
+		w = 4;
 	return w;
 }
 
@@ -89,7 +65,31 @@ void MathDelimInset::metrics(MathStyles st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;
-	ascent_  = xcell(0).ascent() + 2;
-	descent_ = xcell(0).descent() + 2;
+	ascent_  = std::max(xcell(0).ascent(), mathed_char_ascent(LM_TC_VAR, st,'I'));
+	descent_ = xcell(0).descent();
 	width_   = xcell(0).width() + 2 * dw() + 4;
+}
+
+
+void MathDelimInset::draw(Painter & pain, int x, int y) const
+{ 
+	xo(x);
+	yo(y); 
+
+	int w = dw();
+	xcell(0).draw(pain, x + w + 2, y);
+	
+	if (latexName(left_) == ".") {
+		pain.line(x + 2, yo() - ascent_, x + 2, yo() + descent_,
+			  LColor::mathcursor, Painter::line_onoffdash);
+	} else
+		mathed_draw_deco(pain, x, y - ascent_ - 2, w, height() + 4, left_);
+
+	x += width();
+
+	if (latexName(right_) == ".") {
+		pain.line(x + 2, yo() - ascent_, x + 2, yo() + descent_,
+			  LColor::mathcursor, Painter::line_onoffdash);
+	} else
+		mathed_draw_deco(pain, x - dw(), y - ascent_ - 2, w, height() + 4, right_);
 }

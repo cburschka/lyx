@@ -28,11 +28,15 @@ public:
 	void metrics(MathStyles st) const;
 	///
 	void writeNormal(std::ostream & os) const;
+
 private:
 	///
-	latexkeys const * key_;
+	bool upper() const;
 	///
-	bool upper_;
+	bool protect() const;
+
+	///
+	latexkeys const * key_;
 	/// height cache of deco
 	mutable int dh_;
 	/// vertical offset cache of deco

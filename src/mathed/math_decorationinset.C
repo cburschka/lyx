@@ -14,7 +14,6 @@ using std::ostream;
 MathDecorationInset::MathDecorationInset(latexkeys const * key)
 	: MathNestInset(1), key_(key)
 {
-	upper_ = key_->id != LM_underline && key_->id != LM_underbrace;
 }
 
 
@@ -23,6 +22,21 @@ MathInset * MathDecorationInset::clone() const
 	return new MathDecorationInset(*this);
 }
 
+
+bool MathDecorationInset::upper() const
+{
+	return key_->id != LM_underline && key_->id != LM_underbrace;
+}
+
+
+bool MathDecorationInset::protect() const
+{
+	return
+			key_->name == "overbrace" ||
+			key_->name == "underbrace" ||
+			key_->name == "overleftarrow" ||
+			key_->name == "overrightarrow";
+}
 
 
 void MathDecorationInset::metrics(MathStyles st) const
@@ -35,7 +49,7 @@ void MathDecorationInset::metrics(MathStyles st) const
 
 	dh_ = 5; //mathed_char_height(LM_TC_VAR, size(), 'I', ascent_, descent_);  
 
-	if (upper_) {
+	if (upper()) {
 		dy_ = -ascent_ - dh_;
 		ascent_ += dh_ + 1;
 	} else {
@@ -63,11 +77,7 @@ void MathDecorationInset::draw(Painter & pain, int x, int y) const
 void MathDecorationInset::write(ostream & os, bool fragile) const
 {
 	string name = key_->name;
-	if (fragile &&
-			(name == "overbrace" ||
-			 name == "underbrace" ||
-			 name == "overleftarrow" ||
-			 name == "overrightarrow"))
+	if (fragile && protect())
 		os << "\\protect";
 	os << '\\' << name;
 
@@ -81,6 +91,7 @@ void MathDecorationInset::write(ostream & os, bool fragile) const
 	if (key_->id != LM_not)
 		os << '}';
 }
+
 
 void MathDecorationInset::writeNormal(ostream & os) const
 {
