@@ -1,12 +1,12 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2003, The LyX team.
 # Roman Maurer <roman@lugos.si>, 2001.
-# $Id: sl.po,v 1.66.2.8 2003/09/15 09:43:25 lasgouttes Exp $
+# $Id: sl.po,v 1.66.2.9 2003/09/25 14:34:23 lasgouttes Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.2\n"
-"POT-Creation-Date: 2003-05-06 16:32+0200\n"
+"POT-Creation-Date: 2003-09-25 16:13+0200\n"
 "PO-Revision-Date: 2003-09-13 15:25+0200\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -2310,7 +2310,7 @@ msgid "Credits"
 msgstr "Zasluge"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
-#: ../lib/layouts/apa.layout:192
+#: ../../1.3.x/lib/layouts/apa.layout:192
 msgid "Copyright"
 msgstr "Copyright"
 
@@ -3283,7 +3283,8 @@ msgid "Include"
 msgstr "Vkljuèi"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
-#: ../lib/layouts/linuxdoc.layout:251 ../lib/layouts/manpage.layout:128
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:251
+#: ../../1.3.x/lib/layouts/manpage.layout:128
 msgid "Verbatim"
 msgstr "Dobesedno"
 
@@ -3521,7 +3522,7 @@ msgstr "&Vrh"
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
 #: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:302
 #, fuzzy
 msgid "Center"
 msgstr "Sredina"
@@ -3599,14 +3600,14 @@ msgstr "Prilagoditev|P"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+#: src/frontends/qt2/QTabular.C:179 src/frontends/xforms/FormParagraph.C:309
 msgid "Left"
 msgstr "Levo"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:316
 msgid "Right"
 msgstr "Desno"
 
@@ -4449,7 +4450,8 @@ msgid "Send output to a file"
 msgstr "Izberite ime izhodne datoteke"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:494
+#: src/frontends/xforms/FormRef.C:37
 msgid "Reference"
 msgstr "Sklic"
 
@@ -4683,7 +4685,7 @@ msgid "Merge cells"
 msgstr "Zdru¾i celice"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
-#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
+#: src/frontends/qt2/QTabular.C:183 src/frontends/xforms/FormParagraph.C:295
 msgid "Block"
 msgstr "Blok"
 
@@ -4740,7 +4742,7 @@ msgid "Width unit"
 msgstr "Enota ¹irine"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-msgid "Fixed with of the column"
+msgid "Fixed width of the column"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
@@ -4968,8 +4970,9 @@ msgid "Close this dialog"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
+#: ../../1.3.x/lib/layouts/aapaper.inc:113
+#: ../../1.3.x/lib/layouts/aapaper.layout:77 src/frontends/qt2/QThesaurus.C:31
+#: src/frontends/xforms/FormThesaurus.C:39
 msgid "Thesaurus"
 msgstr "Tezaver"
 
@@ -5029,8 +5032,9 @@ msgid "&URL"
 msgstr "URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
-#: ../lib/layouts/scrlttr2.layout:217 src/frontends/qt2/QURL.C:33
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
+#: ../../1.3.x/lib/layouts/amsdefs.inc:223
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:217 src/frontends/qt2/QURL.C:33
 msgid "URL"
 msgstr "URL"
 
@@ -5079,1589 +5083,1955 @@ msgstr "Drugi ("
 msgid "&Placement:"
 msgstr "Postavitev plovk:|#L"
 
-#: ../lib/layouts/mwart.layout:25 ../lib/layouts/article.layout:20
-#: ../lib/layouts/db_stdsections.inc:11 ../lib/layouts/paper.layout:33
-#: ../lib/layouts/scrartcl.layout:19 ../lib/layouts/scrclass.inc:54
-#: ../lib/layouts/seminar.layout:26 ../lib/layouts/stdsections.inc:11
+#: ../../1.3.x/lib/layouts/mwart.layout:25
+#: ../../1.3.x/lib/layouts/article.layout:20
+#: ../../1.3.x/lib/layouts/db_stdsections.inc:11
+#: ../../1.3.x/lib/layouts/paper.layout:33
+#: ../../1.3.x/lib/layouts/scrartcl.layout:19
+#: ../../1.3.x/lib/layouts/scrclass.inc:54
+#: ../../1.3.x/lib/layouts/seminar.layout:26
+#: ../../1.3.x/lib/layouts/stdsections.inc:11
 msgid "Part"
 msgstr "Del"
 
-#: ../lib/layouts/mwart.layout:36 ../lib/layouts/article.layout:31
-#: ../lib/layouts/scrartcl.layout:31 ../lib/layouts/seminar.layout:37
-#: ../lib/layouts/stdstarsections.inc:12
+#: ../../1.3.x/lib/layouts/mwart.layout:36
+#: ../../1.3.x/lib/layouts/article.layout:31
+#: ../../1.3.x/lib/layouts/scrartcl.layout:31
+#: ../../1.3.x/lib/layouts/seminar.layout:37
+#: ../../1.3.x/lib/layouts/stdstarsections.inc:12
 msgid "Part*"
 msgstr "Del*"
 
-#: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
-#: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
-#: ../lib/layouts/amsart.layout:23 ../lib/layouts/amsbook.layout:23
-#: ../lib/layouts/apa.layout:31 ../lib/layouts/broadway.layout:179
-#: ../lib/layouts/chess.layout:30 ../lib/layouts/cl2emult.layout:127
-#: ../lib/layouts/cv.layout:14 ../lib/layouts/db_stdclass.inc:28
-#: ../lib/layouts/dtk.layout:30 ../lib/layouts/egs.layout:17
-#: ../lib/layouts/foils.layout:28 ../lib/layouts/hollywood.layout:350
-#: ../lib/layouts/kluwer.layout:35 ../lib/layouts/linuxdoc.layout:17
-#: ../lib/layouts/llncs.layout:23 ../lib/layouts/ltugboat.layout:30
-#: ../lib/layouts/manpage.layout:17 ../lib/layouts/paper.layout:15
-#: ../lib/layouts/revtex.layout:24 ../lib/layouts/revtex4.layout:24
-#: ../lib/layouts/scrclass.inc:13 ../lib/layouts/scrlettr.layout:7
-#: ../lib/layouts/siamltex.layout:18 ../lib/layouts/slides.layout:72
-#: ../lib/layouts/stdclass.inc:27 ../lib/layouts/stdletter.inc:21
-#: ../lib/layouts/svjour.inc:26 ../lib/layouts/scrlttr2.layout:7
-#: ../lib/layouts/elsart.layout:44 src/insets/insetref.C:118
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:38
+#: ../../1.3.x/lib/layouts/aa.layout:30
+#: ../../1.3.x/lib/layouts/aapaper.layout:33
+#: ../../1.3.x/lib/layouts/aastex.layout:54
+#: ../../1.3.x/lib/layouts/amsart.layout:23
+#: ../../1.3.x/lib/layouts/amsbook.layout:23
+#: ../../1.3.x/lib/layouts/apa.layout:31
+#: ../../1.3.x/lib/layouts/broadway.layout:179
+#: ../../1.3.x/lib/layouts/chess.layout:30
+#: ../../1.3.x/lib/layouts/cl2emult.layout:127
+#: ../../1.3.x/lib/layouts/cv.layout:14
+#: ../../1.3.x/lib/layouts/db_stdclass.inc:28
+#: ../../1.3.x/lib/layouts/dtk.layout:30 ../../1.3.x/lib/layouts/egs.layout:17
+#: ../../1.3.x/lib/layouts/foils.layout:28
+#: ../../1.3.x/lib/layouts/hollywood.layout:350
+#: ../../1.3.x/lib/layouts/kluwer.layout:35
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:17
+#: ../../1.3.x/lib/layouts/llncs.layout:23
+#: ../../1.3.x/lib/layouts/ltugboat.layout:30
+#: ../../1.3.x/lib/layouts/manpage.layout:17
+#: ../../1.3.x/lib/layouts/paper.layout:15
+#: ../../1.3.x/lib/layouts/revtex.layout:24
+#: ../../1.3.x/lib/layouts/revtex4.layout:24
+#: ../../1.3.x/lib/layouts/scrclass.inc:13
+#: ../../1.3.x/lib/layouts/scrlettr.layout:7
+#: ../../1.3.x/lib/layouts/siamltex.layout:18
+#: ../../1.3.x/lib/layouts/slides.layout:72
+#: ../../1.3.x/lib/layouts/stdclass.inc:27
+#: ../../1.3.x/lib/layouts/stdletter.inc:21
+#: ../../1.3.x/lib/layouts/svjour.inc:26
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:7
+#: ../../1.3.x/lib/layouts/elsart.layout:48 src/insets/insetref.C:118
 #: src/mathed/ref_inset.C:127
 msgid "Standard"
 msgstr "Standardno"
 
-#: ../lib/layouts/IEEEtran.layout:65
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:65
 msgid "TheoremTemplate"
 msgstr "VzorecIzreka"
 
-#: ../lib/layouts/IEEEtran.layout:82 ../lib/layouts/amsdefs.inc:27
-#: ../lib/layouts/foils.layout:301 ../lib/layouts/heb-article.layout:97
-#: ../lib/layouts/llncs.layout:405 ../lib/layouts/siamltex.layout:234
-#: ../lib/layouts/svjour.inc:470 ../lib/layouts/ijmpd.layout:141
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:82
+#: ../../1.3.x/lib/layouts/amsdefs.inc:27
+#: ../../1.3.x/lib/layouts/foils.layout:301
+#: ../../1.3.x/lib/layouts/heb-article.layout:97
+#: ../../1.3.x/lib/layouts/llncs.layout:405
+#: ../../1.3.x/lib/layouts/siamltex.layout:234
+#: ../../1.3.x/lib/layouts/svjour.inc:470
+#: ../../1.3.x/lib/layouts/elsart.layout:295
+#: ../../1.3.x/lib/layouts/ijmpd.layout:141
 msgid "Proof"
 msgstr "Dokaz"
 
-#: ../lib/layouts/IEEEtran.layout:90 ../lib/layouts/amsmaths-plain.inc:32
-#: ../lib/layouts/amsmaths-seq.inc:32 ../lib/layouts/amsmaths.inc:59
-#: ../lib/layouts/foils.layout:232 ../lib/layouts/heb-article.layout:24
-#: ../lib/layouts/llncs.layout:441 ../lib/layouts/siamltex.layout:189
-#: ../lib/layouts/svjour.inc:506 ../lib/layouts/elsart.layout:257
-#: ../lib/layouts/ijmpd.layout:125
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:90
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:32
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:32
+#: ../../1.3.x/lib/layouts/amsmaths.inc:59
+#: ../../1.3.x/lib/layouts/foils.layout:232
+#: ../../1.3.x/lib/layouts/heb-article.layout:24
+#: ../../1.3.x/lib/layouts/llncs.layout:441
+#: ../../1.3.x/lib/layouts/siamltex.layout:189
+#: ../../1.3.x/lib/layouts/svjour.inc:506
+#: ../../1.3.x/lib/layouts/elsart.layout:262
+#: ../../1.3.x/lib/layouts/ijmpd.layout:125
 msgid "Theorem"
 msgstr "Izrek"
 
-#: ../lib/layouts/IEEEtran.layout:101 ../lib/layouts/amsmaths-plain.inc:54
-#: ../lib/layouts/amsmaths-seq.inc:48 ../lib/layouts/amsmaths.inc:128
-#: ../lib/layouts/foils.layout:262 ../lib/layouts/heb-article.layout:52
-#: ../lib/layouts/llncs.layout:387 ../lib/layouts/siamltex.layout:203
-#: ../lib/layouts/svjour.inc:452 ../lib/layouts/elsart.layout:290
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:101
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:54
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:48
+#: ../../1.3.x/lib/layouts/amsmaths.inc:128
+#: ../../1.3.x/lib/layouts/foils.layout:262
+#: ../../1.3.x/lib/layouts/heb-article.layout:52
+#: ../../1.3.x/lib/layouts/llncs.layout:387
+#: ../../1.3.x/lib/layouts/siamltex.layout:203
+#: ../../1.3.x/lib/layouts/svjour.inc:452
+#: ../../1.3.x/lib/layouts/elsart.layout:327
 msgid "Lemma"
 msgstr "Lema"
 
-#: ../lib/layouts/IEEEtran.layout:112 ../lib/layouts/amsmaths-plain.inc:43
-#: ../lib/layouts/amsmaths-seq.inc:40 ../lib/layouts/amsmaths.inc:105
-#: ../lib/layouts/foils.layout:269 ../lib/layouts/heb-article.layout:61
-#: ../lib/layouts/llncs.layout:352 ../lib/layouts/siamltex.layout:209
-#: ../lib/layouts/svjour.inc:409 ../lib/layouts/elsart.layout:302
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:112
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:43
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:40
+#: ../../1.3.x/lib/layouts/amsmaths.inc:105
+#: ../../1.3.x/lib/layouts/foils.layout:269
+#: ../../1.3.x/lib/layouts/heb-article.layout:61
+#: ../../1.3.x/lib/layouts/llncs.layout:352
+#: ../../1.3.x/lib/layouts/siamltex.layout:209
+#: ../../1.3.x/lib/layouts/svjour.inc:409
+#: ../../1.3.x/lib/layouts/elsart.layout:339
 msgid "Corollary"
 msgstr "Korolar"
 
-#: ../lib/layouts/IEEEtran.layout:123 ../lib/layouts/amsmaths-plain.inc:65
-#: ../lib/layouts/amsmaths-seq.inc:56 ../lib/layouts/amsmaths.inc:152
-#: ../lib/layouts/foils.layout:276 ../lib/layouts/llncs.layout:417
-#: ../lib/layouts/siamltex.layout:215 ../lib/layouts/svjour.inc:482
-#: ../lib/layouts/elsart.layout:314
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:123
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:65
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:56
+#: ../../1.3.x/lib/layouts/amsmaths.inc:152
+#: ../../1.3.x/lib/layouts/foils.layout:276
+#: ../../1.3.x/lib/layouts/llncs.layout:417
+#: ../../1.3.x/lib/layouts/siamltex.layout:215
+#: ../../1.3.x/lib/layouts/svjour.inc:482
+#: ../../1.3.x/lib/layouts/elsart.layout:351
 msgid "Proposition"
 msgstr "Podmena"
 
-#: ../lib/layouts/IEEEtran.layout:134 ../lib/layouts/amsmaths-plain.inc:76
-#: ../lib/layouts/amsmaths-seq.inc:64 ../lib/layouts/amsmaths.inc:176
-#: ../lib/layouts/llncs.layout:346 ../lib/layouts/svjour.inc:403
-#: ../lib/layouts/elsart.layout:373
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:134
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:76
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:64
+#: ../../1.3.x/lib/layouts/amsmaths.inc:176
+#: ../../1.3.x/lib/layouts/llncs.layout:346
+#: ../../1.3.x/lib/layouts/svjour.inc:403
+#: ../../1.3.x/lib/layouts/elsart.layout:410
 msgid "Conjecture"
 msgstr "Domneva"
 
-#: ../lib/layouts/IEEEtran.layout:145 ../lib/layouts/amsmaths-plain.inc:87
-#: ../lib/layouts/amsmaths-seq.inc:72 ../lib/layouts/amsmaths.inc:200
-#: ../lib/layouts/elsart.layout:326
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:145
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:87
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:72
+#: ../../1.3.x/lib/layouts/amsmaths.inc:200
+#: ../../1.3.x/lib/layouts/elsart.layout:363
 msgid "Criterion"
 msgstr "Kriterij"
 
-#: ../lib/layouts/IEEEtran.layout:156 ../lib/layouts/amsmaths-plain.inc:109
-#: ../lib/layouts/amsmaths-seq.inc:88 ../lib/layouts/amsmaths.inc:224
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:156
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:109
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:88
+#: ../../1.3.x/lib/layouts/amsmaths.inc:224
 msgid "Fact"
 msgstr "Dejstvo"
 
-#: ../lib/layouts/IEEEtran.layout:167 ../lib/layouts/amsmaths-plain.inc:120
-#: ../lib/layouts/amsmaths-seq.inc:96 ../lib/layouts/amsmaths.inc:248
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:167
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:120
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:96
+#: ../../1.3.x/lib/layouts/amsmaths.inc:248
 msgid "Axiom"
 msgstr "Aksiom"
 
-#: ../lib/layouts/IEEEtran.layout:178 ../lib/layouts/amsmaths-plain.inc:131
-#: ../lib/layouts/amsmaths-seq.inc:104 ../lib/layouts/amsmaths.inc:260
-#: ../lib/layouts/foils.layout:283 ../lib/layouts/heb-article.layout:79
-#: ../lib/layouts/llncs.layout:369 ../lib/layouts/siamltex.layout:221
-#: ../lib/layouts/svjour.inc:426 ../lib/layouts/elsart.layout:350
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:178
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:131
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:104
+#: ../../1.3.x/lib/layouts/amsmaths.inc:260
+#: ../../1.3.x/lib/layouts/foils.layout:283
+#: ../../1.3.x/lib/layouts/heb-article.layout:79
+#: ../../1.3.x/lib/layouts/llncs.layout:369
+#: ../../1.3.x/lib/layouts/siamltex.layout:221
+#: ../../1.3.x/lib/layouts/svjour.inc:426
+#: ../../1.3.x/lib/layouts/elsart.layout:387
 msgid "Definition"
 msgstr "Definicija"
 
-#: ../lib/layouts/IEEEtran.layout:189 ../lib/layouts/amsmaths-plain.inc:142
-#: ../lib/layouts/amsmaths-seq.inc:112 ../lib/layouts/amsmaths.inc:294
-#: ../lib/layouts/llncs.layout:375 ../lib/layouts/svjour.inc:432
-#: ../lib/layouts/elsart.layout:385
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:189
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:142
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:112
+#: ../../1.3.x/lib/layouts/amsmaths.inc:294
+#: ../../1.3.x/lib/layouts/llncs.layout:375
+#: ../../1.3.x/lib/layouts/svjour.inc:432
+#: ../../1.3.x/lib/layouts/elsart.layout:422
 msgid "Example"
 msgstr "Zgled"
 
-#: ../lib/layouts/IEEEtran.layout:200 ../lib/layouts/amsmaths-plain.inc:153
-#: ../lib/layouts/amsmaths-seq.inc:120 ../lib/layouts/amsmaths.inc:318
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:200
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:153
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:120
+#: ../../1.3.x/lib/layouts/amsmaths.inc:318
 msgid "Condition"
 msgstr "Pogoj"
 
-#: ../lib/layouts/IEEEtran.layout:211 ../lib/layouts/amsmaths-plain.inc:164
-#: ../lib/layouts/amsmaths-seq.inc:128 ../lib/layouts/amsmaths.inc:330
-#: ../lib/layouts/llncs.layout:399 ../lib/layouts/svjour.inc:464
-#: ../lib/layouts/elsart.layout:397
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:211
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:164
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:128
+#: ../../1.3.x/lib/layouts/amsmaths.inc:330
+#: ../../1.3.x/lib/layouts/llncs.layout:399
+#: ../../1.3.x/lib/layouts/svjour.inc:464
+#: ../../1.3.x/lib/layouts/elsart.layout:434
 msgid "Problem"
 msgstr "Problem"
 
-#: ../lib/layouts/IEEEtran.layout:222 ../lib/layouts/amsmaths-plain.inc:175
-#: ../lib/layouts/amsmaths-seq.inc:136 ../lib/layouts/amsmaths.inc:342
-#: ../lib/layouts/llncs.layout:381 ../lib/layouts/svjour.inc:438
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:222
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:175
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:136
+#: ../../1.3.x/lib/layouts/amsmaths.inc:342
+#: ../../1.3.x/lib/layouts/llncs.layout:381
+#: ../../1.3.x/lib/layouts/svjour.inc:438
 msgid "Exercise"
 msgstr "Vaja"
 
-#: ../lib/layouts/IEEEtran.layout:233 ../lib/layouts/amsmaths-plain.inc:186
-#: ../lib/layouts/amsmaths-seq.inc:144 ../lib/layouts/amsmaths.inc:354
-#: ../lib/layouts/llncs.layout:429 ../lib/layouts/svjour.inc:494
-#: ../lib/layouts/elsart.layout:409
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:233
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:186
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:144
+#: ../../1.3.x/lib/layouts/amsmaths.inc:354
+#: ../../1.3.x/lib/layouts/llncs.layout:429
+#: ../../1.3.x/lib/layouts/svjour.inc:494
+#: ../../1.3.x/lib/layouts/elsart.layout:446
 msgid "Remark"
 msgstr "Pripomba"
 
-#: ../lib/layouts/IEEEtran.layout:244 ../lib/layouts/amsmaths-plain.inc:197
-#: ../lib/layouts/amsmaths-seq.inc:152 ../lib/layouts/amsmaths.inc:389
-#: ../lib/layouts/heb-article.layout:70 ../lib/layouts/llncs.layout:340
-#: ../lib/layouts/svjour.inc:379 ../lib/layouts/elsart.layout:425
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:244
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:197
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:152
+#: ../../1.3.x/lib/layouts/amsmaths.inc:389
+#: ../../1.3.x/lib/layouts/heb-article.layout:70
+#: ../../1.3.x/lib/layouts/llncs.layout:340
+#: ../../1.3.x/lib/layouts/svjour.inc:379
+#: ../../1.3.x/lib/layouts/elsart.layout:462
 msgid "Claim"
 msgstr "Trditev"
 
-#: ../lib/layouts/IEEEtran.layout:255 ../lib/layouts/amsmaths-plain.inc:208
-#: ../lib/layouts/amsmaths-seq.inc:160 ../lib/layouts/amsmaths.inc:413
-#: ../lib/layouts/apa.layout:204 ../lib/layouts/llncs.layout:393
-#: ../lib/layouts/slides.layout:173 ../lib/layouts/svjour.inc:458
-#: ../lib/layouts/elsart.layout:417
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:255
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:208
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:160
+#: ../../1.3.x/lib/layouts/amsmaths.inc:413
+#: ../../1.3.x/lib/layouts/apa.layout:204
+#: ../../1.3.x/lib/layouts/llncs.layout:393
+#: ../../1.3.x/lib/layouts/slides.layout:173
+#: ../../1.3.x/lib/layouts/svjour.inc:458
+#: ../../1.3.x/lib/layouts/elsart.layout:454
 msgid "Note"
 msgstr "Opomba"
 
-#: ../lib/layouts/IEEEtran.layout:266 ../lib/layouts/amsmaths-plain.inc:219
-#: ../lib/layouts/amsmaths-seq.inc:168 ../lib/layouts/amsmaths.inc:438
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:266
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:219
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:168
+#: ../../1.3.x/lib/layouts/amsmaths.inc:438
 msgid "Notation"
 msgstr "Zapis"
 
-#: ../lib/layouts/IEEEtran.layout:277 ../lib/layouts/amsmaths-plain.inc:255
-#: ../lib/layouts/amsmaths-seq.inc:192 ../lib/layouts/amsmaths.inc:485
-#: ../lib/layouts/llncs.layout:316 ../lib/layouts/elsart.layout:441
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:277
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:255
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:192
+#: ../../1.3.x/lib/layouts/amsmaths.inc:485
+#: ../../1.3.x/lib/layouts/llncs.layout:316
+#: ../../1.3.x/lib/layouts/elsart.layout:478
 msgid "Case"
 msgstr "Primer"
 
-#: ../lib/layouts/IEEEtran.layout:302 ../lib/layouts/aa.layout:44
-#: ../lib/layouts/aa.layout:239 ../lib/layouts/aapaper.layout:59
-#: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:68
-#: ../lib/layouts/aastex.layout:141 ../lib/layouts/aguplus.inc:23
-#: ../lib/layouts/amsart.layout:40 ../lib/layouts/amsbook.layout:41
-#: ../lib/layouts/cv.layout:26 ../lib/layouts/db_stdsections.inc:25
-#: ../lib/layouts/egs.layout:29 ../lib/layouts/kluwer.layout:55
-#: ../lib/layouts/latex8.layout:39 ../lib/layouts/linuxdoc.layout:68
-#: ../lib/layouts/llncs.layout:44 ../lib/layouts/ltugboat.layout:46
-#: ../lib/layouts/manpage.layout:41 ../lib/layouts/paper.layout:46
-#: ../lib/layouts/revtex.layout:42 ../lib/layouts/revtex4.layout:45
-#: ../lib/layouts/scrclass.inc:70 ../lib/layouts/siamltex.layout:38
-#: ../lib/layouts/spie.layout:23 ../lib/layouts/stdsections.inc:63
-#: ../lib/layouts/svjour.inc:41 ../lib/layouts/ijmpd.layout:86
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:302
+#: ../../1.3.x/lib/layouts/aa.layout:44 ../../1.3.x/lib/layouts/aa.layout:239
+#: ../../1.3.x/lib/layouts/aapaper.layout:59
+#: ../../1.3.x/lib/layouts/aapaper.layout:115
+#: ../../1.3.x/lib/layouts/aastex.layout:68
+#: ../../1.3.x/lib/layouts/aastex.layout:141
+#: ../../1.3.x/lib/layouts/aguplus.inc:23
+#: ../../1.3.x/lib/layouts/amsart.layout:40
+#: ../../1.3.x/lib/layouts/amsbook.layout:41
+#: ../../1.3.x/lib/layouts/cv.layout:26
+#: ../../1.3.x/lib/layouts/db_stdsections.inc:25
+#: ../../1.3.x/lib/layouts/egs.layout:29
+#: ../../1.3.x/lib/layouts/kluwer.layout:55
+#: ../../1.3.x/lib/layouts/latex8.layout:39
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:68
+#: ../../1.3.x/lib/layouts/llncs.layout:44
+#: ../../1.3.x/lib/layouts/ltugboat.layout:46
+#: ../../1.3.x/lib/layouts/manpage.layout:41
+#: ../../1.3.x/lib/layouts/paper.layout:46
+#: ../../1.3.x/lib/layouts/revtex.layout:42
+#: ../../1.3.x/lib/layouts/revtex4.layout:45
+#: ../../1.3.x/lib/layouts/scrclass.inc:70
+#: ../../1.3.x/lib/layouts/siamltex.layout:38
+#: ../../1.3.x/lib/layouts/spie.layout:23
+#: ../../1.3.x/lib/layouts/stdsections.inc:63
+#: ../../1.3.x/lib/layouts/svjour.inc:41
+#: ../../1.3.x/lib/layouts/ijmpd.layout:86
 msgid "Section"
 msgstr "Razdelek"
 
-#: ../lib/layouts/IEEEtran.layout:313 ../lib/layouts/aa.layout:46
-#: ../lib/layouts/aa.layout:249 ../lib/layouts/aapaper.layout:61
-#: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:70
-#: ../lib/layouts/aastex.layout:154 ../lib/layouts/aguplus.inc:35
-#: ../lib/layouts/amsart.layout:53 ../lib/layouts/amsbook.layout:54
-#: ../lib/layouts/cv.layout:49 ../lib/layouts/db_stdsections.inc:32
-#: ../lib/layouts/egs.layout:55 ../lib/layouts/kluwer.layout:64
-#: ../lib/layouts/latex8.layout:46 ../lib/layouts/linuxdoc.layout:94
-#: ../lib/layouts/llncs.layout:57 ../lib/layouts/ltugboat.layout:70
-#: ../lib/layouts/paper.layout:54 ../lib/layouts/revtex.layout:55
-#: ../lib/layouts/revtex4.layout:58 ../lib/layouts/scrclass.inc:77
-#: ../lib/layouts/siamltex.layout:56 ../lib/layouts/stdsections.inc:88
-#: ../lib/layouts/svjour.inc:51 ../lib/layouts/ijmpd.layout:104
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:313
+#: ../../1.3.x/lib/layouts/aa.layout:46 ../../1.3.x/lib/layouts/aa.layout:249
+#: ../../1.3.x/lib/layouts/aapaper.layout:61
+#: ../../1.3.x/lib/layouts/aapaper.layout:124
+#: ../../1.3.x/lib/layouts/aastex.layout:70
+#: ../../1.3.x/lib/layouts/aastex.layout:154
+#: ../../1.3.x/lib/layouts/aguplus.inc:35
+#: ../../1.3.x/lib/layouts/amsart.layout:53
+#: ../../1.3.x/lib/layouts/amsbook.layout:54
+#: ../../1.3.x/lib/layouts/cv.layout:49
+#: ../../1.3.x/lib/layouts/db_stdsections.inc:32
+#: ../../1.3.x/lib/layouts/egs.layout:55
+#: ../../1.3.x/lib/layouts/kluwer.layout:64
+#: ../../1.3.x/lib/layouts/latex8.layout:46
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:94
+#: ../../1.3.x/lib/layouts/llncs.layout:57
+#: ../../1.3.x/lib/layouts/ltugboat.layout:70
+#: ../../1.3.x/lib/layouts/paper.layout:54
+#: ../../1.3.x/lib/layouts/revtex.layout:55
+#: ../../1.3.x/lib/layouts/revtex4.layout:58
+#: ../../1.3.x/lib/layouts/scrclass.inc:77
+#: ../../1.3.x/lib/layouts/siamltex.layout:56
+#: ../../1.3.x/lib/layouts/stdsections.inc:88
+#: ../../1.3.x/lib/layouts/svjour.inc:51
+#: ../../1.3.x/lib/layouts/ijmpd.layout:104
 msgid "Subsection"
 msgstr "Podrazdelek"
 
-#: ../lib/layouts/IEEEtran.layout:320 ../lib/layouts/aa.layout:48
-#: ../lib/layouts/aa.layout:261 ../lib/layouts/aapaper.layout:63
-#: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:72
-#: ../lib/layouts/aastex.layout:167 ../lib/layouts/amsart.layout:62
-#: ../lib/layouts/amsbook.layout:63 ../lib/layouts/db_stdsections.inc:39
-#: ../lib/layouts/kluwer.layout:73 ../lib/layouts/linuxdoc.layout:121
-#: ../lib/layouts/llncs.layout:66 ../lib/layouts/ltugboat.layout:93
-#: ../lib/layouts/paper.layout:62 ../lib/layouts/revtex.layout:64
-#: ../lib/layouts/revtex4.layout:67 ../lib/layouts/scrclass.inc:84
-#: ../lib/layouts/siamltex.layout:62 ../lib/layouts/stdsections.inc:113
-#: ../lib/layouts/svjour.inc:60 ../lib/layouts/ijmpd.layout:114
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:320
+#: ../../1.3.x/lib/layouts/aa.layout:48 ../../1.3.x/lib/layouts/aa.layout:261
+#: ../../1.3.x/lib/layouts/aapaper.layout:63
+#: ../../1.3.x/lib/layouts/aapaper.layout:135
+#: ../../1.3.x/lib/layouts/aastex.layout:72
+#: ../../1.3.x/lib/layouts/aastex.layout:167
+#: ../../1.3.x/lib/layouts/amsart.layout:62
+#: ../../1.3.x/lib/layouts/amsbook.layout:63
+#: ../../1.3.x/lib/layouts/db_stdsections.inc:39
+#: ../../1.3.x/lib/layouts/kluwer.layout:73
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:121
+#: ../../1.3.x/lib/layouts/llncs.layout:66
+#: ../../1.3.x/lib/layouts/ltugboat.layout:93
+#: ../../1.3.x/lib/layouts/paper.layout:62
+#: ../../1.3.x/lib/layouts/revtex.layout:64
+#: ../../1.3.x/lib/layouts/revtex4.layout:67
+#: ../../1.3.x/lib/layouts/scrclass.inc:84
+#: ../../1.3.x/lib/layouts/siamltex.layout:62
+#: ../../1.3.x/lib/layouts/stdsections.inc:113
+#: ../../1.3.x/lib/layouts/svjour.inc:60
+#: ../../1.3.x/lib/layouts/ijmpd.layout:114
 msgid "Subsubsection"
 msgstr "Podpodrazdelek"
 
-#: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/aguplus.inc:29
-#: ../lib/layouts/egs.layout:686 ../lib/layouts/siamltex.layout:78
-#: ../lib/layouts/spie.layout:33 ../lib/layouts/stdstarsections.inc:29
-#: ../lib/layouts/ijmpd.layout:95
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:327
+#: ../../1.3.x/lib/layouts/aguplus.inc:29
+#: ../../1.3.x/lib/layouts/egs.layout:686
+#: ../../1.3.x/lib/layouts/siamltex.layout:78
+#: ../../1.3.x/lib/layouts/spie.layout:33
+#: ../../1.3.x/lib/layouts/stdstarsections.inc:29
+#: ../../1.3.x/lib/layouts/ijmpd.layout:95
 msgid "Section*"
 msgstr "Razdelek*"
 
-#: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/aguplus.inc:41
-#: ../lib/layouts/egs.layout:709 ../lib/layouts/siamltex.layout:84
-#: ../lib/layouts/stdstarsections.inc:38
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:338
+#: ../../1.3.x/lib/layouts/aguplus.inc:41
+#: ../../1.3.x/lib/layouts/egs.layout:709
+#: ../../1.3.x/lib/layouts/siamltex.layout:84
+#: ../../1.3.x/lib/layouts/stdstarsections.inc:38
 msgid "Subsection*"
 msgstr "Podrazdelek*"
 
-#: ../lib/layouts/IEEEtran.layout:345 ../lib/layouts/siamltex.layout:90
-#: ../lib/layouts/stdstarsections.inc:47
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:345
+#: ../../1.3.x/lib/layouts/siamltex.layout:90
+#: ../../1.3.x/lib/layouts/stdstarsections.inc:47
 msgid "Subsubsection*"
 msgstr "Podpodrazdelek*"
 
-#: ../lib/layouts/IEEEtran.layout:358 ../lib/layouts/apa.layout:74
-#: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/db_stdstruct.inc:11
-#: ../lib/layouts/foils.layout:160 ../lib/layouts/heb-article.layout:20
-#: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
-#: ../lib/layouts/scrclass.inc:230 ../lib/layouts/siamltex.layout:134
-#: ../lib/layouts/spie.layout:74 ../lib/layouts/ijmpd.layout:75
-#: src/buffer.C:1504
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:358
+#: ../../1.3.x/lib/layouts/apa.layout:74
+#: ../../1.3.x/lib/layouts/cl2emult.layout:82
+#: ../../1.3.x/lib/layouts/db_stdstruct.inc:11
+#: ../../1.3.x/lib/layouts/foils.layout:160
+#: ../../1.3.x/lib/layouts/heb-article.layout:20
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:346
+#: ../../1.3.x/lib/layouts/paper.layout:132
+#: ../../1.3.x/lib/layouts/scrclass.inc:230
+#: ../../1.3.x/lib/layouts/siamltex.layout:134
+#: ../../1.3.x/lib/layouts/spie.layout:74
+#: ../../1.3.x/lib/layouts/ijmpd.layout:75 src/buffer.C:1505
 msgid "Abstract"
 msgstr "Povzetek"
 
-#: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:98
-#: ../lib/layouts/aastex.layout:256 ../lib/layouts/amsdefs.inc:241
-#: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
-#: ../lib/layouts/revtex4.layout:243 ../lib/layouts/siamltex.layout:159
-#: ../lib/layouts/spie.layout:42 ../lib/layouts/elsart.layout:59
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:382
+#: ../../1.3.x/lib/layouts/aastex.layout:98
+#: ../../1.3.x/lib/layouts/aastex.layout:256
+#: ../../1.3.x/lib/layouts/amsdefs.inc:241
+#: ../../1.3.x/lib/layouts/kluwer.layout:283
+#: ../../1.3.x/lib/layouts/paper.layout:165
+#: ../../1.3.x/lib/layouts/revtex4.layout:243
+#: ../../1.3.x/lib/layouts/siamltex.layout:159
+#: ../../1.3.x/lib/layouts/spie.layout:42
+#: ../../1.3.x/lib/layouts/elsart.layout:63
 msgid "Keywords"
 msgstr "Kljuène besede"
 
-#: ../lib/layouts/IEEEtran.layout:406 ../lib/layouts/aa.layout:78
-#: ../lib/layouts/aa.layout:338 ../lib/layouts/aapaper.layout:85
-#: ../lib/layouts/aapaper.layout:195 ../lib/layouts/aguplus.inc:157
-#: ../lib/layouts/amsdefs.inc:338 ../lib/layouts/book.layout:19
-#: ../lib/layouts/cl2emult.layout:105 ../lib/layouts/cv.layout:154
-#: ../lib/layouts/egs.layout:643 ../lib/layouts/foils.layout:224
-#: ../lib/layouts/latex8.layout:121 ../lib/layouts/llncs.layout:290
-#: ../lib/layouts/report.layout:12 ../lib/layouts/scrbook.layout:13
-#: ../lib/layouts/scrclass.inc:237 ../lib/layouts/scrreprt.layout:10
-#: ../lib/layouts/siamltex.layout:171 ../lib/layouts/stdstruct.inc:43
-#: ../lib/layouts/svjour.inc:353 ../lib/layouts/mwbk.layout:23
-#: ../lib/layouts/mwrep.layout:12 ../lib/layouts/ijmpd.layout:157
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:406
+#: ../../1.3.x/lib/layouts/aa.layout:78 ../../1.3.x/lib/layouts/aa.layout:338
+#: ../../1.3.x/lib/layouts/aapaper.layout:85
+#: ../../1.3.x/lib/layouts/aapaper.layout:195
+#: ../../1.3.x/lib/layouts/aguplus.inc:157
+#: ../../1.3.x/lib/layouts/amsdefs.inc:338
+#: ../../1.3.x/lib/layouts/book.layout:19
+#: ../../1.3.x/lib/layouts/cl2emult.layout:105
+#: ../../1.3.x/lib/layouts/cv.layout:154
+#: ../../1.3.x/lib/layouts/egs.layout:643
+#: ../../1.3.x/lib/layouts/foils.layout:224
+#: ../../1.3.x/lib/layouts/latex8.layout:121
+#: ../../1.3.x/lib/layouts/llncs.layout:290
+#: ../../1.3.x/lib/layouts/report.layout:12
+#: ../../1.3.x/lib/layouts/scrbook.layout:13
+#: ../../1.3.x/lib/layouts/scrclass.inc:237
+#: ../../1.3.x/lib/layouts/scrreprt.layout:10
+#: ../../1.3.x/lib/layouts/siamltex.layout:171
+#: ../../1.3.x/lib/layouts/stdstruct.inc:43
+#: ../../1.3.x/lib/layouts/svjour.inc:353
+#: ../../1.3.x/lib/layouts/mwbk.layout:23
+#: ../../1.3.x/lib/layouts/mwrep.layout:12
+#: ../../1.3.x/lib/layouts/memoir.layout:21
+#: ../../1.3.x/lib/layouts/ijmpd.layout:157
 #: src/frontends/qt2/QDocumentDialog.C:72
 msgid "Bibliography"
 msgstr "Literatura"
 
-#: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:102
-#: ../lib/layouts/aastex.layout:382 ../lib/layouts/kluwer.layout:324
-#: ../lib/layouts/ijmpd.layout:166
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:415
+#: ../../1.3.x/lib/layouts/aastex.layout:102
+#: ../../1.3.x/lib/layouts/aastex.layout:382
+#: ../../1.3.x/lib/layouts/kluwer.layout:324
+#: ../../1.3.x/lib/layouts/ijmpd.layout:166
 msgid "Appendix"
 msgstr "Dodatek"
 
-#: ../lib/layouts/IEEEtran.layout:438
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:438
 msgid "Appendices"
 msgstr "Dodatki"
 
-#: ../lib/layouts/IEEEtran.layout:461
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:461
 msgid "Biography"
 msgstr "Biografija"
 
-#: ../lib/layouts/IEEEtran.layout:476 ../lib/layouts/aa.layout:58
-#: ../lib/layouts/aa.layout:218 ../lib/layouts/aapaper.layout:55
-#: ../lib/layouts/aastex.layout:114 ../lib/layouts/aastex.layout:499
-#: ../lib/layouts/db_stdlayouts.inc:45 ../lib/layouts/egs.layout:667
-#: ../lib/layouts/latex8.layout:115 ../lib/layouts/stdlayouts.inc:84
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:476
+#: ../../1.3.x/lib/layouts/aa.layout:58 ../../1.3.x/lib/layouts/aa.layout:218
+#: ../../1.3.x/lib/layouts/aapaper.layout:55
+#: ../../1.3.x/lib/layouts/aastex.layout:114
+#: ../../1.3.x/lib/layouts/aastex.layout:499
+#: ../../1.3.x/lib/layouts/db_stdlayouts.inc:45
+#: ../../1.3.x/lib/layouts/egs.layout:667
+#: ../../1.3.x/lib/layouts/latex8.layout:115
+#: ../../1.3.x/lib/layouts/stdlayouts.inc:84
 msgid "Caption"
 msgstr "Pojasnilo"
 
-#: ../lib/layouts/IEEEtran.layout:482
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:482
 msgid "Footernote"
 msgstr "OpombaPodÈrto"
 
-#: ../lib/layouts/IEEEtran.layout:505
+#: ../../1.3.x/lib/layouts/IEEEtran.layout:505
 msgid "MarkBoth"
 msgstr "OznaèiOboje"
 
-#: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
-#: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:262
-#: ../lib/layouts/cv.layout:86 ../lib/layouts/db_stdlists.inc:11
-#: ../lib/layouts/egs.layout:200 ../lib/layouts/linuxdoc.layout:211
-#: ../lib/layouts/manpage.layout:86 ../lib/layouts/stdlists.inc:9
+#: ../../1.3.x/lib/layouts/aa.layout:50
+#: ../../1.3.x/lib/layouts/aapaper.layout:47
+#: ../../1.3.x/lib/layouts/aastex.layout:76
+#: ../../1.3.x/lib/layouts/apa.layout:262 ../../1.3.x/lib/layouts/cv.layout:86
+#: ../../1.3.x/lib/layouts/db_stdlists.inc:11
+#: ../../1.3.x/lib/layouts/egs.layout:200
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:211
+#: ../../1.3.x/lib/layouts/manpage.layout:86
+#: ../../1.3.x/lib/layouts/stdlists.inc:9
 msgid "Itemize"
 msgstr "Alineje"
 
-#: ../lib/layouts/aa.layout:52 ../lib/layouts/aapaper.layout:49
-#: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:280
-#: ../lib/layouts/db_stdlists.inc:17 ../lib/layouts/egs.layout:182
-#: ../lib/layouts/linuxdoc.layout:195 ../lib/layouts/manpage.layout:69
-#: ../lib/layouts/stdlists.inc:27
+#: ../../1.3.x/lib/layouts/aa.layout:52
+#: ../../1.3.x/lib/layouts/aapaper.layout:49
+#: ../../1.3.x/lib/layouts/aastex.layout:78
+#: ../../1.3.x/lib/layouts/apa.layout:280
+#: ../../1.3.x/lib/layouts/db_stdlists.inc:17
+#: ../../1.3.x/lib/layouts/egs.layout:182
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:195
+#: ../../1.3.x/lib/layouts/manpage.layout:69
+#: ../../1.3.x/lib/layouts/stdlists.inc:27
 msgid "Enumerate"
 msgstr "O¹tevilèi"
 
-#: ../lib/layouts/aa.layout:54 ../lib/layouts/aapaper.layout:51
-#: ../lib/layouts/aastex.layout:80 ../lib/layouts/db_stdlists.inc:23
-#: ../lib/layouts/egs.layout:218 ../lib/layouts/hollywood.layout:131
-#: ../lib/layouts/linuxdoc.layout:228 ../lib/layouts/manpage.layout:104
-#: ../lib/layouts/paper.layout:102 ../lib/layouts/scrclass.inc:25
-#: ../lib/layouts/scrlettr.layout:16 ../lib/layouts/stdlists.inc:45
-#: ../lib/layouts/scrlttr2.layout:16
+#: ../../1.3.x/lib/layouts/aa.layout:54
+#: ../../1.3.x/lib/layouts/aapaper.layout:51
+#: ../../1.3.x/lib/layouts/aastex.layout:80
+#: ../../1.3.x/lib/layouts/db_stdlists.inc:23
+#: ../../1.3.x/lib/layouts/egs.layout:218
+#: ../../1.3.x/lib/layouts/hollywood.layout:131
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:228
+#: ../../1.3.x/lib/layouts/manpage.layout:104
+#: ../../1.3.x/lib/layouts/paper.layout:102
+#: ../../1.3.x/lib/layouts/scrclass.inc:25
+#: ../../1.3.x/lib/layouts/scrlettr.layout:16
+#: ../../1.3.x/lib/layouts/stdlists.inc:45
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:16
 msgid "Description"
 msgstr "Opis"
 
-#: ../lib/layouts/aa.layout:56 ../lib/layouts/aapaper.layout:53
-#: ../lib/layouts/aastex.layout:82 ../lib/layouts/egs.layout:165
-#: ../lib/layouts/scrmacros.inc:6 ../lib/layouts/stdlists.inc:69
+#: ../../1.3.x/lib/layouts/aa.layout:56
+#: ../../1.3.x/lib/layouts/aapaper.layout:53
+#: ../../1.3.x/lib/layouts/aastex.layout:82
+#: ../../1.3.x/lib/layouts/egs.layout:165
+#: ../../1.3.x/lib/layouts/scrmacros.inc:6
+#: ../../1.3.x/lib/layouts/stdlists.inc:69
 msgid "List"
 msgstr "Seznam"
 
-#: ../lib/layouts/aa.layout:60 ../lib/layouts/aa.layout:271
-#: ../lib/layouts/aapaper.layout:65 ../lib/layouts/aapaper.layout:145
-#: ../lib/layouts/aastex.layout:84 ../lib/layouts/aastex.layout:181
-#: ../lib/layouts/amsdefs.inc:65 ../lib/layouts/apa.layout:45
-#: ../lib/layouts/broadway.layout:190 ../lib/layouts/cl2emult.layout:42
-#: ../lib/layouts/cv.layout:130 ../lib/layouts/db_stdtitle.inc:11
-#: ../lib/layouts/docbook-book.layout:13
-#: ../lib/layouts/docbook-chapter.layout:12
-#: ../lib/layouts/docbook-section.layout:12 ../lib/layouts/egs.layout:286
-#: ../lib/layouts/entcs.layout:13 ../lib/layouts/foils.layout:138
-#: ../lib/layouts/hollywood.layout:336 ../lib/layouts/kluwer.layout:105
-#: ../lib/layouts/latex8.layout:32 ../lib/layouts/linuxdoc.layout:40
-#: ../lib/layouts/llncs.layout:107 ../lib/layouts/ltugboat.layout:151
-#: ../lib/layouts/paper.layout:110 ../lib/layouts/revtex.layout:104
-#: ../lib/layouts/revtex4.layout:120 ../lib/layouts/scrclass.inc:158
-#: ../lib/layouts/scrlettr.layout:204 ../lib/layouts/siamltex.layout:103
-#: ../lib/layouts/stdtitle.inc:11 ../lib/layouts/svjour.inc:138
-#: ../lib/layouts/svprobth.layout:37 ../lib/layouts/scrlttr2.layout:281
-#: ../lib/layouts/elsart.layout:90 ../lib/layouts/ijmpd.layout:39
+#: ../../1.3.x/lib/layouts/aa.layout:60 ../../1.3.x/lib/layouts/aa.layout:271
+#: ../../1.3.x/lib/layouts/aapaper.layout:65
+#: ../../1.3.x/lib/layouts/aapaper.layout:145
+#: ../../1.3.x/lib/layouts/aastex.layout:84
+#: ../../1.3.x/lib/layouts/aastex.layout:181
+#: ../../1.3.x/lib/layouts/amsdefs.inc:65
+#: ../../1.3.x/lib/layouts/apa.layout:45
+#: ../../1.3.x/lib/layouts/broadway.layout:190
+#: ../../1.3.x/lib/layouts/cl2emult.layout:42
+#: ../../1.3.x/lib/layouts/cv.layout:130
+#: ../../1.3.x/lib/layouts/db_stdtitle.inc:11
+#: ../../1.3.x/lib/layouts/docbook-book.layout:13
+#: ../../1.3.x/lib/layouts/docbook-chapter.layout:12
+#: ../../1.3.x/lib/layouts/docbook-section.layout:12
+#: ../../1.3.x/lib/layouts/egs.layout:286
+#: ../../1.3.x/lib/layouts/entcs.layout:13
+#: ../../1.3.x/lib/layouts/foils.layout:138
+#: ../../1.3.x/lib/layouts/hollywood.layout:336
+#: ../../1.3.x/lib/layouts/kluwer.layout:105
+#: ../../1.3.x/lib/layouts/latex8.layout:32
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:40
+#: ../../1.3.x/lib/layouts/llncs.layout:107
+#: ../../1.3.x/lib/layouts/ltugboat.layout:151
+#: ../../1.3.x/lib/layouts/paper.layout:110
+#: ../../1.3.x/lib/layouts/revtex.layout:104
+#: ../../1.3.x/lib/layouts/revtex4.layout:120
+#: ../../1.3.x/lib/layouts/scrclass.inc:158
+#: ../../1.3.x/lib/layouts/scrlettr.layout:204
+#: ../../1.3.x/lib/layouts/siamltex.layout:103
+#: ../../1.3.x/lib/layouts/stdtitle.inc:11
+#: ../../1.3.x/lib/layouts/svjour.inc:138
+#: ../../1.3.x/lib/layouts/svprobth.layout:37
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:281
+#: ../../1.3.x/lib/layouts/elsart.layout:94
+#: ../../1.3.x/lib/layouts/ijmpd.layout:39
 msgid "Title"
 msgstr "Naslov"
 
-#: ../lib/layouts/aa.layout:62 ../lib/layouts/aa.layout:101
-#: ../lib/layouts/aapaper.inc:8 ../lib/layouts/aapaper.layout:67
-#: ../lib/layouts/kluwer.layout:123 ../lib/layouts/llncs.layout:133
-#: ../lib/layouts/svjour.inc:164 ../lib/layouts/svprobth.layout:47
+#: ../../1.3.x/lib/layouts/aa.layout:62 ../../1.3.x/lib/layouts/aa.layout:101
+#: ../../1.3.x/lib/layouts/aapaper.inc:8
+#: ../../1.3.x/lib/layouts/aapaper.layout:67
+#: ../../1.3.x/lib/layouts/kluwer.layout:123
+#: ../../1.3.x/lib/layouts/llncs.layout:133
+#: ../../1.3.x/lib/layouts/svjour.inc:164
+#: ../../1.3.x/lib/layouts/svprobth.layout:47
 msgid "Subtitle"
 msgstr "Podnaslov"
 
-#: ../lib/layouts/aa.layout:64 ../lib/layouts/aa.layout:283
-#: ../lib/layouts/aapaper.layout:69 ../lib/layouts/aapaper.layout:156
-#: ../lib/layouts/aastex.layout:86 ../lib/layouts/aastex.layout:194
-#: ../lib/layouts/amsdefs.inc:88 ../lib/layouts/apa.layout:116
-#: ../lib/layouts/broadway.layout:203 ../lib/layouts/cl2emult.layout:59
-#: ../lib/layouts/db_stdtitle.inc:18 ../lib/layouts/egs.layout:336
-#: ../lib/layouts/entcs.layout:22 ../lib/layouts/foils.layout:146
-#: ../lib/layouts/hollywood.layout:323 ../lib/layouts/kluwer.layout:161
-#: ../lib/layouts/linuxdoc.layout:296 ../lib/layouts/llncs.layout:193
-#: ../lib/layouts/ltugboat.layout:172 ../lib/layouts/paper.layout:121
-#: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:130
-#: ../lib/layouts/scrclass.inc:166 ../lib/layouts/siamltex.layout:119
-#: ../lib/layouts/stdtitle.inc:33 ../lib/layouts/svjour.inc:197
-#: ../lib/layouts/svprobth.layout:57 ../lib/layouts/elsart.layout:111
-#: ../lib/layouts/ijmpd.layout:48
+#: ../../1.3.x/lib/layouts/aa.layout:64 ../../1.3.x/lib/layouts/aa.layout:283
+#: ../../1.3.x/lib/layouts/aapaper.layout:69
+#: ../../1.3.x/lib/layouts/aapaper.layout:156
+#: ../../1.3.x/lib/layouts/aastex.layout:86
+#: ../../1.3.x/lib/layouts/aastex.layout:194
+#: ../../1.3.x/lib/layouts/amsdefs.inc:88
+#: ../../1.3.x/lib/layouts/apa.layout:116
+#: ../../1.3.x/lib/layouts/broadway.layout:203
+#: ../../1.3.x/lib/layouts/cl2emult.layout:59
+#: ../../1.3.x/lib/layouts/db_stdtitle.inc:18
+#: ../../1.3.x/lib/layouts/egs.layout:336
+#: ../../1.3.x/lib/layouts/entcs.layout:22
+#: ../../1.3.x/lib/layouts/foils.layout:146
+#: ../../1.3.x/lib/layouts/hollywood.layout:323
+#: ../../1.3.x/lib/layouts/kluwer.layout:161
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:296
+#: ../../1.3.x/lib/layouts/llncs.layout:193
+#: ../../1.3.x/lib/layouts/ltugboat.layout:172
+#: ../../1.3.x/lib/layouts/paper.layout:121
+#: ../../1.3.x/lib/layouts/revtex.layout:114
+#: ../../1.3.x/lib/layouts/revtex4.layout:130
+#: ../../1.3.x/lib/layouts/scrclass.inc:166
+#: ../../1.3.x/lib/layouts/siamltex.layout:119
+#: ../../1.3.x/lib/layouts/stdtitle.inc:33
+#: ../../1.3.x/lib/layouts/svjour.inc:197
+#: ../../1.3.x/lib/layouts/svprobth.layout:57
+#: ../../1.3.x/lib/layouts/elsart.layout:115
+#: ../../1.3.x/lib/layouts/ijmpd.layout:48
 msgid "Author"
 msgstr "Avtor"
 
-#: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
-#: ../lib/layouts/aapaper.inc:31 ../lib/layouts/aapaper.layout:71
-#: ../lib/layouts/amsdefs.inc:167 ../lib/layouts/egs.layout:273
-#: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/kluwer.layout:179 ../lib/layouts/lyxmacros.inc:78
-#: ../lib/layouts/revtex.layout:135 ../lib/layouts/revtex4.layout:170
-#: ../lib/layouts/scrlettr.layout:155 ../lib/layouts/scrlttr2.layout:48
-#: ../lib/layouts/ijmpd.layout:58
+#: ../../1.3.x/lib/layouts/aa.layout:66 ../../1.3.x/lib/layouts/aa.layout:124
+#: ../../1.3.x/lib/layouts/aapaper.inc:31
+#: ../../1.3.x/lib/layouts/aapaper.layout:71
+#: ../../1.3.x/lib/layouts/amsdefs.inc:167
+#: ../../1.3.x/lib/layouts/egs.layout:273
+#: ../../1.3.x/lib/layouts/entcs.layout:31
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:452
+#: ../../1.3.x/lib/layouts/kluwer.layout:179
+#: ../../1.3.x/lib/layouts/lyxmacros.inc:78
+#: ../../1.3.x/lib/layouts/revtex.layout:135
+#: ../../1.3.x/lib/layouts/revtex4.layout:170
+#: ../../1.3.x/lib/layouts/scrlettr.layout:155
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:48
+#: ../../1.3.x/lib/layouts/ijmpd.layout:58
 msgid "Address"
 msgstr "Naslov"
 
-#: ../lib/layouts/aa.layout:68 ../lib/layouts/aa.layout:142
-#: ../lib/layouts/aapaper.inc:68 ../lib/layouts/aapaper.layout:75
+#: ../../1.3.x/lib/layouts/aa.layout:68 ../../1.3.x/lib/layouts/aa.layout:142
+#: ../../1.3.x/lib/layouts/aapaper.inc:68
+#: ../../1.3.x/lib/layouts/aapaper.layout:75
 msgid "Offprint"
 msgstr ""
 
-#: ../lib/layouts/aa.layout:70 ../lib/layouts/aa.layout:166
-#: ../lib/layouts/svjour.inc:257
+#: ../../1.3.x/lib/layouts/aa.layout:70 ../../1.3.x/lib/layouts/aa.layout:166
+#: ../../1.3.x/lib/layouts/svjour.inc:257
 msgid "Mail"
 msgstr "Po¹ta"
 
-#: ../lib/layouts/aa.layout:72 ../lib/layouts/aa.layout:295
-#: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
-#: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
-#: ../lib/layouts/amsdefs.inc:111 ../lib/layouts/db_stdtitle.inc:57
-#: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/kluwer.layout:144
-#: ../lib/layouts/linuxdoc.layout:321 ../lib/layouts/revtex.layout:123
-#: ../lib/layouts/revtex4.layout:139 ../lib/layouts/scrclass.inc:173
-#: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/siamltex.layout:129
-#: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:250
-#: ../lib/layouts/scrlttr2.layout:249
+#: ../../1.3.x/lib/layouts/aa.layout:72 ../../1.3.x/lib/layouts/aa.layout:295
+#: ../../1.3.x/lib/layouts/aapaper.layout:79
+#: ../../1.3.x/lib/layouts/aapaper.layout:167
+#: ../../1.3.x/lib/layouts/aastex.layout:94
+#: ../../1.3.x/lib/layouts/aastex.layout:207
+#: ../../1.3.x/lib/layouts/amsdefs.inc:111
+#: ../../1.3.x/lib/layouts/db_stdtitle.inc:57
+#: ../../1.3.x/lib/layouts/egs.layout:548
+#: ../../1.3.x/lib/layouts/foils.layout:153
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:474
+#: ../../1.3.x/lib/layouts/kluwer.layout:144
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:321
+#: ../../1.3.x/lib/layouts/revtex.layout:123
+#: ../../1.3.x/lib/layouts/revtex4.layout:139
+#: ../../1.3.x/lib/layouts/scrclass.inc:173
+#: ../../1.3.x/lib/layouts/scrlettr.layout:176
+#: ../../1.3.x/lib/layouts/siamltex.layout:129
+#: ../../1.3.x/lib/layouts/stdtitle.inc:55
+#: ../../1.3.x/lib/layouts/svjour.inc:250
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:249
 msgid "Date"
 msgstr "Datum"
 
-#: ../lib/layouts/aa.layout:74 ../lib/layouts/aa.layout:307
-#: ../lib/layouts/aapaper.layout:81 ../lib/layouts/aapaper.layout:178
-#: ../lib/layouts/aastex.layout:96 ../lib/layouts/aastex.layout:219
-#: ../lib/layouts/amsdefs.inc:138 ../lib/layouts/egs.layout:565
-#: ../lib/layouts/entcs.layout:56 ../lib/layouts/kluwer.layout:259
-#: ../lib/layouts/latex8.layout:98 ../lib/layouts/llncs.layout:265
-#: ../lib/layouts/ltugboat.layout:190 ../lib/layouts/revtex.layout:154
-#: ../lib/layouts/revtex4.layout:205 ../lib/layouts/stdstruct.inc:12
-#: ../lib/layouts/svjog.layout:32 ../lib/layouts/svjour.inc:272
-#: ../lib/layouts/elsart.layout:198
+#: ../../1.3.x/lib/layouts/aa.layout:74 ../../1.3.x/lib/layouts/aa.layout:307
+#: ../../1.3.x/lib/layouts/aapaper.layout:81
+#: ../../1.3.x/lib/layouts/aapaper.layout:178
+#: ../../1.3.x/lib/layouts/aastex.layout:96
+#: ../../1.3.x/lib/layouts/aastex.layout:219
+#: ../../1.3.x/lib/layouts/amsdefs.inc:138
+#: ../../1.3.x/lib/layouts/egs.layout:565
+#: ../../1.3.x/lib/layouts/entcs.layout:56
+#: ../../1.3.x/lib/layouts/kluwer.layout:259
+#: ../../1.3.x/lib/layouts/latex8.layout:98
+#: ../../1.3.x/lib/layouts/llncs.layout:265
+#: ../../1.3.x/lib/layouts/ltugboat.layout:190
+#: ../../1.3.x/lib/layouts/revtex.layout:154
+#: ../../1.3.x/lib/layouts/revtex4.layout:205
+#: ../../1.3.x/lib/layouts/stdstruct.inc:12
+#: ../../1.3.x/lib/layouts/svjog.layout:32
+#: ../../1.3.x/lib/layouts/svjour.inc:272
+#: ../../1.3.x/lib/layouts/elsart.layout:202
 #, fuzzy
 msgid "Abstract "
 msgstr "Povzetek"
 
-#: ../lib/layouts/aa.layout:76 ../lib/layouts/aa.layout:191
-#: ../lib/layouts/aapaper.inc:87 ../lib/layouts/aapaper.layout:83
-#: ../lib/layouts/amsmaths-plain.inc:243 ../lib/layouts/amsmaths-seq.inc:184
-#: ../lib/layouts/amsmaths.inc:462 ../lib/layouts/egs.layout:615
-#: ../lib/layouts/svjour.inc:345 ../lib/layouts/elsart.layout:461
+#: ../../1.3.x/lib/layouts/aa.layout:76 ../../1.3.x/lib/layouts/aa.layout:191
+#: ../../1.3.x/lib/layouts/aapaper.inc:87
+#: ../../1.3.x/lib/layouts/aapaper.layout:83
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:243
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:184
+#: ../../1.3.x/lib/layouts/amsmaths.inc:462
+#: ../../1.3.x/lib/layouts/egs.layout:615
+#: ../../1.3.x/lib/layouts/svjour.inc:345
+#: ../../1.3.x/lib/layouts/elsart.layout:498
 msgid "Acknowledgement"
 msgstr "Priznanje"
 
-#: ../lib/layouts/aapaper.inc:49 ../lib/layouts/aapaper.layout:73
-#: ../lib/layouts/aastex.layout:90 ../lib/layouts/aastex.layout:282
-#: ../lib/layouts/amsdefs.inc:205 ../lib/layouts/latex8.layout:53
-#: ../lib/layouts/llncs.layout:257
+#: ../../1.3.x/lib/layouts/aapaper.inc:49
+#: ../../1.3.x/lib/layouts/aapaper.layout:73
+#: ../../1.3.x/lib/layouts/aastex.layout:90
+#: ../../1.3.x/lib/layouts/aastex.layout:282
+#: ../../1.3.x/lib/layouts/amsdefs.inc:205
+#: ../../1.3.x/lib/layouts/latex8.layout:53
+#: ../../1.3.x/lib/layouts/llncs.layout:257
 msgid "Email"
 msgstr "Enaslov"
 
-#: ../lib/layouts/aapaper.layout:57 ../lib/layouts/egs.layout:726
-#: ../lib/layouts/obsolete.inc:14 src/frontends/qt2/QPrefsDialog.C:146
+#: ../../1.3.x/lib/layouts/aapaper.layout:57
+#: ../../1.3.x/lib/layouts/egs.layout:726
+#: ../../1.3.x/lib/layouts/obsolete.inc:14
+#: src/frontends/qt2/QPrefsDialog.C:146
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: ../lib/layouts/aastex.layout:74 ../lib/layouts/aguplus.inc:48
-#: ../lib/layouts/db_stdsections.inc:46 ../lib/layouts/egs.layout:76
-#: ../lib/layouts/kluwer.layout:82 ../lib/layouts/linuxdoc.layout:146
-#: ../lib/layouts/llncs.layout:75 ../lib/layouts/ltugboat.layout:117
-#: ../lib/layouts/paper.layout:70 ../lib/layouts/revtex.layout:73
-#: ../lib/layouts/revtex4.layout:76 ../lib/layouts/scrclass.inc:91
-#: ../lib/layouts/siamltex.layout:68 ../lib/layouts/stdsections.inc:138
-#: ../lib/layouts/svjour.inc:70
+#: ../../1.3.x/lib/layouts/aastex.layout:74
+#: ../../1.3.x/lib/layouts/aguplus.inc:48
+#: ../../1.3.x/lib/layouts/db_stdsections.inc:46
+#: ../../1.3.x/lib/layouts/egs.layout:76
+#: ../../1.3.x/lib/layouts/kluwer.layout:82
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:146
+#: ../../1.3.x/lib/layouts/llncs.layout:75
+#: ../../1.3.x/lib/layouts/ltugboat.layout:117
+#: ../../1.3.x/lib/layouts/paper.layout:70
+#: ../../1.3.x/lib/layouts/revtex.layout:73
+#: ../../1.3.x/lib/layouts/revtex4.layout:76
+#: ../../1.3.x/lib/layouts/scrclass.inc:91
+#: ../../1.3.x/lib/layouts/siamltex.layout:68
+#: ../../1.3.x/lib/layouts/stdsections.inc:138
+#: ../../1.3.x/lib/layouts/svjour.inc:70
 msgid "Paragraph"
 msgstr "Odstavek"
 
-#: ../lib/layouts/aastex.layout:88 ../lib/layouts/aastex.layout:238
-#: ../lib/layouts/apa.layout:148 ../lib/layouts/latex8.layout:78
-#: ../lib/layouts/revtex4.layout:150
+#: ../../1.3.x/lib/layouts/aastex.layout:88
+#: ../../1.3.x/lib/layouts/aastex.layout:238
+#: ../../1.3.x/lib/layouts/apa.layout:148
+#: ../../1.3.x/lib/layouts/latex8.layout:78
+#: ../../1.3.x/lib/layouts/revtex4.layout:150
 msgid "Affiliation"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:92 ../lib/layouts/aastex.layout:322
+#: ../../1.3.x/lib/layouts/aastex.layout:92
+#: ../../1.3.x/lib/layouts/aastex.layout:322
 msgid "And"
 msgstr "in"
 
-#: ../lib/layouts/aastex.layout:100 ../lib/layouts/aastex.layout:300
-#: ../lib/layouts/egs.layout:588 ../lib/layouts/kluwer.layout:303
-#: ../lib/layouts/svjour.inc:318
+#: ../../1.3.x/lib/layouts/aastex.layout:100
+#: ../../1.3.x/lib/layouts/aastex.layout:300
+#: ../../1.3.x/lib/layouts/egs.layout:588
+#: ../../1.3.x/lib/layouts/kluwer.layout:303
+#: ../../1.3.x/lib/layouts/svjour.inc:318
 msgid "Acknowledgements"
 msgstr "Priznanja"
 
-#: ../lib/layouts/aastex.layout:104 ../lib/layouts/aastex.layout:415
-#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1515
+#: ../../1.3.x/lib/layouts/aastex.layout:104
+#: ../../1.3.x/lib/layouts/aastex.layout:415
+#: ../../1.3.x/lib/layouts/kluwer.layout:345 src/buffer.C:1516
 msgid "References"
 msgstr "Sklici"
 
-#: ../lib/layouts/aastex.layout:106 ../lib/layouts/aastex.layout:342
+#: ../../1.3.x/lib/layouts/aastex.layout:106
+#: ../../1.3.x/lib/layouts/aastex.layout:342
 msgid "PlaceFigure"
 msgstr "UmestiSliko"
 
-#: ../lib/layouts/aastex.layout:108 ../lib/layouts/aastex.layout:362
+#: ../../1.3.x/lib/layouts/aastex.layout:108
+#: ../../1.3.x/lib/layouts/aastex.layout:362
 msgid "PlaceTable"
 msgstr "UmestiTabelo"
 
-#: ../lib/layouts/aastex.layout:110 ../lib/layouts/aastex.layout:480
+#: ../../1.3.x/lib/layouts/aastex.layout:110
+#: ../../1.3.x/lib/layouts/aastex.layout:480
 msgid "TableComments"
 msgstr "VsebinskoKazalo"
 
-#: ../lib/layouts/aastex.layout:112 ../lib/layouts/aastex.layout:461
+#: ../../1.3.x/lib/layouts/aastex.layout:112
+#: ../../1.3.x/lib/layouts/aastex.layout:461
 msgid "TableRefs"
 msgstr "TabelaSklicev"
 
-#: ../lib/layouts/aastex.layout:116 ../lib/layouts/aastex.layout:403
+#: ../../1.3.x/lib/layouts/aastex.layout:116
+#: ../../1.3.x/lib/layouts/aastex.layout:403
 msgid "MathLetters"
 msgstr "MatematièneÈrke"
 
-#: ../lib/layouts/aastex.layout:118 ../lib/layouts/aastex.layout:441
+#: ../../1.3.x/lib/layouts/aastex.layout:118
+#: ../../1.3.x/lib/layouts/aastex.layout:441
 msgid "NoteToEditor"
 msgstr "OpombaUredniku"
 
-#: ../lib/layouts/aastex.layout:519
+#: ../../1.3.x/lib/layouts/aastex.layout:519
 msgid "FigCaption"
 msgstr "PojasniloSlike"
 
-#: ../lib/layouts/aguplus.inc:53 ../lib/layouts/siamltex.layout:96
-#: ../lib/layouts/stdstarsections.inc:56
+#: ../../1.3.x/lib/layouts/aguplus.inc:53
+#: ../../1.3.x/lib/layouts/siamltex.layout:96
+#: ../../1.3.x/lib/layouts/stdstarsections.inc:56
 msgid "Paragraph*"
 msgstr "Odstavek*"
 
-#: ../lib/layouts/aguplus.inc:67 ../lib/layouts/cv.layout:104
-#: ../lib/layouts/foils.layout:200
+#: ../../1.3.x/lib/layouts/aguplus.inc:67
+#: ../../1.3.x/lib/layouts/cv.layout:104
+#: ../../1.3.x/lib/layouts/foils.layout:200
 #, fuzzy
 msgid "Left_Header"
 msgstr "Glava"
 
-#: ../lib/layouts/aguplus.inc:93 ../lib/layouts/cv.layout:123
-#: ../lib/layouts/foils.layout:208
+#: ../../1.3.x/lib/layouts/aguplus.inc:93
+#: ../../1.3.x/lib/layouts/cv.layout:123
+#: ../../1.3.x/lib/layouts/foils.layout:208
 #, fuzzy
 msgid "Right_Header"
 msgstr "DesnaGlava"
 
-#: ../lib/layouts/aguplus.inc:100 ../lib/layouts/egs.layout:468
+#: ../../1.3.x/lib/layouts/aguplus.inc:100
+#: ../../1.3.x/lib/layouts/egs.layout:468
 msgid "Received"
 msgstr "Prejeto"
 
-#: ../lib/layouts/aguplus.inc:107
+#: ../../1.3.x/lib/layouts/aguplus.inc:107
 #, fuzzy
 msgid "Revised"
 msgstr "Ref: "
 
-#: ../lib/layouts/aguplus.inc:114 ../lib/layouts/egs.layout:494
+#: ../../1.3.x/lib/layouts/aguplus.inc:114
+#: ../../1.3.x/lib/layouts/egs.layout:494
 msgid "Accepted"
 msgstr "Sprejeto"
 
-#: ../lib/layouts/aguplus.inc:121
+#: ../../1.3.x/lib/layouts/aguplus.inc:121
 #, fuzzy
 msgid "CCC"
 msgstr "CC"
 
-#: ../lib/layouts/aguplus.inc:134
+#: ../../1.3.x/lib/layouts/aguplus.inc:134
 #, fuzzy
 msgid "PaperId"
 msgstr "Papir"
 
-#: ../lib/layouts/aguplus.inc:141
+#: ../../1.3.x/lib/layouts/aguplus.inc:141
 #, fuzzy
 msgid "AuthorAddr"
 msgstr "Avtor"
 
-#: ../lib/layouts/aguplus.inc:148
+#: ../../1.3.x/lib/layouts/aguplus.inc:148
 #, fuzzy
 msgid "SlugComment"
 msgstr "Komentar"
 
-#: ../lib/layouts/aguplus.inc:171
+#: ../../1.3.x/lib/layouts/aguplus.inc:171
 #, fuzzy
 msgid "Plate"
 msgstr "Umesti"
 
-#: ../lib/layouts/aguplus.inc:181
+#: ../../1.3.x/lib/layouts/aguplus.inc:181
 #, fuzzy
 msgid "Planotable"
 msgstr "UmestiTabelo"
 
-#: ../lib/layouts/aguplus.inc:192
+#: ../../1.3.x/lib/layouts/aguplus.inc:192
 #, fuzzy
 msgid "Table_Caption"
 msgstr "Pojasnilo"
 
-#: ../lib/layouts/amsbook.layout:103
+#: ../../1.3.x/lib/layouts/amsbook.layout:103
 msgid "Chapter_Exercises"
 msgstr "Poglavje_Vaje"
 
-#: ../lib/layouts/amsdefs.inc:186
+#: ../../1.3.x/lib/layouts/amsdefs.inc:186
 msgid "Current_Address"
 msgstr "Trenutni_naslov"
 
-#: ../lib/layouts/amsdefs.inc:260 ../lib/layouts/revtex4.layout:176
-#: ../lib/layouts/elsart.layout:185
+#: ../../1.3.x/lib/layouts/amsdefs.inc:260
+#: ../../1.3.x/lib/layouts/revtex4.layout:176
+#: ../../1.3.x/lib/layouts/elsart.layout:189
 msgid "Thanks"
 msgstr "Zahvala"
 
-#: ../lib/layouts/amsdefs.inc:279
+#: ../../1.3.x/lib/layouts/amsdefs.inc:279
 msgid "Dedicatory"
 msgstr "Posveèeno"
 
-#: ../lib/layouts/amsdefs.inc:299
+#: ../../1.3.x/lib/layouts/amsdefs.inc:299
 msgid "Translator"
 msgstr "Prevajalec"
 
-#: ../lib/layouts/amsdefs.inc:318
+#: ../../1.3.x/lib/layouts/amsdefs.inc:318
 msgid "Subjectclass"
 msgstr "Razredpredmeta"
 
-#: ../lib/layouts/amsmaths-plain.inc:98 ../lib/layouts/amsmaths-seq.inc:80
-#: ../lib/layouts/amsmaths.inc:212 ../lib/layouts/stdfloats.inc:31
-#: ../lib/layouts/elsart.layout:338
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:98
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:80
+#: ../../1.3.x/lib/layouts/amsmaths.inc:212
+#: ../../1.3.x/lib/layouts/stdfloats.inc:31
+#: ../../1.3.x/lib/layouts/elsart.layout:375
 msgid "Algorithm"
 msgstr "Algoritem"
 
-#: ../lib/layouts/amsmaths-plain.inc:231 ../lib/layouts/amsmaths-seq.inc:176
-#: ../lib/layouts/amsmaths.inc:450 ../lib/layouts/elsart.layout:433
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:231
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:176
+#: ../../1.3.x/lib/layouts/amsmaths.inc:450
+#: ../../1.3.x/lib/layouts/elsart.layout:470
 msgid "Summary"
 msgstr "Povzetek"
 
-#: ../lib/layouts/amsmaths-plain.inc:267 ../lib/layouts/amsmaths-seq.inc:200
-#: ../lib/layouts/amsmaths.inc:497
+#: ../../1.3.x/lib/layouts/amsmaths-plain.inc:267
+#: ../../1.3.x/lib/layouts/amsmaths-seq.inc:200
+#: ../../1.3.x/lib/layouts/amsmaths.inc:497
 msgid "Conclusion"
 msgstr "Sklep"
 
-#: ../lib/layouts/amsmaths.inc:50
+#: ../../1.3.x/lib/layouts/amsmaths.inc:50
 #, fuzzy
 msgid "TheoremStyle"
 msgstr "Izrek"
 
-#: ../lib/layouts/amsmaths.inc:93 ../lib/layouts/foils.layout:320
-#: ../lib/layouts/siamltex.layout:249
+#: ../../1.3.x/lib/layouts/amsmaths.inc:93
+#: ../../1.3.x/lib/layouts/foils.layout:320
+#: ../../1.3.x/lib/layouts/siamltex.layout:249
 msgid "Theorem*"
 msgstr "Izrek*"
 
-#: ../lib/layouts/amsmaths.inc:116 ../lib/layouts/foils.layout:334
-#: ../lib/layouts/siamltex.layout:261
+#: ../../1.3.x/lib/layouts/amsmaths.inc:116
+#: ../../1.3.x/lib/layouts/foils.layout:334
+#: ../../1.3.x/lib/layouts/siamltex.layout:261
 msgid "Corollary*"
 msgstr "Korolar*"
 
-#: ../lib/layouts/amsmaths.inc:140 ../lib/layouts/foils.layout:327
-#: ../lib/layouts/siamltex.layout:255
+#: ../../1.3.x/lib/layouts/amsmaths.inc:140
+#: ../../1.3.x/lib/layouts/foils.layout:327
+#: ../../1.3.x/lib/layouts/siamltex.layout:255
 msgid "Lemma*"
 msgstr "Lema*"
 
-#: ../lib/layouts/amsmaths.inc:164 ../lib/layouts/foils.layout:341
-#: ../lib/layouts/siamltex.layout:267
+#: ../../1.3.x/lib/layouts/amsmaths.inc:164
+#: ../../1.3.x/lib/layouts/foils.layout:341
+#: ../../1.3.x/lib/layouts/siamltex.layout:267
 msgid "Proposition*"
 msgstr "Podmena*"
 
-#: ../lib/layouts/amsmaths.inc:188
+#: ../../1.3.x/lib/layouts/amsmaths.inc:188
 msgid "Conjecture*"
 msgstr "Domneva*"
 
-#: ../lib/layouts/amsmaths.inc:236
+#: ../../1.3.x/lib/layouts/amsmaths.inc:236
 msgid "Fact*"
 msgstr "Dejstvo*"
 
-#: ../lib/layouts/amsmaths.inc:282 ../lib/layouts/foils.layout:348
-#: ../lib/layouts/siamltex.layout:273
+#: ../../1.3.x/lib/layouts/amsmaths.inc:282
+#: ../../1.3.x/lib/layouts/foils.layout:348
+#: ../../1.3.x/lib/layouts/siamltex.layout:273
 msgid "Definition*"
 msgstr "Definicija"
 
-#: ../lib/layouts/amsmaths.inc:306
+#: ../../1.3.x/lib/layouts/amsmaths.inc:306
 msgid "Example*"
 msgstr "Zgled*"
 
-#: ../lib/layouts/amsmaths.inc:377
+#: ../../1.3.x/lib/layouts/amsmaths.inc:377
 msgid "Remark*"
 msgstr "Pripomba*"
 
-#: ../lib/layouts/amsmaths.inc:401
+#: ../../1.3.x/lib/layouts/amsmaths.inc:401
 msgid "Claim*"
 msgstr "Trditev*"
 
-#: ../lib/layouts/amsmaths.inc:425
+#: ../../1.3.x/lib/layouts/amsmaths.inc:425
 msgid "Note*"
 msgstr "Opomba*"
 
-#: ../lib/layouts/amsmaths.inc:473
+#: ../../1.3.x/lib/layouts/amsmaths.inc:473
 msgid "Acknowledgement*"
 msgstr "Priznanje*"
 
-#: ../lib/layouts/amsmaths.inc:509
+#: ../../1.3.x/lib/layouts/amsmaths.inc:509
 msgid "Conclusion*"
 msgstr "Sklep*"
 
-#: ../lib/layouts/apa.layout:55
+#: ../../1.3.x/lib/layouts/apa.layout:55
 msgid "RightHeader"
 msgstr "DesnaGlava"
 
-#: ../lib/layouts/apa.layout:95
+#: ../../1.3.x/lib/layouts/apa.layout:95
 msgid "ShortTitle"
 msgstr "KratekNaslov"
 
-#: ../lib/layouts/apa.layout:130
+#: ../../1.3.x/lib/layouts/apa.layout:130
 msgid "TwoAuthors"
 msgstr "DvaAvtorja"
 
-#: ../lib/layouts/apa.layout:136
+#: ../../1.3.x/lib/layouts/apa.layout:136
 msgid "ThreeAuthors"
 msgstr "TrijeAvtorji"
 
-#: ../lib/layouts/apa.layout:142
+#: ../../1.3.x/lib/layouts/apa.layout:142
 msgid "FourAuthors"
 msgstr "©tirjeAvtorji"
 
-#: ../lib/layouts/apa.layout:168
+#: ../../1.3.x/lib/layouts/apa.layout:168
 msgid "TwoAffiliations"
 msgstr ""
 
-#: ../lib/layouts/apa.layout:174
+#: ../../1.3.x/lib/layouts/apa.layout:174
 msgid "ThreeAffiliations"
 msgstr ""
 
-#: ../lib/layouts/apa.layout:180
+#: ../../1.3.x/lib/layouts/apa.layout:180
 msgid "FourAffiliations"
 msgstr ""
 
-#: ../lib/layouts/apa.layout:186 ../lib/layouts/egs.layout:388
+#: ../../1.3.x/lib/layouts/apa.layout:186
+#: ../../1.3.x/lib/layouts/egs.layout:388
 msgid "Journal"
 msgstr "Revija"
 
-#: ../lib/layouts/apa.layout:198
+#: ../../1.3.x/lib/layouts/apa.layout:198
 msgid "CopNum"
 msgstr ""
 
-#: ../lib/layouts/apa.layout:212 ../lib/layouts/revtex4.layout:215
-#: ../lib/layouts/spie.layout:88
+#: ../../1.3.x/lib/layouts/apa.layout:212
+#: ../../1.3.x/lib/layouts/revtex4.layout:215
+#: ../../1.3.x/lib/layouts/spie.layout:88
 msgid "Acknowledgments"
 msgstr "Priznanja"
 
-#: ../lib/layouts/apa.layout:217
+#: ../../1.3.x/lib/layouts/apa.layout:217
 msgid "ThickLine"
 msgstr "TankaÈrta"
 
-#: ../lib/layouts/apa.layout:225
+#: ../../1.3.x/lib/layouts/apa.layout:225
 msgid "CenteredCaption"
 msgstr "SredinjenoPojasnilo"
 
-#: ../lib/layouts/apa.layout:232
+#: ../../1.3.x/lib/layouts/apa.layout:232
 msgid "FitFigure"
 msgstr "PrilagodiSliko"
 
-#: ../lib/layouts/apa.layout:237
+#: ../../1.3.x/lib/layouts/apa.layout:237
 msgid "FitBitmap"
 msgstr "PrilagodiBitnoSliko"
 
-#: ../lib/layouts/apa.layout:298
+#: ../../1.3.x/lib/layouts/apa.layout:298
 msgid "Seriate"
 msgstr ""
 
-#: ../lib/layouts/broadway.layout:26 ../lib/layouts/hollywood.layout:40
+#: ../../1.3.x/lib/layouts/broadway.layout:26
+#: ../../1.3.x/lib/layouts/hollywood.layout:40
 msgid "Dialogue"
 msgstr "Pogovor"
 
-#: ../lib/layouts/broadway.layout:40 ../lib/layouts/hollywood.layout:214
+#: ../../1.3.x/lib/layouts/broadway.layout:40
+#: ../../1.3.x/lib/layouts/hollywood.layout:214
 msgid "Narrative"
 msgstr "Narativno"
 
-#: ../lib/layouts/broadway.layout:59
+#: ../../1.3.x/lib/layouts/broadway.layout:59
 msgid "ACT"
 msgstr "ACT"
 
-#: ../lib/layouts/broadway.layout:74
+#: ../../1.3.x/lib/layouts/broadway.layout:74
 msgid "SCENE"
 msgstr ""
 
-#: ../lib/layouts/broadway.layout:88
+#: ../../1.3.x/lib/layouts/broadway.layout:88
 msgid "SCENE*"
 msgstr ""
 
-#: ../lib/layouts/broadway.layout:102
+#: ../../1.3.x/lib/layouts/broadway.layout:102
 msgid "AT_RISE:"
 msgstr "AT_RISE:"
 
-#: ../lib/layouts/broadway.layout:117 ../lib/layouts/hollywood.layout:146
+#: ../../1.3.x/lib/layouts/broadway.layout:117
+#: ../../1.3.x/lib/layouts/hollywood.layout:146
 msgid "Speaker"
 msgstr "Govorec"
 
-#: ../lib/layouts/broadway.layout:130 ../lib/layouts/hollywood.layout:161
+#: ../../1.3.x/lib/layouts/broadway.layout:130
+#: ../../1.3.x/lib/layouts/hollywood.layout:161
 #, fuzzy
 msgid "Parenthetical"
 msgstr "Matrika"
 
-#: ../lib/layouts/broadway.layout:164
+#: ../../1.3.x/lib/layouts/broadway.layout:164
 msgid "CURTAIN"
 msgstr "ZAVESA"
 
-#: ../lib/layouts/broadway.layout:216 ../lib/layouts/egs.layout:261
-#: ../lib/layouts/hollywood.layout:311 ../lib/layouts/lyxmacros.inc:101
+#: ../../1.3.x/lib/layouts/broadway.layout:216
+#: ../../1.3.x/lib/layouts/egs.layout:261
+#: ../../1.3.x/lib/layouts/hollywood.layout:311
+#: ../../1.3.x/lib/layouts/lyxmacros.inc:101
 msgid "Right_Address"
 msgstr "Desni_naslov"
 
-#: ../lib/layouts/chess.layout:38
+#: ../../1.3.x/lib/layouts/chess.layout:38
 #, fuzzy
 msgid "Mainline"
 msgstr "Minirazd"
 
-#: ../lib/layouts/chess.layout:64
+#: ../../1.3.x/lib/layouts/chess.layout:64
 #, fuzzy
 msgid "Variation"
 msgstr "Separacija"
 
-#: ../lib/layouts/chess.layout:74
+#: ../../1.3.x/lib/layouts/chess.layout:74
 #, fuzzy
 msgid "SubVariation"
 msgstr "Separacija"
 
-#: ../lib/layouts/chess.layout:83
+#: ../../1.3.x/lib/layouts/chess.layout:83
 #, fuzzy
 msgid "SubVariation2"
 msgstr "Separacija"
 
-#: ../lib/layouts/chess.layout:92
+#: ../../1.3.x/lib/layouts/chess.layout:92
 #, fuzzy
 msgid "SubVariation3"
 msgstr "Separacija"
 
-#: ../lib/layouts/chess.layout:101
+#: ../../1.3.x/lib/layouts/chess.layout:101
 #, fuzzy
 msgid "SubVariation4"
 msgstr "Separacija"
 
-#: ../lib/layouts/chess.layout:110
+#: ../../1.3.x/lib/layouts/chess.layout:110
 #, fuzzy
 msgid "SubVariation5"
 msgstr "Separacija"
 
-#: ../lib/layouts/chess.layout:120
+#: ../../1.3.x/lib/layouts/chess.layout:120
 msgid "HideMoves"
 msgstr ""
 
-#: ../lib/layouts/chess.layout:128
+#: ../../1.3.x/lib/layouts/chess.layout:128
 msgid "ChessBoard"
 msgstr ""
 
-#: ../lib/layouts/chess.layout:141
+#: ../../1.3.x/lib/layouts/chess.layout:141
 #, fuzzy
 msgid "BoardCentered"
 msgstr "Sredina"
 
-#: ../lib/layouts/chess.layout:156
+#: ../../1.3.x/lib/layouts/chess.layout:156
 #, fuzzy
 msgid "HighLight"
 msgstr "Vi¹ina"
 
-#: ../lib/layouts/chess.layout:176
+#: ../../1.3.x/lib/layouts/chess.layout:176
 #, fuzzy
 msgid "Arrow"
 msgstr "napaka"
 
-#: ../lib/layouts/chess.layout:187
+#: ../../1.3.x/lib/layouts/chess.layout:187
 msgid "KnightMove"
 msgstr ""
 
-#: ../lib/layouts/cl2emult.layout:71 ../lib/layouts/llncs.layout:233
-#: ../lib/layouts/svjour.inc:229
+#: ../../1.3.x/lib/layouts/cl2emult.layout:71
+#: ../../1.3.x/lib/layouts/llncs.layout:233
+#: ../../1.3.x/lib/layouts/svjour.inc:229
 msgid "Institute"
 msgstr "In¹titut"
 
-#: ../lib/layouts/cv.layout:57
+#: ../../1.3.x/lib/layouts/cv.layout:57
 msgid "SubSection"
 msgstr "Podrazdelek"
 
-#: ../lib/layouts/cv.layout:62
+#: ../../1.3.x/lib/layouts/cv.layout:62
 msgid "Topic"
 msgstr "Tema"
 
-#: ../lib/layouts/db_lyxmacros.inc:11 ../lib/layouts/linuxdoc.layout:278
-#: ../lib/layouts/manpage.layout:155
+#: ../../1.3.x/lib/layouts/db_lyxmacros.inc:11
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:278
+#: ../../1.3.x/lib/layouts/manpage.layout:155
 msgid "Code"
 msgstr "Koda"
 
-#: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/heb-article.layout:16
-#: ../lib/layouts/lyxmacros.inc:47 ../lib/layouts/scrlttr2.layout:345
+#: ../../1.3.x/lib/layouts/db_lyxmacros.inc:20
+#: ../../1.3.x/lib/layouts/heb-article.layout:16
+#: ../../1.3.x/lib/layouts/lyxmacros.inc:47
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:345
 msgid "Comment"
 msgstr "Komentar"
 
-#: ../lib/layouts/db_lyxmacros.inc:25 ../lib/layouts/egs.layout:749
-#: ../lib/layouts/lyxmacros.inc:11
+#: ../../1.3.x/lib/layouts/db_lyxmacros.inc:25
+#: ../../1.3.x/lib/layouts/egs.layout:749
+#: ../../1.3.x/lib/layouts/lyxmacros.inc:11
 msgid "LyX-Code"
 msgstr "Koda-LyXa"
 
-#: ../lib/layouts/db_stdlayouts.inc:11 ../lib/layouts/linuxdoc.layout:372
-#: ../lib/layouts/manpage.layout:173
+#: ../../1.3.x/lib/layouts/db_stdlayouts.inc:11
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:372
+#: ../../1.3.x/lib/layouts/manpage.layout:173
 msgid "SGML"
 msgstr "SGML"
 
-#: ../lib/layouts/db_stdlayouts.inc:27
+#: ../../1.3.x/lib/layouts/db_stdlayouts.inc:27
 msgid "Literal"
 msgstr "Dobesedno"
 
-#: ../lib/layouts/db_stdlayouts.inc:34 ../lib/layouts/egs.layout:131
-#: ../lib/layouts/stdlayouts.inc:31
+#: ../../1.3.x/lib/layouts/db_stdlayouts.inc:34
+#: ../../1.3.x/lib/layouts/egs.layout:131
+#: ../../1.3.x/lib/layouts/stdlayouts.inc:31
 msgid "Quotation"
 msgstr "Navedek"
 
-#: ../lib/layouts/db_stdsections.inc:18 ../lib/layouts/llncs.layout:38
-#: ../lib/layouts/scrclass.inc:61 ../lib/layouts/stdsections.inc:37
+#: ../../1.3.x/lib/layouts/db_stdsections.inc:18
+#: ../../1.3.x/lib/layouts/llncs.layout:38
+#: ../../1.3.x/lib/layouts/scrclass.inc:61
+#: ../../1.3.x/lib/layouts/stdsections.inc:37
 msgid "Chapter"
 msgstr "Poglavje"
 
-#: ../lib/layouts/db_stdsections.inc:53 ../lib/layouts/egs.layout:103
-#: ../lib/layouts/kluwer.layout:91 ../lib/layouts/linuxdoc.layout:170
-#: ../lib/layouts/llncs.layout:85 ../lib/layouts/paper.layout:78
-#: ../lib/layouts/scrclass.inc:98 ../lib/layouts/stdsections.inc:163
-#: ../lib/layouts/svjour.inc:80
+#: ../../1.3.x/lib/layouts/db_stdsections.inc:53
+#: ../../1.3.x/lib/layouts/egs.layout:103
+#: ../../1.3.x/lib/layouts/kluwer.layout:91
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:170
+#: ../../1.3.x/lib/layouts/llncs.layout:85
+#: ../../1.3.x/lib/layouts/paper.layout:78
+#: ../../1.3.x/lib/layouts/scrclass.inc:98
+#: ../../1.3.x/lib/layouts/stdsections.inc:163
+#: ../../1.3.x/lib/layouts/svjour.inc:80
 msgid "Subparagraph"
 msgstr "Pododstavek"
 
-#: ../lib/layouts/db_stdtitle.inc:25
+#: ../../1.3.x/lib/layouts/db_stdtitle.inc:25
 msgid "Authorgroup"
 msgstr "Skupina avtorjev"
 
-#: ../lib/layouts/db_stdtitle.inc:33
+#: ../../1.3.x/lib/layouts/db_stdtitle.inc:33
 msgid "FirstName"
 msgstr "PrvoIme"
 
-#: ../lib/layouts/db_stdtitle.inc:45
+#: ../../1.3.x/lib/layouts/db_stdtitle.inc:45
 msgid "Surname"
 msgstr "Priimek"
 
-#: ../lib/layouts/db_stdtitle.inc:65
+#: ../../1.3.x/lib/layouts/db_stdtitle.inc:65
 msgid "RevisionHistory"
 msgstr ""
 
-#: ../lib/layouts/db_stdtitle.inc:86
+#: ../../1.3.x/lib/layouts/db_stdtitle.inc:86
 msgid "Revision"
 msgstr "Razlièica"
 
-#: ../lib/layouts/db_stdtitle.inc:102
+#: ../../1.3.x/lib/layouts/db_stdtitle.inc:102
 msgid "RevisionRemark"
 msgstr "Pripomba na razlièico"
 
-#: ../lib/layouts/dinbrief.layout:15 ../lib/layouts/heb-letter.layout:8
-#: ../lib/layouts/stdletter.inc:33
+#: ../../1.3.x/lib/layouts/dinbrief.layout:15
+#: ../../1.3.x/lib/layouts/heb-letter.layout:8
+#: ../../1.3.x/lib/layouts/stdletter.inc:33
 msgid "My_Address"
 msgstr "Moj_naslov"
 
-#: ../lib/layouts/dinbrief.layout:31 ../lib/layouts/heb-letter.layout:12
-#: ../lib/layouts/stdletter.inc:45
+#: ../../1.3.x/lib/layouts/dinbrief.layout:31
+#: ../../1.3.x/lib/layouts/heb-letter.layout:12
+#: ../../1.3.x/lib/layouts/stdletter.inc:45
 msgid "Send_To_Address"
 msgstr "Po¹lji_na_naslov"
 
-#: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/heb-letter.layout:16 ../lib/layouts/scrlettr.layout:70
-#: ../lib/layouts/stdletter.inc:59 ../lib/layouts/scrlttr2.layout:100
+#: ../../1.3.x/lib/layouts/dinbrief.layout:48
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:517
+#: ../../1.3.x/lib/layouts/heb-letter.layout:16
+#: ../../1.3.x/lib/layouts/scrlettr.layout:70
+#: ../../1.3.x/lib/layouts/stdletter.inc:59
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:100
 msgid "Opening"
 msgstr "Uvod"
 
-#: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
-#: ../lib/layouts/heb-letter.layout:24 ../lib/layouts/scrlettr.layout:148
-#: ../lib/layouts/stdletter.inc:83 ../lib/layouts/scrlttr2.layout:176
+#: ../../1.3.x/lib/layouts/dinbrief.layout:61
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:73
+#: ../../1.3.x/lib/layouts/heb-letter.layout:24
+#: ../../1.3.x/lib/layouts/scrlettr.layout:148
+#: ../../1.3.x/lib/layouts/stdletter.inc:83
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:176
 msgid "Signature"
 msgstr "Podpis"
 
-#: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/heb-letter.layout:20 ../lib/layouts/scrlettr.layout:81
-#: ../lib/layouts/stdletter.inc:106 ../lib/layouts/scrlttr2.layout:122
+#: ../../1.3.x/lib/layouts/dinbrief.layout:74
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:591
+#: ../../1.3.x/lib/layouts/heb-letter.layout:20
+#: ../../1.3.x/lib/layouts/scrlettr.layout:81
+#: ../../1.3.x/lib/layouts/stdletter.inc:106
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:122
 msgid "Closing"
 msgstr "Zakljuèek"
 
-#: ../lib/layouts/dinbrief.layout:87 ../lib/layouts/stdletter.inc:145
+#: ../../1.3.x/lib/layouts/dinbrief.layout:87
+#: ../../1.3.x/lib/layouts/stdletter.inc:145
 msgid "encl"
 msgstr "encl"
 
-#: ../lib/layouts/dinbrief.layout:100
+#: ../../1.3.x/lib/layouts/dinbrief.layout:100
 msgid "ps"
 msgstr "ps"
 
-#: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/stdletter.inc:129 src/lengthcommon.C:35
+#: ../../1.3.x/lib/layouts/dinbrief.layout:122
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:566
+#: ../../1.3.x/lib/layouts/stdletter.inc:129 src/lengthcommon.C:35
 msgid "cc"
 msgstr "cc"
 
-#: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
+#: ../../1.3.x/lib/layouts/dinbrief.layout:135
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:487
 msgid "Betreff"
 msgstr ""
 
-#: ../lib/layouts/dinbrief.layout:160
+#: ../../1.3.x/lib/layouts/dinbrief.layout:160
 msgid "Stadt"
 msgstr "Mesto"
 
-#: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
+#: ../../1.3.x/lib/layouts/dinbrief.layout:180
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:467
 msgid "Datum"
 msgstr "Datum"
 
-#: ../lib/layouts/egs.layout:149 ../lib/layouts/linuxdoc.layout:28
-#: ../lib/layouts/manpage.layout:29 ../lib/layouts/stdlayouts.inc:49
+#: ../../1.3.x/lib/layouts/egs.layout:149
+#: ../../1.3.x/lib/layouts/linuxdoc.layout:28
+#: ../../1.3.x/lib/layouts/manpage.layout:29
+#: ../../1.3.x/lib/layouts/stdlayouts.inc:49
 msgid "Quote"
 msgstr "Narekovaj"
 
-#: ../lib/layouts/egs.layout:242 ../lib/layouts/stdlayouts.inc:65
+#: ../../1.3.x/lib/layouts/egs.layout:242
+#: ../../1.3.x/lib/layouts/stdlayouts.inc:65
 msgid "Verse"
 msgstr "Verz"
 
-#: ../lib/layouts/egs.layout:312 ../lib/layouts/obsolete.inc:10
+#: ../../1.3.x/lib/layouts/egs.layout:312
+#: ../../1.3.x/lib/layouts/obsolete.inc:10
 msgid "LaTeX_Title"
 msgstr "Naslov_za_LaTeX "
 
-#: ../lib/layouts/egs.layout:362
+#: ../../1.3.x/lib/layouts/egs.layout:362
 msgid "Affil"
 msgstr ""
 
-#: ../lib/layouts/egs.layout:414
+#: ../../1.3.x/lib/layouts/egs.layout:414
 msgid "msnumber"
 msgstr ""
 
-#: ../lib/layouts/egs.layout:442
+#: ../../1.3.x/lib/layouts/egs.layout:442
 msgid "FirstAuthor"
 msgstr "PrviAvtor"
 
-#: ../lib/layouts/egs.layout:522
+#: ../../1.3.x/lib/layouts/egs.layout:522
 msgid "Offsets"
 msgstr ""
 
-#: ../lib/layouts/entcs.layout:45
+#: ../../1.3.x/lib/layouts/entcs.layout:45
 msgid "FrontMatter"
 msgstr ""
 
-#: ../lib/layouts/entcs.layout:70
+#: ../../1.3.x/lib/layouts/entcs.layout:70
 msgid "Keyword"
 msgstr "Kljuèna beseda"
 
-#: ../lib/layouts/foils.layout:40
+#: ../../1.3.x/lib/layouts/foils.layout:40
 msgid "Foilhead"
 msgstr "GlavaProsojnice"
 
-#: ../lib/layouts/foils.layout:63
+#: ../../1.3.x/lib/layouts/foils.layout:63
 msgid "ShortFoilhead"
 msgstr "KratkaGlavaProsojnice"
 
-#: ../lib/layouts/foils.layout:70
+#: ../../1.3.x/lib/layouts/foils.layout:70
 msgid "Rotatefoilhead"
 msgstr "Zavrtiglavoprosojnice"
 
-#: ../lib/layouts/foils.layout:77
+#: ../../1.3.x/lib/layouts/foils.layout:77
 msgid "ShortRotatefoilhead"
 msgstr "KratkaVrtenaglavaprosojnice"
 
-#: ../lib/layouts/foils.layout:88
+#: ../../1.3.x/lib/layouts/foils.layout:88
 msgid "TickList"
 msgstr ""
 
-#: ../lib/layouts/foils.layout:111
+#: ../../1.3.x/lib/layouts/foils.layout:111
 msgid "CrossList"
 msgstr "Navzkri¾enSeznam"
 
-#: ../lib/layouts/foils.layout:173
+#: ../../1.3.x/lib/layouts/foils.layout:173
 msgid "My_Logo"
 msgstr ""
 
-#: ../lib/layouts/foils.layout:193
+#: ../../1.3.x/lib/layouts/foils.layout:193
 msgid "Restriction"
 msgstr "Omejitve"
 
-#: ../lib/layouts/foils.layout:215
+#: ../../1.3.x/lib/layouts/foils.layout:215
 msgid "Right_Footer"
 msgstr "Desna_Glava"
 
-#: ../lib/layouts/g-brief-de.layout:31
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:31
 msgid "Brieftext"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
-#: ../lib/layouts/scrlettr.layout:126 ../lib/layouts/scrlttr2.layout:153
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:53
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:53
+#: ../../1.3.x/lib/layouts/scrlettr.layout:126
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:153
 msgid "Name"
 msgstr "Ime"
 
-#: ../lib/layouts/g-brief-de.layout:73
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:73
 msgid "Unterschrift"
 msgstr "Podpis"
 
-#: ../lib/layouts/g-brief-de.layout:93
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:93
 msgid "Strasse"
 msgstr "Cesta"
 
-#: ../lib/layouts/g-brief-de.layout:113
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:113
 msgid "Zusatz"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:133
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:133
 msgid "Ort"
 msgstr "Kraj"
 
-#: ../lib/layouts/g-brief-de.layout:153
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:153
 msgid "Land"
 msgstr "De¾ela"
 
-#: ../lib/layouts/g-brief-de.layout:173
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:173
 msgid "RetourAdresse"
 msgstr "PovratniNaslov"
 
-#: ../lib/layouts/g-brief-de.layout:194
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:194
 msgid "MeinZeichen"
 msgstr "MojiZnaki"
 
-#: ../lib/layouts/g-brief-de.layout:214
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:214
 msgid "IhrZeichen"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:236
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:236
 msgid "IhrSchreiben"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:261
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:261
 msgid "Telefon"
 msgstr "Telefon"
 
-#: ../lib/layouts/g-brief-de.layout:282 ../lib/layouts/g-brief-en.layout:282
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:282
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:282
 msgid "Telefax"
 msgstr "Faks"
 
-#: ../lib/layouts/g-brief-de.layout:302 ../lib/layouts/g-brief-en.layout:302
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:302
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:302
 msgid "Telex"
 msgstr "Teleks"
 
-#: ../lib/layouts/g-brief-de.layout:323 ../lib/layouts/g-brief-en.layout:323
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:323
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:323
 msgid "EMail"
 msgstr "E-naslov"
 
-#: ../lib/layouts/g-brief-de.layout:343 ../lib/layouts/g-brief-en.layout:343
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:343
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:343
 msgid "HTTP"
 msgstr "HTTP"
 
-#: ../lib/layouts/g-brief-de.layout:363 ../lib/layouts/g-brief-en.layout:363
-#: ../lib/layouts/scrlttr2.layout:225
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:363
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:363
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:225
 msgid "Bank"
 msgstr "Banka"
 
-#: ../lib/layouts/g-brief-de.layout:384
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:384
 msgid "BLZ"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:404
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:404
 msgid "Konto"
 msgstr "Raèun"
 
-#: ../lib/layouts/g-brief-de.layout:424
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:424
 msgid "Postvermerk"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:445
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:445
 msgid "Adresse"
 msgstr "Naslovnik"
 
-#: ../lib/layouts/g-brief-de.layout:510
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:510
 msgid "Anrede"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:536
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:536
 msgid "Anlagen"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:559
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:559
 msgid "Verteiler"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:584
+#: ../../1.3.x/lib/layouts/g-brief-de.layout:584
 msgid "Gruss"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/scrlettr.layout:48
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:31
+#: ../../1.3.x/lib/layouts/scrlettr.layout:48
 msgid "Letter"
 msgstr "Pismo"
 
-#: ../lib/layouts/g-brief-en.layout:93
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:93
 msgid "Street"
 msgstr "Ulica"
 
-#: ../lib/layouts/g-brief-en.layout:113
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:113
 msgid "Addition"
 msgstr "Se¹tevanje"
 
-#: ../lib/layouts/g-brief-en.layout:133
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:133
 msgid "Town"
 msgstr "Kraj"
 
-#: ../lib/layouts/g-brief-en.layout:153
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:153
 msgid "State"
 msgstr "Dr¾ava"
 
-#: ../lib/layouts/g-brief-en.layout:173
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:173
 msgid "ReturnAddress"
 msgstr "PovratniNaslov"
 
-#: ../lib/layouts/g-brief-en.layout:194
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:194
 msgid "MyRef"
 msgstr "MojaRef:"
 
-#: ../lib/layouts/g-brief-en.layout:214
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:214
 msgid "YourRef"
 msgstr "Va¹Sklic"
 
-#: ../lib/layouts/g-brief-en.layout:236
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:236
 msgid "YourMail"
 msgstr "Va¹aPo¹ta"
 
-#: ../lib/layouts/g-brief-en.layout:261
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:261
 msgid "Phone"
 msgstr "Telefon"
 
-#: ../lib/layouts/g-brief-en.layout:384
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:384
 msgid "BankCode"
 msgstr "BanènaKoda"
 
-#: ../lib/layouts/g-brief-en.layout:404
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:404
 msgid "BankAccount"
 msgstr "BanèniRaèun"
 
-#: ../lib/layouts/g-brief-en.layout:424
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:424
 #, fuzzy
 msgid "PostalComment"
 msgstr "Po¹tniUkaz"
 
-#: ../lib/layouts/g-brief-en.layout:446
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
 msgstr "Po¹tniUkaz"
 
-#: ../lib/layouts/g-brief-en.layout:543
+#: ../../1.3.x/lib/layouts/g-brief-en.layout:543
 msgid "Encl."
 msgstr "Encl."
 
-#: ../lib/layouts/heb-article.layout:88
+#: ../../1.3.x/lib/layouts/heb-article.layout:88
 msgid "Remarks"
 msgstr "Pripombe"
 
-#: ../lib/layouts/hollywood.layout:55 src/frontends/xforms/Menubar_pimpl.C:260
+#: ../../1.3.x/lib/layouts/hollywood.layout:55
+#: src/frontends/xforms/Menubar_pimpl.C:260
 #, fuzzy
 msgid "More"
 msgstr "prezri"
 
-#: ../lib/layouts/hollywood.layout:83
+#: ../../1.3.x/lib/layouts/hollywood.layout:83
 msgid "FADE_IN:"
 msgstr ""
 
-#: ../lib/layouts/hollywood.layout:102
+#: ../../1.3.x/lib/layouts/hollywood.layout:102
 msgid "INT."
 msgstr "INT."
 
-#: ../lib/layouts/hollywood.layout:115
+#: ../../1.3.x/lib/layouts/hollywood.layout:115
 msgid "EXT."
 msgstr "EXT."
 
-#: ../lib/layouts/hollywood.layout:189
+#: ../../1.3.x/lib/layouts/hollywood.layout:189
 #, fuzzy
 msgid "Continuing"
 msgstr "Pogoj"
 
-#: ../lib/layouts/hollywood.layout:231
+#: ../../1.3.x/lib/layouts/hollywood.layout:231
 msgid "Transition"
 msgstr ""
 
-#: ../lib/layouts/hollywood.layout:243
+#: ../../1.3.x/lib/layouts/hollywood.layout:243
 msgid "TITLE_OVER:"
 msgstr ""
 
-#: ../lib/layouts/hollywood.layout:257
+#: ../../1.3.x/lib/layouts/hollywood.layout:257
 msgid "INTERCUT"
 msgstr ""
 
-#: ../lib/layouts/hollywood.layout:271
+#: ../../1.3.x/lib/layouts/hollywood.layout:271
 msgid "FADE_OUT"
 msgstr ""
 
-#: ../lib/layouts/hollywood.layout:286
+#: ../../1.3.x/lib/layouts/hollywood.layout:286
 msgid "General"
 msgstr "Splo¹no"
 
-#: ../lib/layouts/hollywood.layout:298
+#: ../../1.3.x/lib/layouts/hollywood.layout:298
 #, fuzzy
 msgid "Scene"
 msgstr "Po¹lji"
 
-#: ../lib/layouts/hollywood.layout:353
+#: ../../1.3.x/lib/layouts/hollywood.layout:353
 msgid "FADE_OUT:"
 msgstr ""
 
-#: ../lib/layouts/kluwer.layout:195
+#: ../../1.3.x/lib/layouts/kluwer.layout:195
 msgid "AddressForOffprints"
 msgstr ""
 
-#: ../lib/layouts/kluwer.layout:214
+#: ../../1.3.x/lib/layouts/kluwer.layout:214
 #, fuzzy
 msgid "RunningTitle"
 msgstr "Izvaja se BibTeX."
 
-#: ../lib/layouts/kluwer.layout:237
+#: ../../1.3.x/lib/layouts/kluwer.layout:237
 #, fuzzy
 msgid "RunningAuthor"
 msgstr "Avtor"
 
-#: ../lib/layouts/literate-scrap.inc:12
+#: ../../1.3.x/lib/layouts/literate-scrap.inc:12
 msgid "Scrap"
 msgstr ""
 
-#: ../lib/layouts/llncs.layout:158 ../lib/layouts/svjour.inc:189
+#: ../../1.3.x/lib/layouts/llncs.layout:158
+#: ../../1.3.x/lib/layouts/svjour.inc:189
 msgid "Running_LaTeX_Title"
 msgstr ""
 
-#: ../lib/layouts/llncs.layout:185
+#: ../../1.3.x/lib/layouts/llncs.layout:185
 msgid "TOC_Title"
 msgstr ""
 
-#: ../lib/layouts/llncs.layout:217 ../lib/layouts/svjour.inc:221
+#: ../../1.3.x/lib/layouts/llncs.layout:217
+#: ../../1.3.x/lib/layouts/svjour.inc:221
 msgid "Author_Running"
 msgstr ""
 
-#: ../lib/layouts/llncs.layout:225
+#: ../../1.3.x/lib/layouts/llncs.layout:225
 msgid "TOC_Author"
 msgstr ""
 
-#: ../lib/layouts/llncs.layout:411 ../lib/layouts/svjour.inc:476
+#: ../../1.3.x/lib/layouts/llncs.layout:411
+#: ../../1.3.x/lib/layouts/svjour.inc:476
 msgid "Property"
 msgstr "Lastnost"
 
-#: ../lib/layouts/llncs.layout:423 ../lib/layouts/svjour.inc:488
+#: ../../1.3.x/lib/layouts/llncs.layout:423
+#: ../../1.3.x/lib/layouts/svjour.inc:488
 msgid "Question"
 msgstr "Vpra¹anje"
 
-#: ../lib/layouts/llncs.layout:435 ../lib/layouts/svjour.inc:500
+#: ../../1.3.x/lib/layouts/llncs.layout:435
+#: ../../1.3.x/lib/layouts/svjour.inc:500
 msgid "Solution"
 msgstr "Re¹itev"
 
-#: ../lib/layouts/paper.layout:143
+#: ../../1.3.x/lib/layouts/paper.layout:143
 msgid "SubTitle"
 msgstr "PodNaslov"
 
-#: ../lib/layouts/paper.layout:154
+#: ../../1.3.x/lib/layouts/paper.layout:154
 msgid "Institution"
 msgstr "Ustanova"
 
-#: ../lib/layouts/revtex.layout:175 ../lib/layouts/revtex4.layout:256
+#: ../../1.3.x/lib/layouts/revtex.layout:175
+#: ../../1.3.x/lib/layouts/revtex4.layout:256
 msgid "REVTEX_Title"
 msgstr ""
 
-#: ../lib/layouts/revtex4.layout:107
+#: ../../1.3.x/lib/layouts/revtex4.layout:107
 msgid "Preprint"
 msgstr ""
 
-#: ../lib/layouts/revtex4.layout:182 ../lib/layouts/elsart.layout:145
+#: ../../1.3.x/lib/layouts/revtex4.layout:182
+#: ../../1.3.x/lib/layouts/elsart.layout:149
 msgid "Author_Email"
 msgstr "Epo¹ta_avtorja"
 
-#: ../lib/layouts/revtex4.layout:197 ../lib/layouts/elsart.layout:164
+#: ../../1.3.x/lib/layouts/revtex4.layout:197
+#: ../../1.3.x/lib/layouts/elsart.layout:168
 msgid "Author_URL"
 msgstr "URL_avtorja"
 
-#: ../lib/layouts/revtex4.layout:234
+#: ../../1.3.x/lib/layouts/revtex4.layout:234
 msgid "PACS"
 msgstr ""
 
-#: ../lib/layouts/scrclass.inc:35 ../lib/layouts/scrlettr.layout:26
-#: ../lib/layouts/scrlttr2.layout:26
+#: ../../1.3.x/lib/layouts/scrclass.inc:35
+#: ../../1.3.x/lib/layouts/scrlettr.layout:26
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:26
 msgid "Labeling"
 msgstr "Oznaèevanje"
 
-#: ../lib/layouts/scrclass.inc:108
+#: ../../1.3.x/lib/layouts/scrclass.inc:108
 #, fuzzy
 msgid "Addpart"
 msgstr "Dodaj"
 
-#: ../lib/layouts/scrclass.inc:114
+#: ../../1.3.x/lib/layouts/scrclass.inc:114
 msgid "Addchap"
 msgstr "Dodajpogl"
 
-#: ../lib/layouts/scrclass.inc:120
+#: ../../1.3.x/lib/layouts/scrclass.inc:120
 msgid "Addsec"
 msgstr "Dodajrazd"
 
-#: ../lib/layouts/scrclass.inc:126
+#: ../../1.3.x/lib/layouts/scrclass.inc:126
 msgid "Addchap*"
 msgstr "Dodajpogl*"
 
-#: ../lib/layouts/scrclass.inc:132
+#: ../../1.3.x/lib/layouts/scrclass.inc:132
 msgid "Addsec*"
 msgstr "Dodajrazd*"
 
-#: ../lib/layouts/scrclass.inc:138
+#: ../../1.3.x/lib/layouts/scrclass.inc:138
 msgid "Minisec"
 msgstr "Minirazd"
 
-#: ../lib/layouts/scrclass.inc:180 ../lib/layouts/scrlettr.layout:211
-#: ../lib/layouts/scrlttr2.layout:289
+#: ../../1.3.x/lib/layouts/scrclass.inc:180
+#: ../../1.3.x/lib/layouts/scrlettr.layout:211
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:289
 msgid "Subject"
 msgstr "Predmet"
 
-#: ../lib/layouts/scrclass.inc:186
+#: ../../1.3.x/lib/layouts/scrclass.inc:186
 msgid "Publishers"
 msgstr "Zalo¾niki"
 
-#: ../lib/layouts/scrclass.inc:192 ../lib/layouts/svjour.inc:130
+#: ../../1.3.x/lib/layouts/scrclass.inc:192
+#: ../../1.3.x/lib/layouts/svjour.inc:130
 msgid "Dedication"
 msgstr "Posvetilo"
 
-#: ../lib/layouts/scrclass.inc:198
+#: ../../1.3.x/lib/layouts/scrclass.inc:198
 msgid "Titlehead"
 msgstr "Glavanaslova"
 
-#: ../lib/layouts/scrclass.inc:210
+#: ../../1.3.x/lib/layouts/scrclass.inc:210
 msgid "Uppertitleback"
 msgstr ""
 
-#: ../lib/layouts/scrclass.inc:216
+#: ../../1.3.x/lib/layouts/scrclass.inc:216
 msgid "Lowertitleback"
 msgstr ""
 
-#: ../lib/layouts/scrclass.inc:222
+#: ../../1.3.x/lib/layouts/scrclass.inc:222
 msgid "Extratitle"
 msgstr "DodatniNaslov"
 
-#: ../lib/layouts/scrclass.inc:246
+#: ../../1.3.x/lib/layouts/scrclass.inc:246
 #, fuzzy
 msgid "Captionabove"
 msgstr "Pojasnilo"
 
-#: ../lib/layouts/scrclass.inc:252
+#: ../../1.3.x/lib/layouts/scrclass.inc:252
 #, fuzzy
 msgid "Captionbelow"
 msgstr "Pojasnilo"
 
-#: ../lib/layouts/scrclass.inc:258
+#: ../../1.3.x/lib/layouts/scrclass.inc:258
 #, fuzzy
 msgid "Dictum"
 msgstr "Datum"
 
-#: ../lib/layouts/scrlettr.layout:93 ../lib/layouts/scrlttr2.layout:130
+#: ../../1.3.x/lib/layouts/scrlettr.layout:93
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:130
 msgid "PS"
 msgstr "PS"
 
-#: ../lib/layouts/scrlettr.layout:104 ../lib/layouts/scrlttr2.layout:138
+#: ../../1.3.x/lib/layouts/scrlettr.layout:104
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:138
 msgid "CC"
 msgstr "CC"
 
-#: ../lib/layouts/scrlettr.layout:119 ../lib/layouts/scrlttr2.layout:146
+#: ../../1.3.x/lib/layouts/scrlettr.layout:119
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:146
 msgid "Encl"
 msgstr "Encl"
 
-#: ../lib/layouts/scrlettr.layout:162 ../lib/layouts/stdletter.inc:179
-#: ../lib/layouts/scrlttr2.layout:192
+#: ../../1.3.x/lib/layouts/scrlettr.layout:162
+#: ../../1.3.x/lib/layouts/stdletter.inc:179
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:192
 msgid "Telephone"
 msgstr "Telefon"
 
-#: ../lib/layouts/scrlettr.layout:169 ../lib/layouts/scrlttr2.layout:241
+#: ../../1.3.x/lib/layouts/scrlettr.layout:169
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:241
 msgid "Place"
 msgstr "Umesti"
 
-#: ../lib/layouts/scrlettr.layout:183 ../lib/layouts/scrlttr2.layout:257
+#: ../../1.3.x/lib/layouts/scrlettr.layout:183
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:257
 msgid "Backaddress"
 msgstr "Povratninaslov"
 
-#: ../lib/layouts/scrlettr.layout:190 ../lib/layouts/scrlttr2.layout:265
+#: ../../1.3.x/lib/layouts/scrlettr.layout:190
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:265
 msgid "Specialmail"
 msgstr "Posebnopismo"
 
-#: ../lib/layouts/scrlettr.layout:197 ../lib/layouts/stdletter.inc:162
-#: ../lib/layouts/scrlttr2.layout:273
+#: ../../1.3.x/lib/layouts/scrlettr.layout:197
+#: ../../1.3.x/lib/layouts/stdletter.inc:162
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:273
 msgid "Location"
 msgstr "Lokacija"
 
-#: ../lib/layouts/scrlettr.layout:218 ../lib/layouts/scrlttr2.layout:297
+#: ../../1.3.x/lib/layouts/scrlettr.layout:218
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:297
 msgid "Yourref"
 msgstr "Va¹sklic"
 
-#: ../lib/layouts/scrlettr.layout:233 ../lib/layouts/scrlttr2.layout:313
+#: ../../1.3.x/lib/layouts/scrlettr.layout:233
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:313
 msgid "Yourmail"
 msgstr "Va¹apo¹ta"
 
-#: ../lib/layouts/scrlettr.layout:240 ../lib/layouts/scrlttr2.layout:321
+#: ../../1.3.x/lib/layouts/scrlettr.layout:240
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:321
 msgid "Myref"
 msgstr "Moja_ref"
 
-#: ../lib/layouts/scrlettr.layout:247 ../lib/layouts/scrlttr2.layout:329
+#: ../../1.3.x/lib/layouts/scrlettr.layout:247
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:329
 msgid "Customer"
 msgstr "Kupec"
 
-#: ../lib/layouts/scrlettr.layout:254 ../lib/layouts/scrlttr2.layout:337
+#: ../../1.3.x/lib/layouts/scrlettr.layout:254
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:337
 msgid "Invoice"
 msgstr "Faktura"
 
-#: ../lib/layouts/seminar.layout:49
+#: ../../1.3.x/lib/layouts/seminar.layout:49
 msgid "LandscapeSlide"
 msgstr "PreènaProsojnica"
 
-#: ../lib/layouts/seminar.layout:59
+#: ../../1.3.x/lib/layouts/seminar.layout:59
 msgid "PortraitSlide"
 msgstr "PokonènaProsojnica"
 
-#: ../lib/layouts/seminar.layout:68 ../lib/layouts/slides.layout:92
+#: ../../1.3.x/lib/layouts/seminar.layout:68
+#: ../../1.3.x/lib/layouts/slides.layout:92
 msgid "Slide"
 msgstr "Prosojnica"
 
-#: ../lib/layouts/seminar.layout:72
+#: ../../1.3.x/lib/layouts/seminar.layout:72
 msgid "Slide*"
 msgstr "Prosojnica*"
 
-#: ../lib/layouts/seminar.layout:76
+#: ../../1.3.x/lib/layouts/seminar.layout:76
 msgid "SlideHeading"
 msgstr "GlavaProsojnice"
 
-#: ../lib/layouts/seminar.layout:81
+#: ../../1.3.x/lib/layouts/seminar.layout:81
 msgid "SlideSubHeading"
 msgstr "PodGlavaProsojnice"
 
-#: ../lib/layouts/seminar.layout:86
+#: ../../1.3.x/lib/layouts/seminar.layout:86
 msgid "ListOfSlides"
 msgstr "SeznamProsojnic"
 
-#: ../lib/layouts/seminar.layout:95
+#: ../../1.3.x/lib/layouts/seminar.layout:95
 msgid "SlideContents"
 msgstr "VsebinaProsojnice"
 
-#: ../lib/layouts/seminar.layout:104
+#: ../../1.3.x/lib/layouts/seminar.layout:104
 msgid "ProgressContents"
 msgstr ""
 
-#: ../lib/layouts/siamltex.layout:165
+#: ../../1.3.x/lib/layouts/siamltex.layout:165
 msgid "AMS"
 msgstr "AMS"
 
-#: ../lib/layouts/slides.layout:131
+#: ../../1.3.x/lib/layouts/slides.layout:131
 msgid "Overlay"
 msgstr "Prekrivanje"
 
-#: ../lib/layouts/slides.layout:215
+#: ../../1.3.x/lib/layouts/slides.layout:215
 msgid "InvisibleText"
 msgstr "NevidnoBesedilo"
 
-#: ../lib/layouts/slides.layout:244
+#: ../../1.3.x/lib/layouts/slides.layout:244
 msgid "VisibleText"
 msgstr "VidnoBesedilo"
 
-#: ../lib/layouts/slides.layout:295
+#: ../../1.3.x/lib/layouts/slides.layout:295
 msgid "End_All_Slides"
 msgstr "Konec_vseh_prosojnic"
 
-#: ../lib/layouts/spie.layout:55
+#: ../../1.3.x/lib/layouts/spie.layout:55
 #, fuzzy
 msgid "Authorinfo"
 msgstr "Avtor"
 
-#: ../lib/layouts/stdfloats.inc:9
+#: ../../1.3.x/lib/layouts/stdfloats.inc:9
 msgid "Table"
 msgstr "Tabela"
 
-#: ../lib/layouts/stdfloats.inc:20
+#: ../../1.3.x/lib/layouts/stdfloats.inc:20
 msgid "Figure"
 msgstr "Slika"
 
-#: ../lib/layouts/stdstarsections.inc:20
+#: ../../1.3.x/lib/layouts/stdstarsections.inc:20
 msgid "Chapter*"
 msgstr "Poglavje*"
 
-#: ../lib/layouts/stdstarsections.inc:65
+#: ../../1.3.x/lib/layouts/stdstarsections.inc:65
 msgid "Subparagraph*"
 msgstr "Pododstavek*"
 
-#: ../lib/layouts/svjour.inc:103
+#: ../../1.3.x/lib/layouts/svjour.inc:103
 msgid "Headnote"
 msgstr "Opomba v glavi"
 
-#: ../lib/layouts/svjour.inc:264
+#: ../../1.3.x/lib/layouts/svjour.inc:264
 msgid "Offprints"
 msgstr ""
 
-#: ../lib/layouts/svjour.inc:295
+#: ../../1.3.x/lib/layouts/svjour.inc:295
 #, fuzzy
 msgid " Keywords"
 msgstr "Kljuène besede"
 
-#: ../lib/layouts/scrlttr2.layout:77
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:77
 #, fuzzy
 msgid "NextAddress"
 msgstr "Naslov"
 
-#: ../lib/layouts/scrlttr2.layout:184
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:184
 #, fuzzy
 msgid "SenderAddress"
 msgstr "Po¹lji_na_naslov"
 
-#: ../lib/layouts/scrlttr2.layout:200
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:200
 msgid "Fax"
 msgstr ""
 
-#: ../lib/layouts/scrlttr2.layout:209
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:209
 #, fuzzy
 msgid "E-Mail"
 msgstr "E-naslov"
 
-#: ../lib/layouts/scrlttr2.layout:233
+#: ../../1.3.x/lib/layouts/scrlttr2.layout:233
 msgid "Logo"
 msgstr ""
 
-#: ../lib/layouts/elsart.layout:131
+#: ../../1.3.x/lib/layouts/elsart.layout:135
 #, fuzzy
 msgid "Author_Address"
 msgstr "Avtor"
+
+#: ../../1.3.x/lib/layouts/memoir.layout:31
+#, fuzzy
+msgid "Chapterprecis"
+msgstr "Poglavje_Vaje"
+
+#: ../../1.3.x/lib/layouts/memoir.layout:52
+#, fuzzy
+msgid "Epigraph"
+msgstr "Biografija"
+
+#: ../../1.3.x/lib/layouts/memoir.layout:64
+#, fuzzy
+msgid "Poemtitle"
+msgstr "PokonènaProsojnica"
+
+#: ../../1.3.x/lib/layouts/memoir.layout:82
+#, fuzzy
+msgid "Poemtitle*"
+msgstr "PokonènaProsojnica"
 
 #: ../lib/languages:2
 msgid "Afrikaans"
@@ -8741,7 +9111,7 @@ msgid "Unknown token: "
 msgstr "Neznana akcija"
 
 #. future format
-#: src/buffer.C:1184 src/buffer.C:1238
+#: src/buffer.C:1184 src/buffer.C:1239
 msgid "Warning!"
 msgstr "Pozor!"
 
@@ -8752,8 +9122,8 @@ msgid ""
 msgstr ""
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1191 src/buffer.C:1199 src/buffer.C:1211 src/buffer.C:1244
-#: src/buffer.C:1247
+#: src/buffer.C:1191 src/buffer.C:1199 src/buffer.C:1213 src/buffer.C:1245
+#: src/buffer.C:1248
 msgid "ERROR!"
 msgstr "NAPAKA!"
 
@@ -8765,67 +9135,67 @@ msgstr "Najden stari format datoteke. Preberite ga z LyX 0.10.x!"
 msgid "Can't find conversion script."
 msgstr ""
 
-#: src/buffer.C:1212
+#: src/buffer.C:1214
 msgid "An error occured while running the conversion script."
 msgstr ""
 
-#: src/buffer.C:1239
+#: src/buffer.C:1240
 msgid "Reading of document is not complete"
 msgstr "Branje spisa ni dokonèano"
 
-#: src/buffer.C:1240
+#: src/buffer.C:1241
 msgid "Maybe the document is truncated"
 msgstr "Morda je spis odrezan"
 
-#: src/buffer.C:1244
+#: src/buffer.C:1245
 msgid "Not a LyX file!"
 msgstr "To ni datoteka za LyX!"
 
-#: src/buffer.C:1247
+#: src/buffer.C:1248
 msgid "Unable to read file!"
 msgstr "Datoteke ni moè prebrati!"
 
-#: src/buffer.C:1507
+#: src/buffer.C:1508
 #, fuzzy
 msgid "Abstract: "
 msgstr "Povzetek"
 
-#: src/buffer.C:1518
+#: src/buffer.C:1519
 #, fuzzy
 msgid "References: "
 msgstr " Sklic: "
 
-#: src/buffer.C:1632
+#: src/buffer.C:1633
 msgid "Error: Cannot write file:"
 msgstr "Napaka: Ni moè zapisati datoteke:"
 
-#: src/buffer.C:1662
+#: src/buffer.C:1663
 msgid "Error: Cannot open file: "
 msgstr "Napaka: Ni moè odpreti datoteke:"
 
-#: src/buffer.C:2265 src/buffer.C:2720
+#: src/buffer.C:2266 src/buffer.C:2721
 msgid "LYX_ERROR:"
 msgstr "NAPAKA_LYXA:"
 
-#: src/buffer.C:2265 src/buffer.C:2720
+#: src/buffer.C:2266 src/buffer.C:2721
 msgid "Cannot write file"
 msgstr "Ni moè zapisati datoteke"
 
-#: src/buffer.C:2353 src/buffer.C:2826
+#: src/buffer.C:2354 src/buffer.C:2827
 #, fuzzy
 msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Napaka: Napaèna globina za ukaz LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3101
+#: src/buffer.C:3114
 msgid "Running chktex..."
 msgstr "Izvaja se chktex..."
 
-#: src/buffer.C:3114
+#: src/buffer.C:3127
 msgid "chktex did not work!"
 msgstr "chktex ni deloval!"
 
-#: src/buffer.C:3115
+#: src/buffer.C:3128
 msgid "Could not run with file:"
 msgstr "Ni moè pognati z datoteko:"
 
@@ -9270,57 +9640,57 @@ msgstr "Uporabni¹ki imenik: "
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/frontends/controllers/ControlDocument.C:80
+#: src/frontends/controllers/ControlDocument.C:84
 #, fuzzy
 msgid "Document settings applied"
 msgstr "Spisi"
 
-#: src/frontends/controllers/ControlDocument.C:120
+#: src/frontends/controllers/ControlDocument.C:123
 msgid "Converting document to new document class..."
 msgstr "Spis se spreminja v nov razred spisa..."
 
-#: src/frontends/controllers/ControlDocument.C:128
+#: src/frontends/controllers/ControlDocument.C:131
 msgid "One paragraph couldn't be converted"
 msgstr "Enega odstavka ni moè spremeniti"
 
-#: src/frontends/controllers/ControlDocument.C:131
+#: src/frontends/controllers/ControlDocument.C:134
 #, fuzzy, c-format
 msgid "%1$s paragraphs couldn't be converted"
 msgstr " odstavkov ni moè spremeniti"
 
-#: src/frontends/controllers/ControlDocument.C:136
+#: src/frontends/controllers/ControlDocument.C:139
 msgid " paragraphs couldn't be converted"
 msgstr " odstavkov ni moè spremeniti"
 
 #. problem changing class
 #. -- warn user (to retain old style)
-#: src/frontends/controllers/ControlDocument.C:139
-#: src/frontends/controllers/ControlDocument.C:151
+#: src/frontends/controllers/ControlDocument.C:142
+#: src/frontends/controllers/ControlDocument.C:154
 msgid "Conversion Errors!"
 msgstr "Napake pri spreminjanju!"
 
-#: src/frontends/controllers/ControlDocument.C:140
+#: src/frontends/controllers/ControlDocument.C:143
 msgid "into chosen document class"
 msgstr "v izbrani razred spisa"
 
-#: src/frontends/controllers/ControlDocument.C:152
+#: src/frontends/controllers/ControlDocument.C:155
 msgid "Errors loading new document class."
 msgstr "Napaka pri nalaganju razreda novega dokumenta."
 
-#: src/frontends/controllers/ControlDocument.C:153
+#: src/frontends/controllers/ControlDocument.C:156
 msgid "Reverting to original document class."
 msgstr "Vraèamo se k izvornem razredu spisa."
 
-#: src/frontends/controllers/ControlDocument.C:161
+#: src/frontends/controllers/ControlDocument.C:164
 msgid "Do you want to save the current settings"
 msgstr "Ali ¾elite shraniti trenutne nastavitve"
 
-#: src/frontends/controllers/ControlDocument.C:162
+#: src/frontends/controllers/ControlDocument.C:165
 #, fuzzy
 msgid "for the document layout as default?"
 msgstr "Nastavitev videza spisa"
 
-#: src/frontends/controllers/ControlDocument.C:163
+#: src/frontends/controllers/ControlDocument.C:166
 #, fuzzy
 msgid "(they will be valid for any new document)"
 msgstr "Vstavite ime datoteke za novi spis"
@@ -9331,7 +9701,6 @@ msgid "Select external file"
 msgstr "Izberi naslednjo vrstico"
 
 #: src/frontends/controllers/ControlGraphics.C:84
-#: src/frontends/qt2/QGraphicsDialog.C:95
 #, fuzzy
 msgid "Select graphics file"
 msgstr "Izberi naslednjo vrstico"
@@ -9984,10 +10353,6 @@ msgstr "Grafika"
 #: src/frontends/qt2/QGraphics.C:244
 msgid "Scale%"
 msgstr "Razteg%"
-
-#: src/frontends/qt2/QGraphicsDialog.C:94
-msgid "Files (*)"
-msgstr "Datoteke (*)"
 
 #: src/frontends/qt2/QLPrintDialog.C:55
 msgid "PostScript files (*.ps)"
@@ -11994,6 +12359,31 @@ msgstr ""
 msgid "Opened Wrap Inset"
 msgstr "Odprta zabele¾ka"
 
+#: src/ispell.C:201 src/ispell.C:208 src/ispell.C:217
+msgid "Can't create pipe for spellchecker."
+msgstr ""
+
+#: src/ispell.C:222 src/ispell.C:227 src/ispell.C:232
+msgid "Can't open pipe for spellchecker."
+msgstr ""
+
+#: src/ispell.C:241
+msgid ""
+"Could not create an ispell process.\n"
+"You may not have the right languages installed."
+msgstr ""
+
+#. select returned error
+#: src/ispell.C:263
+msgid ""
+"The spell process returned an error.\n"
+"Perhaps it has been configured wrongly ?"
+msgstr ""
+
+#: src/ispell.C:372
+msgid "Could not communicate with the spell-checker program."
+msgstr ""
+
 #: src/kbsequence.C:157
 msgid "   options: "
 msgstr "  izbire: "
@@ -13329,3 +13719,6 @@ msgstr "Znak postavljen"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+#~ msgid "Files (*)"
+#~ msgstr "Datoteke (*)"
