@@ -16,8 +16,9 @@
 
 
 class Buffer;
-class TeXErrors;
+class DocIterator;
 class ErrorList;
+class TeXErrors;
 
 /**
  *  Loads a LyX file \c filename into \c Buffer
@@ -37,5 +38,9 @@ std::string const BufferFormat(Buffer const & buffer);
 void bufferErrors(Buffer const &, TeXErrors const &);
 ///
 void bufferErrors(Buffer const &, ErrorList const &);
+
+/// Count the number of words in the text between these two iterators
+int countWords(DocIterator const & from, DocIterator const & to);
+
 
 #endif // BUFFER_FUNCS_H

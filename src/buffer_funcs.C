@@ -17,6 +17,7 @@
 #include "buffer.h"
 #include "bufferlist.h"
 #include "bufferparams.h"
+#include "dociterator.h"
 #include "errorlist.h"
 #include "gettext.h"
 #include "LaTeX.h"
@@ -228,3 +229,26 @@ string const BufferFormat(Buffer const & buffer)
 	else
 		return "latex";
 }
+
+
+int countWords(DocIterator const & from, DocIterator const & to)
+{
+	int count = 0;
+	bool inword = false;
+	for (DocIterator dit = from ; dit != to ; dit.forwardPos()) {
+		// Copied and adapted from isLetter() in ControlSpellChecker
+		if (dit.inTexted()
+		    && dit.pos() != dit.lastpos()
+		    && dit.paragraph().isLetter(dit.pos())
+		    && !isDeletedText(dit.paragraph(), dit.pos())) {
+			if (!inword) {
+				++count;
+				inword = true;
+			}
+		} else if (inword)
+			inword = false;
+	}
+
+	return count;
+}
+

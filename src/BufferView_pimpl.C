@@ -958,6 +958,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_MARK_ON:
 	case LFUN_SETMARK:
 	case LFUN_CENTER:
+	case LFUN_WORDS_COUNT:
 		flag.enabled(true);
 		break;
 		
@@ -1130,6 +1131,35 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		bv_->center();
 		break;
 
+	case LFUN_WORDS_COUNT: {
+		DocIterator from, to;
+		if (cur.selection()) {
+			from = cur.selectionBegin();
+			to = cur.selectionEnd();
+		} else {
+			from = doc_iterator_begin(bv_->buffer()->inset());
+			to = doc_iterator_end(bv_->buffer()->inset());
+		}
+		int const count = countWords(from, to);
+		string message;
+		if (count != 1) {
+			if (cur.selection())
+				message = bformat(_("%1$s words in selection."),
+					  tostr(count));
+				else
+					message = bformat(_("%1$s words in document."), 
+							  tostr(count));
+		}
+		else {
+			if (cur.selection())
+				message = _("One word in selection.");
+			else			
+				message = _("One word in document.");
+		}
+
+		Alert::information(_("Count words"), message);
+	}
+		break;
 	default:
 		return false;
 	}

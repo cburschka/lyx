@@ -352,6 +352,8 @@ enum kb_action {
 	LFUN_INSET_REFRESH,
 	LFUN_NEXTBUFFER,
 	LFUN_PREVIOUSBUFFER,
+	// 270
+	LFUN_WORDS_COUNT,
 
 	LFUN_LASTACTION                  // end of the table
 };

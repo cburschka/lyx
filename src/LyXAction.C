@@ -339,6 +339,7 @@ void LyXAction::init()
 		{ LFUN_INSET_REFRESH, "", Noop },
 		{ LFUN_NEXTBUFFER, "buffer-next", ReadOnly },
 		{ LFUN_PREVIOUSBUFFER, "buffer-previous", ReadOnly },
+		{ LFUN_WORDS_COUNT, "words-count", ReadOnly },
 		{ LFUN_NOACTION, "", Noop }
 	};
 
