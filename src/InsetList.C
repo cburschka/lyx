@@ -24,13 +24,12 @@ using lyx::pos_type;
 
 using std::endl;
 using std::lower_bound;
-using std::upper_bound;
 
 
 namespace {
 
 struct MatchIt {
-	/// used by lower_bound and upper_bound
+	/// used by lower_bound
 	inline
 	int operator()(InsetList::InsetTable const & a,
 		       InsetList::InsetTable const & b) const
@@ -78,24 +77,24 @@ InsetList::const_iterator InsetList::end() const
 }
 
 
-InsetList::iterator
-InsetList::insetIterator(pos_type pos)
+InsetList::iterator InsetList::insetIterator(pos_type pos)
 {
 	InsetTable search_elem(pos, 0);
-	List::iterator it = lower_bound(list.begin(),
-					list.end(),
-					search_elem, MatchIt());
-	return it;
+	return lower_bound(list.begin(), list.end(), search_elem, MatchIt());
+}
+
+
+InsetList::const_iterator InsetList::insetIterator(pos_type pos) const
+{
+	InsetTable search_elem(pos, 0);
+	return lower_bound(list.begin(), list.end(), search_elem, MatchIt());
 }
 
 
 void InsetList::insert(InsetOld * inset, lyx::pos_type pos)
 {
-	InsetTable search_elem(pos, 0);
 	List::iterator end = list.end();
-	List::iterator it = lower_bound(list.begin(),
-					end,
-					search_elem, MatchIt());
+	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
 		lyxerr << "ERROR (InsetList::insert): "
 		       << "There is an inset in position: " << pos << endl;
@@ -107,12 +106,8 @@ void InsetList::insert(InsetOld * inset, lyx::pos_type pos)
 
 void InsetList::erase(pos_type pos)
 {
-	InsetTable search_elem(pos, 0);
 	List::iterator end = list.end();
-	List::iterator it =
-		lower_bound(list.begin(),
-			    end,
-			    search_elem, MatchIt());
+	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
 		delete it->inset;
 		list.erase(it);
@@ -122,12 +117,8 @@ void InsetList::erase(pos_type pos)
 
 InsetOld * InsetList::release(pos_type pos)
 {
-	InsetTable search_elem(pos, 0);
 	List::iterator end = list.end();
-	List::iterator it =
-		lower_bound(list.begin(),
-			    end,
-			    search_elem, MatchIt());
+	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
 		InsetOld * tmp = it->inset;
 		it->inset = 0;
@@ -139,12 +130,8 @@ InsetOld * InsetList::release(pos_type pos)
 
 InsetOld * InsetList::get(pos_type pos) const
 {
-	InsetTable search_elem(pos, 0);
 	List::const_iterator end = list.end();
-	List::const_iterator it =
-		lower_bound(list.begin(),
-			    end,
-			    search_elem, MatchIt());
+	List::const_iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos)
 		return it->inset;
 	return 0;
@@ -153,11 +140,8 @@ InsetOld * InsetList::get(pos_type pos) const
 
 void InsetList::increasePosAfterPos(pos_type pos)
 {
-	InsetTable search_elem(pos, 0);
 	List::iterator end = list.end();
-	List::iterator it = lower_bound(list.begin(),
-					end,
-					search_elem, MatchIt());
+	List::iterator it = insetIterator(pos);
 	for (; it != end; ++it) {
 		++it->pos;
 	}
@@ -166,31 +150,17 @@ void InsetList::increasePosAfterPos(pos_type pos)
 
 void InsetList::decreasePosAfterPos(pos_type pos)
 {
-	InsetTable search_elem(pos, 0);
 	List::iterator end = list.end();
-	List::iterator it = upper_bound(list.begin(),
-					end,
-					search_elem, MatchIt());
+	List::iterator it = insetIterator(pos);
 	for (; it != end; ++it) {
 		--it->pos;
 	}
 }
 
 
-void InsetList::deleteInsetsLyXText(BufferView * bv)
-{
-	List::iterator it = list.begin();
-	List::iterator end = list.end();
-	for (; it != end; ++it) {
-		if (it->inset)
-			it->inset->deleteLyXText(bv);
-	}
-}
-
-
 void InsetList::insetsOpenCloseBranch(BufferView * bv)
 {
-	BufferParams bp = bv->buffer()->params();
+	BufferParams const & bp = bv->buffer()->params();
 	List::iterator it = list.begin();
 	List::iterator end = list.end();
 	for (; it != end; ++it) {
@@ -204,5 +174,3 @@ void InsetList::insetsOpenCloseBranch(BufferView * bv)
 		}
 	}
 }
-
-

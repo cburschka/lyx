@@ -61,23 +61,25 @@ using std::ostringstream;
 
 
 Paragraph::Paragraph()
-	: y(0), height(0), pimpl_(new Paragraph::Pimpl(this))
+	: y(0), height(0), begin_of_body_(0),
+	  pimpl_(new Paragraph::Pimpl(this))
 {
 	itemdepth = 0;
 	params().clear();
 }
 
 
-Paragraph::Paragraph(Paragraph const & lp)
-	: y(0), height(0), text_(lp.text_), pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
+Paragraph::Paragraph(Paragraph const & par)
+	: y(0), height(0), text_(par.text_), begin_of_body_(par.begin_of_body_),
+	  pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
 {
 	itemdepth = 0;
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
-	layout_ = lp.layout();
+	layout_ = par.layout();
 
 	// copy everything behind the break-position to the new paragraph
-	insetlist = lp.insetlist;
+	insetlist = par.insetlist;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
@@ -87,26 +89,26 @@ Paragraph::Paragraph(Paragraph const & lp)
 }
 
 
-void Paragraph::operator=(Paragraph const & lp)
+void Paragraph::operator=(Paragraph const & par)
 {
 	// needed as we will destroy the pimpl_ before copying it
-	if (&lp != this)
+	if (&par != this)
 		return;
 
 	lyxerr << "Paragraph::operator=()" << endl;
 
-	text_ = lp.text_;
+	text_ = par.text_;
 
 	delete pimpl_;
-	pimpl_ = new Pimpl(*lp.pimpl_, this);
+	pimpl_ = new Pimpl(*par.pimpl_, this);
 
-	itemdepth = lp.itemdepth;
+	itemdepth = par.itemdepth;
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
-	layout_ = lp.layout();
+	layout_ = par.layout();
 
 	// copy everything behind the break-position to the new paragraph
-	insetlist = lp.insetlist;
+	insetlist = par.insetlist;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
@@ -114,7 +116,7 @@ void Paragraph::operator=(Paragraph const & lp)
 	}
 }
 
-// the destructor removes the new paragraph from the list
+
 Paragraph::~Paragraph()
 {
 	delete pimpl_;
@@ -384,7 +386,7 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 
 	LyXLayout_ptr const & lout = layout();
 
-	pos_type const body_pos = beginningOfBody();
+	pos_type const body_pos = beginOfBody();
 
 	LyXFont layoutfont;
 	if (pos < body_pos)
@@ -648,28 +650,36 @@ void Paragraph::applyLayout(LyXLayout_ptr const & new_layout)
 }
 
 
-int Paragraph::beginningOfBody() const
+int Paragraph::beginOfBody() const
 {
-	if (layout()->labeltype != LABEL_MANUAL)
-		return 0;
+	return begin_of_body_;
+}
+
+
+void Paragraph::setBeginOfBody()
+{
+	if (layout()->labeltype != LABEL_MANUAL) {
+		begin_of_body_ = 0;
+		return;
+	}
 
 	// Unroll the first two cycles of the loop
 	// and remember the previous character to
 	// remove unnecessary getChar() calls
 	pos_type i = 0;
-	if (i < size() && !isNewline(i)) {
+	pos_type end = size();
+	if (i < end && !isNewline(i)) {
 		++i;
 		char previous_char = 0;
 		char temp = 0;
-		if (i < size()) {
-			previous_char = getChar(i);
+		if (i < end) {
+			previous_char = text_[i];
 			if (!isNewline(i)) {
 				++i;
-				while (i < size() && previous_char != ' ') {
-					temp = getChar(i);
+				while (i < end && previous_char != ' ') {
+					temp = text_[i];
 					if (isNewline(i))
 						break;
-
 					++i;
 					previous_char = temp;
 				}
@@ -677,7 +687,7 @@ int Paragraph::beginningOfBody() const
 		}
 	}
 
-	return i;
+	begin_of_body_ = i;
 }
 
 
@@ -901,16 +911,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	LyXFont basefont;
 
 	// Maybe we have to create a optional argument.
-	pos_type body_pos;
-
-	// FIXME: can we actually skip this check and just call
-	// beginningOfBody() ??
-	if (style->labeltype != LABEL_MANUAL) {
-		body_pos = 0;
-	} else {
-		body_pos = beginningOfBody();
-	}
-
+	pos_type body_pos = beginOfBody();
 	unsigned int column = 0;
 
 	if (body_pos > 0) {
@@ -941,7 +942,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		}
 		if (!asdefault)
 			column += startTeXParParams(bparams, os, moving_arg);
-
 	}
 
 	for (pos_type i = 0; i < size(); ++i) {
@@ -980,8 +980,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		// rather than "\textXX{text }". (Asger)
 		if (open_font && c == ' ' && i <= size() - 2) {
 			LyXFont const & next_font = getFont(bparams, i + 1, outerfont);
-			if (next_font != running_font
-			    && next_font != font) {
+			if (next_font != running_font && next_font != font) {
 				font = next_font;
 			}
 		}
@@ -1617,12 +1616,6 @@ void Paragraph::setInsetOwner(UpdatableInset * inset)
 	for (; it != end; ++it)
 		if (it->inset)
 			it->inset->setOwner(inset);
-}
-
-
-void Paragraph::deleteInsetsLyXText(BufferView * bv)
-{
-	insetlist.deleteInsetsLyXText(bv);
 }
 
 

@@ -26,7 +26,7 @@ using std::endl;
 
 int numberOfSeparators(Paragraph const & par, Row const & row)
 {
-	pos_type const first = max(row.pos(), par.beginningOfBody());
+	pos_type const first = max(row.pos(), par.beginOfBody());
 	pos_type const last = row.endpos() - 1;
 	int n = 0;
 	for (pos_type p = first; p < last; ++p) {
@@ -51,7 +51,7 @@ int numberOfHfills(Paragraph const & par, Row const & row)
 			++first;
 	}
 
-	first = max(first, par.beginningOfBody());
+	first = max(first, par.beginOfBody());
 
 	int n = 0;
 
@@ -78,7 +78,7 @@ int numberOfLabelHfills(Paragraph const & par, Row const & row)
 			++first;
 	}
 
-	last = min(last, par.beginningOfBody());
+	last = min(last, par.beginOfBody());
 	int n = 0;
 
 	// last, because the end is ignored
@@ -110,7 +110,7 @@ bool hfillExpansion(Paragraph const & par, Row const & row, pos_type pos)
 
 	// in some labels it does not count
 	if (par.layout()->margintype != MARGIN_MANUAL
-	    && pos < par.beginningOfBody())
+	    && pos < par.beginOfBody())
 		return false;
 
 	// if there is anything between the first char of the row and

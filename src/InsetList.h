@@ -50,7 +50,9 @@ public:
 	///
 	const_iterator end() const;
 	///
-	iterator insetIterator(lyx::pos_type pos);
+	iterator insetIterator(lyx::pos_type pos); 
+	///
+	const_iterator insetIterator(lyx::pos_type pos) const;
 	///
 	void insert(InsetOld * inset, lyx::pos_type pos);
 	///
@@ -64,9 +66,7 @@ public:
 	///
 	void decreasePosAfterPos(lyx::pos_type pos);
 	///
-	void deleteInsetsLyXText(BufferView * bv);
-	///
-	void InsetList::insetsOpenCloseBranch(BufferView * bv);
+	void insetsOpenCloseBranch(BufferView * bv);
 
 private:
 	///

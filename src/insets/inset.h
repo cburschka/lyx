@@ -218,8 +218,6 @@ public:
 	int x() const { return xo_; }
 	///
 	int y() const { return yo_; }
-	///
-	virtual void deleteLyXText(BufferView *) const {}
 	/// returns the actual scroll-value
 	virtual int scroll(bool recursive = true) const;
 

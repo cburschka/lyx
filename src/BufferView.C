@@ -411,6 +411,8 @@ Language const * BufferView::getParentLanguage(InsetOld * inset) const
 Encoding const * BufferView::getEncoding() const
 {
 	LyXText * text = getLyXText();
+	if (!text)
+		return 0;
 	return text->cursorPar()->getFont(
 		buffer()->params(),
 		text->cursor.pos(),

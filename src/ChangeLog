@@ -1,3 +1,17 @@
+
+2003-11-13  André Pönitz  <poenitz@gmx.net>
+
+	* InsetList.[Ch]: remove deleteLyXText
+
+	* paragraph.[Ch]: cache beginOfBody position
+
+	* Bidi.C:
+	* text.C:
+	* text2.C:
+	* text3.C: remove superfluous update() calls
+
+	* vspace.C: cleanup
+
 2003-11-13  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView_pimpl.C (fitCursor): call screen().fitCursor()
@@ -8,18 +22,17 @@
 
 2003-11-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* src/LaTeXFeatures.C:
-	* src/LyXAction.C:
-	* src/MenuBackend.C:
-	* src/MenuBackend.h:
-	* src/dispatchresult.h:
-	* src/factory.C:
-	* src/lfuns.h:
-	* src/lyxfunc.C:
-	* src/lyxtextclass.C:
-	* src/lyxtextclass.h:
-	* src/text3.C: The Character Style /XML short
-	element patch.
+	* LaTeXFeatures.C:
+	* LyXAction.C:
+	* MenuBackend.C:
+	* MenuBackend.h:
+	* dispatchresult.h:
+	* factory.C:
+	* lfuns.h:
+	* lyxfunc.C:
+	* lyxtextclass.C:
+	* lyxtextclass.h:
+	* text3.C: The Character Style /XML short element patch.
 
 2003-11-11  Martin Vermeer  <martin.vermeer@hut.fi>
 

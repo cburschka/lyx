@@ -113,7 +113,7 @@ LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 	LyXLayout_ptr const & layout = pit->layout();
 #warning broken?
 	BufferParams const & params = bv()->buffer()->params();
-	pos_type const body_pos = pit->beginningOfBody();
+	pos_type const body_pos = pit->beginOfBody();
 
 	// We specialize the 95% common case:
 	if (!pit->getDepth()) {
@@ -209,7 +209,7 @@ void LyXText::setCharFont(
 	// Get concrete layout font to reduce against
 	LyXFont layoutfont;
 
-	if (pos < pit->beginningOfBody())
+	if (pos < pit->beginOfBody())
 		layoutfont = layout->labelfont;
 	else
 		layoutfont = layout->font;
@@ -287,7 +287,7 @@ void LyXText::makeFontEntriesLayoutSpecific(BufferParams const & params,
 
 	LyXFont layoutfont;
 	for (pos_type pos = 0; pos < psize; ++pos) {
-		if (pos < par.beginningOfBody())
+		if (pos < par.beginOfBody())
 			layoutfont = layout->labelfont;
 		else
 			layoutfont = layout->font;
@@ -481,7 +481,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	if (!selection.set()) {
 		// Determine basis font
 		LyXFont layoutfont;
-		if (cursor.pos() < cursorPar()->beginningOfBody()) {
+		if (cursor.pos() < cursorPar()->beginOfBody()) {
 			layoutfont = getLabelFont(cursorPar());
 		} else {
 			layoutfont = getLayoutFont(cursorPar());
@@ -1368,7 +1368,7 @@ float LyXText::getCursorX(ParagraphList::iterator pit, Row const & row,
 		cursor_vpos = (bidi.level(pos) % 2 == 0)
 			? bidi.log2vis(pos) : bidi.log2vis(pos) + 1;
 
-	pos_type body_pos = pit->beginningOfBody();
+	pos_type body_pos = pit->beginOfBody();
 	if (body_pos > 0 &&
 	    (body_pos > end || !pit->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
@@ -1465,7 +1465,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 
 	bool left_side = false;
 
-	pos_type body_pos = pit->beginningOfBody();
+	pos_type body_pos = pit->beginOfBody();
 	double last_tmpx = tmpx;
 
 	if (body_pos > 0 &&

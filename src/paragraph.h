@@ -143,8 +143,6 @@ public:
 	UpdatableInset * inInset() const;
 	///
 	void setInsetOwner(UpdatableInset * inset);
-	///
-	void deleteInsetsLyXText(BufferView *);
 
 	///
 	lyx::pos_type size() const { return text_.size(); }
@@ -204,7 +202,9 @@ public:
 	/// the paragraph alongside the text of the rest of the paragraph
 	/// (the body). This function returns the starting position of the
 	/// body of the text in the paragraph.
-	int beginningOfBody() const;
+	int beginOfBody() const;
+	/// recompute this value
+	void setBeginOfBody();
 
 	///
 	std::string const & getLabelstring() const;
@@ -346,6 +346,8 @@ private:
 	/// keeping this here instead of in the pimpl makes LyX >10% faster
 	// for average tasks as buffer loading/switching etc.
 	TextContainer text_;
+	/// end of label
+	int begin_of_body_;
 
 	struct Pimpl;
 	///

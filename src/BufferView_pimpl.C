@@ -358,7 +358,6 @@ void BufferView::Pimpl::redoCurrentBuffer()
 		resizeCurrentBuffer();
 		updateScrollbar();
 		owner_->updateLayoutChoice();
-		update();
 	}
 }
 
@@ -673,7 +672,6 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	bv_->text->setCursor(par.pit(),
 			     min(par->size(), saved_positions[i].par_pos));
 
-	update();
 	if (i > 0)
 		owner_->message(bformat(_("Moved to bookmark %1$s"), tostr(i)));
 }
@@ -719,7 +717,6 @@ void BufferView::Pimpl::center()
 	// updateScrollbar() currently. Never mind that this is a
 	// pretty obfuscated way of updating t->top_y()
 	top_y(new_y);
-	update();
 }
 
 
@@ -848,8 +845,6 @@ void BufferView::Pimpl::trackChanges()
 		update();
 		bv_->text->setCursor(0, 0);
 #warning changes FIXME
-		//moveCursorUpdate(false);
-
 		bool found = lyx::find::findNextChange(bv_);
 		if (found) {
 			owner_->getDialogs().show("changes");
@@ -1183,11 +1178,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_ACCEPT_ALL_CHANGES: {
 		bv_->text->setCursor(0, 0);
 #warning FIXME changes
-		//moveCursorUpdate(false);
-
 		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->acceptChange();
-
 		update();
 		break;
 	}
@@ -1195,11 +1187,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_REJECT_ALL_CHANGES: {
 		bv_->text->setCursor(0, 0);
 #warning FIXME changes
-		//moveCursorUpdate(false);
-
 		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->rejectChange();
-
 		update();
 		break;
 	}
@@ -1267,8 +1256,6 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 				   0);
 	}
 	bv_->cursor().innerText()->insertInset(inset);
-	update();
-
 	unFreezeUndo();
 	return true;
 }

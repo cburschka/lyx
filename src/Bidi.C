@@ -94,7 +94,7 @@ void Bidi::computeTables(Paragraph const & par,
 	int lev = 0;
 	bool rtl = false;
 	bool rtl0 = false;
-	pos_type const body_pos = par.beginningOfBody();
+	pos_type const body_pos = par.beginOfBody();
 
 	for (pos_type lpos = start_; lpos <= end_; ++lpos) {
 		bool is_space = par.isLineSeparator(lpos);

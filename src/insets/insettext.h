@@ -117,8 +117,6 @@ public:
 	///
 	void setViewCache(BufferView const * bv) const;
 	///
-	void deleteLyXText(BufferView *) const;
-	///
 	bool showInsetDialog(BufferView *) const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;

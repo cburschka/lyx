@@ -121,12 +121,17 @@ TabularFeature tabularFeature[] =
 };
 
 struct FindFeature {
-	FindFeature(LyXTabular::Feature feature) : feature_(feature) {}
+	///
+	FindFeature(LyXTabular::Feature feature)
+		: feature_(feature)
+	{}
+	///
 	bool operator()(TabularFeature & tf)
 	{
 		return tf.action == feature_;
 	}
 private:
+	///
 	LyXTabular::Feature feature_;
 };
 
@@ -361,7 +366,7 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int y,
 	if (rs > re)
 		swap(rs, re);
 
-	if ((column >= cs) && (column <= ce) && (row >= rs) && (row <= re)) {
+	if (column >= cs && column <= ce && row >= rs && row <= re) {
 		int w = tabular.getWidthOfColumn(cell);
 		int h = tabular.getAscentOfRow(row) + tabular.getDescentOfRow(row)-1;
 		pain.fillRectangle(x, y - tabular.getAscentOfRow(row) + 1,
@@ -789,8 +794,9 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			string::size_type op = 0;
 			int cell = 0;
 			int cells = paste_tabular->getNumberOfCells();
-			p = cols = 0;
-			while ((cell < cells) && (p < len) &&
+			p = 0;
+			cols = 0;
+			while (cell < cells && p < len &&
 			      (p = clip.find_first_of("\t\n", p)) != string::npos) {
 				if (p >= len)
 					break;
@@ -811,7 +817,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 				op = p;
 			}
 			// check for the last cell if there is no trailing '\n'
-			if ((cell < cells) && (op < len))
+			if (cell < cells && op < len)
 				paste_tabular->getCellInset(cell)->setText(clip.substr(op, len-op));
 		} else
 #else
@@ -1634,13 +1640,6 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, bool behind)
 }
 
 
-void InsetTabular::deleteLyXText(BufferView * /*bv*/) const
-{
-#warning this is strange, isnt it? But this is 1.3.x code...
-	//resizeLyXText(bv, recursive);
-}
-
-
 bool InsetTabular::showInsetDialog(BufferView * bv) const
 {
 	if (!the_locking_inset || !the_locking_inset->showInsetDialog(bv))
@@ -1773,19 +1772,22 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 	case LyXTabular::M_VALIGN_TOP:
 		flag = false;
 	case LyXTabular::VALIGN_TOP:
-		status.setOnOff(tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_TOP);
+		status.setOnOff(
+			tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_TOP);
 		break;
 
 	case LyXTabular::M_VALIGN_BOTTOM:
 		flag = false;
 	case LyXTabular::VALIGN_BOTTOM:
-		status.setOnOff(tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_BOTTOM);
+		status.setOnOff(
+			tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_BOTTOM);
 		break;
 
 	case LyXTabular::M_VALIGN_MIDDLE:
 		flag = false;
 	case LyXTabular::VALIGN_MIDDLE:
-		status.setOnOff(tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_MIDDLE);
+		status.setOnOff(
+			tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_MIDDLE);
 		break;
 
 	case LyXTabular::SET_LONGTABULAR:
@@ -1930,7 +1932,6 @@ bool InsetTabular::pasteSelection(BufferView * bv)
 			InsetText & inset = tabular.getCellInset(r2, c2);
 			inset = paste_tabular->getCellInset(r1, c1);
 			inset.setOwner(this);
-			inset.deleteLyXText(bv);
 			inset.markNew();
 		}
 	}

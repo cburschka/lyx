@@ -39,8 +39,7 @@ class LyXView;
 class LyXFunc : public boost::signals::trackable {
 public:
 	///
-	explicit
-	LyXFunc(LyXView *);
+	explicit LyXFunc(LyXView *);
 
 	/// LyX dispatcher, executes lyx actions.
 	void dispatch(FuncRequest const &, bool verbose = false);
@@ -91,8 +90,6 @@ private:
 	///
 	key_modifier::state meta_fake_bit;
 	///
-	void moveCursorUpdate();
-	///
 	void setupLocalKeymap();
 	/// Error status, only Dispatch can change this flag
 	mutable bool errorstat;
@@ -101,24 +98,20 @@ private:
 	    good reason to have this one as static in Dispatch? (Ale)
 	*/
 	mutable std::string dispatch_buffer;
-	/** Buffer to store messages and result data from getStatus
-	*/
+	/// Buffer to store messages and result data from getStatus
 	mutable std::string status_buffer;
 
 	/// send a post-dispatch status message
-	void sendDispatchMessage(std::string const & msg, FuncRequest const & ev, bool verbose);
+	void sendDispatchMessage(std::string const & msg,
+		FuncRequest const & ev, bool verbose);
 
 	// I think the following should be moved to BufferView. (Asger)
-
 	///
 	void menuNew(std::string const & argument, bool fromTemplate);
-
 	///
 	void open(std::string const &);
-
 	///
 	void doImport(std::string const &);
-
 	///
 	void closeBuffer();
 };

@@ -122,8 +122,6 @@ public:
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
 		     bool selectall = false);
 	///
-	void deleteLyXText(BufferView *) const;
-	///
 	void openLayoutDialog(BufferView *) const;
 	///
 	bool showInsetDialog(BufferView *) const;

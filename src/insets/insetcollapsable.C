@@ -343,12 +343,6 @@ void InsetCollapsable::setFont(BufferView * bv, LyXFont const & font,
 }
 
 
-void InsetCollapsable::deleteLyXText(BufferView * bv) const
-{
-	inset.deleteLyXText(bv);
-}
-
-
 void InsetCollapsable::getLabelList(Buffer const & buffer,
 				    std::vector<string> & list) const
 {

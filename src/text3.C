@@ -214,7 +214,7 @@ namespace {
 	}
 
 
-	void moveCursorUpdate(BufferView * bv, bool selecting)
+	void moveCursor(BufferView * bv, bool selecting)
 	{
 		LyXText * lt = bv->getLyXText();
 
@@ -226,8 +226,6 @@ namespace {
 
 		if (!lt->selection.set())
 			bv->haveSelection(false);
-
-//		bv->update();
 		bv->switchKeyMap();
 	}
 
@@ -235,7 +233,7 @@ namespace {
 	void finishChange(BufferView * bv, bool selecting = false)
 	{
 		finishUndo();
-		moveCursorUpdate(bv, selecting);
+		moveCursor(bv, selecting);
 		bv->owner()->view_state_changed();
 	}
 
@@ -810,7 +808,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BREAKLINE: {
-		lyx::pos_type body = cursorPar()->beginningOfBody();
+		lyx::pos_type body = cursorPar()->beginOfBody();
 
 		// Not allowed by LaTeX (labels or empty par)
 		if (cursor.pos() <= body)
@@ -819,7 +817,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		replaceSelection(bv->getLyXText());
 		insertInset(new InsetNewline);
 		setCursor(cursorPar(), cursor.pos());
-		moveCursorUpdate(bv, false);
+		moveCursor(bv, false);
 		break;
 	}
 
@@ -832,7 +830,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		} else {
 			cutSelection(true, false);
 		}
-		moveCursorUpdate(bv, false);
+		moveCursor(bv, false);
 		bv->owner()->view_state_changed();
 		break;
 
@@ -1007,7 +1005,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			insertChar(' ');
 		else
 			doInsertInset(this, cmd, false, false);
-		moveCursorUpdate(bv, false);
+		moveCursor(bv, false);
 		break;
 
 	case LFUN_HYPHENATION:
@@ -1277,7 +1275,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			insertChar(datetmp[i]);
 
 		selection.cursor = cursor;
-		moveCursorUpdate(bv, false);
+		moveCursor(bv, false);
 		break;
 	}
 
@@ -1475,7 +1473,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 				TranslateAndInsert(*cit, this);
 
 		selection.cursor = cursor;
-		moveCursorUpdate(bv, false);
+		moveCursor(bv, false);
 
 		// real_current_font.number can change so we need to
 		// update the minibuffer

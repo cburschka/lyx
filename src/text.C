@@ -237,7 +237,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 	case MARGIN_MANUAL:
 		x += font_metrics::signedWidth(layout->labelindent, labelfont);
 		// The width of an empty par, even with manual label, should be 0
-		if (!pit->empty() && row.pos() >= pit->beginningOfBody()) {
+		if (!pit->empty() && row.pos() >= pit->beginOfBody()) {
 			if (!pit->getLabelWidthString().empty()) {
 				x += font_metrics::width(pit->getLabelWidthString(),
 					       labelfont);
@@ -253,7 +253,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 
 	case MARGIN_FIRST_DYNAMIC:
 		if (layout->labeltype == LABEL_MANUAL) {
-			if (row.pos() >= pit->beginningOfBody()) {
+			if (row.pos() >= pit->beginOfBody()) {
 				x += font_metrics::signedWidth(layout->leftmargin,
 							  labelfont);
 			} else {
@@ -411,7 +411,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		return;
 	}
 
-	pos_type const body_pos = pit->beginningOfBody();
+	pos_type const body_pos = pit->beginOfBody();
 
 
 	// Now we iterate through until we reach the right margin
@@ -538,7 +538,7 @@ void LyXText::fill(ParagraphList::iterator pit, Row & row, int workwidth) const
 	LyXLayout_ptr const & layout = pit->layout();
 	int w = leftMargin(pit, row);
 
-	pos_type const body_pos = pit->beginningOfBody();
+	pos_type const body_pos = pit->beginOfBody();
 	pos_type i = row.pos();
 
 	if (i < end) {
@@ -578,7 +578,7 @@ void LyXText::fill(ParagraphList::iterator pit, Row & row, int workwidth) const
 // returns the minimum space a manual label needs on the screen in pixel
 int LyXText::labelFill(ParagraphList::iterator pit, Row const & row) const
 {
-	pos_type last = pit->beginningOfBody();
+	pos_type last = pit->beginOfBody();
 
 	BOOST_ASSERT(last > 0);
 
@@ -1097,7 +1097,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 
 	bidi.computeTables(*pit, *bv()->buffer(), row);
 	if (is_rtl) {
-		pos_type body_pos = pit->beginningOfBody();
+		pos_type body_pos = pit->beginOfBody();
 		pos_type end = row.endpos();
 
 		if (body_pos > 0
@@ -1602,6 +1602,7 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 	}
 
 	// rebreak the paragraph
+	pit->setBeginOfBody();
 	int const ww = workWidth();
 	pos_type z = 0;
 	do {

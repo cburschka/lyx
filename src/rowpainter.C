@@ -429,7 +429,7 @@ void RowPainter::paintSelection()
 		pain_.fillRectangle(int(xo_), yo_,
 			int(x_), h, LColor::selection);
 
-	pos_type const body_pos = pit_->beginningOfBody();
+	pos_type const body_pos = pit_->beginOfBody();
 	pos_type const end = row_.endpos();
 	double tmpx = x_;
 
@@ -832,7 +832,7 @@ void RowPainter::paintLast()
 void RowPainter::paintText()
 {
 	pos_type const end = row_.endpos();
-	pos_type body_pos = pit_->beginningOfBody();
+	pos_type body_pos = pit_->beginOfBody();
 	if (body_pos > 0 &&
 		(body_pos > end || !pit_->isLineSeparator(body_pos - 1))) {
 		body_pos = 0;

@@ -51,12 +51,14 @@ void lyx_advance(string & data, string::size_type n)
 	data.erase(0, n);
 }
 
+
 /// return true when the input is at the end
 inline
 bool isEndOfData(string const & data)
 {
 	return ltrim(data).empty();
 }
+
 
 /**
  * nextToken -  return the next token in the input
@@ -73,73 +75,88 @@ bool isEndOfData(string const & data)
 char nextToken(string & data)
 {
 	data = ltrim(data);
+
 	if (data.empty())
 		return '\0';
-	else if (data[0] == '+') {
+
+	if (data[0] == '+') {
 		lyx_advance(data, 1);
 		return '+';
-	} else if (prefixIs(data, "plus")) {
+	}
+		
+	if (prefixIs(data, "plus")) {
 		lyx_advance(data, 4);
 		return '+';
-	} else if (data[0] == '-') {
+	}
+	
+	if (data[0] == '-') {
 		lyx_advance(data, 1);
 		return '-';
-	} else if (prefixIs(data, "minus")) {
+	}
+
+	if (prefixIs(data, "minus")) {
 		lyx_advance(data, 5);
 		return '-';
-	} else {
-		string::size_type i = data.find_first_not_of("0123456789.");
+	}
 
-		if (i != 0) {
-			if (number_index > 3) return 'E';
+	string::size_type i = data.find_first_not_of("0123456789.");
 
-			string buffer;
+	if (i != 0) {
+		if (number_index > 3)
+			return 'E';
 
-			// we have found some number
-			if (i == string::npos) {
-				buffer = data;
-				i = data.size() + 1;
-			} else
-				buffer = data.substr(0, i);
+		string buffer;
 
+		// we have found some number
+		if (i == string::npos) {
+			buffer = data;
+			i = data.size() + 1;
+		} else
+			buffer = data.substr(0, i);
+
+		lyx_advance(data, i);
+
+		if (isStrDbl(buffer)) {
+			number[number_index] = strToDbl(buffer);
+			++number_index;
+			return 'n';
+		}
+		return 'E';
+	}
+
+	i = data.find_first_not_of("abcdefghijklmnopqrstuvwxyz%");
+	if (i != 0) {
+		if (unit_index > 3)
+			return 'E';
+
+		string buffer;
+
+		// we have found some alphabetical string
+		if (i == string::npos) {
+			buffer = data;
+			i = data.size() + 1;
+		} else
+			buffer = data.substr(0, i);
+
+		// possibly we have "mmplus" string or similar
+		if (buffer.size() > 5 &&
+				(buffer.substr(2, 4) == string("plus") ||
+				 buffer.substr(2, 5) == string("minus")))
+		{
+			lyx_advance(data, 2);
+			unit[unit_index] = unitFromString(buffer.substr(0, 2));
+		} else {
 			lyx_advance(data, i);
-
-			if (isStrDbl(buffer)) {
-				number[number_index] = strToDbl(buffer);
-				++number_index;
-				return 'n';
-			} else return 'E';
+			unit[unit_index] = unitFromString(buffer);
 		}
 
-		i = data.find_first_not_of("abcdefghijklmnopqrstuvwxyz%");
-		if (i != 0) {
-			if (unit_index > 3) return 'E';
-
-			string buffer;
-
-			// we have found some alphabetical string
-			if (i == string::npos) {
-				buffer = data;
-				i = data.size() + 1;
-			} else
-				buffer = data.substr(0, i);
-
-			// possibly we have "mmplus" string or similar
-			if (buffer.size() > 5 && (buffer.substr(2,4) == string("plus") || buffer.substr(2,5) == string("minus"))) {
-				lyx_advance(data, 2);
-				unit[unit_index] = unitFromString(buffer.substr(0, 2));
-			} else {
-				lyx_advance(data, i);
-				unit[unit_index] = unitFromString(buffer);
-			}
-
-			if (unit[unit_index] != LyXLength::UNIT_NONE) {
-				++unit_index;
-				return 'u';
-			} else return 'E';  // Error
+		if (unit[unit_index] != LyXLength::UNIT_NONE) {
+			++unit_index;
+			return 'u';
 		}
 		return 'E';  // Error
 	}
+	return 'E';  // Error
 }
 
 
@@ -214,9 +231,8 @@ bool isValidGlueLength(string const & data, LyXGlueLength * result)
 		break;
 	case '+':
 		lyx_advance(buffer, 1);
-		// fall through
+		break;
 	default:
-		// no action
 		break;
 	}
 	// end of hack
@@ -293,10 +309,10 @@ bool isValidLength(string const & data, LyXLength * result)
 	number_index = unit_index = 1;  // entries at index 0 are sentinels
 
 	// construct "pattern" from "data"
-	while (!isEndOfData (buffer)) {
+	while (!isEndOfData(buffer)) {
 		if (pattern_index > 2)
 			return false;
-		pattern[pattern_index] = nextToken (buffer);
+		pattern[pattern_index] = nextToken(buffer);
 		if (pattern[pattern_index] == 'E')
 			return false;
 		++pattern_index;
@@ -345,8 +361,8 @@ VSpace::VSpace(string const & data)
 {
 	if (data.empty())
 		return;
-	double value;
-	string input  = rtrim(data);
+
+	string input = rtrim(data);
 
 	string::size_type const length = input.length();
 
@@ -355,19 +371,24 @@ VSpace::VSpace(string const & data)
 		input.erase(length - 1);
 	}
 
-	if      (prefixIs (input, "defskip"))    kind_ = DEFSKIP;
-	else if (prefixIs (input, "smallskip"))  kind_ = SMALLSKIP;
-	else if (prefixIs (input, "medskip"))    kind_ = MEDSKIP;
-	else if (prefixIs (input, "bigskip"))    kind_ = BIGSKIP;
-	else if (prefixIs (input, "vfill"))      kind_ = VFILL;
-	else if (isValidGlueLength(input, &len_)) kind_ = LENGTH;
+	if (prefixIs(input, "defskip"))
+		kind_ = DEFSKIP;
+	else if (prefixIs(input, "smallskip"))
+		kind_ = SMALLSKIP;
+	else if (prefixIs(input, "medskip"))
+		kind_ = MEDSKIP;
+	else if (prefixIs(input, "bigskip"))
+		kind_ = BIGSKIP;
+	else if (prefixIs(input, "vfill"))
+		kind_ = VFILL;
+	else if (isValidGlueLength(input, &len_))
+		kind_ = LENGTH;
 	else if (isStrDbl(input)) {
-		value = strToDbl(input);
 		// This last one is for reading old .lyx files
 		// without units in added_space_top/bottom.
 		// Let unit default to centimeters here.
 		kind_ = LENGTH;
-		len_  = LyXGlueLength(LyXLength(value, LyXLength::CM));
+		len_  = LyXGlueLength(LyXLength(strToDbl(input), LyXLength::CM));
 	}
 }
 
@@ -431,42 +452,29 @@ string const VSpace::asLyXCommand() const
 
 string const VSpace::asLatexCommand(BufferParams const & params) const
 {
-	string ret;
-
 	switch (kind_) {
 	case NONE:
-		break;
+		return string();
+
 	case DEFSKIP:
-		ret = params.getDefSkip().asLatexCommand(params);
-		break;
+		return params.getDefSkip().asLatexCommand(params);
+
 	case SMALLSKIP:
-		ret = keep_ ? "\\vspace*{\\smallskipamount}"
-			: "\\smallskip{}";
-		break;
+		return keep_ ? "\\vspace*{\\smallskipamount}" : "\\smallskip{}";
+
 	case MEDSKIP:
-		ret = keep_ ? "\\vspace*{\\medskipamount}"
-			: "\\medskip{}";
-		break;
+		return keep_ ? "\\vspace*{\\medskipamount}" : "\\medskip{}";
+
 	case BIGSKIP:
-		ret = keep_ ? "\\vspace*{\\bigskipamount}"
-			: "\\bigskip{}";
-		break;
+		return keep_ ? "\\vspace*{\\bigskipamount}" : "\\bigskip{}";
+
 	case VFILL:
-		ret = keep_ ? "\\vspace*{\\fill}"
-			: "\\vfill{}";
-		break;
-	case LENGTH:
-	{
-		string const lenstr = len_.asLatexString();
+		return keep_ ? "\\vspace*{\\fill}" : "\\vfill{}";
 
-		ret = keep_ ? "\\vspace*{" + lenstr + '}'
-			: "\\vspace{" + lenstr + '}';
+	case LENGTH: 
+		return keep_ ? "\\vspace*{" + len_.asLatexString() + '}'
+			: "\\vspace{" + len_.asLatexString() + '}';
 	}
-	break;
-
-	}
-
-	return ret;
 }
 
 
@@ -474,43 +482,33 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 int VSpace::inPixels(BufferView const & bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
-	int const default_height = defaultRowHeight(); // [pixels]
-
-	int retval = 0;
+	int const default_height = defaultRowHeight(); 
 
 	switch (kind_) {
 
 	case NONE:
 		// value for this is already set
-		break;
+		return 0;
 
 	case DEFSKIP:
-		retval = bv.buffer()->params().getDefSkip().inPixels(bv);
-		break;
+		return bv.buffer()->params().getDefSkip().inPixels(bv);
 
 	// This is how the skips are normally defined by LateX.
 	// But there should be some way to change this per document.
 	case SMALLSKIP:
-		retval = default_height / 4;
-		break;
+		return default_height / 4;
 
 	case MEDSKIP:
-		retval = default_height / 2;
-		break;
+		return default_height / 2;
 
 	case BIGSKIP:
-		retval = default_height;
-		break;
+		return default_height;
 
 	case VFILL:
 		// leave space for the vfill symbol
-		retval = 3 * default_height;
-		break;
+		return 3 * default_height;
 
 	case LENGTH:
-		retval = len_.len().inPixels(bv.workWidth());
-		break;
-
+		return len_.len().inPixels(bv.workWidth());
 	}
-	return retval;
 }
