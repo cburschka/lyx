@@ -35,6 +35,7 @@ extract_number () {
 
 	number=0
 	echo $1 | grep $2 >/dev/null || return
+	# It /is/ safe to use 'Z' as a delimiter here.
 	number=`echo $1 | sed "s/\([0-9]*\)[ ]*$2.*/Z\1/" | cut -d 'Z' -f 2`
 }
 
@@ -45,9 +46,9 @@ extract_number () {
 run_msgfmt () {
 	test $# -eq 2 || error 'run_msgfmt expects 2 args'
 
-	rm -f $gmofile
-	message=`$msgfmt --statistics -o $gmofile $1 2>&1 | grep "^[1-9]"`
-	#message=`make $gmofile 2>&1 | grep "^[1-9]"`
+	rm -f $2
+	message=`$msgfmt --statistics -o $2 $1 2>&1 | grep "^[1-9]"`
+	#message=`make $2 2>&1 | grep "^[1-9]"`
 	
 	extract_number "$message" translated
 	output='"msg_tr" => '$number
