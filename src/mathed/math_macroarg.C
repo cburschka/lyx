@@ -70,8 +70,9 @@ void MathMacroArgument::normalize(NormalStream & os) const
 void MathMacroArgument::substitute(MathMacro const & m)
 {
 	cell(0) = m.cell(number_ - 1);
-	for (MathArray::iterator it = cell(0).begin(); it != cell(0).end(); ++it)
-		it->nucleus()->handleFont(code_);
+	if (code_ != LM_TC_MIN)
+		for (MathArray::iterator it = cell(0).begin(); it != cell(0).end(); ++it)
+			it->nucleus()->handleFont(code_);
 	expanded_ = true;
 }
 

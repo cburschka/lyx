@@ -508,6 +508,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_CARON:        handleAccent(bv, "check"); break;
 	case LFUN_BREVE:        handleAccent(bv, "breve"); break;
 	case LFUN_VECTOR:       handleAccent(bv, "vec"); break;
+	case LFUN_UNDERBAR:     handleAccent(bv, "underbar"); break;
 
 	//  Math fonts
 	case LFUN_GREEK_TOGGLE: handleFont(bv, LM_TC_GREEK); break;

@@ -455,6 +455,7 @@ named_deco_struct deco_table[] = {
 	// Decorations
 	{"widehat",        angle,      3 },
 	{"widetilde",      tilde,      0 },
+	{"underbar",       hline,      0 },
 	{"underline",      hline,      0 },
 	{"overline",       hline,      0 },
 	{"underbrace",     brace,      1 },

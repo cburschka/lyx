@@ -135,6 +135,7 @@ key_type wordlist_array[] =
 	{"textstyle",  LM_TK_STY, LM_ST_TEXT},
 	{"tilde",  LM_TK_DECORATION, 0},
 	{"tt",  LM_TK_OLDFONT, LM_TC_TT},
+	{"underbar",  LM_TK_DECORATION, 0},
 	{"underbrace",  LM_TK_DECORATION, 0},
 	{"underline",  LM_TK_DECORATION, 0},
 	{"vdots",  LM_TK_DOTS, 0},

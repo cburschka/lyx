@@ -24,7 +24,10 @@ MathInset * MathDecorationInset::clone() const
 
 bool MathDecorationInset::upper() const
 {
-	return name_ != "underline" && name_ != "underbrace";
+	return
+			name_ != "underbar" &&
+			name_ != "underline" &&
+			name_ != "underbrace";
 }
 
 

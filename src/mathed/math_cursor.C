@@ -37,6 +37,7 @@
 #include "math_factory.h"
 #include "math_hullinset.h"
 #include "math_iterator.h"
+#include "math_macroarg.h"
 #include "math_mathmlstream.h"
 #include "math_parser.h"
 #include "math_replace.h"
@@ -86,7 +87,7 @@ struct Selection
 	{
 		MathCursorPos i1;
 		MathCursorPos i2;
-		cursor.getSelection(i1, i2); 
+		cursor.getSelection(i1, i2);
 		// shouldn'tt we assert on i1.par_ == i2.par_?
 		if (i1.idx_ == i2.idx_) {
 			data_ = MathGridInset(1, 1);
@@ -94,9 +95,9 @@ struct Selection
 		} else {
 			row_type r1, r2;
 			col_type c1, c2;
-			region(i1, i2, r1, r2, c1, c2); 
+			region(i1, i2, r1, r2, c1, c2);
 			data_ = MathGridInset(c2 - c1 + 1, r2 - r1 + 1);
-			for (row_type row = 0; row < data_.nrows(); ++row) 
+			for (row_type row = 0; row < data_.nrows(); ++row)
 				for (col_type col = 0; col < data_.ncols(); ++col) {
 					idx_type i = i1.par_->index(row + r1, col + c1);
 					data_.cell(data_.index(row, col)) = i1.par_->cell(i);
@@ -108,15 +109,15 @@ struct Selection
 	{
 		MathCursorPos i1;
 		MathCursorPos i2;
-		cursor.getSelection(i1, i2); 
+		cursor.getSelection(i1, i2);
 		if (i1.idx_ == i2.idx_)
 			i1.cell().erase(i1.pos_, i2.pos_);
 		else {
 			MathInset * p = i1.par_;
 			row_type r1, r2;
 			col_type c1, c2;
-			region(i1, i2, r1, r2, c1, c2); 
-			for (row_type row = r1; row <= r2; ++row) 
+			region(i1, i2, r1, r2, c1, c2);
+			for (row_type row = r1; row <= r2; ++row)
 				for (col_type col = c1; col <= c2; ++col)
 					p->cell(p->index(row, col)).erase();
 		}
@@ -134,7 +135,7 @@ struct Selection
 			MathGridInset * p = cursor.enclosingGrid(idx);
 			col_type const numcols = min(data_.ncols(), p->ncols() - p->col(idx));
 			row_type const numrows = min(data_.nrows(), p->nrows() - p->row(idx));
-			for (row_type row = 0; row < numrows; ++row) 
+			for (row_type row = 0; row < numrows; ++row)
 				for (col_type col = 0; col < numcols; ++col) {
 					idx_type i = p->index(row + p->row(idx), col + p->col(idx));
 					p->cell(i).push_back(data_.cell(data_.index(row, col)));
@@ -248,8 +249,8 @@ UpdatableInset * MathCursor::asHyperActiveInset() const
 
 bool MathCursor::isInside(MathInset const * p) const
 {
-	for (unsigned i = 0; i < Cursor_.size(); ++i) 
-		if (Cursor_[i].par_ == p) 
+	for (unsigned i = 0; i < Cursor_.size(); ++i)
+		if (Cursor_[i].par_ == p)
 			return true;
 	return false;
 }
@@ -312,7 +313,7 @@ bool MathCursor::left(bool sel)
 		}
 		pushRight(prevAtom());
 		return true;
-	} 
+	}
 
 	return posLeft() || idxLeft() || popLeft() || selection_;
 }
@@ -397,7 +398,7 @@ void MathCursor::home(bool sel)
 	selHandle(sel);
 	macroModeClose();
 	lastcode_ = LM_TC_MIN;
-	if (!par()->idxHome(idx(), pos())) 
+	if (!par()->idxHome(idx(), pos()))
 		popLeft();
 	dump("home 2");
 }
@@ -450,7 +451,7 @@ void MathCursor::insert(MathAtom const & t)
 }
 
 
-void MathCursor::niceInsert(MathAtom const & t) 
+void MathCursor::niceInsert(MathAtom const & t)
 {
 	selCut();
 	insert(t); // inserting invalidates the pointer!
@@ -488,7 +489,7 @@ void MathCursor::backspace()
 	if (pos() == 0) {
 		pullArg(false);
 		return;
-	}	
+	}
 
 	if (selection_) {
 		selDel();
@@ -498,7 +499,7 @@ void MathCursor::backspace()
 	MathScriptInset * p = prevAtom()->asScriptInset();
 	if (p) {
 		p->removeScript(p->hasUp());
-		// Don't delete if there is anything left 
+		// Don't delete if there is anything left
 		if (p->hasUp() || p->hasDown())
 			return;
 	}
@@ -534,7 +535,7 @@ void MathCursor::erase()
 	MathScriptInset * p = nextAtom()->asScriptInset();
 	if (p) {
 		p->removeScript(p->hasUp());
-		// Don't delete if there is anything left 
+		// Don't delete if there is anything left
 		if (p->hasUp() || p->hasDown())
 			return;
 	}
@@ -619,7 +620,7 @@ void MathCursor::macroModeClose()
 
 MathInset::difference_type MathCursor::macroNamePos() const
 {
-	for (MathInset::difference_type i = pos() - 1; i >= 0; --i) { 
+	for (MathInset::difference_type i = pos() - 1; i >= 0; --i) {
 		MathAtom & p = array().at(i);
 		if (p->code() == LM_TC_TEX && p->getChar() == '\\')
 			return i;
@@ -631,8 +632,8 @@ MathInset::difference_type MathCursor::macroNamePos() const
 string MathCursor::macroName() const
 {
 	string s;
-	MathInset::difference_type i = macroNamePos(); 
-	for ( ; i >= 0 && i < int(pos()); ++i) 
+	MathInset::difference_type i = macroNamePos();
+	for ( ; i >= 0 && i < int(pos()); ++i)
 		s += array().at(i)->getChar();
 	return s;
 }
@@ -771,13 +772,13 @@ void MathCursor::handleFont(MathTextCodes t)
 	if (selection_) {
 		MathCursorPos i1;
 		MathCursorPos i2;
-		getSelection(i1, i2); 
+		getSelection(i1, i2);
 		if (i1.idx_ == i2.idx_) {
 			MathArray & ar = i1.cell();
 			for (MathInset::pos_type pos = i1.pos_; pos != i2.pos_; ++pos)
 				ar.at(pos)->handleFont(t);
 		}
-	} else 
+	} else
 		lastcode_ = (lastcode_ == t) ? LM_TC_VAR : t;
 }
 
@@ -851,6 +852,12 @@ bool MathCursor::inMacroMode() const
 }
 
 
+bool MathCursor::inMacroArgMode() const
+{
+	return pos() > 0 && prevAtom()->getChar() == '#';
+}
+
+
 bool MathCursor::selection() const
 {
 	return selection_;
@@ -891,7 +898,7 @@ void MathCursor::pullArg(bool goright)
 	if (popLeft()) {
 		plainErase();
 		array().insert(pos(), a);
-		if (goright) 
+		if (goright)
 			pos() += a.size();
 	}
 }
@@ -903,7 +910,7 @@ void MathCursor::normalize()
 	{
 		MathIterator it = ibegin(formula()->par().nucleus());
 		MathIterator et = iend(formula()->par().nucleus());
-		for ( ; it != et; ++it) 
+		for ( ; it != et; ++it)
 			if (it.par()->asBoxInset())
 				it.par()->asBoxInset()->rebreak();
 	}
@@ -1031,7 +1038,7 @@ void MathCursor::idxPrev()
 
 void MathCursor::splitCell()
 {
-	if (idx() + 1 == par()->nargs()) 
+	if (idx() + 1 == par()->nargs())
 		return;
 	MathArray ar = array();
 	ar.erase(0, pos());
@@ -1217,7 +1224,7 @@ bool MathCursor::interpret(string const & s)
 		return interpret(s[0]);
 
 	//lyxerr << "char: '" << s[0] << "'  int: " << int(s[0]) << endl;
-	//owner_->getIntl()->getTrans().TranslateAndInsert(s[0], lt);	
+	//owner_->getIntl()->getTrans().TranslateAndInsert(s[0], lt);
 	//lyxerr << "trans: '" << s[0] << "'  int: " << int(s[0]) << endl;
 
 	if (s.size() >= 5 && s.substr(0, 5) == "cases") {
@@ -1306,27 +1313,25 @@ bool MathCursor::script(bool up)
 
 bool MathCursor::interpret(char c)
 {
-
-	// Removed super/subscript handling from here  to ::script -MV
+	if (inMacroArgMode()) {
+		--pos();
+		plainErase();
+		if ('1' <= c && c <= '9')
+			insert(MathAtom(new MathMacroArgument(c - '0')));
+		else {
+			insert(MathAtom(new MathSpecialCharInset('#')));
+			interpret(c); // try again
+		}
+		return true;
+	}
 
 	// handle macroMode
 	if (inMacroMode()) {
 		string name = macroName();
 
-		if (name == "\\" && c == '#') {
-			insert(c, LM_TC_TEX);
-			return true;
-		}
-
 		if (name == "\\" && c == '\\') {
 			backspace();
 			interpret("\\backslash");
-			return true;
-		}
-
-		if (name == "\\#" && '1' <= c && c <= '9') {
-			insert(c, LM_TC_TEX);
-			macroModeClose();
 			return true;
 		}
 
@@ -1373,6 +1378,11 @@ bool MathCursor::interpret(char c)
 		return pos() != size();
 	}
 
+	if (c == '#') {
+		insert(c, LM_TC_TEX);
+		return true;
+	}
+
 /*
 	if (strchr("{}", c)) {
 		insert(c, LM_TC_TEX);
@@ -1389,8 +1399,8 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
-	if (strchr("#$%", c)) {
-		insert(MathAtom(new MathSpecialCharInset(c)));	
+	if (strchr("$%", c)) {
+		insert(MathAtom(new MathSpecialCharInset(c)));
 		lastcode_ = LM_TC_VAR;
 		return true;
 	}
@@ -1409,7 +1419,7 @@ bool MathCursor::interpret(char c)
 	if (c == '\\') {
 		insert(c, LM_TC_TEX);
 		//bv->owner()->message(_("TeX mode"));
-		return true;	
+		return true;
 	}
 
 	// no special circumstances, so insert the character without any fuss
@@ -1449,7 +1459,7 @@ void MathCursor::stripFromLastEqualSign()
 
 	// delete everything behind this position
 	ar.erase(et - ar.begin(), ar.size());
-	pos() = ar.size(); 
+	pos() = ar.size();
 }
 
 

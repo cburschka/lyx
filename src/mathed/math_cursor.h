@@ -124,8 +124,10 @@ public:
 	bool toggleLimits();
 	/// interpret name a name of a macro
 	void macroModeClose();
-	///
+	/// are we currently typing the name of a macro?
 	bool inMacroMode() const;
+	/// are we currently typing '#1' or '#2' or...?
+	bool inMacroArgMode() const;
 	
 	// Local selection methods
 	///
