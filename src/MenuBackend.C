@@ -81,8 +81,7 @@ MenuItem::MenuItem(Kind kind, string const & label,
 }
 
 
-MenuItem::MenuItem(Kind kind, string const & label, int action,
-		 bool optional = false)
+MenuItem::MenuItem(Kind kind, string const & label, int action, bool optional)
 	: kind_(kind), label_(label), action_(action), submenuname_(),
 	  optional_(optional)
 {}
