@@ -27,26 +27,27 @@
 # Font size menu
 #
 
+
 \bind "M-k k"			"font-size tiny"
-\bind "M-k S-P"			"font-size smaller"
+\bind "M-k S-P"			"font-size footnotesize"
 \bind "M-k p"			"font-size small"
 \bind "M-k o"			"font-size normal"
 \bind "M-k t"			"font-size normal"
 \bind "M-k s"			"font-size large"
 \bind "M-k S-S"			"font-size larger"
 \bind "M-k v"			"font-size huge"
-\bind "M-k S-V"			"font-size huger"
+\bind "M-k S-V"			"font-size giant"
 
 \bind "M-k 1"			"font-size tiny"
-\bind "M-k 2"			"font-size smallest"
-\bind "M-k 3"			"font-size smaller"
+\bind "M-k 2"			"font-size scriptsize"
+\bind "M-k 3"			"font-size footnotesize"
 \bind "M-k 4"			"font-size small"
 \bind "M-k 5"			"font-size normal"
 \bind "M-k 6"			"font-size large"
 \bind "M-k 7"			"font-size larger"
 \bind "M-k 8"			"font-size largest"
 \bind "M-k 9"			"font-size huge"
-\bind "M-k 0"			"font-size huger"
+\bind "M-k 0"			"font-size giant"
 
 \bind "M-k plus"		"font-size increase"
 \bind "M-k minus"		"font-size decrease"

@@ -1,3 +1,18 @@
+2001-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* layouts/extletter.layout: 
+	* layouts/extreport.layout: 
+	* layouts/extbook.layout: 
+	* layouts/extarticle.layout: new files from Herbert Voss. 
+
+	* bind/hu_menus.bind: removed.
+
+	* bind/pt_menus.bind: 
+	* bind/fi_menus.bind: 
+	* bind/de_menus.bind: 
+	* bind/menus.bind: fix M-s bindings to use LyX names for fonts and
+	not GUI names.
+
 2001-06-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* CREDITS: add Michael Schmitt
