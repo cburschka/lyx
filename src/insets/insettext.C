@@ -321,6 +321,8 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 		return;
 	}
 
+	bv->hideCursor();
+
 	if (!owner())
 		x += scroll();
 
@@ -339,17 +341,17 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	x += TEXT_TO_INSET_OFFSET;
 
-	RowList::iterator rowit = text_.rows().begin();
+	RowList::iterator rit = text_.rows().begin();
 	RowList::iterator end = text_.rows().end();
 
-	int y_offset = baseline - rowit->ascent_of_text();
-	int ph = pain.paperHeight();
+	int y_offset = baseline - rit->ascent_of_text();
+	int y2 = pain.paperHeight();
 	int first = 0;
 	int y = y_offset;
-	while (rowit != end && y + rowit->height() <= 0) {
-		y += rowit->height();
-		first += rowit->height();
-		++rowit;
+	while (rit != end && y + rit->height() <= 0) {
+		y += rit->height();
+		first += rit->height();
+		++rit;
 	}
 	if (y_offset < 0) {
 		text_.top_y(-y_offset);
@@ -363,14 +365,12 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	int yf = y_offset + first;
 	y = 0;
 
-	bv->hideCursor();
-
-	while (rowit != end && yf < ph) {
-		paintRows(*bv, text_, rowit,
-			y + y_offset + first, int(x), y + text_.top_y());
-		y += rowit->height();
-		yf += rowit->height();
-		++rowit;
+	while (rit != end && yf < y2) {
+		paintRows(*bv, text_, rit,
+			y + y_offset + first, x, y + text_.top_y());
+		y += rit->height();
+		yf += rit->height();
+		++rit;
 	}
 
 	text_.clearPaint();
@@ -2145,19 +2145,18 @@ void InsetText::selectSelectedWord(BufferView * bv)
 
 void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 {
-	if (the_locking_inset) {
+	if (the_locking_inset)
 		the_locking_inset->toggleSelection(bv, kill_selection);
-	}
 
 	int x = top_x + TEXT_TO_INSET_OFFSET;
 
-	RowList::iterator rowit = text_.rows().begin();
+	RowList::iterator rit = text_.rows().begin();
 	RowList::iterator end = text_.rows().end();
-	int y_offset = top_baseline - rowit->ascent_of_text();
+	int y_offset = top_baseline - rit->ascent_of_text();
 	int y = y_offset;
-	while ((rowit != end) && ((y + rowit->height()) <= 0)) {
-		y += rowit->height();
-		++rowit;
+	while (rit != end && y + rit->height() <= 0) {
+		y += rit->height();
+		++rit;
 	}
 	if (y_offset < 0)
 		y_offset = y;
