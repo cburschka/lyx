@@ -42,7 +42,7 @@ int RefInset::dispatch(FuncRequest const & cmd, idx_type, pos_type)
 		case LFUN_MOUSE_RELEASE:
 			if (cmd.extra == 3) {
 				lyxerr << "trying to goto ref" << cell(0) << "\n";
-				mathcursor->formula()->view()->owner()->getLyXFunc()->
+				mathcursor->formula()->view()->owner()->getLyXFunc().
 					dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
 				return 1; // dispatched
 			}

@@ -15,30 +15,30 @@
 #endif
 
 #include "insettabular.h"
+#include "insettext.h"
 
-#include "lyx_cb.h"
 #include "buffer.h"
+#include "BufferView.h"
 #include "commandtags.h"
-#include "lyxfunc.h"
 #include "debug.h"
-#include "LaTeXFeatures.h"
-#include "frontends/Painter.h"
-#include "frontends/font_metrics.h"
-#include "lyxtext.h"
-#include "frontends/LyXView.h"
-#include "insets/insettext.h"
-#include "debug.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "language.h"
-#include "BufferView.h"
-#include "undo_funcs.h"
+#include "LaTeXFeatures.h"
+#include "lyx_cb.h"
+#include "lyxfunc.h"
 #include "lyxlength.h"
-#include "ParagraphParameters.h"
 #include "lyxlex.h"
-#include "funcrequest.h"
+#include "lyxtext.h"
+#include "ParagraphParameters.h"
+#include "undo_funcs.h"
+#include "WordLangTuple.h"
 
-#include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
+#include "frontends/Dialogs.h"
+#include "frontends/font_metrics.h"
+#include "frontends/LyXView.h"
+#include "frontends/Painter.h"
 
 #include "support/LAssert.h"
 #include "support/lstrings.h"
@@ -710,7 +710,7 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 	if (the_locking_inset->unlockInsetInInset(bv, inset, lr)) {
 		if (inset->lyxCode() == TABULAR_CODE &&
 		    !the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE)) {
-			bv->owner()->getDialogs()->updateTabular(this);
+			bv->owner()->getDialogs().updateTabular(this);
 			oldcell = actcell;
 		}
 		return true;
@@ -845,7 +845,7 @@ bool InsetTabular::insetButtonRelease(BufferView * bv,
 		ret = the_locking_inset->insetButtonRelease(bv, x - inset_x,
 													y - inset_y, button);
 	if (button == mouse_button::button3 && !ret) {
-		bv->owner()->getDialogs()->showTabular(this);
+		bv->owner()->getDialogs().showTabular(this);
 		return true;
 	}
 	return ret;
@@ -1117,7 +1117,7 @@ InsetTabular::localDispatch(BufferView * bv, FuncRequest const & ev)
 	case LFUN_ENDBUFSEL:
 		break;
 	case LFUN_LAYOUT_TABULAR:
-		bv->owner()->getDialogs()->showTabular(this);
+		bv->owner()->getDialogs().showTabular(this);
 		break;
 	case LFUN_TABULAR_FEATURE:
 		if (!tabularFeatures(bv, arg))
@@ -1607,7 +1607,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 	     !the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE)) &&
 	    actcell != oldcell) {
 		InsetTabular * inset = const_cast<InsetTabular *>(this);
-		bv->owner()->getDialogs()->updateTabular(inset);
+		bv->owner()->getDialogs().updateTabular(inset);
 		oldcell = actcell;
 	}
 	in_reset_pos = 0;
@@ -2283,8 +2283,8 @@ LyXText * InsetTabular::getLyXText(BufferView const * bv,
 bool InsetTabular::showInsetDialog(BufferView * bv) const
 {
 	if (!the_locking_inset || !the_locking_inset->showInsetDialog(bv))
-		bv->owner()->getDialogs()
-			->showTabular(const_cast<InsetTabular *>(this));
+		bv->owner()->getDialogs().
+			showTabular(const_cast<InsetTabular *>(this));
 	return true;
 }
 
@@ -2299,7 +2299,7 @@ void InsetTabular::openLayoutDialog(BufferView * bv) const
 			return;
 		}
 	}
-	bv->owner()->getDialogs()->showTabular(
+	bv->owner()->getDialogs().showTabular(
 		const_cast<InsetTabular *>(this));
 }
 
@@ -2678,7 +2678,7 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 }
 
 
-WordLangTuple
+WordLangTuple const
 InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
 	nodraw(true);

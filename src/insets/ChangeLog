@@ -1,3 +1,40 @@
+2002-08-13  Angus Leeming  <leeming@lyx.org>
+
+	* insetbib.C:
+	* insetcite.C:
+	* inseterror.C:
+	* insetert.C:
+	* insetexternal.C:
+	* insetfloat.C:
+	* insetfloatlist.C:
+	* insetgraphics.C:
+	* insetinclude.C:
+	* insetindex.C:
+	* insetminipage.C:
+	* insetparent.C:
+	* insetref.C:
+	* insettabular.C:
+	* insettext.C:
+	* insettoc.C:
+	* inseturl.C:
+	changes due to the changed LyXView interface that now returns references
+	to member variables not pointers.
+
+2002-08-13  Angus Leeming  <leeming@lyx.org>
+
+	* inset.h:
+	* insetcollapsable.h:
+	* insetert.h:
+	* insettabular.h:
+	* insettext.h: forward-declare WordLangTuple
+	(selectNextWordToSpellcheck) constify return type.
+
+	* inset.C:
+	* insetcollapsable.C:
+	* insetert.C:
+	* insettabular.C:
+	* insettext.C: #include "WordLangTuple.h" and rearrange included files.
+	
 2002-08-12  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphicsParams.C: fix reading of lyxsize_type in 1.2.0 documents.

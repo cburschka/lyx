@@ -301,13 +301,13 @@ MathArray asArray(string const & str)
 }
 
 
-Dialogs * getDialogs()
+Dialogs & getDialogs()
 {
 	return mathcursor->formula()->view()->owner()->getDialogs();
 }
 
 
-LyXFunc * getLyXFunc()
+LyXFunc & getLyXFunc()
 {
 	return mathcursor->formula()->view()->owner()->getLyXFunc();
 }

@@ -77,23 +77,33 @@ public:
 	 */
 	boost::shared_ptr<BufferView> const & view() const;
 
-	/// return the LyX function handler for this view
-	LyXFunc * getLyXFunc() const;
-
 	/// return the buffer currently shown in this window
 	Buffer * buffer() const;
 
+	/// return the LyX function handler for this view
+	LyXFunc & getLyXFunc() { return *lyxfunc_.get(); }
+	///
+	LyXFunc const & getLyXFunc() const { return *lyxfunc_.get(); }
+
 	/// return the toolbar for this view
-	Toolbar * getToolbar() const;
+	Toolbar & getToolbar() { return *toolbar_.get(); }
+	///
+	Toolbar const & getToolbar() const { return *toolbar_.get(); }
 
 	/// return the menubar for this view
-	Menubar * getMenubar() const;
+	Menubar & getMenubar() { return *menubar_.get(); }
+	///
+	Menubar const & getMenubar() const { return *menubar_.get(); }
 
 	/// get access to the dialogs
-	Dialogs * getDialogs() { return dialogs_.get(); }
+	Dialogs & getDialogs() { return *dialogs_.get(); }
+	///
+	Dialogs const & getDialogs() const { return *dialogs_.get(); }
 
 	/// get this view's keyboard map handler
-	Intl * getIntl() const;
+	Intl & getIntl() { return *intl_.get(); }
+	///
+	Intl const & getIntl() const { return *intl_.get(); }
 
 	//@}
 
@@ -123,7 +133,7 @@ public:
 	void resetAutosaveTimer();
 
 protected:
-	/// view of a buffer. FuncRequestually there will be several.
+	/// view of a buffer. Eventtually there will be several.
 	boost::shared_ptr<BufferView> bufferview_;
 
 	/// view's menubar
@@ -131,16 +141,7 @@ protected:
 	/// view's toolbar
 	boost::scoped_ptr<Toolbar> toolbar_;
 	/// view's command buffer controller
-	boost::scoped_ptr<ControlCommandBuffer> controlcommand_;
-
-	/// keyboard mapping object
-	boost::scoped_ptr<Intl> intl_;
-
-	/// auto-saving of buffers
-	boost::scoped_ptr<Timeout> autosave_timeout_;
-
-	/// called on timeout
-	void autoSave();
+	boost::scoped_ptr<ControlCommandBuffer> const controlcommand_;
 
 private:
 	/**
@@ -150,6 +151,13 @@ private:
 	 */
 	virtual void setWindowTitle(string const & t, string const & it) = 0;
 
+	/// called on timeout
+	void autoSave();
+
+	/// keyboard mapping object
+	boost::scoped_ptr<Intl> const intl_;
+	/// auto-saving of buffers
+	boost::scoped_ptr<Timeout> const autosave_timeout_;
 	/// our function handler
 	boost::scoped_ptr<LyXFunc> lyxfunc_;
 	/// dialogs for this view

@@ -86,7 +86,7 @@ ControlTexinfo::getContents(texFileSuffix type, bool withFullPath) const
 
 void ControlTexinfo::viewFile(string const filename) const
 {
-	lv_.getDialogs()->showFile(filename);
+	lv_.getDialogs().showFile(filename);
 }
 
 

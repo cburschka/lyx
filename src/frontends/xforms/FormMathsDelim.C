@@ -93,7 +93,7 @@ void FormMathsDelim::apply()
 	ostringstream ost;
 	ost << delim_values[left] << ' ' << delim_values[right];
 
-	lv_->getLyXFunc()->
+	lv_->getLyXFunc().
 		dispatch(FuncRequest(LFUN_MATH_DELIM, ost.str().c_str()), false);
 }
 

@@ -24,6 +24,7 @@ extern "C" {
 }
 
 #include "pspell.h"
+#include "WordLangTuple.h"
 
 using std::endl;
 

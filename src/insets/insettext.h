@@ -231,8 +231,9 @@ public:
 	///
 	bool allowSpellcheck() { return true; }
 	///
-	WordLangTuple selectNextWordToSpellcheck(BufferView *,
-						float & value) const;
+	WordLangTuple const
+	selectNextWordToSpellcheck(BufferView *, float & value) const;
+	///
 	void selectSelectedWord(BufferView *);
 	///
 	void toggleSelection(BufferView *, bool kill_selection);

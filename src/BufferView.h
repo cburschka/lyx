@@ -18,7 +18,6 @@
 #include "undo.h"
 
 #include "insets/inset.h"
-#include "WordLangTuple.h"
 
 #include <boost/utility.hpp>
 
@@ -30,6 +29,7 @@ class LyXScreen;
 class Language;
 class Painter;
 class UpdatableInset;
+class WordLangTuple;
 
 ///
 class BufferView : boost::noncopyable {

@@ -46,7 +46,7 @@ string const InsetParent::getScreenLabel(Buffer const *) const
 
 void InsetParent::edit(BufferView * bv, int, int, mouse_button::state)
 {    
-	bv->owner()->getLyXFunc()->
+	bv->owner()->getLyXFunc().
 		dispatch(FuncRequest(LFUN_CHILDOPEN, getContents()));
 }
 

@@ -15,17 +15,21 @@
 #endif
 
 #include "inset.h"
-#include "debug.h"
+
 #include "BufferView.h"
-#include "support/lstrings.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "lyxcursor.h"
+#include "lyxfont.h"
+#include "lyxtext.h"
+#include "WordLangTuple.h"
+
 #include "frontends/Painter.h"
 #include "frontends/mouse_state.h"
-#include "funcrequest.h"
+
 #include "support/lstrings.h"
-#include "gettext.h"
-#include "lyxfont.h"
-#include "lyxcursor.h"
-#include "lyxtext.h"
+#include "support/lstrings.h"
 
 using std::endl;
 
@@ -358,8 +362,8 @@ LyXCursor const & Inset::cursor(BufferView * bv) const
 }
 
 
-WordLangTuple UpdatableInset::selectNextWordToSpellcheck(BufferView *bv,
-					    float & value) const
+WordLangTuple const
+UpdatableInset::selectNextWordToSpellcheck(BufferView *bv, float & value) const
 {
 	// we have to unlock ourself in this function by default!
 	bv->unlockInset(const_cast<UpdatableInset *>(this));

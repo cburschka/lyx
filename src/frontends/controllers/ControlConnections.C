@@ -95,13 +95,13 @@ Buffer const * ControlConnectBase::buffer() const
 
 LyXFunc & ControlConnectBase::lyxfunc()
 {
-	return *lv_.getLyXFunc();
+	return lv_.getLyXFunc();
 }
 
 
 LyXFunc const & ControlConnectBase::lyxfunc() const
 {
-	return *lv_.getLyXFunc();
+	return lv_.getLyXFunc();
 }
 
 

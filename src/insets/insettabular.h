@@ -215,8 +215,12 @@ public:
 	LyXCursor const & cursor(BufferView *) const;
 	///
 	bool allowSpellcheck() { return true; }
-	WordLangTuple selectNextWordToSpellcheck(BufferView *, float & value) const;
+	///
+	WordLangTuple const
+	selectNextWordToSpellcheck(BufferView *, float & value) const;
+	///
 	void selectSelectedWord(BufferView *);
+	///
 	void toggleSelection(BufferView *, bool kill_selection);
 	///
 	bool searchForward(BufferView *, string const &,

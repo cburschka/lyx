@@ -123,7 +123,7 @@ void QtView::update_view_state()
  
 void QtView::activated(int id)
 {
-	getLyXFunc()->dispatch(id, true);
+	getLyXFunc().dispatch(id, true);
 }
  
  

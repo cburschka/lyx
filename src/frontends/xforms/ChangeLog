@@ -1,3 +1,17 @@
+2002-08-13  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C:
+	* FormMathsDelim.C:
+	* FormMathsMatrix.C:
+	* FormMathsPanel.C:
+	* FormPreferences.C:
+	* Menubar_pimpl.C:
+	* Toolbar_pimpl.C:
+	* XFormsView.C:
+	* lyx_gui.C:
+	changes due to the changed LyXView interface that now returns references
+	to member variables not pointers.
+
 2002-08-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Menubar_pimpl.C (create_submenu): fix code to disable submenu

@@ -1,3 +1,11 @@
+2002-08-13  Angus Leeming  <leeming@lyx.org>
+
+	* LyXView.[Ch]:
+	(getLyXFunc, getToolbar, getMenubar, getDialogs, getIntl): all now
+	return a reference not a pointer.
+	(controlcommand_, intl_, autosave_timeout_): employ the
+	const scoped_ptr idiom.
+
 2002-08-12  Angus Leeming  <leeming@lyx.org>
 
 	* DialogBase.h: no longer derive from boost::signals::trackable.

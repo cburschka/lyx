@@ -39,7 +39,7 @@ void LyXFileDialog::done(int what)
 	}
 
 	if (what == QDialog::Accepted)
-		lv_->getLyXFunc()->dispatch(FuncRequest(action_, selectedFile().data()));
+		lv_->getLyXFunc().dispatch(FuncRequest(action_, selectedFile().data()));
 
 	delete this;
 }

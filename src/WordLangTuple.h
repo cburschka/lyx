@@ -9,7 +9,6 @@
 #ifndef WORD_LANG_TUPLE_H
 #define WORD_LANG_TUPLE_H
  
-#include <config.h>
 #include "LString.h" 
  
 /**
@@ -25,12 +24,12 @@ public:
 	{}
  
 	/// return the word
-	string const word() const {
+	string const & word() const {
 		return word_;
 	}
 
 	/// return its language code
-	string const lang_code() const {
+	string const & lang_code() const {
 		return code_;
 	}
 

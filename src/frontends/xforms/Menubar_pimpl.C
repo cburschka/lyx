@@ -232,7 +232,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 		if (i->kind() == MenuItem::Separator)
 			*last = "%l";
 		else if (!i->optional() ||
-			 !(view->getLyXFunc()->getStatus(i->action()).disabled()))
+			 !(view->getLyXFunc().getStatus(i->action()).disabled()))
 			last = it;
 
 	it = extra_labels.begin();
@@ -258,7 +258,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 		switch (item.kind()) {
 		case MenuItem::Command: {
 			FuncStatus const flag =
-				view->getLyXFunc()->getStatus(item.action());
+				view->getLyXFunc().getStatus(item.action());
 			// handle optional entries.
 			if (item.optional()
 			    && (flag.disabled())) {
@@ -402,7 +402,7 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 		// If the action value is too low, then it is not a
 		// valid action, but something else.
 		if (choice >= action_offset + 1) {
-			view->getLyXFunc()->dispatch(choice - action_offset, true);
+			view->getLyXFunc().dispatch(choice - action_offset, true);
 		} else {
 			lyxerr[Debug::GUI]
 				<< "MenuCallback: ignoring bogus action "

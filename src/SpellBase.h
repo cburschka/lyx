@@ -12,9 +12,8 @@
 
 #include "LString.h" // can't forward declare...
 
-#include "WordLangTuple.h"
- 
 class BufferParams;
+class WordLangTuple;
 
 /**
  * Base class of all spell checker implementations.

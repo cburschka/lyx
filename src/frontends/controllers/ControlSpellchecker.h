@@ -98,7 +98,6 @@ private:
 
 	/// The actual spellchecker object
 	SpellBase * speller_;
-
 };
 
 #endif // CONTROLSPELLCHECKER_H

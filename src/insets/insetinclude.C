@@ -169,7 +169,7 @@ Inset * InsetInclude::clone(Buffer const & buffer, bool) const
 
 void InsetInclude::edit(BufferView * bv, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs()->showInclude(this);
+	bv->owner()->getDialogs().showInclude(this);
 }
 
 

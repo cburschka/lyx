@@ -19,7 +19,6 @@
 #include "LString.h"
 #include "LColor.h"
 #include "frontends/mouse_state.h"
-#include "WordLangTuple.h"
 
 class LyXFont;
 class BufferView;
@@ -30,6 +29,7 @@ class LyXLex;
 class Paragraph;
 class LyXCursor;
 class FuncRequest;
+class WordLangTuple;
 
 struct LaTeXFeatures;
 
@@ -537,7 +537,8 @@ public:
 	///
 	virtual bool allowSpellcheck() { return false; }
 	///
-	virtual WordLangTuple selectNextWordToSpellcheck(BufferView *, float & value) const;
+	virtual WordLangTuple const
+	selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///
 	virtual void selectSelectedWord(BufferView *) { return; }
 	///

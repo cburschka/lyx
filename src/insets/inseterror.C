@@ -88,7 +88,7 @@ string const InsetError::editMessage() const
 
 void InsetError::edit(BufferView * bv, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs()->showError(this);
+	bv->owner()->getDialogs().showError(this);
 }
 
 

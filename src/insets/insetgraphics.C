@@ -373,7 +373,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 void InsetGraphics::edit(BufferView *bv, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs()->showGraphics(this);
+	bv->owner()->getDialogs().showGraphics(this);
 }
 
 

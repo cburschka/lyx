@@ -1,3 +1,10 @@
+2002-08-13  Angus Leeming  <leeming@lyx.org>
+
+	* ControlConnections.C:
+	* ControlTexinfo.C:
+	changes due to the changed LyXView interface that now returns references
+	to member variables not pointers.
+
 2002-08-12  Angus Leeming  <leeming@lyx.org>
 
 	* ControlConnections.[Ch]: (isReadonly): renamed as bufferIsReadonly.
@@ -50,7 +57,7 @@
 	* ControlSpellchecker.C: some cleanups
  
 	* ControlTabularCreate.C: s/LFUN_INSET_TABULAR/LFUN_TABULAR_INSERT/ 
- 
+ <
 2002-08-02  Edwin Leuven <leuven@fee.uva.nl>
 
 	* ControlParagraph.[Ch] (changedParagraph): new method invoked when
@@ -68,7 +75,7 @@
 2002-08-01  John Levon  <levon@movementarian.org>
 
 	* ControlSendto.C: writeFile() change
- 
+
 2002-08-01  John Levon  <levon@movementarian.org>
 
 	* ControlSpellchecker.h:

@@ -27,7 +27,7 @@ string const InsetIndex::getScreenLabel(Buffer const *) const
 
 void InsetIndex::edit(BufferView * bv, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs()->showIndex(this);
+	bv->owner()->getDialogs().showIndex(this);
 }
 
 

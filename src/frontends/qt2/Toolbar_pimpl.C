@@ -116,7 +116,7 @@ void Toolbar::Pimpl::update()
 		int action = p->second;
  
 		FuncStatus const status = 
-			owner_->getLyXFunc()->getStatus(action);
+			owner_->getLyXFunc().getStatus(action);
  
 		button->setToggleButton(true);
 		button->setOn(status.onoff(true));
@@ -124,7 +124,7 @@ void Toolbar::Pimpl::update()
 	}
 
 	if (combo_)
-		combo_->setEnabled(!owner_->getLyXFunc()->getStatus(LFUN_LAYOUT).disabled());
+		combo_->setEnabled(!owner_->getLyXFunc().getStatus(LFUN_LAYOUT).disabled());
 }
 
 
@@ -137,7 +137,7 @@ void Toolbar::Pimpl::button_selected(QToolButton * button)
 		return;
 	}
 
-	owner_->getLyXFunc()->dispatch(cit->second, true);
+	owner_->getLyXFunc().dispatch(cit->second, true);
 }
  
 
@@ -150,7 +150,7 @@ void Toolbar::Pimpl::changed_layout(string const & sel)
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
 		if (_((*cit)->name()) == sel) {
-			owner_->getLyXFunc()->dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()));
+			owner_->getLyXFunc().dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()));
 			return;
 		}
 	}

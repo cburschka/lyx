@@ -113,7 +113,7 @@ void LyXVC::registrer()
 			MakeDisplayPath(filename, 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
-			->getLyXFunc()->dispatch(LFUN_MENUWRITE);
+			->getLyXFunc().dispatch(LFUN_MENUWRITE);
 	}
 
 	// Maybe the save fails, or we answered "no". In both cases,
@@ -146,7 +146,7 @@ void LyXVC::checkIn()
 			MakeDisplayPath(vcs->owner()->fileName(), 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
-			->getLyXFunc()->dispatch(LFUN_MENUWRITE);
+			->getLyXFunc().dispatch(LFUN_MENUWRITE);
 	}
 
 	// Maybe the save fails, or we answered "no". In both cases,

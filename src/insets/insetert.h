@@ -114,7 +114,8 @@ public:
 	///
 	bool allowSpellcheck() { return false; }
 
-	WordLangTuple selectNextWordToSpellcheck(BufferView *, float &) const;
+	WordLangTuple const
+	selectNextWordToSpellcheck(BufferView *, float &) const;
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///

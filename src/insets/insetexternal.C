@@ -81,7 +81,7 @@ void InsetExternal::edit(BufferView * bv,
 			 int /*x*/, int /*y*/, mouse_button::state)
 {
 	view_ = bv;
-	view_->owner()->getDialogs()->showExternal(this);
+	view_->owner()->getDialogs().showExternal(this);
 }
 
 

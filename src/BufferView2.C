@@ -25,6 +25,7 @@
 #include "debug.h"
 #include "iterators.h"
 #include "lyxlex.h"
+#include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -612,13 +613,13 @@ int BufferView::unlockInset(UpdatableInset * inset)
 		// make sure we update the combo !
 		owner()->setLayout(getLyXText()->cursor.par()->layout()->name());
 		// Tell the paragraph dialog that we changed paragraph
-		owner()->getDialogs()->updateParagraph();
+		owner()->getDialogs().updateParagraph();
 		finishUndo();
 		return 0;
 	} else if (inset && theLockingInset() &&
 		   theLockingInset()->unlockInsetInInset(this, inset)) {
 		// Tell the paragraph dialog that we changed paragraph
-		owner()->getDialogs()->updateParagraph();
+		owner()->getDialogs().updateParagraph();
 		// owner inset has updated the layout combo
 		finishUndo();
 		return 0;

@@ -241,7 +241,7 @@ void Buffer::setReadonly(bool flag)
 	if (read_only != flag) {
 		read_only = flag;
 		updateTitles();
-		users->owner()->getDialogs()->updateBufferDependent(false);
+		users->owner()->getDialogs().updateBufferDependent(false);
 	}
 }
 

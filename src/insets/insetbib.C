@@ -112,7 +112,7 @@ string const InsetBibKey::getScreenLabel(Buffer const *) const
 
 void InsetBibKey::edit(BufferView * bv, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs()->showBibitem(this);
+	bv->owner()->getDialogs().showBibitem(this);
 }
 
 
@@ -279,7 +279,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 
 void InsetBibtex::edit(BufferView * bv, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs()->showBibtex(this);
+	bv->owner()->getDialogs().showBibtex(this);
 }
 
 

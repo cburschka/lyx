@@ -166,7 +166,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 		c = 0;
 	}
 
-	owner->getIntl()->getTransManager()
+	owner->getIntl().getTransManager()
 		.deadkey(c, get_accent(action).accent, TEXT(false));
 	// Need to clear, in case the minibuffer calls these
 	// actions
@@ -602,7 +602,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	// A few general toggles
 	switch (ev.action) {
 	case LFUN_TOOLTIPS_TOGGLE:
-		flag.setOnOff(owner->getDialogs()->tooltipsEnabled());
+		flag.setOnOff(owner->getDialogs().tooltipsEnabled());
 		break;
 
 	case LFUN_READ_ONLY_TOGGLE:
@@ -883,7 +883,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			}
 			finishUndo();
 			// Tell the paragraph dialog that we changed paragraph
-			owner->getDialogs()->updateParagraph();
+			owner->getDialogs().updateParagraph();
 		}
 	}
 	break;
@@ -1003,12 +1003,12 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_MENUPRINT:
-		owner->getDialogs()->showPrint();
+		owner->getDialogs().showPrint();
 		break;
 
 	case LFUN_EXPORT:
 		if (argument == "custom")
-			owner->getDialogs()->showSendto();
+			owner->getDialogs().showSendto();
 		else
 			Exporter::Export(owner->buffer(), argument, false);
 		break;
@@ -1042,7 +1042,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		else
 			p.setCmdName("listoftables");
 #endif
-		owner->getDialogs()->createTOC(p.getAsString());
+		owner->getDialogs().createTOC(p.getAsString());
 		break;
 	}
 
@@ -1059,7 +1059,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_MENUSEARCH:
-		owner->getDialogs()->showSearch();
+		owner->getDialogs().showSearch();
 		break;
 
 	case LFUN_REMOVEERRORS:
@@ -1079,7 +1079,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_FREE:
-		owner->getDialogs()->setUserFreeFont();
+		owner->getDialogs().setUserFreeFont();
 		break;
 
 	case LFUN_RECONFIGURE:
@@ -1103,11 +1103,11 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 #endif
 #endif
 	case LFUN_HELP_ABOUTLYX:
-		owner->getDialogs()->showAboutlyx();
+		owner->getDialogs().showAboutlyx();
 		break;
 
 	case LFUN_HELP_TEXINFO:
-		owner->getDialogs()->showTexinfo();
+		owner->getDialogs().showTexinfo();
 		break;
 
 	case LFUN_HELP_OPEN:
@@ -1172,7 +1172,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_VC_HISTORY:
 	{
-		owner->getDialogs()->showVCLogFile();
+		owner->getDialogs().showVCLogFile();
 		break;
 	}
 
@@ -1196,19 +1196,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_LATEX_LOG:
-		owner->getDialogs()->showLogFile();
+		owner->getDialogs().showLogFile();
 		break;
 
 	case LFUN_LAYOUT_DOCUMENT:
-		owner->getDialogs()->showDocument();
+		owner->getDialogs().showDocument();
 		break;
 
 	case LFUN_LAYOUT_PARAGRAPH:
-		owner->getDialogs()->showParagraph();
+		owner->getDialogs().showParagraph();
 		break;
 
 	case LFUN_LAYOUT_CHARACTER:
-		owner->getDialogs()->showCharacter();
+		owner->getDialogs().showCharacter();
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
@@ -1227,19 +1227,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	    break;
 
 	case LFUN_LAYOUT_PREAMBLE:
-		owner->getDialogs()->showPreamble();
+		owner->getDialogs().showPreamble();
 		break;
 
 	case LFUN_DROP_LAYOUTS_CHOICE:
-		owner->getToolbar()->openLayoutList();
+		owner->getToolbar().openLayoutList();
 		break;
 
 	case LFUN_MENU_OPEN_BY_NAME:
-		owner->getMenubar()->openByName(argument);
+		owner->getMenubar().openByName(argument);
 		break; // RVDK_PATCH_5
 
 	case LFUN_SPELLCHECK:
-		owner->getDialogs()->showSpellchecker();
+		owner->getDialogs().showSpellchecker();
 		break;
 
 	// --- lyxserver commands ----------------------------
@@ -1344,7 +1344,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_MATH_PANEL:
-		owner->getDialogs()->showMathPanel();
+		owner->getDialogs().showMathPanel();
 		break;
 
 	case LFUN_CITATION_CREATE:
@@ -1364,7 +1364,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			}
 			dispatch(FuncRequest(LFUN_CITATION_INSERT, p.getAsString()));
 		} else
-			owner->getDialogs()->createCitation(p.getAsString());
+			owner->getDialogs().createCitation(p.getAsString());
 	}
 	break;
 
@@ -1388,19 +1388,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_KMAP_OFF:		// keymap off
-		owner->getIntl()->KeyMapOn(false);
+		owner->getIntl().KeyMapOn(false);
 		break;
 
 	case LFUN_KMAP_PRIM:	// primary keymap
-		owner->getIntl()->KeyMapPrim();
+		owner->getIntl().KeyMapPrim();
 		break;
 
 	case LFUN_KMAP_SEC:		// secondary keymap
-		owner->getIntl()->KeyMapSec();
+		owner->getIntl().KeyMapSec();
 		break;
 
 	case LFUN_KMAP_TOGGLE:	// toggle keymap
-		owner->getIntl()->ToggleKeyMap();
+		owner->getIntl().ToggleKeyMap();
 		break;
 
 	case LFUN_SEQUENCE:
@@ -1415,7 +1415,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	break;
 
 	case LFUN_DIALOG_PREFERENCES:
-		owner->getDialogs()->showPreferences();
+		owner->getDialogs().showPreferences();
 		break;
 
 	case LFUN_SAVEPREFERENCES:
@@ -1486,7 +1486,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_FORKS_SHOW:
-		owner->getDialogs()->showForks();
+		owner->getDialogs().showForks();
 		break;
 
 	case LFUN_FORKS_KILL:
@@ -1501,7 +1501,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	}
 
 	case LFUN_TOOLTIPS_TOGGLE:
-		owner->getDialogs()->toggleTooltips();
+		owner->getDialogs().toggleTooltips();
 		break;
 
 	default:
@@ -1817,7 +1817,7 @@ void LyXFunc::closeBuffer()
 			// need this otherwise SEGV may occur while trying to
 			// set variables that don't exist
 			// since there's no current buffer
-			owner->getDialogs()->hideBufferDependent();
+			owner->getDialogs().hideBufferDependent();
 		} else {
 			owner->view()->buffer(bufferlist.first());
 		}

@@ -123,7 +123,7 @@ void Menubar::Pimpl::updateSubmenu(MenuItemInfo const & i)
 	for (; m != end; ++m) {
 	 	if (m->action() > 0) {
 			FuncStatus const status =
-				owner_->getLyXFunc()->getStatus(m->action());
+				owner_->getLyXFunc().getStatus(m->action());
 			if (!status.disabled())
 				enable = true;
 		}
@@ -146,7 +146,7 @@ void Menubar::Pimpl::updateItem(MenuItemInfo const & i)
 	if (i.id_ < 0)
 		return;
  
-	FuncStatus const status = owner_->getLyXFunc()->getStatus(i.id_);
+	FuncStatus const status = owner_->getLyXFunc().getStatus(i.id_);
 	i.parent_->setItemEnabled(i.id_, !status.disabled());
 	i.parent_->setItemChecked(i.id_, status.onoff(true));
 }

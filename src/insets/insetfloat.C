@@ -287,7 +287,7 @@ bool InsetFloat::insetAllowed(Inset::Code code) const
 bool InsetFloat::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv)) {
-		bv->owner()->getDialogs()->showFloat(const_cast<InsetFloat *>(this));
+		bv->owner()->getDialogs().showFloat(const_cast<InsetFloat *>(this));
 	}
 	return true;
 }

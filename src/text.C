@@ -28,6 +28,7 @@
 #include "language.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
+#include "WordLangTuple.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -2393,8 +2394,8 @@ bool LyXText::selectWordWhenUnderCursor(BufferView * bview,
 
 // This function is only used by the spellchecker for NextWord().
 // It doesn't handle LYX_ACCENTs and probably never will.
-WordLangTuple LyXText::selectNextWordToSpellcheck(BufferView * bview,
-						 float & value) const
+WordLangTuple const
+LyXText::selectNextWordToSpellcheck(BufferView * bview, float & value) const
 {
 	if (the_locking_inset) {
 		WordLangTuple word = the_locking_inset->selectNextWordToSpellcheck(bview, value);

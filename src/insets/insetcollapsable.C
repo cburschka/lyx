@@ -15,16 +15,18 @@
 #endif
 
 #include "insetcollapsable.h"
+#include "insettext.h"
+
+#include "BufferView.h"
+#include "debug.h"
 #include "gettext.h"
 #include "lyxfont.h"
-#include "BufferView.h"
-#include "frontends/Painter.h"
-#include "debug.h"
-#include "lyxtext.h"
-#include "frontends/font_metrics.h"
 #include "lyxlex.h"
+#include "lyxtext.h"
+#include "WordLangTuple.h"
 
-#include "insets/insettext.h"
+#include "frontends/font_metrics.h"
+#include "frontends/Painter.h"
 
 #include "support/LOstream.h"
 #include "support/lstrings.h"
@@ -672,8 +674,8 @@ bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
 }
 
 
-WordLangTuple InsetCollapsable::selectNextWordToSpellcheck(BufferView * bv,
-					      float & value) const
+WordLangTuple const
+InsetCollapsable::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
 	WordLangTuple word = inset.selectNextWordToSpellcheck(bv, value);
 	if (first_after_edit && word.word().empty())

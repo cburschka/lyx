@@ -160,7 +160,7 @@ class Qt2CB: public Base
 {
 public:
 	bool readOnly() const {
-		return controller().isReadonly();
+		return controller().bufferIsReadonly();
 	}
 
 protected:

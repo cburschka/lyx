@@ -238,10 +238,10 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		// Similarly, buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
-		owner_->getDialogs()->updateBufferDependent(true);
+		owner_->getDialogs().updateBufferDependent(true);
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
-		owner_->getDialogs()->hideBufferDependent();
+		owner_->getDialogs().hideBufferDependent();
 
 		// Also remove all remaining text's from the testcache.
 		// (there should not be any!) (if there is any it is a
@@ -274,7 +274,7 @@ bool BufferView::Pimpl::fitCursor()
 		ret = screen().fitCursor(bv_->text, bv_);
 	}
 
-	bv_->owner()->getDialogs()->updateParagraph();
+	bv_->owner()->getDialogs().updateParagraph();
 	if (ret)
 		updateScrollbar();
 	return ret;
@@ -447,7 +447,7 @@ int BufferView::Pimpl::scroll(long time)
 void BufferView::Pimpl::workAreaKeyPress(LyXKeySymPtr key,
 					 key_modifier::state state)
 {
-	bv_->owner()->getLyXFunc()->processKeySym(key, state);
+	bv_->owner()->getLyXFunc().processKeySym(key, state);
 }
 
 
@@ -545,7 +545,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	// we have to check this first
 	bool paste_internally = false;
 	if (button == mouse_button::button2 && bv_->getLyXText()->selection.set()) {
-		owner_->getLyXFunc()->dispatch(LFUN_COPY);
+		owner_->getLyXFunc().dispatch(LFUN_COPY);
 		paste_internally = true;
 	}
 
@@ -616,9 +616,9 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	// insert this
 	if (button == mouse_button::button2) {
 		if (paste_internally)
-			owner_->getLyXFunc()->dispatch(LFUN_PASTE);
+			owner_->getLyXFunc().dispatch(LFUN_PASTE);
 		else
-			owner_->getLyXFunc()->dispatch(FuncRequest(LFUN_PASTESELECTION, "paragraph"));
+			owner_->getLyXFunc().dispatch(FuncRequest(LFUN_PASTESELECTION, "paragraph"));
 		selection_possible = false;
 		return;
 	}
@@ -1272,11 +1272,11 @@ void BufferView::Pimpl::switchKeyMap()
 	    && !(bv_->theLockingInset()
 		 && bv_->theLockingInset()->lyxCode()== Inset::ERT_CODE))
 	{
-		if (owner_->getIntl()->keymap == Intl::PRIMARY)
-			owner_->getIntl()->KeyMapSec();
+		if (owner_->getIntl().keymap == Intl::PRIMARY)
+			owner_->getIntl().KeyMapSec();
 	} else {
-		if (owner_->getIntl()->keymap == Intl::SECONDARY)
-			owner_->getIntl()->KeyMapPrim();
+		if (owner_->getIntl().keymap == Intl::SECONDARY)
+			owner_->getIntl().KeyMapPrim();
 	}
 }
 
@@ -1617,7 +1617,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		break;
 
 	case LFUN_FREE:
-		owner_->getDialogs()->setUserFreeFont();
+		owner_->getDialogs().setUserFreeFont();
 		break;
 
 	case LFUN_FILE_INSERT:
@@ -1643,7 +1643,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		// function list/array with information about what
 		// functions needs arguments and their type.
 		if (ev.argument.empty()) {
-			owner_->getLyXFunc()->setErrorMessage(
+			owner_->getLyXFunc().setErrorMessage(
 				_("LyX function 'layout' needs an argument."));
 			break;
 		}
@@ -1661,7 +1661,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		}
 
 		if (!hasLayout) {
-			owner_->getLyXFunc()->setErrorMessage(
+			owner_->getLyXFunc().setErrorMessage(
 				string(N_("Layout ")) + ev.argument +
 				N_(" not known"));
 			break;
@@ -1750,7 +1750,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		break;
 
 	case LFUN_FONT_STATE:
-		owner_->getLyXFunc()->setMessage(currentState(bv_));
+		owner_->getLyXFunc().setMessage(currentState(bv_));
 		break;
 
 	case LFUN_UPCASE_WORD:
@@ -1823,7 +1823,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_REF_INSERT:
 		if (ev.argument.empty()) {
 			InsetCommandParams p("ref");
-			owner_->getDialogs()->createRef(p.getAsString());
+			owner_->getDialogs().createRef(p.getAsString());
 		} else {
 			InsetCommandParams p;
 			p.setFromString(ev.argument);
@@ -1881,7 +1881,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		    && lt->cursor.par()->isInset(lt->cursor.pos())
 		    && isHighlyEditableInset(lt->cursor.par()->getInset(lt->cursor.pos()))) {
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
-			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
+			owner_->getLyXFunc().setMessage(tmpinset->editMessage());
 			if (is_rtl)
 				tmpinset->edit(bv_, false);
 			else
@@ -1913,7 +1913,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		    lt->cursor.par()->isInset(lt->cursor.pos()) &&
 		    isHighlyEditableInset(lt->cursor.par()->getInset(lt->cursor.pos()))) {
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
-			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
+			owner_->getLyXFunc().setMessage(tmpinset->editMessage());
 			if (is_rtl)
 				tmpinset->edit(bv_);
 			else
@@ -2357,14 +2357,14 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 			update(lt,
 			       BufferView::SELECT
 			       | BufferView::FITCUR);
-			owner_->getLyXFunc()->setMessage(N_("Mark removed"));
+			owner_->getLyXFunc().setMessage(N_("Mark removed"));
 		} else {
 			beforeChange(lt);
 			lt->selection.mark(true);
 			update(lt,
 			       BufferView::SELECT
 			       | BufferView::FITCUR);
-			owner_->getLyXFunc()->setMessage(N_("Mark set"));
+			owner_->getLyXFunc().setMessage(N_("Mark set"));
 		}
 		lt->selection.cursor = lt->cursor;
 	}
@@ -2495,7 +2495,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		beforeChange(lt);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->selection.cursor = lt->cursor;
-		owner_->getLyXFunc()->setMessage(N_("Mark off"));
+		owner_->getLyXFunc().setMessage(N_("Mark off"));
 	}
 	break;
 
@@ -2508,7 +2508,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		lt->selection.mark(true);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->selection.cursor = lt->cursor;
-		owner_->getLyXFunc()->setMessage(N_("Mark on"));
+		owner_->getLyXFunc().setMessage(N_("Mark on"));
 	}
 	break;
 
@@ -2517,7 +2517,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		LyXText * lt = bv_->getLyXText();
 
 		if (!lt->selection.set()) {
-			if (owner_->getIntl()->getTransManager().backspace()) {
+			if (owner_->getIntl().getTransManager().backspace()) {
 				lt->backspace(bv_);
 				lt->selection.cursor = lt->cursor;
 				update(lt,
@@ -2720,7 +2720,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 			p.setCmdName("htmlurl");
 		else
 			p.setCmdName("url");
-		owner_->getDialogs()->createUrl(p.getAsString());
+		owner_->getDialogs().createUrl(p.getAsString());
 	}
 	break;
 
@@ -2818,7 +2818,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_TABULAR_INSERT:
 	{
 		if (ev.argument.empty()) {
-			owner_->getDialogs()->showTabularCreate();
+			owner_->getDialogs().showTabularCreate();
 			break;
 		}
 
@@ -2840,15 +2840,15 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	{
 		pos_type pos = bv_->getLyXText()->cursor.pos();
 		if (pos < bv_->getLyXText()->cursor.par()->size())
-			owner_->getLyXFunc()->setMessage(
+			owner_->getLyXFunc().setMessage(
 				tostr(bv_->getLyXText()->cursor.par()->getChar(pos)));
 		else
-			owner_->getLyXFunc()->setMessage("EOF");
+			owner_->getLyXFunc().setMessage("EOF");
 	}
 	break;
 
 	case LFUN_GETXY:
-		owner_->getLyXFunc()->setMessage(tostr(bv_->getLyXText()->cursor.x())
+		owner_->getLyXFunc().setMessage(tostr(bv_->getLyXText()->cursor.x())
 						 + ' '
 						 + tostr(bv_->getLyXText()->cursor.y()));
 		break;
@@ -2866,18 +2866,18 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	break;
 
 	case LFUN_GETLAYOUT:
-		owner_->getLyXFunc()->setMessage(tostr(bv_->getLyXText()->cursor.par()->layout()));
+		owner_->getLyXFunc().setMessage(tostr(bv_->getLyXText()->cursor.par()->layout()));
 		break;
 
 	case LFUN_GETFONT:
 	{
 		LyXFont & font = bv_->getLyXText()->current_font;
 		if (font.shape() == LyXFont::ITALIC_SHAPE)
-			owner_->getLyXFunc()->setMessage("E");
+			owner_->getLyXFunc().setMessage("E");
 		else if (font.shape() == LyXFont::SMALLCAPS_SHAPE)
-			owner_->getLyXFunc()->setMessage("N");
+			owner_->getLyXFunc().setMessage("N");
 		else
-			owner_->getLyXFunc()->setMessage("0");
+			owner_->getLyXFunc().setMessage("0");
 
 	}
 	break;
@@ -2903,10 +2903,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_OGONEK:
 		if (ev.argument.empty()) {
 			// As always...
-			owner_->getLyXFunc()->handleKeyFunc(ev.action);
+			owner_->getLyXFunc().handleKeyFunc(ev.action);
 		} else {
-			owner_->getLyXFunc()->handleKeyFunc(ev.action);
-			owner_->getIntl()->getTransManager()
+			owner_->getLyXFunc().handleKeyFunc(ev.action);
+			owner_->getIntl().getTransManager()
 				.TranslateAndInsert(ev.argument[0], bv_->getLyXText());
 			update(bv_->getLyXText(),
 			       BufferView::SELECT
@@ -3022,7 +3022,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		}
 
 		if (entry.empty()) {
-			owner_->getDialogs()->createIndex();
+			owner_->getDialogs().createIndex();
 			break;
 		}
 
@@ -3066,7 +3066,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 			delete inset;
 		else {
 			updateInset(inset, true);
-			bv_->owner()->getDialogs()->showInclude(inset);
+			bv_->owner()->getDialogs().showInclude(inset);
 		}
 	}
 	break;
@@ -3099,7 +3099,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 			}
 		}
 
-		bv_->owner()->getDialogs()->showThesaurus(arg);
+		bv_->owner()->getDialogs().showThesaurus(arg);
 	}
 		break;
 
@@ -3132,7 +3132,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		string::const_iterator cit = ev.argument.begin();
 		string::const_iterator end = ev.argument.end();
 		for (; cit != end; ++cit) {
-			owner_->getIntl()->getTransManager().
+			owner_->getIntl().getTransManager().
 				TranslateAndInsert(*cit, lt);
 		}
 
@@ -3182,7 +3182,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	break;
 
 	case LFUN_UNKNOWN_ACTION:
-		owner_->getLyXFunc()->setErrorMessage(N_("Unknown function!"));
+		owner_->getLyXFunc().setErrorMessage(N_("Unknown function!"));
 		break;
 
 	default:
@@ -3265,8 +3265,8 @@ void BufferView::Pimpl::smartQuote()
 
 	if (style->pass_thru ||
 		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
-		bv_->owner()->getLyXFunc()
-			->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
+		bv_->owner()->getLyXFunc().
+			dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 }
 
 
@@ -3288,7 +3288,7 @@ void BufferView::Pimpl::insertAndEditInset(Inset * inset)
 	if (insertInset(inset)) {
 		inset->edit(bv_);
 		if (gotsel)
-			owner_->getLyXFunc()->dispatch(LFUN_PASTESELECTION);
+			owner_->getLyXFunc().dispatch(LFUN_PASTESELECTION);
 	}
 	else
 		delete inset;

@@ -1,3 +1,15 @@
+2002-08-13  Angus Leeming  <leeming@lyx.org>
+
+	* Qt2Base.h: compile fix isReadonly -> bufferIsReadonly.
+
+	* FileDialog_private.C:
+	* Menubar_pimpl.C:
+	* Toolbar_pimpl.C:
+	* QtView.C:
+	* lyx_gui.C:
+	changes due to the changed LyXView interface that now returns references
+	to member variables not pointers.
+
 2002-08-12  Angus Leeming  <leeming@lyx.org>
 
 	* Menubar_pimpl.C: no need to #include "Dialogs.h". Remove semi-colon

@@ -320,19 +320,19 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 		break;
 
 	case MM_SUPER:
-		//lv_->getLyXFunc()->dispatch(LFUN_MATH_MODE);
-		lv_->getLyXFunc()->dispatch(LFUN_SUPERSCRIPT);
+		//lv_->getLyXFunc().dispatch(LFUN_MATH_MODE);
+		lv_->getLyXFunc().dispatch(LFUN_SUPERSCRIPT);
 		break;
 
 	case MM_SUB:
-		//lv_->getLyXFunc()->dispatch(LFUN_MATH_MODE);
-		lv_->getLyXFunc()->dispatch(LFUN_SUBSCRIPT);
+		//lv_->getLyXFunc().dispatch(LFUN_MATH_MODE);
+		lv_->getLyXFunc().dispatch(LFUN_SUBSCRIPT);
 		break;
 
 	case MM_SUBSUPER:
-		lv_->getLyXFunc()->dispatch(LFUN_SUBSCRIPT);
-		lv_->getLyXFunc()->dispatch(LFUN_LEFT);
-		lv_->getLyXFunc()->dispatch(LFUN_SUPERSCRIPT);
+		lv_->getLyXFunc().dispatch(LFUN_SUBSCRIPT);
+		lv_->getLyXFunc().dispatch(LFUN_LEFT);
+		lv_->getLyXFunc().dispatch(LFUN_SUPERSCRIPT);
 		break;
 
 	case MM_DELIM:
@@ -382,21 +382,21 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 void FormMathsPanel::insertSymbol(string const & sym, bool bs) const
 {
 	if (bs)
-		lv_->getLyXFunc()->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + sym));
+		lv_->getLyXFunc().dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + sym));
 	else
-		lv_->getLyXFunc()->dispatch(FuncRequest(LFUN_INSERT_MATH, sym));
+		lv_->getLyXFunc().dispatch(FuncRequest(LFUN_INSERT_MATH, sym));
 }
 
 
 void FormMathsPanel::dispatchFunc(kb_action action) const
 {
-	lv_->getLyXFunc()->dispatch(action);
+	lv_->getLyXFunc().dispatch(action);
 }
 
 
 void FormMathsPanel::mathDisplay() const
 {
-	lv_->getLyXFunc()->dispatch(LFUN_MATH_DISPLAY);
+	lv_->getLyXFunc().dispatch(LFUN_MATH_DISPLAY);
 }
 
 

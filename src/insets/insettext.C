@@ -15,34 +15,36 @@
 #endif
 
 #include "insettext.h"
-#include "paragraph.h"
-#include "lyxlex.h"
-#include "debug.h"
-#include "lyxfont.h"
+
 #include "buffer.h"
-#include "frontends/LyXView.h"
 #include "BufferView.h"
-#include "LaTeXFeatures.h"
-#include "frontends/Painter.h"
-#include "lyxtext.h"
-#include "lyxcursor.h"
 #include "CutAndPaste.h"
-#include "frontends/font_metrics.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "intl.h"
+#include "LaTeXFeatures.h"
 #include "LColor.h"
+#include "lyxfont.h"
+#include "lyxcursor.h"
+#include "lyxfind.h"
+#include "lyxfunc.h"
+#include "lyxlex.h"
 #include "lyxrow.h"
 #include "lyxrc.h"
-#include "intl.h"
-#include "trans_mgr.h"
-#include "frontends/screen.h"
-#include "gettext.h"
-#include "lyxfunc.h"
+#include "lyxtext.h"
+#include "paragraph.h"
 #include "ParagraphParameters.h"
+#include "trans_mgr.h"
 #include "undo_funcs.h"
-#include "lyxfind.h"
-#include "funcrequest.h"
+#include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
+#include "frontends/font_metrics.h"
+#include "frontends/LyXView.h"
+#include "frontends/Painter.h"
+#include "frontends/screen.h"
 
 #include "support/textutils.h"
 #include "support/LAssert.h"
@@ -714,7 +716,7 @@ void InsetText::edit(BufferView * bv, int x, int y, mouse_button::state button)
 	showInsetCursor(bv);
 
 	// Tell the paragraph dialog that we've entered an insettext.
-	bv->owner()->getDialogs()->updateParagraph();
+	bv->owner()->getDialogs().updateParagraph();
 }
 
 
@@ -1256,7 +1258,7 @@ InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 			}
 			lt->clearSelection();
 			for (string::size_type i = 0; i < ev.argument.length(); ++i) {
-				bv->owner()->getIntl()->getTransManager().
+				bv->owner()->getIntl().getTransManager().
 					TranslateAndInsert(ev.argument[i], lt);
 			}
 		}
@@ -1451,7 +1453,7 @@ InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 			// see if we found the layout number:
 			if (!hasLayout) {
 				FuncRequest lf(LFUN_MESSAGE, N_("Layout ") + ev.argument + N_(" not known"));
-				bv->owner()->getLyXFunc()->dispatch(lf);
+				bv->owner()->getLyXFunc().dispatch(lf);
 				break;
 			}
 
@@ -2566,7 +2568,7 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 }
 
 
-WordLangTuple
+WordLangTuple const
 InsetText::selectNextWordToSpellcheck(BufferView * bv,
 				      float & value) const
 {

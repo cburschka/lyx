@@ -118,7 +118,7 @@ void Toolbar::Pimpl::update()
 	ToolbarList::const_iterator end = toollist_.end();
 	for (; p != end; ++p) {
 		if (p->action == ToolbarDefaults::LAYOUTS && combox_) {
-			if (owner_->getLyXFunc()->getStatus(LFUN_LAYOUT).disabled())
+			if (owner_->getLyXFunc().getStatus(LFUN_LAYOUT).disabled())
 				combox_->deactivate();
 			else
 				combox_->activate();
@@ -128,7 +128,7 @@ void Toolbar::Pimpl::update()
 		if (!p->icon)
 			continue;
  
-		FuncStatus const status = owner_->getLyXFunc()->getStatus(p->action);
+		FuncStatus const status = owner_->getLyXFunc().getStatus(p->action);
 		if (status.onoff(true)) {
 			// I'd like to use a different color
 			// here, but then the problem is to
@@ -170,7 +170,7 @@ void Toolbar::Pimpl::layoutSelected()
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
 		if (_((*cit)->name()) == layoutguiname) {
-			owner_->getLyXFunc()->dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()));
+			owner_->getLyXFunc().dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()));
 			return;
 		}
 	}
@@ -234,7 +234,7 @@ void ToolbarCB(FL_OBJECT * ob, long ac)
 {
 	XFormsView * owner = static_cast<XFormsView *>(ob->u_vdata);
 
-	owner->getLyXFunc()->dispatch(int(ac), true);
+	owner->getLyXFunc().dispatch(int(ac), true);
 }
 
 

@@ -21,7 +21,6 @@
 #include "layout.h"
 #include "LColor.h"
 #include "insets/inset.h"
-#include "WordLangTuple.h"
 
 class Buffer;
 class BufferParams;
@@ -32,6 +31,7 @@ class Row;
 class Spacing;
 class UpdatableInset;
 class VSpace;
+class WordLangTuple;
 
 
 /**
@@ -293,7 +293,7 @@ public:
 	 to the beginning of this word.
 	 With SelectSelectedWord can this be highlighted really
 	 */
-	WordLangTuple selectNextWordToSpellcheck(BufferView *, float & value) const;
+	WordLangTuple const selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///
 	void selectSelectedWord(BufferView *);
 	/// returns true if par was empty and was removed

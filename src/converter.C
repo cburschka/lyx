@@ -852,7 +852,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 	LaTeX latex(command, name, buffer->filePath());
 	TeXErrors terr;
 	int result = latex.run(terr,
-			       bv ? bv->owner()->getLyXFunc() : 0);
+			       bv ? &bv->owner()->getLyXFunc() : 0);
 
 	if (bv) {
 		if ((result & LaTeX::ERRORS)) {

@@ -322,7 +322,7 @@ void InsetMinipage::pageWidth(LyXLength const & ll)
 bool InsetMinipage::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv))
-		bv->owner()->getDialogs()->showMinipage(const_cast<InsetMinipage *>(this));
+		bv->owner()->getDialogs().showMinipage(const_cast<InsetMinipage *>(this));
 	return true;
 }
 

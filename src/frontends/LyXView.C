@@ -45,17 +45,13 @@ string current_layout;
 
 
 LyXView::LyXView()
+	: controlcommand_(new ControlCommandBuffer(getLyXFunc())),
+	  intl_(new Intl),
+	  autosave_timeout_(new Timeout(5000)),
+	  lyxfunc_(new LyXFunc(this)),
+	  dialogs_(new Dialogs(this))
 {
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
-
-	lyxfunc_.reset(new LyXFunc(this));
-	intl_.reset(new Intl);
-
-	// Give the timeout some default sensible value.
-	autosave_timeout_.reset(new Timeout(5000));
-
-	dialogs_.reset(new Dialogs(this));
-	controlcommand_.reset(new ControlCommandBuffer(*getLyXFunc()));
 }
 
 
@@ -92,12 +88,6 @@ boost::shared_ptr<BufferView> const & LyXView::view() const
 }
 
 
-Toolbar * LyXView::getToolbar() const
-{
-	return toolbar_.get();
-}
-
-
 void LyXView::setLayout(string const & layout)
 {
 	toolbar_->setLayout(layout);
@@ -110,27 +100,9 @@ void LyXView::updateToolbar()
 }
 
 
-LyXFunc * LyXView::getLyXFunc() const
-{
-	return lyxfunc_.get();
-}
-
-
-Menubar * LyXView::getMenubar() const
-{
-	return menubar_.get();
-}
-
-
 void LyXView::updateMenubar()
 {
 	menubar_->update();
-}
-
-
-Intl * LyXView::getIntl() const
-{
-	return intl_.get();
 }
 
 

@@ -49,6 +49,7 @@
 #include "debug.h"
 #include "encoding.h"
 #include "ispell.h"
+#include "WordLangTuple.h"
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strcpy;

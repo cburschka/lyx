@@ -308,7 +308,7 @@ void initMath();
 class Dialogs;
 class LyXFunc;
 
-Dialogs * getDialogs();
-LyXFunc * getLyXFunc();
+Dialogs & getDialogs();
+LyXFunc & getLyXFunc();
 
 #endif

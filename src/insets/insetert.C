@@ -14,22 +14,23 @@
 #endif
 
 #include "insetert.h"
-#include "gettext.h"
-#include "lyxfont.h"
-#include "language.h"
+#include "insettext.h"
+
 #include "buffer.h"
 #include "BufferView.h"
-#include "frontends/LyXView.h"
-#include "lyxtext.h"
-#include "funcrequest.h"
 #include "debug.h"
-#include "lyxrow.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "language.h"
+#include "lyxfont.h"
 #include "lyxlex.h"
+#include "lyxrow.h"
+#include "lyxtext.h"
+#include "WordLangTuple.h"
 
-#include "insets/insettext.h"
-
-#include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
+#include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
 
 #include "support/LOstream.h"
 
@@ -653,7 +654,7 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 
 bool InsetERT::showInsetDialog(BufferView * bv) const
 {
-	bv->owner()->getDialogs()->showERT(const_cast<InsetERT *>(this));
+	bv->owner()->getDialogs().showERT(const_cast<InsetERT *>(this));
 	return true;
 }
 
@@ -675,8 +676,8 @@ void InsetERT::close(BufferView * bv) const
 }
 
 
-WordLangTuple InsetERT::selectNextWordToSpellcheck(BufferView * bv,
-						  float &) const
+WordLangTuple const
+InsetERT::selectNextWordToSpellcheck(BufferView * bv, float &) const
 {
 	bv->unlockInset(const_cast<InsetERT *>(this));
 	return WordLangTuple();

@@ -81,7 +81,7 @@ void InsetFloatList::read(Buffer const *, LyXLex & lex)
 
 void InsetFloatList::edit(BufferView * bv, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs()->showTOC(this);
+	bv->owner()->getDialogs().showTOC(this);
 }
 
 

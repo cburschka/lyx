@@ -100,7 +100,7 @@ void FormMathsMatrix::apply()
 	ostringstream ost;
 	ost << nx << ' ' << ny << ' ' << c << ' ' << sh;
 
-	lv_->getLyXFunc()->
+	lv_->getLyXFunc().
 		dispatch(FuncRequest(LFUN_INSERT_MATRIX, ost.str().c_str()));
 }
 

@@ -315,7 +315,7 @@ void InsetCitation::edit(BufferView * bv, int, int, mouse_button::state)
 	// Doesn't matter if there is no bv->buffer() entry in the map.
 	loading_buffer[bv->buffer()] = false;
 
-	bv->owner()->getDialogs()->showCitation(this);
+	bv->owner()->getDialogs().showCitation(this);
 }
 
 

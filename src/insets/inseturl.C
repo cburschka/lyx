@@ -23,7 +23,7 @@ InsetUrl::InsetUrl(InsetCommandParams const & p, bool)
 
 void InsetUrl::edit(BufferView * bv, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs()->showUrl(this);
+	bv->owner()->getDialogs().showUrl(this);
 }
 
 

@@ -118,7 +118,7 @@ void InsetFormulaBase::mutateToText()
 		view_->owner()->getIntl()->getTransManager().TranslateAndInsert(*cit, lt);
 
 	// remove ourselves
-	//view_->owner()->getLyXFunc()->dispatch(LFUN_ESCAPE);
+	//view_->owner()->getLyXFunc().dispatch(LFUN_ESCAPE);
 #endif
 }
 
@@ -303,7 +303,7 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 			return true;
 
 		// launch math panel for right mouse button
-		bv->owner()->getDialogs()->showMathPanel();
+		bv->owner()->getDialogs().showMathPanel();
 		return true;
 	}
 
@@ -740,7 +740,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, FuncRequest const & ev)
 	case LFUN_REF_INSERT:
 		//if (argument.empty()) {
 		//	InsetCommandParams p("ref");
-		//	owner_->getDialogs()->createRef(p.getAsString());
+		//	owner_->getDialogs().createRef(p.getAsString());
 		//} else {
 		//	InsetCommandParams p;
 		//	p.setFromString(argument);
@@ -754,7 +754,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, FuncRequest const & ev)
 		//
 		if (ev.argument.empty()) {
 			InsetCommandParams p("ref");
-			bv->owner()->getDialogs()->createRef(p.getAsString());
+			bv->owner()->getDialogs().createRef(p.getAsString());
 		} else {
 			//mathcursor->handleNest(new InsetRef2);
 			//mathcursor->insert(arg);
@@ -951,7 +951,7 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 		bv->getLyXText()->cutSelection(bv);
 		openNewInset(bv, f);
 	}
-	bv->owner()->getLyXFunc()->setMessage(N_("Math editor mode"));
+	bv->owner()->getLyXFunc().setMessage(N_("Math editor mode"));
 }
 
 
@@ -978,7 +978,7 @@ void mathDispatchMathMacro(BufferView * bv, string const & arg)
 	if (!bv->available())
 		return;
 	if (arg.empty())
-		bv->owner()->getLyXFunc()->setErrorMessage(N_("Missing argument"));
+		bv->owner()->getLyXFunc().setErrorMessage(N_("Missing argument"));
 	else {
 		string s = arg;
 		string const s1 = token(s, ' ', 1);

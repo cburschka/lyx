@@ -1,3 +1,34 @@
+2002-08-13  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView2.C:
+	* BufferView_pimpl.C:
+	* buffer.C:
+	* converter.C:
+	* importer.C:
+	* lyxfunc.C:
+	* lyxvc.C:
+	* toc.C:
+	* vc-backend.C:
+	changes due to the changed LyXView interface that now returns references
+	to member variables not pointers.
+
+2002-08-13  Angus Leeming  <leeming@lyx.org>
+
+	* WordLangTuple (word, lang_code): return references to strings,
+	not strings.
+
+	* BufferView.h:
+	* SpellBase.h:
+	* lyxtext.h: forward-declare WordLangTuple.
+
+	* BufferView2.C:
+	* ispell.C:
+	* pspell.C:
+	* text.C: #include "WordLangTuple.h".
+
+	* lyxtext.h:
+	* text.C: (selectNextWordToSpellcheck): constify return type.
+
 2002-08-12  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* buffer.C:

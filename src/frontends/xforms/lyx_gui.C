@@ -275,7 +275,7 @@ void lyx_gui::start(string const & batch, vector<string> files)
 
 	// FIXME: some code below needs moving
 
-	lyxserver = new LyXServer(view.getLyXFunc(), lyxrc.lyxpipes);
+	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
 
 	vector<string>::const_iterator cit = files.begin();
 	vector<string>::const_iterator end = files.end();
@@ -293,7 +293,7 @@ void lyx_gui::start(string const & batch, vector<string> files)
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {
-		view.getLyXFunc()->dispatch(batch);
+		view.getLyXFunc().dispatch(batch);
 	}
 
 	// enter the event loop

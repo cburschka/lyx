@@ -175,12 +175,14 @@ public:
 	void close(BufferView *) const;
 	///
 	bool allowSpellcheck() { return inset.allowSpellcheck(); }
-
-	WordLangTuple selectNextWordToSpellcheck(BufferView *, float &) const;
-
+	///
+	WordLangTuple const
+	selectNextWordToSpellcheck(BufferView *, float &) const;
+	///
 	void selectSelectedWord(BufferView * bv) {
 		inset.selectSelectedWord(bv);
 	}
+	///
 	void toggleSelection(BufferView * bv, bool kill_selection) {
 		inset.toggleSelection(bv, kill_selection);
 	}
