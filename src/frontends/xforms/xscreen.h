@@ -17,11 +17,10 @@
 #pragma interface
 #endif
 
-#include <X11/Xlib.h>
-
 #include "screen.h"
+#include <X11/Xlib.h> // for Pixmap, GC
 
-#include "XWorkArea.h"
+class XWorkArea;
 
 /** The class XScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
