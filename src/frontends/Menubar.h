@@ -41,9 +41,9 @@ public:
 	//I disable this temporarily until I find a nice way to make it work
 	//with compaq cxx. (Jean-Marc)
 	// Is this a new comment? (Lgb)
-private:
 	struct Pimpl;
 	friend struct Pimpl;
+private:
 	Pimpl * pimpl_;
 };
 #endif

@@ -1,5 +1,17 @@
 2000-07-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/frontends/Menubar.h: make "struct Pimpl;" public + the
+	friend as per Angus's patch posted to lyx-devel.
+
+	* src/ext_l10n.h: updated
+
+	* src/frontends/xforms/Toolbar_pimpl.C (updateLayoutList): run
+	gettext on the style string right before inserting them into the
+	combox. 
+
+	* autogen.sh: add code to extract style strings form layout files,
+	not good enough yet. 
+
 	* src/frontends/gtk/.cvsignore: add MAKEFILE
 
 	* src/MenuBackend.C (read): run the label strings through gettext
