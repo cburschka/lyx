@@ -1,6 +1,11 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfunc.C (dispatch): Fall through to the generic
+	Dialogs::show("preamble").
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
+	* lyxfunc.C (dispatch): Fall through to the generic
 	Dialogs::show("spellchecker").
 
 2004-03-31  Angus Leeming  <leeming@lyx.org>

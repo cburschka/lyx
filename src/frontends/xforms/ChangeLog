@@ -1,5 +1,13 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C (build): added preamble dialog.
+	* Dialogs2.C (showPreamble): removed.
+
+	* FormPreamble.[Ch]:
+	* forms/form_preamble.fd: converted to the Dialog-based scheme.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.C (build): added spellchecker dialog.
 	* Dialogs2.C (showSpellchecker): removed.
 

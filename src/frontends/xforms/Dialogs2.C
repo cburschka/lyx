@@ -12,30 +12,10 @@
 #include <config.h>
 
 #include "Dialogs.h"
-#include "controllers/GUI.h"
-#include "ButtonController.h"
-
-#include "xformsBC.h"
-#include "xforms_helpers.h"
-
-#include "ControlPreamble.h"
-#include "FormPreamble.h"
-#include "forms/form_preamble.h"
-
-typedef GUI<ControlPreamble, FormPreamble, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-PreambleDialog;
-
 
 struct Dialogs::Impl {
-	Impl(LyXView & lv, Dialogs & d);
-
-	PreambleDialog preamble;
+	Impl(LyXView &, Dialogs &) {}
 };
-
-
-Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: preamble(lv, d)
-{}
 
 
 void Dialogs::init_pimpl()
@@ -47,10 +27,4 @@ void Dialogs::init_pimpl()
 Dialogs::~Dialogs()
 {
 	delete pimpl_;
-}
-
-
-void Dialogs::showPreamble()
-{
-	pimpl_->preamble.controller().show();
 }

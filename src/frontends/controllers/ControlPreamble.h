@@ -12,29 +12,28 @@
 #ifndef CONTROLPREAMBLE_H
 #define CONTROLPREAMBLE_H
 
-
-#include "ControlDialog_impl.h"
-
+#include "Dialog.h"
 
 /** A controller for Preamble dialogs.
  */
-class ControlPreamble : public ControlDialogBD {
+class ControlPreamble : public Dialog::Controller {
 public:
 	///
-	ControlPreamble(LyXView &, Dialogs &);
+	ControlPreamble(Dialog &);
+	///
+	virtual bool initialiseParams(std::string const &);
+	///
+	virtual void clearParams();
+	///
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	///
 	std::string const & params() const;
 	///
 	void params(std::string const & newparams);
 private:
-	/// Get changed parameters and Dispatch them to the kernel.
-	virtual void apply();
-	/// set the params before show or update.
-	virtual void setParams();
-	/// clean-up on hide.
-	virtual void clearParams();
-
 	///
 	std::string params_;
 };

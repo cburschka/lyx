@@ -46,7 +46,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_ok
-callback: C_FormBaseOKCB
+callback: C_FormDialogView_OKCB
 argument: 0
 
 --------------------
@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_apply
-callback: C_FormBaseApplyCB
+callback: C_FormDialogView_ApplyCB
 argument: 0
 
 --------------------
@@ -82,7 +82,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close
-callback: C_FormBaseCancelCB
+callback: C_FormDialogView_CancelCB
 argument: 0
 
 --------------------
@@ -100,7 +100,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_SouthEast
 name: input_preamble
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 ==============================

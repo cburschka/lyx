@@ -12,15 +12,11 @@
 #ifndef GUIAPI_H
 #define GUIAPI_H
 
-
-
 class Dialogs;
 
 extern "C" {
 
 void gui_show_dialog(Dialogs *, char const * name, char const * data);
-
-void gui_ShowPreamble(Dialogs &);
 
 } // extern "C"
 

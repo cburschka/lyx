@@ -22,9 +22,4 @@ void gui_show_dialog(Dialogs * d, char const * name, char const * data)
 	d->show(name, data, 0);
 }
 
-void gui_ShowPreamble(Dialogs & d)
-{
-	d.showPreamble();
-}
-
 } // extern "C"

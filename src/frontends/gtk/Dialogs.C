@@ -34,6 +34,7 @@
 #include "ControlMath.h"
 #include "ControlNote.h"
 #include "ControlParagraph.h"
+#include "ControlPreamble.h"
 #include "ControlPrefs.h"
 #include "ControlPrint.h"
 #include "ControlRef.h"
@@ -73,6 +74,7 @@
 #include "FormMathsStyle.h"
 #include "FormNote.h"
 #include "FormParagraph.h"
+#include "FormPreamble.h"
 #include "FormPreferences.h"
 #include "FormPrint.h"
 #include "FormRef.h"
@@ -111,6 +113,7 @@
 #include "ams_nrel.xbm"
 #include "ams_ops.xbm"
 
+#include <boost/assert.hpp>
 #include <vector>
 
 using std::string;
@@ -134,8 +137,8 @@ char const * const dialognames[] = {
 "mathgreek", "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations",
 "mathamsoperators", "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
-"note", "paragraph", "prefs", "print", "ref", "sendto", "spellchecker",
-"tabular", "tabularcreate", "texinfo",
+"note", "paragraph", "preamble", "prefs", "print", "ref", "sendto",
+"spellchecker", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -165,12 +168,11 @@ bool Dialogs::isValidName(string const & name) const
 }
 
 
-Dialog * Dialogs::build(string const & name)
+Dialogs::DialogPtr Dialogs::build(string const & name)
 {
-	if (!isValidName(name))
-		return 0;
+	BOOST_ASSERT(isValidName(name));
 
-	Dialog * dialog = new Dialog(lyxview_, name);
+	DialogPtr dialog(new Dialog(lyxview_, name));
 	dialog->bc().view(new xformsBC(dialog->bc()));
 
 	if (name == "aboutlyx") {
@@ -450,6 +452,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlParagraph(*dialog));
 		dialog->setView(new FormParagraph(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+	} else if (name == "preamble") {
+		dialog->setController(new ControlPreamble(*dialog));
+		dialog->setView(new FormPreamble(*dialog));
+		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "prefs") {
 		dialog->setController(new ControlPrefs(*dialog));
 		dialog->setView(new FormPreferences(*dialog));

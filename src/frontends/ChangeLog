@@ -1,5 +1,14 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.h (showPreamble):
+	* guiapi.[Ch] (gui_Preamble): removed.
+
+	* Dialogs.[Ch] (build): return a boost::shared_ptr rather than
+	a raw Dialog*. Nicer, but also enables the Qt frontend to
+	re-use the document dialog.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.h (showSpellchecker):
 	* guiapi.[Ch] (gui_Spellchecker): removed.
 

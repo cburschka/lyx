@@ -89,7 +89,7 @@ Dialog * Dialogs::find_or_build(string const & name)
 	if (it != dialogs_.end())
 		return it->second.get();
 
-	dialogs_[name] = DialogPtr(build(name));
+	dialogs_[name] = build(name);
 	return dialogs_[name].get();
 }
 

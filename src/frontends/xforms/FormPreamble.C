@@ -11,8 +11,9 @@
 #include <config.h>
 
 #include "FormPreamble.h"
-#include "ControlPreamble.h"
 #include "forms/form_preamble.h"
+
+#include "controllers/ControlPreamble.h"
 
 #include "xforms_helpers.h"
 #include "xformsBC.h"
@@ -20,10 +21,10 @@
 #include "lyx_forms.h"
 
 
-typedef FormCB<ControlPreamble, FormDB<FD_preamble> > base_class;
+typedef FormController<ControlPreamble, FormView<FD_preamble> > base_class;
 
-FormPreamble::FormPreamble()
-	: base_class(_("LaTeX Preamble"))
+FormPreamble::FormPreamble(Dialog & parent)
+	: base_class(parent, _("LaTeX Preamble"))
 {}
 
 

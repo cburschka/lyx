@@ -1,5 +1,9 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* ControlPreamble.[Ch]: converted to the dialog-based scheme.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* ControlSpellchecker.C: converted to the dialog-based scheme.
 	Cleaned-up the program structure so that it behaves in similar manner
 	to all the other dialogs. There is still far too much of the core

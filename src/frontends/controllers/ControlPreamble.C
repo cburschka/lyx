@@ -10,36 +10,40 @@
 
 #include <config.h>
 
-
 #include "ControlPreamble.h"
-
-#include "ViewBase.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
-#include "gettext.h"
-
-#include "frontends/LyXView.h"
-
 
 using std::string;
 
 
-ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d)
+ControlPreamble::ControlPreamble(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-void ControlPreamble::apply()
+bool ControlPreamble::initialiseParams(std::string const &)
 {
-	if (!bufferIsAvailable())
-		return;
+	params_ = kernel().buffer().params().preamble;
+	return true;
+}
 
-	view().apply();
 
-	buffer()->params().preamble = params();
-	buffer()->markDirty();
-	lv_.message(_("LaTeX preamble set"));
+void ControlPreamble::clearParams()
+{
+	params_.erase();
+}
+
+
+void ControlPreamble::dispatchParams()
+{
+	// This can stay because we're going to throw the class away
+	// as soon as xforms 1.1 is released.
+	// Ie, there's no need to define LFUN_BUFFERPREAMBLE_APPLY.
+	Buffer & buffer = kernel().buffer();
+	buffer.params().preamble = params();
+	buffer.markDirty();
 }
 
 
@@ -52,16 +56,4 @@ string const & ControlPreamble::params() const
 void ControlPreamble::params(string const & newparams)
 {
 	params_ = newparams;
-}
-
-
-void ControlPreamble::setParams()
-{
-	params_ = buffer()->params().preamble;
-}
-
-
-void ControlPreamble::clearParams()
-{
-	params_.erase();
 }

@@ -62,13 +62,6 @@ public:
 	 */
 	void updateBufferDependent(bool) const ;
 
-	/**@name Dialog Access Signals.
-	   Put into some sort of alphabetical order */
-	//@{
-	///
-	void showPreamble();
-	//@}
-
 	/** \param name == "about" etc; an identifier used to
 	    launch a particular dialog.
 	    \param data is a string encoding of the data used to populate
@@ -117,15 +110,15 @@ private:
 	///
 	Dialog * find_or_build(std::string const & name);
 	///
-	Dialog * build(std::string const & name);
+	typedef boost::shared_ptr<Dialog> DialogPtr;
+	///
+	DialogPtr build(std::string const & name);
 
 	///
 	LyXView & lyxview_;
 	///
 	std::map<std::string, InsetBase *> open_insets_;
 
-	///
-	typedef boost::shared_ptr<Dialog> DialogPtr;
 	///
 	std::map<std::string, DialogPtr> dialogs_;
 

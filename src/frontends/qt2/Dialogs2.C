@@ -12,26 +12,11 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "Dialogs.h"
-#include "controllers/GUI.h"
-#include "ButtonController.h"
-
-#include "Qt2BC.h"
-
-// Here would be an appropriate point to lecture on the evils
-// of the Qt headers, those most fucked up of disgusting ratholes.
-// But I won't.
-#undef signals
-
 
 struct Dialogs::Impl {
-	Impl(LyXView & lv, Dialogs & d);
+	Impl(LyXView &, Dialogs &) {}
 };
-
-
-Dialogs::Impl::Impl(LyXView &, Dialogs &)
-{}
 
 
 void Dialogs::init_pimpl()
@@ -43,12 +28,4 @@ void Dialogs::init_pimpl()
 Dialogs::~Dialogs()
 {
 	delete pimpl_;
-}
-
-
-void Dialogs::showPreamble()
-{
-	show("document");
-	// Oh Angus, won't you help a poor child ?
-	//pimpl_->document.view()->showPreamble();
 }

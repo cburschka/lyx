@@ -12,18 +12,18 @@
 #ifndef FORMPREAMBLE_H
 #define FORMPREAMBLE_H
 
-
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlPreamble;
 struct FD_preamble;
 
 /** This class provides an XForms implementation of the Preamble Dialog.
  */
-class FormPreamble : public FormCB<ControlPreamble, FormDB<FD_preamble> > {
+class FormPreamble
+	: public FormController<ControlPreamble, FormView<FD_preamble> > {
 public:
 	///
-	FormPreamble();
+	FormPreamble(Dialog &);
 private:
 	/// Apply from dialog
 	virtual void apply();
