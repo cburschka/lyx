@@ -55,6 +55,7 @@ enum LayoutTags {
 	LT_LABELSEP,
 	LT_LABELSTRING,
 	LT_LABELSTRING_APPENDIX,
+	LT_LABELCOUNTER,
 	LT_LABELTYPE,
 	LT_ENDLABELSTRING,
 	LT_ENDLABELTYPE,
@@ -118,7 +119,7 @@ LyXLayout::LyXLayout ()
 
 
 // Reads a layout definition from file
-bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
+bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	keyword_item layoutTags[] = {
@@ -138,6 +139,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "itemsep",		LT_ITEMSEP },
 		{ "keepempty",		LT_KEEPEMPTY },
 		{ "labelbottomsep",	LT_LABEL_BOTTOMSEP },
+		{ "labelcounter",    LT_LABELCOUNTER },
 		{ "labelfont",		LT_LABELFONT },
 		{ "labelindent",	LT_LABELINDENT },
 		{ "labelsep",		LT_LABELSEP },
@@ -420,6 +422,11 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 				labelstring_appendix_ = trim(lexrc.getString());
 			break;
 
+		case LT_LABELCOUNTER: // name of counter to use
+			if (lexrc.next())
+				counter = trim(lexrc.getString());
+			break;
+
 		case LT_FREE_SPACING:	// Allow for free spacing.
 			if (lexrc.next())
 				free_spacing = lexrc.getInteger();
@@ -436,6 +443,9 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		}
 	}
 	lexrc.popTable();
+
+	if (labelstring_appendix_.empty())	
+		labelstring_appendix_ = labelstring_;
 	return error;
 }
 
@@ -537,16 +547,9 @@ enum LabelTypeTags {
 	LA_CENTERED_TOP_ENVIRONMENT,
 	LA_STATIC,
 	LA_SENSITIVE,
-	LA_COUNTER_CHAPTER,
-	LA_COUNTER_SECTION,
-	LA_COUNTER_SUBSECTION,
-	LA_COUNTER_SUBSUBSECTION,
-	LA_COUNTER_PARAGRAPH,
-	LA_COUNTER_SUBPARAGRAPH,
-	LA_COUNTER_ENUMI,
-	LA_COUNTER_ENUMII,
-	LA_COUNTER_ENUMIII,
-	LA_COUNTER_ENUMIV,
+	LA_COUNTER,
+	LA_ENUMERATE,
+	LA_ITEMIZE,
 	LA_BIBLIO
 };
 
@@ -556,16 +559,9 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	keyword_item labelTypeTags[] = {
 	{ "bibliography",             LA_BIBLIO },
 	{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
-	{ "counter_chapter",          LA_COUNTER_CHAPTER },
-	{ "counter_enumi",            LA_COUNTER_ENUMI },
-	{ "counter_enumii",           LA_COUNTER_ENUMII },
-	{ "counter_enumiii",          LA_COUNTER_ENUMIII },
-	{ "counter_enumiv",           LA_COUNTER_ENUMIV },
-	{ "counter_paragraph",        LA_COUNTER_PARAGRAPH },
-	{ "counter_section",          LA_COUNTER_SECTION },
-	{ "counter_subparagraph",     LA_COUNTER_SUBPARAGRAPH },
-	{ "counter_subsection",	      LA_COUNTER_SUBSECTION },
-	{ "counter_subsubsection",    LA_COUNTER_SUBSUBSECTION },
+	{ "counter",                  LA_COUNTER },
+	{ "enumerate",                LA_ENUMERATE },
+	{ "itemize",                  LA_ITEMIZE },
 	{ "manual",                   LA_MANUAL },
 	{ "no_label",                 LA_NO_LABEL },
 	{ "sensitive",                LA_SENSITIVE },
@@ -600,35 +596,14 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	case LA_SENSITIVE:
 		labeltype = LABEL_SENSITIVE;
 		break;
-	case LA_COUNTER_CHAPTER:
-		labeltype = LABEL_COUNTER_CHAPTER;
+	case LA_COUNTER:
+		labeltype = LABEL_COUNTER;
 		break;
-	case LA_COUNTER_SECTION:
-		labeltype = LABEL_COUNTER_SECTION;
+	case LA_ENUMERATE:
+		labeltype = LABEL_ENUMERATE;
 		break;
-	case LA_COUNTER_SUBSECTION:
-		labeltype = LABEL_COUNTER_SUBSECTION;
-		break;
-	case LA_COUNTER_SUBSUBSECTION:
-		labeltype = LABEL_COUNTER_SUBSUBSECTION;
-		break;
-	case LA_COUNTER_PARAGRAPH:
-		labeltype = LABEL_COUNTER_PARAGRAPH;
-		break;
-	case LA_COUNTER_SUBPARAGRAPH:
-		labeltype = LABEL_COUNTER_SUBPARAGRAPH;
-		break;
-	case LA_COUNTER_ENUMI:
-		labeltype = LABEL_COUNTER_ENUMI;
-		break;
-	case LA_COUNTER_ENUMII:
-		labeltype = LABEL_COUNTER_ENUMII;
-		break;
-	case LA_COUNTER_ENUMIII:
-		labeltype = LABEL_COUNTER_ENUMIII;
-		break;
-	case LA_COUNTER_ENUMIV:
-		labeltype = LABEL_COUNTER_ENUMIV;
+	case LA_ITEMIZE:
+		labeltype = LABEL_ITEMIZE;
 		break;
 	case LA_BIBLIO:
 		labeltype = LABEL_BIBLIO;

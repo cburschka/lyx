@@ -1030,9 +1030,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 
 		// This is special code for the chapter, since the label of this
 		// layout is printed in an extra row
-		if (layout->labeltype == LABEL_COUNTER_CHAPTER
-			&& bufparams.secnumdepth >= 0)
-		{
+		if (layout->counter == "chapter" && bufparams.secnumdepth >= 0) {
 			float spacing_val = 1.0;
 			if (!pit->params().spacing().isDefault()) {
 				spacing_val = pit->params().spacing().getValue();

@@ -53,7 +53,7 @@ Bullet::Bullet(int f, int c, int s)
 
 
 Bullet::Bullet(string const & t)
-	:  font(MIN), character(MIN), size(MIN), user_text(1), text(t)
+	: font(MIN), character(MIN), size(MIN), user_text(1), text(t)
 {
 	testInvariant();
 }

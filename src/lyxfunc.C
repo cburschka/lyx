@@ -1668,8 +1668,7 @@ exit_with_message:
 
 	if (view()->available()) {
 		if (view()->fitCursor()) {
-			lyxerr << "LyXFunc->fitCursor->update" << endl;
-
+			//lyxerr << "LyXFunc->fitCursor->update" << endl;
 			view()->update();
 		}
 

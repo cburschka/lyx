@@ -67,7 +67,7 @@ LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 	secnumdepth_ = 3;
 	tocdepth_ = 3;
 	pagestyle_ = "default";
-	maxcounter_ = LABEL_COUNTER_CHAPTER;
+	maxcounter_ = 4;
 	defaultfont_ = LyXFont(LyXFont::ALL_SANE);
 	opt_fontsize_ = "10|11|12";
 	opt_pagestyle_ = "empty|plain|headings|fancy";
@@ -300,7 +300,8 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			break;
 
 		case TC_MAXCOUNTER:
-			readMaxCounter(lexrc);
+			lexrc.next();
+			maxcounter_ = lexrc.getInteger();
 			break;
 
 		case TC_SECNUMDEPTH:
@@ -461,67 +462,6 @@ enum MaxCounterTags {
 	MC_COUNTER_ENUMIII,
 	MC_COUNTER_ENUMIV
 };
-
-
-void LyXTextClass::readMaxCounter(LyXLex & lexrc)
-{
-	keyword_item maxCounterTags[] = {
-		{"counter_chapter", MC_COUNTER_CHAPTER },
-		{"counter_enumi", MC_COUNTER_ENUMI },
-		{"counter_enumii", MC_COUNTER_ENUMII },
-		{"counter_enumiii", MC_COUNTER_ENUMIII },
-		{"counter_enumiv", MC_COUNTER_ENUMIV },
-		{"counter_paragraph", MC_COUNTER_PARAGRAPH },
-		{"counter_section", MC_COUNTER_SECTION },
-		{"counter_subparagraph", MC_COUNTER_SUBPARAGRAPH },
-		{"counter_subsection", MC_COUNTER_SUBSECTION },
-		{"counter_subsubsection", MC_COUNTER_SUBSUBSECTION }
-	};
-
-	pushpophelper pph(lexrc, maxCounterTags, MC_COUNTER_ENUMIV);
-
-	int le = lexrc.lex();
-	switch (le) {
-	case LyXLex::LEX_UNDEF:
-		lexrc.printError("Unknown MaxCounter tag `$$Token'");
-		return;
-	default:
-		break;
-	}
-
-	switch (static_cast<MaxCounterTags>(le)) {
-	case MC_COUNTER_CHAPTER:
-		maxcounter_ = LABEL_COUNTER_CHAPTER;
-		break;
-	case MC_COUNTER_SECTION:
-		maxcounter_ = LABEL_COUNTER_SECTION;
-		break;
-	case MC_COUNTER_SUBSECTION:
-		maxcounter_ = LABEL_COUNTER_SUBSECTION;
-		break;
-	case MC_COUNTER_SUBSUBSECTION:
-		maxcounter_ = LABEL_COUNTER_SUBSUBSECTION;
-		break;
-	case MC_COUNTER_PARAGRAPH:
-		maxcounter_ = LABEL_COUNTER_PARAGRAPH;
-		break;
-	case MC_COUNTER_SUBPARAGRAPH:
-		maxcounter_ = LABEL_COUNTER_SUBPARAGRAPH;
-		break;
-	case MC_COUNTER_ENUMI:
-		maxcounter_ = LABEL_COUNTER_ENUMI;
-		break;
-	case MC_COUNTER_ENUMII:
-		maxcounter_ = LABEL_COUNTER_ENUMII;
-		break;
-	case MC_COUNTER_ENUMIII:
-		maxcounter_ = LABEL_COUNTER_ENUMIII;
-		break;
-	case MC_COUNTER_ENUMIV:
-		maxcounter_ = LABEL_COUNTER_ENUMIV;
-		break;
-	}
-}
 
 
 enum ClassOptionsTags {
@@ -718,7 +658,7 @@ void LyXTextClass::readCounter(LyXLex & lexrc)
 		}
 	}
 
-	// Here if have a full float if getout == true
+	// Here if have a full counter if getout == true
 	if (getout) {
 		if (within.empty()) {
 			ctrs_->newCounter(name);

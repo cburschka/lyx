@@ -5,6 +5,7 @@
  *
  * \author Lars Gullik Bjønnes
  * \author Martin Vermeer
+ * \author André Pönitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,17 +13,15 @@
 #include <config.h>
 
 #include "counters.h"
-
 #include "debug.h"
 
 #include "support/lstrings.h"
+#include "support/std_sstream.h"
+#include "support/tostr.h"
 
 #include <boost/assert.hpp>
 
-#include "support/std_sstream.h"
-
 using std::endl;
-
 using std::ostringstream;
 
 
@@ -72,7 +71,6 @@ void Counter::setMaster(string const & m)
 {
 	master_ = m;
 }
-
 
 
 void Counters::newCounter(string const & newc)
@@ -198,27 +196,22 @@ void Counters::copy(Counters & from, Counters & to, string const & match)
 
 namespace {
 
-inline
 char loweralphaCounter(int n)
 {
-	if (n < 1 || n > 26)
+	if (n < 1 || n > 26) 
 		return '?';
-	else
-		return 'a' + n - 1;
+	return 'a' + n - 1;
 }
 
 
-inline
 char alphaCounter(int n)
 {
 	if (n < 1 || n > 26)
 		return '?';
-	else
-		return 'A' + n - 1;
+	return 'A' + n - 1;
 }
 
 
-inline
 char hebrewCounter(int n)
 {
 	static const char hebrew[22] = {
@@ -226,15 +219,14 @@ char hebrewCounter(int n)
 		'é', 'ë', 'ì', 'î', 'ð', 'ñ', 'ò', 'ô', 'ö',
 		'÷', 'ø', 'ù', 'ú'
 	};
+
 	if (n < 1 || n > 22)
 		return '?';
-	else
-		return hebrew[n-1];
+	return hebrew[n - 1];
 }
 
 
-inline
-string const romanCounter(int n)
+string const lowerromanCounter(int n)
 {
 	static char const * roman[20] = {
 		"i",   "ii",  "iii", "iv", "v",
@@ -242,107 +234,104 @@ string const romanCounter(int n)
 		"xi",  "xii", "xiii", "xiv", "xv",
 		"xvi", "xvii", "xviii", "xix", "xx"
 	};
+
 	if (n < 1 || n > 20)
 		return "??";
-	else
-		return roman[n-1];
+	return roman[n - 1];
+}
+
+
+string const romanCounter(int n)
+{
+	static char const * roman[20] = {
+		"I",   "II",  "III", "IV", "V",
+		"VI",  "VII", "VIII", "IX", "X",
+		"XI",  "XII", "XIII", "XIV", "XV",
+		"XVI", "XVII", "XVIII", "XIX", "XX"
+	};
+
+	if (n < 1 || n > 20)
+		return "??";
+	return roman[n - 1];
 }
 
 } // namespace anon
 
 
-string Counters::labelItem(string const & ctr,
-			   string const & numbertype,
-			   string const & langtype,
-			   bool first)
+string Counters::labelItem(string const & ctr, string const & numbertype)
 {
-	ostringstream s;
-	ostringstream o;
-
-	CounterList::iterator it = counterList.find(ctr);
-	if (it == counterList.end()) {
-		lyxerr << "Counter does not exist." << endl;
+	if (counterList.find(ctr) == counterList.end()) {
+		lyxerr << "Counter " << ctr << " does not exist." << endl;
 		return string();
 	}
 
-	if (!first) {
-		s << '.' << value(ctr);
-	} else {
-		if (numbertype == "sectioning" || numbertype == "appendix") {
-			if (numbertype == "appendix") {
-				if (langtype == "hebrew") {
-					o << hebrewCounter(value(ctr));
-				} else {
-					o << alphaCounter(value(ctr));
-				}
-			} else o << value(ctr);
-		}
-		s << o.str();
-	}
+	if (numbertype == "hebrew")
+		return string(1, hebrewCounter(value(ctr)));
 
-	return STRCONV(s.str());
+	if (numbertype == "alph")
+		return string(1, loweralphaCounter(value(ctr)));
+
+	if (numbertype == "Alph")
+		return string(1, alphaCounter(value(ctr)));
+
+	if (numbertype == "roman")
+		return lowerromanCounter(value(ctr));
+
+	if (numbertype == "Roman")
+		return romanCounter(value(ctr));
+
+	return tostr(value(ctr));
 }
 
 
-string Counters::numberLabel(string const & ctr,
-			     string const & numbertype,
-			     string const & langtype,
-			     int head)
+string Counters::counterLabel(string const & format)
 {
-	ostringstream s;
+	string label = format;
+	while (true) {
+		size_t const i = label.find('\\', 0);
+		if (i == string::npos)
+			break;
+		size_t const j = label.find('{', i + 1);
+		if (j == string::npos)
+			break;
+		size_t const k = label.find('}', j + 1);
+		if (k == string::npos)
+			break;
+		string const numbertype(label, i + 1, j - i - 1);
+		string const counter(label, j + 1, k - j - 1);
+		string const rep = labelItem(counter, numbertype);
+		label = string(label, 0, i) + rep + string(label, k + 1, string::npos);
+		//lyxerr << "  : " << " (" << counter  << ","
+		//	<< numbertype << ") -> " << label << endl;
+	}
+	//lyxerr << "counterLabel: " << format  << " -> "	<< label << endl;
+	return label;
+}
 
-	if (numbertype == "sectioning" || numbertype == "appendix") {
-		if (ctr == "chapter" && head == 0) {
-			s << labelItem("chapter", numbertype, langtype, true);
-		} else if (ctr == "section" && head <= 1) {
-			s << numberLabel("chapter", numbertype, langtype, head)
-			  << labelItem("section", numbertype, langtype, head == 1);
-		} else if (ctr == "subsection" && head <= 2) {
-			s << numberLabel("section", numbertype, langtype, head)
-			  << labelItem("subsection", numbertype, langtype, head == 2);
-		} else if (ctr == "subsubsection" && head <= 3) {
-			s << numberLabel("subsection", numbertype, langtype, head)
-			  << labelItem("subsubsection", numbertype, langtype, head == 3);
-		} else if (ctr == "paragraph" && head <= 4) {
-			s << numberLabel("subsubsection", numbertype, langtype, head)
-			  << labelItem("paragraph", numbertype, langtype, head == 4);
-		} else if (ctr == "subparagraph" && head <= 5) {
-			s << numberLabel("paragraph", numbertype, langtype, head)
-			  << labelItem("subparagraph", numbertype, langtype, head == 5);
-		} else if (ctr == "figure" || ctr == "table") {
-			// figure, table, ...
-			lyxerr << "Counter:" << ctr << endl;
-			s << numberLabel("chapter", numbertype, langtype, head)
-			  << labelItem(ctr, numbertype, langtype, head == 1);
-		}
 
-	} else if (numbertype == "enumeration") {
-		ostringstream ei;
-		ostringstream eii;
-		ostringstream eiii;
-		ostringstream eiv;
+string Counters::enumLabel(string const & ctr, string const & langtype)
+{
+	ostringstream os;
 
-		if (langtype == "hebrew") {
-			ei << '.' << value("enumi");
-			eii << '(' << hebrewCounter(value("enumii")) << ')';
-			eiii << '.' << romanCounter(value("enumiii"));
-			eiv << '.' << alphaCounter(value("enumiv"));
-		} else {
-			ei << value("enumi") << '.';
-			eii << '(' << loweralphaCounter(value("enumii")) << ')';
-			eiii << romanCounter(value("enumiii")) << '.';
-			eiv << alphaCounter(value("enumiv")) << '.';
-		}
-		if (ctr == "enumii") {
-			s << eii.str();
-		} else if (ctr == "enumi") {
-			s << ei.str();
-		} else if (ctr == "enumiii") {
-			s << eiii.str();
-		} else if (ctr == "enumiv") {
-			s << eiv.str();
-		}
+	if (langtype == "hebrew") {
+		if (ctr == "enumi")
+			os << '.' << value("enumi");
+		else if (ctr == "enumii")
+			os << '(' << hebrewCounter(value("enumii")) << ')';
+		else if (ctr == "enumiii")
+			os << '.' << lowerromanCounter(value("enumiii"));
+		else if (ctr == "enumiv")
+			os << '.' << alphaCounter(value("enumiv"));
+	} else {
+		if (ctr == "enumi")
+			os << value("enumi") << '.';
+		else if (ctr == "enumii")
+			os << '(' << loweralphaCounter(value("enumii")) << ')';
+		else if (ctr == "enumiii")
+			os << lowerromanCounter(value("enumiii")) << '.';
+		else if (ctr == "enumiv")
+			os << alphaCounter(value("enumiv")) << '.';
 	}
 
-	return STRCONV(s.str());
+	return STRCONV(os.str());
 }

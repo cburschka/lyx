@@ -655,7 +655,7 @@ void BufferView::Pimpl::workAreaResize()
 
 void BufferView::Pimpl::update()
 {
-	lyxerr << "BufferView::update()" << endl;
+	//lyxerr << "BufferView::update()" << endl;
 	// fix cursor coordinate cache in case something went wrong
 	if (bv_->getLyXText()) {
 		// check needed to survive LyX startup

@@ -173,6 +173,8 @@ public:
 	bool intitle;
 	/// Does this layout allow for an optional parameter?
 	int optionalargs;
+	/// Which counter to step
+	string counter;
 
 private:
 	/// Name of the layout/paragraph environment

@@ -74,13 +74,13 @@ TocList const getTocList(Buffer const & buf)
 	ParConstIterator pit = buf.par_iterator_begin();
 	ParConstIterator end = buf.par_iterator_end();
 	for (; pit != end; ++pit) {
+
 #ifdef WITH_WARNINGS
 #warning bogus type (Lgb)
 #endif
 		char const labeltype = pit->layout()->labeltype;
-
-		if (labeltype >= LABEL_COUNTER_CHAPTER
-		    && labeltype <= LABEL_COUNTER_CHAPTER + bufparams.tocdepth) {
+		if (labeltype >= LABEL_COUNTER
+		    && labeltype <= LABEL_COUNTER + bufparams.tocdepth) {
 				// insert this into the table of contents
 			const int depth = max(0, labeltype - textclass.maxcounter());
 			TocItem const item(pit->id(), depth,

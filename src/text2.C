@@ -25,6 +25,7 @@
 #include "buffer_funcs.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "Bullet.h"
 #include "counters.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -53,17 +54,15 @@
 
 #include "support/lstrings.h"
 #include "support/textutils.h"
+#include "support/tostr.h"
+#include "support/std_sstream.h"
 
 #include <boost/tuple/tuple.hpp>
 
-#include "support/std_sstream.h"
-
 using lyx::pos_type;
-
 using lyx::support::bformat;
 
 using std::endl;
-
 using std::ostringstream;
 
 
@@ -834,6 +833,32 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 }
 
 
+namespace {
+
+string expandLabel(LyXTextClass const & textclass,
+	LyXLayout_ptr const & layout, bool appendix)
+{
+	string fmt = appendix ?
+		layout->labelstring_appendix() : layout->labelstring();
+
+	// handle 'inherited level parts' in 'fmt',
+	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'
+	size_t const i = fmt.find('@', 0);
+	if (i != string::npos) {
+		size_t const j = fmt.find('@', i + 1);
+		if (j != string::npos) {
+			string parent(fmt, i + 1, j - i - 1);
+			string label = expandLabel(textclass, textclass[parent], appendix);
+			fmt = string(fmt, 0, i) + label + string(fmt, j + 1, string::npos);
+		}
+	}
+
+	return textclass.counters().counterLabel(fmt);
+}
+
+}
+
+
 // set the counter of a paragraph. This includes the labels
 void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 {
@@ -842,7 +867,6 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 	LyXLayout_ptr const & layout = pit->layout();
 
 	if (pit != ownerParagraphs().begin()) {
-
 		pit->params().appendix(boost::prior(pit)->params().appendix());
 		if (!pit->params().appendix() &&
 		    pit->params().startOfAppendix()) {
@@ -858,17 +882,25 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 	}
 
 	// Maybe we have to increment the enumeration depth.
-	// BUT, enumeration in a footnote is considered in isolation from its
-	//	surrounding paragraph so don't increment if this is the
-	//	first line of the footnote
-	// AND, bibliographies can't have their depth changed ie. they
+	// Bibliographies can't have their depth changed ie. they
 	//	are always of depth 0
 	if (pit != ownerParagraphs().begin()
 	    && boost::prior(pit)->getDepth() < pit->getDepth()
-	    && boost::prior(pit)->layout()->labeltype == LABEL_COUNTER_ENUMI
+	    && boost::prior(pit)->layout()->labeltype == LABEL_ENUMERATE
 	    && pit->enumdepth < 3
 	    && layout->labeltype != LABEL_BIBLIO) {
 		pit->enumdepth++;
+	}
+
+	// Maybe we have to increment the enumeration depth.
+	// Bibliographies can't have their depth changed ie. they
+	//	are always of depth 0
+	if (pit != ownerParagraphs().begin()
+	    && boost::prior(pit)->getDepth() < pit->getDepth()
+	    && boost::prior(pit)->layout()->labeltype == LABEL_ITEMIZE
+	    && pit->itemdepth < 3
+	    && layout->labeltype != LABEL_BIBLIO) {
+		pit->itemdepth++;
 	}
 
 	// Maybe we have to decrement the enumeration depth, see note above
@@ -876,12 +908,11 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 	    && boost::prior(pit)->getDepth() > pit->getDepth()
 	    && layout->labeltype != LABEL_BIBLIO) {
 		pit->enumdepth = depthHook(pit, ownerParagraphs(),
-					   pit->getDepth())->enumdepth;
+							 pit->getDepth())->enumdepth;
 	}
 
-	if (!pit->params().labelString().empty()) {
-		pit->params().labelString(string());
-	}
+	// erase what was there before
+	pit->params().labelString(string());
 
 	if (layout->margintype == MARGIN_MANUAL) {
 		if (pit->params().labelWidthString().empty())
@@ -891,75 +922,46 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 	}
 
 	// is it a layout that has an automatic label?
-	if (layout->labeltype >= LABEL_COUNTER_CHAPTER) {
-		int const i = layout->labeltype - LABEL_COUNTER_CHAPTER;
+	if (layout->labeltype == LABEL_COUNTER) {
+		BufferParams const & bufparams = buf.params();
+		LyXTextClass const & textclass = bufparams.getLyXTextClass();
+		textclass.counters().step(layout->counter);
+		string label = expandLabel(textclass, layout, pit->params().appendix());
+		pit->params().labelString(label);
+		textclass.counters().reset("enum");
+	} else if (layout->labeltype == LABEL_ITEMIZE) {
+		// At some point of time we should do something more clever here,
+		// like:
+		//   pit->params().labelString(
+		//     bufparams.user_defined_bullet(pit->itemdepth).getText());
+		// for now, use a static label
+		pit->params().labelString("*");
+		textclass.counters().reset("enum");
+	} else if (layout->labeltype == LABEL_ENUMERATE) {
+		// FIXME
+		// Yes I know this is a really, really! bad solution
+		// (Lgb)
+		string enumcounter = "enum";
 
-		ostringstream s;
-
-		if (i >= 0 && i <= bufparams.secnumdepth) {
-			string numbertype;
-			string langtype;
-
-			textclass.counters().step(layout->latexname());
-
-			// Is there a label? Useful for Chapter layout
-			if (!pit->params().appendix()) {
-				s << buf.B_(layout->labelstring());
-			} else {
-				s << buf.B_(layout->labelstring_appendix());
-			}
-
-			// Use of an integer is here less than elegant. For now.
-			int head = textclass.maxcounter() - LABEL_COUNTER_CHAPTER;
-			if (!pit->params().appendix()) {
-				numbertype = "sectioning";
-			} else {
-				numbertype = "appendix";
-				if (pit->isRightToLeftPar(bufparams))
-					langtype = "hebrew";
-				else
-					langtype = "latin";
-			}
-
-			s << " "
-			  << textclass.counters()
-				.numberLabel(layout->latexname(),
-					     numbertype, langtype, head);
-
-			pit->params().labelString(STRCONV(s.str()));
-
-			// reset enum counters
-			textclass.counters().reset("enum");
-		} else if (layout->labeltype < LABEL_COUNTER_ENUMI) {
-			textclass.counters().reset("enum");
-		} else if (layout->labeltype == LABEL_COUNTER_ENUMI) {
-			// FIXME
-			// Yes I know this is a really, really! bad solution
-			// (Lgb)
-			string enumcounter("enum");
-
-			switch (pit->enumdepth) {
-			case 2:
-				enumcounter += 'i';
-			case 1:
-				enumcounter += 'i';
-			case 0:
-				enumcounter += 'i';
-				break;
-			case 3:
-				enumcounter += "iv";
-				break;
-			default:
-				// not a valid enumdepth...
-				break;
-			}
-
-			textclass.counters().step(enumcounter);
-
-			s << textclass.counters()
-				.numberLabel(enumcounter, "enumeration");
-			pit->params().labelString(STRCONV(s.str()));
+		switch (pit->enumdepth) {
+		case 2:
+			enumcounter += 'i';
+		case 1:
+			enumcounter += 'i';
+		case 0:
+			enumcounter += 'i';
+			break;
+		case 3:
+			enumcounter += "iv";
+			break;
+		default:
+			// not a valid enumdepth...
+			break;
 		}
+
+		textclass.counters().step(enumcounter);
+
+		pit->params().labelString(textclass.counters().enumLabel(enumcounter));
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		textclass.counters().step("bibitem");
 		int number = textclass.counters().value("bibitem");

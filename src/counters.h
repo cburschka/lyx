@@ -74,21 +74,15 @@ public:
 	/// Copy counters whose name matches match from the &from to
 	/// the &to array of counters. Empty string matches all.
 	void copy(Counters & from, Counters & to, string const & match = string());
-	/// A numeric label's single item, like .1 for subsection number in
-	/// the 2.1.4 subsubsection number label. "first" indicates if this
-	/// is the first item to be displayed, usually chapter or section.
-	string labelItem(string const & ctr,
-			string const & labeltype,
-			string const & langtype = "latin",
-			bool first = false);
-	/// A complete numeric label, like 2.1.4 for a subsubsection.
-	/// "head" indicates sequence number of first item to be
-	/// displayed, e.g. 0 for chapter, 1 for section.
-	string numberLabel(string const & ctr,
-			string const & labeltype,
-			string const & langtype = "latin",
-			int head = 0);
+	/// A complete expanded label, like 2.1.4 for a subsubsection
+	/// according to the given format
+	string counterLabel(string const & format);
+	/// A complete label, like 1.a for enumerations
+	string enumLabel(string const & ctr, string const & langtype = "latin");
 private:
+	/// A counter label's single item, 1 for subsection number in
+	/// the 2.1.4 subsubsection number label.
+	string labelItem(string const & ctr, string const & numbertype);
 	/// Maps counter (layout) names to actual counters.
 	typedef std::map<string, Counter> CounterList;
 	/// Instantiate.

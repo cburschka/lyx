@@ -742,7 +742,7 @@ void RowPainter::paintFirst()
 			// this is special code for the chapter layout. This is
 			// printed in an extra row and has a pagebreak at
 			// the top.
-			if (layout->labeltype == LABEL_COUNTER_CHAPTER) {
+			if (layout->counter == "chapter") {
 				if (buffer.params().secnumdepth >= 0) {
 					float spacing_val = 1.0;
 					if (!parparams.spacing().isDefault()) {
