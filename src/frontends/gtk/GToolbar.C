@@ -156,24 +156,11 @@ void GLayoutBox::selected()
 
 	Glib::ustring layoutGuiName = (*(combo_.get_active()))[cols_.name];
 
-	// we get two signal, one of it is empty and useless
+	// we get two signal, one of them is empty and useless
 	if (layoutGuiName.empty())
 		return;
-	LyXTextClass const & tc = getTextClass(owner_);
 
-	LyXTextClass::const_iterator it = tc.begin();
-	LyXTextClass::const_iterator const end = tc.end();
-	for (; it != end; ++it) {
-		string const & name = (*it)->name();
-		if (name == layoutGuiName) {
-			FuncRequest const func(LFUN_LAYOUT, name, 
-						FuncRequest::UI);
-			owner_.getLyXFunc().dispatch(func);
-			return;
-		}
-	}
-	lyxerr << "ERROR (GLayoutBox::selected): layout not found! name: "
-	       << layoutGuiName << std::endl;
+	layoutSelected(owner_, layoutGuiName);
 }
 
 } // namespace frontend

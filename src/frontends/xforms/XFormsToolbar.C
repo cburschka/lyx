@@ -521,20 +521,7 @@ void XLayoutBox::selected()
 {
 	string const layoutguiname = getString(combox_);
 
-	LyXTextClass const & tc = getTextClass(owner_);
-
-	LyXTextClass::const_iterator it  = tc.begin();
-	LyXTextClass::const_iterator const end = tc.end();
-	for (; it != end; ++it) {
-		string const & name = (*it)->name();
-		if (_(name) == layoutguiname) {
-			FuncRequest const func(LFUN_LAYOUT, name, 
-					       FuncRequest::UI);
-			owner_.getLyXFunc().dispatch(func);
-			return;
-		}
-	}
-	lyxerr << "ERROR (XLayoutBox::selected): layout not found!" << endl;
+	layoutSelected(owner_, layoutguiname);
 }
 
 } // namespace frontend

@@ -13,10 +13,14 @@
 
 #include "Toolbars.h"
 
+#include "buffer.h"
+#include "bufferparams.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
+#include "gettext.h"
 #include "lyxfunc.h"
+#include "lyxtextclass.h"
 #include "LyXView.h"
 
 using std::endl;
@@ -151,3 +155,26 @@ void Toolbars::update()
 	if (layout_)
 		layout_->setEnabled(enable);
 }
+
+
+void layoutSelected(LyXView & lv, string const & name)
+{
+	LyXTextClass const & tc = lv.buffer()->params().getLyXTextClass();
+
+	LyXTextClass::const_iterator it  = tc.begin();
+	LyXTextClass::const_iterator const end = tc.end();
+	for (; it != end; ++it) {
+		string const & itname = (*it)->name();
+		// Yes, the _() is correct
+		if (_(itname) == name) {
+			FuncRequest const func(LFUN_LAYOUT, itname, 
+					       FuncRequest::UI);
+			lv.getLyXFunc().dispatch(func);
+			return;
+		}
+	}
+	lyxerr << "ERROR (layoutSelected): layout not found!" 
+	       << endl;
+}
+
+

@@ -147,21 +147,7 @@ void QLayoutBox::selected(const QString & str)
 
 	owner_.centralWidget()->setFocus();
 
-	LyXTextClass const & tc = getTextClass(owner_);
-
-	LyXTextClass::const_iterator it  = tc.begin();
-	LyXTextClass::const_iterator const end = tc.end();
-	for (; it != end; ++it) {
-		string const & name = (*it)->name();
-		// Yes, the _() is correct
-		if (_(name) == sel) {
-			FuncRequest const func(LFUN_LAYOUT, name, 
-					       FuncRequest::UI);
-			owner_.getLyXFunc().dispatch(func);
-			return;
-		}
-	}
-	lyxerr << "ERROR (QLayoutBox::selected): layout not found!" << endl;
+	layoutSelected(owner_, sel);
 }
 
 } // namespace frontend

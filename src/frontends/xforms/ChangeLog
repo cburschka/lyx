@@ -1,5 +1,7 @@
 2004-11-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* XFormsToolbar.C (selected): use layoutSelected
+
 	* forms/Makefile.am (SUFFIXES): use +=, since SUFFIXES is already
 	set in config/common.am
 

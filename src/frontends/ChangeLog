@@ -1,3 +1,8 @@
+2004-11-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Toolbars.C (layoutSelected): new method, which was triplicated
+	in the frontends.
+
 2004-09-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* LyXView.h: fix typo
