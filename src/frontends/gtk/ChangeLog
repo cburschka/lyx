@@ -1,3 +1,9 @@
+2004-10-04  John Spray  <spray_john@users.sourceforge.net>
+
+	* GMenubar.C: use item->submenu() instead of
+	getMenu(item->submenuname) where item->submenuname is empty.
+	Fixes crash with "Figures" submenu.
+
 2004-10-03  John Spray  <spray_john@users.sourceforge.net>
 
 	* GMenubar.C: add labels in MenuItems to display bindings

@@ -124,9 +124,9 @@ void GMenubar::openByName(string const & name)
 
 bool GMenubar::submenuDisabled(MenuItem const * item)
 {
-	Menu & from = menubackend.getMenu(item->submenuname());
+	Menu * from = item->submenu();
 	Menu to;
-	menubackend.expand(from, to, view_);
+	menubackend.expand(*from, to, view_);
 	Menu::const_iterator i = to.begin();
 	Menu::const_iterator end = to.end();
 	for (; i != end; ++i) {
@@ -158,7 +158,10 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 	ClearMenu(gmenu);
 	LyxMenu * lyxmenu = static_cast<LyxMenu*>(gmenu);
 	lyxmenu->clearBackMenu();
-	Menu * fmenu = &menubackend.getMenu(item->submenuname());
+	Menu * fmenu = item->submenuname().empty() ?
+		item->submenu() :
+		&menubackend.getMenu(item->submenuname());
+
 	menubackend.expand(*fmenu, lyxmenu->getBackMenu(), view_);
 	Menu::const_iterator i = lyxmenu->getBackMenu().begin();
 	Menu::const_iterator end = lyxmenu->getBackMenu().end();
@@ -195,9 +198,9 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 						gmenu->items().back());
 				citem.set_active(on);
 			} else {
-				//This is necessary because add_accel_label is protected,
-				//and even if you subclass Gtk::MenuItem then add_accel_label
-				//doesn't do what you'd expect.
+				// This is necessary because add_accel_label is protected,
+				// and even if you subclass Gtk::MenuItem then add_accel_label
+				// doesn't do what you'd expect.
 				Gtk::MenuItem * item = Gtk::manage(new Gtk::MenuItem);
 				Gtk::HBox * hbox = Gtk::manage(new Gtk::HBox);
 				Gtk::Label * label1 = Gtk::manage(new Gtk::Label(
