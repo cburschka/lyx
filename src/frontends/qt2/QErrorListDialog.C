@@ -16,7 +16,6 @@
 #include "qt_helpers.h"
 
 #include <qlistbox.h>
-#include <qtextedit.h>
 #include <qtextbrowser.h>
 #include <qpushbutton.h>
 

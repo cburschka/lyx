@@ -1,3 +1,7 @@
+2003-05-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QErrorListDialog.C: remove include for <qtextedit.h>
+
 2003-05-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* qt_helpers.C: include <algorithm> for std::min.
