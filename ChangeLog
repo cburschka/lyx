@@ -1,3 +1,8 @@
+2002-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* configure.in: don't compile src/frontends/support as LyXImage is
+	now dead.
+
 2002-02-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* acconfig.h: nt/os2 defines moved

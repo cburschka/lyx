@@ -4,7 +4,7 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 # xforms has to be fixed here as we still need object files in this directory
 # for the compilation of other frontends, so until that we have to let this
 # here.
-SUBDIRS = support controllers xforms @FRONTEND@
+SUBDIRS = controllers xforms @FRONTEND@
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/xforms ${SIGC_CFLAGS} $(BOOST_INCLUDES)
@@ -13,13 +13,11 @@ noinst_LTLIBRARIES = libfrontends.la
 
 libfrontends_la_LIBADD= \
 	xforms/*.lo \
-	controllers/*.lo \
-	support/libfrontendsupport.o
+	controllers/*.lo
 
 libfrontends_la_DEPENDENCIES = \
 	xforms/*.lo \
-	controllers/*.lo \
-	support/libfrontendsupport.o
+	controllers/*.lo
 
 libfrontends_la_SOURCES=\
 	Alert.C \
