@@ -107,6 +107,19 @@ public:
 			     TexRow & texrow, LatexRunParams const &);
 
 	///
+	void simpleLinuxDocOnePar(Buffer const & buf,
+				  std::ostream & os,
+				  LyXFont const & outerfont,
+				  lyx::depth_type depth) const;
+
+	///
+	void simpleDocBookOnePar(Buffer const & buf,
+				 std::ostream &,
+				 LyXFont const & outerfont,
+				 int & desc_on,
+				 lyx::depth_type depth) const;
+
+	///
 	bool hasSameLayout(Paragraph const & par) const;
 
 	///

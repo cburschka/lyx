@@ -73,6 +73,14 @@ void latexParagraphs(Buffer const & buf,
 		     LatexRunParams const &,
 		     std::string const & everypar = std::string());
 
+void linuxdocParagraphs(Buffer const & buf,
+		       ParagraphList const & paragraphs,
+		       std::ostream & os);
+
+void docbookParagraphs(Buffer const & buf,
+		       ParagraphList const & paragraphs,
+		       std::ostream & os);
+	
 /// read a paragraph from a .lyx file. Returns number of unrecognised tokens
 int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);
 

@@ -153,15 +153,6 @@ public:
 			   bool output_preamble = true,
 			   bool output_body = true);
 	///
-	void simpleDocBookOnePar(std::ostream &,
-				 ParagraphList::iterator par,
-				 int & desc_on,
-				 lyx::depth_type depth) const;
-	///
-	void simpleLinuxDocOnePar(std::ostream & os,
-				  ParagraphList::iterator par,
-				  lyx::depth_type depth) const;
-	///
 	void makeLinuxDocFile(std::string const & filename,
 			      bool nice, bool only_body = false);
 	///

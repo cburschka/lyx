@@ -25,6 +25,7 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "paragraph_pimpl.h"
+#include "sgml.h"
 #include "texrow.h"
 #include "vspace.h"
 
@@ -39,19 +40,25 @@
 #include "insets/insetspecialchar.h"
 #include "insets/insettabular.h"
 
+#include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "support/std_sstream.h"
+
+#include <vector>
 
 using lyx::pos_type;
 
+using lyx::support::atoi;
 using lyx::support::bformat;
+using lyx::support::split;
 using lyx::support::subst;
 
 using std::endl;
 using std::string;
+using std::vector;
 using std::istringstream;
 using std::ostream;
-
 
 extern string bibitemWidest(Buffer const &);
 
@@ -786,6 +793,344 @@ void latexParagraphs(Buffer const & buf,
 	}
 }
 
+
+void linuxdocParagraphs(Buffer const & buf,
+			ParagraphList const & paragraphs,
+			ostream & os)
+{
+	
+	Paragraph::depth_type depth = 0; // paragraph depth
+	string item_name;
+	vector<string> environment_stack(5);
+
+	ParagraphList::iterator pit = const_cast<ParagraphList&>(paragraphs).begin();
+	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
+	for (; pit != pend; ++pit) {
+		LyXLayout_ptr const & style = pit->layout();
+		// treat <toc> as a special case for compatibility with old code
+		if (pit->isInset(0)) {
+			InsetOld * inset = pit->getInset(0);
+			InsetOld::Code lyx_code = inset->lyxCode();
+			if (lyx_code == InsetOld::TOC_CODE) {
+				string const temp = "toc";
+				sgml::openTag(os, depth, false, temp);
+				continue;
+			}
+		}
+
+		// environment tag closing
+		for (; depth > pit->params().depth(); --depth) {
+			sgml::closeTag(os, depth, false, environment_stack[depth]);
+			environment_stack[depth].erase();
+		}
+
+		// write opening SGML tags
+		switch (style->latextype) {
+		case LATEX_PARAGRAPH:
+			if (depth == pit->params().depth()
+			   && !environment_stack[depth].empty()) {
+				sgml::closeTag(os, depth, false, environment_stack[depth]);
+				environment_stack[depth].erase();
+				if (depth)
+					--depth;
+				else
+					os << "</p>";
+			}
+			sgml::openTag(os, depth, false, style->latexname());
+			break;
+
+		case LATEX_COMMAND:
+			if (depth != 0)
+				//error(ErrorItem(_("Error:"), _("Wrong depth for LatexType Command.\n"), pit->id(), 0, pit->size()));
+				;
+
+			if (!environment_stack[depth].empty()) {
+				sgml::closeTag(os, depth, false, environment_stack[depth]);
+				os << "</p>";
+			}
+
+			environment_stack[depth].erase();
+			sgml::openTag(os, depth, false, style->latexname());
+			break;
+
+		case LATEX_ENVIRONMENT:
+		case LATEX_ITEM_ENVIRONMENT:
+		case LATEX_BIB_ENVIRONMENT:
+		{
+			string const & latexname = style->latexname();
+
+			if (depth == pit->params().depth()
+			    && environment_stack[depth] != latexname) {
+				sgml::closeTag(os, depth, false,
+					     environment_stack[depth]);
+				environment_stack[depth].erase();
+			}
+			if (depth < pit->params().depth()) {
+			       depth = pit->params().depth();
+			       environment_stack[depth].erase();
+			}
+			if (environment_stack[depth] != latexname) {
+				if (depth == 0) {
+					sgml::openTag(os, depth, false, "p");
+				}
+				sgml::openTag(os, depth, false, latexname);
+
+				if (environment_stack.size() == depth + 1)
+					environment_stack.push_back("!-- --");
+				environment_stack[depth] = latexname;
+			}
+
+			if (style->latexparam() == "CDATA")
+				os << "<![CDATA[";
+
+			if (style->latextype == LATEX_ENVIRONMENT) break;
+
+			if (style->labeltype == LABEL_MANUAL)
+				item_name = "tag";
+			else
+				item_name = "item";
+
+			sgml::openTag(os, depth + 1, false, item_name);
+		}
+		break;
+
+		default:
+			sgml::openTag(os, depth, false, style->latexname());
+			break;
+		}
+
+		pit->simpleLinuxDocOnePar(buf, os, outerFont(pit, paragraphs), depth);
+
+		os << "\n";
+		// write closing SGML tags
+		switch (style->latextype) {
+		case LATEX_COMMAND:
+			break;
+		case LATEX_ENVIRONMENT:
+		case LATEX_ITEM_ENVIRONMENT:
+		case LATEX_BIB_ENVIRONMENT:
+			if (style->latexparam() == "CDATA")
+				os << "]]>";
+			break;
+		default:
+			sgml::closeTag(os, depth, false, style->latexname());
+			break;
+		}
+	}
+
+	// Close open tags
+	for (int i = depth; i >= 0; --i)
+		sgml::closeTag(os, depth, false, environment_stack[i]);
+}
+
+
+void docbookParagraphs(Buffer const & buf,
+		       ParagraphList const & paragraphs,
+		       ostream & os)
+{
+	vector<string> environment_stack(10);
+	vector<string> environment_inner(10);
+	vector<string> command_stack(10);
+
+	bool command_flag = false;
+	Paragraph::depth_type command_depth = 0;
+	Paragraph::depth_type command_base = 0;
+	Paragraph::depth_type cmd_depth = 0;
+	Paragraph::depth_type depth = 0; // paragraph depth
+
+	string item_name;
+	string command_name;
+
+	ParagraphList::iterator par = const_cast<ParagraphList&>(paragraphs).begin();
+	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
+
+	for (; par != pend; ++par) {
+		string sgmlparam;
+		string c_depth;
+		string c_params;
+		int desc_on = 0; // description mode
+
+		LyXLayout_ptr const & style = par->layout();
+
+		// environment tag closing
+		for (; depth > par->params().depth(); --depth) {
+			if (!environment_inner[depth].empty()) 
+			sgml::closeEnvTags(os, false, environment_inner[depth], 
+					command_depth + depth);
+			sgml::closeTag(os, depth + command_depth, false, environment_stack[depth]);
+			environment_stack[depth].erase();
+			environment_inner[depth].erase();
+		}
+
+		if (depth == par->params().depth()
+		   && environment_stack[depth] != style->latexname()
+		   && !environment_stack[depth].empty()) {
+				sgml::closeEnvTags(os, false, environment_inner[depth], 
+					command_depth + depth);
+			sgml::closeTag(os, depth + command_depth, false, environment_stack[depth]);
+
+			environment_stack[depth].erase();
+			environment_inner[depth].erase();
+		}
+
+		// Write opening SGML tags.
+		switch (style->latextype) {
+		case LATEX_PARAGRAPH:
+			sgml::openTag(os, depth + command_depth,
+				    false, style->latexname());
+			break;
+
+		case LATEX_COMMAND:
+			if (depth != 0)
+				//error(ErrorItem(_("Error"), _("Wrong depth for LatexType Command."), par->id(), 0, par->size()));
+				;
+			
+			command_name = style->latexname();
+
+			sgmlparam = style->latexparam();
+			c_params = split(sgmlparam, c_depth,'|');
+
+			cmd_depth = atoi(c_depth);
+
+			if (command_flag) {
+				if (cmd_depth < command_base) {
+					for (Paragraph::depth_type j = command_depth;
+					     j >= command_base; --j) {
+						sgml::closeTag(os, j, false, command_stack[j]);
+						os << endl;
+					}
+					command_depth = command_base = cmd_depth;
+				} else if (cmd_depth <= command_depth) {
+					for (int j = command_depth;
+					     j >= int(cmd_depth); --j) {
+						sgml::closeTag(os, j, false, command_stack[j]);
+						os << endl;
+					}
+					command_depth = cmd_depth;
+				} else
+					command_depth = cmd_depth;
+			} else {
+				command_depth = command_base = cmd_depth;
+				command_flag = true;
+			}
+			if (command_stack.size() == command_depth + 1)
+				command_stack.push_back(string());
+			command_stack[command_depth] = command_name;
+
+			// treat label as a special case for
+			// more WYSIWYM handling.
+			// This is a hack while paragraphs can't have
+			// attributes, like id in this case.
+			if (par->isInset(0)) {
+				InsetOld * inset = par->getInset(0);
+				InsetOld::Code lyx_code = inset->lyxCode();
+				if (lyx_code == InsetOld::LABEL_CODE) {
+					command_name += " id=\"";
+					command_name += (static_cast<InsetCommand *>(inset))->getContents();
+					command_name += '"';
+					desc_on = 3;
+				}
+			}
+
+			sgml::openTag(os, depth + command_depth, false, command_name);
+
+			item_name = c_params.empty() ? "title" : c_params;
+			sgml::openTag(os, depth + 1 + command_depth, false, item_name);
+			break;
+
+		case LATEX_ENVIRONMENT:
+		case LATEX_ITEM_ENVIRONMENT:
+			if (depth < par->params().depth()) {
+				depth = par->params().depth();
+				environment_stack[depth].erase();
+			}
+
+			if (environment_stack[depth] != style->latexname()) {
+				if (environment_stack.size() == depth + 1) {
+					environment_stack.push_back("!-- --");
+					environment_inner.push_back("!-- --");
+				}
+				environment_stack[depth] = style->latexname();
+				environment_inner[depth] = "!-- --";
+				sgml::openTag(os, depth + command_depth, false, environment_stack[depth]);
+			} else {
+					sgml::closeEnvTags(os, false, environment_inner[depth], 
+						command_depth + depth);
+			}
+
+			if (style->latextype == LATEX_ENVIRONMENT) {
+				if (!style->latexparam().empty()) {
+					if (style->latexparam() == "CDATA")
+						os << "<![CDATA[";
+					else
+						sgml::openTag(os, depth + command_depth, false, style->latexparam());
+				}
+				break;
+			}
+
+			desc_on = (style->labeltype == LABEL_MANUAL);
+
+			environment_inner[depth] = desc_on ? "varlistentry" : "listitem";
+			sgml::openTag(os, depth + 1 + command_depth,
+				    false, environment_inner[depth]);
+
+			item_name = desc_on ? "term" : "para";
+			sgml::openTag(os, depth + 1 + command_depth,
+				    false, item_name);
+			break;
+		default:
+			sgml::openTag(os, depth + command_depth,
+				    false, style->latexname());
+			break;
+		}
+
+		par->simpleDocBookOnePar(buf, os, outerFont(par, paragraphs), desc_on,
+				    depth + 1 + command_depth);
+
+		string end_tag;
+		// write closing SGML tags
+		switch (style->latextype) {
+		case LATEX_COMMAND:
+			end_tag = c_params.empty() ? "title" : c_params;
+			sgml::closeTag(os, depth + command_depth,
+				     false, end_tag);
+			break;
+		case LATEX_ENVIRONMENT:
+			if (!style->latexparam().empty()) {
+				if (style->latexparam() == "CDATA")
+					os << "]]>";
+				else
+					sgml::closeTag(os, depth + command_depth, false, style->latexparam());
+			}
+			break;
+		case LATEX_ITEM_ENVIRONMENT:
+			if (desc_on == 1) break;
+			end_tag = "para";
+			sgml::closeTag(os, depth + 1 + command_depth, false, end_tag);
+			break;
+		case LATEX_PARAGRAPH:
+			sgml::closeTag(os, depth + command_depth, false, style->latexname());
+			break;
+		default:
+			sgml::closeTag(os, depth + command_depth, false, style->latexname());
+			break;
+		}
+	}
+
+	// Close open tags
+	for (int d = depth; d >= 0; --d) {
+		if (!environment_stack[depth].empty()) {
+				sgml::closeEnvTags(os, false, environment_inner[depth], 
+					command_depth + depth);
+		}
+	}
+
+	for (int j = command_depth; j >= 0 ; --j)
+		if (!command_stack[j].empty()) {
+			sgml::closeTag(os, j, false, command_stack[j]);
+			os << endl;
+		}
+}
 
 namespace {
 

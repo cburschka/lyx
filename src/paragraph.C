@@ -30,6 +30,8 @@
 #include "lyxfont.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
+#include "paragraph_funcs.h"
+#include "sgml.h"
 #include "texrow.h"
 #include "vspace.h"
 
@@ -40,12 +42,19 @@
 #include "support/textutils.h"
 #include "support/std_sstream.h"
 
+#include <boost/tuple/tuple.hpp>
+
+#include <list>
+#include <stack>
+
 using lyx::pos_type;
 
 using lyx::support::contains;
 using lyx::support::subst;
 
 using std::endl;
+using std::list;
+using std::stack;
 using std::string;
 using std::ostream;
 using std::ostringstream;
@@ -1053,6 +1062,345 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...done " << this << endl;
 	return return_value;
+}
+
+
+namespace {
+
+// checks, if newcol chars should be put into this line
+// writes newline, if necessary.
+void sgmlLineBreak(ostream & os, string::size_type & colcount,
+			  string::size_type newcol)
+{
+	colcount += newcol;
+	if (colcount > lyxrc.ascii_linelen) {
+		os << "\n";
+		colcount = newcol; // assume write after this call
+	}
+}
+
+enum PAR_TAG {
+	NONE=0,
+	TT = 1,
+	SF = 2,
+	BF = 4,
+	IT = 8,
+	SL = 16,
+	EM = 32
+};
+
+
+string tag_name(PAR_TAG const & pt) {
+	switch (pt) {
+	case NONE: return "!-- --";
+	case TT: return "tt";
+	case SF: return "sf";
+	case BF: return "bf";
+	case IT: return "it";
+	case SL: return "sl";
+	case EM: return "em";
+	}
+	return "";
+}
+
+
+inline
+void operator|=(PAR_TAG & p1, PAR_TAG const & p2)
+{
+	p1 = static_cast<PAR_TAG>(p1 | p2);
+}
+
+
+inline
+void reset(PAR_TAG & p1, PAR_TAG const & p2)
+{
+	p1 = static_cast<PAR_TAG>(p1 & ~p2);
+}
+
+} // anon
+
+
+// Handle internal paragraph parsing -- layout already processed.
+void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
+				     ostream & os,
+				     LyXFont const & outerfont,
+				     lyx::depth_type /*depth*/) const
+{
+	LyXLayout_ptr const & style = layout();
+
+	string::size_type char_line_count = 5;     // Heuristic choice ;-)
+
+	// gets paragraph main font
+	LyXFont font_old;
+	bool desc_on;
+	if (style->labeltype == LABEL_MANUAL) {
+		font_old = style->labelfont;
+		desc_on = true;
+	} else {
+		font_old = style->font;
+		desc_on = false;
+	}
+
+	LyXFont::FONT_FAMILY family_type = LyXFont::ROMAN_FAMILY;
+	LyXFont::FONT_SERIES series_type = LyXFont::MEDIUM_SERIES;
+	LyXFont::FONT_SHAPE  shape_type  = LyXFont::UP_SHAPE;
+	bool is_em = false;
+
+	stack<PAR_TAG> tag_state;
+	// parsing main loop
+	for (pos_type i = 0; i < size(); ++i) {
+
+		PAR_TAG tag_close = NONE;
+		list < PAR_TAG > tag_open;
+
+		LyXFont const font = getFont(buf.params(), i, outerfont);
+
+		if (font_old.family() != font.family()) {
+			switch (family_type) {
+			case LyXFont::SANS_FAMILY:
+				tag_close |= SF;
+				break;
+			case LyXFont::TYPEWRITER_FAMILY:
+				tag_close |= TT;
+				break;
+			default:
+				break;
+			}
+
+			family_type = font.family();
+
+			switch (family_type) {
+			case LyXFont::SANS_FAMILY:
+				tag_open.push_back(SF);
+				break;
+			case LyXFont::TYPEWRITER_FAMILY:
+				tag_open.push_back(TT);
+				break;
+			default:
+				break;
+			}
+		}
+
+		if (font_old.series() != font.series()) {
+			switch (series_type) {
+			case LyXFont::BOLD_SERIES:
+				tag_close |= BF;
+				break;
+			default:
+				break;
+			}
+
+			series_type = font.series();
+
+			switch (series_type) {
+			case LyXFont::BOLD_SERIES:
+				tag_open.push_back(BF);
+				break;
+			default:
+				break;
+			}
+
+		}
+
+		if (font_old.shape() != font.shape()) {
+			switch (shape_type) {
+			case LyXFont::ITALIC_SHAPE:
+				tag_close |= IT;
+				break;
+			case LyXFont::SLANTED_SHAPE:
+				tag_close |= SL;
+				break;
+			default:
+				break;
+			}
+
+			shape_type = font.shape();
+
+			switch (shape_type) {
+			case LyXFont::ITALIC_SHAPE:
+				tag_open.push_back(IT);
+				break;
+			case LyXFont::SLANTED_SHAPE:
+				tag_open.push_back(SL);
+				break;
+			default:
+				break;
+			}
+		}
+		// handle <em> tag
+		if (font_old.emph() != font.emph()) {
+			if (font.emph() == LyXFont::ON) {
+				tag_open.push_back(EM);
+				is_em = true;
+			}
+			else if (is_em) {
+				tag_close |= EM;
+				is_em = false;
+			}
+		}
+
+		list < PAR_TAG > temp;
+		while (!tag_state.empty() && tag_close) {
+			PAR_TAG k =  tag_state.top();
+			tag_state.pop();
+			os << "</" << tag_name(k) << '>';
+			if (tag_close & k)
+				reset(tag_close,k);
+			else
+				temp.push_back(k);
+		}
+
+		for(list< PAR_TAG >::const_iterator j = temp.begin();
+		    j != temp.end(); ++j) {
+			tag_state.push(*j);
+			os << '<' << tag_name(*j) << '>';
+		}
+
+		for(list< PAR_TAG >::const_iterator j = tag_open.begin();
+		    j != tag_open.end(); ++j) {
+			tag_state.push(*j);
+			os << '<' << tag_name(*j) << '>';
+		}
+
+		char c = getChar(i);
+
+		if (c == Paragraph::META_INSET) {
+			InsetOld const * inset = getInset(i);
+			inset->linuxdoc(buf, os);
+			font_old = font;
+			continue;
+		}
+
+		if (style->latexparam() == "CDATA") {
+			// "TeX"-Mode on == > SGML-Mode on.
+			if (c != '\0')
+				os << c;
+			++char_line_count;
+		} else {
+			bool ws;
+			string str;
+			boost::tie(ws, str) = sgml::escapeChar(c);
+			if (ws && !isFreeSpacing()) {
+				// in freespacing mode, spaces are
+				// non-breaking characters
+				if (desc_on) {// if char is ' ' then...
+
+					++char_line_count;
+					sgmlLineBreak(os, char_line_count, 6);
+					os << "</tag>";
+					desc_on = false;
+				} else  {
+					sgmlLineBreak(os, char_line_count, 1);
+					os << c;
+				}
+			} else {
+				os << str;
+				char_line_count += str.length();
+			}
+		}
+		font_old = font;
+	}
+
+	while (!tag_state.empty()) {
+		os << "</" << tag_name(tag_state.top()) << '>';
+		tag_state.pop();
+	}
+
+	// resets description flag correctly
+	if (desc_on) {
+		// <tag> not closed...
+		sgmlLineBreak(os, char_line_count, 6);
+		os << "</tag>";
+	}
+}
+
+
+void Paragraph::simpleDocBookOnePar(Buffer const & buf,
+				    ostream & os,
+				    LyXFont const & outerfont,
+				    int & desc_on,
+				    lyx::depth_type depth) const
+{
+	bool emph_flag = false;
+
+	LyXLayout_ptr const & style = layout();
+
+	LyXFont font_old = (style->labeltype == LABEL_MANUAL ? style->labelfont : style->font);
+
+	int char_line_count = depth;
+	//if (!style.free_spacing)
+	//	os << string(depth,' ');
+
+	// parsing main loop
+	for (pos_type i = 0; i < size(); ++i) {
+		LyXFont font = getFont(buf.params(), i, outerfont);
+
+		// handle <emphasis> tag
+		if (font_old.emph() != font.emph()) {
+			if (font.emph() == LyXFont::ON) {
+				if (style->latexparam() == "CDATA")
+					os << "]]>";
+				os << "<emphasis>";
+				if (style->latexparam() == "CDATA")
+					os << "<![CDATA[";
+				emph_flag = true;
+			} else if (i) {
+				if (style->latexparam() == "CDATA")
+					os << "]]>";
+				os << "</emphasis>";
+				if (style->latexparam() == "CDATA")
+					os << "<![CDATA[";
+				emph_flag = false;
+			}
+		}
+
+
+		if (isInset(i)) {
+			InsetOld const * inset = getInset(i);
+			// don't print the inset in position 0 if desc_on == 3 (label)
+			if (i || desc_on != 3) {
+				if (style->latexparam() == "CDATA")
+					os << "]]>";
+				inset->docbook(buf, os, false);
+				if (style->latexparam() == "CDATA")
+					os << "<![CDATA[";
+			}
+		} else {
+			char c = getChar(i);
+			bool ws;
+			string str;
+			boost::tie(ws, str) = sgml::escapeChar(c);
+
+			if (style->pass_thru) {
+				os << c;
+			} else if (isFreeSpacing() || c != ' ') {
+					os << str;
+			} else if (desc_on == 1) {
+				++char_line_count;
+				os << "\n</term><listitem><para>";
+				desc_on = 2;
+			} else {
+				os << ' ';
+			}
+		}
+		font_old = font;
+	}
+
+	if (emph_flag) {
+		if (style->latexparam() == "CDATA")
+			os << "]]>";
+		os << "</emphasis>";
+		if (style->latexparam() == "CDATA")
+			os << "<![CDATA[";
+	}
+
+	// resets description flag correctly
+	if (desc_on == 1) {
+		// <term> not closed...
+		os << "</term>\n<listitem><para>&nbsp;</para>";
+	}
+	if (style->free_spacing)
+		os << '\n';
 }
 
 
