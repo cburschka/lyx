@@ -1,3 +1,10 @@
+2003-11-03  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/convertDefault.sh: Do not use 'cut' when checking whether
+	the output file was generated successfully. Win32 filenames have the
+	form 'C:\my\file' and use of 'cut' will cause us to look for a file
+	called 'C'...
+
 2003-10-23  José Matos  <jamatos@lyx.org>
 
 	* layouts/db_stdcounters.inc:
