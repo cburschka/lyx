@@ -92,13 +92,13 @@ lyx_SOURCES = \
 	MenuBackend.h \
 	paragraph_funcs.C \
 	paragraph_funcs.h \
-	ParagraphList.h \
+	ParagraphList_fwd.h \
 	ParagraphParameters.C \
 	ParagraphParameters.h \
 	ParameterStruct.h \
 	PrinterParams.C \
 	PrinterParams.h \
-	RowList.h \
+	RowList_fwd.h \
 	ShareContainer.h \
 	Spacing.C \
 	Spacing.h \

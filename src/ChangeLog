@@ -1,3 +1,13 @@
+2003-09-10  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am (lyx_SOURCES): replace ParagraphList.h and RowList.h with their
+	_fwd progeny.
+
+2003-09-09  Angus Leeming  <leeming@lyx.org>
+
+	134 files throughtout the source tree: replace 'using namespace abc;'
+	directives with the appropriate 'using abc::xyz;' declarations.
+
 2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* boost.C (emergencyCleanup): moved here from LAssert.c
