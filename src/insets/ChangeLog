@@ -1,5 +1,11 @@
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
+	* insetgraphics.[Ch] (string2params, params2string): passed a
+	buffer_path argument.
+	(view): new method.
+
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
 	* insetexternal.C:
 	* insetgraphicsParams.[Ch]:
 	* insetinclude.C:

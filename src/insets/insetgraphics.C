@@ -177,8 +177,9 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
+		string const bufpath = cmd.view()->buffer()->filePath();
 		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(cmd.argument, p);
+		InsetGraphicsMailer::string2params(cmd.argument, bufpath, p);
 		if (!p.filename.empty()) {
 			setParams(p);
 			cmd.view()->updateInset(this);
@@ -606,6 +607,12 @@ InsetGraphicsParams const & InsetGraphics::params() const
 }
 
 
+BufferView * InsetGraphics::view() const
+{
+	return graphic_->view();
+}
+
+
 string const InsetGraphicsMailer::name_("graphics");
 
 InsetGraphicsMailer::InsetGraphicsMailer(InsetGraphics & inset)
@@ -615,12 +622,16 @@ InsetGraphicsMailer::InsetGraphicsMailer(InsetGraphics & inset)
 
 string const InsetGraphicsMailer::inset2string() const
 {
-	return params2string(inset_.params());
+	BufferView * bv = inset_.view();
+	if (bv)
+		return params2string(inset_.params(), bv->buffer()->filePath());
+	return string();
 }
 
 
 void InsetGraphicsMailer::string2params(string const & in,
-					InsetGraphicsParams & params)
+					string const & buffer_path,
+ 					InsetGraphicsParams & params)
 {
 	params = InsetGraphicsParams();
 
@@ -640,20 +651,19 @@ void InsetGraphicsMailer::string2params(string const & in,
 
 	if (lex.isOK()) {
 		InsetGraphics inset;
-#warning FIXME not setting bufpath is dubious
-		inset.readInsetGraphics(lex, string());
+		inset.readInsetGraphics(lex, buffer_path);
 		params = inset.params();
 	}
 }
 
 
 string const
-InsetGraphicsMailer::params2string(InsetGraphicsParams const & params)
+InsetGraphicsMailer::params2string(InsetGraphicsParams const & params,
+				   string const & buffer_path)
 {
 	ostringstream data;
 	data << name_ << ' ';
-#warning FIXME not setting bufpath is dubious
-	params.Write(data, string());
+	params.Write(data, buffer_path);
 	data << "\\end_inset\n";
 	return STRCONV(data.str());
 }

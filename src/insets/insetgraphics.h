@@ -78,6 +78,7 @@ public:
 	/// Get the inset parameters, used by the GUIndependent dialog.
 	InsetGraphicsParams const & params() const;
 
+	virtual BufferView * view() const;
 private:
 	///
 	friend class InsetGraphicsMailer;
@@ -121,9 +122,12 @@ public:
 	///
 	virtual string const inset2string() const;
 	///
-	static void string2params(string const &, InsetGraphicsParams &);
+	static void string2params(string const & data,
+				  string const & buffer_path,
+				  InsetGraphicsParams &);
 	///
-	static string const params2string(InsetGraphicsParams const &);
+	static string const params2string(InsetGraphicsParams const &,
+					  string const & buffer_path);
 private:
 	///
 	static string const name_;

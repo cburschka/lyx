@@ -1,5 +1,10 @@
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
+	* factory.C (createInset): pass a
+	buffer_path parameter to InsetGraphicsMailer's string2params.
+
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
 	* BufferView_pimpl.C (buffer):
 	* buffer.C (d-tor):
 	* lyx_main.C (LyX):
