@@ -24,14 +24,14 @@ public:
 	///
 	void setPosition(string const & pos);
 private:
-	///
-	void rebreak();
 	/// width on screen
 	int lyx_width_;
 	/// width for TeX
 	string tex_width_;
-	///
+	/// htb
 	char position_;
+	/// cached metrics
+	mutable std::vector<MathXArray::Row> rows_;
 };
 
 #endif

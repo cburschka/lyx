@@ -20,8 +20,7 @@ extern MathScriptInset const * asScript(MathArray::const_iterator it);
 
 
 MathXArray::MathXArray()
-	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0),
-	  clean_(false), drawn_(false)
+	: xo_(0), yo_(0), clean_(false), drawn_(false)
 {}
 
 
@@ -42,13 +41,11 @@ void MathXArray::metrics(MathMetricsInfo & mi) const
 	drawn_  = false;
 
 	if (data_.empty()) {
-		mathed_char_dim(mi.base.font, 'I', ascent_, descent_, width_);
+		mathed_char_dim(mi.base.font, 'I', dim_.a, dim_.d, dim_.w);
 		return;
 	}
 
-	width_   = 0;
-	ascent_  = 0;
-	descent_ = 0;
+	dim_.clear();
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
@@ -61,22 +58,49 @@ void MathXArray::metrics(MathMetricsInfo & mi) const
 			p->metrics(mi);
 			p->dimensions(ww, aa, dd);
 		}
-		ascent_  = max(ascent_, aa);
-		descent_ = max(descent_, dd);
-		width_   += ww;
+		dim_ += Dimension(ww, aa, dd);
 	}
 
-	//lyxerr << "MathXArray::metrics(): '" << ascent_ << " "
-	//	<< descent_ << " " << width_ << "'\n";
+	//lyxerr << "MathXArray::metrics(): '" << dim_ << "\n";
+}
 
 
-	//
-	// re-break paragraph
-	//
-	if (mi.base.restrictwidth) {
-		width_ = mi.base.textwidth;
-		lyxerr << "restricting width to " << width_ << " pixel\n";
+void MathXArray::metricsExternal(MathMetricsInfo & mi,
+	std::vector<Row> & v) const
+{
+	//if (clean_)
+	//	return;
+
+	size_   = mi;
+	clean_  = true;
+	drawn_  = false;
+
+	if (data_.empty()) {
+		mathed_char_dim(mi.base.font, 'I', dim_.a, dim_.d, dim_.w);
+		return;
 	}
+
+	dim_.clear();
+	for (const_iterator it = begin(); it != end(); ++it) {
+		MathInset const * p = it->nucleus();
+		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		int ww, aa, dd;
+		if (q) {
+			q->metrics(p, mi);
+			q->dimensions2(p, ww, aa, dd);
+			++it;
+			v.push_back(Row());
+			v.back().dim = Dimension(ww, aa, dd);
+			v.push_back(Row());
+		} else {
+			p->metrics(mi);
+			p->dimensions(ww, aa, dd);
+			v.push_back(Row());
+			v.back().dim = Dimension(ww, aa, dd);
+		}
+	}
+
+	//lyxerr << "MathXArray::metrics(): '" << dim_ << "\n";
 }
 
 
@@ -91,11 +115,11 @@ void MathXArray::draw(MathPainterInfo & pi, int x, int y) const
 	yo_    = y;
 	drawn_ = true;
 
-	if (y + descent_ <= 0)                   // don't draw above the workarea
+	if (y + descent() <= 0)                   // don't draw above the workarea
 		return;
-	if (y - ascent_ >= pi.pain.paperHeight())   // don't draw below the workarea
+	if (y - ascent() >= pi.pain.paperHeight())   // don't draw below the workarea
 		return;
-	if (x + width_ <= 0)                     // don't draw left of workarea
+	if (x + width() <= 0)                     // don't draw left of workarea
 		return;
 	if (x >= pi.pain.paperWidth())              // don't draw right of workarea
 		return;
@@ -103,7 +127,7 @@ void MathXArray::draw(MathPainterInfo & pi, int x, int y) const
 	const_iterator it = begin(), et = end();
 
 	if (it == et) {
-		pi.pain.rectangle(x, y - ascent_, width_, height(), LColor::mathline);
+		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);
 		return;
 	}
 
@@ -119,11 +143,29 @@ void MathXArray::draw(MathPainterInfo & pi, int x, int y) const
 			x += p->width();
 		}
 	}
+}
 
-	//
-	// re-break paragraph
-	//
-	if (pi.base.restrictwidth) {
+
+void MathXArray::drawExternal(MathPainterInfo & pi, int x, int y,
+	std::vector<Row> const & v) const
+{
+	for (size_type r = 0, pos = 0; r != v.size(); ++r) {
+		int xx = x;
+		int yy = y + v[r].yo;
+		for ( ; pos != v[r].end; ++pos) {
+			MathInset const * p = data_[pos].nucleus();
+			MathScriptInset const * q = 0;
+			if (pos + 1 != data_.size())
+				q = asScript(begin() + pos + 1);
+			if (q) {
+				q->draw(p, pi, xx, yy);
+				xx += q->width2(p);
+				++pos;
+			} else {
+				p->draw(pi, xx, yy);
+				xx += p->width();
+			}
+		}
 	}
 }
 
@@ -132,11 +174,7 @@ void MathXArray::metricsT(TextMetricsInfo const & mi) const
 {
 	//if (clean_)
 	//	return;
-
-	ascent_  = 0;
-	descent_ = 0;
-	width_   = 0;
-
+	dim_.clear();
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
@@ -149,9 +187,7 @@ void MathXArray::metricsT(TextMetricsInfo const & mi) const
 			p->metricsT(mi);
 			p->dimensions(ww, aa, dd);
 		}
-		ascent_  = max(ascent_,  aa);
-		descent_ = max(descent_, dd);
-		width_  += ww;
+		dim_ += Dimension(ww, aa, dd);
 	}
 }
 
@@ -238,13 +274,13 @@ int MathXArray::dist(int x, int y) const
 
 	if (x < xo_)
 		xx = xo_ - x;
-	else if (x > xo_ + width_)
-		xx = x - xo_ - width_;
+	else if (x > xo_ + width())
+		xx = x - xo_ - width();
 
-	if (y < yo_ - ascent_)
-		yy = yo_ - ascent_ - y;
-	else if (y > yo_ + descent_)
-		yy = y - yo_ - descent_;
+	if (y < yo_ - ascent())
+		yy = yo_ - ascent() - y;
+	else if (y > yo_ + descent())
+		yy = y - yo_ - descent();
 
 	return xx + yy;
 }
@@ -253,9 +289,9 @@ int MathXArray::dist(int x, int y) const
 void MathXArray::boundingBox(int & x1, int & x2, int & y1, int & y2)
 {
 	x1 = xo_;
-	x2 = xo_ + width_;
-	y1 = yo_ - ascent_;
-	y2 = yo_ + descent_;
+	x2 = xo_ + width();
+	y1 = yo_ - ascent();
+	y2 = yo_ + descent();
 }
 
 /*
@@ -287,8 +323,8 @@ void MathXArray::findPos(MathPosFinder & f) const
 
 void MathXArray::center(int & x, int & y) const
 {
-	x = xo_ + width_ / 2;
-	y = yo_ + (descent_ - ascent_) / 2;
+	x = xo_ + width() / 2;
+	y = yo_ + (descent() - ascent()) / 2;
 }
 
 

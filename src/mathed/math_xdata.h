@@ -7,6 +7,7 @@
 
 #include "math_data.h"
 #include "math_metricsinfo.h"
+#include "dimension.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -27,12 +28,33 @@ public:
 	/// const iterator into the underlying MathArray
 	typedef MathArray::const_iterator  const_iterator;
 
+	// helper structure for external metrics computations as done
+	// in parboxes
+	struct Row {
+		/// constructor
+		Row() {}
+		/// last position of this row plus one
+		size_type end; 
+		/// y offset relative to yo
+		int yo;
+		/// dimensions of this row
+		Dimension dim;
+		/// glue between words
+		int glue;
+	};
+
 	/// constructor
 	MathXArray();
 	/// rebuild cached metrics information
 	void metrics(MathMetricsInfo & mi) const;
+	/// rebuild cached metrics information
+	void metricsExternal(MathMetricsInfo & mi,
+		std::vector<MathXArray::Row> &) const;
 	/// redraw cell using cache metrics information
 	void draw(MathPainterInfo & pi, int x, int y) const;
+	/// redraw cell using external metrics information
+	void drawExternal(MathPainterInfo & pi, int x, int y,
+		std::vector<MathXArray::Row> const &) const;
 	/// rebuild cached metrics information
 	void metricsT(TextMetricsInfo const & mi) const;
 	/// redraw cell using cache metrics information
@@ -45,9 +67,9 @@ public:
 	/// access to cached y coordinate of last drawing
 	int yo() const { return yo_; }
 	/// access to cached x coordinate of mid point of last drawing
-	int xm() const { return xo_ + width_ / 2; }
+	int xm() const { return xo_ + dim_.w / 2; }
 	/// access to cached y coordinate of mid point of last drawing
-	int ym() const { return yo_ + (descent_ - ascent_) / 2; }
+	int ym() const { return yo_ + (dim_.d - dim_.a) / 2; }
 	/// returns x coordinate of given position in the array
 	int pos2x(size_type pos) const;
 	/// returns position of given x coordinate
@@ -57,13 +79,13 @@ public:
 	int dist(int x, int y) const;
 
 	/// ascent of this cell above the baseline
-	int ascent() const { return ascent_; }
+	int ascent() const { return dim_.a; }
 	/// descent of this cell below the baseline
-	int descent() const { return descent_; }
+	int descent() const { return dim_.d; }
 	/// height of the cell
-	int height() const { return ascent_ + descent_; }
+	int height() const { return dim_.a + dim_.d; }
 	/// width of this cell
-	int width() const { return width_; }
+	int width() const { return dim_.w; }
 	/// bounding box of this cell
 	void boundingBox(int & xlow, int & xhigh, int & ylow, int & yhigh);
 	/// find best position to do things
@@ -85,12 +107,8 @@ public:
 private:
 	/// the underlying MathArray
 	MathArray data_;
-	/// cached width of cell
-	mutable int width_;
-	/// cached ascent of cell
-	mutable int ascent_;
-	/// cached descent of cell
-	mutable int descent_;
+	/// cached dimensions of cell
+	mutable Dimension dim_;
 	/// cached x coordinate of last drawing
 	mutable int xo_;
 	/// cached y coordinate of last drawing
@@ -101,17 +119,6 @@ private:
 	mutable bool clean_;
 	/// cached draw status of cell
 	mutable bool drawn_;
-
-	// cached metrics
-	struct Row {
-		///
-		Row();
-		/// y offset relative to yo
-		int yo;
-		/// glue between words
-		int glue;
-	};
-	std::vector<Row> rows_;
 };
 
 /// output cell on a stream
