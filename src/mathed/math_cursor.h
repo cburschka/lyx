@@ -23,6 +23,7 @@
 
 #include "math_defs.h"
 #include "math_inset.h"
+#include "math_pos.h"
 #include "LString.h"
 
 class InsetFormulaBase;
@@ -41,47 +42,6 @@ this formula's mathHullInset to the current position.
 */
 
 
-/// Description of a position 
-class MathCursorPos {
-public:
-	/// 
-	MathCursorPos();
-	/// 
-	explicit MathCursorPos(MathInset * p);
-
-	/// returns cell corresponding to this position
-	MathArray & cell() const;
-	/// returns cell corresponding to this position
-	MathArray & cell(MathInset::idx_type idx) const;
-	/// returns xcell corresponding to this position
-	MathXArray & xcell() const;
-	/// returns xcell corresponding to this position
-	MathXArray & xcell(MathInset::idx_type idx) const;
-	///
-	int xpos() const;
-	///
-	int ypos() const;
-
-public:
-	/// pointer to an inset
-	MathInset * par_;
-	/// cell index of a position in this inset
-	MathInset::idx_type idx_;
-	/// position in this cell
-	MathInset::pos_type pos_;
-};
-
-/// test for equality
-bool operator==(MathCursorPos const &, MathCursorPos const &);
-/// test for inequality
-bool operator!=(MathCursorPos const &, MathCursorPos const &);
-/// test for order
-bool operator<(MathCursorPos const &, MathCursorPos const &);
-/// output
-std::ostream & operator<<(std::ostream &, MathCursorPos const &);
-
-
-/// see above
 class MathCursor {
 public:
 	/// short of anything else reasonable
@@ -143,11 +103,11 @@ public:
 	/// in pixels from top of screen
 	void getPos(int & x, int & y);
 	/// 
-	MathInset * par() const;
+	MathAtom & par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
 	MathGridInset * enclosingGrid(idx_type &) const;
 	///
-	InsetFormulaBase const * formula();
+	InsetFormulaBase * formula();
 	/// current offset in the current cell
 	pos_type pos() const;
 	/// current cell
@@ -305,7 +265,7 @@ private:
 	idx_type & idx();
 
 	///
-	InsetFormulaBase * const formula_;
+	InsetFormulaBase * formula_;
 	///
 	MathTextCodes lastcode_;
 	// Selection stuff

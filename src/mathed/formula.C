@@ -346,7 +346,9 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	if (lcolor.getX11Name(LColor::mathbg)!=lcolor.getX11Name(LColor::background))
 		pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
-	if (mathcursor && mathcursor->formula() == this) {
+	if (mathcursor &&
+			const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
+	{
 		mathcursor->drawSelection(pain);
 		pain.rectangle(x, y - a, w, h, LColor::mathframe);
 	}

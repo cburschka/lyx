@@ -68,7 +68,7 @@ struct Selection
 			data_.push_back(MathArray(i1.cell(), i1.pos_, i2.pos_));
 		else {
 			std::vector<MathInset::idx_type> indices =
-				i1.par_->idxBetween(i1.idx_, i2.idx_);
+				i1.par_->nucleus()->idxBetween(i1.idx_, i2.idx_);
 			for (MathInset::idx_type i = 0; i < indices.size(); ++i)
 				data_.push_back(i1.cell(indices[i]));
 		}
@@ -83,7 +83,7 @@ struct Selection
 			i1.cell().erase(i1.pos_, i2.pos_);
 		else {
 			std::vector<MathInset::idx_type> indices =
-				i1.par_->idxBetween(i1.idx_, i2.idx_);
+				i1.par_->nucleus()->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
 				i1.cell(indices[i]).erase();
 		}
@@ -130,7 +130,11 @@ MathCursor::MathCursor(InsetFormulaBase * formula, bool left)
 
 void MathCursor::push(MathAtom & t)
 {
-	Cursor_.push_back(MathCursorPos(t.nucleus()));
+	MathCursorPos p;
+	p.par_ = &t;
+	p.idx_ = 0;
+	p.pos_ = 0;
+	Cursor_.push_back(p);
 }
 
 
@@ -207,7 +211,7 @@ UpdatableInset * MathCursor::asHyperActiveInset() const
 bool MathCursor::isInside(MathInset const * p) const
 {
 	for (unsigned i = 0; i < Cursor_.size(); ++i) 
-		if (Cursor_[i].par_ == p) 
+		if (Cursor_[i].par_->nucleus() == p) 
 			return true;
 	return false;
 }
@@ -228,7 +232,7 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 		// we can't move into anything new during selection
 		if (Cursor_.size() == Anchor_.size())
 			return false;
-		if (t.nucleus() != Anchor_[Cursor_.size()].par_)
+		if (&t != Anchor_[Cursor_.size()].par_)
 			return false;
 	}
 	return true;
@@ -323,16 +327,17 @@ void MathCursor::setPos(int x, int y)
 	cursor_type best_cursor;
 	double best_dist = 1e10;
 
-	MathIterator it(formula()->par().nucleus());
-	MathIterator et;
+	MathIterator it = ibegin(formula()->par());
+	MathIterator et = iend(formula()->par());
 	for ( ; it != et; ++it) {
+		//lyxerr << "*it: " << *it << "  *et: " << *et << "\n";
 		if (selection_) {
 			// avoid deeper nested insets when selecting
 			if (it.cursor().size() > Anchor_.size())
 				continue;
 			// anchor might be deeper!
 			if (it.cursor().size() == Anchor_.size())
-				if (it.par() != Anchor_.back().par_)
+				if (it.par().nucleus() != Anchor_.back().par_->nucleus())
 					continue;
 			//if (it.par() != Anchor_[it.cursor().size()].par_)
 			//	continue;
@@ -349,6 +354,7 @@ void MathCursor::setPos(int x, int y)
 	if (best_dist < 1e10)
 		Cursor_ = best_cursor;
 	//lyxerr << "x: " << x << " y: " << y << " dist: " << best_dist << "\n";
+	lyx::Assert(Cursor_.size());
 	dump("setPos 2");
 }
 
@@ -723,7 +729,6 @@ void MathCursor::drawSelection(Painter & pain) const
 	MathCursorPos i1;
 	MathCursorPos i2;
 	getSelection(i1, i2);
-	//lyxerr << "selection from: " << i1 << " to " << i2 << "\n";
 
 	if (i1.idx_ == i2.idx_) {
 		MathXArray & c = i1.xcell();
@@ -734,7 +739,7 @@ void MathCursor::drawSelection(Painter & pain) const
 		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
 		std::vector<MathInset::idx_type> indices
-			= i1.par_->idxBetween(i1.idx_, i2.idx_);
+			= (*i1.par_)->idxBetween(i1.idx_, i2.idx_);
 		for (unsigned i = 0; i < indices.size(); ++i) {
 			MathXArray & c = i1.xcell(indices[i]);
 			int x1 = c.xo();
@@ -798,20 +803,18 @@ void MathCursor::getPos(int & x, int & y)
 #ifdef WITH_WARNINGS
 #warning This should probably take cellXOffset and cellYOffset into account
 #endif
-	dump("getPos 1");
 	x = xarray().xo() + xarray().pos2x(pos());
 	y = xarray().yo();
-	dump("getPos 2");
 }
 
 
-MathInset * MathCursor::par() const
+MathAtom & MathCursor::par() const
 {
-	return cursor().par_;
+	return *cursor().par_;
 }
 
 
-InsetFormulaBase const * MathCursor::formula()
+InsetFormulaBase * MathCursor::formula()
 {
 	return formula_;
 }
@@ -856,7 +859,7 @@ bool MathCursor::selection() const
 MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 {
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
-		MathGridInset * p = Cursor_[i].par_->asGridInset();
+		MathGridInset * p = (*Cursor_[i].par_)->asGridInset();
 		if (p) {
 			idx = Cursor_[i].idx_;
 			return p;
@@ -987,12 +990,24 @@ MathArray & MathCursor::array() const
 		return dummy;
 	}
 
+	if (Cursor_.size() == 0) {
+		lyxerr << "############  Cursor_.size() == 0 not valid\n";
+		return dummy;
+	}
+
 	return cursor().cell();
 }
 
 
 MathXArray & MathCursor::xarray() const
 {
+	static MathXArray dummy;
+
+	if (Cursor_.size() == 0) {
+		lyxerr << "############  Cursor_.size() == 0 not valid\n";
+		return dummy;
+	}
+
 	return cursor().xcell();
 }
 
@@ -1036,19 +1051,18 @@ void MathCursor::breakLine()
 		p->mutate(LM_OT_EQNARRAY);
 		idx() = 0;
 		pos() = size();
-		return;
+	} else {
+		p->addRow(row());
+
+		// split line
+		const row_type r = row();
+		for (col_type c = col() + 1; c < p->ncols(); ++c)
+			p->cell(p->index(r, c)).swap(p->cell(p->index(r + 1, c)));
+
+		// split cell
+		splitCell();
+		p->cell(idx()).swap(p->cell(idx() + p->ncols() - 1));
 	}
-	
-	p->addRow(row());
-
-	// split line
-	const row_type r = row();
-	for (col_type c = col() + 1; c < p->ncols(); ++c)
-		p->cell(p->index(r, c)).swap(p->cell(p->index(r + 1, c)));
-
-	// split cell
-	splitCell();
-	p->cell(idx()).swap(p->cell(idx() + p->ncols() - 1));
 }
 
 
@@ -1091,12 +1105,14 @@ void MathCursor::getSelection(MathCursorPos & i1, MathCursorPos & i2) const
 
 MathCursorPos & MathCursor::cursor()
 {
+	lyx::Assert(Cursor_.size());
 	return Cursor_.back();
 }
 
 
 MathCursorPos const & MathCursor::cursor() const
 {
+	lyx::Assert(Cursor_.size());
 	return Cursor_.back();
 }
 
@@ -1160,8 +1176,8 @@ bool MathCursor::bruteFind(int xlow, int xhigh, int ylow, int yhigh)
 	cursor_type best_cursor;
 	double best_dist = 1e10;
 
-	MathIterator it(formula()->par().nucleus());
-	MathIterator et;
+	MathIterator it = ibegin(formula()->par());
+	MathIterator et = iend(formula()->par());
 	for ( ; it != et; ++it) {
 		int xo = it.position().xpos();
 		int yo = it.position().ypos();
@@ -1395,6 +1411,7 @@ bool MathCursor::interpret(char c)
 
 MathCursorPos MathCursor::normalAnchor() const
 {
+	lyx::Assert(Anchor_.size() >= Cursor_.size());
 	// use Anchor on the same level as Cursor
 	MathCursorPos normal = Anchor_[Cursor_.size() - 1];
 	if (Cursor_.size() < Anchor_.size() && !(normal < cursor())) {
@@ -1417,85 +1434,6 @@ void MathCursor::stripFromLastEqualSign()
 	// delete everything behind this position
 	ar.erase(et - ar.begin(), ar.size());
 	pos() = ar.size(); 
-}
-
-
-////////////////////////////////////////////////////////////////////////
-
-
-MathCursorPos::MathCursorPos()
-	: par_(0), idx_(0), pos_(0)
-{}
-
-
-MathCursorPos::MathCursorPos(MathInset * p)
-	: par_(p), idx_(0), pos_(0)
-{}
-
-
-MathArray & MathCursorPos::cell(MathCursor::idx_type idx) const
-{
-	return par_->cell(idx);
-}
-
-
-MathArray & MathCursorPos::cell() const
-{
-	return par_->cell(idx_);
-}
-
-
-MathXArray & MathCursorPos::xcell(MathCursor::idx_type idx) const
-{
-	return par_->xcell(idx);
-}
-
-
-MathXArray & MathCursorPos::xcell() const
-{
-	return par_->xcell(idx_);
-}
-
-
-int MathCursorPos::xpos() const
-{
-	return xcell().xo() + xcell().pos2x(pos_);
-}
-
-
-int MathCursorPos::ypos() const
-{
-	return xcell().yo();
-}
-
-std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
-{
-	os << "(par: " << p.par_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ")";
-	return os;
-}
-
-
-bool operator==(MathCursorPos const & ti, MathCursorPos const & it)
-{
-	return ti.par_ == it.par_ && ti.idx_ == it.idx_ && ti.pos_ == it.pos_;
-}
-
-
-bool operator!=(MathCursorPos const & ti, MathCursorPos const & it)
-{
-	return ti.par_ != it.par_ || ti.idx_ != it.idx_ || ti.pos_ != it.pos_;
-}
-
-
-bool operator<(MathCursorPos const & ti, MathCursorPos const & it)
-{
-	if (ti.par_ != it.par_) {
-		lyxerr << "can't compare cursor and anchor in different insets\n";
-		return true;
-	}
-	if (ti.idx_ != it.idx_)
-		return ti.idx_ < it.idx_;
-	return ti.pos_ < it.pos_;
 }
 
 

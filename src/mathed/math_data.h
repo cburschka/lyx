@@ -13,8 +13,8 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef MATHEDARRAY_H
-#define MATHEDARRAY_H
+#ifndef MATH_DATA_H
+#define MATH_DATA_H
 
 #include <vector>
 
@@ -49,6 +49,10 @@ public:
 	typedef buffer_type::iterator        iterator;
 	///
 	typedef buffer_type::size_type       size_type;
+	///
+	typedef buffer_type::size_type       idx_type;
+	///
+	typedef buffer_type::size_type       pos_type;
 
 public:
 	///

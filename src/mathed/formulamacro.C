@@ -215,7 +215,8 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	pain.fillRectangle(int(x), a , w, h, LColor::mathmacrobg);
 	pain.rectangle(int(x), a, w, h, LColor::mathframe);
 
-	if (mathcursor && mathcursor->formula() == this)
+	if (mathcursor &&
+			const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
 		mathcursor->drawSelection(pain);
 
 	pain.text(int(x + 2), y, prefix(), font);

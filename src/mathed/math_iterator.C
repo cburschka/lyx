@@ -1,17 +1,18 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "math_iterator.h"
+#include "debug.h"
+#include "support/LAssert.h"
 
 
-MathIterator::MathIterator()
-{}
+//MathIterator::MathIterator()
+//{}
 
 
-MathIterator::MathIterator(MathInset * p)
+MathIterator::MathIterator(MathAtom & t)
 {
-	push(p);
+	push(t);
 }
 
 
@@ -22,12 +23,14 @@ MathIterator::MathIterator(MathCursor::cursor_type const & c)
 
 MathCursorPos const & MathIterator::position() const
 {
+	lyx::Assert(cursor_.size());
 	return cursor_.back();
 }
 
 
 MathCursorPos & MathIterator::position()
 {
+	lyx::Assert(cursor_.size());
 	return cursor_.back();
 }
 
@@ -38,38 +41,43 @@ MathCursor::cursor_type const & MathIterator::cursor() const
 }
 
 
-MathInset * MathIterator::par() const
+MathAtom const & MathIterator::par() const
 {
-	return cursor_.size() ? cursor_.back().par_ : 0;
+	return *(position().par_);
+}
+
+
+MathAtom & MathIterator::par()
+{
+	return *(position().par_);
 }
 
 
 MathXArray const & MathIterator::xcell() const
 {
-	if (!par())
-		lyxerr << "MathIterator::xcell: no cell\n";
 	return par()->xcell(position().idx_);
 }
 
 
-MathInset * MathIterator::nextInset() const
+MathAtom * MathIterator::nextInset() const
 {
 	if (position().pos_ == xcell().data_.size())
 		return 0;
-	return (xcell().begin() + position().pos_)->nucleus();
+	return const_cast<MathAtom *>(xcell().begin() + position().pos_);
 }
 
 
-void MathIterator::push(MathInset * p)
+void MathIterator::push(MathAtom & t)
 {
 	//lyxerr << "push: " << p << endl;
-	cursor_.push_back(MathCursorPos(p));
+	cursor_.push_back(MathCursorPos(t));
 }
 
 
 void MathIterator::pop()
 {
 	//lyxerr << "pop: " << endl;
+	lyx::Assert(cursor_.size());
 	cursor_.pop_back();
 }
 
@@ -86,12 +94,19 @@ MathCursorPos const & MathIterator::operator->() const
 }
 
 
+void MathIterator::goEnd()
+{
+	position().idx_ = par()->nargs() - 1;
+	position().pos_ = xcell().data_.size();
+}
+
+
 void MathIterator::operator++()
 {
 	// move into the current inset if possible
 	// it is impossible for pos() == size()!
-	if (nextInset() && nextInset()->isActive()) {
-		push(nextInset());
+	if (nextInset() && nextInset()->nucleus()->isActive()) {
+		push(*nextInset());
 		return;
 	}
 
@@ -110,7 +125,7 @@ void MathIterator::operator++()
 		return;
 	}
 
-	// otherwise leave array, move on one cell
+	// otherwise leave array, move on one position
 	// this might yield pos() == size(), but that's a ok.
 	pop();
 	++position().pos_;
@@ -135,3 +150,17 @@ bool operator!=(MathIterator const & it, MathIterator const & jt)
 	return it.cursor() != jt.cursor();	
 }
 
+
+
+MathIterator ibegin(MathAtom & t)
+{
+	return MathIterator(t);
+}
+
+
+MathIterator iend(MathAtom & t)
+{
+	MathIterator it(t);
+	it.goEnd();
+	return it;
+}
