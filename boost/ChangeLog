@@ -1,3 +1,8 @@
+2004-03-26  Angus Leeming  <leeming@lyx.org>
+
+	* libs/regex/Makefile.am: silence automake 1.7 warning by
+	removing trailing backslash from the final line of the file.
+
 2004-03-01  Zvezdan Petkovic  <zvezdan@cs.wm.edu>
 
 	* boost/config/platform/bsd.hpp: config fix for OpenBSD

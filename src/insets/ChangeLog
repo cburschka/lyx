@@ -1,3 +1,8 @@
+2004-03-26  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: silence automake 1.7 warning by removing trailing
+	backslash from the final line of the file.
+
 2004-03-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetquote.C: use opening quote after '[' char.
