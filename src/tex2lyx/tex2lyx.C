@@ -317,7 +317,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		// cat codes
 		//
 		if (t.cat() == catMath) {
-			if (mode == TEXT_MODE || mode == MATHTEXT_MODE || mode == UNDECIDED_MODE){
+			if (mode == TEXT_MODE || mode == MATHTEXT_MODE) {
 				// we are inside some text mode thingy, so opening new math is allowed
 				if (mode == TEXT_MODE)
 					inset_header(os, "Formula ");
@@ -581,6 +581,12 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			os << '}';
 		}
 
+		else if (t.cs() == "emph" && mode == TEXT_MODE) {
+			os << "\n\\emph on\n";
+			parse(p, os, FLAG_ITEM, mode);
+			os << "\n\\emph default\n";
+		}
+
 		else 
 			(in_preamble ? h_preamble : os) << '\\' << t.asString();
 
@@ -605,7 +611,7 @@ int main(int argc, char * argv[])
 
 	ifstream is(argv[1]);
 	Parser p(is);
-	parse(p, cout, 0, UNDECIDED_MODE);
+	parse(p, cout, 0, TEXT_MODE);
 	cout << "\n\\the_end";
 
 	return 0;	
