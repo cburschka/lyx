@@ -144,8 +144,10 @@ qfont_loader::font_info const * qfont_loader::getfontinfo(LyXFont const & f)
 }
 
  
-bool qfont_loader::available(LyXFont const &)
+bool qfont_loader::available(LyXFont const & f)
 {
-	// FIXME (see getRawName docs)
-	return true;
+	if (!lyxrc.use_gui)
+		return false;
+
+	return getfontinfo(f)->font.exactMatch();
 }
