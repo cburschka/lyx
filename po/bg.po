@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
-"POT-Creation-Date: 2002-04-25 13:47+0200\n"
+"POT-Creation-Date: 2002-05-03 21:12+0200\n"
 "PO-Revision-Date: 2001-07-10 17:40+01:00\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -36,7 +36,7 @@ msgstr "като абзаци(A)|A"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:695
+#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:698
 msgid "Textclass Loading Error!"
 msgstr "Грешка при зареждане на текстклас!"
 
@@ -63,156 +63,156 @@ msgid " unknown tokens"
 msgstr "Непознато действие"
 
 # src/buffer.C:533
-#: src/buffer.C:683
+#: src/buffer.C:686
 msgid "Textclass error"
 msgstr "Текстклас грешка"
 
 # src/buffer.C:534
-#: src/buffer.C:684
+#: src/buffer.C:687
 msgid "The document uses an unknown textclass \""
 msgstr "Документът използва непознат текстклас \""
 
 # src/buffer.C:536
-#: src/buffer.C:686
+#: src/buffer.C:689
 msgid "LyX will not be able to produce output correctly."
 msgstr "LyX не може да изработи правилен резултат."
 
 # src/buffer.C:546
-#: src/buffer.C:696
+#: src/buffer.C:699
 msgid "Can't load textclass "
 msgstr "Невъзможност за зареждане на текстклас "
 
 # src/buffer.C:548
-#: src/buffer.C:698
+#: src/buffer.C:701
 msgid "-- substituting default"
 msgstr "-- заместване по подразбиране"
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/buffer.C:1198
+#: src/buffer.C:1201
 #, fuzzy
 msgid "Unknown token: "
 msgstr "Непознато действие"
 
 # src/buffer.C:1120 src/buffer.C:1147 src/buffer.C:1167
 #. future format
-#: src/buffer.C:1595 src/buffer.C:1615 src/frontends/xforms/FormGraphics.C:537
+#: src/buffer.C:1600 src/buffer.C:1620 src/frontends/xforms/FormGraphics.C:547
 msgid "Warning!"
 msgstr "Внимание!"
 
 # src/buffer.C:1148
-#: src/buffer.C:1596
+#: src/buffer.C:1601
 msgid "LyX file format is newer that what"
 msgstr "LyX файловият формат е по-нов от"
 
 # src/buffer.C:1149
-#: src/buffer.C:1597
+#: src/buffer.C:1602
 msgid "is supported in this LyX version. Expect some problems."
 msgstr "поддържания в тази LyX версия. Възможни са проблеми."
 
 # src/buffer.C:1128 src/buffer.C:1154 src/buffer.C:1173 src/buffer.C:1176
 #. "\\lyxformat" not found
-#: src/buffer.C:1602 src/buffer.C:1621 src/buffer.C:1624
+#: src/buffer.C:1607 src/buffer.C:1626 src/buffer.C:1629
 msgid "ERROR!"
 msgstr "ГРЕШКА!"
 
 # src/buffer.C:1129 src/buffer.C:1155
-#: src/buffer.C:1603
+#: src/buffer.C:1608
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Остарял LyX формат. Използвайте LyX 0.10.x за да прочетете това!"
 
 # src/buffer.C:1121 src/buffer.C:1168
-#: src/buffer.C:1616
+#: src/buffer.C:1621
 msgid "Reading of document is not complete"
 msgstr "Непълно прочитане на документа"
 
 # src/buffer.C:1122 src/buffer.C:1169
-#: src/buffer.C:1617
+#: src/buffer.C:1622
 msgid "Maybe the document is truncated"
 msgstr "Вероятно документът е изрязан"
 
 # src/buffer.C:1173
-#: src/buffer.C:1621
+#: src/buffer.C:1626
 msgid "Not a LyX file!"
 msgstr "Това не е LyX файл!"
 
 # src/buffer.C:1176
-#: src/buffer.C:1624
+#: src/buffer.C:1629
 msgid "Unable to read file!"
 msgstr "Прочитането на файла e невъзможно!"
 
 # src/buffer.C:1270 src/buffer.C:1273
-#: src/buffer.C:1717 src/buffer.C:1720
+#: src/buffer.C:1722 src/buffer.C:1725
 msgid "Error! Document is read-only: "
 msgstr "Грешка! Документът е само за четене: "
 
 # src/buffer.C:1283 src/buffer.C:1286
-#: src/buffer.C:1730 src/buffer.C:1733
+#: src/buffer.C:1735 src/buffer.C:1738
 msgid "Error! Cannot write file: "
 msgstr "Грешка! Записът е невъзможен във файл: "
 
 # src/buffer.C:1294 src/buffer.C:1297
-#: src/buffer.C:1741 src/buffer.C:1744
+#: src/buffer.C:1746 src/buffer.C:1749
 msgid "Error! Cannot open file: "
 msgstr "Грешка! Отварянето е невъзможно! Файл: "
 
 # src/ext_l10n.h:154
-#: src/buffer.C:1906 src/ext_l10n.h:182
+#: src/buffer.C:1911 src/ext_l10n.h:182
 msgid "Abstract"
 msgstr ""
 
-#: src/buffer.C:1909
+#: src/buffer.C:1914
 msgid "Abstract: "
 msgstr ""
 
 # src/ext_l10n.h:329
-#: src/buffer.C:1917 src/ext_l10n.h:378
+#: src/buffer.C:1922 src/ext_l10n.h:378
 msgid "References"
 msgstr "Препратки"
 
 # src/frontends/gnome/FormRef.C:311
-#: src/buffer.C:1920
+#: src/buffer.C:1925
 #, fuzzy
 msgid "References: "
 msgstr " Препратка: "
 
 # src/buffer.C:1593
-#: src/buffer.C:2034
+#: src/buffer.C:2039
 msgid "Error: Cannot write file:"
 msgstr "Грешка! Записът е невъзможен във файл: "
 
 # src/buffer.C:1627
-#: src/buffer.C:2063
+#: src/buffer.C:2068
 msgid "Error: Cannot open file: "
 msgstr "Грешка! Отварянето е невъзможно! Файл: "
 
 # src/buffer.C:2263 src/buffer.C:2912
-#: src/buffer.C:2658 src/buffer.C:3109
+#: src/buffer.C:2663 src/buffer.C:3114
 msgid "LYX_ERROR:"
 msgstr "LYX_ГРЕШКА:"
 
 # src/buffer.C:2263 src/buffer.C:2912
-#: src/buffer.C:2658 src/buffer.C:3109
+#: src/buffer.C:2663 src/buffer.C:3114
 msgid "Cannot write file"
 msgstr "Грешка! Записът е невъзможен във файл"
 
 # src/buffer.C:2350 src/buffer.C:2996
-#: src/buffer.C:2747 src/buffer.C:3222
+#: src/buffer.C:2752 src/buffer.C:3227
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Грешка: Грешна дълбочина на LatexType команда.\n"
 
 # src/buffer.C:3317
 #. path to LaTeX file
-#: src/buffer.C:3501
+#: src/buffer.C:3526
 msgid "Running chktex..."
 msgstr "Стартирам chktex..."
 
 # src/buffer.C:3330
-#: src/buffer.C:3514
+#: src/buffer.C:3539
 msgid "chktex did not work!"
 msgstr "ChkTeX пропадна!"
 
 # src/buffer.C:3331
-#: src/buffer.C:3515
+#: src/buffer.C:3540
 msgid "Could not run with file:"
 msgstr "Недъзможна е работата с файл: "
 
@@ -370,17 +370,17 @@ msgid "Paragraph environment type set"
 msgstr "Средата на абзаца е установена"
 
 # src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
-#: src/BufferView2.C:398 src/LyXAction.C:170 src/MenuBackend.C:521
+#: src/BufferView2.C:398 src/LyXAction.C:170 src/MenuBackend.C:530
 msgid "Copy"
 msgstr "Копирай"
 
 # src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
-#: src/BufferView2.C:410 src/LyXAction.C:171 src/MenuBackend.C:520
+#: src/BufferView2.C:410 src/LyXAction.C:171 src/MenuBackend.C:529
 msgid "Cut"
 msgstr "Отрежи"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: src/BufferView2.C:420 src/LyXAction.C:333 src/MenuBackend.C:522
+#: src/BufferView2.C:420 src/LyXAction.C:333 src/MenuBackend.C:531
 msgid "Paste"
 msgstr "Залепи"
 
@@ -450,22 +450,22 @@ msgstr "Абзац"
 msgid "Formatting document..."
 msgstr "Форматирам документа..."
 
-#: src/BufferView_pimpl.C:1341
+#: src/BufferView_pimpl.C:1340
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1373
+#: src/BufferView_pimpl.C:1372
 msgid "Moved to bookmark"
 msgstr ""
 
 # src/lyxfunc.C:3291
-#: src/BufferView_pimpl.C:1605
+#: src/BufferView_pimpl.C:1608
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/MenuBackend.C:446 src/ext_l10n.h:10
-#: src/BufferView_pimpl.C:1607 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1610 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -475,111 +475,111 @@ msgid "Documents|#o#O"
 msgstr "Документи(D)|D"
 
 # src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
-#: src/BufferView_pimpl.C:1609 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1612 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Примери"
 
-#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1617 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 # src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
 # src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1623 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1626 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Прекъснат."
 
 # src/lyxfunc.C:3309
-#: src/BufferView_pimpl.C:1635
+#: src/BufferView_pimpl.C:1638
 msgid "Inserting document"
 msgstr "Вмъквам документ"
 
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/BufferView_pimpl.C:1641 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1797
+#: src/BufferView_pimpl.C:1644 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
 #: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Документ"
 
 # src/lyxfunc.C:3315
-#: src/BufferView_pimpl.C:1642
+#: src/BufferView_pimpl.C:1645
 msgid "inserted."
 msgstr "вмъкнат."
 
 # src/lyxfunc.C:3317
 
-#: src/BufferView_pimpl.C:1646
+#: src/BufferView_pimpl.C:1649
 msgid "Could not insert document"
 msgstr "Неуспех при вмъкването"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/BufferView_pimpl.C:1820 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1822 src/insets/insettext.C:1455
 msgid "Layout "
 msgstr "Непознато "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1261
-#: src/BufferView_pimpl.C:1821 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1823 src/insets/insettext.C:1455
 msgid " not known"
 msgstr " оформление"
 
 # src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1440
-#: src/BufferView_pimpl.C:2017 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2019 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Грешка"
 
 # src/lyxfunc.C:1441
-#: src/BufferView_pimpl.C:2018
+#: src/BufferView_pimpl.C:2020
 msgid "Couldn't find this label"
 msgstr "Този етикет не може да бъде намерен "
 
 # src/lyxfunc.C:1442
-#: src/BufferView_pimpl.C:2019
+#: src/BufferView_pimpl.C:2021
 msgid "in current document."
 msgstr "в текущия документ."
 
 # src/lyxfunc.C:1839
-#: src/BufferView_pimpl.C:2515
+#: src/BufferView_pimpl.C:2518
 msgid "Mark removed"
 msgstr "Маркиране премахнато"
 
 # src/lyxfunc.C:1844
-#: src/BufferView_pimpl.C:2522
+#: src/BufferView_pimpl.C:2525
 msgid "Mark set"
 msgstr "Маркиране установено"
 
 # src/lyxfunc.C:1949
-#: src/BufferView_pimpl.C:2653
+#: src/BufferView_pimpl.C:2656
 msgid "Mark off"
 msgstr "Маркиране изкл."
 
 # src/lyxfunc.C:1962
-#: src/BufferView_pimpl.C:2666
+#: src/BufferView_pimpl.C:2669
 msgid "Mark on"
 msgstr "Маркиране вкл."
 
 # src/insets/insettext.C:1089 src/lyxfunc.C:2113
-#: src/BufferView_pimpl.C:2840 src/insets/insettext.C:1508
+#: src/BufferView_pimpl.C:2843 src/insets/insettext.C:1508
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/BufferView_pimpl.C:3201
+#: src/BufferView_pimpl.C:3198
 msgid "Word `"
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/BufferView_pimpl.C:3357
+#: src/BufferView_pimpl.C:3356
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Непознато действие"
 
 # src/BufferView2.C:636 src/BufferView2.C:640
-#: src/BufferView_pimpl.C:3620 src/BufferView_pimpl.C:3623
+#: src/BufferView_pimpl.C:3619 src/BufferView_pimpl.C:3622
 #, fuzzy
 msgid "No more insets"
 msgstr "Няма повече бележки"
@@ -942,13 +942,13 @@ msgstr " във файл `"
 
 # src/MenuBackend.C:443 src/MenuBackend.C:450 src/ext_l10n.h:1
 # src/ext_l10n.h:4
-#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:532
-#: src/MenuBackend.C:539
+#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:541
+#: src/MenuBackend.C:548
 msgid "File|F"
 msgstr "Файл(F)|F"
 
 # src/MenuBackend.C:444 src/ext_l10n.h:2 src/ext_l10n.h:5
-#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:533
+#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:542
 msgid "Edit|E"
 msgstr "Редактирай(E)|E"
 
@@ -978,12 +978,12 @@ msgid "Navigate|N"
 msgstr "Предвижи(N)|N"
 
 # src/MenuBackend.C:446 src/ext_l10n.h:10
-#: src/ext_l10n.h:10 src/MenuBackend.C:535
+#: src/ext_l10n.h:10 src/MenuBackend.C:544
 msgid "Documents|D"
 msgstr "Документи(D)|D"
 
 # src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
-#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:502
+#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:511
 msgid "New...|N"
 msgstr "Нов(N)...|N"
 
@@ -993,12 +993,12 @@ msgid "New from Template...|T"
 msgstr "Нов от шаблон(T)...|T"
 
 # src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
-#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:503
+#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:512
 msgid "Open...|O"
 msgstr "Отвори(O)...|O"
 
 # src/MenuBackend.C:415 src/ext_l10n.h:15 src/ext_l10n.h:25
-#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:504
+#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:513
 msgid "Import|I"
 msgstr "Импорт(I)|I"
 
@@ -3647,7 +3647,7 @@ msgstr "(&C)Отказ"
 
 # src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
 #: src/ext_l10n.h:540 src/ext_l10n.h:897 src/frontends/qt2/QIndex.C:23
-#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:59
+#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
 msgid "Index"
 msgstr "Индекс"
 
@@ -3852,7 +3852,7 @@ msgstr "Език:"
 # src/form1.C:51 src/frontends/xforms/FormDocument.C:277
 # src/frontends/xforms/FormPreferences.C:280
 #: src/ext_l10n.h:578 src/ext_l10n.h:586 src/ext_l10n.h:704
-#: src/frontends/xforms/FormDocument.C:324
+#: src/frontends/xforms/FormDocument.C:331
 #: src/frontends/xforms/FormPreferences.C:258
 msgid "Language"
 msgstr "Език"
@@ -4108,7 +4108,7 @@ msgid "Text to place before citation"
 msgstr "Текст след цитат"
 
 # src/frontends/xforms/FormDocument.C:48
-#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:57
+#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:58
 msgid "Document Layout"
 msgstr "Оформление на документ"
 
@@ -4231,7 +4231,7 @@ msgid "12"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:250
-#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:260
+#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:256
 msgid "Sides"
 msgstr ""
 
@@ -4283,7 +4283,7 @@ msgid "S&kip"
 msgstr "Верт. отместване(K)|#K"
 
 # src/frontends/xforms/FormDocument.C:275
-#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:322
+#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:329
 msgid "Paper"
 msgstr "Страница"
 
@@ -4585,7 +4585,7 @@ msgstr "Двойно"
 # src/frontends/xforms/FormDocument.C:279
 # src/frontends/xforms/FormParagraph.C:133
 #: src/ext_l10n.h:730 src/ext_l10n.h:853
-#: src/frontends/xforms/FormDocument.C:326
+#: src/frontends/xforms/FormDocument.C:333
 msgid "Extra"
 msgstr "Екстри"
 
@@ -4616,7 +4616,7 @@ msgid "Use A&MS Math"
 msgstr "AMS математика|#M"
 
 # src/frontends/xforms/FormDocument.C:281
-#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:328
+#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:335
 msgid "Bullets"
 msgstr "Точки"
 
@@ -4628,7 +4628,7 @@ msgstr "Големина(z)|#z"
 
 # src/frontends/xforms/form_preferences.C:165
 #: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:149
+#: src/frontends/xforms/form_preferences.C:171
 msgid "tiny"
 msgstr "мъничък"
 
@@ -4644,24 +4644,24 @@ msgstr "бел. под линия"
 
 # src/frontends/xforms/form_preferences.C:171
 #: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:158
+#: src/frontends/xforms/form_preferences.C:180
 msgid "small"
 msgstr "малък"
 
 # src/frontends/xforms/form_preferences.C:150
 #: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:161
+#: src/frontends/xforms/form_preferences.C:183
 msgid "normal"
 msgstr "нормален"
 
 # src/frontends/xforms/form_preferences.C:141
 #: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:164
+#: src/frontends/xforms/form_preferences.C:186
 msgid "large"
 msgstr "голям"
 
 # src/lyxfont.C:56
-#: src/ext_l10n.h:745 src/frontends/controllers/character.C:106
+#: src/ext_l10n.h:745 src/frontends/controllers/character.C:105
 #: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
 msgid "Large"
 msgstr "Голям"
@@ -4672,18 +4672,18 @@ msgstr ""
 
 # src/frontends/xforms/form_preferences.C:147
 #: src/ext_l10n.h:747 src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:173
+#: src/frontends/xforms/form_preferences.C:195
 msgid "huge"
 msgstr "огромен"
 
 # src/lyxfont.C:57
-#: src/ext_l10n.h:748 src/frontends/controllers/character.C:112
+#: src/ext_l10n.h:748 src/frontends/controllers/character.C:111
 #: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
 msgid "Huge"
 msgstr "Огромен"
 
 # src/frontends/xforms/form_document.C:572
-#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:614
+#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:608
 msgid "Bullet Depth"
 msgstr "Дълбочина на точките"
 
@@ -4907,7 +4907,7 @@ msgstr ""
 
 # src/frontends/kde/dlg/printdlgdata.C:246
 #. add the different tabfolders
-#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:184
+#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:189
 #, fuzzy
 msgid "File"
 msgstr "(&F)Файл"
@@ -4988,7 +4988,7 @@ msgid "draft mode"
 msgstr "Матем. режим"
 
 # src/frontends/xforms/form_document.C:523
-#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:180
+#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:201
 #, fuzzy
 msgid "Size"
 msgstr "Големина(z)|#z"
@@ -5119,7 +5119,7 @@ msgid "leftBaseline"
 msgstr "ред на таблица"
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:107
-#: src/ext_l10n.h:861
+#: src/ext_l10n.h:861 src/frontends/controllers/ControlGraphics.C:202
 #, fuzzy
 msgid "center"
 msgstr "Центринан"
@@ -5815,6 +5815,8 @@ msgstr "(&P)Печат"
 #: src/ext_l10n.h:1100 src/ext_l10n.h:1159
 #: src/frontends/controllers/ButtonController.h:74
 #: src/frontends/xforms/form_maths_deco.C:32
+#: src/frontends/xforms/FormMathsPanel.C:71
+#: src/frontends/xforms/FormMathsPanel.C:407
 #: src/frontends/xforms/form_maths_space.C:73
 #: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
 msgid "Close"
@@ -6282,188 +6284,187 @@ msgid "Loading font into X-Server..."
 msgstr "Зареждане на шрифт в X-сървъра..."
 
 # src/frontends/gnome/FormIndex.C:119
-#: src/frontends/controllers/biblio.C:213
+#: src/frontends/controllers/biblio.C:220
 #, fuzzy
 msgid " and "
 msgstr "Индекс "
 
-#: src/frontends/controllers/biblio.C:215
+#: src/frontends/controllers/biblio.C:222
 msgid " et al."
 msgstr ""
 
+# src/mathed/formula.C:926
+#: src/frontends/controllers/biblio.C:258
+#, fuzzy
+msgid "No year"
+msgstr "Без номериране"
+
 # src/lyx_gui.C:347
-#: src/frontends/controllers/character.C:34
-#: src/frontends/controllers/character.C:54
-#: src/frontends/controllers/character.C:72
-#: src/frontends/controllers/character.C:94
-#: src/frontends/controllers/character.C:132
-#: src/frontends/controllers/character.C:152
-#: src/frontends/controllers/character.C:183
-#: src/frontends/controllers/ControlCharacter.C:223
-#: src/frontends/controllers/ControlCharacter.C:229
-#: src/frontends/xforms/FormCharacter.C:213
+#: src/frontends/controllers/character.C:33
+#: src/frontends/controllers/character.C:53
+#: src/frontends/controllers/character.C:71
+#: src/frontends/controllers/character.C:93
+#: src/frontends/controllers/character.C:131
+#: src/frontends/controllers/character.C:151
+#: src/frontends/controllers/frnt_lang.C:45
 msgid "No change"
 msgstr "Без промяна"
 
 # src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
 #. default & error
-#: src/frontends/controllers/character.C:36
-#: src/frontends/xforms/form_preferences.C:107 src/lyxfont.C:44
+#: src/frontends/controllers/character.C:35 src/lyxfont.C:44
 msgid "Roman"
 msgstr "Roman"
 
 # src/frontends/xforms/form_preferences.C:108
-#: src/frontends/controllers/character.C:38
-#: src/frontends/xforms/form_preferences.C:110
+#: src/frontends/controllers/character.C:37
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 # src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
-#: src/frontends/controllers/character.C:40
-#: src/frontends/xforms/form_preferences.C:113 src/lyxfont.C:44
+#: src/frontends/controllers/character.C:39 src/lyxfont.C:44
 msgid "Typewriter"
 msgstr "Машинопис"
 
 # src/lyx_gui.C:348
-#: src/frontends/controllers/character.C:42
-#: src/frontends/controllers/character.C:60
-#: src/frontends/controllers/character.C:82
-#: src/frontends/controllers/character.C:120
-#: src/frontends/controllers/character.C:140
-#: src/frontends/controllers/character.C:172
-#: src/frontends/controllers/character.C:184
-#: src/frontends/controllers/ControlCharacter.C:232
+#: src/frontends/controllers/character.C:41
+#: src/frontends/controllers/character.C:59
+#: src/frontends/controllers/character.C:81
+#: src/frontends/controllers/character.C:119
+#: src/frontends/controllers/character.C:139
+#: src/frontends/controllers/character.C:171
+#: src/frontends/controllers/frnt_lang.C:46
 #: src/frontends/xforms/form_maths_style.C:44
 msgid "Reset"
 msgstr ""
 
 # src/lyxfont.C:47
-#: src/frontends/controllers/character.C:56 src/lyxfont.C:49
+#: src/frontends/controllers/character.C:55 src/lyxfont.C:49
 msgid "Medium"
 msgstr "Средно"
 
 # src/lyxfont.C:47
-#: src/frontends/controllers/character.C:58 src/lyxfont.C:49
+#: src/frontends/controllers/character.C:57 src/lyxfont.C:49
 msgid "Bold"
 msgstr "Удебелен"
 
 # src/lyxfont.C:51
-#: src/frontends/controllers/character.C:74 src/lyxfont.C:52
+#: src/frontends/controllers/character.C:73 src/lyxfont.C:52
 msgid "Upright"
 msgstr "Нормален"
 
 # src/lyxfont.C:51
-#: src/frontends/controllers/character.C:76 src/lyxfont.C:52
+#: src/frontends/controllers/character.C:75 src/lyxfont.C:52
 msgid "Italic"
 msgstr "Курсив"
 
 # src/lyxfont.C:51
-#: src/frontends/controllers/character.C:78 src/lyxfont.C:52
+#: src/frontends/controllers/character.C:77 src/lyxfont.C:52
 msgid "Slanted"
 msgstr ""
 
 # src/lyxfont.C:51
-#: src/frontends/controllers/character.C:80
+#: src/frontends/controllers/character.C:79
 #, fuzzy
 msgid "Small Caps"
 msgstr "Малки букви"
 
 # src/lyxfont.C:56
-#: src/frontends/controllers/character.C:96 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:95 src/lyxfont.C:56
 msgid "Tiny"
 msgstr "Дребен"
 
 # src/lyxfont.C:56
-#: src/frontends/controllers/character.C:98 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:97 src/lyxfont.C:56
 msgid "Smallest"
 msgstr "Малък 3"
 
 # src/lyxfont.C:56
-#: src/frontends/controllers/character.C:100 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:99 src/lyxfont.C:56
 msgid "Smaller"
 msgstr "Малък 2"
 
 # src/lyxfont.C:56
-#: src/frontends/controllers/character.C:102 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:101 src/lyxfont.C:56
 msgid "Small"
 msgstr "Малък"
 
 # src/frontends/kde/paraextradlg.C:25 src/lyxfont.C:56
-#: src/frontends/controllers/character.C:104 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:103 src/lyxfont.C:56
 msgid "Normal"
 msgstr "Нормален"
 
 # src/lyxfont.C:57
-#: src/frontends/controllers/character.C:108 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:107 src/lyxfont.C:57
 msgid "Larger"
 msgstr "Голям 2"
 
 # src/lyxfont.C:57
-#: src/frontends/controllers/character.C:110 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:109 src/lyxfont.C:57
 msgid "Largest"
 msgstr "Голям 3"
 
 # src/lyxfont.C:57
-#: src/frontends/controllers/character.C:114 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:113 src/lyxfont.C:57
 msgid "Huger"
 msgstr "Огромен 2"
 
 # src/lyxfont.C:57
-#: src/frontends/controllers/character.C:116 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:115 src/lyxfont.C:57
 msgid "Increase"
 msgstr "Увеличи"
 
 # src/lyxfont.C:57
-#: src/frontends/controllers/character.C:118 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:117 src/lyxfont.C:57
 msgid "Decrease"
 msgstr "Намали"
 
 # src/lyxfont.C:401
-#: src/frontends/controllers/character.C:134
+#: src/frontends/controllers/character.C:133
 #, fuzzy
 msgid "Emph"
 msgstr "Наблягане "
 
-#: src/frontends/controllers/character.C:136
+#: src/frontends/controllers/character.C:135
 msgid "Underbar"
 msgstr ""
 
 # src/lyxfont.C:407
-#: src/frontends/controllers/character.C:138
+#: src/frontends/controllers/character.C:137
 #, fuzzy
 msgid "Noun"
 msgstr "Съществително "
 
-#: src/frontends/controllers/character.C:154
+#: src/frontends/controllers/character.C:153
 msgid "No color"
 msgstr ""
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:94
-#: src/frontends/controllers/character.C:156
+#: src/frontends/controllers/character.C:155
 #, fuzzy
 msgid "Black"
 msgstr "Блок"
 
 # src/LColor.C:54
-#: src/frontends/controllers/character.C:158
+#: src/frontends/controllers/character.C:157
 #, fuzzy
 msgid "White"
 msgstr "бял"
 
 # src/BufferView2.C:456 src/LyXAction.C:357
-#: src/frontends/controllers/character.C:160
+#: src/frontends/controllers/character.C:159
 #, fuzzy
 msgid "Red"
 msgstr "Повтори"
 
 # src/ext_l10n.h:446 src/mathed/math_forms.C:26
-#: src/frontends/controllers/character.C:162
+#: src/frontends/controllers/character.C:161
 #, fuzzy
 msgid "Green"
 msgstr "Гръцки"
 
 # src/LColor.C:57
-#: src/frontends/controllers/character.C:164
+#: src/frontends/controllers/character.C:163
 #, fuzzy
 msgid "Blue"
 msgstr "син"
@@ -6472,20 +6473,20 @@ msgstr "син"
 # src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:138
 # src/frontends/xforms/FormBase.h:153 src/frontends/xforms/FormInset.h:31
 # src/frontends/xforms/FormInset.h:55 src/lyxfunc.C:744
-#: src/frontends/controllers/character.C:166
+#: src/frontends/controllers/character.C:165
 #, fuzzy
 msgid "Cyan"
 msgstr "Отказ"
 
 # src/ext_l10n.h:451
-#: src/frontends/controllers/character.C:168
+#: src/frontends/controllers/character.C:167
 #, fuzzy
 msgid "Magenta"
 msgstr "Унгарски"
 
 # src/LColor.C:60
 
-#: src/frontends/controllers/character.C:170
+#: src/frontends/controllers/character.C:169
 #, fuzzy
 msgid "Yellow"
 msgstr "жълт"
@@ -6598,6 +6599,60 @@ msgstr "Избор на файл"
 #, fuzzy
 msgid "Clipart|#C#c"
 msgstr "Изтрий(e)|#e"
+
+# src/frontends/kde/dlg/paraextradlgdata.C:168
+#: src/frontends/controllers/ControlGraphics.C:203
+#, fuzzy
+msgid "left top"
+msgstr "(&B)Отдолу"
+
+# src/frontends/kde/dlg/paraextradlgdata.C:168
+#: src/frontends/controllers/ControlGraphics.C:203
+#, fuzzy
+msgid "left bottom"
+msgstr "(&B)Отдолу"
+
+# src/LColor.C:97
+#: src/frontends/controllers/ControlGraphics.C:203
+#, fuzzy
+msgid "left baseline"
+msgstr "ред на таблица"
+
+# src/frontends/kde/dlg/parageneraldlgdata.C:107
+#: src/frontends/controllers/ControlGraphics.C:204
+#, fuzzy
+msgid "center top"
+msgstr "Центринан"
+
+# src/mathed/math_panel.C:330
+#: src/frontends/controllers/ControlGraphics.C:204
+#, fuzzy
+msgid "center bottom"
+msgstr " Горе | Център | Долу"
+
+# src/LColor.C:97
+#: src/frontends/controllers/ControlGraphics.C:204
+#, fuzzy
+msgid "center baseline"
+msgstr "ред на таблица"
+
+# src/lyxfont.C:51
+#: src/frontends/controllers/ControlGraphics.C:205
+#, fuzzy
+msgid "right top"
+msgstr "Нормален"
+
+# src/LColor.C:107
+#: src/frontends/controllers/ControlGraphics.C:205
+#, fuzzy
+msgid "right bottom"
+msgstr "бутон (отдясно)"
+
+# src/LColor.C:97
+#: src/frontends/controllers/ControlGraphics.C:205
+#, fuzzy
+msgid "right baseline"
+msgstr "ред на таблица"
 
 # src/lyxfunc.C:3291
 #: src/frontends/controllers/ControlInclude.C:53
@@ -6871,22 +6926,22 @@ msgid "»text«"
 msgstr "текст"
 
 # src/frontends/xforms/FormDocument.C:308
-#: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:355
+#: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:362
 msgid "Document layout set"
 msgstr "Установено е оформлението на документа"
 
 # src/frontends/xforms/FormDocument.C:426
-#: src/frontends/qt2/QDocument.C:353 src/frontends/xforms/FormDocument.C:768
+#: src/frontends/qt2/QDocument.C:353 src/frontends/xforms/FormDocument.C:775
 msgid "Converting document to new document class..."
 msgstr "Документът се конвертира към нов документ клас..."
 
 # src/frontends/xforms/FormDocument.C:434
-#: src/frontends/qt2/QDocument.C:361 src/frontends/xforms/FormDocument.C:776
+#: src/frontends/qt2/QDocument.C:361 src/frontends/xforms/FormDocument.C:783
 msgid "One paragraph couldn't be converted"
 msgstr "Един абзац не може да бъде конвертиран"
 
 # src/frontends/xforms/FormDocument.C:437
-#: src/frontends/qt2/QDocument.C:364 src/frontends/xforms/FormDocument.C:779
+#: src/frontends/qt2/QDocument.C:364 src/frontends/xforms/FormDocument.C:786
 msgid " paragraphs couldn't be converted"
 msgstr " абзаци не могат да бъдат конвертирани"
 
@@ -6895,32 +6950,32 @@ msgstr " абзаци не могат да бъдат конвертирани"
 # src/frontends/xforms/FormDocument.C:1108
 #. problem changing class -- warn user and retain old style
 #: src/frontends/qt2/QDocument.C:366 src/frontends/qt2/QDocument.C:373
-#: src/frontends/qt2/QDocument.C:1005 src/frontends/xforms/FormDocument.C:781
-#: src/frontends/xforms/FormDocument.C:787
-#: src/frontends/xforms/FormDocument.C:1480
+#: src/frontends/qt2/QDocument.C:1005 src/frontends/xforms/FormDocument.C:788
+#: src/frontends/xforms/FormDocument.C:794
+#: src/frontends/xforms/FormDocument.C:1489
 msgid "Conversion Errors!"
 msgstr "Грешки при конвертиране!"
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/frontends/qt2/QDocument.C:367 src/frontends/xforms/FormDocument.C:782
+#: src/frontends/qt2/QDocument.C:367 src/frontends/xforms/FormDocument.C:789
 msgid "into chosen document class"
 msgstr " към избрания документ клас!"
 
 # src/frontends/xforms/FormDocument.C:447
-#: src/frontends/qt2/QDocument.C:374 src/frontends/xforms/FormDocument.C:788
+#: src/frontends/qt2/QDocument.C:374 src/frontends/xforms/FormDocument.C:795
 msgid "Errors loading new document class."
 msgstr "Грешки при зареждене на нов документ клас."
 
 # src/frontends/xforms/FormDocument.C:448
 # src/frontends/xforms/FormDocument.C:1110
 #: src/frontends/qt2/QDocument.C:375 src/frontends/qt2/QDocument.C:1007
-#: src/frontends/xforms/FormDocument.C:789
-#: src/frontends/xforms/FormDocument.C:1482
+#: src/frontends/xforms/FormDocument.C:796
+#: src/frontends/xforms/FormDocument.C:1491
 msgid "Reverting to original document class."
 msgstr "Обръщане в предишния документ клас!"
 
 # src/frontends/xforms/FormDocument.C:825
-#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1241
+#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1250
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Документът е само за четене. Не са разрешени промени в оформлението."
 
@@ -6935,7 +6990,7 @@ msgid "the defaults of this document class?"
 msgstr "подразбиращи се за този документ клас?"
 
 # src/frontends/xforms/FormDocument.C:1109
-#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1481
+#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1490
 msgid "Unable to switch to new document class."
 msgstr "Невъзможност за превключване към нов документ клас!"
 
@@ -6971,7 +7026,7 @@ msgstr "LaTeX конфигурация|L"
 
 # src/frontends/xforms/FormGraphics.C:36
 # src/frontends/xforms/FormGraphics.C:359
-#: src/frontends/qt2/QGraphics.C:46 src/frontends/xforms/FormGraphics.C:54
+#: src/frontends/qt2/QGraphics.C:46 src/frontends/xforms/FormGraphics.C:56
 msgid "Graphics"
 msgstr "Графика"
 
@@ -7242,14 +7297,14 @@ msgstr "Стил: "
 #: src/frontends/xforms/form_external.C:50
 #: src/frontends/xforms/form_graphics.C:93
 #: src/frontends/xforms/form_include.C:30
-#: src/frontends/xforms/form_preferences.C:549
+#: src/frontends/xforms/form_preferences.C:585
 #: src/frontends/xforms/form_print.C:146
 msgid "Browse...|#B"
 msgstr "Търсене(B)...|#B"
 
 # src/form1.C:105 src/frontends/xforms/form_preferences.C:308 src/lyx.C:83
 #: src/frontends/xforms/form_bibtex.C:59
-#: src/frontends/xforms/form_preferences.C:224
+#: src/frontends/xforms/form_preferences.C:256
 #, fuzzy
 msgid "Browse...|#r"
 msgstr "Търсене(B)...|#B"
@@ -7282,14 +7337,36 @@ msgstr ""
 msgid ""
 "The BibTeX style to use (only one allowed). Insert it without the default "
 "extension \".bst\" and without path. Most of the bibstyles are stored in "
-"$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help-"
-">TeX Info\" you can list all installed styles."
+"$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"View-"
+">TeX Information\" you can list all installed styles."
 msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:71
 msgid ""
 "Activate this option if you want the bibliography to appear in the Table of "
 "Contents (which doesn't happen by default)."
+msgstr ""
+
+# src/insets/insetbib.C:339
+#: src/frontends/xforms/FormBibtex.C:83
+#, fuzzy
+msgid "Select Database"
+msgstr "База данни:"
+
+# src/insets/insetbib.C:339
+#: src/frontends/xforms/FormBibtex.C:84
+#, fuzzy
+msgid "*.bib| BibTeX Databases (*.bib)"
+msgstr "База данни:"
+
+# src/LyXAction.C:393
+#: src/frontends/xforms/FormBibtex.C:100
+#, fuzzy
+msgid "Select BibTeX-Style"
+msgstr "Превключване на TeX стил"
+
+#: src/frontends/xforms/FormBibtex.C:101
+msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr ""
 
 # src/frontends/xforms/form_copyright.C:41
@@ -7398,7 +7475,7 @@ msgid "These are always toggled"
 msgstr "Винаги превключване"
 
 # src/lyx_cb.C:624
-#: src/frontends/xforms/FormCharacter.C:36
+#: src/frontends/xforms/FormCharacter.C:38
 #, fuzzy
 msgid "Character Layout"
 msgstr "Стил на символ"
@@ -7569,7 +7646,7 @@ msgstr ""
 #: src/frontends/xforms/FormCitation.C:211
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
-"three authors, and not \"<First Author> et.al.\" (Natbib)."
+"three authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:214
@@ -7627,12 +7704,13 @@ msgstr "Провери старите файлове(C)|#C"
 # src/frontends/xforms/form_preferences.C:932
 #: src/frontends/xforms/form_document.C:94
 #, fuzzy
-msgid "Papersize"
+msgid "Paper size"
 msgstr "размер на хартията"
 
 # src/frontends/xforms/form_document.C:136
 #: src/frontends/xforms/form_document.C:96
-msgid "Papersize:|#P"
+#, fuzzy
+msgid "Paper size:|#P"
 msgstr "Формат(P):|#P"
 
 # src/frontends/xforms/form_document.C:155
@@ -7705,212 +7783,214 @@ msgid "Footskip:|#F"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:247
-#: src/frontends/xforms/form_document.C:257
+#: src/frontends/xforms/form_document.C:255
 msgid "Page cols"
 msgstr "Колони"
 
 # src/frontends/xforms/form_document.C:254
-#: src/frontends/xforms/form_document.C:264
+#: src/frontends/xforms/form_document.C:258
 msgid "Fonts:|#F"
 msgstr "Шрифтове(F):|#F"
 
 # src/frontends/xforms/form_document.C:262
-#: src/frontends/xforms/form_document.C:272
+#: src/frontends/xforms/form_document.C:266
 msgid "Font Size:|#O"
 msgstr "Шрифт размер(O):|#O"
 
 # src/frontends/xforms/form_document.C:270
-#: src/frontends/xforms/form_document.C:280
+#: src/frontends/xforms/form_document.C:274
 #, fuzzy
 msgid "Class:|#l"
 msgstr "Клас(C):|#C"
 
 # src/frontends/xforms/form_document.C:278
-#: src/frontends/xforms/form_document.C:288
-msgid "Pagestyle:|#P"
+#: src/frontends/xforms/form_document.C:282
+#, fuzzy
+msgid "Page style:|#P"
 msgstr "Формат на страница(P)|#P"
 
 # src/frontends/xforms/form_document.C:286
-#: src/frontends/xforms/form_document.C:296
+#: src/frontends/xforms/form_document.C:290
 msgid "Spacing|#g"
 msgstr "Разстояния(g)|#g"
 
 # src/frontends/xforms/form_document.C:294
-#: src/frontends/xforms/form_document.C:304
+#: src/frontends/xforms/form_document.C:298
 msgid "Extra Options:|#X"
 msgstr "Допълнителни опции(X)|#X"
 
 # src/frontends/xforms/form_document.C:304
-#: src/frontends/xforms/form_document.C:314
+#: src/frontends/xforms/form_document.C:308
 msgid "Default Skip:|#u"
 msgstr "Нормално отместване(u)|#u"
 
 # src/frontends/xforms/form_document.C:314
-#: src/frontends/xforms/form_document.C:323
+#: src/frontends/xforms/form_document.C:317
 msgid "One|#n"
 msgstr "Едностранно(n)|#n"
 
 # src/frontends/xforms/form_document.C:321
-#: src/frontends/xforms/form_document.C:331
+#: src/frontends/xforms/form_document.C:325
 msgid "Two|#T"
 msgstr "Двустранно(w)|#w"
 
 # src/frontends/xforms/form_document.C:332
-#: src/frontends/xforms/form_document.C:342
+#: src/frontends/xforms/form_document.C:336
 msgid "One|#e"
 msgstr "Едно(e)|#e"
 
 # src/frontends/xforms/form_document.C:339
-#: src/frontends/xforms/form_document.C:350
+#: src/frontends/xforms/form_document.C:344
 msgid "Two|#w"
 msgstr "Дву(w)|#w"
 
 # src/frontends/xforms/form_document.C:350
-#: src/frontends/xforms/form_document.C:361
+#: src/frontends/xforms/form_document.C:355
 msgid "Indent|#I"
 msgstr "Отместване(I)|#I"
 
 # src/frontends/xforms/form_document.C:357
-#: src/frontends/xforms/form_document.C:369
+#: src/frontends/xforms/form_document.C:363
 msgid "Skip|#K"
 msgstr "Верт. отместване(K)|#K"
 
 # src/frontends/xforms/form_document.C:392
-#: src/frontends/xforms/form_document.C:408
+#: src/frontends/xforms/form_document.C:402
 msgid "Quote Style    "
 msgstr "Вид кавички"
 
 # src/frontends/xforms/form_document.C:394
-#: src/frontends/xforms/form_document.C:410
+#: src/frontends/xforms/form_document.C:404
 msgid "Encoding:|#D"
 msgstr "Кодировка(D):|#D"
 
 # src/frontends/xforms/form_document.C:402
-#: src/frontends/xforms/form_document.C:418
+#: src/frontends/xforms/form_document.C:412
 msgid "Type:|#T"
 msgstr "Тип(T):|#T"
 
 # src/frontends/xforms/form_document.C:411
-#: src/frontends/xforms/form_document.C:427
+#: src/frontends/xforms/form_document.C:421
 msgid "Single|#S"
 msgstr "Единично(S)|#S"
 
 # src/frontends/xforms/form_document.C:418
-#: src/frontends/xforms/form_document.C:435
+#: src/frontends/xforms/form_document.C:429
 msgid "Double|#D"
 msgstr "Двойно(D)|#D"
 
 # src/frontends/xforms/form_document.C:427
-#: src/frontends/xforms/form_document.C:445
+#: src/frontends/xforms/form_document.C:439
 msgid "Language:|#L"
 msgstr "Език(L):|#L"
 
 # src/frontends/xforms/form_document.C:458
-#: src/frontends/xforms/form_document.C:476
+#: src/frontends/xforms/form_document.C:470
 msgid "Float Placement:|#L"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:464
-#: src/frontends/xforms/form_document.C:482
+#: src/frontends/xforms/form_document.C:476
 msgid "Section number depth"
 msgstr "Дълбочина на номериране"
 
 # src/frontends/xforms/form_document.C:468
-#: src/frontends/xforms/form_document.C:486
+#: src/frontends/xforms/form_document.C:480
 msgid "Table of contents depth"
 msgstr "Дълбочина на съдържанието"
 
 # src/layout_forms.C:28
-#: src/frontends/xforms/form_document.C:491
+#: src/frontends/xforms/form_document.C:485
 #, fuzzy
 msgid "PS Driver|#S"
 msgstr "Серия(S):|#S"
 
 # src/frontends/xforms/form_document.C:481
-#: src/frontends/xforms/form_document.C:499
+#: src/frontends/xforms/form_document.C:493
 msgid "Use AMS Math|#M"
 msgstr "AMS математика|#M"
 
-#: src/frontends/xforms/form_document.C:507
+#: src/frontends/xforms/form_document.C:501
 msgid "Use Natbib|#N"
 msgstr ""
 
-#: src/frontends/xforms/form_document.C:515
+#: src/frontends/xforms/form_document.C:509
 #, fuzzy
 msgid "Citation style|#i"
 msgstr "Стил цитат(s)|#s"
 
 # src/frontends/xforms/form_document.C:523
-#: src/frontends/xforms/form_document.C:558
+#: src/frontends/xforms/form_document.C:552
 msgid "Size|#z"
 msgstr "Големина(z)|#z"
 
 # src/frontends/xforms/form_document.C:532
-#: src/frontends/xforms/form_document.C:567
+#: src/frontends/xforms/form_document.C:561
 msgid "LaTeX|#L"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:542
-#: src/frontends/xforms/form_document.C:576
+#: src/frontends/xforms/form_document.C:570
 msgid "1|#1"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:550
-#: src/frontends/xforms/form_document.C:586
+#: src/frontends/xforms/form_document.C:580
 msgid "2|#2"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:557
-#: src/frontends/xforms/form_document.C:595
+#: src/frontends/xforms/form_document.C:589
 msgid "3|#3"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:564
-#: src/frontends/xforms/form_document.C:604
+#: src/frontends/xforms/form_document.C:598
 msgid "4|#4"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:578
-#: src/frontends/xforms/form_document.C:619
+#: src/frontends/xforms/form_document.C:613
 msgid "Standard|#S"
 msgstr "Стандартно(S)|#S"
 
 # src/frontends/xforms/form_document.C:587
-#: src/frontends/xforms/form_document.C:630
+#: src/frontends/xforms/form_document.C:624
 msgid "Maths|#M"
 msgstr "Математика(M)|#M"
 
 # src/frontends/xforms/form_document.C:619
-#: src/frontends/xforms/form_document.C:640
+#: src/frontends/xforms/form_document.C:634
 msgid "Ding 1|#D"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:595
-#: src/frontends/xforms/form_document.C:650
+#: src/frontends/xforms/form_document.C:644
 msgid "Ding 2|#i"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:603
-#: src/frontends/xforms/form_document.C:660
+#: src/frontends/xforms/form_document.C:654
 msgid "Ding 3|#n"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:611
-#: src/frontends/xforms/form_document.C:670
+#: src/frontends/xforms/form_document.C:664
 msgid "Ding 4|#g"
 msgstr ""
 
 # src/frontends/xforms/FormDocument.C:117
-#: src/frontends/xforms/FormDocument.C:109
+#: src/frontends/xforms/FormDocument.C:110
+#, fuzzy
 msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
+" Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
+"| B4 | B5 "
 msgstr ""
 " Стандартно | Потребителско | USletter | USlegal | USexecutive | A3 | A4 | "
 "A5 | B3 | B4 | B5 "
 
 # src/frontends/xforms/FormDocument.C:120
-#: src/frontends/xforms/FormDocument.C:112
+#: src/frontends/xforms/FormDocument.C:113
 #, fuzzy
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr ""
@@ -7918,27 +7998,28 @@ msgstr ""
 "портретt) | A4 много широки полета (само портрет) "
 
 # src/frontends/xforms/FormDocument.C:179
-#: src/frontends/xforms/FormDocument.C:200
-msgid " Single | OneHalf | Double | Other "
+#: src/frontends/xforms/FormDocument.C:201
+#, fuzzy
+msgid " Single | OneHalf | Double | Custom "
 msgstr " Единично | Половин | Двойно | Друго "
 
 # src/frontends/xforms/FormDocument.C:187
-#: src/frontends/xforms/FormDocument.C:208
+#: src/frontends/xforms/FormDocument.C:209
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr " Малко | Средно | Голямо | Дължина "
 
 # src/frontends/xforms/FormDocument.C:236
-#: src/frontends/xforms/FormDocument.C:261
+#: src/frontends/xforms/FormDocument.C:268
 #, fuzzy
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | \"text\" | \"text\" "
 
-#: src/frontends/xforms/FormDocument.C:285
+#: src/frontends/xforms/FormDocument.C:292
 msgid " Author-year | Numerical "
 msgstr ""
 
 # src/frontends/xforms/FormDocument.C:263
-#: src/frontends/xforms/FormDocument.C:298
+#: src/frontends/xforms/FormDocument.C:305
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
@@ -7947,7 +8028,7 @@ msgstr ""
 "Голямо | ГОЛЯМО | огромно | Огромно"
 
 # src/frontends/xforms/FormDocument.C:284
-#: src/frontends/xforms/FormDocument.C:331
+#: src/frontends/xforms/FormDocument.C:338
 #, fuzzy
 msgid ""
 "Your version of libXpm is older than 4.7.\n"
@@ -7957,18 +8038,18 @@ msgstr ""
 "Затова е деактивиран диалогът \"Точки\"."
 
 # src/lyx_cb.C:692
-#: src/frontends/xforms/FormDocument.C:398
+#: src/frontends/xforms/FormDocument.C:405
 msgid "Do you want to save the current settings"
 msgstr "Желаете ли да запишете текущите настройки "
 
 # src/frontends/xforms/FormDocument.C:308
-#: src/frontends/xforms/FormDocument.C:399
+#: src/frontends/xforms/FormDocument.C:406
 #, fuzzy
 msgid "for the document layout as default?"
 msgstr "Установено е оформлението на документа"
 
 # src/lyxfunc.C:3056
-#: src/frontends/xforms/FormDocument.C:400
+#: src/frontends/xforms/FormDocument.C:407
 #, fuzzy
 msgid "(they will be valid for any new document)"
 msgstr "Въведете име на файл за нов документ"
@@ -7978,7 +8059,7 @@ msgstr "Въведете име на файл за нов документ"
 # src/frontends/xforms/FormTabular.C:454
 # src/frontends/xforms/FormTabular.C:466
 # src/frontends/xforms/FormTabular.C:478
-#: src/frontends/xforms/FormDocument.C:1293
+#: src/frontends/xforms/FormDocument.C:1302
 #: src/frontends/xforms/FormParagraph.C:584
 #: src/frontends/xforms/FormTabular.C:578
 #: src/frontends/xforms/FormTabular.C:597
@@ -8360,7 +8441,7 @@ msgstr "Цвят(C):|#C"
 
 # src/frontends/xforms/form_graphics.C:106
 #: src/frontends/xforms/form_graphics.C:481
-#: src/frontends/xforms/form_preferences.C:476
+#: src/frontends/xforms/form_preferences.C:513
 msgid "Don't display|#D"
 msgstr "Не показвай(D)|#D"
 
@@ -8371,37 +8452,37 @@ msgid "Get LaTeX size|#L"
 msgstr "Стандартен размер на лист"
 
 # src/LyXAction.C:153
-#: src/frontends/xforms/FormGraphics.C:185
+#: src/frontends/xforms/FormGraphics.C:190
 #, fuzzy
 msgid "LyX View"
 msgstr "Изглед"
 
 # src/ext_l10n.h:133
-#: src/frontends/xforms/FormGraphics.C:186
+#: src/frontends/xforms/FormGraphics.C:191
 #, fuzzy
 msgid "LaTeX Size"
 msgstr "LaTeX Протокол(L)|L"
 
-#: src/frontends/xforms/FormGraphics.C:187
+#: src/frontends/xforms/FormGraphics.C:192
 msgid "Bounding Box"
 msgstr ""
 
 # src/frontends/xforms/FormDocument.C:279
 # src/frontends/xforms/FormParagraph.C:133
-#: src/frontends/xforms/FormGraphics.C:188
+#: src/frontends/xforms/FormGraphics.C:193
 #, fuzzy
 msgid "Extras"
 msgstr "Екстри"
 
-#: src/frontends/xforms/FormGraphics.C:538
+#: src/frontends/xforms/FormGraphics.C:548
 msgid "The units text%, page%, col% and line% are not allowed here."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:539
+#: src/frontends/xforms/FormGraphics.C:549
 msgid "Cannot use the values from LaTeX size!"
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:685
+#: src/frontends/xforms/FormGraphics.C:695
 #: src/frontends/xforms/FormMinipage.C:111
 msgid "Invalid Length!"
 msgstr ""
@@ -8849,7 +8930,7 @@ msgstr " Няма | Стандартно | Smallskip | Medskip | Bigskip | VFill | Дължина "
 # src/frontends/xforms/FormDocument.C:179
 #: src/frontends/xforms/FormParagraph.C:129
 #, fuzzy
-msgid " Default | Single | OneHalf | Double | Other "
+msgid " Default | Single | OneHalf | Double | Custom "
 msgstr " Единично | Половин | Двойно | Друго "
 
 # src/lyx_cb.C:675
@@ -8863,162 +8944,183 @@ msgstr "LaTeX увод"
 msgid "Save"
 msgstr "Запази"
 
-# src/frontends/xforms/form_preferences.C:132
-#: src/frontends/xforms/form_preferences.C:116
-msgid "Encoding"
-msgstr "Кодировка"
+# src/ext_l10n.h:357
+#: src/frontends/xforms/form_preferences.C:107
+#, fuzzy
+msgid "Scale & Resolution"
+msgstr "Решение"
+
+# src/bufferview_funcs.C:267
+#: src/frontends/xforms/form_preferences.C:108
+#, fuzzy
+msgid "Fonts used"
+msgstr "Шрифт:"
+
+# src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
+#: src/frontends/xforms/form_preferences.C:110
+#, fuzzy
+msgid "Roman|#R"
+msgstr "Roman"
+
+# src/frontends/xforms/form_preferences.C:108
+#: src/frontends/xforms/form_preferences.C:117
+#, fuzzy
+msgid "Sans Serif|#S"
+msgstr "Sans Serif"
+
+# src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
+#: src/frontends/xforms/form_preferences.C:124
+#, fuzzy
+msgid "Typewriter|#T"
+msgstr "Машинопис"
+
+# src/frontends/xforms/form_document.C:394
+#: src/frontends/xforms/form_preferences.C:131
+#, fuzzy
+msgid "Encoding|#E"
+msgstr "Кодировка(D):|#D"
 
 # src/frontends/xforms/form_preferences.C:127
-#: src/frontends/xforms/form_preferences.C:119
+#: src/frontends/xforms/form_preferences.C:138
 #, fuzzy
-msgid "Rescale bitmap fonts"
+msgid "Rescale bitmap fonts|#b"
 msgstr "Използвай мащабируеми шрифтове"
 
 # , c-format
 # src/frontends/xforms/form_preferences.C:116
-#: src/frontends/xforms/form_preferences.C:126
+#: src/frontends/xforms/form_preferences.C:148
 #, no-c-format
 msgid "Zoom %|#Z"
 msgstr "Увеличение(Z) %|#Z"
 
 # src/frontends/xforms/form_preferences.C:154
-#: src/frontends/xforms/form_preferences.C:138
+#: src/frontends/xforms/form_preferences.C:160
 msgid "Screen DPI|#D"
 msgstr "Екранна разделителна способност"
 
 # src/lyxfont.C:56
-#: src/frontends/xforms/form_preferences.C:152
+#: src/frontends/xforms/form_preferences.C:174
 #, fuzzy
 msgid "smallest"
 msgstr "Малък 3"
 
 # src/lyxfont.C:56
-#: src/frontends/xforms/form_preferences.C:155
+#: src/frontends/xforms/form_preferences.C:177
 #, fuzzy
 msgid "smaller"
 msgstr "Малък 2"
 
 # src/frontends/xforms/form_preferences.C:168
-#: src/frontends/xforms/form_preferences.C:167
+#: src/frontends/xforms/form_preferences.C:189
 msgid "larger"
 msgstr "по-голям"
 
 # src/frontends/xforms/form_preferences.C:144
-#: src/frontends/xforms/form_preferences.C:170
+#: src/frontends/xforms/form_preferences.C:192
 msgid "largest"
 msgstr "най-голям"
 
 # src/frontends/xforms/form_preferences.C:174
-#: src/frontends/xforms/form_preferences.C:176
+#: src/frontends/xforms/form_preferences.C:198
 msgid "huger"
 msgstr "по-огромен"
 
-# src/bufferview_funcs.C:267
-#: src/frontends/xforms/form_preferences.C:179
-#, fuzzy
-msgid "Fonts used"
-msgstr "Шрифт:"
-
-# src/ext_l10n.h:357
-#: src/frontends/xforms/form_preferences.C:181
-#, fuzzy
-msgid "Scale & Resolution"
-msgstr "Решение"
-
 # src/frontends/xforms/form_preferences.C:833
-#: src/frontends/xforms/form_preferences.C:205
+#: src/frontends/xforms/form_preferences.C:225
 #, fuzzy
 msgid "Popup Fonts & Encoding"
 msgstr "Диалог Кодировка"
 
 # src/frontends/kde/paraextradlg.C:25 src/lyxfont.C:56
-#: src/frontends/xforms/form_preferences.C:206
+#: src/frontends/xforms/form_preferences.C:227
 #, fuzzy
-msgid "Normal Font"
+msgid "Normal Font|#N"
 msgstr "Нормален"
 
 # src/frontends/xforms/form_preferences.C:827
-#: src/frontends/xforms/form_preferences.C:209
+#: src/frontends/xforms/form_preferences.C:234
 #, fuzzy
-msgid "Bold Font"
+msgid "Bold Font|#B"
 msgstr "Диалог Шрифт"
 
 # src/frontends/xforms/form_preferences.C:833
-#: src/frontends/xforms/form_preferences.C:212
-msgid "Popup Encoding"
+#: src/frontends/xforms/form_preferences.C:241
+#, fuzzy
+msgid "Popup Encoding|#P"
 msgstr "Диалог Кодировка"
 
-#: src/frontends/xforms/form_preferences.C:215
+#: src/frontends/xforms/form_preferences.C:247
 msgid "Layout & Bindings"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:847
-#: src/frontends/xforms/form_preferences.C:217
+#: src/frontends/xforms/form_preferences.C:249
 msgid "User Interface file|#U"
 msgstr ""
 
-# src/frontends/xforms/form_preferences.C:837
-#: src/frontends/xforms/form_preferences.C:231
-msgid "Bind file|#B"
-msgstr ""
+# src/lyx.C:90
+#: src/frontends/xforms/form_preferences.C:263
+#, fuzzy
+msgid "Bind file|#f"
+msgstr "Редактирай файл(E)|#E"
 
 # src/form1.C:105 src/frontends/xforms/form_preferences.C:308 src/lyx.C:83
-#: src/frontends/xforms/form_preferences.C:238
-#: src/frontends/xforms/form_preferences.C:640
+#: src/frontends/xforms/form_preferences.C:270
+#: src/frontends/xforms/form_preferences.C:677
 #, fuzzy
 msgid "Browse...|#w"
 msgstr "Търсене(B)...|#B"
 
-#: src/frontends/xforms/form_preferences.C:244
+#: src/frontends/xforms/form_preferences.C:276
 msgid "Dead Keys"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:246
+#: src/frontends/xforms/form_preferences.C:278
 msgid "Override X Window dead-keys|#O"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:496
-#: src/frontends/xforms/form_preferences.C:277
+#: src/frontends/xforms/form_preferences.C:309
 msgid "LyX objects|#L"
 msgstr "LyX обекти|#L"
 
 # src/frontends/xforms/form_preferences.C:529
-#: src/frontends/xforms/form_preferences.C:285
+#: src/frontends/xforms/form_preferences.C:317
 msgid "H|#H"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:511
-#: src/frontends/xforms/form_preferences.C:292
+#: src/frontends/xforms/form_preferences.C:324
 msgid "S|#S"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:520
-#: src/frontends/xforms/form_preferences.C:301
+#: src/frontends/xforms/form_preferences.C:333
 msgid "V|#V"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:536
-#: src/frontends/xforms/form_preferences.C:310
+#: src/frontends/xforms/form_preferences.C:342
 msgid "R|#R"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:554
-#: src/frontends/xforms/form_preferences.C:319
+#: src/frontends/xforms/form_preferences.C:351
 msgid "G|#G"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:545
-#: src/frontends/xforms/form_preferences.C:328
+#: src/frontends/xforms/form_preferences.C:360
 msgid "B|#B"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:896
-#: src/frontends/xforms/form_preferences.C:337
+#: src/frontends/xforms/form_preferences.C:369
 msgid "HSV"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:928
-#: src/frontends/xforms/form_preferences.C:341
+#: src/frontends/xforms/form_preferences.C:373
 msgid "RGB"
 msgstr ""
 
@@ -9031,7 +9133,7 @@ msgstr ""
 # src/frontends/xforms/FormPreferences.C:1438
 # src/frontends/xforms/FormPreferences.C:1440
 # src/frontends/xforms/form_preferences.C:504
-#: src/frontends/xforms/form_preferences.C:355
+#: src/frontends/xforms/form_preferences.C:387
 #: src/frontends/xforms/FormPreferences.C:1073
 #: src/frontends/xforms/FormPreferences.C:1074
 #: src/frontends/xforms/FormPreferences.C:1112
@@ -9044,115 +9146,115 @@ msgid "Modify|#M"
 msgstr "Промени(M)|#M"
 
 # src/frontends/xforms/form_preferences.C:745
-#: src/frontends/xforms/form_preferences.C:385
+#: src/frontends/xforms/form_preferences.C:418
 msgid "Show banner|#S"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:753
-#: src/frontends/xforms/form_preferences.C:393
+#: src/frontends/xforms/form_preferences.C:426
 msgid "Auto region delete|#A"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:761
-#: src/frontends/xforms/form_preferences.C:401
+#: src/frontends/xforms/form_preferences.C:434
 msgid "Exit confirmation|#E"
 msgstr "Потвърждение при изход(E)|#E"
 
 # src/frontends/xforms/form_preferences.C:768
-#: src/frontends/xforms/form_preferences.C:408
-msgid "Display keyboard shortcuts"
+#: src/frontends/xforms/form_preferences.C:442
+#, fuzzy
+msgid "Display keyboard shortcuts|#k"
 msgstr "Покажи кратки клавиши"
 
 # src/frontends/xforms/form_preferences.C:781
-#: src/frontends/xforms/form_preferences.C:413
+#: src/frontends/xforms/form_preferences.C:450
 msgid "File->New asks for name|#N"
 msgstr "Файл->Нов пита за име(N)|#N"
 
-# src/frontends/xforms/form_preferences.C:789
-#: src/frontends/xforms/form_preferences.C:421
-msgid "Cursor follows scrollbar|#C"
+#: src/frontends/xforms/form_preferences.C:458
+msgid "Cursor follows scrollbar|#f"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:429
-msgid "Dialogs iconify with main window|#D"
+#: src/frontends/xforms/form_preferences.C:466
+msgid "Dialogs iconify with main window|#i"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:796
-#: src/frontends/xforms/form_preferences.C:436
+#: src/frontends/xforms/form_preferences.C:473
 msgid "Wheel mouse jump"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:772
-#: src/frontends/xforms/form_preferences.C:444
+#: src/frontends/xforms/form_preferences.C:481
 msgid "Autosave interval"
 msgstr "Интервал за автоматичен запис"
 
 # src/frontends/xforms/form_graphics.C:90
-#: src/frontends/xforms/form_preferences.C:454
+#: src/frontends/xforms/form_preferences.C:491
 msgid "in Monochrome|#M"
 msgstr "Монохромно(M)|#M"
 
 # src/frontends/xforms/form_graphics.C:96
-#: src/frontends/xforms/form_preferences.C:462
+#: src/frontends/xforms/form_preferences.C:499
 msgid "in Grayscale|#G"
 msgstr "в сиви тонове(G)|#G"
 
 # src/frontends/xforms/form_graphics.C:101
-#: src/frontends/xforms/form_preferences.C:469
+#: src/frontends/xforms/form_preferences.C:506
 msgid "in Color|#C"
 msgstr "в цвят(C)|#C"
 
 # src/frontends/xforms/FormGraphics.C:36
 # src/frontends/xforms/FormGraphics.C:359
-#: src/frontends/xforms/form_preferences.C:484
+#: src/frontends/xforms/form_preferences.C:521
 #, fuzzy
 msgid "Display Graphics"
 msgstr "Графика"
 
 # src/frontends/xforms/form_preferences.C:269
-#: src/frontends/xforms/form_preferences.C:511
+#: src/frontends/xforms/form_preferences.C:547
 msgid "Spell command|#S"
 msgstr "Команда за правопис(S)|#S"
 
 # src/frontends/xforms/form_preferences.C:278
-#: src/frontends/xforms/form_preferences.C:519
+#: src/frontends/xforms/form_preferences.C:555
 msgid "Use alternative language|#a"
 msgstr "Използвай алтернативен език"
 
 # src/frontends/xforms/form_preferences.C:288
-#: src/frontends/xforms/form_preferences.C:529
+#: src/frontends/xforms/form_preferences.C:565
 msgid "Use escape characters|#e"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:298
-#: src/frontends/xforms/form_preferences.C:539
+#: src/frontends/xforms/form_preferences.C:575
 msgid "Use personal dictionary|#d"
 msgstr "Използвай личен речник"
 
 # src/frontends/xforms/form_preferences.C:315
-#: src/frontends/xforms/form_preferences.C:556
+#: src/frontends/xforms/form_preferences.C:592
 msgid "Accept compound words|#w"
 msgstr "Приемане на съставни думи(w)|#w"
 
 # src/frontends/xforms/form_preferences.C:323
-#: src/frontends/xforms/form_preferences.C:564
+#: src/frontends/xforms/form_preferences.C:600
 msgid "Use input encoding|#i"
 msgstr ""
 
 # src/frontends/xforms/form_paragraph.C:200
-#: src/frontends/xforms/form_preferences.C:571
+#: src/frontends/xforms/form_preferences.C:607
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Допълнителни опции"
 
 # src/frontends/xforms/FormPreferences.C:241
-#: src/frontends/xforms/form_preferences.C:572
+#: src/frontends/xforms/form_preferences.C:608
 #: src/frontends/xforms/FormPreferences.C:219
 msgid "Interface"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:223
-#: src/frontends/xforms/form_preferences.C:573
+#: src/frontends/xforms/form_preferences.C:609
 #, fuzzy
 msgid "Language Options"
 msgstr "Език"
@@ -9160,17 +9262,17 @@ msgstr "Език"
 # , c-format
 # , c-format
 # src/frontends/xforms/form_preferences.C:384
-#: src/frontends/xforms/form_preferences.C:598
+#: src/frontends/xforms/form_preferences.C:635
 msgid "Package|#P"
 msgstr "Пакет(P)|#P"
 
 # src/frontends/xforms/form_preferences.C:391
-#: src/frontends/xforms/form_preferences.C:605
+#: src/frontends/xforms/form_preferences.C:642
 msgid "Default language|#l"
 msgstr "Стандартен език(l)|#l"
 
 # src/frontends/xforms/form_preferences.C:398
-#: src/frontends/xforms/form_preferences.C:612
+#: src/frontends/xforms/form_preferences.C:649
 msgid ""
 "Keyboard\n"
 "map|#K"
@@ -9179,88 +9281,89 @@ msgstr ""
 "подредба"
 
 # src/frontends/xforms/form_preferences.C:452
-#: src/frontends/xforms/form_preferences.C:620
+#: src/frontends/xforms/form_preferences.C:657
 msgid "1st|#1"
 msgstr "Първи|#1"
 
 # src/frontends/xforms/form_preferences.C:459
-#: src/frontends/xforms/form_preferences.C:627
+#: src/frontends/xforms/form_preferences.C:664
 msgid "2nd|#2"
 msgstr "Втори|#2"
 
 # src/form1.C:105 src/frontends/xforms/form_preferences.C:308 src/lyx.C:83
-#: src/frontends/xforms/form_preferences.C:634
+#: src/frontends/xforms/form_preferences.C:671
 #, fuzzy
 msgid "Browse...|#o"
 msgstr "Търсене(B)...|#B"
 
 # src/frontends/xforms/form_preferences.C:406
-#: src/frontends/xforms/form_preferences.C:646
+#: src/frontends/xforms/form_preferences.C:683
 msgid "RtL support|#R"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:422
-#: src/frontends/xforms/form_preferences.C:654
+#: src/frontends/xforms/form_preferences.C:691
 msgid "Auto begin|#b"
 msgstr ""
 
 # src/insets/insetinclude.C:80 src/insets/insetinclude.C:81
-#: src/frontends/xforms/form_preferences.C:662
+#: src/frontends/xforms/form_preferences.C:699
 #, fuzzy
 msgid "Use babel|#U"
 msgstr "Използвай include|#u"
 
 # src/frontends/xforms/form_preferences.C:414
-#: src/frontends/xforms/form_preferences.C:670
+#: src/frontends/xforms/form_preferences.C:707
 msgid "Mark foreign|#M"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:430
-#: src/frontends/xforms/form_preferences.C:678
+#: src/frontends/xforms/form_preferences.C:715
 msgid "Auto finish|#f"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:686
+#: src/frontends/xforms/form_preferences.C:723
 msgid "Global|#G"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:438
-#: src/frontends/xforms/form_preferences.C:694
+#: src/frontends/xforms/form_preferences.C:731
 msgid "Command start|#s"
 msgstr "Започни команда(s)|#s"
 
 # src/frontends/xforms/form_preferences.C:445
-#: src/frontends/xforms/form_preferences.C:701
+#: src/frontends/xforms/form_preferences.C:738
 msgid "Command end|#e"
 msgstr "Завърши команда(e)|#e"
 
 # src/frontends/xforms/form_preferences.C:665
-#: src/frontends/xforms/form_preferences.C:735
-msgid "All formats|#A"
+#: src/frontends/xforms/form_preferences.C:771
+#, fuzzy
+msgid "All formats|#l"
 msgstr "Всички формати(A)|#A"
 
 # src/frontends/xforms/form_preferences.C:673
-#: src/frontends/xforms/form_preferences.C:743
+#: src/frontends/xforms/form_preferences.C:779
 msgid "Format|#F"
 msgstr "Формат(F)|#F"
 
 # src/frontends/xforms/form_preferences.C:680
-#: src/frontends/xforms/form_preferences.C:750
+#: src/frontends/xforms/form_preferences.C:786
 msgid "GUI name|#G"
 msgstr "GUI име|#G"
 
 # src/frontends/xforms/form_preferences.C:715
-#: src/frontends/xforms/form_preferences.C:757
+#: src/frontends/xforms/form_preferences.C:793
 msgid "Shortcut|#S"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:701
-#: src/frontends/xforms/form_preferences.C:764
+#: src/frontends/xforms/form_preferences.C:800
 msgid "Extension|#E"
 msgstr "Разширение(E)|#E"
 
 # src/frontends/xforms/form_preferences.C:708
-#: src/frontends/xforms/form_preferences.C:771
+#: src/frontends/xforms/form_preferences.C:807
 msgid "Viewer|#V"
 msgstr "Покажи с(V)|#V"
 
@@ -9270,8 +9373,8 @@ msgstr "Покажи с(V)|#V"
 # src/frontends/xforms/FormPreferences.C:1429
 # src/frontends/xforms/form_preferences.C:607
 # src/frontends/xforms/form_preferences.C:694
-#: src/frontends/xforms/form_preferences.C:778
-#: src/frontends/xforms/form_preferences.C:851
+#: src/frontends/xforms/form_preferences.C:814
+#: src/frontends/xforms/form_preferences.C:887
 #: src/frontends/xforms/FormPreferences.C:1104
 #: src/frontends/xforms/FormPreferences.C:1106
 #: src/frontends/xforms/FormPreferences.C:1377
@@ -9281,38 +9384,40 @@ msgstr "Добави(A)|#A"
 
 # src/frontends/xforms/form_preferences.C:600
 # src/frontends/xforms/form_preferences.C:687
-#: src/frontends/xforms/form_preferences.C:785
-#: src/frontends/xforms/form_preferences.C:858
+#: src/frontends/xforms/form_preferences.C:821
+#: src/frontends/xforms/form_preferences.C:894
 msgid "Delete|#D"
 msgstr "Изтрий(D)|#D"
 
 # src/frontends/xforms/form_preferences.C:592
-#: src/frontends/xforms/form_preferences.C:815
-msgid "All converters|#A"
+#: src/frontends/xforms/form_preferences.C:851
+#, fuzzy
+msgid "All converters|#l"
 msgstr "Всички конвертори(A)|#A"
 
 # src/frontends/xforms/form_preferences.C:621
-#: src/frontends/xforms/form_preferences.C:823
+#: src/frontends/xforms/form_preferences.C:859
 msgid "From|#F"
 msgstr "От(F)|#F"
 
 # src/frontends/xforms/form_preferences.C:628
-#: src/frontends/xforms/form_preferences.C:830
+#: src/frontends/xforms/form_preferences.C:866
 msgid "To|#T"
 msgstr "Към(T)|#T"
 
 # src/frontends/xforms/form_preferences.C:614
-#: src/frontends/xforms/form_preferences.C:837
+#: src/frontends/xforms/form_preferences.C:873
 msgid "Converter|#C"
 msgstr "Конвертор(C)|#C"
 
-# src/frontends/xforms/form_preferences.C:635
-#: src/frontends/xforms/form_preferences.C:844
-msgid "Flags|#F"
-msgstr "Флагове(F)|#F"
+# src/lyx.C:90
+#: src/frontends/xforms/form_preferences.C:880
+#, fuzzy
+msgid "Extra flags|#E"
+msgstr "Редактирай файл(E)|#E"
 
 # src/frontends/xforms/form_preferences.C:967
-#: src/frontends/xforms/form_preferences.C:888
+#: src/frontends/xforms/form_preferences.C:924
 msgid "Default path|#p"
 msgstr "Подразбиращ се път(p)|#p"
 
@@ -9324,182 +9429,182 @@ msgstr "Подразбиращ се път(p)|#p"
 # src/frontends/xforms/form_preferences.C:1013
 # src/frontends/xforms/form_preferences.C:1028
 # src/frontends/xforms/form_preferences.C:1038
-#: src/frontends/xforms/form_preferences.C:894
-#: src/frontends/xforms/form_preferences.C:904
-#: src/frontends/xforms/form_preferences.C:919
-#: src/frontends/xforms/form_preferences.C:934
-#: src/frontends/xforms/form_preferences.C:961
-#: src/frontends/xforms/form_preferences.C:971
+#: src/frontends/xforms/form_preferences.C:930
+#: src/frontends/xforms/form_preferences.C:940
+#: src/frontends/xforms/form_preferences.C:955
+#: src/frontends/xforms/form_preferences.C:970
+#: src/frontends/xforms/form_preferences.C:997
+#: src/frontends/xforms/form_preferences.C:1007
 msgid "Browse..."
 msgstr "Търси..."
 
 # src/frontends/xforms/form_preferences.C:989
-#: src/frontends/xforms/form_preferences.C:898
+#: src/frontends/xforms/form_preferences.C:934
 msgid "Template path|#T"
 msgstr "Път за шаблони(T)|#T"
 
 # src/frontends/xforms/form_preferences.C:1045
-#: src/frontends/xforms/form_preferences.C:908
+#: src/frontends/xforms/form_preferences.C:944
 msgid "Temp dir|#d"
 msgstr "Временна директория(d)|#d"
 
 # src/frontends/xforms/form_preferences.C:999
-#: src/frontends/xforms/form_preferences.C:923
+#: src/frontends/xforms/form_preferences.C:959
 msgid "Check last files|#C"
 msgstr "Провери старите файлове(C)|#C"
 
 # src/frontends/xforms/form_preferences.C:977
-#: src/frontends/xforms/form_preferences.C:938
+#: src/frontends/xforms/form_preferences.C:974
 msgid "Last file count|#L"
 msgstr "Последни файлове(L)|#L"
 
 # src/frontends/xforms/form_preferences.C:1017
-#: src/frontends/xforms/form_preferences.C:950
+#: src/frontends/xforms/form_preferences.C:986
 msgid "Backup path|#B"
 msgstr "Път за архивни копия(B)|#B"
 
 # src/frontends/xforms/form_preferences.C:1032
-#: src/frontends/xforms/form_preferences.C:965
+#: src/frontends/xforms/form_preferences.C:1001
 msgid "LyXServer pipe|#S"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:354
-#: src/frontends/xforms/form_preferences.C:998
+#: src/frontends/xforms/form_preferences.C:1034
 msgid "date format|#f"
 msgstr "Формат на датата"
 
 # src/frontends/xforms/form_preferences.C:935
-#: src/frontends/xforms/form_preferences.C:1027
+#: src/frontends/xforms/form_preferences.C:1063
 msgid "name"
 msgstr "име"
 
 # src/frontends/xforms/form_preferences.C:938
-#: src/frontends/xforms/form_preferences.C:1030
+#: src/frontends/xforms/form_preferences.C:1066
 msgid "adapt output"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:941
-#: src/frontends/xforms/form_preferences.C:1033
+#: src/frontends/xforms/form_preferences.C:1069
 msgid "Printer Command and Flags"
 msgstr "Команди и опции на принтера"
 
 # src/frontends/xforms/form_preferences.C:887
-#: src/frontends/xforms/form_preferences.C:1035
+#: src/frontends/xforms/form_preferences.C:1071
 msgid "command"
 msgstr "команда"
 
 # src/frontends/xforms/form_preferences.C:890
-#: src/frontends/xforms/form_preferences.C:1038
+#: src/frontends/xforms/form_preferences.C:1074
 msgid "page range"
 msgstr "избор на страници"
 
 # src/frontends/xforms/form_preferences.C:893
-#: src/frontends/xforms/form_preferences.C:1041
+#: src/frontends/xforms/form_preferences.C:1077
 msgid "copies"
 msgstr "копия"
 
 # src/frontends/xforms/form_preferences.C:896
-#: src/frontends/xforms/form_preferences.C:1044
+#: src/frontends/xforms/form_preferences.C:1080
 msgid "reverse"
 msgstr "обърнато"
 
 # src/frontends/xforms/form_preferences.C:899
-#: src/frontends/xforms/form_preferences.C:1047
+#: src/frontends/xforms/form_preferences.C:1083
 msgid "to printer"
 msgstr "на принтер"
 
 # src/frontends/xforms/form_preferences.C:902
-#: src/frontends/xforms/form_preferences.C:1050
+#: src/frontends/xforms/form_preferences.C:1086
 msgid "file extension"
 msgstr "разширение"
 
 # src/frontends/xforms/form_preferences.C:905
-#: src/frontends/xforms/form_preferences.C:1053
+#: src/frontends/xforms/form_preferences.C:1089
 msgid "spool command"
 msgstr "spool команда"
 
 # src/frontends/xforms/form_preferences.C:908
-#: src/frontends/xforms/form_preferences.C:1056
+#: src/frontends/xforms/form_preferences.C:1092
 msgid "paper type"
 msgstr "тип на хартията"
 
 # src/frontends/xforms/form_preferences.C:911
-#: src/frontends/xforms/form_preferences.C:1059
+#: src/frontends/xforms/form_preferences.C:1095
 msgid "even pages"
 msgstr "четни страници"
 
 # src/frontends/xforms/form_preferences.C:914
-#: src/frontends/xforms/form_preferences.C:1062
+#: src/frontends/xforms/form_preferences.C:1098
 msgid "odd pages"
 msgstr "нечетни страници"
 
 # src/frontends/xforms/form_preferences.C:917
-#: src/frontends/xforms/form_preferences.C:1065
+#: src/frontends/xforms/form_preferences.C:1101
 msgid "collated"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:920
-#: src/frontends/xforms/form_preferences.C:1068
+#: src/frontends/xforms/form_preferences.C:1104
 msgid "landscape"
 msgstr "пейзаж"
 
 # src/frontends/xforms/form_preferences.C:923
-#: src/frontends/xforms/form_preferences.C:1071
+#: src/frontends/xforms/form_preferences.C:1107
 msgid "to file"
 msgstr "във файл"
 
 # src/frontends/xforms/form_preferences.C:926
-#: src/frontends/xforms/form_preferences.C:1074
+#: src/frontends/xforms/form_preferences.C:1110
 msgid "extra options"
 msgstr "допълнителни опции"
 
 # src/frontends/xforms/form_preferences.C:929
-#: src/frontends/xforms/form_preferences.C:1077
+#: src/frontends/xforms/form_preferences.C:1113
 msgid "spool printer prefix"
 msgstr "име на принтер"
 
 # src/frontends/xforms/form_preferences.C:932
-#: src/frontends/xforms/form_preferences.C:1080
+#: src/frontends/xforms/form_preferences.C:1116
 msgid "paper size"
 msgstr "размер на хартията"
 
 # src/frontends/xforms/form_preferences.C:202
-#: src/frontends/xforms/form_preferences.C:1109
+#: src/frontends/xforms/form_preferences.C:1146
 msgid "Ascii line length|#A"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:214
-#: src/frontends/xforms/form_preferences.C:1121
+#: src/frontends/xforms/form_preferences.C:1158
 msgid "TeX encoding|#T"
 msgstr "TeX кодировка|#T"
 
 # src/frontends/xforms/form_preferences.C:221
-#: src/frontends/xforms/form_preferences.C:1128
+#: src/frontends/xforms/form_preferences.C:1165
 msgid "Default paper size|#p"
 msgstr "Стандартен размер на лист"
 
 # src/frontends/xforms/form_preferences.C:242
-#: src/frontends/xforms/form_preferences.C:1135
+#: src/frontends/xforms/form_preferences.C:1172
 msgid "Outside code interaction"
 msgstr "Взаимодействие с външен код"
 
 # src/frontends/xforms/form_preferences.C:229
-#: src/frontends/xforms/form_preferences.C:1139
+#: src/frontends/xforms/form_preferences.C:1175
 msgid "ascii roff|#r"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:236
-#: src/frontends/xforms/form_preferences.C:1146
+#: src/frontends/xforms/form_preferences.C:1182
 msgid "checktex|#c"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:926
-#: src/frontends/xforms/form_preferences.C:1152
+#: src/frontends/xforms/form_preferences.C:1189
 #, fuzzy
-msgid "DVI paper option"
+msgid "DVI paper option|#D"
 msgstr "допълнителни опции"
 
-#: src/frontends/xforms/form_preferences.C:1157
+#: src/frontends/xforms/form_preferences.C:1196
 msgid "Autoreset Class Options on change|#u"
 msgstr ""
 
@@ -9639,10 +9744,11 @@ msgstr ""
 "Командата конвертиране. $$i е името на входния файл, $$b е името без "
 "неговото разширение и $$o е името на изходния файл."
 
-# src/frontends/xforms/FormPreferences.C:1012
 #: src/frontends/xforms/FormPreferences.C:974
-msgid "Flags that control the converter behavior"
-msgstr "Флагове, управляващи поведението на конвертирането"
+msgid ""
+"Extra information for the Converter class, whether and how to parse the "
+"result, and various other things."
+msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:1014
 #: src/frontends/xforms/FormPreferences.C:976
@@ -9776,80 +9882,81 @@ msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:1794
 # src/frontends/xforms/FormPreferences.C:1802
-#: src/frontends/xforms/FormPreferences.C:1736
 #: src/frontends/xforms/FormPreferences.C:1743
+#: src/frontends/xforms/FormPreferences.C:1750
 #, fuzzy
 msgid "Key maps|#K#k"
 msgstr "Клавиатурни подредби"
 
 # src/frontends/xforms/FormPreferences.C:1798
 # src/frontends/xforms/FormPreferences.C:1806
-#: src/frontends/xforms/FormPreferences.C:1740
 #: src/frontends/xforms/FormPreferences.C:1747
+#: src/frontends/xforms/FormPreferences.C:1754
 msgid "Keyboard map"
 msgstr "Клавиатурна подредба"
 
 # src/frontends/xforms/FormPreferences.C:1979
-#: src/frontends/xforms/FormPreferences.C:1976
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+#: src/frontends/xforms/FormPreferences.C:1984
+#, fuzzy
+msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 msgstr " Стандартно | US letter | legal | executive | A3 | A4 | A5 | B5 "
 
 # src/frontends/xforms/FormPreferences.C:2231
-#: src/frontends/xforms/FormPreferences.C:2222
+#: src/frontends/xforms/FormPreferences.C:2230
 msgid "Default path"
 msgstr "Стандартен път"
 
 # src/frontends/xforms/FormPreferences.C:2236
-#: src/frontends/xforms/FormPreferences.C:2225
+#: src/frontends/xforms/FormPreferences.C:2233
 msgid "Template path"
 msgstr "Път за шаблони"
 
 # src/frontends/xforms/FormPreferences.C:2241
-#: src/frontends/xforms/FormPreferences.C:2228
+#: src/frontends/xforms/FormPreferences.C:2236
 msgid "Temp dir"
 msgstr "Временна директория"
 
 # src/form1.C:255
-#: src/frontends/xforms/FormPreferences.C:2230
+#: src/frontends/xforms/FormPreferences.C:2238
 #, fuzzy
 msgid "User|#U#u"
 msgstr "Потребител1|#1"
 
 # src/frontends/xforms/FormPreferences.C:2248
-#: src/frontends/xforms/FormPreferences.C:2233
+#: src/frontends/xforms/FormPreferences.C:2241
 msgid "Lastfiles"
 msgstr "Последни файлове"
 
 # src/frontends/xforms/FormPreferences.C:2252
-#: src/frontends/xforms/FormPreferences.C:2236
+#: src/frontends/xforms/FormPreferences.C:2244
 msgid "Backup path"
 msgstr "Път за архивни копия"
 
 # src/frontends/xforms/FormPreferences.C:2257
-#: src/frontends/xforms/FormPreferences.C:2239
+#: src/frontends/xforms/FormPreferences.C:2247
 msgid "LyX Server pipes"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:2701
-#: src/frontends/xforms/FormPreferences.C:2691
+#: src/frontends/xforms/FormPreferences.C:2699
 msgid "Fonts must be positive!"
 msgstr "Шрифтовете трябва да са положителни!"
 
 # src/frontends/xforms/FormPreferences.C:2724
-#: src/frontends/xforms/FormPreferences.C:2714
+#: src/frontends/xforms/FormPreferences.C:2722
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:2840
-#: src/frontends/xforms/FormPreferences.C:2841
+#: src/frontends/xforms/FormPreferences.C:2849
 #, fuzzy
 msgid " ispell | aspell "
 msgstr " няма | ispell | aspell "
 
 # src/frontends/xforms/FormPreferences.C:2952
-#: src/frontends/xforms/FormPreferences.C:2934
+#: src/frontends/xforms/FormPreferences.C:2942
 msgid "Personal dictionary"
 msgstr "Личен речник"
 
@@ -10670,7 +10777,7 @@ msgid "Opened ERT Inset"
 msgstr "Отворен ERT Inset"
 
 # src/insets/insetert.C:65 src/insets/insettabular.C:1700
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2048
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2049
 msgid "Impossible Operation!"
 msgstr "Невъзможна операция!"
 
@@ -10682,7 +10789,7 @@ msgstr "Смяната на типа на шрифт не е разрешена в  ERT-inset!"
 # src/CutAndPaste.C:478 src/insets/insetert.C:67
 # src/insets/insettabular.C:1702 src/insets/insettext.C:971 src/text.C:3963
 # src/text.C:3971 src/text.C:3998
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2050
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2051
 #: src/insets/insettext.C:1389
 msgid "Sorry."
 msgstr "Уви."
@@ -10692,17 +10799,22 @@ msgstr "Уви."
 msgid "ERT"
 msgstr "ERT"
 
-# src/insets/insetfloat.C:84 src/insets/insetfloat.C:206
-# src/insets/insetfloat.C:211
-#: src/insets/insetfloat.C:105 src/insets/insetfloat.C:298
-#: src/insets/insetfloat.C:303
-msgid "float:"
-msgstr ""
+# src/frontends/xforms/FormPreferences.C:252
+#: src/insets/insetfloat.C:119
+#, fuzzy
+msgid "float: "
+msgstr "Формати"
 
 # src/insets/insetfloat.C:150
-#: src/insets/insetfloat.C:204
+#: src/insets/insetfloat.C:218
 msgid "Opened Float Inset"
 msgstr "Отворен Float Inset"
+
+# src/insets/insetfloat.C:84 src/insets/insetfloat.C:206
+# src/insets/insetfloat.C:211
+#: src/insets/insetfloat.C:312
+msgid "float:"
+msgstr ""
 
 #: src/insets/insetfloatlist.C:41
 msgid "ERROR: Nonexistent float type!"
@@ -10711,7 +10823,7 @@ msgstr ""
 # src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
 # src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
 # src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:28
-#: src/insets/insetfloatlist.C:112
+#: src/insets/insetfloatlist.C:114
 #, fuzzy
 msgid "List of "
 msgstr "Списък на таблици"
@@ -10797,7 +10909,7 @@ msgstr "Временна директория"
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:768
+#: src/insets/insetgraphics.C:777
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Графичен файл(F)|#F"
@@ -10930,7 +11042,7 @@ msgid "Opened Tabular Inset"
 msgstr "Отворен Tabular Inset "
 
 # src/insets/insettabular.C:1701
-#: src/insets/insettabular.C:2049
+#: src/insets/insettabular.C:2050
 msgid "Multicolumns can only be horizontally."
 msgstr "Възможни са само хоризонтални много колони."
 
@@ -13152,36 +13264,36 @@ msgid "No Documents Open!"
 msgstr "Няма отворени документи!"
 
 # src/MenuBackend.C:311
-#: src/MenuBackend.C:358
+#: src/MenuBackend.C:367
 msgid "Ascii text as lines"
 msgstr "Ascii текст като редове"
 
 # src/MenuBackend.C:313
-#: src/MenuBackend.C:360
+#: src/MenuBackend.C:369
 msgid "Ascii text as paragraphs"
 msgstr "Ascii текст като абзаци"
 
-#: src/MenuBackend.C:404
+#: src/MenuBackend.C:413
 msgid " (wide)"
 msgstr ""
 
 # src/MenuBackend.C:416
-#: src/MenuBackend.C:505
+#: src/MenuBackend.C:514
 msgid "Quit|Q"
 msgstr "Изход(Q)|Q"
 
 # src/MenuBackend.C:424
-#: src/MenuBackend.C:513
+#: src/MenuBackend.C:522
 msgid "LaTeX...|L"
 msgstr "LaTeX...|L"
 
 # src/MenuBackend.C:426
-#: src/MenuBackend.C:515
+#: src/MenuBackend.C:524
 msgid "LinuxDoc...|L"
 msgstr ""
 
 # src/MenuBackend.C:434
-#: src/MenuBackend.C:523
+#: src/MenuBackend.C:532
 msgid "Emphasize"
 msgstr "Наблягане"
 
@@ -13203,42 +13315,42 @@ msgid " [sole completion]"
 msgstr ""
 
 # src/support/filetools.C:410
-#: src/support/filetools.C:440
+#: src/support/filetools.C:441
 msgid "Error! Cannot open directory:"
 msgstr "Грешка! Не мога да отворя директория:"
 
 # src/support/filetools.C:428
-#: src/support/filetools.C:460
+#: src/support/filetools.C:461
 msgid "Error! Could not remove file:"
 msgstr "Грешка! Не мога да изтрия файл:"
 
 # src/support/filetools.C:453
-#: src/support/filetools.C:484 src/support/filetools.C:520
+#: src/support/filetools.C:485 src/support/filetools.C:521
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Грешка! Не мога да създам временна директория: "
 
 # src/support/filetools.C:469
-#: src/support/filetools.C:501
+#: src/support/filetools.C:502
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Грешка! Не мога да изтрия временната директория:"
 
 # src/support/filetools.C:522
-#: src/support/filetools.C:565
+#: src/support/filetools.C:566
 msgid "Internal error!"
 msgstr "Вътрешна грешка!"
 
 # src/support/filetools.C:523
-#: src/support/filetools.C:566
+#: src/support/filetools.C:567
 msgid "Call to createDirectory with invalid name"
 msgstr "Извикване на createDirectory с невалидно име"
 
 # src/support/filetools.C:528
-#: src/support/filetools.C:571
+#: src/support/filetools.C:572
 msgid "Error! Couldn't create directory:"
 msgstr "Грешка! Не мога да създам директория:"
 
 # src/support/filetools.C:1133
-#: src/support/filetools.C:1350
+#: src/support/filetools.C:1353
 msgid "Could not delete auto-save file!"
 msgstr "Не мога да изтрия авто-запис файл!"
 
@@ -13264,26 +13376,26 @@ msgstr "Вземете по-стара версия на LyX (< 1.1.x) за конвертиране!"
 
 # src/text2.C:1275
 #. Could only happen with user style
-#: src/text2.C:1081
+#: src/text2.C:1080
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr ""
 
 # src/text2.C:456
-#: src/text2.C:1120
+#: src/text2.C:1119
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Няма нищо за правене"
 
 # src/insets/insettext.C:970
-#: src/text2.C:1124
+#: src/text2.C:1123
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Невъзможност за включване на повече от един абзац!"
 
 # src/text.C:2003
-#: src/text.C:1903
+#: src/text.C:1911
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -13292,33 +13404,45 @@ msgstr ""
 "Sie das Tutorium."
 
 # src/text.C:2005
-#: src/text.C:1905
+#: src/text.C:1913
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Не можете да въведете два интервала така.  Моля прочетете Ръководството."
 
 # src/text.C:3462 src/text.C:3468
-#: src/text.C:3338 src/text.C:3340
+#: src/text.C:3346 src/text.C:3348
 msgid "Page Break (top)"
 msgstr "Нова стр. (отгоре)"
 
 # src/frontends/kde/parageneraldlg.C:31
 #. draw the additional space if needed:
-#: src/text.C:3347
+#: src/text.C:3355
 #, fuzzy
 msgid "Space above"
 msgstr "(&S)Разстояние отгоре"
 
 # src/text.C:3662 src/text.C:3668
-#: src/text.C:3517 src/text.C:3519
+#: src/text.C:3525 src/text.C:3527
 msgid "Page Break (bottom)"
 msgstr "Нова стр. (отдолу)"
 
 # src/frontends/kde/parageneraldlg.C:32
-#: src/text.C:3528
+#: src/text.C:3536
 #, fuzzy
 msgid "Space below"
 msgstr "(&B)Разстояние отдолу"
+
+# src/frontends/xforms/form_preferences.C:132
+#~ msgid "Encoding"
+#~ msgstr "Кодировка"
+
+# src/frontends/xforms/form_preferences.C:635
+#~ msgid "Flags|#F"
+#~ msgstr "Флагове(F)|#F"
+
+# src/frontends/xforms/FormPreferences.C:1012
+#~ msgid "Flags that control the converter behavior"
+#~ msgstr "Флагове, управляващи поведението на конвертирането"
 
 # src/insets/insetbib.C:339
 #, fuzzy

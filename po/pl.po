@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.6fix1\n"
-"POT-Creation-Date: 2002-04-25 13:47+0200\n"
+"POT-Creation-Date: 2002-05-03 21:12+0200\n"
 "PO-Revision-Date: 2001-03-07\n"
 "Last-Translator: Pawe³ Dziekoñski <p.dziekonski@mml.ch.pwr.wroc.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -37,7 +37,7 @@ msgstr "jako akapity"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:695
+#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:698
 msgid "Textclass Loading Error!"
 msgstr ""
 
@@ -61,128 +61,128 @@ msgstr "Nieznana akcja"
 msgid " unknown tokens"
 msgstr "Nieznana akcja"
 
-#: src/buffer.C:683
+#: src/buffer.C:686
 msgid "Textclass error"
 msgstr ""
 
-#: src/buffer.C:684
+#: src/buffer.C:687
 msgid "The document uses an unknown textclass \""
 msgstr ""
 
-#: src/buffer.C:686
+#: src/buffer.C:689
 msgid "LyX will not be able to produce output correctly."
 msgstr ""
 
-#: src/buffer.C:696
+#: src/buffer.C:699
 msgid "Can't load textclass "
 msgstr ""
 
-#: src/buffer.C:698
+#: src/buffer.C:701
 msgid "-- substituting default"
 msgstr "-- podstawiono domy¶lny"
 
-#: src/buffer.C:1198
+#: src/buffer.C:1201
 #, fuzzy
 msgid "Unknown token: "
 msgstr "Nieznana akcja"
 
 #. future format
-#: src/buffer.C:1595 src/buffer.C:1615 src/frontends/xforms/FormGraphics.C:537
+#: src/buffer.C:1600 src/buffer.C:1620 src/frontends/xforms/FormGraphics.C:547
 msgid "Warning!"
 msgstr "Ostrze¿enie!"
 
-#: src/buffer.C:1596
+#: src/buffer.C:1601
 msgid "LyX file format is newer that what"
 msgstr "Ten format dokumentu jest nowszy ni¿"
 
-#: src/buffer.C:1597
+#: src/buffer.C:1602
 msgid "is supported in this LyX version. Expect some problems."
 msgstr "aktualnie obs³ugiwany format. Oczekuj problemów."
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1602 src/buffer.C:1621 src/buffer.C:1624
+#: src/buffer.C:1607 src/buffer.C:1626 src/buffer.C:1629
 msgid "ERROR!"
 msgstr "B³±d!"
 
-#: src/buffer.C:1603
+#: src/buffer.C:1608
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Stary format pliku LyX-a. U¿yj LyX-a 0.10x aby go odczytaæ!"
 
-#: src/buffer.C:1616
+#: src/buffer.C:1621
 msgid "Reading of document is not complete"
 msgstr "Odczyt dokumentu nie zakoñczy³ siê"
 
-#: src/buffer.C:1617
+#: src/buffer.C:1622
 msgid "Maybe the document is truncated"
 msgstr "Prawdopodobnie dokument jest uciêty"
 
-#: src/buffer.C:1621
+#: src/buffer.C:1626
 msgid "Not a LyX file!"
 msgstr "Plik nie jest w formacie LyX-a!"
 
-#: src/buffer.C:1624
+#: src/buffer.C:1629
 msgid "Unable to read file!"
 msgstr "Nie mo¿na odczytaæ pliku!"
 
-#: src/buffer.C:1717 src/buffer.C:1720
+#: src/buffer.C:1722 src/buffer.C:1725
 msgid "Error! Document is read-only: "
 msgstr "B³±d! Dokument tylko do odczytu: "
 
-#: src/buffer.C:1730 src/buffer.C:1733
+#: src/buffer.C:1735 src/buffer.C:1738
 msgid "Error! Cannot write file: "
 msgstr "B³±d! Nie mo¿na zapisaæ pliku: "
 
-#: src/buffer.C:1741 src/buffer.C:1744
+#: src/buffer.C:1746 src/buffer.C:1749
 msgid "Error! Cannot open file: "
 msgstr "B³±d! Nie mo¿na otworzyæ pliku: "
 
-#: src/buffer.C:1906 src/ext_l10n.h:182
+#: src/buffer.C:1911 src/ext_l10n.h:182
 msgid "Abstract"
 msgstr ""
 
-#: src/buffer.C:1909
+#: src/buffer.C:1914
 msgid "Abstract: "
 msgstr ""
 
-#: src/buffer.C:1917 src/ext_l10n.h:378
+#: src/buffer.C:1922 src/ext_l10n.h:378
 msgid "References"
 msgstr ""
 
-#: src/buffer.C:1920
+#: src/buffer.C:1925
 #, fuzzy
 msgid "References: "
 msgstr "Ustawienia"
 
-#: src/buffer.C:2034
+#: src/buffer.C:2039
 msgid "Error: Cannot write file:"
 msgstr "B³±d! Nie mo¿na zapisaæ pliku:"
 
-#: src/buffer.C:2063
+#: src/buffer.C:2068
 msgid "Error: Cannot open file: "
 msgstr "B³±d! Nie mo¿na otworzyæ pliku: "
 
-#: src/buffer.C:2658 src/buffer.C:3109
+#: src/buffer.C:2663 src/buffer.C:3114
 msgid "LYX_ERROR:"
 msgstr "LYX_ERROR:"
 
-#: src/buffer.C:2658 src/buffer.C:3109
+#: src/buffer.C:2663 src/buffer.C:3114
 msgid "Cannot write file"
 msgstr "Nie mo¿na zapisaæ pliku"
 
-#: src/buffer.C:2747 src/buffer.C:3222
+#: src/buffer.C:2752 src/buffer.C:3227
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "B³±d! Nieprawid³owe zag³êbienie dla polecenia LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3501
+#: src/buffer.C:3526
 msgid "Running chktex..."
 msgstr "chktex zosta³ uruchomiony..."
 
-#: src/buffer.C:3514
+#: src/buffer.C:3539
 msgid "chktex did not work!"
 msgstr "chktex nie dzia³a!"
 
-#: src/buffer.C:3515
+#: src/buffer.C:3540
 msgid "Could not run with file:"
 msgstr "Nie mo¿na uruchomiæ z plikiem:"
 
@@ -310,15 +310,15 @@ msgstr "Typ ¶rodowiska akapitu skopiowany"
 msgid "Paragraph environment type set"
 msgstr "¦rodowisko akapitu ustawione"
 
-#: src/BufferView2.C:398 src/LyXAction.C:170 src/MenuBackend.C:521
+#: src/BufferView2.C:398 src/LyXAction.C:170 src/MenuBackend.C:530
 msgid "Copy"
 msgstr "Kopiuj"
 
-#: src/BufferView2.C:410 src/LyXAction.C:171 src/MenuBackend.C:520
+#: src/BufferView2.C:410 src/LyXAction.C:171 src/MenuBackend.C:529
 msgid "Cut"
 msgstr "Wytnij"
 
-#: src/BufferView2.C:420 src/LyXAction.C:333 src/MenuBackend.C:522
+#: src/BufferView2.C:420 src/LyXAction.C:333 src/MenuBackend.C:531
 msgid "Paste"
 msgstr "Wklej"
 
@@ -377,20 +377,20 @@ msgstr "jako akapity"
 msgid "Formatting document..."
 msgstr "Formatowanie dokumentu..."
 
-#: src/BufferView_pimpl.C:1341
+#: src/BufferView_pimpl.C:1340
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1373
+#: src/BufferView_pimpl.C:1372
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1605
+#: src/BufferView_pimpl.C:1608
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Wybie¿ dokument do wstawienia"
 
-#: src/BufferView_pimpl.C:1607 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1610 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -399,90 +399,90 @@ msgstr "Wybie¿ dokument do wstawienia"
 msgid "Documents|#o#O"
 msgstr "Dokumenty"
 
-#: src/BufferView_pimpl.C:1609 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1612 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Przyk³ady"
 
-#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1617 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1623 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1626 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Zaniechane."
 
-#: src/BufferView_pimpl.C:1635
+#: src/BufferView_pimpl.C:1638
 msgid "Inserting document"
 msgstr "Wstawiam dokumentu"
 
-#: src/BufferView_pimpl.C:1641 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1797
+#: src/BufferView_pimpl.C:1644 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
 #: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Dokument"
 
-#: src/BufferView_pimpl.C:1642
+#: src/BufferView_pimpl.C:1645
 msgid "inserted."
 msgstr "wstawiony."
 
-#: src/BufferView_pimpl.C:1646
+#: src/BufferView_pimpl.C:1649
 msgid "Could not insert document"
 msgstr "Nie mo¿na wstawiæ dokumentu"
 
-#: src/BufferView_pimpl.C:1820 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1822 src/insets/insettext.C:1455
 msgid "Layout "
 msgstr "Ustawienia "
 
-#: src/BufferView_pimpl.C:1821 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1823 src/insets/insettext.C:1455
 msgid " not known"
 msgstr " nieznane"
 
-#: src/BufferView_pimpl.C:2017 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2019 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "B³±d"
 
-#: src/BufferView_pimpl.C:2018
+#: src/BufferView_pimpl.C:2020
 msgid "Couldn't find this label"
 msgstr "Nie znaleziono tej etykiety"
 
-#: src/BufferView_pimpl.C:2019
+#: src/BufferView_pimpl.C:2021
 msgid "in current document."
 msgstr "w bie¿±cym dokumencie"
 
-#: src/BufferView_pimpl.C:2515
+#: src/BufferView_pimpl.C:2518
 msgid "Mark removed"
 msgstr "Znacznik usuniêty"
 
-#: src/BufferView_pimpl.C:2522
+#: src/BufferView_pimpl.C:2525
 msgid "Mark set"
 msgstr "Znacznik ustawiony"
 
-#: src/BufferView_pimpl.C:2653
+#: src/BufferView_pimpl.C:2656
 msgid "Mark off"
 msgstr "Znacznik wy³±czony"
 
-#: src/BufferView_pimpl.C:2666
+#: src/BufferView_pimpl.C:2669
 msgid "Mark on"
 msgstr "Znacznik w³±czony"
 
-#: src/BufferView_pimpl.C:2840 src/insets/insettext.C:1508
+#: src/BufferView_pimpl.C:2843 src/insets/insettext.C:1508
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/BufferView_pimpl.C:3201
+#: src/BufferView_pimpl.C:3198
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3357
+#: src/BufferView_pimpl.C:3356
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Nieznana akcja"
 
-#: src/BufferView_pimpl.C:3620 src/BufferView_pimpl.C:3623
+#: src/BufferView_pimpl.C:3619 src/BufferView_pimpl.C:3622
 #, fuzzy
 msgid "No more insets"
 msgstr "Brak innych notek"
@@ -776,12 +776,12 @@ msgstr "Dokument wyeksportowano jako "
 msgid " to file `"
 msgstr " do pliku `"
 
-#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:532
-#: src/MenuBackend.C:539
+#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:541
+#: src/MenuBackend.C:548
 msgid "File|F"
 msgstr "Plik"
 
-#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:533
+#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:542
 msgid "Edit|E"
 msgstr "Edycja"
 
@@ -805,11 +805,11 @@ msgstr "Podgl±d"
 msgid "Navigate|N"
 msgstr "Nawigacja"
 
-#: src/ext_l10n.h:10 src/MenuBackend.C:535
+#: src/ext_l10n.h:10 src/MenuBackend.C:544
 msgid "Documents|D"
 msgstr "Dokumenty"
 
-#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:502
+#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:511
 msgid "New...|N"
 msgstr "Nowy..."
 
@@ -817,11 +817,11 @@ msgstr "Nowy..."
 msgid "New from Template...|T"
 msgstr "Nowy z szablonu..."
 
-#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:503
+#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:512
 msgid "Open...|O"
 msgstr "Otwórz..."
 
-#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:504
+#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:513
 msgid "Import|I"
 msgstr "Importuj"
 
@@ -2960,7 +2960,7 @@ msgid "&Cancel"
 msgstr "&Anuluj"
 
 #: src/ext_l10n.h:540 src/ext_l10n.h:897 src/frontends/qt2/QIndex.C:23
-#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:59
+#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
 msgid "Index"
 msgstr "Indeks"
 
@@ -3134,7 +3134,7 @@ msgid "&Language:"
 msgstr "Jêzyk"
 
 #: src/ext_l10n.h:578 src/ext_l10n.h:586 src/ext_l10n.h:704
-#: src/frontends/xforms/FormDocument.C:324
+#: src/frontends/xforms/FormDocument.C:331
 #: src/frontends/xforms/FormPreferences.C:258
 msgid "Language"
 msgstr "Jêzyk"
@@ -3348,7 +3348,7 @@ msgstr ""
 msgid "Text to place before citation"
 msgstr ""
 
-#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:57
+#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:58
 msgid "Document Layout"
 msgstr "Styl dokumentu"
 
@@ -3452,7 +3452,7 @@ msgstr "1|#1"
 msgid "12"
 msgstr ""
 
-#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:260
+#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:256
 msgid "Sides"
 msgstr "Strony"
 
@@ -3494,7 +3494,7 @@ msgstr "Wciêcie"
 msgid "S&kip"
 msgstr "Odstêp|#p"
 
-#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:322
+#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:329
 msgid "Paper"
 msgstr "Papier"
 
@@ -3754,7 +3754,7 @@ msgid "&Double"
 msgstr "Podwójny"
 
 #: src/ext_l10n.h:730 src/ext_l10n.h:853
-#: src/frontends/xforms/FormDocument.C:326
+#: src/frontends/xforms/FormDocument.C:333
 msgid "Extra"
 msgstr "Inne"
 
@@ -3783,7 +3783,7 @@ msgstr "Sterownik PS:|#n"
 msgid "Use A&MS Math"
 msgstr "U¿yj AMS Math|#M"
 
-#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:328
+#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:335
 msgid "Bullets"
 msgstr "Wyró¿nienia"
 
@@ -3793,7 +3793,7 @@ msgid "Si&ze"
 msgstr "Rozmiar|#r"
 
 #: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:149
+#: src/frontends/xforms/form_preferences.C:171
 msgid "tiny"
 msgstr "mikroskopijny"
 
@@ -3806,21 +3806,21 @@ msgid "footnote"
 msgstr "mniejszy"
 
 #: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:158
+#: src/frontends/xforms/form_preferences.C:180
 msgid "small"
 msgstr "ma³y"
 
 #: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:161
+#: src/frontends/xforms/form_preferences.C:183
 msgid "normal"
 msgstr "normalny"
 
 #: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:164
+#: src/frontends/xforms/form_preferences.C:186
 msgid "large"
 msgstr "du¿y"
 
-#: src/ext_l10n.h:745 src/frontends/controllers/character.C:106
+#: src/ext_l10n.h:745 src/frontends/controllers/character.C:105
 #: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
 msgid "Large"
 msgstr "Du¿y"
@@ -3830,16 +3830,16 @@ msgid "LARGE"
 msgstr ""
 
 #: src/ext_l10n.h:747 src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:173
+#: src/frontends/xforms/form_preferences.C:195
 msgid "huge"
 msgstr "ogromny"
 
-#: src/ext_l10n.h:748 src/frontends/controllers/character.C:112
+#: src/ext_l10n.h:748 src/frontends/controllers/character.C:111
 #: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
 msgid "Huge"
 msgstr "Wielki"
 
-#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:614
+#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:608
 msgid "Bullet Depth"
 msgstr "G³êboko¶æ"
 
@@ -4037,7 +4037,7 @@ msgid "Here, definitely"
 msgstr ""
 
 #. add the different tabfolders
-#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:184
+#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:189
 #, fuzzy
 msgid "File"
 msgstr "&Plik"
@@ -4103,7 +4103,7 @@ msgstr "Tryb matematyczny"
 msgid "draft mode"
 msgstr "Tryb matematyczny"
 
-#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:180
+#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:201
 #, fuzzy
 msgid "Size"
 msgstr "Rozmiar|#r"
@@ -4218,7 +4218,7 @@ msgstr "Dolny:|#D"
 msgid "leftBaseline"
 msgstr ""
 
-#: src/ext_l10n.h:861
+#: src/ext_l10n.h:861 src/frontends/controllers/ControlGraphics.C:202
 #, fuzzy
 msgid "center"
 msgstr "Centrowane|#C"
@@ -4803,6 +4803,8 @@ msgstr "&Drukuj"
 #: src/ext_l10n.h:1100 src/ext_l10n.h:1159
 #: src/frontends/controllers/ButtonController.h:74
 #: src/frontends/xforms/form_maths_deco.C:32
+#: src/frontends/xforms/FormMathsPanel.C:71
+#: src/frontends/xforms/FormMathsPanel.C:407
 #: src/frontends/xforms/form_maths_space.C:73
 #: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
 msgid "Close"
@@ -5192,175 +5194,173 @@ msgstr "Lista tabel"
 msgid "Loading font into X-Server..."
 msgstr "£adowanie fontów do X-Serwera..."
 
-#: src/frontends/controllers/biblio.C:213
+#: src/frontends/controllers/biblio.C:220
 #, fuzzy
 msgid " and "
 msgstr " Indeks "
 
-#: src/frontends/controllers/biblio.C:215
+#: src/frontends/controllers/biblio.C:222
 msgid " et al."
 msgstr ""
 
-#: src/frontends/controllers/character.C:34
-#: src/frontends/controllers/character.C:54
-#: src/frontends/controllers/character.C:72
-#: src/frontends/controllers/character.C:94
-#: src/frontends/controllers/character.C:132
-#: src/frontends/controllers/character.C:152
-#: src/frontends/controllers/character.C:183
-#: src/frontends/controllers/ControlCharacter.C:223
-#: src/frontends/controllers/ControlCharacter.C:229
-#: src/frontends/xforms/FormCharacter.C:213
+#: src/frontends/controllers/biblio.C:258
+#, fuzzy
+msgid "No year"
+msgstr "Bez numeru"
+
+#: src/frontends/controllers/character.C:33
+#: src/frontends/controllers/character.C:53
+#: src/frontends/controllers/character.C:71
+#: src/frontends/controllers/character.C:93
+#: src/frontends/controllers/character.C:131
+#: src/frontends/controllers/character.C:151
+#: src/frontends/controllers/frnt_lang.C:45
 msgid "No change"
 msgstr "Bez zmian"
 
 #. default & error
-#: src/frontends/controllers/character.C:36
-#: src/frontends/xforms/form_preferences.C:107 src/lyxfont.C:44
+#: src/frontends/controllers/character.C:35 src/lyxfont.C:44
 msgid "Roman"
 msgstr "Szeryfowy"
 
-#: src/frontends/controllers/character.C:38
-#: src/frontends/xforms/form_preferences.C:110
+#: src/frontends/controllers/character.C:37
 msgid "Sans Serif"
 msgstr "Bezszeryfowy"
 
-#: src/frontends/controllers/character.C:40
-#: src/frontends/xforms/form_preferences.C:113 src/lyxfont.C:44
+#: src/frontends/controllers/character.C:39 src/lyxfont.C:44
 msgid "Typewriter"
 msgstr "Grotesk"
 
-#: src/frontends/controllers/character.C:42
-#: src/frontends/controllers/character.C:60
-#: src/frontends/controllers/character.C:82
-#: src/frontends/controllers/character.C:120
-#: src/frontends/controllers/character.C:140
-#: src/frontends/controllers/character.C:172
-#: src/frontends/controllers/character.C:184
-#: src/frontends/controllers/ControlCharacter.C:232
+#: src/frontends/controllers/character.C:41
+#: src/frontends/controllers/character.C:59
+#: src/frontends/controllers/character.C:81
+#: src/frontends/controllers/character.C:119
+#: src/frontends/controllers/character.C:139
+#: src/frontends/controllers/character.C:171
+#: src/frontends/controllers/frnt_lang.C:46
 #: src/frontends/xforms/form_maths_style.C:44
 msgid "Reset"
 msgstr "Od¶wie¿"
 
-#: src/frontends/controllers/character.C:56 src/lyxfont.C:49
+#: src/frontends/controllers/character.C:55 src/lyxfont.C:49
 msgid "Medium"
 msgstr "Zwyk³y (jasny)"
 
-#: src/frontends/controllers/character.C:58 src/lyxfont.C:49
+#: src/frontends/controllers/character.C:57 src/lyxfont.C:49
 msgid "Bold"
 msgstr "Pogrubiony"
 
-#: src/frontends/controllers/character.C:74 src/lyxfont.C:52
+#: src/frontends/controllers/character.C:73 src/lyxfont.C:52
 msgid "Upright"
 msgstr "Prosty"
 
-#: src/frontends/controllers/character.C:76 src/lyxfont.C:52
+#: src/frontends/controllers/character.C:75 src/lyxfont.C:52
 msgid "Italic"
 msgstr "Kursywa"
 
-#: src/frontends/controllers/character.C:78 src/lyxfont.C:52
+#: src/frontends/controllers/character.C:77 src/lyxfont.C:52
 msgid "Slanted"
 msgstr "Pochy³y"
 
-#: src/frontends/controllers/character.C:80
+#: src/frontends/controllers/character.C:79
 #, fuzzy
 msgid "Small Caps"
 msgstr "Kapitaliki"
 
-#: src/frontends/controllers/character.C:96 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:95 src/lyxfont.C:56
 msgid "Tiny"
 msgstr "Mikroskopijny"
 
-#: src/frontends/controllers/character.C:98 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:97 src/lyxfont.C:56
 msgid "Smallest"
 msgstr "Najmniejszy"
 
-#: src/frontends/controllers/character.C:100 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:99 src/lyxfont.C:56
 msgid "Smaller"
 msgstr "Mniejszy"
 
-#: src/frontends/controllers/character.C:102 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:101 src/lyxfont.C:56
 msgid "Small"
 msgstr "Ma³y"
 
-#: src/frontends/controllers/character.C:104 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:103 src/lyxfont.C:56
 msgid "Normal"
 msgstr "Normalny"
 
-#: src/frontends/controllers/character.C:108 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:107 src/lyxfont.C:57
 msgid "Larger"
 msgstr "Wiêkszy"
 
-#: src/frontends/controllers/character.C:110 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:109 src/lyxfont.C:57
 msgid "Largest"
 msgstr "Najwiêkszy"
 
-#: src/frontends/controllers/character.C:114 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:113 src/lyxfont.C:57
 msgid "Huger"
 msgstr "Ogromny"
 
-#: src/frontends/controllers/character.C:116 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:115 src/lyxfont.C:57
 msgid "Increase"
 msgstr "Zwiêksz"
 
-#: src/frontends/controllers/character.C:118 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:117 src/lyxfont.C:57
 msgid "Decrease"
 msgstr "Zmniejsz"
 
-#: src/frontends/controllers/character.C:134
+#: src/frontends/controllers/character.C:133
 #, fuzzy
 msgid "Emph"
 msgstr "Kursywa"
 
-#: src/frontends/controllers/character.C:136
+#: src/frontends/controllers/character.C:135
 msgid "Underbar"
 msgstr ""
 
-#: src/frontends/controllers/character.C:138
+#: src/frontends/controllers/character.C:137
 #, fuzzy
 msgid "Noun"
 msgstr "Kapitaliki "
 
-#: src/frontends/controllers/character.C:154
+#: src/frontends/controllers/character.C:153
 msgid "No color"
 msgstr ""
 
-#: src/frontends/controllers/character.C:156
+#: src/frontends/controllers/character.C:155
 #, fuzzy
 msgid "Black"
 msgstr "czarny"
 
-#: src/frontends/controllers/character.C:158
+#: src/frontends/controllers/character.C:157
 #, fuzzy
 msgid "White"
 msgstr "bia³y"
 
-#: src/frontends/controllers/character.C:160
+#: src/frontends/controllers/character.C:159
 #, fuzzy
 msgid "Red"
 msgstr "Powtórz"
 
-#: src/frontends/controllers/character.C:162
+#: src/frontends/controllers/character.C:161
 #, fuzzy
 msgid "Green"
 msgstr "Greka"
 
-#: src/frontends/controllers/character.C:164
+#: src/frontends/controllers/character.C:163
 #, fuzzy
 msgid "Blue"
 msgstr "niebieski"
 
-#: src/frontends/controllers/character.C:166
+#: src/frontends/controllers/character.C:165
 #, fuzzy
 msgid "Cyan"
 msgstr "zielono-niebieski"
 
-#: src/frontends/controllers/character.C:168
+#: src/frontends/controllers/character.C:167
 #, fuzzy
 msgid "Magenta"
 msgstr "purpurowy"
 
-#: src/frontends/controllers/character.C:170
+#: src/frontends/controllers/character.C:169
 #, fuzzy
 msgid "Yellow"
 msgstr "¿ó³ty"
@@ -5452,6 +5452,49 @@ msgstr "Zaznacz nastêpn± liniê"
 #, fuzzy
 msgid "Clipart|#C#c"
 msgstr "Rysunek"
+
+#: src/frontends/controllers/ControlGraphics.C:203
+#, fuzzy
+msgid "left top"
+msgstr "Dolny:|#D"
+
+#: src/frontends/controllers/ControlGraphics.C:203
+#, fuzzy
+msgid "left bottom"
+msgstr "Dolny:|#D"
+
+#: src/frontends/controllers/ControlGraphics.C:203
+#, fuzzy
+msgid "left baseline"
+msgstr "Zaznacz nastêpn± liniê"
+
+#: src/frontends/controllers/ControlGraphics.C:204
+#, fuzzy
+msgid "center top"
+msgstr "Centrowane|#C"
+
+#: src/frontends/controllers/ControlGraphics.C:204
+#, fuzzy
+msgid "center bottom"
+msgstr "Do góry | Centruj | Do do³u"
+
+#: src/frontends/controllers/ControlGraphics.C:204
+msgid "center baseline"
+msgstr ""
+
+#: src/frontends/controllers/ControlGraphics.C:205
+#, fuzzy
+msgid "right top"
+msgstr "Prosty"
+
+#: src/frontends/controllers/ControlGraphics.C:205
+#, fuzzy
+msgid "right bottom"
+msgstr "Dolny:|#D"
+
+#: src/frontends/controllers/ControlGraphics.C:205
+msgid "right baseline"
+msgstr ""
 
 #: src/frontends/controllers/ControlInclude.C:53
 #, fuzzy
@@ -5686,45 +5729,45 @@ msgstr "tekst"
 msgid "»text«"
 msgstr "tekst"
 
-#: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:355
+#: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:362
 msgid "Document layout set"
 msgstr "Styl dokumentu ustawiony"
 
-#: src/frontends/qt2/QDocument.C:353 src/frontends/xforms/FormDocument.C:768
+#: src/frontends/qt2/QDocument.C:353 src/frontends/xforms/FormDocument.C:775
 msgid "Converting document to new document class..."
 msgstr "Konwersja dokumentu do nowej klasy..."
 
-#: src/frontends/qt2/QDocument.C:361 src/frontends/xforms/FormDocument.C:776
+#: src/frontends/qt2/QDocument.C:361 src/frontends/xforms/FormDocument.C:783
 msgid "One paragraph couldn't be converted"
 msgstr "Jeden akapit nie mo¿e byæ konwertowany"
 
-#: src/frontends/qt2/QDocument.C:364 src/frontends/xforms/FormDocument.C:779
+#: src/frontends/qt2/QDocument.C:364 src/frontends/xforms/FormDocument.C:786
 msgid " paragraphs couldn't be converted"
 msgstr " akapity nie mog± byæ konwertowane"
 
 #. problem changing class -- warn user and retain old style
 #: src/frontends/qt2/QDocument.C:366 src/frontends/qt2/QDocument.C:373
-#: src/frontends/qt2/QDocument.C:1005 src/frontends/xforms/FormDocument.C:781
-#: src/frontends/xforms/FormDocument.C:787
-#: src/frontends/xforms/FormDocument.C:1480
+#: src/frontends/qt2/QDocument.C:1005 src/frontends/xforms/FormDocument.C:788
+#: src/frontends/xforms/FormDocument.C:794
+#: src/frontends/xforms/FormDocument.C:1489
 msgid "Conversion Errors!"
 msgstr "B³±d konwersji!"
 
-#: src/frontends/qt2/QDocument.C:367 src/frontends/xforms/FormDocument.C:782
+#: src/frontends/qt2/QDocument.C:367 src/frontends/xforms/FormDocument.C:789
 msgid "into chosen document class"
 msgstr "w wybran± klasê dokumentu"
 
-#: src/frontends/qt2/QDocument.C:374 src/frontends/xforms/FormDocument.C:788
+#: src/frontends/qt2/QDocument.C:374 src/frontends/xforms/FormDocument.C:795
 msgid "Errors loading new document class."
 msgstr ""
 
 #: src/frontends/qt2/QDocument.C:375 src/frontends/qt2/QDocument.C:1007
-#: src/frontends/xforms/FormDocument.C:789
-#: src/frontends/xforms/FormDocument.C:1482
+#: src/frontends/xforms/FormDocument.C:796
+#: src/frontends/xforms/FormDocument.C:1491
 msgid "Reverting to original document class."
 msgstr "Wracam do oryginalnej klasy dokumentu."
 
-#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1241
+#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1250
 msgid "Document is read-only. No changes to layout permitted."
 msgstr ""
 "Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
@@ -5737,7 +5780,7 @@ msgstr "Ustawiæ jakie¶ parametry"
 msgid "the defaults of this document class?"
 msgstr "domy¶lne dla tej klasy dokumentów?"
 
-#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1481
+#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1490
 msgid "Unable to switch to new document class."
 msgstr "Nie mo¿na konwertowaæ na now± klasê dokumentu."
 
@@ -5766,7 +5809,7 @@ msgstr "Zaznacz nastêpn± liniê"
 msgid "LaTeX Information"
 msgstr "Konfiguracja LaTeX-a"
 
-#: src/frontends/qt2/QGraphics.C:46 src/frontends/xforms/FormGraphics.C:54
+#: src/frontends/qt2/QGraphics.C:46 src/frontends/xforms/FormGraphics.C:56
 msgid "Graphics"
 msgstr ""
 
@@ -5987,13 +6030,13 @@ msgstr "Styl"
 #: src/frontends/xforms/form_external.C:50
 #: src/frontends/xforms/form_graphics.C:93
 #: src/frontends/xforms/form_include.C:30
-#: src/frontends/xforms/form_preferences.C:549
+#: src/frontends/xforms/form_preferences.C:585
 #: src/frontends/xforms/form_print.C:146
 msgid "Browse...|#B"
 msgstr "Przegl±daj..."
 
 #: src/frontends/xforms/form_bibtex.C:59
-#: src/frontends/xforms/form_preferences.C:224
+#: src/frontends/xforms/form_preferences.C:256
 #, fuzzy
 msgid "Browse...|#r"
 msgstr "Przegl±daj..."
@@ -6023,14 +6066,33 @@ msgstr ""
 msgid ""
 "The BibTeX style to use (only one allowed). Insert it without the default "
 "extension \".bst\" and without path. Most of the bibstyles are stored in "
-"$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help-"
-">TeX Info\" you can list all installed styles."
+"$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"View-"
+">TeX Information\" you can list all installed styles."
 msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:71
 msgid ""
 "Activate this option if you want the bibliography to appear in the Table of "
 "Contents (which doesn't happen by default)."
+msgstr ""
+
+#: src/frontends/xforms/FormBibtex.C:83
+#, fuzzy
+msgid "Select Database"
+msgstr "Baza danych:"
+
+#: src/frontends/xforms/FormBibtex.C:84
+#, fuzzy
+msgid "*.bib| BibTeX Databases (*.bib)"
+msgstr "Baza danych:"
+
+#: src/frontends/xforms/FormBibtex.C:100
+#, fuzzy
+msgid "Select BibTeX-Style"
+msgstr "Polecenie TeXa"
+
+#: src/frontends/xforms/FormBibtex.C:101
+msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr ""
 
 #: src/frontends/xforms/form_browser.C:31 src/frontends/xforms/form_error.C:31
@@ -6109,7 +6171,7 @@ msgstr "Nieprze³±czalne"
 msgid "These are always toggled"
 msgstr "Prze³±czalne"
 
-#: src/frontends/xforms/FormCharacter.C:36
+#: src/frontends/xforms/FormCharacter.C:38
 #, fuzzy
 msgid "Character Layout"
 msgstr "Styl fontów"
@@ -6254,7 +6316,7 @@ msgstr ""
 #: src/frontends/xforms/FormCitation.C:211
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
-"three authors, and not \"<First Author> et.al.\" (Natbib)."
+"three authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:214
@@ -6306,11 +6368,12 @@ msgstr "Sprawdzaj ostatnie pliki"
 
 #: src/frontends/xforms/form_document.C:94
 #, fuzzy
-msgid "Papersize"
+msgid "Paper size"
 msgstr "rozmiar papieru"
 
 #: src/frontends/xforms/form_document.C:96
-msgid "Papersize:|#P"
+#, fuzzy
+msgid "Paper size:|#P"
 msgstr "Rozmiar:|#R"
 
 #: src/frontends/xforms/form_document.C:104
@@ -6370,198 +6433,201 @@ msgstr "Odstêp nag³ówka:|#t"
 msgid "Footskip:|#F"
 msgstr "Odstêp stopki:|#O"
 
-#: src/frontends/xforms/form_document.C:257
+#: src/frontends/xforms/form_document.C:255
 msgid "Page cols"
 msgstr ""
 
-#: src/frontends/xforms/form_document.C:264
+#: src/frontends/xforms/form_document.C:258
 msgid "Fonts:|#F"
 msgstr "Font:|#F"
 
-#: src/frontends/xforms/form_document.C:272
+#: src/frontends/xforms/form_document.C:266
 msgid "Font Size:|#O"
 msgstr "Rozmiar fontu:|#R"
 
-#: src/frontends/xforms/form_document.C:280
+#: src/frontends/xforms/form_document.C:274
 #, fuzzy
 msgid "Class:|#l"
 msgstr "Klasa:|#K"
 
-#: src/frontends/xforms/form_document.C:288
-msgid "Pagestyle:|#P"
+#: src/frontends/xforms/form_document.C:282
+#, fuzzy
+msgid "Page style:|#P"
 msgstr "Styl strony:|#S"
 
-#: src/frontends/xforms/form_document.C:296
+#: src/frontends/xforms/form_document.C:290
 msgid "Spacing|#g"
 msgstr "Interlinia:|#y"
 
-#: src/frontends/xforms/form_document.C:304
+#: src/frontends/xforms/form_document.C:298
 msgid "Extra Options:|#X"
 msgstr "Opcje dodatkowe:|#t"
 
-#: src/frontends/xforms/form_document.C:314
+#: src/frontends/xforms/form_document.C:308
 msgid "Default Skip:|#u"
 msgstr "Domy¶lny odstêp:|#o"
 
-#: src/frontends/xforms/form_document.C:323
+#: src/frontends/xforms/form_document.C:317
 msgid "One|#n"
 msgstr "Jednostronnie|#J"
 
-#: src/frontends/xforms/form_document.C:331
+#: src/frontends/xforms/form_document.C:325
 msgid "Two|#T"
 msgstr "Dwustronnie|#w"
 
-#: src/frontends/xforms/form_document.C:342
+#: src/frontends/xforms/form_document.C:336
 msgid "One|#e"
 msgstr "Jedna|#e"
 
-#: src/frontends/xforms/form_document.C:350
+#: src/frontends/xforms/form_document.C:344
 msgid "Two|#w"
 msgstr "Dwie|#i"
 
-#: src/frontends/xforms/form_document.C:361
+#: src/frontends/xforms/form_document.C:355
 msgid "Indent|#I"
 msgstr "Wciêcie|#c"
 
-#: src/frontends/xforms/form_document.C:369
+#: src/frontends/xforms/form_document.C:363
 msgid "Skip|#K"
 msgstr "Odstêp|#p"
 
-#: src/frontends/xforms/form_document.C:408
+#: src/frontends/xforms/form_document.C:402
 msgid "Quote Style    "
 msgstr "Cuzdzys³owy"
 
-#: src/frontends/xforms/form_document.C:410
+#: src/frontends/xforms/form_document.C:404
 msgid "Encoding:|#D"
 msgstr "Kodowanie:|#D"
 
-#: src/frontends/xforms/form_document.C:418
+#: src/frontends/xforms/form_document.C:412
 msgid "Type:|#T"
 msgstr "Typ:|#T"
 
-#: src/frontends/xforms/form_document.C:427
+#: src/frontends/xforms/form_document.C:421
 msgid "Single|#S"
 msgstr "Pojed.|#j"
 
-#: src/frontends/xforms/form_document.C:435
+#: src/frontends/xforms/form_document.C:429
 msgid "Double|#D"
 msgstr "Podwójny|#d"
 
-#: src/frontends/xforms/form_document.C:445
+#: src/frontends/xforms/form_document.C:439
 msgid "Language:|#L"
 msgstr "Jêzyk:"
 
-#: src/frontends/xforms/form_document.C:476
+#: src/frontends/xforms/form_document.C:470
 msgid "Float Placement:|#L"
 msgstr "Pozycja wstawki:|#L"
 
-#: src/frontends/xforms/form_document.C:482
+#: src/frontends/xforms/form_document.C:476
 msgid "Section number depth"
 msgstr "G³êboko¶æ rozdzia³ów"
 
-#: src/frontends/xforms/form_document.C:486
+#: src/frontends/xforms/form_document.C:480
 msgid "Table of contents depth"
 msgstr "G³êboko¶æ spisu tre¶ci"
 
-#: src/frontends/xforms/form_document.C:491
+#: src/frontends/xforms/form_document.C:485
 #, fuzzy
 msgid "PS Driver|#S"
 msgstr "Sterownik PS:|#n"
 
-#: src/frontends/xforms/form_document.C:499
+#: src/frontends/xforms/form_document.C:493
 msgid "Use AMS Math|#M"
 msgstr "U¿yj AMS Math|#M"
 
-#: src/frontends/xforms/form_document.C:507
+#: src/frontends/xforms/form_document.C:501
 #, fuzzy
 msgid "Use Natbib|#N"
 msgstr "Do³±cz|#U"
 
-#: src/frontends/xforms/form_document.C:515
+#: src/frontends/xforms/form_document.C:509
 #, fuzzy
 msgid "Citation style|#i"
 msgstr "Cytowanie"
 
-#: src/frontends/xforms/form_document.C:558
+#: src/frontends/xforms/form_document.C:552
 msgid "Size|#z"
 msgstr "Rozmiar|#r"
 
-#: src/frontends/xforms/form_document.C:567
+#: src/frontends/xforms/form_document.C:561
 msgid "LaTeX|#L"
 msgstr "LaTeX|#L"
 
-#: src/frontends/xforms/form_document.C:576
+#: src/frontends/xforms/form_document.C:570
 msgid "1|#1"
 msgstr "1|#1"
 
-#: src/frontends/xforms/form_document.C:586
+#: src/frontends/xforms/form_document.C:580
 msgid "2|#2"
 msgstr "2|#2"
 
-#: src/frontends/xforms/form_document.C:595
+#: src/frontends/xforms/form_document.C:589
 msgid "3|#3"
 msgstr "3|#3"
 
-#: src/frontends/xforms/form_document.C:604
+#: src/frontends/xforms/form_document.C:598
 msgid "4|#4"
 msgstr "4|#4"
 
-#: src/frontends/xforms/form_document.C:619
+#: src/frontends/xforms/form_document.C:613
 msgid "Standard|#S"
 msgstr "Standard|#S"
 
-#: src/frontends/xforms/form_document.C:630
+#: src/frontends/xforms/form_document.C:624
 msgid "Maths|#M"
 msgstr "Maths|#M"
 
-#: src/frontends/xforms/form_document.C:640
+#: src/frontends/xforms/form_document.C:634
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
-#: src/frontends/xforms/form_document.C:650
+#: src/frontends/xforms/form_document.C:644
 msgid "Ding 2|#i"
 msgstr "Ding 2|#i"
 
-#: src/frontends/xforms/form_document.C:660
+#: src/frontends/xforms/form_document.C:654
 msgid "Ding 3|#n"
 msgstr "Ding 3|#n"
 
-#: src/frontends/xforms/form_document.C:670
+#: src/frontends/xforms/form_document.C:664
 msgid "Ding 4|#g"
 msgstr "Ding 4|#g"
 
-#: src/frontends/xforms/FormDocument.C:109
+#: src/frontends/xforms/FormDocument.C:110
+#, fuzzy
 msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
+" Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
+"| B4 | B5 "
 msgstr ""
 " Domy¶lny | W³asny | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
 
-#: src/frontends/xforms/FormDocument.C:112
+#: src/frontends/xforms/FormDocument.C:113
 #, fuzzy
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr ""
 "Brak|A4 ma³e marginesy (tylko pionowy)|A4 bardzo ma³e marginesy (tylko "
 "pionowy)|A4 szerokie marginesy (tylko pionowy)"
 
-#: src/frontends/xforms/FormDocument.C:200
-msgid " Single | OneHalf | Double | Other "
+#: src/frontends/xforms/FormDocument.C:201
+#, fuzzy
+msgid " Single | OneHalf | Double | Custom "
 msgstr " Pojedyñczy | Pó³tora | Podwójny | Inny "
 
-#: src/frontends/xforms/FormDocument.C:208
+#: src/frontends/xforms/FormDocument.C:209
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr " Smallskip | Medskip | Bigskip | Inny "
 
-#: src/frontends/xforms/FormDocument.C:261
+#: src/frontends/xforms/FormDocument.C:268
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | «tekst» | »tekst« "
 
-#: src/frontends/xforms/FormDocument.C:285
+#: src/frontends/xforms/FormDocument.C:292
 msgid " Author-year | Numerical "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:298
+#: src/frontends/xforms/FormDocument.C:305
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
@@ -6569,7 +6635,7 @@ msgstr ""
 " domy¶lny | mikroskopijny | bardzo ma³y | mniejszy | ma³y | normalny | du¿y "
 "| wiêkszy | bardzo du¿y | ogromny | najwiêkszy"
 
-#: src/frontends/xforms/FormDocument.C:331
+#: src/frontends/xforms/FormDocument.C:338
 #, fuzzy
 msgid ""
 "Your version of libXpm is older than 4.7.\n"
@@ -6579,21 +6645,21 @@ msgstr ""
 "Zak³adka 'Wyró¿nienia' w oknie dialogowym 'Styl dokumentu'\n"
 "zostanie zablokowana."
 
-#: src/frontends/xforms/FormDocument.C:398
+#: src/frontends/xforms/FormDocument.C:405
 msgid "Do you want to save the current settings"
 msgstr "Czy chcesz zapisaæ bie¿±ce ustawienia"
 
-#: src/frontends/xforms/FormDocument.C:399
+#: src/frontends/xforms/FormDocument.C:406
 #, fuzzy
 msgid "for the document layout as default?"
 msgstr "Styl dokumentu ustawiony"
 
-#: src/frontends/xforms/FormDocument.C:400
+#: src/frontends/xforms/FormDocument.C:407
 #, fuzzy
 msgid "(they will be valid for any new document)"
 msgstr "Wprowad¼ nazwê nowego dokumentu"
 
-#: src/frontends/xforms/FormDocument.C:1293
+#: src/frontends/xforms/FormDocument.C:1302
 #: src/frontends/xforms/FormParagraph.C:584
 #: src/frontends/xforms/FormTabular.C:578
 #: src/frontends/xforms/FormTabular.C:597
@@ -6920,7 +6986,7 @@ msgid "Color|#C"
 msgstr "Kolor:|#L"
 
 #: src/frontends/xforms/form_graphics.C:481
-#: src/frontends/xforms/form_preferences.C:476
+#: src/frontends/xforms/form_preferences.C:513
 msgid "Don't display|#D"
 msgstr ""
 
@@ -6929,34 +6995,34 @@ msgstr ""
 msgid "Get LaTeX size|#L"
 msgstr "LaTeX|#L"
 
-#: src/frontends/xforms/FormGraphics.C:185
+#: src/frontends/xforms/FormGraphics.C:190
 #, fuzzy
 msgid "LyX View"
 msgstr "Wersja LyX-a "
 
-#: src/frontends/xforms/FormGraphics.C:186
+#: src/frontends/xforms/FormGraphics.C:191
 #, fuzzy
 msgid "LaTeX Size"
 msgstr "Tryb TeXa"
 
-#: src/frontends/xforms/FormGraphics.C:187
+#: src/frontends/xforms/FormGraphics.C:192
 msgid "Bounding Box"
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:188
+#: src/frontends/xforms/FormGraphics.C:193
 #, fuzzy
 msgid "Extras"
 msgstr "Inne"
 
-#: src/frontends/xforms/FormGraphics.C:538
+#: src/frontends/xforms/FormGraphics.C:548
 msgid "The units text%, page%, col% and line% are not allowed here."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:539
+#: src/frontends/xforms/FormGraphics.C:549
 msgid "Cannot use the values from LaTeX size!"
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:685
+#: src/frontends/xforms/FormGraphics.C:695
 #: src/frontends/xforms/FormMinipage.C:111
 msgid "Invalid Length!"
 msgstr ""
@@ -7320,7 +7386,7 @@ msgstr " Brak | Defskip | Smallskip | Medskip | Bigskip | VFill | Warto¶æ "
 
 #: src/frontends/xforms/FormParagraph.C:129
 #, fuzzy
-msgid " Default | Single | OneHalf | Double | Other "
+msgid " Default | Single | OneHalf | Double | Custom "
 msgstr " Pojedyñczy | Pó³tora | Podwójny | Inny "
 
 #: src/frontends/xforms/FormPreamble.C:24
@@ -7332,138 +7398,156 @@ msgstr "Preambu³a LaTeX-a"
 msgid "Save"
 msgstr "Zapisz"
 
-#: src/frontends/xforms/form_preferences.C:116
-msgid "Encoding"
-msgstr "Kodowanie"
+#: src/frontends/xforms/form_preferences.C:107
+msgid "Scale & Resolution"
+msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:119
-#, fuzzy
-msgid "Rescale bitmap fonts"
-msgstr "U¿yj fontów skalowalnych"
-
-#: src/frontends/xforms/form_preferences.C:126
-#, no-c-format
-msgid "Zoom %|#Z"
-msgstr "Zoom %"
-
-#: src/frontends/xforms/form_preferences.C:138
-msgid "Screen DPI|#D"
-msgstr "Rozdzielczo¶æ ekranu"
-
-#: src/frontends/xforms/form_preferences.C:152
-#, fuzzy
-msgid "smallest"
-msgstr "Najmniejszy"
-
-#: src/frontends/xforms/form_preferences.C:155
-#, fuzzy
-msgid "smaller"
-msgstr "Mniejszy"
-
-#: src/frontends/xforms/form_preferences.C:167
-msgid "larger"
-msgstr "wiêkszy"
-
-#: src/frontends/xforms/form_preferences.C:170
-msgid "largest"
-msgstr "bardzo du¿y"
-
-#: src/frontends/xforms/form_preferences.C:176
-msgid "huger"
-msgstr "najwiêkszy"
-
-#: src/frontends/xforms/form_preferences.C:179
+#: src/frontends/xforms/form_preferences.C:108
 #, fuzzy
 msgid "Fonts used"
 msgstr "Rozmiar fontu:|#R"
 
-#: src/frontends/xforms/form_preferences.C:181
-msgid "Scale & Resolution"
-msgstr ""
+#: src/frontends/xforms/form_preferences.C:110
+#, fuzzy
+msgid "Roman|#R"
+msgstr "Szeryfowy"
 
-#: src/frontends/xforms/form_preferences.C:205
+#: src/frontends/xforms/form_preferences.C:117
+#, fuzzy
+msgid "Sans Serif|#S"
+msgstr "Bezszeryfowy"
+
+#: src/frontends/xforms/form_preferences.C:124
+#, fuzzy
+msgid "Typewriter|#T"
+msgstr "Grotesk"
+
+#: src/frontends/xforms/form_preferences.C:131
+#, fuzzy
+msgid "Encoding|#E"
+msgstr "Kodowanie:|#D"
+
+#: src/frontends/xforms/form_preferences.C:138
+#, fuzzy
+msgid "Rescale bitmap fonts|#b"
+msgstr "U¿yj fontów skalowalnych"
+
+#: src/frontends/xforms/form_preferences.C:148
+#, no-c-format
+msgid "Zoom %|#Z"
+msgstr "Zoom %"
+
+#: src/frontends/xforms/form_preferences.C:160
+msgid "Screen DPI|#D"
+msgstr "Rozdzielczo¶æ ekranu"
+
+#: src/frontends/xforms/form_preferences.C:174
+#, fuzzy
+msgid "smallest"
+msgstr "Najmniejszy"
+
+#: src/frontends/xforms/form_preferences.C:177
+#, fuzzy
+msgid "smaller"
+msgstr "Mniejszy"
+
+#: src/frontends/xforms/form_preferences.C:189
+msgid "larger"
+msgstr "wiêkszy"
+
+#: src/frontends/xforms/form_preferences.C:192
+msgid "largest"
+msgstr "bardzo du¿y"
+
+#: src/frontends/xforms/form_preferences.C:198
+msgid "huger"
+msgstr "najwiêkszy"
+
+#: src/frontends/xforms/form_preferences.C:225
 #, fuzzy
 msgid "Popup Fonts & Encoding"
 msgstr "Kodowanie okien dialogowych"
 
-#: src/frontends/xforms/form_preferences.C:206
+#: src/frontends/xforms/form_preferences.C:227
 #, fuzzy
-msgid "Normal Font"
+msgid "Normal Font|#N"
 msgstr "Normalny"
 
-#: src/frontends/xforms/form_preferences.C:209
+#: src/frontends/xforms/form_preferences.C:234
 #, fuzzy
-msgid "Bold Font"
+msgid "Bold Font|#B"
 msgstr "Font okien dialogowych"
 
-#: src/frontends/xforms/form_preferences.C:212
-msgid "Popup Encoding"
+#: src/frontends/xforms/form_preferences.C:241
+#, fuzzy
+msgid "Popup Encoding|#P"
 msgstr "Kodowanie okien dialogowych"
 
-#: src/frontends/xforms/form_preferences.C:215
+#: src/frontends/xforms/form_preferences.C:247
 msgid "Layout & Bindings"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:217
+#: src/frontends/xforms/form_preferences.C:249
 msgid "User Interface file|#U"
 msgstr "Plik w³asnego interfejsu"
 
-#: src/frontends/xforms/form_preferences.C:231
-msgid "Bind file|#B"
+#: src/frontends/xforms/form_preferences.C:263
+#, fuzzy
+msgid "Bind file|#f"
 msgstr "Plik skrótów"
 
-#: src/frontends/xforms/form_preferences.C:238
-#: src/frontends/xforms/form_preferences.C:640
+#: src/frontends/xforms/form_preferences.C:270
+#: src/frontends/xforms/form_preferences.C:677
 #, fuzzy
 msgid "Browse...|#w"
 msgstr "Przegl±daj..."
 
-#: src/frontends/xforms/form_preferences.C:244
+#: src/frontends/xforms/form_preferences.C:276
 msgid "Dead Keys"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:246
+#: src/frontends/xforms/form_preferences.C:278
 #, fuzzy
 msgid "Override X Window dead-keys|#O"
 msgstr "Ignoruj Xwindow dead-keys"
 
-#: src/frontends/xforms/form_preferences.C:277
+#: src/frontends/xforms/form_preferences.C:309
 msgid "LyX objects|#L"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:285
+#: src/frontends/xforms/form_preferences.C:317
 msgid "H|#H"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:292
+#: src/frontends/xforms/form_preferences.C:324
 msgid "S|#S"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:301
+#: src/frontends/xforms/form_preferences.C:333
 msgid "V|#V"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:310
+#: src/frontends/xforms/form_preferences.C:342
 msgid "R|#R"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:319
+#: src/frontends/xforms/form_preferences.C:351
 msgid "G|#G"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:328
+#: src/frontends/xforms/form_preferences.C:360
 msgid "B|#B"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:337
+#: src/frontends/xforms/form_preferences.C:369
 msgid "HSV"
 msgstr "HSV"
 
-#: src/frontends/xforms/form_preferences.C:341
+#: src/frontends/xforms/form_preferences.C:373
 msgid "RGB"
 msgstr "RGB"
 
-#: src/frontends/xforms/form_preferences.C:355
+#: src/frontends/xforms/form_preferences.C:387
 #: src/frontends/xforms/FormPreferences.C:1073
 #: src/frontends/xforms/FormPreferences.C:1074
 #: src/frontends/xforms/FormPreferences.C:1112
@@ -7475,107 +7559,109 @@ msgstr "RGB"
 msgid "Modify|#M"
 msgstr "Zmieñ"
 
-#: src/frontends/xforms/form_preferences.C:385
+#: src/frontends/xforms/form_preferences.C:418
 msgid "Show banner|#S"
 msgstr "Pokazuj logo"
 
-#: src/frontends/xforms/form_preferences.C:393
+#: src/frontends/xforms/form_preferences.C:426
 msgid "Auto region delete|#A"
 msgstr "Tekst wpisany kasuje zaznaczenie"
 
-#: src/frontends/xforms/form_preferences.C:401
+#: src/frontends/xforms/form_preferences.C:434
 msgid "Exit confirmation|#E"
 msgstr "Potwierdzenie koñca pracy"
 
-#: src/frontends/xforms/form_preferences.C:408
-msgid "Display keyboard shortcuts"
+#: src/frontends/xforms/form_preferences.C:442
+#, fuzzy
+msgid "Display keyboard shortcuts|#k"
 msgstr "Pokazuj skróty klawiaturowe"
 
-#: src/frontends/xforms/form_preferences.C:413
+#: src/frontends/xforms/form_preferences.C:450
 msgid "File->New asks for name|#N"
 msgstr "Plik -> Nowy pyta o nazwê"
 
-#: src/frontends/xforms/form_preferences.C:421
-msgid "Cursor follows scrollbar|#C"
+#: src/frontends/xforms/form_preferences.C:458
+#, fuzzy
+msgid "Cursor follows scrollbar|#f"
 msgstr "Kursor nad±¿a za suwakiem"
 
-#: src/frontends/xforms/form_preferences.C:429
-msgid "Dialogs iconify with main window|#D"
+#: src/frontends/xforms/form_preferences.C:466
+msgid "Dialogs iconify with main window|#i"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:436
+#: src/frontends/xforms/form_preferences.C:473
 msgid "Wheel mouse jump"
 msgstr "Skok rolki myszy"
 
-#: src/frontends/xforms/form_preferences.C:444
+#: src/frontends/xforms/form_preferences.C:481
 msgid "Autosave interval"
 msgstr "Interwa³ auto-zapisu"
 
-#: src/frontends/xforms/form_preferences.C:454
+#: src/frontends/xforms/form_preferences.C:491
 msgid "in Monochrome|#M"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:462
+#: src/frontends/xforms/form_preferences.C:499
 msgid "in Grayscale|#G"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:469
+#: src/frontends/xforms/form_preferences.C:506
 msgid "in Color|#C"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:484
+#: src/frontends/xforms/form_preferences.C:521
 #, fuzzy
 msgid "Display Graphics"
 msgstr "Wstaw grafikê"
 
-#: src/frontends/xforms/form_preferences.C:511
+#: src/frontends/xforms/form_preferences.C:547
 msgid "Spell command|#S"
 msgstr "Polecenie sprawdzania pisowni"
 
-#: src/frontends/xforms/form_preferences.C:519
+#: src/frontends/xforms/form_preferences.C:555
 msgid "Use alternative language|#a"
 msgstr "U¿yj s³ownika innego jêzyka"
 
-#: src/frontends/xforms/form_preferences.C:529
+#: src/frontends/xforms/form_preferences.C:565
 msgid "Use escape characters|#e"
 msgstr "Akceptuj znaki specjalne"
 
-#: src/frontends/xforms/form_preferences.C:539
+#: src/frontends/xforms/form_preferences.C:575
 msgid "Use personal dictionary|#d"
 msgstr "U¿yj w³asnego s³ownika"
 
-#: src/frontends/xforms/form_preferences.C:556
+#: src/frontends/xforms/form_preferences.C:592
 msgid "Accept compound words|#w"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:564
+#: src/frontends/xforms/form_preferences.C:600
 msgid "Use input encoding|#i"
 msgstr "U¿yj kodowania"
 
-#: src/frontends/xforms/form_preferences.C:571
+#: src/frontends/xforms/form_preferences.C:607
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Styl fontów"
 
-#: src/frontends/xforms/form_preferences.C:572
+#: src/frontends/xforms/form_preferences.C:608
 #: src/frontends/xforms/FormPreferences.C:219
 msgid "Interface"
 msgstr "Interfejs"
 
-#: src/frontends/xforms/form_preferences.C:573
+#: src/frontends/xforms/form_preferences.C:609
 #, fuzzy
 msgid "Language Options"
 msgstr "linia minipage"
 
-#: src/frontends/xforms/form_preferences.C:598
+#: src/frontends/xforms/form_preferences.C:635
 msgid "Package|#P"
 msgstr "Pakiet"
 
-#: src/frontends/xforms/form_preferences.C:605
+#: src/frontends/xforms/form_preferences.C:642
 msgid "Default language|#l"
 msgstr "Domy¶lny jêzyk"
 
-#: src/frontends/xforms/form_preferences.C:612
+#: src/frontends/xforms/form_preferences.C:649
 msgid ""
 "Keyboard\n"
 "map|#K"
@@ -7583,83 +7669,84 @@ msgstr ""
 "Mapa\n"
 "klawiatury"
 
-#: src/frontends/xforms/form_preferences.C:620
+#: src/frontends/xforms/form_preferences.C:657
 msgid "1st|#1"
 msgstr "1."
 
-#: src/frontends/xforms/form_preferences.C:627
+#: src/frontends/xforms/form_preferences.C:664
 msgid "2nd|#2"
 msgstr "2."
 
-#: src/frontends/xforms/form_preferences.C:634
+#: src/frontends/xforms/form_preferences.C:671
 #, fuzzy
 msgid "Browse...|#o"
 msgstr "Przegl±daj..."
 
-#: src/frontends/xforms/form_preferences.C:646
+#: src/frontends/xforms/form_preferences.C:683
 msgid "RtL support|#R"
 msgstr "Pisownia PdL"
 
-#: src/frontends/xforms/form_preferences.C:654
+#: src/frontends/xforms/form_preferences.C:691
 msgid "Auto begin|#b"
 msgstr "W³±cz na pocz±tku"
 
-#: src/frontends/xforms/form_preferences.C:662
+#: src/frontends/xforms/form_preferences.C:699
 #, fuzzy
 msgid "Use babel|#U"
 msgstr "Do³±cz|#U"
 
-#: src/frontends/xforms/form_preferences.C:670
+#: src/frontends/xforms/form_preferences.C:707
 msgid "Mark foreign|#M"
 msgstr "Zaznaczaj obce"
 
-#: src/frontends/xforms/form_preferences.C:678
+#: src/frontends/xforms/form_preferences.C:715
 msgid "Auto finish|#f"
 msgstr "W³±cz na koñcu"
 
-#: src/frontends/xforms/form_preferences.C:686
+#: src/frontends/xforms/form_preferences.C:723
 #, fuzzy
 msgid "Global|#G"
 msgstr "Pakiet Floatflt|#F"
 
-#: src/frontends/xforms/form_preferences.C:694
+#: src/frontends/xforms/form_preferences.C:731
 msgid "Command start|#s"
 msgstr ""
 "Polecenie\n"
 "zmiany jêzyka"
 
-#: src/frontends/xforms/form_preferences.C:701
+#: src/frontends/xforms/form_preferences.C:738
 msgid "Command end|#e"
 msgstr ""
 "Polecenie powrotu\n"
 "po zmianie jêzyka"
 
-#: src/frontends/xforms/form_preferences.C:735
-msgid "All formats|#A"
+#: src/frontends/xforms/form_preferences.C:771
+#, fuzzy
+msgid "All formats|#l"
 msgstr "Wszystkie formaty"
 
-#: src/frontends/xforms/form_preferences.C:743
+#: src/frontends/xforms/form_preferences.C:779
 msgid "Format|#F"
 msgstr "Format"
 
-#: src/frontends/xforms/form_preferences.C:750
+#: src/frontends/xforms/form_preferences.C:786
 msgid "GUI name|#G"
 msgstr "Nazwa w menu"
 
-#: src/frontends/xforms/form_preferences.C:757
+#: src/frontends/xforms/form_preferences.C:793
 msgid "Shortcut|#S"
 msgstr "Skrót"
 
-#: src/frontends/xforms/form_preferences.C:764
+#: src/frontends/xforms/form_preferences.C:800
 msgid "Extension|#E"
 msgstr "Rozszerzenie"
 
-#: src/frontends/xforms/form_preferences.C:771
+#: src/frontends/xforms/form_preferences.C:807
 msgid "Viewer|#V"
 msgstr "Przegl±darka"
 
-#: src/frontends/xforms/form_preferences.C:778
-#: src/frontends/xforms/form_preferences.C:851
+#: src/frontends/xforms/form_preferences.C:814
+#: src/frontends/xforms/form_preferences.C:887
 #: src/frontends/xforms/FormPreferences.C:1104
 #: src/frontends/xforms/FormPreferences.C:1106
 #: src/frontends/xforms/FormPreferences.C:1377
@@ -7667,178 +7754,180 @@ msgstr "Przegl±darka"
 msgid "Add|#A"
 msgstr "Dodaj"
 
-#: src/frontends/xforms/form_preferences.C:785
-#: src/frontends/xforms/form_preferences.C:858
+#: src/frontends/xforms/form_preferences.C:821
+#: src/frontends/xforms/form_preferences.C:894
 msgid "Delete|#D"
 msgstr "Usuñ"
 
-#: src/frontends/xforms/form_preferences.C:815
-msgid "All converters|#A"
+#: src/frontends/xforms/form_preferences.C:851
+#, fuzzy
+msgid "All converters|#l"
 msgstr "Konwertery"
 
-#: src/frontends/xforms/form_preferences.C:823
+#: src/frontends/xforms/form_preferences.C:859
 msgid "From|#F"
 msgstr "Z formatu"
 
-#: src/frontends/xforms/form_preferences.C:830
+#: src/frontends/xforms/form_preferences.C:866
 msgid "To|#T"
 msgstr "Na format"
 
-#: src/frontends/xforms/form_preferences.C:837
+#: src/frontends/xforms/form_preferences.C:873
 msgid "Converter|#C"
 msgstr "Konwerter"
 
-#: src/frontends/xforms/form_preferences.C:844
-msgid "Flags|#F"
-msgstr "Opcje"
+#: src/frontends/xforms/form_preferences.C:880
+#, fuzzy
+msgid "Extra flags|#E"
+msgstr "Potwierdzenie koñca pracy"
 
-#: src/frontends/xforms/form_preferences.C:888
+#: src/frontends/xforms/form_preferences.C:924
 msgid "Default path|#p"
 msgstr "Domy¶lna ¶cie¿ka"
 
-#: src/frontends/xforms/form_preferences.C:894
-#: src/frontends/xforms/form_preferences.C:904
-#: src/frontends/xforms/form_preferences.C:919
-#: src/frontends/xforms/form_preferences.C:934
-#: src/frontends/xforms/form_preferences.C:961
-#: src/frontends/xforms/form_preferences.C:971
+#: src/frontends/xforms/form_preferences.C:930
+#: src/frontends/xforms/form_preferences.C:940
+#: src/frontends/xforms/form_preferences.C:955
+#: src/frontends/xforms/form_preferences.C:970
+#: src/frontends/xforms/form_preferences.C:997
+#: src/frontends/xforms/form_preferences.C:1007
 msgid "Browse..."
 msgstr "Przegl±daj..."
 
-#: src/frontends/xforms/form_preferences.C:898
+#: src/frontends/xforms/form_preferences.C:934
 msgid "Template path|#T"
 msgstr "Szablony"
 
-#: src/frontends/xforms/form_preferences.C:908
+#: src/frontends/xforms/form_preferences.C:944
 msgid "Temp dir|#d"
 msgstr "Pliki tymczasowe"
 
-#: src/frontends/xforms/form_preferences.C:923
+#: src/frontends/xforms/form_preferences.C:959
 msgid "Check last files|#C"
 msgstr "Sprawdzaj ostatnie pliki"
 
-#: src/frontends/xforms/form_preferences.C:938
+#: src/frontends/xforms/form_preferences.C:974
 msgid "Last file count|#L"
 msgstr "Ilo¶æ pamiêtanych plików"
 
-#: src/frontends/xforms/form_preferences.C:950
+#: src/frontends/xforms/form_preferences.C:986
 msgid "Backup path|#B"
 msgstr "Kopie zapasowe"
 
-#: src/frontends/xforms/form_preferences.C:965
+#: src/frontends/xforms/form_preferences.C:1001
 msgid "LyXServer pipe|#S"
 msgstr "Potok serwera LyX"
 
-#: src/frontends/xforms/form_preferences.C:998
+#: src/frontends/xforms/form_preferences.C:1034
 msgid "date format|#f"
 msgstr "format daty"
 
-#: src/frontends/xforms/form_preferences.C:1027
+#: src/frontends/xforms/form_preferences.C:1063
 msgid "name"
 msgstr "nazwa drukarki"
 
-#: src/frontends/xforms/form_preferences.C:1030
+#: src/frontends/xforms/form_preferences.C:1066
 msgid "adapt output"
 msgstr "u¿ywaj nazwy"
 
-#: src/frontends/xforms/form_preferences.C:1033
+#: src/frontends/xforms/form_preferences.C:1069
 msgid "Printer Command and Flags"
 msgstr "Polecenie drukowania i jego opcje"
 
-#: src/frontends/xforms/form_preferences.C:1035
+#: src/frontends/xforms/form_preferences.C:1071
 msgid "command"
 msgstr "polecenie"
 
-#: src/frontends/xforms/form_preferences.C:1038
+#: src/frontends/xforms/form_preferences.C:1074
 msgid "page range"
 msgstr "zakres stron"
 
-#: src/frontends/xforms/form_preferences.C:1041
+#: src/frontends/xforms/form_preferences.C:1077
 msgid "copies"
 msgstr "ilo¶æ kopii"
 
-#: src/frontends/xforms/form_preferences.C:1044
+#: src/frontends/xforms/form_preferences.C:1080
 msgid "reverse"
 msgstr "odwrotna kolejno¶æ"
 
-#: src/frontends/xforms/form_preferences.C:1047
+#: src/frontends/xforms/form_preferences.C:1083
 msgid "to printer"
 msgstr "na drukarkê"
 
-#: src/frontends/xforms/form_preferences.C:1050
+#: src/frontends/xforms/form_preferences.C:1086
 msgid "file extension"
 msgstr "rozszerzenie pliku"
 
-#: src/frontends/xforms/form_preferences.C:1053
+#: src/frontends/xforms/form_preferences.C:1089
 msgid "spool command"
 msgstr "polecenie drukowania"
 
-#: src/frontends/xforms/form_preferences.C:1056
+#: src/frontends/xforms/form_preferences.C:1092
 msgid "paper type"
 msgstr "typ papieru"
 
-#: src/frontends/xforms/form_preferences.C:1059
+#: src/frontends/xforms/form_preferences.C:1095
 msgid "even pages"
 msgstr "strony parzyste"
 
-#: src/frontends/xforms/form_preferences.C:1062
+#: src/frontends/xforms/form_preferences.C:1098
 msgid "odd pages"
 msgstr "strony nieparzyste"
 
-#: src/frontends/xforms/form_preferences.C:1065
+#: src/frontends/xforms/form_preferences.C:1101
 msgid "collated"
 msgstr "pa³±czone"
 
-#: src/frontends/xforms/form_preferences.C:1068
+#: src/frontends/xforms/form_preferences.C:1104
 msgid "landscape"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:1071
+#: src/frontends/xforms/form_preferences.C:1107
 msgid "to file"
 msgstr "do pliku"
 
-#: src/frontends/xforms/form_preferences.C:1074
+#: src/frontends/xforms/form_preferences.C:1110
 msgid "extra options"
 msgstr "inne opcje"
 
-#: src/frontends/xforms/form_preferences.C:1077
+#: src/frontends/xforms/form_preferences.C:1113
 msgid "spool printer prefix"
 msgstr "przedrostek nazwy"
 
-#: src/frontends/xforms/form_preferences.C:1080
+#: src/frontends/xforms/form_preferences.C:1116
 msgid "paper size"
 msgstr "rozmiar papieru"
 
-#: src/frontends/xforms/form_preferences.C:1109
+#: src/frontends/xforms/form_preferences.C:1146
 msgid "Ascii line length|#A"
 msgstr "D³ugo¶æ linii ASCII"
 
-#: src/frontends/xforms/form_preferences.C:1121
+#: src/frontends/xforms/form_preferences.C:1158
 msgid "TeX encoding|#T"
 msgstr "Kodowanie (TeX)"
 
-#: src/frontends/xforms/form_preferences.C:1128
+#: src/frontends/xforms/form_preferences.C:1165
 msgid "Default paper size|#p"
 msgstr "Domy¶lny rozmiar"
 
-#: src/frontends/xforms/form_preferences.C:1135
+#: src/frontends/xforms/form_preferences.C:1172
 msgid "Outside code interaction"
 msgstr "Przetwarzanie danych zewnêtrznych"
 
-#: src/frontends/xforms/form_preferences.C:1139
+#: src/frontends/xforms/form_preferences.C:1175
 msgid "ascii roff|#r"
 msgstr "ASCII roff"
 
-#: src/frontends/xforms/form_preferences.C:1146
+#: src/frontends/xforms/form_preferences.C:1182
 msgid "checktex|#c"
 msgstr "checktex"
 
-#: src/frontends/xforms/form_preferences.C:1152
+#: src/frontends/xforms/form_preferences.C:1189
 #, fuzzy
-msgid "DVI paper option"
+msgid "DVI paper option|#D"
 msgstr "inne opcje"
 
-#: src/frontends/xforms/form_preferences.C:1157
+#: src/frontends/xforms/form_preferences.C:1196
 msgid "Autoreset Class Options on change|#u"
 msgstr ""
 
@@ -7949,8 +8038,10 @@ msgstr ""
 "rozszerzenia, a $$o nazw± pliku wynikowego."
 
 #: src/frontends/xforms/FormPreferences.C:974
-msgid "Flags that control the converter behavior"
-msgstr "Opcje programu konwersji"
+msgid ""
+"Extra information for the Converter class, whether and how to parse the "
+"result, and various other things."
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:976
 msgid ""
@@ -8064,68 +8155,69 @@ msgstr "U¿ytkownik2|#2"
 msgid "UI file"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1736
 #: src/frontends/xforms/FormPreferences.C:1743
+#: src/frontends/xforms/FormPreferences.C:1750
 #, fuzzy
 msgid "Key maps|#K#k"
 msgstr ""
 "Mapa\n"
 "klawiatury"
 
-#: src/frontends/xforms/FormPreferences.C:1740
 #: src/frontends/xforms/FormPreferences.C:1747
+#: src/frontends/xforms/FormPreferences.C:1754
 msgid "Keyboard map"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1976
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+#: src/frontends/xforms/FormPreferences.C:1984
+#, fuzzy
+msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 msgstr " domy¶lny | US letter | legal | executive | A3 | A4 | A5 | B5 "
 
-#: src/frontends/xforms/FormPreferences.C:2222
+#: src/frontends/xforms/FormPreferences.C:2230
 msgid "Default path"
 msgstr "Domy¶la ¶cie¿ka"
 
-#: src/frontends/xforms/FormPreferences.C:2225
+#: src/frontends/xforms/FormPreferences.C:2233
 msgid "Template path"
 msgstr "Szablony"
 
-#: src/frontends/xforms/FormPreferences.C:2228
+#: src/frontends/xforms/FormPreferences.C:2236
 msgid "Temp dir"
 msgstr "Pliki tymczasowe"
 
-#: src/frontends/xforms/FormPreferences.C:2230
+#: src/frontends/xforms/FormPreferences.C:2238
 #, fuzzy
 msgid "User|#U#u"
 msgstr "U¿ytkownik1|#1"
 
-#: src/frontends/xforms/FormPreferences.C:2233
+#: src/frontends/xforms/FormPreferences.C:2241
 msgid "Lastfiles"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2236
+#: src/frontends/xforms/FormPreferences.C:2244
 msgid "Backup path"
 msgstr "Kopie zapasowe"
 
-#: src/frontends/xforms/FormPreferences.C:2239
+#: src/frontends/xforms/FormPreferences.C:2247
 msgid "LyX Server pipes"
 msgstr "Potoki serwera LyX"
 
-#: src/frontends/xforms/FormPreferences.C:2691
+#: src/frontends/xforms/FormPreferences.C:2699
 msgid "Fonts must be positive!"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2714
+#: src/frontends/xforms/FormPreferences.C:2722
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2841
+#: src/frontends/xforms/FormPreferences.C:2849
 #, fuzzy
 msgid " ispell | aspell "
 msgstr " brak | ispell | aspell "
 
-#: src/frontends/xforms/FormPreferences.C:2934
+#: src/frontends/xforms/FormPreferences.C:2942
 msgid "Personal dictionary"
 msgstr "S³ownik osobisty"
 
@@ -8785,7 +8877,7 @@ msgstr "Otwarty b³±d"
 msgid "Opened ERT Inset"
 msgstr "Otwarta wstawka ERT"
 
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2048
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2049
 msgid "Impossible Operation!"
 msgstr "Operacja niemo¿liwa!"
 
@@ -8793,7 +8885,7 @@ msgstr "Operacja niemo¿liwa!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Zmiana fontu w stawkach ERT nie jest dozwolona!"
 
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2050
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2051
 #: src/insets/insettext.C:1389
 msgid "Sorry."
 msgstr "Przykro mi."
@@ -8802,20 +8894,24 @@ msgstr "Przykro mi."
 msgid "ERT"
 msgstr "ERT"
 
-#: src/insets/insetfloat.C:105 src/insets/insetfloat.C:298
-#: src/insets/insetfloat.C:303
-msgid "float:"
+#: src/insets/insetfloat.C:119
+#, fuzzy
+msgid "float: "
+msgstr "Wstawki"
+
+#: src/insets/insetfloat.C:218
+msgid "Opened Float Inset"
 msgstr ""
 
-#: src/insets/insetfloat.C:204
-msgid "Opened Float Inset"
+#: src/insets/insetfloat.C:312
+msgid "float:"
 msgstr ""
 
 #: src/insets/insetfloatlist.C:41
 msgid "ERROR: Nonexistent float type!"
 msgstr ""
 
-#: src/insets/insetfloatlist.C:112
+#: src/insets/insetfloatlist.C:114
 #, fuzzy
 msgid "List of "
 msgstr "Lista tabel"
@@ -8887,7 +8983,7 @@ msgstr "Pliki tymczasowe"
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:768
+#: src/insets/insetgraphics.C:777
 msgid "Graphic file:"
 msgstr ""
 
@@ -8994,7 +9090,7 @@ msgstr ""
 msgid "Opened Tabular Inset"
 msgstr ""
 
-#: src/insets/insettabular.C:2049
+#: src/insets/insettabular.C:2050
 msgid "Multicolumns can only be horizontally."
 msgstr "Trybu Multicolumn mo¿na u¿ywaæ tylko w poziomie."
 
@@ -10803,31 +10899,31 @@ msgstr "Makro: "
 msgid "No Documents Open!"
 msgstr ""
 
-#: src/MenuBackend.C:358
+#: src/MenuBackend.C:367
 msgid "Ascii text as lines"
 msgstr "Plik ASCII jako linie"
 
-#: src/MenuBackend.C:360
+#: src/MenuBackend.C:369
 msgid "Ascii text as paragraphs"
 msgstr "Plik ASCII jako akapity"
 
-#: src/MenuBackend.C:404
+#: src/MenuBackend.C:413
 msgid " (wide)"
 msgstr ""
 
-#: src/MenuBackend.C:505
+#: src/MenuBackend.C:514
 msgid "Quit|Q"
 msgstr "Zakoñcz"
 
-#: src/MenuBackend.C:513
+#: src/MenuBackend.C:522
 msgid "LaTeX...|L"
 msgstr "LaTeX..."
 
-#: src/MenuBackend.C:515
+#: src/MenuBackend.C:524
 msgid "LinuxDoc...|L"
 msgstr "LinuxDoc..."
 
-#: src/MenuBackend.C:523
+#: src/MenuBackend.C:532
 msgid "Emphasize"
 msgstr "Kursywa"
 
@@ -10848,35 +10944,35 @@ msgstr ""
 msgid " [sole completion]"
 msgstr ""
 
-#: src/support/filetools.C:440
+#: src/support/filetools.C:441
 msgid "Error! Cannot open directory:"
 msgstr "B³±d! Nie mo¿na otworzyæ katalogu:"
 
-#: src/support/filetools.C:460
+#: src/support/filetools.C:461
 msgid "Error! Could not remove file:"
 msgstr "B³±d! Nie mo¿na usuni±æ pliku:"
 
-#: src/support/filetools.C:484 src/support/filetools.C:520
+#: src/support/filetools.C:485 src/support/filetools.C:521
 msgid "Error! Couldn't create temporary directory:"
 msgstr "B³±d! Nie mo¿na utworzyæ katalogu tymczasowego:"
 
-#: src/support/filetools.C:501
+#: src/support/filetools.C:502
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "B³±d! Nie mo¿na usun±æ katalogu tymczasowego:"
 
-#: src/support/filetools.C:565
+#: src/support/filetools.C:566
 msgid "Internal error!"
 msgstr "B³ad wewnêtrzny!"
 
-#: src/support/filetools.C:566
+#: src/support/filetools.C:567
 msgid "Call to createDirectory with invalid name"
 msgstr "Wywo³anie createDirectory z nieprawid³ow± nazw±"
 
-#: src/support/filetools.C:571
+#: src/support/filetools.C:572
 msgid "Error! Couldn't create directory:"
 msgstr "B³±d! Nie mo¿na utworzyæ katalogu:"
 
-#: src/support/filetools.C:1350
+#: src/support/filetools.C:1353
 msgid "Could not delete auto-save file!"
 msgstr "Nie mo¿na usun±æ pliku auto-zapisu!"
 
@@ -10897,7 +10993,7 @@ msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Konwersja jest mo¿liwa tylko w starszym LyXie (<1.1.x)!"
 
 #. Could only happen with user style
-#: src/text2.C:1081
+#: src/text2.C:1080
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -10905,44 +11001,53 @@ msgstr ""
 "Operacja zmiany fontu nie jest zdefiniowana. Podaj j± w menu Ustawienia/"
 "Fonty."
 
-#: src/text2.C:1120
+#: src/text2.C:1119
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Nic do zrobienia"
 
-#: src/text2.C:1124
+#: src/text2.C:1123
 msgid "Cannot index more than one paragraph!"
 msgstr ""
 
-#: src/text.C:1903
+#: src/text.C:1911
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
 
-#: src/text.C:1905
+#: src/text.C:1913
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
-#: src/text.C:3338 src/text.C:3340
+#: src/text.C:3346 src/text.C:3348
 msgid "Page Break (top)"
 msgstr ""
 
 #. draw the additional space if needed:
-#: src/text.C:3347
+#: src/text.C:3355
 #, fuzzy
 msgid "Space above"
 msgstr "Spec-tabela"
 
-#: src/text.C:3517 src/text.C:3519
+#: src/text.C:3525 src/text.C:3527
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3528
+#: src/text.C:3536
 msgid "Space below"
 msgstr ""
+
+#~ msgid "Encoding"
+#~ msgstr "Kodowanie"
+
+#~ msgid "Flags|#F"
+#~ msgstr "Opcje"
+
+#~ msgid "Flags that control the converter behavior"
+#~ msgstr "Opcje programu konwersji"
 
 #, fuzzy
 #~ msgid "No database"

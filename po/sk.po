@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.1.6-fix3\n"
-"POT-Creation-Date: 2002-04-25 13:47+0200\n"
+"POT-Creation-Date: 2002-05-03 21:12+0200\n"
 "PO-Revision-Date: 2002-01-15 19:35GMT+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
@@ -31,7 +31,7 @@ msgstr " odseky"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:695
+#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:698
 msgid "Textclass Loading Error!"
 msgstr "Chyba pri naèítavaní textovej triedy!"
 
@@ -53,129 +53,129 @@ msgstr "Neznáma akcia"
 msgid " unknown tokens"
 msgstr "Neznáma akcia"
 
-#: src/buffer.C:683
+#: src/buffer.C:686
 msgid "Textclass error"
 msgstr "Chyba textovej triedy"
 
-#: src/buffer.C:684
+#: src/buffer.C:687
 msgid "The document uses an unknown textclass \""
 msgstr "Dokument pou¾íva neznámu textovú triedu \""
 
-#: src/buffer.C:686
+#: src/buffer.C:689
 msgid "LyX will not be able to produce output correctly."
 msgstr "LyX nebude schopný vyprodukova» správne výstup."
 
-#: src/buffer.C:696
+#: src/buffer.C:699
 msgid "Can't load textclass "
 msgstr "Nemô¾em naèíta» textovú triedu "
 
-#: src/buffer.C:698
+#: src/buffer.C:701
 msgid "-- substituting default"
 msgstr "--nahrádzam implicitnú hodnotu"
 
-#: src/buffer.C:1198
+#: src/buffer.C:1201
 #, fuzzy
 msgid "Unknown token: "
 msgstr "Neznáma akcia"
 
 #. future format
-#: src/buffer.C:1595 src/buffer.C:1615 src/frontends/xforms/FormGraphics.C:537
+#: src/buffer.C:1600 src/buffer.C:1620 src/frontends/xforms/FormGraphics.C:547
 msgid "Warning!"
 msgstr "Varovanie!"
 
-#: src/buffer.C:1596
+#: src/buffer.C:1601
 msgid "LyX file format is newer that what"
 msgstr "Formát LyX súboru je nov¹í ako"
 
-#: src/buffer.C:1597
+#: src/buffer.C:1602
 msgid "is supported in this LyX version. Expect some problems."
 msgstr "podporuje táto verzia LyXu. Oèakávajte problémy."
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1602 src/buffer.C:1621 src/buffer.C:1624
+#: src/buffer.C:1607 src/buffer.C:1626 src/buffer.C:1629
 msgid "ERROR!"
 msgstr "CHYBA!"
 
-#: src/buffer.C:1603
+#: src/buffer.C:1608
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Na¹iel som starý formát LyXu. Naèítajte ho LyXom 0.10.x!"
 
-#: src/buffer.C:1616
+#: src/buffer.C:1621
 msgid "Reading of document is not complete"
 msgstr "Dokument nebol naèítaný úplne"
 
-#: src/buffer.C:1617
+#: src/buffer.C:1622
 msgid "Maybe the document is truncated"
 msgstr "Dokument je mo¾no skrátený"
 
-#: src/buffer.C:1621
+#: src/buffer.C:1626
 msgid "Not a LyX file!"
 msgstr "Toto nie je LyX súbor!"
 
-#: src/buffer.C:1624
+#: src/buffer.C:1629
 msgid "Unable to read file!"
 msgstr "Nemô¾em preèíta» súbor!"
 
-#: src/buffer.C:1717 src/buffer.C:1720
+#: src/buffer.C:1722 src/buffer.C:1725
 msgid "Error! Document is read-only: "
 msgstr "Chyba! Dokument je iba na èítanie: "
 
-#: src/buffer.C:1730 src/buffer.C:1733
+#: src/buffer.C:1735 src/buffer.C:1738
 msgid "Error! Cannot write file: "
 msgstr "Chyba! Nemô¾em zapísa» súbor: "
 
-#: src/buffer.C:1741 src/buffer.C:1744
+#: src/buffer.C:1746 src/buffer.C:1749
 msgid "Error! Cannot open file: "
 msgstr "Chyba! Nemô¾em otvori» súbor: "
 
-#: src/buffer.C:1906 src/ext_l10n.h:182
+#: src/buffer.C:1911 src/ext_l10n.h:182
 msgid "Abstract"
 msgstr "Výòatok"
 
-#: src/buffer.C:1909
+#: src/buffer.C:1914
 #, fuzzy
 msgid "Abstract: "
 msgstr "Výòatok"
 
-#: src/buffer.C:1917 src/ext_l10n.h:378
+#: src/buffer.C:1922 src/ext_l10n.h:378
 msgid "References"
 msgstr "Referencie"
 
-#: src/buffer.C:1920
+#: src/buffer.C:1925
 #, fuzzy
 msgid "References: "
 msgstr " Referencia: "
 
-#: src/buffer.C:2034
+#: src/buffer.C:2039
 msgid "Error: Cannot write file:"
 msgstr "Chyba: Nemô¾em zapísa» súbor:"
 
-#: src/buffer.C:2063
+#: src/buffer.C:2068
 msgid "Error: Cannot open file: "
 msgstr "Chyba: Nemô¾em otvori» súbor: "
 
-#: src/buffer.C:2658 src/buffer.C:3109
+#: src/buffer.C:2663 src/buffer.C:3114
 msgid "LYX_ERROR:"
 msgstr "LYX_CHYBA: "
 
-#: src/buffer.C:2658 src/buffer.C:3109
+#: src/buffer.C:2663 src/buffer.C:3114
 msgid "Cannot write file"
 msgstr "Nemô¾em zapísa» súbor"
 
-#: src/buffer.C:2747 src/buffer.C:3222
+#: src/buffer.C:2752 src/buffer.C:3227
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Chyba: Nesprávne vnorenie príkazov LaTeXu.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3501
+#: src/buffer.C:3526
 msgid "Running chktex..."
 msgstr "chktex pracuje..."
 
-#: src/buffer.C:3514
+#: src/buffer.C:3539
 msgid "chktex did not work!"
 msgstr "chktex nefunguje!"
 
-#: src/buffer.C:3515
+#: src/buffer.C:3540
 msgid "Could not run with file:"
 msgstr "Nemô¾em pracova» so súborom:"
 
@@ -301,15 +301,15 @@ msgstr "Parametre odstavca sú skopírované"
 msgid "Paragraph environment type set"
 msgstr "Parametre odstavca sú nastavené"
 
-#: src/BufferView2.C:398 src/LyXAction.C:170 src/MenuBackend.C:521
+#: src/BufferView2.C:398 src/LyXAction.C:170 src/MenuBackend.C:530
 msgid "Copy"
 msgstr "Kopírova»"
 
-#: src/BufferView2.C:410 src/LyXAction.C:171 src/MenuBackend.C:520
+#: src/BufferView2.C:410 src/LyXAction.C:171 src/MenuBackend.C:529
 msgid "Cut"
 msgstr "Vystrihnú»"
 
-#: src/BufferView2.C:420 src/LyXAction.C:333 src/MenuBackend.C:522
+#: src/BufferView2.C:420 src/LyXAction.C:333 src/MenuBackend.C:531
 msgid "Paste"
 msgstr "Vlo¾i»"
 
@@ -368,20 +368,20 @@ msgstr "Odstavec"
 msgid "Formatting document..."
 msgstr "Formátujem dokument..."
 
-#: src/BufferView_pimpl.C:1341
+#: src/BufferView_pimpl.C:1340
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1373
+#: src/BufferView_pimpl.C:1372
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1605
+#: src/BufferView_pimpl.C:1608
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Zvoµte dokument na vlo¾enie"
 
-#: src/BufferView_pimpl.C:1607 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1610 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -390,90 +390,90 @@ msgstr "Zvoµte dokument na vlo¾enie"
 msgid "Documents|#o#O"
 msgstr "Dokumenty|D"
 
-#: src/BufferView_pimpl.C:1609 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1612 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Príklady"
 
-#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1617 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1623 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1626 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Zru¹ené."
 
-#: src/BufferView_pimpl.C:1635
+#: src/BufferView_pimpl.C:1638
 msgid "Inserting document"
 msgstr "Vkladám dokument"
 
-#: src/BufferView_pimpl.C:1641 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1797
+#: src/BufferView_pimpl.C:1644 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
 #: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Dokument"
 
-#: src/BufferView_pimpl.C:1642
+#: src/BufferView_pimpl.C:1645
 msgid "inserted."
 msgstr "vlo¾ený."
 
-#: src/BufferView_pimpl.C:1646
+#: src/BufferView_pimpl.C:1649
 msgid "Could not insert document"
 msgstr "Dokument nie je mo¾né vlo¾i»"
 
-#: src/BufferView_pimpl.C:1820 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1822 src/insets/insettext.C:1455
 msgid "Layout "
 msgstr "Formát "
 
-#: src/BufferView_pimpl.C:1821 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1823 src/insets/insettext.C:1455
 msgid " not known"
 msgstr " neznámy"
 
-#: src/BufferView_pimpl.C:2017 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2019 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Chyba"
 
-#: src/BufferView_pimpl.C:2018
+#: src/BufferView_pimpl.C:2020
 msgid "Couldn't find this label"
 msgstr "Nemô¾em nájs» túto znaèku"
 
-#: src/BufferView_pimpl.C:2019
+#: src/BufferView_pimpl.C:2021
 msgid "in current document."
 msgstr "v aktuálnom dokumente."
 
-#: src/BufferView_pimpl.C:2515
+#: src/BufferView_pimpl.C:2518
 msgid "Mark removed"
 msgstr "Znaèka odstránená"
 
-#: src/BufferView_pimpl.C:2522
+#: src/BufferView_pimpl.C:2525
 msgid "Mark set"
 msgstr "Znaèka nastavená"
 
-#: src/BufferView_pimpl.C:2653
+#: src/BufferView_pimpl.C:2656
 msgid "Mark off"
 msgstr "Znaèka vypnutá"
 
-#: src/BufferView_pimpl.C:2666
+#: src/BufferView_pimpl.C:2669
 msgid "Mark on"
 msgstr "Znaèka zapnutá"
 
-#: src/BufferView_pimpl.C:2840 src/insets/insettext.C:1508
+#: src/BufferView_pimpl.C:2843 src/insets/insettext.C:1508
 msgid "Unknown spacing argument: "
 msgstr "Neznámy parameter riadkovania: "
 
-#: src/BufferView_pimpl.C:3201
+#: src/BufferView_pimpl.C:3198
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3357
+#: src/BufferView_pimpl.C:3356
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Neznáma akcia"
 
-#: src/BufferView_pimpl.C:3620 src/BufferView_pimpl.C:3623
+#: src/BufferView_pimpl.C:3619 src/BufferView_pimpl.C:3622
 #, fuzzy
 msgid "No more insets"
 msgstr "U¾ nie je viac poznámok"
@@ -766,12 +766,12 @@ msgstr "Dokument exportovaný ako "
 msgid " to file `"
 msgstr " do súboru `"
 
-#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:532
-#: src/MenuBackend.C:539
+#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:541
+#: src/MenuBackend.C:548
 msgid "File|F"
 msgstr "Súbor|S"
 
-#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:533
+#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:542
 msgid "Edit|E"
 msgstr "Upravi»|E"
 
@@ -795,11 +795,11 @@ msgstr "Prezeranie|P"
 msgid "Navigate|N"
 msgstr "Navigácia|N"
 
-#: src/ext_l10n.h:10 src/MenuBackend.C:535
+#: src/ext_l10n.h:10 src/MenuBackend.C:544
 msgid "Documents|D"
 msgstr "Dokumenty|D"
 
-#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:502
+#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:511
 msgid "New...|N"
 msgstr "Nový...|N"
 
@@ -807,11 +807,11 @@ msgstr "Nový...|N"
 msgid "New from Template...|T"
 msgstr "Nový zo ¹ablóny...|b"
 
-#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:503
+#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:512
 msgid "Open...|O"
 msgstr "Otvori»...|O"
 
-#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:504
+#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:513
 msgid "Import|I"
 msgstr "Importova»|I"
 
@@ -2960,7 +2960,7 @@ msgid "&Cancel"
 msgstr "&Zru¹i»"
 
 #: src/ext_l10n.h:540 src/ext_l10n.h:897 src/frontends/qt2/QIndex.C:23
-#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:59
+#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
 msgid "Index"
 msgstr "Index"
 
@@ -3130,7 +3130,7 @@ msgid "&Language:"
 msgstr "Jazyk:"
 
 #: src/ext_l10n.h:578 src/ext_l10n.h:586 src/ext_l10n.h:704
-#: src/frontends/xforms/FormDocument.C:324
+#: src/frontends/xforms/FormDocument.C:331
 #: src/frontends/xforms/FormPreferences.C:258
 msgid "Language"
 msgstr "Jazyk"
@@ -3347,7 +3347,7 @@ msgstr ""
 msgid "Text to place before citation"
 msgstr "Text, ktorý bude za citátom"
 
-#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:57
+#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:58
 msgid "Document Layout"
 msgstr "Formát dokumentu"
 
@@ -3453,7 +3453,7 @@ msgstr "1|#1"
 msgid "12"
 msgstr ""
 
-#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:260
+#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:256
 msgid "Sides"
 msgstr "Strany"
 
@@ -3495,7 +3495,7 @@ msgstr "Odsadenie"
 msgid "S&kip"
 msgstr "Medzerou|#M"
 
-#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:322
+#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:329
 msgid "Paper"
 msgstr "Papier"
 
@@ -3756,7 +3756,7 @@ msgid "&Double"
 msgstr "Dvojité"
 
 #: src/ext_l10n.h:730 src/ext_l10n.h:853
-#: src/frontends/xforms/FormDocument.C:326
+#: src/frontends/xforms/FormDocument.C:333
 msgid "Extra"
 msgstr "Extra"
 
@@ -3785,7 +3785,7 @@ msgstr "PS Ovládaè:|#S"
 msgid "Use A&MS Math"
 msgstr "Pou¾i» AMS Matematiku|#M"
 
-#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:328
+#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:335
 msgid "Bullets"
 msgstr "Odrá¾ky"
 
@@ -3795,7 +3795,7 @@ msgid "Si&ze"
 msgstr "Veµkos»|#s"
 
 #: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:149
+#: src/frontends/xforms/form_preferences.C:171
 msgid "tiny"
 msgstr "drobné"
 
@@ -3808,21 +3808,21 @@ msgid "footnote"
 msgstr "poznámka"
 
 #: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:158
+#: src/frontends/xforms/form_preferences.C:180
 msgid "small"
 msgstr "malé"
 
 #: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:161
+#: src/frontends/xforms/form_preferences.C:183
 msgid "normal"
 msgstr "normálne"
 
 #: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:164
+#: src/frontends/xforms/form_preferences.C:186
 msgid "large"
 msgstr "veµké"
 
-#: src/ext_l10n.h:745 src/frontends/controllers/character.C:106
+#: src/ext_l10n.h:745 src/frontends/controllers/character.C:105
 #: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
 msgid "Large"
 msgstr "Veµké"
@@ -3832,16 +3832,16 @@ msgid "LARGE"
 msgstr ""
 
 #: src/ext_l10n.h:747 src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:173
+#: src/frontends/xforms/form_preferences.C:195
 msgid "huge"
 msgstr "ozrutné"
 
-#: src/ext_l10n.h:748 src/frontends/controllers/character.C:112
+#: src/ext_l10n.h:748 src/frontends/controllers/character.C:111
 #: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
 msgid "Huge"
 msgstr "Obrovské"
 
-#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:614
+#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:608
 msgid "Bullet Depth"
 msgstr "Håbka odrá¾ok"
 
@@ -4037,7 +4037,7 @@ msgid "Here, definitely"
 msgstr ""
 
 #. add the different tabfolders
-#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:184
+#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:189
 #, fuzzy
 msgid "File"
 msgstr "&Súbor"
@@ -4104,7 +4104,7 @@ msgstr "Matematický re¾im"
 msgid "draft mode"
 msgstr "Matematický re¾im"
 
-#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:180
+#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:201
 #, fuzzy
 msgid "Size"
 msgstr "Veµkos»|#s"
@@ -4221,7 +4221,7 @@ msgstr "&Dole"
 msgid "leftBaseline"
 msgstr "panel tabuµky"
 
-#: src/ext_l10n.h:861
+#: src/ext_l10n.h:861 src/frontends/controllers/ControlGraphics.C:202
 #, fuzzy
 msgid "center"
 msgstr "Na stred"
@@ -4799,6 +4799,8 @@ msgstr "&Tlaè"
 #: src/ext_l10n.h:1100 src/ext_l10n.h:1159
 #: src/frontends/controllers/ButtonController.h:74
 #: src/frontends/xforms/form_maths_deco.C:32
+#: src/frontends/xforms/FormMathsPanel.C:71
+#: src/frontends/xforms/FormMathsPanel.C:407
 #: src/frontends/xforms/form_maths_space.C:73
 #: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
 msgid "Close"
@@ -5186,175 +5188,173 @@ msgstr "Algoritmus"
 msgid "Loading font into X-Server..."
 msgstr "Naèítavam písmo do X-Serveru..."
 
-#: src/frontends/controllers/biblio.C:213
+#: src/frontends/controllers/biblio.C:220
 #, fuzzy
 msgid " and "
 msgstr " Index "
 
-#: src/frontends/controllers/biblio.C:215
+#: src/frontends/controllers/biblio.C:222
 msgid " et al."
 msgstr ""
 
-#: src/frontends/controllers/character.C:34
-#: src/frontends/controllers/character.C:54
-#: src/frontends/controllers/character.C:72
-#: src/frontends/controllers/character.C:94
-#: src/frontends/controllers/character.C:132
-#: src/frontends/controllers/character.C:152
-#: src/frontends/controllers/character.C:183
-#: src/frontends/controllers/ControlCharacter.C:223
-#: src/frontends/controllers/ControlCharacter.C:229
-#: src/frontends/xforms/FormCharacter.C:213
+#: src/frontends/controllers/biblio.C:258
+#, fuzzy
+msgid "No year"
+msgstr "Bez èísla"
+
+#: src/frontends/controllers/character.C:33
+#: src/frontends/controllers/character.C:53
+#: src/frontends/controllers/character.C:71
+#: src/frontends/controllers/character.C:93
+#: src/frontends/controllers/character.C:131
+#: src/frontends/controllers/character.C:151
+#: src/frontends/controllers/frnt_lang.C:45
 msgid "No change"
 msgstr "®iadne zmeny"
 
 #. default & error
-#: src/frontends/controllers/character.C:36
-#: src/frontends/xforms/form_preferences.C:107 src/lyxfont.C:44
+#: src/frontends/controllers/character.C:35 src/lyxfont.C:44
 msgid "Roman"
 msgstr "Roman"
 
-#: src/frontends/controllers/character.C:38
-#: src/frontends/xforms/form_preferences.C:110
+#: src/frontends/controllers/character.C:37
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
-#: src/frontends/controllers/character.C:40
-#: src/frontends/xforms/form_preferences.C:113 src/lyxfont.C:44
+#: src/frontends/controllers/character.C:39 src/lyxfont.C:44
 msgid "Typewriter"
 msgstr "Písací stroj"
 
-#: src/frontends/controllers/character.C:42
-#: src/frontends/controllers/character.C:60
-#: src/frontends/controllers/character.C:82
-#: src/frontends/controllers/character.C:120
-#: src/frontends/controllers/character.C:140
-#: src/frontends/controllers/character.C:172
-#: src/frontends/controllers/character.C:184
-#: src/frontends/controllers/ControlCharacter.C:232
+#: src/frontends/controllers/character.C:41
+#: src/frontends/controllers/character.C:59
+#: src/frontends/controllers/character.C:81
+#: src/frontends/controllers/character.C:119
+#: src/frontends/controllers/character.C:139
+#: src/frontends/controllers/character.C:171
+#: src/frontends/controllers/frnt_lang.C:46
 #: src/frontends/xforms/form_maths_style.C:44
 msgid "Reset"
 msgstr "Obnovi»"
 
-#: src/frontends/controllers/character.C:56 src/lyxfont.C:49
+#: src/frontends/controllers/character.C:55 src/lyxfont.C:49
 msgid "Medium"
 msgstr "Stredné"
 
-#: src/frontends/controllers/character.C:58 src/lyxfont.C:49
+#: src/frontends/controllers/character.C:57 src/lyxfont.C:49
 msgid "Bold"
 msgstr "Tuèné"
 
-#: src/frontends/controllers/character.C:74 src/lyxfont.C:52
+#: src/frontends/controllers/character.C:73 src/lyxfont.C:52
 msgid "Upright"
 msgstr "Vzpriamený"
 
-#: src/frontends/controllers/character.C:76 src/lyxfont.C:52
+#: src/frontends/controllers/character.C:75 src/lyxfont.C:52
 msgid "Italic"
 msgstr "Kurzíva"
 
-#: src/frontends/controllers/character.C:78 src/lyxfont.C:52
+#: src/frontends/controllers/character.C:77 src/lyxfont.C:52
 msgid "Slanted"
 msgstr "Sklonený"
 
-#: src/frontends/controllers/character.C:80
+#: src/frontends/controllers/character.C:79
 #, fuzzy
 msgid "Small Caps"
 msgstr "Kapitálky"
 
-#: src/frontends/controllers/character.C:96 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:95 src/lyxfont.C:56
 msgid "Tiny"
 msgstr "Drobné"
 
-#: src/frontends/controllers/character.C:98 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:97 src/lyxfont.C:56
 msgid "Smallest"
 msgstr "Najmen¹ie"
 
-#: src/frontends/controllers/character.C:100 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:99 src/lyxfont.C:56
 msgid "Smaller"
 msgstr "Men¹í"
 
-#: src/frontends/controllers/character.C:102 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:101 src/lyxfont.C:56
 msgid "Small"
 msgstr "Malé"
 
-#: src/frontends/controllers/character.C:104 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:103 src/lyxfont.C:56
 msgid "Normal"
 msgstr "Normálny"
 
-#: src/frontends/controllers/character.C:108 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:107 src/lyxfont.C:57
 msgid "Larger"
 msgstr "Väè¹í"
 
-#: src/frontends/controllers/character.C:110 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:109 src/lyxfont.C:57
 msgid "Largest"
 msgstr "Najväè¹ie"
 
-#: src/frontends/controllers/character.C:114 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:113 src/lyxfont.C:57
 msgid "Huger"
 msgstr "Ozrutné"
 
-#: src/frontends/controllers/character.C:116 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:115 src/lyxfont.C:57
 msgid "Increase"
 msgstr "Nárast"
 
-#: src/frontends/controllers/character.C:118 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:117 src/lyxfont.C:57
 msgid "Decrease"
 msgstr "Zní¾enie"
 
-#: src/frontends/controllers/character.C:134
+#: src/frontends/controllers/character.C:133
 #, fuzzy
 msgid "Emph"
 msgstr "Zvýrazni» "
 
-#: src/frontends/controllers/character.C:136
+#: src/frontends/controllers/character.C:135
 msgid "Underbar"
 msgstr ""
 
-#: src/frontends/controllers/character.C:138
+#: src/frontends/controllers/character.C:137
 #, fuzzy
 msgid "Noun"
 msgstr "Kapitálky "
 
-#: src/frontends/controllers/character.C:154
+#: src/frontends/controllers/character.C:153
 msgid "No color"
 msgstr ""
 
-#: src/frontends/controllers/character.C:156
+#: src/frontends/controllers/character.C:155
 #, fuzzy
 msgid "Black"
 msgstr "Do bloku"
 
-#: src/frontends/controllers/character.C:158
+#: src/frontends/controllers/character.C:157
 #, fuzzy
 msgid "White"
 msgstr "biela"
 
-#: src/frontends/controllers/character.C:160
+#: src/frontends/controllers/character.C:159
 #, fuzzy
 msgid "Red"
 msgstr "Opakova» vrátené"
 
-#: src/frontends/controllers/character.C:162
+#: src/frontends/controllers/character.C:161
 #, fuzzy
 msgid "Green"
 msgstr "Grécky"
 
-#: src/frontends/controllers/character.C:164
+#: src/frontends/controllers/character.C:163
 #, fuzzy
 msgid "Blue"
 msgstr "modrá"
 
-#: src/frontends/controllers/character.C:166
+#: src/frontends/controllers/character.C:165
 #, fuzzy
 msgid "Cyan"
 msgstr "modrozelená"
 
-#: src/frontends/controllers/character.C:168
+#: src/frontends/controllers/character.C:167
 #, fuzzy
 msgid "Magenta"
 msgstr "fialová"
 
-#: src/frontends/controllers/character.C:170
+#: src/frontends/controllers/character.C:169
 #, fuzzy
 msgid "Yellow"
 msgstr "¾ltá"
@@ -5450,6 +5450,51 @@ msgstr "Zvoµte názov výstupu"
 #, fuzzy
 msgid "Clipart|#C#c"
 msgstr "Usporiadané|#U"
+
+#: src/frontends/controllers/ControlGraphics.C:203
+#, fuzzy
+msgid "left top"
+msgstr "&Dole"
+
+#: src/frontends/controllers/ControlGraphics.C:203
+#, fuzzy
+msgid "left bottom"
+msgstr "&Dole"
+
+#: src/frontends/controllers/ControlGraphics.C:203
+#, fuzzy
+msgid "left baseline"
+msgstr "panel tabuµky"
+
+#: src/frontends/controllers/ControlGraphics.C:204
+#, fuzzy
+msgid "center top"
+msgstr "Na stred"
+
+#: src/frontends/controllers/ControlGraphics.C:204
+#, fuzzy
+msgid "center bottom"
+msgstr "Hore | Nastred | Dole"
+
+#: src/frontends/controllers/ControlGraphics.C:204
+#, fuzzy
+msgid "center baseline"
+msgstr "panel tabuµky"
+
+#: src/frontends/controllers/ControlGraphics.C:205
+#, fuzzy
+msgid "right top"
+msgstr "Vzpriamený"
+
+#: src/frontends/controllers/ControlGraphics.C:205
+#, fuzzy
+msgid "right bottom"
+msgstr "pravý okraj tlaèítka"
+
+#: src/frontends/controllers/ControlGraphics.C:205
+#, fuzzy
+msgid "right baseline"
+msgstr "panel tabuµky"
 
 #: src/frontends/controllers/ControlInclude.C:53
 #, fuzzy
@@ -5684,45 +5729,45 @@ msgstr "text"
 msgid "»text«"
 msgstr "text"
 
-#: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:355
+#: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:362
 msgid "Document layout set"
 msgstr "Formát dokumentu bol nastavený"
 
-#: src/frontends/qt2/QDocument.C:353 src/frontends/xforms/FormDocument.C:768
+#: src/frontends/qt2/QDocument.C:353 src/frontends/xforms/FormDocument.C:775
 msgid "Converting document to new document class..."
 msgstr "Prevod dokumentu do novej triedy dokumentov..."
 
-#: src/frontends/qt2/QDocument.C:361 src/frontends/xforms/FormDocument.C:776
+#: src/frontends/qt2/QDocument.C:361 src/frontends/xforms/FormDocument.C:783
 msgid "One paragraph couldn't be converted"
 msgstr "Jeden odstavec nie je mo¾né skonvertova»"
 
-#: src/frontends/qt2/QDocument.C:364 src/frontends/xforms/FormDocument.C:779
+#: src/frontends/qt2/QDocument.C:364 src/frontends/xforms/FormDocument.C:786
 msgid " paragraphs couldn't be converted"
 msgstr " odstavce nie je mo¾né skonvertova»"
 
 #. problem changing class -- warn user and retain old style
 #: src/frontends/qt2/QDocument.C:366 src/frontends/qt2/QDocument.C:373
-#: src/frontends/qt2/QDocument.C:1005 src/frontends/xforms/FormDocument.C:781
-#: src/frontends/xforms/FormDocument.C:787
-#: src/frontends/xforms/FormDocument.C:1480
+#: src/frontends/qt2/QDocument.C:1005 src/frontends/xforms/FormDocument.C:788
+#: src/frontends/xforms/FormDocument.C:794
+#: src/frontends/xforms/FormDocument.C:1489
 msgid "Conversion Errors!"
 msgstr "Chyby konverzie!"
 
-#: src/frontends/qt2/QDocument.C:367 src/frontends/xforms/FormDocument.C:782
+#: src/frontends/qt2/QDocument.C:367 src/frontends/xforms/FormDocument.C:789
 msgid "into chosen document class"
 msgstr "do zvolenej triedy dokumentu"
 
-#: src/frontends/qt2/QDocument.C:374 src/frontends/xforms/FormDocument.C:788
+#: src/frontends/qt2/QDocument.C:374 src/frontends/xforms/FormDocument.C:795
 msgid "Errors loading new document class."
 msgstr "Chyby pri naèítavaní novej triedy dokumentu."
 
 #: src/frontends/qt2/QDocument.C:375 src/frontends/qt2/QDocument.C:1007
-#: src/frontends/xforms/FormDocument.C:789
-#: src/frontends/xforms/FormDocument.C:1482
+#: src/frontends/xforms/FormDocument.C:796
+#: src/frontends/xforms/FormDocument.C:1491
 msgid "Reverting to original document class."
 msgstr "Spä» do pôvodnej triedy dokumentu."
 
-#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1241
+#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1250
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Dokument je iba pre èítanie. Nie sú povolené ¾iadne zmeny formátu."
 
@@ -5734,7 +5779,7 @@ msgstr "Mám niektoré parametre nastavi» na"
 msgid "the defaults of this document class?"
 msgstr "prednastavené hodnoty tejto triedy dokumentov?"
 
-#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1481
+#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1490
 msgid "Unable to switch to new document class."
 msgstr "Nie je mo¾né prepnú» do vybrané triedy dokumentu."
 
@@ -5763,7 +5808,7 @@ msgstr "Externý materiál...|x"
 msgid "LaTeX Information"
 msgstr "Nastavenie LaTeXu|L"
 
-#: src/frontends/qt2/QGraphics.C:46 src/frontends/xforms/FormGraphics.C:54
+#: src/frontends/qt2/QGraphics.C:46 src/frontends/xforms/FormGraphics.C:56
 msgid "Graphics"
 msgstr "Grafika"
 
@@ -5984,13 +6029,13 @@ msgstr "©týl:  "
 #: src/frontends/xforms/form_external.C:50
 #: src/frontends/xforms/form_graphics.C:93
 #: src/frontends/xforms/form_include.C:30
-#: src/frontends/xforms/form_preferences.C:549
+#: src/frontends/xforms/form_preferences.C:585
 #: src/frontends/xforms/form_print.C:146
 msgid "Browse...|#B"
 msgstr "Prechádza»...|#P"
 
 #: src/frontends/xforms/form_bibtex.C:59
-#: src/frontends/xforms/form_preferences.C:224
+#: src/frontends/xforms/form_preferences.C:256
 #, fuzzy
 msgid "Browse...|#r"
 msgstr "Prechádza»...|#P"
@@ -6021,14 +6066,33 @@ msgstr ""
 msgid ""
 "The BibTeX style to use (only one allowed). Insert it without the default "
 "extension \".bst\" and without path. Most of the bibstyles are stored in "
-"$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help-"
-">TeX Info\" you can list all installed styles."
+"$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"View-"
+">TeX Information\" you can list all installed styles."
 msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:71
 msgid ""
 "Activate this option if you want the bibliography to appear in the Table of "
 "Contents (which doesn't happen by default)."
+msgstr ""
+
+#: src/frontends/xforms/FormBibtex.C:83
+#, fuzzy
+msgid "Select Database"
+msgstr "Databázy:"
+
+#: src/frontends/xforms/FormBibtex.C:84
+#, fuzzy
+msgid "*.bib| BibTeX Databases (*.bib)"
+msgstr "Databázy:"
+
+#: src/frontends/xforms/FormBibtex.C:100
+#, fuzzy
+msgid "Select BibTeX-Style"
+msgstr "Prepnutie ¹týlu TeX"
+
+#: src/frontends/xforms/FormBibtex.C:101
+msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr ""
 
 #: src/frontends/xforms/form_browser.C:31 src/frontends/xforms/form_error.C:31
@@ -6107,7 +6171,7 @@ msgstr "Toto nie je nikdy zapnuté"
 msgid "These are always toggled"
 msgstr "Toto nie je nikdy vypnuté"
 
-#: src/frontends/xforms/FormCharacter.C:36
+#: src/frontends/xforms/FormCharacter.C:38
 #, fuzzy
 msgid "Character Layout"
 msgstr "©týl Znaku"
@@ -6252,7 +6316,7 @@ msgstr ""
 #: src/frontends/xforms/FormCitation.C:211
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
-"three authors, and not \"<First Author> et.al.\" (Natbib)."
+"three authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:214
@@ -6304,11 +6368,12 @@ msgstr "Kontrola posledných súborov|#K"
 
 #: src/frontends/xforms/form_document.C:94
 #, fuzzy
-msgid "Papersize"
+msgid "Paper size"
 msgstr "veµkos» papiera"
 
 #: src/frontends/xforms/form_document.C:96
-msgid "Papersize:|#P"
+#, fuzzy
+msgid "Paper size:|#P"
 msgstr "Veµkos»:"
 
 #: src/frontends/xforms/form_document.C:104
@@ -6368,198 +6433,201 @@ msgstr "Vý¹ka oddeµovaèa:|#d"
 msgid "Footskip:|#F"
 msgstr "Veµkos» päty:"
 
-#: src/frontends/xforms/form_document.C:257
+#: src/frontends/xforms/form_document.C:255
 msgid "Page cols"
 msgstr "Ståpce na stránke"
 
-#: src/frontends/xforms/form_document.C:264
+#: src/frontends/xforms/form_document.C:258
 msgid "Fonts:|#F"
 msgstr "Písmo:|#P"
 
-#: src/frontends/xforms/form_document.C:272
+#: src/frontends/xforms/form_document.C:266
 msgid "Font Size:|#O"
 msgstr "Veµkos» písma:|#O"
 
-#: src/frontends/xforms/form_document.C:280
+#: src/frontends/xforms/form_document.C:274
 #, fuzzy
 msgid "Class:|#l"
 msgstr "Trieda:|#T"
 
-#: src/frontends/xforms/form_document.C:288
-msgid "Pagestyle:|#P"
+#: src/frontends/xforms/form_document.C:282
+#, fuzzy
+msgid "Page style:|#P"
 msgstr "©týl strany:|#©"
 
-#: src/frontends/xforms/form_document.C:296
+#: src/frontends/xforms/form_document.C:290
 msgid "Spacing|#g"
 msgstr "Riadkovanie|#R"
 
-#: src/frontends/xforms/form_document.C:304
+#: src/frontends/xforms/form_document.C:298
 msgid "Extra Options:|#X"
 msgstr "Ïal¹ie nastavenia:|#v"
 
-#: src/frontends/xforms/form_document.C:314
+#: src/frontends/xforms/form_document.C:308
 msgid "Default Skip:|#u"
 msgstr "©td. medzera:|#d"
 
-#: src/frontends/xforms/form_document.C:323
+#: src/frontends/xforms/form_document.C:317
 msgid "One|#n"
 msgstr "Jedna strana|#n"
 
-#: src/frontends/xforms/form_document.C:331
+#: src/frontends/xforms/form_document.C:325
 msgid "Two|#T"
 msgstr "Dve strany|#e"
 
-#: src/frontends/xforms/form_document.C:342
+#: src/frontends/xforms/form_document.C:336
 msgid "One|#e"
 msgstr "Jeden ståpec|#e"
 
-#: src/frontends/xforms/form_document.C:350
+#: src/frontends/xforms/form_document.C:344
 msgid "Two|#w"
 msgstr "Dva ståpce|#v"
 
-#: src/frontends/xforms/form_document.C:361
+#: src/frontends/xforms/form_document.C:355
 msgid "Indent|#I"
 msgstr "Odsadením|#O"
 
-#: src/frontends/xforms/form_document.C:369
+#: src/frontends/xforms/form_document.C:363
 msgid "Skip|#K"
 msgstr "Medzerou|#M"
 
-#: src/frontends/xforms/form_document.C:408
+#: src/frontends/xforms/form_document.C:402
 msgid "Quote Style    "
 msgstr "Typ úvodzoviek    "
 
-#: src/frontends/xforms/form_document.C:410
+#: src/frontends/xforms/form_document.C:404
 msgid "Encoding:|#D"
 msgstr "Kódovanie:"
 
-#: src/frontends/xforms/form_document.C:418
+#: src/frontends/xforms/form_document.C:412
 msgid "Type:|#T"
 msgstr "Typ:|#T"
 
-#: src/frontends/xforms/form_document.C:427
+#: src/frontends/xforms/form_document.C:421
 msgid "Single|#S"
 msgstr "Jednod.|#J"
 
-#: src/frontends/xforms/form_document.C:435
+#: src/frontends/xforms/form_document.C:429
 msgid "Double|#D"
 msgstr "Dvojité|#D"
 
-#: src/frontends/xforms/form_document.C:445
+#: src/frontends/xforms/form_document.C:439
 msgid "Language:|#L"
 msgstr "Jazyk:|#J"
 
-#: src/frontends/xforms/form_document.C:476
+#: src/frontends/xforms/form_document.C:470
 msgid "Float Placement:|#L"
 msgstr "Umiestnenie objektov:|#U"
 
-#: src/frontends/xforms/form_document.C:482
+#: src/frontends/xforms/form_document.C:476
 msgid "Section number depth"
 msgstr "Håbka vnorenia oddielov"
 
-#: src/frontends/xforms/form_document.C:486
+#: src/frontends/xforms/form_document.C:480
 msgid "Table of contents depth"
 msgstr "Håbka obsahu"
 
-#: src/frontends/xforms/form_document.C:491
+#: src/frontends/xforms/form_document.C:485
 #, fuzzy
 msgid "PS Driver|#S"
 msgstr "PS Ovládaè:|#S"
 
-#: src/frontends/xforms/form_document.C:499
+#: src/frontends/xforms/form_document.C:493
 msgid "Use AMS Math|#M"
 msgstr "Pou¾i» AMS Matematiku|#M"
 
-#: src/frontends/xforms/form_document.C:507
+#: src/frontends/xforms/form_document.C:501
 msgid "Use Natbib|#N"
 msgstr ""
 
-#: src/frontends/xforms/form_document.C:515
+#: src/frontends/xforms/form_document.C:509
 #, fuzzy
 msgid "Citation style|#i"
 msgstr "Citácia"
 
-#: src/frontends/xforms/form_document.C:558
+#: src/frontends/xforms/form_document.C:552
 msgid "Size|#z"
 msgstr "Veµkos»|#s"
 
-#: src/frontends/xforms/form_document.C:567
+#: src/frontends/xforms/form_document.C:561
 msgid "LaTeX|#L"
 msgstr "LaTeX|#L"
 
-#: src/frontends/xforms/form_document.C:576
+#: src/frontends/xforms/form_document.C:570
 msgid "1|#1"
 msgstr "1|#1"
 
-#: src/frontends/xforms/form_document.C:586
+#: src/frontends/xforms/form_document.C:580
 msgid "2|#2"
 msgstr "2|#2"
 
-#: src/frontends/xforms/form_document.C:595
+#: src/frontends/xforms/form_document.C:589
 msgid "3|#3"
 msgstr "3|#3"
 
-#: src/frontends/xforms/form_document.C:604
+#: src/frontends/xforms/form_document.C:598
 msgid "4|#4"
 msgstr "4|#4"
 
-#: src/frontends/xforms/form_document.C:619
+#: src/frontends/xforms/form_document.C:613
 msgid "Standard|#S"
 msgstr "©tandard|#t"
 
-#: src/frontends/xforms/form_document.C:630
+#: src/frontends/xforms/form_document.C:624
 msgid "Maths|#M"
 msgstr "Matematické|#M"
 
-#: src/frontends/xforms/form_document.C:640
+#: src/frontends/xforms/form_document.C:634
 msgid "Ding 1|#D"
 msgstr "Ïal¹ie 1|#Ï"
 
-#: src/frontends/xforms/form_document.C:650
+#: src/frontends/xforms/form_document.C:644
 msgid "Ding 2|#i"
 msgstr "Ïal¹ie 2|#a"
 
-#: src/frontends/xforms/form_document.C:660
+#: src/frontends/xforms/form_document.C:654
 msgid "Ding 3|#n"
 msgstr "Ïal¹ie 3|#l"
 
-#: src/frontends/xforms/form_document.C:670
+#: src/frontends/xforms/form_document.C:664
 msgid "Ding 4|#g"
 msgstr "Ïal¹ie 4|#¹"
 
-#: src/frontends/xforms/FormDocument.C:109
+#: src/frontends/xforms/FormDocument.C:110
+#, fuzzy
 msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
+" Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
+"| B4 | B5 "
 msgstr ""
 "Prednastavené | Vlastné | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
 "B3 | B4 | B5 "
 
-#: src/frontends/xforms/FormDocument.C:112
+#: src/frontends/xforms/FormDocument.C:113
 #, fuzzy
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr ""
 "®iadne | A4 malé okraje (Na vý¹ku) | A4 veµmi malé okraje (Na vý¹ku) | A4 "
 "veµmi ¹iroké okraje (Na vý¹ku) "
 
-#: src/frontends/xforms/FormDocument.C:200
-msgid " Single | OneHalf | Double | Other "
+#: src/frontends/xforms/FormDocument.C:201
+#, fuzzy
+msgid " Single | OneHalf | Double | Custom "
 msgstr "Jeden | Jeden a pol | Dva | Iné "
 
-#: src/frontends/xforms/FormDocument.C:208
+#: src/frontends/xforms/FormDocument.C:209
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr "Malá| Stredná | Veµká | Iná "
 
-#: src/frontends/xforms/FormDocument.C:261
+#: src/frontends/xforms/FormDocument.C:268
 #, fuzzy
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | text | text "
 
-#: src/frontends/xforms/FormDocument.C:285
+#: src/frontends/xforms/FormDocument.C:292
 msgid " Author-year | Numerical "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:298
+#: src/frontends/xforms/FormDocument.C:305
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
@@ -6567,7 +6635,7 @@ msgstr ""
 " implicitné | drobné | skript | poznámka | malé | normálne | veµké | väè¹ie "
 "| najväè¹ie | obrovské | ozrutné"
 
-#: src/frontends/xforms/FormDocument.C:331
+#: src/frontends/xforms/FormDocument.C:338
 #, fuzzy
 msgid ""
 "Your version of libXpm is older than 4.7.\n"
@@ -6576,21 +6644,21 @@ msgstr ""
 "Va¹a verzia libXpm je star¹ia ako 4.7\n"
 "'Odrá¾kové' u¹ká dokumentu neboli povolené"
 
-#: src/frontends/xforms/FormDocument.C:398
+#: src/frontends/xforms/FormDocument.C:405
 msgid "Do you want to save the current settings"
 msgstr "Chcete ulo¾i» aktuálne nastavenie"
 
-#: src/frontends/xforms/FormDocument.C:399
+#: src/frontends/xforms/FormDocument.C:406
 #, fuzzy
 msgid "for the document layout as default?"
 msgstr "Formát dokumentu bol nastavený"
 
-#: src/frontends/xforms/FormDocument.C:400
+#: src/frontends/xforms/FormDocument.C:407
 #, fuzzy
 msgid "(they will be valid for any new document)"
 msgstr "Vlo¾te názov nového dokumentu"
 
-#: src/frontends/xforms/FormDocument.C:1293
+#: src/frontends/xforms/FormDocument.C:1302
 #: src/frontends/xforms/FormParagraph.C:584
 #: src/frontends/xforms/FormTabular.C:578
 #: src/frontends/xforms/FormTabular.C:597
@@ -6925,7 +6993,7 @@ msgid "Color|#C"
 msgstr "Farba:|#b"
 
 #: src/frontends/xforms/form_graphics.C:481
-#: src/frontends/xforms/form_preferences.C:476
+#: src/frontends/xforms/form_preferences.C:513
 msgid "Don't display|#D"
 msgstr "Nezobrazova»|#b"
 
@@ -6934,34 +7002,34 @@ msgstr "Nezobrazova»|#b"
 msgid "Get LaTeX size|#L"
 msgstr "LaTeX|#L"
 
-#: src/frontends/xforms/FormGraphics.C:185
+#: src/frontends/xforms/FormGraphics.C:190
 #, fuzzy
 msgid "LyX View"
 msgstr "Zobrazi»"
 
-#: src/frontends/xforms/FormGraphics.C:186
+#: src/frontends/xforms/FormGraphics.C:191
 #, fuzzy
 msgid "LaTeX Size"
 msgstr "LaTeXový_Nadpis"
 
-#: src/frontends/xforms/FormGraphics.C:187
+#: src/frontends/xforms/FormGraphics.C:192
 msgid "Bounding Box"
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:188
+#: src/frontends/xforms/FormGraphics.C:193
 #, fuzzy
 msgid "Extras"
 msgstr "Extra"
 
-#: src/frontends/xforms/FormGraphics.C:538
+#: src/frontends/xforms/FormGraphics.C:548
 msgid "The units text%, page%, col% and line% are not allowed here."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:539
+#: src/frontends/xforms/FormGraphics.C:549
 msgid "Cannot use the values from LaTeX size!"
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:685
+#: src/frontends/xforms/FormGraphics.C:695
 #: src/frontends/xforms/FormMinipage.C:111
 msgid "Invalid Length!"
 msgstr ""
@@ -7326,7 +7394,7 @@ msgstr "¾iadna | prednastavená | malá | stredná | veµká | výplnok | då¾ka "
 
 #: src/frontends/xforms/FormParagraph.C:129
 #, fuzzy
-msgid " Default | Single | OneHalf | Double | Other "
+msgid " Default | Single | OneHalf | Double | Custom "
 msgstr "Jeden | Jeden a pol | Dva | Iné "
 
 #: src/frontends/xforms/FormPreamble.C:24
@@ -7338,139 +7406,157 @@ msgstr "Preambula LaTeXu"
 msgid "Save"
 msgstr "Ulo¾i»"
 
-#: src/frontends/xforms/form_preferences.C:116
-msgid "Encoding"
-msgstr "Kódovanie"
-
-#: src/frontends/xforms/form_preferences.C:119
-#, fuzzy
-msgid "Rescale bitmap fonts"
-msgstr "Pou¾i» stupòovateµné písmo"
-
-#: src/frontends/xforms/form_preferences.C:126
-#, no-c-format
-msgid "Zoom %|#Z"
-msgstr "Zväè¹enie %|#Z"
-
-#: src/frontends/xforms/form_preferences.C:138
-msgid "Screen DPI|#D"
-msgstr "DPI pre obrazovku|#D"
-
-#: src/frontends/xforms/form_preferences.C:152
-#, fuzzy
-msgid "smallest"
-msgstr "Najmen¹ie"
-
-#: src/frontends/xforms/form_preferences.C:155
-#, fuzzy
-msgid "smaller"
-msgstr "Men¹í"
-
-#: src/frontends/xforms/form_preferences.C:167
-msgid "larger"
-msgstr "väè¹ie"
-
-#: src/frontends/xforms/form_preferences.C:170
-msgid "largest"
-msgstr "najväè¹ie"
-
-#: src/frontends/xforms/form_preferences.C:176
-msgid "huger"
-msgstr "obrovské"
-
-#: src/frontends/xforms/form_preferences.C:179
-#, fuzzy
-msgid "Fonts used"
-msgstr "Písmo: "
-
-#: src/frontends/xforms/form_preferences.C:181
+#: src/frontends/xforms/form_preferences.C:107
 #, fuzzy
 msgid "Scale & Resolution"
 msgstr "Rie¹enie"
 
-#: src/frontends/xforms/form_preferences.C:205
+#: src/frontends/xforms/form_preferences.C:108
+#, fuzzy
+msgid "Fonts used"
+msgstr "Písmo: "
+
+#: src/frontends/xforms/form_preferences.C:110
+#, fuzzy
+msgid "Roman|#R"
+msgstr "Roman"
+
+#: src/frontends/xforms/form_preferences.C:117
+#, fuzzy
+msgid "Sans Serif|#S"
+msgstr "Sans Serif"
+
+#: src/frontends/xforms/form_preferences.C:124
+#, fuzzy
+msgid "Typewriter|#T"
+msgstr "Písací stroj"
+
+#: src/frontends/xforms/form_preferences.C:131
+#, fuzzy
+msgid "Encoding|#E"
+msgstr "Kódovanie:"
+
+#: src/frontends/xforms/form_preferences.C:138
+#, fuzzy
+msgid "Rescale bitmap fonts|#b"
+msgstr "Pou¾i» stupòovateµné písmo"
+
+#: src/frontends/xforms/form_preferences.C:148
+#, no-c-format
+msgid "Zoom %|#Z"
+msgstr "Zväè¹enie %|#Z"
+
+#: src/frontends/xforms/form_preferences.C:160
+msgid "Screen DPI|#D"
+msgstr "DPI pre obrazovku|#D"
+
+#: src/frontends/xforms/form_preferences.C:174
+#, fuzzy
+msgid "smallest"
+msgstr "Najmen¹ie"
+
+#: src/frontends/xforms/form_preferences.C:177
+#, fuzzy
+msgid "smaller"
+msgstr "Men¹í"
+
+#: src/frontends/xforms/form_preferences.C:189
+msgid "larger"
+msgstr "väè¹ie"
+
+#: src/frontends/xforms/form_preferences.C:192
+msgid "largest"
+msgstr "najväè¹ie"
+
+#: src/frontends/xforms/form_preferences.C:198
+msgid "huger"
+msgstr "obrovské"
+
+#: src/frontends/xforms/form_preferences.C:225
 #, fuzzy
 msgid "Popup Fonts & Encoding"
 msgstr "Kódovanie popup dialógov"
 
-#: src/frontends/xforms/form_preferences.C:206
+#: src/frontends/xforms/form_preferences.C:227
 #, fuzzy
-msgid "Normal Font"
+msgid "Normal Font|#N"
 msgstr "Normálny"
 
-#: src/frontends/xforms/form_preferences.C:209
+#: src/frontends/xforms/form_preferences.C:234
 #, fuzzy
-msgid "Bold Font"
+msgid "Bold Font|#B"
 msgstr "Písmo pre popup dialógy"
 
-#: src/frontends/xforms/form_preferences.C:212
-msgid "Popup Encoding"
+#: src/frontends/xforms/form_preferences.C:241
+#, fuzzy
+msgid "Popup Encoding|#P"
 msgstr "Kódovanie popup dialógov"
 
-#: src/frontends/xforms/form_preferences.C:215
+#: src/frontends/xforms/form_preferences.C:247
 msgid "Layout & Bindings"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:217
+#: src/frontends/xforms/form_preferences.C:249
 msgid "User Interface file|#U"
 msgstr "Súbor s pou¾íva». rozhraním|#S"
 
-#: src/frontends/xforms/form_preferences.C:231
-msgid "Bind file|#B"
+#: src/frontends/xforms/form_preferences.C:263
+#, fuzzy
+msgid "Bind file|#f"
 msgstr "Bind súbor|#B"
 
-#: src/frontends/xforms/form_preferences.C:238
-#: src/frontends/xforms/form_preferences.C:640
+#: src/frontends/xforms/form_preferences.C:270
+#: src/frontends/xforms/form_preferences.C:677
 #, fuzzy
 msgid "Browse...|#w"
 msgstr "Prechádza»...|#P"
 
-#: src/frontends/xforms/form_preferences.C:244
+#: src/frontends/xforms/form_preferences.C:276
 msgid "Dead Keys"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:246
+#: src/frontends/xforms/form_preferences.C:278
 #, fuzzy
 msgid "Override X Window dead-keys|#O"
 msgstr "Nahradi» màtve klávesy X-Windows|#O"
 
-#: src/frontends/xforms/form_preferences.C:277
+#: src/frontends/xforms/form_preferences.C:309
 msgid "LyX objects|#L"
 msgstr "LyX objekty|#L"
 
-#: src/frontends/xforms/form_preferences.C:285
+#: src/frontends/xforms/form_preferences.C:317
 msgid "H|#H"
 msgstr "H|#H"
 
-#: src/frontends/xforms/form_preferences.C:292
+#: src/frontends/xforms/form_preferences.C:324
 msgid "S|#S"
 msgstr "S|#S"
 
-#: src/frontends/xforms/form_preferences.C:301
+#: src/frontends/xforms/form_preferences.C:333
 msgid "V|#V"
 msgstr "V|#V"
 
-#: src/frontends/xforms/form_preferences.C:310
+#: src/frontends/xforms/form_preferences.C:342
 msgid "R|#R"
 msgstr "R|#R"
 
-#: src/frontends/xforms/form_preferences.C:319
+#: src/frontends/xforms/form_preferences.C:351
 msgid "G|#G"
 msgstr "G|#G"
 
-#: src/frontends/xforms/form_preferences.C:328
+#: src/frontends/xforms/form_preferences.C:360
 msgid "B|#B"
 msgstr "B|#B"
 
-#: src/frontends/xforms/form_preferences.C:337
+#: src/frontends/xforms/form_preferences.C:369
 msgid "HSV"
 msgstr "HSV"
 
-#: src/frontends/xforms/form_preferences.C:341
+#: src/frontends/xforms/form_preferences.C:373
 msgid "RGB"
 msgstr "RGB"
 
-#: src/frontends/xforms/form_preferences.C:355
+#: src/frontends/xforms/form_preferences.C:387
 #: src/frontends/xforms/FormPreferences.C:1073
 #: src/frontends/xforms/FormPreferences.C:1074
 #: src/frontends/xforms/FormPreferences.C:1112
@@ -7482,107 +7568,109 @@ msgstr "RGB"
 msgid "Modify|#M"
 msgstr "Modifikova»|#M"
 
-#: src/frontends/xforms/form_preferences.C:385
+#: src/frontends/xforms/form_preferences.C:418
 msgid "Show banner|#S"
 msgstr "Zobrazi» transparent|#s"
 
-#: src/frontends/xforms/form_preferences.C:393
+#: src/frontends/xforms/form_preferences.C:426
 msgid "Auto region delete|#A"
 msgstr "Automatické mazanie oblastí|A"
 
-#: src/frontends/xforms/form_preferences.C:401
+#: src/frontends/xforms/form_preferences.C:434
 msgid "Exit confirmation|#E"
 msgstr "Potvrdenie ukonèenia|#u"
 
-#: src/frontends/xforms/form_preferences.C:408
-msgid "Display keyboard shortcuts"
+#: src/frontends/xforms/form_preferences.C:442
+#, fuzzy
+msgid "Display keyboard shortcuts|#k"
 msgstr "Zobrazova» klávesové skratky"
 
-#: src/frontends/xforms/form_preferences.C:413
+#: src/frontends/xforms/form_preferences.C:450
 msgid "File->New asks for name|#N"
 msgstr "Súbor ->Nové ¾iada» meno |#N"
 
-#: src/frontends/xforms/form_preferences.C:421
-msgid "Cursor follows scrollbar|#C"
+#: src/frontends/xforms/form_preferences.C:458
+#, fuzzy
+msgid "Cursor follows scrollbar|#f"
 msgstr "Kurzor nasleduje posuvník|#K"
 
-#: src/frontends/xforms/form_preferences.C:429
-msgid "Dialogs iconify with main window|#D"
+#: src/frontends/xforms/form_preferences.C:466
+msgid "Dialogs iconify with main window|#i"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:436
+#: src/frontends/xforms/form_preferences.C:473
 msgid "Wheel mouse jump"
 msgstr "Skok kolieska my¹i"
 
-#: src/frontends/xforms/form_preferences.C:444
+#: src/frontends/xforms/form_preferences.C:481
 msgid "Autosave interval"
 msgstr "Interval automatického ukladania"
 
-#: src/frontends/xforms/form_preferences.C:454
+#: src/frontends/xforms/form_preferences.C:491
 msgid "in Monochrome|#M"
 msgstr "monochromaticky|#m"
 
-#: src/frontends/xforms/form_preferences.C:462
+#: src/frontends/xforms/form_preferences.C:499
 msgid "in Grayscale|#G"
 msgstr "v odtieòoch ¹edi|#o"
 
-#: src/frontends/xforms/form_preferences.C:469
+#: src/frontends/xforms/form_preferences.C:506
 msgid "in Color|#C"
 msgstr "vo Farbe|#F"
 
-#: src/frontends/xforms/form_preferences.C:484
+#: src/frontends/xforms/form_preferences.C:521
 #, fuzzy
 msgid "Display Graphics"
 msgstr "Grafika"
 
-#: src/frontends/xforms/form_preferences.C:511
+#: src/frontends/xforms/form_preferences.C:547
 msgid "Spell command|#S"
 msgstr "Kontrola pravopisu | #K"
 
-#: src/frontends/xforms/form_preferences.C:519
+#: src/frontends/xforms/form_preferences.C:555
 msgid "Use alternative language|#a"
 msgstr "Pou¾i» alternatívny jazyk|#a"
 
-#: src/frontends/xforms/form_preferences.C:529
+#: src/frontends/xforms/form_preferences.C:565
 msgid "Use escape characters|#e"
 msgstr "©peciálne znaky|#e"
 
-#: src/frontends/xforms/form_preferences.C:539
+#: src/frontends/xforms/form_preferences.C:575
 msgid "Use personal dictionary|#d"
 msgstr "Pou¾i» osobný slovník|#o"
 
-#: src/frontends/xforms/form_preferences.C:556
+#: src/frontends/xforms/form_preferences.C:592
 msgid "Accept compound words|#w"
 msgstr "Akceptova» zlo¾ené slová|#z"
 
-#: src/frontends/xforms/form_preferences.C:564
+#: src/frontends/xforms/form_preferences.C:600
 msgid "Use input encoding|#i"
 msgstr "Pou¾i» kódovanie vstupu|#v"
 
-#: src/frontends/xforms/form_preferences.C:571
+#: src/frontends/xforms/form_preferences.C:607
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Extra nastavenia"
 
-#: src/frontends/xforms/form_preferences.C:572
+#: src/frontends/xforms/form_preferences.C:608
 #: src/frontends/xforms/FormPreferences.C:219
 msgid "Interface"
 msgstr "Rozhranie"
 
-#: src/frontends/xforms/form_preferences.C:573
+#: src/frontends/xforms/form_preferences.C:609
 #, fuzzy
 msgid "Language Options"
 msgstr "Jazykové nast."
 
-#: src/frontends/xforms/form_preferences.C:598
+#: src/frontends/xforms/form_preferences.C:635
 msgid "Package|#P"
 msgstr "Balíèek|#B"
 
-#: src/frontends/xforms/form_preferences.C:605
+#: src/frontends/xforms/form_preferences.C:642
 msgid "Default language|#l"
 msgstr "Prednastavený jazyk|#j"
 
-#: src/frontends/xforms/form_preferences.C:612
+#: src/frontends/xforms/form_preferences.C:649
 msgid ""
 "Keyboard\n"
 "map|#K"
@@ -7590,79 +7678,80 @@ msgstr ""
 "Klavesnicová\n"
 "mapa|#K"
 
-#: src/frontends/xforms/form_preferences.C:620
+#: src/frontends/xforms/form_preferences.C:657
 msgid "1st|#1"
 msgstr "1|#1"
 
-#: src/frontends/xforms/form_preferences.C:627
+#: src/frontends/xforms/form_preferences.C:664
 msgid "2nd|#2"
 msgstr "2|#2"
 
-#: src/frontends/xforms/form_preferences.C:634
+#: src/frontends/xforms/form_preferences.C:671
 #, fuzzy
 msgid "Browse...|#o"
 msgstr "Prechádza»...|#P"
 
-#: src/frontends/xforms/form_preferences.C:646
+#: src/frontends/xforms/form_preferences.C:683
 msgid "RtL support|#R"
 msgstr "Podpora zprava doµava|#R"
 
-#: src/frontends/xforms/form_preferences.C:654
+#: src/frontends/xforms/form_preferences.C:691
 msgid "Auto begin|#b"
 msgstr "Automatický zaèiatok|#z"
 
-#: src/frontends/xforms/form_preferences.C:662
+#: src/frontends/xforms/form_preferences.C:699
 #, fuzzy
 msgid "Use babel|#U"
 msgstr "Pou¾i» zahrnutie|#u"
 
-#: src/frontends/xforms/form_preferences.C:670
+#: src/frontends/xforms/form_preferences.C:707
 msgid "Mark foreign|#M"
 msgstr "Oznaèi» cudzie|#O"
 
-#: src/frontends/xforms/form_preferences.C:678
+#: src/frontends/xforms/form_preferences.C:715
 msgid "Auto finish|#f"
 msgstr "Automatický koniec|#A"
 
-#: src/frontends/xforms/form_preferences.C:686
+#: src/frontends/xforms/form_preferences.C:723
 #, fuzzy
 msgid "Global|#G"
 msgstr "G|#G"
 
-#: src/frontends/xforms/form_preferences.C:694
+#: src/frontends/xforms/form_preferences.C:731
 msgid "Command start|#s"
 msgstr "Poèiatoèný príkaz|#P"
 
-#: src/frontends/xforms/form_preferences.C:701
+#: src/frontends/xforms/form_preferences.C:738
 msgid "Command end|#e"
 msgstr "Ukonèovací príkaz|#U"
 
-#: src/frontends/xforms/form_preferences.C:735
-msgid "All formats|#A"
+#: src/frontends/xforms/form_preferences.C:771
+#, fuzzy
+msgid "All formats|#l"
 msgstr "V¹etky formáty|#V"
 
-#: src/frontends/xforms/form_preferences.C:743
+#: src/frontends/xforms/form_preferences.C:779
 msgid "Format|#F"
 msgstr "Formát|#F"
 
-#: src/frontends/xforms/form_preferences.C:750
+#: src/frontends/xforms/form_preferences.C:786
 msgid "GUI name|#G"
 msgstr "GUI názov|#G"
 
-#: src/frontends/xforms/form_preferences.C:757
+#: src/frontends/xforms/form_preferences.C:793
 msgid "Shortcut|#S"
 msgstr "Klávesová skratka|#s"
 
-#: src/frontends/xforms/form_preferences.C:764
+#: src/frontends/xforms/form_preferences.C:800
 msgid "Extension|#E"
 msgstr "Prípona|#P"
 
-#: src/frontends/xforms/form_preferences.C:771
+#: src/frontends/xforms/form_preferences.C:807
 msgid "Viewer|#V"
 msgstr "Prehliadaè|#P"
 
-#: src/frontends/xforms/form_preferences.C:778
-#: src/frontends/xforms/form_preferences.C:851
+#: src/frontends/xforms/form_preferences.C:814
+#: src/frontends/xforms/form_preferences.C:887
 #: src/frontends/xforms/FormPreferences.C:1104
 #: src/frontends/xforms/FormPreferences.C:1106
 #: src/frontends/xforms/FormPreferences.C:1377
@@ -7670,178 +7759,180 @@ msgstr "Prehliadaè|#P"
 msgid "Add|#A"
 msgstr "Prida»|#P"
 
-#: src/frontends/xforms/form_preferences.C:785
-#: src/frontends/xforms/form_preferences.C:858
+#: src/frontends/xforms/form_preferences.C:821
+#: src/frontends/xforms/form_preferences.C:894
 msgid "Delete|#D"
 msgstr "Vymaza»|#m"
 
-#: src/frontends/xforms/form_preferences.C:815
-msgid "All converters|#A"
+#: src/frontends/xforms/form_preferences.C:851
+#, fuzzy
+msgid "All converters|#l"
 msgstr "V¹etky konvertory|#V"
 
-#: src/frontends/xforms/form_preferences.C:823
+#: src/frontends/xforms/form_preferences.C:859
 msgid "From|#F"
 msgstr "Z|#Z"
 
-#: src/frontends/xforms/form_preferences.C:830
+#: src/frontends/xforms/form_preferences.C:866
 msgid "To|#T"
 msgstr "Do|#D"
 
-#: src/frontends/xforms/form_preferences.C:837
+#: src/frontends/xforms/form_preferences.C:873
 msgid "Converter|#C"
 msgstr " Konvertor|#K"
 
-#: src/frontends/xforms/form_preferences.C:844
-msgid "Flags|#F"
-msgstr "Prepínaèe|#P"
+#: src/frontends/xforms/form_preferences.C:880
+#, fuzzy
+msgid "Extra flags|#E"
+msgstr "Upravi» súbor|#U"
 
-#: src/frontends/xforms/form_preferences.C:888
+#: src/frontends/xforms/form_preferences.C:924
 msgid "Default path|#p"
 msgstr "Prednastavená cesta|#P"
 
-#: src/frontends/xforms/form_preferences.C:894
-#: src/frontends/xforms/form_preferences.C:904
-#: src/frontends/xforms/form_preferences.C:919
-#: src/frontends/xforms/form_preferences.C:934
-#: src/frontends/xforms/form_preferences.C:961
-#: src/frontends/xforms/form_preferences.C:971
+#: src/frontends/xforms/form_preferences.C:930
+#: src/frontends/xforms/form_preferences.C:940
+#: src/frontends/xforms/form_preferences.C:955
+#: src/frontends/xforms/form_preferences.C:970
+#: src/frontends/xforms/form_preferences.C:997
+#: src/frontends/xforms/form_preferences.C:1007
 msgid "Browse..."
 msgstr "Prechádza»..."
 
-#: src/frontends/xforms/form_preferences.C:898
+#: src/frontends/xforms/form_preferences.C:934
 msgid "Template path|#T"
 msgstr "Cesta k ¹ablónam|#¹"
 
-#: src/frontends/xforms/form_preferences.C:908
+#: src/frontends/xforms/form_preferences.C:944
 msgid "Temp dir|#d"
 msgstr "Doèasný prieèinok|#D"
 
-#: src/frontends/xforms/form_preferences.C:923
+#: src/frontends/xforms/form_preferences.C:959
 msgid "Check last files|#C"
 msgstr "Kontrola posledných súborov|#K"
 
-#: src/frontends/xforms/form_preferences.C:938
+#: src/frontends/xforms/form_preferences.C:974
 msgid "Last file count|#L"
 msgstr "Poèet posledných súborov|#P"
 
-#: src/frontends/xforms/form_preferences.C:950
+#: src/frontends/xforms/form_preferences.C:986
 msgid "Backup path|#B"
 msgstr "Cesta k zálohám|#z"
 
-#: src/frontends/xforms/form_preferences.C:965
+#: src/frontends/xforms/form_preferences.C:1001
 msgid "LyXServer pipe|#S"
 msgstr "Rúra LyXServeru|#S"
 
-#: src/frontends/xforms/form_preferences.C:998
+#: src/frontends/xforms/form_preferences.C:1034
 msgid "date format|#f"
 msgstr "formát dátumu|#f"
 
-#: src/frontends/xforms/form_preferences.C:1027
+#: src/frontends/xforms/form_preferences.C:1063
 msgid "name"
 msgstr "názov"
 
-#: src/frontends/xforms/form_preferences.C:1030
+#: src/frontends/xforms/form_preferences.C:1066
 msgid "adapt output"
 msgstr "adaptácia výstupu"
 
-#: src/frontends/xforms/form_preferences.C:1033
+#: src/frontends/xforms/form_preferences.C:1069
 msgid "Printer Command and Flags"
 msgstr "Príkaz tlaèiarne a jeho príznaky"
 
-#: src/frontends/xforms/form_preferences.C:1035
+#: src/frontends/xforms/form_preferences.C:1071
 msgid "command"
 msgstr "príkaz"
 
-#: src/frontends/xforms/form_preferences.C:1038
+#: src/frontends/xforms/form_preferences.C:1074
 msgid "page range"
 msgstr "rozsah strán"
 
-#: src/frontends/xforms/form_preferences.C:1041
+#: src/frontends/xforms/form_preferences.C:1077
 msgid "copies"
 msgstr "kópie"
 
-#: src/frontends/xforms/form_preferences.C:1044
+#: src/frontends/xforms/form_preferences.C:1080
 msgid "reverse"
 msgstr "opaèné"
 
-#: src/frontends/xforms/form_preferences.C:1047
+#: src/frontends/xforms/form_preferences.C:1083
 msgid "to printer"
 msgstr "do tlaèiarne"
 
-#: src/frontends/xforms/form_preferences.C:1050
+#: src/frontends/xforms/form_preferences.C:1086
 msgid "file extension"
 msgstr "prípona súboru"
 
-#: src/frontends/xforms/form_preferences.C:1053
+#: src/frontends/xforms/form_preferences.C:1089
 msgid "spool command"
 msgstr "spool príkaz"
 
-#: src/frontends/xforms/form_preferences.C:1056
+#: src/frontends/xforms/form_preferences.C:1092
 msgid "paper type"
 msgstr "typ papiera"
 
-#: src/frontends/xforms/form_preferences.C:1059
+#: src/frontends/xforms/form_preferences.C:1095
 msgid "even pages"
 msgstr "párne strany"
 
-#: src/frontends/xforms/form_preferences.C:1062
+#: src/frontends/xforms/form_preferences.C:1098
 msgid "odd pages"
 msgstr "nepárne strany"
 
-#: src/frontends/xforms/form_preferences.C:1065
+#: src/frontends/xforms/form_preferences.C:1101
 msgid "collated"
 msgstr "usporiadané"
 
-#: src/frontends/xforms/form_preferences.C:1068
+#: src/frontends/xforms/form_preferences.C:1104
 msgid "landscape"
 msgstr "na ¹írku"
 
-#: src/frontends/xforms/form_preferences.C:1071
+#: src/frontends/xforms/form_preferences.C:1107
 msgid "to file"
 msgstr "do súboru"
 
-#: src/frontends/xforms/form_preferences.C:1074
+#: src/frontends/xforms/form_preferences.C:1110
 msgid "extra options"
 msgstr "extra nastavenia"
 
-#: src/frontends/xforms/form_preferences.C:1077
+#: src/frontends/xforms/form_preferences.C:1113
 msgid "spool printer prefix"
 msgstr ""
 
-#: src/frontends/xforms/form_preferences.C:1080
+#: src/frontends/xforms/form_preferences.C:1116
 msgid "paper size"
 msgstr "veµkos» papiera"
 
-#: src/frontends/xforms/form_preferences.C:1109
+#: src/frontends/xforms/form_preferences.C:1146
 msgid "Ascii line length|#A"
 msgstr "Då¾ka Acsii riadku|#A"
 
-#: src/frontends/xforms/form_preferences.C:1121
+#: src/frontends/xforms/form_preferences.C:1158
 msgid "TeX encoding|#T"
 msgstr "TeX kódovanie|#T"
 
-#: src/frontends/xforms/form_preferences.C:1128
+#: src/frontends/xforms/form_preferences.C:1165
 msgid "Default paper size|#p"
 msgstr "Prednastavená veµkos» papiera|#p"
 
-#: src/frontends/xforms/form_preferences.C:1135
+#: src/frontends/xforms/form_preferences.C:1172
 msgid "Outside code interaction"
 msgstr "Interakcia s vonkaj¹ím kódom"
 
-#: src/frontends/xforms/form_preferences.C:1139
+#: src/frontends/xforms/form_preferences.C:1175
 msgid "ascii roff|#r"
 msgstr "ascii roff|#r"
 
-#: src/frontends/xforms/form_preferences.C:1146
+#: src/frontends/xforms/form_preferences.C:1182
 msgid "checktex|#c"
 msgstr "checktex|#c"
 
-#: src/frontends/xforms/form_preferences.C:1152
+#: src/frontends/xforms/form_preferences.C:1189
 #, fuzzy
-msgid "DVI paper option"
+msgid "DVI paper option|#D"
 msgstr "extra nastavenia"
 
-#: src/frontends/xforms/form_preferences.C:1157
+#: src/frontends/xforms/form_preferences.C:1196
 msgid "Autoreset Class Options on change|#u"
 msgstr ""
 
@@ -7954,8 +8045,10 @@ msgstr ""
 "prípony a $$o je názov výstupného súboru."
 
 #: src/frontends/xforms/FormPreferences.C:974
-msgid "Flags that control the converter behavior"
-msgstr "Prepínaèe, ktoré riadia správanie sa konvertora"
+msgid ""
+"Extra information for the Converter class, whether and how to parse the "
+"result, and various other things."
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:976
 msgid ""
@@ -8067,55 +8160,56 @@ msgstr "Pou¾ívateµovo rozhranie"
 msgid "UI file"
 msgstr "UI súbor"
 
-#: src/frontends/xforms/FormPreferences.C:1736
 #: src/frontends/xforms/FormPreferences.C:1743
+#: src/frontends/xforms/FormPreferences.C:1750
 #, fuzzy
 msgid "Key maps|#K#k"
 msgstr "Klávesové mapy"
 
-#: src/frontends/xforms/FormPreferences.C:1740
 #: src/frontends/xforms/FormPreferences.C:1747
+#: src/frontends/xforms/FormPreferences.C:1754
 msgid "Keyboard map"
 msgstr "Klávesnicové mapy"
 
-#: src/frontends/xforms/FormPreferences.C:1976
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+#: src/frontends/xforms/FormPreferences.C:1984
+#, fuzzy
+msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 msgstr "implicitná | US letter | legal | executive | A3 | A4 | A5 | B5 "
 
-#: src/frontends/xforms/FormPreferences.C:2222
+#: src/frontends/xforms/FormPreferences.C:2230
 msgid "Default path"
 msgstr "©tandardná cesta"
 
-#: src/frontends/xforms/FormPreferences.C:2225
+#: src/frontends/xforms/FormPreferences.C:2233
 msgid "Template path"
 msgstr "Cesta k ¹ablónam"
 
-#: src/frontends/xforms/FormPreferences.C:2228
+#: src/frontends/xforms/FormPreferences.C:2236
 msgid "Temp dir"
 msgstr "Doèasný prieèinok"
 
-#: src/frontends/xforms/FormPreferences.C:2230
+#: src/frontends/xforms/FormPreferences.C:2238
 #, fuzzy
 msgid "User|#U#u"
 msgstr "Pou¾ívateµ1|#1"
 
-#: src/frontends/xforms/FormPreferences.C:2233
+#: src/frontends/xforms/FormPreferences.C:2241
 msgid "Lastfiles"
 msgstr "Posledné súbory"
 
-#: src/frontends/xforms/FormPreferences.C:2236
+#: src/frontends/xforms/FormPreferences.C:2244
 msgid "Backup path"
 msgstr "Cesta k zálohám"
 
-#: src/frontends/xforms/FormPreferences.C:2239
+#: src/frontends/xforms/FormPreferences.C:2247
 msgid "LyX Server pipes"
 msgstr "Rúry LyX Serveru"
 
-#: src/frontends/xforms/FormPreferences.C:2691
+#: src/frontends/xforms/FormPreferences.C:2699
 msgid "Fonts must be positive!"
 msgstr "Písmo musí by» pozitívne!"
 
-#: src/frontends/xforms/FormPreferences.C:2714
+#: src/frontends/xforms/FormPreferences.C:2722
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
@@ -8123,12 +8217,12 @@ msgstr ""
 "Písma musia vstupova» v poradí drobné > skript > poznámka > malé > normálne "
 "> veµké > väè¹ie > najväè¹ie > obrovské > ozrutné"
 
-#: src/frontends/xforms/FormPreferences.C:2841
+#: src/frontends/xforms/FormPreferences.C:2849
 #, fuzzy
 msgid " ispell | aspell "
 msgstr " ¾iadne | ispell | aspell "
 
-#: src/frontends/xforms/FormPreferences.C:2934
+#: src/frontends/xforms/FormPreferences.C:2942
 msgid "Personal dictionary"
 msgstr "Osobný slovník"
 
@@ -8792,7 +8886,7 @@ msgstr "Otvorená chyba"
 msgid "Opened ERT Inset"
 msgstr "Otvorený ERT prílohy"
 
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2048
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2049
 msgid "Impossible Operation!"
 msgstr "Nemo¾ná operácia!"
 
@@ -8800,7 +8894,7 @@ msgstr "Nemo¾ná operácia!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
 
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2050
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2051
 #: src/insets/insettext.C:1389
 msgid "Sorry."
 msgstr "¥utujem."
@@ -8809,20 +8903,24 @@ msgstr "¥utujem."
 msgid "ERT"
 msgstr ""
 
-#: src/insets/insetfloat.C:105 src/insets/insetfloat.C:298
-#: src/insets/insetfloat.C:303
-msgid "float:"
+#: src/insets/insetfloat.C:119
+#, fuzzy
+msgid "float: "
 msgstr "objekt:"
 
-#: src/insets/insetfloat.C:204
+#: src/insets/insetfloat.C:218
 msgid "Opened Float Inset"
 msgstr "Otvorený objekt prílohy"
+
+#: src/insets/insetfloat.C:312
+msgid "float:"
+msgstr "objekt:"
 
 #: src/insets/insetfloatlist.C:41
 msgid "ERROR: Nonexistent float type!"
 msgstr ""
 
-#: src/insets/insetfloatlist.C:112
+#: src/insets/insetfloatlist.C:114
 #, fuzzy
 msgid "List of "
 msgstr "Zoznam tabuliek"
@@ -8896,7 +8994,7 @@ msgstr "Doèasný prieèinok"
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:768
+#: src/insets/insetgraphics.C:777
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Grafický súbor|#f"
@@ -9005,7 +9103,7 @@ msgstr "PeknýOdkaz"
 msgid "Opened Tabular Inset"
 msgstr "Otvorená tabuµka prílohy"
 
-#: src/insets/insettabular.C:2049
+#: src/insets/insettabular.C:2050
 msgid "Multicolumns can only be horizontally."
 msgstr "Viacståpcové bunky mô¾u by» iba horizontálne."
 
@@ -10841,31 +10939,31 @@ msgstr "Makro: "
 msgid "No Documents Open!"
 msgstr "®iadny dokument nie je otvorený!"
 
-#: src/MenuBackend.C:358
+#: src/MenuBackend.C:367
 msgid "Ascii text as lines"
 msgstr "Ascii text ako riadky"
 
-#: src/MenuBackend.C:360
+#: src/MenuBackend.C:369
 msgid "Ascii text as paragraphs"
 msgstr "Ascii text ako odstavce"
 
-#: src/MenuBackend.C:404
+#: src/MenuBackend.C:413
 msgid " (wide)"
 msgstr ""
 
-#: src/MenuBackend.C:505
+#: src/MenuBackend.C:514
 msgid "Quit|Q"
 msgstr "Koniec|K"
 
-#: src/MenuBackend.C:513
+#: src/MenuBackend.C:522
 msgid "LaTeX...|L"
 msgstr "LaTeX...|L"
 
-#: src/MenuBackend.C:515
+#: src/MenuBackend.C:524
 msgid "LinuxDoc...|L"
 msgstr "LinuxDoc...|L"
 
-#: src/MenuBackend.C:523
+#: src/MenuBackend.C:532
 msgid "Emphasize"
 msgstr "Zvýrazni»"
 
@@ -10886,35 +10984,35 @@ msgstr ""
 msgid " [sole completion]"
 msgstr ""
 
-#: src/support/filetools.C:440
+#: src/support/filetools.C:441
 msgid "Error! Cannot open directory:"
 msgstr "Chyba! Nemô¾em otvori» prieèinok:"
 
-#: src/support/filetools.C:460
+#: src/support/filetools.C:461
 msgid "Error! Could not remove file:"
 msgstr "Chyba! Nemô¾em odstráni» súbor:"
 
-#: src/support/filetools.C:484 src/support/filetools.C:520
+#: src/support/filetools.C:485 src/support/filetools.C:521
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/support/filetools.C:501
+#: src/support/filetools.C:502
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Chyba! Nemô¾em odstráni» doèasný prieèinok:"
 
-#: src/support/filetools.C:565
+#: src/support/filetools.C:566
 msgid "Internal error!"
 msgstr "Interná chyba!"
 
-#: src/support/filetools.C:566
+#: src/support/filetools.C:567
 msgid "Call to createDirectory with invalid name"
 msgstr "Volanie na vytvorenie prieèinku s neplatným názvom"
 
-#: src/support/filetools.C:571
+#: src/support/filetools.C:572
 msgid "Error! Couldn't create directory:"
 msgstr "Chyba! Nemô¾em vytvori» prieèinok:"
 
-#: src/support/filetools.C:1350
+#: src/support/filetools.C:1353
 msgid "Could not delete auto-save file!"
 msgstr "Nemô¾em zmaza» súbor pre automatické ukladanie!"
 
@@ -10935,7 +11033,7 @@ msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Získajte star¹iu verziu LyXu (< 1.1.x) pre konverziu!"
 
 #. Could only happen with user style
-#: src/text2.C:1081
+#: src/text2.C:1080
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -10943,46 +11041,55 @@ msgstr ""
 "Nebola definovaná zmena písma.Pou¾ite polo¾ku Znak v ponuke Rozlo¾enie na "
 "definovanie zmeny písma."
 
-#: src/text2.C:1120
+#: src/text2.C:1119
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Nie je èo robi»."
 
-#: src/text2.C:1124
+#: src/text2.C:1123
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Nemô¾em zahrnú»viac ako jeden odstavec!"
 
-#: src/text.C:1903
+#: src/text.C:1911
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 "Nemô¾ete vlo¾i» na zaèiatok odstavca medzeru.Preèítajte si prosím Príruèku."
 
-#: src/text.C:1905
+#: src/text.C:1913
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Nemô¾ete takýmto spôsobom vlo¾i» dve medzery. Preèítajte si prosím Príruèku."
 
-#: src/text.C:3338 src/text.C:3340
+#: src/text.C:3346 src/text.C:3348
 msgid "Page Break (top)"
 msgstr "Zalomenie strany (hore)"
 
 #. draw the additional space if needed:
-#: src/text.C:3347
+#: src/text.C:3355
 #, fuzzy
 msgid "Space above"
 msgstr "&Medzera nad"
 
-#: src/text.C:3517 src/text.C:3519
+#: src/text.C:3525 src/text.C:3527
 msgid "Page Break (bottom)"
 msgstr "Zalomenie strany (dole)"
 
-#: src/text.C:3528
+#: src/text.C:3536
 #, fuzzy
 msgid "Space below"
 msgstr "Medzera &pod"
+
+#~ msgid "Encoding"
+#~ msgstr "Kódovanie"
+
+#~ msgid "Flags|#F"
+#~ msgstr "Prepínaèe|#P"
+
+#~ msgid "Flags that control the converter behavior"
+#~ msgstr "Prepínaèe, ktoré riadia správanie sa konvertora"
 
 #, fuzzy
 #~ msgid "No database"
