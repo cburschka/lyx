@@ -8,7 +8,7 @@
 #include "math_parser.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
-
+#include "support/LOstream.h"
 
 using std::max;
 
