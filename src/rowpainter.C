@@ -1047,7 +1047,7 @@ int paintRows(BufferView const & bv, LyXText const & text,
 	int xo, int y, int yf, int yo)
 {
 	lyxerr << "  paintRows: rit: " << &*rit << endl;
-	const_cast<LyXText&>(text).updateRowPositions();
+	//const_cast<LyXText&>(text).updateRowPositions();
 	int const yy = yf - y;
 	int const y2 = bv.painter().paperHeight();
 	

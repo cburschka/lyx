@@ -31,6 +31,7 @@
 #include "math_macrotemplate.h"
 #include "math_macroarg.h"
 #include "math_makeboxinset.h"
+#include "math_oversetinset.h"
 #include "math_parboxinset.h"
 #include "math_rootinset.h"
 #include "math_sizeinset.h"
@@ -237,6 +238,8 @@ MathAtom createMathInset(string const & s)
 			inset << '\'' << endl;
 		if (inset == "ref")
 			return MathAtom(new RefInset(l->name));
+		if (inset == "overset")
+			return MathAtom(new MathOversetInset);
 		if (inset == "underset")
 			return MathAtom(new MathUndersetInset);
 		if (inset == "decoration")

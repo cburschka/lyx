@@ -84,12 +84,12 @@ void LyXText::updateRowPositions()
 {
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
-	for (int y = 0; pit != end; ++pit) {
+	for (height = 0; pit != end; ++pit) {
 		RowList::iterator rit = pit->rows.begin();
 		RowList::iterator rend = pit->rows.end();
 		for ( ; rit != rend ; rit = ++rit) {
-			rit->y(y);
-			y += rit->height();
+			rit->y(height);
+			height += rit->height();
 		}
 	}
 }

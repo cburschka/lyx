@@ -604,6 +604,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 
 	//anchor_y_ = 0;
 	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
+	updateRowPositions();
 
 	// final dimension
 	dim.asc = firstRow()->ascent_of_text();
