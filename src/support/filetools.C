@@ -967,6 +967,7 @@ string const GetExtension(string const & name)
 // the different filetypes and what they contain in one of the first lines
 // (dots are any characters). 		(Herbert 20020131)
 // EPS	%!PS-Adobe-3.0 EPSF...
+// TGIF	%TGIF...
 // GIF	GIF...
 // JPG	JFIF
 // PDF	%PDF-...
@@ -1012,6 +1013,8 @@ string const getExtFromContents(string const & filename) {
 		}
 		if (contains(str,"EPSF")) // dummy, if we have wrong file
 		    return "eps";	  // description like "%!PS-Adobe-2.0EPSF"
+		else if (contains(str,"TGIF"))
+		    return "tgif";
 		else if (contains(str,"GIF"))
 		    return "gif";
 		else if (contains(str,"JFIF"))
@@ -1032,9 +1035,10 @@ string const getExtFromContents(string const & filename) {
 		else if (contains(str,"XPM"))
 		    return "xpm";
 	}
-	lyxerr[Debug::INFO] << "filetools(getExtFromContents)"
-		" Couldn't find a known Type!" << endl;
-	return string();
+	lyxerr[Debug::INFO] << "filetools(getExtFromContents)\n"
+		"\tCouldn't find a known Type!" 
+		"\twill use a \"user\" defined format (based on file extension)" << endl;
+	return "user";
 }
 
 

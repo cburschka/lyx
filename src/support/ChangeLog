@@ -1,3 +1,8 @@
+2002-02-08  Herbert Voss  <voss@perce.de>
+
+	* filetools.C: (getExtFromContents) adding TGIF-format
+	and return type "user" when no type is detected
+
 2002-02-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* textutils.h: remove IsLineSeparatorChar(char, Inset *)
