@@ -1838,6 +1838,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 			ofs << "\\usepackage{geometry}\n";
 			texrow.newline();
 			ofs << "\\geometry{verbose";
+			if (params.sides == LyXTextClass::TwoSides)
+				ofs << ",twoside";
 			if (params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
 				ofs << ",landscape";
 			switch (params.papersize2) {
