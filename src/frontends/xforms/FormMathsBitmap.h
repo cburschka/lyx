@@ -15,9 +15,10 @@
 #define FORM_MATHSBITMAP_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include <boost/shared_ptr.hpp>
 #include <vector>
+
 
 struct BitmapStore
 {
@@ -49,16 +50,15 @@ struct FD_maths_bitmap
  * This class provides an XForms implementation of a maths bitmap form.
  */
 
-class ControlMathSub;
+class ControlMath2;
 
-class FormMathsBitmap : public FormCB<ControlMathSub, FormDB<FD_maths_bitmap> >
-{
+class FormMathsBitmap
+	: public FormController<ControlMath2, FormView<FD_maths_bitmap> > {
 public:
 	///
-	FormMathsBitmap(string const &, std::vector<string> const &);
+	FormMathsBitmap(Dialog &, string const &, std::vector<string> const &);
 	///
-	void addBitmap(int, int, int, int, int, unsigned char const *,
-		       bool = true);
+	void addBitmap(BitmapStore const &);
 
 private:
 	///

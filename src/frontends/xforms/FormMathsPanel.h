@@ -19,7 +19,6 @@
 
 class ControlMath;
 struct FD_maths_panel;
-class FormMathsBitmap;
 
 /**
  * This class provides an XForms implementation of the maths panel.
@@ -39,12 +38,6 @@ private:
 	virtual void build();
 	///
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/** Add a bitmap dialog to the store of all daughters_ and
-	 *  return a pointer to the dialog, so that bitmaps can be added to it.
-	 */
-	FormMathsBitmap * addDaughter(void * button, string const & title,
-				      char const * const * data, int size);
 };
 
 #endif //  FORM_MATHSPANEL_H

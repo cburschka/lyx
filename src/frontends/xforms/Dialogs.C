@@ -54,6 +54,7 @@
 #include "FormGraphics.h"
 #include "FormInclude.h"
 #include "FormLog.h"
+#include "FormMathsBitmap.h"
 #include "FormMathsDelim.h"
 #include "FormMathsMatrix.h"
 #include "FormMathsSpace.h"
@@ -78,12 +79,40 @@
 #include "xformsBC.h"
 #include "ButtonController.h"
 
+#include "arrows.xbm"
+#include "bop.xbm"
+#include "brel.xbm"
+#include "deco.xbm"
+#include "dots.xbm"
+#include "greek.xbm"
+#include "misc.xbm"
+#include "varsz.xbm"
+
+#include "ams_misc.xbm"
+#include "ams_arrows.xbm"
+#include "ams_rel.xbm"
+#include "ams_nrel.xbm"
+#include "ams_ops.xbm"
+
+#include <vector>
+
 
 namespace {
+
+FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
+				   char const * const * data, int size)
+{
+	char const * const * const end = data + size;
+	return new FormMathsBitmap(parent, title, std::vector<string>(data, end));
+}
+
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "errorlist" , "ert", "external", "file",
 "float", "graphics", "include", "index", "label", "log",
+"mathaccents", "matharrows", "mathoperators", "mathrelations", "mathgreek",
+"mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
+"mathamsarrows", "mathamsrelations", "mathamsnegatedrelations", "mathamsoperators",
 "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
 "minipage", "paragraph", "ref", "tabular", "tabularcreate",
 
@@ -104,7 +133,6 @@ struct cmpCStr {
 private:
 	char const * name_;
 };
-
 
 } // namespace anon
 
@@ -194,6 +222,167 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new FormLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
+
+	} else if (name == "mathaccents") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("Maths Decorations & Accents"),
+					 latex_deco, nr_latex_deco);
+		bitmap->addBitmap(
+			BitmapStore(12, 3, 4, deco1_width, deco1_height, deco1_bits, true));
+		bitmap->addBitmap(
+			BitmapStore(10, 4, 3, deco2_width, deco2_height, deco2_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "matharrows") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("Arrows"), latex_arrow, nr_latex_arrow);
+		bitmap->addBitmap(
+			BitmapStore(20, 5, 4, arrow_width,  arrow_height,  arrow_bits, true));
+		bitmap->addBitmap(
+			BitmapStore(7,  2, 4, larrow_width, larrow_height, larrow_bits, false));
+		bitmap->addBitmap(
+			BitmapStore(4,  2, 2, darrow_width,  darrow_height, darrow_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathoperators") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("Binary Ops"),
+					 latex_bop, nr_latex_bop);
+		bitmap->addBitmap(
+			BitmapStore(31, 4, 8, bop_width, bop_height, bop_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathrelations") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("Binary Relations"),
+					 latex_brel, nr_latex_brel);
+		bitmap->addBitmap(
+			BitmapStore(35, 4, 9, brel_width, brel_height, brel_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathgreek") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("Greek"),
+					 latex_greek, nr_latex_greek);
+		bitmap->addBitmap(
+			BitmapStore(11, 6, 2, Greek_width, Greek_height, Greek_bits, true));
+		bitmap->addBitmap(
+			BitmapStore(28, 7, 4, greek_width, greek_height, greek_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathmisc") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("Misc"),
+					 latex_misc, nr_latex_misc);
+		bitmap->addBitmap(
+			BitmapStore(29, 5, 6, misc_width, misc_height, misc_bits, true));
+		bitmap->addBitmap(
+			BitmapStore(5, 5, 1, misc4_width, misc4_height, misc4_bits, true));
+		bitmap->addBitmap(
+			BitmapStore(6, 3, 2, misc2_width, misc2_height, misc2_bits, false));
+		bitmap->addBitmap(
+			BitmapStore(4, 2, 2, misc3_width, misc3_height, misc3_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathdots") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("Dots"),
+					 latex_dots, nr_latex_dots);
+		bitmap->addBitmap(
+			BitmapStore(4, 4, 1, dots_width, dots_height, dots_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathbigoperators") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("Big Operators"),
+					 latex_varsz, nr_latex_varsz);
+		bitmap->addBitmap(
+			BitmapStore(14, 3, 5, varsz_width, varsz_height, varsz_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathamsmisc") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("AMS Misc"),
+					 latex_ams_misc, nr_latex_ams_misc);
+		bitmap->addBitmap(
+			BitmapStore(9, 5, 2, ams1_width, ams1_height, ams1_bits, true));
+		bitmap->addBitmap(
+			BitmapStore(26, 3, 9, ams7_width, ams7_height, ams7_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathamsarrows") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("AMS Arrows"),
+					 latex_ams_arrows, nr_latex_ams_arrows);
+		bitmap->addBitmap(
+			BitmapStore(32, 3, 11, ams2_width, ams2_height, ams2_bits, true));
+		bitmap->addBitmap(
+			BitmapStore(6, 3, 2, ams3_width, ams3_height, ams3_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathamsrelations") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("AMS Relations"),
+					 latex_ams_rel, nr_latex_ams_rel);
+		bitmap->addBitmap(
+			BitmapStore(66, 6, 11, ams_rel_width, ams_rel_height, ams_rel_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathamsnegatedrelations") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("AMS Negated Rel"),
+					 latex_ams_nrel, nr_latex_ams_nrel);
+		bitmap->addBitmap(
+			BitmapStore(51, 6, 9, ams_nrel_width, ams_nrel_height, ams_nrel_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
+	} else if (name == "mathamsoperators") {
+		FormMathsBitmap * bitmap =
+			createFormBitmap(*dialog, _("AMS Operators"),
+					 latex_ams_ops, nr_latex_ams_ops);
+		bitmap->addBitmap(
+			BitmapStore(23, 3, 8, ams_ops_width, ams_ops_height, ams_ops_bits, true));
+
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(bitmap);
+		dialog->bc().bp(new IgnorantPolicy);
+
 	} else if (name == "mathdelimiter") {
 		dialog->setController(new ControlMath2(*dialog));
 		dialog->setView(new FormMathsDelim(*dialog));

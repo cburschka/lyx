@@ -1,16 +1,17 @@
 2003-06-17  Angus Leeming  <leeming@lyx.org>
 
+	* FormMathsBitmap.[Ch]:
 	* FormMathsDelim.[Ch]:
 	* forms/form_maths_delim.fd:
 	* FormMathsMatrix.[Ch]:
 	* forms/form_maths_matrix.fd:
-	* FormMathsPanel.C:
+	* FormMathsPanel.[Ch]:
 	* FormMathsSpace.[Ch]:
 	* forms/form_maths_space.fd:
 	* FormMathsStyle.[Ch]:
 	* forms/form_maths_style.fd:
-	* Dialogs.C: convert FormMathsDelim, FormMathsMatrix, FormMathsSpace and
-	FormMathsStyle to the new Dialog-based scheme.
+	* Dialogs.C: convert FormMathsBitmap, FormMathsDelim, FormMathsMatrix,
+	FormMathsSpace and FormMathsStyle to the new Dialog-based scheme.
 
 2003-06-12  Angus Leeming  <leeming@lyx.org>
 

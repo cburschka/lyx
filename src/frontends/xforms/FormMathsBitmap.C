@@ -14,7 +14,7 @@
 
 
 #include "FormMathsBitmap.h"
-#include "ControlMath.h"
+#include "ControlMath2.h"
 #include "xformsBC.h"
 
 #include "bmtable.h"
@@ -26,8 +26,8 @@
 
 #include <algorithm>
 
-extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormDialogView_CancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormDialogView_InputCB(FL_OBJECT *, long);
 
 using std::vector;
 using std::max;
@@ -40,11 +40,11 @@ FD_maths_bitmap::~FD_maths_bitmap()
 }
 
 
-typedef FormCB<ControlMathSub, FormDB<FD_maths_bitmap> > base_class;
+typedef FormController<ControlMath2, FormView<FD_maths_bitmap> > base_class;
 
 
-FormMathsBitmap::FormMathsBitmap(string const & t, vector<string> const & l)
-	: base_class(t, false),
+FormMathsBitmap::FormMathsBitmap(Dialog & parent, string const & t, vector<string> const & l)
+	: base_class(parent, t, false),
 	  latex_(l), ww_(0), x_(0), y_(0), w_(0), h_(0)
 {
 	ww_ = 2 * FL_abs(FL_BOUND_WIDTH);
@@ -53,17 +53,16 @@ FormMathsBitmap::FormMathsBitmap(string const & t, vector<string> const & l)
 }
 
 
-void FormMathsBitmap::addBitmap(int nt, int nx, int ny, int bw, int bh,
-				unsigned char const * data, bool vert)
+void FormMathsBitmap::addBitmap(BitmapStore const & bm)
 {
-	bitmaps_.push_back(BitmapStore(nt, nx, ny, bw, bh, data, vert));
+	bitmaps_.push_back(bm);
 
-	int wx = bw + ww_ / 2;
-	int wy = bh + ww_ / 2;
-	wx += (wx % nx);
-	wy += (wy % ny);
+	int wx = bm.bw + ww_ / 2;
+	int wy = bm.bh + ww_ / 2;
+	wx += (wx % bm.nx);
+	wy += (wy % bm.ny);
 
-	if (vert) {
+	if (bm.vert) {
 		y_ += wy + 8;
 		h_ = max(y_, h_);
 		w_ = max(x_ + wx + ww_, w_);
@@ -109,14 +108,13 @@ void FormMathsBitmap::build()
 					   idex(label).c_str());
 	fl_set_button_shortcut(fdui->button_close, scex(label).c_str(), 1);
 	fl_set_object_lsize(fdui->button_close, FL_NORMAL_SIZE);
-	fl_set_object_callback(fdui->button_close, C_FormBaseCancelCB, 0);
+	fl_set_object_callback(fdui->button_close, C_FormDialogView_CancelCB, 0);
 
 	fl_end_form();
 
 	fdui->form->fdui = fdui;
 
 	dialog_.reset(fdui);
-	bcview().setCancel(dialog_->button_close);
 }
 
 
@@ -145,7 +143,7 @@ FL_OBJECT * FormMathsBitmap::buildBitmap(BitmapStore const & bmstore)
 	fl_set_bmtable_data(obj, bmstore.nx, bmstore.ny, bmstore.bw, bmstore.bh,
 			    bmstore.data);
 	fl_set_bmtable_maxitems(obj, bmstore.nt);
-	fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+	fl_set_object_callback(obj, C_FormDialogView_InputCB, 0);
 
 	if (bmstore.vert) {
 		y_ += wy + 8;
@@ -180,10 +178,10 @@ void FormMathsBitmap::apply()
 	string::size_type const i = latex_chosen_.find(' ');
 	if (i != string::npos) {
 		controller().dispatchFunc(LFUN_MATH_MODE);
-		controller().insertSymbol(latex_chosen_.substr(0,i));
-		controller().insertSymbol(latex_chosen_.substr(i + 1), false);
+		controller().dispatchInsert(latex_chosen_.substr(0,i));
+		controller().dispatchInsert('\\' + latex_chosen_.substr(i + 1));
 	} else
-		controller().insertSymbol(latex_chosen_);
+		controller().dispatchInsert(latex_chosen_);
 }
 
 
