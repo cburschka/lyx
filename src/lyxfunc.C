@@ -542,7 +542,7 @@ string LyXFunc::Dispatch(int ac,
 				int slx, sly;
 				UpdatableInset * inset = 
 					owner->view()->the_locking_inset;
-				inset->GetCursorPos(slx, sly);
+				inset->GetCursorPos(owner->view(), slx, sly);
 				owner->view()->unlockInset(inset);
 				owner->view()->menuUndo();
 				if (owner->view()->text->cursor.par()->
@@ -561,7 +561,7 @@ string LyXFunc::Dispatch(int ac,
 				int slx, sly;
 				UpdatableInset * inset = owner->view()->
 					the_locking_inset;
-				inset->GetCursorPos(slx, sly);
+				inset->GetCursorPos(owner->view(), slx, sly);
 				owner->view()->unlockInset(inset);
 				owner->view()->menuRedo();
 				inset = static_cast<UpdatableInset*>(

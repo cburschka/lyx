@@ -15,6 +15,7 @@
 #include <config.h>
 
 #include "insets/insetgraphics.h"
+#include "BufferView.h"
 #include "Painter.h"
 #include "form_graphics.h"
 #include "lyx_gui_misc.h"
@@ -133,9 +134,11 @@ int InsetGraphics::width(Painter &, LyXFont const &) const
 }
 
 
-void InsetGraphics::draw(Painter & pain, LyXFont const & font,
+void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			 int baseline, float & x) const
 {
+	Painter & pain = bv->painter();
+
 	// This will draw the graphics. As for now we only draw a
 	// placeholder rectangele.
 	pain.rectangle(int(x), baseline - ascent(pain, font),

@@ -41,7 +41,7 @@ public:
 	///
 	int width(Painter &, LyXFont const &) const;
 	///
-	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
+	void draw(BufferView *, LyXFont const &, int baseline, float & x) const;
 	///
 	int Lbearing(LyXFont const & font) const;
 	///

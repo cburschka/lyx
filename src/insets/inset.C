@@ -42,15 +42,6 @@ Inset::EDITABLE Inset::Editable() const
 }
 
 
-bool Inset::IsTextInset() const
-{
-	return ((LyxCode() == TEXT_CODE) ||
-		(LyxCode() == ERT_CODE) ||
-		(LyxCode() == FOOT_CODE) ||
-		(LyxCode() == MARGIN_CODE));
-}
-
-
 void Inset::Validate(LaTeXFeatures &) const
 {
 }
@@ -145,7 +136,7 @@ void UpdatableInset::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-void UpdatableInset::draw(Painter &, LyXFont const &,
+void UpdatableInset::draw(BufferView *, LyXFont const &,
 			  int /* baseline */, float & x) const
 {
     if (scx) x += float(scx);

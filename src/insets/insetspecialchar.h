@@ -50,7 +50,7 @@ public:
 	///
 	int width(Painter &, LyXFont const &) const;
 	///
-	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
+	void draw(BufferView *, LyXFont const &, int baseline, float & x) const;
 	///
 	void Write(Buffer const *, std::ostream &) const;
 	/// Will not be used when lyxf3

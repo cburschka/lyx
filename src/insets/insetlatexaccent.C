@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "support/lstrings.h"
+#include "BufferView.h"
 #include "Painter.h"
 #include "font.h"
 
@@ -354,9 +355,11 @@ bool InsetLatexAccent::DisplayISO8859_9(Painter & pain, LyXFont const & font,
 }
 
 
-void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
+void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font,
 			    int baseline, float & x) const
 {
+	Painter & pain = bv->painter();
+
 	if (lyxrc.font_norm == "iso8859-9")
 		if (DisplayISO8859_9(pain, font, baseline, x))	
 			return;

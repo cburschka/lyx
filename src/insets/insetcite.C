@@ -179,10 +179,11 @@ void InsetCitation::Edit( BufferView * bv, int, int, unsigned int )
 	if( citation_form->form->visible ) {
 		fl_raise_form( citation_form->form );
 	} else {
-		fl_show_form( citation_form->form,
-			      FL_PLACE_MOUSE, FL_FULLBORDER,
-			      _("Citation") );
-	} 
+		fl_show_form(citation_form->form,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE,
+			     FL_FULLBORDER,
+			     _("Citation") );
+	}
 }
 
 

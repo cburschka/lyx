@@ -80,13 +80,15 @@ public:
     ///
     int width(Painter &, LyXFont const & f) const;
     ///
-    void draw(Painter & pain, const LyXFont &, int , float &) const;
+    void draw(BufferView *, const LyXFont &, int , float &) const;
     ///
-    void update(BufferView *, LyXFont const &) const;
+    void update(BufferView *, LyXFont const &, bool);
     ///
     const char * EditMessage() const;
     ///
     void Edit(BufferView *, int x, int y, unsigned int);
+    ///
+    bool doClearArea() const { return !locked; };
     ///
     void InsetUnlock(BufferView *);
     ///
@@ -150,7 +152,7 @@ public:
     LyXTabular * tabular;
 
 private:
-    void calculate_width_of_cells(Painter &, LyXFont const &) const;
+    void calculate_width_of_cells(BufferView *, LyXFont const &, bool =false) const;
     ///
     void DrawCellLines(Painter &, int x, int baseline, int row, int cell)
 	    const;

@@ -23,9 +23,9 @@
 #include "lyxfont.h"
 #include "lyxlex.h"
 
-class Painter;
 class BufferView;
 class Buffer;
+class Painter;
 
 struct LaTeXFeatures;
 
@@ -115,10 +115,11 @@ public:
 	///
 	virtual int width(Painter &, LyXFont const &) const = 0;
 	///
-	virtual void draw(Painter &, LyXFont const &,
+	virtual void draw(BufferView *, LyXFont const &,
 			  int baseline, float & x) const = 0;
 	/// update the inset representation
-	virtual void update(BufferView *, LyXFont const &) const {}
+	virtual void update(BufferView *, LyXFont const &, bool =false)
+		{}
 	///
 	virtual LyXFont ConvertFont(LyXFont font);
 	/// what appears in the minibuffer when opening
@@ -134,7 +135,9 @@ public:
 	/// This is caleld when the user moves the mouse inside an inset
 	virtual void InsetMotionNotify(BufferView *, int , int , int) {}
 	///
-	bool IsTextInset() const;
+	virtual bool IsTextInset() const { return false; }
+	///
+	virtual bool doClearArea() const { return true; }
 	///
 	virtual bool AutoDelete() const;
 	///
@@ -272,7 +275,7 @@ public:
 	///
 	virtual void HideInsetCursor(BufferView *);
 	///
-	virtual void GetCursorPos(int &, int &) const {}
+	virtual void GetCursorPos(BufferView *, int &, int &) const {}
 	///
 	virtual void InsetButtonPress(BufferView *, int x, int y, int button);
 	///
@@ -287,7 +290,7 @@ public:
 	///
 	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
-	virtual void draw(Painter &, LyXFont const &,
+	virtual void draw(BufferView *, LyXFont const &,
 			  int baseline, float & x) const;
 	///
 	virtual void SetFont(BufferView *, LyXFont const &,

@@ -16,6 +16,7 @@
 #include "insetspecialchar.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
+#include "BufferView.h"
 #include "Painter.h"
 #include "font.h"
 
@@ -71,10 +72,12 @@ int InsetSpecialChar::width(Painter &, LyXFont const & font) const
 }
 
 
-void InsetSpecialChar::draw(Painter & pain, LyXFont const & f,
+void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 			    int baseline, float & x) const
 {
+	Painter & pain = bv->painter();
 	LyXFont font(f);
+
 	switch (kind) {
 	case HYPHENATION:
 	{

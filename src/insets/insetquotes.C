@@ -197,13 +197,13 @@ LyXFont InsetQuotes::ConvertFont(LyXFont font)
 }
 
 
-void InsetQuotes::draw(Painter & pain, LyXFont const & font,
+void InsetQuotes::draw(BufferView * bv, LyXFont const & font,
 		       int baseline, float & x) const
 {
 	string text = DispString();
 
-	pain.text(int(x), baseline, text, font);
-	x += width(pain, font);
+	bv->painter().text(int(x), baseline, text, font);
+	x += width(bv->painter(), font);
 }
 
 

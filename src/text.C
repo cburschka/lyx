@@ -22,6 +22,7 @@
 #include "lyxtext.h"
 #include "support/textutils.h"
 #include "insets/insetbib.h"
+#include "insets/insettext.h"
 #include "lyx_gui_misc.h"
 #include "gettext.h"
 #include "bufferparams.h"
@@ -566,8 +567,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 	} else if (c == LyXParagraph::META_INSET) {
 		Inset const * tmpinset = row->par()->GetInset(pos);
 		if (tmpinset) {
-			tmpinset->draw(bview->painter(), font,
-				       offset + row->baseline(), x);
+			tmpinset->draw(bview, font, offset+row->baseline(), x);
 		}
 		++vpos;
 
@@ -3799,7 +3799,13 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	else
 		ww = bview->workWidth();
 
-	if (bv_owner)
+	bool clear_area = true;
+
+	if ((last == row_ptr->pos()) &&
+	    row_ptr->par()->GetInset(row_ptr->pos())) {
+		clear_area = row_ptr->par()->GetInset(row_ptr->pos())->doClearArea();
+	}
+	if (bv_owner && clear_area)
 		pain.fillRectangle(x_offset, y_offset, ww, row_ptr->height());
 	
 	if (selection) {
@@ -4314,8 +4320,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			else
 				tmpx = x - lyxfont::width(layout.labelsep, font)
 					- row_ptr->par()->bibkey->width(bview->painter(), font);
-			row_ptr->par()->bibkey->draw(pain,
-						   font,
+			row_ptr->par()->bibkey->draw(bview, font,
 						   y_offset + row_ptr->baseline(), 
 						   tmpx);
 		}

@@ -1,3 +1,18 @@
+2000-06-21  Juergen Vigna  <jug@sad.it>
+
+	* src/text.C (GetVisibleRow): look if I should clear the area or not
+	using Inset::doClearArea() function.
+
+	* src/insets/lyxinset.h: added doClearArea() function and
+	modified draw(Painter &, ...) to draw(BufferView *, ...)
+
+	* src/text2.C (UpdateInset): return bool insted of int
+
+2000-06-20  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (SetParagraphData): set insetowner on
+	2- paragraphs.
+
 2000-06-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/Timeout.[Ch]: Change to use signals instead of callbacks. 

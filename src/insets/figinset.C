@@ -1034,10 +1034,11 @@ int InsetFig::width(Painter &, LyXFont const &) const
 }
 
 
-void InsetFig::draw(Painter & pain, LyXFont const & f,
+void InsetFig::draw(BufferView * bv, LyXFont const & f,
 		    int baseline, float & x) const
 {
 	LyXFont font(f);
+	Painter & pain = bv->painter();
 	
 	if (bitmap_waiting) getbitmaps();
 	

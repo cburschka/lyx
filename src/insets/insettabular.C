@@ -131,45 +131,34 @@ void InsetTabular::Read(Buffer const * buf, LyXLex & lex)
 }
 
 
-int InsetTabular::ascent(Painter & pain, LyXFont const & font) const
+int InsetTabular::ascent(Painter &, LyXFont const &) const
 {
-    if (init_inset) {
-	calculate_width_of_cells(pain, font);
-	init_inset = false;
-    }
     return tabular->GetAscentOfRow(0);
 }
 
 
-int InsetTabular::descent(Painter & pain, LyXFont const & font) const
+int InsetTabular::descent(Painter &, LyXFont const &) const
 {
-    if (init_inset) {
-	calculate_width_of_cells(pain, font);
-	init_inset = false;
-    }
     return tabular->GetHeightOfTabular() - tabular->GetAscentOfRow(0);
 }
 
 
-int InsetTabular::width(Painter & pain, LyXFont const & font) const
+int InsetTabular::width(Painter &, LyXFont const &) const
 {
-    if (init_inset) {
-	calculate_width_of_cells(pain, font);
-	init_inset = false;
-    }
     return tabular->GetWidthOfTabular() + (2 * ADD_TO_TABULAR_WIDTH);
 }
 
 
-void InsetTabular::draw(Painter & pain, const LyXFont & font, int baseline,
+void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			float & x) const
 {
+    Painter & pain = bv->painter();
     int i, j, cell=0;
     int nx;
     float cx;
     bool reinit = false;
 
-    UpdatableInset::draw(pain,font,baseline,x);
+    UpdatableInset::draw(bv,font,baseline,x);
     if (init_inset || (top_x != int(x)) || (top_baseline != baseline)) {
 //	int ox = top_x;
 	init_inset = false;
@@ -177,7 +166,7 @@ void InsetTabular::draw(Painter & pain, const LyXFont & font, int baseline,
 	top_baseline = baseline;
 //	if (ox != top_x)
 //	    recomputeTextInsets(pain, font);
-	calculate_width_of_cells(pain, font);
+//	calculate_width_of_cells(pain, font);
 	resetPos(pain);
 	reinit = true;
     }
@@ -190,7 +179,7 @@ void InsetTabular::draw(Painter & pain, const LyXFont & font, int baseline,
 	    cx = nx + tabular->GetBeginningOfTextInCell(cell);
 	    if (hasSelection())
 		DrawCellSelection(pain, nx, baseline, i, j, cell);
-	    tabular->GetCellInset(cell)->draw(pain, font, baseline, cx);
+	    tabular->GetCellInset(cell)->draw(bv, font, baseline, cx);
 	    DrawCellLines(pain, nx, baseline, i, cell);
 	    nx += tabular->GetWidthOfColumn(cell);
 	    ++cell;
@@ -202,10 +191,12 @@ void InsetTabular::draw(Painter & pain, const LyXFont & font, int baseline,
 }
 
 
-void InsetTabular::update(BufferView * bv, LyXFont const & font) const
+void InsetTabular::update(BufferView * bv, LyXFont const & font, bool dodraw)
 {
-    if (init_inset)
-	recomputeTextInsets(bv, font);
+    if (init_inset) {
+	calculate_width_of_cells(bv, font, dodraw);
+//	recomputeTextInsets(bv, font);
+    }
 }
 
 
@@ -324,8 +315,9 @@ void InsetTabular::InsetUnlock(BufferView * bv)
 
 void InsetTabular::UpdateLocal(BufferView * bv, bool what, bool mark_dirty)
 {
-    if (what)
-	calculate_width_of_cells(bv->painter(), LyXFont(LyXFont::ALL_SANE));
+//    if (what)
+//	calculate_width_of_cells(bv->painter(), LyXFont(LyXFont::ALL_SANE));
+    init_inset = what;
     bv->updateInset(this, mark_dirty);
     if (what)
 	resetPos(bv->painter());
@@ -732,8 +724,8 @@ void InsetTabular::Validate(LaTeXFeatures & features) const
 }
 
 
-void InsetTabular::calculate_width_of_cells(Painter & pain,
-					    LyXFont const & font) const
+void InsetTabular::calculate_width_of_cells(BufferView * bv,
+					    LyXFont const & font, bool dodraw) const
 {
     int cell = -1;
     int maxAsc, maxDesc;
@@ -746,9 +738,10 @@ void InsetTabular::calculate_width_of_cells(Painter & pain,
 		continue;
 	    ++cell;
 	    inset = tabular->GetCellInset(cell);
-	    maxAsc = max(maxAsc, inset->ascent(pain, font));
-	    maxDesc = max(maxDesc, inset->descent(pain, font));
-	    tabular->SetWidthOfCell(cell, inset->width(pain, font));
+	    inset->update(bv, font, dodraw);
+	    maxAsc = max(maxAsc, inset->ascent(bv->painter(), font));
+	    maxDesc = max(maxDesc, inset->descent(bv->painter(), font));
+	    tabular->SetWidthOfCell(cell, inset->width(bv->painter(), font));
 	}
 	tabular->SetAscentOfRow(i, maxAsc + ADD_TO_HEIGHT);
 	tabular->SetDescentOfRow(i, maxDesc + ADD_TO_HEIGHT);

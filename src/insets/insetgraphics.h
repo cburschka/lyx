@@ -35,7 +35,7 @@ public:
 	///
 	int width(Painter &, LyXFont const &) const;
 	///
-	void draw(Painter &, LyXFont const &,
+	void draw(BufferView *, LyXFont const &,
 			  int baseline, float & x) const;
 	///
 	void Edit(BufferView *, int, int, unsigned int);

@@ -16,6 +16,7 @@
 
 #include "insetbutton.h"
 #include "debug.h"
+#include "BufferView.h"
 #include "Painter.h"
 
 using std::ostream;
@@ -86,9 +87,10 @@ int InsetButton::width(Painter & pain, LyXFont const &) const
 }
 
 
-void InsetButton::draw(Painter & pain, LyXFont const &,
+void InsetButton::draw(BufferView * bv, LyXFont const &,
 			int baseline, float & x) const
 {
+	Painter & pain = bv->painter();
 	// Draw it as a box with the LaTeX text
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::command).decSize();

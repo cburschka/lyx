@@ -21,12 +21,12 @@
 #include "lyxcursor.h"
 #include "lyxparagraph.h"
 #include "layout.h"
-#include "insets/insettext.h"
 
 class Buffer;
 class BufferParams;
 class Row;
 class BufferView;
+class InsetText;
 
 
 /**
@@ -63,7 +63,7 @@ public:
 	mutable int number_of_rows;
 	///
 	mutable long height;
-	mutable long width;
+	mutable int  width;
 	/// the current font settings
 	mutable LyXFont current_font;
 	/// the current font
@@ -424,8 +424,8 @@ public:
 
 	/* for the greater insets */
   
-	/// returns 0 if inset wasn't found
-	int UpdateInset(BufferView *, Inset * inset);
+	/// returns false if inset wasn't found
+	bool UpdateInset(BufferView *, Inset *);
 	///
 	void CheckParagraph(BufferView *, LyXParagraph * par,
 			    LyXParagraph::size_type pos);

@@ -22,6 +22,7 @@
 #include "insets/inseterror.h"
 #include "insets/insetbib.h"
 #include "insets/insetspecialchar.h"
+#include "insets/insettext.h"
 #include "layout.h"
 #include "LyXView.h"
 #include "support/textutils.h"
@@ -1048,6 +1049,10 @@ void LyXText::RedoParagraphs(BufferView * bview, LyXCursor const & cur,
 
 bool LyXText::FullRebreak(BufferView * bview)
 {
+	if (!firstrow) {
+		init(bview);
+		return true;
+	}
 	if (need_break_row) {
 		BreakAgain(bview, need_break_row);
 		need_break_row = 0;
@@ -2649,14 +2654,14 @@ void LyXText::CheckParagraph(BufferView * bview, LyXParagraph * par,
 }
 
 
-// returns 0 if inset wasn't found
-int LyXText::UpdateInset(BufferView * bview, Inset * inset)
+// returns false if inset wasn't found
+bool LyXText::UpdateInset(BufferView * bview, Inset * inset)
 {
 	// first check the current paragraph
 	int pos = cursor.par()->GetPositionOfInset(inset);
 	if (pos != -1){
 		CheckParagraph(bview, cursor.par(), pos);
-		return 1;
+		return true;
 	}
   
 	// check every paragraph
@@ -2668,13 +2673,13 @@ int LyXText::UpdateInset(BufferView * bview, Inset * inset)
 			pos = par->GetPositionOfInset(inset);
 			if (pos != -1){
 				CheckParagraph(bview, par, pos);
-				return 1;
+				return true;
 			}
 		}
 		par = par->Next();
 	} while (par);
   
-	return 0;
+	return false;
 }
 
 

@@ -51,6 +51,12 @@ LyXScreen * BufferView::screen() const
 }
 
 
+WorkArea * BufferView::workarea() const
+{
+	return pimpl_->workarea_;
+}
+
+
 LyXView * BufferView::owner() const
 {
 	return pimpl_->owner_;

@@ -29,6 +29,7 @@ class LyXCursor;
 class LyXParagraph;
 class LColor;
 class LyXText;
+class LyXScreen;
 
 /**
  * A text inset is like a TeX box to write full text
@@ -38,6 +39,13 @@ class InsetText : public UpdatableInset {
 public:
     ///
     enum { TEXT_TO_INSET_OFFSET = 2 };
+    ///
+    enum UpdateCodes {
+	NONE = 0,
+	INIT,
+	FULL,
+	CURSOR_PAR
+    };
     ///
     explicit
     InsetText();
@@ -62,13 +70,17 @@ public:
     ///
     int width(Painter &, LyXFont const & f) const;
     ///
-    void draw(Painter & pain, LyXFont const &, int , float &) const;
+    void draw(BufferView *, LyXFont const &, int , float &) const;
     ///
-    void update(BufferView *, LyXFont const &) const;
+    void update(BufferView *, LyXFont const &, bool =false);
     ///
     char const * EditMessage() const;
     ///
     void Edit(BufferView *, int, int, unsigned int);
+    ///
+    bool IsTextInset() const { return true; }
+    ///
+    bool doClearArea() const { return !locked; }
     ///
     void InsetUnlock(BufferView *);
     ///
@@ -100,7 +112,7 @@ public:
     ///
     Inset::Code LyxCode() const { return Inset::TEXT_CODE; }
     ///
-    void GetCursorPos(int & x, int & y) const;
+    void GetCursorPos(BufferView *, int & x, int & y) const;
     ///
     int InsetInInsetY();
     ///
@@ -124,21 +136,21 @@ public:
     ///
     void SetFrameColor(LColor::color);
     ///
-    LyXFont GetDrawFont(Buffer const *, LyXParagraph *, int pos) const;
+    LyXFont GetDrawFont(BufferView *, LyXParagraph *, int pos) const;
     ///
+    LyXText * getLyXText(BufferView *) const;
+    void deleteLyXText(BufferView *);
+
     LyXParagraph * par;
-    ///
 
 protected:
     ///
-    void UpdateLocal(BufferView *, bool what, bool mark_dirty);
+    void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty);
     ///
     void WriteParagraphData(Buffer const *, std::ostream &) const;
     ///
     virtual int getMaxTextWidth(Painter &, UpdatableInset const *) const;
 
-    LyXText * text;
-    ///
     mutable int drawTextXOffset;
     mutable int drawTextYOffset;
     ///
@@ -148,6 +160,10 @@ protected:
     LColor::color frame_color;
 
 private:
+    ///
+    typedef std::map<BufferView *, LyXText *> Cache;
+    ///
+    typedef Cache::value_type value_type;
     ///
     int BeginningOfMainBody(Buffer const *, LyXParagraph * par) const;
     ///
@@ -163,23 +179,26 @@ private:
     ///
     UpdatableInset::RESULT moveDown(BufferView *);
     ///
-    bool Delete();
-    ///
     void SetCharFont(Buffer const *, int pos, LyXFont const & font);
     ///
     string getText(int);
     ///
     bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
 			       int button = 0);
-    int cx() const;
-    int cy() const;
-    int cpos() const;
-    LyXParagraph * cpar() const;
-    Row * crow() const;
+    ///
+    int cx(BufferView *) const;
+    int cy(BufferView *) const;
+    int cpos(BufferView *) const;
+    LyXParagraph * cpar(BufferView *) const;
+    Row * crow(BufferView *) const;
 	
     /* Private structures and variables */
     ///
     bool locked;
+    ///
+    int insetAscent;
+    int insetDescent;
+    int insetWidth;
     ///
     int inset_pos;
     ///
@@ -193,10 +212,12 @@ private:
     ///
     mutable float xpos;
     ///
-    mutable bool init_inset;
+    mutable UpdateCodes need_update;
     ///
     UpdatableInset * the_locking_inset;
     ///
     LyXParagraph * old_par;
+    /// The cache.
+    mutable Cache cache;
 };
 #endif

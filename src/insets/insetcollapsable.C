@@ -135,9 +135,11 @@ void InsetCollapsable::draw_collapsed(Painter & pain, LyXFont const & font,
 }
 
 
-void InsetCollapsable::draw(Painter & pain, LyXFont const & f, 
+void InsetCollapsable::draw(BufferView * bv, LyXFont const & f, 
 			    int baseline, float & x) const
 {
+    Painter & pain = bv->painter();
+
     button_length = width_collapsed(pain, labelfont) + 2;
     button_top_y = -ascent_collapsed(pain, f);
     button_bottom_y = descent_collapsed(pain, f);
@@ -158,7 +160,7 @@ void InsetCollapsable::draw(Painter & pain, LyXFont const & f,
 
     x += TEXT_TO_INSET_OFFSET;
     drawTextXOffset = int(x) - top_x;
-    InsetText::draw(pain, f, baseline, x);
+    InsetText::draw(bv, f, baseline, x);
 }
 
 
@@ -166,7 +168,7 @@ void InsetCollapsable::Edit(BufferView * bv, int x, int y, unsigned int button)
 {
     if (collapsed && autocollapse) {
 	collapsed = false;
-	UpdateLocal(bv, true, false);
+	UpdateLocal(bv, FULL, false);
 	InsetText::Edit(bv, 0, 0, button);
     } else if (!collapsed) {
 	InsetText::Edit(bv, x, y, button);
@@ -188,7 +190,7 @@ void InsetCollapsable::InsetUnlock(BufferView * bv)
 	collapsed = true;
     }
     InsetText::InsetUnlock(bv);
-    UpdateLocal(bv, false, false);
+    UpdateLocal(bv, FULL, false);
 }
 
 
@@ -208,10 +210,10 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 	if (collapsed) {
 	    collapsed = false;
 	    InsetText::InsetButtonRelease(bv, 0, 0, button);
-	    UpdateLocal(bv, true, false);
+	    UpdateLocal(bv, FULL, false);
 	} else {
 	    collapsed = true;
-	    UpdateLocal(bv, false, false);
+	    UpdateLocal(bv, FULL, false);
 	    bv->unlockInset(this);
 	}
     } else if (!collapsed && (x >= button_length) && (y >= button_top_y)) {

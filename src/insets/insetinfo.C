@@ -75,9 +75,10 @@ int InsetInfo::width(Painter &, LyXFont const & font) const
 }
 
 
-void InsetInfo::draw(Painter & pain, LyXFont const & f,
+void InsetInfo::draw(BufferView * bv, LyXFont const & f,
 		     int baseline, float & x) const
 {
+	Painter & pain = bv->painter();
 	LyXFont font(f);
 	
 	/* Info-insets are never LaTeX, so just correct the font */

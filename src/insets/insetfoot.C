@@ -83,9 +83,9 @@ bool InsetFoot::InsertInsetAllowed(Inset * inset) const
 }
 
 
-LyXFont InsetFoot::GetDrawFont(Buffer const * buf, LyXParagraph * p, int pos) const
+LyXFont InsetFoot::GetDrawFont(BufferView * bv,LyXParagraph * p, int pos) const
 {
-    LyXFont fn = text->GetFont(buf, p, pos);
+    LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
     fn.decSize().decSize();
     return fn;
 }

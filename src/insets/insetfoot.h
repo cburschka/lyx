@@ -45,7 +45,7 @@ public:
     ///
     bool InsertInsetAllowed(Inset * inset) const;
     ///
-    LyXFont GetDrawFont(Buffer const *, LyXParagraph * par, int pos) const;
+    LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
     ///
 };
 

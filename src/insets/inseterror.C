@@ -18,6 +18,7 @@
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "Painter.h"
+#include "BufferView.h"
 #include "font.h"
 
 using std::ostream;
@@ -71,9 +72,10 @@ int InsetError::width(Painter &, LyXFont const & font) const
 }
 
 
-void InsetError::draw(Painter & pain, LyXFont const & font,
+void InsetError::draw(BufferView * bv, LyXFont const & font,
 		      int baseline, float & x) const
 {
+	Painter & pain = bv->painter();
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
 	efont.setColor(LColor::error);

@@ -1302,7 +1302,7 @@ void BufferView::Pimpl::setState()
 void BufferView::Pimpl::insetSleep()
 {
 	if (bv_->the_locking_inset && !bv_->inset_slept) {
-		bv_->the_locking_inset->GetCursorPos(bv_->slx, bv_->sly);
+		bv_->the_locking_inset->GetCursorPos(bv_, bv_->slx, bv_->sly);
 		bv_->the_locking_inset->InsetUnlock(bv_);
 		bv_->inset_slept = true;
 	}

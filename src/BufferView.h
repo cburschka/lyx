@@ -24,6 +24,7 @@ class LyXText;
 class TeXErrors;
 class Buffer;
 class LyXScreen;
+class WorkArea;
 
 ///
 class BufferView {
@@ -46,6 +47,8 @@ public:
 	Painter & painter();
 	///
 	LyXScreen * screen() const;
+	///
+	WorkArea * workarea() const;
 	///
 	void buffer(Buffer * b);
 	///
