@@ -8,7 +8,7 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"
-
+#include "lyxrc.h"
 
 MathKernInset::MathKernInset()
 {}
@@ -43,6 +43,7 @@ void MathKernInset::metrics(MathMetricsInfo const &) const
 #endif
 	// this uses the numerical valu in pixels, even if the unit is cm or ex!
 	width_   = static_cast<int>(wid_.value());
+	width_   = (width_*static_cast<int>(lyxrc.zoom))/150;
 	//cerr << "handling kern of width " << wid_.value() << "\n";
 }
 
