@@ -492,7 +492,7 @@ void Parser::dump() const
 			lyxerr << " <#> ";
 		lyxerr << tokens_[i];
 	}
-	lyxerr << "\n";
+	lyxerr << " pos: " << pos_ << "\n";
 }
 
 
@@ -780,15 +780,15 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 				MathAtom at(new MathHullInset(LM_OT_SIMPLE));
 				parse_into2(at, FLAG_SIMPLE, false);
 				cell->push_back(at);
-			} else {
+			}
+			else if (flags & FLAG_SIMPLE) {
+				// this is the end of the formula
+				return;
+			}
+			else {
 				dump();
 				lyxerr << "something strange in the parser\n";
 				break;
-			}
-
-			if (flags & FLAG_SIMPLE) {
-				// this is the end of the formula
-				return;
 			}
 		}
 
