@@ -1,13 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file XWorkArea.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ======================================================*/
+ * \author unknown
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
 #ifndef XWORKAREA_H
 #define XWORKAREA_H
@@ -17,7 +16,7 @@
 #endif
 
 #include FORMS_H_LOCATION
-#include "frontends/Painter.h"
+#include "XPainter.h"
 #include "frontends/mouse_state.h"
 #include "frontends/key_state.h"
 
@@ -67,34 +66,17 @@ public:
 	bool visible() const { return work_area->form->visible; }
 	///
 	void greyOut() const;
-	///
-	void setScrollbar(double pos, double length_fraction) const;
-	///
-	void setScrollbarValue(double y) const {
-		fl_set_scrollbar_value(scrollbar, y);
-	}
-	///
-	void setScrollbarBounds(double, double) const;
-	///
-	void setScrollbarIncrements(double inc) const;
-	///
-	double getScrollbarValue() const {
-		return fl_get_scrollbar_value(scrollbar);
-	}
-	///
-	std::pair<float, float> const getScrollbarBounds() const {
-		std::pair<float, float> p;
-		fl_get_scrollbar_bounds(scrollbar, &p.first, &p.second);
-		return p;
-	}
+        ///
+        void setScrollbarParams(int height, int pos, int line_height);
 	///
 	Pixmap getPixmap() const { return workareapixmap; }
 	/// xforms callback
 	static int work_area_handler(FL_OBJECT *, int event,
 				     FL_Coord, FL_Coord,
 				     int /*key*/, void * xev);
-	/// xforms callback
-	static void scroll_cb(FL_OBJECT *, long);
+ 
+	/// xforms callback from scrollbar
+	void scroll_cb();
 	/// a selection exists
 	void haveSelection(bool) const;
 	///
@@ -105,7 +87,7 @@ public:
 	///
 	boost::signal0<void> workAreaExpose;
 	///
-	boost::signal1<void, double> scrollCB;
+	boost::signal1<void, int> scrollDocView;
 	///
 	boost::signal2<void, KeySym, key_modifier::state> workAreaKeyPress;
 	///
@@ -146,8 +128,11 @@ private:
 	/// The pixmap overlay on the workarea
 	Pixmap workareapixmap;
 	///
-	Painter painter_;
+	XPainter painter_;
 	/// if we call redraw with true needed for locking-insets
 	bool screen_cleared;
+	/// the current document's height (for scrollbar)
+	int doc_height_;
 };
-#endif
+ 
+#endif // XWORKAREA_H

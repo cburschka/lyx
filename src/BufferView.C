@@ -101,9 +101,9 @@ void BufferView::updateScrollbar()
 }
 
 
-void BufferView::scrollCB(double value)
+void BufferView::scrollDocView(int value)
 {
-	pimpl_->scrollCB(value);
+	pimpl_->scrollDocView(value);
 }
 
 

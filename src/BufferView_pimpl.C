@@ -142,15 +142,14 @@ void SetXtermCursor(Window win)
 
 BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	     int xpos, int ypos, int width, int height)
-	: bv_(b), owner_(o), buffer_(0),
-	  current_scrollbar_value(0), cursor_timeout(400),
+	: bv_(b), owner_(o), buffer_(0), cursor_timeout(400),
 	  using_xterm_cursor(false)
 {
 	workarea_.reset(new WorkArea(xpos, ypos, width, height));
 	screen_.reset(new LScreen(workarea()));
  
 	// Setup the signals
-	workarea().scrollCB.connect(boost::bind(&BufferView::Pimpl::scrollCB, this, _1));
+	workarea().scrollDocView.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
 	workarea().workAreaExpose
 		.connect(boost::bind(&BufferView::Pimpl::workAreaExpose, this));
 	workarea().workAreaButtonPress
@@ -417,51 +416,23 @@ void BufferView::Pimpl::updateScrollbar()
 {
 	if (!bv_->text) {
 		lyxerr[Debug::GUI] << "no text in updateScrollbar" << endl;
-		workarea().setScrollbar(0, 1.0);
+		workarea().setScrollbarParams(0, 0, 0);
 		return;
 	}
 
-	long const text_height = bv_->text->height;
-	long const work_height = workarea().workHeight();
-
-	double const lineh = bv_->text->defaultHeight();
-	double const slider_size =
-		(text_height == 0) ? 1.0 : 1.0 / double(text_height);
-
-	lyxerr[Debug::GUI] << "text_height now " << text_height << endl;
-	lyxerr[Debug::GUI] << "work_height " << work_height << endl;
-
-	/* If the text is smaller than the working area, the scrollbar
-	 * maximum must be the working area height. No scrolling will
-	 * be possible */
-	if (text_height <= work_height) {
-		lyxerr[Debug::GUI] << "doc smaller than workarea !" << endl;
-		workarea().setScrollbarBounds(0.0, 0.0);
-		current_scrollbar_value = bv_->text->first_y;
-		workarea().setScrollbar(current_scrollbar_value, 1.0);
-		return;
-	}
-
-	workarea().setScrollbarBounds(0.0, text_height - work_height);
-	workarea().setScrollbarIncrements(lineh);
-	current_scrollbar_value = bv_->text->first_y;
-	workarea().setScrollbar(current_scrollbar_value, slider_size);
+	LyXText const & t = *bv_->text;
+ 
+	workarea().setScrollbarParams(t.height, t.first_y, t.defaultHeight());
 }
 
 
-// Callback for scrollbar slider
-void BufferView::Pimpl::scrollCB(double value)
+void BufferView::Pimpl::scrollDocView(int value)
 {
-	lyxerr[Debug::GUI] << "scrollCB of " << value << endl;
+	lyxerr[Debug::GUI] << "scrollDocView of " << value << endl;
 
 	if (!buffer_) return;
 
-	current_scrollbar_value = long(value);
-
-	if (current_scrollbar_value < 0)
-		current_scrollbar_value = 0;
-
-	screen().draw(bv_->text, bv_, current_scrollbar_value);
+	screen().draw(bv_->text, bv_, value);
 
 	if (!lyxrc.cursor_follows_scrollbar) {
 		waitForX();
@@ -483,77 +454,25 @@ void BufferView::Pimpl::scrollCB(double value)
 }
 
 
-int BufferView::Pimpl::scrollUp(long time)
+int BufferView::Pimpl::scroll(long time)
 {
 	if (!buffer_)
 		return 0;
 
-	double value = workarea().getScrollbarValue();
-
-	if (value == 0)
-		return 0;
-
-#if 1
-	float add_value =  (bv_->text->defaultHeight()
-			    + float(time) * float(time) * 0.125);
-
-	if (add_value > workarea().workHeight())
-		add_value = float(workarea().workHeight() -
-				  bv_->text->defaultHeight());
-#else
-	float add_value =  float(workarea().workHeight()) * float(time) / 100;
-#endif
-
-	value -= add_value;
-
-	if (value < 0)
-		value = 0;
-
-	workarea().setScrollbarValue(value);
-
-	scrollCB(value);
+	LyXText const * t = bv_->text;
+ 
+	double const diff = t->defaultHeight() 
+		+ double(time) * double(time) * 0.125;
+ 
+	scrollDocView(int(diff));
+	workarea().setScrollbarParams(t->height, t->first_y, t->defaultHeight());
 	return 0;
 }
 
 
-int BufferView::Pimpl::scrollDown(long time)
+void BufferView::Pimpl::workAreaKeyPress(KeySym key, key_modifier::state state)
 {
-	if (!buffer_)
-		return 0;
-
-	double value = workarea().getScrollbarValue();
-	pair<float, float> p = workarea().getScrollbarBounds();
-	double const max = p.second;
-
-	if (value == max)
-		return 0;
-
-#if 1
-	float add_value =  (bv_->text->defaultHeight()
-			    + float(time) * float(time) * 0.125);
-
-	if (add_value > workarea().workHeight())
-		add_value = float(workarea().workHeight() -
-				  bv_->text->defaultHeight());
-#else
-	float add_value =  float(workarea().workHeight()) * float(time) / 100;
-#endif
-
-	value += add_value;
-
-	if (value > max)
-		value = max;
-
-	workarea().setScrollbarValue(value);
-
-	scrollCB(value);
-	return 0;
-}
-
-
-void BufferView::Pimpl::workAreaKeyPress(KeySym keysym, key_modifier::state state)
-{
-	bv_->owner()->getLyXFunc()->processKeySym(keysym, state);
+	bv_->owner()->getLyXFunc()->processKeySym(key, state);
 }
 
 
@@ -629,15 +548,14 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		return;
 
 	// ok ok, this is a hack (for xforms)
-
 	if (button == mouse_button::button4) {
-		scrollUp(lyxrc.wheel_jump);
+		scroll(-lyxrc.wheel_jump);
 		// We shouldn't go further down as we really should only do the
 		// scrolling and be done with this. Otherwise we may open some
 		// dialogs (Jug 20020424).
 		return;
 	} else if (button == mouse_button::button5) {
-		scrollDown(lyxrc.wheel_jump);
+		scroll(lyxrc.wheel_jump);
 		// We shouldn't go further down as we really should only do the
 		// scrolling and be done with this. Otherwise we may open some
 		// dialogs (Jug 20020424).

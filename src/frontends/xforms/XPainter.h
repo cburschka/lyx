@@ -1,101 +1,126 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file XPainter.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *	    Copyright 1995-2001 The LyX Team
- *
- * ======================================================*/
+ * \author unknown
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
-#ifndef PAINTER_H
-#define PAINTER_H
+#ifndef XPAINTER_H
+#define XPAINTER_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include <config.h>
+ 
+#include "frontends/Painter.h"
 #include "LString.h"
 
-// This is only included to provide stuff for the non-public sections
 #include <X11/Xlib.h>
 
-#include "frontends/Painter.h"
 
 class LyXFont;
 class WorkArea;
 
-/** An inplementation for the X Window System. Xlib.
-    Classes similar to this one can be made for gtk+, Qt, etc.
-*/
-class Painter : public PainterBase {
+/**
+ * XPainter - a painter implementation for Xlib
+ */
+class XPainter : public Painter {
 public:
-	/// Constructor
-	explicit Painter(WorkArea &);
+	XPainter(WorkArea &);
+	
+	/// return the width of the work area in pixels
+	virtual int paperWidth() const;
+	/// return the height of the work area in pixels
+	virtual int paperHeight() const;
 
-	/// Draw a line from point to point
-	PainterBase & line(int x1, int y1, int x2, int y2,
-			   LColor::color = LColor::foreground,
-			   enum line_style = line_solid,
-			   enum line_width = line_thin);
+	/// draw a line from point to point
+	virtual Painter & line(
+		int x1, int y1, 
+		int x2, int y2,
+		LColor::color = LColor::foreground,
+		line_style = line_solid,
+		line_width = line_thin);
 
-	/// Here xp and yp are arrays of points
-	PainterBase & lines(int const * xp, int const * yp, int np,
-			    LColor::color = LColor::foreground,
-			    enum line_style = line_solid,
-			    enum line_width = line_thin);
+	/**
+	 * lines -  draw a set of lines
+	 * @param xp array of points' x co-ords
+	 * @param yp array of points' y co-ords
+	 * @param np size of the points array
+	 */
+	virtual Painter & lines(
+		int const * xp, 
+		int const * yp, 
+		int np,
+		LColor::color = LColor::foreground,
+		line_style = line_solid,
+		line_width = line_thin);
 
-	/// Here xp and yp are arrays of points
-	PainterBase & fillPolygon(int const * xp, int const * yp, int np,
-				  LColor::color = LColor::foreground);
-
-	/// Draw lines from x1,y1 to x2,y2. They are arrays
-	PainterBase & segments(int const * x1, int const * y1,
-			       int const * x2, int const * y2, int ns,
-			       LColor::color = LColor::foreground,
-			       enum line_style = line_solid,
-			       enum line_width = line_thin);
-
-	/// Draw a rectangle
-	PainterBase & rectangle(int x, int y, int w, int h,
-				LColor::color = LColor::foreground,
-				enum line_style = line_solid,
-				enum line_width = line_thin);
-
-	/// Draw an arc
-	PainterBase & arc(int x, int y, unsigned int w, unsigned int h,
-			  int a1, int a2,
-			  LColor::color = LColor::foreground);
-
-	/// Draw a pixel
-	PainterBase & point(int x, int y, LColor::color = LColor::foreground);
-
-	/// Fill a rectangle
-	PainterBase & fillRectangle(int x, int y, int w, int h,
-				    LColor::color);
-
-	/// For the graphics inset.
-	PainterBase & image(int x, int y, int w, int h,
-			    grfx::GImage const & image);
-
-	/// Draw a string at position x, y (y is the baseline)
-	PainterBase & text(int x, int y,
-			   string const & str, LyXFont const & f);
+	/// draw a rectangle
+	virtual Painter & rectangle(
+		int x, int y,
+		int w, int h,
+		LColor::color = LColor::foreground,
+		line_style = line_solid,
+		line_width = line_thin);
+	
+	/// draw a filled rectangle
+	virtual Painter & fillRectangle(
+		int x, int y,
+		int w, int h,
+		LColor::color);
+	
+	/// draw a filled (irregular) polygon
+	virtual Painter & fillPolygon(
+		int const * xp, 
+		int const * yp, 
+		int np,
+		LColor::color = LColor::foreground); 
+ 
+	/// draw an arc
+	virtual Painter & arc(
+		int x, int y,
+		unsigned int w, unsigned int h,
+		int a1, int a2,
+		LColor::color = LColor::foreground);
+ 
+	/// draw a pixel
+	virtual Painter & point(
+		int x, int y,
+		LColor::color = LColor::foreground);
+	
+	/// draw an image from the image cache
+	virtual Painter & image(int x, int y,
+		int w, int h,
+		grfx::GImage const & image);
+	
+	/// draw a string at position x, y (y is the baseline)
+	virtual Painter & text(int x, int y,
+		string const & str, LyXFont const & f);
 
 	/** Draw a string at position x, y (y is the baseline)
-	    This is just for fast drawing */
-	PainterBase & text(int x, int y, char const * str, size_t l,
-			   LyXFont const & f);
+	 *  This is just for fast drawing
+	 */
+	virtual Painter & text(int x, int y,
+		char const * str, size_t l,
+		LyXFont const & f);
 
-	/// Draw a char at position x, y (y is the baseline)
-	PainterBase & text(int x, int y, char c, LyXFont const & f);
+	/// draw a char at position x, y (y is the baseline)
+	virtual Painter & text(int x, int y,
+		char c, LyXFont const & f);
 
-	/// Draw a wide string at position x, y
-	PainterBase & text(int x, int y, XChar2b const * str, int l,
-			   LyXFont const & f);
+	/// draw a wide string at position x, y
+	Painter & text(int x, int y, 
+		XChar2b const * str, size_t l,
+		LyXFont const & f);
+ 
 private:
-	/// Check the font, and if set, draw an underline
-	void underline(LyXFont const & f, int x, int y, int width);
+	/// our owner who we paint upon
+	WorkArea & owner_;
 };
 
-#endif
+#endif // XPAINTER_H

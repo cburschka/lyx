@@ -1054,7 +1054,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		if (bv->text->first_y + bv->painter().paperHeight() <
 		    (top_baseline + tabular->GetHeightOfTabular()))
 			{
-				bv->scrollCB(bv->text->first_y + bv->painter().paperHeight());
+				bv->scrollDocView(bv->text->first_y + bv->painter().paperHeight());
 				code = FULL;
 				actcell = tabular->GetCellBelow(first_visible_cell) + column;
 			} else {
@@ -1073,7 +1073,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
 		if (top_baseline < 0) {
-			bv->scrollCB(bv->text->first_y - bv->painter().paperHeight());
+			bv->scrollDocView(bv->text->first_y - bv->painter().paperHeight());
 			code = FULL;
 			if (top_baseline > 0)
 				actcell = column;

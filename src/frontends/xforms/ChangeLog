@@ -1,3 +1,14 @@
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* XWorkArea.h:
+	* XWorkArea.C: move scrolling logic into here
+ 
+	* ColorHandler.h:
+	* ColorHandler.C:
+	* XPainter.h:
+	* XPainter.C: remove unused stuff, s/PainterBase/Painter/,
+	s/Painter/XPainter/
+ 
 2002-06-12  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.C (parse_init): exit isn't in namespace lyx_gui!

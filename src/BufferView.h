@@ -185,8 +185,8 @@ public:
 	bool focus() const;
 	///
 	void focus(bool);
-	/// A callback for the slider in the scrollbar.
-	void scrollCB(double);
+	/// Scroll the view by a number of pixels
+	void scrollDocView(int);
 
 	///
 	void setState();

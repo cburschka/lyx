@@ -1,12 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file XWorkArea.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author unknown
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
 #include <config.h>
 
@@ -16,12 +15,12 @@
 
 #include "XWorkArea.h"
 #include "debug.h"
-#include "frontends/LyXView.h"
+#include "LyXView.h"
 #include "lyxrc.h" // lyxrc.show_banner
 #include "version.h" // lyx_version
 
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
-#include "frontends/xforms/lyxlookup.h"
+#include "lyxlookup.h"
 #endif
 
 #include "support/filetools.h" // LibFileSearch
@@ -34,7 +33,7 @@
 // xforms doesn't define this (but it should be in <forms.h>).
 extern "C"
 FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
-
+ 
 using std::endl;
 using std::abs;
 using std::hex;
@@ -46,6 +45,21 @@ void waitForX()
 {
 	XSync(fl_get_display(), 0);
 }
+
+
+void setXtermCursor(Window win)
+{
+	static Cursor cursor;
+	static bool cursor_undefined = true;
+	if (cursor_undefined) {
+		cursor = XCreateFontCursor(fl_get_display(), XC_xterm);
+		XFlush(fl_get_display());
+		cursor_undefined = false;
+	}
+	XDefineCursor(fl_get_display(), win, cursor);
+	XFlush(fl_get_display());
+}
+ 
 
 // FIXME !
 mouse_button::state x_button_state(unsigned int button)
@@ -111,9 +125,10 @@ key_modifier::state x_key_state(unsigned int state)
 extern "C" {
 	// Just a bunch of C wrappers around static members of WorkArea
 	static
-	void C_WorkArea_scroll_cb(FL_OBJECT * ob, long buf)
+	void C_WorkArea_scroll_cb(FL_OBJECT * ob, long)
 	{
-		WorkArea::scroll_cb(ob, buf);
+		WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
+		area->scroll_cb();
 	}
 
 
@@ -150,7 +165,7 @@ WorkArea::WorkArea(int x, int y, int w, int h)
 	backgroundbox = obj = fl_add_box(FL_BORDER_BOX,
 					 x, y,
 					 w - 15,
-					 h,"");
+					 h, "");
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 
@@ -193,13 +208,15 @@ WorkArea::WorkArea(int x, int y, int w, int h)
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
 	obj->u_vdata = this;
 	fl_set_object_callback(obj, C_WorkArea_scroll_cb, 0);
-	setScrollbarBounds(0.0, 0.0);
-
+	fl_set_scrollbar_bounds(scrollbar, 0.0, 0.0);
+	fl_set_scrollbar_value(scrollbar, 0.0);
+	fl_set_scrollbar_size(scrollbar, scrollbar->h);
+	
 	///
 	/// The free object
 
 	int const bw = int(abs(fl_get_border_width()));
-
+ 
 	// Create the workarea pixmap
 	createPixmap(w - 15 - 2 * bw, h - 2 * bw);
 
@@ -334,33 +351,53 @@ void WorkArea::setFocus() const
 }
 
 
-void WorkArea::setScrollbar(double pos, double length_fraction) const
+void WorkArea::setScrollbarParams(int height, int pos, int line_height)
 {
+	// we need to cache this for scroll_cb
+	doc_height_ = height;
+
+	if (height == 0) {
+		fl_set_scrollbar_value(scrollbar, 0.0);
+		fl_set_scrollbar_size(scrollbar, scrollbar->h);
+		return;
+	}
+
+	long const work_height = workHeight();
+
+	lyxerr[Debug::GUI] << "scroll: height now " << height << endl;
+	lyxerr[Debug::GUI] << "scroll: work_height " << work_height << endl;
+ 
+	/* If the text is smaller than the working area, the scrollbar
+	 * maximum must be the working area height. No scrolling will
+	 * be possible */
+	if (height <= work_height) {
+		lyxerr[Debug::GUI] << "scroll: doc smaller than workarea !" << endl;
+		fl_set_scrollbar_bounds(scrollbar, 0.0, 0.0);
+		fl_set_scrollbar_value(scrollbar, pos);
+		fl_set_scrollbar_size(scrollbar, scrollbar->h);
+		return;
+	}
+
+	fl_set_scrollbar_bounds(scrollbar, 0.0, height - work_height);
+	fl_set_scrollbar_increment(scrollbar, work_area->h - line_height, line_height);
+
 	fl_set_scrollbar_value(scrollbar, pos);
-	fl_set_scrollbar_size(scrollbar, scrollbar->h * length_fraction);
+
+	double const slider_size =
+		(height == 0) ? 1.0 : 1.0 / double(height);
+
+	fl_set_scrollbar_size(scrollbar, scrollbar->h * slider_size);
 }
 
 
-void WorkArea::setScrollbarBounds(double l1, double l2) const
+// callback for scrollbar slider
+void WorkArea::scroll_cb()
 {
-	fl_set_scrollbar_bounds(scrollbar, l1, l2);
-}
-
-
-void WorkArea::setScrollbarIncrements(double inc) const
-{
-	fl_set_scrollbar_increment(scrollbar, work_area->h - inc, inc);
-}
-
-
-// Callback for scrollbar slider
-void WorkArea::scroll_cb(FL_OBJECT * ob, long)
-{
-	WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
-	// If we really want the accellerating scroll we can do that
-	// from here. IMHO that is a waste of effort since we already
-	// have other ways to move fast around in the document. (Lgb)
-	area->scrollCB(fl_get_scrollbar_value(ob));
+	double const val = fl_get_scrollbar_value(scrollbar);
+	lyxerr[Debug::GUI] << "scroll: val: " << val << endl;
+	lyxerr[Debug::GUI] << "scroll: height: " << scrollbar->h << endl;
+	lyxerr[Debug::GUI] << "scroll: docheight: " << doc_height_ << endl;
+	scrollDocView(int(val));
 	waitForX();
 }
 

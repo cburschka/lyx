@@ -21,7 +21,7 @@
 #include <cmath>
 
 #include <boost/scoped_array.hpp>
-
+ 
 #ifndef CXX_GLOBAL_CSTD
 using std::pow;
 #endif
@@ -73,10 +73,6 @@ unsigned long LyXColorHandler::colorPixel(LColor::color c)
 // Uses caching
 GC LyXColorHandler::getGCForeground(LColor::color c)
 {
-	//if (lyxerr.debugging()) {
-	//	lyxerr << "Painter drawable: " << drawable() << endl;
-	//}
-
 	if (colorGCcache[c] != 0)
 		return colorGCcache[c];
 
@@ -166,13 +162,13 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 
 
 // Gets GC for line
-GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
-				  PainterBase::line_width lw, LColor::color c)
+GC LyXColorHandler::getGCLinepars(Painter::line_style ls,
+				  Painter::line_width lw, LColor::color c)
 {
 	//if (lyxerr.debugging()) {
 	//	lyxerr << "Painter drawable: " << drawable() << endl;
 	//}
-
+	
 	int index = lw + (ls << 1) + (c << 6);
 
 	LineGCCache::iterator it = lineGCcache.find(index);
@@ -181,25 +177,22 @@ GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
 
 	XGCValues val;
 	XGetGCValues(display, getGCForeground(c), GCForeground, &val);
-
+	
 	switch (lw) {
-	case PainterBase::line_thin:
+	case Painter::line_thin:
 		val.line_width = 0;
 		break;
-	case PainterBase::line_thick:
+	case Painter::line_thick:
 		val.line_width = 2;
 		break;
 	}
-
+	
 	switch (ls) {
-	case PainterBase::line_solid:
+	case Painter::line_solid:
 		val.line_style = LineSolid;
 		break;
-	case PainterBase::line_onoffdash:
+	case Painter::line_onoffdash:
 		val.line_style = LineOnOffDash;
-		break;
-	case PainterBase::line_doubledash:
-		val.line_style = LineDoubleDash;
 		break;
 	}
 
@@ -236,8 +229,8 @@ void LyXColorHandler::updateColor (LColor::color c)
 				gc = it->second;
 				XFreeGC(display, gc);
 				lineGCcache.erase(it);
-				getGCLinepars(PainterBase::line_style(ls),
-					      PainterBase::line_width(lw), c);
+				getGCLinepars(Painter::line_style(ls),
+					      Painter::line_width(lw), c);
 			}
 		}
 

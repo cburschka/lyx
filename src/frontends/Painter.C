@@ -1,11 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file Painter.C
+ * Copyright 1998-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *	    Copyright 1998-2001 The LyX Team
- *
- *======================================================*/
+ * \author unknown
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
 #include <config.h>
 
@@ -16,43 +16,11 @@
 #include "Painter.h"
 #include "lyxfont.h"
 #include "WorkArea.h"
-#include "font_metrics.h"
-
-
-int PainterBase::paperMargin() const
-{
-	return 20;
-}
-
-
-int PainterBase::paperWidth() const
-{
-	return owner.workWidth();
-}
-
-
-int PainterBase::paperHeight() const
-{
-	return owner.workHeight();
-}
-
-
-PainterBase & PainterBase::circle(int x, int y, unsigned int d,
-				  LColor::color col)
-{
-	return ellipse(x, y, d, d, col);
-}
-
-
-PainterBase & PainterBase::ellipse(int x, int y,
-				   unsigned int w, unsigned int h,
-				   LColor::color col)
-{
-	return arc(x, y, w, h, 0, 0, col);
-}
-
-
-PainterBase & PainterBase::button(int x, int y, int w, int h)
+#include "frontends/font_metrics.h"
+ 
+using std::max;
+ 
+Painter & Painter::button(int x, int y, int w, int h)
 {
 	fillRectangle(x, y, w, h, LColor::buttonbg);
 	buttonFrame(x, y, w, h);
@@ -60,17 +28,17 @@ PainterBase & PainterBase::button(int x, int y, int w, int h)
 }
 
 
-PainterBase & PainterBase::buttonFrame(int x, int y, int w, int h)
+Painter & Painter::buttonFrame(int x, int y, int w, int h)
 {
 	//  Width of a side of the button
-	int d = 2;
+	int const d = 2;
 
 	fillRectangle(x, y, w, d, LColor::top);
-	fillRectangle(x, (y+h-d), w, d, LColor::bottom);
-
+	fillRectangle(x, (y + h - d), w, d, LColor::bottom);
+ 
 	// Now a couple of trapezoids
 	int x1[4], y1[4];
-
+ 
 	x1[0] = x + d;   y1[0] = y + d;
 	x1[1] = x + d;   y1[1] = (y + h - d);
 	x1[2] = x;     y1[2] = y + h;
@@ -87,35 +55,51 @@ PainterBase & PainterBase::buttonFrame(int x, int y, int w, int h)
 }
 
 
-PainterBase & PainterBase::rectText(int x, int baseline,
-				    string const & str,
-				    LyXFont const & font,
-				    LColor::color back,
-				    LColor::color frame)
+Painter & Painter::rectText(int x, int baseline, 
+	string const & str, 
+	LyXFont const & font,
+	LColor::color back,
+	LColor::color frame)
 {
 	int width;
 	int ascent;
 	int descent;
 
 	font_metrics::rectText(str, font, width, ascent, descent);
+ 
 	rectangle(x, baseline - ascent, width, ascent + descent, frame);
-	fillRectangle(x + 1, baseline - ascent + 1, width - 1,
+	fillRectangle(x + 1, baseline - ascent + 1, width - 1, 
 		      ascent + descent - 1, back);
 	text(x + 3, baseline, str, font);
 	return *this;
 }
 
 
-PainterBase & PainterBase::buttonText(int x, int baseline,
-				      string const & str,
-				      LyXFont const & font)
+Painter & Painter::buttonText(int x, int baseline,
+	string const & str, 
+	LyXFont const & font)
 {
 	int width;
 	int ascent;
 	int descent;
 
 	font_metrics::buttonText(str, font, width, ascent, descent);
+ 
 	button(x, baseline - ascent, width, descent + ascent);
 	text(x + 4, baseline, str, font);
 	return *this;
+}
+
+
+void Painter::underline(LyXFont const & f, int x, int y, int width)
+{
+	int const below = max(font_metrics::maxDescent(f) / 2, 2);
+	int const height = max((font_metrics::maxDescent(f) / 4) - 1, 1);
+ 
+	if (height < 2) {
+		line(x, y + below, x + width, y + below, f.color());
+	} else {
+		fillRectangle(x, y + below, width, below + height,
+			      f.color());
+	}
 }

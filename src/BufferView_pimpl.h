@@ -69,19 +69,17 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void updateScrollbar();
 	///
-	void scrollCB(double value);
+	void scrollDocView(int value);
 	/**
 	 * Returns an inset if inset was hit, or 0 if not.
 	 *
 	 * If hit, the coordinates are changed relative to the inset.
 	 */
 	Inset * checkInsetHit(LyXText *, int & x, int & y);
+	/// wheel mouse scroll
+	int scroll(long time);
 	///
-	int scrollUp(long time);
-	///
-	int scrollDown(long time);
-	///
-	void workAreaKeyPress(KeySym, key_modifier::state state);
+	void workAreaKeyPress(KeySym key, key_modifier::state state);
 	///
 	void workAreaMotionNotify(int x, int y, mouse_button::state state);
 	///
@@ -178,8 +176,6 @@ private:
 	///
 	boost::scoped_ptr<WorkArea> workarea_;
 	///
-	long current_scrollbar_value;
-	///
 	Timeout cursor_timeout;
 	///
 	void pasteClipboard(bool asPara);
@@ -210,4 +206,4 @@ private:
 	///
 	void MenuInsertLyXFile(string const & filen);
 };
-#endif
+#endif // BUFFERVIEW_PIMPL_H

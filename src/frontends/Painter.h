@@ -1,15 +1,15 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file Painter.h
+ * Copyright 1998-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *	    Copyright 1998-2001 The LyX Team
- *
- *======================================================*/
+ * \author unknown
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
-#ifndef PAINTERBASE_H
-#define PAINTERBASE_H
+#ifndef PAINTER_H
+#define PAINTER_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -18,161 +18,158 @@
 #include "LString.h"
 #include "LColor.h"
 
-class WorkArea;
 class LyXFont;
+
 namespace grfx {
 	class GImage;
 }
 
-/** A painter class to encapsulate all graphics parameters and operations
-
-    Every graphics operation in LyX should be made by this class. It will
-    be initialized and managed by the Screen class, and will be passed
-    as a parameter to inset.
-
-    It hides low level windows system parameters so insets and other
-    clients don't have to worry about them and we can control graphics and
-    GUI toolkit dependent drawing functions inside this single class.
-
+/**
+ * Painter - A painter class to encapsulate all graphics parameters and operations
+ *
+ * Every graphics operation in LyX should be made by this class. The
+ * painter is used for drawing on the WorkArea, and is passed around
+ * during draw operations.
+ *
+ * It hides low level windows system parameters so insets and other
+ * clients don't have to worry about them and we can control graphics and
+ * GUI toolkit dependent drawing functions inside this single class.
+ *
+ * The intention for a toolkit is that it uses these methods to paint
+ * onto a backing pixmap. Only when expose events arrive via the event
+ * queue (perhaps generated via Screen::expose), does the copy onto
+ * the actual WorkArea widget take place. Paints are wrapped in (possibly
+ * recursive) calls to start() and end() to facilitate the backing pixmap
+ * management.
+ *
+ * Note that the methods return *this for convenience.
  */
-class PainterBase {
+class Painter {
 public:
-	///
+	/// possible line widths
 	enum line_width {
-		///
-		line_thin,
-		///
-		line_thick
+		line_thin, //< thin line
+		line_thick //< thick line
 	};
 
-	///
+	/// possible line styles
 	enum line_style {
-		///
-		line_solid,
-		///
-		line_doubledash,
-		///
-		line_onoffdash
+		line_solid, //< solid line
+		line_onoffdash //< dashes with spaces
 	};
 
-	///
-	explicit PainterBase(WorkArea & wa) : owner(wa) {}
+	virtual ~Painter() {}
 
-	///
-	virtual ~PainterBase() {}
+	/// begin painting
+	virtual void start() {}
+ 
+	/// end painting
+	virtual void end() {}
+ 
+	/// return the width of the work area in pixels
+	virtual int paperWidth() const = 0;
+	/// return the height of the work area in pixels
+	virtual int paperHeight() const = 0;
 
-	/* Screen geometry */
-	///
-	int paperMargin() const;
-	///
-	int paperWidth() const;
-	///
-	int paperHeight() const;
-
-	/// Draw a line from point to point
-	virtual PainterBase & line(
-		int x1, int y1, int x2, int y2,
+	/// draw a line from point to point
+	virtual Painter & line(
+		int x1, int y1,
+		int x2, int y2,
 		LColor::color = LColor::foreground,
-		enum line_style = line_solid,
-		enum line_width = line_thin) = 0;
+		line_style = line_solid,
+		line_width = line_thin) = 0;
 
-	/** Draw the lines between the lines in xp and yp.
-	    xp and yp are arrays of points, and np is the
-	    number of them. */
-	virtual PainterBase & lines(
-		int const * xp, int const * yp, int np,
+	/**
+	 * lines -  draw a set of lines
+	 * @param xp array of points' x co-ords
+	 * @param yp array of points' y co-ords
+	 * @param np size of the points array
+	 */
+	virtual Painter & lines(
+		int const * xp,
+		int const * yp,
+		int np,
 		LColor::color = LColor::foreground,
-		enum line_style = line_solid,
-		enum line_width = line_thin) = 0;
+		line_style = line_solid,
+		line_width = line_thin) = 0;
 
-	/// Here xp and yp are arrays of points
-	virtual PainterBase & fillPolygon(
-		int const * xp, int const * yp,
+	/// draw a rectangle
+	virtual Painter & rectangle(
+		int x, int y,
+		int w, int h,
+		LColor::color = LColor::foreground,
+		line_style = line_solid,
+		line_width = line_thin) = 0;
+	
+	/// draw a filled rectangle
+	virtual Painter & fillRectangle(
+		int x, int y,
+		int w, int h,
+		LColor::color) = 0;
+	
+	/// draw a filled (irregular) polygon
+	virtual Painter & fillPolygon(
+		int const * xp,
+		int const * yp,
 		int np,
 		LColor::color = LColor::foreground) = 0;
 
-	/// Draw lines from x1,y1 to x2,y2. They are arrays
-	virtual PainterBase & segments(
-		int const * x1, int const * y1,
-		int const * x2, int const * y2, int ns,
-		LColor::color = LColor::foreground,
-		enum line_style = line_solid,
-		enum line_width = line_thin) = 0;
-
-	/// Draw a rectangle
-	virtual PainterBase & rectangle(
-		int x, int y, int w, int h,
-		LColor::color = LColor::foreground,
-		enum line_style = line_solid,
-		enum line_width = line_thin) = 0;
-
-	/// Draw a circle, d is the diameter, not the radious
-	virtual PainterBase & circle(
-		int x, int y, unsigned int d,
-		LColor::color = LColor::foreground);
-
-	/// Draw an ellipse
-	virtual PainterBase & ellipse(
-		int x, int y,
-		unsigned int w, unsigned int h,
-		LColor::color = LColor::foreground);
-
-	/// Draw an arc
-	virtual PainterBase & arc(
+	/// draw an arc
+	virtual Painter & arc(
 		int x, int y,
 		unsigned int w, unsigned int h,
 		int a1, int a2,
 		LColor::color = LColor::foreground) = 0;
 
-	/// Draw a pixel
-	virtual PainterBase & point(
+	/// draw a pixel
+	virtual Painter & point(
 		int x, int y,
 		LColor::color = LColor::foreground) = 0;
+	
+	/// draw a filled rectangle with the shape of a 3D button
+	virtual Painter & button(int x, int y,
+		int w, int h);
 
-	/// Fill a rectangle
-	virtual PainterBase & fillRectangle(
-		int x, int y, int w, int h,
-		LColor::color) = 0;
+	/// draw an image from the image cache
+	virtual Painter & image(int x, int y,
+		int w, int h,
+		grfx::GImage const & image) = 0;
+	
+	/// draw a string at position x, y (y is the baseline)
+	virtual Painter & text(int x, int y,
+		string const & str, LyXFont const & f) = 0;
 
-	/// A filled rectangle with the shape of a 3D button
-	virtual PainterBase & button(int x, int y, int w, int h);
+	/**
+	 * Draw a string at position x, y (y is the baseline)
+	 * This is just for fast drawing
+	 */
+	virtual Painter & text(int x, int y,
+		char const * str, size_t l,
+		LyXFont const & f) = 0;
 
-	///
-	virtual PainterBase & buttonFrame(int x, int y, int w, int h);
+	/// draw a char at position x, y (y is the baseline)
+	virtual Painter & text(int x, int y,
+		char c, LyXFont const & f) = 0;
 
+	/// draw a string and enclose it inside a rectangle
+	Painter & rectText(int x, int baseline,
+		string const & string,
+		LyXFont const & font,
+		LColor::color back,
+		LColor::color frame);
 
-	// For the figure inset
-	virtual PainterBase & image(int x, int y, int w, int h,
-				    grfx::GImage const & image) = 0;
+	/// draw a string and enclose it inside a button frame
+	Painter & buttonText(int x,
+		int baseline, string const & s,
+		LyXFont const & font);
 
-	/// Draw a string at position x, y (y is the baseline)
-	virtual PainterBase & text(int x, int y,
-				   string const & str, LyXFont const & f) = 0;
-
-	/** Draw a string at position x, y (y is the baseline)
-	    This is just for fast drawing */
-	virtual PainterBase & text(int x, int y, char const * str, size_t l,
-				   LyXFont const & f) = 0;
-
-	/// Draw a char at position x, y (y is the baseline)
-	virtual PainterBase & text(int x, int y, char c, LyXFont const & f)=0;
-
-	/** Draws a string and encloses it inside a rectangle. */
-	PainterBase & rectText(int x, int baseline,
-			       string const & string,
-			       LyXFont const & font,
-			       LColor::color back,
-			       LColor::color frame);
-
-	/** Draw a string and encloses it inside a button frame. */
-	PainterBase & buttonText(int x, int baseline, string const & s,
-				 LyXFont const & font);
 protected:
-	///
-	WorkArea & owner;
+	/// check the font, and if set, draw an underline
+	void underline(LyXFont const & f, 
+		int x, int y, int width);
+	
+	/// draw a bevelled button border
+        Painter & buttonFrame(int x, int y, int w, int h);
 };
 
-// VERY temporary
-#include "xforms/XPainter.h"
-
-#endif
+#endif // PAINTER_H
