@@ -1,0 +1,8326 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LyX-1.1.6-fix3\n"
+"POT-Creation-Date: 2001-07-24 15:15+0200\n"
+"PO-Revision-Date: 2002-01-15 19:35GMT+0100\n"
+"Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
+"Language-Team: Slovak <sk-i18n@linux.sk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.5\n"
+
+#: src/buffer.C:321
+msgid "Couldn't set the layout for "
+msgstr "Nie je mo¾né nastavi» rozlo¾enie pre "
+
+#: src/buffer.C:323
+msgid "one paragraph"
+msgstr "jeden odsek"
+
+#: src/buffer.C:326
+msgid " paragraphs"
+msgstr " odseky"
+
+#. if the textclass wasn't loaded properly
+#. we need to either substitute another
+#. or stop loading the file.
+#. I can substitute but I don't see how I can
+#. stop loading... ideas??  ARRae980418
+#: src/buffer.C:328 src/buffer.C:545
+msgid "Textclass Loading Error!"
+msgstr "Chyba pri naèítavaní textovej triedy!"
+
+#: src/buffer.C:329
+msgid "When reading "
+msgstr "Pri èítaní "
+
+#: src/CutAndPaste.C:447 src/buffer.C:383
+msgid "Layout had to be changed from\n"
+msgstr "Rozlo¾enie musí by» zmenené z\n"
+
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
+#: src/converter.C:554
+msgid " to "
+msgstr " na "
+
+#: src/buffer.C:533
+msgid "Textclass error"
+msgstr "Chyba textovej triedy"
+
+#: src/buffer.C:534
+msgid "The document uses an unknown textclass \""
+msgstr "Dokument pou¾íva neznámu textovú triedu \""
+
+#: src/buffer.C:536
+msgid "LyX will not be able to produce output correctly."
+msgstr "LyX nebude schopný vyprodukova» správne výstup."
+
+#: src/buffer.C:546
+msgid "Can't load textclass "
+msgstr "Nemô¾em naèíta» textovú triedu "
+
+#: src/buffer.C:548
+msgid "-- substituting default"
+msgstr "--nahrádzam implicitnú hodnotu"
+
+#: src/buffer.C:1105
+#, c-format
+msgid "Warning: need lyxformat %.2f but found %.2f"
+msgstr "Varovanie: potrebujem formát LyXu %.2f, ale na¹iel som %.2f"
+
+#: src/buffer.C:1109
+#, c-format
+msgid "ERROR: need lyxformat %.2f but found %.2f"
+msgstr "CHYBA: potrebujem formát LyX %.2f, ale na¹iel som %.2f"
+
+#. future format
+#: src/buffer.C:1120 src/buffer.C:1147 src/buffer.C:1167
+msgid "Warning!"
+msgstr "Varovanie!"
+
+#: src/buffer.C:1121 src/buffer.C:1168
+msgid "Reading of document is not complete"
+msgstr "Dokument nebol naèítaný úplne"
+
+#: src/buffer.C:1122 src/buffer.C:1169
+msgid "Maybe the document is truncated"
+msgstr "Dokument je mo¾no skrátený"
+
+#. "\\lyxformat" not found
+#: src/buffer.C:1128 src/buffer.C:1154 src/buffer.C:1173 src/buffer.C:1176
+msgid "ERROR!"
+msgstr "CHYBA!"
+
+#: src/buffer.C:1129 src/buffer.C:1155
+msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
+msgstr "Na¹iel som starý formát LyXu. Naèítajte ho LyXom 0.10.x!"
+
+#: src/buffer.C:1148
+msgid "LyX file format is newer that what"
+msgstr "Formát LyX súboru je nov¹í ako"
+
+#: src/buffer.C:1149
+msgid "is supported in this LyX version. Expect some problems."
+msgstr "podporuje táto verzia LyXu. Oèakávajte problémy."
+
+#: src/buffer.C:1173
+msgid "Not a LyX file!"
+msgstr "Toto nie je LyX súbor!"
+
+#: src/buffer.C:1176
+msgid "Unable to read file!"
+msgstr "Nemô¾em preèíta» súbor!"
+
+#: src/buffer.C:1270 src/buffer.C:1273
+msgid "Error! Document is read-only: "
+msgstr "Chyba! Dokument je iba na èítanie: "
+
+#: src/buffer.C:1283 src/buffer.C:1286
+msgid "Error! Cannot write file: "
+msgstr "Chyba! Nemô¾em zapísa» súbor: "
+
+#: src/buffer.C:1294 src/buffer.C:1297
+msgid "Error! Cannot open file: "
+msgstr "Chyba! Nemô¾em otvori» súbor: "
+
+#: src/buffer.C:1593
+msgid "Error: Cannot write file:"
+msgstr "Chyba: Nemô¾em zapísa» súbor:"
+
+#: src/buffer.C:1627
+msgid "Error: Cannot open file: "
+msgstr "Chyba: Nemô¾em otvori» súbor: "
+
+#: src/buffer.C:2263 src/buffer.C:2912
+msgid "LYX_ERROR:"
+msgstr "LYX_CHYBA: "
+
+#: src/buffer.C:2263 src/buffer.C:2912
+msgid "Cannot write file"
+msgstr "Nemô¾em zapísa» súbor"
+
+#: src/buffer.C:2350 src/buffer.C:2996
+msgid "Error : Wrong depth for LatexType Command.\n"
+msgstr "Chyba: Nesprávne vnorenie príkazov LaTeXu.\n"
+
+#. path to LaTeX file
+#: src/buffer.C:3317
+msgid "Running chktex..."
+msgstr "chktex pracuje..."
+
+#: src/buffer.C:3330
+msgid "chktex did not work!"
+msgstr "chktex nefunguje!"
+
+#: src/buffer.C:3331
+msgid "Could not run with file:"
+msgstr "Nemô¾em pracova» so súborom:"
+
+#: src/bufferlist.C:111 src/bufferlist.C:187 src/lyxvc.C:92 src/lyxvc.C:125
+#: src/lyxvc.C:155
+msgid "Changes in document:"
+msgstr "Zmeny v dokumente: "
+
+#: src/bufferlist.C:113 src/bufferlist.C:189
+msgid "Save document?"
+msgstr "Ulo¾i» dokument?"
+
+#: src/bufferlist.C:141
+msgid "Some documents were not saved:"
+msgstr "Niektoré dokumenty neboli ulo¾ené:"
+
+#: src/bufferlist.C:142
+msgid "Exit anyway?"
+msgstr "Aj napriek tomu ukonèi»?"
+
+#: src/bufferlist.C:289
+#, c-format
+msgid "lyx: Attempting to save document %s as..."
+msgstr "lyx: Pokú¹am sa ulo¾i» dokument %s ako..."
+
+#: src/bufferlist.C:302 src/bufferlist.C:315 src/bufferlist.C:329
+msgid "  Save seems successful. Phew."
+msgstr " Zdá sa, ¾e ulo¾enie bolo úspe¹né. Uf."
+
+#: src/bufferlist.C:305 src/bufferlist.C:319
+msgid "  Save failed! Trying..."
+msgstr " Ulo¾enie neprebehlo správne! Skú¹am..."
+
+#: src/bufferlist.C:332
+msgid "  Save failed! Bummer. Document is lost."
+msgstr " Ulo¾enie neprebehlo správne! Och. Dokument je stratený."
+
+#: src/bufferlist.C:356
+msgid "An emergency save of this document exists!"
+msgstr "Existuje bezpeènostná kópia tohoto dokumentu!"
+
+#: src/bufferlist.C:358
+msgid "Try to load that instead?"
+msgstr "Chcete ju pou¾i»?"
+
+#: src/bufferlist.C:380
+msgid "Autosave file is newer."
+msgstr "Zálo¾ná kópia je nov¹ia."
+
+#: src/bufferlist.C:382
+msgid "Load that one instead?"
+msgstr "Chcete rad¹ej túto pou¾i»?"
+
+#: src/BufferView2.C:62 src/BufferView2.C:72 src/bufferlist.C:449
+#: src/lyx_cb.C:298
+msgid "Error!"
+msgstr "Chyba!"
+
+#: src/bufferlist.C:449
+msgid "Unable to open template"
+msgstr "Nie je mo¾né otvori» ¹ablónu"
+
+#: src/bufferlist.C:476 src/lyxfunc.C:3074 src/lyxfunc.C:3237
+msgid "Document is already open:"
+msgstr "Dokument je u¾ otvorený:"
+
+#: src/bufferlist.C:478
+msgid "Do you want to reload that document?"
+msgstr "Chcete znovu naèíta» ten dokument?"
+
+#: src/bufferlist.C:496
+msgid "File `"
+msgstr "Súbor `"
+
+#: src/bufferlist.C:497
+msgid "' is read-only."
+msgstr "' je iba na èítanie."
+
+#. Ask if the file should be checked out for
+#. viewing/editing, if so: load it.
+#: src/bufferlist.C:512
+msgid "Do you want to retrieve file under version control?"
+msgstr "Chcete otvori»súbor s kontrolovaním verzií?"
+
+#: src/bufferlist.C:520
+msgid "Cannot open specified file:"
+msgstr "Nemô¾em otvori» ¹pecifikovaný súbor:"
+
+#: src/bufferlist.C:522
+msgid "Create new document with this name?"
+msgstr "Vytvori» nový dokument s týmto názvom?"
+
+#: src/BufferView2.C:63
+msgid "Specified file is unreadable: "
+msgstr "©pecifikovaný súbor je neèitateµný: "
+
+#: src/BufferView2.C:73
+msgid "Cannot open specified file: "
+msgstr "Nie je mo¾né otvori» ¹pecifikovaný súbor: "
+
+#: src/BufferView2.C:407 src/BufferView2.C:421
+msgid "Open/Close..."
+msgstr "Otvori»/Zatvori»..."
+
+#: src/BufferView2.C:435 src/LyXAction.C:406
+msgid "Undo"
+msgstr "Vráti» spä»"
+
+#: src/BufferView2.C:440
+msgid "No further undo information"
+msgstr "Nie je viac informácií pre funkciu Vráti» spä»"
+
+#: src/BufferView2.C:451
+msgid "Redo not yet supported in math mode"
+msgstr "Funkcia Opakova» vrátené nie je podporovaná v matematickom móde"
+
+#: src/BufferView2.C:456 src/LyXAction.C:357
+msgid "Redo"
+msgstr "Opakova» vrátené"
+
+#: src/BufferView2.C:461
+msgid "No further redo information"
+msgstr "Nie je viac informácií pre funkciu Opakova» vrátené"
+
+#: src/BufferView2.C:558
+msgid "Paragraph environment type copied"
+msgstr "Parametre odstavca sú skopírované"
+
+#: src/BufferView2.C:567
+msgid "Paragraph environment type set"
+msgstr "Parametre odstavca sú nastavené"
+
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
+msgid "Copy"
+msgstr "Kopírova»"
+
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
+msgid "Cut"
+msgstr "Vystrihnú»"
+
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
+msgid "Paste"
+msgstr "Vlo¾i»"
+
+#: src/BufferView2.C:636 src/BufferView2.C:640
+msgid "No more notes"
+msgstr "U¾ nie je viac poznámok"
+
+#: src/bufferview_funcs.C:39
+msgid "Inserting Footnote..."
+msgstr "Vkladám poznámku pod èiarou..."
+
+#: src/bufferview_funcs.C:76
+msgid "Inserting margin note..."
+msgstr "Vkladám poznámku na okraji..."
+
+#: src/bufferview_funcs.C:100
+msgid "Error! unknown language"
+msgstr "Chyba! neznámy jazyk"
+
+#: src/LyXAction.C:326 src/bufferview_funcs.C:109
+msgid "Melt"
+msgstr "Spojené"
+
+#: src/bufferview_funcs.C:145
+msgid "Changed environment depth (in possible range, maybe not)"
+msgstr "Håbka vnorenia je zmenená (v mo¾nom rozsahu)"
+
+#: src/bufferview_funcs.C:267
+msgid "Font: "
+msgstr "Písmo: "
+
+#: src/bufferview_funcs.C:271
+msgid ", Depth: "
+msgstr ", Håbka: "
+
+#: src/bufferview_funcs.C:277
+msgid ", Spacing: "
+msgstr ", Riadkovanie: "
+
+#: src/bufferview_funcs.C:280
+msgid "Single"
+msgstr "Jednoduché"
+
+#: src/bufferview_funcs.C:283
+msgid "Onehalf"
+msgstr "Polovièné"
+
+#: src/bufferview_funcs.C:286
+msgid "Double"
+msgstr "Dvojité"
+
+#: src/bufferview_funcs.C:289
+msgid "Other ("
+msgstr "Iné ("
+
+#: src/BufferView_pimpl.C:256
+msgid "Formatting document..."
+msgstr "Formátujem dokument..."
+
+#: src/BufferView_pimpl.C:340 src/BufferView_pimpl.C:344
+msgid "No more errors"
+msgstr "®iadne ïal¹ie chyby"
+
+#: src/Chktex.C:79
+msgid "ChkTeX warning id #"
+msgstr "Varovanie chktexu id #"
+
+#: src/ColorHandler.C:83
+msgid "LyX: Unknown X11 color "
+msgstr "LyX: Neznáma X11 farba "
+
+#: src/ColorHandler.C:84
+msgid " for "
+msgstr " z "
+
+#: src/ColorHandler.C:85
+msgid "     Using black instead, sorry!."
+msgstr "     nahradená èiernou, µutujem!."
+
+#: src/ColorHandler.C:92
+msgid "LyX: X11 color "
+msgstr "LyX: X11 farba "
+
+#: src/ColorHandler.C:93 src/ColorHandler.C:99
+msgid " allocated for "
+msgstr " pridelená pre "
+
+#: src/ColorHandler.C:98
+msgid "LyX: Using approximated X11 color "
+msgstr "LyX: Pou¾ívam pribli¾né X11 farby "
+
+#: src/ColorHandler.C:139
+msgid "LyX: Couldn't allocate '"
+msgstr "LyX: Nemô¾em priradi» '"
+
+#: src/ColorHandler.C:140
+msgid "' for "
+msgstr "' pre "
+
+#: src/ColorHandler.C:141
+msgid " with (r,g,b)=("
+msgstr " s(r,g,b)=("
+
+#: src/ColorHandler.C:144
+msgid "     Using closest allocated color with (r,g,b)=("
+msgstr "     pou¾itá najbli¾¹ia priradená farba z (r,g,b)=("
+
+#: src/ColorHandler.C:148
+msgid ") instead.\n"
+msgstr ").\n"
+
+#: src/ColorHandler.C:149
+msgid "Pixel ["
+msgstr "Pixel ["
+
+#: src/ColorHandler.C:149
+msgid "] is used."
+msgstr "] je pou¾itý."
+
+#: src/combox.C:502
+msgid "Done"
+msgstr "Hotovo"
+
+#: src/converter.C:165 src/converter.C:195
+msgid "Can not view file"
+msgstr "Nemô¾em si prezrie» súbor"
+
+#: src/converter.C:166
+msgid "No information for viewing "
+msgstr "®iadne informácie pre prezeranie "
+
+#: src/converter.C:188 src/converter.C:618
+msgid "Executing command:"
+msgstr "Vykonávam príkaz:"
+
+#: src/converter.C:196
+msgid "Error while executing"
+msgstr "Chyba poèas vykonávania"
+
+#: src/converter.C:552 src/converter.C:645
+msgid "Can not convert file"
+msgstr "Nemô¾em konvertova» súbor"
+
+#: src/converter.C:553
+msgid "No information for converting from "
+msgstr "®iadne informácie pre konverziu z "
+
+#: src/converter.C:642
+msgid "There were errors during the Build process."
+msgstr "Poèas spracovania sa vyskytli chyby."
+
+#: src/converter.C:643 src/converter.C:788 src/converter.C:858
+msgid "You should try to fix them."
+msgstr "Mali by ste ich opravi»."
+
+#: src/converter.C:668
+msgid "Error while trying to move directory:"
+msgstr "Chyba poèas presúvania prieèinku:"
+
+#: src/converter.C:703
+msgid "Error while trying to move file:"
+msgstr "Chyba poèas presúvania súboru:"
+
+#: src/converter.C:704
+msgid "to "
+msgstr "na "
+
+#: src/converter.C:783 src/converter.C:853
+msgid "One error detected"
+msgstr "Jedna chyba nájdená"
+
+#: src/converter.C:784 src/converter.C:854
+msgid "You should try to fix it."
+msgstr "Mali by ste sa pokúsi» to opravi»."
+
+#: src/converter.C:787 src/converter.C:857
+msgid " errors detected."
+msgstr " chýb nájdených."
+
+#: src/converter.C:792
+msgid "There were errors during running of "
+msgstr "Vyskytli sa chyby poèas spracovania "
+
+#: src/converter.C:796 src/converter.C:863
+msgid "The operation resulted in"
+msgstr "Operácia skonèila na"
+
+#: src/converter.C:797 src/converter.C:864
+msgid "an empty file."
+msgstr "prázdnom súbore."
+
+#: src/converter.C:798 src/converter.C:865
+msgid "Resulting file is empty"
+msgstr "Výsledný súbor je prázdny"
+
+#: src/converter.C:816
+msgid "Running LaTeX..."
+msgstr "LaTeX pracuje..."
+
+#: src/converter.C:846
+msgid "LaTeX did not work!"
+msgstr "LaTeX nefunguje!"
+
+#: src/converter.C:847
+msgid "Missing log file:"
+msgstr "Chýba log súbor:"
+
+#: src/converter.C:860
+msgid "There were errors during the LaTeX run."
+msgstr "Poèas behu LaTeXu sa vyskytli chyby."
+
+#: src/credits.C:55
+msgid "ERROR: LyX wasn't able to read CREDITS file"
+msgstr "Chyba: LyXu sa nepodarilo naèíta» súbor s CREDITS"
+
+#: src/credits.C:59
+msgid "Please install correctly to estimate the great"
+msgstr "Prosím vykonajte správne in¹taláciu na ocenenie veµkého"
+
+#: src/credits.C:62
+msgid "amount of work other people have done for the LyX project."
+msgstr "mno¾stva práce v¹etkých µudí, ktorí pracovali pre LyX projekt."
+
+#: src/credits.C:72
+msgid "Credits"
+msgstr "Kredity"
+
+#: src/credits_form.C:19 src/form1.C:43 src/form1.C:117 src/form1.C:261
+#: src/frontends/xforms/form_citation.C:85
+#: src/frontends/xforms/form_document.C:46
+#: src/frontends/xforms/form_index.C:41
+#: src/frontends/xforms/form_paragraph.C:330
+#: src/frontends/xforms/form_print.C:52 src/frontends/xforms/form_ref.C:71
+#: src/frontends/xforms/form_tabular_create.C:28
+#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:62
+#: src/insets/insetinclude.C:52 src/lyx.C:47 src/lyx.C:105
+#: src/mathed/math_forms.C:109 src/print_form.C:28 src/sp_form.C:38
+msgid "OK"
+msgstr "OK"
+
+#: src/credits_form.C:24
+msgid "Matthias"
+msgstr "Matthias"
+
+#: src/credits_form.C:29
+msgid "All these people have contributed to the LyX project. Thanks,"
+msgstr "V¹etci títo µudia prispeli do projektu LyX. Vïaka,"
+
+#: src/CutAndPaste.C:450
+msgid ""
+"\n"
+"because of class conversion from\n"
+msgstr ""
+"\n"
+"kvôli triede konverzie z\n"
+
+#: src/CutAndPaste.C:476 src/insets/insettext.C:969 src/text.C:3961
+#: src/text.C:3969 src/text.C:3996 src/text2.C:2197 src/text2.C:2310
+msgid "Impossible operation"
+msgstr "Nemo¾ná operácia"
+
+#: src/CutAndPaste.C:477
+msgid "Can't paste float into float!"
+msgstr "Nie je mo¾né vlo¾i» plávajúci objekt do plávajúceho objektu! "
+
+#: src/CutAndPaste.C:478 src/insets/insetert.C:67
+#: src/insets/insettabular.C:1702 src/insets/insettext.C:971 src/text.C:3963
+#: src/text.C:3971 src/text.C:3998
+msgid "Sorry."
+msgstr "¥utujem."
+
+#: src/debug.C:32
+msgid "No debugging message"
+msgstr "®iadne správy pre ladenie"
+
+#: src/debug.C:33
+msgid "General information"
+msgstr "V¹eobecné informácie"
+
+#: src/debug.C:34
+msgid "Program initialisation"
+msgstr "Inicializácia programu"
+
+#: src/debug.C:35
+msgid "Keyboard events handling"
+msgstr "spravovanie udalostí klávesnice"
+
+#: src/debug.C:36
+msgid "GUI handling"
+msgstr "Spravovanie GUI"
+
+#: src/debug.C:37
+msgid "Lyxlex grammer parser"
+msgstr "Analyzátor gramatiky Lyxlex"
+
+#: src/debug.C:38
+msgid "Configuration files reading"
+msgstr "Naèítavanie konfiguraèných súborov"
+
+#: src/debug.C:39
+msgid "Custom keyboard definition"
+msgstr "Vlastné definovaná klávesnica"
+
+#: src/debug.C:40
+msgid "LaTeX generation/execution"
+msgstr "Spú¹»anie/generovanie LaTeXu"
+
+#: src/debug.C:41
+msgid "Math editor"
+msgstr "Editor matematiky"
+
+#: src/debug.C:42
+msgid "Font handling"
+msgstr "Manipulácia s písmom"
+
+#: src/debug.C:43
+msgid "Textclass files reading"
+msgstr "Naèítavanie súborov s textovými triedami"
+
+#: src/debug.C:44
+msgid "Version control"
+msgstr "Kontrola verzií"
+
+#: src/debug.C:45
+msgid "External control interface"
+msgstr "Rozhranie externej kontroly"
+
+#: src/debug.C:46
+msgid "Keep *roff temporary files"
+msgstr "Uchova» doèasné *roff súbory"
+
+#: src/debug.C:47
+msgid "User commands"
+msgstr "Pou¾ívateµský príkaz"
+
+#: src/debug.C:48
+msgid "The LyX Lexxer"
+msgstr "LyX Lexxer"
+
+#: src/debug.C:49
+msgid "Dependency information"
+msgstr "Informácie o závislostiach"
+
+#: src/debug.C:50
+msgid "LyX Insets"
+msgstr "LyX prílohy"
+
+#: src/debug.C:51
+msgid "Files used by LyX"
+msgstr "Súbory pou¾ívané LyXom"
+
+#: src/debug.C:52
+msgid "All debugging messages"
+msgstr "V¹etky ladiace informácie"
+
+#: src/debug.C:100
+msgid "Debugging `"
+msgstr "Ladenie `"
+
+#: src/exporter.C:47
+msgid "Can not export file"
+msgstr "Nemô¾em exportova» súbor"
+
+#: src/exporter.C:48
+msgid "No information for exporting to "
+msgstr "Nie sú ¾iadne informácie pre export do"
+
+#: src/exporter.C:74
+msgid "Cannot run latex."
+msgstr "Nemô¾em spusti» latex"
+
+#: src/exporter.C:75
+msgid "The path to the lyx file cannot contain spaces."
+msgstr "Cesta k súboru lyx nemô¾e obsahova» medzery."
+
+#: src/exporter.C:89
+msgid "Document exported as "
+msgstr "Dokument exportovaný ako "
+
+#: src/exporter.C:91
+msgid " to file `"
+msgstr " do súboru `"
+
+#: src/MenuBackend.C:443 src/MenuBackend.C:450 src/ext_l10n.h:1
+#: src/ext_l10n.h:4
+msgid "File|F"
+msgstr "Súbor|S"
+
+#: src/MenuBackend.C:444 src/ext_l10n.h:2 src/ext_l10n.h:5
+msgid "Edit|E"
+msgstr "Upravi»|E"
+
+#: src/ext_l10n.h:3 src/ext_l10n.h:11
+msgid "Help|H"
+msgstr "Pomocník|c"
+
+#: src/ext_l10n.h:6
+msgid "Insert|I"
+msgstr "Vlo¾i»|I"
+
+#: src/ext_l10n.h:7
+msgid "Layout|L"
+msgstr "Rozlo¾enie|R"
+
+#: src/ext_l10n.h:8
+msgid "View|V"
+msgstr "Prezeranie|P"
+
+#: src/ext_l10n.h:9
+msgid "Navigate|N"
+msgstr "Navigácia|N"
+
+#: src/MenuBackend.C:446 src/ext_l10n.h:10
+msgid "Documents|D"
+msgstr "Dokumenty|D"
+
+#: src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
+msgid "New...|N"
+msgstr "Nový...|N"
+
+#: src/ext_l10n.h:13 src/ext_l10n.h:18
+msgid "New from Template...|T"
+msgstr "Nový zo ¹ablóny...|b"
+
+#: src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
+msgid "Open...|O"
+msgstr "Otvori»...|O"
+
+#: src/MenuBackend.C:415 src/ext_l10n.h:15 src/ext_l10n.h:25
+msgid "Import|I"
+msgstr "Importova»|I"
+
+#: src/ext_l10n.h:16 src/ext_l10n.h:29
+msgid "Exit|x"
+msgstr "Koniec|K"
+
+#: src/ext_l10n.h:20
+msgid "Close|C"
+msgstr "Zavrie»|Z"
+
+#: src/ext_l10n.h:21
+msgid "Save|S"
+msgstr "Ulo¾i»|U"
+
+#: src/ext_l10n.h:22
+msgid "Save As...|A"
+msgstr "Ulo¾i» ako...|a"
+
+#: src/ext_l10n.h:23
+msgid "Revert to Saved|d"
+msgstr "Návrat k ulo¾enému|v"
+
+#: src/ext_l10n.h:24
+msgid "Version Control|V"
+msgstr "Kontrola verzie|K"
+
+#: src/ext_l10n.h:26
+msgid "Export|E"
+msgstr "Exportova»|E"
+
+#: src/ext_l10n.h:27
+msgid "Print...|P"
+msgstr "Tlaè...|T"
+
+#: src/ext_l10n.h:28
+msgid "Fax...|F"
+msgstr "Fax...|F"
+
+#: src/ext_l10n.h:30
+msgid "Register|R"
+msgstr "Registrova»|R"
+
+#: src/ext_l10n.h:31
+msgid "Check In Changes|I"
+msgstr "Skontrolova» zmeny|S"
+
+#: src/ext_l10n.h:32
+msgid "Check Out for Edit|O"
+msgstr "Skontrolova» na úpravy|o"
+
+#: src/ext_l10n.h:33
+msgid "Revert to Last Version|L"
+msgstr "Vráti» sa k poslednej verzii|P"
+
+#: src/ext_l10n.h:34
+msgid "Undo Last Check In|U"
+msgstr "Vráti» poslednú registráciu |V"
+
+#: src/ext_l10n.h:35
+msgid "Show History|H"
+msgstr "Zobrazi» históriu"
+
+#: src/ext_l10n.h:36 src/ext_l10n.h:51
+msgid "Preferences...|P"
+msgstr "Nastavenia...|N"
+
+#: src/ext_l10n.h:37 src/ext_l10n.h:52
+msgid "Reconfigure|R"
+msgstr "Rekonfigurácia|R"
+
+#: src/ext_l10n.h:38
+msgid "Undo|U"
+msgstr "Spä»|S"
+
+#: src/ext_l10n.h:39
+msgid "Redo|d"
+msgstr "Opä»|O"
+
+#: src/ext_l10n.h:40
+msgid "Cut|C"
+msgstr "Vystrihnú»|V"
+
+#: src/ext_l10n.h:41
+msgid "Copy|o"
+msgstr "Kopírova»|o"
+
+#: src/ext_l10n.h:42
+msgid "Paste|a"
+msgstr "Vlo¾i»|l"
+
+#: src/ext_l10n.h:43
+msgid "Paste External Selection|x"
+msgstr "Vlo¾i» externú selekciu (zo schránku)|x"
+
+#: src/ext_l10n.h:44
+msgid "Find & Replace...|F"
+msgstr "Nájs» a nahradi»|h"
+
+#: src/ext_l10n.h:45
+msgid "Tabular|T"
+msgstr "Formát tabuµky|t"
+
+#: src/ext_l10n.h:46
+msgid "Floats & Insets|I"
+msgstr "Plávajúce a vlo¾ené objekty|v"
+
+#: src/ext_l10n.h:47
+msgid "Math Panel|l"
+msgstr "Matematický panel|M"
+
+#: src/ext_l10n.h:48
+msgid "Spellchecker...|S"
+msgstr "Kontrola pravopisu...|K"
+
+#: src/ext_l10n.h:49
+msgid "Check TeX|h"
+msgstr "Kontrola TeXu|X"
+
+#: src/ext_l10n.h:50
+msgid "Remove All Error Boxes|E"
+msgstr "Odstráni» v¹etky chybové hlásenia|h"
+
+#: src/ext_l10n.h:53
+msgid "as Lines|L"
+msgstr "ako riadky|r"
+
+#: src/ext_l10n.h:54
+msgid "as Paragraphs|P"
+msgstr "ako odstavce|o"
+
+#: src/ext_l10n.h:55
+msgid "Open/Close|O"
+msgstr "Otvori»/Zavrie»|Z"
+
+#: src/ext_l10n.h:56
+msgid "Melt|M"
+msgstr "Spoji»|S"
+
+#: src/ext_l10n.h:57
+msgid "Open All Figures/Tables|F"
+msgstr "Otvori» v¹etky obrázky/tabuµky|o"
+
+#: src/ext_l10n.h:58
+msgid "Close All Figures/Tables|T"
+msgstr "Zatvori» v¹etky obrázky/tabuµky|Z"
+
+#: src/ext_l10n.h:59
+msgid "Open All Footnotes/Marginal Notes|A"
+msgstr "Otvori» v¹etky poznámky pod èiarou/na okrajoch |p"
+
+#: src/ext_l10n.h:60
+msgid "Close All Footnotes/Marginal Notes|C"
+msgstr "Zatvori» v¹etky poznámky pod èiarou/na okrajoch |t"
+
+#: src/ext_l10n.h:61
+msgid "Multicolumn|M"
+msgstr "Viacståpcové|V"
+
+#: src/ext_l10n.h:62
+msgid "Line Top|T"
+msgstr "Èiara hore|h"
+
+#: src/ext_l10n.h:63
+msgid "Line Bottom|B"
+msgstr "Èiara dole|d"
+
+#: src/ext_l10n.h:64
+msgid "Line Left|L"
+msgstr "Èiara vµavo|v"
+
+#: src/ext_l10n.h:65
+msgid "Line Right|R"
+msgstr "Èiara vpravo|p"
+
+#: src/ext_l10n.h:66
+msgid "Align Left|e"
+msgstr "Zarovna» vµavo|µ"
+
+#: src/ext_l10n.h:67
+msgid "Align Center|C"
+msgstr "Zarovna» nastred|s"
+
+#: src/ext_l10n.h:68
+msgid "Align Right|i"
+msgstr "Zarovna» vpravo|r"
+
+#: src/ext_l10n.h:69
+msgid "V.Align Top|o"
+msgstr "V. zarov. hore|o"
+
+#: src/ext_l10n.h:70
+msgid "V.Align Center|n"
+msgstr "V. zarov. nastred|z"
+
+#: src/ext_l10n.h:71
+msgid "V.Align Bottom|V"
+msgstr "V. zarov. dole|a"
+
+#: src/ext_l10n.h:72
+msgid "Append Row|A"
+msgstr "Vlo¾i» riadok"
+
+#: src/ext_l10n.h:73
+msgid "Append Column|u"
+msgstr "Vlo¾i» ståpec"
+
+#: src/ext_l10n.h:74
+msgid "Delete Row|w"
+msgstr "Zmaza» riadok"
+
+#: src/ext_l10n.h:75
+msgid "Delete Column|D"
+msgstr "Zmaza» ståpec"
+
+#: src/ext_l10n.h:76
+msgid "Math Formula|h"
+msgstr "Matematický vzorec|M"
+
+#: src/ext_l10n.h:77
+msgid "Display Formula|D"
+msgstr "Zobrazi» vzorec|z"
+
+#: src/ext_l10n.h:78
+msgid "Special Character|S"
+msgstr "©peciálny znak|p"
+
+#: src/ext_l10n.h:79
+msgid "Citation Reference...|C"
+msgstr "Referencia na citáciu...|c"
+
+#: src/ext_l10n.h:80
+msgid "Cross Reference...|R"
+msgstr "Krí¾ová referencia...|r"
+
+#: src/ext_l10n.h:81
+msgid "Label...|L"
+msgstr "Znaèka...|n"
+
+#: src/ext_l10n.h:82
+msgid "Footnote|F"
+msgstr "Poznámka pod èiarou|P"
+
+#: src/ext_l10n.h:83
+msgid "Marginal Note|M"
+msgstr "Poznámka na okraji|o"
+
+#: src/ext_l10n.h:84
+msgid "Index Entry...|I"
+msgstr "Polo¾ka indexu|i"
+
+#: src/ext_l10n.h:85
+msgid "Index Entry of Preceeding Word|W"
+msgstr "Predchádzajúce slovo ako polo¾ka indexu|s"
+
+#: src/ext_l10n.h:86
+msgid "URL...|U"
+msgstr "URL...|U"
+
+#: src/ext_l10n.h:87
+msgid "Note...|N"
+msgstr "Poznámka...|n"
+
+#: src/ext_l10n.h:88
+msgid "Lists & TOC|O"
+msgstr "Zoznamy a Obsah|O"
+
+#: src/ext_l10n.h:89
+msgid "Figure...|g"
+msgstr "Obrázok...|b"
+
+#: src/ext_l10n.h:90
+msgid "Tabular...|b"
+msgstr "Tabuµku...|t"
+
+#: src/ext_l10n.h:91
+msgid "Floats|a"
+msgstr "Plávajúce|l"
+
+#: src/ext_l10n.h:92
+msgid "Include File|e"
+msgstr "Zahrnú» súbor|a"
+
+#: src/ext_l10n.h:93
+msgid "Insert File|t"
+msgstr "Vlo¾i» súbor|V"
+
+#: src/ext_l10n.h:94
+msgid "External Material...|x"
+msgstr "Externý materiál...|x"
+
+#: src/ext_l10n.h:95
+msgid "Superscript|S"
+msgstr "Horný index|H"
+
+#: src/ext_l10n.h:96
+msgid "Subscript|u"
+msgstr "Dolný index|D"
+
+#: src/ext_l10n.h:97
+msgid "HFill|H"
+msgstr "Horizontálne vyplnenie|H"
+
+#: src/ext_l10n.h:98
+msgid "Hyphenation Point|P"
+msgstr "Bod rozdelenia slova|B"
+
+#: src/ext_l10n.h:99
+msgid "Protected Blank|B"
+msgstr "Chránená medzera|m"
+
+#: src/ext_l10n.h:100
+msgid "Linebreak|L"
+msgstr "Zlom riadku|Z"
+
+#: src/ext_l10n.h:101
+msgid "Ellipsis|i"
+msgstr "Trojbodka|T"
+
+#: src/ext_l10n.h:102
+msgid "End of Sentence|E"
+msgstr "Koniec vety|K"
+
+#: src/ext_l10n.h:103
+msgid "Ordinary Quote|Q"
+msgstr "Obyèajné úvodzovky|O"
+
+#: src/ext_l10n.h:104
+msgid "Menu Separator|M"
+msgstr "Separátor ponuky|S"
+
+#: src/ext_l10n.h:105
+msgid "Figure Float|F"
+msgstr "Plávajúci obrázok|o"
+
+#: src/ext_l10n.h:106
+msgid "Table Float|T"
+msgstr "Plávajúca tabuµka|t"
+
+#: src/ext_l10n.h:107
+msgid "Wide Figure Float|W"
+msgstr "©iroko plávajúci obrázok|r"
+
+#: src/ext_l10n.h:108
+msgid "Wide Table Float|d"
+msgstr "©iroko plávajúca tabuµka|i"
+
+#: src/ext_l10n.h:109
+msgid "Algorithm Float|A"
+msgstr "Plávajúci algoritmus|a"
+
+#: src/ext_l10n.h:110
+msgid "Table of Contents|C"
+msgstr "Obsah|O"
+
+#: src/ext_l10n.h:111
+msgid "List of Figures|F"
+msgstr "Zoznam obrázkov|o"
+
+#: src/ext_l10n.h:112
+msgid "List of Tables|T"
+msgstr "Zoznam tabuliek|t"
+
+#: src/ext_l10n.h:113
+msgid "List of Algorithms|A"
+msgstr "Zoznam algoritmov|a"
+
+#: src/ext_l10n.h:114
+msgid "Index List|I"
+msgstr "Index |I"
+
+#: src/ext_l10n.h:115
+msgid "BibTeX Reference...|B"
+msgstr "BibTeX Referencia...|B"
+
+#: src/ext_l10n.h:116
+msgid "LyX Document...|X"
+msgstr "LyX Dokument...|X"
+
+#: src/ext_l10n.h:117
+msgid "Ascii as Lines...|L"
+msgstr "Ascii ako riadky...|R"
+
+#: src/ext_l10n.h:118
+msgid "Ascii as Paragraphs...|P"
+msgstr "Ascii ako odstavce...|o"
+
+#: src/ext_l10n.h:119
+msgid "Character...|C"
+msgstr "Znak...|Z"
+
+#: src/ext_l10n.h:120
+msgid "Paragraph...|P"
+msgstr "Odstavec...|O"
+
+#: src/ext_l10n.h:121
+msgid "Document...|D"
+msgstr "Dokument...|D"
+
+#: src/ext_l10n.h:122
+msgid "Tabular...|T"
+msgstr "Tabuµka...|T"
+
+#: src/ext_l10n.h:123
+msgid "Emphasize Style|E"
+msgstr "Zvýraznený ¹týl|Z"
+
+#: src/ext_l10n.h:124
+msgid "Noun Style|N"
+msgstr "©týl kapitálky|K"
+
+#: src/ext_l10n.h:125
+msgid "Bold Style|B"
+msgstr "Tuèný ¹týl|u"
+
+#: src/ext_l10n.h:126
+msgid "TeX Style|X"
+msgstr "TeX ¹týl|X"
+
+#: src/ext_l10n.h:127
+msgid "Change Environment Depth|v"
+msgstr "Zmeni» håbku vnorenia|b"
+
+#: src/ext_l10n.h:128
+msgid "LaTeX Preamble...|L"
+msgstr "Preambula LaTeXu...|L"
+
+#: src/ext_l10n.h:129
+msgid "Toggle Appendix|A"
+msgstr "Prepnú» prílohu|p"
+
+#: src/ext_l10n.h:130
+msgid "Save Layout as Default|S"
+msgstr "Ulo¾i» rozlo¾enie ako ¹tandardné|U"
+
+#: src/ext_l10n.h:131
+msgid "Build Program|B"
+msgstr "Vytvori» program|V"
+
+#: src/ext_l10n.h:132
+msgid "Update|U"
+msgstr "Aktualizova»|A"
+
+#: src/ext_l10n.h:133
+msgid "LaTeX Logfile|L"
+msgstr "Log súbor LaTeXu|L"
+
+#: src/ext_l10n.h:134
+msgid "Table of Contents|T"
+msgstr "Obsah|O"
+
+#: src/ext_l10n.h:135
+msgid "Error|E"
+msgstr "Chyba|C"
+
+#: src/ext_l10n.h:136
+msgid "Note|N"
+msgstr "Poznámka|P"
+
+#: src/ext_l10n.h:137
+msgid "Introduction|I"
+msgstr "Úvod|I"
+
+#: src/ext_l10n.h:138
+msgid "Tutorial|T"
+msgstr "Príruèka|P"
+
+#: src/ext_l10n.h:139
+msgid "User's Guide|U"
+msgstr "Pou¾ívateµov sprievodca|s"
+
+#: src/ext_l10n.h:140
+msgid "Extended Features|E"
+msgstr "Roz¹írené vlastnosti|R"
+
+#: src/ext_l10n.h:141
+msgid "Customization|C"
+msgstr "Prispôsobenie|n"
+
+#: src/ext_l10n.h:142
+msgid "Reference Manual|R"
+msgstr "Referenèná príruèka"
+
+#: src/ext_l10n.h:143
+msgid "FAQ|F"
+msgstr "Èasto kladené otázky -FAQ|F"
+
+#: src/ext_l10n.h:144
+msgid "Table of Contents|a"
+msgstr "Obsah|O"
+
+#: src/ext_l10n.h:145
+msgid "Known Bugs|K"
+msgstr "Známe chyby|Z"
+
+#: src/ext_l10n.h:146
+msgid "LaTeX Configuration|L"
+msgstr "Nastavenie LaTeXu|L"
+
+#: src/ext_l10n.h:147
+msgid "Copyright and Warranty...|o"
+msgstr "Autorské práva a garancia...|A"
+
+#: src/ext_l10n.h:148
+msgid "Credits...|d"
+msgstr "Prispievatelia..."
+
+#: src/ext_l10n.h:149
+msgid "Version...|V"
+msgstr "Verzia...|V"
+
+#: src/ext_l10n.h:150
+msgid "\t\t\tAbstract"
+msgstr "\t\t\tVýòatok"
+
+#: src/ext_l10n.h:151
+msgid "ACT"
+msgstr ""
+
+#: src/ext_l10n.h:152
+msgid "AMS"
+msgstr ""
+
+#: src/ext_l10n.h:153
+msgid "AT_RISE:"
+msgstr ""
+
+#: src/ext_l10n.h:154
+msgid "Abstract"
+msgstr "Výòatok"
+
+#: src/ext_l10n.h:155
+msgid "Accepted"
+msgstr "Prípustný"
+
+#: src/ext_l10n.h:156
+msgid "Acknowledgement"
+msgstr "Poïakovanie"
+
+#: src/ext_l10n.h:157
+msgid "Acknowledgement*"
+msgstr "Poïakovanie*"
+
+#: src/ext_l10n.h:158
+msgid "Acknowledgements"
+msgstr "Poïakovanie"
+
+#: src/ext_l10n.h:159
+msgid "Acknowledgments"
+msgstr "Poïakovanie"
+
+#: src/ext_l10n.h:160
+msgid "Addchap"
+msgstr ""
+
+#: src/ext_l10n.h:161
+msgid "Addchap*"
+msgstr ""
+
+#: src/ext_l10n.h:162
+msgid "Addition"
+msgstr "Doplnok"
+
+#: src/ext_l10n.h:163
+msgid "Address"
+msgstr "Adresa"
+
+#: src/ext_l10n.h:164
+msgid "Addsec"
+msgstr ""
+
+#: src/ext_l10n.h:165
+msgid "Addsec*"
+msgstr ""
+
+#: src/ext_l10n.h:166
+msgid "Adresse"
+msgstr "Adresa"
+
+#: src/ext_l10n.h:167
+msgid "Affil"
+msgstr ""
+
+#: src/ext_l10n.h:168
+msgid "Affiliation"
+msgstr "Prièlenenie"
+
+#: src/ext_l10n.h:169
+msgid "Algorithm"
+msgstr "Algoritmus"
+
+#: src/ext_l10n.h:170
+msgid "And"
+msgstr "A"
+
+#: src/ext_l10n.h:171
+msgid "Anlagen"
+msgstr ""
+
+#: src/ext_l10n.h:172
+msgid "Anrede"
+msgstr ""
+
+#: src/ext_l10n.h:173
+msgid "Appendices"
+msgstr "Prílohy"
+
+#: src/ext_l10n.h:174
+msgid "Appendix"
+msgstr "Príloha"
+
+#: src/ext_l10n.h:175
+msgid "Author"
+msgstr "Autor"
+
+#: src/ext_l10n.h:176
+msgid "Author_Email"
+msgstr "Autorov_Email"
+
+#: src/ext_l10n.h:177
+msgid "Author_Running"
+msgstr ""
+
+#: src/ext_l10n.h:178
+msgid "Author_URL"
+msgstr "Autor_URL"
+
+#: src/ext_l10n.h:179
+msgid "Axiom"
+msgstr "Axióma"
+
+#: src/ext_l10n.h:180
+msgid "BLZ"
+msgstr ""
+
+#: src/ext_l10n.h:181
+msgid "Backaddress"
+msgstr "Adresa odosielateµa"
+
+#: src/ext_l10n.h:182
+msgid "Bank"
+msgstr "Banka"
+
+#: src/ext_l10n.h:183
+msgid "BankAccount"
+msgstr "Bankový úèet"
+
+#: src/ext_l10n.h:184
+msgid "BankCode"
+msgstr "Bankový_kód"
+
+#: src/ext_l10n.h:185
+msgid "Betreff"
+msgstr ""
+
+#: src/ext_l10n.h:186
+msgid "Bibliography"
+msgstr "Bibliografia"
+
+#: src/ext_l10n.h:187
+msgid "Biography"
+msgstr "®ivotopis"
+
+#: src/ext_l10n.h:188
+msgid "Brieftext"
+msgstr ""
+
+#: src/ext_l10n.h:189
+msgid "CC"
+msgstr ""
+
+#: src/ext_l10n.h:190
+msgid "CURTAIN"
+msgstr "OPONA"
+
+#: src/ext_l10n.h:191
+msgid "Caption"
+msgstr "Názov"
+
+#: src/ext_l10n.h:192
+msgid "Case"
+msgstr ""
+
+#: src/ext_l10n.h:193
+msgid "CenteredCaption"
+msgstr "Centrovaný_titulok"
+
+#: src/ext_l10n.h:194
+msgid "Chapter"
+msgstr "Kapitola"
+
+#: src/ext_l10n.h:195
+msgid "Chapter*"
+msgstr "Kapitola*"
+
+#: src/ext_l10n.h:196
+msgid "Chapter_Exercises"
+msgstr ""
+
+#: src/ext_l10n.h:197
+msgid "Citta"
+msgstr ""
+
+#: src/ext_l10n.h:198
+msgid "Claim"
+msgstr "Tvrdenie"
+
+#: src/ext_l10n.h:199
+msgid "Claim*"
+msgstr "Tvrdenie*"
+
+#: src/ext_l10n.h:200
+msgid "Closing"
+msgstr "Ukonèenie"
+
+#: src/ext_l10n.h:201
+msgid "Code"
+msgstr "Kód"
+
+#: src/ext_l10n.h:202
+msgid "Comment"
+msgstr "Komentár"
+
+#: src/ext_l10n.h:203
+msgid "Conclusion"
+msgstr "Záver"
+
+#: src/ext_l10n.h:204
+msgid "Conclusion*"
+msgstr "Záver*"
+
+#: src/ext_l10n.h:205
+msgid "Condition"
+msgstr "Podmienka"
+
+#: src/ext_l10n.h:206
+msgid "Conjecture"
+msgstr "Dohad"
+
+#: src/ext_l10n.h:207
+msgid "Conjecture*"
+msgstr "Dohad*"
+
+#: src/ext_l10n.h:208
+msgid "CopNum"
+msgstr ""
+
+#: src/ext_l10n.h:209
+msgid "Copyright"
+msgstr "Autorské práva"
+
+#: src/ext_l10n.h:210
+msgid "Corollary"
+msgstr ""
+
+#: src/ext_l10n.h:211
+msgid "Corollary*"
+msgstr ""
+
+#: src/ext_l10n.h:212
+msgid "Criterion"
+msgstr "Kritérium"
+
+#: src/ext_l10n.h:213
+msgid "CrossList"
+msgstr ""
+
+#: src/ext_l10n.h:214
+msgid "Current_Address"
+msgstr "Aktuálna_Adresa"
+
+#: src/ext_l10n.h:215
+msgid "Customer"
+msgstr "Zákazník"
+
+#: src/ext_l10n.h:216
+msgid "Data"
+msgstr "Údaj"
+
+#: src/ext_l10n.h:217
+msgid "Date"
+msgstr "Dátum"
+
+#: src/ext_l10n.h:218
+msgid "Datum"
+msgstr "Dátum"
+
+#: src/ext_l10n.h:219
+msgid "Dedication"
+msgstr "Venovanie"
+
+#: src/ext_l10n.h:220
+msgid "Dedicatory"
+msgstr "Venovací"
+
+#: src/ext_l10n.h:221
+msgid "Definition"
+msgstr "Definícia"
+
+#: src/ext_l10n.h:222
+msgid "Definition*"
+msgstr "Definícia*"
+
+#: src/ext_l10n.h:223
+msgid "Description"
+msgstr "Popis"
+
+#: src/ext_l10n.h:224
+msgid "Dialogue"
+msgstr "Dialóg"
+
+#: src/ext_l10n.h:225
+msgid "EMail"
+msgstr "E-Mail"
+
+#: src/ext_l10n.h:226
+msgid "EXT."
+msgstr ""
+
+#: src/ext_l10n.h:227
+msgid "Email"
+msgstr "E-mail"
+
+#: src/ext_l10n.h:228
+msgid "Encl"
+msgstr ""
+
+#: src/ext_l10n.h:229
+msgid "Encl."
+msgstr ""
+
+#: src/ext_l10n.h:230
+msgid "End_All_Slides"
+msgstr ""
+
+#: src/ext_l10n.h:231
+msgid "Enumerate"
+msgstr "Zoznam-èísla"
+
+#: src/ext_l10n.h:232
+msgid "Example"
+msgstr "Príklad"
+
+#: src/ext_l10n.h:233
+msgid "Example*"
+msgstr "Príklad*"
+
+#: src/ext_l10n.h:234
+msgid "Exercise"
+msgstr "Cvièenie"
+
+#: src/ext_l10n.h:235
+msgid "Extratitle"
+msgstr "Extra_nadpis"
+
+#: src/ext_l10n.h:236
+msgid "FADE_IN:"
+msgstr ""
+
+#: src/ext_l10n.h:237
+msgid "FADE_OUT:"
+msgstr ""
+
+#: src/ext_l10n.h:238
+msgid "Fact"
+msgstr "Fakt"
+
+#: src/ext_l10n.h:239
+msgid "Fact*"
+msgstr "Fakt*"
+
+#: src/ext_l10n.h:240
+msgid "FigCaption"
+msgstr "Popis_obrázka"
+
+#: src/ext_l10n.h:241
+msgid "FirstAuthor"
+msgstr "Prvá_Autor"
+
+#: src/ext_l10n.h:242
+msgid "FirstName"
+msgstr "Prvé_meno"
+
+#: src/ext_l10n.h:243
+msgid "FitBitmap"
+msgstr ""
+
+#: src/ext_l10n.h:244
+msgid "FitFigure"
+msgstr ""
+
+#: src/ext_l10n.h:245
+msgid "Foilhead"
+msgstr ""
+
+#: src/ext_l10n.h:246
+msgid "Footernote"
+msgstr "Poznámka pod èiarou"
+
+#: src/ext_l10n.h:247
+msgid "FourAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:248
+msgid "FourAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:249
+msgid "FrontMatter"
+msgstr ""
+
+#: src/ext_l10n.h:250
+msgid "Gruss"
+msgstr ""
+
+#: src/ext_l10n.h:251
+msgid "HTTP"
+msgstr "HTTP"
+
+#: src/ext_l10n.h:252
+msgid "Headnote"
+msgstr "Hlavièka"
+
+#: src/ext_l10n.h:253
+msgid "INT."
+msgstr ""
+
+#: src/ext_l10n.h:254
+msgid "IhrSchreiben"
+msgstr ""
+
+#: src/ext_l10n.h:255
+msgid "IhrZeichen"
+msgstr ""
+
+#: src/ext_l10n.h:256
+msgid "Institute"
+msgstr "In¹titút"
+
+#: src/ext_l10n.h:257
+msgid "Institution"
+msgstr "In¹titúcia"
+
+#: src/ext_l10n.h:258
+msgid "InvisibleText"
+msgstr "Neviditeµný text"
+
+#: src/ext_l10n.h:259
+msgid "Invoice"
+msgstr "Faktúra"
+
+#: src/ext_l10n.h:260
+msgid "Itemize"
+msgstr "Zoznam-odrá¾ky"
+
+#: src/ext_l10n.h:261 src/frontends/gnome/FormCitation.C:531
+msgid "Journal"
+msgstr "Denník"
+
+#: src/ext_l10n.h:262 src/frontends/gnome/FormIndex.C:89
+#: src/frontends/xforms/form_index.C:28
+msgid "Keyword"
+msgstr "Kµúèové slovo"
+
+#: src/ext_l10n.h:263
+msgid "Keywords"
+msgstr "Kµúèové slová"
+
+#: src/ext_l10n.h:264
+msgid "Konto"
+msgstr ""
+
+#: src/ext_l10n.h:265
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: src/ext_l10n.h:266
+msgid "LaTeX_Title"
+msgstr "LaTeXový_Nadpis"
+
+#: src/ext_l10n.h:267
+msgid "Labeling"
+msgstr "Oznaèovanie"
+
+#: src/ext_l10n.h:268
+msgid "Land"
+msgstr ""
+
+#: src/ext_l10n.h:269
+msgid "LandscapeSlide"
+msgstr ""
+
+#: src/ext_l10n.h:270
+msgid "Left_Header"
+msgstr "¥avá_Hlavièka"
+
+#: src/ext_l10n.h:271
+msgid "Lemma"
+msgstr ""
+
+#: src/ext_l10n.h:272
+msgid "Lemma*"
+msgstr ""
+
+#: src/ext_l10n.h:273
+msgid "Letter"
+msgstr "List"
+
+#: src/ext_l10n.h:274
+msgid "List"
+msgstr "Zoznam"
+
+#: src/ext_l10n.h:275
+msgid "ListOfSlides"
+msgstr ""
+
+#: src/ext_l10n.h:276
+msgid "Literal"
+msgstr ""
+
+#: src/ext_l10n.h:277
+msgid "Location"
+msgstr "Umiestnenie"
+
+#: src/ext_l10n.h:278
+msgid "Lowertitleback"
+msgstr ""
+
+#: src/ext_l10n.h:279
+msgid "LyX-Code"
+msgstr "LyX-Code"
+
+#: src/ext_l10n.h:280
+msgid "Mail"
+msgstr "Po¹ta"
+
+#: src/ext_l10n.h:281
+msgid "MarkBoth"
+msgstr "Oznaèenie_oboch"
+
+#: src/ext_l10n.h:282
+msgid "MathLetters"
+msgstr ""
+
+#: src/ext_l10n.h:283
+msgid "MeinZeichen"
+msgstr ""
+
+#: src/ext_l10n.h:284
+msgid "Minisec"
+msgstr "Minisek"
+
+#: src/ext_l10n.h:285
+msgid "MyRef"
+msgstr ""
+
+#: src/ext_l10n.h:286
+msgid "My_Address"
+msgstr "Moja_Adresa"
+
+#: src/ext_l10n.h:287
+msgid "Myref"
+msgstr ""
+
+#: src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+msgid "Name"
+msgstr "Meno"
+
+#: src/ext_l10n.h:289
+msgid "Narrative"
+msgstr "Rozprávanie"
+
+#: src/ext_l10n.h:290
+msgid "Notation"
+msgstr "Notácia"
+
+#: src/ext_l10n.h:291 src/insets/insetinfo.C:77 src/insets/insetinfo.C:102
+#: src/insets/insetinfo.C:231
+msgid "Note"
+msgstr "Poznámka"
+
+#: src/ext_l10n.h:292
+msgid "Note*"
+msgstr "Poznámka*"
+
+#: src/ext_l10n.h:293
+msgid "NoteToEditor"
+msgstr ""
+
+#: src/ext_l10n.h:294
+msgid "Offprint"
+msgstr "Separát"
+
+#: src/ext_l10n.h:295
+msgid "Offprints"
+msgstr "Separáty"
+
+#: src/ext_l10n.h:296
+msgid "Offsets"
+msgstr ""
+
+#: src/ext_l10n.h:297
+msgid "Oggetto"
+msgstr ""
+
+#: src/ext_l10n.h:298
+msgid "Opening"
+msgstr "Otvorenie"
+
+#: src/ext_l10n.h:299
+msgid "Ort"
+msgstr ""
+
+#: src/ext_l10n.h:300
+msgid "Overlay"
+msgstr "Prekrytie"
+
+#: src/ext_l10n.h:301
+msgid "PACS"
+msgstr ""
+
+#: src/ext_l10n.h:302
+msgid "PS"
+msgstr "PS"
+
+#: src/ext_l10n.h:303
+msgid "Paragraph"
+msgstr "Odstavec"
+
+#: src/ext_l10n.h:304
+msgid "Paragraph*"
+msgstr "Odstavec*"
+
+#: src/ext_l10n.h:305
+msgid "Part"
+msgstr "Èas»"
+
+#: src/ext_l10n.h:306
+msgid "Part*"
+msgstr "Èas»*"
+
+#: src/ext_l10n.h:307
+msgid "Petit"
+msgstr ""
+
+#: src/ext_l10n.h:308
+msgid "Phone"
+msgstr "Telefón"
+
+#: src/ext_l10n.h:309
+msgid "Place"
+msgstr "Miesto"
+
+#: src/ext_l10n.h:310
+msgid "PlaceFigure"
+msgstr "Umiestnenie_Obrázka"
+
+#: src/ext_l10n.h:311
+msgid "PlaceTable"
+msgstr "Umiestnenie_Tabuµky"
+
+#: src/ext_l10n.h:312
+msgid "PortraitSlide"
+msgstr ""
+
+#: src/ext_l10n.h:313
+msgid "PostalCommend"
+msgstr ""
+
+#: src/ext_l10n.h:314
+msgid "Postvermerk"
+msgstr ""
+
+#: src/ext_l10n.h:315
+msgid "Preprint"
+msgstr "Predtlaè"
+
+#: src/ext_l10n.h:316
+msgid "Problem"
+msgstr "Problém"
+
+#: src/ext_l10n.h:317
+msgid "ProgressContents"
+msgstr ""
+
+#: src/ext_l10n.h:318
+msgid "Proof"
+msgstr "Dôkaz"
+
+#: src/ext_l10n.h:319
+msgid "Property"
+msgstr "Vlastníctvo"
+
+#: src/ext_l10n.h:320
+msgid "Proposition"
+msgstr ""
+
+#: src/ext_l10n.h:321
+msgid "Proposition*"
+msgstr ""
+
+#: src/ext_l10n.h:322
+msgid "Publishers"
+msgstr "Vydavatelia"
+
+#: src/ext_l10n.h:323
+msgid "Question"
+msgstr "Otázka"
+
+#: src/ext_l10n.h:324
+msgid "Quotation"
+msgstr "Oznaèenie"
+
+#: src/ext_l10n.h:325
+msgid "Quote"
+msgstr "Citovanie"
+
+#: src/ext_l10n.h:326
+msgid "REVTEX_Title"
+msgstr "REVTEX_Nadpis"
+
+#: src/ext_l10n.h:327
+msgid "Received"
+msgstr "Prijaté"
+
+#: src/ext_l10n.h:328 src/frontends/kde/refdlg.C:62
+#: src/frontends/xforms/FormRef.C:36
+msgid "Reference"
+msgstr "Referencia"
+
+#: src/ext_l10n.h:329
+msgid "References"
+msgstr "Referencie"
+
+#: src/ext_l10n.h:330
+msgid "Remark"
+msgstr "Pripomienka"
+
+#: src/ext_l10n.h:331
+msgid "Remark*"
+msgstr "Pripomienka*"
+
+#: src/ext_l10n.h:332
+msgid "Remarks"
+msgstr "Pripomienky"
+
+#: src/ext_l10n.h:333
+msgid "RetourAdresse"
+msgstr ""
+
+#: src/ext_l10n.h:334
+msgid "ReturnAddress"
+msgstr ""
+
+#: src/ext_l10n.h:335
+msgid "RightHeader"
+msgstr ""
+
+#: src/ext_l10n.h:336
+msgid "Right_Address"
+msgstr "Adresa_vpravo"
+
+#: src/ext_l10n.h:337
+msgid "Right_Header"
+msgstr "Pravá_Hlavièka"
+
+#: src/ext_l10n.h:338
+msgid "Rotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:339
+msgid "Running_LaTeX_Title"
+msgstr "Pracuje_LaTeX_Nadpis"
+
+#: src/ext_l10n.h:340
+msgid "SCENE"
+msgstr "SCÉNA"
+
+#: src/ext_l10n.h:341
+msgid "SCENE*"
+msgstr "SCÉNA*"
+
+#: src/ext_l10n.h:342
+msgid "SGML"
+msgstr "SGML"
+
+#: src/ext_l10n.h:343
+msgid "Scrap"
+msgstr ""
+
+#: src/ext_l10n.h:344
+msgid "Section"
+msgstr "Oddiel"
+
+#: src/ext_l10n.h:345
+msgid "Section*"
+msgstr "Oddiel*"
+
+#: src/ext_l10n.h:346
+msgid "Send_To_Address"
+msgstr "Posla»_na_adresu"
+
+#: src/ext_l10n.h:347
+msgid "Seriate"
+msgstr ""
+
+#: src/ext_l10n.h:348
+msgid "ShortFoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:349
+msgid "ShortRotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:350
+msgid "ShortTitle"
+msgstr "Skrátenýnadpis"
+
+#: src/ext_l10n.h:351
+msgid "Signature"
+msgstr "Podpis"
+
+#: src/ext_l10n.h:352
+msgid "Slide"
+msgstr ""
+
+#: src/ext_l10n.h:353
+msgid "Slide*"
+msgstr ""
+
+#: src/ext_l10n.h:354
+msgid "SlideContents"
+msgstr ""
+
+#: src/ext_l10n.h:355
+msgid "SlideHeading"
+msgstr ""
+
+#: src/ext_l10n.h:356
+msgid "SlideSubHeading"
+msgstr ""
+
+#: src/ext_l10n.h:357
+msgid "Solution"
+msgstr "Rie¹enie"
+
+#: src/ext_l10n.h:358
+msgid "Speaker"
+msgstr "Hlásateµ"
+
+#: src/ext_l10n.h:359
+msgid "Specialmail"
+msgstr "Zvlá¹tna po¹ta"
+
+#: src/ext_l10n.h:360
+msgid "Stadt"
+msgstr ""
+
+#: src/ext_l10n.h:361
+msgid "Standard"
+msgstr "©tandard"
+
+#: src/ext_l10n.h:362
+msgid "State"
+msgstr "Stav"
+
+#: src/ext_l10n.h:363
+msgid "Strasse"
+msgstr ""
+
+#: src/ext_l10n.h:364
+msgid "Street"
+msgstr "Ulica"
+
+#: src/ext_l10n.h:365
+msgid "SubSection"
+msgstr "Pododdiel"
+
+#: src/ext_l10n.h:366
+msgid "SubTitle"
+msgstr "Podnadpis"
+
+#: src/ext_l10n.h:367
+msgid "Subject"
+msgstr "Predmet"
+
+#: src/ext_l10n.h:368
+msgid "Subjectclass"
+msgstr ""
+
+#: src/ext_l10n.h:369
+msgid "Subparagraph"
+msgstr "Pododstavec"
+
+#: src/ext_l10n.h:370
+msgid "Subparagraph*"
+msgstr "Pododstavec*"
+
+#: src/ext_l10n.h:371
+msgid "Subsection"
+msgstr "Pododdiel"
+
+#: src/ext_l10n.h:372
+msgid "Subsection*"
+msgstr "Pododdiel*"
+
+#: src/ext_l10n.h:373
+msgid "Subsubsection"
+msgstr "Podpododdiel"
+
+#: src/ext_l10n.h:374
+msgid "Subsubsection*"
+msgstr "Podpododdiel*"
+
+#: src/ext_l10n.h:375
+msgid "Subtitle"
+msgstr "Podnadpis"
+
+#: src/ext_l10n.h:376
+msgid "Summary"
+msgstr "Súhrn"
+
+#: src/ext_l10n.h:377
+msgid "Surname"
+msgstr "Priezvisko"
+
+#: src/ext_l10n.h:378
+msgid "TOC_Author"
+msgstr "Obsah_Autor"
+
+#: src/ext_l10n.h:379
+msgid "TOC_Title"
+msgstr "Obsah_Nadpis"
+
+#: src/ext_l10n.h:380
+msgid "TableComments"
+msgstr "Komentár_Tabuµky"
+
+#: src/ext_l10n.h:381
+msgid "TableRefs"
+msgstr "Referencia_Tabuµky"
+
+#: src/ext_l10n.h:382
+msgid "Telefax"
+msgstr "Telefax"
+
+#: src/ext_l10n.h:383
+msgid "Telefon"
+msgstr "Telefón"
+
+#: src/ext_l10n.h:384
+msgid "Telephone"
+msgstr "Telefón"
+
+#: src/ext_l10n.h:385
+msgid "Telex"
+msgstr "Telex"
+
+#: src/ext_l10n.h:386
+msgid "Thanks"
+msgstr "Vïaka"
+
+#: src/ext_l10n.h:387
+msgid "Theorem"
+msgstr "Teoréma"
+
+#: src/ext_l10n.h:388
+msgid "Theorem*"
+msgstr "Teoréma*"
+
+#: src/ext_l10n.h:389
+msgid "TheoremTemplate"
+msgstr "©ablóna_Teorémy"
+
+#: src/ext_l10n.h:390
+msgid "Thesaurus"
+msgstr "Synonymický slovník"
+
+#: src/ext_l10n.h:391
+msgid "ThickLine"
+msgstr ""
+
+#: src/ext_l10n.h:392
+msgid "ThreeAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:393
+msgid "ThreeAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:394
+msgid "TickList"
+msgstr ""
+
+#: src/ext_l10n.h:395 src/frontends/gnome/FormCitation.C:529
+msgid "Title"
+msgstr "Nadpis"
+
+#: src/ext_l10n.h:396
+msgid "Titlehead"
+msgstr "HlavièkaNadpisu"
+
+#: src/ext_l10n.h:397
+msgid "Topic"
+msgstr "Námet"
+
+#: src/ext_l10n.h:398
+msgid "Town"
+msgstr "Mesto"
+
+#: src/ext_l10n.h:399
+msgid "Trans_Keywords"
+msgstr "Prelo¾ené_Kµúè_slová"
+
+#: src/ext_l10n.h:400
+msgid "Transition"
+msgstr "Premena"
+
+#: src/ext_l10n.h:401
+msgid "TranslatedAbstract"
+msgstr "Prelo¾enýObsah"
+
+#: src/ext_l10n.h:402
+msgid "Translated_Title"
+msgstr "Prelo¾ený_Nadpis"
+
+#: src/ext_l10n.h:403
+msgid "Translator"
+msgstr "Prekladateµ"
+
+#: src/ext_l10n.h:404
+msgid "TwoAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:405
+msgid "TwoAuthors"
+msgstr ""
+
+#. tooltips
+#: src/ext_l10n.h:406 src/frontends/gnome/FormUrl.C:117
+#: src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
+msgid "URL"
+msgstr "URL"
+
+#: src/ext_l10n.h:407
+msgid "Unterschrift"
+msgstr ""
+
+#: src/ext_l10n.h:408
+msgid "Uppertitleback"
+msgstr ""
+
+#: src/ext_l10n.h:409
+msgid "Verbatim"
+msgstr "Doslovne (Verbatim)"
+
+#: src/ext_l10n.h:410
+msgid "Verse"
+msgstr "Ver¹"
+
+#: src/ext_l10n.h:411
+msgid "Verteiler"
+msgstr ""
+
+#: src/ext_l10n.h:412
+msgid "VisibleText"
+msgstr "Viditeµný text"
+
+#: src/ext_l10n.h:413
+msgid "YourMail"
+msgstr "Vá¹ mail"
+
+#: src/ext_l10n.h:414
+msgid "YourRef"
+msgstr ""
+
+#: src/ext_l10n.h:415
+msgid "Yourmail"
+msgstr "Va¹a_po¹ta"
+
+#: src/ext_l10n.h:416
+msgid "Yourref"
+msgstr ""
+
+#: src/ext_l10n.h:417
+msgid "Zusatz"
+msgstr ""
+
+#: src/ext_l10n.h:418
+msgid "cc"
+msgstr ""
+
+#: src/ext_l10n.h:419
+msgid "encl"
+msgstr ""
+
+#: src/ext_l10n.h:420
+msgid "msnumber"
+msgstr ""
+
+#: src/ext_l10n.h:421
+msgid "ps"
+msgstr "ps"
+
+#: src/ext_l10n.h:422
+msgid "Afrikaans"
+msgstr "Afrikánsky"
+
+#: src/ext_l10n.h:423
+msgid "American"
+msgstr "Americky"
+
+#: src/ext_l10n.h:424
+msgid "Arabic"
+msgstr "Arabsky"
+
+#: src/ext_l10n.h:425
+msgid "Austrian"
+msgstr "Rakúsky"
+
+#: src/ext_l10n.h:426
+msgid "Bahasa"
+msgstr "Bahasky"
+
+#: src/ext_l10n.h:427
+msgid "Portuguese (Brazil)"
+msgstr "Portugalsky (Brazília)"
+
+#: src/ext_l10n.h:428
+msgid "Breton"
+msgstr "Bretónsky"
+
+#: src/ext_l10n.h:429
+msgid "British"
+msgstr "Britsky"
+
+#: src/ext_l10n.h:430
+msgid "Canadian"
+msgstr "Kanadsky"
+
+#: src/ext_l10n.h:431
+msgid "French Canadian"
+msgstr "Kanadská francúz¹tina"
+
+#: src/ext_l10n.h:432
+msgid "Catalan"
+msgstr "Katalánsky"
+
+#: src/ext_l10n.h:433
+msgid "Croatian"
+msgstr "Chorvátsky"
+
+#: src/ext_l10n.h:434
+msgid "Czech"
+msgstr "Èesky"
+
+#: src/ext_l10n.h:435
+msgid "Danish"
+msgstr "Dánsky"
+
+#: src/ext_l10n.h:436
+msgid "Dutch"
+msgstr "Holandsky"
+
+#: src/ext_l10n.h:437 src/language.C:35
+msgid "English"
+msgstr "Anglický jazyk"
+
+#: src/ext_l10n.h:438
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: src/ext_l10n.h:439
+msgid "Estonian"
+msgstr "Estónsky"
+
+#: src/ext_l10n.h:440
+msgid "Finnish"
+msgstr "Fínsky"
+
+#: src/ext_l10n.h:441
+msgid "French"
+msgstr "Francúzsky"
+
+#: src/ext_l10n.h:442
+msgid "French (GUTenberg)"
+msgstr "Francúzsky (GUTenberg)"
+
+#: src/ext_l10n.h:443
+msgid "Galician"
+msgstr "Halièsky"
+
+#: src/ext_l10n.h:444
+msgid "German"
+msgstr "Nemecky"
+
+#: src/ext_l10n.h:445
+msgid "German (new spelling)"
+msgstr "Nemecky (nový pravopis)"
+
+#: src/ext_l10n.h:446 src/mathed/math_forms.C:26
+msgid "Greek"
+msgstr "Grécky"
+
+#: src/ext_l10n.h:447
+msgid "Hebrew"
+msgstr "Hebrejsky"
+
+#: src/ext_l10n.h:448
+msgid "Irish"
+msgstr "Írsky"
+
+#: src/ext_l10n.h:449
+msgid "Italian"
+msgstr "Taliansky"
+
+#: src/ext_l10n.h:450
+msgid "Lsorbian"
+msgstr ""
+
+#: src/ext_l10n.h:451
+msgid "Magyar"
+msgstr "Maïarsky"
+
+#: src/ext_l10n.h:452
+msgid "Norsk"
+msgstr "Nórsky"
+
+#: src/ext_l10n.h:453
+msgid "Polish"
+msgstr "Poµsky"
+
+#: src/ext_l10n.h:454
+msgid "Portugese"
+msgstr "Portugalsky"
+
+#: src/ext_l10n.h:455
+msgid "Romanian"
+msgstr "Rumunsky"
+
+#: src/ext_l10n.h:456
+msgid "Russian"
+msgstr "Rusky"
+
+#: src/ext_l10n.h:457
+msgid "Scottish"
+msgstr "©kótsky"
+
+#: src/ext_l10n.h:458
+msgid "Serbian"
+msgstr "Srbsky"
+
+#: src/ext_l10n.h:459
+msgid "Serbo-Croatian"
+msgstr "Srbo-chorvátsky"
+
+#: src/ext_l10n.h:460
+msgid "Spanish"
+msgstr "©panielsky"
+
+#: src/ext_l10n.h:461
+msgid "Slovak"
+msgstr "Slovensky"
+
+#: src/ext_l10n.h:462
+msgid "Slovene"
+msgstr "Slovinsky"
+
+#: src/ext_l10n.h:463
+msgid "Swedish"
+msgstr "©védsky"
+
+#: src/ext_l10n.h:464
+msgid "Thai"
+msgstr "Thajsky"
+
+#: src/ext_l10n.h:465
+msgid "Turkish"
+msgstr "Turecky"
+
+#: src/ext_l10n.h:466
+msgid "Ukrainian"
+msgstr "Ukrajinsky"
+
+#: src/ext_l10n.h:467
+msgid "Usorbian"
+msgstr ""
+
+#: src/ext_l10n.h:468
+msgid "Welsh"
+msgstr "Walesky"
+
+#: src/filedlg.C:204
+msgid "Warning! Couldn't open directory."
+msgstr "Varovanie! Nie je mo¾né otvori» prieèinok."
+
+#: src/FontLoader.C:246
+msgid "Loading font into X-Server..."
+msgstr "Naèítavam písmo do X-Serveru..."
+
+#: src/form1.C:21
+msgid "Set Charset|#C"
+msgstr "Nastavi» |#N"
+
+#: src/form1.C:23
+msgid "Charset not found!"
+msgstr "Znaková sada nenájdená!"
+
+#: src/form1.C:28
+msgid ""
+"Error:\n"
+"\n"
+"Keymap\n"
+"not found"
+msgstr ""
+"Chyba:\n"
+"\n"
+"Nena¹iel som\n"
+"klávesovú mapu"
+
+#: src/form1.C:33
+msgid "Character set:|#H"
+msgstr "Znaková sada:|#n"
+
+#: src/form1.C:45
+msgid "Other...|#O"
+msgstr "Ostatné...|#O"
+
+#: src/form1.C:48
+msgid "Other...|#T"
+msgstr "Ostatné...|#T"
+
+#: src/form1.C:51 src/frontends/xforms/FormDocument.C:277
+#: src/frontends/xforms/FormPreferences.C:280
+msgid "Language"
+msgstr "Jazyk"
+
+#: src/form1.C:56
+msgid "Mapping"
+msgstr "Mapovanie"
+
+#: src/form1.C:62
+msgid "Primary key map|#r"
+msgstr "Primárna klávesová mapa|#r"
+
+#: src/form1.C:64
+msgid "No key mapping|#N"
+msgstr "Bez mapovanie kláves|#N"
+
+#: src/form1.C:66
+msgid "Secondary key map|#e"
+msgstr "Sekundárna klávesová mapa|#e"
+
+#: src/form1.C:70
+msgid "Secondary"
+msgstr "Sekundárny"
+
+#: src/form1.C:73
+msgid "Primary"
+msgstr "Primárny"
+
+#: src/form1.C:99
+msgid "EPS file|#E"
+msgstr "EPS súbor|#E"
+
+#: src/form1.C:102
+msgid "Full Screen Preview|#v"
+msgstr "Celoobrazovkové zobrazenie|#v"
+
+#: src/form1.C:105 src/frontends/xforms/form_preferences.C:308 src/lyx.C:83
+msgid "Browse...|#B"
+msgstr "Prechádza»...|#P"
+
+#: src/form1.C:114 src/frontends/xforms/form_citation.C:89
+#: src/frontends/xforms/form_document.C:40
+#: src/frontends/xforms/form_graphics.C:144
+#: src/frontends/xforms/form_index.C:45
+#: src/frontends/xforms/form_paragraph.C:324
+#: src/frontends/xforms/form_preferences.C:31
+#: src/frontends/xforms/form_print.C:56 src/frontends/xforms/form_ref.C:82
+#: src/frontends/xforms/form_tabular_create.C:32
+#: src/frontends/xforms/form_url.C:68 src/layout_forms.C:48
+#: src/layout_forms.C:94 src/lyx.C:50 src/mathed/math_forms.C:106
+#: src/mathed/math_forms.C:156 src/mathed/math_forms.C:201 src/print_form.C:31
+#: src/sp_form.C:62
+msgid "Apply|#A"
+msgstr "Pou¾i»|#P"
+
+#: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:150
+#: src/insets/insetbib.C:65 src/insets/insetbib.C:66
+#: src/insets/insetinclude.C:55 src/insets/insetinclude.C:56
+#: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:408
+#: src/lyx_gui_misc.C:412 src/lyx_gui_misc.C:428 src/mathed/math_forms.C:100
+#: src/mathed/math_forms.C:130 src/mathed/math_forms.C:198 src/print_form.C:34
+#: src/sp_form.C:42
+msgid "Cancel|^["
+msgstr "Zru¹i»|^["
+
+#: src/form1.C:123
+msgid "Display Frame|#F"
+msgstr "Zobrazi» rám|#r"
+
+#: src/form1.C:126
+msgid "Do Translations|#r"
+msgstr "Prelo¾i»|#r"
+
+#: src/form1.C:129 src/sp_form.C:58
+msgid "Options"
+msgstr "Mo¾nosti"
+
+#: src/form1.C:133
+msgid "Angle:|#L"
+msgstr "Uhol:|#L"
+
+#: src/form1.C:139
+#, no-c-format
+msgid "% of Page|#g"
+msgstr "% strany|#n"
+
+#: src/form1.C:142
+msgid "Default|#t"
+msgstr "Prednastavený|#t"
+
+#: src/form1.C:145
+msgid "cm|#m"
+msgstr "cm|#m"
+
+#: src/form1.C:148
+msgid "inches|#h"
+msgstr "palce|#p"
+
+#: src/form1.C:153 src/frontends/xforms/form_graphics.C:54
+msgid "Display"
+msgstr "Zobrazi»"
+
+#: src/form1.C:157 src/frontends/xforms/form_graphics.C:46
+msgid "Height"
+msgstr "Vý¹ka"
+
+#: src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
+#: src/frontends/xforms/form_graphics.C:44
+#: src/frontends/xforms/form_paragraph.C:219
+msgid "Width"
+msgstr "©írka"
+
+#: src/form1.C:165
+msgid "Rotation"
+msgstr "Otáèanie"
+
+#: src/form1.C:171
+msgid "Display in Color|#D"
+msgstr "Zobrazi» farebne|#Z"
+
+#: src/form1.C:174
+msgid "Do not display this figure|#y"
+msgstr "Nezobrazova» tento obrázok|#t"
+
+#: src/form1.C:177
+msgid "Display as Grayscale|#i"
+msgstr "V odtieòoch ¹edi|#i"
+
+#: src/form1.C:180
+msgid "Display as Monochrome|#s"
+msgstr "Zobrazi» èiernobielo|#b"
+
+#: src/form1.C:187
+msgid "Default|#U"
+msgstr "Prednastavené|#P"
+
+#: src/form1.C:190
+msgid "cm|#c"
+msgstr "cm|#c"
+
+#: src/form1.C:193
+msgid "inches|#n"
+msgstr "palce|#p"
+
+#: src/form1.C:197
+#, no-c-format
+msgid "% of Page|#P"
+msgstr "% strany|#s"
+
+#: src/form1.C:201
+#, no-c-format
+msgid "% of Column|#o"
+msgstr "% ståpca|#t"
+
+#: src/form1.C:207
+msgid "Caption|#k"
+msgstr "Popis|#o"
+
+#: src/form1.C:210
+msgid "Subfigure|#q"
+msgstr "Podobrázok|#á"
+
+#: src/form1.C:233
+msgid "Directory:|#D"
+msgstr "Prieèinok:|#P"
+
+#: src/form1.C:237
+msgid "Pattern:|#P"
+msgstr "Filter:|#F"
+
+#: src/form1.C:245
+msgid "Filename:|#F"
+msgstr "Súbor:|#S"
+
+#: src/form1.C:249
+msgid "Rescan|#R#r"
+msgstr "Znova naèíta»|#Z#z"
+
+#: src/form1.C:252
+msgid "Home|#H#h"
+msgstr "Domovký prieèinok|#D#d"
+
+#: src/form1.C:255
+msgid "User1|#1"
+msgstr "Pou¾ívateµ1|#1"
+
+#: src/form1.C:258
+msgid "User2|#2"
+msgstr "Pou¾ívateµ2|#2"
+
+#: src/form1.C:286
+msgid "Find|#n"
+msgstr "Nájs»|#n"
+
+#: src/form1.C:290
+msgid "Replace with|#W"
+msgstr "Nahradi» s|#s"
+
+#: src/form1.C:294
+msgid "@>|#F^s"
+msgstr "@>|#F^s"
+
+#: src/form1.C:298
+msgid "@<|#B^r"
+msgstr "@<|#B^r"
+
+#: src/form1.C:302
+msgid "Replace|#R#r"
+msgstr "Nahradi»|#N#n"
+
+#: src/form1.C:306
+msgid "Close|^["
+msgstr "Zavrie»|^["
+
+#: src/form1.C:310
+msgid "Case sensitive|#s#S"
+msgstr "Citlivý na veµkos»|#c#C"
+
+#: src/form1.C:312
+msgid "Match word|#M#m"
+msgstr "zhodné slová|#h#H"
+
+#: src/form1.C:314
+msgid "Replace All|#A#a"
+msgstr "Nahradi» v¹etko|#A#a"
+
+#: src/frontends/gnome/FormCitation.C:371
+msgid "_Add new citation"
+msgstr "_Prida» novú citáciu"
+
+#: src/frontends/gnome/FormCitation.C:372
+msgid "_Edit/remove citation(s)"
+msgstr "_Upravi»/odstráni» citát(y)"
+
+#: src/frontends/gnome/FormCitation.C:397
+msgid " Citation: Select action "
+msgstr "Citácia: Voµba akcie "
+
+#: src/frontends/gnome/FormCitation.C:451
+msgid "Use Regular Expression"
+msgstr "Pou¾i» Regulárny výraz"
+
+#: src/frontends/gnome/FormCitation.C:453
+msgid "Search"
+msgstr "Hµada»"
+
+#: src/frontends/gnome/FormCitation.C:471
+msgid " Insert Citation: Enter keyword(s) or regular expression "
+msgstr "Vlo¾i» citáciu: Vlo¾te kµúèové slovo alebo regulárny výraz "
+
+#: src/frontends/gnome/FormCitation.C:527
+msgid "Key"
+msgstr "Kµúè"
+
+#: src/frontends/gnome/FormCitation.C:528
+msgid "Author(s)"
+msgstr "Autor(i)"
+
+#: src/frontends/gnome/FormCitation.C:530
+msgid "Year"
+msgstr "Rok"
+
+#: src/frontends/gnome/FormCitation.C:549
+#: src/frontends/gnome/FormCitation.C:639 src/frontends/kde/citationdlg.C:54
+msgid "Text after"
+msgstr "Text po"
+
+#: src/frontends/gnome/FormCitation.C:560
+msgid " Insert Citation: Select citation "
+msgstr " Vlo¾i» citát: Zvoµte citáciu "
+
+#: src/frontends/gnome/FormCitation.C:607
+msgid "_Remove"
+msgstr "_Odstráni»"
+
+#: src/frontends/gnome/FormCitation.C:608
+msgid "_Up"
+msgstr "_Hore"
+
+#: src/frontends/gnome/FormCitation.C:609
+msgid "_Down"
+msgstr "_Dole"
+
+#: src/frontends/gnome/FormCitation.C:657
+msgid " Citation: Edit "
+msgstr "Citácia: Úprava "
+
+#: src/frontends/gnome/FormCitation.C:756
+msgid "--- No such key in the database ---"
+msgstr "---Nie je taký kµúè v databáze ---"
+
+#: src/frontends/gnome/FormCopyright.C:46
+msgid ""
+"(C) 1995 by Matthias Ettrich, \n"
+"1995-2000 LyX Team"
+msgstr ""
+"(C) 1995 by Matthias Ettrich, \n"
+"1995-2000 LyX Team"
+
+#: src/frontends/gnome/FormCopyright.C:48
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. You should have received a copy of the GNU General Public License "
+"along with this program; if not, write to the Free Software Foundation, "
+"Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."
+msgstr ""
+"Toto je voµne ¹íriteµný program; mô¾ete ho ¹íri» "
+"a/alebo modifikova» podµa GNU General "
+"Public Licence tak ako bola zverejnená Free Software "
+"Foundation; èi u¾ vo verzií 2 tejto licencie, alebo "
+"(pokiaµ chcete) µubovoµnej star¹ej verzie.\n"
+"LyX je ¹írený v nádeji, ¾e bude u¾itoèný, "
+"ale BEZ AKEJKO¥VEK ZÁRUKY; "
+"dokonca bez akejkoµvek OBCHODNEJ ZÁRUKY "
+"alebo VHODNOSTI K DANÉMU POU®ÍVANIU. "
+"Podrobnosti si pozrite v GNU General Public Licence. "
+"Kópiu tejto licencie by ste mali dosta» "
+"spolu s týmto programom; pokiaµ nie, tak napí¹te na "
+"The Free Software Foundation, Inc., "
+"675 Mass Ave, Cambridge, MA 02139, USA. "
+"Slovenský preklad nájdete na http://www.linux.sk "
+"Èeský preklad je na http://www.freesoft.cz "
+
+#: src/frontends/gnome/FormError.C:89
+msgid " Error "
+msgstr " Chyba "
+
+#: src/frontends/gnome/FormIndex.C:119
+msgid " Index "
+msgstr " Index "
+
+#: src/frontends/gnome/FormPrint.C:165 src/frontends/xforms/FormPrint.C:158
+msgid "Error:"
+msgstr "Chyba:"
+
+#: src/frontends/gnome/FormPrint.C:166 src/frontends/xforms/FormPrint.C:159
+msgid "Unable to print"
+msgstr "Nie je mo¾né tlaèi»"
+
+#: src/frontends/gnome/FormPrint.C:167 src/frontends/xforms/FormPrint.C:160
+msgid "Check that your parameters are correct"
+msgstr "Skontrolujte, èi sú va¹e parametre správne"
+
+#. goto button labels
+#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:105
+#: src/frontends/xforms/FormRef.C:222 src/frontends/xforms/FormRef.C:245
+msgid "Goto reference"
+msgstr "Choï na referenciu"
+
+#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:214
+msgid "Go back"
+msgstr "Prejs» dozadu"
+
+#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:143
+msgid "*** No labels found in document ***"
+msgstr "*** V dokumente nie sú ¾iadne oznaèenia ***"
+
+#: src/frontends/gnome/FormRef.C:116
+msgid " Reference "
+msgstr " Referencia "
+
+#: src/frontends/gnome/FormRef.C:185
+msgid " Reference: Select reference "
+msgstr "Referencia: Zvoµte odkaz "
+
+#: src/frontends/gnome/FormRef.C:254
+msgid "Ref"
+msgstr "Odkaz"
+
+#: src/frontends/gnome/FormRef.C:259
+msgid "Page"
+msgstr "Strana"
+
+#: src/frontends/gnome/FormRef.C:264
+msgid "TextRef"
+msgstr "Textový_Odkaz"
+
+#: src/frontends/gnome/FormRef.C:269
+msgid "TextPage"
+msgstr "TextováStrana"
+
+#: src/frontends/gnome/FormRef.C:274
+msgid "PrettyRef"
+msgstr "PeknýOdkaz"
+
+#: src/frontends/gnome/FormRef.C:300
+msgid "Type:"
+msgstr "Typ:"
+
+#: src/frontends/gnome/FormRef.C:301
+msgid "Name:"
+msgstr "Názov:"
+
+#: src/frontends/gnome/FormRef.C:311
+msgid " Reference: "
+msgstr " Referencia: "
+
+#: src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
+#: src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
+#: src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
+#: src/insets/insettoc.C:22
+msgid "Table of Contents"
+msgstr "Obsah"
+
+#: src/frontends/gnome/FormToc.C:104 src/frontends/gnome/FormToc.C:173
+#: src/frontends/kde/FormToc.C:172 src/frontends/kde/FormToc.C:173
+#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:26
+msgid "List of Figures"
+msgstr "Zoznam obrázkov"
+
+#: src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
+#: src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
+#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:28
+msgid "List of Tables"
+msgstr "Zoznam tabuliek"
+
+#: src/frontends/gnome/FormToc.C:112 src/frontends/gnome/FormToc.C:179
+#: src/frontends/kde/FormToc.C:182 src/frontends/kde/FormToc.C:183
+#: src/frontends/kde/tocdlg.C:31 src/insets/insettoc.C:24
+msgid "List of Algorithms"
+msgstr "Zoznam algoritmov"
+
+#: src/frontends/gnome/FormToc.C:148 src/frontends/xforms/FormToc.C:113
+msgid "*** No Document ***"
+msgstr "*** Bez dokumentu ***"
+
+#: src/frontends/gnome/FormUrl.C:91
+msgid "HTML type"
+msgstr "HTML typ"
+
+#: src/frontends/gnome/FormUrl.C:131
+msgid " URL "
+msgstr " URL "
+
+#: src/frontends/gnome/Menubar_pimpl.C:119
+msgid "Refresh"
+msgstr "Aktualizova»"
+
+#: src/frontends/gnome/Menubar_pimpl.C:149
+msgid "<No Name>"
+msgstr "<Bez mena>"
+
+#: src/frontends/kde/citationdlg.C:28
+msgid "Selected keys"
+msgstr "Zvolené kµúèe"
+
+#: src/frontends/kde/citationdlg.C:35
+msgid "Available keys"
+msgstr "Dostupné kµúèe"
+
+#: src/frontends/kde/citationdlg.C:42
+msgid "Reference entry"
+msgstr "Polo¾ka referencie"
+
+#: src/frontends/kde/citationdlg.C:61
+msgid "&Add"
+msgstr "&Prida»"
+
+#: src/frontends/kde/citationdlg.C:66
+msgid "&Up"
+msgstr "&Hore"
+
+#: src/frontends/kde/citationdlg.C:71
+msgid "&Down"
+msgstr "&Dole"
+
+#: src/frontends/kde/citationdlg.C:76
+msgid "&Remove"
+msgstr "&Odstráni»"
+
+#: src/frontends/kde/FormPrint.C:108 src/frontends/kde/citationdlg.C:81
+#: src/frontends/kde/dlg/copyrightdlgdata.C:40
+#: src/frontends/kde/dlg/indexdlgdata.C:68
+#: src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:86
+#: src/frontends/kde/urldlg.C:52
+msgid "&OK"
+msgstr "&OK"
+
+#: src/frontends/kde/FormCitation.C:166 src/frontends/kde/FormRef.C:203
+#: src/frontends/kde/citationdlg.C:87 src/frontends/kde/dlg/indexdlgdata.C:85
+#: src/frontends/kde/dlg/paradlgdata.C:99
+#: src/frontends/kde/dlg/printdlgdata.C:133
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:60 src/frontends/kde/indexdlg.C:65
+#: src/frontends/kde/refdlg.C:92 src/frontends/kde/urldlg.C:58
+msgid "&Cancel"
+msgstr "&Zru¹i»"
+
+#. tooltips
+#: src/frontends/kde/citationdlg.C:93
+msgid "Keys currently selected"
+msgstr "Aktuálne zvolené kµúèe"
+
+#: src/frontends/kde/citationdlg.C:94
+msgid "Reference keys available"
+msgstr "Dostupné kµúèe referencie"
+
+#: src/frontends/kde/citationdlg.C:95
+msgid "Reference entry text"
+msgstr "Textová polo¾ka referencií"
+
+#: src/frontends/kde/citationdlg.C:96
+msgid "Text to place after citation"
+msgstr "Text, ktorý bude za citátom"
+
+#: src/frontends/kde/dlg/copyrightdlgdata.C:61
+msgid ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich, \n"
+"1995-2000 LyX Team"
+msgstr ""
+"LyX Copyright (C) 1995 Matthias Ettrich,\n"
+"1995-1999 LyX Team"
+
+#: src/frontends/kde/dlg/copyrightdlgdata.C:78
+msgid ""
+"This program is free software; you can redistribute it\n"
+"and/or modify it under the terms of the GNU General\n"
+"Public License as published by the Free Software\n"
+"Foundation; either version 2 of the License, or\n"
+"(at your option) any later version."
+msgstr ""
+"Toto je voµne ¹íriteµný program; mô¾ete ho ¹íri»\n"
+"a/alebo modifikova» podµa GNU General\n"
+"Public Licence tak ako bola zverejnená Free Software\n"
+"Foundation; èi u¾ vo verzií 2 tejto licencie, alebo\n"
+"(pokiaµ chcete) µubovoµnej star¹ej verzie."
+
+#: src/frontends/kde/dlg/copyrightdlgdata.C:95
+msgid ""
+"LyX is distributed in the hope that it will\n"
+"be useful, but WITHOUT ANY WARRANTY;\n"
+"without even the implied warranty of MERCHANTABILITY\n"
+"or FITNESS FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"You should have received a copy of\n"
+"the GNU General Public License\n"
+"along with this program; if not, write to\n"
+"the Free Software Foundation, Inc., \n"
+"675 Mass Ave, Cambridge, MA 02139, USA."
+msgstr ""
+"LyX je ¹írený v nádeji, ¾e bude u¾itoèný,\n"
+"ale BEZ AKEJKO¥VEK ZÁRUKY;\n"
+"dokonca bez akejkoµvek OBCHODNEJ ZÁRUKY\n"
+"alebo VHODNOSTI K DANÉMU POU®ÍVANIU.\n"
+"Podrobnosti si pozrite v GNU General Public Licence.\n"
+"Kópiu tejto licencie by ste mali dosta»\n"
+"spolu s týmto programom; pokiaµ nie, tak napí¹te na\n"
+"The Free Software Foundation, Inc.,\n"
+"675 Mass Ave, Cambridge, MA 02139, USA.\n"
+"Slovenský preklad nájdete na http://www.linux.sk\n"
+"Èeský preklad je na http://www.freesoft.cz"
+
+#: src/frontends/kde/dlg/indexdlgdata.C:42
+msgid "Keyword:"
+msgstr "Kµúèové slovo:"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:39
+#: src/frontends/kde/dlg/parabelowdlgdata.C:39
+msgid "Page break"
+msgstr "Zlom strany"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:52
+msgid "Keep space when at top of page"
+msgstr ""
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:70
+#: src/frontends/kde/dlg/parabelowdlgdata.C:70
+msgid "Extra Space"
+msgstr "Extra medzera"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:101
+#: src/frontends/kde/dlg/parabelowdlgdata.C:101
+msgid "Value"
+msgstr "Hodnota"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:118
+#: src/frontends/kde/dlg/parabelowdlgdata.C:118
+msgid "Plus"
+msgstr "Plus"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:135
+#: src/frontends/kde/dlg/parabelowdlgdata.C:135
+msgid "Minus"
+msgstr "Mínus"
+
+#: src/frontends/kde/dlg/parabelowdlgdata.C:52
+msgid "Keep space when at bottom of page"
+msgstr ""
+
+#: src/frontends/kde/dlg/paradlgdata.C:65
+msgid "&Apply"
+msgstr "&Pou¾i»"
+
+#: src/frontends/kde/dlg/paradlgdata.C:82
+msgid "&Restore"
+msgstr "O&bnovi»"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:43
+#: src/frontends/kde/dlg/parageneraldlgdata.C:43
+#: src/frontends/xforms/form_paragraph.C:149
+#: src/frontends/xforms/form_paragraph.C:223
+msgid "Alignment"
+msgstr "Zarovnanie"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:74 src/lyx.C:56
+msgid "Type"
+msgstr "Typ"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:116
+msgid "&HFill between minipage paragraphs"
+msgstr "&Pru¾né vyplnenie (HFill) medzi jednotlivými minipage"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:129
+msgid "&Start new minipage"
+msgstr "&Zaèa» novú ministránku"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:142
+msgid "&Top"
+msgstr "&Hore"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:155
+msgid "&Middle"
+msgstr "Na &stred"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:168
+msgid "&Bottom"
+msgstr "&Dole"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:55
+msgid "Draw line above paragraph"
+msgstr "Nakresli» èiaru nad odstavcom"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:68
+msgid "Draw line below paragraph"
+msgstr "Nakresli» èiaru pod odstavcom"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:81
+msgid "Don't indent paragraph"
+msgstr "Neodsadzova» odsek"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:94
+msgid "Block"
+msgstr "Do bloku"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:107
+msgid "Center"
+msgstr "Na stred"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:120
+msgid "Left"
+msgstr "Vµavo"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:133
+msgid "Right"
+msgstr "Vpravo"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:151
+msgid "Label width"
+msgstr "©írka znaèky"
+
+#: src/frontends/kde/dlg/printdlgdata.C:42
+msgid "Pages"
+msgstr "Strany"
+
+#: src/frontends/kde/dlg/printdlgdata.C:73
+#: src/frontends/xforms/form_print.C:135
+msgid "Copies"
+msgstr "Kópie"
+
+#: src/frontends/kde/dlg/printdlgdata.C:88
+#: src/frontends/xforms/form_print.C:138
+msgid "Print to"
+msgstr "Tlaè do"
+
+#: src/frontends/kde/dlg/printdlgdata.C:116
+msgid "&Print"
+msgstr "&Tlaè"
+
+#: src/frontends/kde/dlg/printdlgdata.C:149
+msgid "&All pages"
+msgstr "V¹etky str&any"
+
+#: src/frontends/kde/dlg/printdlgdata.C:162
+msgid "&Even pages"
+msgstr "Len párn&e strany"
+
+#: src/frontends/kde/dlg/printdlgdata.C:192
+msgid "From"
+msgstr "Od"
+
+#: src/frontends/kde/dlg/printdlgdata.C:208
+msgid "To"
+msgstr "Komu"
+
+#: src/frontends/kde/dlg/printdlgdata.C:220
+msgid "&Odd pages"
+msgstr "N&epárne strany"
+
+#: src/frontends/kde/dlg/printdlgdata.C:233
+msgid "&Printer"
+msgstr "Tlaèia&reò"
+
+#: src/frontends/kde/dlg/printdlgdata.C:246
+msgid "&File"
+msgstr "&Súbor"
+
+#: src/frontends/kde/dlg/printdlgdata.C:272
+msgid "&Reverse order"
+msgstr "Opaèné po&radie"
+
+#: src/frontends/kde/dlg/printdlgdata.C:298
+msgid "Co&llate"
+msgstr "Uspo&riada»"
+
+#: src/frontends/kde/dlg/printdlgdata.C:312
+msgid "&Browse"
+msgstr "&Prechádza»"
+
+#: src/frontends/kde/dlg/printdlgdata.C:346
+msgid "Count"
+msgstr "Poèet"
+
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:42
+msgid "&Insert"
+msgstr "Vlo¾&i»"
+
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:90
+#: src/frontends/xforms/form_tabular_create.C:49 src/mathed/math_forms.C:133
+msgid "Rows"
+msgstr "Riadky"
+
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:107
+#: src/frontends/xforms/form_tabular_create.C:45
+msgid "Columns"
+msgstr "Ståpce"
+
+#: src/frontends/kde/FormCitation.C:160 src/frontends/kde/FormRef.C:201
+#: src/frontends/kde/indexdlg.C:60 src/frontends/kde/tocdlg.C:48
+msgid "&Close"
+msgstr "&Zavrie»"
+
+#: src/frontends/kde/FormCitation.C:199
+msgid "LyX: Citation Reference"
+msgstr "LyX: Referencia na citáciu"
+
+#: src/frontends/kde/FormCitation.C:382
+msgid "Key not found in references."
+msgstr "Kµúè nebol nájdený v referenciách."
+
+#: src/frontends/kde/FormCopyright.C:42
+msgid "LyX: Copyright and Warranty"
+msgstr "LyX: Autorské práva (Copyright) a záruka"
+
+#: src/frontends/kde/FormIndex.C:96
+msgid "LyX: Index"
+msgstr "LyX: Index"
+
+#: src/frontends/kde/FormParagraph.C:183
+#: src/frontends/xforms/FormParagraph.C:148
+msgid "Paragraph layout set"
+msgstr "Formát odstavca je nastavený."
+
+#: src/frontends/kde/FormParagraph.C:189
+msgid "LyX: Paragraph Options"
+msgstr "LyX: Nastavenie odstavca"
+
+#. FIXME: should have a utility class for this
+#: src/frontends/kde/FormPrint.C:106
+msgid ""
+"An error occured while printing.\n"
+"\n"
+msgstr ""
+"Vyskytla sa chyba poèas tlaèenia.\n"
+"\n"
+
+#: src/frontends/kde/FormPrint.C:107
+msgid "Check the parameters are correct.\n"
+msgstr "Skontrolujte, èi sú va¹e parametre správne.\n"
+
+#: src/frontends/kde/FormPrint.C:108
+msgid "LyX: Print Error"
+msgstr "LyX: Chyba pri tlaèi"
+
+#: src/frontends/kde/FormPrint.C:118
+msgid "LyX: Print"
+msgstr "LyX: Tlaè"
+
+#: src/frontends/kde/FormRef.C:103
+msgid "&Go back"
+msgstr "&Ís» spä»"
+
+#: src/frontends/kde/FormRef.C:108 src/frontends/kde/FormRef.C:119
+#: src/frontends/kde/FormRef.C:184 src/frontends/kde/refdlg.C:76
+msgid "&Goto reference"
+msgstr "Í&s» na referenciu"
+
+#: src/frontends/kde/FormRef.C:249
+msgid "LyX: Cross Reference"
+msgstr "LyX: Krí¾ová referencia"
+
+#: src/frontends/kde/FormTabularCreate.C:53
+msgid "LyX: Insert Table"
+msgstr "LyX: Vlo¾enie tabuµky"
+
+#: src/frontends/kde/FormToc.C:246
+msgid "LyX: Table of Contents"
+msgstr "LyX: Obsah"
+
+#: src/LyXAction.C:123 src/frontends/kde/FormUrl.C:86
+#: src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:137
+#: src/frontends/xforms/FormBase.h:152 src/frontends/xforms/FormInset.h:30
+#: src/frontends/xforms/FormInset.h:54 src/layout_forms.C:52 src/log_form.C:21
+#: src/lyxvc.C:263 src/mathed/math_forms.C:177
+msgid "Close"
+msgstr "Zavrie»"
+
+#: src/LyXAction.C:157 src/frontends/kde/FormUrl.C:93
+#: src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:138
+#: src/frontends/xforms/FormBase.h:153 src/frontends/xforms/FormInset.h:31
+#: src/frontends/xforms/FormInset.h:55 src/lyxfunc.C:744
+msgid "Cancel"
+msgstr "Zru¹i»"
+
+#: src/frontends/kde/FormUrl.C:123
+msgid "LyX: Url"
+msgstr "LyX: Url"
+
+#. tooltips
+#: src/frontends/kde/indexdlg.C:27 src/frontends/kde/indexdlg.C:28
+msgid "Index entry"
+msgstr "Polo¾ka indexu"
+
+#: src/frontends/kde/paradlg.C:34
+msgid "&General"
+msgstr "&V¹eobecné"
+
+#: src/frontends/kde/paradlg.C:35
+msgid "&Extra"
+msgstr "&Extra"
+
+#. FIXME: should be cleverer here
+#: src/frontends/kde/paradlg.C:95 src/paragraph.C:1957
+msgid "Senseless with this layout!"
+msgstr "V tomto formáte nemá zmysel!"
+
+#: src/frontends/kde/paraextradlg.C:25 src/lyxfont.C:56
+msgid "Normal"
+msgstr "Normálny"
+
+#: src/frontends/kde/paraextradlg.C:26
+msgid "Indented paragraph"
+msgstr "Odsadený odstavec"
+
+#: src/frontends/kde/paraextradlg.C:27
+msgid "Minipage"
+msgstr "Minipage"
+
+#: src/frontends/kde/paraextradlg.C:28
+msgid "Wrap text around floats (floatflt)"
+msgstr "Zalamova» text okolo plávajúcich objektov"
+
+#. if you change this, remember to change ParaDialog::get/setUnits()
+#: src/frontends/kde/paraextradlg.C:30 src/frontends/kde/parageneraldlg.C:63
+msgid "Centimetres"
+msgstr "Centimetre"
+
+#: src/frontends/kde/paraextradlg.C:31 src/frontends/kde/parageneraldlg.C:64
+msgid "Inches"
+msgstr "Palce"
+
+#: src/frontends/kde/paraextradlg.C:32 src/frontends/kde/parageneraldlg.C:65
+msgid "Points (1/72.27 inch)"
+msgstr "Body (1/72.27 palca)"
+
+#: src/frontends/kde/paraextradlg.C:33 src/frontends/kde/parageneraldlg.C:66
+msgid "Millimetres"
+msgstr "Milimetre"
+
+#: src/frontends/kde/paraextradlg.C:34 src/frontends/kde/parageneraldlg.C:67
+msgid "Picas"
+msgstr ""
+
+#: src/frontends/kde/paraextradlg.C:35 src/frontends/kde/parageneraldlg.C:68
+msgid "ex units"
+msgstr ""
+
+#: src/frontends/kde/paraextradlg.C:36 src/frontends/kde/parageneraldlg.C:69
+msgid "em units"
+msgstr ""
+
+#: src/frontends/kde/paraextradlg.C:37 src/frontends/kde/parageneraldlg.C:70
+msgid "Scaled points (1/65536 pt)"
+msgstr "Zväè¹ené body (1/65536 pt)"
+
+#: src/frontends/kde/paraextradlg.C:38 src/frontends/kde/parageneraldlg.C:71
+msgid "Big/PS points (1/72 inch)"
+msgstr "Veµké/PS body (1/72 palca)"
+
+#: src/frontends/kde/paraextradlg.C:39 src/frontends/kde/parageneraldlg.C:72
+msgid "Didot points"
+msgstr ""
+
+#: src/frontends/kde/paraextradlg.C:40 src/frontends/kde/parageneraldlg.C:73
+msgid "Cicero points"
+msgstr ""
+
+#: src/frontends/kde/paraextradlg.C:41
+msgid "Percent of column"
+msgstr "Percent ståpca"
+
+#. FIXME: free punctuation to whoever can make the value
+#. boxes not be overly large
+#: src/frontends/kde/parageneraldlg.C:31
+msgid "&Spacing Above"
+msgstr "&Medzera nad"
+
+#: src/frontends/kde/parageneraldlg.C:32
+msgid "Spacing &Below"
+msgstr "Medzera &pod"
+
+#: src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:44
+msgid "None"
+msgstr "¾iadne"
+
+#: src/frontends/kde/parageneraldlg.C:38 src/frontends/kde/parageneraldlg.C:45
+msgid "Defskip"
+msgstr "Definovaná"
+
+#: src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:46
+msgid "Small skip"
+msgstr "Malá"
+
+#: src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
+msgid "Medium skip"
+msgstr "Stredná"
+
+#: src/frontends/kde/parageneraldlg.C:41 src/frontends/kde/parageneraldlg.C:48
+msgid "Big skip"
+msgstr "Veµká"
+
+#: src/frontends/kde/parageneraldlg.C:42 src/frontends/kde/parageneraldlg.C:49
+msgid "VFill"
+msgstr "Výplnok"
+
+#: src/frontends/kde/parageneraldlg.C:43 src/frontends/kde/parageneraldlg.C:50
+msgid "Length"
+msgstr "Då¾ka"
+
+#: src/frontends/kde/printdlg.C:25
+msgid "Print every page"
+msgstr "Tlaèi» ka¾dú stranu"
+
+#: src/frontends/kde/printdlg.C:26
+msgid "Print odd-numbered pages only"
+msgstr "Tlaèi» iba strany s nepárnym èíslom"
+
+#: src/frontends/kde/printdlg.C:27
+msgid "Print even-numbered pages only"
+msgstr "Tlaèi» iba strany s párnym èíslom"
+
+#: src/frontends/kde/printdlg.C:28
+msgid "Print from page number"
+msgstr "Tlaèi» od strany èíslo"
+
+#: src/frontends/kde/printdlg.C:29
+msgid "Print to page number"
+msgstr "Tlaèi» po stranu èíslo"
+
+#: src/frontends/kde/printdlg.C:30
+msgid "Print in reverse order (last page first)"
+msgstr "Tlaèi» v opaènom poradí (prvú stranu ak poslednú)"
+
+#: src/frontends/kde/printdlg.C:31
+msgid "Number of copies to print"
+msgstr "Poèet tlaèených kópií"
+
+#: src/frontends/kde/printdlg.C:32
+msgid "Collate multiple copies"
+msgstr "Usporiada» viacnásobné kópie"
+
+#: src/frontends/kde/printdlg.C:33
+msgid "Printer name"
+msgstr "Názov tlaèiarne"
+
+#: src/frontends/kde/printdlg.C:34
+msgid "Output filename"
+msgstr "Názov výstupného súboru"
+
+#: src/frontends/kde/printdlg.C:35
+msgid "Select output filename"
+msgstr "Zvoµte názov výstupu"
+
+#: src/frontends/kde/refdlg.C:30
+msgid "Available References"
+msgstr "Dostupné referencie"
+
+#: src/frontends/kde/refdlg.C:45 src/frontends/kde/urldlg.C:39
+msgid "Name :"
+msgstr "Meno :"
+
+#: src/frontends/kde/refdlg.C:51
+msgid "Reference :"
+msgstr "Referencia:"
+
+#: src/frontends/kde/refdlg.C:57
+msgid "Sort"
+msgstr "Triedenie"
+
+#: src/frontends/kde/refdlg.C:63
+msgid "Page number"
+msgstr "Èíslo strany"
+
+#: src/frontends/kde/refdlg.C:64
+msgid "Ref on page xxx"
+msgstr "Odkaz na strane xxx"
+
+#: src/frontends/kde/refdlg.C:65
+msgid "on page xxx"
+msgstr "na strane xxx"
+
+#: src/frontends/kde/refdlg.C:66
+msgid "Pretty reference"
+msgstr "Pekná referencia"
+
+#: src/frontends/kde/refdlg.C:70
+msgid "Reference Type"
+msgstr "Typ referencie"
+
+#: src/frontends/kde/refdlg.C:81 src/frontends/kde/tocdlg.C:43
+msgid "&Update"
+msgstr "&Aktualizova»"
+
+#. tooltips
+#: src/frontends/kde/refdlg.C:98
+msgid "Reference as it appears in output"
+msgstr "Referencia, tak ako sa objaví vo výstupe"
+
+#: src/frontends/kde/refdlg.C:99
+msgid "Sort references in alphabetical order ?"
+msgstr "Triedi» referencie podµa abecedy?"
+
+#: src/frontends/kde/tocdlg.C:57
+msgid "Depth"
+msgstr "Håbka"
+
+#: src/frontends/kde/urldlg.C:33
+msgid "Url :"
+msgstr "Url :"
+
+#: src/frontends/kde/urldlg.C:45
+msgid "Generate hyperlink"
+msgstr "Generova» hyperlinky"
+
+#: src/frontends/kde/urldlg.C:64 src/frontends/kde/urldlg.C:65
+msgid "Name associated with the URL"
+msgstr "Názov asociovaný s URL"
+
+#: src/frontends/kde/urldlg.C:66
+msgid "Output as a hyperlink ?"
+msgstr "Výstup ako hyperlink ?"
+
+#: src/frontends/xforms/FormCitation.C:37
+msgid "Citation"
+msgstr "Citácia"
+
+#: src/frontends/xforms/form_citation.C:29
+msgid "Inset keys|#I"
+msgstr "Vlo¾enie kµúèov|#l"
+
+#: src/frontends/xforms/form_citation.C:38
+msgid "Bibliography keys|#B"
+msgstr "Kµúèe literatúry|#K"
+
+#: src/frontends/xforms/form_citation.C:46
+msgid "@4->"
+msgstr "@4->"
+
+#: src/frontends/xforms/form_citation.C:47
+msgid "#&D"
+msgstr "#&D"
+
+#: src/frontends/xforms/form_citation.C:51
+msgid "@9+"
+msgstr "@9+"
+
+#: src/frontends/xforms/form_citation.C:52
+msgid "#X"
+msgstr "#X"
+
+#: src/frontends/xforms/form_citation.C:56
+msgid "@8->"
+msgstr "@8->"
+
+#: src/frontends/xforms/form_citation.C:57
+msgid "#&A"
+msgstr "#&A"
+
+#: src/frontends/xforms/form_citation.C:61
+msgid "@2->"
+msgstr "@2->"
+
+#: src/frontends/xforms/form_citation.C:62
+msgid "#&B"
+msgstr "#&B"
+
+#: src/frontends/xforms/form_citation.C:66 src/lyxvc.C:112
+msgid "Info"
+msgstr "Informácia"
+
+#: src/frontends/xforms/form_citation.C:71
+msgid "Text after|#e"
+msgstr "Text za|#e"
+
+#: src/frontends/xforms/form_citation.C:79
+#: src/frontends/xforms/form_document.C:52
+#: src/frontends/xforms/form_index.C:34
+#: src/frontends/xforms/form_paragraph.C:334
+#: src/frontends/xforms/form_preferences.C:48
+#: src/frontends/xforms/form_ref.C:89 src/frontends/xforms/form_url.C:76
+msgid "Restore|#R"
+msgstr "Obnovi» | #b"
+
+#: src/frontends/xforms/form_citation.C:96
+#: src/frontends/xforms/form_document.C:33
+#: src/frontends/xforms/form_index.C:53 src/frontends/xforms/form_ref.C:75
+#: src/frontends/xforms/form_tabular_create.C:39
+#: src/frontends/xforms/form_url.C:57 src/lyx.C:110
+msgid "Cancel|#C^["
+msgstr "Zru¹i»|#Z^["
+
+#: src/frontends/xforms/FormCopyright.C:20
+msgid "Copyright and Warranty"
+msgstr "Autorské práva a záruka"
+
+#: src/frontends/xforms/FormCopyright.C:51
+msgid "LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2000 LyX Team"
+msgstr "LyX je Copyright (C) 1995 Matthias Ettrich, 1995-1999 LyX Team"
+
+#: src/frontends/xforms/FormCopyright.C:56
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+"Toto je voµne ¹íriteµný program; mô¾ete ho ¹íri» "
+"a/alebo modifikova» podµa GNU General "
+"Public Licence tak ako bola zverejnená Free Software "
+"Foundation; èi u¾ vo verzií 2 tejto licencie, alebo "
+"(pokiaµ chcete) µubovoµnej star¹ej verzie."
+
+#: src/frontends/xforms/FormCopyright.C:61
+msgid ""
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. You should have received a copy of the GNU General Public License "
+"along with this program; if not, write to the Free Software Foundation, "
+"Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
+msgstr ""
+"LyX je ¹írený v nádeji, ¾e bude u¾itoèný, ale BEZ AKEJKO¥VEK ZÁRUKY; "
+"dokonca bez akejkoµvek OBCHODNEJ ZÁRUKY alebo VHODNOSTI K DANÉMU POU®ÍVANIU. "
+"Podrobnosti si pozrite v GNU General Public Licence. "
+"Kópiu tejto licencie by ste mali dosta» "
+"spolu s týmto programom; pokiaµ nie, tak napí¹te na "
+"The Free Software Foundation, Inc., "
+"675 Mass Ave, Cambridge, MA 02139, USA. "
+"Slovenský preklad nájdete na http://www.linux.sk "
+"Èeský preklad je na http://www.freesoft.cz "
+
+#: src/frontends/xforms/form_copyright.C:41
+#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
+msgid "Close|#C^[^M"
+msgstr "Zavrie»|#Z^[^M"
+
+#: src/frontends/xforms/FormDocument.C:48
+msgid "Document Layout"
+msgstr "Formát dokumentu"
+
+#: src/frontends/xforms/FormDocument.C:117
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+"Prednastavené | Vlastné | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+
+#: src/frontends/xforms/FormDocument.C:120
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+"®iadne | A4 malé okraje (Na vý¹ku) | A4 veµmi malé okraje (Na vý¹ku) | "
+"A4 veµmi ¹iroké okraje (Na vý¹ku) "
+
+#: src/frontends/xforms/FormDocument.C:179
+msgid " Single | OneHalf | Double | Other "
+msgstr "Jeden | Jeden a pol | Dva | Iné "
+
+#: src/frontends/xforms/FormDocument.C:187
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr "Malá| Stredná | Veµká | Iná "
+
+#: src/frontends/xforms/FormDocument.C:236
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | text | text "
+msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | text | text "
+
+#: src/frontends/xforms/FormDocument.C:263
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+" implicitné | drobné | skript | poznámka | malé | normálne | veµké | väè¹ie | "
+"najväè¹ie | obrovské | ozrutné"
+
+#: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
+#: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
+#: src/lyxfunc.C:3313
+msgid "Document"
+msgstr "Dokument"
+
+#: src/frontends/xforms/FormDocument.C:275
+msgid "Paper"
+msgstr "Papier"
+
+#: src/frontends/xforms/FormDocument.C:279
+#: src/frontends/xforms/FormParagraph.C:133
+msgid "Extra"
+msgstr "Extra"
+
+#: src/frontends/xforms/FormDocument.C:281
+msgid "Bullets"
+msgstr "Odrá¾ky"
+
+#: src/frontends/xforms/FormDocument.C:284
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document popup has been disabled"
+msgstr ""
+"Va¹a verzia libXpm je star¹ia ako 4.7\n"
+"'Odrá¾kové' u¹ká dokumentu neboli povolené"
+
+#: src/frontends/xforms/FormDocument.C:308
+msgid "Document layout set"
+msgstr "Formát dokumentu bol nastavený"
+
+#: src/frontends/xforms/FormDocument.C:426
+msgid "Converting document to new document class..."
+msgstr "Prevod dokumentu do novej triedy dokumentov..."
+
+#: src/frontends/xforms/FormDocument.C:434
+msgid "One paragraph couldn't be converted"
+msgstr "Jeden odstavec nie je mo¾né skonvertova»"
+
+#: src/frontends/xforms/FormDocument.C:437
+msgid " paragraphs couldn't be converted"
+msgstr " odstavce nie je mo¾né skonvertova»"
+
+#. problem changing class -- warn user and retain old style
+#: src/frontends/xforms/FormDocument.C:439
+#: src/frontends/xforms/FormDocument.C:446
+#: src/frontends/xforms/FormDocument.C:1108
+msgid "Conversion Errors!"
+msgstr "Chyby konverzie!"
+
+#: src/frontends/xforms/FormDocument.C:440
+msgid "into chosen document class"
+msgstr "do zvolenej triedy dokumentu"
+
+#: src/frontends/xforms/FormDocument.C:447
+msgid "Errors loading new document class."
+msgstr "Chyby pri naèítavaní novej triedy dokumentu."
+
+#: src/frontends/xforms/FormDocument.C:448
+#: src/frontends/xforms/FormDocument.C:1110
+msgid "Reverting to original document class."
+msgstr "Spä» do pôvodnej triedy dokumentu."
+
+#: src/frontends/xforms/FormDocument.C:825
+msgid "Document is read-only. No changes to layout permitted."
+msgstr "Dokument je iba pre èítanie. Nie sú povolené ¾iadne zmeny formátu."
+
+#: src/frontends/xforms/FormDocument.C:1100
+msgid "Should I set some parameters to"
+msgstr "Mám niektoré parametre nastavi» na"
+
+#: src/frontends/xforms/FormDocument.C:1101
+msgid "the defaults of this document class?"
+msgstr "prednastavené hodnoty tejto triedy dokumentov?"
+
+#: src/frontends/xforms/FormDocument.C:1109
+msgid "Unable to switch to new document class."
+msgstr "Nie je mo¾né prepnú» do vybrané triedy dokumentu."
+
+#: src/frontends/xforms/form_document.C:30
+#: src/frontends/xforms/form_paragraph.C:314
+#: src/frontends/xforms/form_tabular.C:28
+msgid "Tabbed folder"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:85
+msgid "Special:|#S"
+msgstr "©peciálne:|#c"
+
+#: src/frontends/xforms/form_document.C:98
+msgid "Margins"
+msgstr "Okraje"
+
+#: src/frontends/xforms/form_document.C:102
+msgid "Foot/Head Margins"
+msgstr "Okraje Hlavièky/Päty"
+
+#: src/frontends/xforms/form_document.C:113
+msgid "Orientation"
+msgstr "Orientácia"
+
+#: src/frontends/xforms/form_document.C:120
+msgid "Portrait|#o"
+msgstr "Na vý¹ku|#v"
+
+#: src/frontends/xforms/form_document.C:127
+msgid "Landscape|#L"
+msgstr "Na ¹írku|#n"
+
+#: src/frontends/xforms/form_document.C:136
+msgid "Papersize:|#P"
+msgstr "Veµkos»:"
+
+#: src/frontends/xforms/form_document.C:143
+msgid "Custom Papersize"
+msgstr "Vlastná veµkos»"
+
+#: src/frontends/xforms/form_document.C:148
+msgid "Use Geometry Package|#U"
+msgstr "Pou¾i» balík Geometry|#P"
+
+#: src/frontends/xforms/form_document.C:155
+msgid "Width:|#W"
+msgstr "©írka:|#k"
+
+#: src/frontends/xforms/form_document.C:162
+msgid "Height:|#H"
+msgstr "Vý¹ka:|#V"
+
+#: src/frontends/xforms/form_document.C:169
+msgid "Top:|#T"
+msgstr "Hore:|#H"
+
+#: src/frontends/xforms/form_document.C:176
+msgid "Bottom:|#B"
+msgstr "Dole:|#D"
+
+#: src/frontends/xforms/form_document.C:183
+msgid "Left:|#e"
+msgstr "Vµavo:|#a"
+
+#: src/frontends/xforms/form_document.C:190
+msgid "Right:|#R"
+msgstr "Vpravo:|#r"
+
+#: src/frontends/xforms/form_document.C:197
+msgid "Headheight:|#i"
+msgstr "Vý¹ka hlavièky:|#i"
+
+#: src/frontends/xforms/form_document.C:204
+msgid "Headsep:|#d"
+msgstr "Vý¹ka oddeµovaèa:|#d"
+
+#: src/frontends/xforms/form_document.C:211
+msgid "Footskip:|#F"
+msgstr "Veµkos» päty:"
+
+#: src/frontends/xforms/form_document.C:244
+msgid "Separation"
+msgstr "Separácia"
+
+#: src/frontends/xforms/form_document.C:247
+msgid "Page cols"
+msgstr "Ståpce na stránke"
+
+#: src/frontends/xforms/form_document.C:250
+msgid "Sides"
+msgstr "Strany"
+
+#: src/frontends/xforms/form_document.C:254
+msgid "Fonts:|#F"
+msgstr "Písmo:|#P"
+
+#: src/frontends/xforms/form_document.C:262
+msgid "Font Size:|#O"
+msgstr "Veµkos» písma:|#O"
+
+#: src/frontends/xforms/form_document.C:270
+msgid "Class:|#C"
+msgstr "Trieda:|#T"
+
+#: src/frontends/xforms/form_document.C:278
+msgid "Pagestyle:|#P"
+msgstr "©týl strany:|#©"
+
+#: src/frontends/xforms/form_document.C:286
+msgid "Spacing|#g"
+msgstr "Riadkovanie|#R"
+
+#: src/frontends/xforms/form_document.C:294
+msgid "Extra Options:|#X"
+msgstr "Ïal¹ie nastavenia:|#v"
+
+#: src/frontends/xforms/form_document.C:304
+msgid "Default Skip:|#u"
+msgstr "©td. medzera:|#d"
+
+#: src/frontends/xforms/form_document.C:314
+msgid "One|#n"
+msgstr "Jedna strana|#n"
+
+#: src/frontends/xforms/form_document.C:321
+msgid "Two|#T"
+msgstr "Dve strany|#e"
+
+#: src/frontends/xforms/form_document.C:332
+msgid "One|#e"
+msgstr "Jeden ståpec|#e"
+
+#: src/frontends/xforms/form_document.C:339
+msgid "Two|#w"
+msgstr "Dva ståpce|#v"
+
+#: src/frontends/xforms/form_document.C:350
+msgid "Indent|#I"
+msgstr "Odsadením|#O"
+
+#: src/frontends/xforms/form_document.C:357
+msgid "Skip|#K"
+msgstr "Medzerou|#M"
+
+#: src/frontends/xforms/form_document.C:392
+msgid "Quote Style    "
+msgstr "Typ úvodzoviek    "
+
+#: src/frontends/xforms/form_document.C:394
+msgid "Encoding:|#D"
+msgstr "Kódovanie:"
+
+#: src/frontends/xforms/form_document.C:402
+msgid "Type:|#T"
+msgstr "Typ:|#T"
+
+#: src/frontends/xforms/form_document.C:411
+msgid "Single|#S"
+msgstr "Jednod.|#J"
+
+#: src/frontends/xforms/form_document.C:418
+msgid "Double|#D"
+msgstr "Dvojité|#D"
+
+#: src/frontends/xforms/form_document.C:427
+msgid "Language:|#L"
+msgstr "Jazyk:|#J"
+
+#: src/frontends/xforms/form_document.C:458
+msgid "Float Placement:|#L"
+msgstr "Umiestnenie objektov:|#U"
+
+#: src/frontends/xforms/form_document.C:464
+msgid "Section number depth"
+msgstr "Håbka vnorenia oddielov"
+
+#: src/frontends/xforms/form_document.C:468
+msgid "Table of contents depth"
+msgstr "Håbka obsahu"
+
+#: src/frontends/xforms/form_document.C:473
+msgid "PS Driver:|#S"
+msgstr "PS Ovládaè:|#S"
+
+#: src/frontends/xforms/form_document.C:481
+msgid "Use AMS Math|#M"
+msgstr "Pou¾i» AMS Matematiku|#M"
+
+#: src/frontends/xforms/form_document.C:523
+msgid "Size|#z"
+msgstr "Veµkos»|#s"
+
+#: src/frontends/xforms/form_document.C:532
+msgid "LaTeX|#L"
+msgstr "LaTeX|#L"
+
+#: src/frontends/xforms/form_document.C:542
+msgid "1|#1"
+msgstr "1|#1"
+
+#: src/frontends/xforms/form_document.C:550
+msgid "2|#2"
+msgstr "2|#2"
+
+#: src/frontends/xforms/form_document.C:557
+msgid "3|#3"
+msgstr "3|#3"
+
+#: src/frontends/xforms/form_document.C:564
+msgid "4|#4"
+msgstr "4|#4"
+
+#: src/frontends/xforms/form_document.C:572
+msgid "Bullet Depth"
+msgstr "Håbka odrá¾ok"
+
+#: src/frontends/xforms/form_document.C:578
+msgid "Standard|#S"
+msgstr "©tandard|#t"
+
+#: src/frontends/xforms/form_document.C:587
+msgid "Maths|#M"
+msgstr "Matematické|#M"
+
+#: src/frontends/xforms/form_document.C:595
+msgid "Ding 2|#i"
+msgstr "Ïal¹ie 2|#a"
+
+#: src/frontends/xforms/form_document.C:603
+msgid "Ding 3|#n"
+msgstr "Ïal¹ie 3|#l"
+
+#: src/frontends/xforms/form_document.C:611
+msgid "Ding 4|#g"
+msgstr "Ïal¹ie 4|#¹"
+
+#: src/frontends/xforms/form_document.C:619
+msgid "Ding 1|#D"
+msgstr "Ïal¹ie 1|#Ï"
+
+#: src/frontends/xforms/FormError.C:26
+msgid "LaTeX Error"
+msgstr "LaTeX chyba"
+
+#: src/frontends/xforms/FormGraphics.C:36
+#: src/frontends/xforms/FormGraphics.C:359
+msgid "Graphics"
+msgstr "Grafika"
+
+#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1974
+msgid "Clipart"
+msgstr ""
+
+#: src/frontends/xforms/form_graphics.C:33
+msgid "Graphics File|#F"
+msgstr "Grafický súbor|#f"
+
+#: src/frontends/xforms/form_graphics.C:39 src/insets/insetinclude.C:45
+#: src/insets/insetinclude.C:46
+msgid "Browse|#B"
+msgstr "Prechádza» |#P"
+
+#: src/frontends/xforms/form_graphics.C:59
+#: src/frontends/xforms/form_graphics.C:76
+#, no-c-format
+msgid "% of Page"
+msgstr "% Strany"
+
+#: src/frontends/xforms/form_graphics.C:61
+#: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
+msgid "Default"
+msgstr "©tandardný"
+
+#: src/frontends/xforms/form_graphics.C:64
+#: src/frontends/xforms/form_graphics.C:80
+msgid "cm"
+msgstr "cm"
+
+#: src/frontends/xforms/form_graphics.C:66
+#: src/frontends/xforms/form_graphics.C:78
+msgid "Inch"
+msgstr "Palca"
+
+#: src/frontends/xforms/form_graphics.C:69
+#, no-c-format
+msgid "% of Column"
+msgstr "% Ståpca"
+
+#: src/frontends/xforms/form_graphics.C:90
+msgid "in Monochrome|#M"
+msgstr "monochromaticky|#m"
+
+#: src/frontends/xforms/form_graphics.C:96
+msgid "in Grayscale|#G"
+msgstr "v odtieòoch ¹edi|#o"
+
+#: src/frontends/xforms/form_graphics.C:101
+msgid "in Color|#C"
+msgstr "vo Farbe|#F"
+
+#: src/frontends/xforms/form_graphics.C:106
+msgid "Don't display|#D"
+msgstr "Nezobrazova»|#b"
+
+#: src/frontends/xforms/form_graphics.C:112
+msgid "Rotate"
+msgstr "Otoèenie"
+
+#: src/frontends/xforms/form_graphics.C:114
+msgid "Angle|#A"
+msgstr "Uhol|#U"
+
+#: src/frontends/xforms/form_graphics.C:120
+msgid "Inline Figure|#I"
+msgstr "Vlo¾enie obrázku|#i"
+
+#: src/frontends/xforms/form_graphics.C:128
+msgid "Subcaption|#S"
+msgstr "Popiska|#o"
+
+#: src/frontends/xforms/form_graphics.C:135 src/frontends/xforms/form_ref.C:33
+#: src/frontends/xforms/form_toc.C:32
+msgid "Update|#U"
+msgstr "Aktualizova»|#A"
+
+#: src/frontends/xforms/form_graphics.C:141
+msgid "Ok"
+msgstr "Ok"
+
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
+msgid "Index"
+msgstr "Index"
+
+#: src/frontends/xforms/form_index.C:29
+msgid "Keyword|#K"
+msgstr "Kµúèové slovo|#K"
+
+#: src/frontends/xforms/FormParagraph.C:33
+msgid "Paragraph Layout"
+msgstr "Formát odstavca"
+
+#: src/frontends/xforms/FormParagraph.C:92
+#: src/frontends/xforms/FormParagraph.C:95
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr "¾iadna | prednastavená | malá | stredná | veµká | výplnok | då¾ka "
+
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:132
+msgid "General"
+msgstr "V¹eobecné"
+
+#: src/frontends/xforms/FormParagraph.C:680
+#: src/frontends/xforms/FormParagraph.C:717
+#: src/frontends/xforms/FormTabular.C:454
+#: src/frontends/xforms/FormTabular.C:466
+#: src/frontends/xforms/FormTabular.C:478
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Varovanie: Neplatná då¾ka (platný je napríklad: 10mm)"
+
+#: src/frontends/xforms/FormParagraph.C:729
+msgid "Warning: Invalid percent value (0-100)"
+msgstr "Varovanie: Neplatná percentná hodnota (1-100)"
+
+#: src/frontends/xforms/form_paragraph.C:40
+msgid "Label Width:|#d"
+msgstr "©írka znaèky:|#z"
+
+#: src/frontends/xforms/form_paragraph.C:48
+msgid "Indent"
+msgstr "Odsadenie"
+
+#: src/frontends/xforms/form_paragraph.C:53
+msgid "Above|#b"
+msgstr "Nad|#n"
+
+#: src/frontends/xforms/form_paragraph.C:60
+msgid "Below|#E"
+msgstr "Pod|#p"
+
+#: src/frontends/xforms/form_paragraph.C:67
+msgid "Above|#o"
+msgstr "Nad|#N"
+
+#: src/frontends/xforms/form_paragraph.C:74
+msgid "Below|#l"
+msgstr "Pod|p"
+
+#: src/frontends/xforms/form_paragraph.C:81
+msgid "No Indent|#I"
+msgstr "Bez odsadenia|#i"
+
+#: src/frontends/xforms/form_paragraph.C:90 src/mathed/math_forms.C:92
+msgid "Right|#R"
+msgstr "Vpravo|#r"
+
+#: src/frontends/xforms/form_paragraph.C:97
+msgid "Left|#f"
+msgstr "Vµavo|#µ"
+
+#: src/frontends/xforms/form_paragraph.C:104
+msgid "Block|#c"
+msgstr "Do bloku|#b"
+
+#: src/frontends/xforms/form_paragraph.C:111
+#: src/frontends/xforms/form_tabular.C:210
+#: src/frontends/xforms/form_tabular.C:336
+msgid "Center|#n"
+msgstr "Na stred|#N"
+
+#: src/frontends/xforms/form_paragraph.C:126
+msgid "Above:|#v"
+msgstr "Nad:|#N"
+
+#: src/frontends/xforms/form_paragraph.C:134
+msgid "Below:|#w"
+msgstr "Pod:|#P"
+
+#: src/frontends/xforms/form_paragraph.C:141
+msgid "Pagebreaks"
+msgstr "Zalomenie strany"
+
+#: src/frontends/xforms/form_paragraph.C:145
+msgid "Lines"
+msgstr "Èiara"
+
+#: src/frontends/xforms/form_paragraph.C:153
+msgid "Vertical Spaces"
+msgstr "Vertikálna medzera"
+
+#: src/frontends/xforms/form_paragraph.C:158
+msgid "Keep|#K"
+msgstr "Ponecha»|#P"
+
+#: src/frontends/xforms/form_paragraph.C:165
+msgid "Keep|#p"
+msgstr "Ponecha»|#P"
+
+#: src/frontends/xforms/form_paragraph.C:200
+msgid "Extra Options"
+msgstr "Extra nastavenia"
+
+#: src/frontends/xforms/form_paragraph.C:205
+msgid "Length|#L"
+msgstr "Då¾ka|#å"
+
+#: src/frontends/xforms/form_paragraph.C:213
+#, no-c-format
+msgid "or %|#o"
+msgstr "alebo %|#o"
+
+#: src/frontends/xforms/form_paragraph.C:230
+msgid "Top|#T"
+msgstr "Hore|#H"
+
+#: src/frontends/xforms/form_paragraph.C:237
+msgid "Middle|#d"
+msgstr "Na stred|#s"
+
+#: src/frontends/xforms/form_paragraph.C:244
+msgid "Bottom|#B"
+msgstr "Dole|#D"
+
+#: src/frontends/xforms/form_paragraph.C:253
+msgid "HFill between Minipage paragraphs|#H"
+msgstr "Pru¾ná výplò (HFill) medzi odstavcami minipage|#H"
+
+#: src/frontends/xforms/form_paragraph.C:260
+msgid "Start new Minipage|#S"
+msgstr "Zaèa» novú minipage|#Z"
+
+#: src/frontends/xforms/form_paragraph.C:269
+msgid "Indented Paragraph|#I"
+msgstr "Odsadenie odstavca|#i"
+
+#: src/frontends/xforms/form_paragraph.C:276
+msgid "Minipage|#M"
+msgstr "Minipage|#M"
+
+#: src/frontends/xforms/form_paragraph.C:283
+msgid "Floatflt|#F"
+msgstr ""
+
+#: src/frontends/xforms/form_paragraph.C:317
+#: src/frontends/xforms/form_preferences.C:38
+#: src/frontends/xforms/form_print.C:63
+msgid "Cancel|C#C^["
+msgstr "Zru¹i»|Z#Z^["
+
+#: src/frontends/xforms/FormPreferences.C:68
+msgid "Preferences"
+msgstr "Nastavenia"
+
+#: src/frontends/xforms/FormPreferences.C:220
+msgid "Look & Feel"
+msgstr "Vzhµad"
+
+#: src/frontends/xforms/FormPreferences.C:223
+msgid "Lang Opts"
+msgstr "Jazykové nast."
+
+#: src/frontends/xforms/FormPreferences.C:226
+#: src/frontends/xforms/FormPreferences.C:255
+msgid "Converters"
+msgstr "Konvertor"
+
+#: src/frontends/xforms/FormPreferences.C:229
+msgid "Inputs"
+msgstr "Vstup"
+
+#: src/frontends/xforms/FormPreferences.C:232
+msgid "Outputs"
+msgstr "Výstup"
+
+#: src/frontends/xforms/FormPreferences.C:238
+msgid "Screen Fonts"
+msgstr "Písmo obrazovky"
+
+#: src/frontends/xforms/FormPreferences.C:241
+msgid "Interface"
+msgstr "Rozhranie"
+
+#: src/frontends/xforms/FormPreferences.C:244
+msgid "Colors"
+msgstr "Farby"
+
+#: src/frontends/xforms/FormPreferences.C:247
+#: src/frontends/xforms/FormPreferences.C:264
+#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
+msgid "Misc"
+msgstr "Rôzne"
+
+#: src/frontends/xforms/FormPreferences.C:252
+msgid "Formats"
+msgstr "Formáty"
+
+#: src/frontends/xforms/FormPreferences.C:261
+msgid "Paths"
+msgstr "Cesty"
+
+#: src/frontends/xforms/FormPreferences.C:269
+msgid "Printer"
+msgstr "Tlaèiareò"
+
+#: src/frontends/xforms/FormPreferences.C:277
+msgid "Spell checker"
+msgstr "Kontrola pravopisu"
+
+#: src/frontends/xforms/FormPreferences.C:533
+msgid "LyX objects that can be assigned a color."
+msgstr "LyX objekty, ktorým mô¾u by» priradené farby."
+
+#: src/frontends/xforms/FormPreferences.C:536
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Modifikovanie farby LyX objektov. Poznámka: musíte stlaèi» \"Pou¾i»\" , aby do¹lo k zmene."
+
+#: src/frontends/xforms/FormPreferences.C:544
+msgid "Find a new color."
+msgstr "Nájs» novú farbu."
+
+#: src/frontends/xforms/FormPreferences.C:547
+msgid "Toggle between RGB and HSV color spaces."
+msgstr "Prepnú» medzi RGB a HSV farebným priestorom."
+
+#: src/frontends/xforms/FormPreferences.C:742
+msgid "GUI background"
+msgstr "GUI pozadie"
+
+#: src/frontends/xforms/FormPreferences.C:748
+msgid "GUI text"
+msgstr "GUI text"
+
+#: src/frontends/xforms/FormPreferences.C:757
+msgid "GUI selection"
+msgstr "GUI zvolené"
+
+#: src/frontends/xforms/FormPreferences.C:763
+msgid "GUI pointer"
+msgstr "GUI ukazovateµ"
+
+#: src/frontends/xforms/FormPreferences.C:896
+msgid "HSV"
+msgstr "HSV"
+
+#: src/frontends/xforms/FormPreferences.C:928
+msgid "RGB"
+msgstr "RGB"
+
+#: src/frontends/xforms/FormPreferences.C:1004
+msgid "All the currently defined converters known to LyX."
+msgstr "V¹etky aktuálne definované konvertory známe LyXu."
+
+#: src/frontends/xforms/FormPreferences.C:1006
+msgid "Convert \"from\" this format"
+msgstr "Skonvertuj \"z\" tohoto formátu"
+
+#: src/frontends/xforms/FormPreferences.C:1008
+msgid "Convert \"to\" this format"
+msgstr "Skonvertuj \"do\" tohoto formátu"
+
+#: src/frontends/xforms/FormPreferences.C:1010
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+"Príkaz pre konverziu. $$i je názov vstupného súboru, $$b je názov súboru "
+"bez prípony a $$o je názov výstupného súboru."
+
+#: src/frontends/xforms/FormPreferences.C:1012
+msgid "Flags that control the converter behavior"
+msgstr "Prepínaèe, ktoré riadia správanie sa konvertora"
+
+#: src/frontends/xforms/FormPreferences.C:1014
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+"Odstráni aktuálny konvertor zo zoznamu dostupných konvertorov. Poznámka: na aplikovanie zmeny "
+"musíte stlaèi» \"Pou¾i»\". "
+
+#: src/frontends/xforms/FormPreferences.C:1016
+#: src/frontends/xforms/FormPreferences.C:1288
+msgid "Add"
+msgstr "Prida»"
+
+#: src/frontends/xforms/FormPreferences.C:1017
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+"Pridanie aktuálneho konvertora do zoznamu dostupných konvertorov. Poznámka: na aplikovanie zmeny "
+"musíte stlaèi» \"Pou¾i»\". "
+
+#: src/frontends/xforms/FormPreferences.C:1019
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+"Modifikovanie obsahu aktuálneho konvertora. Poznámka: na aplikovanie zmeny "
+"musíte stlaèi» \"Pou¾i»\". "
+
+#: src/frontends/xforms/FormPreferences.C:1112
+#: src/frontends/xforms/FormPreferences.C:1114
+#: src/frontends/xforms/FormPreferences.C:1159
+#: src/frontends/xforms/FormPreferences.C:1161
+#: src/frontends/xforms/FormPreferences.C:1388
+#: src/frontends/xforms/FormPreferences.C:1389
+#: src/frontends/xforms/FormPreferences.C:1438
+#: src/frontends/xforms/FormPreferences.C:1440
+#: src/frontends/xforms/form_preferences.C:504
+msgid "Modify|#M"
+msgstr "Modifikova»|#M"
+
+#: src/frontends/xforms/FormPreferences.C:1148
+#: src/frontends/xforms/FormPreferences.C:1150
+#: src/frontends/xforms/FormPreferences.C:1427
+#: src/frontends/xforms/FormPreferences.C:1429
+#: src/frontends/xforms/form_preferences.C:607
+#: src/frontends/xforms/form_preferences.C:694
+msgid "Add|#A"
+msgstr "Prida»|#P"
+
+#: src/frontends/xforms/FormPreferences.C:1274
+msgid "All the currently defined formats known to LyX."
+msgstr "V¹etky aktuálne definované a známe formáty pre LyX."
+
+#: src/frontends/xforms/FormPreferences.C:1276
+msgid "The format identifier."
+msgstr "Identifikátor formátu."
+
+#: src/frontends/xforms/FormPreferences.C:1278
+msgid "The format name as it will appear in the menus."
+msgstr "Názov formátu, tak ako sa objaví v ponuke."
+
+#: src/frontends/xforms/FormPreferences.C:1280
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr "Klávesové skratky. Pou¾ite písmená v názve GUI. Citlivé na veµkos» písmen."
+
+#: src/frontends/xforms/FormPreferences.C:1282
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr "Pou¾ité pre rozoznanie formátu súboru. Napr. ps, pdf, tex."
+
+#: src/frontends/xforms/FormPreferences.C:1284
+msgid "The command used to launch the viewer application."
+msgstr "Príkaz pre spustenie aplikácie na prezeranie."
+
+#: src/frontends/xforms/FormPreferences.C:1286
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+"Odstráni aktuálny formát zo zoznamu dostupných formátov. Poznámka: na aplikovanie zmeny "
+"musíte stlaèi» \"Pou¾i»\"."
+
+#: src/frontends/xforms/FormPreferences.C:1289
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+"Pridá aktuálny formát do zoznamu dostupných formátov. Poznámka: na aplikovanie zmeny "
+"musíte stlaèi» \"Pou¾i»\". "
+
+#: src/frontends/xforms/FormPreferences.C:1291
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+"Modifikácia obsahu aktuálneho formátu. Poznámka: na aplikovanie zmeny "
+"musíte stlaèi» \"Pou¾i»\". "
+
+#: src/frontends/xforms/FormPreferences.C:1407
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr "Nemô¾em odstráni» Formát pou¾ívaný Konvertorom. Odstráòte najprv konvertor."
+
+#: src/frontends/xforms/FormPreferences.C:1578
+msgid "Sys Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1582
+msgid "User Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1586
+msgid "Bind file"
+msgstr "Bind súbor"
+
+#: src/frontends/xforms/FormPreferences.C:1590
+msgid "Sys UI"
+msgstr "Systémové rozhranie"
+
+#: src/frontends/xforms/FormPreferences.C:1594
+msgid "User UI"
+msgstr "Pou¾ívateµovo rozhranie"
+
+#: src/frontends/xforms/FormPreferences.C:1598
+msgid "UI file"
+msgstr "UI súbor"
+
+#: src/frontends/xforms/FormPreferences.C:1794
+#: src/frontends/xforms/FormPreferences.C:1802
+msgid "Key maps"
+msgstr "Klávesové mapy"
+
+#: src/frontends/xforms/FormPreferences.C:1798
+#: src/frontends/xforms/FormPreferences.C:1806
+msgid "Keyboard map"
+msgstr "Klávesnicové mapy"
+
+#: src/frontends/xforms/FormPreferences.C:1979
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr "implicitná | US letter | legal | executive | A3 | A4 | A5 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2231
+msgid "Default path"
+msgstr "©tandardná cesta"
+
+#: src/frontends/xforms/FormPreferences.C:2236
+msgid "Template path"
+msgstr "Cesta k ¹ablónam"
+
+#: src/frontends/xforms/FormPreferences.C:2241
+msgid "Temp dir"
+msgstr "Doèasný prieèinok"
+
+#: src/frontends/xforms/FormPreferences.C:2245
+msgid "User"
+msgstr "Pou¾ívateµ"
+
+#: src/frontends/xforms/FormPreferences.C:2248
+msgid "Lastfiles"
+msgstr "Posledné súbory"
+
+#: src/frontends/xforms/FormPreferences.C:2252
+msgid "Backup path"
+msgstr "Cesta k zálohám"
+
+#: src/frontends/xforms/FormPreferences.C:2257
+msgid "LyX Server pipes"
+msgstr "Rúry LyX Serveru"
+
+#: src/frontends/xforms/FormPreferences.C:2701
+msgid "Fonts must be positive!"
+msgstr "Písmo musí by» pozitívne!"
+
+#: src/frontends/xforms/FormPreferences.C:2724
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+"Písma musia vstupova» v poradí drobné > skript > poznámka > malé > normálne > "
+"veµké > väè¹ie > najväè¹ie > obrovské > ozrutné"
+
+#: src/frontends/xforms/FormPreferences.C:2840
+msgid " none | ispell | aspell "
+msgstr " ¾iadne | ispell | aspell "
+
+#: src/frontends/xforms/FormPreferences.C:2952
+msgid "Personal dictionary"
+msgstr "Osobný slovník"
+
+#: src/frontends/xforms/FormPreferences.C:3008
+msgid "WARNING!"
+msgstr "VAROVANIE!"
+
+#: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
+msgid "Save"
+msgstr "Ulo¾i»"
+
+#: src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
+msgid "Roman"
+msgstr "Roman"
+
+#: src/frontends/xforms/form_preferences.C:108
+msgid "Sans Serif"
+msgstr "Sans Serif"
+
+#: src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
+msgid "Typewriter"
+msgstr "Písací stroj"
+
+#: src/frontends/xforms/form_preferences.C:116
+#, no-c-format
+msgid "Zoom %|#Z"
+msgstr "Zväè¹enie %|#Z"
+
+#: src/frontends/xforms/form_preferences.C:127
+msgid "Use scalable fonts"
+msgstr "Pou¾i» stupòovateµné písmo"
+
+#: src/frontends/xforms/form_preferences.C:132
+msgid "Encoding"
+msgstr "Kódovanie"
+
+#: src/frontends/xforms/form_preferences.C:135
+msgid "script"
+msgstr "skript"
+
+#: src/LColor.C:85 src/frontends/xforms/form_preferences.C:138
+msgid "footnote"
+msgstr "poznámka"
+
+#: src/frontends/xforms/form_preferences.C:141
+msgid "large"
+msgstr "veµké"
+
+#: src/frontends/xforms/form_preferences.C:144
+msgid "largest"
+msgstr "najväè¹ie"
+
+#: src/frontends/xforms/form_preferences.C:147
+msgid "huge"
+msgstr "ozrutné"
+
+#: src/frontends/xforms/form_preferences.C:150
+msgid "normal"
+msgstr "normálne"
+
+#: src/frontends/xforms/form_preferences.C:154
+msgid "Screen DPI|#D"
+msgstr "DPI pre obrazovku|#D"
+
+#: src/frontends/xforms/form_preferences.C:165
+msgid "tiny"
+msgstr "drobné"
+
+#: src/frontends/xforms/form_preferences.C:168
+msgid "larger"
+msgstr "väè¹ie"
+
+#: src/frontends/xforms/form_preferences.C:171
+msgid "small"
+msgstr "malé"
+
+#: src/frontends/xforms/form_preferences.C:174
+msgid "huger"
+msgstr "obrovské"
+
+#: src/frontends/xforms/form_preferences.C:202
+msgid "Ascii line length|#A"
+msgstr "Då¾ka Acsii riadku|#A"
+
+#: src/frontends/xforms/form_preferences.C:214
+msgid "TeX encoding|#T"
+msgstr "TeX kódovanie|#T"
+
+#: src/frontends/xforms/form_preferences.C:221
+msgid "Default paper size|#p"
+msgstr "Prednastavená veµkos» papiera|#p"
+
+#: src/frontends/xforms/form_preferences.C:229
+msgid "ascii roff|#r"
+msgstr "ascii roff|#r"
+
+#: src/frontends/xforms/form_preferences.C:236
+msgid "checktex|#c"
+msgstr "checktex|#c"
+
+#: src/frontends/xforms/form_preferences.C:242
+msgid "Outside code interaction"
+msgstr "Interakcia s vonkaj¹ím kódom"
+
+#: src/frontends/xforms/form_preferences.C:269
+msgid "Spell command|#S"
+msgstr "Kontrola pravopisu | #K"
+
+#: src/frontends/xforms/form_preferences.C:278
+msgid "Use alternative language|#a"
+msgstr "Pou¾i» alternatívny jazyk|#a"
+
+#: src/frontends/xforms/form_preferences.C:288
+msgid "Use escape characters|#e"
+msgstr "©peciálne znaky|#e"
+
+#: src/frontends/xforms/form_preferences.C:298
+msgid "Use personal dictionary|#d"
+msgstr "Pou¾i» osobný slovník|#o"
+
+#: src/frontends/xforms/form_preferences.C:315
+msgid "Accept compound words|#w"
+msgstr "Akceptova» zlo¾ené slová|#z"
+
+#: src/frontends/xforms/form_preferences.C:323
+msgid "Use input encoding|#i"
+msgstr "Pou¾i» kódovanie vstupu|#v"
+
+#: src/frontends/xforms/form_preferences.C:354
+msgid "date format|#f"
+msgstr "formát dátumu|#f"
+
+#: src/frontends/xforms/form_preferences.C:384
+msgid "Package|#P"
+msgstr "Balíèek|#B"
+
+#: src/frontends/xforms/form_preferences.C:391
+msgid "Default language|#l"
+msgstr "Prednastavený jazyk|#j"
+
+#: src/frontends/xforms/form_preferences.C:398
+msgid ""
+"Keyboard\n"
+"map|#K"
+msgstr ""
+"Klavesnicová\n"
+"mapa|#K"
+
+#: src/frontends/xforms/form_preferences.C:406
+msgid "RtL support|#R"
+msgstr "Podpora zprava doµava|#R"
+
+#: src/frontends/xforms/form_preferences.C:414
+msgid "Mark foreign|#M"
+msgstr "Oznaèi» cudzie|#O"
+
+#: src/frontends/xforms/form_preferences.C:422
+msgid "Auto begin|#b"
+msgstr "Automatický zaèiatok|#z"
+
+#: src/frontends/xforms/form_preferences.C:430
+msgid "Auto finish|#f"
+msgstr "Automatický koniec|#A"
+
+#: src/frontends/xforms/form_preferences.C:438
+msgid "Command start|#s"
+msgstr "Poèiatoèný príkaz|#P"
+
+#: src/frontends/xforms/form_preferences.C:445
+msgid "Command end|#e"
+msgstr "Ukonèovací príkaz|#U"
+
+#: src/frontends/xforms/form_preferences.C:452
+msgid "1st|#1"
+msgstr "1|#1"
+
+#: src/frontends/xforms/form_preferences.C:459
+msgid "2nd|#2"
+msgstr "2|#2"
+
+#: src/frontends/xforms/form_preferences.C:465
+#: src/frontends/xforms/form_preferences.C:467
+msgid "Browse"
+msgstr "Prechádza»"
+
+#: src/frontends/xforms/form_preferences.C:496
+msgid "LyX objects|#L"
+msgstr "LyX objekty|#L"
+
+#: src/frontends/xforms/form_preferences.C:511
+msgid "S|#S"
+msgstr "S|#S"
+
+#: src/frontends/xforms/form_preferences.C:520
+msgid "V|#V"
+msgstr "V|#V"
+
+#: src/frontends/xforms/form_preferences.C:529
+msgid "H|#H"
+msgstr "H|#H"
+
+#: src/frontends/xforms/form_preferences.C:536
+msgid "R|#R"
+msgstr "R|#R"
+
+#: src/frontends/xforms/form_preferences.C:545
+msgid "B|#B"
+msgstr "B|#B"
+
+#: src/frontends/xforms/form_preferences.C:554
+msgid "G|#G"
+msgstr "G|#G"
+
+#: src/frontends/xforms/form_preferences.C:592
+msgid "All converters|#A"
+msgstr "V¹etky konvertory|#V"
+
+#: src/frontends/xforms/form_preferences.C:600
+#: src/frontends/xforms/form_preferences.C:687
+msgid "Delete|#D"
+msgstr "Vymaza»|#m"
+
+#: src/frontends/xforms/form_preferences.C:614
+msgid "Converter|#C"
+msgstr " Konvertor|#K"
+
+#: src/frontends/xforms/form_preferences.C:621
+msgid "From|#F"
+msgstr "Z|#Z"
+
+#: src/frontends/xforms/form_preferences.C:628
+msgid "To|#T"
+msgstr "Do|#D"
+
+#: src/frontends/xforms/form_preferences.C:635
+msgid "Flags|#F"
+msgstr "Prepínaèe|#P"
+
+#: src/frontends/xforms/form_preferences.C:665
+msgid "All formats|#A"
+msgstr "V¹etky formáty|#V"
+
+#: src/frontends/xforms/form_preferences.C:673
+msgid "Format|#F"
+msgstr "Formát|#F"
+
+#: src/frontends/xforms/form_preferences.C:680
+msgid "GUI name|#G"
+msgstr "GUI názov|#G"
+
+#: src/frontends/xforms/form_preferences.C:701
+msgid "Extension|#E"
+msgstr "Prípona|#P"
+
+#: src/frontends/xforms/form_preferences.C:708
+msgid "Viewer|#V"
+msgstr "Prehliadaè|#P"
+
+#: src/frontends/xforms/form_preferences.C:715
+msgid "Shortcut|#S"
+msgstr "Klávesová skratka|#s"
+
+#: src/frontends/xforms/form_preferences.C:745
+msgid "Show banner|#S"
+msgstr "Zobrazi» transparent|#s"
+
+#: src/frontends/xforms/form_preferences.C:753
+msgid "Auto region delete|#A"
+msgstr "Automatické mazanie oblastí|A"
+
+#: src/frontends/xforms/form_preferences.C:761
+msgid "Exit confirmation|#E"
+msgstr "Potvrdenie ukonèenia|#u"
+
+#: src/frontends/xforms/form_preferences.C:768
+msgid "Display keyboard shortcuts"
+msgstr "Zobrazova» klávesové skratky"
+
+#: src/frontends/xforms/form_preferences.C:772
+msgid "Autosave interval"
+msgstr "Interval automatického ukladania"
+
+#: src/frontends/xforms/form_preferences.C:781
+msgid "File->New asks for name|#N"
+msgstr "Súbor ->Nové ¾iada» meno |#N"
+
+#: src/frontends/xforms/form_preferences.C:789
+msgid "Cursor follows scrollbar|#C"
+msgstr "Kurzor nasleduje posuvník|#K"
+
+#: src/frontends/xforms/form_preferences.C:796
+msgid "Wheel mouse jump"
+msgstr "Skok kolieska my¹i"
+
+#: src/frontends/xforms/form_preferences.C:827
+msgid "Popup Font"
+msgstr "Písmo pre popup dialógy"
+
+#: src/frontends/xforms/form_preferences.C:830
+msgid "Menu Font"
+msgstr "Písmo pre ponuku"
+
+#: src/frontends/xforms/form_preferences.C:833
+msgid "Popup Encoding"
+msgstr "Kódovanie popup dialógov"
+
+#: src/frontends/xforms/form_preferences.C:837
+msgid "Bind file|#B"
+msgstr "Bind súbor|#B"
+
+#: src/frontends/xforms/form_preferences.C:843
+#: src/frontends/xforms/form_preferences.C:853
+#: src/frontends/xforms/form_preferences.C:973
+#: src/frontends/xforms/form_preferences.C:995
+#: src/frontends/xforms/form_preferences.C:1007
+#: src/frontends/xforms/form_preferences.C:1013
+#: src/frontends/xforms/form_preferences.C:1028
+#: src/frontends/xforms/form_preferences.C:1038
+msgid "Browse..."
+msgstr "Prechádza»..."
+
+#: src/frontends/xforms/form_preferences.C:847
+msgid "User Interface file|#U"
+msgstr "Súbor s pou¾íva». rozhraním|#S"
+
+#: src/frontends/xforms/form_preferences.C:857
+msgid "Override X-Windows dead-keys|#O"
+msgstr "Nahradi» màtve klávesy X-Windows|#O"
+
+#: src/frontends/xforms/form_preferences.C:887
+msgid "command"
+msgstr "príkaz"
+
+#: src/frontends/xforms/form_preferences.C:890
+msgid "page range"
+msgstr "rozsah strán"
+
+#: src/frontends/xforms/form_preferences.C:893
+msgid "copies"
+msgstr "kópie"
+
+#: src/frontends/xforms/form_preferences.C:896
+msgid "reverse"
+msgstr "opaèné"
+
+#: src/frontends/xforms/form_preferences.C:899
+msgid "to printer"
+msgstr "do tlaèiarne"
+
+#: src/frontends/xforms/form_preferences.C:902
+msgid "file extension"
+msgstr "prípona súboru"
+
+#: src/frontends/xforms/form_preferences.C:905
+msgid "spool command"
+msgstr "spool príkaz"
+
+#: src/frontends/xforms/form_preferences.C:908
+msgid "paper type"
+msgstr "typ papiera"
+
+#: src/frontends/xforms/form_preferences.C:911
+msgid "even pages"
+msgstr "párne strany"
+
+#: src/frontends/xforms/form_preferences.C:914
+msgid "odd pages"
+msgstr "nepárne strany"
+
+#: src/frontends/xforms/form_preferences.C:917
+msgid "collated"
+msgstr "usporiadané"
+
+#: src/frontends/xforms/form_preferences.C:920
+msgid "landscape"
+msgstr "na ¹írku"
+
+#: src/frontends/xforms/form_preferences.C:923
+msgid "to file"
+msgstr "do súboru"
+
+#: src/frontends/xforms/form_preferences.C:926
+msgid "extra options"
+msgstr "extra nastavenia"
+
+#: src/frontends/xforms/form_preferences.C:929
+msgid "spool printer prefix"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:932
+msgid "paper size"
+msgstr "veµkos» papiera"
+
+#: src/frontends/xforms/form_preferences.C:935
+msgid "name"
+msgstr "názov"
+
+#: src/frontends/xforms/form_preferences.C:938
+msgid "adapt output"
+msgstr "adaptácia výstupu"
+
+#: src/frontends/xforms/form_preferences.C:941
+msgid "Printer Command and Flags"
+msgstr "Príkaz tlaèiarne a jeho príznaky"
+
+#: src/frontends/xforms/form_preferences.C:967
+msgid "Default path|#p"
+msgstr "Prednastavená cesta|#P"
+
+#: src/frontends/xforms/form_preferences.C:977
+msgid "Last file count|#L"
+msgstr "Poèet posledných súborov|#P"
+
+#: src/frontends/xforms/form_preferences.C:989
+msgid "Template path|#T"
+msgstr "Cesta k ¹ablónam|#¹"
+
+#: src/frontends/xforms/form_preferences.C:999
+msgid "Check last files|#C"
+msgstr "Kontrola posledných súborov|#K"
+
+#: src/frontends/xforms/form_preferences.C:1017
+msgid "Backup path|#B"
+msgstr "Cesta k zálohám|#z"
+
+#: src/frontends/xforms/form_preferences.C:1032
+msgid "LyXServer pipe|#S"
+msgstr "Rúra LyXServeru|#S"
+
+#: src/frontends/xforms/form_preferences.C:1045
+msgid "Temp dir|#d"
+msgstr "Doèasný prieèinok|#D"
+
+#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:41
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
+msgstr "Tlaè"
+
+#: src/frontends/xforms/form_print.C:37
+msgid "Printer|#P"
+msgstr "Tlaèiareò|#T"
+
+#: src/frontends/xforms/form_print.C:44 src/lyx.C:80
+msgid "File|#F"
+msgstr "Súbor|#S"
+
+#: src/frontends/xforms/form_print.C:72
+msgid "All Pages|#G"
+msgstr "V¹etky strany|#t"
+
+#: src/frontends/xforms/form_print.C:79
+msgid "Only Odd Pages|#O"
+msgstr "Iba nepárne strany|#n"
+
+#: src/frontends/xforms/form_print.C:86
+msgid "Only Even Pages|#E"
+msgstr "Iba párne strany|#e"
+
+#: src/frontends/xforms/form_print.C:97
+msgid "Normal Order|#N"
+msgstr "Normálne poradie|#N"
+
+#: src/frontends/xforms/form_print.C:104
+msgid "Reverse Order|#R"
+msgstr "Opaèné poradie|#p"
+
+#: src/frontends/xforms/form_print.C:112
+msgid "Pages:"
+msgstr "Strany:"
+
+#: src/frontends/xforms/form_print.C:116
+msgid "Count:"
+msgstr "Poèet:"
+
+#: src/frontends/xforms/form_print.C:121
+msgid "Collated|#C"
+msgstr "Usporiadané|#U"
+
+#: src/frontends/xforms/form_print.C:127
+msgid "to"
+msgstr "na"
+
+#: src/frontends/xforms/form_print.C:132
+msgid "Order"
+msgstr "Poradie"
+
+#: src/frontends/xforms/FormRef.C:72
+msgid " Ref | Page | TextRef | TextPage | PrettyRef "
+msgstr "Odkaz | Strana | Textový_Odkaz | Textová_strana | Pekný_odkaz"
+
+#: src/frontends/xforms/form_ref.C:40
+msgid "Sort|#S"
+msgstr "Triedenie|#T"
+
+#: src/frontends/xforms/form_ref.C:48
+msgid "Name:|#N"
+msgstr "Názov|#N"
+
+#: src/frontends/xforms/form_ref.C:53
+msgid "Ref:"
+msgstr "Odkaz:"
+
+#: src/frontends/xforms/form_ref.C:56
+msgid "Reference type|#R"
+msgstr "Typ referencie|#O"
+
+#: src/frontends/xforms/form_ref.C:65
+msgid "Goto reference|#G"
+msgstr "Ís» na referenciu|#Í"
+
+#: src/frontends/xforms/FormTabular.C:26
+msgid "Tabular Layout"
+msgstr "Formát tabuµky"
+
+#: src/frontends/xforms/FormTabular.C:127
+msgid "Tabular"
+msgstr "Tabuµka"
+
+#: src/frontends/xforms/FormTabular.C:129
+msgid "Column/Row"
+msgstr "Ståpec/Riadok"
+
+#: src/frontends/xforms/FormTabular.C:131
+msgid "Cell"
+msgstr "Bunka"
+
+#: src/frontends/xforms/FormTabular.C:133
+msgid "LongTable"
+msgstr "Dlhá tabuµka"
+
+#: src/frontends/xforms/FormTabular.C:440
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Varovanie: zlá poloha kurzoru, obnovené okno"
+
+#: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
+#: src/insets/insetinfo.C:221
+msgid "Close|#C^["
+msgstr "Zavrie»|#Z^["
+
+#: src/frontends/xforms/form_tabular.C:71
+msgid "Append Column|#A"
+msgstr "Prida» ståpec|#a"
+
+#: src/frontends/xforms/form_tabular.C:78
+msgid "Delete Column|#O"
+msgstr "Odstráni» ståpec|#d"
+
+#: src/frontends/xforms/form_tabular.C:85
+msgid "Append Row|#p"
+msgstr "Prida» riadok|#P"
+
+#: src/frontends/xforms/form_tabular.C:92
+msgid "Delete Row|#w"
+msgstr "Odstráni» riadok|#O"
+
+#: src/frontends/xforms/form_tabular.C:99
+msgid "Set Borders|#S"
+msgstr "Nastav okraje|#s"
+
+#: src/frontends/xforms/form_tabular.C:106
+msgid "Unset Borders|#U"
+msgstr "Zru¹ okraje|#¹"
+
+#: src/frontends/xforms/form_tabular.C:113
+msgid "Longtable|#L"
+msgstr "Dlhá tabuµka|#l"
+
+#: src/frontends/xforms/form_tabular.C:119
+#: src/frontends/xforms/form_tabular.C:383
+msgid "Rotate 90|#9"
+msgstr "Otoèi» o 90|#9"
+
+#: src/frontends/xforms/form_tabular.C:124
+msgid "Spec. Table"
+msgstr "©pec. tabuµka"
+
+#: src/frontends/xforms/form_tabular.C:150
+#: src/frontends/xforms/form_tabular.C:276
+msgid "Top|#t"
+msgstr "Hore|#h"
+
+#: src/frontends/xforms/form_tabular.C:158
+#: src/frontends/xforms/form_tabular.C:284
+msgid "Bottom|#b"
+msgstr "Dole|#D"
+
+#: src/frontends/xforms/form_tabular.C:166
+#: src/frontends/xforms/form_tabular.C:292
+msgid "Left|#l"
+msgstr "Vµavo|#µ"
+
+#: src/frontends/xforms/form_tabular.C:174
+#: src/frontends/xforms/form_tabular.C:300
+msgid "Right|#r"
+msgstr "Vpravo|#r"
+
+#: src/frontends/xforms/form_tabular.C:182
+#: src/frontends/xforms/form_tabular.C:308
+msgid "Left|#e"
+msgstr "Vµavo|#µ"
+
+#: src/frontends/xforms/form_tabular.C:189
+#: src/frontends/xforms/form_tabular.C:315
+msgid "Right|#i"
+msgstr "Vpravo|#p"
+
+#: src/frontends/xforms/form_tabular.C:196
+#: src/frontends/xforms/form_tabular.C:322
+msgid "Center|#c"
+msgstr "Na stred|#s"
+
+#: src/frontends/xforms/form_tabular.C:203
+#: src/frontends/xforms/form_tabular.C:329
+msgid "Top|#p"
+msgstr "Hore|#H"
+
+#: src/frontends/xforms/form_tabular.C:217
+#: src/frontends/xforms/form_tabular.C:343
+msgid "Bottom|#o"
+msgstr "Dole|#D"
+
+#: src/frontends/xforms/form_tabular.C:223
+#: src/frontends/xforms/form_tabular.C:349
+msgid "Borders"
+msgstr "Okraje"
+
+#: src/frontends/xforms/form_tabular.C:226
+#: src/frontends/xforms/form_tabular.C:352
+msgid "H. Alignment"
+msgstr "H. Zarovnanie"
+
+#: src/frontends/xforms/form_tabular.C:229
+#: src/frontends/xforms/form_tabular.C:355
+msgid "V. Alignment"
+msgstr "V. Zarovnanie"
+
+#: src/frontends/xforms/form_tabular.C:233
+#: src/frontends/xforms/form_tabular.C:359
+msgid "Width|#W"
+msgstr "©írka|#©"
+
+#: src/frontends/xforms/form_tabular.C:241
+#: src/frontends/xforms/form_tabular.C:365
+msgid "Alignment|#A"
+msgstr "Zarovnanie|#A"
+
+#: src/frontends/xforms/form_tabular.C:248
+msgid "Special column"
+msgstr "Zvlá¹tny ståpec"
+
+#: src/frontends/xforms/form_tabular.C:371
+msgid "Multicolumn|#M"
+msgstr "Viacståpcová|#V"
+
+#: src/frontends/xforms/form_tabular.C:377
+msgid "Use Minipage|#s"
+msgstr "Pou¾i» Minipage|#u"
+
+#: src/frontends/xforms/form_tabular.C:388
+msgid "Special Cell"
+msgstr "Zvlá¹tna bunka"
+
+#: src/frontends/xforms/form_tabular.C:391
+msgid "Special Multicolumn"
+msgstr "©peciálne pre viac ståpcov"
+
+#: src/frontends/xforms/form_tabular.C:418
+msgid "1st Head|#1"
+msgstr "1 hlavièka|#1"
+
+#: src/frontends/xforms/form_tabular.C:424
+msgid "Head|#H"
+msgstr "Hlavièka|#H"
+
+#: src/frontends/xforms/form_tabular.C:430
+msgid "Foot|#F"
+msgstr "Päta|#P"
+
+#: src/frontends/xforms/form_tabular.C:436
+msgid "Last Foot|#L"
+msgstr "Posledná päta|#l"
+
+#: src/frontends/xforms/form_tabular.C:442
+msgid "New Page|#N"
+msgstr "Nová strana|#N"
+
+#: src/frontends/xforms/form_tabular.C:447
+msgid "Header"
+msgstr "Hlavièka"
+
+#: src/frontends/xforms/form_tabular.C:450
+msgid "Footer"
+msgstr "Päta"
+
+#: src/frontends/xforms/form_tabular.C:453
+msgid "Special"
+msgstr "©peciálne"
+
+#: src/frontends/xforms/FormTabularCreate.C:31
+msgid "Insert Tabular"
+msgstr "Vlo¾i» tabuµku"
+
+#: src/frontends/xforms/FormToc.C:71
+msgid " TOC | LOF | LOT | LOA "
+msgstr " Obsah | ZO | ZT | ZA "
+
+#: src/frontends/xforms/form_toc.C:40
+msgid "Type|#T"
+msgstr "Typ|#T"
+
+#: src/frontends/xforms/FormUrl.C:29
+msgid "Url"
+msgstr "Url"
+
+#: src/frontends/xforms/form_url.C:29
+msgid "URL|#U"
+msgstr "URL|#U"
+
+#: src/frontends/xforms/form_url.C:38
+msgid "Name|#N"
+msgstr "Názov|#N"
+
+#: src/frontends/xforms/form_url.C:47
+msgid "HTML type|#H"
+msgstr "HTML typ|#H"
+
+#: src/frontends/xforms/input_validators.C:102
+msgid "ERROR!  Unable to print!"
+msgstr "Chyba!  Nemô¾em tlaèi»!"
+
+#: src/frontends/xforms/input_validators.C:103
+msgid "Check 'range of pages'!"
+msgstr "Skontrolujte 'rozsah strán'!"
+
+#: src/frontends/xforms/Menubar_pimpl.C:257
+msgid "More"
+msgstr "Ïal¹ie"
+
+#: src/frontends/xforms/Menubar_pimpl.C:298
+#, no-c-format
+msgid "List of Figures%m"
+msgstr "Zoznam obrázkov%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:300
+#, no-c-format
+msgid "List of Tables%m"
+msgstr "Zoznam tabuliek%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:302
+#, no-c-format
+msgid "List of Algorithms%m"
+msgstr "Zoznam algoritmov%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:339
+#, c-format
+msgid "No Table of Contents%i"
+msgstr "Bez obsahu%i"
+
+#: src/frontends/xforms/Menubar_pimpl.C:417
+#, no-c-format
+msgid "Insert Reference%m"
+msgstr "Vlo¾i» referenciu%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:419
+#, no-c-format
+msgid "Insert Page Number%m"
+msgstr "Vlo¾ » èíslo strany%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:421
+#, no-c-format
+msgid "Insert vref%m"
+msgstr ""
+
+#: src/frontends/xforms/Menubar_pimpl.C:423
+#, no-c-format
+msgid "Insert vpageref%m"
+msgstr ""
+
+#: src/frontends/xforms/Menubar_pimpl.C:425
+#, no-c-format
+msgid "Insert Pretty Ref%m"
+msgstr "Vlo¾i» Pekný Odkaz%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:427
+#, no-c-format
+msgid "Goto Reference%m"
+msgstr "Ís» na referenciu %m"
+
+#: src/frontends/xforms/xform_helpers.C:108 src/insets/figinset.C:1998
+#: src/insets/insetexternal.C:171
+msgid "Filename can't contain any of these characters:"
+msgstr "Názov súboru nemô¾e obsahova» tieto znaky:"
+
+#: src/frontends/xforms/xform_helpers.C:110 src/insets/figinset.C:2001
+#, no-c-format
+msgid "space, '#', '~', '$' or '%'."
+msgstr "medzera, '#', '~', '$' a '%'."
+
+#: src/frontends/xforms/xform_helpers.C:217
+#: src/frontends/xforms/xform_helpers.C:241
+#: src/frontends/xforms/xform_helpers.C:276
+#: src/frontends/xforms/xform_helpers.C:321
+msgid "The absolute path is required."
+msgstr "Je po¾adovaná absolútna cesta."
+
+#: src/frontends/xforms/xform_helpers.C:223
+#: src/frontends/xforms/xform_helpers.C:247
+#: src/frontends/xforms/xform_helpers.C:286
+#: src/frontends/xforms/xform_helpers.C:331
+msgid "Directory does not exist."
+msgstr "Prieèinok neexistuje."
+
+#: src/frontends/xforms/xform_helpers.C:228
+#: src/frontends/xforms/xform_helpers.C:291
+msgid "Cannot write to this directory."
+msgstr "Chyba! Nemô¾em zapisova» do tohoto prieèinku."
+
+#: src/frontends/xforms/xform_helpers.C:252
+msgid "Cannot read this directory."
+msgstr "Chyba! Nemô¾em èíta» z tohoto prieèinku."
+
+#: src/frontends/xforms/xform_helpers.C:270
+#: src/frontends/xforms/xform_helpers.C:315
+msgid "No file input."
+msgstr "Bez súboru na vstupe."
+
+#: src/frontends/xforms/xform_helpers.C:297
+#: src/frontends/xforms/xform_helpers.C:342
+msgid "A file is required, not a directory."
+msgstr "Po¾adovaný je súbor, nie prieèinok."
+
+#: src/frontends/xforms/xform_helpers.C:302
+msgid "Cannot write to this file."
+msgstr "Nemô¾em zapisova» do tohoto súboru."
+
+#: src/frontends/xforms/xform_helpers.C:336
+msgid "Cannot read from this directory."
+msgstr "Chyba! Nemô¾em èíta» z tohoto prieèinka."
+
+#: src/frontends/xforms/xform_helpers.C:347
+msgid "File does not exist."
+msgstr "Súbor neexistuje."
+
+#: src/frontends/xforms/xform_helpers.C:352
+msgid "Cannot read from this file."
+msgstr "Nemô¾em èíta» z tohoto súboru."
+
+#: src/importer.C:39
+msgid "Importing"
+msgstr "Importujem"
+
+#: src/importer.C:57
+msgid "Can not import file"
+msgstr "Nemô¾em importova» súbor"
+
+#: src/importer.C:58
+msgid "No information for importing from "
+msgstr "®iadne informácie o importe z "
+
+#. we are done
+#: src/importer.C:81
+msgid "imported."
+msgstr "importované."
+
+#: src/insets/figinset.C:1037
+msgid "[render error]"
+msgstr "[chyba vykresµovania]"
+
+#: src/insets/figinset.C:1038
+msgid "[rendering ... ]"
+msgstr "[vykreslujem ... ]"
+
+#: src/insets/figinset.C:1041
+msgid "[no file]"
+msgstr "[bez súbor]"
+
+#: src/insets/figinset.C:1043
+msgid "[bad file name]"
+msgstr "[zlý názov súboru]"
+
+#: src/insets/figinset.C:1045
+msgid "[not displayed]"
+msgstr "[nezobrazené]"
+
+#: src/insets/figinset.C:1047
+msgid "[no ghostscript]"
+msgstr "[chýba ghostscript]"
+
+#: src/insets/figinset.C:1049
+msgid "[unknown error]"
+msgstr "[neznáma chyba]"
+
+#: src/insets/figinset.C:1222
+msgid "Opened figure"
+msgstr "Otvorený objekt"
+
+#: src/insets/figinset.C:1250
+msgid "Figure"
+msgstr "Obrázok"
+
+#: src/insets/figinset.C:1339 src/insets/figinset.C:1402
+#: src/insets/insetgraphics.C:492
+msgid "empty figure path"
+msgstr "prázdna cesta k obrázku"
+
+#: src/insets/figinset.C:1981 src/insets/figinset.C:1985
+msgid "EPS Figure"
+msgstr "Obrázok EPS"
+
+#. InsetBibtex uses the same form, with different labels
+#: src/insets/insetbib.C:59 src/insets/insetbib.C:60 src/insets/insetbib.C:208
+#: src/insets/insetbib.C:209
+msgid "Key:|#K"
+msgstr "Kµúè:|#K"
+
+#: src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+#: src/insets/insetbib.C:211
+msgid "Label:|#L"
+msgstr "Znaèka:|#Z"
+
+#: src/insets/insetbib.C:219
+msgid "Bibliography item"
+msgstr "Polo¾ka literatúry"
+
+#: src/insets/insetbib.C:240
+msgid "BibTeX Generated References"
+msgstr "Referencie generované BibTeXom"
+
+#: src/insets/insetbib.C:339
+msgid "Database:"
+msgstr "Databázy:"
+
+#: src/insets/insetbib.C:340
+msgid "Style:  "
+msgstr "©týl:  "
+
+#: src/insets/insetbib.C:348
+msgid "BibTeX"
+msgstr "BibTeX"
+
+#: src/insets/inset.C:75
+msgid "Opened inset"
+msgstr "Otvorená príloha"
+
+#: src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1440
+msgid "Error"
+msgstr "Chyba"
+
+#: src/insets/inseterror.C:84
+msgid "Opened error"
+msgstr "Otvorená chyba"
+
+#: src/insets/insetert.C:28
+msgid "ERT"
+msgstr ""
+
+#: src/insets/insetert.C:59
+msgid "Opened ERT Inset"
+msgstr "Otvorený ERT prílohy"
+
+#: src/insets/insetert.C:65 src/insets/insettabular.C:1700
+msgid "Impossible Operation!"
+msgstr "Nemo¾ná operácia!"
+
+#: src/insets/insetert.C:66
+msgid "Not permitted to change font-types inside ERT-insets!"
+msgstr ""
+
+#: src/insets/insetexternal.C:155 src/insets/insetexternal.C:159
+msgid "External inset file"
+msgstr "Súbor s externou prílohou"
+
+#: src/insets/insetexternal.C:174
+#, no-c-format
+msgid "'#', '~', '$' or '%'."
+msgstr "'#', '~', '$' a '%'."
+
+#: src/insets/insetexternal.C:309
+msgid "Insert external inset"
+msgstr "Vlo¾i» externú prílohu"
+
+#: src/insets/insetexternal.C:439
+msgid "External"
+msgstr "Externý"
+
+#: src/insets/insetfloat.C:84 src/insets/insetfloat.C:206
+#: src/insets/insetfloat.C:211
+msgid "float:"
+msgstr "objekt:"
+
+#: src/insets/insetfloat.C:150
+msgid "Opened Float Inset"
+msgstr "Otvorený objekt prílohy"
+
+#: src/insets/insetfoot.C:32
+msgid "foot"
+msgstr "päta"
+
+#: src/insets/insetfoot.C:49
+msgid "Opened Footnote Inset"
+msgstr "Otvorená poznámka pod èiarou prílohy"
+
+#: src/insets/insetgraphics.C:223
+msgid "Unknown Error"
+msgstr "[neznáma chyba]"
+
+#: src/insets/insetgraphics.C:227
+msgid "Loading..."
+msgstr "Naèítavam..."
+
+#: src/insets/insetgraphics.C:231
+msgid "Error reading"
+msgstr "Chyba pri èítaní"
+
+#: src/insets/insetgraphics.C:235
+msgid "Error converting"
+msgstr "Chyba pri konverzií"
+
+#: src/insets/insetgraphics.C:243
+msgid "Inline view disabled"
+msgstr ""
+
+#: src/insets/insetinclude.C:49 src/insets/insetinclude.C:50
+msgid "Don't typeset|#D"
+msgstr "Nesádza»|#d"
+
+#: src/insets/insetinclude.C:59 src/insets/insetinclude.C:60
+msgid "Load|#L"
+msgstr "Naèíta»|#N"
+
+#: src/insets/insetinclude.C:63 src/insets/insetinclude.C:64
+msgid "File name:|#F"
+msgstr "Názov súboru:|#N"
+
+#: src/insets/insetinclude.C:67 src/insets/insetinclude.C:68
+msgid "Visible space|#s"
+msgstr "Viditeµná medzera|#m"
+
+#: src/insets/insetinclude.C:72 src/insets/insetinclude.C:73
+msgid "Verbatim|#V"
+msgstr "Doslovne|#V"
+
+#: src/insets/insetinclude.C:76 src/insets/insetinclude.C:77
+msgid "Use input|#i"
+msgstr "Pou¾i» vstup|#i"
+
+#: src/insets/insetinclude.C:80 src/insets/insetinclude.C:81
+msgid "Use include|#U"
+msgstr "Pou¾i» zahrnutie|#u"
+
+#. launches dialog
+#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
+#: src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
+msgid "Documents"
+msgstr "Dokumenty"
+
+#: src/insets/insetinclude.C:121
+msgid "Select Child Document"
+msgstr "Zvoli» podriadený dokument"
+
+#: src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
+msgid "Include"
+msgstr "Zahrnutie"
+
+#: src/insets/insetinclude.C:314
+msgid "Input"
+msgstr "Vstup"
+
+#: src/insets/insetinclude.C:316
+msgid "Verbatim Input"
+msgstr "Doslovný vstup"
+
+#: src/insets/insetindex.C:20
+msgid "Idx"
+msgstr "Idx"
+
+#: src/insets/insetinfo.C:198
+msgid "Opened note"
+msgstr "Otvorená poznámka"
+
+#: src/insets/insetlabel.C:49 src/mathed/formula.C:1093
+msgid "Enter label:"
+msgstr "Vlo¾i» znaèku:"
+
+#: src/insets/insetlist.C:42
+msgid "list"
+msgstr "zoznam"
+
+#: src/insets/insetlist.C:72
+msgid "Opened List Inset"
+msgstr "Otvorený zoznam príloh"
+
+#: src/insets/insetmarginal.C:33
+msgid "margin"
+msgstr "okraje"
+
+#: src/insets/insetmarginal.C:50
+msgid "Opened Marginal Note Inset"
+msgstr "Otvorený poznámka na okraji prílohy"
+
+#: src/insets/insetminipage.C:60
+msgid "minipage"
+msgstr "minipage"
+
+#: src/insets/insetminipage.C:90
+msgid "Opened Minipage Inset"
+msgstr "Otvorený minipage prílohy"
+
+#: src/insets/insetparent.C:42
+msgid "Parent:"
+msgstr "Rodiè:"
+
+#: src/insets/insettabular.C:481
+msgid "Opened Tabular Inset"
+msgstr "Otvorená tabuµka prílohy"
+
+#: src/insets/insettabular.C:1701
+msgid "Multicolumns can only be horizontally."
+msgstr "Viacståpcové bunky mô¾u by» iba horizontálne."
+
+#: src/insets/insettext.C:478
+msgid "Opened Text Inset"
+msgstr "Otvorený text prílohy"
+
+#: src/insets/insettext.C:970
+msgid "Cannot include more than one paragraph!"
+msgstr "Nemô¾em zahrnú»viac ako jeden odstavec!"
+
+#: src/insets/insettext.C:1036 src/lyxfunc.C:1260
+msgid "Layout "
+msgstr "Formát "
+
+#: src/insets/insettext.C:1036 src/lyxfunc.C:1261
+msgid " not known"
+msgstr " neznámy"
+
+#: src/insets/insettext.C:1089 src/lyxfunc.C:2113
+msgid "Unknown spacing argument: "
+msgstr "Neznámy parameter riadkovania: "
+
+#: src/insets/insettheorem.C:39
+msgid "theorem"
+msgstr "teoréma"
+
+#: src/insets/insettheorem.C:68
+msgid "Opened Theorem Inset"
+msgstr "Otvorená teoréma prílohy"
+
+#: src/insets/inseturl.C:32
+msgid "Url: "
+msgstr "Url: "
+
+#: src/insets/inseturl.C:34
+msgid "HtmlUrl: "
+msgstr "HtmlUrl: "
+
+#: src/intl.C:349 src/intl.C:350
+msgid "other..."
+msgstr "iné..."
+
+#: src/intl.C:435
+msgid "Key Mappings"
+msgstr "Mapovanie klávesnice"
+
+#: src/kbsequence.C:215
+msgid "   options: "
+msgstr "   mo¾nosti: "
+
+#: src/language.C:81
+msgid "Document wide language"
+msgstr ""
+
+#: src/LaTeX.C:177 src/LaTeX.C:252 src/LaTeX.C:300
+msgid "LaTeX run number "
+msgstr "Spustenie LaTeXu è.: "
+
+#: src/LaTeX.C:210 src/LaTeX.C:279
+msgid "Running MakeIndex."
+msgstr "MakeIndex spustený."
+
+#: src/LaTeX.C:223
+msgid "Running BibTeX."
+msgstr "BibTeX spustený."
+
+#: src/LaTeXLog.C:59 src/LaTeXLog.C:62
+msgid "No LaTeX log file found"
+msgstr "Logovací súbor LaTeXu nebol nájdený"
+
+#: src/LaTeXLog.C:69
+msgid "Build Program Log"
+msgstr "Vytvára logovanie programu"
+
+#: src/LaTeXLog.C:69
+msgid "LaTeX Log"
+msgstr "Log LaTeXu"
+
+#: src/layout.C:1343
+msgid "LyX wasn't able to find its layout descriptions!"
+msgstr "LyX nena¹iel popisy formátov!"
+
+#: src/layout.C:1344
+msgid "Check that the file \"textclass.lst\""
+msgstr "Skontrolujte, ¾e súbor \"textclass.lst\""
+
+#: src/layout.C:1345
+msgid "is installed correctly. Sorry, has to exit :-("
+msgstr "je správne nain¹talovaný. ¥utujem, musím konèi» :-("
+
+#: src/layout.C:1407
+msgid "LyX wasn't able to find any layout description!"
+msgstr "LyX nena¹iel popisy formátov!"
+
+#: src/layout.C:1408
+msgid "Check the contents of  the file \"textclass.lst\""
+msgstr "Skontrolujte obsah súboru \"textclass.lst\""
+
+#: src/layout.C:1409
+msgid "Sorry, has to exit :-("
+msgstr "¥utujem, musím konèi» :-("
+
+#: src/layout_forms.C:23
+msgid "Family:|#F"
+msgstr "Rodina:|#R"
+
+#: src/layout_forms.C:28
+msgid "Series:|#S"
+msgstr "Váha|#V"
+
+#: src/layout_forms.C:33
+msgid "Shape:|#H"
+msgstr "Tvar|#T"
+
+#: src/layout_forms.C:38
+msgid "Size:|#Z"
+msgstr "Veµkos»:|#e"
+
+#: src/layout_forms.C:43
+msgid "Misc:|#M"
+msgstr "Rôzne:|#z"
+
+#: src/layout_forms.C:56
+msgid "Color:|#C"
+msgstr "Farba:|#b"
+
+#: src/layout_forms.C:61
+msgid "Toggle on all these|#T"
+msgstr "V¹etky tieto prepnú»|#i"
+
+#: src/layout_forms.C:64
+msgid "Language:"
+msgstr "Jazyk:"
+
+#: src/layout_forms.C:69
+msgid "These are never toggled"
+msgstr "Toto nie je nikdy zapnuté"
+
+#: src/layout_forms.C:72
+msgid "These are always toggled"
+msgstr "Toto nie je nikdy vypnuté"
+
+#: src/layout_forms.C:90 src/lyx_gui_misc.C:429
+msgid "OK|#O"
+msgstr "OK|#O"
+
+#: src/LColor.C:52
+msgid "none"
+msgstr "¾iadna"
+
+#: src/LColor.C:53
+msgid "black"
+msgstr "èierna"
+
+#: src/LColor.C:54
+msgid "white"
+msgstr "biela"
+
+#: src/LColor.C:55
+msgid "red"
+msgstr "èervená"
+
+#: src/LColor.C:56
+msgid "green"
+msgstr "zelená"
+
+#: src/LColor.C:57
+msgid "blue"
+msgstr "modrá"
+
+#: src/LColor.C:58
+msgid "cyan"
+msgstr "modrozelená"
+
+#: src/LColor.C:59
+msgid "magenta"
+msgstr "fialová"
+
+#: src/LColor.C:60
+msgid "yellow"
+msgstr "¾ltá"
+
+#: src/LColor.C:61
+msgid "cursor"
+msgstr "kurzor"
+
+#: src/LColor.C:62
+msgid "background"
+msgstr "pozadie"
+
+#: src/LColor.C:63
+msgid "text"
+msgstr "text"
+
+#: src/LColor.C:64
+msgid "selection"
+msgstr "Výber"
+
+#: src/LColor.C:65
+msgid "latex"
+msgstr "latex"
+
+#: src/LColor.C:66
+msgid "floats"
+msgstr "plávajúce objekty"
+
+#: src/LColor.C:67
+msgid "note"
+msgstr "poznámka"
+
+#: src/LColor.C:68
+msgid "note background"
+msgstr "poznámka na pozadí"
+
+#: src/LColor.C:69
+msgid "note frame"
+msgstr "ohranièenie poznámky"
+
+#: src/LColor.C:70
+msgid "depth bar"
+msgstr ""
+
+#: src/LColor.C:71
+msgid "language"
+msgstr "jazyk"
+
+#: src/LColor.C:72
+msgid "command-inset"
+msgstr ""
+
+#: src/LColor.C:73
+msgid "command-inset background"
+msgstr ""
+
+#: src/LColor.C:74
+msgid "command-inset frame"
+msgstr ""
+
+#: src/LColor.C:75
+msgid "accent"
+msgstr "akcent"
+
+#: src/LColor.C:76
+msgid "accent background"
+msgstr "zvýraznené pozadie"
+
+#: src/LColor.C:77
+msgid "accent frame"
+msgstr "zvýraznený rám"
+
+#: src/LColor.C:78
+msgid "minipage line"
+msgstr ""
+
+#: src/LColor.C:79
+msgid "special char"
+msgstr "¹peciálny znak"
+
+#: src/LColor.C:80
+msgid "math"
+msgstr "matematika"
+
+#: src/LColor.C:81
+msgid "math background"
+msgstr "pozadie matematiky"
+
+#: src/LColor.C:82
+msgid "math frame"
+msgstr "matematický re¾im"
+
+#: src/LColor.C:83
+msgid "math cursor"
+msgstr "matematický kurzor"
+
+#: src/LColor.C:84
+msgid "math line"
+msgstr "matematický panel"
+
+#: src/LColor.C:86
+msgid "footnote background"
+msgstr "pozadie poznámky pod èiarou"
+
+#: src/LColor.C:87
+msgid "footnote frame"
+msgstr "ohranièenie poznámky pod èiarou"
+
+#: src/LColor.C:88
+msgid "latex inset"
+msgstr "latex príloha"
+
+#: src/LColor.C:89
+msgid "inset"
+msgstr "príloha"
+
+#: src/LColor.C:90
+msgid "inset background"
+msgstr ""
+
+#: src/LColor.C:91
+msgid "inset frame"
+msgstr ""
+
+#: src/LColor.C:92
+msgid "error"
+msgstr "chyba"
+
+#: src/LColor.C:93
+msgid "end-of-line marker"
+msgstr "oznaèenie konca riadku"
+
+#: src/LColor.C:94
+msgid "appendix line"
+msgstr "panel prílohy"
+
+#: src/LColor.C:95
+msgid "vfill line"
+msgstr "èiara výplnku"
+
+#: src/LColor.C:96
+msgid "top/bottom line"
+msgstr "horná/dolná èiara"
+
+#: src/LColor.C:97
+msgid "table line"
+msgstr "panel tabuµky"
+
+#: src/LColor.C:98
+msgid "tabular line"
+msgstr ""
+
+#: src/LColor.C:100
+msgid "tabularonoff line"
+msgstr ""
+
+#: src/LColor.C:102
+msgid "bottom area"
+msgstr "dolná oblas»"
+
+#: src/LColor.C:103
+msgid "page break"
+msgstr "zlom strany"
+
+#: src/LColor.C:104
+msgid "top of button"
+msgstr "horný okraj tlaèítka"
+
+#: src/LColor.C:105
+msgid "bottom of button"
+msgstr "dolný okraj tlaèítka"
+
+#: src/LColor.C:106
+msgid "left of button"
+msgstr "µavý okraj tlaèítka"
+
+#: src/LColor.C:107
+msgid "right of button"
+msgstr "pravý okraj tlaèítka"
+
+#: src/LColor.C:108
+msgid "button background"
+msgstr "pozadie tlaèítka"
+
+#: src/LColor.C:109
+msgid "inherit"
+msgstr "zdedené"
+
+#: src/LColor.C:110
+msgid "ignore"
+msgstr "ignorova»"
+
+#: src/log_form.C:25 src/lyxvc.C:267 src/lyxvc.C:268
+msgid "Update|#Uu"
+msgstr "Aktualizova»|#Aa"
+
+#: src/LyXAction.C:98
+msgid "Insert appendix"
+msgstr "Vlo¾i» prílohu"
+
+#: src/LyXAction.C:99
+msgid "Describe command"
+msgstr "Popis príkazu"
+
+#: src/LyXAction.C:102
+msgid "Select previous char"
+msgstr "Vybra» predchádzajúci znak"
+
+#: src/LyXAction.C:105
+msgid "Insert bibtex"
+msgstr "Vlo¾enie bibtexu"
+
+#: src/LyXAction.C:114
+msgid "Build program"
+msgstr "Vytváram program"
+
+#: src/LyXAction.C:115
+msgid "Autosave"
+msgstr "Automatické ukladanie"
+
+#: src/LyXAction.C:117
+msgid "Go to beginning of document"
+msgstr "Prejs» na zaèiatok dokumentu"
+
+#: src/LyXAction.C:119
+msgid "Select to beginning of document"
+msgstr "Vybra» po zaèiatok dokumentu"
+
+#: src/LyXAction.C:122
+msgid "Check TeX"
+msgstr "Kontrola TeXu"
+
+#: src/LyXAction.C:125
+msgid "Go to end of document"
+msgstr "Prejs» na koniec dokumentu"
+
+#: src/LyXAction.C:127
+msgid "Select to end of document"
+msgstr "Vybera» po koniec dokumentu"
+
+#: src/LyXAction.C:128
+msgid "Export to"
+msgstr "Export do"
+
+#: src/LyXAction.C:130
+msgid "Fax"
+msgstr "Fax"
+
+#: src/LyXAction.C:136
+msgid "Import document"
+msgstr "Import dokumentu"
+
+#: src/LyXAction.C:140
+msgid "Get the printer parameters"
+msgstr "Získa» parametre tlaèiarne"
+
+#: src/LyXAction.C:141
+msgid "New document"
+msgstr "Nový dokument"
+
+#: src/LyXAction.C:143
+msgid "New document from template"
+msgstr "Nový dokument podla ¹ablóny"
+
+#: src/LyXAction.C:144
+msgid "Open"
+msgstr "Otvori»"
+
+#: src/LyXAction.C:147
+msgid "Revert to saved"
+msgstr "Obnovenie ulo¾enej verzie"
+
+#: src/LyXAction.C:149
+msgid "Switch to an open document"
+msgstr "Prepnú» na otvorenie dokumentu"
+
+#: src/LyXAction.C:151
+msgid "Toggle read-only"
+msgstr "Prepnú» iba pre èítanie"
+
+#: src/LyXAction.C:152
+msgid "Update"
+msgstr "Aktualizova»"
+
+#: src/LyXAction.C:153
+msgid "View"
+msgstr "Zobrazi»"
+
+#: src/LyXAction.C:155
+msgid "Save As"
+msgstr "Ulo¾i» ako"
+
+#: src/LyXAction.C:159
+msgid "Go one char back"
+msgstr "O znak spä»"
+
+#: src/LyXAction.C:161
+msgid "Go one char forward"
+msgstr "O jeden znak dopredu"
+
+#: src/LyXAction.C:164
+msgid "Insert citation"
+msgstr "Vlo¾enie citácie"
+
+#: src/LyXAction.C:167
+msgid "Execute command"
+msgstr "Vykonanie príkazu"
+
+#: src/LyXAction.C:177
+msgid "Decrement environment depth"
+msgstr "Zní¾enie håbky vnorenia"
+
+#: src/LyXAction.C:179
+msgid "Increment environment depth"
+msgstr "Zvý¹enie håbky vnorenia"
+
+#: src/LyXAction.C:181
+msgid "Change environment depth"
+msgstr "Zmeni» håbku vnorenia"
+
+#: src/LyXAction.C:182
+msgid "Insert ... dots"
+msgstr "Vlo¾enie ... bodiek"
+
+#: src/LyXAction.C:183
+msgid "Go down"
+msgstr "Prejs» dole"
+
+#: src/LyXAction.C:185
+msgid "Select next line"
+msgstr "Zvoli» nasledujúci riadok"
+
+#: src/LyXAction.C:187
+msgid "Choose Paragraph Environment"
+msgstr "Zvoli» prostredie odstavce"
+
+#: src/LyXAction.C:189
+msgid "Insert end of sentence period"
+msgstr "Vlo¾enie bodky na konci vety"
+
+#: src/LyXAction.C:190
+msgid "Go to next error"
+msgstr "Prejs» na ïal¹iu chybu"
+
+#: src/LyXAction.C:192
+msgid "Remove all error boxes"
+msgstr "Odstráni» v¹etky chybové hlásenia"
+
+#: src/LyXAction.C:194
+msgid "Insert a new ERT Inset"
+msgstr "Vlo¾i» novú ERT prílohu"
+
+#: src/LyXAction.C:196
+msgid "Insert a new external inset"
+msgstr "Vlo¾i» novú externú prílohu"
+
+#: src/LyXAction.C:197 src/lyx_cb.C:878
+msgid "Insert Figure"
+msgstr "Vlo¾i» obrázok"
+
+#: src/LyXAction.C:199
+msgid "Insert Graphics"
+msgstr "Vlo¾i» grafiku"
+
+#: src/LyXAction.C:204 src/lyxfr0.C:108
+msgid "Find & Replace"
+msgstr "Nájs» a nahradi»"
+
+#: src/LyXAction.C:208
+msgid "Toggle bold"
+msgstr "Prepnú» tuèné"
+
+#: src/LyXAction.C:209
+msgid "Toggle code style"
+msgstr "Prepnú» ¹týl kód"
+
+#: src/LyXAction.C:210
+msgid "Default font style"
+msgstr "Prednastavený ¹týl písma"
+
+#: src/LyXAction.C:212
+msgid "Toggle emphasize"
+msgstr "Prepnú» zvýraznené"
+
+#: src/LyXAction.C:213
+msgid "Toggle user defined style"
+msgstr "Prepnutie pou¾ívateµom definovaného ¹týlu"
+
+#: src/LyXAction.C:215
+msgid "Toggle noun style"
+msgstr "Prepnutie ¹týlu Kapitálok"
+
+#: src/LyXAction.C:216
+msgid "Toggle roman font style"
+msgstr "Prepnutie ¹týlu písma roman"
+
+#: src/LyXAction.C:218
+msgid "Toggle sans font style"
+msgstr "Prepnutie ¹týlu písma sans"
+
+#: src/LyXAction.C:219
+msgid "Set font size"
+msgstr "Nastavi» veµkos» písma"
+
+#: src/LyXAction.C:220
+msgid "Show font state"
+msgstr "Zobrazi» stav písma"
+
+#: src/LyXAction.C:223
+msgid "Toggle font underline"
+msgstr "Prepnutie podèiarknutia"
+
+#: src/LyXAction.C:225 src/LyXAction.C:229
+msgid "Insert Footnote"
+msgstr "Vlo¾i» poznámku pod èiarou"
+
+#: src/LyXAction.C:231
+msgid "Select next char"
+msgstr "Vybra» nasledujúci znak"
+
+#: src/LyXAction.C:234
+msgid "Insert horizontal fill"
+msgstr "Vlo¾enie horizontálneho vyplnenia"
+
+#: src/LyXAction.C:236
+msgid "Display copyright information"
+msgstr "Zobrazi» informácie o autorských právach"
+
+#: src/LyXAction.C:238
+msgid "Show the list of people who helped writing LyX"
+msgstr "Zobrazi» zoznam µudí, ktorí pomohli napísa» LyX"
+
+#: src/LyXAction.C:240
+msgid "Open a Help file"
+msgstr "Otvori» súbor s pomocníkom"
+
+#: src/LyXAction.C:243
+msgid "Show the actual LyX version"
+msgstr "Zobrazi» aktuálnu verziu LyX"
+
+#: src/LyXAction.C:246
+msgid "Insert hyphenation point"
+msgstr "Vlo¾i» bod rozdelenia slova"
+
+#: src/LyXAction.C:248
+msgid "Insert index item"
+msgstr "Vlo¾i» polo¾ku indexu"
+
+#: src/LyXAction.C:250
+msgid "Insert last index item"
+msgstr "Vlo¾i» poslednú polo¾ku indexu"
+
+#: src/LyXAction.C:251
+msgid "Insert index list"
+msgstr "Vlo¾i» zoznam indexu"
+
+#: src/LyXAction.C:253
+msgid "Turn off keymap"
+msgstr "Vypnutie mapy klávesnice"
+
+#: src/LyXAction.C:256
+msgid "Use primary keymap"
+msgstr "Pou¾i» primárnu klávesnicu"
+
+#: src/LyXAction.C:258
+msgid "Use secondary keymap"
+msgstr "Pou¾i» sekundárnu klávesnicu"
+
+#: src/LyXAction.C:259
+msgid "Toggle keymap"
+msgstr "Prepnutie mapy klávesnice"
+
+#: src/LyXAction.C:261
+msgid "Insert Label"
+msgstr "Vlo¾i» znaèku"
+
+#: src/LyXAction.C:263
+msgid "Change language"
+msgstr "Zmeni» jazyk"
+
+#: src/LyXAction.C:264
+msgid "View LaTeX log"
+msgstr "Prezrie» log LaTeXu"
+
+#: src/LyXAction.C:269
+msgid "Copy paragraph environment type"
+msgstr "Skopírova» typ prostredia odstavca"
+
+#: src/LyXAction.C:274
+msgid "Paste paragraph environment type"
+msgstr "Vlo¾i» typ prostredia odstavca"
+
+#: src/LyXAction.C:279
+msgid "Open the tabular layout"
+msgstr "Otvori» formát tabuµky"
+
+#: src/LyXAction.C:281
+msgid "Go to beginning of line"
+msgstr "Prejs» na zaèiatok riadku"
+
+#: src/LyXAction.C:283
+msgid "Select to beginning of line"
+msgstr "Zvoli» po zaèiatok riadku"
+
+#: src/LyXAction.C:285
+msgid "Go to end of line"
+msgstr "Prejs» na koniec riadku"
+
+#: src/LyXAction.C:287
+msgid "Select to end of line"
+msgstr "Zvoli» po koniec riadku"
+
+#: src/LyXAction.C:290
+msgid "Insert list of algorithms"
+msgstr "Vlo¾i» zoznam algoritmov"
+
+#: src/LyXAction.C:292
+msgid "View list of algorithms"
+msgstr "Prezrie» zoznam algoritmov"
+
+#: src/LyXAction.C:294
+msgid "Insert list of figures"
+msgstr "Vlo¾i» zoznam obrázkov"
+
+#: src/LyXAction.C:296
+msgid "View list of figures"
+msgstr "Prezrie» zoznam obrázkov"
+
+#: src/LyXAction.C:298
+msgid "Insert list of tables"
+msgstr "Vlo¾i» zoznam tabuliek"
+
+#: src/LyXAction.C:300
+msgid "View list of tables"
+msgstr "Prezrie»zoznam tabuliek"
+
+#: src/LyXAction.C:301
+msgid "Exit"
+msgstr "Koniec"
+
+#: src/LyXAction.C:303
+msgid "Insert Marginalnote"
+msgstr "Vlo¾i» poznámku na okraji"
+
+#: src/LyXAction.C:306
+msgid "Insert Margin note"
+msgstr "Vlo¾i» poznámku na okraji"
+
+#: src/LyXAction.C:313
+msgid "Math Greek"
+msgstr "Grécke písmená"
+
+#: src/LyXAction.C:316
+msgid "Insert math symbol"
+msgstr "Vlo¾i» matematický symbol"
+
+#: src/LyXAction.C:321
+msgid "Math mode"
+msgstr "Matematický re¾im"
+
+#: src/LyXAction.C:335
+msgid "Go one paragraph down"
+msgstr "Prejs» o jeden odstavec dole"
+
+#: src/LyXAction.C:337
+msgid "Select next paragraph"
+msgstr "Zvoli» nasledujúci odstavec"
+
+#: src/LyXAction.C:339
+msgid "Go to paragraph"
+msgstr "Prejs» na odstavec"
+
+#: src/LyXAction.C:342
+msgid "Go one paragraph up"
+msgstr "Prejs» o jeden odstavec hore"
+
+#: src/LyXAction.C:344
+msgid "Select previous paragraph"
+msgstr "Zvoli» predchádzajúci odstavec"
+
+#: src/LyXAction.C:348
+msgid "Edit Preferences"
+msgstr "Upravi» nastavenia"
+
+#: src/LyXAction.C:350
+msgid "Save Preferences"
+msgstr "Ulo¾i» nastavenia"
+
+#: src/LyXAction.C:353
+msgid "Insert protected space"
+msgstr "Vlo¾i» pevnú medzeru"
+
+#: src/LyXAction.C:354
+msgid "Insert quote"
+msgstr "Vlo¾i» úvodzovky"
+
+#: src/LyXAction.C:356
+msgid "Reconfigure"
+msgstr "Rekonfigurácia"
+
+#: src/LyXAction.C:361
+msgid "Insert cross reference"
+msgstr "Vlo¾i» krí¾ovú referenciu"
+
+#: src/LyXAction.C:369
+msgid "Scroll inset"
+msgstr ""
+
+#: src/LyXAction.C:388
+msgid "Insert Table"
+msgstr "Vlo¾i» tabuµku"
+
+#: src/LyXAction.C:390
+msgid "Tabular Features"
+msgstr "Vlastnosti tabuµky"
+
+#: src/LyXAction.C:392
+msgid "Insert a new Tabular Inset"
+msgstr "Vlo¾i» novú tabuµku prílohy"
+
+#: src/LyXAction.C:393
+msgid "Toggle TeX style"
+msgstr "Prepnutie ¹týlu TeX"
+
+#: src/LyXAction.C:395
+msgid "Insert a new Text Inset"
+msgstr "Vlo¾i» nový text prílohy"
+
+#: src/LyXAction.C:398
+msgid "Insert table of contents"
+msgstr "Vlo¾i» obsah"
+
+#: src/LyXAction.C:400
+msgid "View table of contents"
+msgstr "Zobrazi» obsah"
+
+#: src/LyXAction.C:402
+msgid "Toggle cursor does/doesn't follow the scrollbar"
+msgstr "Prepnutie kurzor ne/kopíruje posuvník"
+
+#: src/LyXAction.C:415
+msgid "Register document under version control"
+msgstr "Zaregistrujte dokument do kontroly verzií."
+
+#: src/LyXAction.C:653
+msgid "No description available!"
+msgstr "®iadny popis nie je k dispozícií!"
+
+#: src/lyx.C:41
+msgid "Encapsulated Postscript (*.eps, *.ps)|#E"
+msgstr "Encapsulated Postscript (*.eps, *.ps)|#E"
+
+#: src/lyx.C:43
+msgid "Inlined EPS (*.eps, *.ps)|#I"
+msgstr "Vlo¾ený EPS (*.eps, *.ps)|#I"
+
+#: src/lyx.C:75
+msgid "Template|#t"
+msgstr "©ablóna|#¹"
+
+#: src/lyx.C:87
+msgid "Parameters|#P"
+msgstr "Parametre|#P"
+
+#: src/lyx.C:90
+msgid "Edit file|#E"
+msgstr "Upravi» súbor|#U"
+
+#: src/lyx.C:95
+msgid "View result|#V"
+msgstr "Zobrazi» výsledok|#V"
+
+#: src/lyx.C:100
+msgid "Update result|#U"
+msgstr "Aktualizova» výsledok|#A"
+
+#: src/lyx_cb.C:171
+msgid "Save failed. Rename and try again?"
+msgstr "Ukladanie zlyhalo. Premenova» a skúsi» opä»?"
+
+#: src/lyx_cb.C:173
+msgid "(If not, document is not saved.)"
+msgstr "(Ak ne, tak dokument nie je ulo¾ený.)"
+
+#: src/lyx_cb.C:198 src/lyxfunc.C:3055
+msgid "Templates"
+msgstr "©ablóny"
+
+#: src/lyx_cb.C:203
+msgid "Enter Filename to Save Document as"
+msgstr "Vlo¾te názov súboru, pod ktorým sa má dokument ulo¾i»"
+
+#: src/lyx_cb.C:220
+msgid "Same name as document already has:"
+msgstr "Rovnaký názov ako dokument u¾ má:"
+
+#: src/lyx_cb.C:222
+msgid "Save anyway?"
+msgstr "Aj tak ulo¾i»?"
+
+#: src/lyx_cb.C:228
+msgid "Another document with same name open!"
+msgstr "Dokument s rovnakým názvom je u¾ ulo¾ený!"
+
+#: src/lyx_cb.C:230
+msgid "Replace with current document?"
+msgstr "Nahradi» s aktuálnym?"
+
+#: src/lyx_cb.C:238
+msgid "Document renamed to '"
+msgstr "Dokument je premenovaný na '"
+
+#: src/lyx_cb.C:239
+msgid "', but not saved..."
+msgstr "', ale neulo¾ený..."
+
+#: src/lyx_cb.C:245
+msgid "Document already exists:"
+msgstr "Dokument u¾ existuje:"
+
+#: src/lyx_cb.C:247
+msgid "Replace file?"
+msgstr "Nahradi» súbor?"
+
+#: src/lyx_cb.C:263
+msgid "Document could not be saved!"
+msgstr "Dokument nie je mo¾né ulo¾i»!"
+
+#: src/lyx_cb.C:264
+msgid "Holding the old name."
+msgstr "Ponechávam starý názov."
+
+#: src/lyx_cb.C:278
+msgid "Chktex does not work with SGML derived documents."
+msgstr "Chktex sa nedá pou¾i» pre dokumenty v SGML."
+
+#: src/lyx_cb.C:287
+msgid "No warnings found."
+msgstr "Bez varovaní."
+
+#: src/lyx_cb.C:289
+msgid "One warning found."
+msgstr "Vyskytlo sa jedno varovanie."
+
+#: src/lyx_cb.C:290
+msgid "Use 'Edit->Go to Error' to find it."
+msgstr "Pou¾ite 'Úpravy->Choï na chybu', aby ste ju na¹li."
+
+#: src/lyx_cb.C:293
+msgid " warnings found."
+msgstr " nájdených varovaní."
+
+#: src/lyx_cb.C:294
+msgid "Use 'Edit->Go to Error' to find them."
+msgstr "Pou¾ite 'Úpravy->Choï na chybu', aby ste ich na¹li."
+
+#: src/lyx_cb.C:296
+msgid "Chktex run successfully"
+msgstr "Chktex úspe¹ne skonèil."
+
+#: src/lyx_cb.C:298
+msgid "It seems chktex does not work."
+msgstr "Zdá sa, ¾e chktex nefunguje."
+
+#: src/lyx_cb.C:371
+msgid "Autosaving current document..."
+msgstr "Automatické ukladanie dokumentu..."
+
+#: src/lyx_cb.C:411
+msgid "Autosave Failed!"
+msgstr "Automatické ukladanie sa nepodarilo!"
+
+#: src/lyx_cb.C:467
+msgid "File to Insert"
+msgstr "Vlo¾i» súbor"
+
+#: src/lyx_cb.C:477
+msgid "Error! Specified file is unreadable: "
+msgstr "Chyba ¹pecifikovaný súbor je neèitateµný: "
+
+#: src/lyx_cb.C:484
+msgid "Error! Cannot open specified file: "
+msgstr "Chyba! Nemô¾em otvori» ¹pecifikovaný súbor:"
+
+#: src/lyx_cb.C:587 src/lyx_cb.C:590 src/mathed/formula.C:1088
+#: src/mathed/formula.C:1091
+msgid "Enter new label to insert:"
+msgstr "Vlo¾i» novú znaèku:"
+
+#: src/lyx_cb.C:624
+msgid "Character Style"
+msgstr "©týl Znaku"
+
+#: src/lyx_cb.C:675
+msgid "LaTeX Preamble"
+msgstr "Preambula LaTeXu"
+
+#: src/lyx_cb.C:692
+msgid "Do you want to save the current settings"
+msgstr "Chcete ulo¾i» aktuálne nastavenie"
+
+#: src/lyx_cb.C:693
+msgid "for Character, Document, Paper and Quotes"
+msgstr "pre Znak, Dokument, Papier a Úvodzovky"
+
+#: src/lyx_cb.C:694
+msgid "as default for new documents?"
+msgstr "ako ¹tandard pre nové dokumenty?"
+
+#: src/lyx_cb.C:859
+msgid "LaTeX preamble set"
+msgstr "Preambula LaTeXu je nastavená"
+
+#: src/lyx_cb.C:894
+msgid "Inserting figure..."
+msgstr "Vkladám obrázok..."
+
+#: src/lyx_cb.C:898 src/lyx_cb.C:954
+msgid "Figure inserted"
+msgstr "Obrázok je vlo¾ený"
+
+#: src/lyx_cb.C:977
+msgid "Running configure..."
+msgstr "Spú¹»am konfigurovanie..."
+
+#: src/lyx_cb.C:984
+msgid "Reloading configuration..."
+msgstr "Nové naèítanie konfigurácie..."
+
+#: src/lyx_cb.C:986
+msgid "The system has been reconfigured."
+msgstr "Systém je prekonfigurovaný."
+
+#: src/lyx_cb.C:987
+msgid "You need to restart LyX to make use of any"
+msgstr "Musíte LyX spusti» znovu, aby ste mohli pou¾íva»"
+
+#: src/lyx_cb.C:988
+msgid "updated document class specifications."
+msgstr "aktualizované ¹pecifikácie tried dokumentov."
+
+#: src/lyxfont.C:42
+msgid "Sans serif"
+msgstr "Sans serif"
+
+#: src/lyxfont.C:42
+msgid "Symbol"
+msgstr "Symbol"
+
+#: src/lyxfont.C:42 src/lyxfont.C:47 src/lyxfont.C:51 src/lyxfont.C:58
+#: src/lyxfont.C:62
+msgid "Inherit"
+msgstr "Zdedené"
+
+#: src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52 src/lyxfont.C:58
+#: src/lyxfont.C:62
+msgid "Ignore"
+msgstr "Ignorova»"
+
+#: src/lyxfont.C:47
+msgid "Medium"
+msgstr "Stredné"
+
+#: src/lyxfont.C:47
+msgid "Bold"
+msgstr "Tuèné"
+
+#: src/lyxfont.C:51
+msgid "Upright"
+msgstr "Vzpriamený"
+
+#: src/lyxfont.C:51
+msgid "Italic"
+msgstr "Kurzíva"
+
+#: src/lyxfont.C:51
+msgid "Slanted"
+msgstr "Sklonený"
+
+#: src/lyxfont.C:51
+msgid "Smallcaps"
+msgstr "Kapitálky"
+
+#: src/lyxfont.C:56
+msgid "Tiny"
+msgstr "Drobné"
+
+#: src/lyxfont.C:56
+msgid "Smallest"
+msgstr "Najmen¹ie"
+
+#: src/lyxfont.C:56
+msgid "Smaller"
+msgstr "Men¹í"
+
+#: src/lyxfont.C:56
+msgid "Small"
+msgstr "Malé"
+
+#: src/lyxfont.C:56
+msgid "Large"
+msgstr "Veµké"
+
+#: src/lyxfont.C:57
+msgid "Larger"
+msgstr "Väè¹í"
+
+#: src/lyxfont.C:57
+msgid "Largest"
+msgstr "Najväè¹ie"
+
+#: src/lyxfont.C:57
+msgid "Huge"
+msgstr "Obrovské"
+
+#: src/lyxfont.C:57
+msgid "Huger"
+msgstr "Ozrutné"
+
+#: src/lyxfont.C:57
+msgid "Increase"
+msgstr "Nárast"
+
+#: src/lyxfont.C:57
+msgid "Decrease"
+msgstr "Zní¾enie"
+
+#: src/lyxfont.C:62
+msgid "Off"
+msgstr "Vypnuté"
+
+#: src/lyxfont.C:62
+msgid "On"
+msgstr "Zapnuté"
+
+#: src/lyxfont.C:62
+msgid "Toggle"
+msgstr "Prepnú»"
+
+#: src/lyxfont.C:401
+msgid "Emphasis "
+msgstr "Zvýrazni» "
+
+#: src/lyxfont.C:404
+msgid "Underline "
+msgstr "Podèiarknu» "
+
+#: src/lyxfont.C:407
+msgid "Noun "
+msgstr "Kapitálky "
+
+#: src/lyxfont.C:409
+msgid "Latex "
+msgstr "Latex "
+
+#: src/lyxfont.C:413
+msgid "Language: "
+msgstr "Jazyk: "
+
+#: src/lyxfont.C:415
+msgid "  Number "
+msgstr " Èíslo"
+
+#: src/lyxfr1.C:124 src/lyxfr1.C:161
+msgid "Sorry!"
+msgstr "¥utujem!"
+
+#: src/lyxfr1.C:124 src/lyxfr1.C:161
+msgid "You cannot replace a single space, nor an empty character."
+msgstr "Nemô¾em nahradi» jednoduchú medzeru ani prázdny znak."
+
+#: src/lyxfr1.C:192 src/lyxfr1.C:239
+msgid "String not found!"
+msgstr "Re»azec nebol nájdený!"
+
+#: src/lyxfr1.C:196
+msgid "1 string has been replaced."
+msgstr "1 re»azec bol nahradený."
+
+#: src/lyxfr1.C:199
+msgid " strings have been replaced."
+msgstr " re»azce boli nahradené."
+
+#: src/lyxfr1.C:235
+msgid "Found."
+msgstr "Nájdené."
+
+#: src/lyxfunc.C:257
+msgid "Unknown sequence:"
+msgstr "Neznáma sekvencia:"
+
+#: src/lyxfunc.C:328 src/lyxfunc.C:2996
+msgid "Unknown action"
+msgstr "Neznáma akcia"
+
+#. no
+#: src/lyxfunc.C:342
+msgid "Document is read-only"
+msgstr "Dokument je iba na èítanie"
+
+#. no
+#: src/lyxfunc.C:347
+msgid "Command not allowed without any document open"
+msgstr "Príkaz nie je povolený pokiaµ nie je otvorený dokument"
+
+#: src/lyxfunc.C:795
+msgid "Saving document"
+msgstr "Ukladám dokument"
+
+#: src/lyxfunc.C:1105 src/lyxfunc.C:2550
+msgid "Missing argument"
+msgstr "Chýbajúci parameter"
+
+#: src/lyxfunc.C:1116
+msgid "Opening help file"
+msgstr "Otváram súbor s Pomocníkom"
+
+#: src/lyxfunc.C:1125
+msgid "LyX Version "
+msgstr "LyX verzia "
+
+#: src/lyxfunc.C:1130
+msgid "Library directory: "
+msgstr "Prieèinok kni¾níc: "
+
+#: src/lyxfunc.C:1132
+msgid "User directory: "
+msgstr "Prieèinok pou¾ívateµa: "
+
+#: src/lyxfunc.C:1441
+msgid "Couldn't find this label"
+msgstr "Nemô¾em nájs» túto znaèku"
+
+#: src/lyxfunc.C:1442
+msgid "in current document."
+msgstr "v aktuálnom dokumente."
+
+#: src/lyxfunc.C:1839
+msgid "Mark removed"
+msgstr "Znaèka odstránená"
+
+#: src/lyxfunc.C:1844
+msgid "Mark set"
+msgstr "Znaèka nastavená"
+
+#: src/lyxfunc.C:1949
+msgid "Mark off"
+msgstr "Znaèka vypnutá"
+
+#: src/lyxfunc.C:1962
+msgid "Mark on"
+msgstr "Znaèka zapnutá"
+
+#: src/lyxfunc.C:2464
+msgid "Push-toolbar needs argument > 0"
+msgstr "Push-toolbar potrebuje parameter > 0"
+
+#: src/lyxfunc.C:2481
+msgid "Usage: toolbar-add-to <LyX command>"
+msgstr "Pou¾itie: toolbar-add-to <príkaz LyXu>"
+
+#: src/lyxfunc.C:2498 src/mathed/formula.C:883
+msgid "Math greek mode on"
+msgstr "Je aktivovaný re¾im gréckych písmen"
+
+#: src/lyxfunc.C:2509 src/mathed/formula.C:894
+msgid "Math greek keyboard on"
+msgstr "Je aktivovaný re¾im gréckej klávesnice"
+
+#: src/lyxfunc.C:2511 src/mathed/formula.C:896
+msgid "Math greek keyboard off"
+msgstr "Re¾im gréckej klávesnice je deaktivovaný"
+
+#: src/lyxfunc.C:2565 src/mathed/formula.C:486
+msgid "Math editor mode"
+msgstr "Re¾im matematického editoru"
+
+#: src/lyxfunc.C:2572
+msgid "This is only allowed in math mode!"
+msgstr "Toto je povolené len v matematickom re¾ime!"
+
+#: src/lyxfunc.C:2761
+msgid "Opening child document "
+msgstr "Otváram podriadený dokument "
+
+#: src/lyxfunc.C:2793
+msgid "Unknown kind of footnote"
+msgstr "Neznámy typ poznámky pod èiarou"
+
+#: src/lyxfunc.C:2912
+msgid "Syntax: set-color <lyx_name> <x11_name>"
+msgstr ""
+
+#: src/lyxfunc.C:2918
+msgid "Set-color \""
+msgstr "Nepodarilo sa nastavi» \""
+
+#: src/lyxfunc.C:2920
+msgid "\" failed - color is undefined or may not be redefined"
+msgstr "\" farbu -  nie je definovaná alebo ju nie je mo¾né predefinova»"
+
+#: src/lyxfunc.C:2935
+msgid "No document open"
+msgstr "Nie je otvorený ¾iadny dokument"
+
+#: src/lyxfunc.C:2941
+msgid "Document is read only"
+msgstr "Dokument je iba pre èítanie"
+
+#: src/lyxfunc.C:3056
+msgid "Enter Filename for new document"
+msgstr "Vlo¾te názov nového dokumentu"
+
+#: src/lyxfunc.C:3057
+msgid "newfile"
+msgstr "nový súbor"
+
+#. Cancel: Do nothing
+#: src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
+#: src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
+msgid "Canceled."
+msgstr "Zru¹ené."
+
+#: src/lyxfunc.C:3076 src/lyxfunc.C:3239
+msgid ""
+"Do you want to close that document now?\n"
+"('No' will just switch to the open version)"
+msgstr ""
+"Chcete teraz zavrie» tento dokument?\n"
+"('Nie' iba prepne do otvorenej verzie)"
+
+#: src/lyxfunc.C:3096
+msgid "File already exists:"
+msgstr "Súbor u¾ existuje:"
+
+#: src/lyxfunc.C:3098
+msgid "Do you want to open the document?"
+msgstr "Chcete otvori» dokument?"
+
+#. loads document
+#: src/lyxfunc.C:3100 src/lyxfunc.C:3176
+msgid "Opening document"
+msgstr "Otváram dokument"
+
+#: src/lyxfunc.C:3107 src/lyxfunc.C:3183
+msgid "opened."
+msgstr "otvorený."
+
+#: src/lyxfunc.C:3128
+msgid "Choose template"
+msgstr "Zvoµte ¹ablónu"
+
+#: src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
+msgid "Examples"
+msgstr "Príklady"
+
+#: src/lyxfunc.C:3159
+msgid "Select Document to Open"
+msgstr "Zvoµte dokument pre otvorenie"
+
+#: src/lyxfunc.C:3185
+msgid "Could not open document"
+msgstr "Dokument sa nedá otvori»"
+
+#: src/lyxfunc.C:3215
+msgid "Select "
+msgstr "Zvoµte "
+
+#: src/lyxfunc.C:3216
+msgid " file to import"
+msgstr "súbor na importovanie"
+
+#: src/lyxfunc.C:3258
+msgid "A document by the name"
+msgstr "Dokument s menom"
+
+#: src/lyxfunc.C:3260
+msgid "already exists. Overwrite?"
+msgstr "u¾ existuje. Prepísa»?"
+
+#: src/lyxfunc.C:3291
+msgid "Select Document to Insert"
+msgstr "Zvoµte dokument na vlo¾enie"
+
+#. Inserts document
+#: src/lyxfunc.C:3309
+msgid "Inserting document"
+msgstr "Vkladám dokument"
+
+#: src/lyxfunc.C:3315
+msgid "inserted."
+msgstr "vlo¾ený."
+
+#: src/lyxfunc.C:3317
+msgid "Could not insert document"
+msgstr "Dokument nie je mo¾né vlo¾i»"
+
+#: src/lyx_gui.C:315
+msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
+msgstr " Bez zmeny %l| Roman | Sans Serif | Písací stroj %l| Znovunastavi» "
+
+#: src/lyx_gui.C:317
+msgid " No change %l| Medium | Bold %l| Reset "
+msgstr " Bez zmeny %l| Stredné | Tuèné %l| Znovunastavi» "
+
+#: src/lyx_gui.C:319
+msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
+msgstr " Bez zmeny %l| Vzpriamený | Kurzíva | Sklonený | Kapitálky %l| Znovunastavi» "
+
+#: src/lyx_gui.C:322
+msgid ""
+" No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
+"Largest | Huge | Huger %l| Increase | Decrease | Reset "
+msgstr ""
+" Bez zmeny %l| Drobné | Najmen¹ie | Men¹ie | Malé | Normálne | Veµké | Väè¹ie | "
+"Najväè¹ie | Obrovské | Ozrutné%l| Zväè¹i» | Zmen¹i» | Znovunastavi» "
+
+#: src/lyx_gui.C:326
+msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
+msgstr "Bez zmeny %l| Zvýraznené | Podèiarknuté | Kapitálky| LaTeX %l| Pôvodné"
+
+#: src/lyx_gui.C:328
+msgid ""
+" No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
+"Magenta | Yellow %l| Reset "
+msgstr ""
+" Bez zmeny %l| Bez farby | Èierna | Biela | Èervená | Zelená | Modrá | Zelenomodrá | "
+"Fialová | ®ltá %l| Znovunastavi» "
+
+#: src/lyx_gui.C:333
+msgid " English %l| German | French "
+msgstr " Anglicky %l| Nemecky | Francúzsky "
+
+#. build up the combox entries
+#: src/lyx_gui.C:347
+msgid "No change"
+msgstr "®iadne zmeny"
+
+#: src/lyx_gui.C:348
+msgid "Reset"
+msgstr "Obnovi»"
+
+#: src/lyx_gui.C:405
+msgid "LyX Banner"
+msgstr "Transparent LyXu"
+
+#: src/lyx_gui_misc.C:341
+msgid "Dismiss"
+msgstr "Odmietnu»"
+
+#: src/lyx_gui_misc.C:377 src/lyx_gui_misc.C:406 src/lyx_gui_misc.C:410
+msgid "Yes|Yy#y"
+msgstr "Áno|AaYyÁá#Á"
+
+#: src/lyx_gui_misc.C:378 src/lyx_gui_misc.C:407 src/lyx_gui_misc.C:411
+msgid "No|Nn#n"
+msgstr "Nie|Nn#n"
+
+#: src/lyx_gui_misc.C:430
+msgid "Clear|#e"
+msgstr "Oèisti»|#i"
+
+#: src/lyx_gui_misc.C:443
+msgid "Any changes will be ignored"
+msgstr "V¹etky zmenybudú ignorované"
+
+#: src/lyx_gui_misc.C:444
+msgid "The document is read-only:"
+msgstr "Dokument je iba pre èítanie:"
+
+#: src/lyx_main.C:95
+msgid "Wrong command line option `"
+msgstr "Zlé nastavenie príkazového riadku `"
+
+#: src/lyx_main.C:97
+msgid "'. Exiting."
+msgstr "'. Ukonèujem."
+
+#: src/lyx_main.C:219
+msgid "Warning: could not determine path of binary."
+msgstr "Varovanie: nemô¾em urèi» cestu k binárke."
+
+#: src/lyx_main.C:221
+msgid "If you have problems, try starting LyX with an absolute path."
+msgstr "Ak máte problémy, pokúste sa spusti» LyX s absolútnou cestou."
+
+#: src/lyx_main.C:311
+msgid "LYX_DIR_11x environment variable no good."
+msgstr "LYX_DIR_11x nastavenie prostredia nie je správne."
+
+#: src/lyx_main.C:313
+msgid "System directory set to: "
+msgstr "Nastavenie systémového adresára: "
+
+#: src/lyx_main.C:321
+msgid "LyX Warning! Couldn't determine system directory. "
+msgstr "Varovanie LyXu! Nemô¾em urèi» systémový prieèinok. "
+
+#: src/lyx_main.C:322
+msgid "Try the '-sysdir' command line parameter or "
+msgstr "Skúste '-sysdir' ako parameter v príkazovom riadku alebo"
+
+#: src/lyx_main.C:323
+msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
+msgstr "nastavte premennú prostredia LYX_DIR_11x na systémový prieèinok LyXu "
+
+#: src/lyx_main.C:325
+msgid "containing the file `chkconfig.ltx'."
+msgstr "obsahujúci súbor `chkconfig.ltx'."
+
+#: src/lyx_main.C:327
+msgid "Using built-in default "
+msgstr "Pou¾ijú sa prednastavené  hodnoty "
+
+#: src/lyx_main.C:328
+msgid " but expect problems."
+msgstr " ale oèakávajte problémy."
+
+#: src/lyx_main.C:331
+msgid "Expect problems."
+msgstr "Oèakávajte problémy."
+
+#: src/lyx_main.C:563
+msgid "You have specified an invalid LyX directory."
+msgstr "©pecifikovali ste neplatný LyX prieèinok."
+
+#: src/lyx_main.C:564
+msgid "You don't have a personal LyX directory."
+msgstr "Nemáte osobný prieèinok LyXu."
+
+#: src/lyx_main.C:566
+msgid "It is needed to keep your own configuration."
+msgstr "Potrebujete ho pre uchovávanie vá¹ho nastavenia."
+
+#: src/lyx_main.C:567
+msgid "Should I try to set it up for you (recommended)?"
+msgstr "Mám ho pre vás vytvori» (doporuèené)?"
+
+#: src/lyx_main.C:568
+msgid "Running without personal LyX directory."
+msgstr "Spú¹»am bez osobného prieèinku LyXu."
+
+#. Tell the user what is going on
+#: src/lyx_main.C:575
+msgid "LyX: Creating directory "
+msgstr "LyX: Vytváram prieèinok "
+
+#: src/lyx_main.C:576
+msgid " and running configure..."
+msgstr " a spú¹»am konfiguráciu..."
+
+#: src/lyx_main.C:582
+msgid "Failed. Will use "
+msgstr "Nepodarilo sa. Pou¾i» "
+
+#: src/lyx_main.C:583
+msgid " instead."
+msgstr " namiesto."
+
+#: src/lyx_main.C:590
+msgid "Done!"
+msgstr "Hotovo!"
+
+#: src/lyx_main.C:604
+msgid "LyX Warning!"
+msgstr "Varovanie LyXu!"
+
+#: src/lyx_main.C:605
+msgid "Error while reading "
+msgstr "Chyba pri èítaní "
+
+#: src/lyx_main.C:606
+msgid "Using built-in defaults."
+msgstr "Pou¾ijú sa prednastavené hodnoty."
+
+#: src/lyx_main.C:704
+msgid "Setting debug level to "
+msgstr "Nastavujem úroveò ladenia na "
+
+#: src/lyx_main.C:716
+msgid ""
+"Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+"Command line switches (case sensitive):\n"
+"\t-help              summarize LyX usage\n"
+"\t-userdir dir       try to set user directory to dir\n"
+"\t-sysdir dir        try to set system directory to dir\n"
+"\t-geometry WxH+X+Y  set geometry of the main window\n"
+"\t-dbg feature[,feature]...\n"
+"                  select the features to debug.\n"
+"                  Type `lyx -dbg' to see the list of features\n"
+"\t-x [--execute] command\n"
+"                  where command is a lyx command.\n"
+"\t-e [--export] fmt\n"
+"                  where fmt is the export format of choice.\n"
+"\t-i [--import] fmt file.xxx\n"
+"                  where fmt is the import format of choice\n"
+"                  and file.xxx is the file to be imported.\n"
+"Check the LyX man page for more details."
+msgstr ""
+"Pou¾itie: lyx [prepínaèe ] [ názov.lyx ... ]\n"
+"Prepínaèe (sú citlivé na veµkos» písmen):\n"
+"\t-help              sumarizuje pou¾itie LyX\n"
+"\t-userdir dir       pokúsi sa nastavi» pou¾ívateµský prieèinok\n"
+"\t-sysdir dir        pokúsi sa nastavi» systémový prieèinok\n"
+"\t-geometry WxH+X+Y  nastaví geometriu hlavného okna\n"
+"\t-dbg feature[,feature]...\n"
+"                  select the features to debug.\n"
+"                  Type `lyx -dbg' to see the list of features\n"
+"\t-x [--execute] command\n"
+"                  where command is a lyx command.\n"
+"\t-e [--export] fmt\n"
+"                  where fmt is the export format of choice.\n"
+"\t-i [--import] fmt file.xxx\n"
+"                  where fmt is the import format of choice\n"
+"                  and file.xxx is the file to be imported.\n"
+"Check the LyX man page for more details."
+
+#: src/lyx_main.C:749
+msgid "List of supported debug flags:"
+msgstr "Zoznam podporovaných ladiacich parametrov: "
+
+#: src/lyx_main.C:761
+msgid "Missing directory for -sysdir switch!"
+msgstr "Chýba prieèinok pre prepínaè -sysdir!"
+
+#: src/lyx_main.C:772
+msgid "Missing directory for -userdir switch!"
+msgstr "Chýba prieèinok pre prepínaè -userdir!"
+
+#: src/lyx_main.C:795
+msgid "Missing command string after  -x switch!"
+msgstr "Chýba príkazový re»azec po prepínaèi -x!"
+
+#: src/lyx_main.C:808
+msgid "Missing file type [eg latex, ps...] after "
+msgstr "Chýba typ súboru [napr. latex, ps...] po "
+
+#: src/lyx_main.C:810 src/lyx_main.C:825
+msgid " switch!"
+msgstr " prepínaèi!"
+
+#: src/lyx_main.C:823
+msgid "Missing type [eg latex, ps...] after "
+msgstr "Chýba typ [napr. latex, ps...] po "
+
+#: src/lyxrc.C:1644
+msgid ""
+"The font encoding used for the LaTeX2e fontenc package. T1 is highly "
+"recommended for non-English languages."
+msgstr ""
+"Kódovanie písma pou¾íva pre LaTeX2e balíèek fontenc. T1 je vrelo "
+"odporúèané pre neanglické jazyky."
+
+#: src/lyxrc.C:1648
+msgid ""
+"The default printer to print on. If none is specified, LyX will use the "
+"environment variable PRINTER."
+msgstr ""
+"Prednastavená tlaèiareò pre tlaè. Ak niè nie je nastavené, tak LyX "
+"pou¾ije premennú prostredia PRINTER."
+
+#: src/lyxrc.C:1652
+msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
+msgstr "Vá¹ obµúbený program na tlaè, napr. \"dvips\", \"dvilj4\"."
+
+#: src/lyxrc.C:1656
+msgid "The option to print only even pages."
+msgstr "Nastavenie, èi tlaèi» iba párne strany."
+
+#: src/lyxrc.C:1660
+msgid "The option to print only odd pages."
+msgstr "Nastavenie, èi tlaèi» iba nepárne strany."
+
+#: src/lyxrc.C:1664
+msgid "The option for specifying a comma-separated list of pages to print."
+msgstr ""
+"Nastavenie pre ¹pecifikáciu zoznamu strán oddelených èiarkou, "
+"ktoré sa majú vytlaèi»."
+
+#: src/lyxrc.C:1668
+msgid "The option for specifying the number of copies to print."
+msgstr "Nastavenie pre ¹pecifikáciu poètu kópií pre tlaè."
+
+#: src/lyxrc.C:1672
+msgid "The option for specifying whether the copies should be collated."
+msgstr "Nastavenie pre urèenie, èi sa kópie by» usporiadané."
+
+#: src/lyxrc.C:1676
+msgid "The option to reverse the order of the pages printed."
+msgstr "Nastavenie pre tlaè strán v opaènom poradí."
+
+#: src/lyxrc.C:1680
+msgid "The option to print out in landscape."
+msgstr "Nastavenie na tlaè na ¹írku."
+
+#: src/lyxrc.C:1684
+msgid "The option to specify paper type."
+msgstr "©pecifikácia typu papiera."
+
+#: src/lyxrc.C:1688
+msgid "Option to specify the dimensions of the print paper."
+msgstr "©pecifikácia veµkosti papiera, na ktorý sa bude tlaèi»."
+
+#: src/lyxrc.C:1692
+msgid "Option to pass to the print program to print on a specific printer."
+msgstr "Nastavenie, ktoré bude odoslané programu na tlaè pre konkrétnu tlaèiareò."
+
+#: src/lyxrc.C:1696
+msgid ""
+"Select for LyX to pass the name of the destination printer to your print "
+"command."
+msgstr "Nastavenie, èi má LyX posla» názov tlaèiarne príkazu pre tlaè."
+
+#: src/lyxrc.C:1700
+msgid "Option to pass to the print program to print to a file."
+msgstr "Parametre, ktoré sa pou¾ijú pri tlaèi do súboru."
+
+#: src/lyxrc.C:1704
+msgid "Extension of printer program output file. Usually \".ps\"."
+msgstr "Prípona výstupu tlaèe. Obyèajne \".ps\"."
+
+#: src/lyxrc.C:1708
+msgid ""
+"Extra options to pass to printing program after everything else, but before "
+"the filename of the DVI file to be printed."
+msgstr ""
+"Extra nastavenia pre program tlaèe, ktoré sa pou¾ije tesne pred tlaèou "
+"DVI súboru."
+
+#: src/lyxrc.C:1712
+msgid ""
+"When set, this printer option automatically prints to a file and then calls "
+"a separate print spooling program on that file with the given name and "
+"arguments."
+msgstr ""
+"Keï je toto nastavené, tak tlaèiareò automaticky tlaèí do súboru a potom "
+"volá oddelený spool program pre tlaè toho súboru s parametrami."
+
+#: src/lyxrc.C:1716
+msgid ""
+"If you specify a printer name in the print dialog, the following argument is "
+"prepended along with the printer name after the spool command."
+msgstr ""
+"Ak ¹pecifikujete názov tlaèiarne v dialógu pre tlaè, tak nasledujúci argument sa "
+"spolu s názvom tlaèiarne pou¾ije po spool príkaze."
+
+#: src/lyxrc.C:1720
+msgid ""
+"DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
+"wrong, override the setting here."
+msgstr ""
+"DPI (dots per inch) pre vá¹ monitor je automaticky zis»ované LyXom. Ak "
+"to nefunguje správne, tu to mô¾ete prepísa»."
+
+#: src/lyxrc.C:1725
+#, no-c-format
+msgid ""
+"The zoom percentage for screen fonts. A setting of 100% will make the fonts "
+"roughly the same size as on paper."
+msgstr ""
+"Percentuálne zväè¹enie písma na obrazovke. Nastavenie 100% bude predstavova» "
+"zhruba rovnakú veµkos» ako na papieri."
+
+#: src/lyxrc.C:1729
+msgid "The font sizes used for calculating the scaling of the screen fonts."
+msgstr "Veµkos» písma pou¾ívaného pre zmenu veµkosti písma obrazovky."
+
+#: src/lyxrc.C:1735
+msgid "The screen fonts used to display the text while editing."
+msgstr "Písmo obrazovky, ktoré sa pou¾ije na zobrazovanie textu pri upravovaní."
+
+#: src/lyxrc.C:1739
+msgid "The font for menus (and groups titles in popups)."
+msgstr "Písmo pre ponuku (nadpisy skupín v popup dialógoch)."
+
+#: src/lyxrc.C:1743
+msgid "The font for popups."
+msgstr "Písmo pre popup dialógy."
+
+#: src/lyxrc.C:1747
+msgid "The encoding for the screen fonts."
+msgstr "Kódovanie pre písma na obrazovke."
+
+#: src/lyxrc.C:1751
+msgid "The encoding for the menu/popups fonts."
+msgstr "Kódovanie pre písmo ponuky a popup dialógy"
+
+#: src/lyxrc.C:1758
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr "Èasový interval pri automatickom ukladaní (v sekundách). 0 znamená bez automatického ukladania."
+
+#: src/lyxrc.C:1762
+msgid "The default path for your documents."
+msgstr "Prednastavená cesta pre va¹e dokumenty."
+
+#: src/lyxrc.C:1766
+msgid "The path that LyX will set when offering to choose a template."
+msgstr "Cesta, ktorú vám LyX ponúkne, pri voµbe ¹ablóny."
+
+#: src/lyxrc.C:1770
+msgid ""
+"LyX will place its temporary directories in this path. They will be deleted "
+"when you quit LyX."
+msgstr ""
+"LyX bude umiestòova» svoje doèasné prieèinky do svojej cesty. Tieto budú "
+"odstránené pri ukonèení LyXu."
+
+#: src/lyxrc.C:1774
+msgid ""
+"Select if you wish to use a temporary directory structure to store temporary "
+"TeX output."
+msgstr ""
+"Zvoµte, ak si prajete pou¾i» doèasnú prieèinkovú ¹truktúru na ukladanie "
+"doèasných TeX výstupov."
+
+#: src/lyxrc.C:1778
+msgid "The file where the last-files information should be stored."
+msgstr "Súbor, do ktorého by sa mali uklada» informácie o posledných súboroch."
+
+#: src/lyxrc.C:1782
+msgid ""
+"De-select if you don't want the current selection to be replaced "
+"automatically by what you type."
+msgstr ""
+"Oznaète, ak nechcete, aby aktuálna voµba bola automaticky nahradená s "
+"tým, èo pí¹ete."
+
+#: src/lyxrc.C:1786
+msgid ""
+"Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
+"keys) that may be defined for your keyboard."
+msgstr ""
+"Zvoµte, ak chcete aby sa LyX postaral o màtve klávesy (a.k.a. klávesy s "
+"akcentami), ktoré mô¾u by» definované na va¹ej klávesnici."
+
+#: src/lyxrc.C:1791
+msgid ""
+"This starts the lyxserver. The pipes get an additional extension \".in\" and "
+"\".out\". Only for advanced users."
+msgstr ""
+"Toto spú¹»a lyxserver. Rúry sú roz¹írené o \".in\" a \".out\". Iba pre "
+"pokroèilých u¾ívateµov."
+
+#: src/lyxrc.C:1795
+msgid ""
+"Keybindings file. Can either specify an absolute path, or LyX will look in "
+"its global and local bind/ directories."
+msgstr ""
+"Súbor s klávesovými skratkami. Mô¾ete pou¾i» absolútnu cestu, alebo "
+"LyX bude hµada» v globálnych alebo lokálnych bind prieèinkoch."
+
+#: src/lyxrc.C:1799
+msgid ""
+"The  UI (user interface) file. Can either specify an absolute path, or LyX "
+"will look in its global and local ui/ directories."
+msgstr ""
+"UI (u¾ívateµské rozhranie) súbor. Mô¾ete pou¾i» absolútnu cestu, alebo "
+"LyX bude hµada» v globálnych alebo lokálnych ui prieèinkoch."
+
+#: src/lyxrc.C:1805
+msgid ""
+"Use this to set the correct mapping file for your keyboard. You'll need this "
+"if you for instance want to type German documents on an American keyboard."
+msgstr ""
+"Pou¾ite toto na opravenie súboru s mapovaním va¹ej klávesnice. Budete "
+"toto potrebova» napríklad, keï budete chcie» písa» dokument v Slovenèine "
+"na americkej klávesnici."
+
+#: src/lyxrc.C:1819
+msgid ""
+"Use to define an external program to render tables in the ASCII output. E.g. "
+"\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
+"is specified, an internal routine is used."
+msgstr ""
+"Pou¾ite toto na definovanie externého príkazu na vytvorenie tabuliek v ASCII výstupe. "
+"Napr.\"groff -t -Tlatin2 $$FName\", kde $$FName je názov vstupného súboru. "
+"Ak je ¹pecifikované \"none\", pou¾ije sa interná funkcia."
+
+#: src/lyxrc.C:1823
+msgid ""
+"This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
+"plain text)."
+msgstr ""
+"Toto je maximálna då¾ka riadku pri exporte ASCII súboru (LaTeX, SGML alebo "
+"be¾ný text)."
+
+#: src/lyxrc.C:1827
+msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
+msgstr "Maximálny poèet posledných súborov. A¾ 9 ich mô¾e by» v ponuke."
+
+#: src/lyxrc.C:1831
+msgid "Select to check whether the lastfiles still exist."
+msgstr "Nastavenie, èi kontrolova» existenciu posledných súborov."
+
+#: src/lyxrc.C:1838
+msgid "Specify the default paper size."
+msgstr "Urèenie prednastavenej veµkosti papiera"
+
+#: src/lyxrc.C:1845
+msgid ""
+"Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
+"legal words?"
+msgstr ""
+"Pova¾ova» spojené slová ako sú \"kedytedy\" namiesto \"kedy tedy\" ako "
+"správne slová?"
+
+#: src/lyxrc.C:1849
+msgid "What command runs the spell checker?"
+msgstr "Aký program spú¹»a kontrolu pravopisu?"
+
+#: src/lyxrc.C:1853
+msgid ""
+"Specify whether to pass the -T input encoding option to ispell. Enable this "
+"if you can't spellcheck words with international letters in them. This may "
+"not work with all dictionaries."
+msgstr ""
+"©pecifikuje èi posla» nastavenie -T vstupné kódovanie pre ispell. Povoµte "
+"toto Ak nemô¾e kontrolova» slová s medzinárodnými znakmi. Toto "
+"nemusí fungova» so v¹etkými slovníkmi."
+
+#: src/lyxrc.C:1858
+msgid ""
+"Specify an alternate language. The default is to use the language of the "
+"document."
+msgstr ""
+"Nastavenie alternatívneho jazyka. Implicitne sa pou¾ije jazyk "
+"dokumentu."
+
+#: src/lyxrc.C:1863
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgstr "©pecifikovanie alternatívneho súboru osobného slovníka. Napr. \".ispell_english\"."
+
+#: src/lyxrc.C:1868
+msgid "Specify additional chars that can be part of a word."
+msgstr "©pecifikovanie dodatoèných znakov, ktoré mô¾u by» èas»ou slova."
+
+#: src/lyxrc.C:1872
+msgid ""
+"Allow the use of scalable screen fonts? If false, LyX will use the closest "
+"existing size for a match. Use this if the scalable fonts look bad and you "
+"have many fixed size fonts."
+msgstr ""
+"Povoli» pou¾ívanie stupòovateµné písma? Ak nie, LyX bude pou¾íva» "
+"najbli¾¹iu vhodnú veµkos». Pou¾ite toto, ak stupòovateµné písma "
+"nevyzerajú dobre a máte veµa písma s pevnou veµkos»ou."
+
+#: src/lyxrc.C:1876
+msgid ""
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
+"-n38\" Refer to the ChkTeX documentation."
+msgstr ""
+"Definuje ako spusti» chktex. Napr. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
+"-n38\" Pozrite si dokumentáciu k ChkTeX."
+
+#: src/lyxrc.C:1880
+msgid ""
+"LyX normally doesn't update the cursor position if you move the scrollbar. "
+"Set to true if you'd prefer to always have the cursor on screen."
+msgstr ""
+"LyX normálne neaktualizuje pozíciu kurzora, ak ste pohli posuvníkom. "
+"Nastavte túto voµbu, ak preferuje ma» pozíciu kurzora na obrazovke."
+
+#: src/lyxrc.C:1884
+msgid ""
+"Sets whether LyX asks for a second confirmation to exit when you have "
+"changed documents. (LyX will still ask to save changed documents.)"
+msgstr ""
+"Nastavenie, èi sa má LyX pýta» na druhé potvrdenie na ukonèenie, "
+"keï bol dokument zmenený. (LyX sa bude stále pýta», èi má dokument ulo¾i».)"
+
+#: src/lyxrc.C:1888
+msgid ""
+"LyX continously displays names of last command executed, along with a list "
+"of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
+"slow."
+msgstr ""
+"LyX nepretr¾ite zobrazuje názvy naposledy spustených príkazov, spolu "
+"s definovanými klávesovými skratkami pre ne v minibuffery. Odznaète "
+"túto mo¾nos», ak sa vám Lyx zdá pomalý."
+
+#: src/lyxrc.C:1892
+msgid "De-select if you don't want LyX to create backup files."
+msgstr "Odznaète, ak nechcete, aby LyX vytváral zálo¾né súbory."
+
+#: src/lyxrc.C:1896
+msgid ""
+"The path for storing backup files. If it is an empty string, LyX will store "
+"the backup file in the same directory as the original file."
+msgstr ""
+"Cesta pre ukladanie zálo¾ných súborov. Ak je to prázdny re»azec, LyX "
+"bude uklada» zálo¾né súbory do toho istého prieèinku ako originálny súbor."
+
+#: src/lyxrc.C:1900
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Zvoµte pre zapnutie podpory písania zprava doµava (napr. pre Hebrejèinu, Arabèinu)."
+
+#: src/lyxrc.C:1904
+msgid ""
+"Select to control the highlighting of words with a language foreign to that "
+"of the document."
+msgstr ""
+"Zvoµte pre ovládanie zvýrazòovania slov v inom jazyku ako je prednastavený "
+"jazyk dokumentu."
+
+#: src/lyxrc.C:1908
+msgid ""
+"The latex command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+msgstr ""
+"Príkaz latexu pre naèítanie jazykového balíka. Napr. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+
+#: src/lyxrc.C:1912
+msgid ""
+"De-select if you don't want the language(s) used as an argument to "
+"\\documentclass."
+msgstr ""
+"Odznaète, ak nechcete pou¾i» jazyk ako argument k "
+"\\documentclass."
+
+#: src/lyxrc.C:1916
+msgid ""
+"De-select if you don't want babel to be used when the language of the "
+"document is the default language."
+msgstr ""
+"Odznaète, ak nechcete pou¾i» babel, ak jazyk dokumentu je "
+"prednastavený jazyk."
+
+#: src/lyxrc.C:1920
+msgid ""
+"Select if a language switching command is needed at the beginning of the "
+"document."
+msgstr ""
+"Zvoµte, ak príkaz pre zmenu jazyku je potrebný na zaèiatku "
+"dokumentu."
+
+#: src/lyxrc.C:1924
+msgid "Select if a language switching command is needed at the end of the document."
+msgstr "Zvoµte, ak príkaz pre zmenu jazyku je potrebný na konci dokumentu."
+
+#: src/lyxrc.C:1928
+msgid ""
+"The latex command for changing from the language of the document to another "
+"language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
+"name of the second language."
+msgstr ""
+"Latex príkaz pre zmenu z jazyka dokumentu do iného jazyka. "
+"Napr. \\selectlanguage{$$lang} kde $$lang je nahradené názvom "
+"druhého jazyka."
+
+#: src/lyxrc.C:1932
+msgid "The latex command for changing back to the language of the document."
+msgstr "Latexovský príkaz pre návrat k pôvodnému jazyku dokumentu."
+
+#: src/lyxrc.C:1936
+msgid "The latex command for local changing of the language."
+msgstr "Latexovský príkaz pre lokálnu zmenu jazyka."
+
+#: src/lyxrc.C:1941
+#, no-c-format
+msgid ""
+"This accepts the normal strftime formats; see man strftime for full details. "
+"E.g.\"%A, %e. %B %Y\"."
+msgstr ""
+"Tu je akceptovaný be¾ný strftime formát;  detaily sú v man strftime. "
+"Napr.\"%A, %e. %B %Y\"."
+
+#: src/lyxrc.C:1945
+msgid "De-select if you don't want the startup banner."
+msgstr "Voµba, èi si neprajete transparent pri ¹tarte."
+
+#: src/lyxrc.C:1949
+msgid "The wheel movement factor (for mice with wheels or five button mice)."
+msgstr "Faktor pohybu kolieska (pre my¹ s kolieskami alebo piatimi tlaèítkami)."
+
+#: src/lyxrc.C:1962
+msgid ""
+"This sets the behaviour if you want to be asked for a filename when creating "
+"a new document or wait until you save it and be asked then."
+msgstr ""
+"Toto nastavuje, èi chcete by» vyzvaný na vlo¾enie názvu dokumentu pri jeho "
+"vytvorení, alebo sa má èaka», pokiaµ ho nebude chcie» ulo¾i» a potom si vy¾iada» "
+"názov."
+
+#: src/lyxrc.C:1966
+msgid "New documents will be assigned this language."
+msgstr "Novému dokumentu bude priradený tento jazyk."
+
+#: src/lyxrc.C:1970
+msgid "Maximum number of words in the initialization string for a new label"
+msgstr "Maximálny poèet slov v poèiatoènom re»azci pre nové oznaèenie"
+
+#: src/LyXSendto.C:40
+msgid "Send Document to Command"
+msgstr "Odovzda» dokument príkazu"
+
+#: src/lyxvc.C:94 src/lyxvc.C:127
+msgid "Save document and proceed?"
+msgstr "Ulo¾i» dokument a pokraèova»?"
+
+#: src/lyxvc.C:107
+msgid "LyX VC: Initial description"
+msgstr "LyX VC: Poèiatoèný popis"
+
+#: src/lyxvc.C:108
+msgid "(no initial description)"
+msgstr "(bez poèiatoèného popisu)"
+
+#: src/lyxvc.C:113
+msgid "This document has NOT been registered."
+msgstr "Tento dokument nebol zaregistrovaný."
+
+#: src/lyxvc.C:139
+msgid "LyX VC: Log Message"
+msgstr "LyX VC: Logovacia správa"
+
+#: src/lyxvc.C:142
+msgid "(no log message)"
+msgstr "(bez logovacej správy)"
+
+#: src/lyxvc.C:157
+msgid "Ignore changes and proceed with check out?"
+msgstr "Ignorova» zmeny a pokraèova»?"
+
+#. Here we should check if the buffer is dirty. And if it is
+#. we should warn the user that reverting will discard all
+#. changes made since the last check in.
+#: src/lyxvc.C:172
+msgid "When you revert, you will loose all changes made"
+msgstr "Pokiaµ sa vrátite spä», stratíte v¹etky zmeny, ktoré boli spravené"
+
+#: src/lyxvc.C:173
+msgid "to the document since the last check in."
+msgstr "v dokumente od posledného záznamu."
+
+#: src/lyxvc.C:174
+msgid "Do you still want to do it?"
+msgstr "Aj tak to chcete spravi»?"
+
+#: src/lyxvc.C:277
+msgid "No VC History!"
+msgstr "Nie je ¾iadna VC história"
+
+#: src/lyxvc.C:284
+msgid "VC History"
+msgstr "VC história"
+
+#: src/LyXView.C:370 src/minibuffer.C:242
+msgid " (Changed)"
+msgstr "(Zmenený)"
+
+#: src/LyXView.C:372
+msgid " (read only)"
+msgstr " (iba pre èítanie)"
+
+#: src/mathed/formula.C:911 src/mathed/formula.C:1257
+msgid "TeX mode"
+msgstr "TeXový mód"
+
+#: src/mathed/formula.C:926
+msgid "No number"
+msgstr "Bez èísla"
+
+#: src/mathed/formula.C:929
+msgid "Number"
+msgstr "Èíslo"
+
+#: src/mathed/formula.C:1128
+msgid "math text mode"
+msgstr "matematický textový mód"
+
+#: src/mathed/formula.C:1137
+msgid "Invalid action in math mode!"
+msgstr "Táto akcie je v matematickom móde neplatná!"
+
+#: src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:171
+msgid "Macro: "
+msgstr "Makro: "
+
+#: src/mathed/formulamacro.C:181
+msgid "Math macro editor mode"
+msgstr "Re¾im matematického editoru"
+
+#: src/mathed/math_forms.C:19
+msgid "Close "
+msgstr "Zavrie»"
+
+#: src/mathed/math_forms.C:22
+msgid "Functions"
+msgstr "Funkcie"
+
+#: src/mathed/math_forms.C:30
+msgid " ?"
+msgstr " ?"
+
+#: src/mathed/math_forms.C:34
+msgid " "
+msgstr " "
+
+#: src/mathed/math_forms.C:38
+msgid " @"
+msgstr " @"
+
+#: src/mathed/math_forms.C:42
+msgid "S  "
+msgstr "S  "
+
+#: src/mathed/math_forms.C:95
+msgid "Left|#L"
+msgstr "Vµavo|#a"
+
+#: src/mathed/math_forms.C:127
+msgid "OK  "
+msgstr "OK  "
+
+#: src/mathed/math_forms.C:140
+msgid "Columns "
+msgstr "Ståpce "
+
+#: src/mathed/math_forms.C:147
+msgid "Vertical align|#V"
+msgstr "Vertikálne zarovnávanie|#V"
+
+#: src/mathed/math_forms.C:152
+msgid "Horizontal align|#H"
+msgstr "Horizontálne zarovnávanie|#H"
+
+#: src/mathed/math_forms.C:195
+msgid "OK "
+msgstr "OK "
+
+#: src/mathed/math_forms.C:206
+msgid "Thin|#T"
+msgstr "Úzka|#z"
+
+#: src/mathed/math_forms.C:210
+msgid "Medium|#M"
+msgstr "Stredná|S"
+
+#: src/mathed/math_forms.C:214
+msgid "Thick|#H"
+msgstr "©iroká|#i"
+
+#: src/mathed/math_forms.C:218
+msgid "Negative|#N"
+msgstr "Záporná|#N"
+
+#: src/mathed/math_forms.C:222
+msgid "Quadratin|#Q"
+msgstr "©tvorcový|#©"
+
+#: src/mathed/math_forms.C:226
+msgid "2Quadratin|#2"
+msgstr "2x©tvorcový|#2"
+
+#: src/mathed/math_panel.C:116
+msgid "Delimiter"
+msgstr "Oddeµovaè"
+
+#: src/mathed/math_panel.C:122
+msgid "Decoration"
+msgstr "Svorky"
+
+#: src/mathed/math_panel.C:128
+msgid "Spacing"
+msgstr "Medzera"
+
+#: src/mathed/math_panel.C:134
+msgid "Matrix"
+msgstr "Matica"
+
+#: src/mathed/math_panel.C:330
+msgid "Top | Center | Bottom"
+msgstr "Hore | Nastred | Dole"
+
+#: src/mathed/math_panel.C:383
+msgid "Math Panel"
+msgstr "Matematický panel"
+
+#: src/MenuBackend.C:263
+msgid "No Documents Open!"
+msgstr "®iadny dokument nie je otvorený!"
+
+#: src/MenuBackend.C:311
+msgid "Ascii text as lines"
+msgstr "Ascii text ako riadky"
+
+#: src/MenuBackend.C:313
+msgid "Ascii text as paragraphs"
+msgstr "Ascii text ako odstavce"
+
+#: src/MenuBackend.C:416
+msgid "Quit|Q"
+msgstr "Koniec|K"
+
+#: src/MenuBackend.C:424
+msgid "LaTeX...|L"
+msgstr "LaTeX...|L"
+
+#: src/MenuBackend.C:426
+msgid "LinuxDoc...|L"
+msgstr "LinuxDoc...|L"
+
+#: src/MenuBackend.C:434
+msgid "Emphasize"
+msgstr "Zvýrazni»"
+
+#: src/minibuffer.C:46 src/minibuffer.C:244
+msgid "Welcome to LyX!"
+msgstr "Vitajte v LyXe!"
+
+#: src/minibuffer.C:64
+msgid "Executing:"
+msgstr "Spú¹»am:"
+
+#. this is a hack
+#: src/minibuffer.C:245
+msgid "* No document open *"
+msgstr "* Bez otvoreného dokumentu *"
+
+#: src/print_form.C:21
+msgid "File Type"
+msgstr "Typ súboru"
+
+#: src/print_form.C:25
+msgid "Command:|#C"
+msgstr "Príkaz::|#K"
+
+#: src/print_form.C:39
+msgid "DVI|#D"
+msgstr "DVI|#D"
+
+#: src/print_form.C:41
+msgid "Postscript|#P"
+msgstr "Postscript|#P"
+
+#: src/print_form.C:43
+msgid "LaTeX|#T"
+msgstr "LaTeX|#T"
+
+#: src/print_form.C:46
+msgid "LyX|#L"
+msgstr "LyX|#L"
+
+#: src/print_form.C:48
+msgid "Ascii|#s"
+msgstr "Ascii|#s"
+
+#: src/spellchecker.C:286
+msgid "Spellchecker Options"
+msgstr "Nastavenie kontroly pravopisu"
+
+#: src/spellchecker.C:717
+msgid "Spellchecker"
+msgstr "Kontrola pravopisu"
+
+#: src/spellchecker.C:963
+msgid " words checked."
+msgstr " skontrolovaných slov."
+
+#: src/spellchecker.C:965
+msgid " word checked."
+msgstr " skontrolované slovo."
+
+#: src/spellchecker.C:967
+msgid "Spellchecking completed!"
+msgstr "Kontrola pravopisu je dokonèená!"
+
+#: src/spellchecker.C:971
+msgid ""
+"The spell checker has died for some reason.\n"
+"Maybe it has been killed."
+msgstr ""
+"Kontrola pravopisu z nejakého dôvodu nebola dokonèená.\n"
+"Mo¾no bola zabitá."
+
+#: src/sp_form.C:26
+msgid "Use language of document|#D"
+msgstr "Pou¾i» jazyk dokumentu|#D"
+
+#: src/sp_form.C:28
+msgid "Use alternate language:|#U"
+msgstr "Pou¾i» alternatívny jazyk:|#U"
+
+#: src/sp_form.C:34
+msgid "Treat run-together words as legal|#T"
+msgstr "Akceptova» spojené slová|#t"
+
+#: src/sp_form.C:36
+msgid "Input Encoding switch to ispell|#I"
+msgstr "Prepnú» vstupné kódovanie ispellu|#i"
+
+#: src/sp_form.C:46
+msgid "Use alternate personal dictionary:|#P"
+msgstr "Pou¾i» alternatívny osobný slovník:|#P"
+
+#: src/sp_form.C:48
+msgid "Extra special chars allowed in words:|#E"
+msgstr "©peciálne znaky povolené v slovách:|#E"
+
+#: src/sp_form.C:54
+msgid "Dictionary"
+msgstr "Slovník"
+
+#: src/sp_form.C:86
+msgid "Replace"
+msgstr "Nahradi»"
+
+#: src/sp_form.C:88
+msgid ""
+"Near\n"
+"Misses"
+msgstr ""
+"Blízko\n"
+"Chýba"
+
+#: src/sp_form.C:91
+msgid "Spellchecker Options...|#O"
+msgstr "Nastavenie pravopisu...|#N"
+
+#: src/sp_form.C:93
+msgid "Start spellchecking|#S"
+msgstr "Zaèa» kontrolu|#k"
+
+#: src/sp_form.C:95
+msgid "Insert in personal dictionary|#I"
+msgstr "Vlo¾i» do osobného slovníka|#V"
+
+#: src/sp_form.C:97
+msgid "Ignore word|#g"
+msgstr "Ignorova» slovo|#g"
+
+#: src/sp_form.C:99
+msgid "Accept word in this session|#A"
+msgstr "Akceptova» slovo pre túto reláciu|#A"
+
+#: src/sp_form.C:101
+msgid "Stop spellchecking|#T"
+msgstr "Preru¹i» kontrolu|#r"
+
+#: src/sp_form.C:103
+msgid "Close Spellchecker|#C^["
+msgstr "Zavrie»|#Z^["
+
+#: src/sp_form.C:106
+#, no-c-format
+msgid "0 %"
+msgstr "0 %"
+
+#: src/sp_form.C:110
+#, no-c-format
+msgid "100 %"
+msgstr "100 %"
+
+#: src/sp_form.C:113
+msgid "Replace word|#R"
+msgstr "Nahradi» slovo|#h"
+
+#: src/support/filetools.C:159
+msgid "LyX Internal Error!"
+msgstr "Vnútorná chyba LyXu!"
+
+#: src/support/filetools.C:160
+msgid "Could not test if directory is writeable"
+msgstr "Nemô¾em otestova», èi je mo¾né zapisova» do prieèinku"
+
+#: src/support/filetools.C:410
+msgid "Error! Cannot open directory:"
+msgstr "Chyba! Nemô¾em otvori» prieèinok:"
+
+#: src/support/filetools.C:428
+msgid "Error! Could not remove file:"
+msgstr "Chyba! Nemô¾em odstráni» súbor:"
+
+#: src/support/filetools.C:453
+msgid "Error! Couldn't create temporary directory:"
+msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
+
+#: src/support/filetools.C:469
+msgid "Error! Couldn't delete temporary directory:"
+msgstr "Chyba! Nemô¾em odstráni» doèasný prieèinok:"
+
+#: src/support/filetools.C:522
+msgid "Internal error!"
+msgstr "Interná chyba!"
+
+#: src/support/filetools.C:523
+msgid "Call to createDirectory with invalid name"
+msgstr "Volanie na vytvorenie prieèinku s neplatným názvom"
+
+#: src/support/filetools.C:528
+msgid "Error! Couldn't create directory:"
+msgstr "Chyba! Nemô¾em vytvori» prieèinok:"
+
+#: src/support/filetools.C:1133
+msgid "Could not delete auto-save file!"
+msgstr "Nemô¾em zmaza» súbor pre automatické ukladanie!"
+
+#: src/support/getUserName.C:13
+msgid "unknown"
+msgstr "neznámy"
+
+#: src/tabular.C:1705
+msgid "Warning:"
+msgstr "Varovanie:"
+
+#: src/tabular.C:1706
+msgid "Tabular format < 5 is not supported anymore\n"
+msgstr "Tabuµkový formát < 5 u¾ nie je viacej podporovaný\n"
+
+#: src/tabular.C:1707
+msgid "Get an older version of LyX (< 1.1.x) for conversion!"
+msgstr "Získajte star¹iu verziu LyXu (< 1.1.x) pre konverziu!"
+
+#: src/text2.C:411
+msgid "Opened float"
+msgstr "Otvorený plávajúci objekt"
+
+#: src/text2.C:413
+msgid "Closed float"
+msgstr "Uzavretý plávajúci objekt"
+
+#: src/text2.C:456
+msgid "Nothing to do"
+msgstr "Nie je èo robi»."
+
+#: src/text2.C:1275
+msgid ""
+"No font change defined. Use Character under the Layout menu to define font "
+"change."
+msgstr ""
+"Nebola definovaná zmena písma."
+"Pou¾ite polo¾ku Znak v ponuke Rozlo¾enie na definovanie zmeny písma."
+
+#: src/text2.C:2198 src/text2.C:2311
+msgid "Don't know what to do with half floats."
+msgstr "Neviem, èo mám robi» s poloviènými plávajúcimi objektami."
+
+#: src/text2.C:2199 src/text2.C:2313
+msgid "sorry."
+msgstr "µutujem."
+
+#: src/text.C:2003
+msgid ""
+"You cannot insert a space at the beginning of a paragraph.  Please read the "
+"Tutorial."
+msgstr ""
+"Nemô¾ete vlo¾i» na zaèiatok odstavca medzeru."
+"Preèítajte si prosím Príruèku."
+
+#: src/text.C:2005
+msgid "You cannot type two spaces this way.  Please read the Tutorial."
+msgstr "Nemô¾ete takýmto spôsobom vlo¾i» dve medzery. Preèítajte si prosím Príruèku."
+
+#: src/text.C:3462 src/text.C:3468
+msgid "Page Break (top)"
+msgstr "Zalomenie strany (hore)"
+
+#: src/text.C:3662 src/text.C:3668
+msgid "Page Break (bottom)"
+msgstr "Zalomenie strany (dole)"
+
+#: src/text.C:3962
+msgid "You can't insert a float in a float!"
+msgstr "Nemô¾ete vlo¾i» plávajúci objekt do plávajúceho objektu"
+
+#: src/text.C:3970
+msgid "You can't insert a marginpar in a minipage!"
+msgstr "Nemô¾ete vlo¾i» poznámka na okraji do prostredia minipage!"
+
+#: src/text.C:3997
+msgid "Float would include float!"
+msgstr "Plávajúci objekt bude obsahova» plávajúci objekt!"
+
