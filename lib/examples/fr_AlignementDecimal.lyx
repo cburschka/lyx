@@ -3,14 +3,14 @@
 \textclass article
 \begin_preamble
 \usepackage{dcolumn}
-\newcolumntype{d}[1]{D{.}{.}{#1}}
+\newcolumntype{d}[1]{D{,}{,}{#1}}
 \end_preamble
 \language frenchb
 \inputencoding latin1
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single
+\spacing single 
 \papersize Default
 \paperpackage a4
 \use_geometry 0
@@ -56,10 +56,10 @@ collapsed true
 Informations de révision :
 \layout Standard
 
-Traduction : Mise à jour Date : 22/03/2002
+Traduction : Mise à jour Date : 07/07/2003
 \layout Standard
 
-Original : Révision : 1.4, Date : 21/03/2002
+Original : Révision : 1.5, Date : 17/01/2003
 \end_inset 
 
 
@@ -71,7 +71,17 @@ Une méthode alternative pour obtenir un alignement décimal dans les tableaux
 dcolumn
 \family default 
 .
- Ajoutez ce qui suit au préambule LaTeX :
+ Ajoutez ce qui suit au préambule LaTeX
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+NdT : Si votre séparateur décimal est la virgule.
+ Si c'est le point, remplacez les virgules par des points.
+\end_inset 
+
+ :
 \layout LyX-Code
 
 
@@ -81,7 +91,7 @@ usepackage{dcolumn}
 
 
 \backslash 
-newcolumntype{d}[1]{D{.}{.}{#1}}
+newcolumntype{d}[1]{D{,}{,}{#1}}
 \layout Standard
 
 Pour avoir une colonne alignée sur le symbole décimal, entrez ce qui suit
@@ -142,13 +152,13 @@ Valeur
 \layout Standard
 
 
-\begin_inset Formula $\pi $
+\begin_inset Formula $\pi$
 \end_inset 
 
 
 \end_inset 
 </cell>
-<cell multicolumn="1" alignment="right" valignment="top" leftline="true" usebox="none">
+<cell alignment="right" valignment="top" leftline="true" usebox="none" special="d{4}">
 \begin_inset Text
 
 \layout Standard
@@ -164,7 +174,7 @@ Valeur
 \layout Standard
 
 
-\begin_inset Formula $\pi ^{\pi }$
+\begin_inset Formula $\pi^{\pi}$
 \end_inset 
 
 
@@ -186,7 +196,7 @@ Valeur
 \layout Standard
 
 
-\begin_inset Formula $(\pi ^{\pi })^{\pi }$
+\begin_inset Formula $(\pi^{\pi})^{\pi}$
 \end_inset 
 
 
@@ -208,7 +218,7 @@ Valeur
 \layout Standard
 
 
-\begin_inset Formula $\pi ^{\pi ^{\pi }}$
+\begin_inset Formula $\pi^{\pi^{\pi}}$
 \end_inset 
 
 
