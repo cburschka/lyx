@@ -166,14 +166,14 @@ int InsetInclude::Latex(Buffer const * buffer, ostream & os,
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
 		if (tmp->params.textclass != buffer->params.textclass) {
-			lyxerr << "ERROR: Cannot handle include file `"
+			lyxerr << "WARNING: Included file `"
 			       << MakeDisplayPath(getFileName())
-			       << "' which has textclass `"
+			       << "' has textclass `"
 			       << textclasslist.NameOfClass(tmp->params.textclass)
-			       << "' instead of `"
+			       << "' while parent file has textclass `"
 			       << textclasslist.NameOfClass(buffer->params.textclass)
 			       << "'." << endl;
-			return 0;
+			//return 0;
 		}
 		
 		// write it to a file (so far the complete file)
