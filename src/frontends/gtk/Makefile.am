@@ -15,62 +15,65 @@ libgtk_la_LIBADD = $(xforms_objects) ../xforms/forms/*.lo @GTK_FRONTEND_LIBS@ @X
 
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libgtk_la_SOURCES = \
-	ghelpers.C \
-	ghelpers.h \
-	lyx_gui.C \
-	GtkmmX.h \
-	xftFontLoader.C \
-	xftFontLoader.h \
-	codeConvert.h \
-	xftFontMetrics.C \
-	GScreen.C \
-	GScreen.h \
-	LyXScreenFactory.C \
+	Alert_pimpl.C \
+	Dialogs.C \
+	FileDialog.C \
+	FileDialogPrivate.C \
+	FileDialogPrivate.h \
+	GAboutlyx.C \
+	GAboutlyx.h \
+	GBC.C \
+	GBC.h \
+	GLyXKeySym.C \
+	GLyXKeySym.h \
+	GMathDelim.C \
+	GMathDelim.h \
+	GMathPanel.C \
+	GMathPanel.h \
 	GMenubar.C \
 	GMenubar.h \
-	GTimeout.C \
-	GTimeout.h \
-	GToolbar.C \
-	GToolbar.h \
-	WorkAreaFactory.C \
 	GMiniBuffer.C \
 	GMiniBuffer.h \
 	GPainter.C \
 	GPainter.h \
-	GWorkArea.h \
-	GWorkArea.C \
-	GLyXKeySym.h \
-	GLyXKeySym.C \
-	LyXKeySymFactory.C \
-	Alert_pimpl.C \
-	GView.h \
-	GView.C \
-	IdSc.h \
-	IdSc.C \
-	io_callback.h \
-	io_callback.C \
-	Dialogs.C \
-	GAboutlyx.h \
-	GAboutlyx.C \
-	GViewBase.h \
-	GViewBase.C \
-	GBC.h \
-	GBC.C \
-	FileDialogPrivate.h \
-	FileDialogPrivate.C \
-	FileDialog.C \
-	GText.h \
-	GText.C \
-	GUrl.h \
-	GUrl.C \
-	GTableCreate.h \
+	GScreen.C \
+	GScreen.h \
+	GSearch.C \
+	GSearch.h \
 	GTableCreate.C \
-	GMathPanel.h \
-	GMathPanel.C \
-	GXpmBtnTbl.h \
+	GTableCreate.h \
+	GText.C \
+	GText.h \
+	GTimeout.C \
+	GTimeout.h \
+	GToolbar.C \
+	GToolbar.h \
+	GUrl.C \
+	GUrl.h \
+	GView.C \
+	GView.h \
+	GViewBase.C \
+	GViewBase.h \
+	GWorkArea.C \
+	GWorkArea.h \
 	GXpmBtnTbl.C \
-	GMathDelim.h \
-	GMathDelim.C
+	GXpmBtnTbl.h \
+	GtkmmX.h \
+	IdSc.C \
+	IdSc.h \
+	LyXKeySymFactory.C \
+	LyXScreenFactory.C \
+	WorkAreaFactory.C \
+	codeConvert.h \
+	ghelpers.C \
+	ghelpers.h \
+	io_callback.C \
+	io_callback.h \
+	lyx_gui.C \
+	xftFontLoader.C \
+	xftFontLoader.h \
+	xftFontMetrics.C 
+
 
 #	GPrint.h
 #	GPrint.C
@@ -111,7 +114,6 @@ xforms_objects = \
 	../xforms/FormPreferences.lo \
 	../xforms/FormPrint.lo \
 	../xforms/FormRef.lo \
-	../xforms/FormSearch.lo \
 	../xforms/FormSendto.lo \
 	../xforms/forms_gettext.lo \
 	../xforms/FormShowFile.lo \

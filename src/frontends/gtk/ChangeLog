@@ -1,3 +1,12 @@
+2004-09-24  John Spray  <spray_john@users.sourceforge.net>
+
+	* GSearch.[Ch]: new files
+	* Dialogs.C: move from formsearch to gsearch
+	* Makefile.am: move from formsearch to gsearch, alphabetically
+	sort list of libgtk_la_SOURCES
+	* glade/search.glade: s/Backwords/Backwards/, accelerator escape
+	for close button, gtk stock buttons for find and replace.
+
 2004-09-23  John Spray  <spray_john@users.sourceforge.net>
 
 	* GWorkArea.[Ch]: Add GWorkArea::onScrollWheel to implement

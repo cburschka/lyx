@@ -78,7 +78,7 @@
 #include "FormPreferences.h"
 #include "FormPrint.h"
 #include "FormRef.h"
-#include "FormSearch.h"
+#include "GSearch.h"
 #include "FormSendto.h"
 #include "FormTabular.h"
 #include "FormTexinfo.h"
@@ -226,8 +226,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormShowFile(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "findreplace") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlSearch(*dialog));
-		dialog->setView(new FormSearch(*dialog));
+		dialog->setView(new GSearch(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
