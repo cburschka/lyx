@@ -1403,7 +1403,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						unit = "vfill";
 						known_vspace = true;
 					}
-				} else {
+				}
+				if (!known_vspace) {
 					switch (unitFromString(unit)) {
 					case LyXLength::SP:
 					case LyXLength::PT:
