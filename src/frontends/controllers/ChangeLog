@@ -1,3 +1,9 @@
+2002-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* biblio.C (getInfo): return the info field correctly if the key
+	is not a BibTeX one.
+	(parseBibTeX): fix crash when data.find('=') returns string::npos.
+
 2002-02-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlForks.[Ch]: new files. A controller for the Forked Child

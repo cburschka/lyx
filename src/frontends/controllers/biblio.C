@@ -285,10 +285,12 @@ string const getInfo(InfoMap const & map, string const & key)
 	if (!year.empty())
 		result << ", " << year;
 
-	if (result.str().empty()) // not a BibTeX record
-		result << it->second;
+	char const * const tmp = result.str().c_str();
+	string result_str = tmp ? strip(tmp) : string();
+	if (result_str.empty()) // not a BibTeX record
+		result_str = it->second;
 
-	return result.str().c_str();
+	return result_str;
 }
  
 
@@ -328,15 +330,24 @@ string const parseBibTeX(string data, string const & findkey)
 	while (!dummy.empty()) {
 		dummy = subst(dummy, '\t', ' ');	// no tabs
 		dummy = frontStrip(dummy);	// no leading spaces
-		if (dummy.find('%') != string::npos) {
-		    if (dummy.find('%') > 0)
-			data_ += dummy.substr(0,data.find('%'));
+		string::size_type const idx =
+			dummy.empty() ? string::npos : dummy.find('%');
+		if (idx != string::npos) {
+			if (idx > 0) {
+				// This is safe. data MUST contain a '%'
+				data_ += dummy.substr(0,data.find('%'));
+			}
+		} else {
+			data_ += dummy;
 		}
-		else
-		    data_ += dummy;
 		dummy = token(data, '\n', ++Entries);
 	}
 	data = data_;
+
+	// unlikely!
+	if (data.empty())
+		return string();
+
 	// now get only the important line of the bibtex entry.
 	// all entries are devided by ',' except the last one.	
 	data += ',';  // now we have same behaviour for all entries
@@ -361,9 +372,15 @@ string const parseBibTeX(string data, string const & findkey)
 	if (!contains(data, '{'))	// no opening '{'
 		data = strip(data, '}');// maybe there is a main closing '}'
 	// happens, when last keyword
-	string key = lowercase(data.substr(0, data.find('=')));
-	data = data.substr(data.find('='), data.length() - 1);
+	string::size_type const idx =
+		data.empty() ? data.find('=') : string::npos;
+
+	if (idx == string::npos)
+		return string();
+
+	data = data.substr(idx, data.length() - 1);
 	data = frontStrip(strip(data));
+
 	if (data.length() < 2 || data[0] != '=') {	// a valid entry?
 		return string();
 	} else {
