@@ -17,6 +17,7 @@
 #endif
 
 #include <utility>
+using std::pair;
 
 #include FORMS_H_LOCATION
 #include "Painter.h"
@@ -112,9 +113,6 @@ public:
 	//Signal3<int, int, unsigned int> trippleclick;
 	///
 	//Signal2<Window, XEvent *> selection;
-private:
-	///
-	void createPixmap(int, int);
 	/// xforms callback
 	static int work_area_handler(FL_OBJECT *, int event,
 				     FL_Coord, FL_Coord,
@@ -125,6 +123,9 @@ private:
 	static void down_cb(FL_OBJECT *, long);
 	/// xforms callback
 	static void scroll_cb(FL_OBJECT *, long);
+private:
+	///
+	void createPixmap(int, int);
 	///
 	FL_OBJECT * backgroundbox;
 	///	

@@ -1,3 +1,19 @@
+2000-02-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/PainterBase.C (ellipse, circle): do not specify the default
+	arguments. 
+
+	* src/LColor.h: add using directive.
+
+	* src/Painter.[Ch]: change return type of methods from Painter& to
+	PainterBase&. Add a using directive.
+
+	* src/WorkArea.C: wrap xforms callbacks in C functions
+	C_WorkArea_xxx. 
+
+	* lib/layouts/foils.layout: font fix and simplifications from Carl
+	Ollivier-Gooch.
+
 2000-02-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* a lot of files: The Painter, LColor and WorkArea from the old

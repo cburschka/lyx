@@ -55,7 +55,7 @@ int PainterBase::width(char c, LyXFont const & f)
 
 
 PainterBase & PainterBase::circle(int x, int y, unsigned int d,
-				  LColor::color col = LColor::foreground)
+				  LColor::color col)
 {
 	return ellipse(x, y, d, d, col);
 }
@@ -63,7 +63,7 @@ PainterBase & PainterBase::circle(int x, int y, unsigned int d,
 
 PainterBase & PainterBase::ellipse(int x, int y,
 				   unsigned int w, unsigned int h,
-				   LColor::color col = LColor::foreground)
+				   LColor::color col)
 {
 	return arc(x, y, w, h, 0, 0, col);
 }

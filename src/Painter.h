@@ -27,6 +27,8 @@
 #include "PainterBase.h"
 #include "LColor.h"
 
+using std::less;
+
 class LyXFont;
 class WorkArea;
 
@@ -44,72 +46,72 @@ public:
     
 	/**@Basic drawing routines */
 	/// Draw a line from point to point
-	Painter & line(int x1, int y1, int x2, int y2, 
+	PainterBase & line(int x1, int y1, int x2, int y2, 
 		       LColor::color = LColor::foreground,
 		       enum line_style = line_solid,
 		       enum line_width = line_thin);
 
 	/// Here xp and yp are arrays of points
-	Painter & lines(int const * xp, int const * yp, int np,
+	PainterBase & lines(int const * xp, int const * yp, int np,
 			LColor::color = LColor::foreground,
 			enum line_style = line_solid,
 			enum line_width = line_thin);
 
 	/// Here xp and yp are arrays of points
-	Painter & fillPolygon(int const * xp, int const * yp, int np,
+	PainterBase & fillPolygon(int const * xp, int const * yp, int np,
 			LColor::color = LColor::foreground);
 
 	/// Draw lines from x1,y1 to x2,y2. They are arrays
-        Painter & segments(int const * x1, int const * y1, 
+        PainterBase & segments(int const * x1, int const * y1, 
 			   int const * x2, int const * y2, int ns,
 			   LColor::color = LColor::foreground,
 			   enum line_style = line_solid,
 			   enum line_width = line_thin);
 
 	/// Draw a rectangle 
-	Painter & rectangle(int x, int y, int w, int h,
+	PainterBase & rectangle(int x, int y, int w, int h,
 			    LColor::color = LColor::foreground,
 			    enum line_style = line_solid,
 			    enum line_width = line_thin);
 
 	/// Draw an arc
-	Painter & arc(int x, int y, unsigned int w, unsigned int h, 
+	PainterBase & arc(int x, int y, unsigned int w, unsigned int h, 
 		      int a1, int a2,
 		      LColor::color = LColor::foreground);
 	
 	/// Draw a pixel
-	Painter & point(int x, int y, LColor::color = LColor::foreground);
+	PainterBase & point(int x, int y, LColor::color = LColor::foreground);
 	
 	/// Fill a rectangle
-	Painter & fillRectangle(int x, int y, int w, int h,
+	PainterBase & fillRectangle(int x, int y, int w, int h,
 				LColor::color = LColor::background);
 	
 	/**@Image stuff */
 	
 	/// For the figure inset
-	Painter & pixmap(int x, int y, Pixmap bitmap);
+	PainterBase & pixmap(int x, int y, Pixmap bitmap);
 
 	/**@String functions */
 	
 	/// Draw a string at position x, y (y is the baseline)
-	Painter & text(int x, int y, string const & str, LyXFont const & f);
+	PainterBase & text(int x, int y, string const & str, LyXFont const & f);
 
 	/** Draw a string at position x, y (y is the baseline)
 	    This is just for fast drawing */
-	Painter & text(int x, int y, char const * str, int l,
+	PainterBase & text(int x, int y, char const * str, int l,
 		       LyXFont const & f);
 
 	/// Draw a char at position x, y (y is the baseline)
-	Painter & text(int x, int y, char c, LyXFont const & f);
+	PainterBase & text(int x, int y, char c, LyXFont const & f);
 	
 protected:
 	/**@Support for X only, by now */
 	friend class WorkArea;
 	///
-	Painter & setDisplay(Display * d) { display = d; return *this; }
+	PainterBase & setDisplay(Display * d) { display = d; return *this; }
 
 	///
-	Painter & setDrawable(Drawable d) { drawable = d; return *this; }
+	PainterBase & setDrawable(Drawable d) { drawable = d; return *this; }
 
 	/// Get foreground color in ordinary GC
 	GC getGCForeground(LColor::color c);

@@ -32,6 +32,33 @@ void waitForX()
 	XSync(fl_get_display(), 0);
 }
 
+extern "C" {
+// Just a bunch of C wrappers around static members of WorkArea
+	void C_WorkArea_up_cb(FL_OBJECT * ob, long buf)
+        {
+		WorkArea::up_cb(ob, buf);
+        }
+
+	void C_WorkArea_down_cb(FL_OBJECT * ob, long buf)
+        {
+		WorkArea::down_cb(ob, buf);
+        }
+
+	void C_WorkArea_scroll_cb(FL_OBJECT * ob, long buf)
+        {
+		WorkArea::scroll_cb(ob, buf);
+        }
+
+	int C_WorkArea_work_area_handler(FL_OBJECT * ob, int event,
+                                           FL_Coord, FL_Coord, 
+                                           int key, void * xev)
+        {
+		return WorkArea::work_area_handler(ob, event,
+						   0, 0, key, xev);
+        }
+}
+
+
 
 WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	: owner(o), workareapixmap(0)
@@ -88,7 +115,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj,NorthEastGravity, NorthEastGravity);
 	obj->u_vdata = this;
-	fl_set_object_callback(obj,up_cb, 0);
+	fl_set_object_callback(obj,C_WorkArea_up_cb, 0);
 	fl_set_pixmapbutton_data(obj, const_cast<char**>(up_xpm));
 
 	// Remove the blue feedback rectangle
@@ -108,7 +135,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
 	obj->u_vdata = this;
-	fl_set_object_callback(obj, scroll_cb, 0);
+	fl_set_object_callback(obj, C_WorkArea_scroll_cb, 0);
 	fl_set_slider_precision(obj, 0);
 	
 	// down - scrollbar button
@@ -126,7 +153,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, SouthEastGravity, SouthEastGravity);
 	obj->u_vdata = this;
-	fl_set_object_callback(obj, down_cb, 0);
+	fl_set_object_callback(obj, C_WorkArea_down_cb, 0);
 	fl_set_pixmapbutton_data(obj, const_cast<char**>(down_xpm));
 
 	fl_set_border_width(-bw);
@@ -154,7 +181,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 				      xpos + bw, ypos + bw,
 				      width - 15 - 2 * bw, // scrollbarwidth
 				      height - 2 * bw, "",
-				      work_area_handler);
+				      C_WorkArea_work_area_handler);
 	obj->wantkey = FL_KEY_TAB;
 	obj->u_vdata = this; /* This is how we pass the WorkArea
 				       to the work_area_handler. */

@@ -60,7 +60,7 @@ Painter::~Painter() {
 
 extern bool Lgb_bug_find_hack;
 
-Painter & Painter::point(int x, int y, LColor::color c)
+PainterBase & Painter::point(int x, int y, LColor::color c)
 {
 	if (lyxerr.debugging()) {
 		if (!Lgb_bug_find_hack)
@@ -74,7 +74,7 @@ Painter & Painter::point(int x, int y, LColor::color c)
 }
 
 
-Painter & Painter::line(int x1, int y1, int x2, int y2,
+PainterBase & Painter::line(int x1, int y1, int x2, int y2,
 			LColor::color col,
 			enum line_style ls,
 			enum line_width lw)
@@ -92,7 +92,7 @@ Painter & Painter::line(int x1, int y1, int x2, int y2,
 }
 
 
-Painter & Painter::lines(int const * xp, int const * yp, int np,
+PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 			LColor::color col,
 			enum line_style ls,
 			enum line_width lw)
@@ -124,7 +124,7 @@ Painter & Painter::lines(int const * xp, int const * yp, int np,
 }      
 
 
-Painter & Painter::rectangle(int x, int y, int w, int h,
+PainterBase & Painter::rectangle(int x, int y, int w, int h,
 			LColor::color col,
 			enum line_style ls,
 			enum line_width lw)
@@ -142,7 +142,7 @@ Painter & Painter::rectangle(int x, int y, int w, int h,
 }
 
 
-Painter & Painter::fillRectangle(int x, int y, int w, int h,
+PainterBase & Painter::fillRectangle(int x, int y, int w, int h,
 				 LColor::color col)
 {
 	if (lyxerr.debugging()) {
@@ -157,7 +157,7 @@ Painter & Painter::fillRectangle(int x, int y, int w, int h,
 }
 
 
-Painter & Painter::fillPolygon(int const * xp, int const * yp, int np,
+PainterBase & Painter::fillPolygon(int const * xp, int const * yp, int np,
 			       LColor::color col)
 {
 	if (lyxerr.debugging()) {
@@ -186,7 +186,7 @@ Painter & Painter::fillPolygon(int const * xp, int const * yp, int np,
 }      
 
 
-Painter & Painter::arc(int x, int y,
+PainterBase & Painter::arc(int x, int y,
 		  unsigned int w, unsigned int h,
 		  int a1, int a2, LColor::color col)
 {
@@ -204,7 +204,7 @@ Painter & Painter::arc(int x, int y,
 
 
 /// Draw lines from x1,y1 to x2,y2. They are arrays
-Painter & Painter::segments(int const * x1, int const * y1, 
+PainterBase & Painter::segments(int const * x1, int const * y1, 
 			    int const * x2, int const * y2, int ns,
 			    LColor::color col,
 			    enum line_style ls, enum line_width lw)
@@ -236,7 +236,7 @@ Painter & Painter::segments(int const * x1, int const * y1,
 }
 
 
-Painter & Painter::pixmap(int x, int y, Pixmap bitmap)
+PainterBase & Painter::pixmap(int x, int y, Pixmap bitmap)
 {
 	if (lyxerr.debugging()) {
 		if (!Lgb_bug_find_hack)
@@ -257,7 +257,7 @@ Painter & Painter::pixmap(int x, int y, Pixmap bitmap)
 }
 
 
-Painter & Painter::text(int x, int y, string const & s, LyXFont const & f)
+PainterBase & Painter::text(int x, int y, string const & s, LyXFont const & f)
 {
 	if (lyxerr.debugging()) {
 		if (!Lgb_bug_find_hack)
@@ -274,7 +274,7 @@ Painter & Painter::text(int x, int y, string const & s, LyXFont const & f)
 }
 
 
-Painter & Painter::text(int x, int y, char const * s, int ls,
+PainterBase & Painter::text(int x, int y, char const * s, int ls,
 			LyXFont const & f)
 {
 	if (lyxerr.debugging()) {
@@ -292,7 +292,7 @@ Painter & Painter::text(int x, int y, char const * s, int ls,
 }
 
 
-Painter & Painter::text(int x, int y, char c, LyXFont const & f)
+PainterBase & Painter::text(int x, int y, char c, LyXFont const & f)
 {
 	if (lyxerr.debugging()) {
 		if (!Lgb_bug_find_hack)
