@@ -68,7 +68,7 @@ sub parse_cols {
     while (@group) {
 
 	$tok = shift(@group);
-	# Each $tok will consist of /^[clr|]*[p*@]?$/
+	# Each $tok will consist of /^[clr|]*[mp*@]?$/
 	# (Except first may have | and/or @ expressions before it)
 	# p*@ will end the $tok since after it comes a group in braces
 	# @ will be a TT::Token, everything else will be in TT::Text
@@ -86,13 +86,14 @@ sub parse_cols {
 	@new_cols = ($description =~ /[clr]\|*/g);
 	push @cols, @new_cols;
 
-	# parse a p or * or @ if necessary
+	# parse a 'p', an 'm', a '*' or a '@' as necessary
 	# use exact_print in case there's weird stuff in the @ descriptions
 	$description = substr($description,-1);
-	if ($description eq 'p') {
+	# The m and p descriptors have identical form.
+	if ($description eq 'p' || $description eq 'm') {
 	    $tok = shift(@group);
-	    my $pdes = $description . $tok->exact_print; # "p{foo}"
-	    push @cols, $pdes;
+	    my $des = $description . $tok->exact_print; # 'p{foo}' or 'm{foo}'
+	    push @cols, $des;
 
 	} elsif ($description eq '@') {
 	    $tok = shift(@group);
@@ -376,25 +377,25 @@ package RelyxTable::Column;
 	$col->{"pwidth"} = "";
 	$col->{"special"} = "";
 
-	# Any special (@) column should be handled differently
-	if ($description =~ /\@/) {
-	   # Just put the whole description in "special" field --- this
-	   # corresponds the the "extra" field in LyX table popup
-	   # Note that LyX ignores alignment, r/l lines for a special column
-	   $col->{"special"} = $description;
-	   print "\n'$description' column won't display WYSIWYG in LyX\n"
-	                                                    if $debug_on;
+	# LyX does not know about '@' or 'm' column descriptors so, to
+	# ensure that the LaTeX -> LyX -> LaTeX cycle is invariant,
+	# these descriptors are placed in the 'special' field.
+	if ($description =~ /\@/ || $description =~ /^m/ ) {
+	    $col->{"special"} = $description;
+	    print "\n'$description' column won't display WYSIWYG in LyX\n"
+	                                                     if $debug_on;
+	}
 
-	# It's not a special @ column
-	} else {
-
+	# '@' columns really can't be displayed WYSIWYG in LyX,
+	# but we can get visual feedback on 'm' columns.
+	if (!($description =~ /\@/)) {
 	    # left line?
 	    $description =~ s/^\|*//;
 	    $col->{"left_line"} = length($&);
 
 	    # main column description
-	    $description =~ s/^[clrp]//;
-	    if ($& eq "p") {
+	    $description =~ s/^[clrpm]//;
+	    if ($& eq 'p' || $& eq 'm') {
 		$description =~ s/^\{(.+)\}//; # eat the width
 		$col->{"pwidth"} = $1; # width without braces
 		# note: alignment is not applicable for 'p' columns

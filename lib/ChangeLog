@@ -5,6 +5,8 @@
 	* reLyX/BasicLyX.pm, reLyX/CleanTeX.pm, reLyX/Verbatim.pm: pass
 	$...$ and $$...$$ through reLyX unchanged.
 
+	* reLyX/RelyxTable.pm: provide support for 'm' column descriptors.
+
 2003-02-04  Joao Luis Meloni Assirati  <assirati@fma.if.usp.br>
 
 	* images/math/rbracket.xpm: new file.
