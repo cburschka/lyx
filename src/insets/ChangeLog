@@ -1,3 +1,8 @@
+2002-01-30  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* figinset.C (runqueue): open translation file in binary mode (for
+	cygwin). 
+
 2002-01-27  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphic.[Ch]: mostly newritten to support graphicx with

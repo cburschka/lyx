@@ -517,7 +517,7 @@ void runqueue()
 
 			// create translation file
 			ofstream ofs;
-			ofs.open(make_tmp(getpid()).c_str());
+			ofs.open(make_tmp(getpid()).c_str(), ios::binary);
 			ofs << "gsave clippath pathbbox grestore\n"
 			    << "4 dict begin\n"
 			    << "/ury exch def /urx exch def /lly exch def "

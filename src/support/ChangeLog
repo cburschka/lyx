@@ -1,3 +1,7 @@
+2002-01-30  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* copy.C (copy): open file in binary mode (for cygwin)
+
 2002-01-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxsum.C: remove #warnings and replaced them with runtime debug
