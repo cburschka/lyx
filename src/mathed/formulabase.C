@@ -234,7 +234,7 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 {
 	if (!mathcursor) {
-		lyxerr << "toggleInsetCursor impossible" << endl;
+		lyxerr[Debug::MATHED] << "toggleInsetCursor impossible" << endl;
 		return;
 	}
 	//lyxerr << "toggleInsetCursor: " << isCursorVisible() << endl;
@@ -356,7 +356,7 @@ Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 	//lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
 
 	if (!mathcursor || mathcursor->formula() != this) {
-		lyxerr << "re-create cursor" << endl;
+		lyxerr[Debug::MATHED] << "re-create cursor" << endl;
 		releaseMathCursor(bv);
 		mathcursor = new MathCursor(this, cmd.x == 0);
 		metrics(bv);
