@@ -1,3 +1,8 @@
+2004-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* globbing.C (FileFilterList): make sure that "All files (*)" is
+	always part of the filters list
+
 2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* tostr.C, lstrings.C, globbing.C, filetools.C: change
