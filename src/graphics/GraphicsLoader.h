@@ -30,7 +30,7 @@
 #include <boost/signals/signal0.hpp>
 #include <boost/scoped_ptr.hpp>
 
-class Inset;
+class InsetOld;
 
 namespace lyx {
 namespace graphics {

@@ -528,10 +528,10 @@ void MathCursor::macroModeClose()
 	if (s == "\\")
 		return;
 
-	string name = s.substr(1);
+	string const name = s.substr(1);
 
 	// prevent entering of recursive macros
-	if (formula()->lyxCode() == Inset::MATHMACRO_CODE
+	if (formula()->lyxCode() == InsetOld::MATHMACRO_CODE
 			&& formula()->getInsetName() == name)
 		lyxerr << "can't enter recursive macro\n";
 

@@ -64,7 +64,7 @@ namespace {
 
 char minibuffer_char;
 LyXFont minibuffer_font;
-Inset * minibuffer_inset;
+InsetOld * minibuffer_inset;
 
 } // namespace anon
 
@@ -93,7 +93,7 @@ Paragraph::Paragraph(Paragraph const & lp)
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
 		// currently we hold Inset*, not InsetBase*
-		it->inset = static_cast<Inset*>(it->inset->clone().release());
+		it->inset = static_cast<InsetOld*>(it->inset->clone().release());
 		// tell the new inset who is the boss now
 		it->inset->parOwner(this);
 	}
@@ -120,7 +120,7 @@ void Paragraph::operator=(Paragraph const & lp)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		it->inset = static_cast<Inset*>(it->inset->clone().release());
+		it->inset = static_cast<InsetOld*>(it->inset->clone().release());
 		// tell the new inset who is the boss now
 		it->inset->parOwner(this);
 	}
@@ -188,7 +188,7 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 		switch (c) {
 		case META_INSET:
 		{
-			Inset const * inset = getInset(i);
+			InsetOld const * inset = getInset(i);
 			if (inset)
 				if (inset->directWrite()) {
 					// international char, let it write
@@ -259,7 +259,7 @@ void Paragraph::copyIntoMinibuffer(Buffer const & buffer, pos_type pos) const
 	minibuffer_inset = 0;
 	if (minibuffer_char == Paragraph::META_INSET) {
 		if (getInset(pos)) {
-			minibuffer_inset = static_cast<Inset *>(getInset(pos)->clone().release());
+			minibuffer_inset = static_cast<InsetOld *>(getInset(pos)->clone().release());
 		} else {
 			minibuffer_inset = 0;
 			minibuffer_char = ' ';
@@ -351,20 +351,20 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 }
 
 
-void Paragraph::insertInset(pos_type pos, Inset * inset)
+void Paragraph::insertInset(pos_type pos, InsetOld * inset)
 {
 	LyXFont const f(LyXFont::ALL_INHERIT);
 	insertInset(pos, inset, f);
 }
 
 
-void Paragraph::insertInset(pos_type pos, Inset * inset, LyXFont const & font, Change change)
+void Paragraph::insertInset(pos_type pos, InsetOld * inset, LyXFont const & font, Change change)
 {
 	pimpl_->insertInset(pos, inset, font, change);
 }
 
 
-bool Paragraph::insetAllowed(Inset::Code code)
+bool Paragraph::insetAllowed(InsetOld::Code code)
 {
 	//lyxerr << "Paragraph::InsertInsetAllowed" << endl;
 	if (pimpl_->inset_owner)
@@ -373,14 +373,14 @@ bool Paragraph::insetAllowed(Inset::Code code)
 }
 
 
-Inset * Paragraph::getInset(pos_type pos)
+InsetOld * Paragraph::getInset(pos_type pos)
 {
 	Assert(pos < size());
 	return insetlist.get(pos);
 }
 
 
-Inset const * Paragraph::getInset(pos_type pos) const
+InsetOld const * Paragraph::getInset(pos_type pos) const
 {
 	Assert(pos < size());
 	return insetlist.get(pos);
@@ -735,7 +735,7 @@ int Paragraph::beginningOfBody() const
 
 
 // returns -1 if inset not found
-int Paragraph::getPositionOfInset(Inset const * inset) const
+int Paragraph::getPositionOfInset(InsetOld const * inset) const
 {
 	// Find the entry.
 	InsetList::const_iterator it = insetlist.begin();
@@ -750,7 +750,7 @@ int Paragraph::getPositionOfInset(Inset const * inset) const
 InsetBibitem * Paragraph::bibitem() const
 {
 	InsetList::const_iterator it = insetlist.begin();
-	if (it != insetlist.end() && it->inset->lyxCode() == Inset::BIBTEX_CODE)
+	if (it != insetlist.end() && it->inset->lyxCode() == InsetOld::BIBTEX_CODE)
 		return static_cast<InsetBibitem *>(it->inset);
 	return 0;
 }
@@ -1080,7 +1080,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 bool Paragraph::isHfill(pos_type pos) const
 {
 	return IsInsetChar(getChar(pos))
-	       && getInset(pos)->lyxCode() == Inset::HFILL_CODE;
+	       && getInset(pos)->lyxCode() == InsetOld::HFILL_CODE;
 }
 
 
@@ -1093,7 +1093,7 @@ bool Paragraph::isInset(pos_type pos) const
 bool Paragraph::isNewline(pos_type pos) const
 {
 	return IsInsetChar(getChar(pos))
-	       && getInset(pos)->lyxCode() == Inset::NEWLINE_CODE;
+	       && getInset(pos)->lyxCode() == InsetOld::NEWLINE_CODE;
 }
 
 
@@ -1158,7 +1158,7 @@ bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 	return lyxrc.rtl_support
 		&& getParLanguage(bparams)->RightToLeft()
 		&& !(inInset() && inInset()->owner() &&
-		     inInset()->owner()->lyxCode() == Inset::ERT_CODE);
+		     inInset()->owner()->lyxCode() == InsetOld::ERT_CODE);
 }
 
 
@@ -1204,7 +1204,7 @@ string const Paragraph::asString(Buffer const * buffer, bool label) const
 		if (IsPrintable(c))
 			s += c;
 		else if (c == META_INSET &&
-			 getInset(i)->lyxCode() == Inset::MATH_CODE) {
+			 getInset(i)->lyxCode() == InsetOld::MATH_CODE) {
 			ostringstream ost;
 			getInset(i)->ascii(buffer, ost);
 			s += subst(STRCONV(ost.str()),'\n',' ');
@@ -1371,8 +1371,8 @@ void Paragraph::id(int i)
 LyXLayout_ptr const & Paragraph::layout() const
 {
 /*
-	Inset * inset = inInset();
-	if (inset && inset->lyxCode() == Inset::ENVIRONMENT_CODE)
+	InsetOld * inset = inInset();
+	if (inset && inset->lyxCode() == InsetOld::ENVIRONMENT_CODE)
 		return static_cast<InsetEnvironment*>(inset)->layout();
 */
 	return layout_;
@@ -1420,9 +1420,9 @@ bool Paragraph::isFreeSpacing() const
 		return true;
 
 	// for now we just need this, later should we need this in some
-	// other way we can always add a function to Inset::() too.
+	// other way we can always add a function to InsetOld::() too.
 	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
-		return (pimpl_->inset_owner->owner()->lyxCode() == Inset::ERT_CODE);
+		return (pimpl_->inset_owner->owner()->lyxCode() == InsetOld::ERT_CODE);
 	return false;
 }
 
@@ -1432,7 +1432,7 @@ bool Paragraph::allowEmpty() const
 	if (layout()->keepempty)
 		return true;
 	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
-		return (pimpl_->inset_owner->owner()->lyxCode() == Inset::ERT_CODE);
+		return (pimpl_->inset_owner->owner()->lyxCode() == InsetOld::ERT_CODE);
 	return false;
 }
 

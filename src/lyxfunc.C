@@ -335,8 +335,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_COPY:
 		if (tli) {
 			UpdatableInset * in = tli;
-			if (in->lyxCode() != Inset::TABULAR_CODE) {
-				in = tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE);
+			if (in->lyxCode() != InsetOld::TABULAR_CODE) {
+				in = tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE);
 			}
 			if (in && static_cast<InsetTabular*>(in)->hasSelection()) {
 				disable = false;
@@ -354,8 +354,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	case LFUN_LAYOUT_TABULAR:
 		disable = !tli
-			|| (tli->lyxCode() != Inset::TABULAR_CODE
-			    && !tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE));
+			|| (tli->lyxCode() != InsetOld::TABULAR_CODE
+			    && !tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE));
 		break;
 
 	case LFUN_DEPTH_MIN:
@@ -368,7 +368,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH: {
-		Inset * inset = TEXT(false)->cursor.par()->inInset();
+		InsetOld * inset = TEXT(false)->cursor.par()->inInset();
 		disable = inset && inset->forceDefaultParagraphs(inset);
 		break;
 	}
@@ -422,14 +422,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		if (tli) {
 			FuncStatus ret;
 			//ret.disabled(true);
-			if (tli->lyxCode() == Inset::TABULAR_CODE) {
+			if (tli->lyxCode() == InsetOld::TABULAR_CODE) {
 				ret = static_cast<InsetTabular *>(tli)
 					->getStatus(ev.argument);
 				flag |= ret;
 				disable = false;
-			} else if (tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
+			} else if (tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE)) {
 				ret = static_cast<InsetTabular *>
-					(tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE))
+					(tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE))
 					->getStatus(ev.argument);
 				flag |= ret;
 				disable = false;
@@ -495,27 +495,27 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 		// jump back to owner if an InsetText, so
 		// we get back to the InsetTabular or whatever
-		if (inset->lyxCode() == Inset::TEXT_CODE)
+		if (inset->lyxCode() == InsetOld::TEXT_CODE)
 			inset = inset->owner();
 
-		Inset::Code code = inset->lyxCode();
+		InsetOld::Code code = inset->lyxCode();
 		switch (code) {
-			case Inset::TABULAR_CODE:
+			case InsetOld::TABULAR_CODE:
 				disable = ev.argument != "tabular";
 				break;
-			case Inset::ERT_CODE:
+			case InsetOld::ERT_CODE:
 				disable = ev.argument != "ert";
 				break;
-			case Inset::FLOAT_CODE:
+			case InsetOld::FLOAT_CODE:
 				disable = ev.argument != "float";
 				break;
-			case Inset::MINIPAGE_CODE:
+			case InsetOld::MINIPAGE_CODE:
 				disable = ev.argument != "minipage";
 				break;
-			case Inset::WRAP_CODE:
+			case InsetOld::WRAP_CODE:
 				disable = ev.argument != "wrap";
 				break;
-			case Inset::NOTE_CODE:
+			case InsetOld::NOTE_CODE:
 				disable = ev.argument != "note";
 				break;
 			default:
@@ -558,7 +558,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 				lyxrc.print_command == "none";
 		} else if (name == "character") {
 			UpdatableInset * tli = view()->theLockingInset();
-			disable = tli && tli->lyxCode() == Inset::ERT_CODE;
+			disable = tli && tli->lyxCode() == InsetOld::ERT_CODE;
 		} else if (name == "vclog") {
 			disable = !buf->lyxvc.inUse();
 		} else if (name == "latexlog") {
@@ -572,101 +572,101 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	}
 
 	// the functions which insert insets
-	Inset::Code code = Inset::NO_CODE;
+	InsetOld::Code code = InsetOld::NO_CODE;
 	switch (ev.action) {
 	case LFUN_DIALOG_SHOW_NEW_INSET:
 		if (ev.argument == "bibitem")
-			code = Inset::BIBITEM_CODE;
+			code = InsetOld::BIBITEM_CODE;
 		else if (ev.argument == "bibtex")
-			code = Inset::BIBTEX_CODE;
+			code = InsetOld::BIBTEX_CODE;
 		else if (ev.argument == "citation")
-			code = Inset::CITE_CODE;
+			code = InsetOld::CITE_CODE;
 		else if (ev.argument == "ert")
-			code = Inset::ERT_CODE;
+			code = InsetOld::ERT_CODE;
 		else if (ev.argument == "external")
-			code = Inset::EXTERNAL_CODE;
+			code = InsetOld::EXTERNAL_CODE;
 		else if (ev.argument == "float")
-			code = Inset::FLOAT_CODE;
+			code = InsetOld::FLOAT_CODE;
 		else if (ev.argument == "graphics")
-			code = Inset::GRAPHICS_CODE;
+			code = InsetOld::GRAPHICS_CODE;
 		else if (ev.argument == "include")
-			code = Inset::INCLUDE_CODE;
+			code = InsetOld::INCLUDE_CODE;
 		else if (ev.argument == "index")
-			code = Inset::INDEX_CODE;
+			code = InsetOld::INDEX_CODE;
 		else if (ev.argument == "label")
-			code = Inset::LABEL_CODE;
+			code = InsetOld::LABEL_CODE;
 		else if (ev.argument == "minipage")
-			code = Inset::MINIPAGE_CODE;
+			code = InsetOld::MINIPAGE_CODE;
 		else if (ev.argument == "ref")
-			code = Inset::REF_CODE;
+			code = InsetOld::REF_CODE;
 		else if (ev.argument == "toc")
-			code = Inset::TOC_CODE;
+			code = InsetOld::TOC_CODE;
 		else if (ev.argument == "url")
-			code = Inset::URL_CODE;
+			code = InsetOld::URL_CODE;
 		else if (ev.argument == "wrap")
-			code = Inset::WRAP_CODE;
+			code = InsetOld::WRAP_CODE;
 		break;
 
 	case LFUN_INSET_ERT:
-		code = Inset::ERT_CODE;
+		code = InsetOld::ERT_CODE;
 		break;
 	case LFUN_INSET_FOOTNOTE:
-		code = Inset::FOOT_CODE;
+		code = InsetOld::FOOT_CODE;
 		break;
 	case LFUN_TABULAR_INSERT:
-		code = Inset::TABULAR_CODE;
+		code = InsetOld::TABULAR_CODE;
 		break;
 	case LFUN_INSET_MARGINAL:
-		code = Inset::MARGIN_CODE;
+		code = InsetOld::MARGIN_CODE;
 		break;
 	case LFUN_INSET_MINIPAGE:
-		code = Inset::MINIPAGE_CODE;
+		code = InsetOld::MINIPAGE_CODE;
 		break;
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_WIDE_FLOAT:
-		code = Inset::FLOAT_CODE;
+		code = InsetOld::FLOAT_CODE;
 		break;
 	case LFUN_INSET_WRAP:
-		code = Inset::WRAP_CODE;
+		code = InsetOld::WRAP_CODE;
 		break;
 	case LFUN_FLOAT_LIST:
-		code = Inset::FLOAT_LIST_CODE;
+		code = InsetOld::FLOAT_LIST_CODE;
 		break;
 #if 0
 	case LFUN_INSET_LIST:
-		code = Inset::LIST_CODE;
+		code = InsetOld::LIST_CODE;
 		break;
 	case LFUN_INSET_THEOREM:
-		code = Inset::THEOREM_CODE;
+		code = InsetOld::THEOREM_CODE;
 		break;
 #endif
 	case LFUN_INSET_CAPTION:
-		code = Inset::CAPTION_CODE;
+		code = InsetOld::CAPTION_CODE;
 		break;
 	case LFUN_INSERT_NOTE:
-		code = Inset::NOTE_CODE;
+		code = InsetOld::NOTE_CODE;
 		break;
 	case LFUN_INSERT_LABEL:
-		code = Inset::LABEL_CODE;
+		code = InsetOld::LABEL_CODE;
 		break;
 	case LFUN_INSET_OPTARG:
-		code = Inset::OPTARG_CODE;
+		code = InsetOld::OPTARG_CODE;
 		break;
 	case LFUN_ENVIRONMENT_INSERT:
-		code = Inset::MINIPAGE_CODE;
+		code = InsetOld::MINIPAGE_CODE;
 		break;
 	case LFUN_INDEX_INSERT:
-		code = Inset::INDEX_CODE;
+		code = InsetOld::INDEX_CODE;
 		break;
 	case LFUN_INDEX_PRINT:
-		code = Inset::INDEX_PRINT_CODE;
+		code = InsetOld::INDEX_PRINT_CODE;
 		break;
 	case LFUN_TOC_INSERT:
-		code = Inset::TOC_CODE;
+		code = InsetOld::TOC_CODE;
 		break;
 	case LFUN_HTMLURL:
 	case LFUN_URL:
-		code = Inset::URL_CODE;
+		code = InsetOld::URL_CODE;
 		break;
 	case LFUN_QUOTE:
 		// always allow this, since we will inset a raw quote
@@ -678,17 +678,17 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_MENU_SEPARATOR:
 	case LFUN_LDOTS:
 	case LFUN_END_OF_SENTENCE:
-		code = Inset::SPECIALCHAR_CODE;
+		code = InsetOld::SPECIALCHAR_CODE;
 		break;
 	case LFUN_SPACE_INSERT:
 		// slight hack: we know this is allowed in math mode
 		if (!mathcursor)
-			code = Inset::SPACE_CODE;
+			code = InsetOld::SPACE_CODE;
 		break;
 	default:
 		break;
 	}
-	if (code != Inset::NO_CODE && tli && !tli->insetAllowed(code))
+	if (code != InsetOld::NO_CODE && tli && !tli->insetAllowed(code))
 		disable = true;
 
 	if (disable)
@@ -822,7 +822,9 @@ namespace {
 
 		return buf.isClean();
 	}
+
 } //namespace anon
+
 
 void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 {
@@ -859,7 +861,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		view()->hideCursor();
 
 	if (view()->available() && view()->theLockingInset()) {
-		Inset::RESULT result;
+		InsetOld::RESULT result;
 		if ((action > 1) || ((action == LFUN_UNKNOWN_ACTION) &&
 				     (!keyseq.deleted())))
 		{
@@ -1299,14 +1301,14 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_LAYOUT_TABULAR:
 	    if (view()->theLockingInset()) {
-		if (view()->theLockingInset()->lyxCode()==Inset::TABULAR_CODE) {
+		if (view()->theLockingInset()->lyxCode()== InsetOld::TABULAR_CODE) {
 		    InsetTabular * inset = static_cast<InsetTabular *>
 			(view()->theLockingInset());
 		    inset->openLayoutDialog(view());
 		} else if (view()->theLockingInset()->
-			   getFirstLockingInsetOfType(Inset::TABULAR_CODE)!=0) {
+			   getFirstLockingInsetOfType(InsetOld::TABULAR_CODE)!=0) {
 		    InsetTabular * inset = static_cast<InsetTabular *>(
-			view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE));
+			view()->theLockingInset()->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE));
 		    inset->openLayoutDialog(view());
 		}
 	    }

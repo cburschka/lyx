@@ -13,7 +13,7 @@
 #include "lyxfont.h" // Just for LyXFont::FONT_SIZE
 #include "InsetList.h"
 
-#include "insets/inset.h" // Just for Inset::Code
+#include "insets/inset.h" // Just for InsetOld::Code
 
 #include "support/types.h"
 #include "changes.h"
@@ -242,18 +242,18 @@ public:
 	///
 	bool checkInsertChar(LyXFont &);
 	///
-	void insertInset(lyx::pos_type pos, Inset * inset);
+	void insertInset(lyx::pos_type pos, InsetOld * inset);
 	///
-	void insertInset(lyx::pos_type pos, Inset * inset, LyXFont const &, Change change = Change(Change::INSERTED));
+	void insertInset(lyx::pos_type pos, InsetOld * inset, LyXFont const &, Change change = Change(Change::INSERTED));
 	///
-	bool insetAllowed(Inset::Code code);
+	bool insetAllowed(InsetOld::Code code);
 	///
-	Inset * getInset(lyx::pos_type pos);
+	InsetOld * getInset(lyx::pos_type pos);
 	///
-	Inset const * getInset(lyx::pos_type pos) const;
+	InsetOld const * getInset(lyx::pos_type pos) const;
 	/** important for cut and paste
 	    Temporary change from BufferParams to Buffer. Will revert when we
-	    get rid of the argument to Inset::clone(Buffer const &) */
+	    get rid of the argument to InsetOld::clone(Buffer const &) */
 	void copyIntoMinibuffer(Buffer const &, lyx::pos_type pos) const;
 	///
 	void cutIntoMinibuffer(BufferParams const &, lyx::pos_type pos);
@@ -278,7 +278,7 @@ public:
 	bool isWord(lyx::pos_type pos) const;
 
 	/// returns -1 if inset not found
-	int getPositionOfInset(Inset const * inset) const;
+	int getPositionOfInset(InsetOld const * inset) const;
 
 	///
 	int stripLeadingSpaces();

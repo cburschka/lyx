@@ -38,7 +38,7 @@ public:
 	///
 	bool display() const { return true; }
 	///
-	Inset::Code lyxCode() const;
+	InsetOld::Code lyxCode() const;
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///

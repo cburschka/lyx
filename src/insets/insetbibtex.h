@@ -37,7 +37,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const { return Inset::BIBTEX_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::BIBTEX_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;

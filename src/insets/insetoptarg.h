@@ -31,7 +31,7 @@ public:
 	/// this inset is editable
 	EDITABLE editable() const { return IS_EDITABLE; }
 	/// code of the inset
-	Inset::Code lyxCode() const { return Inset::OPTARG_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::OPTARG_CODE; }
 	/// return an message upon editing
 	string const editMessage() const;
 

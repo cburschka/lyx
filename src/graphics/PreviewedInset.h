@@ -20,7 +20,7 @@
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/connection.hpp>
 
-class Inset;
+class InsetOld;
 class BufferView;
 
 namespace lyx {
@@ -35,7 +35,7 @@ public:
 	static bool activated();
 
 	///
-	PreviewedInset(Inset & inset) : inset_(inset), pimage_(0) {}
+	PreviewedInset(InsetOld & inset) : inset_(inset), pimage_(0) {}
 	///
 	virtual ~PreviewedInset() {}
 
@@ -62,7 +62,7 @@ public:
 
 protected:
 	/// Allow the daughter classes to cast up to the parent inset.
-	Inset * inset() const { return &inset_; }
+	InsetOld * inset() const { return &inset_; }
 	///
 	BufferView * view() const;
 
@@ -76,7 +76,7 @@ private:
 	virtual string const latexString() const = 0;
 
 	///
-	Inset & inset_;
+	InsetOld & inset_;
 	///
 	string snippet_;
 

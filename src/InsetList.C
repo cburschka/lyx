@@ -75,7 +75,7 @@ InsetList::insetIterator(pos_type pos)
 }
 
 
-void InsetList::insert(Inset * inset, lyx::pos_type pos)
+void InsetList::insert(InsetOld * inset, lyx::pos_type pos)
 {
 	InsetTable search_elem(pos, 0);
 	List::iterator end = list.end();
@@ -106,7 +106,7 @@ void InsetList::erase(pos_type pos)
 }
 
 
-Inset * InsetList::release(pos_type pos)
+InsetOld * InsetList::release(pos_type pos)
 {
 	InsetTable search_elem(pos, 0);
 	List::iterator end = list.end();
@@ -115,7 +115,7 @@ Inset * InsetList::release(pos_type pos)
 			    end,
 			    search_elem, MatchIt());
 	if (it != end && it->pos == pos) {
-		Inset * tmp = it->inset;
+		InsetOld * tmp = it->inset;
 		it->inset = 0;
 		return tmp;
 	}
@@ -123,7 +123,7 @@ Inset * InsetList::release(pos_type pos)
 }
 
 
-Inset * InsetList::get(pos_type pos) const
+InsetOld * InsetList::get(pos_type pos) const
 {
 	InsetTable search_elem(pos, 0);
 	List::const_iterator end = list.end();

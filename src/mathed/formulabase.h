@@ -44,7 +44,7 @@ public:
 	// user-accessible way to override "false positives"
 	virtual void validate(LaTeXFeatures &) const;
 	///
-	virtual Inset::Code lyxCode() const;
+	virtual InsetOld::Code lyxCode() const;
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///

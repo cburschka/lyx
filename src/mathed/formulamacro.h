@@ -54,7 +54,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	Inset::Code lyxCode() const;
+	InsetOld::Code lyxCode() const;
 	///
 	MathAtom const & par() const;
 	///

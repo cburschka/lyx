@@ -33,9 +33,9 @@
 #include "debug.h"
 
 // Initialization of the counter for the inset id's,
-unsigned int Inset::inset_id = 0;
+unsigned int InsetOld::inset_id = 0;
 
-Inset::Inset()
+InsetOld::InsetOld()
 	: InsetBase(),
 	top_x(0), top_baseline(0), scx(0),
 	id_(inset_id++), owner_(0), par_owner_(0),
@@ -43,7 +43,7 @@ Inset::Inset()
 {}
 
 
-Inset::Inset(Inset const & in)
+InsetOld::InsetOld(InsetOld const & in)
 	: InsetBase(),
 	top_x(0), top_baseline(0), scx(0), id_(in.id_), owner_(0),
 	name_(in.name_), background_color_(in.background_color_)
@@ -52,26 +52,26 @@ Inset::Inset(Inset const & in)
 }
 
 
-bool Inset::directWrite() const
+bool InsetOld::directWrite() const
 {
 	return false;
 }
 
 
-Inset::EDITABLE Inset::editable() const
+InsetOld::EDITABLE InsetOld::editable() const
 {
 	return NOT_EDITABLE;
 }
 
 
-bool Inset::autoDelete() const
+bool InsetOld::autoDelete() const
 {
 	return false;
 }
 
 
 #if 0
-LyXFont const Inset::convertFont(LyXFont const & font) const
+LyXFont const InsetOld::convertFont(LyXFont const & font) const
 {
 #if 1
 	return font;
@@ -82,13 +82,13 @@ LyXFont const Inset::convertFont(LyXFont const & font) const
 #endif
 
 
-string const Inset::editMessage() const
+string const InsetOld::editMessage() const
 {
 	return _("Opened inset");
 }
 
 
-LyXText * Inset::getLyXText(BufferView const * bv, bool /*recursive*/) const
+LyXText * InsetOld::getLyXText(BufferView const * bv, bool /*recursive*/) const
 {
 	if (owner())
 		return owner()->getLyXText(bv, false);
@@ -97,13 +97,13 @@ LyXText * Inset::getLyXText(BufferView const * bv, bool /*recursive*/) const
 }
 
 
-void Inset::setBackgroundColor(LColor::color color)
+void InsetOld::setBackgroundColor(LColor::color color)
 {
 	background_color_ = color;
 }
 
 
-LColor::color Inset::backgroundColor() const
+LColor::color InsetOld::backgroundColor() const
 {
 	if (background_color_ == LColor::inherit) {
 		if (owner())
@@ -115,28 +115,28 @@ LColor::color Inset::backgroundColor() const
 }
 
 
-int Inset::id() const
+int InsetOld::id() const
 {
 	return id_;
 }
 
-void Inset::id(int id_arg)
+void InsetOld::id(int id_arg)
 {
 	id_ = id_arg;
 }
 
-void Inset::setFont(BufferView *, LyXFont const &, bool, bool)
+void InsetOld::setFont(BufferView *, LyXFont const &, bool, bool)
 {}
 
 
-bool Inset::forceDefaultParagraphs(Inset const * inset) const
+bool InsetOld::forceDefaultParagraphs(InsetOld const * inset) const
 {
 	if (owner())
 		return owner()->forceDefaultParagraphs(inset);
 	return false;
 }
 
-int Inset::latexTextWidth(BufferView * bv) const
+int InsetOld::latexTextWidth(BufferView * bv) const
 {
 	if (owner())
 		return (owner()->latexTextWidth(bv));
@@ -144,19 +144,19 @@ int Inset::latexTextWidth(BufferView * bv) const
 }
 
 
-int Inset::ascent() const
+int InsetOld::ascent() const
 {
 	return dim_.asc;
 }
 
 
-int Inset::descent() const
+int InsetOld::descent() const
 {
 	return dim_.des;
 }
 
 
-int Inset::width() const
+int InsetOld::width() const
 {
 	return dim_.wid;
 }

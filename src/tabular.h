@@ -225,10 +225,10 @@ public:
 	void setLeftLine(int cell, bool line, bool onlycolumn = false);
 	///
 	void setRightLine(int cell, bool line, bool onlycolumn = false);
-	/// 
+	///
 	void setAlignment(int cell, LyXAlignment align,
 			  bool onlycolumn = false);
-	/// 
+	///
 	void setVAlignment(int cell, VAlignment align,
 			   bool onlycolumn = false);
 	///
@@ -365,7 +365,7 @@ public:
 	InsetText & getCellInset(int row, int column) const;
 	/// Search for \param inset in the tabular, with the
 	/// additional hint that it could be at \param maybe_cell
-	int getCellFromInset(Inset const * inset, int maybe_cell = -1) const;
+	int getCellFromInset(InsetOld const * inset, int maybe_cell = -1) const;
 	///
 	int rows() const { return rows_; }
 	///

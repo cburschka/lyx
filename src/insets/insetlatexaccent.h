@@ -24,7 +24,7 @@
   it also can handle other special characters (e.g. Hstroke)
   Initiated by Ivan Schreter, later modified by Lgb.
   */
-class InsetLatexAccent : public Inset {
+class InsetLatexAccent : public InsetOld {
 public:
 	///
 	InsetLatexAccent();
@@ -59,7 +59,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	Inset::Code lyxCode()const;
+	InsetOld::Code lyxCode()const;
 	///
 	inline bool canDisplay();
 	// should this inset be handled like a normal charater

@@ -58,7 +58,7 @@ using namespace lyx::support;
 
 using std::endl;
 
-Inset * createInset(FuncRequest const & cmd)
+InsetOld * createInset(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
 	BufferParams const & params = bv->buffer()->params;
@@ -281,7 +281,7 @@ Inset * createInset(FuncRequest const & cmd)
 }
 
 
-Inset * readInset(LyXLex & lex, Buffer const & buf)
+InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 {
 	// consistency check
 	if (lex.getString() != "\\begin_inset") {
@@ -289,7 +289,7 @@ Inset * readInset(LyXLex & lex, Buffer const & buf)
 		       << endl;
 	}
 
-	Inset * inset = 0;
+	InsetOld * inset = 0;
 
 	lex.next();
 	string const tmptok = lex.getString();
@@ -351,9 +351,9 @@ Inset * readInset(LyXLex & lex, Buffer const & buf)
 			inset = new InsetFormula;
 		} else if (tmptok == "Graphics") {
 			inset = new InsetGraphics;
-		} else if (tmptok == "Note"	|| tmptok == "Comment" 
+		} else if (tmptok == "Note"	|| tmptok == "Comment"
 				|| tmptok == "Greyedout") {
-			inset = new InsetNote(buf.params, tmptok); 
+			inset = new InsetNote(buf.params, tmptok);
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
 			inset = new InsetInclude(p, buf);

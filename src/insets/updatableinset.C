@@ -27,12 +27,12 @@ using namespace lyx::support;
 // some stuff for inset locking
 
 UpdatableInset::UpdatableInset()
-	: Inset(), block_drawing_(false)
+	: InsetOld(), block_drawing_(false)
 {}
 
 
 UpdatableInset::UpdatableInset(UpdatableInset const & in)
-	: Inset(in), block_drawing_(false)
+	: InsetOld(in), block_drawing_(false)
 {}
 
 
@@ -43,7 +43,7 @@ void UpdatableInset::insetUnlock(BufferView *)
 
 
 // An updatable inset is highly editable by definition
-Inset::EDITABLE UpdatableInset::editable() const
+InsetOld::EDITABLE UpdatableInset::editable() const
 {
 	return HIGHLY_EDITABLE;
 }
@@ -63,7 +63,7 @@ void UpdatableInset::draw(PainterInfo &, int, int) const
 
 void UpdatableInset::scroll(BufferView * bv, float s) const
 {
-	LyXFont font;
+	//LyXFont font;
 
 	if (!s) {
 		scx = 0;
@@ -112,7 +112,7 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 
 ///  An updatable inset could handle lyx editing commands
-Inset::RESULT UpdatableInset::localDispatch(FuncRequest const & ev)
+InsetOld::RESULT UpdatableInset::localDispatch(FuncRequest const & ev)
 {
 	if (ev.action == LFUN_MOUSE_RELEASE)
 		return (editable() == IS_EDITABLE) ? DISPATCHED : UNDISPATCHED;
@@ -133,7 +133,7 @@ Inset::RESULT UpdatableInset::localDispatch(FuncRequest const & ev)
 }
 
 
-LyXCursor const & Inset::cursor(BufferView * bv) const
+LyXCursor const & InsetOld::cursor(BufferView * bv) const
 {
 	if (owner())
 		return owner()->getLyXText(bv, false)->cursor;

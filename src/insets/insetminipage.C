@@ -276,9 +276,9 @@ int InsetMinipage::latex(Buffer const * buf, ostream & os,
 }
 
 
-bool InsetMinipage::insetAllowed(Inset::Code code) const
+bool InsetMinipage::insetAllowed(InsetOld::Code code) const
 {
-	if (code == Inset::FLOAT_CODE || code == Inset::MARGIN_CODE)
+	if (code == InsetOld::FLOAT_CODE || code == InsetOld::MARGIN_CODE)
 		return false;
 
 	return InsetCollapsable::insetAllowed(code);

@@ -656,9 +656,9 @@ auto_ptr<InsetBase> InsetLatexAccent::clone() const
 }
 
 
-Inset::Code InsetLatexAccent::lyxCode() const
+InsetOld::Code InsetLatexAccent::lyxCode() const
 {
-	return Inset::ACCENT_CODE;
+	return InsetOld::ACCENT_CODE;
 }
 
 

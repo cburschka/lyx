@@ -144,7 +144,7 @@ InsetGraphics::InsetGraphics()
 
 
 InsetGraphics::InsetGraphics(InsetGraphics const & ig)
-	: Inset(ig),
+	: InsetOld(ig),
 	  boost::signals::trackable(),
 	  graphic_label(uniqueID()),
 	  graphic_(new GraphicRenderer(*ig.graphic_))
@@ -198,7 +198,7 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	default:
-		return Inset::localDispatch(cmd);
+		return InsetOld::localDispatch(cmd);
 	}
 }
 
@@ -216,7 +216,7 @@ void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-Inset::EDITABLE InsetGraphics::editable() const
+InsetOld::EDITABLE InsetGraphics::editable() const
 {
 	return IS_EDITABLE;
 }

@@ -52,7 +52,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	Inset::Code lyxCode() const { return Inset::WRAP_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::WRAP_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;
@@ -61,7 +61,7 @@ public:
 	///
 	string const editMessage() const;
 	///
-	bool insetAllowed(Inset::Code) const;
+	bool insetAllowed(InsetOld::Code) const;
 	///
 	void addToToc(toc::TocList &, Buffer const *) const;
 	///

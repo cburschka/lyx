@@ -790,7 +790,7 @@ void BufferView::Pimpl::switchKeyMap()
 	LyXText * text = bv_->getLyXText();
 	if (text->real_current_font.isRightToLeft()
 	    && !(bv_->theLockingInset()
-		 && bv_->theLockingInset()->lyxCode() == Inset::ERT_CODE))
+		 && bv_->theLockingInset()->lyxCode() == InsetOld::ERT_CODE))
 	{
 		if (owner_->getIntl().keymap == Intl::PRIMARY)
 			owner_->getIntl().KeyMapSec();
@@ -866,7 +866,7 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
  */
 
 
-Inset * BufferView::Pimpl::getInsetByCode(Inset::Code code)
+InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
 {
 #if 0
 	LyXCursor cursor = bv_->getLyXText()->cursor;
@@ -1150,7 +1150,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		string label = ev.argument;
 		if (label.empty()) {
 			InsetRef * inset =
-				static_cast<InsetRef*>(getInsetByCode(Inset::REF_CODE));
+				static_cast<InsetRef*>(getInsetByCode(InsetOld::REF_CODE));
 			if (inset) {
 				label = inset->getContents();
 				savePosition(0);
@@ -1220,7 +1220,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	break;
 
 	case LFUN_INSET_INSERT: {
-		Inset * inset = createInset(ev);
+		InsetOld * inset = createInset(ev);
 		if (inset && insertInset(inset)) {
 			updateInset(inset);
 
@@ -1241,7 +1241,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 
 	case LFUN_FLOAT_LIST:
 		if (tclass.floats().typeExist(ev.argument)) {
-			Inset * inset = new InsetFloatList(ev.argument);
+			InsetOld * inset = new InsetFloatList(ev.argument);
 			if (!insertInset(inset, tclass.defaultLayoutName()))
 				delete inset;
 		} else {
@@ -1274,7 +1274,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		params2string(*par, data);
 
 		// Will the paragraph accept changes from the dialog?
-		Inset * const inset = par->inInset();
+		InsetOld * const inset = par->inInset();
 		bool const accept =
 			!(inset && inset->forceDefaultParagraphs(inset));
 
@@ -1366,7 +1366,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 }
 
 
-bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
+bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 {
 	// if we are in a locking inset we should try to insert the
 	// inset there otherwise this is a illegal function now
@@ -1427,7 +1427,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 }
 
 
-void BufferView::Pimpl::updateInset(Inset * inset)
+void BufferView::Pimpl::updateInset(InsetOld * inset)
 {
 	if (!inset || !available())
 		return;
@@ -1452,7 +1452,7 @@ void BufferView::Pimpl::updateInset(Inset * inset)
 	// then check if the inset is a top_level inset (has no owner)
 	// if yes do the update as always otherwise we have to update the
 	// toplevel inset where this inset is inside
-	Inset * tl_inset = inset;
+	InsetOld * tl_inset = inset;
 	while (tl_inset->owner())
 		tl_inset = tl_inset->owner();
 	if (tl_inset == inset) {

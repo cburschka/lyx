@@ -55,7 +55,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	Inset::Code lyxCode() const { return Inset::FLOAT_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::FLOAT_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;
@@ -64,7 +64,7 @@ public:
 	///
 	string const editMessage() const;
 	///
-	bool insetAllowed(Inset::Code) const;
+	bool insetAllowed(InsetOld::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */

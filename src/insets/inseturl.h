@@ -33,7 +33,7 @@ public:
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	Inset::Code lyxCode() const { return Inset::URL_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::URL_CODE; }
 	///
 	void validate(LaTeXFeatures &) const;
 	///

@@ -300,7 +300,7 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 
 		for (; lit != eit; ++lit) {
 			switch (lit->inset->lyxCode()) {
-			case Inset::INCLUDE_CODE: {
+			case InsetOld::INCLUDE_CODE: {
 				InsetInclude * ii = static_cast<InsetInclude*>(lit->inset);
 				InsetInclude::Params ip = ii->params();
 				ip.masterFilename_ = buffer.fileName();
@@ -308,7 +308,7 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 				break;
 			}
 
-			case Inset::TABULAR_CODE: {
+			case InsetOld::TABULAR_CODE: {
 				InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
 				it->buffer(const_cast<Buffer*>(&buffer));
 				break;

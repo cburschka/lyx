@@ -32,7 +32,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const { return Inset::LABEL_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::LABEL_CODE; }
 	///
 	void getLabelList(std::vector<string> &) const;
 	///

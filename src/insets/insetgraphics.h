@@ -25,7 +25,7 @@ class GraphicRenderer;
 class LaTeXFeatures;
 
 ///
-class InsetGraphics : public Inset, public boost::signals::trackable {
+class InsetGraphics : public InsetOld, public boost::signals::trackable {
 public:
 	///
 	InsetGraphics();
@@ -65,7 +65,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
-	Inset::Code lyxCode() const { return Inset::GRAPHICS_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::GRAPHICS_CODE; }
 
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;

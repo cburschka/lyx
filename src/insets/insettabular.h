@@ -96,17 +96,17 @@ public:
 	bool unlockInsetInInset(BufferView *, UpdatableInset *,
 				bool lr = false);
 	///
-	bool updateInsetInInset(BufferView *, Inset *);
+	bool updateInsetInInset(BufferView *, InsetOld *);
 	///
 	int insetInInsetY() const;
 	///
 	UpdatableInset * getLockingInset() const;
 	///
-	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
+	UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code);
 	///
-	bool insertInset(BufferView *, Inset *);
+	bool insertInset(BufferView *, InsetOld *);
 	///
-	bool insetAllowed(Inset::Code code) const;
+	bool insetAllowed(InsetOld::Code code) const;
 	///
 	bool isTextInset() const { return true; }
 	/** returns true if, when outputing LaTeX, font changes should
@@ -129,7 +129,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset::Code lyxCode() const { return Inset::TABULAR_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::TABULAR_CODE; }
 	/// FIXME, document
 	void getCursorPos(BufferView *, int & x, int & y) const;
 	/// Get the absolute document x,y of the cursor
@@ -175,7 +175,7 @@ public:
 		UpdatableInset::scroll(bv, offset);
 	}
 	///
-	Inset * getInsetFromID(int id) const;
+	InsetOld * getInsetFromID(int id) const;
 	///
 	ParagraphList * getParagraphs(int) const;
 	///
@@ -202,7 +202,7 @@ public:
 
 	// this should return true if we have a "normal" cell, otherwise true.
 	// "normal" means without width set!
-	bool forceDefaultParagraphs(Inset const * in) const;
+	bool forceDefaultParagraphs(InsetOld const * in) const;
 
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;

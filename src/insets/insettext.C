@@ -277,7 +277,7 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << "\n";
-    
+
 	textwidth_ = mi.base.textwidth;
 	BufferView * bv = mi.base.bv;
 	setViewCache(bv);
@@ -607,7 +607,7 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 }
 
 
-bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
+bool InsetText::updateInsetInInset(BufferView * bv, InsetOld * inset)
 {
 	if (!autoBreakRows && paragraphs.size() > 1)
 		collapseParagraphs(bv);
@@ -667,7 +667,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 
 	int tmp_x = cmd.x - drawTextXOffset;
 	int tmp_y = cmd.y + dim_.asc - getLyXText(bv)->top_y();
-	Inset * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
+	InsetOld * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 
 	if (the_locking_inset) {
 		if (the_locking_inset == inset) {
@@ -751,7 +751,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 
 	int tmp_x = cmd.x - drawTextXOffset;
 	int tmp_y = cmd.y + dim_.asc - getLyXText(bv)->top_y();
-	Inset * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
+	InsetOld * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {
 // This code should probably be removed now. Simple insets
@@ -809,7 +809,7 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
+InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
 	setViewCache(bv);
@@ -1521,7 +1521,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 }
 
 
-Inset::RESULT
+InsetOld::RESULT
 InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 {
 	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params))
@@ -1531,7 +1531,7 @@ InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 }
 
 
-Inset::RESULT
+InsetOld::RESULT
 InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 {
 	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params))
@@ -1541,7 +1541,7 @@ InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 }
 
 
-Inset::RESULT
+InsetOld::RESULT
 InsetText::moveRightIntern(BufferView * bv, bool front,
 			   bool activate_inset, bool selecting)
 {
@@ -1558,7 +1558,7 @@ InsetText::moveRightIntern(BufferView * bv, bool front,
 }
 
 
-Inset::RESULT
+InsetOld::RESULT
 InsetText::moveLeftIntern(BufferView * bv, bool front,
 			  bool activate_inset, bool selecting)
 {
@@ -1573,7 +1573,7 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 }
 
 
-Inset::RESULT InsetText::moveUp(BufferView * bv)
+InsetOld::RESULT InsetText::moveUp(BufferView * bv)
 {
 	if (crow() == text_.rows().begin())
 		return FINISHED_UP;
@@ -1583,7 +1583,7 @@ Inset::RESULT InsetText::moveUp(BufferView * bv)
 }
 
 
-Inset::RESULT InsetText::moveDown(BufferView * bv)
+InsetOld::RESULT InsetText::moveDown(BufferView * bv)
 {
 	if (boost::next(crow()) == text_.rows().end())
 		return FINISHED_DOWN;
@@ -1593,7 +1593,7 @@ Inset::RESULT InsetText::moveDown(BufferView * bv)
 }
 
 
-bool InsetText::insertInset(BufferView * bv, Inset * inset)
+bool InsetText::insertInset(BufferView * bv, InsetOld * inset)
 {
 	if (the_locking_inset) {
 		if (the_locking_inset->insetAllowed(inset))
@@ -1608,7 +1608,7 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 }
 
 
-bool InsetText::insetAllowed(Inset::Code code) const
+bool InsetText::insetAllowed(InsetOld::Code code) const
 {
 	// in_insetAllowed is a really gross hack,
 	// to allow us to call the owner's insetAllowed
@@ -1634,7 +1634,7 @@ UpdatableInset * InsetText::getLockingInset() const
 }
 
 
-UpdatableInset * InsetText::getFirstLockingInsetOfType(Inset::Code c)
+UpdatableInset * InsetText::getFirstLockingInsetOfType(InsetOld::Code c)
 {
 	if (c == lyxCode())
 		return this;
@@ -1709,7 +1709,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 {
 	if (cpar()->isInset(cpos())) {
-		Inset * inset =
+		InsetOld * inset =
 			static_cast<UpdatableInset*>(cpar()->getInset(cpos()));
 		if (!isHighlyEditableInset(inset))
 			return false;
@@ -1730,7 +1730,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 	x -= drawTextXOffset;
 	int dummyx = x;
 	int dummyy = y + dim_.asc;
-	Inset * inset = getLyXText(bv)->checkInsetHit(dummyx, dummyy);
+	InsetOld * inset = getLyXText(bv)->checkInsetHit(dummyx, dummyy);
 	// we only do the edit() call if the inset was hit by the mouse
 	// or if it is a highly editable inset. So we should call this
 	// function from our own edit with button < 0.
@@ -2078,7 +2078,7 @@ LyXCursor const & InsetText::cursor(BufferView * bv) const
 }
 
 
-Inset * InsetText::getInsetFromID(int id_arg) const
+InsetOld * InsetText::getInsetFromID(int id_arg) const
 {
 	if (id_arg == id())
 		return const_cast<InsetText *>(this);
@@ -2091,7 +2091,7 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 		for (; it != end; ++it) {
 			if (it->inset->id() == id_arg)
 				return it->inset;
-			Inset * in = it->inset->getInsetFromID(id_arg);
+			InsetOld * in = it->inset->getInsetFromID(id_arg);
 			if (in)
 				return in;
 		}

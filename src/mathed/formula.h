@@ -58,9 +58,9 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset::Code lyxCode() const;
+	InsetOld::Code lyxCode() const;
 	///
-	bool insetAllowed(Inset::Code code) const;
+	bool insetAllowed(InsetOld::Code code) const;
 	///
 	void getLabelList(std::vector<string> &) const;
 	///

@@ -113,7 +113,7 @@ InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & b)
 
 
 InsetInclude::InsetInclude(InsetInclude const & other)
-	: Inset(other),
+	: InsetOld(other),
 	  params_(other.params_),
 	  include_label(other.include_label),
 	  preview_(new PreviewImpl(*this)),
@@ -153,7 +153,7 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	default:
-		return Inset::localDispatch(cmd);
+		return InsetOld::localDispatch(cmd);
 	}
 }
 

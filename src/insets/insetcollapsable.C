@@ -75,7 +75,7 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 }
 
 
-bool InsetCollapsable::insertInset(BufferView * bv, Inset * in)
+bool InsetCollapsable::insertInset(BufferView * bv, InsetOld * in)
 {
 	if (!insetAllowed(in->lyxCode())) {
 		lyxerr << "InsetCollapsable::InsertInset: "
@@ -195,7 +195,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-Inset::EDITABLE InsetCollapsable::editable() const
+InsetOld::EDITABLE InsetCollapsable::editable() const
 {
 	return collapsed_ ? IS_EDITABLE : HIGHLY_EDITABLE;
 }
@@ -288,7 +288,7 @@ int InsetCollapsable::docbook(Buffer const * buf, ostream & os, bool mixcont) co
 }
 
 
-Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
+InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 {
 	lyxerr << "InsetCollapsable::localDispatch: "
 		<< cmd.action << " '" << cmd.argument << "'\n";
@@ -390,7 +390,7 @@ bool InsetCollapsable::unlockInsetInInset(BufferView * bv, UpdatableInset * in,
 }
 
 
-bool InsetCollapsable::updateInsetInInset(BufferView * bv, Inset *in)
+bool InsetCollapsable::updateInsetInInset(BufferView * bv, InsetOld *in)
 {
 	if (in == this)
 		return true;
@@ -431,7 +431,7 @@ UpdatableInset * InsetCollapsable::getLockingInset() const
 }
 
 
-UpdatableInset * InsetCollapsable::getFirstLockingInsetOfType(Inset::Code c)
+UpdatableInset * InsetCollapsable::getFirstLockingInsetOfType(InsetOld::Code c)
 {
 	if (c == lyxCode())
 		return this;
@@ -501,7 +501,7 @@ LyXCursor const & InsetCollapsable::cursor(BufferView * bv) const
 }
 
 
-Inset * InsetCollapsable::getInsetFromID(int id_arg) const
+InsetOld * InsetCollapsable::getInsetFromID(int id_arg) const
 {
 	if (id_arg == id())
 		return const_cast<InsetCollapsable *>(this);

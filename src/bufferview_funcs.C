@@ -242,7 +242,7 @@ bool changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type, bool test_o
 	bv->update(BufferView::SELECT);
 	bool const changed = text->changeDepth(type, false);
 	if (text->inset_owner)
-		bv->updateInset((Inset *)text->inset_owner);
+		bv->updateInset((InsetOld *)text->inset_owner);
 	bv->update(BufferView::SELECT);
 	return changed;
 }

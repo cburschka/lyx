@@ -22,7 +22,7 @@
 struct LaTeXFeatures;
 
 ///  Used to insert different kinds of spaces
-class InsetSpace : public Inset {
+class InsetSpace : public InsetOld {
 public:
 
 	/// The different kinds of spaces we support
@@ -73,7 +73,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	Inset::Code lyxCode() const { return Inset::SPACE_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::SPACE_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 

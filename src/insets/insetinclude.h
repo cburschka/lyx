@@ -24,7 +24,7 @@ struct LaTeXFeatures;
 // Created by AAS 970521
 
 /// for including tex/lyx files
-class InsetInclude: public Inset {
+class InsetInclude: public InsetOld {
 public:
 	/// the type of inclusion
 	enum Flags {
@@ -76,7 +76,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	Inset::Code lyxCode() const { return Inset::INCLUDE_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::INCLUDE_CODE; }
 	/// This returns the list of labels on the child buffer
 	void getLabelList(std::vector<string> &) const;
 	/// This returns the list of bibkeys on the child buffer

@@ -201,7 +201,7 @@ void GraphicRenderer::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	if (image_ready) {
 		dim.wid = loader_.image()->getWidth() +
-			2 * Inset::TEXT_TO_INSET_OFFSET;
+			2 * InsetOld::TEXT_TO_INSET_OFFSET;
 	} else {
 		int font_width = 0;
 
@@ -270,16 +270,16 @@ void GraphicRenderer::draw(PainterInfo & pi, int x, int y) const
 	// we draw just a rectangle.
 
 	if (readyToDisplay()) {
-		pi.pain.image(x + Inset::TEXT_TO_INSET_OFFSET,
+		pi.pain.image(x + InsetOld::TEXT_TO_INSET_OFFSET,
 			      y - dim_.asc,
-			      dim_.wid - 2 * Inset::TEXT_TO_INSET_OFFSET,
+			      dim_.wid - 2 * InsetOld::TEXT_TO_INSET_OFFSET,
 			      dim_.asc + dim_.des,
 			      *loader_.image());
 
 	} else {
-		pi.pain.rectangle(x + Inset::TEXT_TO_INSET_OFFSET,
+		pi.pain.rectangle(x + InsetOld::TEXT_TO_INSET_OFFSET,
 				  y - dim_.asc,
-				  dim_.wid - 2 * Inset::TEXT_TO_INSET_OFFSET,
+				  dim_.wid - 2 * InsetOld::TEXT_TO_INSET_OFFSET,
 				  dim_.asc + dim_.des);
 
 		// Print the file name.
@@ -289,7 +289,7 @@ void GraphicRenderer::draw(PainterInfo & pi, int x, int y) const
 
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			pi.pain.text(x + Inset::TEXT_TO_INSET_OFFSET + 6,
+			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
 				   y - font_metrics::maxAscent(msgFont) - 4,
 				   justname, msgFont);
 		}
@@ -298,7 +298,7 @@ void GraphicRenderer::draw(PainterInfo & pi, int x, int y) const
 		string const msg = statusMessage();
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
-			pi.pain.text(x + Inset::TEXT_TO_INSET_OFFSET + 6,
+			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
 				     y - 4, msg, msgFont);
 		}
 	}

@@ -52,7 +52,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const { return Inset::REF_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::REF_CODE; }
 	///
 	bool display() const { return false; }
 	///

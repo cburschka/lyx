@@ -27,7 +27,7 @@
  */
 
 ///
-class InsetCommand : public Inset {
+class InsetCommand : public InsetOld {
 public:
 	///
 	explicit
@@ -54,7 +54,7 @@ public:
 	///
 	virtual int docbook(Buffer const *, std::ostream &, bool) const;
 	///
-	Inset::Code lyxCode() const { return Inset::NO_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::NO_CODE; }
 
 	///
 	InsetCommandParams const & params() const { return p_; }

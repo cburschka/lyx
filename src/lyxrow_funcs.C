@@ -47,7 +47,7 @@ bool nextRowIsAllInset(Row const & row, pos_type last)
 	if (!pit->isInset(last + 1))
 		return false;
 
-	Inset const * i = pit->getInset(last + 1);
+	InsetOld const * i = pit->getInset(last + 1);
 	return i->needFullRow() || i->display();
 }
 

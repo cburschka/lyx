@@ -206,7 +206,7 @@ void LyXText::setCharFont(ParagraphList::iterator pit,
 	font.update(fnt, buf->params.language, toggleall);
 	// Let the insets convert their font
 	if (pit->isInset(pos)) {
-		Inset * inset = pit->getInset(pos);
+		InsetOld * inset = pit->getInset(pos);
 		if (isEditableInset(inset)) {
 			UpdatableInset * uinset =
 				static_cast<UpdatableInset *>(inset);
@@ -302,7 +302,7 @@ void LyXText::insertParagraph(ParagraphList::iterator pit,
 }
 
 
-Inset * LyXText::getInset() const
+InsetOld * LyXText::getInset() const
 {
 	ParagraphList::iterator pit = cursor.par();
 	pos_type const pos = cursor.pos();
@@ -316,7 +316,7 @@ Inset * LyXText::getInset() const
 
 void LyXText::toggleInset()
 {
-	Inset * inset = getInset();
+	InsetOld * inset = getInset();
 	// is there an editable inset at cursor position?
 	if (!isEditableInset(inset)) {
 		// No, try to see if we are inside a collapsable inset
@@ -437,7 +437,7 @@ void LyXText::setLayout(string const & layout)
 		bv()->owner()->dispatch(FuncRequest(LFUN_HOME));
 		bv()->owner()->dispatch(FuncRequest(LFUN_ENDSEL));
 		bv()->owner()->dispatch(FuncRequest(LFUN_CUT));
-		Inset * inset = new InsetEnvironment(params, layout);
+		InsetOld * inset = new InsetEnvironment(params, layout);
 		if (bv()->insertInset(inset)) {
 			//inset->edit(bv());
 			//bv()->owner()->dispatch(FuncRequest(LFUN_PASTE));
@@ -1119,14 +1119,14 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 		// the caption hack:
 		if (layout->labeltype == LABEL_SENSITIVE) {
 			ParagraphList::iterator tmppit = pit;
-			Inset * in = 0;
+			InsetOld * in = 0;
 			bool isOK = false;
 			while (tmppit != ownerParagraphs().end() &&
 			       tmppit->inInset()
 			       // the single '=' is intended below
 			       && (in = tmppit->inInset()->owner())) {
-				if (in->lyxCode() == Inset::FLOAT_CODE ||
-				    in->lyxCode() == Inset::WRAP_CODE) {
+				if (in->lyxCode() == InsetOld::FLOAT_CODE ||
+				    in->lyxCode() == InsetOld::WRAP_CODE) {
 					isOK = true;
 					break;
 				} else {
@@ -1137,9 +1137,9 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 			if (isOK) {
 				string type;
 
-				if (in->lyxCode() == Inset::FLOAT_CODE)
+				if (in->lyxCode() == InsetOld::FLOAT_CODE)
 					type = static_cast<InsetFloat*>(in)->params().type;
-				else if (in->lyxCode() == Inset::WRAP_CODE)
+				else if (in->lyxCode() == InsetOld::WRAP_CODE)
 					type = static_cast<InsetWrap*>(in)->params().type;
 				else
 					Assert(0);
@@ -1213,7 +1213,7 @@ void LyXText::updateCounters()
 }
 
 
-void LyXText::insertInset(Inset * inset)
+void LyXText::insertInset(InsetOld * inset)
 {
 	if (!cursor.par()->insetAllowed(inset->lyxCode()))
 		return;
@@ -1523,7 +1523,7 @@ void LyXText::checkParagraph(ParagraphList::iterator pit, pos_type pos)
 
 
 // returns false if inset wasn't found
-bool LyXText::updateInset(Inset * inset)
+bool LyXText::updateInset(InsetOld * inset)
 {
 	// first check the current paragraph
 	int pos = cursor.par()->getPositionOfInset(inset);
@@ -1584,7 +1584,7 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	    boost::prior(row)->par() == row->par() &&
 	    pos < pit->size() &&
 	    pit->getChar(pos) == Paragraph::META_INSET) {
-		Inset * ins = pit->getInset(pos);
+		InsetOld * ins = pit->getInset(pos);
 		if (ins && (ins->needFullRow() || ins->display())) {
 			--row;
 			y -= row->height();
@@ -1921,7 +1921,7 @@ namespace {
 		    || !cur.par()->isInset(cur.pos()))
 			return false;
 
-		Inset const * inset = cur.par()->getInset(cur.pos());
+		InsetOld const * inset = cur.par()->getInset(cur.pos());
 		if (inset->needFullRow() || inset->display())
 			return true;
 
@@ -2001,7 +2001,7 @@ void LyXText::cursorUp(bool selecting)
 		int y1 = cursor.iy() - topy;
 		int y2 = y1;
 		y -= topy;
-		Inset * inset_hit = checkInsetHit(x, y1);
+		InsetOld * inset_hit = checkInsetHit(x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
 			inset_hit->localDispatch(
 				FuncRequest(bv(), LFUN_INSET_EDIT, x, y - (y2 - y1), mouse_button::none));
@@ -2025,7 +2025,7 @@ void LyXText::cursorDown(bool selecting)
 		int y1 = cursor.iy() - topy;
 		int y2 = y1;
 		y -= topy;
-		Inset * inset_hit = checkInsetHit(x, y1);
+		InsetOld * inset_hit = checkInsetHit(x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
 			FuncRequest cmd(bv(), LFUN_INSET_EDIT, x, y - (y2 - y1), mouse_button::none);
 			inset_hit->localDispatch(cmd);

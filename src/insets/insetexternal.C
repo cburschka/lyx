@@ -89,7 +89,7 @@ InsetExternal::InsetExternal()
 
 
 InsetExternal::InsetExternal(InsetExternal const & other)
-	: Inset(other),
+	: InsetOld(other),
 	  boost::signals::trackable(),
 	  params_(other.params_),
 	  renderer_(other.renderer_->clone())

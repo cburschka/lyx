@@ -24,7 +24,7 @@ struct LaTeXFeatures;
 /** Quotes.
   Used for the various quotes. German, English, French, all either
   double or single **/
-class InsetQuotes : public Inset {
+class InsetQuotes : public InsetOld {
 public:
 	///
 	enum quote_language {
@@ -93,7 +93,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	Inset::Code lyxCode() const;
+	InsetOld::Code lyxCode() const;
 	// should this inset be handled like a normal charater
 	bool isChar() const { return true; }
 

@@ -53,7 +53,7 @@ void InsetLabel::getLabelList(std::vector<string> & list) const
 
 dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 {
-	Inset::RESULT result = UNDISPATCHED;
+	InsetOld::RESULT result = UNDISPATCHED;
 
 	switch (cmd.action) {
 

@@ -148,7 +148,7 @@ int LyXText::workWidth() const
 }
 
 
-int LyXText::workWidth(Inset const * inset) const
+int LyXText::workWidth(InsetOld const * inset) const
 {
 	ParagraphList::iterator par = std::find(ownerParagraphs().begin(),
 						ownerParagraphs().end(),
@@ -305,9 +305,9 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 	}
 
 	if (c == Paragraph::META_INSET) {
-		Inset * tmpinset = pit->getInset(pos);
+		InsetOld * tmpinset = pit->getInset(pos);
 		if (tmpinset) {
-			if (tmpinset->lyxCode() == Inset::HFILL_CODE) {
+			if (tmpinset->lyxCode() == InsetOld::HFILL_CODE) {
 				// Because of the representation as vertical lines
 				return 3;
 			}
@@ -379,9 +379,9 @@ void LyXText::computeBidiTables(Buffer const * buf,
 
 	ParagraphList::iterator row_par = row->par();
 
-	Inset * inset = row_par->inInset();
+	InsetOld * inset = row_par->inInset();
 	if (inset && inset->owner() &&
-	    inset->owner()->lyxCode() == Inset::ERT_CODE) {
+	    inset->owner()->lyxCode() == InsetOld::ERT_CODE) {
 		bidi_start = -1;
 		return;
 	}
@@ -534,7 +534,7 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph const & par,
 
 int LyXText::leftMargin(Row const & row) const
 {
-	Inset * ins;
+	InsetOld * ins;
 
 	if (row.pos() < row.par()->size())
 		if ((row.par()->getChar(row.pos()) == Paragraph::META_INSET) &&
@@ -709,8 +709,8 @@ int LyXText::leftMargin(Row const & row) const
 		    && !row.par()->params().noindent()
 			// in tabulars and ert paragraphs are never indented!
 			&& (!row.par()->inInset() || !row.par()->inInset()->owner() ||
-				(row.par()->inInset()->owner()->lyxCode() != Inset::TABULAR_CODE &&
-				 row.par()->inInset()->owner()->lyxCode() != Inset::ERT_CODE))
+				(row.par()->inInset()->owner()->lyxCode() != InsetOld::TABULAR_CODE &&
+				 row.par()->inInset()->owner()->lyxCode() != InsetOld::ERT_CODE))
 		    && (row.par()->layout() != tclass.defaultLayout() ||
 			bv()->buffer()->params.paragraph_separation ==
 			BufferParams::PARSEP_INDENT)) {
@@ -728,7 +728,7 @@ int LyXText::leftMargin(Row const & row) const
 
 int LyXText::rightMargin(Buffer const & buf, Row const & row) const
 {
-	Inset * ins;
+	InsetOld * ins;
 
 	if (row.pos() < row.par()->size())
 		if ((row.par()->getChar(row.pos()) == Paragraph::META_INSET) &&
@@ -845,7 +845,7 @@ pos_type LyXText::rowBreakPoint(Row const & row) const
 		x += thiswidth;
 		chunkwidth += thiswidth;
 
-		Inset * in = pit->isInset(i) ? pit->getInset(i) : 0;
+		InsetOld * in = pit->isInset(i) ? pit->getInset(i) : 0;
 		fullrow = (in && (in->display() || in->needFullRow()));
 
 		// break before a character that will fall off
@@ -1029,7 +1029,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 	float layoutdesc = 0;
 	float tmptop = 0;
 	LyXFont tmpfont;
-	Inset * tmpinset = 0;
+	InsetOld * tmpinset = 0;
 
 	// ok, let us initialize the maxasc and maxdesc value.
 	// This depends in LaTeX of the font of the last character
@@ -1674,7 +1674,7 @@ void LyXText::insertChar(char c)
 	// the display inset stuff
 	if (cursorRow()->pos() < cursorRow()->par()->size()
 	    && cursorRow()->par()->isInset(cursorRow()->pos())) {
-		Inset * inset = cursorRow()->par()->getInset(cursorRow()->pos());
+		InsetOld * inset = cursorRow()->par()->getInset(cursorRow()->pos());
 		if (inset && (inset->display() || inset->needFullRow())) {
 			// force a new break
 			cursorRow()->fill(-1); // to force a new break
@@ -1885,17 +1885,17 @@ void LyXText::prepareToPrint(RowList::iterator rit, int & x,
 		}
 
 		// center displayed insets
-		Inset * inset = 0;
+		InsetOld * inset = 0;
 		if (rit->pos() < pit->size()
 		    && pit->isInset(rit->pos())
 		    && (inset = pit->getInset(rit->pos()))
 		    && (inset->display())) // || (inset->scroll() < 0)))
-		    align = (inset->lyxCode() == Inset::MATHMACRO_CODE)
+		    align = (inset->lyxCode() == InsetOld::MATHMACRO_CODE)
 			? LYX_ALIGN_BLOCK : LYX_ALIGN_CENTER;
 		// ERT insets should always be LEFT ALIGNED on screen
 		inset = pit->inInset();
 		if (inset && inset->owner() &&
-			inset->owner()->lyxCode() == Inset::ERT_CODE)
+			inset->owner()->lyxCode() == InsetOld::ERT_CODE)
 		{
 			align = LYX_ALIGN_LEFT;
 		}

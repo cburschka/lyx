@@ -47,7 +47,7 @@ public:
 	///
 	~InsetERT();
 	///
-	Inset::Code lyxCode() const { return Inset::ERT_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::ERT_CODE; }
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
@@ -55,9 +55,9 @@ public:
 	///
 	string const editMessage() const;
 	///
-	bool insertInset(BufferView *, Inset *);
+	bool insertInset(BufferView *, InsetOld *);
 	///
-	bool insetAllowed(Inset::Code code) const { return code == Inset::NEWLINE_CODE; }
+	bool insetAllowed(InsetOld::Code code) const { return code == InsetOld::NEWLINE_CODE; }
 	///
 	void setFont(BufferView *, LyXFont const &,
 			     bool toggleall = false, bool selectall = false);
@@ -109,7 +109,7 @@ public:
 	///
 	void getDrawFont(LyXFont &) const;
 	///
-	bool forceDefaultParagraphs(Inset const *) const {
+	bool forceDefaultParagraphs(InsetOld const *) const {
 		return true;
 	}
 

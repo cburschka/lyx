@@ -251,9 +251,9 @@ void InsetFormula::getLabelList(std::vector<string> & res) const
 }
 
 
-Inset::Code InsetFormula::lyxCode() const
+InsetOld::Code InsetFormula::lyxCode() const
 {
-	return Inset::MATH_CODE;
+	return InsetOld::MATH_CODE;
 }
 
 
@@ -263,12 +263,12 @@ void InsetFormula::validate(LaTeXFeatures & features) const
 }
 
 
-bool InsetFormula::insetAllowed(Inset::Code code) const
+bool InsetFormula::insetAllowed(InsetOld::Code code) const
 {
 	return
-		   code == Inset::LABEL_CODE
-		|| code == Inset::REF_CODE
-		|| code == Inset::ERT_CODE;
+		   code == InsetOld::LABEL_CODE
+		|| code == InsetOld::REF_CODE
+		|| code == InsetOld::ERT_CODE;
 }
 
 

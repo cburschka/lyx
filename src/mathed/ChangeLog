@@ -1,5 +1,7 @@
 2003-07-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* rename Inset to InsetOld
+
 	* all inset files (clone) return a auto_ptr<InsetBase>
 
 2003-07-21  Angus Leeming  <leeming@lyx.org>

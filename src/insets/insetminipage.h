@@ -70,14 +70,14 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	Inset::Code lyxCode() const { return Inset::MINIPAGE_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::MINIPAGE_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;
 	///
 	string const editMessage() const;
 	///
-	bool insetAllowed(Inset::Code) const;
+	bool insetAllowed(InsetOld::Code) const;
 	///
 	bool needFullRow() const { return false; }
 	/** returns true if, when outputing LaTeX, font changes should

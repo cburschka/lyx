@@ -5,7 +5,7 @@
 
 #include "support/types.h"
 
-class Inset;
+class InsetOld;
 class BufferView;
 
 
@@ -17,9 +17,9 @@ public:
 		///
 		lyx::pos_type pos;
 		///
-		Inset * inset;
+		InsetOld * inset;
 		///
-		InsetTable(lyx::pos_type p, Inset * i) : pos(p), inset(i) {}
+		InsetTable(lyx::pos_type p, InsetOld * i) : pos(p), inset(i) {}
 	};
 	///
 	typedef std::vector<InsetTable> List;
@@ -27,7 +27,7 @@ public:
 	typedef List::iterator iterator;
 	///
 	typedef List::const_iterator const_iterator;
-	
+
 	///
 	~InsetList();
 	///
@@ -41,13 +41,13 @@ public:
 	///
 	iterator insetIterator(lyx::pos_type pos);
 	///
-	void insert(Inset * inset, lyx::pos_type pos);
+	void insert(InsetOld * inset, lyx::pos_type pos);
 	///
 	void erase(lyx::pos_type pos);
 	///
-	Inset * release(lyx::pos_type);
+	InsetOld * release(lyx::pos_type);
 	///
-	Inset * get(lyx::pos_type pos) const;
+	InsetOld * get(lyx::pos_type pos) const;
 	///
 	void increasePosAfterPos(lyx::pos_type pos);
 	///

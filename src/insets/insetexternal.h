@@ -24,7 +24,7 @@
 class RenderInset;
 
 ///
-class InsetExternal : public Inset, public boost::signals::trackable {
+class InsetExternal : public InsetOld, public boost::signals::trackable {
 public:
 	/// hold parameters settable from the GUI
 	struct Params {
@@ -79,7 +79,7 @@ public:
 	virtual void validate(LaTeXFeatures & features) const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
-	virtual Inset::Code lyxCode() const { return EXTERNAL_CODE; }
+	virtual InsetOld::Code lyxCode() const { return EXTERNAL_CODE; }
 
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;

@@ -15,7 +15,7 @@
 #include "LString.h"
 #include <boost/scoped_ptr.hpp>
 
-class Inset;
+class InsetOld;
 
 namespace lyx {
 namespace graphics {

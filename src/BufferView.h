@@ -80,7 +80,7 @@ public:
 	/// reload the contained buffer
 	void reload();
 	/// create a new buffer based on template
-	bool newFile(string const & fname, string const & tname, 
+	bool newFile(string const & fname, string const & tname,
 		     bool named = true);
 	/// load a buffer into the view
 	bool loadLyXFile(string const & name, bool tolastfiles = true);
@@ -94,7 +94,7 @@ public:
 	/// update for the top-level lyxtext
 	void update(UpdateCodes uc);
 	/// update for a particular inset
-	void updateInset(Inset * inset);
+	void updateInset(InsetOld * inset);
 	/// reset the scrollbar to reflect current view position
 	void updateScrollbar();
 	/// FIXME
@@ -137,7 +137,7 @@ public:
 	Encoding const * getEncoding() const;
 
 	/// return the parent language of the given inset
-	Language const * getParentLanguage(Inset * inset) const;
+	Language const * getParentLanguage(InsetOld * inset) const;
 
 	/// Select the "current" word
 	void selectLastWord();
@@ -167,7 +167,7 @@ public:
 	 * Insert an inset into the buffer.
 	 * Place it in a layout of lout,
 	 */
-	bool insertInset(Inset * inset, string const & lout = string());
+	bool insertInset(InsetOld * inset, string const & lout = string());
 
 	/// Inserts a lyx file at cursor position. return false if it fails
 	bool insertLyXFile(string const & file);
@@ -217,14 +217,14 @@ private:
 	void theLockingInset(UpdatableInset * inset);
 
 	/// return the lyxtext containing this inset
-	LyXText * getParentText(Inset * inset) const;
+	LyXText * getParentText(InsetOld * inset) const;
 
 	/**
 	 * Change all insets with the given code's contents to a new
 	 * string. May only be used with InsetCommand-derived insets
 	 * Returns true if a screen update is needed.
 	 */
-	bool ChangeInsets(Inset::Code code, string const & from,
+	bool ChangeInsets(InsetOld::Code code, string const & from,
 			  string const & to);
 
 

@@ -21,7 +21,7 @@
 struct LaTeXFeatures;
 
 ///  Used to insert special chars
-class InsetSpecialChar : public Inset {
+class InsetSpecialChar : public InsetOld {
 public:
 
 	/// The different kinds of special chars we support
@@ -65,7 +65,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	Inset::Code lyxCode() const { return Inset::SPECIALCHAR_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::SPECIALCHAR_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 	///

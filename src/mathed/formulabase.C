@@ -784,9 +784,9 @@ void InsetFormulaBase::revealCodes(BufferView * bv) const
 }
 
 
-Inset::Code InsetFormulaBase::lyxCode() const
+InsetOld::Code InsetFormulaBase::lyxCode() const
 {
-	return Inset::MATH_CODE;
+	return InsetOld::MATH_CODE;
 }
 
 

@@ -45,12 +45,12 @@ string const InsetTOC::getScreenLabel(Buffer const *) const
 }
 
 
-Inset::Code InsetTOC::lyxCode() const
+InsetOld::Code InsetTOC::lyxCode() const
 {
 	string const cmdname(getCmdName());
 	if (cmdname == "tableofcontents")
-		return Inset::TOC_CODE;
-	return Inset::NO_CODE;
+		return InsetOld::TOC_CODE;
+	return InsetOld::NO_CODE;
 }
 
 

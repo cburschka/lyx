@@ -429,8 +429,8 @@ InsetOptArg * optArgInset(Paragraph const & par)
 	InsetList::const_iterator it = par.insetlist.begin();
 	InsetList::const_iterator end = par.insetlist.end();
 	for (; it != end; ++it) {
-		Inset * ins = it->inset;
-		if (ins->lyxCode() == Inset::OPTARG_CODE) {
+		InsetOld * ins = it->inset;
+		if (ins->lyxCode() == InsetOld::OPTARG_CODE) {
 			return static_cast<InsetOptArg *>(ins);
 		}
 	}
@@ -450,7 +450,7 @@ TeXOnePar(Buffer const * buf,
 << "'" << endl;
 	BufferParams const & bparams = buf->params;
 
-	Inset const * in = pit->inInset();
+	InsetOld const * in = pit->inInset();
 	bool further_blank_line = false;
 	LyXLayout_ptr style;
 
@@ -709,7 +709,7 @@ void latexParagraphs(Buffer const * buf,
 
 	// if only_body
 	while (par != endpar) {
-		Inset * in = par->inInset();
+		InsetOld * in = par->inInset();
 		// well we have to check if we are in an inset with unlimited
 		// length (all in one row) if that is true then we don't allow
 		// any special options in the paragraph and also we don't allow
@@ -862,7 +862,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 			istringstream is(ss.str());
 			LyXLex tmplex(0, 0);
 			tmplex.setStream(is);
-			Inset * inset = new InsetCaption;
+			InsetOld * inset = new InsetCaption;
 			inset->Read(this, tmplex);
 			par.insertInset(pos, inset, font);
 			++pos;
@@ -888,7 +888,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
-		Inset * i = readInset(lex, buf);
+		InsetOld * i = readInset(lex, buf);
 		par.insertInset(par.size(), i, font, change);
 	} else if (token == "\\family") {
 		lex.next();
@@ -955,7 +955,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 				}
 			}
 		} else {
-			Inset * inset = 0;
+			InsetOld * inset = 0;
 			if (token == "\\SpecialChar" )
 				inset = new InsetSpecialChar;
 			else
@@ -964,17 +964,17 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 			par.insertInset(par.size(), inset, font, change);
 		}
 	} else if (token == "\\i") {
-		Inset * inset = new InsetLatexAccent;
+		InsetOld * inset = new InsetLatexAccent;
 		inset->read(&buf, lex);
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\backslash") {
 		par.insertChar(par.size(), '\\', font, change);
 	} else if (token == "\\newline") {
-		Inset * inset = new InsetNewline;
+		InsetOld * inset = new InsetNewline;
 		inset->read(&buf, lex);
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\LyXTable") {
-		Inset * inset = new InsetTabular(buf);
+		InsetOld * inset = new InsetTabular(buf);
 		inset->read(&buf, lex);
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\bibitem") {

@@ -33,7 +33,7 @@
  *
  * During the lock, all button and keyboard events will be modified
  * and send to the inset through the following inset-features. Note that
- * Inset::insetUnlock will be called from inside UnlockInset. It is meant
+ * InsetOld::insetUnlock will be called from inside UnlockInset. It is meant
  * to contain the code for restoring the menus and things like this.
  *
  * If a inset wishes any redraw and/or update it just has to call
@@ -44,7 +44,7 @@
  * Of course the_locking_inset and the insets in the current paragraph/buffer
  *  are checked first, so no performance problem should occur.
  */
-class UpdatableInset : public Inset {
+class UpdatableInset : public InsetOld {
 public:
 	///
 	UpdatableInset();
@@ -68,18 +68,18 @@ public:
 	///
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual bool insertInset(BufferView *, Inset *) { return false; }
+	virtual bool insertInset(BufferView *, InsetOld *) { return false; }
 	///
 	virtual UpdatableInset * getLockingInset() const {
 		return const_cast<UpdatableInset *>(this);
 	}
 	///
-	virtual UpdatableInset * getFirstLockingInsetOfType(Inset::Code c)
+	virtual UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code c)
 		{ return (c == lyxCode()) ? this : 0; }
 	///
 	virtual int insetInInsetY() const { return 0; }
 	///
-	virtual bool updateInsetInInset(BufferView *, Inset *)
+	virtual bool updateInsetInInset(BufferView *, InsetOld *)
 		{ return false; }
 	///
 	virtual bool lockInsetInInset(BufferView *, UpdatableInset *)
@@ -93,7 +93,7 @@ public:
 	///
 	int scroll(bool recursive = true) const {
 		// We need this method to not clobber the real method in Inset
-		return Inset::scroll(recursive);
+		return InsetOld::scroll(recursive);
 	}
 	///
 	virtual bool showInsetDialog(BufferView *) const { return false; }

@@ -818,7 +818,7 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 		switch (c) {
 		case Paragraph::META_INSET:
 		{
-			Inset const * inset = par.getInset(i);
+			InsetOld const * inset = par.getInset(i);
 			if (inset) {
 				if (linelen > 0) {
 					buffer << word;
@@ -1128,9 +1128,9 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		LyXLayout_ptr const & style = pit->layout();
 		// treat <toc> as a special case for compatibility with old code
 		if (pit->isInset(0)) {
-			Inset * inset = pit->getInset(0);
-			Inset::Code lyx_code = inset->lyxCode();
-			if (lyx_code == Inset::TOC_CODE) {
+			InsetOld * inset = pit->getInset(0);
+			InsetOld::Code lyx_code = inset->lyxCode();
+			if (lyx_code == InsetOld::TOC_CODE) {
 				string const temp = "toc";
 				sgml::openTag(ofs, depth, false, temp);
 				continue;
@@ -1452,7 +1452,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 		char c = par->getChar(i);
 
 		if (c == Paragraph::META_INSET) {
-			Inset * inset = par->getInset(i);
+			InsetOld * inset = par->getInset(i);
 			inset->linuxdoc(this, os);
 			font_old = font;
 			continue;
@@ -1654,9 +1654,9 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			// This is a hack while paragraphs can't have
 			// attributes, like id in this case.
 			if (par->isInset(0)) {
-				Inset * inset = par->getInset(0);
-				Inset::Code lyx_code = inset->lyxCode();
-				if (lyx_code == Inset::LABEL_CODE) {
+				InsetOld * inset = par->getInset(0);
+				InsetOld::Code lyx_code = inset->lyxCode();
+				if (lyx_code == InsetOld::LABEL_CODE) {
 					command_name += " id=\"";
 					command_name += (static_cast<InsetCommand *>(inset))->getContents();
 					command_name += '"';
@@ -1823,7 +1823,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 
 
 		if (par->isInset(i)) {
-			Inset * inset = par->getInset(i);
+			InsetOld * inset = par->getInset(i);
 			// don't print the inset in position 0 if desc_on == 3 (label)
 			if (i || desc_on != 3) {
 				if (style->latexparam() == "CDATA")
@@ -1995,11 +1995,11 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys) con
 
 	for (inset_iterator it = inset_const_iterator_begin();
 		it != inset_const_iterator_end(); ++it) {
-		if (it->lyxCode() == Inset::BIBTEX_CODE)
+		if (it->lyxCode() == InsetOld::BIBTEX_CODE)
 			static_cast<InsetBibtex &>(*it).fillWithBibKeys(this, keys);
-		else if (it->lyxCode() == Inset::INCLUDE_CODE)
+		else if (it->lyxCode() == InsetOld::INCLUDE_CODE)
 			static_cast<InsetInclude &>(*it).fillWithBibKeys(keys);
-		else if (it->lyxCode() == Inset::BIBITEM_CODE) {
+		else if (it->lyxCode() == InsetOld::BIBITEM_CODE) {
 			InsetBibitem & bib = static_cast<InsetBibitem &>(*it);
 			string const key = bib.getContents();
 			string const opt = bib.getOptions();
@@ -2097,14 +2097,14 @@ void Buffer::inset_iterator::setParagraph()
 }
 
 
-Inset * Buffer::getInsetFromID(int id_arg) const
+InsetOld * Buffer::getInsetFromID(int id_arg) const
 {
 	for (inset_iterator it = inset_const_iterator_begin();
 		 it != inset_const_iterator_end(); ++it)
 	{
 		if (it->id() == id_arg)
 			return &(*it);
-		Inset * in = it->getInsetFromID(id_arg);
+		InsetOld * in = it->getInsetFromID(id_arg);
 		if (in)
 			return in;
 	}

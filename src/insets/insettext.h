@@ -105,7 +105,7 @@ public:
 	bool unlockInsetInInset(BufferView *,
 				UpdatableInset *, bool lr = false);
 	///
-	bool updateInsetInInset(BufferView *, Inset *);
+	bool updateInsetInInset(BufferView *, InsetOld *);
 	///
 	RESULT localDispatch(FuncRequest const &);
 	///
@@ -120,7 +120,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset::Code lyxCode() const { return Inset::TEXT_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::TEXT_CODE; }
 	/// FIXME, document
 	void getCursorPos(BufferView *, int & x, int & y) const;
 	/// Get the absolute document x,y of the cursor
@@ -130,13 +130,13 @@ public:
 	///
 	void fitInsetCursor(BufferView *) const;
 	///
-	bool insertInset(BufferView *, Inset *);
+	bool insertInset(BufferView *, InsetOld *);
 	///
-	bool insetAllowed(Inset::Code) const;
+	bool insetAllowed(InsetOld::Code) const;
 	///
 	UpdatableInset * getLockingInset() const;
 	///
-	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
+	UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code);
 	///
 	void setFont(BufferView *, LyXFont const &,
 		     bool toggleall = false,
@@ -185,7 +185,7 @@ public:
 	///
 	void clearSelection(BufferView * bv);
 	///
-	Inset * getInsetFromID(int id) const;
+	InsetOld * getInsetFromID(int id) const;
 	///
 	ParagraphList * getParagraphs(int) const;
 	///

@@ -162,7 +162,7 @@ InsetFloat::~InsetFloat()
 
 dispatch_result InsetFloat::localDispatch(FuncRequest const & cmd)
 {
-	Inset::RESULT result = UNDISPATCHED;
+	InsetOld::RESULT result = UNDISPATCHED;
 
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -326,13 +326,13 @@ int InsetFloat::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 }
 
 
-bool InsetFloat::insetAllowed(Inset::Code code) const
+bool InsetFloat::insetAllowed(InsetOld::Code code) const
 {
-	if (code == Inset::FLOAT_CODE)
+	if (code == InsetOld::FLOAT_CODE)
 		return false;
 	if (inset.getLockingInset() != const_cast<InsetFloat *>(this))
 		return inset.insetAllowed(code);
-	if ((code == Inset::FOOT_CODE) || (code == Inset::MARGIN_CODE))
+	if ((code == InsetOld::FOOT_CODE) || (code == InsetOld::MARGIN_CODE))
 		return false;
 	return true;
 }

@@ -76,7 +76,7 @@ struct Paragraph::Pimpl {
 	///
 	void insertChar(lyx::pos_type pos, value_type c, LyXFont const & font, Change change = Change(Change::INSERTED));
 	///
-	void insertInset(lyx::pos_type pos, Inset * inset, LyXFont const & font, Change change = Change(Change::INSERTED));
+	void insertInset(lyx::pos_type pos, InsetOld * inset, LyXFont const & font, Change change = Change(Change::INSERTED));
 	/// definite erase
 	void eraseIntern(lyx::pos_type pos);
 	/// erase the given position. Returns true if it was actually erased

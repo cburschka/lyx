@@ -380,7 +380,7 @@ void BufferView::setCursorFromRow(int row)
 }
 
 
-bool BufferView::insertInset(Inset * inset, string const & lout)
+bool BufferView::insertInset(InsetOld * inset, string const & lout)
 {
 	return pimpl_->insertInset(inset, lout);
 }
@@ -517,7 +517,7 @@ bool BufferView::lockInset(UpdatableInset * inset)
 		if (text->cursor.pos() < text->cursor.par()->size()
 		    && text->cursor.par()->getChar(text->cursor.pos()) ==
 		    Paragraph::META_INSET) {
-			Inset * in = text->cursor.par()->getInset(text->cursor.pos());
+			InsetOld * in = text->cursor.par()->getInset(text->cursor.pos());
 			if (inset == in) {
 				theLockingInset(inset);
 				return true;
@@ -594,13 +594,13 @@ int BufferView::unlockInset(UpdatableInset * inset)
 }
 
 
-void BufferView::updateInset(Inset * inset)
+void BufferView::updateInset(InsetOld * inset)
 {
 	pimpl_->updateInset(inset);
 }
 
 
-bool BufferView::ChangeInsets(Inset::Code code,
+bool BufferView::ChangeInsets(InsetOld::Code code,
 			      string const & from, string const & to)
 {
 	bool need_update = false;
@@ -652,7 +652,7 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 	if (lyx::count(labels.begin(), labels.end(), from) > 1)
 		return false;
 
-	return ChangeInsets(Inset::REF_CODE, from, to);
+	return ChangeInsets(InsetOld::REF_CODE, from, to);
 }
 
 
@@ -667,7 +667,7 @@ bool BufferView::ChangeCitationsIfUnique(string const & from, string const & to)
 	    > 1)
 		return false;
 
-	return ChangeInsets(Inset::CITE_CODE, from, to);
+	return ChangeInsets(InsetOld::CITE_CODE, from, to);
 }
 
 
@@ -697,7 +697,7 @@ LyXText * BufferView::getLyXText() const
 }
 
 
-LyXText * BufferView::getParentText(Inset * inset) const
+LyXText * BufferView::getParentText(InsetOld * inset) const
 {
 	if (inset->owner()) {
 		LyXText * txt = inset->getLyXText(this);
@@ -711,7 +711,7 @@ LyXText * BufferView::getParentText(Inset * inset) const
 }
 
 
-Language const * BufferView::getParentLanguage(Inset * inset) const
+Language const * BufferView::getParentLanguage(InsetOld * inset) const
 {
 	LyXText * text = getParentText(inset);
 	return text->cursor.par()->getFontSettings(buffer()->params,

@@ -1074,7 +1074,7 @@ int LyXTabular::getLastCellInRow(int row) const
 void LyXTabular::calculate_width_of_column(int column)
 {
 	int maximum = 0;
-	for (int i = 0; i < rows_; ++i) 
+	for (int i = 0; i < rows_; ++i)
 		maximum = max(cell_info[i][column].width_of_cell, maximum);
 	column_info[column].width_of_column = maximum;
 }
@@ -2557,7 +2557,7 @@ InsetText & LyXTabular::getCellInset(int row, int column) const
 }
 
 
-int LyXTabular::getCellFromInset(Inset const * inset, int maybe_cell) const
+int LyXTabular::getCellFromInset(InsetOld const * inset, int maybe_cell) const
 {
 	// is this inset part of the tabular?
 	if (!inset || inset->owner() != owner_) {

@@ -36,7 +36,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const;
+	InsetOld::Code lyxCode() const;
 	///
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 };
@@ -61,7 +61,7 @@ public:
 	///
 	bool display() const { return true; }
 	///
-	Inset::Code lyxCode() const;
+	InsetOld::Code lyxCode() const;
 	///
 	string const getScreenLabel(Buffer const *) const;
 	///

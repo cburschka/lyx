@@ -15,7 +15,7 @@
 
 #include "inset.h"
 
-class InsetNewline : public Inset {
+class InsetNewline : public InsetOld {
 public:
 
 	InsetNewline() {}
@@ -24,7 +24,7 @@ public:
 		return std::auto_ptr<InsetBase>(new InsetNewline);
 	}
 
-	Inset::Code lyxCode() const { return Inset::NEWLINE_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::NEWLINE_CODE; }
 
 	void metrics(MetricsInfo &, Dimension &) const;
 

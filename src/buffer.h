@@ -324,10 +324,10 @@ public:
 	class inset_iterator {
 	public:
 		typedef std::input_iterator_tag iterator_category;
-		typedef Inset value_type;
+		typedef InsetOld value_type;
 		typedef ptrdiff_t difference_type;
-		typedef Inset * pointer;
-		typedef Inset & reference;
+		typedef InsetOld * pointer;
+		typedef InsetOld & reference;
 		typedef ParagraphList::iterator base_type;
 
 		///
@@ -387,7 +387,7 @@ public:
 	ParConstIterator par_iterator_end() const;
 
 	///
-	Inset * getInsetFromID(int id_arg) const;
+	InsetOld * getInsetFromID(int id_arg) const;
 };
 
 bool operator==(Buffer::inset_iterator const & iter1,

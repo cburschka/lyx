@@ -33,7 +33,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const { return Inset::CITE_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::CITE_CODE; }
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

@@ -152,9 +152,9 @@ MathAtom & InsetFormulaMacro::par()
 }
 
 
-Inset::Code InsetFormulaMacro::lyxCode() const
+InsetOld::Code InsetFormulaMacro::lyxCode() const
 {
-	return Inset::MATHMACRO_CODE;
+	return InsetOld::MATHMACRO_CODE;
 }
 
 

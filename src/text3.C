@@ -96,7 +96,7 @@ namespace {
 	// check if the given co-ordinates are inside an inset at the
 	// given cursor, if one exists. If so, the inset is returned,
 	// and the co-ordinates are made relative. Otherwise, 0 is returned.
-	Inset * checkInset(BufferView * bv, LyXText & text,
+	InsetOld * checkInset(BufferView * bv, LyXText & text,
 		LyXCursor const & cur, int & x, int & y)
 	{
 		lyx::pos_type const pos = cur.pos();
@@ -105,7 +105,7 @@ namespace {
 		if (pos >= par->size() || !par->isInset(pos))
 			return 0;
 
-		Inset /*const*/ * inset = par->getInset(pos);
+		InsetOld /*const*/ * inset = par->getInset(pos);
 
 		if (!isEditableInset(inset))
 			return 0;
@@ -145,14 +145,14 @@ namespace {
 } // anon namespace
 
 
-Inset * LyXText::checkInsetHit(int & x, int & y)
+InsetOld * LyXText::checkInsetHit(int & x, int & y)
 {
 	int y_tmp = y + top_y();
 
 	LyXCursor cur;
 	setCursorFromCoordinates(cur, x, y_tmp);
 
-	Inset * inset = checkInset(bv(), *this, cur, x, y_tmp);
+	InsetOld * inset = checkInset(bv(), *this, cur, x, y_tmp);
 	if (inset) {
 		y = y_tmp;
 		return inset;
@@ -172,14 +172,14 @@ Inset * LyXText::checkInsetHit(int & x, int & y)
 }
 
 
-bool LyXText::gotoNextInset(vector<Inset::Code> const & codes,
+bool LyXText::gotoNextInset(vector<InsetOld::Code> const & codes,
 			    string const & contents)
 {
 	ParagraphList::iterator end = ownerParagraphs().end();
 	ParagraphList::iterator pit = cursor.par();
 	pos_type pos = cursor.pos();
 
-	Inset * inset;
+	InsetOld * inset;
 	do {
 		if (pos + 1 < pit->size()) {
 			++pos;
@@ -204,7 +204,7 @@ bool LyXText::gotoNextInset(vector<Inset::Code> const & codes,
 }
 
 
-void LyXText::gotoInset(vector<Inset::Code> const & codes,
+void LyXText::gotoInset(vector<InsetOld::Code> const & codes,
 			bool same_content)
 {
 	bv()->beforeChange(this);
@@ -213,7 +213,7 @@ void LyXText::gotoInset(vector<Inset::Code> const & codes,
 	string contents;
 	if (same_content && cursor.pos() < cursor.par()->size()
 	    && cursor.par()->isInset(cursor.pos())) {
-		Inset const * inset = cursor.par()->getInset(cursor.pos());
+		InsetOld const * inset = cursor.par()->getInset(cursor.pos());
 		if (find(codes.begin(), codes.end(), inset->lyxCode())
 		    != codes.end())
 			contents = static_cast<InsetCommand const *>(inset)->getContents();
@@ -237,9 +237,9 @@ void LyXText::gotoInset(vector<Inset::Code> const & codes,
 }
 
 
-void LyXText::gotoInset(Inset::Code code, bool same_content)
+void LyXText::gotoInset(InsetOld::Code code, bool same_content)
 {
-	gotoInset(vector<Inset::Code>(1, code), same_content);
+	gotoInset(vector<InsetOld::Code>(1, code), same_content);
 }
 
 
@@ -382,7 +382,7 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 		   bool edit, bool pastesel)
 {
-	Inset * inset = createInset(cmd);
+	InsetOld * inset = createInset(cmd);
 	BufferView * bv = cmd.view();
 
 	if (inset) {
@@ -406,7 +406,7 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 
 }
 
-Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
+InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 {
 	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << cmd.action
 			      <<"] arg[" << cmd.argument << ']' << endl;
@@ -613,7 +613,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (cursor.pos() < cursor.par()->size()
 		    && cursor.par()->isInset(cursor.pos())
 		    && isHighlyEditableInset(cursor.par()->getInset(cursor.pos()))) {
-			Inset * tmpinset = cursor.par()->getInset(cursor.pos());
+			InsetOld * tmpinset = cursor.par()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
 			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "right" : "left");
 			tmpinset->localDispatch(cmd1);
@@ -639,7 +639,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		    cursor.pos() < cursor.par()->size() &&
 		    cursor.par()->isInset(cursor.pos()) &&
 		    isHighlyEditableInset(cursor.par()->getInset(cursor.pos()))) {
-			Inset * tmpinset = cursor.par()->getInset(cursor.pos());
+			InsetOld * tmpinset = cursor.par()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
 			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "left" : "right");
 			tmpinset->localDispatch(cmd1);
@@ -1183,18 +1183,18 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_GOTOERROR:
-		gotoInset(Inset::ERROR_CODE, false);
+		gotoInset(InsetOld::ERROR_CODE, false);
 		break;
 
 	case LFUN_GOTONOTE:
-		gotoInset(Inset::NOTE_CODE, false);
+		gotoInset(InsetOld::NOTE_CODE, false);
 		break;
 
 	case LFUN_REFERENCE_GOTO:
 	{
-		vector<Inset::Code> tmp;
-		tmp.push_back(Inset::LABEL_CODE);
-		tmp.push_back(Inset::REF_CODE);
+		vector<InsetOld::Code> tmp;
+		tmp.push_back(InsetOld::LABEL_CODE);
+		tmp.push_back(InsetOld::REF_CODE);
 		gotoInset(tmp, true);
 		break;
 	}
@@ -1293,7 +1293,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		// Check for inset locking
 		if (bv->theLockingInset()) {
-			Inset * tli = bv->theLockingInset();
+			InsetOld * tli = bv->theLockingInset();
 			LyXCursor cursor = bv->text->cursor;
 			LyXFont font = bv->text->getFont(bv->buffer(),
 							 cursor.par(), cursor.pos());
@@ -1366,7 +1366,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		int x = cmd.x;
 		int y = cmd.y;
-		Inset * inset_hit = bv->text->checkInsetHit(x, y);
+		InsetOld * inset_hit = bv->text->checkInsetHit(x, y);
 
 		// Middle button press pastes if we have a selection
 		// We do this here as if the selection was inside an inset
@@ -1461,7 +1461,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// inset, inset_hit is 0, and inset_x == x, inset_y == y.
 		int x = cmd.x;
 		int y = cmd.y;
-		Inset * inset_hit = bv->text->checkInsetHit(x, y);
+		InsetOld * inset_hit = bv->text->checkInsetHit(x, y);
 
 		if (bv->theLockingInset()) {
 			// We are in inset locking mode.
@@ -1521,7 +1521,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// (Joacim)
 			// ...or maybe the SetCursorParUndo()
 			// below isn't necessary at all anylonger?
-			if (inset_hit->lyxCode() == Inset::REF_CODE)
+			if (inset_hit->lyxCode() == InsetOld::REF_CODE)
 				recordUndo(bv, Undo::ATOMIC);
 
 			bv->owner()->message(inset_hit->editMessage());

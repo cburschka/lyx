@@ -53,9 +53,9 @@ public:
 	///
 	EDITABLE editable() const;
 	///
-	bool insertInset(BufferView *, Inset * inset);
+	bool insertInset(BufferView *, InsetOld * inset);
 	///
-	virtual bool insetAllowed(Inset::Code code) const {
+	virtual bool insetAllowed(InsetOld::Code code) const {
 		return inset.insetAllowed(code);
 	}
 	///
@@ -70,7 +70,7 @@ public:
 	bool unlockInsetInInset(BufferView *, UpdatableInset *,
 				bool lr = false);
 	///
-	bool updateInsetInInset(BufferView *, Inset *);
+	bool updateInsetInInset(BufferView *, InsetOld *);
 	///
 	int insetInInsetY() const;
 	///
@@ -96,7 +96,7 @@ public:
 	}
 	UpdatableInset * getLockingInset() const;
 	///
-	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
+	UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code);
 	///
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
 		 bool selectall = false);
@@ -129,7 +129,7 @@ public:
 		UpdatableInset::scroll(bv, offset);
 	}
 	///
-	Inset * getInsetFromID(int id) const;
+	InsetOld * getInsetFromID(int id) const;
 	///
 	ParagraphList * getParagraphs(int) const;
 	///

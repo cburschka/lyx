@@ -101,9 +101,9 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void center();
 	///
-	bool insertInset(Inset * inset, string const & lout = string());
+	bool insertInset(InsetOld * inset, string const & lout = string());
 	///
-	void updateInset(Inset * inset);
+	void updateInset(InsetOld * inset);
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);
 	/// a function should be executed
@@ -172,7 +172,7 @@ private:
 	///
 	std::vector<Position> saved_positions;
 	/// Get next inset of this class from current cursor position
-	Inset * getInsetByCode(Inset::Code code);
+	InsetOld * getInsetByCode(InsetOld::Code code);
 	///
 	void MenuInsertLyXFile(string const & filen);
 	/// our workarea

@@ -211,7 +211,7 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 			Paragraph::value_type c = par->getChar(i);
 			switch (c) {
 			case Paragraph::META_INSET:
-				if (par->getInset(i)->lyxCode() != Inset::NEWLINE_CODE) {
+				if (par->getInset(i)->lyxCode() != InsetOld::NEWLINE_CODE) {
 					lyxerr << "Element is not allowed in insertERT"
 					       << endl;
 				} else {
@@ -237,7 +237,7 @@ string const InsetERT::editMessage() const
 }
 
 
-bool InsetERT::insertInset(BufferView *, Inset *)
+bool InsetERT::insertInset(BufferView *, InsetOld *)
 {
 	return false;
 }
@@ -268,7 +268,7 @@ void InsetERT::updateStatus(BufferView * bv, bool swap) const
 }
 
 
-Inset::EDITABLE InsetERT::editable() const
+InsetOld::EDITABLE InsetERT::editable() const
 {
 	if (status_ == Collapsed)
 		return IS_EDITABLE;
@@ -416,9 +416,9 @@ int InsetERT::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
+InsetOld::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 {
-	Inset::RESULT result = UNDISPATCHED;
+	InsetOld::RESULT result = UNDISPATCHED;
 	BufferView * bv = cmd.view();
 
 	if (inset.paragraphs.begin()->empty()) {

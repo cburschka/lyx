@@ -28,7 +28,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	Inset::Code lyxCode() const { return Inset::MARGIN_CODE; }
+	InsetOld::Code lyxCode() const { return InsetOld::MARGIN_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;

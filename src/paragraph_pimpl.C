@@ -318,7 +318,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 
 
 void Paragraph::Pimpl::insertInset(pos_type pos,
-				   Inset * inset, LyXFont const & font, Change change)
+				   InsetOld * inset, LyXFont const & font, Change change)
 {
 	Assert(inset);
 	Assert(pos <= size());
@@ -390,7 +390,7 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 		// only allow the actual removal if it was /new/ text
 		if (changetype != Change::INSERTED) {
 			if (text[pos] == Paragraph::META_INSET) {
-				Inset * i(owner_->getInset(pos));
+				InsetOld * i(owner_->getInset(pos));
 				i->markErased();
 			}
 			return false;
@@ -499,7 +499,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			if (c != '\0')
 				os << c;
 		} else {
-			Inset const * inset = owner_->getInset(i);
+			InsetOld const * inset = owner_->getInset(i);
 			inset->ascii(buf, os, 0);
 		}
 		return;
@@ -510,14 +510,14 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 	// and then split to handle the two modes separately.
 	switch (c) {
 	case Paragraph::META_INSET: {
-		Inset * inset = owner_->getInset(i);
+		InsetOld * inset = owner_->getInset(i);
 
 		// FIXME: remove this check
 		if (!inset)
 			break;
 
 		// FIXME: move this to InsetNewline::latex
-		if (inset->lyxCode() == Inset::NEWLINE_CODE) {
+		if (inset->lyxCode() == InsetOld::NEWLINE_CODE) {
 			// newlines are handled differently here than
 			// the default in simpleTeXSpecialChars().
 			if (!style.newline_allowed) {
@@ -553,9 +553,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 		bool close = false;
 		int const len = os.tellp();
 		//ostream::pos_type const len = os.tellp();
-		if ((inset->lyxCode() == Inset::GRAPHICS_CODE
-		     || inset->lyxCode() == Inset::MATH_CODE
-		     || inset->lyxCode() == Inset::URL_CODE)
+		if ((inset->lyxCode() == InsetOld::GRAPHICS_CODE
+		     || inset->lyxCode() == InsetOld::MATH_CODE
+		     || inset->lyxCode() == InsetOld::URL_CODE)
 		    && running_font.isRightToLeft()) {
 			os << "\\L{";
 			close = true;
@@ -824,7 +824,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		if (icit->inset) {
 			icit->inset->validate(features);
 			if (layout.needprotect &&
-			    icit->inset->lyxCode() == Inset::FOOT_CODE)
+			    icit->inset->lyxCode() == InsetOld::FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
 		}
 	}

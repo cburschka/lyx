@@ -524,9 +524,9 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 }
 
 
-bool InsetTabular::updateInsetInInset(BufferView * bv, Inset * inset)
+bool InsetTabular::updateInsetInInset(BufferView * bv, InsetOld * inset)
 {
-	Inset * tl_inset = inset;
+	InsetOld * tl_inset = inset;
 	// look if this inset is really inside myself!
 	while(tl_inset->owner() && tl_inset->owner() != this)
 		tl_inset = tl_inset->owner();
@@ -558,7 +558,7 @@ UpdatableInset * InsetTabular::getLockingInset() const
 }
 
 
-UpdatableInset * InsetTabular::getFirstLockingInsetOfType(Inset::Code c)
+UpdatableInset * InsetTabular::getFirstLockingInsetOfType(InsetOld::Code c)
 {
 	if (c == lyxCode())
 		return this;
@@ -568,7 +568,7 @@ UpdatableInset * InsetTabular::getFirstLockingInsetOfType(Inset::Code c)
 }
 
 
-bool InsetTabular::insertInset(BufferView * bv, Inset * inset)
+bool InsetTabular::insertInset(BufferView * bv, InsetOld * inset)
 {
 	if (the_locking_inset)
 		return the_locking_inset->insertInset(bv, inset);
@@ -688,7 +688,7 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
+InsetOld::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 {
 	// We need to save the value of the_locking_inset as the call to
 	// the_locking_inset->localDispatch might unlock it.
@@ -750,7 +750,7 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 	result = DISPATCHED;
 	// this one have priority over the locked InsetText, if we're not already
 	// inside another tabular then that one get's priority!
-	if (getFirstLockingInsetOfType(Inset::TABULAR_CODE) == this) {
+	if (getFirstLockingInsetOfType(InsetOld::TABULAR_CODE) == this) {
 		switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			lfunMousePress(cmd);
@@ -1191,12 +1191,12 @@ int InsetTabular::linuxdoc(Buffer const * buf, ostream & os) const
 int InsetTabular::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
 	int ret = 0;
-	Inset * master;
+	InsetOld * master;
 
 	// if the table is inside a float it doesn't need the informaltable
 	// wrapper. Search for it.
 	for(master = owner();
-	    master && master->lyxCode() != Inset::FLOAT_CODE;
+	    master && master->lyxCode() != InsetOld::FLOAT_CODE;
 	    master = master->owner());
 
 	if (!master) {
@@ -1448,7 +1448,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 }
 
 
-Inset::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
+InsetOld::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
 {
 	if (lock && !old_locking_inset) {
 		if (activateCellInset(bv))
@@ -1466,7 +1466,7 @@ Inset::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
 }
 
 
-Inset::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
+InsetOld::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
 {
 	bool moved = isRightToLeft(bv) ? moveNextCell(bv) : movePrevCell(bv);
 	if (!moved)
@@ -1480,7 +1480,7 @@ Inset::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
 }
 
 
-Inset::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
+InsetOld::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellAbove(actcell);
@@ -1501,7 +1501,7 @@ Inset::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
 }
 
 
-Inset::RESULT InsetTabular::moveDown(BufferView * bv, bool lock)
+InsetOld::RESULT InsetTabular::moveDown(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellBelow(actcell);
@@ -2077,7 +2077,7 @@ LyXText * InsetTabular::getLyXText(BufferView const * bv,
 {
 	if (the_locking_inset)
 		return the_locking_inset->getLyXText(bv, recursive);
-	return Inset::getLyXText(bv, recursive);
+	return InsetOld::getLyXText(bv, recursive);
 }
 
 
@@ -2430,18 +2430,18 @@ LyXCursor const & InsetTabular::cursor(BufferView * bv) const
 {
 	if (the_locking_inset)
 		return the_locking_inset->cursor(bv);
-	return Inset::cursor(bv);
+	return InsetOld::cursor(bv);
 }
 
 
-Inset * InsetTabular::getInsetFromID(int id_arg) const
+InsetOld * InsetTabular::getInsetFromID(int id_arg) const
 {
 	if (id_arg == id())
 		return const_cast<InsetTabular *>(this);
 
 	for (int i = 0; i < tabular.rows(); ++i) {
 		for (int j = 0; j < tabular.columns(); ++j) {
-			Inset * inset = tabular.getCellInset(i, j).getInsetFromID(id_arg);
+			InsetOld * inset = tabular.getCellInset(i, j).getInsetFromID(id_arg);
 			if (inset)
 				return inset;
 		}
@@ -2603,7 +2603,7 @@ bool InsetTabular::searchBackward(BufferView * bv, string const & str,
 }
 
 
-bool InsetTabular::insetAllowed(Inset::Code code) const
+bool InsetTabular::insetAllowed(InsetOld::Code code) const
 {
 	if (the_locking_inset)
 		return the_locking_inset->insetAllowed(code);
@@ -2614,7 +2614,7 @@ bool InsetTabular::insetAllowed(Inset::Code code) const
 }
 
 
-bool InsetTabular::forceDefaultParagraphs(Inset const * in) const
+bool InsetTabular::forceDefaultParagraphs(InsetOld const * in) const
 {
 	const int cell = tabular.getCellFromInset(in, actcell);
 

@@ -159,7 +159,7 @@ public:
 	  */
 	void insertChar(char c);
 	///
-	void insertInset(Inset * inset);
+	void insertInset(InsetOld * inset);
 
 	/// Completes the insertion with a rebreak from 'need_break_row' on
 	void partialRebreak();
@@ -178,7 +178,7 @@ public:
 	void postPaint();
 
 	///
-	Inset::RESULT dispatch(FuncRequest const & cmd);
+	InsetOld::RESULT dispatch(FuncRequest const & cmd);
 
 	BufferView * bv();
 
@@ -250,7 +250,7 @@ public:
 	/// just selects the word the cursor is in
 	void selectWord(lyx::word_location loc);
 	/// returns the inset at cursor (if it exists), 0 otherwise
-	Inset * getInset() const;
+	InsetOld * getInset() const;
 
 	/// accept selected change
 	void acceptChange();
@@ -385,25 +385,25 @@ public:
 	void insertStringAsParagraphs(string const & str);
 
 	/// Find next inset of some specified type.
-	bool gotoNextInset(std::vector<Inset::Code> const & codes,
+	bool gotoNextInset(std::vector<InsetOld::Code> const & codes,
 			   string const & contents = string());
 	///
-	void gotoInset(std::vector<Inset::Code> const & codes,
+	void gotoInset(std::vector<InsetOld::Code> const & codes,
 		       bool same_content);
 	///
-	void gotoInset(Inset::Code code, bool same_content);
+	void gotoInset(InsetOld::Code code, bool same_content);
 	///
 
 	/* for the greater insets */
 
 	/// returns false if inset wasn't found
-	bool updateInset(Inset *);
+	bool updateInset(InsetOld *);
 	///
 	void checkParagraph(ParagraphList::iterator pit, lyx::pos_type pos);
 	///
 	int workWidth() const;
 	/// returns width of row containing inset
-	int workWidth(Inset const * inset) const;
+	int workWidth(InsetOld const * inset) const;
 
 	///
 	void computeBidiTables(Buffer const *, RowList::iterator row) const;
@@ -467,7 +467,7 @@ public:
 	 * Returns an inset if inset was hit, or 0 if not.
 	 * If hit, the coordinates are changed relative to the inset.
 	 */
-	Inset * checkInsetHit(int & x, int & y);
+	InsetOld * checkInsetHit(int & x, int & y);
 
 	///
 	int singleWidth(ParagraphList::iterator pit, lyx::pos_type pos) const;

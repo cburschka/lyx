@@ -30,7 +30,7 @@ public:
 	///
 	virtual bool needFullRow() const;
 	///
-	virtual Inset::Code lyxCode() const;
+	virtual InsetOld::Code lyxCode() const;
 	///
 	virtual string const editMessage() const;
 	///
@@ -60,7 +60,7 @@ bool InsetCaption::needFullRow() const
 
 
 inline
-Inset::Code InsetCaption::lyxCode() const
+InsetOld::Code InsetCaption::lyxCode() const
 {
 	return CAPTION_CODE;
 }

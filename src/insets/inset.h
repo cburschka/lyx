@@ -12,8 +12,8 @@
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef INSET_H
-#define INSET_H
+#ifndef INSETOLD_H
+#define INSETOLD_H
 
 #include "LColor.h"
 #include "insetbase.h"
@@ -42,11 +42,11 @@ namespace graphics {
 }
 
 /// Insets
-class Inset : public InsetBase {
+class InsetOld : public InsetBase {
 public:
 	/** This is not quite the correct place for this enum. I think
 	    the correct would be to let each subclass of Inset declare
-	    its own enum code. Actually the notion of an Inset::Code
+	    its own enum code. Actually the notion of an InsetOld::Code
 	    should be avoided, but I am not sure how this could be done
 	    in a cleaner way. */
 	enum Code {
@@ -154,9 +154,9 @@ public:
 	typedef dispatch_result RESULT;
 
 	///
-	Inset();
+	InsetOld();
 	///
-	Inset(Inset const & in);
+	InsetOld(InsetOld const & in);
 	///
 	int ascent() const;
 	///
@@ -172,9 +172,9 @@ public:
 	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 	/// returns true the inset can hold an inset of given type
-	virtual bool insetAllowed(Inset::Code) const { return false; }
+	virtual bool insetAllowed(InsetOld::Code) const { return false; }
 	/// wrapper around the above
-	bool insetAllowed(Inset * in) const;
+	bool insetAllowed(InsetOld * in) const;
 	///
 	virtual void write(Buffer const *, std::ostream &) const = 0;
 	///
@@ -191,7 +191,7 @@ public:
 	virtual int docbook(Buffer const *, std::ostream &, bool) const = 0;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
-	virtual Inset::Code lyxCode() const { return NO_CODE; }
+	virtual InsetOld::Code lyxCode() const { return NO_CODE; }
 
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;
@@ -243,7 +243,7 @@ public:
 
 	/// try to get a inset pointer from it's id if we have
 	/// an inset to give back!
-	virtual Inset * getInsetFromID(int /*id*/) const { return 0; }
+	virtual InsetOld * getInsetFromID(int /*id*/) const { return 0; }
 	/// if this insets owns paragraphs (f.ex. InsetText) then it
 	/// should return it's very first one!
 	virtual ParagraphList * getParagraphs(int /*num*/) const { return 0; }
@@ -289,7 +289,7 @@ public:
 	virtual bool isLineSeparator() const { return false; }
 	// if this inset has paragraphs should they be output all as default
 	// paragraphs with "Standard" layout?
-	virtual bool forceDefaultParagraphs(Inset const *) const;
+	virtual bool forceDefaultParagraphs(InsetOld const *) const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */
@@ -348,14 +348,14 @@ private:
 
 
 inline
-bool Inset::insetAllowed(Inset * in) const
+bool InsetOld::insetAllowed(InsetOld * in) const
 {
 	return insetAllowed(in->lyxCode());
 }
 
 
 inline
-bool Inset::checkInsertChar(LyXFont &)
+bool InsetOld::checkInsertChar(LyXFont &)
 {
 	return false;
 }
@@ -364,7 +364,7 @@ bool Inset::checkInsertChar(LyXFont &)
  * returns true if pointer argument is valid
  * and points to an editable inset
  */
-inline bool isEditableInset(Inset const * i)
+inline bool isEditableInset(InsetOld const * i)
 {
 	return i && i->editable();
 }
@@ -373,9 +373,9 @@ inline bool isEditableInset(Inset const * i)
  * returns true if pointer argument is valid
  * and points to a highly editable inset
  */
-inline bool isHighlyEditableInset(Inset const * i)
+inline bool isHighlyEditableInset(InsetOld const * i)
 {
-	return i && i->editable() == Inset::HIGHLY_EDITABLE;
+	return i && i->editable() == InsetOld::HIGHLY_EDITABLE;
 }
 
 #endif

@@ -175,7 +175,7 @@ int RowPainter::leftMargin() const
 
 void RowPainter::paintInset(pos_type const pos)
 {
-	Inset * inset = const_cast<Inset*>(pit_->getInset(pos));
+	InsetOld * inset = const_cast<InsetOld*>(pit_->getInset(pos));
 
 	Assert(inset);
 
