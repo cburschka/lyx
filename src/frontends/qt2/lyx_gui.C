@@ -53,6 +53,11 @@ using std::endl;
 
 extern BufferList bufferlist;
 
+namespace {
+	/// good ol' "easy to use" Qt again
+	float getDPI() { return 95; }
+};
+ 
 // FIXME: wrong place !
 LyXServer * lyxserver;
 
@@ -64,13 +69,14 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 
 	Image::newImage = boost::bind(&QLImage::newImage);
 	Image::loadableFormats = boost::bind(&QLImage::loadableFormats);
+
+	// needs to be done before reading lyxrc
+	lyxrc.dpi = getDPI();
 }
 
 
 void lyx_gui::parse_lyxrc()
 {
-	// FIXME !!!!
-	lyxrc.dpi = 95;
 }
 
 

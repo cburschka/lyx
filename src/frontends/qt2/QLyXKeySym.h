@@ -18,6 +18,10 @@
 #include "LString.h"
 #include "frontends/LyXKeySym.h"
 
+#include <qstring.h>
+
+class QKeyEvent;
+ 
 /**
  * Qt-specific key press.
  *
@@ -30,7 +34,7 @@ public:
 	virtual ~QLyXKeySym() {}
 
 	/// delayed constructor
-	void set(int key, bool shift);
+	void set(QKeyEvent * ev);
 
 	/// set from a LyX symbolic name
 	virtual void init(string const & symbolname);
@@ -54,10 +58,18 @@ public:
 	virtual bool operator==(LyXKeySym const & k) const;
 
 private:
+	/// return true if bogon (see source)
+	bool is_qt_bogon() const;
+
+	/// return the fixed bogon (see source)
+	char debogonify() const;
+ 
 	/// the Qt sym value
 	int key_;
-	/// shift held or not 
-	bool shift_;
+	/// the event string value 
+	QString text_;
+	/// hack-o-rama
+	int ascii_; 
 };
 
 #endif // QLYXKEYSYM_H

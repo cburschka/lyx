@@ -37,6 +37,7 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 
 void QGraphicsDialog::change_adaptor()
 {
+	lyxerr << "changed" << endl; 
 	form_->changed();
 }
 
