@@ -83,6 +83,9 @@ void FormCitation::build()
 	minw_ = form()->w;
 	minh_ = form()->h;
 
+	fl_set_input_return(dialog_->input_after,  FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_before, FL_RETURN_CHANGED);
+
         // Manage the ok, apply, restore and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setApply(dialog_->button_apply);
