@@ -1,3 +1,8 @@
+2003-01-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* buffer.C (readFile): remember to pass on 'par' when calling
+	readFile recursively.
+
 2003-01-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* MenuBackend.C (expandFormats): add "..." to import formats.
@@ -16,7 +21,7 @@
 
 2003-01-08  Michael Schmitt <Michael.Schmitt@teststep.org>
 
-        * Clarify the meaning of "wheel mouse jump"
+	* Clarify the meaning of "wheel mouse jump"
 
 2003-01-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

@@ -1216,7 +1216,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 					istringstream is(STRCONV(ret.second));
 					LyXLex tmplex(0, 0);
 					tmplex.setStream(is);
-					return readFile(tmplex, string());
+					return readFile(tmplex, string(), par);
 				} else {
 					// This code is reached if lyx2lyx failed (for
 					// some reason) to change the file format of
