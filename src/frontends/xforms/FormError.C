@@ -43,6 +43,6 @@ void FormError::build()
 void FormError::update()
 {
 	string const txt = formatted(controller().params(),
-				     dialog_->message->w-10);
+				     dialog_->message->w - 10);
 	fl_set_object_label(dialog_->message, txt.c_str());
 }
