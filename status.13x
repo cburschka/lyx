@@ -21,4 +21,6 @@ What's new
 
 ** Bug fixes
 
+[bug 874] Fix strerror() build problem with some gcc/glibc versions
+
 lyx2lyx: enable the debug level to be set.
