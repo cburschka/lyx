@@ -1,6 +1,20 @@
+2000-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* NEWS: updated.
+
+2000-10-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/xforms/FormParagraph.C: more space above/below
+	fixes
+
+2000-10-17  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/lyxfunc.C (Dispatch): Call to showState() after insertion of 
+	a char only if real_current_font was changed.
+
 2000-10-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* NEWS: update somehow for 1.1.6
+	* NEWS: update somewhat for 1.1.6
 
 	* lib/ui/default.ui: clean up.
 

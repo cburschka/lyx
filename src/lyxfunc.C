@@ -2886,6 +2886,7 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_SELFINSERT:
 	{
+		LyXFont old_font(owner->view()->text->real_current_font);
 		for (string::size_type i = 0; i < argument.length(); ++i) {
 			owner->view()->text->InsertChar(owner->view(), argument[i]);
 			// This needs to be in the loop, or else we
@@ -2895,8 +2896,11 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
 		moveCursorUpdate(false);
-		owner->showState(); // current_font.number can change
-		                    // so we need to update the minibuffer
+
+		// real_current_font.number can change so we need to 
+		// update the minibuffer
+		if (old_font != owner->view()->text->real_current_font)
+			owner->showState();
 	}
 	break;
 
@@ -3017,7 +3021,7 @@ string const LyXFunc::Dispatch(int ac,
 			}
 			
 			owner->view()->beforeChange();
-			
+			LyXFont old_font(owner->view()->text->real_current_font);
 			for (string::size_type i = 0;
 			     i < argument.length(); ++i) {
 				if (greek_kb_flag) {
@@ -3032,8 +3036,11 @@ string const LyXFunc::Dispatch(int ac,
 			owner->view()->text->sel_cursor = 
 				owner->view()->text->cursor;
 			moveCursorUpdate(false);
-			owner->showState(); // current_font.number can change
-			                    // so we need to update the minibuffer
+
+			// real_current_font.number can change so we need to
+			// update the minibuffer
+			if (old_font != owner->view()->text->real_current_font)
+				owner->showState();
 			return string();
 		} else {
 			// why is an "Unknown action" with empty

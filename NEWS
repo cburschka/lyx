@@ -33,20 +33,20 @@ Other major changes in 1.1.6 include:
 
 - the table support has been completely rewritten. It is now a modular
   object (inset) which owns for each cell a (also) newly written text
-  inset. This permits now to have automatic text-wrap inside a tabular
+  inset. This now permits automatic text-wrap inside a tabular
   cell (if you define a width), multiparagraph mode AND setting of
   layouts for the paragraphs (lists inside a tabular cell!). Last but
-  not least, wide tabulars now scroll automatically so that all of it
+  not least, a wide tabular now scroll automatically so that all of it
   is visible without the need to enlarge the window!
 
   While there are yet no other new features, they will be now MUCH
   easier to add. It may be that because of being "young" code some
-  features may not work right now, but at least you can use this much
+  features may not work right now, but at least it is much
   better than before.
 
 - new external material inset: this is a new kind of very powerful
   inset which will allow LyX to interface intelligently with external
-  applications. Among other good things, it will allow you to finally
+  applications. Among other good things, it will finally allow you to 
   include GIF, JPEG, TIF, PNG, or just about any other raster format
   images in your document. It will even do an approximate ascii
   rendering when you do Ascii export if you have gifscii installed.
@@ -55,9 +55,10 @@ Other major changes in 1.1.6 include:
   viewing or exporting purpose) has been rewritten. In particular, the
   PDF format is now supported [Dekel, details?]
 
-- DocBook improvements [José, details?]
+- included files work now with docbook and linuxdoc.
+  New layout docbook-book.
 
-And finally, there has been a lot of smaller changes, which are
+And finally, there have been a lot of smaller changes, which are
 mentioned here for your information
 
 - the menu entry File->New does not prompt for a file name by default

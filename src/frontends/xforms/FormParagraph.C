@@ -547,17 +547,17 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     //
     // "Synchronize" the choices and input fields, making it
     // impossible to commit senseless data.
-    if (ob == general_->choice_space_above) {
-	if (fl_get_choice (general_->choice_space_above) != 7)
-	    fl_set_input (general_->input_space_above, "");
-    } else if (ob == general_->choice_space_below) {
-	if (fl_get_choice (general_->choice_space_below) != 7)
-	    fl_set_input (general_->input_space_below, "");
-    }
+
+    if (fl_get_choice (general_->choice_space_above) != 7)
+        fl_set_input (general_->input_space_above, "");
+
+    if (fl_get_choice (general_->choice_space_below) != 7)
+        fl_set_input (general_->input_space_below, "");
+
     //
     // then the extra form
     //
-    else if (ob == extra_->radio_pextra_indent) {
+    if (ob == extra_->radio_pextra_indent) {
 	int n = fl_get_button(extra_->radio_pextra_indent);
 	if (n) {
 	    fl_set_button(extra_->radio_pextra_minipage, 0);
@@ -648,32 +648,28 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     // first the general form
     //
     string input = fl_get_input (general_->input_space_above);
+    bool invalid = false;
 	
-    if (input.empty()) {
-	fl_set_choice (general_->choice_space_above, 1);
-    } else if (isValidGlueLength (input)) {
-	fl_set_choice (general_->choice_space_above, 7);
-    } else {
-	fl_set_choice (general_->choice_space_above, 7);
-	fl_set_object_label(dialog_->text_warning,
-		    _("Warning: Invalid Length (valid example: 10mm)"));
-	fl_show_object(dialog_->text_warning);
-	ret = false;
-    }
-    
+    if (fl_get_choice(general_->choice_space_above)==7)
+        invalid = !input.empty() && !isValidGlueLength(input);
+
     input = fl_get_input (general_->input_space_below);
-	
-    if (input.empty()) {
-	fl_set_choice (general_->choice_space_below, 1);
-    } else if (isValidGlueLength(input)) {
-	fl_set_choice (general_->choice_space_below, 7);
-    } else {
-	fl_set_choice (general_->choice_space_below, 7);
-	fl_set_object_label(dialog_->text_warning,
-		    _("Warning: Invalid Length (valid example: 10mm)"));
-	fl_show_object(dialog_->text_warning);
-	ret = false;
+
+    if (fl_get_choice(general_->choice_space_below)==7)
+        invalid = invalid || (!input.empty() && !isValidGlueLength(input));
+    
+    if (ob == general_->input_space_above || ob == general_->input_space_below) {
+        if (invalid) {
+            fl_set_object_label(dialog_->text_warning,
+                _("Warning: Invalid Length (valid example: 10mm)"));
+            fl_show_object(dialog_->text_warning);
+            return false;
+        } else {
+            fl_hide_object(dialog_->text_warning);
+            return true;
+        }
     }
+
     //
     // then the extra form
     //
