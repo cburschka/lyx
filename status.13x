@@ -37,14 +37,18 @@ What's new
 
 ** Bug fixes
 
-- fix bug where opening the tabular dialog would mark the document as 
-  changed [bug #849, Qt only]
-
 - delete lyxserver pipes on exit [bug #865, Qt only]
 
 - fix bug where "lyx -e" would refuse to work [Qt only]
 
-- duplicate A shortcut in spellchecker dialog fixed [bug #884, Qt only]
+- fix bug where opening the tabular dialog would mark the document as 
+  changed [bug #849, Qt only]
+
+- duplicate 'A' shortcut in spellchecker dialog fixed [bug #884, Qt
+  only]
+
+- in the BibTeX dialog, fix the browsing mechanism of *.sty files and
+  remove the unused Update button [bug #773, Qt only]
 
 - fix various problems with paper size selection [bug #844 and more]
 

@@ -61,8 +61,21 @@ void QBibtexDialog::browsePressed()
 					     0,
 					     qt_("Select a BibTeX style"));
 	if (!file.isNull()) {
-		string const filen = ChangeExtension(OnlyFilename(fromqstr(file)), "");
-		styleCB->insertItem(toqstr(filen),0);
+		string const filen = ChangeExtension(fromqstr(file), "");
+		bool present = false;
+		int pres = 0;
+
+		for (unsigned int i = 0; i != styleCB->count(); i++) {
+			if (fromqstr(styleCB->text(i)) == filen) {
+				present = true;
+				pres = i;
+			}
+		}
+
+		if (!present) 
+			styleCB->insertItem(toqstr(filen),0);
+		
+		styleCB->setCurrentItem(pres);
 		form_->changed();
 	}
 }
