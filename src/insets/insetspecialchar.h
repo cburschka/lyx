@@ -77,9 +77,6 @@ public:
 	bool isChar() const;
 	/// is this equivalent to a letter?
 	bool isLetter() const;
-	/// is this equivalent to a space (which is BTW different from
-	// a line separator)?
-	bool isSpace() const;
 	// should we break lines after this inset?
 	bool isLineSeparator() const;
 private:

@@ -257,9 +257,10 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		x += scroll();
 
 	x += TEXT_TO_INSET_OFFSET;
+	y -= text_.firstRow()->ascent_of_text();
 
 	text_.xo_ = x;
-	text_.yo_ = y - text_.firstRow()->ascent_of_text() + bv->top_y();
+	text_.yo_ = y + bv->top_y();
 	
 	paintTextInset(*bv, text_, x, y);
 

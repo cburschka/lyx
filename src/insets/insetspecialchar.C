@@ -269,12 +269,6 @@ bool InsetSpecialChar::isLetter() const
 }
 
 
-bool InsetSpecialChar::isSpace() const
-{
-	return false;
-}
-
-
 bool InsetSpecialChar::isLineSeparator() const
 {
 #if 0

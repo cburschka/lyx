@@ -449,20 +449,16 @@ void RowPainter::paintSelection()
 				tmpx -= singleWidth(body_pos - 1);
 		}
 
+		tmpx += singleWidth(pos);
+
 		if (hfillExpansion(*pit_, row_, pos)) {
-			tmpx += singleWidth(pos);
 			if (pos >= body_pos)
 				tmpx += hfill_;
 			else
 				tmpx += label_hfill_;
-		}
-
-		else if (pit_->isSeparator(pos)) {
-			tmpx += singleWidth(pos);
-			if (pos >= body_pos)
-				tmpx += separator_;
 		} else {
-			tmpx += singleWidth(pos);
+			if (pit_->isSeparator(pos) && pos >= body_pos)
+				tmpx += separator_;
 		}
 
 		if ((startrow != rit_ || text_.selection.start.pos() <= pos) &&
@@ -976,7 +972,6 @@ int paintRows(BufferView const & bv, LyXText const & text,
 	int xo, int yo, int y)
 {
 	//lyxerr << "  paintRows: rit: " << &*rit << endl;
-	int const yy = yo;
 	int const y2 = bv.painter().paperHeight();
 
 	ParagraphList::iterator end = text.ownerParagraphs().end();
@@ -997,7 +992,7 @@ int paintRows(BufferView const & bv, LyXText const & text,
 				//lyxerr << "   paintRows: row: " << &*row << " ignored" << endl;
 			}
 		}
-		if (yy + y >= y2)
+		if (yo + y >= y2)
 			return y;
 	}
 
@@ -1017,11 +1012,10 @@ int paintText(BufferView & bv)
 }
 
 
-void paintTextInset(BufferView & bv, LyXText & text, int xo, int baseline)
+void paintTextInset(BufferView & bv, LyXText & text, int xo, int yo)
 {
-	RowList::iterator rit = text.firstRow();
 	ParagraphList::iterator pit = text.ownerParagraphs().begin();
-	paintRows(bv, text, pit, rit, xo, baseline - rit->ascent_of_text(), 0);
+	paintRows(bv, text, pit, pit->rows.begin(), xo, yo, 0);
 }
 
 

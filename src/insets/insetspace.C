@@ -275,8 +275,3 @@ bool InsetSpace::isSpace() const
 {
 	return true;
 }
-
-bool InsetSpace::isLineSeparator() const
-{
-	return false;
-}
