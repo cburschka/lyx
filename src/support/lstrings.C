@@ -10,6 +10,7 @@
 #include "LRegex.h"
 
 using std::count;
+using std::transform;
 
 bool isStrInt(string const & str)
 {
@@ -44,17 +45,31 @@ int  strToInt(string const & str)
 
 string lowercase(string const & a)
 {
+#if 0
 	string tmp;
 	string::const_iterator cit = a.begin();
 	for(; cit != a.end(); ++cit) {
 		tmp += static_cast<char>(tolower(*cit));
 	}
 	return tmp;
+#endif
+	string tmp(a);
+	transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
+	return tmp;
+}
+
+
+string uppercase(string const & a)
+{
+	string tmp(a);
+	transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
+	return tmp;
 }
 
 
 string tostr(long i)
 {
+	// should use string stream
 	char str[30];
 	sprintf(str, "%ld", i);
 	return string(str);
@@ -63,6 +78,7 @@ string tostr(long i)
 
 string tostr(unsigned long i)
 {
+	// should use string stream
 	char str[30];
 	sprintf(str, "%lu", i);
 	return string(str);
@@ -109,6 +125,7 @@ string tostr(float f)
 
 string tostr(double d)
 {
+	// should use string stream
 	char tmp[40];
 	sprintf(tmp, "%f", d);
 	return string(tmp);

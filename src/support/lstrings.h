@@ -99,6 +99,9 @@ int strToInt(string const & str);
 ///
 string lowercase(string const &);
 
+///
+string uppercase(string const &);
+
 /// int to string
 string tostr(int i);
 

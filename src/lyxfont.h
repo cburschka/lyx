@@ -331,6 +331,12 @@ public:
 	int width(char c) const;
 
 	///
+	int lbearing(char c) const;
+
+	///
+	int rbearing(char c) const;
+	
+	///
 	int textWidth(char const *s, int n) const;
 
 	///

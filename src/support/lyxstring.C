@@ -271,7 +271,7 @@ void lyxstring::Srep::reserve(lyxstring::size_type res_arg)
 
 
 void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
-			    value_type const * p, size_type n2)
+			      value_type const * p, size_type n2)
 {
 // can be called with p= 0 and n2= 0
 	n = min(sz - i, n);

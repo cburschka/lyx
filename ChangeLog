@@ -1,3 +1,20 @@
+1999-12-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/insets/insetlatexaccent.C (Lbearing): new function, used to
+	help with placing the manually drawn accents better.
+	(Rbearing): ditto
+	(Draw): x2 and hg changed to float to minimize rounding errors and
+	help place the accents better.
+
+	* src/lyxfont.C (ascent): fixed faulty static_cast, casting from
+	unsigned short to char is just wrong...cast the char to unsigned
+	char instead so that the two values can compare sanely. This
+	should also make the display of insetlatexaccents better and
+	perhaps also some other insets.
+	(descent): ditto
+	(lbearing): new function
+	(rbearing): ditto
+
 1999-12-15  Allan Rae  <rae@lyx.org>
 
 	* src/stl_string_fwd.h, src/Makefile.am (lyx_SOURCES):  added new

@@ -55,10 +55,10 @@
 /* Define as 1 if you have the stpcopy function */
 #undef HAVE_STPCPY
 
-/*
+#if 0
 /* Define if the bool type is known to your compiler */
 #undef HAVE_bool
-*/
+#endif
 
 /* Define to the name of the distribution.  */
 #undef PACKAGE

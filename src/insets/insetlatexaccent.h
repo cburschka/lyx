@@ -42,6 +42,10 @@ public:
 	///
 	int Width(LyXFont const & font) const;
 	///
+	int Lbearing(LyXFont const & font) const;
+	///
+	int Rbearing(LyXFont const & font) const;
+	///
 	bool DisplayISO8859_9(LyXFont font, LyXScreen & scr,
 			      int baseline, float & x);
 	///

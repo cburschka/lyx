@@ -432,7 +432,7 @@ GC GetColorGC(LyXFont::FONT_COLOR color)
 
 GC GetAccentGC(LyXFont const &f, int line_width)
 {
-	if (line_width>= 10) line_width = 9;
+	if (line_width >= 10) line_width = 9;
 	
 	if (accent_gc[line_width]) return accent_gc[line_width];
 	

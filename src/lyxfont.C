@@ -376,14 +376,14 @@ LyXFont & LyXFont::setLyXFamily(string const & fam)
 {
 	string s = lowercase(fam);
 
-	int i= 0;
-	while (s != LyXFamilyNames[i] && LyXFamilyNames[i] != "error") i++;
+	int i = 0;
+	while (s != LyXFamilyNames[i] && LyXFamilyNames[i] != "error") ++i;
 	if (s == LyXFamilyNames[i]) {
 		setFamily(LyXFont::FONT_FAMILY(i));
 	} else
 		lyxerr << "LyXFont::setLyXFamily: Unknown family `"
 		       << s << '\'' << endl;
-	return (*this);
+	return *this;
 }
 
 
@@ -392,14 +392,14 @@ LyXFont & LyXFont::setLyXSeries(string const & ser)
 {
 	string s = lowercase(ser);
 
-	int i= 0;
-	while (s != LyXSeriesNames[i] && LyXSeriesNames[i] != "error") i++;
+	int i = 0;
+	while (s != LyXSeriesNames[i] && LyXSeriesNames[i] != "error") ++i;
 	if (s == LyXSeriesNames[i]) {
 		setSeries(LyXFont::FONT_SERIES(i));
 	} else
 		lyxerr << "LyXFont::setLyXSeries: Unknown series `"
 		       << s << '\'' << endl;
-	return (*this);
+	return *this;
 }
 
 
@@ -408,14 +408,14 @@ LyXFont & LyXFont::setLyXShape(string const & sha)
 {
 	string s = lowercase(sha);
 
-	int i= 0;
-	while (s != LyXShapeNames[i] && LyXShapeNames[i] != "error") i++;
+	int i = 0;
+	while (s != LyXShapeNames[i] && LyXShapeNames[i] != "error") ++i;
 	if (s == LyXShapeNames[i]) {
 		setShape(LyXFont::FONT_SHAPE(i));
 	} else
 		lyxerr << "LyXFont::setLyXShape: Unknown shape `"
 		       << s << '\'' << endl;
-	return (*this);
+	return *this;
 }
 
 
@@ -423,14 +423,14 @@ LyXFont & LyXFont::setLyXShape(string const & sha)
 LyXFont & LyXFont::setLyXSize(string const & siz)
 {
 	string s = lowercase(siz);
-	int i= 0;
-	while (s != LyXSizeNames[i] && LyXSizeNames[i] != "error") i++;
+	int i = 0;
+	while (s != LyXSizeNames[i] && LyXSizeNames[i] != "error") ++i;
 	if (s == LyXSizeNames[i]) {
 		setSize(LyXFont::FONT_SIZE(i));
 	} else
 		lyxerr << "LyXFont::setLyXSize: Unknown size `"
 		       << s << '\'' << endl;
-	return (*this);
+	return *this;
 }
 
 // Set size according to lyx format string
@@ -438,7 +438,7 @@ LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 {
 	string s = lowercase(siz);
 	int i= 0;
-	while (s != LyXMiscNames[i] && LyXMiscNames[i] != "error") i++;
+	while (s != LyXMiscNames[i] && LyXMiscNames[i] != "error") ++i;
 	if (s == LyXMiscNames[i])
 		return FONT_MISC_STATE(i);
 	lyxerr << "LyXFont::setLyXMisc: Unknown misc flag `"
@@ -451,13 +451,13 @@ LyXFont & LyXFont::setLyXColor(string const & col)
 {
 	string s = lowercase(col);
 	int i= 0;
-	while (s != LyXColorNames[i] && LyXColorNames[i] != "error") i++;
+	while (s != LyXColorNames[i] && LyXColorNames[i] != "error") ++i;
 	if (s == LyXColorNames[i]) {
 		setColor(LyXFont::FONT_COLOR(i));
 	} else
 		lyxerr << "LyXFont::setLyXColor: Unknown Color `"
 		       << s << '\'' << endl;
-	return (*this);
+	return *this;
 }
 
 
@@ -465,16 +465,16 @@ LyXFont & LyXFont::setLyXColor(string const & col)
 LyXFont & LyXFont::setGUISize(string const & siz)
 {
 	string s = lowercase(siz);
-	int i= 0;
+	int i = 0;
 	while (!lGUISizeNames[i].empty() &&
 	       s != _(lGUISizeNames[i].c_str()))
-		i++;
+		++i;
 	if (s == _(lGUISizeNames[i].c_str())) {
 		setSize(LyXFont::FONT_SIZE(i));
 	} else
 		lyxerr << "LyXFont::setGUISize: Unknown Size `"
 		       << s << '\'' << endl;
-	return (*this);
+	return *this;
 }
 
 
@@ -813,8 +813,8 @@ int LyXFont::ascent(char c) const
 {
 	XFontStruct * finfo = getXFontstruct();
 	if (finfo->per_char
-	    && c >= static_cast<char>(finfo->min_char_or_byte2)
-	    && c <= static_cast<char>(finfo->max_char_or_byte2)) {
+	    && static_cast<unsigned char>(c) >= finfo->min_char_or_byte2
+	    && static_cast<unsigned char>(c) <= finfo->max_char_or_byte2) {
 		unsigned int index = c - finfo->min_char_or_byte2;
 		return finfo->per_char[index].ascent;
 	} else
@@ -826,8 +826,8 @@ int LyXFont::descent(char c) const
 {
 	XFontStruct * finfo = getXFontstruct();
 	if (finfo->per_char
-	    && c >= static_cast<char>(finfo->min_char_or_byte2)
-	    && c <= static_cast<char>(finfo->max_char_or_byte2)) {
+	    && static_cast<unsigned char>(c) >= finfo->min_char_or_byte2
+	    && static_cast<unsigned char>(c) <= finfo->max_char_or_byte2) {
 		unsigned int index = c - finfo->min_char_or_byte2;
 		return finfo->per_char[index].descent;
 	} else
@@ -846,6 +846,32 @@ int LyXFont::width(char c) const
 }
 
 
+int LyXFont::lbearing(char c) const
+{
+	XFontStruct * finfo = getXFontstruct();
+	if (finfo->per_char
+	    && static_cast<unsigned char>(c) >= finfo->min_char_or_byte2
+	    && static_cast<unsigned char>(c) <= finfo->max_char_or_byte2) {
+		unsigned int index = c - finfo->min_char_or_byte2;
+		return finfo->per_char[index].lbearing;
+	} else
+		return 0;
+}
+
+
+int LyXFont::rbearing(char c) const
+{
+	XFontStruct * finfo = getXFontstruct();
+	if (finfo->per_char
+	    && static_cast<unsigned char>(c) >= finfo->min_char_or_byte2
+	    && static_cast<unsigned char>(c) <= finfo->max_char_or_byte2) {
+		unsigned int index = c - finfo->min_char_or_byte2;
+		return finfo->per_char[index].rbearing;
+	} else
+		return width(c);
+}
+
+
 int LyXFont::textWidth(char const * s, int n) const
 {
 	if (realShape() != LyXFont::SMALLCAPS_SHAPE){
@@ -858,7 +884,7 @@ int LyXFont::textWidth(char const * s, int n) const
 		smallfont.decSize();
 		smallfont.decSize();
 		smallfont.setShape(LyXFont::UP_SHAPE);
-		for (int i= 0; i < n; i++){
+		for (int i = 0; i < n; ++i) {
 			c = s[i];
 			if (islower(c)){
 				c = toupper(c);
@@ -909,7 +935,7 @@ int LyXFont::drawText(char const * s, int n, Pixmap pm,
 		smallfont.decSize();
 		smallfont.decSize();
 		smallfont.setShape(LyXFont::UP_SHAPE);
-		for (int i = 0; i < n; ++i){
+		for (int i = 0; i < n; ++i) {
 			c = s[i];
 			if (islower(c)){
 				c = toupper(c);
