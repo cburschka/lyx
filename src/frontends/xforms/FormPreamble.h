@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file FormPreamble.h
  * Copyright 2001 The LyX Team.
@@ -10,51 +9,32 @@
 #ifndef FORMPREAMBLE_H
 #define FORMPREAMBLE_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
+#include "FormBase.h"
 
+class ControlPreamble;
 struct FD_form_preamble;
 
-/** This class provides an XForms implementation of the FormPreamble Dialog.
+/** This class provides an XForms implementation of the Preamble Dialog.
  */
-class FormPreamble : public FormBaseBD {
+class FormPreamble : public FormCB<ControlPreamble, FormDB<FD_form_preamble> > {
 public:
 	///
-	FormPreamble(LyXView *, Dialogs *);
+	FormPreamble(ControlPreamble &);
 private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-
-	/// Filter the inputs
-	// virtual bool input(FL_OBJECT *, long);
-   
-	/// Build the popup
-	virtual void build();
 	/// Apply from popup
 	virtual void apply();
+	/// Build the popup
+	virtual void build();
 	/// Update the popup.
 	virtual void update();
-	///
-	virtual FL_FORM * form() const;
    
 	/// Fdesign generated method
 	FD_form_preamble * build_preamble();
-   
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_preamble> dialog_;
-	/// The ButtonController
-	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
 
-inline
-xformsBC & FormPreamble::bc()
-{
-  return bc_;
-}
-#endif
+#endif // FORMPREAMBLE_H

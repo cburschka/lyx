@@ -168,6 +168,34 @@ public:
 };
 
 
+/** Specialization for Minipage dialog
+ */
+class ControlMinipage;
+
+template <class GUIview, class GUIbc>
+class GUIMinipage :
+	public GUI<ControlMinipage, GUIview, OkApplyCancelReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIMinipage(LyXView & lv, Dialogs & d)
+		: GUI<ControlMinipage, GUIview, OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
+/** Specialization for Preamble dialog
+ */
+class ControlPreamble;
+
+template <class GUIview, class GUIbc>
+class GUIPreamble :
+	public GUI<ControlPreamble, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIPreamble(LyXView & lv, Dialogs & d)
+		: GUI<ControlPreamble, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for Print dialog
  */
 class ControlPrint;

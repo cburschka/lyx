@@ -69,6 +69,8 @@ void ControlPrint::setParams()
 {
 	if (params_) delete params_;
 	params_ = new PrinterParams(getPrinterParams(lv_.buffer()));
+
+	bc().valid(); // so that the user can press Ok
 }
 
 

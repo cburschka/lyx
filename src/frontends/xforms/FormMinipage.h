@@ -1,77 +1,51 @@
-// -*- C++ -*-
 /* This file is part of
  * ======================================================
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2000 The LyX Team.
+ *          Copyright 2001 The LyX Team.
  *
- *======================================================*/
-/* FormMinipage.h
- * FormMinipage Interface Class
+ *======================================================
+ *
+ * \file FormMinipage.h
+ * \author Juergen Vigna, jug@sad.it
  */
 
 #ifndef FORMMINIPAGE_H
 #define FORMMINIPAGE_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormInset.h"
-#include "xformsBC.h"
+#include "FormBase.h"
 
 class LyXView;
 class Dialogs;
 class InsetMinipage;
 struct FD_form_minipage;
 
-/** This class provides an XForms implementation of the FormMinipage
+/** This class provides an XForms implementation of the Minipage
     Dialog.
  */
-class FormMinipage : public FormInset {
+class ControlMinipage;
+struct FD_form_minipage;
+
+class FormMinipage : public FormCB<ControlMinipage, FormDB<FD_form_minipage> > {
 public:
-	/// #FormMinipage x(LyXView ..., Dialogs ...);#
-	FormMinipage(LyXView *, Dialogs *);
+	///
+	FormMinipage(ControlMinipage &);
 
 private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-	/// Connect signals etc.
-	virtual void connect();
-
-	/// Slot launching dialog to an existing inset
-	void showInset(InsetMinipage *);
-	/// Slot launching dialog to an existing inset
-	void updateInset(InsetMinipage *);
-	/// Apply from dialog
+	/// Set the Params variable for the Controller.
 	virtual void apply();
-	/// Update dialog before showing it
-	virtual void update();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
-	/// Build the dialog
+	/// Build the dialog.
 	virtual void build();
+	/// Update dialog before/whilst showing it.
+	virtual void update();
 
-	///
+	/// Fdesign generated method
 	FD_form_minipage * build_minipage();
-	
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_minipage> dialog_;
-	/// The ButtonController
-	ButtonController<OkApplyCancelReadOnlyPolicy, xformsBC> bc_;
-
-	/// pointer to the inset passed through showInset
-	InsetMinipage * inset_;
 };
 
-
-inline
-xformsBC & FormMinipage::bc()
-{
-	return bc_;
-}
-#endif
+#endif // FORMMINIPAGE_H

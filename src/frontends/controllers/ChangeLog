@@ -1,8 +1,10 @@
 2001-03-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlMinipage.[Ch]:
+	* ControlPreamble.[Ch]:
 	* ControlPrint.[Ch]:
-	* ControlSplash.[Ch]: new files; controller for the Print popup and
-	Splash screen respectively.
+	* ControlSplash.[Ch]: new files; controller for the Minipage, Preamble
+	and Print popups and Splash screen, respectively.
 
 	* ViewBase.h (ViewSplash): new base class for GUI-specific Splash
 	screens.

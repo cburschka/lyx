@@ -28,6 +28,8 @@
 #include "ControlError.h"
 #include "ControlInclude.h"
 #include "ControlLog.h"
+#include "ControlMinipage.h"
+#include "ControlPreamble.h"
 #include "ControlPrint.h"
 #include "ControlRef.h"
 #include "ControlSearch.h"
@@ -48,6 +50,8 @@
 #include "form_credits.h"
 #include "form_error.h"
 #include "form_include.h"
+#include "form_minipage.h"
+#include "form_preamble.h"
 #include "form_print.h"
 #include "form_ref.h"
 #include "form_search.h"
@@ -64,6 +68,8 @@
 #include "FormError.h"
 #include "FormInclude.h"
 #include "FormLog.h"
+#include "FormMinipage.h"
+#include "FormPreamble.h"
 #include "FormPrint.h"
 #include "FormRef.h"
 #include "FormSearch.h"
@@ -78,11 +84,9 @@
 #include "FormIndex.h"
 #include "FormMathsPanel.h"
 #include "FormParagraph.h"
-#include "FormPreamble.h"
 #include "FormPreferences.h"
 #include "FormTabular.h"
 #include "FormToc.h"
-#include "FormMinipage.h"
 
 // Signal enabling all visible popups to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
@@ -101,6 +105,8 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIError<FormError, xformsBC>(*lv, *this));
 	add(new GUIInclude<FormInclude, xformsBC>(*lv, *this));
 	add(new GUILog<FormLog, xformsBC>(*lv, *this));
+	add(new GUIMinipage<FormMinipage, xformsBC>(*lv, *this));
+	add(new GUIPreamble<FormPreamble, xformsBC>(*lv, *this));
 	add(new GUIPrint<FormPrint, xformsBC>(*lv, *this));
 	add(new GUIRef<FormRef, xformsBC>(*lv, *this));
 	add(new GUISearch<FormSearch, xformsBC>(*lv, *this));
@@ -114,11 +120,9 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormIndex(lv, this));
  	add(new FormMathsPanel(lv, this));
 	add(new FormParagraph(lv, this));
-	add(new FormPreamble(lv, this));
 	add(new FormPreferences(lv, this));
 	add(new FormTabular(lv, this));
 	add(new FormToc(lv, this));
-	add(new FormMinipage(lv, this));
 	
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

@@ -40,6 +40,10 @@ libcontrollers_la_SOURCES=\
 	ControlInset.h \
 	ControlLog.C \
 	ControlLog.h \
+	ControlMinipage.C \
+	ControlMinipage.h \
+	ControlPreamble.C \
+	ControlPreamble.h \
 	ControlPrint.C \
 	ControlPrint.h \
 	ControlRef.C \

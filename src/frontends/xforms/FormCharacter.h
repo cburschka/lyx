@@ -25,7 +25,7 @@ class Combox;
 struct FD_form_character;
 
 /** 
- * This class provides an XForms implementation of the FormCharacter Dialog.
+ * This class provides an XForms implementation of the Character Dialog.
  * The character dialog allows users to change the character settings
  * in their documents.
  */
@@ -36,11 +36,11 @@ public:
 	FormCharacter(ControlCharacter &);
 private:
 
-	/// Build the popup
-	virtual void build();
-   
 	/// Apply from popup
 	virtual void apply();
+   
+	/// Build the popup
+	virtual void build();
    
 	/// Nothing to update...
 	virtual void update() {}

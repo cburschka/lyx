@@ -35,7 +35,7 @@ FD_form_minipage * FormMinipage::build_minipage()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     // xgettext:no-c-format
     char const * const dummy = N_("or %|#o");
@@ -43,7 +43,7 @@ FD_form_minipage * FormMinipage::build_minipage()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   obj = fl_add_text(FL_NORMAL_TEXT, 30, 10, 100, 20, _("Width"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
@@ -60,21 +60,21 @@ FD_form_minipage * FormMinipage::build_minipage()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Middle|#d");
     fdui->radio_middle = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 249, 60, 152, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Bottom|#B");
     fdui->radio_bottom = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 249, 90, 152, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_group();
 
   {
@@ -83,24 +83,24 @@ FD_form_minipage * FormMinipage::build_minipage()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   {
     char const * const dummy = N_("Apply|#A");
     fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 130, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedApplyCB, 0);
+    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 130, 130, 90, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, 0);
+    fl_set_object_callback(obj, C_FormBaseOKCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
     fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 130, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedRestoreCB, 0);
+    fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;
