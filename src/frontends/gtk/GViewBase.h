@@ -118,14 +118,14 @@ GViewCB<Controller, Base>::GViewCB(Dialog & parent, std::string const & t,
 template <class Controller, class Base>
 Controller & GViewCB<Controller, Base>::controller()
 {
-	return static_cast<Controller &>(Dialog::View::getController());
+	return static_cast<Controller &>(this->getController());
 }
 
 
 template <class Controller, class Base>
 Controller const & GViewCB<Controller, Base>::controller() const
 {
-	return static_cast<Controller const &>(Dialog::View::getController());
+	return static_cast<Controller const &>(this->getController());
 }
 
 } // namespace frontend
