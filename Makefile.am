@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += lyx.1 config.status config.cache config.log 
+DISTCLEANFILES += lyx.1 config.status config.cache config.log
 
 MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
 	$(srcdir)/configure \
@@ -29,7 +29,7 @@ dist-hook:
 
 rpmdist: dist
 	ln -s lib/images/lyx.xpm . ; \
-	rpm -ta $(PACKAGE)-$(VERSION).tar.gz ; saved_status=$$?; \
+	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz ; saved_status=$$?; \
 	rm lyx.xpm; exit $$saved_status
 
 bindist:
