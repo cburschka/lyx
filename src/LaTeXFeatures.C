@@ -350,9 +350,10 @@ string LaTeXFeatures::getTClassPreamble()
 string LaTeXFeatures::getIncludedFiles()
 {
 	string sgmlpreamble;
-
-	for(FileMap::const_iterator fi=IncludedFiles.begin(); fi != IncludedFiles.end(); ++fi)
-		sgmlpreamble += "\n<!entity " + fi->first + " system \"" + fi->second + "\">";
+	FileMap::const_iterator end = IncludedFiles.end();
+	for(FileMap::const_iterator fi=IncludedFiles.begin(); fi != end; ++fi)
+		sgmlpreamble += "\n<!entity " + fi->first
+			+ " system \"" + fi->second + "\">";
 
 	return sgmlpreamble;
 }

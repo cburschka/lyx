@@ -146,7 +146,8 @@ extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 void Toolbar::Pimpl::activate()
 {
 	ToolbarList::const_iterator p = toollist.begin();
-	for (; p != toollist.end(); ++p) {
+	ToolbarList::const_iterator end = toollist.end();
+	for (; p != end; ++p) {
 		if (p->icon) {
 			fl_activate_object(p->icon);
 		}
@@ -157,7 +158,8 @@ void Toolbar::Pimpl::activate()
 void Toolbar::Pimpl::deactivate()
 {
 	ToolbarList::const_iterator p = toollist.begin();
-	for (; p != toollist.end(); ++p) {
+	ToolbarList::const_iterator end = toollist.end();
+	for (; p != end; ++p) {
 		if (p->icon) {
 			fl_deactivate_object(p->icon);
 		}
@@ -167,7 +169,8 @@ void Toolbar::Pimpl::deactivate()
 void Toolbar::Pimpl::update()
 {
 	ToolbarList::const_iterator p = toollist.begin();
-	for (; p != toollist.end(); ++p) {
+	ToolbarList::const_iterator end = toollist.end();
+	for (; p != end; ++p) {
 		if (p->icon) {
 			int status = owner->getLyXFunc()->getStatus(p->action);
 			if (status & LyXFunc::ToggleOn) {
@@ -213,8 +216,9 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 		LyXTextClass const & tc =
 			textclasslist.TextClass(owner->buffer()->
 						params.textclass);
+		LyXTextClass::const_iterator end = tc.end();
 		for (LyXTextClass::const_iterator cit = tc.begin();
-		     cit != tc.end(); ++cit) {
+		     cit != end; ++cit) {
 			if ((*cit).obsoleted_by().empty())
 				combox->addline(_((*cit).name().c_str()));
 			else
@@ -335,7 +339,8 @@ void Toolbar::Pimpl::set(bool doingmain)
 #endif
 	
 	ToolbarList::iterator item = toollist.begin();
-	for (; item != toollist.end(); ++item) {
+	ToolbarList::iterator end = toollist.end();
+	for (; item != end; ++item) {
 		switch(item->action){
 		case ToolbarDefaults::SEPARATOR:
 			xpos += sepspace;
@@ -424,7 +429,8 @@ void Toolbar::Pimpl::add(int action, bool doclean)
 		fl_freeze_form(owner->getForm());
 
 		ToolbarList::iterator p = toollist.begin();
-		for (; p != toollist.end(); ++p) {
+		ToolbarList::iterator end = toollist.end();
+		for (; p != end; ++p) {
 			p->clean();
 		}
 

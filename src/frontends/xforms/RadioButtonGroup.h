@@ -28,7 +28,7 @@
 using std::vector;
 using std::pair;
 
-#include <forms.h>
+#include FORMS_H_LOCATION
 
 class RadioButtonGroup {
 public:

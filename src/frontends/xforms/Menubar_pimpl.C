@@ -290,7 +290,8 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 	// not able to support shortcuts correctly...)
 	int max_width = 0;
 	string widest_label;
-	for (Menu::const_iterator i = md.begin(); i != md.end(); ++i) {
+	Menu::const_iterator end = md.end();
+	for (Menu::const_iterator i = md.begin(); i != end; ++i) {
 		MenuItem item = (*i);
 		if (item.kind() == MenuItem::Command) {
 			string label = item.label() + '\t';
@@ -305,11 +306,11 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			   << ", widest_label=`" << widest_label 
 			   << "'" << endl;
 
-	for (Menu::const_iterator i = md.begin(); i != md.end(); ++i) {
+	for (Menu::const_iterator i = md.begin(); i != end; ++i) {
 		MenuItem item = (*i);
 		// Is there a separator after this item?
 		string extra_label;
-		if ((i+1) != md.end()  
+		if ((i+1) != end  
 		    && (i+1)->kind() == MenuItem::Separator)
 			extra_label = "%l";
 

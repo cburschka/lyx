@@ -22,6 +22,7 @@
 #include "LString.h"
 #include "lstrings.h"
 #include "LRegex.h"
+#include "LAssert.h"
 
 using std::count;
 using std::transform;
@@ -88,20 +89,19 @@ bool isStrInt(string const & str)
        
 	string::const_iterator cit = tmpstr.begin();
 	if ( (*cit) == '-') ++cit;
-	for (; cit != tmpstr.end(); ++cit) {
+	string::const_iterator end = tmpstr.end();
+	for (; cit != end; ++cit) {
 		if (!isdigit((*cit))) return false;
 	}
 	return true;
 }
 
 
-int  strToInt(string const & str)
+int strToInt(string const & str)
 {
-	string tmpstr;
-
 	if (isStrInt(str)) {
 		// Remove leading and trailing white space chars.
-		tmpstr = frontStrip(strip(str, ' '), ' ');
+		string tmpstr = frontStrip(strip(str, ' '), ' ');
 		// Do the conversion proper.
 		return atoi(tmpstr.c_str());
 	} else {
@@ -110,8 +110,6 @@ int  strToInt(string const & str)
 }
 
 
-
-///
 bool isStrDbl(string const & str)
 {
 	if (str.empty()) return false;
@@ -124,7 +122,8 @@ bool isStrDbl(string const & str)
 	string::const_iterator cit = tmpstr.begin();
 	bool found_dot(false);
 	if ( (*cit) == '-') ++cit;
-	for (; cit != tmpstr.end(); ++cit) {
+	string::const_iterator end = tmpstr.end();
+	for (; cit != end; ++cit) {
 		if (!isdigit((*cit))
 		    && '.' != (*cit)) {
 			return false;
@@ -140,14 +139,12 @@ bool isStrDbl(string const & str)
 	return true;
 }
 
-///
+
 double strToDbl(string const & str)
 {
-	string tmpstr;
-
 	if (isStrDbl(str)) {
 		// Remove leading and trailing white space chars.
-		tmpstr = frontStrip(strip(str, ' '), ' ');
+		string tmpstr = frontStrip(strip(str, ' '), ' ');
 		// Do the conversion proper.
 		return atof(tmpstr.c_str());
 	} else {
@@ -155,25 +152,27 @@ double strToDbl(string const & str)
 	}
 }
 
-/// 
+
 char lowercase(char c) 
 { 
 	return tolower(c); 
 }
 
-/// 
+
 char uppercase(char c) 
 { 
 	return toupper(c); 
 }
 
-string lowercase(string const & a)
+
+string const lowercase(string const & a)
 {
 	string tmp(a);
 //#ifdef __GLIBCPP__
 	string::iterator result = tmp.begin();
+	string::iterator end = tmp.end();
 	for (string::iterator first = tmp.begin();
-	     first != tmp.end(); ++first, ++result) {
+	     first != end; ++first, ++result) {
 		*result = lowercase(*first);
 	}
 //#else
@@ -183,13 +182,14 @@ string lowercase(string const & a)
 }
 
 
-string uppercase(string const & a)
+string const uppercase(string const & a)
 {
 	string tmp(a);
 //#ifdef __GLIBCPP__
 	string::iterator result = tmp.begin();
+	string::iterator end = tmp.end();
 	for (string::iterator first = tmp.begin();
-	     first != tmp.end(); ++first, ++result) {
+	     first != end; ++first, ++result) {
 		*result = uppercase(*first);
 	}
 //#else
@@ -201,6 +201,8 @@ string uppercase(string const & a)
 
 bool prefixIs(string const & a, char const * pre)
 {
+	Assert(pre);
+	
 	unsigned int l = strlen(pre);
 	if (l > a.length() || a.empty())
 		return false;
@@ -228,7 +230,9 @@ bool suffixIs(string const & a, char c)
 
 bool suffixIs(string const & a, char const * suf)
 {
-	unsigned int suflen = strlen(suf);
+	Assert(suf);
+	
+	unsigned int const suflen = strlen(suf);
 	if (suflen > a.length())
 		return false;
 	else {
@@ -249,13 +253,17 @@ bool suffixIs(string const & a, char const * suf)
 
 bool contains(char const * a, string const & b)
 {
-	if (!a || !*a || b.empty()) return false;
+	Assert(a);
+	
+	if (!*a || b.empty()) return false;
 	return strstr(a, b.c_str()) != 0;
 }
 
 
 bool contains(string const & a, char const * b)
 {
+	Assert(b);
+	
 	if (a.empty())
 		return false;
 	return a.find(b) != string::npos;
@@ -272,13 +280,17 @@ bool contains(string const & a, string const & b)
 
 bool contains(char const * a, char const * b)
 {
-	if (!a || !b || !*a || !*b) return false;
+	Assert(a && b);
+	
+	if (!*a || !*b) return false;
 	return strstr(a, b) != 0;
 }
 
 
 bool containsOnly(string const & s, char const * cset)
 {
+	Assert(cset);
+	
 	return s.find_first_not_of(cset) == string::npos;
 }
 
@@ -291,17 +303,21 @@ bool containsOnly(string const & s, string const & cset)
 
 bool containsOnly(char const * s, char const * cset)
 {
+	Assert(s && cset);
+	
 	return string(s).find_first_not_of(cset) == string::npos;
 }
 
 
 bool containsOnly(char const * s, string const & cset)
 {
+	Assert(s);
+	
 	return string(s).find_first_not_of(cset) == string::npos;
 }
 
 
-unsigned int countChar(string const & a, char const c)
+unsigned int countChar(string const & a, char c)
 {
 #ifdef HAVE_STD_COUNT
 	return count(a.begin(), a.end(), c);
@@ -315,7 +331,7 @@ unsigned int countChar(string const & a, char const c)
 
 // ale970405+lasgoutt-970425
 // rewritten to use new string (Lgb)
-string token(string const & a, char delim, int n)
+string const token(string const & a, char delim, int n)
 {
 	if (a.empty()) return string();
 	
@@ -342,7 +358,7 @@ string token(string const & a, char delim, int n)
 int tokenPos(string const & a, char delim, string const & tok)
 {
 	int i = 0;
-	string str = a;
+	string str(a);
 	string tmptok;
 
 	while (!str.empty()) {
@@ -370,20 +386,23 @@ bool regexMatch(string const & a, string const & pattern)
 }
 
 
-string subst(string const & a, char oldchar, char newchar)
+string const subst(string const & a, char oldchar, char newchar)
 {
-	string tmp = a;
+	string tmp(a);
 	string::iterator lit = tmp.begin();
-	for(; lit != tmp.end(); ++lit)
+	string::iterator end = tmp.end();
+	for(; lit != end; ++lit)
 		if ((*lit) == oldchar)
 			(*lit) = newchar;
 	return tmp;
 }
 
 
-string subst(string const & a,
+string const subst(string const & a,
 	     char const * oldstr, string const & newstr)
 {
+	Assert(oldstr);
+	
 	string lstr(a);
 	string::size_type i = 0;
 	int olen = strlen(oldstr);
@@ -396,10 +415,10 @@ string subst(string const & a,
 }
 
 
-string strip(string const & a, char const c)
+string const strip(string const & a, char c)
 {
 	if (a.empty()) return a;
-	string tmp = a;
+	string tmp(a);
 	string::size_type i = tmp.find_last_not_of(c);
 	if (i == a.length() - 1) return tmp; // no c's at end of a
 	if (i != string::npos) 
@@ -410,10 +429,12 @@ string strip(string const & a, char const c)
 }
 
 
-string frontStrip(string const & a, char const * p)
+string const frontStrip(string const & a, char const * p)
 {
-	if (a.empty() || !p || !*p) return a;
-	string tmp = a;
+	Assert(p);
+	
+	if (a.empty() || !*p) return a;
+	string tmp(a);
 	string::size_type i = tmp.find_first_not_of(p);
 	if (i > 0)
 		tmp.erase(0, i);
@@ -421,10 +442,10 @@ string frontStrip(string const & a, char const * p)
 }
 
 
-string frontStrip(string const & a, char const c)
+string const frontStrip(string const & a, char c)
 {
 	if (a.empty()) return a;
-	string tmp = a;
+	string tmp(a);
 	string::size_type i = tmp.find_first_not_of(c);
 	if (i > 0)
 		tmp.erase(0, i);
@@ -432,7 +453,7 @@ string frontStrip(string const & a, char const c)
 }
 
 
-string split(string const & a, string & piece, char delim)
+string const split(string const & a, string & piece, char delim)
 {
 	string tmp;
 	string::size_type i = a.find(delim);
@@ -451,7 +472,7 @@ string split(string const & a, string & piece, char delim)
 }
 
 
-string split(string const & a, char delim)
+string const split(string const & a, char delim)
 {
 	string tmp;
 	string::size_type i = a.find(delim);
@@ -462,7 +483,7 @@ string split(string const & a, char delim)
 
 
 // ale970521
-string rsplit(string const & a, string & piece, char delim)
+string const rsplit(string const & a, string & piece, char delim)
 {
 	string tmp;
 	string::size_type i = a.rfind(delim);

@@ -172,8 +172,9 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 	unsigned int modmsk = seq->modifiers[idx];
 
 	// --- check if key is already there --------------------------------
-	if (table.size() != 0) // without this I get strange crashes
-	for (Table::iterator it = table.begin(); it != table.end(); ++it) {
+	if (table.size() != 0) { // without this I get strange crashes
+		Table::iterator end = table.end();
+	for (Table::iterator it = table.begin(); it != end; ++it) {
 		if (code == (*it).code && modmsk == (*it).mod) {
 			// overwrite binding
 			if (idx + 1 == seq->length) {
@@ -203,7 +204,8 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 			}
 		}
 	}
-
+	}
+	
 	Table::iterator newone = table.insert(table.end(), kb_key());
 	(*newone).code = code;
 	(*newone).mod = modmsk;
@@ -229,7 +231,8 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 kb_keymap::~kb_keymap()
 {
 	// This could be done by a destructor in kb_key.
-	for(Table::iterator it = table.begin(); it != table.end(); ++it) {
+	Table::iterator end = table.end();
+	for(Table::iterator it = table.begin(); it != end; ++it) {
 		delete (*it).table;
 	}
 }
@@ -249,8 +252,9 @@ string kb_keymap::findbinding(int act) const
 	string res;
 	if (table.empty()) return res;
 
+	Table::const_iterator end = table.end();
 	for(Table::const_iterator cit = table.begin();
-	    cit != table.end(); ++cit) {
+	    cit != end; ++cit) {
 		if ((*cit).table) {
 			string suffix = (*cit).table->findbinding(act);
 			suffix = strip(suffix, ' ');

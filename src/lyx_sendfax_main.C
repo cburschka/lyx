@@ -16,9 +16,11 @@ using std::endl;
 
 /* Prototypes */
 
-bool sendfax(string const &fname, string const &sendcmd);
-bool button_send(string const &fname, string const &sendcmd = string());
-void show_logfile(string logfile, bool show_if_empty);
+bool sendfax(string const & fname, string const & sendcmd);
+bool button_send(string const & fname, string const & sendcmd = string());
+
+static 
+void show_logfile(string const & logfile, bool show_if_empty);
 
 const int LEN_PHONE = 20;
 const int LEN_NAME = 25;
@@ -29,11 +31,12 @@ string phone_book;
 string global_sendcmd;
 string filename;
 
-FD_xsendfax *fd_xsendfax;
-FD_phonebook  *fd_phonebook;
-FD_logfile  *fd_logfile;
+FD_xsendfax * fd_xsendfax;
+FD_phonebook * fd_phonebook;
+FD_logfile * fd_logfile;
 
-bool send_fax(string const &fname, string const &sendcmd)
+
+bool send_fax(string const & fname, string const & sendcmd)
 {
     // I put FAXCMD here to see if I can get rid of some strange errors. (Lgb)
     string FAXCMD = "sendfax -n -h '$$Host' -c '$$Comment' -x '$$Enterprise' -d '$$Name'@'$$Phone' '$$FName'";
@@ -42,7 +45,7 @@ bool send_fax(string const &fname, string const &sendcmd)
     
     if (fname.empty())
         return false;
-    path= OnlyPath(fname);
+    path = OnlyPath(fname);
     if (path.empty() || path == "./")
         filename = GetCWD() + "/" + fname;
     else
@@ -79,7 +82,8 @@ bool send_fax(string const &fname, string const &sendcmd)
     title += OnlyFilename(fname);
 
     /* show the first form */
-    fl_show_form(fd_xsendfax->xsendfax, FL_PLACE_MOUSE, FL_FULLBORDER, title.c_str());
+    fl_show_form(fd_xsendfax->xsendfax,
+		 FL_PLACE_MOUSE, FL_FULLBORDER, title.c_str());
 /*
     while(true) {
         obj = fl_do_forms();
@@ -100,21 +104,18 @@ bool send_fax(string const &fname, string const &sendcmd)
 }
 
 
-bool button_send(string const &fname, string const &sendcmd)
+bool button_send(string const & fname, string const & sendcmd)
 {
-    string
-        name = fl_get_input(fd_xsendfax->Input_Name),
-        phone = fl_get_input(fd_xsendfax->Input_Phone),
-        enterprise = fl_get_input(fd_xsendfax->Input_Enterprise),
-        comment = fl_get_input(fd_xsendfax->Input_Comment),
-        host = GetEnv("FAX_SERVER"),
-        logfile,
-        cmd;
+    string name = fl_get_input(fd_xsendfax->Input_Name);
+    string phone = fl_get_input(fd_xsendfax->Input_Phone);
+    string enterprise = fl_get_input(fd_xsendfax->Input_Enterprise);
+    string comment = fl_get_input(fd_xsendfax->Input_Comment);
+    string host = GetEnv("FAX_SERVER");
 
     if (phone.empty())
         return false;
-    logfile = TmpFileName(OnlyPath(fname), "FAX");
-    cmd = sendcmd + " >";
+    string logfile = TmpFileName(OnlyPath(fname), "FAX");
+    string cmd = sendcmd + " >";
     cmd += logfile + " 2>";
     cmd += logfile;
     cmd = subst(cmd, "$$Host", host);
@@ -131,7 +132,7 @@ bool button_send(string const &fname, string const &sendcmd)
 }
 
 
-void cb_hide_form(FL_OBJECT *ob, long)
+void cb_hide_form(FL_OBJECT * ob, long)
 {
     fl_hide_form(ob->form);
 }
@@ -139,23 +140,19 @@ void cb_hide_form(FL_OBJECT *ob, long)
 
 void cb_select_phoneno(FL_OBJECT *, long)
 {
-    int
-        i,
-        n= fl_get_browser_maxline(fd_phonebook->browser);
-    char const
-        *line;
+    int n = fl_get_browser_maxline(fd_phonebook->browser);
 
     fl_hide_form(fd_phonebook->phonebook);
-    line = fl_get_browser_line(fd_phonebook->browser, 1);
+    char const * line = fl_get_browser_line(fd_phonebook->browser, 1);
     if (!n || strstr(line, _("Empty Phonebook"))) {
         fl_clear_browser(fd_phonebook->browser);
         return;
     }
-    i = fl_get_browser(fd_phonebook->browser);
+    int i = fl_get_browser(fd_phonebook->browser);
     line = fl_get_browser_line(fd_phonebook->browser, i);
     if (!line)
         return;
-    char *buf = new char [strlen(line)+1];
+    char * buf = new char [strlen(line)+1];
 
     strcpy(buf, line);
     for(i = LEN_PHONE; (i > 0) && (buf[i] == ' '); --i)
@@ -173,17 +170,13 @@ void cb_select_phoneno(FL_OBJECT *, long)
 
 void cb_add_phoneno(FL_OBJECT *, long )
 {
-    char const
-        *line;
-    char const
-        *name = fl_get_input(fd_xsendfax->Input_Name),
-        *phone = fl_get_input(fd_xsendfax->Input_Phone),
-        *enterprise = fl_get_input(fd_xsendfax->Input_Enterprise);
-    int
-        i, n;
+    char const * phone = fl_get_input(fd_xsendfax->Input_Phone);
 
     if (!strlen(phone))
         return;
+
+    char const * name = fl_get_input(fd_xsendfax->Input_Name);
+    char const * enterprise = fl_get_input(fd_xsendfax->Input_Enterprise);
 
     char * buf = new char [50 + strlen(enterprise)];
 
@@ -191,16 +184,17 @@ void cb_add_phoneno(FL_OBJECT *, long )
             LEN_PHONE, LEN_PHONE, phone,
             LEN_NAME, LEN_NAME, name,
             enterprise);
-    n = fl_get_browser_maxline(fd_phonebook->browser);
+    int n = fl_get_browser_maxline(fd_phonebook->browser);
     if (n) {
-        line = fl_get_browser_line(fd_phonebook->browser, 1);
+        char const * line = fl_get_browser_line(fd_phonebook->browser, 1);
         if (strstr(line, _("Empty Phonebook"))) {
             fl_clear_browser(fd_phonebook->browser);
             n = 0;
         }
     }
-    for(i = 1; i <= n; ++i) {
-        line = fl_get_browser_line(fd_phonebook->browser, i);
+    int i = 1;
+    for(; i <= n; ++i) {
+        char const * line = fl_get_browser_line(fd_phonebook->browser, i);
         if (!strncmp(buf, line, 46))
             break;
     }
@@ -214,32 +208,31 @@ void cb_add_phoneno(FL_OBJECT *, long )
 
 void cb_delete_phoneno(FL_OBJECT *, long )
 {
-    char const
-        *line;
-    char const
-        *name = fl_get_input(fd_xsendfax->Input_Name),
-        *phone = fl_get_input(fd_xsendfax->Input_Phone),
-        *enterprise = fl_get_input(fd_xsendfax->Input_Enterprise);
-    int
-        i, n;
+    char const * phone = fl_get_input(fd_xsendfax->Input_Phone);
 
     if (!strlen(phone))
         return;
-    char *buf = new char [50+strlen(enterprise)];
+
+    char const * name = fl_get_input(fd_xsendfax->Input_Name);
+    char const * enterprise = fl_get_input(fd_xsendfax->Input_Enterprise);
+
+    char * buf = new char [50+strlen(enterprise)];
+
     sprintf(buf, "%-*.*s %-*.*s %s",
             LEN_PHONE, LEN_PHONE, phone,
             LEN_NAME, LEN_NAME, name,
             enterprise);
-    n = fl_get_browser_maxline(fd_phonebook->browser);
+    int n = fl_get_browser_maxline(fd_phonebook->browser);
     if (n) {
-        line = fl_get_browser_line(fd_phonebook->browser, 1);
+        char const * line = fl_get_browser_line(fd_phonebook->browser, 1);
         if (strstr(line, _("Empty Phonebook"))) {
             fl_clear_browser(fd_phonebook->browser);
             n = 0;
         }
     }
-    for(i = 1; i <= n; ++i) {
-        line = fl_get_browser_line(fd_phonebook->browser, i);
+    int i = 1;
+    for(; i <= n; ++i) {
+        char const * line = fl_get_browser_line(fd_phonebook->browser, i);
         if (!strncmp(buf, line, 46))
             break;
     }
@@ -253,27 +246,22 @@ void cb_delete_phoneno(FL_OBJECT *, long )
 
 void cb_save_phoneno(FL_OBJECT *, long )
 {
-    char const
-        *line;
-    int
-        i, n;
-    FILE
-        *fp;
-
-    if (!(fp = fopen(phone_book.c_str(), "w"))) {
+    FILE * fp = fopen(phone_book.c_str(), "w");
+    if (!fp) {
         WriteAlert(_("Error!"), _("Cannot open phone book: "), phone_book);
         return;
     }
-    n = fl_get_browser_maxline(fd_phonebook->browser);
+    int n = fl_get_browser_maxline(fd_phonebook->browser);
     if (n) {
-        line = fl_get_browser_line(fd_phonebook->browser, 1);
+        char const * line = fl_get_browser_line(fd_phonebook->browser, 1);
         if (strstr(line, _("Empty Phonebook"))) {
             fl_clear_browser(fd_phonebook->browser);
             n = 0;
         }
     }
-    for(i = 1; i <= n; ++i) {
-        line = fl_get_browser_line(fd_phonebook->browser, i);
+    int i = 1;
+    for(; i <= n; ++i) {
+        char const * line = fl_get_browser_line(fd_phonebook->browser, i);
         fprintf(fp, "%s\n", line);
     }
     fclose(fp);
@@ -281,7 +269,9 @@ void cb_save_phoneno(FL_OBJECT *, long )
     fl_redraw_form(fd_xsendfax->xsendfax);
 }
 
-void show_logfile(string logfile, bool show_if_empty)
+
+static
+void show_logfile(string const & logfile, bool show_if_empty)
 {
     if (logfile.empty())
         return;
@@ -300,20 +290,24 @@ void show_logfile(string logfile, bool show_if_empty)
     }
 }
 
+
 void FaxLogfileCloseCB(FL_OBJECT *, long)
 {
     fl_hide_form(fd_logfile->logfile);
 }
+
 
 void FaxCancelCB(FL_OBJECT *, long)
 {
     fl_hide_form(fd_xsendfax->xsendfax);
 }
 
+
 void FaxApplyCB(FL_OBJECT *, long)
 {
     button_send(filename, global_sendcmd);
 }
+
 
 void FaxSendCB(FL_OBJECT *, long)
 {
@@ -321,10 +315,10 @@ void FaxSendCB(FL_OBJECT *, long)
         FaxCancelCB(0, 0);
 }
 
+
 void FaxOpenPhonebookCB(FL_OBJECT *, long)
 {
-    int
-        n= fl_get_browser_maxline(fd_phonebook->browser);
+    int n = fl_get_browser_maxline(fd_phonebook->browser);
 
     if (!n)
         fl_addto_browser(fd_phonebook->browser, _("@L@b@cEmpty Phonebook"));

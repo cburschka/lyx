@@ -13,6 +13,7 @@ lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la \
 	frontends/libfrontends.la support/libsupport.la @INCLUDED_SIGC@
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \
 	@FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+#lyx_LDFLAGS=-Wl,-O1
 EXTRA_DIST = config.h.in stamp-h.in cheaders
 ETAGS_ARGS = --lang=c++
 INCLUDES = $(SIGC_CFLAGS) @FRONTEND_INCLUDES@

@@ -274,7 +274,8 @@ void MenuBackend::add(Menu const & menu)
 
 bool MenuBackend::hasMenu(string const & name) const
 {
-	for (const_iterator cit = begin(); cit != end(); ++cit) {
+	const_iterator mend = end();
+	for (const_iterator cit = begin(); cit != mend; ++cit) {
 		if ((*cit).name() == name)
 			return true;
 	}
@@ -284,7 +285,8 @@ bool MenuBackend::hasMenu(string const & name) const
 
 Menu const & MenuBackend::getMenu(string const & name) const
 {
-	for (const_iterator cit = begin(); cit != end(); ++cit) {
+	const_iterator mend = end();
+	for (const_iterator cit = begin(); cit != mend; ++cit) {
 		if ((*cit).name() == name)
 			return (*cit);
 	}
@@ -295,8 +297,9 @@ Menu const & MenuBackend::getMenu(string const & name) const
 
 Menu & MenuBackend::getMenu(string const & name)
 {
+	MenuList::iterator end = menulist_.end();
 	for (MenuList::iterator cit = menulist_.begin(); 
-	     cit != menulist_.end(); ++cit) {
+	     cit != end; ++cit) {
 		if ((*cit).name() == name)
 			return (*cit);
 	}

@@ -65,15 +65,15 @@ char lowercase(char c);
 char uppercase(char c);
 
 ///
-string lowercase(string const &);
+string const lowercase(string const &);
 
 ///
-string uppercase(string const &);
+string const uppercase(string const &);
 
 // convert T to string
 template<typename T>
 inline
-string tostr(T const & t) 
+string const tostr(T const & t) 
 {
 #ifdef HAVE_SSTREAM
 	std::ostringstream ostr;
@@ -95,7 +95,7 @@ string tostr(T const & t)
 }
 
 inline
-string tostr(bool b)
+string const tostr(bool b)
 {
 	return (b ? "true" : "false");
 }
@@ -134,7 +134,7 @@ bool containsOnly(char const *, char const *);
 bool containsOnly(char const *, string const &);
 
 /// Counts how many of character c there is in a
-unsigned int countChar(string const & a, char const c);
+unsigned int countChar(string const & a, char c);
 
 /** Extracts a token from this string at the nth delim.
   Doesn't modify the original string. Similar to strtok.
@@ -142,7 +142,7 @@ unsigned int countChar(string const & a, char const c);
   #"a;bc;d".token(';', 1) == "bc";#
   #"a;bc;d".token(';', 2) == "d";#
 */
-string token(string const & a, char delim, int n);
+string const token(string const & a, char delim, int n);
 
 
 /** Search a token in this string using the delim.
@@ -161,24 +161,24 @@ int tokenPos(string const & a, char delim, string const & tok);
 bool regexMatch(string const & a, string const & pattern);
 
 /// Substitute all "oldchar"s with "newchar"
-string subst(string const & a, char oldchar, char newchar);
+string const subst(string const & a, char oldchar, char newchar);
 
 /// Substitutes all instances of oldstr with newstr
-string subst(string const & a,
+string const subst(string const & a,
 	     char const * oldstr, string const & newstr);
 
 /** Strips characters off the end of a string.
   #"abccc".strip('c') = "ab".#
   */
-string strip(string const & a, char const c = ' ');
+string const strip(string const & a, char c = ' ');
 
 /** Strips characters of the beginning of a string.
   #"cccba".frontstrip('c') = "ba"#. */
-string frontStrip(string const & a, char const c = ' ');
+string const frontStrip(string const & a, char c = ' ');
 
 /** Strips characters off the beginning of a string.
     #"ababcdef".frontstrip("ab") = "cdef"# .*/
-string frontStrip(string const & a, char const * p);
+string const frontStrip(string const & a, char const * p);
 
 /** Splits the string by the first delim.
   Splits the string by the first appearance of delim.
@@ -187,12 +187,12 @@ string frontStrip(string const & a, char const * p);
   Example:
   #s1= ""; s2= "a;bc".split(s1, ';') -> s1 == "a"; s2 == "bc";#
   */
-string split(string const & a, string & piece, char delim);
+string const split(string const & a, string & piece, char delim);
 
 /// Same as split but does not return a piece
-string split(string const & a, char delim);
+string const split(string const & a, char delim);
 
 /// Same as split but uses the last delim.
-string rsplit(string const & a, string & piece, char delim);
+string const rsplit(string const & a, string & piece, char delim);
 
 #endif

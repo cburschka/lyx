@@ -1,3 +1,80 @@
+2000-08-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lib/lyxrc.example: mark te pdf options as non functional.
+
+	* src/support/lstrings.C (strToInt): move initalization of tmpstr
+	(isStrDbl): move tmpstr.end() out of loop.
+	(strToDbl): move intialization of tmpstr
+	(lowercase): return string const and move tmp.end() out of loop.
+	(uppercase): return string const and move tmp.edn() out of loop.
+	(prefixIs): add assertion
+	(suffixIs): ditto
+	(contains): ditto
+	(contains): ditto
+	(contains): ditto
+	(containsOnly): ditto
+	(containsOnly): ditto
+	(containsOnly): ditto
+	(countChar): make last arg char not char const
+	(token): return string const
+	(subst): return string const, move tmp.end() out of loop.
+	(subst): return string const, add assertion
+	(strip): return string const
+	(frontStrip): return string const, add assertion
+	(frontStrip): return string const
+	(split): ditto
+	(split): ditto
+	(rsplit): ditto
+
+	* src/support/lstrings.C: add inclde "LAssert.h"
+	(isStrInt): move tmpstr.end() out of loop.
+
+	* src/frontends/xforms/Toolbar_pimpl.C (activate): move
+	toollist.end() out of loop.
+	(deactivate): move toollist.end() out of loop.
+	(update): move toollist.end() out of loop.
+	(updateLayoutList): move tc.end() out of loop.
+	(add): move toollist.end() out of loop.
+
+	* src/frontends/xforms/Menubar_pimpl.C (create_submenu): move
+	md.end() out of loop.
+
+	* src/texrow.h: make getIdFromRow const, make rowlist mutable.
+
+	* src/texrow.C (getIdFromRow): make const, more rowlist.end() out
+	of loop.
+
+	* src/paragraph.C (Erase): move fontlist.end() out of loop.
+	(Erase): move insetlist.end() out of loop.
+
+	* src/lyx_sendfax_main.C: make show_logfile static and to take a
+	ref to const string as first arg. Move initialization of some
+	variables, whitespace changes.
+
+	* src/kbmap.C (defkey): move table.end() out of loop.
+	(kb_keymap): move table.end() out of loop.
+	(findbinding): move table.end() out of loop.
+
+	* src/MenuBackend.C (hasMenu): move end() out of loop.
+	(getMenu): move end() out of loop.
+	(getMenu): move menulist_.end() out of loop.
+
+	* src/Makefile.am (#lyx_LDFLAGS): interesting option commented out.
+
+	* src/LaTeXFeatures.C (getIncludedFiles): move IncludedFiles.end()
+	out of loop.
+
+	* src/LColor.C (getFromGUIName): move infotab.end() out of loop.
+	(getFromLyXName): move infotab.end() out of loop.
+
+	* config/lyxinclude.m4 (CXXFLAGS): change for 2.96 add
+	-fvtable-thunks -ffunction-sections -fdata-sections 
+
+2000-08-03  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/frontends/xforms/RadioButtonGroup.h: Changed <forms.h> to
+	FORMS_H_LOCATION.
+
 2000-08-03  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* src/frontends/xforms/FormCommand.[Ch] (d-tor): removed

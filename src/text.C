@@ -330,7 +330,8 @@ void LyXText::ComputeBidiTables(Buffer const * buf, Row * row) const
 	}
 
 	LyXParagraph::size_type vpos = bidi_start - 1;
-	for (LyXParagraph::size_type lpos = bidi_start; lpos <= bidi_end; ++lpos) {
+	for (LyXParagraph::size_type lpos = bidi_start;
+	     lpos <= bidi_end; ++lpos) {
 		vpos += log2vis_list[lpos - bidi_start];
 		vis2log_list[vpos - bidi_start] = lpos;
 		log2vis_list[lpos - bidi_start] = vpos;

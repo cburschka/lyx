@@ -609,16 +609,18 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 		}
 
 		// Update all other entries.
-		for (; it != fontlist.end(); ++it)
+		FontList::iterator fend = fontlist.end();
+		for (; it != fend; ++it)
 			--(*it).pos;
 
 		// Update the inset table.
 		InsetTable search_inset(pos, 0);
+		InsetList::iterator lend = insetlist.end();
 		for (InsetList::iterator it =
 			     upper_bound(insetlist.begin(),
-					 insetlist.end(),
+					 lend,
 					 search_inset, matchIT());
-		     it != insetlist.end(); ++it)
+		     it != lend; ++it)
 			--(*it).pos;
 #ifndef NEW_INSETS
 	} else {

@@ -24,7 +24,8 @@ extern bool CreatePostscript(Buffer * buffer, bool wait);
 
 void MenuSendto()
 {
-    static int ow = -1, oh;
+    static int ow = -1;
+    static int oh;
 
     // do this only if the command is empty
     if (!fl_get_input(fd_form_sendto->input_cmd) &&
@@ -81,7 +82,8 @@ void SendtoApplyCB(FL_OBJECT *, long)
 	}
     }
 
-    string fname = OnlyFilename(ChangeExtension(buffer->getLatexName(), ftypeext));
+    string fname = OnlyFilename(ChangeExtension(buffer->getLatexName(),
+						ftypeext));
     if (!contains(command, "$$FName"))
         command = "( " + command + " ) <$$FName";
     command = subst(command, "$$FName", fname);

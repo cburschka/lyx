@@ -36,7 +36,7 @@ public:
 	void newline();
 
 	/// Returns paragraph id and position from a row number
-	void getIdFromRow(int row, int & id, int & pos);
+	void getIdFromRow(int row, int & id, int & pos) const;
 
 	/// Appends another TexRow
 	TexRow & operator+= (TexRow const &);
@@ -87,7 +87,7 @@ private:
 	///
 	typedef std::list<RowItem> RowList;
 	///
-	RowList rowlist;
+	mutable RowList rowlist;
 	/// Last paragraph
 	LyXParagraph * lastpar;
 	/// Last position

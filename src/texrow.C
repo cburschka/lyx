@@ -51,19 +51,20 @@ void TexRow::newline()
 }
 
 
-void TexRow::getIdFromRow(int row, int & id, int & pos)
+void TexRow::getIdFromRow(int row, int & id, int & pos) const
 {
 	RowList::const_iterator cit = rowlist.begin();
-	for (; cit != rowlist.end(); ++cit) {
+	RowList::const_iterator end = rowlist.end();
+	for (; cit != end; ++cit) {
 		if ((*cit).rownumber() == row) break;
 	}
-	if (cit != rowlist.end()) {
+	if (cit != end) {
 		RowList::iterator kit = rowlist.begin();
 		// Increase the pos of all rows with the
 		// same id (and where the pos is larger)
 		// to avoid putting errorinsets at the
 		// same pos.
-		for(; kit != rowlist.end(); ++kit) {
+		for(; kit != end; ++kit) {
 			if (&(*kit) != &(*cit)
 			    && (*kit).id() == (*cit).id()
 			    && (*kit).pos() >= (*cit).pos())
