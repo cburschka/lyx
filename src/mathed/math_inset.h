@@ -212,6 +212,8 @@ public:
 	virtual MathTextCodes code() const { return LM_TC_MIN; }
 	/// identifies things that can get \limits or \nolimits
 	virtual bool takesLimits() const { return false; }
+	/// identifies complicated things that need braces if used as arg
+	virtual bool needsBraces() const { return true; }
 
 	///
 	virtual void edit(BufferView *, int, int, unsigned int) {}

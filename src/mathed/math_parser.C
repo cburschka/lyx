@@ -798,7 +798,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 #warning this might be wrong in general!
 #endif
 			// ignore braces around simple items
-			if (ar.size() == 1 || (ar.size() == 2 && ar.back()->asScriptInset())) {
+			if ((ar.size() == 1 && !ar.front()->needsBraces()
+       || (ar.size() == 2 && !ar.front()->needsBraces()
+			                    && ar.back()->asScriptInset())))
+			{
 				array.push_back(ar);
 			} else {
 				array.push_back(MathAtom(new MathBraceInset));

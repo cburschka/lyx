@@ -37,6 +37,8 @@ public:
 	bool match(MathInset *) const;
 	/// request "external features"
 	void validate(LaTeXFeatures & features) const;
+	/// identifies complicated things that need braces if used as arg
+	bool needsBraces() const { return false; }
 
 	///
 	void normalize(NormalStream &) const;
