@@ -54,13 +54,8 @@ TODO
 
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
+#include "insets/graphicinset.h"
 
-#include "graphics/GraphicsLoader.h"
-#include "graphics/GraphicsImage.h"
-#include "graphics/GraphicsParams.h"
-
-#include "lyxtext.h"
-#include "dimension.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "converter.h"
@@ -73,28 +68,17 @@ TODO
 #include "Lsstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
-#include "metricsinfo.h"
 
-#include "frontends/lyx_gui.h"
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
-#include "frontends/font_metrics.h"
-#include "frontends/LyXView.h"
-#include "frontends/Painter.h"
 
-#include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx::count
 #include "support/lyxlib.h" // float_equal
-#include "support/path.h"
 #include "support/tostr.h"
 #include "support/systemcall.h"
-#include "support/os.h"
-#include "support/lstrings.h"
 
-#include <boost/weak_ptr.hpp>
 #include <boost/bind.hpp>
-#include <boost/signals/trackable.hpp>
 
 #include <algorithm> // For the std::max
 
@@ -148,57 +132,21 @@ string findTargetFormat(string const & suffix, LatexRunParams const & runparams)
 } // namespace anon
 
 
-struct InsetGraphics::Cache : boost::signals::trackable
-{
-	///
-	Cache(InsetGraphics &);
-	///
-	void update(string const & file_with_path);
-
-	///
-	int old_ascent;
-	///
-	grfx::Loader loader;
-	///
-	unsigned long checksum;
-	///
-	boost::weak_ptr<BufferView> view;
-
-private:
-	///
-	InsetGraphics & parent_;
-};
-
-
-InsetGraphics::Cache::Cache(InsetGraphics & p)
-	: old_ascent(0), checksum(0), parent_(p)
-{
-	loader.connect(boost::bind(&InsetGraphics::statusChanged, &parent_));
-}
-
-
-void InsetGraphics::Cache::update(string const & file_with_path)
-{
-	lyx::Assert(!file_with_path.empty());
-
-	string const path = OnlyPath(file_with_path);
-	loader.reset(file_with_path, parent_.params().as_grfxParams());
-}
-
-
 InsetGraphics::InsetGraphics()
 	: graphic_label(uniqueID()),
-	  cache_(new Cache(*this))
-{}
+	  graphic_(new GraphicInset)
+{
+	graphic_->connect(boost::bind(&InsetGraphics::statusChanged, this));
+}
 
 
-#warning I have zero idea about the trackable()
 InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 	: Inset(ig),
-	  boost::signals::trackable(ig),
+	  boost::signals::trackable(),
 	  graphic_label(uniqueID()),
-	  cache_(new Cache(*this))
+	  graphic_(new GraphicInset(*ig.graphic_))
 {
+	graphic_->connect(boost::bind(&InsetGraphics::statusChanged, this));
 	setParams(ig.params());
 }
 
@@ -211,10 +159,17 @@ Inset * InsetGraphics::clone() const
 
 InsetGraphics::~InsetGraphics()
 {
-	InsetGraphicsMailer mailer(*this);
-	mailer.hideDialog();
+	InsetGraphicsMailer(*this).hideDialog();
 }
 
+
+void InsetGraphics::statusChanged()
+{
+	BufferView * bv = graphic_->view();
+	if (bv)
+		bv->updateInset(this);
+}
+	
 
 dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 {
@@ -244,141 +199,15 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 }
 
 
-string const InsetGraphics::statusMessage() const
-{
-	using namespace grfx;
-
-	switch (cache_->loader.status()) {
-		case WaitingToLoad:
-			return _("Not shown.");
-		case Loading:
-			return _("Loading...");
-		case Converting:
-			return _("Converting to loadable format...");
-		case Loaded:
-			return _("Loaded into memory. Must now generate pixmap.");
-		case ScalingEtc:
-			return _("Scaling etc...");
-		case Ready:
-			return _("Ready to display");
-		case ErrorNoFile:
-			return _("No file found!");
-		case ErrorConverting:
-			return _("Error converting to loadable format");
-		case ErrorLoading:
-			return _("Error loading file into memory");
-		case ErrorGeneratingPixmap:
-			return _("Error generating the pixmap");
-		case ErrorUnknown:
-			return _("No image");
-	}
-	return string();
-}
-
-
-bool InsetGraphics::imageIsDrawable() const
-{
-	if (!cache_->loader.image() || cache_->loader.status() != grfx::Ready)
-		return false;
-
-	return cache_->loader.image()->isDrawable();
-}
-
-
 void InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cache_->old_ascent = 50;
-	if (imageIsDrawable())
-		cache_->old_ascent = cache_->loader.image()->getHeight();
-	dim.asc = cache_->old_ascent;
-	dim.des = 0;
-	if (imageIsDrawable())
-		dim.wid = cache_->loader.image()->getWidth() + 2 * TEXT_TO_INSET_OFFSET;
-	else {
-		int font_width = 0;
-
-		LyXFont msgFont(mi.base.font);
-		msgFont.setFamily(LyXFont::SANS_FAMILY);
-
-		string const justname = OnlyFilename(params().filename);
-		if (!justname.empty()) {
-			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			font_width = font_metrics::width(justname, msgFont);
-		}
-
-		string const msg = statusMessage();
-		if (!msg.empty()) {
-			msgFont.setSize(LyXFont::SIZE_TINY);
-			font_width = std::max(font_width, font_metrics::width(msg, msgFont));
-		}
-
-		dim.wid = std::max(50, font_width + 15);
-	}
-	dim_ = dim;
-}
-
-
-BufferView * InsetGraphics::view() const
-{
-	return cache_->view.lock().get();
+	graphic_->metrics(mi, dim);
 }
 
 
 void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 {
-	BufferView * bv = pi.base.bv;
-	cache_->view = bv->owner()->view();
-	int oasc = cache_->old_ascent;
-
-	// we may have changed while someone other was drawing us so better
-	// to not draw anything as we surely call to redraw ourself soon.
-	// This is not a nice thing to do and should be fixed properly somehow.
-	// But I still don't know the best way to go. So let's do this like this
-	// for now (Jug 20020311)
-	if (dim_.asc != oasc)
-		return;
-
-	// Make sure now that x is updated upon exit from this routine
-	grfx::Params const & gparams = params().as_grfxParams();
-
-	if (gparams.display != grfx::NoDisplay &&
-			cache_->loader.status() == grfx::WaitingToLoad)
-		cache_->loader.startLoading();
-
-	if (!cache_->loader.monitoring())
-		cache_->loader.startMonitoring();
-
-	// This will draw the graphics. If the graphics has not been loaded yet,
-	// we draw just a rectangle.
-
-	if (imageIsDrawable()) {
-		pi.pain.image(x + TEXT_TO_INSET_OFFSET, y - dim_.asc,
-			    dim_.wid - 2 * TEXT_TO_INSET_OFFSET, dim_.asc + dim_.des,
-			    *cache_->loader.image());
-
-	} else {
-
-		pi.pain.rectangle(x + TEXT_TO_INSET_OFFSET, y - dim_.asc,
-				dim_.wid - 2 * TEXT_TO_INSET_OFFSET, dim_.asc + dim_.des);
-
-		// Print the file name.
-		LyXFont msgFont = pi.base.font;
-		msgFont.setFamily(LyXFont::SANS_FAMILY);
-		string const justname = OnlyFilename (params().filename);
-		if (!justname.empty()) {
-			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			pi.pain.text(x + TEXT_TO_INSET_OFFSET + 6,
-				   y - font_metrics::maxAscent(msgFont) - 4,
-				   justname, msgFont);
-		}
-
-		// Print the message.
-		string const msg = statusMessage();
-		if (!msg.empty()) {
-			msgFont.setSize(LyXFont::SIZE_TINY);
-			pi.pain.text(x + TEXT_TO_INSET_OFFSET + 6, y - 4, msg, msgFont);
-		}
-	}
+	graphic_->draw(pi, x, y);
 }
 
 
@@ -404,7 +233,7 @@ void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 	else
 		lyxerr[Debug::GRAPHICS] << "Not a Graphics inset!\n";
 
-	cache_->update(params().filename);
+	graphic_->update(params().as_grfxParams());
 }
 
 
@@ -517,12 +346,6 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		return orig_file;
 	}
 
-	// Ascertain whether the file has changed.
-	unsigned long const new_checksum = cache_->loader.checksum();
-	bool const file_has_changed = cache_->checksum != new_checksum;
-	if (file_has_changed)
-		cache_->checksum = new_checksum;
-
 	// temp_file will contain the file for LaTeX to act on if, for example,
 	// we move it to a temp dir or uncompress it.
 	string temp_file = orig_file;
@@ -534,7 +357,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		temp_file = MakeAbsPath(OnlyFilename(temp_file), buf->tmppath);
 		lyxerr[Debug::GRAPHICS]
 			<< "\ttemp_file: " << temp_file << endl;
-		if (file_has_changed || !IsFileReadable(temp_file)) {
+  		if (graphic_->hasFileChanged() || !IsFileReadable(temp_file)) {
 			bool const success = lyx::copy(orig_file, temp_file);
 			lyxerr[Debug::GRAPHICS]
 				<< "\tCopying zipped file from "
@@ -578,32 +401,14 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		<< "\tthe orig file is: " << orig_file << endl;
 
 	if (lyxrc.use_tempdir) {
-		string const ext_tmp = GetExtension(orig_file);
-		// without ext and /
-		temp_file = subst(
-			ChangeExtension(orig_file, string()), "/", "_");
-		// without dots and again with ext
-		temp_file = ChangeExtension(
-			subst(temp_file, ".", "_"), ext_tmp);
-		// now we have any_dir_file.ext
-		temp_file = MakeAbsPath(temp_file, buf->tmppath);
-		lyxerr[Debug::GRAPHICS]
-			<< "\tchanged to: " << temp_file << endl;
-
-		// if the file doen't exists, copy it into the tempdir
-		if (file_has_changed || !IsFileReadable(temp_file)) {
-			bool const success = lyx::copy(orig_file, temp_file);
-			lyxerr[Debug::GRAPHICS]
-				<< "\tcopying from " << orig_file << " to "
-				<< temp_file
-				<< (success ? " succeeded\n" : " failed\n");
-			if (!success) {
-				string str = bformat(_("Could not copy the file\n%1$s\n"
-					"into the temporary directory."), orig_file);
-				Alert::error(_("Graphics display failed"), str);
-				return orig_file;
-			}
-		}
+ 		temp_file = copyFileToDir(buf->tmppath, orig_file);
+		if (temp_file.empty()) {
+			string str = bformat(_("Could not copy the file\n%1$s\n"
+					       "into the temporary directory."),
+					     orig_file);
+			Alert::error(_("Graphics display failed"), str);
+			return orig_file;
+  		}
 
 		if (from == to) {
 			// No conversion is needed. LaTeX can handle the
@@ -769,13 +574,6 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetGraphics::statusChanged()
-{
-	if (!cache_->view.expired())
-		cache_->view.lock()->updateInset(this);
-}
-
-
 bool InsetGraphics::setParams(InsetGraphicsParams const & p)
 {
 	// If nothing is changed, just return and say so.
@@ -785,8 +583,8 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & p)
 	// Copy the new parameters.
 	params_ = p;
 
-	// Update the inset with the new parameters.
-	cache_->update(params().filename);
+  	// Update the display using the new parameters.
+  	graphic_->update(params().as_grfxParams());
 
 	// We have changed data, report it.
 	return true;

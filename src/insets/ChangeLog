@@ -1,3 +1,12 @@
+2003-06-03  Angus Leeming  <leeming@lyx.org>
+
+	* graphicinset.[Ch]: new files. Clean up the InsetGraphics::Cache
+	and move it somewhere where InsetExternal can use it too.
+
+	* Makefile.am: add the new files.
+
+	* insetgraphics.[Ch]: make use of the new GraphicInset.
+
 2003-06-03  John Levon  <levon@movementarian.org>
 
 	* inset.h:

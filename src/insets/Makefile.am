@@ -17,6 +17,8 @@ libinsets_la_SOURCES = \
 	mailinset.h \
 	ExternalTemplate.C \
 	ExternalTemplate.h \
+	graphicinset.C \
+	graphicinset.h \
 	inset.C \
 	inset.h \
 	insetbase.h \

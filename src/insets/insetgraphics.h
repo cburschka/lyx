@@ -15,12 +15,13 @@
 
 #include "inset.h"
 #include "insetgraphicsParams.h"
-#include "dimension.h"
 
-#include <boost/signals/trackable.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/signals/trackable.hpp>
+
 
 class Dialogs;
+class GraphicInset;
 class LaTeXFeatures;
 
 ///
@@ -78,17 +79,11 @@ public:
 	InsetGraphicsParams const & params() const;
 
 private:
-	/// Returns the cached BufferView.
-	BufferView * view() const;
-
 	///
 	friend class InsetGraphicsMailer;
 
-	/// Is the image ready to draw, or should we display a message instead?
-	bool imageIsDrawable() const;
-
-	/** This method is connected to cache_->statusChanged, so we are
-	    informed when the image has been loaded.
+	/** This method is connected to the graphics loader, so we are
+	 *  informed when the image has been loaded.
 	 */
 	void statusChanged();
 
@@ -108,13 +103,8 @@ private:
 	/// holds the entity name that defines the graphics location (SGML).
 	string const graphic_label;
 
-	/// The cached variables
-	class Cache;
-	friend class Cache;
-	/// The pointer never changes although *cache_'s contents may.
-	boost::scoped_ptr<Cache> const cache_;
-	/// dimension cache
-	mutable Dimension dim_;
+	/// The thing that actually draws the image on LyX's screen.
+	boost::scoped_ptr<GraphicInset> const graphic_;
 };
 
 
