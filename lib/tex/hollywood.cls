@@ -6,6 +6,11 @@
 %% that could be deleted. 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{hollywood} [1998/10/27 v1.0 uses hollywood.layout]
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{ifthen}
+\usepackage{lastpage}
+\pagestyle{fancy}
 \renewcommand{\ref}[1]{#1}
 \newcommand\@ptsize{}
 \newif\if@restonecol
@@ -42,7 +47,7 @@
 \@medpenalty  151
 \@highpenalty 301
 \setcounter{topnumber}{2}
-% \renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
 \renewcommand\topfraction{.7}
 \setcounter{bottomnumber}{1}
 \renewcommand\bottomfraction{.3}
@@ -73,7 +78,8 @@
   \null\vfil
   \vskip 60\p@
   \begin{center}%
-    { \underline{\@title} \par}%
+%%    { \underline{\@title} \par}%
+    { \@title \par}%
     \vskip 3em%
     {\lineskip .75em%
       \begin{tabular}[t]{c}%
@@ -155,11 +161,6 @@
 \else
   \onecolumn
 \fi
-\usepackage{fancyhdr}
-\usepackage{extramarks}
-\usepackage{ifthen}
-\usepackage{lastpage}
-\pagestyle{fancy}
 % This stuff is for a shooting script
 % \lhead{\ifthenelse{ \not \value{page} = 1}{CONTINUED:}{}}
 % \rfoot{\ifthenelse{ \not \value{page}=\pageref{LastPage}}{(CONT'D)}
@@ -169,7 +170,6 @@
 % This is what we want for a spec script
 \rhead{\thepage.}
 \cfoot{}
-% \renewcommand{\headrulewitdh}{0pt}
   % This one is needed to get real adobe courier, but you can use
   % cmtt which is also correct
   \renewcommand{\familydefault}{pcr}
@@ -210,7 +210,7 @@
 \newcommand{\parenthetical}[1]%
 {\raggedright
 \hspace{1.75in}
-\parbox{3in}{(#1)}
+\parbox{1.5in}{(#1)}
 \vspace{6pt}}
 
 \endinput

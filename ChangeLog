@@ -1,3 +1,10 @@
+2000-09-14  Garst Reese    <reese@isn.net>
+
+	* lib/tex/hollywood.cls changed length of parenthicals to 1.5in
+	moved usepackage{xxx}'s to beginning of file. Changed left margin
+	to 1.5in, right margin to 1in. Forced headrulewidth to 0, removed
+	underlining from title. Thanks to John Culleton for useful suggestions.
+
 2000-09-09  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/lyx_main.C (LyX): Call to QuitLyX() to remove temporary
