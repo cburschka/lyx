@@ -317,8 +317,8 @@ void InsetCollapsable::edit(LCursor & cur, int x, int y)
 DispatchResult
 InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
-		<< "  button y: " << button_dim.y2 << endl;
+	//lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
+	//	<< "  button y: " << button_dim.y2 << endl;
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			if (status_ == Inlined)

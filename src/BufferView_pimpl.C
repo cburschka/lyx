@@ -888,7 +888,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	//
 	FuncRequest cmd = cmd0;
 	cmd.y += bv_->top_y();
-	lyxerr << "*** workAreaDispatch: request: " << cmd << std::endl;
+	//lyxerr << "*** workAreaDispatch: request: " << cmd << std::endl;
 	LCursor cur(*bv_);
 	switch (cmd.action) {
 #if 0
@@ -967,8 +967,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	}
 
 	default:
-		lyxerr << "*** UNDISPATCHED: " << cmd;
-		//owner_->dispatch(cmd);
+		BOOST_ASSERT(false);
 	}
 	return true;
 }

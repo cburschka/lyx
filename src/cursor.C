@@ -77,7 +77,7 @@ void LCursor::reset()
 
 DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 {
-	//lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+	lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	FuncRequest cmd = cmd0;
 	for (current_ = cursor_.size() - 1; current_ >= 1; --current_) {
 		lyxerr << "trying to dispatch to inset " << inset() << endl;
@@ -108,8 +108,8 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 		}
 	}
 	BOOST_ASSERT(current_ == 0);
-	lyxerr << "trying to dispatch to main text " << bv_->text()
-		<< " with cursor: " << *this << endl;
+	//lyxerr << "trying to dispatch to main text " << bv_->text()
+	//	<< " with cursor: " << *this << endl;
 	DispatchResult res = bv_->text()->dispatch(*this, cmd);
 	//lyxerr << "   result: " << res.val() << endl;
 	return res;

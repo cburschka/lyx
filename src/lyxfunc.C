@@ -246,10 +246,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 	if (func.action == LFUN_SELFINSERT) {
 		if (encoded_last_key != 0) {
-			string arg;
-			arg += encoded_last_key;
-			lyxerr << "SelfInsert arg[`"
-				   << arg << "']" << endl;
+			string arg(1, encoded_last_key);
 			dispatch(FuncRequest(LFUN_SELFINSERT, arg));
 			lyxerr[Debug::KEY]
 				<< "SelfInsert arg[`" << arg << "']" << endl;
