@@ -1959,7 +1959,7 @@ vector<string> const InsetText::getLabelList() const
 	vector<string> label_list;
 
 	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit) {
 		InsetList::iterator beg = pit->insetlist.begin();
 		InsetList::iterator end = pit->insetlist.end();
