@@ -40,15 +40,6 @@ class ErrorList;
 class BufferView : boost::noncopyable {
 public:
 	/**
-	 * Codes to store necessary pending updates
-	 * of the document rendering.
-	 */
-	enum UpdateCodes {
-		UPDATE = 0, //< repaint
-		SELECT = 1 //< reset selection to current cursor pos
-	};
-
-	/**
 	 * Create a view with the given owner main window,
 	 * of the given dimensions.
 	 */
@@ -219,9 +210,5 @@ private:
 
 	Pimpl * pimpl_;
 };
-
-
-BufferView::UpdateCodes operator|(BufferView::UpdateCodes uc1,
-				  BufferView::UpdateCodes uc2);
 
 #endif // BUFFERVIEW_H

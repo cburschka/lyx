@@ -13,6 +13,8 @@
 	* text3.C: replace "complicated" BufferView::update(...) calls with
 	simpler ones.
 
+	* BufferView.[Ch]: remove now unneeded BufferView::UpdateCodes
+
 2003-08-02  Kayvan Sylvan  <kayvan@sylvan.com>
 
 	* Makefile.am (lyx_SOURCES): add paper.h

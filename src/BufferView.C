@@ -238,14 +238,6 @@ void BufferView::stuffClipboard(string const & stuff) const
 }
 
 
-BufferView::UpdateCodes operator|(BufferView::UpdateCodes uc1,
-				  BufferView::UpdateCodes uc2)
-{
-	return static_cast<BufferView::UpdateCodes>
-		(static_cast<int>(uc1) | static_cast<int>(uc2));
-}
-
-
 bool BufferView::dispatch(FuncRequest const & ev)
 {
 	return pimpl_->dispatch(ev);
