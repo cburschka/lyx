@@ -23,8 +23,6 @@
 #include "support/LOstream.h"
 #include "debug.h"
 
-using std::ostream;
-
 
 InsetFoot::InsetFoot()
 	: InsetFootlike()
@@ -51,7 +49,7 @@ string const InsetFoot::EditMessage() const
 
 
 int InsetFoot::Latex(Buffer const * buf,
-		     ostream & os, bool fragile, bool fp) const
+		     std::ostream & os, bool fragile, bool fp) const
 {
 	os << "\\footnote{%\n";
 	
@@ -65,7 +63,7 @@ int InsetFoot::Latex(Buffer const * buf,
 bool InsetFoot::InsertInsetAllowed(Inset * in) const
 {
 	if ((in->LyxCode() == Inset::FOOT_CODE) ||
-		(in->LyxCode() == Inset::MARGIN_CODE)) {
+	    (in->LyxCode() == Inset::MARGIN_CODE)) {
 		return false;
 	}
 	return true;

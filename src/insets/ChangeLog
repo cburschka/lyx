@@ -1,4 +1,41 @@
+2001-04-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettext.h: reindent
+
+	* insettabular.h: make tabular a scoped_ptr
+
+	* insettext.C (init): adjust for cursor_visible
+	(ToggleInsetCursor): constify asc and desc, font, adjust for
+	cursor_visible
+	(ShowInsetCursor): constify asc and desc, font, adjust for
+	cursor_visible
+	(HideInsetCursor): adjust for cursor_visible
+
+	* insettabular.C: reindent some
+	(InsetTabular): adjust for scoped_ptr and cursor_visible
+	(InsetTabular): ditto
+	(~InsetTabular): delete delete
+	(Clone): adjust for scoped_ptr
+	(Read): constify old_format, adjust for scoped_ptr, move init of
+	token
+	(draw): constify tx, localize loop vars.
+	some other localization of variables, remove double initilizatons.
+	
+	* insetfoot.C: remove using std::ostream, add ostream where needed
+
 2001-04-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxinset.h: some reindentaion, use initializer list for
+	constructro.
+	UpdatableInset: make cursor_visible a private var add
+	public isCursorVisible(), add protected toggleCursorVisible() and
+	proctected setCursorVisible(bool), make scroll call the Inset::scroll
+
+	* insettoc.C: remvoe using decl
+	(getScreenLabel): make cmdname donst
+	(LyxCode): ditto
+	(Ascii): ditto
+	(Ascii): don't use endl
 
 	* insetfootlike.C: remove using decl at file scope and add std::
 	where needed

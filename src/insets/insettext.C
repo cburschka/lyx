@@ -91,7 +91,9 @@ void InsetText::init(InsetText const * ins)
 	insetDescent = 0;
 	insetWidth = 0;
 	the_locking_inset = 0;
+#if 0
 	cursor_visible = false;
+#endif
 	interline_space = 1;
 	no_selection = false;
 	need_update = INIT;
@@ -1268,16 +1270,16 @@ void InsetText::ToggleInsetCursor(BufferView * bv)
 		return;
 	}
 
-	LyXFont font = TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv));
+	LyXFont const font(TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv)));
 
-	int asc = lyxfont::maxAscent(font);
-	int desc = lyxfont::maxDescent(font);
+	int const asc = lyxfont::maxAscent(font);
+	int const desc = lyxfont::maxDescent(font);
   
-	if (cursor_visible)
+	if (isCursorVisible())
 		bv->hideLockedInsetCursor();
 	else
 		bv->showLockedInsetCursor(cx(bv), cy(bv), asc, desc);
-	cursor_visible = !cursor_visible;
+	toggleCursorVisible();
 }
 
 
@@ -1287,25 +1289,26 @@ void InsetText::ShowInsetCursor(BufferView * bv, bool show)
 		the_locking_inset->ShowInsetCursor(bv);
 		return;
 	}
-	if (!cursor_visible) {
-		LyXFont font = TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv));
+	if (!isCursorVisible()) {
+		LyXFont const font =
+			TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv));
 	
-		int asc = lyxfont::maxAscent(font);
-		int desc = lyxfont::maxDescent(font);
+		int const asc = lyxfont::maxAscent(font);
+		int const desc = lyxfont::maxDescent(font);
 
 		bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc);
 		if (show)
 			bv->showLockedInsetCursor(cx(bv), cy(bv), asc, desc);
-		cursor_visible = true;
+		setCursorVisible(true);
 	}
 }
 
 
 void InsetText::HideInsetCursor(BufferView * bv)
 {
-	if (cursor_visible) {
+	if (isCursorVisible()) {
 		bv->hideLockedInsetCursor();
-		cursor_visible = false;
+		setCursorVisible(false);
 	}
 	if (the_locking_inset)
 		the_locking_inset->HideInsetCursor(bv);

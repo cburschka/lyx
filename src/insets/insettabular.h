@@ -45,6 +45,9 @@
 #ifndef INSETTABULAR_H
 #define INSETTABULAR_H
 
+#include <sigc++/signal_system.h>
+#include <boost/smart_ptr.hpp>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -54,7 +57,6 @@
 #include "LString.h"
 #include "lyxcursor.h"
 #include "lyxfunc.h"
-#include <sigc++/signal_system.h>
 
 class LyXLex;
 class Painter;
@@ -107,7 +109,8 @@ public:
 	///
 	bool LockInsetInInset(BufferView *, UpdatableInset *);
 	///
-	bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr = false);
+	bool UnlockInsetInInset(BufferView *, UpdatableInset *,
+				bool lr = false);
 	///
 	bool UpdateInsetInInset(BufferView *, Inset *);
 	///
@@ -132,7 +135,7 @@ public:
 	void InsetKeyPress(XKeyEvent *);
 	///
 	UpdatableInset::RESULT LocalDispatch(BufferView *, kb_action,
-										 string const &);
+					     string const &);
 	///
 	int Latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
@@ -153,7 +156,7 @@ public:
 	bool TabularFeatures(BufferView * bv, string const & what);
 	///
 	void TabularFeatures(BufferView * bv, LyXTabular::Feature feature,
-						 string const & val = string());
+			     string const & val = string());
 	///
 	int GetActCell() const { return actcell; }
 	///
@@ -163,7 +166,8 @@ public:
 	///
 	Buffer * BufferOwner() const { return const_cast<Buffer *>(buffer); }
 	///
-	LyXText * getLyXText(BufferView const *, bool const recursive = false) const;
+	LyXText * getLyXText(BufferView const *,
+			     bool const recursive = false) const;
 	///
 	void resizeLyXText(BufferView *) const;
 	///
@@ -176,7 +180,8 @@ public:
 	//
 	// Public structures and variables
 	///
-	LyXTabular * tabular;
+	//LyXTabular * tabular;
+	boost::scoped_ptr<LyXTabular> tabular;
 	///
 	SigC::Signal0<void> hideDialog;
 

@@ -128,7 +128,7 @@ public:
 	UpdatableInset::RESULT LocalDispatch(BufferView *, kb_action, string const &);
 	///
 	int Latex(Buffer const *, std::ostream &,
-			  bool fragile, bool free_spc) const;
+		  bool fragile, bool free_spc) const;
 	///
 	int Ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
@@ -209,18 +209,18 @@ private:
 	void HideInsetCursor(BufferView *);
 	///
 	UpdatableInset::RESULT moveRight(BufferView *, bool activate_inset = true,
-									 bool selecting = false);
+					 bool selecting = false);
 	///
 	UpdatableInset::RESULT moveLeft(BufferView *, bool activate_inset = true,
-									bool selecting = false);
+					bool selecting = false);
 	///
 	UpdatableInset::RESULT moveRightIntern(BufferView *, bool behind,
-										   bool activate_inset = true,
-										   bool selecting = false);
+					       bool activate_inset = true,
+					       bool selecting = false);
 	///
 	UpdatableInset::RESULT moveLeftIntern(BufferView *, bool behind, 
-										  bool activate_inset = true,
-										  bool selecting = false);
+					      bool activate_inset = true,
+					      bool selecting = false);
 
 	///
 	UpdatableInset::RESULT moveUp(BufferView *);
@@ -234,7 +234,7 @@ private:
 	bool checkAndActivateInset(BufferView * bv, bool behind);
 	///
 	bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
-							   int button = 0);
+				   int button = 0);
 	void removeNewlines();
 
 	///
