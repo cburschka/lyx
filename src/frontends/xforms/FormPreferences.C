@@ -2693,7 +2693,7 @@ bool FormPreferences::ScreenFonts::input()
 		   strToDbl(fl_get_input(dialog_->input_huger))) {
 		activate = false;
 
-		str = _("Fonts must be input in the order tiny > script> footnote > small > normal > large > larger > largest > huge > huger.");
+		str = _("Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal > Large > Larger > Largest > Huge > Huger.");
 	}
 
 	if (!activate)

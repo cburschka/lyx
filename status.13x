@@ -14,6 +14,9 @@ can get with the command
 
 JMarc
 
+[In this list, I try to group things by topics, and in decreasing
+importance order. This is of course subjective...]
+
 What's new
 ==========
 
@@ -21,6 +24,10 @@ What's new
 
 ** Bug fixes
 
-[bug 874] Fix strerror() build problem with some gcc/glibc versions
+- in the dialogs, replace LaTeX font size names by LyX names for
+  consistency reasons and to resolve a translation conflict
 
-lyx2lyx: enable the debug level to be set.
+- enable the debug level to be set in lyx2lyx
+
+- fix strerror() build problem with some gcc/glibc versions (bug #874)
+
