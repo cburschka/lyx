@@ -1404,7 +1404,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		LyXText * lt = view()->getLyXText();
 		if (par->inInset()) {
 			FuncRequest cmd(view(), LFUN_INSET_EDIT, "left");
-			par->inInset()->dispatch(cmd);
+			par.inset()->dispatch(cmd);
 			lt = par->inInset()->getLyXText(view());
 		}
 
