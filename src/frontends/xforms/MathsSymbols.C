@@ -185,7 +185,7 @@ char const * latex_ams_arrows[] = {
 	"Rsh", "downdownarrows", "upharpoonright",
 	"downharpoonright", "rightsquigarrow",
 	"nleftarrow", "nrightarrow", "nLeftarrow",
-	"nRightarrow", "nleftrightarrow", "nLeftrightarrow"
+	"nRightarrow", "nleftrightarrow", "nLeftrightarrow", ""
 };
 
 int const nr_latex_ams_arrows = sizeof(latex_ams_arrows) / sizeof(char const *);
@@ -201,7 +201,7 @@ char const * latex_ams_rel[] = {
 	"precsim", "precapprox", "vartriangleleft", "trianglerighteq", "Vdash", "shortmid",
 	"trianglelefteq", "vDash", "Vvdash", "shortparallel", "between", "pitchfork",
 	"smallsmile", "smallfrown", "bumpeq", "varpropto", "blacktriangleleft", "therefore",
-	"Bumpeq", "geqq", "geqslant", "backepsilon", "blacktriangleright", "because"
+	"Bumpeq", "geqq", "geqslant", "backepsilon", "blacktriangleright", "because", ""
 };
 
 int const nr_latex_ams_rel = sizeof(latex_ams_rel) / sizeof(char const *);
@@ -376,11 +376,13 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 				id -= 29;
 			}
 			break;
+		case 6:
 		case 7:
 		case 8:
 		case 9:
 		case 10:
-			// to be added -- MV
+			// FIXME: to be added -- MV
+			return 0;
 			break;
 		}
 		int ww = w / dw;
@@ -413,6 +415,8 @@ char const ** get_pixmap_from_symbol(char const * arg, int wx, int hx)
 {
 	lyx::Assert(arg);
 
+	lyxerr << arg << endl;
+ 
 	char const ** data = 0;
 	latexkeys const * l = in_word_set(arg);
 	if (!l)
