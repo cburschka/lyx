@@ -1,6 +1,15 @@
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
+	* Makefile.am:
+	* Makefile.dialogs: 
+	* QError.[Ch]:
+	* QErrorDialog.[Ch]:
+	* ui/QErrorDialog.ui: add LaTeX error dialog
+
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
 	* QCharacter.[Ch]:
 	* QCharacterDialog.[Ch]:
 	* ui/QcharacterDialog.ui: make work again,

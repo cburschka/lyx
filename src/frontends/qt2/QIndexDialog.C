@@ -24,18 +24,13 @@ QIndexDialog::QIndexDialog(QIndex * form)
 }
 
  
-QIndexDialog::~QIndexDialog()
-{
-}
-
-
 void QIndexDialog::change_adaptor()
 {
 	form_->changed();
 }
 
  
-void QIndexDialog::closeEvent(QCloseEvent *e)
+void QIndexDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
 	e->accept();
