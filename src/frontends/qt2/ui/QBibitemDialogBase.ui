@@ -19,7 +19,7 @@
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string>Index</string>
+        <string>Bibliography Entry</string>
     </property>
     <property stdset="1">
         <name>sizeGripEnabled</name>
@@ -57,7 +57,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Key</string>
+                        <string>&amp;Key:</string>
                     </property>
                     <property>
                         <name>buddy</name>
@@ -65,7 +65,7 @@
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>The citation key</string>
+                        <string>The bibliography key</string>
                     </property>
                 </widget>
                 <widget>
@@ -83,7 +83,7 @@
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>The citation key</string>
+                        <string>The bibliography key</string>
                     </property>
                 </widget>
             </hbox>
@@ -111,7 +111,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Label</string>
+                        <string>&amp;Label:</string>
                     </property>
                     <property>
                         <name>buddy</name>

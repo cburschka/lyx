@@ -24,7 +24,7 @@ typedef Qt2CB<ControlShowFile, Qt2DB<QShowFileDialog> > base_class;
 
 
 QShowFile::QShowFile()
-	: base_class(qt_("ShowFile"))
+	: base_class(qt_("Show File"))
 {
 }
 

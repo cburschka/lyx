@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: frå_cvs_1.1.2.15\n"
-"POT-Creation-Date: 2005-02-02 14:46+0100\n"
+"POT-Creation-Date: 2005-03-07 12:50+0100\n"
 "PO-Revision-Date: 2004-09-10 17:27+0200\n"
 "Last-Translator: Ingar Parelisussen <ingar.pareliussen@chembio.ntnu.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -23,7 +23,6 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
-#: ../src/frontends/xforms/forms/form_forks.fd:169
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:44
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
@@ -54,7 +53,6 @@ msgstr "Nøkkel|#N"
 #: ../src/frontends/xforms/forms/form_external.fd:187
 #: ../src/frontends/xforms/forms/form_filedialog.fd:206
 #: ../src/frontends/xforms/forms/form_float.fd:152
-#: ../src/frontends/xforms/forms/form_forks.fd:133
 #: ../src/frontends/xforms/forms/form_graphics.fd:80
 #: ../src/frontends/xforms/forms/form_include.fd:79
 #: ../src/frontends/xforms/forms/form_index.fd:79
@@ -156,7 +154,6 @@ msgstr "Bla gjennom|#r"
 #: ../src/frontends/xforms/forms/form_ert.fd:169
 #: ../src/frontends/xforms/forms/form_external.fd:205
 #: ../src/frontends/xforms/forms/form_float.fd:170
-#: ../src/frontends/xforms/forms/form_forks.fd:151
 #: ../src/frontends/xforms/forms/form_graphics.fd:116
 #: ../src/frontends/xforms/forms/form_index.fd:97
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:98
@@ -254,7 +251,6 @@ msgid "Info:"
 msgstr "Info:"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:116
-#: ../src/frontends/xforms/forms/form_forks.fd:115
 msgid "@4->"
 msgstr "@4->"
 
@@ -272,7 +268,6 @@ msgstr "@2->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:188
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:209
-#: src/frontends/qt2/QSearch.C:30
 msgid "Search"
 msgstr "Søk"
 
@@ -673,22 +668,6 @@ msgstr "Her, uansett|#H"
 #: ../src/frontends/xforms/forms/form_float.fd:296
 msgid "Document default|#D"
 msgstr "Standardinnstillingar for dokumentet|#D"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:43
-msgid "Forked child processes:|#F"
-msgstr "Avspalta barneprosessar|#A"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:61
-msgid "Kill processes:|#K"
-msgstr "Stans prosessar:|#S"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:79
-msgid "All ->"
-msgstr "Alle ->"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:97
-msgid "@->"
-msgstr "@->"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:158
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:286
@@ -1596,8 +1575,9 @@ msgid "Name:|#N"
 msgstr "Namn:|#N"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:207
-msgid "Reference:|#e"
-msgstr "Referanse"
+#, fuzzy
+msgid "Label:|#e"
+msgstr "Etikett:|#E"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:243
 msgid "Go to|#G"
@@ -1935,8 +1915,9 @@ msgid "Use &NatBib"
 msgstr "Bruk &NatBib"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-msgid "Cite &Style:"
-msgstr "Referanse &stil:"
+#, fuzzy
+msgid "Citation &Style:"
+msgstr "Litteraturstil"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:66
@@ -2057,6 +2038,7 @@ msgid "&Double"
 msgstr "&Dobbel"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:100
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
 msgid "&Type:"
 msgstr "&Type:"
 
@@ -2233,23 +2215,25 @@ msgid "&Cancel"
 msgstr "&Avbryt"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
-#: src/frontends/qt2/QIndex.C:26 src/frontends/xforms/FormIndex.C:25
-#: src/insets/insetindex.C:66
-msgid "Index"
-msgstr "Indeks"
+#: src/frontends/qt2/QBibitem.C:30 src/frontends/xforms/FormBibitem.C:25
+msgid "Bibliography Entry"
+msgstr "Bibliografi element"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-msgid "&Key"
+#, fuzzy
+msgid "&Key:"
 msgstr "&Nøkkel"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-msgid "The citation key"
-msgstr "Litteratur-nøkklen"
+#, fuzzy
+msgid "The bibliography key"
+msgstr "Litteratur nøkkel"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-msgid "&Label"
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
+#, fuzzy
+msgid "&Label:"
 msgstr "&Etikett"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
@@ -2275,8 +2259,10 @@ msgid "&OK"
 msgstr "&OK"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-msgid "Bibtex"
-msgstr "BibTeX"
+#: src/frontends/qt2/QBibtex.C:39 src/frontends/xforms/FormBibtex.C:37
+#, fuzzy
+msgid "BibTeX Bibliography"
+msgstr "Litteratur"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
 msgid "Databa&ses"
@@ -2361,7 +2347,6 @@ msgstr "Legg til bibliografien til innhaldslista"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
-#: src/frontends/qt2/QCharacter.C:35
 msgid "Character"
 msgstr "Teikn"
 
@@ -2484,8 +2469,9 @@ msgid "&Restore"
 msgstr "Gjenopp&rett"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
-msgid "Search the available citations"
-msgstr "Leit blant litteraturen"
+#, fuzzy
+msgid "Browse the available bibliography entries"
+msgstr "Tilgjengelege greiner"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Regular E&xpression"
@@ -2521,16 +2507,19 @@ msgid "New Item"
 msgstr "Nytt element"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
-msgid "Available citation keys"
-msgstr "Vel mellom litteraturen:"
+#, fuzzy
+msgid "Available bibliography entries"
+msgstr "&Tilgjengelege greiner"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
-msgid "Add the selected citation"
-msgstr "Legg til den valde litteraturen"
+#, fuzzy
+msgid "Add citation of the selected bibliography entry"
+msgstr "Informasjon om det valte elementet."
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
-msgid "Remove the selected citation"
-msgstr "Fjern den valde litteraturen"
+#, fuzzy
+msgid "Remove citation of the selected bibiography entry"
+msgstr "Fjern den valde greina"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
 msgid "Move the selected citation up"
@@ -2557,8 +2546,9 @@ msgid "Info"
 msgstr "Info"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
-msgid "Citation entry"
-msgstr "Litteratur elementet"
+#, fuzzy
+msgid "Bibliography entry"
+msgstr "Bibliografi element"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:492
 msgid "&Full author list"
@@ -2699,6 +2689,7 @@ msgstr "Eksternt materiale"
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:439
 msgid "&File:"
 msgstr "&Fil"
 
@@ -3079,6 +3070,12 @@ msgstr "&Førehandsvising"
 msgid "Show LaTeX preview"
 msgstr "Bruk LaTeX førehandsvising"
 
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
+#: src/frontends/qt2/QIndex.C:26 src/frontends/xforms/FormIndex.C:25
+#: src/insets/insetindex.C:66
+msgid "Index"
+msgstr "Indeks"
+
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
 msgid "&Keyword"
 msgstr "Nø&kkelord"
@@ -3089,7 +3086,7 @@ msgstr "Nø&kkelord"
 msgid "Index entry"
 msgstr "Indeksnøkkel"
 
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:33
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22
 msgid "Log"
 msgstr "Logg"
 
@@ -4008,7 +4005,7 @@ msgstr "&Filer du lasta sist:"
 
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:98
+#: src/frontends/qt2/QPrefs.C:66 src/frontends/xforms/FormPreferences.C:98
 msgid "Preferences"
 msgstr "Innstillingar"
 
@@ -4083,7 +4080,8 @@ msgid "Print Destination"
 msgstr "Skrivar"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:409
-msgid "P&rinter"
+#, fuzzy
+msgid "P&rinter:"
 msgstr "Sk&rivar"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:417
@@ -4094,31 +4092,28 @@ msgstr "Send dokumentet til skrivar"
 msgid "Send output to the given printer"
 msgstr "Send dokumentet til den valde skrivaren"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:439
-msgid "&File"
-msgstr "&Fil"
-
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:443
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:458
 msgid "Send output to a file"
 msgstr "Skriv til ei fil"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22 src/frontends/qt2/QRef.C:41
 #: src/frontends/xforms/FormRef.C:33
-msgid "Reference"
-msgstr "Referanse"
+msgid "Cross Reference"
+msgstr "Kryssreferanse"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-msgid "Update the reference list"
-msgstr "Oppdater referanselista"
+#, fuzzy
+msgid "Update the label list"
+msgstr "Oppdater stillista"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
 msgid "&Goto"
 msgstr "&Gå til"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-msgid "Move the document cursor to reference"
+#, fuzzy
+msgid "Move the document cursor to label"
 msgstr "Flytt skrivemerke til referansen"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
@@ -4126,7 +4121,8 @@ msgid "Sort"
 msgstr "Sorter"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-msgid "Sort references in alphabetical order"
+#, fuzzy
+msgid "Sort labels in alphabetical order"
 msgstr "Sorter referansane i alfabetiskordning"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
@@ -4150,28 +4146,28 @@ msgid "Formatted reference"
 msgstr "Formatet på referansen"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-msgid "Reference as it appears in output"
+#, fuzzy
+msgid "Cross reference as it appears in output"
 msgstr "Referansen slik den er i dokumentet"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-msgid "&Reference:"
-msgstr "&Referansen:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
 msgid "&Format:"
 msgstr "&Format:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
 msgid "&Name:"
 msgstr "&Namn:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-msgid "Available references in selected document:"
+#, fuzzy
+msgid "Available labels in selected document:"
 msgstr "Tilgjengelege referansar i dokumentet:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-msgid "Available references"
-msgstr "Tilgjengelege referansar"
+#, fuzzy
+msgid "Available labels"
+msgstr "Tilgjengelege malar"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
 msgid "&Document:"
@@ -4556,7 +4552,8 @@ msgid "&Rescan"
 msgstr "&Frisk opp"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-msgid "Built new file list"
+#, fuzzy
+msgid "Rebuild the file lists"
 msgstr "Lag ny fil-liste"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
@@ -4607,10 +4604,6 @@ msgstr "Erstatta setelen med utvalet"
 msgid "Table Of Contents"
 msgstr "Innhaldsliste"
 
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
-msgid "&Type"
-msgstr "&Sort"
-
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
 msgid "Contents list"
 msgstr "Innhaldsliste"
@@ -4620,19 +4613,16 @@ msgid "Insert URL"
 msgstr "Set inn URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-msgid "&URL"
+#, fuzzy
+msgid "&URL:"
 msgstr "&URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
 #: ../lib/layouts/scrlttr2.layout:219 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:29
+#: src/frontends/qt2/QURL.C:29 src/frontends/xforms/FormUrl.C:23
 msgid "URL"
 msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-msgid "&Name"
-msgstr "&Namn"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
@@ -4669,7 +4659,7 @@ msgid "&Placement:"
 msgstr "&Plassering:"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
-#: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
+#: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:55
 #: ../lib/layouts/amsart.layout:23 ../lib/layouts/amsbook.layout:23
 #: ../lib/layouts/apa.layout:31 ../lib/layouts/broadway.layout:179
 #: ../lib/layouts/chess.layout:30 ../lib/layouts/cl2emult.layout:127
@@ -4825,8 +4815,8 @@ msgstr "Små/store bokstavar"
 
 #: ../lib/layouts/IEEEtran.layout:302 ../lib/layouts/aa.layout:44
 #: ../lib/layouts/aa.layout:239 ../lib/layouts/aapaper.layout:59
-#: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:68
-#: ../lib/layouts/aastex.layout:141 ../lib/layouts/amsart.layout:40
+#: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:69
+#: ../lib/layouts/aastex.layout:148 ../lib/layouts/amsart.layout:40
 #: ../lib/layouts/amsbook.layout:41 ../lib/layouts/cv.layout:26
 #: ../lib/layouts/egs.layout:29 ../lib/layouts/ijmpd.layout:86
 #: ../lib/layouts/kluwer.layout:55 ../lib/layouts/latex8.layout:39
@@ -4842,8 +4832,8 @@ msgstr "Bolk"
 
 #: ../lib/layouts/IEEEtran.layout:313 ../lib/layouts/aa.layout:46
 #: ../lib/layouts/aa.layout:249 ../lib/layouts/aapaper.layout:61
-#: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:70
-#: ../lib/layouts/aastex.layout:154 ../lib/layouts/amsart.layout:53
+#: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:71
+#: ../lib/layouts/aastex.layout:161 ../lib/layouts/amsart.layout:53
 #: ../lib/layouts/amsbook.layout:54 ../lib/layouts/cv.layout:49
 #: ../lib/layouts/egs.layout:55 ../lib/layouts/ijmpd.layout:104
 #: ../lib/layouts/kluwer.layout:64 ../lib/layouts/latex8.layout:46
@@ -4858,8 +4848,8 @@ msgstr "Underbolk"
 
 #: ../lib/layouts/IEEEtran.layout:320 ../lib/layouts/aa.layout:48
 #: ../lib/layouts/aa.layout:261 ../lib/layouts/aapaper.layout:63
-#: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:72
-#: ../lib/layouts/aastex.layout:167 ../lib/layouts/amsart.layout:62
+#: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:73
+#: ../lib/layouts/aastex.layout:174 ../lib/layouts/amsart.layout:62
 #: ../lib/layouts/amsbook.layout:63 ../lib/layouts/ijmpd.layout:114
 #: ../lib/layouts/kluwer.layout:73 ../lib/layouts/linuxdoc.layout:121
 #: ../lib/layouts/llncs.layout:66 ../lib/layouts/ltugboat.layout:93
@@ -4898,8 +4888,8 @@ msgstr "Underunderbolk*"
 msgid "Abstract"
 msgstr "Samandrag"
 
-#: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:98
-#: ../lib/layouts/aastex.layout:256 ../lib/layouts/elsart.layout:63
+#: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:99
+#: ../lib/layouts/aastex.layout:263 ../lib/layouts/elsart.layout:63
 #: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
 #: ../lib/layouts/revtex4.layout:243 ../lib/layouts/siamltex.layout:159
 #: ../lib/layouts/spie.layout:42 ../lib/layouts/amsdefs.inc:241
@@ -4922,8 +4912,8 @@ msgstr "Stikkord"
 msgid "Bibliography"
 msgstr "Litteratur"
 
-#: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:102
-#: ../lib/layouts/aastex.layout:382 ../lib/layouts/ijmpd.layout:166
+#: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:103
+#: ../lib/layouts/aastex.layout:389 ../lib/layouts/ijmpd.layout:166
 #: ../lib/layouts/kluwer.layout:324
 msgid "Appendix"
 msgstr "Vedlegg"
@@ -4938,7 +4928,7 @@ msgstr "Biografi"
 
 #: ../lib/layouts/IEEEtran.layout:476 ../lib/layouts/aa.layout:58
 #: ../lib/layouts/aa.layout:218 ../lib/layouts/aapaper.layout:55
-#: ../lib/layouts/aastex.layout:114 ../lib/layouts/aastex.layout:499
+#: ../lib/layouts/aastex.layout:115 ../lib/layouts/aastex.layout:506
 #: ../lib/layouts/egs.layout:667 ../lib/layouts/latex8.layout:115
 #: ../lib/layouts/db_stdlayouts.inc:45 ../lib/layouts/stdlayouts.inc:84
 msgid "Caption"
@@ -4953,7 +4943,7 @@ msgid "MarkBoth"
 msgstr "Markerbegge"
 
 #: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
-#: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:281
+#: ../lib/layouts/aastex.layout:77 ../lib/layouts/apa.layout:281
 #: ../lib/layouts/cv.layout:86 ../lib/layouts/egs.layout:200
 #: ../lib/layouts/linuxdoc.layout:211 ../lib/layouts/manpage.layout:86
 #: ../lib/layouts/db_stdlists.inc:11 ../lib/layouts/stdlists.inc:9
@@ -4961,7 +4951,7 @@ msgid "Itemize"
 msgstr "Punktliste"
 
 #: ../lib/layouts/aa.layout:52 ../lib/layouts/aapaper.layout:49
-#: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:299
+#: ../lib/layouts/aastex.layout:79 ../lib/layouts/apa.layout:299
 #: ../lib/layouts/egs.layout:182 ../lib/layouts/linuxdoc.layout:195
 #: ../lib/layouts/manpage.layout:69 ../lib/layouts/db_stdlists.inc:17
 #: ../lib/layouts/stdlists.inc:27
@@ -4969,7 +4959,7 @@ msgid "Enumerate"
 msgstr "Nummerert"
 
 #: ../lib/layouts/aa.layout:54 ../lib/layouts/aapaper.layout:51
-#: ../lib/layouts/aastex.layout:80 ../lib/layouts/egs.layout:218
+#: ../lib/layouts/aastex.layout:81 ../lib/layouts/egs.layout:218
 #: ../lib/layouts/hollywood.layout:131 ../lib/layouts/linuxdoc.layout:228
 #: ../lib/layouts/manpage.layout:104 ../lib/layouts/paper.layout:102
 #: ../lib/layouts/scrlettr.layout:16 ../lib/layouts/scrlttr2.layout:16
@@ -4979,14 +4969,14 @@ msgid "Description"
 msgstr "Skildring"
 
 #: ../lib/layouts/aa.layout:56 ../lib/layouts/aapaper.layout:53
-#: ../lib/layouts/aastex.layout:82 ../lib/layouts/egs.layout:165
+#: ../lib/layouts/aastex.layout:83 ../lib/layouts/egs.layout:165
 #: ../lib/layouts/scrmacros.inc:6 ../lib/layouts/stdlists.inc:69
 msgid "List"
 msgstr "Liste"
 
 #: ../lib/layouts/aa.layout:60 ../lib/layouts/aa.layout:271
 #: ../lib/layouts/aapaper.layout:65 ../lib/layouts/aapaper.layout:145
-#: ../lib/layouts/aastex.layout:84 ../lib/layouts/aastex.layout:181
+#: ../lib/layouts/aastex.layout:85 ../lib/layouts/aastex.layout:188
 #: ../lib/layouts/apa.layout:45 ../lib/layouts/broadway.layout:190
 #: ../lib/layouts/cl2emult.layout:42 ../lib/layouts/cv.layout:130
 #: ../lib/layouts/docbook-book.layout:13
@@ -5015,7 +5005,7 @@ msgstr "Undertittel"
 
 #: ../lib/layouts/aa.layout:64 ../lib/layouts/aa.layout:283
 #: ../lib/layouts/aapaper.layout:69 ../lib/layouts/aapaper.layout:156
-#: ../lib/layouts/aastex.layout:86 ../lib/layouts/aastex.layout:194
+#: ../lib/layouts/aastex.layout:87 ../lib/layouts/aastex.layout:201
 #: ../lib/layouts/apa.layout:116 ../lib/layouts/broadway.layout:203
 #: ../lib/layouts/cl2emult.layout:59 ../lib/layouts/egs.layout:336
 #: ../lib/layouts/elsart.layout:115 ../lib/layouts/entcs.layout:22
@@ -5054,7 +5044,7 @@ msgstr "E-post"
 
 #: ../lib/layouts/aa.layout:72 ../lib/layouts/aa.layout:295
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
-#: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
+#: ../lib/layouts/aastex.layout:95 ../lib/layouts/aastex.layout:214
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
 #: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:820
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
@@ -5068,7 +5058,7 @@ msgstr "Dato"
 
 #: ../lib/layouts/aa.layout:74 ../lib/layouts/aa.layout:307
 #: ../lib/layouts/aapaper.layout:81 ../lib/layouts/aapaper.layout:178
-#: ../lib/layouts/aastex.layout:96 ../lib/layouts/aastex.layout:219
+#: ../lib/layouts/aastex.layout:97 ../lib/layouts/aastex.layout:226
 #: ../lib/layouts/egs.layout:565 ../lib/layouts/elsart.layout:205
 #: ../lib/layouts/entcs.layout:56 ../lib/layouts/kluwer.layout:259
 #: ../lib/layouts/latex8.layout:98 ../lib/layouts/llncs.layout:265
@@ -5092,14 +5082,14 @@ msgstr "Takk"
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: ../lib/layouts/aapaper.layout:73 ../lib/layouts/aastex.layout:90
-#: ../lib/layouts/aastex.layout:282 ../lib/layouts/latex8.layout:53
+#: ../lib/layouts/aapaper.layout:73 ../lib/layouts/aastex.layout:91
+#: ../lib/layouts/aastex.layout:289 ../lib/layouts/latex8.layout:53
 #: ../lib/layouts/llncs.layout:257 ../lib/layouts/aapaper.inc:49
 #: ../lib/layouts/amsdefs.inc:205
 msgid "Email"
 msgstr "E-post"
 
-#: ../lib/layouts/aastex.layout:74 ../lib/layouts/egs.layout:76
+#: ../lib/layouts/aastex.layout:75 ../lib/layouts/egs.layout:76
 #: ../lib/layouts/kluwer.layout:82 ../lib/layouts/linuxdoc.layout:146
 #: ../lib/layouts/llncs.layout:75 ../lib/layouts/ltugboat.layout:117
 #: ../lib/layouts/paper.layout:70 ../lib/layouts/revtex.layout:73
@@ -5110,52 +5100,67 @@ msgstr "E-post"
 msgid "Paragraph"
 msgstr "Avsnitt"
 
-#: ../lib/layouts/aastex.layout:88 ../lib/layouts/aastex.layout:238
+#: ../lib/layouts/aastex.layout:89 ../lib/layouts/aastex.layout:245
 #: ../lib/layouts/apa.layout:148 ../lib/layouts/latex8.layout:78
 #: ../lib/layouts/revtex4.layout:150 ../lib/layouts/aguplus.inc:52
 msgid "Affiliation"
 msgstr "Tilknyting"
 
-#: ../lib/layouts/aastex.layout:92 ../lib/layouts/aastex.layout:322
+#: ../lib/layouts/aastex.layout:93 ../lib/layouts/aastex.layout:329
 msgid "And"
 msgstr "Og"
 
-#: ../lib/layouts/aastex.layout:100 ../lib/layouts/aastex.layout:300
+#: ../lib/layouts/aastex.layout:101 ../lib/layouts/aastex.layout:307
 #: ../lib/layouts/apa.layout:212 ../lib/layouts/egs.layout:588
 #: ../lib/layouts/kluwer.layout:303 ../lib/layouts/svjour.inc:321
 msgid "Acknowledgements"
 msgstr "Takk"
 
-#: ../lib/layouts/aastex.layout:104 ../lib/layouts/aastex.layout:415
+#: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
 #: ../lib/layouts/kluwer.layout:345 src/buffer.C:1544
 msgid "References"
 msgstr "Referansar"
 
-#: ../lib/layouts/aastex.layout:106 ../lib/layouts/aastex.layout:342
+#: ../lib/layouts/aastex.layout:107 ../lib/layouts/aastex.layout:349
 msgid "PlaceFigure"
 msgstr "Plasser_Figuren"
 
-#: ../lib/layouts/aastex.layout:108 ../lib/layouts/aastex.layout:362
+#: ../lib/layouts/aastex.layout:109 ../lib/layouts/aastex.layout:369
 msgid "PlaceTable"
 msgstr "Plasser_Tabellen"
 
-#: ../lib/layouts/aastex.layout:110 ../lib/layouts/aastex.layout:480
+#: ../lib/layouts/aastex.layout:111 ../lib/layouts/aastex.layout:487
 msgid "TableComments"
 msgstr "Tabell_Kommentarar"
 
-#: ../lib/layouts/aastex.layout:112 ../lib/layouts/aastex.layout:461
+#: ../lib/layouts/aastex.layout:113 ../lib/layouts/aastex.layout:468
 msgid "TableRefs"
 msgstr "Tabell_Refar"
 
-#: ../lib/layouts/aastex.layout:116 ../lib/layouts/aastex.layout:403
+#: ../lib/layouts/aastex.layout:117 ../lib/layouts/aastex.layout:410
 msgid "MathLetters"
 msgstr "Matte_Bokstavar"
 
-#: ../lib/layouts/aastex.layout:118 ../lib/layouts/aastex.layout:441
+#: ../lib/layouts/aastex.layout:119 ../lib/layouts/aastex.layout:448
 msgid "NoteToEditor"
 msgstr "Notat_Til_Utgjevar"
 
-#: ../lib/layouts/aastex.layout:519
+#: ../lib/layouts/aastex.layout:121 ../lib/layouts/aastex.layout:541
+#, fuzzy
+msgid "Facility"
+msgstr "Fakta"
+
+#: ../lib/layouts/aastex.layout:123 ../lib/layouts/aastex.layout:567
+#, fuzzy
+msgid "Objectname"
+msgstr "Octave"
+
+#: ../lib/layouts/aastex.layout:125 ../lib/layouts/aastex.layout:594
+#, fuzzy
+msgid "Dataset"
+msgstr "Dato"
+
+#: ../lib/layouts/aastex.layout:526
 msgid "FigCaption"
 msgstr "Figurtekst"
 
@@ -5725,6 +5730,10 @@ msgstr "Post-kommentar  "
 #: ../lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
 msgstr "Post-kommentar"
+
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
+msgid "Reference"
+msgstr "Referanse"
 
 #: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:888
 msgid "Encl."
@@ -6978,8 +6987,9 @@ msgid "Special Character|S"
 msgstr "Spesialteikn|S"
 
 #: ../lib/ui/default.ui:197
-msgid "Citation Reference...|C"
-msgstr "Litteratur referansar...|L"
+#, fuzzy
+msgid "Citation...|C"
+msgstr "Litteratur"
 
 #: ../lib/ui/default.ui:198
 msgid "Cross Reference...|R"
@@ -7009,7 +7019,7 @@ msgstr "Nytt stikkord|s"
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: ../lib/ui/default.ui:205 ../lib/ui/default.ui:341
+#: ../lib/ui/default.ui:205 ../lib/ui/default.ui:340
 msgid "Note|N"
 msgstr "Notat|N"
 
@@ -7214,8 +7224,9 @@ msgid "Index List|I"
 msgstr "Indeks liste|l"
 
 #: ../lib/ui/default.ui:286
-msgid "BibTeX Reference...|B"
-msgstr "BibTeX Referanse...|B"
+#, fuzzy
+msgid "BibTeX Bibliography...|B"
+msgstr "Litteratur"
 
 #: ../lib/ui/default.ui:290
 msgid "LyX Document...|X"
@@ -7290,86 +7301,82 @@ msgid "Table of Contents|T"
 msgstr "Innhaldsliste|a"
 
 #: ../lib/ui/default.ui:326
-msgid "Child Processes|C"
-msgstr "Barneprosessar|B"
-
-#: ../lib/ui/default.ui:327
 msgid "TeX Information|X"
 msgstr "TeX informasjon|T"
 
-#: ../lib/ui/default.ui:340
+#: ../lib/ui/default.ui:339
 msgid "Error|E"
 msgstr " Feil |F"
 
-#: ../lib/ui/default.ui:342
+#: ../lib/ui/default.ui:341
 msgid "Refs|R"
 msgstr "Refs|R"
 
-#: ../lib/ui/default.ui:343
+#: ../lib/ui/default.ui:342
 msgid "Bookmarks|B"
 msgstr "Bokmerke|B"
 
-#: ../lib/ui/default.ui:347
+#: ../lib/ui/default.ui:346
 msgid "Save Bookmark 1|S"
 msgstr "Lagra bokmerke 1|L"
 
-#: ../lib/ui/default.ui:348
+#: ../lib/ui/default.ui:347
 msgid "Save Bookmark 2"
 msgstr "Lagra bokmerke 2"
 
-#: ../lib/ui/default.ui:349
+#: ../lib/ui/default.ui:348
 msgid "Save Bookmark 3"
 msgstr "Lagra bokmerke 3"
 
-#: ../lib/ui/default.ui:351
+#: ../lib/ui/default.ui:350
 msgid "Goto Bookmark 1|1"
 msgstr "Gå til  bokmerke 1|1"
 
-#: ../lib/ui/default.ui:352
+#: ../lib/ui/default.ui:351
 msgid "Goto Bookmark 2|2"
 msgstr "Gå til  bokmerke 2|2"
 
-#: ../lib/ui/default.ui:353
+#: ../lib/ui/default.ui:352
 msgid "Goto Bookmark 3|3"
 msgstr "Gå til bokmerke 3|3"
 
-#: ../lib/ui/default.ui:368
+#: ../lib/ui/default.ui:367
 msgid "Tooltips|o"
 msgstr "Verktøytips|V"
 
-#: ../lib/ui/default.ui:370
+#: ../lib/ui/default.ui:369
 msgid "Introduction|I"
 msgstr "Introduksjon|I"
 
-#: ../lib/ui/default.ui:371
+#: ../lib/ui/default.ui:370
 msgid "Tutorial|T"
 msgstr "Lærebok|L"
 
-#: ../lib/ui/default.ui:372
+#: ../lib/ui/default.ui:371
 msgid "User's Guide|U"
 msgstr "Brukarhandbok|B"
 
-#: ../lib/ui/default.ui:373
+#: ../lib/ui/default.ui:372
 msgid "Extended Features|E"
 msgstr "Utvida Funksjonar|U"
 
-#: ../lib/ui/default.ui:374
+#: ../lib/ui/default.ui:373
 msgid "Customization|C"
 msgstr "Tilpassing|T"
 
-#: ../lib/ui/default.ui:376
+#: ../lib/ui/default.ui:375
 msgid "FAQ|F"
 msgstr "FAQ|Q"
 
-#: ../lib/ui/default.ui:377
+#: ../lib/ui/default.ui:376
 msgid "Table of Contents|a"
 msgstr "Innhaldsliste|a"
 
-#: ../lib/ui/default.ui:378
+#: ../lib/ui/default.ui:377
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX innstillingar|L"
 
-#: ../lib/ui/default.ui:380
+#: ../lib/ui/default.ui:379
 msgid "About LyX|X"
 msgstr "Om LyX|X"
 
@@ -7440,21 +7447,21 @@ msgstr "Vel kva for LyX-dokument som skal bli henta inn"
 #: src/frontends/controllers/ControlExternal.C:150
 #: src/frontends/controllers/ControlGraphics.C:89
 #: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:113
-#: src/lyxfunc.C:1652 src/lyxfunc.C:1692 src/lyxfunc.C:1798
+#: src/lyxfunc.C:1637 src/lyxfunc.C:1677 src/lyxfunc.C:1783
 msgid "Documents|#o#O"
 msgstr "Dokument|#o#O"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1694 src/lyxfunc.C:1800
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1679 src/lyxfunc.C:1785
 msgid "Examples|#E#e"
 msgstr "Eksempla|#E#e"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1659
-#: src/lyxfunc.C:1699
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1644
+#: src/lyxfunc.C:1684
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX Dokument (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1708 src/lyxfunc.C:1728
-#: src/lyxfunc.C:1817 src/lyxfunc.C:1844 src/lyxfunc.C:1854
+#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1693 src/lyxfunc.C:1713
+#: src/lyxfunc.C:1802 src/lyxfunc.C:1829 src/lyxfunc.C:1839
 msgid "Canceled."
 msgstr "Avbroten."
 
@@ -7468,7 +7475,7 @@ msgid "Inserting document "
 msgstr "Set inn dokument "
 
 #: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:990
-#: src/lyxfunc.C:1151 src/lyxfunc.C:1741
+#: src/lyxfunc.C:1151 src/lyxfunc.C:1726
 msgid "..."
 msgstr "..."
 
@@ -7477,7 +7484,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s er sett inn."
 
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1753
+#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1738
 msgid "Document "
 msgstr "Dokumentet"
 
@@ -8222,15 +8229,7 @@ msgstr "Vis informasjon om LyX"
 msgid "Display information about the TeX installation"
 msgstr "Vis informasjon om TeX"
 
-#: src/LyXAction.C:408
-msgid "Show the processes forked by LyX"
-msgstr "Vis barneprosessane til LyX"
-
-#: src/LyXAction.C:410
-msgid "Kill the forked process with this PID"
-msgstr "Drep barneprosessen med dette PID"
-
-#: src/LyXAction.C:567
+#: src/LyXAction.C:563
 msgid "No description available!"
 msgstr "Inga skildring tilgjengeleg!"
 
@@ -8497,7 +8496,7 @@ msgstr "Vil du laste ho i staden?"
 msgid "Unable to open template"
 msgstr "Kan ikkje opna mal"
 
-#: src/bufferlist.C:545 src/lyxfunc.C:1830
+#: src/bufferlist.C:545 src/lyxfunc.C:1815
 msgid "Document is already open:"
 msgstr "Dokumentet er opna frå før:"
 
@@ -9108,7 +9107,8 @@ msgid " and "
 msgstr " og "
 
 #: src/frontends/controllers/biblio.C:109
-msgid "et al."
+#, fuzzy
+msgid " et al."
 msgstr " et al."
 
 #: src/frontends/controllers/biblio.C:148
@@ -9273,14 +9273,6 @@ msgstr "*|Alle filer (*)"
 msgid "Directories"
 msgstr "Katalogar"
 
-#: src/frontends/qt2/QBibitem.C:30
-msgid "Bibliography Item"
-msgstr "Bibliografi objekt"
-
-#: src/frontends/qt2/QBibtex.C:39
-msgid "BibTeX"
-msgstr "BibTeX"
-
 #: src/frontends/qt2/QBibtexDialog.C:55
 msgid "BibTeX style files (*.bst)"
 msgstr "BibTeX stil filer (*.bst)"
@@ -9296,6 +9288,10 @@ msgstr "BibTeX database filer (*.bib)"
 #: src/frontends/qt2/QBibtexDialog.C:82
 msgid "Select a BibTeX database to add"
 msgstr "Vel ein BibTeX database "
+
+#: src/frontends/qt2/QCharacter.C:35 src/frontends/xforms/FormCharacter.C:38
+msgid "Character Layout"
+msgstr "Teikn stil"
 
 #: src/frontends/qt2/QCommandBuffer.C:70
 msgid "Previous command"
@@ -9441,6 +9437,7 @@ msgid "LaTeX Packages and Options"
 msgstr "LaTeX pakkar og innstillingar"
 
 #: src/frontends/qt2/QDocumentDialog.C:280
+#: src/frontends/xforms/FormPreamble.C:24
 msgid "LaTeX Preamble"
 msgstr "LaTeX fortekst"
 
@@ -9456,7 +9453,7 @@ msgstr "Veldig små margar"
 msgid "Very wide margins"
 msgstr "Veldig vide margar"
 
-#: src/frontends/qt2/QERT.C:27
+#: src/frontends/qt2/QERT.C:27 src/frontends/xforms/FormERT.C:25
 msgid "LaTeX ERT"
 msgstr "LaTeX ERT"
 
@@ -9492,6 +9489,10 @@ msgstr "PostScript filer (*.ps)"
 #: src/frontends/qt2/QLPrintDialog.C:53
 msgid "Select a file to print to"
 msgstr "Vel ei fil for utskrift"
+
+#: src/frontends/qt2/QLog.C:33 src/frontends/xforms/FormLog.C:21
+msgid "LaTeX Log"
+msgstr "LaTeX logg"
 
 #: src/frontends/qt2/QMathDialog.C:115
 msgid "LyX: Insert space"
@@ -9614,10 +9615,6 @@ msgstr "Avsnitt stil"
 msgid "Senseless with this layout!"
 msgstr "Meiningslaust med denne stilen."
 
-#: src/frontends/qt2/QPrefs.C:66
-msgid "LyX: Preferences"
-msgstr "LyX innstillingar"
-
 #. OK, Qt is REALLY broken. We have to hard
 #. code the menu structure here.
 #: src/frontends/qt2/QPrefsDialog.C:77
@@ -9690,10 +9687,6 @@ msgstr "Vel stig til dokument"
 msgid "Give a filename for the LyX server pipe"
 msgstr "Fil namnet til LyXServer datarøyr"
 
-#: src/frontends/qt2/QRef.C:41
-msgid "Cross Reference"
-msgstr "Kryssreferanse"
-
 #: src/frontends/qt2/QRef.C:117
 msgid "&Go back"
 msgstr "&Gå bakover"
@@ -9703,16 +9696,21 @@ msgid "Go back"
 msgstr "Gå tilbake"
 
 #: src/frontends/qt2/QRef.C:127
-msgid "Go to reference"
-msgstr "Gå til referanse"
+#, fuzzy
+msgid "Go to label"
+msgstr "Len&gste etikett"
+
+#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
+msgid "Find and Replace"
+msgstr "Søk og erstatt"
 
 #: src/frontends/qt2/QSendto.C:33 src/frontends/xforms/FormSendto.C:28
 msgid "Send document to command"
 msgstr "Bruk denne kommandoen på dokumentet"
 
-#: src/frontends/qt2/QShowFile.C:27
-msgid "ShowFile"
-msgstr "Vis fil"
+#: src/frontends/qt2/QShowFile.C:27 src/frontends/xforms/FormShowFile.C:22
+msgid "Show File"
+msgstr "Vis fila"
 
 #: src/frontends/qt2/QTabular.C:34
 msgid "LyX: Edit Table"
@@ -9722,13 +9720,14 @@ msgstr "Endra LyX tabell"
 msgid "LaTeX Information"
 msgstr "LaTeX informasjon"
 
-#: src/frontends/qt2/QToc.C:38
-msgid "Table of contents"
+#: src/frontends/qt2/QToc.C:38 src/frontends/xforms/FormToc.C:32
+#: src/insets/insettoc.C:29
+msgid "Table of Contents"
 msgstr "Innhaldsliste"
 
-#: src/frontends/qt2/QVCLog.C:31
-msgid "VCLog"
-msgstr "VKLogg"
+#: src/frontends/qt2/QVCLog.C:31 src/frontends/xforms/FormVCLog.C:23
+msgid "Version Control Log"
+msgstr "Loggen til versjonkontrollen"
 
 #: src/frontends/qt2/QVCLog.C:47
 #, c-format
@@ -9877,10 +9876,6 @@ msgstr "Åtvaring! %1$s"
 msgid "WARNING!"
 msgstr "Åtvaring!"
 
-#: src/frontends/xforms/FormBibitem.C:25
-msgid "Bibliography Entry"
-msgstr "Bibliografi element"
-
 #. set up the tooltips
 #: src/frontends/xforms/FormBibitem.C:47
 msgid "Key used within LyX document."
@@ -9889,10 +9884,6 @@ msgstr "Nøkkel brukt.i LyX dokumentet"
 #: src/frontends/xforms/FormBibitem.C:49
 msgid "Label used for final output."
 msgstr "Etikett brukt i dokumentet"
-
-#: src/frontends/xforms/FormBibtex.C:37
-msgid "BibTeX Database"
-msgstr "BibTeX Database"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:67
@@ -9947,18 +9938,16 @@ msgstr "Vel BibTeX stil"
 msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr "*.bst| BibTeX stil filer (*.bst)"
 
-#: src/frontends/xforms/FormCharacter.C:38
-msgid "Character Layout"
-msgstr "Teikn stil"
-
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
-msgid "Add the selected entry to the current citation reference."
-msgstr "Legg til den valde litteraturen til litteraturlista."
+#, fuzzy
+msgid "Add citation of the selected bibliography entry."
+msgstr "Informasjon om det valte elementet."
 
 #: src/frontends/xforms/FormCitation.C:165
-msgid "Delete the selected entry from the current citation reference."
-msgstr "Slett den valde litterauren frå litteraturlista."
+#, fuzzy
+msgid "Delete citation of the selected bibliography entry."
+msgstr "Informasjon om det valte elementet."
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
@@ -9976,16 +9965,18 @@ msgstr ""
 "Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
 
 #: src/frontends/xforms/FormCitation.C:181
+#, fuzzy
 msgid ""
-"All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex "
-"Reference\"). Move the ones you want to cite with the arrow buttons into the "
-"left browser window."
+"All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX "
+"Bibliography\"). Move the ones you want to cite with the arrow buttons into "
+"the left browser window."
 msgstr ""
 "Alle element i databasen som er lasta.(gjennom \"Set inn->&Lister->BibTeX "
 "referanse\"). Flytt dei du vil sitere med piltastane til den venstre feltet."
 
 #: src/frontends/xforms/FormCitation.C:188
-msgid "Information about the selected entry"
+#, fuzzy
+msgid "Information about the selected bibliography entry"
 msgstr "Informasjon om det valte elementet."
 
 #: src/frontends/xforms/FormCitation.C:195
@@ -9996,9 +9987,10 @@ msgstr ""
 "Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:198
+#, fuzzy
 msgid ""
-"Activate if you want to print all authors in a reference with more than "
-"three authors, and not \"<First Author> et al.\" (Natbib)."
+"Activate if you want to print all authors in a citation with more than three "
+"authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 "Vel denne dersom du vil at siteringar med meir enn tre forfattarar skal ha "
 "alle forfattarane i teksten, istaden for \"<Første forfattar> et al."
@@ -10014,13 +10006,13 @@ msgstr ""
 "ikkje \"van Gogh\"). Nyttig i starten på setningar (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:204
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+#, fuzzy
+msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
 msgstr "Valfri tekst før litteratur-referansen, f.eks. \"Sjå: <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:207
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
+#, fuzzy
+msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
 msgstr "Valfri tekst etter litteratur-referansen, f.eks. \"<Ref> side 10\""
 
 #: src/frontends/xforms/FormCitation.C:210
@@ -10101,10 +10093,6 @@ msgstr ""
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Dokument er verna mot skriving. Kan ikkje endre stil."
 
-#: src/frontends/xforms/FormERT.C:25
-msgid "ERT Options"
-msgstr "ERT Val"
-
 #: src/frontends/xforms/FormExternal.C:29
 msgid "Edit external file"
 msgstr "Endre ekstern fil"
@@ -10154,32 +10142,6 @@ msgstr "Oversjå interne innstillingar. Dette er ekvivalent med \"!\" i LaTeX."
 #: src/frontends/xforms/FormFloat.C:84
 msgid "Span float over the columns."
 msgstr "La flytaren gå over mange spalter."
-
-#: src/frontends/xforms/FormForks.C:32
-msgid "Child processes"
-msgstr "Barneprosessar"
-
-#. Set up the tooltip mechanism
-#: src/frontends/xforms/FormForks.C:53
-msgid "All currently running child processes forked by LyX."
-msgstr "Alle barneprosessane til LyX."
-
-#: src/frontends/xforms/FormForks.C:60
-msgid "A list of all child processes to kill."
-msgstr "Lista over barneprosessar ein skal drepe."
-
-#: src/frontends/xforms/FormForks.C:67
-msgid "Add all processes to the list of processes to kill."
-msgstr "Legg prosessen til prosessar som skal drepast."
-
-#: src/frontends/xforms/FormForks.C:70
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
-msgstr "Legg dei valte prosessane til lista over prosessar som skal drepast."
-
-#: src/frontends/xforms/FormForks.C:73
-msgid "Remove the currently selected item from the list of processes to kill."
-msgstr "Fjern dei valte prosessane frå lista over prosessar som skal drepast."
 
 #: src/frontends/xforms/FormGraphics.C:125
 msgid "Default|Monochrome|Grayscale|Color|Do not display"
@@ -10329,10 +10291,6 @@ msgstr "Bileteramme"
 msgid "Include file"
 msgstr "Inkluder fil"
 
-#: src/frontends/xforms/FormLog.C:21
-msgid "LaTeX Log"
-msgstr "LaTeX logg"
-
 #: src/frontends/xforms/FormLog.C:30
 msgid "LyX: LaTeX Log"
 msgstr "LyX: LaTeX logg"
@@ -10460,10 +10418,6 @@ msgstr "Underslå ikkje plass (mao på botnen av eller ny side)."
 #: src/frontends/xforms/FormParagraph.C:314
 msgid " (default)"
 msgstr " (standard)"
-
-#: src/frontends/xforms/FormPreamble.C:24
-msgid "LaTeX preamble"
-msgstr "LaTeX fortekst"
 
 #: src/frontends/xforms/FormPreferences.C:208
 msgid "Look & Feel"
@@ -10744,23 +10698,28 @@ msgstr "Omvendt rekkjefølgje."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:66
-msgid "Select a document for references."
+#, fuzzy
+msgid "Select a document for labels."
 msgstr "Vel eit dokument som referanse."
 
 #: src/frontends/xforms/FormRef.C:68
-msgid "Sort the references alphabetically."
+#, fuzzy
+msgid "Sort the labels alphabetically."
 msgstr "Sorter referansane alfabetisk."
 
 #: src/frontends/xforms/FormRef.C:70 src/frontends/xforms/FormRef.C:279
-msgid "Go to selected reference."
+#, fuzzy
+msgid "Go to selected label."
 msgstr "Gå til den valde referansen."
 
 #: src/frontends/xforms/FormRef.C:72
-msgid "Update the list of references."
+#, fuzzy
+msgid "Update the list of labels."
 msgstr "Oppdater lista over referansar."
 
 #: src/frontends/xforms/FormRef.C:74
-msgid "Select format style of the reference."
+#, fuzzy
+msgid "Select format style of the cross reference."
 msgstr "Vel stil for referansar."
 
 #: src/frontends/xforms/FormRef.C:178
@@ -10774,10 +10733,6 @@ msgstr "Gå tilbake til utgangspunktet."
 #: src/frontends/xforms/FormRef.C:278
 msgid "Go to"
 msgstr "Gå til"
-
-#: src/frontends/xforms/FormSearch.C:25
-msgid "Find and Replace"
-msgstr "Søk og erstatt"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSearch.C:42
@@ -10825,10 +10780,6 @@ msgid ""
 msgstr ""
 "Køyr denne kommandoen på den ekporterte-bufferen. Bruk $$FName for å nytte "
 "namnet på denne fila."
-
-#: src/frontends/xforms/FormShowFile.C:22
-msgid "Show File"
-msgstr "Vis fila"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:57
@@ -10911,7 +10862,8 @@ msgid "Show full path or only file name."
 msgstr "Bruk heile stigen eller berre filnamnet."
 
 #: src/frontends/xforms/FormTexinfo.C:54
-msgid "Runs the script \"TexFiles.sh\" to build new file lists."
+#, fuzzy
+msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
 msgstr "Køyrer programmet \"TexFiles.sh\" for å lage ny fil-liste."
 
 #: src/frontends/xforms/FormTexinfo.C:57
@@ -10928,21 +10880,9 @@ msgstr ""
 "gjerast om du installerer ny TeX klasser eller stilar. Du må ha skrive rett "
 "for TeX katalogane. (ofte /var/lib/texmf m.m.)"
 
-#: src/frontends/xforms/FormToc.C:32 src/insets/insettoc.C:29
-msgid "Table of Contents"
-msgstr "Innhaldsliste"
-
 #: src/frontends/xforms/FormToc.C:99 src/frontends/xforms/FormToc.C:117
 msgid "*** No Lists ***"
 msgstr "*** Inga liste ***"
-
-#: src/frontends/xforms/FormUrl.C:23
-msgid "Url"
-msgstr "URL"
-
-#: src/frontends/xforms/FormVCLog.C:23
-msgid "Version Control Log"
-msgstr "Loggen til versjonkontrollen"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormWrap.C:65
@@ -11087,7 +11027,8 @@ msgid "Opened inset"
 msgstr "Opna innskot"
 
 #: src/insets/insetbib.C:142
-msgid "BibTeX Generated References"
+#, fuzzy
+msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX genererte referansar"
 
 #: src/insets/insetcaption.C:63
@@ -11501,7 +11442,7 @@ msgstr "(om ikkje, vart ikkje dokumentet lagra)"
 msgid "Choose a filename to save document as"
 msgstr "Vel eit anna filnamn"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1654
+#: src/lyx_cb.C:115 src/lyxfunc.C:1639
 msgid "Templates|#T#t"
 msgstr "Malar|#M#m"
 
@@ -11647,7 +11588,7 @@ msgstr "Feil kommandolinje val:`"
 msgid "'. Exiting."
 msgstr "'. Farvel."
 
-#: src/lyx_main.C:379
+#: src/lyx_main.C:380
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11655,86 +11596,86 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:386
+#: src/lyx_main.C:387
 #, fuzzy
 msgid "Could not create a temporary directory in\n"
 msgstr "Klarte ikkje å fjerna den mellombelse katalogen"
 
-#: src/lyx_main.C:388
+#: src/lyx_main.C:389
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:392
+#: src/lyx_main.C:393
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Klarte ikkje å fjerna den mellombelse katalogen"
 
-#: src/lyx_main.C:538
+#: src/lyx_main.C:539
 #, fuzzy
 msgid "You have specified a non-existent user LyX directory."
 msgstr "Du valde ein ubrukeleg LyX katalog."
 
-#: src/lyx_main.C:539
+#: src/lyx_main.C:540
 msgid "It is needed to keep your own configuration."
 msgstr "Den trengs for å halde innstillingane dine."
 
-#: src/lyx_main.C:540
+#: src/lyx_main.C:541
 #, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
 msgstr "Skal eg prøva å setje den opp for deg ? (Det er best at eg prøver!)"
 
-#: src/lyx_main.C:541
+#: src/lyx_main.C:542
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:546
+#: src/lyx_main.C:547
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Lagar katalog "
 
-#: src/lyx_main.C:550
+#: src/lyx_main.C:551
 msgid "LyX: Creating directory "
 msgstr "LyX: Lagar katalog "
 
 #. Failed, so let's exit.
-#: src/lyx_main.C:557
+#: src/lyx_main.C:558
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Feil namn på katalogen som vart prøvd laga."
 
-#: src/lyx_main.C:576 src/lyx_main.C:580
+#: src/lyx_main.C:577 src/lyx_main.C:581
 msgid "LyX Warning!"
 msgstr "LyX-åtvaring!"
 
-#: src/lyx_main.C:577
+#: src/lyx_main.C:578
 #, c-format
 msgid "Error while reading %1$s."
 msgstr "Feil ved lesing av %1$s."
 
-#: src/lyx_main.C:578 src/lyx_main.C:582
+#: src/lyx_main.C:579 src/lyx_main.C:583
 msgid "Using built-in defaults."
 msgstr "Brukar standard val."
 
-#: src/lyx_main.C:581
+#: src/lyx_main.C:582
 msgid "Error while reading "
 msgstr "Feil ved lesing av "
 
-#: src/lyx_main.C:691
+#: src/lyx_main.C:692
 msgid "List of supported debug flags:"
 msgstr "Liste over val ved avlusing:"
 
-#: src/lyx_main.C:696
+#: src/lyx_main.C:697
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Set nivået til avlusinga til %1$s"
 
-#: src/lyx_main.C:700
+#: src/lyx_main.C:701
 msgid "Setting debug level to "
 msgstr "Set nivået til avlusinga til "
 
-#: src/lyx_main.C:711
+#: src/lyx_main.C:712
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11774,27 +11715,27 @@ msgstr ""
 "\t-version        samandrag av versjon og byggje info\n"
 "Sjå `man' sida til LyX for meir informasjon."
 
-#: src/lyx_main.C:747
+#: src/lyx_main.C:748
 msgid "Missing directory for -sysdir switch"
 msgstr "Manglar katalog for -sysdir val"
 
-#: src/lyx_main.C:757
+#: src/lyx_main.C:758
 msgid "Missing directory for -userdir switch"
 msgstr "Manglarkatalog for -userdir val"
 
-#: src/lyx_main.C:767
+#: src/lyx_main.C:768
 msgid "Missing command string after --execute switch"
 msgstr "Manglar kommando etter --execute val"
 
-#: src/lyx_main.C:780
+#: src/lyx_main.C:781
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --export val"
 
-#: src/lyx_main.C:792
+#: src/lyx_main.C:793
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --import val"
 
-#: src/lyx_main.C:797
+#: src/lyx_main.C:798
 msgid "Missing filename for --import"
 msgstr "Manglar filnamn for --import"
 
@@ -11966,63 +11907,63 @@ msgstr "Vel farge"
 msgid " failed - color is undefined or may not be redefined"
 msgstr "Fargen er udefinert eller kan ikkje bli omdefinert"
 
-#: src/lyxfunc.C:1650
+#: src/lyxfunc.C:1635
 msgid "Select template file"
 msgstr "Vel mal"
 
-#: src/lyxfunc.C:1690
+#: src/lyxfunc.C:1675
 msgid "Select document to open"
 msgstr "Vel dokument"
 
-#: src/lyxfunc.C:1726
+#: src/lyxfunc.C:1711
 msgid "No such file"
 msgstr "Inga slik fil."
 
-#: src/lyxfunc.C:1727
+#: src/lyxfunc.C:1712
 msgid "Start a new document with this filename ?"
 msgstr "Start eit nytt dokument med dette namnet?"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1724
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Opnar dokumentet %1$s..."
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1726
 msgid "Opening document "
 msgstr "Opna dokument "
 
-#: src/lyxfunc.C:1751
+#: src/lyxfunc.C:1736
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s er ope."
 
-#: src/lyxfunc.C:1753
+#: src/lyxfunc.C:1738
 msgid " opened."
 msgstr " opna."
 
-#: src/lyxfunc.C:1757
+#: src/lyxfunc.C:1742
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikkje opna dokumentet %1$s"
 
-#: src/lyxfunc.C:1760
+#: src/lyxfunc.C:1745
 msgid "Could not open document "
 msgstr "Kunne ikkje opna dokumentet "
 
-#: src/lyxfunc.C:1787
+#: src/lyxfunc.C:1772
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vel %1$s fila som skal bli importert"
 
-#: src/lyxfunc.C:1791
+#: src/lyxfunc.C:1776
 msgid "Select "
 msgstr "Vel "
 
-#: src/lyxfunc.C:1792
+#: src/lyxfunc.C:1777
 msgid " file to import"
 msgstr " importer fila"
 
-#: src/lyxfunc.C:1832
+#: src/lyxfunc.C:1817
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -12030,15 +11971,15 @@ msgstr ""
 "Vil du lukke det dokumentet no\n"
 "(Nei vil gå tilbake til det dokumentet som er ope)"
 
-#: src/lyxfunc.C:1852
+#: src/lyxfunc.C:1837
 msgid "A document by the name"
 msgstr "Eit dokument med det namnet "
 
-#: src/lyxfunc.C:1853
+#: src/lyxfunc.C:1838
 msgid "already exists. Overwrite?"
 msgstr " finst alt. Skriv over?"
 
-#: src/lyxfunc.C:1917
+#: src/lyxfunc.C:1902
 msgid "Welcome to LyX!"
 msgstr "Velkomen til LyX!"
 
@@ -12593,35 +12534,35 @@ msgstr " Makro: %s: "
 msgid " Macro: "
 msgstr " Makro: "
 
-#: src/support/filetools.C:527
+#: src/support/filetools.C:528
 msgid "Error! Cannot open directory:"
 msgstr "Feil. Kan ikkje opna katalog."
 
-#: src/support/filetools.C:549
+#: src/support/filetools.C:550
 msgid "Error! Could not remove file:"
 msgstr "Feil! Klarte ikkje fjerna fila:"
 
-#: src/support/filetools.C:573 src/support/filetools.C:611
+#: src/support/filetools.C:574 src/support/filetools.C:612
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Klarte ikkje oppretta mellombels katalog:"
 
-#: src/support/filetools.C:590
+#: src/support/filetools.C:591
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Klarte ikkje sletta oppretta katalog:"
 
-#: src/support/filetools.C:665
+#: src/support/filetools.C:666
 msgid "Internal error!"
 msgstr "Intern feil!"
 
-#: src/support/filetools.C:666
+#: src/support/filetools.C:667
 msgid "Call to createDirectory with invalid name"
 msgstr "Feil namn på katalogen som vart prøvd laga."
 
-#: src/support/filetools.C:671
+#: src/support/filetools.C:672
 msgid "Error! Couldn't create directory:"
 msgstr "Klarte ikkje oppretta katalog:"
 
-#: src/support/filetools.C:1439
+#: src/support/filetools.C:1440
 msgid "Could not delete auto-save file!"
 msgstr "Klarte ikkje automatisk å lagra fila!"
 
@@ -12800,6 +12741,139 @@ msgstr "Merke sett"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX funksjonen «Stil» treng eit argument"
+
+#~ msgid "Forked child processes:|#F"
+#~ msgstr "Avspalta barneprosessar|#A"
+
+#~ msgid "Kill processes:|#K"
+#~ msgstr "Stans prosessar:|#S"
+
+#~ msgid "All ->"
+#~ msgstr "Alle ->"
+
+#~ msgid "@->"
+#~ msgstr "@->"
+
+#~ msgid "Reference:|#e"
+#~ msgstr "Referanse"
+
+#~ msgid "Cite &Style:"
+#~ msgstr "Referanse &stil:"
+
+#~ msgid "The citation key"
+#~ msgstr "Litteratur-nøkklen"
+
+#~ msgid "Bibtex"
+#~ msgstr "BibTeX"
+
+#~ msgid "Search the available citations"
+#~ msgstr "Leit blant litteraturen"
+
+#~ msgid "Available citation keys"
+#~ msgstr "Vel mellom litteraturen:"
+
+#~ msgid "Add the selected citation"
+#~ msgstr "Legg til den valde litteraturen"
+
+#~ msgid "Remove the selected citation"
+#~ msgstr "Fjern den valde litteraturen"
+
+#~ msgid "Citation entry"
+#~ msgstr "Litteratur elementet"
+
+#~ msgid "&File"
+#~ msgstr "&Fil"
+
+#~ msgid "Update the reference list"
+#~ msgstr "Oppdater referanselista"
+
+#~ msgid "&Reference:"
+#~ msgstr "&Referansen:"
+
+#~ msgid "Available references"
+#~ msgstr "Tilgjengelege referansar"
+
+#~ msgid "&Type"
+#~ msgstr "&Sort"
+
+#~ msgid "&Name"
+#~ msgstr "&Namn"
+
+#~ msgid "Citation Reference...|C"
+#~ msgstr "Litteratur referansar...|L"
+
+#~ msgid "BibTeX Reference...|B"
+#~ msgstr "BibTeX Referanse...|B"
+
+#~ msgid "Child Processes|C"
+#~ msgstr "Barneprosessar|B"
+
+#~ msgid "Show the processes forked by LyX"
+#~ msgstr "Vis barneprosessane til LyX"
+
+#~ msgid "Kill the forked process with this PID"
+#~ msgstr "Drep barneprosessen med dette PID"
+
+#~ msgid "Bibliography Item"
+#~ msgstr "Bibliografi objekt"
+
+#~ msgid "BibTeX"
+#~ msgstr "BibTeX"
+
+#~ msgid "LyX: Preferences"
+#~ msgstr "LyX innstillingar"
+
+#~ msgid "Go to reference"
+#~ msgstr "Gå til referanse"
+
+#~ msgid "ShowFile"
+#~ msgstr "Vis fil"
+
+#~ msgid "Table of contents"
+#~ msgstr "Innhaldsliste"
+
+#~ msgid "VCLog"
+#~ msgstr "VKLogg"
+
+#~ msgid "BibTeX Database"
+#~ msgstr "BibTeX Database"
+
+#~ msgid "Add the selected entry to the current citation reference."
+#~ msgstr "Legg til den valde litteraturen til litteraturlista."
+
+#~ msgid "Delete the selected entry from the current citation reference."
+#~ msgstr "Slett den valde litterauren frå litteraturlista."
+
+#~ msgid "ERT Options"
+#~ msgstr "ERT Val"
+
+#~ msgid "Child processes"
+#~ msgstr "Barneprosessar"
+
+#~ msgid "All currently running child processes forked by LyX."
+#~ msgstr "Alle barneprosessane til LyX."
+
+#~ msgid "A list of all child processes to kill."
+#~ msgstr "Lista over barneprosessar ein skal drepe."
+
+#~ msgid "Add all processes to the list of processes to kill."
+#~ msgstr "Legg prosessen til prosessar som skal drepast."
+
+#~ msgid ""
+#~ "Add the currently selected child process to the list of processes to kill."
+#~ msgstr ""
+#~ "Legg dei valte prosessane til lista over prosessar som skal drepast."
+
+#~ msgid ""
+#~ "Remove the currently selected item from the list of processes to kill."
+#~ msgstr ""
+#~ "Fjern dei valte prosessane frå lista over prosessar som skal drepast."
+
+#~ msgid "LaTeX preamble"
+#~ msgstr "LaTeX fortekst"
+
+#~ msgid "Url"
+#~ msgstr "URL"
 
 #~ msgid "Warning: could not determine path of binary."
 #~ msgstr "Åtvaring.Kan ikkje finne stigen til binærfila."
@@ -13050,9 +13124,6 @@ msgstr "LyX funksjonen «Stil» treng eit argument"
 #~ msgid "Activated"
 #~ msgstr "Aktivert"
 
-#~ msgid "The available branches"
-#~ msgstr "Tilgjengelege greiner"
-
 #~ msgid "(&De)activate"
 #~ msgstr "(&Passiviser)"
 
@@ -13064,9 +13135,6 @@ msgstr "LyX funksjonen «Stil» treng eit argument"
 
 #~ msgid "Define or change background color"
 #~ msgstr "Definere eller endre fargen på bakgrunnen."
-
-#~ msgid "Remove the selected branch"
-#~ msgstr "Fjern den valde greina"
 
 #~ msgid "&New:"
 #~ msgstr "&Ny:"
@@ -13133,9 +13201,6 @@ msgstr "LyX funksjonen «Stil» treng eit argument"
 
 #~ msgid "Branch Settings"
 #~ msgstr "Grein innstillingar"
-
-#~ msgid "&Available branches:"
-#~ msgstr "&Tilgjengelege greiner"
 
 #~ msgid "Select your branch"
 #~ msgstr "Vel greina di"
@@ -13340,9 +13405,6 @@ msgstr "LyX funksjonen «Stil» treng eit argument"
 
 #~ msgid "Bottom|B"
 #~ msgstr "Nedst|N"
-
-#~ msgid "Bibliography Key"
-#~ msgstr "Litteratur nøkkel"
 
 #~ msgid "Inter-word Space|w"
 #~ msgstr "Mellom bokstav mellomrom|M"
@@ -14558,9 +14620,6 @@ msgstr "LyX funksjonen «Stil» treng eit argument"
 
 #~ msgid "huge"
 #~ msgstr "enorm"
-
-#~ msgid "Update style list"
-#~ msgstr "Oppdater stillista"
 
 #~ msgid "Waiting for draw request to start loading..."
 #~ msgstr "Ventar på teikne-etterspurnaden skal starta å laste..."

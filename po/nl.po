@@ -17,7 +17,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
-"POT-Creation-Date: 2005-02-02 14:46+0100\n"
+"POT-Creation-Date: 2005-03-07 12:50+0100\n"
 "PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -27,7 +27,6 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
-#: ../src/frontends/xforms/forms/form_forks.fd:169
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:44
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
@@ -59,7 +58,6 @@ msgstr "Toets:|#T"
 #: ../src/frontends/xforms/forms/form_external.fd:187
 #: ../src/frontends/xforms/forms/form_filedialog.fd:206
 #: ../src/frontends/xforms/forms/form_float.fd:152
-#: ../src/frontends/xforms/forms/form_forks.fd:133
 #: ../src/frontends/xforms/forms/form_graphics.fd:80
 #: ../src/frontends/xforms/forms/form_include.fd:79
 #: ../src/frontends/xforms/forms/form_index.fd:79
@@ -161,7 +159,6 @@ msgstr "Bladeren...|#B"
 #: ../src/frontends/xforms/forms/form_ert.fd:169
 #: ../src/frontends/xforms/forms/form_external.fd:205
 #: ../src/frontends/xforms/forms/form_float.fd:170
-#: ../src/frontends/xforms/forms/form_forks.fd:151
 #: ../src/frontends/xforms/forms/form_graphics.fd:116
 #: ../src/frontends/xforms/forms/form_index.fd:97
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:98
@@ -263,7 +260,6 @@ msgid "Info:"
 msgstr "Informatie:"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:116
-#: ../src/frontends/xforms/forms/form_forks.fd:115
 msgid "@4->"
 msgstr "@4->"
 
@@ -281,7 +277,6 @@ msgstr "@2->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:188
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:209
-#: src/frontends/qt2/QSearch.C:30
 msgid "Search"
 msgstr "Zoeken"
 
@@ -695,22 +690,6 @@ msgstr "Hier, zonder enige twijfel!#H"
 #: ../src/frontends/xforms/forms/form_float.fd:296
 msgid "Document default|#D"
 msgstr "Documentstandaard|#D"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:43
-msgid "Forked child processes:|#F"
-msgstr "Gevorkt dochterproces:|#v"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:61
-msgid "Kill processes:|#K"
-msgstr "Processen afsluiten:|#a"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:79
-msgid "All ->"
-msgstr "Alle ->"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:97
-msgid "@->"
-msgstr "@->"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:158
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:286
@@ -1646,8 +1625,9 @@ msgid "Name:|#N"
 msgstr "Naam:|#D"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:207
-msgid "Reference:|#e"
-msgstr "Verwijzing:|#e"
+#, fuzzy
+msgid "Label:|#e"
+msgstr "Label:|#L"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:243
 msgid "Go to|#G"
@@ -1991,10 +1971,10 @@ msgstr "Stijl"
 msgid "Use &NatBib"
 msgstr "&Natbib gebruiken"
 
-# Is dit hetzelfde als de xforms optie (daar vertaald met Vorm:)
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-msgid "Cite &Style:"
-msgstr "Citaat-&stijl:"
+#, fuzzy
+msgid "Citation &Style:"
+msgstr "Aanhalingsstijl:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:66
@@ -2117,6 +2097,7 @@ msgid "&Double"
 msgstr "&Dubbele"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:100
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
 msgid "&Type:"
 msgstr "T&ype:"
 
@@ -2294,26 +2275,28 @@ msgstr "&Dummy"
 msgid "&Cancel"
 msgstr "&Annuleren"
 
-# Index
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
-#: src/frontends/qt2/QIndex.C:26 src/frontends/xforms/FormIndex.C:25
-#: src/insets/insetindex.C:66
-msgid "Index"
-msgstr "Trefwoord"
+#: src/frontends/qt2/QBibitem.C:30 src/frontends/xforms/FormBibitem.C:25
+#, fuzzy
+msgid "Bibliography Entry"
+msgstr "Literatuurverwijzing"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-msgid "&Key"
+#, fuzzy
+msgid "&Key:"
 msgstr "&Sleutel"
 
+# Het label was te lang
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
 #, fuzzy
-msgid "The citation key"
-msgstr "Literatuurverwijzing invoegen"
+msgid "The bibliography key"
+msgstr "Literatuurverw.-sleutels:|#t"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-msgid "&Label"
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
+#, fuzzy
+msgid "&Label:"
 msgstr "&Label"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
@@ -2338,9 +2321,12 @@ msgstr "De label zoals het wordt weergegeven in het document."
 msgid "&OK"
 msgstr "&OK"
 
+# Literatuurlijst?
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-msgid "Bibtex"
-msgstr "BibteX"
+#: src/frontends/qt2/QBibtex.C:39 src/frontends/xforms/FormBibtex.C:37
+#, fuzzy
+msgid "BibTeX Bibliography"
+msgstr "Bibliografie"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
 msgid "Databa&ses"
@@ -2427,7 +2413,6 @@ msgstr "Inhoudsopgave bekijken"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
-#: src/frontends/qt2/QCharacter.C:35
 msgid "Character"
 msgstr "Teken"
 
@@ -2552,8 +2537,8 @@ msgid "&Restore"
 msgstr "&Herstellen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
-msgid "Search the available citations"
-msgstr "De beschikbare literatuurverwijzingen doorzoeken"
+msgid "Browse the available bibliography entries"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Regular E&xpression"
@@ -2589,15 +2574,18 @@ msgid "New Item"
 msgstr "Nieuw item"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
-msgid "Available citation keys"
-msgstr "Beschikbare literatuurverwijzing-sleutels"
+#, fuzzy
+msgid "Available bibliography entries"
+msgstr "Literatuurverwijzing"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
-msgid "Add the selected citation"
-msgstr "De geselecteerde literatuurverwijzing invoegen"
+#, fuzzy
+msgid "Add citation of the selected bibliography entry"
+msgstr "De geselecteerde literatuurverwijzing verwijderen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
-msgid "Remove the selected citation"
+#, fuzzy
+msgid "Remove citation of the selected bibiography entry"
 msgstr "De geselecteerde literatuurverwijzing verwijderen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
@@ -2625,7 +2613,8 @@ msgid "Info"
 msgstr "Informatie"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
-msgid "Citation entry"
+#, fuzzy
+msgid "Bibliography entry"
 msgstr "Literatuurverwijzing"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:492
@@ -2771,6 +2760,7 @@ msgstr "Extern materiaal"
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:439
 msgid "&File:"
 msgstr "&Bestand:"
 
@@ -3160,6 +3150,13 @@ msgstr "&Voorbeeld tonen"
 msgid "Show LaTeX preview"
 msgstr "LaTeX voorbeeld tonen"
 
+# Index
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
+#: src/frontends/qt2/QIndex.C:26 src/frontends/xforms/FormIndex.C:25
+#: src/insets/insetindex.C:66
+msgid "Index"
+msgstr "Trefwoord"
+
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
 msgid "&Keyword"
 msgstr "&Sleutelwoord"
@@ -3170,7 +3167,7 @@ msgstr "&Sleutelwoord"
 msgid "Index entry"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:33
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22
 msgid "Log"
 msgstr "Logboek"
 
@@ -4192,7 +4189,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:98
+#: src/frontends/qt2/QPrefs.C:66 src/frontends/xforms/FormPreferences.C:98
 msgid "Preferences"
 msgstr "Voorkeuren"
 
@@ -4272,7 +4269,8 @@ msgid "Print Destination"
 msgstr "Ontvanger:"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:409
-msgid "P&rinter"
+#, fuzzy
+msgid "P&rinter:"
 msgstr "P&rinter"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:417
@@ -4283,26 +4281,20 @@ msgstr "Uitvoer naar de printer sturen"
 msgid "Send output to the given printer"
 msgstr "Uitvoer naar de geselecteerde printer sturen"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:439
-msgid "&File"
-msgstr "&Bestand"
-
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:443
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:458
 #, fuzzy
 msgid "Send output to a file"
 msgstr "Volgende regel selecteren"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22 src/frontends/qt2/QRef.C:41
 #: src/frontends/xforms/FormRef.C:33
-#, fuzzy
-msgid "Reference"
-msgstr "Verwijzing invoegen"
+msgid "Cross Reference"
+msgstr "Kruisverwijzing"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
 #, fuzzy
-msgid "Update the reference list"
+msgid "Update the label list"
 msgstr "Verwijzing invoegen"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
@@ -4311,7 +4303,7 @@ msgstr "&Ga naar"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
 #, fuzzy
-msgid "Move the document cursor to reference"
+msgid "Move the document cursor to label"
 msgstr "Wellicht is document afgekapt"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
@@ -4319,7 +4311,8 @@ msgid "Sort"
 msgstr "Sorteren"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-msgid "Sort references in alphabetical order"
+#, fuzzy
+msgid "Sort labels in alphabetical order"
 msgstr "Verwijzingen in alfabetische volgorde sorteren"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
@@ -4343,30 +4336,27 @@ msgid "Formatted reference"
 msgstr "Verwijzing met opmaak"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-msgid "Reference as it appears in output"
+msgid "Cross reference as it appears in output"
 msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-msgid "&Reference:"
-msgstr "Ver&wijzing:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
 msgid "&Format:"
 msgstr "&Formaat:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
 msgid "&Name:"
 msgstr "&Naam:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
 #, fuzzy
-msgid "Available references in selected document:"
+msgid "Available labels in selected document:"
 msgstr "Verwijzing invoegen"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
 #, fuzzy
-msgid "Available references"
-msgstr "Verwijzing invoegen"
+msgid "Available labels"
+msgstr "Beschikbare sjablonen"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
 msgid "&Document:"
@@ -4771,7 +4761,7 @@ msgid "&Rescan"
 msgstr "r Herlezen|#R#r"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-msgid "Built new file list"
+msgid "Rebuild the file lists"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
@@ -4827,11 +4817,6 @@ msgstr ""
 msgid "Table Of Contents"
 msgstr "Inhoudsopgave"
 
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
-#, fuzzy
-msgid "&Type"
-msgstr "Type"
-
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
 #, fuzzy
 msgid "Contents list"
@@ -4843,19 +4828,16 @@ msgid "Insert URL"
 msgstr "Label invoegen"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-msgid "&URL"
+#, fuzzy
+msgid "&URL:"
 msgstr "&URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
 #: ../lib/layouts/scrlttr2.layout:219 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:29
+#: src/frontends/qt2/QURL.C:29 src/frontends/xforms/FormUrl.C:23
 msgid "URL"
 msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-msgid "&Name"
-msgstr "&Naam"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
@@ -4896,7 +4878,7 @@ msgid "&Placement:"
 msgstr "&Plaatsing:"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
-#: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
+#: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:55
 #: ../lib/layouts/amsart.layout:23 ../lib/layouts/amsbook.layout:23
 #: ../lib/layouts/apa.layout:31 ../lib/layouts/broadway.layout:179
 #: ../lib/layouts/chess.layout:30 ../lib/layouts/cl2emult.layout:127
@@ -5057,8 +5039,8 @@ msgstr "Casus"
 
 #: ../lib/layouts/IEEEtran.layout:302 ../lib/layouts/aa.layout:44
 #: ../lib/layouts/aa.layout:239 ../lib/layouts/aapaper.layout:59
-#: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:68
-#: ../lib/layouts/aastex.layout:141 ../lib/layouts/amsart.layout:40
+#: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:69
+#: ../lib/layouts/aastex.layout:148 ../lib/layouts/amsart.layout:40
 #: ../lib/layouts/amsbook.layout:41 ../lib/layouts/cv.layout:26
 #: ../lib/layouts/egs.layout:29 ../lib/layouts/ijmpd.layout:86
 #: ../lib/layouts/kluwer.layout:55 ../lib/layouts/latex8.layout:39
@@ -5074,8 +5056,8 @@ msgstr "Sectie"
 
 #: ../lib/layouts/IEEEtran.layout:313 ../lib/layouts/aa.layout:46
 #: ../lib/layouts/aa.layout:249 ../lib/layouts/aapaper.layout:61
-#: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:70
-#: ../lib/layouts/aastex.layout:154 ../lib/layouts/amsart.layout:53
+#: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:71
+#: ../lib/layouts/aastex.layout:161 ../lib/layouts/amsart.layout:53
 #: ../lib/layouts/amsbook.layout:54 ../lib/layouts/cv.layout:49
 #: ../lib/layouts/egs.layout:55 ../lib/layouts/ijmpd.layout:104
 #: ../lib/layouts/kluwer.layout:64 ../lib/layouts/latex8.layout:46
@@ -5090,8 +5072,8 @@ msgstr "Subsectie"
 
 #: ../lib/layouts/IEEEtran.layout:320 ../lib/layouts/aa.layout:48
 #: ../lib/layouts/aa.layout:261 ../lib/layouts/aapaper.layout:63
-#: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:72
-#: ../lib/layouts/aastex.layout:167 ../lib/layouts/amsart.layout:62
+#: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:73
+#: ../lib/layouts/aastex.layout:174 ../lib/layouts/amsart.layout:62
 #: ../lib/layouts/amsbook.layout:63 ../lib/layouts/ijmpd.layout:114
 #: ../lib/layouts/kluwer.layout:73 ../lib/layouts/linuxdoc.layout:121
 #: ../lib/layouts/llncs.layout:66 ../lib/layouts/ltugboat.layout:93
@@ -5130,8 +5112,8 @@ msgstr "Subsubsectie*"
 msgid "Abstract"
 msgstr ""
 
-#: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:98
-#: ../lib/layouts/aastex.layout:256 ../lib/layouts/elsart.layout:63
+#: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:99
+#: ../lib/layouts/aastex.layout:263 ../lib/layouts/elsart.layout:63
 #: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
 #: ../lib/layouts/revtex4.layout:243 ../lib/layouts/siamltex.layout:159
 #: ../lib/layouts/spie.layout:42 ../lib/layouts/amsdefs.inc:241
@@ -5157,8 +5139,8 @@ msgid "Bibliography"
 msgstr "Bibliografie"
 
 # Bijlage
-#: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:102
-#: ../lib/layouts/aastex.layout:382 ../lib/layouts/ijmpd.layout:166
+#: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:103
+#: ../lib/layouts/aastex.layout:389 ../lib/layouts/ijmpd.layout:166
 #: ../lib/layouts/kluwer.layout:324
 msgid "Appendix"
 msgstr "Appendix"
@@ -5173,7 +5155,7 @@ msgstr "Biografie"
 
 #: ../lib/layouts/IEEEtran.layout:476 ../lib/layouts/aa.layout:58
 #: ../lib/layouts/aa.layout:218 ../lib/layouts/aapaper.layout:55
-#: ../lib/layouts/aastex.layout:114 ../lib/layouts/aastex.layout:499
+#: ../lib/layouts/aastex.layout:115 ../lib/layouts/aastex.layout:506
 #: ../lib/layouts/egs.layout:667 ../lib/layouts/latex8.layout:115
 #: ../lib/layouts/db_stdlayouts.inc:45 ../lib/layouts/stdlayouts.inc:84
 msgid "Caption"
@@ -5190,7 +5172,7 @@ msgid "MarkBoth"
 msgstr "Merkteken ingechakeld"
 
 #: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
-#: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:281
+#: ../lib/layouts/aastex.layout:77 ../lib/layouts/apa.layout:281
 #: ../lib/layouts/cv.layout:86 ../lib/layouts/egs.layout:200
 #: ../lib/layouts/linuxdoc.layout:211 ../lib/layouts/manpage.layout:86
 #: ../lib/layouts/db_stdlists.inc:11 ../lib/layouts/stdlists.inc:9
@@ -5198,7 +5180,7 @@ msgid "Itemize"
 msgstr ""
 
 #: ../lib/layouts/aa.layout:52 ../lib/layouts/aapaper.layout:49
-#: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:299
+#: ../lib/layouts/aastex.layout:79 ../lib/layouts/apa.layout:299
 #: ../lib/layouts/egs.layout:182 ../lib/layouts/linuxdoc.layout:195
 #: ../lib/layouts/manpage.layout:69 ../lib/layouts/db_stdlists.inc:17
 #: ../lib/layouts/stdlists.inc:27
@@ -5206,7 +5188,7 @@ msgid "Enumerate"
 msgstr ""
 
 #: ../lib/layouts/aa.layout:54 ../lib/layouts/aapaper.layout:51
-#: ../lib/layouts/aastex.layout:80 ../lib/layouts/egs.layout:218
+#: ../lib/layouts/aastex.layout:81 ../lib/layouts/egs.layout:218
 #: ../lib/layouts/hollywood.layout:131 ../lib/layouts/linuxdoc.layout:228
 #: ../lib/layouts/manpage.layout:104 ../lib/layouts/paper.layout:102
 #: ../lib/layouts/scrlettr.layout:16 ../lib/layouts/scrlttr2.layout:16
@@ -5216,14 +5198,14 @@ msgid "Description"
 msgstr "Beschrijving"
 
 #: ../lib/layouts/aa.layout:56 ../lib/layouts/aapaper.layout:53
-#: ../lib/layouts/aastex.layout:82 ../lib/layouts/egs.layout:165
+#: ../lib/layouts/aastex.layout:83 ../lib/layouts/egs.layout:165
 #: ../lib/layouts/scrmacros.inc:6 ../lib/layouts/stdlists.inc:69
 msgid "List"
 msgstr "Lijst"
 
 #: ../lib/layouts/aa.layout:60 ../lib/layouts/aa.layout:271
 #: ../lib/layouts/aapaper.layout:65 ../lib/layouts/aapaper.layout:145
-#: ../lib/layouts/aastex.layout:84 ../lib/layouts/aastex.layout:181
+#: ../lib/layouts/aastex.layout:85 ../lib/layouts/aastex.layout:188
 #: ../lib/layouts/apa.layout:45 ../lib/layouts/broadway.layout:190
 #: ../lib/layouts/cl2emult.layout:42 ../lib/layouts/cv.layout:130
 #: ../lib/layouts/docbook-book.layout:13
@@ -5252,7 +5234,7 @@ msgstr "Subtitel"
 
 #: ../lib/layouts/aa.layout:64 ../lib/layouts/aa.layout:283
 #: ../lib/layouts/aapaper.layout:69 ../lib/layouts/aapaper.layout:156
-#: ../lib/layouts/aastex.layout:86 ../lib/layouts/aastex.layout:194
+#: ../lib/layouts/aastex.layout:87 ../lib/layouts/aastex.layout:201
 #: ../lib/layouts/apa.layout:116 ../lib/layouts/broadway.layout:203
 #: ../lib/layouts/cl2emult.layout:59 ../lib/layouts/egs.layout:336
 #: ../lib/layouts/elsart.layout:115 ../lib/layouts/entcs.layout:22
@@ -5292,7 +5274,7 @@ msgstr "Mail"
 
 #: ../lib/layouts/aa.layout:72 ../lib/layouts/aa.layout:295
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
-#: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
+#: ../lib/layouts/aastex.layout:95 ../lib/layouts/aastex.layout:214
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
 #: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:820
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
@@ -5306,7 +5288,7 @@ msgstr "Datum"
 
 #: ../lib/layouts/aa.layout:74 ../lib/layouts/aa.layout:307
 #: ../lib/layouts/aapaper.layout:81 ../lib/layouts/aapaper.layout:178
-#: ../lib/layouts/aastex.layout:96 ../lib/layouts/aastex.layout:219
+#: ../lib/layouts/aastex.layout:97 ../lib/layouts/aastex.layout:226
 #: ../lib/layouts/egs.layout:565 ../lib/layouts/elsart.layout:205
 #: ../lib/layouts/entcs.layout:56 ../lib/layouts/kluwer.layout:259
 #: ../lib/layouts/latex8.layout:98 ../lib/layouts/llncs.layout:265
@@ -5331,14 +5313,14 @@ msgstr ""
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: ../lib/layouts/aapaper.layout:73 ../lib/layouts/aastex.layout:90
-#: ../lib/layouts/aastex.layout:282 ../lib/layouts/latex8.layout:53
+#: ../lib/layouts/aapaper.layout:73 ../lib/layouts/aastex.layout:91
+#: ../lib/layouts/aastex.layout:289 ../lib/layouts/latex8.layout:53
 #: ../lib/layouts/llncs.layout:257 ../lib/layouts/aapaper.inc:49
 #: ../lib/layouts/amsdefs.inc:205
 msgid "Email"
 msgstr "Email"
 
-#: ../lib/layouts/aastex.layout:74 ../lib/layouts/egs.layout:76
+#: ../lib/layouts/aastex.layout:75 ../lib/layouts/egs.layout:76
 #: ../lib/layouts/kluwer.layout:82 ../lib/layouts/linuxdoc.layout:146
 #: ../lib/layouts/llncs.layout:75 ../lib/layouts/ltugboat.layout:117
 #: ../lib/layouts/paper.layout:70 ../lib/layouts/revtex.layout:73
@@ -5350,56 +5332,70 @@ msgstr "Email"
 msgid "Paragraph"
 msgstr "Alineaopmaak ingesteld"
 
-#: ../lib/layouts/aastex.layout:88 ../lib/layouts/aastex.layout:238
+#: ../lib/layouts/aastex.layout:89 ../lib/layouts/aastex.layout:245
 #: ../lib/layouts/apa.layout:148 ../lib/layouts/latex8.layout:78
 #: ../lib/layouts/revtex4.layout:150 ../lib/layouts/aguplus.inc:52
 #, fuzzy
 msgid "Affiliation"
 msgstr "Aanhaling"
 
-#: ../lib/layouts/aastex.layout:92 ../lib/layouts/aastex.layout:322
+#: ../lib/layouts/aastex.layout:93 ../lib/layouts/aastex.layout:329
 msgid "And"
 msgstr "En"
 
-#: ../lib/layouts/aastex.layout:100 ../lib/layouts/aastex.layout:300
+#: ../lib/layouts/aastex.layout:101 ../lib/layouts/aastex.layout:307
 #: ../lib/layouts/apa.layout:212 ../lib/layouts/egs.layout:588
 #: ../lib/layouts/kluwer.layout:303 ../lib/layouts/svjour.inc:321
 msgid "Acknowledgements"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:104 ../lib/layouts/aastex.layout:415
+#: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
 #: ../lib/layouts/kluwer.layout:345 src/buffer.C:1544
 msgid "References"
 msgstr "Referenties"
 
-#: ../lib/layouts/aastex.layout:106 ../lib/layouts/aastex.layout:342
+#: ../lib/layouts/aastex.layout:107 ../lib/layouts/aastex.layout:349
 #, fuzzy
 msgid "PlaceFigure"
 msgstr "Figuur"
 
-#: ../lib/layouts/aastex.layout:108 ../lib/layouts/aastex.layout:362
+#: ../lib/layouts/aastex.layout:109 ../lib/layouts/aastex.layout:369
 msgid "PlaceTable"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:110 ../lib/layouts/aastex.layout:480
+#: ../lib/layouts/aastex.layout:111 ../lib/layouts/aastex.layout:487
 #, fuzzy
 msgid "TableComments"
 msgstr "Inhoudsopgave"
 
-#: ../lib/layouts/aastex.layout:112 ../lib/layouts/aastex.layout:461
+#: ../lib/layouts/aastex.layout:113 ../lib/layouts/aastex.layout:468
 #, fuzzy
 msgid "TableRefs"
 msgstr "Tabel%t"
 
-#: ../lib/layouts/aastex.layout:116 ../lib/layouts/aastex.layout:403
+#: ../lib/layouts/aastex.layout:117 ../lib/layouts/aastex.layout:410
 msgid "MathLetters"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:118 ../lib/layouts/aastex.layout:441
+#: ../lib/layouts/aastex.layout:119 ../lib/layouts/aastex.layout:448
 msgid "NoteToEditor"
 msgstr ""
 
-#: ../lib/layouts/aastex.layout:519
+#: ../lib/layouts/aastex.layout:121 ../lib/layouts/aastex.layout:541
+#, fuzzy
+msgid "Facility"
+msgstr "Feit"
+
+#: ../lib/layouts/aastex.layout:123 ../lib/layouts/aastex.layout:567
+msgid "Objectname"
+msgstr ""
+
+#: ../lib/layouts/aastex.layout:125 ../lib/layouts/aastex.layout:594
+#, fuzzy
+msgid "Dataset"
+msgstr "Datum"
+
+#: ../lib/layouts/aastex.layout:526
 #, fuzzy
 msgid "FigCaption"
 msgstr "k Bijschrift|#k"
@@ -6018,6 +6014,11 @@ msgstr "Commentaar:"
 #: ../lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
 msgstr ""
+
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
+#, fuzzy
+msgid "Reference"
+msgstr "Verwijzing invoegen"
 
 #: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:888
 msgid "Encl."
@@ -7406,8 +7407,8 @@ msgstr "Speciaal teken|S"
 
 #: ../lib/ui/default.ui:197
 #, fuzzy
-msgid "Citation Reference...|C"
-msgstr "g Naar verwijzing|#G"
+msgid "Citation...|C"
+msgstr "Literatuurverwijzing"
 
 #: ../lib/ui/default.ui:198
 msgid "Cross Reference...|R"
@@ -7438,7 +7439,7 @@ msgstr "Inspringen"
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: ../lib/ui/default.ui:205 ../lib/ui/default.ui:341
+#: ../lib/ui/default.ui:205 ../lib/ui/default.ui:340
 #, fuzzy
 msgid "Note|N"
 msgstr "andere"
@@ -7677,10 +7678,11 @@ msgstr "Inhoudsopgave"
 msgid "Index List|I"
 msgstr "i Inspringen|#I"
 
+# Literatuurlijst?
 #: ../lib/ui/default.ui:286
 #, fuzzy
-msgid "BibTeX Reference...|B"
-msgstr "Verwijzingen gegenereerd door BibTeX"
+msgid "BibTeX Bibliography...|B"
+msgstr "Bibliografie"
 
 #: ../lib/ui/default.ui:290
 msgid "LyX Document...|X"
@@ -7765,88 +7767,84 @@ msgid "Table of Contents|T"
 msgstr "Inhoudsopgave|n"
 
 #: ../lib/ui/default.ui:326
-msgid "Child Processes|C"
-msgstr "Dochterproces|c"
-
-#: ../lib/ui/default.ui:327
 msgid "TeX Information|X"
 msgstr "TeX-informatie|X"
 
-#: ../lib/ui/default.ui:340
+#: ../lib/ui/default.ui:339
 msgid "Error|E"
 msgstr "Fout|F"
 
-#: ../lib/ui/default.ui:342
+#: ../lib/ui/default.ui:341
 msgid "Refs|R"
 msgstr "Verw|w "
 
-#: ../lib/ui/default.ui:343
+#: ../lib/ui/default.ui:342
 #, fuzzy
 msgid "Bookmarks|B"
 msgstr "b Onder|#B"
 
-#: ../lib/ui/default.ui:347
+#: ../lib/ui/default.ui:346
 msgid "Save Bookmark 1|S"
 msgstr ""
 
-#: ../lib/ui/default.ui:348
+#: ../lib/ui/default.ui:347
 msgid "Save Bookmark 2"
 msgstr ""
 
-#: ../lib/ui/default.ui:349
+#: ../lib/ui/default.ui:348
 msgid "Save Bookmark 3"
 msgstr ""
 
-#: ../lib/ui/default.ui:351
+#: ../lib/ui/default.ui:350
 msgid "Goto Bookmark 1|1"
 msgstr ""
 
-#: ../lib/ui/default.ui:352
+#: ../lib/ui/default.ui:351
 msgid "Goto Bookmark 2|2"
 msgstr ""
 
-#: ../lib/ui/default.ui:353
+#: ../lib/ui/default.ui:352
 msgid "Goto Bookmark 3|3"
 msgstr ""
 
-#: ../lib/ui/default.ui:368
+#: ../lib/ui/default.ui:367
 msgid "Tooltips|o"
 msgstr ""
 
-#: ../lib/ui/default.ui:370
+#: ../lib/ui/default.ui:369
 msgid "Introduction|I"
 msgstr "Inleiding|I"
 
-#: ../lib/ui/default.ui:371
+#: ../lib/ui/default.ui:370
 msgid "Tutorial|T"
 msgstr "Tutorial|T"
 
-#: ../lib/ui/default.ui:372
+#: ../lib/ui/default.ui:371
 msgid "User's Guide|U"
 msgstr "Gebruikershandleiding|u"
 
-#: ../lib/ui/default.ui:373
+#: ../lib/ui/default.ui:372
 msgid "Extended Features|E"
 msgstr ""
 
-#: ../lib/ui/default.ui:374
+#: ../lib/ui/default.ui:373
 #, fuzzy
 msgid "Customization|C"
 msgstr "Aanhaling"
 
-#: ../lib/ui/default.ui:376
+#: ../lib/ui/default.ui:375
 msgid "FAQ|F"
 msgstr ""
 
-#: ../lib/ui/default.ui:377
+#: ../lib/ui/default.ui:376
 msgid "Table of Contents|a"
 msgstr "Inhoudsopgave|n"
 
-#: ../lib/ui/default.ui:378
+#: ../lib/ui/default.ui:377
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX Configuratie|L"
 
-#: ../lib/ui/default.ui:380
+#: ../lib/ui/default.ui:379
 msgid "About LyX|X"
 msgstr "Over LyX|X"
 
@@ -7919,21 +7917,21 @@ msgstr "Kies document ter invoeging"
 #: src/frontends/controllers/ControlExternal.C:150
 #: src/frontends/controllers/ControlGraphics.C:89
 #: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:113
-#: src/lyxfunc.C:1652 src/lyxfunc.C:1692 src/lyxfunc.C:1798
+#: src/lyxfunc.C:1637 src/lyxfunc.C:1677 src/lyxfunc.C:1783
 msgid "Documents|#o#O"
 msgstr "Documenten|#o#O"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1694 src/lyxfunc.C:1800
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1679 src/lyxfunc.C:1785
 msgid "Examples|#E#e"
 msgstr "Voorbeelden|#E#e"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1659
-#: src/lyxfunc.C:1699
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1644
+#: src/lyxfunc.C:1684
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX Documenten (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1708 src/lyxfunc.C:1728
-#: src/lyxfunc.C:1817 src/lyxfunc.C:1844 src/lyxfunc.C:1854
+#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1693 src/lyxfunc.C:1713
+#: src/lyxfunc.C:1802 src/lyxfunc.C:1829 src/lyxfunc.C:1839
 msgid "Canceled."
 msgstr "Afgebroken."
 
@@ -7947,7 +7945,7 @@ msgid "Inserting document "
 msgstr "Document invoegen "
 
 #: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:990
-#: src/lyxfunc.C:1151 src/lyxfunc.C:1741
+#: src/lyxfunc.C:1151 src/lyxfunc.C:1726
 msgid "..."
 msgstr "..."
 
@@ -7956,7 +7954,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "Document %1$s ingevoegd."
 
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1753
+#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1738
 msgid "Document "
 msgstr "Document "
 
@@ -8733,15 +8731,7 @@ msgstr ""
 msgid "Display information about the TeX installation"
 msgstr ""
 
-#: src/LyXAction.C:408
-msgid "Show the processes forked by LyX"
-msgstr ""
-
-#: src/LyXAction.C:410
-msgid "Kill the forked process with this PID"
-msgstr ""
-
-#: src/LyXAction.C:567
+#: src/LyXAction.C:563
 msgid "No description available!"
 msgstr "Geen beschrijving beschikbaar!"
 
@@ -9026,7 +9016,7 @@ msgstr "Die dan maar laden?"
 msgid "Unable to open template"
 msgstr "Kan sjabloon niet openen"
 
-#: src/bufferlist.C:545 src/lyxfunc.C:1830
+#: src/bufferlist.C:545 src/lyxfunc.C:1815
 msgid "Document is already open:"
 msgstr "Document is al geopend:"
 
@@ -9699,7 +9689,7 @@ msgid " and "
 msgstr " en "
 
 #: src/frontends/controllers/biblio.C:109
-msgid "et al."
+msgid " et al."
 msgstr ""
 
 #: src/frontends/controllers/biblio.C:148
@@ -9869,14 +9859,6 @@ msgstr "Alle bestanden (*)"
 msgid "Directories"
 msgstr "Mappen"
 
-#: src/frontends/qt2/QBibitem.C:30
-msgid "Bibliography Item"
-msgstr "Literatuurverwijzing"
-
-#: src/frontends/qt2/QBibtex.C:39
-msgid "BibTeX"
-msgstr "BibTeX"
-
 #: src/frontends/qt2/QBibtexDialog.C:55
 msgid "BibTeX style files (*.bst)"
 msgstr "BibTeX stijlebestanden (*.bst)"
@@ -9893,6 +9875,13 @@ msgstr "BibTeX databasebestanden (*.bib)"
 #, fuzzy
 msgid "Select a BibTeX database to add"
 msgstr "Database:"
+
+# Vrij vertaald. In dit dialoog (dit is de titel) kun je zelf een 
+# lettertekenstijl definieren die aan/uitgeschakeld wordt met de
+# Font-knop op de werkbalk.
+#: src/frontends/qt2/QCharacter.C:35 src/frontends/xforms/FormCharacter.C:38
+msgid "Character Layout"
+msgstr "Tekenstijl definieren"
 
 #: src/frontends/qt2/QCommandBuffer.C:70
 msgid "Previous command"
@@ -10050,6 +10039,7 @@ msgid "LaTeX Packages and Options"
 msgstr "LaTeX-Log"
 
 #: src/frontends/qt2/QDocumentDialog.C:280
+#: src/frontends/xforms/FormPreamble.C:24
 #, fuzzy
 msgid "LaTeX Preamble"
 msgstr "LaTeX preamble"
@@ -10068,7 +10058,7 @@ msgstr "Marges"
 msgid "Very wide margins"
 msgstr ""
 
-#: src/frontends/qt2/QERT.C:27
+#: src/frontends/qt2/QERT.C:27 src/frontends/xforms/FormERT.C:25
 #, fuzzy
 msgid "LaTeX ERT"
 msgstr "LaTeX|#L"
@@ -10110,6 +10100,10 @@ msgstr "PostScript bestanden (*.ps)"
 #, fuzzy
 msgid "Select a file to print to"
 msgstr "Kies document ter invoeging"
+
+#: src/frontends/qt2/QLog.C:33 src/frontends/xforms/FormLog.C:21
+msgid "LaTeX Log"
+msgstr "LaTeX-logboek"
 
 #: src/frontends/qt2/QMathDialog.C:115
 #, fuzzy
@@ -10240,11 +10234,6 @@ msgstr "Extra alinea opmaak"
 msgid "Senseless with this layout!"
 msgstr "Heeft geen zin met deze stijl!"
 
-#: src/frontends/qt2/QPrefs.C:66
-#, fuzzy
-msgid "LyX: Preferences"
-msgstr "Verwijzing invoegen"
-
 #. OK, Qt is REALLY broken. We have to hard
 #. code the menu structure here.
 #: src/frontends/qt2/QPrefsDialog.C:77
@@ -10326,10 +10315,6 @@ msgstr "Kies document ter invoeging"
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geef een bestandsnaam aan de LyX serverpijp"
 
-#: src/frontends/qt2/QRef.C:41
-msgid "Cross Reference"
-msgstr "Kruisverwijzing"
-
 #: src/frontends/qt2/QRef.C:117
 msgid "&Go back"
 msgstr "Terug&gaan"
@@ -10338,20 +10323,24 @@ msgstr "Terug&gaan"
 msgid "Go back"
 msgstr "Teruggaan"
 
-# Ga naar verwijzing
 #: src/frontends/qt2/QRef.C:127
-msgid "Go to reference"
-msgstr "Naar verwijzing"
+#, fuzzy
+msgid "Go to label"
+msgstr "Lange tabel"
+
+#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
+msgid "Find and Replace"
+msgstr "Zoeken en vervangen"
 
 #: src/frontends/qt2/QSendto.C:33 src/frontends/xforms/FormSendto.C:28
 #, fuzzy
 msgid "Send document to command"
 msgstr "Zend document naar opdracht"
 
-#: src/frontends/qt2/QShowFile.C:27
-#, fuzzy
-msgid "ShowFile"
-msgstr "f Bestand"
+# Tonen
+#: src/frontends/qt2/QShowFile.C:27 src/frontends/xforms/FormShowFile.C:22
+msgid "Show File"
+msgstr "Bestand weergeven"
 
 #: src/frontends/qt2/QTabular.C:34
 #, fuzzy
@@ -10363,13 +10352,15 @@ msgstr "Lijst van Tabellen"
 msgid "LaTeX Information"
 msgstr "Niets meer ongedaan te maken"
 
-#: src/frontends/qt2/QToc.C:38
-msgid "Table of contents"
+#: src/frontends/qt2/QToc.C:38 src/frontends/xforms/FormToc.C:32
+#: src/insets/insettoc.C:29
+msgid "Table of Contents"
 msgstr "Inhoudsopgave"
 
-#: src/frontends/qt2/QVCLog.C:31
-msgid "VCLog"
-msgstr ""
+#: src/frontends/qt2/QVCLog.C:31 src/frontends/xforms/FormVCLog.C:23
+#, fuzzy
+msgid "Version Control Log"
+msgstr "Versieboekhouding%t"
 
 #: src/frontends/qt2/QVCLog.C:47
 #, fuzzy, c-format
@@ -10514,11 +10505,6 @@ msgstr "WAARSCHUWING! %1$s"
 msgid "WARNING!"
 msgstr "WAARSCHUWING!"
 
-#: src/frontends/xforms/FormBibitem.C:25
-#, fuzzy
-msgid "Bibliography Entry"
-msgstr "Literatuurverwijzing"
-
 #. set up the tooltips
 #: src/frontends/xforms/FormBibitem.C:47
 msgid "Key used within LyX document."
@@ -10527,11 +10513,6 @@ msgstr ""
 #: src/frontends/xforms/FormBibitem.C:49
 msgid "Label used for final output."
 msgstr ""
-
-#: src/frontends/xforms/FormBibtex.C:37
-#, fuzzy
-msgid "BibTeX Database"
-msgstr "Database:"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:67
@@ -10582,22 +10563,16 @@ msgstr "BibTeX-Stijl selecteren"
 msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr "*.bst| BibTeX Stijlen (*.bst)"
 
-# Vrij vertaald. In dit dialoog (dit is de titel) kun je zelf een 
-# lettertekenstijl definieren die aan/uitgeschakeld wordt met de
-# Font-knop op de werkbalk.
-#: src/frontends/xforms/FormCharacter.C:38
-msgid "Character Layout"
-msgstr "Tekenstijl definieren"
-
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
 #, fuzzy
-msgid "Add the selected entry to the current citation reference."
-msgstr "Literatuurverwijzing invoegen"
+msgid "Add citation of the selected bibliography entry."
+msgstr "De geselecteerde literatuurverwijzing verwijderen"
 
 #: src/frontends/xforms/FormCitation.C:165
-msgid "Delete the selected entry from the current citation reference."
-msgstr ""
+#, fuzzy
+msgid "Delete citation of the selected bibliography entry."
+msgstr "De geselecteerde literatuurverwijzing verwijderen"
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
@@ -10615,13 +10590,13 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:181
 msgid ""
-"All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex "
-"Reference\"). Move the ones you want to cite with the arrow buttons into the "
-"left browser window."
+"All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX "
+"Bibliography\"). Move the ones you want to cite with the arrow buttons into "
+"the left browser window."
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:188
-msgid "Information about the selected entry"
+msgid "Information about the selected bibliography entry"
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:195
@@ -10632,8 +10607,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:198
 msgid ""
-"Activate if you want to print all authors in a reference with more than "
-"three authors, and not \"<First Author> et al.\" (Natbib)."
+"Activate if you want to print all authors in a citation with more than three "
+"authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:201
@@ -10644,13 +10619,11 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:204
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:207
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:210
@@ -10733,10 +10706,6 @@ msgstr ""
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Document tegen schrijven beveiligd. Stijl mag niet veranderd worden."
 
-#: src/frontends/xforms/FormERT.C:25
-msgid "ERT Options"
-msgstr "ERT-opties"
-
 #: src/frontends/xforms/FormExternal.C:29
 msgid "Edit external file"
 msgstr "Extern bestand bewerken"
@@ -10786,32 +10755,6 @@ msgstr ""
 
 #: src/frontends/xforms/FormFloat.C:84
 msgid "Span float over the columns."
-msgstr ""
-
-#: src/frontends/xforms/FormForks.C:32
-msgid "Child processes"
-msgstr "Dochterproces"
-
-#. Set up the tooltip mechanism
-#: src/frontends/xforms/FormForks.C:53
-msgid "All currently running child processes forked by LyX."
-msgstr "Alle huidige lopende dochterprocessen die van LyX zijn gevorkt."
-
-#: src/frontends/xforms/FormForks.C:60
-msgid "A list of all child processes to kill."
-msgstr ""
-
-#: src/frontends/xforms/FormForks.C:67
-msgid "Add all processes to the list of processes to kill."
-msgstr ""
-
-#: src/frontends/xforms/FormForks.C:70
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
-msgstr ""
-
-#: src/frontends/xforms/FormForks.C:73
-msgid "Remove the currently selected item from the list of processes to kill."
 msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:125
@@ -10954,10 +10897,6 @@ msgstr ""
 msgid "Include file"
 msgstr "Include"
 
-#: src/frontends/xforms/FormLog.C:21
-msgid "LaTeX Log"
-msgstr "LaTeX-logboek"
-
 #: src/frontends/xforms/FormLog.C:30
 msgid "LyX: LaTeX Log"
 msgstr "LyX: LaTeX-logboek"
@@ -11094,10 +11033,6 @@ msgstr ""
 #: src/frontends/xforms/FormParagraph.C:314
 msgid " (default)"
 msgstr " (standaard)"
-
-#: src/frontends/xforms/FormPreamble.C:24
-msgid "LaTeX preamble"
-msgstr "LaTeX preamble"
 
 #: src/frontends/xforms/FormPreferences.C:208
 msgid "Look & Feel"
@@ -11361,23 +11296,27 @@ msgstr "De volgorde van de afgedrukte pagina's omkeren."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:66
-msgid "Select a document for references."
-msgstr ""
+#, fuzzy
+msgid "Select a document for labels."
+msgstr "Kies document ter opening"
 
 #: src/frontends/xforms/FormRef.C:68
-msgid "Sort the references alphabetically."
+#, fuzzy
+msgid "Sort the labels alphabetically."
 msgstr "De verwijzingen alfabetisch sorteren."
 
 #: src/frontends/xforms/FormRef.C:70 src/frontends/xforms/FormRef.C:279
-msgid "Go to selected reference."
-msgstr ""
+#, fuzzy
+msgid "Go to selected label."
+msgstr "De geselecteerde database verwijderen"
 
 #: src/frontends/xforms/FormRef.C:72
-msgid "Update the list of references."
-msgstr ""
+#, fuzzy
+msgid "Update the list of labels."
+msgstr "De weergave verversen"
 
 #: src/frontends/xforms/FormRef.C:74
-msgid "Select format style of the reference."
+msgid "Select format style of the cross reference."
 msgstr ""
 
 #: src/frontends/xforms/FormRef.C:178
@@ -11391,10 +11330,6 @@ msgstr "Teruggaan naar oorspronkelijke plek."
 #: src/frontends/xforms/FormRef.C:278
 msgid "Go to"
 msgstr "Ga naar"
-
-#: src/frontends/xforms/FormSearch.C:25
-msgid "Find and Replace"
-msgstr "Zoeken en vervangen"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSearch.C:42
@@ -11440,11 +11375,6 @@ msgid ""
 "Run this command on the buffer exported to the chosen format. $$FName will "
 "be replaced by the name of this file."
 msgstr ""
-
-# Tonen
-#: src/frontends/xforms/FormShowFile.C:22
-msgid "Show File"
-msgstr "Bestand weergeven"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:57
@@ -11535,7 +11465,7 @@ msgid "Show full path or only file name."
 msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:54
-msgid "Runs the script \"TexFiles.sh\" to build new file lists."
+msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
 msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:57
@@ -11549,23 +11479,10 @@ msgid ""
 "dirs, often /var/lib/texmf and others."
 msgstr ""
 
-#: src/frontends/xforms/FormToc.C:32 src/insets/insettoc.C:29
-msgid "Table of Contents"
-msgstr "Inhoudsopgave"
-
 #: src/frontends/xforms/FormToc.C:99 src/frontends/xforms/FormToc.C:117
 #, fuzzy
 msgid "*** No Lists ***"
 msgstr "*** Geen document ***"
-
-#: src/frontends/xforms/FormUrl.C:23
-msgid "Url"
-msgstr "Url"
-
-#: src/frontends/xforms/FormVCLog.C:23
-#, fuzzy
-msgid "Version Control Log"
-msgstr "Versieboekhouding%t"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormWrap.C:65
@@ -11717,7 +11634,8 @@ msgid "Opened inset"
 msgstr "Inzet geopend"
 
 #: src/insets/insetbib.C:142
-msgid "BibTeX Generated References"
+#, fuzzy
+msgid "BibTeX Generated Bibliography"
 msgstr "Verwijzingen gegenereerd door BibTeX"
 
 #: src/insets/insetcaption.C:63
@@ -12162,7 +12080,7 @@ msgstr "(anders is document niet opgeslagen.)"
 msgid "Choose a filename to save document as"
 msgstr "Geef bestandsnaam om document op te slaan:"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1654
+#: src/lyx_cb.C:115 src/lyxfunc.C:1639
 msgid "Templates|#T#t"
 msgstr "Sjablonen|#S#s"
 
@@ -12316,7 +12234,7 @@ msgstr "commando-inzet"
 msgid "'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:379
+#: src/lyx_main.C:380
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12324,89 +12242,89 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:386
+#: src/lyx_main.C:387
 #, fuzzy
 msgid "Could not create a temporary directory in\n"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/lyx_main.C:388
+#: src/lyx_main.C:389
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:392
+#: src/lyx_main.C:393
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/lyx_main.C:538
+#: src/lyx_main.C:539
 #, fuzzy
 msgid "You have specified a non-existent user LyX directory."
 msgstr "U heeft geen eigen LyX-map."
 
-#: src/lyx_main.C:539
+#: src/lyx_main.C:540
 msgid "It is needed to keep your own configuration."
 msgstr "Die heeft u nodig om uw eigen instellingen in te bewaren."
 
-#: src/lyx_main.C:540
+#: src/lyx_main.C:541
 #, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
 msgstr "Zal ik hem voor u aanmaken (aanbevolen)?"
 
-#: src/lyx_main.C:541
+#: src/lyx_main.C:542
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:546
+#: src/lyx_main.C:547
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Maak map aan "
 
-#: src/lyx_main.C:550
+#: src/lyx_main.C:551
 #, fuzzy
 msgid "LyX: Creating directory "
 msgstr "LyX: Maak map aan "
 
 #. Failed, so let's exit.
-#: src/lyx_main.C:557
+#: src/lyx_main.C:558
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Aanroep `createDirectory' met ongeldige naam"
 
-#: src/lyx_main.C:576 src/lyx_main.C:580
+#: src/lyx_main.C:577 src/lyx_main.C:581
 msgid "LyX Warning!"
 msgstr "LyX waarschuwing!"
 
-#: src/lyx_main.C:577
+#: src/lyx_main.C:578
 #, fuzzy, c-format
 msgid "Error while reading %1$s."
 msgstr "Fout tijdens lezen "
 
-#: src/lyx_main.C:578 src/lyx_main.C:582
+#: src/lyx_main.C:579 src/lyx_main.C:583
 msgid "Using built-in defaults."
 msgstr "Gebruik ingebouwde standaardwaarden."
 
-#: src/lyx_main.C:581
+#: src/lyx_main.C:582
 #, fuzzy
 msgid "Error while reading "
 msgstr "Fout tijdens lezen "
 
-#: src/lyx_main.C:691
+#: src/lyx_main.C:692
 msgid "List of supported debug flags:"
 msgstr "Lijst van ondersteunde debug vlaggen:"
 
-#: src/lyx_main.C:696
+#: src/lyx_main.C:697
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Zet debugniveau op "
 
-#: src/lyx_main.C:700
+#: src/lyx_main.C:701
 #, fuzzy
 msgid "Setting debug level to "
 msgstr "Zet debugniveau op "
 
-#: src/lyx_main.C:711
+#: src/lyx_main.C:712
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12441,32 +12359,32 @@ msgstr ""
 "                          Type `lyx -dbg' voor een lijst met opties.\n"
 "Zie de LyX handleiding voor meer opties."
 
-#: src/lyx_main.C:747
+#: src/lyx_main.C:748
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "De -sysdir optie mist een directorynaam!"
 
-#: src/lyx_main.C:757
+#: src/lyx_main.C:758
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "De -sysdir optie mist een directorynaam!"
 
-#: src/lyx_main.C:767
+#: src/lyx_main.C:768
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Commando-tekst na de -x optie ontbreekt!"
 
-#: src/lyx_main.C:780
+#: src/lyx_main.C:781
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Ontbrekend bestandstype [bijv latex, ps,...] na "
 
-#: src/lyx_main.C:792
+#: src/lyx_main.C:793
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Ontbrekend bestandstype [bijv latex, ps,...] na "
 
-#: src/lyx_main.C:797
+#: src/lyx_main.C:798
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Kies LaTeX-bestand ter importering"
@@ -12647,68 +12565,68 @@ msgstr ""
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1650
+#: src/lyxfunc.C:1635
 #, fuzzy
 msgid "Select template file"
 msgstr "Volgende regel selecteren"
 
-#: src/lyxfunc.C:1690
+#: src/lyxfunc.C:1675
 #, fuzzy
 msgid "Select document to open"
 msgstr "Kies document ter opening"
 
-#: src/lyxfunc.C:1726
+#: src/lyxfunc.C:1711
 #, fuzzy
 msgid "No such file"
 msgstr "Lijst van Tabellen"
 
-#: src/lyxfunc.C:1727
+#: src/lyxfunc.C:1712
 #, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Nieuw document onder deze naam aanmaken?"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1724
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Document %1$s openen... "
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1726
 msgid "Opening document "
 msgstr "Document openen "
 
-#: src/lyxfunc.C:1751
+#: src/lyxfunc.C:1736
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Document %1$s geopend."
 
-#: src/lyxfunc.C:1753
+#: src/lyxfunc.C:1738
 msgid " opened."
 msgstr " geopend."
 
-#: src/lyxfunc.C:1757
+#: src/lyxfunc.C:1742
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Kon document niet openen"
 
-#: src/lyxfunc.C:1760
+#: src/lyxfunc.C:1745
 msgid "Could not open document "
 msgstr "Kon document niet openen"
 
-#: src/lyxfunc.C:1787
+#: src/lyxfunc.C:1772
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Kies document ter invoeging"
 
-#: src/lyxfunc.C:1791
+#: src/lyxfunc.C:1776
 msgid "Select "
 msgstr "Selecteren "
 
-#: src/lyxfunc.C:1792
+#: src/lyxfunc.C:1777
 #, fuzzy
 msgid " file to import"
 msgstr "Kies document ter invoeging"
 
-#: src/lyxfunc.C:1832
+#: src/lyxfunc.C:1817
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -12716,15 +12634,15 @@ msgstr ""
 "Wilt u dat document nu sluiten?\n"
 "('Nee' verplaatst U alleen naar de open versie)"
 
-#: src/lyxfunc.C:1852
+#: src/lyxfunc.C:1837
 msgid "A document by the name"
 msgstr "Een document onder de naam"
 
-#: src/lyxfunc.C:1853
+#: src/lyxfunc.C:1838
 msgid "already exists. Overwrite?"
 msgstr "bestaat al. Overschrijven?"
 
-#: src/lyxfunc.C:1917
+#: src/lyxfunc.C:1902
 msgid "Welcome to LyX!"
 msgstr "Welkom in LyX!"
 
@@ -13219,35 +13137,35 @@ msgstr " Macro: %s: "
 msgid " Macro: "
 msgstr " Macro: "
 
-#: src/support/filetools.C:527
+#: src/support/filetools.C:528
 msgid "Error! Cannot open directory:"
 msgstr "Fout! Kan map niet openen:"
 
-#: src/support/filetools.C:549
+#: src/support/filetools.C:550
 msgid "Error! Could not remove file:"
 msgstr "Fout! Kon bestand niet verwijderen:"
 
-#: src/support/filetools.C:573 src/support/filetools.C:611
+#: src/support/filetools.C:574 src/support/filetools.C:612
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/support/filetools.C:590
+#: src/support/filetools.C:591
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Fout! Kon tijdelijke map niet verwijderen:"
 
-#: src/support/filetools.C:665
+#: src/support/filetools.C:666
 msgid "Internal error!"
 msgstr "Interne fout!"
 
-#: src/support/filetools.C:666
+#: src/support/filetools.C:667
 msgid "Call to createDirectory with invalid name"
 msgstr "Aanroep `createDirectory' met ongeldige naam"
 
-#: src/support/filetools.C:671
+#: src/support/filetools.C:672
 msgid "Error! Couldn't create directory:"
 msgstr "Fout! Kon map niet aanmaken:"
 
-#: src/support/filetools.C:1439
+#: src/support/filetools.C:1440
 msgid "Could not delete auto-save file!"
 msgstr "Kon dit auto-opslagbestand niet verwijderen!"
 
@@ -13430,6 +13348,116 @@ msgstr "Merkteken geplaatst"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-functie 'layout' heeft een argument nodig."
+
+#~ msgid "Forked child processes:|#F"
+#~ msgstr "Gevorkt dochterproces:|#v"
+
+#~ msgid "Kill processes:|#K"
+#~ msgstr "Processen afsluiten:|#a"
+
+#~ msgid "All ->"
+#~ msgstr "Alle ->"
+
+#~ msgid "@->"
+#~ msgstr "@->"
+
+#~ msgid "Reference:|#e"
+#~ msgstr "Verwijzing:|#e"
+
+# Is dit hetzelfde als de xforms optie (daar vertaald met Vorm:)
+#~ msgid "Cite &Style:"
+#~ msgstr "Citaat-&stijl:"
+
+#, fuzzy
+#~ msgid "The citation key"
+#~ msgstr "Literatuurverwijzing invoegen"
+
+#~ msgid "Bibtex"
+#~ msgstr "BibteX"
+
+#~ msgid "Search the available citations"
+#~ msgstr "De beschikbare literatuurverwijzingen doorzoeken"
+
+#~ msgid "Available citation keys"
+#~ msgstr "Beschikbare literatuurverwijzing-sleutels"
+
+#~ msgid "Add the selected citation"
+#~ msgstr "De geselecteerde literatuurverwijzing invoegen"
+
+#~ msgid "Citation entry"
+#~ msgstr "Literatuurverwijzing"
+
+#~ msgid "&File"
+#~ msgstr "&Bestand"
+
+#~ msgid "&Reference:"
+#~ msgstr "Ver&wijzing:"
+
+#, fuzzy
+#~ msgid "Available references"
+#~ msgstr "Verwijzing invoegen"
+
+#, fuzzy
+#~ msgid "&Type"
+#~ msgstr "Type"
+
+#~ msgid "&Name"
+#~ msgstr "&Naam"
+
+#, fuzzy
+#~ msgid "Citation Reference...|C"
+#~ msgstr "g Naar verwijzing|#G"
+
+#, fuzzy
+#~ msgid "BibTeX Reference...|B"
+#~ msgstr "Verwijzingen gegenereerd door BibTeX"
+
+#~ msgid "Child Processes|C"
+#~ msgstr "Dochterproces|c"
+
+#~ msgid "Bibliography Item"
+#~ msgstr "Literatuurverwijzing"
+
+#~ msgid "BibTeX"
+#~ msgstr "BibTeX"
+
+#, fuzzy
+#~ msgid "LyX: Preferences"
+#~ msgstr "Verwijzing invoegen"
+
+# Ga naar verwijzing
+#~ msgid "Go to reference"
+#~ msgstr "Naar verwijzing"
+
+#, fuzzy
+#~ msgid "ShowFile"
+#~ msgstr "f Bestand"
+
+#~ msgid "Table of contents"
+#~ msgstr "Inhoudsopgave"
+
+#, fuzzy
+#~ msgid "BibTeX Database"
+#~ msgstr "Database:"
+
+#, fuzzy
+#~ msgid "Add the selected entry to the current citation reference."
+#~ msgstr "Literatuurverwijzing invoegen"
+
+#~ msgid "ERT Options"
+#~ msgstr "ERT-opties"
+
+#~ msgid "Child processes"
+#~ msgstr "Dochterproces"
+
+#~ msgid "All currently running child processes forked by LyX."
+#~ msgstr "Alle huidige lopende dochterprocessen die van LyX zijn gevorkt."
+
+#~ msgid "LaTeX preamble"
+#~ msgstr "LaTeX preamble"
+
+#~ msgid "Url"
+#~ msgstr "Url"
 
 #~ msgid "Warning: could not determine path of binary."
 #~ msgstr "Waarschuwing: kon programmapad niet bepalen."

@@ -30,7 +30,7 @@ using std::vector;
 typedef FormCB<ControlRef, FormDB<FD_ref> > base_class;
 
 FormRef::FormRef()
-	: base_class(_("Reference")),
+	: base_class(_("Cross Reference")),
 	  at_ref_(false)
 {}
 
@@ -71,7 +71,7 @@ void FormRef::build()
 	tooltips().init(dialog_->button_go, str);
 	str = _("Update the list of labels.");
 	tooltips().init(dialog_->button_update, str);
-	str = _("Select format style of the reference.");
+	str = _("Select format style of the cross reference.");
 	tooltips().init(dialog_->choice_format, str);
 }
 

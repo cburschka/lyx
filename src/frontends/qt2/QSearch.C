@@ -27,7 +27,7 @@ typedef Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > base_class;
 
 
 QSearch::QSearch()
-	: base_class(qt_("Search"))
+	: base_class(qt_("Find and Replace"))
 {
 }
 

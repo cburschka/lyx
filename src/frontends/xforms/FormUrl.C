@@ -20,7 +20,7 @@
 typedef FormCB<ControlUrl, FormDB<FD_url> > base_class;
 
 FormUrl::FormUrl()
-	: base_class(_("Url"))
+	: base_class(_("URL"))
 {}
 
 

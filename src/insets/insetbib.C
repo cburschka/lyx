@@ -139,7 +139,7 @@ InsetBibtex::~InsetBibtex()
 
 string const InsetBibtex::getScreenLabel(Buffer const *) const
 {
-	return _("BibTeX Generated References");
+	return _("BibTeX Generated Bibliography");
 }
 
 namespace {

@@ -11,12 +11,16 @@
 #   allocate             -> bereitstellen
 #   apply                -> übernehmen (ggf.: anwenden)
 #   backup               -> sichern / Sicherung
-#   bibliography (entry) -> Literaturliste / Literatureintrag
+#   bibliography         -> Literaturverzeichnis
+#     ... entry          -> Literatureintrag
+#     ... key            -> Literaturschlüssel
 #   bind (file)          -> Tastaturkürzel(-Datei)
 #   border               -> Rahmen
 #   browse               -> (durch)suchen
 #   button               -> Knopf 
 #   caption              -> Beschriftung    (Jürgen S.)
+#   citation (style)     -> Zitat (-Stil)
+#   cross reference      -> Querverweis
 #   command              -> Befehl
 #   convert(er)          -> konvertieren / Konverter
 #   custom               -> benutzerdefiniert
@@ -59,22 +63,22 @@
 #   toggle               -> umschalten
 #   type                 -> Art
 #   view(er)             -> ansehen / Ansicht / Betrachter 
+#   wrap                 -> umflossenes Gleitobjekt
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.3.4\n"
-"POT-Creation-Date: 2005-02-12 16:12+0100\n"
-"PO-Revision-Date: 2004-09-14 23:48+0100\n"
+"Project-Id-Version: LyX 1.3.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-03-07 12:50+0100\n"
+"PO-Revision-Date: 2005-02-26 23:48+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
-#: ../src/frontends/xforms/forms/form_forks.fd:169
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:44
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
@@ -105,7 +109,6 @@ msgstr "Schlüssel:|#S"
 #: ../src/frontends/xforms/forms/form_external.fd:187
 #: ../src/frontends/xforms/forms/form_filedialog.fd:206
 #: ../src/frontends/xforms/forms/form_float.fd:152
-#: ../src/frontends/xforms/forms/form_forks.fd:133
 #: ../src/frontends/xforms/forms/form_graphics.fd:80
 #: ../src/frontends/xforms/forms/form_include.fd:79
 #: ../src/frontends/xforms/forms/form_index.fd:79
@@ -189,7 +192,7 @@ msgstr "Durchsuchen...|#D"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:152
 msgid "Add bibliography to TOC|#T"
-msgstr "Literaturliste ins Inhaltsverzeichnis|#I"
+msgstr "Literaturverzeichnis ins Inhaltsverzeichnis|#I"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:170
 msgid "Styles:|#y"
@@ -207,7 +210,6 @@ msgstr "Durchsuchen...|#r"
 #: ../src/frontends/xforms/forms/form_ert.fd:169
 #: ../src/frontends/xforms/forms/form_external.fd:205
 #: ../src/frontends/xforms/forms/form_float.fd:170
-#: ../src/frontends/xforms/forms/form_forks.fd:151
 #: ../src/frontends/xforms/forms/form_graphics.fd:116
 #: ../src/frontends/xforms/forms/form_index.fd:97
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:98
@@ -298,14 +300,13 @@ msgstr "Schlüssel in Einfügung:|#E"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:62
 msgid "Bibliography keys:|#k"
-msgstr "Schlüssel in Literaturliste:|#L"
+msgstr "Literaturschlüssel:|#L"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:80
 msgid "Info:"
 msgstr "Informationen:"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:116
-#: ../src/frontends/xforms/forms/form_forks.fd:115
 msgid "@4->"
 msgstr "@4->"
 
@@ -323,7 +324,6 @@ msgstr "@2->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:188
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:209
-#: src/frontends/qt2/QSearch.C:30
 msgid "Search"
 msgstr "Suchen"
 
@@ -725,22 +725,6 @@ msgstr "Hier, auf jeden Fall!|#H"
 #: ../src/frontends/xforms/forms/form_float.fd:296
 msgid "Document default|#D"
 msgstr "Dokument-Standard|#D"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:43
-msgid "Forked child processes:|#F"
-msgstr "Gestartete Unterprozesse:|#U"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:61
-msgid "Kill processes:|#K"
-msgstr "Prozesse beenden:|#b"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:79
-msgid "All ->"
-msgstr "Alle ->"
-
-#: ../src/frontends/xforms/forms/form_forks.fd:97
-msgid "@->"
-msgstr "@->"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:158
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:286
@@ -1988,7 +1972,7 @@ msgid "Use &NatBib"
 msgstr "&Natbib verwenden"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-msgid "Cite &Style:"
+msgid "Citation &Style:"
 msgstr "&Zitat-Stil:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
@@ -2110,13 +2094,14 @@ msgid "&Double"
 msgstr "&Doppelt"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:100
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
 msgid "&Type:"
 msgstr "&Art:"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:152
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:144
 msgid "&Language:"
-msgstr "&Sprache:"
+msgstr "S&prache:"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:167
 msgid "&Encoding:"
@@ -2288,24 +2273,23 @@ msgid "&Cancel"
 msgstr "&Abbrechen"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
-#: src/frontends/qt2/QIndex.C:26 src/frontends/xforms/FormIndex.C:25
-#: src/insets/insetindex.C:66
-msgid "Index"
-msgstr "Stichwortverzeichnis"
+#: src/frontends/qt2/QBibitem.C:30 src/frontends/xforms/FormBibitem.C:25
+msgid "Bibliography Entry"
+msgstr "Literatureintrag"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-msgid "&Key"
-msgstr "&Schlüssel"
+msgid "&Key:"
+msgstr "&Schlüssel:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-msgid "The citation key"
-msgstr "Der Zitat-Schlüssel"
+msgid "The bibliography key"
+msgstr "Der Literaturschlüssel"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-msgid "&Label"
-msgstr "&Marke"
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
+msgid "&Label:"
+msgstr "&Marke:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
@@ -2330,8 +2314,9 @@ msgid "&OK"
 msgstr "&OK"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-msgid "Bibtex"
-msgstr "BibTeX"
+#: src/frontends/qt2/QBibtex.C:39 src/frontends/xforms/FormBibtex.C:37
+msgid "BibTeX Bibliography"
+msgstr "BibTeX-Literaturverzeichnis"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
 msgid "Databa&ses"
@@ -2408,15 +2393,14 @@ msgstr "Abbrechen"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:296
 msgid "Add bibliography to &TOC"
-msgstr "Literaturliste ins &Inhaltsverzeichnis"
+msgstr "Literaturverzeichnis ins &Inhaltsverzeichnis"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:300
 msgid "Add bibliography to the table of contents"
-msgstr "Literaturliste im Inhaltsverzeichnis aufführen"
+msgstr "Literaturverzeichnis im Inhaltsverzeichnis aufführen"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
-#: src/frontends/qt2/QCharacter.C:35
 msgid "Character"
 msgstr "Zeichen"
 
@@ -2463,7 +2447,7 @@ msgstr "F&orm:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
 msgid "&Color:"
-msgstr "&Farben:"
+msgstr "F&arben:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
 msgid "&Toggle all"
@@ -2501,7 +2485,7 @@ msgstr "&Diverses:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
 msgid "Auto apply"
-msgstr "Automat. übernehmen"
+msgstr "Automatisch übernehmen"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
 msgid "Apply each change automatically"
@@ -2539,8 +2523,8 @@ msgid "&Restore"
 msgstr "&Zurücksetzen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
-msgid "Search the available citations"
-msgstr "Durchsuche die verfügbaren Zitate"
+msgid "Browse the available bibliography entries"
+msgstr "Durchsuche die verfügbaren Literatureinträge"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Regular E&xpression"
@@ -2578,24 +2562,24 @@ msgid "New Item"
 msgstr "Neuer Begriff"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
-msgid "Available citation keys"
-msgstr "Verfügbare Zitat-Schlüssel"
+msgid "Available bibliography entries"
+msgstr "Verfügbare Literatureinträge"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
-msgid "Add the selected citation"
-msgstr "Ausgewähltes Zitat hinzufügen"
+msgid "Add citation of the selected bibliography entry"
+msgstr "Zitat für den ausgewählten Literatureintrag hinzufügen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
-msgid "Remove the selected citation"
-msgstr "Ausgewähltes Zitat entfernen"
+msgid "Remove citation of the selected bibiography entry"
+msgstr "Zitat für den ausgewählten Literatureintrag löschen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
 msgid "Move the selected citation up"
-msgstr "Ausgewähltes Zitat aufwärts bewegen"
+msgstr "Ausgewähltes Zitat nach vorne verschieben"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:345
 msgid "Move the selected citation down"
-msgstr "Ausgewähltes Zitat abwärts bewegen"
+msgstr "Ausgewähltes Zitat nach hinten verschieben"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:358
 msgid "Available"
@@ -2603,7 +2587,7 @@ msgstr "Verfügbar"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:379
 msgid "Citations currently selected"
-msgstr "Ausgewählte Einträge"
+msgstr "Gegenwärtig ausgewählte Zitate"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:390
 msgid "Selected"
@@ -2614,8 +2598,8 @@ msgid "Info"
 msgstr "Informationen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
-msgid "Citation entry"
-msgstr "Zitat-Eintrag"
+msgid "Bibliography entry"
+msgstr "Literatureintrag"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:492
 msgid "&Full author list"
@@ -2709,7 +2693,7 @@ msgstr "Einstellungen als LyX-Standard-Vorlage speichern"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
 msgid "ERT inset display"
-msgstr "ERT-Einfügung anzeigen"
+msgstr "Anzeige der ERT-Einfügung"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
 msgid "Display"
@@ -2756,6 +2740,7 @@ msgstr "Externes Material"
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:439
 msgid "&File:"
 msgstr "&Datei:"
 
@@ -3135,6 +3120,12 @@ msgstr "&Vorschau anzeigen"
 msgid "Show LaTeX preview"
 msgstr "LaTeX-Vorschau anzeigen"
 
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
+#: src/frontends/qt2/QIndex.C:26 src/frontends/xforms/FormIndex.C:25
+#: src/insets/insetindex.C:66
+msgid "Index"
+msgstr "Stichwortverzeichnis"
+
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
 msgid "&Keyword"
 msgstr "&Stichwort"
@@ -3145,7 +3136,7 @@ msgstr "&Stichwort"
 msgid "Index entry"
 msgstr "Stichwort"
 
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:33
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22
 msgid "Log"
 msgstr "Protokoll"
 
@@ -3377,7 +3368,7 @@ msgstr "&Einheiten:"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
 msgid "&General"
-msgstr "&Allgemein"
+msgstr "All&gemein"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
 msgid "Justified"
@@ -3416,7 +3407,7 @@ msgstr "Benutzerdefiniert"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
 msgid "L&ine spacing:"
-msgstr "&Zeilenabstand:"
+msgstr "Z&eilenabstand:"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
 msgid "Alig&nment:"
@@ -4074,7 +4065,7 @@ msgstr "&Maximale Anzahl letzter Dateien:"
 
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:98
+#: src/frontends/qt2/QPrefs.C:66 src/frontends/xforms/FormPreferences.C:98
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -4149,8 +4140,8 @@ msgid "Print Destination"
 msgstr "Druck-Ziel"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:409
-msgid "P&rinter"
-msgstr "&Drucker"
+msgid "P&rinter:"
+msgstr "D&rucker:"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
@@ -4160,19 +4151,14 @@ msgstr "Auf dem Drucker ausgeben"
 msgid "Send output to the given printer"
 msgstr "Auf dem Drucker ausgeben"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:439
-msgid "&File"
-msgstr "&Datei"
-
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:443
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:458
 msgid "Send output to a file"
 msgstr "In eine Datei drucken"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22 src/frontends/qt2/QRef.C:41
 #: src/frontends/xforms/FormRef.C:33
-msgid "Reference"
+msgid "Cross Reference"
 msgstr "Querverweis"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
@@ -4216,18 +4202,15 @@ msgid "Formatted reference"
 msgstr "Formatierter Querverweis"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-msgid "Reference as it appears in output"
+msgid "Cross reference as it appears in output"
 msgstr "Querverweis, wie er in der Ausgabe erscheint"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-msgid "&Label:"
-msgstr "&Marke:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
 msgid "&Format:"
 msgstr "&Format:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
 msgid "&Name:"
 msgstr "&Name:"
 
@@ -4626,8 +4609,8 @@ msgid "&Rescan"
 msgstr "&Neu lesen"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-msgid "Built new file list"
-msgstr "Dateiliste neu erstellen"
+msgid "Rebuild the file lists"
+msgstr "Dateilisten neu erstellen"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
@@ -4637,8 +4620,8 @@ msgstr "&Ansicht"
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
-"Zeige Inhalt der markierten Datei. Nur möglich, wenn die Dateien mit vollem "
-"Pfad angezeigt werden."
+"Zeige den Inhalt der markierten Datei. Nur möglich, wenn die Dateien mit "
+"vollem Pfad angezeigt werden."
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
 msgid "Close this dialog"
@@ -4679,10 +4662,6 @@ msgstr "Eintrag durch die Auswahl ersetzen"
 msgid "Table Of Contents"
 msgstr "Inhaltsverzeichnis"
 
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
-msgid "&Type"
-msgstr "&Art"
-
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
 msgid "Contents list"
 msgstr "Inhaltsverzeichnis"
@@ -4692,19 +4671,15 @@ msgid "Insert URL"
 msgstr "URL einfügen"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-msgid "&URL"
-msgstr "&URL"
+msgid "&URL:"
+msgstr "&URL:"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
 #: ../lib/layouts/scrlttr2.layout:219 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:29
+#: src/frontends/qt2/QURL.C:29 src/frontends/xforms/FormUrl.C:23
 msgid "URL"
 msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-msgid "&Name"
-msgstr "&Name"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
@@ -4992,7 +4967,7 @@ msgstr "Stichwörter"
 #: ../lib/layouts/scrclass.inc:237 ../lib/layouts/stdstruct.inc:43
 #: ../lib/layouts/svjour.inc:356 src/frontends/qt2/QDocumentDialog.C:68
 msgid "Bibliography"
-msgstr "Literaturliste"
+msgstr "Literaturverzeichnis"
 
 #: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:103
 #: ../lib/layouts/aastex.layout:389 ../lib/layouts/ijmpd.layout:166
@@ -5809,6 +5784,10 @@ msgstr "Postvermerk"
 #: ../lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
 msgstr "Postvermerk"
+
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
+msgid "Reference"
+msgstr "Referenz"
 
 #: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:888
 msgid "Encl."
@@ -7061,7 +7040,7 @@ msgid "Special Character|S"
 msgstr "Sonderzeichen|S"
 
 #: ../lib/ui/default.ui:197
-msgid "Citation Reference...|C"
+msgid "Citation...|C"
 msgstr "Zitat...|Z"
 
 #: ../lib/ui/default.ui:198
@@ -7092,7 +7071,7 @@ msgstr "Stichwort...|i"
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: ../lib/ui/default.ui:205 ../lib/ui/default.ui:341
+#: ../lib/ui/default.ui:205 ../lib/ui/default.ui:340
 msgid "Note|N"
 msgstr "Notiz|N"
 
@@ -7154,7 +7133,7 @@ msgstr "Ligaturtrenner|g"
 
 #: ../lib/ui/default.ui:225
 msgid "Protected Blank|B"
-msgstr "gesch. Leerzeichen|L"
+msgstr "Geschütztes Leerzeichen|L"
 
 #: ../lib/ui/default.ui:226
 msgid "Linebreak|L"
@@ -7297,8 +7276,8 @@ msgid "Index List|I"
 msgstr "Stichwortverzeichnis|S"
 
 #: ../lib/ui/default.ui:286
-msgid "BibTeX Reference...|B"
-msgstr "BibTeX-Referenz...|B"
+msgid "BibTeX Bibliography...|B"
+msgstr "BibTeX-Literaturverzeichnis...|B"
 
 #: ../lib/ui/default.ui:290
 msgid "LyX Document...|X"
@@ -7373,86 +7352,82 @@ msgid "Table of Contents|T"
 msgstr "Inhaltsverzeichnis|I"
 
 #: ../lib/ui/default.ui:326
-msgid "Child Processes|C"
-msgstr "Unterprozesse|U"
-
-#: ../lib/ui/default.ui:327
 msgid "TeX Information|X"
 msgstr "TeX-Informationen|X"
 
-#: ../lib/ui/default.ui:340
+#: ../lib/ui/default.ui:339
 msgid "Error|E"
 msgstr "Fehler|F"
 
-#: ../lib/ui/default.ui:342
+#: ../lib/ui/default.ui:341
 msgid "Refs|R"
 msgstr "Querverweise|Q"
 
-#: ../lib/ui/default.ui:343
+#: ../lib/ui/default.ui:342
 msgid "Bookmarks|B"
 msgstr "Lesezeichen|L"
 
-#: ../lib/ui/default.ui:347
+#: ../lib/ui/default.ui:346
 msgid "Save Bookmark 1|S"
 msgstr "Speichere Lesezeichen 1|S"
 
-#: ../lib/ui/default.ui:348
+#: ../lib/ui/default.ui:347
 msgid "Save Bookmark 2"
 msgstr "Speichere Lesezeichen 2"
 
-#: ../lib/ui/default.ui:349
+#: ../lib/ui/default.ui:348
 msgid "Save Bookmark 3"
 msgstr "Speichere Lesezeichen 3"
 
-#: ../lib/ui/default.ui:351
+#: ../lib/ui/default.ui:350
 msgid "Goto Bookmark 1|1"
 msgstr "Gehe zu Lesezeichen 1|1"
 
-#: ../lib/ui/default.ui:352
+#: ../lib/ui/default.ui:351
 msgid "Goto Bookmark 2|2"
 msgstr "Gehe zu Lesezeichen 2|2"
 
-#: ../lib/ui/default.ui:353
+#: ../lib/ui/default.ui:352
 msgid "Goto Bookmark 3|3"
 msgstr "Gehe zu Lesezeichen 3|3"
 
-#: ../lib/ui/default.ui:368
+#: ../lib/ui/default.ui:367
 msgid "Tooltips|o"
 msgstr "Kurzinfos|o"
 
-#: ../lib/ui/default.ui:370
+#: ../lib/ui/default.ui:369
 msgid "Introduction|I"
 msgstr "Einführung|E"
 
-#: ../lib/ui/default.ui:371
+#: ../lib/ui/default.ui:370
 msgid "Tutorial|T"
 msgstr "Tutorium|T"
 
-#: ../lib/ui/default.ui:372
+#: ../lib/ui/default.ui:371
 msgid "User's Guide|U"
 msgstr "Benutzerhandbuch|B"
 
-#: ../lib/ui/default.ui:373
+#: ../lib/ui/default.ui:372
 msgid "Extended Features|E"
 msgstr "Profi-Tipps|P"
 
-#: ../lib/ui/default.ui:374
+#: ../lib/ui/default.ui:373
 msgid "Customization|C"
 msgstr "Anpassung|A"
 
-#: ../lib/ui/default.ui:376
+#: ../lib/ui/default.ui:375
 msgid "FAQ|F"
 msgstr "FAQ|F"
 
-#: ../lib/ui/default.ui:377
+#: ../lib/ui/default.ui:376
 msgid "Table of Contents|a"
 msgstr "Inhaltsverzeichnis|I"
 
-#: ../lib/ui/default.ui:378
+#: ../lib/ui/default.ui:377
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX-Konfiguration|L"
 
-#: ../lib/ui/default.ui:380
+#: ../lib/ui/default.ui:379
 msgid "About LyX|X"
 msgstr "Über LyX|X"
 
@@ -7523,21 +7498,21 @@ msgstr "Wählen Sie das einzufügende LyX-Dokument"
 #: src/frontends/controllers/ControlExternal.C:150
 #: src/frontends/controllers/ControlGraphics.C:89
 #: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:113
-#: src/lyxfunc.C:1652 src/lyxfunc.C:1692 src/lyxfunc.C:1798
+#: src/lyxfunc.C:1637 src/lyxfunc.C:1677 src/lyxfunc.C:1783
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1694 src/lyxfunc.C:1800
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1679 src/lyxfunc.C:1785
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1659
-#: src/lyxfunc.C:1699
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1644
+#: src/lyxfunc.C:1684
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-Dokumente (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1708 src/lyxfunc.C:1728
-#: src/lyxfunc.C:1817 src/lyxfunc.C:1844 src/lyxfunc.C:1854
+#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1693 src/lyxfunc.C:1713
+#: src/lyxfunc.C:1802 src/lyxfunc.C:1829 src/lyxfunc.C:1839
 msgid "Canceled."
 msgstr "Abgebrochen."
 
@@ -7551,7 +7526,7 @@ msgid "Inserting document "
 msgstr "Füge ein Dokument "
 
 #: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:990
-#: src/lyxfunc.C:1151 src/lyxfunc.C:1741
+#: src/lyxfunc.C:1151 src/lyxfunc.C:1726
 msgid "..."
 msgstr "..."
 
@@ -7560,7 +7535,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1753
+#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1738
 msgid "Document "
 msgstr "Dokument "
 
@@ -8035,7 +8010,7 @@ msgstr "Breites Gleitobjekt einfügen"
 
 #: src/LyXAction.C:200
 msgid "Insert a Wrap"
-msgstr "Umflossenes Objekt einfügen"
+msgstr "Umflossenes Gleitobjekt einfügen"
 
 #: src/LyXAction.C:201
 msgid "Toggle bold"
@@ -8099,7 +8074,7 @@ msgstr "Nächstes Zeichen auswählen"
 
 #: src/LyXAction.C:224
 msgid "Insert horizontal fill"
-msgstr "Variablen Leerraum (hor.) einfügen"
+msgstr "Variablen horizontalen Abstand einfügen"
 
 #: src/LyXAction.C:225
 msgid "Open a Help file"
@@ -8305,15 +8280,7 @@ msgstr "Informationen zu LyX anzeigen"
 msgid "Display information about the TeX installation"
 msgstr "Informationen zur TeX-Installation anzeigen"
 
-#: src/LyXAction.C:408
-msgid "Show the processes forked by LyX"
-msgstr "Von LyX gestartete Prozesse anzeigen"
-
-#: src/LyXAction.C:410
-msgid "Kill the forked process with this PID"
-msgstr "Den gestarteten Prozess mit dieser PID beenden"
-
-#: src/LyXAction.C:567
+#: src/LyXAction.C:563
 msgid "No description available!"
 msgstr "Keine Beschreibung vorhanden!"
 
@@ -8450,7 +8417,7 @@ msgid ""
 "The file was created with a newer version of LyX. This is likely to cause "
 "problems."
 msgstr ""
-"Die Datei wurde mit einer neueren Version von LyX erzeugt. Dies wird "
+"Die Datei wurde mit einer neueren Version von LyX erstellt. Dies wird "
 "wahrscheinlich Probleme verursachen."
 
 #. "\\lyxformat" not found
@@ -8496,7 +8463,7 @@ msgstr "Zusammenfassung: "
 
 #: src/buffer.C:1547
 msgid "References: "
-msgstr "Querverweise: "
+msgstr "Referenzen: "
 
 #: src/buffer.C:1661
 msgid "Error: Cannot write file:"
@@ -8586,7 +8553,7 @@ msgstr "Möchten Sie diese stattdessen öffnen?"
 msgid "Unable to open template"
 msgstr "Die Vorlage kann nicht geöffnet werden"
 
-#: src/bufferlist.C:545 src/lyxfunc.C:1830
+#: src/bufferlist.C:545 src/lyxfunc.C:1815
 msgid "Document is already open:"
 msgstr "Das Dokument ist bereits geöffnet:"
 
@@ -8606,7 +8573,7 @@ msgstr "Die angegebene Datei kann nicht geöffnet werden:"
 
 #: src/bufferlist.C:586
 msgid "Create new document with this name?"
-msgstr "Möchten Sie ein neues Dokument mit diesem Namen anlegen?"
+msgstr "Möchten Sie ein neues Dokument mit diesem Namen erstellen?"
 
 #: src/bufferview_funcs.C:70
 msgid "Error! unknown language"
@@ -8934,7 +8901,7 @@ msgstr ""
 
 #: src/frontends/controllers/ControlAboutlyx.C:78
 msgid "LyX Version "
-msgstr "LyX-Version "
+msgstr "LyX Version "
 
 #: src/frontends/controllers/ControlAboutlyx.C:80
 msgid " of "
@@ -9205,8 +9172,8 @@ msgid " and "
 msgstr " und "
 
 #: src/frontends/controllers/biblio.C:109
-msgid "et al."
-msgstr "et al."
+msgid " et al."
+msgstr " et al."
 
 #: src/frontends/controllers/biblio.C:148
 msgid "No year"
@@ -9372,14 +9339,6 @@ msgstr "Alle Dateien (*)"
 msgid "Directories"
 msgstr "Verzeichnisse"
 
-#: src/frontends/qt2/QBibitem.C:30
-msgid "Bibliography Item"
-msgstr "Literatureintrag"
-
-#: src/frontends/qt2/QBibtex.C:39
-msgid "BibTeX"
-msgstr "BibTeX"
-
 #: src/frontends/qt2/QBibtexDialog.C:55
 msgid "BibTeX style files (*.bst)"
 msgstr "BibTeX-Stil-Dateien (*.bst)"
@@ -9395,6 +9354,10 @@ msgstr "BibTeX-Datenbank-Dateien (*.bib)"
 #: src/frontends/qt2/QBibtexDialog.C:82
 msgid "Select a BibTeX database to add"
 msgstr "Wählen Sie eine hinzuzufügende BibTeX-Datenbank"
+
+#: src/frontends/qt2/QCharacter.C:35 src/frontends/xforms/FormCharacter.C:38
+msgid "Character Layout"
+msgstr "Zeichenformat"
 
 #: src/frontends/qt2/QCommandBuffer.C:70
 msgid "Previous command"
@@ -9533,13 +9496,14 @@ msgstr "Aufzählungszeichen"
 
 #: src/frontends/qt2/QDocumentDialog.C:274
 msgid "Bibliography Settings"
-msgstr "Einstellungen Literaturliste"
+msgstr "Einstellungen Literaturverzeichnis"
 
 #: src/frontends/qt2/QDocumentDialog.C:277
 msgid "LaTeX Packages and Options"
 msgstr "LaTeX-Pakete und -Optionen"
 
 #: src/frontends/qt2/QDocumentDialog.C:280
+#: src/frontends/xforms/FormPreamble.C:24
 msgid "LaTeX Preamble"
 msgstr "LaTeX-Vorspann"
 
@@ -9555,7 +9519,7 @@ msgstr "Sehr schmale Ränder"
 msgid "Very wide margins"
 msgstr "Sehr breite Ränder"
 
-#: src/frontends/qt2/QERT.C:27
+#: src/frontends/qt2/QERT.C:27 src/frontends/xforms/FormERT.C:25
 msgid "LaTeX ERT"
 msgstr "LaTeX-ERT"
 
@@ -9591,6 +9555,10 @@ msgstr "PostScript-Dateien (*.ps)"
 #: src/frontends/qt2/QLPrintDialog.C:53
 msgid "Select a file to print to"
 msgstr "Wählen Sie eine Druckdatei"
+
+#: src/frontends/qt2/QLog.C:33 src/frontends/xforms/FormLog.C:21
+msgid "LaTeX Log"
+msgstr "LaTeX-Protokoll"
 
 #: src/frontends/qt2/QMathDialog.C:115
 msgid "LyX: Insert space"
@@ -9713,10 +9681,6 @@ msgstr "Absatzformat"
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/frontends/qt2/QPrefs.C:66
-msgid "LyX: Preferences"
-msgstr "LyX: Einstellungen"
-
 #. OK, Qt is REALLY broken. We have to hard
 #. code the menu structure here.
 #: src/frontends/qt2/QPrefsDialog.C:77
@@ -9789,10 +9753,6 @@ msgstr "Wählen Sie ein Dokumentverzeichnis"
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
-#: src/frontends/qt2/QRef.C:41
-msgid "Cross Reference"
-msgstr "Querverweis"
-
 #: src/frontends/qt2/QRef.C:117
 msgid "&Go back"
 msgstr "&Gehe zurück"
@@ -9802,15 +9762,19 @@ msgid "Go back"
 msgstr "Gehe zurück"
 
 #: src/frontends/qt2/QRef.C:127
-msgid "Go to reference"
-msgstr "Gehe zum Querverweis"
+msgid "Go to label"
+msgstr "Gehe zur Marke"
+
+#: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
+msgid "Find and Replace"
+msgstr "Finden und Ersetzen"
 
 #: src/frontends/qt2/QSendto.C:33 src/frontends/xforms/FormSendto.C:28
 msgid "Send document to command"
 msgstr "Dokument an Shell-Befehl senden"
 
-#: src/frontends/qt2/QShowFile.C:27
-msgid "ShowFile"
+#: src/frontends/qt2/QShowFile.C:27 src/frontends/xforms/FormShowFile.C:22
+msgid "Show File"
 msgstr "Zeige Datei"
 
 #: src/frontends/qt2/QTabular.C:34
@@ -9821,13 +9785,14 @@ msgstr "LyX: Tabelle bearbeiten"
 msgid "LaTeX Information"
 msgstr "LaTeX-Informationen"
 
-#: src/frontends/qt2/QToc.C:38
-msgid "Table of contents"
+#: src/frontends/qt2/QToc.C:38 src/frontends/xforms/FormToc.C:32
+#: src/insets/insettoc.C:29
+msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
 
-#: src/frontends/qt2/QVCLog.C:31
-msgid "VCLog"
-msgstr "Protokoll Versionskontrolle"
+#: src/frontends/qt2/QVCLog.C:31 src/frontends/xforms/FormVCLog.C:23
+msgid "Version Control Log"
+msgstr "Protokoll der Versionskontrolle"
 
 #: src/frontends/qt2/QVCLog.C:47
 #, c-format
@@ -9980,10 +9945,6 @@ msgstr "ACHTUNG! %1$s"
 msgid "WARNING!"
 msgstr "ACHTUNG!"
 
-#: src/frontends/xforms/FormBibitem.C:25
-msgid "Bibliography Entry"
-msgstr "Literatureintrag"
-
 #. set up the tooltips
 #: src/frontends/xforms/FormBibitem.C:47
 msgid "Key used within LyX document."
@@ -9993,17 +9954,13 @@ msgstr "Der im LyX-Dokument verwendete Schlüssel."
 msgid "Label used for final output."
 msgstr "Die für die endgültige Ausgabe verwendete Marke."
 
-#: src/frontends/xforms/FormBibtex.C:37
-msgid "BibTeX Database"
-msgstr "BibTeX-Datenbank"
-
 #. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:67
 msgid ""
 "The database you want to cite from. Insert it without the default extension "
 "\".bib\". Use comma to separate databases."
 msgstr ""
-"Die Datenbank, aus der Sie zitieren wollen. Geben Sie den Namen ohne die "
+"Die Datenbank, aus der Sie zitieren möchten. Geben Sie den Namen ohne die "
 "Standardendung \".bib\" ein. Mehrere Datenbanken müssen mit Kommata getrennt "
 "werden."
 
@@ -10022,8 +9979,8 @@ msgstr ""
 #: src/frontends/xforms/FormBibtex.C:79
 msgid "Select if the bibliography should appear in the Table of Contents"
 msgstr ""
-"Bitte aktivieren, wenn die Literaturliste im Inhaltsverzeichnis erscheinen "
-"soll"
+"Bitte aktivieren, wenn das Literaturverzeichnis im Inhaltsverzeichnis "
+"erscheinen soll"
 
 #: src/frontends/xforms/FormBibtex.C:83
 msgid "Choose a BibTeX style from the list."
@@ -10054,18 +10011,14 @@ msgstr "Wählen Sie einen BibTeX-Stil"
 msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr "*.bst| BibTeX-Stile (*.bst)"
 
-#: src/frontends/xforms/FormCharacter.C:38
-msgid "Character Layout"
-msgstr "Zeichenformat"
-
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
-msgid "Add the selected entry to the current citation reference."
-msgstr "Ausgewählten Eintrag zum aktuellen Zitat hinzufügen."
+msgid "Add citation of the selected bibliography entry."
+msgstr "Zitat für den ausgewählten Literatureintrag hinzufügen."
 
 #: src/frontends/xforms/FormCitation.C:165
-msgid "Delete the selected entry from the current citation reference."
-msgstr "Ausgewählten Eintrag aus dem aktuellen Zitat entfernen."
+msgid "Delete citation of the selected bibliography entry."
+msgstr "Zitat für den ausgewählten Literatureintrag löschen."
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
@@ -10080,22 +10033,22 @@ msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
 msgstr ""
-"Einträge, die zitiert werden. Wählen Sie sie mit den Pfeil-Knöpfen aus dem "
-"rechten Auswahlfenster."
+"Die Einträge, die zitiert werden. Wählen Sie sie mit den Pfeil-Knöpfen aus "
+"dem rechten Auswahlfenster."
 
 #: src/frontends/xforms/FormCitation.C:181
 msgid ""
-"All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex "
-"Reference\"). Move the ones you want to cite with the arrow buttons into the "
-"left browser window."
+"All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX "
+"Bibliography\"). Move the ones you want to cite with the arrow buttons into "
+"the left browser window."
 msgstr ""
-"Alle Einträge der Datenbank die Sie (via \"Einfügen->Listen&Inhalt->BibTeX-"
-"Referenz\") geladen haben. Kopieren Sie die gewünschten Einträge mit den "
-"Pfeil-Knöpfen in das linke Auswahlfenster."
+"Alle Einträge in der Datenbank, die Sie (via \"Einfügen->Listen&Inhalt-"
+">BibTeX-Literaturverzeichnis\") geladen haben. Kopieren Sie die gewünschten "
+"Einträge mit den Pfeil-Knöpfen in das linke Auswahlfenster."
 
 #: src/frontends/xforms/FormCitation.C:188
-msgid "Information about the selected entry"
-msgstr "Informationen über den ausgewählten Eintrag"
+msgid "Information about the selected bibliography entry"
+msgstr "Informationen über den ausgewählten Literatureintrag"
 
 #: src/frontends/xforms/FormCitation.C:195
 msgid ""
@@ -10106,11 +10059,11 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:198
 msgid ""
-"Activate if you want to print all authors in a reference with more than "
-"three authors, and not \"<First Author> et al.\" (Natbib)."
+"Activate if you want to print all authors in a citation with more than three "
+"authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 "Bitte aktivieren, wenn Sie bei mehr als drei Autoren alle Namen zitieren "
-"wollen und nicht \"<Erster Autor> et al.\" (Natbib)."
+"möchten und nicht \"<Erster Autor> et al.\" (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:201
 msgid ""
@@ -10122,13 +10075,11 @@ msgstr ""
 "(\"Van Gogh\" statt \"van Gogh\"). Hilfreich am Satzanfang (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:204
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
 msgstr "Optionaler Text, der vor dem Zitat erscheint, z.B. \"siehe <Zitat>\""
 
 #: src/frontends/xforms/FormCitation.C:207
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
 msgstr "Optionaler Text, der hinter dem Zitat erscheint, z.B. \"S. 12\""
 
 #: src/frontends/xforms/FormCitation.C:210
@@ -10147,7 +10098,8 @@ msgstr ""
 #: src/frontends/xforms/FormCitation.C:216
 msgid "Activate if you want to enter Regular Expressions."
 msgstr ""
-"Aktivieren Sie diesen Schalter wenn Sie reguläre Ausdrücke verwenden wollen."
+"Aktivieren Sie diesen Schalter, wenn Sie reguläre Ausdrücke verwenden "
+"möchten."
 
 #: src/frontends/xforms/FormDocument.C:63
 msgid "Document Layout"
@@ -10213,10 +10165,6 @@ msgstr ""
 "Das Dokument ist schreibgeschützt. Es sind keine Formatierungsänderungen "
 "erlaubt."
 
-#: src/frontends/xforms/FormERT.C:25
-msgid "ERT Options"
-msgstr "ERT Optionen"
-
 #: src/frontends/xforms/FormExternal.C:29
 msgid "Edit external file"
 msgstr "Externe Datei bearbeiten"
@@ -10266,35 +10214,6 @@ msgstr "Interne Einstellungen ignorieren. Dies entspricht dem \"!\" in LaTeX."
 #: src/frontends/xforms/FormFloat.C:84
 msgid "Span float over the columns."
 msgstr "Spanne das Gleitobjekt über die Spalten."
-
-#: src/frontends/xforms/FormForks.C:32
-msgid "Child processes"
-msgstr "Unterprozesse"
-
-#. Set up the tooltip mechanism
-#: src/frontends/xforms/FormForks.C:53
-msgid "All currently running child processes forked by LyX."
-msgstr "Alle derzeit laufenden, von LyX gestarteten Unterprozesse."
-
-#: src/frontends/xforms/FormForks.C:60
-msgid "A list of all child processes to kill."
-msgstr "Eine Liste aller zu beendenden Unterprozesse."
-
-#: src/frontends/xforms/FormForks.C:67
-msgid "Add all processes to the list of processes to kill."
-msgstr "Alle Prozesse zur Liste der zu beendenden Prozesse hinzufügen."
-
-#: src/frontends/xforms/FormForks.C:70
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
-msgstr ""
-"Den ausgewählten Unterprozess zur Liste der zu beendenden Prozesse "
-"hinzufügen."
-
-#: src/frontends/xforms/FormForks.C:73
-msgid "Remove the currently selected item from the list of processes to kill."
-msgstr ""
-"Den ausgewählten Prozess aus Liste der zu beendenden Prozesse entfernen."
 
 #: src/frontends/xforms/FormGraphics.C:125
 msgid "Default|Monochrome|Grayscale|Color|Do not display"
@@ -10436,10 +10355,6 @@ msgstr "Begrenzungsbox"
 msgid "Include file"
 msgstr "Datei einbinden"
 
-#: src/frontends/xforms/FormLog.C:21
-msgid "LaTeX Log"
-msgstr "LaTeX-Protokoll"
-
 #: src/frontends/xforms/FormLog.C:30
 msgid "LyX: LaTeX Log"
 msgstr "LyX: LaTeX-Protokoll"
@@ -10571,10 +10486,6 @@ msgstr ""
 #: src/frontends/xforms/FormParagraph.C:314
 msgid " (default)"
 msgstr " (Standard)"
-
-#: src/frontends/xforms/FormPreamble.C:24
-msgid "LaTeX preamble"
-msgstr "LaTeX-Vorspann"
 
 #: src/frontends/xforms/FormPreferences.C:208
 msgid "Look & Feel"
@@ -10869,7 +10780,7 @@ msgid "Update the list of labels."
 msgstr "Liste der Marken aktualisieren."
 
 #: src/frontends/xforms/FormRef.C:74
-msgid "Select format style of the reference."
+msgid "Select format style of the cross reference."
 msgstr "Wählen Sie den Formatstil des Querverweises."
 
 #: src/frontends/xforms/FormRef.C:178
@@ -10883,10 +10794,6 @@ msgstr "Springen Sie zur ursprünglichen Stelle zurück."
 #: src/frontends/xforms/FormRef.C:278
 msgid "Go to"
 msgstr "Gehe zu"
-
-#: src/frontends/xforms/FormSearch.C:25
-msgid "Find and Replace"
-msgstr "Finden und Ersetzen"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSearch.C:42
@@ -10936,10 +10843,6 @@ msgid ""
 msgstr ""
 "Dieser Befehl wird auf den im ausgewählten Format exportierten Bufferinhalt "
 "angewendet. $$FName wird dabei durch den Namen dieser Datei ersetzt."
-
-#: src/frontends/xforms/FormShowFile.C:22
-msgid "Show File"
-msgstr "Zeige Datei"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:57
@@ -11025,9 +10928,9 @@ msgid "Show full path or only file name."
 msgstr "Zeige vollen Pfad oder nur den Dateinamen."
 
 #: src/frontends/xforms/FormTexinfo.C:54
-msgid "Runs the script \"TexFiles.sh\" to build new file lists."
+msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
 msgstr ""
-"Führt das Skript \"TexFiles.sh\" aus, um die Dateilisten zu aktualisieren."
+"Führt das Skript \"TexFiles.sh\" aus, um die Dateilisten neu zu erstellen."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
@@ -11044,21 +10947,9 @@ msgstr ""
 "installieren. Sie benötigen dazu Schreibberechtigungen für die "
 "entsprechenden TeX-Verzeichnisse, meist /var/lib/texmf und ähnliche."
 
-#: src/frontends/xforms/FormToc.C:32 src/insets/insettoc.C:29
-msgid "Table of Contents"
-msgstr "Inhaltsverzeichnis"
-
 #: src/frontends/xforms/FormToc.C:99 src/frontends/xforms/FormToc.C:117
 msgid "*** No Lists ***"
 msgstr "*** Keine Listen ***"
-
-#: src/frontends/xforms/FormUrl.C:23
-msgid "Url"
-msgstr "URL"
-
-#: src/frontends/xforms/FormVCLog.C:23
-msgid "Version Control Log"
-msgstr "Protokoll der Versionskontrolle"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormWrap.C:65
@@ -11116,7 +11007,7 @@ msgstr "Prüfen Sie den gewählten Seitenbereich!"
 #: src/frontends/xforms/xforms_helpers.C:285
 #: src/frontends/xforms/xforms_helpers.C:330
 msgid "Failed to open file."
-msgstr "Die Datei kann nicht geöffnet werden."
+msgstr "Das Öffnen der Datei ist fehlgeschlagen."
 
 #: src/frontends/xforms/xforms_helpers.C:362
 #: src/frontends/xforms/xforms_helpers.C:386
@@ -11199,8 +11090,8 @@ msgid "Opened inset"
 msgstr "Einfügung geöffnet"
 
 #: src/insets/insetbib.C:142
-msgid "BibTeX Generated References"
-msgstr "Von BibTeX erstellte Referenzen"
+msgid "BibTeX Generated Bibliography"
+msgstr "BibTeX-generiertes Literaturverzeichnis"
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
@@ -11483,7 +11374,7 @@ msgstr "Theorem-Einfügung geöffnet"
 
 #: src/insets/insettoc.C:30
 msgid "Unknown toc list"
-msgstr "Unbekannte TOC Liste"
+msgstr "Unbekannte Inhaltsverzeichnis-Liste"
 
 #: src/insets/inseturl.C:45
 msgid "Url: "
@@ -11495,11 +11386,11 @@ msgstr "HTML-URL: "
 
 #: src/insets/insetwrap.C:53
 msgid "wrap: "
-msgstr "Umflossenes Objekt: "
+msgstr "Umflossenes Gleitobjekt: "
 
 #: src/insets/insetwrap.C:140
 msgid "Opened Wrap Inset"
-msgstr "Einfügung für umflossenes Objekt geöffnet"
+msgstr "Einfügung für umflossenes Gleitobjekt geöffnet"
 
 #: src/ispell.C:197 src/ispell.C:204 src/ispell.C:213
 msgid "Can't create pipe for spellchecker."
@@ -11517,7 +11408,7 @@ msgid ""
 "You may not have the right languages installed."
 msgstr ""
 "Es konnte kein ispell-Prozess erzeugt werden.\n"
-"Sie haben möglicherweise nicht die passende Sprache installiert."
+"Sie haben möglicherweise nicht die passenden Sprachen installiert."
 
 #. select returned error
 #: src/ispell.C:259
@@ -11617,7 +11508,7 @@ msgstr "(Das Dokument wird bei 'Nein' nicht gespeichert!)"
 msgid "Choose a filename to save document as"
 msgstr "Wählen Sie einen Dateinamen für das Dokument"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1654
+#: src/lyx_cb.C:115 src/lyxfunc.C:1639
 msgid "Templates|#T#t"
 msgstr "Vorlagen|#V"
 
@@ -11763,7 +11654,7 @@ msgstr "Falsche Befehlszeilenoption `"
 msgid "'. Exiting."
 msgstr "'. Das Programm terminiert."
 
-#: src/lyx_main.C:379
+#: src/lyx_main.C:380
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11774,11 +11665,11 @@ msgstr ""
 "%1$s erstellt werden. Stellen Sie sicher, dass dieser\n"
 "Pfad existiert und beschreibbar ist und versuchen Sie es noch einmal."
 
-#: src/lyx_main.C:386
+#: src/lyx_main.C:387
 msgid "Could not create a temporary directory in\n"
 msgstr "Es konnte kein temporäres Verzeichnis erstellt werden in\n"
 
-#: src/lyx_main.C:388
+#: src/lyx_main.C:389
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
@@ -11786,72 +11677,72 @@ msgstr ""
 ". Stellen Sie sicher, dass dieser\n"
 "Pfad existiert und beschreibbar ist und versuchen Sie es noch einmal."
 
-#: src/lyx_main.C:392
+#: src/lyx_main.C:393
 msgid "Could not create temporary directory"
-msgstr "Temporäres Verzeichnis konnte nicht angelegt werden"
+msgstr "Temporäres Verzeichnis konnte nicht erstellt werden"
 
-#: src/lyx_main.C:538
+#: src/lyx_main.C:539
 msgid "You have specified a non-existent user LyX directory."
 msgstr "Sie haben ein nicht vorhandenes LyX-Benutzerverzeichnis angegeben."
 
-#: src/lyx_main.C:539
+#: src/lyx_main.C:540
 msgid "It is needed to keep your own configuration."
 msgstr "Es wird zum Speichern Ihrer persönlichen Konfiguration benötigt."
 
-#: src/lyx_main.C:540
+#: src/lyx_main.C:541
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
 msgstr ""
 "Möchten Sie eines eingerichtet bekommen? Bei \"Nein\" wird LyX beendet."
 
-#: src/lyx_main.C:541
+#: src/lyx_main.C:542
 msgid "No user LyX directory. Exiting."
 msgstr "Kein LyX-Benutzerverzeichnis. LyX wird beendet."
 
-#: src/lyx_main.C:546
+#: src/lyx_main.C:547
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Erzeuge Verzeichnis %1$s"
 
-#: src/lyx_main.C:550
+#: src/lyx_main.C:551
 msgid "LyX: Creating directory "
 msgstr "LyX: Erzeuge Verzeichnis "
 
 #. Failed, so let's exit.
-#: src/lyx_main.C:557
+#: src/lyx_main.C:558
 msgid "Failed to create directory. Exiting."
-msgstr "Erzeugen des Verzeichnisses ist fehlgeschlagen. LyX wird beendet."
+msgstr "Das Erstellen des Verzeichnisses ist fehlgeschlagen. LyX wird beendet."
 
-#: src/lyx_main.C:576 src/lyx_main.C:580
+#: src/lyx_main.C:577 src/lyx_main.C:581
 msgid "LyX Warning!"
 msgstr "LyX-Warnung!"
 
-#: src/lyx_main.C:577
+#: src/lyx_main.C:578
 #, c-format
 msgid "Error while reading %1$s."
 msgstr "Fehler beim Lesen von %1$s."
 
-#: src/lyx_main.C:578 src/lyx_main.C:582
+#: src/lyx_main.C:579 src/lyx_main.C:583
 msgid "Using built-in defaults."
 msgstr "Benutze feste Standardwerte."
 
-#: src/lyx_main.C:581
+#: src/lyx_main.C:582
 msgid "Error while reading "
 msgstr "Fehler beim Lesen von "
 
-#: src/lyx_main.C:691
+#: src/lyx_main.C:692
 msgid "List of supported debug flags:"
 msgstr "Liste der unterstützten Debug-Optionen:"
 
-#: src/lyx_main.C:696
+#: src/lyx_main.C:697
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Setze den Debug-Level auf %1$s"
 
-#: src/lyx_main.C:700
+#: src/lyx_main.C:701
 msgid "Setting debug level to "
 msgstr "Setze den Debug-Level auf "
 
-#: src/lyx_main.C:711
+#: src/lyx_main.C:712
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11894,29 +11785,29 @@ msgstr ""
 "\n"
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
-#: src/lyx_main.C:747
+#: src/lyx_main.C:748
 msgid "Missing directory for -sysdir switch"
 msgstr "Die Option -sysdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:757
+#: src/lyx_main.C:758
 msgid "Missing directory for -userdir switch"
 msgstr "Die Option -userdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:767
+#: src/lyx_main.C:768
 msgid "Missing command string after --execute switch"
 msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 
-#: src/lyx_main.C:780
+#: src/lyx_main.C:781
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Die Option --export verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:792
+#: src/lyx_main.C:793
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Die Option --import verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:797
+#: src/lyx_main.C:798
 msgid "Missing filename for --import"
 msgstr "Die Option --import verlangt die Angabe eines Dateinamens"
 
@@ -12091,63 +11982,63 @@ msgstr ""
 " ist fehlgeschlagen - die Farbe ist nicht definiert oder darf nicht "
 "umdefiniert werden."
 
-#: src/lyxfunc.C:1650
+#: src/lyxfunc.C:1635
 msgid "Select template file"
 msgstr "Wählen Sie eine Vorlagendatei"
 
-#: src/lyxfunc.C:1690
+#: src/lyxfunc.C:1675
 msgid "Select document to open"
 msgstr "Wählen Sie das zu öffnende Dokument"
 
-#: src/lyxfunc.C:1726
+#: src/lyxfunc.C:1711
 msgid "No such file"
 msgstr "Datei nicht vorhanden"
 
-#: src/lyxfunc.C:1727
+#: src/lyxfunc.C:1712
 msgid "Start a new document with this filename ?"
 msgstr "Möchten Sie ein neues Dokument mit diesem Dateinamen anlegen?"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1724
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Öffne Dokument %1$s..."
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1726
 msgid "Opening document "
 msgstr "Öffne Dokument "
 
-#: src/lyxfunc.C:1751
+#: src/lyxfunc.C:1736
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s ist geöffnet."
 
-#: src/lyxfunc.C:1753
+#: src/lyxfunc.C:1738
 msgid " opened."
 msgstr " geöffnet."
 
-#: src/lyxfunc.C:1757
+#: src/lyxfunc.C:1742
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Das Dokument %1$s konnte nicht geöffnet werden"
 
-#: src/lyxfunc.C:1760
+#: src/lyxfunc.C:1745
 msgid "Could not open document "
 msgstr "Das Dokument konnte nicht geöffnet werden: "
 
-#: src/lyxfunc.C:1787
+#: src/lyxfunc.C:1772
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
-#: src/lyxfunc.C:1791
+#: src/lyxfunc.C:1776
 msgid "Select "
 msgstr "Wählen Sie die einzufügende "
 
-#: src/lyxfunc.C:1792
+#: src/lyxfunc.C:1777
 msgid " file to import"
 msgstr "-Datei"
 
-#: src/lyxfunc.C:1832
+#: src/lyxfunc.C:1817
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -12155,15 +12046,15 @@ msgstr ""
 "Möchten Sie das Dokument jetzt schließen?\n"
 "('Nein' wechselt zur geöffneten Version)"
 
-#: src/lyxfunc.C:1852
+#: src/lyxfunc.C:1837
 msgid "A document by the name"
 msgstr "Ein Dokument mit dem Namen"
 
-#: src/lyxfunc.C:1853
+#: src/lyxfunc.C:1838
 msgid "already exists. Overwrite?"
 msgstr "existiert bereits. Überschreiben?"
 
-#: src/lyxfunc.C:1917
+#: src/lyxfunc.C:1902
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
@@ -12367,7 +12258,7 @@ msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
-"Deaktivieren Sie diesen Schalter, wenn Sie nicht wollen, dass markierter "
+"Deaktivieren Sie diesen Schalter, wenn Sie nicht möchten, dass markierter "
 "Text automatisch durch Ihre Eingabe ersetzt wird."
 
 #: src/lyxrc.C:1995
@@ -12375,7 +12266,7 @@ msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
-"Deaktivieren Sie diesen Schalter, wenn Sie nicht wollen, dass die "
+"Deaktivieren Sie diesen Schalter, wenn Sie nicht möchten, dass die "
 "Klassenoptionen nach einem Klassenwechsel auf den Standardwert zurückgesetzt "
 "werden."
 
@@ -12543,7 +12434,7 @@ msgstr "Wählen Sie, wie LyX Grafiken darstellen soll."
 #: src/lyxrc.C:2091
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
-"Deaktivieren Sie diesen Schalter, wenn LyX keine Sicherungsdateien erzeugen "
+"Deaktivieren Sie diesen Schalter, wenn LyX keine Sicherungsdateien erstellen "
 "soll."
 
 #: src/lyxrc.C:2095
@@ -12666,8 +12557,8 @@ msgstr "Zeigt eine exakte Vorschau von z.B. mathematischen Formeln"
 #: src/lyxrc.C:2173
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
-"Gleichungen werden in der Vorschau \"(#)\" anstelle von Nummern als "
-"Markenhaben"
+"Gleichungen werden in der Vorschau \"(#)\" anstelle von Nummern als Marken "
+"haben"
 
 #: src/lyxrc.C:2177
 msgid "Scale the preview size to suit."
@@ -12778,36 +12669,36 @@ msgstr "Makro: %s: "
 msgid " Macro: "
 msgstr " Makro: "
 
-#: src/support/filetools.C:527
+#: src/support/filetools.C:528
 msgid "Error! Cannot open directory:"
 msgstr "Fehler! Verzeichnis kann nicht gelesen werden:"
 
-#: src/support/filetools.C:549
+#: src/support/filetools.C:550
 msgid "Error! Could not remove file:"
 msgstr "Fehler! Datei konnte nicht entfernt werden:"
 
-#: src/support/filetools.C:573 src/support/filetools.C:611
+#: src/support/filetools.C:574 src/support/filetools.C:612
 msgid "Error! Couldn't create temporary directory:"
-msgstr "Fehler: Temporäres Verzeichnis konnte nicht angelegt werden:"
+msgstr "Fehler: Temporäres Verzeichnis konnte nicht erstellt werden:"
 
-#: src/support/filetools.C:590
+#: src/support/filetools.C:591
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Fehler: Temporäres Verzeichnis konnte nicht gelöscht werden:"
 
-#: src/support/filetools.C:665
+#: src/support/filetools.C:666
 msgid "Internal error!"
 msgstr "Interner Fehler!"
 
-#: src/support/filetools.C:666
+#: src/support/filetools.C:667
 msgid "Call to createDirectory with invalid name"
 msgstr ""
 "Die Funktion 'createDirectory' wurde mit einem ungültigen Namen aufgerufen"
 
-#: src/support/filetools.C:671
+#: src/support/filetools.C:672
 msgid "Error! Couldn't create directory:"
-msgstr "Fehler: Verzeichnis konnte nicht erzeugt werden:"
+msgstr "Fehler: Verzeichnis konnte nicht erstellt werden:"
 
-#: src/support/filetools.C:1439
+#: src/support/filetools.C:1440
 msgid "Could not delete auto-save file!"
 msgstr "Die automatische Sicherungsdatei konnte nicht gelöscht werden!"
 

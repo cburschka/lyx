@@ -194,7 +194,7 @@ Menuset
         Submenu "Math|h" "insert_math"
 	Separator
 	Submenu "Special Character|S" "insert_special"
-	Item "Citation Reference...|C" "citation-insert"
+	Item "Citation...|C" "citation-insert"
 	Item "Cross Reference...|R" "reference-insert"
 	Item "Label...|L" "label-insert"
 	Item "Footnote|F" "footnote-insert"
@@ -283,7 +283,7 @@ Menuset
 	Item "Table of Contents|C" "toc-insert"
 	FloatListInsert
 	Item "Index List|I" "index-print"
-	Item "BibTeX Reference...|B" "bibtex-insert"
+	Item "BibTeX Bibliography...|B" "bibtex-insert"
     End
 
     Menu "insert_file"

@@ -124,7 +124,7 @@ void QRef::setGotoRef()
 {
 	dialog_->gotoPB->setText(qt_("&Goto"));
 	QToolTip::remove(dialog_->gotoPB);
-	QToolTip::add(dialog_->gotoPB, qt_("Go to reference"));
+	QToolTip::add(dialog_->gotoPB, qt_("Go to label"));
 }
 
 

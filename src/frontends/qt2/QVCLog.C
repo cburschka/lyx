@@ -28,7 +28,7 @@ typedef Qt2CB<ControlVCLog, Qt2DB<QVCLogDialog> > base_class;
 
 
 QVCLog::QVCLog()
-	: base_class(qt_("VCLog"))
+	: base_class(qt_("Version Control Log"))
 {
 }
 

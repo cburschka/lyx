@@ -22,7 +22,7 @@
 typedef FormCB<ControlERT, FormDB<FD_ert> > base_class;
 
 FormERT::FormERT()
-	: base_class(_("ERT Options"))
+	: base_class(_("LaTeX ERT"))
 {}
 
 

@@ -21,7 +21,7 @@
 typedef FormCB<ControlPreamble, FormDB<FD_preamble> > base_class;
 
 FormPreamble::FormPreamble()
-	: base_class(_("LaTeX preamble"))
+	: base_class(_("LaTeX Preamble"))
 {}
 
 

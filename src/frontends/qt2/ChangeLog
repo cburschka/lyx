@@ -1,3 +1,28 @@
+2005-02-26  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* QBibitem.C: 
+	* QBibtex.C:
+	* QCharacter.C:
+	* QLog.C:
+	* QPrefs.C:
+	* QRef.C:
+	* QSearch.C:
+	* QShowFile.C:
+	* QToc.C:
+	* QVCLog.C:
+	* QRef.C:
+	* ui/BiblioModuleBase.ui:
+	* ui/QBibitemDialogBase.ui:
+	* ui/QBibtexDialogBase.ui:
+	* ui/QCitationDialogBase.ui:
+	* ui/QPrintDialogBase.ui:
+	* ui/QRefDialogBase.ui:
+	* ui/QTexinfoDialogBase.ui: 
+	* ui/QTocDialogBase.ui:
+	* ui/QURLDialogBase.ui: fix dialog title; add missing ":"; change 
+	"Reference" to "Cross reference"; fix tooltip messages; 
+	fix capitalization
+
 2005-02-23  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs2.C (showForks): removed.

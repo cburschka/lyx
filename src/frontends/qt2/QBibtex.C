@@ -36,7 +36,7 @@ typedef Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> > base_class;
 
 
 QBibtex::QBibtex()
-	: base_class(qt_("BibTeX"))
+	: base_class(qt_("BibTeX Bibliography"))
 {
 }
 

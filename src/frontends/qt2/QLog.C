@@ -30,7 +30,7 @@ using std::getline;
 typedef Qt2CB<ControlLog, Qt2DB<QLogDialog> > base_class;
 
 QLog::QLog()
-	: base_class(qt_("Log"))
+	: base_class(qt_("LaTeX Log"))
 {
 }
 

@@ -1,3 +1,14 @@
+2005-02-26  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* FormBibtex.C:
+	* FormCitation.C:
+	* FormERT.C:
+	* FormPreamble.C:
+	* FormRef.C:
+	* FormUrl.C: change dialog titles - harmonize with Qt frontend; fix
+	capitalization
+	* FormTexinfo.C: fix tooltip message
+
 2005-02-23  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C (Dialogs_impl c-tor): remove forks dialog.
