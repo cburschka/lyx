@@ -1,7 +1,11 @@
+2002-09-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am (INCLUDES): loose SIGC_INCLUDES
+
 2002-09-11  John Levon  <levon@movementarian.org>
 
 	* dimension.C: compile fix
- 
+
 2002-09-11  Angus Leeming  <leeming@lyx.org>
 
 	* preview.[Ch]: cruft. Removed.

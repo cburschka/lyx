@@ -1,10 +1,14 @@
+2002-09-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am (INCLUDES): loose SIGC_INCLUDES
+
 2002-09-16  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* os.h, os_os2.C, os_win32.C, os_unix.C: Added popen_read_mode(),
 	since at least for Cygwin, the "rb" read_mode acceptable for
 	fopen() is illegal for popen(), whose mode argument *must* be "r"
 	or "w".
-	
+
 	* filetools.C (RunCommand): Uses os::popen_read_mode() instead
 	of os::read_mode()
 

@@ -1,3 +1,6 @@
+2002-09-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am (INCLUDES): loose SIGC_INCLUDES
 
 2002-09-20  Martin Vermeer  <martin.vermeer@hut.fi>
 
@@ -8,16 +11,16 @@
 
 	* Toolbar_pimpl.C (layoutSelected): when selecting a layout in
 	combox, make sure the corresponding shortcut is shown in
-	minibuffer 
+	minibuffer
 
 2002-09-16  John Levon  <levon@movementarian.org>
 
 	* forms/form_character.fd: Escape to cancel
- 
+
 2002-09-13  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* forms/form_graphics.fd:
-	* forms/form_print.fd: minor polishing of layout 
+	* forms/form_print.fd: minor polishing of layout
 
 2002-09-12  Rob Lahaye  <lahaye@snu.ac.kr>
 
@@ -27,15 +30,15 @@
 
 2002-09-12  Rob Lahaye  <lahaye@snu.ac.kr>
 
-	* FormTexinfo.C: 
+	* FormTexinfo.C:
 	* forms/form_filedialog.fd:
 	* forms/form_texinfo.fd: less bulky xforms dialogs.
 
 2002-09-12  Rob Lahaye  <lahaye@snu.ac.kr>
- 
- 	* FormPrint.[Ch]:
- 	* forms/form_print.fd: new xforms print dialog layout
- 
+
+	* FormPrint.[Ch]:
+	* forms/form_print.fd: new xforms print dialog layout
+
 2002-09-10  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* FormGraphics.C: use "Default" as first item in Origin of rotation
@@ -50,11 +53,11 @@
 
 	* FormInclude.C:
 	* forms/form_include.fd: reorder, remove noload
- 
+
 2002-09-09  John Levon  <levon@movementarian.org>
 
 	* FormMathDeco.C: move latex_deco into ControlMath
- 
+
 2002-09-09  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* FormBase.C:
@@ -81,7 +84,7 @@
 
 2002-09-06  Alain Castera  <castera@in2p3.fr>
 
-        * FormTabular.C: leave the horizontal alignment buttons alive 
+	* FormTabular.C: leave the horizontal alignment buttons alive
 	  on fixed width columns
 
 2002-09-05  Angus Leeming  <leeming@lyx.org>
@@ -92,56 +95,56 @@
 
 	* MathsCallbacks.h:
 	* forms/fdfix.sh: fix build from last change
- 
+
 2002-08-30  John Levon  <levon@movementarian.org>
 
 	* MathsSymbols.h:
 	* MathsSymbols.C:
 	* FormMathsPanel.h:
 	* FormMathsPanel.C: remove MathsSymbols to controllers/
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* MathsSymbols.h:
-	* MathsSymbols.C: 
+	* MathsSymbols.C:
 	* Toolbar_pimpl.C: use XPMs for toolbar instead of gook
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* MathsSymbols.C: implement splitting for AMS. nrel
 	  is broken
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* MathsSymbols.C: fix two crash bugs
- 
+
 2002-08-28  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* forms/form_graphics.fd:
 	* FormGraphics.C: re-implement the use of text_warning box.
-	
+
 	* forms/form_preferences.fd:
 	* FormPreferences.C: use displayTranslator, change display mode
 	from four radio buttons into one choice button.
 
-        * FormBibtex.C: fix SIGSEGV with [Choose] when no style is selected.
- 
+	* FormBibtex.C: fix SIGSEGV with [Choose] when no style is selected.
+
 2002-08-24  John Levon  <levon@movementarian.org>
 
 	* xformsImage.C: fix build, add FIXME for Rob
- 
+
 2002-08-23  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* FormGraphics.[Ch]:
 	* forms/form_graphics.fd: Implement new graphics dialog
-	
+
 	* FormPreferences.C: use display_graphics "monochrome|grayscale|none"
 	instead of "mono|gray|no".
 
 2002-08-22  John Levon  <levon@movementarian.org>
 
 	* xfont_loader.C: show name of failed font load (from Mikhail Teterin)
- 
+
 2002-08-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormMathsBitmap.h: include boost/shared_ptr.hpp, remove include

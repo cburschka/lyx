@@ -1,8 +1,15 @@
+2002-09-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ui/moc/Makefile.am (INCLUDES):
+	* ui/Makefile.am (INCLUDES): 
+	* moc/Makefile.am (INCLUDES): 
+	* Makefile.am (INCLUDES): loose SIGC_INCLUDES
+
 2002-09-24  John Levon  <levon@movementarian.org>
 
 	* QCommandEdit.h:
 	* QCommandEdit.C: fix build by removing the pragmas.
- 
+
 2002-09-24  Angus Leeming  <leeming@lyx.org>
 
 	* most files: "standard-conforming" Licence declaration.
@@ -11,7 +18,7 @@
 	* many header files: do not #include <config.h>.
 	Remove unnecessary #includes by using forward declarations.
 	Add as first line: // -*- C++ -*-
-	Move several definitions of virtual functions out of line 
+	Move several definitions of virtual functions out of line
 	as they are unlikely to be inlined anyway (and it reduces
 	header file dependencies)...
 
@@ -30,16 +37,16 @@
 
 	* qlkey.h: make Key_Unknown a modifier, to handle
 	  Norbert's Alt Gr
- 
+
 2002-09-17  John Levon  <levon@movementarian.org>
 
 	* QLPainter.C: use dots for dashes because Qt sucks
- 
+
 2002-09-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Toolbar_pimpl.C (changed_layout): when selecting a layout in
 	combox, make sure the corresponding shortcut is shown in
-	minibuffer 
+	minibuffer
 
 2002-09-16  John Levon  <levon@movementarian.org>
 
@@ -48,11 +55,11 @@
 2002-09-16  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.C: allow menus to be torn off
- 
+
 2002-09-16  John Levon  <levon@movementarian.org>
 
 	* QDelimiterDialog.C: fix empty delimiter
- 
+
 2002-09-15  John Levon  <levon@movementarian.org>
 
 	* Makefile.dialogs:
@@ -67,7 +74,7 @@
 2002-09-15  John Levon  <levon@movementarian.org>
 
 	* Alert_pimpl.C: title fix
- 
+
 2002-09-14  John Levon  <levon@movementarian.org>
 
 	* QMath.h:
@@ -75,88 +82,88 @@
 	* QMathDialog.h:
 	* QMathDialog.C:
 	* ui/QMathDialog.ui: matrix
- 
+
 2002-09-14  John Levon  <levon@movementarian.org>
 
 	* qlkey.h: fix two typos to be Alt_R instead
- 
+
 2002-09-14  John Levon  <levon@movementarian.org>
 
 	* qfont_metrics.C: fix rbearing()
- 
+
 2002-09-14  John Levon  <levon@movementarian.org>
 
 	* QLPainter.C: fix arc
- 
+
 2002-09-14  John Levon  <levon@movementarian.org>
 
 	* ui/QMathDialog.ui:
 	* QMathDialog.h:
 	* QMathDialog.C: add back display. Implement
 	  font/style
- 
+
 2002-09-14  John Levon  <levon@movementarian.org>
 
 	* ui/QMathDialog.ui:
 	* QMathDialog.h:
 	* QMathDialog.C: add spaces menu
- 
+
 2002-09-13  John Levon  <levon@movementarian.org>
 
 	* Menubar_pimpl.C:
 	* QLPopupMenu.C: fix submenus again
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* qscreen.h:
 	* qscreen.C: be even smarter about repaint() vs. update()
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* QPrint.C: don't reset unless different buffer
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* QPrint.C: get collate from params too
 
 	* ui/QGraphicsDialog.ui: re-arrange bb a bit
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* Menubar_pimpl.C:
 	* Menubar_pimpl.h:
 	* QtView.C: implement openByName(). Move activated
-	signal to per-menu 
+	signal to per-menu
 
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* QCommandBuffer.C: fix click
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.C: work around Qt bug in previous change
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.h:
 	* QMathDialog.C: load icon palettes on demand
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.C: get the scrollbars right on first show
- 
+
 2002-09-11  John Levon  <levon@movementarian.org>
 
 	* QPrint.h:
-	* QPrint.C: 
+	* QPrint.C:
 	* ui/QPrintDialog.ui: update for odd/even changes
- 
+
 2002-09-11  John Levon  <levon@movementarian.org>
 
 	* QCitationDialog.C: show right info when selecting a cite
 
 	* QParagraphDialog.C: don't validate lengths, to allow glue
- 
+
 2002-09-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* QFloatDialog.C: Fix the setEnable() logic
@@ -164,19 +171,19 @@
 2002-09-11  John Levon  <levon@movementarian.org>
 
 	* Alert_pimpl.C:
-	* QExternalDialog.h: 
-	* QExternalDialog.C: 
-	* QGraphicsDialog.h: 
-	* QGraphicsDialog.C: 
-	* QIncludeDialog.h: 
-	* QIncludeDialog.C: 
-	* QIndexDialog.h: 
-	* QIndexDialog.C: 
-	* QSearchDialog.h: 
-	* QSearchDialog.C: 
+	* QExternalDialog.h:
+	* QExternalDialog.C:
+	* QGraphicsDialog.h:
+	* QGraphicsDialog.C:
+	* QIncludeDialog.h:
+	* QIncludeDialog.C:
+	* QIndexDialog.h:
+	* QIndexDialog.C:
+	* QSearchDialog.h:
+	* QSearchDialog.C:
 	* QURLDialog.h:
-	* QURLDialog.C: focus on the first linedit on show() 
-	 
+	* QURLDialog.C: focus on the first linedit on show()
+
 2002-09-11  John Levon  <levon@movementarian.org>
 
 	* QSearchDialog.C: fill combo boxes
@@ -186,19 +193,19 @@
 	* qscreen.C: use repaint() not update() for immediate change
 
 	* QContentPane.C: warning fix
- 
+
 2002-09-11  John Levon  <levon@movementarian.org>
 
 	* qfont_metrics.C: fix button metrics
 
 	* QLPainter.C: fillPolygon() should actually fill
- 
+
 2002-09-10  John Levon  <levon@movementarian.org>
 
 	* Menubar_pimpl.C:
 	* QLPopupMenu.h:
 	* QLPopupMenu.C: finally fix Navigate
- 
+
 2002-09-10  John Levon  <levon@movementarian.org>
 
 	* ui/QIncludeDialog.ui:
@@ -210,15 +217,15 @@
 2002-09-08  John Levon  <levon@movementarian.org>
 
 	* QFloat.C: another fix
- 
+
 2002-09-08  John Levon  <levon@movementarian.org>
 
 	* QFloat.h:
 	* QFloat.C:
 	* QFloatDialog.h:
 	* QFloatDialog.C:
-	* ui/QFloatDialog.ui: fix bug 527 and more 
- 
+	* ui/QFloatDialog.ui: fix bug 527 and more
+
 2002-09-12  Angus Leeming  <leeming@lyx.org>
 
 	* iconpalette.C (resizeEvent): compile fix.
@@ -234,50 +241,50 @@
 	* QMathDialog.C:
 	* iconpalette.h:
 	* iconpalette.C: make sizing work properly
- 
+
 2002-09-08  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.h:
 	* QMathDialog.C: detachable icon menus
- 
+
 2002-09-08  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.C:
 	* iconpalette.h:
 	* iconpalette.C: re lay out on size change
- 
+
 2002-09-08  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.h:
 	* QMathDialog.C:
 	* iconpalette.C: More fixes.
- 
+
 2002-09-08  John Levon  <levon@movementarian.org>
 
 	* ui/QMathDialog.ui:
 	* QMathDialog.h:
 	* QMathDialog.C: add decos as symbols. Some fixes.
- 
+
 2002-09-07  John Levon  <levon@movementarian.org>
 
 	* qfont_metrics.C: unrevert per-char metrics. Droppings
 	  are better than entirely wrong metrics. Hopefully
 	  Andre can fix it ...
- 
+
 2002-09-07  John Levon  <levon@movementarian.org>
 
 	* qfont_loader.C: fix sizes for symbols etc.
- 
+
 2002-09-07  John Levon  <levon@movementarian.org>
 
 	* qfont_metrics.C: revert accurate per-char metrics
 	  because LyX is broken
- 
+
 2002-09-07  John Levon  <levon@movementarian.org>
 
 	* qfont_loader.h:
 	* qfont_loader.C: add debug
- 
+
 2002-09-06  John Levon  <levon@movementarian.org>
 
 	* QMath.h:
@@ -286,10 +293,10 @@
 	* ui/QMathDialog.ui:
 	* QMathDialog.h:
 	* QMathDialog.C: add dots. Use a completely broken :(
-	  scrollview. 
+	  scrollview.
 
-	* iconpalette.C: increase size 
- 
+	* iconpalette.C: increase size
+
 2002-09-04  Angus Leeming  <leeming@lyx.org>
 
 	* QLyXKeySym.C: using std::endl directive.
@@ -306,55 +313,55 @@
 
 	* iconpalette.h:
 	* iconpalette.C: new widget used by above
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C: defocus layout combo on select
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* QtView.C: add back in allow/prohibitInput (for now)
 
 	* TODO: update
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C: mathed math-insert - skip
 	  the preceding '\' when looking for file name
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C: math xpm handling in preparation
 	for some fixed XPMs
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* QCommandBuffer.h:
 	* QCommandBuffer.C: use a QListView not combo box.
 	  Qt Sucks.
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* ui/*: use size grippie consistently
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* QContentPane.C:
 	* QContentPane.h: implement triple click
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* QInclude.C: remove some wrong code removed from xforms
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* qfont_metrics.C: add per char ascent/descent
- 
+
 2002-08-28  John Levon  <levon@movementarian.org>
 
 	* QContentPane.C: fix cut-and-paste borkage from
 	  LFUN_MOUSE changes
- 
+
 2002-08-25  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* QLImage.C: replace redundant xoffset_l and yoffset_t
@@ -366,13 +373,13 @@
 	* FileDialog_private.h:
 	* FileDialog_private.C: disable non-sync code due
 	  to Qt bug. Add support for buttons
- 
+
 2002-08-25  John Levon  <levon@movementarian.org>
 
 	* QLPopupMenu.C: implement optional() support
- 
+
 	* TODO: update
- 
+
 2002-08-25  John Levon  <levon@movementarian.org>
 
 	* Makefile.am:
@@ -380,26 +387,26 @@
 	* Menubar_pimpl.C:
 	* QLPopupMenu.h:
 	* QLPopupMenu.C: Populate menus upon open
- 
+
 2002-08-25  John Levon  <levon@movementarian.org>
 
 	* qlkey.h: add A-Z into string_to_qkey
 
 	* QLyXKeySym.h:
 	* QLyXKeySym.C: remove crap again
- 
+
 2002-08-25  John Levon  <levon@movementarian.org>
 
 	* QLyXKeySym.h:
 	* QLyXKeySym.C:
 	* QContentPane.C: revert some wrong direction stuff and try
 	  again. STILL BROKEN :(
- 
+
 2002-08-25  John Levon  <levon@movementarian.org>
 
 	* QGraphics.C:
 	* ui/QGraphicsDialog.ui: update, and some UI improvements
- 
+
 2002-08-23  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* lengthcombo.C: apply changes to "enum UNIT" in src/lyxlength.h
@@ -428,7 +435,7 @@
 	* Alert_pimpl.C: remove xforms header
 
 	* Toolbar_pimpl.C: build fix
- 
+
 2002-08-13  Angus Leeming  <leeming@lyx.org>
 
 	* Qt2Base.h: compile fix isReadonly -> bufferIsReadonly.
@@ -498,52 +505,52 @@
 2002-08-09  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C: add missing header
- 
+
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C:
 	* Menubar_pimpl.C: lyxaction cleanup
- 
+
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* QGraphicsDialog.C: enable rotate
 
 	* ui/QGraphicsDialog.ui: trigger changed on
 	  activated() not highlighted()
- 
+
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* QGraphics.C:
 	* ui/QGraphicsDialog.ui: lots of fixes and cleanup
 
 	* ui/QRefDialog.ui: geometry cleanup
- 
+
 2002-08-07  John Levon  <levon@movementarian.org>
 
 	* Menubar_pimpl.C: fix compile for gcc 3.1
- 
+
 2002-08-06  John Levon  <levon@movementarian.org>
 
-	* ui/QSpellcheckerDialogBase.ui: 
+	* ui/QSpellcheckerDialogBase.ui:
 	* QSpellcheckerDialog.h:
 	* QSpellchecker.h:
 	* QSpellchecker.C: remove options()
 
 	* QtView.C: fix build
- 
+
 2002-07-31  John Levon  <levon@movementarian.org>
 
 	* io_callback.h: make a more proper class
 
 	* lyx_gui.C: implement removal of I/O callbacks
- 
+
 2002-07-30  John Levon  <levon@movementarian.org>
 
 	* qlkey.h:
 	* QLyXKeySym.h:
 	* QLyXKeySym.C: do our own getISOEncoded() mapping
 	  because Qt can't handle it
- 
+
 2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* several file: strip,frontStrip -> trim,ltrim,rtrim
