@@ -201,6 +201,10 @@ libxforms_la_SOURCES = \
 	xformsBC.C \
 	xformsBC.h
 
+
+#	xformsGImage.C \
+#	xformsGImage.h
+
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \
 #	GUI_initialize.C \

@@ -21,6 +21,8 @@
 #include <gnome--/main.h>
 #include <glade/glade.h>
 
+#include "graphics/GraphicsImageXPM.h"
+
 using std::endl;
 
 // I keep these here so that it will be processed as early in
@@ -127,7 +129,20 @@ LyXView * GUIRunTime::createMainView(int w, int h)
 	return new XFormsView(w, h);
 }
 
-	
+
+// Called bu the graphics cache to connect the approriate frontend
+// image loading routines to the LyX kernel.
+void GUIRunTime::initialiseGraphics()
+{
+	using namespace grfx;
+	using SigC::slot;
+    
+	// connect the image loader based on the XPM library
+	GImage::newImage.connect(slot(&GImageXPM::newImage));
+	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
+}
+
+
 Display * GUIRunTime::x11Display()
 {
 	return fl_get_display();

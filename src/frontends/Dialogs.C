@@ -23,6 +23,10 @@
 #include "Dialogs.h"
 #include "support/LAssert.h"
 
+// Signal enabling all visible dialogs to be redrawn if so desired.
+// E.g., when the GUI colours have been remapped.
+SigC::Signal0<void> Dialogs::redrawGUI;
+
 void Dialogs::add(DialogBase * ptr)
 {
 	lyx::Assert(ptr);

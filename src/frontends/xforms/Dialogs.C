@@ -81,12 +81,6 @@
 #include "FormPreferences.h"
 #include "FormTabular.h"
 
-#include "graphics/GraphicsImageXPM.h"
-//#include "xformsGraphicsImage.h"
-
-// Signal enabling all visible dialogs to be redrawn if so desired.
-// E.g., when the GUI colours have been remapped.
-SigC::Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
@@ -129,19 +123,4 @@ Dialogs::Dialogs(LyXView * lv)
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent.slot());
-}
-
-// Called bu the graphics cache to connect the approriate frontend
-// image loading routines to the LyX kernel.
-void Dialogs::initialiseGraphics()
-{
-	using namespace grfx;
-	using SigC::slot;
-    
-	// connect the image loader based on the XPM library
-	GImage::newImage.connect(slot(&GImageXPM::newImage));
-	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
-	// connect the image loader based on the xforms library
-//	GImage::newImage.connect(slot(&xformsGImage::newImage));
-//	GImage::loadableFormats.connect(slot(&xformsGImage::loadableFormats));
 }

@@ -19,6 +19,12 @@
 #include "XFormsView.h"
 #include "debug.h"
 
+//#if (FL_REVISION >= 89 && FL_FIXLEVEL >= 6)
+//#include "xformsGImage.h"
+//#else
+#include "graphics/GraphicsImageXPM.h"
+//#endif
+
 // I keep these here so that it will be processed as early in
 // the compilation process as possible.
 #if !defined(FL_REVISION) || FL_REVISION < 88 || FL_VERSION != 0
@@ -122,6 +128,26 @@ void GUIRunTime::setDefaults()
 LyXView * GUIRunTime::createMainView(int w, int h)
 {
 	return new XFormsView(w, h);
+}
+
+
+
+// Called bu the graphics cache to connect the approriate frontend
+// image loading routines to the LyX kernel.
+void GUIRunTime::initialiseGraphics()
+{
+	using namespace grfx;
+	using SigC::slot;
+    
+//#if (FL_REVISION >= 89 && FL_FIXLEVEL >= 6)
+	// connect the image loader based on the xforms library
+//	GImage::newImage.connect(slot(&xformsGImage::newImage));
+//	GImage::loadableFormats.connect(slot(&xformsGImage::loadableFormats));
+//#else
+	// connect the image loader based on the XPM library
+	GImage::newImage.connect(slot(&GImageXPM::newImage));
+	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
+//#endif
 }
 
 

@@ -19,6 +19,7 @@
 #include "XFormsView.h"
 #include "GUIRunTime.h"
 #include "debug.h"
+#include "graphics/GraphicsImageXPM.h"
 
 #include FORMS_H_LOCATION
 
@@ -90,6 +91,19 @@ LyXView * GUIRunTime::createMainView(int w, int h)
 }
 
  
+// Called bu the graphics cache to connect the approriate frontend
+// image loading routines to the LyX kernel.
+void GUIRunTime::initialiseGraphics()
+{
+	using namespace grfx;
+	using SigC::slot;
+    
+	// connect the image loader based on the XPM library
+	GImage::newImage.connect(slot(&GImageXPM::newImage));
+	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
+}
+
+
 Display * GUIRunTime::x11Display()
 {
 	//return p.device()->x11Display();

@@ -80,13 +80,7 @@
 #include "xforms/FormShowFile.h"
 #include "xforms/FormTabular.h"
  
-#include "graphics/GraphicsImageXPM.h"
- 
 #include "GUI.h"
-
-// this makes no real sense for Qt2
-SigC::Signal0<void> Dialogs::redrawGUI;
-
 
 Dialogs::Dialogs(LyXView * lv)
 {
@@ -128,17 +122,4 @@ Dialogs::Dialogs(LyXView * lv)
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent.slot());
-}
- 
- 
-// Called bu the graphics cache to connect the approriate frontend
-// image loading routines to the LyX kernel.
-void Dialogs::initialiseGraphics()
-{
-	using namespace grfx;
-	using SigC::slot;
-    
-	// connect the image loader based on the XPM library
-	GImage::newImage.connect(slot(&GImageXPM::newImage));
-	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
 }

@@ -18,7 +18,7 @@
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
 #include "insets/insetgraphics.h"
-#include "frontends/Dialogs.h"
+#include "frontends/GUIRunTime.h"
 
 
 namespace grfx {
@@ -28,7 +28,7 @@ GCache & GCache::get()
 	static bool start = true;
 	if (start) {
 		start = false;
-		Dialogs::initialiseGraphics();
+		GUIRunTime::initialiseGraphics();
 	}
 
 	// Now return the cache

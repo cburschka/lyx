@@ -39,6 +39,10 @@ public:
 	///
 	static
 	LyXView * createMainView(int w, int h);
+	/** Called bu the graphics cache to connect the approriate frontend
+	 *  image loading routines to the LyX kernel.
+	 */
+	static void initialiseGraphics();
 
 /* the following entries are X11 specific and should eventually go away */
 	/// The display on which LyX is running
