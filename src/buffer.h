@@ -129,7 +129,11 @@ public:
 
 public:
 	/// This signal is emitted when a parsing error shows up.
-	boost::signal1<void, ErrorItem> parseError;
+	boost::signal1<void, ErrorItem> error;
+	/// This signal is emitted when some message shows up.
+	boost::signal1<void, string> message;
+	/// This signal is emmtted when the buffer busy status change.
+	boost::signal1<void, bool> busy;
 
 	/** Save file.
 	    Takes care of auto-save files and backup file if requested.

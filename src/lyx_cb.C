@@ -60,20 +60,6 @@ extern BufferList bufferlist;
 bool quitting;	// flag, that we are quitting the program
 
 
-void ShowMessage(Buffer const * buf,
-		 string const & msg1,
-		 string const & msg2,
-		 string const & msg3)
-{
-	if (lyx_gui::use_gui
-	    && buf && buf->getUser() && buf->getUser()->owner()) {
-			string const str = msg1 + ' ' + msg2 + ' ' + msg3;
-			buf->getUser()->owner()->message(str);
-	} else
-		lyxerr << msg1 << msg2 << msg3 << endl;
-}
-
-
 //
 // Menu callbacks
 //
@@ -310,7 +296,7 @@ void AutoSave(BufferView * bv)
 // create new file with template
 // SERVERCMD !
 //
-Buffer * NewFile(string const & filename)
+void NewFile(BufferView * bv, string const & filename)
 {
 	// Split argument by :
 	string name;
@@ -328,11 +314,7 @@ Buffer * NewFile(string const & filename)
 			    << "\nName is " << name
 			    << "\nTemplate is " << tmpname << endl;
 
-	// find a free buffer
-	Buffer * tmpbuf = newFile(name, tmpname);
-	if (tmpbuf)
-		lastfiles->newFile(tmpbuf->fileName());
-	return tmpbuf;
+	bv->newFile(name, tmpname);
 }
 
 

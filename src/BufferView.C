@@ -104,6 +104,12 @@ void BufferView::buffer(Buffer * b)
 }
 
 
+bool BufferView::newFile(string const & fn, string const & tn, bool named)
+{
+	return pimpl_->newFile(fn, tn, named);
+}
+
+
 bool BufferView::loadLyXFile(string const & fn, bool tl)
 {
 	return pimpl_->loadLyXFile(fn, tl);

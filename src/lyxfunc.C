@@ -1251,13 +1251,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_FILE_NEW:
-	{
-		// servercmd: argument must be <file>:<template>
-		Buffer * tmpbuf = NewFile(argument);
-		if (tmpbuf)
-			view()->buffer(tmpbuf);
-	}
-	break;
+		NewFile(view(), argument);
+		break;
 
 	case LFUN_FILE_OPEN:
 		open(argument);
@@ -1723,7 +1718,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 		templname = fname;
 	}
 
-	view()->buffer(newFile(filename, templname, !name.empty()));
+	view()->newFile(filename, templname, !name.empty());
 }
 
 
@@ -1778,8 +1773,7 @@ void LyXFunc::open(string const & fname)
 	FileInfo const f(filename, true);
 	if (!f.exist()) {
 		// the user specifically chose this name. Believe them.
-		Buffer * buffer =  newFile(filename, "", true);
-		view()->buffer(buffer);
+		view()->newFile(filename, "", true);
 		return;
 	}
 

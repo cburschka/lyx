@@ -33,8 +33,8 @@ Buffer * newFile(string const & filename, string const & templatename,
 ///return the format of the buffer on a string
 string const BufferFormat(Buffer const & buffer);
 
-void parseErrors(Buffer const &, TeXErrors const &);
+void bufferErrors(Buffer const &, TeXErrors const &);
 
-void parseErrors(Buffer const &, ErrorList const &);
+void bufferErrors(Buffer const &, ErrorList const &);
 
 #endif // BUFFER_FUNCS_H

@@ -200,7 +200,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 }
 
 
-void parseErrors(Buffer const & buf, TeXErrors const & terr)
+void bufferErrors(Buffer const & buf, TeXErrors const & terr) 
 {
 	TeXErrors::Errors::const_iterator cit = terr.begin();
 	TeXErrors::Errors::const_iterator end = terr.end();
@@ -212,20 +212,20 @@ void parseErrors(Buffer const & buf, TeXErrors const & terr)
 		buf.texrow.getIdFromRow(errorrow, par_id, posstart);
 		int posend = -1;
 		buf.texrow.getIdFromRow(errorrow + 1, par_id, posend);
-		buf.parseError(ErrorItem(cit->error_desc,
+		buf.error(ErrorItem(cit->error_desc,
 					 cit->error_text,
 					 par_id, posstart, posend));
 	}
 }
 
 
-void parseErrors(Buffer const & buf, ErrorList const & el)
+void bufferErrors(Buffer const & buf, ErrorList const & el) 
 {
 	ErrorList::const_iterator it = el.begin();
 	ErrorList::const_iterator end = el.end();
 
-	for (; it != end; ++it)
-		buf.parseError(*it);
+	for (; it != end; ++it) 
+		buf.error(*it);
 }
 
 

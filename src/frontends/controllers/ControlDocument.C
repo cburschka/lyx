@@ -129,7 +129,7 @@ void ControlDocument::classApply()
 	CutAndPaste::SwitchLayoutsBetweenClasses(old_class, new_class,
 						 lv_.buffer()->paragraphs,
 						 el);
-	parseErrors(*buffer(), el);
+	bufferErrors(*buffer(), el);
 	bufferview()->showErrorList(_("Class switch"));
 }
 

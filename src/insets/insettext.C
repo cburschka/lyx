@@ -1512,7 +1512,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			break;
 
 		case LATEX_COMMAND:
-			buf->parseError(ErrorItem(_("Error"), _("LatexType Command not allowed here.\n"), pit->id(), 0, pit->size()));
+			buf->error(ErrorItem(_("Error"), _("LatexType Command not allowed here.\n"), pit->id(), 0, pit->size()));
 			return -1;
 			break;
 

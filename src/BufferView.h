@@ -80,6 +80,9 @@ public:
 
 	/// reload the contained buffer
 	void reload();
+	/// create a new buffer based on template
+	bool newFile(string const & fname, string const & tname, 
+		     bool named = true);
 	/// load a buffer into the view
 	bool loadLyXFile(string const & name, bool tolastfiles = true);
 

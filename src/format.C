@@ -14,7 +14,6 @@
 #include "buffer.h"
 #include "lyxrc.h"
 #include "debug.h"
-#include "lyx_cb.h" // for ShowMessage() ... to be removed?
 #include "gettext.h"
 #include "LString.h"
 
@@ -191,7 +190,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	command = subst(command, token_path, QuoteName(OnlyPath(filename)));
 
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
-	ShowMessage(buffer, _("Executing command:"), command);
+	buffer->message(_("Executing command: ") + command);
 
 	Path p(OnlyPath(filename));
 	Systemcall one;

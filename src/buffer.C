@@ -289,8 +289,8 @@ int Buffer::readHeader(LyXLex & lex)
 							   "%1$s %2$s\n"),
 							 token,
 							 lex.getString());
-				parseError(ErrorItem(_("Header error"), s,
-						     -1, 0, 0));
+				error(ErrorItem(_("Header error"), s, 
+						-1, 0, 0));
 			}
 		}
 	}
@@ -1189,7 +1189,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		case LATEX_COMMAND:
 			if (depth != 0)
-				parseError(ErrorItem(_("Error:"), _("Wrong depth for LatexType Command.\n"), pit->id(), 0, pit->size()));
+				error(ErrorItem(_("Error:"), _("Wrong depth for LatexType Command.\n"), pit->id(), 0, pit->size()));
 
 			if (!environment_stack[depth].empty()) {
 				sgml::closeTag(ofs, depth, false, environment_stack[depth]);
@@ -1644,7 +1644,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 		case LATEX_COMMAND:
 			if (depth != 0)
-				parseError(ErrorItem(_("Error"), _("Wrong depth for LatexType Command."), par->id(), 0, par->size()));
+				error(ErrorItem(_("Error"), _("Wrong depth for LatexType Command."), par->id(), 0, par->size()));
 
 			command_name = style->latexname();
 
@@ -1906,7 +1906,7 @@ int Buffer::runChktex()
 {
 	if (!users->text) return 0;
 
-	users->owner()->busy(true);
+	busy(true);
 
 	// get LaTeX-Filename
 	string const name = getLatexName();
@@ -1918,7 +1918,7 @@ int Buffer::runChktex()
 	}
 
 	Path p(path); // path to LaTeX file
-	users->owner()->message(_("Running chktex..."));
+	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary
 	LatexRunParams runparams;
@@ -1935,10 +1935,10 @@ int Buffer::runChktex()
 			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
 		// Insert all errors as errors boxes
-		parseErrors(*this, terr);
+		bufferErrors(*this, terr);
 	}
 
-	users->owner()->busy(false);
+	busy(false);
 
 	return res;
 }

@@ -70,7 +70,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 	if (loader_format == "lyx") {
 		lv->view()->loadLyXFile(lyxfile);
 	} else {
-		lv->view()->buffer(newFile(lyxfile, string(), true));
+		lv->view()->newFile(lyxfile, string(), true);
 		bool as_paragraphs = loader_format == "textparagraph";
 		string filename2 = (loader_format == format) ? filename
 			: ChangeExtension(filename,

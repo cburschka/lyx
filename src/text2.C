@@ -1346,7 +1346,7 @@ void LyXText::pasteSelection(size_t sel_index)
 					    cursor.par(), cursor.pos(),
 					    bv()->buffer()->params.textclass,
 					    sel_index, el);
-	parseErrors(*bv()->buffer(), el);
+	bufferErrors(*bv()->buffer(), el);
 	bv()->showErrorList(_("Paste"));
 
 	redoParagraphs(cursor, endpit);

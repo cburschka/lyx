@@ -19,9 +19,7 @@
 #include "bufferview_funcs.h"
 #include "errorlist.h"
 #include "LaTeX.h"
-#include "lyx_cb.h" // ShowMessage()
 #include "gettext.h"
-#include "BufferView.h"
 #include "debug.h"
 
 #include "frontends/Alert.h"
@@ -32,6 +30,9 @@
 #include "support/path.h"
 #include "support/tostr.h"
 #include "support/systemcall.h"
+
+#include <boost/signals/signal1.hpp>
+#include <boost/signals/trackable.hpp>
 
 #include <cctype>
 
@@ -107,8 +108,8 @@ bool operator<(Converter const & a, Converter const & b)
 	int const i = compare_ascii_no_case(a.From->prettyname(),
 					    b.From->prettyname());
 	if (i == 0)
-		return compare_ascii_no_case(a.To->prettyname(), b.To->prettyname())
-			< 0;
+		return compare_ascii_no_case(a.To->prettyname(), 
+					     b.To->prettyname()) < 0;
 	else
 		return i < 0;
 }
@@ -333,8 +334,7 @@ bool Converters::convert(Buffer const * buffer,
 
 			lyxerr[Debug::FILES] << "Calling " << command << endl;
 			if (buffer)
-				ShowMessage(buffer, _("Executing command:"), command);
-
+				buffer->message(_("Executing command: ") + command);
 			Systemcall::Starttype type = (dummy)
 				? Systemcall::DontWait : Systemcall::Wait;
 			Systemcall one;
@@ -446,8 +446,8 @@ bool Converters::move(string const & from, string const & to, bool copy)
 
 
 bool Converters::convert(Buffer const * buffer,
-			string const & from_file, string const & to_file_base,
-			string const & from_format, string const & to_format)
+			 string const & from_file, string const & to_file_base,
+			 string const & from_format, string const & to_format)
 {
 	string to_file;
 	return convert(buffer, from_file, to_file_base, from_format, to_format,
@@ -473,56 +473,67 @@ bool Converters::scanLog(Buffer const * buffer, string const & /*command*/,
 	if (!buffer)
 		return false;
 
-	BufferView * bv = buffer->getUser();
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
 	LaTeX latex("", runparams, filename, "");
 	TeXErrors terr;
 	int result = latex.scanLogFile(terr);
 
-	if (bv && (result & LaTeX::ERRORS))
-		parseErrors(*buffer, terr);
+	if (result & LaTeX::ERRORS)
+		bufferErrors(*buffer, terr);
 
 	return true;
 }
 
+namespace {
+
+class showMessage : public boost::signals::trackable {
+public:
+	showMessage(Buffer const * b) : buffer_(b) {};
+	void operator()(string m) 
+	{
+		buffer_->message(m);
+	}
+private:
+	Buffer const * buffer_;
+};
+
+}
 
 bool Converters::runLaTeX(Buffer const * buffer, string const & command,
 			  LatexRunParams const & runparams)
 {
+	// when is this needed?
 	if (!buffer)
 		return false;
 
-	BufferView * bv = buffer->getUser();
-
-	if (bv) {
-		bv->owner()->busy(true);
-		bv->owner()->message(_("Running LaTeX..."));
-		// all the autoinsets have already been removed
-	}
+	buffer->busy(true);
+	buffer->message(_("Running LaTeX..."));
 
 	// do the LaTeX run(s)
 	string name = buffer->getLatexName();
 	LaTeX latex(command, runparams, name, buffer->filePath());
 	TeXErrors terr;
-	int result = latex.run(terr,
-			       bv ? &bv->owner()->getLyXFunc() : 0);
+	showMessage show(buffer);
+	latex.message.connect(show);
+	int result = latex.run(terr);
 
-	if (bv && (result & LaTeX::ERRORS))
-		parseErrors(*buffer, terr);
+	if (result & LaTeX::ERRORS)
+		bufferErrors(*buffer, terr);
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {
-		string str = bformat(_("LaTeX did not run successfully. Additionally, LyX "
-			"could not locate the LaTeX log %1$s."), name);
+		string str = bformat(_("LaTeX did not run successfully. "
+				       "Additionally, LyX could not locate "
+				       "the LaTeX log %1$s."), name);
 		Alert::error(_("LaTeX failed"), str);
 	} else if (result & LaTeX::NO_OUTPUT) {
 		Alert::warning(_("Output is empty"),
-			_("An empty output file was generated."));
+			       _("An empty output file was generated."));
 	}
 
-	if (bv)
-		bv->owner()->busy(false);
+	
+	buffer->busy(false);
 
 	int const ERROR_MASK =
 			LaTeX::NO_LOGFILE |

@@ -13,14 +13,12 @@
 #include "exporter.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "lyx_cb.h" //ShowMessage()
 #include "support/filetools.h"
 #include "lyxrc.h"
 #include "converter.h"
 #include "format.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
-#include "BufferView.h"
 
 #include <algorithm>
 
@@ -108,11 +106,10 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		return false;
 
 	if (!put_in_tempdir)
-		ShowMessage(buffer,
-			    _("Document exported as ")
-			    + formats.prettyName(format)
-			    + _(" to file `")
-			    + MakeDisplayPath(result_file) +'\'');
+		buffer->message(_("Document exported as ")
+				      + formats.prettyName(format)
+				      + _(" to file `")
+				      + MakeDisplayPath(result_file) +'\'');
 	return true;
 }
 

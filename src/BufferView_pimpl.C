@@ -135,7 +135,35 @@ BufferView::Pimpl::Pimpl(BufferView * bv, LyXView * owner,
 void BufferView::Pimpl::addError(ErrorItem const & ei)
 {
 	errorlist_.push_back(ei);
+}
 
+
+void BufferView::Pimpl::connectBuffer(Buffer & buf)
+{
+	if (errorConnection_.connected())
+		disconnectBuffer();
+
+	errorConnection_ = buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
+	messageConnection_ = buf.message.connect(boost::bind(&LyXView::message, owner_, _1));
+	busyConnection_ = buf.busy.connect(boost::bind(&LyXView::busy, owner_, _1));
+}
+
+
+void BufferView::Pimpl::disconnectBuffer()
+{
+	errorConnection_.disconnect();
+	messageConnection_.disconnect();
+	busyConnection_.disconnect();
+}
+
+
+bool BufferView::Pimpl::newFile(string const & filename, 
+				string const & tname,
+				bool isNamed)
+{
+	Buffer * b = ::newFile(filename, tname, isNamed);
+	buffer(b);
+	return true;
 }
 
 
@@ -169,26 +197,18 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	}
 	Buffer * b = bufferlist.newBuffer(s);
 
-	//attach to the error signal in the buffer
-	b->parseError.connect(boost::bind(&BufferView::Pimpl::addError,
-					  this, _1));
+	connectBuffer(*b);
 
-	bool loaded = ::loadLyXFile(b, s);
-
-	if (! loaded) {
+	if (! ::loadLyXFile(b, s)) {
 		bufferlist.release(b);
-		string text = bformat(_("The document %1$s does "
-					"not yet exist.\n\n"
-					"Do you want to create "
+		string text = bformat(_("The document %1$s does not yet "
+					"exist.\n\nDo you want to create "
 					"a new document?"), s);
 		int const ret = Alert::prompt(_("Create new document?"),
 			 text, 0, 1, _("&Create"), _("Cancel"));
 
-		if (ret == 0)
-			b = newFile(s, string(), true);
-		else
+		if (ret != 0)
 			return false;
-
 	}
 
 	buffer(b);
@@ -196,11 +216,11 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	if (tolastfiles)
 		lastfiles->newFile(b->fileName());
 
-	if (loaded)
-		bv_->showErrorList(_("Parse"));
+	bv_->showErrorList(_("Parse"));
 
 	return true;
 }
+
 
 WorkArea & BufferView::Pimpl::workarea() const
 {
@@ -225,6 +245,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView ("
 			    << b << ')' << endl;
 	if (buffer_) {
+		disconnectBuffer();
 		buffer_->delUser(bv_);
 
 		// Put the old text into the TextCache, but
@@ -253,6 +274,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	if (buffer_) {
 		lyxerr[Debug::INFO] << "Buffer addr: " << buffer_ << endl;
 		buffer_->addUser(bv_);
+		connectBuffer(*buffer_);
 
 		// If we don't have a text object for this, we make one
 		if (bv_->text == 0) {

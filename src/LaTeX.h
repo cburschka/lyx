@@ -22,8 +22,7 @@
 #include <set>
 
 #include <boost/utility.hpp>
-
-class LyXFunc;
+#include <boost/signals/signal1.hpp>
 
 ///
 class TeXErrors {
@@ -125,6 +124,9 @@ public:
 		WARNINGS = TEX_WARNING + LATEX_WARNING + PACKAGE_WARNING
 	};
 
+	/// This signal emits an informative message
+	boost::signal1<void, string> message;
+
 
 	/**
 	   cmd = the latex command, file = name of the (temporary) latex file,
@@ -134,7 +136,7 @@ public:
 	      string const & file, string const & path);
 
 	/// runs LaTeX several times
-	int run(TeXErrors &, LyXFunc *);
+	int run(TeXErrors &);
 
 	///
 	int getNumErrors() { return num_errors;}

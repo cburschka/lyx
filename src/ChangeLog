@@ -1,3 +1,20 @@
+2003-07-07  Alfredo Brauntein  <abraunst@libero.it>
+
+	* BufferView.[Ch] (newFile): Add
+	* BufferView_pimpl.[Ch] (newFile, connectBuffer, disconnectBuffer): Add
+	* LaTeX.[Ch] (message): added this signal and use it
+	* buffer.[Ch] (busy, message): added these signals and use them
+	* buffer_funcs.[Ch]: rename parseErrors to bufferErrors
+	* converter.C:
+	* exporter.C:
+	* format.C:
+	* importer.C: use buffer signals instead of direct bv calling
+	* lyx_cb.[Ch] (ShowMessage): removed
+	* lyx_main.C:
+	* lyxfunc.C:
+	* paragraph_funcs.C:
+	* text2.C: use buffer signals
+
 2003-07-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* introduce namespace lyx::graphics

@@ -159,7 +159,7 @@ LyX::LyX(int & argc, char * argv[])
 			}
 
 			last_loaded = bufferlist.newBuffer(s, false);
-			last_loaded->parseError.connect(boost::bind(&LyX::printError, this, _1));
+			last_loaded->error.connect(boost::bind(&LyX::printError, this, _1));
 			loadLyXFile(last_loaded, s);
 		}
 

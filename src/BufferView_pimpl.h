@@ -55,6 +55,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	 * change but don't need the full update() logic
 	 */
 	///
+	bool newFile(string const &, string const &, bool);
+	///
 	bool loadLyXFile(string const &, bool);
 	///
 	void repaint();
@@ -111,7 +113,16 @@ private:
 	ErrorList errorlist_;
 	/// add an error to the list
 	void addError(ErrorItem const &);
-
+	/// buffer errors signal connection
+	boost::signals::connection errorConnection_;
+	/// buffer messages signal connection
+	boost::signals::connection messageConnection_;
+	/// buffer busy status signal connection
+	boost::signals::connection busyConnection_;
+	/// connect to signals in the given buffer
+	void connectBuffer(Buffer & buf);
+	/// disconnect from signals in the given buffer
+	void disconnectBuffer();
 	/// track changes for the document
 	void trackChanges();
 
