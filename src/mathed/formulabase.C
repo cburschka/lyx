@@ -382,7 +382,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		sel = true; // fall through...
 
 	case LFUN_RIGHT:
-		result = DISPATCH_RESULT(mathcursor->right(sel));
+		result = mathcursor->right(sel) ? DISPATCHED : FINISHED_RIGHT;
 		updateLocal(bv, false);
 		break;
 
@@ -391,7 +391,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		sel = true; // fall through
 
 	case LFUN_LEFT:
-		result = DISPATCH_RESULT(mathcursor->left(sel));
+		result = mathcursor->left(sel) ? DISPATCHED : FINISHED;
 		updateLocal(bv, false);
 		break;
 
@@ -400,7 +400,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		sel = true;
 
 	case LFUN_UP:
-		result = DISPATCH_RESULT(mathcursor->up(sel));
+		result = mathcursor->up(sel) ? DISPATCHED : FINISHED_UP;
 		updateLocal(bv, false);
 		break;
 
@@ -409,7 +409,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		sel = true;
 
 	case LFUN_DOWN:
-		result = DISPATCH_RESULT(mathcursor->down(sel));
+		result = mathcursor->down(sel) ? DISPATCHED : FINISHED_DOWN;
 		updateLocal(bv, false);
 		break;
 
@@ -690,7 +690,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	default:
 		lyxerr << "Closed by action " << action << endl;
-		result =  FINISHED;
+		result = FINISHED_RIGHT;
 	}
 
 	mathcursor->normalize();
