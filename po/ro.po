@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.3\n"
-"POT-Creation-Date: 2003-03-18 18:01+0100\n"
+"POT-Creation-Date: 2003-04-01 13:53+0200\n"
 "PO-Revision-Date: 2002-12-19 18:59+0100\n"
 "Last-Translator: Claudiu Costin <claudiuc@geocities.com>\n"
 "Language-Team: Romanian <ro-kde@egroups.com>\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/xforms/forms/form_search.fd:116
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
 #: ../src/frontends/xforms/forms/form_tabular.fd:62
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:62
 #: src/frontends/xforms/FormMathsBitmap.C:110
@@ -67,7 +67,6 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
-#: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
 msgstr "OK"
 
@@ -1873,7 +1872,7 @@ msgid "Find next"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_search.fd:98
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 #, fuzzy
 msgid "Replace|#R"
 msgstr "Înlocuieºte"
@@ -1907,7 +1906,6 @@ msgid "Word count:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
 #, fuzzy
 msgid "Unknown:"
 msgstr "necunoscut"
@@ -1924,27 +1922,21 @@ msgid "Suggestions:|#g"
 msgstr "Question"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:134
-#: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
-msgid "Start|#S"
-msgstr "Stat"
-
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 #, fuzzy
 msgid "Add|#d"
 msgstr "Adaugã|#A"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 #, fuzzy
 msgid "Ignore|#I"
 msgstr "&Ignorã cuvîntul"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
 #, fuzzy
-msgid "Accept|#A"
-msgstr "Acceptat"
+msgid "Ignore All|#g"
+msgstr "&Ignorã cuvîntul"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:242
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
 msgstr ""
 
@@ -2665,6 +2657,7 @@ msgid "Available BibTeX databases"
 msgstr "Baza de date:"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
 msgid "&Add"
 msgstr "&Adaugã"
@@ -3976,12 +3969,12 @@ msgstr "Ruperi de paginã"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
 #, fuzzy
-msgid "Label width"
+msgid "Label Width"
 msgstr "Etichetã cu"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
 #, fuzzy
-msgid "Lon&gest label"
+msgid "Lo&ngest label"
 msgstr "Tabel lung"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
@@ -4558,12 +4551,17 @@ msgstr ""
 msgid "aspell"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:199
+#, fuzzy
+msgid "hspell"
+msgstr "Renunþã"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:238
 #, fuzzy
 msgid "Accept compound &words"
 msgstr "Acceptã cuvinte compuse|#c"
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:249
 #, fuzzy
 msgid "Use input encod&ing"
 msgstr "Utilizeazã codarea textului|#t"
@@ -4901,7 +4899,7 @@ msgstr "Fiºierul \""
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
+#: src/frontends/xforms/FormSpellchecker.C:34
 #, fuzzy
 msgid "Spellchecker"
 msgstr "Verificator ortografic"
@@ -4915,12 +4913,6 @@ msgstr "Question"
 #, fuzzy
 msgid "Replace word with current choice"
 msgstr "Îl înlocuiesc cu documentul curent?"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-#, fuzzy
-msgid "A&dd"
-msgstr "&Adaugã"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
 #, fuzzy
@@ -4939,8 +4931,8 @@ msgstr "Ignorã cuvîntul|#g"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
 #, fuzzy
-msgid "&Accept"
-msgstr "Acceptat"
+msgid "I&gnore All"
+msgstr "&Ignorã cuvîntul"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
 #, fuzzy
@@ -4962,19 +4954,15 @@ msgstr "Question"
 msgid "Current word"
 msgstr "Current"
 
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
+#, fuzzy
+msgid "Unknown word:"
+msgstr "necunoscut"
+
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 #, fuzzy
 msgid "Replace with selected word"
 msgstr "Îl înlocuiesc cu documentul curent?"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-#, fuzzy
-msgid "Start spellcheck"
-msgstr "Verificã ortografia|#S"
 
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
 #: src/frontends/qt2/QTabularCreate.C:31
@@ -5021,6 +5009,11 @@ msgstr "Orizontal"
 #, fuzzy
 msgid "Column"
 msgstr "Coloane"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+#, fuzzy
+msgid "A&dd"
+msgstr "&Adaugã"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
 #, fuzzy
@@ -9897,25 +9890,49 @@ msgstr "Am înlocuit un ºir."
 msgid " strings have been replaced."
 msgstr " ºiruri le-am înlocuit."
 
-#: src/frontends/controllers/ControlSpellchecker.C:178
-#, fuzzy
-msgid "Spellchecking completed!"
-msgstr "Verificare ortograficã completã!"
-
-#: src/frontends/controllers/ControlSpellchecker.C:186
-#: src/frontends/controllers/ControlSpellchecker.C:192
-#, fuzzy
-msgid "One word checked."
-msgstr "Am detectat o eroare"
-
-#: src/frontends/controllers/ControlSpellchecker.C:199
+#: src/frontends/controllers/ControlSpellchecker.C:106
 #, fuzzy
 msgid ""
-"The spell checker has died for some reason.\n"
+"The spell-checker could not be started.\n"
+"Maybe it is mis-configured."
+msgstr ""
+"Procesul ispell a murit dintr-un anumit motiv.\n"
+"Poate chiar a fost omorît."
+
+#: src/frontends/controllers/ControlSpellchecker.C:109
+#: src/frontends/controllers/ControlSpellchecker.C:202
+msgid "The spell-checker has failed"
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.C:196
+#, fuzzy
+msgid ""
+"The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "Procesul ispell a murit dintr-un anumit motiv.\n"
 "Poate chiar a fost omorît."
+
+#: src/frontends/controllers/ControlSpellchecker.C:218
+#, fuzzy, c-format
+msgid "%1$d words checked."
+msgstr "Am detectat o eroare"
+
+#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:228
+#, fuzzy
+msgid "One word checked."
+msgstr "Am detectat o eroare"
+
+#: src/frontends/controllers/ControlSpellchecker.C:226
+#, fuzzy
+msgid " words checked."
+msgstr "Am detectat o eroare"
+
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#, fuzzy
+msgid "Spell-checking is complete"
+msgstr "Verificare ortograficã completã!"
 
 #: src/frontends/controllers/ControlVCLog.C:57
 #, fuzzy
@@ -10627,11 +10644,6 @@ msgstr "Selecteazã document fiu"
 #, fuzzy
 msgid "ShowFile"
 msgstr "TitluScurt"
-
-#: src/frontends/qt2/QSpellchecker.C:133
-#, fuzzy
-msgid "Spellcheck complete"
-msgstr "Verificare ortograficã completã!"
 
 #: src/frontends/qt2/QTabular.C:38
 #, fuzzy
@@ -11775,52 +11787,37 @@ msgid "Show File"
 msgstr "TitluScurt"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSpellchecker.C:60
+#: src/frontends/xforms/FormSpellchecker.C:61
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
 
-#: src/frontends/xforms/FormSpellchecker.C:63
+#: src/frontends/xforms/FormSpellchecker.C:64
 msgid "List of replacement suggestions from dictionary."
 msgstr ""
 
-#: src/frontends/xforms/FormSpellchecker.C:67
-#: src/frontends/xforms/FormSpellchecker.C:148
-#, fuzzy
-msgid "Start the spellingchecker."
-msgstr "Verificã ortografia|#S"
-
-#: src/frontends/xforms/FormSpellchecker.C:69
+#: src/frontends/xforms/FormSpellchecker.C:68
 #, fuzzy
 msgid "Replace unknown word."
 msgstr "Înlocuieºte cuvîntul|#R"
 
-#: src/frontends/xforms/FormSpellchecker.C:71
+#: src/frontends/xforms/FormSpellchecker.C:70
 #, fuzzy
 msgid "Ignore unknown word."
 msgstr "Ignorã cuvîntul|#g"
 
-#: src/frontends/xforms/FormSpellchecker.C:73
+#: src/frontends/xforms/FormSpellchecker.C:72
 #, fuzzy
 msgid "Accept unknown word as known in this session."
 msgstr "Acceptã cuvîntul în aceastã sesiune|#A"
 
-#: src/frontends/xforms/FormSpellchecker.C:75
+#: src/frontends/xforms/FormSpellchecker.C:74
 #, fuzzy
 msgid "Add unknown word to personal dictionary."
 msgstr "Adaugã la dicþionarul personal|#I"
 
-#: src/frontends/xforms/FormSpellchecker.C:77
+#: src/frontends/xforms/FormSpellchecker.C:76
 msgid "Shows word count and progress on spell check."
 msgstr ""
-
-#: src/frontends/xforms/FormSpellchecker.C:140
-msgid "Stop|#S"
-msgstr ""
-
-#: src/frontends/xforms/FormSpellchecker.C:147
-#, fuzzy
-msgid "Stop the spellingchecker."
-msgstr "Verificã ortografia|#S"
 
 #: src/frontends/xforms/FormTabular.C:43
 #, fuzzy
@@ -13729,6 +13726,34 @@ msgstr ""
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Start|#S"
+#~ msgstr "Stat"
+
+#, fuzzy
+#~ msgid "Accept|#A"
+#~ msgstr "Acceptat"
+
+#, fuzzy
+#~ msgid "&Accept"
+#~ msgstr "Acceptat"
+
+#, fuzzy
+#~ msgid "Start spellcheck"
+#~ msgstr "Verificã ortografia|#S"
+
+#, fuzzy
+#~ msgid "Spellcheck complete"
+#~ msgstr "Verificare ortograficã completã!"
+
+#, fuzzy
+#~ msgid "Start the spellingchecker."
+#~ msgstr "Verificã ortografia|#S"
+
+#, fuzzy
+#~ msgid "Stop the spellingchecker."
+#~ msgstr "Verificã ortografia|#S"
 
 #~ msgid "tiny"
 #~ msgstr "tiny"

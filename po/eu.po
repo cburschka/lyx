@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.6fix1\n"
-"POT-Creation-Date: 2003-03-18 18:01+0100\n"
+"POT-Creation-Date: 2003-04-01 13:53+0200\n"
 "PO-Revision-Date: 2002-12-19 19:00+0100\n"
 "Last-Translator: Iñaki Larrañaga<>\n"
 "Language-Team: Euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/xforms/forms/form_search.fd:116
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
 #: ../src/frontends/xforms/forms/form_tabular.fd:62
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:62
 #: src/frontends/xforms/FormMathsBitmap.C:110
@@ -68,7 +68,6 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
-#: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
 msgstr "Ongi"
 
@@ -1871,7 +1870,7 @@ msgid "Find next"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_search.fd:98
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 #, fuzzy
 msgid "Replace|#R"
 msgstr "Ordezkatu"
@@ -1905,7 +1904,6 @@ msgid "Word count:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
 #, fuzzy
 msgid "Unknown:"
 msgstr "ezezaguna"
@@ -1922,27 +1920,21 @@ msgid "Suggestions:|#g"
 msgstr "Galdera"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:134
-#: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
-msgid "Start|#S"
-msgstr "Egoera"
-
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 #, fuzzy
 msgid "Add|#d"
 msgstr "Gehitu|#G"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 #, fuzzy
 msgid "Ignore|#I"
 msgstr "Ahaztu"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
 #, fuzzy
-msgid "Accept|#A"
-msgstr "Onartua"
+msgid "Ignore All|#g"
+msgstr "Ahaztu"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:242
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
 msgstr ""
 
@@ -2660,6 +2652,7 @@ msgid "Available BibTeX databases"
 msgstr "Datu Basea:"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
 msgid "&Add"
 msgstr "&Gehitu"
@@ -3968,12 +3961,12 @@ msgstr "Orri Jauziak"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
 #, fuzzy
-msgid "Label width"
+msgid "Label Width"
 msgstr "Txartel zabaleroa"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
 #, fuzzy
-msgid "Lon&gest label"
+msgid "Lo&ngest label"
 msgstr "Taula luzea|#L"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
@@ -4557,12 +4550,17 @@ msgstr ""
 msgid "aspell"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:199
+#, fuzzy
+msgid "hspell"
+msgstr "Gela"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:238
 #, fuzzy
 msgid "Accept compound &words"
 msgstr "Hitza bateratuak onartu|#H"
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:249
 #, fuzzy
 msgid "Use input encod&ing"
 msgstr "Sarrerako kodeaketa erabili|#s"
@@ -4900,7 +4898,7 @@ msgstr "Fitxategia `"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
+#: src/frontends/xforms/FormSpellchecker.C:34
 #, fuzzy
 msgid "Spellchecker"
 msgstr "Zuzentzailea"
@@ -4914,12 +4912,6 @@ msgstr "Galdera"
 #, fuzzy
 msgid "Replace word with current choice"
 msgstr "Oraingo idazkia ordezkatu?"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-#, fuzzy
-msgid "A&dd"
-msgstr "Gehitu"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
 #, fuzzy
@@ -4938,8 +4930,8 @@ msgstr "Ahaztu hitza|#h"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
 #, fuzzy
-msgid "&Accept"
-msgstr "Onartua"
+msgid "I&gnore All"
+msgstr "Ahaztu"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
 #, fuzzy
@@ -4961,19 +4953,15 @@ msgstr "Galdera"
 msgid "Current word"
 msgstr "Oraingoa"
 
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
+#, fuzzy
+msgid "Unknown word:"
+msgstr "ezezaguna"
+
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 #, fuzzy
 msgid "Replace with selected word"
 msgstr "Oraingo idazkia ordezkatu?"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-#, fuzzy
-msgid "Start spellcheck"
-msgstr "Zuzentzailea abiatu|#S"
 
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
 #: src/frontends/qt2/QTabularCreate.C:31
@@ -5020,6 +5008,11 @@ msgstr "Zeharretako lerrokaketa|#H"
 #, fuzzy
 msgid "Column"
 msgstr "Zutabeak"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+#, fuzzy
+msgid "A&dd"
+msgstr "Gehitu"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
 #, fuzzy
@@ -9856,24 +9849,49 @@ msgstr "Hitzkate bat ordezkatua izan da."
 msgid " strings have been replaced."
 msgstr " hizkikate ordezkatu dira."
 
-#: src/frontends/controllers/ControlSpellchecker.C:178
+#: src/frontends/controllers/ControlSpellchecker.C:106
 #, fuzzy
-msgid "Spellchecking completed!"
-msgstr "Zuzenketa lana amaitua!"
-
-#: src/frontends/controllers/ControlSpellchecker.C:186
-#: src/frontends/controllers/ControlSpellchecker.C:192
-#, fuzzy
-msgid "One word checked."
-msgstr "Akats bat atzeman da"
-
-#: src/frontends/controllers/ControlSpellchecker.C:199
 msgid ""
-"The spell checker has died for some reason.\n"
+"The spell-checker could not be started.\n"
+"Maybe it is mis-configured."
+msgstr ""
+"ispell lana zerbaitegatik akatua.\n"
+"Agian norbaitek akatu du."
+
+#: src/frontends/controllers/ControlSpellchecker.C:109
+#: src/frontends/controllers/ControlSpellchecker.C:202
+msgid "The spell-checker has failed"
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.C:196
+#, fuzzy
+msgid ""
+"The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "ispell lana zerbaitegatik akatua.\n"
 "Agian norbaitek akatu du."
+
+#: src/frontends/controllers/ControlSpellchecker.C:218
+#, fuzzy, c-format
+msgid "%1$d words checked."
+msgstr "Akats bat atzeman da"
+
+#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:228
+#, fuzzy
+msgid "One word checked."
+msgstr "Akats bat atzeman da"
+
+#: src/frontends/controllers/ControlSpellchecker.C:226
+#, fuzzy
+msgid " words checked."
+msgstr "Akats bat atzeman da"
+
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#, fuzzy
+msgid "Spell-checking is complete"
+msgstr "Zuzenketa lana amaitua!"
 
 #: src/frontends/controllers/ControlVCLog.C:57
 #, fuzzy
@@ -10582,11 +10600,6 @@ msgstr "Idazkia agindura bidali"
 #, fuzzy
 msgid "ShowFile"
 msgstr "IzenburuMotza"
-
-#: src/frontends/qt2/QSpellchecker.C:133
-#, fuzzy
-msgid "Spellcheck complete"
-msgstr "Zuzenketa lana amaitua!"
 
 #: src/frontends/qt2/QTabular.C:38
 #, fuzzy
@@ -11749,53 +11762,37 @@ msgid "Show File"
 msgstr "IzenburuMotza"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSpellchecker.C:60
+#: src/frontends/xforms/FormSpellchecker.C:61
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
 
-#: src/frontends/xforms/FormSpellchecker.C:63
+#: src/frontends/xforms/FormSpellchecker.C:64
 msgid "List of replacement suggestions from dictionary."
 msgstr ""
 
-#: src/frontends/xforms/FormSpellchecker.C:67
-#: src/frontends/xforms/FormSpellchecker.C:148
-#, fuzzy
-msgid "Start the spellingchecker."
-msgstr "Zuzentzailea abiatu|#S"
-
-#: src/frontends/xforms/FormSpellchecker.C:69
+#: src/frontends/xforms/FormSpellchecker.C:68
 #, fuzzy
 msgid "Replace unknown word."
 msgstr "Hitza Ordezkatu|#R"
 
-#: src/frontends/xforms/FormSpellchecker.C:71
+#: src/frontends/xforms/FormSpellchecker.C:70
 #, fuzzy
 msgid "Ignore unknown word."
 msgstr "Ahaztu hitza|#h"
 
-#: src/frontends/xforms/FormSpellchecker.C:73
+#: src/frontends/xforms/FormSpellchecker.C:72
 #, fuzzy
 msgid "Accept unknown word as known in this session."
 msgstr "Lanordu honetan hitza onartu|#A"
 
-#: src/frontends/xforms/FormSpellchecker.C:75
+#: src/frontends/xforms/FormSpellchecker.C:74
 #, fuzzy
 msgid "Add unknown word to personal dictionary."
 msgstr "Erabiltzailearen hiztegian Sartu|#I"
 
-#: src/frontends/xforms/FormSpellchecker.C:77
+#: src/frontends/xforms/FormSpellchecker.C:76
 msgid "Shows word count and progress on spell check."
 msgstr ""
-
-#: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
-msgid "Stop|#S"
-msgstr "nora"
-
-#: src/frontends/xforms/FormSpellchecker.C:147
-#, fuzzy
-msgid "Stop the spellingchecker."
-msgstr "Zuzentzailea abiatu|#S"
 
 #: src/frontends/xforms/FormTabular.C:43
 #, fuzzy
@@ -13781,6 +13778,38 @@ msgstr "Kakotx ezarria"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Start|#S"
+#~ msgstr "Egoera"
+
+#, fuzzy
+#~ msgid "Accept|#A"
+#~ msgstr "Onartua"
+
+#, fuzzy
+#~ msgid "&Accept"
+#~ msgstr "Onartua"
+
+#, fuzzy
+#~ msgid "Start spellcheck"
+#~ msgstr "Zuzentzailea abiatu|#S"
+
+#, fuzzy
+#~ msgid "Spellcheck complete"
+#~ msgstr "Zuzenketa lana amaitua!"
+
+#, fuzzy
+#~ msgid "Start the spellingchecker."
+#~ msgstr "Zuzentzailea abiatu|#S"
+
+#, fuzzy
+#~ msgid "Stop|#S"
+#~ msgstr "nora"
+
+#, fuzzy
+#~ msgid "Stop the spellingchecker."
+#~ msgstr "Zuzentzailea abiatu|#S"
 
 #~ msgid "tiny"
 #~ msgstr "ttipia"

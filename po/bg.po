@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
-"POT-Creation-Date: 2003-03-18 18:01+0100\n"
+"POT-Creation-Date: 2003-04-01 13:53+0200\n"
 "PO-Revision-Date: 2002-12-19 19:01+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/xforms/forms/form_search.fd:116
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
 #: ../src/frontends/xforms/forms/form_tabular.fd:62
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:62
 #: src/frontends/xforms/FormMathsBitmap.C:110
@@ -79,7 +79,6 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
-#: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
 msgstr "OK"
 
@@ -2225,7 +2224,7 @@ msgstr ""
 
 # src/sp_form.C:86
 #: ../src/frontends/xforms/forms/form_search.fd:98
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 #, fuzzy
 msgid "Replace|#R"
 msgstr "Замести"
@@ -2264,7 +2263,6 @@ msgstr ""
 
 # src/support/getUserName.C:13
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
 #, fuzzy
 msgid "Unknown:"
 msgstr "непозната"
@@ -2282,38 +2280,32 @@ msgstr "Замести"
 msgid "Suggestions:|#g"
 msgstr "Въпрос"
 
-# src/ext_l10n.h:362
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:134
-#: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
-msgid "Start|#S"
-msgstr "Държава"
-
 # src/frontends/xforms/FormPreferences.C:1148
 # src/frontends/xforms/FormPreferences.C:1150
 # src/frontends/xforms/FormPreferences.C:1427
 # src/frontends/xforms/FormPreferences.C:1429
 # src/frontends/xforms/form_preferences.C:607
 # src/frontends/xforms/form_preferences.C:694
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:134
 #, fuzzy
 msgid "Add|#d"
 msgstr "Добави(A)|#A"
 
 # src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52 src/lyxfont.C:58
 # src/lyxfont.C:62
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 #, fuzzy
 msgid "Ignore|#I"
 msgstr "Игнорирай"
 
-# src/LColor.C:75
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
+# src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52 src/lyxfont.C:58
+# src/lyxfont.C:62
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
 #, fuzzy
-msgid "Accept|#A"
-msgstr "акцент"
+msgid "Ignore All|#g"
+msgstr "Игнорирай"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:242
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
 msgstr ""
 
@@ -3177,6 +3169,7 @@ msgstr "Достъпни клавиши"
 
 # src/frontends/kde/citationdlg.C:61
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
 msgid "&Add"
 msgstr "(&A)Добави"
@@ -4705,13 +4698,13 @@ msgstr "Нова страница"
 # src/frontends/kde/dlg/parageneraldlgdata.C:151
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
 #, fuzzy
-msgid "Label width"
+msgid "Label Width"
 msgstr "Ширина на етикет"
 
 # src/frontends/xforms/form_tabular.C:113
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
 #, fuzzy
-msgid "Lon&gest label"
+msgid "Lo&ngest label"
 msgstr " Дълга таблица(L)|#L"
 
 # src/frontends/xforms/form_paragraph.C:145
@@ -5404,14 +5397,20 @@ msgstr ""
 msgid "aspell"
 msgstr ""
 
+# src/frontends/xforms/FormTabular.C:131
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:199
+#, fuzzy
+msgid "hspell"
+msgstr "Клетка"
+
 # src/frontends/xforms/form_preferences.C:315
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:238
 #, fuzzy
 msgid "Accept compound &words"
 msgstr "Приемане на съставни думи(w)|#w"
 
 # src/insets/insetinclude.C:76 src/insets/insetinclude.C:77
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:249
 #, fuzzy
 msgid "Use input encod&ing"
 msgstr "Използнай input|#i"
@@ -5817,7 +5816,7 @@ msgstr "Файлът `"
 # src/spellchecker.C:717
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
+#: src/frontends/xforms/FormSpellchecker.C:34
 msgid "Spellchecker"
 msgstr "Правопис"
 
@@ -5832,14 +5831,6 @@ msgstr "Въпрос"
 #, fuzzy
 msgid "Replace word with current choice"
 msgstr "Да го заменя ли с текущия документ?"
-
-# src/frontends/xforms/FormPreferences.C:1016
-# src/frontends/xforms/FormPreferences.C:1288
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-#, fuzzy
-msgid "A&dd"
-msgstr "Добави"
 
 # src/sp_form.C:95
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
@@ -5860,11 +5851,12 @@ msgstr "Игнорирай"
 msgid "Ignore this word"
 msgstr "Игнорирай(g)|#g"
 
-# src/LColor.C:75
+# src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52 src/lyxfont.C:58
+# src/lyxfont.C:62
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
 #, fuzzy
-msgid "&Accept"
-msgstr "акцент"
+msgid "I&gnore All"
+msgstr "Игнорирай"
 
 # src/sp_form.C:99
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
@@ -5888,21 +5880,17 @@ msgstr "Въпрос"
 msgid "Current word"
 msgstr ""
 
+# src/support/getUserName.C:13
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
+#, fuzzy
+msgid "Unknown word:"
+msgstr "непозната"
+
 # src/lyx_cb.C:230
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 #, fuzzy
 msgid "Replace with selected word"
 msgstr "Да го заменя ли с текущия документ?"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr ""
-
-# src/sp_form.C:93
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-#, fuzzy
-msgid "Start spellcheck"
-msgstr "Стартирай правописна проверка(S)|#S"
 
 # src/LyXAction.C:388
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
@@ -5958,6 +5946,13 @@ msgstr "Хориз. Подравняване(H)|#H"
 #, fuzzy
 msgid "Column"
 msgstr "Колони"
+
+# src/frontends/xforms/FormPreferences.C:1016
+# src/frontends/xforms/FormPreferences.C:1288
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+#, fuzzy
+msgid "A&dd"
+msgstr "Добави"
 
 # src/frontends/xforms/form_tabular.C:71
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
@@ -11761,27 +11756,55 @@ msgstr "1 низ беше заместен."
 msgid " strings have been replaced."
 msgstr " низа бяха заместени."
 
-# src/spellchecker.C:967
-#: src/frontends/controllers/ControlSpellchecker.C:178
+# src/spellchecker.C:971
+#: src/frontends/controllers/ControlSpellchecker.C:106
 #, fuzzy
-msgid "Spellchecking completed!"
-msgstr "Правописната проверка завърши!"
+msgid ""
+"The spell-checker could not be started.\n"
+"Maybe it is mis-configured."
+msgstr ""
+"Правописната проверка се провали по някаква причина.\n"
+"Възможно е да е била прекъсната с 'kill'."
 
-# src/converter.C:783 src/converter.C:853
-#: src/frontends/controllers/ControlSpellchecker.C:186
-#: src/frontends/controllers/ControlSpellchecker.C:192
-#, fuzzy
-msgid "One word checked."
-msgstr "Открита е една грешка"
+#: src/frontends/controllers/ControlSpellchecker.C:109
+#: src/frontends/controllers/ControlSpellchecker.C:202
+msgid "The spell-checker has failed"
+msgstr ""
 
 # src/spellchecker.C:971
-#: src/frontends/controllers/ControlSpellchecker.C:199
+#: src/frontends/controllers/ControlSpellchecker.C:196
+#, fuzzy
 msgid ""
-"The spell checker has died for some reason.\n"
+"The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "Правописната проверка се провали по някаква причина.\n"
 "Възможно е да е била прекъсната с 'kill'."
+
+# src/converter.C:783 src/converter.C:853
+#: src/frontends/controllers/ControlSpellchecker.C:218
+#, fuzzy, c-format
+msgid "%1$d words checked."
+msgstr "Открита е една грешка"
+
+# src/converter.C:783 src/converter.C:853
+#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:228
+#, fuzzy
+msgid "One word checked."
+msgstr "Открита е една грешка"
+
+# src/converter.C:783 src/converter.C:853
+#: src/frontends/controllers/ControlSpellchecker.C:226
+#, fuzzy
+msgid " words checked."
+msgstr "Открита е една грешка"
+
+# src/spellchecker.C:967
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#, fuzzy
+msgid "Spell-checking is complete"
+msgstr "Правописната проверка завърши!"
 
 # src/LaTeXLog.C:59 src/LaTeXLog.C:62
 #: src/frontends/controllers/ControlVCLog.C:57
@@ -12598,12 +12621,6 @@ msgstr "Подаване на документа към команда"
 #, fuzzy
 msgid "ShowFile"
 msgstr "(&F)Файл"
-
-# src/spellchecker.C:967
-#: src/frontends/qt2/QSpellchecker.C:133
-#, fuzzy
-msgid "Spellcheck complete"
-msgstr "Правописната проверка завърши!"
 
 # src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
 # src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
@@ -13904,60 +13921,41 @@ msgid "Show File"
 msgstr "(&F)Файл"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSpellchecker.C:60
+#: src/frontends/xforms/FormSpellchecker.C:61
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
 
-#: src/frontends/xforms/FormSpellchecker.C:63
+#: src/frontends/xforms/FormSpellchecker.C:64
 msgid "List of replacement suggestions from dictionary."
 msgstr ""
 
-# src/sp_form.C:93
-#: src/frontends/xforms/FormSpellchecker.C:67
-#: src/frontends/xforms/FormSpellchecker.C:148
-#, fuzzy
-msgid "Start the spellingchecker."
-msgstr "Стартирай правописна проверка(S)|#S"
-
 # src/sp_form.C:113
-#: src/frontends/xforms/FormSpellchecker.C:69
+#: src/frontends/xforms/FormSpellchecker.C:68
 #, fuzzy
 msgid "Replace unknown word."
 msgstr "Замести дума(R)|#R"
 
 # src/sp_form.C:97
-#: src/frontends/xforms/FormSpellchecker.C:71
+#: src/frontends/xforms/FormSpellchecker.C:70
 #, fuzzy
 msgid "Ignore unknown word."
 msgstr "Игнорирай(g)|#g"
 
 # src/sp_form.C:99
-#: src/frontends/xforms/FormSpellchecker.C:73
+#: src/frontends/xforms/FormSpellchecker.C:72
 #, fuzzy
 msgid "Accept unknown word as known in this session."
 msgstr "Приеми думата за тази сесия(A)|#A"
 
 # src/sp_form.C:95
-#: src/frontends/xforms/FormSpellchecker.C:75
+#: src/frontends/xforms/FormSpellchecker.C:74
 #, fuzzy
 msgid "Add unknown word to personal dictionary."
 msgstr "Вмъкни в личния речник(I)|#I"
 
-#: src/frontends/xforms/FormSpellchecker.C:77
+#: src/frontends/xforms/FormSpellchecker.C:76
 msgid "Shows word count and progress on spell check."
 msgstr ""
-
-# src/frontends/xforms/form_print.C:127
-#: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
-msgid "Stop|#S"
-msgstr "до"
-
-# src/sp_form.C:93
-#: src/frontends/xforms/FormSpellchecker.C:147
-#, fuzzy
-msgid "Stop the spellingchecker."
-msgstr "Стартирай правописна проверка(S)|#S"
 
 # src/LColor.C:78
 #: src/frontends/xforms/FormTabular.C:43
@@ -16306,6 +16304,46 @@ msgstr "Маркиране установено"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+# src/ext_l10n.h:362
+#, fuzzy
+#~ msgid "Start|#S"
+#~ msgstr "Държава"
+
+# src/LColor.C:75
+#, fuzzy
+#~ msgid "Accept|#A"
+#~ msgstr "акцент"
+
+# src/LColor.C:75
+#, fuzzy
+#~ msgid "&Accept"
+#~ msgstr "акцент"
+
+# src/sp_form.C:93
+#, fuzzy
+#~ msgid "Start spellcheck"
+#~ msgstr "Стартирай правописна проверка(S)|#S"
+
+# src/spellchecker.C:967
+#, fuzzy
+#~ msgid "Spellcheck complete"
+#~ msgstr "Правописната проверка завърши!"
+
+# src/sp_form.C:93
+#, fuzzy
+#~ msgid "Start the spellingchecker."
+#~ msgstr "Стартирай правописна проверка(S)|#S"
+
+# src/frontends/xforms/form_print.C:127
+#, fuzzy
+#~ msgid "Stop|#S"
+#~ msgstr "до"
+
+# src/sp_form.C:93
+#, fuzzy
+#~ msgid "Stop the spellingchecker."
+#~ msgstr "Стартирай правописна проверка(S)|#S"
 
 # src/frontends/xforms/form_preferences.C:165
 #~ msgid "tiny"

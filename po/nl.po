@@ -17,7 +17,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
-"POT-Creation-Date: 2003-03-07 16:45+0100\n"
+"POT-Creation-Date: 2003-04-01 13:53+0200\n"
 "PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/xforms/forms/form_search.fd:116
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
 #: ../src/frontends/xforms/forms/form_tabular.fd:62
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:62
 #: src/frontends/xforms/FormMathsBitmap.C:110
@@ -81,7 +81,6 @@ msgstr "Toets:|#T"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
-#: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
 msgstr "OK"
 
@@ -1686,7 +1685,7 @@ msgid "Find next"
 msgstr "Volgende zoeken"
 
 #: ../src/frontends/xforms/forms/form_search.fd:98
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 msgid "Replace|#R"
 msgstr "Vervangen|#V"
 
@@ -1716,7 +1715,6 @@ msgid "Word count:"
 msgstr "Aantal woorden:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
 msgid "Unknown:"
 msgstr "Onbekend:"
 
@@ -1729,25 +1727,20 @@ msgstr "Vervanging:"
 msgid "Suggestions:|#g"
 msgstr "Suggesties:|#g"
 
-# Starten
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:134
-#: src/frontends/xforms/FormSpellchecker.C:140
-msgid "Start|#S"
-msgstr "Beginnen|#B"
-
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 msgid "Add|#d"
 msgstr "Toevoegen|#t"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 msgid "Ignore|#I"
 msgstr "Negeren|#N"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
-msgid "Accept|#A"
-msgstr "Accepteren|#A"
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#, fuzzy
+msgid "Ignore All|#g"
+msgstr "Negeren|#N"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:242
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
 msgstr "0 %"
 
@@ -2380,6 +2373,7 @@ msgid "Available BibTeX databases"
 msgstr "Beschikbare BibTeX-databases"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
 msgid "&Add"
 msgstr "&Toevoegen"
@@ -2644,7 +2638,7 @@ msgstr "Huidige geselecteerde literatuurverwijzingen"
 msgid "Selected"
 msgstr "Geselecteerd"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:131
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:135
 msgid "Info"
 msgstr "Informatie"
 
@@ -3567,12 +3561,12 @@ msgstr "Paginascheidingen"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
 #, fuzzy
-msgid "Label width"
+msgid "Label Width"
 msgstr "d Labelbreedte:|#d"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
 #, fuzzy
-msgid "Lon&gest label"
+msgid "Lo&ngest label"
 msgstr "Lange tabel"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
@@ -4120,11 +4114,16 @@ msgstr "ispell"
 msgid "aspell"
 msgstr "aspell"
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:199
+#, fuzzy
+msgid "hspell"
+msgstr "ispell"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:238
 msgid "Accept compound &words"
 msgstr "&Samengestelde woorden accepteren"
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:249
 #, fuzzy
 msgid "Use input encod&ing"
 msgstr "Gebruik input|#I"
@@ -4431,7 +4430,7 @@ msgstr "Bestand:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
+#: src/frontends/xforms/FormSpellchecker.C:34
 msgid "Spellchecker"
 msgstr "Spellingscontrole"
 
@@ -4442,11 +4441,6 @@ msgstr "Suggesties:"
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
 msgid "Replace word with current choice"
 msgstr "Woord vervangen door huidige keuze"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-msgid "A&dd"
-msgstr "&Toevoegen"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
 #, fuzzy
@@ -4462,8 +4456,9 @@ msgid "Ignore this word"
 msgstr "Dit woord negeren"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-msgid "&Accept"
-msgstr "&Accepteren"
+#, fuzzy
+msgid "I&gnore All"
+msgstr "Negeren"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
 msgid "Accept word for this session"
@@ -4481,17 +4476,14 @@ msgstr "Suggesties"
 msgid "Current word"
 msgstr "Huidige woord"
 
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
+#, fuzzy
+msgid "Unknown word:"
+msgstr "Onbekend:"
+
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 msgid "Replace with selected word"
 msgstr "Vervangen door geselecteerde woord"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr "&Beginnen..."
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-msgid "Start spellcheck"
-msgstr "Spellingscontrole starten"
 
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
 #: src/frontends/qt2/QTabularCreate.C:31
@@ -4532,6 +4524,10 @@ msgstr "Hor. uitlijnen|#H"
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
 msgid "Column"
 msgstr "Kolom"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+msgid "A&dd"
+msgstr "&Toevoegen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
 msgid "Append column (right)"
@@ -5328,7 +5324,6 @@ msgstr ""
 #: ../lib/layouts/amsmaths-plain.inc:243 ../lib/layouts/amsmaths-seq.inc:184
 #: ../lib/layouts/amsmaths.inc:462 ../lib/layouts/egs.layout:615
 #: ../lib/layouts/svjour.inc:345 ../lib/layouts/elsart.layout:461
-#, fuzzy
 msgid "Acknowledgement"
 msgstr ""
 
@@ -5776,7 +5771,7 @@ msgid "Code"
 msgstr "Sluiten"
 
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/heb-article.layout:16
-#: ../lib/layouts/lyxmacros.inc:47
+#: ../lib/layouts/lyxmacros.inc:47 ../lib/layouts/scrlttr2.layout:345
 #, fuzzy
 msgid "Comment"
 msgstr "Commentaar:"
@@ -7640,41 +7635,41 @@ msgstr "LaTeX Configuratie|L"
 msgid "About LyX|X"
 msgstr "Over LyX|X"
 
-#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:301 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Fout!"
 
-#: src/BufferView.C:294
+#: src/BufferView.C:302
 msgid "Specified file is unreadable: "
 msgstr "Opgegeven bestand is onleesbaar: "
 
-#: src/BufferView.C:303 src/lyx_cb.C:447
+#: src/BufferView.C:311 src/lyx_cb.C:447
 msgid "Error! Cannot open specified file:"
 msgstr "Fout! Kan gegeven bestand niet openen:"
 
-#: src/BufferView.C:563 src/LyXAction.C:377
+#: src/BufferView.C:571 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Herstellen"
 
-#: src/BufferView.C:568
+#: src/BufferView.C:576
 #, fuzzy
 msgid "No further undo information"
 msgstr "Niets meer ongedaan te maken"
 
-#: src/BufferView.C:580 src/LyXAction.C:334
+#: src/BufferView.C:588 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Opnieuw"
 
-#: src/BufferView.C:585
+#: src/BufferView.C:593
 msgid "No further redo information"
 msgstr "Geen verdere Herhaal mogelijk"
 
-#: src/BufferView.C:596
+#: src/BufferView.C:604
 msgid "Paragraph environment type copied"
 msgstr "Alineaomgeving gekopieerd"
 
-#: src/BufferView.C:605
+#: src/BufferView.C:613
 msgid "Paragraph environment type set"
 msgstr "Alineaomgeving ingesteld"
 
@@ -7810,7 +7805,9 @@ msgstr " naar "
 msgid ""
 "\n"
 "because of class conversion from\n"
-msgstr "\nvanwege een klasse-conversie van\n"
+msgstr ""
+"\n"
+"vanwege een klasse-conversie van\n"
 
 #: src/LColor.C:49
 msgid "none"
@@ -8024,20 +8021,20 @@ msgstr "erven"
 msgid "ignore"
 msgstr "negeren"
 
-#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
+#: src/LaTeX.C:210 src/LaTeX.C:299 src/LaTeX.C:360
 #, fuzzy, c-format
 msgid "LaTeX run number %1$d"
 msgstr "LaTeX sessienummer"
 
-#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
+#: src/LaTeX.C:212 src/LaTeX.C:301 src/LaTeX.C:362
 msgid "LaTeX run number "
 msgstr "LaTeX sessienummer "
 
-#: src/LaTeX.C:247 src/LaTeX.C:331
+#: src/LaTeX.C:250 src/LaTeX.C:334
 msgid "Running MakeIndex."
 msgstr "MakeIndex is bezig."
 
-#: src/LaTeX.C:262
+#: src/LaTeX.C:265
 msgid "Running BibTeX."
 msgstr "BibTeX is bezig."
 
@@ -8744,8 +8741,8 @@ msgstr "chktex werkte niet!"
 msgid "Could not run with file:"
 msgstr "Kon niet draaien met bestand:"
 
-#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:112 src/lyxvc.C:144
-#: src/lyxvc.C:173
+#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:116 src/lyxvc.C:148
+#: src/lyxvc.C:177
 msgid "Changes in document:"
 msgstr "Veranderingen in document:"
 
@@ -9411,22 +9408,48 @@ msgstr "Tekenreeks is vervangen."
 msgid " strings have been replaced."
 msgstr " tekenreeksen zijn vervangen."
 
-#: src/frontends/controllers/ControlSpellchecker.C:178
-msgid "Spellchecking completed!"
-msgstr "Spellingcontrole compleet!"
-
-#: src/frontends/controllers/ControlSpellchecker.C:186
-#: src/frontends/controllers/ControlSpellchecker.C:192
-msgid "One word checked."
-msgstr "Een woord gecontroleerd."
-
-#: src/frontends/controllers/ControlSpellchecker.C:199
+#: src/frontends/controllers/ControlSpellchecker.C:106
+#, fuzzy
 msgid ""
-"The spell checker has died for some reason.\n"
+"The spell-checker could not be started.\n"
+"Maybe it is mis-configured."
+msgstr ""
+"De spellingscontrole is om een of andere reden opgehouden.\n"
+"Misschien heeft het proces een kill opdracht ontvangen."
+
+#: src/frontends/controllers/ControlSpellchecker.C:109
+#: src/frontends/controllers/ControlSpellchecker.C:202
+msgid "The spell-checker has failed"
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.C:196
+#, fuzzy
+msgid ""
+"The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "De spellingscontrole is om een of andere reden opgehouden.\n"
 "Misschien heeft het proces een kill opdracht ontvangen."
+
+#: src/frontends/controllers/ControlSpellchecker.C:218
+#, fuzzy, c-format
+msgid "%1$d words checked."
+msgstr "Een woord gecontroleerd."
+
+#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:228
+msgid "One word checked."
+msgstr "Een woord gecontroleerd."
+
+#: src/frontends/controllers/ControlSpellchecker.C:226
+#, fuzzy
+msgid " words checked."
+msgstr "Een woord gecontroleerd."
+
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#, fuzzy
+msgid "Spell-checking is complete"
+msgstr "Spellingcontrole compleet!"
 
 #: src/frontends/controllers/ControlVCLog.C:57
 #, fuzzy
@@ -9825,11 +9848,11 @@ msgstr "LaTeX|#L"
 msgid "External"
 msgstr "x Extra|#X"
 
-#: src/frontends/qt2/QExternalDialog.C:87
+#: src/frontends/qt2/QExternalDialog.C:89
 msgid "External material (*)"
 msgstr ""
 
-#: src/frontends/qt2/QExternalDialog.C:89
+#: src/frontends/qt2/QExternalDialog.C:91
 #, fuzzy
 msgid "Select external material"
 msgstr "Volgende regel selecteren"
@@ -10103,11 +10126,6 @@ msgstr "Zend document naar opdracht"
 #, fuzzy
 msgid "ShowFile"
 msgstr "f Bestand"
-
-#: src/frontends/qt2/QSpellchecker.C:133
-#, fuzzy
-msgid "Spellcheck complete"
-msgstr "Controle compleet!"
 
 #: src/frontends/qt2/QTabular.C:38
 #, fuzzy
@@ -10452,7 +10470,8 @@ msgstr " Geen | Smalle marges | Zeer smalle marges | Zeer brede marges "
 
 #: src/frontends/xforms/FormDocument.C:278
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr " ``citaat'' | ''citaat'' | ,,citaat`` | ,,citaat'' | «citaat» | »citaat« "
+msgstr ""
+" ``citaat'' | ''citaat'' | ,,citaat`` | ,,citaat'' | «citaat» | »citaat« "
 
 #: src/frontends/xforms/FormDocument.C:303
 msgid " Author-year | Numerical "
@@ -11042,7 +11061,9 @@ msgstr "Lettertypes moeten positief zijn!"
 msgid ""
 "Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
 "> Large > Larger > Largest > Huge > Huger."
-msgstr "Lettertypes moeten ingevoerd worden in de volgorde  Minuscuul > Kleinst > Kleiner > Klein > Normaal > Groot > Groter > Grootst > Enorm > Gigantisch."
+msgstr ""
+"Lettertypes moeten ingevoerd worden in de volgorde  Minuscuul > Kleinst > "
+"Kleiner > Klein > Normaal > Groot > Groter > Grootst > Enorm > Gigantisch."
 
 #: src/frontends/xforms/FormPreferences.C:2826
 msgid " ispell | aspell "
@@ -11198,51 +11219,37 @@ msgid "Show File"
 msgstr "Bestand weergeven"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSpellchecker.C:60
+#: src/frontends/xforms/FormSpellchecker.C:61
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
 
-#: src/frontends/xforms/FormSpellchecker.C:63
+#: src/frontends/xforms/FormSpellchecker.C:64
 msgid "List of replacement suggestions from dictionary."
 msgstr ""
 
-#: src/frontends/xforms/FormSpellchecker.C:67
-#: src/frontends/xforms/FormSpellchecker.C:148
-msgid "Start the spellingchecker."
-msgstr "Spellingscontrole starten."
-
-#: src/frontends/xforms/FormSpellchecker.C:69
+#: src/frontends/xforms/FormSpellchecker.C:68
 #, fuzzy
 msgid "Replace unknown word."
 msgstr "r Vervang woord|#R"
 
-#: src/frontends/xforms/FormSpellchecker.C:71
+#: src/frontends/xforms/FormSpellchecker.C:70
 #, fuzzy
 msgid "Ignore unknown word."
 msgstr "g Woord negeren|#g"
 
-#: src/frontends/xforms/FormSpellchecker.C:73
+#: src/frontends/xforms/FormSpellchecker.C:72
 #, fuzzy
 msgid "Accept unknown word as known in this session."
 msgstr "a Woord aanvaarden in deze sessie|#A"
 
-#: src/frontends/xforms/FormSpellchecker.C:75
+#: src/frontends/xforms/FormSpellchecker.C:74
 #, fuzzy
 msgid "Add unknown word to personal dictionary."
 msgstr "i Aan eigen woordenlijst toevoegen|#I"
 
-#: src/frontends/xforms/FormSpellchecker.C:77
+#: src/frontends/xforms/FormSpellchecker.C:76
 msgid "Shows word count and progress on spell check."
 msgstr ""
-
-#: src/frontends/xforms/FormSpellchecker.C:140
-msgid "Stop|#S"
-msgstr "Stoppen|#S"
-
-#: src/frontends/xforms/FormSpellchecker.C:147
-#, fuzzy
-msgid "Stop the spellingchecker."
-msgstr "Spellingscontrole beeindigen"
 
 #: src/frontends/xforms/FormTabular.C:43
 #, fuzzy
@@ -12498,7 +12505,7 @@ msgstr "Een document onder de naam"
 msgid "already exists. Overwrite?"
 msgstr "bestaat al. Overschrijven?"
 
-#: src/lyxfunc.C:1917
+#: src/lyxfunc.C:1909
 msgid "Welcome to LyX!"
 msgstr "Welkom in LyX!"
 
@@ -12846,7 +12853,8 @@ msgstr ""
 
 #: src/lyxrc.C:2110
 msgid "The LaTeX command for changing back to the language of the document."
-msgstr "De LaTeX-opdracht om weer terug te keren naar de taal van het document."
+msgstr ""
+"De LaTeX-opdracht om weer terug te keren naar de taal van het document."
 
 #: src/lyxrc.C:2114
 msgid "The LaTeX command for local changing of the language."
@@ -12913,59 +12921,59 @@ msgstr "Controleer de inhoud van bestand \"textclass.lst\""
 msgid "Sorry, has to exit :-("
 msgstr "Helaas, moet ophouden :-("
 
-#: src/lyxvc.C:82
+#: src/lyxvc.C:86
 msgid "File not saved"
 msgstr "Bestand niet opgeslagen"
 
-#: src/lyxvc.C:83
+#: src/lyxvc.C:87
 msgid "You must save the file"
 msgstr "U moet het bestand opslaan"
 
-#: src/lyxvc.C:84
+#: src/lyxvc.C:88
 msgid "before it can be registered."
 msgstr "voordat het kan worden geregistreerd"
 
 # voortzetten -> doorgaan?
-#: src/lyxvc.C:114 src/lyxvc.C:146
+#: src/lyxvc.C:118 src/lyxvc.C:150
 msgid "Save document and proceed?"
 msgstr "Document opslaan en voortzetten?"
 
-#: src/lyxvc.C:126
+#: src/lyxvc.C:130
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Oorspronkelijke beschrijving"
 
-#: src/lyxvc.C:127
+#: src/lyxvc.C:131
 msgid "(no initial description)"
 msgstr "(geen oorspronkelijke omschrijving)"
 
-#: src/lyxvc.C:132
+#: src/lyxvc.C:136
 msgid "This document has NOT been registered."
 msgstr "Dit document is NIET geregistreerd."
 
-#: src/lyxvc.C:157
+#: src/lyxvc.C:161
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Logmededeling"
 
-#: src/lyxvc.C:160
+#: src/lyxvc.C:164
 msgid "(no log message)"
 msgstr "(geen logbericht)"
 
-#: src/lyxvc.C:175
+#: src/lyxvc.C:179
 msgid "Ignore changes and proceed with check out?"
 msgstr "Veranderingen negeren en voortzetten met checkout?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:190
+#: src/lyxvc.C:193
 msgid "When you revert, you will loose all changes made"
 msgstr "Als u terugkeert naar vorige versie, verliest u alle veranderingen"
 
-#: src/lyxvc.C:191
+#: src/lyxvc.C:194
 msgid "to the document since the last check in."
 msgstr "aan het document sinds laatste inboeking."
 
-#: src/lyxvc.C:192
+#: src/lyxvc.C:195
 msgid "Do you still want to do it?"
 msgstr "Wilt u dit alsnog doen?"
 
@@ -13117,3 +13125,33 @@ msgstr "Merkteken geplaatst"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-functie 'layout' heeft een argument nodig."
+
+# Starten
+#~ msgid "Start|#S"
+#~ msgstr "Beginnen|#B"
+
+#~ msgid "Accept|#A"
+#~ msgstr "Accepteren|#A"
+
+#~ msgid "&Accept"
+#~ msgstr "&Accepteren"
+
+#~ msgid "&Start..."
+#~ msgstr "&Beginnen..."
+
+#~ msgid "Start spellcheck"
+#~ msgstr "Spellingscontrole starten"
+
+#, fuzzy
+#~ msgid "Spellcheck complete"
+#~ msgstr "Controle compleet!"
+
+#~ msgid "Start the spellingchecker."
+#~ msgstr "Spellingscontrole starten."
+
+#~ msgid "Stop|#S"
+#~ msgstr "Stoppen|#S"
+
+#, fuzzy
+#~ msgid "Stop the spellingchecker."
+#~ msgstr "Spellingscontrole beeindigen"

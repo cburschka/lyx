@@ -169,7 +169,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
-"POT-Creation-Date: 2003-03-18 18:01+0100\n"
+"POT-Creation-Date: 2003-04-01 13:53+0200\n"
 "PO-Revision-Date: 2001-06-23 02:56+01:00\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -185,7 +185,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/xforms/forms/form_search.fd:116
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
 #: ../src/frontends/xforms/forms/form_tabular.fd:62
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:62
 #: src/frontends/xforms/FormMathsBitmap.C:110
@@ -234,7 +234,6 @@ msgstr "Clé :|#C"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
-#: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
 msgstr "OK"
 
@@ -1798,7 +1797,7 @@ msgid "Find next"
 msgstr "Suivant"
 
 #: ../src/frontends/xforms/forms/form_search.fd:98
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 msgid "Replace|#R"
 msgstr "Remplacer|#R"
 
@@ -1827,7 +1826,6 @@ msgid "Word count:"
 msgstr "Nombre de mots :"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
 msgid "Unknown:"
 msgstr "Mot inconnu :"
 
@@ -1841,23 +1839,19 @@ msgid "Suggestions:|#g"
 msgstr "Suggestions :|#g"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:134
-#: src/frontends/xforms/FormSpellchecker.C:140
-msgid "Start|#S"
-msgstr "Démarrer|#D"
-
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 msgid "Add|#d"
 msgstr "Ajouter|#j"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 msgid "Ignore|#I"
 msgstr "Ignorer|#I"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
-msgid "Accept|#A"
-msgstr "Accepter|#A"
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#, fuzzy
+msgid "Ignore All|#g"
+msgstr "Ignorer|#I"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:242
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
 msgstr "0 %"
 
@@ -2480,6 +2474,7 @@ msgid "Available BibTeX databases"
 msgstr "Bases de Données BibTeX disponibles"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
 msgid "&Add"
 msgstr "&Ajouter"
@@ -3622,11 +3617,13 @@ msgid "&Lines && Pagebreaks"
 msgstr "Sauts de &Ligne et de Page"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
-msgid "Label width"
+#, fuzzy
+msgid "Label Width"
 msgstr "Taille du marqueur"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
-msgid "Lon&gest label"
+#, fuzzy
+msgid "Lo&ngest label"
 msgstr "&Marqueur Maxi"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
@@ -4115,11 +4112,16 @@ msgstr "ispell"
 msgid "aspell"
 msgstr "aspell"
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:199
+#, fuzzy
+msgid "hspell"
+msgstr "ispell"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:238
 msgid "Accept compound &words"
 msgstr "Accepter les &Mots Composés"
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:249
 msgid "Use input encod&ing"
 msgstr "Utiliser l'&Encodage d'Entrée"
 
@@ -4407,7 +4409,7 @@ msgstr "Fichier :"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
+#: src/frontends/xforms/FormSpellchecker.C:34
 msgid "Spellchecker"
 msgstr "Correcteur Orthographique"
 
@@ -4418,11 +4420,6 @@ msgstr "Suggestions :"
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
 msgid "Replace word with current choice"
 msgstr "Remplace le mot par le choix sélectionné"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-msgid "A&dd"
-msgstr "A&jouter"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
 msgid "Add the word to your personal dictionary"
@@ -4437,8 +4434,9 @@ msgid "Ignore this word"
 msgstr "Ignore le mot"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-msgid "&Accept"
-msgstr "A&ccepter"
+#, fuzzy
+msgid "I&gnore All"
+msgstr "Ignorer"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
 msgid "Accept word for this session"
@@ -4456,17 +4454,14 @@ msgstr "Suggestions"
 msgid "Current word"
 msgstr "Mot actuel"
 
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
+#, fuzzy
+msgid "Unknown word:"
+msgstr "Mot inconnu :"
+
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 msgid "Replace with selected word"
 msgstr "Remplace par le mot sélectionné"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr "&Commencer..."
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-msgid "Start spellcheck"
-msgstr "Commence la correction"
 
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
 #: src/frontends/qt2/QTabularCreate.C:31
@@ -4505,6 +4500,10 @@ msgstr "Alignement horizontal dans la colonne"
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
 msgid "Column"
 msgstr "Colonne"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+msgid "A&dd"
+msgstr "A&jouter"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
 msgid "Append column (right)"
@@ -9050,22 +9049,48 @@ msgstr "1 chaîne remplacée."
 msgid " strings have been replaced."
 msgstr " chaînes remplacées."
 
-#: src/frontends/controllers/ControlSpellchecker.C:178
-msgid "Spellchecking completed!"
-msgstr "Correction orthographique terminée !"
-
-#: src/frontends/controllers/ControlSpellchecker.C:186
-#: src/frontends/controllers/ControlSpellchecker.C:192
-msgid "One word checked."
-msgstr "Un mot vérifié."
-
-#: src/frontends/controllers/ControlSpellchecker.C:199
+#: src/frontends/controllers/ControlSpellchecker.C:106
+#, fuzzy
 msgid ""
-"The spell checker has died for some reason.\n"
+"The spell-checker could not be started.\n"
+"Maybe it is mis-configured."
+msgstr ""
+"Le processus de correction orthographique a été interrompu.\n"
+"Il a peut-être été tué."
+
+#: src/frontends/controllers/ControlSpellchecker.C:109
+#: src/frontends/controllers/ControlSpellchecker.C:202
+msgid "The spell-checker has failed"
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.C:196
+#, fuzzy
+msgid ""
+"The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "Le processus de correction orthographique a été interrompu.\n"
 "Il a peut-être été tué."
+
+#: src/frontends/controllers/ControlSpellchecker.C:218
+#, fuzzy, c-format
+msgid "%1$d words checked."
+msgstr "Un mot vérifié."
+
+#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:228
+msgid "One word checked."
+msgstr "Un mot vérifié."
+
+#: src/frontends/controllers/ControlSpellchecker.C:226
+#, fuzzy
+msgid " words checked."
+msgstr "Un mot vérifié."
+
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#, fuzzy
+msgid "Spell-checking is complete"
+msgstr "Correction orthographique terminée !"
 
 #: src/frontends/controllers/ControlVCLog.C:57
 msgid "No version control log file found."
@@ -9695,10 +9720,6 @@ msgstr "Envoyer le document à la commande"
 #: src/frontends/qt2/QShowFile.C:31
 msgid "ShowFile"
 msgstr "MontreFichier"
-
-#: src/frontends/qt2/QSpellchecker.C:133
-msgid "Spellcheck complete"
-msgstr "Correction orthographique terminée"
 
 #: src/frontends/qt2/QTabular.C:38
 msgid "LyX: Edit Table"
@@ -10840,46 +10861,33 @@ msgid "Show File"
 msgstr "Montre le Fichier"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSpellchecker.C:60
+#: src/frontends/xforms/FormSpellchecker.C:61
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr "Tapez un mot ou choisissez parmi les suggestions."
 
-#: src/frontends/xforms/FormSpellchecker.C:63
+#: src/frontends/xforms/FormSpellchecker.C:64
 msgid "List of replacement suggestions from dictionary."
 msgstr "Liste des mots suggérés par le dictionnaire."
 
-#: src/frontends/xforms/FormSpellchecker.C:67
-#: src/frontends/xforms/FormSpellchecker.C:148
-msgid "Start the spellingchecker."
-msgstr "Démarre la correction."
-
-#: src/frontends/xforms/FormSpellchecker.C:69
+#: src/frontends/xforms/FormSpellchecker.C:68
 msgid "Replace unknown word."
 msgstr "Remplace le mot."
 
-#: src/frontends/xforms/FormSpellchecker.C:71
+#: src/frontends/xforms/FormSpellchecker.C:70
 msgid "Ignore unknown word."
 msgstr "Ignore le mot."
 
-#: src/frontends/xforms/FormSpellchecker.C:73
+#: src/frontends/xforms/FormSpellchecker.C:72
 msgid "Accept unknown word as known in this session."
 msgstr "Accepte le mot durant cette session."
 
-#: src/frontends/xforms/FormSpellchecker.C:75
+#: src/frontends/xforms/FormSpellchecker.C:74
 msgid "Add unknown word to personal dictionary."
 msgstr "Ajoute le mot à votre dictionnaire personnel."
 
-#: src/frontends/xforms/FormSpellchecker.C:77
+#: src/frontends/xforms/FormSpellchecker.C:76
 msgid "Shows word count and progress on spell check."
 msgstr "Affiche le nombre de mots et la progression de la correction."
-
-#: src/frontends/xforms/FormSpellchecker.C:140
-msgid "Stop|#S"
-msgstr "Arrêter|#t"
-
-#: src/frontends/xforms/FormSpellchecker.C:147
-msgid "Stop the spellingchecker."
-msgstr "Arrête la correction."
 
 #: src/frontends/xforms/FormTabular.C:43
 msgid "Edit table settings"
@@ -12798,6 +12806,33 @@ msgstr "Marque posée"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "La fonction 'layout' nécessite un argument."
+
+#~ msgid "Start|#S"
+#~ msgstr "Démarrer|#D"
+
+#~ msgid "Accept|#A"
+#~ msgstr "Accepter|#A"
+
+#~ msgid "&Accept"
+#~ msgstr "A&ccepter"
+
+#~ msgid "&Start..."
+#~ msgstr "&Commencer..."
+
+#~ msgid "Start spellcheck"
+#~ msgstr "Commence la correction"
+
+#~ msgid "Spellcheck complete"
+#~ msgstr "Correction orthographique terminée"
+
+#~ msgid "Start the spellingchecker."
+#~ msgstr "Démarre la correction."
+
+#~ msgid "Stop|#S"
+#~ msgstr "Arrêter|#t"
+
+#~ msgid "Stop the spellingchecker."
+#~ msgstr "Arrête la correction."
 
 #~ msgid "Icelandic"
 #~ msgstr "Islandais"

@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX ??\n"
-"POT-Creation-Date: 2003-03-18 18:01+0100\n"
+"POT-Creation-Date: 2003-04-01 13:53+0200\n"
 "PO-Revision-Date: 2002-12-19 19:00+0100\n"
 "Last-Translator: anon <>\n"
 "Language-Team: he <he@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/xforms/forms/form_search.fd:116
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
 #: ../src/frontends/xforms/forms/form_tabular.fd:62
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:62
 #: src/frontends/xforms/FormMathsBitmap.C:110
@@ -74,7 +74,6 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
-#: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
 msgstr ""
 
@@ -1840,7 +1839,7 @@ msgid "Find next"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_search.fd:98
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 #, fuzzy
 msgid "Replace|#R"
 msgstr "ףלחה"
@@ -1874,7 +1873,6 @@ msgid "Word count:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
 #, fuzzy
 msgid "Unknown:"
 msgstr "עודי אל"
@@ -1891,24 +1889,18 @@ msgid "Suggestions:|#g"
 msgstr "ןוויכ"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:134
-#: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
-msgid "Start|#S"
-msgstr "הרימש"
-
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 msgid "Add|#d"
 msgstr ""
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 msgid "Ignore|#I"
 msgstr ""
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
-msgid "Accept|#A"
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+msgid "Ignore All|#g"
 msgstr ""
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:242
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
 msgstr ""
 
@@ -2615,6 +2607,7 @@ msgid "Available BibTeX databases"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
 msgid "&Add"
 msgstr ""
@@ -3900,12 +3893,12 @@ msgstr "רפסמ ןיא"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
 #, fuzzy
-msgid "Label width"
+msgid "Label Width"
 msgstr "בחור"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
 #, fuzzy
-msgid "Lon&gest label"
+msgid "Lo&ngest label"
 msgstr "הלבט%t"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
@@ -4467,11 +4460,16 @@ msgstr ""
 msgid "aspell"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:199
+#, fuzzy
+msgid "hspell"
+msgstr "לוטיב"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:238
 msgid "Accept compound &words"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:249
 #, fuzzy
 msgid "Use input encod&ing"
 msgstr "d דודיק:|#D"
@@ -4804,7 +4802,7 @@ msgstr "ץבוק `"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
+#: src/frontends/xforms/FormSpellchecker.C:34
 #, fuzzy
 msgid "Spellchecker"
 msgstr "תויא תקידב"
@@ -4816,11 +4814,6 @@ msgstr "ןוויכ"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
 msgid "Replace word with current choice"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-msgid "A&dd"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
@@ -4838,7 +4831,7 @@ msgid "Ignore this word"
 msgstr "g הלימהמ םלעתה|#g"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-msgid "&Accept"
+msgid "I&gnore All"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
@@ -4861,18 +4854,14 @@ msgstr "ןוויכ"
 msgid "Current word"
 msgstr "רפסמ:"
 
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
+#, fuzzy
+msgid "Unknown word:"
+msgstr "עודי אל"
+
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 msgid "Replace with selected word"
 msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-#, fuzzy
-msgid "Start spellcheck"
-msgstr "s תויא תקידב לחתה|#S"
 
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
 #: src/frontends/qt2/QTabularCreate.C:31
@@ -4919,6 +4908,10 @@ msgstr "יקפוא רושי|#H"
 #, fuzzy
 msgid "Column"
 msgstr "תודומע "
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+msgid "A&dd"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
 msgid "Append column (right)"
@@ -9824,24 +9817,47 @@ msgstr " :ופלחוהש תוזורחמה רפסמ"
 msgid " strings have been replaced."
 msgstr " :ופלחוהש תוזורחמה רפסמ"
 
-#: src/frontends/controllers/ControlSpellchecker.C:178
-#, fuzzy
-msgid "Spellchecking completed!"
-msgstr "המלשוה תויאה תקידב"
-
-#: src/frontends/controllers/ControlSpellchecker.C:186
-#: src/frontends/controllers/ControlSpellchecker.C:192
-msgid "One word checked."
-msgstr ""
-
-#: src/frontends/controllers/ControlSpellchecker.C:199
+#: src/frontends/controllers/ControlSpellchecker.C:106
 #, fuzzy
 msgid ""
-"The spell checker has died for some reason.\n"
+"The spell-checker could not be started.\n"
+"Maybe it is mis-configured."
+msgstr ""
+"יהשלכ הביסמ תמ תויאה קדוב לש ךילהתה\n"
+"גרהנ והש ןכתי"
+
+#: src/frontends/controllers/ControlSpellchecker.C:109
+#: src/frontends/controllers/ControlSpellchecker.C:202
+msgid "The spell-checker has failed"
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.C:196
+#, fuzzy
+msgid ""
+"The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "יהשלכ הביסמ תמ תויאה קדוב לש ךילהתה\n"
 "גרהנ והש ןכתי"
+
+#: src/frontends/controllers/ControlSpellchecker.C:218
+#, c-format
+msgid "%1$d words checked."
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:228
+msgid "One word checked."
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.C:226
+msgid " words checked."
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#, fuzzy
+msgid "Spell-checking is complete"
+msgstr "המלשוה תויאה תקידב"
 
 #: src/frontends/controllers/ControlVCLog.C:57
 #, fuzzy
@@ -10533,11 +10549,6 @@ msgstr "החיתפל ךמסמ רחב"
 #, fuzzy
 msgid "ShowFile"
 msgstr "f ץבוק"
-
-#: src/frontends/qt2/QSpellchecker.C:133
-#, fuzzy
-msgid "Spellcheck complete"
-msgstr "המלשוה תויאה תקידב"
 
 #: src/frontends/qt2/QTabular.C:38
 #, fuzzy
@@ -11644,53 +11655,37 @@ msgid "Show File"
 msgstr "f ץבוק"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSpellchecker.C:60
+#: src/frontends/xforms/FormSpellchecker.C:61
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
 
-#: src/frontends/xforms/FormSpellchecker.C:63
+#: src/frontends/xforms/FormSpellchecker.C:64
 msgid "List of replacement suggestions from dictionary."
 msgstr ""
 
-#: src/frontends/xforms/FormSpellchecker.C:67
-#: src/frontends/xforms/FormSpellchecker.C:148
-#, fuzzy
-msgid "Start the spellingchecker."
-msgstr "s תויא תקידב לחתה|#S"
-
-#: src/frontends/xforms/FormSpellchecker.C:69
+#: src/frontends/xforms/FormSpellchecker.C:68
 #, fuzzy
 msgid "Replace unknown word."
 msgstr "r הלימ ףלחה"
 
-#: src/frontends/xforms/FormSpellchecker.C:71
+#: src/frontends/xforms/FormSpellchecker.C:70
 #, fuzzy
 msgid "Ignore unknown word."
 msgstr "g הלימהמ םלעתה|#g"
 
-#: src/frontends/xforms/FormSpellchecker.C:73
+#: src/frontends/xforms/FormSpellchecker.C:72
 #, fuzzy
 msgid "Accept unknown word as known in this session."
 msgstr "a יחכונהsessionל הלימה תא לבק|#A"
 
-#: src/frontends/xforms/FormSpellchecker.C:75
+#: src/frontends/xforms/FormSpellchecker.C:74
 #, fuzzy
 msgid "Add unknown word to personal dictionary."
 msgstr "i ישיאה ןולימל ףסוה|#I"
 
-#: src/frontends/xforms/FormSpellchecker.C:77
+#: src/frontends/xforms/FormSpellchecker.C:76
 msgid "Shows word count and progress on spell check."
 msgstr ""
-
-#: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
-msgid "Stop|#S"
-msgstr " לש "
-
-#: src/frontends/xforms/FormSpellchecker.C:147
-#, fuzzy
-msgid "Stop the spellingchecker."
-msgstr "s תויא תקידב לחתה|#S"
 
 #: src/frontends/xforms/FormTabular.C:43
 #, fuzzy
@@ -13528,6 +13523,30 @@ msgstr ""
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Start|#S"
+#~ msgstr "הרימש"
+
+#, fuzzy
+#~ msgid "Start spellcheck"
+#~ msgstr "s תויא תקידב לחתה|#S"
+
+#, fuzzy
+#~ msgid "Spellcheck complete"
+#~ msgstr "המלשוה תויאה תקידב"
+
+#, fuzzy
+#~ msgid "Start the spellingchecker."
+#~ msgstr "s תויא תקידב לחתה|#S"
+
+#, fuzzy
+#~ msgid "Stop|#S"
+#~ msgstr " לש "
+
+#, fuzzy
+#~ msgid "Stop the spellingchecker."
+#~ msgstr "s תויא תקידב לחתה|#S"
 
 #, fuzzy
 #~ msgid "script"

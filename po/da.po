@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-da\n"
-"POT-Creation-Date: 2003-03-18 18:01+0100\n"
+"POT-Creation-Date: 2003-04-01 13:53+0200\n"
 "PO-Revision-Date: 2003-03-10 09:25GMT\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/xforms/forms/form_search.fd:116
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
 #: ../src/frontends/xforms/forms/form_tabular.fd:62
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:62
 #: src/frontends/xforms/FormMathsBitmap.C:110
@@ -72,7 +72,6 @@ msgstr "Nøgle:|#N"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
-#: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
 msgstr "O.k."
 
@@ -1632,7 +1631,7 @@ msgid "Find next"
 msgstr "Find næste"
 
 #: ../src/frontends/xforms/forms/form_search.fd:98
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 msgid "Replace|#R"
 msgstr "Erstat|#r"
 
@@ -1661,7 +1660,6 @@ msgid "Word count:"
 msgstr "Antal ord:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
 msgid "Unknown:"
 msgstr "Ukendt:"
 
@@ -1675,23 +1673,19 @@ msgid "Suggestions:|#g"
 msgstr "Forslag:|#F"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:134
-#: src/frontends/xforms/FormSpellchecker.C:140
-msgid "Start|#S"
-msgstr "Start|#S"
-
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 msgid "Add|#d"
 msgstr "Tilføj|#T"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:152
 msgid "Ignore|#I"
 msgstr "Ignorér|#I"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:188
-msgid "Accept|#A"
-msgstr "Acceptér|#A"
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:170
+#, fuzzy
+msgid "Ignore All|#g"
+msgstr "Ignorér|#I"
 
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:242
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
 msgstr "0 %"
 
@@ -2313,6 +2307,7 @@ msgid "Available BibTeX databases"
 msgstr "Tilgængelige BibTeX-databaser"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
 msgid "&Add"
 msgstr "&Tilføj"
@@ -3453,11 +3448,13 @@ msgid "&Lines && Pagebreaks"
 msgstr "&Linjer && Sideskift"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
-msgid "Label width"
+#, fuzzy
+msgid "Label Width"
 msgstr "Mærkatbredde"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
-msgid "Lon&gest label"
+#, fuzzy
+msgid "Lo&ngest label"
 msgstr "Læn&gste mærkat"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
@@ -3944,11 +3941,16 @@ msgstr "ispell"
 msgid "aspell"
 msgstr "aspell"
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:199
+#, fuzzy
+msgid "hspell"
+msgstr "ispell"
+
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:238
 msgid "Accept compound &words"
 msgstr "A&cceptér sammensatte ord"
 
-#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
+#: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:249
 msgid "Use input encod&ing"
 msgstr "Brug f&ilens tegnsæt"
 
@@ -4234,7 +4236,7 @@ msgstr "Fil:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
+#: src/frontends/xforms/FormSpellchecker.C:34
 msgid "Spellchecker"
 msgstr "Stavekontrol"
 
@@ -4245,11 +4247,6 @@ msgstr "Forslag:"
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
 msgid "Replace word with current choice"
 msgstr "Erstat ord med det aktuelle valg"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-msgid "A&dd"
-msgstr "&Tilføj"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
 msgid "Add the word to your personal dictionary"
@@ -4264,8 +4261,9 @@ msgid "Ignore this word"
 msgstr "Ignorér dette ord"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-msgid "&Accept"
-msgstr "&Acceptér"
+#, fuzzy
+msgid "I&gnore All"
+msgstr "Ignorér"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
 msgid "Accept word for this session"
@@ -4283,17 +4281,14 @@ msgstr "Forslag"
 msgid "Current word"
 msgstr "Nuværende ord"
 
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
+#, fuzzy
+msgid "Unknown word:"
+msgstr "Ukendt:"
+
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
 msgid "Replace with selected word"
 msgstr "Erstat med valgte ord"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr "&Start..."
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-msgid "Start spellcheck"
-msgstr "Start stavekontrol"
 
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
 #: src/frontends/qt2/QTabularCreate.C:31
@@ -4332,6 +4327,10 @@ msgstr "Vandret justering i kolonnen"
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
 msgid "Column"
 msgstr "Kolonne"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+msgid "A&dd"
+msgstr "&Tilføj"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
 msgid "Append column (right)"
@@ -8901,22 +8900,48 @@ msgstr "Streng er blevet erstattet."
 msgid " strings have been replaced."
 msgstr " strenge er erstattet."
 
-#: src/frontends/controllers/ControlSpellchecker.C:178
-msgid "Spellchecking completed!"
-msgstr "Stavekontrol fuldført!"
-
-#: src/frontends/controllers/ControlSpellchecker.C:186
-#: src/frontends/controllers/ControlSpellchecker.C:192
-msgid "One word checked."
-msgstr "Èt ord tjekket."
-
-#: src/frontends/controllers/ControlSpellchecker.C:199
+#: src/frontends/controllers/ControlSpellchecker.C:106
+#, fuzzy
 msgid ""
-"The spell checker has died for some reason.\n"
+"The spell-checker could not be started.\n"
+"Maybe it is mis-configured."
+msgstr ""
+"Stavekontrollen døde af en eller anden grund.\n"
+"Måske blev den bevidst dræbt."
+
+#: src/frontends/controllers/ControlSpellchecker.C:109
+#: src/frontends/controllers/ControlSpellchecker.C:202
+msgid "The spell-checker has failed"
+msgstr ""
+
+#: src/frontends/controllers/ControlSpellchecker.C:196
+#, fuzzy
+msgid ""
+"The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 "Stavekontrollen døde af en eller anden grund.\n"
 "Måske blev den bevidst dræbt."
+
+#: src/frontends/controllers/ControlSpellchecker.C:218
+#, fuzzy, c-format
+msgid "%1$d words checked."
+msgstr "Èt ord tjekket."
+
+#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:228
+msgid "One word checked."
+msgstr "Èt ord tjekket."
+
+#: src/frontends/controllers/ControlSpellchecker.C:226
+#, fuzzy
+msgid " words checked."
+msgstr "Èt ord tjekket."
+
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#, fuzzy
+msgid "Spell-checking is complete"
+msgstr "Stavekontrol fuldført!"
 
 #: src/frontends/controllers/ControlVCLog.C:57
 msgid "No version control log file found."
@@ -9547,10 +9572,6 @@ msgstr "Send dokumentet til kommando"
 #: src/frontends/qt2/QShowFile.C:31
 msgid "ShowFile"
 msgstr "VisFil"
-
-#: src/frontends/qt2/QSpellchecker.C:133
-msgid "Spellcheck complete"
-msgstr "Stavekontrol fuldført"
 
 #: src/frontends/qt2/QTabular.C:38
 msgid "LyX: Edit Table"
@@ -10681,46 +10702,33 @@ msgid "Show File"
 msgstr "Vis fil"
 
 #. set up the tooltips
-#: src/frontends/xforms/FormSpellchecker.C:60
+#: src/frontends/xforms/FormSpellchecker.C:61
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr "Angiv erstatning for ukendt ord eller vælg fra forslagene."
 
-#: src/frontends/xforms/FormSpellchecker.C:63
+#: src/frontends/xforms/FormSpellchecker.C:64
 msgid "List of replacement suggestions from dictionary."
 msgstr "Liste over erstatningsforslag fra ordbogen."
 
-#: src/frontends/xforms/FormSpellchecker.C:67
-#: src/frontends/xforms/FormSpellchecker.C:148
-msgid "Start the spellingchecker."
-msgstr "Start stavekontrollen."
-
-#: src/frontends/xforms/FormSpellchecker.C:69
+#: src/frontends/xforms/FormSpellchecker.C:68
 msgid "Replace unknown word."
 msgstr "Erstat ukendt ord."
 
-#: src/frontends/xforms/FormSpellchecker.C:71
+#: src/frontends/xforms/FormSpellchecker.C:70
 msgid "Ignore unknown word."
 msgstr "Ignorér ukendt ord."
 
-#: src/frontends/xforms/FormSpellchecker.C:73
+#: src/frontends/xforms/FormSpellchecker.C:72
 msgid "Accept unknown word as known in this session."
 msgstr "Acceptér ukendt ord som kendt i denne omgang."
 
-#: src/frontends/xforms/FormSpellchecker.C:75
+#: src/frontends/xforms/FormSpellchecker.C:74
 msgid "Add unknown word to personal dictionary."
 msgstr "Indsæt ordet i personlig ordliste."
 
-#: src/frontends/xforms/FormSpellchecker.C:77
+#: src/frontends/xforms/FormSpellchecker.C:76
 msgid "Shows word count and progress on spell check."
 msgstr "Viser antallet af ord og stavekontrollens fremgang."
-
-#: src/frontends/xforms/FormSpellchecker.C:140
-msgid "Stop|#S"
-msgstr "Stop|#S"
-
-#: src/frontends/xforms/FormSpellchecker.C:147
-msgid "Stop the spellingchecker."
-msgstr "Stop stavekontrollen."
 
 #: src/frontends/xforms/FormTabular.C:43
 msgid "Edit table settings"
@@ -12588,6 +12596,33 @@ msgstr "Mærke sat"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-funktionen 'layout' skal bruge et parameter."
+
+#~ msgid "Start|#S"
+#~ msgstr "Start|#S"
+
+#~ msgid "Accept|#A"
+#~ msgstr "Acceptér|#A"
+
+#~ msgid "&Accept"
+#~ msgstr "&Acceptér"
+
+#~ msgid "&Start..."
+#~ msgstr "&Start..."
+
+#~ msgid "Start spellcheck"
+#~ msgstr "Start stavekontrol"
+
+#~ msgid "Spellcheck complete"
+#~ msgstr "Stavekontrol fuldført"
+
+#~ msgid "Start the spellingchecker."
+#~ msgstr "Start stavekontrollen."
+
+#~ msgid "Stop|#S"
+#~ msgstr "Stop|#S"
+
+#~ msgid "Stop the spellingchecker."
+#~ msgstr "Stop stavekontrollen."
 
 #~ msgid "tiny"
 #~ msgstr "lillebitte"
