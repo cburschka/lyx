@@ -419,6 +419,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			if (tmp->params().startOfAppendix()) {
 				setUndo(bv, Undo::EDIT, tmp, tmp->next());
 				tmp->params().startOfAppendix(false);
+				int tmpy;
+				setHeightOfRow(bv, getRow(tmp, 0, tmpy));
 				break;
 			}
 		}
@@ -428,9 +430,10 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		// we can set the refreshing parameters now
 		status(cmd.view(), LyXText::NEED_MORE_REFRESH);
-		refresh_y = 0;
-		refresh_row = 0; // not needed for full update
 		updateCounters(cmd.view());
+		redoHeightOfParagraph(bv, cursor);
+		refresh_y = 0;
+		refresh_row = 0;
 		setCursor(cmd.view(), cursor.par(), cursor.pos());
 		update(bv);
 		break;
