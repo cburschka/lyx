@@ -1,3 +1,8 @@
+2001-07-13  Yves Bastide  <stid@libd-pc11.univ-bpclermont.fr>
+
+	* insetquotes.C (dispString): display french guillemets when using
+	ISO8859-15.
+
 2001-07-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetcollapsable.h: remove bogus return statements

@@ -1608,6 +1608,8 @@ void LyXRC::set_font_norm_type()
 		font_norm_type = ISO_8859_6_8;
 	else if (font_norm == "iso8859-9")
 		font_norm_type = ISO_8859_9;
+	else if (font_norm == "iso8859-15")
+		font_norm_type = ISO_8859_15;
 	else
 		font_norm_type = OTHER_ENCODING;
 }

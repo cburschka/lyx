@@ -1,3 +1,9 @@
+2001-07-13  Yves Bastide  <stid@libd-pc11.univ-bpclermont.fr>
+
+	* lyxrc.C (set_font_norm_type): recognise ISO_8859_15.
+
+	* lyxrc.h: added ISO_8859_15 to enum FontEncoding.
+
 2001-07-18  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (readLyXformat2): Add filename to the error dialog
