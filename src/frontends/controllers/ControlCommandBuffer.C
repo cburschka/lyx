@@ -108,6 +108,9 @@ vector<string> const ControlCommandBuffer::completions(string const & prefix, st
 
 void ControlCommandBuffer::dispatch(string const & str)
 {
+	if (str.empty())
+		return;
+ 
 	history_.push_back(str);
 	history_pos_ = history_.end();
 	lyxfunc_.dispatch(str, true);
