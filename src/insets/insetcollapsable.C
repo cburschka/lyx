@@ -281,6 +281,7 @@ void InsetCollapsable::edit(BufferView * bv, bool left)
 		lyxerr << "InsetCollapsable: can't lock" << endl;
 	inset.edit(bv, left);
 	first_after_edit = true;
+	open(bv);
 }
 
 /*

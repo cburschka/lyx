@@ -1,3 +1,8 @@
+2003-11-05  Alfredo Braunstein  <abraunst@libero.it>
+
+	* insetcollapsable.C (edit): add open() all
+	* insettext.C (edit): add setViewCache call
+
 2003-11-04  André Pönitz  <poenitz@gmx.net>
 
 	* inset.h (edit): move locking code from dispatch() to edit()

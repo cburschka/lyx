@@ -576,6 +576,8 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 
 void InsetText::edit(BufferView * bv, bool left)
 {
+	setViewCache(bv);
+	
 	if (!bv->lockInset(this)) {
 		lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 		return;
