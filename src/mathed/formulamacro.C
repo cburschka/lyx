@@ -37,7 +37,7 @@
 #include "lyxtext.h"
 #include "lyxfont.h"
 
-#include <sstream>
+#include "Lsstream.h"
 
 using std::ostream;
 
