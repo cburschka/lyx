@@ -8,7 +8,6 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 libinsets_la_SOURCES = \
-	BoundingBox.h \
 	ExternalTemplate.C \
 	ExternalTemplate.h \
 	figinset.C \
