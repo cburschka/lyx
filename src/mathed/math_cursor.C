@@ -1333,6 +1333,11 @@ string MathCursor::grabSelection() const
 	MathCursorPos i2;
 	getSelection(i1, i2);
 
+	if (i1.idx_ == i2.idx_) {
+		MathArray::const_iterator it = i1.cell().begin();
+		return asString(MathArray(it + i1.pos_, it + i2.pos_));
+	}
+
 	row_type r1, r2;
 	col_type c1, c2;
 	region(i1, i2, r1, r2, c1, c2);
