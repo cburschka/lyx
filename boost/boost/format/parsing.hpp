@@ -69,7 +69,7 @@ namespace detail {
     // Effects : advance *pos_p by skipping printf's asterisk fields.
     // Returns : nothing
   {
-    assert( pos_p);
+    assert( pos_p != 0);
     if(*pos_p >= buf.size() ) return;
     if(buf[ *pos_p]==os.widen('*')) {
       ++ (*pos_p);
@@ -105,7 +105,7 @@ namespace detail {
     //           - *fpar is set with the parameters read in the directive
   {
     typedef format_item<Ch, Tr>  format_item_t;
-    assert( pos_p);
+    assert( pos_p != 0);
     typename std::basic_string<Ch, Tr>::size_type       &i1 = *pos_p,
 							i0;
     fpar->argN_ = format_item_t::argN_no_posit;  // if no positional-directive
