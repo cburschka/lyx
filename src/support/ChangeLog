@@ -1,3 +1,9 @@
+2004-06-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* filetools.C (i18nLibFileSearch): honor case where LANGUAGE
+	specifies a list of locales (thanks to Pablo Saraxtaga for the
+	initial patch).
+
 2004-04-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* filetools.C (DeleteAllFilesInDir): delete directories with

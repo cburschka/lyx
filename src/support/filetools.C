@@ -329,18 +329,18 @@ i18nLibFileSearch(string const & dir, string const & name,
 	if (lang != "C" && lang != "POSIX" && !language.empty())
 		lang = language;
 
-	lang = token(lang, '_', 0);
-
-	if (lang.empty() || lang == "C")
-		return LibFileSearch(dir, name, ext);
-	else {
-		string const tmp = LibFileSearch(dir, lang + '_' + name,
+	string l;
+	lang = split(lang, l, ':');
+	while (!l.empty() && l != "C" && l != "POSIX") {
+		string const tmp = LibFileSearch(dir, 
+						 token(l, '_', 0) + '_' + name,
 						 ext);
 		if (!tmp.empty())
 			return tmp;
-		else
-			return LibFileSearch(dir, name, ext);
+		lang = split(lang, l, ':');
 	}
+
+	return LibFileSearch(dir, name, ext);
 }
 
 
