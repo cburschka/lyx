@@ -1,3 +1,11 @@
+2002-03-29  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (workAreaButtonPress): just lock the inset don't
+	call the edit() as it is not needed (and wrong) IMO.
+	(workAreaButtonPress): set the screen_first variable before evt.
+	unlock the inset as this may change screen_first and then we have
+	a wrong y position for the click!
+
 2002-03-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* MenuBackend.C (expand): another translation that I missed

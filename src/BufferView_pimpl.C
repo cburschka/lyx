@@ -608,6 +608,8 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		paste_internally = true;
 	}
 
+	int const screen_first = bv_->text->first_y;
+
 	if (bv_->theLockingInset()) {
 		// We are in inset locking mode
 
@@ -626,8 +628,6 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		selection_possible = true;
 	screen_->hideCursor();
 
-	int const screen_first = bv_->text->first_y;
-
 	// Clear the selection
 	screen_->toggleSelection(bv_->text, bv_);
 	bv_->text->clearSelection();
@@ -642,9 +642,12 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		selection_possible = false;
 		owner_->updateLayoutChoice();
 		owner_->message(inset->editMessage());
-		// IMO the inset has to be first in edit-mode and then we send the
-		// button press. (Jug 20020222)
-		inset->edit(bv_); //, xpos, ypos, button);
+		//inset->edit(bv_, xpos, ypos, button);
+		// We just have to lock the inset before calling a PressEvent on it!
+		// we don't need the edit() call here! (Jug20020329)
+		if (!bv_->lockInset(inset)) {
+			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+		}
 		inset->insetButtonPress(bv_, xpos, ypos, button);
 		return;
 	}
@@ -875,6 +878,10 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			inset->insetButtonRelease(bv_, x, y, button);
 		} else {
 			inset_hit->insetButtonRelease(bv_, x, y, button);
+			// IMO this is a grosshack! Inset's should be changed so that
+			// they call the actions they have to do with the insetButtonRel.
+			// function and not in the edit(). This should be changed
+			// (Jug 20020329)
 			inset_hit->edit(bv_, x, y, button);
 		}
 		return;

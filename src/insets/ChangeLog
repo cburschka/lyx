@@ -1,3 +1,9 @@
+2002-03-29  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (insetButtonPress): change behaviour of no_selection
+	to the one in the BufferView selection_possible and fix the spurious
+	selection bug with it.
+
 2002-03-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insetfloatlist.C (getScreenLabel): translate the GUI label.

@@ -187,7 +187,7 @@ void InsetText::init(InsetText const * ins, bool same_id)
 	insetDescent = 0;
 	insetWidth = 0;
 	old_max_width = 0;
-	no_selection = false;
+	no_selection = true;
 	need_update = FULL;
 	drawTextXOffset = 0;
 	drawTextYOffset = 0;
@@ -750,7 +750,7 @@ void InsetText::insetUnlock(BufferView * bv)
 		the_locking_inset = 0;
 	}
 	hideInsetCursor(bv);
-	no_selection = false;
+	no_selection = true;
 	locked = false;
 	int code;
 	if (drawFrame_ == LOCKED)
@@ -918,7 +918,7 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 
 void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 {
-	no_selection = true;
+	no_selection = false;
 
 	// use this to check mouse motion for selection!
 	mouse_x = x;
@@ -935,7 +935,6 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 							    x - inset_x,
 							    y - inset_y,
 							    button);
-			no_selection = false;
 			return;
 		} else if (inset) {
 			// otherwise unlock the_locking_inset and lock the new inset
@@ -948,13 +947,15 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 //			inset->edit(bv, x - inset_x, y - inset_y, button);
 			if (the_locking_inset)
 				updateLocal(bv, CURSOR, false);
-			no_selection = false;
 			return;
 		}
 		// otherwise only unlock the_locking_inset
 		the_locking_inset->insetUnlock(bv);
 		the_locking_inset = 0;
 	}
+	if (inset)
+		no_selection = true;
+
 	if (bv->theLockingInset()) {
 		if (isHighlyEditableInset(inset)) {
 			UpdatableInset * uinset = static_cast<UpdatableInset*>(inset);
@@ -969,7 +970,6 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			uinset->edit(bv, x - inset_x, y - inset_y, 0);
 			if (the_locking_inset)
 				updateLocal(bv, CURSOR, false);
-			no_selection = false;
 			return;
 		}
 	}
@@ -984,6 +984,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			lt = getLyXText(bv);
 			clear = true;
 		}
+		int old_first_y = lt->first_y;
 
 		lt->setCursorFromCoordinates(bv, x - drawTextXOffset,
 					     y + insetAscent);
@@ -1003,6 +1004,9 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			updateLocal(bv, CURSOR, false);
 		}
 		bv->owner()->setLayout(cpar(bv)->layout());
+		// we moved the view we cannot do mouse selection in this case!
+		if (getLyXText(bv)->first_y != old_first_y)
+			no_selection = true;
 		old_par = cpar(bv);
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
@@ -1018,12 +1022,12 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 		getLyXText(bv)->clearSelection();
 	}
 	showInsetCursor(bv);
-	no_selection = false;
 }
 
 
 bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 {
+	no_selection = true;
 	if (the_locking_inset) {
 		return the_locking_inset->insetButtonRelease(bv,
 							     x - inset_x, y - inset_y,
