@@ -1,3 +1,64 @@
+What's new in LyX version 1.1.6?
+--------------------------------
+
+As for all of the 1.1.x versions of LyX, this release contains a lot
+of new code: in particular, half of the changes described in the
+ChangeLog (which dates back to the 1.1.0 release) describe changes in
+LyX 1.1.6!
+
+Besides the usual under-the-hood changes, LyX 1.1.6 has many
+new user-visible features. The main visible feature is that the
+GUI-independent branch of development has been merged, as well as code
+from the older development version:
+
+- many popups have been rewritten to use the new GUI-I scheme. In the
+  process they have gotten a nice cleanup: the Document and Paragraph
+  popups now contain in one single place what was previously scattered
+  in many places. Similarly, the citation and cross reference popups
+  have been overhauled.
+
+- LyX now has a Preference popup where you can change most of your
+  lyxrc settings [Allan, details?]
+
+- the menus can now be defined from a text file (like the toolbar) and
+  shows the keyboard bindings associated to commands.
+
+- it is now possible to provide your own icons for the toolbar.
+
+- last but not least, work has begun on a KDE and a GNome frontend for
+  LyX. They are not officially supported for this version, but this
+  can give you an idea of what is happening.
+
+Other major changes in 1.1.6 include:
+
+- the table support has been completely rewritten. It uses the new
+  text inset which will be use throughout LyX in version 1.2.0 and
+  offers many new features: [Juergen??]
+
+- new external material inset: this is a new kind of very powerful
+  inset which will allow LyX to interface intelligently with external
+  applications. Among other good things, it will allow you to finally
+  include GIF, JPEG, TIF, PNG, or just about any other raster format
+  images in your document. It will even do an approximate ascii
+  rendering when you do Ascii export if you have gifscii installed.
+
+- the code which converts from LyX format to anything else (for
+  viewing or exporting purpose) has been rewritten. In particular, the
+  PDF format is now supported [Dekel, details?]
+
+- DocBook improvements [José, details?]
+
+And finally, there has been a lot of smaller changes, which are
+mentionned here for your information
+
+- the menu entry File->New does not prompt for a file name by default
+  (this can be changed in lyxrc).
+
+- new -geometry command line option, which replaces the old -width,
+  -height, etc.
+
+- 
+
 What's new in LyX version 1.1.5?
 --------------------------------
 

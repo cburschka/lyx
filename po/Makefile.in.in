@@ -236,14 +236,14 @@ update-po: Makefile
 	  fi; \
 	done
 
-POTFILES.in: $(top_srcdir)/src/ext_l10n.h $(POTFILE_IN_DEPS)
+${srcdir}/POTFILES.in: $(top_srcdir)/src/ext_l10n.h $(POTFILE_IN_DEPS)
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
 	     grep -l -E "_\(\".*\"\)" `find src -name \*.[hHC]` | \
 	     awk 'BEGIN {FS= ":"} {print $$1}' | \
 	     sed -e '/xforms.forms/d' | \
 	     sort -f -d | uniq ) > $@-t \
-	&& mv $@-t $(srcdir)/$@
+	&& mv $@-t $@
 
 POTFILES: POTFILES.in
 	( if test 'x$(srcdir)' != 'x.'; then \

@@ -26,12 +26,12 @@ Menuset
 
     Menu "file" 
 	Item "New...|N" "buffer-new"
-	Item "New from template|t" "buffer-new-template"
+	Item "New from template...|t" "buffer-new-template"
 	Item "Open...|O" "buffer-open"
 	Separator
 	Item "Close|C" "buffer-close"
 	Item "Save|S" "buffer-write"
-	Item "Save As|A" "buffer-write-as"
+	Item "Save As...|A" "buffer-write-as"
 	Item "Revert to saved|R" "buffer-reload"
 	Separator
 	Item "View dvi|d" "buffer-view dvi"
@@ -54,7 +54,7 @@ Menuset
 
     Menu "file_nobuffer" 
 	Item "New...|N" "buffer-new"
-	Item "New from template|t" "buffer-new-template"
+	Item "New from template...|t" "buffer-new-template"
 	Item "Open...|O" "buffer-open"
 	Separator
 	Submenu "Import|I" "import"
@@ -81,14 +81,6 @@ Menuset
 
     Menu "export"
 	ExportFormats
-#	OptItem "as LaTeX|L" "buffer-export latex"
-#	OptItem "as LinuxDoc|L" "buffer-export linuxdoc"
-#	OptItem "as DocBook|B" "buffer-export docbook"
-#	Item "as DVI|D" "buffer-export dvi"
-#	Item "as Postscript|P" "buffer-export postscript"
-#	Item "as Ascii|A" "buffer-export ascii"
-#	Item "as HTML|H" "buffer-export html"
-#	OptItem "Custom...|C" "buffer-export custom"
     End
 
     Menu "edit"
@@ -169,29 +161,26 @@ Menuset
 	Item "Character...|C" "layout-character"
 	Item "Paragraph...|P" "layout-paragraph"
 	Item "Document...|D" "layout-document"
-#	Item "Paper...|a" "layout-paper"
-#	Item "Quotes...|Q" "layout-quotes"
 	OptItem "Tabular...|a" "layout-tabular"
-#	Item "Table...|T" "layout-table"
 	Separator
 	Item "Emphasize Style|E" "font-emph"
 	Item "Noun Style|N" "font-noun"
 	Item "Bold Style|B" "font-bold"
 	Item "TeX Style|X" "tex-mode"
 	Item "Change environment depth|v" "depth-increment"
-	Item "LaTeX preamble|a" "layout-preamble"
+	Item "LaTeX preamble...|a" "layout-preamble"
 	Item "Start of Appendix|x" "appendix"
 	Separator
 	Item "Save layout as default|S" "layout-save-default"
     End
 
     Menu "insert"
-	Item "Figure...|F" "figure-insert"
+	Item "Figure...|g" "figure-insert"
 	Item "Tabular...|T" "dialog-tabular-insert"
 	Separator
 	Item "Include File...|I" "buffer-child-insert"
 	Submenu "Import ascii file|a" "insert_ascii"
-	Item "Insert LyX file|X" "file-insert"
+	Item "Insert LyX file...|X" "file-insert"
 	Item "Insert external material...|e" "external-insert"
 	Separator
 	Item "Footnote|F" "footnote-insert"
@@ -212,8 +201,8 @@ Menuset
     End
 
     Menu "insert_ascii"
-	Item "As lines|l" "file-insert-ascii lines"
-	Item "As paragraphs|p" "file-insert-ascii paragraphs"
+	Item "As lines...|l" "file-insert-ascii lines"
+	Item "As paragraphs...|p" "file-insert-ascii paragraphs"
     End
 
     Menu "insert_floats"
@@ -231,7 +220,7 @@ Menuset
 	Item "List of Tables|T" "lot-insert"
 	Item "List of Algorithms|A" "loa-insert"
 	Item "Index List|I" "index-print"
-	Item "BibTeX reference|B" "bibtex-insert"
+	Item "BibTeX reference...|B" "bibtex-insert"
     End
 
     Menu "insert_special"
@@ -260,12 +249,8 @@ Menuset
     End
 
     Menu "options"
-#	Item "Screen Fonts...|F" "screen-options"
-#	Item "Spellchecker Options...|S" "spellchecker-options"
-#	Item "Keyboard...|K" "keyboard-options"
-#	Separator
 	Item "Reconfigure|R" "reconfigure"
-	Item "Preferences|P" "dialog-preferences"
+	Item "Preferences...|P" "dialog-preferences"
     End
     
     Menu "documents"
