@@ -1,3 +1,9 @@
+2003-08-06  Martin Vermeer  <martin.vermeer@hut.di>
+	* Color.[Ch]:
+	* FormPreferences.C: moved the RGB to hex string method
+	from FormPreferences to Color and added a hex string to RGB
+	method. 
+
 2003-08-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (BUILT_SOURCES): add lyx_forms.h and lyx_xpm.h

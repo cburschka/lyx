@@ -91,17 +91,6 @@ pair<string,string> parseFontName(string const & name)
 }
 
 
-string const X11hexname(RGBColor const & col)
-{
-	ostringstream ostr;
-
-	ostr << '#' << std::setbase(16) << setfill('0')
-	     << setw(2) << col.r
-	     << setw(2) << col.g
-	     << setw(2) << col.b;
-
-	return STRCONV(ostr.str());
-}
 
 #if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL < 2)
 bool const scalableTabfolders = false;

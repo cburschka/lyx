@@ -27,6 +27,8 @@ bool getRGBColor(LColor::color col,
 		 unsigned int & r, unsigned int & g, unsigned int & b);
 
 struct RGBColor;
+/// returns a string of form #rrggbb, given an RGBColor struct
+string const X11hexname(RGBColor const & col);
 
 struct HSVColor {
 	double h;
@@ -46,6 +48,8 @@ struct RGBColor {
 	RGBColor(unsigned int red, unsigned int green, unsigned int blue)
 		: r(red), g(green), b(blue) {}
 	RGBColor(HSVColor const &);
+	/// \param x11hexname is of the form "#ffa071"
+	RGBColor(string const & x11hexname);
 };
 
 struct NamedColor : public RGBColor {

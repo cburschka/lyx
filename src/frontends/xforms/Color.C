@@ -14,7 +14,12 @@
 #include "Color.h"
 #include <algorithm> // max
 #include <cmath> // floor
+#include <iomanip>
 #include "lyx_forms.h"
+#include "Lsstream.h"
+#include "support/LAssert.h"
+
+namespace support = lyx::support;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::floor;
@@ -23,11 +28,21 @@ using std::floor;
 using std::max;
 using std::min;
 
+
 namespace {
 
 int const nohue = -1;
 
+int hexstrToInt(string const & str)
+{
+        int val = 0;
+        istringstream is(str);
+        is >> std::setbase(16) >> val;
+        return val;
+}
+
 } // namespace anon
+
 
 
 bool getRGBColor(LColor::color col,
@@ -49,6 +64,29 @@ bool getRGBColor(LColor::color col,
 	g = xcol.green / 256;
 	b = xcol.blue  / 256;
 	return true;
+}
+
+
+string const X11hexname(RGBColor const & col)
+{
+	ostringstream ostr;
+
+	ostr << '#' << std::setbase(16) << std::setfill('0')
+	     << setw(2) << col.r
+	     << setw(2) << col.g
+	     << setw(2) << col.b;
+
+	return STRCONV(ostr.str());
+}
+
+
+RGBColor::RGBColor(string const & x11hexname)
+	: r(0), g(0), b(0) 
+{
+	support::Assert(x11hexname.size() == 7 && x11hexname[0] == '#');
+	r = hexstrToInt(x11hexname.substr(1,2));
+	g = hexstrToInt(x11hexname.substr(3,2));
+	b = hexstrToInt(x11hexname.substr(5,2));
 }
 
 
