@@ -32,7 +32,7 @@
 #include "support/filetools.h"
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Url"))
+  : FormCommand(lv, d, _("Url")), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother

@@ -1,5 +1,9 @@
 2000-08-02  Allan Rae  <rae@lyx.org>
 
+	* src/frontends/xforms/FormUrl.C (FormUrl): Initialise ALL variables.
+	* src/frontends/xforms/FormCitation.C (FormCitation): ditto
+	* src/frontends/xforms/FormToc.C (FormToc): ditto
+
 	* src/frontends/xforms/Makefile.am: A few forgotten files
 
 	* src/frontends/xforms/FormCommand.C (showInset): The rest of the

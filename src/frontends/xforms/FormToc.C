@@ -30,7 +30,7 @@
 static vector<Buffer::TocItem> toclist;
 
 FormToc::FormToc(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Table of Contents"))
+  : FormCommand(lv, d, _("Table of Contents")), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother

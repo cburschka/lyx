@@ -40,7 +40,7 @@ static vector<string> bibkeys;
 static vector<string> bibkeysInfo;
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Citation"))
+  : FormCommand(lv, d, _("Citation")), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
