@@ -36,7 +36,7 @@ namespace lyx {
 	///
 	void abort();
 	///
-	int mkdir(char const * pathname, unsigned int mode);
+	int mkdir(char const * pathname, unsigned long int mode);
 	///
 	int putenv(char const * str);
 }
@@ -57,7 +57,7 @@ struct lyx {
 	///
 	static void abort();
 	///
-	static int mkdir(char const * pathname, unsigned int mode);
+	static int mkdir(char const * pathname, unsigned long int mode);
 	///
 	static int putenv(char const * str);
 };

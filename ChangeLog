@@ -1,3 +1,9 @@
+2000-01-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/mkdir.C (mkdir): change second argument of mkdir to
+	unsigned long int.
+	* src/support/lyxlib.h: ditto.
+
 2000-01-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxsum.C: move using std::ifstream inside

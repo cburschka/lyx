@@ -7,7 +7,7 @@
 
 #ifdef CXX_WORKING_NAMESPACES
 namespace lyx {
-	int mkdir(char const * pathname, mode_t mode)
+	int mkdir(char const * pathname, unsigned long int mode)
 	{
 		return ::mkdir(pathname, mode);
 	}
@@ -15,7 +15,7 @@ namespace lyx {
 #else
 #include "lyxlib.h"
 
-int lyx::mkdir(char const * pathname, mode_t mode)
+int lyx::mkdir(char const * pathname, unsigned long int mode)
 {
 	return ::mkdir(pathname, mode);
 }
