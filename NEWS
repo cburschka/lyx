@@ -20,18 +20,6 @@ three main areas:
   * several languages now benefit from an improved translation of 
     the user interface.
 
-The complete list of improvements and fixes can be found at the end of
-this message. There have been bug fixes to the xforms frontend also,
-but most of these have been made to xforms itself. To benefit you must
-recompile LyX against xforms 1.0.2 or greater which is currently
-available only from CVS on the new xforms development site
-http://www.nongnu.org/xforms/. Note that that is _compile_ aginst the
-new xforms, not _link_ against a new version of the library, as the
-work-arounds will otherwise still be in place. Note also that
-development of xforms is currently accelerating. We hope to have an
-official xforms release soon that will cure many of the small 
-annoyances from which LyX currently suffers.
-
 What's new in version 1.3.1?
 ----------------------------
 
