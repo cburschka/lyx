@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 EXTRA_DIST = test-structure.tex test-insets.tex
-DISTCLEANFILES += $(linked_files)
+DISTCLEANFILES += $(BUILT_SOURCES)
 
 #noinst_LTLIBRARIES = libtexparser.la
 #
@@ -18,7 +18,6 @@ BUILT_SOURCES = \
 	FloatList.C \
 	Floating.C \
 	counters.C \
-	lengthcommon.C \
 	lyxlayout.h \
 	lyxlayout.C \
 	lyxtextclass.C \
@@ -34,6 +33,7 @@ tex2lyx_SOURCES = \
 	context.h \
 	gettext.C \
 	gettext.h \
+	lengthcommon.C \
 	lyxfont.C \
 	lyxfont.h \
 	texparser.C \
@@ -54,4 +54,4 @@ $(BUILT_SOURCES) :
 	$(LN_S) $(top_srcdir)/src/$@ .
 
 rm_link_files:
-	rm -f $(linked_files)
+	rm -f $(BUILT_SOURCES)

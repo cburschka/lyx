@@ -1,3 +1,10 @@
+2004-05-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (BUILT_SOURCES): move lengthcommon.C from here...
+	(tex2lyx_SOURCES): ... to here
+
+	* lengthcommon.C: new file
+
 2004-04-30  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* preamble.C: recognize \lyxdot
