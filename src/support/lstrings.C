@@ -34,7 +34,6 @@ using std::toupper;
 
 int compare_no_case(string const & s, string const & s2)
 {
-	// ANSI C
 	string::const_iterator p = s.begin();
 	string::const_iterator p2 = s2.begin();
 
@@ -46,7 +45,7 @@ int compare_no_case(string const & s, string const & s2)
 		++p;
 		++p2;
 	}
-	
+
 	if (s.size() == s2.size())
 		return 0;
 	if (s.size() < s2.size())
@@ -69,7 +68,8 @@ int compare_no_case(string const & s, string const & s2, unsigned int len)
 		++p;
 		++p2;
 	}
-	if (s.size() == s2.size())
+
+	if (s.size() >= len && s2.size() >= len)
 		return 0;
 	if (s.size() < s2.size())
 		return -1;

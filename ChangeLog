@@ -1,3 +1,13 @@
+2000-12-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* README: add mention of broken ghostscript versions, remove
+	reference to non-existent BUGS file
+
+2000-12-13  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/support/lstrings.C (compare_no_case): small fix. When passed
+	length, should use it in the size comparison.
+
 2000-12-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxlookup.C: do not condition on FL_REVISION.
