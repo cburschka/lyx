@@ -25,7 +25,7 @@ using std::ostream;
 
 InsetERT::InsetERT() : InsetCollapsable()
 {
-	setLabel(_("666"));
+	setLabel(_("666"), true);
 	//LyXFont font(LyXFont::ALL_SANE);
 	//font.setLatex (LyXFont::ON);
 	labelfont = LyXFont(LyXFont::ALL_SANE);

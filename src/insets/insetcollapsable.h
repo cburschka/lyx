@@ -127,7 +127,7 @@ public:
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
                  bool selectall = false);
 	///
-	void setLabel(string const & l) { label = l; }
+	void setLabel(string const & l, bool flag = false);
 	///
 	void setLabelFont(LyXFont & f) { labelfont = f; }
 	///
@@ -208,6 +208,9 @@ public:
 	InsetText inset;
 protected:
 	///
+	string get_new_label() const;
+
+	///
 	mutable int button_length;
 	///
 	mutable int button_top_y;
@@ -216,6 +219,8 @@ protected:
 private:
 	///
 	string label;
+	///
+	mutable string draw_label;
 	///
 	bool autocollapse;
 	///
@@ -226,6 +231,10 @@ private:
 	mutable int topx;
 	mutable int topbaseline;
 	mutable UpdateCodes need_update;
+	///
+	bool inlined;
+	///
+	bool change_label_with_text;
 };
 
 #endif

@@ -1,3 +1,22 @@
+2001-07-23  Juergen Vigna  <jug@sad.it>
+
+	* insetert.C (InsetERT): use setLabel with "true" flag.
+
+	* insetcollapsable.C: modified various functions to set the draw_label
+	string right in any condition.
+	(setLabel): added a bool parameter to set change_label_with_text.
+
+	* insetcollapsable.h: added draw_label string which is set to the
+	actual drawn label-string, while label is the original static label
+	of this collapsable inset. Added bool change_label_with_text to set
+	if we want that the label changes to the start of the InsetText's
+	text when collabpsed. You can set this flag with the setLabel funciton.
+	Added bool inlined for inlined collapsable insets, but not handled
+	yet.
+
+	* insetcollapsable.C (get_new_label): added should get a new label
+	from the InsetText beginning (for now 10 chars).
+
 2001-07-21  Yves Bastide  <stid@libd-pc11.univ-bpclermont.fr>
 
 	* insetquotes.C (latex): fix the handling of french double quotes
