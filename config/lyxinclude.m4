@@ -156,7 +156,7 @@ AC_DEFUN(LYX_PROG_CXX,
 LYX_SEARCH_PROG(CXX, $CXX $CCC g++ gcc c++ CC cxx xlC cc++, [LYX_PROG_CXX_WORKS])
 
 if test -z "$CXX" ; then
-  AC_ERROR([Unable to find a good enough C++ compiler])
+  AC_MSG_ERROR([Unable to find a good enough C++ compiler])
 fi
 AC_MSG_RESULT($CXX)
 
@@ -591,7 +591,7 @@ AC_DEFUN(LYX_LOOP_DIR,[
 IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
 for dir in `eval "echo $1"`; do
   if test ! "$dir" = NONE; then
-    test ! -d "$dir" && AC_ERROR([\"$dir\" is not a directory])
+    test ! -d "$dir" && AC_MSG_ERROR([\"$dir\" is not a directory])
     $2
   fi
 done

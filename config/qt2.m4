@@ -18,7 +18,7 @@
 ##    You should have received a copy of the GNU Library General Public License
 ##    along with this library; see the file COPYING.LIB.  If not, write to
 ##    the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-##    Boston, MA 02111-1307, USA.       
+##    Boston, MA 02111-1307, USA.
 
 AC_DEFUN(QT2_MOC_ERROR_MESSAGE,
 [
@@ -39,36 +39,36 @@ AC_DEFUN(QT2_FIND_PATH,
    [
      qt2_cv_path_$1="NONE"
      if test -n "$$2"; then
-        qt2_cv_path_$1="$$2";
+	qt2_cv_path_$1="$$2";
      else
-        dirs="$3"
-        qt2_save_IFS=$IFS
-        IFS=':'
-        for dir in $PATH; do
-          dirs="$dirs $dir"
-        done
-        IFS=$qt2_save_IFS
- 
-        for dir in $dirs; do
-          if test -x "$dir/$1"; then
-            if test -n "$5"
-            then
-              evalstr="$dir/$1 $5 2>&1 "
-              if eval $evalstr; then
-                qt2_cv_path_$1="$dir/$1"
-                break
-              fi
-            else
-                qt2_cv_path_$1="$dir/$1"
-                break
-            fi
-          fi
-        done
- 
+	dirs="$3"
+	qt2_save_IFS=$IFS
+	IFS=':'
+	for dir in $PATH; do
+	  dirs="$dirs $dir"
+	done
+	IFS=$qt2_save_IFS
+
+	for dir in $dirs; do
+	  if test -x "$dir/$1"; then
+	    if test -n "$5"
+	    then
+	      evalstr="$dir/$1 $5 2>&1 "
+	      if eval $evalstr; then
+		qt2_cv_path_$1="$dir/$1"
+		break
+	      fi
+	    else
+		qt2_cv_path_$1="$dir/$1"
+		break
+	    fi
+	  fi
+	done
+
      fi
- 
+
    ])
- 
+
    if test -z "$qt2_cv_path_$1" || test "$qt2_cv_path_$1" = "NONE"; then
       AC_MSG_RESULT(not found)
       $4
@@ -77,18 +77,18 @@ AC_DEFUN(QT2_FIND_PATH,
      $2=$qt2_cv_path_$1
    fi
 ])
- 
+
 dnl ------------------------------------------------------------------------
 dnl Find the UIC compiler if available
 dnl ------------------------------------------------------------------------
 AC_DEFUN(QT2_AC_PATH_UIC,
 [
    QT2_FIND_PATH(uic, UIC, [$ac_qt2_bindir $QTDIR/bin \
-            /usr/bin /usr/X11R6/bin /usr/lib/qt2/bin \
-            /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin], )
+	    /usr/bin /usr/X11R6/bin /usr/lib/qt2/bin \
+	    /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin], )
    AC_SUBST(UIC)
 ])
- 
+
 dnl ------------------------------------------------------------------------
 dnl Find the meta object compiler in the PATH, in $QTDIR/bin, and some
 dnl more usual places
@@ -97,17 +97,17 @@ dnl
 AC_DEFUN(QT2_AC_PATH_MOC,
 [
    QT2_FIND_PATH(moc, MOC, [$ac_qt2_bindir $QTDIR/bin \
-            /usr/bin /usr/X11R6/bin /usr/lib/qt2/bin \
-            /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin],)
+	    /usr/bin /usr/X11R6/bin /usr/lib/qt2/bin \
+	    /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin],)
 
    QT2_FIND_PATH(moc2, MOC2, [$ac_qt2_bindir $QTDIR/bin \
-            /usr/bin /usr/X11R6/bin /usr/lib/qt2/bin \
-            /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin],)
- 
+	    /usr/bin /usr/X11R6/bin /usr/lib/qt2/bin \
+	    /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin],)
+
    if ! test -z "$MOC2"; then
      MOC="$MOC2";
-   fi 
- 
+   fi
+
    if test -z "$MOC"; then
      if test -n "$ac_cv_path_qt2moc"; then
        output=`eval "$ac_cv_path_qt2moc --help 2>&1 | sed -e '1q' | grep Qt"`
@@ -125,7 +125,7 @@ AC_DEFUN(QT2_AC_PATH_MOC,
 
 AC_DEFUN(QT2_PRINT_PROGRAM,
 [
-AC_LANG_CPLUSPLUS
+AC_LANG(C++)
 cat > conftest.$ac_ext <<EOF
 #include "confdefs.h"
 #include <qmovie.h>
@@ -176,7 +176,7 @@ AC_MSG_CHECKING([for Qt])
 ac_qt2_includes=NO ac_qt2_libraries=NO ac_qt2_bindir=NO
 qt2_libraries=""
 qt2_includes=""
- 
+
 AC_ARG_WITH(qt-dir,
     [  --with-qt-dir           where the root of Qt 2/3 is installed ],
     [  ac_qt2_includes=`eval echo "$withval"/include`
@@ -186,10 +186,10 @@ AC_ARG_WITH(qt-dir,
 
 AC_ARG_WITH(qt-includes,
     [  --with-qt-includes      where the Qt 2/3 includes are. ],
-    [ 
+    [
        ac_qt2_includes=`eval echo "$withval"`
     ])
-   
+
 qt2_libs_given=no
 
 AC_ARG_WITH(qt-libraries,
@@ -223,9 +223,9 @@ for dir in $qt2_libdirs; do
 done
 
 ac_qt2_name="-lqt"
- 
+
 AC_FIND_FILE(libqt.so.3 libqt.so.2.2.3 libqt.so.2.2 libqt.so.2 libqt2.so libqt.a libqt.sl, $qt2_libdirs, qt2_libdir)
- 
+
 ac_qt2_libraries="$qt2_libdir"
 
 QT2_CHECK_LIB_NAME
@@ -277,7 +277,7 @@ fi
 else
   dnl libs and headers supplied. Need to check lib name
   qt2_incdir="$ac_qt2_includes"
-  qt2_libdir="$ac_qt2_libraries" 
+  qt2_libdir="$ac_qt2_libraries"
   ac_qt2_name="-lqt"
   QT2_CHECK_LIB_NAME
   have_qt2="yes"
@@ -291,7 +291,7 @@ else
   ac_cv_have_qt2="have_qt2=yes ac_qt2_name=$ac_qt2_name \
     ac_qt2_includes=$ac_qt2_includes ac_qt2_libraries=$ac_qt2_libraries"
   AC_MSG_RESULT([libraries $ac_qt2_name in $ac_qt2_libraries, headers $ac_qt2_includes])
- 
+
   qt2_libraries="$ac_qt2_libraries"
   qt2_includes="$ac_qt2_includes"
 fi
@@ -301,7 +301,7 @@ dnl check it is Qt2
 SAVE_CXXFLAGS="$CXXFLAGS"
 CXXFLAGS="$CXXFLAGS -I$qt2_includes -L$qt2_libraries"
 dnl specify we are definitely C++ compiling first
-AC_LANG_CPLUSPLUS
+AC_LANG(C++)
 AC_TRY_COMPILE([
 #include <qglobal.h>
 ],
@@ -334,7 +334,7 @@ else
 fi
 
 QT2_LIBS="$ac_qt2_name"
- 
+
 AC_SUBST(QT2_INCLUDES)
 AC_SUBST(QT2_LDFLAGS)
 AC_SUBST(QT2_LIBS)
