@@ -1631,7 +1631,11 @@ exit_with_message:
 	view()->owner()->updateLayoutChoice();
 
 	if (view()->available()) {
-		view()->fitCursor();
+		if (view()->fitCursor()) {
+			lyxerr << "LyXFunc->fitCursor->update" << endl;
+
+			view()->update();
+		}
 
 		// If we executed a mutating lfun, mark the buffer as dirty
 		if (!getStatus(ev).disabled()

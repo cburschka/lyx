@@ -1,3 +1,8 @@
+2003-09-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxfunc.C (dispatch): if fitCursor did something be sure to
+	update
+
 2003-09-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BranchList.C: point fix, earlier forgotten
