@@ -436,7 +436,9 @@ cat >$outfile <<EOF
 \\Format bmp      bmp	BMP		""
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
+\\Format epsi	  epsi	EPSI		""
 \\Format fax	  ""	Fax		""
+\\Format fig	  fig	XFig		""
 \\Format agr      agr	GRACE		""
 \\Format html	  html	HTML		H
 \\Format latex	  tex	LaTeX		L

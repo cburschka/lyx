@@ -1,5 +1,20 @@
 2002-07-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* configure.m4: add formats fig and epsi
+
+2002-07-16  Andrew Zabolotny  <zap@cobra.ru>
+
+	* bind/emacs.bind: 
+	* bind/xemacs.bind: 
+	* bind/sciword.bind: 
+	* bind/cua.bind: include greekkeys and cyrkeys bindings
+
+	* bind/greekkeys.bind:
+	* bind/cyrkeys.bind: bindings to enter cyrillic and greek
+	characters directly from keyboard
+
+2002-07-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
 	* bind/menus.bind: cleanup shortcuts for section layouts. Starred
 	versions are now obtained by prepending a * to the section number
 	(M-p asterisk 0 .. M-p asterisk 6)
