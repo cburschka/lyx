@@ -1,3 +1,15 @@
+2004-04-20  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am (SUBDIRS): add gimages.
+
+	* gimages/.cvsignore: new file. Ignore Makefile.in, Makefile.
+
+	* gimages/Makefile.am: new file. Add the xpm files to EXTRA_DIST.
+
+	* glade/Makefile.am (GLADE_FILES): replace '*.glade' with the
+	names of the individual files.
+	'make distdir' Now works when srcdir != builddir.
+
 2004-04-08  Angus Leeming  <leeming@lyx.org>
 
 	* GPainter.C: compile fixes.

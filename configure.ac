@@ -419,6 +419,7 @@ AC_CONFIG_FILES([Makefile \
        src/frontends/xforms/lyx_xpm.h-tmp:src/frontends/xforms/lyx_xpm.h.in \
        src/frontends/xforms/forms/Makefile \
        src/frontends/gtk/Makefile \
+       src/frontends/gtk/gimages/Makefile \
        src/frontends/gtk/glade/Makefile \
        src/frontends/qt2/Makefile \
        src/frontends/qt2/moc/Makefile \

@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-SUBDIRS = glade
+SUBDIRS = gimages glade
 
 noinst_LTLIBRARIES = libgtk.la
 

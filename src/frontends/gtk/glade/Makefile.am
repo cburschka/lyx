@@ -3,7 +3,10 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 
 GLADE_DIR = glade
 
-GLADE_FILES = *.glade
+GLADE_FILES = \
+	aboutlyx.glade mathDelim.glade mathPanel.glade \
+	print.glade search.glade tableCreate.glade text.glade \
+	url.glade
 
 EXTRA_DIST = ${GLADE_FILES}
 
