@@ -2235,8 +2235,9 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		deleted = true;
 
 		if (old_cursor.row() != rows().begin()) {
-			const_cast<LyXText *>(this)->postPaint(old_cursor.y() - old_cursor.row()->baseline()
-				  - boost::prior(old_cursor.row())->height());
+			RowList::iterator 
+				prevrow = boost::prior(old_cursor.row());
+			const_cast<LyXText *>(this)->postPaint(old_cursor.y() - old_cursor.row()->baseline() - prevrow->height());
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
 			Paragraph * endpar = old_cursor.par()->next();
@@ -2260,13 +2261,11 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			 * the parindent that can occur or dissappear.
 			 * The next row can change its height, if
 			 * there is another layout before */
-			if (refresh_row != rows().end()) {
-				if (boost::next(refresh_row) != rows().end()) {
-					breakAgain(boost::next(refresh_row));
-					updateCounters();
-				}
-				setHeightOfRow(refresh_row);
+			if (boost::next(prevrow) != rows().end()) {
+				breakAgain(boost::next(prevrow));
+				updateCounters();
 			}
+			setHeightOfRow(prevrow);
 		} else {
 			RowList::iterator nextrow = boost::next(old_cursor.row());
 			const_cast<LyXText *>(this)->postPaint(
