@@ -83,6 +83,8 @@ libgnome_la_SOURCES = \
 	FormCopyright.h \
 	FormCredits.C \
 	FormCredits.h \
+	FormError.C \
+	FormError.h \
 	FormUrl.C \
 	FormUrl.h \
 	Menubar_pimpl.C \

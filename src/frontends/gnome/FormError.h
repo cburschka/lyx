@@ -1,13 +1,15 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * =================================================
+ * 
+ *          LyX, The Document Processor
+ *          Copyright 1995 Matthias Ettrich.
+ *          Copyright 1995-2000 The LyX Team.
  *
- *           LyX, The Document Processor
+ * ================================================= 
  *
- *           Copyright 2000 The LyX Team.
- *
- * ======================================================
- */
+ * \author Baruch Even
+ * */
 
 #ifndef FORMERROR_H
 #define FORMERROR_H
@@ -16,56 +18,40 @@
 #pragma interface
 #endif
 
-#include "DialogBase.h"
-#include "LString.h"
-#include "insets/inseterror.h"
+#include "ControlError.h"
+#include "GnomeBase.h"
 
-#include <gtk--/container.h>
+namespace Gtk {
+class Button;
+class Text;
+}
 
-/** This class provides an Gnome implementation of the FormError Dialog.
+/**
+ * This class implements the dialog to show error messages.
  */
-class FormError : public DialogBase {
+class FormError : public FormCB<ControlError> {
 public:
-  ///
-  FormError(LyXView *, Dialogs *);
-  ///
-  ~FormError();
-private:
-  /// Slot launching dialog to an existing inset
-  void showInset( InsetError * const );
-  
-  /// Update dialog before showing it
-  virtual void update() { }
-  virtual void updateSlot(bool = false);
-  /// Apply from dialog (modify or create inset)
-  virtual void apply();
-  /// Explicitly free the dialog.
-  void free();
-  /// Create the dialog if necessary, update it and display it.
-  void show();
-  /// Hide the dialog.
-  void hide();
-  
-  /** Which LyXFunc do we use?
-      We could modify Dialogs to have a visible LyXFunc* instead and
-      save a couple of bytes per dialog.
-  */
-  LyXView * lv_;
-  /** Which Dialogs do we belong to?
-      Used so we can get at the signals we have to connect to.
-  */
-  Dialogs * d_;
-  /// pointer to the inset passed through showInset (if any)
-  InsetError * inset_;
-  /// Update connection.
-  SigC::Connection u_;
-  /// Hide connection.
-  SigC::Connection h_;
-  /// inset::hide connection.
-  SigC::Connection ih_;
+	///
+	FormError(ControlError & c);
+	///
+	~FormError() {};
 
-  /// Real GUI implementation.
-  Gtk::Container * dialog_;
+	void apply() {};
+	void update();
+	
+private:
+	/// Build the dialog
+	void build();
+
+	/// Returns true if the dialog input is in a valid state.
+	bool validate() const {return true;};
+
+
+	void CloseClicked() { CancelButton(); }
+	
+	/// The close button
+	Gtk::Button * close_btn() const;
+	Gtk::Text * textarea() const;
 };
 
 #endif

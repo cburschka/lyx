@@ -1,130 +1,58 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * =================================================
+ * 
+ *          LyX, The Document Processor
+ *          Copyright 1995-2000 The LyX Team.
  *
- *           LyX, The Document Processor
+ * ================================================= 
  *
- *           Copyright 2000 The LyX Team.
- *
- * ======================================================
+ * \author Baruch Even
  */
-
-#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "gettext.h"
-#include "Dialogs.h"
+#include <config.h>
+
+#include "gnomeBC.h"
 #include "FormError.h"
-#include "LyXView.h"
-#include "buffer.h"
-#include "lyxfunc.h"
 
-#include <gtk--/label.h>
-#include <gtk--/box.h>
 #include <gtk--/button.h>
-#include <gtk--/buttonbox.h>
-#include <gnome--/stock.h>
-#include <gtk--/separator.h>
-#include <gtk--/alignment.h>
+#include <gtk--/text.h>
 
-// temporary solution for LyXView
-#include "mainapp.h"
-extern GLyxAppWin * mainAppWin;
+FormError::FormError(ControlError & c)
+	: FormCB<ControlError>(c, "diaerror.glade", "DiaError")
+{}
 
 
-FormError::FormError(LyXView * lv, Dialogs * d)
-	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0)
+void FormError::build()
 {
-  // let the dialog be shown
-  // These are permanent connections so we won't bother
-  // storing a copy because we won't be disconnecting.
-  d->showError.connect(slot(this, &FormError::showInset));
+	// Connect the buttons.
+	close_btn()->clicked.connect(SigC::slot(this, &FormError::CloseClicked));
+
+	// Manage the buttons state
+	bc().setCancel(close_btn());
+
+	// Make sure everything is in the correct state.
+	bc().refresh();
 }
 
 
-FormError::~FormError()
+void FormError::update()
 {
-  hide();
+	textarea()->insert(controller().params());
 }
 
-void FormError::showInset( InsetError * const inset )
-{
-  if( dialog_!=0 || inset == 0 ) return;
-  
-  inset_ = inset;
-  ih_ = inset_->hideDialog.connect(slot(this, &FormError::hide));
 
-  show();
+Gtk::Button * FormError::close_btn() const
+{
+	return getWidget<Gtk::Button>("button_close");
 }
 
-void FormError::show()
+
+Gtk::Text * FormError::textarea() const
 {
-  if (!dialog_)
-    {
-      using namespace Gtk::Box_Helpers;
-      
-      Gtk::Label * label = manage( new Gtk::Label(inset_->getContents()) );
-      Gtk::Box * hbox = manage( new Gtk::HBox() );
-      Gtk::Button * b_close = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CLOSE) ) );
-      Gtk::Alignment * alg1 = manage( new Gtk::Alignment(0.5, 0.5, 0, 0) );
-      Gtk::Alignment * mbox = manage( new Gtk::Alignment(0.5, 0.5, 0, 0) );
-      
-      // set up spacing
-      hbox->set_spacing(4);
-
-      // packing
-      alg1->add(*b_close);
-      
-      hbox->children().push_back(Element(*label, false, false));
-      hbox->children().push_back(Element(*manage(new Gtk::VSeparator()), false, false));
-      hbox->children().push_back(Element(*alg1, false, false));
-
-      mbox->add(*hbox);
-      
-      // packing dialog to main window
-      dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, _(" Error "));
-
-      // setting focus
-      GTK_WIDGET_SET_FLAGS (GTK_WIDGET(b_close->gtkobj()), GTK_CAN_DEFAULT);
-      gtk_widget_grab_focus (GTK_WIDGET(b_close->gtkobj()));
-      gtk_widget_grab_default (GTK_WIDGET(b_close->gtkobj()));
-
-      // connecting signals
-      b_close->clicked.connect(slot(mainAppWin, &GLyxAppWin::remove_action));
-      dialog_->destroy.connect(slot(this, &FormError::free));
-
-      u_ = d_->updateBufferDependent.connect(slot(this, &FormError::updateSlot));
-      h_ = d_->hideBufferDependent.connect(slot(this, &FormError::hide));
-    }
+	return getWidget<Gtk::Text>("textarea");
 }
-
-void FormError::updateSlot(bool buffchanged)
-{
-  if (buffchanged) hide();
-}
-
-void FormError::hide()
-{
-  if (dialog_!=0) mainAppWin->remove_action();
-}
-
-void FormError::free()
-{
-  if (dialog_!=0)
-    {
-      dialog_ = 0;
-      u_.disconnect();
-      h_.disconnect();
-      inset_ = 0;
-      ih_.disconnect();
-    }
-}
-
-void FormError::apply()
-{
-}
-

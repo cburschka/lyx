@@ -21,9 +21,9 @@
 
 <widget>
   <class>GnomeDialog</class>
-  <name>DiaInsertIndex</name>
+  <name>DiaIndex</name>
   <border_width>2</border_width>
-  <title>Insert Index</title>
+  <title>Insert/Update Index</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
   <modal>False</modal>
@@ -123,7 +123,7 @@
 	<widget>
 	  <class>GtkEntry</class>
 	  <child_name>GnomeEntry:entry</child_name>
-	  <name>combo-entry1</name>
+	  <name>keyword</name>
 	  <can_default>True</can_default>
 	  <has_default>True</has_default>
 	  <can_focus>True</can_focus>

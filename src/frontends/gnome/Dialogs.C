@@ -24,6 +24,7 @@
 #include "ControlCitation.h"
 #include "ControlCopyright.h"
 #include "ControlCredits.h"
+#include "ControlError.h"
 #include "ControlInclude.h"
 #include "ControlLog.h"
 #include "ControlUrl.h"
@@ -34,6 +35,7 @@
 #include "FormUrl.h"
 #include "FormCredits.h"
 #include "FormCopyright.h"
+#include "FormError.h"
 
 /*
 #include "FormBibitem.h"
@@ -44,7 +46,6 @@
 #include "FormVCLog.h"
 
 #include "FormDocument.h"
-#include "FormError.h"
 #include "FormExternal.h" 
 #include "FormGraphics.h"
 #include "FormInclude.h"
@@ -73,6 +74,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIUrl<FormUrl, gnomeBC>(*lv, *this));
 	add(new GUICredits<FormCredits, gnomeBC>(*lv, *this));
 	add(new GUICopyright<FormCopyright, gnomeBC>(*lv, *this));
+	add(new GUIError<FormError, gnomeBC>(*lv, *this));
 
 /*	
 	splash_.reset(new FormSplash(lv, this));
@@ -88,7 +90,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormCitation(lv, this));
 	
 	add(new FormDocument(lv, this));
-	add(new FormError(lv, this));
 	add(new FormExternal(lv, this));
 	add(new FormGraphics(lv, this));
 	add(new FormInclude(lv, this));
