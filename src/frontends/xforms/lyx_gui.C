@@ -290,9 +290,8 @@ void start(string const & batch, vector<string> const & files)
 		view.view()->loadLyXFile(*cit, true);
 
 	// handle the batch commands the user asked for
-	if (!batch.empty()) {
+	if (!batch.empty())
 		view.getLyXFunc().dispatch(batch);
-	}
 
 	// enter the event loop
 	while (!finished) {

@@ -163,8 +163,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 	if (!tname.empty()) {
 		if (!b->readFile(tname)) {
 			string const file = MakeDisplayPath(tname, 50);
-			string const text  = bformat(_("The specified document template\n%1$s\n"
-				"could not be read."), file);
+			string const text  = bformat(_("The specified document template\n%1$s\ncould not be read."), file);
 			Alert::error(_("Could not read template"), text);
 			// no template, start with empty buffer
 			b->paragraphs.push_back(Paragraph());

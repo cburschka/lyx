@@ -188,9 +188,11 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	// get absolute path of file and add ".lyx" to the filename if
 	// necessary
 	string s = FileSearch(string(), filename, "lyx");
-	if (s.empty()) {
+	
+	bool const found = !s.empty();
+
+	if (!found) 
 		s = filename;
-	}
 
 	// file already open?
 	if (bufferlist.exists(s)) {
@@ -211,28 +213,34 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 			// Fall through to new load. (Asger)
 		}
 	}
-	Buffer * b = bufferlist.newBuffer(s);
 
-	connectBuffer(*b);
+	Buffer * b;
 
-	if (! ::loadLyXFile(b, s)) {
-		bufferlist.release(b);
+	if (found) {
+		b = bufferlist.newBuffer(s);
+		connectBuffer(*b);
+		if (!::loadLyXFile(b, s)) {
+			bufferlist.release(b);
+			return false;
+		}
+	} else {
 		string text = bformat(_("The document %1$s does not yet "
 					"exist.\n\nDo you want to create "
 					"a new document?"), s);
 		int const ret = Alert::prompt(_("Create new document?"),
 			 text, 0, 1, _("&Create"), _("Cancel"));
 
-		if (ret != 0)
+		if (ret == 0)
+			b = ::newFile(s, string(), true);
+		else
 			return false;
 	}
 
 	buffer(b);
+	bv_->showErrorList(_("Parse"));
 
 	if (tolastfiles)
 		lastfiles->newFile(b->fileName());
-
-	bv_->showErrorList(_("Parse"));
 
 	return true;
 }
@@ -281,18 +289,16 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		return;
 
 	// if we are closing the buffer, use the first buffer as current
-	if (!buffer_) {
+	if (!buffer_)
 		buffer_ = bufferlist.first();
-	}
 
 	if (buffer_) {
 		lyxerr[Debug::INFO] << "Buffer addr: " << buffer_ << endl;
 		connectBuffer(*buffer_);
 
 		// If we don't have a text object for this, we make one
-		if (bv_->text == 0) {
+		if (bv_->text == 0)
 			resizeCurrentBuffer();
-		}
 
 		// FIXME: needed when ?
 		bv_->text->top_y(screen().topCursorVisible(bv_->text));

@@ -59,7 +59,6 @@ using std::signal;
 using std::system;
 #endif
 
-extern void LoadLyXFile(string const &);
 extern void QuitLyX();
 
 extern LyXServer * lyxserver;
@@ -97,9 +96,8 @@ LyX::LyX(int & argc, char * argv[])
 	// #include "graphics/GraphicsTypes.h" at the top -- Rob Lahaye.
 	lyx::graphics::setDisplayTranslator();
 
-	if (want_gui) {
+	if (want_gui)
 		lyx_gui::parse_init(argc, argv);
-	}
 
 	// check for any spurious extra arguments
 	// other than documents
@@ -116,15 +114,13 @@ LyX::LyX(int & argc, char * argv[])
 	init(want_gui);
 	lyxerr[Debug::INIT] << "Initializing LyX::init...done" << endl;
 
-	if (want_gui) {
+	if (want_gui) 
 		lyx_gui::parse_lyxrc();
-	}
 
 	vector<string> files;
 
-	for (int argi = argc - 1; argi >= 1; --argi) {
+	for (int argi = argc - 1; argi >= 1; --argi) 
 		files.push_back(argv[argi]);
-	}
 
 	if (first_start)
 		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
@@ -145,14 +141,14 @@ LyX::LyX(int & argc, char * argv[])
 			// the filename if necessary
 			string s = FileSearch(string(), *it, "lyx");
 			if (s.empty()) {
-				last_loaded = newFile(*it, "");
+				last_loaded = newFile(*it, string(), true);
 			} else {
-				last_loaded = bufferlist.newBuffer(s, false);
-				last_loaded->error.connect(boost::bind(&LyX::printError, this, _1));
-				if (!loadLyXFile(last_loaded, s)) {
-					bufferlist.release(last_loaded);
-					last_loaded = newFile(*it, string());
-				}
+				Buffer * buf = bufferlist.newBuffer(s, false);
+				buf->error.connect(boost::bind(&LyX::printError, this, _1));
+				if (loadLyXFile(buf, s)) 
+					last_loaded = buf;
+				else
+					bufferlist.release(buf);
 			}
 		}
 

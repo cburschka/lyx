@@ -1,3 +1,9 @@
+2003-07-29  Alfredo Braunstein  <abraunst@libero.it>
+	
+	* lyx_main.C (LyX):
+	* BufferView_pimpl.C (loadLyXFile): fix to bugs 1287 and 1297 + ws
+
+	
 2003-07-29  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* LaTeXFeatures.C:
