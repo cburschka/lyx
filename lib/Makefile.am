@@ -44,7 +44,7 @@ $(srcdir)/configure: $(srcdir)/configure.m4
 	$(CHMOD) 755 $@
 
 lyxrc.defaults: $(srcdir)/configure
-	$<
+	$(SHELL) $<
 
 libinstalldirs:
 	for dir in $(LYXLIBDIRS) ; do \
