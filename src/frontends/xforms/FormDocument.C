@@ -345,7 +345,12 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 	default:
 		break;
 	}
-	
+
+	if (ob == options_->check_use_natbib) {
+		setEnabled(options_->choice_citation_format,
+			   fl_get_button(options_->check_use_natbib));
+	}
+
 	switch (data) {
 	case INPUT:
 	case CHECKCHOICECLASS:
@@ -721,6 +726,7 @@ void FormDocument::options_update(BufferParams const & params)
     fl_set_button(options_->check_use_natbib,  params.use_natbib);
     fl_set_choice(options_->choice_citation_format,
 		  int(params.use_numerical_citations)+1);
+    setEnabled(options_->choice_citation_format, params.use_natbib);
     fl_set_counter_value(options_->slider_secnumdepth, params.secnumdepth);
     fl_set_counter_value(options_->slider_tocdepth, params.tocdepth);
     if (!params.float_placement.empty())

@@ -1,6 +1,8 @@
-2001-09-10  Angus Leeming  <a.leeming@ic.ac.uk>
+2001-09-11  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* FormMathsBitmap (build): fix memory leak.
+	* FormDocument.C (input, options_update): add code to enable the
+	Author-Year/Numerical citation choice only if the natbib checkbox is
+	active.
 
 2001-09-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
