@@ -1,3 +1,7 @@
+2003-09-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* buffer.C (readFile): add a space
+
 2003-09-02  Alfredo Braunstein  <abraunst@libero.it>
 
 	* BufferView_pimpl.C (update): remove bogus fitCursor() call
@@ -9,7 +13,7 @@
 	(readFile): adjust
 	(readFile): adjust, make it private. don't use setStream, make
 	lyx2lyx use a temporary file. Some simplificaton. Make the Alerts
-	always contain the filename. 
+	always contain the filename.
 
 	* BufferView.C (insertLyXFile): simplify and make it work for
 	gzipped files.

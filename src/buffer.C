@@ -511,9 +511,9 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 
 	if (file_format > LYX_FORMAT) {
 		Alert::warning(_("Document format failure"),
-			       bformat(_("%1$swas created with a newer version"
-					 " of LyX. This is likely to cause"
-					 " problems."),
+			       bformat(_("%1$s was created with a newer"
+					 " version of LyX. This is likely to"
+					 " cause problems."),
 					 filename));
 	} else if (file_format < LYX_FORMAT) {
 		string const tmpfile = tempName();
