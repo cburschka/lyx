@@ -33,7 +33,7 @@ int PainterBase::paperWidth() const
 
 int PainterBase::paperHeight() const
 {
-	return owner.height();
+	return owner.workHeight();
 }
 
 

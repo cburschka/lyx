@@ -1,5 +1,12 @@
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
+	* screen.C:
+	* Painter.C: use workHeight()
+
+	* WorkArea.h: remove confusing duplicate unused code
+ 
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
 	* screen.h:
 	* screen.C: rename, add reset()
  

@@ -391,7 +391,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		    !area->work_area->form->visible)
 			return 1;
 		lyxerr[Debug::WORKAREA] << "Workarea event: DRAW" << endl;
-		area->createPixmap(area->workWidth(), area->height());
+		area->createPixmap(area->workWidth(), area->workHeight());
 		area->workAreaExpose();
 		break;
 	case FL_PUSH:
@@ -552,11 +552,9 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 	case FL_ENTER:
 		lyxerr[Debug::WORKAREA] << "Workarea event: ENTER" << endl;
-		area->workAreaEnter();
 		break;
 	case FL_LEAVE:
 		lyxerr[Debug::WORKAREA] << "Workarea event: LEAVE" << endl;
-		area->workAreaLeave();
 		break;
 	case FL_DBLCLICK:
 		if (!ev) break;

@@ -145,10 +145,6 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	workarea().scrollCB.connect(boost::bind(&BufferView::Pimpl::scrollCB, this, _1));
 	workarea().workAreaExpose
 		.connect(boost::bind(&BufferView::Pimpl::workAreaExpose, this));
-	workarea().workAreaEnter
-		.connect(boost::bind(&BufferView::Pimpl::enterView, this));
-	workarea().workAreaLeave
-		.connect(boost::bind(&BufferView::Pimpl::leaveView, this));
 	workarea().workAreaButtonPress
 		.connect(boost::bind(&BufferView::Pimpl::workAreaButtonPress, this, _1, _2, _3));
 	workarea().workAreaButtonRelease
@@ -424,7 +420,7 @@ void BufferView::Pimpl::updateScrollbar()
 	}
 
 	long const text_height = bv_->text->height;
-	long const work_height = workarea().height();
+	long const work_height = workarea().workHeight();
 
 	double const lineh = bv_->text->defaultHeight();
 	double const slider_size =
@@ -474,7 +470,7 @@ void BufferView::Pimpl::scrollCB(double value)
 
 	int const height = vbt->defaultHeight();
 	int const first = static_cast<int>((bv_->text->first_y + height));
-	int const last = static_cast<int>((bv_->text->first_y + workarea().height() - height));
+	int const last = static_cast<int>((bv_->text->first_y + workarea().workHeight() - height));
 
 	if (vbt->cursor.y() < first)
 		vbt->setCursorFromCoordinates(bv_, 0, first);
@@ -499,11 +495,11 @@ int BufferView::Pimpl::scrollUp(long time)
 	float add_value =  (bv_->text->defaultHeight()
 			    + float(time) * float(time) * 0.125);
 
-	if (add_value > workarea().height())
-		add_value = float(workarea().height() -
+	if (add_value > workarea().workHeight())
+		add_value = float(workarea().workHeight() -
 				  bv_->text->defaultHeight());
 #else
-	float add_value =  float(workarea().height()) * float(time) / 100;
+	float add_value =  float(workarea().workHeight()) * float(time) / 100;
 #endif
 
 	value -= add_value;
@@ -534,11 +530,11 @@ int BufferView::Pimpl::scrollDown(long time)
 	float add_value =  (bv_->text->defaultHeight()
 			    + float(time) * float(time) * 0.125);
 
-	if (add_value > workarea().height())
-		add_value = float(workarea().height() -
+	if (add_value > workarea().workHeight())
+		add_value = float(workarea().workHeight() -
 				  bv_->text->defaultHeight());
 #else
-	float add_value =  float(workarea().height()) * float(time) / 100;
+	float add_value =  float(workarea().workHeight()) * float(time) / 100;
 #endif
 
 	value += add_value;
@@ -607,7 +603,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, mouse_button::state s
 #endif
 	// This is to allow jumping over large insets
 	if (cursorrow == bv_->text->cursor.row()) {
-		if (y >= int(workarea().height())) {
+		if (y >= int(workarea().workHeight())) {
 			bv_->text->cursorDown(bv_, false);
 		} else if (y < 0) {
 			bv_->text->cursorUp(bv_, false);
@@ -829,24 +825,6 @@ void BufferView::Pimpl::selectionLost()
 }
 
 
-void BufferView::Pimpl::enterView()
-{
-	if (available()) {
-		SetXtermCursor(workarea().getWin());
-		using_xterm_cursor = true;
-	}
-}
-
-
-void BufferView::Pimpl::leaveView()
-{
-	if (using_xterm_cursor) {
-		XUndefineCursor(fl_get_display(), workarea().getWin());
-		using_xterm_cursor = false;
-	}
-}
-
-
 void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 					      mouse_button::state button)
 {
@@ -1045,11 +1023,11 @@ void BufferView::Pimpl::workAreaExpose()
 	static unsigned int work_area_height;
 
 	bool const widthChange = workarea().workWidth() != work_area_width;
-	bool const heightChange = workarea().height() != work_area_height;
+	bool const heightChange = workarea().workHeight() != work_area_height;
 
 	// update from work area
 	work_area_width = workarea().workWidth();
-	work_area_height = workarea().height();
+	work_area_height = workarea().workHeight();
 	if (buffer_ != 0) {
 		if (widthChange) {
 			// The visible LyXView need a resize
@@ -1212,7 +1190,7 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 {
 	if (!text->cursor.row()->previous()) {
 		if (text->first_y > 0) {
-			int new_y = bv_->text->first_y - workarea().height();
+			int new_y = bv_->text->first_y - workarea().workHeight();
 			screen().draw(bv_->text, bv_, new_y < 0 ? 0 : new_y);
 			updateScrollbar();
 		}
@@ -1232,18 +1210,18 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 		// as we move the cursor or do something while inside the row (it may
 		// span several workarea-heights) we'll move to the top again, but this
 		// is better than just jump down and only display part of the row.
-		new_y = bv_->text->first_y - workarea().height();
+		new_y = bv_->text->first_y - workarea().workHeight();
 	} else {
 		if (text->inset_owner) {
 			new_y = bv_->text->cursor.iy()
 				+ bv_->theLockingInset()->insetInInsetY() + y
 				+ text->cursor.row()->height()
-				- workarea().height() + 1;
+				- workarea().workHeight() + 1;
 		} else {
 			new_y = text->cursor.y()
 				- text->cursor.row()->baseline()
 				+ text->cursor.row()->height()
-				- workarea().height() + 1;
+				- workarea().workHeight() + 1;
 		}
 	}
 	screen().draw(bv_->text, bv_,  new_y < 0 ? 0 : new_y);
@@ -1264,15 +1242,15 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 	if (!text->cursor.row()->next()) {
 		int y = text->cursor.y() - text->cursor.row()->baseline() +
 			text->cursor.row()->height();
-		if (y > int(text->first_y + workarea().height())) {
+		if (y > int(text->first_y + workarea().workHeight())) {
 			screen().draw(bv_->text, bv_,
-						  bv_->text->first_y + workarea().height());
+						  bv_->text->first_y + workarea().workHeight());
 			updateScrollbar();
 		}
 		return;
 	}
 
-	int y = text->first_y + workarea().height();
+	int y = text->first_y + workarea().workHeight();
 	if (text->inset_owner && !text->first_y) {
 		y -= (bv_->text->cursor.iy()
 			  - bv_->text->first_y
@@ -1281,7 +1259,7 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 	text->getRowNearY(y);
 
 	Row * cursorrow = text->cursor.row();
-	text->setCursorFromCoordinates(bv_, text->cursor.x_fix(), y); // + workarea().height());
+	text->setCursorFromCoordinates(bv_, text->cursor.x_fix(), y); // + workarea().workHeight());
 	finishUndo();
 	int new_y;
 	if (cursorrow == bv_->text->cursor.row()) {
@@ -1290,7 +1268,7 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 		// as we move the cursor or do something while inside the row (it may
 		// span several workarea-heights) we'll move to the top again, but this
 		// is better than just jump down and only display part of the row.
-		new_y = bv_->text->first_y + workarea().height();
+		new_y = bv_->text->first_y + workarea().workHeight();
 	} else {
 		if (text->inset_owner) {
 			new_y = bv_->text->cursor.iy()
@@ -1305,7 +1283,7 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 		LyXCursor cur;
 		text->setCursor(bv_, cur, text->cursor.row()->next()->par(),
 						text->cursor.row()->next()->pos(), false);
-		if (cur.y() < int(text->first_y + workarea().height())) {
+		if (cur.y() < int(text->first_y + workarea().workHeight())) {
 			text->cursorDown(bv_, true);
 		}
 	}
@@ -1481,8 +1459,8 @@ void BufferView::Pimpl::toggleToggle()
 void BufferView::Pimpl::center()
 {
 	beforeChange(bv_->text);
-	if (bv_->text->cursor.y() > static_cast<int>((workarea().height() / 2))) {
-		screen().draw(bv_->text, bv_, bv_->text->cursor.y() - workarea().height() / 2);
+	if (bv_->text->cursor.y() > static_cast<int>((workarea().workHeight() / 2))) {
+		screen().draw(bv_->text, bv_, bv_->text->cursor.y() - workarea().workHeight() / 2);
 	} else {
 		screen().draw(bv_->text, bv_, 0);
 	}

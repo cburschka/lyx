@@ -90,10 +90,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void selectionLost();
 	///
-	void enterView();
-	///
-	void leaveView();
-	///
 	void cursorToggle();
 	///
 	void cursorPrevious(LyXText *);
