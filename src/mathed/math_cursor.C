@@ -1289,6 +1289,11 @@ void MathCursor::interpret(string const & s)
 
 	if (lastcode_ == LM_TC_TEX) {
 		if (macroName().empty()) {
+			if (strchr("#$%{|}", c)) {
+				insert(new MathCharInset(c, LM_TC_TEX));	
+				lastcode_ = LM_TC_VAR;
+				return;
+			}
 			insert(c, LM_TC_TEX);
 			if (!isalpha(c)) {
 				macroModeClose();
