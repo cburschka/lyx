@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "math_factory.h"
 #include "math_parser.h"
 #include "math_arrayinset.h"
 #include "math_amsarrayinset.h"

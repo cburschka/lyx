@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "math_data.h"
 #include "math_cursor.h"
 #include "math_fontinset.h"
 #include "math_scriptinset.h"

@@ -10,15 +10,15 @@
 
 #include <config.h>
 
-
-
 #include "QWorkArea.h"
+#include "QContentPane.h"
 #include "QLyXKeySym.h"
-#include "funcrequest.h"
 
 #include <qpainter.h>
 #include <qtimer.h>
 #include <qapplication.h>
+
+#include "funcrequest.h"
 
 using std::endl;
 

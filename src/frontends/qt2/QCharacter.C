@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-
+#include "QCharacter.h"
 #include "ControlCharacter.h"
 #include "QCharacterDialog.h"
 #include "Qt2BC.h"

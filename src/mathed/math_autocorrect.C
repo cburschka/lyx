@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "math_autocorrect.h"
 #include "Lsstream.h"
 #include "debug.h"
 #include "support/filetools.h" //  LibFileSearch

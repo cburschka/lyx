@@ -10,8 +10,7 @@
 
 #include <config.h>
 
-
-
+#include "frontends/WorkAreaFactory.h"
 #include "QWorkArea.h"
 
 namespace WorkAreaFactory {

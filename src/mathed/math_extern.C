@@ -14,6 +14,7 @@
 
 #include <config.h>
 
+#include "math_extern.h"
 #include "math_arrayinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"

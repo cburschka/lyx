@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "QLPainter.h"
 #include "font_metrics.h"
 #include "debug.h"
 #include "language.h"

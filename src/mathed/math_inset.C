@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include "math_inset.h"
 #include "math_mathmlstream.h"
 #include "math_cursor.h"
 #include "debug.h"

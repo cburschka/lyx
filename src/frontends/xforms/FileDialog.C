@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "frontends/FileDialog.h"
 #include "FormFiledialog.h"
 
 #include "debug.h"

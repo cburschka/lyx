@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include "formulabase.h"
 #include "Lsstream.h"
 #include "support/LAssert.h"
 #include "formula.h"
