@@ -39,7 +39,6 @@ libqt2_la_OBJADD = \
 	../xforms/FormBibtex.lo \
 	../xforms/FormBrowser.lo \
 	../xforms/FormCopyright.lo	\
-	../xforms/FormCredits.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormError.lo \
 	../xforms/FormExternal.lo \

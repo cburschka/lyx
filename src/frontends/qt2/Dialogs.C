@@ -53,7 +53,11 @@ Dialogs::Dialogs(LyXView * lv)
     //    add( new FormCredits(lv, this));
 
     //	add(new FormDocument(lv, this));
-    add(new FormError(lv, this));
+
+
+    // REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-23
+    // add(new FormError(lv, this));
+
     add(new FormGraphics(lv, this));
     //	add(new FormIndex(lv, this));
     add(new FormParagraph(lv, this));
