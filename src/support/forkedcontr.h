@@ -24,7 +24,7 @@
 #pragma interface
 #endif
 
-class Forkedcall;
+class ForkedProcess;
 class Timeout;
 
 class ForkedcallsController : public SigC::Object {
@@ -40,7 +40,7 @@ public:
 	static ForkedcallsController & get();
 
 	/// Add a new child process to the list of controlled processes.
-	void addCall(Forkedcall const & newcall);
+	void addCall(ForkedProcess const &);
 
 	/** This method is connected to the timer. Every XX ms it is called
 	 *  so that we can check on the status of the children. Those that
@@ -69,7 +69,7 @@ private:
 	ForkedcallsController(ForkedcallsController const &);
 
 	/// The child processes
-	typedef std::list<Forkedcall *> ListType;
+	typedef std::list<ForkedProcess *> ListType;
 	///
 	ListType forkedCalls;
 

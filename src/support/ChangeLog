@@ -1,3 +1,11 @@
+2002-10-25  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcall.[Ch]: split ForkedCall up into a base class ForkedProcess
+	and a minimal ForkedCall daughter class.
+
+	* forkedcontr.[Ch]: minimal changes reflecting the use of a
+	ForkedProcess base class responsible for launching all child proceses.
+
 2002-12-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* filetools.C (getExtFromContents): remove epsi detection

@@ -22,6 +22,9 @@ What's new
 
 ** Bug fixes
 
+- fix bug where autosaving would leave a lot of zombie processes after
+  a long time
+
 - fix problem where it was not possible to force some values to 0 in
   custom margins
 

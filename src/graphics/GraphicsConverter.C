@@ -265,13 +265,12 @@ ConvProcess::ConvProcess(string const & script_file,
 	int retval = call.startscript(script_command, convert_ptr);
 	if (retval > 0) {
 		// Unable to even start the script, so clean-up the mess!
-		converted(string(), 0, 1);
+		converted(0, 1);
 	}
 }
 
 
-void ConvProcess::converted(string const &/* cmd */,
-			    pid_t /* pid */, int retval)
+void ConvProcess::converted(pid_t /* pid */, int retval)
 {
 	// Clean-up behind ourselves
 	lyx::unlink(script_file_);
