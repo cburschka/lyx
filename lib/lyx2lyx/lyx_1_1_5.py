@@ -155,19 +155,10 @@ def remove_space_in_units(file):
             i = i + 1
 
 
-def convert(file):
-    table = [first_layout, remove_vcid, remove_cursor, update_toc,
-             replace_protected_separator, merge_formula_inset,
-             update_tabular, remove_space_in_units]
-
-    for conv in table:
-        conv(file)
-
-    file.format = 216
-
-
-def revert(file):
-    file.error("The convertion to an older format (%s) is not implemented." % file.format)
+convert = [[216, [first_layout, remove_vcid, remove_cursor, update_toc,
+                  replace_protected_separator, merge_formula_inset,
+                  update_tabular, remove_space_in_units]]]
+revert  = []
 
 if __name__ == "__main__":
     pass

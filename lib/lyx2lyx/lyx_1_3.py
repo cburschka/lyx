@@ -92,17 +92,8 @@ def change_tabular(file):
         i = i+1
 
 
-def convert(file):
-    table = [change_insetgraphics, change_tabular]
-
-    for conv in table:
-        conv(file)
-
-    file.format = 221
-
-
-def revert(file):
-    file.error("The convertion to an older format (%s) is not implemented." % file.format)
+convert = [[221, [change_insetgraphics, change_tabular]]]
+revert  = []
 
 
 if __name__ == "__main__":

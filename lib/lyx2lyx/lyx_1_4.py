@@ -1510,66 +1510,47 @@ def use_x_binary(file):
 ##
 # Convertion hub
 #
-def convert(file):
-    table = [[223, [insert_tracking_changes, add_end_header, remove_color_default,
-                    convert_spaces, convert_bibtex, remove_insetparent]],
-             [224, [convert_external, convert_comment]],
-             [225, [add_end_layout, layout2begin_layout, convert_end_document,
-                    convert_table_valignment_middle, convert_breaks]],
-             [226, [convert_note]],
-             [227, [convert_box]],
-             [228, [convert_collapsable, convert_ert]],
-             [229, [convert_minipage]],
-             [230, [convert_jurabib]],
-             [231, [convert_float]],
-             [232, [convert_bibtopic]],
-             [233, [convert_graphics, convert_names]],
-             [234, [convert_cite_engine]],
-             [235, [convert_paperpackage]],
-             [236, [convert_bullets, add_begin_header, add_begin_body,
-                    normalize_papersize, strip_end_space]],
-             [237, [use_x_boolean]],
-             [238, [update_latexaccents]]]
 
-    for version, conv_steps in table:
-        if file.format >= version:
-            continue
-        for convert in conv_steps:
-            convert(file)
-        file.format = version
-        if file.end_format == file.format:
-            return
+convert = [[223, [insert_tracking_changes, add_end_header, remove_color_default,
+                  convert_spaces, convert_bibtex, remove_insetparent]],
+           [224, [convert_external, convert_comment]],
+           [225, [add_end_layout, layout2begin_layout, convert_end_document,
+                  convert_table_valignment_middle, convert_breaks]],
+           [226, [convert_note]],
+           [227, [convert_box]],
+           [228, [convert_collapsable, convert_ert]],
+           [229, [convert_minipage]],
+           [230, [convert_jurabib]],
+           [231, [convert_float]],
+           [232, [convert_bibtopic]],
+           [233, [convert_graphics, convert_names]],
+           [234, [convert_cite_engine]],
+           [235, [convert_paperpackage]],
+           [236, [convert_bullets, add_begin_header, add_begin_body,
+                  normalize_papersize, strip_end_space]],
+           [237, [use_x_boolean]],
+           [238, [update_latexaccents]]]
 
+revert =  [[237, []],
+           [236, [use_x_binary]],
+           [235, [denormalize_papersize, remove_begin_body,remove_begin_header,
+                  revert_bullets]],
+           [234, [revert_paperpackage]],
+           [233, [revert_cite_engine]],
+           [232, [revert_names]],
+           [231, [revert_bibtopic]],
+           [230, [revert_float]],
+           [229, [revert_jurabib]],
+           [228, []],
+           [227, [revert_collapsable, revert_ert]],
+           [226, [revert_box, revert_external_2]],
+           [225, [revert_note]],
+           [224, [rm_end_layout, begin_layout2layout, revert_end_document,
+                  revert_valignment_middle, convert_vspace, convert_frameless_box]],
+           [223, [revert_external_2, revert_comment]],
+           [221, [rm_end_header, revert_spaces, revert_bibtex,
+                  rm_tracking_changes, rm_body_changes]]]
 
-def revert(file):
-    table = [[237, []],
-             [236, [use_x_binary]],
-             [235, [denormalize_papersize, remove_begin_body,remove_begin_header,
-                    revert_bullets]],
-             [234, [revert_paperpackage]],
-             [233, [revert_cite_engine]],
-             [232, [revert_names]],
-             [231, [revert_bibtopic]],
-             [230, [revert_float]],
-             [229, [revert_jurabib]],
-             [228, []],
-             [227, [revert_collapsable, revert_ert]],
-             [226, [revert_box, revert_external_2]],
-             [225, [revert_note]],
-             [224, [rm_end_layout, begin_layout2layout, revert_end_document,
-                    revert_valignment_middle, convert_vspace, convert_frameless_box]],
-             [223, [revert_external_2, revert_comment]],
-             [221, [rm_end_header, revert_spaces, revert_bibtex,
-                    rm_tracking_changes, rm_body_changes]]]
-
-    for version, conv_steps in table:
-        if file.format <= version:
-            continue
-        for convert in conv_steps:
-            convert(file)
-        file.format = version
-        if file.end_format == file.format:
-            return
 
 if __name__ == "__main__":
     pass

@@ -137,11 +137,6 @@ def update_space_units(file):
             lines[i] = string.replace(lines[i], old, new)
 
 
-def update_inset_accent(file):
-    lines = file.body
-    pass
-
-
 def remove_cursor(file):
     lines = file.body
     i = 0
@@ -278,22 +273,13 @@ def update_latexaccents(file):
         i = i + 1
 
 
-def convert(file):
-    table = [header_update, add_end_document, remove_cursor,
-             final_dot, update_inset_label, update_latexdel,
-             update_space_units, update_inset_accent,
-             space_before_layout, formula_inset_space_eat,
-             update_tabular, update_vfill, remove_empty_insets,
-             remove_formula_latex, update_latexaccents]
-
-    for conv in table:
-        conv(file)
-
-    file.format = 215
-
-
-def revert(file):
-    file.error("The convertion to an older format (%s) is not implemented." % file.format)
+convert = [[215, [header_update, add_end_document, remove_cursor,
+                  final_dot, update_inset_label, update_latexdel,
+                  update_space_units, space_before_layout,
+                  formula_inset_space_eat, update_tabular,
+                  update_vfill, remove_empty_insets,
+                  remove_formula_latex, update_latexaccents]]]
+revert  = []
 
 
 if __name__ == "__main__":

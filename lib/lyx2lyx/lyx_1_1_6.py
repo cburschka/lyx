@@ -276,17 +276,8 @@ def update_language(file):
     return
 
 
-def convert(file):
-    table = [update_tabular, update_language]
-
-    for conv in table:
-        conv(file)
-
-    file.format = 217
-
-
-def revert(file):
-    file.error("The convertion to an older format (%s) is not implemented." % file.format)
+convert = [[217, [update_tabular, update_language]]]
+revert  = []
 
 
 if __name__ == "__main__":

@@ -114,17 +114,8 @@ def table_update(lines):
     return lines[:2] + col_info + lines[2:]
 
 
-def convert(file):
-    table = [update_tabular]
-
-    for conv in table:
-        conv(file)
-
-    file.format = 218
-
-
-def revert(file):
-    file.error("The convertion to an older format (%s) is not implemented." % file.format)
+convert = [[218, [update_tabular]]]
+revert  = []
 
 
 if __name__ == "__main__":

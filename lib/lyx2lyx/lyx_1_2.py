@@ -730,20 +730,11 @@ def change_preamble(file):
 		      "\use_numerical_citations 0"]
 
 
-def convert(file):
-    table = [change_preamble, change_listof, fix_oldfloatinset,
-             update_tabular, update_longtables, remove_pextra,
-             remove_oldfloat, remove_figinset, remove_oldertinset,
-             remove_oldert, combine_ert, change_infoinset]
-
-    for conv in table:
-        conv(file)
-
-    file.format = 220
-
-
-def revert(file):
-    file.error("The convertion to an older format (%s) is not implemented." % file.format)
+convert = [[220, [change_preamble, change_listof, fix_oldfloatinset,
+                  update_tabular, update_longtables, remove_pextra,
+                  remove_oldfloat, remove_figinset, remove_oldertinset,
+                  remove_oldert, combine_ert, change_infoinset]]]
+revert  = []
 
 
 if __name__ == "__main__":

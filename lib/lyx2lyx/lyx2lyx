@@ -51,7 +51,7 @@ def parse_options(argv):
             usage()
             sys.exit()
         if o in ("-v", "--version"):
-            print "lyx2lyx, version %s" %(LyX.version)
+            print "lyx2lyx, version %s" %(LyX.version_lyx2lyx)
             print "Copyright (C) 2002-2004 José Matos and Dekel Tsur"
             sys.exit()
         if o in ("-d", "--debug"):

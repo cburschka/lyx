@@ -16,17 +16,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-def convert(file):
-    table = []
-
-    for conv in table:
-        conv(file)
-
-    file.format = 215
-
-
-def revert(file):
-    file.error("The convertion to an older format (%s) is not implemented." % file .format)
+convert = [[215, []]]
+revert  = []
 
 
 if __name__ == "__main__":

@@ -23,7 +23,7 @@ import sys
 import re
 import string
 
-version = "1.4.0cvs"
+version_lyx2lyx = "1.4.0cvs"
 default_debug_level = 2
 
 # Regular expressions used
@@ -224,7 +224,7 @@ class LyX_Base:
 
     def set_version(self):
         " Set the header with the version used."
-        self.header[0] = "#LyX %s created this file. For more info see http://www.lyx.org/" % version
+        self.header[0] = "#LyX %s created this file. For more info see http://www.lyx.org/" % version_lyx2lyx
         if self.header[1][0] == '#':
             del self.header[1]
 
@@ -265,8 +265,28 @@ class LyX_Base:
         self.warning("convertion chain: " + str(convertion_chain), 3)
 
         for step in convertion_chain:
-            convert_step = getattr(__import__("lyx_" + step), mode)
-            convert_step(self)
+            steps = getattr(__import__("lyx_" + step), mode)
+
+            if not steps:
+                    self.error("The convertion to an older format (%s) is not implemented." % self.format)
+
+            if len(steps) == 1:
+                version, table = steps[0]
+                for conv in table:
+                    conv(self)
+                self.format = version
+                continue
+
+            for version, table in steps:
+                if self.format >= version and mode == "convert":
+                    continue
+                if self.format <= version and mode == "revert":
+                    continue
+                for conv in table:
+                    conv(self)
+                self.format = version
+                if self.end_format == self.format:
+                    return
 
 
     def chain(self):
