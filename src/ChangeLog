@@ -1,3 +1,8 @@
+2002-03-28  Herbert Voss  <voss@lyx.org>
+
+	* lyxlength.[Ch]: add inBP() to get the right PS-point
+	units (BigPoint). With inPixels we have rounding errors
+
 2002-04-11  Juergen Vigna  <jug@sad.it>
 
 	* text2.C (setCursorFromCoordinates): set iy to the right value.

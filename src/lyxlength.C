@@ -238,6 +238,34 @@ int LyXLength::inPixels(int default_width, int default_height) const
 }
 
 
+int LyXLength::inBP() const
+{
+	// return any LyXLength value as a one with
+	// the PostScript point, called bp (big points)
+	double result = 0.0;
+	int val_sign = val_ < 0.0 ? -1 : 1;
+	switch (unit_) {
+	case LyXLength::CM:
+		// 1bp = 0.2835cm
+		result = val_ * 28.346;
+		break;
+	case LyXLength::MM:
+		// 1bp = 0.02835mm
+		result = val_ * 2.8346;
+		break;
+	case LyXLength::IN:
+		// 1pt = 1/72in
+		result = val_ * 72.0;
+		break;
+	default:
+		// no other than bp possible
+		result = val_;
+		break;
+	}
+	return static_cast<int>(result * val_sign + 0.5);
+}
+
+
 bool operator==(LyXLength const & l1, LyXLength const & l2)
 {
 	return l1.value() == l2.value() && l1.unit() == l2.unit();

@@ -67,6 +67,8 @@ public:
 	string const asLatexString() const;
 	/// return the on-screen size of this length
 	int inPixels(int default_width, int default_height) const;
+	/// return the on-screen size of this length of an image
+	int inBP() const;
 
 	/** If "data" is valid, the length represented by it is
 	  stored into "result", if that is not 0. */
