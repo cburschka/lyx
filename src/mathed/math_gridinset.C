@@ -473,6 +473,46 @@ bool MathGridInset::idxLast(idx_type & idx, pos_type & pos) const
 }
 
 
+bool MathGridInset::idxHome(idx_type & idx, pos_type & pos) const
+{
+	if (pos > 0) {
+		pos = 0;
+		return true;
+	}
+	if (col(idx) > 0) {
+		idx -= idx % ncols();
+		pos = 0;
+		return true;
+	}
+	if (idx > 0) {
+		idx = 0;
+		pos = 0;
+		return true;
+	}
+	return false;
+}
+
+
+bool MathGridInset::idxEnd(idx_type & idx, pos_type & pos) const
+{
+	if (pos < cell(idx).size()) {
+		pos = cell(idx).size();
+		return true;
+	}
+	if (col(idx) < ncols() - 1) {
+		idx = idx - idx % ncols() + ncols() - 1;
+		pos = cell(idx).size();
+		return true;
+	}
+	if (idx < nargs() - 1) {
+		idx = nargs() - 1;
+		pos = cell(idx).size();
+		return true;
+	}
+	return false;
+}
+
+
 void MathGridInset::idxDelete(idx_type & idx, bool & popit, bool & deleteit)
 {
 	popit    = false;

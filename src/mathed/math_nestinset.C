@@ -130,7 +130,6 @@ bool MathNestInset::idxEnd(idx_type & idx, pos_type & pos) const
 	pos_type n = cell(idx).size();
 	if (pos == n)
 		return false;
-
 	pos = n;
 	return true;
 }

@@ -10,6 +10,8 @@
 	* math_inset.[Ch]:
 	  formula.C: remove unused static member int MathInset::workwidth
 
+	* math_gridinset.[Ch]: implement idxHome() and idxEnd()
+
 2001-10-17  André Pönitz  <poenitz@gmx.net>
 
 	* math_inset.h:

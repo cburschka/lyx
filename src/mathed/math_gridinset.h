@@ -120,6 +120,10 @@ public:
 	///
 	bool idxLast(idx_type &, pos_type &) const;
 	///
+	bool idxHome(idx_type &, pos_type &) const;
+	///
+	bool idxEnd(idx_type &, pos_type &) const;
+	///
 	void idxDelete(idx_type &, bool &, bool &);
 	///
 	void idxDeleteRange(idx_type, idx_type);
