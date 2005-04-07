@@ -1311,6 +1311,9 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 #endif
 		return true;
 	}
+	case LFUN_CELL_SPLIT:
+		flag.enabled(true);
+		return true;
 	default:
 		return MathNestInset::getStatus(cur, cmd, flag);
 	}
