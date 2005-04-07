@@ -26,6 +26,7 @@
 #include "support/filetools.h"
 #include "support/forkedcall.h"
 #include "support/lstrings.h"
+#include "support/lyxalgo.h"
 #include "support/package.h"
 #include "support/path.h"
 
@@ -146,8 +147,9 @@ int InsetExternal::write(string const & format,
 	}
 
 	updateExternal(format, buf);
-	os << doSubstitution(buf, cit->second.product);
-	return 0; // CHECK  (FIXME check what ? - jbl)
+	string const outstring = doSubstitution(buf, cit->second.product);
+	os << outstring;
+	return lyx::count(outstring.begin(), outstring.end(), '\n');
 }
 
 

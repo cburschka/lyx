@@ -1,3 +1,11 @@
+2005-03-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetgraphics.C (latex): fix off-by-one error in number of
+	newlines.
+
+	* insetexternal.C (write): compute correctly the number of lines
+	in output.
+
 2005-02-26  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* insetbib.C: change screen label

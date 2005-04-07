@@ -71,6 +71,8 @@ What's new
 
 - When reading an equation, don't parse \| following a \left or \right as |.
 
+- Fix positionning of error insets after graphics and external insets.
+
 - When executing generating PDF, handle properly pdfTeX warnings [bug 1824].
 
 - Fix lyxpreview2ppm.py to work with python versions older than 2.1.

@@ -779,10 +779,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	os << latex_str;
 
 	// Return how many newlines we issued.
-	int const newlines =
-		int(lyx::count(latex_str.begin(), latex_str.end(),'\n') + 1);
-
-	return newlines;
+	return int(lyx::count(latex_str.begin(), latex_str.end(),'\n'));
 }
 
 
