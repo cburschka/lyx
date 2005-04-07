@@ -1,20 +1,20 @@
 # Russian translation for LyX
-# Copyright (C) 1998-2002,2003 Free Software Foundation, Inc.
+# Copyright (C) 1998-2002,2003, 2005 Free Software Foundation, Inc.
 # FIRST AUTHOR Victor Lavrenko <lyx@lavrenko.pp.ru>, 1998.
-# Core author Vitaly Lipatov <lav@altlinux.ru>, 2001-2003.
+# Core author Vitaly Lipatov <lav@altlinux.ru>, 2001-2003, 2004, 2005.
 # Modified by Andrew Zabolotny <zap@cobra.ru>, 2002.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.3.2\n"
+"Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-30 16:43+0200\n"
-"PO-Revision-Date: 2003-09-22 03:26MSK\n"
+"PO-Revision-Date: 2005-04-01 13:42MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=KOI8-R\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -1408,9 +1408,8 @@ msgid "LyXServer pipe:|#S"
 msgstr "Труба сервера LyX:|#с"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2496
-#, fuzzy
 msgid "PATH prefix:|#T"
-msgstr "Тип:|#Т"
+msgstr "Префикс PATH:|#Т"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2538
 msgid "Date format:|#f"
@@ -1505,13 +1504,12 @@ msgid "Default paper size:|#p"
 msgstr "Размер бумаги по умолчанию:|#р"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3040
-#, fuzzy
 msgid "Outside Code Interaction"
-msgstr "Код"
+msgstr "Код внешнего обмена"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3058
 msgid "ASCII roff:|#r"
-msgstr ""
+msgstr "простой текст roff:|#r"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3076
 msgid "Checktex:|#c"
@@ -1527,7 +1525,7 @@ msgstr "Автосброс параметров класса при изменении|#и"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3130
 msgid "Use Cygwin Paths|#s"
-msgstr ""
+msgstr "Использовать пути Cygwin|#s"
 
 #: ../src/frontends/xforms/forms/form_print.fd:44
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -1589,7 +1587,6 @@ msgid "Name:|#N"
 msgstr "Название:|#Н"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:207
-#, fuzzy
 msgid "Label:|#e"
 msgstr "Метка:|#М"
 
@@ -1697,7 +1694,6 @@ msgstr "Длинная таблица|#Д"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:284
 #: ../src/frontends/xforms/forms/form_tabular.fd:1200
-#, fuzzy
 msgid "Rotate 90 deg|#9"
 msgstr "Повернуть на 90 градусов|#9"
 
@@ -1932,9 +1928,8 @@ msgid "Use &NatBib"
 msgstr "Использовать &Natbib"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-#, fuzzy
 msgid "Citation &Style:"
-msgstr "Стиль ссылок на источник:"
+msgstr "Стиль &ссылок на источник:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:66
@@ -2237,21 +2232,18 @@ msgid "Bibliography Entry"
 msgstr "Элемент библиографии"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-#, fuzzy
 msgid "&Key:"
 msgstr "&Ключ"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-#, fuzzy
 msgid "The bibliography key"
-msgstr "Вставить элемент библиографии"
+msgstr "Ключ библиографии"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-#, fuzzy
 msgid "&Label:"
-msgstr "&Метка"
+msgstr "&Метка:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
@@ -2277,9 +2269,8 @@ msgstr "&OK"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
 #: src/frontends/qt2/QBibtex.C:39 src/frontends/xforms/FormBibtex.C:37
-#, fuzzy
 msgid "BibTeX Bibliography"
-msgstr "Библиография"
+msgstr "Библиография BibTeX"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
 msgid "Databa&ses"
@@ -2487,7 +2478,7 @@ msgstr "&Восстановить"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
 msgid "Browse the available bibliography entries"
-msgstr ""
+msgstr "Просмотреть доступные библиографические элементы"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Regular E&xpression"
@@ -2523,19 +2514,16 @@ msgid "New Item"
 msgstr "Создать запись"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
-#, fuzzy
 msgid "Available bibliography entries"
-msgstr "Настройки библиографии"
+msgstr "Доступные библиографические ссылки"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
-#, fuzzy
 msgid "Add citation of the selected bibliography entry"
-msgstr "Информация о выбранном источнике"
+msgstr "Добавить ссылку на выбранный библиографический элемент"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
-#, fuzzy
 msgid "Remove citation of the selected bibliography entry"
-msgstr "Информация о выбранном источнике"
+msgstr "Удалить ссылку на выбранный библиографический элемент"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
 msgid "Move the selected citation up"
@@ -2562,7 +2550,6 @@ msgid "Info"
 msgstr "Текст ссылки"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
-#, fuzzy
 msgid "Bibliography entry"
 msgstr "Элемент библиографии"
 
@@ -3138,7 +3125,6 @@ msgid "Set math font"
 msgstr "Установить математический шрифт"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
-#, fuzzy
 msgid "Insert fraction"
 msgstr "Вставить дробь"
 
@@ -3571,11 +3557,11 @@ msgstr "&Изменить"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:22
 msgid "Cygwin Paths"
-msgstr ""
+msgstr "Пути Cygwin"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
 msgid "&Use Cygwin-style paths"
-msgstr ""
+msgstr "&Использовать пути в стиле Cygwin"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2016
@@ -3584,7 +3570,7 @@ msgid ""
 "paths. Useful if you're using the Cygwin teTeX rather than a native Windows "
 "MikTeX. Note, however, that you'll need to write shell script wrappers for "
 "all your converters."
-msgstr ""
+msgstr "Отметьте, если LyX должен формировать пути в стиле Cygwin, а не в стиле Windows. Это полезно, если вы используете teTeX из cygwin, а не MikTeX для Windows. К сожалению, вам придётся написать оболочки для всех преобразователей форматов."
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
 msgid "Date Format"
@@ -3775,8 +3761,7 @@ msgstr "Параметры размеры бумаги просмотрщика DVI:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-"Дополнительный флаг размера бумаги (-paper) для некоторых просмотрщиков DVI"
+msgstr "Дополнительный флаг размера бумаги (-paper) для некоторых просмотрщиков DVI"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
 msgid "CheckTeX start options and flags"
@@ -3804,7 +3789,7 @@ msgstr "Канал сервера Ly&X:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:250
 msgid "&PATH prefix:"
-msgstr ""
+msgstr "Префикс &пути:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
 msgid "Printer settings"
@@ -4097,9 +4082,8 @@ msgid "Print Destination"
 msgstr "Куда печатать"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:409
-#, fuzzy
 msgid "P&rinter:"
-msgstr "П&ринтер"
+msgstr "П&ринтер:"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
@@ -4120,27 +4104,24 @@ msgid "Cross Reference"
 msgstr "Перекрёстная ссылка"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-#, fuzzy
 msgid "Update the label list"
-msgstr "Обновить список ссылок"
+msgstr "Обновить список меток"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
 msgid "&Goto"
 msgstr "&Перейти"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-#, fuzzy
 msgid "Move the document cursor to label"
-msgstr "Переместить курсор на ссылку"
+msgstr "Переместить курсор на метку"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
 msgid "Sort"
 msgstr "Упорядочить"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-#, fuzzy
 msgid "Sort labels in alphabetical order"
-msgstr "Упорядочивать ссылки в алфавитном порядке"
+msgstr "Упорядочить метки в алфавитном порядке"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
 msgid "<reference>"
@@ -4163,9 +4144,8 @@ msgid "Formatted reference"
 msgstr "форматированная ссылка"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-#, fuzzy
 msgid "Cross reference as it appears in output"
-msgstr "Ссылка, как она будет показана в выводе"
+msgstr "Перекрёстная ссылка, как она будет показана в выводе"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
 msgid "&Format:"
@@ -4174,17 +4154,15 @@ msgstr "&Формат:"
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
 msgid "&Name:"
-msgstr "&Имя:"
+msgstr "&Название:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-#, fuzzy
 msgid "Available labels in selected document:"
-msgstr "Доступные ссылки в выбранном документе:"
+msgstr "Доступные метки в выбранном документе:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-#, fuzzy
 msgid "Available labels"
-msgstr "Доступные шаблоны"
+msgstr "Доступные метки"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
 msgid "&Document:"
@@ -4242,8 +4220,7 @@ msgstr "&Форматы экспорта:"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Обработать преобразованный файл с помощью команды ($$FName = название файла)"
+msgstr "Обработать преобразованный файл с помощью команды ($$FName = название файла)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4390,7 +4367,6 @@ msgid "Width unit"
 msgstr "Единица измерения ширины"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-#, fuzzy
 msgid "Fixed width of the column"
 msgstr "Фиксированная ширина столбца"
 
@@ -4399,7 +4375,6 @@ msgid "Vertical alignment for fixed width columns"
 msgstr "Вертикальное выравнивание для столбцов фиксированной ширины"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
-#, fuzzy
 msgid "Rotate 90 deg"
 msgstr "Повернуть на 90 градусов"
 
@@ -4408,7 +4383,6 @@ msgid "&Rotate Table"
 msgstr "&Повернуть таблицу"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
-#, fuzzy
 msgid "Rotate the table by 90 deg"
 msgstr "Повернуть таблицу на 90 градусов"
 
@@ -4417,7 +4391,6 @@ msgid "Rotate &Cell"
 msgstr "Повернуть &ячейку"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
-#, fuzzy
 msgid "Rotate this cell by 90 deg"
 msgstr "Повернуть ячейку на 90 градусов"
 
@@ -4573,17 +4546,15 @@ msgid "&Rescan"
 msgstr "&Обновить"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-#, fuzzy
 msgid "Rebuild the file lists"
-msgstr "Построить новый список файлов"
+msgstr "Перестроить список файлов"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
 msgstr "&Просмотреть"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Показывает содержимое отмеченного файла. Это возможно только в том случае, "
 "если файлы показываются с полным путём."
@@ -4636,9 +4607,8 @@ msgid "Insert URL"
 msgstr "Вставить URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
 msgid "&URL:"
-msgstr "&URL"
+msgstr "&URL:"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
@@ -5169,18 +5139,16 @@ msgid "NoteToEditor"
 msgstr "Заметка редактору"
 
 #: ../lib/layouts/aastex.layout:121 ../lib/layouts/aastex.layout:541
-#, fuzzy
 msgid "Facility"
-msgstr "Факт"
+msgstr ""
 
 #: ../lib/layouts/aastex.layout:123 ../lib/layouts/aastex.layout:567
 msgid "Objectname"
-msgstr ""
+msgstr "НазваниеОбъекта"
 
 #: ../lib/layouts/aastex.layout:125 ../lib/layouts/aastex.layout:594
-#, fuzzy
 msgid "Dataset"
-msgstr "Базы данных"
+msgstr ""
 
 #: ../lib/layouts/aastex.layout:526
 msgid "FigCaption"
@@ -5306,7 +5274,6 @@ msgstr "ЗАНАВЕС"
 
 #: ../lib/layouts/broadway.layout:216 ../lib/layouts/egs.layout:261
 #: ../lib/layouts/hollywood.layout:311 ../lib/layouts/lyxmacros.inc:101
-#, fuzzy
 msgid "Right_Address"
 msgstr "Адрес справа"
 
@@ -6024,24 +5991,20 @@ msgid "Solution"
 msgstr "Решение"
 
 #: ../lib/layouts/memoir.layout:31
-#, fuzzy
 msgid "Chapterprecis"
-msgstr "Упражнения к главе"
+msgstr ""
 
 #: ../lib/layouts/memoir.layout:52
-#, fuzzy
 msgid "Epigraph"
-msgstr "Элемент биографии"
+msgstr "Эпиграф"
 
 #: ../lib/layouts/memoir.layout:64
-#, fuzzy
 msgid "Poemtitle"
-msgstr "Малый"
+msgstr "НазваниеПоэмы"
 
 #: ../lib/layouts/memoir.layout:82
-#, fuzzy
 msgid "Poemtitle*"
-msgstr "Малый"
+msgstr "НазваниеПоэмы*"
 
 #: ../lib/layouts/paper.layout:143
 msgid "SubTitle"
@@ -6229,24 +6192,20 @@ msgid "AuthorAddr"
 msgstr "АдресАвтора"
 
 #: ../lib/layouts/aguplus.inc:154
-#, fuzzy
 msgid "SlugComment"
-msgstr "Комментарий"
+msgstr ""
 
 #: ../lib/layouts/aguplus.inc:177
-#, fuzzy
 msgid "Plate"
-msgstr "Вставить"
+msgstr ""
 
 #: ../lib/layouts/aguplus.inc:187
-#, fuzzy
 msgid "Planotable"
-msgstr "Размещение таблицы"
+msgstr ""
 
 #: ../lib/layouts/aguplus.inc:198
-#, fuzzy
 msgid "Table_Caption"
-msgstr "Таблица"
+msgstr "Название_Таблицы"
 
 #: ../lib/layouts/amsdefs.inc:186
 msgid "Current_Address"
@@ -6338,9 +6297,8 @@ msgid "Scrap"
 msgstr "Мусор"
 
 #: ../lib/layouts/scrclass.inc:108
-#, fuzzy
 msgid "Addpart"
-msgstr "Добавить"
+msgstr "Допчасть"
 
 #: ../lib/layouts/scrclass.inc:114
 msgid "Addchap"
@@ -6387,19 +6345,16 @@ msgid "Extratitle"
 msgstr "Дополнительный заголовок"
 
 #: ../lib/layouts/scrclass.inc:246
-#, fuzzy
 msgid "Captionabove"
-msgstr "Подпись"
+msgstr "ПодписьСверху"
 
 #: ../lib/layouts/scrclass.inc:252
-#, fuzzy
 msgid "Captionbelow"
-msgstr "Подпись"
+msgstr "ПодписьСнизу"
 
 #: ../lib/layouts/scrclass.inc:258
-#, fuzzy
 msgid "Dictum"
-msgstr "Дата"
+msgstr ""
 
 #: ../lib/layouts/stdfloats.inc:9
 msgid "Table"
@@ -6558,9 +6513,8 @@ msgid "Kazakh"
 msgstr "Казахский"
 
 #: ../lib/languages:39
-#, fuzzy
 msgid "Latvian"
-msgstr "Размещение"
+msgstr "Латышский"
 
 #: ../lib/languages:40
 msgid "Lithuanian"
@@ -6579,9 +6533,8 @@ msgid "Norsk"
 msgstr "Норвежский"
 
 #: ../lib/languages:45
-#, fuzzy
 msgid "Nynorsk"
-msgstr "Норвежский"
+msgstr "Нюноршк"
 
 #: ../lib/languages:46
 msgid "Polish"
@@ -6973,11 +6926,11 @@ msgstr "Математика"
 
 #: ../lib/ui/default.ui:162
 msgid "Maple, simplify"
-msgstr ""
+msgstr "Maple, упростить"
 
 #: ../lib/ui/default.ui:163
 msgid "Maple, factor"
-msgstr ""
+msgstr "Maple, множитель"
 
 #: ../lib/ui/default.ui:164
 msgid "Maple, evalm"
@@ -7000,29 +6953,24 @@ msgid "Eqnarray Environment|q"
 msgstr "Блок уравнений|у"
 
 #: ../lib/ui/default.ui:172
-#, fuzzy
 msgid "Align Environment|A"
-msgstr "Выровнять"
+msgstr "Окружение с выравниванием|В"
 
 #: ../lib/ui/default.ui:173
-#, fuzzy
 msgid "AlignAt Environment"
-msgstr "Блок с выравниванием|а"
+msgstr ""
 
 #: ../lib/ui/default.ui:174
-#, fuzzy
 msgid "Flalign Environment|f"
-msgstr "Блок с выравниванием|а"
+msgstr ""
 
 #: ../lib/ui/default.ui:177
-#, fuzzy
 msgid "Gather Environment"
-msgstr "Блок вариантов|в"
+msgstr ""
 
 #: ../lib/ui/default.ui:178
-#, fuzzy
 msgid "Multline Environment"
-msgstr "Блок с выравниванием|а"
+msgstr "Многострочный блок"
 
 #: ../lib/ui/default.ui:182
 msgid "Align Left|L"
@@ -7053,9 +7001,8 @@ msgid "Special Character|S"
 msgstr "Специальный символ...|ц"
 
 #: ../lib/ui/default.ui:197
-#, fuzzy
 msgid "Citation...|C"
-msgstr "Ссылка на источник"
+msgstr "Ссылка на источник...|С"
 
 #: ../lib/ui/default.ui:198
 msgid "Cross Reference...|R"
@@ -7178,29 +7125,24 @@ msgid "Eqnarray Environment|E"
 msgstr "Блок уравнений|у"
 
 #: ../lib/ui/default.ui:237
-#, fuzzy
 msgid "AMS align Environment|A"
-msgstr "AMS"
+msgstr "Выровненный блок AMS|A"
 
 #: ../lib/ui/default.ui:238
-#, fuzzy
 msgid "AMS alignat Environment|t"
-msgstr "AMS"
+msgstr ""
 
 #: ../lib/ui/default.ui:239
-#, fuzzy
 msgid "AMS flalign Environment|f"
-msgstr "AMS"
+msgstr ""
 
 #: ../lib/ui/default.ui:242
-#, fuzzy
 msgid "AMS gather Environment"
-msgstr "AMS"
+msgstr ""
 
 #: ../lib/ui/default.ui:243
-#, fuzzy
 msgid "AMS multline Environment"
-msgstr "AMS"
+msgstr "Многострочное окружение AMS"
 
 #: ../lib/ui/default.ui:245
 msgid "Array Environment|y"
@@ -7295,9 +7237,8 @@ msgid "Index List|I"
 msgstr "Предметный указатель|у"
 
 #: ../lib/ui/default.ui:286
-#, fuzzy
 msgid "BibTeX Bibliography...|B"
-msgstr "Библиография"
+msgstr "Библиография BibTeX...|B"
 
 #: ../lib/ui/default.ui:290
 msgid "LyX Document...|X"
@@ -8404,25 +8345,24 @@ msgstr "Документ использует неизвестный класс документа "
 #: src/buffer.C:642
 #, c-format
 msgid "Can't load textclass %1$s"
-msgstr "Невозможно загрузить класс документа %1$"
+msgstr "Невозможно загрузить класс документа %1$s"
 
 #: src/buffer.C:647
 msgid "Can't load textclass "
 msgstr "Невозможно загрузить класс документа "
 
 #: src/buffer.C:656
-#, fuzzy, c-format
+#, c-format
 msgid "The document uses a missing TeX class \"%1$s\"."
-msgstr "Документ использует неизвестный класс документа \"%1$s\"."
+msgstr "Документ использует неизвестный класс документа TeX \"%1$s\"."
 
 #: src/buffer.C:657 src/buffer.C:663
 msgid "LyX will not be able to produce output."
-msgstr ""
+msgstr "LyX не сможет формировать текст на выходе."
 
 #: src/buffer.C:661
-#, fuzzy
 msgid "The document uses a missing TeX class "
-msgstr "Документ использует неизвестный класс документа "
+msgstr "Документ использует неизвестный класс документа TeX"
 
 #: src/buffer.C:983
 #, c-format
@@ -8452,8 +8392,7 @@ msgstr "Ошибка!"
 
 #: src/buffer.C:1220
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"Файл в формате старой версии LyX. Только LyX 0.10.x сможет прочесть его!"
+msgstr "Файл в формате старой версии LyX. Только LyX 0.10.x сможет прочесть его!"
 
 #: src/buffer.C:1228
 msgid "Can't find conversion script."
@@ -8756,7 +8695,6 @@ msgid "GUI handling"
 msgstr "Обработка GUI"
 
 #: src/debug.C:39
-#, fuzzy
 msgid "Lyxlex grammar parser"
 msgstr "Грамматический анализатор Lyxlex"
 
@@ -9194,9 +9132,8 @@ msgid " and "
 msgstr " и "
 
 #: src/frontends/controllers/biblio.C:109
-#, fuzzy
 msgid " et al."
-msgstr "и др."
+msgstr " и др."
 
 #: src/frontends/controllers/biblio.C:148
 msgid "No year"
@@ -9422,14 +9359,12 @@ msgid ",,text''"
 msgstr ",,текст''"
 
 #: src/frontends/qt2/QDocument.C:88
-#, fuzzy
 msgid "<<text>>"
-msgstr "<<Текст>>"
+msgstr "<<текст>>"
 
 #: src/frontends/qt2/QDocument.C:89
-#, fuzzy
 msgid ">>text<<"
-msgstr ">>Текст<<"
+msgstr ">>текст<<"
 
 #: src/frontends/qt2/QDocument.C:101
 msgid "US letter"
@@ -9785,9 +9720,8 @@ msgid "Go back"
 msgstr "Вернуться обратно"
 
 #: src/frontends/qt2/QRef.C:127
-#, fuzzy
 msgid "Go to label"
-msgstr "Длин&нейшая метка"
+msgstr "Перейти к метке"
 
 #: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
 msgid "Find and Replace"
@@ -9899,8 +9833,7 @@ msgstr " выделен для "
 #: src/frontends/xforms/ColorHandler.C:119
 #, c-format
 msgid "LyX: Using approximated X11 color %1$s allocated for %2$s"
-msgstr ""
-"LyX: Используется приблизительный цвет X11 %1$s, распределённый для %2$s"
+msgstr "LyX: Используется приблизительный цвет X11 %1$s, распределённый для %2$s"
 
 #: src/frontends/xforms/ColorHandler.C:125
 msgid "LyX: Using approximated X11 color "
@@ -10030,14 +9963,12 @@ msgstr "*.bst| Стили BibTeX (*.bst)"
 
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
-#, fuzzy
 msgid "Add citation of the selected bibliography entry."
-msgstr "Информация о выбранном источнике"
+msgstr "Добавить ссылку на выбранный библиографический элемент."
 
 #: src/frontends/xforms/FormCitation.C:165
-#, fuzzy
 msgid "Delete citation of the selected bibliography entry."
-msgstr "Информация о выбранном источнике"
+msgstr "Удалить ссылку на выбранный библиографический элемент."
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
@@ -10056,20 +9987,18 @@ msgstr ""
 "с помощью кнопок со стрелками."
 
 #: src/frontends/xforms/FormCitation.C:181
-#, fuzzy
 msgid ""
 "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX "
 "Bibliography\"). Move the ones you want to cite with the arrow buttons into "
 "the left browser window."
 msgstr ""
-"Все записи в загруженной базе данных (через \"Вставить->Списки и содержания-"
+"Все записи, имеющиеся в загруженной базе данных (через \"Вставить->Списки и содержания-"
 ">Ссылки BibTeX\"). Выберите источники, которые хотите процитировать и "
 "добавьте их в левое окно с помощью кнопок со стрелками."
 
 #: src/frontends/xforms/FormCitation.C:188
-#, fuzzy
 msgid "Information about the selected bibliography entry"
-msgstr "Информация о выбранном источнике"
+msgstr "Информация о выбранном библиографическом элементе"
 
 #: src/frontends/xforms/FormCitation.C:195
 msgid ""
@@ -10078,12 +10007,11 @@ msgid ""
 msgstr "Здесь вы можете выбрать, как будет выглядеть метка ссылки (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:198
-#, fuzzy
 msgid ""
 "Activate if you want to print all authors in a citation with more than three "
 "authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
-"Отметьте, если хотите напечатать всех авторов в цитате из более чем трёх "
+"Отметьте, если хотите указать всех авторов в цитате из более чем трёх "
 "источников, вместо \"<Первый Автор> и др.\" (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:201
@@ -10096,12 +10024,10 @@ msgstr ""
 "(\"Van Gogh\", вместо \"van Gogh\"). Полезен в начале предложений (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:204
-#, fuzzy
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
 msgstr "Необязательный текст перед ссылкой, например \"см. <Ссылка>\""
 
 #: src/frontends/xforms/FormCitation.C:207
-#, fuzzy
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
 msgstr "Необязательный текст после ссылки, например \"стр. 12\""
 
@@ -10146,10 +10072,8 @@ msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr " Нет | Небольшие поля | Маленькие поля | Широкие поля "
 
 #: src/frontends/xforms/FormDocument.C:286
-#, fuzzy
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr ""
-" ``текст'' | ''текст'' | ,,текст`` | ,,текст'' | <<текст>> | >>текст<< "
+msgstr " ``текст'' | ''текст'' | ,,текст`` | ,,текст'' | <<текст>> | >>текст<< "
 
 #: src/frontends/xforms/FormDocument.C:311
 msgid " Author-year | Numerical "
@@ -10183,8 +10107,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:1114
 msgid "Document is read-only. No changes to layout permitted."
-msgstr ""
-"Документ доступен только для чтения. Никакие изменения формата недопустимы."
+msgstr "Документ доступен только для чтения. Никакие изменения формата недопустимы."
 
 #: src/frontends/xforms/FormExternal.C:29
 msgid "Edit external file"
@@ -10471,8 +10394,7 @@ msgstr "Неверная длина!"
 
 #: src/frontends/xforms/FormParagraph.C:128
 msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
-msgstr ""
-"Отсутствует|По умолчанию|Маленький|Средний|Большой|Вертикальный клей|Указать"
+msgstr "Отсутствует|По умолчанию|Маленький|Средний|Большой|Вертикальный клей|Указать"
 
 #: src/frontends/xforms/FormParagraph.C:132
 msgid "Default|Single|OneHalf|Double|Custom"
@@ -10547,8 +10469,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Объекты LyX, цвет которых может быть изменён."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Изменить цвет объекта LyX. Помните: вы должны нажать \"Применить\" для "
 "вступления изменений в силу."
@@ -10590,7 +10511,6 @@ msgid "Convert \"to\" this format"
 msgstr "Преобразовывать \"в\" этот формат"
 
 #: src/frontends/xforms/FormPreferences.C:995
-#, fuzzy
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
@@ -10598,7 +10518,7 @@ msgid ""
 msgstr ""
 "Команда преобразования. $$i -- название входного файла, $$b -- название "
 "файла без его расширения, $$o -- название выходного файла. $$s может быть "
-"использовано как путь к коллекции сценариев преобразования, поставляемых с "
+"использовано как путь к каталогу сценариев преобразования форматов, поставляемых вместе с "
 "LyX."
 
 #: src/frontends/xforms/FormPreferences.C:1001
@@ -10698,8 +10618,7 @@ msgstr "Одноцветный|Чёрно-белый|Цветной|Не показывать"
 
 #: src/frontends/xforms/FormPreferences.C:1981
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" по умолчанию | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
+msgstr " по умолчанию | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2240
 msgid "Default path"
@@ -10803,29 +10722,24 @@ msgstr "Задать обратный порядок печати страниц."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:66
-#, fuzzy
 msgid "Select a document for labels."
-msgstr "Выберите документ для ссылок."
+msgstr "Выберите документ для меток."
 
 #: src/frontends/xforms/FormRef.C:68
-#, fuzzy
 msgid "Sort the labels alphabetically."
-msgstr "Упорядочить ссылки по алфавиту."
+msgstr "Упорядочить метки по алфавиту."
 
 #: src/frontends/xforms/FormRef.C:70 src/frontends/xforms/FormRef.C:279
-#, fuzzy
 msgid "Go to selected label."
-msgstr "Перейти к выбранной ссылке."
+msgstr "Перейти к выбранной метке."
 
 #: src/frontends/xforms/FormRef.C:72
-#, fuzzy
 msgid "Update the list of labels."
-msgstr "Обновить список ссылок."
+msgstr "Обновить список меток."
 
 #: src/frontends/xforms/FormRef.C:74
-#, fuzzy
 msgid "Select format style of the cross reference."
-msgstr "Выбрать формат ссылок."
+msgstr "Выберите стиль оформления перекрёстных ссылок."
 
 #: src/frontends/xforms/FormRef.C:178
 msgid "*** No labels found in document ***"
@@ -10874,10 +10788,8 @@ msgstr "Искать в обратном направлении."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid ""
-"Export the buffer to this format before running the command below on it."
-msgstr ""
-"Экспортировать документ в указанный формат перед запуском команды над ним."
+msgid "Export the buffer to this format before running the command below on it."
+msgstr "Экспортировать документ в указанный формат перед запуском команды над ним."
 
 #: src/frontends/xforms/FormSendto.C:48
 msgid ""
@@ -10966,9 +10878,8 @@ msgid "Show full path or only file name."
 msgstr "Показывать полный путь или только название файла."
 
 #: src/frontends/xforms/FormTexinfo.C:54
-#, fuzzy
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr "Запускает скрипт \"TexFiles.sh\" чтобы создать новые списки файлов."
+msgstr "Запускает скрипт \"TexFiles.sh\" чтобы обновить списки файлов."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
@@ -11047,9 +10958,8 @@ msgstr "Проверьте 'диапазон страниц'!"
 
 #: src/frontends/xforms/xforms_helpers.C:285
 #: src/frontends/xforms/xforms_helpers.C:330
-#, fuzzy
 msgid "Failed to open file."
-msgstr "Невозможно открыть файл"
+msgstr "Невозможно открыть файл."
 
 #: src/frontends/xforms/xforms_helpers.C:362
 #: src/frontends/xforms/xforms_helpers.C:386
@@ -11132,9 +11042,8 @@ msgid "Opened inset"
 msgstr "Открытая вкладка"
 
 #: src/insets/insetbib.C:142
-#, fuzzy
 msgid "BibTeX Generated Bibliography"
-msgstr "LyX: Вставка элемента библиографии"
+msgstr "Сгенерированная библиография BibTeX"
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
@@ -11443,12 +11352,11 @@ msgid "Can't open pipe for spellchecker."
 msgstr "Невозможно открыть канал для программы проверки правописания."
 
 #: src/ispell.C:237
-#, fuzzy
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
 msgstr ""
-"Невозможно создать процесс ispell.\n"
+"Невозможно запустить процесс ispell.\n"
 "Возможно у вас нет корректно установленных языков."
 
 #: src/ispell.C:259
@@ -11460,9 +11368,8 @@ msgstr ""
 "Возможно, он был неверно настроен?"
 
 #: src/ispell.C:368
-#, fuzzy
 msgid "Could not communicate with the spell-checker program."
-msgstr "Невозможно обменяться данными с программой проверки правописания"
+msgstr "Невозможно обменяться данными с программой проверки правописания."
 
 #: src/kbsequence.C:153
 msgid "   options: "
@@ -11701,45 +11608,46 @@ msgid ""
 "%1$s. Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+"Невозможно создать временный каталог в\n"
+"%1$s. Проверьте, что этот путь существует,\n"
+"доступен для записи и попробуйте ещё раз."
 
 #: src/lyx_main.C:388
-#, fuzzy
 msgid "Could not create a temporary directory in\n"
-msgstr "Ошибка создания временного каталога:"
+msgstr "Невозможно создать временный каталог в\n"
 
 #: src/lyx_main.C:390
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+". Проверьте, что этот путь существует,\n"
+"доступен для записи и попробуйте ещё раз."
 
 #: src/lyx_main.C:394
-#, fuzzy
 msgid "Could not create temporary directory"
-msgstr "Ошибка создания временного каталога:"
+msgstr "Невозможно создать временный каталог"
 
 #: src/lyx_main.C:538
-#, fuzzy
 msgid "You have specified a non-existent user LyX directory."
-msgstr "Вы указали неверный LyX-каталог."
+msgstr "Вы указали несуществующий каталог LyX."
 
 #: src/lyx_main.C:539
 msgid "It is needed to keep your own configuration."
 msgstr "Его необходимо создать для хранения Ваших личных настроек."
 
 #: src/lyx_main.C:540
-#, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
-msgstr "Попытаться мне это сделать за Вас (рекомендуется)?"
+msgstr "Попытаться мне это сделать за Вас? В случае отрицательного ответа программа завершится."
 
 #: src/lyx_main.C:541
 msgid "No user LyX directory. Exiting."
-msgstr ""
+msgstr "Нет каталога пользователя LyX. Завершение работы."
 
 #: src/lyx_main.C:546
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Creating directory %1$s"
-msgstr "LyX: создаю каталог "
+msgstr "LyX: Создаётся каталог  %1$s"
 
 #: src/lyx_main.C:550
 msgid "LyX: Creating directory "
@@ -11747,9 +11655,8 @@ msgstr "LyX: создаю каталог "
 
 #. Failed, so let's exit.
 #: src/lyx_main.C:557
-#, fuzzy
 msgid "Failed to create directory. Exiting."
-msgstr "Вызов createDirectory с неверным названием"
+msgstr "Ошибка при создании каталога. Завершение работы."
 
 #: src/lyx_main.C:576 src/lyx_main.C:580
 msgid "LyX Warning!"
@@ -12104,8 +12011,7 @@ msgstr ""
 
 #: src/lyxrc.C:1874
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
-msgstr ""
-"Программа печати, которой вы пользуетесь, например \"dvips\", \"dvilj4\"."
+msgstr "Программа печати, которой вы пользуетесь, например \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:1878
 msgid "The option to print only even pages."
@@ -12229,8 +12135,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Кодировка для шрифтов меню."
 
 #: src/lyxrc.C:1980
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Промежуток времени между автосохранениями (в секундах). 0 означает не "
 "выполнять автосохранение."
@@ -12270,8 +12175,7 @@ msgstr ""
 
 #: src/lyxrc.C:2000
 msgid "The file where the last-files information should be stored."
-msgstr ""
-"Файл, в котором будет сохраняться информация о последних открытых файлах."
+msgstr "Файл, в котором будет сохраняться информация о последних открытых файлах."
 
 #: src/lyxrc.C:2004
 msgid ""
@@ -12392,10 +12296,8 @@ msgid ""
 msgstr "Укажите дополнительный язык. По умолчанию используется язык документа."
 
 #: src/lyxrc.C:2075
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr ""
-"Укажите дополнительный личный словарный файл. Например \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgstr "Укажите дополнительный личный словарный файл. Например \".ispell_english\"."
 
 #: src/lyxrc.C:2080
 msgid "Specify additional chars that can be part of a word."
@@ -12455,8 +12357,7 @@ msgstr ""
 "находится редактируемый файл."
 
 #: src/lyxrc.C:2112
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Отметьте для включения поддержки языков \"справа налево\" (таких как "
 "еврейский, арабский)."
@@ -12481,8 +12382,7 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Снимите отметку чтобы язык(и) использовался как аргумент в \\documentclass."
+msgstr "Снимите отметку чтобы язык(и) использовался как аргумент в \\documentclass."
 
 #: src/lyxrc.C:2128
 msgid ""
@@ -12496,12 +12396,10 @@ msgstr ""
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr ""
-"Отметьте, если в начале документа требуется команда переключения языка."
+msgstr "Отметьте, если в начале документа требуется команда переключения языка."
 
 #: src/lyxrc.C:2136
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Отметьте, если в конце документа требуется команда переключения языка."
 
 #: src/lyxrc.C:2140
@@ -12556,8 +12454,7 @@ msgstr "Показывать формулы так, как они будут выглядеть при печати"
 
 #: src/lyxrc.C:2186
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr ""
-"У предварительно показываемых формул будут метки \"(#)\" вместо номеров"
+msgstr "У предварительно показываемых формул будут метки \"(#)\" вместо номеров"
 
 #: src/lyxrc.C:2190
 msgid "Scale the preview size to suit."
@@ -12567,7 +12464,7 @@ msgstr "Изменить размер предварительного показа до подходящего ."
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
-msgstr ""
+msgstr "Эти каталоги будут использованы до обработки переменной среды PATH. Указывайте их в том виде, как принято в вашей операционной системе."
 
 #: src/lyxtextclasslist.C:88
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -12699,13 +12596,12 @@ msgstr "Ошибка удаления файла автосохранения!"
 
 #: src/support/package.C:374
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1%"
-msgstr ""
+msgid "Unable to determine the path to the LyX binary from the command line %1%"
+msgstr "Невозможно определить путь к программе LyX из командной строки %1%"
 
 #: src/support/package.C:379
 msgid "Unable to determine the path to the LyX binary from the command line "
-msgstr ""
+msgstr "Невозможно определить путь к программе LyX из командной строки "
 
 #: src/support/package.C:505
 #, c-format
@@ -12721,11 +12617,10 @@ msgid "Unable to determine the system directory having searched\n"
 msgstr ""
 
 #: src/support/package.C:518
-#, fuzzy
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr "установите переменную окружения LYX_DIR_13x на системный каталог LyX "
+msgstr ""
 
 #: src/support/package.C:601
 #, c-format
@@ -12733,25 +12628,25 @@ msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Неверный ключ %1%.\n"
+"Каталог %2% не содержит %3%."
 
 #: src/support/package.C:606 src/support/package.C:641
 #: src/support/package.C:669
-#, fuzzy
 msgid "Invalid "
-msgstr "Неверная длина!"
+msgstr "Неверный "
 
 #: src/support/package.C:607
 msgid " switch.\n"
-msgstr ""
+msgstr " ключ.\n"
 
 #: src/support/package.C:608 src/support/package.C:643
-#, fuzzy
 msgid "Directory "
-msgstr "Каталог:|#К"
+msgstr "Каталог "
 
 #: src/support/package.C:609 src/support/package.C:644
 msgid " does not contain "
-msgstr ""
+msgstr " не содержит "
 
 #: src/support/package.C:636
 #, c-format
@@ -12759,11 +12654,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Неверная переменная окружения %1%.\n"
+"Каталог %2% не содержит %3%."
 
 #: src/support/package.C:642 src/support/package.C:670
-#, fuzzy
 msgid " environment variable.\n"
-msgstr "Переменная окружения LYX_DIR_13x определена неверно."
+msgstr " переменная окружения.\n"
 
 #: src/support/package.C:664
 #, c-format
@@ -12771,11 +12667,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
+"Неверная переменная окружения %1%.\n"
+"%2% не является каталогом."
 
 #: src/support/package.C:671
-#, fuzzy
 msgid " is not a directory."
-msgstr "Требуется файл, а не каталог."
+msgstr " не является каталогом."
 
 #: src/tabular.C:1346
 msgid "Warning:"
@@ -12872,1267 +12769,3 @@ msgstr "Метка установлена"
 msgid "LyX function 'layout' needs an argument."
 msgstr "Функции LyX 'layout' необходим аргумент."
 
-#~ msgid "Forked child processes:|#F"
-#~ msgstr "Порождённые процессы:|#п"
-
-#~ msgid "Kill processes:|#K"
-#~ msgstr "Останавливаемые процессы:|#О"
-
-#~ msgid "All ->"
-#~ msgstr "Все ->"
-
-#~ msgid "@->"
-#~ msgstr "@->"
-
-#~ msgid "Reference:|#e"
-#~ msgstr "Перекрёстная ссылка:|#с"
-
-#~ msgid "Cite &Style:"
-#~ msgstr "Вид &библиографических ссылок:"
-
-#~ msgid "The citation key"
-#~ msgstr "Ключ цитирования"
-
-#~ msgid "Bibtex"
-#~ msgstr "Bibtex"
-
-#~ msgid "Search the available citations"
-#~ msgstr "Искать доступные цитаты"
-
-#~ msgid "Available citation keys"
-#~ msgstr "Доступные библиографические ссылки"
-
-#~ msgid "Add the selected citation"
-#~ msgstr "Добавить выбранную ссылку на источник"
-
-#~ msgid "Remove the selected citation"
-#~ msgstr "Удалить выбранную ссылку на источник"
-
-#~ msgid "Citation entry"
-#~ msgstr "Запись о библиографическом источнике"
-
-#~ msgid "&File"
-#~ msgstr "&Файл"
-
-#~ msgid "&Reference:"
-#~ msgstr "&Ссылка:"
-
-#~ msgid "Available references"
-#~ msgstr "Доступные ссылки"
-
-#~ msgid "&Type"
-#~ msgstr "&Тип"
-
-#~ msgid "&Name"
-#~ msgstr "&Название"
-
-#~ msgid "Citation Reference...|C"
-#~ msgstr "Ссылку на источник цитирования...|и"
-
-#~ msgid "BibTeX Reference...|B"
-#~ msgstr "Ссылки BibTeX|B"
-
-#~ msgid "Child Processes|C"
-#~ msgstr "Порождённые процессы|п"
-
-#~ msgid "Show the processes forked by LyX"
-#~ msgstr "Показать процессы, запущенные LyX'ом"
-
-#~ msgid "Kill the forked process with this PID"
-#~ msgstr "Убить запущенные процессы с указанным PID"
-
-#~ msgid "Bibliography Item"
-#~ msgstr "Пункт библиографии"
-
-#~ msgid "BibTeX"
-#~ msgstr "BibTeX"
-
-#~ msgid "LyX: Preferences"
-#~ msgstr "LyX: Настройки"
-
-#~ msgid "Go to reference"
-#~ msgstr "Перейти к ссылке"
-
-#~ msgid "ShowFile"
-#~ msgstr "ПоказатьФайл"
-
-#~ msgid "Table of contents"
-#~ msgstr "Содержание"
-
-#~ msgid "BibTeX Database"
-#~ msgstr "База данных BiBTeX"
-
-#~ msgid "Add the selected entry to the current citation reference."
-#~ msgstr "Добавить выбранную запись к текущей ссылке на источник."
-
-#~ msgid "Delete the selected entry from the current citation reference."
-#~ msgstr "Удалить выбранную запись из текущей ссылки на источник."
-
-#~ msgid "ERT Options"
-#~ msgstr "Параметры показа режима LaTeX"
-
-#~ msgid "Child processes"
-#~ msgstr "Порождённые процессы"
-
-#~ msgid "All currently running child processes forked by LyX."
-#~ msgstr "Все выполняющиеся процессы, порождённые LyX."
-
-#~ msgid "A list of all child processes to kill."
-#~ msgstr "Список останавливаемых процессов."
-
-#~ msgid "Add all processes to the list of processes to kill."
-#~ msgstr "Добавить все процессы в список останавливаемых."
-
-#~ msgid ""
-#~ "Add the currently selected child process to the list of processes to kill."
-#~ msgstr "Добавить выбранный процесс в список останавливаемых."
-
-#~ msgid ""
-#~ "Remove the currently selected item from the list of processes to kill."
-#~ msgstr "Удалить выбранный процесс из списка останавливаемых."
-
-#~ msgid "LaTeX preamble"
-#~ msgstr "Преамбула LaTeX"
-
-#~ msgid "Url"
-#~ msgstr "Url: "
-
-#~ msgid "BibTeX Generated References"
-#~ msgstr "Ссылки, сгенерированные через BibTeX"
-
-#~ msgid "Warning: could not determine path of binary."
-#~ msgstr "Предупреждение: не удаётся определить путь к исполняемому файлу."
-
-#~ msgid "If you have problems, try starting LyX with an absolute path."
-#~ msgstr ""
-#~ "Если у вас есть возникли проблемы, попытайтесь запустить LyX с полным "
-#~ "путём."
-
-#~ msgid "System directory set to: "
-#~ msgstr "Системный каталог установлен в: "
-
-#~ msgid "LyX Warning! Couldn't determine system directory. "
-#~ msgstr "Внимание! Невозможно определить системный каталог. "
-
-#~ msgid "Try the '-sysdir' command line parameter or "
-#~ msgstr "Попытайтесь запустить с параметром '-sysdir' или "
-
-#~ msgid "containing the file `chkconfig.ltx'."
-#~ msgstr "содержащую файл `chkconfig.ltx'."
-
-#~ msgid "Using built-in default %1$s but expect problems."
-#~ msgstr "Используем встроенное умолчание %1$s, но ожидайте проблемы."
-
-#~ msgid "Using built-in default "
-#~ msgstr "Использую встроенные установки "
-
-#~ msgid " but expect problems."
-#~ msgstr " но возможны проблемы."
-
-#~ msgid "Expect problems."
-#~ msgstr "Ждите проблем."
-
-#~ msgid "Running without personal LyX directory."
-#~ msgstr "Работаю без персонального LyX-каталога."
-
-#~ msgid "LyX: Creating directory %1$s and running configure..."
-#~ msgstr "LyX: Создание каталога %1$s и запуск configure..."
-
-#~ msgid " and running configure..."
-#~ msgstr " и запускаю конфигурирование..."
-
-#~ msgid "Failed. Will use %1$s instead."
-#~ msgstr "Не удалось. Будет использоваться %1$s вместо."
-
-#~ msgid "Failed. Will use "
-#~ msgstr "Неудача. Буду использовать "
-
-#~ msgid " instead."
-#~ msgstr " вместо этого."
-
-#, fuzzy
-#~ msgid "AdressZeileA"
-#~ msgstr "Адрес"
-
-#, fuzzy
-#~ msgid "AdressZeileB"
-#~ msgstr "Адрес"
-
-#, fuzzy
-#~ msgid "AdressZeileC"
-#~ msgstr "Адрес"
-
-#, fuzzy
-#~ msgid "AdressZeileD"
-#~ msgstr "Адрес"
-
-#, fuzzy
-#~ msgid "AdressZeileE"
-#~ msgstr "Адрес"
-
-#, fuzzy
-#~ msgid "AdressZeileF"
-#~ msgstr "Адрес"
-
-#, fuzzy
-#~ msgid "TelefonZeileA"
-#~ msgstr "Телефон"
-
-#, fuzzy
-#~ msgid "TelefonZeileB"
-#~ msgstr "Телефон"
-
-#, fuzzy
-#~ msgid "TelefonZeileC"
-#~ msgstr "Телефон"
-
-#, fuzzy
-#~ msgid "TelefonZeileD"
-#~ msgstr "Телефон"
-
-#, fuzzy
-#~ msgid "TelefonZeileE"
-#~ msgstr "Телефон"
-
-#, fuzzy
-#~ msgid "TelefonZeileF"
-#~ msgstr "Телефон"
-
-#, fuzzy
-#~ msgid "InternetZeileA"
-#~ msgstr "Verteiler"
-
-#, fuzzy
-#~ msgid "InternetZeileB"
-#~ msgstr "Verteiler"
-
-#, fuzzy
-#~ msgid "InternetZeileC"
-#~ msgstr "Verteiler"
-
-#, fuzzy
-#~ msgid "InternetZeileD"
-#~ msgstr "Verteiler"
-
-#, fuzzy
-#~ msgid "InternetZeileE"
-#~ msgstr "Verteiler"
-
-#, fuzzy
-#~ msgid "InternetZeileF"
-#~ msgstr "Verteiler"
-
-#~ msgid "Portuguese"
-#~ msgstr "Португальский"
-
-#~ msgid "Files (*)"
-#~ msgstr "Файлы (*)"
-
-#~ msgid "Real name : |#R"
-#~ msgstr "Настоящее название: |#Н"
-
-#~ msgid "Email address : |#E"
-#~ msgstr "Электронный адрес: |#Э"
-
-#~ msgid "Reject change|#R"
-#~ msgstr "Отклонить изменения|#О"
-
-#~ msgid "Next change|#N"
-#~ msgstr "Следующее изменение|#С"
-
-#~ msgid "Accept change|#A"
-#~ msgstr "Принять изменение|#и"
-
-#~ msgid "Changed by:"
-#~ msgstr "Изменено:"
-
-#~ msgid "author"
-#~ msgstr "автор"
-
-#~ msgid "date"
-#~ msgstr "дата"
-
-#~ msgid "on:"
-#~ msgstr "на:"
-
-#~ msgid "Identity"
-#~ msgstr "О пользователе"
-
-#~ msgid "&E-mail:"
-#~ msgstr "&E-mail:"
-
-#~ msgid "Your name"
-#~ msgstr "Ваше имя"
-
-#~ msgid "Your E-mail address"
-#~ msgstr "Ваш электронный адрес"
-
-#~ msgid "Ignore this word throughout this session"
-#~ msgstr "Пропускать это слово в течение всего поиска"
-
-#~ msgid "&Use AMS math package automatically"
-#~ msgstr "&Использовать пакет математики AMS автоматически"
-
-#~ msgid "Use AMS &math package"
-#~ msgstr "Использовать пакет &математики AMS"
-
-#~ msgid "Changes"
-#~ msgstr "Изменения"
-
-#~ msgid "Change :"
-#~ msgstr "Изменено :"
-
-#~ msgid "Details of the change"
-#~ msgstr "Подробности изменений"
-
-#~ msgid "&Accept"
-#~ msgstr "&Принять"
-
-#~ msgid "Accept this change"
-#~ msgstr "Принять данное изменение"
-
-#~ msgid "&Reject"
-#~ msgstr "&Отклонить"
-
-#~ msgid "Reject this change"
-#~ msgstr "Отклонить данное изменение"
-
-#~ msgid "&Next change"
-#~ msgstr "&Следующее изменение"
-
-#~ msgid "Go to next change"
-#~ msgstr "Перейти к следующему изменению"
-
-#~ msgid "&Use language's default encoding"
-#~ msgstr "&Использовать кодировку языка по умолчанию"
-
-#~ msgid "&Go to reference"
-#~ msgstr "&Перейти к ссылке"
-
-#~ msgid "Selected BibTeX databases"
-#~ msgstr "Выбранная база данных BiBTeX"
-
-#~ msgid "Chose a style file"
-#~ msgstr "Выберите стилевой файл"
-
-#~ msgid "Select a database"
-#~ msgstr "Выберите базу данных"
-
-#~ msgid "Change tracking|h"
-#~ msgstr "Изменить отслеживание|о"
-
-#~ msgid "Track changes|T"
-#~ msgstr "Отследить изменения|О"
-
-#~ msgid "Merge changes ...|M"
-#~ msgstr "Объединить изменения ...|М"
-
-#~ msgid "Accept all changes|A"
-#~ msgstr "Принять все изменения|П"
-
-#~ msgid "Reject all changes|R"
-#~ msgstr "Отклонить все измения|О"
-
-#~ msgid "Change: "
-#~ msgstr "Изменения: "
-
-#~ msgid " at "
-#~ msgstr " в "
-
-#~ msgid "Change tracking"
-#~ msgstr "Переключить отслеживание"
-
-#~ msgid "Revert to Saved|R"
-#~ msgstr "Вернуться к сохранённому|х"
-
-#~ msgid "Register|R"
-#~ msgstr "Зарегистрировать|р"
-
-#~ msgid "Check In Changes|I"
-#~ msgstr "Отправить изменения|и"
-
-#~ msgid "Floats & Insets|I"
-#~ msgstr "Вкладки и плавающие объекты|В"
-
-#~ msgid "Read Only"
-#~ msgstr "Только для чтения"
-
-#~ msgid "Open/Close|O"
-#~ msgstr "Раскрыть/Закрыть|Р"
-
-#~ msgid "Open All Figures/Tables|F"
-#~ msgstr "Раскрыть все изображения/таблицы|Р"
-
-#~ msgid "Close All Figures/Tables|T"
-#~ msgstr "Закрыть все изображения/таблицы|З"
-
-#~ msgid "Open All Footnotes/Marginal Notes|A"
-#~ msgstr "Раскрыть все сноски/заметки на полях|с"
-
-#~ msgid "Close All Footnotes/Marginal Notes|C"
-#~ msgstr "Закрыть все сноски/заметки на полях|п"
-
-#~ msgid "Make eqnarray|e"
-#~ msgstr "Блок уравнений|у"
-
-#~ msgid "Make multline|m"
-#~ msgstr "Многострочная формула|м"
-
-#~ msgid "Toggle numbering|n"
-#~ msgstr "Нумерация|н"
-
-#~ msgid "Toggle numbering of line|u"
-#~ msgstr "Нумерация строки|р"
-
-#~ msgid "Toggle limits|l"
-#~ msgstr "Положение пределов|л"
-
-#~ msgid "Inline formula|I"
-#~ msgstr "Формулу|у"
-
-#~ msgid "Displayed formula|D"
-#~ msgstr "Выключную формулу|ф"
-
-#~ msgid "Eqnarray environment|q"
-#~ msgstr "Блок уравнений|у"
-
-#~ msgid "Align environment|A"
-#~ msgstr "Блок с выравниванием|а"
-
-#~ msgid "Align Left|f"
-#~ msgstr "Прижать влево|л"
-
-#~ msgid "Add Row"
-#~ msgstr "Вставить строку"
-
-#~ msgid "Delete Row"
-#~ msgstr "Удалить строку"
-
-#~ msgid "Add Column"
-#~ msgstr "Вставить столбец"
-
-#~ msgid "Delete Column"
-#~ msgstr "Удалить столбец"
-
-#~ msgid "Index Entry of Preceding Word|W"
-#~ msgstr "Предыдущее слово в предметный указатель|л"
-
-#~ msgid "Ligature break|k"
-#~ msgstr "Разрыв лигатуры|л"
-
-#~ msgid "Inline Formula|h"
-#~ msgstr "Формулу|Ф"
-
-#~ msgid "Eqnarray environment|E"
-#~ msgstr "Блок уравнений|у"
-
-#~ msgid "AMS align environment|A"
-#~ msgstr "Блок с выравниванием AMS|A"
-
-#~ msgid "AMS alignat environment|t"
-#~ msgstr "Блок AMS alignat|t"
-
-#~ msgid "AMS xalignat environment|x"
-#~ msgstr "Блок AMS xalignat|x"
-
-#~ msgid "AMS xxalignat environment"
-#~ msgstr "Блок AMS xxalignat"
-
-#~ msgid "Array environment|y"
-#~ msgstr "Матрицу|М"
-
-#~ msgid "Cases environment|C"
-#~ msgstr "Блок вариантов|в"
-
-#~ msgid "Symbols|S"
-#~ msgstr "Символы|С"
-
-#~ msgid "Math Panel...|l"
-#~ msgstr "Математическая панель...|п"
-
-#~ msgid "Ascii as Lines...|L"
-#~ msgstr "Строки отдельными абзацами|о"
-
-#~ msgid "Ascii as Paragraphs...|P"
-#~ msgstr "Авторазбиение на абзацы|а"
-
-#~ msgid "TeX Style|X"
-#~ msgstr "Команда LaTeX"
-
-#~ msgid "Change Environment Depth|v"
-#~ msgstr "Изменить уровень окружения|о"
-
-#~ msgid "LaTeX Preamble...|L"
-#~ msgstr "Преамбула LaTeX...|L"
-
-#~ msgid "Start Appendix here|A"
-#~ msgstr "Начало приложения|п"
-
-#~ msgid "Reference Manual|R"
-#~ msgstr "Справочное руководство|С"
-
-#~ msgid "TeX Information"
-#~ msgstr "Информацию о LaTeX"
-
-#~ msgid "Citta"
-#~ msgstr "Ссылка на источник"
-
-#~ msgid "Data"
-#~ msgstr "Данные"
-
-#~ msgid "Trans_Keywords"
-#~ msgstr "Trans_Keywords"
-
-#~ msgid "TranslatedAbstract"
-#~ msgstr "Переведённая аннотация"
-
-#~ msgid "Translated_Title"
-#~ msgstr "Переведённый заголовок"
-
-#~ msgid "&Add ..."
-#~ msgstr "&Добавить ..."
-
-#~ msgid "&Style"
-#~ msgstr "&Стиль"
-
-#~ msgid "unsrt"
-#~ msgstr "несорт"
-
-#~ msgid "alpha"
-#~ msgstr "альфа"
-
-#~ msgid "abbrv"
-#~ msgstr "аббр"
-
-#~ msgid "Other ..."
-#~ msgstr "Другие ..."
-
-#~ msgid "FIXME !"
-#~ msgstr "ИСПРАВЬ МЕНЯ!"
-
-#~ msgid "The name of the style to use"
-#~ msgstr "Название используемого стиля"
-
-#~ msgid "&Browse"
-#~ msgstr "&Выбрать..."
-
-#~ msgid "Never toggled"
-#~ msgstr "Никогда не переключаются"
-
-#~ msgid "Always toggled"
-#~ msgstr "Всегда переключаются"
-
-#~ msgid "Text after"
-#~ msgstr "Текст после"
-
-#~ msgid "Citation style"
-#~ msgstr "Вид библиографических ссылок"
-
-#~ msgid "Text before"
-#~ msgstr "Текст перед"
-
-#~ msgid "&Fonts:"
-#~ msgstr "&Шрифты:"
-
-#~ msgid "&Pagestyle:"
-#~ msgstr "&Стиль страницы:"
-
-#~ msgid "Defa&ult Skip:"
-#~ msgstr ""
-#~ "Промеж&уток\n"
-#~ "между абзацами:"
-
-#~ msgid "F&ont Size:"
-#~ msgstr "Размер &шрифта:"
-
-#~ msgid "Spacin&g:"
-#~ msgstr "&Промежутки:"
-
-#~ msgid "E&xtra Options:"
-#~ msgstr "Д&оп. параметры:"
-
-#~ msgid "&Class:"
-#~ msgstr "&Класс:"
-
-#~ msgid "smallskip"
-#~ msgstr "маленький"
-
-#~ msgid "medskip"
-#~ msgstr "средний"
-
-#~ msgid "bigskip"
-#~ msgstr "большой"
-
-#~ msgid "length"
-#~ msgstr "указать длину"
-
-#~ msgid "Other"
-#~ msgstr "Другой"
-
-#~ msgid "O&ne"
-#~ msgstr "&Одна"
-
-#~ msgid "&Two"
-#~ msgstr "&Две"
-
-#~ msgid "On&e"
-#~ msgstr "&Одна"
-
-#~ msgid "T&wo"
-#~ msgstr "&Две"
-
-#~ msgid "&Papersize:"
-#~ msgstr "&Размер бумаги:"
-
-#~ msgid "USletter"
-#~ msgstr "USletter"
-
-#~ msgid "USlegal"
-#~ msgstr "USlegal"
-
-#~ msgid "USexecutive"
-#~ msgstr "USexecutive"
-
-#~ msgid "&Special:"
-#~ msgstr "&Специальный:"
-
-#~ msgid "A4 small Margins (only portrait)"
-#~ msgstr "A4 маленькие поля (только портрет)"
-
-#~ msgid "A4 very small Margins (only portrait)"
-#~ msgstr "A4 очень маленькие поля (только портрет)"
-
-#~ msgid "A4 very wide margins (only portrait)"
-#~ msgstr "A4 очень широкие поля (только портрет)"
-
-#~ msgid "&Use Geometry Package"
-#~ msgstr "&Использовать пакет геометрии"
-
-#~ msgid "P&ortrait"
-#~ msgstr "&Портрет"
-
-#~ msgid "&Right:"
-#~ msgstr "&Справа:"
-
-#~ msgid "L&eft:"
-#~ msgstr "&Слева:"
-
-#~ msgid "Custom Papersize"
-#~ msgstr "Указать размер"
-
-#~ msgid "Foot/Head Margins"
-#~ msgstr "Поля колонтитулов"
-
-#~ msgid "&Footskip:"
-#~ msgstr ""
-#~ "&Промежуток\n"
-#~ "сноски:"
-
-#~ msgid "Hea&dsep:"
-#~ msgstr ""
-#~ "&Разделитель\n"
-#~ "верха:"
-
-#~ msgid "Headhe&ight:"
-#~ msgstr ""
-#~ "&Высота\n"
-#~ "верха:"
-
-#~ msgid "Enco&ding:"
-#~ msgstr "&Кодировка:"
-
-#~ msgid "auto"
-#~ msgstr " автоматически "
-
-#~ msgid "latin1"
-#~ msgstr "latin1"
-
-#~ msgid "latin2"
-#~ msgstr "latin2"
-
-#~ msgid "latin3"
-#~ msgstr "latin3"
-
-#~ msgid "latin4"
-#~ msgstr "latin4"
-
-#~ msgid "latin5"
-#~ msgstr "latin5"
-
-#~ msgid "latin9"
-#~ msgstr "latin9"
-
-#~ msgid "koi8-r"
-#~ msgstr "koi8-r"
-
-#~ msgid "koi8-u"
-#~ msgstr "koi8-u"
-
-#~ msgid "cp866"
-#~ msgstr "cp866"
-
-#~ msgid "cp1251"
-#~ msgstr "cp1251"
-
-#~ msgid "iso88595"
-#~ msgstr "iso88595"
-
-#~ msgid "F&loat Placement:"
-#~ msgstr "Размещение &плавающих объектов:"
-
-#~ msgid "S&ection number depth:"
-#~ msgstr "Глубина нумерации &разделов:"
-
-#~ msgid "&Table of contents depth:"
-#~ msgstr "&Глубина содержания:"
-
-#~ msgid "P&S Driver:"
-#~ msgstr "Драйвер P&S:"
-
-#~ msgid "Si&ze"
-#~ msgstr "Ра&змер"
-
-#~ msgid "tiny"
-#~ msgstr "крохотный"
-
-#~ msgid "script"
-#~ msgstr "миниатюрный"
-
-#~ msgid "footnote"
-#~ msgstr "мелкий"
-
-#~ msgid "small"
-#~ msgstr "маленький"
-
-#~ msgid "normal"
-#~ msgstr "нормальный"
-
-#~ msgid "large"
-#~ msgstr "большой"
-
-#~ msgid "LARGE"
-#~ msgstr "огромный"
-
-#~ msgid "huge"
-#~ msgstr "громадный"
-
-#~ msgid "Bullet Depth"
-#~ msgstr "Глубина маркеров"
-
-#~ msgid "&1"
-#~ msgstr "&1"
-
-#~ msgid "&2"
-#~ msgstr "&2"
-
-#~ msgid "&3"
-#~ msgstr "&3"
-
-#~ msgid "&4"
-#~ msgstr "&4"
-
-#~ msgid "&Standard"
-#~ msgstr "&Обычный"
-
-#~ msgid "&Maths"
-#~ msgstr "&Математика"
-
-#~ msgid "&Ding 1"
-#~ msgstr "&Маркер 1"
-
-#~ msgid "D&ing 2"
-#~ msgstr "М&аркер 2"
-
-#~ msgid "Di&ng 3"
-#~ msgstr "Ма&ркер 3"
-
-#~ msgid "Din&g 4"
-#~ msgstr "Мар&кер 4"
-
-#~ msgid "&LaTeX"
-#~ msgstr "&LaTeX"
-
-#~ msgid "&Template"
-#~ msgstr "&Шаблон"
-
-#~ msgid "&View file"
-#~ msgstr "&Просмотреть файл"
-
-#~ msgid "&Browse ..."
-#~ msgstr "&Выбрать ..."
-
-#~ msgid "&Parameters"
-#~ msgstr "&Параметры"
-
-#~ msgid "Bottom of the page"
-#~ msgstr "Внизу страницы"
-
-#~ msgid "Top of the page"
-#~ msgstr "Наверху страницы"
-
-#~ msgid "Page of floats"
-#~ msgstr "Отдельная страница"
-
-#~ msgid "Here, if possible"
-#~ msgstr "Если возможно, не перемещать"
-
-#~ msgid "Here, definitely"
-#~ msgstr "Именно здесь"
-
-#~ msgid "Screen Options"
-#~ msgstr "Параметры экрана"
-
-#~ msgid "S&how:"
-#~ msgstr "П&оказывать:"
-
-#~ msgid "Height"
-#~ msgstr "Высота"
-
-#~ msgid "draft mode"
-#~ msgstr "черновой режим"
-
-#~ msgid "&Scale"
-#~ msgstr "&Масштаб"
-
-#~ msgid "&Custom"
-#~ msgstr "&Пользовательский"
-
-#~ msgid "Keep aspect&ratio"
-#~ msgstr "&Сохранять пропорции"
-
-#~ msgid "EPS Options"
-#~ msgstr "Параметры EPS"
-
-#~ msgid "Bounding box"
-#~ msgstr "Рамка"
-
-#~ msgid "Left &bottom:"
-#~ msgstr "Левый &нижний:"
-
-#~ msgid "&Get"
-#~ msgstr "&Получить"
-
-#~ msgid "Get bounding box from file"
-#~ msgstr "Получить размер рамки из файла"
-
-#~ msgid "&Clip to bounding box"
-#~ msgstr "&Обрезать по рамке"
-
-#~ msgid "clip to bounding box"
-#~ msgstr "обрезать по рамке"
-
-#~ msgid "&Angle:"
-#~ msgstr "&Угол:"
-
-#~ msgid "leftTop"
-#~ msgstr "левый верхний"
-
-#~ msgid "leftBottom"
-#~ msgstr "левый нижний"
-
-#~ msgid "leftBaseline"
-#~ msgstr "слева на базовой линии"
-
-#~ msgid "center"
-#~ msgstr "по середине"
-
-#~ msgid "centerTop"
-#~ msgstr "сверху по середине"
-
-#~ msgid "centerBottom"
-#~ msgstr "снизу по середине"
-
-#~ msgid "centerBaseline"
-#~ msgstr "по середине на базовой линии"
-
-#~ msgid "rightTop"
-#~ msgstr "справа сверху"
-
-#~ msgid "rightBottom"
-#~ msgstr "cправа снизу"
-
-#~ msgid "rightBaseline"
-#~ msgstr "справа на базовой линии"
-
-#~ msgid "referencePoint"
-#~ msgstr "точка отсчёта"
-
-#~ msgid "LaTeX options"
-#~ msgstr "Параметры LaTeX"
-
-#~ msgid "The sub-caption for the figure"
-#~ msgstr "Подподпись для рисунка"
-
-#~ msgid "Include type"
-#~ msgstr "Тип включения"
-
-#~ msgid "&Include"
-#~ msgstr "&Включить"
-
-#~ msgid "FIXME"
-#~ msgstr "ИСПРАВЬ МЕНЯ"
-
-#~ msgid "I&nput"
-#~ msgstr "&Вставить"
-
-#~ msgid "&Verbatim"
-#~ msgstr "&Дословно"
-
-#~ msgid "&Don't typeset"
-#~ msgstr "&Не оформлять"
-
-#~ msgid "Visible &Space"
-#~ msgstr "Видимые &пробелы"
-
-#~ msgid "&Filename:"
-#~ msgstr "&Файл:"
-
-#~ msgid "&Alignment and Spacing"
-#~ msgstr "&Выравнивание и промежутки"
-
-#~ msgid "Alignment:"
-#~ msgstr "Выравнивание:"
-
-#~ msgid "Centered"
-#~ msgstr "По середине"
-
-#~ msgid "No indentation"
-#~ msgstr "Без отступа"
-
-#~ msgid "Spacing"
-#~ msgstr ""
-#~ "Междустрочный\n"
-#~ "промежуток"
-
-#~ msgid "Centimetres"
-#~ msgstr "Сантиметры"
-
-#~ msgid "Inches"
-#~ msgstr "Дюймы"
-
-#~ msgid "Points"
-#~ msgstr "Точки"
-
-#~ msgid "Millimetres"
-#~ msgstr "Миллиметры"
-
-#~ msgid "Picas"
-#~ msgstr "Пики"
-
-#~ msgid "ex Units"
-#~ msgstr "ex Units"
-
-#~ msgid "em Units"
-#~ msgstr "em Units"
-
-#~ msgid "Scaled Points"
-#~ msgstr "Scaled Points"
-
-#~ msgid "Big/PS Points"
-#~ msgstr "Большие/PS пункты"
-
-#~ msgid "Didot Points"
-#~ msgstr "Пункты Дидо"
-
-#~ msgid "Cicero Points"
-#~ msgstr "Пункты Цицеро"
-
-#~ msgid "Units:"
-#~ msgstr "Единицы:"
-
-#~ msgid "Unit of Size, Stretch and Slink"
-#~ msgstr "Единицы измерения размера, растяжения и сжатия"
-
-#~ msgid "Value:"
-#~ msgstr "Значение:"
-
-#~ msgid "Amount of spacing"
-#~ msgstr "Междустрочный промежуток"
-
-#~ msgid "Stretch:"
-#~ msgstr "Растяжение:"
-
-#~ msgid "Margin by with paragraph is allowed to increase"
-#~ msgstr "Поле до которого абзацу дозволено увеличиться"
-
-#~ msgid "Shrink:"
-#~ msgstr "Сокращение:"
-
-#~ msgid "Above:"
-#~ msgstr "Перед:"
-
-#~ msgid "Below:"
-#~ msgstr "После:"
-
-#~ msgid "Keep space at the top of the page"
-#~ msgstr "Сохранять промежуток на верху страницы"
-
-#~ msgid "Keep space at top of the page"
-#~ msgstr "Сохранять промежуток наверху страницы"
-
-#~ msgid "Keep space at the bottom of the page"
-#~ msgstr "Сохранять промежуток внизу страницы"
-
-#~ msgid "List environment"
-#~ msgstr "Список"
-
-#~ msgid "Label width:"
-#~ msgstr "Ширина метки:"
-
-#~ msgid "Label width in list environment"
-#~ msgstr "Ширина метки в списке"
-
-#~ msgid "&Lines and Page breaks"
-#~ msgstr "&Разрывы строк и страниц"
-
-#~ msgid "Page break"
-#~ msgstr "Разрыв страницы"
-
-#~ msgid "above paragraph"
-#~ msgstr "перед абзацем"
-
-#~ msgid "below paragraph"
-#~ msgstr "после абзаца"
-
-#~ msgid "Line"
-#~ msgstr "Линия"
-
-#~ msgid "&Extra options"
-#~ msgstr "&Доп. параметры"
-
-#~ msgid "Unit:"
-#~ msgstr "Единицы:"
-
-#~ msgid "Wrap text around floats"
-#~ msgstr "Обтекание текста вокруг плавающих объектов"
-
-#~ msgid "Indent whole paragraph"
-#~ msgstr "Отступ всего абзаца"
-
-#~ msgid "Width:"
-#~ msgstr "Ширина:"
-
-#~ msgid "Minipage options"
-#~ msgstr "Настройки мини-страницы"
-
-#~ msgid "Start new minipage"
-#~ msgstr "Начать новую мини-страницу"
-
-#~ msgid "HFill between minipage paragraphs"
-#~ msgstr "Горизонтальный клей между абзацами мини-страницы"
-
-#~ msgid "Vertical Alignment:"
-#~ msgstr "Верт. выравнивание:"
-
-#~ msgid "&Edit ..."
-#~ msgstr "&Правка ..."
-
-#~ msgid "&Odd"
-#~ msgstr "&Нечётные"
-
-#~ msgid "Print odd pages only"
-#~ msgstr "Напечатать только нечётные страницы"
-
-#~ msgid "&Even"
-#~ msgstr "&Чётные"
-
-#~ msgid "Print even pages only"
-#~ msgstr "Напечатать только чётные страницы"
-
-#~ msgid "&Last page:"
-#~ msgstr "&Последняя страница:"
-
-#~ msgid "Ran&ge"
-#~ msgstr "Диа&пазон"
-
-#~ msgid "Set a range of pages to print"
-#~ msgstr "Выбрать диапазон страниц для печати"
-
-#~ msgid "&Starting range:"
-#~ msgstr "&Начальный диапазон:"
-
-#~ msgid "Page number"
-#~ msgstr "Номер страницы"
-
-#~ msgid "Ref on page xxx"
-#~ msgstr "Ссылка на страницу xxx"
-
-#~ msgid "On page xxx"
-#~ msgstr "На странице xxx"
-
-#~ msgid "Pretty reference"
-#~ msgstr "Красивая ссылка"
-
-#~ msgid "Replace &All "
-#~ msgstr "Заменить &всё "
-
-#~ msgid "File: "
-#~ msgstr "Файл: "
-
-#~ msgid "&Options..."
-#~ msgstr "&Параметры..."
-
-#~ msgid "&Start..."
-#~ msgstr "&Начать..."
-
-#~ msgid "Start spellcheck"
-#~ msgstr "Начать проверку"
-
-#~ msgid "Thesaurus entries"
-#~ msgstr "Записи в тезаурусе"
-
-#~ msgid "&Selection"
-#~ msgstr "&Выделенная область"
-
-#~ msgid "LyX: Insert Index Entry"
-#~ msgstr "LyX: Вставить ссылку на источник цитирования"
-
-#~ msgid "LyX: Insert Label"
-#~ msgstr "LyX: Вставить метку"
-
-#~ msgid "LyX: Merge Changes"
-#~ msgstr "LyX: Объединить изменения"
-
-#~ msgid "LyX: Change Character Settings"
-#~ msgstr "LyX: Изменить настройки символа"
-
-#~ msgid "LyX: LaTeX Error"
-#~ msgstr "LyX: Ошибка LaTeX"
-
-#~ msgid "LyX: LaTeX Code Settings"
-#~ msgstr "LyX: Настройки кода LaTeX"
-
-#~ msgid "LyX: Insert External Material"
-#~ msgstr "LyX: Вставить внешний объект"
-
-#~ msgid "LyX: Include File"
-#~ msgstr "LyX: Включить файл"
-
-#~ msgid "LyX: Minipage Settings"
-#~ msgstr "LyX: Настройки мини-страницы"
-
-#~ msgid "LyX: Paragraph Settings"
-#~ msgstr "LyX: Настройки абзаца"
-
-#~ msgid "LyX: Print Document"
-#~ msgstr "LyX: Напечатать документ"
-
-#~ msgid "LyX: Search Document"
-#~ msgstr "LyX: Поиск документа"
-
-#~ msgid "LyX: Send Document to Command"
-#~ msgstr "LyX: Переслать документ в команду"
-
-#~ msgid "LyX: Show File"
-#~ msgstr "LyX: Показать файл"
-
-#~ msgid "LyX: Spell-check Document"
-#~ msgstr "LyX: Проверка правописания"
-
-#~ msgid "LyX: Table Settings"
-#~ msgstr "LyX: Настройки таблицы"
-
-#~ msgid "LyX: LaTeX Information"
-#~ msgstr "LyX: Информация о LaTeX"
-
-#~ msgid "LyX: Thesaurus"
-#~ msgstr "LyX: Тезаурус"
-
-#~ msgid "LyX: Table of Contents"
-#~ msgstr "LyX: Содержание"
-
-#~ msgid "LyX: Insert URL"
-#~ msgstr "LyX: Вставить URL"
-
-#~ msgid "LyX: Version Control Log"
-#~ msgstr "LyX: Журнал управления версиями"
-
-#~ msgid "LyX: Text-wrapping Settings"
-#~ msgstr "LyX: Настройки обтекания текста"
-
-#~ msgid "Yes|#Y"
-#~ msgstr "Да|#Д"
-
-#~ msgid "No|#N"
-#~ msgstr "Нет|#Н"
-
-#~ msgid "OK|^M"
-#~ msgstr "ОК|^M"
-
-#~ msgid "Label"
-#~ msgstr "Метка"
-
-#~ msgid "Merge changes"
-#~ msgstr "Объединить изменения"
-
-#~ msgid "Never | Automatically | Yes "
-#~ msgstr "Никогда | Автоматически | Да"
-
-#~ msgid "File name to include."
-#~ msgstr "Название файла для вставки."
-
-#~ msgid "Use LaTeX \\input."
-#~ msgstr "Использовать \\input LaTeX."
-
-#~ msgid "Use LaTeX \\include."
-#~ msgstr "Использовать \\include LaTeX."
-
-#~ msgid "Underline spaces in generated output."
-#~ msgstr "Подчёркивать пробелы в выводе."
-
-#~ msgid "Show LaTeX preview."
-#~ msgstr "Показывать предварительный просмотр LaTeX."
-
-#~ msgid "Load the file."
-#~ msgstr "Загрузить файл."
-
-#~ msgid "Number of columns in the tabular."
-#~ msgstr "Количество столбцов в таблице."
-
-#~ msgid "Number of rows in the tabular."
-#~ msgstr "Количество строк в таблице."
-
-#~ msgid "Opened Environment Inset: "
-#~ msgstr "Раскрытое окружение вкладки: "
-
-#~ msgid "change bar"
-#~ msgstr "полоска изменённого"
-
-#~ msgid "Deleted text"
-#~ msgstr "удалённый текст"
-
-#~ msgid "Added text"
-#~ msgstr "добавленный текст"
-
-#~ msgid "Begin tracking changes"
-#~ msgstr "Начать отслеживание изменений"
-
-#~ msgid "Accept selected change"
-#~ msgstr "Принять выбранные изменения"
-
-#~ msgid "Reject selected change"
-#~ msgstr "Отклонить выбранные изменения"
-
-#~ msgid "Accept all changes"
-#~ msgstr "Принять все изменения"
-
-#~ msgid "Reject all changes"
-#~ msgstr "Отклоность все изменения"
-
-#~ msgid "Show the inset's dialog"
-#~ msgstr "Показать диалог вкладки"
-
-#~ msgid "Update the dialog"
-#~ msgstr "Обновить диалог"
-
-#~ msgid "Hide the dialog"
-#~ msgstr "Закрыть данный диалог"
-
-#~ msgid "Disconnect the dialog from the current inset"
-#~ msgstr "Отсоединить диалог от текущей вкладки"
-
-#~ msgid "Apply these params to the paragraph"
-#~ msgstr "Применить эти параметры к абзацу"
-
-#~ msgid "email address unknown"
-#~ msgstr "адресс электронной почты неизвестен"
