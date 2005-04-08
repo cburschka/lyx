@@ -1,3 +1,12 @@
+2005-04-08  Angus Leeming  <leeming@lyx.org>
+
+	* generate_contributions.py: new file. Master repository of all
+	contributer information. Usage:
+	$ generate_contributions.py CREDITS credits.php blanket-permission.php
+	where the arguments are the names of the generated files.
+
+	* CREDITS: regenerated from generate_contributions.py.
+
 2005-03-30  John Levon  <levon@movementarian.org>
 
 	* ui/stdmenus.ui: improve Navigate menu
