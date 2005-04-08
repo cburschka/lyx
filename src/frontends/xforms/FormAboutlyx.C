@@ -65,7 +65,10 @@ void FormAboutlyx::build()
 	ostringstream crs;
 	controller().getCredits(crs);
 
-	fl_add_browser_line(credits_->browser_credits, crs.str().c_str());
+	std::string const credits_text =
+		formatted(crs.str().c_str(),
+			  credits_->browser_credits->w - 15);
+	fl_add_browser_line(credits_->browser_credits, credits_text.c_str());
 
 	// create license tab
 	license_.reset(build_aboutlyx_license(this));

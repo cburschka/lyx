@@ -24,6 +24,7 @@
 
 #include <qlabel.h>
 #include <qpushbutton.h>
+#include <qtextcodec.h>
 #include <qtextview.h>
 
 using lyx::support::prefixIs;
@@ -104,7 +105,16 @@ void QAbout::build_dialog()
 	}
 #endif
 
-	dialog_->creditsTV->setText(toqstr(out.str()));
+	// Try and grab the latin1 codec
+	QTextCodec * const codec =
+		QTextCodec::codecForName("ISO8859-1");
+	if (!codec)
+		lyxerr << "Unable to find ISO8859-1 codec" << std::endl;
+
+	QString const qtext = codec ?
+		codec->toUnicode(out.str().c_str()) :
+		toqstr(out.str());
+	dialog_->creditsTV->setText(qtext);
 
 	// try to resize to a good size
 	dialog_->copyright->hide();

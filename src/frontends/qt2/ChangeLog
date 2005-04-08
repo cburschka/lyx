@@ -1,3 +1,8 @@
+2005-04-08  Angus Leeming  <leeming@lyx.org>
+
+	* QAbout.C (build_dialog): specify that the CREDITS data is
+	encoded in ISO-8859-1 (latin1).
+
 2005-03-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ui/QPrefLatexModule.ui: fix layout
