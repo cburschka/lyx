@@ -1,5 +1,10 @@
 2005-04-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
+	* math_nestinset.C (doDispatch): Fix arrow up/down inside 
+	macro crashing bug (Helge Hafting report)
+
+2005-04-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
 	* math_gridinset.C (getStatus): allow C-Tab to split cell
 
 2005-04-06  Martin Vermeer  <martin.vermeer@hut.fi>

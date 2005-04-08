@@ -496,6 +496,12 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_UPSEL:
 	case LFUN_UP:
+		// FIXME Tried to use clearTargetX and macroModeClose, crashed on cur.up()
+		if (cur.inMacroMode()) {
+			// Make Helge happy
+			cur.macroModeClose();
+			break;
+		}
 		cur.selHandle(cmd.action == LFUN_UPSEL);
 		if (!cur.up())
 			cmd = FuncRequest(LFUN_FINISHED_UP);
@@ -505,6 +511,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_DOWNSEL:
 	case LFUN_DOWN:
+		if (cur.inMacroMode()) {
+			cur.macroModeClose();
+			break;
+		}
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
 		if (!cur.down())
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
