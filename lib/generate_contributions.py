@@ -175,7 +175,8 @@ echo "
 if (isset($email) && $email != "")
         echo "  <i>&lt;${email}&gt;</i>";
 
-echo " </dt>
+echo "
+ </dt>
  <dd>
   ${msg}
  </dd>";
@@ -191,8 +192,7 @@ echo " </dt>
      mailing list. Thanks.
 </p>
 
-<dl>
-<?php''')
+<dl><?php''')
 
      for contributer in contributers:
           if len(contributer.credit) != 0:
@@ -246,8 +246,7 @@ echo "&quot;
      Gnu General Public Licence</a>, version 2 or later.
 </p>
 
-<dl>
-<?php''')
+<dl><?php''')
 
      for contributer in contributers:
           if contributer.licence == "GPL":
