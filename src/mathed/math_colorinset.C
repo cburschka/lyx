@@ -64,6 +64,7 @@ void MathColorInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathColorInset::draw(PainterInfo & pi, int x, int y) const
 {
+	int const x0(x);
 	if (editing(pi.base.bv)) {
 		FontSetChanger dummy(pi.base, "textnormal");
 		drawMarkers(pi, x, y);
@@ -79,7 +80,8 @@ void MathColorInset::draw(PainterInfo & pi, int x, int y) const
 	pi.base.font.setColor(lcolor.getFromGUIName(asString(cell(0))));
 	cell(1).draw(pi, x, y);
 	pi.base.font.setColor(origcol);
-	setPosCache(pi, x, y);
+	if (editing(pi.base.bv))
+		setPosCache(pi, x0, y);
 }
 
 
