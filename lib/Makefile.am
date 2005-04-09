@@ -865,9 +865,11 @@ dist_scripts_DATA = \
 	scripts/fen2ascii.py \
 	scripts/fig2pdftex.sh \
 	scripts/fig2pstex.sh \
-	scripts/listerrors \
+	scripts/fig_copy.sh \
 	scripts/legacy_lyxpreview2ppm.py \
+	scripts/listerrors \
 	scripts/lyxpreview2bitmap.py \
+	scripts/lyxpreview_tools.py \
 	scripts/tex_copy.py
 
 templatesdir = $(pkgdatadir)/templates
