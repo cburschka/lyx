@@ -555,6 +555,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cur.pos() = 0;
 		} else {
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cur.undispatched();
 		}
 		break;
 
@@ -575,6 +576,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cur.pos() = cur.lastpos();
 		} else {
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cur.undispatched();
 		}
 		break;
 

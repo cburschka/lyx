@@ -1,5 +1,11 @@
 2005-04-09  Martin Vermeer  <martin.vermeer@hut.fi>
 
+	* math_gridinset.C (doDispatch):
+	* math_nestinset.C (doDispatch): enable HOME/END keys to skip 
+	out of inset (adding cur.undispatched())
+
+2005-04-09  Martin Vermeer  <martin.vermeer@hut.fi>
+
 	* math_colorinset.C (draw): fix crash and cursor positioning.
 
 2005-04-07  Martin Vermeer  <martin.vermeer@hut.fi>
