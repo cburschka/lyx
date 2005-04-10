@@ -102,6 +102,8 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
+	mi.base.font.reduce(LyXFont(LyXFont::ALL_SANE));
+	mi.base.font.realize(tmpfont);
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	InsetText::metrics(mi, dim);
 	mi.base.font = tmpfont;
@@ -121,6 +123,8 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 
 	LyXFont tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
+	// I don't understand why the above .reduce and .realize aren't 
+	//needed, or even wanted, here. It just works. -- MV 10.04.2005
 	InsetText::draw(pi, x, y);
 	pi.base.font = tmpfont;
 

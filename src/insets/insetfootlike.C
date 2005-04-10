@@ -42,6 +42,25 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in)
 }
 
 
+void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	LyXFont tmpfont = mi.base.font;
+	mi.base.font = LyXFont(LyXFont::ALL_SANE);
+	InsetCollapsable::metrics(mi, dim);
+	mi.base.font = tmpfont;
+	dim_ = dim;
+}
+
+
+void InsetFootlike::draw(PainterInfo & pi, int x, int y) const
+{
+	LyXFont tmpfont = pi.base.font;
+	pi.base.font = LyXFont(LyXFont::ALL_SANE);
+	InsetCollapsable::draw(pi, x, y);
+	pi.base.font = tmpfont;
+}
+
+
 void InsetFootlike::write(Buffer const & buf, ostream & os) const
 {
 	os << getInsetName() << "\n";

@@ -24,6 +24,10 @@ public:
 	///
 	InsetFootlike(InsetFootlike const &);
 	///
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	bool insetAllowed(InsetBase::Code) const;

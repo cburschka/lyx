@@ -1,3 +1,8 @@
+2005-04-10  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* rowpainter.C (RowPainter, getFont): fix font inside inset 
+	(bugs 1766, 1809)
+
 2005-04-06  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* CutAndPaste.C (eraseSelection): more precise fix for bug 1654,

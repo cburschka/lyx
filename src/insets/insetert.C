@@ -373,6 +373,7 @@ void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
+	mi.base.font.realize(tmpfont);
 	InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
 	dim_ = dim;
@@ -383,6 +384,8 @@ void InsetERT::draw(PainterInfo & pi, int x, int y) const
 {
 	LyXFont tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
+	// I don't understand why the above .realize isn't needed, or
+	// even wanted, here. It just works. -- MV 10.04.2005
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
 }
