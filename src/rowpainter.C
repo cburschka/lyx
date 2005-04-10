@@ -146,8 +146,10 @@ RowPainter::RowPainter(PainterInfo & pi,
 LyXFont const RowPainter::getFont(pos_type pos) const
 {
 	LyXFont lf(font_);
+	LyXFont pf(text_.getFont(par_, pos));
 	lf.reduce(LyXFont(LyXFont::ALL_SANE));
-	lf.realize(text_.getFont(par_, pos)); 
+	lf.realize(pf); 
+	lf.setLanguage(pf.language());
 	return lf;
 }
 
