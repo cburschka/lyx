@@ -115,7 +115,7 @@ void MathDelimInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool MathDelimInset::isParanthesis() const
+bool MathDelimInset::isParenthesis() const
 {
 	return left_ == "(" && right_ == ")";
 }

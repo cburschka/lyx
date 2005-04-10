@@ -30,7 +30,7 @@ public:
 	///
 	MathDelimInset const * asDelimInset() const { return this; }
 	/// is it (...)?
-	bool isParanthesis() const;
+	bool isParenthesis() const;
 	/// is it [...]?
 	bool isBrackets() const;
 	/// is it |...|?

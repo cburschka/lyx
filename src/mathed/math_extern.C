@@ -393,13 +393,13 @@ void extractNumbers(MathArray & ar)
 // search deliminiters
 //
 
-bool testOpenParan(MathAtom const & at)
+bool testOpenParen(MathAtom const & at)
 {
 	return testString(at, "(");
 }
 
 
-bool testCloseParan(MathAtom const & at)
+bool testCloseParen(MathAtom const & at)
 {
 	return testString(at, ")");
 }
@@ -415,7 +415,7 @@ MathAtom replaceDelims(const MathArray & ar)
 void extractDelims(MathArray & ar)
 {
 	//lyxerr << "\nDelims from: " << ar << endl;
-	replaceNested(ar, testOpenParan, testCloseParan, replaceDelims);
+	replaceNested(ar, testOpenParen, testCloseParen, replaceDelims);
 	//lyxerr << "\nDelims to: " << ar << endl;
 }
 
