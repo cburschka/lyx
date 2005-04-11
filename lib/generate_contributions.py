@@ -880,11 +880,11 @@ contributers = [
                  u"Creator of the native port of LyX to Windows"),
 
      contributer(u"Bernd Rellermeyer",
-                 "100.41728 () germanynet ! de",
-                 "",
-                 "",
-                 "",
-                 "",
+                 "bernd.rellermeyer () arcor ! de",
+                 "GPL",
+                 "Re: The LyX licence",
+                 "m=111317142419908",
+                 "10 April 2005",
                  u"Support for Koma-Script family of classes"),
 
      contributer(u"Michael Ressler",
