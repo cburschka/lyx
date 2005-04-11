@@ -15,6 +15,7 @@
 #include "qt_helpers.h"
 
 #include <qwidgetstack.h>
+#include <qfontmetrics.h>
 #include <qlayout.h>
 #include <qlistview.h>
 
@@ -87,8 +88,13 @@ void PanelStack::addCategory(string const & n, string const & parent)
 	item->setOpen(true);
 	panel_map_[n] = item;
 
-	// Qt is just unbelievably moronic
-	list_->setMinimumSize(QSize(150, list_->minimumHeight()));
+	// calculate the real size the current item needs in the listview
+	QFontMetrics fm(list_->font());
+	int itemsize = item->width(fm, list_, 0) + 10
+		   + list_->treeStepSize() * (item->depth() + 1) + list_->itemMargin();
+	// adjust the listview width to the max. itemsize
+	if (itemsize > list_->minimumWidth())
+		list_->setMinimumWidth(itemsize);
 }
 
 

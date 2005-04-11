@@ -1,3 +1,8 @@
+2005-04-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* panelstack.C (addCategory): let the listview compute the
+	correct width.
+
 2005-04-08  Angus Leeming  <leeming@lyx.org>
 
 	* QAbout.C (build_dialog): specify that the CREDITS data is
