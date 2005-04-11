@@ -811,8 +811,11 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndo(cur, Undo::ATOMIC);
 		MathArray ar;
 		asArray(cmd.argument, ar);
+		int cell(0);
+		if (cmd.argument == "\\root")
+			cell = 1;
 		if (ar.size() == 1 && (ar[0].nucleus()->asNestInset())) {
-			cur.handleNest(ar[0]);
+			cur.handleNest(ar[0], cell);
 		} else
 			cur.niceInsert(cmd.argument);
 		break;

@@ -1,3 +1,8 @@
+2005-04-11  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_nestinset.C (doDispatch): make insert-around-selection
+	of root inset take the base, not the exponent
+
 2005-04-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_deliminset.Ci (isParenthesis):
