@@ -1,3 +1,8 @@
+2005-04-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* paragraph.C (simpleTeXOnePar): add missing '}' in LaTeX
+	output of \item arguments without trailing text.
+
 2005-04-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* FontIterator.C (operator*): avoid a copy of the font.

@@ -1069,7 +1069,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 	// Needed if there is an optional argument but no contents.
 	if (body_pos > 0 && body_pos == size()) {
-		os << "]~";
+		os << "}]~";
 		return_value = false;
 	}
 
