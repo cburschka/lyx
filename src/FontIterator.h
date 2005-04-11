@@ -34,7 +34,7 @@ public:
 	///
 	FontIterator(LyXText const & text, Paragraph const & par, lyx::pos_type pos);
 	///
-	LyXFont operator*() const;
+	LyXFont const & operator*() const;
 	///
 	FontIterator & operator++();
 	///

@@ -27,7 +27,7 @@ FontIterator::FontIterator(LyXText const & text, Paragraph const & par,
 {}
 
 
-LyXFont FontIterator::operator*() const
+LyXFont const & FontIterator::operator*() const
 {
 	return font_;
 }

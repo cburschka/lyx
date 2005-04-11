@@ -1,3 +1,7 @@
+2005-04-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* FontIterator.C (operator*): avoid a copy of the font.
+
 2005-04-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* rowpainter.C (getFont): fix language bug from previous fix
