@@ -94,7 +94,7 @@ def error(message):
 
 
 def usage(prog_name):
-     return "Usage: %s <CREDITS> <credits.php> <blanket-permission.php" % prog_name
+     return "Usage: %s <CREDITS> <credits.php> <blanket-permission.php>" % prog_name
 
 
 def collate_incomplete(contributers):
@@ -170,7 +170,8 @@ function contrib($name, $email, $msg) {
 echo "
 
  <dt>
-  <b>${name}</b>";
+  <b>${name}</b>
+";
 
 if (isset($email) && $email != "")
         echo "  <i>&lt;${email}&gt;</i>";
