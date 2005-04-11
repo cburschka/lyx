@@ -21,7 +21,7 @@ $ python generate_contributions.py \
 where the arguments are the names of the generated files.
 '''
 
-import codecs, sys
+import codecs, sys, textwrap
 
 def xml_escape(s):
     s = s.replace("&", "&amp;")
@@ -63,14 +63,14 @@ class contributer:
           return "".join(result)
 
 
-     def as_php_credits(self):
+     def as_php_credits(self, wrapper):
           return '''
 contrib("%s",
         "%s",
         "%s");
 ''' % ( xml_escape(self.name),
         xml_escape(self.contact),
-        xml_escape(self.credit) )
+        "\n".join(wrapper.wrap(xml_escape(self.credit))) )
 
 
      def as_php_blanket(self):
@@ -175,6 +175,8 @@ echo "
 if (isset($email) && $email != "")
         echo "  <i>&lt;${email}&gt;</i>";
 
+$msg = ereg_replace("\\n *", "\\n  ", ltrim($msg));
+
 echo "
  </dt>
  <dd>
@@ -194,9 +196,11 @@ echo "
 
 <dl><?php''')
 
+     wrapper = textwrap.TextWrapper(width=60, subsequent_indent="         ")
+
      for contributer in contributers:
           if len(contributer.credit) != 0:
-               results.append(contributer.as_php_credits())
+               results.append(contributer.as_php_credits(wrapper))
 
      results.append('''?>
 
@@ -381,7 +385,7 @@ contributers = [
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110907078027047",
                  "22 February 2005",
-                 u"Improvements to user interface (menus and keyhandling) including configurabletoolbar, and a few other (not so) minor things, like rewriting most of the LyX kernel. Also current source maintainer"),
+                 u"Improvements to user interface (menus and keyhandling) including a configurable toolbar and a few other (not so) minor things, like rewriting most of the LyX kernel. Also current source maintainer"),
 
      contributer(u"Alfredo Braunstein",
                  "abraunst () lyx ! org",
@@ -405,7 +409,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110908472818670",
                  "22 February 2005",
-                 u"Ported John Levon's original 'change tracking' code to later versions of LyX.Numerous bug fixes thereof."),
+                 u"Ported John Levon's original 'change tracking' code to later versions of LyX. Numerous bug fixes thereof."),
 
      contributer(u"Francesc Burrull i Mestres",
                  "fburrull () mat ! upc ! es",
@@ -501,7 +505,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110959835300777",
                  "28 February 2005",
-                 u"Improvements to lyxserver; LyX-Client perl package"),
+                 u"Improvements to lyxserver"),
 
      contributer(u"Hartmut Goebel",
                  "h.goebel () crazy-compilers ! com",
@@ -749,7 +753,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110911176213928",
                  "22 February 2005",
-                 u"Improvements to find&replace popup"),
+                 u"Improvements to the find&replace dialog"),
 
      contributer(u"Pablo De Napoli",
                  "pdenapo () mate ! dm ! uba ! ar",
@@ -829,7 +833,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=111121553103800",
                  "19 March 2005",
-                 u"heavy mathed testing provided siamltex document class"),
+                 u"heavy mathed testing; provided siamltex document class"),
 
      contributer(u"Bernhard Psaier",
                  "",
@@ -1061,7 +1065,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110907543900367",
                  "22 February 2005",
-                 u"support for optional argument in sections/captions svjour/svjog, egs and llncs document classes Lot of bug hunting (and fixing!)"),
+                 u"support for optional argument in sections/captions svjour/svjog, egs and llncs document classes. Lot of bug hunting (and fixing!)"),
 
      contributer(u"Jürgen Vigna",
                  "jug () lyx ! org",
@@ -1069,7 +1073,7 @@ contributers = [
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899839906262",
                  "21 February 2005",
-                 u"complete rewrite of the tabular, text inset fax- and Ascii-Export support iletter and dinbrief support"),
+                 u"complete rewrite of the tabular, text inset; fax- and Ascii-Export support; iletter and dinbrief support"),
 
      contributer(u"Pauli Virtanen",
                  "pauli.virtanen () hut ! fi",

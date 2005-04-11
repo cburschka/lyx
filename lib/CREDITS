@@ -27,7 +27,7 @@
    Small bugfixes that were very hard to find
 @bLars Gullik Bjønnes
 @iE-mail: larsbj@gullik.net
-   Improvements to user interface (menus and keyhandling) including configurabletoolbar, and a few other (not so) minor things, like rewriting most of the LyX kernel. Also current source maintainer
+   Improvements to user interface (menus and keyhandling) including a configurable toolbar and a few other (not so) minor things, like rewriting most of the LyX kernel. Also current source maintainer
 @bAlfredo Braunstein
 @iE-mail: abraunst@lyx.org
    A (pseudo) threaded graphics loader queue, lots of fixes, etc.
@@ -36,7 +36,7 @@
    User-definable keys, lyxserver and more
 @bJohnathan Burchill
 @iE-mail: jkerrb@users.sourceforge.net
-   Ported John Levon's original 'change tracking' code to later versions of LyX.Numerous bug fixes thereof.
+   Ported John Levon's original 'change tracking' code to later versions of LyX. Numerous bug fixes thereof.
 @bFrancesc Burrull i Mestres
 @iE-mail: fburrull@mat.upc.es
    Catalan translation
@@ -69,7 +69,7 @@
    Bug fixes
 @bStefano Ghirlanda
 @iE-mail: stefano.ghirlanda@unibo.it
-   Improvements to lyxserver; LyX-Client perl package
+   Improvements to lyxserver
 @bHartmut Goebel
 @iE-mail: h.goebel@crazy-compilers.com
    Improvements to Koma-Script classes
@@ -158,7 +158,7 @@
    Basque documentation and localization
 @bDaniel Naber
 @iE-mail: daniel.naber@t-online.de
-   Improvements to find&replace popup
+   Improvements to the find&replace dialog
 @bPablo De Napoli
 @iE-mail: pdenapo@mate.dm.uba.ar
    Math panel dialogs
@@ -188,7 +188,7 @@
    mathed rewrite to use STL file io with streams --export and --import command line options
 @bKornelia Pönitz
 @iE-mail: kornelia.poenitz@mathematik.tu-chemnitz.de
-   heavy mathed testing provided siamltex document class
+   heavy mathed testing; provided siamltex document class
 @bBernhard Psaier
    Designer of the LyX-Banner
 @bThomas Pundt
@@ -274,10 +274,10 @@
    Gnome frontend
 @bMartin Vermeer
 @iE-mail: martin.vermeer@hut.fi
-   support for optional argument in sections/captions svjour/svjog, egs and llncs document classes Lot of bug hunting (and fixing!)
+   support for optional argument in sections/captions svjour/svjog, egs and llncs document classes. Lot of bug hunting (and fixing!)
 @bJürgen Vigna
 @iE-mail: jug@lyx.org
-   complete rewrite of the tabular, text inset fax- and Ascii-Export support iletter and dinbrief support
+   complete rewrite of the tabular, text inset; fax- and Ascii-Export support; iletter and dinbrief support
 @bPauli Virtanen
 @iE-mail: pauli.virtanen@hut.fi
    Finnish localization of the interface
