@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-30 16:43+0200\n"
-"PO-Revision-Date: 2005-02-23 19:14+0100\n"
+"PO-Revision-Date: 2005-04-10 13:46+0200\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -1535,7 +1535,7 @@ msgstr "Omvendt rækkefølge|#r"
 
 #: ../src/frontends/xforms/forms/form_print.fd:242
 msgid "Number:|#N"
-msgstr "Antal:|#:"
+msgstr "Antal:|#A"
 
 #: ../src/frontends/xforms/forms/form_print.fd:301
 msgid "Odd numbered pages|#O"
@@ -1910,9 +1910,8 @@ msgid "Use &NatBib"
 msgstr "Benyt &Natbib"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-#, fuzzy
 msgid "Citation &Style:"
-msgstr "Citatstil:"
+msgstr "Citat&stil:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:66
@@ -2215,15 +2214,13 @@ msgid "Bibliography Entry"
 msgstr "Litteraturliste-indgang"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-#, fuzzy
 msgid "&Key:"
-msgstr "&Nøgle"
+msgstr "&Nøgle:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-#, fuzzy
 msgid "The bibliography key"
-msgstr "Litteraturliste-nøgler:|#ø"
+msgstr "Litteraturliste-nøgle"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
@@ -2254,9 +2251,8 @@ msgstr "&O.k."
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
 #: src/frontends/qt2/QBibtex.C:39 src/frontends/xforms/FormBibtex.C:37
-#, fuzzy
 msgid "BibTeX Bibliography"
-msgstr "Litteraturliste"
+msgstr "BibTeX-Litteraturliste"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
 msgid "Databa&ses"
@@ -2464,7 +2460,7 @@ msgstr "&Gendan"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
 msgid "Browse the available bibliography entries"
-msgstr ""
+msgstr "Gennemse den tilgængelige litteraturliste"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Regular E&xpression"
@@ -2500,19 +2496,16 @@ msgid "New Item"
 msgstr "Ny indgang"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
-#, fuzzy
 msgid "Available bibliography entries"
-msgstr "Litteraturliste-indstillinger"
+msgstr "Tilgængelige litteraturhenvisninger"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
-#, fuzzy
 msgid "Add citation of the selected bibliography entry"
-msgstr "Oplysninger om den valgte indgang"
+msgstr "Tilføj henvisning til den valgte litteraturhenvisning"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
-#, fuzzy
 msgid "Remove citation of the selected bibliography entry"
-msgstr "Oplysninger om den valgte indgang"
+msgstr "Fjern henvisning til den valgte litteraturhenvisning"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
 msgid "Move the selected citation up"
@@ -2539,9 +2532,8 @@ msgid "Info"
 msgstr "Info"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
-#, fuzzy
 msgid "Bibliography entry"
-msgstr "Litteraturliste-indgang"
+msgstr "Litteraturhenvisning"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:492
 msgid "&Full author list"
@@ -3482,8 +3474,7 @@ msgstr "&roff-kommando:"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
-msgstr ""
-"Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
+msgstr "Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
@@ -4077,9 +4068,8 @@ msgid "Print Destination"
 msgstr "Mål for udskrift"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:409
-#, fuzzy
 msgid "P&rinter:"
-msgstr "P&rinter"
+msgstr "P&rinter:"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
@@ -4140,9 +4130,8 @@ msgid "Formatted reference"
 msgstr "Pæn reference"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-#, fuzzy
 msgid "Cross reference as it appears in output"
-msgstr "Referencen, som den vil optræde i uddata"
+msgstr "Krydsreference, som den vil optræde i uddata"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
 msgid "&Format:"
@@ -4543,17 +4532,15 @@ msgid "&Rescan"
 msgstr "&Genindlæs"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-#, fuzzy
 msgid "Rebuild the file lists"
-msgstr "Opbyggede ny filliste"
+msgstr "Genopbyg fillisten"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
 msgstr "V&is"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis indhold af markeret fil. Kun mulig når filerne er vist i stien"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -4604,9 +4591,8 @@ msgid "Insert URL"
 msgstr "Indsæt URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
 msgid "&URL:"
-msgstr "&URL"
+msgstr "&URL:"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
@@ -6983,9 +6969,8 @@ msgid "Special Character|S"
 msgstr "Specialtegn|S"
 
 #: ../lib/ui/default.ui:197
-#, fuzzy
 msgid "Citation...|C"
-msgstr "Litteraturhenvisning"
+msgstr "Litteraturhenvisning...|L"
 
 #: ../lib/ui/default.ui:198
 msgid "Cross Reference...|R"
@@ -7220,9 +7205,8 @@ msgid "Index List|I"
 msgstr "Indeks|k"
 
 #: ../lib/ui/default.ui:286
-#, fuzzy
 msgid "BibTeX Bibliography...|B"
-msgstr "Litteraturliste"
+msgstr "BibTeX-litteraturliste...|B"
 
 #: ../lib/ui/default.ui:290
 msgid "LyX Document...|X"
@@ -9635,7 +9619,7 @@ msgstr "Afsnitslayout"
 #: src/frontends/qt2/QParagraph.C:300 src/frontends/xforms/FormParagraph.C:283
 #: src/paragraph.C:814
 msgid "Senseless with this layout!"
-msgstr "Giver ingen mening med dette layout"
+msgstr "Giver ingen mening med dette layout!"
 
 #. OK, Qt is REALLY broken. We have to hard
 #. code the menu structure here.
@@ -9718,9 +9702,8 @@ msgid "Go back"
 msgstr "Gå tilbage"
 
 #: src/frontends/qt2/QRef.C:127
-#, fuzzy
 msgid "Go to label"
-msgstr "Gå til valgte mærke."
+msgstr "Gå til mærke"
 
 #: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
 msgid "Find and Replace"
@@ -9902,7 +9885,7 @@ msgstr "ADVARSEL!"
 #. set up the tooltips
 #: src/frontends/xforms/FormBibitem.C:47
 msgid "Key used within LyX document."
-msgstr "Nøgle er brugt i LyX-dokumentet"
+msgstr "Nøgle er brugt i LyX-dokumentet."
 
 #: src/frontends/xforms/FormBibitem.C:49
 msgid "Label used for final output."
@@ -9962,13 +9945,12 @@ msgstr "*.bst| BibTeX-stilfiler (*.bst)"
 
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
-#, fuzzy
 msgid "Add citation of the selected bibliography entry."
-msgstr "Oplysninger om den valgte indgang"
+msgstr "Tilføj henvisning til den valgte litteratur."
 
 #: src/frontends/xforms/FormCitation.C:165
 msgid "Delete citation of the selected bibliography entry."
-msgstr ""
+msgstr "Slet henvisning til den valgte litteratur."
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
@@ -9987,7 +9969,6 @@ msgstr ""
 "vindue."
 
 #: src/frontends/xforms/FormCitation.C:181
-#, fuzzy
 msgid ""
 "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX "
 "Bibliography\"). Move the ones you want to cite with the arrow buttons into "
@@ -9998,9 +9979,8 @@ msgstr ""
 "citere med piletasterne til det venstre vindue."
 
 #: src/frontends/xforms/FormCitation.C:188
-#, fuzzy
 msgid "Information about the selected bibliography entry"
-msgstr "Oplysninger om den valgte indgang"
+msgstr "Oplysninger om den valgte literatur"
 
 #: src/frontends/xforms/FormCitation.C:195
 msgid ""
@@ -10011,7 +9991,6 @@ msgstr ""
 "(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:198
-#, fuzzy
 msgid ""
 "Activate if you want to print all authors in a citation with more than three "
 "authors, and not \"<First Author> et al.\" (Natbib)."
@@ -10029,16 +10008,12 @@ msgstr ""
 "ikke \"van Gogh\"). Nyttigt i begyndelsen af sætninger (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:204
-#, fuzzy
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
-msgstr ""
-"Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
+msgstr "Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"se <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:207
-#, fuzzy
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
-msgstr ""
-"Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
+msgstr "Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"s. 12\""
 
 #: src/frontends/xforms/FormCitation.C:210
 msgid "Search your database (all fields will be searched)."
@@ -10078,8 +10053,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:236
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
+msgstr " Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
 
 #: src/frontends/xforms/FormDocument.C:286
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
@@ -10474,10 +10448,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX-objekter, der kan få tilknyttet en farve."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:547
 msgid "Find a new color."
@@ -10741,9 +10713,8 @@ msgid "Update the list of labels."
 msgstr "Opdatér mærkelisten."
 
 #: src/frontends/xforms/FormRef.C:74
-#, fuzzy
 msgid "Select format style of the cross reference."
-msgstr "Vælg format til referencen."
+msgstr "Vælg krydsreferencens formatstil."
 
 #: src/frontends/xforms/FormRef.C:178
 msgid "*** No labels found in document ***"
@@ -10792,8 +10763,7 @@ msgstr "Søg baglæns."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Eksportér dokumentet i dette format, før nedenstående kommando udføres på "
 "den."
@@ -10878,16 +10848,15 @@ msgid ""
 "the corresponding LyX layout file exists."
 msgstr ""
 "Viser de installerede klasser for LaTeX/BibTeX; De er kun tilgængelige i LyX "
-"hvis der er en tilsvarende LyX-layoutfil!"
+"hvis der er en tilsvarende LyX-layoutfil."
 
 #: src/frontends/xforms/FormTexinfo.C:51
 msgid "Show full path or only file name."
 msgstr "Vis fulde sti eller blot filnavn."
 
 #: src/frontends/xforms/FormTexinfo.C:54
-#, fuzzy
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr "Kører skriptet \"TexFiles.sh\" for at opbygge nye fillister."
+msgstr "Kører skriptet \"TexFiles.sh\" for at opbygge nye fillisterne."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
@@ -11004,7 +10973,7 @@ msgstr "Der kræves en fil, ikke en mappe."
 
 #: src/frontends/xforms/xforms_helpers.C:448
 msgid "Cannot write to this file."
-msgstr "Kan ikke skrive til denne fil"
+msgstr "Kan ikke skrive til denne fil."
 
 #: src/frontends/xforms/xforms_helpers.C:483
 msgid "Cannot read from this directory."
@@ -11052,7 +11021,6 @@ msgid "Opened inset"
 msgstr "Indstik åbnet"
 
 #: src/insets/insetbib.C:142
-#, fuzzy
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-genereret litteraturliste"
 
@@ -11862,7 +11830,7 @@ msgstr "Kommando deaktiveret"
 #. no
 #: src/lyxfunc.C:306
 msgid "Document is read-only"
-msgstr "Dokumentet er skrivebeskyttet."
+msgstr "Dokumentet er skrivebeskyttet"
 
 #: src/lyxfunc.C:311
 msgid "Command not allowed without any document open"
@@ -12018,8 +11986,7 @@ msgstr ""
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
+msgstr "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
 
 #: src/lyxrc.C:1874
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -12035,8 +12002,7 @@ msgstr "Om kun ulige sider skal udskrives."
 
 #: src/lyxrc.C:1886
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
+msgstr "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
 #: src/lyxrc.C:1890
 msgid "The option for specifying the number of copies to print."
@@ -12044,7 +12010,7 @@ msgstr "Antallet af kopier, der skal udskrives."
 
 #: src/lyxrc.C:1894
 msgid "The option for specifying whether the copies should be collated."
-msgstr "Om flere kopier af hver side skal udskrives samlet"
+msgstr "Om flere kopier af hver side skal udskrives samlet."
 
 #: src/lyxrc.C:1898
 msgid "The option to reverse the order of the pages printed."
@@ -12076,8 +12042,7 @@ msgstr "Få LyX til at give navnet på målprinteren til din udskriftskommando."
 
 #: src/lyxrc.C:1922
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
+msgstr "Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
 
 #: src/lyxrc.C:1926
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -12127,13 +12092,11 @@ msgstr ""
 
 #: src/lyxrc.C:1951
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
+msgstr "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
 #: src/lyxrc.C:1957
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
+msgstr "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
 #: src/lyxrc.C:1961
 msgid "The bold font in the dialogs."
@@ -12152,10 +12115,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
 #: src/lyxrc.C:1980
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
 #: src/lyxrc.C:1984
 msgid ""
@@ -12305,8 +12266,7 @@ msgid ""
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
 #: src/lyxrc.C:2075
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
 #: src/lyxrc.C:2080
@@ -12345,7 +12305,7 @@ msgid ""
 "shown after the change has been made.)"
 msgstr ""
 "Minimér dialogvinduerne med hovedvinduet (berører kun dialogbokse, der vises "
-"efter at ændringen er gennemført.)."
+"efter at ændringen er gennemført.)"
 
 #: src/lyxrc.C:2100
 msgid "Select how LyX will display any graphics."
@@ -12364,8 +12324,7 @@ msgstr ""
 "samme mappe, som den originale fil."
 
 #: src/lyxrc.C:2112
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
@@ -12388,8 +12347,7 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
+msgstr "Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
 
 #: src/lyxrc.C:2128
 msgid ""
@@ -12406,8 +12364,7 @@ msgid ""
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
 #: src/lyxrc.C:2136
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
 #: src/lyxrc.C:2140
@@ -12453,8 +12410,7 @@ msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
 #: src/lyxrc.C:2178
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
+msgstr "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
 #: src/lyxrc.C:2182
 msgid "Shows a typeset preview of things such as math"
@@ -12606,8 +12562,7 @@ msgstr "Kunne ikke slette automatisk gemt fil!"
 
 #: src/support/package.C:374
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1%"
+msgid "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr "Kunne ikke afgøre stien til LyX-programmet fra kommandolinjen %1%"
 
 #: src/support/package.C:379
@@ -12689,11 +12644,11 @@ msgstr ""
 
 #: src/support/package.C:671
 msgid " is not a directory."
-msgstr " er ikke en mappe "
+msgstr " er ikke en mappe."
 
 #: src/tabular.C:1346
 msgid "Warning:"
-msgstr "Advarsel!:"
+msgstr "Advarsel:"
 
 #: src/tabular.C:1347
 msgid "Tabular format < 5 is not supported anymore\n"
@@ -12713,8 +12668,7 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
+msgstr "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
 #: src/text.C:3348
 msgid "Page Break (top)"
@@ -13474,3 +13428,4 @@ msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
 #~ msgid "Canceled"
 #~ msgstr "Annulleret"
+
