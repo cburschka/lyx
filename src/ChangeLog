@@ -1,3 +1,11 @@
+2005-04-12  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* lyxtext.h:
+	* text.C (metrics): 
+	* text2.C (getFont):
+	* rowpainter.C (getFont): Fix metrics bug introduced by inset
+	fonts fix
+
 2005-04-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* paragraph.C (simpleTeXOnePar): add missing '}' in LaTeX

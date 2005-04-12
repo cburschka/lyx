@@ -60,6 +60,8 @@ public:
 	///
 	LyXFont getFont(Paragraph const & par, pos_type pos) const;
 	///
+	void applyOuterFont(LyXFont &) const;
+	///
 	LyXFont getLayoutFont(pit_type pit) const;
 	///
 	LyXFont getLabelFont(Paragraph const & par) const;
@@ -336,7 +338,7 @@ public:
 	LyXFont current_font;
 	/// the current font
 	LyXFont real_current_font;
-	/// our buffer's default layout font
+	/// our buffer's default layout font. This is textclass specific
 	LyXFont defaultfont_;
 	///
 	int background_color_;
@@ -349,7 +351,8 @@ public:
 	///
 	ParagraphList pars_;
 
-	/// our 'outermost' Font
+	/// our 'outermost' font. This is handed down from the surrounding
+	// inset through the pi/mi parameter (pi.base.font)
 	LyXFont font_;
 
 	///

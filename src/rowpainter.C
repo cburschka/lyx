@@ -115,9 +115,6 @@ private:
 	double separator_;
 	double hfill_;
 	double label_hfill_;
-
-	// Hack to get 1.4cvs working
-	LyXFont font_;
 };
 
 
@@ -125,7 +122,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 	LyXText const & text, pit_type pit, Row const & row, int x, int y)
 	: bv_(*pi.base.bv), pain_(pi.pain), text_(text), pars_(text.paragraphs()),
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
-	  xo_(x), yo_(y), width_(text_.width()), font_(pi.base.font)
+	  xo_(x), yo_(y), width_(text_.width())
 {
 	RowMetrics m = text_.computeRowMetrics(pit, row_);
 	x_ = m.x + xo_;
@@ -145,12 +142,9 @@ RowPainter::RowPainter(PainterInfo & pi,
 /// "temporary"
 LyXFont const RowPainter::getFont(pos_type pos) const
 {
-	LyXFont lf(font_);
 	LyXFont pf(text_.getFont(par_, pos));
-	lf.reduce(LyXFont(LyXFont::ALL_SANE));
-	lf.realize(pf); 
-	lf.setLanguage(pf.language());
-	return lf;
+	text_.applyOuterFont(pf);
+	return pf;
 }
 
 

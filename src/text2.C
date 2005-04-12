@@ -152,7 +152,7 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 	if (!par.getDepth()) {
 		LyXFont f = par.getFontSettings(params, pos);
 		if (!isMainText())
-			f.realize(font_);
+			applyOuterFont(f);
 		if (layout->labeltype == LABEL_MANUAL && pos < body_pos)
 			return f.realize(layout->reslabelfont);
 		else
@@ -170,12 +170,27 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 	font.realize(layoutfont);
 
 	if (!isMainText())
-		font.realize(font_);
+		applyOuterFont(font);
 
 	// Realize with the fonts of lesser depth.
 	font.realize(defaultfont_);
 
 	return font;
+}
+
+// There are currently two font mechanisms in LyX:
+// 1. The font attributes in a lyxtext, and
+// 2. The inset-specific font properties, defined in an inset's
+// metrics() and draw() methods and handed down the inset chain through
+// the pi/mi parameters, and stored locally in a lyxtext in font_.
+// This is where the two are integrated in the final fully realized
+// font.
+void LyXText::applyOuterFont(LyXFont & font) const {
+	LyXFont lf(font_);
+	lf.reduce(defaultfont_);
+	lf.realize(font);
+	lf.setLanguage(font.language());
+	font = lf;
 }
 
 

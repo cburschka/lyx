@@ -1694,6 +1694,8 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 		maxwidth_ = mi.base.textwidth;
 	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
 	//	<< " maxWidth: " << maxwidth_ << "\nfont: " << mi.base.font << endl;
+	// save the caller's font locally:
+	font_ = mi.base.font;
 
 	unsigned int h = 0;
 	unsigned int w = 0;
