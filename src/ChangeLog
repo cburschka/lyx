@@ -1,3 +1,8 @@
+2005-04-12  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text3.C (dispatch): fix language problem in newly created
+	textinsets (and main text) in non-english docs
+
 2005-04-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyxfunc.C (getStatus, dispatch): handle LFUN_INSET_APPLY

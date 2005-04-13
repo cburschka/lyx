@@ -1111,6 +1111,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		cur.clearSelection();
 		LyXFont const old_font = real_current_font;
+		
+		// Prevents language turds in new lyxtexts under non-english
+		setCurrentFont(cur);
 
 		string::const_iterator cit = cmd.argument.begin();
 		string::const_iterator end = cmd.argument.end();
