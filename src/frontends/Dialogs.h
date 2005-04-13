@@ -42,6 +42,15 @@ public:
 	 */
 	static boost::signal<void()> & redrawGUI();
 
+	/** Check the status of all visible dialogs and disable or reenable
+	 *  them as appropriate.
+	 *
+	 *  Disabling is needed for example when a dialog is open and the
+	 *  cursor moves to a position where the corresponding inset is not
+	 *  allowed.
+	 */
+	void checkStatus();
+
 	/// Toggle tooltips on/off in all dialogs.
 	static void toggleTooltips();
 

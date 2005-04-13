@@ -301,7 +301,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		bool start = !par.params().startOfAppendix();
 
 #ifdef WITH_WARNINGS
-#warning The code below only makes sense a top level.
+#warning The code below only makes sense at top level.
 // Should LFUN_APPENDIX be restricted to top-level paragraphs?
 #endif
 		// ensure that we have only one start_of_appendix in this document
@@ -712,19 +712,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value)
 			par.params().spacing(Spacing(new_spacing, new_value));
-		break;
-	}
-
-	case LFUN_INSET_APPLY: {
-		string const name = cmd.getArg(0);
-		InsetBase * inset = bv->owner()->getDialogs().getOpenInset(name);
-		if (inset) {
-			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument);
-			inset->dispatch(cur, fr);
-		} else {
-			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument);
-			dispatch(cur, fr);
-		}
 		break;
 	}
 
@@ -1728,6 +1715,14 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_DIALOG_SHOW:
 		break;
 
+	case LFUN_INSET_MODIFY:
+		// We need to disable this, because we may get called for a
+		// tabular cell via
+		// InsetTabular::getStatus() -> InsetText::getStatus()
+		// and we don't handle LFUN_INSET_MODIFY.
+		enable = false;
+		break;
+
 	case LFUN_EMPH:
 		flag.setOnOff(font.emph() == LyXFont::ON);
 		break;
@@ -1789,7 +1784,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	case LFUN_BREAKPARAGRAPH_SKIP:
 	case LFUN_PARAGRAPH_SPACING:
-	case LFUN_INSET_APPLY:
 	case LFUN_INSET_INSERT:
 	case LFUN_NEXT_INSET_TOGGLE:
 	case LFUN_UPCASE_WORD:

@@ -231,3 +231,16 @@ void Dialogs::redraw() const
 		it->second->redraw();
 	}
 }
+
+
+void Dialogs::checkStatus()
+{
+	std::map<string, DialogPtr>::const_iterator it  = dialogs_.begin();
+	std::map<string, DialogPtr>::const_iterator end = dialogs_.end();
+
+	for(; it != end; ++it) {
+		Dialog * const dialog = it->second.get();
+		if (dialog->isVisible())
+			dialog->checkStatus();
+	}
+}

@@ -1,3 +1,9 @@
+2005-04-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyxfunc.C (getStatus, dispatch): handle LFUN_INSET_APPLY
+	* text3.C (getStatus, dispatch): don't handle LFUN_INSET_APPLY anymore
+	* text3.C (getStatus): disable LFUN_INSET_MODIFY
+
 2005-04-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* lyxtext.h:

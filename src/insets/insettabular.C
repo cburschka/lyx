@@ -965,6 +965,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 			return true;
 	
 	// disable these with multiple cells selected
+	case LFUN_INSET_INSERT:
 	case LFUN_INSERT_CHARSTYLE:
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_WIDE_FLOAT:

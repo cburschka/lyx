@@ -33,7 +33,7 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	Kernel(LyXView & lv);
 
-	/** This method is the primary puypose of the class. It provides
+	/** This method is the primary purpose of the class. It provides
 	 *  the "gateway" by which the dialog can send a request (of a
 	 *  change in the data, for more information) to the kernel.
 	 *  \param fr is the encoding of the request.
@@ -41,7 +41,7 @@ public:
 	void dispatch(FuncRequest const & fr) const;
 
 	/** The dialog has received a request from the user
-	 *  (who pressed the "Restore" buuton) to update contents.
+	 *  (who pressed the "Restore" button) to update contents.
 	 *  It must, therefore, ask the kernel to provide this information.
 	 *  \param name is used to identify the dialog to the kernel.
 	 */

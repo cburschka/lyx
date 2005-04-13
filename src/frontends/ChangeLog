@@ -1,3 +1,8 @@
+2005-04-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* Dialogs.[Ch] (checkStatus): new
+	* LyXView.C (updateToolbars): call Dialogs::checkStatus
+				
 2005-03-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (DIST_SUBDIRS): remove gnome

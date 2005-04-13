@@ -85,6 +85,18 @@ public:
 	 * \returns true if this function made a definitive decision on
 	 * whether the inset wants to handle the request \p cmd or not.
 	 * The result of this decision is put into \p status.
+	 *
+	 * Every request that is enabled in this method needs to be handled
+	 * in doDispatch(). Normally we have a 1:1 relationship between the
+	 * requests handled in getStatus() and doDispatch(), but there are
+	 * some exceptions:
+	 * - A request that is disabled in getStatus() does not need to
+	 *   appear in doDispatch(). It is guaranteed that doDispatch()
+	 *   is never called with this request.
+	 * - A few requests are en- or disabled in InsetBase::getStatus().
+	 *   These need to be handled in the doDispatch() methods of the
+	 *   derived insets, since InsetBase::doDispatch() has not enough
+	 *   information to handle them.
 	 */
 	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
@@ -144,8 +156,8 @@ public:
 	virtual bool idxDelete(idx_type &) { return false; }
 	/// pulls cell after pressing erase
 	virtual void idxGlue(idx_type) {}
-	// returns list of cell indices that are "between" from and to for
-	// selection purposes
+	/// returns list of cell indices that are "between" from and to for
+	/// selection purposes
 	virtual bool idxBetween(idx_type idx, idx_type from, idx_type to) const;
 
 	/// to which column belongs a cell with a given index?
@@ -388,7 +400,8 @@ public:
 protected:
 	InsetBase();
 	InsetBase(InsetBase const &);
-	// the real dispatcher
+	/// the real dispatcher.
+	/// \sa getStatus
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const = 0;

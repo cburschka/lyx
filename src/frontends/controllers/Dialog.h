@@ -70,6 +70,12 @@ public:
 	void redraw();
 	//@}
 
+	/** Check wether we may apply our data.
+	 *
+	 *  The buttons are disabled if not and (re-)enabled if yes.
+	 */
+	void checkStatus();
+
 	/** When applying, it's useful to know whether the dialog is about
 	 *  to close or not (no point refreshing the display for example).
 	 */

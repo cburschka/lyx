@@ -20,6 +20,8 @@
 #include "debug.h"
 #include "dimension.h"
 #include "dispatchresult.h"
+#include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
@@ -136,9 +138,38 @@ void InsetBase::doDispatch(LCursor & cur, FuncRequest &)
 }
 
 
-bool InsetBase::getStatus(LCursor &, FuncRequest const &, FuncStatus &) const
+bool InsetBase::getStatus(LCursor &, FuncRequest const & cmd,
+	FuncStatus & flag) const
 {
-	return false;
+	// LFUN_INSET_APPLY is sent from the dialogs when the data should
+	// be applied. This is either changed to LFUN_INSET_MODIFY (if the
+	// dialog belongs to us) or LFUN_INSET_INSERT (if the dialog does
+	// not belong to us, i. e. the dialog was open, and the user moved
+	// the cursor in our inset) in LyXFunc::getStatus().
+	// Dialogs::checkStatus() ensures that the dialog is deactivated if
+	// LFUN_INSET_APPLY is disabled.
+
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY:
+		// Only allow modification of our own data.
+		// This needs to be handled in the doDispatch method of our
+		// instantiatable children.
+		if (lyxCode() == translate(cmd.getArg(0))) {
+			flag.enabled(true);
+			return true;
+		}
+		return false;
+
+	case LFUN_INSET_INSERT:
+		// Don't allow insertion of new insets.
+		// Every inset that wants to allow new insets from open
+		// dialogs needs to override this.
+		flag.enabled(false);
+		return true;
+
+	default:
+		return false;
+	}
 }
 
 

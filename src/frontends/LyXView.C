@@ -112,6 +112,10 @@ void LyXView::updateToolbars()
 	bool const table =
 		getLyXFunc().getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
 	toolbars_->update(math, table);
+	// update redaonly status of open dialogs. This could also be in
+	// updateMenubar(), but since updateToolbars() and updateMenubar()
+	// are always called together it is only here.
+	getDialogs().checkStatus();
 }
 
 

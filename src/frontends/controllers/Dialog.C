@@ -15,6 +15,12 @@
 #include "ButtonController.h"
 #include "BCView.h"
 
+#include "frontends/LyXView.h"
+
+#include "funcrequest.h"
+#include "FuncStatus.h"
+#include "lyxfunc.h"
+
 
 using std::string;
 
@@ -164,6 +170,17 @@ void Dialog::setView(View * v)
 {
 	BOOST_ASSERT(v && !view_ptr_.get());
 	view_ptr_.reset(v);
+}
+
+
+void Dialog::checkStatus()
+{
+	FuncRequest const fr(LFUN_INSET_APPLY, name());
+	FuncStatus const fs(kernel().lyxview().getLyXFunc().getStatus(fr));
+	if (fs.enabled())
+		bc().readOnly(kernel().isBufferReadonly());
+	else
+		bc().readOnly(true);
 }
 
 

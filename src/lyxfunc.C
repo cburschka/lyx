@@ -462,6 +462,24 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_INSET_APPLY: {
+		string const name = cmd.getArg(0);
+		InsetBase * inset = owner->getDialogs().getOpenInset(name);
+		if (inset) {
+			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument);
+			FuncStatus fs;
+			bool const success = inset->getStatus(cur, fr, fs);
+			// Every inset is supposed to handle this
+			BOOST_ASSERT(success);
+			flag |= fs;
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument);
+			flag |= getStatus(fr);
+		}
+		enable = flag.enabled();
+		break;
+	}
+
 	case LFUN_DIALOG_SHOW: {
 		string const name = cmd.getArg(0);
 		if (!buf)
@@ -1324,6 +1342,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
+		case LFUN_INSET_APPLY: {
+			string const name = cmd.getArg(0);
+			InsetBase * inset = owner->getDialogs().getOpenInset(name);
+			if (inset) {
+				FuncRequest fr(LFUN_INSET_MODIFY, argument);
+				inset->dispatch(view()->cursor(), fr);
+			} else {
+				FuncRequest fr(LFUN_INSET_INSERT, argument);
+				dispatch(fr);
+			}
+			break;
+		}
+
 		case LFUN_ALL_INSETS_TOGGLE: {
 			string action;
 			string const name = split(argument, action, ' ');
@@ -1485,6 +1516,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->update(true, update);
 
 			// if we executed a mutating lfun, mark the buffer as dirty
+			// FIXME: Why not use flag.enabled() but call getStatus again?
 			if (getStatus(cmd).enabled()
 					&& !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)
 					&& !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly))
