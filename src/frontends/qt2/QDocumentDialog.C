@@ -211,6 +211,22 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		marginsModule->headheightLE));
 	marginsModule->footskipLE->setValidator(unsignedLengthValidator(
 		marginsModule->footskipLE));
+
+	// create the numbering items, in reverse order
+	numberlevel7 = 
+		new QListViewItem(numberingModule->tocLV, qt_("Subparagraph"));
+	numberlevel6 = 
+		new QListViewItem(numberingModule->tocLV, qt_("Paragraph"));
+	numberlevel5 = 
+		new QListViewItem(numberingModule->tocLV, qt_("Subsubsection"));
+	numberlevel4 = 
+		new QListViewItem(numberingModule->tocLV, qt_("Subsection"));
+	numberlevel3 = 
+		new QListViewItem(numberingModule->tocLV, qt_("Section"));
+	numberlevel2 = 
+		new QListViewItem(numberingModule->tocLV, qt_("Chapter"));
+	numberlevel1 = 
+		new QListViewItem(numberingModule->tocLV, qt_("Part"));
 }
 
 
@@ -398,9 +414,9 @@ void QDocumentDialog::classChanged()
 		} else {
 			updateFontsize(cntrl.textClass().opt_fontsize(),
 				       params.fontsize);
-
 			updatePagestyle(cntrl.textClass().opt_pagestyle(),
 					params.pagestyle);
+			updateNumbering();
 		}
 	} else {
 		latexModule->classCO->setCurrentItem(params.textclass);
@@ -412,50 +428,60 @@ void QDocumentDialog::updateNumbering()
 {
 	int const depth = numberingModule->depthSL->value();
 	int const toc = numberingModule->tocSL->value();
-	QListViewItem * partitem = numberingModule->tocLV->firstChild();
-	QListViewItem * chapteritem = partitem->nextSibling();
-	QListViewItem * sectionitem = chapteritem->nextSibling();
-	QListViewItem * subsectionitem = sectionitem->nextSibling();
-	QListViewItem * subsubsectionitem = subsectionitem->nextSibling();
-	QListViewItem * paragraphitem = subsubsectionitem->nextSibling();
-	QListViewItem * subparagraphitem = paragraphitem->nextSibling();
+
+	// check if the document class features chapter
+	LyXTextClass const & tclass = 
+		form_->controller().params().getLyXTextClass();
+	bool const hasChapter = tclass.hasLayout("Chapter");
 
 	QString const no = qt_("No");
 	QString const yes = qt_("Yes");
 
 	//numberingModule->tocLV->setUpdatesEnabled(false);
 
-	partitem->setText(1, yes);
-	chapteritem->setText(1, yes);
-	sectionitem->setText(1, yes);
-	subsectionitem->setText(1, yes);
-	subsubsectionitem->setText(1, yes);
-	paragraphitem->setText(1, yes);
-	subparagraphitem->setText(1, yes);
-	partitem->setText(2, yes);
-	chapteritem->setText(2, yes);
-	sectionitem->setText(2, yes);
-	subsectionitem->setText(2, yes);
-	subsubsectionitem->setText(2, yes);
-	paragraphitem->setText(2, yes);
-	subparagraphitem->setText(2, yes);
+	numberlevel1->setText(1, yes);
+	numberlevel2->setText(1, yes);
+	numberlevel3->setText(1, yes);
+	numberlevel4->setText(1, yes);
+	numberlevel5->setText(1, yes);
+	numberlevel6->setText(1, yes);
+	numberlevel7->setText(1, yes);
+
+	numberlevel1->setText(2, yes);
+	numberlevel2->setText(2, yes);
+	numberlevel3->setText(2, yes);
+	numberlevel4->setText(2, yes);
+	numberlevel5->setText(2, yes);
+	numberlevel6->setText(2, yes);
+	numberlevel7->setText(2, yes);
 
 	// numbering
-	if (depth < -1) partitem->setText(1, no);
-	if (depth < 0) chapteritem->setText(1, no);
-	if (depth < 1) sectionitem->setText(1, no);
-	if (depth < 2) subsectionitem->setText(1, no);
-	if (depth < 3) subsubsectionitem->setText(1, no);
-	if (depth < 4) paragraphitem->setText(1, no);
-	if (depth < 5) subparagraphitem->setText(1, no);
+	if (depth < -1) numberlevel1->setText(1, no);
+	if (depth < 0) numberlevel2->setText(1, no);
+	if (depth < 1) numberlevel3->setText(1, no);
+	if (depth < 2) numberlevel4->setText(1, no);
+	if (depth < 3) numberlevel5->setText(1, no);
+	if (depth < 4) numberlevel6->setText(1, no);
+	if (depth < 5) numberlevel7->setText(1, no);
 
 	// in toc
-	if (toc < 0) chapteritem->setText(2, no);
-	if (toc < 1) sectionitem->setText(2, no);
-	if (toc < 2) subsectionitem->setText(2, no);
-	if (toc < 3) subsubsectionitem->setText(2, no);
-	if (toc < 4) paragraphitem->setText(2, no);
-	if (toc < 5) subparagraphitem->setText(2, no);
+	if (toc < 0 && hasChapter) numberlevel2->setText(2, no);
+	if (toc < 1) numberlevel3->setText(2, no);
+	if (toc < 2) numberlevel4->setText(2, no);
+	if (toc < 3) numberlevel5->setText(2, no);
+	if (toc < 4) numberlevel6->setText(2, no);
+	if (toc < 5) numberlevel7->setText(2, no);
+
+	// in article style classes, the part number is shifted by 1
+	if (!hasChapter) {
+		numberlevel1->setText(0, qt_(""));
+		numberlevel1->setText(1, qt_(""));
+		numberlevel1->setText(2, qt_(""));
+		numberlevel2->setText(0, qt_("Part"));
+	} else {
+		numberlevel1->setText(0, qt_("Part"));
+		numberlevel2->setText(0, qt_("Chapter"));
+	}
 
 	//numberingModule->tocLV->setUpdatesEnabled(true);
 	//numberingModule->tocLV->update();

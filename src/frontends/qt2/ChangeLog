@@ -1,3 +1,10 @@
+2005-04-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ui/NumberingModuleBase.ui: Remove numbering items ...
+	* QDocumentDialog.[Ch]: ... and initialize them here to prevent
+	unwanted sorting. Check whether chapter is supported and adjust
+	numbering scheme accordingly.
+
 2005-04-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* panelstack.C (addCategory): let the listview compute the
