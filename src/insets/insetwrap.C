@@ -68,9 +68,6 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	params_.type = type;
 	params_.width = LyXLength(50, LyXLength::PCW);
 	setInsetName(type);
-	LyXTextClass const & tclass = bp.getLyXTextClass();
-	if (tclass.hasLayout(caplayout))
-		paragraphs().begin()->layout(tclass[caplayout]);
 }
 
 

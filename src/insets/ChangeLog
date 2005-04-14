@@ -1,3 +1,8 @@
+2005-04-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetfloat.C (InsetFloat): 
+	* insetwrap.C (InsetWrap): do not set layout here.
+
 2005-04-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetbase.C (getStatus): handle LFUN_INSET_MODIFY and

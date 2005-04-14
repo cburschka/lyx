@@ -142,9 +142,6 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	setLabelFont(font);
 	params_.type = type;
 	setInsetName(type);
-	LyXTextClass const & tclass = bp.getLyXTextClass();
-	if (tclass.hasLayout(caplayout))
-		paragraphs().begin()->layout(tclass[caplayout]);
 }
 
 

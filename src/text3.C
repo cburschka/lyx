@@ -1174,18 +1174,25 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSERT_BRANCH:
 	case LFUN_INSERT_BIBITEM:
 	case LFUN_INSET_ERT:
-	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_FOOTNOTE:
 	case LFUN_INSET_MARGINAL:
 	case LFUN_INSET_OPTARG:
-	case LFUN_INSET_WIDE_FLOAT:
-	case LFUN_INSET_WRAP:
 	case LFUN_TABULAR_INSERT:
 	case LFUN_ENVIRONMENT_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
+		break;
+
+	case LFUN_INSET_FLOAT:
+	case LFUN_INSET_WIDE_FLOAT: 
+	case LFUN_INSET_WRAP:
+		doInsertInset(cur, this, cmd, true, true);
+		cur.posRight();
+		// FIXME: the "Caption" name should not be hardcoded,
+		// but given by the float definition.
+		cur.dispatch(FuncRequest(LFUN_LAYOUT, "Caption"));
 		break;
 
 	case LFUN_INDEX_INSERT:
