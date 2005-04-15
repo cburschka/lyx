@@ -29,6 +29,7 @@
 #include <sstream>
 #include <vector>
 
+using lyx::support::ChangeExtension;
 using lyx::support::MakeAbsPath;
 using lyx::support::rtrim;
 using lyx::support::suffixIs;
@@ -170,10 +171,15 @@ char const * const known_dvips_graphics_formats[] = {"eps", "ps", "eps.gz",
 
 /*!
  * Graphics file extensions known by the pdftex driver of the graphics package.
- * \see known_dvips_graphics_formats
+ * \sa known_dvips_graphics_formats
  */
 char const * const known_pdftex_graphics_formats[] = {"png", "pdf", "jpg",
 "mps", "tif", 0};
+
+/*!
+ * Known file extensions for TeX files as used by \\include.
+ */
+char const * const known_tex_extensions[] = {"tex", 0};
 
 
 /// splits "x=z, y=b" into a map
@@ -868,6 +874,30 @@ std::pair<string, string> getCiteArguments(Parser & p, bool natbibOrder)
 	return std::make_pair(before, after);
 }
 
+
+/// Convert filenames with TeX macros and/or quotes to something LyX can understand
+string const normalize_filename(string const & name)
+{
+	Parser p(trim(name, "\""));
+	ostringstream os;
+	while (p.good()) {
+		Token const & t = p.get_token();
+		if (t.cat() != catEscape)
+			os << t.asInput();
+		else if (t.cs() == "lyxdot") {
+			// This is used by LyX for simple dots in relative
+			// names
+			os << '.';
+			p.skip_spaces();
+		} else if (t.cs() == "space") {
+			os << ' ';
+			p.skip_spaces();
+		} else
+			os << t.asInput();
+	}
+	return os.str();
+}
+
 } // anonymous namespace
 
 
@@ -1195,7 +1225,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			map<string, string> opts = split_map(p.getArg('[', ']'));
 			if (clip)
 				opts["clip"] = string();
-			string name = subst(p.verbatim_item(), "\\lyxdot ", ".");
+			string name = normalize_filename(p.verbatim_item());
 
 			string const path = getMasterFilePath();
 			// We want to preserve relative / absolute filenames,
@@ -1829,11 +1859,36 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				name += p.get_token().asInput();
 			context.check_layout(os);
 			begin_inset(os, "Include ");
-			string filename(p.getArg('{', '}'));
-			string lyxname(lyx::support::ChangeExtension(filename, ".lyx"));
-			if (tex2lyx(filename, lyxname)) {
-				os << name << '{' << lyxname << "}\n";
+			string filename(normalize_filename(p.getArg('{', '}')));
+			string const path = getMasterFilePath();
+			// We want to preserve relative / absolute filenames,
+			// therefore path is only used for testing
+			if (t.cs() == "include" &&
+			    !fs::exists(MakeAbsPath(filename, path))) {
+				// The file extension is probably missing.
+				// Now try to find it out.
+				string const tex_name =
+					find_file(filename, path,
+					          known_tex_extensions);
+				if (!tex_name.empty())
+					filename = tex_name;
+			}
+			if (fs::exists(MakeAbsPath(filename, path))) {
+				string const abstexname =
+					MakeAbsPath(filename, path);
+				string const abslyxname =
+					ChangeExtension(abstexname, ".lyx");
+				string const lyxname =
+					ChangeExtension(filename, ".lyx");
+				if (t.cs() != "verbatiminput" &&
+				    tex2lyx(abstexname, abslyxname)) {
+					os << name << '{' << lyxname << "}\n";
+				} else {
+					os << name << '{' << filename << "}\n";
+				}
 			} else {
+				cerr << "Warning: Could not find included file '"
+				     << filename << "'." << endl;
 				os << name << '{' << filename << "}\n";
 			}
 			os << "preview false\n";

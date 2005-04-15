@@ -1,3 +1,11 @@
+2005-04-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (normalize_filename): new, split off from parse_text
+	* text.C (parse_text): Don't convert \verbatiminput files
+	* text.C (parse_text): Interpret relative file names in \include,
+	\input and \verbatiminput correctly and replace \lyxdot and \space
+	* text.C (parse_text): Recognize \input files without extension
+
 2005-03-31  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_text): Really fix \start_of_appendix output
