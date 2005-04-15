@@ -54,12 +54,15 @@ public:
 	void updateConverters();
 	void updateConverterButtons();
 	void updateCopiers();
+	void updateCopierButtons();
 	void updateFormats();
+	void updateFormatsButtons();
 
 public slots:
 	void change_adaptor();
 
 	void switch_format(int);
+	void fileformat_changed();
 	void new_format();
 	void modify_format();
 	void remove_format();
@@ -72,6 +75,7 @@ public slots:
 
 	void switch_copierLB(int nr);
 	void switch_copierCO(int nr);
+	void copiers_changed();
 	void new_copier();
 	void modify_copier();
 	void remove_copier();

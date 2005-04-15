@@ -179,6 +179,12 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
 	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
 	connect(fileformatsModule->formatsLB, SIGNAL(highlighted(int)), this, SLOT(switch_format(int)));
+	connect(fileformatsModule->formatED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->guiNameED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->shortcutED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->extensionED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->viewerED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->editorED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
 
 	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(new_converter()));
 	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(remove_converter()));
@@ -204,6 +210,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(copiersModule->copierFormatCO, SIGNAL(activated(const QString&)), this, SLOT(copiers_changed()));
+	connect(copiersModule->copierED, SIGNAL(textChanged(const QString&)), this, SLOT(copiers_changed()));
 
 	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -337,6 +345,10 @@ void QPrefsDialog::updateConverters()
 {
 	QPrefConvertersModule * convertmod(convertersModule);
 
+	// save current selection
+	QString current = convertmod->converterFromCO->currentText()
+		+ " -> " + convertmod->converterToCO->currentText();
+	
 	convertmod->converterFromCO->clear();
 	convertmod->converterToCO->clear();
 
@@ -357,6 +369,12 @@ void QPrefsDialog::updateConverters()
 		convertmod->convertersLB->insertItem(toqstr(name));
 	}
 
+	// restore selection
+	if (!current.isEmpty()) {
+		QListBoxItem * item = convertmod->convertersLB->findItem(current);
+		convertmod->convertersLB->setCurrentItem(item);
+	}
+	// select first element if restoring failed
 	if (convertmod->convertersLB->currentItem() == -1)
 		convertmod->convertersLB->setCurrentItem(0);
 
@@ -455,6 +473,8 @@ void QPrefsDialog::remove_converter()
 void QPrefsDialog::updateCopiers()
 {
 	// The choice widget
+	// save current selection
+	QString current = copiersModule->copierFormatCO->currentText();
 	copiersModule->copierFormatCO->clear();
 
 	for (Formats::const_iterator it = form_->formats().begin(),
@@ -478,6 +498,12 @@ void QPrefsDialog::updateCopiers()
 		copiersModule->AllCopiersLB->insertItem(toqstr(pretty));
 	}
 
+	// restore selection
+	if (!current.isEmpty()) {
+		QListBoxItem * item = copiersModule->AllCopiersLB->findItem(current);
+		copiersModule->AllCopiersLB->setCurrentItem(item);
+	}
+	// select first element if restoring failed
 	if (copiersModule->AllCopiersLB->currentItem() == -1)
 		copiersModule->AllCopiersLB->setCurrentItem(0);
 }
@@ -540,6 +566,7 @@ void QPrefsDialog::switch_copierLB(int nr)
 			break;
 		}
 	}
+	updateCopierButtons();
 }
 
 
@@ -582,6 +609,36 @@ void QPrefsDialog::switch_copierCO(int nr)
 }
 
 
+void QPrefsDialog::copiers_changed()
+{
+	updateCopierButtons();
+}
+
+
+void QPrefsDialog::updateCopierButtons()
+{
+	QString selected = copiersModule->copierFormatCO->currentText();
+
+	bool known = false;
+	for (unsigned int i = 0; i != copiersModule->AllCopiersLB->count(); i++) {
+		if (copiersModule->AllCopiersLB->text(i) == selected)
+			known = true;
+	}
+
+	bool const valid = !copiersModule->copierED->text().isEmpty();
+
+	Format const * fmt = getFormat(fromqstr(selected));
+	string const old_command = form_->movers().command(fmt->name());
+	string const new_command(fromqstr(copiersModule->copierED->text()));
+
+	bool modified = (old_command != new_command);
+
+	copiersModule->copierModifyPB->setEnabled(valid && known && modified);
+	copiersModule->copierNewPB->setEnabled(valid && !known);
+	copiersModule->copierRemovePB->setEnabled(known);
+}
+
+
 void QPrefsDialog::new_copier()
 {
 	std::string const combo_text =
@@ -599,6 +656,8 @@ void QPrefsDialog::new_copier()
 	updateCopiers();
 	int const last = copiersModule->AllCopiersLB->count() - 1;
 	copiersModule->AllCopiersLB->setCurrentItem(last);
+
+	updateCopierButtons();
 }
 
 
@@ -614,6 +673,7 @@ void QPrefsDialog::modify_copier()
 	form_->movers().set(fmt->name(), command);
 
 	updateCopiers();
+	updateCopierButtons();
 }
 
 
@@ -629,6 +689,7 @@ void QPrefsDialog::remove_copier()
 	form_->movers().set(fmt_name, string());
 
 	updateCopiers();
+	updateCopierButtons();
 }
 
 
@@ -636,6 +697,9 @@ void QPrefsDialog::updateFormats()
 {
 	QPrefFileformatsModule * formatmod(fileformatsModule);
 
+	// save current selection
+	QString current = formatmod->guiNameED->text();
+	
 	formatmod->formatsLB->clear();
 
 	Formats::const_iterator cit = form_->formats().begin();
@@ -644,6 +708,12 @@ void QPrefsDialog::updateFormats()
 		formatmod->formatsLB->insertItem(toqstr(cit->prettyname()));
 	}
 
+	// restore selection
+	if (!current.isEmpty()) {
+		QListBoxItem * item = formatmod->formatsLB->findItem(current);
+		formatmod->formatsLB->setCurrentItem(item);
+	}
+	// select first element if restoring failed
 	if (formatmod->formatsLB->currentItem() == -1)
 		formatmod->formatsLB->setCurrentItem(0);
 }
@@ -660,17 +730,80 @@ void QPrefsDialog::switch_format(int nr)
 	fileformatsModule->editorED->setText(toqstr(f.editor()));
 	fileformatsModule->formatRemovePB->setEnabled(
 		!form_->converters().formatIsUsed(f.name()));
+
+	updateFormatsButtons();
+}
+
+
+void QPrefsDialog::fileformat_changed()
+{
+	updateFormatsButtons();
+}
+
+
+void QPrefsDialog::updateFormatsButtons()
+{
+	QString const format = fileformatsModule->formatED->text();
+	QString const gui_name = fileformatsModule->guiNameED->text();
+	int const sel = form_->formats().getNumber(fromqstr(format));
+	bool gui_name_known = false;
+	int where = sel;
+	for (unsigned int i = 0; i != fileformatsModule->formatsLB->count(); i++) {
+		if (fileformatsModule->formatsLB->text(i) == gui_name) {
+			gui_name_known = true;
+			where = i;
+		}
+	}
+
+	// assure that a gui name cannot be chosen twice
+	bool const known_otherwise = gui_name_known && (where != sel);
+	
+	bool const known = !(sel < 0);
+	bool const valid = (!fileformatsModule->formatED->text().isEmpty()
+		&& !fileformatsModule->guiNameED->text().isEmpty());
+
+	Format const & f(form_->formats().get(
+		fileformatsModule->formatsLB->currentItem()));
+	string const old_pretty(f.prettyname());
+	string const old_shortcut(f.shortcut());
+	string const old_extension(f.extension());
+	string const old_viewer(f.viewer());
+	string const old_editor(f.editor());
+
+	string const new_pretty(fromqstr(gui_name));
+	string const new_shortcut(fromqstr(fileformatsModule->shortcutED->text()));
+	string const new_extension(fromqstr(fileformatsModule->extensionED->text()));
+	string const new_viewer(fromqstr(fileformatsModule->viewerED->text()));
+	string const new_editor(fromqstr(fileformatsModule->editorED->text()));
+
+	bool modified = ((old_pretty != new_pretty) || (old_shortcut != new_shortcut)
+		|| (old_extension != new_extension) || (old_viewer != new_viewer)
+		|| (old_editor != new_editor));
+
+	fileformatsModule->formatModifyPB->setEnabled(
+		valid && known && modified && !known_otherwise);
+	fileformatsModule->formatNewPB->setEnabled(valid && !known && !gui_name_known);
+	fileformatsModule->formatRemovePB->setEnabled(known);
 }
 
 
 void QPrefsDialog::new_format()
 {
-	form_->formats().add(_("New"));
+	string const name = fromqstr(fileformatsModule->formatED->text());
+	string const prettyname = fromqstr(fileformatsModule->guiNameED->text());
+	string const extension = fromqstr(fileformatsModule->extensionED->text());
+	string const shortcut = fromqstr(fileformatsModule->shortcutED->text());
+	string const viewer = fromqstr(fileformatsModule->viewerED->text());
+	string const editor = fromqstr(fileformatsModule->editorED->text());
+
+	form_->formats().add(name, extension, prettyname, shortcut, viewer, editor);
 	form_->formats().sort();
 	updateFormats();
-	fileformatsModule->formatsLB->setCurrentItem(form_->formats().getNumber(_("New")));
+	fileformatsModule->formatsLB->setCurrentItem(form_->formats().getNumber(name));
 	form_->converters().update(form_->formats());
+	
 	updateConverters();
+	updateFormatsButtons();
 }
 
 
@@ -696,6 +829,7 @@ void QPrefsDialog::modify_format()
 	fileformatsModule->formatsLB->update();
 
 	updateConverters();
+	updateFormatsButtons();
 }
 
 
@@ -707,7 +841,9 @@ void QPrefsDialog::remove_format()
 	form_->formats().erase(form_->formats().get(nr).name());
 	updateFormats();
 	form_->converters().update(form_->formats());
+	
 	updateConverters();
+	updateFormatsButtons();
 }
 
 
