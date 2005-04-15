@@ -987,6 +987,13 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		}
 	}
 
+	case LFUN_INSET_MODIFY:
+		if (translate(cmd.getArg(0)) == TABULAR_CODE) {
+			status.enabled(true);
+			return true;
+		}
+		// Fall through
+
 	default:
 		// we try to handle this event in the insets dispatch function.
 		return cell(cur.idx())->getStatus(cur, cmd, status);
