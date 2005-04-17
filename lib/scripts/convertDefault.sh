@@ -16,8 +16,7 @@
 
 # converts an image from $1 to $2 format
 convert -depth 8 "$1" "$2" || {
-	echo "$0 ERROR"
-	echo "Execution of \"convert\" failed."
+	echo "$0 ERROR" >&2
+	echo "Execution of \"convert\" failed." >&2
 	exit 1
 }
-
