@@ -167,9 +167,12 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 	if (!success) {
 		script_command_ =
-			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
-			' ' + from_format + ':' + from_file + ' ' +
-			to_format + ':' + to_file_;
+			"sh " + 
+			QuoteName(LibFileSearch("scripts", "convertDefault.sh")) +
+			' ' +
+			QuoteName(from_format + ':' + from_file) +
+			' ' +
+			QuoteName(to_format + ':' + to_file_);
 
 		lyxerr[Debug::GRAPHICS]
 			<< "\tNo converter defined! I use convertDefault.sh\n\t"
@@ -203,8 +206,9 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		// We create a dummy command for ease of understanding of the
 		// list of forked processes.
 		// Note: 'sh ' is absolutely essential, or execvp will fail.
-		script_command_ = "sh " + script_file_ + ' ' +
-			OnlyFilename(from_file) + ' ' + to_format;
+		script_command_ = "sh " + QuoteName(script_file_) + ' ' +
+			QuoteName(OnlyFilename(from_file)) + ' ' +
+			QuoteName(to_format);
 	}
 	// All is ready to go
 	valid_process_ = true;

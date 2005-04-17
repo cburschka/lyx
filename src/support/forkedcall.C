@@ -282,11 +282,23 @@ int Forkedcall::generateChild()
 			if (c == ' ')
 				*it = '\0';
 			else if (c == '\'' || c == '"') {
+#if defined (_WIN32)
+				// How perverse!
+				// spawnvp *requires* the quotes or it will
+				// split the arg at the internal whitespace!
+				// Make shure the quote is a DOS-style one.
+				*it = '"';
+#else
 				*it = '\0';
+#endif
 				inside_quote = c;
 			}
 		} else if (c == inside_quote) {
+#if defined (_WIN32)
+			*it = '"';
+#else
 			*it = '\0';
+#endif
 			inside_quote = 0;
 		}
 	}
@@ -303,13 +315,16 @@ int Forkedcall::generateChild()
 	argv.push_back(0);
 
 	// Debug output.
-	vector<char *>::iterator ait = argv.begin();
-	vector<char *>::iterator const aend = argv.end();
-	lyxerr << "<command>\n";
-	for (; ait != aend; ++ait)
-		if (*ait)
-			lyxerr << '\t'<< *ait << '\n';
-	lyxerr << "</command>" << std::endl;
+	if (lyxerr.debugging(Debug::FILES)) {
+		vector<char *>::iterator ait = argv.begin();
+		vector<char *>::iterator const aend = argv.end();
+		lyxerr << "<command>\n\t" << line
+		       << "\n\tInterpretted as:\n\n";
+		for (; ait != aend; ++ait)
+			if (*ait)
+				lyxerr << '\t'<< *ait << '\n';
+		lyxerr << "</command>" << std::endl;
+	}
 
 #ifndef __EMX__
 	pid_t const cpid = ::fork();

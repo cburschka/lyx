@@ -1,3 +1,10 @@
+2005-04-17  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcall.C (generateChild): do not strip quotes from args on
+	Windows.
+	Wrap lyxerr output inside an if (lyxerr.debugging(Debug::FILES))
+	block.
+
 2005-03-23  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (build_package): Solaris sed does not like

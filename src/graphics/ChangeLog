@@ -1,3 +1,7 @@
+2005-04-17  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsConverter.C (c-tor): quote conversion commands correctly.
+
 2005-02-15  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsLoader.C: s/struct/class/ in definition of
