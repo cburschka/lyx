@@ -1,3 +1,8 @@
+2005-04-17  Angus Leeming  <leeming@lyx.org>
+
+	* converter.C (convert): protect all args of convertDefault.sh
+	script with quotes.
+
 2005-04-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text3.C (dispatch): change the layout to "Caption" after inserting

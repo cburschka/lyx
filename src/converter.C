@@ -295,10 +295,13 @@ bool Converters::convert(Buffer const * buffer,
 			// if no special converter defined, then we take the
 			// default one from ImageMagic.
 			string const from_ext = formats.extension(from_format);
-			string const command = "sh " +
-				LibFileSearch("scripts", "convertDefault.sh") +
-				' ' + from_ext + ':' + from_file +
-				' ' + to_ext   + ':' + to_file;
+			string const command =
+				"sh " +
+				QuoteName(LibFileSearch("scripts", "convertDefault.sh")) +
+				' ' +
+				QuoteName(from_ext + ':' + from_file) +
+				' ' +
+				QuoteName(to_ext + ':' + to_file);
 			lyxerr[Debug::FILES]
 				<< "No converter defined! "
 				   "I use convertDefault.sh:\n\t"
