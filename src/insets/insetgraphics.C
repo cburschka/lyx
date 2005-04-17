@@ -597,7 +597,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		} else {
 			return orig_file_with_path;
 		}
-	} 
+	}
 
 	// We're going to be running the exported buffer through the LaTeX
 	// compiler, so must ensure that LaTeX can cope with the graphics
@@ -650,13 +650,13 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		if (from == to) {
 			// No conversion is needed. LaTeX can handle the
 			// graphic file as is.
-			if (formats.getFormat(to)->extension() == GetExtension(orig_file)) 
+			if (formats.getFormat(to)->extension() == GetExtension(orig_file))
 				return RemoveExtension(temp_file);
-			else 
+			else
 				return temp_file;
 		}
 	}
-	
+
 	string const outfile_base = RemoveExtension(temp_file);
 	lyxerr[Debug::GRAPHICS]
 		<< "\tThe original file is " << orig_file << "\n"
@@ -669,9 +669,12 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 	// from ImageMagic: convert from:inname.from to:outname.to
 	if (!converters.convert(buf, temp_file, outfile_base, from, to)) {
 		string const command =
-			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
-				' ' + from + ':' + temp_file + ' ' +
-				to + ':' + outfile_base + '.' + to;
+			"sh " +
+			QuoteName(LibFileSearch("scripts", "convertDefault.sh")) +
+			' ' +
+			QuoteName(from + ':' + temp_file) +
+			' ' +
+			QuoteName(to + ':' + outfile_base + '.' + to);
 		lyxerr[Debug::GRAPHICS]
 			<< "No converter defined! I use convertDefault.sh:\n\t"
 			<< command << endl;
@@ -775,7 +778,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 		latex_str += os::external_path(fname);
 	}
 	latex_str += '}' + after;
-	
+
 	os << latex_str;
 
 	// Return how many newlines we issued.

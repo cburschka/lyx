@@ -1,3 +1,8 @@
+2005-04-17  Angus Leeming  <leeming@lyx.org>
+
+	* insetgraphics.C (prepareFile): protect all args of convertDefault.sh
+	script with quotes.
+	
 2005-03-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetgraphics.C (latex): fix off-by-one error in number of
