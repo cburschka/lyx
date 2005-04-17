@@ -1,3 +1,7 @@
+2005-04-17  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsConverter.C (c-tor): quote conversion commands correctly.
+
 2004-12-07  Angus Leeming  <leeming@lyx.org>
 
 	* *.[Ch]: remove all traces of #pragma interface/implementation

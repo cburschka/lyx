@@ -1,3 +1,10 @@
+2005-04-17  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcall.C (generateChild): do not strip quotes from args on
+	Windows.
+	Wrap lyxerr output inside an if (lyxerr.debugging(Debug::FILES))
+	block.
+
 2005-02-17  Angus Leeming  <leeming@lyx.org>
 
 	* copy.C (copy): Pass the ios::in flag to the ifstream constructor.
