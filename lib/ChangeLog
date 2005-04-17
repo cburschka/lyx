@@ -1,3 +1,7 @@
+2005-04-15  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/convertDefault.sh: post error messages to STDERR. 
+
 2005-04-09  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (dist_scripts_DATA): add scripts/fig_copy.sh and
