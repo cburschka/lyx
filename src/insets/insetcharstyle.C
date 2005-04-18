@@ -259,6 +259,7 @@ int InsetCharStyle::plaintext(Buffer const & buf, ostream & os,
 void InsetCharStyle::validate(LaTeXFeatures & features) const
 {
 	features.require(params_.type);
+	InsetText::validate(features);
 }
 
 
