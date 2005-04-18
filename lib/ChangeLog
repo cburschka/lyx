@@ -1,3 +1,9 @@
+2005-04-18  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* ui/stdtoolbars.ui:
+	* ui/stdmenus.ui:
+	* layouts/stdclass.inc: clean up around character styles
+
 2005-04-15  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/convertDefault.sh: post error messages to STDERR. 
@@ -42,6 +48,7 @@
 	* reLyX/syntax.default: update natbib/jurabib commands, add
 	\DescribeMacro, \let, \subfigure and bibunit commands
 
+>>>>>>> 1.685
 2005-02-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* layouts/stdlayouts.inc: change labelstring to "Senseless!"

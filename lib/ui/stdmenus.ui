@@ -237,8 +237,8 @@ Menuset
 		Submenu "Float|a" "insert_float"
 # YUCK
 		Submenu "Note|N" "insert_note"
-		Submenu "Branch|B" "branches"
-		Submenu "Character Style|y" "charstyle"
+		OptSubmenu "Branch|B" "branches"
+		OptSubmenu "Character Style|y" "charstyle"
 		Submenu "File|e" "insert_file"
 		Item "Box" "box-insert Frameless"
 		Separator

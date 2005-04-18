@@ -50,9 +50,9 @@ Toolbar "standard" "Standard"
 	Item "Paste" "paste"
 	Item "Find and replace" "dialog-show findreplace"
 	Separator
-	Item "Toggle emphasis style" "font-emph"
-	Item "Toggle noun style" "font-noun"
-	Item "Toggle user style" "font-free-apply"
+	Item "Toggle emphasis" "font-emph"
+	Item "Toggle noun" "font-noun"
+	Item "Apply last" "font-free-apply"
 	Separator
 	Item "Insert math" "math-mode"
 	Item "Insert graphics" "dialog-show-new-inset graphics"
