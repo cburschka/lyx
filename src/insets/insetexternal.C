@@ -27,6 +27,7 @@
 #include "support/forkedcall.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
+#include "support/os.h"
 #include "support/package.h"
 #include "support/path.h"
 
@@ -72,7 +73,7 @@ void InsetExternal::setFromParams(Params const & p)
 
 string const InsetExternal::editMessage() const
 {
-	return doSubstitution(0, params_.templ.guiName);
+	return doSubstitution(0, params_.templ.guiName, false);
 }
 
 
@@ -147,7 +148,9 @@ int InsetExternal::write(string const & format,
 	}
 
 	updateExternal(format, buf);
-	string const outstring = doSubstitution(buf, cit->second.product);
+	bool const use_latex_path = format == "LaTeX";
+	string const outstring = doSubstitution(buf, cit->second.product,
+						use_latex_path);
 	os << outstring;
 	return lyx::count(outstring.begin(), outstring.end(), '\n');
 }
@@ -213,7 +216,7 @@ string const InsetExternal::getScreenLabel(Buffer const *) const
 	if (et.guiName.empty())
 		return _("External");
 	else
-		return doSubstitution(0, et.guiName);
+		return doSubstitution(0, et.guiName, false);
 }
 
 
@@ -230,8 +233,26 @@ void InsetExternal::executeCommand(string const & s,
 }
 
 
+namespace {
+
+string const subst_path(string const & input,
+			string const & placeholder,
+			string const & path,
+			bool use_latex_path)
+{
+	if (input.find(placeholder) == string::npos)
+		return input;
+	string const path2 = use_latex_path ?
+		latex_path(path) : os::external_path(path);
+	return subst(input, placeholder, path2);
+}
+
+} // namespace anon
+
+
 string const InsetExternal::doSubstitution(Buffer const * buffer,
-					   string const & s) const
+					   string const & s,
+					   bool use_latex_path) const
 {
 	string result;
 	string const basename = ChangeExtension(params_.filename, string());
@@ -239,12 +260,13 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 	if (buffer && !buffer->tmppath.empty() && !buffer->niceFile) {
 		filepath = buffer->filePath();
 	}
-	result = subst(s, "$$FName", params_.filename);
-	result = subst(result, "$$Basename", basename);
+	result = subst_path(s, "$$FName", params_.filename, use_latex_path);
+	result = subst_path(result, "$$Basename", basename, use_latex_path);
 	result = subst(result, "$$Parameters", params_.parameters);
-	result = subst(result, "$$FPath", filepath);
-	result = subst(result, "$$Tempname", tempname_);
-	result = subst(result, "$$Sysdir", lyx::package().system_support());
+	result = subst_path(result, "$$FPath", filepath, use_latex_path);
+	result = subst_path(result, "$$Tempname", tempname_, use_latex_path);
+	result = subst_path(result, "$$Sysdir",
+			    lyx::package().system_support(), use_latex_path);
 
 	// Handle the $$Contents(filename) syntax
 	if (contains(result, "$$Contents(\"")) {
@@ -287,8 +309,8 @@ void InsetExternal::updateExternal(string const & format,
 		return;
 
 	if (!cit->second.updateResult.empty()) {
-		string const resultfile = doSubstitution(buf,
-							 cit->second.updateResult);
+		string const resultfile =
+			doSubstitution(buf, cit->second.updateResult, false);
 		FileInfo fi(params_.filename);
 		FileInfo fi2(resultfile);
 		if (fi2.exist() && fi.exist() &&
@@ -300,7 +322,8 @@ void InsetExternal::updateExternal(string const & format,
 		}
 	}
 
-	executeCommand(doSubstitution(buf, cit->second.updateCommand), buf);
+	executeCommand(doSubstitution(buf, cit->second.updateCommand, false),
+		       buf);
 }
 
 
@@ -312,7 +335,7 @@ void InsetExternal::viewExternal() const
 
 	updateExternal();
 	executeCommand(doSubstitution(view_->buffer(),
-				      et.viewCommand),
+				      et.viewCommand, false),
 		       view_->buffer());
 }
 
@@ -325,7 +348,7 @@ void InsetExternal::editExternal() const
 
 	updateExternal();
 	executeCommand(doSubstitution(view_->buffer(),
-				      et.editCommand),
+				      et.editCommand, false),
 		       view_->buffer());
 }
 

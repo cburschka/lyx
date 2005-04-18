@@ -1,5 +1,16 @@
 2005-04-17  Angus Leeming  <leeming@lyx.org>
 
+	* filetools.C (MakeDisplayPath): invoke os::external_path before
+	returning path.
+
+	* os_win32.C (external_path): convert '/' chars to '\'.
+
+	* filetools.[Ch] (latex_path): new function which modifies
+	an input path containing space and '~' characters into something that
+	LaTeX can understand.
+
+2005-04-17  Angus Leeming  <leeming@lyx.org>
+
 	* forkedcall.C (generateChild): do not strip quotes from args on
 	Windows.
 	Wrap lyxerr output inside an if (lyxerr.debugging(Debug::FILES))

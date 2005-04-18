@@ -1,3 +1,8 @@
+2005-04-17  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.C (makeLaTeXFile): replace code to manipulate a path
+	containing space and '~' characters with a call to latex_path().
+
 2005-03-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (dispatch): translate message before sending it to the

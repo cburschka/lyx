@@ -1,5 +1,18 @@
 2005-04-17  Angus Leeming  <leeming@lyx.org>
 
+	* insetbib.C (latex):
+	* insetgraphics.C (latex):
+	* insetinclude.C (latex): pass path to latex_path rather than to
+	os::external_path.
+
+	* insetexternal.[Ch] (doSubstitution, subst_path): pass all paths to
+	os::external_path or to latex_path, dependent on a new boolean
+	'use_latex_path' argument to the function.
+	Change invocation of doSubstitution in lots of places, specifying
+	the appropriate values for this boolean.
+
+2005-04-17  Angus Leeming  <leeming@lyx.org>
+
 	* insetgraphics.C (prepareFile): protect all args of convertDefault.sh
 	script with quotes.
 	

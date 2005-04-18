@@ -179,7 +179,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 
 	if (!style.empty()) { // we want no \biblio...{}
 		os << "\\bibliographystyle{"
-		   << os::external_path(normalize_name(buffer, style, ".bst"))
+		   << latex_path(normalize_name(buffer, style, ".bst"))
 		   << "}\n";
 	}
 
@@ -216,8 +216,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	string db_in = getContents();
 	db_in = split(db_in, adb, ',');
 	while (!adb.empty()) {
-		db_out += os::external_path(normalize_name(buffer,
-							   adb, ".bib"));
+		db_out += latex_path(normalize_name(buffer, adb, ".bib"));
 		db_out += ',';
 		db_in= split(db_in, adb,',');
 	}

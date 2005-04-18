@@ -110,7 +110,9 @@ private:
 	void executeCommand(string const & s, Buffer const * buf) const;
 
 	/// Substitute meta-variables in this string
-	string const doSubstitution(Buffer const *, string const & s) const;
+	string const doSubstitution(Buffer const *,
+				    string const & s,
+				    bool use_latex_path) const;
 
 	/// our owning view
 	BufferView * view_;

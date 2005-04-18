@@ -123,22 +123,20 @@ string::size_type os::common_path(string const &p1, string const &p2)
 
 string os::external_path(string const & p)
 {
-	string dos_path = p;
-
-	// No backslashes in LaTeX files
-	dos_path = subst(dos_path,'\\','/');
+	string const dos_path = subst(p, "/", "\\");
 
 	lyxerr[Debug::LATEX]
 		<< "<Win32 path correction> ["
 		<< p << "]->>["
 		<< dos_path << ']' << std::endl;
+
 	return dos_path;
 }
 
 
 string os::internal_path(string const & p)
 {
-	return subst(p,"\\","/");
+	return subst(p, "\\", "/");
 }
 
 

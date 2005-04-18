@@ -297,7 +297,7 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 	if (!AbsolutePath(incfile)) {
 		incfile = MakeRelPath(getFileName(), m_buffer->filePath());
 	}       
- 
+
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
@@ -324,7 +324,7 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 #endif
 			writefile = AddName(m_buffer->tmppath, incfile);
 		} else 
-				writefile = getFileName();
+			writefile = getFileName();
 			    
 		writefile = ChangeExtension(writefile, ".tex");
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
@@ -344,21 +344,27 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 	}
 
 	if (isVerbatim()) {
+		incfile = latex_path(incfile);
 		os << '\\' << params_.cparams.getCmdName() << '{' << incfile << '}';
 	} else if (params_.flag == INPUT) {
 		// \input wants file with extension (default is .tex)
 		if (!IsLyXFilename(getFileName())) {
+			incfile = latex_path(incfile);
 			os << '\\' << params_.cparams.getCmdName() << '{' << incfile << '}';
 		} else {
+			incfile = ChangeExtension(incfile, ".tex");
+			incfile = latex_path(incfile);
 			os << '\\' << params_.cparams.getCmdName() << '{'
-			   << ChangeExtension(incfile, ".tex")
+			   << incfile
 			   <<  '}';
 		}
 	} else {
 		// \include don't want extension and demands that the
 		// file really have .tex
+		incfile = ChangeExtension(incfile, string());
+		incfile = latex_path(incfile);
 		os << '\\' << params_.cparams.getCmdName() << '{'
-		   << ChangeExtension(incfile, string())
+		   << incfile
 		   << '}';
 	}
 
