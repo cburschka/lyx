@@ -62,6 +62,7 @@ using lyx::support::FileName;
 using lyx::support::GetFileContents;
 using lyx::support::IsFileReadable;
 using lyx::support::IsLyXFilename;
+using lyx::support::latex_path;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 using lyx::support::MakeRelPath;
@@ -385,6 +386,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 	}
 
 	if (isVerbatim(params_)) {
+		incfile = latex_path(incfile);
 		os << '\\' << params_.getCmdName() << '{' << incfile << '}';
 	} else if (type(params_) == INPUT) {
 		runparams.exportdata->addExternalFile("latex", writefile,
@@ -392,10 +394,13 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 
 		// \input wants file with extension (default is .tex)
 		if (!IsLyXFilename(included_file)) {
+			incfile = latex_path(incfile);
 			os << '\\' << params_.getCmdName() << '{' << incfile << '}';
 		} else {
+		incfile = ChangeExtension(incfile, ".tex");
+		incfile = latex_path(incfile);
 			os << '\\' << params_.getCmdName() << '{'
-			   << ChangeExtension(incfile, ".tex")
+			   << incfile
 			   <<  '}';
 		}
 	} else {
@@ -404,8 +409,10 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 
 		// \include don't want extension and demands that the
 		// file really have .tex
+		incfile = ChangeExtension(incfile, string());
+		incfile = latex_path(incfile);
 		os << '\\' << params_.getCmdName() << '{'
-		   << ChangeExtension(incfile, string())
+		   << incfile
 		   << '}';
 	}
 

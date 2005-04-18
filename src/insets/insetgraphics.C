@@ -98,6 +98,7 @@ using lyx::support::FileName;
 using lyx::support::float_equal;
 using lyx::support::GetExtension;
 using lyx::support::IsFileReadable;
+using lyx::support::latex_path;
 using lyx::support::OnlyFilename;
 using lyx::support::rtrim;
 using lyx::support::subst;
@@ -738,12 +739,11 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 		<< "\tBefore = " << before
 		<< "\n\tafter = " << after << endl;
 
-
 	string latex_str = before + '{';
 	// Convert the file if necessary.
 	// Remove the extension so LaTeX will use whatever is appropriate
 	// (when there are several versions in different formats)
-	latex_str += prepareFile(buf, runparams);
+	latex_str += latex_path(prepareFile(buf, runparams));
 	latex_str += '}' + after;
 	os << latex_str;
 

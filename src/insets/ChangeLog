@@ -1,3 +1,19 @@
+2005-04-18  Angus Leeming  <leeming@lyx.org>
+
+	* ExternalSupport.[Ch] (doSubstitution): passed an extra boolean
+	'use_latex_path' argument. In turn, passed to the new subst_path
+	function when replacing placeholders with paths.
+	
+	* insetexternal.C (getScreenLabel): 
+	* ExternalSupport.C (lots of places): change invocation of
+	doSubstitution in lots of places, specifying the appropriate values
+	for this 'use_latex_path' boolean.
+
+	* insetbib.C (latex):
+	* insetgraphics.C (latex):
+	* insetinclude.C (latex): pass path to latex_path rather than to
+	os::external_path.
+
 2005-04-18  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetcharstyle.C (validate): allow nested charstyle insets

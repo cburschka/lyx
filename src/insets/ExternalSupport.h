@@ -50,7 +50,8 @@ enum Substitute {
 std::string const doSubstitution(InsetExternalParams const & params,
 				 Buffer const & buffer,
                                  std::string const & s,
-                                 bool external_in_tmpdir = false,
+                                 bool use_latex_path,
+				 bool external_in_tmpdir = false,
                                  Substitute what = ALL);
 
 

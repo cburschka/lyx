@@ -98,6 +98,7 @@ using lyx::support::destroyDir;
 using lyx::support::getFormatFromContents;
 using lyx::support::IsDirWriteable;
 using lyx::support::LibFileSearch;
+using lyx::support::latex_path;
 using lyx::support::ltrim;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
@@ -870,10 +871,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 			texrow().newline();
 		}
 		if (!original_path.empty()) {
-			string inputpath = os::external_path(original_path);
-			subst(inputpath, "~", "\\string~");
-			if (inputpath.find(' ') != string::npos)
-				inputpath = '"' + inputpath + '"';
+			string const inputpath = latex_path(original_path);
 			os << "\\makeatletter\n"
 			    << "\\def\\input@path{{"
 			    << inputpath << "/}}\n"

@@ -83,6 +83,16 @@ bool IsSGMLFilename(string const & filename)
 }
 
 
+string const latex_path(string const & original_path)
+{
+	string path = subst(original_path, "\\", "/");
+	path = subst(path, "~", "\\string~");
+	if (path.find(' ') != string::npos)
+		path = '"' + path + '"';
+	return path;
+}
+
+
 // Substitutes spaces with underscores in filename (and path)
 string const MakeLatexName(string const & file)
 {
@@ -994,7 +1004,7 @@ string const MakeDisplayPath(string const & path, unsigned int threshold)
 		str = subst(str, home, "~");
 
 	if (str.length() <= threshold)
-		return str;
+		return os::external_path(str);
 
 	string const prefix = ".../";
 	string temp;
@@ -1015,7 +1025,7 @@ string const MakeDisplayPath(string const & path, unsigned int threshold)
 		str = head + "..." + tail;
 	}
 
-	return prefix + str;
+	return os::external_path(prefix + str);
 }
 
 

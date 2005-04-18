@@ -562,7 +562,7 @@ string const getScreenLabel(InsetExternalParams const & params,
 	if (!ptr)
 		return support::bformat(_("External template %1$s is not installed"),
 					params.templatename());
-	return external::doSubstitution(params, buffer, ptr->guiName);
+	return external::doSubstitution(params, buffer, ptr->guiName, false);
 }
 
 void add_preview_and_start_loading(RenderMonitoredPreview &,

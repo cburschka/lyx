@@ -28,6 +28,7 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/lyxlib.h"
+#include "support/os.h"
 #include "support/package.h"
 #include "support/path.h"
 
@@ -60,9 +61,27 @@ void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 }
 
 
+namespace {
+
+string const subst_path(string const & input,
+			string const & placeholder,
+			string const & path,
+			bool use_latex_path)
+{
+	if (input.find(placeholder) == string::npos)
+		return input;
+	string const path2 = use_latex_path ?
+		support::latex_path(path) : support::os::external_path(path);
+	return support::subst(input, placeholder, path2);
+}
+
+} // namespace anon
+
+
 string const doSubstitution(InsetExternalParams const & params,
 			    Buffer const & buffer, string const & s,
-                            bool external_in_tmpdir,
+                            bool use_latex_path,
+			    bool external_in_tmpdir,
                             Substitute what)
 {
 	Buffer const * m_buffer = buffer.getMasterBuffer();
@@ -92,35 +111,35 @@ string const doSubstitution(InsetExternalParams const & params,
 		if (relToParentPath == "./")
 			relToParentPath.clear();
 
-		result = support::subst(result, "$$FPath", filepath);
-		result = support::subst(result, "$$AbsPath", abspath);
-		result = support::subst(result, "$$RelPathMaster",
-		                        relToMasterPath);
-		result = support::subst(result, "$$RelPathParent",
-		                        relToParentPath);
+		result = subst_path(result, "$$FPath", filepath, use_latex_path);
+		result = subst_path(result, "$$AbsPath", abspath, use_latex_path);
+		result = subst_path(result, "$$RelPathMaster",
+				    relToMasterPath, use_latex_path);
+		result = subst_path(result, "$$RelPathParent",
+				    relToParentPath, use_latex_path);
 		if (support::AbsolutePath(filename)) {
-			result = support::subst(result, "$$AbsOrRelPathMaster",
-			                        abspath);
-			result = support::subst(result, "$$AbsOrRelPathParent",
-			                        abspath);
+			result = subst_path(result, "$$AbsOrRelPathMaster",
+					    abspath, use_latex_path);
+			result = subst_path(result, "$$AbsOrRelPathParent",
+					    abspath, use_latex_path);
 		} else {
-			result = support::subst(result, "$$AbsOrRelPathMaster",
-			                        relToMasterPath);
-			result = support::subst(result, "$$AbsOrRelPathParent",
-			                        relToParentPath);
+			result = subst_path(result, "$$AbsOrRelPathMaster",
+					    relToMasterPath, use_latex_path);
+			result = subst_path(result, "$$AbsOrRelPathParent",
+					    relToParentPath, use_latex_path);
 		}
 	}
 
 	if (what == PATHS)
 		return result;
 
-	result = support::subst(result, "$$FName", filename);
-	result = support::subst(result, "$$Basename", basename);
-	result = support::subst(result, "$$Extension",
-			'.' + support::GetExtension(filename));
-	result = support::subst(result, "$$Tempname", params.tempname());
-	result = support::subst(result, "$$Sysdir",
-				support::package().system_support());
+	result = subst_path(result, "$$FName", filename, use_latex_path);
+	result = subst_path(result, "$$Basename", basename, use_latex_path);
+	result = subst_path(result, "$$Extension",
+			'.' + support::GetExtension(filename), use_latex_path);
+	result = subst_path(result, "$$Tempname", params.tempname(), use_latex_path);
+	result = subst_path(result, "$$Sysdir",
+				support::package().system_support(), use_latex_path);
 
 	// Handle the $$Contents(filename) syntax
 	if (support::contains(result, "$$Contents(\"")) {
@@ -231,7 +250,7 @@ void updateExternal(InsetExternalParams const & params,
 	// the generated file (always in the temp dir)
 	string const to_file = doSubstitution(params, buffer,
 					      outputFormat.updateResult,
-	                                      true);
+	                                      false, true);
 	string const abs_to_file =
 		support::MakeAbsPath(to_file, m_buffer->temppath());
 
@@ -246,7 +265,7 @@ void updateExternal(InsetExternalParams const & params,
 		for (; fit != fend; ++fit) {
 			string const source = support::MakeAbsPath(
 					doSubstitution(params, buffer, *fit,
-					               true),
+					               false, true),
 					m_buffer->temppath());
 			// The path of the referenced file is never the
 			// temp path, but the filename may be the mangled
@@ -254,10 +273,10 @@ void updateExternal(InsetExternalParams const & params,
 			// paths and names separately.
 			string file = support::subst(*fit, "$$FName",
 					"$$FPath$$Basename$$Extension");
-			file = doSubstitution(params, buffer, file, false,
+			file = doSubstitution(params, buffer, file, false, false,
 			                      PATHS);
 			file = doSubstitution(params, buffer, file,
-			                      external_in_tmpdir,
+			                      false, external_in_tmpdir,
 			                      ALL_BUT_PATHS);
 			// if file is a relative name, it is interpreted
 			// relative to the master document.
@@ -309,8 +328,9 @@ int writeExternal(InsetExternalParams const & params,
 
 	updateExternal(params, format, buffer, exportdata, external_in_tmpdir);
 
+	bool const use_latex_path = format == "LaTeX";
 	string str = doSubstitution(params, buffer, cit->second.product,
-	                            external_in_tmpdir);
+	                            use_latex_path, external_in_tmpdir);
 	str = substituteCommands(params, str, format);
 	str = substituteOptions(params, str, format);
 	os << str;

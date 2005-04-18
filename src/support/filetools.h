@@ -104,6 +104,19 @@ i18nLibFileSearch(std::string const & dir, std::string const & name,
  */
 std::string const LibScriptSearch(std::string const & command);
 
+/** @param path a file path in internal_path format. Ie, directories
+ *  are indicated by '/', not by '\'.
+ *
+ *  Manipulates @c path into a form suitable for inclusion in a LaTeX
+ *  document.  
+ *  If @c path contains LaTeX special characters, these are escaped.
+ *  Eg, '~' -> '\string~'
+ *  If @c path contains spaces, then the returned path is enclosed in
+ *  "-quotes. This last fix will lead to successful compiliation of the
+ *  LaTeX file only if a sufficiently modern LaTeX compiler is used.
+ */
+std::string const latex_path(std::string const & path);
+
 /// Substitutes active latex characters with underscores in filename
 std::string const MakeLatexName(std::string const & file);
 
