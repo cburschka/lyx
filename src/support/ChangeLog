@@ -1,3 +1,7 @@
+2005-04-19  Angus Leeming  <leeming@lyx.org>
+
+	* package.C (get_temp_dir): call GetLongPathName on Windows.
+
 2005-04-17  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.C (MakeDisplayPath): invoke os::external_path before
