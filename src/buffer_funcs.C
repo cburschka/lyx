@@ -26,6 +26,7 @@
 #include "LaTeX.h"
 #include "lyxtextclass.h"
 #include "paragraph.h"
+#include "paragraph_funcs.h"
 #include "ParagraphList_fwd.h"
 #include "ParagraphParameters.h"
 #include "pariterator.h"
@@ -377,9 +378,14 @@ void setCounter(Buffer const & buf, ParIterator & it)
 
 	// is it a layout that has an automatic label?
 	if (layout->labeltype == LABEL_COUNTER) {
-		counters.step(layout->counter);
-		string label = expandLabel(textclass, layout, par.params().appendix());
-		par.params().labelString(label);
+		if (layout->toclevel <= buf.params().secnumdepth
+		    && (!layout->isEnvironment() 
+			|| isFirstInSequence(it.pit(), it.plist()))) {
+			counters.step(layout->counter);
+			string label = expandLabel(textclass, layout, 
+						   par.params().appendix());
+			par.params().labelString(label);
+		}
 	} else if (layout->labeltype == LABEL_ITEMIZE) {
 		// At some point of time we should do something more
 		// clever here, like:

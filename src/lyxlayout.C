@@ -121,7 +121,7 @@ LyXLayout::LyXLayout ()
 	free_spacing = false;
 	pass_thru = false;
 	is_environment = false;
-	toclevel = 0;
+	toclevel = -2;
 	commanddepth = 0;
 }
 

@@ -1474,6 +1474,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			bufferErrors(*buffer, el);
 			view()->showErrorList(_("Class switch"));
+			updateCounters(*buffer);
+			update = true;
 			break;
 		}
 
@@ -1971,6 +1973,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SPELL_COMMAND:
 	case LyXRC::RC_TEMPDIRPATH:
 	case LyXRC::RC_TEMPLATEPATH:
+	case LyXRC::RC_TEX_ALLOWS_SPACES:
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:
 	case LyXRC::RC_USER_NAME:

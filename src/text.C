@@ -911,12 +911,13 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 				maxasc += bufparams.getDefSkip().inPixels(*bv());
 		}
 
-		if (pars_[pit].params().startOfAppendix())
+		if (par.params().startOfAppendix())
 			maxasc += int(3 * dh);
 
 		// This is special code for the chapter, since the label of this
 		// layout is printed in an extra row
-		if (layout->counter == "chapter" && bufparams.secnumdepth >= 0) {
+		if (layout->counter == "chapter" 
+		    && !par.params().labelString().empty()) {
 			labeladdon = int(font_metrics::maxHeight(labelfont)
 			             * layout->spacing.getValue()
 			             * spacing(par));

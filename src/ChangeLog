@@ -1,3 +1,20 @@
+2005-04-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (actOnUpdatedPrefs): avoid warning
+	(dispatch): update counters and screen after LFUN_TEXTCLASS_APPLY.
+
+	* rowpainter.C (paintFirst): simplify the code a little bit. In
+	particular, remove the test for secnumdepth.
+	* text.C (setHeightOfRow): only allocate space for chapter number
+	when updateCounters provided an actual label, instead of looking
+	at secnumdepth directly.
+
+	* lyxlayout.C (LyXLayout): set toclevel to -2 by default.
+
+	* buffer_funcs.C (setCounter): only number LABEL_COUNTER
+	paragraphs when secnumdepth is large enough or, for environments,
+	when they are not the first in a sequence.
+
 2005-04-17  Angus Leeming  <leeming@lyx.org>
 
 	* buffer.C (makeLaTeXFile): replace code to manipulate a path

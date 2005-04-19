@@ -501,37 +501,35 @@ void RowPainter::paintFirst()
 		      || layout->latextype != LATEX_ENVIRONMENT
 		      || is_seq)) {
 
-		LyXFont font = getLabelFont();
-		if (!par_.getLabelstring().empty()) {
+		LyXFont const font = getLabelFont();
+		string const str = par_.getLabelstring();
+		if (!str.empty()) {
 			double x = x_;
-			string const str = par_.getLabelstring();
 
 			// this is special code for the chapter layout. This is
 			// printed in an extra row and has a pagebreak at
 			// the top.
 			if (layout->counter == "chapter") {
-				if (buffer.params().secnumdepth >= 0) {
-					double spacing_val = 1.0;
-					if (!parparams.spacing().isDefault()) {
-						spacing_val = parparams.spacing().getValue();
-					} else {
-						spacing_val = buffer.params().spacing().getValue();
-					}
+				double spacing_val = 1.0;
+				if (!parparams.spacing().isDefault()) {
+					spacing_val = parparams.spacing().getValue();
+				} else {
+					spacing_val = buffer.params().spacing().getValue();
+				}
 #ifdef WITH_WARNINGS
 #warning Look is this correct?
 #endif
-					int const labeladdon = int(font_metrics::maxHeight(font) * layout->spacing.getValue() * spacing_val);
+				int const labeladdon = int(font_metrics::maxHeight(font) * layout->spacing.getValue() * spacing_val);
 
-					int const maxdesc = int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val)
-						+ int(layout->parsep) * defaultRowHeight();
+				int const maxdesc = int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val)
+					+ int(layout->parsep) * defaultRowHeight();
 
-					if (is_rtl) {
-						x = width_ - leftMargin() -
-							font_metrics::width(str, font);
-					}
-
-					pain_.text(int(x), yo_ - maxdesc - labeladdon, str, font);
+				if (is_rtl) {
+					x = width_ - leftMargin() -
+						font_metrics::width(str, font);
 				}
+				
+				pain_.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 			} else {
 				if (is_rtl) {
 					x = width_ - leftMargin()
