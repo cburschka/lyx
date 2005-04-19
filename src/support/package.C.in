@@ -38,6 +38,24 @@
 #endif
 
 #if defined (USE_WINDOWS_PACKAGING)
+
+/*
+ * MinGW's version of winver.h contains this comment:
+ *
+ * If you need Win32 API features newer the Win95 and WinNT then you must
+ * define WINVER before including windows.h or any other method of including
+ * the windef.h header.
+ *
+ * GetLongPathNameA requires WINVER == 0x0500.
+ *
+ * It doesn't matter if the Windows version is older than this because the
+ * function will compile but will fail at run time. See
+ * http://msdn.microsoft.com/library/en-us/mslu/winprog/microsoft_layer_for_unicode_apis_with_limited_support.asp
+ */
+# if defined(__MINGW32__)
+#  define WINVER 0x0500
+# endif
+
 # include <windows.h>
 # include <shlobj.h>  // SHGetFolderPath
 
@@ -363,6 +381,7 @@ string const get_temp_dir()
 	// Typical example: C:/TEMP/.
 	char path[PATH_MAX + 1];
 	GetTempPath(PATH_MAX, path);
+	GetLongPathName(path, path, PATH_MAX + 1);
 	return os::internal_path(path);
 #else // Posix-like.
 	return "/tmp";

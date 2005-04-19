@@ -1,5 +1,9 @@
 2005-04-19  Angus Leeming  <leeming@lyx.org>
 
+	* package.C.in (get_temp_dir): call GetLongPathName on Windows.
+
+2005-04-19  Angus Leeming  <leeming@lyx.org>
+
 	* pch.h: protect unix-specific headers from breaking compilation
 	on Windows.
 
