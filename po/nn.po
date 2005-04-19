@@ -1,3 +1,4 @@
+# translation of nn1.1.2.22.po to Nynorsk
 # translation of frå_cvs_1.1.2.15.po to Nynorsk
 # translation of nn_110104.po to Nynorsk
 # translation of nn_1.3.x.po to Nynorsk
@@ -7,20 +8,20 @@
 # Norske oversettelser for LyX
 # Copyright (C) 1997-1999 LyX Team
 # Lars Gullik Bjønnes <larsbj@lyx.org>, 1999.
-# Ingar Pareliussen <ingar.pareliussen@chembio.ntnu.no>, 2003.
+# Ingar Pareliussen <ingar.pareliussen@chembio.ntnu.no>, 2003, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: frå_cvs_1.1.2.15\n"
+"Project-Id-Version: nn1.1.2.22\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-30 16:43+0200\n"
-"PO-Revision-Date: 2004-09-10 17:27+0200\n"
-"Last-Translator: Ingar Parelisussen <ingar.pareliussen@chembio.ntnu.no>\n"
-"Language-Team: Nynorsk <nn@li.org>\n"
+"PO-Revision-Date: 2005-04-17 19:47+0200\n"
+"Last-Translator: Ingar Pareliussen <ingar.pareliussen@chembio.ntnu.no>\n"
+"Language-Team: Nynorsk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9\n"
+"X-Generator: KBabel 1.10\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -739,7 +740,7 @@ msgstr "Rotering"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:638
 msgid "LaTeX options:|#L"
-msgstr "LaTeX val:|#L"
+msgstr "LaTeXval:|#L"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:656
 msgid "deg"
@@ -775,11 +776,11 @@ msgstr "Verbatim|#V"
 
 #: ../src/frontends/xforms/forms/form_include.fd:205
 msgid "Use input|#i"
-msgstr "Bruk som inndata|#i"
+msgstr "Kopier tekst frå fil|#i"
 
 #: ../src/frontends/xforms/forms/form_include.fd:223
 msgid "Use include|#U"
-msgstr "Bruk som inkludert|#i"
+msgstr "Bruk som underdokument"
 
 #: ../src/frontends/xforms/forms/form_include.fd:259
 msgid "Preview|#p"
@@ -1097,7 +1098,7 @@ msgstr "Normal Skrifttype:|#N"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:665
 msgid "Bold Font:|#B"
-msgstr "Feit Skrifttype:|#F"
+msgstr "Feit Skrift:#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:683
 msgid "Popup Encoding:|#P"
@@ -1231,7 +1232,7 @@ msgstr "Grensesnitt"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1475
 msgid "Language Options"
-msgstr "Språk val"
+msgstr "Språkval"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1535
 msgid "Package:|#P"
@@ -1396,9 +1397,8 @@ msgid "LyXServer pipe:|#S"
 msgstr "LyXServer datarøyr:|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2496
-#, fuzzy
 msgid "PATH prefix:|#T"
-msgstr "Type:|#y"
+msgstr "Stigprefiks:|#t"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2538
 msgid "Date format:|#f"
@@ -1514,7 +1514,7 @@ msgstr "Sett tilbake val for dokumentklasser ved skifte:|#u"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3130
 msgid "Use Cygwin Paths|#s"
-msgstr ""
+msgstr "Bruk stigane til Cygwin|#s"
 
 #: ../src/frontends/xforms/forms/form_print.fd:44
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -1576,9 +1576,8 @@ msgid "Name:|#N"
 msgstr "Namn:|#N"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:207
-#, fuzzy
 msgid "Label:|#e"
-msgstr "Etikett:|#E"
+msgstr "Etikett:|#e"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:243
 msgid "Go to|#G"
@@ -1916,9 +1915,8 @@ msgid "Use &NatBib"
 msgstr "Bruk &NatBib"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-#, fuzzy
 msgid "Citation &Style:"
-msgstr "Litteraturstil"
+msgstr "Litteratur &Stil:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:66
@@ -2221,21 +2219,18 @@ msgid "Bibliography Entry"
 msgstr "Bibliografi element"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-#, fuzzy
 msgid "&Key:"
-msgstr "&Nøkkel"
+msgstr "&Nøkkel:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-#, fuzzy
 msgid "The bibliography key"
-msgstr "Litteratur nøkkel"
+msgstr "Litteratur nøkkelen"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-#, fuzzy
 msgid "&Label:"
-msgstr "&Etikett"
+msgstr "&Etikett:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
@@ -2261,9 +2256,8 @@ msgstr "&OK"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
 #: src/frontends/qt2/QBibtex.C:39 src/frontends/xforms/FormBibtex.C:37
-#, fuzzy
 msgid "BibTeX Bibliography"
-msgstr "Litteratur"
+msgstr "BibTeX Litteratur"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
 msgid "Databa&ses"
@@ -2424,7 +2418,7 @@ msgstr "Byt alltid"
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
 msgid "Other font settings"
-msgstr "Andreskriftinnstillingar"
+msgstr "Andreskriftval"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
 msgid "&Misc:"
@@ -2470,9 +2464,8 @@ msgid "&Restore"
 msgstr "Gjenopp&rett"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
-#, fuzzy
 msgid "Browse the available bibliography entries"
-msgstr "Tilgjengelege greiner"
+msgstr "Leit igjennom den tilgjengelege litteraturen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Regular E&xpression"
@@ -2508,19 +2501,16 @@ msgid "New Item"
 msgstr "Nytt element"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
-#, fuzzy
 msgid "Available bibliography entries"
-msgstr "&Tilgjengelege greiner"
+msgstr "Tilgjengeleg litteratur"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
-#, fuzzy
 msgid "Add citation of the selected bibliography entry"
-msgstr "Informasjon om det valte elementet."
+msgstr "Legg til ein referanse av litteraturen du har valt"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
-#, fuzzy
 msgid "Remove citation of the selected bibliography entry"
-msgstr "Fjern den valde greina"
+msgstr "Fjern valde referansen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
 msgid "Move the selected citation up"
@@ -2547,9 +2537,8 @@ msgid "Info"
 msgstr "Info"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
-#, fuzzy
 msgid "Bibliography entry"
-msgstr "Bibliografi element"
+msgstr "Litteraturelement"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:492
 msgid "&Full author list"
@@ -2747,7 +2736,7 @@ msgstr "Bruk &standard plassering"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:49
 msgid "Use LaTeX default settings"
-msgstr "Bruk standard val frå LaTeX"
+msgstr "Bruk standardval frå LaTeX"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:60
 msgid "Advanced Placement Options"
@@ -2970,8 +2959,7 @@ msgstr "&Delfigur"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
 msgid "Is this just one part of a figure float ?"
-msgstr ""
-"Er dette berre ein del av delane til ein figurflytar med mange figurar?"
+msgstr "Er dette berre ein del av delane til ein figurflytar med mange figurar?"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
 msgid "Don't un&zip on export"
@@ -3018,7 +3006,7 @@ msgstr "Lukk"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
 msgid "Include File"
-msgstr "Legg til fil"
+msgstr "Legg til underdokument"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
 msgid "File name to include"
@@ -3026,7 +3014,7 @@ msgstr "Namnet på fila"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
 msgid "Select a file"
-msgstr "Vel ei-fil"
+msgstr "Vel ei fil"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
 msgid "&Include Type:"
@@ -3035,12 +3023,12 @@ msgstr "&Filtype:"
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
 #: src/insets/insetinclude.C:223
 msgid "Input"
-msgstr "Inndata"
+msgstr "Heile teksten"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
 #: src/frontends/qt2/QInclude.C:31 src/insets/insetinclude.C:226
 msgid "Include"
-msgstr "Inkluder"
+msgstr "Underdokument"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
 #: ../lib/layouts/linuxdoc.layout:251 ../lib/layouts/manpage.layout:128
@@ -3483,7 +3471,7 @@ msgstr "Rediger forteksten i eit eksterent skriveprogram"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
-msgstr "ASCII innstillingar"
+msgstr "ASCIIval"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:56
 msgid "&roff command:"
@@ -3556,11 +3544,11 @@ msgstr "&Endra"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:22
 msgid "Cygwin Paths"
-msgstr ""
+msgstr "Cygwin stigar"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
 msgid "&Use Cygwin-style paths"
-msgstr ""
+msgstr "&Bruk Cygwin-stil stigar"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2016
@@ -3570,6 +3558,9 @@ msgid ""
 "MikTeX. Note, however, that you'll need to write shell script wrappers for "
 "all your converters."
 msgstr ""
+"Bruk Cygwin stigar. Vel dette om du vil nytte LaTex under Cygwin istaden "
+" for MikTeX under MS-Vindauge. Legg merke til at du sjølv må skrive "
+"skriptomsveip til eksportprogramma du vil nytte."
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
 msgid "Date Format"
@@ -3652,7 +3643,7 @@ msgstr "Byt &tastaturoversikt."
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:80
 msgid "Language settings"
-msgstr "Språk"
+msgstr "Språkval"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:41
 msgid "Command s&tart:"
@@ -3696,7 +3687,7 @@ msgstr "Marker &andre språk"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:22
 msgid "LaTeX settings"
-msgstr "LaTeX val"
+msgstr "LaTeXval"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
 msgid "US Letter"
@@ -3788,7 +3779,7 @@ msgstr "Ly&XServer datarøyr:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:250
 msgid "&PATH prefix:"
-msgstr ""
+msgstr "&Stigprefiks"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
 msgid "Printer settings"
@@ -4081,9 +4072,8 @@ msgid "Print Destination"
 msgstr "Skrivar"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:409
-#, fuzzy
 msgid "P&rinter:"
-msgstr "Sk&rivar"
+msgstr "Sk&rivar:"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
@@ -4104,27 +4094,24 @@ msgid "Cross Reference"
 msgstr "Kryssreferanse"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-#, fuzzy
 msgid "Update the label list"
-msgstr "Oppdater stillista"
+msgstr "Oppdater etikettliste"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
 msgid "&Goto"
 msgstr "&Gå til"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-#, fuzzy
 msgid "Move the document cursor to label"
-msgstr "Flytt skrivemerke til referansen"
+msgstr "Flytt skrivemerke til etiketten"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
 msgid "Sort"
 msgstr "Sorter"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-#, fuzzy
 msgid "Sort labels in alphabetical order"
-msgstr "Sorter referansane i alfabetiskordning"
+msgstr "Sorter etikettane i alfabetiskorden"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
 msgid "<reference>"
@@ -4147,9 +4134,8 @@ msgid "Formatted reference"
 msgstr "Formatet på referansen"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-#, fuzzy
 msgid "Cross reference as it appears in output"
-msgstr "Referansen slik den er i dokumentet"
+msgstr "Kryssreferansane som dei blir i utskrifta"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
 msgid "&Format:"
@@ -4161,14 +4147,12 @@ msgid "&Name:"
 msgstr "&Namn:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-#, fuzzy
 msgid "Available labels in selected document:"
-msgstr "Tilgjengelege referansar i dokumentet:"
+msgstr "Tilgjengelege etikettar i det valde dokumentet"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-#, fuzzy
 msgid "Available labels"
-msgstr "Tilgjengelege malar"
+msgstr "Tilgjengelege etikettar"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
 msgid "&Document:"
@@ -4226,8 +4210,7 @@ msgstr "&Eksportformat:"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Bruk dette programmet for å eksportere dokumentet  ($$FNamn = fil namn)"
+msgstr "Bruk dette programmet for å eksportere dokumentet  ($$FNamn = fil namn)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4298,7 +4281,7 @@ msgstr "Set inn tabell"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
 msgid "Table Settings"
-msgstr "Tabell innstillingar"
+msgstr "Tabellval"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:63
 msgid "&Table Settings"
@@ -4553,17 +4536,15 @@ msgid "&Rescan"
 msgstr "&Frisk opp"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-#, fuzzy
 msgid "Rebuild the file lists"
-msgstr "Lag ny fil-liste"
+msgstr "Bygg på ny fillista"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
 msgstr "Vi&s"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis innhaldet i fila (Kan berre nyttast når stigar er vist)"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -4614,9 +4595,8 @@ msgid "Insert URL"
 msgstr "Set inn URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
 msgid "&URL:"
-msgstr "&URL"
+msgstr "&URL:"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
@@ -4645,7 +4625,7 @@ msgstr "Loggen til versjonkontrollen"
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:32
 #: src/frontends/xforms/FormWrap.C:29
 msgid "Wrap Options"
-msgstr "Val for brekking"
+msgstr "Val for tekstbrekking"
 
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
 msgid "Default (outer)"
@@ -5147,19 +5127,16 @@ msgid "NoteToEditor"
 msgstr "Notat_Til_Utgjevar"
 
 #: ../lib/layouts/aastex.layout:121 ../lib/layouts/aastex.layout:541
-#, fuzzy
 msgid "Facility"
-msgstr "Fakta"
+msgstr "Fasilitet"
 
 #: ../lib/layouts/aastex.layout:123 ../lib/layouts/aastex.layout:567
-#, fuzzy
 msgid "Objectname"
-msgstr "Octave"
+msgstr "Objektnamn"
 
 #: ../lib/layouts/aastex.layout:125 ../lib/layouts/aastex.layout:594
-#, fuzzy
 msgid "Dataset"
-msgstr "Dato"
+msgstr "Datasett"
 
 #: ../lib/layouts/aastex.layout:526
 msgid "FigCaption"
@@ -6519,9 +6496,8 @@ msgid "Norsk"
 msgstr "Norsk"
 
 #: ../lib/languages:45
-#, fuzzy
 msgid "Nynorsk"
-msgstr "Norsk"
+msgstr "Nynorsk"
 
 #: ../lib/languages:46
 msgid "Polish"
@@ -6988,9 +6964,8 @@ msgid "Special Character|S"
 msgstr "Spesialteikn|S"
 
 #: ../lib/ui/default.ui:197
-#, fuzzy
 msgid "Citation...|C"
-msgstr "Litteratur"
+msgstr "Litteratur...|C"
 
 #: ../lib/ui/default.ui:198
 msgid "Cross Reference...|R"
@@ -7050,7 +7025,7 @@ msgstr "Flytarar|y"
 
 #: ../lib/ui/default.ui:214
 msgid "Include File...|d"
-msgstr "Inkluder Fil...|k"
+msgstr "Set inn underdokument...|d"
 
 #: ../lib/ui/default.ui:215
 msgid "Insert File|e"
@@ -7170,7 +7145,7 @@ msgstr "Sans serif matte skriftype"
 
 #: ../lib/ui/default.ui:260
 msgid "Math bold series"
-msgstr "Feit matte skriftype"
+msgstr "Feit matte skrift"
 
 #: ../lib/ui/default.ui:262
 msgid "Text normal font"
@@ -7190,7 +7165,7 @@ msgstr "Skrivemaskin skrifttype"
 
 #: ../lib/ui/default.ui:268
 msgid "Text bold series"
-msgstr "Feit skriftype"
+msgstr "Feit skrift"
 
 #: ../lib/ui/default.ui:269
 msgid "Text medium series"
@@ -7225,9 +7200,8 @@ msgid "Index List|I"
 msgstr "Indeks liste|l"
 
 #: ../lib/ui/default.ui:286
-#, fuzzy
 msgid "BibTeX Bibliography...|B"
-msgstr "Litteratur"
+msgstr "BibTeX Litteratur...|B"
 
 #: ../lib/ui/default.ui:290
 msgid "LyX Document...|X"
@@ -7267,7 +7241,7 @@ msgstr "Storebokstavar stil|b"
 
 #: ../lib/ui/default.ui:306
 msgid "Bold Style|B"
-msgstr "Feit Stil|F"
+msgstr "Feit Skrift|F"
 
 #: ../lib/ui/default.ui:309
 msgid "Decrease Environment Depth|v"
@@ -7984,7 +7958,7 @@ msgstr "Skru av/på brukar-definert-stil"
 
 #: src/LyXAction.C:208
 msgid "Toggle noun style"
-msgstr "Skru av/på storbokstav-stil"
+msgstr "Skru av/på Kapitelstil"
 
 #: src/LyXAction.C:209
 msgid "Toggle roman font style"
@@ -8857,7 +8831,7 @@ msgstr "Teiknsett"
 
 #: src/frontends/controllers/ControlDocument.C:80
 msgid "Document settings applied"
-msgstr "Ending av dokumentinnstillingar utført"
+msgstr "Ending av dokumentval utført"
 
 #: src/frontends/controllers/ControlDocument.C:119
 msgid "Converting document to new document class..."
@@ -8897,7 +8871,7 @@ msgstr "Fell tilbake til den originale tekstklassa"
 
 #: src/frontends/controllers/ControlDocument.C:160
 msgid "Do you want to save the current settings"
-msgstr "Vil du lagra dei noverande innstillingane"
+msgstr "Vil du lagra vala du har gjort?"
 
 #: src/frontends/controllers/ControlDocument.C:161
 msgid "for the document layout as default?"
@@ -8957,7 +8931,7 @@ msgstr "Høgre på grunnlinja"
 
 #: src/frontends/controllers/ControlInclude.C:48
 msgid "Select document to include"
-msgstr "Vel eit dokument som skal inn"
+msgstr "Vel eit underdokument"
 
 #: src/frontends/controllers/ControlInclude.C:54
 #: src/frontends/controllers/ControlInclude.C:62
@@ -9108,7 +9082,6 @@ msgid " and "
 msgstr " og "
 
 #: src/frontends/controllers/biblio.C:109
-#, fuzzy
 msgid " et al."
 msgstr " et al."
 
@@ -9308,7 +9281,7 @@ msgstr "LyX: skiljeteikn"
 
 #: src/frontends/qt2/QDocument.C:53
 msgid "Document Settings"
-msgstr "Dokumentinnstillingar"
+msgstr "Dokumentval"
 
 #. biblio
 #: src/frontends/qt2/QDocument.C:65
@@ -9423,7 +9396,7 @@ msgstr "Papirstorleik og retning"
 
 #: src/frontends/qt2/QDocumentDialog.C:265
 msgid "Language Settings and Quote Style"
-msgstr "Språk innstillingar og siteringstil"
+msgstr "Språkval og siteringstil"
 
 #: src/frontends/qt2/QDocumentDialog.C:268
 msgid "Bullet Types"
@@ -9431,11 +9404,11 @@ msgstr "Punkt typer"
 
 #: src/frontends/qt2/QDocumentDialog.C:274
 msgid "Bibliography Settings"
-msgstr "Bibliografi innstillingar"
+msgstr "Liiteraturlisteval"
 
 #: src/frontends/qt2/QDocumentDialog.C:277
 msgid "LaTeX Packages and Options"
-msgstr "LaTeX pakkar og innstillingar"
+msgstr "LaTeX pakkar og val"
 
 #: src/frontends/qt2/QDocumentDialog.C:280
 #: src/frontends/xforms/FormPreamble.C:24
@@ -9472,7 +9445,7 @@ msgstr "Vel materiale utanfrå"
 
 #: src/frontends/qt2/QFloat.C:28
 msgid "Float Settings"
-msgstr "Flytar innstillingar"
+msgstr "Flytarval"
 
 #: src/frontends/qt2/QGraphics.C:48 src/frontends/qt2/QPrefsDialog.C:140
 #: src/frontends/xforms/FormGraphics.C:66
@@ -9674,11 +9647,11 @@ msgstr "Vel ein stig til malar"
 
 #: src/frontends/qt2/QPrefsDialog.C:575
 msgid "Select a temporary directory"
-msgstr "Katalog for mellombelse filer:"
+msgstr "Vel mellombelslager"
 
 #: src/frontends/qt2/QPrefsDialog.C:583
 msgid "Select a backups directory"
-msgstr "Vel stil til ekstrakopiar"
+msgstr "Vel stig til ekstrakopiar"
 
 #: src/frontends/qt2/QPrefsDialog.C:591
 msgid "Select a document directory"
@@ -9697,9 +9670,8 @@ msgid "Go back"
 msgstr "Gå tilbake"
 
 #: src/frontends/qt2/QRef.C:127
-#, fuzzy
 msgid "Go to label"
-msgstr "Len&gste etikett"
+msgstr "Gå til etikett"
 
 #: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
 msgid "Find and Replace"
@@ -9940,61 +9912,51 @@ msgstr "*.bst| BibTeX stil filer (*.bst)"
 
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
-#, fuzzy
 msgid "Add citation of the selected bibliography entry."
-msgstr "Informasjon om det valte elementet."
+msgstr "Legg til referanse av den valde literaturen"
 
 #: src/frontends/xforms/FormCitation.C:165
-#, fuzzy
 msgid "Delete citation of the selected bibliography entry."
-msgstr "Informasjon om det valte elementet."
+msgstr "Slettdet valde referansen."
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
-msgstr "Flytt det valte elementet oppover (i den gjeldande lista)."
+msgstr "Flytt det valde elementet oppover (i den gjeldande lista)."
 
 #: src/frontends/xforms/FormCitation.C:171
 msgid "Move the selected entry downwards (in the current list)."
-msgstr "Flytt det valte elementet nedover (i den gjeldande lista)"
+msgstr "Flytt det valde elementet nedover (i den gjeldande lista)"
 
 #: src/frontends/xforms/FormCitation.C:174
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
-msgstr ""
-"Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
+msgstr "Elementa som vil bli sitert. Vel element frå det høgre feltet med piltastane."
 
 #: src/frontends/xforms/FormCitation.C:181
-#, fuzzy
 msgid ""
 "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX "
 "Bibliography\"). Move the ones you want to cite with the arrow buttons into "
 "the left browser window."
-msgstr ""
-"Alle element i databasen som er lasta.(gjennom \"Set inn->&Lister->BibTeX "
-"referanse\"). Flytt dei du vil sitere med piltastane til den venstre feltet."
+msgstr "Alle litteraturelementa i databasen du har valt (i dialogen \"Set inn->Ulike lister->BibTeX Litteratur\"). Flytt dei elementa du vil referere til med pilknappane inn i den venstre kollonna."
 
 #: src/frontends/xforms/FormCitation.C:188
-#, fuzzy
 msgid "Information about the selected bibliography entry"
-msgstr "Informasjon om det valte elementet."
+msgstr "Informasjon om det valde litteraturelementet."
 
 #: src/frontends/xforms/FormCitation.C:195
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
-msgstr ""
-"Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
+msgstr "Her kan du velje korleis litteraturreferansen skal sjå ut i teksten.(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:198
-#, fuzzy
 msgid ""
 "Activate if you want to print all authors in a citation with more than three "
 "authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
-"Vel denne dersom du vil at siteringar med meir enn tre forfattarar skal ha "
-"alle forfattarane i teksten, istaden for \"<Første forfattar> et al."
-"\" (Natbib)."
+"Bruk denne om du vil ha alle forfattarane i tekstreferansen når du har meir "
+"enn tre forfattarar. Istaden for <Første forfattar>. et al.\" (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:201
 msgid ""
@@ -10006,14 +9968,12 @@ msgstr ""
 "ikkje \"van Gogh\"). Nyttig i starten på setningar (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:204
-#, fuzzy
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
-msgstr "Valfri tekst før litteratur-referansen, f.eks. \"Sjå: <Ref>\""
+msgstr "Ekstra tekst før referansen. t.d. \"Sjå <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:207
-#, fuzzy
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
-msgstr "Valfri tekst etter litteratur-referansen, f.eks. \"<Ref> side 10\""
+msgstr "Ekstra tekst etter referansen. t.d. \"<Ref> side 12\""
 
 #: src/frontends/xforms/FormCitation.C:210
 msgid "Search your database (all fields will be searched)."
@@ -10100,7 +10060,7 @@ msgstr "Endre ekstern fil"
 #: src/frontends/xforms/FormFiledialog.C:199
 #: src/frontends/xforms/FormFiledialog.C:366
 msgid "Warning! Couldn't open directory."
-msgstr "Åtvaring! Kan ikkje opna mappa."
+msgstr "Åtvaring! Kan ikkje opna katalogen."
 
 #: src/frontends/xforms/FormFloat.C:38
 msgid "Float Options"
@@ -10137,7 +10097,7 @@ msgstr "Prøv å sett flytaren her."
 
 #: src/frontends/xforms/FormFloat.C:82
 msgid "Ignore internal settings. This is the \"!\" in LaTeX."
-msgstr "Oversjå interne innstillingar. Dette er ekvivalent med \"!\" i LaTeX."
+msgstr "Oversjå interne val. Dette er ekvivalent med \"!\" i LaTeX."
 
 #: src/frontends/xforms/FormFloat.C:84
 msgid "Span float over the columns."
@@ -10168,7 +10128,7 @@ msgstr "Leit i katalogane."
 
 #: src/frontends/xforms/FormGraphics.C:144
 msgid "Scale the image to inserted percentage value."
-msgstr "Forstørr bilete til den valte storleiken."
+msgstr "Forstørr bilete til den valde storleiken."
 
 #: src/frontends/xforms/FormGraphics.C:146
 msgid "Select display mode for this image."
@@ -10176,7 +10136,7 @@ msgstr "Vel modus for visinga av bilete."
 
 #: src/frontends/xforms/FormGraphics.C:149
 msgid "Set the image width to the inserted value."
-msgstr "Set breidda til bilete til den valte breidda."
+msgstr "Set breidda til bilete til den valde breidda."
 
 #: src/frontends/xforms/FormGraphics.C:152
 #, no-c-format
@@ -10185,7 +10145,7 @@ msgstr "Vel eininga for breidda; Bruk % for heile bilete."
 
 #: src/frontends/xforms/FormGraphics.C:154
 msgid "Set the image height to the inserted value."
-msgstr "Set høgda til bilete til den valte høgda."
+msgstr "Set høgda til bilete til den valde høgda."
 
 #: src/frontends/xforms/FormGraphics.C:156
 msgid "Select unit for height."
@@ -10288,7 +10248,7 @@ msgstr "Bileteramme"
 
 #: src/frontends/xforms/FormInclude.C:30
 msgid "Include file"
-msgstr "Inkluder fil"
+msgstr "Legg til underdokument"
 
 #: src/frontends/xforms/FormLog.C:30
 msgid "LyX: LaTeX Log"
@@ -10443,10 +10403,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX objekt som ein kan tilegne fargar."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Endra farge på LyX objekt. Merk ! Du må trykkje på \"Bruk\" etter endringa."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Endra farge på LyX objekt. Merk ! Du må trykkje på \"Bruk\" etter endringa."
 
 #: src/frontends/xforms/FormPreferences.C:547
 msgid "Find a new color."
@@ -10485,15 +10443,13 @@ msgid "Convert \"to\" this format"
 msgstr "Eksporter \"til\" dette formatet"
 
 #: src/frontends/xforms/FormPreferences.C:995
-#, fuzzy
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
 "used as the path to LyX's support directory."
 msgstr ""
-"Kommandoen: $$i er fila inn, $$b er filnamnet utan etternamn og $$o er "
-"namnet på resultat fila. $$s kan brukast som stig til LyX sine "
-"eksportprogram."
+"Eksport kommandoen: $$i er fila inn, $$b er filnamnet utan etternamn og $$o er "
+"namnet på resultatfila. $$s kan brukast som stig til LyX støtteprogram."
 
 #: src/frontends/xforms/FormPreferences.C:1001
 msgid ""
@@ -10529,7 +10485,7 @@ msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
 msgstr ""
-"Endra innhaldet i det valte eksportprogrammet. Merk! Du må deretter trykkje "
+"Endra innhaldet i det valde eksportprogrammet. Merk! Du må deretter trykkje "
 "på \"Bruk\""
 
 #: src/frontends/xforms/FormPreferences.C:1258
@@ -10697,29 +10653,24 @@ msgstr "Omvendt rekkjefølgje."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:66
-#, fuzzy
 msgid "Select a document for labels."
-msgstr "Vel eit dokument som referanse."
+msgstr "Vel eit dokument for etikettar."
 
 #: src/frontends/xforms/FormRef.C:68
-#, fuzzy
 msgid "Sort the labels alphabetically."
-msgstr "Sorter referansane alfabetisk."
+msgstr "Sorter etikettane alfabetisk."
 
 #: src/frontends/xforms/FormRef.C:70 src/frontends/xforms/FormRef.C:279
-#, fuzzy
 msgid "Go to selected label."
-msgstr "Gå til den valde referansen."
+msgstr "Gå til den valde etiketten."
 
 #: src/frontends/xforms/FormRef.C:72
-#, fuzzy
 msgid "Update the list of labels."
-msgstr "Oppdater lista over referansar."
+msgstr "Oppdater etikettlista."
 
 #: src/frontends/xforms/FormRef.C:74
-#, fuzzy
 msgid "Select format style of the cross reference."
-msgstr "Vel stil for referansar."
+msgstr "Vel ein stil for kryssreferansane."
 
 #: src/frontends/xforms/FormRef.C:178
 msgid "*** No labels found in document ***"
@@ -10768,8 +10719,7 @@ msgstr "Søk heilt bakover."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr "Eksporter til dette formatet før vi køyrar kommandoen under."
 
 #: src/frontends/xforms/FormSendto.C:48
@@ -10810,7 +10760,7 @@ msgstr "Vis kor mange ord i dokumentet og framgangen til stavekontrollen."
 
 #: src/frontends/xforms/FormTabular.C:50
 msgid "Edit table settings"
-msgstr "Endra tabell innstillingar."
+msgstr "Endra tabellval"
 
 #. Stack tabs
 #: src/frontends/xforms/FormTabular.C:128
@@ -10859,9 +10809,8 @@ msgid "Show full path or only file name."
 msgstr "Bruk heile stigen eller berre filnamnet."
 
 #: src/frontends/xforms/FormTexinfo.C:54
-#, fuzzy
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr "Køyrer programmet \"TexFiles.sh\" for å lage ny fil-liste."
+msgstr "Køyrer programmet \"Texfiles.sh\" for å byggje fillista på nytt."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
@@ -11024,9 +10973,8 @@ msgid "Opened inset"
 msgstr "Opna innskot"
 
 #: src/insets/insetbib.C:142
-#, fuzzy
 msgid "BibTeX Generated Bibliography"
-msgstr "BibTeX genererte referansar"
+msgstr "BibTeX laga litteraturliste"
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
@@ -11356,7 +11304,7 @@ msgstr "Klarte ikkje å snakka med stavekontrollen."
 
 #: src/kbsequence.C:153
 msgid "   options: "
-msgstr "   innstillingar: "
+msgstr "   val: "
 
 #: src/lengthcommon.C:34
 msgid "sp"
@@ -11591,45 +11539,46 @@ msgid ""
 "%1$s. Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+"Kan ikkje lage mellombelslager i stigen \n"
+"%1$s. Ver sikker på at stigen eksisterar \n"
+"og er skrivbar og prøv igjen."
 
 #: src/lyx_main.C:388
-#, fuzzy
 msgid "Could not create a temporary directory in\n"
-msgstr "Klarte ikkje å fjerna den mellombelse katalogen"
+msgstr "Klarte ikkje å lage ein mellombelslager i\n"
 
 #: src/lyx_main.C:390
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+" Før du prøver igjen må du vere sikker på at \n"
+"stigen er der og at du kan skrive til den."
 
 #: src/lyx_main.C:394
-#, fuzzy
 msgid "Could not create temporary directory"
-msgstr "Klarte ikkje å fjerna den mellombelse katalogen"
+msgstr "Klarte ikkje å laga mellombelslager."
 
 #: src/lyx_main.C:538
-#, fuzzy
 msgid "You have specified a non-existent user LyX directory."
-msgstr "Du valde ein ubrukeleg LyX katalog."
+msgstr "Du har oppgitt ein brukarkatalog som ikkje eksisterar."
 
 #: src/lyx_main.C:539
 msgid "It is needed to keep your own configuration."
 msgstr "Den trengs for å halde innstillingane dine."
 
 #: src/lyx_main.C:540
-#, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
-msgstr "Skal eg prøva å setje den opp for deg ? (Det er best at eg prøver!)"
+msgstr "Skal eg prøve å sette den opp for deg? Eg sluttar om du sei \"Nei\"."
 
 #: src/lyx_main.C:541
 msgid "No user LyX directory. Exiting."
-msgstr ""
+msgstr "Ingen brukarstig for LyX. Stoppar."
 
 #: src/lyx_main.C:546
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Creating directory %1$s"
-msgstr "LyX: Lagar katalog "
+msgstr "LyX: Lagar katalogen %1$s"
 
 #: src/lyx_main.C:550
 msgid "LyX: Creating directory "
@@ -11637,9 +11586,8 @@ msgstr "LyX: Lagar katalog "
 
 #. Failed, so let's exit.
 #: src/lyx_main.C:557
-#, fuzzy
 msgid "Failed to create directory. Exiting."
-msgstr "Feil namn på katalogen som vart prøvd laga."
+msgstr "Klarte ikkje å lage katalog. Stoppar."
 
 #: src/lyx_main.C:576 src/lyx_main.C:580
 msgid "LyX Warning!"
@@ -11717,7 +11665,7 @@ msgstr "Manglar katalog for -sysdir val"
 
 #: src/lyx_main.C:757
 msgid "Missing directory for -userdir switch"
-msgstr "Manglarkatalog for -userdir val"
+msgstr "Manglar katalog for -userdir val"
 
 #: src/lyx_main.C:767
 msgid "Missing command string after --execute switch"
@@ -11741,8 +11689,7 @@ msgstr "Orsak!"
 
 #: src/lyxfind.C:45
 msgid "You cannot replace a single space, nor an empty character."
-msgstr ""
-"Du kan ikkje byta ut eit enkelt mellomrom, ikkje ein tom bokstav heller."
+msgstr "Du kan ikkje byta ut eit enkelt mellomrom, ikkje ein tom bokstav heller."
 
 #: src/lyxfont.C:40
 msgid "Symbol"
@@ -11760,7 +11707,7 @@ msgstr "Ignorer"
 
 #: src/lyxfont.C:48
 msgid "Smallcaps"
-msgstr "Kapiteler"
+msgstr "Kapitel"
 
 #: src/lyxfont.C:57
 msgid "Off"
@@ -11791,7 +11738,7 @@ msgstr "Understreket "
 #: src/lyxfont.C:542
 #, c-format
 msgid "Noun %1$s, "
-msgstr "Storbokstavar %1$s, "
+msgstr "Kapitel %1$s, "
 
 #: src/lyxfont.C:545
 msgid "Noun "
@@ -11891,8 +11838,7 @@ msgstr "Syntaks: set-color <lyx_name> <x11_name>"
 #: src/lyxfunc.C:1494
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr ""
-"Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra."
+msgstr "Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra."
 
 #: src/lyxfunc.C:1499
 msgid "Set-color "
@@ -11982,8 +11928,7 @@ msgstr "Velkomen til LyX!"
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
-msgstr ""
-"Kodinga av skrifttyper i LaTeX2e (fontenc). T1 er best for dei fleste språk."
+msgstr "Kodinga av skrifttyper i LaTeX2e (fontenc). T1 er best for dei fleste språk."
 
 #: src/lyxrc.C:1870
 msgid ""
@@ -12072,8 +12017,7 @@ msgstr ""
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
-msgstr ""
-"Prefiks som blir lagt til skrivarar som blir spesifisert i skrivar-dialogen."
+msgstr "Prefiks som blir lagt til skrivarar som blir spesifisert i skrivar-dialogen."
 
 #: src/lyxrc.C:1942
 msgid ""
@@ -12088,8 +12032,7 @@ msgstr ""
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
-msgstr ""
-"Forstørring for skjermskrifttypar. 100% er om lag like stort som på arket."
+msgstr "Forstørring for skjermskrifttypar. 100% er om lag like stort som på arket."
 
 #: src/lyxrc.C:1951
 msgid "The font sizes used for calculating the scaling of the screen fonts."
@@ -12118,8 +12061,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Koding for menyar/oppsprett skrifttypar."
 
 #: src/lyxrc.C:1980
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Kor lang tid  mellom kvar automatiske lagring (i sekund). 0 skrur av "
 "automatisk lagring."
@@ -12152,7 +12094,7 @@ msgstr ""
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
-msgstr "Bruk ein katalog struktur for å lagra mellombels filer som TeX lagar."
+msgstr "Bruk ein katalog struktur for å lagra mellombelslager som TeX lagar."
 
 #: src/lyxrc.C:2000
 msgid "The file where the last-files information should be stored."
@@ -12222,8 +12164,7 @@ msgstr "Maksimal linjelengd for ASCII-filer (LaTeX, SGML eller rein tekst)."
 
 #: src/lyxrc.C:2038
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
-msgstr ""
-"Kor mange sist opna filer skal vere tilgjengeleg i filmenyen (opp til 9)."
+msgstr "Kor mange sist opna filer skal vere tilgjengeleg i filmenyen (opp til 9)."
 
 #: src/lyxrc.C:2042
 msgid "Select to check whether the lastfiles still exist."
@@ -12231,8 +12172,7 @@ msgstr "Sjekk at dei sist opna filene finst enno."
 
 #: src/lyxrc.C:2046
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
-msgstr ""
-"Papir meldinga til DVI-framsynar (La den vere tom eller bruk \"-paper\")"
+msgstr "Papir meldinga til DVI-framsynar (La den vere tom eller bruk \"-paper\")"
 
 #: src/lyxrc.C:2050
 msgid "Specify the default paper size."
@@ -12242,8 +12182,7 @@ msgstr "Vel standard papirstorleik."
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
-msgstr ""
-"La samanskrivne ord slik som \"helikoptersjøførsertifikat\"vere korrekt?"
+msgstr "La samanskrivne ord slik som \"helikoptersjøførsertifikat\"vere korrekt?"
 
 #: src/lyxrc.C:2061
 msgid "What command runs the spell checker?"
@@ -12266,8 +12205,7 @@ msgid ""
 msgstr "Vel eit alternativt språk. Standarden er å bruke språket i dokumentet."
 
 #: src/lyxrc.C:2075
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Vel ei alternativ personleg ordbok. T.d.: \"ispell_engelsk\"."
 
 #: src/lyxrc.C:2080
@@ -12325,17 +12263,14 @@ msgstr ""
 "lagt i den same katalogen som original fila."
 
 #: src/lyxrc.C:2112
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Skriv frå høgre til venstre (t.d. for språk som Hebraisk eller Arabisk)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Skriv frå høgre til venstre (t.d. for språk som Hebraisk eller Arabisk)."
 
 #: src/lyxrc.C:2116
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
-msgstr ""
-"Gje ord på eit anna språk enn standard språket i dokumentet  ein annan farge."
+msgstr "Gje ord på eit anna språk enn standard språket i dokumentet  ein annan farge."
 
 #: src/lyxrc.C:2120
 msgid ""
@@ -12364,8 +12299,7 @@ msgid ""
 msgstr "Trengs det ein språk endring først i dokumentet?"
 
 #: src/lyxrc.C:2136
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Trengs det ein språk endring sist i dokumentet?"
 
 #: src/lyxrc.C:2140
@@ -12403,8 +12337,7 @@ msgstr "Vis startopp bilete."
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
-msgstr ""
-"Kor mange linjer skal flyttast med mus med rulleknapp eller fem knappar?"
+msgstr "Kor mange linjer skal flyttast med mus med rulleknapp eller fem knappar?"
 
 #: src/lyxrc.C:2174
 msgid "New documents will be assigned this language."
@@ -12420,8 +12353,7 @@ msgstr "Vis førehandsvising av typesettet av slike ting som matte."
 
 #: src/lyxrc.C:2186
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr ""
-"Førehandsvising av likningar vil ha \"(#)\"-merke istaden for nummererte."
+msgstr "Førehandsvising av likningar vil ha \"(#)\"-merke istaden for nummererte."
 
 #: src/lyxrc.C:2190
 msgid "Scale the preview size to suit."
@@ -12431,7 +12363,7 @@ msgstr "La førehandsvising bli skalert etter høvet."
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
-msgstr ""
+msgstr "Kva stig skal PATH-miljø ha framfor seg. Bruk standarden for operativsystemet."
 
 #: src/lyxtextclasslist.C:88
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -12539,11 +12471,11 @@ msgstr "Feil! Klarte ikkje fjerna fila:"
 
 #: src/support/filetools.C:574 src/support/filetools.C:612
 msgid "Error! Couldn't create temporary directory:"
-msgstr "Klarte ikkje oppretta mellombels katalog:"
+msgstr "Klarte ikkje oppretta mellombelslager:"
 
 #: src/support/filetools.C:591
 msgid "Error! Couldn't delete temporary directory:"
-msgstr "Klarte ikkje sletta oppretta katalog:"
+msgstr "Klarte ikkje å slette mellombelslager:"
 
 #: src/support/filetools.C:666
 msgid "Internal error!"
@@ -12551,7 +12483,7 @@ msgstr "Intern feil!"
 
 #: src/support/filetools.C:667
 msgid "Call to createDirectory with invalid name"
-msgstr "Feil namn på katalogen som vart prøvd laga."
+msgstr "Ugyldig namn på katalogen som vart prøvd laga."
 
 #: src/support/filetools.C:672
 msgid "Error! Couldn't create directory:"
@@ -12563,13 +12495,12 @@ msgstr "Klarte ikkje automatisk å lagra fila!"
 
 #: src/support/package.C:374
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1%"
-msgstr ""
+msgid "Unable to determine the path to the LyX binary from the command line %1%"
+msgstr "Klarte ikkje å finne LyX-programmet frå kommandolinja %1%"
 
 #: src/support/package.C:379
 msgid "Unable to determine the path to the LyX binary from the command line "
-msgstr ""
+msgstr "Klarte ikkje å finne LyX-programmet frå kommandolinja."
 
 #: src/support/package.C:505
 #, c-format
@@ -12579,17 +12510,22 @@ msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"Klarte ikkje på finne stigen til systemkatalogen etter å ha leita i\n"
+"\t%1%\n"
+"Prøv '-sysdir' kommandolinje valet eller skriv inn stigen til "
+"systemkatalogen i LYX_DIR_13x miljøet i fila `chkconfig.ltx'."
 
 #: src/support/package.C:515
 msgid "Unable to determine the system directory having searched\n"
-msgstr ""
+msgstr "Klarte ikkje på finne stigen til systemkatalogen etter å ha leita\n"
 
 #: src/support/package.C:518
-#, fuzzy
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr "Set miljø valet: LYX_DIR_13x til system stigen til LyX "
+msgstr ""
+"Prøv '-sysdir' kommandolinje valet eller skriv inn stigen til "
+"systemkatalogen i LYX_DIR_13x miljøet i fila `chkconfig.ltx'."
 
 #: src/support/package.C:601
 #, c-format
@@ -12597,26 +12533,25 @@ msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Ugyldig %1% val\n"
+"Katalogen %2% innheld ikkje %3%."
 
 #: src/support/package.C:606 src/support/package.C:641
 #: src/support/package.C:669
-#, fuzzy
 msgid "Invalid "
-msgstr "Ugyldig lengd"
+msgstr "Ugyldig "
 
 #: src/support/package.C:607
-#, fuzzy
 msgid " switch.\n"
-msgstr "Klasse val"
+msgstr "val\n"
 
 #: src/support/package.C:608 src/support/package.C:643
-#, fuzzy
 msgid "Directory "
-msgstr "Katalog:|#K"
+msgstr "Katalogen"
 
 #: src/support/package.C:609 src/support/package.C:644
 msgid " does not contain "
-msgstr ""
+msgstr " innheld ikkje "
 
 #: src/support/package.C:636
 #, c-format
@@ -12624,11 +12559,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Ugyldig %1% miljøval.\n"
+"Katalogen %2% innheld ikkje %3%."
 
 #: src/support/package.C:642 src/support/package.C:670
-#, fuzzy
 msgid " environment variable.\n"
-msgstr "LYX_DIR_13x'miljø-val kan ikkje brukast"
+msgstr "miljøval \n"
 
 #: src/support/package.C:664
 #, c-format
@@ -12636,11 +12572,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
+"Ugyldig %1% miljøval\n"
+"%2% er ikkje ein katalog."
 
 #: src/support/package.C:671
-#, fuzzy
 msgid " is not a directory."
-msgstr "Vi treng ei fil, ikkje ein katalog."
+msgstr "er ikkje ein katalog."
 
 #: src/tabular.C:1346
 msgid "Warning:"
@@ -15554,3 +15491,4 @@ msgstr "LyX funksjonen «Stil» treng eit argument"
 
 #~ msgid "Oggetto"
 #~ msgstr "Oggetto"
+
