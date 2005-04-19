@@ -114,10 +114,6 @@ using std::ostringstream;
 
 namespace {
 
-// this should not be hardcoded, but be part of the definition
-// of the float (JMarc)
-string const caplayout("Caption");
-
 string floatname(string const & type, BufferParams const & bp)
 {
 	FloatList const & floats = bp.getLyXTextClass().floats();
@@ -421,7 +417,7 @@ void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {
-		if (pit->layout()->name() == caplayout) {
+		if (pit->layout()->labeltype == LABEL_SENSITIVE) {
 			string const name = floatname(params_.type, buf.params());
 			string const str =
 				convert<string>(toclist[name].size() + 1)

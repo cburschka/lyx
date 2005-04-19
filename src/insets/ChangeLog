@@ -1,3 +1,10 @@
+2005-04-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetwrap.C (addToToc): copy the code from InsetFloat::addToToc.
+
+	* insetfloat.C (addToToc): do not use the harcoded "Caption" name,
+	but the SENSITIVE label type. 
+
 2005-04-18  Angus Leeming  <leeming@lyx.org>
 
 	* ExternalSupport.[Ch] (doSubstitution): passed an extra boolean

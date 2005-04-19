@@ -27,6 +27,7 @@
 #include "lyxlex.h"
 #include "outputparams.h"
 #include "paragraph.h"
+#include "pariterator.h"
 
 #include "support/convert.h"
 
@@ -41,10 +42,6 @@ using std::ostringstream;
 
 
 namespace {
-
-// this should not be hardcoded, but be part of the definition
-// of the float (JMarc)
-string const caplayout("Caption");
 
 string floatname(string const & type, BufferParams const & bp)
 {
@@ -224,17 +221,17 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 
 void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
-	// Now find the caption in the float...
-	ParagraphList::const_iterator tmp = paragraphs().begin();
-	ParagraphList::const_iterator end = paragraphs().end();
+	ParConstIterator pit = par_const_iterator_begin(*this);
+	ParConstIterator end = par_const_iterator_end(*this);
 
-	for (; tmp != end; ++tmp) {
-		if (tmp->layout()->name() == caplayout) {
+	// Find a caption layout in one of the (child inset's) pars
+	for (; pit != end; ++pit) {
+		if (pit->layout()->labeltype == LABEL_SENSITIVE) {
 			string const name = floatname(params_.type, buf.params());
 			string const str =
 				convert<string>(toclist[name].size() + 1)
-				+ ". " + tmp->asString(buf, false);
-			lyx::toc::TocItem const item(tmp->id(), 0 , str);
+				+ ". " + pit->asString(buf, false);
+			lyx::toc::TocItem const item(pit->id(), 0 , str);
 			toclist[name].push_back(item);
 		}
 	}
