@@ -1,8 +1,13 @@
+2005-04-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlDocument.C (dispatchParams): update the counters if
+	necessary. 
+
 2005-04-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* Dialog.[Ch] (checkStatus): new
 
-2005-03-27  MArtin Vermeer  <martin.vermeer@hut.fi>
+2005-03-27  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ControlDocument.C (dispatch_bufferparams): fix bug 1843
 

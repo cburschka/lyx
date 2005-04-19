@@ -16,6 +16,8 @@
 #include "BranchList.h"
 #include "buffer.h"
 #include "bufferparams.h"
+#include "BufferView.h"
+#include "buffer_funcs.h"
 #include "funcrequest.h"
 #include "language.h"
 #include "LColor.h"
@@ -89,14 +91,22 @@ void ControlDocument::dispatchParams()
 	textclass_type const old_class =
 		kernel().buffer().params().textclass;
 	textclass_type const new_class = bp_->textclass;
-
 	if (new_class != old_class) {
 		string const name = textclasslist[new_class].name();
 		kernel().dispatch(FuncRequest(LFUN_TEXTCLASS_APPLY, name));
 	}
 
+	int const old_secnumdepth = kernel().buffer().params().secnumdepth;
+	int const new_secnumdepth = bp_->secnumdepth;
+
 	// Apply the BufferParams.
 	dispatch_bufferparams(kernel(), params(), LFUN_BUFFERPARAMS_APPLY);
+
+	// redo the numbering if necessary
+	if (new_secnumdepth != old_secnumdepth) {
+		updateCounters(kernel().buffer());
+		kernel().bufferview()->update();
+	}
 
 	// Generate the colours requested by each new branch.
 	BranchList & branchlist = params().branchlist();
