@@ -1,10 +1,11 @@
 # Author : André Pönitz
-# This include files contains label definitions for a article-like numbering.
+# This include file contains label definitions for an article-like numbering.
 
 Style Part
 	LabelType             Counter
 	LabelCounter          part
 	LabelString           "Part \Roman{part}"
+	TocLevel              0
 End
 
 
@@ -36,10 +37,18 @@ End
 
 
 Style Paragraph
+	LabelType             Counter
+	LabelCounter          paragraph
+	LabelString           "@Subsubsection@.\arabic{paragraph}"
+	LabelStringAppendix   "@Subsubsection@.\arabic{paragraph}"
 	TocLevel              4
 End
 
 
 Style Subparagraph
+	LabelType             Counter
+	LabelCounter          subparagraph
+	LabelString           "@Paragraph@.\arabic{subparagraph}"
+	LabelStringAppendix   "@Paragraph@.\arabic{subparagraph}"
 	TocLevel              5
 End

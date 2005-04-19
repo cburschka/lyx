@@ -1,3 +1,14 @@
+2005-04-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* layouts/scrclass.inc: do not assign a toclevel to addchap or
+	addsec. 
+
+	* layouts/numreport.inc: use data from numarticle.inc, so that
+	changes from article are obvious.
+
+	* layouts/numarticle.inc: add numbering stuff for Paragraph and
+	SubParagraph; set Part TocLevel to 0.
+
 2005-04-18  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ui/stdtoolbars.ui:

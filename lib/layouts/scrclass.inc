@@ -109,14 +109,12 @@ End
 Style Addchap
 	CopyStyle             Chapter*
 	LatexName             addchap
-	TocLevel              1
 End
 
 
 Style Addsec
 	CopyStyle             Section*
 	LatexName             addsec
-	TocLevel              2
 End
 
 
