@@ -15,13 +15,13 @@
 #include <boost/utility.hpp>
 
 #include <fcntl.h>
-#include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <sys/un.h>
-#include <sys/wait.h>
 #include <time.h>
-#ifdef HAVE_UNISTD_H
+#ifndef _WIN32
+# include <sys/socket.h>
+# include <sys/un.h>
+# include <sys/wait.h>
 # include <unistd.h>
 #endif
 

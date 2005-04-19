@@ -1,4 +1,9 @@
- 2005-04-17  Angus Leeming  <leeming@lyx.org>
+2005-04-19  Angus Leeming  <leeming@lyx.org>
+
+	* pch.h: protect unix-specific headers from breaking compilation
+	on Windows.
+
+2005-04-17  Angus Leeming  <leeming@lyx.org>
  
 	* filetools.C (MakeDisplayPath): invoke os::external_path before
 	returning path.
