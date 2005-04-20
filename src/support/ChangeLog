@@ -1,5 +1,23 @@
 2005-04-19  Angus Leeming  <leeming@lyx.org>
 
+	* filetools.C: remove unnecessary #include of forkedcontr.h.
+
+	* forkedcall.C: protect system-specific headers with preprocessor
+	guards.
+	(running): don't call waitpid() on Windows.
+	(waitForChild): add Windows-specific code to wait for a child process
+	to finish.
+	(generateChild): add Windows-specific code to spawn the child in the
+	first place.
+
+	* forkedcontr.[Ch]:Revert back to the LyX 1.3.x version of the code
+	to spawn a child process asynchronously. Do this because 'issues'
+	remain with the SIGCHLD handling code on *nix and because there's no
+	easy way to implement such a monitor on Windows. Explicit polling,
+	as in Lyx 1.3.x, is safe, robust and works on both platforms.
+
+2005-04-19  Angus Leeming  <leeming@lyx.org>
+
 	* package.C.in (get_temp_dir): call GetLongPathName on Windows.
 
 2005-04-19  Angus Leeming  <leeming@lyx.org>
@@ -8,7 +26,7 @@
 	on Windows.
 
 2005-04-17  Angus Leeming  <leeming@lyx.org>
- 
+
 	* filetools.C (MakeDisplayPath): invoke os::external_path before
 	returning path.
 

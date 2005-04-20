@@ -655,8 +655,7 @@ void BufferView::Pimpl::cursorToggle()
 		// have finished but are waiting to communicate this fact
 		// to the rest of LyX.
 		ForkedcallsController & fcc = ForkedcallsController::get();
-		if (fcc.processesCompleted())
-			fcc.handleCompletedProcesses();
+		fcc.handleCompletedProcesses();
 	}
 
 	cursor_timeout.restart();

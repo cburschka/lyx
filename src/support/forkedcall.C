@@ -37,16 +37,22 @@
 
 #include <boost/bind.hpp>
 
-#include <cerrno>
-#include <csignal>
-#include <cstdlib>
-#include <sys/types.h>
-#include <sys/wait.h>
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
-
 #include <vector>
+
+#ifdef _WIN32
+# define SIGHUP 1
+# define SIGKILL 9
+# include <process.h>
+# include <windows.h>
+
+#else
+# include <cerrno>
+# include <csignal>
+# include <cstdlib>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+#endif
 
 using std::endl;
 using std::string;
@@ -152,10 +158,12 @@ bool ForkedProcess::running() const
 	if (!pid())
 		return false;
 
+#if !defined (_WIN32)
 	// Un-UNIX like, but we don't have much use for
 	// knowing if a zombie exists, so just reap it first.
 	int waitstatus;
 	waitpid(pid(), &waitstatus, WNOHANG);
+#endif
 
 	// Racy of course, but it will do.
 	if (lyx::support::kill(pid(), 0) && errno == ESRCH)
@@ -195,6 +203,29 @@ int ForkedProcess::waitForChild()
 {
 	// We'll pretend that the child returns 1 on all error conditions.
 	retval_ = 1;
+
+#if defined (_WIN32)
+	HANDLE const hProcess = HANDLE(pid_);
+
+	DWORD const wait_status = ::WaitForSingleObject(hProcess, INFINITE);
+
+	switch (wait_status) {
+	case WAIT_OBJECT_0: {
+		DWORD exit_code = 0;
+		if (!GetExitCodeProcess(hProcess, &exit_code)) {
+			lyxerr << "GetExitCodeProcess failed waiting for child\n"
+			       << getChildErrorMessage() << std::endl;
+		} else
+			retval_ = exit_code;
+		break;
+	}
+	case WAIT_FAILED:
+		lyxerr << "WaitForSingleObject failed waiting for child\n"
+		       << getChildErrorMessage() << std::endl;
+		break;
+	}
+
+#else
 	int status;
 	bool wait = true;
 	while (wait) {
@@ -223,6 +254,7 @@ int ForkedProcess::waitForChild()
 			wait = false;
 		}
 	}
+#endif
 	return retval_;
 }
 
@@ -326,7 +358,12 @@ int Forkedcall::generateChild()
 		lyxerr << "</command>" << std::endl;
 	}
 
-#ifndef __EMX__
+#if defined (__EMX__)
+	pid_t const cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
+				   argv[0], &*argv.begin());
+#elif defined (_WIN32)
+ 	pid_t const cpid = spawnvp(_P_NOWAIT, argv[0], &*argv.begin());
+#else // POSIX
 	pid_t const cpid = ::fork();
 	if (cpid == 0) {
 		// Child
@@ -337,9 +374,6 @@ int Forkedcall::generateChild()
 		       << strerror(errno) << endl;
 		_exit(1);
 	}
-#else
-	pid_t const cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
-				   argv[0], &*argv.begin());
 #endif
 
 	if (cpid < 0) {

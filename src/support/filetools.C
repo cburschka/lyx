@@ -24,7 +24,6 @@
 #include "support/convert.h"
 #include "support/environment.h"
 #include "support/filetools.h"
-#include "support/forkedcontr.h"
 #include "support/fs_extras.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
