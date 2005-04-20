@@ -19,24 +19,58 @@
 #include "lyxfunctional.h"
 #include "debug.h"
 
+#ifdef _WIN32
+# include <sstream>
+# include <windows.h>
+
+#else
+# include <cerrno>
+# include <cstdlib>
+# include <unistd.h>
+# include <sys/wait.h>
+
+# ifndef CXX_GLOBAL_CSTD
+  using std::strerror;
+# endif
+#endif
+
 #include "frontends/Timeout.h"
 
 #include <boost/bind.hpp>
 
-#include <cerrno>
-#include <cstdlib>
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-#include <sys/wait.h>
 
 using std::vector;
 using std::endl;
 using std::find_if;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::strerror;
+
+#if defined(_WIN32)
+string const getChildErrorMessage()
+{
+	DWORD const error_code = ::GetLastError();
+
+	HLOCAL t_message = 0;
+	bool const ok = ::FormatMessage(
+		FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		FORMAT_MESSAGE_FROM_SYSTEM,
+		0, error_code,
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+		(LPTSTR) &t_message, 0, 0
+		) != 0;
+
+	std::ostringstream ss;
+	ss << "LyX: Error waiting for child: " << error_code;
+
+	if (ok) {
+		ss << ": " << (LPTSTR)t_message;
+		::LocalFree(t_message);
+	} else
+		ss << ": Error unknown.";
+
+	return STRCONV(ss.str());
+}
 #endif
+
 
 // Ensure, that only one controller exists inside process
 ForkedcallsController & ForkedcallsController::get()
@@ -75,7 +109,6 @@ void ForkedcallsController::addCall(ForkedProcess const & newcall)
 		timeout_->start();
 
 	forkedCalls.push_back(newcall.clone());
-	childrenChanged();
 }
 
 
@@ -83,17 +116,45 @@ void ForkedcallsController::addCall(ForkedProcess const & newcall)
 // Check the list and, if there is a stopped child, emit the signal.
 void ForkedcallsController::timer()
 {
-	ListType::size_type start_size = forkedCalls.size();
-
 	ListType::iterator it  = forkedCalls.begin();
 	ListType::iterator end = forkedCalls.end();
 	while (it != end) {
 		ForkedProcess * actCall = *it;
+		bool remove_it = false;
 
+#if defined(_WIN32)
+		HANDLE const hProcess = HANDLE(actCall->pid());
+
+		DWORD const wait_status = ::WaitForSingleObject(hProcess, 0);
+
+		switch (wait_status) {
+		case WAIT_TIMEOUT:
+			// Still running
+			break;
+		case WAIT_OBJECT_0: {
+			DWORD exit_code = 0;
+			if (!GetExitCodeProcess(hProcess, &exit_code)) {
+				lyxerr << "GetExitCodeProcess failed waiting for child\n"
+				       << getChildErrorMessage() << std::endl;
+				// Child died, so pretend it returned 1
+				actCall->setRetValue(1);
+			} else {
+				actCall->setRetValue(exit_code);
+			}
+			remove_it = true;
+			break;
+		}
+		case WAIT_FAILED:
+			lyxerr << "WaitForSingleObject failed waiting for child\n"
+			       << getChildErrorMessage() << std::endl;
+			actCall->setRetValue(1);
+			remove_it = true;
+			break;
+		}
+#else
 		pid_t pid = actCall->pid();
 		int stat_loc;
 		pid_t const waitrpid = waitpid(pid, &stat_loc, WNOHANG);
-		bool remove_it = false;
 
 		if (waitrpid == -1) {
 			lyxerr << "LyX: Error waiting for child: "
@@ -130,6 +191,7 @@ void ForkedcallsController::timer()
 			actCall->setRetValue(1);
 			remove_it = true;
 		}
+#endif
 
 		if (remove_it) {
 			forkedCalls.erase(it);
@@ -149,44 +211,6 @@ void ForkedcallsController::timer()
 	if (!forkedCalls.empty() && !timeout_->running()) {
 		timeout_->start();
 	}
-
-	if (start_size != forkedCalls.size())
-		childrenChanged();
-}
-
-
-// Return a vector of the pids of all the controlled processes.
-vector<pid_t> const ForkedcallsController::getPIDs() const
-{
-	vector<pid_t> pids;
-
-	if (forkedCalls.empty())
-		return pids;
-
-	pids.resize(forkedCalls.size());
-
-	vector<pid_t>::iterator vit = pids.begin();
-	for (ListType::const_iterator lit = forkedCalls.begin();
-	     lit != forkedCalls.end(); ++lit, ++vit) {
-		*vit = (*lit)->pid();
-	}
-
-	std::sort(pids.begin(), pids.end());
-	return pids;
-}
-
-
-// Get the command string of the process.
-string const ForkedcallsController::getCommand(pid_t pid) const
-{
-	ListType::const_iterator it =
-		find_if(forkedCalls.begin(), forkedCalls.end(),
-			lyx::compare_memfun(&Forkedcall::pid, pid));
-
-	if (it == forkedCalls.end())
-		return string();
-
-	return (*it)->command();
 }
 
 

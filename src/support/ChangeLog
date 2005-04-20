@@ -1,5 +1,29 @@
 2005-04-19  Angus Leeming  <leeming@lyx.org>
 
+	* forkedcall.C: protect system-specific headers with preprocessor
+	guards.
+	(running): don't call waitpid() on Windows.
+	(waitForChild): add Windows-specific code to wait for a child process
+	to finish.
+	(generateChild): add Windows-specific code to spawn the child in the
+	first place.
+
+	* forkedcontr.[Ch]: remove cruft from the days of the dialog to kill
+	child processes. Class no longer derives from trackable, no longer
+	emits a global signal when a child process is reaped.
+	(getPIDs, getCommand): removed.
+
+	* forkedcontr.C: protect system-specific headers with preprocessor
+	guards. Add Windows-specific code to wait for a child process
+	asynchronously.
+	(getChildErrorMessage): new function, wrapping the Windows native API.
+	(timer): use WaitForSingleObject and GetExitCodeProcess on Windows.
+
+	* kill.C (kill): add Ruurd's Windows-specific code to terminate
+	a child process.
+
+2005-04-19  Angus Leeming  <leeming@lyx.org>
+
 	* package.C (get_temp_dir): call GetLongPathName on Windows.
 
 2005-04-17  Angus Leeming  <leeming@lyx.org>
@@ -40,7 +64,7 @@
 	* filetools.[Ch] (LibScriptSearch): backport the 1.4.x code so
 	that the function now substitutes the $$s placeholder for the
 	path to the appropriate LyX support directory.
-	
+
 	* forkedcall.C (generateChild): backport the 1.4.x code to split
 	the input command up into an array of words and to strip any quotes.
 
@@ -81,7 +105,7 @@
 
 	* FileInfo.h:
 	* chdir.C:
-	* forkedcall.C: 
+	* forkedcall.C:
 	* forkedcontr.C:
 	* getcwd.C:
 	* lyxsum.C:
@@ -191,7 +215,7 @@
 	file using mktemp and open.
 
 2004-12-14  Angus Leeming  <leeming@lyx.org>
- 
+
 	* os.h, os_os2.C, os_unix.C, os_win32.C:
 	(binpath, binname, getTmpDir): return a const reference rather than
 	a copy of the data.
@@ -213,7 +237,7 @@
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* os.C: Add _WIN32 to the #define.
- 
+
 	* systemcall.C (startscript): remove trailing '/n' from request to
 	start the command in a minimized window under DOS.
 
@@ -257,9 +281,9 @@
 
 2003-03-06  Alfredo Braunstein <abraunst@libero.it>
 
-	* forkedcontr.C (timer): reworked the loop to allow running changes 
+	* forkedcontr.C (timer): reworked the loop to allow running changes
 	on the list.
-	
+
 2003-02-27  Ling Li  <ling@caltech.edu>
 
 	* lyxalgo.h (eliminate_duplicates): re-written to avoid the initial

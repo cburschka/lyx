@@ -18,9 +18,6 @@
 
 #include "LString.h"
 
-#include <boost/signals/signal0.hpp>
-#include <boost/signals/trackable.hpp>
-
 #include <sys/types.h> // needed for pid_t
 
 #include <list>
@@ -29,7 +26,7 @@
 class ForkedProcess;
 class Timeout;
 
-class ForkedcallsController : public boost::signals::trackable {
+class ForkedcallsController {
 public:
 	/// We need this to avoid warnings.
 	ForkedcallsController();
@@ -51,20 +48,11 @@ public:
 	 */
 	void timer();
 
-	/// Return a vector of the pids of all the controlled processes.
-	std::vector<pid_t> const getPIDs() const;
-
-	/// Get the command string of the process.
-	string const getCommand(pid_t) const;
-
 	/** Kill this process prematurely and remove it from the list.
 	 *  The process is killed within tolerance secs.
 	 *  See forkedcall.[Ch] for details.
 	 */
 	void kill(pid_t, int tolerance = 5);
-
-	/// Signal emitted when the list of current child processes changes.
-	boost::signal0<void> childrenChanged;
 
 private:
 	///
@@ -80,5 +68,10 @@ private:
 	 */
 	Timeout * timeout_;
 };
+
+#if defined(_WIN32)
+// a wrapper for GetLastError() and FormatMessage().
+string const getChildErrorMessage();
+#endif
 
 #endif // FORKEDCONTR_H
