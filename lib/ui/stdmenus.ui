@@ -294,6 +294,10 @@ Menuset
 		Separator
 		Item "Array Environment|y" "math-matrix 2 2"
 		Item "Cases Environment|C" "math-insert \cases"
+		Item "Aligned Environment" "command-sequence math-insert \aligned; tabular-feature append-column"
+		Item "AlignedAt Environment" "command-sequence math-insert \alignedat; tabular-feature append-column"
+		Item "Gathered Environment" "math-insert \gathered"
+		Item "Split Environment" "command-sequence math-insert \split; tabular-feature append-column"
 		Separator
 		Submenu "Font Change|o" "insert_math_font"
 		Item "Math Panel|P" "dialog-show mathpanel"
