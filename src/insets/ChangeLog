@@ -1,3 +1,8 @@
+2005-04-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetcollapsable.C (doDispatch): pass through double/triple
+	click events (bug 1811).
+
 2005-04-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetwrap.C (addToToc): copy the code from InsetFloat::addToToc.

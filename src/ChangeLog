@@ -1,3 +1,8 @@
+2005-04-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text3.C (dispatch): set cursor on double/triple click events
+	(bug 1811)
+
 2005-04-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (actOnUpdatedPrefs): avoid warning

@@ -981,6 +981,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.resetAnchor();
 			cursorEnd(cur);
 			cur.setSelection();
+			bv->cursor() = cur;
 			bv->haveSelection(cur.selection());
 		}
 		break;
@@ -988,6 +989,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_DOUBLE:
 		if (cmd.button() == mouse_button::button1) {
 			selectWord(cur, lyx::WHOLE_WORD_STRICT);
+			bv->cursor() = cur;
 			bv->haveSelection(cur.selection());
 		}
 		break;

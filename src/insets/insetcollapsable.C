@@ -340,11 +340,6 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_MOUSE_DOUBLE:
-	case LFUN_MOUSE_TRIPLE:
-		cur.undispatched();
-		break;
-	
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument == "open")
 			setStatus(Open);
