@@ -1,3 +1,9 @@
+2005-04-19  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text3.C (dispatch): fix, finally fix, the language problem in
+	new lyxtexts, without disabling on-the-fly font changes (Helge's
+	bug report)
+
 2005-04-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text3.C (dispatch): set cursor on double/triple click events
