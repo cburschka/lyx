@@ -24,6 +24,12 @@
 #include <string>
 #include <vector>
 
+// pid_t isn't defined by the stdlibs that ship with MSVC.
+#if defined (_WIN32) && defined(_MSC_VER)
+typedef int pid_t;
+#endif
+
+
 namespace lyx {
 namespace support {
 
