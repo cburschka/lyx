@@ -1,3 +1,10 @@
+2005-04-21  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcontr.C: add #include <csignal>.
+
+	* filetools.C (RunCommand): remove the signal blocking stuff
+	now that we no longer use a signal handler on unix.
+
 2005-04-19  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.C: remove unnecessary #include of forkedcontr.h.

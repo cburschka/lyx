@@ -43,9 +43,9 @@
 #include <fcntl.h>
 
 #include <cctype>
+#include <cerrno>
 #include <cstdlib>
 #include <cstdio>
-#include <cerrno>
 
 #include <utility>
 #include <fstream>
@@ -1061,14 +1061,6 @@ cmd_ret const RunCommand(string const & cmd)
 	// pstream (process stream), with the
 	// variants ipstream, opstream
 
-	sigset_t newMask, oldMask;
-	sigemptyset(&oldMask);
-	sigemptyset(&newMask);
-	sigaddset(&newMask, SIGCHLD);
-
-	// Block the SIGCHLD signal.
-	sigprocmask(SIG_BLOCK, &newMask, &oldMask);
-
 	FILE * inf = ::popen(cmd.c_str(), os::popen_read_mode());
 
 	// (Claus Hentschel) Check if popen was succesful ;-)
@@ -1086,9 +1078,6 @@ cmd_ret const RunCommand(string const & cmd)
 	int const pret = pclose(inf);
 	if (pret == -1)
 		perror("RunCommand:: could not terminate child process");
-
-	// Unblock the SIGCHLD signal and restore the old mask.
-	sigprocmask(SIG_SETMASK, &oldMask, 0);
 
 	return make_pair(pret, ret);
 }
