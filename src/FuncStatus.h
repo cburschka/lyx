@@ -23,7 +23,9 @@ private:
 	enum StatusCodes {
 		/// Command can be executed
 		OK = 0,
-		/// It is unknown wether the command can be executed or not
+		/// This command does not exist, possibly because it is not
+		/// compiled in (e.g. LFUN_THESAURUS) or the user mistyped
+		/// it in the minibuffer. UNKNOWN commands have no menu entry.
 		UNKNOWN = 1,
 		/// Command cannot be executed
 		DISABLED = 2,
