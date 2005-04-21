@@ -180,7 +180,9 @@ void ForkedProcess::kill(int tol)
 		return;
 	}
 
-	int const tolerance = std::max(0, tol);
+	// The weird (std::max)(a,b) signature prevents expansion
+	// of an evil MSVC macro.
+	int const tolerance = (std::max)(0, tol);
 	if (tolerance == 0) {
 		// Kill it dead NOW!
 		Murder::killItDead(0, pid());

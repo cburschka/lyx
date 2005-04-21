@@ -1,5 +1,11 @@
 2005-04-21  Angus Leeming  <leeming@lyx.org>
 
+	* forkedcall.h: define pid_t for MSVC.
+
+	* forkedcall.C (kill): work around evil MSVC max macro.
+
+2005-04-21  Angus Leeming  <leeming@lyx.org>
+
 	* forkedcontr.C: add #include <csignal>.
 
 	* filetools.C (RunCommand): remove the signal blocking stuff
