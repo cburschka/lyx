@@ -21,15 +21,19 @@ class FuncStatus
 private:
 
 	enum StatusCodes {
-		///
+		/// Command can be executed
 		OK = 0,
-		///
+		/// It is unknown wether the command can be executed or not
 		UNKNOWN = 1,
-		///
-		DISABLED = 2,  // Command cannot be executed
-		///
+		/// Command cannot be executed
+		DISABLED = 2,
+		/// Command is on (i. e. the menu item has a checkmark
+		/// and the toolbar icon is pushed).
+		/// Not all commands use this
 		ON = 4,
-		///
+		/// Command is off (i. e. the menu item has no checkmark
+		/// and the toolbar icon is not pushed).
+		/// Not all commands use this
 		OFF = 8
 	};
 
@@ -51,12 +55,13 @@ public:
 
 	///
 	void enabled(bool b);
-	///
+	/// tells whether it can be invoked (otherwise it will be grayed-out).
 	bool enabled() const;
 
 	///
 	void setOnOff(bool b);
-	///
+	/// tells whether the menu item should have a check mark
+	/// (or the toolbar icon should be pushed).
 	bool onoff(bool b) const;
 
 	///
