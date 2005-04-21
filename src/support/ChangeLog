@@ -1,3 +1,7 @@
+2005-04-21  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcontr.C: add #include <csignal>.
+
 2005-04-19  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcall.C: protect system-specific headers with preprocessor

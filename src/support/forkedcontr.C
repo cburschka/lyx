@@ -25,6 +25,7 @@
 
 #else
 # include <cerrno>
+# include <csignal>
 # include <cstdlib>
 # include <unistd.h>
 # include <sys/wait.h>
