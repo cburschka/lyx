@@ -193,11 +193,10 @@ bool InsetFloat::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.enabled(true);
-		break;
+		return true;
 
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
-		break;
 	}
 }
 
