@@ -1,3 +1,11 @@
+2005-04-22  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am:
+	* moc/Makefile.am:
+	* ui/Makefile.am:
+	* ui/moc/Makefile.am: Move the Qt-specific preprocessor flags out of
+	the various Makefile.am files to config/qt.m4.
+
 2005-04-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ui/QPrefsConvertersModule.ui:

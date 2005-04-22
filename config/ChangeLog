@@ -1,3 +1,8 @@
+2005-04-22  Angus Leeming  <leeming@lyx.org>
+
+	* qt.m4: Move the Qt-specific preprocessor flags out of the
+	various Makefile.am files to here. Specialise the flags for mingw.
+
 2005-02-17  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* qt.m4: detect Qt Win/Free library

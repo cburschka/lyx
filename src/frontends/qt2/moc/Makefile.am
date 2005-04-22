@@ -3,7 +3,8 @@ include $(srcdir)/../Makefile.dialogs
 
 DISTCLEANFILES += *.C
 
-AM_CPPFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION \
+AM_CPPFLAGS = \
+	$(QT_CPPFLAGS) -DQT_NO_TRANSLATION \
 	$(PCH_FLAGS) \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \

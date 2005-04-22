@@ -199,6 +199,13 @@ AC_DEFUN([QT_DO_IT_ALL],
 	AC_SUBST(QT_INCLUDES)
 	AC_SUBST(QT_LDFLAGS)
 
+	dnl Preprocessor flags
+	case ${host} in
+	*mingw*) QT_CPPFLAGS="-DQT_DLL -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR";;
+	*) QT_CPPFLAGS="-DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR";;
+	esac
+	AC_SUBST(QT_CPPFLAGS)
+
 	if test -z "$MOC"; then
 		QT_FIND_MOC
 		MOC=$ac_moc
