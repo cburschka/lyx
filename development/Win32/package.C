@@ -414,7 +414,12 @@ string const abs_path_from_command_line(string const & command_line)
 // Does the grunt work for abs_path_from_binary_name()
 string const get_binary_path(string const & exe)
 {
-	string const exe_path = os::internal_path(exe);
+	// The executable may have been invoked either with or
+	// without the .exe extension.
+	// Ensure that it is present.
+	string const as_internal_path = os::internal_path(exe);
+	string const exe_path = suffixIs(as_internal_path, ".exe") ?
+		as_internal_path : as_internal_path + ".exe";
 	if (os::is_absolute_path(exe_path))
 		return exe_path;
 
