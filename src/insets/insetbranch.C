@@ -202,17 +202,10 @@ bool InsetBranch::getStatus(LCursor & cur, FuncRequest const & cmd,
 			   || cmd.argument.empty()) {
 			BranchList const & branchlist =
 				cur.buffer().params().branchlist();
-			if (isBranchSelected(branchlist)) {
-				if (status() != Open)
-					flag.enabled(true);
-				else
-					flag.enabled(false);
-			} else {
-				if (status() != Collapsed)
-					flag.enabled(true);
-				else
-					flag.enabled(false);
-			}
+			if (isBranchSelected(branchlist))
+				flag.enabled(status() != Open);
+			else
+				flag.enabled(status() != Collapsed);
 		} else
 			flag.enabled(true);
 		break;
