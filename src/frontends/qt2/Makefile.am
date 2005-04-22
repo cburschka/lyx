@@ -12,7 +12,7 @@ INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/src/frontends \
 	$(FRONTEND_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
+AM_CXXFLAGS = $(QT_CPPFLAGS)
 
 libqt2_la_SOURCES = \
 	Alert_pimpl.C \

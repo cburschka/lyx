@@ -15,7 +15,7 @@ AC_DEFUN([QT_FIND_PATH],
 				dirs="$dirs $dir"
 			done
 			IFS=$qt_save_IFS
- 
+
 			for dir in $dirs; do
 				if test -x "$dir/$1"; then
 					if test -n "$5"; then
@@ -32,7 +32,7 @@ AC_DEFUN([QT_FIND_PATH],
 			done
 		fi
 	])
- 
+
 	if test -z "$qt_cv_path_$1" || test "$qt_cv_path_$1" = "NONE"; then
 		AC_MSG_RESULT(not found)
 		$4
@@ -50,7 +50,7 @@ AC_DEFUN([QT_FIND_UIC],
 		AC_MSG_ERROR([uic binary not found in \$PATH or $qt_cv_dir/bin !])
 	fi
 ])
- 
+
 dnl Find the right moc in path/qt_cv_dir
 AC_DEFUN([QT_FIND_MOC],
 [
@@ -97,17 +97,17 @@ AC_DEFUN([QT_TRY_LINK],
 	)
 	LIBS="$SAVE_LIBS"
 ])
- 
+
 dnl check we can do a compile
 AC_DEFUN([QT_CHECK_COMPILE],
 [
 	AC_MSG_CHECKING([for Qt library name])
- 
+
 	AC_CACHE_VAL(qt_cv_libname,
 	[
 		AC_LANG_CPLUSPLUS
 		SAVE_CXXFLAGS=$CXXFLAGS
-		CXXFLAGS="$CXXFLAGS $QT_INCLUDES $QT_LDFLAGS" 
+		CXXFLAGS="$CXXFLAGS $QT_INCLUDES $QT_LDFLAGS"
 
 		for libname in -lqt3 -lqt2 -lqt -lqt-mt -lqt-mt3;
 		do
@@ -121,7 +121,7 @@ AC_DEFUN([QT_CHECK_COMPILE],
 	])
 
 	if test -z "$qt_cv_libname"; then
-		AC_MSG_RESULT([failed]) 
+		AC_MSG_RESULT([failed])
 		if test "$FATAL" = 1 ; then
 			AC_MSG_ERROR([Cannot compile a simple Qt executable. Check you have the right \$QTDIR !])
 		fi
@@ -151,12 +151,12 @@ EOF
 		rm -f conftest.$ac_ext
 		CPPFLAGS=$SAVE_CPPFLAGS
 	])
- 
+
 	QT_VERSION=$lyx_cv_qtversion
 	AC_SUBST(QT_VERSION)
 ])
- 
-dnl start here 
+
+dnl start here
 AC_DEFUN([QT_DO_IT_ALL],
 [
 	dnl Please leave this alone. I use this file in
@@ -165,10 +165,10 @@ AC_DEFUN([QT_DO_IT_ALL],
 
 	AC_ARG_WITH(qt-dir, [  --with-qt-dir           where the root of Qt is installed ],
 		[ qt_cv_dir=`eval echo "$withval"/` ])
-	 
+
 	AC_ARG_WITH(qt-includes, [  --with-qt-includes      where the Qt includes are. ],
 		[ qt_cv_includes=`eval echo "$withval"` ])
- 
+
 	AC_ARG_WITH(qt-libraries, [  --with-qt-libraries     where the Qt library is installed.],
 		[  qt_cv_libraries=`eval echo "$withval"` ])
 
@@ -176,7 +176,7 @@ AC_DEFUN([QT_DO_IT_ALL],
 	if test -z "$qt_cv_dir"; then
 		qt_cv_dir=$QTDIR
 	fi
- 
+
 	dnl derive inc/lib if needed
 	if test -n "$qt_cv_dir"; then
 		if test -z "$qt_cv_includes"; then
@@ -198,20 +198,27 @@ AC_DEFUN([QT_DO_IT_ALL],
 	fi
 	AC_SUBST(QT_INCLUDES)
 	AC_SUBST(QT_LDFLAGS)
- 
- 	if test -z "$MOC"; then
+
+	dnl Preprocessor flags
+	case ${host} in
+	*mingw*) QT_CPPFLAGS="-DQT_DLL -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR";;
+	      *) QT_CPPFLAGS="-DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR";;
+	esac
+	AC_SUBST(QT_CPPFLAGS)
+
+	if test -z "$MOC"; then
 		QT_FIND_MOC
 		MOC=$ac_moc
 	fi
 	AC_SUBST(MOC)
- 	if test -z "$UIC"; then
+	if test -z "$UIC"; then
 		QT_FIND_UIC
 		UIC=$ac_uic
 	fi
 	AC_SUBST(UIC)
 
 	QT_CHECK_COMPILE
- 
+
 	QT_LIB=$qt_cv_libname;
 	AC_SUBST(QT_LIB)
 
