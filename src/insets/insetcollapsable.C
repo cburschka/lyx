@@ -299,6 +299,8 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_MOTION:
+	case LFUN_MOUSE_DOUBLE:
+	case LFUN_MOUSE_TRIPLE:
 		if (status_ == Inlined)
 			InsetText::doDispatch(cur, cmd);
 		else if (status_ == Open && !hitButton(cmd))

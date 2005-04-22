@@ -1,3 +1,8 @@
+2005-04-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetcollapsable.C (doDispatch): do not pass through double/triple
+	click events when they are not in the insetext (bug 1797).
+
 2005-04-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetbase.h: document a bit more
