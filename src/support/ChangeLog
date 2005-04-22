@@ -1,5 +1,12 @@
 2005-04-22  Angus Leeming  <leeming@lyx.org>
 
+	* package.C.in (get_binary_path): on prompting from Rob Bearman,
+	ensure that the name of the executable, as input at the command
+	line has a ".exe" suffix so that various file interogations
+	work on Windows.
+
+2005-04-22  Angus Leeming  <leeming@lyx.org>
+
 	* forkedcontr.h:
 	* forkedcall.h: remove pid_t definition to config.h.
 
