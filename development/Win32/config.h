@@ -531,7 +531,7 @@
 /* #undef off_t */
 
 /* Define to `int' if <sys/types.h> does not define. */
-/* #undef pid_t */
+#define pid_t int
 
 /* Define as the type of the result of subtracting two pointers, if the system
    doesn't define it. */
