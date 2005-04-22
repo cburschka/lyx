@@ -422,32 +422,44 @@ changequote([,])dnl
            if test  x`[eval] echo $ac_n '${found_'$cleanclass'}'` = x ; then
              [eval] "found_$cleanclass=yes"
 changequote(,)dnl
-	     # The sed commands below are a bit scary. Here is what they do:
-	     # 1-3: remove the \DeclareFOO macro and add the correct boolean 
-	     #      at the end of the line telling whether the class is 
-             #      available
-	     # 4: if the macro had an optional argument with several 
-	     #    parameters, only keep the first one
-	     # 5: if the macro did not have an optional argument, provide one 
-	     #    (equal to the class name)
-	     # 6: remove brackets and replace with correctly quoted entries
-	     grep '\\Declare\(LaTeX\|DocBook\|LinuxDoc\)Class' "$file" \
-	      | sed -e 's/^.*\DeclareLaTeXClass *\(.*\)/\1 "false"/' \
-		    -e 's/^.*\DeclareDocBookClass *\(.*\)/\1 "'$bool_docbook'"/' \
-		    -e 's/^.*\DeclareLinuxDocClass *\(.*\)/\1 "'$bool_linuxdoc'"/' \
-		    -e 's/\[\([^,]*\),[^]]*\]/[\1]/' \
-		    -e 's/^{/['$class']{/' \
-		    -e 's/\[\([^]]*\)\] *{\([^}]*\)}/"'$class'" "\1" "\2"/' \
-                    >>textclass.lst
+	     sed -n '
+# We manipulate only those lines that contain
+# "\Declare(LaTeX|DocBook|LinuxDoc)Class"
+/\\DeclareLaTeXClass/bmatch
+/\\DeclareDocBookClass/bmatch
+/\\DeclareLinuxDocClass/bmatch
+b
+
+:match
+# Remove the \DeclareFOOClass macro and add the correct boolean 
+# at the end of the line telling whether the class is 
+# available
+s/^.*\DeclareLaTeXClass *\(.*\)/\1 "false"/
+s/^.*\DeclareDocBookClass *\(.*\)/\1 "'$bool_docbook'"/
+s/^.*\DeclareLinuxDocClass *\(.*\)/\1 "'$bool_linuxdoc'"/
+# If the macro had an optional argument with several 
+# parameters, only keep the first one
+s/\[\([^,]*\),[^]]*\]/[\1]/
+# If the macro did not have an optional argument, provide one 
+# (equal to the class name)
+s/^{/['$class']{/
+# Remove brackets and replace with correctly quoted entries
+s/\[\([^]]*\)\] *{\([^}]*\)}/"'$class'" "\1" "\2"/
+# Print the maninpulated text
+p
+# We are interested in the first instance of \DeclareFOOClass only,
+# so now quit
+q
+' "$file" >> textclass.lst
            fi
 	 fi ;;
     esac
-  done 
+  done
   MSG_RESULT(done)
 else
   MSG_RESULT(auto)
   rm -f wrap_chkconfig.ltx chkconfig.vars chkconfig.classes chklayouts.tex
-  if ! test -r "chkconfig.ltx" ; then
+  if test ! -r "chkconfig.ltx" ; then
     ln -s "${srcdir}"/chkconfig.ltx .
     rmlink=true
   fi
@@ -462,11 +474,25 @@ EOF
   for file in ./layouts/*.layout "${srcdir}"/layouts/*.layout ; do
     case $file in
       */\*.layout) ;;
-      *) if test -r "$file" ; then 
+      *) if test -r "$file" ; then
            class=`echo $file | sed -e 's%^.*layouts/\(.*\)\.layout$%\1%'`
 	   # Generate the proper TestDocClass command for this layout
-	   grep '\\Declare\(LaTeX\|DocBook\|LinuxDoc\)Class' "$file" \
-	      | sed -e 's/^\# *\(.*\)$/\\TestDocClass{'${class}'}{\1}/' 
+	   sed -n '
+# We manipulate only those lines that contain
+# "\Declare(LaTeX|DocBook|LinuxDoc)Class"
+/\\DeclareLaTeXClass/bmatch
+/\\DeclareDocBookClass/bmatch
+/\\DeclareLinuxDocClass/bmatch
+b
+
+:match
+# Wrap the entire line (minus the leading "# ") inside a
+# "\TestDocClass{CLASS}{...}" command
+s/^\# *\(.*\)$/\\TestDocClass{'${class}'}{\1}/
+# Print the result and quit.
+p
+q
+' "$file"
 	 fi ;;
     esac
   done > chklayouts.tex
