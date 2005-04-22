@@ -341,6 +341,12 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 			status.enabled(false);
 			return true;
 
+		case LFUN_INSET_MODIFY:
+		case LFUN_PASTE:
+		case LFUN_PASTESELECTION:
+			status.enabled(true);
+			return true;
+
 		// this one is difficult to get right. As a half-baked
 		// solution, we consider only the first action of the sequence
 		case LFUN_SEQUENCE: {

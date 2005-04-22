@@ -75,6 +75,8 @@ public:
 	    \c branchlist.
 	 */
 	bool isBranchSelected(BranchList const & branchlist) const;
+	///
+	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 
 protected:
 	InsetBranch(InsetBranch const &);

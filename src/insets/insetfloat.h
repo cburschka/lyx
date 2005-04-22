@@ -80,6 +80,8 @@ public:
 	bool  showInsetDialog(BufferView *) const;
 	///
 	InsetFloatParams const & params() const { return params_; }
+	///
+	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 protected:
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:

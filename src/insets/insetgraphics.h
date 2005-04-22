@@ -76,6 +76,8 @@ public:
 	void edit(LCursor & cur, bool left);
 	///
 	void editGraphics(InsetGraphicsParams const &, Buffer const &) const;
+	///
+	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 protected:
 	InsetGraphics(InsetGraphics const &);
 	///

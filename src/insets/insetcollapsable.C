@@ -19,6 +19,7 @@
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
+#include "FuncStatus.h"
 #include "LColor.h"
 #include "lyxlex.h"
 #include "funcrequest.h"
@@ -235,7 +236,7 @@ bool InsetCollapsable::descendable() const
 }
 
 
-bool InsetCollapsable::hitButton(FuncRequest & cmd) const
+bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 {
 	return button_dim.contains(cmd.x, cmd.y);
 }
@@ -361,6 +362,25 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 	default:
 		InsetText::doDispatch(cur, cmd);
 		break;
+	}
+}
+
+
+bool InsetCollapsable::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_TOGGLE:
+		if (cmd.argument == "open" || cmd.argument == "close" ||
+		    cmd.argument == "toggle")
+			flag.enabled(true);
+		else
+			flag.enabled(false);
+		return true;
+
+	default:
+		return InsetText::getStatus(cur, cmd, flag);
 	}
 }
 

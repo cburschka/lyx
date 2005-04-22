@@ -61,6 +61,7 @@ TODO
 #include "exporter.h"
 #include "format.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "lyx_main.h"
@@ -214,6 +215,22 @@ void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
 	default:
 		InsetBase::doDispatch(cur, cmd);
 		break;
+	}
+}
+
+
+bool InsetGraphics::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+	case LFUN_GRAPHICS_EDIT:
+	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_DIALOG_UPDATE:
+		flag.enabled(true);
+		return true;
+
+	default:
+		return InsetBase::getStatus(cur, cmd, flag);
 	}
 }
 

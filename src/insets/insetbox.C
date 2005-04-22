@@ -17,6 +17,7 @@
 #include "cursor.h"
 #include "dispatchresult.h"
 #include "debug.h"
+#include "FuncStatus.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -196,6 +197,22 @@ void InsetBox::doDispatch(LCursor & cur, FuncRequest & cmd)
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
+	}
+}
+
+
+bool InsetBox::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_DIALOG_UPDATE:
+		flag.enabled(true);
+		return true;
+
+	default:
+		return InsetCollapsable::getStatus(cur, cmd, flag);
 	}
 }
 

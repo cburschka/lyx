@@ -70,6 +70,8 @@ public:
 	void validate(LaTeXFeatures &) const;
 	///
 	InsetNoteParams const & params() const { return params_; }
+	///
+	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 protected:
 	InsetNote(InsetNote const &);
 	///

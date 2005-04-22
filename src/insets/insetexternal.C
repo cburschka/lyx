@@ -466,6 +466,23 @@ void InsetExternal::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
+bool InsetExternal::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+
+	case LFUN_EXTERNAL_EDIT:
+	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_DIALOG_UPDATE:
+		flag.enabled(true);
+		return true;
+
+	default:
+		return InsetBase::getStatus(cur, cmd, flag);
+	}
+}
+
+
 void InsetExternal::edit(LCursor & cur, bool)
 {
 	InsetExternalMailer(*this).showDialog(&cur.bv());
@@ -732,6 +749,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 		return;
 	external::Template const & et = *et_ptr;
 
+	// FIXME: This is wrong if we export to PDFLaTeX
 	external::Template::Formats::const_iterator cit =
 		et.formats.find("LaTeX");
 	if (cit == et.formats.end())

@@ -21,6 +21,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
@@ -102,6 +103,21 @@ void InsetWrap::doDispatch(LCursor & cur, FuncRequest & cmd)
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
+	}
+}
+
+
+bool InsetWrap::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_DIALOG_UPDATE:
+		flag.enabled(true);
+		return true;
+
+	default:
+		return InsetCollapsable::getStatus(cur, cmd, flag);
 	}
 }
 

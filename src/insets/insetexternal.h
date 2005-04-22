@@ -146,6 +146,8 @@ public:
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 	///
 	void edit(LCursor & cur, bool left);
+	///
+	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 
 protected:
 	InsetExternal(InsetExternal const &);

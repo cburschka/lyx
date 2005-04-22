@@ -77,6 +77,8 @@ public:
 	void validate(LaTeXFeatures &) const;
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
+	///
+	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 protected:
 	InsetInclude(InsetInclude const &);
 	///

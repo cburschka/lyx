@@ -16,6 +16,7 @@
 #include "BufferView.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
@@ -133,6 +134,27 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+}
+
+
+bool InsetCommand::getStatus(LCursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+	// suppress these
+	case LFUN_INSET_ERT:
+		status.enabled(false);
+		return true;
+	// we handle these
+	case LFUN_INSET_REFRESH:
+	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_DIALOG_SHOW:
+		status.enabled(true);
+		return true;
+	default:
+		return InsetBase::getStatus(cur, cmd, status);
+	}
 }
 
 

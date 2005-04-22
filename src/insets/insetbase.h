@@ -97,6 +97,8 @@ public:
 	 *   These need to be handled in the doDispatch() methods of the
 	 *   derived insets, since InsetBase::doDispatch() has not enough
 	 *   information to handle them.
+	 * - LFUN_MOUSE_* need not to be handled in getStatus(), because these
+	 *   are dispatched directly
 	 */
 	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
@@ -325,37 +327,37 @@ public:
 	 */
 	static Code translate(std::string const & name);
 
-	/// returns true the inset can hold an inset of given type
+	/// returns true if the inset can hold an inset of given type
 	virtual bool insetAllowed(Code) const { return false; }
-	// if this inset has paragraphs should they be output all as default
-	// paragraphs with "Standard" layout?
+	/// if this inset has paragraphs should they be output all as default
+	/// paragraphs with "Standard" layout?
 	virtual bool forceDefaultParagraphs(InsetBase const *) const { return false; }
 
 	///
 	virtual std::string const & getInsetName() const;
 	/// used to toggle insets
-	// is the inset open?
+	/// is the inset open?
 	virtual bool isOpen() const { return false; }
 	/// open the inset
 	virtual void open() {}
 	/// close the inset
 	virtual void close() {}
-	// should this inset be handled like a normal charater
+	/// should this inset be handled like a normal charater
 	virtual bool isChar() const { return false; }
-	// is this equivalent to a letter?
+	/// is this equivalent to a letter?
 	virtual bool isLetter() const { return false; }
-	// is this equivalent to a space (which is BTW different from
-	// a line separator)?
+	/// is this equivalent to a space (which is BTW different from
+	/// a line separator)?
 	virtual bool isSpace() const { return false; }
-	// should we have a non-filled line before this inset?
+	/// should we have a non-filled line before this inset?
 	virtual bool display() const { return false; }
-	// should we break lines after this inset?
+	/// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
 	/// dumps content to lyxerr
 	virtual void dump() const;
-	///
+	/// write inset in .lyx format
 	virtual void write(Buffer const &, std::ostream &) const {}
-	///
+	/// read inset in .lyx format
 	virtual void read(Buffer const &, LyXLex &) {}
 	/// returns the number of rows (\n's) of generated tex code.
 	virtual int latex(Buffer const &, std::ostream &,

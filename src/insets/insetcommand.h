@@ -78,6 +78,8 @@ protected:
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	///
+	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	///
 	std::string const getCommand() const { return p_.getCommand(); }
 	///
 	std::string const & getCmdName() const { return p_.getCmdName(); }

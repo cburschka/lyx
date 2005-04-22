@@ -55,7 +55,7 @@ public:
 	/// return x,y of given position relative to the inset's baseline
 	void getCursorPos(CursorSlice const & sl, int & x, int & y) const;
 	///
-	bool hitButton(FuncRequest &) const;
+	bool hitButton(FuncRequest const &) const;
 	///
 	std::string const getNewLabel(std::string const & l) const;
 	///
@@ -88,6 +88,8 @@ public:
 	void close();
 	///
 	bool allowSpellCheck() const { return true; }
+	///
+	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 
 protected:
 	///

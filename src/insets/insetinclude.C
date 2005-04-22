@@ -22,6 +22,7 @@
 #include "dispatchresult.h"
 #include "exporter.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "lyx_main.h"
@@ -146,6 +147,23 @@ void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 	default:
 		InsetBase::doDispatch(cur, cmd);
 		break;
+	}
+}
+
+
+bool InsetInclude::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_DIALOG_SHOW:
+		flag.enabled(true);
+		return true;
+
+	default:
+		return InsetBase::getStatus(cur, cmd, flag);
 	}
 }
 

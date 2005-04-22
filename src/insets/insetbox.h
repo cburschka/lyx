@@ -92,6 +92,8 @@ public:
 	///
 	InsetBoxParams const & params() const { return params_; }
 	///
+	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
+	///
 	enum BoxType {
 		Frameless,
 		Boxed,

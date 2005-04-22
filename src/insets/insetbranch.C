@@ -18,6 +18,7 @@
 #include "cursor.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "LColor.h"
 #include "lyxlex.h"
@@ -181,6 +182,45 @@ void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
+}
+
+
+bool InsetBranch::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_DIALOG_UPDATE:
+		flag.enabled(true);
+		break;
+
+	case LFUN_INSET_TOGGLE:
+		if (cmd.argument == "open" || cmd.argument == "close" ||
+		    cmd.argument == "toggle")
+			flag.enabled(true);
+		else if (cmd.argument == "assign"
+			   || cmd.argument.empty()) {
+			BranchList const & branchlist =
+				cur.buffer().params().branchlist();
+			if (isBranchSelected(branchlist)) {
+				if (status() != Open)
+					flag.enabled(true);
+				else
+					flag.enabled(false);
+			} else {
+				if (status() != Collapsed)
+					flag.enabled(true);
+				else
+					flag.enabled(false);
+			}
+		} else
+			flag.enabled(true);
+		break;
+
+	default:
+		return InsetCollapsable::getStatus(cur, cmd, flag);
+	}
+	return true;
 }
 
 

@@ -1,3 +1,14 @@
+2005-04-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetbase.h: document a bit more
+	* insetbox.[Ch], insetbranch.[Ch], insetcollapsable.[Ch],
+	insetcommand.[Ch], insetexternal.[Ch], insetfloat.[Ch],
+	insetgraphics.[Ch], insetinclude.[Ch], insetnote.[Ch], insetwrap.[Ch]
+	(getStatus): implement
+	* insetcollapsable.[Ch] (hitButton): take a const argument
+	* insetert.C (getStatus): enable LFUN_INSET_MODIFY, LFUN_PASTE and
+	LFUN_PASTE_SELECTION
+
 2005-04-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetcollapsable.C (doDispatch): pass through double/triple
