@@ -19,7 +19,7 @@
 # include <unistd.h>
 #endif
 #ifdef _WIN32
-# include <Windows.h>
+# include <windows.h>
 #endif
 
 int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
