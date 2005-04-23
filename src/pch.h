@@ -23,7 +23,9 @@
 #include <boost/utility.hpp>
 
 #include <fcntl.h>
-#include <sys/select.h>
+#ifdef HAVE_SYS_SELECT_H
+# include <sys/select.h>
+#endif
 #include <sys/stat.h>
 #include <sys/time.h>
 
