@@ -1,3 +1,8 @@
+2005-04-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.C: handle the LFUN_UNSET_* longtabular methods
+	in getStatus and the tabularFeature string (bug 1860).
+
 2005-04-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetbranch.C (getStatus): make the code more compact

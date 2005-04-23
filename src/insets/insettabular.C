@@ -117,9 +117,13 @@ TabularFeature tabularFeature[] =
 	{ LyXTabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
 	{ LyXTabular::SET_USEBOX, "set-usebox" },
 	{ LyXTabular::SET_LTHEAD, "set-lthead" },
+	{ LyXTabular::UNSET_LTHEAD, "unset-lthead" },
 	{ LyXTabular::SET_LTFIRSTHEAD, "set-ltfirsthead" },
+	{ LyXTabular::UNSET_LTFIRSTHEAD, "unset-ltfirsthead" },
 	{ LyXTabular::SET_LTFOOT, "set-ltfoot" },
+	{ LyXTabular::UNSET_LTFOOT, "unset-ltfoot" },
 	{ LyXTabular::SET_LTLASTFOOT, "set-ltlastfoot" },
+	{ LyXTabular::UNSET_LTLASTFOOT, "unset-ltlastfoot" },
 	{ LyXTabular::SET_LTNEWPAGE, "set-ltnewpage" },
 	{ LyXTabular::SET_SPECIAL_COLUMN, "set-special-column" },
 	{ LyXTabular::SET_SPECIAL_MULTI, "set-special-multi" },
@@ -934,16 +938,32 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
+		case LyXTabular::UNSET_LTFIRSTHEAD:
+			status.setOnOff(!tabular.getRowOfLTHead(sel_row_start, dummyltt));
+			break;
+
 		case LyXTabular::SET_LTHEAD:
 			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
+			break;
+
+		case LyXTabular::UNSET_LTHEAD:
+			status.setOnOff(!tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
 		case LyXTabular::SET_LTFOOT:
 			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
+		case LyXTabular::UNSET_LTFOOT:
+			status.setOnOff(!tabular.getRowOfLTFoot(sel_row_start, dummyltt));
+			break;
+
 		case LyXTabular::SET_LTLASTFOOT:
 			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
+			break;
+
+		case LyXTabular::UNSET_LTLASTFOOT:
+			status.setOnOff(!tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
 		case LyXTabular::SET_LTNEWPAGE:
