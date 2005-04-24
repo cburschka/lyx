@@ -15,8 +15,12 @@
 
 #include <boost/assert.hpp>
 
-#include <pwd.h>
-#ifdef HAVE_UNISTD_H
+#if defined (_WIN32)
+# include "gettext.h"
+# include <lmcons.h>
+# include <windows.h>
+#else
+# include <pwd.h>
 # include <unistd.h>
 #endif
 #include <sys/types.h>
@@ -28,6 +32,14 @@ namespace support {
 
 string const user_name()
 {
+#if defined (_WIN32)
+
+	char name[UNLEN + 1];
+	DWORD size = UNLEN + 1;
+	if (!GetUserName(name, &size))
+		return _("Unknown user");
+	return name;
+#else
 	struct passwd * pw(getpwuid(geteuid()));
 	BOOST_ASSERT(pw);
 
@@ -35,6 +47,7 @@ string const user_name()
 	if (name.empty())
 		name = pw->pw_name;
 	return name;
+#endif
 }
 
 

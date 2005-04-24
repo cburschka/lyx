@@ -568,39 +568,3 @@ diff -u -a -u -r1.25 tempname.C
  		lyxerr[Debug::FILES] << "Temporary file `" << t
  				     << "' created." << endl;
  		return t;
-Index: src/support/userinfo.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/userinfo.C,v
-retrieving revision 1.10
-diff -u -a -u -r1.10 userinfo.C
---- src/support/userinfo.C	15 Feb 2005 13:45:41 -0000	1.10
-+++ src/support/userinfo.C	19 Apr 2005 08:09:40 -0000
-@@ -15,7 +15,9 @@
- 
- #include <boost/assert.hpp>
- 
--#include <pwd.h>
-+#ifndef _WIN32
-+# include <pwd.h>
-+#endif
- #ifdef HAVE_UNISTD_H
- # include <unistd.h>
- #endif
-@@ -28,6 +30,7 @@
- 
- string const user_name()
- {
-+#ifndef _WIN32
- 	struct passwd * pw(getpwuid(geteuid()));
- 	BOOST_ASSERT(pw);
- 
-@@ -35,6 +38,9 @@
- 	if (name.empty())
- 		name = pw->pw_name;
- 	return name;
-+#else
-+	return "dummy";
-+#endif
- }
- 
- 

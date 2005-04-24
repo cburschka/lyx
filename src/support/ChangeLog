@@ -1,3 +1,7 @@
+2005-04-24  Angus Leeming  <leeming@lyx.org>
+
+	* userinfo.C (user_name): add Windows-specific code.
+
 2005-04-22  Angus Leeming  <leeming@lyx.org>
 
 	* package.C.in (get_binary_path): on prompting from Rob Bearman,
