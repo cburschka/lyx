@@ -1292,6 +1292,14 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.message(bformat(
 				N_("Unknown tabular feature '%1$s'"), s));
 		}
+
+		flag.setOnOff(s == "align-left"    && halign(cur.col()) == 'l'
+		           || s == "align-right"   && halign(cur.col()) == 'r'
+			   || s == "align-center"  && halign(cur.col()) == 'c'
+			   || s == "valign-top"    && valign() == 't'
+			   || s == "valign-bottom" && valign() == 'b'
+			   || s == "valign-middle" && valign() == 'm');
+
 #if 0
 		// FIXME: What did this code do?
 		// Please check wether it is still needed!

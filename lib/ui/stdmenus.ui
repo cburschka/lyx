@@ -90,6 +90,7 @@ Menuset
 # Mathed b0rkage means these don't work properly
 		OptSubmenu "Table|T" "edit_tabular"
 		OptSubmenu "Math|M" "edit_math"
+		OptSubmenu "Rows & Cols|C" "tabular_features"
 		Separator
 		OptItem "Increase List Depth|I" "depth-increment"
 		OptItem "Decrease List Depth|D" "depth-decrement"
@@ -117,12 +118,6 @@ Menuset
 
 # not much we can do to help here
 	Menu "edit_tabular"
-		Item "Add Row|A" "tabular-feature append-row"
-		Item "Delete Row|w" "tabular-feature delete-row"
-		Separator
-		Item "Add Column|u" "tabular-feature append-column"
-		Item "Delete Column|D" "tabular-feature delete-column"
-		Separator
 		Item "Multicolumn|M" "tabular-feature multicolumn"
 		Separator
 		Item "Top Line|T" "tabular-feature toggle-line-top"
@@ -130,10 +125,9 @@ Menuset
 		Item "Left Line|L" "tabular-feature toggle-line-left"
 		Item "Right Line|R" "tabular-feature toggle-line-right"
 		Separator
-		Submenu "Alignment|i" "edit_align"
 	End
 
-	Menu "edit_align"
+	Menu "tabular_features"
 		Item "Left|L" "tabular-feature align-left"
 		Item "Center|C" "tabular-feature align-center"
 		Item "Right|R" "tabular-feature align-right"
@@ -141,6 +135,16 @@ Menuset
 		Item "Top|T" "tabular-feature valign-top"
 		Item "Middle|M" "tabular-feature valign-middle"
 		Item "Bottom|B" "tabular-feature valign-bottom"
+		Separator
+		Item "Add Row" "tabular-feature append-row"
+		Item "Delete Row" "tabular-feature delete-row"
+		Item "Copy Row" "tabular-feature copy-row"
+		Item "Swap Rows" "tabular-feature swap-row"
+		Separator
+		Item "Add Column" "tabular-feature append-column"
+		Item "Delete Column" "tabular-feature delete-column"
+		Item "Copy Column" "tabular-feature copy-column"
+		Item "Swap Columns" "tabular-feature swap-column"
 	End
 
 	Menu "edit_math"
@@ -152,21 +156,11 @@ Menuset
 		Separator
 		Submenu "Use Computer Algebra System|S" "edit_math_extern"
 		Separator
-		Submenu "Alignment|A" "edit_align"
-		Separator
-		Item "Add Row|R" "tabular-feature append-row"
-		Item "Delete Row|D" "tabular-feature delete-row"
-		Item "Copy Row" "tabular-feature copy-row"
-		Item "Swap Rows" "tabular-feature swap-row"
 		Item "Add Line Above" "tabular-feature add-hline-above"
 		Item "Add Line Below" "tabular-feature add-hline-below"
 		Item "Delete Line Above" "tabular-feature delete-hline-above"
 		Item "Delete Line Below" "tabular-feature delete-hline-below"
 		Separator
-		Item "Add Column|C" "tabular-feature append-column"
-		Item "Delete Column|e" "tabular-feature delete-column"
-		Item "Copy Column" "tabular-feature copy-column"
-		Item "Swap Columns" "tabular-feature swap-column"
 		Item "Add Line to Left" "tabular-feature add-vline-left"
 		Item "Add Line to Right" "tabular-feature add-vline-right"
 		Item "Delete Line to Left" "tabular-feature delete-vline-left"

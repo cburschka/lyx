@@ -1,3 +1,9 @@
+2005-04-25  Martin Vermeer  <martin.vermeer@hut.fi>a
+
+	* math_gridinset.C (doDispatch):
+	* math_hullInset.C (doDispatch):
+	* math_nestInset.C (doDispatch): fix handling of alignment
+
 2005-04-11  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_nestinset.C (doDispatch): make insert-around-selection

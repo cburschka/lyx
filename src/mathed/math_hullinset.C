@@ -1139,6 +1139,12 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enabled(false);
 			return true;
 		}
+		if (s == "valign-top" || s == "valign-middle" 
+		 || s == "valign-bottom" || s == "align-left"
+		 || s == "align-center" || s == "align-right") {
+			flag.enabled(false);
+			return true;
+		}
 		return MathGridInset::getStatus(cur, cmd, flag);
 	}
 	default:

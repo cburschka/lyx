@@ -866,6 +866,9 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 	//string tc = "mathnormal";
 	bool ret = true;
 	switch (cmd.action) {
+	case LFUN_TABULAR_FEATURE:
+		flag.enabled(false);
+		break;
 #if 0
 	case LFUN_TABULAR_FEATURE:
 		// FIXME: check temporarily disabled
