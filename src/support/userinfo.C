@@ -17,8 +17,8 @@
 
 #if defined (_WIN32)
 # include "gettext.h"
-# include <lmcons.h>
 # include <windows.h>
+# include <lmcons.h>
 #else
 # include <pwd.h>
 # include <unistd.h>
