@@ -1,3 +1,9 @@
+2005-04-25  Angus Leeming  <leeming@lyx.org>
+
+	* globbing.[Ch]: removed to frontends/xforms.
+
+	* Makefile.am: associated change.
+
 2005-04-24  Angus Leeming  <leeming@lyx.org>
 
 	* userinfo.C (user_name): add Windows-specific code.

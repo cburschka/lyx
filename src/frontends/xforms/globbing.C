@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "support/globbing.h"
+#include "globbing.h"
 #include "support/path.h"
 
 #include <glob.h>

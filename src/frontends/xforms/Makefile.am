@@ -37,6 +37,8 @@ libxforms_la_SOURCES = \
 	freebrowser.h \
 	fdesign_base.C \
 	fdesign_base.h \
+	globbing.C \
+	globbing.h \
 	input_validators.C \
 	input_validators.h \
 	lyx_gui.C \
