@@ -558,7 +558,7 @@ def convert_breaks(file):
 
         #  Create an empty paragraph for line and page break that belong
         # above the paragraph
-        if pb_top !=-1 or line_top != -1 or vspace_bot != -1:
+        if pb_top !=-1 or line_top != -1 or vspace_top != -1:
 
             paragraph_above = ['','\\begin_layout Standard','','']
 
@@ -583,7 +583,7 @@ def convert_breaks(file):
         if k == -1:
             return
 
-        if pb_top !=-1 or line_top != -1 or vspace_bot != -1:
+        if pb_bot !=-1 or line_bot != -1 or vspace_bot != -1:
 
             paragraph_bellow = ['','\\begin_layout Standard','','']
 
