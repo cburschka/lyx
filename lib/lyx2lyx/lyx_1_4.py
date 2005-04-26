@@ -585,21 +585,21 @@ def convert_breaks(file):
 
         if pb_bot !=-1 or line_bot != -1 or vspace_bot != -1:
 
-            paragraph_bellow = ['','\\begin_layout Standard','','']
+            paragraph_below = ['','\\begin_layout Standard','','']
 
             if line_bot != -1:
-                paragraph_bellow.extend(['\\lyxline ',''])
+                paragraph_below.extend(['\\lyxline ',''])
 
             if vspace_bot != -1:
-                paragraph_bellow.extend(['\\begin_inset VSpace ' + vspace_bot_value,'\\end_inset','',''])
+                paragraph_below.extend(['\\begin_inset VSpace ' + vspace_bot_value,'\\end_inset','',''])
 
             if pb_bot != -1:
-                paragraph_bellow.extend(['\\newpage ',''])
+                paragraph_below.extend(['\\newpage ',''])
 
-            paragraph_bellow.extend(['\\end_layout',''])
+            paragraph_below.extend(['\\end_layout',''])
 
             #inset new paragraph above the current paragraph
-            file.body[k + 1: k + 1] = paragraph_bellow
+            file.body[k + 1: k + 1] = paragraph_below
 
 
 ##
