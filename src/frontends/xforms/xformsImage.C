@@ -24,12 +24,10 @@
 
 #include "lyx_forms.h"
 
-#ifdef HAVE_FLIMAGE_H
+#if defined (HAVE_FLIMAGE_H)
 # include <flimage.h>
-#else
-# ifdef HAVE_X11_FLIMAGE_H
+#elif defined (HAVE_X11_FLIMAGE_H)
 # include <X11/flimage.h>
-# endif
 #endif
 
 #include <boost/bind.hpp>

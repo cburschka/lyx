@@ -19,7 +19,9 @@ inline int readlink(const char *, char *, size_t) {return -1;}
 
 #else
 #include <ctype.h>
-#include <stdlib.h>
+#ifdef HAVE_STDLIB_H
+# include <stdlib.h>
+#endif
 #define readlink(s, t, l) (-1)
 #endif
 #include <process.h>

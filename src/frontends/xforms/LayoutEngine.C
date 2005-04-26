@@ -22,6 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
+#include <config.h>
+
 #include "LayoutEngine.h"
 #include "lyx_forms.h"
 

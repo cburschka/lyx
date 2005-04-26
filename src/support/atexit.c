@@ -5,6 +5,8 @@
  * This function is in the public domain.  --Mike Stump.
  */
 
+#include <config.h>
+
 #ifndef NEED_on_exit
 int atexit(void (*f)())
 {

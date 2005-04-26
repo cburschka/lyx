@@ -18,7 +18,9 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <sys/types.h> // needed for pid_t
+#ifdef HAVE_SYS_TYPES_H
+# include <sys/types.h>
+#endif
 
 #include <list>
 #include <string>

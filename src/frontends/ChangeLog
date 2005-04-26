@@ -1,3 +1,12 @@
+2005-04-25  Angus Leeming  <leeming@lyx.org>
+
+	* LyXView.C:
+	* nullpainter.[Ch]:
+	* pch.h:
+	include <config.h> in .C files, not .h ones.
+	add licence blurb.
+	protect headers inside preprocessor guards.
+
 2005-04-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* Dialogs.[Ch] (checkStatus): new

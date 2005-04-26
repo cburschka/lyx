@@ -1,5 +1,5 @@
 /**********************************************************************
-** $Id: qttableview.C,v 1.6 2003/09/06 10:16:15 leeming Exp $
+** $Id: qttableview.C,v 1.7 2005/04/26 10:30:22 leeming Exp $
 **
 ** Implementation of QtTableView class
 **
@@ -19,7 +19,9 @@
 #include "qscrollbar.h"
 #include "qpainter.h"
 
-#include <limits.h>
+#ifdef HAVE_LIMITS_H
+# include <limits.h>
+#endif
 
 /* Added by J. Levon for compilation with Qt 2.3.1 */
 #ifndef Q_CHECK_PTR

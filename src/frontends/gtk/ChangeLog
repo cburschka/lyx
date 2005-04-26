@@ -1,3 +1,13 @@
+2005-04-25  Angus Leeming  <leeming@lyx.org>
+
+	* GChanges.C:
+	* GLog.C:
+	* GShowFile.C:
+	* GTexinfo.C:
+	include <config.h> in .C files, not .h ones.
+	add licence blurb.
+	protect headers inside preprocessor guards.
+
 2005-03-21  John Spray  <spray_john@users.sf.net>
 
 	* GDocument.[Ch]: add "Page", "Margins", "Language" tabs.

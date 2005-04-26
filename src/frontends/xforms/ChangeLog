@@ -1,5 +1,16 @@
 2005-04-25  Angus Leeming  <leeming@lyx.org>
 
+	* FormLog.h:
+	* LayoutEngine.C:
+	* bmtable.c:
+	* xformsImage.C:
+	* forms/pch.h:
+	include <config.h> in .C files, not .h ones.
+	add licence blurb.
+	protect headers inside preprocessor guards.
+
+2005-04-25  Angus Leeming  <leeming@lyx.org>
+
 	* globbing.[Ch]: moved here from the support directory.
 
 	* Makefile.am: associated change.

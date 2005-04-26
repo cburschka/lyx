@@ -27,7 +27,9 @@
 # include <cerrno>
 # include <csignal>
 # include <cstdlib>
-# include <unistd.h>
+# ifdef HAVE_UNISTD_H
+#  include <unistd.h>
+# endif
 # include <sys/wait.h>
 
 # ifndef CXX_GLOBAL_CSTD

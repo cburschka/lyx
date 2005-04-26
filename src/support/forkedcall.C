@@ -49,8 +49,9 @@
 # include <cerrno>
 # include <csignal>
 # include <cstdlib>
-# include <unistd.h>
-# include <sys/types.h>
+# ifdef HAVE_UNISTD_H
+#  include <unistd.h>
+# endif
 # include <sys/wait.h>
 #endif
 

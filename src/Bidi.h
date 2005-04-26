@@ -12,8 +12,6 @@
 #ifndef BIDI_H
 #define BIDI_H
 
-#include <config.h>
-
 #include "support/types.h"
 #include <vector>
 

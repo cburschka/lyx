@@ -18,17 +18,21 @@
 // ============================================================================
 //
 // File          : gzstream.C
-// Revision      : $Revision: 1.3 $
-// Revision_date : $Date: 2005/01/18 14:15:57 $
+// Revision      : $Revision: 1.4 $
+// Revision_date : $Date: 2005/04/26 10:30:24 $
 // Author(s)     : Deepak Bandyopadhyay, Lutz Kettner
 //
 // Standard streambuf implementation following Nicolai Josuttis, "The
 // Standard C++ Library".
 // ============================================================================
 
+#include <config.h>
+
 #include "gzstream.h"
 #include <iostream>
-#include <string.h>  // for memcpy
+#ifdef HAVE_STRING_H
+# include <string.h> // for memcpy
+#endif
 
 #ifdef GZSTREAM_NAMESPACE
 namespace GZSTREAM_NAMESPACE {

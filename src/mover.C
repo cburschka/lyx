@@ -8,6 +8,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#include <config.h>
+
 #include "mover.h"
 
 #include "support/filetools.h"

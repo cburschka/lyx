@@ -1,3 +1,15 @@
+2005-04-25  Angus Leeming  <leeming@lyx.org>
+
+	* Bidi.[Ch]:
+	* coordcache.[Ch]:
+	* ispell.C:
+	* lyxserver.C:
+	* mover.C:
+	* pch.h:
+	include <config.h> in .C files, not .h ones.
+	add licence blurb.
+	protect headers inside preprocessor guards.
+
 2005-04-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* FuncStatus.h (StatusCodes): document
@@ -69,7 +81,7 @@
 2005-04-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* lyxtext.h:
-	* text.C (metrics): 
+	* text.C (metrics):
 	* text2.C (getFont):
 	* rowpainter.C (getFont): Fix metrics bug introduced by inset
 	fonts fix
@@ -89,7 +101,7 @@
 
 2005-04-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* rowpainter.C (RowPainter, getFont): fix font inside inset 
+	* rowpainter.C (RowPainter, getFont): fix font inside inset
 	(bugs 1766, 1809)
 
 2005-04-06  Martin Vermeer  <martin.vermeer@hut.fi>
@@ -101,7 +113,7 @@
 2005-03-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (dispatch): translate message before sending it to the
-	minibuffer. 
+	minibuffer.
 
 2005-03-29  Angus Leeming  <leeming@lyx.org>
 
@@ -111,7 +123,7 @@
 2005-03-25  Stephan Witt  <stephan.witt@beusen.de>
 
 	* vc-backend.C: use QuoteName to protect file names wherever
-	necessary. 
+	necessary.
 
 2005-03-27  Martin Vermeer  <martin.vermeer@hut.fi>
 
@@ -161,15 +173,15 @@
 
 	* lyxfunc.C (getStatus): fix warning when assertions are disabled
 
-	* text3.C: 
-	* lyxfunc.C: 
+	* text3.C:
+	* lyxfunc.C:
 	* dociterator.C: include <boost/current_function.hpp>, which is
 	needed when assertions are disabled.
 
-2005-03-05  Johnathan Burchill  <jkerrb@users.sourceforge.net> 
+2005-03-05  Johnathan Burchill  <jkerrb@users.sourceforge.net>
 
-	* text2.C: fix for stuck cursor when traversing two 
-	consecutive spaces. [bug 1255] (pars_[old.pit()].setChange) 
+	* text2.C: fix for stuck cursor when traversing two
+	consecutive spaces. [bug 1255] (pars_[old.pit()].setChange)
 
 2005-02-25  Andreas Vox  <avox@arcor.de>
 
@@ -198,9 +210,9 @@
 	simple way. When no float is found above the caption, use the
 	labelstring of the caption layout as default.
 
-	* text.C (breakParagraph, backspace): 
+	* text.C (breakParagraph, backspace):
 	* text2.C (init, setLayout, changeDepth):
-	* text3.C (dispatch): 
+	* text3.C (dispatch):
 	* CutAndPaste.C (cutSelection, pasteSelection): pass a buffer to
 	updateCounters.
 
@@ -213,7 +225,7 @@
 
 2005-02-24  Johnathan Burchill  <jkerrb@users.sourceforge.net>
 
-	* paragraph_funcs.C: fix crash when pasting insets in change 
+	* paragraph_funcs.C: fix crash when pasting insets in change
 	tracking mode [bug 1277] (honour change type in moveItem).
 
 2005-02-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
@@ -302,8 +314,8 @@
 
 	* BufferView_pimpl.C (dispatch): handle LFUN_GOTO_PARAGRAPH here,
 	but use update() to get correct screen display; use convert
-	instead of istringstream. 
-	(getStatus): handle LFUN_GOTO_PARAGRAPH 
+	instead of istringstream.
+	(getStatus): handle LFUN_GOTO_PARAGRAPH
 
 	* lyxfunc.C (dispatch, getStatus): do not handle
 	LFUN_GOTO_PARAGRAPH here.

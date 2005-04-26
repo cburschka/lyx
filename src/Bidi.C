@@ -8,6 +8,7 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#include <config.h>
 
 #include "Bidi.h"
 #include "buffer.h"

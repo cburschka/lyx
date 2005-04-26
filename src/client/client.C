@@ -20,16 +20,22 @@
 #include <boost/scoped_ptr.hpp>
 
 // getpid(), getppid()
-#include <sys/types.h>
+#ifdef HAVE_SYS_TYPES_H
+# include <sys/types.h>
+#endif
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
 
 // select()
-#include <sys/select.h>
+#ifdef HAVE_SYS_SELECT_H
+# include <sys/select.h>
+#endif
 
 // socket(), connect()
-#include <sys/socket.h>
+#ifdef HAVE_SYS_SOCKET_H
+# include <sys/socket.h>
+#endif
 #include <sys/un.h>
 
 // fcntl()

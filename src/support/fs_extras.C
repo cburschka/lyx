@@ -1,4 +1,13 @@
 // -*- C++ -*-
+/* \file fs_extras.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 
 #include <config.h>
 
@@ -9,8 +18,12 @@
 #include <boost/detail/workaround.hpp>
 #include <boost/throw_exception.hpp>
 
-#include <sys/types.h>
-#include <sys/stat.h>
+#ifdef HAVE_SYS_TYPES_H
+# include <sys/types.h>
+#endif
+#ifdef HAVE_SYS_STAT_H
+# include <sys/stat.h>
+#endif
 #include <fcntl.h>
 
 // BOOST_POSIX or BOOST_WINDOWS specify which API to use.

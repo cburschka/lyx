@@ -1,3 +1,11 @@
+2005-04-25  Angus Leeming  <leeming@lyx.org>
+
+	* client.C:
+	* pch.h:
+	include <config.h> in .C files, not .h ones.
+	add licence blurb.
+	protect headers inside preprocessor guards.
+
 2005-02-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (man_MANS): clean generated files

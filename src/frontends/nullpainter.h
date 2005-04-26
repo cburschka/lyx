@@ -12,8 +12,6 @@
 #ifndef NULLPAINTER_H
 #define NULLPAINTER_H
 
-#include <config.h>
-
 #include "LColor.h"
 #include "Painter.h"
 

@@ -10,9 +10,11 @@
 
 #include <config.h>
 
-#include <stdlib.h>
 #include "bmtable.h"
 #include "lyx_xpm.h"
+#ifdef HAVE_STDLIB_H
+# include <stdlib.h>
+#endif
 
 #if defined(__cplusplus)
 extern "C"

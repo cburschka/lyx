@@ -12,7 +12,9 @@
 
 #include "support/lyxlib.h"
 
-#include <stdlib.h>
+#ifdef HAVE_STDLIB_H
+# include <stdlib.h>
+#endif
 
 
 void lyx::support::abort()

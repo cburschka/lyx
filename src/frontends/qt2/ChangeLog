@@ -1,3 +1,12 @@
+2005-04-25  Angus Leeming  <leeming@lyx.org>
+
+	* pch.h:
+	* moc/pch.h:
+	* qttableview.C:
+	include <config.h> in .C files, not .h ones.
+	add licence blurb.
+	protect headers inside preprocessor guards.
+
 2005-04-22  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am:

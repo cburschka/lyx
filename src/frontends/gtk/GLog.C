@@ -8,9 +8,14 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#include <config.h>
+
 // Too hard to make concept checks work with this file
 #ifdef _GLIBCXX_CONCEPT_CHECKS
 #undef _GLIBCXX_CONCEPT_CHECKS
+#endif
+#ifdef _GLIBCPP_CONCEPT_CHECKS
+#undef _GLIBCPP_CONCEPT_CHECKS
 #endif
 
 #include "GLog.h"

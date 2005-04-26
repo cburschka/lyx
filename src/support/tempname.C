@@ -27,7 +27,9 @@
 
 #if !defined(HAVE_MKSTEMP) && defined(HAVE_MKTEMP)
 # include <fcntl.h>
-# include <sys/stat.h>
+# ifdef HAVE_SYS_STAT_H
+#  include <sys/stat.h>
+# endif
 #endif
 
 using boost::scoped_array;

@@ -18,8 +18,8 @@
 // ============================================================================
 //
 // File          : gzstream.h
-// Revision      : $Revision: 1.1 $
-// Revision_date : $Date: 2003/07/27 23:40:08 $
+// Revision      : $Revision: 1.2 $
+// Revision_date : $Date: 2005/04/26 10:30:24 $
 // Author(s)     : Deepak Bandyopadhyay, Lutz Kettner
 //
 // Standard streambuf implementation following Nicolai Josuttis, "The
@@ -32,7 +32,9 @@
 // standard C++ with new header file names and std:: namespace
 #include <iostream>
 #include <fstream>
-#include <zlib.h>
+#ifdef HAVE_ZLIB_H
+# include <zlib.h>
+#endif
 
 // For LyX
 #define GZSTREAM_NAMESPACE gz

@@ -12,7 +12,9 @@
 
 #include "support/lyxlib.h"
 
-#include <sys/types.h>
+#ifdef HAVE_SYS_TYPES_H
+# include <sys/types.h>
+#endif
 #include <csignal>
 
 #ifdef _WIN32

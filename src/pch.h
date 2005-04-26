@@ -26,8 +26,12 @@
 #ifdef HAVE_SYS_SELECT_H
 # include <sys/select.h>
 #endif
-#include <sys/stat.h>
-#include <sys/time.h>
+#ifdef HAVE_SYS_STAT_H
+# include <sys/stat.h>
+#endif
+#ifdef HAVE_SYS_TIME_H
+# include <sys/time.h>
+#endif
 
 #include <algorithm>
 #include <cerrno>
