@@ -1234,8 +1234,8 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
-	if (c == '$') {
-		insert(createMathInset("$"));
+	if (c == '$' || c == '&') {
+		insert(createMathInset(string(1, c)));
 		return true;
 	}
 

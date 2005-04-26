@@ -1,3 +1,7 @@
+2005-04-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lib/symbols: treat & as special character (fixes bug 1542 completely)
+
 2005-04-22  Angus Leeming  <leeming@lyx.org>
 
 	* configure.m4: rewrite the "DeclareFOOClass" manipulation

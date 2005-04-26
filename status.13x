@@ -50,6 +50,8 @@ What's new
 - Fix crash when reading equations containing more columns than allowed 
   [bug 1542].
 
+- Store typed '&' characters in math as '\&' [bug 1542].
+
 - Make sure that the amsmath package is used in LaTeX output when
   using the AMS-specific array environments and over/under arrows in
   equations.
