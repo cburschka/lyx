@@ -139,7 +139,7 @@ void ControlPrint::dispatchParams()
 		pp.file_name;
 
 	string const data = target + " " + target_name + " " + command;
-	kernel().dispatch(FuncRequest(LFUN_PRINT, data));
+	kernel().dispatch(FuncRequest(getLfun(), data));
 }
 
 } // namespace frontend

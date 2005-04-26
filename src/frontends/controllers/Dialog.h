@@ -13,6 +13,7 @@
 #define DIALOG_H
 
 #include "Kernel.h"
+#include "lfuns.h"
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -157,6 +158,25 @@ public:
 	 *  a buffer is open.
 	 */
 	virtual bool isBufferDependent() const = 0;
+
+	/** The lfun that is sent for applying the data.
+	 *
+	 * This method is used by the default implementation of canApply()
+	 * for buffer dependant dialogs that send one lfun when applying the
+	 * data.
+	 * It should be used in dispatchParams(), too for consistency reasons.
+	 *  \returns the lfun that is sent for applying the data.
+	 */
+	virtual kb_action getLfun() const { return LFUN_INSET_APPLY; }
+
+	/** Check whether we may apply our data.
+	 *
+	 * The default implementation works for all dialogs that send one
+	 * lfun when applying the data. Dialogs that send none or more than
+	 * one lfun need to reimplement it.
+	 *  \returns whether the data can be applied or not.
+	 */
+	virtual bool canApply() const;
 
 	/** \return true if the kernel should disconnect the dialog from
 	 *  a particular inset after the data has been applied to it.

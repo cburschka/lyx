@@ -49,7 +49,7 @@ void ControlCommand::dispatchParams()
 
 	string const lfun = InsetCommandMailer::params2string(lfun_name_,
 							      params_);
-	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+	kernel().dispatch(FuncRequest(getLfun(), lfun));
 }
 
 } // namespace frontend

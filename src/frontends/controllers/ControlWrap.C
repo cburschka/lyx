@@ -43,7 +43,7 @@ void ControlWrap::clearParams()
 void ControlWrap::dispatchParams()
 {
 	string const lfun = InsetWrapMailer::params2string(params());
-	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+	kernel().dispatch(FuncRequest(getLfun(), lfun));
 }
 
 } // namespace frontend

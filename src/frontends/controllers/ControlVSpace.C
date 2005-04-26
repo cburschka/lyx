@@ -49,7 +49,7 @@ void ControlVSpace::clearParams()
 void ControlVSpace::dispatchParams()
 {
 	string const str = InsetVSpaceMailer::params2string(params_);
-	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, str));
+	kernel().dispatch(FuncRequest(getLfun(), str));
 }
 
 

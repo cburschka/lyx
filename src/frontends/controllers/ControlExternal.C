@@ -69,7 +69,7 @@ void ControlExternal::dispatchParams()
 	string const lfun = InsetExternalMailer::params2string(params(),
 							       kernel().buffer());
 
-	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+	kernel().dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

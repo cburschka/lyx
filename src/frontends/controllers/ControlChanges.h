@@ -32,6 +32,8 @@ public:
 	virtual void dispatchParams() {}
 	///
 	virtual bool isBufferDependent() const { return true; }
+	/// always true since dispatchParams() is empty
+	virtual bool canApply() const { return true; }
 
 	/// find the next merge chunk and highlight it
 	bool find();

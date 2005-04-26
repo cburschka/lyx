@@ -34,6 +34,8 @@ public:
 	virtual void dispatchParams();
 	///
 	virtual bool isBufferDependent() const { return true; }
+	///
+	virtual kb_action getLfun() const { return LFUN_TABULAR_INSERT; }
 
 	///
 	void setFamily(LyXFont::FONT_FAMILY);

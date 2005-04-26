@@ -34,6 +34,8 @@ public:
 	virtual void dispatchParams() {};
 	///
 	virtual bool isBufferDependent() const { return true; }
+	///
+	virtual kb_action getLfun() const { return LFUN_TABULAR_FEATURE; }
 
 	///
 	LyXTabular::idx_type getActiveCell() const;

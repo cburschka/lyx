@@ -47,7 +47,7 @@ void ControlBox::clearParams()
 void ControlBox::dispatchParams()
 {
 	string const lfun = InsetBoxMailer::params2string(params());
-	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+	kernel().dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

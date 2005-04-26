@@ -44,7 +44,7 @@ void ControlNote::clearParams()
 void ControlNote::dispatchParams()
 {
 	string const lfun = InsetNoteMailer::params2string(params());
-	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+	kernel().dispatch(FuncRequest(getLfun(), lfun));
 }
 
 } // namespace frontend

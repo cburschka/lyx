@@ -175,9 +175,19 @@ void Dialog::setView(View * v)
 
 void Dialog::checkStatus()
 {
-	FuncRequest const fr(LFUN_INSET_APPLY, name());
-	FuncStatus const fs(kernel().lyxview().getLyXFunc().getStatus(fr));
-	if (fs.enabled())
+	// buffer independant dialogs are always active.
+	// This check allows us leave canApply unimplemented for some dialogs.
+	if (!controller().isBufferDependent())
+		return;
+
+	// deactivate the dialog if we have no buffer
+	if (!kernel().isBufferAvailable()) {
+		bc().readOnly(true);
+		return;
+	}
+
+	// check whether this dialog may be active
+	if (controller().canApply())
 		bc().readOnly(kernel().isBufferReadonly());
 	else
 		bc().readOnly(true);
@@ -187,6 +197,14 @@ void Dialog::checkStatus()
 Dialog::Controller::Controller(Dialog & parent)
 	: parent_(parent)
 {}
+
+
+bool Dialog::Controller::canApply() const
+{
+	FuncRequest const fr(getLfun(), dialog().name());
+	FuncStatus const fs(kernel().lyxview().getLyXFunc().getStatus(fr));
+	return fs.enabled();
+}
 
 
 Dialog::Controller & Dialog::controller() const

@@ -49,7 +49,7 @@ void ControlBranch::clearParams()
 void ControlBranch::dispatchParams()
 {
 	string const lfun = InsetBranchMailer::params2string(params());
-	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+	kernel().dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

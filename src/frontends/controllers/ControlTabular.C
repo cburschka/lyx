@@ -73,7 +73,7 @@ LyXTabular const & ControlTabular::tabular() const
 void ControlTabular::set(LyXTabular::Feature f, string const & arg)
 {
 	string const data = featureAsString(f) + ' ' + arg;
-	kernel().dispatch(FuncRequest(LFUN_TABULAR_FEATURE, data));
+	kernel().dispatch(FuncRequest(getLfun(), data));
 }
 
 

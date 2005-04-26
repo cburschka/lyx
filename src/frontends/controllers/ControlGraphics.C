@@ -77,7 +77,7 @@ void ControlGraphics::dispatchParams()
 	InsetGraphicsParams tmp_params(params());
 	string const lfun =
 		InsetGraphicsMailer::params2string(tmp_params, kernel().buffer());
-	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+	kernel().dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

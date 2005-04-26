@@ -1,3 +1,12 @@
+2005-04-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* Dialog.h, ControlCharacter.h, ControlPrint.h, ControlSendto.h,
+	ControlTabular.h, ControlTabularCreate.h (getLfun): new, return the
+	lfun for applying the data
+	* Control*.C (dispatchParams): use getLfun where appropriate
+	* Dialog.[Ch], ControlChanges.h, ControlDocument.h (canApply): new,
+	check whether the dialog data may be applied
+
 2005-04-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlDocument.C (dispatchParams): update the counters if

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "ControlSendto.h"
+
 #include "buffer.h"
 #include "converter.h"
 #include "format.h"
@@ -50,7 +51,7 @@ void ControlSendto::dispatchParams()
 		return;
 
 	string const data = format_->name() + " " + command_;
-	kernel().dispatch(FuncRequest(LFUN_EXPORT_CUSTOM, data));
+	kernel().dispatch(FuncRequest(getLfun(), data));
 }
 
 

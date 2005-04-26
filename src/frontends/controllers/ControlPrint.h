@@ -35,6 +35,8 @@ public:
 	virtual void dispatchParams();
 	///
 	virtual bool isBufferDependent() const { return true; }
+	///
+	virtual kb_action getLfun() const { return LFUN_PRINT; }
 
 	/// Browse for a file
 	std::string const browse(std::string const &) const;

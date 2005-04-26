@@ -44,7 +44,7 @@ void ControlTabularCreate::clearParams()
 void ControlTabularCreate::dispatchParams()
 {
 	string const data = convert<string>(params().first) + ' ' + convert<string>(params().second);
-	kernel().dispatch(FuncRequest(LFUN_TABULAR_INSERT, data));
+	kernel().dispatch(FuncRequest(getLfun(), data));
 }
 
 } // namespace frontend

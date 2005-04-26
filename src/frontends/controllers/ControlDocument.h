@@ -38,6 +38,8 @@ public:
 	virtual void dispatchParams();
 	///
 	virtual bool isBufferDependent() const { return true; }
+	/// always true since we don't manipulate document contents
+	virtual bool canApply() const { return true; }
 	///
 	LyXTextClass const & textClass() const;
 	///
