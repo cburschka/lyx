@@ -98,7 +98,7 @@ Style Address
 End
 
 # Right Address style
-Style Right_Address
+Style "Right Address"
   Margin		Right_Address_Box
   LatexType		Command
   LatexName		lyxrightaddress

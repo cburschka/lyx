@@ -70,7 +70,7 @@ Preamble
 EndPreamble
 
 # Headers style definition
-Style Left_Header
+Style "Left Header"
   Margin        Static
   LatexType     Command
   LatexName     lefthead
@@ -96,7 +96,7 @@ Style Left_Header
 
 End
 
-Style Right_Header
+Style "Right Header"
   CopyStyle		"Left Header"
   LatexName     righthead
   LeftMargin	"Right Header:xx"
@@ -195,7 +195,7 @@ End
 
 
 # Table Caption style definition
-Style Table_Caption
+Style "Table Caption"
   Margin		First_Dynamic
   LatexType		Command
   LatexName	tablecaption

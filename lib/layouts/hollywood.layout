@@ -80,7 +80,7 @@ End
 
 # FADE_IN: and FADE_OUT: usually stand alone. If you want a more complicated
 # FADE_IN e.g. FADE_IN on STELLA:, use the Narrative Style.
-Style FADE_IN:
+Style "FADE IN:"
   Margin                Dynamic
   LatexType             Command
   LatexName             fadein
@@ -240,7 +240,7 @@ Style Transition
   LabelType             No_Label
 End
 
-Style TITLE_OVER:
+Style "TITLE OVER:"
   Margin                Dynamic
   LatexType             Command
   LatexName             titleover
@@ -268,7 +268,7 @@ Style INTERCUT
   LabelString		"INTERCUT WITH: "
 End
 
-Style FADE_OUT
+Style "FADE OUT"
   Margin                Dynamic
   LatexType             Command
   LatexName             fadeout
@@ -308,7 +308,7 @@ Style Scene
 End
 
 # Right Address style
-Style Right_Address
+Style "Right Address"
   Margin		Right_Address_Box
   LatexType		Command
   LatexName		address
@@ -350,7 +350,7 @@ End
 Style Standard
 ObsoletedBy General
 End
-Style FADE_OUT:
+Style "FADE OUT:"
 ObsoletedBy "FADE OUT"
 End
 

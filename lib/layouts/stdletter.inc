@@ -30,7 +30,7 @@ Style Standard
 End
 
 # My Address style
-Style My_Address
+Style "My Address"
   Margin		Right_Address_Box
   LatexType		Command
   LatexName		address
@@ -42,7 +42,7 @@ Style My_Address
 End
 
 # Send_To_Address style definition
-Style Send_To_Address
+Style "Send To Address"
   Margin		Static
   LatexType		Command
   LatexName		letter

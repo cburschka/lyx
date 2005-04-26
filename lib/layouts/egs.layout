@@ -258,7 +258,7 @@ Style Verse
 End
 
 # Right Address style
-Style Right_Address
+Style "Right Address"
   Margin		Right_Address_Box
   LatexType		Command
   LatexName		lyxrightaddress
@@ -309,7 +309,7 @@ End
 
 
 # Title style definition
-Style LaTeX_Title
+Style "LaTeX Title"
   Margin		Static
   LatexType		Command
   LatexName		title

@@ -99,7 +99,7 @@ Style SCENE*
   LabelString		"SCENE "
 End
 
-Style AT_RISE:
+Style "AT RISE:"
   Margin                Dynamic
   LatexType             Command
   LatexName             atrise
@@ -213,7 +213,7 @@ Style Author
 End
 
 # Right Address style
-Style Right_Address
+Style "Right Address"
   Margin		Right_Address_Box
   LatexType		Command
   LatexName		address

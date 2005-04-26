@@ -133,7 +133,7 @@ Style Author
 End
 
 # Author Address
-Style Author_Address
+Style "Author Address"
   Margin		Static
   LatexType		Command
   InTitle		1
@@ -148,7 +148,7 @@ Style Author_Address
   EndFont
 End
 
-Style Author_Email
+Style "Author Email"
   Margin		Static
   LatexType		Command
   InTitle		1
@@ -167,7 +167,7 @@ Style Author_Email
   EndFont
 End
 
-Style Author_URL
+Style "Author URL"
   Margin		Static
   LatexType		Command
   InTitle		1
