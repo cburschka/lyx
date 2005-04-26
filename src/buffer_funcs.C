@@ -379,10 +379,10 @@ void setCounter(Buffer const & buf, ParIterator & it)
 	// is it a layout that has an automatic label?
 	if (layout->labeltype == LABEL_COUNTER) {
 		if (layout->toclevel <= buf.params().secnumdepth
-		    && (!layout->isEnvironment() 
+		    && (!layout->isEnvironment()
 			|| isFirstInSequence(it.pit(), it.plist()))) {
 			counters.step(layout->counter);
-			string label = expandLabel(textclass, layout, 
+			string label = expandLabel(textclass, layout,
 						   par.params().appendix());
 			par.params().labelString(label);
 		}
@@ -453,7 +453,7 @@ void setCounter(Buffer const & buf, ParIterator & it)
 			--i;
 			InsetBase * const in = &it[i].inset();
 			if (in->lyxCode() == InsetBase::FLOAT_CODE
-			    || in->lyxCode() == InsetBase::WRAP_CODE) 
+			    || in->lyxCode() == InsetBase::WRAP_CODE)
 				type = in->getInsetName();
 				break;
 		}

@@ -47,7 +47,7 @@ QTabularDialog::QTabularDialog(QTabular * form)
 {
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-		
+
 	widthED->setValidator(unsignedLengthValidator(widthED));
 }
 

@@ -482,11 +482,11 @@ void MathGridInset::draw(PainterInfo & pi, int x, int y) const
 	drawWithMargin(pi, x, y, 0, 0);
 }
 
-void MathGridInset::drawWithMargin(PainterInfo & pi, int x, int y, 
+void MathGridInset::drawWithMargin(PainterInfo & pi, int x, int y,
 	int lmargin, int rmargin) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx).draw(pi, x + lmargin + cellXOffset(idx), 
+		cell(idx).draw(pi, x + lmargin + cellXOffset(idx),
 			y + cellYOffset(idx));
 
 	for (row_type row = 0; row <= nrows(); ++row)
@@ -1142,9 +1142,9 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		else if (s == "swap-column")
 			swapCol(cur.col());
 		else if (s == "add-vline-left")
-			colinfo_[cur.col()].lines_++;			
+			colinfo_[cur.col()].lines_++;
 		else if (s == "add-vline-right")
-			colinfo_[cur.col()+1].lines_++;			
+			colinfo_[cur.col()+1].lines_++;
 		else if (s == "delete-vline-left")
 			colinfo_[cur.col()].lines_--;
 		else if (s == "delete-vline-right")

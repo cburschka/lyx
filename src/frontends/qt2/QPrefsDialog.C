@@ -298,7 +298,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(screenfontsModule->screenHugerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(identityModule->nameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(identityModule->emailED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	
+
 	// initialize the validators
 	screenfontsModule->screenTinyED->setValidator(new QDoubleValidator(
 		screenfontsModule->screenTinyED));
@@ -348,7 +348,7 @@ void QPrefsDialog::updateConverters()
 	// save current selection
 	QString current = convertmod->converterFromCO->currentText()
 		+ " -> " + convertmod->converterToCO->currentText();
-	
+
 	convertmod->converterFromCO->clear();
 	convertmod->converterToCO->clear();
 
@@ -699,7 +699,7 @@ void QPrefsDialog::updateFormats()
 
 	// save current selection
 	QString current = formatmod->guiNameED->text();
-	
+
 	formatmod->formatsLB->clear();
 
 	Formats::const_iterator cit = form_->formats().begin();
@@ -757,7 +757,7 @@ void QPrefsDialog::updateFormatsButtons()
 
 	// assure that a gui name cannot be chosen twice
 	bool const known_otherwise = gui_name_known && (where != sel);
-	
+
 	bool const known = !(sel < 0);
 	bool const valid = (!fileformatsModule->formatED->text().isEmpty()
 		&& !fileformatsModule->guiNameED->text().isEmpty());
@@ -801,7 +801,7 @@ void QPrefsDialog::new_format()
 	updateFormats();
 	fileformatsModule->formatsLB->setCurrentItem(form_->formats().getNumber(name));
 	form_->converters().update(form_->formats());
-	
+
 	updateConverters();
 	updateFormatsButtons();
 }
@@ -841,7 +841,7 @@ void QPrefsDialog::remove_format()
 	form_->formats().erase(form_->formats().get(nr).name());
 	updateFormats();
 	form_->converters().update(form_->formats());
-	
+
 	updateConverters();
 	updateFormatsButtons();
 }

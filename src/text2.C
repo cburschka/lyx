@@ -448,7 +448,7 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 	// Don't use forwardChar here as ditend might have
 	// pos() == lastpos() and forwardChar would miss it.
 	// Can't use forwardPos either as this descends into
-	// nested insets. 
+	// nested insets.
 	for (; dit != ditend; dit.forwardPosNoDescend()) {
 		if (dit.pos() != dit.lastpos()) {
 			LyXFont f = getFont(dit.paragraph(), dit.pos());
@@ -837,7 +837,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		c = end - 1;
 	}
 	// Air gap below display inset:
-	if (row.pos() < end && c >= end && par.isInset(end - 1) 
+	if (row.pos() < end && c >= end && par.isInset(end - 1)
 	    && par.getInset(end - 1)->display()) {
 		c = end - 1;
 	}

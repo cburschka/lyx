@@ -81,12 +81,12 @@ void LaTeXFeatures::getAvailable()
 
 	lex.setFile(real_file);
 
-	if (!lex.isOK()) 
+	if (!lex.isOK())
 		return;
 
 	// Make sure that we are clean
 	packages_.clear();
-	
+
 	bool finished = false;
 	// Parse config-file
 	while (lex.isOK() && !finished) {

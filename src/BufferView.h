@@ -157,7 +157,7 @@ public:
 	int offset_ref() const;
 	/// access to anchor
 	lyx::pit_type anchor_ref() const;
-	
+
 	/// access to full cursor
 	LCursor & cursor();
 	/// access to full cursor

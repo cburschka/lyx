@@ -216,8 +216,8 @@ void RCS::undoLast()
 
 void RCS::getLog(string const & tmpf)
 {
-	doVCCommand("rlog " + QuoteName(OnlyFilename(owner_->fileName())) 
-		    + " > " + tmpf, 
+	doVCCommand("rlog " + QuoteName(OnlyFilename(owner_->fileName()))
+		    + " > " + tmpf,
 		    owner_->filePath());
 }
 
@@ -346,7 +346,7 @@ void CVS::undoLast()
 
 void CVS::getLog(string const & tmpf)
 {
-	doVCCommand("cvs log " + QuoteName(OnlyFilename(owner_->fileName())) 
+	doVCCommand("cvs log " + QuoteName(OnlyFilename(owner_->fileName()))
 		    + " > " + tmpf,
 		    owner_->filePath());
 }

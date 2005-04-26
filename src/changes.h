@@ -89,7 +89,7 @@ public:
 
 	/// output latex to mark a transition between two changetypes
 	/// returns length of text outputted
-	static int latexMarkChange(std::ostream & os, Change::Type old, 
+	static int latexMarkChange(std::ostream & os, Change::Type old,
 		Change::Type change, bool const & output);
 
 	/// output .lyx file format for transitions between changes

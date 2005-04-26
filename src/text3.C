@@ -1113,7 +1113,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		cur.clearSelection();
 		LyXFont const old_font = real_current_font;
-		
+
 		// Prevents language turds in new lyxtexts under non-english
 		BufferParams const & bufparams = cur.buffer().params();
 		Language const * lang = cur.paragraph().getParLanguage(bufparams);
@@ -1191,7 +1191,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_FLOAT:
-	case LFUN_INSET_WIDE_FLOAT: 
+	case LFUN_INSET_WIDE_FLOAT:
 	case LFUN_INSET_WRAP:
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();

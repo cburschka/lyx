@@ -1122,8 +1122,8 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enabled(false);
 			return true;
 		}
-		if ((type_ == "simple" 
-		  || type_ == "equation" 
+		if ((type_ == "simple"
+		  || type_ == "equation"
 		  || type_ == "none") &&
 		    (s == "add-hline-above" || s == "add-hline-below")) {
 			flag.message(bformat(
@@ -1132,14 +1132,14 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enabled(false);
 			return true;
 		}
-		if (s == "add-vline-left" || s == "add-vline-right") { 
+		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
 				N_("Can't add vertical grid lines in '%1$s'"),
 				type_));
 			flag.enabled(false);
 			return true;
 		}
-		if (s == "valign-top" || s == "valign-middle" 
+		if (s == "valign-top" || s == "valign-middle"
 		 || s == "valign-bottom" || s == "align-left"
 		 || s == "align-center" || s == "align-right") {
 			flag.enabled(false);

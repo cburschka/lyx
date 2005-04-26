@@ -74,7 +74,7 @@ public:
 	///
 	bool empty() { return list.empty(); }
 	///
-	void clear() { list.clear(); }	
+	void clear() { list.clear(); }
 	///
 	const_iterator begin() const { return list.begin(); }
 	const_iterator end() const { return list.end(); }

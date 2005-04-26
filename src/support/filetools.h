@@ -108,7 +108,7 @@ std::string const LibScriptSearch(std::string const & command);
  *  are indicated by '/', not by '\'.
  *
  *  Manipulates @c path into a form suitable for inclusion in a LaTeX
- *  document.  
+ *  document.
  *  If @c path contains LaTeX special characters, these are escaped.
  *  Eg, '~' -> '\string~'
  *  If @c path contains spaces, then the returned path is enclosed in

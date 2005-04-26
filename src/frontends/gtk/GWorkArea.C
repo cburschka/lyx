@@ -340,9 +340,9 @@ void GWorkArea::setScrollbarParams(int height, int pos, int line_height)
 {
 	if (adjusting_)
 		return;
-	
+
 	adjusting_ = true;
-	
+
 	Gtk::Adjustment * adjustment = vscrollbar_.get_adjustment();
 	adjustment->set_lower(0);
 	int workAreaHeight = workHeight();
@@ -372,7 +372,7 @@ void GWorkArea::onScroll()
 		return;
 
 	adjusting_ = true;
-	
+
 	double val = vscrollbar_.get_adjustment()->get_value();
 	scrollDocView(static_cast<int>(val));
 	adjusting_ = false;

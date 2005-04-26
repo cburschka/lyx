@@ -133,7 +133,7 @@ public:
 	ParPosCache const & getParPos() const { return pars_; }
 private:
 	CoordCacheBase<MathArray> arrays_;
-	
+
 	// all insets
 	CoordCacheBase<InsetBase> insets_;
 

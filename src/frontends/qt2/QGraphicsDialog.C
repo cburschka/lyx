@@ -59,14 +59,14 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		form, SLOT(slotRestore()));
 	connect(editPB, SIGNAL(clicked()),
 		this, SLOT(edit_clicked()));
-		
+
 	angle->setValidator(new QDoubleValidator(-360, 360, 2, angle));
 
 	lbX->setValidator(new QIntValidator(lbX));
 	lbY->setValidator(new QIntValidator(lbY));
 	rtX->setValidator(new QIntValidator(rtX));
 	rtY->setValidator(new QIntValidator(rtY));
-		
+
 	displayscale->setValidator(new QIntValidator(displayscale));
 	height->setValidator(unsignedLengthValidator(height));
 	width->setValidator(unsignedLengthValidator(width));

@@ -214,15 +214,15 @@ CurStatus status(BufferView const * bv, DocIterator const & dit)
 namespace {
 
 bool gotoNextInset(LCursor & cur,
-		   vector<InsetBase_code> const & codes, 
+		   vector<InsetBase_code> const & codes,
 		   string const & contents)
 {
 	LCursor tmpcur = cur;
-	
+
 	while (tmpcur) {
 		InsetBase const * inset = tmpcur.nextInset();
-		if (inset 
-		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end() 
+		if (inset
+		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
 		    && (contents.empty() ||
 			static_cast<InsetCommand const *>(inset)->getContents() == contents)) {
 			cur = tmpcur;
@@ -237,7 +237,7 @@ bool gotoNextInset(LCursor & cur,
 }
 
 
-void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes, 
+void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
 	       bool same_content)
 {
 	string contents;
@@ -246,7 +246,7 @@ void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
 
 	if (same_content) {
 		InsetBase const * inset = tmpcur.nextInset();
-		if (inset 
+		if (inset
 		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
 			contents = static_cast<InsetCommand const *>(inset)->getContents();
 		}
@@ -255,13 +255,13 @@ void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
 	if (!gotoNextInset(tmpcur, codes, contents)) {
 		if (tmpcur != doc_iterator_begin(tmpcur.inset())) {
 			tmpcur.reset(tmpcur.bottom().inset());
-			if (!gotoNextInset(tmpcur, codes, contents)) 
+			if (!gotoNextInset(tmpcur, codes, contents))
 				bv->cursor().message(_("No more insets"));
 		} else {
 			bv->cursor().message(_("No more insets"));
 		}
 	}
-	
+
 	tmpcur.clearSelection();
 	bv->setCursor(tmpcur);
 }

@@ -383,13 +383,13 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 
 	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin())
 		--it;
-	// The below code guarantees that in this slice, the cursor will 
+	// The below code guarantees that in this slice, the cursor will
 	// never be on the right edge of an inset after a mouse click.
 	if (it != begin())
 		--it;
 	if (it < end() && (*it)->getChar())
 		++it;
-		
+
 	return it - begin();
 }
 

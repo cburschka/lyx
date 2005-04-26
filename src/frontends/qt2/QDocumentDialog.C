@@ -187,10 +187,10 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		SLOT(branchDoubleClicked(QListViewItem *)));
 	connect(branchesModule->colorPB, SIGNAL(clicked()), this, SLOT(toggleBranchColor()));
 	branchesModule->branchesLV->setSorting(0);
-	
+
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
-	
+
 	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
 		textLayoutModule->skipLE));
 	pageLayoutModule->paperheightLE->setValidator(unsignedLengthValidator(
@@ -213,19 +213,19 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		marginsModule->footskipLE));
 
 	// create the numbering items, in reverse order
-	numberlevel7 = 
+	numberlevel7 =
 		new QListViewItem(numberingModule->tocLV, qt_("Subparagraph"));
-	numberlevel6 = 
+	numberlevel6 =
 		new QListViewItem(numberingModule->tocLV, qt_("Paragraph"));
-	numberlevel5 = 
+	numberlevel5 =
 		new QListViewItem(numberingModule->tocLV, qt_("Subsubsection"));
-	numberlevel4 = 
+	numberlevel4 =
 		new QListViewItem(numberingModule->tocLV, qt_("Subsection"));
-	numberlevel3 = 
+	numberlevel3 =
 		new QListViewItem(numberingModule->tocLV, qt_("Section"));
-	numberlevel2 = 
+	numberlevel2 =
 		new QListViewItem(numberingModule->tocLV, qt_("Chapter"));
-	numberlevel1 = 
+	numberlevel1 =
 		new QListViewItem(numberingModule->tocLV, qt_("Part"));
 }
 
@@ -430,7 +430,7 @@ void QDocumentDialog::updateNumbering()
 	int const toc = numberingModule->tocSL->value();
 
 	// check if the document class features chapter
-	LyXTextClass const & tclass = 
+	LyXTextClass const & tclass =
 		form_->controller().params().getLyXTextClass();
 	bool const hasChapter = tclass.hasLayout("Chapter");
 

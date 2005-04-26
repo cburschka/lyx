@@ -500,7 +500,7 @@ int Changes::latexMarkChange(std::ostream & os,
 {
 	if (!output || old == change)
 		return 0;
-		
+
 	string const start("\\changestart{}");
 	string const end("\\changeend{}");
 	string const son("\\overstrikeon{}");

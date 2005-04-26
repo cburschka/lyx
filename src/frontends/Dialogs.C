@@ -98,7 +98,7 @@ void Dialogs::show(string const & name, string const & data)
 	if (dialog) {
 		// FIXME! Should check that the dialog is NOT an inset dialog.
 		dialog->show(data);
-	}	
+	}
 	in_show_ = false;
 }
 

@@ -528,7 +528,7 @@ void RowPainter::paintFirst()
 					x = width_ - leftMargin() -
 						font_metrics::width(str, font);
 				}
-				
+
 				pain_.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 			} else {
 				if (is_rtl) {

@@ -81,7 +81,7 @@ void GGraphics::doBuild()
 	xml_->get_widget("Width", widthspin_);
 	xml_->get_widget("Height", heightspin_);
 	xml_->get_widget("MaintainAspectRatio", aspectcheck_);
-	
+
 	Gtk::VBox * box;
 	xml_->get_widget("WidthUnits", box);
 	box->pack_start(widthunitscombo_, true, true, 0);

@@ -123,7 +123,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 
 	LyXFont tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
-	// I don't understand why the above .reduce and .realize aren't 
+	// I don't understand why the above .reduce and .realize aren't
 	//needed, or even wanted, here. It just works. -- MV 10.04.2005
 	InsetText::draw(pi, x, y);
 	pi.base.font = tmpfont;

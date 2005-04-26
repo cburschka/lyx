@@ -111,8 +111,8 @@ private:
 	QPrefScreenFontsModule * screenfontsModule;
 	QPrefColorsModule * colorsModule;
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	QPrefCygwinPathModule * cygwinpathModule;	
-#endif	
+	QPrefCygwinPathModule * cygwinpathModule;
+#endif
 	QPrefDisplayModule * displayModule;
 	QPrefPathsModule * pathsModule;
 	QPrefSpellcheckerModule * spellcheckerModule;

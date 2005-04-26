@@ -33,15 +33,15 @@
 	* insetwrap.C (addToToc): copy the code from InsetFloat::addToToc.
 
 	* insetfloat.C (addToToc): do not use the harcoded "Caption" name,
-	but the SENSITIVE label type. 
+	but the SENSITIVE label type.
 
 2005-04-18  Angus Leeming  <leeming@lyx.org>
 
 	* ExternalSupport.[Ch] (doSubstitution): passed an extra boolean
 	'use_latex_path' argument. In turn, passed to the new subst_path
 	function when replacing placeholders with paths.
-	
-	* insetexternal.C (getScreenLabel): 
+
+	* insetexternal.C (getScreenLabel):
 	* ExternalSupport.C (lots of places): change invocation of
 	doSubstitution in lots of places, specifying the appropriate values
 	for this 'use_latex_path' boolean.
@@ -61,7 +61,7 @@
 
 2005-04-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* insetfloat.C (InsetFloat): 
+	* insetfloat.C (InsetFloat):
 	* insetwrap.C (InsetWrap): do not set layout here.
 
 2005-04-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
@@ -82,7 +82,7 @@
 2005-04-05  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetexternal.C (validate):
-	* ExternalTemplate.[Ch] (dumpFormat, readFormat): allow 
+	* ExternalTemplate.[Ch] (dumpFormat, readFormat): allow
 	multiple Requirements in external material template
 
 2005-04-03  Alfredo Braunstein  <abraunst@lyx.org>
@@ -114,24 +114,24 @@
 
 2005-03-21  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* insettabular.C (drawSelection): cosmetic bugfix 
+	* insettabular.C (drawSelection): cosmetic bugfix
 
 2005-03-17  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C (doDispatch): get middle mouse button back again
 	(partially), pass LFUN_CUT and LFUN_PASTE to insettext's dispatch
 	when only a part of the cell is selected (fix bug 1799)
-	
-	* insettabular.C: handle some more character attributes in 
-	M. Vermeers method (when multiple cells in tables are selected); 
-	disable some more senseless lfuns when multiple cells are selected 
+
+	* insettabular.C: handle some more character attributes in
+	M. Vermeers method (when multiple cells in tables are selected);
+	disable some more senseless lfuns when multiple cells are selected
 	(prevent crashes);
 	Move to end of cell instead of beginning when coming from the cell
 	behind.
 
 2005-03-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* insettabular.C: make applying character attributes 
+	* insettabular.C: make applying character attributes
 	possible for multiple cells in tables. Disable collapsable
 	insets for multiple-cell selection in table (Jürgen S.)
 	Bug reported by Helge Hafting.
@@ -169,7 +169,7 @@
 
 2005-02-13  André Pönitz  <poenitz@gmx.net>
 
-	* insettext.[Ch] (border_): new 
+	* insettext.[Ch] (border_): new
 	* insettext.C (metrics, draw, drawFrame, clearInset, getCursorPos):
 	use border_
 

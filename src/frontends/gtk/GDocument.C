@@ -265,7 +265,7 @@ void GDocument::doBuild()
 	xml_->get_widget("TextEncoding", box);
 	box->pack_start(encodingcombo_, true, true, 0);
 	box->show_all();
-	
+
 	int i = 0;
 	while (encodings[i])
 		encodingcombo_.append_text(encodings[i++]);

@@ -1167,7 +1167,7 @@ void LCursor::fixIfBroken()
 			       << ". Trying to correct this."  << endl;
 			newdepth = copy.depth() - 1;
 		}
-		copy.pop();     
+		copy.pop();
 	}
 	// shrink cursor to a size where everything is valid, possibly
 	// leaving insets

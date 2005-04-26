@@ -10,7 +10,7 @@
 
 #include <windows.h>
 
-// Avoid some very annoying macros from MFC 
+// Avoid some very annoying macros from MFC
 #  undef max
 #  undef min
 
@@ -18,33 +18,33 @@
 
   namespace std {
     // These overloads prevent ambiguity errors when signed and unsigned integers are compared.
-    inline long min(long x, long y) {return std::min(x, y);}  
+    inline long min(long x, long y) {return std::min(x, y);}
     inline long max(long x, long y) {return std::max(x, y);}
   }
 
 #else // defined( __SGI_STL_PORT )
   namespace std {
     // These overloads prevent ambiguity errors when int, long and unsigned int and int are compared.
-	
-	inline int min(int x, int y) { return x < y ? x : y; }  
+
+	inline int min(int x, int y) { return x < y ? x : y; }
 	inline int max(int x, int y) { return x > y ? x : y; }
 
-	inline unsigned int min(unsigned int x, unsigned int y) { return x < y ? x : y; }  
+	inline unsigned int min(unsigned int x, unsigned int y) { return x < y ? x : y; }
 	inline unsigned int max(unsigned int x, unsigned int y) { return x > y ? x : y; }
 
-	inline long min(long x, long y) { return x < y ? x : y; }  
+	inline long min(long x, long y) { return x < y ? x : y; }
 	inline long max(long x, long y) { return x > y ? x : y; }
 
-	inline long min(int x, long y) { return x < y ? x : y; }  
+	inline long min(int x, long y) { return x < y ? x : y; }
 	inline long max(int x, long y) { return x > y ? x : y; }
 
-	inline long min(long x, int y) { return x < y ? x : y; }  
+	inline long min(long x, int y) { return x < y ? x : y; }
 	inline long max(long x, int y) { return x > y ? x : y; }
 
-	inline unsigned long min(unsigned long x, unsigned long y) { return x < y ? x : y; }  
+	inline unsigned long min(unsigned long x, unsigned long y) { return x < y ? x : y; }
 	inline unsigned long max(unsigned long x, unsigned long y) { return x > y ? x : y; }
 
-	inline double min(double x, double y) { return x < y ? x : y; }  
+	inline double min(double x, double y) { return x < y ? x : y; }
 	inline double max(double x, double y) { return x > y ? x : y; }
   }
 

@@ -51,10 +51,10 @@ class Undo;
 /** The buffer object.
  * This is the buffer object. It contains all the informations about
  * a document loaded into LyX.
- * The buffer object owns the LyXText (wrapped in an InsetText), which 
+ * The buffer object owns the LyXText (wrapped in an InsetText), which
  * contains the individual paragraphs of the document.
  *
- * 
+ *
  * I am not sure if the class is complete or
  * minimal, probably not.
  * \author Lars Gullik Bjønnes

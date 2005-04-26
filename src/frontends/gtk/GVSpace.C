@@ -52,7 +52,7 @@ void GVSpace::doBuild()
 	xml_->get_widget("ValueUnits", box);
 	box->pack_start(valueunitscombo_, true, true, 0);
 	box->show_all();
-	
+
 	xml_->get_widget("Protect", protectcheck_);
 
 	populateUnitCombo(valueunitscombo_, false);
@@ -97,7 +97,7 @@ void GVSpace::update()
 		setWidgetsFromLength(*valuespin_->get_adjustment(), valueunitscombo_, space.length().len());
 	} else {
 		setWidgetsFromLength(*valuespin_->get_adjustment(), valueunitscombo_, LyXLength());
-		
+
 	}
 }
 

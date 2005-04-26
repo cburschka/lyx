@@ -18,7 +18,7 @@
 #include "support/types.h"
 
 /**
- * An on-screen row of text. A paragraph is broken into a 
+ * An on-screen row of text. A paragraph is broken into a
  * RowList for display. Each Row contains position pointers
  * into the first and last character positions of that row.
  */

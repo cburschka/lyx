@@ -52,7 +52,7 @@ CurStatus status(BufferView const * bv, DocIterator const & dit);
 Point coordOffset(DocIterator const & dit);
 
 // Moves cursor to the next inset with one of the given codes.
-void gotoInset(BufferView * bv, std::vector<InsetBase_code> const & codes, 
+void gotoInset(BufferView * bv, std::vector<InsetBase_code> const & codes,
 	       bool same_content);
 
 // Moves cursor to the next inset with given code.

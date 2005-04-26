@@ -983,7 +983,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_CELL_FORWARD:
 		status.enabled(true);
 			return true;
-	
+
 	// disable these with multiple cells selected
 	case LFUN_INSET_INSERT:
 	case LFUN_INSERT_CHARSTYLE:

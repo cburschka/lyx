@@ -139,7 +139,7 @@ LyXText const * DocIterator::text() const
 
 Paragraph & DocIterator::paragraph()
 {
-	if (!inTexted()) 
+	if (!inTexted())
 		lyxerr << *this << endl;
 	BOOST_ASSERT(inTexted());
 	return top().paragraph();
@@ -387,7 +387,7 @@ void DocIterator::forwardPar()
 #if 0
 	DocIterator cmp(*this);
 #endif
-	
+
 	while (!empty() && (!inTexted() || pos() != 0)) {
 		if (inTexted()) {
 			pos_type const lastp = lastpos();

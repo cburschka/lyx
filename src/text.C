@@ -916,7 +916,7 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 
 		// This is special code for the chapter, since the label of this
 		// layout is printed in an extra row
-		if (layout->counter == "chapter" 
+		if (layout->counter == "chapter"
 		    && !par.params().labelString().empty()) {
 			labeladdon = int(font_metrics::maxHeight(labelfont)
 			             * layout->spacing.getValue()

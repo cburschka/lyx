@@ -185,7 +185,7 @@ private:
 
 	/// return the cell nearest to x, y
 	idx_type getNearestCell(int x, int y) const;
-	
+
 	///
 	Buffer const * buffer_;
 	///

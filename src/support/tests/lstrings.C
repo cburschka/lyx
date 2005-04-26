@@ -18,7 +18,7 @@ void test_uppercase()
 	cout << uppercase("AlLe") << endl;
 }
 
-int main() 
+int main()
 {
 	test_lowercase();
 	test_uppercase();

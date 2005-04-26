@@ -58,8 +58,8 @@ using std::pair;
 namespace {
 
 bool moveItem(Paragraph & from, Paragraph & to,
-	BufferParams const & params, pos_type i, pos_type j, 
-	Change change = Change(Change::INSERTED)); 
+	BufferParams const & params, pos_type i, pos_type j,
+	Change change = Change(Change::INSERTED));
 
 bool moveItem(Paragraph & from, Paragraph & to,
 	BufferParams const & params, pos_type i, pos_type j,
@@ -214,9 +214,9 @@ void breakParagraphConservative(BufferParams const & bparams,
 			if (moveItem(par, tmp, bparams, i, j - pos, change))
 				++j;
 		}
-		// If tracking changes, set all the text that is to be  
-		// erased to Type::INSERTED.  
-		for (pos_type k = pos_end; k >= pos; --k) { 
+		// If tracking changes, set all the text that is to be
+		// erased to Type::INSERTED.
+		for (pos_type k = pos_end; k >= pos; --k) {
 			if (bparams.tracking_changes)
 				par.setChange(k, Change::INSERTED);
 			par.erase(k);

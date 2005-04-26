@@ -397,7 +397,7 @@ int LyXRC::read(LyXLex & lexrc)
 				tex_allows_spaces = lexrc.getBool();
   			}
  			break;
- 
+
 		case RC_KBMAP:
 			if (lexrc.next()) {
 				use_kbmap = lexrc.getBool();

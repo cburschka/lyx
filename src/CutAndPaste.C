@@ -682,7 +682,7 @@ void eraseSelection(LCursor & cur)
 				for (InsetBase::col_type col = c1; col <= c2; ++col)
 					p->cell(p->index(row, col)).clear();
 			// We've deleted the whole cell. Only pos 0 is valid.
-			cur.pos() = 0; 
+			cur.pos() = 0;
 		}
 		cur.resetAnchor();
 	} else {

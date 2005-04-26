@@ -50,7 +50,7 @@
 
 2005-02-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* QRefDialog.C (refSelected): insert selected ref to 
+	* QRefDialog.C (refSelected): insert selected ref to
 	text widget (this was not possible if there was only
 	one entry, an empty inset was generated).
 

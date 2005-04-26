@@ -167,7 +167,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 	if (!success) {
 		script_command_ =
-			"sh " + 
+			"sh " +
 			QuoteName(LibFileSearch("scripts", "convertDefault.sh")) +
 			' ' +
 			QuoteName(from_format + ':' + from_file) +

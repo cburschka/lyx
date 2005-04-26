@@ -98,7 +98,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void drawWithMargin(PainterInfo & pi, int x, int y, 
+	void drawWithMargin(PainterInfo & pi, int x, int y,
 		int lmargin = 0, int rmargin = 0) const;
 	///
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;

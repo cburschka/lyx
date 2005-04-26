@@ -40,7 +40,7 @@
 
 2005-04-21  Angus Leeming  <leeming@lyx.org>
 
-	* forkedcontr.h: 
+	* forkedcontr.h:
 	* forkedcall.h: define pid_t for MSVC.
 
 	* forkedcall.C (kill): work around evil MSVC max macro.
