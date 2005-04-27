@@ -180,7 +180,8 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_COPYSTYLE:     // initialize with a known style
 			if (lexrc.next()) {
-				string const style = lexrc.getString();
+				string const style = subst(lexrc.getString(),
+							  '_', ' ');
 
 				if (tclass.hasLayout(style)) {
 					string const tmpname = name_;
