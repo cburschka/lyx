@@ -181,7 +181,7 @@ Style Thanks
   LabelString           "Thanks: "
 End
 
-Style "Author Email"
+Style Author_Email
   CopyStyle             Affiliation
   PassThru              1
   LatexName             email
@@ -196,8 +196,8 @@ Style "Author Email"
   EndFont
 End
 
-Style "Author URL"
-  CopyStyle             "Author Email"
+Style Author_URL
+  CopyStyle             Author_Email
   PassThru              1
   LatexName             homepage
   LabelString           "URL: "
@@ -255,6 +255,6 @@ Input stdcounters.inc
 ### Finally a few obsolete definitions for compatibility
 Input obsolete.inc
 
-Style "REVTEX Title"
+Style REVTEX_Title
   ObsoletedBy		Title
 End

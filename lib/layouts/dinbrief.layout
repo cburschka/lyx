@@ -12,7 +12,7 @@ Input letter.layout
 # Redefine some stuff
 
 # My Address style
-Style "My Address"
+Style My_Address
   Margin		Static
   LeftMargin            Unterschr
   LabelType		Static
@@ -28,7 +28,7 @@ Style "My Address"
 End
 
 # Send To Adress style changes
-Style "Send To Address"
+Style Send_To_Address
   Margin                Static
   BottomSep             0.1
   LeftMargin            Unterschr

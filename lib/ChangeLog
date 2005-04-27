@@ -1,3 +1,9 @@
+2005-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* layouts/*.layout: 
+	* layouts/*.inc: revert the previous patch. Actually, all Style,
+	NoStyle and CopyStyle commands use a _ instead of quotes for spaces.
+
 2005-04-22  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* layouts/*.layout: surround styles with '_' (space) by quotes

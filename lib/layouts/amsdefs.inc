@@ -183,7 +183,7 @@ Style Address
 End  
 
 # Current Address style definition
-Style "Current Address"
+Style Current_Address
   Margin		Dynamic
   LatexType		Command
   InTitle		1

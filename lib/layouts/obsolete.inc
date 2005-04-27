@@ -7,7 +7,7 @@
 # historical reasons 
 
 # Title style definition
-Style "LaTeX Title"
+Style LaTeX_Title
   ObsoletedBy		Title
 End
 

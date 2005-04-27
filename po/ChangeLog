@@ -1,3 +1,8 @@
+2005-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.in.in (layouts_l10n.pot): replace underscores with
+	spaces in Style definition.
+
 2005-04-25  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* *.po: Adjust 16 po files to '_'-less styles in layout files

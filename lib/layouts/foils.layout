@@ -170,7 +170,7 @@ Style Abstract
 End
 
 # Header definitions:
-Style "My Logo"
+Style My_Logo
   Margin        Static
   LatexType     Command
   LatexName     MyLogo
@@ -191,29 +191,29 @@ Style "My Logo"
 End
 
 Style Restriction
- CopyStyle		"My Logo"
+ CopyStyle		My_Logo
   LatexName     Restriction
   LeftMargin        Restriction:xx
   LabelString       "Restriction:"
 End
 
-Style "Left Header"
- CopyStyle		"My Logo"
+Style Left_Header
+ CopyStyle		My_Logo
   LatexName     leftheader
   LeftMargin        Left_Header:xx
   LabelString       "Left Header:"
 End
 
 
-Style "Right Header"
- CopyStyle		"My Logo"
+Style Right_Header
+ CopyStyle		My_Logo
   LatexName     rightheader
   LeftMargin        Right_Header:xx
   LabelString       "Right Header:"
 End
 
-Style "Right Footer"
- CopyStyle		"My Logo"
+Style Right_Footer
+ CopyStyle		My_Logo
   LatexName     rightfooter
   LeftMargin        Right_Footer:xx
   LabelString       "Right Footer:"

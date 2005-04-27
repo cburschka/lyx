@@ -155,7 +155,7 @@ Style Subtitle
 End
 
 # Title_Running style definition
-Style "Running LaTeX Title"
+Style Running_LaTeX_Title
   Margin		Static
   InTitle		1
   LatexType		Command
@@ -182,8 +182,8 @@ Style "Running LaTeX Title"
 End
 
 # TOC_Title style definition
-Style "TOC Title"
-  CopyStyle		"Running LaTeX Title"
+Style TOC_Title
+  CopyStyle		Running_LaTeX_Title
   LatexName		toctitle
   LeftMargin		"TOC title:xxx"
   LabelString		"TOC title: "
@@ -214,16 +214,16 @@ Style Author
 End
 
 # AuthorRunning style definition
-Style "Author Running"
-  CopyStyle		"Running LaTeX Title"
+Style Author_Running
+  CopyStyle		Running LaTeX_Title
   LatexName		authorrunning
   LeftMargin		"Author Running:xxx"
   LabelString		"Author Running: "
 End
 
 # TOC_Author style definition
-Style "TOC Author"
-  CopyStyle		"Running LaTeX Title"
+Style TOC_Author
+  CopyStyle		Running_LaTeX_Title
   LatexName		tocauthor
   LeftMargin		"TOC Author:xxx"
   LabelString		"TOC Author: "
@@ -255,7 +255,7 @@ End
 #
 # Correspondence address style definition
 Style Email
-  CopyStyle		"Running LaTeX Title"
+  CopyStyle		Running_LaTeX_Title
   LatexName		email	
   LeftMargin		"Email:xxx"
   LabelString		"Email: "

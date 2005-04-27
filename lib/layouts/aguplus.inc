@@ -70,7 +70,7 @@ Preamble
 EndPreamble
 
 # Headers style definition
-Style "Left Header"
+Style Left_Header
   Margin        Static
   LatexType     Command
   LatexName     lefthead
@@ -96,36 +96,36 @@ Style "Left Header"
 
 End
 
-Style "Right Header"
-  CopyStyle		"Left Header"
+Style Right_Header
+  CopyStyle		Left_Header
   LatexName     righthead
   LeftMargin	"Right Header:xx"
   LabelString	"Right Header:"
 End
 
 Style Received
-  CopyStyle		"Left Header"
+  CopyStyle		Left_Header
   LatexName     received
   LeftMargin	Received:xx
   LabelString	Recieved:
 End
 
 Style Revised
-  CopyStyle		"Left Header"
+  CopyStyle		Left_Header
   LatexName     revised
   LeftMargin	Revised:xx
   LabelString	Revised:
 End
 
 Style Accepted
-  CopyStyle		"Left Header"
+  CopyStyle		Left_Header
   LatexName     accepted
   LeftMargin	Accepted:xx
   LabelString	Accepted:
 End
 
 Style CCC
-  CopyStyle		"Left Header"
+  CopyStyle		Left_Header
   LatexName     ccc
   LeftMargin	"CCC code:xx"
   LabelString	"CCC code:"
@@ -138,21 +138,21 @@ End
 # articleid
 
 Style PaperId
-  CopyStyle		"Left Header"
+  CopyStyle		Left_Header
   LatexName     paperid
   LeftMargin	"Paper Id:xx"
   LabelString	"Paper Id:"
 End
 
 Style AuthorAddr
-  CopyStyle		"Left Header"
+  CopyStyle		Left_Header
   LatexName     authoraddr
   LeftMargin	"Author Address:xx"
   LabelString	"Author Address:"
 End
 
 Style SlugComment
-  CopyStyle		"Left Header"
+  CopyStyle		Left_Header
   LatexName     slugcomment
   LeftMargin	"Slug Comment:xx"
   LabelString	"Slug Comment:"
@@ -195,7 +195,7 @@ End
 
 
 # Table Caption style definition
-Style "Table Caption"
+Style Table_Caption
   Margin		First_Dynamic
   LatexType		Command
   LatexName	tablecaption

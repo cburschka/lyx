@@ -101,7 +101,7 @@ Style Itemize
 End
 
 # Left header
-Style "Left Header"
+Style Left_Header
   CopyStyle		Standard
   LatexType             Command
   LatexName             leftheader
@@ -120,8 +120,8 @@ Style "Left Header"
 End
 
 # Right header
-Style "Right Header"
-  CopyStyle		"Left Header"
+Style Right_Header
+  CopyStyle		Left_Header
   LatexName             rightheader
   Margin		Right_Address_Box
 End

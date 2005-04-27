@@ -189,7 +189,7 @@ Style Subtitle
 End
 
 # Title_Running style definition
-Style "Running LaTeX Title"
+Style Running_LaTeX_Title
   CopyStyle		Headnote
   LatexName		titlerunning
   LeftMargin		"Running title:xxx"
@@ -221,7 +221,7 @@ Style Author
 End
 
 # AuthorRunning style definition
-Style "Author Running"
+Style Author_Running
   CopyStyle		Headnote
   LatexName		authorrunning
   LeftMargin		"Author Running:xxx"
