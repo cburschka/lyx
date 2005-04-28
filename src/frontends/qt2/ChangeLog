@@ -1,3 +1,14 @@
+2005-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* QLImage.[Ch] (transformed_pixmap_): new variable. The image
+	pixmap is prepared for display in setPixmap_impl, so buffer it
+	for future redraws.
+	(copy ctor): copy the data, don't regenerate it from original_;
+	(dtor): use machine-generated destructor.
+
+	* QLPainter.C (image): use bitBlt to draw the buffered image
+	pixmap efficiently.
+
 2005-04-25  Angus Leeming  <leeming@lyx.org>
 
 	* pch.h:

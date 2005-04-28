@@ -29,8 +29,8 @@ public:
 	/// Return the list of loadable formats.
 	static FormatList loadableFormats();
 
-	~QLImage();
-	QImage const & qimage() const { return transformed_; }
+	/// Retrieve the buffered pixmap.
+	QPixmap const & qpixmap() const { return transformed_pixmap_; }
 
 private:
 	/// Create a copy
@@ -70,6 +70,8 @@ private:
 
 	/// The transformed image for display.
 	QImage transformed_;
+	/// Buffer the pixmap itself
+	QPixmap transformed_pixmap_;
 };
 
 } // namespace graphics

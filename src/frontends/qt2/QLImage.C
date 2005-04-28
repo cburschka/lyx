@@ -112,13 +112,9 @@ QLImage::QLImage()
 
 QLImage::QLImage(QLImage const & other)
 	: Image(other), original_(other.original_),
-	  transformed_(other.original_)
+	  transformed_(other.transformed_),
+	  transformed_pixmap_(other.transformed_pixmap_)
 {}
-
-
-QLImage::~QLImage()
-{
-}
 
 
 Image * QLImage::clone_impl() const
@@ -204,6 +200,7 @@ bool QLImage::setPixmap_impl(Params const & params)
 		break;
 	}
 
+	transformed_pixmap_ = transformed_;
 	return true;
 }
 
