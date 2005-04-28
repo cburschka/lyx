@@ -34,7 +34,7 @@ public:
 	void setBullet(int level, const Bullet & bullet);
 
 	/// get bullet setting
-	Bullet const getBullet(int level);
+	Bullet const & getBullet(int level) const;
 
 signals:
 	void changed();
@@ -51,10 +51,15 @@ protected slots:
 
 	void updateSizes();
 
-	void pressed1();
-	void pressed2();
-	void pressed3();
-	void pressed4();
+	void clicked1();
+	void clicked2();
+	void clicked3();
+	void clicked4();
+
+	void selected1();
+	void selected2();
+	void selected3();
+	void selected4();
 
 	/// set custom (text) bullet
 	void setCustom();
@@ -80,6 +85,7 @@ private:
 	QBrowseBox * ding2_;
 	QBrowseBox * ding3_;
 	QBrowseBox * ding4_;
+	Bullet * bullet_pressed_;
 };
 
 #endif // BULLETSMODULE_H

@@ -1,5 +1,18 @@
 2005-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* BulletsModule.[Ch] (BulletsModule): emit a signal when the
+	bullet push buttons are clicked to set the currently-pressed
+	bullet list.
+	(clicked1, clicked2, clicked3, clicked4): new slots.
+	(selected1, selected2, selected3, selected4): rename the old
+	pressed[1-4] slots.
+	(setCustom): use the stored information about which button was
+	pressed to populate the custom dialog with the LaTeX of the
+	current choice.
+	(getBullet): return a reference to const.
+
+2005-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* QLImage.[Ch] (transformed_pixmap_): new variable. The image
 	pixmap is prepared for display in setPixmap_impl, so buffer it
 	for future redraws.

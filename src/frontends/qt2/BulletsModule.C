@@ -30,7 +30,8 @@ using std::string;
 
 
 BulletsModule::BulletsModule(QWidget * parent,  const char * name, WFlags fl)
-	: BulletsModuleBase(parent, name, fl), tmpbulletset(0)
+	: BulletsModuleBase(parent, name, fl), tmpbulletset(0),
+	  bullet_pressed_(0)
 {
 	for (int iter = 0; iter < 4; ++iter) {
 		bullets_[iter] = ITEMIZE_DEFAULTS[iter];
@@ -69,9 +70,16 @@ BulletsModule::BulletsModule(QWidget * parent,  const char * name, WFlags fl)
 	// FIXME: make this checkable
 	pm->insertItem(qt_("&Custom..."), this, SLOT(setCustom()), 0, 6);
 
+	connect(bullet1PB, SIGNAL(pressed()), this, SLOT(clicked1()));
 	bullet1PB->setPopup(pm);
+
+	connect(bullet2PB, SIGNAL(pressed()), this, SLOT(clicked2()));
 	bullet2PB->setPopup(pm);
+
+	connect(bullet3PB, SIGNAL(pressed()), this, SLOT(clicked3()));
 	bullet3PB->setPopup(pm);
+
+	connect(bullet4PB, SIGNAL(pressed()), this, SLOT(clicked4()));
 	bullet4PB->setPopup(pm);
 
 	// insert pixmaps
@@ -112,10 +120,10 @@ BulletsModule::BulletsModule(QWidget * parent,  const char * name, WFlags fl)
 	connect(ding4_, SIGNAL(selected(int, int)),
 		this, SLOT(ding4(int, int)));
 
-	connect(bullet1PB, SIGNAL(pressed()), this, SLOT(pressed1()));
-	connect(bullet2PB, SIGNAL(pressed()), this, SLOT(pressed2()));
-	connect(bullet3PB, SIGNAL(pressed()), this, SLOT(pressed3()));
-	connect(bullet4PB, SIGNAL(pressed()), this, SLOT(pressed4()));
+	connect(bullet1PB, SIGNAL(pressed()), this, SLOT(selected1()));
+	connect(bullet2PB, SIGNAL(pressed()), this, SLOT(selected2()));
+	connect(bullet3PB, SIGNAL(pressed()), this, SLOT(selected3()));
+	connect(bullet4PB, SIGNAL(pressed()), this, SLOT(selected4()));
 	connect(bulletsize1CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
 	connect(bulletsize2CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
 	connect(bulletsize3CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
@@ -144,8 +152,33 @@ void BulletsModule::updateSizes()
 }
 
 
+// These arrive before the menus are launched.
+void BulletsModule::clicked1()
+{
+	bullet_pressed_ = &bullets_[0];
+}
+
+
+void BulletsModule::clicked2()
+{
+	bullet_pressed_ = &bullets_[1];
+}
+
+
+void BulletsModule::clicked3()
+{
+	bullet_pressed_ = &bullets_[2];
+}
+
+
+void BulletsModule::clicked4()
+{
+	bullet_pressed_ = &bullets_[3];
+}
+
+
 // These arrive *after* the menus have done their work
-void BulletsModule::pressed1()
+void BulletsModule::selected1()
 {
 	if (!tmpbulletset)
 		return;
@@ -156,7 +189,7 @@ void BulletsModule::pressed1()
 }
 
 
-void BulletsModule::pressed2()
+void BulletsModule::selected2()
 {
 	if (!tmpbulletset)
 		return;
@@ -167,7 +200,7 @@ void BulletsModule::pressed2()
 }
 
 
-void BulletsModule::pressed3()
+void BulletsModule::selected3()
 {
 	if (!tmpbulletset)
 		return;
@@ -178,7 +211,7 @@ void BulletsModule::pressed3()
 }
 
 
-void BulletsModule::pressed4()
+void BulletsModule::selected4()
 {
 	if (!tmpbulletset)
 		return;
@@ -247,7 +280,7 @@ void BulletsModule::setBullet(int level, const Bullet & bullet)
 }
 
 
-Bullet const BulletsModule::getBullet(int level)
+Bullet const & BulletsModule::getBullet(int level) const
 {
 	return bullets_[level];
 }
@@ -299,12 +332,15 @@ void BulletsModule::ding4(int row, int col)
 
 void BulletsModule::setCustom()
 {
-	bool ok = FALSE;
+	QString const input = bullet_pressed_ ?
+		toqstr(bullet_pressed_->getText()) : QString::null;
+
+	bool ok = false;
 	QString text = QInputDialog::getText(
 		qt_( "Bullets" ),
 		qt_( "Enter a custom bullet" ),
 		QLineEdit::Normal,
-		QString::null, &ok, this );
+		input, &ok, this );
 
 	if (!ok)
 		return;
