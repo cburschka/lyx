@@ -171,7 +171,7 @@ End
 
 
 Style TOC_Title
-	CopyStyle             "Running LaTeX Title"
+	CopyStyle             Running_LaTeX_Title
 	LatexName             toctitle
 	LeftMargin            "TOC title:xxx"
 	LabelString           "TOC title: "
@@ -200,7 +200,7 @@ End
 
 
 Style Author_Running
-	CopyStyle             "Running LaTeX Title"
+	CopyStyle             Running_LaTeX_Title
 	LatexName             authorrunning
 	LeftMargin            "Author Running:xxx"
 	LabelString           "Author Running: "
@@ -208,7 +208,7 @@ End
 
 
 Style TOC_Author
-	CopyStyle             "Running LaTeX Title"
+	CopyStyle             Running_LaTeX_Title
 	LatexName             tocauthor
 	LeftMargin            "TOC Author:xxx"
 	LabelString           "TOC Author: "
@@ -235,7 +235,7 @@ End
 
 
 Style Email
-	CopyStyle             "Running LaTeX Title"
+	CopyStyle             Running_LaTeX_Title
 	LatexName             email
 	LeftMargin            "Email:xxx"
 	LabelString           "Email: "

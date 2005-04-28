@@ -179,7 +179,7 @@ End
 
 
 Style Author_URL
-	CopyStyle             "Author Email"
+	CopyStyle             Author_Email
 	PassThru              1
 	LatexName             homepage
 	LabelString           "URL: "

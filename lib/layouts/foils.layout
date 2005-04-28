@@ -179,7 +179,7 @@ End
 
 
 Style Restriction
-	CopyStyle             "My Logo"
+	CopyStyle             My_Logo
 	LatexName             Restriction
 	LeftMargin            Restriction:xx
 	LabelString           "Restriction:"
@@ -187,7 +187,7 @@ End
 
 
 Style Left_Header
-	CopyStyle             "My Logo"
+	CopyStyle             My_Logo
 	LatexName             leftheader
 	LeftMargin            Left_Header:xx
 	LabelString           "Left Header:"
@@ -195,7 +195,7 @@ End
 
 
 Style Right_Header
-	CopyStyle             "My Logo"
+	CopyStyle             My_Logo
 	LatexName             rightheader
 	LeftMargin            Right_Header:xx
 	LabelString           "Right Header:"
@@ -203,7 +203,7 @@ End
 
 
 Style Right_Footer
-	CopyStyle             "My Logo"
+	CopyStyle             My_Logo
 	LatexName             rightfooter
 	LeftMargin            Right_Footer:xx
 	LabelString           "Right Footer:"

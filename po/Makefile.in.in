@@ -436,6 +436,10 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 		/^Style / { \
 			line=$$0; \
 			sub(/Style /, "", line); \
+			gsub(/\"/, "", line); \
+			gsub(/_/, " ", line); \
+			gsub(/\"/, "", line); \
+			gsub(/_/, " ", line); \
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fixupfilename(), FNR, line); \
 		} \

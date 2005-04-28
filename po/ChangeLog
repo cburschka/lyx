@@ -1,3 +1,15 @@
+2005-04-28  Michael Schmitt  <michael.schmitt@teststep.org>
+
+        * Makefile.in.in (layouts_l10n.pot): replace underscores with
+        spaces in Style definition; strip quotes
+        * de.po:
+	* fr.po: Adjust po files to '_'-less styles in layout files
+
+2005-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.in.in (Makefile): remove quotes and underscores from
+	Style name.
+
 2005-04-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* nn.po: update from Ingar Pareliussen
