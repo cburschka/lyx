@@ -1,3 +1,8 @@
+2005-04-29  Angus Leeming  <leeming@lyx.org>
+
+	* os_win32.C (init): Merge changes from Asger's win32_kludge.diff
+	file, primarily checking that GetConsoleTitle succeeded.
+
 2005-04-25  Angus Leeming  <leeming@lyx.org>
 
 	* abort.C:
