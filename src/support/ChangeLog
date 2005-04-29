@@ -1,3 +1,7 @@
+2005-04-29  Angus Leeming  <leeming@lyx.org>
+
+	* os_win32.C (init): check that GetConsoleTitle succeeded.
+
 2005-04-22  Angus Leeming  <leeming@lyx.org>
 
 	* package.C (get_binary_path): on prompting from Rob Bearman,

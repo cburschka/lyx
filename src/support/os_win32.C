@@ -10,7 +10,6 @@
 
 #include <windows.h>
 #include <io.h>
-#include <fcntl.h>
 #include <direct.h> // _getdrive
 
 
@@ -40,7 +39,7 @@ void os::init(int /* argc */, char * argv[])
 	 *
 	 * #if defined (_WIN32)
 	 * # define WIN32_LEAN_AND_MEAN
-	 * # include <stdlib.h>  // for __argc,__argv
+	 * # include <stdlib.h>  // for __argc, __argv
 	 * # include <windows.h> // for WinMain
 	 * #endif
 	 *
@@ -50,7 +49,7 @@ void os::init(int /* argc */, char * argv[])
 	 * #if defined (_WIN32)
 	 * int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	 * {
-	 *     return mymain(__argc, __argv);
+	 *     return mymain(__argc, __argv);
 	 * }
 	 * #endif
 	 *
@@ -76,12 +75,15 @@ void os::init(int /* argc */, char * argv[])
 	// Close the console when run (probably)
 	// not run from command prompt
 	char WindowTitle[1024];
-	HWND hwndFound;
-	GetConsoleTitle(WindowTitle,1024);
+	if (GetConsoleTitle(WindowTitle, sizeof(WindowTitle)) == 0) {
+		// Could not get the title, so we just leave things as they are
+		return;
+	}
+
 	if ((strcmp(WindowTitle, argv[0]) == 0) ||
-		(strcmp(WindowTitle,"LyX") == 0)) {
+		(strcmp(WindowTitle, "LyX") == 0)) {
 		// format a "unique" newWindowTitle
-		wsprintf(WindowTitle,"%d/%d",
+		wsprintf(WindowTitle, "%d/%d",
 			GetTickCount(),
 			GetCurrentProcessId());
 		// change current window title
@@ -89,9 +91,9 @@ void os::init(int /* argc */, char * argv[])
 		// ensure window title has been updated
 		Sleep(40);
 		// look for newWindowTitle
-		hwndFound=FindWindow(NULL, WindowTitle);
+		HWND const hwndFound = FindWindow(NULL, WindowTitle);
 		// If found, hide it
-		if ( hwndFound != NULL)
+		if (hwndFound != NULL)
 			ShowWindow( hwndFound, SW_HIDE);
 	}
 }
