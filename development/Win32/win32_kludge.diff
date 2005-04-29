@@ -400,46 +400,6 @@ diff -u -r1.209 filetools.C
  }
  
  
-Index: src/support/os_win32.C
-===================================================================
-RCS file: /cvs/lyx/lyx-devel/src/support/os_win32.C,v
-retrieving revision 1.27
-diff -u -r1.27 os_win32.C
---- src/support/os_win32.C	2005/01/21 22:08:59	1.27
-+++ src/support/os_win32.C	2005/02/17 18:19:25
-@@ -89,12 +89,14 @@
- 	// Close the console when run (probably)
- 	// not run from command prompt
- 	char WindowTitle[1024];
--	HWND hwndFound;
--	GetConsoleTitle(WindowTitle,1024);
-+	if (GetConsoleTitle(WindowTitle, sizeof(WindowTitle)) == 0) {
-+		// Could not get the title, so we just leave things as they are
-+		return;
-+	}
- 	if ((strcmp(WindowTitle, argv[0]) == 0) ||
--		(strcmp(WindowTitle,"LyX") == 0)) {
-+		(strcmp(WindowTitle, "LyX") == 0)) {
- 		// format a "unique" newWindowTitle
--		wsprintf(WindowTitle,"%d/%d",
-+		wsprintf(WindowTitle, "%d/%d",
- 			GetTickCount(),
- 			GetCurrentProcessId());
- 		// change current window title
-@@ -102,10 +104,11 @@
- 		// ensure window title has been updated
- 		Sleep(40);
- 		// look for newWindowTitle
--		hwndFound=FindWindow(NULL, WindowTitle);
-+		HWND hwndFound = FindWindow(NULL, WindowTitle);
- 		// If found, hide it
--		if ( hwndFound != NULL)
-+		if ( hwndFound != NULL) {
- 			ShowWindow( hwndFound, SW_HIDE);
-+		}
- 	}
- }
- 
 Index: src/support/socktools.C
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/socktools.C,v
