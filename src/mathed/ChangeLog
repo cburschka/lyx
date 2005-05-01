@@ -1,4 +1,10 @@
-2005-04-25  Martin Vermeer  <martin.vermeer@hut.fi>a
+2005-05-01  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_nestinset.C (getStatus): suppress math/text fonts,
+	subscripts etc. to prevent lyx access to latex-illegal stuff
+	in text-inside-math (mbox)
+
+2005-04-25  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_gridinset.C (doDispatch):
 	* math_hullInset.C (doDispatch):

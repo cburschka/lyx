@@ -865,6 +865,7 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 	// the font related toggles
 	//string tc = "mathnormal";
 	bool ret = true;
+	string const arg = cmd.argument;
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE:
 		flag.enabled(false);
@@ -924,7 +925,21 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 	case LFUN_MATH_EXTERN:
 		flag.enabled(true);
 		break;
-
+	case LFUN_INSERT_MATH: {
+		bool const textarg = 
+			arg == "\\textbf"   || arg == "\\textsf" ||
+			arg == "\\textrm"   || arg == "\\textmd" ||
+			arg == "\\textit"   || arg == "\\textsc" ||
+			arg == "\\textsl"   || arg == "\\textup" ||
+			arg == "\\texttt"   || arg == "\\textbb" ||
+			arg == "\\textnormal";
+		flag.enabled((currentMode() == MATH_MODE && !textarg)
+			||   (currentMode() == TEXT_MODE && textarg));
+		break;
+	}
+	case LFUN_INSERT_MATRIX:
+		flag.enabled(currentMode() == MATH_MODE);
+		break;
 	default:
 		ret = false;
 		break;
@@ -1139,14 +1154,21 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		return cur.pos() != cur.lastpos();
 	}
 
-	if (c == '_') {
-		script(cur, false);
-		return true;
-	}
+	// These shouldn't work in text mode:
+	if (currentMode() != MathInset::TEXT_MODE) {
+		if (c == '_') {
+			script(cur, false);
+			return true;
+		}
 
-	if (c == '^') {
-		script(cur, true);
-		return true;
+		if (c == '^') {
+			script(cur, true);
+			return true;
+		}
+		if (c == '~') {
+			cur.niceInsert(createMathInset("sim"));
+			return true;
+		}
 	}
 
 	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' || c == '%') {
@@ -1154,10 +1176,6 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		return true;
 	}
 
-	if (c == '~') {
-		cur.niceInsert(createMathInset("sim"));
-		return true;
-	}
 
 	// try auto-correction
 	//if (autocorrect() && hasPrevAtom() && math_autocorrect(prevAtom(), c))
