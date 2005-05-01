@@ -1,7 +1,12 @@
+2005-05-01  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text.C (leftMargin): Fix the parindent use bug (1764) 
+	by dirty trick
+
 2005-04-28  Michael Schmitt  <michael.schmitt@teststep.org>
 
-        * lyxlayout.C (Read): transform underscores to spaces in CopyStyle
-        argument. 
+	* lyxlayout.C (Read): transform underscores to spaces in CopyStyle
+	argument. 
 
 2005-04-25  Angus Leeming  <leeming@lyx.org>
 

@@ -591,7 +591,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
 	    // in charstyles, tabulars and ert paragraphs are never indented!
-	    && (par.ownerCode() != InsetBase::TEXT_CODE
+	    && ((par.ownerCode() != InsetBase::TEXT_CODE || isMainText())
 	            && par.ownerCode() != InsetBase::ERT_CODE
 		    && par.ownerCode() != InsetBase::CHARSTYLE_CODE)
 	    && (par.layout() != tclass.defaultLayout()
