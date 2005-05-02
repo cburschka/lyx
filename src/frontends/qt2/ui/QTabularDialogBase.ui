@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>451</width>
+            <width>447</width>
             <height>408</height>
         </rect>
     </property>
@@ -929,6 +929,10 @@
                                     <name>text</name>
                                     <string>on</string>
                                 </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>Repeat this row as header on every (except the first) page</string>
+                                </property>
                             </widget>
                             <widget row="2"  column="1" >
                                 <class>QCheckBox</class>
@@ -939,6 +943,14 @@
                                 <property stdset="1">
                                     <name>text</name>
                                     <string>on</string>
+                                </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>This row is the header of the first page</string>
+                                </property>
+                                <property>
+                                    <name>whatsThis</name>
+                                    <string></string>
                                 </property>
                             </widget>
                             <widget row="3"  column="1" >
@@ -951,6 +963,10 @@
                                     <name>text</name>
                                     <string>on</string>
                                 </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>Repeat this row as footer on every (except the last) page</string>
+                                </property>
                             </widget>
                             <widget row="4"  column="1" >
                                 <class>QCheckBox</class>
@@ -962,6 +978,10 @@
                                     <name>text</name>
                                     <string>on</string>
                                 </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>This row is the footer of the last page</string>
+                                </property>
                             </widget>
                             <widget row="1"  column="2" >
                                 <class>QCheckBox</class>
@@ -972,6 +992,10 @@
                                 <property stdset="1">
                                     <name>text</name>
                                     <string>double</string>
+                                </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string></string>
                                 </property>
                             </widget>
                             <widget row="2"  column="2" >
@@ -1061,6 +1085,10 @@
                                     <name>text</name>
                                     <string>is empty</string>
                                 </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>Don't output the last footer</string>
+                                </property>
                             </widget>
                             <widget row="2"  column="4" >
                                 <class>QCheckBox</class>
@@ -1071,6 +1099,10 @@
                                 <property stdset="1">
                                     <name>text</name>
                                     <string>is empty</string>
+                                </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>Don't output the first header</string>
                                 </property>
                             </widget>
                         </grid>
