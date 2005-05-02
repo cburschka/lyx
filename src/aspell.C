@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-#ifdef USE_ASPELL
-
 #include "debug.h"
 
 #include <aspell.h>
@@ -144,5 +142,3 @@ string const ASpell::error()
 
 	return (err ? err : "");
 }
-
-#endif // USE_ASPELL

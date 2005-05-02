@@ -44,6 +44,10 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
+#ifdef _WIN32
+# define fork() -1
+#endif
+
 #include <boost/shared_ptr.hpp>
 #include <boost/filesystem/operations.hpp>
 

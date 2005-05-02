@@ -1,3 +1,8 @@
+2005-05-02  Angus Leeming  <leeming@lyx.org>
+
+	* ControlSpellchecker.C: clean-up the creation of the wrappers to
+	the different possible spelling engines.
+
 2005-04-29  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ControlCharacter.h (getLFun):Trivial bug fix

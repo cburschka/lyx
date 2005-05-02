@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-#ifdef USE_PSPELL
-
 #include "debug.h"
 
 #define USE_ORIGINAL_MANAGER_FUNCS 1
@@ -155,5 +153,3 @@ string const PSpell::error()
 		return err;
 	return "";
 }
-
-#endif // USE_PSPELL

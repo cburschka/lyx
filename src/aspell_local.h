@@ -75,4 +75,4 @@ private:
 	AspellCanHaveError * spell_error_object;
 };
 
-#endif // ASPELL_H
+#endif // LYX_ASPELL_H

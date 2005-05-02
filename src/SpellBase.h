@@ -20,6 +20,7 @@ class WordLangTuple;
 
 /**
  * Base class of all spell checker implementations.
+ * The class can be instantiated but will have no functionality.
  */
 class SpellBase {
 public:
@@ -43,23 +44,22 @@ public:
 	virtual ~SpellBase() {}
 
 	/// return true if the spellchecker instance still exists
-	virtual bool alive() = 0;
+	virtual bool alive();
 
 	/// check the given word of the given lang code and return the result
-	virtual enum Result check(WordLangTuple const &) = 0;
+	virtual enum Result check(WordLangTuple const &);
 
 	/// insert the given word into the personal dictionary
-	virtual void insert(WordLangTuple const &) = 0;
+	virtual void insert(WordLangTuple const &);
 
 	/// accept the given word temporarily
-	virtual void accept(WordLangTuple const &) = 0;
+	virtual void accept(WordLangTuple const &);
 
 	/// return the next near miss after a SUGGESTED_WORDS result
-	virtual std::string const nextMiss() = 0;
+	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual std::string const error() = 0;
-
+	virtual std::string const error();
 };
 
 #endif // SPELL_BASE_H

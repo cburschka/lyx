@@ -23,13 +23,16 @@
 #include "lyxrc.h"
 #include "paragraph.h"
 
-#include "ispell.h"
-#ifdef USE_PSPELL
-# include "pspell.h"
-#else
-#ifdef USE_ASPELL
+#if defined(USE_ASPELL)
 # include "aspell_local.h"
+#elif defined(USE_PSPELL)
+# include "pspell.h"
 #endif
+
+#if defined(USE_ISPELL)
+# include "ispell.h"
+#else
+# include "SpellBase.h"
 #endif
 
 #include "support/textutils.h"
@@ -68,19 +71,22 @@ SpellBase * getSpeller(BufferParams const & bp)
 	              ? lyxrc.isp_alt_lang
 		      : bp.language->code();
 
-#ifdef USE_ASPELL
+#if defined(USE_ASPELL)
 	if (lyxrc.use_spell_lib)
 		return new ASpell(bp, lang);
-#endif
-#ifdef USE_PSPELL
+#elif defined(USE_PSPELL)
 	if (lyxrc.use_spell_lib)
 		return new PSpell(bp, lang);
 #endif
 
+#if defined(USE_ISPELL)
 	lang = (lyxrc.isp_use_alt_lang) ?
 		lyxrc.isp_alt_lang : bp.language->lang();
 
 	return new ISpell(bp, lang);
+#else
+	return new SpellBase;
+#endif
 }
 
 } // namespace anon
@@ -91,6 +97,8 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 	lyxerr[Debug::GUI] << "Spellchecker::initialiseParams" << endl;
 
 	speller_.reset(getSpeller(kernel().buffer().params()));
+	if (!speller_.get())
+		return false;
 
 	// reset values to initial
 	oldval_ = 0;

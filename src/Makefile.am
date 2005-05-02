@@ -4,7 +4,11 @@ DISTCLEANFILES += config.h libintl.h version.C stamp-version version.C-tmp
 
 MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
-SUBDIRS = mathed insets graphics support frontends . client tex2lyx
+if BUILD_CLIENT_SUBDIR
+CLIENT = client
+endif
+
+SUBDIRS = mathed insets graphics support frontends . $(CLIENT) tex2lyx
 
 EXTRA_DIST = config.h.in stamp-h.in version.C.in \
 	Sectioning.h \
@@ -50,6 +54,18 @@ lyx$(EXEEXT): $(FRONTENDS_PROGS)
 BUILT_SOURCES = version.C
 
 AM_CPPFLAGS = $(PCH_FLAGS) $(BOOST_INCLUDES)
+
+if USE_ASPELL
+ASPELL = aspell.C aspell_local.h
+endif
+if USE_PSPELL
+PSPELL = pspell.C pspell.h
+endif
+if USE_ISPELL
+ISPELL = ispell.C ispell.h
+endif
+
+
 
 lyx_SOURCES = \
 	Bidi.C \
@@ -101,8 +117,6 @@ lyx_SOURCES = \
 	ToolbarBackend.C \
 	ToolbarBackend.h \
 	WordLangTuple.h \
-	aspell.C \
-	aspell_local.h \
 	author.C \
 	author.h \
 	boost.C \
@@ -241,11 +255,8 @@ lyx_SOURCES = \
 	paragraph_pimpl.h \
 	pariterator.C \
 	pariterator.h \
+	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.C \
 	SpellBase.h \
-	ispell.C \
-	ispell.h \
-	pspell.C \
-	pspell.h \
 	rowpainter.C \
 	rowpainter.h \
 	sgml.C \

@@ -1,3 +1,12 @@
+2005-05-02  Angus Leeming  <leeming@lyx.org>
+
+	* autogen.sh (ACINCLUDE_FILES): remove [ap]spell.m4. Add spell.m4.
+
+	* configure.ac: remove explicit invocation of CHECK_WITH_ASPELL,
+	CHECK_WITH_PSPELL. Add new invocation of LYX_CHECK_SPELL_ENGINES.
+	Also check for select() and socket() system functions and use
+	these to decide whether to build the src/client sun-directory.
+
 2005-03-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.ac: remove hack when GNU gettext utilities are not
@@ -12,7 +21,7 @@
 2005-03-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* configure.ac: make the xforms part be built
-	first when building gtk frontend 
+	first when building gtk frontend
 
 2005-03-05  Angus Leeming  <leeming@lyx.org>
 

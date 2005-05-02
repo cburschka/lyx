@@ -1,3 +1,9 @@
+2005-05-02  Angus Leeming  <leeming@lyx.org>
+
+	* aspell.m4, pspell.m4: removed.
+	* spell.m4: new. Incorporates the code in [ap]spell but also adds
+	a test for whether the ISpell-handling code should be compiled.
+
 2005-04-22  Angus Leeming  <leeming@lyx.org>
 
 	* qt.m4: Move the Qt-specific preprocessor flags out of the

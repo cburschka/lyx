@@ -1,3 +1,9 @@
+2005-05-02  Angus Leeming  <leeming@lyx.org>
+
+	* socktool.C (listen, accept): provide stub versions for Windows.
+
+	* os_win32.h: removed.
+
 2005-04-29  Angus Leeming  <leeming@lyx.org>
 
 	* os_win32.C (init): Merge changes from Asger's win32_kludge.diff

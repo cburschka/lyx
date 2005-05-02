@@ -11,6 +11,31 @@
 #include <config.h>
 
 #include "support/socktools.h"
+
+#if !defined (HAVE_SOCKET)
+// We provide stubs because we don't (yet?) support the native OS API.
+
+namespace lyx {
+namespace support {
+namespace socktools {
+
+int listen(std::string const &, int)
+{
+	return -1;
+}
+
+
+int accept(int)
+{
+	return -1;
+}
+
+} // namespace socktools
+} // namespace support
+} // namespace lyx
+
+#else // defined (HAVE_SOCKET)
+
 #include "support/lyxlib.h"
 
 #include "debug.h"
@@ -137,3 +162,5 @@ int accept(int sd)
 } // namespace socktools
 } // namespace support
 } // namespace lyx
+
+#endif // defined (HAVE_SOCKET)

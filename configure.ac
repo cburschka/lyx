@@ -132,12 +132,6 @@ AC_LIBTOOL_WIN32_DLL
 #AM_PROG_LIBTOOL
 LYX_PROG_LIBTOOL
 
-### Check if we want spell libraries, prefer new aspell
-CHECK_WITH_ASPELL
-if test "$USING_ASPELL" != "yes"; then
-	CHECK_WITH_PSPELL
-fi
-
 ### Check for some Cygwin-specific details.
 CHECK_WITH_CYGWIN
 
@@ -290,6 +284,15 @@ dnl possible with the compiler which will use the functions (JMarc)
 AC_LANG_PUSH(C)
 AC_CHECK_FUNCS(mkfifo mkstemp mktemp lstat readlink)
 AC_LANG_POP(C)
+
+LYX_CHECK_SPELL_ENGINES
+
+lyx_client_subdir=true
+AC_LANG_PUSH(C)
+AC_CHECK_FUNCS(select socket,, [lyx_client_subdir=false])
+AM_CONDITIONAL(BUILD_CLIENT_SUBDIR, $lyx_client_subdir)
+AC_LANG_POP(C)
+
 
 AC_FUNC_SELECT_ARGTYPES
 

@@ -4,7 +4,7 @@ ACLOCAL="aclocal -I ${PWD}/m4"
 AUTOHEADER="autoheader"
 AUTOMAKE="automake -a -c --foreign"
 AUTOCONF="autoconf"
-ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 xforms.m4 qt.m4 gtk--.m4 gnome--.m4 gnome.m4 aspell.m4 pspell.m4 cygwin.m4 pkg.m4"
+ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 xforms.m4 qt.m4 gtk--.m4 gnome--.m4 gnome.m4 spell.m4 cygwin.m4 pkg.m4"
 
 # Discover what version of automake we are using.
 automake_version=`$AUTOMAKE --version 2>/dev/null | head -n 1`

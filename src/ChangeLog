@@ -1,12 +1,29 @@
+2005-05-02  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_cb.C: artificially define fork() on Windows as a no-op failing
+	function so that suto-saving works, albeit in a blocking manner.
+
+	* Makefile.am: make compilation of the client sub directory, of
+	apsellC, aspell_local.h, pspell.[Ch] and ispell.[Ch] dependent
+	on conditionals set at configure time.
+
+	* SpellBase.[Ch]: no longer an abstract base class. Instead,
+	it can be compiled in its own right but has no-op functionality.
+
+	* aspell.C, pspell.C: remove preprocessor guards. The files should
+	be compiled only if the necessary functionality exists.
+
+	* lyxserver.C, lyxsocket.C: disable on Windows.
+
 2005-05-01  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* text.C (leftMargin): Fix the parindent use bug (1764) 
+	* text.C (leftMargin): Fix the parindent use bug (1764)
 	by dirty trick
 
 2005-04-28  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* lyxlayout.C (Read): transform underscores to spaces in CopyStyle
-	argument. 
+	argument.
 
 2005-04-25  Angus Leeming  <leeming@lyx.org>
 
