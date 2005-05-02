@@ -65,7 +65,7 @@ AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
     dnl Do this independent of the existence of the aspell, pspell libraries.
     lyx_use_ispell=true
     AC_LANG_PUSH(C)
-    AC_CHECK_FUNCS(select dup2,, [lyx_use_ispell=false])
+    AC_CHECK_FUNCS(fork,, [lyx_use_ispell=false])
     AC_LANG_POP(C)
     AC_MSG_CHECKING([whether to use ispell])
     if $lyx_use_ispell ; then

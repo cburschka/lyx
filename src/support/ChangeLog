@@ -1,5 +1,10 @@
 2005-05-02  Angus Leeming  <leeming@lyx.org>
 
+	* socktools.C: make compilation dependent on HAVE_FCNTL rather
+	than HAVE_SOCKET.
+
+2005-05-02  Angus Leeming  <leeming@lyx.org>
+
 	* socktool.C (listen, accept): provide stub versions for Windows.
 
 	* os_win32.h: removed.

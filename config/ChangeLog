@@ -1,5 +1,10 @@
 2005-05-02  Angus Leeming  <leeming@lyx.org>
 
+	* spell.m4: test for something that MSVC doesn't have (fork)
+	as opposed to something it does (select, dup2).
+
+2005-05-02  Angus Leeming  <leeming@lyx.org>
+
 	* aspell.m4, pspell.m4: removed.
 	* spell.m4: new. Incorporates the code in [ap]spell but also adds
 	a test for whether the ISpell-handling code should be compiled.

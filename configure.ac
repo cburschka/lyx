@@ -289,7 +289,7 @@ LYX_CHECK_SPELL_ENGINES
 
 lyx_client_subdir=true
 AC_LANG_PUSH(C)
-AC_CHECK_FUNCS(select socket,, [lyx_client_subdir=false])
+AC_CHECK_FUNCS(fcntl,, [lyx_client_subdir=false])
 AM_CONDITIONAL(BUILD_CLIENT_SUBDIR, $lyx_client_subdir)
 AC_LANG_POP(C)
 

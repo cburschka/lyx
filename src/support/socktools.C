@@ -12,7 +12,7 @@
 
 #include "support/socktools.h"
 
-#if !defined (HAVE_SOCKET)
+#if !defined (HAVE_FCNTL)
 // We provide stubs because we don't (yet?) support the native OS API.
 
 namespace lyx {
@@ -34,7 +34,7 @@ int accept(int)
 } // namespace support
 } // namespace lyx
 
-#else // defined (HAVE_SOCKET)
+#else // defined (HAVE_FCNTL)
 
 #include "support/lyxlib.h"
 
@@ -163,4 +163,4 @@ int accept(int sd)
 } // namespace support
 } // namespace lyx
 
-#endif // defined (HAVE_SOCKET)
+#endif // defined (HAVE_FCNTL)
