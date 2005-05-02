@@ -78,7 +78,11 @@
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
 
-#include <utime.h>
+#if defined (HAVE_UTIME_H)
+# include <utime.h>
+#elif defined (HAVE_SYS_UTIME_H)
+# include <sys/utime.h>
+#endif
 
 #include <iomanip>
 #include <stack>

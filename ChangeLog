@@ -1,5 +1,9 @@
 2005-05-02  Angus Leeming  <leeming@lyx.org>
 
+	* configure.ac: test for utime.h and sys/utime.h
+
+2005-05-02  Angus Leeming  <leeming@lyx.org>
+
 	* configure.ac: test for something that MSVC doesn't have (fcntl)
 	as opposed to something it does (select, socket).
 
