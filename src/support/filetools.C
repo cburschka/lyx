@@ -1061,7 +1061,13 @@ cmd_ret const RunCommand(string const & cmd)
 	// pstream (process stream), with the
 	// variants ipstream, opstream
 
+#if defined (HAVE_POPEN)
 	FILE * inf = ::popen(cmd.c_str(), os::popen_read_mode());
+#elif defined (HAVE__POPEN)
+	FILE * inf = ::_popen(cmd.c_str(), os::popen_read_mode());
+#else
+#error No popen() function.
+#endif
 
 	// (Claus Hentschel) Check if popen was succesful ;-)
 	if (!inf) {
@@ -1075,7 +1081,15 @@ cmd_ret const RunCommand(string const & cmd)
 		ret += static_cast<char>(c);
 		c = fgetc(inf);
 	}
+
+#if defined (HAVE_PCLOSE)
 	int const pret = pclose(inf);
+#elif defined (HAVE__PCLOSE)
+	int const pret = _pclose(inf);
+#else
+#error No pclose() function.
+#endif
+
 	if (pret == -1)
 		perror("RunCommand:: could not terminate child process");
 

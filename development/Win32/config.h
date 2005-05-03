@@ -96,6 +96,9 @@
 /* Define to 1 if you have the `asprintf' function. */
 /* #undef HAVE_ASPRINTF */
 
+/* Define to 1 if you have the `close' function. */
+/* #undef HAVE_CLOSE */
+
 /* Define if the GNU dcgettext() function is already present or preinstalled.
    */
 /* #undef HAVE_DCGETTEXT */
@@ -160,6 +163,9 @@
 /* Define to 1 if you have the `getpagesize' function. */
 #define HAVE_GETPAGESIZE 1
 
+/* Define to 1 if you have the `getpid' function. */
+/* #undef HAVE_GETPID */
+
 /* Define if the GNU gettext() function is already present or preinstalled. */
 /* #undef HAVE_GETTEXT */
 
@@ -181,6 +187,9 @@
 
 /* Define to 1 if you have the <ios> header file. */
 #define HAVE_IOS 1
+
+/* Define to 1 if you have the <io.h> header file. */
+#define HAVE_IO_H 1
 
 /* Define to 1 if you have the <istream> header file. */
 #define HAVE_ISTREAM 1
@@ -237,7 +246,7 @@
 /* #define HAVE_MKDIR */
 
 /* Define to 1 if you have the `mkfifo' function. */
-/* #undef HAVE_MKFIFO 1 */
+/* #undef HAVE_MKFIFO */
 
 /* Define to 1 if you have the `mkstemp' function. */
 /* #undef HAVE_MKSTEMP */
@@ -257,11 +266,23 @@
 /* Define to 1 if you have the <nl_types.h> header file. */
 #define HAVE_NL_TYPES_H 1
 
+/* Define to 1 if you have the `open' function. */
+/* #undef HAVE_OPEN */
+
 /* Define to 1 if you have the <ostream> header file. */
 #define HAVE_OSTREAM 1
 
+/* Define to 1 if you have the `pclose' function. */
+/* #undef HAVE_PCLOSE */
+
+/* Define to 1 if you have the `popen' function. */
+/* #undef HAVE_POPEN */
+
 /* Define if your printf() function supports format strings with positions. */
 #define HAVE_POSIX_PRINTF 1
+
+/* Define to 1 if you have the <process.h> header file. */
+#define HAVE_PROCESS_H 1
 
 /* Define to 1 if you have the <pspell/pspell.h> header file. */
 /* #undef HAVE_PSPELL_PSPELL_H */
@@ -381,8 +402,23 @@
 /* Define to 1 if you have the <zlib.h> header file. */
 #define HAVE_ZLIB_H 1
 
+/* Define to 1 if you have the `_close' function. */
+#define HAVE__CLOSE 1
+
+/* Define to 1 if you have the `_getpid' function. */
+#define HAVE__GETPID 1
+
 /* Define to 1 if you have the `_mkdir' function. */
 #define HAVE__MKDIR 1
+
+/* Define to 1 if you have the `_open' function. */
+#define HAVE__OPEN 1
+
+/* Define to 1 if you have the `_pclose' function. */
+#define HAVE__PCLOSE 1
+
+/* Define to 1 if you have the `_popen' function. */
+#define HAVE__POPEN 1
 
 /* Define to 1 if you have the `__argz_count' function. */
 /* #undef HAVE___ARGZ_COUNT */

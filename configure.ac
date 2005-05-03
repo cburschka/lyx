@@ -236,7 +236,7 @@ AC_LANG_POP(C)
 # some standard header files
 AC_HEADER_DIRENT
 AC_HEADER_MAJOR
-AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h strings.h locale.h utime.h sys/utime.h)
+AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h strings.h locale.h utime.h sys/utime.h io.h process.h)
 
 # some standard structures
 AC_HEADER_STAT
@@ -282,7 +282,7 @@ dnl work correctly because of some conflict with stdlib.h with g++ 2.96
 dnl We aim to remove this eventually, since we should test as much as
 dnl possible with the compiler which will use the functions (JMarc)
 AC_LANG_PUSH(C)
-AC_CHECK_FUNCS(mkfifo mkstemp mktemp lstat readlink)
+AC_CHECK_FUNCS(close _close getpid _getpid lstat mkfifo mkstemp mktemp open _open pclose _pclose popen _popen readlink)
 AC_LANG_POP(C)
 
 LYX_CHECK_SPELL_ENGINES
