@@ -126,18 +126,6 @@
 			Name="src"
 			Filter="">
 			<File
-				RelativePath="..\..\src\aspell.C">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						CompileAs="2"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\src\aspell_local.h">
-			</File>
-			<File
 				RelativePath="..\..\src\author.C">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -640,18 +628,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\intl.h">
-			</File>
-			<File
-				RelativePath="..\..\src\ispell.C">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						CompileAs="2"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\src\ispell.h">
 			</File>
 			<File
 				RelativePath="..\..\src\kbmap.C">
@@ -1212,18 +1188,6 @@
 				RelativePath="..\..\src\PrinterParams.h">
 			</File>
 			<File
-				RelativePath="..\..\src\pspell.C">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						CompileAs="2"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\src\pspell.h">
-			</File>
-			<File
 				RelativePath="..\..\src\RowList_fwd.h">
 			</File>
 			<File
@@ -1273,6 +1237,9 @@
 			</File>
 			<File
 				RelativePath="..\..\src\Spacing.h">
+			</File>
+			<File
+				RelativePath="..\..\src\SpellBase.C">
 			</File>
 			<File
 				RelativePath="..\..\src\SpellBase.h">
@@ -10516,9 +10483,6 @@
 							Name="VCCLCompilerTool"
 							CompileAs="2"/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\support\os_win32.h">
 				</File>
 				<File
 					RelativePath="..\..\src\support\package.h">

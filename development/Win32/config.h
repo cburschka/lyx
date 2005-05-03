@@ -62,7 +62,7 @@
 
 /* Define if your C++ compiler puts C library functions in the global
    namespace */
-/* #undef CXX_GLOBAL_CSTD */
+#define CXX_GLOBAL_CSTD
 
 /* Define to 1 if using `alloca.c'. */
 /* #undef C_ALLOCA */
@@ -133,8 +133,14 @@
 /* Define to 1 if you have the <dlfcn.h> header file. */
 /* #undef HAVE_DLFCN_H */
 
+/* Define to 1 if you have the `fcntl' function. */
+/* #undef HAVE_FCNTL */
+
 /* Define to 1 if you have the <flimage.h> header file. */
 /* #undef HAVE_FLIMAGE_H */
+
+/* Define to 1 if you have the `fork' function. */
+/* #undef HAVE_FORK */
 
 /* Define to 1 if you have the `fwprintf' function. */
 #define HAVE_FWPRINTF 1
@@ -231,7 +237,7 @@
 /* #define HAVE_MKDIR */
 
 /* Define to 1 if you have the `mkfifo' function. */
-#define HAVE_MKFIFO 1
+/* #undef HAVE_MKFIFO 1 */
 
 /* Define to 1 if you have the `mkstemp' function. */
 /* #undef HAVE_MKSTEMP */
@@ -337,7 +343,13 @@
 #define HAVE_SYS_STAT_H 1
 
 /* Define to 1 if you have the <sys/time.h> header file. */
-#define HAVE_SYS_TIME_H 1
+/* #undef HAVE_SYS_TIME_H */
+
+/* Define to 1 if you have the <sys/utime.h> header file. */
+#define HAVE_SYS_UTIME_H 1
+
+/* Define to 1 if you have the <utime.h> header file. */
+/* #undef HAVE_UTIME_H */
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #define HAVE_SYS_TYPES_H 1
@@ -385,7 +397,7 @@
 /* #undef HAVE___FSETLOCKING */
 
 /* Define as const if the declaration of iconv() needs const. */
-#define ICONV_CONST 
+#define ICONV_CONST
 
 /* Define if integer division by zero raises signal SIGFPE. */
 #define INTDIV0_RAISES_SIGFPE 1
@@ -463,6 +475,9 @@
 
 /* Define as 1 if you want to support compressed files. */
 /* #undef USE_COMRESSION */
+
+/* Define as 1 to use an external ispell process for spell-checking */
+/* #undef USE_ISPELL */
 
 /* Define if you want to be able to load jpeg images natively */
 #define USE_JPEG_IMAGE_LOADER 1
