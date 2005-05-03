@@ -198,7 +198,7 @@ void ControlSpellchecker::check()
 	for (total = start; it; it.forwardPos())
 		++total;
 
-	for (; cur && isLetter(cur); cur.forwardPos())
+	for (; cur && cur.pos() && isLetter(cur); cur.forwardPos())
 		++start;
 
 	BufferParams & bufferparams = kernel().buffer().params();

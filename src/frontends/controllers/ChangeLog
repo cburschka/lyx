@@ -1,3 +1,11 @@
+2005-05-03  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* ControlSpellchecker.C (check): increment 'start', the beginning
+	of the next word to spell check only if cur.pos() != 0.
+	This fixes bug 1876 in which LyX will not check the very first word
+	of the document if the cursor is placed at the beginning of that
+	paragraph (just before the first letter at position 0).
+
 2005-05-02  Angus Leeming  <leeming@lyx.org>
 
 	* ControlSpellchecker.C: clean-up the creation of the wrappers to
