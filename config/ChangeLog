@@ -1,3 +1,12 @@
+2005-05-04  Angus Leeming  <leeming@lyx.org>
+
+	* common.am (*.o *.lo *.obj): make the TARGETS depend on $(PCH_FILE),
+	not the SOURCES.
+	(pch-file): name the generated .pch.h.gch file explicitly.
+	Enables the file to be output to the build directory if different
+	to the source directory.
+	(DISTCLEANFILES): add pch.h.gch.dep
+
 2005-05-03  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: remove [ap]spell.m4 and add spell.m4.

@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += textclass.lst packages.lst lyxrc.defaults
+DISTCLEANFILES += texput.log textclass.lst packages.lst lyxrc.defaults
 
 SUBDIRS = doc reLyX
 

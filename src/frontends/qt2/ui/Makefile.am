@@ -1,7 +1,7 @@
 include $(top_srcdir)/config/common.am
 include $(srcdir)/../Makefile.dialogs
 
-CLEANFILES += *.C *Base.h
+CLEANFILES += *.C *Base.h *Module.h *Dialog.h
 
 SUBDIRS = . moc
 

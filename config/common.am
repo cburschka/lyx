@@ -2,7 +2,7 @@ AUTOMAKE_OPTIONS = foreign
 
 CLEANFILES = pch.h.gch
 
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
+DISTCLEANFILES= pch.h.gch.dep *.orig *.rej *~ *.bak core
 
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 
@@ -16,16 +16,16 @@ PCH_FLAGS = -Winvalid-pch --include=$(PCH_SOURCE)
 PCH_FILE = ./pch.h.gch
 sinclude ./pch.h.gch.dep
 
-*.C *.cpp: $(PCH_FILE)
+*.o *.lo *.obj: $(PCH_FILE)
 
 $(PCH_FILE): $(PCH_SOURCE)
 	$(MAKE) PCH_FLAGS= pch-file
 
 pch-file:
-	$(CXXCOMPILE) -x c++-header $(PCH_SOURCE) -MT $(PCH_FILE)  -MD -MP \
-        -MF "./$(PCH_FILE).Tdep" \
-	&& mv "./$(PCH_FILE).Tdep" "./$(PCH_FILE).dep" || rm "./$(PCH_FILE).Tdep"
-
+	$(CXXCOMPILE) -x c++-header $(PCH_SOURCE) -o $(PCH_FILE) \
+	-MT $(PCH_FILE)  -MD -MP -MF "./$(PCH_FILE).Tdep" \
+	&& mv "./$(PCH_FILE).Tdep" "./$(PCH_FILE).dep" \
+	|| rm "./$(PCH_FILE).Tdep"
 endif
 
 SUFFIXES = .gch
