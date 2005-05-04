@@ -358,6 +358,7 @@ class LyX_Base:
         " Returns the TOC of this LyX document."
         paragraphs_filter = {'Title' : 0,'Chapter' : 1, 'Section' : 2, 'Subsection' : 3, 'Subsubsection': 4}
         allowed_insets = ['Quotes']
+        allowed_parameters = '\\paragraph_spacing', '\\noindent', '\\align', '\\labelwidthstring', "\\start_of_appendix"
 
         sections = []
         for section in paragraphs_filter.keys():
@@ -383,7 +384,7 @@ class LyX_Base:
 
             k = i + 1
             # skip paragraph parameters
-            while not self.body[k] or self.body[k][0] == '\\':
+            while not string.strip(self.body[k]) and string.split(self.body[k])[0] in allowed_parameters:
                 k = k +1
 
             while k < j:
