@@ -1468,7 +1468,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			owner->message(_("Converting document to new document class..."));
 			ErrorList el;
-			lyx::cap::SwitchLayoutsBetweenClasses(
+			lyx::cap::SwitchBetweenClasses(
 				old_class, new_class,
 				buffer->paragraphs(), el);
 

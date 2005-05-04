@@ -23,6 +23,7 @@
 #include "errorlist.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "insetiterator.h"
 #include "lfuns.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
@@ -34,6 +35,7 @@
 #include "pariterator.h"
 #include "undo.h"
 
+#include "insets/insetcharstyle.h"
 #include "insets/insettabular.h"
 
 #include "mathed/math_data.h"
@@ -131,8 +133,7 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 	}
 
 	// Make sure there is no class difference.
-	lyx::cap::SwitchLayoutsBetweenClasses(textclass, tc, insertion,
-				    errorlist);
+	lyx::cap::SwitchBetweenClasses(textclass, tc, insertion, errorlist);
 
 	ParagraphList::iterator tmpbuf = insertion.begin();
 	int depth_delta = pars[pit].params().depth() - tmpbuf->params().depth();
@@ -372,13 +373,12 @@ string grabAndEraseSelection(LCursor & cur)
 }
 
 
-int SwitchLayoutsBetweenClasses(textclass_type c1, textclass_type c2,
+void SwitchBetweenClasses(textclass_type c1, textclass_type c2,
 	ParagraphList & pars, ErrorList & errorlist)
 {
 	BOOST_ASSERT(!pars.empty());
-	int ret = 0;
 	if (c1 == c2)
-		return ret;
+		return;
 
 	LyXTextClass const & tclass1 = textclasslist[c1];
 	LyXTextClass const & tclass2 = textclasslist[c2];
@@ -386,6 +386,7 @@ int SwitchLayoutsBetweenClasses(textclass_type c1, textclass_type c2,
 	InsetText in;
 	std::swap(in.paragraphs(), pars);
 
+	// layouts
 	ParIterator end = par_iterator_end(in);
 	for (ParIterator it = par_iterator_begin(in); it != end; ++it) {
 		string const name = it->layout()->name();
@@ -397,19 +398,48 @@ int SwitchLayoutsBetweenClasses(textclass_type c1, textclass_type c2,
 			it->layout(tclass2.defaultLayout());
 
 		if (!hasLayout && name != tclass1.defaultLayoutName()) {
-			++ret;
 			string const s = bformat(
 				_("Layout had to be changed from\n%1$s to %2$s\n"
 				"because of class conversion from\n%3$s to %4$s"),
 			 name, it->layout()->name(), tclass1.name(), tclass2.name());
 			// To warn the user that something had to be done.
-			errorlist.push_back(ErrorItem("Changed Layout", s,
+			errorlist.push_back(ErrorItem(_("Changed Layout"), s,
 						      it->id(), 0,
 						      it->size()));
 		}
 	}
+
+	// character styles
+	InsetIterator const i_end = inset_iterator_end(in);
+	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
+		if (it->lyxCode() == InsetBase::CHARSTYLE_CODE) {
+			InsetCharStyle & inset =
+				static_cast<InsetCharStyle &>(*it);
+			string const name = inset.params().type;
+			CharStyles::iterator const found_cs =
+				tclass2.charstyle(name);
+			if (found_cs == tclass2.charstyles().end()) {
+				// The character style is undefined in tclass2
+				inset.setUndefined();
+				string const s = bformat(_(
+					"Character style %1$s is "
+					"undefined because of class "
+					"conversion from\n%2$s to %3$s"),
+					 name, tclass1.name(), tclass2.name());
+				// To warn the user that something had to be done.
+				errorlist.push_back(ErrorItem(
+						_("Undefined character style"),
+						s, it.paragraph().id(),
+						it.pos(), it.pos() + 1));
+			} else if (inset.undefined()) {
+				// The character style is undefined in
+				// tclass1 and is defined in tclass2
+				inset.setDefined(found_cs);
+			}
+		}
+	}
+
 	std::swap(in.paragraphs(), pars);
-	return ret;
 }
 
 

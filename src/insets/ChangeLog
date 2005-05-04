@@ -1,3 +1,11 @@
+2005-05-03  Martin Vermeer  <martin.vermeer@hut.fi>
+2005-05-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetcharstyle.[Ch] (undefined, setUndefined, setDefined): new,
+	handle undefined character styles
+	* insetcharstyle.[Ch] (latex, linuxdoc, docbook, plaintext, validate):
+	handle undefined character styles
+
 2005-04-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C: handle the LFUN_UNSET_* longtabular methods

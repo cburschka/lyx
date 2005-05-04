@@ -43,8 +43,17 @@ public:
 */
 class InsetCharStyle : public InsetCollapsable {
 public:
+	/// Construct an undefined character style
+	InsetCharStyle::InsetCharStyle(BufferParams const &, std::string const);
 	///
 	InsetCharStyle(BufferParams const &, CharStyles::iterator);
+	/// Is this character style defined in the document's textclass?
+	/// May be wrong after textclass change or paste from another document
+	bool undefined() const;
+	/// Set the character style to "undefined"
+	void setUndefined();
+	/// (Re-)set the character style parameters from \p cs
+	void setDefined(CharStyles::iterator cs);
 	///
 	std::string const editMessage() const;
 	///

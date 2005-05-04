@@ -51,16 +51,21 @@ void InsetCharStyle::init()
 }
 
 
+InsetCharStyle::InsetCharStyle(BufferParams const & bp, string const s)
+	: InsetCollapsable(bp)
+{
+	params_.type = s;
+	setUndefined();
+	init();
+}
+
+
 InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 				CharStyles::iterator cs)
 	: InsetCollapsable(bp)
 {
 	params_.type = cs->name;
-	params_.latextype = cs->latextype;
-	params_.latexname = cs->latexname;
-	params_.latexparam = cs->latexparam;
-	params_.font = cs->font;
-	params_.labelfont = cs->labelfont;
+	setDefined(cs);
 	init();
 }
 
@@ -75,6 +80,33 @@ InsetCharStyle::InsetCharStyle(InsetCharStyle const & in)
 auto_ptr<InsetBase> InsetCharStyle::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetCharStyle(*this));
+}
+
+
+bool InsetCharStyle::undefined() const
+{
+	return params_.latexname.empty();
+}
+
+
+void InsetCharStyle::setUndefined()
+{
+	params_.latextype.clear();
+	params_.latexname.clear();
+	params_.latexparam.clear();
+	params_.font = LyXFont(LyXFont::ALL_INHERIT);
+	params_.labelfont = LyXFont(LyXFont::ALL_INHERIT);
+	params_.labelfont.setColor(LColor::red);
+}
+
+
+void InsetCharStyle::setDefined(CharStyles::iterator cs)
+{
+	params_.latextype = cs->latextype;
+	params_.latexname = cs->latexname;
+	params_.latexparam = cs->latexparam;
+	params_.font = cs->font;
+	params_.labelfont = cs->labelfont;
 }
 
 
@@ -147,9 +179,12 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		int w = 0;
 		int a = 0;
 		int d = 0;
+		string s(params_.type);
+		if (undefined())
+			s = _("Undef: ") + s;
 		font_metrics::rectText(params_.type, font, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
-			params_.type, font, LColor::none, LColor::none);
+			s, font, LColor::none, LColor::none);
 	}
 
 	// a visual clue when the cursor is inside the inset
@@ -210,12 +245,15 @@ bool InsetCharStyle::getStatus(LCursor & cur, FuncRequest const & cmd,
 int InsetCharStyle::latex(Buffer const & buf, ostream & os,
 		     OutputParams const & runparams) const
 {
-	os << "\\" << params_.latexname;
-	if (!params_.latexparam.empty())
-		os << params_.latexparam;
-	os << "{";
+	if (!undefined()) {
+		os << "\\" << params_.latexname;
+		if (!params_.latexparam.empty())
+			os << params_.latexparam;
+		os << "{";
+	}
 	int i = InsetText::latex(buf, os, runparams);
-	os << "}";
+	if (!undefined())
+		os << "}";
 	return i;
 }
 
@@ -223,9 +261,11 @@ int InsetCharStyle::latex(Buffer const & buf, ostream & os,
 int InsetCharStyle::linuxdoc(Buffer const & buf, ostream & os,
 			     OutputParams const & runparams) const
 {
-	sgml::openTag(os, params_.latexname, params_.latexparam);
+	if (!undefined())
+		sgml::openTag(os, params_.latexname, params_.latexparam);
 	int i = InsetText::linuxdoc(buf, os, runparams);
-	sgml::closeTag(os, params_.latexname);
+	if (!undefined())
+		sgml::closeTag(os, params_.latexname);
 	return i;
 }
 
@@ -236,15 +276,19 @@ int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 	ParagraphList::const_iterator par = paragraphs().begin();
         ParagraphList::const_iterator end = paragraphs().end();
 
-	sgml::openTag(os, params_.latexname, par->getID(buf, runparams) + params_.latexparam);
+	if (!undefined())
+		sgml::openTag(os, params_.latexname, 
+			par->getID(buf, runparams) + params_.latexparam);
 
         for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,
-					 outerFont(par - paragraphs().begin(),
+				 outerFont(par - paragraphs().begin(),
 						   paragraphs()));
         }
 
-	sgml::closeTag(os, params_.latexname);
+	if (!undefined())
+		sgml::closeTag(os, params_.latexname);
+
 	return 0;
 }
 
@@ -258,6 +302,7 @@ int InsetCharStyle::plaintext(Buffer const & buf, ostream & os,
 
 void InsetCharStyle::validate(LaTeXFeatures & features) const
 {
+	// Force inclusion of preamble snippet in layout file
 	features.require(params_.type);
 	InsetText::validate(features);
 }

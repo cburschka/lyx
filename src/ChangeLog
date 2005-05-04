@@ -1,3 +1,13 @@
+2005-05-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* CutAndPaste.[Ch] (SwitchLayoutsBetweenClasses): rename to
+	SwitchBetweenClasses and remove the unused return value.
+	Handle character styles, too
+
+2005-05-03  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* factory.C (createInset): handle undefined character styles
+
 2005-05-02  Angus Leeming  <leeming@lyx.org>
 
 	* buffer.C: protect the #include of utime.h with a preprocessor

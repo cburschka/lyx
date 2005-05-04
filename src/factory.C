@@ -88,8 +88,12 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 
 	case LFUN_INSERT_CHARSTYLE: {
 		string s = cmd.getArg(0);
-		CharStyles::iterator found_cs = params.getLyXTextClass().charstyle(s);
-		return new InsetCharStyle(params, found_cs);
+		LyXTextClass tclass = params.getLyXTextClass();
+		CharStyles::iterator found_cs = tclass.charstyle(s);
+		if (found_cs != tclass.charstyles().end())
+			return new InsetCharStyle(params, found_cs);
+		else
+			return new InsetCharStyle(params, s);
 	}
 
 	case LFUN_INSERT_NOTE: {
@@ -417,7 +421,12 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 			lex.next();
 			string s = lex.getString();
 			CharStyles::iterator found_cs = tclass.charstyle(s);
-			inset.reset(new InsetCharStyle(buf.params(), found_cs));
+			if (found_cs != tclass.charstyles().end())
+				inset.reset(new InsetCharStyle(buf.params(), found_cs));
+			else {
+				// "Undefined" inset
+				inset.reset(new InsetCharStyle(buf.params(), s));
+			}
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf.params(),
 						    InsetBranchParams()));
