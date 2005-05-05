@@ -1553,7 +1553,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 	case LFUN_APPENDIX:
 		flag.setOnOff(cur.paragraph().params().startOfAppendix());
-		break;
+		return true;
 
 #if 0
 	// the functions which insert insets
@@ -1740,27 +1740,27 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 	case LFUN_EMPH:
 		flag.setOnOff(font.emph() == LyXFont::ON);
-		break;
+		return true;
 
 	case LFUN_NOUN:
 		flag.setOnOff(font.noun() == LyXFont::ON);
-		break;
+		return true;
 
 	case LFUN_BOLD:
 		flag.setOnOff(font.series() == LyXFont::BOLD_SERIES);
-		break;
+		return true;
 
 	case LFUN_SANS:
 		flag.setOnOff(font.family() == LyXFont::SANS_FAMILY);
-		break;
+		return true;
 
 	case LFUN_ROMAN:
 		flag.setOnOff(font.family() == LyXFont::ROMAN_FAMILY);
-		break;
+		return true;
 
 	case LFUN_CODE:
 		flag.setOnOff(font.family() == LyXFont::TYPEWRITER_FAMILY);
-		break;
+		return true;
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE_WORD_BACKWARD:
