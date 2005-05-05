@@ -50,7 +50,7 @@ Style Bibliography
 	AlignPossible         Block, Left
 	LabelType             Bibliography
 	LabelString           References
-	LabelBottomSep    0.7
+	LabelBottomSep        1.2
 	LabelFont
 	  Series              Bold
 	  Size                Larger

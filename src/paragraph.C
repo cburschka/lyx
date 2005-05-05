@@ -704,7 +704,7 @@ InsetBibitem * Paragraph::bibitem() const
 {
 	if (!insetlist.empty()) {
 		InsetBase * inset = insetlist.begin()->inset;
-		if (inset->lyxCode() == InsetBase::BIBTEX_CODE)
+		if (inset->lyxCode() == InsetBase::BIBITEM_CODE)
 			return static_cast<InsetBibitem *>(inset);
 	}
 	return 0;

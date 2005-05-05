@@ -1654,6 +1654,23 @@ void LyXText::redoParagraph(pit_type const pit)
 	// remove rows of paragraph, keep track of height changes
 	Paragraph & par = pars_[pit];
 
+	// Add bibitem insets if necessary
+	if (par.layout()->labeltype == LABEL_BIBLIO) {
+		bool hasbibitem(false);
+ 		if (!par.insetlist.empty() 
+			// Insist on it being in pos 0
+			&& par.getChar(0) == Paragraph::META_INSET) {
+			InsetBase * inset = par.insetlist.begin()->inset;
+        	        if (inset->lyxCode() == InsetBase::BIBITEM_CODE)
+				hasbibitem = true;
+		}
+		if (!hasbibitem) {
+			InsetBibitem * inset(new
+				InsetBibitem(InsetCommandParams("bibitem")));
+			par.insertInset(0, static_cast<InsetBase *>(inset));
+		}
+	}
+
 	// redo insets
 	InsetList::iterator ii = par.insetlist.begin();
 	InsetList::iterator iend = par.insetlist.end();

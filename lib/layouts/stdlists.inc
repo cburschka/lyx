@@ -93,24 +93,6 @@ Style List
 End
 
 
-Style Bibliography
-	Margin                Static
-	LatexType             Bib_Environment
-	LatexName             thebibliography
-	NextNoIndent          1
-	LeftMargin            MMN
-	LabelSep              xx
-	ParSkip               0.0
-	ItemSep               0.2
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0.3
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Enumerate
-End
-
-
 #
 # New environments (not active yet)
 #

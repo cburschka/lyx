@@ -440,10 +440,9 @@ void setCounter(Buffer const & buf, ParIterator & it)
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		counters.step("bibitem");
 		int number = counters.value("bibitem");
-		if (par.bibitem()) {
+		if (par.bibitem()) 
 			par.bibitem()->setCounter(number);
-			par.params().labelString(layout->labelstring());
-		}
+		par.params().labelString(layout->labelstring());
 		// In biblio should't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
