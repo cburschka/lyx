@@ -817,7 +817,6 @@ void LyXTabular::recalculateMulticolumnsOfColumn(col_type column)
 }
 
 
-// returns 1 if a complete update is necessary, otherwise 0
 void LyXTabular::setWidthOfCell(idx_type cell, int new_width)
 {
 	row_type const row = row_of_cell(cell);

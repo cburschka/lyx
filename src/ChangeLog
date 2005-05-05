@@ -1,5 +1,9 @@
 2005-05-05  Martin Vermeer  <martin.vermeer@hut.fi>
 
+	* tabular.C (setWidthOfCell): remove obsolete comment
+
+2005-05-05  Martin Vermeer  <martin.vermeer@hut.fi>
+
 	* paragraph.C (bibitem):
 	* buffer_funcs.C (setCounter):
 	* src/text.C (redoParagraph): Ungoose bibliography (bug 940)
