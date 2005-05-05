@@ -32,7 +32,7 @@ namespace frontend {
 typedef FormController<ControlBranch, FormView<FD_branch> > base_class;
 
 FormBranch::FormBranch(Dialog & parent)
-	: base_class(parent, _("Branch"))
+	: base_class(parent, _("Branch Settings"))
 {}
 
 

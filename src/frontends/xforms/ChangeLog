@@ -1,3 +1,11 @@
+2005-05-04  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* forms/form_preferences.fd: fix capitalization.
+	* Form*.C: Change dialog titles - harmonize with Qt frontend and 
+	menu entries; fix capitalization; change "citation reference" 
+	to "citation".
+	* FormTexinfo.C: correct tooltip.
+
 2005-04-25  Angus Leeming  <leeming@lyx.org>
 
 	* FormLog.h:

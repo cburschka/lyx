@@ -57,7 +57,7 @@ void FormTexinfo::build() {
 	str = _("Show full path or only file name.");
 	tooltips().init(dialog_->check_fullpath, str);
 
-	str = _("Runs the script \"TexFiles.sh\" to build new file lists.");
+	str = _("Runs the script \"TexFiles.sh\" to rebuild the file lists.");
 	tooltips().init(dialog_->button_rescan, str);
 
 	str = _("Double click to view contents of file.");

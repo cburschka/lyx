@@ -48,7 +48,7 @@ namespace frontend {
 typedef FormController<ControlBibtex, FormView<FD_bibtex> > base_class;
 
 FormBibtex::FormBibtex(Dialog & parent)
-	: base_class(parent, _("BibTeX Database"))
+	: base_class(parent, _("BibTeX Bibliography"))
 {}
 
 

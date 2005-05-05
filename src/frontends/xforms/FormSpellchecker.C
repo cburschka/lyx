@@ -31,7 +31,7 @@ namespace frontend {
 typedef FormController<ControlSpellchecker, FormView<FD_spellchecker> > base_class;
 
 FormSpellchecker::FormSpellchecker(Dialog & parent)
-	: base_class(parent, _("Spell-check document"))
+	: base_class(parent, _("Spellchecker"))
 {}
 
 

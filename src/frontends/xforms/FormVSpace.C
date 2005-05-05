@@ -163,7 +163,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 typedef FormController<ControlVSpace, FormView<FD_vspace> > base_class;
 
 FormVSpace::FormVSpace(Dialog & parent)
-	: base_class(parent, _("VSpace Settings"))
+	: base_class(parent, _("Vertical Space Settings"))
 {}
 
 

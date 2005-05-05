@@ -35,7 +35,7 @@ namespace frontend {
 typedef FormController<ControlCommand, FormView<FD_bibitem> > base_class;
 
 FormBibitem::FormBibitem(Dialog & parent)
-	: base_class(parent, _("Bibliography Entry"))
+	: base_class(parent, _("Bibliography Entry Settings"))
 {}
 
 

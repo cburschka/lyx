@@ -24,7 +24,7 @@ namespace frontend {
 typedef  FormController<ControlERT, FormView<FD_ert> > base_class;
 
 FormERT::FormERT(Dialog & parent)
-	: base_class(parent, _("TeX Settings"))
+	: base_class(parent, _("TeX Code Settings"))
 {}
 
 

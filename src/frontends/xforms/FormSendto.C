@@ -36,7 +36,7 @@ namespace frontend {
 typedef FormController<ControlSendto, FormView<FD_sendto> > base_class;
 
 FormSendto::FormSendto(Dialog & parent)
-	: base_class(parent, _("Send document to command"))
+	: base_class(parent, _("Send Document to Command"))
 {}
 
 

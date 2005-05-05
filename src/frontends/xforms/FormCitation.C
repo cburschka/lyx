@@ -172,10 +172,10 @@ void FormCitation::build()
 	fl_set_input_return(dialog_->input_search, FL_RETURN_END);
 
 	//set up the tooltip mechanism
-	string str = _("Add the selected entry to the current citation reference.");
+	string str = _("Add citation of the selected bibliography entry.");
 	tooltips().init(dialog_->button_add, str);
 
-	str = _("Delete the selected entry from the current citation reference.");
+	str = _("Delete citation of the selected bibliography entry.");
 	tooltips().init(dialog_->button_del, str);
 
 	str = _("Move the selected entry upwards (in the current list).");
@@ -191,14 +191,14 @@ void FormCitation::build()
 	setPrehandler(dialog_->browser_cite);
 #endif
 
-	str = _("All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex Reference\"). Move the ones you want to cite with the arrow buttons into the left browser window.");
+	str = _("All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX Bibliography\"). Move the ones you want to cite with the arrow buttons into the left browser window.");
 	tooltips().init(dialog_->browser_bib, str);
 #if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 	// Work-around xforms' bug; enable tooltips for browser widgets.
 	setPrehandler(dialog_->browser_bib);
 #endif
 
-	str = _("Information about the selected entry");
+	str = _("Information about the selected bibliography entry");
 	tooltips().init(dialog_->browser_info, str);
 #if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 	// Work-around xforms' bug; enable tooltips for browser widgets.
@@ -208,16 +208,16 @@ void FormCitation::build()
 	str = _("Here you may select how the citation label should look inside the text (Natbib).");
 	tooltips().init(dialog_->choice_style, str);
 
-	str = _("Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et al.\" (Natbib).");
+	str = _("Activate if you want to print all authors in a citation with more than three authors, and not \"<First Author> et al.\" (Natbib).");
 	tooltips().init(dialog_->check_full_author_list, str);
 
 	str = _("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib).");
 	tooltips().init(dialog_->check_force_uppercase, str);
 
-	str = _("Optional text which appears before the citation reference, e.g. \"see <Ref>\"");
+	str = _("Optional text which appears before the citation, e.g. \"see <Ref>\"");
 	tooltips().init(dialog_->input_before, str);
 
-	str = _("Optional text which appears after the citation reference, e.g. \"pp. 12\"");
+	str = _("Optional text which appears after the citation, e.g. \"pp. 12\"");
 	tooltips().init(dialog_->input_after, str);
 
 	str = _("Search your database (all fields will be searched).");

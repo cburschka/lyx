@@ -29,7 +29,7 @@ namespace frontend {
 typedef FormController<ControlNote, FormView<FD_note> > base_class;
 
 FormNote::FormNote(Dialog & parent)
-	: base_class(parent, _("LyX: Note Settings"))
+	: base_class(parent, _("Note Settings"))
 {}
 
 

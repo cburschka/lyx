@@ -80,7 +80,7 @@ void FormRef::build()
 	tooltips().init(dialog_->button_go, str);
 	str = _("Update the list of labels.");
 	tooltips().init(dialog_->button_update, str);
-	str = _("Select format style of the reference.");
+	str = _("Select format style of the cross-reference.");
 	tooltips().init(dialog_->choice_format, str);
 }
 

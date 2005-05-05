@@ -44,7 +44,7 @@ namespace frontend {
 typedef FormController<ControlBox, FormView<FD_box> > base_class;
 
 FormBox::FormBox(Dialog & parent)
-	: base_class(parent, _("Box"))
+	: base_class(parent, _("Box Settings"))
 {}
 
 
