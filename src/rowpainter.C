@@ -469,7 +469,7 @@ void RowPainter::paintFirst()
 
 	// start of appendix?
 	if (parparams.startOfAppendix())
-		y_top += paintAppendixStart(yo_ + y_top + 2 * defaultRowHeight());
+		y_top += paintAppendixStart(yo_ - row_.ascent() + 2 * defaultRowHeight());
 
 	Buffer const & buffer = *bv_.buffer();
 
