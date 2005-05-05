@@ -1,3 +1,8 @@
+2005-05-04  Angus Leeming  <leeming@lyx.org>
+
+	* lyxfunc.C (getStatus): disable the spell checker dialog if
+	none of USE_[AIP]SPELL are defined.
+
 2005-05-05  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* tabular.C (setWidthOfCell): remove obsolete comment

@@ -2990,6 +2990,10 @@ void FormPreferences::SpellOptions::build()
 	fl_set_input_return(dialog_->input_escape_chars,  FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_personal_dict, FL_RETURN_CHANGED);
 
+#if !defined (USE_ISPELL)
+	setEnabled(dialog_->choice_spell_command, false);
+#endif
+
 	// set up the feedback mechanism
 	setPrehandler(dialog_->choice_spell_command);
 	setPrehandler(dialog_->check_alt_lang);

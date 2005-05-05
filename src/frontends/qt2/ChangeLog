@@ -1,5 +1,8 @@
 2005-05-04  Angus Leeming  <leeming@lyx.org>
 
+	* QPrefsDialog.C (QPrefsDialog): disable the spellCommandCO if
+	USE_ISPELL is not defined.
+
 	* ui/Makefile.am (CLEANFILES): add *Module.h and *Dialog.h.
 
 2005-05-02  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>

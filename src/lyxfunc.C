@@ -493,10 +493,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 				&& lyxrc.print_command != "none";
 		else if (name == "character" || name == "mathpanel")
 			enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
-		else if (name == "vclog")
-			enable = buf->lyxvc().inUse();
 		else if (name == "latexlog")
 			enable = IsFileReadable(buf->getLogName().second);
+#if !defined (USE_ASPELL) && !defined (USE_ISPELL) && !defined (USE_PSPELL)
+		else if (name == "spellchecker")
+			enable = false;
+#endif
+		else if (name == "vclog")
+			enable = buf->lyxvc().inUse();
 		break;
 	}
 

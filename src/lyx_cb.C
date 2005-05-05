@@ -44,7 +44,7 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
-#ifdef _WIN32
+#if !defined (HAVE_FORK)
 # define fork() -1
 #endif
 
