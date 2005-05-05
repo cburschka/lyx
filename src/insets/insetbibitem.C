@@ -126,27 +126,6 @@ int InsetBibitem::plaintext(Buffer const &, ostream & os,
 	return 0;
 }
 
-// ale070405 This function maybe shouldn't be here. We'll fix this at 0.13.
-int bibitemMaxWidth(BufferView * bv, LyXFont const &)
-{
-	int w = 0;
-	// Ha, now we are mainly at 1.2.0 and it is still here (Jug)
-	// Does look like a hack? It is! (but will change at 0.13)
-	ParagraphList::iterator it = bv->buffer()->paragraphs().begin();
-	ParagraphList::iterator end = bv->buffer()->paragraphs().end();
-	for (; it != end; ++it) {
-		if (it->bibitem()) {
-#ifdef WITH_WARNINGS
-#warning metrics broken!
-#endif
-			int const wx = it->bibitem()->width();
-			if (wx > w)
-				w = wx;
-		}
-	}
-	return w;
-}
-
 
 // ale070405
 string const bibitemWidest(Buffer const & buffer)
