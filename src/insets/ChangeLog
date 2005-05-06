@@ -1,3 +1,7 @@
+2005-05-06  José Matos  <jamatos@lyx.org>
+
+	* insetcommandparams.C (scanCommand): fix out of range string access.
+
 2005-05-05  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetbibitem.C (bibitemMaxWidth): removed as obsolete

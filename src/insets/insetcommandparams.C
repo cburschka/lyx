@@ -46,8 +46,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 	int nestdepth = 0;
 
 	for (string::size_type i = 0; i < cmd.length(); ++i) {
-		char c = cmd[i];
-		char b = cmd[i-1];
+		char const c = cmd[i];
 		if ((state == CMDNAME && c == ' ') ||
 		    (state == CMDNAME && c == '[') ||
 		    (state == CMDNAME && c == '{')) {
@@ -72,7 +71,8 @@ void InsetCommandParams::scanCommand(string const & cmd)
 		case OPTION:	toptions += c; break;
 		case SECOPTION:	tsecoptions += c; break;
 		case CONTENT:	tcontents += c; break;
-		case WS:
+		case WS: {
+			char const b = i? cmd[i-1]: 0;
 			if (c == '\\') {
 				state = CMDNAME;
 			} else if (c == '[' && b != ']') {
@@ -86,6 +86,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 				nestdepth = 0; // Just to be sure
 			}
 			break;
+		}
 		}
 	}
 
