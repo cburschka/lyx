@@ -524,6 +524,12 @@ def convert_breaks(file):
         if i == -1:
             return
         i = i + 1
+
+        # Merge all paragraph parameters into a single line
+        while file.body[i + 1][:1] == '\\':
+            file.body[i] = file.body[i + 1] + ' ' + file.body[i]
+            del file.body[i+1]
+
         line_top   = find(file.body[i],"\\line_top")
         line_bot   = find(file.body[i],"\\line_bottom")
         pb_top     = find(file.body[i],"\\pagebreak_top")
