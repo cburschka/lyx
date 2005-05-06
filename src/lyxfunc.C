@@ -1518,7 +1518,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 		}
 
-		BOOST_ASSERT(view());
 		if (view()->available()) {
 			// Redraw screen unless explicitly told otherwise.
 			// This also initializes the position cache for all insets

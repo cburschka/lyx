@@ -83,17 +83,13 @@ public:
 	///
 	CollapseStatus status() const { return status_; }
 	///
-	void open();
-	///
-	void close();
-	///
 	bool allowSpellCheck() const { return true; }
 	///
 	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 
 protected:
 	///
-	void setStatus(CollapseStatus st);
+	void setStatus(LCursor & cur, CollapseStatus st);
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	///
@@ -106,6 +102,8 @@ protected:
 	void edit(LCursor & cur, bool left);
 	///
 	InsetBase * editXY(LCursor & cur, int x, int y) const;
+	///
+	void setInlined() { status_ = Inlined; }
 
 protected:
 	///

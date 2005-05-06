@@ -45,7 +45,7 @@ using std::ostringstream;
 void InsetCharStyle::init()
 {
 	setInsetName("CharStyle");
-	setStatus(Inlined);
+	setInlined();
 	setDrawFrame(false);
 	has_label_ = true;
 }
@@ -126,7 +126,7 @@ void InsetCharStyle::write(Buffer const & buf, ostream & os) const
 void InsetCharStyle::read(Buffer const & buf, LyXLex & lex)
 {
 	InsetCollapsable::read(buf, lex);
-	setStatus(Inlined);
+	setInlined();
 }
 
 
@@ -209,7 +209,7 @@ void InsetCharStyle::getDrawFont(LyXFont & font) const
 
 void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	setStatus(Inlined);
+	setInlined();
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			if (cmd.button() == mouse_button::button3)

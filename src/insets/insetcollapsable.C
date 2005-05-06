@@ -206,8 +206,7 @@ void InsetCollapsable::getCursorPos
 		if (openinlined_)
 			x += dimensionCollapsed().wid;
 		else
-			y += dimensionCollapsed().height() - ascent()
-			   + TEXT_TO_INSET_OFFSET + textdim_.asc;
+			y += dimensionCollapsed().height() - ascent() + TEXT_TO_INSET_OFFSET + textdim_.asc;
 	}
 
 	x += TEXT_TO_INSET_OFFSET;
@@ -316,8 +315,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 		case Open: {
 			if (hitButton(cmd)) {
 				lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
-				setStatus(Collapsed);
-				cur.leaveInset(*this);
+				setStatus(cur, Collapsed);
 				cur.bv().cursor() = cur;
 			} else {
 				lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
@@ -335,18 +333,12 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument == "open")
-			setStatus(Open);
-		else if (cmd.argument == "close") {
-			setStatus(Collapsed);
-			cur.leaveInset(*this);
-		} else if (cmd.argument == "toggle" || cmd.argument.empty()) {
-			if (isOpen()) {
-				setStatus(Collapsed);
-				cur.leaveInset(*this);
-			} else {
-				setStatus(Open);
-			}
-		} else // if assign or anything else
+			setStatus(cur, Open);
+		else if (cmd.argument == "close")
+			setStatus(cur, Collapsed);
+		else if (cmd.argument == "toggle" || cmd.argument.empty())
+			setStatus(cur, isOpen() ? Collapsed : Open);
+		else // if assign or anything else
 			cur.undispatched();
 		cur.dispatched();
 		break;
@@ -388,29 +380,18 @@ int InsetCollapsable::scroll(bool recursive) const
 }
 
 
-void InsetCollapsable::open()
-{
-	if (status_ == Collapsed)   // ...but not inlined
-		setStatus(Open);
-}
-
-
-void InsetCollapsable::close()
-{
-	setStatus(Collapsed);
-}
-
-
 void InsetCollapsable::setLabel(string const & l)
 {
 	label = l;
 }
 
 
-void InsetCollapsable::setStatus(CollapseStatus status)
+void InsetCollapsable::setStatus(LCursor & cur, CollapseStatus status)
 {
 	status_ = status;
 	setButtonLabel();
+	if (status_ == Collapsed)
+		cur.leaveInset(*this);
 }
 
 

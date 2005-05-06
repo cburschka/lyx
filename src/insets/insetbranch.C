@@ -147,32 +147,24 @@ void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.dispatched();
 
 		if (cmd.argument == "open")
-			setStatus(Open);
-		else if (cmd.argument == "close") {
-			setStatus(Collapsed);
-			cur.leaveInset(*this);
-		} else if (cmd.argument == "toggle") {
-			if (isOpen()) {
-				setStatus(Collapsed);
-				cur.leaveInset(*this);
-			} else {
-				setStatus(Open);
-			}
-
-		// The branch inset uses "assign".
-		} else if (cmd.argument == "assign" || cmd.argument.empty()) {
+			setStatus(cur, Open);
+		else if (cmd.argument == "close")
+			setStatus(cur, Collapsed);
+		else if (cmd.argument == "toggle")
+			setStatus(cur, isOpen() ? Collapsed : Open);
+		else if (cmd.argument == "assign" || cmd.argument.empty()) {
+			// The branch inset uses "assign".
 			BranchList const & branchlist =
 				cur.buffer().params().branchlist();
 			if (isBranchSelected(branchlist)) {
 				if (status() != Open)
-					setStatus(Open);
+					setStatus(cur, Open);
 				else
 					cur.undispatched();
 			} else {
-				if (status() != Collapsed) {
-					setStatus(Collapsed);
-					cur.leaveInset(*this);
-				} else
+				if (status() != Collapsed)
+					setStatus(cur, Collapsed);
+				else
 					cur.undispatched();
 			}
 		}
@@ -198,7 +190,8 @@ bool InsetBranch::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if (cmd.argument == "open" || cmd.argument == "close" ||
 		    cmd.argument == "toggle")
 			flag.enabled(true);
-		else if (cmd.argument == "assign" || cmd.argument.empty()) {
+		else if (cmd.argument == "assign"
+			   || cmd.argument.empty()) {
 			BranchList const & branchlist =
 				cur.buffer().params().branchlist();
 			if (isBranchSelected(branchlist))

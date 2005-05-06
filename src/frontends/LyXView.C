@@ -203,20 +203,6 @@ void LyXView::dispatch(FuncRequest const & cmd)
 }
 
 
-LyXFunc & LyXView::getLyXFunc()
-{
-	BOOST_ASSERT(lyxfunc_.get());
-	return *lyxfunc_.get();
-}
-
-
-LyXFunc const & LyXView::getLyXFunc() const
-{
-	BOOST_ASSERT(lyxfunc_.get());
-	return *lyxfunc_.get();
-}
-
-
 Buffer const * const LyXView::updateInset(InsetBase const * inset) const
 {
 	Buffer const * buffer_ptr = 0;
