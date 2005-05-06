@@ -1356,6 +1356,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				FuncRequest fr(LFUN_INSET_INSERT, argument);
 				dispatch(fr);
 			}
+			// ideally, the update flag should be set by the insets,
+			// but this is not possible currently
+			update = true;
 			break;
 		}
 
