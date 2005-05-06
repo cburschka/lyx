@@ -208,6 +208,8 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 		InsetCollapsable::CollapseStatus st;
 		InsetERTMailer::string2params(cmd.argument, st);
 		setStatus(st);
+		if (status() == Collapsed)
+			cur.leaveInset(*this);
 		break;
 	}
 	case LFUN_PASTE:

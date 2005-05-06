@@ -507,10 +507,21 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 
 bool LCursor::isInside(InsetBase const * p)
 {
-	for (unsigned i = 0; i < depth(); ++i)
+	for (size_t i = 0; i < depth(); ++i)
 		if (&operator[](i).inset() == p)
 			return true;
 	return false;
+}
+
+
+void LCursor::leaveInset(InsetBase const & inset)
+{
+	for (size_t i = 0; i != depth(); ++i) {
+		if (&operator[](i).inset() == &inset) {
+			resize(i);
+			return;
+		}
+	}
 }
 
 
@@ -1176,3 +1187,4 @@ void LCursor::fixIfBroken()
 		lyxerr << "correcting cursor to level " << depth() << endl;
 	}
 }
+

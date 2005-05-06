@@ -40,17 +40,6 @@ using std::min;
 using std::ostream;
 
 
-void leaveInset(LCursor & cur, InsetBase const & in)
-{
-	for (size_t i = 0; i != cur.depth(); ++i) {
-		if (&cur[i].inset() == &in) {
-			cur.resize(i);
-			return;
-		}
-	}
-}
-
-
 InsetCollapsable::InsetCollapsable
 		(BufferParams const & bp, CollapseStatus status)
 	: InsetText(bp), label("Label"), status_(status), openinlined_(false)
@@ -217,7 +206,8 @@ void InsetCollapsable::getCursorPos
 		if (openinlined_)
 			x += dimensionCollapsed().wid;
 		else
-			y += dimensionCollapsed().height() - ascent() + TEXT_TO_INSET_OFFSET + textdim_.asc;
+			y += dimensionCollapsed().height() - ascent()
+			   + TEXT_TO_INSET_OFFSET + textdim_.asc;
 	}
 
 	x += TEXT_TO_INSET_OFFSET;
@@ -327,7 +317,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 			if (hitButton(cmd)) {
 				lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 				setStatus(Collapsed);
-				leaveInset(cur, *this);
+				cur.leaveInset(*this);
 				cur.bv().cursor() = cur;
 			} else {
 				lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
@@ -348,14 +338,14 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 			setStatus(Open);
 		else if (cmd.argument == "close") {
 			setStatus(Collapsed);
-			leaveInset(cur, *this);
-		} else if (cmd.argument == "toggle"
-			   || cmd.argument.empty()) {
+			cur.leaveInset(*this);
+		} else if (cmd.argument == "toggle" || cmd.argument.empty()) {
 			if (isOpen()) {
 				setStatus(Collapsed);
-				leaveInset(cur, *this);
-			} else
+				cur.leaveInset(*this);
+			} else {
 				setStatus(Open);
+			}
 		} else // if assign or anything else
 			cur.undispatched();
 		cur.dispatched();

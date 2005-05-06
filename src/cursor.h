@@ -53,6 +53,8 @@ public:
 	bool popLeft();
 	/// pop one slice off the cursor stack and go right
 	bool popRight();
+	/// make sure cursor is outside given inset
+	void leaveInset(InsetBase const & inset);
 	/// sets cursor part
 	void setCursor(DocIterator const & it);
 

@@ -80,9 +80,9 @@ public:
 	Buffer * buffer() const;
 
 	/// return the LyX function handler for this view
-	LyXFunc & getLyXFunc() { return *lyxfunc_.get(); }
+	LyXFunc & getLyXFunc();
 	///
-	LyXFunc const & getLyXFunc() const { return *lyxfunc_.get(); }
+	LyXFunc const & getLyXFunc() const;
 
 	/// return the toolbar for this view
 	Toolbars & getToolbars() { return *toolbars_.get(); }
