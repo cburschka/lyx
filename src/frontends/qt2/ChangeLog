@@ -1,3 +1,9 @@
+2005-05-06  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/*.ui: remove captions: they are unused and pollute the po
+	files; add missing ":"; use terms "Bibliography" and "Citation"
+	consistently; change "pre-amble" to "preamble"
+
 2005-05-04  Angus Leeming  <leeming@lyx.org>
 
 	* QPrefsDialog.C (QPrefsDialog): disable the spellCommandCO if
