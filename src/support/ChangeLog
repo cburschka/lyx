@@ -1,3 +1,8 @@
+2005-05-07  Rob Bearman  <robbear@hyperfine.com>
+
+	* fs_extras.C (copy_file): noclobber and CopyFile's bFailIfExists
+	are the same as each other.
+
 2005-05-03  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.C (RunCommand): protect calls to popen() and pclose()

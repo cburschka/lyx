@@ -155,7 +155,7 @@ void copy_file(path const & source, path const & target, bool noclobber)
 				fs::detail::system_error_code()));
 #endif
 #ifdef BOOST_WINDOWS
-	if (::CopyFile(source.string().c_str(), target.string().c_str(), !noclobber) == 0) {
+	if (::CopyFile(source.string().c_str(), target.string().c_str(), noclobber) == 0) {
 		boost::throw_exception(
 			filesystem_error(
 				"boost::filesystem::copy_file",
