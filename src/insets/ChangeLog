@@ -1,3 +1,9 @@
+2005-05-07  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* insetbibtex.C: change screen label
+	* insetref.C:
+	* insetert.C: rename LFUN_REF_GOTO to LFUN_LABEL_GOTO
+
 2005-05-06  José Matos  <jamatos@lyx.org>
 
 	* insetcommandparams.C (scanCommand): fix out of range string access.

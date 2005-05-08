@@ -236,8 +236,8 @@ Menuset
 		Submenu "File|e" "insert_file"
 		Item "Box" "box-insert Frameless"
 		Separator
-		Item "Citation Reference...|C" "dialog-show-new-inset citation"
-		Item "Cross Reference...|R" "dialog-show-new-inset ref"
+		Item "Citation...|C" "dialog-show-new-inset citation"
+		Item "Cross-reference...|R" "dialog-show-new-inset ref"
 		Item "Label...|L" "label-insert"
 		Item "Index Entry|d" "index-insert"
 # I'm going to kill this dumb dialog, but for now ...
@@ -248,7 +248,7 @@ Menuset
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
 		Item "Short Title" "optional-insert"
-		Item "TeX|X" "ert-insert"
+		Item "TeX Code|X" "ert-insert"
 	End
 
 	Menu "insert_special"
@@ -332,7 +332,7 @@ Menuset
 		Item "Table of Contents|C" "toc-insert"
 		FloatListInsert
 		Item "Index List|I" "index-print"
-		Item "BibTeX Reference...|B" "dialog-show-new-inset bibtex"
+		Item "BibTeX Bibliography...|B" "dialog-show-new-inset bibtex"
 	End
 
 	Menu "insert_file"
@@ -387,7 +387,7 @@ Menuset
 	Menu "navigate"
 		Submenu "Bookmarks|B" "navigate_bookmarks"
 		Item "Next Note|N" "note-next"
-		Item "Goto Reference|G" "reference-goto"
+		Item "Goto Label|G" "label-goto"
 		Separator
 		Toc
 	End

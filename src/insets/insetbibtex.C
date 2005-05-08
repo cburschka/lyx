@@ -90,7 +90,7 @@ void InsetBibtex::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 string const InsetBibtex::getScreenLabel(Buffer const &) const
 {
-	return _("BibTeX Generated References");
+	return _("BibTeX Generated Bibliography");
 }
 
 

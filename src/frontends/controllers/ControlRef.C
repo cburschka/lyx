@@ -48,7 +48,7 @@ vector<string> const ControlRef::getLabelList(string const & name) const
 void ControlRef::gotoRef(string const & ref)
 {
 	kernel().dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
-	kernel().dispatch(FuncRequest(LFUN_REF_GOTO, ref));
+	kernel().dispatch(FuncRequest(LFUN_LABEL_GOTO, ref));
 }
 
 

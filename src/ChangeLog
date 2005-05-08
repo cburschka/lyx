@@ -1,3 +1,9 @@
+2005-05-07  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* lfuns.h:
+	* LyXAction.C:
+	* BufferView_pimpl.C: rename LFUN_REF_GOTO to LFUN_LABEL_GOTO
+
 2005-05-07  André Pönitz  <poenitz@gmx.net>
 
 	* cursor.[Ch] (leaveInset): new function

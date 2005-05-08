@@ -73,7 +73,7 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
 			lyxerr << "trying to goto ref '" << asString(cell(0)) << "'" << endl;
-			cur.bv().dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
+			cur.bv().dispatch(FuncRequest(LFUN_LABEL_GOTO, asString(cell(0))));
 			break;
 		}
 		if (cmd.button() == mouse_button::button1) {

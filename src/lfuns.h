@@ -230,7 +230,7 @@ enum kb_action {
 	LFUN_VC_REVERT,                 // Lgb 97-07-01
 	LFUN_VC_UNDO,                   // Lgb 97-07-01
 	LFUN_EXPORT,                    // Lgb 97-07-29
-	LFUN_REF_GOTO,                  // Ale 970806
+	LFUN_LABEL_GOTO,                // Ale 970806
 	LFUN_LDOTS,                     // Asger 970929
 	// 170
 	LFUN_END_OF_SENTENCE,           // Asger 970929

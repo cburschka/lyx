@@ -324,7 +324,7 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LFUN_GOTONOTE:
 		case LFUN_PARAGRAPH_SPACING:
 		case LFUN_QUOTE:
-		case LFUN_REF_GOTO:
+		case LFUN_LABEL_GOTO:
 		case LFUN_REFERENCE_GOTO:
 		case LFUN_SPACE_INSERT:
 		case LFUN_GOTOFILEROW:

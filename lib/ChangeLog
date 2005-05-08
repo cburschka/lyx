@@ -1,3 +1,11 @@
+2005-05-07  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/*.ui: Synchronize menu entries with dialog titles:
+	"TeX" => "TeX Code", "BibTeX Reference" => "BibTeX Bibliography",
+	"Citation Reference" => "Citation", "Cross Reference" => 
+	"Cross-reference"; fix semantics: "Goto Reference" => "Goto Label",
+	"Refs" => "Labels"
+
 2005-05-05  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* layouts/stdlists.inc:

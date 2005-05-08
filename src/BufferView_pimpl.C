@@ -964,7 +964,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_FONT_STATE:
 	case LFUN_INSERT_LABEL:
 	case LFUN_BOOKMARK_SAVE:
-	case LFUN_REF_GOTO:
+	case LFUN_LABEL_GOTO:
 	case LFUN_GOTO_PARAGRAPH:
 	case LFUN_GOTOERROR:
 	case LFUN_GOTONOTE:
@@ -1075,7 +1075,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		restorePosition(convert<unsigned int>(cmd.argument));
 		break;
 
-	case LFUN_REF_GOTO: {
+	case LFUN_LABEL_GOTO: {
 		string label = cmd.argument;
 		if (label.empty()) {
 			InsetRef * inset =

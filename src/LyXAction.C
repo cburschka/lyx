@@ -246,7 +246,7 @@ void LyXAction::init()
 		{ LFUN_QUOTE, "quote-insert", Noop },
 		{ LFUN_RECONFIGURE, "reconfigure", NoBuffer },
 		{ LFUN_REDO, "redo", Noop },
-		{ LFUN_REF_GOTO, "reference-goto", ReadOnly },
+		{ LFUN_LABEL_GOTO, "label-goto", ReadOnly },
 		{ LFUN_REFERENCE_GOTO, "reference-next", ReadOnly },
 		{ LFUN_NEXT, "screen-down", ReadOnly | NoUpdate},
 		{ LFUN_NEXTSEL, "screen-down-select", ReadOnly },

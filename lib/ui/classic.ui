@@ -210,8 +210,8 @@ Menuset
 	    Submenu "Math|h" "insert_math"
 		Separator
 		Submenu "Special Character|S" "insert_special"
-		Item "Citation Reference...|C" "dialog-show-new-inset citation"
-		Item "Cross Reference...|R" "dialog-show-new-inset ref"
+		Item "Citation...|C" "dialog-show-new-inset citation"
+		Item "Cross-reference...|R" "dialog-show-new-inset ref"
 		Item "Label...|L" "label-insert"
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
@@ -222,7 +222,7 @@ Menuset
 		Item "Note|N" "note-insert"
 		Submenu "Lists & TOC|O" "insert_toc"
 		Separator
-		Item "TeX|T" "ert-insert"
+		Item "TeX Code|T" "ert-insert"
 		Item "Minipage|p" "minipage-insert"
 		Item "Graphics...|G" "dialog-show-new-inset graphics"
 		Item "Tabular Material...|b" "tabular-insert"
@@ -306,7 +306,7 @@ Menuset
 		Item "Table of Contents|C" "toc-insert"
 		FloatListInsert
 		Item "Index List|I" "index-print"
-		Item "BibTeX Reference...|B" "dialog-show-new-inset bibtex"
+		Item "BibTeX Bibliography...|B" "dialog-show-new-inset bibtex"
 	End
 
 	Menu "insert_file"
@@ -368,7 +368,7 @@ Menuset
 		Toc
 		Separator
 		Item "Note|N" "note-next"
-		Item "Refs|R" "reference-goto"
+		Item "Label|L" "label-goto"
 		Submenu "Bookmarks|B" "navigate_bookmarks"
 	End
 
