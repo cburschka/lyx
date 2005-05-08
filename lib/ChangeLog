@@ -1,3 +1,8 @@
+2005-05-08  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2ppm.py: do not quote the name of the
+	executable when spawning an external process.
+
 2005-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* layouts/*.layout: 
