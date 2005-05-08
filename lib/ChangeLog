@@ -1,3 +1,9 @@
+2005-05-08  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2bitmap.py:
+	* scripts/legacy_lyxpreview2ppm.py do not quote the name of the
+	executable when spawning an external process.
+
 2005-05-07  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* ui/*.ui: Synchronize menu entries with dialog titles:

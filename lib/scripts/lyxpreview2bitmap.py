@@ -107,7 +107,7 @@ def convert_to_ppm_format(pngtopnm, basename):
     for png_file in glob.glob("%s*.png" % basename):
         ppm_file = png_file_re.sub(".ppm", png_file)
 
-        p2p_cmd = "'%s' '%s'" % (pngtopnm, png_file)
+        p2p_cmd = '%s "%s"' % (pngtopnm, png_file)
         p2p_status, p2p_stdout = run_command(p2p_cmd)
         if p2p_status != None:
             error("Unable to convert %s to ppm format" % png_file)
@@ -154,7 +154,7 @@ def main(argv):
         pngtopnm = find_exe_or_terminate(["pngtopnm"], path)
 
     # Compile the latex file.
-    latex_call = "'%s' '%s'" % (latex, latex_file)
+    latex_call = '%s "%s"' % (latex, latex_file)
 
     latex_status, latex_stdout = run_command(latex_call)
     if latex_status != None:
@@ -163,7 +163,7 @@ def main(argv):
 
     # Run the dvi file through dvipng.
     dvi_file = latex_file_re.sub(".dvi", latex_file)
-    dvipng_call = "'%s' -Ttight -depth -height -D %d -fg '%s' -bg '%s' '%s'" \
+    dvipng_call = '%s -Ttight -depth -height -D %d -fg "%s" -bg "%s" "%s"' \
                   % (dvipng, dpi, fg_color, bg_color, dvi_file)
 
     dvipng_status, dvipng_stdout = run_command(dvipng_call)

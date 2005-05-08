@@ -195,8 +195,8 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 
 def crop_files(pnmcrop, basename):
     t = pipes.Template()
-    t.append('"%s" -left' % pnmcrop, '--')
-    t.append('"%s" -right' % pnmcrop, '--')
+    t.append('%s -left' % pnmcrop, '--')
+    t.append('%s -right' % pnmcrop, '--')
 
     for file in glob.glob("%s*.ppm" % basename):
         tmp = mkstemp()
@@ -236,7 +236,7 @@ def legacy_conversion(argv):
         error("Unable to move color info into the latex file")
 
     # Compile the latex file.
-    latex_call = '"%s" "%s"' % (latex, latex_file)
+    latex_call = '%s "%s"' % (latex, latex_file)
 
     latex_status, latex_stdout = run_command(latex_call)
     if latex_status != None:
@@ -247,7 +247,7 @@ def legacy_conversion(argv):
     dvi_file = latex_file_re.sub(".dvi", latex_file)
     ps_file  = latex_file_re.sub(".ps",  latex_file)
 
-    dvips_call = '"%s" -o "%s" "%s"' % (dvips, ps_file, dvi_file)
+    dvips_call = '%s -o "%s" "%s"' % (dvips, ps_file, dvi_file)
 
     dvips_status, dvips_stdout = run_command(dvips_call)
     if dvips_status != None:
@@ -264,7 +264,7 @@ def legacy_conversion(argv):
         alpha = 2
 
     # Generate the bitmap images
-    gs_call = '"%s" -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw ' \
+    gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw ' \
               '-sOutputFile="%s%%d.ppm" ' \
               '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
               '-r%f "%s"' \
