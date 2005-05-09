@@ -163,7 +163,7 @@
 # A bit like autoindent in c-mode
 \bind "Tab"                     "depth-increment"
 
-\bind "C-~S-greater"		"reference-goto"
+\bind "C-~S-greater"		"label-goto"
 \bind "C-~S-less" 		"bookmark-goto 0"
 \bind "C-~S-1"			"bookmark-goto 1"
 \bind "C-~S-2"			"bookmark-goto 2"
