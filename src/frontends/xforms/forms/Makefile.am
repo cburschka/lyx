@@ -65,3 +65,6 @@ SUFFIXES += .fd
 .fd.C: $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed $(srcdir)/tmp_str.sed
 	{ [ $(srcdir) != . ] && [ ! -r $(<F) ] && $(LN_S) $< . ; } || true
 	$(SHELL) $(SCRIPT) $(<F)
+
+distclean-local:
+	[ $(srcdir) != . ] && $(RM) $(SRCS)

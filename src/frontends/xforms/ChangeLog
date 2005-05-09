@@ -1,3 +1,9 @@
+2005-05-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* forms/Makefile.am: add a distclean-local target to remove
+	all .fd symbolic links when the source and build directories
+	are different.
+
 2005-05-04  Angus Leeming  <leeming@lyx.org>
 
 	* FormPreferences.C (SpellOptions::build):  disable the
