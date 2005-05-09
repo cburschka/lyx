@@ -99,8 +99,8 @@ void UpdatableInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 				scroll(cur.bv(), static_cast<float>(convert<double>(cmd.argument)));
 			else
 				scroll(cur.bv(), convert<int>(cmd.argument));
-			cur.bv().update();
-		}
+		} else
+			cur.noUpdate();
 		break;
 
 	default:

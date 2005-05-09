@@ -192,7 +192,6 @@ void InsetNote::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		InsetNoteMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
-		cur.bv().update();
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:

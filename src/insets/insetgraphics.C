@@ -197,10 +197,10 @@ void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
 		Buffer const & buffer = cur.buffer();
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
-		if (!p.filename.empty()) {
+		if (!p.filename.empty())
 			setParams(p);
-			cur.bv().update();
-		}
+		else
+			cur.noUpdate();
 		break;
 	}
 

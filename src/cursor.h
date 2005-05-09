@@ -146,13 +146,30 @@ public:
 	void reset(InsetBase &);
 	/// for spellchecking
 	void replaceWord(std::string const & replacestring);
-	/// the event was not (yet) dispatched
+	/**
+	 * the event was not (yet) dispatched.
+	 *
+	 * Should only be called by an inset's doDispatch() method. It means:
+	 * I, the doDispatch() method of InsetFoo, hereby declare that I am
+	 * not able to handle that request and trust my parent will do the
+	 * Right Thing (even if my getStatus partner said that I can do it).
+	 * It is sort of a kludge that should be used only rarely...
+	 */
 	void undispatched();
 	/// the event was already dispatched
 	void dispatched();
 	/// call update() when done
 	void needsUpdate();
-	/// don't call update() when done
+	/**
+	 * don't call update() when done
+	 *
+	 * Should only be called by an inset's doDispatch() method. It means:
+	 * I handled that request and I can reassure you that the screen does
+	 * not need to be re-drawn and all entries in the coord cache stay
+	 * valid (and there are no other things to put in the coord cache).
+	 * This is a fairly rare event as well and only some optimization.
+	 * Not using noUpdate() should never be wrong.
+	 */
 	void noUpdate();
 	/// fix cursor in circumstances that should never happen
 	void fixIfBroken();

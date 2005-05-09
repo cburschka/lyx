@@ -402,8 +402,17 @@ public:
 protected:
 	InsetBase();
 	InsetBase(InsetBase const &);
-	/// the real dispatcher.
-	/// \sa getStatus
+	/** The real dispatcher.
+	 *  Gets normally called from LCursor::dispatch(). LCursor::dispatch()
+	 *  assumes the common case of 'LFUN handled, need update'.
+	 *  This has to be overriden by calling LCursor::undispatched() or
+	 *  LCursor::noUpdate() if appropriate.
+	 *  If you need to call the dispatch method of some inset directly
+	 *  you may have to explicitly request an update at that place. Don't
+	 *  do it in doDispatch(), since that causes nested updates when
+	 *  called from LCursor::dispatch(), and these can lead to crashes.
+	 *  \sa getStatus
+	 */
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const = 0;

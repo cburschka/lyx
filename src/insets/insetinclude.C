@@ -128,10 +128,10 @@ void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetIncludeMailer::string2params(cmd.argument, p);
-		if (!p.getCmdName().empty()) {
+		if (!p.getCmdName().empty())
 			set(p, cur.buffer());
-			cur.bv().update();
-		}
+		else
+			cur.noUpdate();
 		break;
 	}
 

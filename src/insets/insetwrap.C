@@ -83,7 +83,6 @@ void InsetWrap::doDispatch(LCursor & cur, FuncRequest & cmd)
 		InsetWrapMailer::string2params(cmd.argument, params);
 		params_.placement = params.placement;
 		params_.width     = params.width;
-		cur.bv().update();
 		break;
 	}
 

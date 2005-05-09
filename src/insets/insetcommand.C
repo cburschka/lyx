@@ -109,12 +109,10 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(mailer_name_, cmd.argument, p);
-		if (p.getCmdName().empty()) {
-			cur.undispatched();
-		} else {
+		if (p.getCmdName().empty())
+			cur.noUpdate();
+		else
 			setParams(p);
-			cur.bv().update();
-		}
 		break;
 	}
 

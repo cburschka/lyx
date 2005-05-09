@@ -160,7 +160,6 @@ void InsetFloat::doDispatch(LCursor & cur, FuncRequest & cmd)
 		params_.sideways  = params.sideways;
 		wide(params_.wide, cur.buffer().params());
 		sideways(params_.sideways, cur.buffer().params());
-		cur.bv().update();
 		break;
 	}
 

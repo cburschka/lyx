@@ -25,7 +25,6 @@
 #include <boost/signals/connection.hpp>
 
 class Buffer;
-class BufferView;
 class LyXRC_PreviewStatus;
 class MetricsInfo;
 class PainterInfo;

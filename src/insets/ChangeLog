@@ -1,3 +1,11 @@
+2005-05-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetbase.h (doDispatch): document a bit more
+	* insetcommand.C, insetfloat.C, insetgraphics.C, insetinclude.C,
+	insetnote.C, insetwrap.C, updatableinset.C (doDispatch): don't call
+	cur.bv().update(), because that leads to nested updates. Call
+	cur.noUpdate() instead where approriate.
+
 2005-05-07  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* insetbibtex.C: change screen label
