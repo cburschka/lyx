@@ -375,6 +375,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		disable = (TEXT(false)->cursor.par()->layout()->optionalargs == 0);
 		break;
 
+	case LFUN_SPELLCHECK:
+#if !defined (USE_ISPELL) && !defined (USE_PSPELL)
+		disable = true;
+#endif
+		break;
+
 	case LFUN_TABULAR_FEATURE:
 		if (mathcursor) {
 #if 0

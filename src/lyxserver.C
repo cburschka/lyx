@@ -63,15 +63,40 @@
 
 using std::endl;
 
-// provide an empty mkfifo() if we do not have one. This disables the
-// lyxserver.
-#ifndef HAVE_MKFIFO
-int mkfifo(char const * __path, mode_t __mode) {
-	return 0;
+#if !defined (HAVE_MKFIFO)
+// We provide a stub class that disables the lyxserver.
+
+void LyXComm::openConnection()
+{}
+
+
+void LyXComm::closeConnection()
+{}
+
+
+int LyXComm::startPipe(string const & filename, bool write)
+{
+	return -1;
 }
-#endif
 
 
+void LyXComm::endPipe(int & fd, string const & filename, bool write)
+{}
+
+
+void LyXComm::emergencyCleanup()
+{}
+
+void LyXComm::read_ready()
+{}
+
+
+void LyXComm::send(string const & msg)
+{}
+
+
+#else // defined (HAVE_MKFIFO)
+ 
 void LyXComm::openConnection()
 {
 	lyxerr[Debug::LYXSERVER] << "LyXComm: Opening connection" << endl;
@@ -342,6 +367,8 @@ void LyXComm::send(string const & msg)
 	}
 #endif
 }
+
+#endif // defined (HAVE_MKFIFO)
 
 
 // LyXServer class

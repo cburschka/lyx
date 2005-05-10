@@ -1,3 +1,14 @@
+2005-05-09  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: remove pspell.m4 and add spell.m4.
+
+	* pspell.m4: removed.
+	* spell.m4: new. Incorporates the code in pspell but also adds
+	a test for whether the ISpell-handling code should be compiled.
+
+	* configure.ac:
+	* configure.in: remove CHECK_WITH_PSPELL. Add LYX_CHECK_SPELL_ENGINES
+
 2005-04-22  Angus Leeming  <leeming@lyx.org>
 
 	* qt.m4: Move the Qt-specific preprocessor flags out of the

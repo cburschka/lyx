@@ -133,9 +133,6 @@ AC_LIBTOOL_WIN32_DLL
 #AM_PROG_LIBTOOL
 LYX_PROG_LIBTOOL
 
-### Check if we want pspell libraries
-CHECK_WITH_PSPELL
-
 ### Check for some Cygwin-specific details.
 CHECK_WITH_CYGWIN
 
@@ -271,6 +268,7 @@ AC_CHECK_FUNCS(memmove memset strchr putenv setenv mkfifo mkstemp mktemp \
     lstat readlink)
 AC_LANG_POP(C)
 
+LYX_CHECK_SPELL_ENGINES
 
 dnl Until this is fixed in autoconf we provide our own version
 AC_FUNC_SELECT_ARGTYPES

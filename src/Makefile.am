@@ -35,6 +35,13 @@ localedir = $(datadir)/locale
 
 BUILT_SOURCES = version.C
 
+if USE_PSPELL
+PSPELL = pspell.C pspell.h
+endif
+if USE_ISPELL
+ISPELL = ispell.C ispell.h
+endif
+
 lyx_SOURCES = \
 	BoostFormat.h \
 	BufferView.C \
@@ -180,11 +187,8 @@ lyx_SOURCES = \
 	paragraph.h \
 	paragraph_pimpl.C \
 	paragraph_pimpl.h \
+	$(PSPELL) $(ISPELL) SpellBase.C \
 	SpellBase.h \
-	ispell.C \
-	ispell.h \
-	pspell.C \
-	pspell.h \
 	sgml.C \
 	sgml.h \
 	tabular.C \

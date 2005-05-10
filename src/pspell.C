@@ -9,8 +9,6 @@
 
 #include <config.h>
 
-#ifdef USE_PSPELL
-
 #include "support/LAssert.h"
 #include "debug.h"
 
@@ -150,5 +148,3 @@ string const PSpell::error()
 		return err;
 	return "";
 }
-
-#endif // USE_PSPELL

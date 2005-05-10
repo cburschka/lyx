@@ -1,3 +1,19 @@
+2005-05-09  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: make compilation of pspell.[Ch] and ispell.[Ch] dependent
+	on conditionals set at configure time.
+
+	* SpellBase.[Ch]: no longer an abstract base class. Instead,
+	it can be compiled in its own right but has no-op functionality.
+
+	* lyx_cb.C: artificially define fork() on Windows as a no-op failing
+	function so that auto-saving works, albeit in a blocking manner.
+
+	* lyxfunc.C (getStatus): disable the spellchecker if USE_[IP]SPELL
+	are not defined.
+
+	* lyxserver.C: disable on Windows.
+
 2005-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxlayout.C (Read): transform underscores to spaces in CopyStyle

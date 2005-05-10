@@ -25,7 +25,7 @@ bool SpellBase::alive()
 
 SpellBase::Result SpellBase::check(WordLangTuple const &)
 {
-	return UNKNOWN_WORD;
+	return UNKNOWN;
 }
 
 

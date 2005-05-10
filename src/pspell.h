@@ -72,4 +72,4 @@ private:
 	PspellCanHaveError * spell_error_object;
 };
 
-#endif // PSPELL_H
+#endif // LYX_PSPELL_H

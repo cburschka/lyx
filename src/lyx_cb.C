@@ -39,6 +39,10 @@
 
 #include "BoostFormat.h"
 
+#if !defined (HAVE_FORK)
+# define fork() -1
+#endif
+
 #include <fstream>
 #include <algorithm>
 #include <utility>

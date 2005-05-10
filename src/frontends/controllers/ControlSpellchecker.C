@@ -20,9 +20,13 @@
 #include "lyxtext.h"
 #include "debug.h"
 
-#include "ispell.h"
 #ifdef USE_PSPELL
 # include "pspell.h"
+#endif
+#if defined(USE_ISPELL)
+# include "ispell.h"
+#else
+# include "SpellBase.h"
 #endif
 
 #include "frontends/Alert.h"
@@ -75,13 +79,17 @@ void ControlSpellchecker::startSession()
 		speller_.reset(new PSpell(buffer()->params, tmp));
 	} else {
 #endif
+#if defined(USE_ISPELL)
 		tmp = (lyxrc.isp_use_alt_lang) ?
 			lyxrc.isp_alt_lang : buffer()->params.language->lang();
 
 		speller_.reset(new ISpell(buffer()->params, tmp));
+#else
+		speller_.reset(new SpellBase);
+#endif // USE_ISPELL
 #ifdef USE_PSPELL
 	}
-#endif
+#endif //USE_PSPELL
 
 	// reset values to initial
 	newval_ = 0.0;

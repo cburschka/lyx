@@ -1,3 +1,8 @@
+2005-05-09  Angus Leeming  <leeming@lyx.org>
+
+	* FormPreferences.C (SpellOptions::build):  disable the
+	choice_spell_command if USE_ISPELL is not defined.
+
 2005-02-26  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* FormBibtex.C:
