@@ -84,6 +84,9 @@ What's new
 
 - Make lib/configure more portable, allowing it to run on Solaris.
 
+- remove detection of a PS interpreter in lib/configure, since we do
+  not use it.
+
 
 * User Interface:
 

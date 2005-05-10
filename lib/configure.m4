@@ -264,9 +264,6 @@ test "$word_to_latex_command" = "word2x" && word_to_latex_command="word2x -f lat
 SEARCH_PROG([for Image converter],image_command,convert)
 test $image_command = "convert" && image_command="convert \$\$i \$\$o"
 
-# Search for a Postscript interpreter
-LYXRC_PROG([for a Postscript interpreter], \ps_command, gs)
-
 # Search something to preview postscript
 SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gsview32 gv ghostview)
 case $GHOSTVIEW in
