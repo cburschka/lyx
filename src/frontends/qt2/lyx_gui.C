@@ -51,6 +51,9 @@
 #endif
 
 #include <qapplication.h>
+#if QT_VERSION >= 0x030100
+#include <qeventloop.h>
+#endif
 #include <qpaintdevicemetrics.h>
 #include <qtranslator.h>
 #include <qtextcodec.h>
@@ -256,7 +259,9 @@ void sync_events()
 	// During screen update/ redraw, this method is disabled to 
 	// prevent keyboard events being handed to the LyX core, where
 	// they could cause re-entrant calls to screen update.
-	qApp->processEvents();
+#if QT_VERSION >= 0x030100
+	qApp->eventLoop()->processEvents(QEventLoop::ExcludeUserInput);
+#endif
 }
 
 
