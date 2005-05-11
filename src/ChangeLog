@@ -43,7 +43,7 @@
 
 2005-05-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* text3.C (getStatus): immediately return after setOnOff	
+	* text3.C (getStatus): immediately return after setOnOff
 
 	* rowpainter.C: fix drawing of appendix start
 
@@ -65,10 +65,10 @@
 2005-05-02  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_cb.C: artificially define fork() on Windows as a no-op failing
-	function so that suto-saving works, albeit in a blocking manner.
+	function so that auto-saving works, albeit in a blocking manner.
 
 	* Makefile.am: make compilation of the client sub directory, of
-	apsellC, aspell_local.h, pspell.[Ch] and ispell.[Ch] dependent
+	aspell.C, aspell_local.h, pspell.[Ch] and ispell.[Ch] dependent
 	on conditionals set at configure time.
 
 	* SpellBase.[Ch]: no longer an abstract base class. Instead,
