@@ -707,7 +707,7 @@ bool Buffer::save() const
 		// good enough. (Lgb)
 		// But to use this we need fs::copy_file to actually do a copy,
 		// even when the target file exists. (Lgb)
-		if (fs::exists(fileName())) {
+		if (fs::exists(fileName()) && fs::is_writable(fs::path(fileName()).branch_path())) {
 		  //try {
 		    fs::copy_file(fileName(), s, false);
 		    //}

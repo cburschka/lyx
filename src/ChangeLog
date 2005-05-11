@@ -1,3 +1,8 @@
+2005-05-11  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* buffer.C (save): check if destination is writable before trying
+	to copy a file
+
 2005-05-11  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BufferView_pimpl.C (update): fix processEvents -caused update
