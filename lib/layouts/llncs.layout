@@ -1,5 +1,5 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass{Springer - Lecture Notes in Comp. Sci.}
+#  \DeclareLaTeXClass{article (LNCS)}
 # llncs (article) textclass definition file.
 # --------
 #
@@ -42,10 +42,6 @@ End
 
 
 Style Section
-	LabelFont
-	  Series              Bold
-	  Size                Large
-	EndFont
 	Font
 	  Series              Bold
 	  Size                Large
@@ -54,8 +50,7 @@ End
 
 
 Style Subsection
-	LabelType             Counter_Subsection
-	LabelFont
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -63,7 +58,7 @@ End
 
 
 Style Subsubsection
-	LabelFont
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont

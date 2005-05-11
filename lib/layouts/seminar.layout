@@ -1,16 +1,16 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass{seminar}
+#  \DeclareLaTeXClass{slides (seminar)}
 # Initial attemt at makeing a LyX layout file for the seminar class.
 # Author : Lars Gullik Bjønnes <larsbj@lyx.org>
 
 Input stdclass.inc
+Input numarticle.inc
 
 NoStyle Chapter
 NoStyle Chapter*
 
 Sides                   1
 Columns                 1
-MaxCounter              Counter_Section
 SecNumDepth             3
 TocDepth                3
 

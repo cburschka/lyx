@@ -1,5 +1,5 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[apa,apacite.sty]{APA style}
+#  \DeclareLaTeXClass[apa,apacite.sty]{article (APA)}
 # Author: Randy Gobbel <gobbel@andrew.cmu.edu>
 
 Columns                 1
@@ -340,6 +340,9 @@ Style Seriate
 	ParSep                0.0
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_EnumII
+	LabelType             Counter
+	LabelCounter          enumii
+	LabelString           "(\alph{enumii})"
+	LabelStringAppendix   "(\alph{enumii})"
 End
 
