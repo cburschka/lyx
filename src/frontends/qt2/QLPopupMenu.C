@@ -88,7 +88,6 @@ QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 
 void QLPopupMenu::fire(int index)
 {
-	qApp->processEvents();
 #ifdef Q_WS_MACX
 	if (index >= indexOffset) {
 		MenuItem mi = owner_->backend().getMenu("LyX")[index - indexOffset];

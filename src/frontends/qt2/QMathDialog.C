@@ -52,8 +52,7 @@ protected:
 			return;
 
 		w_->resize(viewport()->width(), w_->height());
-		// force the resize to get accurate scrollbars
-		qApp->processEvents();
+		// force the resize to get accurate scrollbar
 		resizeContents(w_->width(), w_->height());
 	}
 private:
@@ -155,9 +154,6 @@ void QMathDialog::showingPanel(int num)
 		return;
 
 	addPanel(num);
-
-	// Qt needs to catch up. Dunno why.
-	qApp->processEvents();
 
 	panel_initialised[num] = true;
 }

@@ -54,6 +54,9 @@ public:
 	/// toggle the cursor's visibility
 	void toggleCursor(BufferView & bv);
 
+	///
+	void unAllowSync() { sync_allowed_ = false; };
+
 protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
@@ -86,6 +89,9 @@ private:
 
 	/// is the cursor currently displayed
 	bool cursor_visible_;
+
+	///
+	bool sync_allowed_;
 };
 
 #endif // SCREEN_H

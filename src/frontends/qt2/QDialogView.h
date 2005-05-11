@@ -126,10 +126,8 @@ void QView<GUIDialog>::update()
 
 	// protect the BC from unwarranted state transitions
 
-	qApp->processEvents();
 	updating_ = true;
 	update_contents();
-	qApp->processEvents();
 	updating_ = false;
 
 	form()->setUpdatesEnabled(true);
@@ -142,10 +140,8 @@ void QView<GUIDialog>::build()
 {
 	// protect the BC from unwarranted state transitions
 
-	qApp->processEvents();
 	updating_ = true;
 	build_dialog();
-	qApp->processEvents();
 	updating_ = false;
 }
 

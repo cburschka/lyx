@@ -1,3 +1,8 @@
+2005-05-11  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* screen.[hC]: fix processEvents -caused screen update recursion
+	bug
+
 2005-04-25  Angus Leeming  <leeming@lyx.org>
 
 	* LyXView.C:

@@ -617,12 +617,20 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 	if (buffer_) {
 		// Update macro store
 		buffer_->buildMacros();
-		// First drawing step
 
 		CoordCache backup;
 		std::swap(theCoords, backup);
+		
+		// This call disallows cursor blink to call
+		// processEvents. It is necessary to prevent screen
+		// redraw being called recursively.
+		screen().unAllowSync();
+		// This, together with doneUpdating(), verifies (using
+		// asserts) that screen redraw is not called from 
+		// within itself.
 		theCoords.startUpdating();
 
+		// First drawing step
 		ViewMetricsInfo vi = metrics();
 
 		if (fitcursor && fitCursor()) {
@@ -633,7 +641,8 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 			// Second drawing step
 			screen().redraw(*bv_, vi);
 		} else {
-			// Abort updating of the coord cache - just restore the old one
+			// Abort updating of the coord
+			// cache - just restore the old one
 			std::swap(theCoords, backup);
 		}
 	} else

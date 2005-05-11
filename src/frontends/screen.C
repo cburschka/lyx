@@ -122,7 +122,7 @@ SplashScreen::SplashScreen()
 
 
 LyXScreen::LyXScreen()
-	: greyed_out_(true), cursor_visible_(false)
+	: greyed_out_(true), cursor_visible_(false), sync_allowed_(true)
 {
 	// Start loading the pixmap as soon as possible
 	if (lyxrc.show_banner) {
@@ -147,15 +147,19 @@ void LyXScreen::checkAndGreyOut()
 
 void LyXScreen::showCursor(BufferView & bv)
 {
-	// You are not expected to understand this. This forces Qt
-	// (the problem case) to deal with its event queue. This is
-	// necessary when holding down a key such as 'page down' or
-	// just typing: without this processing of the event queue,
-	// the cursor gets ahead of itself without a selection or
-	// workarea redraw having a chance to keep up. If you think
-	// you can remove this, try selecting text with the mouse
-	// in Qt, or holding Page Down on the User's Guide.
-	lyx_gui::sync_events();
+	// This code is currently meaningful only for the Qt frontend.
+	// This is the place (like below in hideCursor) where
+	// processEvents is being called, and things like keystrokes and
+	// mouse clicks are being handed to the LyX core, once every 
+	// cursor blink. 
+	// THERE IS NOT SUPPOSED TO BE ANY OTHER CALL TO processEvents 
+	// ANYWHERE ELSE.
+	// in BufferView::Pimpl::update() and here, the sync_allowed_
+	// guard is set/cleared which is used here to prevent recursive
+	// calls to screen update. startUpdating() and doneUpdating() in
+	// coordcache again contain asserts to detect such recursion.
+	if (sync_allowed_)
+		lyx_gui::sync_events();
 
 	if (cursor_visible_)
 		return;
@@ -202,6 +206,9 @@ void LyXScreen::showCursor(BufferView & bv)
 
 void LyXScreen::hideCursor()
 {
+	if (sync_allowed_)
+		lyx_gui::sync_events();
+
 	if (!cursor_visible_)
 		return;
 
@@ -223,13 +230,12 @@ void LyXScreen::redraw(BufferView & bv, ViewMetricsInfo const & vi)
 {
 	greyed_out_ = false;
 	workarea().getPainter().start();
-	hideCursor();
 	paintText(bv, vi);
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 	workarea().getPainter().end();
 	theCoords.doneUpdating();
-	showCursor(bv);
+	sync_allowed_ = true;
 }
 
 
