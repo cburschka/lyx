@@ -39,6 +39,10 @@ public:
 	int linuxdoc(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 
+	/// Standard plain text output -- short-circuited
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
+
 	/// Outputting the optional parameter of a LaTeX command
 	int latexOptional(Buffer const &, std::ostream &,
 			  OutputParams const &) const;
