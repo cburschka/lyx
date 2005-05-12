@@ -25,7 +25,7 @@
 #include "QExternalDialog.h"
 
 #include "lengthcombo.h"
-#include "lengthvalidator.h"
+#include "validators.h"
 #include "qt_helpers.h"
 #include "QExternal.h"
 
@@ -35,7 +35,7 @@
 #include <qfiledialog.h>
 #include <qtextview.h>
 #include <qlineedit.h>
-#include <qvalidator.h>
+
 
 using lyx::support::float_equal;
 using lyx::support::isStrDbl;
@@ -43,18 +43,6 @@ using std::string;
 
 namespace lyx {
 namespace frontend {
-
-namespace {
-
-LengthValidator * unsignedLengthValidator(QLineEdit * ed)
-{
-	LengthValidator * v = new LengthValidator(ed);
-	v->setBottom(LyXLength());
-	return v;
-}
-
-} // namespace anon
-
 
 QExternalDialog::QExternalDialog(QExternal * form)
 	: QExternalDialogBase(0, 0, false, 0),

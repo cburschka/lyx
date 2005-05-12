@@ -1,3 +1,22 @@
+2005-05-07  Angus Leeming  <leeming@lyx.org>
+
+	* Alert_pimpl.C (prompt_pimpl, warning_pimpl, error_pimpl) 
+	(information_pimpl, askForText_pimpl): make these warning dialogs
+	modal with respect to the calling dialog, rather than with respect
+	to the main window.
+
+	* lengthvalidator.[Ch]: removed.
+	* validators.[Ch]: added.
+	* Makefile.dialogs: remove lengthvalidator.[Ch]. Add validators.[Ch].
+
+	* QBoxDialog.C (unsignedLengthValidator):
+	* QDocumentDialog.C (unsignedLengthValidator):
+	* QExternalDialog.C (unsignedLengthValidator):
+	* QGraphicsDialog.C (unsignedLengthValidator):
+	* QTabularDialog.C (unsignedLengthValidator):
+	* QVSpaceDialog.C (unsignedLengthValidator):
+	removed. Use the version in validators.C.
+
 2005-05-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QLPopupMenu.C (fire): use lyx_gui::sync_events.
@@ -47,7 +66,7 @@
 
 2005-05-02  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* QTabularDialog.C: correcht handling of the LFUN_UNSET_*
+	* QTabularDialog.C: correct handling of the LFUN_UNSET_*
 	functions within longtabular.
 	
 	* ui/QTabularDialogBase.ui: add tooltips to longtabular tab.

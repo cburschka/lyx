@@ -18,6 +18,7 @@
 
 #include "gettext.h"
 
+#include <qapplication.h>
 #include <qmessagebox.h>
 #include <qlabel.h>
 #include <qlineedit.h>
@@ -37,9 +38,16 @@ int prompt_pimpl(string const & tit, string const & question,
 {
 	string const title = bformat(_("LyX: %1$s"), tit);
 
-	int res = QMessageBox::information(0, toqstr(title), toqstr(formatted(question)),
-		toqstr(b1), toqstr(b2), b3.empty() ? QString::null : toqstr(b3),
-		default_button, cancel_button);
+	QWidget * const parent = qApp->focusWidget() ?
+		qApp->focusWidget() : qApp->mainWidget();
+
+	int res = QMessageBox::information(parent,
+					   toqstr(title),
+					   toqstr(formatted(question)),
+					   toqstr(b1),
+					   toqstr(b2),
+					   b3.empty() ? QString::null : toqstr(b3),
+					   default_button, cancel_button);
 
 	// Qt bug: can return -1 on cancel or WM close, despite the docs.
 	if (res == -1)
@@ -50,30 +58,48 @@ int prompt_pimpl(string const & tit, string const & question,
 
 void warning_pimpl(string const & tit, string const & message)
 {
+	QWidget * const parent = qApp->focusWidget() ?
+		qApp->focusWidget() : qApp->mainWidget();
+
 	string const title = bformat(_("LyX: %1$s"), tit);
-	QMessageBox::warning(0, toqstr(title), toqstr(formatted(message)));
+	QMessageBox::warning(parent,
+			     toqstr(title),
+			     toqstr(formatted(message)));
 }
 
 
 void error_pimpl(string const & tit, string const & message)
 {
+	QWidget * const parent = qApp->focusWidget() ?
+		qApp->focusWidget() : qApp->mainWidget();
+
 	string const title = bformat(_("LyX: %1$s"), tit);
-	QMessageBox::critical(0, toqstr(title), toqstr(formatted(message)));
+	QMessageBox::critical(parent,
+			      toqstr(title),
+			      toqstr(formatted(message)));
 }
 
 
 void information_pimpl(string const & tit, string const & message)
 {
+	QWidget * const parent = qApp->focusWidget() ?
+		qApp->focusWidget() : qApp->mainWidget();
+
 	string const title = bformat(_("LyX: %1$s"), tit);
-	QMessageBox::information(0, toqstr(title), toqstr(formatted(message)));
+	QMessageBox::information(parent,
+				 toqstr(title),
+				 toqstr(formatted(message)));
 }
 
 
 pair<bool, string> const
 askForText_pimpl(string const & msg, string const & dflt)
 {
+	QWidget * const parent = qApp->focusWidget() ?
+		qApp->focusWidget() : qApp->mainWidget();
+
 	string const title = bformat(_("LyX: %1$s"), msg);
-	QAskForTextDialog d(0, toqstr(title), true);
+	QAskForTextDialog d(parent, toqstr(title), true);
 	// less than ideal !
 	d.askLA->setText(toqstr('&' + msg));
 	d.askLE->setText(toqstr(dflt));

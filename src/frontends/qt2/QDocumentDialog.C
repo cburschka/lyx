@@ -15,7 +15,7 @@
 
 #include "floatplacement.h"
 #include "lengthcombo.h"
-#include "lengthvalidator.h"
+#include "validators.h"
 #include "panelstack.h"
 #include "qt_helpers.h"
 
@@ -46,18 +46,6 @@ using std::string;
 
 namespace lyx {
 namespace frontend {
-
-
-namespace {
-
-LengthValidator * unsignedLengthValidator(QLineEdit * ed)
-{
-	LengthValidator * v = new LengthValidator(ed);
-	v->setBottom(LyXLength());
-	return v;
-}
-
-} // namespace anon
 
 
 QDocumentDialog::QDocumentDialog(QDocument * form)

@@ -69,7 +69,7 @@ string const Kernel::bufferFilepath() const
 }
 
 
-Kernel::DocTypes Kernel::docType() const
+Kernel::DocType Kernel::docType() const
 {
 	if (buffer().isLatex())
 		return LATEX;

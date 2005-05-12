@@ -15,7 +15,7 @@
 #include "QGraphics.h"
 
 #include "lengthcombo.h"
-#include "lengthvalidator.h"
+#include "validators.h"
 #include "qt_helpers.h"
 
 #include "debug.h"
@@ -31,18 +31,6 @@ using std::string;
 
 namespace lyx {
 namespace frontend {
-
-
-namespace {
-
-LengthValidator * unsignedLengthValidator(QLineEdit * ed)
-{
-	LengthValidator * v = new LengthValidator(ed);
-	v->setBottom(LyXLength());
-	return v;
-}
-
-} // namespace anon
 
 
 QGraphicsDialog::QGraphicsDialog(QGraphics * form)

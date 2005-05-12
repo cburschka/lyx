@@ -64,18 +64,18 @@ public:
 	std::string const bufferFilepath() const;
 	//@}
 
-	/** \enum DocTypes used to flag the different kinds of buffer
+	/** \enum DocType used to flag the different kinds of buffer
 	 *  without making the kernel header files available to the
 	 *  dialog's Controller or View.
 	 */
-	enum DocTypes {
+	enum DocType {
 		LATEX,
 		LITERATE,
 		LINUXDOC,
 		DOCBOOK
 	};
 	/// The type of the current buffer.
-	DocTypes docType() const;
+	DocType docType() const;
 
 	/** A request that the GUI be redrawn,
 	 *  e.g. because the colors have been remapped.
@@ -99,6 +99,19 @@ public:
 
 private:
 	LyXView & lyxview_;
+};
+
+
+/** \c KernelDocType is a wrapper for Kernel::DocType.
+ *  It can be forward-declared and passed as a function argument without
+ *  having to expose Kernel.h.
+ */
+class KernelDocType {
+public:
+	KernelDocType(Kernel::DocType val) : val_(val) {}
+	operator Kernel::DocType() const { return val_; }
+private:
+	Kernel::DocType val_;
 };
 
 } // namespace frontend

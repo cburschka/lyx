@@ -14,7 +14,7 @@
 
 #include "QTabularDialog.h"
 #include "QTabular.h"
-#include "lengthvalidator.h"
+#include "validators.h"
 #include "qt_helpers.h"
 
 #include "controllers/ControlTabular.h"
@@ -27,18 +27,6 @@ using std::string;
 
 namespace lyx {
 namespace frontend {
-
-
-namespace {
-
-LengthValidator * unsignedLengthValidator(QLineEdit * ed)
-{
-	LengthValidator * v = new LengthValidator(ed);
-	v->setBottom(LyXLength());
-	return v;
-}
-
-} // namespace anon
 
 
 QTabularDialog::QTabularDialog(QTabular * form)

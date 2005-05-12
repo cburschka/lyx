@@ -1,3 +1,8 @@
+2005-05-08  Angus Leeming  <leeming@lyx.org>
+
+	* Kernel.h (KernelDocType): wrapper class for the Kernel::DocTypes
+	enum.
+
 2005-05-07  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* ControlRef.C: rename LFUN_REF_GOTO to LFUN_LABEL_GOTO

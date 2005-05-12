@@ -98,7 +98,7 @@ void FormRef::update()
 	switch_go_button();
 
 	// Name is irrelevant to LaTeX/Literate documents
-	Kernel::DocTypes doctype = kernel().docType();
+	Kernel::DocType const doctype = kernel().docType();
 	if (doctype == Kernel::LATEX || doctype == Kernel::LITERATE) {
 		setEnabled(dialog_->input_name, false);
 	} else {
