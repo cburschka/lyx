@@ -136,9 +136,10 @@ public:
 	bool insetAllowed(Code) const { return true; }
 	///
 	bool allowSpellCheck() const { return true; }
+	///
+	InsetText(InsetText const &);
 
 protected:
-	InsetText(InsetText const &);
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:

@@ -1757,9 +1757,11 @@ bool InsetTabular::pasteSelection(LCursor & cur)
 				--c1;
 				continue;
 			}
-			shared_ptr<InsetText> inset = tabular.getCellInset(r2, c2);
-			inset = paste_tabular->getCellInset(r1, c1);
+			shared_ptr<InsetText> inset(
+				new InsetText(*paste_tabular->getCellInset(r1, c1)));
+			tabular.setCellInset(r2, c2, inset);
 			inset->markNew();
+			cur.pos() = 0;
 		}
 	}
 	return true;

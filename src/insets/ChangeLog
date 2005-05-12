@@ -1,3 +1,8 @@
+2005-05-12  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insettabular.C (pasteSelection):
+	* insettext.h (copy c'tor): fix paste inside tabulars.
+
 2005-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetoptarg.C (plaintext): add dummy method.

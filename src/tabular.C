@@ -2510,6 +2510,13 @@ shared_ptr<InsetText> LyXTabular::getCellInset(row_type row,
 }
 
 
+void LyXTabular::setCellInset(row_type row, col_type column,
+			      shared_ptr<InsetText> ins) const
+{
+	cell_info[row][column].inset = ins;
+}
+
+
 LyXTabular::idx_type
 LyXTabular::getCellFromInset(InsetBase const * inset) const
 {

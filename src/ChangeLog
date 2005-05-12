@@ -1,4 +1,17 @@
-<<<<<<< ChangeLog
+2005-05-12  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* tabular.[hC]: added setCellInset to fix tabular paste.
+
+2005-05-11  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* buffer.C (save): check if destination is writable before trying
+	to copy a file
+
+2005-05-11  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* BufferView_pimpl.C (update): fix processEvents -caused update
+	recursion bug
+
 2005-05-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* buffer_funcs.C (setCounter): fix test for numbering of
@@ -17,18 +30,6 @@
 	* lyxlayout.[Ch]: add special NOT_IN_TOC toclevel value for
 	layouts that should not appear in a table of contents.
 	
-=======
-2005-05-11  Lars Gullik Bjonnes  <larsbj@gullik.net>
-
-	* buffer.C (save): check if destination is writable before trying
-	to copy a file
-
->>>>>>> 1.2180
-2005-05-11  Martin Vermeer  <martin.vermeer@hut.fi>
-
-	* BufferView_pimpl.C (update): fix processEvents -caused update
-	recursion bug
-
 2005-05-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* cursor.h (undispatched, noUpdate): add comments from André
