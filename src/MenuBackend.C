@@ -607,6 +607,15 @@ void expandToc2(Menu & tomenu,
 		lyx::toc::Toc::size_type to, int depth)
 {
 	int shortcut_count = 0;
+
+	// check whether depth is smaller than the smallest depth in toc.
+	int min_depth = 1000;
+	for (lyx::toc::Toc::size_type i = from; i < to; ++i) 
+		min_depth = std::min(min_depth, toc_list[i].depth);
+	if (min_depth > depth)
+		depth = min_depth;
+
+
 	if (to - from <= max_number_of_items) {
 		for (lyx::toc::Toc::size_type i = from; i < to; ++i) {
 			string label(4 * max(0, toc_list[i].depth - depth),' ');

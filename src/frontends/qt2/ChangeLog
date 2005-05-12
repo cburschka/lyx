@@ -7,6 +7,20 @@
 
 2005-05-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* QDocument.C (update_contents): set the limits of the numbering
+	sliders depending on the class; disable the numbering module when
+	the class does not have a sectioning structure.
+
+	* QDocumentDialog.h: remove the numberlevel* listviewitems.
+
+	* QDocumentDialog.C (QDocumentDialog): no need to populate
+	numbering listview here.
+	(classChanged): always invoke QDocument::update_content().
+	(updateNumbering): populate the listview directly from the
+	textclass information;
+
+2005-05-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* lyx_gui.C (sync_events):
 	* QMathDialog.C (resizeEvent): use event loop for qt >= 3.1
 

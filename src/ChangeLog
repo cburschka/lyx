@@ -1,8 +1,29 @@
+<<<<<<< ChangeLog
+2005-05-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* buffer_funcs.C (setCounter): fix test for numbering of
+	environments. 
+
+	* toc.C (getTocList): use LyXTextClass:min_toclevel to set toc
+	depth correctly; use optional argument when it exists
+
+	* lyxtextclass.C: remove unused MaxCounterTags enum
+	(Read): compute min_toclevel_ and max_toclevel_ after reading class.
+	(max_toclevel, min_toclevel): new methods.
+
+	* MenuBackend.C (expandToc2): fix case where depth is smaller than
+	the smallest depth in toc.
+
+	* lyxlayout.[Ch]: add special NOT_IN_TOC toclevel value for
+	layouts that should not appear in a table of contents.
+	
+=======
 2005-05-11  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* buffer.C (save): check if destination is writable before trying
 	to copy a file
 
+>>>>>>> 1.2180
 2005-05-11  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BufferView_pimpl.C (update): fix processEvents -caused update

@@ -384,6 +384,27 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			       << "' is missing a defaultstyle." << endl;
 			error = true;
 		}
+
+		min_toclevel_ = LyXLayout::NOT_IN_TOC;
+		max_toclevel_ = LyXLayout::NOT_IN_TOC;
+		const_iterator cit = begin();
+		const_iterator the_end = end();
+		for ( ; cit != the_end ; ++cit) {
+			int const toclevel = (*cit)->toclevel;
+			if (toclevel != LyXLayout::NOT_IN_TOC) {
+				if (min_toclevel_ == LyXLayout::NOT_IN_TOC)
+					min_toclevel_ = toclevel;
+				else
+					min_toclevel_ = std::min(min_toclevel_, 
+							 toclevel);
+				max_toclevel_ = std::max(max_toclevel_, 
+							 toclevel);
+			}
+		}
+		lyxerr[Debug::TCLASS] 
+			<< "Minimum TocLevel is " << min_toclevel_
+			<< ", maximum is " << max_toclevel_ <<endl;
+			
 	} else
 		lyxerr[Debug::TCLASS] << "Finished reading input file "
 				      << MakeDisplayPath(filename)
@@ -449,20 +470,6 @@ void LyXTextClass::readOutputType(LyXLex & lexrc)
 		break;
 	}
 }
-
-
-enum MaxCounterTags {
-	MC_COUNTER_CHAPTER = 1,
-	MC_COUNTER_SECTION,
-	MC_COUNTER_SUBSECTION,
-	MC_COUNTER_SUBSUBSECTION,
-	MC_COUNTER_PARAGRAPH,
-	MC_COUNTER_SUBPARAGRAPH,
-	MC_COUNTER_ENUMI,
-	MC_COUNTER_ENUMII,
-	MC_COUNTER_ENUMIII,
-	MC_COUNTER_ENUMIV
-};
 
 
 enum ClassOptionsTags {
@@ -1008,6 +1015,18 @@ string const & LyXTextClass::titlename() const
 int LyXTextClass::size() const
 {
 	return layoutlist_.size();
+}
+
+
+int LyXTextClass::min_toclevel() const
+{
+	return min_toclevel_;
+}
+
+
+int LyXTextClass::max_toclevel() const
+{
+	return max_toclevel_;
 }
 
 

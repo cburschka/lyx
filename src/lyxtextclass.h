@@ -172,6 +172,10 @@ public:
 
 	///
 	int size() const;
+	/// The minimal TocLevel of sectioning layouts
+	int min_toclevel() const;
+	/// The maximal TocLevel of sectioning layouts
+	int max_toclevel() const;
 private:
 	///
 	bool delete_layout(std::string const &);
@@ -242,6 +246,11 @@ private:
 
 	/// Is the TeX class available?
 	bool texClassAvail_;
+
+	/// The minimal TocLevel of sectioning layouts
+	int min_toclevel_;
+	/// The maximal TocLevel of sectioning layouts
+	int max_toclevel_;
 };
 
 

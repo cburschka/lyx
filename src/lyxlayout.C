@@ -25,6 +25,8 @@ using lyx::support::trim;
 using std::endl;
 using std::string;
 
+/// Special value of toclevel for layouts that to not belong in a TOC
+const int LyXLayout::NOT_IN_TOC = -1000;
 
 //  The order of the LayoutTags enum is no more important. [asierra300396]
 // Tags indexes.
@@ -121,7 +123,7 @@ LyXLayout::LyXLayout ()
 	free_spacing = false;
 	pass_thru = false;
 	is_environment = false;
-	toclevel = -2;
+	toclevel = NOT_IN_TOC;
 	commanddepth = 0;
 }
 

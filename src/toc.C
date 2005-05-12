@@ -23,6 +23,7 @@
 #include "frontends/LyXView.h"
 
 #include "insets/insetfloat.h"
+#include "insets/insetoptarg.h"
 #include "insets/insetwrap.h"
 
 #include "support/convert.h"
@@ -69,30 +70,54 @@ TocList const getTocList(Buffer const & buf)
 	TocList toclist;
 
 	BufferParams const & bufparams = buf.params();
+	const int min_toclevel = bufparams.getLyXTextClass().min_toclevel();
 
 	ParConstIterator pit = buf.par_iterator_begin();
 	ParConstIterator end = buf.par_iterator_end();
 	for (; pit != end; ++pit) {
 
-		int const toclevel = pit->layout()->toclevel;
-		if (toclevel > 0 && toclevel <= bufparams.tocdepth) {
-			// insert this into the table of contents
-			TocItem const item(pit->id(), toclevel - 1, pit->asString(buf, true));
-			toclist["TOC"].push_back(item);
-		}
+		// the string that goes to the toc (could be the optarg)
+		string tocstring;
 
 		// For each paragraph, traverse its insets and look for
 		// FLOAT_CODE or WRAP_CODE
 		InsetList::const_iterator it = pit->insetlist.begin();
 		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
-			if (it->inset->lyxCode() == InsetBase::FLOAT_CODE) {
+			switch (it->inset->lyxCode()) {
+			case InsetBase::FLOAT_CODE:
 				static_cast<InsetFloat*>(it->inset)
 					->addToToc(toclist, buf);
-			} else if (it->inset->lyxCode() == InsetBase::WRAP_CODE) {
+				break;
+			case InsetBase::WRAP_CODE:
 				static_cast<InsetWrap*>(it->inset)
 					->addToToc(toclist, buf);
+				break;
+			case InsetBase::OPTARG_CODE: {
+				if (!tocstring.empty())
+					break;
+				Paragraph const & par = *static_cast<InsetOptArg*>(it->inset)->paragraphs().begin();
+				if (!pit->getLabelstring().empty())
+					tocstring = pit->getLabelstring() 
+						+ ' ';
+				tocstring += par.asString(buf, false);
+				break;
 			}
+			default:
+				break;
+			}
+		}
+
+		/// now the toc entry for the paragraph
+		int const toclevel = pit->layout()->toclevel;
+		if (toclevel >= min_toclevel 
+		    && toclevel <= bufparams.tocdepth) {
+			// insert this into the table of contents
+			if (tocstring.empty())
+				tocstring = pit->asString(buf, true);
+			TocItem const item(pit->id(), toclevel - min_toclevel, 
+					   tocstring);
+			toclist["TOC"].push_back(item);
 		}
 	}
 	return toclist;

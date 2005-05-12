@@ -379,7 +379,7 @@ void setCounter(Buffer const & buf, ParIterator & it)
 	// is it a layout that has an automatic label?
 	if (layout->labeltype == LABEL_COUNTER) {
 		if (layout->toclevel <= buf.params().secnumdepth
-		    && (!layout->isEnvironment()
+		    && (layout->latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
 			counters.step(layout->counter);
 			string label = expandLabel(textclass, layout,

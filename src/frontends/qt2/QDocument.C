@@ -36,6 +36,7 @@
 #include <qcheckbox.h>
 #include <qslider.h>
 #include <qlineedit.h>
+#include <qlistview.h>
 #include "lengthcombo.h"
 
 
@@ -511,8 +512,20 @@ void QDocument::update_contents()
 	}
 
 	// numbering
-	dialog_->numberingModule->tocSL->setValue(params.tocdepth);
+	int const min_toclevel = controller().textClass().min_toclevel();
+	int const max_toclevel = controller().textClass().max_toclevel();
+	if (min_toclevel != LyXLayout::NOT_IN_TOC) 
+		dialog_->numberingModule->setEnabled(true);
+	else {
+		dialog_->numberingModule->setEnabled(false);
+		dialog_->numberingModule->tocLV->clear();
+	}
+	dialog_->numberingModule->depthSL->setMinValue(min_toclevel - 1);
+	dialog_->numberingModule->depthSL->setMaxValue(max_toclevel);
 	dialog_->numberingModule->depthSL->setValue(params.secnumdepth);
+	dialog_->numberingModule->tocSL->setMinValue(min_toclevel - 1);
+	dialog_->numberingModule->tocSL->setMaxValue(max_toclevel);
+	dialog_->numberingModule->tocSL->setValue(params.tocdepth);
 	dialog_->updateNumbering();
 
 	// bullets

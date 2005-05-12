@@ -211,22 +211,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		marginsModule->headheightLE));
 	marginsModule->footskipLE->setValidator(unsignedLengthValidator(
 		marginsModule->footskipLE));
-
-	// create the numbering items, in reverse order
-	numberlevel7 =
-		new QListViewItem(numberingModule->tocLV, qt_("Subparagraph"));
-	numberlevel6 =
-		new QListViewItem(numberingModule->tocLV, qt_("Paragraph"));
-	numberlevel5 =
-		new QListViewItem(numberingModule->tocLV, qt_("Subsubsection"));
-	numberlevel4 =
-		new QListViewItem(numberingModule->tocLV, qt_("Subsection"));
-	numberlevel3 =
-		new QListViewItem(numberingModule->tocLV, qt_("Section"));
-	numberlevel2 =
-		new QListViewItem(numberingModule->tocLV, qt_("Chapter"));
-	numberlevel1 =
-		new QListViewItem(numberingModule->tocLV, qt_("Part"));
 }
 
 
@@ -407,17 +391,9 @@ void QDocumentDialog::classChanged()
 
 	if (form_->controller().loadTextclass(tc)) {
 		params.textclass = tc;
-
-		if (lyxrc.auto_reset_options) {
+		if (lyxrc.auto_reset_options) 
 			params.useClassDefaults();
-			form_->update_contents();
-		} else {
-			updateFontsize(cntrl.textClass().opt_fontsize(),
-				       params.fontsize);
-			updatePagestyle(cntrl.textClass().opt_pagestyle(),
-					params.pagestyle);
-			updateNumbering();
-		}
+		form_->update_contents();
 	} else {
 		latexModule->classCO->setCurrentItem(params.textclass);
 	}
@@ -426,61 +402,28 @@ void QDocumentDialog::classChanged()
 
 void QDocumentDialog::updateNumbering()
 {
-	int const depth = numberingModule->depthSL->value();
-	int const toc = numberingModule->tocSL->value();
-
-	// check if the document class features chapter
 	LyXTextClass const & tclass =
 		form_->controller().params().getLyXTextClass();
-	bool const hasChapter = tclass.hasLayout("Chapter");
-
-	QString const no = qt_("No");
-	QString const yes = qt_("Yes");
 
 	//numberingModule->tocLV->setUpdatesEnabled(false);
 
-	numberlevel1->setText(1, yes);
-	numberlevel2->setText(1, yes);
-	numberlevel3->setText(1, yes);
-	numberlevel4->setText(1, yes);
-	numberlevel5->setText(1, yes);
-	numberlevel6->setText(1, yes);
-	numberlevel7->setText(1, yes);
-
-	numberlevel1->setText(2, yes);
-	numberlevel2->setText(2, yes);
-	numberlevel3->setText(2, yes);
-	numberlevel4->setText(2, yes);
-	numberlevel5->setText(2, yes);
-	numberlevel6->setText(2, yes);
-	numberlevel7->setText(2, yes);
-
-	// numbering
-	if (depth < -1) numberlevel1->setText(1, no);
-	if (depth < 0) numberlevel2->setText(1, no);
-	if (depth < 1) numberlevel3->setText(1, no);
-	if (depth < 2) numberlevel4->setText(1, no);
-	if (depth < 3) numberlevel5->setText(1, no);
-	if (depth < 4) numberlevel6->setText(1, no);
-	if (depth < 5) numberlevel7->setText(1, no);
-
-	// in toc
-	if (toc < 0 && hasChapter) numberlevel2->setText(2, no);
-	if (toc < 1) numberlevel3->setText(2, no);
-	if (toc < 2) numberlevel4->setText(2, no);
-	if (toc < 3) numberlevel5->setText(2, no);
-	if (toc < 4) numberlevel6->setText(2, no);
-	if (toc < 5) numberlevel7->setText(2, no);
-
-	// in article style classes, the part number is shifted by 1
-	if (!hasChapter) {
-		numberlevel1->setText(0, qt_(""));
-		numberlevel1->setText(1, qt_(""));
-		numberlevel1->setText(2, qt_(""));
-		numberlevel2->setText(0, qt_("Part"));
-	} else {
-		numberlevel1->setText(0, qt_("Part"));
-		numberlevel2->setText(0, qt_("Chapter"));
+	// Update the example QListView
+	int const depth = numberingModule->depthSL->value();
+	int const toc = numberingModule->tocSL->value();
+	QString const no = qt_("No");
+	QString const yes = qt_("Yes");
+	LyXTextClass::const_iterator end = tclass.end();
+	LyXTextClass::const_iterator cit = tclass.begin();
+	numberingModule->tocLV->clear();
+	QListViewItem * item = 0;
+	for ( ; cit != end ; ++cit) {
+		int const toclevel = (*cit)->toclevel;
+		if (toclevel != LyXLayout::NOT_IN_TOC) {
+			item = new QListViewItem(numberingModule->tocLV, 
+						 item, qt_((*cit)->name()));
+			item->setText(1, (toclevel <= depth) ? yes : no);
+			item->setText(2, (toclevel <= toc) ? yes : no);
+		}
 	}
 
 	//numberingModule->tocLV->setUpdatesEnabled(true);

@@ -149,6 +149,8 @@ public:
 	bool is_environment;
 	/// show this in toc
 	int toclevel;
+	/// special value of toclevel for non-section layouts
+	static const int NOT_IN_TOC;
 	/// for new environment insets
 	std::string latexheader;
 	/// for new environment insets

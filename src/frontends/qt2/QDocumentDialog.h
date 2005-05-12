@@ -87,14 +87,6 @@ private:
 	FloatPlacement * floatModule;
 	BranchesModuleBase * branchesModule;
 
-	QListViewItem * numberlevel7;
-	QListViewItem * numberlevel6;
-	QListViewItem * numberlevel5;
-	QListViewItem * numberlevel4;
-	QListViewItem * numberlevel3;
-	QListViewItem * numberlevel2;
-	QListViewItem * numberlevel1;
-
 	QDocument * form_;
 };
 
