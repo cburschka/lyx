@@ -18,11 +18,10 @@
 
 #include "controllers/ControlMath.h"
 
+#include "frontends/lyx_gui.h"
+
 #include <qwidgetstack.h>
 #include <qcombobox.h>
-#if QT_VERSION >= 0x030100
-#include <qeventloop.h>
-#endif
 #include <qpushbutton.h>
 #include <qlistbox.h>
 #include <qpopupmenu.h>
@@ -56,9 +55,7 @@ protected:
 
 		w_->resize(viewport()->width(), w_->height());
 		// force the resize to get accurate scrollbar
-#if QT_VERSION >= 0x030100
-		qApp->eventLoop()->processEvents(QEventLoop::ExcludeUserInput);
-#endif
+		lyx_gui::sync_events();
 		resizeContents(w_->width(), w_->height());
 	}
 private:
