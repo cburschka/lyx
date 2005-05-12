@@ -29,7 +29,7 @@ typedef QController<ControlShowFile, QView<QShowFileDialog> > base_class;
 
 
 QShowFile::QShowFile(Dialog & parent)
-	: base_class(parent, _("LyX: Show File"))
+	: base_class(parent, _("Show File"))
 {
 }
 

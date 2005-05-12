@@ -52,7 +52,7 @@ void QDialogView::show()
 
 	update();  // make sure its up-to-date
 
-	form()->setCaption(toqstr(getTitle()));
+	form()->setCaption(toqstr("LyX: " + getTitle()));
 
 	if (form()->isVisible()) {
 		form()->raise();

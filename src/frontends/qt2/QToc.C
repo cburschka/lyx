@@ -38,7 +38,7 @@ namespace frontend {
 typedef QController<ControlToc, QView<QTocDialog> > base_class;
 
 QToc::QToc(Dialog & parent)
-	: base_class(parent, _("LyX: Table of Contents")), depth_(1)
+	: base_class(parent, _("Table of Contents")), depth_(1)
 {}
 
 

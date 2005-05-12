@@ -276,7 +276,7 @@ void getExtra(external::ExtraData & data,
 typedef QController<ControlExternal, QView<QExternalDialog> > base_class;
 
 QExternal::QExternal(Dialog & parent)
-	: base_class(parent, _("LyX: External Material"))
+	: base_class(parent, _("External Material"))
 {}
 
 

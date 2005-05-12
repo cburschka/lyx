@@ -24,7 +24,7 @@ typedef QController<ControlMath, QView<QMathDialog> > math_base;
 
 
 QMath::QMath(Dialog & parent)
-	: math_base(parent, _("LyX: Math Panel"))
+	: math_base(parent, _("Math Panel"))
 {}
 
 
@@ -38,7 +38,7 @@ typedef QController<ControlMath, QView<QMathMatrixDialog> > matrix_base;
 
 
 QMathMatrix::QMathMatrix(Dialog & parent)
-	: matrix_base(parent, _("LyX: Insert Matrix"))
+	: matrix_base(parent, _("Math Matrix"))
 {}
 
 
@@ -52,7 +52,7 @@ typedef QController<ControlMath, QView<QDelimiterDialog> > delimiter_base;
 
 
 QMathDelimiter::QMathDelimiter(Dialog & parent)
-	: delimiter_base(parent, _("LyX: Insert Delimiter"))
+	: delimiter_base(parent, _("Math Delimiter"))
 {}
 
 

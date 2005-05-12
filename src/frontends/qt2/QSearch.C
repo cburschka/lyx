@@ -28,7 +28,7 @@ typedef QController<ControlSearch, QView<QSearchDialog> > base_class;
 
 
 QSearch::QSearch(Dialog & parent)
-	: base_class(parent, _("LyX: Find and Replace"))
+	: base_class(parent, _("Find and Replace"))
 {
 }
 

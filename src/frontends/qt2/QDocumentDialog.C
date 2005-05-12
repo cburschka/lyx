@@ -80,7 +80,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	docPS->addPanel(langModule, _("Language"));
 	docPS->addPanel(numberingModule, _("Numbering & TOC"));
 	docPS->addPanel(biblioModule, _("Bibliography"));
-	docPS->addPanel(mathsModule, _("Math options"));
+	docPS->addPanel(mathsModule, _("Math Options"));
 	docPS->addPanel(floatModule, _("Float Placement"));
 	docPS->addPanel(bulletsModule, _("Bullets"));
 	docPS->addPanel(branchesModule, _("Branches"));

@@ -32,7 +32,7 @@ typedef QController<ControlSpellchecker, QView<QSpellcheckerDialog> > base_class
 
 
 QSpellchecker::QSpellchecker(Dialog & parent)
-	: base_class(parent, _("LyX: Spell-check Document"))
+	: base_class(parent, _("Spellchecker"))
 {}
 
 

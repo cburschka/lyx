@@ -28,7 +28,7 @@ typedef QController<ControlCommand, QView<QBibitemDialog> > base_class;
 
 
 QBibitem::QBibitem(Dialog & parent)
-	: base_class(parent, _("LyX: Bibliography Item Settings"))
+	: base_class(parent, _("Bibliography Entry Settings"))
 {
 }
 

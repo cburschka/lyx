@@ -38,7 +38,7 @@ typedef QController<ControlRef, QView<QRefDialog> > base_class;
 
 
 QRef::QRef(Dialog & parent)
-	: base_class(parent, _("LyX: Cross-reference")),
+	: base_class(parent, _("Cross-reference")),
 	sort_(false), at_ref_(false)
 {
 }
@@ -140,9 +140,9 @@ void QRef::setGoBack()
 
 void QRef::setGotoRef()
 {
-	dialog_->gotoPB->setText(qt_("&Go to Reference"));
+	dialog_->gotoPB->setText(qt_("&Go to Label"));
 	QToolTip::remove(dialog_->gotoPB);
-	QToolTip::add(dialog_->gotoPB, qt_("Jump to reference"));
+	QToolTip::add(dialog_->gotoPB, qt_("Jump to label"));
 }
 
 

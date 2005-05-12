@@ -33,7 +33,7 @@ typedef QController<ControlPrint, QView<QLPrintDialog> > base_class;
 
 
 QPrint::QPrint(Dialog & parent)
-	: base_class(parent, _("LyX: Print Document"))
+	: base_class(parent, _("Print Document"))
 {
 }
 

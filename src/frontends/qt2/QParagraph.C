@@ -37,7 +37,7 @@ typedef QController<ControlParagraph, QView<QParagraphDialog> > base_class;
 
 
 QParagraph::QParagraph(Dialog & parent)
-	: base_class(parent, _("LyX: Paragraph Settings"))
+	: base_class(parent, _("Paragraph Settings"))
 {}
 
 

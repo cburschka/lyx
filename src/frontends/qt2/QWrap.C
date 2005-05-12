@@ -36,7 +36,7 @@ namespace frontend {
 typedef QController<ControlWrap, QView<QWrapDialog> > base_class;
 
 QWrap::QWrap(Dialog & parent)
-	: base_class(parent, _("LyX: Text Wrap Settings"))
+	: base_class(parent, _("Text Wrap Settings"))
 {
 }
 

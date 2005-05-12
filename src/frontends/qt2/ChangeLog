@@ -1,3 +1,9 @@
+2005-05-09  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* *.C: strip "LyX: " prefix from dialog titles; harmonize
+	dialog titles with menu entries and xforms frontend; fix 
+	capitalization
+
 2005-05-07  Angus Leeming  <leeming@lyx.org>
 
 	* Alert_pimpl.C (prompt_pimpl, warning_pimpl, error_pimpl) 

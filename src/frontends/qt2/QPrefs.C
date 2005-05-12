@@ -77,7 +77,7 @@ namespace frontend {
 typedef QController<ControlPrefs, QView<QPrefsDialog> > base_class;
 
 QPrefs::QPrefs(Dialog & parent)
-	: base_class(parent, _("LyX: Preferences"))
+	: base_class(parent, _("Preferences"))
 {
 }
 

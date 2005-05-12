@@ -31,7 +31,7 @@ namespace frontend {
 typedef QController<ControlTexinfo, QView<QTexinfoDialog> > base_class;
 
 QTexinfo::QTexinfo(Dialog & parent)
-	: base_class(parent, _("LyX: LaTeX Information")),
+	: base_class(parent, _("LaTeX Information")),
 	  warningPosted(false), activeStyle(ControlTexinfo::cls)
 {
 }

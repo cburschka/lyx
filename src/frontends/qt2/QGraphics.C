@@ -56,7 +56,7 @@ namespace frontend {
 typedef QController<ControlGraphics, QView<QGraphicsDialog> > base_class;
 
 QGraphics::QGraphics(Dialog & parent)
-	: base_class(parent, _("LyX: Graphics"))
+	: base_class(parent, _("Graphics"))
 {
 }
 

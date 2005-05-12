@@ -48,7 +48,7 @@ namespace frontend {
 typedef QController<ControlBox, QView<QBoxDialog> > base_class;
 
 QBox::QBox(Dialog & parent)
-	: base_class(parent, _("LyX: Box Settings"))
+	: base_class(parent, _("Box Settings"))
 {}
 
 
