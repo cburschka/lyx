@@ -2265,15 +2265,6 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\frontends\qt2\lengthvalidator.C">
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCLCompilerTool"
-								CompileAs="2"/>
-						</FileConfiguration>
-					</File>
-					<File
 						RelativePath="..\..\src\frontends\qt2\lyx_gui.C">
 						<FileConfiguration
 							Name="Debug|Win32">
@@ -3892,6 +3883,9 @@
 								Name="VCCLCompilerTool"
 								CompileAs="2"/>
 						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\frontends\qt2\validators.C">
 					</File>
 					<File
 						RelativePath="..\..\src\frontends\qt2\WorkAreaFactory.C">
@@ -7354,25 +7348,6 @@
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\lengthvalidator.h">
-							<FileConfiguration
-								Name="Debug|Win32">
-								<Tool
-									Name="VCCustomBuildTool"
-									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
-"
-									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Release|Win32">
-								<Tool
-									Name="VCCustomBuildTool"
-									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
-"
-									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
-							</FileConfiguration>
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\panelstack.h">
 							<FileConfiguration
 								Name="Debug|Win32">
@@ -8436,6 +8411,23 @@
 									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
 							</FileConfiguration>
 						</File>
+						<File
+							RelativePath="..\..\src\frontends\qt2\validators.h">
+							<FileConfiguration
+								Name="Debug|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+						</File>
 					</Filter>
 					<Filter
 						Name="moc"
@@ -8457,19 +8449,6 @@
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\lengthcombo_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\lengthvalidator_moc.C">
-							<FileConfiguration
-								Name="Debug|Win32">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Release|Win32">
-								<Tool
-									Name="VCCLCompilerTool"/>
-							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\panelstack_moc.C">
@@ -8638,6 +8617,9 @@
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\socket_callback_moc.C">
+						</File>
+						<File
+							RelativePath="..\..\src\frontends\qt2\moc\validators_moc.C">
 						</File>
 					</Filter>
 				</Filter>
