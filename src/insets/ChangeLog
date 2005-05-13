@@ -1,3 +1,8 @@
+2005-05-13  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insetcollapsable.C (doDispatch): fix
+	click-on-closed-collapsable-inset-crash bug.
+
 2005-05-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettabular.C (pasteSelection):
