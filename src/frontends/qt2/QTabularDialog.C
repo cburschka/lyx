@@ -306,7 +306,7 @@ void QTabularDialog::ltHeaderBorderAbove_clicked()
 	if (headerBorderAboveCB->isChecked())
 		form_->controller().set(LyXTabular::SET_LTHEAD, "dl_above");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTHEAD, "");
+		form_->controller().set(LyXTabular::UNSET_LTHEAD, "dl_above");
 	form_->changed();
 }
 
@@ -316,7 +316,7 @@ void QTabularDialog::ltHeaderBorderBelow_clicked()
 	if (headerBorderBelowCB->isChecked())
 		form_->controller().set(LyXTabular::SET_LTHEAD, "dl_below");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTHEAD, "");
+		form_->controller().set(LyXTabular::UNSET_LTHEAD, "dl_below");
 	form_->changed();
 }
 
@@ -326,7 +326,7 @@ void QTabularDialog::ltFirstHeaderBorderAbove_clicked()
 	if (firstheaderBorderAboveCB->isChecked())
 		form_->controller().set(LyXTabular::SET_LTFIRSTHEAD, "dl_above");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFIRSTHEAD, "");
+		form_->controller().set(LyXTabular::UNSET_LTFIRSTHEAD, "dl_above");
 	form_->changed();
 }
 
@@ -336,7 +336,7 @@ void QTabularDialog::ltFirstHeaderBorderBelow_clicked()
 	if (firstheaderBorderBelowCB->isChecked())
 		form_->controller().set(LyXTabular::SET_LTFIRSTHEAD, "dl_below");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFIRSTHEAD, "");
+		form_->controller().set(LyXTabular::UNSET_LTFIRSTHEAD, "dl_below");
 	form_->changed();
 }
 
@@ -359,10 +359,8 @@ void QTabularDialog::ltFirstHeaderEmpty_clicked()
 	bool enable(firstheaderNoContentsCB->isChecked());
 	if (enable)
 		form_->controller().set(LyXTabular::SET_LTFIRSTHEAD, "empty");
-	else {
-		ltFirstHeaderBorderBelow_clicked();
-		ltFirstHeaderBorderAbove_clicked();
-	}
+	else
+		form_->controller().set(LyXTabular::UNSET_LTFIRSTHEAD, "empty");
 	firstheaderStatusCB->setEnabled(!enable);
 	firstheaderBorderAboveCB->setEnabled(!enable);
 	firstheaderBorderBelowCB->setEnabled(!enable);
@@ -389,7 +387,7 @@ void QTabularDialog::ltFooterBorderAbove_clicked()
 	if (footerBorderAboveCB->isChecked())
 		form_->controller().set(LyXTabular::SET_LTFOOT, "dl_above");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFOOT, "");
+		form_->controller().set(LyXTabular::UNSET_LTFOOT, "dl_above");
 	form_->changed();
 }
 
@@ -399,7 +397,7 @@ void QTabularDialog::ltFooterBorderBelow_clicked()
 	if (footerBorderBelowCB->isChecked())
 		form_->controller().set(LyXTabular::SET_LTFOOT, "dl_below");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTFOOT, "");
+		form_->controller().set(LyXTabular::UNSET_LTFOOT, "dl_below");
 	form_->changed();
 }
 
@@ -422,7 +420,7 @@ void QTabularDialog::ltLastFooterBorderAbove_clicked()
 	if (lastfooterBorderAboveCB->isChecked())
 		form_->controller().set(LyXTabular::SET_LTLASTFOOT, "dl_above");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTLASTFOOT, "");
+		form_->controller().set(LyXTabular::UNSET_LTLASTFOOT, "dl_above");
 	form_->changed();
 }
 
@@ -432,7 +430,7 @@ void QTabularDialog::ltLastFooterBorderBelow_clicked()
 	if (lastfooterBorderBelowCB->isChecked())
 		form_->controller().set(LyXTabular::SET_LTLASTFOOT, "dl_below");
 	else
-		form_->controller().set(LyXTabular::UNSET_LTLASTFOOT, "");
+		form_->controller().set(LyXTabular::UNSET_LTLASTFOOT, "dl_below");
 	form_->changed();
 }
 
@@ -442,10 +440,8 @@ void QTabularDialog::ltLastFooterEmpty_clicked()
 	bool enable(lastfooterNoContentsCB->isChecked());
 	if (enable)
 		form_->controller().set(LyXTabular::SET_LTLASTFOOT, "empty");
-	else {
-		ltLastFooterBorderBelow_clicked();
-		ltLastFooterBorderAbove_clicked();
-	}
+	else
+		form_->controller().set(LyXTabular::UNSET_LTLASTFOOT, "empty");
 	lastfooterStatusCB->setEnabled(!enable);
 	lastfooterBorderAboveCB->setEnabled(!enable);
 	lastfooterBorderBelowCB->setEnabled(!enable);
