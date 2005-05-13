@@ -514,7 +514,7 @@ void QDocument::update_contents()
 	// numbering
 	int const min_toclevel = controller().textClass().min_toclevel();
 	int const max_toclevel = controller().textClass().max_toclevel();
-	if (min_toclevel != LyXLayout::NOT_IN_TOC) 
+	if (min_toclevel != LyXLayout::NOT_IN_TOC)
 		dialog_->numberingModule->setEnabled(true);
 	else {
 		dialog_->numberingModule->setEnabled(false);

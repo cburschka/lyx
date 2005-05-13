@@ -379,7 +379,7 @@ void QDocumentDialog::classChanged()
 
 	if (form_->controller().loadTextclass(tc)) {
 		params.textclass = tc;
-		if (lyxrc.auto_reset_options) 
+		if (lyxrc.auto_reset_options)
 			params.useClassDefaults();
 		form_->update_contents();
 	} else {
@@ -407,7 +407,7 @@ void QDocumentDialog::updateNumbering()
 	for ( ; cit != end ; ++cit) {
 		int const toclevel = (*cit)->toclevel;
 		if (toclevel != LyXLayout::NOT_IN_TOC) {
-			item = new QListViewItem(numberingModule->tocLV, 
+			item = new QListViewItem(numberingModule->tocLV,
 						 item, qt_((*cit)->name()));
 			item->setText(1, (toclevel <= depth) ? yes : no);
 			item->setText(2, (toclevel <= toc) ? yes : no);

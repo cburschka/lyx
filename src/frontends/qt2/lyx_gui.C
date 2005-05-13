@@ -256,7 +256,7 @@ void start(string const & batch, vector<string> const & files)
 void sync_events()
 {
 	// This is the ONLY place where processEvents may be called.
-	// During screen update/ redraw, this method is disabled to 
+	// During screen update/ redraw, this method is disabled to
 	// prevent keyboard events being handed to the LyX core, where
 	// they could cause re-entrant calls to screen update.
 #if QT_VERSION >= 0x030100
