@@ -319,7 +319,8 @@ void getExtra(external::ExtraData & data,
 typedef FormController<ControlExternal, FormView<FD_external> > base_class;
 
 FormExternal::FormExternal(Dialog & parent)
-	: base_class(parent, _("External Material"))
+	: base_class(parent, _("External Material")),
+	  file_checker_(0)
 {}
 
 
@@ -365,6 +366,8 @@ void FormExternal::build()
 
 	bcview().addReadOnly(options_->choice_option);
 	bcview().addReadOnly(options_->input_option);
+
+	file_checker_ = &addCheckedPath(bcview(), true, file_->input_file);
 
 	// initial setting
 //	addCheckedPositiveFloat(bcview(), scale_->input_width);
@@ -464,6 +467,8 @@ void FormExternal::build()
 
 void FormExternal::update()
 {
+	file_checker_->setChecker(kernel().docType(), lyxrc);
+
 	fl_set_folder_bynumber(dialog_->tabfolder, 1);
 	InsetExternalParams const & params = controller().params();
 

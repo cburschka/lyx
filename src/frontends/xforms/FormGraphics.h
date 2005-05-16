@@ -20,6 +20,7 @@
 namespace lyx {
 namespace frontend {
 
+class CheckedPath;
 class ControlGraphics;
 struct FD_graphics;
 struct FD_graphics_file;
@@ -48,6 +49,9 @@ private:
 	void updateBB(std::string const & filename, std::string const & bb_inset);
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	// Accessor to checker owned by the button controller.
+	CheckedPath * file_checker_;
 
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_graphics_file> file_;

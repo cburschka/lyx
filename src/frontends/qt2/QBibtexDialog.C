@@ -13,10 +13,17 @@
 #include "QBibtexDialog.h"
 #include "ui/QBibtexAddDialogBase.h"
 #include "QBibtex.h"
+
+#include "checkedwidgets.h"
+#include "Qt2BC.h"
 #include "qt_helpers.h"
+#include "validators.h"
 
 #include "controllers/ControlBibtex.h"
+#include "controllers/ButtonPolicies.h"
+
 #include "support/filetools.h"
+#include "support/lstrings.h"
 
 #include <qpushbutton.h>
 #include <qcombobox.h>
@@ -24,6 +31,7 @@
 #include <qlistbox.h>
 
 using lyx::support::ChangeExtension;
+using lyx::support::trim;
 
 using std::string;
 
@@ -40,12 +48,41 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 		form, SLOT(slotClose()));
 
 	add_ = new QBibtexAddDialogBase(this, "", true);
-	connect(add_->addPB, SIGNAL(clicked()), this, SLOT(addDatabase()));
-	connect(add_->addPB, SIGNAL(clicked()), this, SLOT(addDatabase()));
-	connect(add_->bibLB, SIGNAL(selected(QListBoxItem *)), this, SLOT(addDatabase()));
-	connect(add_->bibLB, SIGNAL(selected(QListBoxItem *)), add_, SLOT(accept()));
-	connect(add_->bibLB, SIGNAL(currentChanged(QListBoxItem *)), this, SLOT(availableChanged()));
-	connect(add_->browsePB, SIGNAL(clicked()), this, SLOT(browseBibPressed()));
+	Qt2BC * bcview = new Qt2BC(add_bc_);
+	add_bc_.view(bcview);
+	add_bc_.bp(new OkCancelPolicy);
+
+	bcview->setOK(add_->addPB);
+	bcview->setCancel(add_->closePB);
+
+	add_->bibED->setValidator(new PathValidator(false, add_->bibED));
+	addCheckedLineEdit(add_bc_.view(), add_->bibED, 0);
+
+	connect(add_->bibED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(bibEDChanged()));
+	connect(add_->addPB, SIGNAL(clicked()),
+		this, SLOT(addDatabase()));
+	connect(add_->bibLB, SIGNAL(selected(QListBoxItem *)),
+		this, SLOT(addDatabase()));
+	connect(add_->bibLB, SIGNAL(selected(QListBoxItem *)),
+		add_, SLOT(accept()));
+	connect(add_->bibLB, SIGNAL(currentChanged(QListBoxItem *)),
+		this, SLOT(availableChanged()));
+	connect(add_->browsePB, SIGNAL(clicked()),
+		this, SLOT(browseBibPressed()));
+}
+
+
+QBibtexDialog::~QBibtexDialog()
+{}
+
+
+void QBibtexDialog::bibEDChanged()
+{
+	// Indicate to the button controller that the contents have
+	// changed. The actual test of validity is carried out by
+	// the checkedLineEdit.
+	add_bc_.valid(true);
 }
 
 
@@ -82,7 +119,7 @@ void QBibtexDialog::browsePressed()
 
 void QBibtexDialog::browseBibPressed()
 {
-	string const file = form_->controller().browseBib("");
+	string const file = trim(form_->controller().browseBib(""));
 
 	if (!file.empty()) {
 		string const f = ChangeExtension(file, "");
@@ -102,16 +139,18 @@ void QBibtexDialog::browseBibPressed()
 	}
 }
 
+
 void QBibtexDialog::addPressed()
 {
 	add_->exec();
+	add_bc_.valid(false);
 }
 
 
 void QBibtexDialog::addDatabase()
 {
 	int const sel = add_->bibLB->currentItem();
-	QString const file = add_->bibED->text();
+	QString const file = trim(add_->bibED->text());
 
 	if (sel < 0 && file.isNull())
 		return;

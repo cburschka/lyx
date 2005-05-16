@@ -12,6 +12,7 @@
 
 #include "QIncludeDialog.h"
 #include "QInclude.h"
+#include "validators.h"
 
 #include <qpushbutton.h>
 #include <qcheckbox.h>
@@ -29,6 +30,8 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 		form, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+
+	filenameED->setValidator(new PathValidator(true, filenameED));
 }
 
 

@@ -16,9 +16,12 @@
 #include "ControlInclude.h"
 #include "forms/form_include.h"
 
+#include "checkedwidgets.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h" // setEnabled
 #include "xformsBC.h"
+
+#include "lyxrc.h"
 
 #include "support/lstrings.h" // strip
 
@@ -35,7 +38,8 @@ namespace frontend {
 typedef FormController<ControlInclude, FormView<FD_include> > base_class;
 
 FormInclude::FormInclude(Dialog & parent)
-	: base_class(parent, _("Child Document"))
+	: base_class(parent, _("Child Document")),
+	  file_checker_(0)
 {}
 
 
@@ -57,6 +61,8 @@ void FormInclude::build()
 	bcview().addReadOnly(dialog_->radio_useinput);
 	bcview().addReadOnly(dialog_->radio_useinclude);
 	bcview().addReadOnly(dialog_->radio_verbatim);
+
+	file_checker_ = &addCheckedPath(bcview(), true, dialog_->input_filename);
 
 	type_.init(dialog_->radio_useinput,   ControlInclude::INPUT);
 	type_.init(dialog_->radio_useinclude, ControlInclude::INCLUDE);
@@ -84,6 +90,8 @@ void FormInclude::build()
 
 void FormInclude::update()
 {
+	file_checker_->setChecker(kernel().docType(), lyxrc);
+
 	string const filename = controller().params().getContents();
 	string const cmdname = controller().params().getCmdName();
 	bool const preview = static_cast<bool>((controller().params().preview()));

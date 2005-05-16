@@ -13,6 +13,7 @@
 #define QBIBTEXDIALOG_H
 
 #include "ui/QBibtexDialogBase.h"
+#include "ButtonController.h"
 
 class QBibtexAddDialogBase;
 
@@ -26,6 +27,7 @@ class QBibtexDialog : public QBibtexDialogBase {
 
 public:
 	QBibtexDialog(QBibtex * form);
+	~QBibtexDialog();
 
 	QBibtexAddDialogBase * add_;
 
@@ -38,12 +40,14 @@ protected slots:
 	virtual void deletePressed();
 	virtual void databaseChanged();
 	virtual void availableChanged();
+	void bibEDChanged();
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 
 private:
 	QBibtex * form_;
+	ButtonController add_bc_;
 };
 
 } // namespace frontend

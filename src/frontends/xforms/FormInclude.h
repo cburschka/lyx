@@ -19,6 +19,7 @@
 namespace lyx {
 namespace frontend {
 
+class CheckedPath;
 class ControlInclude;
 struct FD_include;
 
@@ -38,6 +39,9 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	// Accessor to checker owned by the button controller.
+	CheckedPath * file_checker_;
 
 	/// include type
 	RadioButtonGroup type_;

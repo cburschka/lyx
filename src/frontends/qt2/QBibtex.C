@@ -17,6 +17,9 @@
 #include "ui/QBibtexAddDialogBase.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
+#include "validators.h"
+
+#include "lyxrc.h"
 
 #include "controllers/ControlBibtex.h"
 
@@ -66,6 +69,11 @@ void QBibtex::build_dialog()
 
 void QBibtex::update_contents()
 {
+	PathValidator * path_validator =
+		getPathValidator(dialog_->add_->bibED);
+	if (path_validator)
+		path_validator->setChecker(kernel().docType(), lyxrc);
+
 	bool bibtopic = controller().usingBibtopic();
 
 	dialog_->databaseLB->clear();

@@ -16,10 +16,10 @@
 
 #include "gettext.h"
 
-#include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
 
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "support/package.h"
 
 using std::pair;
@@ -61,27 +61,12 @@ string const browseFile(string const & filename,
 
 	FileDialog::Result result;
 
-	while (true) {
-		if (save)
-			result = fileDlg.save(lastPath, filters,
-				OnlyFilename(filename));
-		else
-			result = fileDlg.open(lastPath, filters,
-				OnlyFilename(filename));
-
-		if (result.second.empty())
-			return result.second;
-
-		lastPath = OnlyPath(result.second);
-
-		if (result.second.find_first_of("#~$% ") == string::npos)
-			break;
-
-		Alert::error(_("Invalid filename"),
-			_("Filename can't contain any "
-			"of these characters:\n"
-			"space, '#', '~', '$' or '%'."));
-	}
+	if (save)
+		result = fileDlg.save(lastPath, filters,
+				      OnlyFilename(filename));
+	else
+		result = fileDlg.open(lastPath, filters,
+				      OnlyFilename(filename));
 
 	return result.second;
 }
@@ -150,25 +135,8 @@ string const browseDir(string const & pathname,
 
 	FileDialog fileDlg(title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
 
-	FileDialog::Result result;
-
-	while (true) {
-		result = fileDlg.opendir(lastPath,
-				OnlyFilename(pathname));
-
-		if (result.second.empty())
-			return result.second;
-
-		lastPath = OnlyPath(result.second);
-
-		if (result.second.find_first_of("#~$% ") == string::npos)
-			break;
-
-		Alert::error(_("Invalid filename"),
-			_("Filename can't contain any "
-			"of these characters:\n"
-			"space, '#', '~', '$' or '%'."));
-	}
+	FileDialog::Result const result =
+		fileDlg.opendir(lastPath, OnlyFilename(pathname));
 
 	return result.second;
 }

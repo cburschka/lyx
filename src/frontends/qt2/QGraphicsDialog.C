@@ -58,6 +58,8 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	displayscale->setValidator(new QIntValidator(displayscale));
 	height->setValidator(unsignedLengthValidator(height));
 	width->setValidator(unsignedLengthValidator(width));
+
+	filename->setValidator(new PathValidator(true, filename));
 }
 
 

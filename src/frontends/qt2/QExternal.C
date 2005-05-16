@@ -31,6 +31,7 @@
 #include "checkedwidgets.h"
 #include "lengthcombo.h"
 #include "qt_helpers.h"
+#include "validators.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -320,6 +321,7 @@ void QExternal::build_dialog()
 	addCheckedLineEdit(bcview(), dialog_->ybED, dialog_->lbLA);
 	addCheckedLineEdit(bcview(), dialog_->xrED, dialog_->rtLA);
 	addCheckedLineEdit(bcview(), dialog_->ytED, dialog_->rtLA);
+	addCheckedLineEdit(bcview(), dialog_->fileED, dialog_->fileLA);
 
 	std::vector<string> templates(controller().getTemplates());
 
@@ -343,6 +345,10 @@ void QExternal::build_dialog()
 
 void QExternal::update_contents()
 {
+	PathValidator * path_validator = getPathValidator(dialog_->fileED);
+	if (path_validator)
+		path_validator->setChecker(kernel().docType(), lyxrc);
+
 	dialog_->tab->setCurrentPage(0);
 	InsetExternalParams const & params = controller().params();
 

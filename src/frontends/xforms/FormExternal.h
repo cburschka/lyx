@@ -20,6 +20,7 @@
 namespace lyx {
 namespace frontend {
 
+class CheckedPath;
 class ControlExternal;
 struct FD_external;
 struct FD_external_file;
@@ -66,6 +67,9 @@ private:
 	void getBB();
 	void updateComboChange();
 	void widthUnitChanged();
+
+	// Accessor to checker owned by the button controller.
+	CheckedPath * file_checker_;
 
 	MapType extra_;
 

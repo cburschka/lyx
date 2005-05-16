@@ -75,7 +75,8 @@ bool const scalableTabfolders = true;
 typedef FormController<ControlGraphics, FormView<FD_graphics> > base_class;
 
 FormGraphics::FormGraphics(Dialog & parent)
-	: base_class(parent, _("Graphics"), scalableTabfolders)
+	: base_class(parent, _("Graphics"), scalableTabfolders),
+	  file_checker_(0)
 {}
 
 
@@ -109,6 +110,8 @@ void FormGraphics::build()
 	bcview().addReadOnly(file_->check_aspectratio);
 	bcview().addReadOnly(file_->check_draft);
 	bcview().addReadOnly(file_->check_nounzip);
+
+	file_checker_ = &addCheckedPath(bcview(), true, file_->input_filename);
 
 	// Check validity of "length + unit" input.
 	addCheckedGlueLength(bcview(), file_->input_width);
@@ -431,7 +434,10 @@ void FormGraphics::apply()
 }
 
 
-void FormGraphics::update() {
+void FormGraphics::update()
+{
+	file_checker_->setChecker(kernel().docType(), lyxrc);
+
 	// Update dialog with details from inset
 	InsetGraphicsParams & igp = controller().params();
 

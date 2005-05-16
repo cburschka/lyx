@@ -19,6 +19,7 @@
 #include "QGraphicsDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
+#include "validators.h"
 
 #include "lengthcommon.h"
 #include "lyxrc.h"
@@ -114,6 +115,7 @@ void QGraphics::build_dialog()
 	addCheckedLineEdit(bcview(), dialog_->lbY, dialog_->yL);
 	addCheckedLineEdit(bcview(), dialog_->rtX, dialog_->xL_2);
 	addCheckedLineEdit(bcview(), dialog_->rtY, dialog_->yL_2);
+	addCheckedLineEdit(bcview(), dialog_->filename, dialog_->filenameL);
 }
 
 
@@ -131,6 +133,10 @@ int getItemNo(vector<string> v, string const & s) {
 
 void QGraphics::update_contents()
 {
+	PathValidator * path_validator = getPathValidator(dialog_->filename);
+	if (path_validator)
+		path_validator->setChecker(kernel().docType(), lyxrc);
+
 	// clear and fill in the comboboxes
 	vector<string> const bb_units = lyx::frontend::getBBUnits();
 	dialog_->lbXunit->clear();

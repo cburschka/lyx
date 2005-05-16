@@ -68,6 +68,8 @@ QExternalDialog::QExternalDialog(QExternal * form)
 
 	widthED->setValidator(unsignedLengthValidator(widthED));
 	heightED->setValidator(unsignedLengthValidator(heightED));
+
+	fileED->setValidator(new PathValidator(true, fileED));
 }
 
 

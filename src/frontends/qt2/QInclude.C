@@ -12,8 +12,13 @@
 
 #include "QIncludeDialog.h"
 #include "QInclude.h"
+
+#include "checkedwidgets.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
+#include "validators.h"
+
+#include "lyxrc.h"
 
 #include "controllers/ControlInclude.h"
 
@@ -45,11 +50,17 @@ void QInclude::build_dialog()
 	bcview().addReadOnly(dialog_->browsePB);
 	bcview().addReadOnly(dialog_->visiblespaceCB);
 	bcview().addReadOnly(dialog_->typeCO);
+
+	addCheckedLineEdit(bcview(), dialog_->filenameED, dialog_->filenameLA);
 }
 
 
 void QInclude::update_contents()
 {
+	PathValidator * path_validator = getPathValidator(dialog_->filenameED);
+	if (path_validator)
+		path_validator->setChecker(kernel().docType(), lyxrc);
+
 	InsetCommandParams const & params = controller().params();
 
 	dialog_->filenameED->setText(toqstr(params.getContents()));

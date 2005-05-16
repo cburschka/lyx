@@ -1,3 +1,22 @@
+2005-05-13  Angus Leeming  <leeming@lyx.org>
+
+	* QBibtex.C (build_dialog):
+	* QBibtexDialog.C (c-tor, bibEDChanged, addPressed): add a
+	PathValidator of the add_->BibED widget and use it to control
+	the activation state of the "Add" button.
+
+	* QExternal.C (build_dialog, update_contents):
+	* QExternalDialog.C (c-tor): add a PathValidator of the fileED
+	widget.
+
+	* QGraphics.C (build_dialog, update_contents):
+	* QGraphicsDialog.C (c-tor): add a PathValidator of the filename
+	widget.
+
+	* QInclude.C (build_dialog, update_contents):
+	* QIncludeDialog.C (c-tor): add a PathValidator of the filenameED
+	widget.
+
 2005-05-09  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* *.C: strip "LyX: " prefix from dialog titles; harmonize

@@ -1,3 +1,13 @@
+2005-05-13  Angus Leeming  <leeming@lyx.org>
+
+	* checkedwidgets.[Ch] (CheckedPath): new class that determines
+	whether the input file name is valid or not.
+
+	* FormExternal.[Ch]:
+	* FormGraphics.[Ch]:
+	* FormInclude.[Ch]: use the new CheckedPath to control the
+	activation state of the "OK", "Apply" buttons.
+
 2005-05-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* forms/Makefile.am: add a distclean-local target to remove
@@ -12,8 +22,8 @@
 2005-05-04  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* forms/form_preferences.fd: fix capitalization.
-	* Form*.C: Change dialog titles - harmonize with Qt frontend and 
-	menu entries; fix capitalization; change "citation reference" 
+	* Form*.C: Change dialog titles - harmonize with Qt frontend and
+	menu entries; fix capitalization; change "citation reference"
 	to "citation".
 	* FormTexinfo.C: correct tooltip.
 

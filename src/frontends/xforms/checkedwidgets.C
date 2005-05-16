@@ -13,32 +13,53 @@
 
 #include "checkedwidgets.h"
 #include "xforms_helpers.h"
+
+#include "gettext.h"
 #include "lyxgluelength.h"
+#include "lyxrc.h"
+
+#include "frontends/Alert.h"
+#include "frontends/controllers/Kernel.h"
 
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
 
+#include <sstream>
+
+
+using lyx::support::isStrDbl;
 using std::string;
 
 namespace lyx {
-
-using support::isStrDbl;
-
 namespace frontend {
 
 
-void addCheckedLyXLength(BCView & bcview,
-			 FL_OBJECT * input, FL_OBJECT * label)
+CheckedLyXLength &
+addCheckedLyXLength(BCView & bcview, FL_OBJECT * input, FL_OBJECT * label)
 {
-	bcview.addCheckedWidget(new CheckedLyXLength(input, label));
+	CheckedLyXLength * cw(new CheckedLyXLength(input, label));
+	bcview.addCheckedWidget(cw);
+	return *cw;
 }
 
 
-void addCheckedGlueLength(BCView & bcview,
-			  FL_OBJECT * input, FL_OBJECT * label)
+CheckedGlueLength &
+addCheckedGlueLength(BCView & bcview, FL_OBJECT * input, FL_OBJECT * label)
 {
-	bcview.addCheckedWidget(new CheckedGlueLength(input, label));
+	CheckedGlueLength * cw(new CheckedGlueLength(input, label));
+	bcview.addCheckedWidget(cw);
+	return *cw;
+}
+
+
+CheckedPath &
+addCheckedPath(BCView & bcview, bool acceptable_if_empty,
+	       FL_OBJECT * input, FL_OBJECT * label)
+{
+	CheckedPath * cw(new CheckedPath(acceptable_if_empty, input, label));
+	bcview.addCheckedWidget(cw);
+	return *cw;
 }
 
 
@@ -104,6 +125,88 @@ bool CheckedGlueLength::check() const
 	// set the color of label and input widget
 	setWidget(valid, input_, label_);
 
+	return valid;
+}
+
+
+CheckedPath::CheckedPath(bool acceptable_if_empty,
+			 FL_OBJECT * input, FL_OBJECT * label)
+	: input_(input), label_(label ? label : input),
+	  acceptable_if_empty_(acceptable_if_empty),
+	  latex_doc_(false),
+	  tex_allows_spaces_(false)
+{}
+
+
+void CheckedPath::setChecker(lyx::frontend::KernelDocType const & type,
+			     LyXRC const & lyxrc)
+{
+	latex_doc_ = type == lyx::frontend::Kernel::LATEX;
+	tex_allows_spaces_ = lyxrc.tex_allows_spaces;
+}
+
+
+namespace {
+
+string const printable_list(string const & invalid_chars)
+{
+	std::ostringstream ss;
+	string::const_iterator const begin = invalid_chars.begin();
+	string::const_iterator const end = invalid_chars.end();
+	string::const_iterator it = begin;
+
+	for (; it != end; ++it) {
+		if (it != begin)
+			ss << ", ";
+		if (*it == ' ')
+			ss << _("space");
+		else
+			ss << *it;
+	}
+
+	return ss.str();
+}
+
+} // namespace anon
+
+
+bool CheckedPath::check() const
+{
+	if (!latex_doc_) {
+		setWidget(true, input_, label_);
+		return true;
+	}
+
+	if (!isActive(input_)) {
+		setWidget(true, input_, label_);
+		return true;
+	}
+
+	string const text = getString(input_);
+	if (text.empty()) {
+		setWidget(acceptable_if_empty_, input_, label_);
+		return acceptable_if_empty_;
+	}
+
+	string invalid_chars("#$%{}()[]:\"^");
+	if (!tex_allows_spaces_)
+		invalid_chars += ' ';
+
+	bool valid = true;
+	if (text.find_first_of(invalid_chars) != string::npos) {
+
+		static int counter = 0;
+		if (counter == 0) {
+			Alert::error(_("Invalid filename"),
+				     _("LyX does not provide LateX support for file names containing any of these characters:\n") +
+				     printable_list(invalid_chars));
+		}
+		++counter;
+		valid = false;
+	}
+
+	// set the color of label and input widget
+	setWidget(valid, input_, label_);
 	return valid;
 }
 

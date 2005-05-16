@@ -1,3 +1,9 @@
+2005-05-13  Angus Leeming  <leeming@lyx.org>
+
+	* helper_funcs.C (browseFile, browseDir): remove the loop that tested
+	whether the returned file name is valid in order to break out of the
+	loop.
+
 2005-05-08  Angus Leeming  <leeming@lyx.org>
 
 	* Kernel.h (KernelDocType): wrapper class for the Kernel::DocTypes
