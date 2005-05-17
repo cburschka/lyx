@@ -26,7 +26,7 @@
 
 2005-02-26  Michael Schmitt  <michael.schmitt@teststep.org>
 
-	* QBibitem.C: 
+	* QBibitem.C:
 	* QBibtex.C:
 	* QCharacter.C:
 	* QLog.C:
@@ -43,10 +43,10 @@
 	* ui/QCitationDialogBase.ui:
 	* ui/QPrintDialogBase.ui:
 	* ui/QRefDialogBase.ui:
-	* ui/QTexinfoDialogBase.ui: 
+	* ui/QTexinfoDialogBase.ui:
 	* ui/QTocDialogBase.ui:
-	* ui/QURLDialogBase.ui: fix dialog title; add missing ":"; change 
-	"Reference" to "Cross reference"; fix tooltip messages; 
+	* ui/QURLDialogBase.ui: fix dialog title; add missing ":"; change
+	"Reference" to "Cross reference"; fix tooltip messages;
 	fix capitalization
 
 2005-02-23  Angus Leeming  <leeming@lyx.org>
@@ -58,7 +58,7 @@
 
 2005-02-11  Michael Schmitt  <michael.schmitt@teststep.org>
 
-	* ui/QRefDialogBase.ui: semantic fix: substitute "reference" by 
+	* ui/QRefDialogBase.ui: semantic fix: substitute "reference" by
 	"label" in messages
 
 2005-01-15  Angus Leeming  <leeming@lyx.org>
@@ -117,11 +117,11 @@
 2004-10-11  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* qfont_loader.C (initFontPath, addToFontPath): two new static
-	member functions that replace addFontPath 
+	member functions that replace addFontPath
 	(available): remove special MacOSX code; use addToFontPath
 
 	* lyx_gui.C (parse_init): add call to qfont_loader::initFontPath()
-        
+
 2004-08-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (AM_CXXFLAGS): do not disable QTranslator code
@@ -171,7 +171,7 @@
 
 2003-12-08  Ronald Florence  <ron@18james.com>
 
-	* QWorkArea.C (checkAppleEventForMissingParams) 
+	* QWorkArea.C (checkAppleEventForMissingParams)
 	(handleOpenDocuments): add support for OpenDocuments apple event
 
 	* lyx_gui.C (macEventFilter): handle apple events
@@ -192,7 +192,7 @@
 	* ui/QMathDialogBase.ui: remove mention of \frac in tooltip, since
 	\f is interpreted by gettext as a special sequence.
 
-	* QDocument.C (build_dialog): 
+	* QDocument.C (build_dialog):
 	* ui/QTabularDialogBase.ui: remove use of latin1 in
 	some translatable strings. It confuses gettext.
 
@@ -229,10 +229,10 @@
 	* xfont_loader.C (addFontPath): condition message to Debug::FONT
 
 2003-07-15  John Levon  <levon@movementarian.org>
- 
+
 	* QMathDialog.C: use widget(i) not visibleWidget() due to
 	issue N26610 in Qt 3.2.0beta2
- 
+
 2003-07-03  John Levon  <levon@movementarian.org>
 
 	* ui/QTexinfoDialog.ui: fix tab order and enable View
@@ -245,7 +245,7 @@
 	(ugly) Qt/Mac code can do its magic (conditionally on Q_WS_MACX).
 
 2003-06-01  John Levon  <levon@movementarian.org>
-  	 
+
 	* QGraphicsDialog.C: use relative file browsing (bug 1028)
 
 2003-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
@@ -302,9 +302,9 @@
 	* ui/QPrefUIModule.ui: lastfiles max is really 9
 
 2003-03-06  John Levon  <levon@movementarian.org>
- 
+
  	* QExternalDialog.C: connect Apply
- 
+
 2003-03-06  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* qfont_loader.C (available): Rewrite as the old version did not
@@ -370,7 +370,7 @@
 
 2003-02-10  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
-	* QDocument.C: Allow qt users actually to use another 
+	* QDocument.C: Allow qt users actually to use another
 	papersize than default (set params.paperpackage).
 
 2003-02-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
@@ -388,7 +388,7 @@
 
 2003-02-07  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
-	* QTabular.C (closeGUI): do not change if nothing has to 
+	* QTabular.C (closeGUI): do not change if nothing has to
 	be changed (bug 849).
 
 2003-01-31  Michael Schmitt  <michael.schmitt@teststep.org>
@@ -431,8 +431,8 @@
 
 	* QDocument.C: rename "Xxxskip" to "XxxSkip"
 	* QGraphicsDialog.C:
-	* QLog.C: Make output messages identical to other messages 
-	* ui/*.ui: In strings, remove space in front of colon 
+	* QLog.C: Make output messages identical to other messages
+	* ui/*.ui: In strings, remove space in front of colon
         ("... :" => "...:") for harmonization with xforms labels
 
 2003-01-16  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
@@ -459,8 +459,8 @@
 
 	* qgridview.cpp: rename to...
 	* qgridview.C: ...this
-	
-	* Makefile.am: distcheck ready 
+
+	* Makefile.am: distcheck ready
 
 	* Makefile.dialogs: simplify
 
