@@ -69,6 +69,7 @@ Dialogs::Dialogs(LyXView & lyxview)
 {
 	// Connect signals
 	redrawGUI().connect(boost::bind(&Dialogs::redraw, this));
+	hideSignal().connect(boost::bind(&Dialogs::hideSlot, this, _1, _2));
 }
 
 
