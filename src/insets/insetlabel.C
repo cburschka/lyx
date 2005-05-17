@@ -100,7 +100,7 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 		InsetCommandParams p;
 		InsetCommandMailer::string2params("label", cmd.argument, p);
 		if (p.getCmdName().empty()) {
-			cur.undispatched();
+			cur.noUpdate();
 			break;
 		}
 		if (p.getContents() != params().getContents())

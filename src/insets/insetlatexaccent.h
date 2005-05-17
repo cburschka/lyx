@@ -66,7 +66,7 @@ public:
 	// should this inset be handled like a normal charater
 	bool isChar() const { return true; }
 
-	// is this equivalent to a letter?
+	/// is this equivalent to a letter?
 	virtual bool isLetter() const { return candisp; }
 
 	/// all the accent types

@@ -166,7 +166,7 @@ void InsetLatexAccent::checkContents()
 		break;
 	default:
 		lyxerr[Debug::KEY] << "Default" << endl;
-		// unknow accent (or something else)
+		// unknown accent (or something else)
 		return;
 	}
 

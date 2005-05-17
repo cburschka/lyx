@@ -63,6 +63,8 @@ void InsetBibitem::doDispatch(LCursor & cur, FuncRequest & cmd)
 		InsetCommandMailer::string2params("bibitem", cmd.argument, p);
 		if (!p.getCmdName().empty())
 			setParams(p);
+		else
+			cur.noUpdate();
 		break;
 	}
 

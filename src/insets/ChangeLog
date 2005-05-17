@@ -1,3 +1,10 @@
+2005-05-17  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetbase.C (getStatus): allow LFUN_INSET_MODIFY unconditionally
+	* insetbibitem.C, insetbibtex.C, insetlabel.C (doDispatch): call
+	cur.noUpdate() if nothing changed
+	* insetlatexaccent.[Ch]: spelling fixes
+
 2005-05-13  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetcollapsable.C (doDispatch): fix

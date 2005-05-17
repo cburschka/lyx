@@ -151,14 +151,11 @@ bool InsetBase::getStatus(LCursor &, FuncRequest const & cmd,
 
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:
-		// Only allow modification of our own data.
+		// Allow modification of our data.
 		// This needs to be handled in the doDispatch method of our
 		// instantiatable children.
-		if (lyxCode() == translate(cmd.getArg(0))) {
-			flag.enabled(true);
-			return true;
-		}
-		return false;
+		flag.enabled(true);
+		return true;
 
 	case LFUN_INSET_INSERT:
 		// Don't allow insertion of new insets.
