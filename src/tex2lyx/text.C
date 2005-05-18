@@ -789,12 +789,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		p.skip_spaces();
 }
 
+
 /// parses a comment and outputs it to \p os.
 void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
 {
 	BOOST_ASSERT(t.cat() == catComment);
-	context.check_layout(os);
 	if (!t.cs().empty()) {
+		context.check_layout(os);
 		handle_comment(os, '%' + t.cs(), context);
 		if (p.next_token().cat() == catNewline) {
 			// A newline after a comment line starts a new

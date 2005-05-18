@@ -1,3 +1,7 @@
+2005-04-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (parse_comment): Don't start a new paragraph for "%\n"
+
 2005-04-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (normalize_filename): new, split off from parse_text
