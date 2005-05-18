@@ -518,6 +518,10 @@ def revert_end_document(file):
 #
 #\end_layout
 def convert_breaks(file):
+    par_params = ('added_space_bottom', 'added_space_top', 'align',
+                 'labelwidthstring', 'line_bottom', 'line_top', 'noindent',
+                 'pagebreak_bottom', 'pagebreak_top', 'paragraph_spacing',
+                 'start_of_appendix')
     i = 0
     while 1:
         i = find_token(file.body, "\\begin_layout", i)
@@ -526,7 +530,9 @@ def convert_breaks(file):
         i = i + 1
 
         # Merge all paragraph parameters into a single line
-        while file.body[i + 1][:1] == '\\':
+        # We cannot check for '\\' only because paragraphs may start e.g.
+        # with '\\backslash'
+        while file.body[i + 1][:1] == '\\' and split(file.body[i + 1][1:])[0] in par_params:
             file.body[i] = file.body[i + 1] + ' ' + file.body[i]
             del file.body[i+1]
 
