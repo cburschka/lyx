@@ -1,3 +1,11 @@
+2005-05-18  Angus Leeming  <leeming@lyx.org>
+
+	* helper_funcs.C (get_invalid_chars_latex, printable_list): new
+	helper functions, used by ...
+	(browseFile, browseDir): to ensure that the browsed for file name
+	doesn't contain any characters that will cause LaTeX to keel over.
+	In particular, get_invalid_chars() now honours lyxrc.tex_allow_spaces.
+
 2005-05-09  Angus Leeming  <leeming@lyx.org>
 
 	* ControlSpellchecker.C: clean-up the creation of the wrappers to
