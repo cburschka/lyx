@@ -278,7 +278,13 @@ void LyX::priv_exec(int & argc, char * argv[])
 		files.clear(); // the files are already loaded
 	}
 
-	lyx_gui::start(batch_command, files);
+	if (want_gui)
+		lyx_gui::start(batch_command, files);
+	else {
+		// Something went wrong above
+		QuitLyX();
+		exit(EXIT_FAILURE);
+	}
 }
 
 
@@ -879,9 +885,7 @@ int parse_execute(string const & arg, string const &)
 		exit(1);
 	}
 	batch = arg;
-	// Argh. Setting gui to false segfaults..
-	// FIXME: when ? how ?
-	// is_gui = false;
+	is_gui = false;
 	return 1;
 }
 

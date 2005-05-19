@@ -1,3 +1,9 @@
+2005-05-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_main.C (priv_exec): fix logic error with help from Angus
+	* lyx_main.C (parse_execute): set is_gui = false and remove now
+	obsolete comment about a segfault
+
 2005-05-18  Angus Leeming  <leeming@lyx.org>
 
 	* buffer.C (readFile): Quote all file names passed to lyx2lyx.
