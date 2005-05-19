@@ -34,7 +34,7 @@ namespace frontend {
 
 
 GTexinfo::GTexinfo(Dialog & parent)
-	: GViewCB<ControlTexinfo, GViewGladeB>(parent, _("LaTeX Information"), false),
+	: GViewCB<ControlTexinfo, GViewGladeB>(parent, _("TeX Information"), false),
 	  activeStyle(ControlTexinfo::cls)
 {}
 

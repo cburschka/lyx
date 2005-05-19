@@ -32,7 +32,7 @@ namespace frontend {
 typedef FormController<ControlTexinfo, FormView<FD_texinfo> > base_class;
 
 FormTexinfo::FormTexinfo(Dialog & parent)
-	: base_class(parent, _("LaTeX Information")),
+	: base_class(parent, _("TeX Information")),
 	  activeStyle(ControlTexinfo::cls)
 {}
 

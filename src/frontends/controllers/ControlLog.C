@@ -71,13 +71,13 @@ string const ControlLog::title() const
 	string t;
 	switch (type_) {
 	case LatexLog:
-		t = _("LyX: LaTeX Log");
+		t = _("LaTeX Log");
 		break;
 	case LiterateLog:
-		t = _("LyX: Literate Programming Build Log");
+		t = _("Literate Programming Build Log");
 		break;
 	case Lyx2lyxLog:
-		t = _("LyX: lyx2lyx error Log");
+		t = _("lyx2lyx Error Log");
 		break;
 	case VCLog:
 		t = _("Version Control Log");

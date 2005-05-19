@@ -243,7 +243,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 	} else if (name == "index") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormText(*dialog,
-					     _("Index"), _("Keyword:|#K")));
+					     _("Index Entry"), _("Keyword:|#K")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->setController(new ControlCommand(*dialog, name));

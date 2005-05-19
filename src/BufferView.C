@@ -241,7 +241,7 @@ void BufferView::scroll(int lines)
 void BufferView::showErrorList(string const & action) const
 {
 	if (getErrorList().size()) {
-		string const title = bformat(_("LyX: %1$s errors (%2$s)"),
+		string const title = bformat(_("%1$s Errors (%2$s)"),
 			action, buffer()->fileName());
 		owner()->getDialogs().show("errorlist", title);
 		pimpl_->errorlist_.clear();
