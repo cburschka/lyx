@@ -12,10 +12,9 @@
 #ifndef QSCREEN_H
 #define QSCREEN_H
 
-
 #include "screen.h"
-#include <qrect.h>
-#include <boost/scoped_ptr.hpp>
+#include <qcolor.h>
+#include <qpixmap.h>
 
 class QWorkArea;
 class WorkArea;
@@ -50,7 +49,9 @@ private:
 	/// our owning widget
 	QWorkArea & owner_;
 
-	boost::scoped_ptr<QPixmap> nocursor_pixmap_;
+	QPixmap nocursor_pixmap_;
+	QPixmap hcursor_pixmap_;
+	QPixmap vcursor_pixmap_;
 
 	//@{ the cursor pixmap position/size
 	int cursor_x_;
@@ -58,6 +59,8 @@ private:
 	int cursor_w_;
 	int cursor_h_;
 	//@}
+
+	QColor cursor_color_;
 };
 
 #endif // QSCREEN_H
