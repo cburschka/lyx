@@ -35,6 +35,12 @@ What's new
   level operation like selection by double-click or index entry
   defaults.
 
+- The converters defined in the lyxrc.defaults and preferences files
+  can now use a "$$s" placeholder to tell LyX to look for the
+  converter in its support directories. A typical example is:
+
+  \converter lyxpreview ppm "python $$s/scripts/lyxpreview2ppm.py" ""
+
 - The ``annote'' field of BibTeX entries is now shown in citation preview.
 
 - update the aastex textclass to AASTeX 5.2
@@ -63,7 +69,7 @@ What's new
   REVTeX 4, since the functionality is already provided by the class.
 
 - Fix output of mathbb and mathcal symbols via the math panel
-  (xforms only) [bug 1214].
+  (XForms only) [bug 1214].
 
 - Fix output of footnotes on the titlepage, which did not work with
   the memoir class [bug 1677].
@@ -73,7 +79,7 @@ What's new
 
 - When reading an equation, don't parse \| following a \left or \right as |.
 
-- Fix positionning of error insets after graphics and external insets.
+- Fix positioning of error insets after graphics and external insets.
 
 - When executing generating PDF, handle properly pdfTeX warnings [bug 1824].
 
@@ -87,6 +93,25 @@ What's new
 - remove detection of a PS interpreter in lib/configure, since we do
   not use it.
 
+- Remove from convertDefault.sh the test that "convert" really succeeded
+  as it reported failures on Windows that were actually successes.
+  See, eg, http://marc.theaimsgroup.com/?l=lyx-users&m=110561697803860&w=2
+
+- No longer quote the name of the external executable in lyxpreview2ppm.py.
+  Windows didn't like that.
+
+- Windows users are now able to define and use their own graphics converters
+  because the command is now quoted correctly.
+
+- Given a Windows-style path, don't forget to mangle the drive letter too when
+  generating a unique temporary file name.
+
+- LyX now passes all external scripts to the relevant interpreter explicitly.
+  This means that Windows can now run the script even when it doesn't have
+  a "recognized" file extension.
+
+- Enable the file browser to return a "file name with spaces" to the
+  appropriate dialog if LaTeX can handle such files.
 
 * User Interface:
 
@@ -96,6 +121,10 @@ What's new
 
 - Make LyX behave normally when a file has been open from the Explorer
   [Windows only].
+
+- Windows users will find that graphics files are now converted to a
+  "loadable" format asynchronously. That is, LyX will not block
+  execution whilst graphics files are displayed on screen.
 
 - Fix font metrics problems with Qt/Win 3.2.1.
 
@@ -107,7 +136,7 @@ What's new
 
 - Semantic improvements in the Insert>Cross reference dialog.
 
-- When showing a preview of a bibtex entry in the Insert>Citation
+- When showing a preview of a BibTeX entry in the Insert>Citation
   Reference dialog, handle \% correctly.
 
 - Fix display of citations when using 'et al.'
@@ -122,12 +151,17 @@ What's new
 
 - Fix "longtable" user interface in the tabular dialog [bug 1061] [qt only]
 
+- Remove the "child process" dialog, with which a user could kill child
+  processes spawned by LyX. It was decided that this functionality belonged
+  with the OS.
+
+- Post convertDefault.sh's error messages to STDERR.
 
 * Configuration/Installation:
 
 - Enable XForms frontend to build with picky versions of 'make'.
 
-- Fix link error with some compiler/os combinations [bug 1702].
+- Fix link error with some compiler/OS combinations [bug 1702].
 
 - Fix link error with Cygwin.
 
