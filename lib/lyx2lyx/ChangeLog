@@ -1,3 +1,8 @@
+2005-05-18  Angus Leeming  <leeming@lyx.org>
+
+	* lyx2lyx (parse_options): Add the description of the '-f' option
+	back again.
+
 2005-05-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyx_1_4.py (convert_breaks): Don't treat every token that starts
@@ -5,7 +10,8 @@
 
 2005-05-06  José Matos  <jamatos@lyx.org>
 
-	* lyx_1_4.py (convert_breaks): put all paragraph parameters into a single line.
+	* lyx_1_4.py (convert_breaks): put all paragraph parameters into a
+	single line.
 
 2005-05-04  José Matos  <jamatos@lyx.org>
 
@@ -257,7 +263,7 @@
 
 	* lyx_1_4.py (convert_frameless_box): Replace instead of adding
 	new code.
-.
+
 2004-04-14  José Matos  <jamatos@lyx.org>
 
 	* error.py
@@ -416,4 +422,3 @@
 	* lyxconvert_223.py:
 	* lyxconvert_224.py (convert_minipage): move funtion to its right place.
 	(convert_breaks): convert line and page break, at bottom and top.
-

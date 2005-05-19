@@ -1,3 +1,7 @@
+2005-05-18  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.C (readFile): Quote all file names passed to lyx2lyx.
+
 2005-05-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* tabular.[hC]: added setCellInset to fix tabular paste.

@@ -32,6 +32,7 @@ Options:
     -d, --debug level		level=0..2 (O_ no debug information, 2_verbose)
 				default: level=1
     -e, --err error_file	name of the error file or else goes to stderr
+    -f, --from version		initial version (optional)
     -t, --to version		final version (optional)
     -o, --output name		name of the output file or else goes to stdout
     -q, --quiet			same as --debug=0"""

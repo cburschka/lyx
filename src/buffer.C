@@ -638,9 +638,8 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
 					      filename));
 			return false;
 		}
-		string command =
-			"python " + LibFileSearch("lyx2lyx", "lyx2lyx");
-		if (command.empty()) {
+		string const lyx2lyx = LibFileSearch("lyx2lyx", "lyx2lyx");
+		if (lyx2lyx.empty()) {
 			Alert::error(_("Conversion script not found"),
 				     bformat(_("%1$s is from an earlier"
 					       " version of LyX, but the"
@@ -649,14 +648,18 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
 					       filename));
 			return false;
 		}
-		command += " -t"
-			+ convert<string>(LYX_FORMAT)
-			+ " -o " + tmpfile + ' '
-			+ QuoteName(filename);
+		ostringstream command;
+		command << "python " << QuoteName(lyx2lyx)
+			<< " -t " << convert<string>(LYX_FORMAT)
+			<< " -o " << QuoteName(tmpfile) << ' '
+			<< QuoteName(filename);
+		string const command_str = command.str();
+
 		lyxerr[Debug::INFO] << "Running '"
-				    << command << '\''
+				    << command_str << '\''
 				    << endl;
-		cmd_ret const ret = RunCommand(command);
+
+		cmd_ret const ret = RunCommand(command_str);
 		if (ret.first != 0) {
 			Alert::error(_("Conversion script failed"),
 				     bformat(_("%1$s is from an earlier version"
