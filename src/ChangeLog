@@ -1,3 +1,7 @@
+2005-05-18  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.C (readFile): Quote all file names passed to lyx2lyx.
+
 2005-05-09  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: make compilation of pspell.[Ch] and ispell.[Ch] dependent

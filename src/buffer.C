@@ -1221,22 +1221,25 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 						     "Use LyX 0.10.x to read this!"));
 					return false;
 				} else if (!filename.empty()) {
-					string command = "python " +
-						LibFileSearch("lyx2lyx", "lyx2lyx");
-					if (command.empty()) {
+					string const lyx2lyx = LibFileSearch("lyx2lyx", "lyx2lyx");
+					if (lyx2lyx.empty()) {
 						Alert::alert(_("ERROR!"),
 							     _("Can't find conversion script."));
 						return false;
 					}
 					string const tmpfile = lyx::tempName();
-					command += " -t"
-						+ tostr(LYX_FORMAT)
-						+ " -o " + tmpfile + ' '
-						+ QuoteName(filename);
+					ostringstream command;
+					command << "python " << QuoteName(lyx2lyx)
+						<< " -t " << tostr(LYX_FORMAT)
+						<< " -o " << QuoteName(tmpfile) << ' '
+						<< QuoteName(filename);
+					string const command_str = STRCONV(command.str());
+
 					lyxerr[Debug::INFO] << "Running '"
-							    << command << '\''
+							    << command_str << '\''
 							    << endl;
-					cmd_ret const ret = RunCommand(command);
+
+					cmd_ret const ret = RunCommand(command_str);
 					if (ret.first) {
 						Alert::alert(_("ERROR!"),
 							     _("An error occured while "
@@ -2141,7 +2144,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		    << endl;
 		texrow.newline();
 	}
-	
+
 	// if we are doing a real file with body, even if this is the
 	// child of some other buffer, let's cut the link here.
 	string save_parentname;
@@ -2157,7 +2160,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	if (!only_body) {
 		params.parentname = save_parentname;
 	}
-	
+
 	// add this just in case after all the paragraphs
 	os << endl;
 	texrow.newline();
@@ -3085,7 +3088,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 				if (style->latexparam() == "CDATA")
 					os << "<![CDATA[";
 			}
-			
+
 			break;
 		}
 		case Paragraph::META_NEWLINE:
