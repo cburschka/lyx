@@ -441,6 +441,15 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fixupfilename(), FNR, line); \
 		} \
+		/LabelString[A-Za-z]*/ { \
+			line=$$0; \
+			sub(/[[:space:]]*LabelString[A-Za-z]*[[:space:]]*/, "", line); \
+			gsub(/"/, "", line); \
+			gsub(/\\/, "\\\\", line); \
+			if (line != "") \
+			  printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
+				 fixupfilename(), FNR, line); \
+		} \
 		/GuiName/ { \
 			line=$$0; \
 			sub(/[[:space:]]*GuiName[[:space:]]*/, "", line); \

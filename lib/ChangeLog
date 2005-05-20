@@ -1,3 +1,18 @@
+2005-05-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* layouts/report.layout: no need to change LabelString here
+
+	* layouts/heb-article.layout: 
+	* layouts/heb-letter.layout: 
+	* layouts/dinbrief.layout: avoid 8bit characters
+
+	* layouts/scrclass.inc: no need to reset LabelString here
+
+	* layouts/amsbook.layout: no need to remove numbering of paragraph
+	layout. 
+
+	* layouts/amsdefs.inc: fix case of LabelString
+
 2005-05-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* layouts/llncs.layout: fix some font sizes; change description;

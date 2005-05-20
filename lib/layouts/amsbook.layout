@@ -97,11 +97,9 @@ Style Section
 End
 
 
-# Paragraph doesn't have numbered labels
 Style Paragraph
-	LabelString          ""
-	LabelStringAppendix  ""
 	Font
+	  Series Medium
 	EndFont
 End
 

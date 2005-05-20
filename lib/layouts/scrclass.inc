@@ -55,7 +55,6 @@ End
 
 
 Style Chapter
-	LabelString           ""
 	Font
 	  Family              Sans
 	  Size                Largest

@@ -175,7 +175,7 @@ Style Email
 	CopyStyle             Address
 	Margin                First_Dynamic
 	LatexName             email
-	labelString           "E-mail address: "
+	LabelString           "E-mail address: "
 End
 
 
@@ -183,7 +183,7 @@ Style URL
 	CopyStyle             Address
 	Margin                First_Dynamic
 	LatexName             urladdr
-	labelString           "URL: "
+	LabelString           "URL: "
 End
 
 

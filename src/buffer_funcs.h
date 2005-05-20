@@ -20,7 +20,6 @@
 class Buffer;
 class DocIterator;
 class ErrorList;
-class LyXTextClass;
 class TeXErrors;
 
 /**
@@ -46,8 +45,8 @@ void bufferErrors(Buffer const &, ErrorList const &);
 int countWords(DocIterator const & from, DocIterator const & to);
 
 /// Expand the counters for the labelstring of \c layout
-std::string expandLabel(LyXTextClass const & textclass,
-		LyXLayout_ptr const & layout, bool appendix);
+std::string expandLabel(Buffer const & buf, LyXLayout_ptr const & layout, 
+			bool appendix);
 
 /// updates all counters
 void updateCounters(Buffer const &);

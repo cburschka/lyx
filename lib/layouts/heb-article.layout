@@ -14,11 +14,6 @@ Preamble
 EndPreamble
 
 
-Style Abstract
-	LabelString           "ריצקת"
-End
-
-
 Style Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -34,7 +29,7 @@ Style Theorem
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           ".# טפשמ"
+	LabelString           "Theorem #."
 	Font
 	  Shape               Up
 	  Size                Normal
@@ -49,7 +44,7 @@ End
 Style Lemma
 	CopyStyle             Theorem
 	LatexName             lemma
-	LabelString           ".# המל"
+	LabelString           "Lemma #."
 	Preamble
 		\newtheorem{lemma}[theorem]{\R{למה}}
 	EndPreamble
@@ -59,7 +54,7 @@ End
 Style Corollary
 	CopyStyle             Theorem
 	LatexName             corollary
-	LabelString           ".# הנקסמ"
+	LabelString           "Corollary #."
 	Preamble
 		\newtheorem{corollary}[theorem]{\R{מסקנה}}
 	EndPreamble
@@ -69,7 +64,7 @@ End
 Style Claim
 	CopyStyle             Theorem
 	LatexName             claim
-	LabelString           ".# הנעט"
+	LabelString           "Claim #."
 	Preamble
 		\newtheorem{claim}[theorem]{\R{טענה}}
 	EndPreamble
@@ -79,7 +74,7 @@ End
 Style Definition
 	CopyStyle             Theorem
 	LatexName             definition
-	LabelString           ".# הרדגה"
+	LabelString           "Definition #."
 	Preamble
 		\newtheorem{definition}[theorem]{\R{הגדרה}}
 	EndPreamble
@@ -89,7 +84,7 @@ End
 Style Remarks
 	CopyStyle             Theorem
 	LatexName             remark
-	LabelString           ".# הרעה"
+	LabelString           "Remarks #."
 	Preamble
 		\newtheorem{remark}[theorem]{\R{הערה}}
 	EndPreamble
@@ -111,7 +106,7 @@ Style Proof
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           ":החכוה"
+	LabelString           "Proof:"
 	EndLabelType          Filled_Box
 	Font
 	  Shape               Up

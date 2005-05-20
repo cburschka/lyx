@@ -382,7 +382,7 @@ void setCounter(Buffer const & buf, ParIterator & it)
 		    && (layout->latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
 			counters.step(layout->counter);
-			string label = expandLabel(textclass, layout,
+			string label = expandLabel(buf, layout,
 						   par.params().appendix());
 			par.params().labelString(label);
 		}
@@ -442,7 +442,7 @@ void setCounter(Buffer const & buf, ParIterator & it)
 		int number = counters.value("bibitem");
 		if (par.bibitem()) 
 			par.bibitem()->setCounter(number);
-		par.params().labelString(layout->labelstring());
+		par.params().labelString(buf.B_(layout->labelstring()));
 		// In biblio should't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
@@ -498,11 +498,13 @@ void updateCounters(Buffer const & buf)
 }
 
 
-string expandLabel(LyXTextClass const & textclass,
+string expandLabel(Buffer const & buf,
 	LyXLayout_ptr const & layout, bool appendix)
 {
-	string fmt = appendix ?
-		layout->labelstring_appendix() : layout->labelstring();
+	LyXTextClass const & tclass = buf.params().getLyXTextClass();
+
+	string fmt = buf.B_(appendix ? layout->labelstring_appendix() 
+			    : layout->labelstring());
 
 	// handle 'inherited level parts' in 'fmt',
 	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'
@@ -511,12 +513,12 @@ string expandLabel(LyXTextClass const & textclass,
 		size_t const j = fmt.find('@', i + 1);
 		if (j != string::npos) {
 			string parent(fmt, i + 1, j - i - 1);
-			string label = expandLabel(textclass, textclass[parent], appendix);
+			string label = expandLabel(buf, tclass[parent], appendix);
 			fmt = string(fmt, 0, i) + label + string(fmt, j + 1, string::npos);
 		}
 	}
 
-	return textclass.counters().counterLabel(fmt);
+	return tclass.counters().counterLabel(fmt);
 }
 
 

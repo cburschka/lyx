@@ -1,3 +1,11 @@
+2005-05-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* buffer_funcs.C (expandLabel): take a Buffer as argument;
+	translate the labelstring.
+	(setCounter): translate labelstring as needed.
+
+	* output_docbook.C (makeCommand): fix expandLabel invokation
+
 2005-05-14  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* BufferView.C: fix dialog title
