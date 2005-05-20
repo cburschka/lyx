@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libboost_regex.la
 
-AM_CPPFLAGS = \
+AM_CPPFLAGS += \
 	$(PCH_FLAGS) \
 	-DBOOST_USER_CONFIG="<config.h>" \
 	$(BOOST_INCLUDES)

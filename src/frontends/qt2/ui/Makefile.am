@@ -7,7 +7,7 @@ SUBDIRS = . moc
 
 EXTRA_DIST = QPreambleDialogBase.ui $(UIFILES)
 
-AM_CPPFLAGS = \
+AM_CPPFLAGS += \
 	$(QT_CPPFLAGS) -DQT_NO_TRANSLATION \
 	$(PCH_FLAGS) \
 	-I$(top_srcdir)/src \

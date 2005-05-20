@@ -10,7 +10,7 @@ check_PROGRAMS = \
 	convert \
 	lstrings
 
-AM_CPPFLAGS = $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(BOOST_INCLUDES)
 
 convert_LDADD = ../convert.o
 convert_SOURCES = \

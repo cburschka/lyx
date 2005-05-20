@@ -7,7 +7,7 @@ BUILT_SOURCES = lyx_forms.h lyx_xpm.h
 
 EXTRA_DIST = lyx_forms.h.in lyx_xpm.h.in
 
-AM_CPPFLAGS = \
+AM_CPPFLAGS += \
 	-I$(top_srcdir)/images \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
@@ -16,7 +16,7 @@ AM_CPPFLAGS = \
 
 # This cannot be put in AM_CPPFLAGS since that is used both for C and C++
 # And the precompiled header is setup only for C++
-AM_CXXFLAGS = $(PCH_FLAGS)
+AM_CXXFLAGS += $(PCH_FLAGS)
 
 noinst_LTLIBRARIES = libxforms.la
 

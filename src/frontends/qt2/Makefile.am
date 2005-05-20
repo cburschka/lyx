@@ -10,7 +10,7 @@ noinst_LTLIBRARIES = libqt2.la
 libqt2_la_LDFLAGS = $(QT_LDFLAGS)
 libqt2_la_LIBADD = $(QT_LIB) ui/*.lo moc/*.lo ui/moc/*.lo
 
-AM_CPPFLAGS = \
+AM_CPPFLAGS += \
 	$(QT_CPPFLAGS) \
 	$(PCH_FLAGS) \
 	-I$(top_srcdir)/src \

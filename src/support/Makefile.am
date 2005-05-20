@@ -14,7 +14,7 @@ endif
 
 BUILT_SOURCES = package.C
 
-AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 libsupport_la_SOURCES = \
 	FileMonitor.h \

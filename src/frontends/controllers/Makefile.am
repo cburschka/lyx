@@ -4,7 +4,7 @@ EXTRA_DIST = BCView.tmpl
 
 noinst_LTLIBRARIES = libcontrollers.la
 
-AM_CPPFLAGS = $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
 libcontrollers_la_SOURCES= \
 	Dialog.C \

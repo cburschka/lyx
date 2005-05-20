@@ -169,7 +169,7 @@ AC_ARG_ENABLE(warnings,
 	enable_warnings=no;
     fi;])
 if test x$enable_warnings = xyes ; then
-  lyx_flags="$lyx_flags warnings"
+  lyx_flags="warnings $lyx_flags"
   AC_DEFINE(WITH_WARNINGS, 1,
   [Define this if you want to see the warning directives put here and
    there by the developpers to get attention])
@@ -224,26 +224,39 @@ if test x$GXX = xyes; then
   if test "$ac_test_CXXFLAGS" = set; then
     CXXFLAGS="$ac_save_CXXFLAGS"
   else
-    case $gxx_version in
-      2.95.1)  CXXFLAGS="$lyx_opt -fpermissive -ftemplate-depth-30";;
-      2.95.*)  CXXFLAGS="$lyx_opt -Wno-non-template-friend -ftemplate-depth-30";;
-      2.96*)  CXXFLAGS="$lyx_opt -fno-exceptions -ftemplate-depth-30 -Wno-non-template-friend";;
-      3.1*)    CXXFLAGS="$lyx_opt -finline-limit=500 -fno-exceptions";;
-      3.2*|3.3*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
-      3.4*|4.0*)
-	    CXXFLAGS="$lyx_opt -fno-exceptions"
-	    test $enable_pch = yes && lyx_pch_comp=yes
-	    ;;
-      *)       CXXFLAGS="$lyx_opt";;
-    esac
+      CFLAGS="$lyx_opt"
+      CXXFLAGS="$lyx_opt"
     if test x$enable_debug = xyes ; then
+        CFLAGS="-g $CFLAGS"
 	CXXFLAGS="-g $CXXFLAGS"
     fi
+    if test x$enable_warnings = xyes ; then
+        case $gxx_version in
+            2.*|3.1*|3.2*|3.3*)
+                CPPFLAGS="-W -Wall $CPPFLAGS"
+                ;;
+            *)
+                CPPFLAGS="-Wextra -Wall $CPPFLAGS "
+                ;;
+        esac
+    fi
   fi
+  case $gxx_version in
+      2.95.1)  AM_CXXFLAGS="-fpermissive -ftemplate-depth-30";;
+      2.95.*)  AM_CXXFLAGS="-Wno-non-template-friend -ftemplate-depth-30";;
+      2.96*)  AM_CXXFLAGS="-fno-exceptions -ftemplate-depth-30 -Wno-non-template-friend";;
+      3.1*)    AM_CXXFLAGS="-finline-limit=500 -fno-exceptions";;
+      3.2*|3.3*)    AM_CXXFLAGS="-fno-exceptions";;
+      3.4*|4.0*)
+          AM_CXXFLAGS="-fno-exceptions"
+          test $enable_pch = yes && lyx_pch_comp=yes
+          ;;
+      *)       AM_CXXFLAGS="";;
+  esac
   if test x$enable_stdlib_debug = xyes ; then
     case $gxx_version in
       3.4*|4.0*)
-        lyx_flags="$lyx_flags stdlib-debug"
+        lyx_flags="stdlib-debug $lyx_flags"
 	AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
 	AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
         ;;
@@ -252,27 +265,17 @@ if test x$GXX = xyes; then
   if test x$enable_concept_checks = xyes ; then
     case $gxx_version in
       3.3*)
-        lyx_flags="$lyx_flags concept-checks"
+        lyx_flags="concept-checks $lyx_flags"
         AC_DEFINE(_GLIBCPP_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 	;;
       3.4*|4.0*)
-        lyx_flags="$lyx_flags concept-checks"
+        lyx_flags="concept-checks $lyx_flags"
 	AC_DEFINE(_GLIBCXX_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 	;;
     esac
   fi
-  if test x$enable_warnings = xyes ; then
-    case $gxx_version in
-      2.*|3.1*|3.2*|3.3*)
-        CPPFLAGS="$CPPFLAGS -W -Wall"
-        ;;
-      *)
-        CPPFLAGS="$CPPFLAGS -Wextra -Wall"
-        ;;
-    esac
-  fi
 fi
-test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
+test "$lyx_pch_comp" = yes && lyx_flags="pch $lyx_flags"
 AM_CONDITIONAL(LYX_BUILD_PCH, test "$lyx_pch_comp" = yes)
 ])dnl
 

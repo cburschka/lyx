@@ -8,7 +8,7 @@ man_MANS = lyxclient.1
 
 bin_PROGRAMS = lyxclient
 
-AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 BOOST_LIBS = $(BOOST_REGEX) $(BOOST_FILESYSTEM)
 

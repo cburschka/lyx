@@ -1,3 +1,8 @@
+2005-05-20    <lgb@tandberg.net>
+
+	* configure.ac: Use AM_* flags for CLAGS,CXXFLAGS where we require
+	the values to be properly set.
+
 2005-05-03  Angus Leeming  <leeming@lyx.org>
 
 	* configure.ac: test for io.h and process.h.

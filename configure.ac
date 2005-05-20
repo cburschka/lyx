@@ -78,7 +78,7 @@ AC_ARG_ENABLE(assertions,
 	enable_assertions=no;
     fi;])
 if test "x$enable_assertions" = xyes ; then
-   lyx_flags="$lyx_flags assertions"
+   lyx_flags="assertions $lyx_flags"
    AC_DEFINE(ENABLE_ASSERTIONS,1,
     [Define if you want assertions to be enabled in the code])
 fi
@@ -112,7 +112,7 @@ if test x$lyx_use_aiksaurus != xno; then
 AC_CHECK_LIB(Aiksaurus, main,
 	[AC_DEFINE(HAVE_LIBAIKSAURUS,1,[Define this if you have the AikSaurus library])
 	 AIKSAURUS_LIBS="-lAiksaurus"
-	 lyx_flags="$lyx_flags aiksaurus"
+	 lyx_flags="aiksaurus $lyx_flags"
 	])
 AC_CHECK_HEADER(Aiksaurus.h,[
   ac_cv_header_aiksaurus_h=yes
@@ -269,7 +269,7 @@ if test $use_compression=true ; then
 	AC_CHECK_LIB(z, gzopen,[use_compression=true;LIBS="$LIBS -lz"], use_compression=false)
 	if test $use_compression = true ; then
 		AC_DEFINE(USE_COMPRESSION, 1, [Define as 1 if you want to support compressed files.])
-		lyx_flags="$lyx_flags compression"
+		lyx_flags="compression $lyx_flags"
 	fi
 fi
 AM_CONDITIONAL(USE_COMPRESSION, test x$use_compression = xtrue)
@@ -301,12 +301,15 @@ real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
 real_datadir=`eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
 VERSION_INFO="Configuration\n\
   Host type:                      ${host}\n\
-  Special build flags:           ${lyx_flags}\n\
-  C   Compiler:                   ${CC}\n\
+  Special build flags:            ${lyx_flags}\n\
+  C   Compiler:                   ${CC} ${CC_VERSION}\n\
+  C   Compiler LyX flags:         ${AM_CPPFLAGS} ${AM_CFLAGS}\n\
   C   Compiler flags:             ${CPPFLAGS} ${CFLAGS}\n\
   C++ Compiler:                   ${CXX} ${CXX_VERSION}\n\
+  C++ Compiler LyX flags:         ${AM_CPPFLAGS} ${AM_CXXFLAGS}\n\
   C++ Compiler flags:             ${CPPFLAGS} ${CXXFLAGS}\n\
-  Linker flags:                   ${LDFLAGS}\n\
+  Linker flags:                   ${AM_LDFLAGS}\n\
+  Linker user flags:              ${LDFLAGS}\n\
 ${FRONTEND_INFO}\
   Packaging:                      ${lyx_use_packaging}\n\
   LyX binary dir:                 ${real_bindir}\n\
@@ -315,6 +318,10 @@ ${FRONTEND_INFO}\
 
 AC_SUBST(VERSION_INFO)
 AC_SUBST(RPM_FRONTEND)
+AC_SUBST(AM_CPPFLAGS)
+AC_SUBST(AM_CXXFLAGS)
+AC_SUBST(AM_CFLAGS)
+AC_SUBST(AM_LDFLAGS)
 
 ## Some config.h stuff
 
