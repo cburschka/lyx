@@ -54,6 +54,8 @@ using std::map;
 
 using lyx::support::isStrUnsignedInt;
 using lyx::support::ltrim;
+using lyx::support::MakeAbsPath;
+using lyx::support::OnlyPath;
 using lyx::support::rtrim;
 using lyx::support::IsFileReadable;
 
@@ -414,10 +416,7 @@ int main(int argc, char * argv[])
 		return 2;
 	}
 
-	if (lyx::support::AbsolutePath(argv[1]))
-		masterFilePath = lyx::support::OnlyPath(argv[1]);
-	else
-		masterFilePath = lyx::support::getcwd();
+	masterFilePath = OnlyPath(MakeAbsPath(argv[1]));
 
 	tex2lyx(is, cout);
 

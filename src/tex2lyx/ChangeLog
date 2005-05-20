@@ -1,3 +1,7 @@
+2005-05-20  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* tex2lyx.C (main): set correct masterFilePath for files like "subdir/file"
+
 2005-04-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_comment): Don't start a new paragraph for "%\n"
