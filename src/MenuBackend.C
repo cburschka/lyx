@@ -513,9 +513,9 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 
 		if (kind == MenuItem::ImportFormats) {
 			if ((*fit)->name() == "text")
-				label = _("ASCII text as lines");
+				label = _("Plain Text as Lines");
 			else if ((*fit)->name() == "textparagraph")
-				label = _("ASCII text as paragraphs");
+				label = _("Plain Text as Paragraphs");
 			label += "...";
 		}
 		if (!(*fit)->shortcut().empty())

@@ -87,7 +87,7 @@
                             </property>
                             <property>
                                 <name>toolTip</name>
-                                <string>Max. line length of exported ASCII/LaTeX/ SGML files</string>
+                                <string>Max. line length of exported plain text/LaTeX/SGML files</string>
                             </property>
                         </widget>
                         <spacer>
@@ -136,7 +136,7 @@
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>External app for formating tables in ASCII output</string>
+                        <string>External app for formating tables in plain text output</string>
                     </property>
                 </widget>
             </grid>

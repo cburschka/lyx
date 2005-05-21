@@ -4,9 +4,9 @@
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\Format asciichess asc    "ASCII (chess output)"  "" ""	"kedit"
-\Format asciiimage asc    "ASCII (image)"         "" ""	"kedit"
-\Format asciixfig  asc    "ASCII (xfig output)"   "" ""	"kedit"
+\Format asciichess asc    "Plain text (chess output)"  "" ""	"kedit"
+\Format asciiimage asc    "Plain text (image)"         "" ""	"kedit"
+\Format asciixfig  asc    "Plain text (xfig output)"   "" ""	"kedit"
 \Format agr        agr     GRACE                  "" "none"	"none"
 \Format bmp        bmp     BMP                    "" "kview"	"gimp"
 \Format date       ""     "date command"          "" ""	""

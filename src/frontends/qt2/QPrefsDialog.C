@@ -106,7 +106,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 	string const op = _("Outputs");
 	prefsPS->addCategory(op);
-	prefsPS->addPanel(asciiModule, _("ASCII"), op);
+	prefsPS->addPanel(asciiModule, _("Plain text"), op);
 	prefsPS->addPanel(dateModule, _("Date format"), op);
 	prefsPS->addPanel(latexModule, _("LaTeX"), op);
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)

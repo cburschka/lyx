@@ -580,9 +580,9 @@ cat >$outfile <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\Format asciichess asc    "ASCII (chess output)"  "" ""	"$TEXT_EDITOR"
-\\Format asciiimage asc    "ASCII (image)"         "" ""	"$TEXT_EDITOR"
-\\Format asciixfig  asc    "ASCII (xfig output)"   "" ""	"$TEXT_EDITOR"
+\\Format asciichess asc    "Plain text (chess output)"  "" ""	"$TEXT_EDITOR"
+\\Format asciiimage asc    "Plain text (image)"         "" ""	"$TEXT_EDITOR"
+\\Format asciixfig  asc    "Plain text (xfig output)"   "" ""	"$TEXT_EDITOR"
 \\Format agr        agr     GRACE                  "" "$GRACE_VIEWER"	"$GRACE_EDITOR"
 \\Format bmp        bmp     BMP                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format date       ""     "date command"          "" ""	""
@@ -615,8 +615,8 @@ cat >$outfile <<EOF
 \\Format pstex      pstex_t PSTEX                  "" ""	""
 \\Format tgif       obj     TGIF                   "" "$TGIF_VIEWER"	"$TGIF_EDITOR"
 \\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""
-\\Format text       txt     ASCII                  A  ""	"$TEXT_EDITOR"
-\\Format textparagraph txt "ASCII (paragraphs)"    "" ""	"$TEXT_EDITOR"
+\\Format text       txt    "Plain text"            A  ""	"$TEXT_EDITOR"
+\\Format textparagraph txt "Plain text (paragraphs)"    "" ""	"$TEXT_EDITOR"
 \\Format tiff       tif     TIFF                   "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format word       doc     Word                   W  ""	""
 \\Format xbm        xbm     XBM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
