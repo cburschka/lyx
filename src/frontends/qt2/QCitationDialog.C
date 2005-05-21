@@ -282,7 +282,10 @@ void QCitationDialog::find(biblio::Direction dir)
 	}
 
 	// Update the display
+	// note that we have multi selection mode!
+	add_->availableLB->setSelected(sel, false);
 	add_->availableLB->setSelected(found, true);
+	add_->availableLB->setCurrentItem(found);
 	add_->availableLB->ensureCurrentVisible();
 }
 
