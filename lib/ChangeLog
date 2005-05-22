@@ -1,3 +1,11 @@
+2005-05-16  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/stdmenus.ui
+	* ui/classic.ui: fix use of "..."  according to KDE
+	human interface guidelines; fix capitalization; align
+	functionality of stdmenus.ui and classic.ui; remove 
+	"inset-toggle"; remove "Bibliography Key" from classic.ui
+ 
 2005-05-20  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* configure.m4: rename "ASCII" to "Plain text"

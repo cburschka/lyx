@@ -9,6 +9,9 @@
 
 # Full author contact details are available in file CREDITS.
 
+# The interface is designed (partially) following the KDE Human Interface 
+# Guidelines (http://usability.kde.org/hig/)
+
 Menuset
 
 	Menubar
@@ -82,6 +85,8 @@ Menuset
 		Item "Copy" "copy"
 		Item "Paste" "paste"
 		Submenu "Paste Recent" "pasterecent"
+		Submenu "Paste External Selection" "edit_paste"
+		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
 		Separator
 		Item "Text Style...|S" "dialog-show character"
@@ -110,6 +115,11 @@ Menuset
 # This is in the Table submenu instead for now.
 #	OptItem "Table Settings...|a" "inset-settings tabular"
 		OptItem "Table Settings...|a" "layout-tabular"
+	End
+
+	Menu "edit_paste"
+		Item "Selection as Lines|L" "primary-selection-paste"
+		Item "Selection as Paragraphs|P" "primary-selection-paste paragraph"
 	End
 
 	Menu "pasterecent"
@@ -188,7 +198,7 @@ Menuset
 		Item "Inline Formula|I" "math-mutate simple"
 		Item "Displayed Formula|D" "math-mutate equation"
 		Item "Eqnarray Environment|q" "math-mutate eqnarray"
-		Item "AMS align Environment|A" "math-mutate align"
+		Item "AMS align Environment|a" "math-mutate align"
 		Item "AMS alignat Environment|t" "math-mutate alignat"
 		Item "AMS flalign Environment|f" "math-mutate flalign"
 		Item "AMS gather Environment|g" "math-mutate gather"
@@ -268,7 +278,7 @@ Menuset
 		Item "Thin Space|T" "space-insert thin"
 		Item "Horizontal Fill|H" "hfill-insert"
 		Item "Horizontal Line" "line-insert"
-		Item "Vertical Space" "dialog-show-new-inset vspace"
+		Item "Vertical Space..." "dialog-show-new-inset vspace"
 		Separator
 		Item "Hyphenation Point|P" "hyphenation-point-insert"
 		Item "Ligature Break|k" "ligature-break-insert"
@@ -291,7 +301,7 @@ Menuset
 		Item "Aligned Environment" "command-sequence math-insert \aligned; tabular-feature append-column"
 		Item "AlignedAt Environment" "command-sequence math-insert \alignedat; tabular-feature append-column"
 		Item "Gathered Environment" "math-insert \gathered"
-		Item "Split Environment" "command-sequence math-insert \split; tabular-feature append-column"
+		Item "Split Environment|S" "command-sequence math-insert \split; tabular-feature append-column"
 		Separator
 		Submenu "Font Change|o" "insert_math_font"
 		Item "Math Panel|P" "dialog-show mathpanel"
@@ -337,10 +347,10 @@ Menuset
 
 	Menu "insert_file"
 		Item "LyX Document...|X" "file-insert"
-		Item "ASCII as Lines...|L" "file-insert-ascii"
-		Item "ASCII as Paragraphs...|P" "file-insert-ascii-para"
+		Item "Plain Text as Lines...|L" "file-insert-ascii"
+		Item "Plain Text as Paragraphs...|P" "file-insert-ascii-para"
 		Separator
-		Item "External Material..." "dialog-show-new-inset external"
+		Item "External Material...|M" "dialog-show-new-inset external"
 		Item "Child Document...|d" "dialog-show-new-inset include"
 	End
 
@@ -365,8 +375,8 @@ Menuset
 	Menu "document"
 		Submenu "Change Tracking|C" "edit_change"
 		OptItem "Build Program|B" "build-program"
-		Item "LaTeX Log File...|L" "dialog-show latexlog"
-		Item "Table of Contents...|T" "toc-view"
+		Item "LaTeX Log|L" "dialog-show latexlog"
+		Item "Table of Contents|T" "toc-view"
 		Item "LaTeX Preamble...|P" "dialog-show preamble"
 		Item "Start Appendix Here|A" "appendix"
 		Separator
@@ -378,7 +388,7 @@ Menuset
 		Item "Merge Changes...|M" "merge-changes"
 		Item "Accept All Changes|A" "accept-all-changes"
 		Item "Reject All Changes|R" "reject-all-changes"
-		Item "Show changes in output|S" "output-changes"
+		Item "Show Changes in Output|S" "output-changes"
 	End
 
 #
@@ -387,7 +397,7 @@ Menuset
 	Menu "navigate"
 		Submenu "Bookmarks|B" "navigate_bookmarks"
 		Item "Next Note|N" "note-next"
-		Item "Goto Label|G" "label-goto"
+		Item "Go to Label|L" "label-goto"
 		Separator
 		Toc
 	End
@@ -415,7 +425,7 @@ Menuset
 		OptItem "Thesaurus...|T" "thesaurus-entry"
 		Item "Count Words|W" "words-count"
 		OptItem "Check TeX|h" "buffer-chktex"
-		Item "TeX Information...|I" "dialog-show texinfo"
+		Item "TeX Information|I" "dialog-show texinfo"
 		Separator
 # A LOT of applications have Tools->Prefs. Remember this
 # should be rarely used - Edit menu is not a good place to
@@ -437,7 +447,7 @@ Menuset
 		Item "Table of Contents|a" "help-open TOC"
 		Item "LaTeX Configuration|L" "help-open LaTeXConfig"
 		Separator
-		Item "About LyX...|X" "dialog-show aboutlyx"
+		Item "About LyX|X" "dialog-show aboutlyx"
 	End
 
 #

@@ -23,6 +23,9 @@
 # This is the default LyX user interface definition file.
 # The syntax should be straightforward enough.
 
+# The interface is designed (partially) following the KDE Human Interface
+# Guidelines (http://usability.kde.org/hig/)
+
 Menuset
 
 	Menubar
@@ -93,14 +96,15 @@ Menuset
 		Submenu "Paste External Selection|x" "edit_paste"
 		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
+		Separator
 		Submenu "Tabular|T" "edit_tabular"
 		Submenu "Math|M" "edit_math"
 		Separator
 		#Item "Read Only" "buffer-toggle-read-only"
 		Item "Spellchecker...|S" "dialog-show spellchecker"
 		Item "Thesaurus..." "thesaurus-entry"
+		Item "Count Words|W" "words-count"
 		Item "Check TeX|h" "buffer-chktex"
-		Item "Open/Close Float|l" "inset-toggle"
 		Submenu "Change Tracking|g" "edit_change"
 		Separator
 		Item "Preferences...|P" "dialog-show prefs"
@@ -108,8 +112,8 @@ Menuset
 	End
 
 	Menu "edit_paste"
-		Item "as Lines|L" "primary-selection-paste"
-		Item "as Paragraphs|P" "primary-selection-paste paragraph"
+		Item "Selection as Lines|L" "primary-selection-paste"
+		Item "Selection as Paragraphs|P" "primary-selection-paste paragraph"
 	End
 
 	Menu "edit_tabular"
@@ -216,14 +220,13 @@ Menuset
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
 		Item "Short Title" "optional-insert"
-		Item "Bibliography Key" "bibitem-insert"
-		Item "Index Entry...|I" "index-insert"
+		Item "Index Entry|I" "index-insert"
 		Item "URL...|U" "url-insert"
 		Item "Note|N" "note-insert"
 		Submenu "Lists & TOC|O" "insert_toc"
 		Separator
 		Item "TeX Code|T" "ert-insert"
-		Item "Minipage|p" "minipage-insert"
+		Item "Minipage|p" "box-insert Frameless"
 		Item "Graphics...|G" "dialog-show-new-inset graphics"
 		Item "Tabular Material...|b" "tabular-insert"
 		Submenu "Floats|a" "insert_floats"
@@ -234,15 +237,16 @@ Menuset
 	End
 
 	Menu "insert_special"
-		Item "Superscript|S" "command-sequence math-mode ; math-superscript ; font-free-apply; "
-		Item "Subscript|u" "command-sequence math-mode ; math-subscript ; font-free-apply; "
-		Item "HFill|H" "hfill-insert"
+		Item "Superscript|S" "command-sequence math-mode on; math-superscript ; font-free-apply; "
+		Item "Subscript|u" "command-sequence math-mode on; math-subscript ; font-free-apply; "
+		Item "Horizontal Fill|H" "hfill-insert"
 		Item "Hyphenation Point|P" "hyphenation-point-insert"
 		Item "Ligature Break|k" "ligature-break-insert"
 		Item "Protected Space|r" "space-insert protected"
 		Item "Inter-word Space|w" "space-insert normal"
 		Item "Thin Space|T" "space-insert thin"
-		Item "Linebreak|L" "break-line"
+		Item "Vertical Space..." "dialog-show-new-inset vspace"
+		Item "Line Break|L" "break-line"
 		Item "Ellipsis|i" "dots-insert"
 		Item "End of Sentence|E" "end-of-sentence-period-insert"
 		Item "Single Quote|Q" "quote-insert single"
@@ -253,20 +257,20 @@ Menuset
 	End
 
 	Menu "insert_math"
-		Item "Inline Formula|I" "math-mode"
+		Item "Inline Formula|I" "math-mode on"
 		Item "Display Formula|D" "math-display"
-		Item "Eqnarray Environment|E" "command-sequence math-mode; math-mutate eqnarray;"
-		Item "AMS align Environment|a" "command-sequence math-mode; math-mutate align;"
-		Item "AMS alignat Environment|t" "command-sequence math-mode; math-mutate alignat;"
-		Item "AMS flalign Environment|f" "command-sequence math-mode; math-mutate flalign;"
-		#Item "AMS xalignat Environment|x" "command-sequence math-mode; math-mutate xalignat;"
-		#Item "AMS xxalignat Environment" "command-sequence math-mode; math-mutate xxalignat;"
-		Item "AMS gather Environment" "command-sequence math-mode; math-mutate gather;"
-		Item "AMS multline Environment" "command-sequence math-mode; math-mutate multline;"
+		Item "Eqnarray Environment|E" "command-sequence math-mode on; math-mutate eqnarray;"
+		Item "AMS align Environment|a" "command-sequence math-mode on; math-mutate align;"
+		Item "AMS alignat Environment|t" "command-sequence math-mode on; math-mutate alignat;"
+		Item "AMS flalign Environment|f" "command-sequence math-mode on; math-mutate flalign;"
+		#Item "AMS xalignat Environment|x" "command-sequence math-mode on; math-mutate xalignat;"
+		#Item "AMS xxalignat Environment" "command-sequence math-mode on; math-mutate xxalignat;"
+		Item "AMS gather Environment|g" "command-sequence math-mode on; math-mutate gather;"
+		Item "AMS multline Environment|m" "command-sequence math-mode on; math-mutate multline;"
 	Separator
 		Item "Array Environment|y" "math-matrix 2 2"
 		Item "Cases Environment|C" "math-insert \cases"
-		Item "Split Environment|S" "math-insert \split"
+		Item "Split Environment|S" "command-sequence math-insert \split; tabular-feature append-column"
 	Separator
 		Submenu "Font Change|o" "insert_math_font"
 		Item "Math Panel|l" "dialog-show mathpanel"
@@ -311,8 +315,8 @@ Menuset
 
 	Menu "insert_file"
 		Item "LyX Document...|X" "file-insert"
-		Item "ASCII as Lines...|L" "file-insert-ascii"
-		Item "ASCII as Paragraphs...|P" "file-insert-ascii-para"
+		Item "Plain Text as Lines...|L" "file-insert-ascii"
+		Item "Plain Text as Paragraphs...|P" "file-insert-ascii-para"
 	End
 
 	Menu "edit_change"
@@ -320,7 +324,7 @@ Menuset
 		Item "Merge Changes...|M" "merge-changes"
 		Item "Accept All Changes|A" "accept-all-changes"
 		Item "Reject All Changes|R" "reject-all-changes"
-		Item "Show changes in output|S" "output-changes"
+		Item "Show Changes in Output|S" "output-changes"
 
 	End
 #
@@ -339,7 +343,7 @@ Menuset
 		Separator
 		Item "Decrease Environment Depth|v" "depth-decrement"
 		Item "Increase Environment Depth|i" "depth-increment"
-		Item "Preamble...|r" "dialog-show preamble"
+		Item "LaTeX Preamble...|r" "dialog-show preamble"
 		Item "Start Appendix Here|S" "appendix"
 	End
 
@@ -352,7 +356,7 @@ Menuset
 		OptItem "Build Program|B" "build-program"
 		Submenu "Update|U" "update"
 		Separator
-		Item "LaTeX Logfile|L" "dialog-show latexlog"
+		Item "LaTeX Log|L" "dialog-show latexlog"
 		Item "Table of Contents|C" "toc-view"
 		Item "TeX Information|X" "dialog-show texinfo"
 	End
@@ -367,8 +371,8 @@ Menuset
 	Menu "navigate"
 		Toc
 		Separator
-		Item "Note|N" "note-next"
-		Item "Label|L" "label-goto"
+		Item "Next Note|N" "note-next"
+		Item "Go to Label|L" "label-goto"
 		Submenu "Bookmarks|B" "navigate_bookmarks"
 	End
 
@@ -441,9 +445,9 @@ include "stdtoolbars.ui"
 # right: the toolbar should be at the right of the window
 #
 Toolbars
-	"Standard" "on,top"
-	"Extra" "on,top"
-	"Table" "off,bottom"
-	"Math" "off,bottom"
-	"Command Buffer" "off,bottom"
+	"standard" "on,top"
+	"extra" "on,top"
+	"table" "off,bottom"
+	"math" "off,bottom"
+	"minibuffer" "off,bottom"
 End
