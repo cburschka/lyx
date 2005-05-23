@@ -60,7 +60,7 @@ string const ControlBibtex::Browse(string const & in_name,
 {
 	pair<string, string> dir1(_("Documents|#o#O"),
 				  string(lyxrc.document_path));
-	return browseRelFile(&lv_, in_name, buffer()->filePath(),
+	return browseRelFile(&lv_, true, in_name, buffer()->filePath(),
 			     title, pattern, false, dir1);
 }
 

@@ -63,7 +63,9 @@ string const printable_list(string const & invalid_chars)
 } // namespace anon
 
 
-string const browseFile(LyXView * lv, string const & filename,
+string const browseFile(LyXView * lv,
+			bool check_returned_filename,
+			string const & filename,
 			string const & title,
 			string const & pattern,
 			bool save,
@@ -89,6 +91,8 @@ string const browseFile(LyXView * lv, string const & filename,
 			result = fileDlg.open(lastPath, pattern,
 				OnlyFilename(filename));
 
+		if (!check_returned_filename)
+			break;
 		if (invalid_chars.empty())
 			break;
 		if (result_path.empty())
@@ -105,17 +109,20 @@ string const browseFile(LyXView * lv, string const & filename,
 }
 
 
-string const browseRelFile(LyXView * lv, string const & filename,
-			string const & refpath,
-			string const & title,
-			string const & pattern,
-			bool save,
-			pair<string,string> const & dir1,
-			pair<string,string> const & dir2)
+string const browseRelFile(LyXView * lv,
+			   bool check_returned_filename,
+			   string const & filename,
+			   string const & refpath,
+			   string const & title,
+			   string const & pattern,
+			   bool save,
+			   pair<string,string> const & dir1,
+			   pair<string,string> const & dir2)
 {
 	string const fname = MakeAbsPath(filename, refpath);
 
-	string const outname = browseFile(lv, fname, title, pattern, save,
+	string const outname = browseFile(lv, check_returned_filename,
+					  fname, title, pattern, save,
 					  dir1, dir2);
 	string const reloutname = MakeRelPath(outname, refpath);
 	if (prefixIs(reloutname, "../"))
@@ -125,10 +132,12 @@ string const browseRelFile(LyXView * lv, string const & filename,
 }
 
 
-string const browseDir(LyXView * lv, string const & pathname,
-			string const & title,
-			pair<string,string> const & dir1,
-			pair<string,string> const & dir2)
+string const browseDir(LyXView * lv,
+		       bool check_returned_pathname,
+		       string const & pathname,
+		       string const & title,
+		       pair<string,string> const & dir1,
+		       pair<string,string> const & dir2)
 {
 	string lastPath(".");
 	if (!pathname.empty())
@@ -145,6 +154,8 @@ string const browseDir(LyXView * lv, string const & pathname,
 		result = fileDlg.opendir(lastPath,
 				OnlyFilename(pathname));
 
+		if (!check_returned_pathname)
+			break;
 		if (invalid_chars.empty())
 			break;
 		if (result_path.empty())

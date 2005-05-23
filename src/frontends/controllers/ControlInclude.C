@@ -68,7 +68,7 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 
 	string const docpath = OnlyPath(params().parentFilename_);
 
-	return browseRelFile(&lv_, in_name, docpath, title, pattern, false, dir1);
+	return browseRelFile(&lv_, true, in_name, docpath, title, pattern, false, dir1);
 }
 
 

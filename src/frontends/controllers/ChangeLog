@@ -1,3 +1,21 @@
+2005-05-23  Angus Leeming  <leeming@lyx.org>
+
+	* helper_funcs.[Ch] (browseFile, browseRelFile, browseDir): add
+	a boolean argument to denote whether the functions should check
+	the returned path name for spaces. (If the parent document is
+	a LaTeX file and if the latex compiler cannot handle such paths.)
+
+	* ControlBibtex.C (Browse):
+	* ControlExternal.C (Browse):
+	* ControlGraphics.C (Browse):
+	* ControlInclude.C (Browse): check whether the returned path
+	contains spaces and whether LaTeX can handle such a path.
+
+	* ControlPrefs.C (browsebind, browseUI, browsekbmap, browsedict)
+	(browse, browsedir):
+	* ControlPrint.C (Browse): do not check whether the returned
+	path contains spaces.
+
 2005-05-18  Angus Leeming  <leeming@lyx.org>
 
 	* helper_funcs.C (get_invalid_chars_latex, printable_list): new
@@ -52,16 +70,16 @@
 
 2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* ControlMath.C (find_xpm): 
-	* ControlBibtex.C (applyParamsToInset): 
+	* ControlMath.C (find_xpm):
+	* ControlBibtex.C (applyParamsToInset):
 	* ControlBibitem.C (applyParamsToInset): fix #warning directives
-	
+
 	* ControlDialog.tmpl (show, update, hide): gcc 3.4 compilation fix
 
 2003-02-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* ControlInclude.C (Browse): replace masterFilename_ with
-	parentFilename_. 
+	parentFilename_.
 
 2003-06-06  John Levon  <levon@movementarian.org>
 
@@ -80,7 +98,7 @@
 2003-02-17  John Levon  <levon@movementarian.org>
 
 	* ControlDialog.tmpl: do build before  setParams for
-	spellchecker's sake 
+	spellchecker's sake
 
 	* ControlSpellchecker.h:
 	* ControlSpellchecker.C: rework
@@ -103,7 +121,7 @@
 2003-01-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* helper_funcs.[Ch]: implement browseDir (browse directory) [bug 824]
-	
+
 	* ControlPrefs.[Ch]: implement browsedir for the use of use browseDir.
 
 2002-12-02  Lars Gullik Bjønnes  <larsbj@gullik.net>

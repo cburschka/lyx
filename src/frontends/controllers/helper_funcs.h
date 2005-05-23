@@ -26,7 +26,9 @@ class LyXView;
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
 string const
-browseFile(LyXView * lv, string const & filename,
+browseFile(LyXView * lv,
+	   bool check_returned_filename,
+	   string const & filename,
 	   string const & title,
 	   string const & pattern,
 	   bool save = false,
@@ -43,7 +45,9 @@ browseFile(LyXView * lv, string const & filename,
    intended to be useful for insets which encapsulate files/
 */
 string const
-browseRelFile(LyXView * lv, string const & filename,
+browseRelFile(LyXView * lv,
+	      bool check_returned_filename,
+	      string const & filename,
 	      string const & refpath,
 	      string const & title,
 	      string const & pattern,
@@ -60,12 +64,14 @@ browseRelFile(LyXView * lv, string const & filename,
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
 string const
-browseDir(LyXView * lv, string const & pathname,
-	   string const & title,
-	   std::pair<string,string> const & dir1 =
-	   std::make_pair(string(), string()),
-	   std::pair<string,string> const & dir2 =
-	   std::make_pair(string(), string()));
+browseDir(LyXView * lv,
+	  bool check_returned_pathname,
+	  string const & pathname,
+	  string const & title,
+	  std::pair<string,string> const & dir1 =
+	  std::make_pair(string(), string()),
+	  std::pair<string,string> const & dir2 =
+	  std::make_pair(string(), string()));
 
 
 /// Returns a vector of units that can be used to create a valid LaTeX length.
