@@ -14,6 +14,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "gettext.h"
 #include "lengthcommon.h"
 #include "lyxtext.h"
 
@@ -477,6 +478,34 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 	}
 }
 
+
+string const VSpace::asGUIName() const
+{
+	string result;
+	switch (kind_) {
+	case DEFSKIP:
+		result = _("Default skip");
+		break;
+	case SMALLSKIP:
+		result = _("Small skip");
+		break;
+	case MEDSKIP:
+		result = _("Medium skip");
+		break;
+	case BIGSKIP:
+		result = _("Big skip");
+		break;
+	case VFILL:
+		result = _("Vertical fill");
+		break;
+	case LENGTH:
+		result = len_.asString();
+		break;
+	}
+	if (keep_)
+		result += ", " + _("protected");
+	return result;
+}
 
 
 int VSpace::inPixels(BufferView const & bv) const

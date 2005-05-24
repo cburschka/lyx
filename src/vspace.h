@@ -61,6 +61,8 @@ public:
 	std::string const asLyXCommand() const;
 	/// the latex representation
 	std::string const asLatexCommand(BufferParams const & params) const;
+	/// how it is seen in the LyX window
+	std::string const VSpace::asGUIName() const;
 	/// the size of the space on-screen
 	int inPixels(BufferView const & bv) const;
 

@@ -144,7 +144,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	// y-values for bottom arrow
 	int by1, by2;
 
-	str = label + " (" + space_.asLyXCommand() + ")";
+	str = label + " (" + space_.asGUIName() + ")";
 
 	if (space_.kind() == VSpace::VFILL) {
 		ty1 = ty2 = start;

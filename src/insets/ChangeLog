@@ -1,3 +1,7 @@
+2005-05-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetvspace.C (draw): use VSpace::asGUIName.
+
 2005-05-17  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetbase.C (getStatus): allow LFUN_INSET_MODIFY unconditionally
