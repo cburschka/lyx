@@ -517,6 +517,14 @@ changequote(,)dnl
 echo "creating doc/LaTeXConfig.lyx"
 echo "s/@chk_linuxdoc@/$chk_linuxdoc/g" >> chkconfig.sed
 echo "s/@chk_docbook@/$chk_docbook/g" >> chkconfig.sed
+
+test `uname -s | grep 'MINGW'` && {
+    # Before running chkconfig.sed, remove the trailing '\r'
+    # characters that can bugger up various versions of sed.
+    tr -d '\r' < chkconfig.sed > chkconfig2.sed
+    mv -f chkconfig2.sed chkconfig.sed
+}
+
 sed -f chkconfig.sed "${srcdir}"/doc/LaTeXConfig.lyx.in >doc/LaTeXConfig.lyx
 
 ### Let's check whether spaces are allowed in TeX file names

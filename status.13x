@@ -53,7 +53,7 @@ What's new
 
 - Fix LaTeX output of percentage length values <10% [bug 1523].
 
-- Fix crash when reading equations containing more columns than allowed 
+- Fix crash when reading equations containing more columns than allowed
   [bug 1542].
 
 - Store typed '&' characters in math as '\&' [bug 1542].
@@ -73,11 +73,14 @@ What's new
 
 - Fix output of footnotes on the titlepage, which did not work with
   the memoir class [bug 1677].
-  
+
 - Fix the LaTeX output of Short Titles (aka optional inset) that did
   not get \protect added when needed [bug 1739].
 
 - When reading an equation, don't parse \| following a \left or \right as |.
+
+- Enable LaTeXConfig.lyx to be generated on Windows by fixing the line
+  endings of the generated chkconfig.sed script.
 
 - Fix positioning of error insets after graphics and external insets.
 
@@ -86,7 +89,7 @@ What's new
 - Fix lyxpreview2ppm.py to work with python versions older than 2.1.
 
 - Fix version control on files which name contains some special
-  characters. 
+  characters.
 
 - Make lib/configure more portable, allowing it to run on Solaris.
 
