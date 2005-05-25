@@ -139,6 +139,9 @@ What's new
 - When showing a preview of a BibTeX entry in the Insert>Citation
   Reference dialog, handle \% correctly.
 
+- The file browsers of the Qt versions of the External, BibTeX and
+  Print dialogs now return a relative path if appropriate. [Bug 1272]
+
 - Fix display of citations when using 'et al.'
 
 - fix translation of layout names with a space in their name.
