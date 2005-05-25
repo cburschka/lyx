@@ -518,12 +518,13 @@ echo "creating doc/LaTeXConfig.lyx"
 echo "s/@chk_linuxdoc@/$chk_linuxdoc/g" >> chkconfig.sed
 echo "s/@chk_docbook@/$chk_docbook/g" >> chkconfig.sed
 
-test `uname -s | grep 'MINGW'` && {
+if test `uname -s | grep 'MINGW'` ; then
+    echo "woo hoo!"  >&2
     # Before running chkconfig.sed, remove the trailing '\r'
     # characters that can bugger up various versions of sed.
     tr -d '\r' < chkconfig.sed > chkconfig2.sed
     mv -f chkconfig2.sed chkconfig.sed
-}
+fi
 
 sed -f chkconfig.sed "${srcdir}"/doc/LaTeXConfig.lyx.in >doc/LaTeXConfig.lyx
 
