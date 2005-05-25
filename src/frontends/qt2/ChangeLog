@@ -1,3 +1,11 @@
+2005-05-24  Angus Leeming  <leeming@lyx.org>
+
+	* QExternalDialog.C (browseClicked):
+	* QBibtexDialog.C (browsePressed, browseBibPressed): 
+	* QLPrintDialog.C (browseClicked):
+	 backport 1.4.x code to use the controller's browse member function
+	 rather than QFileDialog::getOpenFileName
+
 2005-05-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QTabularDialog.C: Fix handling of longtabular lfuns.

@@ -1,3 +1,12 @@
+2005-05-24  Angus Leeming  <leeming@lyx.org>
+
+	* ControlBibtex.C (browseBib, browseBst): backport 1.4.x code
+	that defines separate interfaces to the file browser for
+	.bib and .bst files.
+
+	* ControlExternal.C (Browse): remove hack that adds a '|' to the
+	list of filters.
+
 2005-05-23  Angus Leeming  <leeming@lyx.org>
 
 	* helper_funcs.[Ch] (browseFile, browseRelFile, browseDir): add

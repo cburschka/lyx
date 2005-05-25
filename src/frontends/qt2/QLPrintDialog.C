@@ -11,9 +11,9 @@
 
 #include <config.h>
 
+#include "controllers/ControlPrint.h"
 #include "qt_helpers.h"
 #include "support/filetools.h"
-#include "support/lstrings.h"
 
 #include "QPrint.h"
 #include "QLPrintDialog.h"
@@ -46,13 +46,9 @@ void QLPrintDialog::change_adaptor()
 
 void QLPrintDialog::browseClicked()
 {
-	QString file =
-		QFileDialog::getOpenFileName(QString::null,
-					     qt_("PostScript files (*.ps)"),
-					     this, 0,
-					     qt_("Select a file to print to"));
-	if (!file.isNull()) {
-		fileED->setText(file);
+	string const file = form_->controller().Browse("");
+	if (!file.empty()) {
+		fileED->setText(toqstr(file));
 		form_->changed();
 	}
 }

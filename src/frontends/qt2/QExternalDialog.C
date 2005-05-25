@@ -15,7 +15,6 @@
 
 #include <qwidget.h>
 #include <qpushbutton.h>
-#include <qfiledialog.h>
 #include <qcombobox.h>
 #include <qtextview.h>
 #include <qlineedit.h>
@@ -80,13 +79,10 @@ void QExternalDialog::updateClicked()
 
 void QExternalDialog::browseClicked()
 {
-	QString file =
-		QFileDialog::getOpenFileName(QString::null,
-					     qt_("External material (*)"),
-					     this, 0,
-					     qt_("Select external material"));
-	if (!file.isNull()) {
-		fileED->setText(file);
+	string const str = 
+		form_->controller().Browse(fromqstr(fileED->text()));
+	if (!str.empty()) {
+		fileED->setText(toqstr(str));
 		form_->changed();
 	}
 }

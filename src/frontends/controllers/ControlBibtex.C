@@ -54,14 +54,22 @@ void ControlBibtex::applyParamsNoInset()
 {}
 
 
-string const ControlBibtex::Browse(string const & in_name,
-				   string const & title,
-				   string const & pattern)
+string const ControlBibtex::browseBib(string const & in_name) const
 {
 	pair<string, string> dir1(_("Documents|#o#O"),
 				  string(lyxrc.document_path));
 	return browseRelFile(&lv_, true, in_name, buffer()->filePath(),
-			     title, pattern, false, dir1);
+			     _("Select a BibTeX database to add"),
+			     "*.bib", false, dir1);
+}
+
+
+string const ControlBibtex::browseBst(string const & in_name) const
+{
+	pair<string, string> dir1(_("Documents|#o#O"),
+				  string(lyxrc.document_path));
+	return browseRelFile(&lv_, true, in_name, buffer()->filePath(),
+			     _("Select a BibTeX style"), "*.bst", false, dir1);
 }
 
 

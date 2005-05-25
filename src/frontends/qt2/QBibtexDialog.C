@@ -50,39 +50,35 @@ void QBibtexDialog::change_adaptor()
 
 void QBibtexDialog::browsePressed()
 {
-	QString const file =
-		QFileDialog::getOpenFileName(QString::null,
-					     qt_("BibTeX style files (*.bst)"),
-					     this,
-					     0,
-					     qt_("Select a BibTeX style"));
-	if (!file.isNull()) {
-		string const filen = ChangeExtension(fromqstr(file), "");
-		bool present = false;
-		int pres = 0;
+	string const file = form_->controller().browseBst("");
 
-		for (unsigned int i = 0; i != styleCB->count(); i++) {
+	if (!file.empty()) {
+		string const filen = ChangeExtension(file, "");
+		bool present = false;
+		unsigned int pres = 0;
+
+		for (int i = 0; i != styleCB->count(); ++i) {
 			if (fromqstr(styleCB->text(i)) == filen) {
 				present = true;
 				pres = i;
 			}
 		}
 
-		if (!present) 
+		if (!present)
 			styleCB->insertItem(toqstr(filen),0);
-		
+
 		styleCB->setCurrentItem(pres);
 		form_->changed();
 	}
 }
 
+
 void QBibtexDialog::browseBibPressed()
 {
-	QString const file = QFileDialog::getOpenFileName(QString::null,
-		qt_("BibTeX database files (*.bib)"), this, 0, qt_("Select a BibTeX database to add"));
+	string const file = form_->controller().browseBib("");
 
-	if (!file.isNull()) {
-		string const f = ChangeExtension(fromqstr(file), "");
+	if (!file.empty()) {
+		string const f = ChangeExtension(file, "");
 		bool present = false;
 
 		for (unsigned int i = 0; i != databaseLB->count(); i++) {
@@ -94,8 +90,11 @@ void QBibtexDialog::browseBibPressed()
 			databaseLB->insertItem(toqstr(f));
 			form_->changed();
 		}
+
+		addBibED->setText(toqstr(f));
 	}
 }
+
 
 void QBibtexDialog::addPressed()
 {

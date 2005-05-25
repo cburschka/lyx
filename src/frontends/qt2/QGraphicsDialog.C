@@ -88,8 +88,10 @@ void QGraphicsDialog::browse_clicked()
 {
 	string const str = 
 		form_->controller().Browse(fromqstr(filename->text()));
-	filename->setText(toqstr(str));
-	form_->changed();
+	if (!str.empty()) {
+		filename->setText(toqstr(str));
+		form_->changed();
+	}
 }
 
 

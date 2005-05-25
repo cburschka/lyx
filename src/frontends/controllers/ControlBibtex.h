@@ -21,8 +21,10 @@ class ControlBibtex : public ControlCommand {
 public:
 	///
 	ControlBibtex(LyXView &, Dialogs &);
-	/// Browse for a file
-	string const Browse(string const &, string const &, string const &);
+	/// Browse for a .bib file
+	std::string const browseBib(std::string const & in_name) const;
+	/// Browse for a .bst file
+	std::string const browseBst(std::string const & in_name) const;
 	/// get the list of bst files
 	string const getBibStyles() const;
 	/// build filelists of all availabe bst/cls/sty-files. done through
