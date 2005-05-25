@@ -87,15 +87,18 @@ extern std::map<std::string, std::vector<ArgumentType> > known_commands;
 
 /// path of the master .tex file
 extern std::string getMasterFilePath();
+/// path of the currently processed .tex file
+extern std::string getParentFilePath();
 
 
-/*! Reads tex input from \a is and writes lyx output to \a os.
+/*!
+ *  Reads tex input from \a infilename and writes lyx output to \a outfilename.
  *  Uses some common settings for the preamble, so this should only
  *  be used more than once for included documents.
  *  Caution: Overwrites the existing preamble settings if the new document
- *  contains a preamble. */
-void tex2lyx(std::istream &, std::ostream &);
-/// \return true if the conversion was successful, else false.
-bool tex2lyx(std::string const &, std::string const &);
+ *  contains a preamble.
+ *  \return true if the conversion was successful, else false.
+ */
+bool tex2lyx(std::string const & infilename, std::string const & outfilename);
 
 #endif

@@ -325,8 +325,10 @@ void easyParse(int & argc, char * argv[])
 }
 
 
-// path of the parsed file
+// path of the first parsed file
 string masterFilePath;
+// path of the currently parsed file
+string parentFilePath;
 
 } // anonymous namespace
 
@@ -336,7 +338,23 @@ string getMasterFilePath()
 	return masterFilePath;
 }
 
+string getParentFilePath()
+{
+	return parentFilePath;
+}
 
+
+namespace {
+
+/*!
+ *  Reads tex input from \a is and writes lyx output to \a os.
+ *  Uses some common settings for the preamble, so this should only
+ *  be used more than once for included documents.
+ *  Caution: Overwrites the existing preamble settings if the new document
+ *  contains a preamble.
+ *  You must ensure that \p parentFilePath is properly set before calling
+ *  this function!
+ */
 void tex2lyx(std::istream &is, std::ostream &os)
 {
 	Parser p(is);
@@ -363,24 +381,43 @@ void tex2lyx(std::istream &is, std::ostream &os)
 }
 
 
-bool tex2lyx(string const &infilename, string const &outfilename)
+/// convert TeX from \p infilename to LyX and write it to \p os
+bool tex2lyx(string const &infilename, std::ostream &os)
 {
+	BOOST_ASSERT(lyx::support::AbsolutePath(infilename));
 	ifstream is(infilename.c_str());
 	if (!is.good()) {
-		cerr << "Could not open file \"" << infilename
+		cerr << "Could not open input file \"" << infilename
 		     << "\" for reading." << endl;
 		return false;
 	}
+	string const oldParentFilePath = parentFilePath;
+	parentFilePath = OnlyPath(infilename);
+	tex2lyx(is, os);
+	parentFilePath = oldParentFilePath;
+	return true;
+}
+
+} // anonymous namespace
+
+
+bool tex2lyx(string const &infilename, string const &outfilename)
+{
 	if (!overwrite_files && IsFileReadable(outfilename)) {
 		cerr << "Not overwriting existing file " << outfilename << "\n";
 		return false;
 	}
 	ofstream os(outfilename.c_str());
+	if (!os.good()) {
+		cerr << "Could not open output file \"" << outfilename
+		     << "\" for writing." << endl;
+		return false;
+	}
 #ifdef FILEDEBUG
-	cerr << "File: " << infilename << "\n";
+	cerr << "Input file: " << infilename << "\n";
+	cerr << "Output file: " << outfilename << "\n";
 #endif
-	tex2lyx(is, os);
-	return true;
+	return tex2lyx(infilename, os);
 }
 
 
@@ -409,18 +446,14 @@ int main(int argc, char * argv[])
 	if (!syntaxfile.empty())
 		read_syntaxfile(syntaxfile);
 
-	ifstream is(argv[1]);
-	if (!is.good()) {
-		cerr << "Could not open input file \"" << argv[1]
-		     << "\" for reading." << endl;
-		return 2;
-	}
+	string const infilename = MakeAbsPath(argv[1]);
+	masterFilePath = OnlyPath(infilename);
+	parentFilePath = masterFilePath;
 
-	masterFilePath = OnlyPath(MakeAbsPath(argv[1]));
-
-	tex2lyx(is, cout);
-
-	return 0;
+	if (tex2lyx(infilename, cout))
+		return EXIT_SUCCESS;
+	else
+		return EXIT_FAILURE;
 }
 
 // }])

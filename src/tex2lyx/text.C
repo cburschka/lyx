@@ -31,6 +31,7 @@
 
 using lyx::support::ChangeExtension;
 using lyx::support::MakeAbsPath;
+using lyx::support::MakeRelPath;
 using lyx::support::rtrim;
 using lyx::support::suffixIs;
 using lyx::support::contains;
@@ -899,6 +900,17 @@ string const normalize_filename(string const & name)
 	return os.str();
 }
 
+
+/// Convert \p name from TeX convention (relative to master file) to LyX
+/// convention (relative to .lyx file) if it is relative
+void fix_relative_filename(string & name)
+{
+	if (lyx::support::AbsolutePath(name))
+		return;
+	name = MakeRelPath(MakeAbsPath(name, getMasterFilePath()),
+	                   getParentFilePath());
+}
+
 } // anonymous namespace
 
 
@@ -1259,11 +1271,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					name = dvips_name;
 				} else if (!pdftex_name.empty())
 					name = pdftex_name;
-
-				if (!fs::exists(MakeAbsPath(name, path)))
-					cerr << "Warning: Could not find graphics file '"
-					     << name << "'." << endl;
 			}
+
+			if (fs::exists(MakeAbsPath(name, path)))
+				fix_relative_filename(name);
+			else
+				cerr << "Warning: Could not find graphics file '"
+				     << name << "'." << endl;
 
 			context.check_layout(os);
 			begin_inset(os, "Graphics ");
@@ -1651,6 +1665,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			context.font.family =
 				known_coded_font_families[where - known_font_families];
+			// FIXME: Only do this if it is necessary
 			os << "\n\\family " << context.font.family << '\n';
 			eat_whitespace(p, os, context, false);
 		}
@@ -1661,6 +1676,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			context.font.series =
 				known_coded_font_series[where - known_font_series];
+			// FIXME: Only do this if it is necessary
 			os << "\n\\series " << context.font.series << '\n';
 			eat_whitespace(p, os, context, false);
 		}
@@ -1671,6 +1687,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			context.font.shape =
 				known_coded_font_shapes[where - known_font_shapes];
+			// FIXME: Only do this if it is necessary
 			os << "\n\\shape " << context.font.shape << '\n';
 			eat_whitespace(p, os, context, false);
 		}
@@ -1683,6 +1700,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.font.size = oldsize;
 			context.font.family =
 				known_coded_font_families[where - known_old_font_families];
+			// FIXME: Only do this if it is necessary
 			os << "\n\\family " << context.font.family << "\n"
 			   <<   "\\series " << context.font.series << "\n"
 			   <<   "\\shape "  << context.font.shape  << "\n";
@@ -1698,6 +1716,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.font.size = oldsize;
 			context.font.series =
 				known_coded_font_series[where - known_old_font_series];
+			// FIXME: Only do this if it is necessary
 			os << "\n\\family " << context.font.family << "\n"
 			   <<   "\\series " << context.font.series << "\n"
 			   <<   "\\shape "  << context.font.shape  << "\n";
@@ -1713,6 +1732,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.font.size = oldsize;
 			context.font.shape =
 				known_coded_font_shapes[where - known_old_font_shapes];
+			// FIXME: Only do this if it is necessary
 			os << "\n\\family " << context.font.family << "\n"
 			   <<   "\\series " << context.font.series << "\n"
 			   <<   "\\shape "  << context.font.shape  << "\n";
@@ -1879,6 +1899,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					MakeAbsPath(filename, path);
 				string const abslyxname =
 					ChangeExtension(abstexname, ".lyx");
+				fix_relative_filename(filename);
 				string const lyxname =
 					ChangeExtension(filename, ".lyx");
 				if (t.cs() != "verbatiminput" &&

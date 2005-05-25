@@ -1,3 +1,13 @@
+2005-05-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (fix_relative_filename): new
+	* text.C (parse_text): use fix_relative_filename for included
+	graphics and .tex files
+	* tex2lyx.[Ch] (getParentFilePath): new
+	* tex2lyx.[Ch] (tex2lyx): new overload taking the input filename and
+	output stream
+	* tex2lyx.[Ch] (main): simplify, use the above
+
 2005-05-20  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* tex2lyx.C (main): set correct masterFilePath for files like "subdir/file"
