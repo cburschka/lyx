@@ -120,6 +120,9 @@ What's new
 
 - Fix crash when using math-mutate with invalid argument.
 
+- Implement support for qt-immodule. This fixes the dead key problems
+  with some newer qt versions [bug 1830].
+
 - Fix math fonts display in LyX/Mac.
 
 - Make LyX behave normally when a file has been open from the Explorer

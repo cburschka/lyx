@@ -97,6 +97,13 @@ protected:
 	void wheelEvent(QWheelEvent * e);
 	/// key press
 	void keyPressEvent(QKeyEvent * e);
+#if QT_VERSION >= 0x030200
+	/// IM events
+	void imStartEvent(QIMEvent *);
+	void imComposeEvent(QIMEvent *);
+	void imEndEvent(QIMEvent *);
+#endif
+
 public slots:
 	void doubleClickTimeout();
 

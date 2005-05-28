@@ -1,3 +1,9 @@
+2005-05-28  José Matos  <jamatos@lyx.org>
+
+	* QContentPane.[Ch]: implement QIM*Events. This brings the dead
+	keys back into play on systems compiled against a qt-immodule-
+	patched Qt [bug 1830].
+
 2005-05-24  Angus Leeming  <leeming@lyx.org>
 
 	* QExternalDialog.C (browseClicked):
