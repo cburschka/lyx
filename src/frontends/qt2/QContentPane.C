@@ -93,11 +93,46 @@ QContentPane::QContentPane(QWorkArea * parent)
 	setFocusPolicy(QWidget::WheelFocus);
 	setFocus();
 	setCursor(ibeamCursor);
+#if QT_VERSION >= 0x030200
+	// to make qt-immodule work
+	setInputMethodEnabled(true);
+#endif
 
 	// stupid moc strikes again
 	connect(wa_->scrollbar_, SIGNAL(valueChanged(int)),
 		this, SLOT(scrollBarChanged(int)));
 }
+
+
+#if QT_VERSION >= 0x030200
+// to make qt-immodule work
+void QContentPane::imStartEvent(QIMEvent *e)
+{
+	e->accept();
+}
+
+
+void QContentPane::imComposeEvent(QIMEvent *e)
+{
+	e->accept();
+}
+
+
+void QContentPane::imEndEvent(QIMEvent *e)
+{
+	QString const text = e->text();
+	if (!text.isEmpty()) {
+		int key = 0;
+		// needed to make math superscript work on some systems
+		// ideally, such special coding should not be necessary
+		if (text == "^")
+			key = Qt::Key_AsciiCircum;
+		QKeyEvent ev(QEvent::KeyPress, key, *text.ascii(), 0, text);
+		keyPressEvent(&ev);
+	}
+	e->accept();
+}
+#endif
 
 
 void QContentPane::generateSyntheticMouseEvent()
