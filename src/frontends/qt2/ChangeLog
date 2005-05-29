@@ -1,9 +1,14 @@
+2005-05-28  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ui/QIndexDialogBase.ui: remove unused label; remove faulty
+	tooltips (QIndex is not only used for indexes!)
+	* ui/QCitationDialogBase.ui: fix two tooltips
+
 2005-05-28  José Matos  <jamatos@lyx.org>
 
 	* QContentPane.[Ch]: implement QIM*Events. This brings the dead
 	keys back into play on systems compiled against a qt-immodule-
 	patched Qt [bug 1830].
-
 
 2005-06-20  Michael Schmitt  <michael.schmitt@teststep.org>
 
