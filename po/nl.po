@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-30 16:43+0200\n"
+"POT-Creation-Date: 2005-05-30 11:40+0200\n"
 "PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -2210,7 +2210,7 @@ msgid "&Landscape"
 msgstr "&Liggend"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:35 src/frontends/xforms/FormAboutlyx.C:40
+#: src/frontends/qt2/QAbout.C:36 src/frontends/xforms/FormAboutlyx.C:40
 msgid "About LyX"
 msgstr "Over LyX"
 
@@ -2398,7 +2398,7 @@ msgstr "Kies een stijlbestand"
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:148
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:945
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:950
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -5109,7 +5109,7 @@ msgstr "Subsubsectie*"
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
 #: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/scrclass.inc:230
-#: src/buffer.C:1533
+#: src/buffer.C:1536
 msgid "Abstract"
 msgstr ""
 
@@ -5351,7 +5351,7 @@ msgid "Acknowledgements"
 msgstr ""
 
 #: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
-#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1544
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1547
 msgid "References"
 msgstr "Referenties"
 
@@ -7850,7 +7850,7 @@ msgid "About LyX|X"
 msgstr "Over LyX|X"
 
 #: src/BufferView.C:298 src/bufferlist.C:400 src/bufferlist.C:512
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:222
 msgid "Error!"
 msgstr "Fout!"
 
@@ -7858,7 +7858,7 @@ msgstr "Fout!"
 msgid "Specified file is unreadable: "
 msgstr "Opgegeven bestand is onleesbaar: "
 
-#: src/BufferView.C:308 src/lyx_cb.C:451
+#: src/BufferView.C:308 src/lyx_cb.C:455
 msgid "Error! Cannot open specified file:"
 msgstr "Fout! Kan gegeven bestand niet openen:"
 
@@ -7914,25 +7914,26 @@ msgstr ""
 msgid "Select LyX document to insert"
 msgstr "Kies document ter invoeging"
 
-#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:61
-#: src/frontends/controllers/ControlExternal.C:150
+#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:59
+#: src/frontends/controllers/ControlBibtex.C:69
+#: src/frontends/controllers/ControlExternal.C:147
 #: src/frontends/controllers/ControlGraphics.C:89
-#: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:113
-#: src/lyxfunc.C:1637 src/lyxfunc.C:1677 src/lyxfunc.C:1783
+#: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:117
+#: src/lyxfunc.C:1642 src/lyxfunc.C:1682 src/lyxfunc.C:1788
 msgid "Documents|#o#O"
 msgstr "Documenten|#o#O"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1679 src/lyxfunc.C:1785
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1684 src/lyxfunc.C:1790
 msgid "Examples|#E#e"
 msgstr "Voorbeelden|#E#e"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1644
-#: src/lyxfunc.C:1684
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:127 src/lyxfunc.C:1649
+#: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX Documenten (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1693 src/lyxfunc.C:1713
-#: src/lyxfunc.C:1802 src/lyxfunc.C:1829 src/lyxfunc.C:1839
+#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/lyxfunc.C:1807 src/lyxfunc.C:1834 src/lyxfunc.C:1844
 msgid "Canceled."
 msgstr "Afgebroken."
 
@@ -7945,8 +7946,8 @@ msgstr "Document %1$s invoegen..."
 msgid "Inserting document "
 msgstr "Document invoegen "
 
-#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:990
-#: src/lyxfunc.C:1151 src/lyxfunc.C:1726
+#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:995
+#: src/lyxfunc.C:1156 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
@@ -7955,7 +7956,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "Document %1$s ingevoegd."
 
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1738
+#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Document "
 
@@ -8775,6 +8776,11 @@ msgstr "LinuxDoc...|L"
 msgid "Emphasize"
 msgstr "Nadruk"
 
+#: src/SpellBase.C:48
+#, fuzzy
+msgid "Native OS API not yet supported."
+msgstr "Nog niet ondersteund"
+
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
 msgstr ""
@@ -8872,7 +8878,7 @@ msgid "Unknown token: "
 msgstr "Onbekende handeling"
 
 #. future format
-#: src/buffer.C:1212 src/buffer.C:1267
+#: src/buffer.C:1212 src/buffer.C:1270
 msgid "Warning!"
 msgstr "Waarschuwing!"
 
@@ -8883,8 +8889,8 @@ msgid ""
 msgstr ""
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1219 src/buffer.C:1227 src/buffer.C:1241 src/buffer.C:1273
-#: src/buffer.C:1276
+#: src/buffer.C:1219 src/buffer.C:1226 src/buffer.C:1244 src/buffer.C:1276
+#: src/buffer.C:1279
 msgid "ERROR!"
 msgstr "FOUT!"
 
@@ -8892,44 +8898,44 @@ msgstr "FOUT!"
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Oud LyX-formaat gevonden. Lees dit met behulp van 0.10.x!"
 
-#: src/buffer.C:1228
+#: src/buffer.C:1227
 msgid "Can't find conversion script."
 msgstr ""
 
-#: src/buffer.C:1242
+#: src/buffer.C:1245
 msgid "An error occured while running the conversion script."
 msgstr ""
 
-#: src/buffer.C:1268
+#: src/buffer.C:1271
 msgid "Reading of document is not complete"
 msgstr "Inlezen document niet voltooid"
 
-#: src/buffer.C:1269
+#: src/buffer.C:1272
 msgid "Maybe the document is truncated"
 msgstr "Wellicht is document afgekapt"
 
-#: src/buffer.C:1273
+#: src/buffer.C:1276
 msgid "Not a LyX file!"
 msgstr "Geen LyX-bestand!"
 
-#: src/buffer.C:1276
+#: src/buffer.C:1279
 msgid "Unable to read file!"
 msgstr "Kan bestand niet lezen!"
 
-#: src/buffer.C:1536
+#: src/buffer.C:1539
 msgid "Abstract: "
 msgstr ""
 
-#: src/buffer.C:1547
+#: src/buffer.C:1550
 #, fuzzy
 msgid "References: "
 msgstr "Verwijzing invoegen"
 
-#: src/buffer.C:1661
+#: src/buffer.C:1664
 msgid "Error: Cannot write file:"
 msgstr "Fout: Kan niet naar bestand schrijven:"
 
-#: src/buffer.C:1691
+#: src/buffer.C:1694
 msgid "Error: Cannot open file: "
 msgstr "Fout: Kan bestand niet openen: "
 
@@ -9017,7 +9023,7 @@ msgstr "Die dan maar laden?"
 msgid "Unable to open template"
 msgstr "Kan sjabloon niet openen"
 
-#: src/bufferlist.C:545 src/lyxfunc.C:1815
+#: src/bufferlist.C:545 src/lyxfunc.C:1820
 msgid "Document is already open:"
 msgstr "Document is al geopend:"
 
@@ -9406,6 +9412,15 @@ msgstr "Gebruiker's directory: "
 msgid "User directory: "
 msgstr "Gebruikersmap:"
 
+#: src/frontends/controllers/ControlBibtex.C:62
+#, fuzzy
+msgid "Select a BibTeX database to add"
+msgstr "Database:"
+
+#: src/frontends/controllers/ControlBibtex.C:72
+msgid "Select a BibTeX style"
+msgstr "Kies een BibTeX-stijl"
+
 #: src/frontends/controllers/ControlCharacter.C:64
 #, fuzzy
 msgid "Character set"
@@ -9627,7 +9642,7 @@ msgstr "Tekenreeks is vervangen."
 msgid " strings have been replaced."
 msgstr " tekenreeksen zijn vervangen."
 
-#: src/frontends/controllers/ControlSpellchecker.C:102
+#: src/frontends/controllers/ControlSpellchecker.C:117
 #, fuzzy
 msgid ""
 "The spell-checker could not be started.\n"
@@ -9636,12 +9651,12 @@ msgstr ""
 "De spellingscontrole is om een of andere reden opgehouden.\n"
 "Misschien heeft het proces een kill opdracht ontvangen."
 
-#: src/frontends/controllers/ControlSpellchecker.C:105
-#: src/frontends/controllers/ControlSpellchecker.C:198
+#: src/frontends/controllers/ControlSpellchecker.C:120
+#: src/frontends/controllers/ControlSpellchecker.C:213
 msgid "The spell-checker has failed"
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:192
+#: src/frontends/controllers/ControlSpellchecker.C:207
 #, fuzzy
 msgid ""
 "The spell-checker has died for some reason.\n"
@@ -9650,22 +9665,22 @@ msgstr ""
 "De spellingscontrole is om een of andere reden opgehouden.\n"
 "Misschien heeft het proces een kill opdracht ontvangen."
 
-#: src/frontends/controllers/ControlSpellchecker.C:214
+#: src/frontends/controllers/ControlSpellchecker.C:229
 #, fuzzy, c-format
 msgid "%1$d words checked."
 msgstr "Een woord gecontroleerd."
 
-#: src/frontends/controllers/ControlSpellchecker.C:218
-#: src/frontends/controllers/ControlSpellchecker.C:224
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#: src/frontends/controllers/ControlSpellchecker.C:239
 msgid "One word checked."
 msgstr "Een woord gecontroleerd."
 
-#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:237
 #, fuzzy
 msgid " words checked."
 msgstr "Een woord gecontroleerd."
 
-#: src/frontends/controllers/ControlSpellchecker.C:229
+#: src/frontends/controllers/ControlSpellchecker.C:244
 #, fuzzy
 msgid "Spell-checking is complete"
 msgstr "Spellingcontrole compleet!"
@@ -9804,19 +9819,26 @@ msgstr "Magenta"
 msgid "Yellow"
 msgstr "Geel"
 
-#: src/frontends/controllers/helper_funcs.C:59
-msgid "Filename can't contain any of these characters:"
-msgstr "Bestandsnaam mag de volgende tekens niet bevatten:"
-
-#: src/frontends/controllers/helper_funcs.C:61
-#: src/frontends/controllers/helper_funcs.C:115
-msgid "space, '#', '~', '$' or '%'."
-msgstr "spatie, '#', '~', '$' of '%'."
-
-#: src/frontends/controllers/helper_funcs.C:113
+#: src/frontends/controllers/helper_funcs.C:55
 #, fuzzy
-msgid "directory name can't contain any of these characters:"
+msgid "space"
+msgstr "&Vervangen"
+
+#: src/frontends/controllers/helper_funcs.C:103
+#, fuzzy
+msgid "Invalid filename"
+msgstr "Ongeldige lengte!"
+
+#: src/frontends/controllers/helper_funcs.C:104
+#: src/frontends/controllers/helper_funcs.C:168
+#, fuzzy
+msgid "No LaTeX support for paths containing any of these characters:\n"
 msgstr "Bestandsnaam mag de volgende tekens niet bevatten:"
+
+#: src/frontends/controllers/helper_funcs.C:167
+#, fuzzy
+msgid "Invalid directory name"
+msgstr "Ongeldige aktie in wiskunde modus!"
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
@@ -9859,23 +9881,6 @@ msgstr "Alle bestanden (*)"
 #: src/frontends/qt2/FileDialog.C:112
 msgid "Directories"
 msgstr "Mappen"
-
-#: src/frontends/qt2/QBibtexDialog.C:55
-msgid "BibTeX style files (*.bst)"
-msgstr "BibTeX stijlebestanden (*.bst)"
-
-#: src/frontends/qt2/QBibtexDialog.C:58
-msgid "Select a BibTeX style"
-msgstr "Kies een BibTeX-stijl"
-
-#: src/frontends/qt2/QBibtexDialog.C:82
-msgid "BibTeX database files (*.bib)"
-msgstr "BibTeX databasebestanden (*.bib)"
-
-#: src/frontends/qt2/QBibtexDialog.C:82
-#, fuzzy
-msgid "Select a BibTeX database to add"
-msgstr "Database:"
 
 # Vrij vertaald. In dit dialoog (dit is de titel) kun je zelf een 
 # lettertekenstijl definieren die aan/uitgeschakeld wordt met de
@@ -10064,19 +10069,10 @@ msgstr ""
 msgid "LaTeX ERT"
 msgstr "LaTeX|#L"
 
-#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:214
+#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:217
 #, fuzzy
 msgid "External"
 msgstr "x Extra|#X"
-
-#: src/frontends/qt2/QExternalDialog.C:85
-msgid "External material (*)"
-msgstr ""
-
-#: src/frontends/qt2/QExternalDialog.C:87
-#, fuzzy
-msgid "Select external material"
-msgstr "Volgende regel selecteren"
 
 #: src/frontends/qt2/QFloat.C:28
 #, fuzzy
@@ -10092,15 +10088,6 @@ msgstr "Plaatjes"
 #, fuzzy
 msgid "Scale%"
 msgstr "Kleiner"
-
-#: src/frontends/qt2/QLPrintDialog.C:51
-msgid "PostScript files (*.ps)"
-msgstr "PostScript bestanden (*.ps)"
-
-#: src/frontends/qt2/QLPrintDialog.C:53
-#, fuzzy
-msgid "Select a file to print to"
-msgstr "Kies document ter invoeging"
 
 #: src/frontends/qt2/QLog.C:33 src/frontends/xforms/FormLog.C:21
 msgid "LaTeX Log"
@@ -10289,30 +10276,30 @@ msgstr "n Centreren|#n"
 msgid "File formats"
 msgstr "drijvende delen"
 
-#: src/frontends/qt2/QPrefsDialog.C:463 src/frontends/qt2/QPrefsDialog.C:466
+#: src/frontends/qt2/QPrefsDialog.C:467 src/frontends/qt2/QPrefsDialog.C:470
 msgid "New"
 msgstr "Nieuw"
 
-#: src/frontends/qt2/QPrefsDialog.C:567
+#: src/frontends/qt2/QPrefsDialog.C:571
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "Kies document ter invoeging"
 
-#: src/frontends/qt2/QPrefsDialog.C:575
+#: src/frontends/qt2/QPrefsDialog.C:579
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/frontends/qt2/QPrefsDialog.C:583
+#: src/frontends/qt2/QPrefsDialog.C:587
 msgid "Select a backups directory"
 msgstr ""
 
-#: src/frontends/qt2/QPrefsDialog.C:591
+#: src/frontends/qt2/QPrefsDialog.C:595
 #, fuzzy
 msgid "Select a document directory"
 msgstr "Kies document ter invoeging"
 
-#: src/frontends/qt2/QPrefsDialog.C:599
+#: src/frontends/qt2/QPrefsDialog.C:603
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geef een bestandsnaam aan de LyX serverpijp"
 
@@ -10546,22 +10533,6 @@ msgid ""
 "Updates your TeX system for a new bibstyle list. Only the styles which are "
 "in directories where TeX finds them are listed!"
 msgstr ""
-
-#: src/frontends/xforms/FormBibtex.C:105
-msgid "Select Database"
-msgstr "Database selecteren"
-
-#: src/frontends/xforms/FormBibtex.C:106
-msgid "*.bib| BibTeX Databases (*.bib)"
-msgstr "*.bib| BibTeX Databases (*.bib)"
-
-#: src/frontends/xforms/FormBibtex.C:118
-msgid "Select BibTeX-Style"
-msgstr "BibTeX-Stijl selecteren"
-
-#: src/frontends/xforms/FormBibtex.C:119
-msgid "*.bst| BibTeX Styles (*.bst)"
-msgstr "*.bst| BibTeX Stijlen (*.bst)"
 
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
@@ -11766,17 +11737,17 @@ msgstr "Kan niet naar bestand schrijven"
 msgid "into tempdir"
 msgstr ""
 
-#: src/insets/insetgraphics.C:682 src/insets/insetgraphics.C:686
+#: src/insets/insetgraphics.C:685 src/insets/insetgraphics.C:689
 #, fuzzy
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Kan niet naar bestand schrijven"
 
-#: src/insets/insetgraphics.C:683
+#: src/insets/insetgraphics.C:686
 #, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr ""
 
-#: src/insets/insetgraphics.C:687
+#: src/insets/insetgraphics.C:690
 msgid "No information for converting from "
 msgstr ""
 
@@ -12063,147 +12034,147 @@ msgstr "Hoogte"
 msgid "pheight%"
 msgstr "Hoogte"
 
-#: src/lyx_cb.C:88
+#: src/lyx_cb.C:92
 msgid "Save failed. Rename and try again?"
 msgstr "Opslaan is mislukt. Opnieuw proberen onder andere naam?"
 
-#: src/lyx_cb.C:90
+#: src/lyx_cb.C:94
 msgid "(If not, document is not saved.)"
 msgstr "(anders is document niet opgeslagen.)"
 
-#: src/lyx_cb.C:111
+#: src/lyx_cb.C:115
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Geef bestandsnaam om document op te slaan:"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1639
+#: src/lyx_cb.C:119 src/lyxfunc.C:1644
 msgid "Templates|#T#t"
 msgstr "Sjablonen|#S#s"
 
-#: src/lyx_cb.C:143
+#: src/lyx_cb.C:147
 msgid "Same name as document already has:"
 msgstr "Dezelfde naam die het document al heeft:"
 
-#: src/lyx_cb.C:145
+#: src/lyx_cb.C:149
 msgid "Save anyway?"
 msgstr "Toch opslaan?"
 
-#: src/lyx_cb.C:151
+#: src/lyx_cb.C:155
 msgid "Another document with same name open!"
 msgstr "Een ander document met dezelfde naam open!"
 
-#: src/lyx_cb.C:153
+#: src/lyx_cb.C:157
 msgid "Replace with current document?"
 msgstr "Vervangen door huidig document?"
 
-#: src/lyx_cb.C:161
+#: src/lyx_cb.C:165
 msgid "Document renamed to '"
 msgstr "Document hernoemd tot: '"
 
-#: src/lyx_cb.C:162
+#: src/lyx_cb.C:166
 msgid "', but not saved..."
 msgstr "', maar niet opgeslagen..."
 
-#: src/lyx_cb.C:168
+#: src/lyx_cb.C:172
 msgid "Document already exists:"
 msgstr "Document bestaat al:"
 
-#: src/lyx_cb.C:170
+#: src/lyx_cb.C:174
 msgid "Replace file?"
 msgstr "Bestand vervangen?"
 
-#: src/lyx_cb.C:183
+#: src/lyx_cb.C:187
 #, fuzzy
 msgid "Document could not be saved!"
 msgstr "opmaakblad document ingesteld"
 
-#: src/lyx_cb.C:184
+#: src/lyx_cb.C:188
 msgid "Holding the old name."
 msgstr ""
 
-#: src/lyx_cb.C:198
+#: src/lyx_cb.C:202
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex werkt niet met documenten die zijn afgeleid van SGML."
 
-#: src/lyx_cb.C:207
+#: src/lyx_cb.C:211
 msgid "No warnings found."
 msgstr "Geen waarschuwingen."
 
-#: src/lyx_cb.C:209
+#: src/lyx_cb.C:213
 msgid "One warning found."
 msgstr "Een waarschuwing gevonden."
 
-#: src/lyx_cb.C:210
+#: src/lyx_cb.C:214
 #, fuzzy
 msgid "Use `Navigate->Error' to find it."
 msgstr "Gebruik 'Wijzigen->Naar fout' om hem te vinden."
 
-#: src/lyx_cb.C:213
+#: src/lyx_cb.C:217
 msgid " warnings found."
 msgstr " waarschuwingen gevonden."
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:218
 #, fuzzy
 msgid "Use `Navigate->Error' to find them."
 msgstr "Gebruik 'Wijzigen->Naar fout' om ze te vinden."
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:220
 msgid "Chktex run successfully"
 msgstr "Chktex-run geslaagd"
 
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:222
 msgid "It seems chktex does not work."
 msgstr "Chktex lijkt niet te werken."
 
-#: src/lyx_cb.C:277
+#: src/lyx_cb.C:281
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Auto-opslaan"
 
-#: src/lyx_cb.C:279
+#: src/lyx_cb.C:283
 #, fuzzy
 msgid "Auto-saving "
 msgstr "Auto-opslaan"
 
-#: src/lyx_cb.C:319
+#: src/lyx_cb.C:323
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Auto-opslaan mislukte!"
 
-#: src/lyx_cb.C:345
+#: src/lyx_cb.C:349
 msgid "Autosaving current document..."
 msgstr "Bezig met Auto-opslaan huidig document..."
 
-#: src/lyx_cb.C:427
+#: src/lyx_cb.C:431
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Kies document ter invoeging"
 
-#: src/lyx_cb.C:444
+#: src/lyx_cb.C:448
 msgid "Error! Specified file is unreadable: "
 msgstr "Fout! Opgegeven bestand is onleesbaar: "
 
-#: src/lyx_cb.C:515 src/mathed/math_hullinset.C:814
+#: src/lyx_cb.C:519 src/mathed/math_hullinset.C:814
 msgid "Enter new label to insert:"
 msgstr "Schijf nieuw label ter invoeging:"
 
-#: src/lyx_cb.C:533
+#: src/lyx_cb.C:537
 msgid "Running configure..."
 msgstr "\"configure\" draait..."
 
-#: src/lyx_cb.C:546
+#: src/lyx_cb.C:550
 msgid "Reloading configuration..."
 msgstr "Herladen configuratiegegevens..."
 
-#: src/lyx_cb.C:548
+#: src/lyx_cb.C:552
 msgid "The system has been reconfigured."
 msgstr "Systeem opnieuw geconfigureerd."
 
-#: src/lyx_cb.C:549
+#: src/lyx_cb.C:553
 msgid "You need to restart LyX to make use of any"
 msgstr "U moet LyX herstarten, om de bijgewerkte"
 
-#: src/lyx_cb.C:550
+#: src/lyx_cb.C:554
 msgid "updated document class specifications."
 msgstr "documentklasseinstellingen te kunnen benutten."
 
@@ -12467,161 +12438,161 @@ msgstr "  Getal %1$s"
 msgid "  Number "
 msgstr " Getal "
 
-#: src/lyxfunc.C:240
+#: src/lyxfunc.C:239
 #, fuzzy
 msgid "Unknown function."
 msgstr "Onbekende handeling"
 
-#: src/lyxfunc.C:273
+#: src/lyxfunc.C:272
 #, fuzzy
 msgid "Nothing to do"
 msgstr "Niets te doen"
 
-#: src/lyxfunc.C:289
+#: src/lyxfunc.C:288
 msgid "Unknown action"
 msgstr "Onbekende handeling"
 
 #. the default error message if we disable the command
-#: src/lyxfunc.C:294
+#: src/lyxfunc.C:293
 #, fuzzy
 msgid "Command disabled"
 msgstr "commando-inzet"
 
 #. no
-#: src/lyxfunc.C:306
+#: src/lyxfunc.C:305
 msgid "Document is read-only"
 msgstr "Document is tegen schrijven beveiligd"
 
 # opdracht alleen toegestaan met document open zou mooier zijn.
-#: src/lyxfunc.C:311
+#: src/lyxfunc.C:310
 msgid "Command not allowed without any document open"
 msgstr "Opdracht niet toegestaan zonder open document"
 
-#: src/lyxfunc.C:703
+#: src/lyxfunc.C:708
 #, fuzzy, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Onbekende handeling"
 
-#: src/lyxfunc.C:707
+#: src/lyxfunc.C:712
 msgid "Unknown function ("
 msgstr "Onbekende functie ("
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:990
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Document wordt opgeslagen"
 
-#: src/lyxfunc.C:988
+#: src/lyxfunc.C:993
 #, fuzzy
 msgid "Saving document "
 msgstr "Document wordt opgeslagen"
 
-#: src/lyxfunc.C:994
+#: src/lyxfunc.C:999
 #, fuzzy
 msgid " done."
 msgstr " klaar."
 
-#: src/lyxfunc.C:1134 src/mathed/formulabase.C:1032
+#: src/lyxfunc.C:1139 src/mathed/formulabase.C:1032
 msgid "Missing argument"
 msgstr "Argument ontbreekt"
 
-#: src/lyxfunc.C:1147
+#: src/lyxfunc.C:1152
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Openen helpbestand"
 
-#: src/lyxfunc.C:1150
+#: src/lyxfunc.C:1155
 #, fuzzy
 msgid "Opening help file "
 msgstr "Openen helpbestand"
 
-#: src/lyxfunc.C:1364
+#: src/lyxfunc.C:1369
 msgid "This is only allowed in math mode!"
 msgstr "Alleen toegestaan in wiskundige modus!"
 
-#: src/lyxfunc.C:1406
+#: src/lyxfunc.C:1411
 msgid "Opening child document "
 msgstr "Open subdocument "
 
-#: src/lyxfunc.C:1480
+#: src/lyxfunc.C:1485
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1494
+#: src/lyxfunc.C:1499
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1499
+#: src/lyxfunc.C:1504
 msgid "Set-color "
 msgstr ""
 
-#: src/lyxfunc.C:1500
+#: src/lyxfunc.C:1505
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1635
+#: src/lyxfunc.C:1640
 #, fuzzy
 msgid "Select template file"
 msgstr "Volgende regel selecteren"
 
-#: src/lyxfunc.C:1675
+#: src/lyxfunc.C:1680
 #, fuzzy
 msgid "Select document to open"
 msgstr "Kies document ter opening"
 
-#: src/lyxfunc.C:1711
+#: src/lyxfunc.C:1716
 #, fuzzy
 msgid "No such file"
 msgstr "Lijst van Tabellen"
 
-#: src/lyxfunc.C:1712
+#: src/lyxfunc.C:1717
 #, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Nieuw document onder deze naam aanmaken?"
 
-#: src/lyxfunc.C:1724
+#: src/lyxfunc.C:1729
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Document %1$s openen... "
 
-#: src/lyxfunc.C:1726
+#: src/lyxfunc.C:1731
 msgid "Opening document "
 msgstr "Document openen "
 
-#: src/lyxfunc.C:1736
+#: src/lyxfunc.C:1741
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Document %1$s geopend."
 
-#: src/lyxfunc.C:1738
+#: src/lyxfunc.C:1743
 msgid " opened."
 msgstr " geopend."
 
-#: src/lyxfunc.C:1742
+#: src/lyxfunc.C:1747
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Kon document niet openen"
 
-#: src/lyxfunc.C:1745
+#: src/lyxfunc.C:1750
 msgid "Could not open document "
 msgstr "Kon document niet openen"
 
-#: src/lyxfunc.C:1772
+#: src/lyxfunc.C:1777
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Kies document ter invoeging"
 
-#: src/lyxfunc.C:1776
+#: src/lyxfunc.C:1781
 msgid "Select "
 msgstr "Selecteren "
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1782
 #, fuzzy
 msgid " file to import"
 msgstr "Kies document ter invoeging"
 
-#: src/lyxfunc.C:1817
+#: src/lyxfunc.C:1822
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -12629,15 +12600,15 @@ msgstr ""
 "Wilt u dat document nu sluiten?\n"
 "('Nee' verplaatst U alleen naar de open versie)"
 
-#: src/lyxfunc.C:1837
+#: src/lyxfunc.C:1842
 msgid "A document by the name"
 msgstr "Een document onder de naam"
 
-#: src/lyxfunc.C:1838
+#: src/lyxfunc.C:1843
 msgid "already exists. Overwrite?"
 msgstr "bestaat al. Overschrijven?"
 
-#: src/lyxfunc.C:1902
+#: src/lyxfunc.C:1907
 msgid "Welcome to LyX!"
 msgstr "Welkom in LyX!"
 
@@ -13132,49 +13103,49 @@ msgstr " Macro: %s: "
 msgid " Macro: "
 msgstr " Macro: "
 
-#: src/support/filetools.C:528
+#: src/support/filetools.C:537
 msgid "Error! Cannot open directory:"
 msgstr "Fout! Kan map niet openen:"
 
-#: src/support/filetools.C:550
+#: src/support/filetools.C:559
 msgid "Error! Could not remove file:"
 msgstr "Fout! Kon bestand niet verwijderen:"
 
-#: src/support/filetools.C:574 src/support/filetools.C:612
+#: src/support/filetools.C:583 src/support/filetools.C:621
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/support/filetools.C:591
+#: src/support/filetools.C:600
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Fout! Kon tijdelijke map niet verwijderen:"
 
-#: src/support/filetools.C:666
+#: src/support/filetools.C:675
 msgid "Internal error!"
 msgstr "Interne fout!"
 
-#: src/support/filetools.C:667
+#: src/support/filetools.C:676
 msgid "Call to createDirectory with invalid name"
 msgstr "Aanroep `createDirectory' met ongeldige naam"
 
-#: src/support/filetools.C:672
+#: src/support/filetools.C:681
 msgid "Error! Couldn't create directory:"
 msgstr "Fout! Kon map niet aanmaken:"
 
-#: src/support/filetools.C:1440
+#: src/support/filetools.C:1449
 msgid "Could not delete auto-save file!"
 msgstr "Kon dit auto-opslagbestand niet verwijderen!"
 
-#: src/support/package.C:374
+#: src/support/package.C:402
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
 
-#: src/support/package.C:379
+#: src/support/package.C:407
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
 
-#: src/support/package.C:505
+#: src/support/package.C:533
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -13183,63 +13154,63 @@ msgid ""
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C:515
+#: src/support/package.C:543
 msgid "Unable to determine the system directory having searched\n"
 msgstr ""
 
-#: src/support/package.C:518
+#: src/support/package.C:546
 #, fuzzy
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr "zet de omgevingsvariablele LYX_DIR_11x gelijk aan de LyX systeemmap"
 
-#: src/support/package.C:601
+#: src/support/package.C:629
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
 
-#: src/support/package.C:606 src/support/package.C:641
-#: src/support/package.C:669
+#: src/support/package.C:634 src/support/package.C:669
+#: src/support/package.C:697
 #, fuzzy
 msgid "Invalid "
 msgstr "Ongeldige lengte!"
 
-#: src/support/package.C:607
+#: src/support/package.C:635
 msgid " switch.\n"
 msgstr ""
 
-#: src/support/package.C:608 src/support/package.C:643
+#: src/support/package.C:636 src/support/package.C:671
 #, fuzzy
 msgid "Directory "
 msgstr "Map:|#M"
 
-#: src/support/package.C:609 src/support/package.C:644
+#: src/support/package.C:637 src/support/package.C:672
 msgid " does not contain "
 msgstr ""
 
-#: src/support/package.C:636
+#: src/support/package.C:664
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
 
-#: src/support/package.C:642 src/support/package.C:670
+#: src/support/package.C:670 src/support/package.C:698
 #, fuzzy
 msgid " environment variable.\n"
 msgstr "LYX_DIR_11x omgevingsvariabele deugt niet."
 
-#: src/support/package.C:664
+#: src/support/package.C:692
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
 
-#: src/support/package.C:671
+#: src/support/package.C:699
 #, fuzzy
 msgid " is not a directory."
 msgstr "Fout! Kan map niet openen:"
@@ -13343,6 +13314,42 @@ msgstr "Merkteken geplaatst"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-functie 'layout' heeft een argument nodig."
+
+#~ msgid "space, '#', '~', '$' or '%'."
+#~ msgstr "spatie, '#', '~', '$' of '%'."
+
+#, fuzzy
+#~ msgid "directory name can't contain any of these characters:"
+#~ msgstr "Bestandsnaam mag de volgende tekens niet bevatten:"
+
+#~ msgid "BibTeX style files (*.bst)"
+#~ msgstr "BibTeX stijlebestanden (*.bst)"
+
+#~ msgid "BibTeX database files (*.bib)"
+#~ msgstr "BibTeX databasebestanden (*.bib)"
+
+#, fuzzy
+#~ msgid "Select external material"
+#~ msgstr "Volgende regel selecteren"
+
+#~ msgid "PostScript files (*.ps)"
+#~ msgstr "PostScript bestanden (*.ps)"
+
+#, fuzzy
+#~ msgid "Select a file to print to"
+#~ msgstr "Kies document ter invoeging"
+
+#~ msgid "Select Database"
+#~ msgstr "Database selecteren"
+
+#~ msgid "*.bib| BibTeX Databases (*.bib)"
+#~ msgstr "*.bib| BibTeX Databases (*.bib)"
+
+#~ msgid "Select BibTeX-Style"
+#~ msgstr "BibTeX-Stijl selecteren"
+
+#~ msgid "*.bst| BibTeX Styles (*.bst)"
+#~ msgstr "*.bst| BibTeX Stijlen (*.bst)"
 
 #~ msgid "Forked child processes:|#F"
 #~ msgstr "Gevorkt dochterproces:|#v"

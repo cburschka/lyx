@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-30 16:43+0200\n"
+"POT-Creation-Date: 2005-05-30 11:40+0200\n"
 "PO-Revision-Date: 2003-02-10 21:20+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -2141,7 +2141,7 @@ msgid "&Landscape"
 msgstr "Na ¹í&rku"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:35 src/frontends/xforms/FormAboutlyx.C:40
+#: src/frontends/qt2/QAbout.C:36 src/frontends/xforms/FormAboutlyx.C:40
 msgid "About LyX"
 msgstr ""
 
@@ -2326,7 +2326,7 @@ msgstr "Vybra» súbor so ¹týlom"
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:148
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:945
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:950
 msgid "Cancel"
 msgstr "Zru¹i»"
 
@@ -4888,7 +4888,7 @@ msgstr "Podpododdiel*"
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
 #: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/scrclass.inc:230
-#: src/buffer.C:1533
+#: src/buffer.C:1536
 msgid "Abstract"
 msgstr "Výòatok"
 
@@ -5121,7 +5121,7 @@ msgid "Acknowledgements"
 msgstr "Poïakovanie"
 
 #: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
-#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1544
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1547
 msgid "References"
 msgstr "Referencie"
 
@@ -7426,7 +7426,7 @@ msgid "About LyX|X"
 msgstr "O LyXe|X"
 
 #: src/BufferView.C:298 src/bufferlist.C:400 src/bufferlist.C:512
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:222
 msgid "Error!"
 msgstr "Chyba!"
 
@@ -7434,7 +7434,7 @@ msgstr "Chyba!"
 msgid "Specified file is unreadable: "
 msgstr "©pecifikovaný súbor je neèitateµný: "
 
-#: src/BufferView.C:308 src/lyx_cb.C:451
+#: src/BufferView.C:308 src/lyx_cb.C:455
 msgid "Error! Cannot open specified file:"
 msgstr "Chyba! Nemô¾em otvori» ¹pecifikovaný súbor:"
 
@@ -7488,25 +7488,26 @@ msgstr ""
 msgid "Select LyX document to insert"
 msgstr "Zvoµte LyX dokument na vlo¾enie"
 
-#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:61
-#: src/frontends/controllers/ControlExternal.C:150
+#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:59
+#: src/frontends/controllers/ControlBibtex.C:69
+#: src/frontends/controllers/ControlExternal.C:147
 #: src/frontends/controllers/ControlGraphics.C:89
-#: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:113
-#: src/lyxfunc.C:1637 src/lyxfunc.C:1677 src/lyxfunc.C:1783
+#: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:117
+#: src/lyxfunc.C:1642 src/lyxfunc.C:1682 src/lyxfunc.C:1788
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1679 src/lyxfunc.C:1785
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1684 src/lyxfunc.C:1790
 msgid "Examples|#E#e"
 msgstr "Príklady|#P#p"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1644
-#: src/lyxfunc.C:1684
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:127 src/lyxfunc.C:1649
+#: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX dokumenty (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1693 src/lyxfunc.C:1713
-#: src/lyxfunc.C:1802 src/lyxfunc.C:1829 src/lyxfunc.C:1839
+#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/lyxfunc.C:1807 src/lyxfunc.C:1834 src/lyxfunc.C:1844
 msgid "Canceled."
 msgstr "Zru¹ené."
 
@@ -7519,8 +7520,8 @@ msgstr "Vkladám dokument %1$s..."
 msgid "Inserting document "
 msgstr "Vkladám dokument "
 
-#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:990
-#: src/lyxfunc.C:1151 src/lyxfunc.C:1726
+#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:995
+#: src/lyxfunc.C:1156 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
@@ -7529,7 +7530,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vlo¾ený."
 
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1738
+#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Dokument "
 
@@ -8311,6 +8312,11 @@ msgstr "LinuxDoc...|L"
 msgid "Emphasize"
 msgstr "Zvýrazni»"
 
+#: src/SpellBase.C:48
+#, fuzzy
+msgid "Native OS API not yet supported."
+msgstr "E¹te nie je podporované"
+
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
 msgstr "Nie je mo¾né nastavi» rozlo¾enie pre "
@@ -8400,7 +8406,7 @@ msgid "Unknown token: "
 msgstr "Neznámy token: "
 
 #. future format
-#: src/buffer.C:1212 src/buffer.C:1267
+#: src/buffer.C:1212 src/buffer.C:1270
 msgid "Warning!"
 msgstr "Varovanie!"
 
@@ -8411,8 +8417,8 @@ msgid ""
 msgstr ""
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1219 src/buffer.C:1227 src/buffer.C:1241 src/buffer.C:1273
-#: src/buffer.C:1276
+#: src/buffer.C:1219 src/buffer.C:1226 src/buffer.C:1244 src/buffer.C:1276
+#: src/buffer.C:1279
 msgid "ERROR!"
 msgstr "CHYBA!"
 
@@ -8420,43 +8426,43 @@ msgstr "CHYBA!"
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Na¹iel som starý formát LyXu. Naèítajte ho LyXom 0.10.x!"
 
-#: src/buffer.C:1228
+#: src/buffer.C:1227
 msgid "Can't find conversion script."
 msgstr ""
 
-#: src/buffer.C:1242
+#: src/buffer.C:1245
 msgid "An error occured while running the conversion script."
 msgstr ""
 
-#: src/buffer.C:1268
+#: src/buffer.C:1271
 msgid "Reading of document is not complete"
 msgstr "Dokument nebol naèítaný úplne"
 
-#: src/buffer.C:1269
+#: src/buffer.C:1272
 msgid "Maybe the document is truncated"
 msgstr "Dokument je mo¾no skrátený"
 
-#: src/buffer.C:1273
+#: src/buffer.C:1276
 msgid "Not a LyX file!"
 msgstr "Toto nie je LyX súbor!"
 
-#: src/buffer.C:1276
+#: src/buffer.C:1279
 msgid "Unable to read file!"
 msgstr "Nemô¾em preèíta» súbor!"
 
-#: src/buffer.C:1536
+#: src/buffer.C:1539
 msgid "Abstract: "
 msgstr "Abstrakt: "
 
-#: src/buffer.C:1547
+#: src/buffer.C:1550
 msgid "References: "
 msgstr "Odkazy: "
 
-#: src/buffer.C:1661
+#: src/buffer.C:1664
 msgid "Error: Cannot write file:"
 msgstr "Chyba: Nemô¾em zapísa» súbor:"
 
-#: src/buffer.C:1691
+#: src/buffer.C:1694
 msgid "Error: Cannot open file: "
 msgstr "Chyba: Nemô¾em otvori» súbor: "
 
@@ -8539,7 +8545,7 @@ msgstr "Chcete rad¹ej túto pou¾i»?"
 msgid "Unable to open template"
 msgstr "Nie je mo¾né otvori» ¹ablónu"
 
-#: src/bufferlist.C:545 src/lyxfunc.C:1815
+#: src/bufferlist.C:545 src/lyxfunc.C:1820
 msgid "Document is already open:"
 msgstr "Dokument je u¾ otvorený:"
 
@@ -8902,6 +8908,14 @@ msgstr "Prieèinok kni¾níc: "
 msgid "User directory: "
 msgstr "Prieèinok pou¾ívateµa: "
 
+#: src/frontends/controllers/ControlBibtex.C:62
+msgid "Select a BibTeX database to add"
+msgstr ""
+
+#: src/frontends/controllers/ControlBibtex.C:72
+msgid "Select a BibTeX style"
+msgstr "Vybra» BibTeX ¹týl"
+
 #: src/frontends/controllers/ControlCharacter.C:64
 msgid "Character set"
 msgstr "Znaková sada"
@@ -9101,7 +9115,7 @@ msgstr "Re»azec bol nahradený."
 msgid " strings have been replaced."
 msgstr " re»azce boli nahradené."
 
-#: src/frontends/controllers/ControlSpellchecker.C:102
+#: src/frontends/controllers/ControlSpellchecker.C:117
 #, fuzzy
 msgid ""
 "The spell-checker could not be started.\n"
@@ -9110,12 +9124,12 @@ msgstr ""
 "Kontrola pravopisu z nejakého dôvodu nebola dokonèená.\n"
 "Mo¾no bola zabitá."
 
-#: src/frontends/controllers/ControlSpellchecker.C:105
-#: src/frontends/controllers/ControlSpellchecker.C:198
+#: src/frontends/controllers/ControlSpellchecker.C:120
+#: src/frontends/controllers/ControlSpellchecker.C:213
 msgid "The spell-checker has failed"
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:192
+#: src/frontends/controllers/ControlSpellchecker.C:207
 #, fuzzy
 msgid ""
 "The spell-checker has died for some reason.\n"
@@ -9124,22 +9138,22 @@ msgstr ""
 "Kontrola pravopisu z nejakého dôvodu nebola dokonèená.\n"
 "Mo¾no bola zabitá."
 
-#: src/frontends/controllers/ControlSpellchecker.C:214
+#: src/frontends/controllers/ControlSpellchecker.C:229
 #, fuzzy, c-format
 msgid "%1$d words checked."
 msgstr "Jedno slovo skontrolované."
 
-#: src/frontends/controllers/ControlSpellchecker.C:218
-#: src/frontends/controllers/ControlSpellchecker.C:224
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#: src/frontends/controllers/ControlSpellchecker.C:239
 msgid "One word checked."
 msgstr "Jedno slovo skontrolované."
 
-#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:237
 #, fuzzy
 msgid " words checked."
 msgstr "Jedno slovo skontrolované."
 
-#: src/frontends/controllers/ControlSpellchecker.C:229
+#: src/frontends/controllers/ControlSpellchecker.C:244
 #, fuzzy
 msgid "Spell-checking is complete"
 msgstr "Kontrola pravopisu je dokonèená!"
@@ -9273,18 +9287,26 @@ msgstr "Purpurová"
 msgid "Yellow"
 msgstr "®ltá"
 
-#: src/frontends/controllers/helper_funcs.C:59
-msgid "Filename can't contain any of these characters:"
+#: src/frontends/controllers/helper_funcs.C:55
+#, fuzzy
+msgid "space"
+msgstr "&Nahradi»"
+
+#: src/frontends/controllers/helper_funcs.C:103
+#, fuzzy
+msgid "Invalid filename"
+msgstr "In¹talované súbory"
+
+#: src/frontends/controllers/helper_funcs.C:104
+#: src/frontends/controllers/helper_funcs.C:168
+#, fuzzy
+msgid "No LaTeX support for paths containing any of these characters:\n"
 msgstr "Názov súboru nemô¾e obsahova» tieto znaky:"
 
-#: src/frontends/controllers/helper_funcs.C:61
-#: src/frontends/controllers/helper_funcs.C:115
-msgid "space, '#', '~', '$' or '%'."
-msgstr "medzera, '#', '~', '$' a '%'."
-
-#: src/frontends/controllers/helper_funcs.C:113
-msgid "directory name can't contain any of these characters:"
-msgstr "názov prieèinku nemô¾e obsahova» tieto znaky:"
+#: src/frontends/controllers/helper_funcs.C:167
+#, fuzzy
+msgid "Invalid directory name"
+msgstr "Táto akcie je v matematickom móde neplatná!"
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
@@ -9327,22 +9349,6 @@ msgstr "V¹etky súbory (*)"
 #: src/frontends/qt2/FileDialog.C:112
 msgid "Directories"
 msgstr "Prieèinky"
-
-#: src/frontends/qt2/QBibtexDialog.C:55
-msgid "BibTeX style files (*.bst)"
-msgstr ""
-
-#: src/frontends/qt2/QBibtexDialog.C:58
-msgid "Select a BibTeX style"
-msgstr "Vybra» BibTeX ¹týl"
-
-#: src/frontends/qt2/QBibtexDialog.C:82
-msgid "BibTeX database files (*.bib)"
-msgstr ""
-
-#: src/frontends/qt2/QBibtexDialog.C:82
-msgid "Select a BibTeX database to add"
-msgstr ""
 
 #: src/frontends/qt2/QCharacter.C:35 src/frontends/xforms/FormCharacter.C:38
 msgid "Character Layout"
@@ -9514,17 +9520,9 @@ msgstr ""
 msgid "LaTeX ERT"
 msgstr "LaTeX ERT"
 
-#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:214
+#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:217
 msgid "External"
 msgstr "Externý"
-
-#: src/frontends/qt2/QExternalDialog.C:85
-msgid "External material (*)"
-msgstr "Externý materiál (*)"
-
-#: src/frontends/qt2/QExternalDialog.C:87
-msgid "Select external material"
-msgstr "Vybra» externý materiál"
 
 #: src/frontends/qt2/QFloat.C:28
 msgid "Float Settings"
@@ -9538,14 +9536,6 @@ msgstr "Grafika"
 #: src/frontends/qt2/QGraphics.C:239
 msgid "Scale%"
 msgstr "Mierka%"
-
-#: src/frontends/qt2/QLPrintDialog.C:51
-msgid "PostScript files (*.ps)"
-msgstr "PostScript súbory (*.ps)"
-
-#: src/frontends/qt2/QLPrintDialog.C:53
-msgid "Select a file to print to"
-msgstr "Zvoli» súbor pre výstup tlaèe"
 
 #: src/frontends/qt2/QLog.C:33 src/frontends/xforms/FormLog.C:21
 msgid "LaTeX Log"
@@ -9720,27 +9710,27 @@ msgstr "Konvertor"
 msgid "File formats"
 msgstr "Formáty súborov"
 
-#: src/frontends/qt2/QPrefsDialog.C:463 src/frontends/qt2/QPrefsDialog.C:466
+#: src/frontends/qt2/QPrefsDialog.C:467 src/frontends/qt2/QPrefsDialog.C:470
 msgid "New"
 msgstr "Nový"
 
-#: src/frontends/qt2/QPrefsDialog.C:567
+#: src/frontends/qt2/QPrefsDialog.C:571
 msgid "Select a document templates directory"
 msgstr "Zvoli» prieèinok pre ¹ablóny dokumentov"
 
-#: src/frontends/qt2/QPrefsDialog.C:575
+#: src/frontends/qt2/QPrefsDialog.C:579
 msgid "Select a temporary directory"
 msgstr "Zvoli» doèasný prieèinok"
 
-#: src/frontends/qt2/QPrefsDialog.C:583
+#: src/frontends/qt2/QPrefsDialog.C:587
 msgid "Select a backups directory"
 msgstr ""
 
-#: src/frontends/qt2/QPrefsDialog.C:591
+#: src/frontends/qt2/QPrefsDialog.C:595
 msgid "Select a document directory"
 msgstr "Zvoli» prieèinok pre dokumenty"
 
-#: src/frontends/qt2/QPrefsDialog.C:599
+#: src/frontends/qt2/QPrefsDialog.C:603
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
@@ -9965,22 +9955,6 @@ msgstr "Zvoli» BibTeX ¹týl zo zoznamu."
 msgid ""
 "Updates your TeX system for a new bibstyle list. Only the styles which are "
 "in directories where TeX finds them are listed!"
-msgstr ""
-
-#: src/frontends/xforms/FormBibtex.C:105
-msgid "Select Database"
-msgstr "Zvoli» databázu"
-
-#: src/frontends/xforms/FormBibtex.C:106
-msgid "*.bib| BibTeX Databases (*.bib)"
-msgstr "*.bib| BibTeX databázy (*.bib)"
-
-#: src/frontends/xforms/FormBibtex.C:118
-msgid "Select BibTeX-Style"
-msgstr "Zvoli» BibTeX ¹týl"
-
-#: src/frontends/xforms/FormBibtex.C:119
-msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr ""
 
 #. set up the tooltip mechanism
@@ -11159,16 +11133,16 @@ msgstr "Nie je mo¾né kopírova» súbor"
 msgid "into tempdir"
 msgstr "do doèasného prieèinka"
 
-#: src/insets/insetgraphics.C:682 src/insets/insetgraphics.C:686
+#: src/insets/insetgraphics.C:685 src/insets/insetgraphics.C:689
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Nemô¾em konvertova» obrázok (súbor neexistuje?)"
 
-#: src/insets/insetgraphics.C:683
+#: src/insets/insetgraphics.C:686
 #, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr "®iadne informácie pre konverziu z %1$s do %2$s"
 
-#: src/insets/insetgraphics.C:687
+#: src/insets/insetgraphics.C:690
 msgid "No information for converting from "
 msgstr "®iadne informácie pre konverziu z "
 
@@ -11436,140 +11410,140 @@ msgstr ""
 msgid "pheight%"
 msgstr ""
 
-#: src/lyx_cb.C:88
+#: src/lyx_cb.C:92
 msgid "Save failed. Rename and try again?"
 msgstr "Ukladanie zlyhalo. Premenova» a skúsi» opä»?"
 
-#: src/lyx_cb.C:90
+#: src/lyx_cb.C:94
 msgid "(If not, document is not saved.)"
 msgstr "(Ak ne, tak dokument nie je ulo¾ený.)"
 
-#: src/lyx_cb.C:111
+#: src/lyx_cb.C:115
 msgid "Choose a filename to save document as"
 msgstr "Zvoli» názov súboru, pod ktorým sa má dokument ulo¾i»"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1639
+#: src/lyx_cb.C:119 src/lyxfunc.C:1644
 msgid "Templates|#T#t"
 msgstr "©ablóny|#¹"
 
-#: src/lyx_cb.C:143
+#: src/lyx_cb.C:147
 msgid "Same name as document already has:"
 msgstr "Rovnaký názov ako dokument u¾ má:"
 
-#: src/lyx_cb.C:145
+#: src/lyx_cb.C:149
 msgid "Save anyway?"
 msgstr "Aj tak ulo¾i»?"
 
-#: src/lyx_cb.C:151
+#: src/lyx_cb.C:155
 msgid "Another document with same name open!"
 msgstr "Dokument s rovnakým názvom je u¾ ulo¾ený!"
 
-#: src/lyx_cb.C:153
+#: src/lyx_cb.C:157
 msgid "Replace with current document?"
 msgstr "Nahradi» s aktuálnym?"
 
-#: src/lyx_cb.C:161
+#: src/lyx_cb.C:165
 msgid "Document renamed to '"
 msgstr "Dokument je premenovaný na '"
 
-#: src/lyx_cb.C:162
+#: src/lyx_cb.C:166
 msgid "', but not saved..."
 msgstr "', ale neulo¾ený..."
 
-#: src/lyx_cb.C:168
+#: src/lyx_cb.C:172
 msgid "Document already exists:"
 msgstr "Dokument u¾ existuje:"
 
-#: src/lyx_cb.C:170
+#: src/lyx_cb.C:174
 msgid "Replace file?"
 msgstr "Nahradi» súbor?"
 
-#: src/lyx_cb.C:183
+#: src/lyx_cb.C:187
 msgid "Document could not be saved!"
 msgstr "Dokument nie je mo¾né ulo¾i»!"
 
-#: src/lyx_cb.C:184
+#: src/lyx_cb.C:188
 msgid "Holding the old name."
 msgstr "Ponechávam starý názov."
 
-#: src/lyx_cb.C:198
+#: src/lyx_cb.C:202
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex sa nedá pou¾i» pre dokumenty v SGML."
 
-#: src/lyx_cb.C:207
+#: src/lyx_cb.C:211
 msgid "No warnings found."
 msgstr "Bez varovaní."
 
-#: src/lyx_cb.C:209
+#: src/lyx_cb.C:213
 msgid "One warning found."
 msgstr "Vyskytlo sa jedno varovanie."
 
-#: src/lyx_cb.C:210
+#: src/lyx_cb.C:214
 msgid "Use `Navigate->Error' to find it."
 msgstr "Pou¾ite 'Navigácia->Chyba', aby ste ju na¹li."
 
-#: src/lyx_cb.C:213
+#: src/lyx_cb.C:217
 msgid " warnings found."
 msgstr " nájdených varovaní."
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:218
 msgid "Use `Navigate->Error' to find them."
 msgstr "Pou¾ite 'Navigácia->Chyba', aby ste ich na¹li."
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:220
 msgid "Chktex run successfully"
 msgstr "Chktex úspe¹ne skonèil."
 
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:222
 msgid "It seems chktex does not work."
 msgstr "Zdá sa, ¾e chktex nefunguje."
 
-#: src/lyx_cb.C:277
+#: src/lyx_cb.C:281
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/lyx_cb.C:279
+#: src/lyx_cb.C:283
 msgid "Auto-saving "
 msgstr "Automatické ukladanie"
 
-#: src/lyx_cb.C:319
+#: src/lyx_cb.C:323
 msgid "Autosave failed!"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
-#: src/lyx_cb.C:345
+#: src/lyx_cb.C:349
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie dokumentu..."
 
-#: src/lyx_cb.C:427
+#: src/lyx_cb.C:431
 msgid "Select file to insert"
 msgstr "Vyberte súbor na vlo¾enie"
 
-#: src/lyx_cb.C:444
+#: src/lyx_cb.C:448
 msgid "Error! Specified file is unreadable: "
 msgstr "Chyba ¹pecifikovaný súbor je neèitateµný: "
 
-#: src/lyx_cb.C:515 src/mathed/math_hullinset.C:814
+#: src/lyx_cb.C:519 src/mathed/math_hullinset.C:814
 msgid "Enter new label to insert:"
 msgstr "Vlo¾i» novú znaèku:"
 
-#: src/lyx_cb.C:533
+#: src/lyx_cb.C:537
 msgid "Running configure..."
 msgstr "Spú¹»am konfigurovanie..."
 
-#: src/lyx_cb.C:546
+#: src/lyx_cb.C:550
 msgid "Reloading configuration..."
 msgstr "Nové naèítanie konfigurácie..."
 
-#: src/lyx_cb.C:548
+#: src/lyx_cb.C:552
 msgid "The system has been reconfigured."
 msgstr "Systém je prekonfigurovaný."
 
-#: src/lyx_cb.C:549
+#: src/lyx_cb.C:553
 msgid "You need to restart LyX to make use of any"
 msgstr "Musíte LyX spusti» znovu, aby ste mohli pou¾íva»"
 
-#: src/lyx_cb.C:550
+#: src/lyx_cb.C:554
 msgid "updated document class specifications."
 msgstr "aktualizované ¹pecifikácie tried dokumentov."
 
@@ -11823,151 +11797,151 @@ msgstr "  Èíslo %1$s"
 msgid "  Number "
 msgstr "  Èíslo "
 
-#: src/lyxfunc.C:240
+#: src/lyxfunc.C:239
 msgid "Unknown function."
 msgstr "Neznáma funkcia."
 
-#: src/lyxfunc.C:273
+#: src/lyxfunc.C:272
 msgid "Nothing to do"
 msgstr "Nie je èo robi»."
 
-#: src/lyxfunc.C:289
+#: src/lyxfunc.C:288
 msgid "Unknown action"
 msgstr "Neznáma akcia"
 
 #. the default error message if we disable the command
-#: src/lyxfunc.C:294
+#: src/lyxfunc.C:293
 msgid "Command disabled"
 msgstr "Príkaz nie je povolený"
 
 #. no
-#: src/lyxfunc.C:306
+#: src/lyxfunc.C:305
 msgid "Document is read-only"
 msgstr "Dokument je iba na èítanie"
 
-#: src/lyxfunc.C:311
+#: src/lyxfunc.C:310
 msgid "Command not allowed without any document open"
 msgstr "Príkaz nie je povolený pokiaµ nie je otvorený dokument"
 
-#: src/lyxfunc.C:703
+#: src/lyxfunc.C:708
 #, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Neznáma funkcia  (%1$s)"
 
-#: src/lyxfunc.C:707
+#: src/lyxfunc.C:712
 msgid "Unknown function ("
 msgstr "Neznáma funkcia ("
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:990
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Ukladám dokument %1$s..."
 
-#: src/lyxfunc.C:988
+#: src/lyxfunc.C:993
 msgid "Saving document "
 msgstr "Ukladám dokument "
 
-#: src/lyxfunc.C:994
+#: src/lyxfunc.C:999
 msgid " done."
 msgstr " skonèené."
 
-#: src/lyxfunc.C:1134 src/mathed/formulabase.C:1032
+#: src/lyxfunc.C:1139 src/mathed/formulabase.C:1032
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
-#: src/lyxfunc.C:1147
+#: src/lyxfunc.C:1152
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otváram súbor s Pomocníkom %1$s..."
 
-#: src/lyxfunc.C:1150
+#: src/lyxfunc.C:1155
 msgid "Opening help file "
 msgstr "Otváram súbor s Pomocníkom "
 
-#: src/lyxfunc.C:1364
+#: src/lyxfunc.C:1369
 msgid "This is only allowed in math mode!"
 msgstr "Toto je povolené len v matematickom re¾ime!"
 
-#: src/lyxfunc.C:1406
+#: src/lyxfunc.C:1411
 msgid "Opening child document "
 msgstr "Otváram podriadený dokument "
 
-#: src/lyxfunc.C:1480
+#: src/lyxfunc.C:1485
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1494
+#: src/lyxfunc.C:1499
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Nepodarilo sa nastavi» farbu  \"%1$s\" - nie je definovaná alebo ju nie je "
 "mo¾né predefinova»"
 
-#: src/lyxfunc.C:1499
+#: src/lyxfunc.C:1504
 msgid "Set-color "
 msgstr "Nepodarilo sa nastavi» farbu "
 
-#: src/lyxfunc.C:1500
+#: src/lyxfunc.C:1505
 msgid " failed - color is undefined or may not be redefined"
 msgstr " -  nie je definovaná alebo ju nie je mo¾né predefinova»"
 
-#: src/lyxfunc.C:1635
+#: src/lyxfunc.C:1640
 msgid "Select template file"
 msgstr "Zvoli» názov ¹ablóny"
 
-#: src/lyxfunc.C:1675
+#: src/lyxfunc.C:1680
 msgid "Select document to open"
 msgstr "Zvoli» dokument pre otvorenie"
 
-#: src/lyxfunc.C:1711
+#: src/lyxfunc.C:1716
 msgid "No such file"
 msgstr "Taký súbor nie je"
 
-#: src/lyxfunc.C:1712
+#: src/lyxfunc.C:1717
 msgid "Start a new document with this filename ?"
 msgstr "Vytvori» nový dokument s týmto názvom?"
 
-#: src/lyxfunc.C:1724
+#: src/lyxfunc.C:1729
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otváram dokument %1$s..."
 
-#: src/lyxfunc.C:1726
+#: src/lyxfunc.C:1731
 msgid "Opening document "
 msgstr "Otváram dokument "
 
-#: src/lyxfunc.C:1736
+#: src/lyxfunc.C:1741
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je otvorený."
 
-#: src/lyxfunc.C:1738
+#: src/lyxfunc.C:1743
 msgid " opened."
 msgstr " otvorený."
 
-#: src/lyxfunc.C:1742
+#: src/lyxfunc.C:1747
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nedá sa otvori» dokument %1$s"
 
-#: src/lyxfunc.C:1745
+#: src/lyxfunc.C:1750
 msgid "Could not open document "
 msgstr "Nedá sa otvori» dokument "
 
-#: src/lyxfunc.C:1772
+#: src/lyxfunc.C:1777
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Zvoli» súbor %1$s na import"
 
-#: src/lyxfunc.C:1776
+#: src/lyxfunc.C:1781
 msgid "Select "
 msgstr "Zvoli» súbor "
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1782
 msgid " file to import"
 msgstr " na importovanie"
 
-#: src/lyxfunc.C:1817
+#: src/lyxfunc.C:1822
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -11975,15 +11949,15 @@ msgstr ""
 "Chcete teraz zavrie» tento dokument?\n"
 "('Nie' iba prepne do otvorenej verzie)"
 
-#: src/lyxfunc.C:1837
+#: src/lyxfunc.C:1842
 msgid "A document by the name"
 msgstr "Dokument s menom"
 
-#: src/lyxfunc.C:1838
+#: src/lyxfunc.C:1843
 msgid "already exists. Overwrite?"
 msgstr "u¾ existuje. Prepísa»?"
 
-#: src/lyxfunc.C:1902
+#: src/lyxfunc.C:1907
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
 
@@ -12550,49 +12524,49 @@ msgstr " Makro: %s: "
 msgid " Macro: "
 msgstr " Makro: "
 
-#: src/support/filetools.C:528
+#: src/support/filetools.C:537
 msgid "Error! Cannot open directory:"
 msgstr "Chyba! Nemô¾em otvori» prieèinok:"
 
-#: src/support/filetools.C:550
+#: src/support/filetools.C:559
 msgid "Error! Could not remove file:"
 msgstr "Chyba! Nemô¾em odstráni» súbor:"
 
-#: src/support/filetools.C:574 src/support/filetools.C:612
+#: src/support/filetools.C:583 src/support/filetools.C:621
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/support/filetools.C:591
+#: src/support/filetools.C:600
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Chyba! Nemô¾em odstráni» doèasný prieèinok:"
 
-#: src/support/filetools.C:666
+#: src/support/filetools.C:675
 msgid "Internal error!"
 msgstr "Interná chyba!"
 
-#: src/support/filetools.C:667
+#: src/support/filetools.C:676
 msgid "Call to createDirectory with invalid name"
 msgstr "Volanie na vytvorenie prieèinku s neplatným názvom"
 
-#: src/support/filetools.C:672
+#: src/support/filetools.C:681
 msgid "Error! Couldn't create directory:"
 msgstr "Chyba! Nemô¾em vytvori» prieèinok:"
 
-#: src/support/filetools.C:1440
+#: src/support/filetools.C:1449
 msgid "Could not delete auto-save file!"
 msgstr "Nemô¾em zmaza» súbor pre automatické ukladanie!"
 
-#: src/support/package.C:374
+#: src/support/package.C:402
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
 
-#: src/support/package.C:379
+#: src/support/package.C:407
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
 
-#: src/support/package.C:505
+#: src/support/package.C:533
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12601,62 +12575,62 @@ msgid ""
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C:515
+#: src/support/package.C:543
 msgid "Unable to determine the system directory having searched\n"
 msgstr ""
 
-#: src/support/package.C:518
+#: src/support/package.C:546
 #, fuzzy
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr "nastavte premennú prostredia LYX_DIR_13x na systémový prieèinok LyXu "
 
-#: src/support/package.C:601
+#: src/support/package.C:629
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
 
-#: src/support/package.C:606 src/support/package.C:641
-#: src/support/package.C:669
+#: src/support/package.C:634 src/support/package.C:669
+#: src/support/package.C:697
 msgid "Invalid "
 msgstr ""
 
-#: src/support/package.C:607
+#: src/support/package.C:635
 msgid " switch.\n"
 msgstr ""
 
-#: src/support/package.C:608 src/support/package.C:643
+#: src/support/package.C:636 src/support/package.C:671
 #, fuzzy
 msgid "Directory "
 msgstr "Prieèinok:|#P"
 
-#: src/support/package.C:609 src/support/package.C:644
+#: src/support/package.C:637 src/support/package.C:672
 msgid " does not contain "
 msgstr ""
 
-#: src/support/package.C:636
+#: src/support/package.C:664
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
 
-#: src/support/package.C:642 src/support/package.C:670
+#: src/support/package.C:670 src/support/package.C:698
 #, fuzzy
 msgid " environment variable.\n"
 msgstr "LYX_DIR_13x nastavenie prostredia nie je správne."
 
-#: src/support/package.C:664
+#: src/support/package.C:692
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
 
-#: src/support/package.C:671
+#: src/support/package.C:699
 #, fuzzy
 msgid " is not a directory."
 msgstr "Po¾adovaný je súbor, nie prieèinok."
@@ -12755,6 +12729,33 @@ msgstr "Znaèka nastavená"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "Funkcia Lyxu 'vrstva' (layout) potrebuje argument."
+
+#~ msgid "space, '#', '~', '$' or '%'."
+#~ msgstr "medzera, '#', '~', '$' a '%'."
+
+#~ msgid "directory name can't contain any of these characters:"
+#~ msgstr "názov prieèinku nemô¾e obsahova» tieto znaky:"
+
+#~ msgid "External material (*)"
+#~ msgstr "Externý materiál (*)"
+
+#~ msgid "Select external material"
+#~ msgstr "Vybra» externý materiál"
+
+#~ msgid "PostScript files (*.ps)"
+#~ msgstr "PostScript súbory (*.ps)"
+
+#~ msgid "Select a file to print to"
+#~ msgstr "Zvoli» súbor pre výstup tlaèe"
+
+#~ msgid "Select Database"
+#~ msgstr "Zvoli» databázu"
+
+#~ msgid "*.bib| BibTeX Databases (*.bib)"
+#~ msgstr "*.bib| BibTeX databázy (*.bib)"
+
+#~ msgid "Select BibTeX-Style"
+#~ msgstr "Zvoli» BibTeX ¹týl"
 
 #~ msgid "Kill processes:|#K"
 #~ msgstr "Zabi» procesy:|#Z"

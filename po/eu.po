@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-30 16:43+0200\n"
+"POT-Creation-Date: 2005-05-30 11:40+0200\n"
 "PO-Revision-Date: 2005-03-31 12:21+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -23,7 +23,8 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -2147,7 +2148,7 @@ msgid "&Landscape"
 msgstr "&Horizontala"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:35 src/frontends/xforms/FormAboutlyx.C:40
+#: src/frontends/qt2/QAbout.C:36 src/frontends/xforms/FormAboutlyx.C:40
 msgid "About LyX"
 msgstr "LyX-i buruz"
 
@@ -2328,7 +2329,7 @@ msgstr "Aukeratu estilo-fitxategia"
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:148
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:945
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:950
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -3557,7 +3558,12 @@ msgid ""
 "paths. Useful if you're using the Cygwin teTeX rather than a native Windows "
 "MikTeX. Note, however, that you'll need to write shell script wrappers for "
 "all your converters."
-msgstr "Hautatu LyX-ek Cygwin estiloko bide-izenak idatzi behar dituen zehazteko (Windows estiloko bide-izenen ordez). Windows-eko MikTeX erabili ordez Cygwin-eko teTeX erabiltzean hau hautatzea aholkatzen da. Oharra: hala ere komando lerroko scripta idatzi beharko duzu zure bihurtzaileak erabili erabiltzeko."
+msgstr ""
+"Hautatu LyX-ek Cygwin estiloko bide-izenak idatzi behar dituen zehazteko "
+"(Windows estiloko bide-izenen ordez). Windows-eko MikTeX erabili ordez "
+"Cygwin-eko teTeX erabiltzean hau hautatzea aholkatzen da. Oharra: hala ere "
+"komando lerroko scripta idatzi beharko duzu zure bihurtzaileak erabili "
+"erabiltzeko."
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
 msgid "Date Format"
@@ -3748,7 +3754,8 @@ msgstr "DVI ikustailearen paper-tamaina aukerak:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr "DVI ikustaile batzuen paper-tamaina ezartzeko hautazko bandera (-paper)"
+msgstr ""
+"DVI ikustaile batzuen paper-tamaina ezartzeko hautazko bandera (-paper)"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
 msgid "CheckTeX start options and flags"
@@ -4207,7 +4214,8 @@ msgstr "&Esportatu formatua:"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr "Prozesatu komando honekin aldatutako artxibategia ($$FName= fitxategi-izena)"
+msgstr ""
+"Prozesatu komando honekin aldatutako artxibategia ($$FName= fitxategi-izena)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4541,7 +4549,8 @@ msgid "&View"
 msgstr "&Ikusi"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Erakutsi markatutako fitxategi-edukia. Fitxategia bide-izenarekin erakusten "
 "bada soilik."
@@ -4864,7 +4873,7 @@ msgstr "Azpiazpiatala*"
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
 #: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/scrclass.inc:230
-#: src/buffer.C:1533
+#: src/buffer.C:1536
 msgid "Abstract"
 msgstr "Laburpena"
 
@@ -5097,7 +5106,7 @@ msgid "Acknowledgements"
 msgstr "Aitorpenak"
 
 #: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
-#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1544
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1547
 msgid "References"
 msgstr "Erreferentziak"
 
@@ -7355,7 +7364,7 @@ msgid "About LyX|X"
 msgstr "LyX-i buruz|L"
 
 #: src/BufferView.C:298 src/bufferlist.C:400 src/bufferlist.C:512
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:222
 msgid "Error!"
 msgstr "Errorea!"
 
@@ -7363,7 +7372,7 @@ msgstr "Errorea!"
 msgid "Specified file is unreadable: "
 msgstr "Zehaztutako fitxategia irakurtezina da: "
 
-#: src/BufferView.C:308 src/lyx_cb.C:451
+#: src/BufferView.C:308 src/lyx_cb.C:455
 msgid "Error! Cannot open specified file:"
 msgstr "Errorea! Ezin ireki zehaztutako fitxategia:"
 
@@ -7417,25 +7426,26 @@ msgstr "Mugitu liburu-markara "
 msgid "Select LyX document to insert"
 msgstr "Hautatu txertatzeko LyX dokumentua"
 
-#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:61
-#: src/frontends/controllers/ControlExternal.C:150
+#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:59
+#: src/frontends/controllers/ControlBibtex.C:69
+#: src/frontends/controllers/ControlExternal.C:147
 #: src/frontends/controllers/ControlGraphics.C:89
-#: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:113
-#: src/lyxfunc.C:1637 src/lyxfunc.C:1677 src/lyxfunc.C:1783
+#: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:117
+#: src/lyxfunc.C:1642 src/lyxfunc.C:1682 src/lyxfunc.C:1788
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1679 src/lyxfunc.C:1785
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1684 src/lyxfunc.C:1790
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1644
-#: src/lyxfunc.C:1684
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:127 src/lyxfunc.C:1649
+#: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX dokumentuak (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1693 src/lyxfunc.C:1713
-#: src/lyxfunc.C:1802 src/lyxfunc.C:1829 src/lyxfunc.C:1839
+#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/lyxfunc.C:1807 src/lyxfunc.C:1834 src/lyxfunc.C:1844
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
@@ -7448,8 +7458,8 @@ msgstr "%1$s dokumentua txertatzen..."
 msgid "Inserting document "
 msgstr "Dokumentua txertatzen "
 
-#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:990
-#: src/lyxfunc.C:1151 src/lyxfunc.C:1726
+#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:995
+#: src/lyxfunc.C:1156 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
@@ -7458,7 +7468,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1738
+#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Dokumentua "
 
@@ -8244,6 +8254,11 @@ msgstr "LinuxDoc...|L"
 msgid "Emphasize"
 msgstr "Enfasia"
 
+#: src/SpellBase.C:48
+#, fuzzy
+msgid "Native OS API not yet supported."
+msgstr "Onartu gabea"
+
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
 msgstr "Ezin ezarri diseinua "
@@ -8331,7 +8346,7 @@ msgid "Unknown token: "
 msgstr "Token ezezaguna: "
 
 #. future format
-#: src/buffer.C:1212 src/buffer.C:1267
+#: src/buffer.C:1212 src/buffer.C:1270
 msgid "Warning!"
 msgstr "Abisua!"
 
@@ -8339,55 +8354,57 @@ msgstr "Abisua!"
 msgid ""
 "The file was created with a newer version of LyX. This is likely to cause "
 "problems."
-msgstr "Dokumentua LyX bertsio berriagoarekin sortu da. Horrek arazoak sor ditzake."
+msgstr ""
+"Dokumentua LyX bertsio berriagoarekin sortu da. Horrek arazoak sor ditzake."
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1219 src/buffer.C:1227 src/buffer.C:1241 src/buffer.C:1273
-#: src/buffer.C:1276
+#: src/buffer.C:1219 src/buffer.C:1226 src/buffer.C:1244 src/buffer.C:1276
+#: src/buffer.C:1279
 msgid "ERROR!"
 msgstr "ERROREA!"
 
 #: src/buffer.C:1220
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr "LyX egitura zaharreko fitxategia aurkitu da. Irakurtzeko erabili  LyX 0.10.x!"
+msgstr ""
+"LyX egitura zaharreko fitxategia aurkitu da. Irakurtzeko erabili  LyX 0.10.x!"
 
-#: src/buffer.C:1228
+#: src/buffer.C:1227
 msgid "Can't find conversion script."
 msgstr "Ezin da aurkitu bihurtze script-a."
 
-#: src/buffer.C:1242
+#: src/buffer.C:1245
 msgid "An error occured while running the conversion script."
 msgstr "Errorea gertatu da bihurtze script-a exekutatzean."
 
-#: src/buffer.C:1268
+#: src/buffer.C:1271
 msgid "Reading of document is not complete"
 msgstr "Dokumentuaren irakurketa ez da osatu"
 
-#: src/buffer.C:1269
+#: src/buffer.C:1272
 msgid "Maybe the document is truncated"
 msgstr "Dokumentua aldatuta egon daiteke"
 
-#: src/buffer.C:1273
+#: src/buffer.C:1276
 msgid "Not a LyX file!"
 msgstr "Ez da LyX fitxategia!"
 
-#: src/buffer.C:1276
+#: src/buffer.C:1279
 msgid "Unable to read file!"
 msgstr "Ezin fitxategia irakurri!"
 
-#: src/buffer.C:1536
+#: src/buffer.C:1539
 msgid "Abstract: "
 msgstr "Laburpena: "
 
-#: src/buffer.C:1547
+#: src/buffer.C:1550
 msgid "References: "
 msgstr "Erreferentziak: "
 
-#: src/buffer.C:1661
+#: src/buffer.C:1664
 msgid "Error: Cannot write file:"
 msgstr "Errorea: ezin da fitxategia idatzi :"
 
-#: src/buffer.C:1691
+#: src/buffer.C:1694
 msgid "Error: Cannot open file: "
 msgstr "Errorea: ezin da fitxategia ireki: "
 
@@ -8470,7 +8487,7 @@ msgstr "Kargatu honen ordez?"
 msgid "Unable to open template"
 msgstr "Ezin txantiloia ireki"
 
-#: src/bufferlist.C:545 src/lyxfunc.C:1815
+#: src/bufferlist.C:545 src/lyxfunc.C:1820
 msgid "Document is already open:"
 msgstr "Dokumentua dagoeneko irekita:"
 
@@ -8776,7 +8793,8 @@ msgstr "Mesedez, ongi instalatu \n"
 
 #: src/frontends/controllers/ControlAboutlyx.C:50
 msgid "amount of work other people have done for the LyX project."
-msgstr "beste pertsona batzuek LyX proiektuan eginiko lan ikaragarria eskertzeko."
+msgstr ""
+"beste pertsona batzuek LyX proiektuan eginiko lan ikaragarria eskertzeko."
 
 #: src/frontends/controllers/ControlAboutlyx.C:57
 msgid ""
@@ -8831,6 +8849,14 @@ msgstr "Liburutegien direktorioa: "
 #: src/frontends/controllers/ControlAboutlyx.C:86
 msgid "User directory: "
 msgstr "Erabiltzailearen direktorioa: "
+
+#: src/frontends/controllers/ControlBibtex.C:62
+msgid "Select a BibTeX database to add"
+msgstr "Hautatu BibTeX datu-basea gehitzeko"
+
+#: src/frontends/controllers/ControlBibtex.C:72
+msgid "Select a BibTeX style"
+msgstr "Hautatu BibTeX estiloa"
 
 #: src/frontends/controllers/ControlCharacter.C:64
 msgid "Character set"
@@ -9031,7 +9057,7 @@ msgstr "Katea ordeztu da."
 msgid " strings have been replaced."
 msgstr " kate ordeztu dira."
 
-#: src/frontends/controllers/ControlSpellchecker.C:102
+#: src/frontends/controllers/ControlSpellchecker.C:117
 msgid ""
 "The spell-checker could not be started.\n"
 "Maybe it is mis-configured."
@@ -9039,12 +9065,12 @@ msgstr ""
 "Zuzentzailea ez da abiatu.\n"
 "Agian gaizki konfiguratua dago."
 
-#: src/frontends/controllers/ControlSpellchecker.C:105
-#: src/frontends/controllers/ControlSpellchecker.C:198
+#: src/frontends/controllers/ControlSpellchecker.C:120
+#: src/frontends/controllers/ControlSpellchecker.C:213
 msgid "The spell-checker has failed"
 msgstr "Zuzentzaielak huts egin du"
 
-#: src/frontends/controllers/ControlSpellchecker.C:192
+#: src/frontends/controllers/ControlSpellchecker.C:207
 msgid ""
 "The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
@@ -9052,21 +9078,21 @@ msgstr ""
 "Zerbaitengatik zuzentzailea bertan hil da.\n"
 "Agian hilda izan da."
 
-#: src/frontends/controllers/ControlSpellchecker.C:214
+#: src/frontends/controllers/ControlSpellchecker.C:229
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d hitz aztertuta."
 
-#: src/frontends/controllers/ControlSpellchecker.C:218
-#: src/frontends/controllers/ControlSpellchecker.C:224
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#: src/frontends/controllers/ControlSpellchecker.C:239
 msgid "One word checked."
 msgstr "Hitz bat aztertuta."
 
-#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:237
 msgid " words checked."
 msgstr " hitz aztertuta."
 
-#: src/frontends/controllers/ControlSpellchecker.C:229
+#: src/frontends/controllers/ControlSpellchecker.C:244
 msgid "Spell-checking is complete"
 msgstr "Zuzenketa amaituta."
 
@@ -9199,18 +9225,26 @@ msgstr "Arrosa"
 msgid "Yellow"
 msgstr "Horia"
 
-#: src/frontends/controllers/helper_funcs.C:59
-msgid "Filename can't contain any of these characters:"
+#: src/frontends/controllers/helper_funcs.C:55
+#, fuzzy
+msgid "space"
+msgstr "&Ordeztu"
+
+#: src/frontends/controllers/helper_funcs.C:103
+#, fuzzy
+msgid "Invalid filename"
+msgstr "Baliogabea "
+
+#: src/frontends/controllers/helper_funcs.C:104
+#: src/frontends/controllers/helper_funcs.C:168
+#, fuzzy
+msgid "No LaTeX support for paths containing any of these characters:\n"
 msgstr "Fitxategi-izenak ezin ditu honako karaktere hauek eduki:"
 
-#: src/frontends/controllers/helper_funcs.C:61
-#: src/frontends/controllers/helper_funcs.C:115
-msgid "space, '#', '~', '$' or '%'."
-msgstr "zuriunea, '#', '~', '$' edo '%'."
-
-#: src/frontends/controllers/helper_funcs.C:113
-msgid "directory name can't contain any of these characters:"
-msgstr "direktorio-izenak ezin ditu honako karaktere hauek eduki:"
+#: src/frontends/controllers/helper_funcs.C:167
+#, fuzzy
+msgid "Invalid directory name"
+msgstr "Matematika-erako ekintza baliogabea!"
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
@@ -9253,22 +9287,6 @@ msgstr "Fitxategi guztiak (*)"
 #: src/frontends/qt2/FileDialog.C:112
 msgid "Directories"
 msgstr "Direktorioak"
-
-#: src/frontends/qt2/QBibtexDialog.C:55
-msgid "BibTeX style files (*.bst)"
-msgstr "BibTeX estilo fitxategiak (*.bst)"
-
-#: src/frontends/qt2/QBibtexDialog.C:58
-msgid "Select a BibTeX style"
-msgstr "Hautatu BibTeX estiloa"
-
-#: src/frontends/qt2/QBibtexDialog.C:82
-msgid "BibTeX database files (*.bib)"
-msgstr "BibTeX datu-baseak (*.bib)"
-
-#: src/frontends/qt2/QBibtexDialog.C:82
-msgid "Select a BibTeX database to add"
-msgstr "Hautatu BibTeX datu-basea gehitzeko"
 
 #: src/frontends/qt2/QCharacter.C:35 src/frontends/xforms/FormCharacter.C:38
 msgid "Character Layout"
@@ -9438,17 +9456,9 @@ msgstr "Oso marjina zabalak"
 msgid "LaTeX ERT"
 msgstr "LaTeX ERT"
 
-#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:214
+#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:217
 msgid "External"
 msgstr "Kanpokoa"
-
-#: src/frontends/qt2/QExternalDialog.C:85
-msgid "External material (*)"
-msgstr "Kanpo-materiala (*)"
-
-#: src/frontends/qt2/QExternalDialog.C:87
-msgid "Select external material"
-msgstr "Hautatu kanpo-materiala"
 
 #: src/frontends/qt2/QFloat.C:28
 msgid "Float Settings"
@@ -9462,14 +9472,6 @@ msgstr "Irudiak"
 #: src/frontends/qt2/QGraphics.C:239
 msgid "Scale%"
 msgstr "Eskala%"
-
-#: src/frontends/qt2/QLPrintDialog.C:51
-msgid "PostScript files (*.ps)"
-msgstr "PostScript fitxategiak (*.ps)"
-
-#: src/frontends/qt2/QLPrintDialog.C:53
-msgid "Select a file to print to"
-msgstr "Hautatu fitxategia inprimatzeko"
 
 #: src/frontends/qt2/QLog.C:33 src/frontends/xforms/FormLog.C:21
 msgid "LaTeX Log"
@@ -9644,27 +9646,27 @@ msgstr "Bihurtzaileak"
 msgid "File formats"
 msgstr "Fitxategi-formatuak"
 
-#: src/frontends/qt2/QPrefsDialog.C:463 src/frontends/qt2/QPrefsDialog.C:466
+#: src/frontends/qt2/QPrefsDialog.C:467 src/frontends/qt2/QPrefsDialog.C:470
 msgid "New"
 msgstr "Berria"
 
-#: src/frontends/qt2/QPrefsDialog.C:567
+#: src/frontends/qt2/QPrefsDialog.C:571
 msgid "Select a document templates directory"
 msgstr "Hautatu txantiloien direktorioa"
 
-#: src/frontends/qt2/QPrefsDialog.C:575
+#: src/frontends/qt2/QPrefsDialog.C:579
 msgid "Select a temporary directory"
 msgstr "Hautatu behin-behineko direktorioa"
 
-#: src/frontends/qt2/QPrefsDialog.C:583
+#: src/frontends/qt2/QPrefsDialog.C:587
 msgid "Select a backups directory"
 msgstr "Hautatu babes-kopien direktorioa"
 
-#: src/frontends/qt2/QPrefsDialog.C:591
+#: src/frontends/qt2/QPrefsDialog.C:595
 msgid "Select a document directory"
 msgstr "Hautatu dokumentu-direktorioa"
 
-#: src/frontends/qt2/QPrefsDialog.C:599
+#: src/frontends/qt2/QPrefsDialog.C:603
 msgid "Give a filename for the LyX server pipe"
 msgstr "Eman izena LyX zerbitzari kanalizazioari"
 
@@ -9901,22 +9903,6 @@ msgstr ""
 "Eguneratu TeX sistema, bib estilo-zerrendarako. TeX-ek aurki ditzakeen "
 "direktorioetako estiloak bakarrik zerrendatzen dira!"
 
-#: src/frontends/xforms/FormBibtex.C:105
-msgid "Select Database"
-msgstr "Hautatu datu-basea"
-
-#: src/frontends/xforms/FormBibtex.C:106
-msgid "*.bib| BibTeX Databases (*.bib)"
-msgstr "*.bib| BibTeX datu-baseak (*.bib)"
-
-#: src/frontends/xforms/FormBibtex.C:118
-msgid "Select BibTeX-Style"
-msgstr "Hautatu BibTeX estiloa"
-
-#: src/frontends/xforms/FormBibtex.C:119
-msgid "*.bst| BibTeX Styles (*.bst)"
-msgstr "*.bst| BibTeX estiloak (*.bst)"
-
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:162
 msgid "Add citation of the selected bibliography entry."
@@ -9983,7 +9969,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:204
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
-msgstr "Aukerako testua, zitazioaren aurretik agertzen dena, adib. \"ikus <Ref>\""
+msgstr ""
+"Aukerako testua, zitazioaren aurretik agertzen dena, adib. \"ikus <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:207
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
@@ -10031,7 +10018,8 @@ msgstr " Ezer ez| Txikiak | Oso txikiak | Oso zabalak "
 
 #: src/frontends/xforms/FormDocument.C:286
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr " ``testua'' | ''testua'' | ,,testua`` | ,,testua'' | <<testua>> | >>testua<< "
+msgstr ""
+" ``testua'' | ''testua'' | ,,testua`` | ,,testua'' | <<testua>> | >>testua<< "
 
 #: src/frontends/xforms/FormDocument.C:311
 msgid " Author-year | Numerical "
@@ -10421,7 +10409,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX objektuak kolorea eslei dakiokenak."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Aldatu LyX objektuen kolorea. Oharra: ondoren aldaketa \"Aplikatu\" behar "
 "duzu."
@@ -10571,7 +10560,8 @@ msgstr "Monokromoa|Gris-eskala|Kolorea|Ez erakutsi"
 
 #: src/frontends/xforms/FormPreferences.C:1981
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr " Lehenetsia | US gutuna | US legala | US exekutiboa | A3 | A4 | A5 | B5"
+msgstr ""
+" Lehenetsia | US gutuna | US legala | US exekutiboa | A3 | A4 | A5 | B5"
 
 #: src/frontends/xforms/FormPreferences.C:2240
 msgid "Default path"
@@ -10740,8 +10730,10 @@ msgstr "Bilatu gorantz."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid "Export the buffer to this format before running the command below on it."
-msgstr "Esportatu bufferra formatu honetara beheko komandoa exekutatu aurretik."
+msgid ""
+"Export the buffer to this format before running the command below on it."
+msgstr ""
+"Esportatu bufferra formatu honetara beheko komandoa exekutatu aurretik."
 
 #: src/frontends/xforms/FormSendto.C:48
 msgid ""
@@ -10831,7 +10823,8 @@ msgstr "Erakutsi bide-izen osoa edo edo fitxategi-izena soilik."
 
 #: src/frontends/xforms/FormTexinfo.C:54
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr "Exekutatu  \"TexFiles.sh\" script-a fitxategi-zerrenda berriro eraikitzeko."
+msgstr ""
+"Exekutatu  \"TexFiles.sh\" script-a fitxategi-zerrenda berriro eraikitzeko."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
@@ -11117,16 +11110,16 @@ msgstr "Ezin da fitxategia kopiatu"
 msgid "into tempdir"
 msgstr "behin-behineko direktorioan"
 
-#: src/insets/insetgraphics.C:682 src/insets/insetgraphics.C:686
+#: src/insets/insetgraphics.C:685 src/insets/insetgraphics.C:689
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Ezin da fitxategia bihurtu (ez dago fitxategirik?)"
 
-#: src/insets/insetgraphics.C:683
+#: src/insets/insetgraphics.C:686
 #, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr "Ez dago informaziorik %1$s-tik %2$s-ra bihurtzeko"
 
-#: src/insets/insetgraphics.C:687
+#: src/insets/insetgraphics.C:690
 msgid "No information for converting from "
 msgstr "Ez dago informaziorik nondik bihurtzen hasteko "
 
@@ -11396,140 +11389,140 @@ msgstr "theight%"
 msgid "pheight%"
 msgstr "pheight%"
 
-#: src/lyx_cb.C:88
+#: src/lyx_cb.C:92
 msgid "Save failed. Rename and try again?"
 msgstr "Huts egin du gordetzean. Berrizendatu eta berriz saiatu?"
 
-#: src/lyx_cb.C:90
+#: src/lyx_cb.C:94
 msgid "(If not, document is not saved.)"
 msgstr "(Bestela ez da dokumentua gordeko.)"
 
-#: src/lyx_cb.C:111
+#: src/lyx_cb.C:115
 msgid "Choose a filename to save document as"
 msgstr "Aukeratu izena dokumentua gordetzeko"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1639
+#: src/lyx_cb.C:119 src/lyxfunc.C:1644
 msgid "Templates|#T#t"
 msgstr "Txantiloiak|#T#t"
 
-#: src/lyx_cb.C:143
+#: src/lyx_cb.C:147
 msgid "Same name as document already has:"
 msgstr "Dokumentuaren izen berdina dauka:"
 
-#: src/lyx_cb.C:145
+#: src/lyx_cb.C:149
 msgid "Save anyway?"
 msgstr "Gorde dena den?"
 
-#: src/lyx_cb.C:151
+#: src/lyx_cb.C:155
 msgid "Another document with same name open!"
 msgstr "Izen bereko beste dokumentu bat irekita dago!"
 
-#: src/lyx_cb.C:153
+#: src/lyx_cb.C:157
 msgid "Replace with current document?"
 msgstr "Ordeztu uneko dokumentua?"
 
-#: src/lyx_cb.C:161
+#: src/lyx_cb.C:165
 msgid "Document renamed to '"
 msgstr "Dokumentua berrizendatua '"
 
-#: src/lyx_cb.C:162
+#: src/lyx_cb.C:166
 msgid "', but not saved..."
 msgstr "', baina ez da gorde..."
 
-#: src/lyx_cb.C:168
+#: src/lyx_cb.C:172
 msgid "Document already exists:"
 msgstr "Dokumentua dagoeneko existitzen da:"
 
-#: src/lyx_cb.C:170
+#: src/lyx_cb.C:174
 msgid "Replace file?"
 msgstr "Ordeztu fitxategia?"
 
-#: src/lyx_cb.C:183
+#: src/lyx_cb.C:187
 msgid "Document could not be saved!"
 msgstr "Ezin izan da dokumentua gorde!"
 
-#: src/lyx_cb.C:184
+#: src/lyx_cb.C:188
 msgid "Holding the old name."
 msgstr "Izen zaharrari eusten."
 
-#: src/lyx_cb.C:198
+#: src/lyx_cb.C:202
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex ez dabil SGML-en oinarritutako dokumentuekin."
 
-#: src/lyx_cb.C:207
+#: src/lyx_cb.C:211
 msgid "No warnings found."
 msgstr "Ez da abisurik aurkitu."
 
-#: src/lyx_cb.C:209
+#: src/lyx_cb.C:213
 msgid "One warning found."
 msgstr "Abisu bat aurkituta."
 
-#: src/lyx_cb.C:210
+#: src/lyx_cb.C:214
 msgid "Use `Navigate->Error' to find it."
 msgstr "Erabili 'Arakatu->Errorea' aurkitzeko."
 
-#: src/lyx_cb.C:213
+#: src/lyx_cb.C:217
 msgid " warnings found."
 msgstr " abisu aurkitu dira."
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:218
 msgid "Use `Navigate->Error' to find them."
 msgstr "Erabili 'Arakatu->Errorea' aurkitzeko."
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:220
 msgid "Chktex run successfully"
 msgstr "Chktex ongi exekutatu da"
 
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:222
 msgid "It seems chktex does not work."
 msgstr "Badirudi Chktex ez dabilela."
 
-#: src/lyx_cb.C:277
+#: src/lyx_cb.C:281
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autogordetzea %1$s"
 
-#: src/lyx_cb.C:279
+#: src/lyx_cb.C:283
 msgid "Auto-saving "
 msgstr "Autogordetzea "
 
-#: src/lyx_cb.C:319
+#: src/lyx_cb.C:323
 msgid "Autosave failed!"
 msgstr "Huts egin du automatikoki gordetzean!"
 
-#: src/lyx_cb.C:345
+#: src/lyx_cb.C:349
 msgid "Autosaving current document..."
 msgstr "Uneko dokumentua autogordetzen..."
 
-#: src/lyx_cb.C:427
+#: src/lyx_cb.C:431
 msgid "Select file to insert"
 msgstr "Hautatu fitxategia txertatzeko"
 
-#: src/lyx_cb.C:444
+#: src/lyx_cb.C:448
 msgid "Error! Specified file is unreadable: "
 msgstr "Errorea! Ezinezkoa da zehaztutako fitxategia irakurtzea: "
 
-#: src/lyx_cb.C:515 src/mathed/math_hullinset.C:814
+#: src/lyx_cb.C:519 src/mathed/math_hullinset.C:814
 msgid "Enter new label to insert:"
 msgstr "Idatzi etiketa berria txertatzeko:"
 
-#: src/lyx_cb.C:533
+#: src/lyx_cb.C:537
 msgid "Running configure..."
 msgstr "Konfigurazioa exekutatzen..."
 
-#: src/lyx_cb.C:546
+#: src/lyx_cb.C:550
 msgid "Reloading configuration..."
 msgstr "Konfigurazioa birkargatzen..."
 
-#: src/lyx_cb.C:548
+#: src/lyx_cb.C:552
 msgid "The system has been reconfigured."
 msgstr "Sistema birkonfiguratu da."
 
-#: src/lyx_cb.C:549
+#: src/lyx_cb.C:553
 msgid "You need to restart LyX to make use of any"
 msgstr "LyX berrabiarazi behar duzu"
 
-#: src/lyx_cb.C:550
+#: src/lyx_cb.C:554
 msgid "updated document class specifications."
 msgstr "eguneratutako dokumentu-klaseak erabiltzeko."
 
@@ -11696,11 +11689,13 @@ msgstr "Agindua falta da, --execute aukeraren atzetik"
 
 #: src/lyx_main.C:780
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr "Fitxategi mota falta, --export aukeraren atzetik [adibidez latex, ps...]"
+msgstr ""
+"Fitxategi mota falta, --export aukeraren atzetik [adibidez latex, ps...]"
 
 #: src/lyx_main.C:792
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr "Fitxategi mota falta, --import aukeraren atzetik [adibidez latex, ps...]"
+msgstr ""
+"Fitxategi mota falta, --import aukeraren atzetik [adibidez latex, ps...]"
 
 #: src/lyx_main.C:797
 msgid "Missing filename for --import"
@@ -11785,151 +11780,152 @@ msgstr "  Zenbakia %1$s"
 msgid "  Number "
 msgstr "  Zenbakia "
 
-#: src/lyxfunc.C:240
+#: src/lyxfunc.C:239
 msgid "Unknown function."
 msgstr "Funtzio ezezaguna."
 
-#: src/lyxfunc.C:273
+#: src/lyxfunc.C:272
 msgid "Nothing to do"
 msgstr "Zereginik ez"
 
-#: src/lyxfunc.C:289
+#: src/lyxfunc.C:288
 msgid "Unknown action"
 msgstr "Ekintza ezezaguna"
 
 #. the default error message if we disable the command
-#: src/lyxfunc.C:294
+#: src/lyxfunc.C:293
 msgid "Command disabled"
 msgstr "Komandoa desgaitua"
 
 #. no
-#: src/lyxfunc.C:306
+#: src/lyxfunc.C:305
 msgid "Document is read-only"
 msgstr "Dokumentua irakur-soilekoa da"
 
-#: src/lyxfunc.C:311
+#: src/lyxfunc.C:310
 msgid "Command not allowed without any document open"
 msgstr "Ezin komandoa erabili dokumentu bat ireki arte"
 
-#: src/lyxfunc.C:703
+#: src/lyxfunc.C:708
 #, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Funtzio ezezaguna (%1$s)"
 
-#: src/lyxfunc.C:707
+#: src/lyxfunc.C:712
 msgid "Unknown function ("
 msgstr "Funtzio ezezaguna"
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:990
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "%1$s dokumentua gordetzen ..."
 
-#: src/lyxfunc.C:988
+#: src/lyxfunc.C:993
 msgid "Saving document "
 msgstr "Dokumentua gordetzen "
 
-#: src/lyxfunc.C:994
+#: src/lyxfunc.C:999
 msgid " done."
 msgstr " eginda."
 
-#: src/lyxfunc.C:1134 src/mathed/formulabase.C:1032
+#: src/lyxfunc.C:1139 src/mathed/formulabase.C:1032
 msgid "Missing argument"
 msgstr "Argumentua falta"
 
-#: src/lyxfunc.C:1147
+#: src/lyxfunc.C:1152
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "%1$s laguntza-fitxategia irekitzen ..."
 
-#: src/lyxfunc.C:1150
+#: src/lyxfunc.C:1155
 msgid "Opening help file "
 msgstr "Laguntza-fitxategia irekitzen "
 
-#: src/lyxfunc.C:1364
+#: src/lyxfunc.C:1369
 msgid "This is only allowed in math mode!"
 msgstr "Matematika-eran soilik erabil daiteke!"
 
-#: src/lyxfunc.C:1406
+#: src/lyxfunc.C:1411
 msgid "Opening child document "
 msgstr "Haur-dokumentua irekitzen "
 
-#: src/lyxfunc.C:1480
+#: src/lyxfunc.C:1485
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxia: set-color <lyx_izena> <x11_izena>"
 
-#: src/lyxfunc.C:1494
+#: src/lyxfunc.C:1499
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Huts egin du \"%1$s\" kolorea ezartzean - kolorea definitu gabe dago edo "
 "ezin da berriz definitu"
 
-#: src/lyxfunc.C:1499
+#: src/lyxfunc.C:1504
 msgid "Set-color "
 msgstr "Huts egin du "
 
-#: src/lyxfunc.C:1500
+#: src/lyxfunc.C:1505
 msgid " failed - color is undefined or may not be redefined"
-msgstr " kolorea ezartzean - kolorea definitu gabe dago edo ezin da berriz definitu"
+msgstr ""
+" kolorea ezartzean - kolorea definitu gabe dago edo ezin da berriz definitu"
 
-#: src/lyxfunc.C:1635
+#: src/lyxfunc.C:1640
 msgid "Select template file"
 msgstr "Hautatu txantiloia"
 
-#: src/lyxfunc.C:1675
+#: src/lyxfunc.C:1680
 msgid "Select document to open"
 msgstr "Hautatu dokumentua irekitzeko"
 
-#: src/lyxfunc.C:1711
+#: src/lyxfunc.C:1716
 msgid "No such file"
 msgstr "Honelako fitxategirik ez"
 
-#: src/lyxfunc.C:1712
+#: src/lyxfunc.C:1717
 msgid "Start a new document with this filename ?"
 msgstr "Izen honekin dokumentu berri bat sortzea nahi?"
 
-#: src/lyxfunc.C:1724
+#: src/lyxfunc.C:1729
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
-#: src/lyxfunc.C:1726
+#: src/lyxfunc.C:1731
 msgid "Opening document "
 msgstr "Dokumentua irekitzen "
 
-#: src/lyxfunc.C:1736
+#: src/lyxfunc.C:1741
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentua irekia."
 
-#: src/lyxfunc.C:1738
+#: src/lyxfunc.C:1743
 msgid " opened."
 msgstr " irekia."
 
-#: src/lyxfunc.C:1742
+#: src/lyxfunc.C:1747
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Ezin izan da %1$s dokumentua ireki."
 
-#: src/lyxfunc.C:1745
+#: src/lyxfunc.C:1750
 msgid "Could not open document "
 msgstr "Ezin izan da dokumentua ireki "
 
-#: src/lyxfunc.C:1772
+#: src/lyxfunc.C:1777
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Hautatu %1$s fitxategia inportatzeko"
 
-#: src/lyxfunc.C:1776
+#: src/lyxfunc.C:1781
 msgid "Select "
 msgstr "Hautatu "
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1782
 msgid " file to import"
 msgstr " fitxategia inportatzeko"
 
-#: src/lyxfunc.C:1817
+#: src/lyxfunc.C:1822
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -11937,15 +11933,15 @@ msgstr ""
 "Dokumentu hau orain ixtea nahi duzu?\n"
 "('Ez' batek irekitako bertsiora aldatuko du)"
 
-#: src/lyxfunc.C:1837
+#: src/lyxfunc.C:1842
 msgid "A document by the name"
 msgstr "Izen honetako dokumentu bat"
 
-#: src/lyxfunc.C:1838
+#: src/lyxfunc.C:1843
 msgid "already exists. Overwrite?"
 msgstr "badago. Gainidatzi?"
 
-#: src/lyxfunc.C:1902
+#: src/lyxfunc.C:1907
 msgid "Welcome to LyX!"
 msgstr "Ongi etorri LyX-era!"
 
@@ -11967,7 +11963,8 @@ msgstr ""
 
 #: src/lyxrc.C:1874
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
-msgstr "Inprimatzeko zure programarik gustokoena, adibidez, \"dvips\", \"dvilj4\"."
+msgstr ""
+"Inprimatzeko zure programarik gustokoena, adibidez, \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:1878
 msgid "The option to print only even pages."
@@ -12025,7 +12022,8 @@ msgstr ""
 
 #: src/lyxrc.C:1926
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr "Inprimatze-programak sortutako fitxategiaren luzapena, normalean \".ps\"."
+msgstr ""
+"Inprimatze-programak sortutako fitxategiaren luzapena, normalean \".ps\"."
 
 #: src/lyxrc.C:1930
 msgid ""
@@ -12094,7 +12092,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Menu/popup-etako letra-tipoen kodeketa."
 
 #: src/lyxrc.C:1980
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Automatikoki gordetzeko birtartea (segundutan). 0 ipiniz gero ez da "
 "automatikoki gordeko."
@@ -12252,7 +12251,8 @@ msgstr ""
 "lehenetsi gisa."
 
 #: src/lyxrc.C:2075
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Zehaztu aukerako hiztegi pertsonalaren fitxategia. Adbz.  \".ispell_english"
 "\"."
@@ -12313,7 +12313,8 @@ msgstr ""
 "jatorrizko fitxategiaren direktorio berean gordeko du babes-kopia."
 
 #: src/lyxrc.C:2112
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Hautatu eskuinetik-ezkerrerako hizkuntzen (adib. arabiera, hebreeera) "
 "euskarria gaitzeko."
@@ -12354,11 +12355,14 @@ msgstr ""
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr "Hautatu dokumentuaren hasieran hizkuntza aldatzeko komandoa beharrezkoa bada."
+msgstr ""
+"Hautatu dokumentuaren hasieran hizkuntza aldatzeko komandoa beharrezkoa bada."
 
 #: src/lyxrc.C:2136
-msgid "Select if a language switching command is needed at the end of the document."
-msgstr "Hautatu dokumentuaren amaieran hizkuntza aldatzeko komandoa beharrezkoa bada."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
+msgstr ""
+"Hautatu dokumentuaren amaieran hizkuntza aldatzeko komandoa beharrezkoa bada."
 
 #: src/lyxrc.C:2140
 msgid ""
@@ -12409,11 +12413,13 @@ msgstr "Hitz kopuru maximoa, etiketa berri bateko katearen hasieraketarako."
 
 #: src/lyxrc.C:2182
 msgid "Shows a typeset preview of things such as math"
-msgstr "Gauzen konposaketaren aurrebista erakusten du, matematikarena bezalakoa."
+msgstr ""
+"Gauzen konposaketaren aurrebista erakusten du, matematikarena bezalakoa."
 
 #: src/lyxrc.C:2186
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr "Aurrebistako ekuazioek \"(#)\" motako etiketak dituzte, zenbakien ordez."
+msgstr ""
+"Aurrebistako ekuazioek \"(#)\" motako etiketak dituzte, zenbakien ordez."
 
 #: src/lyxrc.C:2190
 msgid "Scale the preview size to suit."
@@ -12423,7 +12429,9 @@ msgstr "Eskalatu aurrebista, bere tamaina egokitzeko"
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
-msgstr "Zehaztu itzazu zein direktorio inguruneko PATH aldagaian gehituta egon behar duten. Erabili jatorrizko Sist. Eragileak erabiltzen duen formatua."
+msgstr ""
+"Zehaztu itzazu zein direktorio inguruneko PATH aldagaian gehituta egon behar "
+"duten. Erabili jatorrizko Sist. Eragileak erabiltzen duen formatua."
 
 #: src/lyxtextclasslist.C:88
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -12521,48 +12529,51 @@ msgstr " Makroa: %s: "
 msgid " Macro: "
 msgstr " Makroa: "
 
-#: src/support/filetools.C:528
+#: src/support/filetools.C:537
 msgid "Error! Cannot open directory:"
 msgstr "Errorea! Ezin da direktorioa ireki:"
 
-#: src/support/filetools.C:550
+#: src/support/filetools.C:559
 msgid "Error! Could not remove file:"
 msgstr "Errorea! Ezin da fitxategia ezabatu:"
 
-#: src/support/filetools.C:574 src/support/filetools.C:612
+#: src/support/filetools.C:583 src/support/filetools.C:621
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Errorea! Ezin izan da behin-behineko direktorioa sortu:"
 
-#: src/support/filetools.C:591
+#: src/support/filetools.C:600
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Errorea! Ezin izan da behin-behineko direktorioa ezabatu:"
 
-#: src/support/filetools.C:666
+#: src/support/filetools.C:675
 msgid "Internal error!"
 msgstr "Barneko errorea!"
 
-#: src/support/filetools.C:667
+#: src/support/filetools.C:676
 msgid "Call to createDirectory with invalid name"
 msgstr "\"createDirektory\"-ri izen baliogabearekin deitzen"
 
-#: src/support/filetools.C:672
+#: src/support/filetools.C:681
 msgid "Error! Couldn't create directory:"
 msgstr "Abisua! Ezin izan da direktorioa sortu:"
 
-#: src/support/filetools.C:1440
+#: src/support/filetools.C:1449
 msgid "Could not delete auto-save file!"
 msgstr "Ezin izan da autogordetako fitxategia ezabatu!"
 
-#: src/support/package.C:374
+#: src/support/package.C:402
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1%"
-msgstr "Ezin izan da LyX liburutegien bide-izena zehaztu (%1% komando lerrotik)"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1%"
+msgstr ""
+"Ezin izan da LyX liburutegien bide-izena zehaztu (%1% komando lerrotik)"
 
-#: src/support/package.C:379
+#: src/support/package.C:407
 msgid "Unable to determine the path to the LyX binary from the command line "
-msgstr "Ezin izan da LyX liburutegien bide-izena zehaztu komando lerro honetatik "
+msgstr ""
+"Ezin izan da LyX liburutegien bide-izena zehaztu komando lerro honetatik "
 
-#: src/support/package.C:505
+#: src/support/package.C:533
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12573,21 +12584,23 @@ msgstr ""
 "Ezin izan da egin den bilaketako sistemako direktorioa zehaztu\n"
 "\t%1%\n"
 "Saiatu '-sysdir' komando lerroko parametroarekin edo ezarri inguruneko "
-"LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' fitxategia duena)."
+"LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' "
+"fitxategia duena)."
 
-#: src/support/package.C:515
+#: src/support/package.C:543
 msgid "Unable to determine the system directory having searched\n"
 msgstr "Ezin izan da egin den bilaketako sistemako direktorioa zehaztu\n"
 
-#: src/support/package.C:518
+#: src/support/package.C:546
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 "Saiatu '-sysdir' komando lerroko parametroarekin edo ezarri inguruneko "
-"LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' fitxategia duena)."
+"LYX_DIR_13x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' "
+"fitxategia duena)."
 
-#: src/support/package.C:601
+#: src/support/package.C:629
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12596,24 +12609,24 @@ msgstr ""
 "%1% aldatzaile baliogabea.\n"
 "%2% direktorioak ez dauka %3%."
 
-#: src/support/package.C:606 src/support/package.C:641
-#: src/support/package.C:669
+#: src/support/package.C:634 src/support/package.C:669
+#: src/support/package.C:697
 msgid "Invalid "
 msgstr "Baliogabea "
 
-#: src/support/package.C:607
+#: src/support/package.C:635
 msgid " switch.\n"
 msgstr " aldatzailea.\n"
 
-#: src/support/package.C:608 src/support/package.C:643
+#: src/support/package.C:636 src/support/package.C:671
 msgid "Directory "
 msgstr "Direktorioa "
 
-#: src/support/package.C:609 src/support/package.C:644
+#: src/support/package.C:637 src/support/package.C:672
 msgid " does not contain "
 msgstr " ez dauka "
 
-#: src/support/package.C:636
+#: src/support/package.C:664
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12622,11 +12635,11 @@ msgstr ""
 "Inguruneko %1% aldagi baliogabea.\n"
 "%2% direktorioak ez dauka %3%."
 
-#: src/support/package.C:642 src/support/package.C:670
+#: src/support/package.C:670 src/support/package.C:698
 msgid " environment variable.\n"
 msgstr " inguruneko aldagaia.\n"
 
-#: src/support/package.C:664
+#: src/support/package.C:692
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12635,7 +12648,7 @@ msgstr ""
 "Inguruneko %1% aldagaia baliogabea da.\n"
 "%2% ez da direktorioa."
 
-#: src/support/package.C:671
+#: src/support/package.C:699
 msgid " is not a directory."
 msgstr " ez da direktorioa."
 
@@ -12655,7 +12668,8 @@ msgstr "Lortu LyX-en (< 1.1.x) bertsio zaharkituago bat bihurketarako!"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr "Paragrafo baten hasieran ezin duzu zuriune bat sartu. Irakurri Tutoretza."
+msgstr ""
+"Paragrafo baten hasieran ezin duzu zuriune bat sartu. Irakurri Tutoretza."
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -12730,3 +12744,38 @@ msgstr "Marka ezarrita"
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-eko 'layout' funtzioak argumentu bat behar du."
 
+#~ msgid "space, '#', '~', '$' or '%'."
+#~ msgstr "zuriunea, '#', '~', '$' edo '%'."
+
+#~ msgid "directory name can't contain any of these characters:"
+#~ msgstr "direktorio-izenak ezin ditu honako karaktere hauek eduki:"
+
+#~ msgid "BibTeX style files (*.bst)"
+#~ msgstr "BibTeX estilo fitxategiak (*.bst)"
+
+#~ msgid "BibTeX database files (*.bib)"
+#~ msgstr "BibTeX datu-baseak (*.bib)"
+
+#~ msgid "External material (*)"
+#~ msgstr "Kanpo-materiala (*)"
+
+#~ msgid "Select external material"
+#~ msgstr "Hautatu kanpo-materiala"
+
+#~ msgid "PostScript files (*.ps)"
+#~ msgstr "PostScript fitxategiak (*.ps)"
+
+#~ msgid "Select a file to print to"
+#~ msgstr "Hautatu fitxategia inprimatzeko"
+
+#~ msgid "Select Database"
+#~ msgstr "Hautatu datu-basea"
+
+#~ msgid "*.bib| BibTeX Databases (*.bib)"
+#~ msgstr "*.bib| BibTeX datu-baseak (*.bib)"
+
+#~ msgid "Select BibTeX-Style"
+#~ msgstr "Hautatu BibTeX estiloa"
+
+#~ msgid "*.bst| BibTeX Styles (*.bst)"
+#~ msgstr "*.bst| BibTeX estiloak (*.bst)"

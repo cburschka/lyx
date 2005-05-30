@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-30 16:43+0200\n"
+"POT-Creation-Date: 2005-05-30 11:40+0200\n"
 "PO-Revision-Date: 2004-01-08 21:46+0200\n"
 "Last-Translator: Claudiu Costin <claudiuc@kde.org>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -2150,7 +2150,7 @@ msgid "&Landscape"
 msgstr "&Peisaj"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
-#: src/frontends/qt2/QAbout.C:35 src/frontends/xforms/FormAboutlyx.C:40
+#: src/frontends/qt2/QAbout.C:36 src/frontends/xforms/FormAboutlyx.C:40
 msgid "About LyX"
 msgstr "Despre LyX"
 
@@ -2336,7 +2336,7 @@ msgstr "Alegeþi un fiºier de stil"
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:148
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:945
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:950
 msgid "Cancel"
 msgstr "Renunþã"
 
@@ -4896,7 +4896,7 @@ msgstr "Subsubsecþiune*"
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
 #: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/scrclass.inc:230
-#: src/buffer.C:1533
+#: src/buffer.C:1536
 msgid "Abstract"
 msgstr "Abstract"
 
@@ -5129,7 +5129,7 @@ msgid "Acknowledgements"
 msgstr "Acknowledgements"
 
 #: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
-#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1544
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1547
 msgid "References"
 msgstr "Referinþe"
 
@@ -7397,7 +7397,7 @@ msgid "About LyX|X"
 msgstr "Despre LyX|X"
 
 #: src/BufferView.C:298 src/bufferlist.C:400 src/bufferlist.C:512
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:222
 msgid "Error!"
 msgstr "Eroare!"
 
@@ -7405,7 +7405,7 @@ msgstr "Eroare!"
 msgid "Specified file is unreadable: "
 msgstr "Fiºierul specificat nu poate fi citit: "
 
-#: src/BufferView.C:308 src/lyx_cb.C:451
+#: src/BufferView.C:308 src/lyx_cb.C:455
 msgid "Error! Cannot open specified file:"
 msgstr "Eroare! Nu pot deschide fiºierul specificat:"
 
@@ -7459,25 +7459,26 @@ msgstr "Am sãrit la semnul de carte "
 msgid "Select LyX document to insert"
 msgstr "Selectaþi documentul LyX de inserat"
 
-#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:61
-#: src/frontends/controllers/ControlExternal.C:150
+#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:59
+#: src/frontends/controllers/ControlBibtex.C:69
+#: src/frontends/controllers/ControlExternal.C:147
 #: src/frontends/controllers/ControlGraphics.C:89
-#: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:113
-#: src/lyxfunc.C:1637 src/lyxfunc.C:1677 src/lyxfunc.C:1783
+#: src/frontends/controllers/ControlInclude.C:66 src/lyx_cb.C:117
+#: src/lyxfunc.C:1642 src/lyxfunc.C:1682 src/lyxfunc.C:1788
 msgid "Documents|#o#O"
 msgstr "Documente|#o#O"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1679 src/lyxfunc.C:1785
+#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1684 src/lyxfunc.C:1790
 msgid "Examples|#E#e"
 msgstr "Exemple|#E#e"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:123 src/lyxfunc.C:1644
-#: src/lyxfunc.C:1684
+#: src/BufferView_pimpl.C:871 src/lyx_cb.C:127 src/lyxfunc.C:1649
+#: src/lyxfunc.C:1689
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| Documente LyX (*.lyx)"
 
-#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1693 src/lyxfunc.C:1713
-#: src/lyxfunc.C:1802 src/lyxfunc.C:1829 src/lyxfunc.C:1839
+#: src/BufferView_pimpl.C:880 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/lyxfunc.C:1807 src/lyxfunc.C:1834 src/lyxfunc.C:1844
 msgid "Canceled."
 msgstr "Anulat."
 
@@ -7490,8 +7491,8 @@ msgstr "Inserez documentul %1$s..."
 msgid "Inserting document "
 msgstr "Inserez documentul "
 
-#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:990
-#: src/lyxfunc.C:1151 src/lyxfunc.C:1726
+#: src/BufferView_pimpl.C:895 src/importer.C:43 src/lyxfunc.C:995
+#: src/lyxfunc.C:1156 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
@@ -7500,7 +7501,7 @@ msgstr "..."
 msgid "Document %1$s inserted."
 msgstr "Am inserat documentul %1$s."
 
-#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1738
+#: src/BufferView_pimpl.C:904 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Documentul "
 
@@ -8288,6 +8289,11 @@ msgstr "LinuxDoc...|L"
 msgid "Emphasize"
 msgstr "Evidenþiere"
 
+#: src/SpellBase.C:48
+#, fuzzy
+msgid "Native OS API not yet supported."
+msgstr "Nu este încã suportat"
+
 #: src/buffer.C:356
 #, fuzzy
 msgid "Couldn't set the layout for "
@@ -8377,7 +8383,7 @@ msgid "Unknown token: "
 msgstr "necunoscut"
 
 #. future format
-#: src/buffer.C:1212 src/buffer.C:1267
+#: src/buffer.C:1212 src/buffer.C:1270
 msgid "Warning!"
 msgstr "Atenþie!"
 
@@ -8388,8 +8394,8 @@ msgid ""
 msgstr ""
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1219 src/buffer.C:1227 src/buffer.C:1241 src/buffer.C:1273
-#: src/buffer.C:1276
+#: src/buffer.C:1219 src/buffer.C:1226 src/buffer.C:1244 src/buffer.C:1276
+#: src/buffer.C:1279
 msgid "ERROR!"
 msgstr "Eroare!"
 
@@ -8397,49 +8403,49 @@ msgstr "Eroare!"
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 
-#: src/buffer.C:1228
+#: src/buffer.C:1227
 msgid "Can't find conversion script."
 msgstr ""
 
-#: src/buffer.C:1242
+#: src/buffer.C:1245
 msgid "An error occured while running the conversion script."
 msgstr ""
 
-#: src/buffer.C:1268
+#: src/buffer.C:1271
 #, fuzzy
 msgid "Reading of document is not complete"
 msgstr "Documentul specificat nu este un document LyX."
 
-#: src/buffer.C:1269
+#: src/buffer.C:1272
 #, fuzzy
 msgid "Maybe the document is truncated"
 msgstr "Mutã cursorul documentului la referinþã"
 
-#: src/buffer.C:1273
+#: src/buffer.C:1276
 #, fuzzy
 msgid "Not a LyX file!"
 msgstr "Alegeþi un fiºier de stil"
 
-#: src/buffer.C:1276
+#: src/buffer.C:1279
 #, fuzzy
 msgid "Unable to read file!"
 msgstr "Listã de slide-uri"
 
-#: src/buffer.C:1536
+#: src/buffer.C:1539
 #, fuzzy
 msgid "Abstract: "
 msgstr "Abstract "
 
-#: src/buffer.C:1547
+#: src/buffer.C:1550
 #, fuzzy
 msgid "References: "
 msgstr "Referinþe"
 
-#: src/buffer.C:1661
+#: src/buffer.C:1664
 msgid "Error: Cannot write file:"
 msgstr ""
 
-#: src/buffer.C:1691
+#: src/buffer.C:1694
 #, fuzzy
 msgid "Error: Cannot open file: "
 msgstr "Nu pot deschide fiºierul"
@@ -8532,7 +8538,7 @@ msgstr "Încarcã fiºierul"
 msgid "Unable to open template"
 msgstr "Modele disponibile"
 
-#: src/bufferlist.C:545 src/lyxfunc.C:1815
+#: src/bufferlist.C:545 src/lyxfunc.C:1820
 #, fuzzy
 msgid "Document is already open:"
 msgstr "Documente"
@@ -8910,6 +8916,16 @@ msgstr "&Utilizeazã director temporar"
 msgid "User directory: "
 msgstr "&Utilizeazã director temporar"
 
+#: src/frontends/controllers/ControlBibtex.C:62
+#, fuzzy
+msgid "Select a BibTeX database to add"
+msgstr "Baza de date BibTeX de utilizat"
+
+#: src/frontends/controllers/ControlBibtex.C:72
+#, fuzzy
+msgid "Select a BibTeX style"
+msgstr "Comutã stilul TeX"
+
 #: src/frontends/controllers/ControlCharacter.C:64
 #, fuzzy
 msgid "Character set"
@@ -9139,38 +9155,38 @@ msgstr "Înlocuieºte"
 msgid " strings have been replaced."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:102
+#: src/frontends/controllers/ControlSpellchecker.C:117
 msgid ""
 "The spell-checker could not be started.\n"
 "Maybe it is mis-configured."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:105
-#: src/frontends/controllers/ControlSpellchecker.C:198
+#: src/frontends/controllers/ControlSpellchecker.C:120
+#: src/frontends/controllers/ControlSpellchecker.C:213
 msgid "The spell-checker has failed"
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:192
+#: src/frontends/controllers/ControlSpellchecker.C:207
 msgid ""
 "The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:214
+#: src/frontends/controllers/ControlSpellchecker.C:229
 #, c-format
 msgid "%1$d words checked."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:218
-#: src/frontends/controllers/ControlSpellchecker.C:224
+#: src/frontends/controllers/ControlSpellchecker.C:233
+#: src/frontends/controllers/ControlSpellchecker.C:239
 msgid "One word checked."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:222
+#: src/frontends/controllers/ControlSpellchecker.C:237
 msgid " words checked."
 msgstr ""
 
-#: src/frontends/controllers/ControlSpellchecker.C:229
+#: src/frontends/controllers/ControlSpellchecker.C:244
 #, fuzzy
 msgid "Spell-checking is complete"
 msgstr "Verificã ortografia|#S"
@@ -9326,17 +9342,23 @@ msgstr "Maghiar"
 msgid "Yellow"
 msgstr "De desubt"
 
-#: src/frontends/controllers/helper_funcs.C:59
-msgid "Filename can't contain any of these characters:"
+#: src/frontends/controllers/helper_funcs.C:55
+#, fuzzy
+msgid "space"
+msgstr "În&locuieºte"
+
+#: src/frontends/controllers/helper_funcs.C:103
+#, fuzzy
+msgid "Invalid filename"
+msgstr "Fiºiere instalate"
+
+#: src/frontends/controllers/helper_funcs.C:104
+#: src/frontends/controllers/helper_funcs.C:168
+msgid "No LaTeX support for paths containing any of these characters:\n"
 msgstr ""
 
-#: src/frontends/controllers/helper_funcs.C:61
-#: src/frontends/controllers/helper_funcs.C:115
-msgid "space, '#', '~', '$' or '%'."
-msgstr ""
-
-#: src/frontends/controllers/helper_funcs.C:113
-msgid "directory name can't contain any of these characters:"
+#: src/frontends/controllers/helper_funcs.C:167
+msgid "Invalid directory name"
 msgstr ""
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
@@ -9387,26 +9409,6 @@ msgstr ""
 #, fuzzy
 msgid "Directories"
 msgstr "Director:|#D"
-
-#: src/frontends/qt2/QBibtexDialog.C:55
-#, fuzzy
-msgid "BibTeX style files (*.bst)"
-msgstr "Stiluri BibTeX"
-
-#: src/frontends/qt2/QBibtexDialog.C:58
-#, fuzzy
-msgid "Select a BibTeX style"
-msgstr "Comutã stilul TeX"
-
-#: src/frontends/qt2/QBibtexDialog.C:82
-#, fuzzy
-msgid "BibTeX database files (*.bib)"
-msgstr "Adaugã un fiºier bazã de date BibTeX"
-
-#: src/frontends/qt2/QBibtexDialog.C:82
-#, fuzzy
-msgid "Select a BibTeX database to add"
-msgstr "Baza de date BibTeX de utilizat"
 
 #: src/frontends/qt2/QCharacter.C:35 src/frontends/xforms/FormCharacter.C:38
 #, fuzzy
@@ -9606,20 +9608,10 @@ msgstr ""
 msgid "LaTeX ERT"
 msgstr "LaTeX"
 
-#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:214
+#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:217
 #, fuzzy
 msgid "External"
 msgstr "Literal"
-
-#: src/frontends/qt2/QExternalDialog.C:85
-#, fuzzy
-msgid "External material (*)"
-msgstr "Material extern"
-
-#: src/frontends/qt2/QExternalDialog.C:87
-#, fuzzy
-msgid "Select external material"
-msgstr "Material extern"
 
 #: src/frontends/qt2/QFloat.C:28
 #, fuzzy
@@ -9636,15 +9628,6 @@ msgstr "&Graficã"
 #, fuzzy
 msgid "Scale%"
 msgstr "Smaller"
-
-#: src/frontends/qt2/QLPrintDialog.C:51
-msgid "PostScript files (*.ps)"
-msgstr ""
-
-#: src/frontends/qt2/QLPrintDialog.C:53
-#, fuzzy
-msgid "Select a file to print to"
-msgstr "Selectaþi fiºierul de ieºire"
 
 #: src/frontends/qt2/QLog.C:33 src/frontends/xforms/FormLog.C:21
 #, fuzzy
@@ -9837,30 +9820,30 @@ msgstr "&Convertoare"
 msgid "File formats"
 msgstr "Formate de &fiºier"
 
-#: src/frontends/qt2/QPrefsDialog.C:463 src/frontends/qt2/QPrefsDialog.C:466
+#: src/frontends/qt2/QPrefsDialog.C:467 src/frontends/qt2/QPrefsDialog.C:470
 #, fuzzy
 msgid "New"
 msgstr "&Nou"
 
-#: src/frontends/qt2/QPrefsDialog.C:567
+#: src/frontends/qt2/QPrefsDialog.C:571
 msgid "Select a document templates directory"
 msgstr ""
 
-#: src/frontends/qt2/QPrefsDialog.C:575
+#: src/frontends/qt2/QPrefsDialog.C:579
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "&Utilizeazã director temporar"
 
-#: src/frontends/qt2/QPrefsDialog.C:583
+#: src/frontends/qt2/QPrefsDialog.C:587
 #, fuzzy
 msgid "Select a backups directory"
 msgstr "&Director pentru rezerve: "
 
-#: src/frontends/qt2/QPrefsDialog.C:591
+#: src/frontends/qt2/QPrefsDialog.C:595
 msgid "Select a document directory"
 msgstr ""
 
-#: src/frontends/qt2/QPrefsDialog.C:599
+#: src/frontends/qt2/QPrefsDialog.C:603
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
@@ -10097,25 +10080,6 @@ msgstr "Alegeþi un fiºier de stil"
 msgid ""
 "Updates your TeX system for a new bibstyle list. Only the styles which are "
 "in directories where TeX finds them are listed!"
-msgstr ""
-
-#: src/frontends/xforms/FormBibtex.C:105
-#, fuzzy
-msgid "Select Database"
-msgstr "Selectaþi fiºierul de ieºire"
-
-#: src/frontends/xforms/FormBibtex.C:106
-#, fuzzy
-msgid "*.bib| BibTeX Databases (*.bib)"
-msgstr "Baze de date BibTeX disponibile"
-
-#: src/frontends/xforms/FormBibtex.C:118
-#, fuzzy
-msgid "Select BibTeX-Style"
-msgstr "Comutã stilul TeX"
-
-#: src/frontends/xforms/FormBibtex.C:119
-msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr ""
 
 #. set up the tooltip mechanism
@@ -11328,16 +11292,16 @@ msgstr "Nu pot deschide fiºierul"
 msgid "into tempdir"
 msgstr ""
 
-#: src/insets/insetgraphics.C:682 src/insets/insetgraphics.C:686
+#: src/insets/insetgraphics.C:685 src/insets/insetgraphics.C:689
 msgid "Cannot convert Image (not existing file?)"
 msgstr ""
 
-#: src/insets/insetgraphics.C:683
+#: src/insets/insetgraphics.C:686
 #, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr ""
 
-#: src/insets/insetgraphics.C:687
+#: src/insets/insetgraphics.C:690
 msgid "No information for converting from "
 msgstr ""
 
@@ -11631,154 +11595,154 @@ msgstr "Î&nãlþime"
 msgid "pheight%"
 msgstr "Î&nãlþime"
 
-#: src/lyx_cb.C:88
+#: src/lyx_cb.C:92
 msgid "Save failed. Rename and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:90
+#: src/lyx_cb.C:94
 #, fuzzy
 msgid "(If not, document is not saved.)"
 msgstr "Document nesalvat"
 
-#: src/lyx_cb.C:111
+#: src/lyx_cb.C:115
 msgid "Choose a filename to save document as"
 msgstr ""
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1639
+#: src/lyx_cb.C:119 src/lyxfunc.C:1644
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Modele"
 
-#: src/lyx_cb.C:143
+#: src/lyx_cb.C:147
 #, fuzzy
 msgid "Same name as document already has:"
 msgstr "Salveazã valorile ca implicite pentru document"
 
-#: src/lyx_cb.C:145
+#: src/lyx_cb.C:149
 msgid "Save anyway?"
 msgstr ""
 
-#: src/lyx_cb.C:151
+#: src/lyx_cb.C:155
 msgid "Another document with same name open!"
 msgstr ""
 
-#: src/lyx_cb.C:153
+#: src/lyx_cb.C:157
 #, fuzzy
 msgid "Replace with current document?"
 msgstr "Înlocuieºte cuvîntul cu alegerea curentã"
 
-#: src/lyx_cb.C:161
+#: src/lyx_cb.C:165
 #, fuzzy
 msgid "Document renamed to '"
 msgstr "Document nesalvat"
 
-#: src/lyx_cb.C:162
+#: src/lyx_cb.C:166
 #, fuzzy
 msgid "', but not saved..."
 msgstr "Document nesalvat"
 
-#: src/lyx_cb.C:168
+#: src/lyx_cb.C:172
 #, fuzzy
 msgid "Document already exists:"
 msgstr "&Clasã document:"
 
-#: src/lyx_cb.C:170
+#: src/lyx_cb.C:174
 #, fuzzy
 msgid "Replace file?"
 msgstr "Înlocuieºte &tot"
 
-#: src/lyx_cb.C:183
+#: src/lyx_cb.C:187
 #, fuzzy
 msgid "Document could not be saved!"
 msgstr "Documentul nu poate fi citit"
 
-#: src/lyx_cb.C:184
+#: src/lyx_cb.C:188
 msgid "Holding the old name."
 msgstr ""
 
-#: src/lyx_cb.C:198
+#: src/lyx_cb.C:202
 msgid "Chktex does not work with SGML derived documents."
 msgstr ""
 
-#: src/lyx_cb.C:207
+#: src/lyx_cb.C:211
 msgid "No warnings found."
 msgstr ""
 
-#: src/lyx_cb.C:209
+#: src/lyx_cb.C:213
 msgid "One warning found."
 msgstr ""
 
-#: src/lyx_cb.C:210
+#: src/lyx_cb.C:214
 msgid "Use `Navigate->Error' to find it."
 msgstr ""
 
-#: src/lyx_cb.C:213
+#: src/lyx_cb.C:217
 msgid " warnings found."
 msgstr ""
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:218
 msgid "Use `Navigate->Error' to find them."
 msgstr ""
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:220
 msgid "Chktex run successfully"
 msgstr ""
 
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:222
 msgid "It seems chktex does not work."
 msgstr ""
 
-#: src/lyx_cb.C:277
+#: src/lyx_cb.C:281
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr ""
 
-#: src/lyx_cb.C:279
+#: src/lyx_cb.C:283
 #, fuzzy
 msgid "Auto-saving "
 msgstr "Interval de salvare automatã:"
 
-#: src/lyx_cb.C:319
+#: src/lyx_cb.C:323
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Interval de salvare automatã:"
 
-#: src/lyx_cb.C:345
+#: src/lyx_cb.C:349
 msgid "Autosaving current document..."
 msgstr ""
 
-#: src/lyx_cb.C:427
+#: src/lyx_cb.C:431
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Selecteazã document fiu"
 
-#: src/lyx_cb.C:444
+#: src/lyx_cb.C:448
 msgid "Error! Specified file is unreadable: "
 msgstr ""
 
-#: src/lyx_cb.C:515 src/mathed/math_hullinset.C:814
+#: src/lyx_cb.C:519 src/mathed/math_hullinset.C:814
 msgid "Enter new label to insert:"
 msgstr "Introduceþi noua etichetã de inserat:"
 
-#: src/lyx_cb.C:533
+#: src/lyx_cb.C:537
 #, fuzzy
 msgid "Running configure..."
 msgstr "Reconfigureazã|R"
 
-#: src/lyx_cb.C:546
+#: src/lyx_cb.C:550
 msgid "Reloading configuration..."
 msgstr ""
 
-#: src/lyx_cb.C:548
+#: src/lyx_cb.C:552
 #, fuzzy
 msgid "The system has been reconfigured."
 msgstr "Reconfigureazã|R"
 
-#: src/lyx_cb.C:549
+#: src/lyx_cb.C:553
 msgid "You need to restart LyX to make use of any"
 msgstr ""
 
-#: src/lyx_cb.C:550
+#: src/lyx_cb.C:554
 msgid "updated document class specifications."
 msgstr ""
 
@@ -12025,174 +11989,174 @@ msgstr ""
 msgid "  Number "
 msgstr "Numãr"
 
-#: src/lyxfunc.C:240
+#: src/lyxfunc.C:239
 msgid "Unknown function."
 msgstr ""
 
-#: src/lyxfunc.C:273
+#: src/lyxfunc.C:272
 msgid "Nothing to do"
 msgstr ""
 
-#: src/lyxfunc.C:289
+#: src/lyxfunc.C:288
 #, fuzzy
 msgid "Unknown action"
 msgstr "necunoscut"
 
 #. the default error message if we disable the command
-#: src/lyxfunc.C:294
+#: src/lyxfunc.C:293
 #, fuzzy
 msgid "Command disabled"
 msgstr "S&fîrºit comandã:"
 
 #. no
-#: src/lyxfunc.C:306
+#: src/lyxfunc.C:305
 #, fuzzy
 msgid "Document is read-only"
 msgstr "Documente"
 
-#: src/lyxfunc.C:311
+#: src/lyxfunc.C:310
 msgid "Command not allowed without any document open"
 msgstr ""
 
-#: src/lyxfunc.C:703
+#: src/lyxfunc.C:708
 #, c-format
 msgid "Unknown function (%1$s)"
 msgstr ""
 
-#: src/lyxfunc.C:707
+#: src/lyxfunc.C:712
 msgid "Unknown function ("
 msgstr ""
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:990
 #, c-format
 msgid "Saving document %1$s..."
 msgstr ""
 
-#: src/lyxfunc.C:988
+#: src/lyxfunc.C:993
 #, fuzzy
 msgid "Saving document "
 msgstr "Salvare &documente"
 
-#: src/lyxfunc.C:994
+#: src/lyxfunc.C:999
 #, fuzzy
 msgid " done."
 msgstr "Nimic"
 
-#: src/lyxfunc.C:1134 src/mathed/formulabase.C:1032
+#: src/lyxfunc.C:1139 src/mathed/formulabase.C:1032
 msgid "Missing argument"
 msgstr ""
 
-#: src/lyxfunc.C:1147
+#: src/lyxfunc.C:1152
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr ""
 
-#: src/lyxfunc.C:1150
+#: src/lyxfunc.C:1155
 msgid "Opening help file "
 msgstr ""
 
-#: src/lyxfunc.C:1364
+#: src/lyxfunc.C:1369
 msgid "This is only allowed in math mode!"
 msgstr ""
 
-#: src/lyxfunc.C:1406
+#: src/lyxfunc.C:1411
 msgid "Opening child document "
 msgstr ""
 
-#: src/lyxfunc.C:1480
+#: src/lyxfunc.C:1485
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1494
+#: src/lyxfunc.C:1499
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1499
+#: src/lyxfunc.C:1504
 #, fuzzy
 msgid "Set-color "
 msgstr "Culoare font"
 
-#: src/lyxfunc.C:1500
+#: src/lyxfunc.C:1505
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1635
+#: src/lyxfunc.C:1640
 #, fuzzy
 msgid "Select template file"
 msgstr "Selectaþi fiºierul de ieºire"
 
-#: src/lyxfunc.C:1675
+#: src/lyxfunc.C:1680
 msgid "Select document to open"
 msgstr ""
 
-#: src/lyxfunc.C:1711
+#: src/lyxfunc.C:1716
 #, fuzzy
 msgid "No such file"
 msgstr "Încarcã fiºierul"
 
-#: src/lyxfunc.C:1712
+#: src/lyxfunc.C:1717
 msgid "Start a new document with this filename ?"
 msgstr ""
 
-#: src/lyxfunc.C:1724
+#: src/lyxfunc.C:1729
 #, c-format
 msgid "Opening document %1$s..."
 msgstr ""
 
-#: src/lyxfunc.C:1726
+#: src/lyxfunc.C:1731
 #, fuzzy
 msgid "Opening document "
 msgstr "Salvare &documente"
 
-#: src/lyxfunc.C:1736
+#: src/lyxfunc.C:1741
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Documente"
 
-#: src/lyxfunc.C:1738
+#: src/lyxfunc.C:1743
 msgid " opened."
 msgstr ""
 
-#: src/lyxfunc.C:1742
+#: src/lyxfunc.C:1747
 #, c-format
 msgid "Could not open document %1$s"
 msgstr ""
 
-#: src/lyxfunc.C:1745
+#: src/lyxfunc.C:1750
 msgid "Could not open document "
 msgstr ""
 
-#: src/lyxfunc.C:1772
+#: src/lyxfunc.C:1777
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Selectaþi fiºierul de ieºire"
 
-#: src/lyxfunc.C:1776
+#: src/lyxfunc.C:1781
 #, fuzzy
 msgid "Select "
 msgstr "S&electeazã"
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1782
 msgid " file to import"
 msgstr ""
 
-#: src/lyxfunc.C:1817
+#: src/lyxfunc.C:1822
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
 msgstr ""
 
-#: src/lyxfunc.C:1837
+#: src/lyxfunc.C:1842
 #, fuzzy
 msgid "A document by the name"
 msgstr "Document nou bazat pe model"
 
-#: src/lyxfunc.C:1838
+#: src/lyxfunc.C:1843
 msgid "already exists. Overwrite?"
 msgstr ""
 
-#: src/lyxfunc.C:1902
+#: src/lyxfunc.C:1907
 msgid "Welcome to LyX!"
 msgstr ""
 
@@ -12690,55 +12654,55 @@ msgstr " Macro: %s: "
 msgid " Macro: "
 msgstr " Macro: "
 
-#: src/support/filetools.C:528
+#: src/support/filetools.C:537
 msgid "Error! Cannot open directory:"
 msgstr ""
 
-#: src/support/filetools.C:550
+#: src/support/filetools.C:559
 #, fuzzy
 msgid "Error! Could not remove file:"
 msgstr "Nu pot deschide fiºierul"
 
-#: src/support/filetools.C:574 src/support/filetools.C:612
+#: src/support/filetools.C:583 src/support/filetools.C:621
 #, fuzzy
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Nu pot ºterge director temporar"
 
-#: src/support/filetools.C:591
+#: src/support/filetools.C:600
 #, fuzzy
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Nu pot ºterge directorul temporar "
 
-#: src/support/filetools.C:666
+#: src/support/filetools.C:675
 #, fuzzy
 msgid "Internal error!"
 msgstr "Nume de fiºier"
 
-#: src/support/filetools.C:667
+#: src/support/filetools.C:676
 msgid "Call to createDirectory with invalid name"
 msgstr ""
 
-#: src/support/filetools.C:672
+#: src/support/filetools.C:681
 #, fuzzy
 msgid "Error! Couldn't create directory:"
 msgstr "Nu pot ºterge director temporar"
 
-#: src/support/filetools.C:1440
+#: src/support/filetools.C:1449
 #, fuzzy
 msgid "Could not delete auto-save file!"
 msgstr "Listã de slide-uri"
 
-#: src/support/package.C:374
+#: src/support/package.C:402
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
 
-#: src/support/package.C:379
+#: src/support/package.C:407
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
 
-#: src/support/package.C:505
+#: src/support/package.C:533
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12747,60 +12711,60 @@ msgid ""
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C:515
+#: src/support/package.C:543
 msgid "Unable to determine the system directory having searched\n"
 msgstr ""
 
-#: src/support/package.C:518
+#: src/support/package.C:546
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C:601
+#: src/support/package.C:629
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
 
-#: src/support/package.C:606 src/support/package.C:641
-#: src/support/package.C:669
+#: src/support/package.C:634 src/support/package.C:669
+#: src/support/package.C:697
 msgid "Invalid "
 msgstr ""
 
-#: src/support/package.C:607
+#: src/support/package.C:635
 msgid " switch.\n"
 msgstr ""
 
-#: src/support/package.C:608 src/support/package.C:643
+#: src/support/package.C:636 src/support/package.C:671
 #, fuzzy
 msgid "Directory "
 msgstr "Director:|#D"
 
-#: src/support/package.C:609 src/support/package.C:644
+#: src/support/package.C:637 src/support/package.C:672
 msgid " does not contain "
-msgstr ""
-
-#: src/support/package.C:636
-#, c-format
-msgid ""
-"Invalid %1% environment variable.\n"
-"Directory %2% does not contain %3%."
-msgstr ""
-
-#: src/support/package.C:642 src/support/package.C:670
-msgid " environment variable.\n"
 msgstr ""
 
 #: src/support/package.C:664
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
+"Directory %2% does not contain %3%."
+msgstr ""
+
+#: src/support/package.C:670 src/support/package.C:698
+msgid " environment variable.\n"
+msgstr ""
+
+#: src/support/package.C:692
+#, c-format
+msgid ""
+"Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
 
-#: src/support/package.C:671
+#: src/support/package.C:699
 #, fuzzy
 msgid " is not a directory."
 msgstr "&Utilizeazã director temporar"
@@ -12894,6 +12858,38 @@ msgstr "Marcaj setat"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "Funcþia LyX 'layout' cere un argument."
+
+#, fuzzy
+#~ msgid "BibTeX style files (*.bst)"
+#~ msgstr "Stiluri BibTeX"
+
+#, fuzzy
+#~ msgid "BibTeX database files (*.bib)"
+#~ msgstr "Adaugã un fiºier bazã de date BibTeX"
+
+#, fuzzy
+#~ msgid "External material (*)"
+#~ msgstr "Material extern"
+
+#, fuzzy
+#~ msgid "Select external material"
+#~ msgstr "Material extern"
+
+#, fuzzy
+#~ msgid "Select a file to print to"
+#~ msgstr "Selectaþi fiºierul de ieºire"
+
+#, fuzzy
+#~ msgid "Select Database"
+#~ msgstr "Selectaþi fiºierul de ieºire"
+
+#, fuzzy
+#~ msgid "*.bib| BibTeX Databases (*.bib)"
+#~ msgstr "Baze de date BibTeX disponibile"
+
+#, fuzzy
+#~ msgid "Select BibTeX-Style"
+#~ msgstr "Comutã stilul TeX"
 
 #~ msgid "Forked child processes:|#F"
 #~ msgstr "Procese fiu create:|#P"
