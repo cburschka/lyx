@@ -527,31 +527,27 @@ void LyXText::toggleFree(LCursor & cur, LyXFont const & font, bool toggleall)
 }
 
 
-string LyXText::getStringToIndex(LCursor & cur)
+string LyXText::getStringToIndex(LCursor const & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	// Try implicit word selection
-	// If there is a change in the language the implicit word selection
-	// is disabled.
-	CursorSlice const reset_cursor = cur.top();
-	bool const implicitSelection =
-		selectWordWhenUnderCursor(cur, lyx::PREVIOUS_WORD);
 
 	string idxstring;
-	if (!cur.selection())
-		cur.message(_("Nothing to index!"));
-	else if (cur.selBegin().pit() != cur.selEnd().pit())
-		cur.message(_("Cannot index more than one paragraph!"));
-	else
+	if (cur.selection()) {
 		idxstring = cur.selectionAsString(false);
+	} else {
+		// Try implicit word selection. If there is a change
+		// in the language the implicit word selection is
+		// disabled.
+		LCursor tmpcur = cur;
+		selectWord(tmpcur, lyx::PREVIOUS_WORD);
 
-	// Reset cursors to their original position.
-	cur.top() = reset_cursor;
-	cur.resetAnchor();
-
-	// Clear the implicit selection.
-	if (implicitSelection)
-		cur.clearSelection();
+		if (!tmpcur.selection())
+			cur.message(_("Nothing to index!"));
+		else if (tmpcur.selBegin().pit() != tmpcur.selEnd().pit())
+			cur.message(_("Cannot index more than one paragraph!"));
+		else
+			idxstring = tmpcur.selectionAsString(false);
+	}
 
 	return idxstring;
 }

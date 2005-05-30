@@ -105,7 +105,7 @@ public:
 	void toggleFree(LCursor & cur, LyXFont const &, bool toggleall = false);
 
 	///
-	std::string getStringToIndex(LCursor & cur);
+	std::string getStringToIndex(LCursor const & cur);
 
 	/// insert a character at cursor position
 	void insertChar(LCursor & cur, char c);

@@ -235,12 +235,12 @@ void specialChar(LCursor & cur, InsetSpecialChar::Kind kind)
 }
 
 
-void doInsertInset(LCursor & cur, LyXText * text,
+bool doInsertInset(LCursor & cur, LyXText * text,
 	FuncRequest const & cmd, bool edit, bool pastesel)
 {
 	InsetBase * inset = createInset(&cur.bv(), cmd);
 	if (!inset)
-		return;
+		return false;
 
 	recordUndo(cur);
 	bool gotsel = false;
@@ -255,6 +255,7 @@ void doInsertInset(LCursor & cur, LyXText * text,
 
 	if (gotsel && pastesel)
 		cur.bv().owner()->dispatch(FuncRequest(LFUN_PASTE));
+	return true;
 }
 
 
@@ -1182,12 +1183,20 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_FOOTNOTE:
 	case LFUN_INSET_MARGINAL:
 	case LFUN_INSET_OPTARG:
-	case LFUN_TABULAR_INSERT:
 	case LFUN_ENVIRONMENT_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
+		break;
+
+	case LFUN_TABULAR_INSERT:
+		// if there were no arguments, just open the dialog
+		if (doInsertInset(cur, this, cmd, false, true))
+			cur.posRight();
+		else
+			bv->owner()->getDialogs().show("tabularcreate");
+
 		break;
 
 	case LFUN_INSET_FLOAT:

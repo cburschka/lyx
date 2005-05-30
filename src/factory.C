@@ -56,9 +56,6 @@
 #include "mathed/math_macrotemplate.h"
 #include "mathed/math_hullinset.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
-
 #include "support/lstrings.h"
 
 #include <boost/assert.hpp>
@@ -163,15 +160,8 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 			cmd.argument;
 		icp.setContents(contents);
 
-		string data = InsetCommandMailer::params2string("index", icp);
-		LyXView * lv = bv->owner();
+		return new InsetIndex(icp);
 
-		if (icp.getContents().empty()) {
-			lv->getDialogs().show("index", data, 0);
-		} else {
-			lv->dispatch(FuncRequest(LFUN_INSET_APPLY, data));
-		}
-		return 0;
 	}
 
 	case LFUN_TABULAR_INSERT:
@@ -183,7 +173,6 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 			if (c <= 0) c = 2;
 			return new InsetTabular(*bv->buffer(), r, c);
 		}
-		bv->owner()->getDialogs().show("tabularcreate");
 		return 0;
 
 	case LFUN_INSET_CAPTION: {
