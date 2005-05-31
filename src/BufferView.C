@@ -142,9 +142,9 @@ bool BufferView::fitCursor()
 }
 
 
-void BufferView::update(bool fitcursor, bool forceupdate)
+void BufferView::update(Update::flags flags)
 {
-	pimpl_->update(fitcursor, forceupdate);
+	pimpl_->update(flags);
 }
 
 

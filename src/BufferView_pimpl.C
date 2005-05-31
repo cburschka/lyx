@@ -521,8 +521,10 @@ void BufferView::Pimpl::workAreaKeyPress(LyXKeySymPtr key,
 	 * dispatch() itself, because that's called recursively.
 	 */
 	if (available()) {
+		screen().prepareCursor();
+		cursor_timeout.setTimeout(100);
 		cursor_timeout.restart();
-		screen().showCursor(*bv_);
+		cursor_timeout.setTimeout(400);
 	}
 }
 
@@ -606,11 +608,12 @@ bool BufferView::Pimpl::fitCursor()
 }
 
 
-void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
+void BufferView::Pimpl::update(Update::flags flags)
 {
 	lyxerr << BOOST_CURRENT_FUNCTION
-	       << "[fitcursor = " << fitcursor << ','
-	       << " forceupdate = " << forceupdate
+	       << "[fitcursor = " << (flags & Update::FitCursor)
+	       << ", forceupdate = " << (flags & Update::Force)
+	       << ", singlepar = " << (flags & Update::SinglePar)
 	       << "]  buffer: " << buffer_ << endl;
 
 	// Check needed to survive LyX startup
@@ -621,10 +624,6 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 		CoordCache backup;
 		std::swap(theCoords, backup);
 		
-		// This call disallows cursor blink to call
-		// processEvents. It is necessary to prevent screen
-		// redraw being called recursively.
-		screen().unAllowSync();
 		// This, together with doneUpdating(), verifies (using
 		// asserts) that screen redraw is not called from 
 		// within itself.
@@ -632,10 +631,11 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 
 		// First drawing step
 		ViewMetricsInfo vi = metrics();
+		bool forceupdate(flags & Update::Force);
 
-		if (fitcursor && fitCursor()) {
+		if ((flags & Update::FitCursor) && fitCursor()) {
 			forceupdate = true;
-			vi = metrics();
+			vi = metrics(flags & Update::SinglePar);
 		}
 		if (forceupdate) {
 			// Second drawing step
@@ -934,7 +934,10 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 
 	if (cur.result().dispatched()) {
 		// Redraw if requested or necessary.
-		update(cur.result().update(), cur.result().update());
+		if (cur.result().update())
+			update(Update::FitCursor | Update::Force);
+		else
+			update();
 	}
 
 	// See workAreaKeyPress
@@ -1246,7 +1249,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 }
 
 
-ViewMetricsInfo BufferView::Pimpl::metrics()
+ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 {
 	// Remove old position cache
 	theCoords.clear();
@@ -1274,7 +1277,7 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 
 	// Redo paragraphs above cursor if necessary
 	int y1 = y0;
-	while (y1 > 0 && pit1 > 0) {
+	while (!singlepar && y1 > 0 && pit1 > 0) {
 		y1 -= text->getPar(pit1).ascent();
 		--pit1;
 		text->redoParagraph(pit1);
@@ -1298,7 +1301,7 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 
 	// Redo paragraphs below cursor if necessary
 	int y2 = y0;
-	while (y2 < bv.workHeight() && pit2 < int(npit) - 1) {
+	while (!singlepar && y2 < bv.workHeight() && pit2 < int(npit) - 1) {
 		y2 += text->getPar(pit2).descent();
 		++pit2;
 		text->redoParagraph(pit2);
@@ -1321,5 +1324,5 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 	       << " y2: " << y2
 	       << endl;
 
-	return ViewMetricsInfo(pit1, pit2, y1, y2);
+	return ViewMetricsInfo(pit1, pit2, y1, y2, singlepar);
 }

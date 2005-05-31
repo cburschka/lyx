@@ -97,12 +97,14 @@ class TextMetricsInfo {};
 class ViewMetricsInfo
 {
 public:
-	ViewMetricsInfo(lyx::pit_type p1, lyx::pit_type p2,
-			int y1, int y2) : p1(p1), p2(p2), y1(y1), y2(y2) {}
+	ViewMetricsInfo(lyx::pit_type p1, lyx::pit_type p2, int y1, int y2, 
+			bool singlepar) : p1(p1), p2(p2), y1(y1), y2(y2),
+			singlepar(singlepar) {}
 	lyx::pit_type p1;
 	lyx::pit_type p2;
 	int y1;
 	int y2;
+	bool singlepar;
 };
 
 

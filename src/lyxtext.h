@@ -95,7 +95,7 @@ public:
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
 	/// rebreaks the given par
-	void redoParagraph(pit_type pit);
+	bool redoParagraph(pit_type pit);
 
 	/// returns pos in given par at given x coord
 	pos_type x2pos(pit_type pit, int row, int x) const;

@@ -35,6 +35,27 @@ class LyXView;
 class Painter;
 class ParIterator;
 
+
+namespace Update {
+	enum flags { 
+		FitCursor = 1, 
+		Force = 2,
+		SinglePar = 4 
+	};
+
+inline flags operator|(flags const f, flags const g) 
+{
+	return static_cast<flags>(int(f) | int(g));
+}
+
+inline flags operator&(flags const f, flags const g) 
+{
+	return static_cast<flags>(int(f) & int(g));
+}
+
+} // namespace 
+
+
 /**
  * A buffer view encapsulates a view onto a particular
  * buffer, and allows access to operate upon it. A view
@@ -81,7 +102,8 @@ public:
 	 *  position changes. \c forceupdate means to force an update
 	 *  in any case.
 	 */
-	void update(bool fitcursor = true, bool forceupdate = true);
+
+	void update(Update::flags flags = Update::FitCursor | Update::Force);
 	/// move the screen to fit the cursor. Only to be called with
 	/// good y coordinates (after a bv::metrics)
 	bool fitCursor();

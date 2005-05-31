@@ -61,4 +61,10 @@ public:
 	int des;
 };
 
+inline
+bool operator==(Dimension const & a, Dimension const & b)
+{
+	return a.wid == b.wid && a.asc == b.asc && a.des ==b.des ;
+}
+
 #endif

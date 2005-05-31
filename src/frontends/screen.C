@@ -122,7 +122,7 @@ SplashScreen::SplashScreen()
 
 
 LyXScreen::LyXScreen()
-	: greyed_out_(true), cursor_visible_(false), sync_allowed_(true)
+	: greyed_out_(true), cursor_visible_(false)
 {
 	// Start loading the pixmap as soon as possible
 	if (lyxrc.show_banner) {
@@ -147,20 +147,6 @@ void LyXScreen::checkAndGreyOut()
 
 void LyXScreen::showCursor(BufferView & bv)
 {
-	// This code is currently meaningful only for the Qt frontend.
-	// This is the place (like below in hideCursor) where
-	// processEvents is being called, and things like keystrokes and
-	// mouse clicks are being handed to the LyX core, once every 
-	// cursor blink. 
-	// THERE IS NOT SUPPOSED TO BE ANY OTHER CALL TO processEvents 
-	// ANYWHERE ELSE.
-	// in BufferView::Pimpl::update() and here, the sync_allowed_
-	// guard is set/cleared which is used here to prevent recursive
-	// calls to screen update. startUpdating() and doneUpdating() in
-	// coordcache again contain asserts to detect such recursion.
-	if (sync_allowed_)
-		lyx_gui::sync_events();
-
 	if (cursor_visible_)
 		return;
 
@@ -206,9 +192,6 @@ void LyXScreen::showCursor(BufferView & bv)
 
 void LyXScreen::hideCursor()
 {
-	if (sync_allowed_)
-		lyx_gui::sync_events();
-
 	if (!cursor_visible_)
 		return;
 
@@ -226,6 +209,12 @@ void LyXScreen::toggleCursor(BufferView & bv)
 }
 
 
+void LyXScreen::prepareCursor()
+{
+	cursor_visible_ = false;
+}
+
+
 void LyXScreen::redraw(BufferView & bv, ViewMetricsInfo const & vi)
 {
 	greyed_out_ = false;
@@ -235,7 +224,6 @@ void LyXScreen::redraw(BufferView & bv, ViewMetricsInfo const & vi)
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 	workarea().getPainter().end();
 	theCoords.doneUpdating();
-	sync_allowed_ = true;
 }
 
 

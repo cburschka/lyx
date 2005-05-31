@@ -263,7 +263,7 @@ void update(LCursor & cur)
 {
 	//we don't call update(true, false) directly to save a metrics call
 	if (cur.bv().fitCursor())
-		cur.bv().update(false, true);
+		cur.bv().update(Update::Force);
 }
 
 
@@ -1130,9 +1130,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.resetAnchor();
 		moveCursor(cur, false);
 
-		// real_current_font.number can change so we need to
-		// update the minibuffer
-		if (old_font != real_current_font)
+		needsUpdate = redoParagraph(cur.pit());
+		if (!needsUpdate) {
+			// update only this paragraph
+			cur.bv().update(Update::SinglePar | Update::Force);
+		}
+
 		bv->updateScrollbar();
 		break;
 	}

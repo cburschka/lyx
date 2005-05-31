@@ -1,3 +1,17 @@
+2005-05-31  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* BufferView.[Ch] (update):
+	* BufferView_pimpl.[Ch] (update, metrics):
+	* dimension.h (operator==):
+	* lyxfunc.C (dispatch):
+	* metricsinfo.h (ViewMetricsInfo):
+	* rowpainter.C (paintText):
+	* lyxtext.h:
+	* text.C (redoParagraph): 
+	* text3.C (dispatch): Make LyX only repaint current paragraph in
+	case of character insert --> speedup. Also fix cursor draw
+	artifacts
+
 2005-05-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* bufferview_funcs.C (gotoInset): fix the wrap-around code to

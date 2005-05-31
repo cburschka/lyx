@@ -787,6 +787,8 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 
 
 	// paint one paragraph above and one below
+	// Note MV: this cannot be suppressed even for singlepar.
+	// Try viewing the User Guide Mobius figure
 	if (vi.p1 > 0) {
 		text->redoParagraph(vi.p1 - 1);
 		paintPar(pi, *bv.text(), vi.p1 - 1, 0,

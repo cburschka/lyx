@@ -60,7 +60,7 @@ public:
 	//
 	bool fitCursor();
 	///
-	void update(bool fitcursor = false, bool forceupdate = true);
+	void update(Update::flags flags = Update::Force);
 	///
 	void newFile(std::string const &, std::string const &, bool);
 	///
@@ -186,7 +186,7 @@ private:
 	///
 	int offset_ref_;
 	///
-	ViewMetricsInfo metrics();
+	ViewMetricsInfo metrics(bool singlepar = false);
 
 
 };

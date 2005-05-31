@@ -1522,7 +1522,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Redraw screen unless explicitly told otherwise.
 			// This also initializes the position cache for all insets
 			// in (at least partially) visible top-level paragraphs.
-			view()->update(true, update);
+			if (update)
+				view()->update(Update::FitCursor | Update::Force);
+			else
+				view()->update(Update::FitCursor);
 
 			// if we executed a mutating lfun, mark the buffer as dirty
 			// FIXME: Why not use flag.enabled() but call getStatus again?

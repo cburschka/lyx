@@ -1649,7 +1649,7 @@ Row const & LyXText::firstRow() const
 }
 
 
-void LyXText::redoParagraph(pit_type const pit)
+bool LyXText::redoParagraph(pit_type const pit)
 {
 	// remove rows of paragraph, keep track of height changes
 	Paragraph & par = pars_[pit];
@@ -1700,8 +1700,13 @@ void LyXText::redoParagraph(pit_type const pit)
 
 	dim.asc += par.rows()[0].ascent();
 	dim.des -= par.rows()[0].ascent();
+	
+	bool const same = dim == par.dim();
+
 	par.dim() = dim;
 	//lyxerr << "redoParagraph: " << par.rows().size() << " rows\n";
+
+	return !same;
 }
 
 
