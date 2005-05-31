@@ -1,5 +1,10 @@
 2005-05-31  Angus Leeming  <leeming@lyx.org>
 
+	* QBibtexDialog.C (addDatabase): fix QString ->std::string
+	compilation problem.
+
+2005-05-31  Angus Leeming  <leeming@lyx.org>
+
 	* validators.C (validate): allow ':' characters in file names.
 
 2005-05-28  Michael Schmitt  <michael.schmitt@teststep.org>

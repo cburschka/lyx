@@ -150,9 +150,9 @@ void QBibtexDialog::addPressed()
 void QBibtexDialog::addDatabase()
 {
 	int const sel = add_->bibLB->currentItem();
-	QString const file = trim(add_->bibED->text());
+	string const file = trim(fromqstr(add_->bibED->text()));
 
-	if (sel < 0 && file.isNull())
+	if (sel < 0 && file.empty())
 		return;
 
 	// Add the selected browser_bib keys to browser_database
@@ -165,8 +165,8 @@ void QBibtexDialog::addDatabase()
 		}
 	}
 
-	if (!file.isEmpty()) {
-		QString const f = toqstr(ChangeExtension(fromqstr(file), ""));
+	if (!file.empty()) {
+		QString const f = toqstr(ChangeExtension(file, ""));
 		if ((databaseLB->findItem(f)) == 0)
 			databaseLB->insertItem(f);
 	}
