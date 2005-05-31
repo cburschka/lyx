@@ -34,7 +34,7 @@ namespace {
 
 string const get_invalid_chars_latex()
 {
-	string invalid_chars("#$%{}()[]:\"^");
+	string invalid_chars("#$%{}()[]\"^");
 	if (!lyxrc.tex_allows_spaces)
 		invalid_chars += ' ';
 	return invalid_chars;

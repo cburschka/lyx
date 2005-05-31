@@ -1,3 +1,8 @@
+2005-05-31  Angus Leeming  <leeming@lyx.org>
+
+	* helper_funcs.C (get_invalid_chars_latex): allow ':' characters
+	in file names.
+
 2005-05-24  Angus Leeming  <leeming@lyx.org>
 
 	* ControlBibtex.C (browseBib, browseBst): backport 1.4.x code
