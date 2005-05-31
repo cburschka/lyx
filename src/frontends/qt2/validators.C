@@ -130,7 +130,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 		return 	acceptable_if_empty_ ?
 			QValidator::Acceptable : QValidator::Intermediate;
 
-	string invalid_chars("#$%{}()[]:\"^");
+	string invalid_chars("#$%{}()[]\"^");
 	if (!tex_allows_spaces_)
 		invalid_chars += ' ';
 

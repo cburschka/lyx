@@ -188,7 +188,7 @@ bool CheckedPath::check() const
 		return acceptable_if_empty_;
 	}
 
-	string invalid_chars("#$%{}()[]:\"^");
+	string invalid_chars("#$%{}()[]\"^");
 	if (!tex_allows_spaces_)
 		invalid_chars += ' ';
 
