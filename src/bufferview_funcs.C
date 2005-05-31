@@ -253,12 +253,15 @@ void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
 	}
 
 	if (!gotoNextInset(tmpcur, codes, contents)) {
-		if (tmpcur != doc_iterator_begin(tmpcur.inset())) {
+		if (bv->cursor() != doc_iterator_begin(bv->buffer()->inset())) {
 			tmpcur.reset(tmpcur.bottom().inset());
-			if (!gotoNextInset(tmpcur, codes, contents))
+			if (!gotoNextInset(tmpcur, codes, contents)) {
 				bv->cursor().message(_("No more insets"));
+				return;
+			}
 		} else {
 			bv->cursor().message(_("No more insets"));
+			return;
 		}
 	}
 

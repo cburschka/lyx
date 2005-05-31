@@ -1,3 +1,8 @@
+2005-05-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* bufferview_funcs.C (gotoInset): fix the wrap-around code to
+	avoid a crash (bug 1891)
+
 2005-05-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	Fix bug 1892:
