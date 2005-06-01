@@ -403,9 +403,17 @@ bool tex2lyx(string const &infilename, std::ostream &os)
 
 bool tex2lyx(string const &infilename, string const &outfilename)
 {
-	if (!overwrite_files && IsFileReadable(outfilename)) {
-		cerr << "Not overwriting existing file " << outfilename << "\n";
-		return false;
+	if (IsFileReadable(outfilename)) {
+		if (overwrite_files) {
+			cerr << "Overwriting existing file "
+			     << outfilename << endl;
+		} else {
+			cerr << "Not overwriting existing file "
+			     << outfilename << endl;
+			return false;
+		}
+	} else {
+		cerr << "Creating file " << outfilename << endl;
 	}
 	ofstream os(outfilename.c_str());
 	if (!os.good()) {

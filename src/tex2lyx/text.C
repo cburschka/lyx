@@ -1851,11 +1851,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "ss") {
 			context.check_layout(os);
 			os << "ß";
+			skip_braces(p); // eat {}
 		}
 
 		else if (t.cs() == "i" || t.cs() == "j") {
 			context.check_layout(os);
 			os << "\\" << t.cs() << ' ';
+			skip_braces(p); // eat {}
 		}
 
 		else if (t.cs() == "\\") {
