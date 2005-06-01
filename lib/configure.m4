@@ -623,7 +623,7 @@ cat >$outfile <<EOF
 \\Format pstex      pstex_t PSTEX                  "" ""	""
 \\Format tgif       obj     TGIF                   "" "$TGIF_VIEWER"	"$TGIF_EDITOR"
 \\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""
-\\Format text       txt    "Plain text"            A  ""	"$TEXT_EDITOR"
+\\Format text       txt    "Plain text"            a  ""	"$TEXT_EDITOR"
 \\Format textparagraph txt "Plain text (paragraphs)"    "" ""	"$TEXT_EDITOR"
 \\Format tiff       tif     TIFF                   "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format word       doc     Word                   W  ""	""
