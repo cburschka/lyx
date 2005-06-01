@@ -152,6 +152,7 @@ esac
 dnl if the gtk frontend has been specified, then xforms is needed too
 if echo $FRONTENDS | grep gtk | grep -v xforms ; then
   FRONTENDS="xforms $FRONTENDS"
+  noxformsbin=yes
 fi
 
 dnl The code below is not in a macro, because this would cause big
@@ -160,7 +161,9 @@ for frontend in $FRONTENDS ; do
   case "$frontend" in
     xforms)
 	  XFORMS_DO_IT_ALL
-	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms\$(EXEEXT)"
+	  if test -z "$noxformsbin" ; then
+	    FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms\$(EXEEXT)"
+	  fi
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms"
 	  RPM_FRONTEND="xforms"
 	  FRONTEND_INFO="${FRONTEND_INFO}\

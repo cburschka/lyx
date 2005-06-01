@@ -1,3 +1,8 @@
+2005-06-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: if the xforms frontend is added just to help gtk,
+	do not build the xforms binary.
+
 2005-05-20    <lgb@tandberg.net>
 
 	* configure.ac: Use AM_* flags for CLAGS,CXXFLAGS where we require
