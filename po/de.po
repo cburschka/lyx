@@ -4,7 +4,7 @@
 # Peter Sütterlin <P.Suetterlin@astro.uu.nl>
 # Michael Schmitt <Michael.Schmitt@teststep.org>
 #
-# !!! Comment by M. Schmitt: Check coherent translation of "quote" and "reference", "cite", and "citation" !!!
+# !!! Comment by M. Schmitt: Check translation of "quote" and "reference"!!!
 #
 # Ein paar generelle Richtlinien für eine einheitliche Übersetzung (Vorschlag von M. Schmitt):
 #
@@ -22,6 +22,8 @@
 #   browse               -> (durch)suchen
 #   button               -> Knopf
 #   caption              -> Beschriftung    (Jürgen S.)
+#   citation (style)     -> Zitat (-Stil)
+#   cross reference      -> Querverweis
 #   command              -> Befehl
 #   convert(er)          -> konvertieren / Konverter
 #   custom               -> benutzerdefiniert
@@ -36,6 +38,7 @@
 #   index entry          -> Stichwort   (H. Haase)
 #   inline               -> eingebettet
 #   key                  -> Schlüssel
+#   keyword              -> Stichwort
 #   label                -> Marke
 #   layout               -> Format          (Hartmut Haase)
 #   math                 -> Mathe
@@ -47,7 +50,6 @@
 #   pipe                 -> Weiterleitung
 #   preferences          -> Einstellungen
 #   preview              -> Vorschau
-#   reference            -> Querverweis (cross ref.) / Literaturverweis (citation ref.), ggf. auch Literatureintrag
 #   remove               -> entfernen
 #   restore              -> zurücksetzen
 #   retrieve             -> abrufen
@@ -773,7 +775,7 @@ msgstr "@5->"
 
 #: src/frontends/xforms/forms/form_document.fd:1927
 msgid "Display Background:"
-msgstr ""
+msgstr "Anzeige (Hintergrund):"
 
 #: src/frontends/xforms/forms/form_document.fd:1945
 msgid "Modify"
@@ -1567,11 +1569,11 @@ msgstr "Zusatz-Flags:|#Z"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2074
 msgid "All copiers:|#l"
-msgstr ""
+msgstr "Alle Kopierer:|#l"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2110
 msgid "Copier:|#C"
-msgstr ""
+msgstr "Kopierer:|#K"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2188
 msgid "Default path:|#p"
@@ -1702,9 +1704,8 @@ msgid "Paper size:"
 msgstr "Papiergröße:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2950
-#, fuzzy
 msgid "Plain text line length:|#A"
-msgstr "ASCII-Zeilenlänge:|#A"
+msgstr "Zeilenlänge für einfachen Text:|#Z"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2972
 msgid "TeX encoding:|#T"
@@ -1720,7 +1721,7 @@ msgstr "Aufruf externer Programme"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3026
 msgid "Plain text roff:|#r"
-msgstr ""
+msgstr "roff für einfachen Text:|#r"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3044
 msgid "Checktex:|#c"
@@ -1735,13 +1736,12 @@ msgid "Autoreset Class Options on change|#u"
 msgstr "Klassenoptionen bei Wechsel automatisch zurücksetzen|#K"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3098
-#, fuzzy
 msgid "BibTeX:|#B"
-msgstr "Bibtex:|#B"
+msgstr "BibTeX:|#B"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3116
 msgid "Index:|#I"
-msgstr ""
+msgstr "Stichwortverzeichnis:|#S"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
 msgid "Use Cygwin Paths|#s"
@@ -2147,9 +2147,8 @@ msgid "Default|#D"
 msgstr "Standard|#S"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:41
-#, fuzzy
 msgid "Citation Style"
-msgstr "Literaturverweis-Stil:|#i"
+msgstr "Zitat-Stil"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:60
 msgid "&Jurabib"
@@ -2224,7 +2223,7 @@ msgstr "Den ausgewählten Zweig umschalten"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:169
 msgid "Alter Co&lor..."
-msgstr ""
+msgstr "&Farbe ändern..."
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:173
 msgid "Define or change background color"
@@ -2391,7 +2390,7 @@ msgstr "&Sprache:"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:108
 msgid "&Use language's default encoding"
-msgstr ""
+msgstr "Standard&kodierung der Sprache verwenden"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:191
 msgid "&Encoding:"
@@ -2439,7 +2438,7 @@ msgstr "&AMS-Mathe-Paket automatisch verwenden"
 
 #: src/frontends/qt2/ui/MathsModuleBase.ui:56
 msgid "Use AMS &math package"
-msgstr "A&MS-Mathe-Paket verwenden"
+msgstr "AMS-&Mathe-Paket verwenden"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:41
 msgid "&Numbering"
@@ -2493,7 +2492,7 @@ msgstr "&Breite:"
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:109
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr ""
-"Wählen Sie eine bestimmte Papiergröße oder legen Sie Ihr eigene mit "
+"Wählen Sie eine bestimmte Papiergröße oder legen Sie Ihre eigene mit "
 "\"Benutzerdefiniert\" fest"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:199
@@ -2586,9 +2585,8 @@ msgid "&Cancel"
 msgstr "&Abbrechen"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-#, fuzzy
 msgid "&Key:"
-msgstr "&Schlüssel"
+msgstr "&Schlüssel:"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:86
@@ -2638,9 +2636,8 @@ msgid "&Browse..."
 msgstr "&Durchsuchen..."
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:78
-#, fuzzy
 msgid "Enter BibTeX database name"
-msgstr "Zu verwendende BibTeX-Datenbank"
+msgstr "Name der BibTeX-Datenbank eingeben"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:86
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:120
@@ -2655,9 +2652,8 @@ msgid "New Item"
 msgstr "Neuer Begriff"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:107
-#, fuzzy
 msgid "Available BibTeX databases"
-msgstr "Ausgewählte BibTeX-Datenbanken"
+msgstr "Verfügbare BibTeX-Datenbanken"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:194
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:126
@@ -2983,7 +2979,7 @@ msgstr "&Serie:"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:251
 msgid "&Color:"
-msgstr "&Farben:"
+msgstr "F&arben:"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:287
 msgid "Never Toggled"
@@ -3034,11 +3030,11 @@ msgstr "Literatureintrag"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:112
 msgid "Move the selected citation down"
-msgstr "Ausgewählten Literatureintrag abwärts bewegen"
+msgstr "Ausgewähltes Zitat nach hinten verschieben"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:141
 msgid "Citations currently selected"
-msgstr "Ausgewählte Literatureinträge"
+msgstr "Gegenwärtig ausgewählte Zitate"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:152
 msgid "D&elete"
@@ -3046,11 +3042,11 @@ msgstr "&Löschen"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:178
 msgid "Move the selected citation up"
-msgstr "Ausgewählten Literatureintrag aufwärts bewegen"
+msgstr "Ausgewähltes Zitat nach vorne verschieben"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:189
 msgid "&Citations:"
-msgstr "&Literatureinträge:"
+msgstr "&Zitate:"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:312
 msgid "A&pply"
@@ -3062,11 +3058,11 @@ msgstr "Stil"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:359
 msgid "Citation &style:"
-msgstr "Literaturverweis-&Stil:"
+msgstr "Zitat-&Stil:"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:381
 msgid "Natbib citation style to use"
-msgstr "Zu verwendender Natbib-Literaturverweis-Stil"
+msgstr "Zu verwendender Natbib-Zitat-Stil"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:392
 msgid "Force &upper case"
@@ -3085,9 +3081,8 @@ msgid "Text to place after citation"
 msgstr "Nach dem Zitat einzufügender Text"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:447
-#, fuzzy
 msgid "Text to place before citation"
-msgstr "Nach dem Zitat einzufügender Text"
+msgstr "Vor dem Zitat einzufügender Text"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:458
 msgid "Text &before:"
@@ -3103,7 +3098,7 @@ msgstr "Alle Autoren im Zitat nennen"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:29
 msgid "LyX: Add Citation"
-msgstr "LyX: Literaturverweis hinzufügen"
+msgstr "LyX: Zitat hinzufügen"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:85
 msgid "Available bibliography keys"
@@ -3115,7 +3110,7 @@ msgstr "&Rückwärts"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:227
 msgid "Browse the available bibliography entries"
-msgstr "Die verfügbaren Literatureinträge durchsuchen"
+msgstr "Durchsuche die verfügbaren Literatureinträge"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:245
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:161
@@ -3175,7 +3170,7 @@ msgstr "Klassen-Standards verwenden"
 
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:85
 msgid "Reset to the default settings for the document class"
-msgstr ""
+msgstr "Setzen Sie auf die Standardeinstellungen der Dokumentenklasse zurück"
 
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:103
 msgid "Save as Document Defaults"
@@ -3870,11 +3865,11 @@ msgstr "&Konverter"
 
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:133
 msgid "C&opiers"
-msgstr ""
+msgstr "K&opierer"
 
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:254
 msgid "&Copier:"
-msgstr ""
+msgstr "&Kopierer:"
 
 #: src/frontends/qt2/ui/QPrefCopiersModule.ui:269
 #: src/frontends/qt2/ui/QRefDialogBase.ui:204
@@ -4058,7 +4053,7 @@ msgstr "&CheckTeX-Befehl:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:137
 msgid "BibTeX command and options"
-msgstr "BibTeX-Befehl und Optionen"
+msgstr "BibTeX-Befehl und -Optionen"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:148
 msgid "&BibTeX command:"
@@ -4070,7 +4065,7 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:174
 msgid "Index command:"
-msgstr ""
+msgstr "Befehl für Stichwortverz.:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:189
 msgid "DVI viewer paper size options:"
@@ -4410,9 +4405,8 @@ msgid "Print Destination"
 msgstr "Druck-Ziel"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:409
-#, fuzzy
 msgid "P&rinter:"
-msgstr "&Drucker"
+msgstr "D&rucker:"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
@@ -4472,7 +4466,6 @@ msgid "Formatted reference"
 msgstr "Formatierter Querverweis"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:171
-#, fuzzy
 msgid "Cross-reference as it appears in output"
 msgstr "Querverweis, wie er in der Ausgabe erscheint"
 
@@ -4600,7 +4593,7 @@ msgstr "Tabelle um 90 Grad &drehen"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:140
 msgid "Rotate the table by 90 degrees"
-msgstr "Die Tabelle um 90 Grad drehen"
+msgstr "Drehen Sie die Tabelle um 90 Grad"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:151
 msgid "Rotate &cell 90 degrees"
@@ -4608,7 +4601,7 @@ msgstr "&Zelle um 90 Grad drehen"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:155
 msgid "Rotate this cell by 90 degrees"
-msgstr "Diese Zelle um 90 Grad drehen"
+msgstr "Drehen Sie diese Zelle um 90 Grad"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:166
 msgid "LaTe&X argument:"
@@ -4730,18 +4723,16 @@ msgid "Repeat this row as header on every (except the first) page"
 msgstr ""
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:949
-#, fuzzy
 msgid "This row is the header of the first page"
-msgstr "Die Reihenfolge der gedruckten Seiten umkehren."
+msgstr ""
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:968
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr ""
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:983
-#, fuzzy
 msgid "This row is the footer of the last page"
-msgstr "Die Reihenfolge der gedruckten Seiten umkehren."
+msgstr ""
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:994
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1009
@@ -4760,14 +4751,12 @@ msgid "is empty"
 msgstr "ist leer"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1090
-#, fuzzy
 msgid "Don't output the last footer"
-msgstr "In eine Datei drucken"
+msgstr ""
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1105
-#, fuzzy
 msgid "Don't output the first header"
-msgstr "Auf dem Drucker ausgeben"
+msgstr ""
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1122
 msgid "Page &break on current row"
@@ -4825,9 +4814,8 @@ msgid "&Rescan"
 msgstr "&Neu lesen"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-#, fuzzy
 msgid "Rebuild the file lists"
-msgstr "Dateiliste neu erstellen"
+msgstr "Dateilisten neu erstellen"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
@@ -4837,7 +4825,7 @@ msgstr "&Ansicht"
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
-"Zeige Inhalt der markierten Datei. Nur möglich, wenn die Dateien mit vollem "
+"Zeige den Inhalt der markierten Datei. Nur möglich, wenn die Dateien mit "
 "Pfad angezeigt werden."
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -4875,18 +4863,16 @@ msgid "Replace the entry with the selection"
 msgstr "Eintrag durch die Auswahl ersetzen"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:60
-#, fuzzy
 msgid "&Type:"
-msgstr "&Art"
+msgstr "&Art:"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:109
 msgid "Contents list"
 msgstr "Inhaltsverzeichnis"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
 msgid "&URL:"
-msgstr "&URL"
+msgstr "&URL:"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: src/frontends/qt2/ui/QURLDialogBase.ui:94 lib/layouts/scrlttr2.layout:212
@@ -5047,9 +5033,8 @@ msgstr "Beweis"
 
 #: lib/layouts/IEEEtran.layout:65 lib/layouts/heb-article.layout:109
 #: lib/layouts/ijmpd.layout:144
-#, fuzzy
 msgid "Proof:"
-msgstr "Beweis"
+msgstr "Beweis:"
 
 #: lib/layouts/IEEEtran.layout:70 lib/layouts/amsart-plain.layout:25
 #: lib/layouts/amsart-seq.layout:136 lib/layouts/elsart.layout:259
@@ -5062,9 +5047,8 @@ msgid "Theorem"
 msgstr "Theorem"
 
 #: lib/layouts/IEEEtran.layout:73
-#, fuzzy
 msgid "Theorem #:"
-msgstr "Theorem"
+msgstr "Theorem #:"
 
 #: lib/layouts/IEEEtran.layout:80 lib/layouts/amsart-plain.layout:36
 #: lib/layouts/amsart-seq.layout:148 lib/layouts/elsart.layout:315
@@ -5076,9 +5060,8 @@ msgid "Lemma"
 msgstr "Lemma"
 
 #: lib/layouts/IEEEtran.layout:83
-#, fuzzy
 msgid "Lemma #:"
-msgstr "Lemma"
+msgstr "Lemma #:"
 
 #: lib/layouts/IEEEtran.layout:90 lib/layouts/amsart-plain.layout:30
 #: lib/layouts/amsart-seq.layout:142 lib/layouts/elsart.layout:322
@@ -5090,9 +5073,8 @@ msgid "Corollary"
 msgstr "Korrolar"
 
 #: lib/layouts/IEEEtran.layout:93
-#, fuzzy
 msgid "Corollary #:"
-msgstr "Korrolar"
+msgstr "Korrolar #:"
 
 #: lib/layouts/IEEEtran.layout:100 lib/layouts/amsart-plain.layout:42
 #: lib/layouts/amsart-seq.layout:154 lib/layouts/elsart.layout:329
@@ -5104,9 +5086,8 @@ msgid "Proposition"
 msgstr "Feststellung"
 
 #: lib/layouts/IEEEtran.layout:103
-#, fuzzy
 msgid "Proposition #:"
-msgstr "Feststellung"
+msgstr "Feststellung #:"
 
 #: lib/layouts/IEEEtran.layout:110 lib/layouts/amsart-plain.layout:48
 #: lib/layouts/amsart-seq.layout:160 lib/layouts/elsart.layout:364
@@ -5119,7 +5100,7 @@ msgstr "Vermutung"
 #: lib/layouts/IEEEtran.layout:113
 #, fuzzy
 msgid "Conjecture #:"
-msgstr "Vermutung"
+msgstr "Vermutung #:"
 
 #: lib/layouts/IEEEtran.layout:120 lib/layouts/amsart-plain.layout:54
 #: lib/layouts/amsart-seq.layout:166 lib/layouts/elsart.layout:336
@@ -5129,9 +5110,8 @@ msgid "Criterion"
 msgstr "Kriterium"
 
 #: lib/layouts/IEEEtran.layout:123
-#, fuzzy
 msgid "Criterion #:"
-msgstr "Kriterium"
+msgstr "Kriterium #:"
 
 #: lib/layouts/IEEEtran.layout:130 lib/layouts/amsart-plain.layout:66
 #: lib/layouts/amsart-seq.layout:178 lib/layouts/amsmaths-plain.inc:102
@@ -5140,9 +5120,8 @@ msgid "Fact"
 msgstr "Tatsache"
 
 #: lib/layouts/IEEEtran.layout:133
-#, fuzzy
 msgid "Fact #:"
-msgstr "Tatsache"
+msgstr "Tatsache #:"
 
 #: lib/layouts/IEEEtran.layout:140 lib/layouts/amsart-plain.layout:72
 #: lib/layouts/amsart-seq.layout:184 lib/layouts/amsmaths-plain.inc:112
@@ -5151,9 +5130,8 @@ msgid "Axiom"
 msgstr "Axiom"
 
 #: lib/layouts/IEEEtran.layout:143
-#, fuzzy
 msgid "Axiom #:"
-msgstr "Axiom"
+msgstr "Axiom #:"
 
 #: lib/layouts/IEEEtran.layout:150 lib/layouts/amsart-plain.layout:78
 #: lib/layouts/amsart-seq.layout:190 lib/layouts/elsart.layout:350
@@ -5165,14 +5143,12 @@ msgid "Definition"
 msgstr "Definition"
 
 #: lib/layouts/IEEEtran.layout:153
-#, fuzzy
 msgid "Definition #:"
-msgstr "Definition"
+msgstr "Definition #:"
 
 #: lib/layouts/IEEEtran.layout:163
-#, fuzzy
 msgid "Example #:"
-msgstr "Beispiel"
+msgstr "Beispiel #:"
 
 #: lib/layouts/IEEEtran.layout:170 lib/layouts/amsart-plain.layout:90
 #: lib/layouts/amsart-seq.layout:202 lib/layouts/amsmaths-plain.inc:142
@@ -5181,9 +5157,8 @@ msgid "Condition"
 msgstr "Bedingung"
 
 #: lib/layouts/IEEEtran.layout:173
-#, fuzzy
 msgid "Condition #:"
-msgstr "Bedingung"
+msgstr "Bedingung #:"
 
 #: lib/layouts/IEEEtran.layout:180 lib/layouts/amsart-plain.layout:96
 #: lib/layouts/amsart-seq.layout:208 lib/layouts/elsart.layout:378
@@ -5194,9 +5169,8 @@ msgid "Problem"
 msgstr "Problem"
 
 #: lib/layouts/IEEEtran.layout:183
-#, fuzzy
 msgid "Problem #:"
-msgstr "Problem"
+msgstr "Problem #:"
 
 #: lib/layouts/IEEEtran.layout:190 lib/layouts/amsart-plain.layout:102
 #: lib/layouts/amsart-seq.layout:214 lib/layouts/llncs.layout:347
@@ -5206,9 +5180,8 @@ msgid "Exercise"
 msgstr "Übung"
 
 #: lib/layouts/IEEEtran.layout:193
-#, fuzzy
 msgid "Exercise #:"
-msgstr "Übung"
+msgstr "Übung #:"
 
 #: lib/layouts/IEEEtran.layout:200 lib/layouts/amsart-plain.layout:108
 #: lib/layouts/amsart-seq.layout:220 lib/layouts/elsart.layout:385
@@ -5219,9 +5192,8 @@ msgid "Remark"
 msgstr "Anmerkung"
 
 #: lib/layouts/IEEEtran.layout:203
-#, fuzzy
 msgid "Remark #:"
-msgstr "Anmerkung"
+msgstr "Anmerkung #:"
 
 #: lib/layouts/IEEEtran.layout:210 lib/layouts/amsart-plain.layout:114
 #: lib/layouts/amsart-seq.layout:226 lib/layouts/elsart.layout:399
@@ -5232,9 +5204,8 @@ msgid "Claim"
 msgstr "Behauptung"
 
 #: lib/layouts/IEEEtran.layout:213
-#, fuzzy
 msgid "Claim #:"
-msgstr "Behauptung"
+msgstr "Behauptung #:"
 
 #: lib/layouts/IEEEtran.layout:220 lib/layouts/amsart-plain.layout:120
 #: lib/layouts/amsart-seq.layout:232 lib/layouts/apa.layout:212
@@ -5257,9 +5228,8 @@ msgid "Notation"
 msgstr "Notation"
 
 #: lib/layouts/IEEEtran.layout:233
-#, fuzzy
 msgid "Notation #:"
-msgstr "Notation"
+msgstr "Notation #:"
 
 #: lib/layouts/IEEEtran.layout:240 lib/layouts/amsart-plain.layout:144
 #: lib/layouts/amsart-seq.layout:256 lib/layouts/elsart.layout:414
@@ -5269,9 +5239,8 @@ msgid "Case"
 msgstr "Fall"
 
 #: lib/layouts/IEEEtran.layout:243
-#, fuzzy
 msgid "Case #:"
-msgstr "Fall"
+msgstr "Fall #:"
 
 #: lib/layouts/IEEEtran.layout:268 lib/layouts/aa.layout:36
 #: lib/layouts/aa.layout:234 lib/layouts/aapaper.layout:65
@@ -5367,9 +5336,8 @@ msgid "Abstract"
 msgstr "Zusammenfassung"
 
 #: lib/layouts/IEEEtran.layout:334
-#, fuzzy
 msgid "Abstract---"
-msgstr "Zusammenfassung"
+msgstr "Zusammenfassung---"
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:108
 #: lib/layouts/aastex.layout:283 lib/layouts/elsart.layout:63
@@ -5381,9 +5349,8 @@ msgid "Keywords"
 msgstr "Stichwörter"
 
 #: lib/layouts/IEEEtran.layout:359
-#, fuzzy
 msgid "Keywords---"
-msgstr "Stichwörter"
+msgstr "Stichwörter---"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:87
 #: lib/layouts/aa.layout:332 lib/layouts/aapaper.layout:104
@@ -5568,9 +5535,8 @@ msgid "Acknowledgement"
 msgstr "Danksagung"
 
 #: lib/layouts/aa.layout:155 lib/layouts/aapaper.inc:73
-#, fuzzy
 msgid "Offprint Requests to:"
-msgstr "Sonderdrucke"
+msgstr "Sonderdruck-Anfragen an:"
 
 #: lib/layouts/aa.layout:178
 msgid "Correspondence to:"
@@ -5583,9 +5549,8 @@ msgid "Acknowledgements."
 msgstr "Danksagungen"
 
 #: lib/layouts/aa.layout:318
-#, fuzzy
 msgid "         Abstract "
-msgstr "Zusammenfassung: "
+msgstr "         Zusammenfassung "
 
 #: lib/layouts/aapaper.layout:62 lib/layouts/egs.layout:636
 #: lib/layouts/obsolete.inc:14 src/frontends/qt2/QPrefsDialog.C:111
@@ -5683,9 +5648,8 @@ msgid "Dataset"
 msgstr "Datensatz"
 
 #: lib/layouts/aastex.layout:295
-#, fuzzy
 msgid "Subject headings:"
-msgstr "mit Überschriften"
+msgstr ""
 
 #: lib/layouts/aastex.layout:338
 #, fuzzy
@@ -5995,7 +5959,6 @@ msgid "\\arabic{section}"
 msgstr "Unterabschnitt"
 
 #: lib/layouts/amsbook.layout:108
-#, fuzzy
 msgid "Chapter Exercises"
 msgstr "Kapitel-Übungen"
 
@@ -6089,7 +6052,7 @@ msgstr "Bitmap einpassen"
 #: lib/layouts/egs.layout:175 lib/layouts/linuxdoc.layout:189
 #: lib/layouts/manpage.layout:95 lib/layouts/stdlists.inc:24
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: lib/layouts/apa.layout:329
 msgid "Seriate"
@@ -6148,7 +6111,6 @@ msgid "SCENE "
 msgstr "SZENE"
 
 #: lib/layouts/broadway.layout:102
-#, fuzzy
 msgid "AT RISE:"
 msgstr "BEIM HOCHGEHEN:"
 
@@ -6179,7 +6141,6 @@ msgstr "VORHANG"
 
 #: lib/layouts/broadway.layout:211 lib/layouts/egs.layout:220
 #: lib/layouts/hollywood.layout:313 lib/layouts/lyxmacros.inc:62
-#, fuzzy
 msgid "Right Address"
 msgstr "Adresse rechts"
 
@@ -6305,9 +6266,8 @@ msgid "Institute"
 msgstr "Institut"
 
 #: lib/layouts/cl2emult.layout:90
-#, fuzzy
 msgid "Abstract  "
-msgstr "Zusammenfassung: "
+msgstr "Zusammenfassung  "
 
 #: lib/layouts/cv.layout:57
 msgid "Topic"
@@ -6319,7 +6279,6 @@ msgstr ""
 
 #: lib/layouts/cv.layout:97 lib/layouts/foils.layout:189
 #: lib/layouts/aguplus.inc:75
-#, fuzzy
 msgid "Left Header"
 msgstr "Kopfzeile links"
 
@@ -6330,7 +6289,6 @@ msgstr "Kopfzeile rechts"
 
 #: lib/layouts/dinbrief.layout:12 lib/layouts/heb-letter.layout:9
 #: lib/layouts/stdletter.inc:23
-#, fuzzy
 msgid "My Address"
 msgstr "Absender-Adresse"
 
@@ -6340,7 +6298,6 @@ msgstr ""
 
 #: lib/layouts/dinbrief.layout:28 lib/layouts/heb-letter.layout:14
 #: lib/layouts/stdletter.inc:35
-#, fuzzy
 msgid "Send To Address"
 msgstr "Empfänger-Adresse"
 
@@ -6473,7 +6430,6 @@ msgid "Verse"
 msgstr "Gedicht"
 
 #: lib/layouts/egs.layout:267 lib/layouts/obsolete.inc:10
-#, fuzzy
 msgid "LaTeX Title"
 msgstr "LaTeX-Titel"
 
@@ -6545,9 +6501,8 @@ msgstr ""
 #: lib/layouts/llncs.layout:254 lib/layouts/siamltex.layout:155
 #: lib/layouts/svglobal.layout:43 lib/layouts/svjog.layout:48
 #: lib/layouts/amsdefs.inc:138 lib/layouts/svjour.inc:266
-#, fuzzy
 msgid "Abstract."
-msgstr "Zusammenfassung"
+msgstr "Zusammenfassung."
 
 #: lib/layouts/egs.layout:654 lib/layouts/db_lyxmacros.inc:17
 #: lib/layouts/lyxmacros.inc:11
@@ -6555,7 +6510,6 @@ msgid "LyX-Code"
 msgstr "LyX-Code"
 
 #: lib/layouts/elsart.layout:132
-#, fuzzy
 msgid "Author Address"
 msgstr "Autoren-Adresse"
 
@@ -6566,9 +6520,8 @@ msgid "Address: "
 msgstr "Adresse"
 
 #: lib/layouts/elsart.layout:148 lib/layouts/revtex4.layout:167
-#, fuzzy
 msgid "Author Email"
-msgstr "Autoren-Email"
+msgstr "Autoren-EMail"
 
 #: lib/layouts/elsart.layout:157 lib/layouts/llncs.layout:236
 #, fuzzy
@@ -6576,15 +6529,13 @@ msgid "Email: "
 msgstr "EMail"
 
 #: lib/layouts/elsart.layout:168 lib/layouts/revtex4.layout:181
-#, fuzzy
 msgid "Author URL"
 msgstr "Autoren-URL"
 
 #: lib/layouts/elsart.layout:178 lib/layouts/revtex4.layout:185
 #: lib/layouts/amsdefs.inc:186
-#, fuzzy
 msgid "URL: "
-msgstr "URL"
+msgstr "URL: "
 
 #: lib/layouts/elsart.layout:190 lib/layouts/revtex4.layout:160
 #: lib/layouts/amsdefs.inc:197
@@ -6669,9 +6620,8 @@ msgid "Keyword"
 msgstr "Stichwort"
 
 #: lib/layouts/entcs.layout:108
-#, fuzzy
 msgid "Key words:"
-msgstr "Stichwörter"
+msgstr "Stichwörter:"
 
 #: lib/layouts/foils.layout:41
 msgid "Foilhead"
@@ -7569,14 +7519,12 @@ msgid "Running author:"
 msgstr "Kolumne Autor"
 
 #: lib/layouts/kluwer.layout:290 lib/layouts/paper.layout:171
-#, fuzzy
 msgid "Keywords:"
-msgstr "Stichwörter"
+msgstr "Stichwörter:"
 
 #: lib/layouts/latex8.layout:69
-#, fuzzy
 msgid "E-mail:"
-msgstr "&EMail:"
+msgstr "EMail:"
 
 #: lib/layouts/linuxdoc.layout:237 lib/layouts/manpage.layout:144
 #: lib/layouts/db_lyxmacros.inc:10
@@ -7596,7 +7544,6 @@ msgid "Chapter"
 msgstr "Kapitel"
 
 #: lib/layouts/llncs.layout:144 lib/layouts/svjour.inc:174
-#, fuzzy
 msgid "Running LaTeX Title"
 msgstr "LaTeX-Kolumnentitel"
 
@@ -7606,7 +7553,6 @@ msgid "Running title: "
 msgstr "Kolumnentitel"
 
 #: lib/layouts/llncs.layout:168
-#, fuzzy
 msgid "TOC Title"
 msgstr "Inhaltsverz. Titel"
 
@@ -7616,7 +7562,6 @@ msgid "TOC title: "
 msgstr "Inhaltsverz. Titel"
 
 #: lib/layouts/llncs.layout:197 lib/layouts/svjour.inc:203
-#, fuzzy
 msgid "Author Running"
 msgstr "Kolumne Autor"
 
@@ -7626,7 +7571,6 @@ msgid "Author Running: "
 msgstr "Kolumne Autor"
 
 #: lib/layouts/llncs.layout:205
-#, fuzzy
 msgid "TOC Author"
 msgstr "Inhaltsverz. Autor"
 
@@ -7790,15 +7734,13 @@ msgid "PACS"
 msgstr "PACS"
 
 #: lib/layouts/revtex4.layout:223
-#, fuzzy
 msgid "PACS number: "
-msgstr "Keine Nummer"
+msgstr "PACS-Nummer: "
 
 #: lib/layouts/revtex4.layout:231 lib/layouts/spie.layout:45
 #: lib/layouts/agu_stdtitle.inc:121
-#, fuzzy
 msgid "Keywords: "
-msgstr "Stichwörter"
+msgstr "Stichwörter: "
 
 #: lib/layouts/scrbook.layout:16
 msgid "\\arabic{chapter}"
@@ -7899,9 +7841,8 @@ msgid "Subject"
 msgstr "Betreff"
 
 #: lib/layouts/scrlettr.layout:210 lib/layouts/scrlttr2.layout:288
-#, fuzzy
 msgid "Subject:"
-msgstr "Betreff"
+msgstr "Betreff:"
 
 #: lib/layouts/scrlettr.layout:214 lib/layouts/scrlttr2.layout:292
 msgid "Yourref"
@@ -8072,9 +8013,8 @@ msgid "Progress Contents"
 msgstr "Fortschritt Inhalte"
 
 #: lib/layouts/siamltex.layout:51
-#, fuzzy
 msgid "\tEnd."
-msgstr "Anlagen"
+msgstr ""
 
 #: lib/layouts/siamltex.layout:101 lib/layouts/aguplus.inc:66
 #: lib/layouts/db_stdstarsections.inc:71 lib/layouts/stdstarsections.inc:56
@@ -8082,18 +8022,16 @@ msgid "Paragraph*"
 msgstr "Paragraph*"
 
 #: lib/layouts/siamltex.layout:171
-#, fuzzy
 msgid "Key words."
-msgstr "Stichwörter"
+msgstr "Stichwörter."
 
 #: lib/layouts/siamltex.layout:175
 msgid "AMS"
 msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:178
-#, fuzzy
 msgid "AMS subject classifications."
-msgstr "Sachgebiet"
+msgstr "AMS-Sachgebiet-Klassifikationen."
 
 #: lib/layouts/slides.layout:102
 msgid "_____________________________NewSlide: "
@@ -8140,7 +8078,7 @@ msgstr "Autoren-Info"
 
 #: lib/layouts/spie.layout:76
 msgid "ABSTRACT"
-msgstr ""
+msgstr "ZUSAMMENFASSUNG"
 
 #: lib/layouts/spie.layout:91
 msgid "ACKNOWLEDGMENTS"
@@ -8178,18 +8116,16 @@ msgid "AGU-journal"
 msgstr "AGU-Journal"
 
 #: lib/layouts/agu_stdtitle.inc:49
-#, fuzzy
 msgid "AGU-journal: "
-msgstr "AGU-Journal"
+msgstr "AGU-Journal: "
 
 #: lib/layouts/agu_stdtitle.inc:54
 msgid "Citation-number"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:57
-#, fuzzy
 msgid "Citation-number: "
-msgstr "Literatureintrag"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:63
 msgid "AGU-volume"
@@ -8291,9 +8227,8 @@ msgid "Ident-line"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:223
-#, fuzzy
 msgid "Ident-line: "
-msgstr "&Eingebettet"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:228
 msgid "Runhead"
@@ -8310,12 +8245,11 @@ msgstr ""
 #: lib/layouts/agu_stdtitle.inc:261 src/frontends/qt2/QCitation.C:50
 #: src/frontends/xforms/FormCitation.C:100
 msgid "Citation"
-msgstr "Literaturverweis"
+msgstr "Zitat"
 
 #: lib/layouts/agu_stdtitle.inc:264
-#, fuzzy
 msgid "Citation: "
-msgstr "Literaturverweis"
+msgstr "Zitat: "
 
 #: lib/layouts/agu_stdtitle.inc:269
 msgid "Posting-order"
@@ -8335,7 +8269,7 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:285
 msgid "Words"
-msgstr ""
+msgstr "Wörter"
 
 #: lib/layouts/agu_stdtitle.inc:288
 msgid "Words: "
@@ -8346,18 +8280,16 @@ msgid "Figures"
 msgstr "Abbildungen"
 
 #: lib/layouts/agu_stdtitle.inc:296
-#, fuzzy
 msgid "Figures: "
-msgstr "Abbildungen"
+msgstr "Abbildungen: "
 
 #: lib/layouts/agu_stdtitle.inc:301
 msgid "Tables"
 msgstr "Tabellen"
 
 #: lib/layouts/agu_stdtitle.inc:304
-#, fuzzy
 msgid "Tables: "
-msgstr "Tabellen"
+msgstr "Tabellen: "
 
 #: lib/layouts/agu_stdtitle.inc:309
 msgid "Datasets"
@@ -8433,7 +8365,6 @@ msgid "TableCaption"
 msgstr "Tabellen-Beschriftung"
 
 #: lib/layouts/amsdefs.inc:167
-#, fuzzy
 msgid "Current Address"
 msgstr "Aktuelle Adresse"
 
@@ -8443,9 +8374,8 @@ msgid "Current address: "
 msgstr "Aktuelle Adresse"
 
 #: lib/layouts/amsdefs.inc:178
-#, fuzzy
 msgid "E-mail address: "
-msgstr "EMail-Adresse : |#E"
+msgstr "EMail-Adresse: "
 
 #: lib/layouts/amsdefs.inc:193
 msgid "Key words and phrases: "
@@ -8475,7 +8405,7 @@ msgstr "Sachgebiet"
 
 #: lib/layouts/amsdefs.inc:221
 msgid "1991 Mathematics Subject Classification: "
-msgstr ""
+msgstr "1991 Mathematik-Sachgebiet-Klassifikation: "
 
 #: lib/layouts/amsmaths-plain.inc:94
 #, fuzzy
@@ -8681,9 +8611,8 @@ msgid "@Subsection@.\\arabic{subsubsection}"
 msgstr ""
 
 #: lib/layouts/numarticle.inc:42 lib/layouts/numarticle.inc:43
-#, fuzzy
 msgid "@Subsubsection@.\\arabic{paragraph}"
-msgstr "Unterunterparagraph"
+msgstr ""
 
 #: lib/layouts/numarticle.inc:51 lib/layouts/numarticle.inc:52
 msgid "@Paragraph@.\\arabic{subparagraph}"
@@ -8821,13 +8750,12 @@ msgid "List of Algorithms"
 msgstr "Algorithmenverzeichnis"
 
 #: lib/layouts/stdlayouts.inc:74
-#, fuzzy
 msgid "Senseless!"
-msgstr "Absender-Adresse"
+msgstr "Sinnlos!"
 
 #: lib/layouts/stdlists.inc:102
 msgid "#*"
-msgstr ""
+msgstr "#*"
 
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
@@ -8843,9 +8771,8 @@ msgid "Dedication:"
 msgstr "Widmung"
 
 #: lib/layouts/svjour.inc:240
-#, fuzzy
 msgid "Corr Author: "
-msgstr "Vier Autoren"
+msgstr ""
 
 #: lib/layouts/svjour.inc:244
 msgid "Offprints"
@@ -8861,9 +8788,8 @@ msgid " Keywords"
 msgstr " Stichwörter"
 
 #: lib/layouts/svjour.inc:287
-#, fuzzy
 msgid "Key words: "
-msgstr "Stichwörter"
+msgstr "Stichwörter: "
 
 #: lib/layouts/svjour.inc:453
 #, fuzzy
@@ -9260,9 +9186,8 @@ msgid "Selection as Lines|L"
 msgstr "Wählen Sie eine Datei"
 
 #: lib/ui/classic.ui:116 lib/ui/stdmenus.ui:122
-#, fuzzy
 msgid "Selection as Paragraphs|P"
-msgstr "als Absätze|A"
+msgstr "Auswahl als Absätze|A"
 
 #: lib/ui/classic.ui:120 lib/ui/stdmenus.ui:131
 msgid "Multicolumn|M"
@@ -9466,14 +9391,12 @@ msgid "Special Character|S"
 msgstr "Sonderzeichen|S"
 
 #: lib/ui/classic.ui:217 lib/ui/stdmenus.ui:249
-#, fuzzy
 msgid "Citation...|C"
-msgstr "Literaturverweis"
+msgstr "Zitat...|Z"
 
 #: lib/ui/classic.ui:218 lib/ui/stdmenus.ui:250
-#, fuzzy
 msgid "Cross-reference...|r"
-msgstr "Querverweis"
+msgstr "Querverweis...|Q"
 
 #: lib/ui/classic.ui:219 lib/ui/stdmenus.ui:251
 msgid "Label...|L"
@@ -9492,7 +9415,6 @@ msgid "Short Title"
 msgstr "Kurztitel|K"
 
 #: lib/ui/classic.ui:223
-#, fuzzy
 msgid "Index Entry|I"
 msgstr "Stichwort|S"
 
@@ -9509,9 +9431,8 @@ msgid "Lists & TOC|O"
 msgstr "Listen und Inhaltsverz.|L"
 
 #: lib/ui/classic.ui:228
-#, fuzzy
 msgid "TeX Code|T"
-msgstr "TeX|X"
+msgstr "TeX-Code|X"
 
 #: lib/ui/classic.ui:229
 msgid "Minipage|p"
@@ -9574,9 +9495,8 @@ msgid "Thin Space|T"
 msgstr "Kleiner Abstand|K"
 
 #: lib/ui/classic.ui:248 lib/ui/stdmenus.ui:281
-#, fuzzy
 msgid "Vertical Space..."
-msgstr "Vertikaler Abstand"
+msgstr "Vertikaler Abstand..."
 
 #: lib/ui/classic.ui:249 lib/ui/stdmenus.ui:285
 msgid "Line Break|L"
@@ -11292,7 +11212,7 @@ msgstr "Die Ausgabe ist leer"
 
 #: src/converter.C:593
 msgid "An empty output file was generated."
-msgstr ""
+msgstr "Eine leere Ausgabedatei wurde erzeugt."
 
 #: src/debug.C:43
 msgid "Program initialisation"
@@ -11867,9 +11787,8 @@ msgstr ""
 
 #: src/frontends/gtk/Dialogs.C:267 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
-#, fuzzy
 msgid "Index Entry"
-msgstr "Stichwort|S"
+msgstr "Stichwort"
 
 #: src/frontends/gtk/Dialogs.C:273 src/frontends/qt2/Dialogs.C:238
 #: src/frontends/xforms/Dialogs.C:251
@@ -12802,7 +12721,7 @@ msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
 msgstr ""
-"Einträge, die zitiert werden. Wählen Sie sie mit den Pfeil-Knöpfen aus dem "
+"Die Einträge, die zitiert werden. Wählen Sie sie mit den Pfeil-Knöpfen aus dem "
 "rechten Auswahlfenster."
 
 #: src/frontends/xforms/FormCitation.C:194
@@ -12848,14 +12767,14 @@ msgstr ""
 #, fuzzy
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
 msgstr ""
-"Optionaler Text, der vor dem Literaturverweis erscheint, z.B. \"siehe <Zitat>"
+"Optionaler Text, der vor dem Zitat erscheint, z.B. \"siehe <Zitat>"
 "\""
 
 #: src/frontends/xforms/FormCitation.C:220
 #, fuzzy
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
 msgstr ""
-"Optionaler Text, der hinter dem Literaturverweis erscheint, z.B. \"S. 12\""
+"Optionaler Text, der hinter dem Zitat erscheint, z.B. \"S. 12\""
 
 #: src/frontends/xforms/FormCitation.C:223
 msgid "Search your database (all fields will be searched)."
@@ -13854,7 +13773,7 @@ msgstr "Einfügung geöffnet"
 
 #: src/insets/insetbibtex.C:95
 msgid "BibTeX Generated Bibliography"
-msgstr "BibTeX-erstelltes Literaturverzeichnis"
+msgstr "BibTeX-erzeugtes Literaturverzeichnis"
 
 #: src/insets/insetbox.C:57
 msgid "Boxed"
@@ -14092,7 +14011,7 @@ msgstr "Theorem-Einfügung geöffnet"
 
 #: src/insets/insettoc.C:43
 msgid "Unknown toc list"
-msgstr "Unbekannte TOC Liste"
+msgstr "Unbekannte Inhaltsverzeichnis-Liste"
 
 #: src/insets/inseturl.C:40
 msgid "Url: "
@@ -14128,7 +14047,7 @@ msgstr "Konvertiere in ein darstellbares Format..."
 
 #: src/insets/render_graphic.C:99
 msgid "Loaded into memory. Generating pixmap..."
-msgstr "In den Speicher geladen. Erstellung der Pixmap..."
+msgstr "In den Speicher geladen. Erzeugung der Pixmap..."
 
 #: src/insets/render_graphic.C:101
 msgid "Scaling etc..."
