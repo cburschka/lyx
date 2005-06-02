@@ -1,3 +1,8 @@
+2005-05-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetoptarg.C (InsetOptArg): make the inset open by default
+	(fixes bug 1890)
+
 2005-05-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetvspace.C (draw): use VSpace::asGUIName.

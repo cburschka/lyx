@@ -26,7 +26,7 @@ using std::ostringstream;
 
 
 InsetOptArg::InsetOptArg(BufferParams const & ins)
-	: InsetCollapsable(ins, Collapsed)
+	: InsetCollapsable(ins)
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::collapsable);
