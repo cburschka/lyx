@@ -212,15 +212,19 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr)
 	TeXErrors::Errors::const_iterator end = terr.end();
 
 	for (; cit != end; ++cit) {
-		int par_id = -1;
-		int posstart = -1;
-		int const errorrow = cit->error_in_line;
-		buf.texrow().getIdFromRow(errorrow, par_id, posstart);
-		int posend = -1;
-		buf.texrow().getIdFromRow(errorrow + 1, par_id, posend);
-		buf.error(ErrorItem(cit->error_desc,
-					 cit->error_text,
-					 par_id, posstart, posend));
+		int id_start = -1;
+		int pos_start = -1;
+		int errorrow = cit->error_in_line;
+		buf.texrow().getIdFromRow(errorrow, id_start, pos_start);
+		int id_end = -1;
+		int pos_end = -1;
+		do {
+			++errorrow;
+			buf.texrow().getIdFromRow(errorrow, id_end, pos_end);
+		} while (id_start == id_end && pos_start == pos_end);
+
+		buf.error(ErrorItem(cit->error_desc, cit->error_text,
+				    id_start, pos_start, pos_end));
 	}
 }
 

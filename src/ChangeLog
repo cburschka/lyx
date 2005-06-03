@@ -1,3 +1,8 @@
+2005-06-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* buffer_funcs.C (bufferErrors): fix computation of the end of an
+	error range.
+
 2005-05-31  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BufferView.[Ch] (update):

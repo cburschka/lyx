@@ -1,3 +1,8 @@
+2005-06-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlErrorList.C (goTo): if pos_end is 0, assume it is the end
+	of the paragraph instead.
+
 2005-05-14  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* ControlLog.C: fix dialog title
