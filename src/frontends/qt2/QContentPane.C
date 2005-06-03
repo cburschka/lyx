@@ -96,7 +96,7 @@ QContentPane::QContentPane(QWorkArea * parent)
 	setFocusPolicy(QWidget::WheelFocus);
 	setFocus();
 	setCursor(ibeamCursor);
-#if QT_VERSION >= 0x030200
+#if USE_INPUT_METHODS
 	// to make qt-immodule work
 	setInputMethodEnabled(true);
 #endif
@@ -108,7 +108,7 @@ QContentPane::QContentPane(QWorkArea * parent)
 }
 
 
-#if QT_VERSION >= 0x030200
+#if USE_INPUT_METHODS
 // to make qt-immodule work
 void QContentPane::imStartEvent(QIMEvent *e)
 {
