@@ -24,6 +24,10 @@
 
 #include <boost/scoped_ptr.hpp>
 
+#if (defined(Q_WS_X11) && QT_VERSION >= 0x030200)
+#define USE_INPUT_METHODS 1
+#endif
+
 class QWorkArea;
 
 /// for emulating triple click
@@ -101,7 +105,7 @@ protected:
 	void wheelEvent(QWheelEvent * e);
 	/// key press
 	void keyPressEvent(QKeyEvent * e);
-#if QT_VERSION >= 0x030200
+#if USE_INPUT_METHODS
 	/// IM events
 	void imStartEvent(QIMEvent *);
 	void imComposeEvent(QIMEvent *);
