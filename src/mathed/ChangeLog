@@ -1,3 +1,10 @@
+2005-06-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_parser.h (latexkeys): new member requires
+	* math_factory.C (initSymbols): fill the requires field for fonts
+	* math_symbolinset.C (validate): use sym_->requires instead of
+	sym_->inset (fixes bug 1665)
+
 2005-04-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_cursor.C (interpret): treat & as special character (fixes

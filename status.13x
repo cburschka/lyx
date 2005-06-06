@@ -65,6 +65,8 @@ What's new
 - Make sure that the wasysym package is used in LaTeX output when
   using symbols from the wasy font.
 
+- Fix export via commandline of symbols using AMS or wasy fonts [bug 1665].
+
 - Make sure that the natbib and url packages are not loaded with
   REVTeX 4, since the functionality is already provided by the class.
 

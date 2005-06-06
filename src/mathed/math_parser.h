@@ -39,6 +39,8 @@ struct latexkeys {
 	string extra;
 	/// how is this called as XML entity?
 	string xmlname;
+	/// required LaTeXFeatures
+	string requires;
 };
 
 
