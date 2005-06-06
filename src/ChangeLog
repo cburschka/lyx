@@ -1,3 +1,8 @@
+2005-06-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* BufferView_pimpl.C (getStatus): enable LFUN_GOTO_NOTE only
+	when it actually makes sense.
+
 2005-06-06  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BufferView_pimpl.C: revert to showCursor in connection with

@@ -972,7 +972,6 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_FONT_STATE:
 	case LFUN_INSERT_LABEL:
 	case LFUN_BOOKMARK_SAVE:
-	case LFUN_LABEL_GOTO:
 	case LFUN_GOTO_PARAGRAPH:
 	case LFUN_GOTOERROR:
 	case LFUN_GOTONOTE:
@@ -986,6 +985,12 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_WORDS_COUNT:
 		flag.enabled(true);
 		break;
+
+	case LFUN_LABEL_GOTO: {
+		flag.enabled(!cmd.argument.empty()
+		    || getInsetByCode<InsetRef>(cursor_, InsetBase::REF_CODE));
+		break;
+	}
 
 	case LFUN_BOOKMARK_GOTO:
 		flag.enabled(isSavedPosition(convert<unsigned int>(cmd.argument)));
