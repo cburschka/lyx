@@ -1,3 +1,8 @@
+2005-06-06  Angus Leeming  <leeming@lyx.org>
+
+	* helper_funcs.C (browseFile, browseDir): check whether latex
+	will be happy with the file name only when we have a buffer.
+
 2005-05-31  Angus Leeming  <leeming@lyx.org>
 
 	* helper_funcs.C (get_invalid_chars_latex): allow ':' characters

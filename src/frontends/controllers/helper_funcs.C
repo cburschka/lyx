@@ -80,7 +80,9 @@ string const browseFile(LyXView * lv,
 
 	FileDialog::Result result;
 	string const & result_path = result.second;
-	string const invalid_chars = lv->buffer()->isLatex() ?
+	string const invalid_chars =
+		(check_returned_filename &&
+		 lv && lv->buffer() && lv->buffer()->isLatex()) ?
 		get_invalid_chars_latex() : string();
 
 	while (true) {
@@ -147,7 +149,9 @@ string const browseDir(LyXView * lv,
 
 	FileDialog::Result result;
 	string const & result_path = result.second;
-	string const invalid_chars = lv->buffer()->isLatex() ?
+	string const invalid_chars =
+		(check_returned_pathname &&
+		 lv && lv->buffer() && lv->buffer()->isLatex()) ?
 		get_invalid_chars_latex() : string();
 
 	while (true) {
