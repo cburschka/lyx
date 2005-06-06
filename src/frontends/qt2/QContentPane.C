@@ -19,7 +19,6 @@
 
 #include <qapplication.h>
 #include <qpainter.h>
-#include <qtimer.h>
 
 #include <boost/bind.hpp>
 
@@ -90,6 +89,8 @@ QContentPane::QContentPane(QWorkArea * parent)
 		boost::bind(&QContentPane::generateSyntheticMouseEvent,
 			    this));
 
+	connect(&step_timer_, SIGNAL(timeout()), SLOT(keyeventTimeout()));
+
 	setFocusPolicy(QWidget::WheelFocus);
 	setFocus();
 	setCursor(ibeamCursor);
@@ -101,6 +102,9 @@ QContentPane::QContentPane(QWorkArea * parent)
 	// stupid moc strikes again
 	connect(wa_->scrollbar_, SIGNAL(valueChanged(int)),
 		this, SLOT(scrollBarChanged(int)));
+
+	// Start the timer, one-shot.
+	step_timer_.start(25, true);
 }
 
 
@@ -251,9 +255,35 @@ void QContentPane::wheelEvent(QWheelEvent * e)
 
 void QContentPane::keyPressEvent(QKeyEvent * e)
 {
+	keyeventQueue_.push(boost::shared_ptr<QKeyEvent>(new QKeyEvent(*e)));
+}
+
+
+void QContentPane::keyeventTimeout()
+{
+	bool handle_autos = true;
+
+	while (!keyeventQueue_.empty()) {
+		boost::shared_ptr<QKeyEvent> ev = keyeventQueue_.front();
+
+		// We never handle more than one auto repeated
+		// char in a list of queued up events.
+		if (!handle_autos && ev->isAutoRepeat()) {
+			keyeventQueue_.pop();
+			continue;
+		}
+
 	boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
-	sym->set(e);
-	wa_->workAreaKeyPress(sym, q_key_state(e->state()));
+		sym->set(ev.get());
+
+		wa_->workAreaKeyPress(sym, q_key_state(ev->state()));
+		keyeventQueue_.pop();
+
+		handle_autos = false;
+	}
+
+	// Restart the timer.
+	step_timer_.start(25, true);
 }
 
 

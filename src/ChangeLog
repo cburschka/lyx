@@ -1,3 +1,8 @@
+2005-06-06  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* BufferView_pimpl.C: revert to showCursor in connection with
+	Lars's front-end stack
+
 2005-06-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text.C (redoParagraph): move cursor right after a bibitem 

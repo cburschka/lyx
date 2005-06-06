@@ -21,8 +21,11 @@
 
 #include <qwidget.h>
 #include <qpixmap.h>
+#include <qtimer.h>
 
 #include <boost/scoped_ptr.hpp>
+
+#include <queue>
 
 #if (defined(Q_WS_X11) && QT_VERSION >= 0x030200)
 #define USE_INPUT_METHODS 1
@@ -115,6 +118,8 @@ public slots:
 	void doubleClickTimeout();
 
 	void scrollBarChanged(int);
+	void keyeventTimeout();
+
 private:
 	/// The slot connected to SyntheticMouseEvent::timeout.
 	void generateSyntheticMouseEvent();
@@ -124,6 +129,9 @@ private:
 	bool track_scrollbar_;
 	/// owning widget
 	QWorkArea * wa_;
+
+	QTimer step_timer_;
+	std::queue<boost::shared_ptr<QKeyEvent> > keyeventQueue_;
 
 	/// the double buffered pixmap
 	boost::scoped_ptr<QPixmap> pixmap_;

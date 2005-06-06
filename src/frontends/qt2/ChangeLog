@@ -1,3 +1,10 @@
+2005-06-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+	(Committed Martin Vermeer <martin.vermeer@hut.fi>)
+
+	* QContentPane.[Ch]: implement keystroke event stack with
+	repeat key "regulation". Key are not sent to LyX core faster
+	than rendering can handle. 
+
 2005-06-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QContentPane.[Ch]: Limit the QIM*Events to X11. They are not

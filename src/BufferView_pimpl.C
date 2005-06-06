@@ -520,12 +520,8 @@ void BufferView::Pimpl::workAreaKeyPress(LyXKeySymPtr key,
 	 * of the cursor. Note we cannot do this inside
 	 * dispatch() itself, because that's called recursively.
 	 */
-	if (available()) {
-		screen().prepareCursor();
-		cursor_timeout.setTimeout(100);
-		cursor_timeout.restart();
-		cursor_timeout.setTimeout(400);
-	}
+	if (available())
+		screen().showCursor(*bv_);
 }
 
 
