@@ -1567,6 +1567,10 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		flag.setOnOff(cur.paragraph().params().startOfAppendix());
 		return true;
 
+	case LFUN_INSERT_BIBITEM:
+		enable = (cur.paragraph().layout()->labeltype == LABEL_BIBLIO);
+		break;
+
 #if 0
 	// the functions which insert insets
 	InsetBase::Code code = InsetBase::NO_CODE;
@@ -1831,7 +1835,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSERT_LABEL:
 	case LFUN_INSERT_NOTE:
 	case LFUN_INSERT_CHARSTYLE:
-	case LFUN_INSERT_BIBITEM:
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_FOOTNOTE:
 	case LFUN_INSET_MARGINAL:

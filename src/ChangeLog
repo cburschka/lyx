@@ -1,3 +1,10 @@
+2005-06-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text.C (redoParagraph): move cursor right after a bibitem 
+	has been inserted.
+
+	* text3.C: disable LFUN_BIBITEM_INSERT outside Bibliography. 
+
 2005-06-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* buffer_funcs.C (bufferErrors): fix computation of the end of an
