@@ -1,3 +1,8 @@
+2005-06-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_main.C (parse_execute): Fix last fix: is_gui = false
+	effectively disabled -x
+
 2005-06-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* BufferView_pimpl.C (getStatus): enable LFUN_GOTO_NOTE only

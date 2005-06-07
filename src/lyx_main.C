@@ -885,7 +885,6 @@ int parse_execute(string const & arg, string const &)
 		exit(1);
 	}
 	batch = arg;
-	is_gui = false;
 	return 1;
 }
 
