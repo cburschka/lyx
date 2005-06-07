@@ -92,13 +92,13 @@ Var DoNotRequirePerl
 Var PerlPath
 Var DownloadPerl
 
-Var DoNotRequireImageMagick
-Var ImageMagickPath
-Var DownloadImageMagick
-
 Var DoNotRequireGhostscript
 Var GhostscriptPath
 Var DownloadGhostscript
+
+Var DoNotRequireImageMagick
+Var ImageMagickPath
+Var DownloadImageMagick
 
 Var DoNotInstallLyX
 Var PathPrefix
@@ -126,8 +126,8 @@ Page custom DownloadMinSYS DownloadMinSYS_LeaveFunction
 Page custom DownloadPython DownloadPython_LeaveFunction
 Page custom DownloadMiKTeX DownloadMiKTeX_LeaveFunction
 Page custom DownloadPerl DownloadPerl_LeaveFunction
-Page custom DownloadImageMagick DownloadImageMagick_LeaveFunction
 Page custom DownloadGhostscript DownloadGhostscript_LeaveFunction
+Page custom DownloadImageMagick DownloadImageMagick_LeaveFunction
 Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 
 ; Show the license.
@@ -414,30 +414,6 @@ FunctionEnd
 
 ;--------------------------------
 
-Function DownloadImageMagick
-  ${DownloadEnter} \
-      $ImageMagickPath "Software\ImageMagick\Current" "BinPath" \
-      "" "" \
-      1 \
-      "$(ImageMagickDownloadLabel)" \
-      "$(ImageMagickFolderLabel)" \
-      "$(ImageMagickHeader)" \
-      "$(ImageMagickDescription)"
-FunctionEnd
-
-Function DownloadImageMagick_LeaveFunction
-  ${DownloadLeave} \
-      $DoNotRequireImageMagick \
-      $DownloadImageMagick \
-      $ImageMagickPath \
-      "http://www.imagemagick.org/script/binary-releases.php" \
-      "$(EnterImageMagickFolder)" \
-      "\convert.exe" \
-      "$(InvalidImageMagickFolder)"
-FunctionEnd
-
-;--------------------------------
-
 Function DownloadGhostscript
 
   ; Find which version of ghostscript, if any, is installed.
@@ -471,6 +447,30 @@ FunctionEnd
 
 ;--------------------------------
 
+Function DownloadImageMagick
+  ${DownloadEnter} \
+      $ImageMagickPath "Software\ImageMagick\Current" "BinPath" \
+      "" "" \
+      1 \
+      "$(ImageMagickDownloadLabel)" \
+      "$(ImageMagickFolderLabel)" \
+      "$(ImageMagickHeader)" \
+      "$(ImageMagickDescription)"
+FunctionEnd
+
+Function DownloadImageMagick_LeaveFunction
+  ${DownloadLeave} \
+      $DoNotRequireImageMagick \
+      $DownloadImageMagick \
+      $ImageMagickPath \
+      "http://www.imagemagick.org/script/binary-releases.php" \
+      "$(EnterImageMagickFolder)" \
+      "\convert.exe" \
+      "$(InvalidImageMagickFolder)"
+FunctionEnd
+
+;--------------------------------
+
 Function SummariseDownloads
 
   StrCpy $PathPrefix ""
@@ -486,11 +486,11 @@ Function SummariseDownloads
   ${if} $PerlPath != ""
     StrCpy $PathPrefix "$PathPrefix;$PerlPath"
   ${endif}
-  ${if} $ImageMagickPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$ImageMagickPath"
-  ${endif}
   ${if} $GhostscriptPath != ""
     StrCpy $PathPrefix "$PathPrefix;$GhostscriptPath"
+  ${endif}
+  ${if} $ImageMagickPath != ""
+    StrCpy $PathPrefix "$PathPrefix;$ImageMagickPath"
   ${endif}
   ; Remove the leading ';'
   StrCpy $PathPrefix "$PathPrefix" "" 1
@@ -498,8 +498,8 @@ Function SummariseDownloads
   IntOp $DoNotInstallLyX $DownloadMinSYS + $DownloadPython
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadMiKTeX
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadPerl
-  IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadImageMagick
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadGhostscript
+  IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadImageMagick
 
   ${if} "$DoNotInstallLyX" == 1
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$(SummaryPleaseInstall)"
