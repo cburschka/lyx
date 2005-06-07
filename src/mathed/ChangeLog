@@ -1,3 +1,10 @@
+2005-06-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_parser.h (latexkeys): new member requires
+	* math_factory.C (initSymbols): fill the requires field for fonts
+	* math_symbolinset.C (validate): use sym_->requires instead of
+	sym_->inset (fixes bug 1665)
+
 2005-05-07  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* ref_inset.C: rename LFUN_REF_GOTO to LFUN_LABEL_GOTO

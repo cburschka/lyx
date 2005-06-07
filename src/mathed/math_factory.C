@@ -163,6 +163,12 @@ void initSymbols()
 			// tmp.inset _is_ the fontname here.
 			// create fallbacks if necessary
 
+			// store requirements as long as we can
+			if (tmp.inset == "msa" || tmp.inset == "msb")
+				tmp.requires = "amssymb";
+			else if (tmp.inset == "wasy")
+				tmp.requires = "wasysym";
+
 			// symbol font is not available sometimes
 			string symbol_font = "lyxsymbol";
 

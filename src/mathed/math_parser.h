@@ -35,6 +35,8 @@ public:
 	std::string extra;
 	/// how is this called as XML entity?
 	std::string xmlname;
+	/// required LaTeXFeatures
+	std::string requires;
 };
 
 
