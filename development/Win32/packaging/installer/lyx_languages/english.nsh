@@ -18,6 +18,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Create associations between th
 LangString SecDesktopDescription "${LYX_LANG}" "A ${PRODUCT_NAME} icon on the desktop."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Failed attempting to set 'path_prefix' in the configure script"
+LangString RunConfigureFailed "${LYX_LANG}" "Failed attempting to execute the configure script"
 
 LangString FinishPageMessage "${LYX_LANG}" "Congratulations! LyX has been installed successfully."
 LangString FinishPageRun "${LYX_LANG}" "Launch LyX"

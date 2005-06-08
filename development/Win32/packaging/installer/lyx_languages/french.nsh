@@ -19,6 +19,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Crée les associations entre l'
 LangString SecDesktopDescription "${LYX_LANG}" "Une icône ${PRODUCT_NAME} sur le bureau."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Échec de l'allocation 'path_prefix' lors de la configuration."
+LangString RunConfigureFailed "${LYX_LANG}" "Failed attempting to execute the configure script"
 
 LangString FinishPageMessage "${LYX_LANG}" "Félicitations ! LyX est installé avec succès."
 LangString FinishPageRun "${LYX_LANG}" "Démarrer LyX"

@@ -209,10 +209,15 @@ Section "-Installation actions" SecInstallation
   File /r "${PRODUCT_SOURCEDIR}\bin"
 
   ${if} "$PathPrefix" != ""
-    lyx_path_prefix::set "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
+    lyx_path_prefix::set_path_prefix "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
     Pop $0
     ${if} $0 != 0
       MessageBox MB_OK "$(ModifyingConfigureFailed)"
+    ${endif}
+    lyx_path_prefix::run_configure "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
+    Pop $0
+    ${if} $0 != 0
+      MessageBox MB_OK "$(RunConfigureFailed)"
     ${endif}
   ${endif}
 
