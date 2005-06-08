@@ -261,6 +261,8 @@ SectionEnd
 
 ;--------------------------------
 
+!define MUI_LANGDLL_ALWAYSSHOW
+
 ; This hook function is called internally by NSIS on installer startup
 Function .onInit
   !insertmacro MUI_LANGDLL_DISPLAY
@@ -592,6 +594,7 @@ Section Uninstall
 
   Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
 
+  DeleteRegKey "HKCU" "${PRODUCT_UNINST_KEY}\Installer Language"
   DeleteRegKey ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
 
