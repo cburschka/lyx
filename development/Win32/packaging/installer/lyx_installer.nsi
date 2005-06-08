@@ -160,10 +160,12 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 ; Languages
 
 !insertmacro MUI_LANGUAGE "English" # first language is the default language
-!insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "Danish"
 !insertmacro MUI_LANGUAGE "German"
+!insertmacro MUI_LANGUAGE "French"
 
 !include "lyx_languages\english.nsh"
+!include "lyx_languages\danish.nsh"
 !include "lyx_languages\french.nsh"
 !include "lyx_languages\german.nsh"
 
