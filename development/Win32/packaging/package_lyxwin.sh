@@ -78,7 +78,7 @@ windows_packaging()
 # (Note that this sed script contains TAB characters.)
 # Append the dvi2 format after the dvi format.
 /^ *\\\\Format[	 ]\{1,\}dvi[	 ]\{1,\}/a\
-\\\\Format dvi2	  dvi	DirtyDVI	""
+\\\\Format dvi2	  dvi	DraftDVI	""
 
 # Change the latex->dvi converter to latex->dvi2
 # and append the dvi2->dvi converter
