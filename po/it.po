@@ -1,4 +1,3 @@
-# translation of lyx_it.po to Italiano
 # translation of lyx-1.35x_it.po to Italiano
 # This file is distributed under the same license as the PACKAGE package.
 # Grazie a Lele Gaifax  (leleATnautilus.homeip.net) per tutti i suoi suggerimenti e consigli
@@ -9,7 +8,7 @@ msgstr ""
 "Project-Id-Version: lyx-1.35x_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-05-30 11:40+0200\n"
-"PO-Revision-Date: 2005-05-25 18:07+0200\n"
+"PO-Revision-Date: 2005-06-02 10:09+0200\n"
 "Last-Translator: Kostantino <inverness1ATvirgilio.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -3724,13 +3723,11 @@ msgstr "Forma&to prestabilito della carta:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:188
 msgid "&Reset class options when document class changes"
-msgstr ""
-"&Reimposta le opzioni della classe quando cambia la classe del documento"
+msgstr "&Reimposta le opzioni della classe quando cambia la classe del documento"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
 msgid "Set class options to default on class change"
-msgstr ""
-"Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
+msgstr "Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
 msgid "External Applications"
@@ -4541,8 +4538,7 @@ msgid "&View"
 msgstr "&Vista"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostra i contenuti del file segnato. E' possibile solo quando i file sono "
 "mostrati con il loro percorso."
@@ -5143,9 +5139,8 @@ msgid "FigCaption"
 msgstr "Didascalia della figura"
 
 #: ../lib/layouts/amsbook.layout:103
-#, fuzzy
 msgid "Chapter Exercises"
-msgstr "Esercizi_Capitolo"
+msgstr "Esercizi Capitolo"
 
 #: ../lib/layouts/apa.layout:55
 msgid "RightHeader"
@@ -5246,7 +5241,6 @@ msgid "SCENE*"
 msgstr "SCENA*"
 
 #: ../lib/layouts/broadway.layout:102
-#, fuzzy
 msgid "AT RISE:"
 msgstr "ALL'ELEVAZIONE:"
 
@@ -5264,9 +5258,8 @@ msgstr "SIPARIO"
 
 #: ../lib/layouts/broadway.layout:216 ../lib/layouts/egs.layout:261
 #: ../lib/layouts/hollywood.layout:311 ../lib/layouts/lyxmacros.inc:101
-#, fuzzy
 msgid "Right Address"
-msgstr "Indirizzo _destro"
+msgstr "Indirizzo Destro"
 
 #: ../lib/layouts/chess.layout:38
 msgid "Mainline"
@@ -5335,27 +5328,23 @@ msgstr "Argomento"
 
 #: ../lib/layouts/cv.layout:104 ../lib/layouts/foils.layout:200
 #: ../lib/layouts/aguplus.inc:73
-#, fuzzy
 msgid "Left Header"
-msgstr "Intestazione_Sinistra"
+msgstr "Intestazione sinistra"
 
 #: ../lib/layouts/cv.layout:123 ../lib/layouts/foils.layout:208
 #: ../lib/layouts/aguplus.inc:99
-#, fuzzy
 msgid "Right Header"
 msgstr "Intestazione destra"
 
 #: ../lib/layouts/dinbrief.layout:15 ../lib/layouts/heb-letter.layout:8
 #: ../lib/layouts/stdletter.inc:33
-#, fuzzy
 msgid "My Address"
-msgstr "Il_mio_indirizzo"
+msgstr "Il mio indirizzo"
 
 #: ../lib/layouts/dinbrief.layout:31 ../lib/layouts/heb-letter.layout:12
 #: ../lib/layouts/stdletter.inc:45
-#, fuzzy
 msgid "Send To Address"
-msgstr "Inviare_all'_indirizzo"
+msgstr "Inviare all'indirizzo"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
 #: ../lib/layouts/g-brief2.layout:863 ../lib/layouts/heb-letter.layout:16
@@ -5427,9 +5416,8 @@ msgid "Verse"
 msgstr "Verso"
 
 #: ../lib/layouts/egs.layout:312 ../lib/layouts/obsolete.inc:10
-#, fuzzy
 msgid "LaTeX Title"
-msgstr "Titolo_LaTeX"
+msgstr "Titolo LaTeX"
 
 #: ../lib/layouts/egs.layout:362
 msgid "Affil"
@@ -5461,19 +5449,16 @@ msgid "LyX-Code"
 msgstr "Codice LyX"
 
 #: ../lib/layouts/elsart.layout:136
-#, fuzzy
 msgid "Author Address"
-msgstr "Indirizzo_Autore"
+msgstr "Indirizzo autore"
 
 #: ../lib/layouts/elsart.layout:151 ../lib/layouts/revtex4.layout:184
-#, fuzzy
 msgid "Author Email"
-msgstr "Posta_elettronica_Autore"
+msgstr "Posta elettronica autore"
 
 #: ../lib/layouts/elsart.layout:170 ../lib/layouts/revtex4.layout:199
-#, fuzzy
 msgid "Author URL"
-msgstr "URL_Autore"
+msgstr "URL autore"
 
 #: ../lib/layouts/elsart.layout:191 ../lib/layouts/revtex4.layout:178
 #: ../lib/layouts/amsdefs.inc:260
@@ -5524,18 +5509,16 @@ msgid "CrossList"
 msgstr "Elenco incrociato"
 
 #: ../lib/layouts/foils.layout:173
-#, fuzzy
 msgid "My Logo"
-msgstr "Il_mio_logo"
+msgstr "Il mio logo"
 
 #: ../lib/layouts/foils.layout:193
 msgid "Restriction"
 msgstr "Restrizione"
 
 #: ../lib/layouts/foils.layout:215
-#, fuzzy
 msgid "Right Footer"
-msgstr "Piè_pagina_destro"
+msgstr "Piè pagina destro"
 
 #: ../lib/layouts/foils.layout:320 ../lib/layouts/siamltex.layout:249
 #: ../lib/layouts/amsmaths.inc:93
@@ -5868,9 +5851,8 @@ msgid "More"
 msgstr "Di più"
 
 #: ../lib/layouts/hollywood.layout:83
-#, fuzzy
 msgid "FADE IN:"
-msgstr "DISSOLVENZA_IN_ENTRATA:"
+msgstr "DISSOLVENZA IN ENTRATA:"
 
 #: ../lib/layouts/hollywood.layout:102
 msgid "INT."
@@ -5889,18 +5871,16 @@ msgid "Transition"
 msgstr "Transizione"
 
 #: ../lib/layouts/hollywood.layout:243
-#, fuzzy
 msgid "TITLE OVER:"
-msgstr "TITOLO_SOPRA:"
+msgstr "TITOLO SOPRA:"
 
 #: ../lib/layouts/hollywood.layout:257
 msgid "INTERCUT"
 msgstr "INTERCUT"
 
 #: ../lib/layouts/hollywood.layout:271
-#, fuzzy
 msgid "FADE OUT"
-msgstr "DISSOLVENZA_IN_USCITA"
+msgstr "DISSOLVENZA IN USCITA"
 
 #: ../lib/layouts/hollywood.layout:286
 msgid "General"
@@ -5911,9 +5891,8 @@ msgid "Scene"
 msgstr "Scena"
 
 #: ../lib/layouts/hollywood.layout:353
-#, fuzzy
 msgid "FADE OUT:"
-msgstr "DISSOLVENZA_IN_USCITA:"
+msgstr "DISSOLVENZA IN USCITA:"
 
 #: ../lib/layouts/kluwer.layout:195
 msgid "AddressForOffprints"
@@ -5943,24 +5922,20 @@ msgid "Chapter"
 msgstr "Capitolo"
 
 #: ../lib/layouts/llncs.layout:158 ../lib/layouts/svjour.inc:192
-#, fuzzy
 msgid "Running LaTeX Title"
-msgstr "Titolo_LaTeX _in_esecuzione"
+msgstr "Titolo LaTeX in esecuzione"
 
 #: ../lib/layouts/llncs.layout:185
-#, fuzzy
 msgid "TOC Title"
-msgstr "Titolo_TOC"
+msgstr "Titolo TOC"
 
 #: ../lib/layouts/llncs.layout:217 ../lib/layouts/svjour.inc:224
-#, fuzzy
 msgid "Author Running"
-msgstr "Autore_in_esecuzione"
+msgstr "Autore in esecuzione"
 
 #: ../lib/layouts/llncs.layout:225
-#, fuzzy
 msgid "TOC Author"
-msgstr "Autore_TOC"
+msgstr "Autore TOC"
 
 #: ../lib/layouts/llncs.layout:411 ../lib/layouts/svjour.inc:479
 msgid "Property"
@@ -5999,9 +5974,8 @@ msgid "Institution"
 msgstr "Istituzione"
 
 #: ../lib/layouts/revtex.layout:175 ../lib/layouts/revtex4.layout:258
-#, fuzzy
 msgid "REVTEX Title"
-msgstr "Titolo_REVTEX"
+msgstr "Titolo REVTEX"
 
 #: ../lib/layouts/revtex4.layout:109
 msgid "Preprint"
@@ -6153,9 +6127,8 @@ msgid "VisibleText"
 msgstr "Testo visibile"
 
 #: ../lib/layouts/slides.layout:295
-#, fuzzy
 msgid "End All Slides"
-msgstr "Termina_tutte_le_immagini"
+msgstr "Termina tutte le immagini"
 
 #: ../lib/layouts/spie.layout:55
 msgid "Authorinfo"
@@ -6190,14 +6163,12 @@ msgid "Planotable"
 msgstr "Planotable"
 
 #: ../lib/layouts/aguplus.inc:198
-#, fuzzy
 msgid "Table Caption"
-msgstr "Didascalia_Tabella"
+msgstr "Didascalia tabella"
 
 #: ../lib/layouts/amsdefs.inc:186
-#, fuzzy
 msgid "Current Address"
-msgstr "Indirizzo_Attuale"
+msgstr "Indirizzo attuale"
 
 #: ../lib/layouts/amsdefs.inc:279
 msgid "Dedicatory"
@@ -8212,8 +8183,7 @@ msgstr "Vedi Indice generale"
 
 #: src/LyXAction.C:371
 msgid "Toggle cursor does/doesn't follow the scrollbar"
-msgstr ""
-"Attiva/Disattiva il cursore che segue/non segue la barra di scorrimento"
+msgstr "Attiva/Disattiva il cursore che segue/non segue la barra di scorrimento"
 
 #: src/LyXAction.C:382
 msgid "Register document under version control"
@@ -8273,9 +8243,8 @@ msgid "Emphasize"
 msgstr "Enfatizza"
 
 #: src/SpellBase.C:48
-#, fuzzy
 msgid "Native OS API not yet supported."
-msgstr "Non ancora supportato"
+msgstr "Le API del sistema operativo nativo non sono ancora supportate."
 
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
@@ -8384,8 +8353,7 @@ msgstr "ERRORE!"
 
 #: src/buffer.C:1220
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"Ho trovato un vecchio formato di LyX. Utilizza LyX 0.10.x per leggerlo!"
+msgstr "Ho trovato un vecchio formato di LyX. Utilizza LyX 0.10.x per leggerlo!"
 
 #: src/buffer.C:1227
 msgid "Can't find conversion script."
@@ -8812,8 +8780,7 @@ msgstr "Per favore, installa LyX correttamente per avere un'idea dell'enorme\n"
 
 #: src/frontends/controllers/ControlAboutlyx.C:50
 msgid "amount of work other people have done for the LyX project."
-msgstr ""
-"lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
+msgstr "lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
 
 #: src/frontends/controllers/ControlAboutlyx.C:57
 msgid ""
@@ -8918,8 +8885,7 @@ msgstr "nella classe del documento scelta"
 
 #: src/frontends/controllers/ControlDocument.C:151
 msgid "Errors loading new document class."
-msgstr ""
-"Si sono verificati degli errori nel caricare la nuova classe del documento."
+msgstr "Si sono verificati degli errori nel caricare la nuova classe del documento."
 
 #: src/frontends/controllers/ControlDocument.C:152
 msgid "Reverting to original document class."
@@ -9249,25 +9215,21 @@ msgid "Yellow"
 msgstr "Giallo"
 
 #: src/frontends/controllers/helper_funcs.C:55
-#, fuzzy
 msgid "space"
-msgstr "&Sostituisci"
+msgstr "spazio"
 
 #: src/frontends/controllers/helper_funcs.C:103
-#, fuzzy
 msgid "Invalid filename"
-msgstr "Non valido"
+msgstr "Il nome del file non è valido"
 
 #: src/frontends/controllers/helper_funcs.C:104
 #: src/frontends/controllers/helper_funcs.C:168
-#, fuzzy
 msgid "No LaTeX support for paths containing any of these characters:\n"
-msgstr "Un nome di file non può contenere nessuno di questi caratteri:"
+msgstr "Non vi è alcuno supporto da parte di LateX per i percorsi che contengono uno di questi caratteri:\n"
 
 #: src/frontends/controllers/helper_funcs.C:167
-#, fuzzy
 msgid "Invalid directory name"
-msgstr "L'azione non è consentita in modalità matematica!"
+msgstr "Il nome della cartella non è valido"
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
@@ -9913,8 +9875,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:79
 msgid "Select if the bibliography should appear in the Table of Contents"
-msgstr ""
-"Da selezionare se la bibliografia dovesse apparire nell'indice generale"
+msgstr "Da selezionare se la bibliografia dovesse apparire nell'indice generale"
 
 #: src/frontends/xforms/FormBibtex.C:83
 msgid "Choose a BibTeX style from the list."
@@ -9995,8 +9956,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:204
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
-msgstr ""
-"Testo facoltativo come appare prima della citazione e cioè \"vedi <Ref>\""
+msgstr "Testo facoltativo come appare prima della citazione e cioè \"vedi <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:207
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
@@ -10040,13 +10000,11 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:236
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Nessuno | Margini Stretti| Margini molto Stretti | Margini molto Larghi"
+msgstr " Nessuno | Margini Stretti| Margini molto Stretti | Margini molto Larghi"
 
 #: src/frontends/xforms/FormDocument.C:286
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr ""
-" ``testo'' | ''testo'' | ,,testo`` | ,,testo'' | <<testo>> | >>testo<< "
+msgstr " ``testo'' | ''testo'' | ,,testo`` | ,,testo'' | <<testo>> | >>testo<< "
 
 #: src/frontends/xforms/FormDocument.C:311
 msgid " Author-year | Numerical "
@@ -10172,8 +10130,7 @@ msgstr "Imposta la larghezza dell'immagine al valore inserito."
 #: src/frontends/xforms/FormGraphics.C:152
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr ""
-"Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
+msgstr "Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
 
 #: src/frontends/xforms/FormGraphics.C:154
 msgid "Set the image height to the inserted value."
@@ -10446,8 +10403,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Oggetti di LyX a cui può essere assegnato un colore."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Modifica il colore dell'oggetto di LyX. Nota che allora devi premere il "
 "pulsante \"Applica\" per attivare il cambiamento."
@@ -10598,8 +10554,7 @@ msgstr "Bianco e Nero|Scala di Grigi|Colore|Non mostrare"
 
 #: src/frontends/xforms/FormPreferences.C:1981
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
+msgstr " predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2240
 msgid "Default path"
@@ -10769,8 +10724,7 @@ msgstr "Ricerca all'indietro."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Esporta il buffer in questo formato prima di eseguire il comando contenuto "
 "in esso."
@@ -11133,8 +11087,7 @@ msgstr "Non è stato trovato alcun file!"
 
 #: src/insets/insetgraphics.C:240
 msgid "Error converting to loadable format"
-msgstr ""
-"Si è verificato un errore durante la conversione ad un formato caricabile"
+msgstr "Si è verificato un errore durante la conversione ad un formato caricabile"
 
 #: src/insets/insetgraphics.C:243
 msgid "Error loading file into memory"
@@ -12145,8 +12098,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "E' la codifica per i caratteri dei menù e dei popup."
 
 #: src/lyxrc.C:1980
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "E' l'intervallo di tempo tra due autosalvataggi (in secondi): 0 significa "
 "nessun autosalvataggio."
@@ -12264,8 +12216,7 @@ msgstr ""
 
 #: src/lyxrc.C:2042
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
+msgstr "Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
 
 #: src/lyxrc.C:2046
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -12308,16 +12259,14 @@ msgstr ""
 "lingua del documento."
 
 #: src/lyxrc.C:2075
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Specifica un dizionario personale alternativo. Per esempio:\".ispell_english"
 "\"."
 
 #: src/lyxrc.C:2080
 msgid "Specify additional chars that can be part of a word."
-msgstr ""
-"Specifica i caratteri addizionali che possono essere parte di una parola."
+msgstr "Specifica i caratteri addizionali che possono essere parte di una parola."
 
 #: src/lyxrc.C:2084
 msgid ""
@@ -12373,8 +12322,7 @@ msgstr ""
 "backup nella stessa cartella del file originale, se la stringa è vuota."
 
 #: src/lyxrc.C:2112
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Da selezionare per abilitare il supporto per i linguaggi da destra a "
 "sinistra (cioè: Ebreo, Arabo)."
@@ -12420,8 +12368,7 @@ msgstr ""
 "documento."
 
 #: src/lyxrc.C:2136
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Da selezionare se un comando di cambio lingua è richiesto alla fine del "
 "documento."
@@ -12627,8 +12574,7 @@ msgstr "Non riesco ad eliminare il file di autosalvataggio!"
 
 #: src/support/package.C:402
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1%"
+msgid "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
 "Non riesco a determinare il percorso all'eseguibile di LyX dalla linea di "
 "comando %1%"
@@ -12742,8 +12688,7 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
+msgstr "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
 
 #: src/text.C:3348
 msgid "Page Break (top)"
@@ -12814,41 +12759,3 @@ msgstr "Il marchio è stato impostato"
 msgid "LyX function 'layout' needs an argument."
 msgstr "La funzione di LyX 'layout' necessita di un argomento."
 
-#~ msgid "Right_Header"
-#~ msgstr "Intestazione_Destra"
-
-#~ msgid "space, '#', '~', '$' or '%'."
-#~ msgstr "spazio, '#', '~', '$' or '%'."
-
-#~ msgid "directory name can't contain any of these characters:"
-#~ msgstr "un nome di cartella non può contenere nessuno di questi caratteri:"
-
-#~ msgid "BibTeX style files (*.bst)"
-#~ msgstr "File di stile BibTeX (*.bst)"
-
-#~ msgid "BibTeX database files (*.bib)"
-#~ msgstr "Archivio dei file BibTeX (*.bib)"
-
-#~ msgid "External material (*)"
-#~ msgstr "Materiale esterno (*)"
-
-#~ msgid "Select external material"
-#~ msgstr "Seleziona il materiale esterno"
-
-#~ msgid "PostScript files (*.ps)"
-#~ msgstr "File postscript (*.ps)"
-
-#~ msgid "Select a file to print to"
-#~ msgstr "Seleziona il file da stampare"
-
-#~ msgid "Select Database"
-#~ msgstr "Seleziona archivio"
-
-#~ msgid "*.bib| BibTeX Databases (*.bib)"
-#~ msgstr "*.bib| Archivi BibTeX (*.bib)"
-
-#~ msgid "Select BibTeX-Style"
-#~ msgstr "Seleziona uno stile BibTeX"
-
-#~ msgid "*.bst| BibTeX Styles (*.bst)"
-#~ msgstr "*.bst| Stili BibTeX (*.bst)"
