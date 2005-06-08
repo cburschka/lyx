@@ -263,7 +263,7 @@
   Abort ; Return to the page
 
 go_on:
-   ${ReadDownloadValues} ${DoNotRequire} ${Download} $0 ${FolderPath}
+  ${ReadDownloadValues} ${DoNotRequire} ${Download} $0 ${FolderPath}
 
   ${if} ${DoNotRequire} == 1
     ;

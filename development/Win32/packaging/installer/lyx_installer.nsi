@@ -296,6 +296,8 @@ FunctionEnd
 ;--------------------------------
 
 Function DownloadMinSYS
+  StrCpy $MinSYSPath ""
+  StrCpy $DownloadMinSYS "0"
 
   ; Search the registry for the MinSYS uninstaller.
   ; If successful, put its location in $2.
@@ -343,6 +345,9 @@ FunctionEnd
 ;--------------------------------
 
 Function DownloadPython
+  StrCpy $PythonPath ""
+  StrCpy $DownloadPython "0"
+
   ${DownloadEnter} \
       $PythonPath "Software\Microsoft\Windows\CurrentVersion\App Paths\Python.exe" "" \
       "\Python.exe" "" \
@@ -367,6 +372,10 @@ FunctionEnd
 ;--------------------------------
 
 Function DownloadMiKTeX
+  StrCpy $DoNotRequireMiKTeX "1"
+  StrCpy $MiKTeXPath ""
+  StrCpy $DownloadMiKTeX "0"
+
   ${DownloadEnter} \
       $MiKTeXPath "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root" \
       "" "\miktex\bin" \
@@ -391,6 +400,10 @@ FunctionEnd
 ;--------------------------------
 
 Function DownloadPerl
+  StrCpy $DoNotRequirePerl "1"
+  StrCpy $PerlPath ""
+  StrCpy $DownloadPerl "1"
+
   ${DownloadEnter} \
       $PerlPath "Software\Perl" BinDir \
       "\perl.exe" "" \
@@ -415,6 +428,9 @@ FunctionEnd
 ;--------------------------------
 
 Function DownloadGhostscript
+  StrCpy $DoNotRequireGhostscript "1"
+  StrCpy $GhostscriptPath ""
+  StrCpy $DownloadGhostscript "0"
 
   ; Find which version of ghostscript, if any, is installed.
   EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
@@ -448,6 +464,10 @@ FunctionEnd
 ;--------------------------------
 
 Function DownloadImageMagick
+  StrCpy $DoNotRequireImageMagick "1"
+  StrCpy $ImageMagickPath ""
+  StrCpy $DownloadImageMagick "0"
+
   ${DownloadEnter} \
       $ImageMagickPath "Software\ImageMagick\Current" "BinPath" \
       "" "" \

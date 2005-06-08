@@ -26,8 +26,8 @@ LangString DownloadPageField2 "${LYX_LANG}" "&Do not install"
 
 LangString MinSYSHeader "${LYX_LANG}" "MinSYS"
 LangString MinSYSDescription "${LYX_LANG}" "MinSYS is a minimal unix scripting environment (www.mingw.org/msys.shtml) which ${PRODUCT_NAME} needs to run a number of scripts."
-LangString EnterMinSYSFolder "${LYX_LANG}" "Please input the path to the folder containing MinSYS.exe"
-LangString InvalidMinSYSFolder "${LYX_LANG}" "Unable to find MinSYS.exe"
+LangString EnterMinSYSFolder "${LYX_LANG}" "Please input the path to the folder containing sh.exe"
+LangString InvalidMinSYSFolder "${LYX_LANG}" "Unable to find sh.exe"
 LangString MinSYSDownloadLabel "${LYX_LANG}" "&Download MinSYS"
 LangString MinSYSFolderLabel "${LYX_LANG}" "&Folder containing sh.exe"
 
