@@ -13,7 +13,7 @@ ASCII text representation of a DVI file.
 
 References for DVI file structure:
 ----------------------------------
- 
+
 In this distribution:
 
         dvi.doc
@@ -21,7 +21,7 @@ In this distribution:
 In the TeX archives:
 
         CTAN:  dviware/driv-standard/level-0/dvistd0.tex
- 
+
     "The DVI Driver Standard, Level 0",
     by  The TUG DVI Driver Standards Committee  (now defunct)
     chaired by Joachim Schrod.
@@ -39,7 +39,7 @@ The other DTL commands correspond one-to-one with DVI commands, but I
 have used briefer names (except for `special') than those used in the
 DVI standards document.
 
-    DTL  :  DVI 
+    DTL  :  DVI
 
     (text)  :  series of set_char commands, for printable ASCII text
     \(   :  literal ASCII left parenthesis in (text)
