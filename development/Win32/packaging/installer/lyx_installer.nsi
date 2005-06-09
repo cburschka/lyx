@@ -539,7 +539,10 @@ Function SummariseDownloads
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 2" "Text" ""
   ${else}
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$(SummaryPathPrefix)"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 2" "Text" "$PathPrefix"
+    ; This shouldn't be needed (from my understanding of the NSIS docs)
+    ; but without it a path "C:\tbar" appears as "C:<TAB>bar".
+    ${StrRep} $0 '$PathPrefix' '\' '\\'
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 2" "Text" "$0"
   ${endif}
 
   !insertmacro MUI_HEADER_TEXT "$(SummaryTitle)" ""
