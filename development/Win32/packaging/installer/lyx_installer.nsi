@@ -58,6 +58,7 @@ InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 
 ; Declare used functions
 ${StrLoc}
+${StrNSISToIO}
 ${StrRep}
 ${StrTrim}
 ${ReadDownloadValues}
@@ -165,6 +166,7 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 !insertmacro MUI_LANGUAGE "Spanish"
 !insertmacro MUI_LANGUAGE "French"
 !insertmacro MUI_LANGUAGE "Dutch"
+!insertmacro MUI_LANGUAGE "Swedish"
 
 !include "lyx_languages\english.nsh"
 !include "lyx_languages\danish.nsh"
@@ -172,6 +174,7 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 !include "lyx_languages\french.nsh"
 !include "lyx_languages\german.nsh"
 !include "lyx_languages\spanish.nsh"
+!include "lyx_languages\swedish.nsh"
 
 LicenseData "$(LyXLicenseData)"
 
@@ -536,13 +539,10 @@ Function SummariseDownloads
 
   ${if} "$DoNotInstallLyX" == 1
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$(SummaryPleaseInstall)"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 2" "Text" ""
   ${else}
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$(SummaryPathPrefix)"
-    ; This shouldn't be needed (from my understanding of the NSIS docs)
-    ; but without it a path "C:\tbar" appears as "C:<TAB>bar".
-    ${StrRep} $0 '$PathPrefix' '\' '\\'
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 2" "Text" "$0"
+    ${StrNSISToIO} $0 '$PathPrefix'
+    StrCpy $0 "$(SummaryPathPrefix)\r\n\r\n$0"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$0"
   ${endif}
 
   !insertmacro MUI_HEADER_TEXT "$(SummaryTitle)" ""
