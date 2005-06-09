@@ -1,5 +1,11 @@
 2005-06-09  Angus Leeming  <leeming@lyx.org>
 
+	* converter.C (convert): Don't forget "outfile = real_outfile" as
+	the final step in a conversion where the input and output file names
+	are the same. Otherwise, future conversion steps won't work...
+
+2005-06-09  Angus Leeming  <leeming@lyx.org>
+
 	* lyxsocket.C: remove stub code as it isn't needed by
 	MinGW/MinSYS anyway. Let's see if the MSVC people scream...
 
