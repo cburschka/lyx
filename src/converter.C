@@ -685,6 +685,9 @@ bool Converters::convert(Buffer const * buffer,
 						<< "renaming file " << outfile
 						<< " to " << real_outfile
 						<< endl;
+				// Finally, don't forget to tell any future
+				// converters to use the renamed file...
+				outfile = real_outfile;
 			}
 
 			if (!conv.parselog.empty()) {
