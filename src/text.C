@@ -1657,7 +1657,7 @@ bool LyXText::redoParagraph(pit_type const pit)
 	// Add bibitem insets if necessary
 	if (par.layout()->labeltype == LABEL_BIBLIO) {
 		bool hasbibitem(false);
-		if (!par.insetlist.empty() 
+		if (!par.insetlist.empty()
 			// Insist on it being in pos 0
 			&& par.getChar(0) == Paragraph::META_INSET) {
 			InsetBase * inset = par.insetlist.begin()->inset;
@@ -1701,7 +1701,7 @@ bool LyXText::redoParagraph(pit_type const pit)
 
 	dim.asc += par.rows()[0].ascent();
 	dim.des -= par.rows()[0].ascent();
-	
+
 	bool const same = dim == par.dim();
 
 	par.dim() = dim;

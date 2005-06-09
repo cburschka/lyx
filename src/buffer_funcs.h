@@ -45,7 +45,7 @@ void bufferErrors(Buffer const &, ErrorList const &);
 int countWords(DocIterator const & from, DocIterator const & to);
 
 /// Expand the counters for the labelstring of \c layout
-std::string expandLabel(Buffer const & buf, LyXLayout_ptr const & layout, 
+std::string expandLabel(Buffer const & buf, LyXLayout_ptr const & layout,
 			bool appendix);
 
 /// updates all counters

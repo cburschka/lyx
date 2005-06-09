@@ -619,9 +619,9 @@ void BufferView::Pimpl::update(Update::flags flags)
 
 		CoordCache backup;
 		std::swap(theCoords, backup);
-		
+
 		// This, together with doneUpdating(), verifies (using
-		// asserts) that screen redraw is not called from 
+		// asserts) that screen redraw is not called from
 		// within itself.
 		theCoords.startUpdating();
 

@@ -8,7 +8,7 @@
 
 !ifdef HAVE_SYSTEM_PLUGIN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; RefreshShellIcons based on 
+;; RefreshShellIcons based on
 ;; http://nsis.sourceforge.net/archive/nsisweb.php?page=236&instances=0
 ;; by jerome tremblay - april 2003
 

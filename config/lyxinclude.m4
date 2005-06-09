@@ -553,8 +553,8 @@ AC_SUBST(FRONTENDS_PROGS)
 ])
 
 
-## Check what kind of packaging should be used at install time. 
-## The default is autodetected. 
+## Check what kind of packaging should be used at install time.
+## The default is autodetected.
 AC_DEFUN([LYX_USE_PACKAGING],
 [AC_MSG_CHECKING([what packaging should be used])
 AC_ARG_WITH(packaging,
@@ -567,20 +567,20 @@ AC_ARG_WITH(packaging,
                   *) lyx_use_packaging=posix;;
   esac])
 AC_MSG_RESULT($lyx_use_packaging)
-case $lyx_use_packaging in 
-   macosx) AC_DEFINE(USE_MACOSX_PACKAGING, 1, [Define to 1 if LyX should use a MacOS X application bundle file layout]) 
+case $lyx_use_packaging in
+   macosx) AC_DEFINE(USE_MACOSX_PACKAGING, 1, [Define to 1 if LyX should use a MacOS X application bundle file layout])
            default_prefix="/Applications/LyX.app"
 	   bindir='${prefix}/Contents/MacOS'
 	   libdir='${prefix}/Contents/Resources'
 	   datadir='${prefix}/Contents/Resources'
 	   mandir='${prefix}/Contents/Resources/man' ;;
-  windows) AC_DEFINE(USE_WINDOWS_PACKAGING, 1, [Define to 1 if LyX should use a Windows-style file layout]) 
+  windows) AC_DEFINE(USE_WINDOWS_PACKAGING, 1, [Define to 1 if LyX should use a Windows-style file layout])
            default_prefix="C:/Program Files/LyX"
 	   bindir='${prefix}/bin'
 	   libdir='${prefix}/Resources'
 	   datadir='${prefix}/Resources'
 	   mandir='${prefix}/Resources/man' ;;
-    posix) AC_DEFINE(USE_POSIX_PACKAGING, 1, [Define to 1 if LyX should use a POSIX-style file layout]) 
+    posix) AC_DEFINE(USE_POSIX_PACKAGING, 1, [Define to 1 if LyX should use a POSIX-style file layout])
 	   default_prefix=$ac_default_prefix ;;
     *) LYX_ERROR([Unknown packaging type $lyx_use_packaging]) ;;
 esac

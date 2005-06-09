@@ -463,16 +463,16 @@ changequote(,)dnl
 b
 
 :match
-# Remove the \DeclareFOOClass macro and add the correct boolean 
-# at the end of the line telling whether the class is 
+# Remove the \DeclareFOOClass macro and add the correct boolean
+# at the end of the line telling whether the class is
 # available
 s/^.*\DeclareLaTeXClass *\(.*\)/\1 "false"/
 s/^.*\DeclareDocBookClass *\(.*\)/\1 "'$bool_docbook'"/
 s/^.*\DeclareLinuxDocClass *\(.*\)/\1 "'$bool_linuxdoc'"/
-# If the macro had an optional argument with several 
+# If the macro had an optional argument with several
 # parameters, only keep the first one
 s/\[\([^,]*\),[^]]*\]/[\1]/
-# If the macro did not have an optional argument, provide one 
+# If the macro did not have an optional argument, provide one
 # (equal to the class name)
 s/^{/['$class']{/
 # Remove brackets and replace with correctly quoted entries

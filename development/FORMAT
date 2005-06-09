@@ -19,7 +19,7 @@ LyX file-format changes
 2005-01-23  Jürgen Spitzmüller  <j.spitzmüller@gmx.de>
 
 	* format incremented to 240.
-	* new bufferparam: 
+	* new bufferparam:
 		\output_changes {true|false}
 	(should the change tracking marks be visible in the output or not?)
 	* lyx2lyx should just delete the param in 239.

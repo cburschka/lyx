@@ -385,7 +385,7 @@ public:
 	boost::shared_ptr<InsetText> getCellInset(row_type row,
 	                                          col_type column) const;
 	///
-	void setCellInset(row_type row, col_type column, 
+	void setCellInset(row_type row, col_type column,
 			  boost::shared_ptr<InsetText>) const;
 	/// Search for \param inset in the tabular, with the
 	///

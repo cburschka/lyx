@@ -110,8 +110,8 @@ fi
 fi])
 
 
-dnl Check what kind of packaging should be used at install time. 
-dnl The default is autodetected. 
+dnl Check what kind of packaging should be used at install time.
+dnl The default is autodetected.
 AC_DEFUN([RELYX_USE_PACKAGING],
 [AC_MSG_CHECKING([what packaging should be used])
 AC_ARG_WITH(packaging,
@@ -124,7 +124,7 @@ AC_ARG_WITH(packaging,
                   *) lyx_use_packaging=posix;;
   esac])
 AC_MSG_RESULT($lyx_use_packaging)
-case $lyx_use_packaging in 
+case $lyx_use_packaging in
    macosx) default_prefix="/Applications/LyX.app"
 	   bindir='${prefix}/Contents/MacOS'
 	   libdir='${prefix}/Contents/Resources'

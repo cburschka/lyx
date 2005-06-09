@@ -395,16 +395,16 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				if (min_toclevel_ == LyXLayout::NOT_IN_TOC)
 					min_toclevel_ = toclevel;
 				else
-					min_toclevel_ = std::min(min_toclevel_, 
+					min_toclevel_ = std::min(min_toclevel_,
 							 toclevel);
-				max_toclevel_ = std::max(max_toclevel_, 
+				max_toclevel_ = std::max(max_toclevel_,
 							 toclevel);
 			}
 		}
-		lyxerr[Debug::TCLASS] 
+		lyxerr[Debug::TCLASS]
 			<< "Minimum TocLevel is " << min_toclevel_
 			<< ", maximum is " << max_toclevel_ <<endl;
-			
+
 	} else
 		lyxerr[Debug::TCLASS] << "Finished reading input file "
 				      << MakeDisplayPath(filename)

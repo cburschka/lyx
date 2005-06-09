@@ -628,7 +628,7 @@ def update_longtables(file):
         i = find_token(body, '<features', i)
         if i == -1:
             break
-    
+
         # is this a longtable?
         longtable = longtable_re.search(body[i])
 

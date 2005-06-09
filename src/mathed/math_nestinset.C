@@ -926,7 +926,7 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 		flag.enabled(true);
 		break;
 	case LFUN_INSERT_MATH: {
-		bool const textarg = 
+		bool const textarg =
 			arg == "\\textbf"   || arg == "\\textsf" ||
 			arg == "\\textrm"   || arg == "\\textmd" ||
 			arg == "\\textit"   || arg == "\\textsc" ||

@@ -7,8 +7,8 @@ AC_DEFUN([CHECK_WITH_ASPELL],
     test "$with_aspell" = "no" && lyx_use_aspell=false
 
     if $lyx_use_aspell ; then
-	AC_CHECK_HEADERS(aspell.h aspell/aspell.h, 
-	    [lyx_use_aspell=true; break;], 
+	AC_CHECK_HEADERS(aspell.h aspell/aspell.h,
+	    [lyx_use_aspell=true; break;],
 	    [lyx_use_aspell=false])
 	AC_CHECK_LIB(aspell, new_aspell_config, LIBS="-laspell $LIBS", lyx_use_aspell=false)
 

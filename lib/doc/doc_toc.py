@@ -60,7 +60,7 @@ def build_from_toc(par_list):
 
         if len(par_list) == 1:
             return par_list
-        
+
         for i in range(1, len(par_list)):
             if par_list[i].name == 'Title':
                 return [par] + \
@@ -80,7 +80,7 @@ def nest_struct(name, par_list):
 
         if len(par_list) == 1:
             return par_list
-        
+
         for i in range(1, len(par_list)):
             if par_list[i].name == name:
                 par.child = build_from_toc(par_list[1:i])
@@ -111,7 +111,7 @@ def main(argv):
         file = LyX.File(input= file)
         file.convert()
         toc_general.extend(file.get_toc())
-        
+
     file = LyX.NewFile(output= pref + 'TOC.lyx')
     data = info[lang]
     file.set_header(language = data[0], language_quotes = data[1], inputencoding = data[2])

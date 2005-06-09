@@ -610,7 +610,7 @@ void expandToc2(Menu & tomenu,
 
 	// check whether depth is smaller than the smallest depth in toc.
 	int min_depth = 1000;
-	for (lyx::toc::Toc::size_type i = from; i < to; ++i) 
+	for (lyx::toc::Toc::size_type i = from; i < to; ++i)
 		min_depth = std::min(min_depth, toc_list[i].depth);
 	if (min_depth > depth)
 		depth = min_depth;

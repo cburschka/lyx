@@ -98,7 +98,7 @@ TocList const getTocList(Buffer const & buf)
 					break;
 				Paragraph const & par = *static_cast<InsetOptArg*>(it->inset)->paragraphs().begin();
 				if (!pit->getLabelstring().empty())
-					tocstring = pit->getLabelstring() 
+					tocstring = pit->getLabelstring()
 						+ ' ';
 				tocstring += par.asString(buf, false);
 				break;
@@ -110,12 +110,12 @@ TocList const getTocList(Buffer const & buf)
 
 		/// now the toc entry for the paragraph
 		int const toclevel = pit->layout()->toclevel;
-		if (toclevel >= min_toclevel 
+		if (toclevel >= min_toclevel
 		    && toclevel <= bufparams.tocdepth) {
 			// insert this into the table of contents
 			if (tocstring.empty())
 				tocstring = pit->asString(buf, true);
-			TocItem const item(pit->id(), toclevel - min_toclevel, 
+			TocItem const item(pit->id(), toclevel - min_toclevel,
 					   tocstring);
 			toclist["TOC"].push_back(item);
 		}

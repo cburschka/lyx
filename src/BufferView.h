@@ -37,23 +37,23 @@ class ParIterator;
 
 
 namespace Update {
-	enum flags { 
-		FitCursor = 1, 
+	enum flags {
+		FitCursor = 1,
 		Force = 2,
-		SinglePar = 4 
+		SinglePar = 4
 	};
 
-inline flags operator|(flags const f, flags const g) 
+inline flags operator|(flags const f, flags const g)
 {
 	return static_cast<flags>(int(f) | int(g));
 }
 
-inline flags operator&(flags const f, flags const g) 
+inline flags operator&(flags const f, flags const g)
 {
 	return static_cast<flags>(int(f) & int(g));
 }
 
-} // namespace 
+} // namespace
 
 
 /**

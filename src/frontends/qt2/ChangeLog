@@ -3,7 +3,7 @@
 
 	* QContentPane.[Ch]: implement keystroke event stack with
 	repeat key "regulation". Key are not sent to LyX core faster
-	than rendering can handle. 
+	than rendering can handle.
 
 2005-06-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
@@ -46,7 +46,7 @@
 	* Dialogs.C: add missing ":" to text messages
 	* QTexinfo.C: dialog title "LaTeX Information" => "TeX Information"
 	* ui/QBibtexAddDialogBase.ui: fix label & tooltip
-	* ui/QCitationFindDialogBase.ui: change text "citation key/entry" => 
+	* ui/QCitationFindDialogBase.ui: change text "citation key/entry" =>
 	"bibliography key/entry"
 
 2005-05-19  Angus Leeming  <leeming@lyx.org>

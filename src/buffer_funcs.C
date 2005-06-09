@@ -444,7 +444,7 @@ void setCounter(Buffer const & buf, ParIterator & it)
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		counters.step("bibitem");
 		int number = counters.value("bibitem");
-		if (par.bibitem()) 
+		if (par.bibitem())
 			par.bibitem()->setCounter(number);
 		par.params().labelString(buf.B_(layout->labelstring()));
 		// In biblio should't be following counters but...
@@ -507,7 +507,7 @@ string expandLabel(Buffer const & buf,
 {
 	LyXTextClass const & tclass = buf.params().getLyXTextClass();
 
-	string fmt = buf.B_(appendix ? layout->labelstring_appendix() 
+	string fmt = buf.B_(appendix ? layout->labelstring_appendix()
 			    : layout->labelstring());
 
 	// handle 'inherited level parts' in 'fmt',

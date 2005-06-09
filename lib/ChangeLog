@@ -12,9 +12,9 @@
 	* ui/stdmenus.ui
 	* ui/classic.ui: fix use of "..."  according to KDE
 	human interface guidelines; fix capitalization; align
-	functionality of stdmenus.ui and classic.ui; remove 
+	functionality of stdmenus.ui and classic.ui; remove
 	"inset-toggle"; remove "Bibliography Key" from classic.ui
- 
+
 2005-05-20  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* configure.m4: rename "ASCII" to "Plain text"
@@ -23,14 +23,14 @@
 
 	* layouts/report.layout: no need to change LabelString here
 
-	* layouts/heb-article.layout: 
-	* layouts/heb-letter.layout: 
+	* layouts/heb-article.layout:
+	* layouts/heb-letter.layout:
 	* layouts/dinbrief.layout: avoid 8bit characters
 
 	* layouts/scrclass.inc: no need to reset LabelString here
 
 	* layouts/amsbook.layout: no need to remove numbering of paragraph
-	layout. 
+	layout.
 
 	* layouts/amsdefs.inc: fix case of LabelString
 
@@ -39,7 +39,7 @@
 	* layouts/llncs.layout: fix some font sizes; change description;
 	fix subsection counter.
 
-	* layouts/apa.layout: 
+	* layouts/apa.layout:
 	* layouts/seminar.layout: fix numbering; change description
 
 2005-05-09  Michael Schmitt  <michael.schmitt@teststep.org>
@@ -62,7 +62,7 @@
 
 	* ui/*.ui: Synchronize menu entries with dialog titles:
 	"TeX" => "TeX Code", "BibTeX Reference" => "BibTeX Bibliography",
-	"Citation Reference" => "Citation", "Cross Reference" => 
+	"Citation Reference" => "Citation", "Cross Reference" =>
 	"Cross-reference"; fix semantics: "Goto Reference" => "Goto Label",
 	"Refs" => "Labels"
 
@@ -102,7 +102,7 @@
 2005-04-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* layouts/scrclass.inc: do not assign a toclevel to addchap or
-	addsec. 
+	addsec.
 
 	* layouts/numreport.inc: use data from numarticle.inc, so that
 	changes from article are obvious.
@@ -118,7 +118,7 @@
 
 2005-04-15  Angus Leeming  <leeming@lyx.org>
 
-	* scripts/convertDefault.sh: post error messages to STDERR. 
+	* scripts/convertDefault.sh: post error messages to STDERR.
 
 2005-04-09  Angus Leeming  <leeming@lyx.org>
 
@@ -187,7 +187,7 @@
 
 2005-02-09  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* ui/stdmenus.ui: add facilities for drawing/deleting partition 
+	* ui/stdmenus.ui: add facilities for drawing/deleting partition
 	lines in matrix
 
 2005-02-08  Mike Ressler  <mike.ressler@alum.mit.edu>
@@ -196,11 +196,11 @@
 
 2005-02-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* reLyX/configure.ac: use AC_CANONICAL_TARGET; use 
-	RELYX_USE_PACKAGING as in main configure. 
+	* reLyX/configure.ac: use AC_CANONICAL_TARGET; use
+	RELYX_USE_PACKAGING as in main configure.
 
 	* reLyX/acinclude.m4 (RELYX_ERROR, RELYX_USE_PACKAGING): new
-	macros. 
+	macros.
 
 2005-01-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
@@ -261,7 +261,7 @@
 2004-12-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.m4: remove code for checking languages in the LaTeX
-	format... 
+	format...
 
 	* chkconfig.ltx: ... and replace it with a TeX solution
 
@@ -326,7 +326,7 @@
 
 2004-10-28  José Matos  <jamatos@lyx.org>
 
-	* layouts/agu_stdclass.inc:	
+	* layouts/agu_stdclass.inc:
 	* layouts/agu_stdsections.inc: since we are using substituion
 	change the the dread &quot; to <> syntax, since that can never
 	happen in a parameter.
