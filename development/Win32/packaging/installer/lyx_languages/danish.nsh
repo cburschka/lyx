@@ -69,7 +69,7 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "&Mappen som indeholder gswin32c
 
 LangString SummaryTitle "${LYX_LANG}" "Software - sammendrag"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Installer de filer du har downloaded, og kør så LyX's installationsprogram igen."
-LangString SummaryPathPrefix "${LYX_LANG}" "Jeg tilføjer en 'path_prefix' streng til 'lyxrc.defaults' som indeholder:$\r$\n$PathPrefix"
+LangString SummaryPathPrefix "${LYX_LANG}" "Jeg tilføjer en 'path_prefix' streng til 'lyxrc.defaults' som indeholder:"
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Kunne ikke finde $(^Name) i registreringsdatabsen$\r$\nGenvejene på skrivebordet og i Start-menuen bliver ikke fjernet"
 LangString UnNotAdminLabel "${LYX_LANG}" "Beklager! Du skal have administrator-rettigheder$\r$\nfor at afinstallere$(^Name)."

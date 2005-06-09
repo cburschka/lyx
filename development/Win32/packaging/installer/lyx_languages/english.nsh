@@ -69,7 +69,7 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "&Folder containing gswin32c.exe
 
 LangString SummaryTitle "${LYX_LANG}" "Software summary"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Please install your downloaded files and then run LyX's installer once again."
-LangString SummaryPathPrefix "${LYX_LANG}" "I shall add a 'path_prefix' string to 'lyxrc.defaults' containing:$\r$\n$PathPrefix"
+LangString SummaryPathPrefix "${LYX_LANG}" "I shall add a 'path_prefix' string to 'lyxrc.defaults' containing:"
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Unable to find $(^Name) in the registry$\r$\nShortcuts on the desktop and in the Start Menu will not be removed."
 LangString UnNotAdminLabel "${LYX_LANG}" "Sorry! You must have administrator privileges$\r$\nto uninstall $(^Name)."

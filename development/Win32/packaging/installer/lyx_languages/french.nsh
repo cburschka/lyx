@@ -70,7 +70,7 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "&Répertoire contenant gswin32c.
 
 LangString SummaryTitle "${LYX_LANG}" "Résumé d'installation"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Merci d'installer les fichiers téléchargés, puis d'exécuter de nouveau l'installation de LyX."
-LangString SummaryPathPrefix "${LYX_LANG}" "Durant l'installation, une chaîne de caractères 'path_prefix'  sera ajoutée à 'lyxrc.defaults', elle contiendra :$\r$\n$PathPrefix"
+LangString SummaryPathPrefix "${LYX_LANG}" "Durant l'installation, une chaîne de caractères 'path_prefix'  sera ajoutée à 'lyxrc.defaults', elle contiendra :"
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "$(^Name) introuvable dans le base des registres. $\r$\nLes raccourcis sur le bureau et dans le menu de démarrage ne seront pas supprimés."
 LangString UnNotAdminLabel "${LYX_LANG}" "Désolé ! Vous devez avoir les droits d'administration$\r$\npour installer$(^Name)."
@@ -80,5 +80,3 @@ LangString UnRemoveSuccessLabel "${LYX_LANG}" "$(^Name) supprimé de votre ordina
 !undef LYX_LANG
 
 !endif ; _LYX_LANGUAGES_FRENCH_NSH_
-
-
