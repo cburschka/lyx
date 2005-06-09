@@ -290,7 +290,9 @@ void __declspec(dllexport) run_configure(HWND hwndParent, int string_size, char 
 		return;
 	}
 
-	std::string const command = std::string("start /WAIT /B sh.exe ") + configure_file;
+	// Even "start /WAIT /B sh.exe configure" returns
+	// before the script is done, so just invoke "sh" directly.
+	std::string const command = std::string("sh.exe ") + configure_file;
 	if (system(command.c_str()) != 0) {
 		pushstring("-1");
 		return;

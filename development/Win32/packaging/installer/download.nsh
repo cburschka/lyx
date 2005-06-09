@@ -155,15 +155,16 @@
   !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 3" "Text" "${DownloadLabel}"
   !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 4" "Text" "${HomeLabel}"
 
+
   ${if} ${ExePath} == ""
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 3" "State" "1"
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 4" "State" "0"
-    !insertmacro MUI_INSTALLOPTIONS_READ $0 "ioDownload.ini" "Field 5" "Flags"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "Flags" $0|DISABLED
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "Flags" PATH_MUST_EXIST|DISABLED
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "State" ""
   ${else}
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 3" "State" "0"
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 4" "State" "1"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "Flags" PATH_MUST_EXIST
 
     ${StrRep} "${ExePath}" "${ExePath}" "${RemoveFromPath}" ""
     StrCpy ${ExePath} "${ExePath}${AddtoPath}"
