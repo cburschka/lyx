@@ -160,10 +160,12 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 ; Languages
 
 !insertmacro MUI_LANGUAGE "English" # first language is the default language
-!insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "Danish"
 !insertmacro MUI_LANGUAGE "German"
+!insertmacro MUI_LANGUAGE "French"
 
 !include "lyx_languages\english.nsh"
+!include "lyx_languages\danish.nsh"
 !include "lyx_languages\french.nsh"
 !include "lyx_languages\german.nsh"
 
@@ -260,6 +262,8 @@ SectionEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;--------------------------------
+
+!define MUI_LANGDLL_ALWAYSSHOW
 
 ; This hook function is called internally by NSIS on installer startup
 Function .onInit
@@ -592,6 +596,7 @@ Section Uninstall
 
   Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
 
+  DeleteRegKey "HKCU" "${PRODUCT_UNINST_KEY}\Installer Language"
   DeleteRegKey ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
 
