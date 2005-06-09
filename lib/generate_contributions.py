@@ -996,6 +996,14 @@ contributers = [
                  "24 February 2005",
                  u"fix bugs with error insets placement"),
 
+     contributer(u"Uwe Stöhr",
+                 "uwestoehr () web ! de",
+                 "GPL",
+                 "Re: The LyX licence",
+                 "m=111833345825278",
+                 "9 June 2005",
+                 u"German translation of the Windows installer"),
+
      contributer(u"David Suárez de Lis",
                  "excalibor () iname ! com",
                  "",
