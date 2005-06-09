@@ -14,65 +14,7 @@
 
 #include <config.h>
 
-#include <config.h>
-
 #include "lyxsocket.h"
-
-
-#if !(defined(HAVE_READ) && defined(HAVE_WRITE) && defined(HAVE_CLOSE))
-// We provide stub classes to disables the sockets.
-
-LyXServerSocket::LyXServerSocket(LyXFunc *, std::string const &)
-{}
-
-
-LyXServerSocket::~LyXServerSocket()
-{}
-
-
-std::string const & LyXServerSocket::address() const
-{
-	return address_;
-}
-
-
-void LyXServerSocket::serverCallback()
-{}
-
-
-void LyXServerSocket::dataCallback(int)
-{}
-
-
-void LyXServerSocket::writeln(std::string const &)
-{}
-
-
-LyXDataSocket::LyXDataSocket(int)
-{}
-
-
-LyXDataSocket::~LyXDataSocket()
-{}
-
-
-bool LyXDataSocket::connected() const
-{
-	return false;
-}
-
-
-bool LyXDataSocket::readln(std::string &)
-{
-	return false;
-}
-
-
-void LyXDataSocket::writeln(std::string const &)
-{}
-
-#else // defined(HAVE_READ) && defined(HAVE_WRITE) && defined(HAVE_CLOSE)
-
 
 #include "debug.h"
 #include "funcrequest.h"
@@ -88,6 +30,10 @@ void LyXDataSocket::writeln(std::string const &)
 #include <boost/bind.hpp>
 
 #include <cerrno>
+
+#if defined (_WIN32)
+# include <io.h>
+#endif
 
 using boost::shared_ptr;
 
@@ -217,7 +163,7 @@ void LyXServerSocket::writeln(string const & line)
 	string const linen(line + '\n');
 	int const size = linen.size();
 	int const written = ::write(fd_, linen.c_str(), size);
-	if (written < size) { // Allways mean end of connection.
+	if (written < size) { // Always mean end of connection.
 		if ((written == -1) && (errno == EPIPE)) {
 			// The program will also receive a SIGPIPE
 			// that must be caught
@@ -312,7 +258,7 @@ void LyXDataSocket::writeln(string const & line)
 	string const linen(line + '\n');
 	int const size = linen.size();
 	int const written = ::write(fd_, linen.c_str(), size);
-	if (written < size) { // Allways mean end of connection.
+	if (written < size) { // Always mean end of connection.
 		if ((written == -1) && (errno == EPIPE)) {
 			// The program will also receive a SIGPIPE
 			// that must be catched
@@ -328,5 +274,3 @@ void LyXDataSocket::writeln(string const & line)
 		connected_ = false;
 	}
 }
-
-#endif // defined(HAVE_READ) && defined(HAVE_WRITE) && defined(HAVE_CLOSE)

@@ -1,3 +1,8 @@
+2005-06-09  Angus Leeming  <leeming@lyx.org>
+
+	* lyxsocket.C: remove stub code as it isn't needed by
+	MinGW/MinSYS anyway. Let's see if the MSVC people scream...
+
 2005-06-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyx_main.C (parse_execute): Fix last fix: is_gui = false
