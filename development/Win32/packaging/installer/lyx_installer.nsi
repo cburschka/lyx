@@ -19,7 +19,7 @@
 CRCCheck force
 
 ; Make the installer as small as possible.
-SetCompressor lzma
+;SetCompressor lzma
 
 ;--------------------------------
 ; You should need to change only these macros...
@@ -164,9 +164,11 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 !insertmacro MUI_LANGUAGE "German"
 !insertmacro MUI_LANGUAGE "Spanish"
 !insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "Dutch"
 
 !include "lyx_languages\english.nsh"
 !include "lyx_languages\danish.nsh"
+!include "lyx_languages\dutch.nsh"
 !include "lyx_languages\french.nsh"
 !include "lyx_languages\german.nsh"
 !include "lyx_languages\spanish.nsh"
