@@ -1,3 +1,8 @@
+2005-06-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_hullinset.C (label): avoid warning when assertions are
+	disabled. 
+
 2005-06-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_parser.h (latexkeys): new member requires

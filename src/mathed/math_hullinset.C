@@ -387,8 +387,7 @@ void MathHullInset::notifyCursorLeaves(LCursor & cur)
 
 string MathHullInset::label(row_type row) const
 {
-	row_type n = nrows();
-	BOOST_ASSERT(row < n);
+	BOOST_ASSERT(row < nrows());
 	return label_[row];
 }
 
