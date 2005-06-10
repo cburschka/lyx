@@ -108,7 +108,7 @@ def collate_incomplete(contributers):
               missing_licence.append(contributer.name)
 
     return '''WARNING!
-The following contributers to not have a CREDITS entry:
+The following contributers do not have a CREDITS entry:
     %s
 
 These ones have no explicit licence statement:
