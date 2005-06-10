@@ -452,6 +452,14 @@ contributers = [
                  "",
                  u"Italian translation"),
 
+     contributer(u"Jean-Pierre Chrétien",
+                 "chretien () cert ! fr",
+                 "GPL",
+                 "Re: The LyX licence",
+                 "m=111842518713710",
+                 "10 June 2005",
+                 u"French translation of the Windows installer"),
+
      contributer(u"Matthias Kalle Dalheimer",
                  "kalle () kdab ! net",
                  "GPL",
