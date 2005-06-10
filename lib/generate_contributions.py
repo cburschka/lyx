@@ -714,7 +714,7 @@ contributers = [
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899657530749",
                  "21 February 2005",
-                 u"Qt2 frontend GUI-I-fication of several popups"),
+                 u"Qt2 frontend GUI-I-fication of several popups.\nDutch translation of the Windows installer"),
 
      contributer(u"John Levon",
                  "levon () movementarian ! org",
