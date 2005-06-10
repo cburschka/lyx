@@ -63,6 +63,7 @@ ${StrRep}
 ${StrTrim}
 ${ReadDownloadValues}
 ${EnableBrowseControls}
+${SearchRegistry}
 ${DownloadEnter}
 ${DownloadLeave}
 
@@ -306,21 +307,19 @@ Function .onInit
     !undef READ_ONLY
   ${endif}
 
-  StrCpy $MinSYSPath ""
-  StrCpy $PythonPath ""
-  StrCpy $MiKTeXPath ""
-  StrCpy $PerlPath ""
-  StrCpy $GhostscriptPath ""
-  StrCpy $ImageMagickPath ""
+  Call SearchMinSYS
+  Call SearchPython
+  Call SearchMiKTeX
+  Call SearchPerl
+  Call SearchGhostscript
+  Call SearchImageMagick
 
   ClearErrors
 FunctionEnd
 
 ;--------------------------------
 
-Function DownloadMinSYS
-  StrCpy $DownloadMinSYS "0"
-
+Function SearchMinSYS
   ; Search the registry for the MinSYS uninstaller.
   ; If successful, put its location in $2.
   StrCpy $3 "Software\Microsoft\Windows\CurrentVersion\Uninstall"
@@ -343,9 +342,19 @@ Function DownloadMinSYS
     Goto loop
   done:
 
+  ${SearchRegistry} \
+      $MinSYSPath \
+      "$2" \
+      "Inno Setup: App Path" \
+      "" \
+      "\bin"
+FunctionEnd
+
+Function DownloadMinSYS
+  StrCpy $DownloadMinSYS "0"
+
   ${DownloadEnter} \
-      $MinSYSPath "$2" "Inno Setup: App Path" \
-      "" "\bin" \
+      $MinSYSPath \
       0 \
       "$(MinSYSDownloadLabel)" \
       "$(MinSYSFolderLabel)" \
@@ -366,12 +375,20 @@ FunctionEnd
 
 ;--------------------------------
 
+Function SearchPython
+  ${SearchRegistry} \
+      $PythonPath \
+      "Software\Microsoft\Windows\CurrentVersion\App Paths\Python.exe" \
+      "" \
+      "\Python.exe" \
+      ""
+FunctionEnd
+
 Function DownloadPython
   StrCpy $DownloadPython "0"
 
   ${DownloadEnter} \
-      $PythonPath "Software\Microsoft\Windows\CurrentVersion\App Paths\Python.exe" "" \
-      "\Python.exe" "" \
+      $PythonPath \
       0 \
       "$(PythonDownloadLabel)" \
       "$(PythonFolderLabel)" \
@@ -392,13 +409,21 @@ FunctionEnd
 
 ;--------------------------------
 
+Function SearchMiKTeX
+  ${SearchRegistry} \
+      $MiKTeXPath \
+      "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" \
+      "Install Root" \
+      "" \
+      "\miktex\bin"
+FunctionEnd
+
 Function DownloadMiKTeX
   StrCpy $DoNotRequireMiKTeX "1"
   StrCpy $DownloadMiKTeX "0"
 
   ${DownloadEnter} \
-      $MiKTeXPath "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root" \
-      "" "\miktex\bin" \
+      $MiKTeXPath \
       1 \
       "$(MiKTeXDownloadLabel)" \
       "$(MiKTeXFolderLabel)" \
@@ -419,13 +444,21 @@ FunctionEnd
 
 ;--------------------------------
 
+Function SearchPerl
+  ${SearchRegistry} \
+      $PerlPath \
+      "Software\Perl" \
+      BinDir \
+      "\perl.exe" \
+      ""
+FunctionEnd
+
 Function DownloadPerl
   StrCpy $DoNotRequirePerl "1"
   StrCpy $DownloadPerl "1"
 
   ${DownloadEnter} \
-      $PerlPath "Software\Perl" BinDir \
-      "\perl.exe" "" \
+      $PerlPath \
       1 \
       "$(PerlDownloadLabel)" \
       "$(PerlFolderLabel)" \
@@ -446,6 +479,23 @@ FunctionEnd
 
 ;--------------------------------
 
+Function SearchGhostscript
+  ; Find which version of ghostscript, if any, is installed.
+  EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
+  ${if} $1 != ""
+    StrCpy $0 "Software\AFPL Ghostscript\$1"
+  ${else}
+    StrCpy $0 ""
+  ${endif}
+
+  ${SearchRegistry} \
+      $GhostscriptPath \
+      "$0" \
+      "GS_DLL" \
+      "\gsdll32.dll" \
+      ""
+FunctionEnd
+
 Function DownloadGhostscript
   StrCpy $DoNotRequireGhostscript "1"
   StrCpy $DownloadGhostscript "0"
@@ -459,8 +509,7 @@ Function DownloadGhostscript
   ${endif}
 
   ${DownloadEnter} \
-      $GhostscriptPath "$0" "GS_DLL" \
-      "\gsdll32.dll" "" \
+      $GhostscriptPath \
       1 \
       "$(GhostscriptDownloadLabel)" \
       "$(GhostscriptFolderLabel)" \
@@ -481,13 +530,21 @@ FunctionEnd
 
 ;--------------------------------
 
+Function SearchImageMagick
+  ${SearchRegistry} \
+      $ImageMagickPath \
+      "Software\ImageMagick\Current" \
+      "BinPath" \
+      "" \
+      ""
+FunctionEnd
+
 Function DownloadImageMagick
   StrCpy $DoNotRequireImageMagick "1"
   StrCpy $DownloadImageMagick "0"
 
   ${DownloadEnter} \
-      $ImageMagickPath "Software\ImageMagick\Current" "BinPath" \
-      "" "" \
+      $ImageMagickPath \
       1 \
       "$(ImageMagickDownloadLabel)" \
       "$(ImageMagickFolderLabel)" \

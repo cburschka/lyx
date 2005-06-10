@@ -16,6 +16,7 @@
 
 !insertmacro LYX_DEFFUNC `ReadDownloadValues`
 !insertmacro LYX_DEFFUNC `EnableBrowseControls`
+!insertmacro LYX_DEFFUNC `SearchRegistry`
 !insertmacro LYX_DEFFUNC `DownloadEnter`
 !insertmacro LYX_DEFFUNC `DownloadLeave`
 
@@ -133,13 +134,65 @@
 !macroend
 
 
-!macro DownloadEnter_Private ExePath RegistryKey RegistrySubKey RemoveFromPath AddtoPath Required DownloadLabel HomeLabel PageHeader PageDescription
- !define skipBackupLbl "skipBackup_${__LINE__}"
+!macro SearchRegistry_Private ExePath RegistryKey RegistrySubKey RemoveFromPath AddtoPath
 
   ${if} ${ExePath} == ""
     ReadRegStr ${ExePath} HKLM "${RegistryKey}" "${RegistrySubKey}"
+    ${if} ${ExePath} != ""
+      ${StrRep} "${ExePath}" "${ExePath}" "${RemoveFromPath}" ""
+      StrCpy ${ExePath} "${ExePath}${AddtoPath}"
+    ${endif}
   ${endif}
 
+!macroend
+
+
+!macro LYX_FUNCTION_SearchRegistry
+  !insertmacro LYX_FUNC `SearchRegistry`
+
+    ; The stack contains:
+    ; TOP
+    ; ExePath
+    ; RegistryKey
+    ; RegistrySubKey
+    ; RemoveFromPath
+    ; AddtoPath
+
+    ; After this point:
+    ; $0 = ExePath
+    ; $1 = RegistryKey
+    ; $2 = RegistrySubKey
+    ; $3 = RemoveFromPath
+    ; $4 = AddtoPath
+
+    Exch $0
+    Exch
+    Exch $1
+    Exch 2
+    Exch $2
+    Exch 3
+    Exch $3
+    Exch 4
+    Exch $4
+
+    ; Use a macro simply to make life understandable.
+    !insertmacro SearchRegistry_Private "$0" "$1" "$2" "$3" "$4"
+
+    ; Return output to user.
+    Exch $4
+    Exch 4
+    Exch $3
+    Exch 3
+    Exch $2
+    Exch 2
+    Exch $1
+    Exch
+    Exch $0
+  FunctionEnd
+!macroend
+
+
+!macro DownloadEnter_Private ExePath Required DownloadLabel HomeLabel PageHeader PageDescription
   !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 1" "Text" ""
   !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 2" "Text" "$(DownloadPageField2)"
 
@@ -167,8 +220,6 @@
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 4" "State" "1"
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "Flags" PATH_MUST_EXIST
 
-    ${StrRep} "${ExePath}" "${ExePath}" "${RemoveFromPath}" ""
-    StrCpy ${ExePath} "${ExePath}${AddtoPath}"
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "State" "${ExePath}"
   ${endif}
 
@@ -176,7 +227,6 @@
 
   !insertmacro MUI_HEADER_TEXT "${PageHeader}" "${PageDescription}"
   !insertmacro MUI_INSTALLOPTIONS_DISPLAY "ioDownload.ini"
- !undef skipBackupLbl
 !macroend
 
 
@@ -186,10 +236,6 @@
     ; The stack contains:
     ; TOP
     ; ExePath
-    ; RegistryKey
-    ; RegistrySubKey
-    ; RemoveFromPath
-    ; AddtoPath
     ; Required
     ; DownloadLabel
     ; HomeLabel
@@ -198,15 +244,11 @@
 
     ; After this point:
     ; $0 = ExePath
-    ; $1 = RegistryKey
-    ; $2 = RegistrySubKey
-    ; $3 = RemoveFromPath
-    ; $4 = AddtoPath
-    ; $5 = Required
-    ; $6 = DownloadLabel
-    ; $7 = HomeLabel
-    ; $8 = PageHeader
-    ; $9 = PageDescription
+    ; $1 = Required
+    ; $2 = DownloadLabel
+    ; $3 = HomeLabel
+    ; $4 = PageHeader
+    ; $5 = PageDescription
 
     Exch $0
     Exch
@@ -219,27 +261,11 @@
     Exch $4
     Exch 5
     Exch $5
-    Exch 6
-    Exch $6
-    Exch 7
-    Exch $7
-    Exch 8
-    Exch $8
-    Exch 9
-    Exch $9
 
     ; Use a macro simply to make life understandable.
-    !insertmacro DownloadEnter_Private "$0" "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
+    !insertmacro DownloadEnter_Private "$0" "$1" "$2" "$3" "$4" "$5"
 
     ; Return output to user.
-    Exch $9
-    Exch 9
-    Exch $8
-    Exch 8
-    Exch $7
-    Exch 7
-    Exch $6
-    Exch 6
     Exch $5
     Exch 5
     Exch $4
@@ -256,7 +282,6 @@
 
 
 !macro DownloadLeave_Private DoNotRequire Download FolderPath URL EnterFolder ExeName InvalidFolder
- !define skipBackupLbl "skipBackup_${__LINE__}"
   !insertmacro MUI_INSTALLOPTIONS_READ $0 "ioDownload.ini" "Settings" "State"
 
   StrCmp $0 0 go_on  ; Next button?
@@ -293,7 +318,6 @@ go_on:
       Abort
     ${endif}
   ${endif}
- !undef skipBackupLbl
 !macroend
 
 
@@ -372,24 +396,35 @@ go_on:
 !macroend
 
 
-!macro LYX_FUNCTION_DownloadEnter_Call ExePath RegistryKey RegistrySubKey RemoveFromPath AddtoPath Required DownloadLabel HomeLabel PageHeader PageDescription
-  Push `${PageDescription}`
-  Push `${PageHeader}`
-  Push `${HomeLabel}`
-  Push `${DownloadLabel}`
-  Push `${Required}`
+!macro LYX_FUNCTION_SearchRegistry_Call ExePath RegistryKey RegistrySubKey RemoveFromPath AddtoPath
   Push `${AddtoPath}`
   Push `${RemoveFromPath}`
   Push `${RegistrySubKey}`
   Push `${RegistryKey}`
   Push `${ExePath}`
+
+  Call SearchRegistry
+  ; Empty the stack of all the stuff we've just added.
+  ; We're not interested in most of it, so just fill $0 repeatedly.
+
+  Pop `${ExePath}`
+  Pop `$0`
+  Pop `$0`
+  Pop `$0`
+  Pop `$0`
+!macroend
+
+
+!macro LYX_FUNCTION_DownloadEnter_Call ExePath Required DownloadLabel HomeLabel PageHeader PageDescription
+  Push `${PageDescription}`
+  Push `${PageHeader}`
+  Push `${HomeLabel}`
+  Push `${DownloadLabel}`
+  Push `${Required}`
+  Push `${ExePath}`
   Call DownloadEnter
   ; Empty the stack of all the stuff we've just added.
   ; We're not interested in keeping it, so just fill $0 repeatedly.
-  Pop `$0`
-  Pop `$0`
-  Pop `$0`
-  Pop `$0`
   Pop `$0`
   Pop `$0`
   Pop `$0`
