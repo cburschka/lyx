@@ -59,7 +59,7 @@ class contributer:
                     address = address.replace(" ! ", ".")
                     contact = "%s@%s" % (ename, address)
                     result.append('@iE-mail: %s\n' % contact)
-          result.append('   %s\n' % self.credit)
+          result.append('   %s\n' % self.credit.replace('\n', '\n   '))
           return "".join(result)
 
 
@@ -419,6 +419,14 @@ contributers = [
                  "",
                  "",
                  u"Catalan translation"),
+
+     contributer(u"Humberto Nicolás Castejón",
+                 "beconico () gmail ! com",
+                 "GPL",
+                 "Re: The LyX licence",
+                 "m=111833854105023",
+                 "9 June 2005",
+                 u"Spanish translation of the Windows installer"),
 
      contributer(u"Matěj Cepl",
                  "matej () ceplovi ! cz",
@@ -906,7 +914,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110910933124056",
                  "22 February 2005",
-                 u"The driving force behind, and maintainer of, the LyX wiki wiki."),
+                 u"The driving force behind, and maintainer of, the LyX wiki wiki.\nSwedish translation of the Windows installer"),
 
      contributer(u"Eulogio Serradilla Rodríguez",
                  "eulogio.sr () terra ! es",
