@@ -136,8 +136,9 @@
 !macro DownloadEnter_Private ExePath RegistryKey RegistrySubKey RemoveFromPath AddtoPath Required DownloadLabel HomeLabel PageHeader PageDescription
  !define skipBackupLbl "skipBackup_${__LINE__}"
 
-  StrCpy ${ExePath} ""
-  ReadRegStr ${ExePath} HKLM "${RegistryKey}" "${RegistrySubKey}"
+  ${if} ${ExePath} == ""
+    ReadRegStr ${ExePath} HKLM "${RegistryKey}" "${RegistrySubKey}"
+  ${endif}
 
   !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 1" "Text" ""
   !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 2" "Text" "$(DownloadPageField2)"

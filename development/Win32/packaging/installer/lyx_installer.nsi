@@ -306,13 +306,19 @@ Function .onInit
     !undef READ_ONLY
   ${endif}
 
+  StrCpy $MinSYSPath ""
+  StrCpy $PythonPath ""
+  StrCpy $MiKTeXPath ""
+  StrCpy $PerlPath ""
+  StrCpy $GhostscriptPath ""
+  StrCpy $ImageMagickPath ""
+
   ClearErrors
 FunctionEnd
 
 ;--------------------------------
 
 Function DownloadMinSYS
-  StrCpy $MinSYSPath ""
   StrCpy $DownloadMinSYS "0"
 
   ; Search the registry for the MinSYS uninstaller.
@@ -361,7 +367,6 @@ FunctionEnd
 ;--------------------------------
 
 Function DownloadPython
-  StrCpy $PythonPath ""
   StrCpy $DownloadPython "0"
 
   ${DownloadEnter} \
@@ -389,7 +394,6 @@ FunctionEnd
 
 Function DownloadMiKTeX
   StrCpy $DoNotRequireMiKTeX "1"
-  StrCpy $MiKTeXPath ""
   StrCpy $DownloadMiKTeX "0"
 
   ${DownloadEnter} \
@@ -417,7 +421,6 @@ FunctionEnd
 
 Function DownloadPerl
   StrCpy $DoNotRequirePerl "1"
-  StrCpy $PerlPath ""
   StrCpy $DownloadPerl "1"
 
   ${DownloadEnter} \
@@ -445,7 +448,6 @@ FunctionEnd
 
 Function DownloadGhostscript
   StrCpy $DoNotRequireGhostscript "1"
-  StrCpy $GhostscriptPath ""
   StrCpy $DownloadGhostscript "0"
 
   ; Find which version of ghostscript, if any, is installed.
@@ -481,7 +483,6 @@ FunctionEnd
 
 Function DownloadImageMagick
   StrCpy $DoNotRequireImageMagick "1"
-  StrCpy $ImageMagickPath ""
   StrCpy $DownloadImageMagick "0"
 
   ${DownloadEnter} \
