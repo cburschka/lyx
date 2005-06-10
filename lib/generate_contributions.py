@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+﻿#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
 '''
@@ -915,6 +915,14 @@ contributers = [
                  "m=110910933124056",
                  "22 February 2005",
                  u"The driving force behind, and maintainer of, the LyX wiki wiki.\nSwedish translation of the Windows installer"),
+
+     contributer(u"Janus Sandsgaard",
+                 "janus () janus ! dk",
+                 "GPL",
+                 "Re: The LyX licence",
+                 "m=111839355328045",
+                 "10 June 2005",
+                 u"Danish translation of the Windows installer"),
 
      contributer(u"Eulogio Serradilla Rodríguez",
                  "eulogio.sr () terra ! es",
