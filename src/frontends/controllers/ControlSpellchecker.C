@@ -63,12 +63,6 @@ void ControlSpellchecker::startSession()
 {
 	lyxerr[Debug::GUI] << "spell startSession" << endl;
 
-	if (speller_.get()) {
-		lyxerr[Debug::GUI] << "startSession: speller exists" << endl;
-		speller_.reset(0);
-		return;
-	}
-
 	// create spell object
 	string tmp;
 #ifdef USE_PSPELL

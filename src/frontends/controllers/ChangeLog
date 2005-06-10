@@ -1,3 +1,9 @@
+2005-06-10  Angus Leeming  <leeming@lyx.org>
+
+	* ControlSpellchecker.C (startSession): remove block of code that
+	resets speller_ to 0, as the rest of the code relies on the existence
+	of a valid *speller_.
+
 2005-06-06  Angus Leeming  <leeming@lyx.org>
 
 	* helper_funcs.C (browseFile, browseDir): check whether latex
