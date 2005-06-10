@@ -346,20 +346,23 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 }
 
 
-lyx::pos_type Paragraph::getEndPosOfFontSpan(lyx::pos_type pos) const
+std::pair<lyx::pos_type, lyx::pos_type> Paragraph::getFontSpan(lyx::pos_type pos) const
 {
 	BOOST_ASSERT(pos <= size());
+	lyx::pos_type start = 0;
 
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
-	for (; cit != end; ++cit)
+	for (; cit != end; ++cit) {
 		if (cit->pos() >= pos)
-			return cit->pos();
+			return std::make_pair(start, cit->pos());
+		start = cit->pos() + 1;
+	}
 
 	// This should not happen, but if so, we take no chances.
 	//lyxerr << "Paragraph::getEndPosOfFontSpan: This should not happen!"
 	//      << endl;
-	return pos;
+	return std::make_pair(pos, pos);
 }
 
 

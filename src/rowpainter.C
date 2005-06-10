@@ -69,13 +69,14 @@ public:
 	void paintText();
 
 private:
-	void paintForeignMark(double orig_x, LyXFont const & orig_font);
-	void paintHebrewComposeChar(lyx::pos_type & vpos);
-	void paintArabicComposeChar(lyx::pos_type & vpos);
-	void paintChars(lyx::pos_type & vpos, bool hebrew, bool arabic);
+	void paintForeignMark(double orig_x, LyXFont const & font);
+	void paintHebrewComposeChar(lyx::pos_type & vpos, LyXFont const & font);
+	void paintArabicComposeChar(lyx::pos_type & vpos, LyXFont const & font);
+	void paintChars(lyx::pos_type & vpos, LyXFont font, 
+	                bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
 	void paintFromPos(lyx::pos_type & vpos);
-	void paintInset(lyx::pos_type const pos);
+	void paintInset(lyx::pos_type const pos, LyXFont const & font);
 
 	/// return left margin
 	int leftMargin() const;
@@ -173,12 +174,12 @@ int RowPainter::leftMargin() const
 }
 
 
-void RowPainter::paintInset(pos_type const pos)
+void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 {
 	InsetBase const * inset = par_.getInset(pos);
 	BOOST_ASSERT(inset);
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
-	pi.base.font = getFont(pos);
+	pi.base.font = font;
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
 	theCoords.insets().add(inset, int(x_), yo_);
 	inset->drawSelection(pi, int(x_), yo_);
@@ -187,7 +188,7 @@ void RowPainter::paintInset(pos_type const pos)
 }
 
 
-void RowPainter::paintHebrewComposeChar(pos_type & vpos)
+void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
 
@@ -198,7 +199,6 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos)
 	str += c;
 	++vpos;
 
-	LyXFont const & font = getFont(pos);
 	int const width = font_metrics::width(c, font);
 	int dx = 0;
 
@@ -221,7 +221,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos)
 }
 
 
-void RowPainter::paintArabicComposeChar(pos_type & vpos)
+void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
 	string str;
@@ -232,7 +232,6 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 	str += c;
 	++vpos;
 
-	LyXFont const & font = getFont(pos);
 	int const width = font_metrics::width(c, font);
 	int dx = 0;
 
@@ -251,11 +250,14 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 }
 
 
-void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
+void RowPainter::paintChars(pos_type & vpos, LyXFont font, 
+			    bool hebrew, bool arabic)
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
 	pos_type const end = row_.endpos();
-	LyXFont orig_font = getFont(pos);
+	std::pair<lyx::pos_type, lyx::pos_type> const font_span 
+		= par_.getFontSpan(pos);
+	Change::Type const prev_change = par_.lookupChange(pos);
 
 	// first character
 	string str;
@@ -265,20 +267,18 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 		str[0] = par_.transformChar(c, pos);
 	}
 
-	bool prev_struckout = isDeletedText(par_, pos);
-	bool prev_newtext = isInsertedText(par_, pos);
-
 	// collect as much similar chars as we can
-	for (++vpos; vpos < end && (pos = text_.bidi.vis2log(vpos)) >= 0; ++vpos) {
+	for (++vpos ; vpos < end ; ++vpos) {
+		pos = text_.bidi.vis2log(vpos);
+		if (pos < font_span.first || pos > font_span.second)
+			break;
+
+		if (prev_change != par_.lookupChange(pos))
+			break;
+
 		char c = par_.getChar(pos);
 
 		if (!IsPrintableNonspace(c))
-			break;
-
-		if (prev_struckout != isDeletedText(par_, pos))
-			break;
-
-		if (prev_newtext != isInsertedText(par_, pos))
 			break;
 
 		if (arabic && Encodings::IsComposeChar_arabic(c))
@@ -287,34 +287,31 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 		if (hebrew && Encodings::IsComposeChar_hebrew(c))
 			break;
 
-		if (orig_font != getFont(pos))
-			break;
-
 		if (arabic)
 			c = par_.transformChar(c, pos);
 
 		str += c;
 	}
 
-	if (prev_struckout)
-		orig_font.setColor(LColor::strikeout);
-	else if (prev_newtext)
-		orig_font.setColor(LColor::newtext);
+	if (prev_change == Change::DELETED)
+		font.setColor(LColor::strikeout);
+	else if (prev_change == Change::INSERTED)
+		font.setColor(LColor::newtext);
 
 	// Draw text and set the new x position
 	//lyxerr << "paint row: yo_ " << yo_ << "\n";
-	pain_.text(int(x_), yo_, str, orig_font);
-	x_ += font_metrics::width(str, orig_font);
+	pain_.text(int(x_), yo_, str, font);
+	x_ += font_metrics::width(str, font);
 }
 
 
-void RowPainter::paintForeignMark(double orig_x, LyXFont const & orig_font)
+void RowPainter::paintForeignMark(double orig_x, LyXFont const & font)
 {
 	if (!lyxrc.mark_foreign_language)
 		return;
-	if (orig_font.language() == latex_language)
+	if (font.language() == latex_language)
 		return;
-	if (orig_font.language() == bv_.buffer()->params().language)
+	if (font.language() == bv_.buffer()->params().language)
 		return;
 
 	int const y = yo_ + 1;
@@ -333,7 +330,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	char const c = par_.getChar(pos);
 
 	if (c == Paragraph::META_INSET) {
-		paintInset(pos);
+		paintInset(pos, orig_font);
 		++vpos;
 		paintForeignMark(orig_x, orig_font);
 		return;
@@ -352,11 +349,11 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	if ((!hebrew && !arabic)
 		|| (hebrew && !Encodings::IsComposeChar_hebrew(c))
 		|| (arabic && !Encodings::IsComposeChar_arabic(c))) {
-		paintChars(vpos, hebrew, arabic);
+		paintChars(vpos, orig_font, hebrew, arabic);
 	} else if (hebrew) {
-		paintHebrewComposeChar(vpos);
+		paintHebrewComposeChar(vpos, orig_font);
 	} else if (arabic) {
-		paintArabicComposeChar(vpos);
+		paintArabicComposeChar(vpos, orig_font);
 	}
 
 	paintForeignMark(orig_x, orig_font);

@@ -29,6 +29,7 @@
 #include <boost/assert.hpp>
 
 #include <string>
+#include <utility>
 
 class Buffer;
 class BufferParams;
@@ -280,11 +281,12 @@ public:
 				   LyXFont const & outerfont) const;
 	/**
 	 * The font returned by the above functions is the same in a
-	 * span of characters. This method will return the last position
-	 * in the paragraph for which that font is the same.
-	 * This can be used to avoid unnecessary calls to getFont.
+	 * span of characters. This method will return the first and
+	 * the last last positions in the paragraph for which that
+	 * font is the same. This can be used to avoid unnecessary
+	 * calls to getFont.
 	 */
-	lyx::pos_type getEndPosOfFontSpan(lyx::pos_type pos) const;
+	std::pair<lyx::pos_type, lyx::pos_type> getFontSpan(lyx::pos_type pos) const;
 	///
 	/// this is a bottleneck.
 	value_type getChar(lyx::pos_type pos) const

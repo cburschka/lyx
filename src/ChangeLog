@@ -1,3 +1,19 @@
+2005-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* rowpainter.C (paintInset, paintHebrewComposeChar) 
+	(paintArabicComposeChar, paintChars): add a LyXFont argument.
+	(paintChars): use getFontSpan to reduce calls to getFont to a
+	minimum; use Paragraph::lookupChange instead of isXXXText.
+	(paintForeignMark): rename LyXFont argument.
+	(paintFromPos): pass a LyXFont object to the various paintXXX
+	methods. 
+
+	* FontIterator.C (FontIterator, operator++): use
+	Paragraph::getFontSpan 
+
+	* paragraph.C (getFontSpan): replace getEndOfFontSpan with a
+	version that returns the font span as a pair.
+
 2005-06-09  Angus Leeming  <leeming@lyx.org>
 
 	* converter.C (convert): Don't forget "outfile = real_outfile" as
