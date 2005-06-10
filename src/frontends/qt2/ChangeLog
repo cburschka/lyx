@@ -1,3 +1,9 @@
+2005-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.h: 
+	* qfont_loader.C (charwidth): do no do font width caching with 
+	Qt >= 3.1.0.
+
 2005-06-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 	(Committed Martin Vermeer <martin.vermeer@hut.fi>)
 

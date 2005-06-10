@@ -375,6 +375,9 @@ qfont_loader::font_info * qfont_loader::getfontinfo(LyXFont const & f)
 
 int qfont_loader::charwidth(LyXFont const & f, Uchar val)
 {
+// Starting with version 3.1.0, Qt/X11 does its own caching of
+// character width, so it is not necessary to provide ours.
+#if defined (USE_LYX_FONTCACHE)
 	font_info * fi = getfontinfo(f);
 
 	font_info::WidthCache::const_iterator cit = fi->widthcache.find(val);
@@ -384,6 +387,9 @@ int qfont_loader::charwidth(LyXFont const & f, Uchar val)
 	int const w = fi->metrics.width(QChar(val));
 	fi->widthcache[val] = w;
 	return w;
+#else
+	return getfontinfo(f)->metrics.width(QChar(val));
+#endif
 }
 
 

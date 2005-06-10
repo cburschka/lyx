@@ -12,8 +12,13 @@
 #ifndef QFONTLOADER_H
 #define QFONTLOADER_H
 
+#if QT_VERSION < 0x030100
+#define USE_LYX_FONTCACHE
+#endif
 
+#if defined(USE_LYX_FONTCACHE)
 #include <map>
+#endif
 
 #include "encoding.h"
 #include "lyxfont.h"
@@ -65,9 +70,11 @@ private:
 		/// metrics on the font
 		QFontMetrics metrics;
 
+#if defined(USE_LYX_FONTCACHE)
 		typedef std::map<Uchar, int> WidthCache;
 		/// cache of char widths
 		WidthCache widthcache;
+#endif
 	};
 
 	/// get font info (font + metrics) for the given LyX font. Does not fail.
