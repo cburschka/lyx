@@ -170,7 +170,6 @@ char const * simplefeatures[] = {
 	"varioref",
 	"prettyref",
 	"float",
-	"wasysym"
 };
 
 const int nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -202,6 +201,11 @@ string const LaTeXFeatures::getPackages() const
 	    && ! tclass.provides(LyXTextClass::amsmath)) {
 		packages << "\\usepackage{amsmath}\n";
 	}
+
+	// wasysym is a simple feature, but it must be after amsmath if both
+	// are used
+	if (isRequired("wasysym"))
+		packages << "\\usepackage{wasysym}\n";
 
 	// color.sty
 	if (isRequired("color")) {

@@ -1,3 +1,7 @@
+2005-06-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* LaTeXFeatures.C (getPackages): solve amsmath-wasysym conflict
+
 2005-06-09  Angus Leeming  <leeming@lyx.org>
 
 	* converter.C (convert): Don't forget "outfile = real_outfile" as
