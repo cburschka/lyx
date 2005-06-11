@@ -1,15 +1,19 @@
+2005-06-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* LaTeXFeatures.C (getPackages): solve amsmath-wasysym conflict
+
 2005-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* rowpainter.C (paintInset, paintHebrewComposeChar) 
+	* rowpainter.C (paintInset, paintHebrewComposeChar)
 	(paintArabicComposeChar, paintChars): add a LyXFont argument.
 	(paintChars): use getFontSpan to reduce calls to getFont to a
 	minimum; use Paragraph::lookupChange instead of isXXXText.
 	(paintForeignMark): rename LyXFont argument.
 	(paintFromPos): pass a LyXFont object to the various paintXXX
-	methods. 
+	methods.
 
 	* FontIterator.C (FontIterator, operator++): use
-	Paragraph::getFontSpan 
+	Paragraph::getFontSpan
 
 	* paragraph.C (getFontSpan): replace getEndOfFontSpan with a
 	version that returns the font span as a pair.

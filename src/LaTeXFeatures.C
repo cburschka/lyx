@@ -238,7 +238,6 @@ char const * simplefeatures[] = {
 	"varioref",
 	"prettyref",
 	"float",
-	"wasysym",
 	"dvipost",
 	"fancybox",
 	"calc",
@@ -274,6 +273,11 @@ string const LaTeXFeatures::getPackages() const
 	    && params_.use_amsmath != BufferParams::AMS_OFF) {
 		packages << "\\usepackage{amsmath}\n";
 	}
+
+	// wasysym is a simple feature, but it must be after amsmath if both
+	// are used
+	if (isRequired("wasysym"))
+		packages << "\\usepackage{wasysym}\n";
 
 	// color.sty
 	if (isRequired("color")) {
