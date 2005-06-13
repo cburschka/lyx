@@ -125,7 +125,7 @@ Style Theorem
 	Align                 Block
 	AlignPossible         Block
 	LabelType             Static
-	LabelString           Theorem:
+	LabelString           "Theorem:"
 	LabelSep              M
 	LabelFont
 	  Series              Bold
@@ -141,7 +141,7 @@ Style Proof
 	Align                 Block
 	AlignPossible         Block
 	LabelType             Static
-	LabelString           Proof:
+	LabelString           "Proof:"
 	LabelSep              M
 	LabelFont
 	  Series              Bold
@@ -167,7 +167,7 @@ Style Appendix
 	Align                 Block
 	AlignPossible         Block
 	LabelType             Centered_Top_Environment
-	LabelString           Appendix
+	LabelString           "Appendix"
 	Font
 	  Series              Bold
 	  Size                Normal

@@ -335,7 +335,7 @@ Style Acknowledgements
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           [Acknowledgements]
+	LabelString           "[Acknowledgements]"
 	KeepEmpty             1
 	Font
 	  Family              Roman
@@ -356,7 +356,7 @@ Style And
 	Align                 Center
 	AlignPossible         Center
 	LabelType             Static
-	LabelString           and
+	LabelString           "and"
 	KeepEmpty             1
 	Font
 	  Family              Roman
@@ -416,7 +416,7 @@ Style Appendix
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           [Appendix]
+	LabelString           "[Appendix]"
 	KeepEmpty             1
 	Font
 	  Family              Roman
@@ -450,7 +450,7 @@ Style References
 	BottomSep             0.7
 	ParSep                0.5
 	LabelType             Bibliography
-	LabelString           References
+	LabelString           "References"
 	LabelBottomSep        0.7
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
@@ -533,7 +533,7 @@ Style Caption
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Sensitive
-	LabelString           Caption
+	LabelString           "Caption"
 	LabelFont
 	  Series              Bold
 	EndFont

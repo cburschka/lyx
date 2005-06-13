@@ -52,7 +52,7 @@ Style Email
 	AlignPossible         Left
 	LeftMargin            email:M
 	LabelType             Static
-	LabelString           email:
+	LabelString           "email:"
 	LabelSep              M
 	Font
 	  Family              Sans
@@ -91,7 +91,7 @@ Style Acknowledgement
 	Align                 Block
 	AlignPossible         Block
 	LabelType             Top_Environment
-	LabelString           Acknowledgements
+	LabelString           "Acknowledgements"
 	LabelSep              M
 	Font
 	  Size                Small

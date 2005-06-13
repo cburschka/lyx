@@ -73,7 +73,7 @@ Style Abstract
 	RightMargin           ""
 	ParIndent             ""
 	ParSep                0.5
-	LabelString           ABSTRACT
+	LabelString           "ABSTRACT"
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -88,5 +88,5 @@ Style Acknowledgments
 #  NextNoIndent          1
 #  LatexType             Command
 	LatexName             acknowledgments
-	LabelString           ACKNOWLEDGMENTS
+	LabelString           "ACKNOWLEDGMENTS"
 End

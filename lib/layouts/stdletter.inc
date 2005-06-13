@@ -59,7 +59,7 @@ Style Opening
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Opening:
+	LabelString           "Opening:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -80,7 +80,7 @@ Style Signature
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Signature:
+	LabelString           "Signature:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -93,7 +93,7 @@ Style Closing
 	CopyStyle             Signature
 	LatexName             closing
 	LeftMargin            Signature::xx
-	LabelString           Closing:
+	LabelString           "Closing:"
 End
 
 
@@ -109,7 +109,7 @@ Style cc
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           cc:
+	LabelString           "cc:"
 End
 
 
@@ -117,7 +117,7 @@ Style encl
 	CopyStyle             cc
 	LatexName             encl
 	LeftMargin            encl:xx
-	LabelString           encl:
+	LabelString           "encl:"
 	Spacing               Other 1.5
 End
 
@@ -126,7 +126,7 @@ Style Location
 	CopyStyle             encl
 	LatexName             location
 	LeftMargin            Location:xx
-	LabelString           Location:
+	LabelString           "Location:"
 End
 
 
@@ -134,6 +134,6 @@ Style Telephone
 	CopyStyle             encl
 	LatexName             telephone
 	LeftMargin            Telephone:xx
-	LabelString           Telephone:
+	LabelString           "Telephone:"
 End
 

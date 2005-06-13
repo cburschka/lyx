@@ -93,7 +93,7 @@ Style TickList
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           _/
+	LabelString           "_/"
 	Preamble
 	   \usepackage{pifont}
 	EndPreamble
@@ -114,7 +114,7 @@ Style CrossList
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           ><
+	LabelString           "><"
 	Preamble
 	  \usepackage{pifont}
 	EndPreamble

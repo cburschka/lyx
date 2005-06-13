@@ -68,7 +68,7 @@ Style Topic
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Manual
-	LabelString           MMMMM
+	LabelString           "MMMMM"
 	LabelFont
 	  Family              Sans
 	  Shape               Slanted
@@ -90,7 +90,7 @@ Style Itemize
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           *
+	LabelString           "*"
 End
 
 

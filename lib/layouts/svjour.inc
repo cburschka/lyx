@@ -122,7 +122,7 @@ Style Dedication
 	CopyStyle             Headnote
 	LatexName             dedication
 	LeftMargin            Dedication:xxx
-	LabelString           Dedication:
+	LabelString           "Dedication:"
 End
 
 
@@ -263,7 +263,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Top_Environment
-	LabelString           Abstract.
+	LabelString           "Abstract."
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -305,7 +305,7 @@ Style Acknowledgements
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Acknowledgements.
+	LabelString           "Acknowledgements."
 	Font
 	  Size                Small
 	EndFont
@@ -319,7 +319,7 @@ End
 Style Acknowledgement
 	CopyStyle             Acknowledgements
 	LatexName             acknowledgement
-	LabelString           Acknowledgement.
+	LabelString           "Acknowledgement."
 End
 
 
@@ -337,7 +337,7 @@ Style Bibliography
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Bibliography
-	LabelString           References
+	LabelString           "References"
 	LabelBottomSep        0.7
 	LabelFont
 	  Series              Bold
@@ -359,7 +359,7 @@ Style Claim
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Claim.
+	LabelString           "Claim."
 	LabelFont
 	  Shape               Italic
 	EndFont

@@ -23,7 +23,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block
 	LabelType             Centered_Top_Environment
-	LabelString           Abstract
+	LabelString           "Abstract"
 	LabelBottomSep    0.5
 	Font
 	  Size                Small
@@ -49,7 +49,7 @@ Style Bibliography
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Bibliography
-	LabelString           References
+	LabelString           "References"
 	LabelBottomSep        1.2
 	LabelFont
 	  Series              Bold

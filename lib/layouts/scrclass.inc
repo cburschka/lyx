@@ -41,7 +41,7 @@ Style Labeling
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Manual
-	LabelString           00.00.0000
+	LabelString           "00.00.0000"
 End
 
 

@@ -108,7 +108,7 @@ Style Received
 	CopyStyle             Left_Header
 	LatexName             received
 	LeftMargin            Received:xx
-	LabelString           Recieved:
+	LabelString           "Received:"
 End
 
 
@@ -116,7 +116,7 @@ Style Revised
 	CopyStyle             Left_Header
 	LatexName             revised
 	LeftMargin            Revised:xx
-	LabelString           Revised:
+	LabelString           "Revised:"
 End
 
 
@@ -124,7 +124,7 @@ Style Accepted
 	CopyStyle             Left_Header
 	LatexName             accepted
 	LeftMargin            Accepted:xx
-	LabelString           Accepted:
+	LabelString           "Accepted:"
 End
 
 
@@ -167,7 +167,7 @@ End
 
 Style Bibliography
 	TopSep                4
-	LabelString           Bibliography
+	LabelString           "Bibliography"
 	LabelFont
 	  Series              Bold
 	  Size                Huge
@@ -209,7 +209,7 @@ Style Table_Caption
 	Align                 Center
 	AlignPossible         Center
 	LabelType             Sensitive
-	LabelString           TableCaption
+	LabelString           "TableCaption"
 	LabelFont
 	  Series              Bold
 	EndFont

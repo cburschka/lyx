@@ -186,7 +186,7 @@ Style Itemize
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Itemize
-	LabelString           *
+	LabelString           "*"
 End
 
 
@@ -204,7 +204,7 @@ Style Description
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Manual
-	LabelString           MM
+	LabelString           "MM"
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -343,7 +343,7 @@ Style Caption
 	Align                 Center
 	AlignPossible         Center
 	LabelType             Sensitive
-	LabelString		Caption
+	LabelString	      "Caption"
 	OptionalArgs          1
 	LabelFont
 	  Series              Bold

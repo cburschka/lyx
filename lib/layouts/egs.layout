@@ -136,7 +136,7 @@ Style List
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Manual
-	LabelString           00.00.0000
+	LabelString           "00.00.0000"
 End
 
 
@@ -172,7 +172,7 @@ Style Itemize
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Itemize
-	LabelString           *
+	LabelString           "*"
 End
 
 
@@ -191,7 +191,7 @@ Style Description
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Manual
-	LabelString           MM
+	LabelString           "MM"
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -299,7 +299,7 @@ Style Author
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           Author:
+	LabelString           "Author:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -322,7 +322,7 @@ Style Affil
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           Affilation:
+	LabelString           "Affilation:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -345,7 +345,7 @@ Style Journal
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           Journal:
+	LabelString           "Journal:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -369,7 +369,7 @@ Style msnumber
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           MS_number:
+	LabelString           "MS_number:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -393,7 +393,7 @@ Style FirstAuthor
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           1st_author_surname:
+	LabelString           "1st_author_surname:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -416,7 +416,7 @@ Style Received
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           Received:
+	LabelString           "Received:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -439,7 +439,7 @@ Style Accepted
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           Accepted:
+	LabelString           "Accepted:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -462,7 +462,7 @@ Style Offsets
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           reprint_reqs_to:
+	LabelString           "reprint_reqs_to:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -501,7 +501,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Abstract.
+	LabelString           "Abstract."
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -522,7 +522,7 @@ Style Acknowledgements
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Acknowledgements.
+	LabelString           "Acknowledgements."
 	Font
 	  Size                Small
 	EndFont
@@ -547,7 +547,7 @@ Style Acknowledgement
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Acknowledgement.
+	LabelString           "Acknowledgement."
 	Font
 	  Size                Small
 	EndFont
@@ -572,7 +572,7 @@ Style Bibliography
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Bibliography
-	LabelString           References
+	LabelString           "References"
 	LabelBottomSep    0.7
 	LabelFont
 	  Series              Bold
@@ -590,7 +590,7 @@ Style Caption
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Sensitive
-	LabelString           Caption
+	LabelString           "Caption"
 	LabelFont
 	  Series              Bold
 	EndFont

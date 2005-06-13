@@ -135,7 +135,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block
 	LabelType             Static
-	LabelString           Abstract.
+	LabelString           "Abstract."
 	LabelSep              M
 	Font
 	  Size                Small
@@ -236,7 +236,7 @@ Style Bibliography
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Bibliography
-	LabelString           References
+	LabelString           "References"
 	LabelBottomSep        0.7
 	Font
 	  Size                Small

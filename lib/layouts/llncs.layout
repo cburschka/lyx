@@ -251,7 +251,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Top_Environment
-	LabelString           Abstract.
+	LabelString           "Abstract."
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -272,7 +272,7 @@ Style Bibliography
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Bibliography
-	LabelString           References
+	LabelString           "References"
 	LabelBottomSep    0.7
 	LabelFont
 	  Series              Bold
@@ -295,7 +295,7 @@ Style Case
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Case #.
+	LabelString           "Case #."
 	LabelFont
 	  Shape               Italic
 	EndFont

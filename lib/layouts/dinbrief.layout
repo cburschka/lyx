@@ -13,7 +13,7 @@ Style My_Address
 	Margin                Static
 	LeftMargin            Unterschr
 	LabelType             Static
-	LabelString           Briefkopf:
+	LabelString           "Briefkopf:"
 	LabelSep              x
 	LabelFont
 	  Shape               Italic
@@ -30,7 +30,7 @@ Style Send_To_Address
 	BottomSep             0.1
 	LeftMargin            Unterschr
 	LabelType             Static
-	LabelString           Adresse:
+	LabelString           "Adresse:"
 	LabelSep              x
 	LabelFont
 	  Series              Medium
@@ -44,7 +44,7 @@ End
 
 Style Opening
 	LeftMargin            Unterschr
-	LabelString           Anrede:
+	LabelString           "Anrede:"
 	LabelSep              x
 	LabelFont
 	  Series              Medium
@@ -57,7 +57,7 @@ End
 
 Style Signature
 	LeftMargin            Unterschr
-	LabelString           Unterschrift:
+	LabelString           "Unterschrift:"
 	LabelSep              x
 	LabelFont
 	  Series              Medium
@@ -82,7 +82,7 @@ End
 
 
 Style encl
-	LabelString           Anlagen:
+	LabelString           "Anlagen:"
 	LeftMargin            Unterschr
 	LabelSep              x
 	LabelFont
@@ -106,7 +106,7 @@ Style ps
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           PS:
+	LabelString           "PS:"
 	LabelFont
 	  Series              Medium
 	  Shape               Italic
@@ -117,7 +117,7 @@ End
 
 
 Style cc
-	LabelString           Verteiler:
+	LabelString           "Verteiler:"
 	LeftMargin            Unterschr
 	LabelSep              x
 	LabelFont
@@ -142,7 +142,7 @@ Style Betreff
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Betreff:
+	LabelString           "Betreff:"
 	LabelFont
 	  Shape               Italic
 	  Size                Small
@@ -165,7 +165,7 @@ Style Stadt
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Stadt:
+	LabelString           "Stadt:"
 	LabelFont
 	  Shape               Italic
 	  Size                Small
@@ -185,7 +185,7 @@ Style Datum
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Datum:
+	LabelString           "Datum:"
 	LabelFont
 	  Shape               Italic
 	  Size                Small

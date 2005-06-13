@@ -48,7 +48,7 @@ Style Section
 	Align                 Block
 	AlignPossible         Block, Left
 	EndLabelType          Static
-	EndLabelString        .
+	EndLabelString        "."
 	Font
 	  Series              Bold
 	EndFont
@@ -152,7 +152,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block
 	LabelType             Static
-	LabelString           Abstract.
+	LabelString           "Abstract."
 	LabelSep              M
 	LabelIndent           ........
 	Font
@@ -190,7 +190,7 @@ Style Bibliography
 	AlignPossible         Block,  Center
 	LabelType             Bibliography
 	#LabelType             centered_top_environment
-	LabelString           References
+	LabelString           "References"
 	LabelBottomSep        0.7
 	LabelFont
 	  Shape                      SmallCaps

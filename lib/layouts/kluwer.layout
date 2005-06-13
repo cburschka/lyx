@@ -268,7 +268,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block
 	LabelType             Static
-	LabelString           Abstract.
+	LabelString           "Abstract."
 	LabelSep              M
 	Font
 	  Size                Small
@@ -311,7 +311,7 @@ Style Acknowledgements
 	Align                 Block
 	AlignPossible         Block
 	LabelType             Centered_Top_Environment
-	LabelString           Acknowledgements
+	LabelString           "Acknowledgements"
 	LabelBottomSep        0.5
 	LabelFont
 	  Series              Bold
@@ -333,7 +333,7 @@ Style Appendix
 #  Align                 Block
 #  AlignPossible         Block, Left, Right, Center
 	LabelType             Centered_Top_Environment
-	LabelString           Appendix
+	LabelString           "Appendix"
 	Font
 	  Series              Bold
 	  Size                Large
@@ -353,7 +353,7 @@ Style References
 	BottomSep             0.7
 	ParSep                0.5
 	LabelType             Bibliography
-	LabelString           References
+	LabelString           "References"
 	LabelBottomSep        0.7
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center

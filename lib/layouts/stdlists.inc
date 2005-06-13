@@ -21,7 +21,7 @@ Style Itemize
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Itemize
-	LabelString           *
+	LabelString           "*"
 End
 
 
@@ -58,7 +58,7 @@ Style Description
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Manual
-	LabelString           MM
+	LabelString           "MM"
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -78,7 +78,7 @@ Style List
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Manual
-	LabelString           00.00.0000
+	LabelString           "00.00.0000"
 
 	#define the environment lyxlist
 	Preamble
@@ -99,7 +99,7 @@ End
 #Environment Itemize
 #       LaTeXHeader "\begin{itemize}"
 #       LaTeXFooter "\end{itemize}"
-#  LabelString          *
+#  LabelString          "*"
 #  Margin               Static
 #  LatexType            Item_Environment
 #  NextNoIndent         1
