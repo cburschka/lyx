@@ -29,7 +29,7 @@ dnl
 define(SEARCH_PROG,[dnl
 changequote([,])dnl
 MSG_CHECKING($1)
-MSG_RESULT(($3))
+MSG_RESULT()
 $2=
 for ac_prog in $3
 do
@@ -249,8 +249,7 @@ FIG_VIEWER="$FIG_EDITOR"
 SEARCH_PROG([for a GRACE viewer and editor], GRACE_EDITOR, xmgrace)
 GRACE_VIEWER="$GRACE_EDITOR"
 
-SEARCH_PROG([for a FEN viewer and editor], FEN_EDITOR, xboard)
-test "$FEN" = "xboard" && FEN_EDITOR="xboard -lpf \$\$i -mode EditPosition"
+SEARCH_PROG([for a FEN viewer and editor], FEN_EDITOR, "xboard -lpf \$\$i -mode EditPosition")
 FEN_VIEWER="$FEN_EDITOR"
 
 SEARCH_PROG([for a raster image viewer], RASTERIMAGE_VIEWER, xv kview gimp)
@@ -262,46 +261,33 @@ SEARCH_PROG([for a text editor], TEXT_EDITOR, xemacs gvim kedit kwrite kate nedi
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
 PATH=${PATH}:./reLyX/
-SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command,reLyX)
+SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command, "reLyX -f \$\$i")
 PATH=${save_PATH}
-test $tex_to_lyx_command = "reLyX" && tex_to_lyx_command="reLyX -f \$\$i"
 tex_to_lyx_command=`echo $tex_to_lyx_command | sed "s,reLyX,reLyX$version_suffix,"`
 
-SEARCH_PROG([for a Noweb -> LyX converter],literate_to_lyx_command,noweb2lyx)
-test $literate_to_lyx_command = "noweb2lyx" && literate_to_lyx_command="noweb2lyx \$\$i \$\$o"
+SEARCH_PROG([for a Noweb -> LyX converter],literate_to_lyx_command,"noweb2lyx \$\$i \$\$o")
 literate_to_lyx_command=`echo $literate_to_lyx_command | sed "s,noweb2lyx,noweb2lyx$version_suffix,"`
 
 # Search something to process a literate document
-SEARCH_PROG([for a Noweb -> LaTeX converter],literate_to_tex_command,noweave)
-test $literate_to_tex_command = "noweave" && literate_to_tex_command="noweave -delay -index \$\$i > \$\$o"
+SEARCH_PROG([for a Noweb -> LaTeX converter],literate_to_tex_command,"noweave -delay -index \$\$i > \$\$o")
 
-SEARCH_PROG([for a HTML -> Latex converter],html_to_latex_command,html2latex)
-test $html_to_latex_command = "html2latex" && html_to_latex_command="html2latex \$\$i"
+SEARCH_PROG([for a HTML -> Latex converter],html_to_latex_command, "html2latex \$\$i")
 
-SEARCH_PROG([for a MSWord -> Latex converter],word_to_latex_command,wvCleanLatex word2x)
-test "$word_to_latex_command" = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$i \$\$o"
-test "$word_to_latex_command" = "word2x" && word_to_latex_command="word2x -f latex \$\$i"
+SEARCH_PROG([for a MSWord -> Latex converter],word_to_latex_command, "wvCleanLatex \$\$i \$\$o" "wvCleanLatex \$\$i \$\$o")
 
-SEARCH_PROG([for Image converter],image_command,convert)
-test $image_command = "convert" && image_command="convert \$\$i \$\$o"
+SEARCH_PROG([for Image converter],image_command, "convert \$\$i \$\$o")
 
-SEARCH_PROG([for an OpenOffice.org -> Latex converter],sxw_to_latex_command,w2l)
-test "$sxw_to_latex_command" = "w2l" && sxw_to_latex_command="w2l -clean \$\$i"
+SEARCH_PROG([for an OpenOffice.org -> Latex converter],sxw_to_latex_command, "w2l -clean \$\$i")
 
 # oolatex is the original name, SuSE has oolatex.sh
-SEARCH_PROG([for an Latex -> OpenOffice.org converter],latex_to_sxw_command,oolatex oolatex.sh)
-test "$latex_to_sxw_command" != "none" && latex_to_sxw_command="$latex_to_sxw_command \$\$i"
+SEARCH_PROG([for an Latex -> OpenOffice.org converter],latex_to_sxw_command, "oolatex \$\$i" "oolatex.sh \$\$i")
 
 # Search something to preview postscript
-SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gsview32 gv ghostview kghostview)
-case $GHOSTVIEW in
-  ghostview) PS_VIEWER="$GHOSTVIEW -swap" ;;
-  *) PS_VIEWER="$GHOSTVIEW";;
-esac
-EPS_VIEWER=$GHOSTVIEW
+SEARCH_PROG([for a Postscript previewer],PS_VIEWER,gsview32 gv "ghostview -swap" kghostview)
+EPS_VIEWER=$PS_VIEWER
 
 # Search for a program to preview pdf
-SEARCH_PROG([for a PDF preview],PDF_VIEWER, acrobat acrord32 gsview32 acroread gv ghostview xpdf kpdf kghostview)
+SEARCH_PROG([for a PDF previewer],PDF_VIEWER, acrobat acrord32 gsview32 acroread gv ghostview xpdf kpdf kghostview)
 
 # Search something to preview dvi
 SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap kdvi)
@@ -310,16 +296,13 @@ SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap kdvi)
 SEARCH_PROG([for a HTML previewer],HTML_VIEWER, "mozilla file://\$\$p\$\$i" netscape)
 
 # Search for a program to convert ps to pdf
-SEARCH_PROG([for a PS to PDF converter],ps_to_pdf_command,ps2pdf)
-test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf -dCompatibilityLevel=1.3 \$\$i"
+SEARCH_PROG([for a PS to PDF converter],ps_to_pdf_command, "ps2pdf13 \$\$i")
 
 # Search for a program to convert dvi to ps
-SEARCH_PROG([for a DVI to PS converter],dvi_to_ps_command,dvips)
-test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$o \$\$i"
+SEARCH_PROG([for a DVI to PS converter],dvi_to_ps_command, "dvips -o \$\$o \$\$i")
 
 # Search for a program to convert dvi to pdf
-SEARCH_PROG([for a DVI to PDF converter],dvi_to_pdf_command,dvipdfm)
-test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
+SEARCH_PROG([for a DVI to PDF converter],dvi_to_pdf_command, "dvipdfm \$\$i")
 
 # We have a script to convert previewlyx to ppm or to png
 lyxpreview_to_bitmap_command='python $$s/scripts/lyxpreview2bitmap.py'
@@ -360,8 +343,7 @@ dnl   fax_command="none"
 dnl fi
 
 # Search a GUI Fax program
-SEARCH_PROG([for a fax program], fax_command, kdeprintfax ksendfax)
-test $fax_command != "none" && fax_command="$fax_command \$\$i"
+SEARCH_PROG([for a fax program], fax_command, "kdeprintfax \$\$i" "ksendfax \$\$i")
 
 # Search for LinuxDoc support
 SEARCH_PROG([for SGML-tools 1.x (LinuxDoc)], LINUXDOC, sgml2lyx)
@@ -419,13 +401,10 @@ case $prog in
 esac
 LYXRC_VAR(\print_spool_printerprefix, $print_spool_printerprefix)
 
-SEARCH_PROG([for a LaTeX -> HTML converter], TOHTML, tth latex2html hevea)
-latex_to_html_command=$TOHTML
-case $TOHTML in
-	tth) latex_to_html_command="tth -t -e2 -L\$\$b < \$\$i > \$\$o";;
- latex2html) latex_to_html_command="latex2html -no_subdir -split 0 -show_section_numbers \$\$i";;
-      hevea) latex_to_html_command="hevea -s \$\$i";;
-esac
+SEARCH_PROG([for a LaTeX -> HTML converter], latex_to_html_command,dnl
+ "tth -t -e2 -L\$\$b < \$\$i > \$\$o" dnl
+ "latex2html -no_subdir -split 0 -show_section_numbers \$\$i" dnl
+ "hevea -s \$\$i")
 
 #### Explore the LaTeX configuration
 MSG_CHECKING(LaTeX configuration)

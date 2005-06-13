@@ -1,3 +1,8 @@
+2005-06-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.m4: use ps2pdf13 for ps->pdf converter; do not display
+	the list of programs we are about to check; simplify code.
+
 2005-06-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.m4: fix shortcut for text format.
