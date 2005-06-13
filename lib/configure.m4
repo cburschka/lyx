@@ -282,8 +282,7 @@ SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap)
 SEARCH_PROG([for a HTML previewer],HTML_VIEWER, "mozilla file://\$\$p\$\$i" netscape)
 
 # Search for a program to convert ps to pdf
-SEARCH_PROG([for a PS to PDF converter],ps_to_pdf_command,ps2pdf)
-test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf -dCompatibilityLevel=1.3 \$\$i"
+SEARCH_PROG([for a PS to PDF converter],ps_to_pdf_command, "ps2pdf13 \$\$i")
 
 # Search for a program to convert dvi to ps
 SEARCH_PROG([for a DVI to PS converter],dvi_to_ps_command,dvips)

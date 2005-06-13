@@ -1,3 +1,7 @@
+2005-06-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.m4 (ps_to_pdf_command): use ps2pdf13 by default.
+
 2005-05-25  Angus Leeming  <leeming@lyx.org>
 
 	* configure.m4: strip '\r' characters from the generated
