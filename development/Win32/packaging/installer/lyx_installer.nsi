@@ -61,6 +61,9 @@ ${StrLoc}
 ${StrNSISToIO}
 ${StrRep}
 ${StrTrim}
+${StrLTrim}
+${StrRTrim}
+${StrRTrimChar}
 ${ReadDownloadValues}
 ${EnableBrowseControls}
 ${SearchRegistry}
@@ -369,7 +372,7 @@ Function DownloadMinSYS_LeaveFunction
       $MinSYSPath \
       "http://sourceforge.net/project/showfiles.php?group_id=2435&package_id=82721&release_id=158803" \
       "$(EnterMinSYSFolder)" \
-      "\sh.exe" \
+      "sh.exe" \
       "$(InvalidMinSYSFolder)"
 FunctionEnd
 
@@ -403,7 +406,7 @@ Function DownloadPython_LeaveFunction
       $PythonPath \
       "http://www.python.org/download/" \
       "$(EnterPythonFolder)" \
-      "\Python.exe" \
+      "Python.exe" \
       "$(InvalidPythonFolder)"
 FunctionEnd
 
@@ -438,7 +441,7 @@ Function DownloadMiKTeX_LeaveFunction
       $MiKTeXPath \
       "http://www.miktex.org/setup.html" \
       "$(EnterMiKTeXFolder)" \
-      "\latex.exe" \
+      "latex.exe" \
       "$(InvalidMiKTeXFolder)"
 FunctionEnd
 
@@ -473,7 +476,7 @@ Function DownloadPerl_LeaveFunction
       $PerlPath \
       "http://www.activestate.com/Products/ActivePerl/" \
       "$(EnterPerlFolder)" \
-      "\perl.exe" \
+      "perl.exe" \
       "$(InvalidPerlFolder)"
 FunctionEnd
 
@@ -524,7 +527,7 @@ Function DownloadGhostscript_LeaveFunction
       $GhostscriptPath \
       "http://www.cs.wisc.edu/~ghost/doc/AFPL/index.htm" \
       "$(EnterGhostscriptFolder)" \
-      "\gswin32c.exe" \
+      "gswin32c.exe" \
       "$(InvalidGhostscriptFolder)"
 FunctionEnd
 
@@ -559,7 +562,7 @@ Function DownloadImageMagick_LeaveFunction
       $ImageMagickPath \
       "http://www.imagemagick.org/script/binary-releases.php" \
       "$(EnterImageMagickFolder)" \
-      "\convert.exe" \
+      "convert.exe" \
       "$(InvalidImageMagickFolder)"
 FunctionEnd
 

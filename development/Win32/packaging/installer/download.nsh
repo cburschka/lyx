@@ -298,7 +298,8 @@ go_on:
     StrCpy ${FolderPath} ""
     ExecShell open "${URL}"
   ${else}
-    ${StrTrim} ${FolderPath}
+    ${StrTrim} ${FolderPath} ${FolderPath}
+    ${StrRTrimChar} ${FolderPath} ${FolderPath} '\'
 
     ${if} ${FolderPath} == ""
       MessageBox MB_OK "${EnterFolder}"
@@ -307,8 +308,9 @@ go_on:
 
     ${if} ${FileExists} "${FolderPath}"
       ${StrRep} ${FolderPath} ${FolderPath} "${ExeName}" ""
+      ${StrRTrimChar} ${FolderPath} ${FolderPath} '\'
 
-      ${if} ${FileExists} "${FolderPath}${ExeName}"
+      ${if} ${FileExists} "${FolderPath}\${ExeName}"
       ${else}
         MessageBox MB_OK "${InvalidFolder}"
         Abort
