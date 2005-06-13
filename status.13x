@@ -95,8 +95,10 @@ What's new
 
 - Make lib/configure more portable, allowing it to run on Solaris.
 
-- remove detection of a PS interpreter in lib/configure, since we do
+- Remove detection of a PS interpreter in lib/configure, since we do
   not use it.
+
+- Use ps2pdf13 to convert from PS to PDF (more portable).
 
 - Remove from convertDefault.sh the test that "convert" really succeeded
   as it reported failures on Windows that were actually successes.
