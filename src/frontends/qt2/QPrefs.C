@@ -317,7 +317,7 @@ void setComboxFont(QComboBox * cb, string const & family,
 		}
 	}
 
-	// Try matching without foundary name
+	// Try matching without foundry name
 
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count() - 1; i >= 0; --i) {
@@ -332,9 +332,13 @@ void setComboxFont(QComboBox * cb, string const & family,
 	QFont font;
 	font.setStyleHint(hint);
 	QFontInfo fi(font);
+	// The combobox stores only the font name; the foundry info is
+	// discarded. So extract the font name from fi.family().
+	pair<string, string> tmp = parseFontName(fi.family());
+	string const & default_font_name = tmp.first;
 
 	for (int i = cb->count() - 1; i >= 0; --i) {
-		if (cb->text(i) == fi.family()) {
+		if (cb->text(i) == default_font_name) {
 			cb->setCurrentItem(i);
 			return;
 		}

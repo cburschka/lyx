@@ -1,3 +1,9 @@
+2005-06-12  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C (setComboxFont): ensure that only the font family name
+	(not the name of the foundary also) is used when trying to find
+	the system default font in the list of all fonts.
+
 2005-06-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QContentPane.[Ch]: Limit the QIM*Events to X11. They are not
