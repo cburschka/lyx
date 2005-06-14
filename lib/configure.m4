@@ -471,8 +471,8 @@ else
   MSG_RESULT(auto)
   rm -f wrap_chkconfig.ltx chkconfig.vars chkconfig.classes chklayouts.tex
   if test ! -r "chkconfig.ltx" ; then
-    ln -s "${srcdir}"/chkconfig.ltx .
-    rmlink=true
+    cp "${srcdir}"/chkconfig.ltx .
+    rmcopy=true
   fi
   cat >wrap_chkconfig.ltx <<EOF
 ${linuxdoc_cmd}
@@ -511,7 +511,7 @@ q
 changequote([,])dnl
   [eval] `cat chkconfig.vars | sed 's/-/_/g'`
 changequote(,)dnl
-  test -n "${rmlink}" && rm -f chkconfig.ltx
+  test -n "${rmcopy}" && rm -f chkconfig.ltx
 fi
 
 # Do we have all the files we need? Useful if latex did not run
@@ -556,7 +556,7 @@ else
     MSG_RESULT(no)
     tex_allows_spaces=false
   fi
-  rm -r "$fname".*
+  rm -r "$fname".* texput.log
 fi
 
 echo "creating $outfile"
