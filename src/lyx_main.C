@@ -291,13 +291,6 @@ void LyX::init(bool gui)
 
 	lyx::Package const & package = lyx::package();
 
-#if !defined (USE_POSIX_PACKAGING)
-	// Add the directory containing the LyX executable to the path
-	// so that LyX can find things like reLyX.
-	if (package.build_support().empty())
-		prependEnvPath("PATH", package.binary_dir());
-#endif
-
 	// Check that user LyX directory is ok. We don't do that if
 	// running in batch mode.
 	bool reconfigure = false;
@@ -364,6 +357,13 @@ void LyX::init(bool gui)
 
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", lyxrc.path_prefix);
+
+#if !defined (USE_POSIX_PACKAGING)
+	// Add the directory containing the LyX executable to the path
+	// so that LyX can find things like reLyX.
+	if (package.build_support().empty())
+		prependEnvPath("PATH", package.binary_dir());
+#endif
 
 	// Having reset the PATH we're now in a position to run configure
 	// if necessary.
