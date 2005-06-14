@@ -1,3 +1,12 @@
+2005-06-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.m4: remove texput.log after testing for spaces.
+
+2005-06-14  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* configure.m4: avoid using symbolic links since they confuse
+	miktex. 
+
 2005-06-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.m4 (ps_to_pdf_command): use ps2pdf13 by default.
