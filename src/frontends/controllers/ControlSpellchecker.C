@@ -59,6 +59,13 @@ void ControlSpellchecker::clearParams()
 }
 
 	
+void ControlSpellchecker::updateSlot(bool switched)
+{
+	if (switched)
+		hide();
+}
+
+
 void ControlSpellchecker::startSession()
 {
 	lyxerr[Debug::GUI] << "spell startSession" << endl;

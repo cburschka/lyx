@@ -129,6 +129,9 @@ What's new
 
 - Fix math fonts display in LyX/Mac.
 
+- Avoid automatic startup of the spellchecker when switching from one
+  document to another [Bug 1451]
+
 - Make LyX behave normally when a file has been open from the Explorer
   [Windows only].
 
@@ -156,7 +159,7 @@ What's new
 
 - fix translation of layout names with a space in their name.
 
-- Fix server function server-get-tip [Bug 1781]
+- Fix server function server-get-tip. [Bug 1781]
 
 - Fix binding of Shift-Tab, which was broken on some systems.
 

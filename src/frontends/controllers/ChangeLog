@@ -1,3 +1,8 @@
+2005-06-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlSpellchecker.C (updateSlot): overload this method, in
+	order to avoid starting the spellchecker on update (bug 1451).
+
 2005-06-10  Angus Leeming  <leeming@lyx.org>
 
 	* ControlSpellchecker.C (startSession): remove block of code that

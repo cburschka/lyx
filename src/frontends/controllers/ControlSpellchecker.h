@@ -83,6 +83,10 @@ private:
 	/// not needed.
 	virtual void apply() {}
 
+	/** Instantiation of ControlConnectBD private virtual method.
+	    Slot connected to update signal. */
+	virtual void updateSlot(bool);
+
 	/// current word being checked and lang code
 	WordLangTuple word_;
 
