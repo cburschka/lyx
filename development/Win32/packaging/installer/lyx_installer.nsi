@@ -58,10 +58,15 @@ InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 
 ; Declare used functions
 ${StrLoc}
+${StrNSISToIO}
 ${StrRep}
 ${StrTrim}
+${StrLTrim}
+${StrRTrim}
+${StrRTrimChar}
 ${ReadDownloadValues}
 ${EnableBrowseControls}
+${SearchRegistry}
 ${DownloadEnter}
 ${DownloadLeave}
 
@@ -165,6 +170,7 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 !insertmacro MUI_LANGUAGE "Spanish"
 !insertmacro MUI_LANGUAGE "French"
 !insertmacro MUI_LANGUAGE "Dutch"
+!insertmacro MUI_LANGUAGE "Swedish"
 
 !include "lyx_languages\english.nsh"
 !include "lyx_languages\danish.nsh"
@@ -172,6 +178,7 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 !include "lyx_languages\french.nsh"
 !include "lyx_languages\german.nsh"
 !include "lyx_languages\spanish.nsh"
+!include "lyx_languages\swedish.nsh"
 
 LicenseData "$(LyXLicenseData)"
 
@@ -303,15 +310,19 @@ Function .onInit
     !undef READ_ONLY
   ${endif}
 
+  Call SearchMinSYS
+  Call SearchPython
+  Call SearchMiKTeX
+  Call SearchPerl
+  Call SearchGhostscript
+  Call SearchImageMagick
+
   ClearErrors
 FunctionEnd
 
 ;--------------------------------
 
-Function DownloadMinSYS
-  StrCpy $MinSYSPath ""
-  StrCpy $DownloadMinSYS "0"
-
+Function SearchMinSYS
   ; Search the registry for the MinSYS uninstaller.
   ; If successful, put its location in $2.
   StrCpy $3 "Software\Microsoft\Windows\CurrentVersion\Uninstall"
@@ -334,9 +345,19 @@ Function DownloadMinSYS
     Goto loop
   done:
 
+  ${SearchRegistry} \
+      $MinSYSPath \
+      "$2" \
+      "Inno Setup: App Path" \
+      "" \
+      "\bin"
+FunctionEnd
+
+Function DownloadMinSYS
+  StrCpy $DownloadMinSYS "0"
+
   ${DownloadEnter} \
-      $MinSYSPath "$2" "Inno Setup: App Path" \
-      "" "\bin" \
+      $MinSYSPath \
       0 \
       "$(MinSYSDownloadLabel)" \
       "$(MinSYSFolderLabel)" \
@@ -351,19 +372,26 @@ Function DownloadMinSYS_LeaveFunction
       $MinSYSPath \
       "http://sourceforge.net/project/showfiles.php?group_id=2435&package_id=82721&release_id=158803" \
       "$(EnterMinSYSFolder)" \
-      "\sh.exe" \
+      "sh.exe" \
       "$(InvalidMinSYSFolder)"
 FunctionEnd
 
 ;--------------------------------
 
+Function SearchPython
+  ${SearchRegistry} \
+      $PythonPath \
+      "Software\Microsoft\Windows\CurrentVersion\App Paths\Python.exe" \
+      "" \
+      "\Python.exe" \
+      ""
+FunctionEnd
+
 Function DownloadPython
-  StrCpy $PythonPath ""
   StrCpy $DownloadPython "0"
 
   ${DownloadEnter} \
-      $PythonPath "Software\Microsoft\Windows\CurrentVersion\App Paths\Python.exe" "" \
-      "\Python.exe" "" \
+      $PythonPath \
       0 \
       "$(PythonDownloadLabel)" \
       "$(PythonFolderLabel)" \
@@ -378,20 +406,27 @@ Function DownloadPython_LeaveFunction
       $PythonPath \
       "http://www.python.org/download/" \
       "$(EnterPythonFolder)" \
-      "\Python.exe" \
+      "Python.exe" \
       "$(InvalidPythonFolder)"
 FunctionEnd
 
 ;--------------------------------
 
+Function SearchMiKTeX
+  ${SearchRegistry} \
+      $MiKTeXPath \
+      "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" \
+      "Install Root" \
+      "" \
+      "\miktex\bin"
+FunctionEnd
+
 Function DownloadMiKTeX
   StrCpy $DoNotRequireMiKTeX "1"
-  StrCpy $MiKTeXPath ""
   StrCpy $DownloadMiKTeX "0"
 
   ${DownloadEnter} \
-      $MiKTeXPath "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root" \
-      "" "\miktex\bin" \
+      $MiKTeXPath \
       1 \
       "$(MiKTeXDownloadLabel)" \
       "$(MiKTeXFolderLabel)" \
@@ -406,20 +441,27 @@ Function DownloadMiKTeX_LeaveFunction
       $MiKTeXPath \
       "http://www.miktex.org/setup.html" \
       "$(EnterMiKTeXFolder)" \
-      "\latex.exe" \
+      "latex.exe" \
       "$(InvalidMiKTeXFolder)"
 FunctionEnd
 
 ;--------------------------------
 
+Function SearchPerl
+  ${SearchRegistry} \
+      $PerlPath \
+      "Software\Perl" \
+      BinDir \
+      "\perl.exe" \
+      ""
+FunctionEnd
+
 Function DownloadPerl
   StrCpy $DoNotRequirePerl "1"
-  StrCpy $PerlPath ""
   StrCpy $DownloadPerl "1"
 
   ${DownloadEnter} \
-      $PerlPath "Software\Perl" BinDir \
-      "\perl.exe" "" \
+      $PerlPath \
       1 \
       "$(PerlDownloadLabel)" \
       "$(PerlFolderLabel)" \
@@ -434,15 +476,31 @@ Function DownloadPerl_LeaveFunction
       $PerlPath \
       "http://www.activestate.com/Products/ActivePerl/" \
       "$(EnterPerlFolder)" \
-      "\perl.exe" \
+      "perl.exe" \
       "$(InvalidPerlFolder)"
 FunctionEnd
 
 ;--------------------------------
 
+Function SearchGhostscript
+  ; Find which version of ghostscript, if any, is installed.
+  EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
+  ${if} $1 != ""
+    StrCpy $0 "Software\AFPL Ghostscript\$1"
+  ${else}
+    StrCpy $0 ""
+  ${endif}
+
+  ${SearchRegistry} \
+      $GhostscriptPath \
+      "$0" \
+      "GS_DLL" \
+      "\gsdll32.dll" \
+      ""
+FunctionEnd
+
 Function DownloadGhostscript
   StrCpy $DoNotRequireGhostscript "1"
-  StrCpy $GhostscriptPath ""
   StrCpy $DownloadGhostscript "0"
 
   ; Find which version of ghostscript, if any, is installed.
@@ -454,8 +512,7 @@ Function DownloadGhostscript
   ${endif}
 
   ${DownloadEnter} \
-      $GhostscriptPath "$0" "GS_DLL" \
-      "\gsdll32.dll" "" \
+      $GhostscriptPath \
       1 \
       "$(GhostscriptDownloadLabel)" \
       "$(GhostscriptFolderLabel)" \
@@ -470,20 +527,27 @@ Function DownloadGhostscript_LeaveFunction
       $GhostscriptPath \
       "http://www.cs.wisc.edu/~ghost/doc/AFPL/index.htm" \
       "$(EnterGhostscriptFolder)" \
-      "\gswin32c.exe" \
+      "gswin32c.exe" \
       "$(InvalidGhostscriptFolder)"
 FunctionEnd
 
 ;--------------------------------
 
+Function SearchImageMagick
+  ${SearchRegistry} \
+      $ImageMagickPath \
+      "Software\ImageMagick\Current" \
+      "BinPath" \
+      "" \
+      ""
+FunctionEnd
+
 Function DownloadImageMagick
   StrCpy $DoNotRequireImageMagick "1"
-  StrCpy $ImageMagickPath ""
   StrCpy $DownloadImageMagick "0"
 
   ${DownloadEnter} \
-      $ImageMagickPath "Software\ImageMagick\Current" "BinPath" \
-      "" "" \
+      $ImageMagickPath \
       1 \
       "$(ImageMagickDownloadLabel)" \
       "$(ImageMagickFolderLabel)" \
@@ -498,7 +562,7 @@ Function DownloadImageMagick_LeaveFunction
       $ImageMagickPath \
       "http://www.imagemagick.org/script/binary-releases.php" \
       "$(EnterImageMagickFolder)" \
-      "\convert.exe" \
+      "convert.exe" \
       "$(InvalidImageMagickFolder)"
 FunctionEnd
 
@@ -536,10 +600,10 @@ Function SummariseDownloads
 
   ${if} "$DoNotInstallLyX" == 1
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$(SummaryPleaseInstall)"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 2" "Text" ""
   ${else}
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$(SummaryPathPrefix)"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 2" "Text" "$PathPrefix"
+    ${StrNSISToIO} $0 '$PathPrefix'
+    StrCpy $0 "$(SummaryPathPrefix)\r\n\r\n$0"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$0"
   ${endif}
 
   !insertmacro MUI_HEADER_TEXT "$(SummaryTitle)" ""
