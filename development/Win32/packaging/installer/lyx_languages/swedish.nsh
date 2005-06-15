@@ -23,6 +23,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Skapa en association mellan pr
 LangString SecDesktopDescription "${LYX_LANG}" "En ${PRODUCT_NAME}ikon på skrivbordet."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Misslyckades med att sätta  'path_prefix' i konfigurationsskriptet"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Misslyckades med att köra konfigurationsskriptet"
 
 LangString FinishPageMessage "${LYX_LANG}" "Gratulerar! LyX har installerats framgångsrikt."
@@ -75,6 +76,9 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "${SwedishFolderContaining} gswi
 LangString SummaryTitle "${LYX_LANG}" "Mjukvarusammanfattning"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Var god installera först dina nedladdade filer och kör sedan LyXs installationsprogram igen."
 LangString SummaryPathPrefix "${LYX_LANG}" "En 'path_prefix'-sträng kommer att läggas till i filen 'lyxrc.defaults' innehållande följande:"
+
+LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
+LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "${SwedishUnableToFind} $(^Name) i registret\r$\nGenvägar på skrivbordet och i startmeny kommer inte att tas bort."
 LangString UnNotAdminLabel "${LYX_LANG}" "Tyvärr! Du måste ha administratörsrättigheter för\r$\natt avinstallera $(^Name)."

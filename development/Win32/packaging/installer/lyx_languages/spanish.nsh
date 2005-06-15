@@ -18,6 +18,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Asociar la extesión .lyx con L
 LangString SecDesktopDescription "${LYX_LANG}" "Crear un icono de ${PRODUCT_NAME} en el escritorio."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Error al intentar añadir 'path_prefix' durante la ejecución del programa de configuración"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Error al intentar ejecutar el programa de configuración"
 
 LangString FinishPageMessage "${LYX_LANG}" "Enhorabuena! LyX ha sido instalado satisfactoriamente."
@@ -70,6 +71,9 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "&Directorio que contiene gswin3
 LangString SummaryTitle "${LYX_LANG}" "Resumen de la instalación"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Por favor, instale los programas descargados y vuelva a ejecutar el insralador de LyX una vez más."
 LangString SummaryPathPrefix "${LYX_LANG}" "Durante la instalación el siguiente 'path_prefix' se añadirá a 'lyxrc.defaults':"
+
+LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
+LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Imposible encontrar $(^Name) en el registro$\r$\nLos accesos rápidos del escritorio y del Menú de Inicio no serán eliminados."
 LangString UnNotAdminLabel "${LYX_LANG}" "Lo siento! Necesita privilegios de administrador$\r$\npara desinstalar $(^Name)."

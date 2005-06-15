@@ -29,6 +29,7 @@ SetCompressor lzma
 !define PRODUCT_LICENSE_FILE "..\..\..\..\COPYING"
 !define PRODUCT_SOURCEDIR "J:\Programs\LyX"
 !define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
+!define PRODUCT_BAT "$INSTDIR\bin\lyx.bat"
 !define PRODUCT_EXT ".lyx"
 !define PRODUCT_MIME_TYPE "application/lyx"
 !define PRODUCT_UNINSTALL_EXE "$INSTDIR\uninstall.exe"
@@ -55,6 +56,7 @@ InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 !include "StrFunc.nsh"
 !include "strtrim.nsh"
 !include "download.nsh"
+!include "lyx_utils.nsh"
 
 ; Declare used functions
 ${StrLoc}
@@ -113,6 +115,9 @@ Var CreateDesktopIcon
 Var StartmenuFolder
 Var ProductRootKey
 
+Var LangName
+Var LangCode
+
 ;--------------------------------
 
 ; Remember the installer language
@@ -141,6 +146,9 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 ; Specify the installation directory.
 !insertmacro MUI_PAGE_DIRECTORY
 
+; Specify LyX's menu language.
+Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
+
 ; Define which components to install.
 !insertmacro MUI_PAGE_COMPONENTS
 
@@ -153,9 +161,10 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 ; Watch the components being installed.
 !insertmacro MUI_PAGE_INSTFILES
 
+!define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_TEXT "$(FinishPageMessage)"
 !define MUI_FINISHPAGE_RUN_TEXT "$(FinishPageRun)"
-!define MUI_FINISHPAGE_RUN "${PRODUCT_EXE}"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchProduct"
 !insertmacro MUI_PAGE_FINISH
 
 ; The uninstaller.
@@ -189,9 +198,12 @@ LicenseData "$(LyXLicenseData)"
 ; Keep these lines before any File command
 ; Only for solid compression (by default, solid compression
 ; is enabled for BZIP2 and LZMA)
-ReserveFile "ioDownload.ini"
-ReserveFile "ioSummary.ini"
+ReserveFile "io_download.ini"
+ReserveFile "io_summary.ini"
 !insertmacro MUI_RESERVEFILE_LANGDLL
+ReserveFile "io_ui_language.ini"
+!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
+
 
 ;--------------------------------
 
@@ -222,16 +234,23 @@ Section "-Installation actions" SecInstallation
   File /r "${PRODUCT_SOURCEDIR}\bin"
 
   ${if} "$PathPrefix" != ""
-    lyx_path_prefix::set_path_prefix "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
+    lyx_configure::set_path_prefix "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
     Pop $0
     ${if} $0 != 0
       MessageBox MB_OK "$(ModifyingConfigureFailed)"
     ${endif}
-    lyx_path_prefix::run_configure "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
-    Pop $0
-    ${if} $0 != 0
-      MessageBox MB_OK "$(RunConfigureFailed)"
-    ${endif}
+  ${endif}
+
+  lyx_configure::create_bat_files "$INSTDIR\bin" "$LangCode"
+  Pop $0
+  ${if} $0 != 0
+    MessageBox MB_OK "$(CreateCmdFilesFailed)"
+  ${endif}
+
+  lyx_configure::run_configure "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
+  Pop $0
+  ${if} $0 != 0
+    MessageBox MB_OK "$(RunConfigureFailed)"
   ${endif}
 
   WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
@@ -243,11 +262,11 @@ Section "-Installation actions" SecInstallation
   WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
 
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
-  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_EXE}"
+  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Uninstall.lnk" "${PRODUCT_UNINSTALL_EXE}"
 
   ${if} $CreateDesktopIcon == "true"
-    CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "${PRODUCT_EXE}"
+    CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
   ${endif}
 
   ${if} $CreateFileAssociations == "true"
@@ -280,8 +299,9 @@ SectionEnd
 Function .onInit
   !insertmacro MUI_LANGDLL_DISPLAY
 
-  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "ioDownload.ini"
-  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "ioSummary.ini"
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_download.ini"
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_summary.ini"
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_ui_language.ini"
 
   ; Default settings
   ; These can be reset to "all" in section SecAllUsers.
@@ -318,6 +338,13 @@ Function .onInit
   Call SearchImageMagick
 
   ClearErrors
+FunctionEnd
+
+;--------------------------------
+
+Function LaunchProduct
+  lyx_configure::set_env LANG $LangCode
+  Exec ${PRODUCT_EXE}
 FunctionEnd
 
 ;--------------------------------
@@ -568,6 +595,30 @@ FunctionEnd
 
 ;--------------------------------
 
+Function SelectMenuLanguage
+  StrCpy $LangName ""
+
+  ;tranlate NSIS's language code to the language name; macro from lyx_utils.nsh
+  !insertmacro TranslateLangCode $LangName $Language
+
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_ui_language.ini" "Field 2" "State" "$LangName"
+
+  !insertmacro MUI_HEADER_TEXT "$(UILangageTitle)" "$(UILangageDescription)"
+  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "io_ui_language.ini"
+FunctionEnd
+
+;--------------------------------
+
+Function SelectMenuLanguage_LeaveFunction
+  !insertmacro MUI_INSTALLOPTIONS_READ $LangName "io_ui_language.ini" "Field 2" "State"
+ 
+  ;Get the language code; macro from lyx_utils.nsh
+  StrCpy $LangCode ""
+  !insertmacro GetLangCode $LangCode $LangName
+FunctionEnd
+
+;--------------------------------
+
 Function SummariseDownloads
 
   StrCpy $PathPrefix ""
@@ -599,15 +650,15 @@ Function SummariseDownloads
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadImageMagick
 
   ${if} "$DoNotInstallLyX" == 1
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$(SummaryPleaseInstall)"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_summary.ini" "Field 1" "Text" "$(SummaryPleaseInstall)"
   ${else}
     ${StrNSISToIO} $0 '$PathPrefix'
     StrCpy $0 "$(SummaryPathPrefix)\r\n\r\n$0"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$0"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_summary.ini" "Field 1" "Text" "$0"
   ${endif}
 
   !insertmacro MUI_HEADER_TEXT "$(SummaryTitle)" ""
-  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "ioSummary.ini"
+  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "io_summary.ini"
 FunctionEnd
 
 Function SummariseDownloads_LeaveFunction

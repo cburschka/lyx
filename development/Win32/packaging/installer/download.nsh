@@ -51,20 +51,20 @@
     ; DoNothing.
     ; If the widget is disabled then set DoNothing ($3) to 0.
     ; Otherwise, set it equal to the "state" variable of the field.
-    !insertmacro MUI_INSTALLOPTIONS_READ $3 "ioDownload.ini" "Field 2" "Flags"
+    !insertmacro MUI_INSTALLOPTIONS_READ $3 "io_download.ini" "Field 2" "Flags"
     IntOp $3 $3 & DISABLED
     ${if} $3 == 1
       StrCpy $3 0
     ${else}
-      !insertmacro MUI_INSTALLOPTIONS_READ $3 "ioDownload.ini" "Field 2" "State"
+      !insertmacro MUI_INSTALLOPTIONS_READ $3 "io_download.ini" "Field 2" "State"
     ${endif}
 
     ; Download
-    !insertmacro MUI_INSTALLOPTIONS_READ $2 "ioDownload.ini" "Field 3" "State"
+    !insertmacro MUI_INSTALLOPTIONS_READ $2 "io_download.ini" "Field 3" "State"
     ; SelectFolder
-    !insertmacro MUI_INSTALLOPTIONS_READ $1 "ioDownload.ini" "Field 4" "State"
+    !insertmacro MUI_INSTALLOPTIONS_READ $1 "io_download.ini" "Field 4" "State"
     ; FolderPath
-    !insertmacro MUI_INSTALLOPTIONS_READ $0 "ioDownload.ini" "Field 5" "State"
+    !insertmacro MUI_INSTALLOPTIONS_READ $0 "io_download.ini" "Field 5" "State"
 
     ; Return output to user.
     ; The stack available to the user contains:
@@ -193,8 +193,8 @@
 
 
 !macro DownloadEnter_Private ExePath Required DownloadLabel HomeLabel PageHeader PageDescription
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 1" "Text" ""
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 2" "Text" "$(DownloadPageField2)"
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 1" "Text" ""
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 2" "Text" "$(DownloadPageField2)"
 
   Push $0
   ${if} ${Required} == 1
@@ -202,31 +202,31 @@
   ${else}
     StrCpy $0 "DISABLED"
   ${endif}
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 2" "Flags" $0
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 2" "Flags" $0
   Pop $0
 
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 2" "State" "0"
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 3" "Text" "${DownloadLabel}"
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 4" "Text" "${HomeLabel}"
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 2" "State" "0"
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 3" "Text" "${DownloadLabel}"
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 4" "Text" "${HomeLabel}"
 
 
   ${if} ${ExePath} == ""
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 3" "State" "1"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 4" "State" "0"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "Flags" PATH_MUST_EXIST|DISABLED
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "State" ""
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 3" "State" "1"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 4" "State" "0"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 5" "Flags" PATH_MUST_EXIST|DISABLED
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 5" "State" ""
   ${else}
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 3" "State" "0"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 4" "State" "1"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "Flags" PATH_MUST_EXIST
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 3" "State" "0"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 4" "State" "1"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 5" "Flags" PATH_MUST_EXIST
 
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioDownload.ini" "Field 5" "State" "${ExePath}"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_download.ini" "Field 5" "State" "${ExePath}"
   ${endif}
 
   ClearErrors
 
   !insertmacro MUI_HEADER_TEXT "${PageHeader}" "${PageDescription}"
-  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "ioDownload.ini"
+  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "io_download.ini"
 !macroend
 
 
@@ -282,7 +282,7 @@
 
 
 !macro DownloadLeave_Private DoNotRequire Download FolderPath URL EnterFolder ExeName InvalidFolder
-  !insertmacro MUI_INSTALLOPTIONS_READ $0 "ioDownload.ini" "Settings" "State"
+  !insertmacro MUI_INSTALLOPTIONS_READ $0 "io_download.ini" "Settings" "State"
 
   StrCmp $0 0 go_on  ; Next button?
 

@@ -19,6 +19,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Crée les associations entre l'
 LangString SecDesktopDescription "${LYX_LANG}" "Une icône ${PRODUCT_NAME} sur le bureau."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Échec de l'allocation 'path_prefix' lors de la configuration."
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Échec de la tentative de configuration initiale de LyX."
 
 LangString FinishPageMessage "${LYX_LANG}" "Félicitations ! LyX est installé avec succès."
@@ -71,6 +72,9 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "&Répertoire contenant gswin32c.
 LangString SummaryTitle "${LYX_LANG}" "Résumé d'installation"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Merci d'installer les fichiers téléchargés, puis d'exécuter de nouveau l'installation de LyX."
 LangString SummaryPathPrefix "${LYX_LANG}" "Durant l'installation, une chaîne de caractères 'path_prefix'  sera ajoutée à 'lyxrc.defaults', elle contiendra :"
+
+LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
+LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "$(^Name) introuvable dans le base des registres. $\r$\nLes raccourcis sur le bureau et dans le menu de démarrage ne seront pas supprimés."
 LangString UnNotAdminLabel "${LYX_LANG}" "Désolé ! Vous devez avoir les droits d'administration$\r$\npour installer$(^Name)."

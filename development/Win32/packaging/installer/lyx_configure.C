@@ -1,5 +1,5 @@
 /*
- * \file lyx_path_prefix.C
+ * \file lyx_configure.C
  * This file is part of LyX, the document processor.
  * http://www.lyx.org/
  * Licence details can be found in the file COPYING or copy at
@@ -18,7 +18,7 @@
  * Compile the code with
  *
  * g++ -I/c/Program\ Files/NSIS/Contrib -Wall -shared \
- *    lyx_path_prefix.C -o lyx_path_prefix.dll
+ *    lyx_configure.C -o lyx_configure.dll
  *
  * Move resulting .dll to /c/Program\ Files/NSIS/Plugins
  */
@@ -256,6 +256,50 @@ void __declspec(dllexport) set_path_prefix(HWND hwndParent, int string_size, cha
 }
 
 
+// Creates the files lyx.bat and reLyX.bat in the LyX\bin folder.
+extern "C"
+void __declspec(dllexport) create_bat_files(HWND hwndParent, int string_size, char *variables, stack_t **stacktop)
+{
+	EXDLL_INIT();
+
+	std::string const bin_dir = pop_from_stack();
+	std::string const lang = pop_from_stack();
+
+	std::string const lyx_bat_file = bin_dir + "\\lyx.bat";
+	std::ofstream lyx_bat(lyx_bat_file.c_str());
+	if (!lyx_bat) {
+		pushstring("-1");
+		return;
+	}
+	std::string const lyx_exe_file = bin_dir + "\\lyx.exe";
+	lyx_bat << "@echo off\n" 
+		<< "if \"%LANG%\"==\"\" SET LANG=" << lang << "\n"
+		<< "\"" << lyx_exe_file << "\" %~1 %~2 %~3 %~4 %~5 %~6 %~7 %~8 %~9\n";
+	if (!lyx_bat) {
+		pushstring("-1");
+		return;
+	}
+
+	std::string const relyx_bat_file = bin_dir + "\\reLyX.bat";
+	std::ofstream relyx_bat(relyx_bat_file.c_str());
+	if (!relyx_bat) {
+		pushstring("-1");
+		return;
+	}
+
+	std::string const relyx_file = bin_dir + "\\reLyX";
+	relyx_bat << "@echo off\r\n"
+		  << "perl.exe " << relyx_file << " %~1 %~2 %~3 %~4 %~5 %~6 %~7 %~8 %~9\r\n";
+
+	if (!relyx_bat) {
+		pushstring("-1");
+		return;
+	}
+
+	pushstring("0");
+}
+
+
 // Runs "sh configure" to generate things like lyxrc.defaults.
 extern "C"
 void __declspec(dllexport) run_configure(HWND hwndParent, int string_size, char *variables, stack_t **stacktop)
@@ -297,6 +341,22 @@ void __declspec(dllexport) run_configure(HWND hwndParent, int string_size, char 
 		pushstring("-1");
 		return;
 	}
+
+	pushstring("0");
+}
+
+
+// Set an environment variable
+extern "C"
+void __declspec(dllexport) set_env(HWND hwndParent, int string_size,
+				   char *variables, stack_t **stacktop)
+{
+	EXDLL_INIT();
+
+	std::string const var_name = pop_from_stack();
+	std::string const var_value = pop_from_stack();
+
+	SetEnvironmentVariableA(var_name.c_str(), var_value.c_str());
 
 	pushstring("0");
 }

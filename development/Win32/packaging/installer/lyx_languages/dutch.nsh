@@ -18,6 +18,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Associeer het LyX programma me
 LangString SecDesktopDescription "${LYX_LANG}" "Een ${PRODUCT_NAME} pictogram op het Bureaublad."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Mislukte poging om 'path_prefix' te registreren tijdens de configuratie"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Mislukte configuratie poging"
 
 LangString FinishPageMessage "${LYX_LANG}" "Gefeliciteerd! LyX is succesvol geinstalleerd."
@@ -70,6 +71,9 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "&Map met gswin32c.exe"
 LangString SummaryTitle "${LYX_LANG}" "Software samenvatting"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Installeer de opgehaalde bestanden en start vervolgens het LyX installatie programma nogmaals  om de installatie af te ronden."
 LangString SummaryPathPrefix "${LYX_LANG}" "Ik voeg een 'path_prefix' tekst aan 'lyxrc.defaults' toe met:"
+
+LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
+LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "$(^Name) is niet gevonden in het Windows register$\r$\nSnelkoppelingen op het Bureaublad en in het Start Menu worden niet verwijderd."
 LangString UnNotAdminLabel "${LYX_LANG}" "Sorry! U heeft systeembeheer rechten nodig$\r$\nom $(^Name) te verwijderen."

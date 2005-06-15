@@ -18,6 +18,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Vernüpfung zwischen ${PRODUCT_
 LangString SecDesktopDescription "${LYX_LANG}" "Verknüpfung zu ${PRODUCT_NAME} auf dem Desktop."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Der 'path_prefix' (Liste mit Programmpfaden) konnte nicht im Konfigurationsskript gesetzt werden."
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Konnte das Konfigurationsskript nicht ausführen."
 
 LangString FinishPageMessage "${LYX_LANG}" "Glückwunsch! LyX wurde erfolgreich installiert."
@@ -70,6 +71,9 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "&Ordner der die Datei gswin32c.
 LangString SummaryTitle "${LYX_LANG}" "Software Zusammenfassung"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Bitte installieren sie die heruntergeladenen Programme und starten dann ${PRODUCT_NAME}'s Installer nochmal."
 LangString SummaryPathPrefix "${LYX_LANG}" "Die Liste mit den Programmpfaden, der so genannte 'path_prefix' wird zur Datei 'lyxrc.defaults' hinzugefügt:"
+
+LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
+LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Kann $(^Name) nicht in der Registry finden. $\r$\n Desktopsymbole und Einträge im Startmenü können nicht entfernt werden."
 LangString UnNotAdminLabel "${LYX_LANG}" "Sie benötigen Administratorrechte $\r$\n um $(^Name) zu deinstallieren."
