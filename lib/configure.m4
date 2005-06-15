@@ -608,6 +608,8 @@ cat >$outfile <<EOF
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"
 \\viewer pdf "$PDF_VIEWER"
+\\viewer pdf2 "$PDF_VIEWER"
+\\viewer pdf3 "$PDF_VIEWER"
 \\viewer ps "$PS_VIEWER"
 \\viewer eps "$EPS_VIEWER"
 
