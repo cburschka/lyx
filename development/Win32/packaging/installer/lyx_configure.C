@@ -289,7 +289,7 @@ void __declspec(dllexport) create_bat_files(HWND hwndParent, int string_size, ch
 
 	std::string const relyx_file = bin_dir + "\\reLyX";
 	relyx_bat << "@echo off\r\n"
-		  << "perl.exe " << relyx_file << " %~1 %~2 %~3 %~4 %~5 %~6 %~7 %~8 %~9\r\n";
+		  << "perl.exe \"" << relyx_file << "\" %~1 %~2 %~3 %~4 %~5 %~6 %~7 %~8 %~9\r\n";
 
 	if (!relyx_bat) {
 		pushstring("-1");
