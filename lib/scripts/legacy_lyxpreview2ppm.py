@@ -228,7 +228,7 @@ def legacy_conversion(argv):
     path = string.split(os.environ["PATH"], os.pathsep)
     latex   = find_exe_or_terminate(["pplatex", "latex2e", "latex"], path)
     dvips   = find_exe_or_terminate(["dvips"], path)
-    gs      = find_exe_or_terminate(["gswin32", "gs"], path)
+    gs      = find_exe_or_terminate(["gswin32c", "gs"], path)
     pnmcrop = find_exe(["pnmcrop"], path)
 
     # Move color information into the latex file.

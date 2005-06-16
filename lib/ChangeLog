@@ -1,3 +1,8 @@
+2005-06-16  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/legacy_lyxpreview2ppm.py (legacy_conversion): use gswin32c
+	rather than gswin32 on Windows machines.
+
 2005-06-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.m4: remove texput.log after testing for spaces.
