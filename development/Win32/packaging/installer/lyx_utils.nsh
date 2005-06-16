@@ -1,3 +1,21 @@
+;--------------------------------
+
+!macro GetFileExtProg ProgPath AppExe Extension
+
+ ReadRegStr ${AppExe} HKCU \
+ "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\${Extension}\OpenWithList" \
+ "a"
+ ${if} ${AppExe} != ""
+  ReadRegStr ${ProgPath} HKLM \
+             "Software\Microsoft\Windows\CurrentVersion\App Paths\${AppExe}" "Path"
+  ;remove the "\" at the end
+  StrCpy ${ProgPath} ${ProgPath} -1
+ ${endif}
+
+!macroend
+
+;--------------------------------
+
 !macro FileCheck Result FileName FilePath
  Push $0
  Push $1
@@ -42,8 +60,16 @@
    StrCpy ${LangNme} "Français"
   ${endif}
 
+  ${if} ${LangISOCode} = 1040
+   StrCpy ${LangNme} "Italiano"
+  ${endif}
+
   ${if} ${LangISOCode} = 1043
    StrCpy ${LangNme} "Nederlands"
+  ${endif}
+
+  ${if} ${LangISOCode} = 1053
+   StrCpy ${LangNme} "Svenska"
   ${endif}
 
 !macroend

@@ -7,6 +7,7 @@
 ; http://www.lyx.org/about/license.php3
 
 ; Author Angus Leeming
+; Author Uwe Stöhr
 ; Full author contact details are available in file CREDITS or copy at
 ; http://www.lyx.org/about/credits.php
 
@@ -58,7 +59,19 @@ InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 !include "download.nsh"
 !include "lyx_utils.nsh"
 
+; Grabbed from
+; http://nsis.sourceforge.net/archive/viewpage.php?pageid=275
+!include "is_user_admin.nsh"
+
+; Grabbed from
+; http://abiword.pchasm.org/source/cvs/abiword-cvs/abi/src/pkg/win/setup/NSISv2/abi_util_fileassoc.nsh
+; Use the Abiword macros to help set up associations with the file extension.
+; in the Registry.
+!include "abi_util_fileassoc.nsh"
+
+;--------------------------------
 ; Declare used functions
+
 ${StrLoc}
 ${StrNSISToIO}
 ${StrRep}
@@ -71,16 +84,6 @@ ${EnableBrowseControls}
 ${SearchRegistry}
 ${DownloadEnter}
 ${DownloadLeave}
-
-; Grabbed from
-; http://nsis.sourceforge.net/archive/viewpage.php?pageid=275
-!include "is_user_admin.nsh"
-
-; Grabbed from
-; http://abiword.pchasm.org/source/cvs/abiword-cvs/abi/src/pkg/win/setup/NSISv2/abi_util_fileassoc.nsh
-; Use the Abiword macros to help set up associations with the file extension.
-; in the Registry.
-!include "abi_util_fileassoc.nsh"
 
 ;--------------------------------
 ; Variables
@@ -178,6 +181,7 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !insertmacro MUI_LANGUAGE "German"
 !insertmacro MUI_LANGUAGE "Spanish"
 !insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "Italian"
 !insertmacro MUI_LANGUAGE "Dutch"
 !insertmacro MUI_LANGUAGE "Swedish"
 
@@ -186,6 +190,7 @@ Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
 !include "lyx_languages\dutch.nsh"
 !include "lyx_languages\french.nsh"
 !include "lyx_languages\german.nsh"
+!include "lyx_languages\italian.nsh"
 !include "lyx_languages\spanish.nsh"
 !include "lyx_languages\swedish.nsh"
 
@@ -203,7 +208,6 @@ ReserveFile "io_summary.ini"
 !insertmacro MUI_RESERVEFILE_LANGDLL
 ReserveFile "io_ui_language.ini"
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
-
 
 ;--------------------------------
 
@@ -623,25 +627,25 @@ Function SummariseDownloads
 
   StrCpy $PathPrefix ""
   ${if} $MinSYSPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$MinSYSPath"
+    StrCpy $PathPrefix "$\r$\n$MinSYSPath"
   ${endif}
   ${if} $PythonPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$PythonPath"
+    StrCpy $PathPrefix "$PathPrefix$\r$\n$PythonPath"
   ${endif}
   ${if} $MiKTeXPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$MiKTeXPath"
+    StrCpy $PathPrefix "$PathPrefix$\r$\n$MiKTeXPath"
   ${endif}
   ${if} $PerlPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$PerlPath"
+    StrCpy $PathPrefix "$PathPrefix$\r$\n$PerlPath"
   ${endif}
   ${if} $GhostscriptPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$GhostscriptPath"
+    StrCpy $PathPrefix "$PathPrefix$\r$\n$GhostscriptPath"
   ${endif}
   ${if} $ImageMagickPath != ""
-    StrCpy $PathPrefix "$PathPrefix;$ImageMagickPath"
+    StrCpy $PathPrefix "$PathPrefix$\r$\n$ImageMagickPath"
   ${endif}
-  ; Remove the leading ';'
-  StrCpy $PathPrefix "$PathPrefix" "" 1
+  ; Remove the leading '\r\n'
+  ${StrLTrim} $PathPrefix "$PathPrefix"
 
   IntOp $DoNotInstallLyX $DownloadMinSYS + $DownloadPython
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadMiKTeX
