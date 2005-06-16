@@ -17,7 +17,6 @@
 Timeout::~Timeout()
 {
 	pimpl_->stop();
-	delete pimpl_;
 }
 
 
