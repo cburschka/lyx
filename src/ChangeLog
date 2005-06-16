@@ -1,3 +1,7 @@
+2005-06-16  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text.C (readParagraph): fix bug 1904 (GUI affects LaTeX)
+
 2005-06-14  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (init): ensure that the LyX binary dir is the first

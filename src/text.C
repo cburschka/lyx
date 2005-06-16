@@ -371,6 +371,8 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 			break;
 		}
 	}
+	// Initialize begin_of_body_ on load; redoParagraph maintains
+	par.setBeginOfBody();
 }
 
 
