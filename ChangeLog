@@ -3,7 +3,7 @@
 	* configure.ac: if the xforms frontend is added just to help gtk,
 	do not build the xforms binary.
 
-2005-05-20    <lgb@tandberg.net>
+2005-05-20  Lars Gullik Bjonnes  <lgb@tandberg.net>
 
 	* configure.ac: Use AM_* flags for CLAGS,CXXFLAGS where we require
 	the values to be properly set.
