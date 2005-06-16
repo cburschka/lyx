@@ -20,7 +20,7 @@
 CRCCheck force
 
 ; Make the installer as small as possible.
-SetCompressor lzma
+;SetCompressor lzma
 
 ;--------------------------------
 ; You should need to change only these macros...
@@ -627,25 +627,25 @@ Function SummariseDownloads
 
   StrCpy $PathPrefix ""
   ${if} $MinSYSPath != ""
-    StrCpy $PathPrefix "$\r$\n$MinSYSPath"
+    StrCpy $PathPrefix "$PathPrefix;$MinSYSPath"
   ${endif}
   ${if} $PythonPath != ""
-    StrCpy $PathPrefix "$PathPrefix$\r$\n$PythonPath"
+    StrCpy $PathPrefix "$PathPrefix;$PythonPath"
   ${endif}
   ${if} $MiKTeXPath != ""
-    StrCpy $PathPrefix "$PathPrefix$\r$\n$MiKTeXPath"
+    StrCpy $PathPrefix "$PathPrefix;$MiKTeXPath"
   ${endif}
   ${if} $PerlPath != ""
-    StrCpy $PathPrefix "$PathPrefix$\r$\n$PerlPath"
+    StrCpy $PathPrefix "$PathPrefix;$PerlPath"
   ${endif}
   ${if} $GhostscriptPath != ""
-    StrCpy $PathPrefix "$PathPrefix$\r$\n$GhostscriptPath"
+    StrCpy $PathPrefix "$PathPrefix;$GhostscriptPath"
   ${endif}
   ${if} $ImageMagickPath != ""
-    StrCpy $PathPrefix "$PathPrefix$\r$\n$ImageMagickPath"
+    StrCpy $PathPrefix "$PathPrefix;$ImageMagickPath"
   ${endif}
-  ; Remove the leading '\r\n'
-  ${StrLTrim} $PathPrefix "$PathPrefix"
+  ; Remove the leading ';'
+  StrCpy $PathPrefix "$PathPrefix" "" 1
 
   IntOp $DoNotInstallLyX $DownloadMinSYS + $DownloadPython
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadMiKTeX
@@ -657,6 +657,7 @@ Function SummariseDownloads
     !insertmacro MUI_INSTALLOPTIONS_WRITE "io_summary.ini" "Field 1" "Text" "$(SummaryPleaseInstall)"
   ${else}
     ${StrNSISToIO} $0 '$PathPrefix'
+    ${StrRep} $0 "$0" ";" "\r\n"
     StrCpy $0 "$(SummaryPathPrefix)\r\n\r\n$0"
     !insertmacro MUI_INSTALLOPTIONS_WRITE "io_summary.ini" "Field 1" "Text" "$0"
   ${endif}
