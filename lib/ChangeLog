@@ -1,3 +1,8 @@
+2005-06-16  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2ppm.py (main): use gswin32c rather than gswin32
+	on Windows machines.
+
 2005-06-15  Uwe Stöhr  <uwestoehr@web.de>
 
 	* configure.m4: add viewers for pdf2 and pdf3.
