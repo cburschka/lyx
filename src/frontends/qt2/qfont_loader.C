@@ -63,6 +63,7 @@ void qfont_loader::addToFontPath()
 		char ** p = XGetFontPath(w.x11Display(), &n);
 		if (std::find(p, p + n, dir) != p + n)
 			return;
+		XFreeFontPath(p);
 		lyxerr[Debug::FONT] << "Adding " << dir
 				    << " to the font path." << endl;
 		string const command = "xset fp+ " + QuoteName(dir);

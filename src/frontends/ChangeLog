@@ -1,3 +1,7 @@
+2005-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Timeout.C (~Timeout): properly delete the pimpl on deletion. 
+
 2005-05-31  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* screen.[hC]: better fix, processEvents -related screen update

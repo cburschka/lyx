@@ -1,3 +1,8 @@
+2005-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C (addToFontPath): delete the data structure
+	allocated by XGetFontPath.
+
 2005-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* qfont_loader.h: 
