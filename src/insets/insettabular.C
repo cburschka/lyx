@@ -246,10 +246,11 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			Dimension dim;
 			MetricsInfo m = mi;
 			LyXLength p_width = tabular.column_info[j].p_width;
-			if (!p_width.zero()) {
+			if (!p_width.zero())
 				m.base.textwidth = p_width.inPixels(mi.base.textwidth);
-			}
 			tabular.getCellInset(cell)->metrics(m, dim);
+			if (!p_width.zero())
+				dim.wid = m.base.textwidth;
 			maxAsc  = max(maxAsc, dim.asc);
 			maxDesc = max(maxDesc, dim.des);
 			tabular.setWidthOfCell(cell, dim.wid);
@@ -986,6 +987,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 	// disable these with multiple cells selected
 	case LFUN_INSET_INSERT:
+	case LFUN_TABULAR_INSERT:
 	case LFUN_INSERT_CHARSTYLE:
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_WIDE_FLOAT:

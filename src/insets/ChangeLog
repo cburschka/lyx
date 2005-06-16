@@ -1,3 +1,8 @@
+2005-06-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.C (getStatus): disable LFUN_TABULAR_INSERT
+	when multiple cells are selected (bug 1837).
+
 2005-05-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetoptarg.C (InsetOptArg): make the inset open by default
