@@ -185,7 +185,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 			   return false;
 	}
 
-	string command = format->viewer();
+	string command = LibScriptSearch(format->viewer());
 
 	if (format_name == "dvi" &&
 	    !lyxrc.view_dvi_paper_option.empty()) {

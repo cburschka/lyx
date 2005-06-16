@@ -1,3 +1,11 @@
+2005-06-16  Angus Leeming  <leeming@lyx.org>
+
+	* lyxrc.C (output, read): wrap all input and output of paths with
+	calls to os::internal_path and os::external_path, respectively.
+	(output): wrap bind_file inside quotes.
+
+	* converter.C (view): enable the viewer to use the '$$s' placeholder.
+
 2005-06-14  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (init): ensure that the LyX binary dir is the first

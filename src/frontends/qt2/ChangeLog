@@ -1,3 +1,12 @@
+2005-06-16  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C (apply, update_contents): wrap all input and output of
+	paths with calls to os::internal_path and os::external_path,
+	respectively.
+
+	* QPrefsDialog.C (modify_format, modify_converter): keep the
+	current item selected after pressing the "Modify" button.
+
 2005-06-12  Angus Leeming  <leeming@lyx.org>
 
 	* QPrefs.C (setComboxFont): ensure that only the font family name

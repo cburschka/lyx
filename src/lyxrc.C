@@ -343,7 +343,7 @@ int LyXRC::read(string const & filename)
 			break;
 		case RC_BINDFILE:                     // RVDK_PATCH_5
 			if (lexrc.next()) {
-				string const tmp(lexrc.getString());
+				string const tmp(os::internal_path(lexrc.getString()));
 				if (hasBindFile) {
 					// We are already in the
 					// "actually read bind file"
@@ -360,7 +360,7 @@ int LyXRC::read(string const & filename)
 
 		case RC_UIFILE:
 			if (lexrc.next()) {
-				ui_file = lexrc.getString();
+				ui_file = os::internal_path(lexrc.getString());
 			}
 			break;
 
@@ -397,7 +397,7 @@ int LyXRC::read(string const & filename)
  
 		case RC_KBMAP_PRIMARY:
 			if (lexrc.next()) {
-				string const kmap(lexrc.getString());
+				string const kmap(os::internal_path(lexrc.getString()));
 				if (kmap.empty()) {
 					// nothing
 				} else if (!LibFileSearch("kbd", kmap,
@@ -411,7 +411,7 @@ int LyXRC::read(string const & filename)
 
 		case RC_KBMAP_SECONDARY:
 			if (lexrc.next()) {
-				string const kmap(lexrc.getString());
+				string const kmap(os::internal_path(lexrc.getString()));
 				if (kmap.empty()) {
 					// nothing
 				} else if (!LibFileSearch("kbd", kmap,
@@ -497,7 +497,7 @@ int LyXRC::read(string const & filename)
 
 		case RC_PRINTTOFILE:
 			if (lexrc.next()) {
-				print_to_file = lexrc.getString();
+				print_to_file = os::internal_path(lexrc.getString());
 			}
 			break;
 
@@ -672,19 +672,22 @@ int LyXRC::read(string const & filename)
 
 		case RC_DOCUMENTPATH:
 			if (lexrc.next()) {
-				document_path = ExpandPath(lexrc.getString());
+				document_path = os::internal_path(lexrc.getString());
+				document_path = ExpandPath(document_path);
 			}
 			break;
 
 		case RC_TEMPLATEPATH:
 			if (lexrc.next()) {
-				template_path = ExpandPath(lexrc.getString());
+				template_path = os::internal_path(lexrc.getString());
+				template_path = ExpandPath(template_path);
 			}
 			break;
 
 		case RC_TEMPDIRPATH:
 			if (lexrc.next()) {
-				tempdir_path = ExpandPath(lexrc.getString());
+				tempdir_path = os::internal_path(lexrc.getString());
+				tempdir_path = ExpandPath(tempdir_path);
 			}
 			break;
 
@@ -696,7 +699,8 @@ int LyXRC::read(string const & filename)
 
 		case RC_LASTFILES:
 			if (lexrc.next()) {
-				lastfiles = ExpandPath(lexrc.getString());
+				lastfiles = os::internal_path(lexrc.getString());
+				lastfiles = ExpandPath(lastfiles);
 			}
 			break;
 
@@ -859,7 +863,8 @@ int LyXRC::read(string const & filename)
 		}
 		case RC_SERVERPIPE:
 			if (lexrc.next()) {
-				lyxpipes = ExpandPath(lexrc.getString());
+				lyxpipes = os::internal_path(lexrc.getString());
+				lyxpipes = ExpandPath(lyxpipes);
 			}
 			break;
 
@@ -930,7 +935,7 @@ int LyXRC::read(string const & filename)
 			break;
 		case RC_PERS_DICT:
 			if (lexrc.next()) {
-				isp_pers_dict = lexrc.getString();
+				isp_pers_dict = os::internal_path(lexrc.getString());
 			}
 			break;
 		case RC_ESC_CHARS:
@@ -945,7 +950,8 @@ int LyXRC::read(string const & filename)
 			break;
 		case RC_BACKUPDIR_PATH:
 			if (lexrc.next()) {
-				backupdir_path = ExpandPath(lexrc.getString());
+				backupdir_path = os::internal_path(lexrc.getString());
+				backupdir_path = ExpandPath(backupdir_path);
 			}
 			break;
 		case RC_DATE_INSERT_FORMAT:
@@ -1170,7 +1176,8 @@ void LyXRC::output(ostream & os) const
 		// bindings is not written to the preferences file.
 	case RC_BINDFILE:
 		if (bind_file != system_lyxrc.bind_file) {
-			os << "\\bind_file " << bind_file << "\n";
+			string const path = os::external_path(bind_file);
+			os << "\\bind_file \"" << path << "\"\n";
 		}
 		//
 		// Misc Section
@@ -1188,7 +1195,8 @@ void LyXRC::output(ostream & os) const
 
 	case RC_UIFILE:
 		if (ui_file != system_lyxrc.ui_file) {
-			os << "\\ui_file \"" << ui_file << "\"\n";
+			string const path = os::external_path(ui_file);
+			os << "\\ui_file \"" << path << "\"\n";
 		}
 	case RC_AUTOREGIONDELETE:
 		if (auto_region_delete != system_lyxrc.auto_region_delete) {
@@ -1273,16 +1281,18 @@ void LyXRC::output(ostream & os) const
   		}
 	case RC_KBMAP_PRIMARY:
 		if (primary_kbmap != system_lyxrc.primary_kbmap) {
-			os << "\\kbmap_primary \"" << primary_kbmap << "\"\n";
+			string const path = os::external_path(primary_kbmap);
+			os << "\\kbmap_primary \"" << path << "\"\n";
 		}
 	case RC_KBMAP_SECONDARY:
 		if (secondary_kbmap != system_lyxrc.secondary_kbmap) {
-			os << "\\kbmap_secondary \"" << secondary_kbmap
-			   << "\"\n";
+			string const path = os::external_path(secondary_kbmap);
+			os << "\\kbmap_secondary \"" << path << "\"\n";
 		}
 	case RC_SERVERPIPE:
 		if (lyxpipes != system_lyxrc.lyxpipes) {
-			os << "\\serverpipe \"" << lyxpipes << "\"\n";
+			string const path = os::external_path(lyxpipes);
+			os << "\\serverpipe \"" << path << "\"\n";
 		}
 	case RC_DATE_INSERT_FORMAT:
 		if (date_insert_format != system_lyxrc.date_insert_format) {
@@ -1545,7 +1555,8 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_PRINTTOFILE:
 		if (print_to_file != system_lyxrc.print_to_file) {
-			os << "\\print_to_file \"" << print_to_file << "\"\n";
+			string const path = os::external_path(print_to_file);
+			os << "\\print_to_file \"" << path << "\"\n";
 		}
 	case RC_PRINTFILEEXTENSION:
 		if (print_file_extension != system_lyxrc.print_file_extension) {
@@ -1587,11 +1598,13 @@ void LyXRC::output(ostream & os) const
 
 	case RC_DOCUMENTPATH:
 		if (document_path != system_lyxrc.document_path) {
-			os << "\\document_path \"" << document_path << "\"\n";
+			string const path = os::external_path(document_path);
+			os << "\\document_path \"" << path << "\"\n";
 		}
 	case RC_LASTFILES:
 		if (lastfiles != system_lyxrc.lastfiles) {
-			os << "\\lastfiles \"" << lastfiles << "\"\n";
+			string const path = os::external_path(lastfiles);
+			os << "\\lastfiles \"" << path << "\"\n";
 		}
 	case RC_NUMLASTFILES:
 		if (num_lastfiles != system_lyxrc.num_lastfiles) {
@@ -1604,11 +1617,13 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_TEMPLATEPATH:
 		if (template_path != system_lyxrc.template_path) {
-			os << "\\template_path \"" << template_path << "\"\n";
+			string const path = os::external_path(template_path);
+			os << "\\template_path \"" << path << "\"\n";
 		}
 	case RC_TEMPDIRPATH:
 		if (tempdir_path != system_lyxrc.tempdir_path) {
-			os << "\\tempdir_path \"" << tempdir_path << "\"\n";
+			string const path = os::external_path(tempdir_path);
+			os << "\\tempdir_path \"" << path << "\"\n";
 		}
 	case RC_USETEMPDIR:
 		if (use_tempdir != system_lyxrc.use_tempdir) {
@@ -1624,7 +1639,8 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_BACKUPDIR_PATH:
 		if (backupdir_path != system_lyxrc.backupdir_path) {
-			os << "\\backupdir_path \"" << backupdir_path << "\"\n";
+			string const path = os::external_path(backupdir_path);
+			os << "\\backupdir_path \"" << path << "\"\n";
 		}
 
 		os << "\n#\n"
@@ -1682,8 +1698,8 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_PERS_DICT:
 		if (isp_pers_dict != system_lyxrc.isp_pers_dict) {
-			os << "\\personal_dictionary \"" << isp_pers_dict
-			   << "\"\n";
+			string const path = os::external_path(isp_pers_dict);
+			os << "\\personal_dictionary \"" << path << "\"\n";
 		}
 	case RC_USE_INP_ENC:
 		if (isp_use_input_encoding
