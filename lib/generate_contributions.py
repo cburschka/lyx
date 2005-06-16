@@ -492,14 +492,6 @@ contributers = [
                  "31 March 2005",
                  u"Maintainer of the OS X port(s)"),
 
-     contributer(u"Eitan Frachtenberg",
-                 "sky8an () gmail ! com",
-                 "GPL",
-                 "Re: [PATCH] BibTeX annotation support",
-                 "m=111130799028250",
-                 "20 March 2005",
-                 u""),
-
      contributer(u"John Michael Floyd",
                  "jmf () pwd ! nsw ! gov ! au",
                  "",
@@ -507,6 +499,22 @@ contributers = [
                  "",
                  "",
                  u"Bug fix to the spellchecker"),
+
+     contributer(u"Enrico Forestieri",
+                 "forenr () tlc ! unipr ! it",
+                 "GPL",
+                 "Re: lyxpreview2ppm.py",
+                 "m=111894292115287",
+                 "16 June 2005",
+                 u"Italian translation of the Windows installer"),
+
+     contributer(u"Eitan Frachtenberg",
+                 "sky8an () gmail ! com",
+                 "GPL",
+                 "Re: [PATCH] BibTeX annotation support",
+                 "m=111130799028250",
+                 "20 March 2005",
+                 u""),
 
      contributer(u"Edscott Wilson Garcia",
                  "edscott () xfce ! org",
