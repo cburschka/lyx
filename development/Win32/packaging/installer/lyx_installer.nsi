@@ -516,8 +516,16 @@ FunctionEnd
 Function SearchGhostscript
   ; Find which version of ghostscript, if any, is installed.
   EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
+  ${if} $1 == ""
+   EnumRegKey $1 HKLM "Software\GPL Ghostscript" 0
+   StrCpy $2 "True"
+  ${endif}
   ${if} $1 != ""
+   ${if} $2 == "True"
+    StrCpy $0 "Software\GPL Ghostscript\$1"
+   ${else}
     StrCpy $0 "Software\AFPL Ghostscript\$1"
+   ${endif}
   ${else}
     StrCpy $0 ""
   ${endif}
@@ -536,8 +544,16 @@ Function DownloadGhostscript
 
   ; Find which version of ghostscript, if any, is installed.
   EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
+  ${if} $1 == ""
+   EnumRegKey $1 HKLM "Software\GPL Ghostscript" 0
+   StrCpy $2 "True"
+  ${endif}
   ${if} $1 != ""
+   ${if} $2 == "True"
+    StrCpy $0 "Software\GPL Ghostscript\$1"
+   ${else}
     StrCpy $0 "Software\AFPL Ghostscript\$1"
+   ${endif}
   ${else}
     StrCpy $0 ""
   ${endif}
