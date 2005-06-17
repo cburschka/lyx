@@ -1,3 +1,16 @@
+2005-06-16  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_colorinset.C (normalcolor): remove ...
+	* math_colorinset.C (latexcolor): ... and use this new function instead
+	* math_colorinset.C (metrics, draw): Don't draw cell(0), because it
+	is horrible UI
+	* math_colorinset.C (write): Don't write invalid colors
+	* math_colorinset.C: Store always the LaTeXName in cell(0)
+	* math_hullinset.C (handleFont2): adjust to the change above
+	* math_nestinset.C (handleFont2): ditto
+	* math_parser.C (parse): handle \textcolor and \normalcolor
+	* math_factory.C (createMathInset): ditto
+
 2005-06-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_hullinset.C (label): avoid warning when assertions are

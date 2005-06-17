@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "math_charinset.h"
+#include "math_colorinset.h"
 #include "math_data.h"
 #include "math_extern.h"
 #include "math_hullinset.h"
@@ -1214,9 +1215,8 @@ void MathHullInset::handleFont2(LCursor & cur, string const & arg)
 	bool b;
 	bv_funcs::string2font(arg, font, b);
 	if (font.color() != LColor::inherit) {
-		MathAtom at = createMathInset("color");
-		asArray(lcolor.getGUIName(font.color()), at.nucleus()->cell(0));
-		cur.handleNest(at, 1);
+		MathAtom at = MathAtom(new MathColorInset(true, font.color()));
+		cur.handleNest(at, 0);
 	}
 }
 

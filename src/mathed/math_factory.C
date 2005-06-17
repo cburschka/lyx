@@ -323,7 +323,7 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathLefteqnInset);
 	if (s == "boldsymbol")
 		return MathAtom(new MathBoldsymbolInset);
-	if (s == "color")
+	if (s == "color" || s == "normalcolor")
 		return MathAtom(new MathColorInset(true));
 	if (s == "textcolor")
 		return MathAtom(new MathColorInset(false));

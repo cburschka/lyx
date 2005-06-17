@@ -42,6 +42,7 @@ following hack as starting point to write some macros:
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
 #include "math_charinset.h"
+#include "math_colorinset.h"
 #include "math_commentinset.h"
 #include "math_deliminset.h"
 #include "math_envinset.h"
@@ -1207,10 +1208,21 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "color") {
-			MathAtom at = createMathInset(t.cs());
-			parse(at.nucleus()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);
-			parse(at.nucleus()->cell(1), flags, mode);
-			cell->push_back(at);
+			string const color = parse_verbatim_item();
+			cell->push_back(MathAtom(new MathColorInset(true, color)));
+			parse(cell->back().nucleus()->cell(0), flags, mode);
+			return;
+		}
+
+		else if (t.cs() == "textcolor") {
+			string const color = parse_verbatim_item();
+			cell->push_back(MathAtom(new MathColorInset(false, color)));
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);
+		}
+
+		else if (t.cs() == "normalcolor") {
+			cell->push_back(createMathInset(t.cs()));
+			parse(cell->back().nucleus()->cell(0), flags, mode);
 			return;
 		}
 

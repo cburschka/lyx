@@ -13,29 +13,36 @@
 #include "math_colorinset.h"
 #include "math_data.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "math_support.h"
 
 #include "LaTeXFeatures.h"
-#include "LColor.h"
 
 #include "support/std_ostream.h"
 
 using std::auto_ptr;
+using std::string;
 
 
 namespace {
 
-// color "none" (reset to default) needs special treatment
-bool normalcolor(MathArray const & ar)
+/// color "none" (reset to default) needs special treatment
+bool normalcolor(string const & color)
 {
-	return (asString(ar) == "none");
+	return color == "none";
 }
 
 } // namespace anon
 
 
-MathColorInset::MathColorInset(bool oldstyle)
-	: MathNestInset(2), oldstyle_(oldstyle)
+MathColorInset::MathColorInset(bool oldstyle, LColor_color const & color)
+	: MathNestInset(1), oldstyle_(oldstyle),
+	  color_(lcolor.getLaTeXName(color))
+{}
+
+
+MathColorInset::MathColorInset(bool oldstyle, string const & color)
+	: MathNestInset(1), oldstyle_(oldstyle), color_(color)
 {}
 
 
@@ -47,70 +54,50 @@ auto_ptr<InsetBase> MathColorInset::doClone() const
 
 void MathColorInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cell(1).metrics(mi, dim);
-	if (editing(mi.base.bv)) {
-		FontSetChanger dummy(mi.base, "textnormal");
-		cell(0).metrics(mi);
-		dim  += cell(0).dim();
-		w_ = mathed_char_width(mi.base.font, '[');
-		dim.asc += 4;
-		dim.des += 4;
-		dim.wid += 2 * w_ + 4;
-		metricsMarkers(dim);
-	}
+	cell(0).metrics(mi, dim);
+	metricsMarkers(dim);
 	dim_ = dim;
 }
 
 
 void MathColorInset::draw(PainterInfo & pi, int x, int y) const
 {
-	int const x0(x);
-	if (editing(pi.base.bv)) {
-		FontSetChanger dummy(pi.base, "textnormal");
-		drawMarkers(pi, x, y);
-		drawStrBlack(pi, x, y, "[");
-		x += w_;
-		cell(0).draw(pi, x, y);
-		x += cell(0).width();
-		drawStrBlack(pi, x, y, "]");
-		x += w_ + 2;
-	}
-
 	LColor_color origcol = pi.base.font.color();
-	pi.base.font.setColor(lcolor.getFromGUIName(asString(cell(0))));
-	cell(1).draw(pi, x, y);
+	pi.base.font.setColor(lcolor.getFromLaTeXName(color_));
+	cell(0).draw(pi, x + 1, y);
 	pi.base.font.setColor(origcol);
-	if (editing(pi.base.bv))
-		setPosCache(pi, x0, y);
+	drawMarkers(pi, x, y);
+	setPosCache(pi, x, y);
 }
 
 
 void MathColorInset::validate(LaTeXFeatures & features) const
 {
 	MathNestInset::validate(features);
-	if (!normalcolor(cell(0)))
+	if (!normalcolor(color_))
 		features.require("color");
 }
 
 
 void MathColorInset::write(WriteStream & os) const
 {
-	if (normalcolor(cell(0)))
-		os << "{\\normalcolor " << cell(1) << '}';
+	if (normalcolor(color_))
+		// reset to default color inside another color inset
+		os << "{\\normalcolor " << cell(0) << '}';
 	else if (oldstyle_)
-		os << "{\\color" << '{' << cell(0) << '}' << cell(1) << '}';
+		os << "{\\color" << '{' << color_ << '}' << cell(0) << '}';
 	else
-		os << "\\textcolor" << '{' << cell(0) << "}{" << cell(1) << '}';
+		os << "\\textcolor" << '{' << color_ << "}{" << cell(0) << '}';
 }
 
 
 void MathColorInset::normalize(NormalStream & os) const
 {
-	os << "[color " << cell(0) << ' ' << cell(1) << ']';
+	os << "[color " << color_ << ' ' << cell(0) << ']';
 }
 
 
 void MathColorInset::infoize(std::ostream & os) const
 {
-	os << "Color: " << cell(0);
+	os << "Color: " << color_;
 }

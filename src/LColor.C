@@ -33,7 +33,7 @@ using std::string;
 namespace {
 
 struct ColorEntry {
-	int lcolor;
+	LColor::color lcolor;
 	char const * guiname;
 	char const * latexname;
 	char const * x11name;
@@ -61,22 +61,25 @@ public:
 	void fill(ColorEntry const & entry)
 	{
 		information in;
-		in.lyxname   = string(entry.lyxname);
-		in.latexname = string(entry.latexname);
-		in.x11name   = string(entry.x11name);
-		in.guiname   = string(entry.guiname);
+		in.lyxname   = entry.lyxname;
+		in.latexname = entry.latexname;
+		in.x11name   = entry.x11name;
+		in.guiname   = entry.guiname;
 		infotab[entry.lcolor] = in;
-		transform[string(entry.lyxname)] = int(entry.lcolor);
+		lyxcolors[entry.lyxname] = entry.lcolor;
+		latexcolors[entry.latexname] = entry.lcolor;
 	}
 
 	///
-	typedef std::map<int, information> InfoTab;
+	typedef std::map<LColor::color, information> InfoTab;
 	/// the table of color information
 	InfoTab infotab;
 
-	typedef std::map<string, int> Transform;
-	/// the transform between colour name string and integer code.
-	Transform transform;
+	typedef std::map<string, LColor::color> Transform;
+	/// the transform between LyX color name string and integer code.
+	Transform lyxcolors;
+	/// the transform between LaTeX color name string and integer code.
+	Transform latexcolors;
 
 };
 
@@ -185,7 +188,7 @@ string const LColor::getX11Name(LColor::color c) const
 		return it->second.x11name;
 
 	lyxerr << "LyX internal error: Missing color"
-		" entry in LColor.C for " << int(c) << '\n'
+	          " entry in LColor.C for " << c << '\n'
 	       << "Using black." << endl;
 	return "black";
 }
@@ -234,15 +237,14 @@ bool LColor::setColor(LColor::color col, string const & x11name)
 bool LColor::setColor(string const & lyxname, string const &x11name)
 {
 	string const lcname = ascii_lowercase(lyxname);
-	if (pimpl_->transform.find(lcname) == pimpl_->transform.end()) {
+	if (pimpl_->lyxcolors.find(lcname) == pimpl_->lyxcolors.end()) {
 		lyxerr[Debug::GUI]
 			<< "LColor::setColor: Unknown color \""
 		       << lyxname << '"' << endl;
 		addColor(static_cast<color>(pimpl_->infotab.size()), lcname);
 	}
 
-	return setColor(static_cast<LColor::color>(pimpl_->transform[lcname]),
-			x11name);
+	return setColor(pimpl_->lyxcolors[lcname], x11name);
 }
 
 
@@ -252,7 +254,7 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
 	for (; it != end; ++it) {
 		if (!compare_ascii_no_case(_(it->second.guiname), guiname))
-			return static_cast<LColor::color>(it->first);
+			return it->first;
 	}
 	return LColor::inherit;
 }
@@ -268,13 +270,25 @@ void LColor::addColor(LColor::color c, string const & lyxname) const
 LColor::color LColor::getFromLyXName(string const & lyxname) const
 {
 	string const lcname = ascii_lowercase(lyxname);
-	if (pimpl_->transform.find(lcname) == pimpl_->transform.end()) {
+	if (pimpl_->lyxcolors.find(lcname) == pimpl_->lyxcolors.end()) {
 		lyxerr << "LColor::getFromLyXName: Unknown color \""
 		       << lyxname << '"' << endl;
 		return none;
 	}
 
-	return static_cast<LColor::color>(pimpl_->transform[lcname]);
+	return pimpl_->lyxcolors[lcname];
+}
+
+
+LColor::color LColor::getFromLaTeXName(string const & latexname) const
+{
+	if (pimpl_->latexcolors.find(latexname) == pimpl_->latexcolors.end()) {
+		lyxerr << "LColor::getFromLaTeXName: Unknown color \""
+		       << latexname << '"' << endl;
+		return none;
+	}
+
+	return pimpl_->latexcolors[latexname];
 }
 
 

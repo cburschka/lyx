@@ -12,17 +12,23 @@
 #ifndef MATH_COLORINSET_H
 #define MATH_COLORINSET_H
 
+#include "LColor.h"
+
 #include "math_nestinset.h"
 
 /// Change colours.
 
 class MathColorInset : public MathNestInset {
 public:
-	///
-	explicit MathColorInset(bool oldstyle);
+	/// Create a color inset from LyX color number
+	explicit MathColorInset(bool oldstyle,
+		LColor_color const & color = LColor::none);
+	/// Create a color inset from LaTeX color name
+	explicit MathColorInset(bool oldstyle, std::string const & color);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// we write extra braces in any case...
+	/// FIXME Why? Are they necessary if oldstyle_ == false?
 	bool extraBraces() const { return true; }
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -40,6 +46,8 @@ private:
 	mutable int w_;
 	///
 	bool oldstyle_;
+	/// Our color. Only valid LaTeX colors are allowed.
+	std::string color_;
 };
 
 #endif

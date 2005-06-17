@@ -218,6 +218,8 @@ public:
 	LColor::color getFromGUIName(std::string const & guiname) const;
 	/// \returns the LColor::color associated with the LyX name.
 	LColor::color getFromLyXName(std::string const & lyxname) const;
+	/// \returns the LColor::color associated with the LaTeX name.
+	LColor::color getFromLaTeXName(std::string const & latexname) const;
 private:
 	///
 	void addColor(LColor::color c, std::string const & lyxname) const;
