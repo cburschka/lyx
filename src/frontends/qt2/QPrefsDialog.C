@@ -451,6 +451,10 @@ void QPrefsDialog::new_converter()
 
 void QPrefsDialog::modify_converter()
 {
+	int const top_item = convertersModule->convertersLB->topItem();
+	QString const current_text =
+		convertersModule->convertersLB->currentText();
+
 	Format const & from(form_->formats().get(convertersModule->converterFromCO->currentItem()));
 	Format const & to(form_->formats().get(convertersModule->converterToCO->currentItem()));
 	string flags(fromqstr(convertersModule->converterFlagED->text()));
@@ -462,6 +466,11 @@ void QPrefsDialog::modify_converter()
 		form_->converters().updateLast(form_->formats());
 	}
 	updateConverters();
+
+	QListBoxItem * const item =
+		convertersModule->convertersLB->findItem(current_text);
+	convertersModule->convertersLB->setCurrentItem(item);
+	convertersModule->convertersLB->setTopItem(top_item);
 }
 
 
@@ -813,7 +822,12 @@ void QPrefsDialog::new_format()
 
 void QPrefsDialog::modify_format()
 {
-	Format const & oldformat(form_->formats().get(fileformatsModule->formatsLB->currentItem()));
+	int const top_item = fileformatsModule->formatsLB->topItem();
+	int const current_item = fileformatsModule->formatsLB->currentItem();
+	QString const current_text =
+		fileformatsModule->formatsLB->currentText();
+
+	Format const & oldformat(form_->formats().get(current_item));
 	string const oldpretty(oldformat.prettyname());
 	string const name(fromqstr(fileformatsModule->formatED->text()));
 	form_->formats().erase(oldformat.name());
@@ -834,6 +848,11 @@ void QPrefsDialog::modify_format()
 
 	updateConverters();
 	updateFormatsButtons();
+
+	QListBoxItem * const item =
+		fileformatsModule->formatsLB->findItem(current_text);
+	fileformatsModule->formatsLB->setCurrentItem(item);
+	fileformatsModule->formatsLB->setTopItem(top_item);
 }
 
 

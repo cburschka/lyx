@@ -27,6 +27,7 @@
 using lyx::support::bformat;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
+using lyx::support::LibScriptSearch;
 using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
@@ -231,7 +232,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 		return false;
 	}
 
-	string command = format->viewer();
+	string command = LibScriptSearch(format->viewer());
 
 	if (format_name == "dvi" &&
 	    !lyxrc.view_dvi_paper_option.empty()) {

@@ -40,6 +40,7 @@
 #include "lyxfont.h"
 
 #include "support/lstrings.h"
+#include "support/os.h"
 
 #include "controllers/ControlPrefs.h"
 #include "controllers/frnt_lang.h"
@@ -140,6 +141,16 @@ void QPrefs::build_dialog()
 }
 
 
+namespace {
+
+string const internal_path(QString const & input)
+{
+	return lyx::support::os::internal_path(fromqstr(input));
+}
+
+}
+
+
 void QPrefs::apply()
 {
 	LyXRC & rc(controller().rc());
@@ -160,8 +171,8 @@ void QPrefs::apply()
 
 	QPrefUIModule * uimod(dialog_->uiModule);
 
-	rc.ui_file = fromqstr(uimod->uiFileED->text());
-	rc.bind_file = fromqstr(uimod->bindFileED->text());
+	rc.ui_file = internal_path(uimod->uiFileED->text());
+	rc.bind_file = internal_path(uimod->bindFileED->text());
 	rc.cursor_follows_scrollbar = uimod->cursorFollowsCB->isChecked();
 	rc.wheel_jump = uimod->wheelMouseSB->value();
 	rc.autosave = uimod->autoSaveSB->value() * 60;
@@ -173,8 +184,8 @@ void QPrefs::apply()
 
 	// FIXME: can derive CB from the two EDs
 	rc.use_kbmap = keymod->keymapCB->isChecked();
-	rc.primary_kbmap = fromqstr(keymod->firstKeymapED->text());
-	rc.secondary_kbmap = fromqstr(keymod->secondKeymapED->text());
+	rc.primary_kbmap = internal_path(keymod->firstKeymapED->text());
+	rc.secondary_kbmap = internal_path(keymod->secondKeymapED->text());
 
 
 	QPrefAsciiModule * ascmod(dialog_->asciiModule);
@@ -239,13 +250,13 @@ void QPrefs::apply()
 
 	QPrefPathsModule * pathsmod(dialog_->pathsModule);
 
-	rc.document_path = fromqstr(pathsmod->workingDirED->text());
-	rc.template_path = fromqstr(pathsmod->templateDirED->text());
-	rc.backupdir_path = fromqstr(pathsmod->backupDirED->text());
-	rc.tempdir_path = fromqstr(pathsmod->tempDirED->text());
+	rc.document_path = internal_path(pathsmod->workingDirED->text());
+	rc.template_path = internal_path(pathsmod->templateDirED->text());
+	rc.backupdir_path = internal_path(pathsmod->backupDirED->text());
+	rc.tempdir_path = internal_path(pathsmod->tempDirED->text());
 	rc.path_prefix = fromqstr(pathsmod->pathPrefixED->text());
 	// FIXME: should be a checkbox only
-	rc.lyxpipes = fromqstr(pathsmod->lyxserverDirED->text());
+	rc.lyxpipes = internal_path(pathsmod->lyxserverDirED->text());
 
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
@@ -269,7 +280,7 @@ void QPrefs::apply()
 	rc.isp_esc_chars = fromqstr(spellmod->escapeCharactersED->text());
 	rc.isp_use_esc_chars = !rc.isp_esc_chars.empty();
 	// FIXME: remove isp_use_pers_dict
-	rc.isp_pers_dict = fromqstr(spellmod->persDictionaryED->text());
+	rc.isp_pers_dict = internal_path(spellmod->persDictionaryED->text());
 	rc.isp_use_pers_dict = !rc.isp_pers_dict.empty();
 	rc.isp_accept_compound = spellmod->compoundWordCB->isChecked();
 	rc.isp_use_input_encoding = spellmod->inputEncodingCB->isChecked();
@@ -292,7 +303,7 @@ void QPrefs::apply()
 	rc.print_oddpage_flag = fromqstr(printmod->printerOddED->text());
 	rc.print_collcopies_flag = fromqstr(printmod->printerCollatedED->text());
 	rc.print_landscape_flag = fromqstr(printmod->printerLandscapeED->text());
-	rc.print_to_file = fromqstr(printmod->printerToFileED->text());
+	rc.print_to_file = internal_path(printmod->printerToFileED->text());
 	rc.print_extra_options = fromqstr(printmod->printerExtraED->text());
 	rc.print_spool_printerprefix = fromqstr(printmod->printerSpoolPrefixED->text());
 	rc.print_paper_dimension_flag = fromqstr(printmod->printerPaperSizeED->text());
@@ -416,13 +427,13 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 
 	if (family == lyx_gui::roman_font_name()) {
 		font.setStyleHint(QFont::Serif);
-		font.setFamily(lyx_gui::roman_font_name().c_str());
+		font.setFamily(family.c_str());
 	} else if (family == lyx_gui::sans_font_name()) {
 		font.setStyleHint(QFont::SansSerif);
-		font.setFamily(lyx_gui::sans_font_name().c_str());
+		font.setFamily(family.c_str());
 	} else if (family == lyx_gui::typewriter_font_name()) {
 		font.setStyleHint(QFont::TypeWriter);
-		font.setFamily(lyx_gui::typewriter_font_name().c_str());
+		font.setFamily(family.c_str());
 	} else {
 		lyxerr << "FAILED to find the default font !"
 			<< foundry << ", " << family << endl;
@@ -430,11 +441,14 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	}
 
 	QFontInfo info(font);
-	lyxerr << "Apparent font is " << info.family() << endl;
+	pair<string, string> tmp = parseFontName(info.family());
+	string const & default_font_name = tmp.first;
+	lyxerr << "Apparent font is " << default_font_name << endl;
 
 	for (int i = 0; i < cb->count(); ++i) {
 		lyxerr << "Looking at " << fromqstr(cb->text(i)) << endl;
-		if (compare_no_case(fromqstr(cb->text(i)), fromqstr(info.family())) == 0) {
+		if (compare_no_case(fromqstr(cb->text(i)),
+				    default_font_name) == 0) {
 			cb->setCurrentItem(i);
 			return;
 		}
@@ -445,6 +459,16 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 }
 
 } // end namespace anon
+
+
+namespace {
+
+QString const external_path(string const & input)
+{
+	return toqstr(lyx::support::os::external_path(input));
+}
+
+}
 
 
 void QPrefs::update_contents()
@@ -469,8 +493,8 @@ void QPrefs::update_contents()
 
 	QPrefUIModule * uimod(dialog_->uiModule);
 
-	uimod->uiFileED->setText(toqstr(rc.ui_file));
-	uimod->bindFileED->setText(toqstr(rc.bind_file));
+	uimod->uiFileED->setText(external_path(rc.ui_file));
+	uimod->bindFileED->setText(external_path(rc.bind_file));
 	uimod->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	uimod->wheelMouseSB->setValue(rc.wheel_jump);
 	// convert to minutes
@@ -498,8 +522,8 @@ void QPrefs::update_contents()
 	keymod->secondKeymapED->setEnabled(rc.use_kbmap);
 	keymod->secondKeymapPB->setEnabled(rc.use_kbmap);
 	keymod->secondKeymapLA->setEnabled(rc.use_kbmap);
-	keymod->firstKeymapED->setText(toqstr(rc.primary_kbmap));
-	keymod->secondKeymapED->setText(toqstr(rc.secondary_kbmap));
+	keymod->firstKeymapED->setText(external_path(rc.primary_kbmap));
+	keymod->secondKeymapED->setText(external_path(rc.secondary_kbmap));
 
 
 	QPrefAsciiModule * ascmod(dialog_->asciiModule);
@@ -556,13 +580,13 @@ void QPrefs::update_contents()
 
 	QPrefPathsModule * pathsmod(dialog_->pathsModule);
 
-	pathsmod->workingDirED->setText(toqstr(rc.document_path));
-	pathsmod->templateDirED->setText(toqstr(rc.template_path));
-	pathsmod->backupDirED->setText(toqstr(rc.backupdir_path));
-	pathsmod->tempDirED->setText(toqstr(rc.tempdir_path));
+	pathsmod->workingDirED->setText(external_path(rc.document_path));
+	pathsmod->templateDirED->setText(external_path(rc.template_path));
+	pathsmod->backupDirED->setText(external_path(rc.backupdir_path));
+	pathsmod->tempDirED->setText(external_path(rc.tempdir_path));
 	pathsmod->pathPrefixED->setText(toqstr(rc.path_prefix));
 	// FIXME: should be a checkbox only
-	pathsmod->lyxserverDirED->setText(toqstr(rc.lyxpipes));
+	pathsmod->lyxserverDirED->setText(external_path(rc.lyxpipes));
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
 
@@ -587,7 +611,7 @@ void QPrefs::update_contents()
 	// FIXME: remove isp_use_esc_chars
 	spellmod->escapeCharactersED->setText(toqstr(rc.isp_esc_chars));
 	// FIXME: remove isp_use_pers_dict
-	spellmod->persDictionaryED->setText(toqstr(rc.isp_pers_dict));
+	spellmod->persDictionaryED->setText(external_path(rc.isp_pers_dict));
 	spellmod->compoundWordCB->setChecked(rc.isp_accept_compound);
 	spellmod->inputEncodingCB->setChecked(rc.isp_use_input_encoding);
 
@@ -609,7 +633,7 @@ void QPrefs::update_contents()
 	printmod->printerOddED->setText(toqstr(rc.print_oddpage_flag));
 	printmod->printerCollatedED->setText(toqstr(rc.print_collcopies_flag));
 	printmod->printerLandscapeED->setText(toqstr(rc.print_landscape_flag));
-	printmod->printerToFileED->setText(toqstr(rc.print_to_file));
+	printmod->printerToFileED->setText(external_path(rc.print_to_file));
 	printmod->printerExtraED->setText(toqstr(rc.print_extra_options));
 	printmod->printerSpoolPrefixED->setText(toqstr(rc.print_spool_printerprefix));
 	printmod->printerPaperSizeED->setText(toqstr(rc.print_paper_dimension_flag));

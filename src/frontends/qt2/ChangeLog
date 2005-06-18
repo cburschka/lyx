@@ -1,3 +1,18 @@
+2005-06-16  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C (apply, update_contents): wrap all input and output of
+	paths with calls to os::internal_path and os::external_path,
+	respectively.
+
+	* QPrefsDialog.C (modify_format, modify_converter): keep the
+	current item selected after pressing the "Modify" button.
+
+2005-06-12  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C (setComboxFont): ensure that only the font family name
+	(not the name of the foundary also) is used when trying to find
+	the system default font in the list of all fonts.
+
 2005-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* qfont_loader.C (addToFontPath): delete the data structure
@@ -5,8 +20,8 @@
 
 2005-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* qfont_loader.h: 
-	* qfont_loader.C (charwidth): do no do font width caching with 
+	* qfont_loader.h:
+	* qfont_loader.C (charwidth): do no do font width caching with
 	Qt >= 3.1.0.
 
 2005-06-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
