@@ -110,6 +110,12 @@ Var DoNotRequireImageMagick
 Var ImageMagickPath
 Var DownloadImageMagick
 
+Var PDFViewerPath
+Var PDFViewerProg
+
+Var PSViewerPath
+Var PSViewerProg
+
 Var DoNotInstallLyX
 Var PathPrefix
 
@@ -340,6 +346,8 @@ Function .onInit
   Call SearchPerl
   Call SearchGhostscript
   Call SearchImageMagick
+  Call SearchPDFViewer
+  Call SearchPSViewer
 
   ClearErrors
 FunctionEnd
@@ -353,7 +361,15 @@ FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $MinSYSPath variable.
 Function SearchMinSYS
+  ; This function manipulates the $0, $1, $2 and $2 registers,
+  ; so push their current content onto the stack.
+  Push $0
+  Push $1
+  Push $2
+  Push $3
+
   ; Search the registry for the MinSYS uninstaller.
   ; If successful, put its location in $2.
   StrCpy $3 "Software\Microsoft\Windows\CurrentVersion\Uninstall"
@@ -382,6 +398,12 @@ Function SearchMinSYS
       "Inno Setup: App Path" \
       "" \
       "\bin"
+
+  ; Return the $0, $1, $2 and $2 registers to their original state
+  Pop $3
+  Pop $2
+  Pop $1
+  Pop $0
 FunctionEnd
 
 Function DownloadMinSYS
@@ -397,6 +419,10 @@ Function DownloadMinSYS
 FunctionEnd
 
 Function DownloadMinSYS_LeaveFunction
+  ; This function manipulates the $0 register
+  ; so push its current content onto the stack.
+  Push $0
+
   ${DownloadLeave} \
       $0 \
       $DownloadMinSYS \
@@ -405,10 +431,14 @@ Function DownloadMinSYS_LeaveFunction
       "$(EnterMinSYSFolder)" \
       "sh.exe" \
       "$(InvalidMinSYSFolder)"
+
+  ; Return the $0 register to its original state
+  Pop $0
 FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $PythonPath variable.
 Function SearchPython
   ${SearchRegistry} \
       $PythonPath \
@@ -431,6 +461,10 @@ Function DownloadPython
 FunctionEnd
 
 Function DownloadPython_LeaveFunction
+  ; This function manipulates the $0 register
+  ; so push its current content onto the stack.
+  Push $0
+
   ${DownloadLeave} \
       $0 \
       $DownloadPython \
@@ -439,10 +473,14 @@ Function DownloadPython_LeaveFunction
       "$(EnterPythonFolder)" \
       "Python.exe" \
       "$(InvalidPythonFolder)"
+
+  ; Return the $0 register to its original state
+  Pop $0
 FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $MiKTeXPath variable.
 Function SearchMiKTeX
   ${SearchRegistry} \
       $MiKTeXPath \
@@ -478,6 +516,7 @@ FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $PerlPath variable.
 Function SearchPerl
   ${SearchRegistry} \
       $PerlPath \
@@ -513,21 +552,24 @@ FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $GhostscriptPath variable.
 Function SearchGhostscript
+  ; This function manipulates the $0 and $1 registers,
+  ; so push their current content onto the stack.
+  Push $0
+  Push $1
+
   ; Find which version of ghostscript, if any, is installed.
+  ; Store this value in $0.
+  StrCpy $0 ""
   EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
-  ${if} $1 == ""
-   EnumRegKey $1 HKLM "Software\GPL Ghostscript" 0
-   StrCpy $2 "True"
-  ${endif}
   ${if} $1 != ""
-   ${if} $2 == "True"
-    StrCpy $0 "Software\GPL Ghostscript\$1"
-   ${else}
     StrCpy $0 "Software\AFPL Ghostscript\$1"
-   ${endif}
   ${else}
-    StrCpy $0 ""
+    EnumRegKey $1 HKLM "Software\GPL Ghostscript" 0
+    ${if} $1 != ""
+      StrCpy $0 "Software\GPL Ghostscript\$1"
+    ${endif}
   ${endif}
 
   ${SearchRegistry} \
@@ -536,6 +578,10 @@ Function SearchGhostscript
       "GS_DLL" \
       "\gsdll32.dll" \
       ""
+
+  ; Return the $0 and $1 registers to their original states
+  Pop $1
+  Pop $0
 FunctionEnd
 
 Function DownloadGhostscript
@@ -580,6 +626,7 @@ FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $ImageMagickPath variable.
 Function SearchImageMagick
   ${SearchRegistry} \
       $ImageMagickPath \
@@ -631,10 +678,55 @@ FunctionEnd
 
 Function SelectMenuLanguage_LeaveFunction
   !insertmacro MUI_INSTALLOPTIONS_READ $LangName "io_ui_language.ini" "Field 2" "State"
- 
+
   ;Get the language code; macro from lyx_utils.nsh
   StrCpy $LangCode ""
   !insertmacro GetLangCode $LangCode $LangName
+FunctionEnd
+
+;--------------------------------
+
+; Sets the value of the global $PDFViewerPath and $PDFViewerProg variables.
+Function SearchPDFViewer
+  StrCpy $PDFViewerPath ""
+  !insertmacro GetFileExtProg $PDFViewerPath $PDFViewerProg ".pdf" "a"
+
+  MessageBox MB_OK "PDF viewer $PDFViewerPath $PDFViewerProg"
+FunctionEnd
+
+;--------------------------------
+
+; Replace these with Registers $0 and $1 once everything is working
+Var PSViewerPathb
+Var PSViewerProgb
+
+Function SearchPSViewer
+  ; This function manipulates the $0 and $1 registers,
+  ; so push their current content onto the stack.
+  Push $0
+  Push $1
+
+  StrCpy $PSViewerPath ""
+  StrCpy $PSViewerPathb ""
+  StrCpy $PSViewerProgb ""
+  !insertmacro GetFileExtProg $PSViewerPath $PSViewerProg ".ps" "a"
+  ${if} $PSViewerPath != ""
+    StrCpy $PSViewerPathb $PSViewerPath
+    StrCpy $PSViewerPathb $PSViewerPathb "" -8
+  ${endif}
+  ${if} $PSViewerPathb == "Distillr"
+    !insertmacro GetFileExtProg $PSViewerPathb $PSViewerProgb ".ps" "b"
+    ${if} $PSViewerProgb != ""
+      StrCpy $PSViewerPath $PSViewerPathb
+      StrCpy $PSViewerProg $PSViewerProgb
+    ${endif}
+  ${endif}
+
+  MessageBox MB_OK "PS viewer $PSViewerPath $PSViewerProg"
+
+  ; Return the $0 and $1 registers to their original states
+  Pop $1
+  Pop $0
 FunctionEnd
 
 ;--------------------------------

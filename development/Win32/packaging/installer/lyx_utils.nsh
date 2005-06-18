@@ -1,15 +1,19 @@
 ;--------------------------------
 
-!macro GetFileExtProg ProgPath AppExe Extension
+!macro GetFileExtProg ProgPath AppExe Extension Subentry
 
  ReadRegStr ${AppExe} HKCU \
- "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\${Extension}\OpenWithList" \
- "a"
+
+"Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\${Extension}\OpenWithList" \
+ "${Subentry}"
  ${if} ${AppExe} != ""
   ReadRegStr ${ProgPath} HKLM \
              "Software\Microsoft\Windows\CurrentVersion\App Paths\${AppExe}" "Path"
   ;remove the "\" at the end
-  StrCpy ${ProgPath} ${ProgPath} -1
+  StrCpy $0 ${ProgPath} "" -1
+  ${if} $0 == "\"
+   StrCpy ${ProgPath} ${ProgPath} -1
+  ${endif}
  ${endif}
 
 !macroend
@@ -53,7 +57,7 @@
   ${endif}
 
   ${if} ${LangISOCode} = 1034
-   StrCpy ${LangNme} "Espagñol"
+   StrCpy ${LangNme} "Español"
   ${endif}
 
   ${if} ${LangISOCode} = 1036
@@ -89,7 +93,7 @@
    StrCpy ${LangCde} "en_EN"
   ${endif}
 
-  ${if} ${Name} == "Espagñol"
+  ${if} ${Name} == "Español"
    StrCpy ${LangCde} "es_ES"
   ${endif}
 
