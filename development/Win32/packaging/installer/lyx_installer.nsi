@@ -20,7 +20,7 @@
 CRCCheck force
 
 ; Make the installer as small as possible.
-SetCompressor lzma
+;SetCompressor lzma
 
 ;--------------------------------
 ; You should need to change only these macros...
@@ -72,9 +72,11 @@ InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 ;--------------------------------
 ; Declare used functions
 
+${StrStrAdv}
 ${StrLoc}
 ${StrNSISToIO}
 ${StrRep}
+${StrTok}
 ${StrTrim}
 ${StrLTrim}
 ${StrRTrim}
@@ -691,14 +693,10 @@ Function SearchPDFViewer
   StrCpy $PDFViewerPath ""
   !insertmacro GetFileExtProg $PDFViewerPath $PDFViewerProg ".pdf" "a"
 
-  MessageBox MB_OK "PDF viewer $PDFViewerPath $PDFViewerProg"
+  MessageBox MB_OK "PDF viewer '$PDFViewerPath' '$PDFViewerProg'"
 FunctionEnd
 
 ;--------------------------------
-
-; Replace these with Registers $0 and $1 once everything is working
-Var PSViewerPathb
-Var PSViewerProgb
 
 Function SearchPSViewer
   ; This function manipulates the $0 and $1 registers,
@@ -707,22 +705,37 @@ Function SearchPSViewer
   Push $1
 
   StrCpy $PSViewerPath ""
-  StrCpy $PSViewerPathb ""
-  StrCpy $PSViewerProgb ""
+  StrCpy $0 ""
+  StrCpy $1 ""
   !insertmacro GetFileExtProg $PSViewerPath $PSViewerProg ".ps" "a"
   ${if} $PSViewerPath != ""
-    StrCpy $PSViewerPathb $PSViewerPath
-    StrCpy $PSViewerPathb $PSViewerPathb "" -8
+    StrCpy $0 $PSViewerPath
+    StrCpy $0 $0 "" -8
   ${endif}
-  ${if} $PSViewerPathb == "Distillr"
-    !insertmacro GetFileExtProg $PSViewerPathb $PSViewerProgb ".ps" "b"
-    ${if} $PSViewerProgb != ""
-      StrCpy $PSViewerPath $PSViewerPathb
-      StrCpy $PSViewerProg $PSViewerProgb
+  ${if} $0 == "Distillr"
+    !insertmacro GetFileExtProg $0 $1 ".ps" "b"
+    ${if} $1 != ""
+      StrCpy $PSViewerPath $0
+      StrCpy $PSViewerProg $1
     ${endif}
   ${endif}
 
-  MessageBox MB_OK "PS viewer $PSViewerPath $PSViewerProg"
+  ; Failed to find anything that way. Try another.
+  ${if} $PSViewerPath == ""
+    ReadRegStr $PSViewerProg HKCR "psfile\shell\open\command" ""
+    ; Extract the first quoted word.
+    ${StrTok} $0 "$PSViewerProg" '"' '1' '0'
+    ${if} $0 != ""
+      StrCpy $PSViewerProg $0
+    ${endif}
+
+    ${StrTrim} $PSViewerProg "$PSViewerProg"
+    ; Split into <path,exe> pair
+    ${StrStrAdv} $PSViewerPath $PSViewerProg "\" "<" "<" "0" "0" "0"
+    ${StrStrAdv} $PSViewerProg $PSViewerProg "\" "<" ">" "0" "0" "0"
+  ${endif}
+
+  MessageBox MB_OK "PS viewer '$PSViewerPath' '$PSViewerProg'"
 
   ; Return the $0 and $1 registers to their original states
   Pop $1
