@@ -1,3 +1,9 @@
+2005-06-20  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (prepareFile): don't strip the extension of quoted
+	filenames
+	* insetgraphics.C (stripExtensionIfPossible): fix lyxdot replacement
+
 2005-06-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C (getStatus): disable LFUN_TABULAR_INSERT

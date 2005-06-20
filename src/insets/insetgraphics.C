@@ -518,7 +518,7 @@ copyToDirIfNeeded(string const & file_in, string const & dir, bool zipped)
 }
 
 
-string const stripExtension(string const & file)
+string const stripExtensionIfPossible(string const & file)
 {
 	// Remove the extension so the LaTeX will use whatever
 	// is appropriate (when there are several versions in
@@ -526,7 +526,12 @@ string const stripExtension(string const & file)
 	// This works only if the filename contains no dots besides
 	// the just removed one. We can fool here by replacing all
 	// dots with a macro whose definition is just a dot ;-)
-	return subst(RemoveExtension(file), ".", "\\lyxdot ");
+	// The automatic format selection does not work if the file
+	// name is escaped.
+	string const latex_name = latex_path(file);
+	if (latex_name[0] == '"')
+		return latex_name;
+	return subst(latex_path(RemoveExtension(file)), ".", "\\lyxdot ");
 }
 
 
@@ -540,8 +545,8 @@ string const stripExtensionIfPossible(string const & file, string const & to)
 	if (to_format == file_format ||
 	    (to_format == "eps" && file_format ==  "ps") ||
 	    (to_format ==  "ps" && file_format == "eps"))
-		return stripExtension(file);
-	return file;
+		return stripExtensionIfPossible(file);
+	return latex_path(file);
 }
 
 } // namespace anon
@@ -628,7 +633,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 					source_file, output_file);
 			// We can't strip the extension, because we don't know
 			// the unzipped file format
-			return output_file;
+			return latex_path(output_file);
 		}
 
 		string const unzipped_temp_file = unzippedFileName(temp_file);
@@ -688,7 +693,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		                                      output_to_file);
 		runparams.exportdata->addExternalFile("dvi", to_file,
 		                                      output_to_file);
-		return stripExtension(output_file);
+		return stripExtensionIfPossible(output_file);
 	}
 
 	lyxerr[Debug::GRAPHICS]
@@ -704,7 +709,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 				to_file, output_to_file);
 	}
 
-	return stripExtension(output_file);
+	return stripExtensionIfPossible(output_file);
 }
 
 
@@ -760,7 +765,7 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 	// Convert the file if necessary.
 	// Remove the extension so LaTeX will use whatever is appropriate
 	// (when there are several versions in different formats)
-	latex_str += latex_path(prepareFile(buf, runparams));
+	latex_str += prepareFile(buf, runparams);
 	latex_str += '}' + after;
 	os << latex_str;
 
