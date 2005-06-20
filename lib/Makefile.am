@@ -792,7 +792,6 @@ dist_layouts_DATA =\
 	layouts/mwart.layout \
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \
-	layouts/obsolete.inc \
 	layouts/paper.layout \
 	layouts/report.layout \
 	layouts/revtex.layout \
@@ -802,7 +801,6 @@ dist_layouts_DATA =\
 	layouts/scrclass.inc \
 	layouts/scrlettr.layout \
 	layouts/scrlttr2.layout \
-	layouts/scrmacros.inc \
 	layouts/scrreprt.layout \
 	layouts/seminar.layout \
 	layouts/siamltex.layout \

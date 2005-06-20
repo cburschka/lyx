@@ -3,6 +3,8 @@
 # Bernd Rellermeyer <100.41728@germanynet.de>, 1998/7/23.
 # Update for Koma Script Release >=2.8q
 # Juergen Spitzmueller <j.spitzmueller@gmx.de>, 2003/2/08.
+# Mapped List to Labeling
+# Guenter Milde <g.milde web.de>
 
 
 SecNumDepth             2
@@ -20,8 +22,6 @@ Input stdlists.inc
 Input stdcounters.inc
 Input stdfloats.inc
 
-NoStyle List
-
 Style Description
 	LabelFont
 	  Family              Sans
@@ -29,21 +29,15 @@ Style Description
 End
 
 Style Labeling
-	Margin                Manual
-	LatexType             List_Environment
+	CopyStyle             List
 	LatexName             labeling
-	NextNoindent          1
-	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0.5
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Manual
-	LabelString           "00.00.0000"
+	Preamble              # overwrite the preamble code definition
+	EndPreamble
 End
 
+Style List
+	Obsoletedby           Labeling
+End
 
 Input stdsections.inc
 
@@ -260,5 +254,4 @@ Style Dictum
 End
 
 Input lyxmacros.inc
-Input scrmacros.inc
 
