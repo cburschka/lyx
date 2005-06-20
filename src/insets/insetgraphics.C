@@ -527,9 +527,18 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 {
 	// LaTeX can cope if the graphics file doesn't exist, so just
 	// return the filename.
-	string const orig_file = params().filename;
+	string orig_file = params().filename;
 	string orig_file_with_path =
 		MakeAbsPath(orig_file, buf->filePath());
+	if (!IsFileReadable(orig_file_with_path)) {
+		if (IsFileReadable(orig_file_with_path + ".eps")) {
+			orig_file += ".eps";
+			orig_file_with_path += ".eps";
+		} else if (IsFileReadable(orig_file_with_path + ".ps")) {
+			orig_file += ".ps";
+			orig_file_with_path += ".ps";
+		}
+	}
 	lyxerr[Debug::GRAPHICS] << "[InsetGraphics::prepareFile] orig_file = "
 		    << orig_file << "\n\twith path: "
 		    << orig_file_with_path << endl;
@@ -592,11 +601,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		// No conversion is needed. LaTeX can handle the
 		// graphic file as is.
 		// This is true even if the orig_file is compressed.
-		if (formats.getFormat(to)->extension() == GetExtension(orig_file)) {
-			return RemoveExtension(orig_file_with_path);
-		} else {
-			return orig_file_with_path;
-		}
+		return orig_file_with_path;
 	}
 
 	// We're going to be running the exported buffer through the LaTeX
@@ -650,10 +655,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		if (from == to) {
 			// No conversion is needed. LaTeX can handle the
 			// graphic file as is.
-			if (formats.getFormat(to)->extension() == GetExtension(orig_file))
-				return RemoveExtension(temp_file);
-			else
-				return temp_file;
+			return temp_file;
 		}
 	}
 
@@ -691,7 +693,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 #endif
 	}
 
-	return RemoveExtension(temp_file);
+	return ChangeExtension(temp_file, formats.getFormat(to)->extension());
 }
 
 

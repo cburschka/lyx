@@ -1,3 +1,8 @@
+2005-06-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (prepareFile): Don't strip the extension, because
+	the substitution does not work when the file names are quoted
+
 2005-04-17  Angus Leeming  <leeming@lyx.org>
 
 	* insetbib.C (latex):
