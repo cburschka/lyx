@@ -343,7 +343,7 @@ void setComboxFont(QComboBox * cb, string const & family,
 	QFontInfo fi(font);
 	// The combobox stores only the font name; the foundry info is
 	// discarded. So extract the font name from fi.family().
-	pair<string, string> tmp = parseFontName(fi.family());
+	pair<string, string> tmp = parseFontName(fromqstr(fi.family()));
 	string const & default_font_name = tmp.first;
 
 	for (int i = cb->count() - 1; i >= 0; --i) {
