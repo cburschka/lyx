@@ -441,7 +441,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	}
 
 	QFontInfo info(font);
-	pair<string, string> tmp = parseFontName(info.family());
+	pair<string, string> tmp = parseFontName(fromqstr(info.family()));
 	string const & default_font_name = tmp.first;
 	lyxerr << "Apparent font is " << default_font_name << endl;
 
