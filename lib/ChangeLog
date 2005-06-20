@@ -1,3 +1,13 @@
+2005-06-20  Günter Milde  <g.milde@web.de>
+
+	* layouts/obsolete.inc: remove, since lyx2lyx does the job.
+
+	* layouts/scrmacros.inc: remove.
+
+	* layouts/scrclass.inc: adapt to the death of scrmacros.inc.
+
+	* Makefile.am: adapt.
+
 2005-06-16  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/legacy_lyxpreview2ppm.py (legacy_conversion): use gswin32c
