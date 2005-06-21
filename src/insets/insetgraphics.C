@@ -529,7 +529,7 @@ string const stripExtensionIfPossible(string const & file)
 	// The automatic format selection does not work if the file
 	// name is escaped.
 	string const latex_name = latex_path(file);
-	if (latex_name[0] == '"')
+	if (contains(latex_name, '"'))
 		return latex_name;
 	return subst(latex_path(RemoveExtension(file)), ".", "\\lyxdot ");
 }
