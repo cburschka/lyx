@@ -87,7 +87,9 @@ string const latex_path(string const & original_path)
 	string path = subst(original_path, "\\", "/");
 	path = subst(path, "~", "\\string~");
 	if (path.find(' ') != string::npos)
-		path = '"' + path + '"';
+		// We can't use '"' because " is sometimes active (e.g. if
+		// babel is loaded with the "german" option)
+		path = "\\string\"" + path + "\\string\"";
 	return path;
 }
 

@@ -1,3 +1,8 @@
+2005-06-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* filetools.C (latex_path): protect " with \string since it may be
+	active
+
 2005-05-07  Rob Bearman  <robbear@hyperfine.com>
 
 	* fs_extras.C (copy_file): noclobber and CopyFile's bFailIfExists
