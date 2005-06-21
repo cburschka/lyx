@@ -12,6 +12,12 @@
 #ifndef QFONTLOADER_H
 #define QFONTLOADER_H
 
+#include "encoding.h"
+#include "lyxfont.h"
+
+#include <qfont.h>
+#include <qfontmetrics.h>
+
 #if QT_VERSION < 0x030100
 #define USE_LYX_FONTCACHE
 #endif
@@ -19,12 +25,6 @@
 #if defined(USE_LYX_FONTCACHE)
 #include <map>
 #endif
-
-#include "encoding.h"
-#include "lyxfont.h"
-
-#include <qfont.h>
-#include <qfontmetrics.h>
 
 /**
  * Qt font loader for LyX. Matches LyXFonts against
