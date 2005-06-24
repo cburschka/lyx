@@ -623,6 +623,8 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		// without ext and /
 		temp_file = subst(
 			ChangeExtension(orig_file_with_path, string()), "/", "_");
+		// Replace ' ' in the file name with '_'
+		temp_file = subst(temp_file, " ", "_");
 		// without dots and again with ext
 		temp_file = ChangeExtension(
 			subst(temp_file, ".", "_"), ext_tmp);

@@ -1,3 +1,7 @@
+2005-06-24  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (prepareFile): replace spaces in filenames with _
+
 2005-06-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C (prepareFile): Don't strip the extension, because
