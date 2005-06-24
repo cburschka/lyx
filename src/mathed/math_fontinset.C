@@ -73,6 +73,8 @@ void MathFontInset::validate(LaTeXFeatures & features) const
 	// Fraktur used:
 	if (key_->name == "mathfrak" || key_->name == "mathbb")
 		features.require("amssymb");
+	if (key_->name == "text")
+		features.require("amsmath");
 }
 
 
