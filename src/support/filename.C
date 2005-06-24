@@ -84,6 +84,8 @@ string const FileName::mangledFilename() const
 	mname = subst(mname, "/", "_");
 	// Replace '.' in the file name with '_'
 	mname = subst(mname, ".", "_");
+	// Replace ' ' in the file name with '_'
+	mname = subst(mname, " ", "_");
 	// Add the extension back on
 	mname = ChangeExtension(mname, GetExtension(name_));
 
