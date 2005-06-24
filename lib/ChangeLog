@@ -1,3 +1,8 @@
+2005-06-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ui/stdmenus.ui:
+	* ui/classic.ui: use \text for {sub|super}script (fixes bug 1667)
+
 2005-06-20  Günter Milde  <g.milde@web.de>
 
 	* layouts/obsolete.inc: remove, since lyx2lyx does the job.

@@ -237,8 +237,8 @@ Menuset
 	End
 
 	Menu "insert_special"
-		Item "Superscript|S" "command-sequence math-mode on; math-superscript ; font-free-apply; "
-		Item "Subscript|u" "command-sequence math-mode on; math-subscript ; font-free-apply; "
+		Item "Superscript|S" "command-sequence math-mode on; math-superscript; math-insert \text;"
+		Item "Subscript|u" "command-sequence math-mode on; math-subscript; math-insert \text;"
 		Item "Horizontal Fill|H" "hfill-insert"
 		Item "Hyphenation Point|P" "hyphenation-point-insert"
 		Item "Ligature Break|k" "ligature-break-insert"

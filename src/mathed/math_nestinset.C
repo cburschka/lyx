@@ -689,28 +689,47 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_BOLD:
-		handleFont(cur, cmd.argument, "mathbf");
+		if (currentMode() == TEXT_MODE)
+			handleFont(cur, cmd.argument, "textbf");
+		else
+			handleFont(cur, cmd.argument, "mathbf");
 		break;
 	case LFUN_SANS:
-		handleFont(cur, cmd.argument, "mathsf");
+		if (currentMode() == TEXT_MODE)
+			handleFont(cur, cmd.argument, "textsf");
+		else
+			handleFont(cur, cmd.argument, "mathsf");
 		break;
 	case LFUN_EMPH:
-		handleFont(cur, cmd.argument, "mathcal");
+		if (currentMode() == TEXT_MODE)
+			handleFont(cur, cmd.argument, "emph");
+		else
+			handleFont(cur, cmd.argument, "mathcal");
 		break;
 	case LFUN_ROMAN:
-		handleFont(cur, cmd.argument, "mathrm");
+		if (currentMode() == TEXT_MODE)
+			handleFont(cur, cmd.argument, "textrm");
+		else
+			handleFont(cur, cmd.argument, "mathrm");
 		break;
 	case LFUN_CODE:
-		handleFont(cur, cmd.argument, "texttt");
+			handleFont(cur, cmd.argument, "texttt");
 		break;
 	case LFUN_FRAK:
 		handleFont(cur, cmd.argument, "mathfrak");
 		break;
 	case LFUN_ITAL:
-		handleFont(cur, cmd.argument, "mathit");
+		if (currentMode() == TEXT_MODE)
+			handleFont(cur, cmd.argument, "textit");
+		else
+			handleFont(cur, cmd.argument, "mathit");
 		break;
 	case LFUN_NOUN:
-		handleFont(cur, cmd.argument, "mathbb");
+		if (currentMode() == TEXT_MODE)
+			// FIXME: should be "noun"
+			handleFont(cur, cmd.argument, "textsc");
+		else
+			handleFont(cur, cmd.argument, "mathbb");
 		break;
 	//case LFUN_FREEFONT_APPLY:
 		handleFont(cur, cmd.argument, "textrm");
@@ -925,6 +944,11 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 	case LFUN_MATH_EXTERN:
 		flag.enabled(true);
 		break;
+
+	case LFUN_FRAK:
+		flag.enabled(currentMode() != TEXT_MODE);
+		break;
+
 	case LFUN_INSERT_MATH: {
 		bool const textarg =
 			arg == "\\textbf"   || arg == "\\textsf" ||
@@ -933,10 +957,10 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 			arg == "\\textsl"   || arg == "\\textup" ||
 			arg == "\\texttt"   || arg == "\\textbb" ||
 			arg == "\\textnormal";
-		flag.enabled((currentMode() == MATH_MODE && !textarg)
-			||   (currentMode() == TEXT_MODE && textarg));
+		flag.enabled(currentMode() != TEXT_MODE || textarg);
 		break;
 	}
+
 	case LFUN_INSERT_MATRIX:
 		flag.enabled(currentMode() == MATH_MODE);
 		break;

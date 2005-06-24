@@ -1,3 +1,8 @@
+2005-06-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* math_nestinset.C (doDispatch): use text font attributes in text mode.
+	* math_nestinset.C (getStatus): allow text font attributes in math mode.
+
 2005-06-24  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_fontinset.C (validate): require amsmath for \text
