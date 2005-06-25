@@ -1,3 +1,16 @@
+2005-06-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* BufferView_pimpl.C:
+	* LyXAction.C:
+	* lfuns.h: reintroduce LFUN_BIBDB_ADD and LFUN_BIBDB_DEL (bug 961)
+
+	* bufferview_funcs.[Ch] (gotoNextInset): rename to findNextInset;
+	(findInset): new functions, refactored from goto Inset that return 
+	the position of a certain inset without setting the buffer's cursor
+	(by Jean-Marc); 
+	(gotoInset): rewrite to call findInset and then set the cursor
+	(by Jean-Marc).
+
 2005-06-16  Angus Leeming  <leeming@lyx.org>
 
 	* lyxrc.C (output, read): wrap all input and output of paths with

@@ -1,3 +1,9 @@
+2005-06-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetbibtex.C: (addDatabase): do not check for substrings but
+	but for whole tokens.
+	(delDatabase): make it actually work.
+
 2005-06-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C (stripExtensionIfPossible): adjust test for "

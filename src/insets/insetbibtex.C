@@ -271,7 +271,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 bool InsetBibtex::addDatabase(string const & db)
 {
 	string contents(getContents());
-	if (!contains(contents, db)) {
+	if (tokenPos(contents, ',', db) == -1) {
 		if (!contents.empty())
 			contents += ',';
 		setContents(contents + db);
@@ -283,16 +283,17 @@ bool InsetBibtex::addDatabase(string const & db)
 
 bool InsetBibtex::delDatabase(string const & db)
 {
-	if (contains(getContents(), db)) {
+	string contents(getContents());
+	if (contains(contents, db)) {
+		int const n = tokenPos(contents, ',', db);
 		string bd = db;
-		int const n = tokenPos(getContents(), ',', bd);
 		if (n > 0) {
-			// Weird code, would someone care to explain this?(Lgb)
-			string tmp(", ");
-			tmp += bd;
-			setContents(subst(getContents(), tmp, ", "));
+			// this is not the first database
+			string tmp = ',' + bd;
+			setContents(subst(contents, tmp, ""));
 		} else if (n == 0)
-			setContents(split(getContents(), bd, ','));
+			// this is the first (or only) database
+			setContents(split(contents, bd, ','));
 		else
 			return false;
 	}

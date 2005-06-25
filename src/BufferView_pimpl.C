@@ -51,6 +51,7 @@
 #include "undo.h"
 #include "vspace.h"
 
+#include "insets/insetbibtex.h"
 #include "insets/insetref.h"
 #include "insets/insettext.h"
 
@@ -122,7 +123,7 @@ boost::signals::connection selectioncon;
 boost::signals::connection lostcon;
 
 
-/// Get next inset of this class from current cursor position
+/// Return an inset of this class if it exists at the current cursor position
 template <class T>
 T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 {
@@ -982,6 +983,8 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_MARK_ON:
 	case LFUN_SETMARK:
 	case LFUN_CENTER:
+	case LFUN_BIBDB_ADD:
+	case LFUN_BIBDB_DEL:
 	case LFUN_WORDS_COUNT:
 		flag.enabled(true);
 		break;
@@ -1212,6 +1215,26 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_CENTER:
 		center();
 		break;
+
+	case LFUN_BIBDB_ADD: {
+		LCursor tmpcur = cursor_;
+		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
+		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
+						InsetBase::BIBTEX_CODE);
+		if (inset)
+			inset->addDatabase(cmd.argument);
+		break;
+	}
+
+	case LFUN_BIBDB_DEL: {
+		LCursor tmpcur = cursor_;
+		bv_funcs::findInset(tmpcur, InsetBase::BIBTEX_CODE, false);
+		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
+						InsetBase::BIBTEX_CODE);
+		if (inset)
+			inset->delDatabase(cmd.argument);
+		break;
+	}
 
 	case LFUN_WORDS_COUNT: {
 		DocIterator from, to;

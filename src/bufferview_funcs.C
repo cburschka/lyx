@@ -213,56 +213,73 @@ CurStatus status(BufferView const * bv, DocIterator const & dit)
 
 namespace {
 
-bool gotoNextInset(LCursor & cur,
+bool findNextInset(DocIterator & dit,
 		   vector<InsetBase_code> const & codes,
 		   string const & contents)
 {
-	LCursor tmpcur = cur;
+	DocIterator tmpdit = dit;
 
-	while (tmpcur) {
-		InsetBase const * inset = tmpcur.nextInset();
+	while (tmpdit) {
+		InsetBase const * inset = tmpdit.nextInset();
 		if (inset
 		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
 		    && (contents.empty() ||
 			static_cast<InsetCommand const *>(inset)->getContents() == contents)) {
-			cur = tmpcur;
+			dit = tmpdit;
 			return true;
 		}
-		tmpcur.forwardInset();
+		tmpdit.forwardInset();
 	}
 
 	return false;
 }
 
-}
+} // namespace anon
 
 
-void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
+bool findInset(DocIterator & dit, vector<InsetBase_code> const & codes,
 	       bool same_content)
 {
 	string contents;
-	LCursor tmpcur = bv->cursor();
-	tmpcur.forwardInset();
+	DocIterator tmpdit = dit;
+	tmpdit.forwardInset();
 
 	if (same_content) {
-		InsetBase const * inset = tmpcur.nextInset();
+		InsetBase const * inset = tmpdit.nextInset();
 		if (inset
 		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
 			contents = static_cast<InsetCommand const *>(inset)->getContents();
 		}
 	}
 
-	if (!gotoNextInset(tmpcur, codes, contents)) {
-		if (bv->cursor() != doc_iterator_begin(bv->buffer()->inset())) {
-			tmpcur.reset(tmpcur.bottom().inset());
-			if (!gotoNextInset(tmpcur, codes, contents)) {
-				bv->cursor().message(_("No more insets"));
-				return;
+	if (!findNextInset(tmpdit, codes, contents)) {
+		if (dit.depth() != 1 || dit.pit() != 0 || dit.pos() != 0) {
+			tmpdit  = doc_iterator_begin(tmpdit.bottom().inset());
+			if (!findNextInset(tmpdit, codes, contents)) {
+				return false;
 			}
-		} else {
-			bv->cursor().message(_("No more insets"));
-			return;
-		}
+		} else
+			return false;
+	}
+	
+	dit = tmpdit;
+	return true;
+}
+
+
+void findInset(DocIterator & dit, InsetBase_code code, bool same_content)
+{
+	findInset(dit, vector<InsetBase_code>(1, code), same_content);
+}
+
+
+void gotoInset(BufferView * bv, vector<InsetBase_code> const & codes,
+	       bool same_content)
+{
+	LCursor tmpcur = bv->cursor();
+	if (!findInset(tmpcur, codes, same_content)) {
+		bv->cursor().message(_("No more insets"));
+		return;
 	}
 
 	tmpcur.clearSelection();
