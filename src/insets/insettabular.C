@@ -1123,37 +1123,39 @@ void InsetTabular::getCursorPos(CursorSlice const & sl, int & x, int & y) const
 }
 
 
-namespace  {
-
-
-// Manhattan distance to nearest corner
-int dist(InsetOld const & inset, int x, int y)
+int InsetTabular::dist(idx_type const cell, int x, int y) const
 {
 	int xx = 0;
 	int yy = 0;
+	InsetBase const & inset = *tabular.getCellInset(cell);
 	Point o = theCoords.getInsets().xy(&inset);
-	int const xo = o.x_;
-	int const yo = o.y_;
+	int const xbeg = o.x_ - tabular.getBeginningOfTextInCell(cell);
+	int const xend = xbeg + tabular.getWidthOfColumn(cell);
+	int const ybeg = o.y_ - inset.ascent();
+	row_type const row = tabular.row_of_cell(cell);
+	int const rowheight = tabular.getAscentOfRow(row)
+			+ tabular.getDescentOfRow(row)
+			+ tabular.getAdditionalHeight(row);
+	int const yend = ybeg + rowheight;
 
-	if (x < xo)
-		xx = xo - x;
-	else if (x > xo + inset.width())
-		xx = x - xo - inset.width();
+	if (x < xbeg) {
+		xx = xbeg - x;
+	} else if (x > xend) {
+		xx = x - xend;
+	}
 
-	if (y < yo - inset.ascent())
-		yy = yo - inset.ascent() - y;
-	else if (y > yo + inset.descent())
-		yy = y - yo - inset.descent();
+	if (y < ybeg)  {
+		yy = ybeg - y;
+	} else if (y > yend)  {
+		yy = y - yend;
+	}
 
-	lyxerr << " xo_=" << xo << "  yo_=" << yo
-	       << " width_=" << inset.width() << " ascent=" << inset.ascent()
-	       << " descent=" << inset.descent()
+	lyxerr << " xbeg=" << xbeg << "  xend=" << xend
+	       << " ybeg=" << ybeg << " yend=" << yend
+	       << " xx=" << xx << " yy=" << yy
 	       << " dist=" << xx + yy << endl;
 	return xx + yy;
 }
-
-
-} //namespace anon
 
 
 InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y) const
@@ -1184,7 +1186,7 @@ InsetTabular::idx_type InsetTabular::getNearestCell(int x, int y) const
 	int dist_min = std::numeric_limits<int>::max();
 	for (idx_type i = 0; i < nargs(); ++i) {
 		if (theCoords.getInsets().has(tabular.getCellInset(i).get())) {
-			int d = dist(*tabular.getCellInset(i), x, y);
+			int d = dist(i, x, y);
 			if (d < dist_min) {
 				dist_min = d;
 				idx_min = i;

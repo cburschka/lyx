@@ -1,3 +1,9 @@
+2005-06-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.[Ch] (dist): make it a real member of insettabular
+	and rewrite it to use the actuall cell dimensions for calculation, 
+	not the insettext's deimensions (fixes bug 1801).
+
 2005-06-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetbibtex.C: (addDatabase): do not check for substrings but

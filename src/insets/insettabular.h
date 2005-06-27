@@ -183,6 +183,8 @@ private:
 	/// are we operating on several cells?
 	bool tablemode(LCursor & cur) const;
 
+	/// return the "Manhattan distance" to nearest corner
+	int dist(idx_type cell, int x, int y) const;
 	/// return the cell nearest to x, y
 	idx_type getNearestCell(int x, int y) const;
 
