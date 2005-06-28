@@ -196,13 +196,12 @@ msgid "Content:|#o"
 msgstr "Innhold"
 
 #: src/frontends/xforms/forms/form_box.fd:62
-#, fuzzy
 msgid "Box Type|#T"
-msgstr "Type:|#T"
+msgstr "Bokstype|#T"
 
 #: src/frontends/xforms/forms/form_box.fd:134
 msgid "Has Inner Box"
-msgstr ""
+msgstr "Har indre boks"
 
 #: src/frontends/xforms/forms/form_box.fd:152
 #, fuzzy
@@ -986,7 +985,7 @@ msgstr "grader"
 
 #: src/frontends/xforms/forms/form_graphics.fd:710
 msgid "Subfigure:|#S"
-msgstr ""
+msgstr "Subfigur:|#S"
 
 #: src/frontends/xforms/forms/form_graphics.fd:728
 msgid "Angle:|#A"
@@ -1122,23 +1121,20 @@ msgstr "textrm"
 
 #: src/frontends/xforms/forms/form_note.fd:44
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:75
-#, fuzzy
 msgid "Type"
-msgstr "&Type:"
+msgstr ""
 
 #: src/frontends/xforms/forms/form_note.fd:80
-#, fuzzy
 msgid "LyX Note|#N"
-msgstr "Notis|N"
+msgstr "LyX Notis|#N"
 
 #: src/frontends/xforms/forms/form_note.fd:98
-#, fuzzy
 msgid "Comment|#o"
-msgstr "Kommentar"
+msgstr "Kommentar|#o"
 
 #: src/frontends/xforms/forms/form_note.fd:116
 msgid "Greyed out|#G"
-msgstr ""
+msgstr "Grået ut|#G"
 
 #: src/frontends/xforms/forms/form_paragraph.fd:44
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:350
@@ -2383,9 +2379,8 @@ msgid "&Encoding:"
 msgstr ""
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:206
-#, fuzzy
 msgid "&Quote Style:"
-msgstr "Siteringsstil"
+msgstr "Siteringsstil:"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:45
 msgid "&Top:"
@@ -3022,13 +3017,12 @@ msgid "toggle font on all of the above"
 msgstr ""
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:436
-#, fuzzy
 msgid "Apply changes immediately"
-msgstr "Bruk endringer automatisk"
+msgstr "Gjør endringer øyeblikkelig"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:440
 msgid "Apply each change automatically"
-msgstr "Bruk endringer automatisk"
+msgstr "Bruk endringer med én gang"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:71
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:117
@@ -3118,7 +3112,7 @@ msgstr "Forrige"
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:245
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:161
 msgid "Case &sensitive"
-msgstr "Case &sensitive"
+msgstr "Skill mellom store og små bokstaver"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:249
 msgid "Make the search case-sensitive"
@@ -3739,34 +3733,31 @@ msgid "&Horizontal:"
 msgstr "&Horisontal:"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:94
-#, fuzzy
 msgid "LyX &Note"
-msgstr "Notis"
+msgstr "LyX &Notis"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:98
 #: src/frontends/xforms/FormNote.C:42
 msgid "LyX internal only"
-msgstr ""
+msgstr "Kun internt i LyX"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:109
-#, fuzzy
 msgid "C&omment"
-msgstr "Kommentar"
+msgstr "K&ommentar"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:113
 #: src/frontends/xforms/FormNote.C:44
 msgid "Export to LaTeX/Docbook but don't print"
-msgstr ""
+msgstr "Eksporteres til LaTeX/Docbook, men skrives ikke ut"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:124
 msgid "&Greyed out"
-msgstr ""
+msgstr "&Grået ut"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:128
 #: src/frontends/xforms/FormNote.C:46
-#, fuzzy
 msgid "Print as grey text"
-msgstr "Skriv ut alle sidene"
+msgstr "Skriv ut som grå tekst"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
 #: src/frontends/qt2/QDocument.C:162 src/text.C:2152
@@ -3798,14 +3789,12 @@ msgid "Alig&nment:"
 msgstr "&Justering:"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:207
-#, fuzzy
 msgid "In&dent paragraph"
-msgstr "et avsnitt"
+msgstr "Rykk inn avsnitt"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:245
-#, fuzzy
 msgid "Label Width"
-msgstr "Bredde"
+msgstr "Etikettbredde for lister"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:264
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:283
@@ -3815,7 +3804,7 @@ msgstr "Denne teksten definerer bredden på den bredeste etiketten"
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:275
 #, fuzzy
 msgid "Lo&ngest label"
-msgstr "Sett inn referanse merke"
+msgstr "Lengste listeetikett"
 
 #: src/frontends/qt2/ui/QPreambleDialogBase.ui:45
 #, fuzzy
@@ -4487,11 +4476,11 @@ msgstr "<side>"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:143
 msgid "on page <page>"
-msgstr ""
+msgstr "på side <side>"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:149
 msgid "<reference> on page <page>"
-msgstr ""
+msgstr "<referansenr> på side <side>"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:155
 msgid "Formatted reference"
@@ -9896,39 +9885,32 @@ msgid "Save Bookmark 3"
 msgstr "Lagre bokmerke 3"
 
 #: lib/ui/classic.ui:379 lib/ui/stdmenus.ui:405
-#, fuzzy
 msgid "Save Bookmark 4"
-msgstr "Lagre bokmerke 2"
+msgstr "Lagre bokmerke 4"
 
 #: lib/ui/classic.ui:380 lib/ui/stdmenus.ui:406
-#, fuzzy
 msgid "Save Bookmark 5"
-msgstr "Lagre bokmerke 2"
+msgstr "Lagre bokmerke 5"
 
 #: lib/ui/classic.ui:382 lib/ui/stdmenus.ui:396
-#, fuzzy
 msgid "Go to Bookmark 1|1"
-msgstr "Gå til bokmerke 1"
+msgstr "Gå til bokmerke 1|1"
 
 #: lib/ui/classic.ui:383 lib/ui/stdmenus.ui:397
-#, fuzzy
 msgid "Go to Bookmark 2|2"
-msgstr "Gå til bokmerke 2"
+msgstr "Gå til bokmerke 2|2"
 
 #: lib/ui/classic.ui:384 lib/ui/stdmenus.ui:398
-#, fuzzy
 msgid "Go to Bookmark 3|3"
-msgstr "Gå til bokmerke 3"
+msgstr "Gå til bokmerke 3|3"
 
 #: lib/ui/classic.ui:385 lib/ui/stdmenus.ui:399
-#, fuzzy
 msgid "Go to Bookmark 4|4"
-msgstr "Gå til bokmerke 3"
+msgstr "Gå til bokmerke 4|4"
 
 #: lib/ui/classic.ui:386 lib/ui/stdmenus.ui:400
-#, fuzzy
 msgid "Go to Bookmark 5|5"
-msgstr "Gå til bokmerke 3"
+msgstr "Gå til bokmerke 5|5"
 
 #: lib/ui/classic.ui:401
 msgid "Tooltips|o"
@@ -9940,7 +9922,7 @@ msgstr "Introduksjon|I"
 
 #: lib/ui/classic.ui:404 lib/ui/stdmenus.ui:432
 msgid "Tutorial|T"
-msgstr ""
+msgstr "Innføring|n"
 
 #: lib/ui/classic.ui:405 lib/ui/stdmenus.ui:433
 msgid "User's Guide|U"
@@ -9952,7 +9934,7 @@ msgstr "Utvidede egenskaper|u"
 
 #: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:435
 msgid "Customization|C"
-msgstr "Innstillinger"
+msgstr "Tilpasning|T"
 
 #: lib/ui/classic.ui:409 lib/ui/stdmenus.ui:436
 msgid "FAQ|F"
@@ -10046,11 +10028,11 @@ msgstr "Rader og kolonner"
 
 #: lib/ui/stdmenus.ui:95
 msgid "Increase List Depth|I"
-msgstr "Øk omgivelsedybde|k"
+msgstr "Øk listedybde|k"
 
 #: lib/ui/stdmenus.ui:96
 msgid "Decrease List Depth|D"
-msgstr "Minsk omgivelsesdybde|M"
+msgstr "Minsk listedybde|M"
 
 #: lib/ui/stdmenus.ui:102
 msgid "TeX Code Settings...|C"
@@ -10258,7 +10240,7 @@ msgstr "Mattepanel|l"
 
 #: lib/ui/stdmenus.ui:328
 msgid "Text Wrap Float|W"
-msgstr "Område som teksten flyter rundt"
+msgstr "Område som teksten brytes rundt"
 
 #: lib/ui/stdmenus.ui:343
 msgid "External Material..."
@@ -10291,7 +10273,7 @@ msgstr "LaTeX Logg...|L"
 
 #: lib/ui/stdmenus.ui:369
 msgid "Table of Contents...|T"
-msgstr "Innholdsfortegnelse|I"
+msgstr "Innholdsfortegnelse...|I"
 
 #: lib/ui/stdmenus.ui:370
 msgid "LaTeX Preamble...|P"
@@ -10350,7 +10332,6 @@ msgid "Save document"
 msgstr "Lagre dokumentet"
 
 #: lib/ui/stdtoolbars.ui:44
-#, fuzzy
 msgid "Print document"
 msgstr "Skriv ut dokumentet"
 
@@ -10360,7 +10341,7 @@ msgstr "Angre"
 
 #: lib/ui/stdtoolbars.ui:47 src/BufferView_pimpl.C:1054
 msgid "Redo"
-msgstr "Gjør om"
+msgstr "Gjør omigjen"
 
 #: lib/ui/stdtoolbars.ui:51
 msgid "Find and replace"
@@ -10713,9 +10694,8 @@ msgstr "Eksempler|#E#e"
 
 #: src/BufferView_pimpl.C:806 src/lyx_cb.C:141 src/lyxfunc.C:1638
 #: src/lyxfunc.C:1675
-#, fuzzy
 msgid "LyX Documents (*.lyx)"
-msgstr "*.lyx| LyX Dokumenter (*.lyx)"
+msgstr "LyX-Dokumenter (*.lyx)"
 
 #: src/BufferView_pimpl.C:816 src/lyxfunc.C:1685 src/lyxfunc.C:1763
 #: src/lyxfunc.C:1777 src/lyxfunc.C:1793
@@ -10764,12 +10744,12 @@ msgstr "Merke satt"
 #: src/BufferView_pimpl.C:1225
 #, fuzzy, c-format
 msgid "%1$d words in selection."
-msgstr "Ett ord kontrollert."
+msgstr "Det er %1$d ord i utvalget"
 
 #: src/BufferView_pimpl.C:1228
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d words in document."
-msgstr "Nøkkel brukt i LyX dokumentet."
+msgstr "Det er %1$d ord i dokumentet."
 
 #: src/BufferView_pimpl.C:1233
 #, fuzzy
@@ -10782,9 +10762,8 @@ msgid "One word in document."
 msgstr "Åpner dokument "
 
 #: src/BufferView_pimpl.C:1238
-#, fuzzy
 msgid "Count words"
-msgstr " Nøkkelord"
+msgstr "Telle ord"
 
 #: src/Chktex.C:67
 #, c-format
@@ -11179,6 +11158,7 @@ msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
+"%1$s ble laget med en tidligere versjon av LyX. Fikk ikke laget en midlertidig fil for konvertering."
 
 #: src/buffer.C:644
 #, fuzzy
@@ -11193,9 +11173,8 @@ msgid ""
 msgstr ""
 
 #: src/buffer.C:661
-#, fuzzy
 msgid "Conversion script failed"
-msgstr "Kan ikke finne konverteringsskriptet."
+msgstr "Konverteringsscriptet mislyktes"
 
 #: src/buffer.C:662
 #, c-format
@@ -11236,25 +11215,26 @@ msgid "Could not read document"
 msgstr "Kunne ikke åpne dokumentet "
 
 #: src/buffer_funcs.C:86
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
 "\n"
 "Recover emergency save?"
-msgstr "En nødlagret versjon av dette dokumentet eksisterer!"
+msgstr "Det fins en nødlagret versjon av dokumentet %1$s.\n"
+"\n"
+"Gjenopprette det nødlagrede dokumentet?"
 
 #: src/buffer_funcs.C:89
 msgid "Load emergency save?"
-msgstr ""
+msgstr "Åpne nødlagret fil?"
 
 #: src/buffer_funcs.C:90
-#, fuzzy
 msgid "&Recover"
-msgstr "Fjern"
+msgstr "&Gjenopprett"
 
 #: src/buffer_funcs.C:90
 msgid "&Load Original"
-msgstr ""
+msgstr "&Åpne originalen"
 
 #: src/buffer_funcs.C:112
 #, c-format
@@ -11312,21 +11292,21 @@ msgid "%1$s #:"
 msgstr "%1$s #:"
 
 #: src/bufferlist.C:81 src/bufferlist.C:180
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
 "\n"
 "Do you want to save the document or discard the changes?"
-msgstr "Dokumentet har en ukjent tekstklasse \"%1$s\"."
+msgstr "Dokumentet %1$s er endret men ikke lagret.\n\n"
+"Vil du lagre dokumentet, eller forkaste endringene?"
 
 #: src/bufferlist.C:83 src/bufferlist.C:182 src/lyxfunc.C:621
-#, fuzzy
 msgid "Save changed document?"
-msgstr "Lagre dokument?"
+msgstr "Lagre dokumentet?"
 
 #: src/bufferlist.C:84 src/bufferlist.C:183
 msgid "&Discard"
-msgstr ""
+msgstr "&Forkast"
 
 #: src/bufferlist.C:304
 #, c-format
@@ -11552,27 +11532,23 @@ msgid ""
 "The file %1$s already exists.\n"
 "\n"
 "Do you want to over-write that file?"
-msgstr ""
+msgstr "Filen %1$s fins fra før.\n\nVil du skrive over den?"
 
 #: src/exporter.C:75
-#, fuzzy
 msgid "Over-write file?"
-msgstr "Lagre dokument?"
+msgstr "Overskrive filen?"
 
 #: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1790
-#, fuzzy
 msgid "&Over-write"
-msgstr "Lagre dokument?"
+msgstr "Overskrive"
 
 #: src/exporter.C:77
-#, fuzzy
 msgid "Over-write &all"
-msgstr "Lagre dokument?"
+msgstr "Overskrive &alt"
 
 #: src/exporter.C:78
-#, fuzzy
 msgid "&Cancel export"
-msgstr "&Avbryt"
+msgstr "&Avbryt eksport"
 
 #: src/exporter.C:127
 #, fuzzy
@@ -11826,9 +11802,8 @@ msgid "Select document to include"
 msgstr "Velg dokument som skal settes inn"
 
 #: src/frontends/controllers/ControlInclude.C:84
-#, fuzzy
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
-msgstr "*.(tex|lyx)| LaTeX/LyX dokumenter (*.tex *.lyx)"
+msgstr "LaTeX/LyX dokumenter (*.tex *.lyx)"
 
 #: src/frontends/controllers/ControlLog.C:74
 msgid "LyX: LaTeX Log"
@@ -12037,7 +12012,7 @@ msgstr "Blå"
 
 #: src/frontends/controllers/character.C:243
 msgid "Cyan"
-msgstr "Cyan"
+msgstr "Cyanblå"
 
 #: src/frontends/controllers/character.C:247
 msgid "Magenta"
@@ -12136,9 +12111,8 @@ msgstr "AMS operatorer"
 
 #: src/frontends/gtk/GBox.C:42 src/frontends/qt2/QBox.C:51
 #: src/frontends/xforms/FormBox.C:47
-#, fuzzy
 msgid "Box Settings"
-msgstr "\"Float\" innstillinger"
+msgstr "Boksinnstillinger"
 
 #: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:33
 #: src/frontends/xforms/FormChanges.C:32
@@ -12175,7 +12149,7 @@ msgstr "Dokumentstil"
 #: src/frontends/gtk/GDocument.C:57 src/frontends/qt2/QDocument.C:68
 #: src/frontends/xforms/FormDocument.C:93
 msgid "Document Settings"
-msgstr "Dokument innstillinger"
+msgstr "Dokumentinnstillinger"
 
 #: src/frontends/gtk/GDocument.C:103 src/frontends/qt2/QDocument.C:133
 #: src/frontends/xforms/FormDocument.C:169
@@ -12397,9 +12371,8 @@ msgid "Dings &4"
 msgstr "Ding 4|#g"
 
 #: src/frontends/qt2/BulletsModule.C:71
-#, fuzzy
 msgid "&Custom..."
-msgstr "Egen definert...|E"
+msgstr "&Egendefinert..."
 
 #: src/frontends/qt2/BulletsModule.C:340
 #: src/frontends/qt2/QDocumentDialog.C:85
@@ -12548,7 +12521,7 @@ msgstr "Matte-innstillinger"
 
 #: src/frontends/qt2/QDocumentDialog.C:84
 msgid "Float Placement"
-msgstr "\"Float\" plassering:"
+msgstr "\"Float\"-plassering"
 
 #: src/frontends/qt2/QDocumentDialog.C:86
 #: src/frontends/xforms/FormDocument.C:442
@@ -14310,9 +14283,8 @@ msgid "Opened Marginal Note Inset"
 msgstr "Åpnet \"float inset\""
 
 #: src/insets/insetnote.C:57
-#, fuzzy
 msgid "Greyed out"
-msgstr "Åpnet inset"
+msgstr "Grået ut"
 
 #: src/insets/insetnote.C:135
 #, fuzzy
@@ -14864,9 +14836,8 @@ msgid "Search error"
 msgstr "Søk"
 
 #: src/lyxfind.C:142
-#, fuzzy
 msgid "Search string is empty"
-msgstr "Den ferdige filen er tom"
+msgstr "Ingenting å finne"
 
 #: src/lyxfind.C:294 src/lyxfind.C:324
 msgid "String not found!"
@@ -15169,7 +15140,7 @@ msgstr ""
 
 #: src/lyxrc.C:2124
 msgid "New documents will be assigned this language."
-msgstr ""
+msgstr "Nye dokumenter lages med dette språket."
 
 #: src/lyxrc.C:2128
 msgid "Specify the default paper size."
@@ -15732,7 +15703,7 @@ msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
 #: src/text.C:2143
-#, fuzzy, c-format
+#, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$d"
 
@@ -15745,23 +15716,20 @@ msgid "Other ("
 msgstr "Annet ("
 
 #: src/text.C:2170
-#, fuzzy
 msgid ", Inset: "
-msgstr ", Dybde: "
+msgstr ""
 
 #: src/text.C:2171
 msgid ", Paragraph: "
 msgstr ", Avsnitt: "
 
 #: src/text.C:2172
-#, fuzzy
 msgid ", Id: "
-msgstr ", Dybde: "
+msgstr ", Id: "
 
 #: src/text.C:2173
-#, fuzzy
 msgid ", Position: "
-msgstr "   opsjoner: "
+msgstr ", Posisjon : "
 
 #: src/text2.C:503
 msgid ""
@@ -15819,9 +15787,8 @@ msgstr "Avsnittstil satt"
 #~ msgid "The citation key"
 #~ msgstr "Siteringsnøkklen"
 
-#, fuzzy
 #~ msgid "Box settings"
-#~ msgstr "\"Float\" innstillinger"
+#~ msgstr "Boksinnstillinger"
 
 #, fuzzy
 #~ msgid "Changes"
@@ -15860,7 +15827,6 @@ msgstr "Avsnittstil satt"
 #~ msgid "&File"
 #~ msgstr "&Fil"
 
-#, fuzzy
 #~ msgid "&Go to Reference"
 #~ msgstr "Gå til referanse"
 
@@ -15966,9 +15932,8 @@ msgstr "Avsnittstil satt"
 #~ msgid "LyX: Insert root"
 #~ msgstr "LyX: Sett inn n-rot"
 
-#, fuzzy
 #~ msgid "LyX: Note Settings"
-#~ msgstr "\"Float\" innstillinger"
+#~ msgstr "LyX: Notisinnstillinger"
 
 #~ msgid "LyX: Innstillinger for avsnitt"
 #~ msgstr ", Avsnitt: "
@@ -15979,9 +15944,8 @@ msgstr "Avsnittstil satt"
 #~ msgid "New"
 #~ msgstr "Ny"
 
-#, fuzzy
 #~ msgid "LyX: Print Document"
-#~ msgstr "LyX dokument...|X"
+#~ msgstr "LyX Skrive ut dokumentet"
 
 #~ msgid "LyX: Cross-reference"
 #~ msgstr "LyX: Kryssreferanse"
@@ -16002,13 +15966,11 @@ msgstr "Avsnittstil satt"
 #~ msgid "LyX: Spell-check Document"
 #~ msgstr "Stavekontroll fullført"
 
-#, fuzzy
 #~ msgid "LyX: Table Settings"
-#~ msgstr "LaTeX innstillinger"
+#~ msgstr "Tabellinnstillinger"
 
-#, fuzzy
 #~ msgid "LyX: Insert Table"
-#~ msgstr "Sett inn tabell"
+#~ msgstr "LyX: Sett inn tabell"
 
 #, fuzzy
 #~ msgid "LyX: LaTeX Information"
@@ -16018,13 +15980,11 @@ msgstr "Avsnittstil satt"
 #~ msgid "LyX: Thesaurus"
 #~ msgstr "Tabell...|T"
 
-#, fuzzy
 #~ msgid "LyX: Table of Contents"
-#~ msgstr "Innholdsfortegnelse"
+#~ msgstr "LyX: Innholdsfortegnelse"
 
-#, fuzzy
 #~ msgid "LyX: URL"
-#~ msgstr "LyX: "
+#~ msgstr ""
 
 #, fuzzy
 #~ msgid "LyX: Text Wrap Settings"
