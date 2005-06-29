@@ -62,7 +62,7 @@ LangString ImageMagickDownloadLabel "${LYX_LANG}" "&Download ImageMagick"
 LangString ImageMagickFolderLabel "${LYX_LANG}" "&Folder containing convert.exe"
 
 LangString GhostscriptHeader "${LYX_LANG}" "Ghostscript"
-LangString GhostscriptDescription "${LYX_LANG}" "Ghostscript (http://www.cs.wisc.edu/~ghost/) is used to convert images to/from PostScript."
+LangString GhostscriptDescription "${LYX_LANG}" "Ghostscript (www.cs.wisc.edu/~ghost/) is used to convert images to/from PostScript."
 LangString EnterGhostscriptFolder "${LYX_LANG}" "Please input the path to the folder containing gswin32c.exe"
 LangString InvalidGhostscriptFolder "${LYX_LANG}" "Unable to find gswin32c.exe"
 LangString GhostscriptDownloadLabel "${LYX_LANG}" "&Download Ghostscript"

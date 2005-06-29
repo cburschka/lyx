@@ -20,7 +20,7 @@
 CRCCheck force
 
 ; Make the installer as small as possible.
-;SetCompressor lzma
+SetCompressor lzma
 
 ;--------------------------------
 ; You should need to change only these macros...
@@ -287,7 +287,7 @@ Section "-Installation actions" SecInstallation
       "${PRODUCT_NAME}" \
       "${PRODUCT_NAME} Document" \
       "${PRODUCT_EXE},1" \
-      "${PRODUCT_EXE}"
+      "${PRODUCT_BAT}"
 
     ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
   ${endif}
@@ -365,7 +365,7 @@ FunctionEnd
 
 ; Sets the value of the global $MinSYSPath variable.
 Function SearchMinSYS
-  ; This function manipulates the $0, $1, $2 and $2 registers,
+  ; This function manipulates the registers $0-$3,
   ; so push their current content onto the stack.
   Push $0
   Push $1
@@ -664,36 +664,10 @@ FunctionEnd
 
 ;--------------------------------
 
-Function SelectMenuLanguage
-  StrCpy $LangName ""
-
-  ;tranlate NSIS's language code to the language name; macro from lyx_utils.nsh
-  !insertmacro TranslateLangCode $LangName $Language
-
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_ui_language.ini" "Field 2" "State" "$LangName"
-
-  !insertmacro MUI_HEADER_TEXT "$(UILangageTitle)" "$(UILangageDescription)"
-  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "io_ui_language.ini"
-FunctionEnd
-
-;--------------------------------
-
-Function SelectMenuLanguage_LeaveFunction
-  !insertmacro MUI_INSTALLOPTIONS_READ $LangName "io_ui_language.ini" "Field 2" "State"
-
-  ;Get the language code; macro from lyx_utils.nsh
-  StrCpy $LangCode ""
-  !insertmacro GetLangCode $LangCode $LangName
-FunctionEnd
-
-;--------------------------------
-
 ; Sets the value of the global $PDFViewerPath and $PDFViewerProg variables.
 Function SearchPDFViewer
   StrCpy $PDFViewerPath ""
   !insertmacro GetFileExtProg $PDFViewerPath $PDFViewerProg ".pdf" "a"
-
-  MessageBox MB_OK "PDF viewer '$PDFViewerPath' '$PDFViewerProg'"
 FunctionEnd
 
 ;--------------------------------
@@ -734,8 +708,6 @@ Function SearchPSViewer
     ${StrStrAdv} $PSViewerPath $PSViewerProg "\" "<" "<" "0" "0" "0"
     ${StrStrAdv} $PSViewerProg $PSViewerProg "\" "<" ">" "0" "0" "0"
   ${endif}
-
-  MessageBox MB_OK "PS viewer '$PSViewerPath' '$PSViewerProg'"
 
   ; Return the $0 and $1 registers to their original states
   Pop $1
@@ -791,6 +763,30 @@ Function SummariseDownloads_LeaveFunction
   ${if} "$DoNotInstallLyX" == 1
     Quit
   ${endif}
+FunctionEnd
+
+;--------------------------------
+
+Function SelectMenuLanguage
+  StrCpy $LangName ""
+
+  ;tranlate NSIS's language code to the language name; macro from lyx_utils.nsh
+  !insertmacro TranslateLangCode $LangName $Language
+
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_ui_language.ini" "Field 2" "State" "$LangName"
+
+  !insertmacro MUI_HEADER_TEXT "$(UILangageTitle)" "$(UILangageDescription)"
+  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "io_ui_language.ini"
+FunctionEnd
+
+;--------------------------------
+
+Function SelectMenuLanguage_LeaveFunction
+  !insertmacro MUI_INSTALLOPTIONS_READ $LangName "io_ui_language.ini" "Field 2" "State"
+
+  ;Get the language code; macro from lyx_utils.nsh
+  StrCpy $LangCode ""
+  !insertmacro GetLangCode $LangCode $LangName
 FunctionEnd
 
 ;--------------------------------
