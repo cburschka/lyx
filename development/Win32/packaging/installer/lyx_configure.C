@@ -251,8 +251,8 @@ int set_path_prefix(std::string const & configure_file,
 
 bool write_bat(std::ostream & os, std::string const & quoted_exe)
 {
-	os << "if \"%~1\" == \"~1\" got win95\n"
-	   << quoted_exe << " %~*\n"
+	os << "if \"%~1\" == \"~1\" goto win95\n"
+	   << quoted_exe << " %*\n"
 	   << "goto end\n"
 	   << ":win95\n"
 	   << quoted_exe << " %1 %2 %3 %4 %5 %6 %7 %8 %9\n"
