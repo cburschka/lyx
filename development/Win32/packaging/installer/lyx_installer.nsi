@@ -240,7 +240,7 @@ SectionEnd
 ; Sections are entered in order, so the settings above are all
 ; available to SecInstallation
 Section "-Installation actions" SecInstallation
-  SetOverwrite off
+  SetOverwrite on
   SetOutPath "$INSTDIR"
   File /r "${PRODUCT_SOURCEDIR}\Resources"
   File /r "${PRODUCT_SOURCEDIR}\bin"
