@@ -1,3 +1,9 @@
+2005-06-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlPrint.C (browse): 
+	* ControlPrefs.C (browsebind, browseUI, browsekbmap, browsedict):
+	make FileFilterList label translatable.
+
 2005-06-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlErrorList.C (goTo): if pos_end is 0, assume it is the end

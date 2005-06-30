@@ -71,7 +71,7 @@ string const ControlPrint::browse(string const & in_name) const
 {
 	return browseRelFile(in_name, kernel().buffer().filePath(),
 			     _("Print to file"),
-			     FileFilterList("PostScript files (*.ps)"),
+			     FileFilterList(_("PostScript files (*.ps)")),
 			     true);
 }
 

@@ -122,28 +122,28 @@ void ControlPrefs::updateScreenFonts()
 string const ControlPrefs::browsebind(string const & file) const
 {
 	return browseLibFile("bind", file, "bind", _("Choose bind file"),
-			  FileFilterList("LyX bind files (*.bind)"));
+			  FileFilterList(_("LyX bind files (*.bind)")));
 }
 
 
 string const ControlPrefs::browseUI(string const & file) const
 {
 	return browseLibFile("ui", file, "ui", _("Choose UI file"),
-			  FileFilterList("LyX UI files (*.ui)"));
+			  FileFilterList(_("LyX UI files (*.ui)")));
 }
 
 
 string const ControlPrefs::browsekbmap(string const & file) const
 {
 	return browseLibFile("kbd", file, "kmap", _("Choose keyboard map"),
-			  FileFilterList("LyX keyboard maps (*.kmap)"));
+			  FileFilterList(_("LyX keyboard maps (*.kmap)")));
 }
 
 
 string const ControlPrefs::browsedict(string const & file) const
 {
 	return browseFile(file, _("Choose personal dictionary"),
-			  FileFilterList("*.ispell"));
+			  FileFilterList(_("*.ispell")));
 }
 
 
