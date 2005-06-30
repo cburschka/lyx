@@ -275,7 +275,7 @@ int create_bat_files(std::string const & bin_dir, std::string const & lang)
 		<< "if \"%LANG%\"==\"\" SET LANG=" << lang << "\n";
 
 	std::string const lyx_exe_file = bin_dir + "\\lyx.exe";
-	if (!write_bat(lyx_bat, "\"" + lyx_exe_file + "\""))
+	if (!write_bat(lyx_bat, "start \"LyX\" \"" + lyx_exe_file + "\""))
 		return -1;
 
 	std::string const relyx_bat_file = bin_dir + "\\reLyX.bat";
