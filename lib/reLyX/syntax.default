@@ -434,7 +434,8 @@ $$
 \footnotemark[]
 \footnoterule
 \footnotetext[]{translate}
-\frame{translate}
+% LaTeX has \frame{}, but beamer has \frame[]{}, so use the latter
+\frame[]{translate}
 \framebox[][]{translate} % Two variants of this command
 %\framebox(,)[]{}    %  picture variant
 \frenchspacing
