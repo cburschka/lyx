@@ -1,3 +1,9 @@
+
+2005-06-29  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* cursor_slice.h: 
+	* dociterator.h: Fix the assert when copying rows/cols in math
+
 2005-06-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* BufferView_pimpl.C:

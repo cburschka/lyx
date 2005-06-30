@@ -62,6 +62,10 @@ public:
 	idx_type idx() const { return idx_; }
 	/// return the cell this cursor is in
 	idx_type & idx() { return idx_; }
+	/// Save current cursor idx as row, col
+	void idxSave() { col_ = idx_ % ncols(); row_ = idx_ / ncols(); }
+	/// update idx to correspond to row, col
+	void idxLoad() { idx_ = col_ + ncols() * row_; }
 	/// return the last cell in this inset
 	idx_type lastidx() const { return nargs() - 1; }
 	/// return the offset of the paragraph this cursor is in
@@ -70,7 +74,7 @@ public:
 	pit_type & pit() { return pit_; }
 	/// increments the paragraph this cursor is in
 	void incrementPar();
-	/// increments the paragraph this cursor is in
+	/// decrements the paragraph this cursor is in
 	void decrementPar();
 	/// return the position within the paragraph
 	pos_type pos() const { return pos_; }
@@ -80,13 +84,13 @@ public:
 	pos_type lastpos() const;
 	/// return the number of embedded cells
 	size_t nargs() const;
-	/// return the number of embedded cells
+	/// return the number of columns
 	size_t ncols() const;
-	/// return the number of embedded cells
+	/// return the number of rows
 	size_t nrows() const;
 	/// return the grid row of the current cell
 	row_type row() const;
-	/// return the grid row of the current cell
+	/// return the grid column of the current cell
 	col_type col() const;
 
 	///
@@ -123,6 +127,10 @@ public:
 private:
 	/// cell index of a position in this inset
 	idx_type idx_;
+	/// row position in inset
+	row_type row_;
+	/// column position in inset
+	col_type col_;
 	/// paragraph in this cell (used by texted)
 	pit_type pit_;
 	/// true of 'pit' was properly initialized

@@ -1108,11 +1108,20 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 				if (cur.idx() > nargs())
 					cur.idx() -= ncols();
 			}
-		else if (s == "copy-row")
+		else if (s == "copy-row") {
+			// Here (as later) we save the cursor col/row 
+			// in order to restore it after operation. 
+			cur.idxSave();
 			for (int i = 0, n = extractInt(is); i < n; ++i)
 				copyRow(cur.row());
-		else if (s == "swap-row")
+			cur.idxLoad();
+			}
+		else if (s == "swap-row") {
 			swapRow(cur.row());
+			// Trick to suppress same-idx-means-different-cell 
+			// assertion crash:
+			cur.pos() = 0; 
+			}
 		else if (s == "add-hline-above")
 			rowinfo_[cur.row()].lines_++;
 		else if (s == "add-hline-below")
@@ -1123,24 +1132,27 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			rowinfo_[cur.row()+1].lines_--;
 		else if (s == "append-column")
 			for (int i = 0, n = extractInt(is); i < n; ++i) {
-				row_type const r = cur.row();
-				col_type const c = cur.col();
-				addCol(c);
-				cur.idx() = index(r, c);
+				cur.idxSave();
+				addCol(cur.col());
+				cur.idxLoad();
 			}
 		else if (s == "delete-column")
 			for (int i = 0, n = extractInt(is); i < n; ++i) {
-				row_type const r = cur.row();
-				col_type const c = cur.col();
+				cur.idxSave();
 				delCol(col(cur.idx()));
-				cur.idx() = index(r, c);
+				cur.idxLoad();
 				if (cur.idx() > nargs())
 					cur.idx() -= ncols();
 			}
-		else if (s == "copy-column")
+		else if (s == "copy-column") {
+			cur.idxSave();
 			copyCol(cur.col());
-		else if (s == "swap-column")
+			cur.idxLoad();
+			}
+		else if (s == "swap-column") {
 			swapCol(cur.col());
+			cur.pos() = 0; // trick, see above
+			}
 		else if (s == "add-vline-left")
 			colinfo_[cur.col()].lines_++;
 		else if (s == "add-vline-right")

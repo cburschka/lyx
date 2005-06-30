@@ -91,6 +91,10 @@ public:
 	idx_type idx() const { return top().idx(); }
 	/// return the cell of the inset this cursor is in
 	idx_type & idx() { return top().idx(); }
+	///
+	void idxSave() { top().idxSave(); }
+	///
+	void idxLoad() { top().idxLoad(); }
 	/// return the last possible cell in this inset
 	idx_type lastidx() const;
 	/// return the paragraph this cursor is in
