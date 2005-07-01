@@ -540,3 +540,10 @@ std::ostream & operator<<(std::ostream & os, StableDocIterator const & dit)
 		os << " " << dit.data_[i] << "\n";
 	return os;
 }
+
+
+bool operator==(StableDocIterator const & dit1, StableDocIterator const & dit2)
+{
+	return dit1.data_ == dit2.data_;
+}
+

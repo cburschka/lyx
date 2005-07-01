@@ -73,7 +73,7 @@ void recordUndo(Undo::undo_kind kind,
 	if (!undo_finished
 	    && kind != Undo::ATOMIC
 	    && !stack.empty()
-	    && stack.top().cell.size() == undo.cell.size()
+	    && stack.top().cell == undo.cell
 		  && stack.top().kind == undo.kind
 		  && stack.top().from == undo.from
 		  && stack.top().end == undo.end)

@@ -1,3 +1,9 @@
+2005-07-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* dociterator.[Ch]: implement operator==(StableDocIterator const &, 
+	StableDocIterator const &)
+	* undo.C (recordUndo): use the above instead of cell.size() comparison
+	(fixes bug 1808; instructed by André).
 
 2005-06-29  Martin Vermeer  <martin.vermeer@hut.fi>
 

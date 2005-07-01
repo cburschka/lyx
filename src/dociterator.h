@@ -267,10 +267,11 @@ public:
 	///
 	friend std::istream &
 	operator>>(std::istream & is, StableDocIterator & cur);
+	///
+	friend bool
+	operator==(StableDocIterator const &, StableDocIterator const &);
 private:
 	std::vector<CursorSlice> data_;
 };
-
-bool operator==(StableDocIterator const &, StableDocIterator const &);
 
 #endif
