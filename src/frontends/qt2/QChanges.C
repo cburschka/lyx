@@ -45,6 +45,12 @@ void QChanges::build_dialog()
 }
 
 
+void QChanges::update_contents()
+{
+	next();
+}
+
+
 void QChanges::next()
 {
 	controller().find();
@@ -54,9 +60,9 @@ void QChanges::next()
 	string date(controller().getChangeDate());
 
 	if (!author.empty())
-		text += "Change by " + author + "\n\n";
+		text += _("Change by ") + author + "\n\n";
 	if (!date.empty())
-		text += "Change made at " + date + "\n";
+		text += _("Change made at ") + date + "\n";
 
 	dialog_->changeTV->setText(toqstr(text));
 }

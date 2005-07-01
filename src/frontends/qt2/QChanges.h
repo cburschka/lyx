@@ -38,7 +38,7 @@ private:
 	/// Apply changes
 	virtual void apply() {};
 	/// update
-	virtual void update_contents() {};
+	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
 };
