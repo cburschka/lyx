@@ -91,13 +91,20 @@ bool IsSGMLFilename(string const & filename)
 }
 
 
-string const latex_path(string const & original_path)
+string const latex_path(string const & original_path, bool exclude_extension)
 {
 	string path = subst(original_path, "~", "\\string~");
 	if (path.find(' ') != string::npos)
 		// We can't use '"' because " is sometimes active (e.g. if
 		// babel is loaded with the "german" option)
-		path = "\\string\"" + path + "\\string\"";
+		if (exclude_extension) {
+			string const base = ChangeExtension(path, string());
+			string const ext = GetExtension(path);
+			path = ChangeExtension(
+				"\\string\"" + base  + "\\string\"", ext);
+		} else
+
+			path = "\\string\"" + path + "\\string\"";
 	return path;
 }
 

@@ -779,7 +779,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 							buf->filePath()),
 					    m_buffer->filePath());
 		}
-		latex_str += latex_path(fname);
+		latex_str += latex_path(fname, true);
 	}
 	latex_str += '}' + after;
 

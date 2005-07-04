@@ -146,8 +146,13 @@ bool PutEnvPath(string const & envstr);
  *  If @c path contains spaces, then the returned path is enclosed in
  *  "-quotes. This last fix will lead to successful compiliation of the
  *  LaTeX file only if a sufficiently modern LaTeX compiler is used.
+ *  If @c exclude_extension is true the extension is left outside the quotes.
+ *  This is needed for pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)
+ *  (format=pdflatex 2005.4.11) in combination with
+ *  pdftex.def 2002/06/19 v0.03k graphics/color for pdftex:
+ *  It does not recognize the file extension if it is inside the quotes.
  */
-string const latex_path(string const & path);
+string const latex_path(string const & path, bool exclude_extension = false);
 
 /// Substitutes active latex characters with underscores in filename
 string const MakeLatexName(string const & file);

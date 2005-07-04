@@ -1,3 +1,7 @@
+2005-07-04  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* filetools.[Ch] (latex_path): add exclude_extension argument
+
 2005-06-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* filetools.C (latex_path): protect " with \string since it may be
