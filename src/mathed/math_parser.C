@@ -588,6 +588,7 @@ bool Parser::parse(MathAtom & at)
 
 string Parser::parse_verbatim_option()
 {
+	skipSpaces();
 	string res;
 	if (nextToken().character() == '[') {
 		Token t = getToken();
@@ -605,6 +606,7 @@ string Parser::parse_verbatim_option()
 
 string Parser::parse_verbatim_item()
 {
+	skipSpaces();
 	string res;
 	if (nextToken().cat() == catBegin) {
 		Token t = getToken();

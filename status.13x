@@ -26,7 +26,7 @@ What's new
 - Implement new functions buffer-next and buffer-previous that allow
   to cycle through open buffers; they are respectively bound to
   Ctrl-PageDown and Control-PageUp (except with mac bindings, where
-  <cmd>-tab and <cmd>-backtab are used) [bugs 515 and 1639].
+  <cmd>-tab and <cmd>-backtab are used). [bugs 515 and 1639]
 
 - LaTeX-type accents (which are used when converting from 7bit latex
   documents or when a given accented letter does not exist in the
@@ -51,12 +51,17 @@ What's new
 
 * Document input/output:
 
-- Fix LaTeX output of percentage length values <10% [bug 1523].
+- Fix LaTeX output of percentage length values <10%. [bug 1523]
 
-- Fix crash when reading equations containing more columns than allowed
-  [bug 1542].
+- Fix crash when reading equations containing more columns than
+  allowed. [bug 1542]
 
-- Store typed '&' characters in math as '\&' [bug 1542].
+- Allow reading math arrays with their options on a separate line
+  (Scientific Word does that).
+
+- Fix crash when inserting invalid length data. [bug 1682]
+
+- Store typed '&' characters in math as '\&'. [bug 1542]
 
 - Make sure that the amsmath package is used in LaTeX output when
   using the AMS-specific array environments and over/under arrows in
@@ -65,19 +70,19 @@ What's new
 - Make sure that the wasysym package is used in LaTeX output when
   using symbols from the wasy font.
 
-- Fix export via commandline of symbols using AMS or wasy fonts [bug 1665].
+- Fix export via commandline of symbols using AMS or wasy fonts. [bug 1665]
 
 - Make sure that the natbib and url packages are not loaded with
   REVTeX 4, since the functionality is already provided by the class.
 
 - Fix output of mathbb and mathcal symbols via the math panel
-  (XForms only) [bug 1214].
+  (XForms only). [bug 1214]
 
 - Fix output of footnotes on the titlepage, which did not work with
-  the memoir class [bug 1677].
+  the memoir class. [bug 1677]
 
 - Fix the LaTeX output of Short Titles (aka optional inset) that did
-  not get \protect added when needed [bug 1739].
+  not get \protect added when needed. [bug 1739]
 
 - When reading an equation, don't parse \| following a \left or \right as |.
 
@@ -86,7 +91,7 @@ What's new
 
 - Fix positioning of error insets after graphics and external insets.
 
-- When executing generating PDF, handle properly pdfTeX warnings [bug 1824].
+- When generating PDF, handle properly pdfTeX warnings. [bug 1824]
 
 - Fix lyxpreview2ppm.py to work with python versions older than 2.1.
 
@@ -125,15 +130,15 @@ What's new
 - Fix crash when using math-mutate with invalid argument.
 
 - Implement support for qt-immodule. This fixes the dead key problems
-  with some newer qt/x11 versions [bug 1830].
+  with some newer qt/x11 versions. [bug 1830]
 
 - Fix math fonts display in LyX/Mac.
 
 - Avoid automatic startup of the spellchecker when switching from one
-  document to another [Bug 1451]
+  document to another. [bug 1451]
 
-- Make LyX behave normally when a file has been open from the Explorer
-  [Windows only].
+- Make LyX behave normally when a file has been opened from the
+  Explorer. [Windows only]
 
 - Windows users will find that graphics files are now converted to a
   "loadable" format asynchronously. That is, LyX will not block
@@ -153,19 +158,19 @@ What's new
   Reference dialog, handle \% correctly.
 
 - The file browsers of the Qt versions of the External, BibTeX and
-  Print dialogs now return a relative path if appropriate. [Bug 1272]
+  Print dialogs now return a relative path if appropriate. [bug 1272]
 
 - Fix display of citations when using 'et al.'
 
 - fix translation of layout names with a space in their name.
 
-- Fix server function server-get-tip. [Bug 1781]
+- Fix server function server-get-tip. [bug 1781]
 
 - Fix binding of Shift-Tab, which was broken on some systems.
 
 - Enable the display of accented characters in the Help->About dialog.
 
-- Fix "longtable" user interface in the tabular dialog [bug 1061] [qt only]
+- Fix "longtable" user interface in the tabular dialog. [bug 1061, Qt only]
 
 - Remove the "child process" dialog, with which a user could kill child
   processes spawned by LyX. It was decided that this functionality belonged
@@ -173,13 +178,14 @@ What's new
 
 - Post convertDefault.sh's error messages to STDERR.
 
-- fix wrong selection when opening the list of tables/figures dialog. [bug 1870]
+- fix wrong selection when opening the list of tables/figures dialog.
+  [bug 1870] 
 
 * Configuration/Installation:
 
 - Enable XForms frontend to build with picky versions of 'make'.
 
-- Fix link error with some compiler/OS combinations [bug 1702].
+- Fix link error with some compiler/OS combinations. [bug 1702]
 
 - Fix link error with Cygwin.
 

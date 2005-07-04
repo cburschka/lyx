@@ -1,3 +1,8 @@
+2005-06-24  Joao Luis Meloni Assirati  <assirati@nonada.if.usp.br>
+
+	* math_parser.C (parse_verbatim_{option,item}): Add skipSpaces()
+	to parse options to arrays in broken lines.
+
 2005-06-24  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_fontinset.C (validate): require amsmath for \text
