@@ -15,11 +15,14 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
+#include "support/lstrings.h"
+
 #include "controllers/ControlChanges.h"
 
 #include <qpushbutton.h>
 #include <qtextview.h>
 
+using lyx::support::bformat;
 
 using std::string;
 
@@ -60,9 +63,9 @@ void QChanges::next()
 	string date(controller().getChangeDate());
 
 	if (!author.empty())
-		text += _("Change by ") + author + "\n\n";
+		text += bformat(_("Change by %1$s\n\n"), author);
 	if (!date.empty())
-		text += _("Change made at ") + date + "\n";
+		text += bformat(_("Change made at %1$s\n"), date);
 
 	dialog_->changeTV->setText(toqstr(text));
 }
