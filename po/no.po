@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-06-28 14:09+0200\n"
-"PO-Revision-Date: 2005-07-01 14:18+0200\n"
+"POT-Creation-Date: 2005-07-04 12:29+0200\n"
+"PO-Revision-Date: 2005-07-04 11:29+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -568,7 +568,7 @@ msgstr "Ekstra innstillinger:"
 
 #: src/frontends/xforms/forms/form_document.fd:920
 msgid "Default Skip:|#u"
-msgstr ""
+msgstr "Standard avstand|#S"
 
 #: src/frontends/xforms/forms/form_document.fd:956
 msgid "One|#n"
@@ -9551,11 +9551,11 @@ msgstr "Ren tekst som avsnitt...|a"
 
 #: lib/ui/classic.ui:323 lib/ui/stdmenus.ui:387
 msgid "Track Changes|T"
-msgstr "Spore endringer|S"
+msgstr "Spor endringer|S"
 
 #: lib/ui/classic.ui:324 lib/ui/stdmenus.ui:388
 msgid "Merge Changes...|M"
-msgstr "Revidere endringer...|R"
+msgstr "Flett inn endringer...|F"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.ui:389
 msgid "Accept All Changes|A"
@@ -9563,7 +9563,7 @@ msgstr "Godta alle endringer|G"
 
 #: lib/ui/classic.ui:326 lib/ui/stdmenus.ui:390
 msgid "Reject All Changes|R"
-msgstr "Forkast alle endringer|F"
+msgstr "Forkast alle endringer|k"
 
 #: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:391
 msgid "Show Changes in Output|S"
@@ -11509,21 +11509,45 @@ msgstr "Ingen logfil for versjonskontroll funnet."
 msgid "Choose bind file"
 msgstr "Velg hurtigtastfil"
 
+#: src/frontends/controllers/ControlPrefs.C:125
+#, fuzzy
+msgid "LyX bind files (*.bind)"
+msgstr "BibTeX database filer (*.bib)"
+
 #: src/frontends/controllers/ControlPrefs.C:131
 msgid "Choose UI file"
 msgstr "Velg brukergrensesnittfil"
+
+#: src/frontends/controllers/ControlPrefs.C:132
+#, fuzzy
+msgid "LyX UI files (*.ui)"
+msgstr "Alle filer (*)"
 
 #: src/frontends/controllers/ControlPrefs.C:138
 msgid "Choose keyboard map"
 msgstr "Velg tastaturoppsett"
 
+#: src/frontends/controllers/ControlPrefs.C:139
+#, fuzzy
+msgid "LyX keyboard maps (*.kmap)"
+msgstr "Bruk &tastaturoppsett"
+
 #: src/frontends/controllers/ControlPrefs.C:145
 msgid "Choose personal dictionary"
 msgstr "Velg personlig ordliste"
 
+#: src/frontends/controllers/ControlPrefs.C:146
+#, fuzzy
+msgid "*.ispell"
+msgstr "Celle"
+
 #: src/frontends/controllers/ControlPrint.C:73
 msgid "Print to file"
 msgstr "Skriv til fil"
+
+#: src/frontends/controllers/ControlPrint.C:74
+msgid "PostScript files (*.ps)"
+msgstr "PostScript filer (*.ps)"
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
 msgid "The spell-checker could not be started"
@@ -11778,17 +11802,14 @@ msgid "Unavailable: %1$s"
 msgstr "Tilgjengelig"
 
 #: src/frontends/gtk/GDocument.C:145
-#, fuzzy
 msgid "Small Skip"
 msgstr "Liten avstand"
 
 #: src/frontends/gtk/GDocument.C:146
-#, fuzzy
 msgid "Medium Skip"
 msgstr "Medium avstand"
 
 #: src/frontends/gtk/GDocument.C:147
-#, fuzzy
 msgid "Big Skip"
 msgstr "Stor avstand"
 
@@ -12019,6 +12040,16 @@ msgstr "BibTeX referanseliste"
 #, fuzzy
 msgid "Branch Settings"
 msgstr "\"Float\" innstillinger"
+
+#: src/frontends/qt2/QChanges.C:63
+#, fuzzy
+msgid "Change by "
+msgstr "Endret av:"
+
+#: src/frontends/qt2/QChanges.C:65
+#, fuzzy
+msgid "Change made at "
+msgstr "Endret stil"
 
 #: src/frontends/qt2/QCommandBuffer.C:79
 msgid "Previous command"
@@ -13583,7 +13614,6 @@ msgid "DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
 msgstr ""
 
 #: src/frontends/xforms/FormVSpace.C:212
-#, fuzzy
 msgid "Additional vertical space."
 msgstr "Ekstra vertikal avstand."
 
@@ -13630,7 +13660,6 @@ msgstr ""
 
 #: src/frontends/xforms/xforms_helpers.C:344
 #: src/frontends/xforms/xforms_helpers.C:389
-#, fuzzy
 msgid "Failed to open file."
 msgstr "Kan ikke åpne fil"
 
@@ -13663,7 +13692,6 @@ msgid "No file input."
 msgstr "Ingen fil funnet!"
 
 #: src/frontends/xforms/xforms_helpers.C:489
-#, fuzzy
 msgid "Directory does not exists."
 msgstr "Folderen finnes ikke."
 
@@ -13694,12 +13722,11 @@ msgid "Importing %1$s..."
 msgstr "Importerer %1$s..."
 
 #: src/importer.C:62
-#, fuzzy
 msgid "Couldn't import file"
 msgstr "Kan ikke importere fil"
 
 #: src/importer.C:63
-#, fuzzy, c-format
+#, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ingen informasjon om importering fra %1$s"
 
@@ -13721,28 +13748,25 @@ msgid "Boxed"
 msgstr "Fet"
 
 #: src/insets/insetbox.C:58
-#, fuzzy
 msgid "Frameless"
-msgstr "Parametre"
+msgstr "Uten ramme"
 
 #: src/insets/insetbox.C:59
-#, fuzzy
 msgid "ovalbox"
-msgstr "Dobbel"
+msgstr "Avrundet, tynn"
 
 #: src/insets/insetbox.C:60
 #, fuzzy
 msgid "Ovalbox"
-msgstr "Dobbel"
+msgstr "Avrundet, tykk"
 
 #: src/insets/insetbox.C:61
 msgid "Shadowbox"
-msgstr ""
+msgstr "Med skygge"
 
 #: src/insets/insetbox.C:62
-#, fuzzy
 msgid "Doublebox"
-msgstr "Dobbel"
+msgstr "Dobbel boks"
 
 #: src/insets/insetbox.C:116
 #, fuzzy
@@ -13790,7 +13814,7 @@ msgstr "ERT"
 #: src/insets/insetexternal.C:580
 #, c-format
 msgid "External template %1$s is not installed"
-msgstr ""
+msgstr "Ekstern mal %1$s er ikke installert"
 
 #: src/insets/insetfloat.C:134 src/insets/insetfloat.C:412
 #: src/insets/insetfloat.C:422
@@ -13915,9 +13939,8 @@ msgid "Equation"
 msgstr "Ligning"
 
 #: src/insets/insetref.C:143 src/mathed/ref_inset.C:163
-#, fuzzy
 msgid "EqRef: "
-msgstr "Ref: "
+msgstr "Formelref: "
 
 #: src/insets/insetref.C:144 src/mathed/ref_inset.C:164
 msgid "Page Number"
@@ -13963,13 +13986,12 @@ msgid "Opened table"
 msgstr "Åpne en fil"
 
 #: src/insets/insettabular.C:1561
-#, fuzzy
 msgid "Error setting multicolumn"
-msgstr "Multikolonne|M"
+msgstr "Feil bruk av multikolonne"
 
 #: src/insets/insettabular.C:1562
 msgid "You cannot set multicolumn vertically."
-msgstr ""
+msgstr "Multikolonne kan ikke brukes vertikalt."
 
 #: src/insets/insettext.C:269
 msgid "Opened Text Inset"
@@ -14059,45 +14081,44 @@ msgid "No image"
 msgstr "Ingen endring"
 
 #: src/insets/render_preview.C:89
-#, fuzzy
 msgid "Preview loading"
-msgstr "Forhåndsvisning"
+msgstr "Forhåndsvisning lastes inn"
 
 #: src/insets/render_preview.C:92
-#, fuzzy
 msgid "Preview ready"
-msgstr "Forhåndsvisning"
+msgstr "Forhåndsvisning klar"
 
 #: src/insets/render_preview.C:95
-#, fuzzy
 msgid "Preview failed"
-msgstr "Autolagring feilet!"
+msgstr "Forhåndsvisning mislyktes"
 
 #: src/ispell.C:206 src/ispell.C:213 src/ispell.C:222
-#, fuzzy
 msgid "Can't create pipe for spellchecker."
-msgstr "Begynn stavekontrollen."
+msgstr "Får ikke laget 'pipe' for stavekontrollen."
 
 #: src/ispell.C:227 src/ispell.C:232 src/ispell.C:237
-#, fuzzy
 msgid "Can't open pipe for spellchecker."
-msgstr "Stopp stavekontrollen."
+msgstr "Får ikke åpnet 'pipe' for stavekontrollen."
 
 #: src/ispell.C:246
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
 msgstr ""
+"Får ikke kjørt igang stavekontrollen 'ispell'.\n"
+"Kanskje du ikke har rett språk installert."
 
 #: src/ispell.C:268
 msgid ""
 "The spell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
+"Stavekontrollprosessen returnerte en feilkode.\n"
+"Kanskje den er galt konfigurert?"
 
 #: src/ispell.C:377
 msgid "Could not communicate with the spell-checker program."
-msgstr ""
+msgstr "Kunne ikke kommunisere med stavekontrollprogrammet."
 
 #: src/kbsequence.C:160
 msgid "   options: "
@@ -14164,31 +14185,31 @@ msgid "line%"
 msgstr "linje%"
 
 #: src/lengthcommon.C:50
-#, fuzzy
 msgid "theight%"
-msgstr "&Høyde:"
+msgstr "teksthøyde%"
 
 #: src/lengthcommon.C:50
-#, fuzzy
 msgid "pheight%"
-msgstr "&Høyde:"
+msgstr "sidehøyde%"
 
 #: src/lyx_cb.C:112
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
 "\n"
 "Do you want to rename the document and try again?"
-msgstr "Dokumentet har en ukjent tekstklasse \"%1$s\"."
+msgstr ""
+"Dokumentet %1$s kunne ikke lagres.\n"
+"\n"
+"Vil du prøve å lagre det under et annet navn?"
 
 #: src/lyx_cb.C:114
 msgid "Rename and save?"
-msgstr ""
+msgstr "Bytte navn og lagre?"
 
 #: src/lyx_cb.C:115
-#, fuzzy
 msgid "&Rename"
-msgstr "Fjern"
+msgstr "&Bytte navn"
 
 #: src/lyx_cb.C:131
 msgid "Choose a filename to save document as"
@@ -14199,27 +14220,28 @@ msgid "Templates|#T#t"
 msgstr "Maler"
 
 #: src/lyx_cb.C:165 src/lyxfunc.C:1790
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s already exists.\n"
 "\n"
 "Do you want to over-write that document?"
-msgstr "Dokumentet har en ukjent tekstklasse \"%1$s\"."
+msgstr ""
+"Dokumentet %1$s fins fra før.\n"
+"\n"
+"Vil du overskrive det dokumentet?"
 
 #: src/lyx_cb.C:167 src/lyxfunc.C:1792
-#, fuzzy
 msgid "Over-write document?"
-msgstr "Lagre dokument?"
+msgstr "OVerskrive dokument?"
 
 #: src/lyx_cb.C:214
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to remove the temporary directory %1$s"
-msgstr "Feil: Klarte ikke å lage temporær folder:"
+msgstr "Feil: Klarte ikke å fjerne den midlertidige mappen %1$s"
 
 #: src/lyx_cb.C:216
-#, fuzzy
 msgid "Unable to remove temporary directory"
-msgstr "Feil: Klarte ikke å lage temporær folder:"
+msgstr "Feil: Klarte ikke å fjerne midlertidig mappe"
 
 #: src/lyx_cb.C:248
 #, c-format
@@ -14239,32 +14261,32 @@ msgid "Select file to insert"
 msgstr "Velg fil som skal settes inn"
 
 #: src/lyx_cb.C:404
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not read the specified document\n"
 "%1$s\n"
 "due to the error: %2$s"
 msgstr ""
-"Kunne ikke åpne dokumentet\n"
-"%1$s."
+"Kunne ikke åpne det spesifiserte dokumentet\n"
+"%1$s.\n"
+"på grunn av feilen: %2$s"
 
 #: src/lyx_cb.C:406
-#, fuzzy
 msgid "Could not read file"
-msgstr "Kunne ikke kjøre filen:"
+msgstr "Kunne ikke lese filen"
 
 #: src/lyx_cb.C:414
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the specified document\n"
 "%1$s\n"
 "due to the error: %2$s"
 msgstr ""
-"Kunne ikke åpne dokumentet\n"
-"%1$s."
+"Kunne ikke åpne det spesifiserte dokumentet\n"
+"%1$s\n"
+"på grunn av feilen: %2$s"
 
 #: src/lyx_cb.C:416 src/output.C:36
-#, fuzzy
 msgid "Could not open file"
 msgstr "Kan ikke åpne fil"
 
@@ -14323,9 +14345,8 @@ msgid "LyX: "
 msgstr "LyX: "
 
 #: src/lyx_main.C:501
-#, fuzzy
 msgid "Could not create temporary directory"
-msgstr "Feil: Klarte ikke å lage temporær folder:"
+msgstr "Klarte ikke å lage midlertidig mappe"
 
 #: src/lyx_main.C:502
 #, c-format
@@ -14347,27 +14368,25 @@ msgid ""
 msgstr ""
 
 #: src/lyx_main.C:650
-#, fuzzy
 msgid "&Create directory."
-msgstr "Kan ikke lese fra dette filområdet."
+msgstr "&Opprett mappe."
 
 #: src/lyx_main.C:651
-#, fuzzy
 msgid "&Exit LyX."
-msgstr "Om LyX"
+msgstr "&Avslutt LyX."
 
 #: src/lyx_main.C:652
 msgid "No user LyX directory. Exiting."
-msgstr ""
+msgstr "Ingen brukerkatalog for LyX. Avslutter."
 
 #: src/lyx_main.C:656
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
-msgstr "LyX: Lager folder %1$s og kjører 'configure'..."
+msgstr "LyX: Lager mappen %1$s"
 
 #: src/lyx_main.C:663
 msgid "Failed to create directory. Exiting."
-msgstr ""
+msgstr "Mislyktes i å lage mappen. Avslutter."
 
 #: src/lyx_main.C:813
 msgid "List of supported debug flags:"
@@ -14536,12 +14555,15 @@ msgid "Document is read-only"
 msgstr "Dokumentet er ikke skrivbart."
 
 #: src/lyxfunc.C:618
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
 "\n"
 "Do you want to save the document?"
-msgstr "Dokumentet har en ukjent tekstklasse \"%1$s\"."
+msgstr ""
+"Dokumentet %1$s er endret men ikke lagret.\n"
+"\n"
+"Vil du lagre dokumentet?"
 
 #: src/lyxfunc.C:634
 #, c-format
@@ -14551,21 +14573,21 @@ msgid ""
 msgstr ""
 
 #: src/lyxfunc.C:637
-#, fuzzy
 msgid "Print document failed"
-msgstr "Skriv til fil"
+msgstr "Utskrift av dokumentet mislyktes"
 
 #: src/lyxfunc.C:656
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
-msgstr "Dokumentet har en ukjent tekstklasse \"%1$s\"."
+msgstr ""
+"Dokumentet kunne ikke konverteres\n"
+"til dokumentklassen %1$s."
 
 #: src/lyxfunc.C:659
-#, fuzzy
 msgid "Could not change class"
-msgstr "Kan ikke konvertere fil"
+msgstr "Fikk ikke byttet klasse"
 
 #: src/lyxfunc.C:767
 #, c-format
@@ -14589,7 +14611,6 @@ msgid "Build"
 msgstr "Bygge logg"
 
 #: src/lyxfunc.C:809
-#, fuzzy
 msgid "ChkTeX"
 msgstr "Sjekk TeX"
 
@@ -14616,14 +14637,12 @@ msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
 #: src/lyxfunc.C:1419
-#, fuzzy
 msgid "Document defaults saved in "
-msgstr "Dokumentet ble ikke lagret"
+msgstr "Standardverdier for dokumenter lagret i "
 
 #: src/lyxfunc.C:1422
-#, fuzzy
 msgid "Unable to save document defaults"
-msgstr "Velg filnavn som dokumentet skal lagres som"
+msgstr "Fikk ikke lagret dokumentstandarder"
 
 #: src/lyxfunc.C:1476
 msgid "Converting document to new document class..."
@@ -15131,25 +15150,25 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1252
+#: src/mathed/math_gridinset.C:1264
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1258
+#: src/mathed/math_gridinset.C:1270
 #, fuzzy
 msgid "Only one column"
 msgstr "Slett kolonne|S"
 
-#: src/mathed/math_gridinset.C:1266
+#: src/mathed/math_gridinset.C:1278
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Ingenting å utføre"
 
-#: src/mathed/math_gridinset.C:1275
+#: src/mathed/math_gridinset.C:1287
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1293
+#: src/mathed/math_gridinset.C:1305
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
@@ -15768,12 +15787,6 @@ msgstr "Avsnittstil satt"
 #, fuzzy
 #~ msgid "Key maps|#K#k"
 #~ msgstr "Nøkkel:"
-
-#~ msgid "BibTeX database files (*.bib)"
-#~ msgstr "BibTeX database filer (*.bib)"
-
-#~ msgid "PostScript files (*.ps)"
-#~ msgstr "PostScript filer (*.ps)"
 
 #~ msgid "Select a file to print to"
 #~ msgstr "Velg fil som det skal skrives til"
