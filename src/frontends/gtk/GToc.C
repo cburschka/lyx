@@ -88,8 +88,7 @@ void GToc::update()
 void GToc::updateType()
 {
 	changing_views_ = true;
-	string const targettype =
-		toc::getType(controller().params().getCmdName());
+	string const targettype = controller().getGuiName();
 
 	typestore_->clear();
 	vector<string> types = controller().getTypes();

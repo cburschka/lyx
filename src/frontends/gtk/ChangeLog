@@ -1,3 +1,8 @@
+2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* GToc.C: consider gui name, not type, when trying to set the
+	toc combo (fixes bug 1870).
+
 2005-05-14  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* Dialogs.C: dialog title "Index" => "Index Entry"

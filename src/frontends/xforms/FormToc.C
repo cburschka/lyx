@@ -89,8 +89,8 @@ void FormToc::updateType()
 	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
 
 	// And select the correct one
-	string const type = toc::getType(controller().params().getCmdName());
-	fl_set_choice_text(dialog_->choice_toc_type, type.c_str());
+	string const guiname = controller().getGuiName();
+	fl_set_choice_text(dialog_->choice_toc_type, guiname.c_str());
 }
 
 

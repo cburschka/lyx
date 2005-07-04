@@ -38,6 +38,12 @@ vector<string> const ControlToc::getTypes() const
 }
 
 
+string const ControlToc::getGuiName() const
+{
+	return toc::getGuiName(params().getCmdName(), kernel().buffer());
+}
+
+
 toc::Toc const ControlToc::getContents(string const & type) const
 {
 	toc::Toc empty_list;

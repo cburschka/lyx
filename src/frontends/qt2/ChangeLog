@@ -1,5 +1,10 @@
 2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* QToc.C: consider gui name, not type, when trying to set the
+	toc combo (fixes bug 1870).
+
+2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* QChanges.C: use bformat() for translatable strings.
 
 2005-07-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>

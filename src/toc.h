@@ -65,6 +65,9 @@ void asciiTocList(std::string const &, Buffer const &, std::ostream &);
     by ControlToc::getContents() */
 std::string const getType(std::string const & cmdName);
 
+/// Returns the guiname from a given CmdName
+std::string const getGuiName(std::string const & cmdName, Buffer const &);
+
 inline
 bool operator==(TocItem const & a, TocItem const & b)
 {
