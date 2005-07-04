@@ -1205,28 +1205,57 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 				tmp_format.erase(dot, 1);
 			file_format = strToInt(tmp_format);
 			//lyxerr << "format: " << file_format << endl;
-			if (file_format == LYX_FORMAT) {
-				// current format
-			} else if (file_format > LYX_FORMAT) {
-				// future format
-				Alert::alert(_("Warning!"),
-					_("The file was created with a newer version of "
-					"LyX. This is likely to cause problems."));
-
-			} else if (file_format < LYX_FORMAT) {
-				// old formats
-				if (file_format < 200) {
-					Alert::alert(_("ERROR!"),
-						   _("Old LyX file format found. "
-						     "Use LyX 0.10.x to read this!"));
-					return false;
-				} else if (!filename.empty()) {
+			if (file_format != LYX_FORMAT) {
+				// old or future formats
+				if (!filename.empty()) {
 					string const lyx2lyx = LibFileSearch("lyx2lyx", "lyx2lyx");
 					if (lyx2lyx.empty()) {
 						Alert::alert(_("ERROR!"),
 							     _("Can't find conversion script."));
 						return false;
 					}
+					ostringstream ver_cmd;
+					ver_cmd << "python " << QuoteName(lyx2lyx)
+					        << " -l";
+					string const ver_str = STRCONV(ver_cmd.str());
+
+					lyxerr[Debug::INFO] << "Running '"
+							    << ver_str << '\''
+							    << endl;
+
+					cmd_ret const ver_ret = RunCommand(ver_str);
+					if (ver_ret.first) {
+						Alert::alert(_("ERROR!"),
+							     _("An error occured while "
+							       "running the conversion script."));
+						return false;
+					}
+
+					// ver_ret.second is now something like
+					// "['210', '215', ... '221']\n" (lyx2lyx 1.3.x) or
+					// "[210, 215 ... 241]\n" (lyx2lyx 1.4.x),
+					// possibly also with "\r\n" line ending on win.
+					string res = subst(ver_ret.second, "\n", "");
+					res = subst(res, "\r", "");
+					res = subst(res, "[", "");
+					res = subst(res, "]", "");
+					vector<string> const versions = getVectorFromString(res);
+					int const first = strToInt(trim(versions.front(), "'"));
+					if (file_format < first) {
+						Alert::alert(_("ERROR!"),
+							_("Old LyX file format found. "
+							  "Use LyX 0.10.x to read this!"));
+						return false;
+					}
+					int const last = strToInt(trim(versions.back(), "'"));
+					if (file_format > last) {
+						Alert::alert(_("ERROR!"),
+							_("The file was created with a newer"
+							  " version of LyX, but the lyx2lyx"
+							  " script cannot convert it.\n"));
+						return false;
+					}
+
 					string const tmpfile = lyx::tempName();
 					ostringstream command;
 					command << "python " << QuoteName(lyx2lyx)

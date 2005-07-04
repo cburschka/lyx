@@ -1,3 +1,7 @@
+2005-07-04  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* buffer.C (readFile): don't refuse newer file formats
+
 2005-06-16  Angus Leeming  <leeming@lyx.org>
 
 	* lyxrc.C (output, read): wrap all input and output of paths with
