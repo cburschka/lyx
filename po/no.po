@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-07-04 12:29+0200\n"
+"POT-Creation-Date: 2005-07-04 12:34+0200\n"
 "PO-Revision-Date: 2005-07-04 11:29+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -15401,6 +15401,36 @@ msgstr "Tegnsett"
 #: src/text3.C:1504
 msgid "Paragraph layout set"
 msgstr "Avsnittstil satt"
+
+#: src/vspace.C:487
+#, fuzzy
+msgid "Default skip"
+msgstr "Standard avstand|#S"
+
+#: src/vspace.C:490
+#, fuzzy
+msgid "Small skip"
+msgstr "Liten avstand"
+
+#: src/vspace.C:493
+#, fuzzy
+msgid "Medium skip"
+msgstr "Medium avstand"
+
+#: src/vspace.C:496
+#, fuzzy
+msgid "Big skip"
+msgstr "Stor avstand"
+
+#: src/vspace.C:499
+#, fuzzy
+msgid "Vertical fill"
+msgstr "&Vertikal:"
+
+#: src/vspace.C:506
+#, fuzzy
+msgid "protected"
+msgstr "Beskytt:"
 
 #~ msgid "Search the available citations"
 #~ msgstr "Søk i de tilgjengelige referansene"
