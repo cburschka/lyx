@@ -1,3 +1,8 @@
+2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* toc.[Ch]: new method getGuiName, which is used by the frontends 
+	to set the toc combo (fixes bug 1870). Make TOC string translatable.
+
 2005-07-04  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* buffer.C (readFile): don't refuse newer file formats

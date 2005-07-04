@@ -1,3 +1,8 @@
+2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QToc.C: consider gui name, not type, when trying to set the
+	toc combo (fixes bug 1870).
+
 2005-06-16  Angus Leeming  <leeming@lyx.org>
 
 	* QPrefs.C (apply, update_contents): wrap all input and output of

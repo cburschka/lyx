@@ -53,14 +53,14 @@ void QToc::updateType()
 	dialog_->typeCO->clear();
 
 	vector<string> const & choice = controller().getTypes();
-	string const & type = toc::getType(controller().params().getCmdName());
+	string const & guiname = controller().getGuiName();
 
 	for (vector<string>::const_iterator it = choice.begin();
 		it != choice.end(); ++it) {
 		dialog_->typeCO->insertItem(toqstr(*it));
-		if (*it == type) {
+		if (*it == guiname) {
 			dialog_->typeCO->setCurrentItem(it - choice.begin());
-			dialog_->setCaption(toqstr(type));
+			dialog_->setCaption(toqstr(guiname));
 		}
 	}
 }

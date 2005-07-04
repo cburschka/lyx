@@ -18,7 +18,9 @@
 #include "support/lstrings.h"
 #include "toc.h"
 #include "buffer.h"
+#include "FloatList.h"
 #include "frontends/LyXView.h"
+#include "gettext.h"
 #include "LyXAction.h"
 #include "paragraph.h"
 #include "insets/insetfloat.h"
@@ -58,9 +60,20 @@ string const getType(string const & cmdName)
 {
 	// special case
 	if (cmdName == "tableofcontents")
-		return "TOC";
+		return _("TOC");
 	else
 		return cmdName;
+}
+
+
+string const getGuiName(string const & cmdName, Buffer const * buffer)
+{
+	FloatList const & floats =
+		buffer->params.getLyXTextClass().floats();
+	if (floats.typeExist(cmdName))
+		return _(floats.getType(cmdName).name());
+	else
+		return getType(cmdName);
 }
 
 
@@ -88,7 +101,7 @@ TocList const getTocList(Buffer const * buf)
 			const int depth = max(0, labeltype - textclass.maxcounter());
 			TocItem const item(par->id(), depth,
 					   par->asString(buf, true));
-			toclist["TOC"].push_back(item);
+			toclist[_("TOC")].push_back(item);
 		}
 
 		// For each paragraph, traverse its insets and look for

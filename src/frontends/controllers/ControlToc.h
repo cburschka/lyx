@@ -29,6 +29,9 @@ public:
 	/// Return the list of types available
 	std::vector<string> const getTypes() const;
 
+	/// Return the guiname from a given cmdName of the TOC param
+	std::string const getGuiName() const;
+
 	/// Given a type, returns the contents
 	toc::Toc const getContents(string const & type) const;
 };
