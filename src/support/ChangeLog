@@ -1,3 +1,9 @@
+2005-07-05  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.C (latex_path): don't pass the \string"-protected
+	file name through ChangeExtension as it breaks the latex code
+	on Windows.
+
 2005-07-04  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* filetools.[Ch] (latex_path): add exclude_extension argument
