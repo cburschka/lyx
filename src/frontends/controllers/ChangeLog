@@ -1,3 +1,8 @@
+2005-07-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ControlChanges.C (getChangeDate): use localized date (from 
+	support/lyxtime).
+
 2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlToc.[Ch]: new method getGuiName, which is used by the frontends 

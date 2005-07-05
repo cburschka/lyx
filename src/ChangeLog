@@ -1,3 +1,8 @@
+2005-07-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* text3.C (doDispatch): rewrite LFUN_DATE_INSERT using the brandnew
+	formatted_time methods in support/lyxtime.
+
 2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* toc.[Ch]: new method getGuiName, which is used by the frontends 

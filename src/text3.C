@@ -57,6 +57,7 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/convert.h"
+#include "support/lyxtime.h"
 
 #include "mathed/math_hullinset.h"
 #include "mathed/math_macrotemplate.h"
@@ -954,27 +955,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_DATE_INSERT: {
-		lyx::cap::replaceSelection(cur);
-		time_t now_time_t = time(NULL);
-		struct tm * now_tm = localtime(&now_time_t);
-		setlocale(LC_TIME, "");
-		string arg;
-		if (!cmd.argument.empty())
-			arg = cmd.argument;
+	case LFUN_DATE_INSERT: 
+		if (cmd.argument.empty())
+			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT,
+				lyx::formatted_time(lyx::current_time())));
 		else
-			arg = lyxrc.date_insert_format;
-		char datetmp[32];
-		int const datetmp_len =
-			::strftime(datetmp, 32, arg.c_str(), now_tm);
-
-		for (int i = 0; i < datetmp_len; i++)
-			insertChar(cur, datetmp[i]);
-
-		cur.resetAnchor();
-		moveCursor(cur, false);
+			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT,
+				lyx::formatted_time(lyx::current_time(), cmd.argument)));
 		break;
-	}
 
 	case LFUN_MOUSE_TRIPLE:
 		if (cmd.button() == mouse_button::button1) {

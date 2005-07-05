@@ -19,13 +19,11 @@
 #include "changes.h"
 #include "funcrequest.h"
 #include "lyxfind.h"
-#include "support/lstrings.h"
+#include "support/lyxtime.h"
 
 using std::string;
 
 namespace lyx {
-
-using support::rtrim;
 
 namespace frontend {
 
@@ -47,9 +45,7 @@ string const ControlChanges::getChangeDate()
 	if (c.type == Change::UNCHANGED || !c.changetime)
 		return string();
 
-	// ctime adds newline; trim it off!
-	string const date = rtrim(ctime(&c.changetime), "\n");
-	return date;
+	return formatted_time(c.changetime);
 }
 
 
