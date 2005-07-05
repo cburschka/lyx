@@ -94,7 +94,7 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 	font.decSize();
 
-	string s = "Branch: " + params_.branch;
+	string s = _("Branch: ") + params_.branch;
 	setLabel(isOpen() ? s : getNewLabel(s) );
 	font.setColor(LColor::foreground);
 	if (!params_.branch.empty())
