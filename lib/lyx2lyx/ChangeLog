@@ -1,6 +1,16 @@
 2005-07-05  José Matos  <jamatos@lyx.org>
 
 	* LyX.py (LyX_Base):
+	* LyX.py (error):
+	* LyX.py (convert):
+	* lyx2lyx: Implement return codes consistently:
+	0 - OK.
+	1 - Irrecoverable error.
+	2 - Recovered from error(s).
+
+2005-07-05  José Matos  <jamatos@lyx.org>
+
+	* LyX.py (LyX_Base):
 	* LyX.py (File):
 	* lyx2lyx (usage):
 	* lyx2lyx (parse_options):	

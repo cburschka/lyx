@@ -112,6 +112,7 @@ class LyX_Base:
         self.textclass = "article"
         self.header = []
         self.body = []
+        self.status = 0
 
 
     def warning(self, message, debug_level= default_debug_level):
@@ -121,10 +122,13 @@ class LyX_Base:
 
 
     def error(self, message):
-        " Emits a warning and exist incondicionally."
+        " Emits a warning and exits if not in try_hard mode."
         self.warning(message)
-        self.warning("Quiting.")
-        sys.exit(1)
+        if not self.try_hard:
+            self.warning("Quiting.")
+            sys.exit(1)
+
+        self.status = 2
 
 
     def read(self):
@@ -290,6 +294,7 @@ class LyX_Base:
                                      default_debug_level)
                         if not self.try_hard:
                             raise
+                        self.status = 2
                     else:
                         self.warning("%lf: Elapsed time on %s"  % (time.time() - init_t, str(conv)),
                                      default_debug_level + 1)

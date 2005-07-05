@@ -84,5 +84,8 @@ def main(argv):
     file.convert()
     file.write()
 
+    return file.status
+
+
 if __name__ == "__main__":
-    main(sys.argv)
+    sys.exit(main(sys.argv))
