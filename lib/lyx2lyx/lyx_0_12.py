@@ -273,12 +273,26 @@ def update_latexaccents(file):
         i = i + 1
 
 
+def obsolete_latex_title(file):
+    body = file.body
+    i = 0
+    while 1:
+        i = find_token(body, '\\layout', i)
+        if i == -1:
+            return
+
+        if string.find(string.lower(body[i]),'latex_title') != -1:
+            body[i] = '\\layout Title'
+
+        i = i + 1
+
+
 convert = [[215, [header_update, add_end_document, remove_cursor,
                   final_dot, update_inset_label, update_latexdel,
                   update_space_units, space_before_layout,
                   formula_inset_space_eat, update_tabular,
                   update_vfill, remove_empty_insets,
-                  remove_formula_latex, update_latexaccents]]]
+                  remove_formula_latex, update_latexaccents, obsolete_latex_title]]]
 revert  = []
 
 
