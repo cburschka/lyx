@@ -78,7 +78,7 @@ def get_backend(textclass):
 #
 class LyX_Base:
     """This class carries all the information of the LyX file."""
-    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level):
+    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level, try_hard = 0):
         """Arguments:
         end_format: final format that the file should be converted. (integer)
         input: the name of the input source, if empty resort to standard input.
@@ -101,6 +101,7 @@ class LyX_Base:
             self.err = sys.stderr
 
         self.debug = debug
+        self.try_hard = try_hard
 
         if end_format:
             self.end_format = self.lyxformat(end_format)
@@ -282,9 +283,16 @@ class LyX_Base:
 
                 for conv in table:
                     init_t = time.time()
-                    conv(self)
-                    self.warning("%lf: Elapsed time on %s"  % (time.time() - init_t, str(conv)),
-                                 default_debug_level + 1)
+                    try:
+                        conv(self)
+                    except:
+                        self.warning("An error ocurred in %s, %s" % (version, str(conv)),
+                                     default_debug_level)
+                        if not self.try_hard:
+                            raise
+                    else:
+                        self.warning("%lf: Elapsed time on %s"  % (time.time() - init_t, str(conv)),
+                                     default_debug_level + 1)
 
                 self.format = version
                 if self.end_format == self.format:
@@ -414,8 +422,8 @@ class LyX_Base:
 
 class File(LyX_Base):
     " This class reads existing LyX files."
-    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level):
-        LyX_Base.__init__(self, end_format, input, output, error, debug)
+    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level, try_hard = 0):
+        LyX_Base.__init__(self, end_format, input, output, error, debug, try_hard)
         self.read()
 
 

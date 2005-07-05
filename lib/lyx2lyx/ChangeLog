@@ -1,5 +1,14 @@
 2005-07-05  José Matos  <jamatos@lyx.org>
 
+	* LyX.py (LyX_Base):
+	* LyX.py (File):
+	* lyx2lyx (usage):
+	* lyx2lyx (parse_options):	
+	* lyx2lyx (main): Add support for ignoring any errors during the
+	file convertion.
+
+2005-07-05  José Matos  <jamatos@lyx.org>
+
 	* lyx_0_12.py (obsolete_latex_title): Obsolote old style.
 
 2005-05-18  Angus Leeming  <leeming@lyx.org>

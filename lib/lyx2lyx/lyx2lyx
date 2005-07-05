@@ -35,18 +35,19 @@ Options:
     -f, --from version		initial version (optional)
     -t, --to version		final version (optional)
     -o, --output name		name of the output file or else goes to stdout
+    -n, --try-hard		try hard (ignore any convertion errors)
     -q, --quiet			same as --debug=0"""
 
 
 def parse_options(argv):
-    _options =  ["help", "version", "list", "debug=", "err=", "from=", "to=", "output=", "quiet"]
+    _options =  ["help", "version", "list", "debug=", "err=", "from=", "to=", "output=", "try-hard", "quiet"]
     try:
-       opts, args = getopt.getopt(argv[1:], "d:e:f:hlo:qt:v", _options)
+       opts, args = getopt.getopt(argv[1:], "d:e:f:hlno:qt:v", _options)
     except getopt.error:
         usage()
         sys.exit(2)
 
-    end_format, input, output, error, debug = 0, "", "", "", LyX.default_debug_level
+    end_format, input, output, error, debug, try_hard = 0, "", "", "", LyX.default_debug_level, 0
     for o, a in opts:
         if o in ("-h", "--help"):
             usage()
@@ -68,15 +69,17 @@ def parse_options(argv):
             end_format = a
         if o in ("-e","--err"):
             error = a
+        if o in ("-n", "--try-hard"):
+            try_hard = 1
     if args:
         input = args[0]
 
-    return end_format, input, output, error, debug
+    return end_format, input, output, error, debug, try_hard
 
 
 def main(argv):
-    end_format, input, output, error, debug = parse_options(argv)
-    file = LyX.File(end_format, input, output, error, debug)
+    end_format, input, output, error, debug, try_hard = parse_options(argv)
+    file = LyX.File(end_format, input, output, error, debug, try_hard)
 
     file.convert()
     file.write()
