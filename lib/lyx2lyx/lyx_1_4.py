@@ -1515,7 +1515,7 @@ def convert_paperpackage(file):
         file.warning("Malformed lyx file: Missing '\\paperpackage'.")
         return
 
-    packages = {'a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
+    packages = {'default':'none','a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
     paperpackage = split(file.header[i])[1]
     file.header[i] = replace(file.header[i], paperpackage, packages[paperpackage])
 
