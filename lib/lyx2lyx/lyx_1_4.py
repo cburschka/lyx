@@ -304,7 +304,13 @@ def add_end_layout(file):
         i = find_tokens(file.body, ["\\begin_inset", "\\end_inset", "\\layout",
                                 "\\begin_deeper", "\\end_deeper", "\\the_end"], i)
 
-        token = split(file.body[i])[0]
+        if i != -1:
+            token = split(file.body[i])[0]
+        else:
+            file.warning("Truncated file.")
+            i = len(file.body)
+            file.body.insert(i, '\\the_end')
+            token = ""
 
         if token == "\\begin_inset":
             struct_stack.append(token)

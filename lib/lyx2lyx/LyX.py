@@ -118,7 +118,7 @@ class LyX_Base:
     def warning(self, message, debug_level= default_debug_level):
         " Emits warning to self.error, if the debug_level is less than the self.debug."
         if debug_level <= self.debug:
-            self.err.write(message + "\n")
+            self.err.write("Warning: " + message + "\n")
 
 
     def error(self, message):

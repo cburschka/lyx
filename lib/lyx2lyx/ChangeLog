@@ -1,5 +1,10 @@
 2005-07-06  José Matos  <jamatos@lyx.org>
 
+	* LyX.py (warning): Prefix warnings with label "Warning: ".
+	* lyx_1_4.lyx (add_end_layout): Handle truncated files.
+
+2005-07-06  José Matos  <jamatos@lyx.org>
+
 	* lyx_1_4.lyx (convert_paperpackage): older tex2lyx generated files
 	had \paperpackage with 'default' instead of 'none'.
 	
