@@ -139,13 +139,14 @@ QMathDialog::QMathDialog(QMath * form)
 	m->insertTearOffHandle();
 	m->insertItem(qt_("Roman	\\mathrm"), 1);
 	m->insertItem(qt_("Bold	\\mathbf"), 2);
-	m->insertItem(qt_("Sans serif	\\mathsf"), 3);
-	m->insertItem(qt_("Italic	\\mathit"), 4);
-	m->insertItem(qt_("Typewriter	\\mathtt"), 5);
-	m->insertItem(qt_("Blackboard	\\mathbb"), 6);
-	m->insertItem(qt_("Fraktur	\\mathfrak"), 7);
-	m->insertItem(qt_("Calligraphic	\\mathcal"), 8);
-	m->insertItem(qt_("Normal text mode	\\textrm"), 9);
+	m->insertItem(qt_("Bold symbol	\\boldsymbol"), 3);
+	m->insertItem(qt_("Sans serif	\\mathsf"), 4);
+	m->insertItem(qt_("Italic	\\mathit"), 5);
+	m->insertItem(qt_("Typewriter	\\mathtt"), 6);
+	m->insertItem(qt_("Blackboard	\\mathbb"), 7);
+	m->insertItem(qt_("Fraktur	\\mathfrak"), 8);
+	m->insertItem(qt_("Calligraphic	\\mathcal"), 9);
+	m->insertItem(qt_("Normal text mode	\\textrm"), 10);
 	connect(m, SIGNAL(activated(int)), this, SLOT(insertFont(int)));
 	fontPB->setPopup(m);
 }
@@ -297,13 +298,14 @@ void QMathDialog::insertFont(int id)
 	switch (id) {
 		case 1: str = "mathrm"; break;
 		case 2: str = "mathbf"; break;
-		case 3: str = "mathsf"; break;
-		case 4: str = "mathit"; break;
-		case 5: str = "mathtt"; break;
-		case 6: str = "mathbb"; break;
-		case 7: str = "mathfrak"; break;
-		case 8: str = "mathcal"; break;
-		case 9: str = "textrm"; break;
+		case 3: str = "boldsymbol"; break;
+		case 4: str = "mathsf"; break;
+		case 5: str = "mathit"; break;
+		case 6: str = "mathtt"; break;
+		case 7: str = "mathbb"; break;
+		case 8: str = "mathfrak"; break;
+		case 9: str = "mathcal"; break;
+		case 10: str = "textrm"; break;
 		default: return;
 	}
 	form_->controller().dispatchInsert(str);
