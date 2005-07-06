@@ -153,8 +153,13 @@ class LyX_Base:
             if not preamble:
                 line = string.strip(line)
 
-            if not line and not preamble:
-                break
+            if not preamble:
+                if not line:
+                    break
+
+                if string.split(line)[0] in ("\\layout", "\\begin_layout", "\\begin_body"):
+                    self.body.append(string.split(line)[0])
+                    break
 
             self.header.append(line)
 

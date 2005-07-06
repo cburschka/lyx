@@ -1,15 +1,20 @@
 2005-07-06  José Matos  <jamatos@lyx.org>
 
-	* lyx_1_4.lyx (paperpackage): Fix empty paperpackage case.
+	* LyX.py (read): Add support for cases where the body begins
+	without a whiteline before.
+
+2005-07-06  José Matos  <jamatos@lyx.org>
+
+	* lyx_1_4.py (paperpackage): Fix empty paperpackage case.
 
 2005-07-06  José Matos  <jamatos@lyx.org>
 
 	* LyX.py (warning): Prefix warnings with label "Warning: ".
-	* lyx_1_4.lyx (add_end_layout): Handle truncated files.
+	* lyx_1_4.py (add_end_layout): Handle truncated files.
 
 2005-07-06  José Matos  <jamatos@lyx.org>
 
-	* lyx_1_4.lyx (convert_paperpackage): older tex2lyx generated files
+	* lyx_1_4.py (convert_paperpackage): older tex2lyx generated files
 	had \paperpackage with 'default' instead of 'none'.
 	
 2005-07-05  José Matos  <jamatos@lyx.org>
