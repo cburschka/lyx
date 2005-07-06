@@ -33,7 +33,11 @@ def replace_protected_separator(file):
             break
         j = find_token_backwards(lines, "\\layout", i)
         #if j == -1: print error
-        layout = layout_exp.match(lines[j]).group(1)
+        layout_m = layout_exp.match(lines[j])
+        if layout_m:
+            layout = layout_m.group(1)
+        else:
+            layout = "Standard"
 
         if layout == "LyX-Code":
             result = ""
