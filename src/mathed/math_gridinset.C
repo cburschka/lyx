@@ -780,7 +780,7 @@ bool MathGridInset::idxUpDown(LCursor & cur, bool up) const
 			return false;
 		cur.idx() -= ncols();
 	} else {
-		if (cur.idx() >= ncols() * (nrows() - 1))
+		if (cur.row() >= nrows())
 			return false;
 		cur.idx() += ncols();
 	}
@@ -1111,17 +1111,18 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		else if (s == "copy-row") {
 			// Here (as later) we save the cursor col/row 
 			// in order to restore it after operation. 
-			cur.idxSave();
+			row_type const r = cur.row();
+			col_type const c = cur.col();
 			for (int i = 0, n = extractInt(is); i < n; ++i)
 				copyRow(cur.row());
-			cur.idxLoad();
-			}
+			cur.idx() = index(r, c);
+		}
 		else if (s == "swap-row") {
 			swapRow(cur.row());
 			// Trick to suppress same-idx-means-different-cell 
 			// assertion crash:
 			cur.pos() = 0; 
-			}
+		}
 		else if (s == "add-hline-above")
 			rowinfo_[cur.row()].lines_++;
 		else if (s == "add-hline-below")
@@ -1130,29 +1131,30 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			rowinfo_[cur.row()].lines_--;
 		else if (s == "delete-hline-below")
 			rowinfo_[cur.row()+1].lines_--;
-		else if (s == "append-column")
-			for (int i = 0, n = extractInt(is); i < n; ++i) {
-				cur.idxSave();
+		else if (s == "append-column") {
+			row_type const r = cur.row();
+			col_type const c = cur.col();
+			for (int i = 0, n = extractInt(is); i < n; ++i)
 				addCol(cur.col());
-				cur.idxLoad();
-			}
-		else if (s == "delete-column")
-			for (int i = 0, n = extractInt(is); i < n; ++i) {
-				cur.idxSave();
+			cur.idx() = index(r, c);
+		}
+		else if (s == "delete-column") {
+			row_type const r = cur.row();
+			col_type const c = cur.col();
+			for (int i = 0, n = extractInt(is); i < n; ++i)
 				delCol(col(cur.idx()));
-				cur.idxLoad();
-				if (cur.idx() > nargs())
-					cur.idx() -= ncols();
-			}
+			cur.idx() = index(r, min(c, cur.ncols() - 1));
+		}
 		else if (s == "copy-column") {
-			cur.idxSave();
+			row_type const r = cur.row();
+			col_type const c = cur.col();
 			copyCol(cur.col());
-			cur.idxLoad();
-			}
+			cur.idx() = index(r, c);
+		}
 		else if (s == "swap-column") {
 			swapCol(cur.col());
 			cur.pos() = 0; // trick, see above
-			}
+		}
 		else if (s == "add-vline-left")
 			colinfo_[cur.col()].lines_++;
 		else if (s == "add-vline-right")

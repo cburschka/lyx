@@ -54,10 +54,12 @@ public:
 	///
 	explicit DocIterator(InsetBase & inset);
 
+	/// access slice at position \p i
 	CursorSlice const & operator[](size_t i) const {
 		return slices_[i];
 	}
 
+	/// access slice at position \p i
 	CursorSlice & operator[](size_t i) {
 		return slices_[i];
 	}
@@ -70,6 +72,7 @@ public:
 	/// is this iterator invalid?
 	bool operator!() const { return empty(); }
 
+	/// does this iterator have any content?
 	bool empty() const { return slices_.empty(); }
 
 	//
@@ -81,7 +84,7 @@ public:
 	CursorSlice const & top() const { return slices_.back(); }
 	/// access to outermost slice
 	CursorSlice & bottom() { return slices_.front(); }
-	/// access to  outermost slicetip
+	/// access to outermost slice
 	CursorSlice const & bottom() const { return slices_.front(); }
 	/// how many nested insets do we have?
 	size_t depth() const { return slices_.size(); }
@@ -91,10 +94,6 @@ public:
 	idx_type idx() const { return top().idx(); }
 	/// return the cell of the inset this cursor is in
 	idx_type & idx() { return top().idx(); }
-	///
-	void idxSave() { top().idxSave(); }
-	///
-	void idxLoad() { top().idxLoad(); }
 	/// return the last possible cell in this inset
 	idx_type lastidx() const;
 	/// return the paragraph this cursor is in
@@ -155,9 +154,9 @@ public:
 	//
 	// text-specific part
 	//
-	/// see comment for boundary_ below
+	/// \sa boundary_
 	bool boundary() const { return top().boundary(); }
-	/// see comment for boundary_ below
+	/// \sa boundary_
 	bool & boundary() { return top().boundary(); }
 	/// the paragraph we're in
 	Paragraph & paragraph();

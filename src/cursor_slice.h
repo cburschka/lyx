@@ -62,10 +62,6 @@ public:
 	idx_type idx() const { return idx_; }
 	/// return the cell this cursor is in
 	idx_type & idx() { return idx_; }
-	/// Save current cursor idx as row, col
-	void idxSave() { col_ = idx_ % ncols(); row_ = idx_ / ncols(); }
-	/// update idx to correspond to row, col
-	void idxLoad() { idx_ = col_ + ncols() * row_; }
 	/// return the last cell in this inset
 	idx_type lastidx() const { return nargs() - 1; }
 	/// return the offset of the paragraph this cursor is in
@@ -84,31 +80,43 @@ public:
 	pos_type lastpos() const;
 	/// return the number of embedded cells
 	size_t nargs() const;
-	/// return the number of columns
+	/*!
+	 * \return the number of columns.
+	 * This does only make sense in grid like insets.
+	 */
 	size_t ncols() const;
-	/// return the number of rows
+	/*!
+	 * \return the number of rows.
+	 * This does only make sense in grid like insets.
+	 */
 	size_t nrows() const;
-	/// return the grid row of the current cell
+	/*!
+	 * \return the grid row of the current cell.
+	 * This does only make sense in grid like insets.
+	 */
 	row_type row() const;
-	/// return the grid column of the current cell
+	/*!
+	 * \return the grid column of the current cell.
+	 * This does only make sense in grid like insets.
+	 */
 	col_type col() const;
 
 	///
 	/// texted specific stuff
 	///
-	/// see comment for the member
+	/// \sa boundary_
 	bool boundary() const { return boundary_; }
-	/// see comment for the member
+	/// \sa boundary_
 	bool & boundary() { return boundary_; }
-	///
+	/// returns text corresponding to this position
 	LyXText * text();
-	///
+	/// returns text corresponding to this position
 	LyXText const * text() const;
-	///
+	/// returns the owning inset if it is an UpdatableInset, else 0
 	UpdatableInset * asUpdatableInset() const;
-	///
+	/// paragraph in this cell
 	Paragraph & paragraph();
-	///
+	/// paragraph in this cell
 	Paragraph const & paragraph() const;
 
 	///
@@ -116,29 +124,40 @@ public:
 	///
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
-	///
+	/// returns the owning inset if it is a MathInset, else 0
 	MathInset * asMathInset() const;
 
-	///
+	/// write some debug information to \p os
 	friend std::ostream & operator<<(std::ostream &, CursorSlice const &);
 public:
 	/// pointer to 'owning' inset. This is some kind of cache.
 	InsetBase * inset_;
 private:
-	/// cell index of a position in this inset
+	/*!
+	 * Cell index of a position in this inset.
+	 * This is the primary cell information also for grid like insets,
+	 * although we have the convenience functions row() and col() for
+	 * those.
+	 * This means that the corresponding idx_ of a cell in a given row
+	 * and column changes every time the number of columns or number of
+	 * rows changes. Normally the cursor should stay in the same cell,
+	 * so these changes should typically be performed like the following:
+	 * \code
+	 * row_type const r = cur.row();
+	 * col_type const c = cur.col();
+	 * // change nrows() and/or ncols()
+	 * cur.idx = index(r, c);
+	 * \endcode
+	 */
 	idx_type idx_;
-	/// row position in inset
-	row_type row_;
-	/// column position in inset
-	col_type col_;
 	/// paragraph in this cell (used by texted)
 	pit_type pit_;
-	/// true of 'pit' was properly initialized
+	/// true if 'pit' was properly initialized
 	bool pit_valid_;
 	/// position in this cell
 	pos_type pos_;
 	/**
-	 * When the cursor position is i, is the cursor is after the i-th char
+	 * When the cursor position is i, is the cursor after the i-th char
 	 * or before the i+1-th char ? Normally, these two interpretations are
 	 * equivalent, except when the fonts of the i-th and i+1-th char
 	 * differ.

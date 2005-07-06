@@ -1448,6 +1448,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::APPEND_COLUMN:
 		// append the column into the tabular
 		tabular.appendColumn(bv.buffer()->params(), cur.idx());
+		cur.idx() = tabular.getCellNumber(row, column);
 		break;
 
 	case LyXTabular::DELETE_ROW:
