@@ -360,7 +360,6 @@ Style Abstract
   LeftMargin		""
   RightMargin		""
 #  ParIndent		MM
-  LabelSep              M
   LabelType		Static
   LabelString		"Abstract---"
 #  LabelBottomSep        0.0
@@ -390,7 +389,7 @@ Style Keywords
   Align			Left
   AlignPossible		Block, Left, Right, Center
   LabelType		Static
-  LabelString		"Keywords---"
+  LabelString		"Index Terms---"
   # label font definition
   TextFont
     Shape               Up

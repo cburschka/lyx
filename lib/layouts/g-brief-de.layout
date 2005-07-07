@@ -54,7 +54,7 @@ Style Name
   Margin		Static
   LatexType		Command
   LatexName		Name
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -74,7 +74,7 @@ Style Unterschrift
   Margin		Static
   LatexType		Command
   LatexName		Unterschrift
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -94,7 +94,7 @@ Style Strasse
   Margin		Static
   LatexType		Command
   LatexName		Strasse
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -114,7 +114,7 @@ Style Zusatz
   Margin		Static
   LatexType		Command
   LatexName		Zusatz
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -134,7 +134,7 @@ Style Ort
   Margin		Static
   LatexType		Command
   LatexName		Ort
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -154,7 +154,7 @@ Style Land
   Margin		Static
   LatexType		Command
   LatexName		Land
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -174,7 +174,7 @@ Style RetourAdresse
   Margin		Static
   LatexType		Command
   LatexName		RetourAdresse
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -195,7 +195,7 @@ Style MeinZeichen
   Margin		Static
   LatexType		Command
   LatexName		MeinZeichen
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -215,7 +215,7 @@ Style IhrZeichen
   Margin		Static
   LatexType		Command
   LatexName		IhrZeichen
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   KeepEmpty		1  
@@ -237,7 +237,7 @@ Style IhrSchreiben
   Margin		Static
   LatexType		Command
   LatexName		IhrSchreiben
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -262,7 +262,7 @@ Style Telefon
   Margin		Static
   LatexType		Command
   LatexName		Telefon
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   TopSep		1.5
   KeepEmpty		1  
@@ -283,7 +283,7 @@ Style Telefax
   Margin		Static
   LatexType		Command
   LatexName		Telefax
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -303,7 +303,7 @@ Style Telex
   Margin		Static
   LatexType		Command
   LatexName		Telex
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -324,7 +324,7 @@ Style EMail
   Margin		Static
   LatexType		Command
   LatexName		EMail
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align			Block
@@ -344,7 +344,7 @@ Style HTTP
   Margin		Static
   LatexType		Command
   LatexName		HTTP
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align			Block
@@ -364,7 +364,7 @@ Style Bank
   Margin		Static
   LatexType		Command
   LatexName		Bank
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   TopSep		1.5
   KeepEmpty		1  
@@ -385,7 +385,7 @@ Style BLZ
   Margin		Static
   LatexType		Command
   LatexName		BLZ
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -405,7 +405,7 @@ Style Konto
   Margin		Static
   LatexType		Command
   LatexName		Konto
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -425,7 +425,7 @@ Style Postvermerk
   Margin		Static
   LatexType		Command
   LatexName		Postvermerk
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Block
@@ -446,7 +446,7 @@ Style Adresse
   Margin		Static
   LatexType		Command
   LatexName		Adresse
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   TopSep		1.5
   KeepEmpty		1  
@@ -468,7 +468,7 @@ Style Datum
   Margin  		Static
   LatexType 		Command
   LatexName 		Datum
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   KeepEmpty		1  
   Align 		Left
@@ -488,7 +488,7 @@ Style Betreff
   Margin  		Static
   LatexType 		Command
   LatexName 		Betreff
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   TopSep		1.5
   ParSep		0.4
@@ -512,7 +512,7 @@ Style Anrede
   LatexType 		Command
   LatexName 		Anrede
   KeepEmpty		1  
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   TopSep		1.5
   ParSep		0.4
@@ -538,7 +538,7 @@ Style Anlagen
   LatexType 		Command
   LatexName 		Anlagen
   KeepEmpty		1  
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   ParSep		0.4
   Align 		Block
@@ -561,7 +561,7 @@ Style Verteiler
   LatexType 		Command
   LatexName 		Verteiler
   KeepEmpty		1  
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   ParSep		0.4
   Align 		Block
@@ -585,7 +585,7 @@ Style Gruss
   Margin  		Static
   LatexType 		Command
   LatexName 		LyxGruss
-  LeftMargin		xxxxxxxxxx::xx
+  LeftMargin		RetourAdresse:xx
   LabelSep		xx
   BottomSep		1.5
   ParSep		0.4

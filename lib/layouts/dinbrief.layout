@@ -14,7 +14,7 @@ Input letter.layout
 # My Address style
 Style My_Address
   Margin		Static
-  LeftMargin            Unterschr
+  LeftMargin            Unterschrift:
   LabelType		Static
   LabelString           Briefkopf:
   LabelSep              x
@@ -31,7 +31,7 @@ End
 Style Send_To_Address
   Margin                Static
   BottomSep             0.1
-  LeftMargin            Unterschr
+  LeftMargin            Unterschrift:
   LabelType		Static
   LabelString           Adresse:
   LabelSep              x
@@ -46,7 +46,7 @@ End
 
 # Opening style definition
 Style Opening
-  LeftMargin            Unterschr
+  LeftMargin            Unterschrift:
   LabelString		Anrede:
   LabelSep              x
   LabelFont 
@@ -59,7 +59,7 @@ End
 
 # Signature style definition
 Style Signature
-  LeftMargin            Unterschr
+  LeftMargin            Unterschrift:
   LabelString		Unterschrift:
   LabelSep              x
   LabelFont 
@@ -72,7 +72,7 @@ End
 
 # Closing style definition
 Style Closing
-  LeftMargin            Unterschr
+  LeftMargin            Unterschrift:
   LabelString		Gruﬂ:
   LabelSep              x
   LabelFont 
@@ -86,7 +86,7 @@ End
 # encl style definition
 Style encl
   LabelString		Anlagen:
-  LeftMargin            Unterschr
+  LeftMargin            Unterschrift:
   LabelSep              x
   LabelFont 
     Series		Medium
@@ -101,7 +101,7 @@ Style ps
   Margin  		Static
   LatexType 		Command
   LatexName 		ps
-  LeftMargin            Unterschr
+  LeftMargin            Unterschrift:
   LabelSep		x
   TopSep		0.4
   BottomSep		0.4
@@ -121,7 +121,7 @@ End
 # ps style definition
 Style cc
   LabelString		Verteiler:
-  LeftMargin            Unterschr
+  LeftMargin            Unterschrift:
   LabelSep		x
   LabelFont 
     Series		Medium
@@ -136,7 +136,7 @@ Style Betreff
   Margin  		Static
   LatexType 		Command
   LatexName 		subject
-  LeftMargin		Unterschr
+  LeftMargin		Unterschrift:
   LabelSep		x
   KeepEmpty             1  
   TopSep		0.4

@@ -61,7 +61,7 @@ Style Opening
   LatexType 		Command
   LatexName 		opening
   KeepEmpty		1  
-  LeftMargin		Signature::xx
+  LeftMargin		Signature:xx
   LabelSep		xx
   TopSep		0.4
   BottomSep		0.4
@@ -84,7 +84,7 @@ Style Signature
   Margin  		Static
   LatexType 		Command
   LatexName 		signature
-  LeftMargin		Signature::xx
+  LeftMargin		Signature:xx
   LabelSep		xx
   TopSep		0.4
   BottomSep		0.4
@@ -107,7 +107,7 @@ Style Closing
   Margin  		Static
   LatexType 		Command
   LatexName 		closing
-  LeftMargin		Signature::xx
+  LeftMargin		Signature:xx
   LabelSep		xx
   TopSep		0.4
   BottomSep		0.4

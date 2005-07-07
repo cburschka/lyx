@@ -140,6 +140,9 @@ What's new
 - Avoid automatic startup of the spellchecker when switching from one
   document to another. [bug 1451]
 
+- fix wrong selection when opening the list of tables/figures dialog.
+  [bug 1870] 
+
 - Make LyX behave normally when a file has been opened from the
   Explorer. [Windows only]
 
@@ -167,6 +170,8 @@ What's new
 
 - fix translation of layout names with a space in their name.
 
+- Fix left margins in various text classes.
+
 - Fix server function server-get-tip. [bug 1781]
 
 - Fix binding of Shift-Tab, which was broken on some systems.
@@ -180,9 +185,6 @@ What's new
   with the OS.
 
 - Post convertDefault.sh's error messages to STDERR.
-
-- fix wrong selection when opening the list of tables/figures dialog.
-  [bug 1870] 
 
 * Configuration/Installation:
 
