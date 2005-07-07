@@ -155,10 +155,10 @@ class LyX_Base:
 
             if not preamble:
                 if not line:
-                    break
+                    continue
 
                 if string.split(line)[0] in ("\\layout", "\\begin_layout", "\\begin_body"):
-                    self.body.append(string.split(line)[0])
+                    self.body.append(line)
                     break
 
             self.header.append(line)
