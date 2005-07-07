@@ -1,3 +1,9 @@
+2005-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* languages: remove language "frenchb"; with language "french"
+	provide default values for \og and \fg if needed; use babel option
+	"canadien" for French Canadian
+
 2005-06-30  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* reLyX/syntax.default: recognize optional argument of \frame

@@ -270,17 +270,11 @@ int InsetQuotes::latex(Buffer const &, ostream & os,
 	string qstr;
 
 	if (language_ == FrenchQ && times_ == DoubleQ
-	    && runparams.local_language == "frenchb") {
+	    && prefixIs(runparams.local_language->code(), "fr")) {
 		if (side_ == LeftQ)
 			qstr = "\\og "; //the spaces are important here
 		else
 			qstr = " \\fg{}"; //and here
-	} else if (language_ == FrenchQ && times_ == DoubleQ
-		   && runparams.local_language == "french") {
-		if (side_ == LeftQ)
-			qstr = "<< "; //the spaces are important here
-		else
-			qstr = " >>"; //and here
 	} else if (lyxrc.fontenc == "T1") {
 		qstr = latex_quote_t1[times_][quoteind];
 #ifdef DO_USE_DEFAULT_LANGUAGE

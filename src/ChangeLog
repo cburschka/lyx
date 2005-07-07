@@ -1,3 +1,9 @@
+2005-06-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* buffer.C: format incremented to 242. There is no file format per
+	se, but the "frenchb" language has been removed from lib/language
+	and has to be translated to "french" by lyx2lyx.
+
 2005-07-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* cursor_slice.h, dociterator.h: add some documentation

@@ -19,6 +19,7 @@
 
 
 class ExportData;
+class Language;
 
 
 class OutputParams {
@@ -57,9 +58,9 @@ public:
 	*/
 	bool intitle;
 
-	/** the babel name of the language at the point where the inset is
+	/** the language at the point where the inset is
 	 */
-	std::string local_language;
+	Language const * local_language;
 
 	/** Document language babel name
 	 */

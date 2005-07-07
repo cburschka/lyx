@@ -1,6 +1,12 @@
 LyX file-format changes
 -----------------------
 
+2005-06-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* format incremented to 242. There is no file format per
+	se, but the "frenchb" language has been removed from lib/language
+	and has to be translated to "french" by lyx2lyx.
+
 2005-02-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format incremented to 241.

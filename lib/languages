@@ -11,7 +11,7 @@ breton      breton	"Breton"	false  iso8859-1  br_FR	 ""
 british     british	"British"	false  iso8859-1  en_GB	 ""
 bulgarian   bulgarian   "Bulgarian"     false  cp1251     bg_BG  ""
 canadian    canadian	"Canadian"	false  iso8859-1  en_CA	 ""
-canadien    frenchb   "French Canadian"	false  iso8859-1  fr_CA	 ""
+canadien    canadien	"French Canadian"	false  iso8859-1  fr_CA	 ""
 catalan     catalan 	"Catalan"	false  iso8859-1  ca_ES	 ""
 croatian    croatian	"Croatian"	false  iso8859-2  hr_HR	 ""
 czech       czech	"Czech"		false  iso8859-2  cs_CZ	 ""
@@ -22,8 +22,8 @@ esperanto   esperanto	"Esperanto"	false  iso8859-3  eo	 ""
 #and what country code should esperanto have?? (Garst)
 estonian    estonian	"Estonian"	false  iso8859-1  et_EE	 ""
 finnish     finnish	"Finnish"	false  iso8859-1  fi_FI	 ""
-frenchb     frenchb	"French"	false  iso8859-1  fr_FR	 ""
-french      french "French (GUTenberg)" false  iso8859-1  fr_FR	 ""
+# We redefine \og and \fg (guillemets) for older french language definitions
+french      french 	"French"	false  iso8859-1  fr_FR	 "\addto\extrasfrench{\providecommand{\og}{\leavevmode\flqq~}\providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}}"
 galician    galician	"Galician"	false  iso8859-1  gl_ES	 ""
 # There are two Galicia's one in Spain one in E.Europe. Because of
 # the font encoding I am assuming this is the one in Spain. (Garst)

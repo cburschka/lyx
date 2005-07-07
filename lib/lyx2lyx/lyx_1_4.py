@@ -1844,6 +1844,13 @@ def revert_ert_paragraphs(file):
         i = i + 1
 
 
+def convert_french(file):
+    regexp = re.compile(r'^\\language\s+frenchb')
+    i = find_re(file.header, regexp, 0)
+    if i != -1:
+        file.header[i] = "\\language french"
+
+
 ##
 # Convertion hub
 #
@@ -1869,9 +1876,11 @@ convert = [[223, [insert_tracking_changes, add_end_header, remove_color_default,
            [238, [update_latexaccents]],
            [239, [normalize_paragraph_params]],
            [240, [convert_output_changes]],
-           [241, [convert_ert_paragraphs]]]
+           [241, [convert_ert_paragraphs]],
+           [242, [convert_french]]]
 
-revert =  [[240, [revert_ert_paragraphs]],
+revert =  [[241, []],
+           [240, [revert_ert_paragraphs]],
            [239, [revert_output_changes]],
            [238, []],
            [237, []],
