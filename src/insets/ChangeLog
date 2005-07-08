@@ -1,3 +1,11 @@
+2005-07-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ExternalSupport.C (subst_path): new argument exclude_extension
+	* ExternalSupport.C (doSubstitution): exclude the extension when
+	quoting $$FName
+	* insetgraphics.C (stripExtensionIfPossible, prepareFile): exclude
+	the extension when quoting the file name
+
 2005-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetquotes.C (latex): always use \og/\fg for the french

@@ -528,7 +528,7 @@ string const stripExtensionIfPossible(string const & file)
 	// dots with a macro whose definition is just a dot ;-)
 	// The automatic format selection does not work if the file
 	// name is escaped.
-	string const latex_name = latex_path(file);
+	string const latex_name = latex_path(file, true);
 	if (contains(latex_name, '"'))
 		return latex_name;
 	return subst(latex_path(RemoveExtension(file)), ".", "\\lyxdot ");
@@ -546,7 +546,7 @@ string const stripExtensionIfPossible(string const & file, string const & to)
 	    (to_format == "eps" && file_format ==  "ps") ||
 	    (to_format ==  "ps" && file_format == "eps"))
 		return stripExtensionIfPossible(file);
-	return latex_path(file);
+	return latex_path(file, true);
 }
 
 } // namespace anon
@@ -633,7 +633,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 					source_file, output_file);
 			// We can't strip the extension, because we don't know
 			// the unzipped file format
-			return latex_path(output_file);
+			return latex_path(output_file, true);
 		}
 
 		string const unzipped_temp_file = unzippedFileName(temp_file);
@@ -868,7 +868,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 		return;
 
 	features.includeFile(graphic_label,
-			     RemoveExtension(params().filename.absFilename()));
+	                     RemoveExtension(params().filename.absFilename()));
 
 	features.require("graphicx");
 

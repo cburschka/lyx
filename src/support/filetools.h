@@ -77,12 +77,10 @@ bool IsLyXFilename(std::string const & filename);
 bool IsSGMLFilename(std::string const & filename);
 
 /** Returns the path of a library data file.
-  Search the file name.ext in the subdirectory dir of
-  \begin{enumerate}
-    \item user_lyxdir
-    \item build_lyxdir (if not empty)
-    \item system_lyxdir
-  \end{enumerate}
+    Search the file name.ext in the subdirectory dir of
+      -# user_lyxdir
+      -# build_lyxdir (if not empty)
+      -# system_lyxdir
     The third parameter `ext' is optional.
 */
 std::string const LibFileSearch(std::string const & dir, std::string const & name,
@@ -110,12 +108,18 @@ std::string const LibScriptSearch(std::string const & command);
  *  Manipulates @c path into a form suitable for inclusion in a LaTeX
  *  document.
  *  If @c path contains LaTeX special characters, these are escaped.
- *  Eg, '~' -> '\string~'
+ *  Eg, '~' -> '\\string~'
  *  If @c path contains spaces, then the returned path is enclosed in
  *  "-quotes. This last fix will lead to successful compiliation of the
  *  LaTeX file only if a sufficiently modern LaTeX compiler is used.
+ *  If @c exclude_extension is true the extension is left outside the quotes.
+ *  This is needed for pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)
+ *  (format=pdflatex 2005.4.11) in combination with
+ *  pdftex.def 2002/06/19 v0.03k graphics/color for pdftex:
+ *  It does not recognize the file extension if it is inside the quotes.
  */
-std::string const latex_path(std::string const & path);
+std::string const latex_path(std::string const & path,
+                             bool exclude_extension = false)
 
 /// Substitutes active latex characters with underscores in filename
 std::string const MakeLatexName(std::string const & file);

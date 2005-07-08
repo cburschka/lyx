@@ -66,12 +66,14 @@ namespace {
 string const subst_path(string const & input,
 			string const & placeholder,
 			string const & path,
-			bool use_latex_path)
+                        bool use_latex_path,
+                        bool exclude_extension = false)
 {
 	if (input.find(placeholder) == string::npos)
 		return input;
 	string const path2 = use_latex_path ?
-		support::latex_path(path) : support::os::external_path(path);
+		support::latex_path(path, exclude_extension, use_lyxdot) :
+		support::os::external_path(path);
 	return support::subst(input, placeholder, path2);
 }
 
@@ -133,7 +135,7 @@ string const doSubstitution(InsetExternalParams const & params,
 	if (what == PATHS)
 		return result;
 
-	result = subst_path(result, "$$FName", filename, use_latex_path);
+	result = subst_path(result, "$$FName", filename, use_latex_path, true);
 	result = subst_path(result, "$$Basename", basename, use_latex_path);
 	result = subst_path(result, "$$Extension",
 			'.' + support::GetExtension(filename), use_latex_path);
