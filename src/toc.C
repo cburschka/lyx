@@ -60,7 +60,7 @@ string const getType(string const & cmdName)
 {
 	// special case
 	if (cmdName == "tableofcontents")
-		return _("TOC");
+		return "TOC";
 	else
 		return cmdName;
 }
@@ -101,7 +101,7 @@ TocList const getTocList(Buffer const * buf)
 			const int depth = max(0, labeltype - textclass.maxcounter());
 			TocItem const item(par->id(), depth,
 					   par->asString(buf, true));
-			toclist[_("TOC")].push_back(item);
+			toclist["TOC"].push_back(item);
 		}
 
 		// For each paragraph, traverse its insets and look for

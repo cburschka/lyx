@@ -1,3 +1,10 @@
+2005-07-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* toc.C: remove the gettext markup from the TOC string again. 
+	It might cause trouble on string comparision. This does not 
+	affect the fix for bug 1870, only the string is now untranslatable again. 
+	Will find a better solution for 1.4.
+
 2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* toc.[Ch]: new method getGuiName, which is used by the frontends 
