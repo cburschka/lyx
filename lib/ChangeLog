@@ -1,3 +1,8 @@
+2005-07-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx2lyx: replace with backported 1.4 lyx2lyx. The only difference
+	to 1.4 is the default fomat of 221 and version_lyx2lyx.
+
 2005-07-06  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* layouts/*.layout: fix left margins in various text classes

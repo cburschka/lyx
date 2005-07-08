@@ -17,11 +17,13 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import string
+import re
 
 def check_token(line, token):
     if line[:len(token)] == token:
 	return 1
     return 0
+
 
 # We need to check that the char after the token is space, but I think
 # we can ignore this
@@ -34,6 +36,7 @@ def find_token(lines, token, start, end = 0):
 	    return i
     return -1
 
+
 def find_token2(lines, token, start, end = 0):
     if end == 0:
 	end = len(lines)
@@ -42,6 +45,7 @@ def find_token2(lines, token, start, end = 0):
 	if len(x) > 0 and x[0] == token:
 	    return i
     return -1
+
 
 def find_tokens(lines, tokens, start, end = 0):
     if end == 0:
@@ -53,6 +57,7 @@ def find_tokens(lines, tokens, start, end = 0):
 		return i
     return -1
 
+
 def find_re(lines, rexp, start, end = 0):
     if end == 0:
 	end = len(lines)
@@ -60,6 +65,7 @@ def find_re(lines, rexp, start, end = 0):
 	if rexp.match(lines[i]):
 		return i
     return -1
+
 
 def find_token_backwards(lines, token, start):
     m = len(token)
@@ -69,6 +75,7 @@ def find_token_backwards(lines, token, start):
 	    return i
     return -1
 
+
 def find_tokens_backwards(lines, tokens, start):
     for i in xrange(start, -1, -1):
 	line = lines[i]
@@ -76,6 +83,7 @@ def find_tokens_backwards(lines, tokens, start):
 	    if line[:len(token)] == token:
 		return i
     return -1
+
 
 def get_value(lines, token, start, end = 0):
     i = find_token2(lines, token, start, end)
@@ -86,6 +94,7 @@ def get_value(lines, token, start, end = 0):
     else:
         return ""
 
+
 def del_token(lines, token, i, j):
     k = find_token2(lines, token, i, j)
     if k == -1:
@@ -93,6 +102,7 @@ def del_token(lines, token, i, j):
     else:
 	del lines[k]
 	return j-1
+
 
 # Finds the paragraph that contains line i.
 def get_paragraph(lines, i):
@@ -102,6 +112,8 @@ def get_paragraph(lines, i):
 	if check_token(lines[i], "\\layout"):
 	    return i
 	i = find_beginning_of_inset(lines, i)
+    return -1
+
 
 # Finds the paragraph after the paragraph that contains line i.
 def get_next_paragraph(lines, i):
@@ -110,6 +122,8 @@ def get_next_paragraph(lines, i):
 	if not check_token(lines[i], "\\begin_inset"):
 	    return i
 	i = find_end_of_inset(lines, i)
+    return -1
+
 
 def find_end_of(lines, i, start_token, end_token):
     count = 1
@@ -124,6 +138,7 @@ def find_end_of(lines, i, start_token, end_token):
 	    return i
     return -1
 
+
 # Finds the matching \end_inset
 def find_beginning_of(lines, i, start_token, end_token):
     count = 1
@@ -137,16 +152,20 @@ def find_beginning_of(lines, i, start_token, end_token):
 	    return i
     return -1
 
+
 # Finds the matching \end_inset
 def find_end_of_inset(lines, i):
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
 
 # Finds the matching \end_inset
 def find_beginning_of_inset(lines, i):
     return find_beginning_of(lines, i, "\\begin_inset", "\\end_inset")
 
+
 def find_end_of_tabular(lines, i):
     return find_end_of(lines, i, "<lyxtabular", "</lyxtabular")
+
 
 def get_tabular_lines(lines, i):
     result = []
@@ -163,8 +182,10 @@ def get_tabular_lines(lines, i):
 	    i = i+1
     return result
 
+
 def is_nonempty_line(line):
     return line != " "*len(line)
+
 
 def find_nonempty_line(lines, start, end = 0):
     if end == 0:
@@ -173,14 +194,3 @@ def find_nonempty_line(lines, start, end = 0):
 	if is_nonempty_line(lines[i]):
 	    return i
     return -1
-
-def set_comment(lines, version):
-    lines[0] = "#LyX %s created this file. For more info see http://www.lyx.org/" % version
-    if lines[1][0] == '#':
-	del lines[1]
-
-def set_format(lines, number):
-    if int(number) <= 217:
-        number = float(number)/100
-    i = find_token(lines, "\\lyxformat", 0)
-    lines[i] = "\\lyxformat %s" % number

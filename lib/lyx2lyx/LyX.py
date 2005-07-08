@@ -25,7 +25,7 @@ import re
 import string
 import time
 
-version_lyx2lyx = "1.4.0cvs"
+version_lyx2lyx = "1.3.6"
 default_debug_level = 2
 
 # Regular expressions used
