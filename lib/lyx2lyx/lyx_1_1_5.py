@@ -159,9 +159,87 @@ def remove_space_in_units(file):
             i = i + 1
 
 
+def latexdel_getargs(file, i):
+    lines = file.body
+
+    # play safe, clean empty lines
+    while 1:
+        if lines[i]:
+            break
+        del lines[i]
+
+    j = find_token(lines, '\\end_inset', i)
+
+    if i == j:
+        del lines[i]
+    else:
+        file.warning("Unexpected end of inset.")
+    j = find_token(lines, '\\begin_inset LatexDel }{', i)
+
+    ref = string.join(lines[i:j])
+    del lines[i:j + 1]
+
+    # play safe, clean empty lines
+    while 1:
+        if lines[i]:
+            break
+        del lines[i]
+
+    j = find_token(lines, '\\end_inset', i - 1)
+    if i == j:
+        del lines[i]
+    else:
+        file.warning("Unexpected end of inset.")
+    j = find_token(lines, '\\begin_inset LatexDel }', i)
+    label = string.join(lines[i:j])
+    del lines[i:j + 1]
+
+    return ref, label
+
+
+def update_ref(file):
+    lines = file.body
+    i = 0
+    while 1:
+        i = find_token(lines, '\\begin_inset LatexCommand', i)
+        if i == -1:
+            return
+
+        if string.split(lines[i])[-1] == "\\ref{":
+            i = i + 1
+            ref, label = latexdel_getargs(file, i)
+            lines[i - 1] = "%s[%s]{%s}" % (lines[i - 1][:-1], ref, label)
+
+        i = i + 1
+
+
+def update_latexdel(file):
+    lines = file.body
+    i = 0
+    latexdel_re = re.compile(r".*\\begin_inset LatexDel")
+    while 1:
+        i = find_re(lines, latexdel_re, i)
+        if i == -1:
+            return
+        lines[i] = string.replace(lines[i],'\\begin_inset LatexDel', '\\begin_inset LatexCommand')
+
+        j = string.find(lines[i],'\\begin_inset')
+        lines.insert(i+1, lines[i][j:])
+        lines[i] = string.strip(lines[i][:j])
+        i = i + 1
+
+        if string.split(lines[i])[-1] in ("\\url{", "\\htmlurl{"):
+            i = i + 1
+
+            ref, label = latexdel_getargs(file, i)
+            lines[i -1] = "%s[%s]{%s}" % (lines[i-1][:-1], label, ref)
+
+        i = i + 1
+
+
 convert = [[216, [first_layout, remove_vcid, remove_cursor, update_toc,
                   replace_protected_separator, merge_formula_inset,
-                  update_tabular, remove_space_in_units]]]
+                  update_tabular, remove_space_in_units, update_ref, update_latexdel]]]
 revert  = []
 
 if __name__ == "__main__":

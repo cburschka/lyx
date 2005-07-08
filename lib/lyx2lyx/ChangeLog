@@ -1,3 +1,8 @@
+2005-07-08  José Matos  <jamatos@lyx.org>
+
+	* lyx_1_1_5.py (latexdel_getargs, update_ref, update_latexdel):
+	Remove latexdel insets comming from sgml2lyx (ref, url and htmlurl).
+
 2005-06-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyx_1_4.py (convert_french): change language frenchb to french
