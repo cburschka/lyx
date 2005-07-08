@@ -1040,7 +1040,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	// insert file functions
 	case LFUN_DELETE_LINE_FORWARD:
-		recordUndo(cur);
+		recordUndoInset(cur);
 		//autocorrect_ = false;
 		//macroModeClose();
 		//if (selection_) {
@@ -1061,7 +1061,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_BREAKLINE: {
-		recordUndo(cur);
+		recordUndoInset(cur);
 		row_type const r = cur.row();
 		addRow(r);
 
@@ -1082,7 +1082,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_TABULAR_FEATURE: {
-		recordUndo(cur);
+		recordUndoInset(cur);
 		//lyxerr << "handling tabular-feature " << cmd.argument << endl;
 		istringstream is(cmd.argument);
 		string s;
@@ -1172,7 +1172,6 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE: {
-		recordUndo(cur);
 		lyxerr << "MathGridInset: PASTE: " << cmd << std::endl;
 		istringstream is(cmd.argument);
 		int n = 0;
@@ -1181,10 +1180,12 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		mathed_parse_normal(grid, lyx::cap::getSelection(cur.buffer(), n));
 		if (grid.nargs() == 1) {
 			// single cell/part of cell
+			recordUndo(cur);
 			cur.cell().insert(cur.pos(), grid.cell(0));
 			cur.pos() += grid.cell(0).size();
 		} else {
 			// multiple cells
+			recordUndoInset(cur);
 			col_type const numcols =
 				min(grid.ncols(), ncols() - col(cur.idx()));
 			row_type const numrows =
@@ -1316,7 +1317,7 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 #if 0
 		// FIXME: What did this code do?
-		// Please check wether it is still needed!
+		// Please check whether it is still needed!
 		// should be more precise
 		if (v_align_ == '\0') {
 			flag.enable(true);

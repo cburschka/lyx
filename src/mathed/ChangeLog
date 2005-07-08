@@ -1,3 +1,8 @@
+2005-07-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_gridinset.C (doDispatch): use recordUndoInset when more than
+	one cell is changed
+
 2005-07-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_gridinset.C (doDispatch): better fix for the assertion
