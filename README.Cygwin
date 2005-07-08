@@ -1,12 +1,20 @@
-================================================================
-README for Cygwin by Ruurd Reitsma (R.A.Reitsma@wbmt.tudelft.nl)
-================================================================
+LyX/Cygwin
+Ruurd Reitsma  <R.A.Reitsma@wbmt.tudelft.nl>
 
-LyX has been ported to Win32 using the Cygwin environement. The port
-consists of a few small tweaks to deal with DOS-style pathnames, so
-LyX can use Win32 TeX distros like fptex and MiKTeX. There's also a
-cygwin TeTeX port, but the native Win32 ports have a definite speed
-advantage. Besides that, nothing fancy.
+There are two ways to run LyX on Windows:
+* as a native Windows application, using the Qt/Win Free clone of
+  Trolltech's cross-platform Qt toolkit.
+* as a POSIX application running under the Cygwin environment.
+
+This README describes what is needed for the latter of these two
+options. Please refer to README.Win32 if you'd like to run LyX
+as a native Windows application.
+
+The Cygwin port consists of a few small tweaks to the original
+Unix sources to deal with DOS-style pathnames, so that LyX can use
+Win32 TeX distros like fptex and MiKTeX. There's also a cygwin TeTeX port,
+but the native Win32 ports have a definite speed advantage. Besides that,
+nothing fancy.
 
 The prerequisites are (obviously?):
 
@@ -19,9 +27,9 @@ missing in the final link step. You'll have to add them to the Makefile
 by hand. Be sure to include -lregex, because cygwin's builtin regex is
 sortof weird (filedialogs will turn up empty...)
 
-If you want to run lyx with no console windows open, there's a small
+If you want to run LyX with no console windows open, there's a small
 program in development/Win32 that will set the proper environment vars
-and start lyx.
+and start LyX.
 
 Compile with:
 
