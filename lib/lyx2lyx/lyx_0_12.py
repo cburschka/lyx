@@ -46,7 +46,7 @@ def formula_inset_space_eat(file):
         i = i + 1
 
 
-# Update from tabular format 2 to 4
+# Update from tabular format 1 or 2 to 4
 def update_tabular(file):
     lines = file.body
     lyxtable_re = re.compile(r".*\\LyXTable$")
@@ -56,7 +56,7 @@ def update_tabular(file):
         if i == -1:
             break
         i = i + 1
-        format = lines[i][8]
+        format = lines[i][8:]
 
         lines[i]='multicol4'
         i = i + 1
@@ -74,10 +74,13 @@ def update_tabular(file):
             lines[i] = lines[i] + ' '
             i = i + 1
 
-        while lines[i]:
+        while string.strip(lines[i]):
+            if not format:
+                lines[i] = lines[i] + ' 1 1'
             lines[i] = lines[i] + ' 0 0 0'
             i = i + 1
 
+        lines[i] = string.strip(lines[i])
 
 def final_dot(file):
     lines = file.body

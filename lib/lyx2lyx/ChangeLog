@@ -1,5 +1,9 @@
 2005-07-08  José Matos  <jamatos@lyx.org>
 
+	* lyx_0_12.py (update_tabular): Support old tables format 1.
+
+2005-07-08  José Matos  <jamatos@lyx.org>
+
 	* lyx_1_1_5.py (latexdel_getargs, update_ref, update_latexdel):
 	Remove latexdel insets comming from sgml2lyx (ref, url and htmlurl).
 
