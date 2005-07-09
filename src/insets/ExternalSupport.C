@@ -72,7 +72,7 @@ string const subst_path(string const & input,
 	if (input.find(placeholder) == string::npos)
 		return input;
 	string const path2 = use_latex_path ?
-		support::latex_path(path, exclude_extension, use_lyxdot) :
+		support::latex_path(path, exclude_extension) :
 		support::os::external_path(path);
 	return support::subst(input, placeholder, path2);
 }

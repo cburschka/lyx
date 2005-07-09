@@ -119,7 +119,7 @@ std::string const LibScriptSearch(std::string const & command);
  *  It does not recognize the file extension if it is inside the quotes.
  */
 std::string const latex_path(std::string const & path,
-                             bool exclude_extension = false)
+                             bool exclude_extension = false);
 
 /// Substitutes active latex characters with underscores in filename
 std::string const MakeLatexName(std::string const & file);
