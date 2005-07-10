@@ -67,12 +67,13 @@ string const subst_path(string const & input,
 			string const & placeholder,
 			string const & path,
                         bool use_latex_path,
-                        bool exclude_extension = false)
+                        support::latex_path_extension ext = support::PROTECT_EXTENSION,
+                        support::latex_path_dots dots = support::LEAVE_DOTS)
 {
 	if (input.find(placeholder) == string::npos)
 		return input;
 	string const path2 = use_latex_path ?
-		support::latex_path(path, exclude_extension) :
+		support::latex_path(path, ext, dots) :
 		support::os::external_path(path);
 	return support::subst(input, placeholder, path2);
 }
@@ -113,30 +114,50 @@ string const doSubstitution(InsetExternalParams const & params,
 		if (relToParentPath == "./")
 			relToParentPath.clear();
 
-		result = subst_path(result, "$$FPath", filepath, use_latex_path);
-		result = subst_path(result, "$$AbsPath", abspath, use_latex_path);
+		result = subst_path(result, "$$FPath", filepath,
+		                    use_latex_path,
+		                    support::PROTECT_EXTENSION,
+		                    support::ESCAPE_DOTS);
+		result = subst_path(result, "$$AbsPath", abspath,
+		                    use_latex_path,
+		                    support::PROTECT_EXTENSION,
+		                    support::ESCAPE_DOTS);
 		result = subst_path(result, "$$RelPathMaster",
-				    relToMasterPath, use_latex_path);
+		                    relToMasterPath, use_latex_path,
+		                    support::PROTECT_EXTENSION,
+		                    support::ESCAPE_DOTS);
 		result = subst_path(result, "$$RelPathParent",
-				    relToParentPath, use_latex_path);
+		                    relToParentPath, use_latex_path,
+		                    support::PROTECT_EXTENSION,
+		                    support::ESCAPE_DOTS);
 		if (support::AbsolutePath(filename)) {
 			result = subst_path(result, "$$AbsOrRelPathMaster",
-					    abspath, use_latex_path);
+			                    abspath, use_latex_path,
+			                    support::PROTECT_EXTENSION,
+			                    support::ESCAPE_DOTS);
 			result = subst_path(result, "$$AbsOrRelPathParent",
-					    abspath, use_latex_path);
+			                    abspath, use_latex_path,
+			                    support::PROTECT_EXTENSION,
+			                    support::ESCAPE_DOTS);
 		} else {
 			result = subst_path(result, "$$AbsOrRelPathMaster",
-					    relToMasterPath, use_latex_path);
+			                    relToMasterPath, use_latex_path,
+			                    support::PROTECT_EXTENSION,
+			                    support::ESCAPE_DOTS);
 			result = subst_path(result, "$$AbsOrRelPathParent",
-					    relToParentPath, use_latex_path);
+			                    relToParentPath, use_latex_path,
+			                    support::PROTECT_EXTENSION,
+			                    support::ESCAPE_DOTS);
 		}
 	}
 
 	if (what == PATHS)
 		return result;
 
-	result = subst_path(result, "$$FName", filename, use_latex_path, true);
-	result = subst_path(result, "$$Basename", basename, use_latex_path);
+	result = subst_path(result, "$$FName", filename, use_latex_path,
+	                    support::EXCLUDE_EXTENSION);
+	result = subst_path(result, "$$Basename", basename, use_latex_path,
+	                    support::PROTECT_EXTENSION, support::ESCAPE_DOTS);
 	result = subst_path(result, "$$Extension",
 			'.' + support::GetExtension(filename), use_latex_path);
 	result = subst_path(result, "$$Tempname", params.tempname(), use_latex_path);

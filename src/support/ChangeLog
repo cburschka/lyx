@@ -1,3 +1,8 @@
+2005-07-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* filetools.[Ch] (latex_path): convert boolean exclude_extension
+	argument to an enum and add argument to replace dots
+
 2005-07-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* filetools.[Ch] (latex_path): add exclude_extension argument

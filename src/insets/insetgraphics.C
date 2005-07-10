@@ -528,10 +528,13 @@ string const stripExtensionIfPossible(string const & file)
 	// dots with a macro whose definition is just a dot ;-)
 	// The automatic format selection does not work if the file
 	// name is escaped.
-	string const latex_name = latex_path(file, true);
+	string const latex_name = latex_path(file,
+	                                     lyx::support::EXCLUDE_EXTENSION);
 	if (contains(latex_name, '"'))
 		return latex_name;
-	return subst(latex_path(RemoveExtension(file)), ".", "\\lyxdot ");
+	return latex_path(RemoveExtension(file),
+	                  lyx::support::PROTECT_EXTENSION,
+	                  lyx::support::ESCAPE_DOTS);
 }
 
 
@@ -546,7 +549,7 @@ string const stripExtensionIfPossible(string const & file, string const & to)
 	    (to_format == "eps" && file_format ==  "ps") ||
 	    (to_format ==  "ps" && file_format == "eps"))
 		return stripExtensionIfPossible(file);
-	return latex_path(file, true);
+	return latex_path(file, lyx::support::EXCLUDE_EXTENSION);
 }
 
 } // namespace anon
@@ -633,7 +636,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 					source_file, output_file);
 			// We can't strip the extension, because we don't know
 			// the unzipped file format
-			return latex_path(output_file, true);
+			return latex_path(output_file,
+			                  lyx::support::EXCLUDE_EXTENSION);
 		}
 
 		string const unzipped_temp_file = unzippedFileName(temp_file);

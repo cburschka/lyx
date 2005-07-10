@@ -1,3 +1,10 @@
+2005-07-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ExternalSupport.C (subst_path): adjust to latex_path changes and
+	replace dots if appropriate
+	* insetgraphics.C (prepareFile): move lyxdot replacement to latex_path
+	* insetexternal.C (validate): require lyxdot
+
 2005-07-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ExternalSupport.C (subst_path): new argument exclude_extension

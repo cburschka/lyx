@@ -755,6 +755,9 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	if (cit == et.formats.end())
 		return;
 
+	// FIXME: We don't need that always
+	features.require("lyxdot");
+
 	vector<string>::const_iterator it  = cit->second.requirements.begin();
 	vector<string>::const_iterator end = cit->second.requirements.end();
 	for (; it != end; ++it)

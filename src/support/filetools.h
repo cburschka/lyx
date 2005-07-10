@@ -102,6 +102,16 @@ i18nLibFileSearch(std::string const & dir, std::string const & name,
  */
 std::string const LibScriptSearch(std::string const & command);
 
+enum latex_path_extension {
+	PROTECT_EXTENSION,
+	EXCLUDE_EXTENSION
+};
+
+enum latex_path_dots {
+	LEAVE_DOTS,
+	ESCAPE_DOTS
+};
+
 /** @param path a file path in internal_path format. Ie, directories
  *  are indicated by '/', not by '\'.
  *
@@ -112,14 +122,18 @@ std::string const LibScriptSearch(std::string const & command);
  *  If @c path contains spaces, then the returned path is enclosed in
  *  "-quotes. This last fix will lead to successful compiliation of the
  *  LaTeX file only if a sufficiently modern LaTeX compiler is used.
- *  If @c exclude_extension is true the extension is left outside the quotes.
+ *  If @c ext == EXCLUDE_EXTENSION the extension is left outside the quotes.
  *  This is needed for pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)
  *  (format=pdflatex 2005.4.11) in combination with
  *  pdftex.def 2002/06/19 v0.03k graphics/color for pdftex:
  *  It does not recognize the file extension if it is inside the quotes.
+ *  If @c dots == ESCAPE_DOTS dots in the filename are replaced by
+ *  "\\lyxdot ". This is needed for the \\includegraphics command if the
+ *  automatic format selection is used.
  */
 std::string const latex_path(std::string const & path,
-                             bool exclude_extension = false);
+		latex_path_extension extension = PROTECT_EXTENSION,
+		latex_path_dots dots = LEAVE_DOTS);
 
 /// Substitutes active latex characters with underscores in filename
 std::string const MakeLatexName(std::string const & file);
