@@ -50,6 +50,11 @@ What's new
 
 - new Turkish translation.
 
+- Files from the 1.4 development branch of LyX and tex2lyx can now be
+  converted by lyx2lyx. The conversion is not perfect for all new features,
+  but files containing only features supported by LyX 1.3.x can be converted
+  back and forth without problems.
+
 ** Bug fixes
 
 * Document input/output:
@@ -67,8 +72,8 @@ What's new
 - Store typed '&' characters in math as '\&'. [bug 1542]
 
 - Make sure that the amsmath package is used in LaTeX output when
-  using the AMS-specific array environments and over/under arrows in
-  equations.
+  using the AMS-specific array environments, over/under arrows or the
+  \text command in equations.
 
 - Make sure that the wasysym package is used in LaTeX output when
   using symbols from the wasy font.
