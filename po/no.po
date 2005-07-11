@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-07-04 12:34+0200\n"
-"PO-Revision-Date: 2005-07-05 15:44+0200\n"
+"POT-Creation-Date: 2005-07-08 14:48+0200\n"
+"PO-Revision-Date: 2005-07-08 16:58+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1980,7 +1980,7 @@ msgstr "Sideskift på denne raden"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2166
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2170
 msgid "Double"
 msgstr "Dobbel"
 
@@ -2094,13 +2094,12 @@ msgid "Use the jurabib styles for law and humanities"
 msgstr ""
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:75
-#, fuzzy
 msgid "&Natbib"
-msgstr "Bruk \"NatBib\""
+msgstr "&Natbib"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:79
 msgid "Use the natbib styles for natural sciences and arts"
-msgstr ""
+msgstr "Natbib-stilene brukes for naturvitenskap"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:90
 #, fuzzy
@@ -2112,9 +2111,8 @@ msgid "Use BibTeX's default numerical styles"
 msgstr ""
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:124
-#, fuzzy
 msgid "Natbib &style:"
-msgstr "Siteringsstil:"
+msgstr "Natbib-&stil:"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:182
 #, fuzzy
@@ -2430,7 +2428,8 @@ msgstr "Bredde:"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:109
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Velg en papirstørrelse, eller spesifiser din egen med \"Brukerdefinert\""
+msgstr ""
+"Velg en papirstørrelse, eller spesifiser din egen med \"Brukerdefinert\""
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:199
 msgid "&Portrait"
@@ -2533,7 +2532,7 @@ msgstr "Referansenøkkel"
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: src/frontends/qt2/ui/QRefDialogBase.ui:182 src/frontends/qt2/Dialogs.C:239
 msgid "&Label:"
-msgstr "&Merke:"
+msgstr "&Referanse:"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:140
@@ -2560,9 +2559,8 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:29
-#, fuzzy
 msgid "LyX: Add BibTeX Database"
-msgstr "BibTeX Database"
+msgstr "LyX: Legg til BibTeX Database"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:52
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:265
@@ -2574,7 +2572,6 @@ msgid "&Browse..."
 msgstr "&Se igjennom..."
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:78
-#, fuzzy
 msgid "Enter BibTeX database name"
 msgstr "Velg en BibTeX database som skal legges til"
 
@@ -2591,9 +2588,8 @@ msgid "New Item"
 msgstr "Nytt element"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:107
-#, fuzzy
 msgid "Available BibTeX databases"
-msgstr "Velg en BibTeX database som skal legges til"
+msgstr "Tilgjengelige BibTeX-databaser"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:194
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:126
@@ -2624,9 +2620,8 @@ msgid "BibTeX database to use"
 msgstr ""
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:180
-#, fuzzy
 msgid "Selected BibTeX databases"
-msgstr "Velg en BibTeX database som skal legges til"
+msgstr "Valgte BibTeX-databaser"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:191
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:204
@@ -2646,7 +2641,6 @@ msgid "Remove the selected database"
 msgstr "Fjern den valgte databasen"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:254
-#, fuzzy
 msgid "Chose a style file"
 msgstr "Velg en stilfil"
 
@@ -2675,9 +2669,8 @@ msgid "This bibliography section contains..."
 msgstr ""
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:341
-#, fuzzy
 msgid "C&ontent:"
-msgstr "Innhold"
+msgstr "Innh&old"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:360
 msgid "Add bibliography to &TOC"
@@ -2694,9 +2687,8 @@ msgstr "Tilgjengelige bokstyper"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:94
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:141
-#, fuzzy
 msgid "Height value"
-msgstr "Bredde"
+msgstr "Høydemål"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:123
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:625
@@ -2712,7 +2704,7 @@ msgstr "Enheter for breddemål"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:215
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:176
 msgid "Width value"
-msgstr "Bredde"
+msgstr "Breddemål"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:243
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:261
@@ -3161,9 +3153,8 @@ msgid "File"
 msgstr "Fil"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:73
-#, fuzzy
 msgid "Template"
-msgstr "Mal:|#M"
+msgstr "Mal"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:99
 msgid "Available templates"
@@ -3184,7 +3175,7 @@ msgstr "Filnavn"
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:60
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:439
 msgid "&File:"
-msgstr "&Fil"
+msgstr "&Fil:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:204
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:997
@@ -3214,9 +3205,8 @@ msgid "Percentage to scale by in LyX"
 msgstr "Prosentvis skalering for visning i LyX"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:402
-#, fuzzy
 msgid "&Display:"
-msgstr "Fremhevet formel:|#h"
+msgstr ""
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:410
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:451
@@ -3574,7 +3564,7 @@ msgstr "Store operatorer"
 msgid "Relations"
 msgstr "Relasjoner"
 
-#: src/frontends/qt2/ui/QMathDialogBase.ui:511 lib/languages:31
+#: src/frontends/qt2/ui/QMathDialogBase.ui:511 lib/languages:32
 #: src/frontends/gtk/Dialogs.C:338 src/frontends/xforms/Dialogs.C:314
 msgid "Greek"
 msgstr "Gresk"
@@ -3698,7 +3688,7 @@ msgid "Print as grey text"
 msgstr "Skriv ut som grå tekst"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2160
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2164
 msgid "Single"
 msgstr "Enkel"
 
@@ -3744,13 +3734,12 @@ msgid "Lo&ngest label"
 msgstr "Lengste listeetikett"
 
 #: src/frontends/qt2/ui/QPreambleDialogBase.ui:45
-#, fuzzy
 msgid "The LaTeX preamble"
-msgstr "LaTeX preamble satt"
+msgstr "LaTeX preamble"
 
 #: src/frontends/qt2/ui/QPreambleDialogBase.ui:71
 msgid "&Edit..."
-msgstr ""
+msgstr "&Rediger..."
 
 #: src/frontends/qt2/ui/QPreambleDialogBase.ui:79
 msgid "Edit the preamble in an external editor"
@@ -3898,9 +3887,8 @@ msgid "&E-mail:"
 msgstr "&E-post:"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:71
-#, fuzzy
 msgid "Your name"
-msgstr "Etternavn"
+msgstr "Navnet ditt"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:82
 #: src/frontends/qt2/ui/QRefDialogBase.ui:230
@@ -3910,7 +3898,7 @@ msgstr "&Navn:"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:97
 msgid "Your E-mail address"
-msgstr ""
+msgstr "E-postadressen din"
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
 #: src/frontends/qt2/ui/QPrefUIModule.ui:111
@@ -3995,19 +3983,16 @@ msgid "Chec&kTeX command:"
 msgstr "Chec&kTeX-kommando:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:137
-#, fuzzy
 msgid "BibTeX command and options"
-msgstr "LaTeX pakker og innstillinger"
+msgstr "Bibtex-kommando og opsjoner"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:148
-#, fuzzy
 msgid "&BibTeX command:"
-msgstr "Beskriv kommando"
+msgstr "&BibTeX-kommando:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:163
-#, fuzzy
 msgid "Index command and options (makeindex, xindy)"
-msgstr "LaTeX pakker og innstillinger"
+msgstr "Registerkommando og opsjoner (makeindex, xindy)"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:174
 msgid "Index command:"
@@ -4348,9 +4333,8 @@ msgid "Print Destination"
 msgstr "Skriv ut til"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:409
-#, fuzzy
 msgid "P&rinter:"
-msgstr "Skriver"
+msgstr "Sk&river:"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
@@ -4414,9 +4398,8 @@ msgid "Cross-reference as it appears in output"
 msgstr "Kryssreferansen slik den blir i utskrift"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:353
-#, fuzzy
 msgid "Available labels"
-msgstr "Tilgjengelige siteringsnøkler"
+msgstr "Tilgjengelige referanser"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:364
 msgid "L&abels in:"
@@ -4665,7 +4648,6 @@ msgid "Repeat this row as header on every (except the first) page"
 msgstr "Bruk denne raden som førsterad på hver side (utenom den første)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:949
-#, fuzzy
 msgid "This row is the header of the first page"
 msgstr "Denne raden er tabellhode på den første siden"
 
@@ -4674,7 +4656,6 @@ msgid "Repeat this row as footer on every (except the last) page"
 msgstr "Bruk denne raden som sisterad på hver side (utenom den siste)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:983
-#, fuzzy
 msgid "This row is the footer of the last page"
 msgstr "Denne raden er den siste på den siste siden"
 
@@ -4805,7 +4786,6 @@ msgid "Replace the entry with the selection"
 msgstr ""
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:60
-#, fuzzy
 msgid "&Type:"
 msgstr "&Type:"
 
@@ -4814,9 +4794,8 @@ msgid "Contents list"
 msgstr ""
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
 msgid "&URL:"
-msgstr "&URL"
+msgstr "&URL:"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: src/frontends/qt2/ui/QURLDialogBase.ui:94 lib/layouts/scrlttr2.layout:212
@@ -4906,13 +4885,12 @@ msgid "Document Font"
 msgstr "Dokumentfont"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:75
-#, fuzzy
 msgid "&Font:"
-msgstr "Font: "
+msgstr "&Font:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:118
 msgid "&Size:"
-msgstr "Størrelse"
+msgstr "&Størrelse:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:137
 msgid "Separate Paragraphs With"
@@ -4920,7 +4898,7 @@ msgstr "Skill avsnitt med"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:156
 msgid "&Indentation"
-msgstr "Innrykk"
+msgstr "&Innrykk"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:160
 msgid "Indent consecutive paragraphs"
@@ -4978,9 +4956,8 @@ msgstr "Bevis"
 
 #: lib/layouts/IEEEtran.layout:65 lib/layouts/heb-article.layout:109
 #: lib/layouts/ijmpd.layout:144
-#, fuzzy
 msgid "Proof:"
-msgstr "Bevis"
+msgstr "Bevis:"
 
 #: lib/layouts/IEEEtran.layout:70 lib/layouts/amsart-plain.layout:25
 #: lib/layouts/amsart-seq.layout:136 lib/layouts/elsart.layout:259
@@ -4993,9 +4970,8 @@ msgid "Theorem"
 msgstr "Teorem"
 
 #: lib/layouts/IEEEtran.layout:73
-#, fuzzy
 msgid "Theorem #:"
-msgstr "Teorem"
+msgstr "Teorem #:"
 
 #: lib/layouts/IEEEtran.layout:80 lib/layouts/amsart-plain.layout:36
 #: lib/layouts/amsart-seq.layout:148 lib/layouts/elsart.layout:315
@@ -5007,9 +4983,8 @@ msgid "Lemma"
 msgstr "Lemma"
 
 #: lib/layouts/IEEEtran.layout:83
-#, fuzzy
 msgid "Lemma #:"
-msgstr "Lemma"
+msgstr "Lemma #:"
 
 #: lib/layouts/IEEEtran.layout:90 lib/layouts/amsart-plain.layout:30
 #: lib/layouts/amsart-seq.layout:142 lib/layouts/elsart.layout:322
@@ -5021,9 +4996,8 @@ msgid "Corollary"
 msgstr "Korollar"
 
 #: lib/layouts/IEEEtran.layout:93
-#, fuzzy
 msgid "Corollary #:"
-msgstr "Korollar"
+msgstr "Korollar #:"
 
 #: lib/layouts/IEEEtran.layout:100 lib/layouts/amsart-plain.layout:42
 #: lib/layouts/amsart-seq.layout:154 lib/layouts/elsart.layout:329
@@ -5035,9 +5009,8 @@ msgid "Proposition"
 msgstr "Proposisjon"
 
 #: lib/layouts/IEEEtran.layout:103
-#, fuzzy
 msgid "Proposition #:"
-msgstr "   opsjoner: "
+msgstr "Proposisjon #:"
 
 #: lib/layouts/IEEEtran.layout:110 lib/layouts/amsart-plain.layout:48
 #: lib/layouts/amsart-seq.layout:160 lib/layouts/elsart.layout:364
@@ -5059,7 +5032,6 @@ msgid "Criterion"
 msgstr "Kriterie"
 
 #: lib/layouts/IEEEtran.layout:123
-#, fuzzy
 msgid "Criterion #:"
 msgstr "Kriterie #:"
 
@@ -5067,12 +5039,11 @@ msgstr "Kriterie #:"
 #: lib/layouts/amsart-seq.layout:178 lib/layouts/amsmaths-plain.inc:102
 #: lib/layouts/amsmaths-seq.inc:87 lib/layouts/amsmaths.inc:212
 msgid "Fact"
-msgstr "Fakta"
+msgstr "Faktum"
 
 #: lib/layouts/IEEEtran.layout:133
-#, fuzzy
 msgid "Fact #:"
-msgstr "Fakta"
+msgstr "Faktum #:"
 
 #: lib/layouts/IEEEtran.layout:140 lib/layouts/amsart-plain.layout:72
 #: lib/layouts/amsart-seq.layout:184 lib/layouts/amsmaths-plain.inc:112
@@ -5081,9 +5052,8 @@ msgid "Axiom"
 msgstr "Aksiom"
 
 #: lib/layouts/IEEEtran.layout:143
-#, fuzzy
 msgid "Axiom #:"
-msgstr "Aksiom"
+msgstr "Aksiom #:"
 
 #: lib/layouts/IEEEtran.layout:150 lib/layouts/amsart-plain.layout:78
 #: lib/layouts/amsart-seq.layout:190 lib/layouts/elsart.layout:350
@@ -5095,14 +5065,12 @@ msgid "Definition"
 msgstr "Definisjon"
 
 #: lib/layouts/IEEEtran.layout:153
-#, fuzzy
 msgid "Definition #:"
-msgstr "Definisjon"
+msgstr "Definisjon #:"
 
 #: lib/layouts/IEEEtran.layout:163
-#, fuzzy
 msgid "Example #:"
-msgstr "Eksempel"
+msgstr "Eksempel #:"
 
 #: lib/layouts/IEEEtran.layout:170 lib/layouts/amsart-plain.layout:90
 #: lib/layouts/amsart-seq.layout:202 lib/layouts/amsmaths-plain.inc:142
@@ -5111,9 +5079,8 @@ msgid "Condition"
 msgstr "Forutsetning"
 
 #: lib/layouts/IEEEtran.layout:173
-#, fuzzy
 msgid "Condition #:"
-msgstr "Forutsetning"
+msgstr "Forutsetning #:"
 
 #: lib/layouts/IEEEtran.layout:180 lib/layouts/amsart-plain.layout:96
 #: lib/layouts/amsart-seq.layout:208 lib/layouts/elsart.layout:378
@@ -5124,9 +5091,8 @@ msgid "Problem"
 msgstr "Problem"
 
 #: lib/layouts/IEEEtran.layout:183
-#, fuzzy
 msgid "Problem #:"
-msgstr "Problem"
+msgstr "Problem #:"
 
 #: lib/layouts/IEEEtran.layout:190 lib/layouts/amsart-plain.layout:102
 #: lib/layouts/amsart-seq.layout:214 lib/layouts/llncs.layout:347
@@ -5136,9 +5102,8 @@ msgid "Exercise"
 msgstr "Øvelse"
 
 #: lib/layouts/IEEEtran.layout:193
-#, fuzzy
 msgid "Exercise #:"
-msgstr "Øvelse"
+msgstr "Øvelse #:"
 
 #: lib/layouts/IEEEtran.layout:200 lib/layouts/amsart-plain.layout:108
 #: lib/layouts/amsart-seq.layout:220 lib/layouts/elsart.layout:385
@@ -5149,9 +5114,8 @@ msgid "Remark"
 msgstr "Merknad"
 
 #: lib/layouts/IEEEtran.layout:203
-#, fuzzy
 msgid "Remark #:"
-msgstr "Merknad"
+msgstr "Merknad #:"
 
 #: lib/layouts/IEEEtran.layout:210 lib/layouts/amsart-plain.layout:114
 #: lib/layouts/amsart-seq.layout:226 lib/layouts/elsart.layout:399
@@ -5162,9 +5126,8 @@ msgid "Claim"
 msgstr "Påstand"
 
 #: lib/layouts/IEEEtran.layout:213
-#, fuzzy
 msgid "Claim #:"
-msgstr "Påstand"
+msgstr "Påstand #:"
 
 #: lib/layouts/IEEEtran.layout:220 lib/layouts/amsart-plain.layout:120
 #: lib/layouts/amsart-seq.layout:232 lib/layouts/apa.layout:212
@@ -5176,9 +5139,8 @@ msgid "Note"
 msgstr "Notis"
 
 #: lib/layouts/IEEEtran.layout:223
-#, fuzzy
 msgid "Note #:"
-msgstr "Notis"
+msgstr "Notis #:"
 
 #: lib/layouts/IEEEtran.layout:230 lib/layouts/amsart-plain.layout:126
 #: lib/layouts/amsart-seq.layout:238 lib/layouts/amsmaths-plain.inc:202
@@ -5187,9 +5149,8 @@ msgid "Notation"
 msgstr "Notasjon"
 
 #: lib/layouts/IEEEtran.layout:233
-#, fuzzy
 msgid "Notation #:"
-msgstr "Notasjon"
+msgstr "Notasjon #:"
 
 #: lib/layouts/IEEEtran.layout:240 lib/layouts/amsart-plain.layout:144
 #: lib/layouts/amsart-seq.layout:256 lib/layouts/elsart.layout:414
@@ -5297,9 +5258,8 @@ msgid "Abstract"
 msgstr "Sammendrag"
 
 #: lib/layouts/IEEEtran.layout:334
-#, fuzzy
 msgid "Abstract---"
-msgstr "Sammendrag"
+msgstr "Sammendrag---"
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:108
 #: lib/layouts/aastex.layout:283 lib/layouts/elsart.layout:63
@@ -5311,9 +5271,8 @@ msgid "Keywords"
 msgstr "Nøkkelord"
 
 #: lib/layouts/IEEEtran.layout:359
-#, fuzzy
 msgid "Keywords---"
-msgstr "Nøkkelord"
+msgstr "Nøkkelord---"
 
 #: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:87
 #: lib/layouts/aa.layout:332 lib/layouts/aapaper.layout:104
@@ -5511,9 +5470,8 @@ msgid "Acknowledgements."
 msgstr ""
 
 #: lib/layouts/aa.layout:318
-#, fuzzy
 msgid "         Abstract "
-msgstr "Sammendrag"
+msgstr "         Sammendrag "
 
 #: lib/layouts/aapaper.layout:62 lib/layouts/egs.layout:636
 #: src/frontends/qt2/QPrefsDialog.C:111
@@ -5604,14 +5562,12 @@ msgid "Facility"
 msgstr "Fakta"
 
 #: lib/layouts/aastex.layout:144 lib/layouts/aastex.layout:584
-#, fuzzy
 msgid "Objectname"
-msgstr "Octave"
+msgstr "Objektnavn"
 
 #: lib/layouts/aastex.layout:147 lib/layouts/aastex.layout:611
-#, fuzzy
 msgid "Dataset"
-msgstr "Databa&ser"
+msgstr "Datasett"
 
 #: lib/layouts/aastex.layout:295
 #, fuzzy
@@ -5623,21 +5579,20 @@ msgid "[Acknowledgements]"
 msgstr ""
 
 #: lib/layouts/aastex.layout:359
-#, fuzzy
 msgid "and"
-msgstr "Land"
+msgstr "og"
 
 #: lib/layouts/aastex.layout:379
 msgid "Place Figure here: "
-msgstr ""
+msgstr "Plassér figur her: "
 
 #: lib/layouts/aastex.layout:399
 msgid "Place Table here: "
-msgstr ""
+msgstr "Plassér tabell her: "
 
 #: lib/layouts/aastex.layout:419
 msgid "[Appendix]"
-msgstr ""
+msgstr "[Tillegg]"
 
 #: lib/layouts/aastex.layout:478
 msgid "Note to Editor: "
@@ -6153,9 +6108,8 @@ msgid "ChessBoard"
 msgstr "Sjakkbrett"
 
 #: lib/layouts/chess.layout:124
-#, fuzzy
 msgid "[chessboard]"
-msgstr "Sjakkbrett"
+msgstr "[sjakkbrett]"
 
 #: lib/layouts/chess.layout:133
 msgid "BoardCentered"
@@ -8750,119 +8704,119 @@ msgstr "Estlandsk"
 msgid "Finnish"
 msgstr "Finsk"
 
-#: lib/languages:25
+#: lib/languages:26
 msgid "French"
 msgstr "Fransk"
 
-#: lib/languages:26
+#: lib/languages:27
 msgid "Galician"
 msgstr "Gælisk"
 
-#: lib/languages:29
+#: lib/languages:30
 msgid "German"
 msgstr "Tysk"
 
-#: lib/languages:30
+#: lib/languages:31
 msgid "German (new spelling)"
 msgstr "Tysk (ny stavemåte)"
 
-#: lib/languages:32
+#: lib/languages:33
 msgid "Hebrew"
 msgstr "Hebraisk"
 
-#: lib/languages:34
+#: lib/languages:35
 msgid "Irish"
 msgstr "Irsk"
 
-#: lib/languages:35
+#: lib/languages:36
 msgid "Italian"
 msgstr "Italiensk"
 
-#: lib/languages:36
+#: lib/languages:37
 msgid "Kazakh"
 msgstr "Kasakstansk"
 
-#: lib/languages:39
+#: lib/languages:40
 msgid "Lithuanian"
 msgstr "Litauisk"
 
-#: lib/languages:40
+#: lib/languages:41
 msgid "Latvian"
 msgstr "Latvisk"
 
-#: lib/languages:41
+#: lib/languages:42
 msgid "Icelandic"
 msgstr "Islandsk"
 
-#: lib/languages:42
+#: lib/languages:43
 msgid "Magyar"
 msgstr "Ungarsk"
 
-#: lib/languages:43
+#: lib/languages:44
 msgid "Norsk"
 msgstr "Norsk"
 
-#: lib/languages:44
+#: lib/languages:45
 msgid "Nynorsk"
 msgstr "Nynorsk"
 
-#: lib/languages:45
+#: lib/languages:46
 msgid "Polish"
 msgstr "Polsk"
 
-#: lib/languages:46
+#: lib/languages:47
 msgid "Portugese"
 msgstr "Portugisisk"
 
-#: lib/languages:47
+#: lib/languages:48
 msgid "Romanian"
 msgstr "Romansk"
 
-#: lib/languages:48
+#: lib/languages:49
 msgid "Russian"
 msgstr "Russisk"
 
-#: lib/languages:49
+#: lib/languages:50
 msgid "Scottish"
 msgstr "Skotsk"
 
-#: lib/languages:50
+#: lib/languages:51
 msgid "Serbian"
 msgstr "Serbisk"
 
-#: lib/languages:51
+#: lib/languages:52
 msgid "Serbo-Croatian"
 msgstr "Serbo-Kroatisk"
 
-#: lib/languages:52
+#: lib/languages:53
 msgid "Spanish"
 msgstr "Spansk"
 
-#: lib/languages:53
+#: lib/languages:54
 msgid "Slovak"
 msgstr "Slovakisk"
 
-#: lib/languages:54
+#: lib/languages:55
 msgid "Slovene"
 msgstr "Slovensk"
 
-#: lib/languages:55
+#: lib/languages:56
 msgid "Swedish"
 msgstr "Svensk"
 
-#: lib/languages:56
+#: lib/languages:57
 msgid "Thai"
 msgstr "Thailansk"
 
-#: lib/languages:57
+#: lib/languages:58
 msgid "Turkish"
 msgstr "Tyrkisk"
 
-#: lib/languages:58
+#: lib/languages:59
 msgid "Ukrainian"
 msgstr "Ukrainsk"
 
-#: lib/languages:61
+#: lib/languages:62
 msgid "Welsh"
 msgstr "Walisisk"
 
@@ -9751,17 +9705,17 @@ msgid "Redo|R"
 msgstr "Gjør om|G"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:427 src/text3.C:813
+#: src/mathed/math_nestinset.C:427 src/text3.C:814
 msgid "Cut"
 msgstr "Klipp"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:432 src/text3.C:818
+#: src/mathed/math_nestinset.C:432 src/text3.C:819
 msgid "Copy"
 msgstr "Kopier"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:623
-#: src/mathed/math_nestinset.C:413 src/text3.C:797
+#: src/mathed/math_nestinset.C:413 src/text3.C:798
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -11740,7 +11694,7 @@ msgstr "AMS operatorer"
 msgid "Box Settings"
 msgstr "Boksinnstillinger"
 
-#: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:33
+#: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:36
 #: src/frontends/xforms/FormChanges.C:32
 msgid "Merge Changes"
 msgstr "Revidere endringer"
@@ -11936,12 +11890,12 @@ msgstr "LaTeX Konfigurasjon|X"
 msgid "Table of Contents"
 msgstr "Innholdsfortegnelse"
 
-#: src/frontends/gtk/GToc.C:117 src/frontends/xforms/FormErrorList.C:83
+#: src/frontends/gtk/GToc.C:116 src/frontends/xforms/FormErrorList.C:83
 #: src/frontends/xforms/FormToc.C:103 src/frontends/xforms/FormToc.C:121
 msgid "*** No Lists ***"
 msgstr "*** Ingen lister ***"
 
-#: src/frontends/gtk/GToc.C:136
+#: src/frontends/gtk/GToc.C:135
 #, fuzzy
 msgid "*** No Items ***"
 msgstr "*** Ingen lister ***"
@@ -12019,13 +11973,16 @@ msgstr "BibTeX referanseliste"
 msgid "Branch Settings"
 msgstr "Gren-innstillinger"
 
-#: src/frontends/qt2/QChanges.C:63
-msgid "Change by "
+#: src/frontends/qt2/QChanges.C:66
+#, fuzzy, c-format
+msgid ""
+"Change by %1$s\n"
+"\n"
 msgstr "Endret av "
 
-#: src/frontends/qt2/QChanges.C:65
-#, fuzzy
-msgid "Change made at "
+#: src/frontends/qt2/QChanges.C:68
+#, fuzzy, c-format
+msgid "Change made at %1$s\n"
 msgstr "Endret stil"
 
 #: src/frontends/qt2/QCommandBuffer.C:79
@@ -12106,7 +12063,7 @@ msgstr "Sider"
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2163
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2167
 msgid "OneHalf"
 msgstr "Halvannen"
 
@@ -12260,32 +12217,36 @@ msgid "Bold\t\\mathbf"
 msgstr "Fet\t\\mathbf"
 
 #: src/frontends/qt2/QMathDialog.C:142
+msgid "Bold symbol\t\\boldsymbol"
+msgstr ""
+
+#: src/frontends/qt2/QMathDialog.C:143
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Sans Serif"
 
-#: src/frontends/qt2/QMathDialog.C:143
+#: src/frontends/qt2/QMathDialog.C:144
 msgid "Italic\t\\mathit"
 msgstr "Kursiv\t\\mathit"
 
-#: src/frontends/qt2/QMathDialog.C:144
+#: src/frontends/qt2/QMathDialog.C:145
 msgid "Typewriter\t\\mathtt"
 msgstr "Skrivemaskin\t\\mathtt"
 
-#: src/frontends/qt2/QMathDialog.C:145
+#: src/frontends/qt2/QMathDialog.C:146
 #, fuzzy
 msgid "Blackboard\t\\mathbb"
 msgstr "Fet\t\\mathbf"
 
-#: src/frontends/qt2/QMathDialog.C:146
+#: src/frontends/qt2/QMathDialog.C:147
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: src/frontends/qt2/QMathDialog.C:147
+#: src/frontends/qt2/QMathDialog.C:148
 msgid "Calligraphic\t\\mathcal"
 msgstr ""
 
-#: src/frontends/qt2/QMathDialog.C:148
+#: src/frontends/qt2/QMathDialog.C:149
 msgid "Normal text mode\t\\textrm"
 msgstr "Normal tekstmodus\t\\textrm"
 
@@ -13747,6 +13708,10 @@ msgstr "Åpnet text inset"
 msgid "Opened Branch Inset"
 msgstr "Åpnet \"gren-inset\""
 
+#: src/insets/insetbranch.C:97
+msgid "Branch: "
+msgstr "Gren: "
+
 #: src/insets/insetcaption.C:77
 #, fuzzy
 msgid "Opened Caption Inset"
@@ -13953,11 +13918,11 @@ msgstr "Ref: "
 msgid "Opened table"
 msgstr "Åpne en fil"
 
-#: src/insets/insettabular.C:1561
+#: src/insets/insettabular.C:1562
 msgid "Error setting multicolumn"
 msgstr "Feil bruk av multikolonne"
 
-#: src/insets/insettabular.C:1562
+#: src/insets/insettabular.C:1563
 msgid "You cannot set multicolumn vertically."
 msgstr "Multikolonne kan ikke brukes vertikalt."
 
@@ -14582,7 +14547,7 @@ msgstr "Bygge logg"
 msgid "ChkTeX"
 msgstr "Sjekk TeX"
 
-#: src/lyxfunc.C:981 src/text3.C:1254
+#: src/lyxfunc.C:981 src/text3.C:1242
 msgid "Missing argument"
 msgstr "Mangler argument"
 
@@ -15118,25 +15083,25 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1264
+#: src/mathed/math_gridinset.C:1266
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1270
+#: src/mathed/math_gridinset.C:1272
 #, fuzzy
 msgid "Only one column"
 msgstr "Slett kolonne|S"
 
-#: src/mathed/math_gridinset.C:1278
+#: src/mathed/math_gridinset.C:1280
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Ingenting å utføre"
 
-#: src/mathed/math_gridinset.C:1287
+#: src/mathed/math_gridinset.C:1289
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1305
+#: src/mathed/math_gridinset.C:1307
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
@@ -15174,7 +15139,7 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1233 src/text3.C:166
+#: src/mathed/math_hullinset.C:1233 src/text3.C:167
 msgid "Math editor mode"
 msgstr "Matte editerings modus"
 
@@ -15275,58 +15240,58 @@ msgstr "Ukjent operasjon"
 msgid "Unknown token"
 msgstr "Ukjent symbol: "
 
-#: src/text.C:1165
+#: src/text.C:1169
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "Det er ikke mulig å bruke to mellomrom på denne meten. Les 'Tutorial.'"
 
-#: src/text.C:1176
+#: src/text.C:1180
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Det er ikke mulig å bruke to mellomrom på denne meten. Les 'Tutorial.'"
 
-#: src/text.C:2129
+#: src/text.C:2133
 #, fuzzy
 msgid "Change: "
 msgstr "Side: "
 
-#: src/text.C:2133
+#: src/text.C:2137
 #, fuzzy
 msgid " at "
 msgstr " til "
 
-#: src/text.C:2144
+#: src/text.C:2148
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/text.C:2151
+#: src/text.C:2155
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$d"
 
-#: src/text.C:2157
+#: src/text.C:2161
 msgid ", Spacing: "
 msgstr ", Linjeavstand: "
 
-#: src/text.C:2169
+#: src/text.C:2173
 msgid "Other ("
 msgstr "Annet ("
 
-#: src/text.C:2178
+#: src/text.C:2182
 msgid ", Inset: "
 msgstr ""
 
-#: src/text.C:2179
+#: src/text.C:2183
 msgid ", Paragraph: "
 msgstr ", Avsnitt: "
 
-#: src/text.C:2180
+#: src/text.C:2184
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2181
+#: src/text.C:2185
 msgid ", Position: "
 msgstr ", Posisjon : "
 
@@ -15346,29 +15311,33 @@ msgstr "Ingenting å indeksere!"
 msgid "Cannot index more than one paragraph!"
 msgstr ""
 
-#: src/text3.C:711
+#: src/text3.C:712
 msgid "Unknown spacing argument: "
 msgstr "Ukjent argument til linjeavstand: "
 
-#: src/text3.C:862
+#: src/text3.C:863
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX funksjonen 'layout' behøver et argument."
 
-#: src/text3.C:880
+#: src/text3.C:881
 msgid "Layout "
 msgstr "Stil "
 
-#: src/text3.C:881
+#: src/text3.C:882
 msgid " not known"
 msgstr " ukjent"
 
-#: src/text3.C:1359 src/text3.C:1371
+#: src/text3.C:1347 src/text3.C:1359
 msgid "Character set"
 msgstr "Tegnsett"
 
-#: src/text3.C:1504
+#: src/text3.C:1492
 msgid "Paragraph layout set"
 msgstr "Avsnittstil satt"
+
+#: src/toc.C:64 src/toc.C:133
+msgid "TOC"
+msgstr "Innhold"
 
 #: src/vspace.C:487
 msgid "Default skip"
@@ -15693,10 +15662,6 @@ msgstr "beskyttet"
 
 #~ msgid "BibTeX Database"
 #~ msgstr "BibTeX Database"
-
-#, fuzzy
-#~ msgid "Branch"
-#~ msgstr "Fransk"
 
 #, fuzzy
 #~ msgid "Add the selected entry to the current citation reference."
