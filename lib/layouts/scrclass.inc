@@ -31,7 +31,8 @@ End
 Style Labeling
 	CopyStyle             List
 	LatexName             labeling
-	Preamble              # overwrite the preamble code definition
+	# overwrite the preamble code definition
+	Preamble
 	EndPreamble
 End
 
