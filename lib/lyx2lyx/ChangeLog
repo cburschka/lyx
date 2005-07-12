@@ -1,3 +1,9 @@
+2005-07-12  José Matos  <jamatos@lyx.org>
+
+	* lyx_1_4.py (add_to_preamble): Make it more robust.
+	(convert_frameless_box): Fix wrong type for parameter.
+	(revert_paperpackage): Consider empty paper package case.
+
 2005-07-08  José Matos  <jamatos@lyx.org>
 
 	* lyx_0_12.py (update_tabular): Support old tables format 1.

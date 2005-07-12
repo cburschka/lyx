@@ -1047,12 +1047,16 @@ def insert_ert(body, i, status, text):
 def add_to_preamble(file, text):
     i = find_token(file.header, '\\begin_preamble', 0)
     if i == -1:
-        file.warning("Malformed LyX file: Missing '\\begin_preamble'.")
+        file.header.extend(['\\begin_preamble'] + text + ['\\end_preamble'])
         return
+
     j = find_token(file.header, '\\end_preamble', i)
     if j == -1:
         file.warning("Malformed LyX file: Missing '\\end_preamble'.")
-        return
+        file.warning("Adding it now and hoping for the best.")
+        file.header.append('\\end_preamble')
+        j = len(file.header)
+
     if find_token(file.header, text[0], i, j) != -1:
         return
     file.header[j:j] = text
@@ -1075,8 +1079,8 @@ def convert_frameless_box(file):
 	j = j - 1
 
 	# Gather parameters
-	params = {'position':'0', 'hor_pos':'c', 'has_inner_box':'1',
-                  'inner_pos':'1', 'use_parbox':'0', 'width':'100col%',
+	params = {'position':0, 'hor_pos':'c', 'has_inner_box':'1',
+                  'inner_pos':1, 'use_parbox':'0', 'width':'100col%',
 	          'special':'none', 'height':'1in',
 	          'height_special':'totalheight', 'collapsed':'false'}
 	for key in params.keys():
@@ -1536,8 +1540,11 @@ def revert_paperpackage(file):
         return
 
     packages = {'none':'a4', 'a4':'a4wide', 'a4wide':'widemarginsa4',
-                'widemarginsa4':''}
-    paperpackage = split(file.header[i])[1]
+                'widemarginsa4':'', 'default': 'default'}
+    if len(split(file.header[i])) > 1:
+        paperpackage = split(file.header[i])[1]
+    else:
+        paperpackage = 'default'
     file.header[i] = replace(file.header[i], paperpackage, packages[paperpackage])
 
 
