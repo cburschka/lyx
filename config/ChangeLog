@@ -1,3 +1,8 @@
+2005-07-12  Angus Leeming  <leeming@lyx.org>
+
+	* qt.m4 (QT_CHECK_IS_MULTITHREADED): ascertain whether the Qt library
+	has multi-threading support.
+
 2005-07-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* qt.m4 (QT_DO_IT_ALL): mark the QTDIR variable as precious.
