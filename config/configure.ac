@@ -157,6 +157,9 @@ case $have_x in
 esac
 
 ### check which frontend we want to use
+dnl this variable is precious. We do it here because qt.m4 is used by
+dnl autoconf 2.13 too. 
+AC_ARG_VAR(QTDIR, [the place where the Qt files are, e.g. /usr/lib/qt])
 
 #LYX_USE_FRONTEND
 dnl The code below is not in a macro, because this would cause big
