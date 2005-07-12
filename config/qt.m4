@@ -156,6 +156,40 @@ EOF
 	AC_SUBST(QT_VERSION)
 ])
 
+dnl Ascertain whether the Qt libraries are multi-threaded or not
+AC_DEFUN([QT_CHECK_IS_MULTITHREADED],
+[
+	AC_CACHE_CHECK([whether the Qt library is multi-threaded],
+	               qt_cv_is_multithreaded,
+	[
+		AC_LANG_CPLUSPLUS
+		SAVE_CXXFLAGS=$CXXFLAGS
+		SAVE_LIBS="$LIBS"
+		CXXFLAGS="$CXXFLAGS $QT_INCLUDES $QT_LDFLAGS"
+		LIBS="$LIBS $QT_LIB"
+
+		AC_TRY_LINK(
+		[
+#define QT_THREAD_SUPPORT
+#include <qapplication.h>
+		],
+		[
+	QApplication a(0,0);
+	a.unlock();
+		],
+		qt_cv_is_multithreaded=yes,
+		qt_cv_is_multithreaded=no
+		)
+
+		LIBS="$SAVE_LIBS"
+		CXXFLAGS=$SAVE_CXXFLAGS
+	])
+
+	if test x"$qt_cv_is_multithreaded" = xyes; then
+		QT_CPPFLAGS="$QT_CPPFLAGS -DQT_THREAD_SUPPORT"
+	fi
+])
+
 dnl start here
 AC_DEFUN([QT_DO_IT_ALL],
 [
@@ -221,6 +255,8 @@ AC_DEFUN([QT_DO_IT_ALL],
 
 	QT_LIB=$qt_cv_libname;
 	AC_SUBST(QT_LIB)
+
+	QT_CHECK_IS_MULTITHREADED
 
 	if test -n "$qt_cv_libname"; then
 		QT_GET_VERSION

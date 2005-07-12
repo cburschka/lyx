@@ -1,3 +1,8 @@
+2005-07-12  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (LQApplication d-tor): unlock the mutex if the Qt library
+	is multi-threaded.
+
 2005-06-16  Joao Luis Meloni Assirati  <assirati@nonada.if.usp.br>
 
 	* QMathDialog.C (QMathDialog, insertFont): add boldsymbol font.
@@ -36,7 +41,7 @@
 2005-05-24  Angus Leeming  <leeming@lyx.org>
 
 	* QExternalDialog.C (browseClicked):
-	* QBibtexDialog.C (browsePressed, browseBibPressed): 
+	* QBibtexDialog.C (browsePressed, browseBibPressed):
 	* QLPrintDialog.C (browseClicked):
 	 backport 1.4.x code to use the controller's browse member function
 	 rather than QFileDialog::getOpenFileName

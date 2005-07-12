@@ -92,7 +92,7 @@ extern bool lyxX11EventFilter(XEvent * xev);
 #ifdef Q_OS_MAC
 extern bool macEventFilter(EventRef event);
 extern pascal OSErr
-handleOpenDocuments(const AppleEvent* inEvent, AppleEvent* /*reply*/, 
+handleOpenDocuments(const AppleEvent* inEvent, AppleEvent* /*reply*/,
 		    long /*refCon*/);
 #endif
 
@@ -121,17 +121,22 @@ LQApplication::LQApplication(int & argc, char ** argv)
 
 
 LQApplication::~LQApplication()
-{}
+{
+#ifdef QT_THREAD_SUPPORT
+	if (locked())
+		unlock();
+#endif
+}
 
 
 #ifdef Q_OS_MAC
-bool LQApplication::macEventFilter(EventRef event) 
+bool LQApplication::macEventFilter(EventRef event)
 {
 	if (GetEventClass(event) == kEventClassAppleEvent) {
 		EventRecord eventrec;
 		ConvertEventRefToEventRecord(event, &eventrec);
 		AEProcessAppleEvent(&eventrec);
-		
+
 		return false;
 	}
 	return false;
@@ -143,7 +148,7 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 {
 	// Force adding of font path _before_ QApplication is initialized
 	qfont_loader::initFontPath();
-	
+
 	static LQApplication app(argc, argv);
 
 #if QT_VERSION >= 0x030200
@@ -232,7 +237,7 @@ void lyx_gui::exit()
 	// into a static dialog return in the lyx code (for example,
 	// load autosave file QMessageBox. We have to just get the hell
 	// out.
-	
+
 	::exit(0);
 }
 

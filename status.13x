@@ -133,6 +133,9 @@ What's new
 - Enable the file browser to return a "file name with spaces" to the
   appropriate dialog if LaTeX can handle such files.
 
+- Squash the "Mutex destroy failure" warning when shutting down LyX [Qt only].
+  Prevents a core dump on NetBSD.
+
 * User Interface:
 
 - Fix crash when using math-mutate with invalid argument.
