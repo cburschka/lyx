@@ -1,3 +1,8 @@
+2005-07-12  Angus Leeming  <leeming@lyx.org>
+
+	* boost/config/compiler/gcc.hpp allow to compile with gcc 4.0
+	without warnings.
+
 2004-11-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* boost/format/feed_args.hpp: do not use a static string (bug 1702)
