@@ -2,6 +2,10 @@ include $(top_srcdir)/config/common.am
 
 SUBDIRS = gimages glade
 
+EXTRA_DIST = pch.h
+
+BUILT_SOURCES = $(PCH_FILE)
+
 noinst_LTLIBRARIES = libgtk.la
 
 AM_CPPFLAGS += \

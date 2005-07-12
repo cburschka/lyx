@@ -4,6 +4,10 @@ SUBDIRS = controllers $(FRONTENDS_SUBDIRS)
 
 DIST_SUBDIRS = controllers xforms qt2 gtk
 
+EXTRA_DIST = pch.h
+
+BUILT_SOURCES = $(PCH_FILE)
+
 noinst_LTLIBRARIES = libfrontends.la
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/..  $(BOOST_INCLUDES)

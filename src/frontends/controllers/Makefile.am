@@ -1,6 +1,8 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = BCView.tmpl
+EXTRA_DIST = pch.h BCView.tmpl
+
+BUILT_SOURCES = $(PCH_FILE)
 
 noinst_LTLIBRARIES = libcontrollers.la
 

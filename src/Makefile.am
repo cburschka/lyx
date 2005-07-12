@@ -15,7 +15,8 @@ EXTRA_DIST = config.h.in stamp-h.in version.C.in \
 	Sectioning.C \
 	Variables.C \
 	Variables.h \
-	paper.h
+	paper.h \
+	pch.h
 
 LYX_PRE_LIBS = mathed/libmathed.la insets/libinsets.la \
 	frontends/libfrontends.la
@@ -51,7 +52,7 @@ lyx$(EXEEXT): $(FRONTENDS_PROGS)
 
 #lyx_LDFLAGS=-Wl,-O1
 
-BUILT_SOURCES = version.C
+BUILT_SOURCES = $(PCH_FILE) version.C
 
 AM_CPPFLAGS += $(PCH_FLAGS) $(BOOST_INCLUDES)
 

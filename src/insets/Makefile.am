@@ -3,8 +3,11 @@ include $(top_srcdir)/config/common.am
 noinst_LTLIBRARIES = libinsets.la
 
 EXTRA_DIST = \
+	pch.h \
 	insettheorem.C \
 	insettheorem.h
+
+BUILT_SOURCES = $(PCH_FILE)
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 

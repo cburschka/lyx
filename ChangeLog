@@ -1,3 +1,8 @@
+2005-07-13  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefiles: make sure to dist pch.h and mark PCH_FILE as a build
+	file.
+
 2005-07-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* INSTALL: small tweak.

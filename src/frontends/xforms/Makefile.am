@@ -3,9 +3,10 @@ include $(top_srcdir)/config/common.am
 SUBDIRS = forms
 CLEANFILES += stamp-xpm stamp-forms
 DISTCLEANFILES += lyx_forms.h lyx_forms.h-tmp lyx_xpm.h lyx_xpm.h-tmp
-BUILT_SOURCES = lyx_forms.h lyx_xpm.h
 
-EXTRA_DIST = lyx_forms.h.in lyx_xpm.h.in
+BUILT_SOURCES = $(PCH_FILE) lyx_forms.h lyx_xpm.h
+
+EXTRA_DIST = pch.h lyx_forms.h.in lyx_xpm.h.in
 
 AM_CPPFLAGS += \
 	-I$(top_srcdir)/images \

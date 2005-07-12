@@ -1,6 +1,8 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = formulamacro.C
+EXTRA_DIST = pch.h formulamacro.C
+
+BUILT_SOURCES = $(PCH_FILE)
 
 noinst_LTLIBRARIES = libmathed.la
 

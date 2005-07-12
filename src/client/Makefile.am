@@ -2,7 +2,9 @@ include $(top_srcdir)/config/common.am
 
 CLEANFILES += $(man_MANS)
 
-EXTRA_DIST = lyxclient.man
+EXTRA_DIST = pch.h lyxclient.man
+
+BUILT_SOURCES = $(PCH_FILE)
 
 man_MANS = lyxclient.1
 

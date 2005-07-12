@@ -4,7 +4,7 @@ SUBDIRS = . tests
 
 CLEANFILES += $(BUILT_SOURCES)
 
-EXTRA_DIST = package.C.in os_unix.C os_win32.C os_os2.C
+EXTRA_DIST = package.C.in pch.h os_unix.C os_win32.C os_os2.C
 
 noinst_LTLIBRARIES = libsupport.la
 
@@ -12,7 +12,7 @@ if USE_COMPRESSION
 COMPRESSION = gzstream.C gzstream.h
 endif
 
-BUILT_SOURCES = package.C
+BUILT_SOURCES = $(PCH_FILE) package.C
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 

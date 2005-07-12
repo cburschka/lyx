@@ -3,7 +3,9 @@ include $(srcdir)/Makefile.dialogs
 
 SUBDIRS = ui moc
 
-EXTRA_DIST = Makefile.dialogs
+EXTRA_DIST = pch.h Makefile.dialogs
+
+BUILT_SOURCES = $(PCH_FILE)
 
 noinst_LTLIBRARIES = libqt2.la
 

@@ -1,7 +1,8 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = test-structure.tex test-insets.tex
-DISTCLEANFILES += $(BUILT_SOURCES)
+EXTRA_DIST = pch.h test-structure.tex test-insets.tex
+
+DISTCLEANFILES += $(LINKED_SOURCES)
 
 #noinst_LTLIBRARIES = libtexparser.la
 #
@@ -21,7 +22,7 @@ if USE_COMPRESSION
 COMPRESSIONLIB = -lz
 endif
 
-BUILT_SOURCES = \
+LINKED_SOURCES = \
 	FloatList.C \
 	Floating.C \
 	counters.C \
@@ -32,8 +33,10 @@ BUILT_SOURCES = \
 	lyxlex.C \
 	lyxlex_pimpl.C
 
+BUILT_SOURCES = $(PCH_FILE) $(LINKED_SOURCES)
+
 tex2lyx_SOURCES = \
-	$(BUILT_SOURCES) \
+	$(LINKED_SOURCES) \
 	Spacing.h \
 	boost.C \
 	context.C \
@@ -56,9 +59,9 @@ tex2lyx_LDADD = \
 	$(top_builddir)/src/support/libsupport.la \
 	$(BOOST_LIBS) $(COMPRESSIONLIB)
 
-$(BUILT_SOURCES) :
+$(LINKED_SOURCES) :
 	@rm -f $@ ; \
 	$(LN_S) $(top_srcdir)/src/$@ .
 
 rm_link_files:
-	rm -f $(BUILT_SOURCES)
+	rm -f $(LINKED_SOURCES)

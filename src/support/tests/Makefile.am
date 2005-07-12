@@ -1,6 +1,8 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = test_convert test_lstrings regfiles
+EXTRA_DIST = pch.h test_convert test_lstrings regfiles
+
+BUILT_SOURCES = $(PCH_FILE)
 
 TESTS = \
 	test_convert \

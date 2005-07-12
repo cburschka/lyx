@@ -2,7 +2,9 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += $(SRCS:.fd=.C) $(SRCS:.fd=.h) $(SRCS:.fd=.c)
 
-EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh tmp_str.sed README $(SRCS)
+EXTRA_DIST = pch.h fdfixc.sed fdfixh.sed fdfix.sh tmp_str.sed README $(SRCS)
+
+BUILT_SOURCES = $(PCH_FILE)
 
 # For (forms_fwd.h, forms_gettext.h) and support/std_string.h, respectively.
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/..  -I$(top_srcdir)/src -I..
