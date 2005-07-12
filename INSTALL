@@ -13,7 +13,8 @@ These four steps will compile, test and install LyX:
 	   configures LyX to your system. By default, LyX configures
            the xforms frontend, use --with-frontend=qt to build a Qt
            version. You may have to set
-           --with-qt-dir=<path-to-your-qt-installation> to succeed.
+             --with-qt-dir=<path-to-your-qt-installation>
+           if the environment variable QTDIR is not set. 
 
 	2) make
 	   compiles the program.

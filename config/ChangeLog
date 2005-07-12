@@ -1,3 +1,7 @@
+2005-07-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qt.m4 (QT_DO_IT_ALL): mark the QTDIR variable as precious.
+
 2005-05-04  Angus Leeming  <leeming@lyx.org>
 
 	* common.am (*.o *.lo *.obj): make the TARGETS depend on $(PCH_FILE),

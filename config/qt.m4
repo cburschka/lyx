@@ -159,6 +159,9 @@ EOF
 dnl start here
 AC_DEFUN([QT_DO_IT_ALL],
 [
+	dnl this variable is precious
+	AC_ARG_VAR(QTDIR, [the place where the Qt files are, e.g. /usr/lib/qt])
+
 	dnl Please leave this alone. I use this file in
 	dnl oprofile.
 	FATAL=0
