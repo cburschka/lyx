@@ -1,3 +1,9 @@
+2005-07-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (parse_text): output font changes only if needed
+	* context.C (begin_layout): output font if it is not the default one
+	* context.[Ch] (output_font_change): new, needed for the above
+
 2005-06-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_text): eat {} after \ss, \i and \j

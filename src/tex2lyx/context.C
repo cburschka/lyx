@@ -22,9 +22,13 @@ using std::string;
 
 namespace {
 
-void begin_layout(ostream & os, LyXLayout_ptr layout)
+void begin_layout(ostream & os, LyXLayout_ptr layout, Font const & font,
+                  Font const & normalfont)
 {
 	os << "\n\\begin_layout " << layout->name() << "\n";
+	// FIXME: This is not enough for things like
+	// \\Huge par1 \\par par2
+	output_font_change(os, normalfont, font);
 }
 
 
@@ -46,6 +50,23 @@ void end_deeper(ostream & os)
 }
 
 }
+
+void output_font_change(ostream & os, Font const & oldfont,
+                        Font const & newfont)
+{
+	if (oldfont.family != newfont.family)
+		os << "\n\\family " << newfont.family << '\n';
+	if (oldfont.series != newfont.series)
+		os << "\n\\series " << newfont.series << '\n';
+	if (oldfont.shape != newfont.shape)
+		os << "\n\\shape " << newfont.shape << '\n';
+	if (oldfont.size != newfont.size)
+		os << "\n\\size " << newfont.size << '\n';
+}
+
+
+Font Context::normalfont;
+
 
 Context::Context(bool need_layout_,
 		 LyXTextClass const & textclass_,
@@ -81,7 +102,7 @@ void Context::check_layout(ostream & os)
 					end_deeper(os);
 					deeper_paragraph = false;
 				}
-				begin_layout(os, layout);
+				begin_layout(os, layout, font, normalfont);
 				has_item = false;
 				need_layout=false;
 				need_end_layout = true;
@@ -91,14 +112,15 @@ void Context::check_layout(ostream & os)
 				// that this may require a begin_deeper.
 				if (!deeper_paragraph)
 					begin_deeper(os);
-				begin_layout(os, textclass.defaultLayout());
+				begin_layout(os, textclass.defaultLayout(),
+				             font, normalfont);
 				need_layout=false;
 				need_end_layout = true;
 				deeper_paragraph = true;
 			}
 		} else {
 			// No list-like environment
-			begin_layout(os, layout);
+			begin_layout(os, layout, font, normalfont);
 			need_layout=false;
 			need_end_layout = true;
 		}

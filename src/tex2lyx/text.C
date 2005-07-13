@@ -70,7 +70,7 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 }
 
 
-/// parses a paragraph snippet, useful for example for \emph{...}
+/// parses a paragraph snippet, useful for example for \\emph{...}
 void parse_text_snippet(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
@@ -356,7 +356,9 @@ void skip_braces(Parser & p)
 }
 
 
-void handle_ert(ostream & os, string const & s, Context & context, bool check_layout = true)
+
+void handle_ert(ostream & os, string const & s, Context & context,
+                bool check_layout = true)
 {
 	if (check_layout) {
 		// We must have a valid layout before outputting the ERT inset.
@@ -710,7 +712,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	// The single '=' is meant here.
 	else if ((newlayout = findLayout(parent_context.textclass, name)).get() &&
-		   newlayout->isEnvironment()) {
+		  newlayout->isEnvironment()) {
 		Context context(true, parent_context.textclass, newlayout,
 				parent_context.layout, parent_context.font);
 		if (parent_context.deeper_paragraph) {
@@ -1512,10 +1514,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\shape " << context.font.shape << "\n";
 			if (t.cs() == "textnormal") {
 				parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+				output_font_change(os, context.font, oldFont);
 				context.font = oldFont;
-				os << "\n\\shape " << oldFont.shape << "\n";
-				os << "\n\\series " << oldFont.series << "\n";
-				os << "\n\\family " << oldFont.family << "\n";
 			} else
 				eat_whitespace(p, os, context, false);
 		}
@@ -1654,8 +1654,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (is_known(t.cs(), known_sizes)) {
 			char const * const * where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
+			Font const oldFont = context.font;
 			context.font.size = known_coded_sizes[where - known_sizes];
-			os << "\n\\size " << context.font.size << '\n';
+			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
 
@@ -1663,10 +1664,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_font_families);
 			context.check_layout(os);
+			Font const oldFont = context.font;
 			context.font.family =
 				known_coded_font_families[where - known_font_families];
-			// FIXME: Only do this if it is necessary
-			os << "\n\\family " << context.font.family << '\n';
+			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
 
@@ -1674,10 +1675,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_font_series);
 			context.check_layout(os);
+			Font const oldFont = context.font;
 			context.font.series =
 				known_coded_font_series[where - known_font_series];
-			// FIXME: Only do this if it is necessary
-			os << "\n\\series " << context.font.series << '\n';
+			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
 
@@ -1685,25 +1686,22 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_font_shapes);
 			context.check_layout(os);
+			Font const oldFont = context.font;
 			context.font.shape =
 				known_coded_font_shapes[where - known_font_shapes];
-			// FIXME: Only do this if it is necessary
-			os << "\n\\shape " << context.font.shape << '\n';
+			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
 		else if (is_known(t.cs(), known_old_font_families)) {
 			char const * const * where =
 				is_known(t.cs(), known_old_font_families);
 			context.check_layout(os);
-			string oldsize = context.font.size;
+			Font const oldFont = context.font;
 			context.font.init();
-			context.font.size = oldsize;
+			context.font.size = oldFont.size;
 			context.font.family =
 				known_coded_font_families[where - known_old_font_families];
-			// FIXME: Only do this if it is necessary
-			os << "\n\\family " << context.font.family << "\n"
-			   <<   "\\series " << context.font.series << "\n"
-			   <<   "\\shape "  << context.font.shape  << "\n";
+			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
 
@@ -1711,15 +1709,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_old_font_series);
 			context.check_layout(os);
-			string oldsize = context.font.size;
+			Font const oldFont = context.font;
 			context.font.init();
-			context.font.size = oldsize;
+			context.font.size = oldFont.size;
 			context.font.series =
 				known_coded_font_series[where - known_old_font_series];
-			// FIXME: Only do this if it is necessary
-			os << "\n\\family " << context.font.family << "\n"
-			   <<   "\\series " << context.font.series << "\n"
-			   <<   "\\shape "  << context.font.shape  << "\n";
+			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
 
@@ -1727,15 +1722,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const * const * where =
 				is_known(t.cs(), known_old_font_shapes);
 			context.check_layout(os);
-			string oldsize = context.font.size;
+			Font const oldFont = context.font;
 			context.font.init();
-			context.font.size = oldsize;
+			context.font.size = oldFont.size;
 			context.font.shape =
 				known_coded_font_shapes[where - known_old_font_shapes];
-			// FIXME: Only do this if it is necessary
-			os << "\n\\family " << context.font.family << "\n"
-			   <<   "\\series " << context.font.series << "\n"
-			   <<   "\\shape "  << context.font.shape  << "\n";
+			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
 
