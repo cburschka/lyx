@@ -1,3 +1,8 @@
+2005-07-13    <lgb@tandberg.net>
+
+	* forms/Makefile.am (distclean-local): pretend success also if
+	srcdir != builddir
+
 2005-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormToc.C: consider gui name, not type, when trying to set the

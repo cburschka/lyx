@@ -69,4 +69,4 @@ SUFFIXES += .fd
 	$(SHELL) $(SCRIPT) $(<F)
 
 distclean-local:
-	[ $(srcdir) != . ] && $(RM) $(SRCS)
+	[ $(srcdir) != . ] && $(RM) $(SRCS) || true
