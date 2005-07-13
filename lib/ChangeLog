@@ -1,3 +1,9 @@
+2005-07-12  José Matos  <jamatos@lyx.org>
+
+	* lyx2lyx/lyx_1_4.py (add_to_preamble): Make it more robust.
+	(convert_frameless_box): Fix wrong type for parameter.
+	(revert_paperpackage): Consider empty paper package case.
+
 2005-07-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyx2lyx: replace with backported 1.4 lyx2lyx. The only difference
