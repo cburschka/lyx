@@ -91,7 +91,7 @@ lyx_original.exe. Remove it.
 Building the LyX installer
 ==========================
 
-At this point my J:\Programs\LyX tree now contains everything that is
+At this point my build/installprefix tree now contains everything that is
 to be released as a LyX/Win package. All that remains to do is to
 generate a Windows installer for it. I've written a script for NSIS
 (http://nsis.sourceforge.net/) to compile into an installer.

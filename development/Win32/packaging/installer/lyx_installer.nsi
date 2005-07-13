@@ -28,7 +28,7 @@ SetCompressor lzma
 !define PRODUCT_NAME "LyX"
 !define PRODUCT_VERSION "1.3.6"
 !define PRODUCT_LICENSE_FILE "..\..\..\..\COPYING"
-!define PRODUCT_SOURCEDIR "J:\Programs\LyX"
+!define PRODUCT_SOURCEDIR "..\..\..\..\build\installprefix"
 !define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
 !define PRODUCT_BAT "$INSTDIR\bin\lyx.bat"
 !define PRODUCT_EXT ".lyx"

@@ -33,7 +33,7 @@ DTL_DIR=dtl
 DT2DV="$DTL_DIR/dt2dv.exe"
 DV2DT="$DTL_DIR/dv2dt.exe"
 
-LYX_INSTALL_DIR="/j/Programs/LyX"
+LYX_INSTALL_DIR="../../../build/installprefix"
 
 # Change this to 'mv -f' when you are confident that
 # the various sed scripts are working correctly.
