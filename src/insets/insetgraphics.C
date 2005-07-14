@@ -619,37 +619,24 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		<< "\tthe orig file is: " << orig_file_with_path << endl;
 
 	if (lyxrc.use_tempdir) {
-		string const ext_tmp = GetExtension(orig_file_with_path);
-		// without ext and /
-		temp_file = subst(
-			ChangeExtension(orig_file_with_path, string()), "/", "_");
-		// Replace ' ' in the file name with '_'
-		temp_file = subst(temp_file, " ", "_");
-		// without dots and again with ext
-		temp_file = ChangeExtension(
-			subst(temp_file, ".", "_"), ext_tmp);
-
-#if defined(__CYGWIN__) || defined(__CYGWIN32__) || defined(_WIN32)
-		// Mangle the drive letter in a Windows-style path.
-		if (temp_file.size() >= 2 && temp_file[1] == ':')
-			temp_file[1] = '_';
-#endif
-
-		// now we have any_dir_file.ext
+		temp_file = mangled_filename(orig_file_with_path, buf->tmppath);
 		temp_file = MakeAbsPath(temp_file, buf->tmppath);
+
 		lyxerr[Debug::GRAPHICS]
 			<< "\tchanged to: " << temp_file << endl;
 
-		// if the file doen't exists, copy it into the tempdir
+		// if the file doesn't exist, copy it into the tempdir
 		if (file_has_changed || !IsFileReadable(temp_file)) {
 			bool const success = lyx::copy(orig_file_with_path, temp_file);
 			lyxerr[Debug::GRAPHICS]
-				<< "\tcopying from " << orig_file_with_path << " to "
+				<< "\tcopying from "
+				<< orig_file_with_path << " to "
 				<< temp_file
 				<< (success ? " succeeded\n" : " failed\n");
 			if (!success) {
-				Alert::alert(_("Cannot copy file"), orig_file_with_path,
-					_("into tempdir"));
+				Alert::alert(_("Cannot copy file"),
+					     orig_file_with_path,
+					     _("into tempdir"));
 				return orig_file;
 			}
 		}

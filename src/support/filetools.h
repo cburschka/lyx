@@ -247,8 +247,21 @@ void removeAutosaveFile(string const & filename);
 /// read the BoundingBox entry from a ps/eps/pdf-file
 string const readBB_from_PSFile(string const & file);
 
-typedef std::pair<int, string> cmd_ret;
+/** @param filename the file path that is to be mangled.
+ *  @param dir the directory that will contain this file with
+ *  its mangled name. This information is used by the mangling
+ *  algorithm when determining the maximum allowable length of
+ *  the mangled name.
+ *  @returns a mangled representation of the input @c filename.
+ *  Eg C:/foo bar/baz.eps -> 0C__foo_bar_baz.eps
+ *  The integer prefix is used to guarantee that the file name
+ *  is unique.
+ *  Only the file name is returned. It is not prepended with @c dir.
+ */
+string const mangled_filename(string const & filename,
+                              string const & dir = string());
 
+typedef std::pair<int, string> cmd_ret;
 cmd_ret const RunCommand(string const & cmd);
 
 #endif

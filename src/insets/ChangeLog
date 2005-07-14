@@ -1,3 +1,13 @@
+2005-07-14  Angus Leeming  <leeming@lyx.org>
+
+	* insetbib.C (InsetBibtex::latex): when processing the LaTeX file in
+	a temp directory, copy the BibTeX databases there, mangling their
+	names in the process. Do this so that BibTeX can process the database
+	because it *really*, *really* can't handle "files with spaces".
+
+	* insetgraphics (prepareFile): move the name-mangling stuff into
+	support/filetools.[Ch].
+
 2005-07-04  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C (latex): Put the extension outside the quotes

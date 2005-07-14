@@ -1,3 +1,12 @@
+2005-07-14  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.[Ch] (mangled_filename): backport the 1.4.x name mangling
+	stuff and then extend it so that the mangled file name is never more
+	than 160 chars long. Do this because MiKTeX's YAP (version 2.4.1803)
+	will crash if the string referencing the file name in  the .dvi file
+	is "too long". MikTeX bug:
+	http://sourceforge.net/tracker/index.php?func=detail&aid=1238065&group_id=10783&atid=110783
+
 2005-07-05  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.C (latex_path): don't pass the \string"-protected

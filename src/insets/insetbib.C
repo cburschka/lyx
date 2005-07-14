@@ -10,26 +10,31 @@
 #include <config.h>
 
 #include "insetbib.h"
+
 #include "buffer.h"
-#include "debug.h"
 #include "BufferView.h"
+#include "debug.h"
 #include "gettext.h"
-#include "lyxtext.h"
-#include "lyxrc.h"
 #include "lyxlex.h"
+#include "lyxrc.h"
+#include "lyxtext.h"
+
+#include "frontends/Alert.h"
+#include "frontends/Dialogs.h"
 #include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
 
-#include "frontends/Dialogs.h"
-
 #include "support/filetools.h"
-#include "support/path.h"
-#include "support/os.h"
-#include "support/lstrings.h"
 #include "support/LAssert.h"
+#include "support/lstrings.h"
+#include "support/os.h"
+#include "support/path.h"
 
-#include <fstream>
+#include <boost/tokenizer.hpp>
+
 #include <cstdlib>
+#include <fstream>
+#include "Lsstream.h"
 
 using std::ostream;
 using std::ifstream;
@@ -150,12 +155,12 @@ string normalize_name(Buffer const * buffer, string const & name,
 	string const fname = MakeAbsPath(name, buffer->filePath());
 	if (AbsolutePath(name) || !IsFileReadable(fname + ext))
 		return name;
-	else if (!buffer->niceFile) 
+	else if (!buffer->niceFile)
 		return fname;
-	else 
+	else
 		return MakeRelPath(fname, buffer->getMasterBuffer()->filePath());
 }
-	
+
 }
 
 
@@ -209,21 +214,70 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	}
 
 	// database
-	// If we generate in a temp dir, we might need to give an
-	// absolute path there. This is a bit complicated since we can
-	// have a comma-separated list of bibliographies
-	string adb, db_out;
-	string db_in = getContents();
-	db_in = split(db_in, adb, ',');
-	while (!adb.empty()) {
-		db_out += latex_path(normalize_name(buffer, adb, ".bib"));
-		db_out += ',';
-		db_in= split(db_in, adb,',');
+	// If we are processing the LaTeX file in a temp directory then
+	// copy the .bib databases to this temp directory, mangling their
+	// names in the process. Store this mangled name in the list of
+	// all databases.
+	// (We need to do all this because BibTeX *really*, *really*
+	// can't handle "files with spaces" and Windows users tend to
+	// use such filenames.)
+	// Otherwise, store the (maybe absolute) path to the original,
+	// unmangled database name.
+	typedef boost::char_separator<char> Separator;
+	typedef boost::tokenizer<Separator> Tokenizer;
+
+	Separator const separator(",");
+	Tokenizer const tokens(getContents(), separator);
+	Tokenizer::const_iterator const begin = tokens.begin();
+	Tokenizer::const_iterator const end = tokens.end();
+
+	ostringstream dbs;
+	for (Tokenizer::const_iterator it = begin; it != end; ++it) {
+		string const input = trim(*it);
+		string database = normalize_name(buffer, input, ".bib");
+		string const in_file = database + ".bib";
+
+		if (!buffer->niceFile &&
+		    lyxrc.use_tempdir &&
+		    IsFileReadable(in_file)) {
+
+			database = mangled_filename(database);
+			string const out_file = MakeAbsPath(database + ".bib",
+							    buffer->tmppath);
+
+			bool const success = lyx::copy(in_file, out_file);
+			if (!success) {
+				lyxerr << "Failed to copy '" << in_file
+				       << "' to '" << out_file << "'"
+				       << endl;
+			}
+		}
+
+		if (it != begin)
+			dbs << ',';
+		dbs << latex_path(database);
+	}
+	string const dbs_str = dbs.str();
+
+	// Post this warning only once.
+	static bool warned_about_spaces = false;
+	if (!warned_about_spaces &&
+	    buffer->niceFile && dbs_str.find(' ') != string::npos) {
+		warned_about_spaces = true;
+
+		Alert::alert(_("LyX Warning!"),
+			     _("There are spaces in the paths to your BibTeX databases."),
+			     _("BibTeX will be unable to find them."));
+
 	}
 
-	db_out = rtrim(db_out, ",");
-	os   << "\\bibliography{" << db_out << "}\n";
-	return 2;
+	int nnewlines = 1;
+	if (!dbs_str.empty()) {
+		++nnewlines;
+		os << "\\bibliography{" << dbs_str << "}\n";
+	}
+
+	return nnewlines;
 }
 
 
