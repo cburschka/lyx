@@ -173,7 +173,7 @@ int replaceAll(BufferView * bv,
 	if (!searchAllowed(bv, searchstr) || buf.isReadonly())
 		return 0;
 
-	recordUndoFullDocument(bv->cursor());
+	recordUndoFullDocument(bv);
 
 	MatchString const match(searchstr, cs, mw);
 	int num = 0;

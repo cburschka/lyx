@@ -48,10 +48,12 @@ std::ostream & operator<<(std::ostream & os, Undo const & undo)
 }
 
 
-void recordUndo(Undo::undo_kind kind,
-	DocIterator & cell,
+void doRecordUndo(Undo::undo_kind kind,
+	DocIterator const & cell,
 	pit_type first_pit, pit_type last_pit,
-	DocIterator & cur,
+	DocIterator const & cur,
+	BufferParams const & bparams,
+	bool isFullBuffer,
 	limited_stack<Undo> & stack)
 {
 	if (first_pit > last_pit)
@@ -61,6 +63,8 @@ void recordUndo(Undo::undo_kind kind,
 	undo.kind = kind;
 	undo.cell = cell;
 	undo.cursor = cur;
+	undo.bparams = bparams ;
+	undo.isFullBuffer = isFullBuffer;
 	lyxerr << "recordUndo: cur: " << cur << endl;
 	lyxerr << "recordUndo: pos: " << cur.pos() << endl;
 	//lyxerr << "recordUndo: cell: " << cell << endl;
@@ -87,7 +91,7 @@ void recordUndo(Undo::undo_kind kind,
 		// some more effort needed here as 'the whole cell' of the
 		// main LyXText _is_ the whole document.
 		// record the relevant paragraphs
-		LyXText * text = cell.text();
+		LyXText const * text = cell.text();
 		BOOST_ASSERT(text);
 		ParagraphList & plist = text->paragraphs();
 		ParagraphList::iterator first = plist.begin();
@@ -113,15 +117,45 @@ void recordUndo(Undo::undo_kind kind,
 	BOOST_ASSERT(first_pit <= cur.lastpit());
 	BOOST_ASSERT(last_pit <= cur.lastpit());
 
-	recordUndo(kind, cur, first_pit, last_pit, cur, stack);
+	doRecordUndo(kind, cur, first_pit, last_pit, cur,
+		cur.bv().buffer()->params(), false, stack);
 }
 
 
-void performUndoOrRedo(BufferView & bv, Undo const & undo)
+
+// Returns false if no undo possible.
+bool textUndoOrRedo(BufferView & bv,
+	limited_stack<Undo> & stack, limited_stack<Undo> & otherstack)
 {
+	finishUndo();
+
+	if (stack.empty()) {
+		// Nothing to do.
+		return false;
+	}
+
+	// Adjust undo stack and get hold of current undo data.
+	Undo undo = stack.top();
+	stack.pop();
+
+	// We will store in otherstack the part of the document under 'undo'
+	Buffer * buf = bv.buffer();
+	DocIterator cell_dit = undo.cell.asDocIterator(&buf->inset());
+
+	doRecordUndo(Undo::ATOMIC, cell_dit,
+		   undo.from, cell_dit.lastpit() - undo.end, bv.cursor(),
+			 undo.bparams, undo.isFullBuffer,
+		   otherstack);
+
+	// This does the actual undo/redo.
 	//lyxerr << "undo, performing: " << undo << std::endl;
-	DocIterator dit = undo.cell.asDocIterator(&bv.buffer()->inset());
-	if (dit.inMathed()) {
+	DocIterator dit = undo.cell.asDocIterator(&buf->inset());
+	if (undo.isFullBuffer) {
+		// This is a full document
+		otherstack.top().bparams = buf->params();
+		buf->params() = undo.bparams;
+		buf->paragraphs() = undo.pars;
+	} else if (dit.inMathed()) {
 		// We stored the full cell here as there is not much to be
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
@@ -148,42 +182,18 @@ void performUndoOrRedo(BufferView & bv, Undo const & undo)
 		ParagraphList::const_iterator pit = undo.pars.begin();
 		ParagraphList::const_iterator end = undo.pars.end();
 		for (; pit != end; ++pit)
-			const_cast<Paragraph &>(*pit).setInsetOwner(dynamic_cast<UpdatableInset *>(&dit.inset()));
+			const_cast<Paragraph &>(*pit).setInsetOwner(
+				dynamic_cast<UpdatableInset *>(&dit.inset()));
 		plist.insert(first, undo.pars.begin(), undo.pars.end());
 	}
 
+	// Set cursor
 	LCursor & cur = bv.cursor();
-	cur.setCursor(undo.cursor.asDocIterator(&bv.buffer()->inset()));
+	cur.setCursor(undo.cursor.asDocIterator(&buf->inset()));
 	cur.selection() = false;
 	cur.resetAnchor();
 	finishUndo();
-}
 
-
-// Returns false if no undo possible.
-bool textUndoOrRedo(BufferView & bv,
-	limited_stack<Undo> & stack, limited_stack<Undo> & otherstack)
-{
-	finishUndo();
-
-	if (stack.empty()) {
-		// Nothing to do.
-		return false;
-	}
-
-	// Adjust undo stack and get hold of current undo data.
-	Undo undo = stack.top();
-	stack.pop();
-
-	// We will store in otherstack the part of the document under 'undo'
-	DocIterator cell_dit = undo.cell.asDocIterator(&bv.buffer()->inset());
-
-	recordUndo(Undo::ATOMIC, cell_dit,
-		   undo.from, cell_dit.lastpit() - undo.end,
-		   bv.cursor(), otherstack);
-
-	// This does the actual undo/redo.
-	performUndoOrRedo(bv, undo);
 	return true;
 }
 
@@ -256,8 +266,17 @@ void recordUndo(LCursor & cur, Undo::undo_kind kind,
 }
 
 
-void recordUndoFullDocument(LCursor & cur)
+void recordUndoFullDocument(BufferView * bv)
 {
-	recordUndo(Undo::ATOMIC, cur, 0,
-		   cur.bv().text()->paragraphs().size() - 1);
+	Buffer * buf = bv->buffer();
+	doRecordUndo(
+		Undo::ATOMIC,
+		doc_iterator_begin(buf->inset()),
+		0, buf->paragraphs().size() - 1,
+		bv->cursor(),
+		buf->params(),
+		true,
+		buf->undostack()
+	);
+	undo_finished = false;
 }

@@ -18,13 +18,15 @@
 
 #include "dociterator.h"
 #include "ParagraphList_fwd.h"
+#include "bufferparams.h"
 
 #include "support/types.h"
 
 #include <string>
 
-class LCursor;
+class BufferParams;
 class BufferView;
+class LCursor;
 
 
 /**
@@ -81,6 +83,10 @@ public:
 	ParagraphList pars;
 	/// the stringified contents of the saved MathArray (for mathed)
 	std::string array;
+	/// Only used in case of full backups
+	BufferParams bparams;
+	/// Only used in case of full backups
+	bool isFullBuffer;	
 };
 
 
@@ -116,7 +122,7 @@ void recordUndoInset(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
 /// Convenience: prepare undo for the selected paragraphs
 void recordUndoSelection(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
 
-/// Convenience: prepare undo for the single paragraph containing the cursor
-void recordUndoFullDocument(LCursor & cur);
+/// Convenience: prepare undo for the whole buffer
+void recordUndoFullDocument(BufferView * bv);
 
 #endif // UNDO_FUNCS_H

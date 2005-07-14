@@ -213,8 +213,8 @@ Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 }
 
 
-Buffer::Buffer(string const & file, bool ronly)
-	: pimpl_(new Impl(*this, file, ronly))
+Buffer::Buffer(string const & file, bool readonly)
+	: pimpl_(new Impl(*this, file, readonly))
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 }

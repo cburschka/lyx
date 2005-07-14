@@ -492,7 +492,7 @@ vector<string> const getVectorFromString(string const & str,
 	vector<string> vec;
 	if (str.empty())
 		return vec;
-	string keys(rtrim(str));
+	string keys = rtrim(str);
 	for(;;) {
 		string::size_type const idx = keys.find(delim);
 		if (idx == string::npos) {

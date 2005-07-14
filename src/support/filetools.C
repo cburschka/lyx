@@ -88,7 +88,7 @@ string const latex_path(string const & original_path,
 {
 	string path = subst(original_path, "\\", "/");
 	path = subst(path, "~", "\\string~");
-	if (path.find(' ') != string::npos)
+	if (path.find(' ') != string::npos) {
 		// We can't use '"' because " is sometimes active (e.g. if
 		// babel is loaded with the "german" option)
 		if (extension == EXCLUDE_EXTENSION) {
@@ -97,11 +97,12 @@ string const latex_path(string const & original_path,
 			// ChangeExtension calls os::internal_path internally
 			// so don't use it to re-add the extension.
 			path = "\\string\"" + base + "\\string\"." + ext;
-		} else
+		} else {
 			path = "\\string\"" + path + "\\string\"";
-	if (dots == ESCAPE_DOTS)
-		return subst(path, ".", "\\lyxdot ");
-	return path;
+		}
+	}
+
+	return dots == ESCAPE_DOTS ? subst(path, ".", "\\lyxdot ") : path;
 }
 
 
@@ -111,19 +112,18 @@ string const MakeLatexName(string const & file)
 	string name = OnlyFilename(file);
 	string const path = OnlyPath(file);
 
-	for (string::size_type i = 0; i < name.length(); ++i) {
+	for (string::size_type i = 0; i < name.length(); ++i)
 		name[i] &= 0x7f; // set 8th bit to 0
-	};
 
 	// ok so we scan through the string twice, but who cares.
-	string const keep("abcdefghijklmnopqrstuvwxyz"
+	string const keep = "abcdefghijklmnopqrstuvwxyz"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-		"@!\"'()*+,-./0123456789:;<=>?[]`|");
+		"@!\"'()*+,-./0123456789:;<=>?[]`|";
 
 	string::size_type pos = 0;
-	while ((pos = name.find_first_not_of(keep, pos)) != string::npos) {
+	while ((pos = name.find_first_not_of(keep, pos)) != string::npos)
 		name[pos++] = '_';
-	}
+
 	return AddName(path, name);
 }
 
@@ -149,7 +149,7 @@ bool IsDirWriteable(string const & path)
 {
 	lyxerr[Debug::FILES] << "IsDirWriteable: " << path << endl;
 
-	string const tmpfl(tempName(path, "lyxwritetest"));
+	string const tmpfl = tempName(path, "lyxwritetest");
 
 	if (tmpfl.empty())
 		return false;
@@ -175,7 +175,7 @@ string const FileOpenSearch(string const & path, string const & name,
 	while (notfound && !path_element.empty()) {
 		path_element = os::internal_path(path_element);
 		if (!suffixIs(path_element, '/'))
-			path_element+= '/';
+			path_element += '/';
 		path_element = subst(path_element, "$$LyX",
 				     package().system_support());
 		path_element = subst(path_element, "$$User",
@@ -243,16 +243,12 @@ string const FileSearch(string const & path, string const & name,
 	// search first without extension, then with it.
 	if (IsFileReadable(fullname))
 		return fullname;
-	else if (ext.empty())
+	if (ext.empty())
 		return string();
-	else { // Is it not more reasonable to use ChangeExtension()? (SMiyata)
-		fullname += '.';
-		fullname += ext;
-		if (IsFileReadable(fullname))
-			return fullname;
-		else
-			return string();
-	}
+	// Is it not more reasonable to use ChangeExtension()? (SMiyata)
+	fullname += '.';
+	fullname += ext;
+	return IsFileReadable(fullname) ? fullname : string();
 }
 
 
@@ -278,8 +274,7 @@ string const LibFileSearch(string const & dir, string const & name,
 }
 
 
-string const
-i18nLibFileSearch(string const & dir, string const & name,
+string const i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext)
 {
 	// the following comments are from intl/dcigettext.c. We try
@@ -321,7 +316,7 @@ i18nLibFileSearch(string const & dir, string const & name,
 
 string const LibScriptSearch(string const & command_in)
 {
-	string const token_scriptpath("$$s/");
+	static string const token_scriptpath = "$$s/";
 
 	string command = command_in;
 	// Find the starting position of "$$s/"
@@ -360,7 +355,7 @@ string const createTmpDir(string const & tempdir, string const & mask)
 		<< "createTmpDir: tempdir=`" << tempdir << "'\n"
 		<< "createTmpDir:    mask=`" << mask << '\'' << endl;
 
-	string const tmpfl(tempName(tempdir, mask));
+	string const tmpfl = tempName(tempdir, mask);
 	// lyx::tempName actually creates a file to make sure that it
 	// stays unique. So we have to delete it before we can create
 	// a dir with the same name. Note also that we are not thread
@@ -437,28 +432,22 @@ string const createLyXTmpDir(string const & deflt)
 
 bool createDirectory(string const & path, int permission)
 {
-	string temp(rtrim(os::internal_path(path), "/"));
-
+	string temp = rtrim(os::internal_path(path), "/");
 	BOOST_ASSERT(!temp.empty());
-
-	if (mkdir(temp, permission))
-		return false;
-
-	return true;
+	return mkdir(temp, permission) == 0;
 }
 
 
 // Strip filename from path name
-string const OnlyPath(string const & Filename)
+string const OnlyPath(string const & filename)
 {
 	// If empty filename, return empty
-	if (Filename.empty()) return Filename;
+	if (filename.empty())
+		return filename;
 
 	// Find last / or start of filename
-	string::size_type j = Filename.rfind('/');
-	if (j == string::npos)
-		return "./";
-	return Filename.substr(0, j + 1);
+	string::size_type j = filename.rfind('/');
+	return j == string::npos ? "./" : filename.substr(0, j + 1);
 }
 
 
@@ -472,7 +461,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 		return RelPath;
 
 	// Copies given paths
-	string TempRel(os::internal_path(RelPath));
+	string TempRel = os::internal_path(RelPath);
 	// Since TempRel is NOT absolute, we can safely replace "//" with "/"
 	TempRel = subst(TempRel, "//", "/");
 
@@ -488,7 +477,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 		TempBase.erase(TempBase.length() - 2);
 
 	// processes relative path
-	string RTemp(TempRel);
+	string RTemp = TempRel;
 	string Temp;
 
 	while (!RTemp.empty()) {
@@ -500,12 +489,16 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 			// Remove one level of TempBase
 			string::difference_type i = TempBase.length() - 2;
 #ifndef __EMX__
-			if (i < 0) i = 0;
-			while (i > 0 && TempBase[i] != '/') --i;
+			if (i < 0)
+				i = 0;
+			while (i > 0 && TempBase[i] != '/')
+				--i;
 			if (i > 0)
 #else
-			if (i < 2) i = 2;
-			while (i > 2 && TempBase[i] != '/') --i;
+			if (i < 2)
+				i = 2;
+			while (i > 2 && TempBase[i] != '/')
+				--i;
 			if (i > 2)
 #endif
 				TempBase.erase(i, string::npos);
@@ -532,9 +525,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 // Chops any path of filename.
 string const AddName(string const & path, string const & fname)
 {
-	// Get basename
-	string const basename(OnlyFilename(fname));
-
+	string const basename = OnlyFilename(fname);
 	string buf;
 
 	if (path != "." && path != "./" && !path.empty()) {
@@ -569,38 +560,36 @@ bool AbsolutePath(string const & path)
 }
 
 
-
 // Create absolute path. If impossible, don't do anything
 // Supports ./ and ~/. Later we can add support for ~logname/. (Asger)
 string const ExpandPath(string const & path)
 {
 	// checks for already absolute path
-	string RTemp(ReplaceEnvironmentPath(path));
+	string RTemp = ReplaceEnvironmentPath(path);
 	if (os::is_absolute_path(RTemp))
 		return RTemp;
 
 	string Temp;
-	string const copy(RTemp);
+	string const copy = RTemp;
 
 	// Split by next /
 	RTemp = split(RTemp, Temp, '/');
 
-	if (Temp == ".") {
+	if (Temp == ".")
 		return getcwd() + '/' + RTemp;
-	}
-	if (Temp == "~") {
+
+	if (Temp == "~")
 		return package().home_dir() + '/' + RTemp;
-	}
-	if (Temp == "..") {
+
+	if (Temp == "..")
 		return MakeAbsPath(copy);
-	}
+
 	// Don't know how to handle this
 	return copy;
 }
 
 
-// Normalize a path
-// Constracts path/../path
+// Normalize a path. Constracts path/../path
 // Can't handle "../../" or "/../" (Asger)
 // Also converts paths like /foo//bar ==> /foo/bar
 string const NormalizePath(string const & path)
@@ -613,7 +602,7 @@ string const NormalizePath(string const & path)
 		RTemp = path;
 	else
 		// Make implicit current directory explicit
-		RTemp = "./" +path;
+		RTemp = "./" + path;
 
 	// Normalise paths like /foo//bar ==> /foo/bar
 	boost::RegEx regex("/{2,}");
@@ -832,13 +821,13 @@ string const getFormatFromContents(string const & filename)
 		return string();
 
 	// gnuzip
-	string const gzipStamp = "\037\213";
+	static string const gzipStamp = "\037\213";
 
 	// PKZIP
-	string const zipStamp = "PK";
+	static string const zipStamp = "PK";
 
 	// compress
-	string const compressStamp = "\037\235";
+	static string const compressStamp = "\037\235";
 
 	// Maximum strings to read
 	int const max_count = 50;
@@ -857,7 +846,7 @@ string const getFormatFromContents(string const & filename)
 		}
 
 		getline(ifs, str);
-		string const stamp = str.substr(0,2);
+		string const stamp = str.substr(0, 2);
 		if (firstLine && str.size() >= 2) {
 			// at first we check for a zipped file, because this
 			// information is saved in the first bytes of the file!
@@ -1008,8 +997,7 @@ string const unzipFile(string const & zipped_file, string const & unzipped_file)
 string const MakeDisplayPath(string const & path, unsigned int threshold)
 {
 	string str = path;
-
-	string const home(package().home_dir());
+	string const home = package().home_dir();
 
 	// replace /home/blah with ~/
 	if (prefixIs(str, home))
@@ -1084,9 +1072,9 @@ cmd_ret const RunCommand(string const & cmd)
 
 	// (Claus Hentschel) Check if popen was succesful ;-)
 	if (!inf) {
-		return make_pair(-1, string());
 		lyxerr << "RunCommand:: could not start child process" << endl;
-		}
+		return make_pair(-1, string());
+	}
 
 	string ret;
 	int c = fgetc(inf);
@@ -1194,8 +1182,7 @@ string const readBB_from_PSFile(string const & file)
 	// %%BoundingBox: (atend)
 	// In this case we must check the end.
 	bool zipped = zippedFile(file);
-	string const file_ = zipped ?
-		string(unzipFile(file)) : string(file);
+	string const file_ = zipped ?  unzipFile(file) : file;
 	string const format = getFormatFromContents(file_);
 
 	if (format != "eps" && format != "ps") {
@@ -1220,7 +1207,8 @@ string const readBB_from_PSFile(string const & file)
 
 int compare_timestamps(string const & file1, string const & file2)
 {
-	BOOST_ASSERT(AbsolutePath(file1) && AbsolutePath(file2));
+	BOOST_ASSERT(AbsolutePath(file1));
+	BOOST_ASSERT(AbsolutePath(file2));
 
 	// If the original is newer than the copy, then copy the original
 	// to the new directory.

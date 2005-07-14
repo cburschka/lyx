@@ -1455,6 +1455,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TEXTCLASS_APPLY: {
+			recordUndoFullDocument(view());
 			Buffer * buffer = owner->buffer();
 
 			lyx::textclass_type const old_class =
@@ -1573,15 +1574,14 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & cmd)
 
 	string const shortcuts = toplevel_keymap->printbindings(cmd);
 
-	if (!shortcuts.empty()) {
+	if (!shortcuts.empty())
 		comname += ": " + shortcuts;
-	} else if (!argsadded && !cmd.argument.empty()) {
+	else if (!argsadded && !cmd.argument.empty())
 		comname += ' ' + cmd.argument;
-	}
 
 	if (!comname.empty()) {
 		comname = rtrim(comname);
-		dispatch_msg += '(' + comname + ')';
+		dispatch_msg += '(' + rtrim(comname) + ')';
 	}
 
 	lyxerr[Debug::ACTION] << "verbose dispatch msg " << dispatch_msg << endl;
