@@ -1,6 +1,11 @@
 
 2005-05-07  André Pönitz  <poenitz@gmx.net>
 
+	* cursor.C (setSelection): open insets when selection is set there
+    to avoid crashs with cold coord cache
+
+2005-05-07  André Pönitz  <poenitz@gmx.net>
+
 	* trans_mgr.C (insert): move cursor to the right after inserting
   a char.
 

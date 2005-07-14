@@ -35,12 +35,6 @@ public:
 	///
 	static int const TEXT_TO_BOTTOM_OFFSET = 2;
 	///
-	enum CollapseStatus {
-		Collapsed,
-		Inlined,
-		Open
-	};
-	///
 	InsetCollapsable(BufferParams const &, CollapseStatus status = Open);
 	///
 	void read(Buffer const &, LyXLex &);
@@ -86,10 +80,11 @@ public:
 	bool allowSpellCheck() const { return true; }
 	///
 	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
-
-protected:
 	///
 	void setStatus(LCursor & cur, CollapseStatus st);
+
+protected:
+
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	///

@@ -257,7 +257,6 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 	//lyxerr << "InsetCollapsable: edit left/right" << endl;
 	cur.push(*this);
 	InsetText::edit(cur, left);
-	open();
 }
 
 

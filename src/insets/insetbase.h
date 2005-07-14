@@ -338,10 +338,6 @@ public:
 	/// used to toggle insets
 	/// is the inset open?
 	virtual bool isOpen() const { return false; }
-	/// open the inset
-	virtual void open() {}
-	/// close the inset
-	virtual void close() {}
 	/// should this inset be handled like a normal charater
 	virtual bool isChar() const { return false; }
 	/// is this equivalent to a letter?
@@ -399,6 +395,14 @@ public:
 	virtual int ascent() const { return 10; }
 	/// pretty arbitrary
 	virtual int descent() const { return 10; }
+	///
+	enum CollapseStatus {
+		Collapsed,
+		Inlined,
+		Open
+	};
+	///
+	virtual void setStatus(LCursor &, CollapseStatus) {}
 protected:
 	InsetBase();
 	InsetBase(InsetBase const &);

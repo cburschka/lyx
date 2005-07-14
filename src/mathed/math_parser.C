@@ -181,7 +181,7 @@ void delEmptyLastRow(MathGridInset & grid)
 		if (!grid.cell(grid.index(row, col)).empty())
 			return;
 	}
-	grid.delRow(row + 1);
+	grid.delRow(row);
 }
 
 
