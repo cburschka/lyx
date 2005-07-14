@@ -3,6 +3,10 @@ include $(srcdir)/../../Makefile.dialogs
 
 DISTCLEANFILES += $(UIFILES:.ui=_moc.C)
 
+EXTRA_DIST = pch.h
+
+BUILT_SOUCES = $(PCH_FILE)
+
 AM_CPPFLAGS += \
 	$(QT_CPPFLAGS) -DQT_NO_TRANSLATION \
 	$(PCH_FLAGS) \

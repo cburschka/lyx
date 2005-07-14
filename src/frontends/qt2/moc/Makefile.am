@@ -3,6 +3,10 @@ include $(srcdir)/../Makefile.dialogs
 
 DISTCLEANFILES += *.C
 
+EXTRA_DIST = pch.h
+
+BUILT_SOURCES = $(PCH_FILE)
+
 AM_CPPFLAGS += \
 	$(QT_CPPFLAGS) -DQT_NO_TRANSLATION \
 	$(PCH_FLAGS) \
