@@ -2586,7 +2586,8 @@ Notice that these translations will work, but do contain a few flaws.
 Selecting an alternative language for the user interface
 \layout Standard
 
-This feature is disabled by default, meaning that the text will be English.
+This feature is disabled by default, meaning that system default language
+ will be used.
  To enable an alternative language, you have to set an appropriate environment
  variable.
  Use 
@@ -2610,24 +2611,48 @@ for sh class shells
 \family typewriter 
 xx
 \family default 
- with the two letter code for the language you want.
+ with the two letter code (or four letter code, like 
+\family typewriter 
+en_GB
+\family default 
+ for British English) for the language you want.
  For instance, 
 \family typewriter 
 no
 \family default 
  is Norwegian.
+ Besides the user interface texts being translated, also the appropriate
+ manuals will be presented under the Help menu -- if available.
 \layout Standard
 
-Normally, you'll want to put the appropriate line in 
+On some systems, you may have to redefine 
 \family typewriter 
-~/.Xsession
+LANGUAGE
+\family default 
+, 
+\family typewriter 
+LC_ALL
 \family default 
  or 
 \family typewriter 
-~/.xinitrc
+LC_MESSAGES
 \family default 
- so that the translation is on by default.
- Remember that if LyX is configured and compiled with 
+ instead of 
+\family typewriter 
+LANG
+\family default 
+, to override the system settings; their preference is in this order.
+ Consult your system documentation.
+ Normally, you'll want to put the appropriate line in a shell script run
+ on start-up, so that the translation is on by default.
+ Remember that this affects 
+\emph on 
+all
+\emph default 
+ localized packages! 
+\layout Standard
+
+If LyX is configured and compiled with 
 \begin_inset Quotes eld
 \end_inset 
 
