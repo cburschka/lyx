@@ -1,6 +1,10 @@
 
 2005-07-16  André Pönitz  <poenitz@lyx.org>
 
+	* math_charinset.C (mathmlize): escape <, >, and & on export
+
+2005-07-16  André Pönitz  <poenitz@lyx.org>
+
 	* math_gridinset.C (doDispatch): cur.undispatched on LFUN_ESCAPE
 
 2005-07-16  André Pönitz  <poenitz@lyx.org>

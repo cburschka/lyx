@@ -143,6 +143,17 @@ void MathCharInset::octave(OctaveStream & os) const
 }
 
 
+void MathCharInset::mathmlize(MathMLStream & ms) const
+{
+	switch (char_) {
+		case '<': ms << "&lt;"; break;
+		case '>': ms << "&gt;"; break;
+		case '&': ms << "&amp;"; break;
+		default: ms << char_; break;
+	}
+}
+
+
 bool MathCharInset::isRelOp() const
 {
 	return char_ == '=' || char_ == '<' || char_ == '>';
