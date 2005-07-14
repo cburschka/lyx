@@ -1,3 +1,10 @@
+2005-07-14  Angus Leeming  <leeming@lyx.org>
+
+	* insetbibtex.C (latex): when processing the LaTeX file in
+	a temp directory, copy the BibTeX databases there, mangling their
+	names in the process. Do this so that BibTeX can process the database
+	because it *really*, *really* can't handle "files with spaces".
+
 2005-07-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* insettext.C (doDispatch): reduce some debug blabbering

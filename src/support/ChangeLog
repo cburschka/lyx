@@ -1,3 +1,11 @@
+2005-07-14  Angus Leeming  <leeming@lyx.org>
+
+	* filename.[Ch] (mangledFilename): add an optional "dir" parameter
+	that is used to help determine the length of the mangled file name.
+	Do this because MiKTeX's YAP (version 2.4.1803) will crash if the string
+	referencing the file name in  the .dvi file is "too long". MikTeX bug:
+	http://sourceforge.net/tracker/index.php?func=detail&aid=1238065&group_id=10783&atid=110783
+
 2005-07-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* filetools.[Ch] (latex_path): convert boolean exclude_extension

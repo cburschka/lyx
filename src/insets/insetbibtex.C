@@ -17,22 +17,31 @@
 #include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
-#include "LaTeXFeatures.h"
 #include "gettext.h"
+#include "LaTeXFeatures.h"
 #include "metricsinfo.h"
 #include "outputparams.h"
 
+#include "frontends/Alert.h"
+
+#include "support/filename.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/path.h"
 
+#include <boost/tokenizer.hpp>
+
 #include <fstream>
+#include <sstream>
 
 using lyx::support::AbsolutePath;
 using lyx::support::ascii_lowercase;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
+using lyx::support::copy;
+using lyx::support::FileName;
 using lyx::support::findtexfile;
 using lyx::support::IsFileReadable;
 using lyx::support::latex_path;
@@ -126,20 +135,62 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	// 3. \btPrint{Cited|NotCited|All}
 	// 4. \end{btSect}
 
-	// the database string
-	string adb;
-	string db_in = getContents();
-	db_in = split(db_in, adb, ',');
-	// If we generate in a temp dir, we might need to give an
-	// absolute path there. This is a bit complicated since we can
-	// have a comma-separated list of bibliographies
-	string db_out;
-	while (!adb.empty()) {
-		db_out += latex_path(normalize_name(buffer, runparams, adb, ".bib"));
-		db_out += ',';
-		db_in = split(db_in, adb,',');
+	// Database(s)
+	// If we are processing the LaTeX file in a temp directory then
+	// copy the .bib databases to this temp directory, mangling their
+	// names in the process. Store this mangled name in the list of
+	// all databases.
+	// (We need to do all this because BibTeX *really*, *really*
+	// can't handle "files with spaces" and Windows users tend to
+	// use such filenames.)
+	// Otherwise, store the (maybe absolute) path to the original,
+	// unmangled database name.
+	typedef boost::char_separator<char> Separator;
+	typedef boost::tokenizer<Separator> Tokenizer;
+
+	Separator const separator(",");
+	Tokenizer const tokens(getContents(), separator);
+	Tokenizer::const_iterator const begin = tokens.begin();
+	Tokenizer::const_iterator const end = tokens.end();
+
+	std::ostringstream dbs;
+	for (Tokenizer::const_iterator it = begin; it != end; ++it) {
+		string const input = trim(*it);
+		string database =
+			normalize_name(buffer, runparams, input, ".bib");
+		string const in_file = database + ".bib";
+
+		if (!runparams.nice && IsFileReadable(in_file)) {
+
+			database = FileName(database).mangledFilename();
+			string const out_file = MakeAbsPath(database + ".bib",
+							    buffer.temppath());
+
+			bool const success = copy(in_file, out_file);
+			if (!success) {
+				lyxerr << "Failed to copy '" << in_file
+				       << "' to '" << out_file << "'"
+				       << endl;
+			}
+		}
+
+		if (it != begin)
+			dbs << ',';
+		dbs << latex_path(database);
 	}
-	db_out = rtrim(db_out, ",");
+	string const db_out = dbs.str();
+
+	// Post this warning only once.
+	static bool warned_about_spaces = false;
+	if (!warned_about_spaces &&
+	    runparams.nice && db_out.find(' ') != string::npos) {
+		warned_about_spaces = true;
+
+		Alert::warning(_("Export Warning!"),
+			       _("There are spaces in the paths to your BibTeX databases.\n"
+				 "BibTeX will be unable to find them."));
+
+	}
 
 	// Style-Options
 	string style = getOptions(); // maybe empty! and with bibtotoc
@@ -152,16 +203,16 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	}
 
 	// line count
-	int i = 0;
+	int nlines = 0;
 
 	if (!style.empty()) {
 		os << "\\bibliographystyle{"
 		   << latex_path(normalize_name(buffer, runparams, style, ".bst"))
 		   << "}\n";
-		i += 1;
+		nlines += 1;
 	}
 
-	if (buffer.params().use_bibtopic){
+	if (!db_out.empty() && buffer.params().use_bibtopic){
 		os << "\\begin{btSect}{" << db_out << "}\n";
 		string btprint = getSecOptions();
 		if (btprint.empty())
@@ -169,7 +220,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 			btprint = "btPrintCited";
 		os << "\\" << btprint << "\n"
 		   << "\\end{btSect}\n";
-		i += 3;
+		nlines += 3;
 	}
 
 	// bibtotoc-Option
@@ -197,12 +248,12 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		}
 	}
 
-	if (!buffer.params().use_bibtopic){
+	if (!db_out.empty() && !buffer.params().use_bibtopic){
 		os << "\\bibliography{" << db_out << "}\n";
-		i += 1;
+		nlines += 1;
 	}
 
-	return i;
+	return nlines;
 }
 
 

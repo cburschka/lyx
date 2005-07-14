@@ -43,15 +43,29 @@ public:
 	std::string const relFilename(std::string const & buffer_path = std::string()) const;
 	/// \param buf_path if empty, uses `pwd`
 	std::string const outputFilename(std::string const & buf_path = std::string()) const;
-	/** \return a mangled version of the absolute file name,
+
+	/** @returns a mangled representation of the absolute file name
 	 *  suitable for use in the temp dir when, for example, converting
 	 *  an image file to another format.
+	 *
+	 *  @param dir the directory that will contain this file with
+	 *  its mangled name. This information is used by the mangling
+	 *  algorithm when determining the maximum allowable length of
+	 *  the mangled name.
+	 *
+	 *  An example of a mangled name:
+	 *  C:/foo bar/baz.eps -> 0C__foo_bar_baz.eps
+	 *
 	 *  It is guaranteed that
 	 *  - two different filenames have different mangled names
 	 *  - two FileName instances with the same filename have identical
-	 *    mangled names
+	 *    mangled names.
+	 *
+	 *  Only the mangled file name is returned. It is not prepended
+	 *  with @c dir.
 	 */
-	std::string const mangledFilename() const;
+	std::string const
+	mangledFilename(std::string const & dir = std::string()) const;
 
 	/// \return true if the file is compressed.
 	bool isZipped() const;
