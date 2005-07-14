@@ -611,13 +611,16 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndo(cur);
 		cur.erase();
 		cmd = FuncRequest(LFUN_FINISHED_LEFT);
+		cur.undispatched();
 		break;
 
 	case LFUN_ESCAPE:
 		if (cur.selection())
 			cur.clearSelection();
-		else
+		else  {
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cur.undispatched();
+		}
 		break;
 
 	case LFUN_INSET_TOGGLE:
