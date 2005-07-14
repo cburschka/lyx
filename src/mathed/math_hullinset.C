@@ -19,6 +19,8 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 
+#include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "FuncStatus.h"
@@ -992,7 +994,9 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// some magic for the common case
 		if (type_ == "simple" || type_ == "equation") {
 			recordUndoInset(cur);
-			mutate("eqnarray");
+			bool const align =
+				cur.bv().buffer()->params().use_amsmath == BufferParams::AMS_ON;
+			mutate(align ? "align" : "eqnarray");
 			cur.idx() = 0;
 			cur.pos() = cur.lastpos();
 		}
