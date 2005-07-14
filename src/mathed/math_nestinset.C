@@ -583,11 +583,13 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PRIORSEL:
 	case LFUN_PRIOR:
 		cmd = FuncRequest(LFUN_FINISHED_LEFT);
+		cur.undispatched();
 		break;
 
 	case LFUN_NEXTSEL:
 	case LFUN_NEXT:
 		cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+		cur.undispatched();
 		break;
 
 	case LFUN_CELL_FORWARD:
