@@ -200,6 +200,10 @@ AC_ARG_ENABLE(concept-checks,
         enable_concept_checks=no;
     fi;])
 
+AC_ARG_ENABLE(profiling,
+  AC_HELP_STRING([--enable-profiling],[enable profiling]),,
+  enable_profiling=yes;)
+
 ### set up optimization
 AC_ARG_ENABLE(optimization,
   AC_HELP_STRING([--enable-optimization[=value]],[enable compiler optimisation]),,
@@ -229,6 +233,11 @@ if test x$GXX = xyes; then
     if test x$enable_debug = xyes ; then
         CFLAGS="-g $CFLAGS"
 	CXXFLAGS="-g $CXXFLAGS"
+    fi
+    if test x$enable_profiling = xyes ; then
+        CFLAGS="-pg $CFLAGS"
+        CXXFLAGS="-pg $CXXFLAGS"
+        LDFLAGS="-pg $LDFLAGS"
     fi
     if test x$enable_warnings = xyes ; then
         case $gxx_version in
