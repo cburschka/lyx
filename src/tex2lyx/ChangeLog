@@ -1,3 +1,12 @@
+2005-07-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math.C (is_math_env): Don't hardcode known math environments anymore
+	* tex2lyx.[Ch] (known_environments, known_math_environments): new
+	* tex2lyx.C (read_command): new, split off from read_syntaxfile
+	* tex2lyx.C (read_environment): new
+	* text.C (parse_arguments): new, split off from parse_command
+	* text.C (parse_environment): handle known environments
+
 2005-07-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_text): output font changes only if needed

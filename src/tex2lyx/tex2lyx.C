@@ -127,7 +127,9 @@ string active_environment()
 }
 
 
-map<string, vector<ArgumentType> > known_commands;
+CommandMap known_commands;
+CommandMap known_environments;
+CommandMap known_math_environments;
 
 
 void add_known_command(string const & command, string const & o1,
@@ -162,6 +164,57 @@ namespace {
 
 
 /*!
+ * Read one command definition from the syntax file
+ */
+void read_command(Parser & p, string command, CommandMap & commands) {
+	if (p.next_token().asInput() == "*") {
+		p.get_token();
+		command += '*';
+	}
+	vector<ArgumentType> arguments;
+	while (p.next_token().cat() == catBegin ||
+	       p.next_token().asInput() == "[") {
+		if (p.next_token().cat() == catBegin) {
+			string const arg = p.getArg('{', '}');
+			if (arg == "translate")
+				arguments.push_back(required);
+			else
+				arguments.push_back(verbatim);
+		} else {
+			p.getArg('[', ']');
+			arguments.push_back(optional);
+		}
+	}
+	commands[command] = arguments;
+}
+
+
+/*!
+ * Read a class of environments from the syntax file
+ */
+void read_environment(Parser & p, string const & begin,
+                      CommandMap & environments)
+{
+	string environment;
+	while (p.good()) {
+		Token const & t = p.get_token();
+		if (t.cat() == catLetter)
+			environment += t.asInput();
+		else if (!environment.empty()) {
+			p.putback();
+			read_command(p, environment, environments);
+			environment.erase();
+		}
+		if (t.cat() == catEscape && t.asInput() == "\\end") {
+			string const end = p.getArg('{', '}');
+			if (end == begin)
+				return;
+		}
+	}
+}
+
+
+/*!
  * Read a list of TeX commands from a reLyX compatible syntax file.
  * Since this list is used after all commands that have a LyX counterpart
  * are handled, it does not matter that the "syntax.default" file from reLyX
@@ -184,27 +237,20 @@ void read_syntaxfile(string const & file_name)
 	while (p.good()) {
 		Token const & t = p.get_token();
 		if (t.cat() == catEscape) {
-			string command = t.asInput();
-			if (p.next_token().asInput() == "*") {
-				p.get_token();
-				command += '*';
+			string const command = t.asInput();
+			if (command == "\\begin") {
+				string const name = p.getArg('{', '}');
+				if (name == "environments" || name == "reLyXre")
+					// We understand "reLyXre", but it is
+					// not as powerful as "environments".
+					read_environment(p, name, 
+						known_environments);
+				else if (name == "mathenvironments")
+					read_environment(p, name,
+						known_math_environments);
+			} else {
+				read_command(p, command, known_commands);
 			}
-			p.skip_spaces();
-			vector<ArgumentType> arguments;
-			while (p.next_token().cat() == catBegin ||
-			       p.next_token().asInput() == "[") {
-				if (p.next_token().cat() == catBegin) {
-					string const arg = p.getArg('{', '}');
-					if (arg == "translate")
-						arguments.push_back(required);
-					else
-						arguments.push_back(verbatim);
-				} else {
-					p.getArg('[', ']');
-					arguments.push_back(optional);
-				}
-			}
-			known_commands[command] = arguments;
 		}
 	}
 }

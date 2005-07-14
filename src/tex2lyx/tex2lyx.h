@@ -81,9 +81,14 @@ enum ArgumentType {
 	optional
 };
 
-/// Known TeX commands with arguments that get parsed into ERT.
-extern std::map<std::string, std::vector<ArgumentType> > known_commands;
+typedef std::map<std::string, std::vector<ArgumentType> > CommandMap;
 
+/// Known TeX commands with arguments that get parsed into ERT.
+extern CommandMap known_commands;
+/// Known TeX environments with arguments that get parsed into ERT.
+extern CommandMap known_environments;
+/// Known TeX math environments with arguments that get parsed into LyX mathed.
+extern CommandMap known_math_environments;
 
 /// path of the master .tex file
 extern std::string getMasterFilePath();

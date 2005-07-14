@@ -676,3 +676,41 @@ titlepage
 \sp    {^}
 \ensuremath   {}  % If it's in math mode, \ensuremath is unnec.
 \end{reLyXmt}
+
+
+% LaTeX environments.
+% They have always one extra "argument":
+% It contains "translate" if the contents of the environment contains normal
+% LaTeX code that can be translated to LyX.
+\begin{environments}
+bibunit[]{translate}
+psmatrix[]{}
+\end{environments}
+
+% Environments that start math mode.
+% $...$, $$...$$, \(...\) and \[...\] are hardcoded in tex2lyx.
+% The arguments are currently ignored.
+\begin{mathenvironments}
+equation
+equation*
+eqnarray
+eqnarray*
+align
+align*
+gather
+gather*
+multline
+multline*
+math
+displaymath
+flalign
+flalign
+% These require extra args
+alignat
+alignat*
+xalignat
+xalignat*
+xxalignat
+% These are not known by LyX but work nevertheless:
+empheq
+\end{mathenvironments}

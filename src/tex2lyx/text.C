@@ -507,6 +507,36 @@ void check_space(Parser const & p, ostream & os, Context & context)
 
 
 /*!
+ * Parse all arguments of \p command
+ */
+void parse_arguments(string const & command,
+                     vector<ArgumentType> const & template_arguments,
+                     Parser & p, ostream & os, bool outer, Context & context)
+{
+	string ert = command;
+	size_t no_arguments = template_arguments.size();
+	for (size_t i = 0; i < no_arguments; ++i) {
+		switch (template_arguments[i]) {
+		case required:
+			// This argument contains regular LaTeX
+			handle_ert(os, ert + '{', context);
+			parse_text(p, os, FLAG_ITEM, outer, context);
+			ert = "}";
+			break;
+		case verbatim:
+			// This argument may contain special characters
+			ert += '{' + p.verbatim_item() + '}';
+			break;
+		case optional:
+			ert += p.getOpt();
+			break;
+		}
+	}
+	handle_ert(os, ert, context);
+}
+
+
+/*!
  * Check whether \p command is a known command. If yes,
  * handle the command with all arguments.
  * \return true if the command was parsed, false otherwise.
@@ -515,27 +545,8 @@ bool parse_command(string const & command, Parser & p, ostream & os,
 		   bool outer, Context & context)
 {
 	if (known_commands.find(command) != known_commands.end()) {
-		vector<ArgumentType> const & template_arguments = known_commands[command];
-		string ert = command;
-		size_t no_arguments = template_arguments.size();
-		for (size_t i = 0; i < no_arguments; ++i) {
-			switch (template_arguments[i]) {
-			case required:
-				// This argument contains regular LaTeX
-				handle_ert(os, ert + '{', context);
-				parse_text(p, os, FLAG_ITEM, outer, context);
-				ert = "}";
-				break;
-			case verbatim:
-				// This argument may contain special characters
-				ert += '{' + p.verbatim_item() + '}';
-				break;
-			case optional:
-				ert += p.getOpt();
-				break;
-			}
-		}
-		handle_ert(os, ert, context);
+		parse_arguments(command, known_commands[command], p, os,
+		                outer, context);
 		return true;
 	}
 	return false;
@@ -779,6 +790,27 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		handle_ert(os, "\\begin{" + name + "}", parent_context);
 		parse_text_snippet(p, os, FLAG_END | FLAG_TABBING, outer, parent_context);
 		handle_ert(os, "\\end{" + name + "}", parent_context);
+	}
+
+	else if (known_environments.find(name) != known_environments.end()) {
+		vector<ArgumentType> arguments = known_environments[name];
+		// The last "argument" denotes wether we may translate the
+		// environment contents to LyX
+		// The default required if no argument is given makes us
+		// compatible with the reLyXre environment.
+		ArgumentType contents = arguments.empty() ?
+			required :
+			arguments.back();
+		if (!arguments.empty())
+			arguments.pop_back();
+		parse_arguments("\\begin{" + name + "}", arguments, p, os,
+		                outer, parent_context);
+		if (contents == verbatim)
+			handle_ert(os, p.verbatimEnvironment(name),
+			           parent_context);
+		else
+			parse_text_snippet(p, os, FLAG_END, outer,
+			                   parent_context);
 	}
 
 	else {
