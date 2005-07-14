@@ -14,6 +14,7 @@
 #include "trans_mgr.h"
 
 #include "BufferView.h"
+#include "CutAndPaste.h"
 #include "cursor.h"
 #include "debug.h"
 #include "lyxrc.h"
@@ -284,7 +285,10 @@ void TransManager::insert(string const & str, LyXText * text)
 		// Could not find an encoding
 		InsetLatexAccent ins(str);
 		if (ins.canDisplay()) {
-			text->bv()->cursor().insert(new InsetLatexAccent(ins));
+			LCursor & cur = text->bv()->cursor();
+			lyx::cap::replaceSelection(cur);
+			cur.insert(new InsetLatexAccent(ins));
+			cur.posRight();
 		} else {
 			insertVerbatim(str, text);
 		}
