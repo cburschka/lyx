@@ -8,8 +8,9 @@ MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
 
 SUBDIRS = config development intl po boost src sourcedoc lib
 
-EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
-	README.MacOSX UPGRADING lyx.man autogen.sh images
+EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.MacOSX INSTALL.Win32 \
+	INSTALL.autoconf README.OS2 README.Cygwin README.Win32 \
+	UPGRADING lyx.man autogen.sh images
 
 man_MANS = lyx.1
 
