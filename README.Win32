@@ -1,39 +1,36 @@
-================================================================
-README for Win32 by Ruurd Reitsma (R.A.Reitsma@wbmt.tudelft.nl)
-================================================================
+================
+README for Win32
+================
 
-Lyx has been ported to Win32 using the Cygwin environement. The port
-consists of a few small tweaks to deal with DOS-style pathnames, so
-LyX can use Win32 TeX distros like fptex and MiKTeX. There's also a
-cygwin TeTeX port, but the native Win32 ports have a definite speed
-advantage. Besides that, nothing fancy.
+LyX has been ported to Win32 using the Cygwin environement.
+See README.Cygwin for details.
 
-The prerequisites are (obviously?):
+Ever since Ruurd Reitsma made his port of LyX 1.3.3 to Windows
+available to the general public in 2003, users of LyX/Win have had to
+fight to overcome bugs that simply weren't present on other
+platforms. Ruurd did a superb job in writing the original port, but
+didn't have the resources to squash all the irritating little bugs
+discovered by many people using LyX "for real". 
 
-* cygwin installation (http://www.cygwin.com/).
-* decent X server; eXceed, X-Win32, or maybe even Cygwin/XFree86.
-* working TeX installation; fpTex, MikTex.
+The official LyX line on these LyX/Win ports has always been that
+it's nice to know they exist but we won't support them
+officially. There were two reasons for this: we didn't have the
+necessary knowledge or resources and, until recently, only
+closed-source versions of the Qt GUI library existed. The increasing
+maturity of the Qt/Win Free project means that this latter point is
+no longer true, so we felt that we should make the effort and make
+LyX/Win an official part of LyX.
 
-It should compile out of the box, but there might be some libraries
-missing in the final link step. You'll have to add them to the Makefile
-by hand. Be sure to include -lregex, because cygwin's builtin regex is
-sortof weird (filedialogs will turn up empty...)
+As a result, LyX 1.3.6 cannot really be classified as a minor bug fix
+release, especially for Windows users. Large chunks of the code base
+have been touched in an attempt to resolve those problems that
+Windows users have found with Ruurd's original ports. We feel
+confident that LyX 1.3.6 will be the best ever version of LyX on
+Windows. We are not confident, however, that we haven't introduced
+any new bugs.
 
-If you want to run lyx with no console windows open, there's a small
-program in development/Win32 that will set the proper environment vars
-and start lyx.
-
-Compile with:
-
-gcc lyxwin32.C -O2 -o lyxwin32 -static -Wall -Wno-format \
--Wstrict-prototypes -Wmissing-prototypes -mwindows -e _mainCRTStartup
-
-Also make sure the latex binaries are in your Windows path. Windvi and
-Yap are auto detected, and you might want to make a symlink to Adobe
-Acrobat so it's detected too:
-
-ln -s //c/Program\ Files/adobe/Acrobat\ 4.0/Reader/AcroRd32.exe \
-/usr/bin/acroread
-
-Many thanks to Steven van Dijk, Claus Hentschel and Miyata Shigeru for
-starting the porting business.
+Detailed installation instructions can be found in INSTALL.Win32 for
+those who wish to compile LyX for themselves. For the rest of us,
+LyX/Win comes with its own installer, so installation should be pretty
+straightforward. As always, more detailed help can be found on the
+wiki at http://wiki.lyx.org/Windows.
