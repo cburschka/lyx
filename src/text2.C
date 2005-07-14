@@ -103,30 +103,45 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 
 	Paragraph const & par = pars_[pit];
 
-	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
-	lyxerr << "  pit: " << pit << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << ": x: " << x
+                << " y: " << y
+                << "  pit: " << pit
+                << endl;
 	InsetList::const_iterator iit = par.insetlist.begin();
 	InsetList::const_iterator iend = par.insetlist.end();
 	for (; iit != iend; ++iit) {
 		InsetBase * inset = iit->inset;
 #if 1
-		lyxerr << "examining inset " << inset << endl;
+		lyxerr[Debug::DEBUG]
+                        << BOOST_CURRENT_FUNCTION
+                        << ": examining inset " << inset << endl;
+                
 		if (theCoords.getInsets().has(inset))
-			lyxerr
-				<< " xo: " << inset->xo() << "..."
+			lyxerr[Debug::DEBUG]
+                                << BOOST_CURRENT_FUNCTION
+				<< ": xo: " << inset->xo() << "..."
 				<< inset->xo() + inset->width()
 				<< " yo: " << inset->yo() - inset->ascent()
 				<< "..."
-				<< inset->yo() + inset->descent() << endl;
+				<< inset->yo() + inset->descent()
+                                << endl;
 		else
-			lyxerr << " inset has no cached position" << endl;
+			lyxerr[Debug::DEBUG]
+                                << BOOST_CURRENT_FUNCTION
+                                << ": inset has no cached position" << endl;
 #endif
 		if (inset->covers(x, y)) {
-			lyxerr << "Hit inset: " << inset << endl;
+			lyxerr[Debug::DEBUG]
+                                << BOOST_CURRENT_FUNCTION
+                                << ": Hit inset: " << inset << endl;
 			return inset;
 		}
 	}
-	lyxerr << "No inset hit. " << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << ": No inset hit. " << endl;
 	return 0;
 }
 
@@ -849,8 +864,10 @@ pit_type LyXText::getPitNearY(int y) const
 	BOOST_ASSERT(!paragraphs().empty());
 	BOOST_ASSERT(theCoords.getParPos().find(this) != theCoords.getParPos().end());
 	CoordCache::InnerParPosCache const & cc = theCoords.getParPos().find(this)->second;
-	lyxerr << "LyXText::getPitNearY: y: " << y << " cache size: "
-		<< cc.size() << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << ": y: " << y << " cache size: " << cc.size()
+                << endl;
 
 	// look for highest numbered paragraph with y coordinate less than given y
 	pit_type pit = 0;
@@ -858,15 +875,23 @@ pit_type LyXText::getPitNearY(int y) const
 	CoordCache::InnerParPosCache::const_iterator it = cc.begin();
 	CoordCache::InnerParPosCache::const_iterator et = cc.end();
 	for (; it != et; ++it) {
-		lyxerr << "  examining: pit: " << it->first << " y: "
-			<< it->second.y_ << endl;
+		lyxerr[Debug::DEBUG]
+                        << BOOST_CURRENT_FUNCTION
+                        << "  examining: pit: " << it->first
+                        << " y: " << it->second.y_
+                        << endl;
+                
 		if (it->first >= pit && int(it->second.y_) - int(pars_[it->first].ascent()) <= y) {
 			pit = it->first;
 			yy = it->second.y_;
 		}
 	}
 
-	lyxerr << " found best y: " << yy << " for pit: " << pit << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << ": found best y: " << yy << " for pit: " << pit
+                << endl;
+        
 	return pit;
 }
 

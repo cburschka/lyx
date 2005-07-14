@@ -195,10 +195,14 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		par.params().read(lex);
 
 	} else if (token == "\\end_layout") {
-		lyxerr << "Solitary \\end_layout in line " << lex.getLineNo() << "\n"
+		lyxerr << BOOST_CURRENT_FUNCTION
+                       << ": Solitary \\end_layout in line "
+                       << lex.getLineNo() << "\n"
 		       << "Missing \\begin_layout?.\n";
 	} else if (token == "\\end_inset") {
-		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
+		lyxerr << BOOST_CURRENT_FUNCTION
+                       << ": Solitary \\end_inset in line "
+                       << lex.getLineNo() << "\n"
 		       << "Missing \\begin_inset?.\n";
 	} else if (token == "\\begin_inset") {
 		InsetBase * inset = readInset(lex, buf);
@@ -779,7 +783,7 @@ void LyXText::setRowWidth(pit_type const pit, Row & row) const
 	pos_type const end = row.endpos();
 
 	Paragraph const & par = pars_[pit];
-	string labelsep = par.layout()->labelsep;
+	string const & labelsep = par.layout()->labelsep;
 	int w = leftMargin(pit, row.pos());
 
 	pos_type const body_pos = par.beginOfBody();
@@ -1832,7 +1836,10 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 	if (!ptr_cmp(cur.text(), this))
 		return;
 
-	lyxerr << "draw selection at " << x << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << "draw selection at " << x
+                << endl;
 
 	// is there a better way of getting these two iterators?
 	DocIterator beg = cur;
@@ -2269,8 +2276,12 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 {
 	pit_type pit = getPitNearY(y);
 	int yy = theCoords.get(this, pit).y_ - pars_[pit].ascent();
-	lyxerr << "setCursorFromCoordinates: x: " << x << " y: " << y
-		<< " pit: " << pit << " yy: " << yy << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << ": x: " << x
+                << " y: " << y
+		<< " pit: " << pit
+                << " yy: " << yy << endl;
 
 	Paragraph const & par = pars_[pit];
 	int r = 0;
@@ -2284,8 +2295,11 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 
 	Row const & row = par.rows()[r];
 
-	lyxerr << "setCursorFromCoordinates:  row " << r
-	       << " from pos: " << row.pos() << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << ": row " << r
+                << " from pos: " << row.pos()
+                << endl;
 
 	bool bound = false;
 	int xx = x;

@@ -1,3 +1,9 @@
+2005-07-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* BufferView_pimpl.C (update): dampen some of the debug blabbering
+	* factory.C (readInset): ditto
+	* text.C, text2.C: ditto
+
 2005-06-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* buffer.C: format incremented to 242. There is no file format per

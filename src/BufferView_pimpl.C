@@ -596,7 +596,7 @@ bool BufferView::Pimpl::fitCursor()
 		LyXFont const font = cursor_.getFont();
 		int const asc = font_metrics::maxAscent(font);
 		int const des = font_metrics::maxDescent(font);
-		Point p = bv_funcs::getPos(cursor_);
+		Point const p = bv_funcs::getPos(cursor_);
 		if (p.y_ - asc >= 0 && p.y_ + des < workarea().workHeight())
 			return false;
 	}
@@ -607,11 +607,12 @@ bool BufferView::Pimpl::fitCursor()
 
 void BufferView::Pimpl::update(Update::flags flags)
 {
-	lyxerr << BOOST_CURRENT_FUNCTION
-	       << "[fitcursor = " << (flags & Update::FitCursor)
-	       << ", forceupdate = " << (flags & Update::Force)
-	       << ", singlepar = " << (flags & Update::SinglePar)
-	       << "]  buffer: " << buffer_ << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << "[fitcursor = " << (flags & Update::FitCursor)
+                << ", forceupdate = " << (flags & Update::Force)
+                << ", singlepar = " << (flags & Update::SinglePar)
+                << "]  buffer: " << buffer_ << endl;
 
 	// Check needed to survive LyX startup
 	if (buffer_) {
@@ -1289,11 +1290,12 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 	int pit2 = pit;
 	size_t const npit = text->paragraphs().size();
 
-	lyxerr << BOOST_CURRENT_FUNCTION
-	       << " npit: " << npit
-	       << " pit1: " << pit1
-	       << " pit2: " << pit2
-	       << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << " npit: " << npit
+                << " pit1: " << pit1
+                << " pit2: " << pit2
+                << endl;
 
 	// Rebreak anchor par
 	text->redoParagraph(pit);
@@ -1343,10 +1345,11 @@ ViewMetricsInfo BufferView::Pimpl::metrics(bool singlepar)
 		y += text->getPar(pit).descent();
 	}
 
-	lyxerr << BOOST_CURRENT_FUNCTION
-	       << " y1: " << y1
-	       << " y2: " << y2
-	       << endl;
+	lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << " y1: " << y1
+                << " y2: " << y2
+                << endl;
 
 	return ViewMetricsInfo(pit1, pit2, y1, y2, singlepar);
 }
