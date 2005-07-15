@@ -1,3 +1,8 @@
+
+2005-07-15  André Pönitz  <poenitz@gmx.net>
+
+	* insettext.[Ch] (updateLocal): remove. Has been disabled for a while.
+
 2005-07-15  André Pönitz  <poenitz@gmx.net>
 
 	* Makefile.am:
@@ -13,8 +18,7 @@
 2005-07-15  André Pönitz  <poenitz@gmx.net>
 
 	* insetcollapsable.[Ch]:
-	* updatableinset.[Ch]: (scroll, setScroll)
-	sanitize things
+	* updatableinset.[Ch] (scroll, setScroll): sanitize things
 
 2005-07-14  Angus Leeming  <leeming@lyx.org>
 

@@ -45,7 +45,6 @@
 
 #include "frontends/Alert.h"
 #include "frontends/font_metrics.h"
-#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
 #include "support/lyxalgo.h" // lyx::count
@@ -228,41 +227,6 @@ void InsetText::clearInset(Painter & pain, int x, int y) const
 }
 
 
-void InsetText::updateLocal(LCursor & cur)
-{
-	if (!text_.autoBreakRows_ && paragraphs().size() > 1) {
-		// collapse paragraphs
-		while (paragraphs().size() > 1) {
-			ParagraphList::iterator const first = paragraphs().begin();
-			ParagraphList::iterator second = first;
-			++second;
-			size_t const first_par_size = first->size();
-
-			if (!first->empty() &&
-					!second->empty() &&
-					!first->isSeparator(first_par_size - 1)) {
-				first->insertChar(first_par_size, ' ');
-			}
-
-			cur.clearSelection();
-			mergeParagraph(cur.buffer().params(), paragraphs(), 0);
-		}
-	}
-
-	if (!cur.selection())
-		cur.resetAnchor();
-
-	LyXView * lv = cur.bv().owner();
-	lv->view_state_changed();
-	lv->updateMenubar();
-	lv->updateToolbars();
-	if (old_pit != cur.pit()) {
-		lv->setLayout(text_.getPar(cur.pit()).layout()->name());
-		old_pit = cur.pit();
-	}
-}
-
-
 string const InsetText::editMessage() const
 {
 	return _("Opened Text Inset");
@@ -279,11 +243,6 @@ void InsetText::edit(LCursor & cur, bool left)
 	text_.setCursor(cur.top(), pit, pos);
 	cur.clearSelection();
 	finishUndo();
-#ifdef WITH_WARNINGS
-#warning can someone check if/when this is needed?
-#endif
-//Andre?
-//	updateLocal(cur);
 }
 
 
@@ -291,8 +250,6 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 {
 	old_pit = -1;
 	return text_.editXY(cur, x, y);
-	//sanitizeEmptyText(cur.bv());
-	//updateLocal(cur);
 }
 
 
@@ -392,12 +349,10 @@ void InsetText::markNew(bool track_changes)
 	ParagraphList::iterator pit = paragraphs().begin();
 	ParagraphList::iterator end = paragraphs().end();
 	for (; pit != end; ++pit) {
-		if (track_changes) {
+		if (track_changes)
 			pit->trackChanges();
-		} else {
-			// no-op when not tracking
+		else // no-op when not tracking
 			pit->cleanChanges();
-		}
 	}
 }
 

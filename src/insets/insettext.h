@@ -144,11 +144,10 @@ public:
 protected:
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
-private:
-	virtual std::auto_ptr<InsetBase> doClone() const;
 
+private:
 	///
-	void updateLocal(LCursor &);
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	void init();
 	///
