@@ -712,7 +712,7 @@ void MathHullInset::setType(string const & type)
 
 void MathHullInset::mutate(string const & newtype)
 {
-	lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'" << endl;
+	//lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'" << endl;
 
 	// we try to move along the chain
 	// none <-> simple <-> equation <-> eqnarray -> *align* -> multline, gather -+

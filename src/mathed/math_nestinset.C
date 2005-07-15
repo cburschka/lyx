@@ -983,7 +983,7 @@ void MathNestInset::edit(LCursor & cur, bool left)
 	cur.idx() = left ? 0 : cur.lastidx();
 	cur.pos() = left ? 0 : cur.lastpos();
 	cur.resetAnchor();
-	lyxerr << "MathNestInset::edit, cur:\n" << cur << endl;
+	//lyxerr << "MathNestInset::edit, cur:\n" << cur << endl;
 }
 
 
@@ -1002,7 +1002,7 @@ InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y)
 	cur.push(*this);
 	cur.idx() = idx_min;
 	cur.pos() = ar.x2pos(x - ar.xo());
-	lyxerr << "found cell : " << idx_min << " pos: " << cur.pos() << endl;
+	//lyxerr << "found cell : " << idx_min << " pos: " << cur.pos() << endl;
 	if (dist_min == 0) {
 		// hit inside cell
 		for (pos_type i = 0, n = ar.size(); i < n; ++i)
@@ -1077,7 +1077,7 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 
 bool MathNestInset::interpret(LCursor & cur, char c)
 {
-	lyxerr << "interpret 2: '" << c << "'" << endl;
+	//lyxerr << "interpret 2: '" << c << "'" << endl;
 	cur.clearTargetX();
 
 	// handle macroMode
@@ -1189,7 +1189,6 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 			script(cur, false);
 			return true;
 		}
-
 		if (c == '^') {
 			script(cur, true);
 			return true;
@@ -1200,7 +1199,8 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		}
 	}
 
-	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' || c == '%') {
+	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' || c == '%'
+      || c == '_' || c == '^') {
 		cur.niceInsert(createMathInset(string(1, c)));
 		return true;
 	}
@@ -1248,10 +1248,10 @@ bool MathNestInset::script(LCursor & cur, bool up)
 		// convert the thing to our left to a scriptinset or create a new
 		// one if in the very first position of the array
 		if (cur.pos() == 0) {
-			lyxerr << "new scriptinset" << endl;
+			//lyxerr << "new scriptinset" << endl;
 			cur.insert(new MathScriptInset(up));
 		} else {
-			lyxerr << "converting prev atom " << endl;
+			//lyxerr << "converting prev atom " << endl;
 			cur.prevAtom() = MathAtom(new MathScriptInset(cur.prevAtom(), up));
 		}
 		--cur.pos();
@@ -1260,9 +1260,9 @@ bool MathNestInset::script(LCursor & cur, bool up)
 		cur.idx() = 1;
 		cur.pos() = 0;
 	}
-	lyxerr << "pasting 1: safe:\n" << safe << endl;
+	//lyxerr << "pasting 1: safe:\n" << safe << endl;
 	cur.paste(safe);
 	cur.resetAnchor();
-	lyxerr << "pasting 2: safe:\n" << safe << endl;
+	//lyxerr << "pasting 2: safe:\n" << safe << endl;
 	return true;
 }

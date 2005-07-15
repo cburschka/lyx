@@ -556,7 +556,7 @@ void MathScriptInset::notifyCursorLeaves(LCursor & cur)
 {
 	MathNestInset::notifyCursorLeaves(cur);
 
-	lyxerr << "MathScriptInset::notifyCursorLeaves: 1 " << cur << endl;
+	//lyxerr << "MathScriptInset::notifyCursorLeaves: 1 " << cur << endl;
 
 	// remove empty scripts if possible
 if (1) {
@@ -569,7 +569,7 @@ if (1) {
 	}
 }
 
-	lyxerr << "MathScriptInset::notifyCursorLeaves: 2 " << cur << endl;
+	//lyxerr << "MathScriptInset::notifyCursorLeaves: 2 " << cur << endl;
 }
 
 

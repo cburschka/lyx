@@ -132,7 +132,7 @@ namespace {
 	{
 		recordUndo(cur);
 		string sel = cur.selectionAsString(false);
-		lyxerr << "selection is: '" << sel << "'" << endl;
+		//lyxerr << "selection is: '" << sel << "'" << endl;
 
 		if (sel.empty()) {
 			const int old_pos = cur.pos();

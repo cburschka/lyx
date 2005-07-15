@@ -928,7 +928,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 
 	// try to descend into nested insets
 	InsetBase * inset = checkInsetHit(x, y);
-	lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
+	//lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 	if (!inset) {
 		// Either we deconst editXY or better we move current_font
 		// and real_current_font to LCursor

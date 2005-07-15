@@ -16,6 +16,8 @@
 #include "math_mathmlstream.h"
 #include "debug.h"
 
+#include "support/lstrings.h"
+
 using std::string;
 using std::ostream;
 using std::endl;
@@ -65,8 +67,12 @@ void MathInset::drawT(TextPainter &, int, int) const
 
 void MathInset::write(WriteStream & os) const
 {
-	os << '\\' << name().c_str();
-	os.pendingSpace(true);
+	string const s = name();
+	os << '\\' << s.c_str();S
+	// We need an extra ' ' unless this is a single-char-non-ASCII name
+	// or anything non-ASCII follows
+	if (s.size() != 1 || isalpha(s[0]))
+		os.pendingSpace(true);
 }
 
 
@@ -113,7 +119,7 @@ void MathInset::mathmlize(MathMLStream & os) const
 
 string const & MathInset::getType() const
 {
-	static string const t("none");
+	static string const t = "none";
 	return t;
 }
 

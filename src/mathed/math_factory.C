@@ -234,9 +234,7 @@ void initMath()
 latexkeys const * in_word_set(string const & str)
 {
 	WordList::iterator it = theWordList.find(str);
-	//lyxerr << "looking up '" << str << "' found: "
-	// << (it != theWordList.end()) << endl;
-	return (it != theWordList.end()) ? &(it->second) : 0;
+	return it != theWordList.end() ? &(it->second) : 0;
 }
 
 
@@ -366,3 +364,4 @@ bool createMathInset_fromDialogStr(string const & str, MathArray & ar)
 
 	return ar[0].nucleus();
 }
+
