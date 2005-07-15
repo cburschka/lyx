@@ -19901,6 +19901,78 @@ optional
 The title of this section is a good example of using this feature.
 \layout Section
 
+Branches
+\layout Standard
+
+Sometimes you wish to be able to output to paper multiple versions of the
+ same document.
+ The most extreme version of this is, when you want to prepare a single
+ document in two or more different languages, but as a single document file,
+ with corresponding pieces of text adjacent in the file and on-screen.
+ This can be achieved with 
+\emph on 
+branches
+\emph default 
+.
+\layout Standard
+
+First, you have to 
+\emph on 
+define 
+\emph default 
+the branches available within a particular document.
+ This is done in the 
+\family sans 
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Branches
+\family default 
+ tab.
+ You can also associate a background colour with each branch, e.g., red for
+ the English language, blue for the German language branch.
+ Then, you create a branch inset from the 
+\family sans 
+Insert\SpecialChar \menuseparator
+Branch
+\family default 
+ menu item.
+ The inset will contain the text that you want to be output when this branch
+ is activated.
+\layout Standard
+
+
+\emph on 
+Activation 
+\emph default 
+or 
+\emph on 
+deactivation
+\emph default 
+ of a branch is done from the document settings menu.
+ All insets belonging to deactivated branches will be automatically closed,
+ those belonging to activated branched automatically opened.
+\layout Standard
+
+Other possible applications of the Branches paradisgm include a 
+\begin_inset Quotes eld
+\end_inset 
+
+teacher's version
+\begin_inset Quotes erd
+\end_inset 
+
+ of a textbook containing the answers tro questions, etc.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Once this doc is updated to 1.4, include branch examples here!
+\end_inset 
+
+
+\layout Section
+
 Previewing snippets of your document
 \layout Standard
 
