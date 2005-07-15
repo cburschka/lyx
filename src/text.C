@@ -1010,7 +1010,7 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 	if (bv_owner->text() == this) {
 		if (pit == 0 && row.pos() == 0)
 			maxasc += 20;
-		if (pit == pars_.size() - 1 && row.endpos() == par.size())
+		if (pit + 1 == pars_.size() && row.endpos() == par.size())
 			maxdesc += 20;
 	}
 
@@ -1193,7 +1193,8 @@ void LyXText::insertChar(LCursor & cur, char c)
 
 	current_font = rawtmpfont;
 	real_current_font = realtmpfont;
-	setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
+	//setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
+	setCursor(cur, cur.pit(), cur.pos() + 1, false, true);
 	charInserted();
 }
 
@@ -1793,7 +1794,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x , int) const
 		x2 = 0;
 	} else {
 		y1 = bv_funcs::getPos(beg).y_ - row1.ascent();
-		int const startx = cursorX(beg.top());
+		int const startx = cursorX(beg.top(), begin.boundary());
 		x1 = isRTL(par1) ? startx : 0;
 		x2 = isRTL(par1) ? 0 + dim_.wid : startx;
 	}
@@ -1805,7 +1806,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x , int) const
 		X2 = 0;
 	} else {
 		y2 = bv_funcs::getPos(end).y_ + row2.descent();
-		int const endx = cursorX(end.top());
+		int const endx = cursorX(end.top(), end.boundary());
 		X1 = isRTL(par2) ? 0 : endx;
 		X2 = isRTL(par2) ? endx : 0 + dim_.wid;
 	}
@@ -1868,9 +1869,9 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		x2 = dim_.wid;
 	} else {
 		Row const & row1 = par1.getRow(beg.pos());
-		y1 = bv_funcs::getPos(beg).y_ - row1.ascent();
+		y1 = bv_funcs::getPos(beg, beg.boundary()).y_ - row1.ascent();
 		y2 = y1 + row1.height();
-		int const startx = cursorX(beg.top());
+		int const startx = cursorX(beg.top(), beg.boundary());
 		x1 = !isRTL(par1) ? startx : 0;
 		x2 = !isRTL(par1) ? 0 + dim_.wid : startx;
 	}
@@ -1883,9 +1884,9 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		X2 = dim_.wid;
 	} else {
 		Row const & row2 = par2.getRow(end.pos());
-		Y1 = bv_funcs::getPos(end).y_ - row2.ascent();
+		Y1 = bv_funcs::getPos(end, end.boundary()).y_ - row2.ascent();
 		Y2 = Y1 + row2.height();
-		int const endx = cursorX(end.top());
+		int const endx = cursorX(end.top(), end.boundary());
 		X1 = !isRTL(par2) ? 0 : endx;
 		X2 = !isRTL(par2) ? endx : 0 + dim_.wid;
 	}
@@ -1909,6 +1910,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 	pi.pain.fillRectangle(x, y2, dim_.wid,
 			      Y1 - y2, LColor::selection);
 }
+
 
 bool LyXText::isLastRow(pit_type pit, Row const & row) const
 {
@@ -2045,16 +2047,20 @@ int LyXText::descent() const
 }
 
 
-int LyXText::cursorX(CursorSlice const & cur) const
+int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 {
-	pit_type const pit = cur.pit();
+	pit_type const pit = sl.pit();
 	Paragraph const & par = pars_[pit];
 	if (par.rows().empty())
 		return 0;
 
-	Row const & row = par.getRow(cur.pos());
+	pos_type pos = sl.pos();
+	//// Correct position in front of big insets
+	//if (pos && boundary)
+	//	--pos;
 
-	pos_type pos = cur.pos();
+	Row const & row = par.getRow(pos);
+
 	pos_type cursor_vpos = 0;
 
 	RowMetrics const m = computeRowMetrics(pit, row);
@@ -2104,20 +2110,28 @@ int LyXText::cursorX(CursorSlice const & cur) const
 		} else
 			x += singleWidth(par, pos);
 	}
+	
+	// see correction above
+	//if (pos && boundary)
+	//	x += singleWidth(par, pos + 1);
+
 	return int(x);
 }
 
 
-int LyXText::cursorY(CursorSlice const & cur) const
+int LyXText::cursorY(CursorSlice const & sl, bool boundary) const
 {
-	Paragraph const & par = getPar(cur.pit());
+	//lyxerr << "LyXText::cursorY: boundary: " << boundary << std::endl;
+	Paragraph const & par = getPar(sl.pit());
 	int h = 0;
 	h -= pars_[0].rows()[0].ascent();
-	for (pit_type pit = 0; pit < cur.pit(); ++pit)
+	for (pit_type pit = 0; pit < sl.pit(); ++pit)
 		h += pars_[pit].height();
-	for (size_t rit = 0, rend = par.pos2row(cur.pos()); rit != rend; ++rit)
+	//size_t const rend = par.pos2row(sl.pos() - boundary ? 1 : 0);
+	size_t const rend = par.pos2row(sl.pos());
+	for (size_t rit = 0; rit != rend; ++rit)
 		h += par.rows()[rit].height();
-	h += par.rows()[par.pos2row(cur.pos())].ascent();
+	h += par.rows()[rend].ascent();
 	return h;
 }
 
@@ -2254,7 +2268,7 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 
 pos_type LyXText::x2pos(pit_type pit, int row, int x) const
 {
-	BOOST_ASSERT(row < pars_[pit].rows().size());
+	BOOST_ASSERT(row < int(pars_[pit].rows().size()));
 	bool bound = false;
 	Row const & r = pars_[pit].rows()[row];
 	return r.pos() + getColumnNearX(pit, r, x, bound);

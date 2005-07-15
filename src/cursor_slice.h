@@ -104,10 +104,6 @@ public:
 	///
 	/// texted specific stuff
 	///
-	/// \sa boundary_
-	bool boundary() const { return boundary_; }
-	/// \sa boundary_
-	bool & boundary() { return boundary_; }
 	/// returns text corresponding to this position
 	LyXText * text();
 	/// returns text corresponding to this position
@@ -156,22 +152,6 @@ private:
 	bool pit_valid_;
 	/// position in this cell
 	pos_type pos_;
-	/**
-	 * When the cursor position is i, is the cursor after the i-th char
-	 * or before the i+1-th char ? Normally, these two interpretations are
-	 * equivalent, except when the fonts of the i-th and i+1-th char
-	 * differ.
-	 * We use boundary_ to distinguish between the two options:
-	 * If boundary_=true, then the cursor is after the i-th char
-	 * and if boundary_=false, then the cursor is before the i+1-th char.
-	 *
-	 * We currently use the boundary only when the language direction of
-	 * the i-th char is different than the one of the i+1-th char.
-	 * In this case it is important to distinguish between the two
-	 * cursor interpretations, in order to give a reasonable behavior to
-	 * the user.
-	 */
-	bool boundary_;
 };
 
 /// test for equality

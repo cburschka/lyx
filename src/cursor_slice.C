@@ -30,12 +30,12 @@ using std::endl;
 
 
 CursorSlice::CursorSlice()
-	: inset_(0), idx_(0), pit_(0), pos_(0), boundary_(false)
+	: inset_(0), idx_(0), pit_(0), pos_(0)
 {}
 
 
 CursorSlice::CursorSlice(InsetBase & p)
-	: inset_(&p), idx_(0), pit_(0), pos_(0), boundary_(false)
+	: inset_(&p), idx_(0), pit_(0), pos_(0)
 {
 	BOOST_ASSERT(inset_);
 }

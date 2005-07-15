@@ -406,8 +406,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_RIGHT:
 	case LFUN_RIGHTSEL:
-		lyxerr << BOOST_CURRENT_FUNCTION
-		       << " LFUN_RIGHT[SEL]:\n" << cur << endl;
+		//lyxerr << BOOST_CURRENT_FUNCTION
+		//       << " LFUN_RIGHT[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
 		if (isRTL(cur.paragraph()))
 			needsUpdate = cursorLeft(cur);
@@ -819,8 +819,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_GETXY:
-		cur.message(convert<string>(cursorX(cur.top())) + ' '
-		          + convert<string>(cursorY(cur.top())));
+		cur.message(convert<string>(cursorX(cur.top(), cur.boundary())) + ' '
+		          + convert<string>(cursorY(cur.top(), cur.boundary())));
 		break;
 
 	case LFUN_SETXY: {

@@ -476,7 +476,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 		cur.clearSelection();
 		break;
 	case bv_funcs::CUR_INSIDE:
-		int const y = bv_funcs::getPos(cur).y_;
+		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
 		int const newy = min(last, max(y, first));
 		if (y != newy) {
 			cur.reset(buffer_->inset());
@@ -596,7 +596,7 @@ bool BufferView::Pimpl::fitCursor()
 		LyXFont const font = cursor_.getFont();
 		int const asc = font_metrics::maxAscent(font);
 		int const des = font_metrics::maxDescent(font);
-		Point const p = bv_funcs::getPos(cursor_);
+		Point const p = bv_funcs::getPos(cursor_, cursor_.boundary());
 		if (p.y_ - asc >= 0 && p.y_ + des < workarea().workHeight())
 			return false;
 	}
@@ -766,8 +766,8 @@ void BufferView::Pimpl::center()
 	bot.text()->redoParagraph(pit);
 	Paragraph const & par = bot.text()->paragraphs()[pit];
 	anchor_ref_ = pit;
-	offset_ref_ = bv_funcs::coordOffset(cursor_).y_ + par.ascent()
-		- workarea().workHeight() / 2;
+	offset_ref_ = bv_funcs::coordOffset(cursor_, cursor_.boundary()).y_
+		+ par.ascent() - workarea().workHeight() / 2;
 }
 
 

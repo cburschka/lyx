@@ -322,9 +322,9 @@ public:
 	///
 	int descent() const;
 	///
-	int cursorX(CursorSlice const & cursor) const;
+	int cursorX(CursorSlice const & cursor, bool boundary) const;
 	///
-	int cursorY(CursorSlice const & cursor) const;
+	int cursorY(CursorSlice const & cursor, bool boundary) const;
 
 	///
 	friend class LyXScreen;

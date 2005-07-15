@@ -192,24 +192,23 @@ void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCollapsable::getCursorPos
-	(CursorSlice const & sl, int & x, int & y) const
+void InsetCollapsable::cursorPos
+	(CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
 	if (status_ == Collapsed) {
 		x = xo();
 		y = yo();
-		return;
+	} else {
+		InsetText::cursorPos(sl, boundary, x, y);
+		if (status_ == Open) {
+			if (openinlined_)
+				x += dimensionCollapsed().wid;
+			else
+				y += dimensionCollapsed().height() - ascent()
+					+ TEXT_TO_INSET_OFFSET + textdim_.asc;
+		}
+		x += TEXT_TO_INSET_OFFSET;
 	}
-
-	InsetText::getCursorPos(sl, x, y);
-	if (status_ == Open) {
-		if (openinlined_)
-			x += dimensionCollapsed().wid;
-		else
-			y += dimensionCollapsed().height() - ascent() + TEXT_TO_INSET_OFFSET + textdim_.asc;
-	}
-
-	x += TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -239,7 +238,7 @@ string const InsetCollapsable::getNewLabel(string const & l) const
 	pos_type const n = min(max_length, p_siz);
 	pos_type i = 0;
 	pos_type j = 0;
-	for( ; i < n && j < p_siz; ++j) {
+	for (; i < n && j < p_siz; ++j) {
 		if (paragraphs().begin()->isInset(j))
 			continue;
 		label += paragraphs().begin()->getChar(j);

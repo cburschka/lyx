@@ -74,7 +74,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 
 	/// return x,y of given position relative to the inset's baseline
-	void getCursorPos(CursorSlice const & sl, int & x, int & y) const;
+	void cursorPos(CursorSlice const & sl, bool boundary, int & x, int & y) const;
 	///
 	Code lyxCode() const { return TEXT_CODE; }
 	///

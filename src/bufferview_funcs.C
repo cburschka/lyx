@@ -152,7 +152,7 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 // the next two should probably go elsewhere
 // this give the position relative to (0, baseline) of outermost
 // paragraph
-Point coordOffset(DocIterator const & dit)
+Point coordOffset(DocIterator const & dit, bool boundary)
 {
 	int x = 0;
 	int y = 0;
@@ -162,37 +162,41 @@ Point coordOffset(DocIterator const & dit)
 		CursorSlice const & sl = dit[i];
 		int xx = 0;
 		int yy = 0;
-		sl.inset().getCursorPos(sl, xx, yy);
+		sl.inset().cursorPos(sl, boundary, xx, yy);
 		x += xx;
 		y += yy;
-		//lyxerr << "LCursor::getPos, i: " << i << " x: " << xx << " y: " << y << endl;
+		//lyxerr << "LCursor::getPos, i: "
+		// << i << " x: " << xx << " y: " << y << endl;
 	}
 
 	// Add contribution of initial rows of outermost paragraph
 	CursorSlice const & sl = dit[0];
 	Paragraph const & par = sl.text()->getPar(sl.pit());
 	y -= par.rows()[0].ascent();
-	for (size_t rit = 0, rend = par.pos2row(sl.pos()); rit != rend; ++rit)
+	//size_t rend = par.pos2row(sl.pos() - boundary ? 1 : 0);
+	size_t rend = par.pos2row(sl.pos());
+	for (size_t rit = 0; rit != rend; ++rit)
 		y += par.rows()[rit].height();
-	y += par.rows()[par.pos2row(sl.pos())].ascent();
-	x += dit.bottom().text()->cursorX(dit.bottom());
+	y += par.rows()[rend].ascent();
+	x += dit.bottom().text()->cursorX(dit.bottom(), boundary);
 	// The following correction should not be there at all.
-	// The cusor looks much better with the -1, though.
+	// The cursor looks much better with the -1, though.
 	--x;
 	return Point(x, y);
 }
 
 
-Point getPos(DocIterator const & dit)
+Point getPos(DocIterator const & dit, bool boundary)
 {
 	CursorSlice const & bot = dit.bottom();
-	CoordCache::InnerParPosCache const & cache = theCoords.getParPos().find(bot.text())->second;
+	CoordCache::InnerParPosCache const & cache =
+		theCoords.getParPos().find(bot.text())->second;
 	CoordCache::InnerParPosCache::const_iterator it = cache.find(bot.pit());
 	if (it == cache.end()) {
 		//lyxerr << "cursor out of view" << std::endl;
 		return Point(-1, -1);
 	}
-	Point p = coordOffset(dit); // offset from outer paragraph
+	Point p = coordOffset(dit, boundary); // offset from outer paragraph
 	p.y_ += it->second.y_;
 	return p;
 }

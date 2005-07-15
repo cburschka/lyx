@@ -88,7 +88,7 @@ MathArray const & MathNestInset::cell(idx_type i) const
 }
 
 
-void MathNestInset::getCursorPos(CursorSlice const & sl,
+void MathNestInset::cursorPos(CursorSlice const & sl, bool boundary,
 	int & x, int & y) const
 {
 // FIXME: This is a hack. Ideally, the coord cache should not store

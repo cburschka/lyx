@@ -660,6 +660,7 @@ bool LyXText::setCursor(LCursor & cur, pit_type par, pos_type pos,
 {
 	LCursor old = cur;
 	setCursorIntern(cur, par, pos, setfont, boundary);
+	cur.boundary(boundary);
 	return deleteEmptyParagraphMechanism(cur, old);
 }
 
@@ -670,7 +671,6 @@ void LyXText::setCursor(CursorSlice & cur, pit_type par,
 	BOOST_ASSERT(par != int(paragraphs().size()));
 	cur.pit() = par;
 	cur.pos() = pos;
-	cur.boundary() = boundary;
 
 	// now some strict checking
 	Paragraph & para = getPar(par);
@@ -928,7 +928,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
 	cur.pit() = pit;
 	cur.pos() = pos;
-	cur.boundary() = bound;
+	cur.boundary(bound);
 	cur.x_target() = x;
 
 	// try to descend into nested insets
@@ -1022,7 +1022,7 @@ bool LyXText::cursorUp(LCursor & cur)
 	int const x = cur.targetX();
 
 	if (!cur.selection()) {
-		int const y = bv_funcs::getPos(cur).y_;
+		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
 		LCursor old = cur;
 		editXY(cur, x, y - par.rows()[row].ascent() - 1);
 
@@ -1061,7 +1061,7 @@ bool LyXText::cursorDown(LCursor & cur)
 	int const x = cur.targetX();
 
 	if (!cur.selection()) {
-		int const y = bv_funcs::getPos(cur).y_;
+		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
 		LCursor old = cur;
 		editXY(cur, x, y + par.rows()[row].descent() + 1);
 

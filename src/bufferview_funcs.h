@@ -17,11 +17,11 @@
 #include <string>
 #include <vector>
 
+class BufferView;
+class DocIterator;
+class InsetBase_code;
 class LyXFont;
 class Point;
-class DocIterator;
-class BufferView;
-class InsetBase_code;
 
 
 namespace bv_funcs {
@@ -37,7 +37,7 @@ bool string2font(std::string const & data, LyXFont & font, bool & toggle);
  */
 std::string const freefont2string();
 
-Point getPos(DocIterator const & dit);
+Point getPos(DocIterator const & dit, bool boundary);
 
 enum CurStatus {
 	CUR_INSIDE,
@@ -49,7 +49,7 @@ enum CurStatus {
 CurStatus status(BufferView const * bv, DocIterator const & dit);
 
 
-Point coordOffset(DocIterator const & dit);
+Point coordOffset(DocIterator const & dit, bool boundary);
 
 /// Moves cursor to the next inset with one of the given codes.
 void gotoInset(BufferView * bv, std::vector<InsetBase_code> const & codes,

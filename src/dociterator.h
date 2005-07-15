@@ -55,16 +55,10 @@ public:
 	explicit DocIterator(InsetBase & inset);
 
 	/// access slice at position \p i
-	CursorSlice const & operator[](size_t i) const {
-		return slices_[i];
-	}
-
+	CursorSlice const & operator[](size_t i) const { return slices_[i]; }
 	/// access slice at position \p i
-	CursorSlice & operator[](size_t i) {
-		return slices_[i];
-	}
-
-	// What is the point of this function?
+	CursorSlice & operator[](size_t i) { return slices_[i]; }
+	/// chop a few slices from the iterator
 	void resize(size_t i) { slices_.resize(i); }
 
 	/// is the iterator valid?
@@ -129,6 +123,10 @@ public:
 	InsetBase * prevInset();
 	/// the inset just in front of the cursor
 	InsetBase const * prevInset() const;
+	///
+	bool boundary() const { return boundary_; }
+	///
+	void boundary(bool b) { boundary_ = b; }
 
 	/// are we in mathed?
 	bool inMathed() const;
@@ -154,10 +152,6 @@ public:
 	//
 	// text-specific part
 	//
-	/// \sa boundary_
-	bool boundary() const { return top().boundary(); }
-	/// \sa boundary_
-	bool & boundary() { return top().boundary(); }
 	/// the paragraph we're in
 	Paragraph & paragraph();
 	/// the paragraph we're in
@@ -209,21 +203,41 @@ public:
 	/// output
 	friend std::ostream &
 	operator<<(std::ostream & os, DocIterator const & cur);
+	///
 	friend bool operator==(DocIterator const &, DocIterator const &);
+	///
 	friend class StableDocIterator;
 protected:
+	///
 	void clear() { slices_.clear(); }
-	void push_back(CursorSlice const & sl) {
-		slices_.push_back(sl);
-	}
-	void pop_back() {
-		slices_.pop_back();
-	}
+	///
+	void push_back(CursorSlice const & sl) { slices_.push_back(sl); }
+	///
+	void pop_back() { slices_.pop_back(); }
 private:
+	/**
+	 * When the cursor position is i, is the cursor after the i-th char
+	 * or before the i+1-th char ? Normally, these two interpretations are
+	 * equivalent, except when the fonts of the i-th and i+1-th char
+	 * differ.
+	 * We use boundary_ to distinguish between the two options:
+	 * If boundary_=true, then the cursor is after the i-th char
+	 * and if boundary_=false, then the cursor is before the i+1-th char.
+	 *
+	 * We currently use the boundary only when the language direction of
+	 * the i-th char is different than the one of the i+1-th char.
+	 * In this case it is important to distinguish between the two
+	 * cursor interpretations, in order to give a reasonable behavior to
+	 * the user.
+	 */
+	bool boundary_;
+	///
 	std::vector<CursorSlice> const & internalData() const {
 		return slices_;
 	}
+	///
 	std::vector<CursorSlice> slices_;
+	///
 	InsetBase * inset_;
 };
 

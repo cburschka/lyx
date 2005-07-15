@@ -91,7 +91,7 @@ public:
 	///
 	Code lyxCode() const { return InsetBase::TABULAR_CODE; }
 	/// get offset of this cursor slice relative to our upper left corner
-	void getCursorPos(CursorSlice const & sl, int & x, int & y) const;
+	void cursorPos(CursorSlice const & sl, bool boundary, int & x, int & y) const;
 	///
 	bool tabularFeatures(LCursor & cur, std::string const & what);
 	///

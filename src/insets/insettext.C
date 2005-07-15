@@ -364,10 +364,11 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetText::getCursorPos(CursorSlice const & sl, int & x, int & y) const
+void InsetText::cursorPos
+	(CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	x = text_.cursorX(sl) + border_;
-	y = text_.cursorY(sl);
+	x = text_.cursorX(sl, boundary) + border_;
+	y = text_.cursorY(sl, boundary);
 }
 
 
