@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-07 00:41+0200\n"
+"POT-Creation-Date: 2005-07-14 23:13+0200\n"
 "PO-Revision-Date: 2005-04-07 23:48+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -11059,9 +11059,21 @@ msgstr "wurde eingefügt."
 msgid "Opened inset"
 msgstr "Einfügung geöffnet"
 
-#: src/insets/insetbib.C:142
+#: src/insets/insetbib.C:147
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-generiertes Literaturverzeichnis"
+
+#: src/insets/insetbib.C:268 src/lyx_main.C:576 src/lyx_main.C:580
+msgid "LyX Warning!"
+msgstr "LyX-Warnung!"
+
+#: src/insets/insetbib.C:269
+msgid "There are spaces in the paths to your BibTeX databases."
+msgstr "Die Pfade zu Ihren BibTeX-Datenbanken enthalten Leerzeichen."
+
+#: src/insets/insetbib.C:270
+msgid "BibTeX will be unable to find them."
+msgstr "BibTeX wird nicht in der Lage sein, sie zu finden."
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
@@ -11680,10 +11692,6 @@ msgstr "LyX: Erzeuge Verzeichnis "
 #: src/lyx_main.C:557
 msgid "Failed to create directory. Exiting."
 msgstr "Das Erstellen des Verzeichnisses ist fehlgeschlagen. LyX wird beendet."
-
-#: src/lyx_main.C:576 src/lyx_main.C:580
-msgid "LyX Warning!"
-msgstr "LyX-Warnung!"
 
 #: src/lyx_main.C:577
 #, c-format
