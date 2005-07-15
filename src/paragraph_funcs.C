@@ -168,10 +168,11 @@ void breakParagraph(BufferParams const & bparams,
 		return;
 	}
 
-	par.params().clear();
-
-	par.layout(bparams.getLyXTextClass().defaultLayout());
-
+        if (!isempty) {
+                par.params().clear();
+                par.layout(bparams.getLyXTextClass().defaultLayout());
+        }
+        
 	// layout stays the same with latex-environments
 	if (flag) {
 		par.layout(tmp->layout());

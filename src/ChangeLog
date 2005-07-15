@@ -1,5 +1,8 @@
 2005-07-15    <lgb@tandberg.net>
 
+	* paragraph_funcs.C (breakParagraph): dont reset the layout on
+	keepEmpty paragraphs
+
 	* text.C (setCursorFromCoordinates): add a debug statement
 
 	* text2.C (getColumnNearX): bug 1825 make sure that we don't
