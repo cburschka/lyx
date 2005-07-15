@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += texput.log textclass.lst packages.lst lyxrc.defaults
 
-SUBDIRS = doc reLyX
+SUBDIRS = doc reLyX lyx2lyx
 
 EXTRA_DIST = \
 	configure.m4 \
@@ -833,26 +833,6 @@ dist_layouts_DATA =\
 	layouts/g-brief2.layout \
 	layouts/svglobal.layout
 
-lyx2lyxdir = $(pkgdatadir)/lyx2lyx
-# We cannot use dist_lyx2lyx_SCRIPTS for lyx2lyx, since a possible
-# version-suffix would get appended to the names. So we use dist_scripts_DATA
-# and chmod manually in install-data-hook.
-dist_lyx2lyx_DATA = \
-	lyx2lyx/lyx2lyx \
-	lyx2lyx/parser_tools.py \
-	lyx2lyx/LyX.py \
-	lyx2lyx/lyx_0_12.py \
-	lyx2lyx/lyx_1_0_0.py \
-	lyx2lyx/lyx_1_0_1.py \
-	lyx2lyx/lyx_1_1_4.py \
-	lyx2lyx/lyx_1_1_5.py \
-	lyx2lyx/lyx_1_1_6.py \
-	lyx2lyx/lyx_1_1_6fix3.py \
-	lyx2lyx/lyx_1_2.py \
-	lyx2lyx/lyx_1_3.py \
-	lyx2lyx/lyx_1_4.py \
-	lyx2lyx/profiling.py
-
 scriptsdir = $(pkgdatadir)/scripts
 # We cannot use dist_scripts_SCRIPTS, since a possible version-suffix would
 # get appended to the names. So we use dist_scripts_DATA and chmod manually
@@ -941,7 +921,6 @@ install-data-local: install-xfonts
 uninstall-local: uninstall-xfonts
 
 install-data-hook:
-	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/lyx2lyx/lyx2lyx
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure
 	for i in $(dist_scripts_DATA); do \
 		$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/$$i; \

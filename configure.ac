@@ -38,6 +38,9 @@ if test "x$KPSEWHICH" = xkpsewhich ; then
 fi
 AC_CHECK_PROGS(M4, gm4 gnum4 m4, m4)
 
+# Check for installed python
+AM_PATH_PYTHON(1.5.2,, :)
+
 # Work around a problem in automake 1.4: when invoking install-strip,
 # INSTALL_PROGRAM is changed to 'install -s', and since
 # INSTALL_SCRIPT==INSTALL_PROGRAM, we get errors with fileutils-4.0
@@ -410,6 +413,7 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        development/lyx.spec \
        lib/Makefile \
        lib/doc/Makefile \
+       lib/lyx2lyx/Makefile \
        intl/Makefile \
        po/Makefile.in \
        sourcedoc/Doxyfile \
