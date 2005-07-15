@@ -718,7 +718,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			handleFont(cur, cmd.argument, "mathrm");
 		break;
 	case LFUN_CODE:
+		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument, "texttt");
+		else
+			handleFont(cur, cmd.argument, "mathtt");
 		break;
 	case LFUN_FRAK:
 		handleFont(cur, cmd.argument, "mathfrak");
@@ -913,28 +916,18 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 		}
 		flag.setOnOff(cmd.argument[0] == align);
 		break;
-	case LFUN_BOLD:
-		flag.setOnOff(tc == "mathbf");
-		break;
-	case LFUN_SANS:
-		flag.setOnOff(tc == "mathsf");
-		break;
-	case LFUN_EMPH:
-		flag.setOnOff(tc == "mathcal");
-		break;
-	case LFUN_ROMAN:
-		flag.setOnOff(tc == "mathrm");
-		break;
-	case LFUN_CODE:
-		flag.setOnOff(tc == "mathtt");
-		break;
-	case LFUN_NOUN:
-		flag.setOnOff(tc == "mathbb");
-		break;
-	case LFUN_DEFAULT:
-		flag.setOnOff(tc == "mathnormal");
-		break;
 #endif
+	/// We have to handle them since 1.4 blocks all unhandled actions
+	case LFUN_ITAL:
+	case LFUN_BOLD:
+	case LFUN_SANS:
+	case LFUN_EMPH:
+	case LFUN_CODE:
+	case LFUN_NOUN:
+	case LFUN_ROMAN:
+	case LFUN_DEFAULT:
+		flag.enabled(true);
+		break;
 	case LFUN_MATH_MUTATE:
 		//flag.setOnOff(mathcursor::formula()->hullType() == cmd.argument);
 		flag.setOnOff(false);

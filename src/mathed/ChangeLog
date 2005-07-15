@@ -1,5 +1,9 @@
 2005-07-15  Stephan Witt <stephan.witt@beusen.de>
 
+	* math_nestinset.C (getStatus): handle font change requests
+
+2005-07-15  Stephan Witt <stephan.witt@beusen.de>
+
 	* math_hullinset.C (getStatus): don't allow insert of label for
 	inlined eq
 
