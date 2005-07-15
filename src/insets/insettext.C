@@ -333,8 +333,9 @@ int InsetText::plaintext(Buffer const & buf, ostream & os,
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
 	ParagraphList::const_iterator it = beg;
+	bool ref_printed = false;
 	for (; it != end; ++it)
-		asciiParagraph(buf, *it, os, runparams, it == beg);
+		asciiParagraph(buf, *it, os, runparams, ref_printed);
 
 	// FIXME: Give the total numbers of lines
 	return 0;

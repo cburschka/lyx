@@ -32,6 +32,6 @@ void asciiParagraph(Buffer const & buf,
 		    Paragraph const & paragraphs,
 		    std::ostream & ofs,
 		    OutputParams const &,
-		    bool noparbreak = false);
+		    bool & ref_printed);
 
 #endif

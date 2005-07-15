@@ -1,3 +1,10 @@
+2005-07-15  José Matos <jamatos@lyx.org>
+
+	* output_plaintext.[Ch] (writeFileAscii): control reference title
+	printing.
+	(asciiParagraph): noparbreak was already deal and was incorrectly
+	used.
+
 2005-07-15  Juergen Vigna <jug@lyx.org>
 
 	* lyxfunc.C (dispatch): save and restore the cursor after a

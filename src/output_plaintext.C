@@ -53,12 +53,13 @@ void writeFileAscii(Buffer const & buf,
 void writeFileAscii(Buffer const & buf, ostream & os,
 	OutputParams const & runparams)
 {
+	bool ref_printed = false;
 	ParagraphList const par = buf.paragraphs();
 	ParagraphList::const_iterator beg = par.begin();
 	ParagraphList::const_iterator end = par.end();
 	ParagraphList::const_iterator it = beg;
 	for (; it != end; ++it) {
-		asciiParagraph(buf, *it, os, runparams, it == beg);
+		asciiParagraph(buf, *it, os, runparams, ref_printed);
 	}
 	os << "\n";
 }
@@ -81,11 +82,10 @@ void asciiParagraph(Buffer const & buf,
 		    Paragraph const & par,
 		    ostream & os,
 		    OutputParams const & runparams,
-		    bool noparbreak)
+		    bool & ref_printed)
 {
 	int ltype = 0;
 	Paragraph::depth_type ltype_depth = 0;
-	static bool ref_printed = false;
 	Paragraph::depth_type depth = par.params().depth();
 
 	// First write the layout
@@ -132,57 +132,55 @@ void asciiParagraph(Buffer const & buf,
 
 	string::size_type currlinelen = 0;
 
-	if (!noparbreak) {
-		if (runparams.linelen > 0)
-			os << "\n\n";
+	if (runparams.linelen > 0)
+		os << "\n\n";
 
-		os << string(depth * 2, ' ');
-		currlinelen += depth * 2;
+	os << string(depth * 2, ' ');
+	currlinelen += depth * 2;
 
-		//--
-		// we should probably change to the paragraph language in the
-		// gettext here (if possible) so that strings are output in
-		// the correct language! (20012712 Jug)
-		//--
-		switch (ltype) {
-		case 0: // Standard
-		case 4: // (Sub)Paragraph
-		case 5: // Description
-			break;
+	//--
+	// we should probably change to the paragraph language in the
+	// gettext here (if possible) so that strings are output in
+	// the correct language! (20012712 Jug)
+	//--
+	switch (ltype) {
+	case 0: // Standard
+	case 4: // (Sub)Paragraph
+	case 5: // Description
+		break;
 
-		case 6: // Abstract
+	case 6: // Abstract
+		if (runparams.linelen > 0) {
+			os << _("Abstract") << "\n\n";
+			currlinelen = 0;
+		} else {
+			string const abst = _("Abstract: ");
+			os << abst;
+			currlinelen += abst.length();
+		}
+		break;
+
+	case 7: // Bibliography
+		if (!ref_printed) {
 			if (runparams.linelen > 0) {
-				os << _("Abstract") << "\n\n";
+				os << _("References") << "\n\n";
 				currlinelen = 0;
 			} else {
-				string const abst = _("Abstract: ");
-				os << abst;
-				currlinelen += abst.length();
+				string const refs = _("References: ");
+				os << refs;
+				currlinelen += refs.length();
 			}
-			break;
-
-		case 7: // Bibliography
-			if (!ref_printed) {
-				if (runparams.linelen > 0) {
-					os << _("References") << "\n\n";
-					currlinelen = 0;
-				} else {
-					string const refs = _("References: ");
-					os << refs;
-					currlinelen += refs.length();
-				}
-				ref_printed = true;
-			}
-			break;
-
-		default: {
-			string const label = par.params().labelString();
-			os << label << ' ';
-			currlinelen += label.length() + 1;
-			break;
+			ref_printed = true;
 		}
+		break;
 
-		}
+	default: {
+		string const label = par.params().labelString();
+		os << label << ' ';
+		currlinelen += label.length() + 1;
+		break;
+	}
+
 	}
 
 	if (!currlinelen) {
