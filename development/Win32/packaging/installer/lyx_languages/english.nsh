@@ -18,6 +18,7 @@ LangString SecFileAssocDescription "${LYX_LANG}" "Create associations between th
 LangString SecDesktopDescription "${LYX_LANG}" "A ${PRODUCT_NAME} icon on the desktop."
 
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Failed attempting to set 'path_prefix' in the configure script"
+LangString CreateCmdFilesFailed "${LYX_LANG}" "Failed atempting to create lyx.cmd and reLyX.cmd"
 LangString RunConfigureFailed "${LYX_LANG}" "Failed attempting to execute the configure script"
 
 LangString FinishPageMessage "${LYX_LANG}" "Congratulations! LyX has been installed successfully."
@@ -61,7 +62,7 @@ LangString ImageMagickDownloadLabel "${LYX_LANG}" "&Download ImageMagick"
 LangString ImageMagickFolderLabel "${LYX_LANG}" "&Folder containing convert.exe"
 
 LangString GhostscriptHeader "${LYX_LANG}" "Ghostscript"
-LangString GhostscriptDescription "${LYX_LANG}" "Ghostscript (http://www.cs.wisc.edu/~ghost/) is used to convert images to/from PostScript."
+LangString GhostscriptDescription "${LYX_LANG}" "Ghostscript (www.cs.wisc.edu/~ghost/) is used to convert images to/from PostScript."
 LangString EnterGhostscriptFolder "${LYX_LANG}" "Please input the path to the folder containing gswin32c.exe"
 LangString InvalidGhostscriptFolder "${LYX_LANG}" "Unable to find gswin32c.exe"
 LangString GhostscriptDownloadLabel "${LYX_LANG}" "&Download Ghostscript"
@@ -70,6 +71,9 @@ LangString GhostscriptFolderLabel "${LYX_LANG}" "&Folder containing gswin32c.exe
 LangString SummaryTitle "${LYX_LANG}" "Software summary"
 LangString SummaryPleaseInstall "${LYX_LANG}" "Please install your downloaded files and then run LyX's installer once again."
 LangString SummaryPathPrefix "${LYX_LANG}" "I shall add a 'path_prefix' string to 'lyxrc.defaults' containing:"
+
+LangString UILangageTitle "${LYX_LANG}" "The language of LyX's interface"
+LangString UILangageDescription "${LYX_LANG}" "As used for menus, messages, etc."
 
 LangString UnNotInRegistryLabel "${LYX_LANG}" "Unable to find $(^Name) in the registry$\r$\nShortcuts on the desktop and in the Start Menu will not be removed."
 LangString UnNotAdminLabel "${LYX_LANG}" "Sorry! You must have administrator privileges$\r$\nto uninstall $(^Name)."

@@ -1,12 +1,19 @@
 Packaging LyX 1.3.6 for Windows
 ===============================
+Angus Leeming, 14 July 2005
+===========================
 
 Preparing the way
 =================
 
 The very first thing to do on the way to creating a LyX/Win package is
-to build the sources and install them somewhere accessible. (I've been
-using PREFIX='/J/Programs/LyX'.)
+to build the sources and install them somewhere accessible. I've written
+a script, build_lyxwin.sh, that performs all the necessary steps. Please
+read the preamble and (un)comment those steps that are necessary at the
+end of the script.
+
+The (eventual --- mingw is a *very* slow compiler) result is a lyx
+package that's almost ready to go in $LYX_SRCS/build/installprefix.
 
 Thereafter, the contents of this tree must be manipulated a
 little. I've written a little script, package_lyxwin.sh, to automate
@@ -91,7 +98,7 @@ lyx_original.exe. Remove it.
 Building the LyX installer
 ==========================
 
-At this point my J:\Programs\LyX tree now contains everything that is
+At this point my build/installprefix tree now contains everything that is
 to be released as a LyX/Win package. All that remains to do is to
 generate a Windows installer for it. I've written a script for NSIS
 (http://nsis.sourceforge.net/) to compile into an installer.

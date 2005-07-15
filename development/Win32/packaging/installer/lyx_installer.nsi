@@ -7,6 +7,7 @@
 ; http://www.lyx.org/about/license.php3
 
 ; Author Angus Leeming
+; Author Uwe Stöhr
 ; Full author contact details are available in file CREDITS or copy at
 ; http://www.lyx.org/about/credits.php
 
@@ -27,8 +28,9 @@ SetCompressor lzma
 !define PRODUCT_NAME "LyX"
 !define PRODUCT_VERSION "1.3.6"
 !define PRODUCT_LICENSE_FILE "..\..\..\..\COPYING"
-!define PRODUCT_SOURCEDIR "J:\Programs\LyX"
+!define PRODUCT_SOURCEDIR "..\..\..\..\build\installprefix"
 !define PRODUCT_EXE "$INSTDIR\bin\lyx.exe"
+!define PRODUCT_BAT "$INSTDIR\bin\lyx.bat"
 !define PRODUCT_EXT ".lyx"
 !define PRODUCT_MIME_TYPE "application/lyx"
 !define PRODUCT_UNINSTALL_EXE "$INSTDIR\uninstall.exe"
@@ -55,20 +57,7 @@ InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 !include "StrFunc.nsh"
 !include "strtrim.nsh"
 !include "download.nsh"
-
-; Declare used functions
-${StrLoc}
-${StrNSISToIO}
-${StrRep}
-${StrTrim}
-${StrLTrim}
-${StrRTrim}
-${StrRTrimChar}
-${ReadDownloadValues}
-${EnableBrowseControls}
-${SearchRegistry}
-${DownloadEnter}
-${DownloadLeave}
+!include "lyx_utils.nsh"
 
 ; Grabbed from
 ; http://nsis.sourceforge.net/archive/viewpage.php?pageid=275
@@ -79,6 +68,24 @@ ${DownloadLeave}
 ; Use the Abiword macros to help set up associations with the file extension.
 ; in the Registry.
 !include "abi_util_fileassoc.nsh"
+
+;--------------------------------
+; Declare used functions
+
+${StrStrAdv}
+${StrLoc}
+${StrNSISToIO}
+${StrRep}
+${StrTok}
+${StrTrim}
+${StrLTrim}
+${StrRTrim}
+${StrRTrimChar}
+${ReadDownloadValues}
+${EnableBrowseControls}
+${SearchRegistry}
+${DownloadEnter}
+${DownloadLeave}
 
 ;--------------------------------
 ; Variables
@@ -105,6 +112,12 @@ Var DoNotRequireImageMagick
 Var ImageMagickPath
 Var DownloadImageMagick
 
+Var PDFViewerPath
+Var PDFViewerProg
+
+Var PSViewerPath
+Var PSViewerProg
+
 Var DoNotInstallLyX
 Var PathPrefix
 
@@ -112,6 +125,9 @@ Var CreateFileAssociations
 Var CreateDesktopIcon
 Var StartmenuFolder
 Var ProductRootKey
+
+Var LangName
+Var LangCode
 
 ;--------------------------------
 
@@ -141,6 +157,9 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 ; Specify the installation directory.
 !insertmacro MUI_PAGE_DIRECTORY
 
+; Specify LyX's menu language.
+Page custom SelectMenuLanguage SelectMenuLanguage_LeaveFunction
+
 ; Define which components to install.
 !insertmacro MUI_PAGE_COMPONENTS
 
@@ -153,9 +172,10 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 ; Watch the components being installed.
 !insertmacro MUI_PAGE_INSTFILES
 
+!define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_TEXT "$(FinishPageMessage)"
 !define MUI_FINISHPAGE_RUN_TEXT "$(FinishPageRun)"
-!define MUI_FINISHPAGE_RUN "${PRODUCT_EXE}"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchProduct"
 !insertmacro MUI_PAGE_FINISH
 
 ; The uninstaller.
@@ -169,6 +189,7 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 !insertmacro MUI_LANGUAGE "German"
 !insertmacro MUI_LANGUAGE "Spanish"
 !insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "Italian"
 !insertmacro MUI_LANGUAGE "Dutch"
 !insertmacro MUI_LANGUAGE "Swedish"
 
@@ -177,6 +198,7 @@ Page custom SummariseDownloads SummariseDownloads_LeaveFunction
 !include "lyx_languages\dutch.nsh"
 !include "lyx_languages\french.nsh"
 !include "lyx_languages\german.nsh"
+!include "lyx_languages\italian.nsh"
 !include "lyx_languages\spanish.nsh"
 !include "lyx_languages\swedish.nsh"
 
@@ -189,9 +211,11 @@ LicenseData "$(LyXLicenseData)"
 ; Keep these lines before any File command
 ; Only for solid compression (by default, solid compression
 ; is enabled for BZIP2 and LZMA)
-ReserveFile "ioDownload.ini"
-ReserveFile "ioSummary.ini"
+ReserveFile "io_download.ini"
+ReserveFile "io_summary.ini"
 !insertmacro MUI_RESERVEFILE_LANGDLL
+ReserveFile "io_ui_language.ini"
+!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 
 ;--------------------------------
 
@@ -216,22 +240,29 @@ SectionEnd
 ; Sections are entered in order, so the settings above are all
 ; available to SecInstallation
 Section "-Installation actions" SecInstallation
-  SetOverwrite off
+  SetOverwrite on
   SetOutPath "$INSTDIR"
   File /r "${PRODUCT_SOURCEDIR}\Resources"
   File /r "${PRODUCT_SOURCEDIR}\bin"
 
   ${if} "$PathPrefix" != ""
-    lyx_path_prefix::set_path_prefix "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
+    lyx_configure::set_path_prefix "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
     Pop $0
     ${if} $0 != 0
       MessageBox MB_OK "$(ModifyingConfigureFailed)"
     ${endif}
-    lyx_path_prefix::run_configure "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
-    Pop $0
-    ${if} $0 != 0
-      MessageBox MB_OK "$(RunConfigureFailed)"
-    ${endif}
+  ${endif}
+
+  lyx_configure::create_bat_files "$INSTDIR\bin" "$LangCode"
+  Pop $0
+  ${if} $0 != 0
+    MessageBox MB_OK "$(CreateCmdFilesFailed)"
+  ${endif}
+
+  lyx_configure::run_configure "$INSTDIR\Resources\lyx\configure" "$PathPrefix"
+  Pop $0
+  ${if} $0 != 0
+    MessageBox MB_OK "$(RunConfigureFailed)"
   ${endif}
 
   WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
@@ -243,11 +274,11 @@ Section "-Installation actions" SecInstallation
   WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
 
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
-  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_EXE}"
+  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\Uninstall.lnk" "${PRODUCT_UNINSTALL_EXE}"
 
   ${if} $CreateDesktopIcon == "true"
-    CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "${PRODUCT_EXE}"
+    CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
   ${endif}
 
   ${if} $CreateFileAssociations == "true"
@@ -256,7 +287,7 @@ Section "-Installation actions" SecInstallation
       "${PRODUCT_NAME}" \
       "${PRODUCT_NAME} Document" \
       "${PRODUCT_EXE},1" \
-      "${PRODUCT_EXE}"
+      "${PRODUCT_BAT}"
 
     ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
   ${endif}
@@ -280,8 +311,9 @@ SectionEnd
 Function .onInit
   !insertmacro MUI_LANGDLL_DISPLAY
 
-  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "ioDownload.ini"
-  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "ioSummary.ini"
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_download.ini"
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_summary.ini"
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_ui_language.ini"
 
   ; Default settings
   ; These can be reset to "all" in section SecAllUsers.
@@ -316,13 +348,30 @@ Function .onInit
   Call SearchPerl
   Call SearchGhostscript
   Call SearchImageMagick
+  Call SearchPDFViewer
+  Call SearchPSViewer
 
   ClearErrors
 FunctionEnd
 
 ;--------------------------------
 
+Function LaunchProduct
+  lyx_configure::set_env LANG $LangCode
+  Exec ${PRODUCT_EXE}
+FunctionEnd
+
+;--------------------------------
+
+; Sets the value of the global $MinSYSPath variable.
 Function SearchMinSYS
+  ; This function manipulates the registers $0-$3,
+  ; so push their current content onto the stack.
+  Push $0
+  Push $1
+  Push $2
+  Push $3
+
   ; Search the registry for the MinSYS uninstaller.
   ; If successful, put its location in $2.
   StrCpy $3 "Software\Microsoft\Windows\CurrentVersion\Uninstall"
@@ -351,6 +400,12 @@ Function SearchMinSYS
       "Inno Setup: App Path" \
       "" \
       "\bin"
+
+  ; Return the $0, $1, $2 and $2 registers to their original state
+  Pop $3
+  Pop $2
+  Pop $1
+  Pop $0
 FunctionEnd
 
 Function DownloadMinSYS
@@ -366,6 +421,10 @@ Function DownloadMinSYS
 FunctionEnd
 
 Function DownloadMinSYS_LeaveFunction
+  ; This function manipulates the $0 register
+  ; so push its current content onto the stack.
+  Push $0
+
   ${DownloadLeave} \
       $0 \
       $DownloadMinSYS \
@@ -374,10 +433,14 @@ Function DownloadMinSYS_LeaveFunction
       "$(EnterMinSYSFolder)" \
       "sh.exe" \
       "$(InvalidMinSYSFolder)"
+
+  ; Return the $0 register to its original state
+  Pop $0
 FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $PythonPath variable.
 Function SearchPython
   ${SearchRegistry} \
       $PythonPath \
@@ -400,6 +463,10 @@ Function DownloadPython
 FunctionEnd
 
 Function DownloadPython_LeaveFunction
+  ; This function manipulates the $0 register
+  ; so push its current content onto the stack.
+  Push $0
+
   ${DownloadLeave} \
       $0 \
       $DownloadPython \
@@ -408,10 +475,14 @@ Function DownloadPython_LeaveFunction
       "$(EnterPythonFolder)" \
       "Python.exe" \
       "$(InvalidPythonFolder)"
+
+  ; Return the $0 register to its original state
+  Pop $0
 FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $MiKTeXPath variable.
 Function SearchMiKTeX
   ${SearchRegistry} \
       $MiKTeXPath \
@@ -447,6 +518,7 @@ FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $PerlPath variable.
 Function SearchPerl
   ${SearchRegistry} \
       $PerlPath \
@@ -482,13 +554,24 @@ FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $GhostscriptPath variable.
 Function SearchGhostscript
+  ; This function manipulates the $0 and $1 registers,
+  ; so push their current content onto the stack.
+  Push $0
+  Push $1
+
   ; Find which version of ghostscript, if any, is installed.
+  ; Store this value in $0.
+  StrCpy $0 ""
   EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
   ${if} $1 != ""
     StrCpy $0 "Software\AFPL Ghostscript\$1"
   ${else}
-    StrCpy $0 ""
+    EnumRegKey $1 HKLM "Software\GPL Ghostscript" 0
+    ${if} $1 != ""
+      StrCpy $0 "Software\GPL Ghostscript\$1"
+    ${endif}
   ${endif}
 
   ${SearchRegistry} \
@@ -497,6 +580,10 @@ Function SearchGhostscript
       "GS_DLL" \
       "\gsdll32.dll" \
       ""
+
+  ; Return the $0 and $1 registers to their original states
+  Pop $1
+  Pop $0
 FunctionEnd
 
 Function DownloadGhostscript
@@ -505,8 +592,16 @@ Function DownloadGhostscript
 
   ; Find which version of ghostscript, if any, is installed.
   EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
+  ${if} $1 == ""
+   EnumRegKey $1 HKLM "Software\GPL Ghostscript" 0
+   StrCpy $2 "True"
+  ${endif}
   ${if} $1 != ""
+   ${if} $2 == "True"
+    StrCpy $0 "Software\GPL Ghostscript\$1"
+   ${else}
     StrCpy $0 "Software\AFPL Ghostscript\$1"
+   ${endif}
   ${else}
     StrCpy $0 ""
   ${endif}
@@ -533,6 +628,7 @@ FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $ImageMagickPath variable.
 Function SearchImageMagick
   ${SearchRegistry} \
       $ImageMagickPath \
@@ -568,6 +664,58 @@ FunctionEnd
 
 ;--------------------------------
 
+; Sets the value of the global $PDFViewerPath and $PDFViewerProg variables.
+Function SearchPDFViewer
+  StrCpy $PDFViewerPath ""
+  !insertmacro GetFileExtProg $PDFViewerPath $PDFViewerProg ".pdf" "a"
+FunctionEnd
+
+;--------------------------------
+
+Function SearchPSViewer
+  ; This function manipulates the $0 and $1 registers,
+  ; so push their current content onto the stack.
+  Push $0
+  Push $1
+
+  StrCpy $PSViewerPath ""
+  StrCpy $0 ""
+  StrCpy $1 ""
+  !insertmacro GetFileExtProg $PSViewerPath $PSViewerProg ".ps" "a"
+  ${if} $PSViewerPath != ""
+    StrCpy $0 $PSViewerPath
+    StrCpy $0 $0 "" -8
+  ${endif}
+  ${if} $0 == "Distillr"
+    !insertmacro GetFileExtProg $0 $1 ".ps" "b"
+    ${if} $1 != ""
+      StrCpy $PSViewerPath $0
+      StrCpy $PSViewerProg $1
+    ${endif}
+  ${endif}
+
+  ; Failed to find anything that way. Try another.
+  ${if} $PSViewerPath == ""
+    ReadRegStr $PSViewerProg HKCR "psfile\shell\open\command" ""
+    ; Extract the first quoted word.
+    ${StrTok} $0 "$PSViewerProg" '"' '1' '0'
+    ${if} $0 != ""
+      StrCpy $PSViewerProg $0
+    ${endif}
+
+    ${StrTrim} $PSViewerProg "$PSViewerProg"
+    ; Split into <path,exe> pair
+    ${StrStrAdv} $PSViewerPath $PSViewerProg "\" "<" "<" "0" "0" "0"
+    ${StrStrAdv} $PSViewerProg $PSViewerProg "\" "<" ">" "0" "0" "0"
+  ${endif}
+
+  ; Return the $0 and $1 registers to their original states
+  Pop $1
+  Pop $0
+FunctionEnd
+
+;--------------------------------
+
 Function SummariseDownloads
 
   StrCpy $PathPrefix ""
@@ -599,21 +747,46 @@ Function SummariseDownloads
   IntOp $DoNotInstallLyX $DoNotInstallLyX + $DownloadImageMagick
 
   ${if} "$DoNotInstallLyX" == 1
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$(SummaryPleaseInstall)"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_summary.ini" "Field 1" "Text" "$(SummaryPleaseInstall)"
   ${else}
     ${StrNSISToIO} $0 '$PathPrefix'
+    ${StrRep} $0 "$0" ";" "\r\n"
     StrCpy $0 "$(SummaryPathPrefix)\r\n\r\n$0"
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSummary.ini" "Field 1" "Text" "$0"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "io_summary.ini" "Field 1" "Text" "$0"
   ${endif}
 
   !insertmacro MUI_HEADER_TEXT "$(SummaryTitle)" ""
-  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "ioSummary.ini"
+  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "io_summary.ini"
 FunctionEnd
 
 Function SummariseDownloads_LeaveFunction
   ${if} "$DoNotInstallLyX" == 1
     Quit
   ${endif}
+FunctionEnd
+
+;--------------------------------
+
+Function SelectMenuLanguage
+  StrCpy $LangName ""
+
+  ;tranlate NSIS's language code to the language name; macro from lyx_utils.nsh
+  !insertmacro TranslateLangCode $LangName $Language
+
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "io_ui_language.ini" "Field 2" "State" "$LangName"
+
+  !insertmacro MUI_HEADER_TEXT "$(UILangageTitle)" "$(UILangageDescription)"
+  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "io_ui_language.ini"
+FunctionEnd
+
+;--------------------------------
+
+Function SelectMenuLanguage_LeaveFunction
+  !insertmacro MUI_INSTALLOPTIONS_READ $LangName "io_ui_language.ini" "Field 2" "State"
+
+  ;Get the language code; macro from lyx_utils.nsh
+  StrCpy $LangCode ""
+  !insertmacro GetLangCode $LangCode $LangName
 FunctionEnd
 
 ;--------------------------------
