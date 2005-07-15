@@ -1,0 +1,141 @@
+=================
+INSTALL for Win32
+=================
+
+Building LyX the first time can appear to be a daunting task, but much of
+that is knowing which packages to download in the first place.
+
+The instructions below should guide you through the installation of
+the MinGW/MinSYS build environment, together with details on how to
+grab and build the Qt toolkit and how to grab Aspell and LyX.
+
+Once you've done all that, you should go read the README in
+development/Win32/packaging/ The two scripts in the same directory,
+build_lyxwin.sh and package_lyxwin.sh should automate the entire
+build process. If not and you really can't figure out what to do next,
+then please, please drop a mail to lyx-devel@lists.lyx.org.
+
+Enjoy!
+The LyX Team
+
+=============================================================================
+1 MinGW & MSYS
+
+1.1 Download the following packages from http://www.mingw.org/download.shtml:
+
+      MinGW-3.2.0-rc-3.exe
+      binutils-2.15.94-20050118-1.tar.gz
+      MSYS-1.0.11-2004.04.30-1.exe
+      msysDTK-1.0.1.exe
+
+1.2 Install MinGW-3.2.0-rc-3.exe in C:\MinGW
+
+1.3 Install MSYS-1.0.11-2004.04.30-1.exe in C:\msys
+
+1.4 Install msysDTK-1.0.1 in C:\msys
+
+1.5 Extract binutils-2.15.94-20050118-1.tar.gz in C:\MinGW
+    (i.e., overwrite the existing binutils)
+
+
+2. Gettext & Libiconv
+
+2.1 Download the following packages from
+    http://www.gnu.org/software/gettext/gettext.html:
+
+      gettext-tools-0.13.1.bin.woe32.zip
+      gettext-runtime-0.13.1.bin.woe32.zip
+      libiconv-1.9.1.bin.woe32.zip
+
+2.2 Extract the three packages in C:\MinGW
+
+
+
+3 QT/Win Free Edition
+  http://qtwin.sourceforge.net/index.php/QT/Free_from_CVS_with_Mingw
+
+3.1 Get the latest CVS version
+
+    Using the cvs executable that is packaged with MinSYS,
+    from the MinSYS command prompt:
+
+    $ cd ~
+    $ cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/kde-cygwin login
+      <return> (no password)
+    $ cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/kde-cygwin co \
+         -r QT_WIN32_3_3_BRANCH -d qt3 qt-3
+
+    Alternatively, use the TortoiseCVS graphical interface.
+
+3.2 Compile the QT library
+
+    Create two .bat files, in the top-level directory of the Qt tree,
+    my_configure.bat and my_make.bat. Mine are shown below. Obviously,
+    you'll have to tweak them ;-)
+
+    $ cat my_configure.bat
+    set QTDIR=J:\MinSys\home\Angus\qt3
+    set MINGW=J:\MinGW
+    set PATH=J:\MinSys\home\Angus\qt3\bin;J:\MinGW\bin;C:\WINDOWS\system32;C:\WINDOWS
+    set QMAKESPEC=win32-g++
+    configure.bat -verbose
+
+    $ cat my_make.bat
+    set QTDIR=J:\MinSys\home\Angus\qt3
+    set MINGW=J:\MinGW
+    set PATH=J:\MinSys\home\Angus\qt3\bin;J:\MinGW\bin;C:\WINDOWS\system32;C:\WINDOWS
+    set QMAKESPEC=win32-g++
+    mingw32-make symlinks
+    mingw32-make src-moc
+    mingw32-make sub-src
+
+    The first time that you build the Qt sources, run my_configure.bat.
+    Thereafter, you should be able to get away with my_make.bat. If it fails,
+    you should try my_configure.bat again, but this will overwrite all the
+    Qt header files, so you'll end up rebuilding large chunks of LyX as well.
+
+    $ cmd.exe
+    PROMPT> my_configure.bat
+
+4. Aspell
+
+4.1 Download aspell-0.50.5.tar.gz from ftp://ftp.gnu.org/gnu/aspell/
+    (note: version 0.60.2 does not compile)
+    Download dictionaries from ftp://ftp.gnu.org/gnu/aspell/dict/
+    Eg: en/aspell-en-0.50-2.tar.bz2
+        de/aspell-de-0.50-2.tar.bz2
+
+4.2 Extract all files in your MSYS home directory. From the
+    MinSYS command prompt:
+
+    $ gunzip aspell-0.50.5.tar.gz
+    $ bunzip2 aspell-en-0.50-2.tar.bz2
+    $ tar xvf aspell-0.50.5.tar
+    $ tar xvf aspell-en-0.50-2.tar
+    $ rm -f aspell-0.50.5.tar
+    $ rm -f aspell-en-0.50-2.tar
+
+    There's no need to build Aspell now. The script in
+    development/Win32/packaging should do it for you.
+
+5. LyX
+
+5.1 Get the latest CVS version
+
+    Using the cvs executable that is packaged with MinSYS,
+    from the MinSYS command prompt:
+
+    $ cd ~
+    $ mkdir lyx && cd lyx
+    $ cvs -d:pserver:anoncvs@anoncvs.us.lyx.org:/cvs/lyx login
+      (The password is "lyx" (no inverted commas))
+    $ cvs -d:pserver:anoncvs@anoncvs.us.lyx.org:/cvs/lyx \
+          checkout -r BRANCH_1_3_X -d 13x lyx-devel
+
+    Alternatively, use the TortoiseCVS graphical interface.
+
+    There's no need to build LyX now. The script in
+    development/Win32/packaging should do it for you.
+
+Now go read the README in development/Win32/packaging.
+=============================================================================

@@ -5,27 +5,32 @@ README for Win32
 LyX has been ported to Win32 using the Cygwin environement.
 See README.Cygwin for details.
 
-In addition, Ruurd Reitsma has created a native port of LyX on Win32
-using the binary Qt/Win32 2.3.0 library. It is not clear whether we
-are legally allowed to distribute this library. Certainly, using it
-goes against the spirit of Open Source software and we have chosen,
-therefore, not to provide formal support for Ruurd's port.
+Ever since Ruurd Reitsma made his port of LyX 1.3.3 to Windows
+available to the general public in 2003, users of LyX/Win have had to
+fight to overcome bugs that simply weren't present on other
+platforms. Ruurd did a superb job in writing the original port, but
+didn't have the resources to squash all the irritating little bugs
+discovered by many people using LyX "for real". 
 
-Having said that, you'll find the executable, together with lots of
-useful tips, on Ruurd's site: http://www.home.zonnet.nl/rareitsma/lyx/
-The Win32 pages on the LyX wiki will also be useful:
-http://wiki.lyx.org/pmwiki.php/LyX/LyX
-Finally, you'll find lots of friendly help on the lyx users'
-mailing list: lyx-users@lists.lyx.org
+The official LyX line on these LyX/Win ports has always been that
+it's nice to know they exist but we won't support them
+officially. There were two reasons for this: we didn't have the
+necessary knowledge or resources and, until recently, only
+closed-source versions of the Qt GUI library existed. The increasing
+maturity of the Qt/Win Free project means that this latter point is
+no longer true, so we felt that we should make the effort and make
+LyX/Win an official part of LyX.
 
-Trolltech has stated that they do not intend to release
-Qt/Win under the GPL. However, it is likely that a native port of LyX
-to Windows will be supported formally in the future, for two reasons:
+As a result, LyX 1.3.6 cannot really be classified as a minor bug fix
+release, especially for Windows users. Large chunks of the code base
+have been touched in an attempt to resolve those problems that
+Windows users have found with Ruurd's original ports. We feel
+confident that LyX 1.3.6 will be the best ever version of LyX on
+Windows. We are not confident, however, that we haven't introduced
+any new bugs.
 
-* A frontend for LyX using the Gtk libraries is under active 
-development. The Gtk libraries for Win32 are indeed released under 
-the GPL.
-
-* Some success has been reported compiling LyX on Win32 using the 
-GPL-ed port of qt/x11 to Win32 by the kde-cygwin project. See 
-http://kde-cygwin.sourceforge.net/qt3-win32/index.php
+Detailed installation instructions can be found in INSTALL.Win32 for
+those who wish to compile LyX for themselves. For the rest of us,
+LyX/Win comes with its own installer, so installation should be pretty
+straightforward. As always, more detailed help can be found on the
+wiki at http://wiki.lyx.org/Windows.
