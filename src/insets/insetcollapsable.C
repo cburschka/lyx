@@ -272,8 +272,8 @@ InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 
 void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr << "InsetCollapsable::doDispatch (begin): cmd: " << cmd
-		<< " cur: " << cur << " bvcur: " << cur.bv().cursor() << endl;
+	//lyxerr << "InsetCollapsable::doDispatch (begin): cmd: " << cmd
+	//	<< " cur: " << cur << " bvcur: " << cur.bv().cursor() << endl;
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
@@ -305,7 +305,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 		switch (status_) {
 
 		case Collapsed:
-			lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
+			//lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
 			setStatus(cur, Open);
 			edit(cur, true);
 			cur.bv().cursor() = cur;
@@ -313,18 +313,18 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 		case Open: {
 			if (hitButton(cmd)) {
-				lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
+				//lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 				setStatus(cur, Collapsed);
 				cur.bv().cursor() = cur;
 			} else {
-				lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
+				//lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
 				InsetText::doDispatch(cur, cmd);
 			}
 			break;
 		}
 
 		case Inlined:
-			lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
+			//lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
 			InsetText::doDispatch(cur, cmd);
 			break;
 		}
@@ -399,14 +399,3 @@ void InsetCollapsable::setLabelFont(LyXFont & font)
 	labelfont_ = font;
 }
 
-
-void InsetCollapsable::scroll(BufferView & bv, double sx) const
-{
-	UpdatableInset::scroll(bv, sx);
-}
-
-
-void InsetCollapsable::scroll(BufferView & bv, int offset) const
-{
-	UpdatableInset::scroll(bv, offset);
-}

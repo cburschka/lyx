@@ -433,7 +433,7 @@ void InsetTabular::edit(LCursor & cur, bool left)
 
 void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
+	//lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "  cur:\n" << cur << endl;
 	CursorSlice sl = cur.top();
 	LCursor & bvcur = cur.bv().cursor();
@@ -441,7 +441,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_MOUSE_PRESS:
-		lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
+		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
 
 		if (cmd.button() == mouse_button::button1) {
 			cur.selection() = false;
@@ -465,7 +465,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_MOTION:
-		lyxerr << "# InsetTabular::MouseMotion\n" << bvcur << endl;
+		//lyxerr << "# InsetTabular::MouseMotion\n" << bvcur << endl;
 		if (cmd.button() == mouse_button::button1) {
 			// only accept motions to places not deeper nested than the real anchor
 			if (bvcur.anchor_.hasPart(cur)) {
@@ -478,7 +478,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
+		//lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
 		if (cmd.button() == mouse_button::button3)
 			InsetTabularMailer(*this).showDialog(&cur.bv());
 		break;
@@ -493,13 +493,14 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selection() = false;
 		break;
 
-	case LFUN_SCROLL_INSET:
-		if (cmd.argument.empty())
-			break;
-		if (cmd.argument.find('.') != cmd.argument.npos)
-			scroll(cur.bv(), static_cast<float>(convert<double>(cmd.argument)));
-		else
-			scroll(cur.bv(), convert<int>(cmd.argument));
+	case LFUN_SCROLL_INSET: 
+		if (!cmd.argument.empty()) {
+			int const ww = cur.bv().workWidth();
+			if (cmd.argument.find('.') != cmd.argument.npos)
+				setScroll(ww, static_cast<float>(convert<double>(cmd.argument)));
+			else
+				setScroll(ww, convert<int>(cmd.argument));
+		}
 		break;
 
 	case LFUN_RIGHTSEL:
@@ -1138,22 +1139,20 @@ int InsetTabular::dist(idx_type const cell, int x, int y) const
 			+ tabular.getAdditionalHeight(row);
 	int const yend = ybeg + rowheight;
 
-	if (x < xbeg) {
+	if (x < xbeg)
 		xx = xbeg - x;
-	} else if (x > xend) {
+	else if (x > xend)
 		xx = x - xend;
-	}
 
-	if (y < ybeg)  {
+	if (y < ybeg) 
 		yy = ybeg - y;
-	} else if (y > yend)  {
+	else if (y > yend) 
 		yy = y - yend;
-	}
 
-	lyxerr << " xbeg=" << xbeg << "  xend=" << xend
-	       << " ybeg=" << ybeg << " yend=" << yend
-	       << " xx=" << xx << " yy=" << yy
-	       << " dist=" << xx + yy << endl;
+	//lyxerr << " xbeg=" << xbeg << "  xend=" << xend
+	//       << " ybeg=" << ybeg << " yend=" << yend
+	//       << " xx=" << xx << " yy=" << yy
+	//       << " dist=" << xx + yy << endl;
 	return xx + yy;
 }
 
@@ -1181,7 +1180,7 @@ void InsetTabular::setCursorFromCoordinates(LCursor & cur, int x, int y) const
 
 InsetTabular::idx_type InsetTabular::getNearestCell(int x, int y) const
 {
-	lyxerr << "# InsetTabular::getNearestCell()  x=" << x << " y=" << y << endl;
+	//lyxerr << "# InsetTabular::getNearestCell()  x=" << x << " y=" << y << endl;
 	idx_type idx_min = 0;
 	int dist_min = std::numeric_limits<int>::max();
 	for (idx_type i = 0; i < nargs(); ++i) {
@@ -1214,6 +1213,7 @@ int InsetTabular::getCellXPos(idx_type const cell) const
 void InsetTabular::resetPos(LCursor & cur) const
 {
 	BufferView & bv = cur.bv();
+	int const maxwidth = bv.workWidth();
 //	col_type const actcol = tabular.column_of_cell(cur.idx());
 //	int const offset = ADD_TO_TABULAR_WIDTH + 2;
 //	int const new_x = getCellXPos(cur.idx()) + offset;
@@ -1222,32 +1222,32 @@ void InsetTabular::resetPos(LCursor & cur) const
 //	cursorx_ = new_x;
 //    cursor.x(getCellXPos(cur.idx()) + offset);
 //	if (actcol < tabular.columns() - 1 && scroll(false) &&
-//		tabular.getWidthOfTabular() < bv.workWidth()-20)
+//		tabular.getWidthOfTabular() < maxwidth - 20)
 //	{
-//		scroll(bv, 0.0F);
+//		setScroll(maxwidth, 0.0F);
 //	} else if (cursorx_ - offset > 20 &&
-//		   cursorx_ - offset + col_width > bv.workWidth() - 20) {
-//		scroll(bv, - col_width - 20);
+//		   cursorx_ - offset + col_width > maxwidth - 20) {
+//		setScroll(maxwidth, - col_width - 20);
 //	} else if (cursorx_ - offset < 20) {
-//		scroll(bv, 20 - cursorx_ + offset);
+//		setScroll(maxwidth, 20 - cursorx_ + offset);
 //	} else if (scroll() && xo() > 20 &&
-//		   xo() + tabular.getWidthOfTabular() > bv.workWidth() - 20) {
-//		scroll(bv, old_x - cursorx_);
+//		   xo() + tabular.getWidthOfTabular() > maxwidth - 20) {
+//		setScroll(maxwidth, old_x - cursorx_);
 //	}
 
 	if (&cur.inset() != this) {
-		scroll(bv, 0.0F);
+		setScroll(maxwidth, 0.0f);
 	} else {
 		int const X1 = 0;
-		int const X2 = bv.workWidth();
+		int const X2 = maxwidth;
 		int const offset = ADD_TO_TABULAR_WIDTH + 2;
 		int const x1 = xo() + scroll() + getCellXPos(cur.idx()) + offset;
 		int const x2 = x1 + tabular.getWidthOfColumn(cur.idx());
 
 		if (x1 < X1)
-			scroll(bv, X1 + 20 - x1);
+			setScroll(maxwidth, X1 + 20 - x1);
 		else if (x2 > X2)
-			scroll(bv, X2 - 20 - x2);
+			setScroll(maxwidth, X2 - 20 - x2);
 	}
 
 	cur.needsUpdate();
@@ -1258,9 +1258,7 @@ void InsetTabular::resetPos(LCursor & cur) const
 
 void InsetTabular::moveNextCell(LCursor & cur)
 {
-	lyxerr << "InsetTabular::moveNextCell 1 cur: " << cur.top() << endl;
 	if (isRightToLeft(cur)) {
-		lyxerr << "InsetTabular::moveNextCell A cur: " << endl;
 		if (tabular.isFirstCellInRow(cur.idx())) {
 			row_type const row = tabular.row_of_cell(cur.idx());
 			if (row == tabular.rows() - 1)
@@ -1272,14 +1270,12 @@ void InsetTabular::moveNextCell(LCursor & cur)
 			--cur.idx();
 		}
 	} else {
-		lyxerr << "InsetTabular::moveNextCell B cur: " << endl;
 		if (tabular.isLastCell(cur.idx()))
 			return;
 		++cur.idx();
 	}
 	cur.pit() = 0;
 	cur.pos() = 0;
-	lyxerr << "InsetTabular::moveNextCell 2 cur: " << cur.top() << endl;
 	resetPos(cur);
 }
 

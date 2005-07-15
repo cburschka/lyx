@@ -24,25 +24,28 @@
 class UpdatableInset : public InsetOld {
 public:
 	///
+	UpdatableInset() : scx(0) {}
+	///
 	virtual EDITABLE editable() const;
 	/// identification as text inset in a cursor slice
 	UpdatableInset * asUpdatableInset() { return this; }
 
 	/// return the cursor dim
 	virtual void getCursorDim(int &, int &) const;
-	// We need this method to not clobber the real method in Inset
-	int scroll(bool recursive = true) const
-		{ return InsetOld::scroll(recursive); }
 	///
 	virtual bool showInsetDialog(BufferView *) const { return false; }
 
 protected:
 	///  An updatable inset could handle lyx editing commands
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
-	/// scrolls to absolute position in bufferview-workwidth * sx units
-	void scroll(BufferView &, double sx) const;
+	/// scrolls to absolute position in maxwidth * sx units
+	void setScroll(int maxwidth, double sx) const;
 	/// scrolls offset pixels
-	void scroll(BufferView &, int offset) const;
+	void setScroll(int maxwidth, int offset) const;
+	/// returns the actual scroll value
+	virtual int scroll(bool recursive = true) const;
+	///
+	mutable int scx;
 };
 
 #endif

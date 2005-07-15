@@ -28,14 +28,13 @@ using std::string;
 
 
 InsetOld::InsetOld()
-	: scx(0),
-	  //background_color_(LColor::inherit)
+	: //background_color_(LColor::inherit)
 	  background_color_(LColor::background)
 {}
 
 
 InsetOld::InsetOld(InsetOld const & in)
-	: InsetBase(in), scx(0), name_(in.name_),
+	: InsetBase(in), name_(in.name_),
 	  background_color_(in.background_color_)
 {}
 
@@ -67,12 +66,6 @@ int InsetOld::descent() const
 int InsetOld::width() const
 {
 	return dim_.wid;
-}
-
-
-int InsetOld::scroll(bool) const
-{
-	return scx;
 }
 
 

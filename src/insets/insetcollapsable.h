@@ -67,10 +67,6 @@ public:
 	///
 	int scroll(bool recursive = true) const;
 	///
-	void scroll(BufferView & bv, double sx) const;
-	///
-	void scroll(BufferView & bv, int offset) const;
-	///
 	bool isOpen() const { return status_ == Open || status_ == Inlined; }
 	///
 	bool inlined() const { return status_ == Inlined; }

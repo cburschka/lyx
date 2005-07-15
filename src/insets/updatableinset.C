@@ -35,34 +35,41 @@ InsetBase::EDITABLE UpdatableInset::editable() const
 }
 
 
-void UpdatableInset::scroll(BufferView & bv, double s) const
+int UpdatableInset::scroll(bool) const
 {
+	return scx;
+}
+
+
+void UpdatableInset::setScroll(int maxwidth, double s) const
+{
+	lyxerr << "UpdatableInset::setScroll: (int) " << maxwidth << std::endl;
 	if (!s) {
 		scx = 0;
 		return;
 	}
 
-	int const workW = bv.workWidth();
 	int xo_ = theCoords.getInsets().x(this);
 	int const tmp_xo_ = xo_ - scx;
 
-	if (tmp_xo_ > 0 && tmp_xo_ + width() < workW)
+	if (tmp_xo_ > 0 && tmp_xo_ + width() < maxwidth)
 		return;
 	if (s > 0.0 && xo_ > 0)
 		return;
 
-	scx = int(s * workW / 2);
+	scx = int(s * maxwidth / 2);
 
 #ifdef WITH_WARNINGS
 #warning metrics?
 #endif
-	if (tmp_xo_ + scx + width() < workW / 2)
-		scx = workW / 2 - tmp_xo_ - width();
+	if (tmp_xo_ + scx + width() < maxwidth / 2)
+		scx = maxwidth / 2 - tmp_xo_ - width();
 }
 
 
-void UpdatableInset::scroll(BufferView & bv, int offset) const
+void UpdatableInset::setScroll(int maxwidth, int offset) const
 {
+	lyxerr << "UpdatableInset::setScroll: (double) " << maxwidth << std::endl;
 	int const xo_ = theCoords.getInsets().x(this);
 	if (offset > 0) {
 		if (!scx && xo_ >= 20)
@@ -76,13 +83,13 @@ void UpdatableInset::scroll(BufferView & bv, int offset) const
 #ifdef WITH_WARNINGS
 #warning metrics?
 #endif
-		if (!scx && xo_ + width() < bv.workWidth() - 20)
+		if (!scx && xo_ + width() < maxwidth - 20)
 			return;
-		if (xo_ - scx + offset + width() < bv.workWidth() - 20) {
-			scx += bv.workWidth() - width() - xo_ - 20;
-		} else {
+
+		if (xo_ - scx + offset + width() < maxwidth - 20)
+			scx += maxwidth - width() - xo_ - 20;
+		else
 			scx += offset;
-		}
 	}
 }
 
@@ -90,15 +97,13 @@ void UpdatableInset::scroll(BufferView & bv, int offset) const
 void UpdatableInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
-	//case LFUN_MOUSE_RELEASE:
-	//	return DispatchResult(editable() == IS_EDITABLE);
-
 	case LFUN_SCROLL_INSET:
 		if (cmd.argument.empty()) {
+			const int maxwidth = cur.bv().workWidth();
 			if (cmd.argument.find('.') != cmd.argument.npos)
-				scroll(cur.bv(), static_cast<float>(convert<double>(cmd.argument)));
+				setScroll(maxwidth, static_cast<float>(convert<double>(cmd.argument)));
 			else
-				scroll(cur.bv(), convert<int>(cmd.argument));
+				setScroll(maxwidth, convert<int>(cmd.argument));
 		} else
 			cur.noUpdate();
 		break;
@@ -113,3 +118,4 @@ void UpdatableInset::getCursorDim(int &, int &) const
 {
 	BOOST_ASSERT(false);
 }
+

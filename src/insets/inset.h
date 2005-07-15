@@ -50,14 +50,10 @@ public:
 	LColor_color backgroundColor() const;
 	/// set x/y drawing position cache
 	void setPosCache(PainterInfo const &, int, int) const;
-	/// returns the actual scroll-value
-	virtual int scroll(bool recursive = true) const;
 
 protected:
 	///
 	InsetOld(InsetOld const & in);
-	///
-	mutable int scx;
 	///
 	mutable Dimension dim_;
 
