@@ -183,6 +183,16 @@ MathHullInset & MathHullInset::operator=(MathHullInset const & other)
 }
 
 
+InsetBase * MathHullInset::editXY(LCursor & cur, int x, int y)
+{
+	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
+		edit(cur, true);
+		return this;
+	}
+	return MathNestInset::editXY(cur, x, y); 
+}
+
+
 MathInset::mode_type MathHullInset::currentMode() const
 {
 	if (type_ == "none")

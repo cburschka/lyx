@@ -1158,11 +1158,11 @@ int InsetTabular::dist(idx_type const cell, int x, int y) const
 }
 
 
-InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y) const
+InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
 {
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
 	cur.selection() = false;
-	cur.push(const_cast<InsetTabular&>(*this));
+	cur.push(*this);
 	cur.idx() = getNearestCell(x, y);
 	resetPos(cur);
 	return cell(cur.idx())->text_.editXY(cur, x, y);

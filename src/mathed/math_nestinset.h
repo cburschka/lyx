@@ -41,7 +41,7 @@ public:
 	///
 	void edit(LCursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y) const;
+	InsetBase * editXY(LCursor & cur, int x, int y);
 
 	/// order of movement through the cells when pressing the left key
 	bool idxLeft(LCursor &) const;

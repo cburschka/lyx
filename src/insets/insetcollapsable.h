@@ -96,7 +96,7 @@ protected:
 	///
 	void edit(LCursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y) const;
+	InsetBase * editXY(LCursor & cur, int x, int y);
 	///
 	void setInlined() { status_ = Inlined; }
 

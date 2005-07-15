@@ -180,7 +180,7 @@ public:
 	///
 	void setCursorFromCoordinates(LCursor & cur, int x, int y);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y) const;
+	InsetBase * editXY(LCursor & cur, int x, int y);
 	/// Move cursor one line up.
 	/**
 	 * Returns true if an update is needed after the move.

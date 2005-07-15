@@ -987,19 +987,19 @@ void MathNestInset::edit(LCursor & cur, bool left)
 }
 
 
-InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y) const
+InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y)
 {
 	int idx_min = 0;
 	int dist_min = 1000000;
-	for (idx_type i = 0; i < nargs(); ++i) {
-		int d = cell(i).dist(x, y);
+	for (idx_type i = 0, n = nargs(); i != n; ++i) {
+		int const d = cell(i).dist(x, y);
 		if (d < dist_min) {
 			dist_min = d;
 			idx_min = i;
 		}
 	}
-	MathArray const & ar = cell(idx_min);
-	cur.push(const_cast<MathNestInset&>(*this));
+	MathArray & ar = cell(idx_min);
+	cur.push(*this);
 	cur.idx() = idx_min;
 	cur.pos() = ar.x2pos(x - ar.xo());
 	lyxerr << "found cell : " << idx_min << " pos: " << cur.pos() << endl;
@@ -1009,7 +1009,7 @@ InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y) const
 			if (ar[i]->covers(x, y))
 				return ar[i].nucleus()->editXY(cur, x, y);
 	}
-	return const_cast<MathNestInset*>(this);
+	return this;
 }
 
 

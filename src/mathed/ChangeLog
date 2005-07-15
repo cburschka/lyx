@@ -1,18 +1,22 @@
 
-2005-07-16  André Pönitz  <poenitz@lyx.org>
+2005-07-15  Andreas Vox  <vox@arcor.de>
+
+	* math_hullinset.C (editXY): partial fix for #622
+
+2005-07-14  André Pönitz  <poenitz@lyx.org>
 
 	* math_hullinset.C (BREAKLINE): choose between eqnarray and
   align according to user preference
 
-2005-07-16  André Pönitz  <poenitz@lyx.org>
+2005-07-14  André Pönitz  <poenitz@lyx.org>
 
 	* math_charinset.C (mathmlize): escape <, >, and & on export
 
-2005-07-16  André Pönitz  <poenitz@lyx.org>
+2005-07-14  André Pönitz  <poenitz@lyx.org>
 
 	* math_gridinset.C (doDispatch): cur.undispatched on LFUN_ESCAPE
 
-2005-07-16  André Pönitz  <poenitz@lyx.org>
+2005-07-14  André Pönitz  <poenitz@lyx.org>
 
 	* math_gridinset.C (doDispatch): cur.undispatched on LFUN_NEXT/PRIOR
 

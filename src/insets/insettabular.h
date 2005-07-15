@@ -130,7 +130,7 @@ public:
 	/// lock cell with given index
 	void edit(LCursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y) const;
+	InsetBase * editXY(LCursor & cur, int x, int y);
 	/// can we go further down on mouse click?
 	bool descendable() const { return true; }
 

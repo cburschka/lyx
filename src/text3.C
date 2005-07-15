@@ -288,7 +288,6 @@ bool LyXText::isRTL(Paragraph const & par) const
 void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
-	lyxerr << "*** LyXText::dispatch: cmd: " << cmd << endl;
 
 	BOOST_ASSERT(cur.text() == this);
 	BufferView * bv = &cur.bv();
@@ -1062,7 +1061,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				// don't set anchor_
 				bvcur.setCursor(cur);
 				bvcur.selection() = true;
-				lyxerr << "MOTION: " << bv->cursor() << endl;
+				//lyxerr << "MOTION: " << bv->cursor() << endl;
 			}
 
 		} else

@@ -912,7 +912,7 @@ Row const & LyXText::getRowNearY(int y, pit_type pit) const
 
 // x,y are absolute screen coordinates
 // sets cursor recursively descending into nested editable insets
-InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
+InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 {
 	pit_type pit = getPitNearY(y);
 	BOOST_ASSERT(pit != -1);
@@ -932,7 +932,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 	if (!inset) {
 		// Either we deconst editXY or better we move current_font
 		// and real_current_font to LCursor
-		const_cast<LyXText *>(this)->setCurrentFont(cur);
+		setCurrentFont(cur);
 		return 0;
 	}
 
@@ -946,7 +946,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 		--cur.pos();
 	inset = inset->editXY(cur, x, y);
 	if (cur.top().text() == this)
-		const_cast<LyXText *>(this)->setCurrentFont(cur);
+		setCurrentFont(cur);
 	return inset;
 }
 

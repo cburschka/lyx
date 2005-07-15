@@ -260,13 +260,12 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 }
 
 
-InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y) const
+InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 {
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
-	if (status_ == Collapsed) {
-		return const_cast<InsetCollapsable*>(this);
-	}
-	cur.push(const_cast<InsetCollapsable&>(*this));
+	if (status_ == Collapsed)
+		return this;
+	cur.push(*this);
 	return InsetText::editXY(cur, x, y);
 }
 

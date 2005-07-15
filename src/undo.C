@@ -65,8 +65,8 @@ void doRecordUndo(Undo::undo_kind kind,
 	undo.cursor = cur;
 	undo.bparams = bparams ;
 	undo.isFullBuffer = isFullBuffer;
-	lyxerr << "recordUndo: cur: " << cur << endl;
-	lyxerr << "recordUndo: pos: " << cur.pos() << endl;
+	//lyxerr << "recordUndo: cur: " << cur << endl;
+	//lyxerr << "recordUndo: pos: " << cur.pos() << endl;
 	//lyxerr << "recordUndo: cell: " << cell << endl;
 	undo.from = first_pit;
 	undo.end = cell.lastpit() - last_pit;

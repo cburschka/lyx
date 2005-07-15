@@ -196,6 +196,8 @@ public:
 	///
 	void edit(LCursor & cur, bool left);
 	///
+	InsetBase * editXY(LCursor & cur, int x, int y);
+	///
 	bool display() const;
 	///
 	Code lyxCode() const;
