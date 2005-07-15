@@ -589,7 +589,8 @@ string const get_default_user_support_dir(string const & home_dir)
 #if defined (USE_WINDOWS_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
 
-	return AddPath(win32_folder_path(CSIDL_APPDATA), PACKAGE);
+	string const user_dir = (string(PACKAGE) == "lyx") ? "LyX" : PACKAGE;
+	return AddPath(win32_folder_path(CSIDL_APPDATA), user_dir);
 
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
@@ -608,7 +609,8 @@ string const get_default_user_support_dir(string const & home_dir)
 	if (status_code != 0)
 		return string();
 
-	return AddPath(reinterpret_cast<char const *>(store), PACKAGE);
+	string const user_dir = (string(PACKAGE) == "lyx") ? "LyX" : PACKAGE;
+	return AddPath(reinterpret_cast<char const *>(store), user_dir);
 
 #else // USE_POSIX_PACKAGING
 	return AddPath(home_dir, string(".") + PACKAGE);

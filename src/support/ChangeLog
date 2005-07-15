@@ -1,3 +1,8 @@
+2005-07-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* package.C (get_default_user_support_dir): for windows and osx
+	packaging, use "LyX" instead of "lyx" as subdirectory name.
+
 2005-07-14  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.[Ch] (mangled_filename): backport the 1.4.x name mangling
