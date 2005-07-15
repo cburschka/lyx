@@ -1,3 +1,7 @@
+2005-07-15  Stephan Witt <stephan.witt@beusen.de>
+
+	* math_hullinset.C (getStatus): don't allow insert of label for
+	inlined eq
 
 2005-07-15  André Pönitz  <poenitz@lyx.org>
 
@@ -10,7 +14,7 @@
 2005-07-14  André Pönitz  <poenitz@lyx.org>
 
 	* math_hullinset.C (BREAKLINE): choose between eqnarray and
-  align according to user preference
+	align according to user preference
 
 2005-07-14  André Pönitz  <poenitz@lyx.org>
 

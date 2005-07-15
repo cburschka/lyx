@@ -1105,12 +1105,14 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_BREAKLINE:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:
-	case LFUN_INSERT_LABEL:
 	case LFUN_MATH_EXTERN:
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
 		// we handle these
 		flag.enabled(true);
+		return true;
+	case LFUN_INSERT_LABEL:
+		flag.enabled(type_ != "simple");
 		return true;
 	case LFUN_TABULAR_FEATURE: {
 		istringstream is(cmd.argument);
