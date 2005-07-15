@@ -202,7 +202,7 @@ AC_ARG_ENABLE(concept-checks,
 
 AC_ARG_ENABLE(profiling,
   AC_HELP_STRING([--enable-profiling],[enable profiling]),,
-  enable_profiling=yes;)
+  enable_profiling=no;)
 
 ### set up optimization
 AC_ARG_ENABLE(optimization,
