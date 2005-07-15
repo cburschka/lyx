@@ -32,7 +32,6 @@
 #include "paragraph_funcs.h"
 #include "pariterator.h"
 
-#include "insets/updatableinset.h"
 #include "insets/insettabular.h"
 #include "insets/insettext.h"
 

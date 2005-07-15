@@ -19,7 +19,6 @@
 #include "dimension.h"
 
 class LColor_color;
-class UpdatableInset;
 
 
 /// Insets

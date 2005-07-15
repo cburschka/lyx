@@ -367,17 +367,6 @@ bool InsetCollapsable::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetCollapsable::scroll(bool recursive) const
-{
-	int sx = UpdatableInset::scroll(false);
-
-	if (recursive)
-		sx += InsetText::scroll(false);
-
-	return sx;
-}
-
-
 void InsetCollapsable::setLabel(string const & l)
 {
 	label = l;

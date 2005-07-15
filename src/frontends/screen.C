@@ -35,8 +35,6 @@
 #include "rowpainter.h"
 #include "version.h"
 
-#include "insets/updatableinset.h"
-
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsLoader.h"
 

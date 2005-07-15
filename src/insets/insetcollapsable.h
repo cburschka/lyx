@@ -65,8 +65,6 @@ public:
 	///
 	void setLabelFont(LyXFont & f);
 	///
-	int scroll(bool recursive = true) const;
-	///
 	bool isOpen() const { return status_ == Open || status_ == Inlined; }
 	///
 	bool inlined() const { return status_ == Inlined; }
@@ -80,13 +78,10 @@ public:
 	void setStatus(LCursor & cur, CollapseStatus st);
 
 protected:
-
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	Dimension dimensionCollapsed() const;
-	///
-	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
 	///
 	Box const & buttonDim() const;
 	///

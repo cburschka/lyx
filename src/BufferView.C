@@ -45,7 +45,6 @@
 #include "frontends/WorkArea.h"
 
 #include "insets/insetcommand.h" // ChangeRefs
-#include "insets/updatableinset.h"
 #include "insets/insettext.h"
 
 using lyx::support::bformat;

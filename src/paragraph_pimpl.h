@@ -78,7 +78,7 @@ public:
 	/// erase the given range
 	int erase(lyx::pos_type start, lyx::pos_type end);
 	///
-	UpdatableInset * inset_owner;
+	InsetBase * inset_owner;
 
 	/** A font entry covers a range of positions. Notice that the
 	    entries in the list are inserted in random order.

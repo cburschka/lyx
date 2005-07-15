@@ -110,12 +110,12 @@ libinsets_la_SOURCES = \
 	insetvspace.C \
 	insetvspace.h \
 	insetwrap.h \
-	insetwrap.C \
-	updatableinset.C \
-	updatableinset.h
+	insetwrap.C 
+
 #	insetlist.C \
 #	insetlist.h \
 #	insetsection.h \
 #	insetsection.C \
 #	insettheorem.C \
 #	insettheorem.h
+

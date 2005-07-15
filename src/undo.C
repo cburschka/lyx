@@ -24,7 +24,7 @@
 #include "paragraph.h"
 
 #include "mathed/math_support.h"
-#include "insets/updatableinset.h"
+#include "insets/inset.h"
 
 #include <algorithm>
 
@@ -182,8 +182,7 @@ bool textUndoOrRedo(BufferView & bv,
 		ParagraphList::const_iterator pit = undo.pars.begin();
 		ParagraphList::const_iterator end = undo.pars.end();
 		for (; pit != end; ++pit)
-			const_cast<Paragraph &>(*pit).setInsetOwner(
-				dynamic_cast<UpdatableInset *>(&dit.inset()));
+			const_cast<Paragraph &>(*pit).setInsetOwner(&dit.inset());
 		plist.insert(first, undo.pars.begin(), undo.pars.end());
 	}
 

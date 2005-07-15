@@ -14,7 +14,6 @@
 #include <config.h>
 
 #include "inset.h"
-#include "updatableinset.h"
 
 #include "BufferView.h"
 #include "debug.h"

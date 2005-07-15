@@ -47,7 +47,7 @@ class OutputParams;
 class PainterInfo;
 class ParagraphParameters;
 class TexRow;
-class UpdatableInset;
+
 
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph  {
@@ -76,7 +76,6 @@ public:
 	Paragraph & operator=(Paragraph const &);
 	///
 	~Paragraph();
-
 	///
 	int id() const;
 
@@ -164,9 +163,9 @@ public:
 	void makeSameLayout(Paragraph const & par);
 
 	///
-	void setInsetOwner(UpdatableInset * inset);
+	void setInsetOwner(InsetBase * inset);
 	///
-	UpdatableInset * inInset() const;
+	InsetBase * inInset() const;
 	///
 	InsetBase::Code ownerCode() const;
 	///

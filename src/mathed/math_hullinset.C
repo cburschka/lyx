@@ -1250,14 +1250,6 @@ string const MathHullInset::editMessage() const
 }
 
 
-void MathHullInset::getCursorDim(int & asc, int & desc) const
-{
-	asc = 10;
-	desc = 2;
-	//math_font_max_dim(font_, asc, des);
-}
-
-
 void MathHullInset::revealCodes(LCursor & cur) const
 {
 	if (!cur.inMathed())

@@ -74,8 +74,6 @@ public:
 
 	/// identification as math inset
 	virtual MathInset * asMathInset() { return 0; }
-	/// identification as non-math inset
-	virtual UpdatableInset * asUpdatableInset() { return 0; }
 	/// true for 'math' math inset, but not for e.g. mbox
 	virtual bool inMathed() const { return false; }
 
@@ -116,6 +114,8 @@ public:
 	virtual void drawSelection(PainterInfo &, int, int) const {}
 	///
 	virtual bool editing(BufferView * bv) const;
+	///
+	virtual bool showInsetDialog(BufferView *) const { return false; }
 	/// draw four angular markers
 	void drawMarkers(PainterInfo & pi, int x, int y) const;
 	/// draw two angular markers

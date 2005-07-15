@@ -45,7 +45,7 @@ class Paragraph;
 class CursorSlice;
 
 
-class InsetTabular : public UpdatableInset {
+class InsetTabular : public InsetOld {
 public:
 	///
 	InsetTabular(Buffer const &, row_type rows = 1,
@@ -64,6 +64,8 @@ public:
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
 	std::string const editMessage() const;
+	///
+	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	bool insetAllowed(InsetBase::Code) const { return true; }
 	///
@@ -140,10 +142,10 @@ public:
 	mutable LyXTabular tabular;
 
 protected:
+	///
 	InsetTabular(InsetTabular const &);
-
+	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
-
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
@@ -191,9 +193,9 @@ private:
 	///
 	Buffer const * buffer_;
 	///
-	mutable int cursorx_;
-	///
 	mutable idx_type first_visible_cell;
+	///
+	mutable int scx_;
 };
 
 

@@ -521,7 +521,7 @@ void Paragraph::setFont(pos_type pos, LyXFont const & font)
 		if (it->pos() >= pos)
 			break;
 	}
-	unsigned int i = distance(beg, it);
+	size_t const i = distance(beg, it);
 	bool notfound = (it == endit);
 
 	if (!notfound && pimpl_->fontlist[i].font() == font)
@@ -1644,7 +1644,7 @@ string const Paragraph::asString(Buffer const & buffer,
 }
 
 
-void Paragraph::setInsetOwner(UpdatableInset * inset)
+void Paragraph::setInsetOwner(InsetBase * inset)
 {
 	pimpl_->inset_owner = inset;
 }
@@ -1742,7 +1742,7 @@ void Paragraph::layout(LyXLayout_ptr const & new_layout)
 }
 
 
-UpdatableInset * Paragraph::inInset() const
+InsetBase * Paragraph::inInset() const
 {
 	return pimpl_->inset_owner;
 }

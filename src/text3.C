@@ -727,8 +727,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_SETTINGS:
-		if (cur.inset().asUpdatableInset())
-			cur.inset().asUpdatableInset()->showInsetDialog(bv);
+		cur.inset().showInsetDialog(bv);
 		break;
 
 	case LFUN_NEXT_INSET_TOGGLE: {

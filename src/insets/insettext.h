@@ -12,7 +12,7 @@
 #ifndef INSETTEXT_H
 #define INSETTEXT_H
 
-#include "updatableinset.h"
+#include "inset.h"
 #include "RowList_fwd.h"
 #include "lyxfont.h"
 #include "lyxtext.h"
@@ -24,9 +24,9 @@
 class Buffer;
 class BufferParams;
 class BufferView;
+class CursorSlice;
 class Dimension;
 class LColor_color;
-class CursorSlice;
 class Painter;
 class ParagraphList;
 class Row;
@@ -36,7 +36,7 @@ class Row;
  A text inset is like a TeX box to write full text
  (including styles and other insets) in a given space.
  */
-class InsetText : public UpdatableInset {
+class InsetText : public InsetOld {
 public:
 	///
 	explicit InsetText(BufferParams const &);
@@ -56,6 +56,8 @@ public:
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
 	std::string const editMessage() const;
+	///
+	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	bool isTextInset() const { return true; }
 	///

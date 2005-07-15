@@ -21,9 +21,6 @@
 #include "mathed/math_inset.h"
 #include "mathed/math_data.h"
 
-#include "insets/updatableinset.h"
-
-
 #include <boost/assert.hpp>
 
 using std::endl;
@@ -87,13 +84,6 @@ MathInset * CursorSlice::asMathInset() const
 {
 	BOOST_ASSERT(inset_);
 	return inset_->asMathInset();
-}
-
-
-UpdatableInset * CursorSlice::asUpdatableInset() const
-{
-	BOOST_ASSERT(inset_);
-	return inset_->asUpdatableInset();
 }
 
 

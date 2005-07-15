@@ -1,3 +1,11 @@
+2005-07-15  André Pönitz  <poenitz@gmx.net>
+
+	* Makefile.am:
+	* inset.[Ch]:
+	* insetcollapsable.[Ch]:
+	* insettabular.[Ch]:
+	* updatableinset.[Ch]: remove UpdatableInset
+
 2005-07-15  José Matos  <jamatos@lyx.org>
 
 	* insettext.C (plaintext): fix call to asciiParagraph.

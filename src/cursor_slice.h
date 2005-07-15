@@ -28,13 +28,12 @@ class MathInset;
 class MathArray;
 class LyXText;
 class Paragraph;
-class UpdatableInset;
 
 
 /// This encapsulates a single slice of a document iterator as used e.g.
 /// for cursors.
 
-// After IU, the distinction of MathInset and UpdatableInset as well as
+// After IU, the distinction of MathInset and InsetOld as well as
 // that of MathArray and LyXText should vanish. They are conceptually the
 // same (now...)
 
@@ -108,8 +107,6 @@ public:
 	LyXText * text();
 	/// returns text corresponding to this position
 	LyXText const * text() const;
-	/// returns the owning inset if it is an UpdatableInset, else 0
-	UpdatableInset * asUpdatableInset() const;
 	/// paragraph in this cell
 	Paragraph & paragraph();
 	/// paragraph in this cell

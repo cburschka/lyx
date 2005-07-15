@@ -86,7 +86,7 @@ InsetText::InsetText(BufferParams const & bp)
 
 
 InsetText::InsetText(InsetText const & in)
-	: UpdatableInset(in), text_(in.text_.bv_owner)
+	: InsetOld(in), text_(in.text_.bv_owner)
 {
 	text_.autoBreakRows_ = in.text_.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
@@ -194,7 +194,6 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	BufferView * bv = pi.base.bv;
 	bv->hideCursor();
 
-	x += scroll();
 	text_.draw(pi, x + border_, y);
 
 	if (drawFrame_)
@@ -299,15 +298,10 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 
 void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr[Debug::DEBUG]
-                << BOOST_CURRENT_FUNCTION
-                << " [ cmd.action = " << cmd.action << ']'
-                << endl;
-        
+	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
+    << " [ cmd.action = " << cmd.action << ']' << endl;
 	setViewCache(&cur.bv());
-
 	text_.dispatch(cur, cmd);
-
 }
 
 

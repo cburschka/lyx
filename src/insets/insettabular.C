@@ -164,13 +164,13 @@ bool InsetTabular::hasPasteBuffer() const
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
                            col_type columns)
 	: tabular(buf.params(), max(rows, row_type(1)),
-	  max(columns, col_type(1))), buffer_(&buf), cursorx_(0)
+	  max(columns, col_type(1))), buffer_(&buf), scx_(0)
 {}
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
-	: UpdatableInset(tab), tabular(tab.tabular),
-		buffer_(tab.buffer_), cursorx_(0)
+	: InsetOld(tab), tabular(tab.tabular),
+		buffer_(tab.buffer_), scx_(0)
 {}
 
 
@@ -279,7 +279,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 
 	//resetPos(bv->cursor());
 
-	x += scroll();
+	x += scx_;
 	x += ADD_TO_TABULAR_WIDTH;
 
 	idx_type idx = 0;
@@ -329,8 +329,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 	//resetPos(cur);
 
-	x += scroll();
-	x += ADD_TO_TABULAR_WIDTH;
+	x += scx_ + ADD_TO_TABULAR_WIDTH;
 
 	if (tablemode(cur)) {
 		row_type rs, re;
@@ -772,6 +771,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	default:
 		// we try to handle this event in the insets dispatch function.
 		cell(cur.idx())->dispatch(cur, cmd);
+		resetPos(cur);
 		break;
 	}
 
@@ -1111,7 +1111,7 @@ void InsetTabular::cursorPos
 	}
 	x += tabular.getBeginningOfTextInCell(idx);
 	x += ADD_TO_TABULAR_WIDTH;
-	x += scroll();
+	x += scx_;
 }
 
 
@@ -1204,7 +1204,7 @@ void InsetTabular::resetPos(LCursor & cur) const
 	int const maxwidth = bv.workWidth();
 
 	if (&cur.inset() != this) {
-		//scx = 0;
+		scx_ = 0;
 	} else {
 		int const X1 = 0;
 		int const X2 = maxwidth;
@@ -1213,11 +1213,11 @@ void InsetTabular::resetPos(LCursor & cur) const
 		int const x2 = x1 + tabular.getWidthOfColumn(cur.idx());
 
 		if (x1 < X1)
-			scx = X1 + 20 - x1;
+			scx_ = X1 + 20 - x1;
 		else if (x2 > X2)
-			scx = X2 - 20 - x2;
+			scx_ = X2 - 20 - x2;
 		else
-			scx = 0;
+			scx_ = 0;
 	}
 
 	cur.needsUpdate();

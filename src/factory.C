@@ -159,32 +159,28 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 			bv->getLyXText()->getStringToIndex(bv->cursor()) :
 			cmd.argument;
 		icp.setContents(contents);
-
 		return new InsetIndex(icp);
-
 	}
 
-	case LFUN_TABULAR_INSERT:
-		if (!cmd.argument.empty()) {
-			std::istringstream ss(cmd.argument);
-			int r = 0, c = 0;
-			ss >> r >> c;
-			if (r <= 0) r = 2;
-			if (c <= 0) c = 2;
-			return new InsetTabular(*bv->buffer(), r, c);
-		}
-		return 0;
+	case LFUN_TABULAR_INSERT: {
+		if (!cmd.argument.empty()) 
+			return 0;
+		std::istringstream ss(cmd.argument);
+		int r = 0, c = 0;
+		ss >> r >> c;
+		if (r <= 0)
+			r = 2;
+		if (c <= 0)
+			c = 2;
+		return new InsetTabular(*bv->buffer(), r, c);
+	}
 
 	case LFUN_INSET_CAPTION: {
-		UpdatableInset * up = bv->cursor().inset().asUpdatableInset();
-		if (!up) {
-			auto_ptr<InsetCaption> inset(new InsetCaption(params));
-			inset->setAutoBreakRows(true);
-			inset->setDrawFrame(true);
-			inset->setFrameColor(LColor::captionframe);
-			return inset.release();
-		}
-		return 0;
+		auto_ptr<InsetCaption> inset(new InsetCaption(params));
+		inset->setAutoBreakRows(true);
+		inset->setDrawFrame(true);
+		inset->setFrameColor(LColor::captionframe);
+		return inset.release();
 	}
 
 	case LFUN_INDEX_PRINT:

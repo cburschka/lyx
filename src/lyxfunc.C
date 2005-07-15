@@ -428,12 +428,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = false;
 		if (!cur)
 			break;
-		UpdatableInset * inset = cur.inset().asUpdatableInset();
-		lyxerr << "inset: " << inset << endl;
-		if (!inset)
-			break;
-
-		InsetBase::Code code = inset->lyxCode();
+		InsetBase::Code code = cur.inset().lyxCode();
 		switch (code) {
 			case InsetBase::TABULAR_CODE:
 				enable = cmd.argument == "tabular";
