@@ -277,7 +277,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	static NullPainter nop;
 	static PainterInfo nullpi(bv, nop);
 
-	resetPos(bv->cursor());
+	//resetPos(bv->cursor());
 
 	x += scroll();
 	x += ADD_TO_TABULAR_WIDTH;
@@ -327,7 +327,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 	if (!ptr_cmp(&cur.inset(), this))
 		return;
 
-	resetPos(cur);
+	//resetPos(cur);
 
 	x += scroll();
 	x += ADD_TO_TABULAR_WIDTH;
@@ -1156,27 +1156,24 @@ InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
 	cur.idx() = getNearestCell(x, y);
 	resetPos(cur);
 	return cell(cur.idx())->text_.editXY(cur, x, y);
-	//int xx = cursorx_ - xo() + tabular.getBeginningOfTextInCell(cur.idx());
 }
 
 
 void InsetTabular::setCursorFromCoordinates(LCursor & cur, int x, int y) const
 {
-	//lyxerr << "# InsetTabular::setCursorFromCoordinates()\n" << cur << endl;
 	cur.idx() = getNearestCell(x, y);
+	cell(cur.idx())->text_.setCursorFromCoordinates(cur, x, y);
 	resetPos(cur);
-	return cell(cur.idx())->text_.setCursorFromCoordinates(cur, x, y);
 }
 
 
 InsetTabular::idx_type InsetTabular::getNearestCell(int x, int y) const
 {
-	//lyxerr << "# InsetTabular::getNearestCell()  x=" << x << " y=" << y << endl;
 	idx_type idx_min = 0;
 	int dist_min = std::numeric_limits<int>::max();
 	for (idx_type i = 0; i < nargs(); ++i) {
 		if (theCoords.getInsets().has(tabular.getCellInset(i).get())) {
-			int d = dist(i, x, y);
+			int const d = dist(i, x, y);
 			if (d < dist_min) {
 				dist_min = d;
 				idx_min = i;
@@ -1203,32 +1200,11 @@ int InsetTabular::getCellXPos(idx_type const cell) const
 
 void InsetTabular::resetPos(LCursor & cur) const
 {
-	//lyxerr << "InsetTabular::resetPos" << endl;
 	BufferView & bv = cur.bv();
 	int const maxwidth = bv.workWidth();
-//	col_type const actcol = tabular.column_of_cell(cur.idx());
-//	int const offset = ADD_TO_TABULAR_WIDTH + 2;
-//	int const new_x = getCellXPos(cur.idx()) + offset;
-//	int const old_x = cursorx_;
-//	int const col_width = tabular.getWidthOfColumn(cur.idx());
-//	cursorx_ = new_x;
-//    cursor.x(getCellXPos(cur.idx()) + offset);
-//	if (actcol < tabular.columns() - 1 && scroll(false) &&
-//		tabular.getWidthOfTabular() < maxwidth - 20)
-//	{
-//		scx = 0;
-//	} else if (cursorx_ - offset > 20 &&
-//		   cursorx_ - offset + col_width > maxwidth - 20) {
-//		setScroll(maxwidth, - col_width - 20 - scx);
-//	} else if (cursorx_ - offset < 20) {
-//		setScroll(maxwidth, 20 - cursorx_ + offset - scx);
-//	} else if (scroll() && xo() > 20 &&
-//		   xo() + tabular.getWidthOfTabular() > maxwidth - 20) {
-//		setScroll(maxwidth, old_x - cursorx_ - scx);
-//	}
 
 	if (&cur.inset() != this) {
-		scx = 0;
+		//scx = 0;
 	} else {
 		int const X1 = 0;
 		int const X2 = maxwidth;
