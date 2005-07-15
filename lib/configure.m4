@@ -556,7 +556,7 @@ else
     MSG_RESULT(no)
     tex_allows_spaces=false
   fi
-  rm -r "$fname".* texput.log
+  rm -f "$fname".* texput.log
 fi
 
 echo "creating $outfile"
