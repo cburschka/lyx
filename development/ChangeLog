@@ -1,3 +1,10 @@
+2005-07-16  Bennett Helm  <bennett.helm@fandm.edu>
+
+	* MacOSX/LyX.app/Contents/Resources/lyx: rename from .../LyX.
+	
+	* MacOSX/LyX.app/Contents/Resources/lyx/preferences: change
+	\serverpipe to point to the new location of the users directory
+
 2004-09-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyx.spec.in: remove dependencies
