@@ -788,7 +788,12 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	else if (name == "tabbing") {
 		// We need to remember that we have to handle '\=' specially
 		handle_ert(os, "\\begin{" + name + "}", parent_context);
-		parse_text_snippet(p, os, FLAG_END | FLAG_TABBING, outer, parent_context);
+		// FIXME: Try whether parse_text instead of parse_text_snippet
+		// works. Then no manual layout checking would be needed.
+		parent_context.check_end_layout(os);
+		parse_text_snippet(p, os, FLAG_END | FLAG_TABBING, outer,
+		                   parent_context);
+		parent_context.need_layout = true;
 		handle_ert(os, "\\end{" + name + "}", parent_context);
 	}
 
@@ -808,14 +813,25 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		if (contents == verbatim)
 			handle_ert(os, p.verbatimEnvironment(name),
 			           parent_context);
-		else
+		else {
+			// FIXME: Try whether parse_text instead of
+			// parse_text_snippet works. Then no manual layout
+			// checking would be needed.
+			parent_context.check_end_layout(os);
 			parse_text_snippet(p, os, FLAG_END, outer,
 			                   parent_context);
+			parent_context.need_layout = true;
+		}
+		handle_ert(os, "\\end{" + name + "}", parent_context);
 	}
 
 	else {
 		handle_ert(os, "\\begin{" + name + "}", parent_context);
+		// FIXME: Try whether parse_text instead of parse_text_snippet
+		// works. Then no manual layout checking would be needed.
+		parent_context.check_end_layout(os);
 		parse_text_snippet(p, os, FLAG_END, outer, parent_context);
+		parent_context.need_layout = true;
 		handle_ert(os, "\\end{" + name + "}", parent_context);
 	}
 

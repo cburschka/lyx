@@ -1,3 +1,10 @@
+2005-07-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (parse_environment): handle context of unknown environments
+	correctly (fixes bug 1910)
+	* text.C (parse_environment): output the end of known environments
+	(one line disappeared from yesterdays patch)
+
 2005-07-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math.C (is_math_env): Don't hardcode known math environments anymore
