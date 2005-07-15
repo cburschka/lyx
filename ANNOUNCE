@@ -82,3 +82,192 @@ The LyX team.
 
 What's new
 ==========
+
+** Updates
+
+- It is now possible to typeset files which reside in a directory with
+  spaces in its name; this requires a modern TeX implementation (such
+  as teTeX 3.0).
+
+- Implement new functions buffer-next and buffer-previous that allow
+  to cycle through open buffers; they are respectively bound to
+  Ctrl-PageDown and Control-PageUp (except with mac bindings, where
+  <cmd>-tab and <cmd>-backtab are used). [bugs 515 and 1639]
+
+- LaTeX-type accents (which are used when converting from 7bit latex
+  documents or when a given accented letter does not exist in the
+  document encoding) are now considered as part of words; the same
+  holds for ligature breaks and hyphenation marks. This impacts word
+  level operation like selection by double-click or index entry
+  defaults.
+
+- The converters defined in the lyxrc.defaults and preferences files
+  can now use a "$$s" placeholder to tell LyX to look for the
+  converter in its support directories. A typical example is:
+
+  \converter lyxpreview ppm "python $$s/scripts/lyxpreview2ppm.py" ""
+
+- The ``annote'' field of BibTeX entries is now shown in citation preview.
+
+- it is now possible to change current font to boldsymbol through the math
+  panel. [Qt only]
+
+- update the aastex textclass to AASTeX 5.2
+
+- new Turkish translation.
+
+- Files from the 1.4 development branch of LyX and tex2lyx can now be
+  converted by lyx2lyx. The conversion is not perfect for all new features,
+  but files containing only features supported by LyX 1.3.x can be converted
+  back and forth without problems.
+
+** Bug fixes
+
+* Document input/output:
+
+- Fix LaTeX output of percentage length values <10%. [bug 1523]
+
+- Fix crash when reading equations containing more columns than
+  allowed. [bug 1542]
+
+- Allow reading math arrays with their options on a separate line
+  (Scientific Word does that).
+
+- Fix crash when inserting invalid length data. [bug 1682]
+
+- Store typed '&' characters in math as '\&'. [bug 1542]
+
+- Make sure that the amsmath package is used in LaTeX output when
+  using the AMS-specific array environments, over/under arrows or the
+  \text command in equations.
+
+- Make sure that the wasysym package is used in LaTeX output when
+  using symbols from the wasy font.
+
+- Fix export via commandline of symbols using AMS or wasy fonts. [bug 1665]
+
+- Make sure that the natbib and url packages are not loaded with
+  REVTeX 4, since the functionality is already provided by the class.
+
+- Fix output of mathbb and mathcal symbols via the math panel
+  (XForms only). [bug 1214]
+
+- Fix output of footnotes on the titlepage, which did not work with
+  the memoir class. [bug 1677]
+
+- Fix the LaTeX output of Short Titles (aka optional inset) that did
+  not get \protect added when needed. [bug 1739]
+
+- When reading an equation, don't parse \| following a \left or \right as |.
+
+- Enable LaTeXConfig.lyx to be generated on Windows by fixing the line
+  endings of the generated chkconfig.sed script.
+
+- Fix positioning of error insets after graphics and external insets.
+
+- When generating PDF, handle properly pdfTeX warnings. [bug 1824]
+
+- Fix lyxpreview2ppm.py to work with python versions older than 2.1.
+
+- Fix version control on files which name contains some special
+  characters.
+
+- Make lib/configure more portable, allowing it to run on Solaris.
+
+- Remove detection of a PS interpreter in lib/configure, since we do
+  not use it.
+
+- Use ps2pdf13 to convert from PS to PDF (more portable).
+
+- Remove from convertDefault.sh the test that "convert" really succeeded
+  as it reported failures on Windows that were actually successes.
+  See, eg, http://marc.theaimsgroup.com/?l=lyx-users&m=110561697803860&w=2
+
+- No longer quote the name of the external executable in lyxpreview2ppm.py.
+  Windows didn't like that.
+
+- Windows users are now able to define and use their own graphics converters
+  because the command is now quoted correctly.
+
+- Given a Windows-style path, don't forget to mangle the drive letter too when
+  generating a unique temporary file name.
+
+- LyX now passes all external scripts to the relevant interpreter explicitly.
+  This means that Windows can now run the script even when it doesn't have
+  a "recognized" file extension.
+
+- Enable the file browser to return a "file name with spaces" to the
+  appropriate dialog if LaTeX can handle such files.
+
+- Squash the "Mutex destroy failure" warning when shutting down LyX [Qt only].
+  Prevents a core dump on NetBSD.
+
+* User Interface:
+
+- Fix crash when using math-mutate with invalid argument.
+
+- Implement support for qt-immodule. This fixes the dead key problems
+  with some newer qt/x11 versions. [bug 1830]
+
+- Fix math fonts display in LyX/Mac.
+
+- Avoid automatic startup of the spellchecker when switching from one
+  document to another. [bug 1451]
+
+- fix wrong selection when opening the list of tables/figures dialog.
+  [bug 1870] 
+
+- Make LyX behave normally when a file has been opened from the
+  Explorer. [Windows only]
+
+- Windows users will find that graphics files are now converted to a
+  "loadable" format asynchronously. That is, LyX will not block
+  execution whilst graphics files are displayed on screen.
+
+- Fix font metrics problems with Qt/Win 3.2.1.
+
+- Fix bindings for depth-increment/decrement for LyX/Mac.
+
+- Do not use the -swap option when viewing a Postscript file with gv,
+  since newer versions do not support it. Users that see landscape
+  documents upside-down should select 'swap landscape' in gv options.
+
+- Semantic improvements in the Insert>Cross reference dialog.
+
+- When showing a preview of a BibTeX entry in the Insert>Citation
+  Reference dialog, handle \% correctly.
+
+- The file browsers of the Qt versions of the External, BibTeX and
+  Print dialogs now return a relative path if appropriate. [bug 1272]
+
+- Fix display of citations when using 'et al.'
+
+- fix translation of layout names with a space in their name.
+
+- Fix left margins in various text classes.
+
+- Fix server function server-get-tip. [bug 1781]
+
+- Fix binding of Shift-Tab, which was broken on some systems.
+
+- Enable the display of accented characters in the Help->About dialog.
+
+- Fix "longtable" user interface in the tabular dialog. [bug 1061, Qt only]
+
+- Remove the "child process" dialog, with which a user could kill child
+  processes spawned by LyX. It was decided that this functionality belonged
+  with the OS.
+
+- Post convertDefault.sh's error messages to STDERR.
+
+* Configuration/Installation:
+
+- Enable XForms frontend to build with picky versions of 'make'.
+
+- Fix link error with some compiler/OS combinations. [bug 1702]
+
+- Fix link error with Cygwin.
+
+- Fix warnings with recent versions of automake.
+
+- Remove GNU-make specific construct in Makefile
