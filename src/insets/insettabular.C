@@ -1203,6 +1203,7 @@ int InsetTabular::getCellXPos(idx_type const cell) const
 
 void InsetTabular::resetPos(LCursor & cur) const
 {
+	//lyxerr << "InsetTabular::resetPos" << endl;
 	BufferView & bv = cur.bv();
 	int const maxwidth = bv.workWidth();
 //	col_type const actcol = tabular.column_of_cell(cur.idx());
@@ -1218,12 +1219,12 @@ void InsetTabular::resetPos(LCursor & cur) const
 //		scx = 0;
 //	} else if (cursorx_ - offset > 20 &&
 //		   cursorx_ - offset + col_width > maxwidth - 20) {
-//		setScroll(maxwidth, - col_width - 20);
+//		setScroll(maxwidth, - col_width - 20 - scx);
 //	} else if (cursorx_ - offset < 20) {
-//		setScroll(maxwidth, 20 - cursorx_ + offset);
+//		setScroll(maxwidth, 20 - cursorx_ + offset - scx);
 //	} else if (scroll() && xo() > 20 &&
 //		   xo() + tabular.getWidthOfTabular() > maxwidth - 20) {
-//		setScroll(maxwidth, old_x - cursorx_);
+//		setScroll(maxwidth, old_x - cursorx_ - scx);
 //	}
 
 	if (&cur.inset() != this) {
@@ -1232,13 +1233,15 @@ void InsetTabular::resetPos(LCursor & cur) const
 		int const X1 = 0;
 		int const X2 = maxwidth;
 		int const offset = ADD_TO_TABULAR_WIDTH + 2;
-		int const x1 = xo() + scroll() + getCellXPos(cur.idx()) + offset;
+		int const x1 = xo() + getCellXPos(cur.idx()) + offset;
 		int const x2 = x1 + tabular.getWidthOfColumn(cur.idx());
 
 		if (x1 < X1)
-			setScroll(maxwidth, X1 + 20 - x1);
+			scx = X1 + 20 - x1;
 		else if (x2 > X2)
-			setScroll(maxwidth, X2 - 20 - x2);
+			scx = X2 - 20 - x2;
+		else
+			scx = 0;
 	}
 
 	cur.needsUpdate();

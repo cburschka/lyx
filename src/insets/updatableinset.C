@@ -41,32 +41,9 @@ int UpdatableInset::scroll(bool) const
 }
 
 
-void UpdatableInset::setScroll(int maxwidth, int offset) const
+void UpdatableInset::setScroll(int maxwidth, int pos) const
 {
-	lyxerr << "UpdatableInset::setScroll: (int) " << maxwidth << ' ' <<
-offset<< std::endl;
-
-	int const xo_ = theCoords.getInsets().x(this);
-	if (offset > 0) {
-		if (!scx && xo_ >= 20)
-			return;
-		if (xo_ + offset > 20)
-			scx = 0;
-		// scx = - xo_;
-		else
-			scx += offset;
-	} else {
-#ifdef WITH_WARNINGS
-#warning metrics?
-#endif
-		if (!scx && xo_ + width() < maxwidth - 20)
-			return;
-
-		if (xo_ - scx + offset + width() < maxwidth - 20)
-			scx += maxwidth - width() - xo_ - 20;
-		else
-			scx += offset;
-	}
+	scx = pos;
 }
 
 
