@@ -68,7 +68,7 @@ void MathInset::drawT(TextPainter &, int, int) const
 void MathInset::write(WriteStream & os) const
 {
 	string const s = name();
-	os << '\\' << s.c_str();S
+	os << '\\' << s.c_str();
 	// We need an extra ' ' unless this is a single-char-non-ASCII name
 	// or anything non-ASCII follows
 	if (s.size() != 1 || isalpha(s[0]))
