@@ -1,3 +1,8 @@
+2005-07-15  Juergen Vigna <jug@lyx.org>
+
+	* lyxfunc.C (dispatch): save and restore the cursor after a
+	textclass switch.
+
 2005-07-15    <lgb@tandberg.net>
 
 	* text.C (backspace): bug 806 for empty keepempty paragraphs we

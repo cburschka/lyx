@@ -1475,11 +1475,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 
 			owner->message(_("Converting document to new document class..."));
+			StableDocIterator backcur(view()->cursor());
 			ErrorList el;
 			lyx::cap::SwitchBetweenClasses(
 				old_class, new_class,
 				buffer->paragraphs(), el);
 
+			view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
 			bufferErrors(*buffer, el);
 			view()->showErrorList(_("Class switch"));
 			updateCounters(*buffer);
