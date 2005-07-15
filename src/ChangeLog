@@ -1,5 +1,8 @@
 2005-07-15    <lgb@tandberg.net>
 
+	* text.C (backspace): bug 806 for empty keepempty paragraphs we
+	change the layout to default before letting DEPM do its thing.
+
 	* paragraph_funcs.C (breakParagraph): dont reset the layout on
 	keepEmpty paragraphs
 

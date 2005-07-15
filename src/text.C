@@ -1583,6 +1583,17 @@ void LyXText::backspace(LCursor & cur)
 			// handle the actual deletion of the paragraph.
 
 			if (cur.pit() != 0) {
+                                // For KeepEmpty layouts we need to get
+                                // rid of the keepEmpty setting first.
+                                // And the only way to do this is to
+                                // reset the layout to something
+                                // else: f.ex. the default layout.
+                                if (par.allowEmpty()) {
+                                        Buffer & buf = cur.buffer();
+                                        BufferParams const & bparams = buf.params();
+                                        par.layout(bparams.getLyXTextClass().defaultLayout());
+                                }
+                                
 				cursorLeft(cur);
 				return;
 			}
