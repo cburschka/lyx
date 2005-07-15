@@ -1,3 +1,7 @@
+2005-07-15    <lgb@tandberg.net>
+
+	* output_latex.C (TeXDeeper): get rid of potential dereferencing
+	of past the end iterator
 
 2005-07-14  André Pönitz  <poenitz@gmx.net>
 

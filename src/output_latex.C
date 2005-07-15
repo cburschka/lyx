@@ -75,7 +75,7 @@ TeXDeeper(Buffer const & buf,
 					     os, texrow, runparams);
 		}
 	}
-	lyxerr[Debug::LATEX] << "TeXDeeper...done " << &*par << endl;
+	lyxerr[Debug::LATEX] << "TeXDeeper...done " << endl;
 
 	return par;
 }
