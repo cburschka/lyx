@@ -31,6 +31,8 @@ INSTALL_DATA = @INSTALL_DATA@
 MKINSTALLDIRS = @MKINSTALLDIRS@
 mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
 
+AWK = @AWK@
+
 GMSGFMT = @GMSGFMT@
 MSGFMT = @MSGFMT@
 XGETTEXT = @XGETTEXT@
@@ -377,7 +379,7 @@ l10n_pots: xforms_l10n.pot qt_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l1
 
 xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 	LC_ALL=C ; export LC_ALL ; \
-	awk -v top_srcdir="$(top_srcdir)" ' \
+	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
 		function fixupfilename() \
 		{\
 			return substr(FILENAME, length(top_srcdir "/") + 1);\
@@ -406,7 +408,7 @@ xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 
 qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
-	awk -v top_srcdir="$(top_srcdir)" ' \
+	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
 		function fixupfilename() \
 		{\
 			return substr(FILENAME, length(top_srcdir "/") + 1);\
@@ -428,7 +430,7 @@ qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 
 layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
 	LC_ALL=C ; export LC_ALL ; \
-	awk -v top_srcdir="$(top_srcdir)" ' \
+	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
 		function fixupfilename() \
 		{\
 			return substr(FILENAME, length(top_srcdir "/") + 1);\
@@ -467,7 +469,7 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 	${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc > $@
 
 languages_l10n.pot: $(top_srcdir)/lib/languages
-	awk -v top_srcdir="$(top_srcdir)" ' \
+	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
 		function fixupfilename() \
 		{\
 			return substr(FILENAME, length(top_srcdir "/") + 1);\
@@ -486,7 +488,7 @@ languages_l10n.pot: $(top_srcdir)/lib/languages
 
 ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
-	awk -v top_srcdir="$(top_srcdir)" ' \
+	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
 		function fixupfilename() \
 		{\
 			return substr(FILENAME, length(top_srcdir "/") + 1);\

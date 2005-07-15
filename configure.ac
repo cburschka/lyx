@@ -30,6 +30,9 @@ done
 ### Check for programs
 AC_PROG_MAKE_SET
 AC_PROG_INSTALL
+
+AC_SUBST(AWK,[gawk])
+
 #AC_PROG_RANLIB
 AC_CHECK_PROG(KPSEWHICH, kpsewhich, kpsewhich, :)
 if test "x$KPSEWHICH" = xkpsewhich ; then
