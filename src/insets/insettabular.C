@@ -493,16 +493,6 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selection() = false;
 		break;
 
-	case LFUN_SCROLL_INSET: 
-		if (!cmd.argument.empty()) {
-			int const ww = cur.bv().workWidth();
-			if (cmd.argument.find('.') != cmd.argument.npos)
-				setScroll(ww, static_cast<float>(convert<double>(cmd.argument)));
-			else
-				setScroll(ww, convert<int>(cmd.argument));
-		}
-		break;
-
 	case LFUN_RIGHTSEL:
 	case LFUN_RIGHT:
 		cell(cur.idx())->dispatch(cur, cmd);
@@ -1224,7 +1214,7 @@ void InsetTabular::resetPos(LCursor & cur) const
 //	if (actcol < tabular.columns() - 1 && scroll(false) &&
 //		tabular.getWidthOfTabular() < maxwidth - 20)
 //	{
-//		setScroll(maxwidth, 0.0F);
+//		scx = 0;
 //	} else if (cursorx_ - offset > 20 &&
 //		   cursorx_ - offset + col_width > maxwidth - 20) {
 //		setScroll(maxwidth, - col_width - 20);
@@ -1236,7 +1226,7 @@ void InsetTabular::resetPos(LCursor & cur) const
 //	}
 
 	if (&cur.inset() != this) {
-		setScroll(maxwidth, 0.0f);
+		scx = 0;
 	} else {
 		int const X1 = 0;
 		int const X2 = maxwidth;

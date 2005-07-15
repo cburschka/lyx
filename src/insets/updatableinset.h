@@ -36,10 +36,6 @@ public:
 	virtual bool showInsetDialog(BufferView *) const { return false; }
 
 protected:
-	///  An updatable inset could handle lyx editing commands
-	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
-	/// scrolls to absolute position in maxwidth * sx units
-	void setScroll(int maxwidth, double sx) const;
 	/// scrolls offset pixels
 	void setScroll(int maxwidth, int offset) const;
 	/// returns the actual scroll value
