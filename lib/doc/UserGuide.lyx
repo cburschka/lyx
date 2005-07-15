@@ -1677,7 +1677,7 @@ Customization
  files.
 \layout Section
 
-Setting Up the X Keyboard
+Setting Up the X Keyboard [obsolescent]
 \begin_inset LatexCommand \label{sec:x-win-keys}
 
 \end_inset 
@@ -1685,18 +1685,18 @@ Setting Up the X Keyboard
 
 \layout Standard
 
-To use LyX properly, you 
+To use LyX properly, X 
 \emph on 
 must
 \emph default 
- set X up correctly.
+ be set up correctly.
  This is especially vital if you're using the international support features
  of LyX and want to use non-English keyboard mappings.
- Unfortunately, almost nobody bothers to do this, especially those who've
- installed Linux on a PC\SpecialChar \@.
- Administrators of large systems can be guilty of
- this, too, so don't assume that you're safe if you're using a large system.
- Any user can instruct X how to use his or her keyboard.
+ On modern distributions, this likely has been taken care of, but if not,
+ you must do this yourself.
+ Administrators of large systems often neglect this, so don't assume that
+ you're safe if you're using a large system.
+ Also ordinary users can instruct X how to use his or her keyboard.
 \layout Subsection
 
 xmodmap and xkeycaps
@@ -1753,9 +1753,9 @@ xmodmap\SpecialChar ~
 xkeycaps
 \layout Standard
 
-This program is a dream come true! It brings up a graphical version of your
- keyboard, allows you to make modifications, and then spits those modifications
- out to the standard output in a form readable by 
+This program brings up a graphical version of your keyboard, allows you
+ to make modifications, and then spits those modifications out to the standard
+ output in a form readable by 
 \family typewriter 
 xmodmap
 \family default 
