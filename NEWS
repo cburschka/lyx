@@ -1,3 +1,27 @@
+What's new in version 1.3.6?
+----------------------------
+
+Unix and MacOSX users should consider this to be a bugfix release.
+
+To Windows users, however, LyX 1.3.6 is the first version of LyX
+to support the platform officially. This means that we've put a huge
+effort into squashing those bugs that were present in Ruurd Reitsma's
+unofficial ports to Windows. Large chunks of the code base have been
+touched in an attempt to resolve these problems so whilst we're
+confident that LyX/Win 1.3.6 will be the best ever version of LyX on
+Windows, we cannot say that it's bug free.
+
+We would like to highlight three fixes in particular:
+  * It is now possible to typeset files which reside in a directory with
+    spaces in its name; this requires a modern TeX implementation (such
+    as teTeX 3.0).
+  * It is possible to use Ctrl-PageDown and Control-PageUp (<cmd>-tab
+    and <cmd>-backtab with Qt/Mac) to switch between the open documents.
+  * LaTeX-type accents, ligature breaks and hyphenation marks are now
+    considered as part of words 
+
+
+
 What's new in version 1.3.5?
 ----------------------------
 
