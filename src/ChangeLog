@@ -1,5 +1,10 @@
 2005-07-15    <lgb@tandberg.net>
 
+	* text.C (setCursorFromCoordinates): add a debug statement
+
+	* text2.C (getColumnNearX): bug 1825 make sure that we don't
+	return a pos that is not on the row
+
 	* output_latex.C (TeXDeeper): get rid of potential dereferencing
 	of past the end iterator
 

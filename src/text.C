@@ -2304,5 +2304,12 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 	bool bound = false;
 	int xx = x;
 	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
+
+        lyxerr[Debug::DEBUG]
+                << BOOST_CURRENT_FUNCTION
+                << ": setting cursor pit: " << pit
+                << " pos: " << pos
+                << endl;
+        
 	setCursor(cur, pit, pos, true, bound);
 }

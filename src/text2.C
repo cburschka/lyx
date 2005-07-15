@@ -61,6 +61,7 @@ using lyx::pos_type;
 using std::endl;
 using std::ostringstream;
 using std::string;
+using std::min;
 
 
 LyXText::LyXText(BufferView * bv)
@@ -854,7 +855,11 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 	}
 
 	x = int(tmpx) + xo;
-	return c - row.pos();
+
+        if (end == par.size())
+                return c - row.pos();
+
+        return min(c - row.pos(), end - 1 - row.pos());
 }
 
 
