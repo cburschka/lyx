@@ -401,7 +401,7 @@ int mkstemp(char*);
 ])
 
 ### Finish the work.
-AC_CONFIG_SUBDIRS(lib lib/reLyX)
+AC_CONFIG_SUBDIRS(lib)
 AC_CONFIG_FILES([Makefile  m4/Makefile \
        boost/Makefile \
        boost/libs/Makefile \

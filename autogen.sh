@@ -70,7 +70,7 @@ fi
 
 # Delete old cache directories.
 # automake will stop if their contents was created by an earlier version.
-rm -rf autom4te.cache lib/reLyX/autom4te.cache
+rm -rf autom4te.cache
 
 # Generate acinclude.m4
 echo -n "Generate acinclude.m4... "
@@ -81,7 +81,7 @@ echo "done."
 # Generate the Makefiles and configure files
 if ( $ACLOCAL --version ) < /dev/null > /dev/null 2>&1; then
 	echo "Building macros..."
-	for dir in . lib/reLyX ; do
+	for dir in . ; do
 	    echo "        $dir"
 	    ( cd $dir ; $ACLOCAL )
 	done
@@ -105,7 +105,7 @@ fi
 
 if ( $AUTOMAKE --version ) < /dev/null > /dev/null 2>&1; then
 	echo "Building Makefile templates..."
-	for dir in . lib/reLyX ; do
+	for dir in . ; do
 	    echo "        $dir"
 	    ( cd $dir ; $AUTOMAKE )
 	done
@@ -117,7 +117,7 @@ fi
 
 if ( $AUTOCONF --version ) < /dev/null > /dev/null 2>&1; then
 	echo "Building configure..."
-	for dir in . lib/reLyX ; do
+	for dir in . ; do
 	    echo "       $dir"
 	    ( cd $dir ; $AUTOCONF )
 	done

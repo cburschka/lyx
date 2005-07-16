@@ -1,13 +1,13 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2001, The LyX team.
 # Roman Maurer <roman.maurer@amis.net>, 2001.
-# $Id: sl.po,v 1.76 2005/06/28 12:14:48 lasgouttes Exp $
+# $Id: sl.po,v 1.77 2005/07/16 15:17:34 larsbj Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.7pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-06-28 14:09+0200\n"
+"POT-Creation-Date: 2005-07-15 20:51+0200\n"
 "PO-Revision-Date: 2004-06-01 20:47+0200\n"
 "Last-Translator:  Roman Maurer <roman.maurer@amis.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -2275,7 +2275,7 @@ msgstr "Ni moè tiskati"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2166
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2202
 msgid "Double"
 msgstr "Dvojni"
 
@@ -2875,7 +2875,7 @@ msgstr "Povzetek"
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:623
-#: src/lyxfunc.C:785 src/lyxfunc.C:1793 src/lyxvc.C:168
+#: src/lyxfunc.C:785 src/lyxfunc.C:1791 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Preklièi"
 
@@ -4064,7 +4064,7 @@ msgstr ""
 msgid "Relations"
 msgstr "Separacija"
 
-#: src/frontends/qt2/ui/QMathDialogBase.ui:511 lib/languages:31
+#: src/frontends/qt2/ui/QMathDialogBase.ui:511 lib/languages:32
 #: src/frontends/gtk/Dialogs.C:338 src/frontends/xforms/Dialogs.C:314
 msgid "Greek"
 msgstr "gr¹ko"
@@ -4206,7 +4206,7 @@ msgid "Print as grey text"
 msgstr "Natisni vse strani"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2160
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2196
 msgid "Single"
 msgstr "Enojni"
 
@@ -5936,7 +5936,7 @@ msgstr "Primer"
 #: lib/layouts/spie.layout:19 lib/layouts/agu_stdsections.inc:29
 #: lib/layouts/aguplus.inc:27 lib/layouts/db_stdsections.inc:27
 #: lib/layouts/numarticle.inc:12 lib/layouts/numreport.inc:20
-#: lib/layouts/numrevtex.inc:5 lib/layouts/scrclass.inc:59
+#: lib/layouts/numrevtex.inc:5 lib/layouts/scrclass.inc:60
 #: lib/layouts/stdsections.inc:50 lib/layouts/svjour.inc:52
 msgid "Section"
 msgstr "Razdelek"
@@ -5954,7 +5954,7 @@ msgstr "Razdelek"
 #: lib/layouts/revtex4.layout:54 lib/layouts/siamltex.layout:58
 #: lib/layouts/agu_stdsections.inc:39 lib/layouts/aguplus.inc:41
 #: lib/layouts/db_stdsections.inc:35 lib/layouts/numarticle.inc:21
-#: lib/layouts/numrevtex.inc:14 lib/layouts/scrclass.inc:66
+#: lib/layouts/numrevtex.inc:14 lib/layouts/scrclass.inc:67
 #: lib/layouts/stdsections.inc:71 lib/layouts/svjour.inc:61
 msgid "Subsection"
 msgstr "Podrazdelek"
@@ -5970,7 +5970,7 @@ msgstr "Podrazdelek"
 #: lib/layouts/revtex.layout:56 lib/layouts/revtex4.layout:62
 #: lib/layouts/siamltex.layout:64 lib/layouts/agu_stdsections.inc:49
 #: lib/layouts/db_stdsections.inc:43 lib/layouts/numarticle.inc:30
-#: lib/layouts/numrevtex.inc:23 lib/layouts/scrclass.inc:73
+#: lib/layouts/numrevtex.inc:23 lib/layouts/scrclass.inc:74
 #: lib/layouts/stdsections.inc:84 lib/layouts/svjour.inc:70
 msgid "Subsubsection"
 msgstr "Podpodrazdelek"
@@ -6008,7 +6008,7 @@ msgstr "Podpodrazdelek*"
 #: lib/layouts/siamltex.layout:142 lib/layouts/spie.layout:71
 #: lib/layouts/svglobal.layout:28 lib/layouts/svjog.layout:33
 #: lib/layouts/agu_stdtitle.inc:191 lib/layouts/amsdefs.inc:124
-#: lib/layouts/db_stdstruct.inc:10 lib/layouts/scrclass.inc:214
+#: lib/layouts/db_stdstruct.inc:10 lib/layouts/scrclass.inc:215
 #: lib/layouts/stdstruct.inc:11 lib/layouts/stdstruct.inc:26
 #: lib/layouts/svjour.inc:252 src/output_plaintext.C:155
 msgid "Abstract"
@@ -6048,7 +6048,7 @@ msgstr "Kljuène besede"
 #: lib/layouts/scrreprt.layout:10 lib/layouts/scrreprt.layout:12
 #: lib/layouts/siamltex.layout:182 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:225
-#: lib/layouts/scrclass.inc:221 lib/layouts/stdstruct.inc:38
+#: lib/layouts/scrclass.inc:222 lib/layouts/stdstruct.inc:38
 #: lib/layouts/svjour.inc:326 src/frontends/qt2/QDocumentDialog.C:82
 msgid "Bibliography"
 msgstr "Literatura"
@@ -6118,7 +6118,7 @@ msgstr "Opis"
 
 #: lib/layouts/aa.layout:54 lib/layouts/aapaper.layout:56
 #: lib/layouts/aastex.layout:84 lib/layouts/egs.layout:126
-#: lib/layouts/scrclass.inc:38 lib/layouts/stdlists.inc:68
+#: lib/layouts/scrclass.inc:39 lib/layouts/stdlists.inc:68
 #: lib/ui/stdtoolbars.ui:68
 msgid "List"
 msgstr "Seznam"
@@ -6140,7 +6140,7 @@ msgstr "Seznam"
 #: lib/layouts/scrlttr2.layout:276 lib/layouts/siamltex.layout:108
 #: lib/layouts/svprobth.layout:34 lib/layouts/agu_stdtitle.inc:244
 #: lib/layouts/amsdefs.inc:59 lib/layouts/db_stdtitle.inc:12
-#: lib/layouts/scrclass.inc:144 lib/layouts/stdtitle.inc:11
+#: lib/layouts/scrclass.inc:145 lib/layouts/stdtitle.inc:11
 #: lib/layouts/svjour.inc:129
 msgid "Title"
 msgstr "Naslov"
@@ -6165,7 +6165,7 @@ msgstr "Podnaslov"
 #: lib/layouts/revtex.layout:97 lib/layouts/revtex4.layout:114
 #: lib/layouts/siamltex.layout:125 lib/layouts/svprobth.layout:51
 #: lib/layouts/agu_stdtitle.inc:165 lib/layouts/amsdefs.inc:80
-#: lib/layouts/db_stdtitle.inc:20 lib/layouts/scrclass.inc:152
+#: lib/layouts/db_stdtitle.inc:20 lib/layouts/scrclass.inc:153
 #: lib/layouts/stdtitle.inc:30 lib/layouts/svjour.inc:182
 msgid "Author"
 msgstr "Avtor"
@@ -6201,7 +6201,7 @@ msgstr "Po¹ta"
 #: lib/layouts/scrlettr.layout:172 lib/layouts/scrlttr2.layout:244
 #: lib/layouts/siamltex.layout:136 lib/layouts/agu_stdtitle.inc:236
 #: lib/layouts/amsdefs.inc:100 lib/layouts/db_stdtitle.inc:34
-#: lib/layouts/scrclass.inc:159 lib/layouts/stdtitle.inc:49
+#: lib/layouts/scrclass.inc:160 lib/layouts/stdtitle.inc:49
 #: lib/layouts/svjour.inc:230
 msgid "Date"
 msgstr "Datum"
@@ -6260,7 +6260,7 @@ msgstr "Tezaver"
 #: lib/layouts/revtex4.layout:70 lib/layouts/siamltex.layout:70
 #: lib/layouts/agu_stdsections.inc:59 lib/layouts/aguplus.inc:55
 #: lib/layouts/db_stdsections.inc:51 lib/layouts/numarticle.inc:39
-#: lib/layouts/numrevtex.inc:32 lib/layouts/scrclass.inc:80
+#: lib/layouts/numrevtex.inc:32 lib/layouts/scrclass.inc:81
 #: lib/layouts/stdsections.inc:96 lib/layouts/svjour.inc:79
 msgid "Paragraph"
 msgstr "Odstavek"
@@ -6753,7 +6753,7 @@ msgstr ""
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
 #: lib/layouts/seminar.layout:24 lib/layouts/agu_stdsections.inc:11
 #: lib/layouts/db_stdsections.inc:11 lib/layouts/numarticle.inc:4
-#: lib/layouts/numreport.inc:6 lib/layouts/scrclass.inc:44
+#: lib/layouts/numreport.inc:6 lib/layouts/scrclass.inc:45
 #: lib/layouts/stdsections.inc:10
 msgid "Part"
 msgstr "Del"
@@ -7100,7 +7100,7 @@ msgstr "Datum"
 #: lib/layouts/linuxdoc.layout:153 lib/layouts/llncs.layout:77
 #: lib/layouts/memoir.layout:69 lib/layouts/paper.layout:80
 #: lib/layouts/agu_stdsections.inc:69 lib/layouts/db_stdsections.inc:59
-#: lib/layouts/numarticle.inc:48 lib/layouts/scrclass.inc:87
+#: lib/layouts/numarticle.inc:48 lib/layouts/scrclass.inc:88
 #: lib/layouts/stdsections.inc:104 lib/layouts/svjour.inc:88
 msgid "Subparagraph"
 msgstr "Pododstavek"
@@ -8270,7 +8270,7 @@ msgstr "SGML"
 #: lib/layouts/llncs.layout:38 lib/layouts/memoir.layout:44
 #: lib/layouts/scrbook.layout:15 lib/layouts/agu_stdsections.inc:20
 #: lib/layouts/db_stdsections.inc:19 lib/layouts/numreport.inc:11
-#: lib/layouts/scrclass.inc:51 lib/layouts/stdsections.inc:30
+#: lib/layouts/scrclass.inc:52 lib/layouts/stdsections.inc:30
 msgid "Chapter"
 msgstr "Poglavje"
 
@@ -8578,7 +8578,7 @@ msgid "Title:"
 msgstr "Naslov"
 
 #: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:284
-#: lib/layouts/scrclass.inc:166
+#: lib/layouts/scrclass.inc:167
 msgid "Subject"
 msgstr "Predmet"
 
@@ -9452,66 +9452,66 @@ msgstr "Podpodrazdelek"
 msgid "   \\alph{paragraph}."
 msgstr ""
 
-#: lib/layouts/scrclass.inc:96
+#: lib/layouts/scrclass.inc:97
 #, fuzzy
 msgid "Addpart"
 msgstr "Dodaj"
 
-#: lib/layouts/scrclass.inc:102
+#: lib/layouts/scrclass.inc:103
 msgid "Addchap"
 msgstr "Dodajpogl"
 
-#: lib/layouts/scrclass.inc:108
+#: lib/layouts/scrclass.inc:109
 msgid "Addsec"
 msgstr "Dodajrazd"
 
-#: lib/layouts/scrclass.inc:114
+#: lib/layouts/scrclass.inc:115
 msgid "Addchap*"
 msgstr "Dodajpogl*"
 
-#: lib/layouts/scrclass.inc:120
+#: lib/layouts/scrclass.inc:121
 msgid "Addsec*"
 msgstr "Dodajrazd*"
 
-#: lib/layouts/scrclass.inc:126
+#: lib/layouts/scrclass.inc:127
 msgid "Minisec"
 msgstr "Minirazd"
 
-#: lib/layouts/scrclass.inc:172
+#: lib/layouts/scrclass.inc:173
 msgid "Publishers"
 msgstr "Zalo¾niki"
 
-#: lib/layouts/scrclass.inc:178 lib/layouts/svjour.inc:121
+#: lib/layouts/scrclass.inc:179 lib/layouts/svjour.inc:121
 msgid "Dedication"
 msgstr "Posvetilo"
 
-#: lib/layouts/scrclass.inc:184
+#: lib/layouts/scrclass.inc:185
 msgid "Titlehead"
 msgstr "Glavanaslova"
 
-#: lib/layouts/scrclass.inc:195
+#: lib/layouts/scrclass.inc:196
 msgid "Uppertitleback"
 msgstr ""
 
-#: lib/layouts/scrclass.inc:201
+#: lib/layouts/scrclass.inc:202
 msgid "Lowertitleback"
 msgstr ""
 
-#: lib/layouts/scrclass.inc:207
+#: lib/layouts/scrclass.inc:208
 msgid "Extratitle"
 msgstr "DodatniNaslov"
 
-#: lib/layouts/scrclass.inc:229
+#: lib/layouts/scrclass.inc:230
 #, fuzzy
 msgid "Captionabove"
 msgstr "Pojasnilo"
 
-#: lib/layouts/scrclass.inc:235
+#: lib/layouts/scrclass.inc:236
 #, fuzzy
 msgid "Captionbelow"
 msgstr "Pojasnilo"
 
-#: lib/layouts/scrclass.inc:241
+#: lib/layouts/scrclass.inc:242
 #, fuzzy
 msgid "Dictum"
 msgstr "Datum"
@@ -9685,127 +9685,127 @@ msgstr "estonsko"
 msgid "Finnish"
 msgstr "finsko"
 
-#: lib/languages:25
+#: lib/languages:26
 msgid "French"
 msgstr "francosko"
 
-#: lib/languages:26
+#: lib/languages:27
 msgid "Galician"
 msgstr ""
 
-#: lib/languages:29
+#: lib/languages:30
 msgid "German"
 msgstr "nem¹ko"
 
-#: lib/languages:30
+#: lib/languages:31
 msgid "German (new spelling)"
 msgstr ""
 
-#: lib/languages:32
+#: lib/languages:33
 msgid "Hebrew"
 msgstr "hebrejsko"
 
-#: lib/languages:34
+#: lib/languages:35
 msgid "Irish"
 msgstr "irsko"
 
-#: lib/languages:35
+#: lib/languages:36
 msgid "Italian"
 msgstr "italijansko"
 
-#: lib/languages:36
+#: lib/languages:37
 msgid "Kazakh"
 msgstr ""
 
-#: lib/languages:39
+#: lib/languages:40
 #, fuzzy
 msgid "Lithuanian"
 msgstr "©irina"
 
-#: lib/languages:40
+#: lib/languages:41
 #, fuzzy
 msgid "Latvian"
 msgstr "hrva¹ko"
 
-#: lib/languages:41
+#: lib/languages:42
 msgid "Icelandic"
 msgstr ""
 
-#: lib/languages:42
+#: lib/languages:43
 msgid "Magyar"
 msgstr "mad¾arsko"
 
-#: lib/languages:43
+#: lib/languages:44
 msgid "Norsk"
 msgstr "njorsk"
 
-#: lib/languages:44
+#: lib/languages:45
 #, fuzzy
 msgid "Nynorsk"
 msgstr "njorsk"
 
-#: lib/languages:45
+#: lib/languages:46
 msgid "Polish"
 msgstr "poljsko"
 
-#: lib/languages:46
+#: lib/languages:47
 #, fuzzy
 msgid "Portugese"
 msgstr "portugalsko"
 
-#: lib/languages:47
+#: lib/languages:48
 msgid "Romanian"
 msgstr "romunsko"
 
-#: lib/languages:48
+#: lib/languages:49
 msgid "Russian"
 msgstr "rusko"
 
-#: lib/languages:49
+#: lib/languages:50
 msgid "Scottish"
 msgstr "¹kotsko"
 
-#: lib/languages:50
+#: lib/languages:51
 #, fuzzy
 msgid "Serbian"
 msgstr "ameri¹ko"
 
-#: lib/languages:51
+#: lib/languages:52
 #, fuzzy
 msgid "Serbo-Croatian"
 msgstr "hrva¹ko"
 
-#: lib/languages:52
+#: lib/languages:53
 msgid "Spanish"
 msgstr "¹pansko"
 
-#: lib/languages:53
+#: lib/languages:54
 msgid "Slovak"
 msgstr "slova¹ko"
 
-#: lib/languages:54
+#: lib/languages:55
 msgid "Slovene"
 msgstr "slovensko"
 
-#: lib/languages:55
+#: lib/languages:56
 msgid "Swedish"
 msgstr "¹vedsko"
 
-#: lib/languages:56
+#: lib/languages:57
 #, fuzzy
 msgid "Thai"
 msgstr "To"
 
-#: lib/languages:57
+#: lib/languages:58
 msgid "Turkish"
 msgstr "tur¹ko"
 
-#: lib/languages:58
+#: lib/languages:59
 #, fuzzy
 msgid "Ukrainian"
 msgstr "ukrajinsko"
 
-#: lib/languages:61
+#: lib/languages:62
 msgid "Welsh"
 msgstr "vel¹ko"
 
@@ -11501,58 +11501,58 @@ msgstr "Prilepi"
 msgid "Formatting document..."
 msgstr "Urejanje spisa..."
 
-#: src/BufferView_pimpl.C:702
+#: src/BufferView_pimpl.C:703
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Spodaj|#B"
 
-#: src/BufferView_pimpl.C:735
+#: src/BufferView_pimpl.C:736
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Spodaj|#B"
 
-#: src/BufferView_pimpl.C:794
+#: src/BufferView_pimpl.C:795
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Izberite spis za vstavitev"
 
-#: src/BufferView_pimpl.C:796 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:797 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1634 src/lyxfunc.C:1671 src/lyxfunc.C:1746
+#: src/lyxfunc.C:1632 src/lyxfunc.C:1669 src/lyxfunc.C:1744
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Spisi|S"
 
-#: src/BufferView_pimpl.C:798 src/lyxfunc.C:1673 src/lyxfunc.C:1748
+#: src/BufferView_pimpl.C:799 src/lyxfunc.C:1671 src/lyxfunc.C:1746
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Zgledi"
 
-#: src/BufferView_pimpl.C:803 src/lyx_cb.C:141 src/lyxfunc.C:1641
-#: src/lyxfunc.C:1678
+#: src/BufferView_pimpl.C:804 src/lyx_cb.C:141 src/lyxfunc.C:1639
+#: src/lyxfunc.C:1676
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokument v LyXu...|X"
 
-#: src/BufferView_pimpl.C:813 src/lyxfunc.C:1688 src/lyxfunc.C:1766
-#: src/lyxfunc.C:1780 src/lyxfunc.C:1796
+#: src/BufferView_pimpl.C:814 src/lyxfunc.C:1686 src/lyxfunc.C:1764
+#: src/lyxfunc.C:1778 src/lyxfunc.C:1794
 msgid "Canceled."
 msgstr "Preklicano."
 
-#: src/BufferView_pimpl.C:823
+#: src/BufferView_pimpl.C:824
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vstavlja se spis"
 
-#: src/BufferView_pimpl.C:834
+#: src/BufferView_pimpl.C:835
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument izvo¾en kot "
 
-#: src/BufferView_pimpl.C:835
+#: src/BufferView_pimpl.C:836
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Spisa ni moè vstaviti"
@@ -11952,7 +11952,7 @@ msgstr "v izbrani razred spisa"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:443 src/text.C:335
+#: src/buffer.C:443 src/text.C:339
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznana akcija"
@@ -12187,7 +12187,7 @@ msgstr "Nastavitev videza spisa"
 msgid "LyX will not be able to produce output."
 msgstr "LyX ne bo mogel izdelati pravilnega izhoda."
 
-#: src/bufferview_funcs.C:281
+#: src/bufferview_funcs.C:285
 #, fuzzy
 msgid "No more insets"
 msgstr "Ni veè opomb"
@@ -12396,7 +12396,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "pisalni stroj"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1793
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1791
 #, fuzzy
 msgid "&Over-write"
 msgstr "pisalni stroj"
@@ -12733,14 +12733,29 @@ msgstr "Nobenih odkritih opozoril."
 msgid "Choose bind file"
 msgstr "Izberi vzorec"
 
+#: src/frontends/controllers/ControlPrefs.C:125
+#, fuzzy
+msgid "LyX bind files (*.bind)"
+msgstr "Zbirka podatkov:"
+
 #: src/frontends/controllers/ControlPrefs.C:131
 #, fuzzy
 msgid "Choose UI file"
 msgstr "Izberi vzorec"
 
+#: src/frontends/controllers/ControlPrefs.C:132
+#, fuzzy
+msgid "LyX UI files (*.ui)"
+msgstr " v datoteko ,"
+
 #: src/frontends/controllers/ControlPrefs.C:138
 #, fuzzy
 msgid "Choose keyboard map"
+msgstr "Kljuèna beseda:|#K"
+
+#: src/frontends/controllers/ControlPrefs.C:139
+#, fuzzy
+msgid "LyX keyboard maps (*.kmap)"
 msgstr "Kljuèna beseda:|#K"
 
 #: src/frontends/controllers/ControlPrefs.C:145
@@ -12748,10 +12763,19 @@ msgstr "Kljuèna beseda:|#K"
 msgid "Choose personal dictionary"
 msgstr "Vstavi v osebni slovar|#I"
 
+#: src/frontends/controllers/ControlPrefs.C:146
+#, fuzzy
+msgid "*.ispell"
+msgstr "Rumena"
+
 #: src/frontends/controllers/ControlPrint.C:73
 #, fuzzy
 msgid "Print to file"
 msgstr "Tiskaj na"
+
+#: src/frontends/controllers/ControlPrint.C:74
+msgid "PostScript files (*.ps)"
+msgstr ""
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
 #, fuzzy
@@ -12999,7 +13023,7 @@ msgstr "Separacija"
 msgid "Box Settings"
 msgstr "Izbire"
 
-#: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:33
+#: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:36
 #: src/frontends/xforms/FormChanges.C:32
 #, fuzzy
 msgid "Merge Changes"
@@ -13216,13 +13240,13 @@ msgstr "Prikrojitev LaTeXa|L"
 msgid "Table of Contents"
 msgstr "Vsebinsko kazalo"
 
-#: src/frontends/gtk/GToc.C:117 src/frontends/xforms/FormErrorList.C:83
+#: src/frontends/gtk/GToc.C:116 src/frontends/xforms/FormErrorList.C:83
 #: src/frontends/xforms/FormToc.C:103 src/frontends/xforms/FormToc.C:121
 #, fuzzy
 msgid "*** No Lists ***"
 msgstr "*** Ni spisa ***"
 
-#: src/frontends/gtk/GToc.C:136
+#: src/frontends/gtk/GToc.C:135
 #, fuzzy
 msgid "*** No Items ***"
 msgstr "*** Ni spisa ***"
@@ -13299,6 +13323,18 @@ msgstr "Literatura"
 #, fuzzy
 msgid "Branch Settings"
 msgstr "Postavka literature"
+
+#: src/frontends/qt2/QChanges.C:66
+#, fuzzy, c-format
+msgid ""
+"Change by %1$s\n"
+"\n"
+msgstr "GlavaProsojnice"
+
+#: src/frontends/qt2/QChanges.C:68
+#, c-format
+msgid "Change made at %1$s\n"
+msgstr ""
 
 #: src/frontends/qt2/QCommandBuffer.C:79
 #, fuzzy
@@ -13391,7 +13427,7 @@ msgstr "GlavaProsojnice"
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2163
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2199
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovièni"
@@ -13558,34 +13594,38 @@ msgid "Bold\t\\mathbf"
 msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:142
+msgid "Bold symbol\t\\boldsymbol"
+msgstr ""
+
+#: src/frontends/qt2/QMathDialog.C:143
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "brez serifov"
 
-#: src/frontends/qt2/QMathDialog.C:143
+#: src/frontends/qt2/QMathDialog.C:144
 #, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "le¾eèa"
 
-#: src/frontends/qt2/QMathDialog.C:144
+#: src/frontends/qt2/QMathDialog.C:145
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "pisalni stroj"
 
-#: src/frontends/qt2/QMathDialog.C:145
+#: src/frontends/qt2/QMathDialog.C:146
 msgid "Blackboard\t\\mathbb"
 msgstr ""
 
-#: src/frontends/qt2/QMathDialog.C:146
+#: src/frontends/qt2/QMathDialog.C:147
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: src/frontends/qt2/QMathDialog.C:147
+#: src/frontends/qt2/QMathDialog.C:148
 #, fuzzy
 msgid "Calligraphic\t\\mathcal"
 msgstr "Dru¾ina:|#D"
 
-#: src/frontends/qt2/QMathDialog.C:148
+#: src/frontends/qt2/QMathDialog.C:149
 msgid "Normal text mode\t\\textrm"
 msgstr ""
 
@@ -15107,10 +15147,20 @@ msgstr "uvo¾ena."
 msgid "Opened inset"
 msgstr "Odprt vstavek"
 
-#: src/insets/insetbibtex.C:95
+#: src/insets/insetbibtex.C:104
 #, fuzzy
 msgid "BibTeX Generated Bibliography"
 msgstr "Reference, generirane z BibTeXom"
+
+#: src/insets/insetbibtex.C:189
+msgid "Export Warning!"
+msgstr ""
+
+#: src/insets/insetbibtex.C:190
+msgid ""
+"There are spaces in the paths to your BibTeX databases.\n"
+"BibTeX will be unable to find them."
+msgstr ""
 
 #: src/insets/insetbox.C:57
 #, fuzzy
@@ -15150,6 +15200,11 @@ msgstr "Odprta zabele¾ka"
 #, fuzzy
 msgid "Opened Branch Inset"
 msgstr "Odprta zabele¾ka"
+
+#: src/insets/insetbranch.C:97
+#, fuzzy
+msgid "Branch: "
+msgstr "francosko"
 
 #: src/insets/insetcaption.C:77
 #, fuzzy
@@ -15233,12 +15288,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Napaka! Zaèasnega imenika ni moè odstraniti:"
 
-#: src/insets/insetgraphics.C:689
+#: src/insets/insetgraphics.C:693
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/insetgraphics.C:787
+#: src/insets/insetgraphics.C:791
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafièna datoteka|#D"
@@ -15365,12 +15420,12 @@ msgstr "LepSkl"
 msgid "Opened table"
 msgstr "Odpira se datoteko s pomoèjo"
 
-#: src/insets/insettabular.C:1561
+#: src/insets/insettabular.C:1552
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Veèstolpèna|s"
 
-#: src/insets/insettabular.C:1562
+#: src/insets/insettabular.C:1553
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -15613,12 +15668,12 @@ msgstr "Ime"
 msgid "Choose a filename to save document as"
 msgstr "Vnesite ime datoteke, pod katerim naj se shrani spis"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1636
+#: src/lyx_cb.C:135 src/lyxfunc.C:1634
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Vzorci"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1790
+#: src/lyx_cb.C:165 src/lyxfunc.C:1788
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -15626,7 +15681,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr "Spis uporablja neznani razred besedila \""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1792
+#: src/lyx_cb.C:167 src/lyxfunc.C:1790
 #, fuzzy
 msgid "Over-write document?"
 msgstr "®elite shraniti spis?"
@@ -16018,7 +16073,7 @@ msgstr "Zgradi program"
 msgid "ChkTeX"
 msgstr "Preveri TeX"
 
-#: src/lyxfunc.C:981 src/text3.C:1254
+#: src/lyxfunc.C:981 src/text3.C:1241
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -16050,45 +16105,45 @@ msgstr "Nastavitev videza spisa"
 msgid "Unable to save document defaults"
 msgstr "Shrani videz kot privzet|S"
 
-#: src/lyxfunc.C:1476
+#: src/lyxfunc.C:1477
 msgid "Converting document to new document class..."
 msgstr "Spis se spreminja v nov razred spisa..."
 
-#: src/lyxfunc.C:1483
+#: src/lyxfunc.C:1484
 msgid "Class switch"
 msgstr ""
 
-#: src/lyxfunc.C:1632
+#: src/lyxfunc.C:1630
 #, fuzzy
 msgid "Select template file"
 msgstr "Izberite ime izhodne datoteke"
 
-#: src/lyxfunc.C:1669
+#: src/lyxfunc.C:1667
 #, fuzzy
 msgid "Select document to open"
 msgstr "Izberite spis za odprtje"
 
-#: src/lyxfunc.C:1710
+#: src/lyxfunc.C:1708
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Odpira se spis"
 
-#: src/lyxfunc.C:1714
+#: src/lyxfunc.C:1712
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Ni odprtih spisov!%t"
 
-#: src/lyxfunc.C:1716
+#: src/lyxfunc.C:1714
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Spisa ni moè odpreti"
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1739
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Izberite spis za vstavitev"
 
-#: src/lyxfunc.C:1851
+#: src/lyxfunc.C:1849
 msgid "Welcome to LyX!"
 msgstr "Dobrodo¹li v LyXu!"
 
@@ -16545,7 +16600,7 @@ msgstr "Izberi do konca spisa"
 msgid " Macro: %1$s: "
 msgstr "Makroukaz: "
 
-#: src/mathed/math_amsarrayinset.C:110 src/mathed/math_hullinset.C:1137
+#: src/mathed/math_amsarrayinset.C:110 src/mathed/math_hullinset.C:1153
 #: src/mathed/math_splitinset.C:73 src/mathed/math_substackinset.C:69
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -16556,72 +16611,72 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1252
+#: src/mathed/math_gridinset.C:1272
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1258
+#: src/mathed/math_gridinset.C:1278
 #, fuzzy
 msgid "Only one column"
 msgstr "Odstrani stolpec|r"
 
-#: src/mathed/math_gridinset.C:1266
+#: src/mathed/math_gridinset.C:1286
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Nièesar ni moè storiti"
 
-#: src/mathed/math_gridinset.C:1275
+#: src/mathed/math_gridinset.C:1295
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1293
+#: src/mathed/math_gridinset.C:1313
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1012 src/mathed/math_hullinset.C:1021
+#: src/mathed/math_hullinset.C:1026 src/mathed/math_hullinset.C:1035
 #, fuzzy
 msgid "No number"
 msgstr "©tevilka"
 
-#: src/mathed/math_hullinset.C:1012 src/mathed/math_hullinset.C:1021
+#: src/mathed/math_hullinset.C:1026 src/mathed/math_hullinset.C:1035
 #, fuzzy
 msgid "Number"
 msgstr "©tevilka"
 
-#: src/mathed/math_hullinset.C:1036
+#: src/mathed/math_hullinset.C:1050
 msgid "Enter new label to insert:"
 msgstr "Vnesite novo oznako za vstavitev:"
 
-#: src/mathed/math_hullinset.C:1037
+#: src/mathed/math_hullinset.C:1051
 #, fuzzy
 msgid "Enter label:"
 msgstr "Vstavi oznako"
 
-#: src/mathed/math_hullinset.C:1110
+#: src/mathed/math_hullinset.C:1126
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1120
+#: src/mathed/math_hullinset.C:1136
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1130
+#: src/mathed/math_hullinset.C:1146
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1233 src/text3.C:166
+#: src/mathed/math_hullinset.C:1249 src/text3.C:167
 msgid "Math editor mode"
 msgstr "Naèin matematiènega urejanja"
 
-#: src/mathed/math_nestinset.C:755
+#: src/mathed/math_nestinset.C:763
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:758
+#: src/mathed/math_nestinset.C:766
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16703,17 +16758,17 @@ msgid ""
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:210
+#: src/text.C:214
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Neznana akcija"
 
-#: src/text.C:334
+#: src/text.C:338
 #, fuzzy
 msgid "Unknown token"
 msgstr "Neznana akcija"
 
-#: src/text.C:1165
+#: src/text.C:1173
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -16721,60 +16776,60 @@ msgid ""
 msgstr ""
 "Presledka na zaèetek odstavka ni moè vstaviti.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:1176
+#: src/text.C:1184
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:2129
+#: src/text.C:2165
 #, fuzzy
 msgid "Change: "
 msgstr "Strani:"
 
-#: src/text.C:2133
+#: src/text.C:2169
 #, fuzzy
 msgid " at "
 msgstr " za "
 
-#: src/text.C:2144
+#: src/text.C:2180
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Pisava: "
 
-#: src/text.C:2151
+#: src/text.C:2187
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", globina: "
 
-#: src/text.C:2157
+#: src/text.C:2193
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/text.C:2169
+#: src/text.C:2205
 msgid "Other ("
 msgstr "Drugi ("
 
-#: src/text.C:2178
+#: src/text.C:2214
 #, fuzzy
 msgid ", Inset: "
 msgstr ", globina: "
 
-#: src/text.C:2179
+#: src/text.C:2215
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Odstavek"
 
-#: src/text.C:2180
+#: src/text.C:2216
 #, fuzzy
 msgid ", Id: "
 msgstr ", globina: "
 
-#: src/text.C:2181
+#: src/text.C:2217
 #, fuzzy
 msgid ", Position: "
 msgstr "Podmena"
 
-#: src/text2.C:503
+#: src/text2.C:519
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -16782,12 +16837,12 @@ msgstr ""
 "Ni doloèena sprememba pisave. Uporabite Znak pod menujem Videz za doloèitev "
 "spremembe pisave."
 
-#: src/text2.C:545
+#: src/text2.C:561
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Nièesar ni moè storiti"
 
-#: src/text2.C:547
+#: src/text2.C:563
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
@@ -16809,14 +16864,48 @@ msgstr "Videz "
 msgid " not known"
 msgstr " ni znan"
 
-#: src/text3.C:1359 src/text3.C:1371
+#: src/text3.C:1346 src/text3.C:1358
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/text3.C:1504
+#: src/text3.C:1491
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
+
+#: src/toc.C:64 src/toc.C:133
+msgid "TOC"
+msgstr ""
+
+#: src/vspace.C:487
+#, fuzzy
+msgid "Default skip"
+msgstr "privzeta"
+
+#: src/vspace.C:490
+#, fuzzy
+msgid "Small skip"
+msgstr "Mali razmak"
+
+#: src/vspace.C:493
+#, fuzzy
+msgid "Medium skip"
+msgstr "Srednji razmak"
+
+#: src/vspace.C:496
+#, fuzzy
+msgid "Big skip"
+msgstr "Velik razmak"
+
+#: src/vspace.C:499
+#, fuzzy
+msgid "Vertical fill"
+msgstr "Navpièni presledki"
+
+#: src/vspace.C:506
+#, fuzzy
+msgid "protected"
+msgstr "Bli¾njica|#B"
 
 #, fuzzy
 #~ msgid "Available citation keys"
@@ -16946,10 +17035,6 @@ msgstr "Nastavljen videz odstavka"
 #, fuzzy
 #~ msgid "Box settings"
 #~ msgstr "Izbire"
-
-#, fuzzy
-#~ msgid "Changes"
-#~ msgstr "GlavaProsojnice"
 
 #, fuzzy
 #~ msgid "Character"
@@ -17205,10 +17290,6 @@ msgstr "Nastavljen videz odstavka"
 #~ msgstr "Zbirka podatkov:"
 
 #, fuzzy
-#~ msgid "Branch"
-#~ msgstr "francosko"
-
-#, fuzzy
 #~ msgid "Add the selected entry to the current citation reference."
 #~ msgstr "_Vnesi nov citat"
 
@@ -17307,10 +17388,6 @@ msgstr "Nastavljen videz odstavka"
 
 #, fuzzy
 #~ msgid "BibTeX style files (*.bst)"
-#~ msgstr "Zbirka podatkov:"
-
-#, fuzzy
-#~ msgid "BibTeX database files (*.bib)"
 #~ msgstr "Zbirka podatkov:"
 
 #, fuzzy

@@ -38,14 +38,15 @@ set dummy $ac_prog ; ac_word=$[2]
 if test -n "$ac_word"; then
   MSG_CHECKING([for \"$ac_word\"],[+])
   IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS=":"
-  for ac_dir in $PATH; do
-    test -z "$ac_dir" && ac_dir=.
+  save_PATH=$PATH ; PATH=:$PATH
+  for ac_dir in ${PATH} ; do
     if test -x [$ac_dir/$ac_word]; then
       $2="$ac_prog"
       break
     fi
   done
   IFS="$ac_save_ifs"
+  PATH=$save_PATH
 
   if test -n "[$]$2"; then
     ac_result=yes
@@ -198,7 +199,7 @@ case `uname -s` in
 esac
 
 #### Create the build directories if necessary
-for dir in bind clipart doc examples help images kbd layouts reLyX \
+for dir in bind clipart doc examples images kbd layouts \
     scripts templates ui ; do
   test ! -d $dir && mkdir $dir
 done
@@ -258,12 +259,8 @@ SEARCH_PROG([for a raster image editor], RASTERIMAGE_EDITOR, gimp)
 
 SEARCH_PROG([for a text editor], TEXT_EDITOR, xemacs gvim kedit kwrite kate nedit gedit notepad)
 
-# Search for an installed reLyX or a ready-to-install one
-save_PATH=${PATH}
-PATH=${PATH}:./reLyX/
-SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command, "reLyX -f \$\$i")
-PATH=${save_PATH}
-tex_to_lyx_command=`echo $tex_to_lyx_command | sed "s,reLyX,reLyX$version_suffix,"`
+# Search for an installed tex2lyx or a ready-to-install one
+SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command, "$PWD/../src/tex2lyx/tex2lyx -f \$\$i" "tex2lyx$version_suffix -f \$\$i")
 
 SEARCH_PROG([for a Noweb -> LyX converter],literate_to_lyx_command,"noweb2lyx \$\$i \$\$o")
 literate_to_lyx_command=`echo $literate_to_lyx_command | sed "s,noweb2lyx,noweb2lyx$version_suffix,"`

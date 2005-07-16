@@ -79,7 +79,7 @@ private:
 
 	/// Converters tabfolder
 	boost::scoped_ptr<FD_preferences_inner_tab> converters_tab_;
-	/// reLyX and other import/input stuff
+	/// import/input stuff
 	boost::scoped_ptr<FD_preferences_inner_tab> inputs_tab_;
 	/// HCI configuration
 	boost::scoped_ptr<FD_preferences_inner_tab> look_n_feel_tab_;

@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += texput.log textclass.lst packages.lst lyxrc.defaults
 
-SUBDIRS = doc reLyX lyx2lyx
+SUBDIRS = doc lyx2lyx
 
 EXTRA_DIST = \
 	configure.m4 \
@@ -15,7 +15,7 @@ CHMOD = chmod
 # and chmod manually in install-data-hook.
 dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx configure \
 	       lyxrc.defaults textclass.lst packages.lst external_templates \
-	       encodings languages symbols
+	       encodings languages symbols syntax.default
 
 binddir = $(pkgdatadir)/bind
 dist_bind_DATA = \

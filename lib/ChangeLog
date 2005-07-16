@@ -1,3 +1,11 @@
+2005-07-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* syntax.default: file moved here from reLyX dir
+	* configure.m4: fix path search, search for tex2lyx instead of
+	reLyX, don't create help dir
+	* Makefile.am: remove reLyx stuff, add syntax.default to pkg_DATA
+	* Remove the reLyX dir
+
 2005-07-15  José Matos <jamatos@lyx.org>
 
 	* Makefile.am: remove lyx2lyx references, place it only as a

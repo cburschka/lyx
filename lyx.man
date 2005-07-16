@@ -179,7 +179,7 @@ strings in other languages.
 .I LIBDIR
 is the system directory. This is usually /usr/local/share/lyx on UNIX and %X11ROOT%\\XFree86\\lib\\X11\\lyx on OS/2 with XFree.
 .SH SEE ALSO
-reLyX(1), latex(1), xforms(5).
+tex2lyx(1), latex(1).
 
 Full documentation in either native \fBLyX\fR or postscript format.
 .SH BUGS/LIMITATIONS
@@ -192,10 +192,10 @@ http://bugzilla.lyx.org/. Don't forget to mention which version you
 are having problems with!
 
 \fBLaTeX\fR import is still not perfect and may produce buggy *.lyx
-files. Consult the \fBreLyX\fR documentation.
+files. Consult the \fBtex2lyx\fR documentation.
 
 .SH AUTHORS
-Copyright
+Copyright       
 .Cr
 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002 by Matthias Ettrich
 (ettrich@informatik.uni-tuebingen.de) and the rest of the \fBLyX

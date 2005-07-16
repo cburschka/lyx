@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-06-28 14:09+0200\n"
+"POT-Creation-Date: 2005-07-15 20:51+0200\n"
 "PO-Revision-Date: 2004-06-07 11:40+0200\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -2317,7 +2317,7 @@ msgstr "Saut de page dans la ligne en cours|#S"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2166
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2202
 msgid "Double"
 msgstr "Double"
 
@@ -2901,7 +2901,7 @@ msgstr "Bidon"
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
 #: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:623
-#: src/lyxfunc.C:785 src/lyxfunc.C:1793 src/lyxvc.C:168
+#: src/lyxfunc.C:785 src/lyxfunc.C:1791 src/lyxvc.C:168
 msgid "&Cancel"
 msgstr "&Annuler"
 
@@ -4062,7 +4062,7 @@ msgstr "Grands Opérateurs"
 msgid "Relations"
 msgstr "Relations Binaires"
 
-#: src/frontends/qt2/ui/QMathDialogBase.ui:511 lib/languages:31
+#: src/frontends/qt2/ui/QMathDialogBase.ui:511 lib/languages:32
 #: src/frontends/gtk/Dialogs.C:338 src/frontends/xforms/Dialogs.C:314
 msgid "Greek"
 msgstr "Grec"
@@ -4198,7 +4198,7 @@ msgid "Print as grey text"
 msgstr "Imprime toutes les pages"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2160
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2196
 msgid "Single"
 msgstr "Simple"
 
@@ -5910,7 +5910,7 @@ msgstr "Cas"
 #: lib/layouts/spie.layout:19 lib/layouts/agu_stdsections.inc:29
 #: lib/layouts/aguplus.inc:27 lib/layouts/db_stdsections.inc:27
 #: lib/layouts/numarticle.inc:12 lib/layouts/numreport.inc:20
-#: lib/layouts/numrevtex.inc:5 lib/layouts/scrclass.inc:59
+#: lib/layouts/numrevtex.inc:5 lib/layouts/scrclass.inc:60
 #: lib/layouts/stdsections.inc:50 lib/layouts/svjour.inc:52
 msgid "Section"
 msgstr "Section"
@@ -5928,7 +5928,7 @@ msgstr "Section"
 #: lib/layouts/revtex4.layout:54 lib/layouts/siamltex.layout:58
 #: lib/layouts/agu_stdsections.inc:39 lib/layouts/aguplus.inc:41
 #: lib/layouts/db_stdsections.inc:35 lib/layouts/numarticle.inc:21
-#: lib/layouts/numrevtex.inc:14 lib/layouts/scrclass.inc:66
+#: lib/layouts/numrevtex.inc:14 lib/layouts/scrclass.inc:67
 #: lib/layouts/stdsections.inc:71 lib/layouts/svjour.inc:61
 msgid "Subsection"
 msgstr "SousSection"
@@ -5944,7 +5944,7 @@ msgstr "SousSection"
 #: lib/layouts/revtex.layout:56 lib/layouts/revtex4.layout:62
 #: lib/layouts/siamltex.layout:64 lib/layouts/agu_stdsections.inc:49
 #: lib/layouts/db_stdsections.inc:43 lib/layouts/numarticle.inc:30
-#: lib/layouts/numrevtex.inc:23 lib/layouts/scrclass.inc:73
+#: lib/layouts/numrevtex.inc:23 lib/layouts/scrclass.inc:74
 #: lib/layouts/stdsections.inc:84 lib/layouts/svjour.inc:70
 msgid "Subsubsection"
 msgstr "SousSousSection"
@@ -5982,7 +5982,7 @@ msgstr "SousSousSection*"
 #: lib/layouts/siamltex.layout:142 lib/layouts/spie.layout:71
 #: lib/layouts/svglobal.layout:28 lib/layouts/svjog.layout:33
 #: lib/layouts/agu_stdtitle.inc:191 lib/layouts/amsdefs.inc:124
-#: lib/layouts/db_stdstruct.inc:10 lib/layouts/scrclass.inc:214
+#: lib/layouts/db_stdstruct.inc:10 lib/layouts/scrclass.inc:215
 #: lib/layouts/stdstruct.inc:11 lib/layouts/stdstruct.inc:26
 #: lib/layouts/svjour.inc:252 src/output_plaintext.C:155
 msgid "Abstract"
@@ -6022,7 +6022,7 @@ msgstr "Mots-Clés"
 #: lib/layouts/scrreprt.layout:10 lib/layouts/scrreprt.layout:12
 #: lib/layouts/siamltex.layout:182 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:225
-#: lib/layouts/scrclass.inc:221 lib/layouts/stdstruct.inc:38
+#: lib/layouts/scrclass.inc:222 lib/layouts/stdstruct.inc:38
 #: lib/layouts/svjour.inc:326 src/frontends/qt2/QDocumentDialog.C:82
 msgid "Bibliography"
 msgstr "Bibliographie"
@@ -6092,7 +6092,7 @@ msgstr "Description"
 
 #: lib/layouts/aa.layout:54 lib/layouts/aapaper.layout:56
 #: lib/layouts/aastex.layout:84 lib/layouts/egs.layout:126
-#: lib/layouts/scrclass.inc:38 lib/layouts/stdlists.inc:68
+#: lib/layouts/scrclass.inc:39 lib/layouts/stdlists.inc:68
 #: lib/ui/stdtoolbars.ui:68
 msgid "List"
 msgstr "Liste"
@@ -6114,7 +6114,7 @@ msgstr "Liste"
 #: lib/layouts/scrlttr2.layout:276 lib/layouts/siamltex.layout:108
 #: lib/layouts/svprobth.layout:34 lib/layouts/agu_stdtitle.inc:244
 #: lib/layouts/amsdefs.inc:59 lib/layouts/db_stdtitle.inc:12
-#: lib/layouts/scrclass.inc:144 lib/layouts/stdtitle.inc:11
+#: lib/layouts/scrclass.inc:145 lib/layouts/stdtitle.inc:11
 #: lib/layouts/svjour.inc:129
 msgid "Title"
 msgstr "Titre"
@@ -6139,7 +6139,7 @@ msgstr "SousTitre"
 #: lib/layouts/revtex.layout:97 lib/layouts/revtex4.layout:114
 #: lib/layouts/siamltex.layout:125 lib/layouts/svprobth.layout:51
 #: lib/layouts/agu_stdtitle.inc:165 lib/layouts/amsdefs.inc:80
-#: lib/layouts/db_stdtitle.inc:20 lib/layouts/scrclass.inc:152
+#: lib/layouts/db_stdtitle.inc:20 lib/layouts/scrclass.inc:153
 #: lib/layouts/stdtitle.inc:30 lib/layouts/svjour.inc:182
 msgid "Author"
 msgstr "Auteur"
@@ -6175,7 +6175,7 @@ msgstr "Courrier"
 #: lib/layouts/scrlettr.layout:172 lib/layouts/scrlttr2.layout:244
 #: lib/layouts/siamltex.layout:136 lib/layouts/agu_stdtitle.inc:236
 #: lib/layouts/amsdefs.inc:100 lib/layouts/db_stdtitle.inc:34
-#: lib/layouts/scrclass.inc:159 lib/layouts/stdtitle.inc:49
+#: lib/layouts/scrclass.inc:160 lib/layouts/stdtitle.inc:49
 #: lib/layouts/svjour.inc:230
 msgid "Date"
 msgstr "Date"
@@ -6235,7 +6235,7 @@ msgstr "Dictionnaire de Synonymes"
 #: lib/layouts/revtex4.layout:70 lib/layouts/siamltex.layout:70
 #: lib/layouts/agu_stdsections.inc:59 lib/layouts/aguplus.inc:55
 #: lib/layouts/db_stdsections.inc:51 lib/layouts/numarticle.inc:39
-#: lib/layouts/numrevtex.inc:32 lib/layouts/scrclass.inc:80
+#: lib/layouts/numrevtex.inc:32 lib/layouts/scrclass.inc:81
 #: lib/layouts/stdsections.inc:96 lib/layouts/svjour.inc:79
 msgid "Paragraph"
 msgstr "Paragraphe"
@@ -6737,7 +6737,7 @@ msgstr ""
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
 #: lib/layouts/seminar.layout:24 lib/layouts/agu_stdsections.inc:11
 #: lib/layouts/db_stdsections.inc:11 lib/layouts/numarticle.inc:4
-#: lib/layouts/numreport.inc:6 lib/layouts/scrclass.inc:44
+#: lib/layouts/numreport.inc:6 lib/layouts/scrclass.inc:45
 #: lib/layouts/stdsections.inc:10
 msgid "Part"
 msgstr "Partie"
@@ -7071,7 +7071,7 @@ msgstr "Datum"
 #: lib/layouts/linuxdoc.layout:153 lib/layouts/llncs.layout:77
 #: lib/layouts/memoir.layout:69 lib/layouts/paper.layout:80
 #: lib/layouts/agu_stdsections.inc:69 lib/layouts/db_stdsections.inc:59
-#: lib/layouts/numarticle.inc:48 lib/layouts/scrclass.inc:87
+#: lib/layouts/numarticle.inc:48 lib/layouts/scrclass.inc:88
 #: lib/layouts/stdsections.inc:104 lib/layouts/svjour.inc:88
 msgid "Subparagraph"
 msgstr "SousParagraphe"
@@ -8262,7 +8262,7 @@ msgstr "SGML"
 #: lib/layouts/llncs.layout:38 lib/layouts/memoir.layout:44
 #: lib/layouts/scrbook.layout:15 lib/layouts/agu_stdsections.inc:20
 #: lib/layouts/db_stdsections.inc:19 lib/layouts/numreport.inc:11
-#: lib/layouts/scrclass.inc:51 lib/layouts/stdsections.inc:30
+#: lib/layouts/scrclass.inc:52 lib/layouts/stdsections.inc:30
 msgid "Chapter"
 msgstr "Chapitre"
 
@@ -8571,7 +8571,7 @@ msgid "Title:"
 msgstr "Titre"
 
 #: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:284
-#: lib/layouts/scrclass.inc:166
+#: lib/layouts/scrclass.inc:167
 msgid "Subject"
 msgstr "Sujet"
 
@@ -9457,67 +9457,67 @@ msgstr "SousSousSection"
 msgid "   \\alph{paragraph}."
 msgstr ""
 
-#: lib/layouts/scrclass.inc:96
+#: lib/layouts/scrclass.inc:97
 #, fuzzy
 msgid "Addpart"
 msgstr "Ajouter"
 
-#: lib/layouts/scrclass.inc:102
+#: lib/layouts/scrclass.inc:103
 msgid "Addchap"
 msgstr "AjoutChap"
 
-#: lib/layouts/scrclass.inc:108
+#: lib/layouts/scrclass.inc:109
 msgid "Addsec"
 msgstr "AjoutSec"
 
-#: lib/layouts/scrclass.inc:114
+#: lib/layouts/scrclass.inc:115
 msgid "Addchap*"
 msgstr "AjoutChap*"
 
-#: lib/layouts/scrclass.inc:120
+#: lib/layouts/scrclass.inc:121
 msgid "Addsec*"
 msgstr "AjoutSec*"
 
-#: lib/layouts/scrclass.inc:126
+#: lib/layouts/scrclass.inc:127
 msgid "Minisec"
 msgstr "Minisec"
 
-#: lib/layouts/scrclass.inc:172
+#: lib/layouts/scrclass.inc:173
 msgid "Publishers"
 msgstr "Éditeurs"
 
-#: lib/layouts/scrclass.inc:178 lib/layouts/svjour.inc:121
+#: lib/layouts/scrclass.inc:179 lib/layouts/svjour.inc:121
 msgid "Dedication"
 msgstr "Dédicace"
 
-#: lib/layouts/scrclass.inc:184
+#: lib/layouts/scrclass.inc:185
 msgid "Titlehead"
 msgstr "En-têteTitre"
 
-#: lib/layouts/scrclass.inc:195
+#: lib/layouts/scrclass.inc:196
 msgid "Uppertitleback"
 msgstr "VersoTitreHaut"
 
-#: lib/layouts/scrclass.inc:201
+#: lib/layouts/scrclass.inc:202
 msgid "Lowertitleback"
 msgstr "VersoTitreBas"
 
 # contrainte de longueur
-#: lib/layouts/scrclass.inc:207
+#: lib/layouts/scrclass.inc:208
 msgid "Extratitle"
 msgstr "TitreSuppl."
 
-#: lib/layouts/scrclass.inc:229
+#: lib/layouts/scrclass.inc:230
 #, fuzzy
 msgid "Captionabove"
 msgstr "Légende"
 
-#: lib/layouts/scrclass.inc:235
+#: lib/layouts/scrclass.inc:236
 #, fuzzy
 msgid "Captionbelow"
 msgstr "Légende"
 
-#: lib/layouts/scrclass.inc:241
+#: lib/layouts/scrclass.inc:242
 #, fuzzy
 msgid "Dictum"
 msgstr "Datum"
@@ -9681,122 +9681,122 @@ msgstr "Estonien"
 msgid "Finnish"
 msgstr "Finnois"
 
-#: lib/languages:25
+#: lib/languages:26
 msgid "French"
 msgstr "Français"
 
-#: lib/languages:26
+#: lib/languages:27
 msgid "Galician"
 msgstr "Galicien"
 
-#: lib/languages:29
+#: lib/languages:30
 msgid "German"
 msgstr "Allemand"
 
-#: lib/languages:30
+#: lib/languages:31
 msgid "German (new spelling)"
 msgstr "Allemand (nouvelle orthographe)"
 
-#: lib/languages:32
+#: lib/languages:33
 msgid "Hebrew"
 msgstr "Hébreu"
 
-#: lib/languages:34
+#: lib/languages:35
 msgid "Irish"
 msgstr "Irlandais"
 
-#: lib/languages:35
+#: lib/languages:36
 msgid "Italian"
 msgstr "Italien"
 
-#: lib/languages:36
+#: lib/languages:37
 msgid "Kazakh"
 msgstr "Kazakh"
 
-#: lib/languages:39
+#: lib/languages:40
 #, fuzzy
 msgid "Lithuanian"
 msgstr "Largeur"
 
-#: lib/languages:40
+#: lib/languages:41
 #, fuzzy
 msgid "Latvian"
 msgstr "Croate"
 
-#: lib/languages:41
+#: lib/languages:42
 msgid "Icelandic"
 msgstr ""
 
-#: lib/languages:42
+#: lib/languages:43
 msgid "Magyar"
 msgstr "Magyar"
 
-#: lib/languages:43
+#: lib/languages:44
 msgid "Norsk"
 msgstr "Norvégien"
 
-#: lib/languages:44
+#: lib/languages:45
 #, fuzzy
 msgid "Nynorsk"
 msgstr "Norvégien"
 
-#: lib/languages:45
+#: lib/languages:46
 msgid "Polish"
 msgstr "Polonais"
 
-#: lib/languages:46
+#: lib/languages:47
 msgid "Portugese"
 msgstr "Portugais"
 
-#: lib/languages:47
+#: lib/languages:48
 msgid "Romanian"
 msgstr "Roumain"
 
-#: lib/languages:48
+#: lib/languages:49
 msgid "Russian"
 msgstr "Russe"
 
-#: lib/languages:49
+#: lib/languages:50
 msgid "Scottish"
 msgstr "Écossais"
 
-#: lib/languages:50
+#: lib/languages:51
 msgid "Serbian"
 msgstr "Serbe"
 
-#: lib/languages:51
+#: lib/languages:52
 msgid "Serbo-Croatian"
 msgstr "Serbo-Croate"
 
-#: lib/languages:52
+#: lib/languages:53
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: lib/languages:53
+#: lib/languages:54
 msgid "Slovak"
 msgstr "Slovaque"
 
-#: lib/languages:54
+#: lib/languages:55
 msgid "Slovene"
 msgstr "Slovène"
 
-#: lib/languages:55
+#: lib/languages:56
 msgid "Swedish"
 msgstr "Suédois"
 
-#: lib/languages:56
+#: lib/languages:57
 msgid "Thai"
 msgstr "Thaï"
 
-#: lib/languages:57
+#: lib/languages:58
 msgid "Turkish"
 msgstr "Turc"
 
-#: lib/languages:58
+#: lib/languages:59
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: lib/languages:61
+#: lib/languages:62
 msgid "Welsh"
 msgstr "Gallois"
 
@@ -11442,55 +11442,55 @@ msgstr "Coller"
 msgid "Formatting document..."
 msgstr "Formatage du document..."
 
-#: src/BufferView_pimpl.C:702
+#: src/BufferView_pimpl.C:703
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Enregistré le signet %1$d"
 
-#: src/BufferView_pimpl.C:735
+#: src/BufferView_pimpl.C:736
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Déplacé au signet %1$d"
 
-#: src/BufferView_pimpl.C:794
+#: src/BufferView_pimpl.C:795
 msgid "Select LyX document to insert"
 msgstr "Choisir le document à insérer"
 
-#: src/BufferView_pimpl.C:796 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:797 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:133
-#: src/lyxfunc.C:1634 src/lyxfunc.C:1671 src/lyxfunc.C:1746
+#: src/lyxfunc.C:1632 src/lyxfunc.C:1669 src/lyxfunc.C:1744
 msgid "Documents|#o#O"
 msgstr "Documents|#D"
 
-#: src/BufferView_pimpl.C:798 src/lyxfunc.C:1673 src/lyxfunc.C:1748
+#: src/BufferView_pimpl.C:799 src/lyxfunc.C:1671 src/lyxfunc.C:1746
 msgid "Examples|#E#e"
 msgstr "Exemples|#E#e"
 
-#: src/BufferView_pimpl.C:803 src/lyx_cb.C:141 src/lyxfunc.C:1641
-#: src/lyxfunc.C:1678
+#: src/BufferView_pimpl.C:804 src/lyx_cb.C:141 src/lyxfunc.C:1639
+#: src/lyxfunc.C:1676
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx|Documents LyX (*.lyx)"
 
-#: src/BufferView_pimpl.C:813 src/lyxfunc.C:1688 src/lyxfunc.C:1766
-#: src/lyxfunc.C:1780 src/lyxfunc.C:1796
+#: src/BufferView_pimpl.C:814 src/lyxfunc.C:1686 src/lyxfunc.C:1764
+#: src/lyxfunc.C:1778 src/lyxfunc.C:1794
 msgid "Canceled."
 msgstr "Annulé."
 
-#: src/BufferView_pimpl.C:823
+#: src/BufferView_pimpl.C:824
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertion du document %1$s..."
 
-#: src/BufferView_pimpl.C:834
+#: src/BufferView_pimpl.C:835
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Document %1$s inséré."
 
-#: src/BufferView_pimpl.C:835
+#: src/BufferView_pimpl.C:836
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Impossible d'insérer le document %1$s"
@@ -11870,7 +11870,7 @@ msgstr "dans la classe choisie"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:443 src/text.C:335
+#: src/buffer.C:443 src/text.C:339
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Élément inconnu : %1$s %2$s\n"
@@ -12107,7 +12107,7 @@ msgstr "Le document n'a pas pu être enregistré !"
 msgid "LyX will not be able to produce output."
 msgstr "LyX ne sera pas à même de produire correctement une sortie."
 
-#: src/bufferview_funcs.C:281
+#: src/bufferview_funcs.C:285
 msgid "No more insets"
 msgstr "Pas d'autre insert"
 
@@ -12309,7 +12309,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Chasse fixe"
 
-#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1793
+#: src/exporter.C:77 src/lyx_cb.C:168 src/lyxfunc.C:1791
 #, fuzzy
 msgid "&Over-write"
 msgstr "Chasse fixe"
@@ -12624,21 +12624,46 @@ msgstr "Fichier log du contrôle de version introuvable."
 msgid "Choose bind file"
 msgstr "Choisir un fichier de raccourcis"
 
+# contrainte de longueur
+#: src/frontends/controllers/ControlPrefs.C:125
+#, fuzzy
+msgid "LyX bind files (*.bind)"
+msgstr "Fichiers de Données BibTeX (*.bib)"
+
 #: src/frontends/controllers/ControlPrefs.C:131
 msgid "Choose UI file"
 msgstr "Choisir un fichier d'interface"
+
+#: src/frontends/controllers/ControlPrefs.C:132
+#, fuzzy
+msgid "LyX UI files (*.ui)"
+msgstr "Tous les fichiers (*)"
 
 #: src/frontends/controllers/ControlPrefs.C:138
 msgid "Choose keyboard map"
 msgstr "Choisir la réaffectation clavier"
 
+#: src/frontends/controllers/ControlPrefs.C:139
+#, fuzzy
+msgid "LyX keyboard maps (*.kmap)"
+msgstr "Réaffectation clavier"
+
 #: src/frontends/controllers/ControlPrefs.C:145
 msgid "Choose personal dictionary"
 msgstr "Choisir le dictionnaire personnel"
 
+#: src/frontends/controllers/ControlPrefs.C:146
+#, fuzzy
+msgid "*.ispell"
+msgstr "Case"
+
 #: src/frontends/controllers/ControlPrint.C:73
 msgid "Print to file"
 msgstr "Imprimer vers"
+
+#: src/frontends/controllers/ControlPrint.C:74
+msgid "PostScript files (*.ps)"
+msgstr "Fichiers PostScript (*.ps)"
 
 #: src/frontends/controllers/ControlSpellchecker.C:111
 #, fuzzy
@@ -12864,7 +12889,7 @@ msgstr "Opérateurs AMS"
 msgid "Box Settings"
 msgstr "Options de Flottant"
 
-#: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:33
+#: src/frontends/gtk/GChanges.C:33 src/frontends/qt2/QChanges.C:36
 #: src/frontends/xforms/FormChanges.C:32
 #, fuzzy
 msgid "Merge Changes"
@@ -13076,12 +13101,12 @@ msgstr "Informations TeX|X"
 msgid "Table of Contents"
 msgstr "Table des Matières"
 
-#: src/frontends/gtk/GToc.C:117 src/frontends/xforms/FormErrorList.C:83
+#: src/frontends/gtk/GToc.C:116 src/frontends/xforms/FormErrorList.C:83
 #: src/frontends/xforms/FormToc.C:103 src/frontends/xforms/FormToc.C:121
 msgid "*** No Lists ***"
 msgstr "*** Pas de Liste ***"
 
-#: src/frontends/gtk/GToc.C:136
+#: src/frontends/gtk/GToc.C:135
 #, fuzzy
 msgid "*** No Items ***"
 msgstr "*** Pas de Liste ***"
@@ -13160,6 +13185,18 @@ msgstr "Bibliographie"
 #, fuzzy
 msgid "Branch Settings"
 msgstr "Entrée Bibliographique"
+
+#: src/frontends/qt2/QChanges.C:66
+#, fuzzy, c-format
+msgid ""
+"Change by %1$s\n"
+"\n"
+msgstr "en-têtes"
+
+#: src/frontends/qt2/QChanges.C:68
+#, c-format
+msgid "Change made at %1$s\n"
+msgstr ""
 
 #: src/frontends/qt2/QCommandBuffer.C:79
 #, fuzzy
@@ -13244,7 +13281,7 @@ msgstr "en-têtes"
 msgid "fancy"
 msgstr "sophistiquée"
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2163
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2199
 msgid "OneHalf"
 msgstr "Un et Demi"
 
@@ -13410,34 +13447,38 @@ msgid "Bold\t\\mathbf"
 msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:142
+msgid "Bold symbol\t\\boldsymbol"
+msgstr ""
+
+#: src/frontends/qt2/QMathDialog.C:143
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Sans empattement"
 
-#: src/frontends/qt2/QMathDialog.C:143
+#: src/frontends/qt2/QMathDialog.C:144
 #, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "Italique"
 
-#: src/frontends/qt2/QMathDialog.C:144
+#: src/frontends/qt2/QMathDialog.C:145
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "Chasse fixe"
 
-#: src/frontends/qt2/QMathDialog.C:145
+#: src/frontends/qt2/QMathDialog.C:146
 msgid "Blackboard\t\\mathbb"
 msgstr ""
 
-#: src/frontends/qt2/QMathDialog.C:146
+#: src/frontends/qt2/QMathDialog.C:147
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: src/frontends/qt2/QMathDialog.C:147
+#: src/frontends/qt2/QMathDialog.C:148
 #, fuzzy
 msgid "Calligraphic\t\\mathcal"
 msgstr "Math Famille Calligraphique"
 
-#: src/frontends/qt2/QMathDialog.C:148
+#: src/frontends/qt2/QMathDialog.C:149
 msgid "Normal text mode\t\\textrm"
 msgstr ""
 
@@ -14963,10 +15004,20 @@ msgstr "importé."
 msgid "Opened inset"
 msgstr "Insert ouvert"
 
-#: src/insets/insetbibtex.C:95
+#: src/insets/insetbibtex.C:104
 #, fuzzy
 msgid "BibTeX Generated Bibliography"
 msgstr "Références BibTeX"
+
+#: src/insets/insetbibtex.C:189
+msgid "Export Warning!"
+msgstr ""
+
+#: src/insets/insetbibtex.C:190
+msgid ""
+"There are spaces in the paths to your BibTeX databases.\n"
+"BibTeX will be unable to find them."
+msgstr ""
 
 #: src/insets/insetbox.C:57
 #, fuzzy
@@ -15007,6 +15058,11 @@ msgstr "Insert de note ouvert"
 #, fuzzy
 msgid "Opened Branch Inset"
 msgstr "Insert d'enrobage ouvert"
+
+#: src/insets/insetbranch.C:97
+#, fuzzy
+msgid "Branch: "
+msgstr "Français"
 
 # à revoir
 #: src/insets/insetcaption.C:77
@@ -15089,12 +15145,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Erreur ! Impossible de supprimer le répertoire temporaire :"
 
-#: src/insets/insetgraphics.C:689
+#: src/insets/insetgraphics.C:693
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/insetgraphics.C:787
+#: src/insets/insetgraphics.C:791
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "Fichier graphique : %1$s"
@@ -15210,12 +15266,12 @@ msgstr "PrettyRef : "
 msgid "Opened table"
 msgstr "Ouvrir"
 
-#: src/insets/insettabular.C:1561
+#: src/insets/insettabular.C:1552
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Erreur lors de la mise à l'échelle"
 
-#: src/insets/insettabular.C:1562
+#: src/insets/insettabular.C:1553
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -15441,11 +15497,11 @@ msgstr "Nom"
 msgid "Choose a filename to save document as"
 msgstr "Choisir le nom sous lequel enregistrer le fichier"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1636
+#: src/lyx_cb.C:135 src/lyxfunc.C:1634
 msgid "Templates|#T#t"
 msgstr "Modèles|#M#m"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1790
+#: src/lyx_cb.C:165 src/lyxfunc.C:1788
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -15453,7 +15509,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr "Le document utilise une classe inconnue « %1$s »."
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1792
+#: src/lyx_cb.C:167 src/lyxfunc.C:1790
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Enregistrer le document ?"
@@ -15834,7 +15890,7 @@ msgstr "Fichier log de la compilation"
 msgid "ChkTeX"
 msgstr "Correction TeX"
 
-#: src/lyxfunc.C:981 src/text3.C:1254
+#: src/lyxfunc.C:981 src/text3.C:1241
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
@@ -15868,44 +15924,44 @@ msgstr "Le document n'a pas pu être enregistré !"
 msgid "Unable to save document defaults"
 msgstr "Retenir ces Valeurs par Défaut|#D"
 
-#: src/lyxfunc.C:1476
+#: src/lyxfunc.C:1477
 msgid "Converting document to new document class..."
 msgstr "Conversion du document vers sa nouvelle classe..."
 
-#: src/lyxfunc.C:1483
+#: src/lyxfunc.C:1484
 #, fuzzy
 msgid "Class switch"
 msgstr " !"
 
-#: src/lyxfunc.C:1632
+#: src/lyxfunc.C:1630
 msgid "Select template file"
 msgstr "Choisir le modèle"
 
-#: src/lyxfunc.C:1669
+#: src/lyxfunc.C:1667
 msgid "Select document to open"
 msgstr "Choisir le document à ouvrir"
 
-#: src/lyxfunc.C:1710
+#: src/lyxfunc.C:1708
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Ouverture du document %1$s..."
 
-#: src/lyxfunc.C:1714
+#: src/lyxfunc.C:1712
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Document %1$s ouvert."
 
-#: src/lyxfunc.C:1716
+#: src/lyxfunc.C:1714
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Impossible d'ouvrir le document %1$s"
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1739
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Choisir le fichier %1$s à importer"
 
-#: src/lyxfunc.C:1851
+#: src/lyxfunc.C:1849
 msgid "Welcome to LyX!"
 msgstr "Bienvenue dans LyX !"
 
@@ -16457,7 +16513,7 @@ msgstr "Sélectionner jusqu'à la fin du document"
 msgid " Macro: %1$s: "
 msgstr " Macro : %s : "
 
-#: src/mathed/math_amsarrayinset.C:110 src/mathed/math_hullinset.C:1137
+#: src/mathed/math_amsarrayinset.C:110 src/mathed/math_hullinset.C:1153
 #: src/mathed/math_splitinset.C:73 src/mathed/math_substackinset.C:69
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -16468,70 +16524,70 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1252
+#: src/mathed/math_gridinset.C:1272
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1258
+#: src/mathed/math_gridinset.C:1278
 #, fuzzy
 msgid "Only one column"
 msgstr "Supprimer Colonne|p"
 
-#: src/mathed/math_gridinset.C:1266
+#: src/mathed/math_gridinset.C:1286
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Rien à faire"
 
-#: src/mathed/math_gridinset.C:1275
+#: src/mathed/math_gridinset.C:1295
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1293
+#: src/mathed/math_gridinset.C:1313
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1012 src/mathed/math_hullinset.C:1021
+#: src/mathed/math_hullinset.C:1026 src/mathed/math_hullinset.C:1035
 msgid "No number"
 msgstr "Pas de chiffre"
 
-#: src/mathed/math_hullinset.C:1012 src/mathed/math_hullinset.C:1021
+#: src/mathed/math_hullinset.C:1026 src/mathed/math_hullinset.C:1035
 #, fuzzy
 msgid "Number"
 msgstr "Chiffre"
 
-#: src/mathed/math_hullinset.C:1036
+#: src/mathed/math_hullinset.C:1050
 msgid "Enter new label to insert:"
 msgstr "Entrez la nouvelle étiquette :"
 
-#: src/mathed/math_hullinset.C:1037
+#: src/mathed/math_hullinset.C:1051
 msgid "Enter label:"
 msgstr "Entrer l'étiquette :"
 
-#: src/mathed/math_hullinset.C:1110
+#: src/mathed/math_hullinset.C:1126
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1120
+#: src/mathed/math_hullinset.C:1136
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1130
+#: src/mathed/math_hullinset.C:1146
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1233 src/text3.C:166
+#: src/mathed/math_hullinset.C:1249 src/text3.C:167
 msgid "Math editor mode"
 msgstr "Mode éditeur mathématique"
 
-#: src/mathed/math_nestinset.C:755
+#: src/mathed/math_nestinset.C:763
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:758
+#: src/mathed/math_nestinset.C:766
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16611,17 +16667,17 @@ msgid ""
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:210
+#: src/text.C:214
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Liste TdM inconnue"
 
-#: src/text.C:334
+#: src/text.C:338
 #, fuzzy
 msgid "Unknown token"
 msgstr "Élément inconnu : "
 
-#: src/text.C:1165
+#: src/text.C:1173
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -16629,60 +16685,60 @@ msgstr ""
 "Vous ne pouvez pas entrer d'espace en début de paragraphe. Lisez le Manuel "
 "d'Apprentissage."
 
-#: src/text.C:1176
+#: src/text.C:1184
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Vous ne pouvez pas entrer deux espaces ainsi. Lisez le Manuel "
 "d'Apprentissage."
 
-#: src/text.C:2129
+#: src/text.C:2165
 #, fuzzy
 msgid "Change: "
 msgstr "Page : "
 
-#: src/text.C:2133
+#: src/text.C:2169
 #, fuzzy
 msgid " at "
 msgstr " vers "
 
-#: src/text.C:2144
+#: src/text.C:2180
 #, c-format
 msgid "Font: %1$s"
 msgstr "Police : %1$s"
 
-#: src/text.C:2151
+#: src/text.C:2187
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profondeur : %1$d"
 
-#: src/text.C:2157
+#: src/text.C:2193
 msgid ", Spacing: "
 msgstr ", Espacement : "
 
-#: src/text.C:2169
+#: src/text.C:2205
 msgid "Other ("
 msgstr "Autre ("
 
-#: src/text.C:2178
+#: src/text.C:2214
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Profondeur : "
 
-#: src/text.C:2179
+#: src/text.C:2215
 msgid ", Paragraph: "
 msgstr ", Paragraphe : "
 
-#: src/text.C:2180
+#: src/text.C:2216
 #, fuzzy
 msgid ", Id: "
 msgstr ", Profondeur : "
 
-#: src/text.C:2181
+#: src/text.C:2217
 #, fuzzy
 msgid ", Position: "
 msgstr "Proposition"
 
-#: src/text2.C:503
+#: src/text2.C:519
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -16690,11 +16746,11 @@ msgstr ""
 "Pas de changement de police défini. Utiliser Format->Caractère pour le "
 "définir."
 
-#: src/text2.C:545
+#: src/text2.C:561
 msgid "Nothing to index!"
 msgstr "Rien à faire !"
 
-#: src/text2.C:547
+#: src/text2.C:563
 msgid "Cannot index more than one paragraph!"
 msgstr "Impossible d'indexer plus d'un paragraphe !"
 
@@ -16715,14 +16771,49 @@ msgstr "Format "
 msgid " not known"
 msgstr " inconnu"
 
-#: src/text3.C:1359 src/text3.C:1371
+#: src/text3.C:1346 src/text3.C:1358
 msgid "Character set"
 msgstr "Encodage"
 
 # à revoir
-#: src/text3.C:1504
+#: src/text3.C:1491
 msgid "Paragraph layout set"
 msgstr "Style du paragraphe redéfini"
+
+#: src/toc.C:64 src/toc.C:133
+msgid "TOC"
+msgstr ""
+
+# contrainte de longueur
+#: src/vspace.C:487
+#, fuzzy
+msgid "Default skip"
+msgstr "Espacement :|#E"
+
+#: src/vspace.C:490
+#, fuzzy
+msgid "Small skip"
+msgstr "Petit"
+
+#: src/vspace.C:493
+#, fuzzy
+msgid "Medium skip"
+msgstr "Moyen"
+
+#: src/vspace.C:496
+#, fuzzy
+msgid "Big skip"
+msgstr "Gros"
+
+#: src/vspace.C:499
+#, fuzzy
+msgid "Vertical fill"
+msgstr "Espacement vertical"
+
+#: src/vspace.C:506
+#, fuzzy
+msgid "protected"
+msgstr "Raccourci|#c"
 
 #~ msgid "Reference:|#e"
 #~ msgstr "Référence :|#n"
@@ -16747,10 +16838,6 @@ msgstr "Style du paragraphe redéfini"
 #, fuzzy
 #~ msgid "Box settings"
 #~ msgstr "Options de Flottant"
-
-#, fuzzy
-#~ msgid "Changes"
-#~ msgstr "en-têtes"
 
 #~ msgid "Character"
 #~ msgstr "Caractère"
@@ -17075,10 +17162,6 @@ msgstr "Style du paragraphe redéfini"
 #~ msgid "BibTeX Database"
 #~ msgstr "Base de Données BibTeX"
 
-#, fuzzy
-#~ msgid "Branch"
-#~ msgstr "Français"
-
 #~ msgid "Add the selected entry to the current citation reference."
 #~ msgstr "Ajouter la référence à la citation courante."
 
@@ -17182,13 +17265,6 @@ msgstr "Style du paragraphe redéfini"
 
 #~ msgid "BibTeX style files (*.bst)"
 #~ msgstr "Fichiers de style BibTeX (*.bst)"
-
-# contrainte de longueur
-#~ msgid "BibTeX database files (*.bib)"
-#~ msgstr "Fichiers de Données BibTeX (*.bib)"
-
-#~ msgid "PostScript files (*.ps)"
-#~ msgstr "Fichiers PostScript (*.ps)"
 
 #~ msgid "Select a file to print to"
 #~ msgstr "Choisir le fichier dans lequel imprimer"

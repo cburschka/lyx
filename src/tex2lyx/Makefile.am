@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 EXTRA_DIST = pch.h test-structure.tex test-insets.tex
 
-DISTCLEANFILES += $(LINKED_SOURCES)
+DISTCLEANFILES += tex2lyx.1 $(LINKED_SOURCES)
 
 #noinst_LTLIBRARIES = libtexparser.la
 #
@@ -11,6 +11,8 @@ DISTCLEANFILES += $(LINKED_SOURCES)
 #	texparser.h
 #
 #tex2lyx_LDADD = libtexparser.la
+
+man_MANS = tex2lyx.1
 
 bin_PROGRAMS = tex2lyx
 
@@ -65,3 +67,6 @@ $(LINKED_SOURCES) :
 
 rm_link_files:
 	rm -f $(LINKED_SOURCES)
+
+tex2lyx.1:
+	cp -p $(srcdir)/tex2lyx.man tex2lyx.1

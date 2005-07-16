@@ -843,6 +843,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 			tmpx += singleWidth(par, end - 1);
 		c = end - 1;
 	}
+
 	// Air gap above display inset:
 	if (row.pos() < end && c >= end && end < par.size()
 	    && par.isInset(end) && par.getInset(end)->display()) {

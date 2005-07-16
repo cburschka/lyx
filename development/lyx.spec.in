@@ -65,7 +65,6 @@ mv ${RPM_BUILD_ROOT}%{_datadir}/%{name}/tex \
 #
 # Don't use %{name}.xpm, this will not work with --version-suffix
 cp -a lib/images/lyx.xpm ${RPM_BUILD_ROOT}%{_datadir}/%{name}/images/
-cp lib/reLyX/README README.reLyX
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
@@ -86,12 +85,6 @@ echo "Configuring LyX for your system..."
 cd %{_datadir}/%{name}
 ./configure --srcdir
 
-# Fix reLyX perl program if the prefix is non-standard
-if [ "%{_prefix}" != "/usr" ]
-then
-    perl -pi -e "s!/usr/share/%{name}!%{_datadir}/%{name}!" %{_bindir}/reLyX
-fi
-
 %postun
 # Fix the TeX file hash
 #
@@ -101,7 +94,7 @@ texhash
 %defattr(-,root,root)
 %doc ABOUT-NLS ANNOUNCE COPYING
 %doc README UPGRADING ChangeLog NEWS
-%doc lib/CREDITS README.reLyX
+%doc lib/CREDITS
 %{_bindir}/*
 %{_mandir}/man?/*
 %{_datadir}/locale/*/LC_MESSAGES/*

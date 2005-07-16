@@ -217,7 +217,7 @@ void read_environment(Parser & p, string const & begin,
 /*!
  * Read a list of TeX commands from a reLyX compatible syntax file.
  * Since this list is used after all commands that have a LyX counterpart
- * are handled, it does not matter that the "syntax.default" file from reLyX
+ * are handled, it does not matter that the "syntax.default" file
  * has almost all of them listed. For the same reason the reLyX-specific
  * reLyXre environment is ignored.
  */
@@ -491,7 +491,7 @@ int main(int argc, char * argv[])
 	lyx::support::init_package(argv[0], cl_system_support, cl_user_support,
 				   lyx::support::top_build_dir_is_two_levels_up);
 
-	string const system_syntaxfile = lyx::support::LibFileSearch("reLyX", "syntax.default");
+	string const system_syntaxfile = lyx::support::LibFileSearch("", "syntax.default");
 	if (system_syntaxfile.empty()) {
 		cerr << "Error: Could not find syntax file \"syntax.default\"." << endl;
 		exit(1);

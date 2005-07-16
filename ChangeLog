@@ -1,8 +1,14 @@
+2005-07-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lyx.man: remove reLyX refs and ref to tex2lyx
+	* autogen.sh,configure.ac: remove reLyX handling 
+	* INSTALL,INSTALL.OS2: remove some reLyX paragraphs.
+
 2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* INSTALL: lib/xfonts is dead.
 
-2005-07-15    <lgb@tandberg.net>
+2005-07-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.ac: set AWK to gawk and subsitute 
 
@@ -29,7 +35,7 @@
 	* configure.ac: if the xforms frontend is added just to help gtk,
 	do not build the xforms binary.
 
-2005-05-20  Lars Gullik Bjonnes  <lgb@tandberg.net>
+2005-05-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.ac: Use AM_* flags for CLAGS,CXXFLAGS where we require
 	the values to be properly set.

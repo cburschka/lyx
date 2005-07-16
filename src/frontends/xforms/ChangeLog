@@ -1,9 +1,13 @@
+2005-07-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* FormPreferences.h: remove a reLyX reference
+
 2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* xfont_loader.C (getFontinfo): do not call addFontPath.
 	(addFontPath): remove.
 
-2005-07-13    <lgb@tandberg.net>
+2005-07-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* forms/Makefile.am (distclean-local): pretend success also if
 	srcdir != builddir

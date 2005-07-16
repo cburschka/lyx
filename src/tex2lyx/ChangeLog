@@ -1,3 +1,11 @@
+2005-07-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* .cvsignore: add tex2lyx.1
+	* tex2lyx.C (main): dont search for syntax.default in reLyX dir
+	* test.ltx: new test file
+	* tex2lyx.man: new file
+	* Makefile.am: add man file directives
+
 2005-07-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_environment): handle context of unknown environments
