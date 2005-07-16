@@ -157,6 +157,28 @@ public:
 		ALL_SANE
 	};
 
+	struct FontBits {
+		///
+		FONT_FAMILY family;
+		///
+		FONT_SERIES series;
+		///
+		FONT_SHAPE shape;
+		///
+		FONT_SIZE size;
+		/** We store the LColor::color value as an int to get LColor.h out
+		 *  of the header file.
+		 */
+		int color;
+		///
+		FONT_MISC_STATE emph;
+		///
+		FONT_MISC_STATE underbar;
+		///
+		FONT_MISC_STATE noun;
+		///
+		FONT_MISC_STATE number;
+	};
 	///
 	LyXFont();
 
@@ -178,46 +200,32 @@ public:
 
 	/// Decreases font size by one
 	LyXFont & decSize();
-
 	/// Increases font size by one
 	LyXFont & incSize();
-
 	///
-	FONT_FAMILY family() const;
-
+	FONT_FAMILY family() const { return bits.family; }
 	///
-	FONT_SERIES series() const;
-
+	FONT_SERIES series() const { return bits.series; }
 	///
-	FONT_SHAPE shape() const;
-
+	FONT_SHAPE shape() const { return bits.shape; }
 	///
-	FONT_SIZE size() const;
-
+	FONT_SIZE size() const { return bits.size; }
 	///
-	FONT_MISC_STATE emph() const;
-
+	FONT_MISC_STATE emph() const { return bits.emph; }
 	///
-	FONT_MISC_STATE underbar() const;
-
+	FONT_MISC_STATE underbar() const { return bits.underbar; }
 	///
-	FONT_MISC_STATE noun() const;
-
+	FONT_MISC_STATE noun() const { return bits.noun; }
 	///
-	FONT_MISC_STATE number() const;
-
+	FONT_MISC_STATE number() const { return bits.number; }
 	///
 	LColor_color color() const;
-
 	///
 	Language const * language() const;
-
 	///
 	bool isRightToLeft() const;
-
 	///
 	bool isVisibleRightToLeft() const;
-
 	///
 	bool isSymbolFont() const;
 
@@ -316,28 +324,6 @@ public:
 	/** Compaq cxx 6.5 requires that the definition be public so that
 	    it can compile operator==()
 	 */
-	struct FontBits {
-		///
-		FONT_FAMILY family;
-		///
-		FONT_SERIES series;
-		///
-		FONT_SHAPE shape;
-		///
-		FONT_SIZE size;
-		/** We store the LColor::color value as an int to get LColor.h out
-		 *  of the header file.
-		 */
-		int color;
-		///
-		FONT_MISC_STATE emph;
-		///
-		FONT_MISC_STATE underbar;
-		///
-		FONT_MISC_STATE noun;
-		///
-		FONT_MISC_STATE number;
-	};
 private:
 	///
 	FontBits bits;
@@ -370,48 +356,6 @@ private:
 	LyXFont::FONT_SIZE val_;
 };
 
-
-
-inline
-LyXFont::FONT_SHAPE LyXFont::shape() const
-{
-	return bits.shape;
-}
-
-
-inline
-LyXFont::FONT_FAMILY LyXFont::family() const
-{
-	return bits.family;
-}
-
-
-inline
-LyXFont::FONT_SERIES LyXFont::series() const
-{
-	return bits.series;
-}
-
-
-inline
-LyXFont::FONT_SIZE LyXFont::size() const
-{
-	return bits.size;
-}
-
-
-inline
-LyXFont::FONT_MISC_STATE LyXFont::emph() const
-{
-	return bits.emph;
-}
-
-
-inline
-LyXFont::FONT_MISC_STATE LyXFont::noun() const
-{
-	return bits.noun;
-}
 
 
 inline

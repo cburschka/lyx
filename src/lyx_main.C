@@ -87,7 +87,7 @@ using std::system;
 #endif
 
 
-extern void QuitLyX();
+extern void QuitLyX(bool);
 
 extern LyXServer * lyxserver;
 
@@ -271,7 +271,7 @@ void LyX::priv_exec(int & argc, char * argv[])
 		if (last_loaded) {
 			bool success = false;
 			if (last_loaded->dispatch(batch_command, &success)) {
-				QuitLyX();
+				QuitLyX(false);
 				exit(!success);
 			}
 		}
@@ -282,7 +282,7 @@ void LyX::priv_exec(int & argc, char * argv[])
 		lyx_gui::start(batch_command, files);
 	else {
 		// Something went wrong above
-		QuitLyX();
+		QuitLyX(false);
 		exit(EXIT_FAILURE);
 	}
 }

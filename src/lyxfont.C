@@ -197,11 +197,6 @@ LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
 {}
 
 
-LyXFont::FONT_MISC_STATE LyXFont::underbar() const
-{
-	return bits.underbar;
-}
-
 
 LColor_color LyXFont::color() const
 {
@@ -212,12 +207,6 @@ LColor_color LyXFont::color() const
 Language const * LyXFont::language() const
 {
 	return lang;
-}
-
-
-LyXFont::FONT_MISC_STATE LyXFont::number() const
-{
-	return bits.number;
 }
 
 
@@ -470,30 +459,30 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt)
 		return *this;
 	}
 
-	if (bits.family == INHERIT_FAMILY) {
+	if (bits.family == INHERIT_FAMILY)
 		bits.family = tmplt.bits.family;
-	}
-	if (bits.series == INHERIT_SERIES) {
+
+	if (bits.series == INHERIT_SERIES)
 		bits.series = tmplt.bits.series;
-	}
-	if (bits.shape == INHERIT_SHAPE) {
+
+	if (bits.shape == INHERIT_SHAPE)
 		bits.shape = tmplt.bits.shape;
-	}
-	if (bits.size == INHERIT_SIZE) {
+
+	if (bits.size == INHERIT_SIZE)
 		bits.size = tmplt.bits.size;
-	}
-	if (bits.emph == INHERIT) {
+
+	if (bits.emph == INHERIT)
 		bits.emph = tmplt.bits.emph;
-	}
-	if (bits.underbar == INHERIT) {
+
+	if (bits.underbar == INHERIT)
 		bits.underbar = tmplt.bits.underbar;
-	}
-	if (bits.noun == INHERIT) {
+
+	if (bits.noun == INHERIT)
 		bits.noun = tmplt.bits.noun;
-	}
-	if (bits.color == LColor::inherit) {
+
+	if (bits.color == LColor::inherit)
 		bits.color = tmplt.bits.color;
-	}
+
 	return *this;
 }
 
@@ -580,11 +569,11 @@ LyXFont & LyXFont::setLyXShape(string const & sha)
 	string const s = ascii_lowercase(sha);
 
 	int i = 0;
-	while (LyXShapeNames[i] != s &&
-	       LyXShapeNames[i] != string("error")) ++i;
-	if (s == LyXShapeNames[i]) {
+	while (LyXShapeNames[i] != s && LyXShapeNames[i] != string("error"))
+			++i;
+	if (s == LyXShapeNames[i])
 		setShape(LyXFont::FONT_SHAPE(i));
-	} else
+	else
 		lyxerr << "LyXFont::setLyXShape: Unknown shape `"
 		       << s << '\'' << endl;
 	return *this;
@@ -596,8 +585,8 @@ LyXFont & LyXFont::setLyXSize(string const & siz)
 {
 	string const s = ascii_lowercase(siz);
 	int i = 0;
-	while (LyXSizeNames[i] != s &&
-	       LyXSizeNames[i] != string("error")) ++i;
+	while (LyXSizeNames[i] != s && LyXSizeNames[i] != string("error"))
+		++i;
 	if (s == LyXSizeNames[i]) {
 		setSize(LyXFont::FONT_SIZE(i));
 	} else
@@ -704,24 +693,18 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 			      ostream & os) const
 {
 	os << "\n";
-	if (orgfont.family() != family()) {
+	if (orgfont.family() != family())
 		os << "\\family " << LyXFamilyNames[family()] << "\n";
-	}
-	if (orgfont.series() != series()) {
+	if (orgfont.series() != series())
 		os << "\\series " << LyXSeriesNames[series()] << "\n";
-	}
-	if (orgfont.shape() != shape()) {
+	if (orgfont.shape() != shape())
 		os << "\\shape " << LyXShapeNames[shape()] << "\n";
-	}
-	if (orgfont.size() != size()) {
+	if (orgfont.size() != size())
 		os << "\\size " << LyXSizeNames[size()] << "\n";
-	}
-	if (orgfont.emph() != emph()) {
+	if (orgfont.emph() != emph())
 		os << "\\emph " << LyXMiscNames[emph()] << "\n";
-	}
-	if (orgfont.number() != number()) {
+	if (orgfont.number() != number())
 		os << "\\numeric " << LyXMiscNames[number()] << "\n";
-	}
 	if (orgfont.underbar() != underbar()) {
 		// This is only for backwards compatibility
 		switch (underbar()) {

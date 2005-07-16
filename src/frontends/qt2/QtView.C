@@ -152,7 +152,7 @@ bool QtView::hasFocus() const
 
 void QtView::closeEvent(QCloseEvent *)
 {
-	QuitLyX();
+	QuitLyX(false);
 }
 
 

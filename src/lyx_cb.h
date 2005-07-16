@@ -25,7 +25,7 @@ bool MenuWrite(Buffer * buffer);
 /// write the given file, or ask if no name given
 bool WriteAs(Buffer * buffer, std::string const & filename = std::string());
 ///
-void QuitLyX();
+void QuitLyX(bool noask);
 ///
 void AutoSave(BufferView * bv);
 ///

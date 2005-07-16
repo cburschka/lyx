@@ -188,12 +188,12 @@ bool WriteAs(Buffer * buffer, string const & filename)
 }
 
 
-void QuitLyX()
+void QuitLyX(bool noask)
 {
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
 	if (lyx_gui::use_gui) {
-		if (!bufferlist.quitWriteAll())
+		if (!noask && !bufferlist.quitWriteAll())
 			return;
 
 		LyX::cref().lastfiles().writeFile(lyxrc.lastfiles);

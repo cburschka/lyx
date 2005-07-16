@@ -117,7 +117,7 @@ Gtk::Box & GView::getBox(Position pos)
 
 bool GView::on_delete_event(GdkEventAny * /*event*/)
 {
-	QuitLyX();
+	QuitLyX(false);
 	return true;
 }
 

@@ -952,7 +952,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_QUIT:
-			QuitLyX();
+			QuitLyX(argument == "force");
 			break;
 
 		case LFUN_TOCVIEW: {

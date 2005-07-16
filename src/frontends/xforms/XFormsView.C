@@ -34,7 +34,7 @@ using std::endl;
 using std::string;
 
 //extern void AutoSave(BufferView *);
-extern void QuitLyX();
+extern void QuitLyX(bool);
 
 namespace lyx {
 
@@ -173,7 +173,7 @@ FL_FORM * XFormsView::getForm() const
 // Callback for close main form from window manager
 int XFormsView::atCloseMainFormCB(FL_FORM *, void *)
 {
-	QuitLyX();
+	QuitLyX(false);
 	return FL_IGNORE;
 }
 
