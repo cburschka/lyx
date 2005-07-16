@@ -18,7 +18,7 @@
 # modifiy this when you change version
 # Note that an empty lyx_branch variable (ie cvs HEAD)
 # will "do the right thing".
-lyx_version=1.3.6cvs
+lyx_version=1.3.6
 lyx_branch=BRANCH_1_3_X
 
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-30 11:40+0200\n"
+"POT-Creation-Date: 2005-07-16 18:08+0200\n"
 "PO-Revision-Date: 2005-04-01 13:42MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -4012,7 +4012,7 @@ msgstr "&Количество недавних файлов:"
 
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/qt2/QPrefs.C:66 src/frontends/xforms/FormPreferences.C:98
+#: src/frontends/qt2/QPrefs.C:67 src/frontends/xforms/FormPreferences.C:98
 msgid "Preferences"
 msgstr "Настройки"
 
@@ -4884,11 +4884,11 @@ msgstr "Подподраздел*"
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
 #: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/scrclass.inc:230
-#: src/buffer.C:1536
+#: src/buffer.C:1565
 msgid "Abstract"
 msgstr "Аннотация"
 
-#: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:99
+#: ../lib/layouts/IEEEtran.layout:381 ../lib/layouts/aastex.layout:99
 #: ../lib/layouts/aastex.layout:263 ../lib/layouts/elsart.layout:63
 #: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
 #: ../lib/layouts/revtex4.layout:245 ../lib/layouts/siamltex.layout:159
@@ -4896,7 +4896,7 @@ msgstr "Аннотация"
 msgid "Keywords"
 msgstr "Ключевые слова"
 
-#: ../lib/layouts/IEEEtran.layout:406 ../lib/layouts/aa.layout:78
+#: ../lib/layouts/IEEEtran.layout:405 ../lib/layouts/aa.layout:78
 #: ../lib/layouts/aa.layout:338 ../lib/layouts/aapaper.layout:85
 #: ../lib/layouts/aapaper.layout:195 ../lib/layouts/book.layout:19
 #: ../lib/layouts/cl2emult.layout:105 ../lib/layouts/cv.layout:154
@@ -4912,21 +4912,21 @@ msgstr "Ключевые слова"
 msgid "Bibliography"
 msgstr "Библиография"
 
-#: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:103
+#: ../lib/layouts/IEEEtran.layout:414 ../lib/layouts/aastex.layout:103
 #: ../lib/layouts/aastex.layout:389 ../lib/layouts/ijmpd.layout:166
 #: ../lib/layouts/kluwer.layout:324
 msgid "Appendix"
 msgstr "Приложение"
 
-#: ../lib/layouts/IEEEtran.layout:438
+#: ../lib/layouts/IEEEtran.layout:437
 msgid "Appendices"
 msgstr "Приложения"
 
-#: ../lib/layouts/IEEEtran.layout:461
+#: ../lib/layouts/IEEEtran.layout:460
 msgid "Biography"
 msgstr "Элемент биографии"
 
-#: ../lib/layouts/IEEEtran.layout:476 ../lib/layouts/aa.layout:58
+#: ../lib/layouts/IEEEtran.layout:475 ../lib/layouts/aa.layout:58
 #: ../lib/layouts/aa.layout:218 ../lib/layouts/aapaper.layout:55
 #: ../lib/layouts/aastex.layout:115 ../lib/layouts/aastex.layout:506
 #: ../lib/layouts/egs.layout:667 ../lib/layouts/latex8.layout:115
@@ -4934,11 +4934,11 @@ msgstr "Элемент биографии"
 msgid "Caption"
 msgstr "Подпись"
 
-#: ../lib/layouts/IEEEtran.layout:482
+#: ../lib/layouts/IEEEtran.layout:481
 msgid "Footernote"
 msgstr "Заметка в подвал"
 
-#: ../lib/layouts/IEEEtran.layout:505
+#: ../lib/layouts/IEEEtran.layout:504
 msgid "MarkBoth"
 msgstr "MarkBoth"
 
@@ -5117,7 +5117,7 @@ msgid "Acknowledgements"
 msgstr "Благодарности"
 
 #: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
-#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1547
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1576
 msgid "References"
 msgstr "Ссылки"
 
@@ -8386,90 +8386,90 @@ msgstr "Неизвестный токен: %1$s %2$s\n"
 msgid "Unknown token: "
 msgstr "Неизвестный токен: "
 
-#. future format
-#: src/buffer.C:1212 src/buffer.C:1270
-msgid "Warning!"
-msgstr "Внимание!"
-
-#: src/buffer.C:1213
-msgid ""
-"The file was created with a newer version of LyX. This is likely to cause "
-"problems."
-msgstr "Файл создан в более новой версии LyX. Это может вызвать проблемы."
-
 #. "\\lyxformat" not found
-#: src/buffer.C:1219 src/buffer.C:1226 src/buffer.C:1244 src/buffer.C:1276
-#: src/buffer.C:1279
+#: src/buffer.C:1213 src/buffer.C:1228 src/buffer.C:1245 src/buffer.C:1252
+#: src/buffer.C:1273 src/buffer.C:1305 src/buffer.C:1308
 msgid "ERROR!"
 msgstr "Ошибка!"
 
-#: src/buffer.C:1220
+#: src/buffer.C:1214
+msgid "Can't find conversion script."
+msgstr "Невозможно найти сценарий преобразования."
+
+#: src/buffer.C:1229 src/buffer.C:1274
+msgid "An error occured while running the conversion script."
+msgstr "Произошла ошибка при запуске сценарий преобразования."
+
+#: src/buffer.C:1246
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 "Файл в формате старой версии LyX. Только LyX 0.10.x сможет прочесть его!"
 
-#: src/buffer.C:1227
-msgid "Can't find conversion script."
-msgstr "Невозможно найти сценарий преобразования."
+#: src/buffer.C:1253
+#, fuzzy
+msgid ""
+"The file was created with a newer version of LyX, but the lyx2lyx script "
+"cannot convert it.\n"
+msgstr "Файл создан в более новой версии LyX. Это может вызвать проблемы."
 
-#: src/buffer.C:1245
-msgid "An error occured while running the conversion script."
-msgstr "Произошла ошибка при запуске сценарий преобразования."
+#: src/buffer.C:1299
+msgid "Warning!"
+msgstr "Внимание!"
 
-#: src/buffer.C:1271
+#: src/buffer.C:1300
 msgid "Reading of document is not complete"
 msgstr "Чтение документа не завершено"
 
-#: src/buffer.C:1272
+#: src/buffer.C:1301
 msgid "Maybe the document is truncated"
 msgstr "Возможно, документ обрезан"
 
-#: src/buffer.C:1276
+#: src/buffer.C:1305
 msgid "Not a LyX file!"
 msgstr "Это не файл LyX!"
 
-#: src/buffer.C:1279
+#: src/buffer.C:1308
 msgid "Unable to read file!"
 msgstr "Невозможно прочитать файл!"
 
-#: src/buffer.C:1539
+#: src/buffer.C:1568
 msgid "Abstract: "
 msgstr "Аннотация: "
 
-#: src/buffer.C:1550
+#: src/buffer.C:1579
 msgid "References: "
 msgstr "Ссылки: "
 
-#: src/buffer.C:1664
+#: src/buffer.C:1693
 msgid "Error: Cannot write file:"
 msgstr "Ошибка: Невозможно записать файл:"
 
-#: src/buffer.C:1694
+#: src/buffer.C:1723
 msgid "Error: Cannot open file: "
 msgstr "Ошибка: Невозможно открыть файл: "
 
-#: src/buffer.C:2310 src/buffer.C:2765
+#: src/buffer.C:2339 src/buffer.C:2794
 msgid "LYX_ERROR:"
 msgstr "Ошибка LyX:"
 
-#: src/buffer.C:2310 src/buffer.C:2765
+#: src/buffer.C:2339 src/buffer.C:2794
 msgid "Cannot write file"
 msgstr "Ошибка записи файла"
 
-#: src/buffer.C:2398 src/buffer.C:2871
+#: src/buffer.C:2427 src/buffer.C:2900
 msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Ошибка: Неверная глубина для команды LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3158
+#: src/buffer.C:3187
 msgid "Running chktex..."
 msgstr "Запуск chktex..."
 
-#: src/buffer.C:3171
+#: src/buffer.C:3200
 msgid "chktex did not work!"
 msgstr "chktex не сработал!"
 
-#: src/buffer.C:3172
+#: src/buffer.C:3201
 msgid "Could not run with file:"
 msgstr "Ошибка запуска с файлом:"
 
@@ -8606,85 +8606,85 @@ msgstr "Нет информации для просмотра"
 msgid "Executing command:"
 msgstr "Исполняется команда:"
 
-#: src/converter.C:218 src/converter.C:707
+#: src/converter.C:218 src/converter.C:710
 msgid "Error while executing"
 msgstr "Ошибка исполнения"
 
-#: src/converter.C:703
+#: src/converter.C:706
 msgid "There were errors during the Build process."
 msgstr "Во время создания выходного файла возникли ошибки."
 
-#: src/converter.C:704 src/converter.C:861 src/converter.C:929
+#: src/converter.C:707 src/converter.C:864 src/converter.C:932
 msgid "You should try to fix them."
 msgstr "Попытайтесь их исправить."
 
-#: src/converter.C:706
+#: src/converter.C:709
 msgid "Cannot convert file"
 msgstr "Невозможно преобразовать файл"
 
-#: src/converter.C:730 src/converter.C:733
+#: src/converter.C:733 src/converter.C:736
 msgid "Error while trying to move directory:"
 msgstr "Ошибка переименования каталога:"
 
-#: src/converter.C:731 src/converter.C:773
+#: src/converter.C:734 src/converter.C:776
 #, c-format
 msgid "to %1$s"
 msgstr "в %1$s"
 
-#: src/converter.C:734 src/converter.C:776
+#: src/converter.C:737 src/converter.C:779
 msgid "to "
 msgstr "в  "
 
-#: src/converter.C:772 src/converter.C:775
+#: src/converter.C:775 src/converter.C:778
 msgid "Error while trying to move file:"
 msgstr "Ошибка переименования файла:"
 
-#: src/converter.C:856 src/converter.C:924
+#: src/converter.C:859 src/converter.C:927
 msgid "One error detected"
 msgstr "Обнаружена одна ошибка"
 
-#: src/converter.C:857 src/converter.C:925
+#: src/converter.C:860 src/converter.C:928
 msgid "You should try to fix it."
 msgstr "Попытайтесь её исправить."
 
-#: src/converter.C:860 src/converter.C:928
+#: src/converter.C:863 src/converter.C:931
 msgid " errors detected."
 msgstr " ошибок обнаружено."
 
-#: src/converter.C:866
+#: src/converter.C:869
 #, c-format
 msgid "There were errors during running of %1$s"
 msgstr "Обнаружены ошибки во время работы %1$s"
 
-#: src/converter.C:869
+#: src/converter.C:872
 msgid "There were errors during running of "
 msgstr "Обнаружены ошибки во время работы "
 
-#: src/converter.C:874 src/converter.C:934
+#: src/converter.C:877 src/converter.C:937
 msgid "The operation resulted in"
 msgstr "В результате преобразования получен"
 
-#: src/converter.C:875 src/converter.C:935
+#: src/converter.C:878 src/converter.C:938
 msgid "an empty file."
 msgstr "пустой файл."
 
-#: src/converter.C:876 src/converter.C:936
+#: src/converter.C:879 src/converter.C:939
 msgid "Resulting file is empty"
 msgstr "Файл на выходе пуст"
 
-#: src/converter.C:892
+#: src/converter.C:895
 msgid "Running LaTeX..."
 msgstr "Запуск LaTeX..."
 
-#: src/converter.C:917
+#: src/converter.C:920
 msgid "LaTeX did not work!"
 msgstr "LaTeX не сработал!"
 
-#: src/converter.C:918
+#: src/converter.C:921
 msgid "Missing log file:"
 msgstr "Отсутствует файл журнала:"
 
-#: src/converter.C:931
+#: src/converter.C:934
 msgid "There were errors during the LaTeX run."
 msgstr "Обнаружены ошибки во время работы LaTeX."
 
@@ -9096,7 +9096,7 @@ msgstr "Строка была заменена."
 msgid " strings have been replaced."
 msgstr " строк было заменено."
 
-#: src/frontends/controllers/ControlSpellchecker.C:117
+#: src/frontends/controllers/ControlSpellchecker.C:111
 msgid ""
 "The spell-checker could not be started.\n"
 "Maybe it is mis-configured."
@@ -9104,12 +9104,12 @@ msgstr ""
 "Программа проверки правописания не может быть запущен.\n"
 "Возможно она неверно настроена."
 
-#: src/frontends/controllers/ControlSpellchecker.C:120
-#: src/frontends/controllers/ControlSpellchecker.C:213
+#: src/frontends/controllers/ControlSpellchecker.C:114
+#: src/frontends/controllers/ControlSpellchecker.C:207
 msgid "The spell-checker has failed"
 msgstr "Ошибка программы проверки правописания"
 
-#: src/frontends/controllers/ControlSpellchecker.C:207
+#: src/frontends/controllers/ControlSpellchecker.C:201
 msgid ""
 "The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
@@ -9117,21 +9117,21 @@ msgstr ""
 "Программа проверки правописания почему-то завершилась.\n"
 "Возможно она была завершена принудительно."
 
-#: src/frontends/controllers/ControlSpellchecker.C:229
+#: src/frontends/controllers/ControlSpellchecker.C:223
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d слов проверено."
 
+#: src/frontends/controllers/ControlSpellchecker.C:227
 #: src/frontends/controllers/ControlSpellchecker.C:233
-#: src/frontends/controllers/ControlSpellchecker.C:239
 msgid "One word checked."
 msgstr "Одно слово проверено."
 
-#: src/frontends/controllers/ControlSpellchecker.C:237
+#: src/frontends/controllers/ControlSpellchecker.C:231
 msgid " words checked."
 msgstr " слов проверено."
 
-#: src/frontends/controllers/ControlSpellchecker.C:244
+#: src/frontends/controllers/ControlSpellchecker.C:238
 msgid "Spell-checking is complete"
 msgstr "Проверка правописания завершена!"
 
@@ -9269,18 +9269,18 @@ msgstr "Жёлтый"
 msgid "space"
 msgstr "&Заменить"
 
-#: src/frontends/controllers/helper_funcs.C:103
+#: src/frontends/controllers/helper_funcs.C:105
 #, fuzzy
 msgid "Invalid filename"
 msgstr "Неверный "
 
-#: src/frontends/controllers/helper_funcs.C:104
-#: src/frontends/controllers/helper_funcs.C:168
+#: src/frontends/controllers/helper_funcs.C:106
+#: src/frontends/controllers/helper_funcs.C:172
 #, fuzzy
 msgid "No LaTeX support for paths containing any of these characters:\n"
 msgstr "Название файла не может содержать следующих символов:"
 
-#: src/frontends/controllers/helper_funcs.C:167
+#: src/frontends/controllers/helper_funcs.C:171
 #, fuzzy
 msgid "Invalid directory name"
 msgstr "Неверное действие в математическом режиме!"
@@ -9593,30 +9593,35 @@ msgid "Bold\t\\mathbf"
 msgstr "Полужирный\t\\mathbf"
 
 #: src/frontends/qt2/QMathDialog.C:150
-msgid "San serif\t\\mathsf"
-msgstr "Рубленый\t\\mathsf"
+msgid "Bold symbol\t\\boldsymbol"
+msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:151
+#, fuzzy
+msgid "Sans serif\t\\mathsf"
+msgstr "Рубленый\t\\mathsf"
+
+#: src/frontends/qt2/QMathDialog.C:152
 msgid "Italic\t\\mathit"
 msgstr "Наклонный\t\\mathit"
 
-#: src/frontends/qt2/QMathDialog.C:152
+#: src/frontends/qt2/QMathDialog.C:153
 msgid "Typewriter\t\\mathtt"
 msgstr "Машинописный\t\\matht"
 
-#: src/frontends/qt2/QMathDialog.C:153
+#: src/frontends/qt2/QMathDialog.C:154
 msgid "Blackboard\t\\mathbb"
 msgstr "Для грифельной доски\t\\mathbb"
 
-#: src/frontends/qt2/QMathDialog.C:154
+#: src/frontends/qt2/QMathDialog.C:155
 msgid "Fraktur\t\\mathfrak"
 msgstr "Фрактурный\t\\mathfrak"
 
-#: src/frontends/qt2/QMathDialog.C:155
+#: src/frontends/qt2/QMathDialog.C:156
 msgid "Calligraphic\t\\mathcal"
 msgstr "Каллиграфический\t\\mathcal"
 
-#: src/frontends/qt2/QMathDialog.C:156
+#: src/frontends/qt2/QMathDialog.C:157
 msgid "Normal text mode\t\\textrm"
 msgstr "Нормальный текстовый\t\\textrm"
 
@@ -9685,27 +9690,27 @@ msgstr "Преобразователи"
 msgid "File formats"
 msgstr "Форматы файлов"
 
-#: src/frontends/qt2/QPrefsDialog.C:467 src/frontends/qt2/QPrefsDialog.C:470
+#: src/frontends/qt2/QPrefsDialog.C:476 src/frontends/qt2/QPrefsDialog.C:479
 msgid "New"
 msgstr "Создать"
 
-#: src/frontends/qt2/QPrefsDialog.C:571
+#: src/frontends/qt2/QPrefsDialog.C:590
 msgid "Select a document templates directory"
 msgstr "Выберите каталог с шаблонами документов"
 
-#: src/frontends/qt2/QPrefsDialog.C:579
+#: src/frontends/qt2/QPrefsDialog.C:598
 msgid "Select a temporary directory"
 msgstr "Выберите временный каталог"
 
-#: src/frontends/qt2/QPrefsDialog.C:587
+#: src/frontends/qt2/QPrefsDialog.C:606
 msgid "Select a backups directory"
 msgstr "Выберите каталог для создания резервных копий"
 
-#: src/frontends/qt2/QPrefsDialog.C:595
+#: src/frontends/qt2/QPrefsDialog.C:614
 msgid "Select a document directory"
 msgstr "Выберите каталог для документов"
 
-#: src/frontends/qt2/QPrefsDialog.C:603
+#: src/frontends/qt2/QPrefsDialog.C:622
 msgid "Give a filename for the LyX server pipe"
 msgstr "Укажите название файла для канала LyX-сервера"
 
@@ -9908,6 +9913,7 @@ msgstr "Ключ, используемый в документе LyX."
 msgid "Label used for final output."
 msgstr "Метка, используемая для окончательного вывода."
 
+#. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:67
 msgid ""
 "The database you want to cite from. Insert it without the default extension "
@@ -10256,6 +10262,7 @@ msgstr ""
 msgid "Clip image to the bounding box values."
 msgstr "Обрезать изображение по границам рамки."
 
+#. set up the tooltips for the extra section
 #: src/frontends/xforms/FormGraphics.C:251
 msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
@@ -10789,6 +10796,7 @@ msgstr ""
 "Выполнить эту команду над документом, экспортированным в выбранный формат. $"
 "$FName будет заменён названием файла экспорта."
 
+#. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:57
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr "Введите замену неизвестного слова или выберите из предполагаемых."
@@ -10855,6 +10863,7 @@ msgstr "Вставить таблицу"
 msgid "LaTeX classes|LaTeX styles|BibTeX styles"
 msgstr "Классы LaTeX|Стили LaTeX|Стили BibTeX"
 
+#. set up the tooltips
 #: src/frontends/xforms/FormTexinfo.C:47
 msgid ""
 "Shows the installed classses and styles for LaTeX/BibTeX; available only if "
@@ -11031,9 +11040,21 @@ msgstr "импортирован."
 msgid "Opened inset"
 msgstr "Открытая вкладка"
 
-#: src/insets/insetbib.C:142
+#: src/insets/insetbib.C:147
 msgid "BibTeX Generated Bibliography"
 msgstr "Сгенерированная библиография BibTeX"
+
+#: src/insets/insetbib.C:268 src/lyx_main.C:576 src/lyx_main.C:580
+msgid "LyX Warning!"
+msgstr "Внимание!"
+
+#: src/insets/insetbib.C:269
+msgid "There are spaces in the paths to your BibTeX databases."
+msgstr ""
+
+#: src/insets/insetbib.C:270
+msgid "BibTeX will be unable to find them."
+msgstr ""
 
 #: src/insets/insetcaption.C:63
 msgid "Opened Caption Inset"
@@ -11146,33 +11167,33 @@ msgstr "Ошибка при создании растрового изображения"
 msgid "No image"
 msgstr "Нет изображения"
 
-#: src/insets/insetgraphics.C:644
+#: src/insets/insetgraphics.C:637
 msgid "Cannot copy file"
 msgstr "Невозможно скопировать файл"
 
-#: src/insets/insetgraphics.C:645
+#: src/insets/insetgraphics.C:639
 msgid "into tempdir"
 msgstr "во временный каталог"
 
-#: src/insets/insetgraphics.C:685 src/insets/insetgraphics.C:689
+#: src/insets/insetgraphics.C:676 src/insets/insetgraphics.C:680
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Невозможно преобразовать изображение (файл отсутствует?)"
 
-#: src/insets/insetgraphics.C:686
+#: src/insets/insetgraphics.C:677
 #, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr "Нет информации для преобразования из %1$s в %2$s"
 
-#: src/insets/insetgraphics.C:690
+#: src/insets/insetgraphics.C:681
 msgid "No information for converting from "
 msgstr "Нет информации для преобразования из "
 
-#: src/insets/insetgraphics.C:798
+#: src/insets/insetgraphics.C:789
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Изображение: %1$s"
 
-#: src/insets/insetgraphics.C:802
+#: src/insets/insetgraphics.C:793
 msgid "Graphics file: "
 msgstr "Изображение: "
 
@@ -11349,6 +11370,7 @@ msgstr ""
 "Невозможно запустить процесс ispell.\n"
 "Возможно у вас нет корректно установленных языков."
 
+#. select returned error
 #: src/ispell.C:259
 msgid ""
 "The spell process returned an error.\n"
@@ -11650,10 +11672,6 @@ msgstr "LyX: создаю каталог "
 msgid "Failed to create directory. Exiting."
 msgstr "Ошибка при создании каталога. Завершение работы."
 
-#: src/lyx_main.C:576 src/lyx_main.C:580
-msgid "LyX Warning!"
-msgstr "Внимание!"
-
 #: src/lyx_main.C:577
 #, c-format
 msgid "Error while reading %1$s."
@@ -11843,6 +11861,7 @@ msgstr "Команда отключена"
 msgid "Document is read-only"
 msgstr "Документ доступен только для чтения"
 
+#. no
 #: src/lyxfunc.C:310
 msgid "Command not allowed without any document open"
 msgstr "Команда недопустима без открытых документов"
@@ -11985,7 +12004,7 @@ msgstr "уже существует. Перезаписывать?"
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 
-#: src/lyxrc.C:1866
+#: src/lyxrc.C:1882
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -11993,7 +12012,7 @@ msgstr ""
 "Кодировка символов, используемая пакетом fontenc LaTeX. Для всех языков, "
 "кроме английского, особенно рекомендуется кодировка T1."
 
-#: src/lyxrc.C:1870
+#: src/lyxrc.C:1886
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -12001,66 +12020,66 @@ msgstr ""
 "Принтер для использования по умолчанию. Если ничего не указано, LyX будет "
 "использовать переменную окружения PRINTER."
 
-#: src/lyxrc.C:1874
+#: src/lyxrc.C:1890
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 "Программа печати, которой вы пользуетесь, например \"dvips\", \"dvilj4\"."
 
-#: src/lyxrc.C:1878
+#: src/lyxrc.C:1894
 msgid "The option to print only even pages."
 msgstr "Параметр для печати только чётных страниц."
 
-#: src/lyxrc.C:1882
+#: src/lyxrc.C:1898
 msgid "The option to print only odd pages."
 msgstr "Параметр для печати только нечётных страниц."
 
-#: src/lyxrc.C:1886
+#: src/lyxrc.C:1902
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Параметр для указания разделённого запятыми списка страниц для печати."
 
-#: src/lyxrc.C:1890
+#: src/lyxrc.C:1906
 msgid "The option for specifying the number of copies to print."
 msgstr "Параметр для указания числа копий для печати."
 
-#: src/lyxrc.C:1894
+#: src/lyxrc.C:1910
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Параметр, указывающий нужно ли собирать страницы каждой копии вместе."
 
-#: src/lyxrc.C:1898
+#: src/lyxrc.C:1914
 msgid "The option to reverse the order of the pages printed."
 msgstr "Параметр для задания обратного порядка печати страниц."
 
-#: src/lyxrc.C:1902
+#: src/lyxrc.C:1918
 msgid "The option to print out in landscape."
 msgstr "Параметр для печати в ландшафтной ориентации."
 
-#: src/lyxrc.C:1906
+#: src/lyxrc.C:1922
 msgid "The option to specify paper type."
 msgstr "Параметр, указывающий формат бумаги."
 
-#: src/lyxrc.C:1910
+#: src/lyxrc.C:1926
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Параметр для задания размеров бумаги."
 
-#: src/lyxrc.C:1914
+#: src/lyxrc.C:1930
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Параметр для указания программе печати печатать на указанном принтере."
 
-#: src/lyxrc.C:1918
+#: src/lyxrc.C:1934
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Отметьте, чтобы LyX передавал название принтера вашей команде печати."
 
-#: src/lyxrc.C:1922
+#: src/lyxrc.C:1938
 msgid "Option to pass to the print program to print to a file."
 msgstr "Параметр для указания печатающей программе печатать в файл."
 
-#: src/lyxrc.C:1926
+#: src/lyxrc.C:1942
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Расширение выходного файла печатающей программы. Обычно \".ps\"."
 
-#: src/lyxrc.C:1930
+#: src/lyxrc.C:1946
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -12068,7 +12087,7 @@ msgstr ""
 "Дополнительные параметры, которые будут переданы программе печати после всех "
 "остальных, но перед названием файла DVI, который должен быть распечатан."
 
-#: src/lyxrc.C:1934
+#: src/lyxrc.C:1950
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -12077,7 +12096,7 @@ msgstr ""
 "Когда этот параметр отмечен, документ печатается в файл, а потом вызывается "
 "отдельная программа печати для этого файла с данным названием и параметрами."
 
-#: src/lyxrc.C:1938
+#: src/lyxrc.C:1954
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -12085,7 +12104,7 @@ msgstr ""
 "Если вы укажете название принтера в диалоге печати, следующий аргумент "
 "prepended along с названием принтера после команды печати."
 
-#: src/lyxrc.C:1942
+#: src/lyxrc.C:1958
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -12094,7 +12113,7 @@ msgstr ""
 "автоматически.Если LyX сделал это неправильно, вы можете указать правильное "
 "значение здесь."
 
-#: src/lyxrc.C:1947
+#: src/lyxrc.C:1963
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -12103,38 +12122,38 @@ msgstr ""
 "Масштабирования для экранных шрифтов. Указание 100% будет давать шрифты "
 "такого же размера, как и на бумаге."
 
-#: src/lyxrc.C:1951
+#: src/lyxrc.C:1967
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Размеры шрифтов, используемые для вычисления размера экранных шрифтов."
 
-#: src/lyxrc.C:1957
+#: src/lyxrc.C:1973
 msgid "The screen fonts used to display the text while editing."
 msgstr "Экранные шрифты, используемые для показа текста при редактировании."
 
-#: src/lyxrc.C:1961
+#: src/lyxrc.C:1977
 msgid "The bold font in the dialogs."
 msgstr "Полужирный шрифт в диалогах."
 
-#: src/lyxrc.C:1965
+#: src/lyxrc.C:1981
 msgid "The normal font in the dialogs."
 msgstr "Нормальный шрифт в диалогах."
 
-#: src/lyxrc.C:1969
+#: src/lyxrc.C:1985
 msgid "The encoding for the screen fonts."
 msgstr "Кодировка для экранных шрифтов."
 
-#: src/lyxrc.C:1973
+#: src/lyxrc.C:1989
 msgid "The encoding for the menu/popups fonts."
 msgstr "Кодировка для шрифтов меню."
 
-#: src/lyxrc.C:1980
+#: src/lyxrc.C:1996
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Промежуток времени между автосохранениями (в секундах). 0 означает не "
 "выполнять автосохранение."
 
-#: src/lyxrc.C:1984
+#: src/lyxrc.C:2000
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -12142,7 +12161,7 @@ msgstr ""
 "Путь по умолчанию для ваших документов. Пустое значение выбирает каталог, из "
 "которого будет запускаться LyX."
 
-#: src/lyxrc.C:1988
+#: src/lyxrc.C:2004
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -12151,7 +12170,7 @@ msgstr ""
 "Пустое значение означает, что будет выбран каталог, из которого LyX был "
 "запущен."
 
-#: src/lyxrc.C:1992
+#: src/lyxrc.C:2008
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -12159,7 +12178,7 @@ msgstr ""
 "LyX будет размещать свои временные каталоги по этому пути. Они будут удалены "
 "при выходе из LyX."
 
-#: src/lyxrc.C:1996
+#: src/lyxrc.C:2012
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
@@ -12167,12 +12186,12 @@ msgstr ""
 "Отметьте, если вы желаете использовать временный каталог для сохранения "
 "временного вывода TeX."
 
-#: src/lyxrc.C:2000
+#: src/lyxrc.C:2016
 msgid "The file where the last-files information should be stored."
 msgstr ""
 "Файл, в котором будет сохраняться информация о последних открытых файлах."
 
-#: src/lyxrc.C:2004
+#: src/lyxrc.C:2020
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -12180,7 +12199,7 @@ msgstr ""
 "Снимите отметку, если вы не хотите, чтобы выделенный текст автоматически "
 "замещался тем, что вы печатаете."
 
-#: src/lyxrc.C:2008
+#: src/lyxrc.C:2024
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -12188,7 +12207,7 @@ msgstr ""
 "Снимите отметку, если не хотите, чтобы параметры класса устанавливались по "
 "умолчанию после изменения класса."
 
-#: src/lyxrc.C:2012
+#: src/lyxrc.C:2028
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -12196,7 +12215,7 @@ msgstr ""
 "Указание названия здесь запускает lyxserver. Трубы получают дополнительное "
 "расширение \"in\" и \"out\". Только для продвинутых пользователей."
 
-#: src/lyxrc.C:2016
+#: src/lyxrc.C:2032
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -12206,7 +12225,7 @@ msgstr ""
 "эту возможность, если X-сервер не поддерживает переключение нужных вам "
 "раскладок."
 
-#: src/lyxrc.C:2020
+#: src/lyxrc.C:2036
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -12214,7 +12233,7 @@ msgstr ""
 "Файл пользовательского интерфейса (UI). Может быть либо указан абсолютный "
 "путь, либо LyX будет искать его в глобальном или локальном каталоге ui/."
 
-#: src/lyxrc.C:2026
+#: src/lyxrc.C:2042
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -12223,7 +12242,7 @@ msgstr ""
 "потребуется эта возможность, если вы, например, захотите набирать документы "
 "на немецком языке на американской клавиатуре."
 
-#: src/lyxrc.C:2030
+#: src/lyxrc.C:2046
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
 "\"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none\" "
@@ -12234,7 +12253,7 @@ msgstr ""
 "-- название входного файла. Если указано  \"none\" используется внутренняя "
 "подпрограмма."
 
-#: src/lyxrc.C:2034
+#: src/lyxrc.C:2050
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
@@ -12242,27 +12261,27 @@ msgstr ""
 "Максимальная длина строки экспортируемого простого текстового файла ( LaTeX, "
 "SGML или простого текста)"
 
-#: src/lyxrc.C:2038
+#: src/lyxrc.C:2054
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
 msgstr "Количество недавних файлов, которые будут показываться в меню Файл."
 
-#: src/lyxrc.C:2042
+#: src/lyxrc.C:2058
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 "Отметьте, чтобы осуществлялась проверка, существует ли ещё файл, который "
 "есть в списке недавних."
 
-#: src/lyxrc.C:2046
+#: src/lyxrc.C:2062
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Укажите команду установки формата бумаги для просмотрщика DVI (оставьте "
 "пустым или введите \"-paper\")"
 
-#: src/lyxrc.C:2050
+#: src/lyxrc.C:2066
 msgid "Specify the default paper size."
 msgstr "Укажите размер бумаги по умолчанию."
 
-#: src/lyxrc.C:2057
+#: src/lyxrc.C:2073
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -12270,11 +12289,11 @@ msgstr ""
 "Определяет, считать ли раздельно написанные слова, например \"diskdrive\" "
 "для \"disk drive\", допустимыми словами."
 
-#: src/lyxrc.C:2061
+#: src/lyxrc.C:2077
 msgid "What command runs the spell checker?"
 msgstr "Выберите требуемую программу проверки правописания"
 
-#: src/lyxrc.C:2065
+#: src/lyxrc.C:2081
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
@@ -12284,23 +12303,23 @@ msgstr ""
 "этот пункт, если вы не можете проверить правописания слов с международными "
 "буквами в них. Это может работать не со всеми словарями."
 
-#: src/lyxrc.C:2070
+#: src/lyxrc.C:2086
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Укажите дополнительный язык. По умолчанию используется язык документа."
 
-#: src/lyxrc.C:2075
+#: src/lyxrc.C:2091
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Укажите дополнительный личный словарный файл. Например \".ispell_english\"."
 
-#: src/lyxrc.C:2080
+#: src/lyxrc.C:2096
 msgid "Specify additional chars that can be part of a word."
 msgstr "Укажите дополнительные символы, которые могут быть частью слова."
 
-#: src/lyxrc.C:2084
+#: src/lyxrc.C:2100
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -12311,7 +12330,7 @@ msgstr ""
 "вместо масштабирования будет использовать ближайший по размеру доступный "
 "шрифт."
 
-#: src/lyxrc.C:2088
+#: src/lyxrc.C:2104
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -12319,7 +12338,7 @@ msgstr ""
 "Определяет как запускать chktex. Например, \"chktex -n11 -n1 -n3 -n6 -n9 -22 "
 "-n25 -n30 -n38\" Обращайтесь к документации по ChkTeX."
 
-#: src/lyxrc.C:2092
+#: src/lyxrc.C:2108
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -12328,7 +12347,7 @@ msgstr ""
 "курсора не обновляется. Отметьте этот пункт, если вы предпочитаете всегда "
 "видеть курсор на экране."
 
-#: src/lyxrc.C:2096
+#: src/lyxrc.C:2112
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -12336,15 +12355,15 @@ msgstr ""
 "Сворачивать ли диалоги при сворачивании главного окна программы. "
 "(Подействует только на вновь открываемые диалоги.)"
 
-#: src/lyxrc.C:2100
+#: src/lyxrc.C:2116
 msgid "Select how LyX will display any graphics."
 msgstr "Укажите как LyX будет показывать всю графику в документе."
 
-#: src/lyxrc.C:2104
+#: src/lyxrc.C:2120
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Снимите отметку, чтобы LyX не создавал резервные файлы."
 
-#: src/lyxrc.C:2108
+#: src/lyxrc.C:2124
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -12353,14 +12372,14 @@ msgstr ""
 "пустая строка, LyX будет создавать резервный файл в том каталоге, где "
 "находится редактируемый файл."
 
-#: src/lyxrc.C:2112
+#: src/lyxrc.C:2128
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Отметьте для включения поддержки языков \"справа налево\" (таких как "
 "еврейский, арабский)."
 
-#: src/lyxrc.C:2116
+#: src/lyxrc.C:2132
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -12368,7 +12387,7 @@ msgstr ""
 "Отметьте для включения подчёркивания слов, написанных в языке, отличном от "
 "языка документа."
 
-#: src/lyxrc.C:2120
+#: src/lyxrc.C:2136
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -12376,14 +12395,14 @@ msgstr ""
 "Команда LaTeX для загрузки языкового пакета. Например \"\\usepackage{babel}"
 "\", \"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:2124
+#: src/lyxrc.C:2140
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 "Снимите отметку чтобы язык(и) использовался как аргумент в \\documentclass."
 
-#: src/lyxrc.C:2128
+#: src/lyxrc.C:2144
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -12391,19 +12410,19 @@ msgstr ""
 "Снимите отметку, чтобы babel использовался, когда язык документа совпадает с "
 "языком по умолчанию"
 
-#: src/lyxrc.C:2132
+#: src/lyxrc.C:2148
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 "Отметьте, если в начале документа требуется команда переключения языка."
 
-#: src/lyxrc.C:2136
+#: src/lyxrc.C:2152
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Отметьте, если в конце документа требуется команда переключения языка."
 
-#: src/lyxrc.C:2140
+#: src/lyxrc.C:2156
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -12412,15 +12431,15 @@ msgstr ""
 "Команда LaTeX для переключения от языка документа к другому языку. Например "
 "\\selectlanguage{$$lang}, где $$lang заменяется названием другого языка."
 
-#: src/lyxrc.C:2144
+#: src/lyxrc.C:2160
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Команда LaTeX для возвращения обратно к языку документа."
 
-#: src/lyxrc.C:2148
+#: src/lyxrc.C:2164
 msgid "The LaTeX command for local changing of the language."
 msgstr "Команда LaTeX для локального изменения языка."
 
-#: src/lyxrc.C:2153
+#: src/lyxrc.C:2169
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -12429,11 +12448,11 @@ msgstr ""
 "Здесь используется обыкновенный формат strftime; смотрите man strftime для "
 "подробной информации. Например \"%A, %e. %B %Y\"."
 
-#: src/lyxrc.C:2157
+#: src/lyxrc.C:2173
 msgid "De-select if you don't want the startup banner."
 msgstr "Снимите отметку, если вы не хотите видеть заставку при запуске."
 
-#: src/lyxrc.C:2161
+#: src/lyxrc.C:2177
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
@@ -12441,28 +12460,28 @@ msgstr ""
 "Количество строк, которые прокручиваются мышкой с колёсиком или пятью "
 "кнопками."
 
-#: src/lyxrc.C:2174
+#: src/lyxrc.C:2190
 msgid "New documents will be assigned this language."
 msgstr "Новые документы будут создаваться на этом языке."
 
-#: src/lyxrc.C:2178
+#: src/lyxrc.C:2194
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Максимальное число слов в инициализационной строке для новой метки."
 
-#: src/lyxrc.C:2182
+#: src/lyxrc.C:2198
 msgid "Shows a typeset preview of things such as math"
 msgstr "Показывать формулы так, как они будут выглядеть при печати"
 
-#: src/lyxrc.C:2186
+#: src/lyxrc.C:2202
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "У предварительно показываемых формул будут метки \"(#)\" вместо номеров"
 
-#: src/lyxrc.C:2190
+#: src/lyxrc.C:2206
 msgid "Scale the preview size to suit."
 msgstr "Изменить размер предварительного показа до подходящего ."
 
-#: src/lyxrc.C:2194
+#: src/lyxrc.C:2210
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -12566,35 +12585,35 @@ msgstr " Макрос: %s: "
 msgid " Macro: "
 msgstr " Макрос: "
 
-#: src/support/filetools.C:537
+#: src/support/filetools.C:549
 msgid "Error! Cannot open directory:"
 msgstr "Ошибка открытия каталога:"
 
-#: src/support/filetools.C:559
+#: src/support/filetools.C:571
 msgid "Error! Could not remove file:"
 msgstr "Ошибка удаления файла:"
 
-#: src/support/filetools.C:583 src/support/filetools.C:621
+#: src/support/filetools.C:595 src/support/filetools.C:633
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Ошибка создания временного каталога:"
 
-#: src/support/filetools.C:600
+#: src/support/filetools.C:612
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Ошибка удаления временного каталога:"
 
-#: src/support/filetools.C:675
+#: src/support/filetools.C:687
 msgid "Internal error!"
 msgstr "Внутренняя ошибка!"
 
-#: src/support/filetools.C:676
+#: src/support/filetools.C:688
 msgid "Call to createDirectory with invalid name"
 msgstr "Вызов createDirectory с неверным названием"
 
-#: src/support/filetools.C:681
+#: src/support/filetools.C:693
 msgid "Error! Couldn't create directory:"
 msgstr "Ошибка создания каталога:"
 
-#: src/support/filetools.C:1449
+#: src/support/filetools.C:1461
 msgid "Could not delete auto-save file!"
 msgstr "Ошибка удаления файла автосохранения!"
 
@@ -12627,7 +12646,7 @@ msgid ""
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C:629
+#: src/support/package.C:631
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12636,24 +12655,24 @@ msgstr ""
 "Неверный ключ %1%.\n"
 "Каталог %2% не содержит %3%."
 
-#: src/support/package.C:634 src/support/package.C:669
-#: src/support/package.C:697
+#: src/support/package.C:636 src/support/package.C:671
+#: src/support/package.C:699
 msgid "Invalid "
 msgstr "Неверный "
 
-#: src/support/package.C:635
+#: src/support/package.C:637
 msgid " switch.\n"
 msgstr " ключ.\n"
 
-#: src/support/package.C:636 src/support/package.C:671
+#: src/support/package.C:638 src/support/package.C:673
 msgid "Directory "
 msgstr "Каталог "
 
-#: src/support/package.C:637 src/support/package.C:672
+#: src/support/package.C:639 src/support/package.C:674
 msgid " does not contain "
 msgstr " не содержит "
 
-#: src/support/package.C:664
+#: src/support/package.C:666
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12662,11 +12681,11 @@ msgstr ""
 "Неверная переменная окружения %1%.\n"
 "Каталог %2% не содержит %3%."
 
-#: src/support/package.C:670 src/support/package.C:698
+#: src/support/package.C:672 src/support/package.C:700
 msgid " environment variable.\n"
 msgstr " переменная окружения.\n"
 
-#: src/support/package.C:692
+#: src/support/package.C:694
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12675,7 +12694,7 @@ msgstr ""
 "Неверная переменная окружения %1%.\n"
 "%2% не является каталогом."
 
-#: src/support/package.C:699
+#: src/support/package.C:701
 msgid " is not a directory."
 msgstr " не является каталогом."
 

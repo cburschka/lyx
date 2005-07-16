@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-14 23:13+0200\n"
+"POT-Creation-Date: 2005-07-16 18:08+0200\n"
 "PO-Revision-Date: 2005-04-07 23:48+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -9942,6 +9942,7 @@ msgstr "Der im LyX-Dokument verwendete Schlüssel."
 msgid "Label used for final output."
 msgstr "Die für die endgültige Ausgabe verwendete Marke."
 
+#. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:67
 msgid ""
 "The database you want to cite from. Insert it without the default extension "
@@ -10286,6 +10287,7 @@ msgstr ""
 msgid "Clip image to the bounding box values."
 msgstr "Schneide das Bild auf die Werte der Begrenzungsbox zu."
 
+#. set up the tooltips for the extra section
 #: src/frontends/xforms/FormGraphics.C:251
 msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
@@ -10816,6 +10818,7 @@ msgstr ""
 "Dieser Befehl wird auf den im ausgewählten Format exportierten Bufferinhalt "
 "angewendet. $$FName wird dabei durch den Namen dieser Datei ersetzt."
 
+#. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:57
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
@@ -10885,6 +10888,7 @@ msgstr "Tabelle einfügen"
 msgid "LaTeX classes|LaTeX styles|BibTeX styles"
 msgstr "LaTeX-Klassen|LaTeX-Stile|BibTeX-Stile"
 
+#. set up the tooltips
 #: src/frontends/xforms/FormTexinfo.C:47
 msgid ""
 "Shows the installed classses and styles for LaTeX/BibTeX; available only if "
@@ -11187,33 +11191,33 @@ msgstr "Fehler beim Generieren der Pixmap"
 msgid "No image"
 msgstr "Kein Bild"
 
-#: src/insets/insetgraphics.C:651
+#: src/insets/insetgraphics.C:637
 msgid "Cannot copy file"
 msgstr "Die Datei"
 
-#: src/insets/insetgraphics.C:652
+#: src/insets/insetgraphics.C:639
 msgid "into tempdir"
 msgstr "kann nicht in das temporäre Verzeichnis kopiert werden."
 
-#: src/insets/insetgraphics.C:689 src/insets/insetgraphics.C:693
+#: src/insets/insetgraphics.C:676 src/insets/insetgraphics.C:680
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Das Bild kann nicht konvertiert werden (Datei nicht vorhanden?)"
 
-#: src/insets/insetgraphics.C:690
+#: src/insets/insetgraphics.C:677
 #, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr "Keine Informationen vorhanden, um von %1$s nach %2$s zu konvertieren"
 
-#: src/insets/insetgraphics.C:694
+#: src/insets/insetgraphics.C:681
 msgid "No information for converting from "
 msgstr "Keine Informationen für die Konvertierung von "
 
-#: src/insets/insetgraphics.C:802
+#: src/insets/insetgraphics.C:789
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
 
-#: src/insets/insetgraphics.C:806
+#: src/insets/insetgraphics.C:793
 msgid "Graphics file: "
 msgstr "Grafikdatei: "
 
@@ -11392,6 +11396,7 @@ msgstr ""
 "Es konnte kein ispell-Prozess erzeugt werden.\n"
 "Sie haben möglicherweise nicht die passenden Sprachen installiert."
 
+#. select returned error
 #: src/ispell.C:259
 msgid ""
 "The spell process returned an error.\n"
@@ -11890,6 +11895,7 @@ msgstr "Befehl ist deaktiviert"
 msgid "Document is read-only"
 msgstr "Dokument ist schreibgeschützt"
 
+#. no
 #: src/lyxfunc.C:310
 msgid "Command not allowed without any document open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
@@ -12645,36 +12651,36 @@ msgstr "Makro: %s: "
 msgid " Macro: "
 msgstr " Makro: "
 
-#: src/support/filetools.C:548
+#: src/support/filetools.C:549
 msgid "Error! Cannot open directory:"
 msgstr "Fehler! Verzeichnis kann nicht gelesen werden:"
 
-#: src/support/filetools.C:570
+#: src/support/filetools.C:571
 msgid "Error! Could not remove file:"
 msgstr "Fehler! Datei konnte nicht entfernt werden:"
 
-#: src/support/filetools.C:594 src/support/filetools.C:632
+#: src/support/filetools.C:595 src/support/filetools.C:633
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Fehler: Temporäres Verzeichnis konnte nicht erstellt werden:"
 
-#: src/support/filetools.C:611
+#: src/support/filetools.C:612
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Fehler: Temporäres Verzeichnis konnte nicht gelöscht werden:"
 
-#: src/support/filetools.C:686
+#: src/support/filetools.C:687
 msgid "Internal error!"
 msgstr "Interner Fehler!"
 
-#: src/support/filetools.C:687
+#: src/support/filetools.C:688
 msgid "Call to createDirectory with invalid name"
 msgstr ""
 "Die Funktion 'createDirectory' wurde mit einem ungültigen Namen aufgerufen"
 
-#: src/support/filetools.C:692
+#: src/support/filetools.C:693
 msgid "Error! Couldn't create directory:"
 msgstr "Fehler: Verzeichnis konnte nicht erstellt werden:"
 
-#: src/support/filetools.C:1460
+#: src/support/filetools.C:1461
 msgid "Could not delete auto-save file!"
 msgstr "Die automatische Sicherungsdatei konnte nicht gelöscht werden!"
 
@@ -12719,7 +12725,7 @@ msgstr ""
 "oder setzen Sie die Umgebungsvariable LYX_DIR_13x auf das LyX-"
 "Systemverzeichnis, das die Datei 'chkconfig.ltx' enthält."
 
-#: src/support/package.C:629
+#: src/support/package.C:631
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12728,24 +12734,24 @@ msgstr ""
 "Ungültige Option %1%.\n"
 "Verzeichnis %2% enthält %3% nicht."
 
-#: src/support/package.C:634 src/support/package.C:669
-#: src/support/package.C:697
+#: src/support/package.C:636 src/support/package.C:671
+#: src/support/package.C:699
 msgid "Invalid "
 msgstr "Ungültige Option "
 
-#: src/support/package.C:635
+#: src/support/package.C:637
 msgid " switch.\n"
 msgstr " .\n"
 
-#: src/support/package.C:636 src/support/package.C:671
+#: src/support/package.C:638 src/support/package.C:673
 msgid "Directory "
 msgstr "Verzeichnis "
 
-#: src/support/package.C:637 src/support/package.C:672
+#: src/support/package.C:639 src/support/package.C:674
 msgid " does not contain "
 msgstr " enthält nicht "
 
-#: src/support/package.C:664
+#: src/support/package.C:666
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12754,11 +12760,11 @@ msgstr ""
 "Ungültige Umgebungsvariable %1%.\n"
 "Verzeichnis %2% enthält nicht %3%."
 
-#: src/support/package.C:670 src/support/package.C:698
+#: src/support/package.C:672 src/support/package.C:700
 msgid " environment variable.\n"
 msgstr " Umgebungsvariable.\n"
 
-#: src/support/package.C:692
+#: src/support/package.C:694
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12767,7 +12773,7 @@ msgstr ""
 "Ungültige Umgebungsvariable %1%.\n"
 "%2% ist kein Verzeichnis."
 
-#: src/support/package.C:699
+#: src/support/package.C:701
 msgid " is not a directory."
 msgstr " ist kein Verzeichnis."
 

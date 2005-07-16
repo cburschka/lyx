@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 23:38+0200\n"
+"POT-Creation-Date: 2005-07-16 18:08+0200\n"
 "PO-Revision-Date: 2005-02-02 17:21+0100\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -5040,11 +5040,11 @@ msgstr "SousSousSection*"
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
 #: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/scrclass.inc:230
-#: src/buffer.C:1536
+#: src/buffer.C:1565
 msgid "Abstract"
 msgstr "Abstract"
 
-#: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:99
+#: ../lib/layouts/IEEEtran.layout:381 ../lib/layouts/aastex.layout:99
 #: ../lib/layouts/aastex.layout:263 ../lib/layouts/elsart.layout:63
 #: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
 #: ../lib/layouts/revtex4.layout:245 ../lib/layouts/siamltex.layout:159
@@ -5052,7 +5052,7 @@ msgstr "Abstract"
 msgid "Keywords"
 msgstr "Mots-Clés"
 
-#: ../lib/layouts/IEEEtran.layout:406 ../lib/layouts/aa.layout:78
+#: ../lib/layouts/IEEEtran.layout:405 ../lib/layouts/aa.layout:78
 #: ../lib/layouts/aa.layout:338 ../lib/layouts/aapaper.layout:85
 #: ../lib/layouts/aapaper.layout:195 ../lib/layouts/book.layout:19
 #: ../lib/layouts/cl2emult.layout:105 ../lib/layouts/cv.layout:154
@@ -5068,21 +5068,21 @@ msgstr "Mots-Clés"
 msgid "Bibliography"
 msgstr "Bibliographie"
 
-#: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:103
+#: ../lib/layouts/IEEEtran.layout:414 ../lib/layouts/aastex.layout:103
 #: ../lib/layouts/aastex.layout:389 ../lib/layouts/ijmpd.layout:166
 #: ../lib/layouts/kluwer.layout:324
 msgid "Appendix"
 msgstr "Appendice"
 
-#: ../lib/layouts/IEEEtran.layout:438
+#: ../lib/layouts/IEEEtran.layout:437
 msgid "Appendices"
 msgstr "Appendices"
 
-#: ../lib/layouts/IEEEtran.layout:461
+#: ../lib/layouts/IEEEtran.layout:460
 msgid "Biography"
 msgstr "Biographie"
 
-#: ../lib/layouts/IEEEtran.layout:476 ../lib/layouts/aa.layout:58
+#: ../lib/layouts/IEEEtran.layout:475 ../lib/layouts/aa.layout:58
 #: ../lib/layouts/aa.layout:218 ../lib/layouts/aapaper.layout:55
 #: ../lib/layouts/aastex.layout:115 ../lib/layouts/aastex.layout:506
 #: ../lib/layouts/egs.layout:667 ../lib/layouts/latex8.layout:115
@@ -5090,11 +5090,11 @@ msgstr "Biographie"
 msgid "Caption"
 msgstr "Légende"
 
-#: ../lib/layouts/IEEEtran.layout:482
+#: ../lib/layouts/IEEEtran.layout:481
 msgid "Footernote"
 msgstr "NoteBasPage"
 
-#: ../lib/layouts/IEEEtran.layout:505
+#: ../lib/layouts/IEEEtran.layout:504
 msgid "MarkBoth"
 msgstr "DoubleMarque"
 
@@ -5273,7 +5273,7 @@ msgid "Acknowledgements"
 msgstr "Remerciements"
 
 #: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
-#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1547
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1576
 msgid "References"
 msgstr "Références"
 
@@ -8517,91 +8517,91 @@ msgstr "Élément inconnu : %1$s %2$s\n"
 msgid "Unknown token: "
 msgstr "Élément inconnu : "
 
-#. future format
-#: src/buffer.C:1212 src/buffer.C:1270
-msgid "Warning!"
-msgstr "Attention !"
+#. "\\lyxformat" not found
+#: src/buffer.C:1213 src/buffer.C:1228 src/buffer.C:1245 src/buffer.C:1252
+#: src/buffer.C:1273 src/buffer.C:1305 src/buffer.C:1308
+msgid "ERROR!"
+msgstr "ERREUR !"
 
-#: src/buffer.C:1213
+#: src/buffer.C:1214
+msgid "Can't find conversion script."
+msgstr "Ne peut pas trouver de script de conversion."
+
+#: src/buffer.C:1229 src/buffer.C:1274
+msgid "An error occured while running the conversion script."
+msgstr "Une erreur est survenue durant l'exécution du script de conversion."
+
+#: src/buffer.C:1246
+msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
+msgstr "Format de fichier LyX périmé. Utiliser LyX 0.10.x pour le lire !"
+
+#: src/buffer.C:1253
+#, fuzzy
 msgid ""
-"The file was created with a newer version of LyX. This is likely to cause "
-"problems."
+"The file was created with a newer version of LyX, but the lyx2lyx script "
+"cannot convert it.\n"
 msgstr ""
 "Ce fichier a été créé avec une version plus récente de LyX, ce qui peut "
 "causer des problèmes."
 
-#. "\\lyxformat" not found
-#: src/buffer.C:1219 src/buffer.C:1226 src/buffer.C:1244 src/buffer.C:1276
-#: src/buffer.C:1279
-msgid "ERROR!"
-msgstr "ERREUR !"
+#: src/buffer.C:1299
+msgid "Warning!"
+msgstr "Attention !"
 
-#: src/buffer.C:1220
-msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr "Format de fichier LyX périmé. Utiliser LyX 0.10.x pour le lire !"
-
-#: src/buffer.C:1227
-msgid "Can't find conversion script."
-msgstr "Ne peut pas trouver de script de conversion."
-
-#: src/buffer.C:1245
-msgid "An error occured while running the conversion script."
-msgstr "Une erreur est survenue durant l'exécution du script de conversion."
-
-#: src/buffer.C:1271
+#: src/buffer.C:1300
 msgid "Reading of document is not complete"
 msgstr "Lecture du document incomplète"
 
-#: src/buffer.C:1272
+#: src/buffer.C:1301
 msgid "Maybe the document is truncated"
 msgstr "Peut-être le document est-il tronqué"
 
-#: src/buffer.C:1276
+#: src/buffer.C:1305
 msgid "Not a LyX file!"
 msgstr "Ce n'est pas un fichier LyX !"
 
-#: src/buffer.C:1279
+#: src/buffer.C:1308
 msgid "Unable to read file!"
 msgstr "Impossible de lire le fichier !"
 
-#: src/buffer.C:1539
+#: src/buffer.C:1568
 msgid "Abstract: "
 msgstr "Abstract : "
 
-#: src/buffer.C:1550
+#: src/buffer.C:1579
 msgid "References: "
 msgstr " Références : "
 
-#: src/buffer.C:1664
+#: src/buffer.C:1693
 msgid "Error: Cannot write file:"
 msgstr "Erreur : Impossible d'écrire le fichier :"
 
-#: src/buffer.C:1694
+#: src/buffer.C:1723
 msgid "Error: Cannot open file: "
 msgstr "Erreur : Impossible d'ouvrir le fichier : "
 
-#: src/buffer.C:2310 src/buffer.C:2765
+#: src/buffer.C:2339 src/buffer.C:2794
 msgid "LYX_ERROR:"
 msgstr "ERREUR LYX :"
 
-#: src/buffer.C:2310 src/buffer.C:2765
+#: src/buffer.C:2339 src/buffer.C:2794
 msgid "Cannot write file"
 msgstr "Impossible d'écrire le fichier"
 
-#: src/buffer.C:2398 src/buffer.C:2871
+#: src/buffer.C:2427 src/buffer.C:2900
 msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Erreur : Mauvaise profondeur pour la commande LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3158
+#: src/buffer.C:3187
 msgid "Running chktex..."
 msgstr "Exécution de chktex..."
 
-#: src/buffer.C:3171
+#: src/buffer.C:3200
 msgid "chktex did not work!"
 msgstr "chktex a échoué !"
 
-#: src/buffer.C:3172
+#: src/buffer.C:3201
 msgid "Could not run with file:"
 msgstr "Impossible de le lancer sur le fichier :"
 
@@ -9723,30 +9723,35 @@ msgid "Bold\t\\mathbf"
 msgstr "Gras\t\\mathbf"
 
 #: src/frontends/qt2/QMathDialog.C:150
-msgid "San serif\t\\mathsf"
-msgstr "Sans empattement\t\\mathsf"
+msgid "Bold symbol\t\\boldsymbol"
+msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:151
+#, fuzzy
+msgid "Sans serif\t\\mathsf"
+msgstr "Sans empattement\t\\mathsf"
+
+#: src/frontends/qt2/QMathDialog.C:152
 msgid "Italic\t\\mathit"
 msgstr "Italique\t\\mathit"
 
-#: src/frontends/qt2/QMathDialog.C:152
+#: src/frontends/qt2/QMathDialog.C:153
 msgid "Typewriter\t\\mathtt"
 msgstr "Chasse fixe\t\\mathtt"
 
-#: src/frontends/qt2/QMathDialog.C:153
+#: src/frontends/qt2/QMathDialog.C:154
 msgid "Blackboard\t\\mathbb"
 msgstr "Tableau noir\t\\mathbb"
 
-#: src/frontends/qt2/QMathDialog.C:154
+#: src/frontends/qt2/QMathDialog.C:155
 msgid "Fraktur\t\\mathfrak"
 msgstr "Fraktur\t\\mathfrak"
 
-#: src/frontends/qt2/QMathDialog.C:155
+#: src/frontends/qt2/QMathDialog.C:156
 msgid "Calligraphic\t\\mathcal"
 msgstr "Calligraphique\t\\mathcal"
 
-#: src/frontends/qt2/QMathDialog.C:156
+#: src/frontends/qt2/QMathDialog.C:157
 msgid "Normal text mode\t\\textrm"
 msgstr "Texte normal\t\\textrm"
 
@@ -10108,8 +10113,8 @@ msgid ""
 "the left browser window."
 msgstr ""
 "Toutes les entrées dans la base de données que vous avez chargée (via « "
-"Insérer->Listes&TdM->Bibliographie BibTeX »). Déplacez celles que vous voulez "
-"citer dans la fenêtre de gauche avec les flèches."
+"Insérer->Listes&TdM->Bibliographie BibTeX »). Déplacez celles que vous "
+"voulez citer dans la fenêtre de gauche avec les flèches."
 
 #: src/frontends/xforms/FormCitation.C:188
 msgid "Information about the selected bibliography entry"
@@ -10128,8 +10133,8 @@ msgid ""
 "Activate if you want to print all authors in a citation with more than three "
 "authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
-"Cochez si vous voulez mettre tous les auteurs dans une citation de "
-"plus de trois auteurs, au lieu de « <Premier Auteur> et al. » (Natbib)."
+"Cochez si vous voulez mettre tous les auteurs dans une citation de plus de "
+"trois auteurs, au lieu de « <Premier Auteur> et al. » (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:201
 msgid ""
@@ -10143,8 +10148,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:204
 msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
-msgstr ""
-"Texte optionnel qui apparaît avant la citation, par ex. « voir <Réf> »"
+msgstr "Texte optionnel qui apparaît avant la citation, par ex. « voir <Réf> »"
 
 #: src/frontends/xforms/FormCitation.C:207
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
@@ -11172,9 +11176,21 @@ msgstr "importé."
 msgid "Opened inset"
 msgstr "Insert ouvert"
 
-#: src/insets/insetbib.C:142
+#: src/insets/insetbib.C:147
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliographie BibTeX"
+
+#: src/insets/insetbib.C:268 src/lyx_main.C:576 src/lyx_main.C:580
+msgid "LyX Warning!"
+msgstr "Avertissment LyX !"
+
+#: src/insets/insetbib.C:269
+msgid "There are spaces in the paths to your BibTeX databases."
+msgstr ""
+
+#: src/insets/insetbib.C:270
+msgid "BibTeX will be unable to find them."
+msgstr ""
 
 # à revoir
 #: src/insets/insetcaption.C:63
@@ -11291,33 +11307,33 @@ msgstr "Erreur lors de la génération de la pixmap"
 msgid "No image"
 msgstr "Pas d'image"
 
-#: src/insets/insetgraphics.C:651
+#: src/insets/insetgraphics.C:637
 msgid "Cannot copy file"
 msgstr "Impossible de copier le fichier"
 
-#: src/insets/insetgraphics.C:652
+#: src/insets/insetgraphics.C:639
 msgid "into tempdir"
 msgstr "dans le répertoire temporaire"
 
-#: src/insets/insetgraphics.C:689 src/insets/insetgraphics.C:693
+#: src/insets/insetgraphics.C:676 src/insets/insetgraphics.C:680
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Impossible de convertir l'image (fichier inexistant ?)"
 
-#: src/insets/insetgraphics.C:690
+#: src/insets/insetgraphics.C:677
 #, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr "Pas d´information pour la conversion de %1$s vers %2$s"
 
-#: src/insets/insetgraphics.C:694
+#: src/insets/insetgraphics.C:681
 msgid "No information for converting from "
 msgstr "Pas d´information pour la conversion de "
 
-#: src/insets/insetgraphics.C:802
+#: src/insets/insetgraphics.C:789
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Fichier graphique : %1$s"
 
-#: src/insets/insetgraphics.C:806
+#: src/insets/insetgraphics.C:793
 msgid "Graphics file: "
 msgstr "Fichier graphique : "
 
@@ -11806,10 +11822,6 @@ msgstr "LyX : Création du répertoire "
 #: src/lyx_main.C:557
 msgid "Failed to create directory. Exiting."
 msgstr "Impossible de créer le répertoire. Arrêt de LyX."
-
-#: src/lyx_main.C:576 src/lyx_main.C:580
-msgid "LyX Warning!"
-msgstr "Avertissment LyX !"
 
 #: src/lyx_main.C:577
 #, c-format
@@ -12739,35 +12751,35 @@ msgstr " Macro : %s : "
 msgid " Macro: "
 msgstr " Macro : "
 
-#: src/support/filetools.C:539
+#: src/support/filetools.C:549
 msgid "Error! Cannot open directory:"
 msgstr "Erreur ! Impossible d'ouvrir le répertoire :"
 
-#: src/support/filetools.C:561
+#: src/support/filetools.C:571
 msgid "Error! Could not remove file:"
 msgstr "Erreur ! Impossible de supprimer le fichier :"
 
-#: src/support/filetools.C:585 src/support/filetools.C:623
+#: src/support/filetools.C:595 src/support/filetools.C:633
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Erreur ! Impossible de créer le répertoire temporaire :"
 
-#: src/support/filetools.C:602
+#: src/support/filetools.C:612
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Erreur ! Impossible de supprimer le répertoire temporaire :"
 
-#: src/support/filetools.C:677
+#: src/support/filetools.C:687
 msgid "Internal error!"
 msgstr "Erreur interne !"
 
-#: src/support/filetools.C:678
+#: src/support/filetools.C:688
 msgid "Call to createDirectory with invalid name"
 msgstr "Appel à createDirectory avec un nom invalide"
 
-#: src/support/filetools.C:683
+#: src/support/filetools.C:693
 msgid "Error! Couldn't create directory:"
 msgstr "Erreur ! Impossible de créer le répertoire :"
 
-#: src/support/filetools.C:1451
+#: src/support/filetools.C:1461
 msgid "Could not delete auto-save file!"
 msgstr "Impossible d'effacer le fichier de sauvegarde !"
 
@@ -12811,7 +12823,7 @@ msgstr ""
 "d'environnement LYX_DIR_13x sur le répertoire système contenant le fichier "
 "`chkconfig.ltx'."
 
-#: src/support/package.C:629
+#: src/support/package.C:631
 #, c-format
 msgid ""
 "Invalid %1% switch.\n"
@@ -12820,24 +12832,24 @@ msgstr ""
 "L'option %1% est invalide.\n"
 "Le répertoire %2% ne contient pas %3%."
 
-#: src/support/package.C:634 src/support/package.C:669
-#: src/support/package.C:697
+#: src/support/package.C:636 src/support/package.C:671
+#: src/support/package.C:699
 msgid "Invalid "
 msgstr "L'option "
 
-#: src/support/package.C:635
+#: src/support/package.C:637
 msgid " switch.\n"
 msgstr " est invalide.\n"
 
-#: src/support/package.C:636 src/support/package.C:671
+#: src/support/package.C:638 src/support/package.C:673
 msgid "Directory "
 msgstr "Le répertoire "
 
-#: src/support/package.C:637 src/support/package.C:672
+#: src/support/package.C:639 src/support/package.C:674
 msgid " does not contain "
 msgstr "ne contient pas "
 
-#: src/support/package.C:664
+#: src/support/package.C:666
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12846,11 +12858,11 @@ msgstr ""
 "La variable d'environnement %1% est invalide.\n"
 "Le répertoire %2% ne contient pas %3%."
 
-#: src/support/package.C:670 src/support/package.C:698
+#: src/support/package.C:672 src/support/package.C:700
 msgid " environment variable.\n"
 msgstr " variable d'environnement.\n"
 
-#: src/support/package.C:692
+#: src/support/package.C:694
 #, c-format
 msgid ""
 "Invalid %1% environment variable.\n"
@@ -12859,7 +12871,7 @@ msgstr ""
 "La variable d'environnement %1% est invalide.\n"
 "%2% n'est pas un répertoire."
 
-#: src/support/package.C:699
+#: src/support/package.C:701
 msgid " is not a directory."
 msgstr " n'est pas un répertoire."
 
