@@ -96,12 +96,8 @@ maths symbols displayed properly. To find out, type:
 at the console. Both RH8 and Debian unstable distributions are known
 to use fontconfig.
 
-If, however, your version of Qt does not use fontconfig, then the
-/usr/local/share/lyx/xfonts directory (or equivalent) should be added to
-the font path. This is done automatically by LyX if LyX is run on
-the local machine, and the X server supports Postscript fonts. If, however,
-you're running LyX remotely, then you'll have to do this step yourself.
-'man xset' is your friend.
+If, however, your version of Qt does not use fontconfig, then TeX
+fonts should be added to the font path. 'man xset' is your friend.
 
 * Other things to note
 

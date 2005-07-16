@@ -1,3 +1,8 @@
+2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C (addToFontPath): remove.
+	(available): do not try to call addToFontPath.
+
 2005-07-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* moc/Makefile.am: dist pch.h and mark PCH_FILE as a built file

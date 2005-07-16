@@ -896,30 +896,6 @@ $(srcdir)/configure: $(srcdir)/configure.m4
 lyxrc.defaults: $(srcdir)/configure
 	$(SHELL) $<
 
-install-xfonts:
-	test -f xfonts/fonts.dir || exit 0 ; \
-	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/xfonts ; \
-	files=`sed -e 's/^[0-9]*$$//' -e 's/^\([^ ]*\) .*$$/\1/' xfonts/fonts.dir` ; \
-	for i in $${files} ; do \
-	  ln -f -s `kpsewhich $$i` $(DESTDIR)$(pkgdatadir)/xfonts/$$i ; \
-	done ; \
-	$(INSTALL_DATA) xfonts/fonts.dir $(DESTDIR)$(pkgdatadir)/xfonts/fonts.dir ; \
-	$(INSTALL_DATA) xfonts/fonts.scale $(DESTDIR)$(pkgdatadir)/xfonts/fonts.scale ; \
-	if test -f xfonts/PSres.upr ; then \
-	  $(INSTALL_DATA) xfonts/PSres.upr $(DESTDIR)$(pkgdatadir)/xfonts/PSres.upr ; \
-	fi
-
-uninstall-xfonts:
-	rm -rf $(DESTDIR)$(pkgdatadir)/xfonts
-
-distclean-local:
-	rm -rf xfonts
-
-install-data-local: install-xfonts
-
-
-uninstall-local: uninstall-xfonts
-
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure
 	for i in $(dist_scripts_DATA); do \

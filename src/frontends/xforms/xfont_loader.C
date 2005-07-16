@@ -145,27 +145,6 @@ string const fontName(string const & family, string const & foundry)
 		return "-"+foundry+"-"+family;
 }
 
-
-bool addFontPath()
-{
-	string const dir =  OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
-	if (!dir.empty()) {
-		int n;
-		char ** p = XGetFontPath(fl_get_display(), &n);
-		if (std::find(p, p + n, dir) != p + n)
-			return false;
-		lyxerr[Debug::FONT] << "Adding " << dir
-				    << " to the font path." << endl;
-		string const command = "xset fp+ " + dir;
-		Systemcall s;
-		if (!s.startscript(Systemcall::Wait, command))
-			return true;
-		lyxerr << "Unable to add " << dir << "to the font path."
-		       << endl;
-	}
-	return false;
-}
-
 } // namespace anon
 
 // Get font info
@@ -182,17 +161,7 @@ void xfont_loader::getFontinfo(LyXFont::FONT_FAMILY family,
 	// Special fonts
 	string pat = symbolPattern(family);
 	if (!pat.empty()) {
-		static bool first_time = true;
 		fontinfo[family][series][shape] = new FontInfo(pat);
-		if (family != LyXFont::SYMBOL_FAMILY &&
-		    !fontinfo[family][series][shape]->exist() &&
-		    first_time) {
-			first_time = false;
-			if (addFontPath()) {
-				delete fontinfo[family][series][shape];
-				fontinfo[family][series][shape] = new FontInfo(pat);
-			}
-		}
 		return;
 	}
 

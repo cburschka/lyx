@@ -199,7 +199,7 @@ esac
 
 #### Create the build directories if necessary
 for dir in bind clipart doc examples help images kbd layouts reLyX \
-    scripts templates ui xfonts; do
+    scripts templates ui ; do
   test ! -d $dir && mkdir $dir
 done
 
@@ -699,45 +699,10 @@ then
   echo "\\cygwin_path_fix_needed $use_cygwin_path_fix" >> $outfile
 fi
 
-######## X FONTS
-# create a fonts.dir file to make X fonts available to LyX
-echo "checking for TeX fonts"
-
-fontlist="cmex10 cmmi10 cmr10 cmsy10 eufm10 msam10 msbm10 wasy10"
-rm -f xfonts/fonts.dir xfonts/fonts.scale xfonts/tmpfonts
-
-num=0
-touch xfonts/tmpfonts
-for font in $fontlist ; do
-  MSG_CHECKING(for $font,+)
-  result=no
-  for ext in pfb pfa ttf ; do
-    if filepath=`kpsewhich $font.$ext` ; then
-      result="yes ($ext)"
-      rm -f xfonts/$font.$ext
-      ln -s $filepath xfonts 2>/dev/null
-      echo "$font.$ext -unknown-$font-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific" >>xfonts/tmpfonts
-      num=`expr $num + 1`
-      break
-    fi
-  done
-  MSG_RESULT($result)
-done
-
-if test ! $num = 0 ; then
-  echo $num >xfonts/fonts.scale
-  cat xfonts/tmpfonts >>xfonts/fonts.scale
-  cp xfonts/fonts.scale xfonts/fonts.dir
-  # create a resource list file for Display Postscript
-  (cd xfonts ; rm -f PSres.upr ; makepsres) 2>/dev/null || true
-fi
-rm -f xfonts/tmpfonts
-
-
 # Remove superfluous files if we are not writing in the main lib
 # directory
 for file in $outfile textclass.lst packages.lst \
-	    doc/LaTeXConfig.lyx xfonts/fonts.dir ; do
+	    doc/LaTeXConfig.lyx  ; do
   # we rename the file first, so that we avoid comparing a file with itself
   mv $file $file.new
   if test -r "${srcdir}"/$file && diff $file.new "${srcdir}"/$file >/dev/null 2>/dev/null ;
@@ -748,10 +713,6 @@ for file in $outfile textclass.lst packages.lst \
     mv $file.new $file
   fi
 done
-if test ! -r xfonts/fonts.dir ; then
-    echo "removing font links"
-    rm -f xfonts/*.pfb xfonts/fonts.scale
-fi
 
 # Final clean-up
 if test $lyx_keep_temps = no ; then

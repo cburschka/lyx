@@ -1,3 +1,8 @@
+2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* xfont_loader.C (getFontinfo): do not call addFontPath.
+	(addFontPath): remove.
+
 2005-07-13    <lgb@tandberg.net>
 
 	* forms/Makefile.am (distclean-local): pretend success also if

@@ -53,29 +53,6 @@ using std::string;
 
 
 
-void qfont_loader::addToFontPath()
-{
-#ifdef Q_WS_X11
-	string const dir =  OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
-	if (!dir.empty()) {
-		QWidget w;
-		int n;
-		char ** p = XGetFontPath(w.x11Display(), &n);
-		if (std::find(p, p + n, dir) != p + n)
-			return;
-		XFreeFontPath(p);
-		lyxerr[Debug::FONT] << "Adding " << dir
-				    << " to the font path." << endl;
-		string const command = "xset fp+ " + QuoteName(dir);
-		Systemcall s;
-		if (!s.startscript(Systemcall::Wait, command))
-			return;
-		lyxerr << "Unable to add " << dir << "to the font path."
-		       << endl;
-	}
-#endif
-}
-
 void qfont_loader::initFontPath()
 {
 #ifdef Q_WS_MACX
@@ -415,22 +392,6 @@ bool qfont_loader::available(LyXFont const & f)
 			return true;
 		}
 
-		// If the font is a tex symbol font and it is not available,
-		// we try to add the xfonts directory to the font path.
-		static bool first_time = true;
-		if (!first_time || family == LyXFont::SYMBOL_FAMILY
-		    || family == LyXFont::WASY_FAMILY)
-			return false;
-
-		first_time = false;
-		addToFontPath();
-		tmp = getSymbolFont(pat);
-		if (tmp.second) {
-			cache[family] = true;
-			return true;
-		}
-		// We don't need to set cache[family] to false, as it
-		//is initialized to false;
 		return false;
 	}
 
