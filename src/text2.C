@@ -856,16 +856,17 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 	}
 
 	x = int(tmpx) + xo;
+	int const col = c - row.pos();
 
         if (end == par.size())
-                return c - row.pos();
+                return col;
 
-	if (c && !par.isLineSeparator(c-1) && !par.isNewline(c-1)) {
+	if (!col && !par.isLineSeparator(c-1) && !par.isNewline(c-1)) {
 		boundary = true;
-		return c - row.pos();
+		return col;
 	}
 
-        return min(c - row.pos(), end - 1 - row.pos());
+        return min(col, end - 1 - row.pos());
 }
 
 

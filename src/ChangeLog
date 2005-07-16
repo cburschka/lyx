@@ -1,5 +1,10 @@
 2005-07-16  Juergen Vigna  <jug@lyx.org>
 
+	* text2.C (getColumnNearX): hopefully got it right now,
+	check if we are on column 0 for special case.
+
+2005-07-16  Juergen Vigna  <jug@lyx.org>
+
 	* text2.C (getColumnNearX): handle special case Newline Inset
 
 	* text.C (singleWidth): Just remove bogus check
