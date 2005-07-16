@@ -39,16 +39,20 @@ void CoordCache::clear()
 	pars_.clear();
 }
 
-void CoordCache::startUpdating() {
+
+void CoordCache::startUpdating()
+{
 	BOOST_ASSERT(!updating);
 	updating = true;
 }
 
 
-void CoordCache::doneUpdating() {
+void CoordCache::doneUpdating()
+{
 	BOOST_ASSERT(updating);
 	updating = false;
 }
+
 
 Point CoordCache::get(LyXText const * text, lyx::pit_type pit)
 {
