@@ -1,3 +1,12 @@
+2005-07-17  Juergen Vigna  <jug@lyx.org>
+
+	* text2.C (getColumnNearX, cursorRight, cursorLeft, cursorHome,
+	           cursorEnd):
+	more fixes for boundary handling
+
+	* text3.C (dispatch): don't reset cursor if boundary has changed
+	on cursor movement.
+
 2005-07-16  Juergen Vigna  <jug@lyx.org>
 
 	* text2.C (getColumnNearX): hopefully got it right now,

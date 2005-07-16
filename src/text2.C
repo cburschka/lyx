@@ -481,7 +481,11 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 void LyXText::cursorHome(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	setCursor(cur, cur.pit(), cur.textRow().pos());
+	Paragraph const & par = cur.paragraph();
+	if (cur.boundary() && cur.pos())
+		setCursor(cur, cur.pit(), par.getRow(cur.pos()-1).pos());
+	else
+		setCursor(cur, cur.pit(), cur.textRow().pos());
 }
 
 
@@ -489,10 +493,17 @@ void LyXText::cursorEnd(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	// if not on the last row of the par, put the cursor before
-	// the final space
-// FIXME: does this final space exist?
-	pos_type const end = cur.textRow().endpos();
-	setCursor(cur, cur.pit(), end == cur.lastpos() ? end : end - 1);
+	// the final space exept if I have a spanning inset or one string
+	// is so long that we force a break.
+	pos_type end = cur.textRow().endpos();
+	bool boundary = false;
+	if (!cur.paragraph().isLineSeparator(end-1) &&
+	    !cur.paragraph().isNewline(end-1))
+	{
+		boundary = true;
+	} else if (end != cur.lastpos())
+		--end;
+	setCursor(cur, cur.pit(), end, true, boundary);
 }
 
 
@@ -830,6 +841,8 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		}
 	}
 
+// I believe this code is not needed anymore (Jug 20050717)
+#if 0
 	// The following code is necessary because the cursor position past
 	// the last char in a row is logically equivalent to that before
 	// the first char in the next row. That's why insets causing row
@@ -854,14 +867,15 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 	    && par.getInset(end - 1)->display()) {
 		c = end - 1;
 	}
+#endif
 
 	x = int(tmpx) + xo;
 	int const col = c - row.pos();
 
-        if (end == par.size())
+        if (!c || end == par.size())
                 return col;
 
-	if (!col && !par.isLineSeparator(c-1) && !par.isNewline(c-1)) {
+	if (c==end && !par.isLineSeparator(c-1) && !par.isNewline(c-1)) {
 		boundary = true;
 		return col;
 	}
@@ -979,6 +993,13 @@ bool LyXText::checkAndActivateInset(LCursor & cur, bool front)
 
 bool LyXText::cursorLeft(LCursor & cur)
 {
+	if (!cur.boundary() &&
+	    cur.textRow().pos() == cur.pos() &&
+	    !cur.paragraph().isLineSeparator(cur.pos()-1) &&
+	    !cur.paragraph().isNewline(cur.pos()-1))
+	{
+		return setCursor(cur, cur.pit(), cur.pos(), true, true);
+	}
 	if (cur.pos() != 0) {
 		bool boundary = cur.boundary();
 		bool updateNeeded = setCursor(cur, cur.pit(), cur.pos() - 1, true, false);
@@ -1008,7 +1029,13 @@ bool LyXText::cursorRight(LCursor & cur)
 	if (cur.pos() != cur.lastpos()) {
 		bool updateNeeded = false;
 		if (!checkAndActivateInset(cur, true)) {
-			updateNeeded |= setCursor(cur, cur.pit(), cur.pos() + 1, true, false);
+			if (cur.textRow().endpos() == (cur.pos() + 1) &&
+			    !cur.paragraph().isLineSeparator(cur.pos()) &&
+			    !cur.paragraph().isNewline(cur.pos()))
+			{
+				cur.boundary(true);
+			}
+			updateNeeded |= setCursor(cur, cur.pit(), cur.pos() + 1, true, cur.boundary());
 			if (false && bidi.isBoundary(cur.buffer(), cur.paragraph(),
 							 cur.pos()))
 				updateNeeded |= setCursor(cur, cur.pit(), cur.pos(), true, true);

@@ -429,7 +429,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			needsUpdate = cursorRight(cur);
 		else
 			needsUpdate = cursorLeft(cur);
-		if (oldTopSlice == cur.top()) {
+		if (!needsUpdate && oldTopSlice == cur.top() &&
+		    cur.boundary() == oldBoundary)
+		{
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		}
@@ -441,7 +443,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		//lyxerr << "handle LFUN_UP[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_UPSEL);
 		needsUpdate = cursorUp(cur);
-		if (oldTopSlice == cur.top()) {
+		if (!needsUpdate && oldTopSlice == cur.top() &&
+		    cur.boundary() == oldBoundary)
+		{
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 		}
@@ -453,7 +457,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		//lyxerr << "handle LFUN_DOWN[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
 		needsUpdate = cursorDown(cur);
-		if (oldTopSlice == cur.top()) {
+		if (!needsUpdate && oldTopSlice == cur.top() &&
+		    cur.boundary() == oldBoundary)
+		{
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 		}
