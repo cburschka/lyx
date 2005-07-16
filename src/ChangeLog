@@ -1,3 +1,10 @@
+
+2005-07-16  André Pönitz  <poenitz@gmx.net>
+
+	* paragraph.h (getChar): remove asserts as the same kind of security
+  can be achieved by using a suitable standard library implementation
+  and the function was in the critical path (25.9% in profiler)
+
 2005-07-16  Juergen Vigna <jug@lyx.org>
 
 	* cursor.C (bruteFind2):
@@ -17,7 +24,7 @@
 	* lyxfunc.C (dispatch): save and restore the cursor after a
 	textclass switch.
 
-2005-07-15    <lgb@tandberg.net>
+2005-07-15  Lars Gullik Bjønnes <lgb@tandberg.net>
 
 	* text.C (backspace): bug 806 for empty keepempty paragraphs we
 	change the layout to default before letting DEPM do its thing.

@@ -26,8 +26,6 @@
 
 #include "support/types.h"
 
-#include <boost/assert.hpp>
-
 #include <string>
 #include <utility>
 
@@ -288,12 +286,7 @@ public:
 	std::pair<lyx::pos_type, lyx::pos_type> getFontSpan(lyx::pos_type pos) const;
 	///
 	/// this is a bottleneck.
-	value_type getChar(lyx::pos_type pos) const
-	{
-		BOOST_ASSERT(pos >= 0);
-		BOOST_ASSERT(pos < int(text_.size()));
-		return text_[pos];
-	}
+	value_type getChar(lyx::pos_type pos) const { return text_[pos]; }
 	/// Get the char, but mirror all bracket characters if it is right-to-left
 	value_type getUChar(BufferParams const &, lyx::pos_type pos) const;
 	/// The position must already exist.
