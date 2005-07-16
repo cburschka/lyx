@@ -1,19 +1,22 @@
+2005-07-16  Juergen Vigna  <jug@lyx.org>
+
+	* text2.C (getColumnNearX): Consider rows without trailing blank.  
 
 2005-07-16  André Pönitz  <poenitz@gmx.net>
 
 	* lyxfont.h: Change order of declarations to give the compiler
-  a better chance to inline things
+	a better chance to inline things
 
-  * lyx_cb.[Ch]: Add 'force' argument to QuitLyX suppressing
-  questions on unsaved docs for better scritability
+	* lyx_cb.[Ch]: Add 'force' argument to QuitLyX suppressing
+	questions on unsaved docs for better scritability
 
 2005-07-16  André Pönitz  <poenitz@gmx.net>
 
 	* paragraph.h (getChar): remove asserts as the same kind of security
-  can be achieved by using a suitable standard library implementation
-  and the function was in the critical path (25.9% in profiler)
+	can be achieved by using a suitable standard library implementation
+	and the function was in the critical path (25.9% in profiler)
 
-2005-07-16  Juergen Vigna <jug@lyx.org>
+2005-07-16  Juergen Vigna  <jug@lyx.org>
 
 	* cursor.C (bruteFind2):
 	* bufferview_funcs.C (coordOffset): 
@@ -51,17 +54,17 @@
 2005-07-14  André Pönitz  <poenitz@gmx.net>
 
 	* undo.C (recordUndoFullBuffer): implement undo for
-  textclass switches
+	textclass switches
 
 2005-07-14  André Pönitz  <poenitz@gmx.net>
 
 	* cursor.C (setSelection): open insets when selection is set there
-  to avoid crashs with cold coord cache
+	to avoid crashs with cold coord cache
 
 2005-07-14  André Pönitz  <poenitz@gmx.net>
 
 	* trans_mgr.C (insert): move cursor to the right after inserting
-  a char.
+	a char.
 
 2005-07-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

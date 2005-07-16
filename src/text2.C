@@ -859,6 +859,11 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
         if (end == par.size())
                 return c - row.pos();
 
+	if (c && !par.isSeparator(c-1)) {
+		boundary = true;
+		return c - row.pos();
+	}
+
         return min(c - row.pos(), end - 1 - row.pos());
 }
 
