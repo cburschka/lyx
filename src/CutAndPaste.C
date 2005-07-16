@@ -99,152 +99,167 @@ bool checkPastePossible(int index)
 }
 
 
-pair<PitPosPair, pit_type>
-pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
-	pit_type pit, int pos,
-	textclass_type tc, size_t cut_index, ErrorList & errorlist)
+void pasteSelectionHelper(LCursor & cur, size_t cut_index)
 {
-	if (!checkPastePossible(cut_index))
-		return make_pair(PitPosPair(pit, pos), pit);
+	recordUndo(cur);
+	Buffer const & buffer = cur.buffer();
+	InsetText & inset = static_cast<InsetText &>(cur.inset());
+	pit_type pit = cur.pit();
+	pos_type pos = cur.pos();
+	pit_type endpit = pit;
+	textclass_type const & tc = buffer.params().textclass;
+	ErrorList errorlist;
 
-	BOOST_ASSERT (pos <= pars[pit].size());
+	if (checkPastePossible(cut_index)) {
+		ParagraphList & pars = inset.paragraphs();
+		BOOST_ASSERT (pos <= pars[pit].size());
 
-	// Make a copy of the CaP paragraphs.
-	ParagraphList insertion = theCuts[cut_index].first;
-	textclass_type const textclass = theCuts[cut_index].second;
+		// Make a copy of the CaP paragraphs.
+		ParagraphList insertion = theCuts[cut_index].first;
+		textclass_type const textclass = theCuts[cut_index].second;
 
-	// Now remove all out of the pars which is NOT allowed in the
-	// new environment and set also another font if that is required.
+		// Now remove all out of the pars which is NOT allowed in the
+		// new environment and set also another font if that is required.
 
-	// Convert newline to paragraph break in ERT inset.
-	// This should not be here!
-	if (pars[pit].inInset() &&
-	    pars[pit].inInset()->lyxCode() == InsetBase::ERT_CODE) {
-		for (ParagraphList::size_type i = 0; i < insertion.size(); ++i) {
-			for (pos_type j = 0; j < insertion[i].size(); ++j) {
-				if (insertion[i].isNewline(j)) {
-					insertion[i].erase(j);
-					breakParagraphConservative(
-							buffer.params(),
-							insertion, i, j);
+		// Convert newline to paragraph break in ERT inset.
+		// This should not be here!
+		if (pars[pit].inInset() &&
+				pars[pit].inInset()->lyxCode() == InsetBase::ERT_CODE) {
+			for (ParagraphList::size_type i = 0; i < insertion.size(); ++i) {
+				for (pos_type j = 0; j < insertion[i].size(); ++j) {
+					if (insertion[i].isNewline(j)) {
+						insertion[i].erase(j);
+						breakParagraphConservative(
+								buffer.params(),
+								insertion, i, j);
+					}
 				}
 			}
 		}
-	}
 
-	// Make sure there is no class difference.
-	lyx::cap::SwitchBetweenClasses(textclass, tc, insertion, errorlist);
+		// Make sure there is no class difference.
+		lyx::cap::SwitchBetweenClasses(textclass, tc, insertion, errorlist);
 
-	ParagraphList::iterator tmpbuf = insertion.begin();
-	int depth_delta = pars[pit].params().depth() - tmpbuf->params().depth();
+		ParagraphList::iterator tmpbuf = insertion.begin();
+		int depth_delta = pars[pit].params().depth() - tmpbuf->params().depth();
 
-	Paragraph::depth_type max_depth = pars[pit].getMaxDepthAfter();
+		Paragraph::depth_type max_depth = pars[pit].getMaxDepthAfter();
 
-	for (; tmpbuf != insertion.end(); ++tmpbuf) {
-		// If we have a negative jump so that the depth would
-		// go below 0 depth then we have to redo the delta to
-		// this new max depth level so that subsequent
-		// paragraphs are aligned correctly to this paragraph
-		// at level 0.
-		if (int(tmpbuf->params().depth()) + depth_delta < 0)
-			depth_delta = 0;
+		for (; tmpbuf != insertion.end(); ++tmpbuf) {
+			// If we have a negative jump so that the depth would
+			// go below 0 depth then we have to redo the delta to
+			// this new max depth level so that subsequent
+			// paragraphs are aligned correctly to this paragraph
+			// at level 0.
+			if (int(tmpbuf->params().depth()) + depth_delta < 0)
+				depth_delta = 0;
 
-		// Set the right depth so that we are not too deep or shallow.
-		tmpbuf->params().depth(tmpbuf->params().depth() + depth_delta);
-		if (tmpbuf->params().depth() > max_depth)
-			tmpbuf->params().depth(max_depth);
+			// Set the right depth so that we are not too deep or shallow.
+			tmpbuf->params().depth(tmpbuf->params().depth() + depth_delta);
+			if (tmpbuf->params().depth() > max_depth)
+				tmpbuf->params().depth(max_depth);
 
-		// Only set this from the 2nd on as the 2nd depends
-		// for maxDepth still on pit.
-		if (tmpbuf != insertion.begin())
-			max_depth = tmpbuf->getMaxDepthAfter();
+			// Only set this from the 2nd on as the 2nd depends
+			// for maxDepth still on pit.
+			if (tmpbuf != insertion.begin())
+				max_depth = tmpbuf->getMaxDepthAfter();
 
-		// Set the inset owner of this paragraph.
-		tmpbuf->setInsetOwner(pars[pit].inInset());
-		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
-			if (tmpbuf->getChar(i) == Paragraph::META_INSET &&
-			    !pars[pit].insetAllowed(tmpbuf->getInset(i)->lyxCode()))
-				tmpbuf->erase(i--);
-		}
-	}
-
-	bool const empty = pars[pit].empty();
-	if (!empty) {
-		// Make the buf exactly the same layout as the cursor
-		// paragraph.
-		insertion.begin()->makeSameLayout(pars[pit]);
-	}
-
-	// Prepare the paragraphs and insets for insertion.
-	// A couple of insets store buffer references so need updating.
-	InsetText in;
-	std::swap(in.paragraphs(), insertion);
-
-	ParIterator fpit = par_iterator_begin(in);
-	ParIterator fend = par_iterator_end(in);
-
-	for (; fpit != fend; ++fpit) {
-		InsetList::iterator lit = fpit->insetlist.begin();
-		InsetList::iterator eit = fpit->insetlist.end();
-
-		for (; lit != eit; ++lit) {
-			switch (lit->inset->lyxCode()) {
-			case InsetBase::TABULAR_CODE: {
-				InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
-				it->buffer(&buffer);
-				break;
-			}
-
-			default:
-				break; // nothing
+			// Set the inset owner of this paragraph.
+			tmpbuf->setInsetOwner(pars[pit].inInset());
+			for (pos_type i = 0; i < tmpbuf->size(); ++i) {
+				if (tmpbuf->getChar(i) == Paragraph::META_INSET &&
+						!inset.insetAllowed(tmpbuf->getInset(i)->lyxCode()))
+					tmpbuf->erase(i--);
 			}
 		}
-	}
-	std::swap(in.paragraphs(), insertion);
 
-	// Split the paragraph for inserting the buf if necessary.
-	if (!empty)
-		breakParagraphConservative(buffer.params(), pars, pit, pos);
+		bool const empty = pars[pit].empty();
+		if (!empty) {
+			// Make the buf exactly the same layout as the cursor
+			// paragraph.
+			insertion.begin()->makeSameLayout(pars[pit]);
+		}
 
-	// Paste it!
-	if (empty) {
-		pars.insert(pars.begin() + pit, insertion.begin(),
-		            insertion.end());
+		// Prepare the paragraphs and insets for insertion.
+		// A couple of insets store buffer references so need updating.
+		InsetText in;
+		std::swap(in.paragraphs(), insertion);
 
-		// merge the empty par with the last par of the insertion
-		mergeParagraph(buffer.params(), pars,
-		               pit + insertion.size() - 1);
-	} else {
-		pars.insert(pars.begin() + pit + 1, insertion.begin(),
-		            insertion.end());
+		ParIterator fpit = par_iterator_begin(in);
+		ParIterator fend = par_iterator_end(in);
 
-		// merge the first par of the insertion with the current par
-		mergeParagraph(buffer.params(), pars, pit);
-	}
+		for (; fpit != fend; ++fpit) {
+			InsetList::iterator lit = fpit->insetlist.begin();
+			InsetList::iterator eit = fpit->insetlist.end();
 
-	pit_type last_paste = pit + insertion.size() - 1;
+			for (; lit != eit; ++lit) {
+				switch (lit->inset->lyxCode()) {
+				case InsetBase::TABULAR_CODE: {
+					InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
+					it->buffer(&buffer);
+					break;
+				}
 
-	// Store the new cursor position.
-	pit = last_paste;
-	pos = pars[last_paste].size();
+				default:
+					break; // nothing
+				}
+			}
+		}
+		std::swap(in.paragraphs(), insertion);
 
-	// Maybe some pasting.
-	if (!empty && last_paste + 1 != pit_type(pars.size())) {
-		if (pars[last_paste + 1].hasSameLayout(pars[last_paste])) {
-			mergeParagraph(buffer.params(), pars, last_paste);
-		} else if (pars[last_paste + 1].empty()) {
-			pars[last_paste + 1].makeSameLayout(pars[last_paste]);
-			mergeParagraph(buffer.params(), pars, last_paste);
-		} else if (pars[last_paste].empty()) {
-			pars[last_paste].makeSameLayout(pars[last_paste + 1]);
-			mergeParagraph(buffer.params(), pars, last_paste);
+		// Split the paragraph for inserting the buf if necessary.
+		if (!empty)
+			breakParagraphConservative(buffer.params(), pars, pit, pos);
+
+		// Paste it!
+		if (empty) {
+			pars.insert(pars.begin() + pit, insertion.begin(),
+									insertion.end());
+
+			// merge the empty par with the last par of the insertion
+			mergeParagraph(buffer.params(), pars,
+										 pit + insertion.size() - 1);
 		} else {
-			pars[last_paste + 1].stripLeadingSpaces();
-			++last_paste;
+			pars.insert(pars.begin() + pit + 1, insertion.begin(),
+									insertion.end());
+
+			// merge the first par of the insertion with the current par
+			mergeParagraph(buffer.params(), pars, pit);
 		}
+
+		pit_type last_paste = pit + insertion.size() - 1;
+
+		// Store the new cursor position.
+		pit = last_paste;
+		pos = pars[last_paste].size();
+
+		// Maybe some pasting.
+		if (!empty && last_paste + 1 != pit_type(pars.size())) {
+			if (pars[last_paste + 1].hasSameLayout(pars[last_paste])) {
+				mergeParagraph(buffer.params(), pars, last_paste);
+			} else if (pars[last_paste + 1].empty()) {
+				pars[last_paste + 1].makeSameLayout(pars[last_paste]);
+				mergeParagraph(buffer.params(), pars, last_paste);
+			} else if (pars[last_paste].empty()) {
+				pars[last_paste].makeSameLayout(pars[last_paste + 1]);
+				mergeParagraph(buffer.params(), pars, last_paste);
+			} else {
+				pars[last_paste + 1].stripLeadingSpaces();
+				++last_paste;
+			}
+		}
+
+		endpit = last_paste + 1;
 	}
 
-	return make_pair(PitPosPair(pit, pos), last_paste + 1);
+	bufferErrors(cur.buffer(), errorlist);
+	cur.bv().showErrorList(_("Paste"));
+	cur.clearSelection();
+	cur.resetAnchor();
+	BOOST_ASSERT(cur.text());
+	cur.text()->setCursor(cur, pit, pos);
+	cur.setSelection();
+	updateCounters(cur.buffer());
 }
 
 
@@ -342,21 +357,7 @@ void copySelectionHelper(ParagraphList & pars,
 	theCuts.push(make_pair(paragraphs, tc));
 }
 
-
-
-PitPosPair cutSelectionHelper(BufferParams const & params,
-	ParagraphList & pars, pit_type startpit, pit_type endpit,
-	int startpos, int endpos, textclass_type tc, bool doclear)
-{
-	copySelectionHelper(pars, startpit, endpit, startpos, endpos, tc);
-	return eraseSelectionHelper(params, pars, startpit, endpit,
-		startpos, endpos, doclear);
-}
-
-
 } // namespace anon
-
-
 
 
 namespace lyx {
@@ -575,7 +576,7 @@ void copySelection(LCursor & cur)
 	}
 
 	if (cur.inMathed()) {
-		lyxerr << "copySelection in mathed" << endl;
+		//lyxerr << "copySelection in mathed" << endl;
 		ParagraphList pars;
 		pars.push_back(Paragraph());
 		BufferParams const & bp = cur.buffer().params();
@@ -598,40 +599,12 @@ std::string getSelection(Buffer const & buf, size_t sel_index)
 void pasteSelection(LCursor & cur, size_t sel_index)
 {
 	// this does not make sense, if there is nothing to paste
-	lyxerr << "#### pasteSelection " << sel_index << endl;
 	if (!checkPastePossible(sel_index))
 		return;
-
-	if (cur.inTexted()) {
-		LyXText * text = cur.text();
-		BOOST_ASSERT(text);
-
-		recordUndo(cur);
-
-		pit_type endpit;
-		PitPosPair ppp;
-
-		ErrorList el;
-
-		boost::tie(ppp, endpit) =
-			pasteSelectionHelper(cur.buffer(),
-								text->paragraphs(),
-								cur.pit(), cur.pos(),
-								cur.buffer().params().textclass,
-								sel_index, el);
-		bufferErrors(cur.buffer(), el);
-		cur.bv().showErrorList(_("Paste"));
-
-		cur.clearSelection();
-		cur.resetAnchor();
-		text->setCursor(cur, ppp.first, ppp.second);
-		cur.setSelection();
-		updateCounters(cur.buffer());
-	}
-
-	if (cur.inMathed()) {
+	if (cur.inTexted())
+		pasteSelectionHelper(cur, sel_index);
+	if (cur.inMathed()) 
 		lyxerr << "### should be handled in MathNest/GridInset" << endl;
-	}
 }
 
 
