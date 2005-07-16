@@ -860,7 +860,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
         if (end == par.size())
                 return c - row.pos();
 
-	if (c && !par.isSeparator(c-1)) {
+	if (c && !par.isLineSeparator(c-1) && !par.isNewline(c-1)) {
 		boundary = true;
 		return c - row.pos();
 	}
