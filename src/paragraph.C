@@ -260,15 +260,8 @@ int Paragraph::erase(pos_type start, pos_type end)
 void Paragraph::insert(pos_type start, string const & str,
 		       LyXFont const & font)
 {
-	int size = str.size();
-	for (int i = 0 ; i < size ; ++i)
+	for (size_t i = 0, n = str.size(); i != n ; ++i)
 		insertChar(start + i, str[i], font);
-}
-
-
-bool Paragraph::checkInsertChar(LyXFont &)
-{
-	return true;
 }
 
 

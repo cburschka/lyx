@@ -31,6 +31,7 @@ Language const * ignore_language = &ignore_lang;
 Language latex_lang("latex", "latex", "Latex", false, 0, "latex", "");
 Language const * latex_language = &latex_lang;
 
+
 void Languages::read(string const & filename)
 {
 	// We need to set the encoding of latex_lang
@@ -93,11 +94,9 @@ void Languages::read(string const & filename)
 		english_language = default_language;
 }
 
+
 Language const * Languages::getLanguage(string const & language) const
 {
 	const_iterator it = languagelist.find(language);
-	if (it != languagelist.end())
-		return &it->second;
-	else
-		return 0;
+	return it == languagelist.end() ? 0 : &it->second;
 }

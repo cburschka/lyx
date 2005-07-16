@@ -424,14 +424,15 @@ int LyXText::singleWidth(Paragraph const & par,
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
-		if (font.language()->RightToLeft()) {
+		Language const * language = font.language();
+		if (language->RightToLeft()) {
 			if ((lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
 			     lyxrc.font_norm_type == LyXRC::ISO_10646_1)
-			    && font.language()->lang() == "arabic") {
+			    && language->lang() == "arabic") {
 				if (Encodings::IsComposeChar_arabic(c))
 					return 0;
 				c = par.transformChar(c, pos);
-			} else if (font.language()->lang() == "hebrew" &&
+			} else if (language->lang() == "hebrew" &&
 				   Encodings::IsComposeChar_hebrew(c))
 				return 0;
 		}
@@ -2066,8 +2067,9 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 		return 0;
 
 	pos_type ppos = sl.pos();
-	//// Correct position in front of big insets
-	if (ppos && boundary)
+	// Correct position in front of big insets
+	bool const boundary_correction = ppos != 0 && boundary;
+	if (boundary_correction)
 		--ppos;
 
 	Row const & row = par.getRow(ppos);
@@ -2108,22 +2110,16 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 				x -= singleWidth(par, body_pos - 1);
 		}
 
-		if (hfillExpansion(par, row, pos)) {
-			x += singleWidth(par, pos);
-			if (pos >= body_pos)
-				x += m.hfill;
-			else
-				x += m.label_hfill;
-		} else if (par.isSeparator(pos)) {
-			x += singleWidth(par, pos);
-			if (pos >= body_pos)
-				x += m.separator;
-		} else
-			x += singleWidth(par, pos);
+		x += singleWidth(par, pos);
+
+		if (hfillExpansion(par, row, pos))
+			x += (pos >= body_pos) ? m.hfill : m.label_hfill;
+		else if (par.isSeparator(pos) && pos >= body_pos)
+			x += m.separator;
 	}
 	
 	// see correction above
-	if (ppos && boundary)
+	if (boundary_correction)
 		x += singleWidth(par, ppos);
 
 	return int(x);

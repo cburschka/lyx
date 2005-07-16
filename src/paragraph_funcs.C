@@ -83,8 +83,6 @@ bool moveItem(Paragraph & from, Paragraph & to,
 		if (tmpinset)
 			to.insertInset(j, tmpinset, tmpfont, change);
 	} else {
-		if (!to.checkInsertChar(tmpfont))
-			return false;
 		to.insertChar(j, tmpchar, tmpfont, change);
 	}
 	return true;

@@ -498,7 +498,6 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 {
 	LyXFont font = fn;
 
-	pars[pit].checkInsertChar(font);
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
 	for (string::const_iterator cit = str.begin();
