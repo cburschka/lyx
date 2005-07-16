@@ -163,7 +163,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 	}
 
 	case LFUN_TABULAR_INSERT: {
-		if (!cmd.argument.empty()) 
+		if (cmd.argument.empty()) 
 			return 0;
 		std::istringstream ss(cmd.argument);
 		int r = 0, c = 0;
