@@ -1,3 +1,7 @@
+2005-07-16  Juergen Vigna  <jug@lyx.org>
+
+	* text.C (currentState): output the actual Boundary
+
 2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* factory.C (createInset): fix bad logic for tabular creation

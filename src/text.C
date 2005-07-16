@@ -2213,6 +2213,7 @@ string LyXText::currentState(LCursor & cur)
 	os << _(", Paragraph: ") << cur.pit();
 	os << _(", Id: ") << par.id();
 	os << _(", Position: ") << cur.pos();
+	os << _(", Boundary: ") << cur.boundary();
 //	Row & row = cur.textRow();
 //	os << bformat(_(", Row b:%1$d e:%2$d"), row.pos(), row.endpos());
 #endif
