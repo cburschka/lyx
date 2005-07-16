@@ -32,6 +32,26 @@
  */
 class qfont_loader {
 public:
+	/// hold info about a particular font
+	class font_info {
+	public:
+		font_info(LyXFont const & f);
+
+		/// return pixel width for the given unicode char
+		int charwidth(Uchar val) const;
+
+		/// the font instance
+		QFont font;
+		/// metrics on the font
+		QFontMetrics metrics;
+
+#if defined(USE_LYX_FONTCACHE)
+		typedef std::map<Uchar, int> WidthCache;
+		/// cache of char widths
+		WidthCache widthcache;
+#endif
+	};
+
 	qfont_loader();
 
 	~qfont_loader();
@@ -50,36 +70,16 @@ public:
 		return getfontinfo(f)->metrics;
 	}
 
-	/// return pixel width for the given unicode char
-	int charwidth(LyXFont const & f, Uchar val);
-
 	/// Called before QApplication is initialized
 	static void initFontPath();
 
 	/// Called the first time when available() can't load a symbol font
 	static void addToFontPath();
 
-private:
-	/// hold info about a particular font
-	class font_info {
-	public:
-		font_info(LyXFont const & f);
-
-		/// the font instance
-		QFont font;
-		/// metrics on the font
-		QFontMetrics metrics;
-
-#if defined(USE_LYX_FONTCACHE)
-		typedef std::map<Uchar, int> WidthCache;
-		/// cache of char widths
-		WidthCache widthcache;
-#endif
-	};
-
 	/// get font info (font + metrics) for the given LyX font. Does not fail.
 	font_info * getfontinfo(LyXFont const & f);
 
+private:
 	/// BUTT ugly !
 	font_info * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
 };
