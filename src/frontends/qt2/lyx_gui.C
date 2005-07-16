@@ -212,8 +212,6 @@ void parse_init(int & argc, char * argv[])
 	// needs to be done before reading lyxrc
 	lyxrc.dpi = getDPI();
 
-	initEncodings();
-
 	LoaderQueue::setPriority(10,100);
 }
 
@@ -224,6 +222,9 @@ void parse_lyxrc()
 
 void start(string const & batch, vector<string> const & files)
 {
+	// this can't be done before because it needs the Languages object
+	initEncodings();
+
 	// initial geometry
 	unsigned int width = 690;
 	unsigned int height = 510;

@@ -26,16 +26,16 @@ using std::string;
 Languages languages;
 Language const * english_language;
 Language const * default_language;
-Language ignore_lang("ignore", "ignore", "Ignore", false, 0, "ignore", "");
+Language ignore_lang("ignore", "ignore", "Ignore", false, "", 0, "ignore", "");
 Language const * ignore_language = &ignore_lang;
-Language latex_lang("latex", "latex", "Latex", false, 0, "latex", "");
+Language latex_lang("latex", "latex", "Latex", false, "", 0, "latex", "");
 Language const * latex_language = &latex_lang;
 
 
 void Languages::read(string const & filename)
 {
 	// We need to set the encoding of latex_lang
-	latex_lang = Language("latex", "latex", "Latex", false,
+	latex_lang = Language("latex", "latex", "Latex", false, "iso8859-1",
 			      encodings.getEncoding("iso8859-1"),
 			      "latex", "");
 
@@ -76,7 +76,7 @@ void Languages::read(string const & filename)
 		}
 
 		languagelist[lang] = Language(lang, babel, display, rtl,
-					      encoding, code, latex_options);
+					      encoding_str, encoding, code, latex_options);
 	}
 
 	default_language = getLanguage(lyxrc.default_language);

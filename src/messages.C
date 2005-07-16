@@ -9,6 +9,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "messages.h"
 #include "support/filetools.h"
 #include "support/package.h"
@@ -82,9 +83,12 @@ public:
 	Pimpl(string const & l)
 		: lang_(l)
 	{
-		//lyxerr << "Messages: language(" << l
-		//       << ") in dir(" << dir << ")" << std::endl;
-
+		if ( lang_.empty() )
+			lang_ = setlocale(LC_MESSAGES, NULL);
+		lyxerr << "Messages: language(" << lang_
+		//       << ") in dir(" << dir 
+		       << ")" << std::endl;
+		
 	}
 
 	~Pimpl() {}
@@ -94,11 +98,15 @@ public:
 		if (m.empty())
 			return m;
 
-		char * old = strdup(setlocale(LC_ALL, 0));
-		char * n = setlocale(LC_ALL, lang_.c_str());
+		string oldMSG = setlocale(LC_MESSAGES, NULL);
+		bool works = setlocale(LC_MESSAGES, lang_.c_str());
+		// CTYPE controls what getmessage thinks what encoding the po file uses
+		string oldCTYPE = setlocale(LC_CTYPE, NULL);
+		setlocale(LC_CTYPE, lang_.c_str());
 		bindtextdomain(PACKAGE, package().locale_dir().c_str());
 		textdomain(PACKAGE);
 		const char* msg = gettext(m.c_str());
+		string translated(works ? msg : m);
 		// Some english words have different translations, depending
 		// on context. In these cases the original string is
 		// augmented by context information (e.g.
@@ -109,13 +117,12 @@ public:
 		// otherwise the user sees bogus messages.
 		// If we are unable to honour the request we just
 		// return what we got in.
-		string translated(n ? msg : m);
 		static boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
 		boost::smatch sub;
 		if (regex_match(translated, sub, reg))
 			translated = sub.str(1);
-		setlocale(LC_ALL, old);
-		free(old);
+		setlocale(LC_MESSAGES, oldMSG.c_str());
+		setlocale(LC_CTYPE, oldCTYPE.c_str());
 		return translated;
 	}
 private:

@@ -28,10 +28,10 @@ public:
 	Language() : rightToLeft_(false) {}
 	///
 	Language(std::string const & l, std::string const & b, std::string const & d,
-		 bool rtl, Encoding const * e, std::string const & c,
+		 bool rtl, std::string const & es, Encoding const * e, std::string const & c,
 		 std::string const & o)
 		: lang_(l), babel_(b), display_(d), rightToLeft_(rtl),
-		  encoding_(e), code_(c), latex_options_(o)
+		  encodingStr_(es), encoding_(e), code_(c), latex_options_(o)
 		{}
 	///
 	std::string const & lang() const { return lang_; }
@@ -43,6 +43,8 @@ public:
 	bool RightToLeft() const { return rightToLeft_; }
 	///
 	Encoding const * encoding() const { return encoding_; }
+	///
+	std::string const & encodingStr() const { return encodingStr_; }
 	///
 	std::string const & code() const { return code_; }
 	///
@@ -56,6 +58,8 @@ private:
 	std::string display_;
 	///
 	bool rightToLeft_;
+	///
+	std::string encodingStr_;
 	///
 	Encoding const * encoding_;
 	///

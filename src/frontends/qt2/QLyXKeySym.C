@@ -22,10 +22,14 @@
 #include <qtextcodec.h>
 
 #include <map>
+#include "support/lstrings.h"
+#include "encoding.h"
+#include "language.h"
 
 using std::endl;
 using std::string;
 using std::map;
+using lyx::support::contains;
 
 
 namespace {
@@ -42,16 +46,9 @@ char const encode(string const & encoding, QString const & str)
 		if (lyxerr.debugging())
 			lyxerr[Debug::KEY] << "Unrecognised encoding "
 				<< encoding << endl;
-		codec = QTextCodec::codecForLocale();
+		codec = encoding_map.find("")->second;
 	} else {
 		codec = cit->second;
-	}
-
-	if (!codec) {
-		if (lyxerr.debugging())
-			lyxerr[Debug::KEY] << "No codec exists for encoding "
-				<< encoding << endl;
-		codec = QTextCodec::codecForLocale();
 	}
 
 	if (lyxerr.debugging())
@@ -73,9 +70,15 @@ char const encode(string const & encoding, QString const & str)
 
 void initEncodings()
 {
-	// when no document open
-	encoding_map[""] = QTextCodec::codecForLocale();
+	const char * c = QTextCodec::locale();
+	string s = c;
+	if (contains(c, "UTF") || contains(c, "utf")) 
+		lyxerr << "Warning: this system's locale uses Unicode." << endl;
 
+	// strip off any encoding suffix
+	string::size_type i = s.find(".");
+	s = s.substr(0, i);
+										       
 	encoding_map["iso8859-1"] = QTextCodec::codecForName("ISO 8859-1");
 	encoding_map["iso8859-2"] = QTextCodec::codecForName("ISO 8859-2");
 	encoding_map["iso8859-3"] = QTextCodec::codecForName("ISO 8859-3");
@@ -95,6 +98,23 @@ void initEncodings()
 	encoding_map["pt154"] = 0;
 
 	// There are lots more codecs in Qt too ...
+	
+	// when no document open
+	// use the appropriate encoding for the system language
+	for (Languages::const_iterator it=languages.begin(); it != languages.end(); ++it) {
+		lyxerr << it->second.code() << ":" << it->second.encodingStr() << ":" << it->second.encoding() << endl;
+		if (it->second.code() == s)
+			{
+				s = it->second.encodingStr();
+				break;
+			}
+	}
+	lyxerr << "Setting new locale for Qt:" << s << endl;
+	QTextCodec * defaultCodec = encoding_map[s];
+	encoding_map[""] = defaultCodec;
+
+	QTextCodec::setCodecForCStrings(defaultCodec);
+
 }
 
 

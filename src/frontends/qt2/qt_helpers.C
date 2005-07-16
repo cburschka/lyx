@@ -116,9 +116,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 
 QString const toqstr(char const * str)
 {
-	QTextCodec * codec = QTextCodec::codecForLocale();
-
-	return codec->toUnicode(str);
+	return QString::fromAscii(str);
 }
 
 
@@ -142,9 +140,9 @@ QString const qt_(string const & str)
 
 string const fromqstr(QString const & str)
 {
-	QTextCodec const * const codec = QTextCodec::codecForLocale();
-	QCString const tmpstr = codec->fromUnicode(str);
-	return tmpstr.isEmpty() ? string() : string(tmpstr);
+	//return str;
+
+	return str.ascii() ? str.ascii() : "";
 }
 
 
