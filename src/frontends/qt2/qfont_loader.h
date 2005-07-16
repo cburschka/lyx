@@ -79,7 +79,13 @@ public:
 	static void addToFontPath();
 
 	/// get font info (font + metrics) for the given LyX font. Does not fail.
-	FontInfo & fontinfo(LyXFont const & f);
+	FontInfo & fontinfo(LyXFont const & f) {
+		FontInfo * & fi =
+			fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
+		if (!fi)
+			fi = new FontInfo(f);
+		return *fi;
+	}
 
 private:
 	/// BUTT ugly !

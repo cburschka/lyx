@@ -342,25 +342,13 @@ int FontInfo::width(Uchar val) const
 }
 
 
-FontInfo & FontLoader::fontinfo(LyXFont const & f)
-{
-	FontInfo * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
-	if (fi)
-		return *fi;
-
-	FontInfo * fi2 = new FontInfo(f);
-	fontinfo_[f.family()][f.series()][f.realShape()][f.size()] = fi2;
-	return *fi2;
-}
-
-
 bool FontLoader::available(LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return false;
 
-	static vector<bool> cache_set(LyXFont::NUM_FAMILIES, false);
-	static vector<bool> cache(LyXFont::NUM_FAMILIES, false);
+	static vector<int> cache_set(LyXFont::NUM_FAMILIES, false);
+	static vector<int> cache(LyXFont::NUM_FAMILIES, false);
 
 	LyXFont::FONT_FAMILY family = f.family();
 	if (cache_set[family])
@@ -368,16 +356,14 @@ bool FontLoader::available(LyXFont const & f)
 	cache_set[family] = true;
 
 	string const pat = symbolFamily(family);
-	if (!pat.empty()) {
-		pair<QFont, bool> tmp = getSymbolFont(pat);
-		if (tmp.second) {
-			cache[family] = true;
-			return true;
-		}
-
+	if (pat.empty())
+		// We don't care about non-symbol fonts
 		return false;
-	}
 
-	// We don't care about non-symbol fonts
-	return false;
+	pair<QFont, bool> tmp = getSymbolFont(pat);
+	if (!tmp.second)
+		return false;
+
+	cache[family] = true;
+	return true;
 }
