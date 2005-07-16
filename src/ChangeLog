@@ -1,3 +1,7 @@
+2005-07-16  Juergen Vigna  <jug@lyx.org>
+
+	* text.C (singleWidth): Just remove bogus check
+
 2005-07-16  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* funcrequest.C (split): avoid reading uninitialized char c
@@ -11,7 +15,7 @@
 	* bufferparams.[Ch] (setPaperStuff): remove setPaperStuff and use a
 	single papersize variable.
 
-2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+2005-07-16  Juergen Vigna  <jug@lyx.org>
 
 	* text3.C (dispatch): honor boundary when checking if a cursor
 	movement has been done

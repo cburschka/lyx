@@ -442,8 +442,6 @@ int LyXText::singleWidth(Paragraph const & par,
 	if (c == Paragraph::META_INSET)
 		return par.getInset(pos)->width();
 
-	if (IsSeparatorChar(c))
-		c = ' ';
 	return font_metrics::width(c, font);
 }
 
