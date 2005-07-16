@@ -58,20 +58,22 @@ mouse_button::state FuncRequest::button() const
 }
 
 
-void split(vector<string> & args, string str)
+void split(vector<string> & args, string const & str)
 {
 	istringstream is(str);
 	while (is) {
 		char c;
 		string s;
 		is >> c;
-		if (c == '"')
-			getline(is, s, '"');
-		else {
-			is.putback(c);
-			is >> s;
+		if (is) {
+			if (c == '"')
+				getline(is, s, '"');
+			else {
+				is.putback(c);
+				is >> s;
+			}
+			args.push_back(s);
 		}
-		args.push_back(s);
 	}
 }
 

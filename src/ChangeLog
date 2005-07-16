@@ -1,3 +1,7 @@
+2005-07-16  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* funcrequest.C (split): avoid reading uninitialized char c
+
 2005-07-16  José Matos  <jamatos@fc.up.pt>
 
 	* buffer.C:
