@@ -69,7 +69,7 @@ int ascent(char c, LyXFont const & f)
 	// value by the height: (x, -y-height, width, height).
 	// Other versions return: (x, -y, width, height)
 #if defined(Q_WS_WIN) && (QT_VERSION == 0x030201)
-	return -(r.top() + r.height());
+	return -r.top() - r.height();
 #else
 	return -r.top();
 #endif
@@ -104,10 +104,10 @@ int rbearing(char c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	QFontMetrics const & m(metrics(f));
+	QFontMetrics const & m = metrics(f);
 
 	// Qt rbearing is from the right edge of the char's width().
-	return (m.width(c) - m.rightBearing(c));
+	return m.width(c) - m.rightBearing(c);
 }
 
 
@@ -132,7 +132,7 @@ int smallcapswidth(char const * s, size_t ls, LyXFont const & f)
 	QFontMetrics const & qm = fontloader.metrics(f);
 	QFontMetrics const & qsmallm = fontloader.metrics(smallfont);
 
-	Encoding const * encoding(fontencoding(f));
+	Encoding const * encoding = fontencoding(f);
 
 	int w = 0;
 
@@ -153,21 +153,18 @@ int width(char const * s, size_t ls, LyXFont const & f)
 	if (!lyx_gui::use_gui)
 		return ls;
 
-	if (f.realShape() == LyXFont::SMALLCAPS_SHAPE) {
+	if (f.realShape() == LyXFont::SMALLCAPS_SHAPE)
 		return smallcapswidth(s, ls, f);
-	}
 
-	Encoding const * encoding(fontencoding(f));
+	Encoding const * encoding = fontencoding(f);
 
-	if (ls == 1) {
+	if (ls == 1)
 		return charwidth(encoding->ucs(s[0]), f);
-	}
 
 	int w = 0;
 
-	for (size_t i = 0; i < ls; ++i) {
+	for (size_t i = 0; i < ls; ++i)
 		w += charwidth(encoding->ucs(s[i]), f);
-	}
 
 	return w;
 }
@@ -183,14 +180,10 @@ int signedWidth(string const & s, LyXFont const & f)
 
 
 void rectText(string const & str, LyXFont const & f,
-	int & w,
-	int & ascent,
-	int & descent)
+	int & w, int & ascent, int & descent)
 {
-	QFontMetrics const & m(metrics(f));
-
+	QFontMetrics const & m = metrics(f);
 	static int const d = 2;
-
 	w = width(str, f) + d * 2 + 2;
 	ascent = m.ascent() + d;
 	descent = m.descent() + d;
@@ -199,14 +192,10 @@ void rectText(string const & str, LyXFont const & f,
 
 
 void buttonText(string const & str, LyXFont const & f,
-	int & w,
-	int & ascent,
-	int & descent)
+	int & w, int & ascent, int & descent)
 {
-	QFontMetrics const & m(metrics(f));
-
+	QFontMetrics const & m = metrics(f);
 	static int const d = 3;
-
 	w = width(str, f) + d * 2 + 2;
 	ascent = m.ascent() + d;
 	descent = m.descent() + d;

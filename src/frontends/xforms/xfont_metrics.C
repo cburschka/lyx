@@ -35,9 +35,7 @@ namespace {
 inline
 XFontStruct * getXFontstruct(LyXFont const & f)
 {
-	return fontloader.load
-		(f.family(), f.series(),
-		f.realShape(), f.size());
+	return fontloader.load(f.family(), f.series(), f.realShape(), f.size());
 }
 
 
@@ -141,23 +139,21 @@ int width(char const * s, size_t n, LyXFont const & f)
 		return result;
 	}
 
-	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
+	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE)
 		return ::XTextWidth(getXFontstruct(f), s, n);
-	} else {
-		// emulate smallcaps since X doesn't support this
-		int result = 0;
-		LyXFont smallfont(f);
-		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
-		for (size_t i = 0; i < n; ++i) {
-			char const c = uppercase(s[i]);
-			if (c != s[i]) {
-				result += ::XTextWidth(getXFontstruct(smallfont), &c, 1);
-			} else {
-				result += ::XTextWidth(getXFontstruct(f), &c, 1);
-			}
-		}
-		return result;
+
+	// emulate smallcaps since X doesn't support this
+	int result = 0;
+	LyXFont smallfont(f);
+	smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
+	for (size_t i = 0; i < n; ++i) {
+		char const c = uppercase(s[i]);
+		if (c != s[i])
+			result += ::XTextWidth(getXFontstruct(smallfont), &c, 1);
+		else
+			result += ::XTextWidth(getXFontstruct(f), &c, 1);
 	}
+	return result;
 }
 
 
