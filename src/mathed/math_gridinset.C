@@ -776,11 +776,11 @@ int MathGridInset::cellYOffset(idx_type idx) const
 bool MathGridInset::idxUpDown(LCursor & cur, bool up) const
 {
 	if (up) {
-		if (cur.idx() < ncols())
+		if (cur.row() == 0)
 			return false;
 		cur.idx() -= ncols();
 	} else {
-		if (cur.row() >= nrows())
+		if (cur.row() + 1 >= nrows())
 			return false;
 		cur.idx() += ncols();
 	}
