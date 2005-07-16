@@ -96,7 +96,7 @@ namespace {
 		for (int i = 0; ; ++i) {
 			int xo;
 			int yo;
-			it.inset().cursorPos(it.top(), c.boundary(), xo, yo);
+			it.inset().cursorPos(it.top(), c.boundary() && ((i+1) == it.depth()), xo, yo);
 			double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 			// '<=' in order to take the last possible position
 			// this is important for clicking behind \sum in e.g. '\sum_i a'

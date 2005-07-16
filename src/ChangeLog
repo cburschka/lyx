@@ -1,3 +1,10 @@
+2005-07-16  Juergen Vigna <jug@lyx.org>
+
+	* cursor.C (bruteFind2):
+	* bufferview_funcs.C (coordOffset): 
+	* text.C (cursorX,cursorY): Handle cursor position after last char
+	in row before a inset which uses a whole row.
+
 2005-07-15  José Matos <jamatos@lyx.org>
 
 	* output_plaintext.[Ch] (writeFileAscii): control reference title

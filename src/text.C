@@ -1882,7 +1882,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		Row const & row1 = par1.getRow(beg.pos());
 		y1 = bv_funcs::getPos(beg, beg.boundary()).y_ - row1.ascent();
 		y2 = y1 + row1.height();
-		int const startx = cursorX(beg.top(), beg.boundary());
+		int const startx = cursorX(beg.top(), false);
 		x1 = !isRTL(par1) ? startx : 0;
 		x2 = !isRTL(par1) ? 0 + dim_.wid : startx;
 	}
@@ -1897,7 +1897,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		Row const & row2 = par2.getRow(end.pos());
 		Y1 = bv_funcs::getPos(end, end.boundary()).y_ - row2.ascent();
 		Y2 = Y1 + row2.height();
-		int const endx = cursorX(end.top(), end.boundary());
+		int const endx = cursorX(end.top(), false);
 		X1 = !isRTL(par2) ? 0 : endx;
 		X2 = !isRTL(par2) ? endx : 0 + dim_.wid;
 	}
@@ -2065,12 +2065,12 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 	if (par.rows().empty())
 		return 0;
 
-	pos_type pos = sl.pos();
+	pos_type ppos = sl.pos();
 	//// Correct position in front of big insets
-	//if (pos && boundary)
-	//	--pos;
+	if (ppos && boundary)
+		--ppos;
 
-	Row const & row = par.getRow(pos);
+	Row const & row = par.getRow(ppos);
 
 	pos_type cursor_vpos = 0;
 
@@ -2082,16 +2082,16 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 
 	if (end <= row_pos)
 		cursor_vpos = row_pos;
-	else if (pos >= end)
+	else if (ppos >= end)
 		cursor_vpos = isRTL(par) ? row_pos : end;
-	else if (pos > row_pos && pos >= end)
+	else if (ppos > row_pos && ppos >= end)
 		// Place cursor after char at (logical) position pos - 1
-		cursor_vpos = (bidi.level(pos - 1) % 2 == 0)
-			? bidi.log2vis(pos - 1) + 1 : bidi.log2vis(pos - 1);
+		cursor_vpos = (bidi.level(ppos - 1) % 2 == 0)
+			? bidi.log2vis(ppos - 1) + 1 : bidi.log2vis(ppos - 1);
 	else
-		// Place cursor before char at (logical) position pos
-		cursor_vpos = (bidi.level(pos) % 2 == 0)
-			? bidi.log2vis(pos) : bidi.log2vis(pos) + 1;
+		// Place cursor before char at (logical) position ppos
+		cursor_vpos = (bidi.level(ppos) % 2 == 0)
+			? bidi.log2vis(ppos) : bidi.log2vis(ppos) + 1;
 
 	pos_type body_pos = par.beginOfBody();
 	if (body_pos > 0 &&
@@ -2123,8 +2123,8 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 	}
 	
 	// see correction above
-	//if (pos && boundary)
-	//	x += singleWidth(par, pos + 1);
+	if (ppos && boundary)
+		x += singleWidth(par, ppos);
 
 	return int(x);
 }
@@ -2138,8 +2138,10 @@ int LyXText::cursorY(CursorSlice const & sl, bool boundary) const
 	h -= pars_[0].rows()[0].ascent();
 	for (pit_type pit = 0; pit < sl.pit(); ++pit)
 		h += pars_[pit].height();
-	//size_t const rend = par.pos2row(sl.pos() - boundary ? 1 : 0);
-	size_t const rend = par.pos2row(sl.pos());
+	int pos = sl.pos();
+	if (pos && boundary)
+		--pos;
+	size_t const rend = par.pos2row(pos);
 	for (size_t rit = 0; rit != rend; ++rit)
 		h += par.rows()[rit].height();
 	h += par.rows()[rend].ascent();

@@ -7,6 +7,7 @@
  * \author Jean-Marc Lasgouttes
  * \author John Levon
  * \author Angus Leeming
+ * \author Juergen Vigna
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -162,7 +163,7 @@ Point coordOffset(DocIterator const & dit, bool boundary)
 		CursorSlice const & sl = dit[i];
 		int xx = 0;
 		int yy = 0;
-		sl.inset().cursorPos(sl, boundary, xx, yy);
+		sl.inset().cursorPos(sl, boundary && ((i+1) == dit.depth()), xx, yy);
 		x += xx;
 		y += yy;
 		//lyxerr << "LCursor::getPos, i: "
@@ -173,12 +174,23 @@ Point coordOffset(DocIterator const & dit, bool boundary)
 	CursorSlice const & sl = dit[0];
 	Paragraph const & par = sl.text()->getPar(sl.pit());
 	y -= par.rows()[0].ascent();
-	//size_t rend = par.pos2row(sl.pos() - boundary ? 1 : 0);
+#if 1
+	size_t rend;
+	if (sl.pos() > 0 && dit.depth() == 1) {
+		int pos = sl.pos();
+		if (pos && boundary)
+			--pos;
+//		lyxerr << "coordOffset: boundary:" << boundary << " depth:" << dit.depth() << " pos:" << pos << " sl.pos:" << sl.pos() << std::endl;
+		rend = par.pos2row(pos);
+	} else
+		rend = par.pos2row(sl.pos());
+#else
 	size_t rend = par.pos2row(sl.pos());
+#endif
 	for (size_t rit = 0; rit != rend; ++rit)
 		y += par.rows()[rit].height();
 	y += par.rows()[rend].ascent();
-	x += dit.bottom().text()->cursorX(dit.bottom(), boundary);
+	x += dit.bottom().text()->cursorX(dit.bottom(), boundary && dit.depth() == 1);
 	// The following correction should not be there at all.
 	// The cursor looks much better with the -1, though.
 	--x;
