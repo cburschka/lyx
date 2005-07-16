@@ -660,7 +660,6 @@ bool LyXText::setCursor(LCursor & cur, pit_type par, pos_type pos,
 {
 	LCursor old = cur;
 	setCursorIntern(cur, par, pos, setfont, boundary);
-	cur.boundary(boundary);
 	return deleteEmptyParagraphMechanism(cur, old);
 }
 
@@ -693,6 +692,7 @@ void LyXText::setCursor(CursorSlice & cur, pit_type par,
 void LyXText::setCursorIntern(LCursor & cur,
 	pit_type par, pos_type pos, bool setfont, bool boundary)
 {
+	cur.boundary(boundary);
 	setCursor(cur.top(), par, pos, boundary);
 	cur.setTargetX();
 	if (setfont)
@@ -1000,7 +1000,7 @@ bool LyXText::cursorLeft(LCursor & cur)
 
 bool LyXText::cursorRight(LCursor & cur)
 {
-	if (false && cur.boundary()) {
+	if (cur.boundary()) {
 		return setCursor(cur, cur.pit(), cur.pos(), true, false);
 	}
 
@@ -1024,8 +1024,13 @@ bool LyXText::cursorRight(LCursor & cur)
 bool LyXText::cursorUp(LCursor & cur)
 {
 	Paragraph const & par = cur.paragraph();
-	int const row = par.pos2row(cur.pos());
+	int row;
 	int const x = cur.targetX();
+
+	if (cur.pos() && cur.boundary())
+		row = par.pos2row(cur.pos()-1);
+	else
+		row = par.pos2row(cur.pos());
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
@@ -1063,8 +1068,13 @@ bool LyXText::cursorUp(LCursor & cur)
 bool LyXText::cursorDown(LCursor & cur)
 {
 	Paragraph const & par = cur.paragraph();
-	int const row = par.pos2row(cur.pos());
+	int row;
 	int const x = cur.targetX();
+
+	if (cur.pos() && cur.boundary())
+		row = par.pos2row(cur.pos()-1);
+	else
+		row = par.pos2row(cur.pos());
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;

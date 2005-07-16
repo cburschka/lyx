@@ -292,6 +292,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	BOOST_ASSERT(cur.text() == this);
 	BufferView * bv = &cur.bv();
 	CursorSlice oldTopSlice = cur.top();
+	bool oldBoundary = cur.boundary();
 	bool sel = cur.selection();
 	bool needsUpdate = !lyxaction.funcHasFlag(cmd.action, LyXAction::NoUpdate);
 
@@ -413,7 +414,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			needsUpdate = cursorLeft(cur);
 		else
 			needsUpdate = cursorRight(cur);
-		if (!needsUpdate && oldTopSlice == cur.top()) {
+
+		if (!needsUpdate && oldTopSlice == cur.top() && cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		}
