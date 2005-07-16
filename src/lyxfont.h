@@ -221,7 +221,7 @@ public:
 	///
 	LColor_color color() const;
 	///
-	Language const * language() const;
+	Language const * language() const { return lang; }
 	///
 	bool isRightToLeft() const;
 	///
@@ -319,7 +319,15 @@ public:
 	std::ostream & operator<<(std::ostream & os, LyXFont const & font);
 
 	/// Converts logical attributes to concrete shape attribute
-	LyXFont::FONT_SHAPE realShape() const;
+	// Try hard to inline this as it shows up with 4.6 % in the profiler.
+	LyXFont::FONT_SHAPE realShape() const {
+		if (bits.noun == ON)
+			return SMALLCAPS_SHAPE;
+		if (bits.emph == ON)
+			return (bits.shape == UP_SHAPE) ? ITALIC_SHAPE : UP_SHAPE;
+		return bits.shape;
+	}
+
 
 	/** Compaq cxx 6.5 requires that the definition be public so that
 	    it can compile operator==()

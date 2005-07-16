@@ -302,18 +302,16 @@ public:
 		    LyXFont const & font);
 	///
 	void insertChar(lyx::pos_type pos, value_type c,
-			Change change = Change(Change::INSERTED));
+			Change change = Change::INSERTED);
 	///
 	void insertChar(lyx::pos_type pos, value_type c,
-		LyXFont const &, Change change = Change(Change::INSERTED));
-	///
-	bool checkInsertChar(LyXFont &);
+		LyXFont const &, Change change = Change::INSERTED);
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
-			 Change change = Change(Change::INSERTED));
+			 Change change = Change::INSERTED);
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
-		LyXFont const &, Change change = Change(Change::INSERTED));
+		LyXFont const &, Change change = Change::INSERTED);
 	///
 	bool insetAllowed(InsetBase_code code);
 	///
@@ -327,7 +325,9 @@ public:
 	///
 	bool isHfill(lyx::pos_type pos) const;
 	/// hinted by profiler
-	bool isInset(lyx::pos_type pos) const { return getChar(pos) == static_cast<value_type>(META_INSET); }
+	bool isInset(lyx::pos_type pos) const {
+		return getChar(pos) == static_cast<value_type>(META_INSET);
+	}
 	///
 	bool isNewline(lyx::pos_type pos) const;
 	///
@@ -367,7 +367,9 @@ public:
 	unsigned int height() const { return dim_.height(); }
 	/// total width of paragraph, may differ from workwidth
 	unsigned int width() const { return dim_.width(); }
+	/// ascend of paragraph above baseline
 	unsigned int ascent() const { return dim_.ascent(); }
+	/// descend of paragraph below baseline
 	unsigned int descent() const { return dim_.descent(); }
 	/// LyXText updates the rows using this access point
 	RowList & rows() { return rows_; }

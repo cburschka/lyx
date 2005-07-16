@@ -34,40 +34,40 @@ class FontInfo {
 public:
 	FontInfo(LyXFont const & f);
 
-	/// return pixel width for the given unicode char
+	/// Return pixel width for the given unicode char
 	int width(Uchar val) const;
 
-	/// the font instance
+	/// The font instance
 	QFont font;
-	/// metrics on the font
+	/// Metrics on the font
 	QFontMetrics metrics;
 
 #if defined(USE_LYX_FONTCACHE)
 	typedef std::map<Uchar, int> WidthCache;
-	/// cache of char widths
+	/// Cache of char widths
 	WidthCache widthcache;
 #endif
 };
 
 
+/// Hold info about a particular font
 class FontLoader {
 public:
-	/// hold info about a particular font
 	///
 	FontLoader();
 
-	/// update fonts after zoom, dpi, font names, or norm change
+	/// Update fonts after zoom, dpi, font names, or norm change
 	void update();
 
-	/// do we have anything matching?
+	/// Do we have anything matching?
 	bool available(LyXFont const & f);
 
-	/// get the QFont for this LyXFont
+	/// Get the QFont for this LyXFont
 	QFont const & get(LyXFont const & f) {
 		return fontinfo(f).font;
 	}
 
-	/// get the QFont metrics for this LyXFont
+	/// Get the QFont metrics for this LyXFont
 	QFontMetrics const & metrics(LyXFont const & f) {
 		return fontinfo(f).metrics;
 	}
@@ -78,7 +78,7 @@ public:
 	/// Called the first time when available() can't load a symbol font
 	static void addToFontPath();
 
-	/// get font info (font + metrics) for the given LyX font. Does not fail.
+	/// Get font info (font + metrics) for the given LyX font. 
 	FontInfo & fontinfo(LyXFont const & f) {
 		FontInfo * & fi =
 			fontinfo_[f.family()][f.series()][f.realShape()][f.size()];

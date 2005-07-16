@@ -310,12 +310,11 @@ FontInfo::FontInfo(LyXFont const & f)
 			    << font.pointSizeFloat() << endl;
 
 	// Is this an exact match?
-	if (font.exactMatch()) {
+	if (font.exactMatch())
 		lyxerr[Debug::FONT] << "This font is an exact match" << endl;
-	} else {
+	else
 		lyxerr[Debug::FONT] << "This font is NOT an exact match"
 				    << endl;
-	}
 
 	lyxerr[Debug::FONT] << "XFLD: " << font.rawName() << endl;
 
@@ -328,7 +327,6 @@ int FontInfo::width(Uchar val) const
 // Starting with version 3.1.0, Qt/X11 does its own caching of
 // character width, so it is not necessary to provide ours.
 #if defined (USE_LYX_FONTCACHE)
-#error xxx 
 	FontInfo::WidthCache::const_iterator cit = widthcache.find(val);
 	if (cit != widthcache.end())
 		return cit->second;

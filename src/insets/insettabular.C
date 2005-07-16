@@ -743,18 +743,19 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			row_type rs, re;
 			col_type cs, ce;
 			getSelection(cur, rs, re, cs, ce);
-			for (row_type i = rs; i <= re; ++i)
+			for (row_type i = rs; i <= re; ++i) {
 				for (col_type j = cs; j <= ce; ++j) {
 					// cursor follows cell:
 					cur.idx() = tabular.getCellNumber(i, j);
 					// select this cell only:
 					cur.pos() = 0;
-				        cur.resetAnchor();
+					cur.resetAnchor();
 					cur.pos() = cur.top().lastpos();
-				        cur.setCursor(cur);
-				        cur.setSelection();
+					cur.setCursor(cur);
+					cur.setSelection();
 					cell(cur.idx())->dispatch(cur, cmd);
 				}
+			}
 			// Restore original selection
 			cur.idx() = tabular.getCellNumber(rs, cs);
 			cur.pos() = 0;

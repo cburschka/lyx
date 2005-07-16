@@ -204,12 +204,6 @@ LColor_color LyXFont::color() const
 }
 
 
-Language const * LyXFont::language() const
-{
-	return lang;
-}
-
-
 bool LyXFont::isRightToLeft() const
 {
 	return lang->RightToLeft();
@@ -914,23 +908,6 @@ LColor_color LyXFont::realColor() const
 	if (color() == LColor::none)
 		return LColor::foreground;
 	return color();
-}
-
-
-// Convert logical attributes to concrete shape attribute
-LyXFont::FONT_SHAPE LyXFont::realShape() const
-{
-	register FONT_SHAPE s = shape();
-
-	if (emph() == ON) {
-		if (s == UP_SHAPE)
-			s = ITALIC_SHAPE;
-		else
-			s = UP_SHAPE;
-	}
-	if (noun() == ON)
-		s = SMALLCAPS_SHAPE;
-	return s;
 }
 
 
