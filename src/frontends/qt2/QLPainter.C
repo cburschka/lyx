@@ -227,7 +227,6 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 		encoding = encodings.symbol_encoding();
 
 	QString str;
-#if QT_VERSION >= 300
 	str.setLength(ls);
 	for (size_t i = 0; i < ls; ++i)
 		// Brain-dead MSVC wants at(i) rather than operator[]
@@ -235,20 +234,12 @@ void QLPainter::text(int x, int y, char const * s, size_t ls,
 	// HACK: QT3 refuses to show single compose characters
 	if (ls == 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
 		str = ' ' + str;
-#else
-	for (size_t i = 0; i < ls; ++i)
-		str += QChar(encoding->ucs(s[i]));
-#endif
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		qp_->setFont(fontloader.get(f));
-#if QT_VERSION >= 300
 		// We need to draw the text as LTR as we use our own bidi
 		// code.
 		qp_->drawText(x, y, str, -1, QPainter::LTR);
-#else
-		qp_->drawText(x, y, str);
-#endif
 	} else {
 		smallCapsText(x, y, str, f);
 	}

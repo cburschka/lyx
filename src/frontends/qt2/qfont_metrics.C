@@ -108,7 +108,7 @@ int smallcapswidth(char const * s, size_t ls, LyXFont const & f)
 		return 1;
 	// handle small caps ourselves ...
 
-	LyXFont smallfont(f);
+	LyXFont smallfont = f;
 	smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 
 	QFontMetrics const & qm = fontloader.metrics(f);
@@ -139,14 +139,14 @@ int width(char const * s, size_t ls, LyXFont const & f)
 		return smallcapswidth(s, ls, f);
 
 	Encoding const * encoding = fontencoding(f);
-	qfont_loader::font_info * fi = fontloader.getfontinfo(f);
+	FontInfo & fi = fontloader.fontinfo(f);
 
 	if (ls == 1) 
-		return fi->charwidth(encoding->ucs(s[0]));
+		return fi.width(encoding->ucs(s[0]));
 
 	int w = 0;
 	for (size_t i = 0; i < ls; ++i)
-		w += fi->charwidth(encoding->ucs(s[i]));
+		w += fi.width(encoding->ucs(s[i]));
 
 	return w;
 }
@@ -184,3 +184,4 @@ void buttonText(string const & str, LyXFont const & f,
 }
 
 } // namespace font_metrics
+

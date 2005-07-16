@@ -34,7 +34,7 @@
 
 using std::string;
 
-qfont_loader fontloader;
+FontLoader fontloader;
 
 namespace lyx {
 

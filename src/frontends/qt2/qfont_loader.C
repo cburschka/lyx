@@ -1,5 +1,5 @@
 /**
- * \file qfont_loader.C
+ * \file FontLoader.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -52,27 +52,7 @@ using std::string;
 #endif
 
 
-int qfont_loader::font_info::charwidth(Uchar val) const
-{
-// Starting with version 3.1.0, Qt/X11 does its own caching of
-// character width, so it is not necessary to provide ours.
-#if defined (USE_LYX_FONTCACHE)
-#error xxx 
-	font_info::WidthCache::const_iterator cit = widthcache.find(val);
-	if (cit != widthcache.end())
-		return cit->second;
-
-	int const w = metrics.width(QChar(val));
-	widthcache[val] = w;
-	return w;
-#else
-	return metrics.width(QChar(val));
-#endif
-}
-
-
-
-void qfont_loader::initFontPath()
+void FontLoader::initFontPath()
 {
 #ifdef Q_WS_MACX
 	CFBundleRef  myAppBundle = CFBundleGetMainBundle();
@@ -154,10 +134,10 @@ size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_font);
 
 string getRawName(string const & family)
 {
-	for (size_t i = 0; i < nr_symbol_fonts; ++i) {
+	for (size_t i = 0; i < nr_symbol_fonts; ++i)
 		if (family == symbol_fonts[i].family)
 			return symbol_fonts[i].xlfd;
-	}
+
 	lyxerr[Debug::FONT] << "BUG: family not found !" << endl;
 	return string();
 }
@@ -246,47 +226,32 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 } // namespace anon
 
 
-qfont_loader::qfont_loader()
+FontLoader::FontLoader()
 {
-	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) {
-		for (int i2 = 0; i2 < 2; ++i2) {
-			for (int i3 = 0; i3 < 4; ++i3) {
-				for (int i4 = 0; i4 < 10; ++i4) {
+	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
+		for (int i2 = 0; i2 < 2; ++i2)
+			for (int i3 = 0; i3 < 4; ++i3)
+				for (int i4 = 0; i4 < 10; ++i4)
 					fontinfo_[i1][i2][i3][i4] = 0;
-				}
-			}
-		}
-	}
 }
 
 
-qfont_loader::~qfont_loader()
+void FontLoader::update()
 {
-}
-
-
-void qfont_loader::update()
-{
-	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) {
-		for (int i2 = 0; i2 < 2; ++i2) {
-			for (int i3 = 0; i3 < 4; ++i3) {
+	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) 
+		for (int i2 = 0; i2 < 2; ++i2) 
+			for (int i3 = 0; i3 < 4; ++i3) 
 				for (int i4 = 0; i4 < 10; ++i4) {
 					delete fontinfo_[i1][i2][i3][i4];
 					fontinfo_[i1][i2][i3][i4] = 0;
 				}
-			}
-		}
-	}
 }
 
 
-QFont const & qfont_loader::get(LyXFont const & f)
-{
-	return getfontinfo(f)->font;
-}
+/////////////////////////////////////////////////
 
 
-qfont_loader::font_info::font_info(LyXFont const & f)
+FontInfo::FontInfo(LyXFont const & f)
 	: metrics(font)
 {
 
@@ -358,19 +323,38 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 }
 
 
-qfont_loader::font_info * qfont_loader::getfontinfo(LyXFont const & f)
+int FontInfo::width(Uchar val) const
 {
-	font_info * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
-	if (fi)
-		return fi;
+// Starting with version 3.1.0, Qt/X11 does its own caching of
+// character width, so it is not necessary to provide ours.
+#if defined (USE_LYX_FONTCACHE)
+#error xxx 
+	FontInfo::WidthCache::const_iterator cit = widthcache.find(val);
+	if (cit != widthcache.end())
+		return cit->second;
 
-	font_info * fi2 = new font_info(f);
-	fontinfo_[f.family()][f.series()][f.realShape()][f.size()] = fi2;
-	return fi2;
+	int const w = metrics.width(QChar(val));
+	widthcache[val] = w;
+	return w;
+#else
+	return metrics.width(QChar(val));
+#endif
 }
 
 
-bool qfont_loader::available(LyXFont const & f)
+FontInfo & FontLoader::fontinfo(LyXFont const & f)
+{
+	FontInfo * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
+	if (fi)
+		return *fi;
+
+	FontInfo * fi2 = new FontInfo(f);
+	fontinfo_[f.family()][f.series()][f.realShape()][f.size()] = fi2;
+	return *fi2;
+}
+
+
+bool FontLoader::available(LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return false;

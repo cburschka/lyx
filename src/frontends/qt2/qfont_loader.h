@@ -30,31 +30,31 @@
  * Qt font loader for LyX. Matches LyXFonts against
  * actual QFont instances, and also caches metrics.
  */
-class qfont_loader {
+class FontInfo {
 public:
-	/// hold info about a particular font
-	class font_info {
-	public:
-		font_info(LyXFont const & f);
+	FontInfo(LyXFont const & f);
 
-		/// return pixel width for the given unicode char
-		int charwidth(Uchar val) const;
+	/// return pixel width for the given unicode char
+	int width(Uchar val) const;
 
-		/// the font instance
-		QFont font;
-		/// metrics on the font
-		QFontMetrics metrics;
+	/// the font instance
+	QFont font;
+	/// metrics on the font
+	QFontMetrics metrics;
 
 #if defined(USE_LYX_FONTCACHE)
-		typedef std::map<Uchar, int> WidthCache;
-		/// cache of char widths
-		WidthCache widthcache;
+	typedef std::map<Uchar, int> WidthCache;
+	/// cache of char widths
+	WidthCache widthcache;
 #endif
-	};
+};
 
-	qfont_loader();
 
-	~qfont_loader();
+class FontLoader {
+public:
+	/// hold info about a particular font
+	///
+	FontLoader();
 
 	/// update fonts after zoom, dpi, font names, or norm change
 	void update();
@@ -63,11 +63,13 @@ public:
 	bool available(LyXFont const & f);
 
 	/// get the QFont for this LyXFont
-	QFont const & get(LyXFont const & f);
+	QFont const & get(LyXFont const & f) {
+		return fontinfo(f).font;
+	}
 
 	/// get the QFont metrics for this LyXFont
 	QFontMetrics const & metrics(LyXFont const & f) {
-		return getfontinfo(f)->metrics;
+		return fontinfo(f).metrics;
 	}
 
 	/// Called before QApplication is initialized
@@ -77,13 +79,13 @@ public:
 	static void addToFontPath();
 
 	/// get font info (font + metrics) for the given LyX font. Does not fail.
-	font_info * getfontinfo(LyXFont const & f);
+	FontInfo & fontinfo(LyXFont const & f);
 
 private:
 	/// BUTT ugly !
-	font_info * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
+	FontInfo * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
 };
 
-extern qfont_loader fontloader;
+extern FontLoader fontloader;
 
 #endif // QFONT_LOADER_H
