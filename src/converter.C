@@ -77,7 +77,7 @@ string const dvipdfm_options(BufferParams const & bp)
 {
 	string result;
 
-	if (bp.papersize2 != VM_PAPER_CUSTOM) {
+	if (bp.papersize != PAPER_CUSTOM) {
 		string const paper_size = bp.paperSizeName();
 		if (paper_size != "b5" && paper_size != "foolscap")
 			result = "-p "+ paper_size;

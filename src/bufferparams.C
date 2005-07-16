@@ -125,22 +125,22 @@ QuotesTimesTranslator const & quotestimestranslator()
 
 
 // Paper size
-typedef Translator<std::string, VMARGIN_PAPER_TYPE> PaperSizeTranslator;
+typedef Translator<std::string, PAPER_SIZE> PaperSizeTranslator;
 
 
 PaperSizeTranslator const init_papersizetranslator()
 {
-	PaperSizeTranslator translator(string_papersize[0], VM_PAPER_DEFAULT);
-	translator.addPair(string_papersize[1], VM_PAPER_CUSTOM);
-	translator.addPair(string_papersize[2], VM_PAPER_USLETTER);
-	translator.addPair(string_papersize[3], VM_PAPER_USLEGAL);
-	translator.addPair(string_papersize[4], VM_PAPER_USEXECUTIVE);
-	translator.addPair(string_papersize[5], VM_PAPER_A3);
-	translator.addPair(string_papersize[6], VM_PAPER_A4);
-	translator.addPair(string_papersize[7], VM_PAPER_A5);
-	translator.addPair(string_papersize[8], VM_PAPER_B3);
-	translator.addPair(string_papersize[9], VM_PAPER_B4);
-	translator.addPair(string_papersize[10], VM_PAPER_B5);
+	PaperSizeTranslator translator(string_papersize[0], PAPER_DEFAULT);
+	translator.addPair(string_papersize[1], PAPER_CUSTOM);
+	translator.addPair(string_papersize[2], PAPER_USLETTER);
+	translator.addPair(string_papersize[3], PAPER_USLEGAL);
+	translator.addPair(string_papersize[4], PAPER_USEXECUTIVE);
+	translator.addPair(string_papersize[5], PAPER_A3);
+	translator.addPair(string_papersize[6], PAPER_A4);
+	translator.addPair(string_papersize[7], PAPER_A5);
+	translator.addPair(string_papersize[8], PAPER_B3);
+	translator.addPair(string_papersize[9], PAPER_B4);
+	translator.addPair(string_papersize[10], PAPER_B5);
 	return translator;
 }
 
@@ -333,7 +333,6 @@ BufferParams::BufferParams()
 
 	/*  PaperLayout */
 	papersize = PAPER_DEFAULT;
-	papersize2 = VM_PAPER_DEFAULT; /* DEFAULT */
 	paperpackage = PACKAGE_NONE;
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
@@ -490,7 +489,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\papersize") {
 		string ppsize;
 		lex >> ppsize;
-		papersize2 = papersizetranslator().find(ppsize);
+		papersize = papersizetranslator().find(ppsize);
 	} else if (token == "\\paperpackage") {
 		string ppackage;
 		lex >> ppackage;
@@ -639,7 +638,7 @@ void BufferParams::writeFile(ostream & os) const
 
 	spacing().writeFile(os);
 
-	os << "\\papersize " << string_papersize[papersize2]
+	os << "\\papersize " << string_papersize[papersize]
 	   << "\n\\paperpackage " << string_paperpackages[paperpackage]
 	   << "\n\\use_geometry " << convert<string>(use_geometry)
 	   << "\n\\use_amsmath " << use_amsmath
@@ -741,32 +740,37 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		clsoptions << fontsize << "pt,";
 	}
 
+	// custom, A3, B3 and B4 paper sizes need geometry
+	bool nonstandard_papersize = (papersize == PAPER_B3) ||
+				     (papersize == PAPER_B4) ||
+				     (papersize == PAPER_A3) ||
+				     (papersize == PAPER_CUSTOM);
 
-	if (!use_geometry &&
-	    (paperpackage == PACKAGE_NONE)) {
+	if (!use_geometry && (paperpackage == PACKAGE_NONE)) {
 		switch (papersize) {
-		case PAPER_A3PAPER:
-			clsoptions << "a3paper,";
-			break;
-		case PAPER_A4PAPER:
+		case PAPER_A4:
 			clsoptions << "a4paper,";
 			break;
 		case PAPER_USLETTER:
 			clsoptions << "letterpaper,";
 			break;
-		case PAPER_A5PAPER:
+		case PAPER_A5:
 			clsoptions << "a5paper,";
 			break;
-		case PAPER_B5PAPER:
+		case PAPER_B5:
 			clsoptions << "b5paper,";
 			break;
-		case PAPER_EXECUTIVEPAPER:
+		case PAPER_USEXECUTIVE:
 			clsoptions << "executivepaper,";
 			break;
-		case PAPER_LEGALPAPER:
+		case PAPER_USLEGAL:
 			clsoptions << "legalpaper,";
 			break;
 		case PAPER_DEFAULT:
+		case PAPER_A3:
+		case PAPER_B3:
+		case PAPER_B4:
+		case PAPER_CUSTOM:
 			break;
 		}
 	}
@@ -882,14 +886,15 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 			break;
 		}
 	}
-	if (use_geometry) {
+
+	if (use_geometry || nonstandard_papersize) {
 		os << "\\usepackage{geometry}\n";
 		texrow.newline();
 		os << "\\geometry{verbose";
 		if (orientation == ORIENTATION_LANDSCAPE)
 			os << ",landscape";
-		switch (papersize2) {
-		case VM_PAPER_CUSTOM:
+		switch (papersize) {
+		case PAPER_CUSTOM:
 			if (!paperwidth.empty())
 				os << ",paperwidth="
 				   << paperwidth;
@@ -897,57 +902,61 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 				os << ",paperheight="
 				   << paperheight;
 			break;
-		case VM_PAPER_USLETTER:
+		case PAPER_USLETTER:
 			os << ",letterpaper";
 			break;
-		case VM_PAPER_USLEGAL:
+		case PAPER_USLEGAL:
 			os << ",legalpaper";
 			break;
-		case VM_PAPER_USEXECUTIVE:
+		case PAPER_USEXECUTIVE:
 			os << ",executivepaper";
 			break;
-		case VM_PAPER_A3:
+		case PAPER_A3:
 			os << ",a3paper";
 			break;
-		case VM_PAPER_A4:
+		case PAPER_A4:
 			os << ",a4paper";
 			break;
-		case VM_PAPER_A5:
+		case PAPER_A5:
 			os << ",a5paper";
 			break;
-		case VM_PAPER_B3:
+		case PAPER_B3:
 			os << ",b3paper";
 			break;
-		case VM_PAPER_B4:
+		case PAPER_B4:
 			os << ",b4paper";
 			break;
-		case VM_PAPER_B5:
+		case PAPER_B5:
 			os << ",b5paper";
 			break;
 		default:
-				// default papersize ie VM_PAPER_DEFAULT
+			// default papersize ie PAPER_DEFAULT
 			switch (lyxrc.default_papersize) {
 			case PAPER_DEFAULT: // keep compiler happy
 			case PAPER_USLETTER:
 				os << ",letterpaper";
 				break;
-			case PAPER_LEGALPAPER:
+			case PAPER_USLEGAL:
 				os << ",legalpaper";
 				break;
-			case PAPER_EXECUTIVEPAPER:
+			case PAPER_USEXECUTIVE:
 				os << ",executivepaper";
 				break;
-			case PAPER_A3PAPER:
+			case PAPER_A3:
 				os << ",a3paper";
 				break;
-			case PAPER_A4PAPER:
+			case PAPER_A4:
 				os << ",a4paper";
 				break;
-			case PAPER_A5PAPER:
+			case PAPER_A5:
 				os << ",a5paper";
 				break;
-			case PAPER_B5PAPER:
+			case PAPER_B5:
 				os << ",b5paper";
+				break;
+			case PAPER_B3:
+			case PAPER_B4:
+			case PAPER_CUSTOM:
 				break;
 			}
 		}
@@ -1124,33 +1133,6 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 }
 
 
-void BufferParams::setPaperStuff()
-{
-	papersize = PAPER_DEFAULT;
-	char const c1 = paperpackage;
-	if (c1 == PACKAGE_NONE) {
-		char const c2 = papersize2;
-		if (c2 == VM_PAPER_USLETTER)
-			papersize = PAPER_USLETTER;
-		else if (c2 == VM_PAPER_USLEGAL)
-			papersize = PAPER_LEGALPAPER;
-		else if (c2 == VM_PAPER_USEXECUTIVE)
-			papersize = PAPER_EXECUTIVEPAPER;
-		else if (c2 == VM_PAPER_A3)
-			papersize = PAPER_A3PAPER;
-		else if (c2 == VM_PAPER_A4)
-			papersize = PAPER_A4PAPER;
-		else if (c2 == VM_PAPER_A5)
-			papersize = PAPER_A5PAPER;
-		else if ((c2 == VM_PAPER_B3) || (c2 == VM_PAPER_B4) ||
-			 (c2 == VM_PAPER_B5))
-			papersize = PAPER_B5PAPER;
-	} else if ((c1 == PACKAGE_A4) || (c1 == PACKAGE_A4WIDE) ||
-		   (c1 == PACKAGE_WIDEMARGINSA4))
-		papersize = PAPER_A4PAPER;
-}
-
-
 void BufferParams::useClassDefaults()
 {
 	LyXTextClass const & tclass = textclasslist[textclass];
@@ -1273,17 +1255,17 @@ string const BufferParams::paperSizeName() const
 		real_papersize = lyxrc.default_papersize;
 
 	switch (real_papersize) {
-	case PAPER_A3PAPER:
+	case PAPER_A3:
 		return "a3";
-	case PAPER_A4PAPER:
+	case PAPER_A4:
 		return "a4";
-	case PAPER_A5PAPER:
+	case PAPER_A5:
 		return "a5";
-	case PAPER_B5PAPER:
+	case PAPER_B5:
 		return "b5";
-	case PAPER_EXECUTIVEPAPER:
+	case PAPER_USEXECUTIVE:
 		return "foolscap";
-	case PAPER_LEGALPAPER:
+	case PAPER_USLEGAL:
 		return "legal";
 	case PAPER_USLETTER:
 	default:
@@ -1297,7 +1279,7 @@ string const BufferParams::dvips_options() const
 	string result;
 
 	if (use_geometry
-	    && papersize2 == VM_PAPER_CUSTOM
+	    && papersize == PAPER_CUSTOM
 	    && !lyxrc.print_paper_dimension_flag.empty()
 	    && !paperwidth.empty()
 	    && !paperheight.empty()) {
@@ -1317,7 +1299,7 @@ string const BufferParams::dvips_options() const
 		}
 	}
 	if (orientation == ORIENTATION_LANDSCAPE &&
-	    papersize2 != VM_PAPER_CUSTOM)
+	    papersize != PAPER_CUSTOM)
 		result += ' ' + lyxrc.print_landscape_flag;
 	return result;
 }

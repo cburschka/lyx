@@ -1,3 +1,9 @@
+2005-07-16  José Matos  <jamatos@fc.up.pt>
+
+	* ghelpers.C:
+	* GDocument.C: remove setPaperStuff and use a
+	single papersize variable.
+
 2005-07-15  José Matos  <jamatos@lyx.org>
 
 	* .cvsignore: add pch.h.gch and pch.h.gch.dep.

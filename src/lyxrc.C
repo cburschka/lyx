@@ -570,22 +570,22 @@ int LyXRC::read(LyXLex & lexrc)
 						PAPER_USLETTER;
 				else if (size == "legal")
 					default_papersize =
-						PAPER_LEGALPAPER;
+						PAPER_USLEGAL;
 				else if (size == "executive")
 					default_papersize =
-						PAPER_EXECUTIVEPAPER;
+						PAPER_USEXECUTIVE;
 				else if (size == "a3")
 					default_papersize =
-						PAPER_A3PAPER;
+						PAPER_A3;
 				else if (size == "a4")
 					default_papersize =
-						PAPER_A4PAPER;
+						PAPER_A4;
 				else if (size == "a5")
 					default_papersize =
-						PAPER_A5PAPER;
+						PAPER_A5;
 				else if (size == "b5")
 					default_papersize =
-						PAPER_B5PAPER;
+						PAPER_B5;
 			}
 			break;
 
@@ -1299,17 +1299,17 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			switch (default_papersize) {
 			case PAPER_USLETTER:
 				os << "usletter"; break;
-			case PAPER_LEGALPAPER:
+			case PAPER_USLEGAL:
 				os << "legal"; break;
-			case PAPER_EXECUTIVEPAPER:
+			case PAPER_USEXECUTIVE:
 				os << "executive"; break;
-			case PAPER_A3PAPER:
+			case PAPER_A3:
 				os << "a3"; break;
-			case PAPER_A4PAPER:
+			case PAPER_A4:
 				os << "a4"; break;
-			case PAPER_A5PAPER:
+			case PAPER_A5:
 				os << "a5"; break;
-			case PAPER_B5PAPER:
+			case PAPER_B5:
 				os << "b5"; break;
 			case PAPER_DEFAULT: break;
 			}

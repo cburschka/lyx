@@ -288,12 +288,12 @@ void FormGraphics::build()
 	switch (lyxrc.default_papersize) {
 	case PAPER_DEFAULT: break;
 	case PAPER_USLETTER:
-	case PAPER_LEGALPAPER:
-	case PAPER_EXECUTIVEPAPER: defaultUnit = "in"; break;
-	case PAPER_A3PAPER:
-	case PAPER_A4PAPER:
-	case PAPER_A5PAPER:
-	case PAPER_B5PAPER: defaultUnit = "cm"; break;
+	case PAPER_USLEGAL:
+	case PAPER_USEXECUTIVE: defaultUnit = "in"; break;
+	case PAPER_A3:
+	case PAPER_A4:
+	case PAPER_A5:
+	case PAPER_B5: defaultUnit = "cm"; break;
 	}
 }
 

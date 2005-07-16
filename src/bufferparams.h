@@ -89,9 +89,6 @@ public:
 	bool writeLaTeX(std::ostream &, LaTeXFeatures &, TexRow &) const;
 
 	///
-	void setPaperStuff();
-
-	///
 	void useClassDefaults();
 
 	///
@@ -119,15 +116,13 @@ public:
 	LyXTextClass const & getLyXTextClass() const;
 
 	/* this are for the PaperLayout */
-	/// the general papersize (papersize2 or paperpackage
+	/// the papersize
 	PAPER_SIZE papersize;
-	///  the selected Geometry papersize
-	VMARGIN_PAPER_TYPE papersize2;
 	/// a special paperpackage .sty-file
 	PAPER_PACKAGES paperpackage;
 	///
 	PAPER_ORIENTATION orientation;
-	///
+	/// use custom margins
 	bool use_geometry;
 	///
 	std::string paperwidth;

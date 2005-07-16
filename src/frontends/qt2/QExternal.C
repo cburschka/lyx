@@ -60,8 +60,8 @@ LyXLength::UNIT defaultUnit()
 	LyXLength::UNIT default_unit = LyXLength::CM;
 	switch (lyxrc.default_papersize) {
 	case PAPER_USLETTER:
-	case PAPER_LEGALPAPER:
-	case PAPER_EXECUTIVEPAPER:
+	case PAPER_USLEGAL:
+	case PAPER_USEXECUTIVE:
 		default_unit = LyXLength::IN;
 		break;
 	default:

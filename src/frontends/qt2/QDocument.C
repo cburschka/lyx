@@ -362,7 +362,7 @@ void QDocument::apply()
 	params.float_placement = dialog_->floatModule->get();
 
 	// paper
-	params.papersize2 = VMARGIN_PAPER_TYPE(
+	params.papersize = PAPER_SIZE(
 		dialog_->pageLayoutModule->papersizeCO->currentItem());
 
 	// custom, A3, B3 and B4 paper sizes need geometry
@@ -395,10 +395,6 @@ void QDocument::apply()
 		margin = margin - 1;
 	}
 	params.paperpackage = PAPER_PACKAGES(margin);
-
-	// set params.papersize from params.papersize2
-	// and params.paperpackage
-	params.setPaperStuff();
 
 	MarginsModuleBase const * m(dialog_->marginsModule);
 
@@ -453,16 +449,20 @@ void QDocument::update_contents()
 		case PAPER_DEFAULT: break;
 
 		case PAPER_USLETTER:
-		case PAPER_LEGALPAPER:
-		case PAPER_EXECUTIVEPAPER:
+		case PAPER_USLEGAL:
+		case PAPER_USEXECUTIVE:
 			defaultUnit = LyXLength::IN;
 			break;
 
-		case PAPER_A3PAPER:
-		case PAPER_A4PAPER:
-		case PAPER_A5PAPER:
-		case PAPER_B5PAPER:
+		case PAPER_A3:
+		case PAPER_A4:
+		case PAPER_A5:
+		case PAPER_B3:
+		case PAPER_B4:
+		case PAPER_B5:
 			defaultUnit = LyXLength::CM;
+			break;
+		case PAPER_CUSTOM:
 			break;
 	}
 
@@ -628,7 +628,7 @@ void QDocument::update_contents()
 	dialog_->floatModule->set(params.float_placement);
 
 	// paper
-	int const psize = params.papersize2;
+	int const psize = params.papersize;
 	dialog_->pageLayoutModule->papersizeCO->setCurrentItem(psize);
 	dialog_->setMargins(psize);
 	dialog_->setCustomPapersize(psize);

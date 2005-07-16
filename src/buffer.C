@@ -684,7 +684,6 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
 	//lyxerr << "removing " << MacroTable::localMacros().size()
 	//	<< " temporary macro entries" << endl;
 	//MacroTable::localMacros().clear();
-	params().setPaperStuff();
 
 	pimpl_->file_fully_loaded = true;
 	return true;

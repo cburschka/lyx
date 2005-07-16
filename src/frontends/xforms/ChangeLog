@@ -1,3 +1,12 @@
+2005-07-16  José Matos  <jamatos@fc.up.pt>
+
+	* FormParagraphs.C:
+	* FormVSpace.C:
+	* FormsExternal.C:
+	* FormGraphics.C:
+	* FormDocument.C: remove setPaperStuff and use a
+	single papersize variable.
+
 2005-07-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* FormPreferences.h: remove a reLyX reference

@@ -1,3 +1,12 @@
+2005-07-16  José Matos  <jamatos@fc.up.pt>
+
+	* buffer.C:
+	* converter.C:
+	* lyxrc.C:
+	* paper.h:
+	* bufferparams.[Ch] (setPaperStuff): remove setPaperStuff and use a
+	single papersize variable.
+
 2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text3.C (dispatch): honor boundary when checking if a cursor

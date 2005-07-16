@@ -322,7 +322,7 @@ void GDocument::update()
 	// *** End "Document" Page ***
 
 	// *** Begin "Page" Page ***
-	int const psize = params.papersize2;
+	int const psize = params.papersize;
 	pagesizecombo_.set_active(psize);
 
 	setWidgetsFromLength(
@@ -477,7 +477,7 @@ void GDocument::apply()
 	// *** End "Document" Page ***
 
 	// *** Begin "Page" Page ***
-	params.papersize2 = VMARGIN_PAPER_TYPE(
+	params.papersize = PAPER_SIZE(
 		pagesizecombo_.get_active_row_number());
 
 	params.paperwidth = getLengthFromWidgets(
@@ -515,8 +515,6 @@ void GDocument::apply()
 		margin = margin - 1;
 	}
 	params.paperpackage = PAPER_PACKAGES(margin);
-
-	params.setPaperStuff();
 
 	params.topmargin = getLengthFromWidgets(
 		*(mtopspin_->get_adjustment()),
@@ -667,7 +665,7 @@ void GDocument::populateMargins()
 		papersize = 0;
 
 	bool const a4size = (papersize == 6 || papersize == 0
-			&& lyxrc.default_papersize == PAPER_A4PAPER);
+			&& lyxrc.default_papersize == PAPER_A4);
 	if (a4size && portraitradio_->get_active()) {
 		marginscombo_.append_text(_("Small margins"));
 		marginscombo_.append_text(_("Very small margins"));
