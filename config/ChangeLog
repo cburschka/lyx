@@ -1,3 +1,8 @@
+2005-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lyxinclude.m4 (enable-optimization): make releases and
+	prereleases have optimization set to -O2
+
 2005-07-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxinclude.m4: set profiling off by defqult 

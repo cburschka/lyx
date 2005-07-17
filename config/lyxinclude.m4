@@ -206,11 +206,16 @@ AC_ARG_ENABLE(profiling,
 
 ### set up optimization
 AC_ARG_ENABLE(optimization,
-  AC_HELP_STRING([--enable-optimization[=value]],[enable compiler optimisation]),,
-	enable_optimization=yes;)
+    AC_HELP_STRING([--enable-optimization[=value]],[enable compiler optimisation]),,
+    enable_optimization=yes;)
 case $enable_optimization in
-  yes) lyx_opt=-O;;
-   no) lyx_opt=;;
+    yes)
+        if test $lyx_devel_version = yes ; then
+            lyx_opt=-O
+        else
+            lyx_opt=-O2
+        fi;;
+    no) lyx_opt=;;
     *) lyx_opt=${enable_optimization};;
 esac
 
