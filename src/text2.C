@@ -481,11 +481,9 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 void LyXText::cursorHome(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	Paragraph const & par = cur.paragraph();
-	if (cur.boundary() && cur.pos())
-		setCursor(cur, cur.pit(), par.getRow(cur.pos()-1).pos());
-	else
-		setCursor(cur, cur.pit(), cur.textRow().pos());
+	Row const & row = cur.paragraph().getRow(cur.pos(),cur.boundary());
+
+	setCursor(cur, cur.pit(), row.pos());
 }
 
 

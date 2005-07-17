@@ -357,9 +357,9 @@ public:
 	ParagraphParameters const & params() const;
 
 	///
-	Row & getRow(lyx::pos_type pos);
+	Row & getRow(lyx::pos_type pos, bool boundary);
 	///
-	Row const & getRow(lyx::pos_type pos) const;
+	Row const & getRow(lyx::pos_type pos, bool boundary) const;
 	///
 	size_t pos2row(lyx::pos_type pos) const;
 

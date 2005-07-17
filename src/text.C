@@ -1767,7 +1767,7 @@ void LyXText::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-/*
+#if 0
 // only used for inset right now. should also be used for main text
 void LyXText::drawSelection(PainterInfo & pi, int x , int) const
 {
@@ -1794,8 +1794,8 @@ void LyXText::drawSelection(PainterInfo & pi, int x , int) const
 	Paragraph const & par1 = pars_[beg.pit()];
 	Paragraph const & par2 = pars_[end.pit()];
 
-	Row const & row1 = par1.getRow(beg.pos());
-	Row const & row2 = par2.getRow(end.pos());
+	Row const & row1 = par1.getRow(beg.pos(), beg.boundary());
+	Row const & row2 = par2.getRow(end.pos(), end.boundary());
 
 	int y1,x1,x2;
 	if (bv_funcs::status(pi.base.bv, beg) == bv_funcs::CUR_ABOVE) {
@@ -1836,8 +1836,8 @@ void LyXText::drawSelection(PainterInfo & pi, int x , int) const
 	pi.pain.fillRectangle(x + X1, y2  - row2.height(),
 		X2 - X1, row2.height(), LColor::background);
 }
-*/
 
+#else
 
 void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 {
@@ -1878,7 +1878,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		x1 = 0;
 		x2 = dim_.wid;
 	} else {
-		Row const & row1 = par1.getRow(beg.pos());
+		Row const & row1 = par1.getRow(beg.pos(), beg.boundary());
 		y1 = bv_funcs::getPos(beg, beg.boundary()).y_ - row1.ascent();
 		y2 = y1 + row1.height();
 		int const startx = cursorX(beg.top(), false);
@@ -1893,7 +1893,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		X1 = 0;
 		X2 = dim_.wid;
 	} else {
-		Row const & row2 = par2.getRow(end.pos());
+		Row const & row2 = par2.getRow(end.pos(), end.boundary());
 		Y1 = bv_funcs::getPos(end, end.boundary()).y_ - row2.ascent();
 		Y2 = Y1 + row2.height();
 		int const endx = cursorX(end.top(), false);
@@ -1901,8 +1901,8 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		X2 = !isRTL(par2) ? endx : 0 + dim_.wid;
 	}
 
-	if (!above && !below && &par1.getRow(beg.pos())
-	    == &par2.getRow(end.pos()))
+	if (!above && !below && &par1.getRow(beg.pos(), end.boundary())
+	    == &par2.getRow(end.pos(), end.boundary()))
 	{
 		// paint only one rectangle
 		pi.pain.fillRectangle(x + x1, y1, X2 - x1, y2 - y1,
@@ -1920,7 +1920,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 	pi.pain.fillRectangle(x, y2, dim_.wid,
 			      Y1 - y2, LColor::selection);
 }
-
+#endif
 
 bool LyXText::isLastRow(pit_type pit, Row const & row) const
 {
@@ -2070,7 +2070,7 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 	if (boundary_correction)
 		--ppos;
 
-	Row const & row = par.getRow(ppos);
+	Row const & row = par.getRow(sl.pos(), boundary);
 
 	pos_type cursor_vpos = 0;
 

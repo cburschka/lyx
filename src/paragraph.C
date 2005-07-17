@@ -1791,9 +1791,14 @@ bool Paragraph::allowEmpty() const
 }
 
 
-Row & Paragraph::getRow(pos_type pos)
+Row & Paragraph::getRow(pos_type pos, bool boundary)
 {
 	BOOST_ASSERT(!rows().empty());
+
+	// If boundary is set we should return the row on which
+	// the character before is inside.
+	if (pos > 0 && boundary)
+		--pos;
 
 	RowList::iterator rit = rows_.end();
 	RowList::iterator const begin = rows_.begin();
@@ -1805,9 +1810,14 @@ Row & Paragraph::getRow(pos_type pos)
 }
 
 
-Row const & Paragraph::getRow(pos_type pos) const
+Row const & Paragraph::getRow(pos_type pos, bool boundary) const
 {
 	BOOST_ASSERT(!rows().empty());
+
+	// If boundary is set we should return the row on which
+	// the character before is inside.
+	if (pos > 0 && boundary)
+		--pos;
 
 	RowList::const_iterator rit = rows_.end();
 	RowList::const_iterator const begin = rows_.begin();

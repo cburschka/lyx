@@ -156,14 +156,14 @@ Paragraph const & DocIterator::paragraph() const
 Row & DocIterator::textRow()
 {
 	BOOST_ASSERT(!paragraph().rows().empty());
-	return paragraph().getRow(pos());
+	return paragraph().getRow(pos(), boundary_);
 }
 
 
 Row const & DocIterator::textRow() const
 {
 	BOOST_ASSERT(!paragraph().rows().empty());
-	return paragraph().getRow(pos());
+	return paragraph().getRow(pos(), boundary_);
 }
 
 
