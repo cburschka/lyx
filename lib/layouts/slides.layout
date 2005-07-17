@@ -98,8 +98,9 @@ Style Slide
 	AlignPossible     Left
 	LabelType         Static
 	LabelBottomSep    0.5
-	LeftMargin        MMMMxMMMMxxxNewSlide
-	LabelString       "_____________________________NewSlide: "
+	LabelSep          xx
+	LeftMargin        "New Slide:xx"
+	LabelString       "New Slide:"
 	Font
 	  Family          Typewriter
 	  Series          Bold
@@ -135,8 +136,9 @@ Style Overlay
 	AlignPossible     Left
 	LabelType         Static
 	LabelBottomSep    0.5
-	LeftMargin        MMMMxNewOverlay
-	LabelString       "- - - - - - - - - - NewOverlay: "
+	LabelSep          xx
+	LeftMargin        "New Overlay:xx"
+	LabelString       "New Overlay:"
 	Font
 	  Family          Typewriter
 	  Series          Bold
@@ -175,8 +177,9 @@ Style Note
 	AlignPossible     Left
 	LabelType         Static
 	LabelBottomSep    0.5
-	LeftMargin        MMMMxMMxxNewNote
-	LabelString       "........................NewNote: "
+	LabelSep          xx
+	LeftMargin        "New Note:xx"
+	LabelString       "New Note:"
 	Font
 	  Family          Typewriter
 	  Series          Bold
