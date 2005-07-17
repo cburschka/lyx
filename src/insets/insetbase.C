@@ -29,6 +29,7 @@
 #include "frontends/Painter.h"
 
 #include <map>
+#include <typeinfo>
 
 
 namespace {
@@ -112,6 +113,14 @@ InsetBase::InsetBase()
 
 InsetBase::InsetBase(InsetBase const &)
 {}
+
+
+std::auto_ptr<InsetBase> InsetBase::clone() const
+{
+	std::auto_ptr<InsetBase> b = doClone();
+	BOOST_ASSERT(typeid(*b) == typeid(*this));
+	return b;
+}
 
 
 InsetBase::Code InsetBase::translate(std::string const & name)

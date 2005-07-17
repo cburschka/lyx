@@ -148,6 +148,9 @@ protected:
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	///
+	int scroll() const { return scx_; }
+
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 

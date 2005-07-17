@@ -41,9 +41,6 @@ public:
 	/// docbook output
 	int docbook(Buffer const & buf, std::ostream & os, OutputParams const &) const;
 
-	/// small wrapper for the time being
-	DispatchResult localDispatch(FuncRequest & cmd);
-
 	struct ref_type_info {
 		///
 		std::string latex_name;

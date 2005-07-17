@@ -27,9 +27,7 @@ class BufferView;
 class CursorSlice;
 class Dimension;
 class LColor_color;
-class Painter;
 class ParagraphList;
-class Row;
 
 
 /**
@@ -150,14 +148,6 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	void init();
-	///
-	void setCharFont(Buffer const &, int pos, LyXFont const & font);
-	///
-	void removeNewlines();
-	///
-	void drawFrame(Painter &, int x, int y) const;
-	///
-	void clearInset(Painter &, int x, int y) const;
 
 	///
 	bool drawFrame_;

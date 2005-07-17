@@ -12,17 +12,13 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
-#include <boost/assert.hpp>
-
-#include <string>
-#include <typeinfo>
-#include <vector>
 #include <memory>
+#include <string>
+#include <vector>
 
 class Buffer;
 class BufferView;
 class CursorSlice;
-class DispatchResult;
 class FuncRequest;
 class FuncStatus;
 class LaTeXFeatures;
@@ -34,7 +30,6 @@ class MetricsInfo;
 class Dimension;
 class PainterInfo;
 class OutputParams;
-class UpdatableInset;
 
 namespace lyx { namespace graphics { class PreviewLoader; } }
 
@@ -64,13 +59,7 @@ public:
 	/// virtual base class destructor
 	virtual ~InsetBase() {}
 	/// replicate ourselves
-	std::auto_ptr<InsetBase> clone() const
-	{
-		std::auto_ptr<InsetBase> b = doClone();
-		BOOST_ASSERT(typeid(*b) == typeid(*this));
-		return b;
-	}
-
+	std::auto_ptr<InsetBase> clone() const;
 
 	/// identification as math inset
 	virtual MathInset * asMathInset() { return 0; }
@@ -338,7 +327,6 @@ public:
 	virtual std::string const & getInsetName() const;
 	/// used to toggle insets
 	/// is the inset open?
-	virtual bool isOpen() const { return false; }
 	/// should this inset be handled like a normal charater
 	virtual bool isChar() const { return false; }
 	/// is this equivalent to a letter?
@@ -396,6 +384,8 @@ public:
 	virtual int ascent() const { return 10; }
 	/// pretty arbitrary
 	virtual int descent() const { return 10; }
+	///
+	int scroll() const { return 0; }
 	///
 	enum CollapseStatus {
 		Collapsed,

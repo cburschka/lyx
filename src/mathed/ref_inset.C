@@ -156,8 +156,6 @@ int RefInset::docbook(Buffer const & buf, std::ostream & os, OutputParams const 
 }
 
 
-
-
 RefInset::ref_type_info RefInset::types[] = {
 	{ "ref",       N_("Standard"),              N_("Ref: ")},
 	{ "eqref",     N_("Equation"),              N_("EqRef: ")},
@@ -167,3 +165,4 @@ RefInset::ref_type_info RefInset::types[] = {
 	{ "prettyref", N_("PrettyRef"),             N_("PrettyRef: ")},
 	{ "", "", "" }
 };
+

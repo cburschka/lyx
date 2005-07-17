@@ -190,40 +190,30 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	// update our idea of where we are
 	setPosCache(pi, x, y);
 
-	BufferView * bv = pi.base.bv;
-	bv->hideCursor();
+	//BufferView * bv = pi.base.bv;
+	////bv->hideCursor();
 
 	text_.draw(pi, x + border_, y);
 
-	if (drawFrame_)
-		drawFrame(pi.pain, x, y);
+	if (drawFrame_) {
+		int const w = text_.width() + 2 * border_;
+		int const a = text_.ascent() + border_;
+		int const h = a + text_.descent() + border_;
+		pi.pain.rectangle(x, y - a, w, h, frameColor());
+	}
 }
 
 
 void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	// repaint the background if needed
-	if (backgroundColor() != LColor::background)
-		clearInset(pi.pain, x, y);
+	if (backgroundColor() != LColor::background) {
+		// repaint the background if needed
+		int const w = text_.width() + 2 * border_;
+		int const a = text_.ascent() + border_;
+		int const h = a + text_.descent() + border_;
+		pi.pain.fillRectangle(x, y - a, w, h, backgroundColor());
+	}
 	text_.drawSelection(pi, x, y);
-}
-
-
-void InsetText::drawFrame(Painter & pain, int x, int y) const
-{
-	int const w = text_.width() + 2 * border_;
-	int const a = text_.ascent() + border_;
-	int const h = a + text_.descent() + border_;
-	pain.rectangle(x, y - a, w, h, frameColor());
-}
-
-
-void InsetText::clearInset(Painter & pain, int x, int y) const
-{
-	int const w = text_.width() + 2 * border_;
-	int const a = text_.ascent() + border_;
-	int const h = a + text_.descent() + border_;
-	pain.fillRectangle(x, y - a, w, h, backgroundColor());
 }
 
 
@@ -289,7 +279,7 @@ int InsetText::plaintext(Buffer const & buf, ostream & os,
 		asciiParagraph(buf, *it, os, runparams, ref_printed);
 
 	// FIXME: Give the total numbers of lines
-	return 0;
+	return 1;
 }
 
 
@@ -368,11 +358,20 @@ void InsetText::setText(string const & data, LyXFont const & font)
 
 void InsetText::setAutoBreakRows(bool flag)
 {
-	if (flag != text_.autoBreakRows_) {
-		text_.autoBreakRows_ = flag;
-		if (!flag)
-			removeNewlines();
-	}
+	if (flag == text_.autoBreakRows_)
+		return;
+
+	text_.autoBreakRows_ = flag;
+	if (flag)
+		return;
+
+	// remove previously existing newlines
+	ParagraphList::iterator it = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
+	for (; it != end; ++it)
+		for (int i = 0; i < it->size(); ++i)
+			if (it->isNewline(i))
+				it->erase(i);
 }
 
 
@@ -401,17 +400,6 @@ void InsetText::setViewCache(BufferView const * bv) const
 		//	<< text_.bv_owner << " to " << bv << "\n";
 		text_.bv_owner = const_cast<BufferView *>(bv);
 	}
-}
-
-
-void InsetText::removeNewlines()
-{
-	ParagraphList::iterator it = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
-	for (; it != end; ++it)
-		for (int i = 0; i < it->size(); ++i)
-			if (it->isNewline(i))
-				it->erase(i);
 }
 
 
