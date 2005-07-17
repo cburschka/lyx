@@ -25,7 +25,7 @@ lyx_branch=
 # GNU sed and grep have real problems dealing with 8-bit characters
 # in UTF-8 encoded environments.
 unset LANG
-
+LANGUAGE=C
 
 warning () {
 	echo $* 1>&2
