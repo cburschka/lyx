@@ -39,8 +39,10 @@
 #include "undo.h"
 
 #include "insets/render_preview.h"
+#include "insets/insetlabel.h"
 
-#include "frontends/Alert.h"
+#include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
 
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
@@ -1041,23 +1043,37 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndoInset(cur);
 		row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
 		string old_label = label(r);
-		string new_label = cmd.argument;
+		string const default_label =
+			(lyxrc.label_init_length >= 0) ? "eq:" : "";
+		string const contents = cmd.argument.empty() ?
+			label(r) : cmd.argument;
 
-		if (new_label.empty()) {
-			string const default_label =
-				(lyxrc.label_init_length >= 0) ? "eq:" : "";
-			pair<bool, string> const res = old_label.empty()
-				? Alert::askForText(_("Enter new label to insert:"), default_label)
-				: Alert::askForText(_("Enter label:"), old_label);
-			if (res.first)
-				new_label = lyx::support::trim(res.second);
-			else
-				new_label = old_label;
+		InsetCommandParams p("label", contents);
+		string const data = InsetCommandMailer::params2string("label", p);
+
+		if (cmd.argument.empty()) {
+			cur.bv().owner()->getDialogs().show("label", data, 0);
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, data);
+			dispatch(cur, fr);
 		}
+		break;
+	}
 
-		if (!new_label.empty())
-			numbered(r, true);
-		label(r, new_label);
+	case LFUN_INSET_INSERT: {
+		//lyxerr << "arg: " << cmd.argument << endl;
+		string const name = cmd.getArg(0);
+		if (name == "label") {
+			InsetCommandParams icp;
+			InsetCommandMailer::string2params(name, cmd.argument, icp);
+			string str = icp.getContents();
+			recordUndoInset(cur);
+			row_type const r = (type_ == "multline") ? nrows() - 1 : cur.row();
+			str = lyx::support::trim(str);
+			if (!str.empty())
+				numbered(r, true);
+			label(r, str);
+		}
 		break;
 	}
 
