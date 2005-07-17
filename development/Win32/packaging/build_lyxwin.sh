@@ -36,8 +36,6 @@
 # It compiles the static version of the Aspell libraries because no
 # .dll version exists.
 
-HOME="/home/Angus"
-
 # You may need to change these four variables.
 MINGW_DIR="/j/MinGW"
 QT_DIR="${HOME}"/qt3
@@ -313,9 +311,9 @@ test $# -ne 0 && LYX_VERSION_STR=$1
 check_dirs_exist || exit 1
 query_qt || exit 1
 check_files_exist || exit 1
-#build_dtl || exit 1
-#build_aspell || exit 1
-#build_aspell_dicts || exit 1
+build_dtl || exit 1
+build_aspell || exit 1
+build_aspell_dicts || exit 1
 build_lyx || exit 1
 install_lyx || exit 1
 # The end
