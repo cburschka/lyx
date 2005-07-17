@@ -36,17 +36,16 @@
 # It compiles the static version of the Aspell libraries because no
 # .dll version exists.
 
-HOME="/home/Angus"
-
-# You may need to change these three variables.
+# You may need to change these four variables.
+MINGW_DIR="/j/MinGW"
 QT_DIR="${HOME}"/qt3
 ASPELL_DIR="${HOME}"/aspell-0.50.5
 # A space-separated string of directories
 # ASPELL_DICT_DIRS="${HOME}/aspell-en-0.50-2 ${HOME}/aspell-de-0.50-2 "
 ASPELL_DICT_DIRS="${HOME}/aspell-en-0.50-2"
-LYX_DIR="${HOME}"/lyx/13x
 
 # Everything from here on down should be OK "as is".
+LYX_DIR="../../.."
 PACKAGING_DIR="$LYX_DIR/development/Win32/packaging"
 DTL_DIR="$PACKAGING_DIR/dtl"
 CLEAN_DVI_DIR="$PACKAGING_DIR"
@@ -58,12 +57,12 @@ LYX_INSTALL_DIR=installprefix
 
 # These are all installed in the final LyX package
 QT_DLL="${QT_DIR}/bin/qt-mt3.dll"
-LIBICONV_DLL="/j/MinGW/bin/libiconv-2.dll"
-MINGW_DLL="/j/MinGW/bin/mingwm10.dll"
+LIBICONV_DLL="${MINGW_DIR}/bin/libiconv-2.dll"
+MINGW_DLL="${MINGW_DIR}/bin/mingwm10.dll"
 
-DT2DV="$DTL_DIR/dt2dv.exe"
-DV2DT="$DTL_DIR/dv2dt.exe"
-CLEAN_DVI_PY="$CLEAN_DVI_DIR/clean_dvi.py"
+DT2DV="${DTL_DIR}/dt2dv.exe"
+DV2DT="${DTL_DIR}/dv2dt.exe"
+CLEAN_DVI_PY="${CLEAN_DVI_DIR}/clean_dvi.py"
 
 # Change this to 'mv -f' when you are confident that
 # the various sed scripts are working correctly.
@@ -242,12 +241,13 @@ build_lyx()
 	# Check the line endings of configure.ac
 	# The configure script will be unable to create config.h if it
 	# contains Win32-style line endings.
+	rm -f configure.ac
 	sed 's/
-$//' ${LYX_DIR}/configure.ac > configure.ac.$$
-	cmp -s ${LYX_DIR}/configure.ac configure.ac.$$ && {
+$//' config/configure.ac > configure.ac.$$
+	cmp -s config/configure.ac configure.ac.$$ && {
 	    rm -f configure.ac.$$
 	} || {
-	    mv -f configure.ac.$$ ${LYX_DIR}/configure.ac
+	    mv -f configure.ac.$$ config/configure.ac
 	    echo 'configure.ac has Win32-style line endings. Corrected' >&2
 	}
 
@@ -299,7 +299,7 @@ install_lyx()
 	}
 
 	make install || {
-	    echo "Failed to install $LYX_DIR" >&2
+	    echo "Failed to install" >&2
 	    exit 1
 	}
     )
@@ -311,9 +311,9 @@ test $# -ne 0 && LYX_VERSION_STR=$1
 check_dirs_exist || exit 1
 query_qt || exit 1
 check_files_exist || exit 1
-#build_dtl || exit 1
-#build_aspell || exit 1
-#build_aspell_dicts || exit 1
+build_dtl || exit 1
+build_aspell || exit 1
+build_aspell_dicts || exit 1
 build_lyx || exit 1
 install_lyx || exit 1
 # The end
