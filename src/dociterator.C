@@ -30,12 +30,12 @@ using std::endl;
 // We could be able to get rid of this if only every BufferView were
 // associated to a buffer on construction.
 DocIterator::DocIterator()
-	: inset_(0), boundary_(false)
+	: boundary_(false), inset_(0)
 {}
 
 
 DocIterator::DocIterator(InsetBase & inset)
-	: inset_(&inset), boundary_(false)
+	: boundary_(false), inset_(&inset)
 {}
 
 

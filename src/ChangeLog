@@ -1,3 +1,7 @@
+2005-07-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* dociterator.C (DocIterator): fix initialization order
+
 2005-07-17  Juergen Vigna  <jug@lyx.org>
 
 	* text2.C (cursorHome): 
