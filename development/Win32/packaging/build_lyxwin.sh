@@ -242,12 +242,13 @@ build_lyx()
 	# Check the line endings of configure.ac
 	# The configure script will be unable to create config.h if it
 	# contains Win32-style line endings.
+	rm -f ${LYX_DIR}/configure.ac
 	sed 's/
-$//' ${LYX_DIR}/configure.ac > configure.ac.$$
-	cmp -s ${LYX_DIR}/configure.ac configure.ac.$$ && {
+$//' ${LYX_DIR}/config/configure.ac > configure.ac.$$
+	cmp -s ${LYX_DIR}/config/configure.ac configure.ac.$$ && {
 	    rm -f configure.ac.$$
 	} || {
-	    mv -f configure.ac.$$ ${LYX_DIR}/configure.ac
+	    mv -f configure.ac.$$ ${LYX_DIR}/config/configure.ac
 	    echo 'configure.ac has Win32-style line endings. Corrected' >&2
 	}
 
