@@ -1,3 +1,7 @@
+2005-07-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QPrefs.C (setComboxFont): use fromqstr.
+
 2005-07-12  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.C (LQApplication d-tor): unlock the mutex if the Qt library

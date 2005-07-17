@@ -347,7 +347,7 @@ void setComboxFont(QComboBox * cb, string const & family,
 	string const & default_font_name = tmp.first;
 
 	for (int i = cb->count() - 1; i >= 0; --i) {
-		if (cb->text(i) == default_font_name) {
+		if (fromqstr(cb->text(i)) == default_font_name) {
 			cb->setCurrentItem(i);
 			return;
 		}
