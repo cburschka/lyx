@@ -1857,6 +1857,16 @@ def convert_french(file):
     if i != -1:
         file.header[i] = "\\language french"
 
+    # Change language in the document body
+        regexp = re.compile(r'^\\lang\s+frenchb')
+    i = 0
+    while 1:
+        i = find_re(file.body, regexp, i)
+        if i == -1:
+            break
+        file.body[i] = "\\language french"
+        i = i + 1
+
 
 def remove_paperpackage(file):
     i = find_token(file.header, '\\paperpackage', 0)
