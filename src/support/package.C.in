@@ -492,11 +492,11 @@ get_system_support_dir(string const & abs_binary,
 			return path;
 	}
 
-	// 2. Use the "LYX_DIR_13x" environment variable.
-	path = extract_env_var_dir("LYX_DIR_13x");
+	// 2. Use the "LYX_DIR_14x" environment variable.
+	path = extract_env_var_dir("LYX_DIR_14x");
 	if (!path.empty()) {
 		searched_dirs.push_back(path);
-		if (check_env_var_dir(path, chkconfig_ltx, "LYX_DIR_13x"))
+		if (check_env_var_dir(path, chkconfig_ltx, "LYX_DIR_14x"))
 			return path;
 	}
 
@@ -586,7 +586,7 @@ get_system_support_dir(string const & abs_binary,
 			    "having searched\n"
 			    "\t%1$s\n"
 			    "Try the '-sysdir' command line parameter or "
-			    "set the environment variable LYX_DIR_13x to "
+			    "set the environment variable LYX_DIR_14x to "
 			    "the LyX system directory containing the file "
 			    "`chkconfig.ltx'."),
 			  searched_dirs_str)
@@ -613,8 +613,8 @@ get_user_support_dir(string const & default_user_support_dir,
 	if (!path.empty())
 		return std::make_pair(path, explicit_userdir);
 
-	// 2. Use the LYX_USERDIR_13x environment variable.
-	path = extract_env_var_dir("LYX_USERDIR_13x");
+	// 2. Use the LYX_USERDIR_14x environment variable.
+	path = extract_env_var_dir("LYX_USERDIR_14x");
 	if (!path.empty())
 		return std::make_pair(path, explicit_userdir);
 

@@ -92,7 +92,7 @@ public:
 
 	/** The user_support directory was set explicitly using either
 	 *  the -userdir command line switch or
-	 *  the LYX_USERDIR_13x environment variable.
+	 *  the LYX_USERDIR_14x environment variable.
 	 */
 	bool explicit_user_support() const;
 
