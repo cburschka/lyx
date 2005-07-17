@@ -23,6 +23,7 @@
 
 #include <map>
 #include "support/lstrings.h"
+#include "support/environment.h"
 #include "encoding.h"
 #include "language.h"
 
@@ -30,6 +31,7 @@ using std::endl;
 using std::string;
 using std::map;
 using lyx::support::contains;
+using lyx::support::getEnv;
 
 
 namespace {
@@ -70,9 +72,21 @@ char const encode(string const & encoding, QString const & str)
 
 void initEncodings()
 {
-	const char * c = QTextCodec::locale();
-	string s = c;
-	if (contains(c, "UTF") || contains(c, "utf")) 
+	//const char * c = QTextCodec::locale();
+	//string s = c ? c : "";
+	// In this order, see support/filetools.C
+	string s = getEnv("LC_ALL");
+	if (s.empty()) {
+		s = getEnv("LC_MESSAGES");
+		if (s.empty()) {
+			s = getEnv("LANG");
+			if (s.empty())
+				s = "C";
+		}
+	}
+	
+	if (s.find("UTF") != string::npos || s.find("utf") != string::npos) 
+	//if (contains(c, "UTF") || contains(c, "utf"))
 		lyxerr << "Warning: this system's locale uses Unicode." << endl;
 
 	// strip off any encoding suffix
@@ -101,8 +115,9 @@ void initEncodings()
 	
 	// when no document open
 	// use the appropriate encoding for the system language
+	lyxerr << "Language code:" << s << endl;
 	for (Languages::const_iterator it=languages.begin(); it != languages.end(); ++it) {
-		lyxerr << it->second.code() << ":" << it->second.encodingStr() << ":" << it->second.encoding() << endl;
+		//lyxerr << it->second.code() << ":" << it->second.encodingStr() << ":" << it->second.encoding() << endl;
 		if (it->second.code() == s)
 			{
 				s = it->second.encodingStr();

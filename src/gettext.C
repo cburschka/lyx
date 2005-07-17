@@ -13,13 +13,14 @@
 
 #include "gettext.h"
 #include "messages.h"
-
+#include "support/environment.h"
 
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>
 #endif
 
 using std::string;
+using lyx::support::setEnv;
 
 
 namespace {
@@ -44,6 +45,8 @@ string const _(string const & str)
 
 void locale_init()
 {
+	// Disable, as otherwise it overrides everything else incl. the doc language
+	setEnv("LANGUAGE", "");
 #  ifdef HAVE_LC_MESSAGES
 	setlocale(LC_MESSAGES, "");
 #  endif

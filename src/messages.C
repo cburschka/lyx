@@ -12,11 +12,14 @@
 #include "debug.h"
 #include "messages.h"
 #include "support/filetools.h"
+#include "support/environment.h"
 #include "support/package.h"
 
 #include <boost/regex.hpp>
 
 using lyx::support::package;
+using lyx::support::getEnv;
+using lyx::support::setEnv;
 
 using std::string;
 
@@ -85,10 +88,10 @@ public:
 	{
 		if ( lang_.empty() )
 			lang_ = setlocale(LC_MESSAGES, NULL);
-		lyxerr << "Messages: language(" << lang_
-		//       << ") in dir(" << dir 
-		       << ")" << std::endl;
-		
+		// strip off any encoding suffix, i.e., assume 8-bit po files
+		string::size_type i = lang_.find(".");
+		lang_ = lang_.substr(0, i);
+		lyxerr << "Messages: language(" << lang_ << ")" << std::endl;
 	}
 
 	~Pimpl() {}
@@ -98,12 +101,31 @@ public:
 		if (m.empty())
 			return m;
 
-		string oldMSG = setlocale(LC_MESSAGES, NULL);
-		bool works = setlocale(LC_MESSAGES, lang_.c_str());
+		//string oldMSG = setlocale(LC_MESSAGES, NULL);
+		// In this order, see support/filetools.C:
+		string lang = getEnv("LC_ALL");
+		if (lang.empty()) {
+			lang = getEnv("LC_MESSAGES");
+			if (lang.empty()) {
+				lang = getEnv("LANG");
+				if (lang.empty())
+					lang = "C";
+			}
+		}
+		
+		char const * works = setlocale(LC_MESSAGES, lang_.c_str());
 		// CTYPE controls what getmessage thinks what encoding the po file uses
 		string oldCTYPE = setlocale(LC_CTYPE, NULL);
 		setlocale(LC_CTYPE, lang_.c_str());
-		bindtextdomain(PACKAGE, package().locale_dir().c_str());
+		errno = 0;
+		char const * c = bindtextdomain(PACKAGE, package().locale_dir().c_str());
+		int e = errno;
+		if (e) {
+			lyxerr << "Error code: " << errno << std::endl;
+			lyxerr << "Lang, mess: " << lang_ << " " << m << std::endl;
+			lyxerr << "Directory:  " << package().locale_dir() << std::endl;
+			lyxerr << "Rtn value:  " << c << std::endl;
+		}
 		textdomain(PACKAGE);
 		const char* msg = gettext(m.c_str());
 		string translated(works ? msg : m);
@@ -121,7 +143,7 @@ public:
 		boost::smatch sub;
 		if (regex_match(translated, sub, reg))
 			translated = sub.str(1);
-		setlocale(LC_MESSAGES, oldMSG.c_str());
+		setlocale(LC_MESSAGES, lang.c_str());
 		setlocale(LC_CTYPE, oldCTYPE.c_str());
 		return translated;
 	}
