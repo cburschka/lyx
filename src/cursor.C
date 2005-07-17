@@ -37,6 +37,7 @@
 
 #include "mathed/math_data.h"
 #include "mathed/math_inset.h"
+#include "mathed/math_scriptinset.h"
 #include "mathed/math_macrotable.h"
 
 #include "support/limited_stack.h"
@@ -915,10 +916,9 @@ bool LCursor::goUpDown(bool up)
 			MathScriptInset const * p = prevAtom()->asScriptInset();
 			if (p && p->has(up)) {
 				--pos();
-				push(inset());
-				idx() = up; // the superscript has index 1
+				push(*const_cast<MathScriptInset*>(p));
+				idx() = p->idxOfScript(up);
 				pos() = lastpos();
-				//lyxerr << "updown: handled by scriptinset to the left" << endl;
 				return true;
 			}
 		}
@@ -927,10 +927,9 @@ bool LCursor::goUpDown(bool up)
 		if (pos() != lastpos()) {
 			MathScriptInset const * p = nextAtom()->asScriptInset();
 			if (p && p->has(up)) {
-				push(inset());
-				idx() = up;
+				push(*const_cast<MathScriptInset*>(p));
+				idx() = p->idxOfScript(up);
 				pos() = 0;
-				//lyxerr << "updown: handled by scriptinset to the right" << endl;
 				return true;
 			}
 		}

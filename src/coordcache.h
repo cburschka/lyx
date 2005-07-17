@@ -30,12 +30,13 @@ public:
 		: x_(0), y_(0)
 	{}
 
-	Point(int x, int y) : x_(x), y_(y)
+	Point(int x, int y)
+		: x_(x), y_(y)
 	{
-		BOOST_ASSERT(x > -3000);
-		BOOST_ASSERT(x <  4000);
-		BOOST_ASSERT(y > -3000);
-		BOOST_ASSERT(y <  4000);
+		BOOST_ASSERT(x > -1000000);
+		BOOST_ASSERT(x <  1000000);
+		BOOST_ASSERT(y > -1000000);
+		BOOST_ASSERT(y <  1000000);
 	}
 
 	int x_, y_;
