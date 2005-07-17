@@ -919,9 +919,6 @@ void FormDocument::paper_apply(BufferParams & params)
 {
 	params.papersize = PAPER_SIZE(fl_get_choice(paper_->choice_papersize) - 1);
 
-	params.paperpackage =
-		PAPER_PACKAGES(fl_get_choice(paper_->choice_paperpackage) - 1);
-
 	params.use_geometry = fl_get_button(paper_->check_use_geometry);
 
 	if (fl_get_button(paper_->radio_landscape))
@@ -1231,7 +1228,6 @@ void FormDocument::paper_update(BufferParams const & params)
 		return;
 
 	fl_set_choice(paper_->choice_papersize, params.papersize + 1);
-	fl_set_choice(paper_->choice_paperpackage, params.paperpackage + 1);
 	fl_set_button(paper_->check_use_geometry, params.use_geometry);
 
 	int const paperchoice = fl_get_choice(paper_->choice_papersize);

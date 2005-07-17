@@ -118,8 +118,6 @@ public:
 	/* this are for the PaperLayout */
 	/// the papersize
 	PAPER_SIZE papersize;
-	/// a special paperpackage .sty-file
-	PAPER_PACKAGES paperpackage;
 	///
 	PAPER_ORIENTATION orientation;
 	/// use custom margins

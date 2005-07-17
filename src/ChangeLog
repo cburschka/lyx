@@ -1,3 +1,10 @@
+2005-07-18  José Matos  <jamatos@fc.up.pt>
+
+	* buffer.C:
+	* bufferparams.[Ch]:
+	* tex-strings.[Ch]: new file format, remove support for a4.sty,
+	a4wide.sty and a4widemargins.
+
 2005-07-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text2.C (cursorLeft): fix one of error

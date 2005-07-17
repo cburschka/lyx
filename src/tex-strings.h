@@ -22,8 +22,6 @@ extern char const * const string_quotes_language[];
 ///
 extern char const * const string_papersize[];
 ///
-extern char const * const string_paperpackages[];
-///
 extern char const * const string_orientation[];
 ///
 extern char const * const string_footnotekinds[];

@@ -347,14 +347,7 @@ void GDocument::update()
 	comboBoxTextSet(pagestylecombo_, params.pagestyle);
 	// *** End "Page" Page ***
 
-	// *** Begin "Margins" Page ***
-	int item = params.paperpackage;
-	if (params.use_geometry) {
-		item = 1;
-	} else if (item > 0) {
-		item = item + 1;
-	}
-	marginscombo_.set_active(item);
+	marginscombo_.set_active(0);
 
 	setWidgetsFromLength(
 		*(mtopspin_->get_adjustment()),
@@ -514,7 +507,6 @@ void GDocument::apply()
 	if (margin > 0) {
 		margin = margin - 1;
 	}
-	params.paperpackage = PAPER_PACKAGES(margin);
 
 	params.topmargin = getLengthFromWidgets(
 		*(mtopspin_->get_adjustment()),

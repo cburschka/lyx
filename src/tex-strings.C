@@ -32,11 +32,6 @@ char const * const string_papersize[] = {
 };
 
 
-char const * const string_paperpackages[] = {
-	"none", "a4", "a4wide", "widemarginsa4", ""
-};
-
-
 char const * const string_orientation[] = {
 	"portrait", "landscape", ""
 };

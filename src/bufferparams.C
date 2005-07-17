@@ -152,27 +152,6 @@ PaperSizeTranslator const & papersizetranslator()
 }
 
 
-// Paper packages
-typedef Translator<string, PAPER_PACKAGES> PaperPackagesTranslator;
-
-
-PaperPackagesTranslator const init_paperpackagestranslator()
-{
-	PaperPackagesTranslator translator(string_paperpackages[0], PACKAGE_NONE);
-	translator.addPair(string_paperpackages[1], PACKAGE_A4);
-	translator.addPair(string_paperpackages[2], PACKAGE_A4WIDE);
-	translator.addPair(string_paperpackages[3], PACKAGE_WIDEMARGINSA4);
-	return translator;
-}
-
-
-PaperPackagesTranslator const & paperpackagestranslator()
-{
-	static PaperPackagesTranslator translator = init_paperpackagestranslator();
-	return translator;
-}
-
-
 // Paper orientation
 typedef Translator<string, PAPER_ORIENTATION> PaperOrientationTranslator;
 
@@ -333,7 +312,6 @@ BufferParams::BufferParams()
 
 	/*  PaperLayout */
 	papersize = PAPER_DEFAULT;
-	paperpackage = PACKAGE_NONE;
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
 	use_amsmath = AMS_AUTO;
@@ -490,10 +468,6 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		string ppsize;
 		lex >> ppsize;
 		papersize = papersizetranslator().find(ppsize);
-	} else if (token == "\\paperpackage") {
-		string ppackage;
-		lex >> ppackage;
-		paperpackage = paperpackagestranslator().find(ppackage);
 	} else if (token == "\\use_geometry") {
 		lex >> use_geometry;
 	} else if (token == "\\use_amsmath") {
@@ -639,7 +613,6 @@ void BufferParams::writeFile(ostream & os) const
 	spacing().writeFile(os);
 
 	os << "\\papersize " << string_papersize[papersize]
-	   << "\n\\paperpackage " << string_paperpackages[paperpackage]
 	   << "\n\\use_geometry " << convert<string>(use_geometry)
 	   << "\n\\use_amsmath " << use_amsmath
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine)
@@ -746,7 +719,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 				     (papersize == PAPER_A3) ||
 				     (papersize == PAPER_CUSTOM);
 
-	if (!use_geometry && (paperpackage == PACKAGE_NONE)) {
+	if (!use_geometry) {
 		switch (papersize) {
 		case PAPER_A4:
 			clsoptions << "a4paper,";
@@ -865,26 +838,6 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		os << "\\usepackage[" << inputenc
 		   << "]{inputenc}\n";
 		texrow.newline();
-	}
-
-	// At the very beginning the text parameters.
-	if (paperpackage != PACKAGE_NONE) {
-		switch (paperpackage) {
-		case PACKAGE_NONE:
-			break;
-		case PACKAGE_A4:
-			os << "\\usepackage{a4}\n";
-			texrow.newline();
-			break;
-		case PACKAGE_A4WIDE:
-			os << "\\usepackage{a4wide}\n";
-			texrow.newline();
-			break;
-		case PACKAGE_WIDEMARGINSA4:
-			os << "\\usepackage[widemargins]{a4}\n";
-			texrow.newline();
-			break;
-		}
 	}
 
 	if (use_geometry || nonstandard_papersize) {

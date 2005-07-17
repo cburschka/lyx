@@ -394,8 +394,6 @@ void QDocument::apply()
 	if (margin > 0) {
 		margin = margin - 1;
 	}
-	params.paperpackage = PAPER_PACKAGES(margin);
-
 	MarginsModuleBase const * m(dialog_->marginsModule);
 
 	params.leftmargin = widgetsToLength(m->innerLE, m->innerUnit);
@@ -653,14 +651,8 @@ void QDocument::update_contents()
 
 	MarginsModuleBase * m = dialog_->marginsModule;
 
-	int item = params.paperpackage;
-	if (params.use_geometry) {
-		item = 1;
-	} else if (item > 0) {
-		item = item + 1;
-	}
-	m->marginCO->setCurrentItem(item);
-	dialog_->setCustomMargins(item);
+	m->marginCO->setCurrentItem(0);
+	dialog_->setCustomMargins(0);
 
 	lengthToWidgets(m->topLE, m->topUnit,
 		params.topmargin, defaultUnit);

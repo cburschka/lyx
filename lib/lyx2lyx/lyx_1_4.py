@@ -1858,6 +1858,33 @@ def convert_french(file):
         file.header[i] = "\\language french"
 
 
+def remove_paperpackage(file):
+    i = find_token(file.header, '\\paperpackage', 0)
+
+    if i == -1:
+        return
+
+    paperpackage = split(file.header[i])[1]
+
+    if paperpackage in ("a4", "a4wide", "widemarginsa4"):
+        j = find_token(file.header, '\\begin_preamble', 0)
+        conv = {"a4":"\\usepackage{a4}","a4wide": "\\usepackage{a4wide}",
+                "widemarginsa4": "\\usepackage[widemargins]{a4}"}
+        if j == -1:
+            # Add preamble
+            j = len(file.header) - 2
+            file.header[j:j]=["\\begin_preamble",
+                              conv[paperpackage],"\\end_preamble"]
+        else:
+            file.header[j+1:j+1] = conv[paperpackage]
+
+    del file.header[i]
+
+    i = find_token(file.header, '\\papersize', 0)
+    if i != -1:
+        file.header[i] = "\\papersize default"
+
+
 ##
 # Convertion hub
 #
@@ -1884,9 +1911,11 @@ convert = [[223, [insert_tracking_changes, add_end_header, remove_color_default,
            [239, [normalize_paragraph_params]],
            [240, [convert_output_changes]],
            [241, [convert_ert_paragraphs]],
-           [242, [convert_french]]]
+           [242, [convert_french]],
+           [243, [remove_paperpackage]]]
 
-revert =  [[241, []],
+revert =  [[242, []],
+           [241, []],
            [240, [revert_ert_paragraphs]],
            [239, [revert_output_changes]],
            [238, []],
