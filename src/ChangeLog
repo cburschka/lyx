@@ -1,3 +1,8 @@
+2005-07-17  Juergen Vigna  <jug@lyx.org>
+
+	* text.C (Delete, backspace): fixed so that paragraph with the
+	same layout can be merged by Delete/Backspace.
+
 2005-07-17  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* text.C (readParToken): fix spelling.

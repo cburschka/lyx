@@ -1549,12 +1549,22 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 void LyXText::Delete(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
+
 	if (cur.pos() != cur.lastpos()) {
 		recordUndo(cur, Undo::DELETE, cur.pit());
 		setCursorIntern(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 		backspace(cur);
+	} else if (cur.pit() != cur.lastpit()) {
+		LCursor scur = cur;
+
+		setCursorIntern(cur, cur.pit()+1, 0, false, false);
+		if (pars_[cur.pit()].layout() == pars_[scur.pit()].layout()) {
+			recordUndo(scur, Undo::DELETE, scur.pit());
+			backspace(cur);
+		} else {
+			setCursorIntern(scur, scur.pit(), scur.pos(), false, scur.boundary());
+		}
 	}
-	// should we do anything in an else branch?
 }
 
 
@@ -1617,6 +1627,7 @@ void LyXText::backspace(LCursor & cur)
 		// layout. I think it is a real bug of all other
 		// word processors to allow it. It confuses the user.
 		// Correction: Pasting is always allowed with standard-layout
+		// Correction (Jug 20050717): Remove check about alignment!
 		Buffer & buf = cur.buffer();
 		BufferParams const & bufparams = buf.params();
 		LyXTextClass const & tclass = bufparams.getLyXTextClass();
@@ -1624,8 +1635,8 @@ void LyXText::backspace(LCursor & cur)
 
 		if (cpit != tmppit
 		    && (pars_[cpit].layout() == pars_[tmppit].layout()
-		        || pars_[tmppit].layout() == tclass.defaultLayout())
-		    && pars_[cpit].getAlign() == pars_[tmppit].getAlign()) {
+		        || pars_[tmppit].layout() == tclass.defaultLayout()))
+		{
 			mergeParagraph(bufparams, pars_, cpit);
 
 			if (cur.pos() != 0 && pars_[cpit].isSeparator(cur.pos() - 1))
