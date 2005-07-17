@@ -800,7 +800,7 @@ void LyXTabular::recalculateMulticolumnsOfColumn(col_type column)
 	// always will have the whole rest of the width of the cell.
 	if (column > (columns_ - 2))
 		return;
-	for(row_type row = 0; row < rows_; ++row) {
+	for (row_type row = 0; row < rows_; ++row) {
 		int mc = cell_info[row][column].multicolumn;
 		int nmc = cell_info[row][column+1].multicolumn;
 		// we only have to update multicolumns which do not have this

@@ -190,16 +190,19 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	// update our idea of where we are
 	setPosCache(pi, x, y);
 
-	//BufferView * bv = pi.base.bv;
-	////bv->hideCursor();
-
 	text_.draw(pi, x + border_, y);
 
 	if (drawFrame_) {
 		int const w = text_.width() + 2 * border_;
 		int const a = text_.ascent() + border_;
 		int const h = a + text_.descent() + border_;
-		pi.pain.rectangle(x, y - a, w, h, frameColor());
+		int const ww = pi.base.bv->workWidth();
+		if (w > ww - 40)  {
+			pi.pain.line(0, y - a, ww, y - a, frameColor());
+			pi.pain.line(0, y - a + h, ww, y - a + h, frameColor());
+		} else {
+			pi.pain.rectangle(x, y - a, w, h, frameColor());
+		}
 	}
 }
 

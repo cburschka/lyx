@@ -501,7 +501,6 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			cur.undispatched();
-			resetPos(cur);
 		}
 		break;
 
@@ -514,7 +513,6 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			cur.undispatched();
-			resetPos(cur);
 		}
 		break;
 
@@ -527,12 +525,10 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				cur.idx() = tabular.getCellBelow(cur.idx());
 				cur.pit() = 0;
 				cur.pos() = 0;
-				resetPos(cur);
 			}
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 			cur.undispatched();
-			resetPos(cur);
 		}
 		break;
 
@@ -545,12 +541,10 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				cur.idx() = tabular.getCellAbove(cur.idx());
 				cur.pit() = cur.lastpit();
 				cur.pos() = cur.lastpos();
-				resetPos(cur);
 			}
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 			cur.undispatched();
-			resetPos(cur);
 		}
 		break;
 
@@ -567,7 +561,6 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 //		}
 //		cur.par() = 0;
 //		cur.pos() = 0;
-//		resetPos(cur);
 //		break;
 //	}
 //
@@ -587,7 +580,6 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 //		}
 //		cur.par() = cur.lastpar();
 //		cur.pos() = cur.lastpos();
-//		resetPos(cur);
 //		break;
 //	}
 
@@ -772,10 +764,10 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	default:
 		// we try to handle this event in the insets dispatch function.
 		cell(cur.idx())->dispatch(cur, cmd);
-		resetPos(cur);
 		break;
 	}
 
+	resetPos(cur);
 	InsetTabularMailer(*this).updateDialog(&cur.bv());
 }
 
