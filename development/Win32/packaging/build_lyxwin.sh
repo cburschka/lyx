@@ -38,15 +38,16 @@
 
 HOME="/home/Angus"
 
-# You may need to change these three variables.
+# You may need to change these four variables.
+MINGW_DIR="/j/MinGW"
 QT_DIR="${HOME}"/qt3
 ASPELL_DIR="${HOME}"/aspell-0.50.5
 # A space-separated string of directories
 # ASPELL_DICT_DIRS="${HOME}/aspell-en-0.50-2 ${HOME}/aspell-de-0.50-2 "
 ASPELL_DICT_DIRS="${HOME}/aspell-en-0.50-2"
-LYX_DIR="../../.."
 
 # Everything from here on down should be OK "as is".
+LYX_DIR="../../.."
 PACKAGING_DIR="$LYX_DIR/development/Win32/packaging"
 DTL_DIR="$PACKAGING_DIR/dtl"
 CLEAN_DVI_DIR="$PACKAGING_DIR"
@@ -58,12 +59,12 @@ LYX_INSTALL_DIR=installprefix
 
 # These are all installed in the final LyX package
 QT_DLL="${QT_DIR}/bin/qt-mt3.dll"
-LIBICONV_DLL="/j/MinGW/bin/libiconv-2.dll"
-MINGW_DLL="/j/MinGW/bin/mingwm10.dll"
+LIBICONV_DLL="${MINGW_DIR}/bin/libiconv-2.dll"
+MINGW_DLL="${MINGW_DIR}/bin/mingwm10.dll"
 
-DT2DV="$DTL_DIR/dt2dv.exe"
-DV2DT="$DTL_DIR/dv2dt.exe"
-CLEAN_DVI_PY="$CLEAN_DVI_DIR/clean_dvi.py"
+DT2DV="${DTL_DIR}/dt2dv.exe"
+DV2DT="${DTL_DIR}/dv2dt.exe"
+CLEAN_DVI_PY="${CLEAN_DVI_DIR}/clean_dvi.py"
 
 # Change this to 'mv -f' when you are confident that
 # the various sed scripts are working correctly.
