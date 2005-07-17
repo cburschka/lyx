@@ -21,6 +21,7 @@
 #include "debug.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
+#include "frontends/Painter.h"
 
 using std::string;
 using std::max;
@@ -79,7 +80,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		LyXFont font = pi.base.font;
 		augmentFont(font, "lyxtex");
 		int h = y - dim_.ascent() + 2 + tmpl_.ascent();
-		drawStr(pi, font, x + 3, h, name());
+		pi.pain.text(x + 3, h, name(), font);
 		int const w = mathed_string_width(font, name());
 		tmpl_.draw(pi, x + w + 12, h);
 		h += tmpl_.descent();
@@ -91,7 +92,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			c.draw(pi, x + ldim.wid, h);
 			char str[] = "#1:";
 			str[1] += static_cast<char>(i);
-			drawStr(pi, font, x + 3, h, str);
+			pi.pain.text(x + 3, h, str, font);
 			h += max(c.descent(), ldim.des) + 5;
 		}
 	} else {

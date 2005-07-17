@@ -1,3 +1,4 @@
+#if 0
 // -*- C++ -*-
 /**
  * \file math_binaryopinset.h
@@ -39,4 +40,5 @@ private:
 	///
 	mutable MetricsInfo mi_;
 };
+#endif
 #endif

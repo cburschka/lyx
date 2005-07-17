@@ -109,7 +109,7 @@ void MathSymbolInset::draw(PainterInfo & pi, int x, int y) const
 		x += static_cast<int>(0.0833*em+0.5);
 
 	FontSetChanger dummy(pi.base, sym_->inset.c_str());
-	drawStr(pi, pi.base.font, x, y - h_, sym_->draw);
+	pi.draw(x, y - h_, sym_->draw);
 }
 
 

@@ -83,6 +83,8 @@ public:
 	PainterInfo(BufferView * bv, Painter & pain);
 	///
 	void draw(int x, int y, char c);
+	///
+	void draw(int x, int y, std::string const & str);
 
 	///
 	MetricsBase base;

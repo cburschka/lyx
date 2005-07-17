@@ -59,6 +59,12 @@ void PainterInfo::draw(int x, int y, char c)
 }
 
 
+void PainterInfo::draw(int x, int y, std::string const & str)
+{
+	pain.text(x, y, str, base.font);
+}
+
+
 Styles smallerScriptStyle(Styles st)
 {
 	switch (st) {

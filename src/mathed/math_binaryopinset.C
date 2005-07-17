@@ -1,3 +1,4 @@
+#if 0
 /**
  * \file math_binaryopinset.C
  * This file is part of LyX, the document processor.
@@ -56,10 +57,10 @@ void MathBinaryOpInset::metrics(MetricsInfo & mi, Dimension & dim) const
 #endif
 
 
-void MathBinaryOpInset::draw(PainterInfo & pain, int x, int y) const
+void MathBinaryOpInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pain, x, y);
-	drawChar(pain, LM_TC_CONST, mi_, x + cell(0).width() , y, op_);
+	pi.draw(pain, LM_TC_CONST, mi_, x + cell(0).width() , y, op_);
 	cell(1).draw(pain, x + width() - cell(1).width(), y);
 }
 
@@ -74,3 +75,4 @@ void MathBinaryOpInset::normalize(NormalStream & os) const
 {
 	os << "[binop " << op_ << ' ' << cell(0) << ' ' << cell(1) << ']';
 }
+#endif

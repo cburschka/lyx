@@ -330,7 +330,7 @@ void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
 			FontSetChanger dummy(pi.base, "mathrm");
-			drawStr(pi, pi.base.font, xx, yy, nicelabel(row));
+			pi.draw(xx, yy, nicelabel(row));
 		}
 	}
 	setPosCache(pi, x, y);

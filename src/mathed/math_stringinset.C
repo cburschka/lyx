@@ -40,7 +40,7 @@ void MathStringInset::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathStringInset::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << str_ << "' code: " << code_ << endl;
-	drawStr(pi, pi.base.font, x, y, str_);
+	pi.draw(x, y, str_);
 }
 
 

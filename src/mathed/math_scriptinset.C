@@ -245,7 +245,7 @@ void MathScriptInset::draw(PainterInfo & pi, int x, int y) const
 	else {
 		nuc().setXY(x + dxx(), y);
 		if (editing(pi.base.bv))
-			drawStr(pi, pi.base.font, x + dxx(), y, ".");
+			pi.draw(x + dxx(), y, ".");
 	}
 	ScriptChanger dummy(pi.base);
 	if (hasUp())

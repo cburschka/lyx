@@ -16,6 +16,7 @@
 #include "math_support.h"
 #include "LColor.h"
 #include "support/std_ostream.h"
+#include "frontends/Painter.h"
 
 using std::max;
 using std::auto_ptr;
@@ -58,9 +59,9 @@ void MathBraceInset::draw(PainterInfo & pi, int x, int y) const
 	font.setColor(LColor::latex);
 	Dimension t;
 	mathed_char_dim(font, '{', t);
-	drawChar(pi, font, x, y, '{');
+	pi.pain.text(x, y, '{', font);
 	cell(0).draw(pi, x + t.wid, y);
-	drawChar(pi, font, x + t.wid + cell(0).width(), y, '}');
+	pi.pain.text(x + t.wid + cell(0).width(), y, '}', font);
 	drawMarkers(pi, x, y);
 }
 

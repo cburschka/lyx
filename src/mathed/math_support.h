@@ -34,11 +34,8 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 void mathed_string_dim(LyXFont const & font, std::string const & s, Dimension & dim);
 int mathed_string_width(LyXFont const &, std::string const & s);
 
-void drawStr(PainterInfo & pi,
-	LyXFont const &, int x, int y, std::string const & s);
 void drawStrRed(PainterInfo & pi, int x, int y, std::string const & s);
 void drawStrBlack(PainterInfo & pi, int x, int y, std::string const & s);
-void drawChar(PainterInfo & pi, LyXFont const & font, int x, int y, char c);
 
 void math_font_max_dim(LyXFont const &, int & asc, int & desc);
 

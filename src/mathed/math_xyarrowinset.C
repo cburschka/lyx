@@ -117,18 +117,18 @@ void MathXYArrowInset::draw(PainterInfo & pi, int x, int y) const
 		mathed_string_dim(pi.base.font, "target: ", lasc, ldes, lwid);
 
 		cell(0).draw(pi, x + lwid, y);
-		drawStr(pi, pi.base.font, x + 3, y, "target");
+		pi.base.text(x + 3, y, "target");
 		y += max(cell(0).descent(), ldes) + 5;
 
 		y += max(cell(1).ascent(), lasc) + 5;
 		cell(1).draw(pi, x + lwid, y);
-		drawStr(pi, pi.base.font, x + 3, y, "label");
+		pi.base.text(x + 3, y, "label");
 
 #endif
 
 	} else {
 
-		drawStr(pi, font_, x, y, "X");
+		pi.pain.text(x, y, "X");
 		MathArray const & s = sourceCell();
 		MathArray const & t = targetCell();
 		pi.pain.line(s.xm(), s.ym(), t.xm(), t.ym(), LColor::math);

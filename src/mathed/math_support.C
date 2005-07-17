@@ -480,14 +480,6 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 }
 
 
-// In the future maybe we use a better fonts renderer
-void drawStr(PainterInfo & pi, LyXFont const & font,
-	int x, int y, string const & str)
-{
-	pi.pain.text(x, y, str, font);
-}
-
-
 void drawStrRed(PainterInfo & pi, int x, int y, string const & str)
 {
 	LyXFont f = pi.base.font;
@@ -501,12 +493,6 @@ void drawStrBlack(PainterInfo & pi, int x, int y, string const & str)
 	LyXFont f = pi.base.font;
 	f.setColor(LColor::foreground);
 	pi.pain.text(x, y, str, f);
-}
-
-
-void drawChar(PainterInfo & pi, LyXFont const & font, int x, int y, char c)
-{
-	pi.pain.text(x, y, c, font);
 }
 
 
@@ -600,8 +586,6 @@ fontinfo fontinfos[] = {
 
 	// LyX internal usage
 	{"lyxtex",        inh_family, inh_series,
-	                  LyXFont::UP_SHAPE, LColor::latex},
-	{"lyxert",        LyXFont::TYPEWRITER_FAMILY, inh_series,
 	                  LyXFont::UP_SHAPE, LColor::latex},
 	{"lyxsymbol",     LyXFont::SYMBOL_FAMILY, inh_series,
 	                  inh_shape, LColor::math},
