@@ -1542,3 +1542,9 @@ void Buffer::buildMacros()
 		}
 	}
 }
+
+void Buffer::saveCursor(StableDocIterator cur, StableDocIterator anc)
+{
+	cursor_ = cur;
+	anchor_ = anc;
+}

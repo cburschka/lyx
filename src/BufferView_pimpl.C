@@ -323,8 +323,14 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
 			    << "[ b = " << b << "]" << endl;
 
-	if (buffer_)
+	if (buffer_) {
 		disconnectBuffer();
+		// Save the actual cursor position and anchor inside the
+		// buffer so that it can be restored in case we rechange
+		// to this buffer later on.
+		buffer_->saveCursor(cursor_.selectionBegin(),
+				    cursor_.selectionEnd());
+	}
 
 	// If we are closing current buffer, switch to the first in
 	// buffer list.
@@ -353,11 +359,18 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
 				    << "Buffer addr: " << buffer_ << endl;
 		connectBuffer(*buffer_);
-
 		cursor_.push(buffer_->inset());
 		cursor_.resetAnchor();
 		buffer_->text().init(bv_);
 		buffer_->text().setCurrentFont(cursor_);
+		if (buffer_->getCursor().size() > 0 &&
+		    buffer_->getAnchor().size() > 0)
+		{
+			cursor_.setCursor(buffer_->getAnchor().asDocIterator(&(buffer_->inset())));
+			cursor_.resetAnchor();
+			cursor_.setCursor(buffer_->getCursor().asDocIterator(&(buffer_->inset())));
+			cursor_.setSelection();
+		}
 
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)

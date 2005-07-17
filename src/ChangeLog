@@ -1,3 +1,13 @@
+2005-07-17  Juergen Vigna  <jug@lyx.org>
+
+	* BufferView_pimpl.C (setBuffer): save/restore the
+	cursor/selection when switching buffers
+
+	* buffer.h: 
+	* buffer.C (saveCursor): add saveDocumentIterators to save the
+	cursor when switching buffer.
+
+
 2005-07-17  Michael Schmitt  <michqel.schmitt@teststep.org>
 
 	* debug.C: fix typo

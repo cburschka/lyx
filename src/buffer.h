@@ -14,6 +14,8 @@
 
 #include "InsetList.h"
 
+#include "dociterator.h"
+
 #include "support/limited_stack.h"
 #include "support/types.h"
 
@@ -46,6 +48,7 @@ class ParIterator;
 class TeXErrors;
 class TexRow;
 class Undo;
+class StableDocIterator;
 
 
 /** The buffer object.
@@ -307,9 +310,10 @@ public:
 	/// Set by buffer_funcs' newFile.
 	void fully_loaded(bool);
 
-	///
+	/// Our main text (inside the top InsetText)
 	LyXText & text() const;
-	///
+
+	/// Our top InsetText!
 	InsetBase & inset() const;
 
 	//
@@ -323,6 +327,12 @@ public:
 	MacroData const & getMacro(std::string const & name) const;
 	///
 	void insertMacro(std::string const & name, MacroData const & data);
+	///
+	void saveCursor(StableDocIterator cursor, StableDocIterator anchor);
+	///
+	StableDocIterator getCursor() const { return cursor_; }
+	///
+	StableDocIterator getAnchor() const { return anchor_; }
 
 private:
 	/** Inserts a file into a document
@@ -338,6 +348,12 @@ private:
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
 	boost::scoped_ptr<Impl> const pimpl_;
+
+	/// Save the cursor Position on Buffer switch
+	/// this would not be needed if every Buffer would have
+	/// it's BufferView, this should be FIXED in future.
+	StableDocIterator cursor_;
+	StableDocIterator anchor_;
 };
 
 #endif
