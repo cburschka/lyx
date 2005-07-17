@@ -1296,8 +1296,10 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 		}
 	}
 
-	if (deleted)
+	if (deleted) {
+		updateCounters(cur.buffer());
 		return true;
+	}
 
 	if (pars_[old.pit()].stripLeadingSpaces())
 		cur.resetAnchor();

@@ -1,3 +1,8 @@
+2005-07-17  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text2.C: fix counter update for DEPM problem reported by
+	Georg Baum
+
 2005-07-17  Juergen Vigna  <jug@lyx.org>
 
 	* BufferView_pimpl.C (setBuffer): save/restore the
@@ -6,7 +11,6 @@
 	* buffer.h: 
 	* buffer.C (saveCursor): add saveDocumentIterators to save the
 	cursor when switching buffer.
-
 
 2005-07-17  Michael Schmitt  <michqel.schmitt@teststep.org>
 
