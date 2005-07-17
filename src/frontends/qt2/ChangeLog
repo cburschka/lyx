@@ -1,3 +1,7 @@
+2005-07-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QGraphics.C (update_contents): fix out of range access.
+
 2005-07-17  Michael Schmitt  <michqel.schmitt@teststep.org>
 
 	* ui/QBibtexDialogBase.ui: fix typo

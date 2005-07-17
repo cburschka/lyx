@@ -180,7 +180,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 
 		if (!hasLayout) {
 			buf.error(ErrorItem(_("Unknown layout"),
-			bformat(_("Layout '%1$s' does not exists in textclass '%2$s'\nTrying to use the default instead.\n"),
+			bformat(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n"),
 				layoutname, tclass.name()), par.id(), 0, par.size()));
 			layoutname = tclass.defaultLayoutName();
 		}

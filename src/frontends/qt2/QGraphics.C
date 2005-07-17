@@ -261,7 +261,8 @@ void QGraphics::update_contents()
 		dialog_->widthUnit->insertItem(unit_name_gui[i], -1);
 
 	if (!igp.scale.empty()
-		&& !float_equal(convert<double>(igp.scale), 0.0, 0.05)) {
+	    && !float_equal(convert<double>(igp.scale), 0.0, 0.05)
+	    || igp.width.empty()) {
 		dialog_->width->setText(toqstr(igp.scale));
 		dialog_->widthUnit->setCurrentItem(0);
 	} else {
