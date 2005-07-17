@@ -1,5 +1,9 @@
 2005-07-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* insetlabel.C (changeRefsIfUnique): remove unused code
+
+2005-07-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	bug 1375
 	* insetcommand.[hC]: rename set_label_ to updateButtonLabel_ and
 	reverse the logic. Make sure to set updateButtonLabel_ to true in all

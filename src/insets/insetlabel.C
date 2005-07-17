@@ -74,15 +74,12 @@ void changeRefsIfUnique(BufferView & bv, string const & from, string const & to)
 	ParIterator it = bv.buffer()->par_iterator_begin();
 	ParIterator end = bv.buffer()->par_iterator_end();
 	for ( ; it != end; ++it) {
-		bool changed_inset = false;
 		for (InsetList::iterator it2 = it->insetlist.begin();
 		     it2 != it->insetlist.end(); ++it2) {
 			if (it2->inset->lyxCode() == code) {
 				InsetCommand * inset = static_cast<InsetCommand *>(it2->inset);
 				if (inset->getContents() == from) {
 					inset->setContents(to);
-					//inset->setButtonLabel();
-					changed_inset = true;
 				}
 			}
 		}
