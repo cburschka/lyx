@@ -641,7 +641,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	// to create it. If the user says "no", then exit.
 	if (explicit_userdir &&
 	    Alert::prompt(
-		    _("Missing LyX support directory"),
+		    _("Missing user LyX directory"),
 		    bformat(_("You have specified a non-existent user "
 			      "LyX directory, %1$s.\n"
 			      "It is needed to keep your own configuration."),

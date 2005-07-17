@@ -270,7 +270,7 @@ Style Abstract
 End
 
 
-Style  Keywords
+Style Keywords
 	Margin                First_Dynamic
 	LatexType             Command
 	LatexName             keywords

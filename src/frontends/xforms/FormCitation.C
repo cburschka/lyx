@@ -191,7 +191,7 @@ void FormCitation::build()
 	setPrehandler(dialog_->browser_cite);
 #endif
 
-	str = _("All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX Bibliography\"). Move the ones you want to cite with the arrow buttons into the left browser window.");
+	str = _("All entries in the database you have loaded (via \"Insert->List / TOC->BibTeX Bibliography\"). Move the ones you want to cite with the arrow buttons into the left browser window.");
 	tooltips().init(dialog_->browser_bib, str);
 #if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
 	// Work-around xforms' bug; enable tooltips for browser widgets.
@@ -214,7 +214,7 @@ void FormCitation::build()
 	str = _("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib).");
 	tooltips().init(dialog_->check_force_uppercase, str);
 
-	str = _("Optional text which appears before the citation, e.g. \"see <Ref>\"");
+	str = _("Optional text which appears before the citation, e.g. \"see <Citation>\"");
 	tooltips().init(dialog_->input_before, str);
 
 	str = _("Optional text which appears after the citation, e.g. \"pp. 12\"");

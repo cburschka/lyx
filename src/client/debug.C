@@ -40,7 +40,7 @@ struct error_item {
 error_item errorTags[] = {
 	{ Debug::NONE,      "none",      N_("No debugging message")},
 	{ Debug::INFO,      "info",      N_("General information")},
-	{ Debug::DEBUG,  "debug",  N_("Developers general debug messages")},
+	{ Debug::DEBUG,     "debug",     N_("Developers' general debug messages")},
 	{ Debug::ANY,       "any",       N_("All debugging messages")}
 };
 

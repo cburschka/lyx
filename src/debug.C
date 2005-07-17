@@ -63,7 +63,7 @@ error_item errorTags[] = {
 	{ Debug::GRAPHICS,  "graphics",  N_("Graphics conversion and loading")},
 	{ Debug::CHANGES,   "changes",   N_("Change tracking")},
 	{ Debug::EXTERNAL,  "external",  N_("External template/inset messages")},
-	{ Debug::DEBUG,  "debug",  N_("Developers general debug messages")},
+	{ Debug::DEBUG,     "debug",     N_("Developers' general debug messages")},
 	{ Debug::ANY,       "any",       N_("All debugging messages")}
 };
 

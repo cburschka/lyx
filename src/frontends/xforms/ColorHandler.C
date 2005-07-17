@@ -155,7 +155,7 @@ GC LyXColorHandler::getGCForeground(string const & s)
 		}
 
 		lyxerr << bformat(
-			_("LyX: Couldn't allocate '%1$s' with (r,g,b)=%3$s.\n"),
+			_("LyX: Couldn't allocate '%1$s' with (r,g,b)=%2$s.\n"),
 			s, tostr(xcol));
 
 		lyxerr << bformat(

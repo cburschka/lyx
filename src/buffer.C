@@ -431,7 +431,7 @@ int Buffer::readHeader(LyXLex & lex)
 			continue;
 		}
 
-		lyxerr[Debug::PARSER] << "Handling header token: `"
+		lyxerr[Debug::PARSER] << "Handling document header token: `"
 				      << token << '\'' << endl;
 
 		string unknown = params().readToken(lex, token);
@@ -444,14 +444,14 @@ int Buffer::readHeader(LyXLex & lex)
 							   "%1$s %2$s\n"),
 							 token,
 							 lex.getString());
-				error(ErrorItem(_("Header error"), s,
+				error(ErrorItem(_("Document header error"), s,
 						-1, 0, 0));
 			}
 		}
 	}
 	if (begin_header_line) {
 		string const s = _("\\begin_header is missing");
-		error(ErrorItem(_("Header error"), s, -1, 0, 0));
+		error(ErrorItem(_("Document header error"), s, -1, 0, 0));
 	}
 	return unknown_tokens;
 }
@@ -466,7 +466,7 @@ bool Buffer::readDocument(LyXLex & lex)
 	string const token = lex.getString();
 	if (token != "\\begin_document") {
 		string const s = _("\\begin_document is missing");
-		error(ErrorItem(_("Header error"), s, -1, 0, 0));
+		error(ErrorItem(_("Document header error"), s, -1, 0, 0));
 	}
 
 	if (paragraphs().empty()) {
@@ -857,7 +857,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		texrow().newline();
 		texrow().newline();
 	}
-	lyxerr[Debug::INFO] << "lyx header finished" << endl;
+	lyxerr[Debug::INFO] << "lyx document header finished" << endl;
 	// There are a few differences between nice LaTeX and usual files:
 	// usual is \batchmode and has a
 	// special input@path to allow the including of figures
