@@ -150,7 +150,7 @@ Style Offprint
 	LatexName             offprints
 	Align                 Left
 	AlignPossible         Left
-	LeftMargin            "MNMOffprint Requests to:"
+	LeftMargin            "Offprint Requests to:M"
 	LabelType             Static
 	LabelString           "Offprint Requests to:"
 	LabelSep              M
@@ -173,7 +173,7 @@ Style Mail
 	LatexName             mail
 	Align                 Left
 	AlignPossible         Left
-	LeftMargin            "MJMCorrespondence to:"
+	LeftMargin            "Correspondence to:M"
 	LabelType             Static
 	LabelString           "Correspondence to:"
 	LabelSep              M
@@ -315,7 +315,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block
 	LabelType             static
-	LabelString           "         Abstract "
+	LabelString           "Abstract"
 	LabelSep              M
 	LabelBottomSep        0
 	Font

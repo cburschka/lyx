@@ -32,7 +32,8 @@ Style Special-section
 	Margin                Dynamic
 	LatexName             special-section
 	LabelType             Static
-	LabelString           "Special-section: "
+	LabelSep              M
+	LabelString           "Special-section:"
 	CommandDepth          3
 	LabelFont
 	  Size                Normal
@@ -46,7 +47,7 @@ Style AGU-journal
 	CopyStyle             Special-section
 	LatexParam            "journal-code=<$1> electronic-only=<yes>"
 	LatexName             AGU-journal
-	LabelString           "AGU-journal: "
+	LabelString           "AGU-journal:"
 	CommandDepth          3
 End
 
@@ -54,7 +55,7 @@ End
 Style Citation-number
 	CopyStyle             Special-section
 	LatexName             citation-number
-	LabelString           "Citation-number: "
+	LabelString           "Citation-number:"
 	CommandDepth          3
 End
 
@@ -63,7 +64,7 @@ End
 Style AGU-volume
 	CopyStyle             Special-section
 	LatexName             AGU-volume
-	LabelString           "AGU-volume: "
+	LabelString           "AGU-volume:"
 	CommandDepth          3
 End
 
@@ -71,7 +72,7 @@ End
 Style AGU-issue
 	CopyStyle             Special-section
 	LatexName             AGU-issue
-	LabelString           "AGU-issue: "
+	LabelString           "AGU-issue:"
 	CommandDepth          3
 End
 
@@ -79,7 +80,7 @@ End
 Style Copyright
 	CopyStyle             Special-section
 	LatexName             copyright
-	LabelString           "Copyright: "
+	LabelString           "Copyright:"
 	CommandDepth          3
 End
 
@@ -101,7 +102,7 @@ Style Index-term
 	CopyStyle             Special-section
 	LatexName             index-term
 	LabelIndent           MM
-	LabelString           "Index-term: "
+	LabelString           "Index-term:"
 	CommandDepth          4
 End
 
@@ -110,7 +111,7 @@ Style Cross-term
 	CopyStyle             Special-section
 	LatexName             cross-term
 	LabelIndent           MM
-	LabelString           "Cross-term: "
+	LabelString           "Cross-term:"
 	CommandDepth          4
 End
 
@@ -118,7 +119,7 @@ End
 Style Keywords
 	CopyStyle             Special-section
 	LatexName             keywords
-	LabelString           "Keywords: "
+	LabelString           "Keywords:"
 	CommandDepth          3
 End
 
@@ -126,7 +127,7 @@ End
 Style Affiliation
 	CopyStyle             Special-section
 	LatexName             affiliation
-	LabelString           "Affiliation: "
+	LabelString           "Affiliation:"
 	CommandDepth          3
 End
 
@@ -148,7 +149,7 @@ Style Supp-note
 	CopyStyle             Special-section
 	LatexName             sup-mat-note
 	LabelIndent           MM
-	LabelString           "Sup-mat-note: "
+	LabelString           "Sup-mat-note:"
 	CommandDepth          4
 End
 
@@ -157,7 +158,7 @@ Style Cite-other
 	CopyStyle             Special-section
 	LatexName             cite-other
 	LabelIndent           MM
-	LabelString           "Cite-other: "
+	LabelString           "Cite-other:"
 	CommandDepth          4
 End
 
@@ -183,7 +184,7 @@ Style Name
 	CopyStyle             Special-section
 	LatexName             name
 	LabelIndent           MM
-	LabelString           "Name: "
+	LabelString           "Name:"
 	CommandDepth          4
 End
 
@@ -196,7 +197,7 @@ End
 Style Received
 	CopyStyle             Special-section
 	LatexName             received
-	LabelString           "Received: "
+	LabelString           "Received:"
 	CommandDepth          3
 End
 
@@ -204,7 +205,7 @@ End
 Style Revised
 	CopyStyle             Special-section
 	LatexName             revised
-	LabelString           "Revised: "
+	LabelString           "Revised:"
 	CommandDepth          3
 End
 
@@ -212,7 +213,7 @@ End
 Style Accepted
 	CopyStyle             Special-section
 	LatexName             accepted
-	LabelString           "Accepted: "
+	LabelString           "Accepted:"
 	CommandDepth          3
 End
 
@@ -220,7 +221,7 @@ End
 Style Ident-line
 	CopyStyle             Special-section
 	LatexName             ident-line
-	LabelString           "Ident-line: "
+	LabelString           "Ident-line:"
 	CommandDepth          3
 End
 
@@ -228,7 +229,7 @@ End
 Style Runhead
 	CopyStyle             Special-section
 	LatexName             runhead
-	LabelString           "Runhead: "
+	LabelString           "Runhead:"
 	CommandDepth          3
 End
 
@@ -236,7 +237,7 @@ End
 Style Date
 	CopyStyle             Special-section
 	LatexName             published-online
-	LabelString           "Published-online: "
+	LabelString           "Published-online:"
 	CommandDepth          3
 End
 
@@ -261,7 +262,7 @@ End
 Style Citation
 	CopyStyle             Special-section
 	LatexName             citation
-	LabelString           "Citation: "
+	LabelString           "Citation:"
 	CommandDepth          3
 End
 
@@ -269,7 +270,7 @@ End
 Style Posting-order
 	CopyStyle             Special-section
 	LatexName             posting-order
-	LabelString           "Posting-order: "
+	LabelString           "Posting-order:"
 	CommandDepth          3
 End
 
@@ -277,7 +278,7 @@ End
 Style AGU-pages
 	CopyStyle             Special-section
 	LatexName             AGU-pages
-	LabelString           "AGU-pages: "
+	LabelString           "AGU-pages:"
 	CommandDepth          3
 End
 
@@ -285,7 +286,7 @@ End
 Style Words
 	CopyStyle             Special-section
 	LatexName             words
-	LabelString           "Words: "
+	LabelString           "Words:"
 	CommandDepth          3
 End
 
@@ -293,7 +294,7 @@ End
 Style Figures
 	CopyStyle             Special-section
 	LatexName             figures
-	LabelString           "Figures: "
+	LabelString           "Figures:"
 	CommandDepth          3
 End
 
@@ -301,7 +302,7 @@ End
 Style Tables
 	CopyStyle             Special-section
 	LatexName             tables
-	LabelString           "Tables: "
+	LabelString           "Tables:"
 	CommandDepth          3
 End
 
@@ -309,7 +310,7 @@ End
 Style Datasets
 	CopyStyle             Special-section
 	LatexName             datasets
-	LabelString           "Datasets: "
+	LabelString           "Datasets:"
 	CommandDepth          3
 End
 

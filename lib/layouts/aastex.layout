@@ -376,7 +376,8 @@ Style PlaceFigure
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           "Place Figure here: "
+	LabelSep              M
+	LabelString           "Place Figure here:"
 	Font
 	  Family              Roman
 	  Size                Normal
@@ -396,7 +397,8 @@ Style PlaceTable
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           "Place Table here: "
+	LabelSep              M
+	LabelString           "Place Table here:"
 	Font
 	  Family              Roman
 	  Size                Normal
@@ -475,7 +477,8 @@ Style NoteToEditor
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
-	LabelString           "Note to Editor: "
+	LabelSep              M
+	LabelString           "Note to Editor:"
 	Font
 	  Family              Roman
 	  Size                Normal
@@ -495,7 +498,8 @@ Style TableRefs
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
-	LabelString           "References. --- "
+        LabelSep              M
+	LabelString           "References. ---"
 	Font
 	  Family              Roman
 	  Size                Normal
@@ -514,7 +518,8 @@ Style TableComments
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
-	LabelString           "Note. --- "
+        LabelSep              M
+	LabelString           "Note. ---"
 	Font
 	  Family              Roman
 	  Size                Normal
@@ -550,7 +555,7 @@ Style FigCaption
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           "Fig. --- "
+	LabelString           "Fig. ---"
 	OptionalArgs          1
 End
 
