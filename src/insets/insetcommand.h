@@ -66,7 +66,11 @@ public:
 	///
 	std::string const & getContents() const { return p_.getContents(); }
 	///
-	void setContents(std::string const & c) { p_.setContents(c); }
+	void setContents(std::string const & c)
+        {
+                updateButtonLabel_ = true;
+                p_.setContents(c);
+        }
 	///
 	std::string const & getOptions() const { return p_.getOptions(); }
 	///
@@ -84,11 +88,23 @@ protected:
 	///
 	std::string const & getCmdName() const { return p_.getCmdName(); }
 	///
-	void setCmdName(std::string const & n) { p_.setCmdName(n); }
+	void setCmdName(std::string const & n)
+        {
+                updateButtonLabel_ = true;
+                p_.setCmdName(n);
+        }
 	///
-	void setOptions(std::string const & o) { p_.setOptions(o); }
+	void setOptions(std::string const & o)
+        {
+                updateButtonLabel_ = true;
+                p_.setOptions(o);
+        }
 	///
-	void setSecOptions(std::string const & s) { p_.setSecOptions(s); }
+	void setSecOptions(std::string const & s)
+        {
+                updateButtonLabel_ = true;
+                p_.setSecOptions(s);
+        }
 	///
 	void setParams(InsetCommandParams const &);
 	/// This should provide the text for the button
@@ -98,7 +114,7 @@ private:
 	///
 	InsetCommandParams p_;
 	std::string mailer_name_;
-	mutable bool set_label_;
+	mutable bool updateButtonLabel_;
 	mutable RenderButton button_;
 };
 

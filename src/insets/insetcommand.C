@@ -33,7 +33,7 @@ InsetCommand::InsetCommand(InsetCommandParams const & p,
 			   string const & mailer_name)
 	: p_(p.getCmdName(), p.getContents(), p.getOptions(), p.getSecOptions()),
 	  mailer_name_(mailer_name),
-	  set_label_(false)
+	  updateButtonLabel_(true)
 {}
 
 
@@ -46,8 +46,8 @@ InsetCommand::~InsetCommand()
 
 void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (!set_label_) {
-		set_label_ = true;
+ 	if (updateButtonLabel_) {
+		updateButtonLabel_ = false;
 		button_.update(getScreenLabel(*mi.base.bv->buffer()),
 			       editable() != NOT_EDITABLE);
 	}
@@ -66,7 +66,7 @@ void InsetCommand::draw(PainterInfo & pi, int x, int y) const
 void InsetCommand::setParams(InsetCommandParams const & p)
 {
 	p_ = p;
-	set_label_ = false;
+	updateButtonLabel_ = true;
 }
 
 
@@ -103,7 +103,7 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_REFRESH:
-		set_label_ = false;
+		updateButtonLabel_ = true;
 		break;
 
 	case LFUN_INSET_MODIFY: {
