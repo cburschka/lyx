@@ -993,7 +993,7 @@ bool LyXText::checkAndActivateInset(LCursor & cur, bool front)
 
 bool LyXText::cursorLeft(LCursor & cur)
 {
-	if (!cur.boundary() &&
+	if (!cur.boundary() && cur.pos() > 0 &&
 	    cur.textRow().pos() == cur.pos() &&
 	    !cur.paragraph().isLineSeparator(cur.pos()-1) &&
 	    !cur.paragraph().isNewline(cur.pos()-1))
