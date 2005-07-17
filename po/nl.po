@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2005-07-17 12:12+0200\n"
-"PO-Revision-Date: 2004-06-01 20:52+0200\n"
+"POT-Creation-Date: 2005-07-18 01:38+0200\n"
+"PO-Revision-Date: 2005-07-18 01:48+0200\n"
 "Last-Translator: Ivo Timmermans <>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1512,12 +1512,13 @@ msgstr "Afdrukken"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1054
 #, fuzzy
-msgid "Real name : |#R"
+msgid "Real name:|#R"
 msgstr "l Placering zwevers:|#L"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1072
-msgid "Email address : |#E"
-msgstr ""
+#, fuzzy
+msgid "Email address:|#E"
+msgstr "Klein"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1114
 #, fuzzy
@@ -2283,7 +2284,7 @@ msgstr "Kan niet printen"
 #: src/frontends/xforms/forms/form_tabular.fd:1638
 #: src/frontends/xforms/forms/form_tabular.fd:1656
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:60
-#: src/frontends/qt2/QDocument.C:166 src/text.C:2198
+#: src/frontends/qt2/QDocument.C:166 src/text.C:2208
 msgid "Double"
 msgstr "Dubbel"
 
@@ -2883,8 +2884,8 @@ msgid "&Dummy"
 msgstr ""
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:93
-#: src/buffer_funcs.C:119 src/buffer_funcs.C:160 src/bufferlist.C:84
+#: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
+#: src/buffer_funcs.C:117 src/buffer_funcs.C:158 src/bufferlist.C:84
 #: src/bufferlist.C:183 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:618
 #: src/lyxfunc.C:780 src/lyxfunc.C:1788 src/lyxvc.C:168
 #, fuzzy
@@ -3029,10 +3030,6 @@ msgid "Remove the selected database"
 msgstr ""
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:254
-#, fuzzy
-msgid "Chose a style file"
-msgstr "Kies sjabloon"
-
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:273
 #, fuzzy
 msgid "Choose a style file"
@@ -3260,7 +3257,7 @@ msgstr "Selecteren vorig teken"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:60
 #, fuzzy
-msgid "Change :"
+msgid "Change:"
 msgstr "Taal veranderen"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:75
@@ -3690,7 +3687,7 @@ msgstr "[niet getoond]"
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:244
 #: src/frontends/controllers/ControlExternal.C:226
 #: src/frontends/controllers/ControlGraphics.C:169
-#: src/frontends/gtk/GDocument.C:174 src/frontends/gtk/GDocument.C:660
+#: src/frontends/gtk/GDocument.C:174 src/frontends/gtk/GDocument.C:652
 #: src/frontends/qt2/QDocument.C:111 src/frontends/qt2/QDocumentDialog.C:273
 #: src/lyxfont.C:516
 msgid "Default"
@@ -4223,7 +4220,7 @@ msgid "Print as grey text"
 msgstr "g Alle blz.|#G"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:48
-#: src/frontends/qt2/QDocument.C:162 src/text.C:2192
+#: src/frontends/qt2/QDocument.C:162 src/text.C:2202
 msgid "Single"
 msgstr "Enkel"
 
@@ -4234,7 +4231,7 @@ msgstr ""
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:66
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:151
 #: src/frontends/gtk/GDocument.C:148 src/frontends/gtk/GDocument.C:175
-#: src/frontends/gtk/GDocument.C:661 src/frontends/qt2/QDocument.C:112
+#: src/frontends/gtk/GDocument.C:653 src/frontends/qt2/QDocument.C:112
 #: src/frontends/qt2/QDocument.C:168 src/frontends/qt2/QDocumentDialog.C:274
 #, fuzzy
 msgid "Custom"
@@ -5670,10 +5667,10 @@ msgstr "Bezig met opmaken document..."
 #: lib/layouts/aapaper.layout:33 lib/layouts/aastex.layout:48
 #: lib/layouts/amsart.layout:20 lib/layouts/amsbook.layout:21
 #: lib/layouts/apa.layout:23 lib/layouts/broadway.layout:177
-#: lib/layouts/chess.layout:26 lib/layouts/cl2emult.layout:124
+#: lib/layouts/chess.layout:26 lib/layouts/cl2emult.layout:125
 #: lib/layouts/cv.layout:13 lib/layouts/dtk.layout:30
 #: lib/layouts/egs.layout:16 lib/layouts/elsart.layout:48
-#: lib/layouts/foils.layout:29 lib/layouts/hollywood.layout:353
+#: lib/layouts/foils.layout:29 lib/layouts/hollywood.layout:359
 #: lib/layouts/kluwer.layout:32 lib/layouts/linuxdoc.layout:23
 #: lib/layouts/llncs.layout:22 lib/layouts/ltugboat.layout:29
 #: lib/layouts/manpage.layout:16 lib/layouts/memoir.layout:24
@@ -6016,20 +6013,20 @@ msgstr "selectie"
 #: lib/layouts/aapaper.layout:98 lib/layouts/aapaper.layout:194
 #: lib/layouts/aastex.layout:105 lib/layouts/aastex.layout:246
 #: lib/layouts/apa.layout:69 lib/layouts/cl2emult.layout:79
-#: lib/layouts/egs.layout:490 lib/layouts/elsart.layout:206
-#: lib/layouts/elsart.layout:222 lib/layouts/entcs.layout:82
-#: lib/layouts/foils.layout:150 lib/layouts/ijmpd.layout:71
-#: lib/layouts/kluwer.layout:258 lib/layouts/latex8.layout:99
-#: lib/layouts/linuxdoc.layout:297 lib/layouts/llncs.layout:240
-#: lib/layouts/ltugboat.layout:170 lib/layouts/ltugboat.layout:185
-#: lib/layouts/paper.layout:135 lib/layouts/revtex.layout:133
-#: lib/layouts/revtex4.layout:189 lib/layouts/siamltex.layout:142
-#: lib/layouts/spie.layout:71 lib/layouts/svglobal.layout:28
-#: lib/layouts/svjog.layout:33 lib/layouts/agu_stdtitle.inc:192
-#: lib/layouts/amsdefs.inc:124 lib/layouts/db_stdstruct.inc:10
-#: lib/layouts/scrclass.inc:215 lib/layouts/stdstruct.inc:11
-#: lib/layouts/stdstruct.inc:26 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:154
+#: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:490
+#: lib/layouts/elsart.layout:206 lib/layouts/elsart.layout:222
+#: lib/layouts/entcs.layout:82 lib/layouts/foils.layout:150
+#: lib/layouts/ijmpd.layout:71 lib/layouts/kluwer.layout:258
+#: lib/layouts/latex8.layout:99 lib/layouts/linuxdoc.layout:297
+#: lib/layouts/llncs.layout:240 lib/layouts/ltugboat.layout:170
+#: lib/layouts/ltugboat.layout:185 lib/layouts/paper.layout:135
+#: lib/layouts/revtex.layout:134 lib/layouts/revtex4.layout:190
+#: lib/layouts/siamltex.layout:142 lib/layouts/spie.layout:73
+#: lib/layouts/svglobal.layout:28 lib/layouts/svjog.layout:33
+#: lib/layouts/agu_stdtitle.inc:192 lib/layouts/amsdefs.inc:124
+#: lib/layouts/db_stdstruct.inc:10 lib/layouts/scrclass.inc:215
+#: lib/layouts/stdstruct.inc:11 lib/layouts/stdstruct.inc:26
+#: lib/layouts/svjour.inc:252 src/output_plaintext.C:154
 #, fuzzy
 msgid "Abstract"
 msgstr "Oostenrijks"
@@ -6042,9 +6039,9 @@ msgstr "Oostenrijks"
 #: lib/layouts/IEEEtran.layout:347 lib/layouts/aastex.layout:108
 #: lib/layouts/aastex.layout:283 lib/layouts/elsart.layout:63
 #: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:168
-#: lib/layouts/revtex4.layout:227 lib/layouts/siamltex.layout:168
+#: lib/layouts/revtex4.layout:229 lib/layouts/siamltex.layout:168
 #: lib/layouts/spie.layout:39 lib/layouts/agu_stdtitle.inc:119
-#: lib/layouts/amsdefs.inc:191
+#: lib/layouts/amsdefs.inc:191 lib/layouts/svjour.inc:273
 #, fuzzy
 msgid "Keywords"
 msgstr "k Sleutel:|#K"
@@ -6057,7 +6054,7 @@ msgstr "Inspringen"
 #: lib/layouts/IEEEtran.layout:370 lib/layouts/aa.layout:87
 #: lib/layouts/aa.layout:332 lib/layouts/aapaper.layout:104
 #: lib/layouts/aapaper.layout:211 lib/layouts/book.layout:20
-#: lib/layouts/book.layout:22 lib/layouts/cl2emult.layout:101
+#: lib/layouts/book.layout:22 lib/layouts/cl2emult.layout:102
 #: lib/layouts/cv.layout:142 lib/layouts/egs.layout:561
 #: lib/layouts/foils.layout:214 lib/layouts/ijmpd.layout:153
 #: lib/layouts/latex8.layout:122 lib/layouts/llncs.layout:261
@@ -6135,7 +6132,7 @@ msgstr ""
 
 #: lib/layouts/aa.layout:51 lib/layouts/aapaper.layout:53
 #: lib/layouts/aastex.layout:81 lib/layouts/egs.layout:179
-#: lib/layouts/hollywood.layout:130 lib/layouts/linuxdoc.layout:193
+#: lib/layouts/hollywood.layout:133 lib/layouts/linuxdoc.layout:193
 #: lib/layouts/manpage.layout:99 lib/layouts/paper.layout:103
 #: lib/layouts/scrlettr.layout:18 lib/layouts/scrlttr2.layout:17
 #: lib/layouts/agu_stdlists.inc:28 lib/layouts/db_stdlists.inc:25
@@ -6161,7 +6158,7 @@ msgstr "Regels"
 #: lib/layouts/docbook-book.layout:10 lib/layouts/docbook-chapter.layout:9
 #: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:245
 #: lib/layouts/elsart.layout:92 lib/layouts/entcs.layout:36
-#: lib/layouts/foils.layout:128 lib/layouts/hollywood.layout:339
+#: lib/layouts/foils.layout:128 lib/layouts/hollywood.layout:345
 #: lib/layouts/ijmpd.layout:35 lib/layouts/kluwer.layout:104
 #: lib/layouts/latex8.layout:32 lib/layouts/linuxdoc.layout:46
 #: lib/layouts/llncs.layout:99 lib/layouts/ltugboat.layout:133
@@ -6189,7 +6186,7 @@ msgstr ""
 #: lib/layouts/apa.layout:113 lib/layouts/broadway.layout:202
 #: lib/layouts/cl2emult.layout:56 lib/layouts/egs.layout:288
 #: lib/layouts/elsart.layout:112 lib/layouts/entcs.layout:46
-#: lib/layouts/foils.layout:136 lib/layouts/hollywood.layout:326
+#: lib/layouts/foils.layout:136 lib/layouts/hollywood.layout:332
 #: lib/layouts/ijmpd.layout:44 lib/layouts/kluwer.layout:160
 #: lib/layouts/linuxdoc.layout:255 lib/layouts/llncs.layout:176
 #: lib/layouts/ltugboat.layout:153 lib/layouts/paper.layout:123
@@ -6206,7 +6203,7 @@ msgstr ""
 #: lib/layouts/entcs.layout:56 lib/layouts/g-brief-en.layout:178
 #: lib/layouts/g-brief2.layout:798 lib/layouts/ijmpd.layout:54
 #: lib/layouts/kluwer.layout:178 lib/layouts/revtex.layout:115
-#: lib/layouts/revtex4.layout:153 lib/layouts/scrlettr.layout:151
+#: lib/layouts/revtex4.layout:154 lib/layouts/scrlettr.layout:151
 #: lib/layouts/scrlttr2.layout:44 lib/layouts/aapaper.inc:29
 #: lib/layouts/amsdefs.inc:149 lib/layouts/lyxmacros.inc:42
 msgid "Address"
@@ -6318,7 +6315,7 @@ msgid "Acknowledgements"
 msgstr ""
 
 #: lib/layouts/aastex.layout:117 lib/layouts/aastex.layout:443
-#: lib/layouts/aastex.layout:455 lib/layouts/cl2emult.layout:115
+#: lib/layouts/aastex.layout:455 lib/layouts/cl2emult.layout:116
 #: lib/layouts/egs.layout:575 lib/layouts/kluwer.layout:344
 #: lib/layouts/kluwer.layout:356 lib/layouts/llncs.layout:275
 #: lib/layouts/siamltex.layout:193 lib/layouts/amsdefs.inc:240
@@ -6531,8 +6528,9 @@ msgstr ""
 msgid "Remark."
 msgstr "r Opmerking:|#R"
 
-#: lib/layouts/amsart-plain.layout:116 lib/layouts/amsmaths-plain.inc:184
-#: lib/layouts/amsmaths.inc:409 lib/layouts/svjour.inc:362
+#: lib/layouts/amsart-plain.layout:116 lib/layouts/llncs.layout:308
+#: lib/layouts/amsmaths-plain.inc:184 lib/layouts/amsmaths.inc:409
+#: lib/layouts/svjour.inc:362
 msgid "Claim."
 msgstr ""
 
@@ -6717,7 +6715,8 @@ msgstr ""
 msgid "FourAuthors"
 msgstr ""
 
-#: lib/layouts/apa.layout:161 lib/layouts/agu_stdtitle.inc:130
+#: lib/layouts/apa.layout:161 lib/layouts/revtex4.layout:144
+#: lib/layouts/agu_stdtitle.inc:130
 #, fuzzy
 msgid "Affiliation:"
 msgstr "Aanhaling"
@@ -6748,8 +6747,8 @@ msgstr "Kolom"
 msgid "Acknowledgements:"
 msgstr ""
 
-#: lib/layouts/apa.layout:242 lib/layouts/revtex4.layout:199
-#: lib/layouts/spie.layout:86
+#: lib/layouts/apa.layout:242 lib/layouts/revtex4.layout:200
+#: lib/layouts/spie.layout:88
 msgid "Acknowledgments"
 msgstr ""
 
@@ -6807,7 +6806,7 @@ msgstr "Hoofddocument:"
 msgid "Dialogue"
 msgstr ""
 
-#: lib/layouts/broadway.layout:38 lib/layouts/hollywood.layout:213
+#: lib/layouts/broadway.layout:38 lib/layouts/hollywood.layout:216
 #, fuzzy
 msgid "Narrative"
 msgstr "Negatief|#N"
@@ -6836,21 +6835,21 @@ msgstr ""
 msgid "AT RISE:"
 msgstr ""
 
-#: lib/layouts/broadway.layout:122 lib/layouts/hollywood.layout:146
+#: lib/layouts/broadway.layout:122 lib/layouts/hollywood.layout:149
 #, fuzzy
 msgid "Speaker"
 msgstr "Spellingscontrole"
 
-#: lib/layouts/broadway.layout:136 lib/layouts/hollywood.layout:162
+#: lib/layouts/broadway.layout:136 lib/layouts/hollywood.layout:165
 #, fuzzy
 msgid "Parenthetical"
 msgstr "Matrix"
 
-#: lib/layouts/broadway.layout:148 lib/layouts/hollywood.layout:174
+#: lib/layouts/broadway.layout:148 lib/layouts/hollywood.layout:177
 msgid "("
 msgstr ""
 
-#: lib/layouts/broadway.layout:150 lib/layouts/hollywood.layout:176
+#: lib/layouts/broadway.layout:150 lib/layouts/hollywood.layout:179
 msgid "\tEnd)"
 msgstr ""
 
@@ -6859,7 +6858,7 @@ msgid "CURTAIN"
 msgstr ""
 
 #: lib/layouts/broadway.layout:215 lib/layouts/egs.layout:220
-#: lib/layouts/hollywood.layout:313 lib/layouts/lyxmacros.inc:62
+#: lib/layouts/hollywood.layout:319 lib/layouts/lyxmacros.inc:62
 msgid "Right Address"
 msgstr ""
 
@@ -6868,123 +6867,123 @@ msgstr ""
 msgid "Mainline"
 msgstr "Div."
 
-#: lib/layouts/chess.layout:38
+#: lib/layouts/chess.layout:39
 #, fuzzy
-msgid "Mainline: "
+msgid "Mainline:"
 msgstr "Div."
 
-#: lib/layouts/chess.layout:56
+#: lib/layouts/chess.layout:57
 #, fuzzy
 msgid "Variation"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:60
+#: lib/layouts/chess.layout:61
 #, fuzzy
-msgid "Variation: "
+msgid "Variation:"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:66
+#: lib/layouts/chess.layout:67
 #, fuzzy
 msgid "SubVariation"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:69
+#: lib/layouts/chess.layout:70
 #, fuzzy
-msgid "Subvariation: "
+msgid "Subvariation:"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:75
+#: lib/layouts/chess.layout:76
 #, fuzzy
 msgid "SubVariation2"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:78
+#: lib/layouts/chess.layout:79
 #, fuzzy
-msgid "Subvariation(2): "
+msgid "Subvariation(2):"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:84
+#: lib/layouts/chess.layout:85
 #, fuzzy
 msgid "SubVariation3"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:87
+#: lib/layouts/chess.layout:88
 #, fuzzy
-msgid "Subvariation(3): "
+msgid "Subvariation(3):"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:93
+#: lib/layouts/chess.layout:94
 #, fuzzy
 msgid "SubVariation4"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:96
+#: lib/layouts/chess.layout:97
 #, fuzzy
-msgid "Subvariation(4): "
+msgid "Subvariation(4):"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:102
+#: lib/layouts/chess.layout:103
 #, fuzzy
 msgid "SubVariation5"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:105
+#: lib/layouts/chess.layout:106
 #, fuzzy
-msgid "Subvariation(5): "
+msgid "Subvariation(5):"
 msgstr "Scheiding"
 
-#: lib/layouts/chess.layout:112
+#: lib/layouts/chess.layout:113
 msgid "HideMoves"
 msgstr ""
 
-#: lib/layouts/chess.layout:115
-msgid "HideMoves: "
+#: lib/layouts/chess.layout:118
+msgid "HideMoves:"
 msgstr ""
 
-#: lib/layouts/chess.layout:120
+#: lib/layouts/chess.layout:123
 msgid "ChessBoard"
 msgstr ""
 
-#: lib/layouts/chess.layout:124
+#: lib/layouts/chess.layout:127
 #, fuzzy
 msgid "[chessboard]"
 msgstr "k Sleutel:|#K"
 
-#: lib/layouts/chess.layout:133
+#: lib/layouts/chess.layout:136
 #, fuzzy
 msgid "BoardCentered"
 msgstr "n Centreren|#n"
 
-#: lib/layouts/chess.layout:138
+#: lib/layouts/chess.layout:141
 msgid "[centered board]"
 msgstr ""
 
-#: lib/layouts/chess.layout:148
+#: lib/layouts/chess.layout:151
 #, fuzzy
 msgid "HighLight"
 msgstr "Hoogte"
 
-#: lib/layouts/chess.layout:153
+#: lib/layouts/chess.layout:156
 #, fuzzy
-msgid "Highlights: "
+msgid "Highlights:"
 msgstr "Hoogte"
 
-#: lib/layouts/chess.layout:168
+#: lib/layouts/chess.layout:171
 #, fuzzy
 msgid "Arrow"
 msgstr "fout"
 
-#: lib/layouts/chess.layout:173
+#: lib/layouts/chess.layout:176
 #, fuzzy
-msgid "Arrow: "
+msgid "Arrow:"
 msgstr "fout"
 
-#: lib/layouts/chess.layout:179
+#: lib/layouts/chess.layout:182
 msgid "KnightMove"
 msgstr ""
 
-#: lib/layouts/chess.layout:184
-msgid "KnightMove: "
+#: lib/layouts/chess.layout:187
+msgid "KnightMove:"
 msgstr ""
 
 #: lib/layouts/cl2emult.layout:68 lib/layouts/llncs.layout:213
@@ -6992,11 +6991,6 @@ msgstr ""
 #, fuzzy
 msgid "Institute"
 msgstr "Aanhalingsteken invoegen"
-
-#: lib/layouts/cl2emult.layout:90
-#, fuzzy
-msgid "Abstract  "
-msgstr "Oostenrijks"
 
 #: lib/layouts/cv.layout:57
 #, fuzzy
@@ -7257,33 +7251,35 @@ msgid "Author Address"
 msgstr ""
 
 #: lib/layouts/elsart.layout:141 lib/layouts/g-brief-en.layout:183
-#: lib/layouts/g-brief2.layout:809 lib/layouts/scrlettr.layout:154
+#: lib/layouts/g-brief2.layout:809 lib/layouts/revtex.layout:127
+#: lib/layouts/revtex4.layout:157 lib/layouts/scrlettr.layout:154
 #: lib/layouts/scrlttr2.layout:61 lib/layouts/amsdefs.inc:160
 #, fuzzy
 msgid "Address:"
 msgstr "p Rij toevoegen|#p"
 
-#: lib/layouts/elsart.layout:149 lib/layouts/revtex4.layout:167
+#: lib/layouts/elsart.layout:149 lib/layouts/revtex4.layout:168
 #, fuzzy
 msgid "Author Email"
 msgstr "Oostenrijks"
 
-#: lib/layouts/elsart.layout:159
+#: lib/layouts/elsart.layout:159 lib/layouts/llncs.layout:236
 #, fuzzy
 msgid "Email:"
 msgstr "Klein"
 
-#: lib/layouts/elsart.layout:170 lib/layouts/revtex4.layout:181
+#: lib/layouts/elsart.layout:170 lib/layouts/revtex4.layout:182
 #, fuzzy
 msgid "Author URL"
 msgstr "Oostenrijks"
 
-#: lib/layouts/elsart.layout:181 lib/layouts/amsdefs.inc:187
+#: lib/layouts/elsart.layout:181 lib/layouts/revtex4.layout:186
+#: lib/layouts/amsdefs.inc:187
 #, fuzzy
 msgid "URL:"
 msgstr "URL..."
 
-#: lib/layouts/elsart.layout:193 lib/layouts/revtex4.layout:160
+#: lib/layouts/elsart.layout:193 lib/layouts/revtex4.layout:161
 #: lib/layouts/amsdefs.inc:198
 msgid "Thanks"
 msgstr ""
@@ -7365,7 +7361,7 @@ msgstr ""
 msgid "Keyword"
 msgstr "k Sleutel:|#K"
 
-#: lib/layouts/entcs.layout:108
+#: lib/layouts/entcs.layout:108 lib/layouts/svjour.inc:287
 #, fuzzy
 msgid "Key words:"
 msgstr "k Sleutel:|#K"
@@ -7442,34 +7438,40 @@ msgid "Right Footer:"
 msgstr "Koptekst"
 
 #: lib/layouts/foils.layout:236 lib/layouts/heb-article.layout:32
-#: lib/layouts/siamltex.layout:205
+#: lib/layouts/llncs.layout:418 lib/layouts/siamltex.layout:205
+#: lib/layouts/svjour.inc:481
 #, fuzzy
 msgid "Theorem #."
 msgstr "Oostenrijks"
 
 #: lib/layouts/foils.layout:250 lib/layouts/heb-article.layout:47
-#: lib/layouts/siamltex.layout:219
+#: lib/layouts/llncs.layout:357 lib/layouts/siamltex.layout:219
+#: lib/layouts/svjour.inc:418
 msgid "Lemma #."
 msgstr ""
 
 #: lib/layouts/foils.layout:257 lib/layouts/heb-article.layout:57
-#: lib/layouts/siamltex.layout:226
+#: lib/layouts/llncs.layout:322 lib/layouts/siamltex.layout:226
+#: lib/layouts/svjour.inc:379
 msgid "Corollary #."
 msgstr ""
 
-#: lib/layouts/foils.layout:264 lib/layouts/siamltex.layout:233
+#: lib/layouts/foils.layout:264 lib/layouts/llncs.layout:391
+#: lib/layouts/siamltex.layout:233 lib/layouts/svjour.inc:453
 #, fuzzy
 msgid "Proposition #."
 msgstr "   opties: "
 
 #: lib/layouts/foils.layout:271 lib/layouts/heb-article.layout:77
-#: lib/layouts/siamltex.layout:240
+#: lib/layouts/llncs.layout:336 lib/layouts/siamltex.layout:240
+#: lib/layouts/svjour.inc:393
 #, fuzzy
 msgid "Definition #."
 msgstr "Ontvanger:"
 
-#: lib/layouts/foils.layout:285 lib/layouts/siamltex.layout:254
-#: lib/layouts/amsdefs.inc:42
+#: lib/layouts/foils.layout:285 lib/layouts/llncs.layout:377
+#: lib/layouts/siamltex.layout:254 lib/layouts/amsdefs.inc:42
+#: lib/layouts/svjour.inc:439
 msgid "Proof."
 msgstr ""
 
@@ -7820,6 +7822,7 @@ msgstr "Commentaar:"
 
 # invoegen?
 #: lib/layouts/g-brief-en.layout:190 lib/layouts/g-brief2.layout:830
+#: lib/layouts/revtex.layout:107 lib/layouts/revtex4.layout:124
 #: lib/layouts/scrlettr.layout:175 lib/layouts/scrlttr2.layout:248
 #: lib/layouts/amsdefs.inc:113
 #, fuzzy
@@ -8172,76 +8175,56 @@ msgstr "negeren"
 msgid "(MORE)"
 msgstr ""
 
-#: lib/layouts/hollywood.layout:80
+#: lib/layouts/hollywood.layout:80 lib/layouts/hollywood.layout:92
 msgid "FADE IN:"
 msgstr ""
 
-#: lib/layouts/hollywood.layout:91
-msgid "FADE IN: "
-msgstr ""
-
-#: lib/layouts/hollywood.layout:100
+#: lib/layouts/hollywood.layout:101 lib/layouts/hollywood.layout:112
 msgid "INT."
 msgstr ""
 
-#: lib/layouts/hollywood.layout:110
-msgid "INT. "
-msgstr ""
-
-#: lib/layouts/hollywood.layout:114
+#: lib/layouts/hollywood.layout:116 lib/layouts/hollywood.layout:127
 msgid "EXT."
 msgstr ""
 
-#: lib/layouts/hollywood.layout:124
-msgid "EXT. "
-msgstr ""
-
-#: lib/layouts/hollywood.layout:189
+#: lib/layouts/hollywood.layout:192
 #, fuzzy
 msgid "Continuing"
 msgstr "Aanhaling"
 
-#: lib/layouts/hollywood.layout:201
+#: lib/layouts/hollywood.layout:204
 #, fuzzy
 msgid "(continuing)"
 msgstr "Aanhaling"
 
 # ??
-#: lib/layouts/hollywood.layout:228
+#: lib/layouts/hollywood.layout:231
 #, fuzzy
 msgid "Transition"
 msgstr "r Schaal aanpassen|#r"
 
-#: lib/layouts/hollywood.layout:241
+#: lib/layouts/hollywood.layout:244 lib/layouts/hollywood.layout:256
 msgid "TITLE OVER:"
 msgstr ""
 
-#: lib/layouts/hollywood.layout:252
-msgid "TITLE OVER: "
-msgstr ""
-
-#: lib/layouts/hollywood.layout:256
+#: lib/layouts/hollywood.layout:260
 msgid "INTERCUT"
 msgstr ""
 
-#: lib/layouts/hollywood.layout:267
-msgid "INTERCUT WITH: "
+#: lib/layouts/hollywood.layout:272
+msgid "INTERCUT WITH:"
 msgstr ""
 
-#: lib/layouts/hollywood.layout:271
+#: lib/layouts/hollywood.layout:276 lib/layouts/hollywood.layout:288
 msgid "FADE OUT"
 msgstr ""
 
-#: lib/layouts/hollywood.layout:282
-msgid "FADE OUT "
-msgstr ""
-
-#: lib/layouts/hollywood.layout:287
+#: lib/layouts/hollywood.layout:293
 #, fuzzy
 msgid "General"
 msgstr "Duits"
 
-#: lib/layouts/hollywood.layout:300
+#: lib/layouts/hollywood.layout:306
 #, fuzzy
 msgid "Scene"
 msgstr "Tweede"
@@ -8266,7 +8249,8 @@ msgstr "Opties"
 msgid "RunningTitle"
 msgstr "LaTeX draait..."
 
-#: lib/layouts/kluwer.layout:222
+#: lib/layouts/kluwer.layout:222 lib/layouts/llncs.layout:159
+#: lib/layouts/svjour.inc:178
 #, fuzzy
 msgid "Running title:"
 msgstr "LaTeX draait..."
@@ -8281,6 +8265,7 @@ msgid "Running author:"
 msgstr "Onbekende handeling"
 
 #: lib/layouts/kluwer.layout:290 lib/layouts/paper.layout:171
+#: lib/layouts/revtex4.layout:234 lib/layouts/spie.layout:46
 #: lib/layouts/agu_stdtitle.inc:122
 #, fuzzy
 msgid "Keywords:"
@@ -8314,11 +8299,6 @@ msgstr ""
 msgid "Running LaTeX Title"
 msgstr "LaTeX draait..."
 
-#: lib/layouts/llncs.layout:159 lib/layouts/svjour.inc:178
-#, fuzzy
-msgid "Running title: "
-msgstr "LaTeX draait..."
-
 #: lib/layouts/llncs.layout:168
 #, fuzzy
 msgid "TOC Title"
@@ -8326,7 +8306,7 @@ msgstr "f Bestand"
 
 #: lib/layouts/llncs.layout:172
 #, fuzzy
-msgid "TOC title: "
+msgid "TOC title:"
 msgstr "[geen bestand]"
 
 #: lib/layouts/llncs.layout:197 lib/layouts/svjour.inc:203
@@ -8336,7 +8316,7 @@ msgstr "Oostenrijks"
 
 #: lib/layouts/llncs.layout:201 lib/layouts/svjour.inc:207
 #, fuzzy
-msgid "Author Running: "
+msgid "Author Running:"
 msgstr "Oostenrijks"
 
 #: lib/layouts/llncs.layout:205
@@ -8345,13 +8325,9 @@ msgid "TOC Author"
 msgstr "Oostenrijks"
 
 #: lib/layouts/llncs.layout:209
-msgid "TOC Author: "
-msgstr ""
-
-#: lib/layouts/llncs.layout:236
 #, fuzzy
-msgid "Email: "
-msgstr "Klein"
+msgid "TOC Author:"
+msgstr "Oostenrijks"
 
 # invoegen?
 #: lib/layouts/llncs.layout:298
@@ -8359,61 +8335,36 @@ msgstr "Klein"
 msgid "Case #."
 msgstr "Plakken"
 
-#: lib/layouts/llncs.layout:308
-msgid "Claim. "
-msgstr ""
-
 #: lib/layouts/llncs.layout:315 lib/layouts/svjour.inc:372
-msgid "Conjecture #. "
+msgid "Conjecture #."
 msgstr ""
-
-#: lib/layouts/llncs.layout:322 lib/layouts/svjour.inc:379
-msgid "Corollary #. "
-msgstr ""
-
-#: lib/layouts/llncs.layout:336 lib/layouts/svjour.inc:393
-#, fuzzy
-msgid "Definition #. "
-msgstr "Ontvanger:"
 
 #: lib/layouts/llncs.layout:343 lib/layouts/svjour.inc:400
 #, fuzzy
-msgid "Example #. "
+msgid "Example #."
 msgstr "Voorbeelden"
 
 #: lib/layouts/llncs.layout:350 lib/layouts/svjour.inc:407
-msgid "Exercise #. "
-msgstr ""
-
-#: lib/layouts/llncs.layout:357 lib/layouts/svjour.inc:418
-msgid "Lemma #. "
+msgid "Exercise #."
 msgstr ""
 
 #: lib/layouts/llncs.layout:363 lib/layouts/svjour.inc:425
 #, fuzzy
-msgid "Note #. "
+msgid "Note #."
 msgstr "Notitie"
 
 #: lib/layouts/llncs.layout:370 lib/layouts/svjour.inc:432
 #, fuzzy
-msgid "Problem #. "
+msgid "Problem #."
 msgstr "Dubbel"
-
-#: lib/layouts/llncs.layout:377 lib/layouts/svjour.inc:439
-msgid "Proof. "
-msgstr ""
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
 msgid "Property"
 msgstr ""
 
 #: lib/layouts/llncs.layout:384 lib/layouts/svjour.inc:446
-msgid "Property #. "
-msgstr ""
-
-#: lib/layouts/llncs.layout:391
 #, fuzzy
-msgid "Proposition #. "
+msgid "Property #."
 msgstr "   opties: "
 
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
@@ -8423,12 +8374,12 @@ msgstr "Oostenrijks"
 
 #: lib/layouts/llncs.layout:397 lib/layouts/svjour.inc:460
 #, fuzzy
-msgid "Question #. "
+msgid "Question #."
 msgstr "Oostenrijks"
 
 #: lib/layouts/llncs.layout:404 lib/layouts/svjour.inc:467
 #, fuzzy
-msgid "Remark #. "
+msgid "Remark #."
 msgstr "r Opmerking:|#R"
 
 #: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:471
@@ -8438,13 +8389,8 @@ msgstr "Roteren"
 
 #: lib/layouts/llncs.layout:411 lib/layouts/svjour.inc:474
 #, fuzzy
-msgid "Solution #. "
+msgid "Solution #."
 msgstr "Roteren"
-
-#: lib/layouts/llncs.layout:418 lib/layouts/svjour.inc:481
-#, fuzzy
-msgid "Theorem #. "
-msgstr "Oostenrijks"
 
 #: lib/layouts/memoir.layout:74
 msgid "Chapterprecis"
@@ -8478,58 +8424,32 @@ msgstr ""
 msgid "Institution"
 msgstr "Literatuurverwijzing invoegen"
 
-# invoegen?
-#: lib/layouts/revtex.layout:107 lib/layouts/revtex4.layout:124
-#, fuzzy
-msgid "Date: "
-msgstr "Plakken"
-
-#: lib/layouts/revtex.layout:126 lib/layouts/revtex4.layout:156
-#, fuzzy
-msgid "Address: "
-msgstr "p Rij toevoegen|#p"
-
 #: lib/layouts/revtex4.layout:93
 #, fuzzy
 msgid "Preprint"
 msgstr "Afdrukken"
 
-#: lib/layouts/revtex4.layout:143
+#: lib/layouts/revtex4.layout:164 lib/layouts/amsdefs.inc:201
 #, fuzzy
-msgid "Affiliation: "
-msgstr "Aanhaling"
-
-#: lib/layouts/revtex4.layout:163
-#, fuzzy
-msgid "Thanks: "
+msgid "Thanks:"
 msgstr "Pagina's:"
 
-#: lib/layouts/revtex4.layout:171
-msgid "Electronic Address: "
+#: lib/layouts/revtex4.layout:172
+msgid "Electronic Address:"
 msgstr ""
 
-#: lib/layouts/revtex4.layout:185
-#, fuzzy
-msgid "URL: "
-msgstr "URL..."
-
-#: lib/layouts/revtex4.layout:207
+#: lib/layouts/revtex4.layout:208
 msgid "acknowledgments"
 msgstr ""
 
-#: lib/layouts/revtex4.layout:217
+#: lib/layouts/revtex4.layout:218
 msgid "PACS"
 msgstr ""
 
-#: lib/layouts/revtex4.layout:223
+#: lib/layouts/revtex4.layout:225
 #, fuzzy
-msgid "PACS number: "
+msgid "PACS number:"
 msgstr "Getal"
-
-#: lib/layouts/revtex4.layout:231 lib/layouts/spie.layout:45
-#, fuzzy
-msgid "Keywords: "
-msgstr "k Sleutel:|#K"
 
 #: lib/layouts/scrbook.layout:16
 msgid "\\arabic{chapter}"
@@ -8868,21 +8788,21 @@ msgstr ""
 msgid "<Visible Text Follows>"
 msgstr ""
 
-#: lib/layouts/spie.layout:52
+#: lib/layouts/spie.layout:53
 #, fuzzy
 msgid "Authorinfo"
 msgstr "Oostenrijks"
 
-#: lib/layouts/spie.layout:63
+#: lib/layouts/spie.layout:65
 #, fuzzy
-msgid "Authorinfo: "
+msgid "Authorinfo:"
 msgstr "Oostenrijks"
 
-#: lib/layouts/spie.layout:76
+#: lib/layouts/spie.layout:78
 msgid "ABSTRACT"
 msgstr ""
 
-#: lib/layouts/spie.layout:91
+#: lib/layouts/spie.layout:93
 msgid "ACKNOWLEDGMENTS"
 msgstr ""
 
@@ -9194,11 +9114,6 @@ msgstr "Klein"
 msgid "Key words and phrases:"
 msgstr "k Sleutel:|#K"
 
-#: lib/layouts/amsdefs.inc:201
-#, fuzzy
-msgid "Thanks:"
-msgstr "Pagina's:"
-
 #: lib/layouts/amsdefs.inc:205
 #, fuzzy
 msgid "Dedicatory"
@@ -9471,31 +9386,34 @@ msgid "\\Roman{section}."
 msgstr ""
 
 #: lib/layouts/numrevtex.inc:9
-msgid "    Appendix \\Alph{section}:"
-msgstr ""
+#, fuzzy
+msgid "Appendix \\Alph{section}:"
+msgstr "selectie"
 
 #: lib/layouts/numrevtex.inc:17
-msgid "   \\Alph{subsection}."
-msgstr ""
+#, fuzzy
+msgid "\\Alph{subsection}."
+msgstr "selectie"
 
 #: lib/layouts/numrevtex.inc:18
 #, fuzzy
-msgid "   \\arabic{subsection}."
+msgid "\\arabic{subsection}."
 msgstr "selectie"
 
 #: lib/layouts/numrevtex.inc:26
 #, fuzzy
-msgid "   \\arabic{subsubsection}."
+msgid "\\arabic{subsubsection}."
 msgstr "selectie"
 
 #: lib/layouts/numrevtex.inc:27
 #, fuzzy
-msgid "   \\alph{subsubsection}."
+msgid "\\alph{subsubsection}."
 msgstr "selectie"
 
 #: lib/layouts/numrevtex.inc:35 lib/layouts/numrevtex.inc:36
-msgid "   \\alph{paragraph}."
-msgstr ""
+#, fuzzy
+msgid "\\alph{paragraph}."
+msgstr "Selecteer de volgende alinea"
 
 #: lib/layouts/scrclass.inc:97
 #, fuzzy
@@ -9603,12 +9521,13 @@ msgid "Headnote"
 msgstr "Koptekst"
 
 #: lib/layouts/svjour.inc:112
-msgid "Headnote (optional): "
+msgid "Headnote (optional):"
 msgstr ""
 
 #: lib/layouts/svjour.inc:240
-msgid "Corr Author: "
-msgstr ""
+#, fuzzy
+msgid "Corr Author:"
+msgstr "Oostenrijks"
 
 #: lib/layouts/svjour.inc:244
 #, fuzzy
@@ -9617,23 +9536,8 @@ msgstr "Opties"
 
 #: lib/layouts/svjour.inc:248
 #, fuzzy
-msgid "Offprints: "
+msgid "Offprints:"
 msgstr "Opties"
-
-#: lib/layouts/svjour.inc:273
-#, fuzzy
-msgid " Keywords"
-msgstr "k Sleutel:|#K"
-
-#: lib/layouts/svjour.inc:287
-#, fuzzy
-msgid "Key words: "
-msgstr "k Sleutel:|#K"
-
-#: lib/layouts/svjour.inc:453
-#, fuzzy
-msgid "Proposition_#. "
-msgstr "   opties: "
 
 #: lib/languages:2
 msgid "Afrikaans"
@@ -10910,18 +10814,18 @@ msgid "Redo|R"
 msgstr "Alsnog uitvoeren"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:427 src/text3.C:820
+#: src/mathed/math_nestinset.C:427 src/text3.C:821
 msgid "Cut"
 msgstr "Knippen"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:432 src/text3.C:825
+#: src/mathed/math_nestinset.C:432 src/text3.C:826
 msgid "Copy"
 msgstr "Kopiëren"
 
 # invoegen?
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53 src/CutAndPaste.C:623
-#: src/mathed/math_nestinset.C:413 src/text3.C:804
+#: src/mathed/math_nestinset.C:413 src/text3.C:805
 msgid "Paste"
 msgstr "Plakken"
 
@@ -11245,11 +11149,11 @@ msgstr "Document opslaan?"
 msgid "Print document"
 msgstr "Document importeren"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1050
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1063
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1061
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1074
 msgid "Redo"
 msgstr "Alsnog uitvoeren"
 
@@ -11603,26 +11507,26 @@ msgstr "latex"
 msgid "Parse"
 msgstr "Plakken"
 
-#: src/BufferView_pimpl.C:388
+#: src/BufferView_pimpl.C:401
 msgid "Formatting document..."
 msgstr "Bezig met opmaken document..."
 
-#: src/BufferView_pimpl.C:703
+#: src/BufferView_pimpl.C:716
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "b Onder|#B"
 
-#: src/BufferView_pimpl.C:736
+#: src/BufferView_pimpl.C:749
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "b Onder|#B"
 
-#: src/BufferView_pimpl.C:795
+#: src/BufferView_pimpl.C:808
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Kies document ter invoeging"
 
-#: src/BufferView_pimpl.C:797 src/frontends/controllers/ControlBibtex.C:48
+#: src/BufferView_pimpl.C:810 src/frontends/controllers/ControlBibtex.C:48
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
@@ -11632,83 +11536,83 @@ msgstr "Kies document ter invoeging"
 msgid "Documents|#o#O"
 msgstr "Documenten"
 
-#: src/BufferView_pimpl.C:799 src/lyxfunc.C:1668 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:812 src/lyxfunc.C:1668 src/lyxfunc.C:1743
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Voorbeelden"
 
-#: src/BufferView_pimpl.C:804 src/lyx_cb.C:141 src/lyxfunc.C:1636
+#: src/BufferView_pimpl.C:817 src/lyx_cb.C:141 src/lyxfunc.C:1636
 #: src/lyxfunc.C:1673
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Document"
 
-#: src/BufferView_pimpl.C:814 src/lyxfunc.C:1683 src/lyxfunc.C:1761
+#: src/BufferView_pimpl.C:827 src/lyxfunc.C:1683 src/lyxfunc.C:1761
 #: src/lyxfunc.C:1775 src/lyxfunc.C:1791
 msgid "Canceled."
 msgstr "Afgebroken."
 
-#: src/BufferView_pimpl.C:824
+#: src/BufferView_pimpl.C:837
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Document invoegen"
 
-#: src/BufferView_pimpl.C:835
+#: src/BufferView_pimpl.C:848
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Document is als HTML weggeschreven naar bestand `"
 
-#: src/BufferView_pimpl.C:836
+#: src/BufferView_pimpl.C:849
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kon document niet invoegen"
 
-#: src/BufferView_pimpl.C:1053
+#: src/BufferView_pimpl.C:1066
 #, fuzzy
 msgid "No further undo information"
 msgstr "Niets meer ongedaan te maken"
 
-#: src/BufferView_pimpl.C:1064
+#: src/BufferView_pimpl.C:1077
 msgid "No further redo information"
 msgstr "Geen verdere Herhaal mogelijk"
 
-#: src/BufferView_pimpl.C:1193
+#: src/BufferView_pimpl.C:1206
 msgid "Mark off"
 msgstr "Merkteken uitgeschakeld"
 
-#: src/BufferView_pimpl.C:1200
+#: src/BufferView_pimpl.C:1213
 msgid "Mark on"
 msgstr "Merkteken ingechakeld"
 
-#: src/BufferView_pimpl.C:1207
+#: src/BufferView_pimpl.C:1220
 msgid "Mark removed"
 msgstr "Merkteken verwijderd"
 
-#: src/BufferView_pimpl.C:1210
+#: src/BufferView_pimpl.C:1223
 msgid "Mark set"
 msgstr "Merkteken geplaatst"
 
-#: src/BufferView_pimpl.C:1252
+#: src/BufferView_pimpl.C:1265
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Een fout gevonden"
 
-#: src/BufferView_pimpl.C:1255
+#: src/BufferView_pimpl.C:1268
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Kon document niet openen"
 
-#: src/BufferView_pimpl.C:1260
+#: src/BufferView_pimpl.C:1273
 #, fuzzy
 msgid "One word in selection."
 msgstr "Een fout gevonden"
 
-#: src/BufferView_pimpl.C:1262
+#: src/BufferView_pimpl.C:1275
 #, fuzzy
 msgid "One word in document."
 msgstr "Open subdocument "
 
-#: src/BufferView_pimpl.C:1265
+#: src/BufferView_pimpl.C:1278
 #, fuzzy
 msgid "Count words"
 msgstr "Aantal:"
@@ -12037,124 +11941,124 @@ msgstr "Inhoudsopgave"
 msgid "Native OS API not yet supported."
 msgstr ""
 
-#: src/buffer.C:232
+#: src/buffer.C:233
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/buffer.C:233
+#: src/buffer.C:234
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/buffer.C:390
+#: src/buffer.C:391
 #, fuzzy
 msgid "Unknown document class"
 msgstr "tot de gekozen documentklasse."
 
-#: src/buffer.C:391
+#: src/buffer.C:392
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:443 src/text.C:339
+#: src/buffer.C:444 src/text.C:338
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Onbekende handeling"
 
-#: src/buffer.C:447 src/buffer.C:454 src/buffer.C:469
+#: src/buffer.C:448 src/buffer.C:455 src/buffer.C:470
 #, fuzzy
-msgid "Header error"
+msgid "Document header error"
 msgstr "LaTeX-fout"
 
-#: src/buffer.C:453
+#: src/buffer.C:454
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/buffer.C:468
+#: src/buffer.C:469
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/buffer.C:476
+#: src/buffer.C:477
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Kan tekstklasse niet laden "
 
-#: src/buffer.C:598 src/buffer.C:607
+#: src/buffer.C:595 src/buffer.C:604
 #, fuzzy
 msgid "Document could not be read"
 msgstr "opmaakblad document ingesteld"
 
-#: src/buffer.C:599 src/buffer.C:608
+#: src/buffer.C:596 src/buffer.C:605
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr " alinea's konden niet omgevormd worden"
 
-#: src/buffer.C:616 src/buffer.C:682
+#: src/buffer.C:613 src/buffer.C:679
 #, fuzzy
 msgid "Document format failure"
 msgstr "Document"
 
-#: src/buffer.C:617
+#: src/buffer.C:614
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "Kon document niet openen"
 
-#: src/buffer.C:636
+#: src/buffer.C:633
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Omvormingsfouten!"
 
-#: src/buffer.C:637
+#: src/buffer.C:634
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/buffer.C:646
+#: src/buffer.C:643
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Geen waarschuwingen."
 
-#: src/buffer.C:647
+#: src/buffer.C:644
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/buffer.C:667
+#: src/buffer.C:664
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Omvormingsfouten!"
 
-#: src/buffer.C:668
+#: src/buffer.C:665
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/buffer.C:683
+#: src/buffer.C:680
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:1140
+#: src/buffer.C:1137
 msgid "Running chktex..."
 msgstr "chktex draait..."
 
-#: src/buffer.C:1153
+#: src/buffer.C:1150
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1154
+#: src/buffer.C:1151
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex-run geslaagd"
 
-#: src/buffer_funcs.C:74
+#: src/buffer_funcs.C:72
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -12162,12 +12066,12 @@ msgid ""
 "could not be read."
 msgstr "opmaakblad document ingesteld"
 
-#: src/buffer_funcs.C:76
+#: src/buffer_funcs.C:74
 #, fuzzy
 msgid "Could not read document"
 msgstr "Kon document niet openen"
 
-#: src/buffer_funcs.C:88
+#: src/buffer_funcs.C:86
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -12175,20 +12079,20 @@ msgid ""
 "Recover emergency save?"
 msgstr "Er bestaat een noodopslagversie van dit document!"
 
-#: src/buffer_funcs.C:91
+#: src/buffer_funcs.C:89
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:92
+#: src/buffer_funcs.C:90
 #, fuzzy
 msgid "&Recover"
 msgstr "r Omgekeerde vlg.|#R"
 
-#: src/buffer_funcs.C:92
+#: src/buffer_funcs.C:90
 msgid "&Load Original"
 msgstr ""
 
-#: src/buffer_funcs.C:114
+#: src/buffer_funcs.C:112
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -12196,36 +12100,36 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:117
+#: src/buffer_funcs.C:115
 #, fuzzy
 msgid "Load backup?"
 msgstr "zwart"
 
-#: src/buffer_funcs.C:118
+#: src/buffer_funcs.C:116
 #, fuzzy
 msgid "&Load backup"
 msgstr "zwart"
 
-#: src/buffer_funcs.C:118
+#: src/buffer_funcs.C:116
 msgid "Load &original"
 msgstr ""
 
-#: src/buffer_funcs.C:157
+#: src/buffer_funcs.C:155
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Wilt u het bestand openen via versiesturing?"
 
-#: src/buffer_funcs.C:159
+#: src/buffer_funcs.C:157
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Wilt u het bestand openen via versiesturing?"
 
-#: src/buffer_funcs.C:160
+#: src/buffer_funcs.C:158
 #, fuzzy
 msgid "&Retrieve"
 msgstr "r Omgekeerde vlg.|#R"
 
-#: src/buffer_funcs.C:192
+#: src/buffer_funcs.C:190
 #, fuzzy, c-format
 msgid ""
 "The specified document template\n"
@@ -12233,12 +12137,12 @@ msgid ""
 "could not be read."
 msgstr "opmaakblad document ingesteld"
 
-#: src/buffer_funcs.C:193
+#: src/buffer_funcs.C:191
 #, fuzzy
 msgid "Could not read template"
 msgstr "Kon niet draaien met bestand:"
 
-#: src/buffer_funcs.C:473
+#: src/buffer_funcs.C:471
 #, c-format
 msgid "%1$s #:"
 msgstr ""
@@ -12277,17 +12181,17 @@ msgstr " Opslaan is mislukt! Probeer..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Opslaan is mislukt! Helaas. Document verloren."
 
-#: src/bufferparams.C:456
+#: src/bufferparams.C:434
 #, c-format
 msgid "The document uses a missing TeX class \"%1$s\".\n"
 msgstr ""
 
-#: src/bufferparams.C:458
+#: src/bufferparams.C:436
 #, fuzzy
 msgid "Document class not available"
 msgstr "opmaakblad document ingesteld"
 
-#: src/bufferparams.C:459
+#: src/bufferparams.C:437
 msgid "LyX will not be able to produce output."
 msgstr ""
 
@@ -12308,7 +12212,7 @@ msgstr "Niets meer ongedaan te maken"
 
 #: src/client/debug.C:43 src/debug.C:66
 #, fuzzy
-msgid "Developers general debug messages"
+msgid "Developers' general debug messages"
 msgstr "(geen logbericht)"
 
 #: src/client/debug.C:44 src/debug.C:67
@@ -13218,17 +13122,17 @@ msgstr ""
 msgid "B4"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:670 src/frontends/qt2/QDocumentDialog.C:278
+#: src/frontends/gtk/GDocument.C:662 src/frontends/qt2/QDocumentDialog.C:278
 #, fuzzy
 msgid "Small margins"
 msgstr "Marges"
 
-#: src/frontends/gtk/GDocument.C:671 src/frontends/qt2/QDocumentDialog.C:279
+#: src/frontends/gtk/GDocument.C:663 src/frontends/qt2/QDocumentDialog.C:279
 #, fuzzy
 msgid "Very small margins"
 msgstr "Marges"
 
-#: src/frontends/gtk/GDocument.C:672 src/frontends/qt2/QDocumentDialog.C:280
+#: src/frontends/gtk/GDocument.C:664 src/frontends/qt2/QDocumentDialog.C:280
 #, fuzzy
 msgid "Very wide margins"
 msgstr "Marges"
@@ -13541,7 +13445,7 @@ msgstr "Toetsenkaarten"
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt2/QDocument.C:164 src/text.C:2195
+#: src/frontends/qt2/QDocument.C:164 src/text.C:2205
 #, fuzzy
 msgid "OneHalf"
 msgstr "Een-half"
@@ -14031,7 +13935,8 @@ msgid "LyX: X11 color %1$s allocated"
 msgstr "LyX: Benadering wordt gebruikt van de X11 kleur "
 
 #: src/frontends/xforms/ColorHandler.C:158
-msgid "LyX: Couldn't allocate '%1$s' with (r,g,b)=%3$s.\n"
+#, c-format
+msgid "LyX: Couldn't allocate '%1$s' with (r,g,b)=%2$s.\n"
 msgstr ""
 
 #: src/frontends/xforms/ColorHandler.C:162
@@ -14151,9 +14056,9 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:194
 msgid ""
-"All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTeX "
-"Bibliography\"). Move the ones you want to cite with the arrow buttons into "
-"the left browser window."
+"All entries in the database you have loaded (via \"Insert->List / TOC-"
+">BibTeX Bibliography\"). Move the ones you want to cite with the arrow "
+"buttons into the left browser window."
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:201
@@ -14181,7 +14086,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:217
-msgid "Optional text which appears before the citation, e.g. \"see <Ref>\""
+msgid ""
+"Optional text which appears before the citation, e.g. \"see <Citation>\""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:220
@@ -14337,7 +14243,7 @@ msgid ""
 "The `bullet' tab of the document dialog has been disabled"
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:1388
+#: src/frontends/xforms/FormDocument.C:1384
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Document tegen schrijven beveiligd. Stijl mag niet veranderd worden."
 
@@ -14673,13 +14579,13 @@ msgstr "Fout tijdens lezen "
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
-"used as the path to LyX's support directory."
+"used as the path to the user/library directory."
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:771
 msgid ""
-"Extra information for the Converter class, whether and how to parse the "
-"result, and various other things."
+"Extra information for the Converter class, e.g., whether and how to parse "
+"the result."
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:775
@@ -14719,7 +14625,7 @@ msgstr ""
 msgid ""
 "The command used to copy the file. $$i is the \"from\" file name and $$o is "
 "the \"to\" file name.\n"
-"$$s can be used as the path to LyX's support directory."
+"$$s can be used as the path to the user/library directory."
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:1031
@@ -15520,16 +15426,16 @@ msgstr "Ref: "
 msgid "Opened table"
 msgstr "Openen helpbestand"
 
-#: src/insets/insettabular.C:1529
+#: src/insets/insettabular.C:1521
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Meerkolom|#M"
 
-#: src/insets/insettabular.C:1530
+#: src/insets/insettabular.C:1522
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:222
+#: src/insets/insettext.C:225
 msgid "Opened Text Inset"
 msgstr "Tekst Inzet geopend"
 
@@ -15906,8 +15812,9 @@ msgid ""
 msgstr ""
 
 #: src/lyx_main.C:644
-msgid "Missing LyX support directory"
-msgstr ""
+#, fuzzy
+msgid "Missing user LyX directory"
+msgstr "LyX: Maak map aan "
 
 #: src/lyx_main.C:645
 #, c-format
@@ -16168,7 +16075,7 @@ msgstr "Aanmaken programma"
 msgid "ChkTeX"
 msgstr "Controleren TeX"
 
-#: src/lyxfunc.C:976 src/text3.C:1248
+#: src/lyxfunc.C:976 src/text3.C:1249
 msgid "Missing argument"
 msgstr "argument ontbreekt"
 
@@ -16689,7 +16596,7 @@ msgstr "Selecteren tot einde document"
 msgid " Macro: %1$s: "
 msgstr "Macro:"
 
-#: src/mathed/math_amsarrayinset.C:110 src/mathed/math_hullinset.C:1153
+#: src/mathed/math_amsarrayinset.C:110 src/mathed/math_hullinset.C:1173
 #: src/mathed/math_splitinset.C:73 src/mathed/math_substackinset.C:69
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -16723,41 +16630,32 @@ msgstr ""
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1026 src/mathed/math_hullinset.C:1035
+#: src/mathed/math_hullinset.C:1028 src/mathed/math_hullinset.C:1037
 #, fuzzy
 msgid "No number"
 msgstr "Getal"
 
-#: src/mathed/math_hullinset.C:1026 src/mathed/math_hullinset.C:1035
+#: src/mathed/math_hullinset.C:1028 src/mathed/math_hullinset.C:1037
 #, fuzzy
 msgid "Number"
 msgstr "Getal"
 
-#: src/mathed/math_hullinset.C:1050
-msgid "Enter new label to insert:"
-msgstr "Schijf nieuw label ter invoeging:"
-
-#: src/mathed/math_hullinset.C:1051
-#, fuzzy
-msgid "Enter label:"
-msgstr "Label invoegen"
-
-#: src/mathed/math_hullinset.C:1126
+#: src/mathed/math_hullinset.C:1146
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1136
+#: src/mathed/math_hullinset.C:1156
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1146
+#: src/mathed/math_hullinset.C:1166
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1249 src/text3.C:167
+#: src/mathed/math_hullinset.C:1269 src/text3.C:167
 msgid "Math editor mode"
 msgstr "Wiskunde editor modus"
 
@@ -16840,29 +16738,29 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Onbekende handeling"
 
-#: src/text.C:182
+#: src/text.C:181
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Onbekende handeling"
 
-#: src/text.C:183
+#: src/text.C:182
 #, c-format
 msgid ""
-"Layout '%1$s' does not exists in textclass '%2$s'\n"
+"Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:214
+#: src/text.C:213
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Onbekende handeling"
 
-#: src/text.C:338
+#: src/text.C:337
 #, fuzzy
 msgid "Unknown token"
 msgstr "Onbekende handeling"
 
-#: src/text.C:1172
+#: src/text.C:1171
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -16871,64 +16769,64 @@ msgstr ""
 "U kunt geen spatie invoegen aan het begin van een alinea.  Lees aub de "
 "Tutorial."
 
-#: src/text.C:1183
+#: src/text.C:1182
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "U kunt twee spaties niet zo typen.  Lees aub de Tutorial."
 
-#: src/text.C:2161
+#: src/text.C:2171
 #, fuzzy
 msgid "Change: "
 msgstr "Pagina's:"
 
-#: src/text.C:2165
+#: src/text.C:2175
 #, fuzzy
 msgid " at "
 msgstr " van "
 
-#: src/text.C:2176
+#: src/text.C:2186
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Lettertype:"
 
-#: src/text.C:2183
+#: src/text.C:2193
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Diepte:"
 
-#: src/text.C:2189
+#: src/text.C:2199
 msgid ", Spacing: "
 msgstr ", Wit: "
 
-#: src/text.C:2201
+#: src/text.C:2211
 msgid "Other ("
 msgstr "Overig ("
 
-#: src/text.C:2210
+#: src/text.C:2220
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Diepte:"
 
-#: src/text.C:2211
+#: src/text.C:2221
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Alineaopmaak ingesteld"
 
-#: src/text.C:2212
+#: src/text.C:2222
 #, fuzzy
 msgid ", Id: "
 msgstr ", Diepte:"
 
-#: src/text.C:2213
+#: src/text.C:2223
 #, fuzzy
 msgid ", Position: "
 msgstr "   opties: "
 
-#: src/text.C:2214
+#: src/text.C:2224
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:530
+#: src/text2.C:528
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -16936,38 +16834,38 @@ msgstr ""
 "Geen verandering lettertype gedefinieerd. Gebruik Teken onder het Stijl-menu "
 "om verandering lettertype te definieren."
 
-#: src/text2.C:572
+#: src/text2.C:570
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Niets te doen"
 
-#: src/text2.C:574
+#: src/text2.C:572
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan niet meer dan een alinea invoegen!"
 
-#: src/text3.C:719
+#: src/text3.C:720
 msgid "Unknown spacing argument: "
 msgstr "Onbekend spatiëringsargument: "
 
-#: src/text3.C:869
+#: src/text3.C:870
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/text3.C:887
+#: src/text3.C:888
 msgid "Layout "
 msgstr "l Opmaak "
 
-#: src/text3.C:888
+#: src/text3.C:889
 msgid " not known"
 msgstr " onbekend"
 
-#: src/text3.C:1353 src/text3.C:1365
+#: src/text3.C:1354 src/text3.C:1366
 #, fuzzy
 msgid "Character set"
 msgstr "h Tekencodering:|#H"
 
-#: src/text3.C:1498
+#: src/text3.C:1499
 msgid "Paragraph layout set"
 msgstr "Alineaopmaak ingesteld"
 
@@ -17003,517 +16901,3 @@ msgstr "Verticale afstanden"
 #, fuzzy
 msgid "protected"
 msgstr "Helaas."
-
-#, fuzzy
-#~ msgid "Keywords---"
-#~ msgstr "k Sleutel:|#K"
-
-#, fuzzy
-#~ msgid "         Abstract "
-#~ msgstr "Oostenrijks"
-
-#, fuzzy
-#~ msgid "Name: "
-#~ msgstr "Naam"
-
-#, fuzzy
-#~ msgid "Revised: "
-#~ msgstr "Ref: "
-
-#, fuzzy
-#~ msgid "Accepted: "
-#~ msgstr "accent"
-
-#, fuzzy
-#~ msgid "Dedication: "
-#~ msgstr "Dekoratie"
-
-#, fuzzy
-#~ msgid "Available citation keys"
-#~ msgstr "Verwijzing invoegen"
-
-#, fuzzy
-#~ msgid "Citation entry"
-#~ msgstr "Aanhaling"
-
-#, fuzzy
-#~ msgid "&Keyword"
-#~ msgstr "k Sleutel:|#K"
-
-#, fuzzy
-#~ msgid "Recieved:"
-#~ msgstr "r Omgekeerde vlg.|#R"
-
-#, fuzzy
-#~ msgid "Open/Close Float|l"
-#~ msgstr "Zwever gesloten"
-
-#, fuzzy
-#~ msgid "Index Entry...|I"
-#~ msgstr "Inspringen"
-
-#, fuzzy
-#~ msgid "Linebreak|L"
-#~ msgstr "Nieuwe regels|#N"
-
-#, fuzzy
-#~ msgid "AMS gather Environment"
-#~ msgstr "Uitlijning"
-
-#, fuzzy
-#~ msgid "AMS multline Environment"
-#~ msgstr "Uitlijning"
-
-#, fuzzy
-#~ msgid "Preamble...|r"
-#~ msgstr "LaTeX preamble"
-
-#, fuzzy
-#~ msgid "Label|L"
-#~ msgstr "l Label:|#l"
-
-#, fuzzy
-#~ msgid "AMS align Environment|A"
-#~ msgstr "Uitlijning"
-
-#, fuzzy
-#~ msgid "Split Environment"
-#~ msgstr "Uitlijning"
-
-#, fuzzy
-#~ msgid "LaTeX Log File...|L"
-#~ msgstr "LaTeX-Log"
-
-#, fuzzy
-#~ msgid "Table of Contents...|T"
-#~ msgstr "Inhoudsopgave"
-
-#, fuzzy
-#~ msgid "Goto Label|G"
-#~ msgstr "b Onder|#B"
-
-#, fuzzy
-#~ msgid "TeX Information...|I"
-#~ msgstr "Niets meer ongedaan te maken"
-
-#, fuzzy
-#~ msgid "LyX: LaTeX Log"
-#~ msgstr "LaTeX-Log"
-
-#, fuzzy
-#~ msgid "Build log"
-#~ msgstr "Aanmaken programma"
-
-#, fuzzy
-#~ msgid "No build log file found."
-#~ msgstr "Geen waarschuwingen."
-
-#, fuzzy
-#~ msgid "Couldn't find pixmap file: %s"
-#~ msgstr "Kan niet naar bestand schrijven"
-
-#, fuzzy
-#~ msgid "Couldn't create pixmap from file: %s"
-#~ msgstr "Kan niet naar bestand schrijven"
-
-#, fuzzy
-#~ msgid "LaTeX Information"
-#~ msgstr "Niets meer ongedaan te maken"
-
-#, fuzzy
-#~ msgid "&Label"
-#~ msgstr "tabel lijn"
-
-#, fuzzy
-#~ msgid "Reference:|#e"
-#~ msgstr "Verwijzing invoegen"
-
-#, fuzzy
-#~ msgid "Form1"
-#~ msgstr "drijvende delen"
-
-#, fuzzy
-#~ msgid "Cite Style"
-#~ msgstr "Type aanhalingstekens ingesteld"
-
-#, fuzzy
-#~ msgid "Form2"
-#~ msgstr "drijvende delen"
-
-#, fuzzy
-#~ msgid "The citation key"
-#~ msgstr "Literatuurverwijzing invoegen"
-
-#~ msgid "BibTeX"
-#~ msgstr "BibTeX"
-
-#, fuzzy
-#~ msgid "Box settings"
-#~ msgstr "Opties"
-
-#, fuzzy
-#~ msgid "Character"
-#~ msgstr "h Tekencodering:|#H"
-
-#, fuzzy
-#~ msgid "ERT inset display"
-#~ msgstr "[niet getoond]"
-
-#, fuzzy
-#~ msgid "Include File"
-#~ msgstr "Include"
-
-#, fuzzy
-#~ msgid "LaTeX pre-amble"
-#~ msgstr "LaTeX preamble"
-
-#, fuzzy
-#~ msgid "File Conversion"
-#~ msgstr "Omvormingsfouten!"
-
-#, fuzzy
-#~ msgid "&New"
-#~ msgstr "latex"
-
-#, fuzzy
-#~ msgid "Date Format"
-#~ msgstr "u Bijwerken|#U"
-
-#, fuzzy
-#~ msgid "Display insets"
-#~ msgstr "Plaatjes"
-
-#, fuzzy
-#~ msgid "File Formats"
-#~ msgstr "drijvende delen"
-
-#, fuzzy
-#~ msgid "LaTeX settings"
-#~ msgstr "Extra opties"
-
-#, fuzzy
-#~ msgid "Printer settings"
-#~ msgstr "streep minipagina"
-
-#~ msgid "Print"
-#~ msgstr "Afdrukken"
-
-#, fuzzy
-#~ msgid "&File"
-#~ msgstr "f Bestand"
-
-#, fuzzy
-#~ msgid "&Go to Reference"
-#~ msgstr "g Naar verwijzing|#G"
-
-#, fuzzy
-#~ msgid "Available references"
-#~ msgstr "Verwijzing invoegen"
-
-#, fuzzy
-#~ msgid "R&eferences in:"
-#~ msgstr "Verwijzing invoegen"
-
-# Ik beschouw dit &-teken als een slordigheid in de Engelse tekst..
-#, fuzzy
-#~ msgid "Search and replace"
-#~ msgstr "Zoeken en vervangen"
-
-#, fuzzy
-#~ msgid "Custom Export"
-#~ msgstr "Eigen papiergrootte"
-
-#, fuzzy
-#~ msgid "File:"
-#~ msgstr "Het bestand `"
-
-#, fuzzy
-#~ msgid "Table Of Contents"
-#~ msgstr "Inhoudsopgave"
-
-#, fuzzy
-#~ msgid "&Name"
-#~ msgstr "Naam"
-
-#, fuzzy
-#~ msgid "Wrap Options"
-#~ msgstr "Extra opties"
-
-#, fuzzy
-#~ msgid "Citation Reference...|C"
-#~ msgstr "g Naar verwijzing|#G"
-
-#, fuzzy
-#~ msgid "Cross Reference...|R"
-#~ msgstr "Kruisverwijzing invoegen"
-
-#, fuzzy
-#~ msgid "BibTeX Reference...|B"
-#~ msgstr "Verwijzingen gegenereerd door BibTeX"
-
-#, fuzzy
-#~ msgid "Refs|R"
-#~ msgstr "Ref: "
-
-#, fuzzy
-#~ msgid "Toggle user style"
-#~ msgstr "Eigennaamstijl aan/uit"
-
-#, fuzzy
-#~ msgid ""
-#~ "Filename can't contain any of these characters:\n"
-#~ "space, '#', '~', '$' or '%'."
-#~ msgstr "Bestandsnaam mag de volgende tekens niet bevatten:"
-
-#, fuzzy
-#~ msgid "LyX: Index Entry"
-#~ msgstr "Inspringen"
-
-#, fuzzy
-#~ msgid "LyX: Label"
-#~ msgstr "LaTeX-Log"
-
-#, fuzzy
-#~ msgid "LyX: Bibliography Item Settings"
-#~ msgstr "Literatuurverwijzing"
-
-#, fuzzy
-#~ msgid "LyX: Box Settings"
-#~ msgstr "Opties"
-
-#, fuzzy
-#~ msgid "LyX: Branch Settings"
-#~ msgstr "Literatuurverwijzing"
-
-#, fuzzy
-#~ msgid "LyX: Merge Changes"
-#~ msgstr "Verwijzing invoegen"
-
-#, fuzzy
-#~ msgid "LyX: Change Text Style"
-#~ msgstr "Document"
-
-#, fuzzy
-#~ msgid "LyX: Citation Reference"
-#~ msgstr "g Naar verwijzing|#G"
-
-#, fuzzy
-#~ msgid "LyX: Document Settings"
-#~ msgstr "Documenten"
-
-#, fuzzy
-#~ msgid "LyX: TeX Code Settings"
-#~ msgstr "Extra opties"
-
-#, fuzzy
-#~ msgid "LyX: External Material"
-#~ msgstr "x Extra|#X"
-
-#, fuzzy
-#~ msgid "LyX: Float Settings"
-#~ msgstr "Opties"
-
-#, fuzzy
-#~ msgid "LyX: Graphics"
-#~ msgstr "Plaatjes"
-
-#, fuzzy
-#~ msgid "LyX: Child Document"
-#~ msgstr "Document"
-
-#, fuzzy
-#~ msgid "LyX: Insert Delimiter"
-#~ msgstr "Begrenzing"
-
-#, fuzzy
-#~ msgid "LyX: Insert space"
-#~ msgstr "Trefwoord"
-
-#, fuzzy
-#~ msgid "LyX: Insert root"
-#~ msgstr "Trefwoord"
-
-#, fuzzy
-#~ msgid "LyX: Note Settings"
-#~ msgstr "Opties"
-
-#, fuzzy
-#~ msgid "LyX: Paragraph Settings"
-#~ msgstr "Literatuurverwijzing"
-
-#, fuzzy
-#~ msgid "LyX: Preferences"
-#~ msgstr "Verwijzing invoegen"
-
-#, fuzzy
-#~ msgid "New"
-#~ msgstr "latex"
-
-#, fuzzy
-#~ msgid "LyX: Print Document"
-#~ msgstr "Document"
-
-#, fuzzy
-#~ msgid "LyX: Cross-reference"
-#~ msgstr "Verwijzing invoegen"
-
-# Ik beschouw dit &-teken als een slordigheid in de Engelse tekst..
-#, fuzzy
-#~ msgid "LyX: Find and Replace"
-#~ msgstr "Zoeken en vervangen"
-
-#, fuzzy
-#~ msgid "LyX: Send Document to Command"
-#~ msgstr "Zend document naar opdracht"
-
-#, fuzzy
-#~ msgid "LyX: Show File"
-#~ msgstr "f Bestand"
-
-#, fuzzy
-#~ msgid "LyX: Spell-check Document"
-#~ msgstr "Controle compleet!"
-
-#, fuzzy
-#~ msgid "LyX: Table Settings"
-#~ msgstr "streep minipagina"
-
-#, fuzzy
-#~ msgid "LyX: Insert Table"
-#~ msgstr "Tabel invoegen"
-
-#, fuzzy
-#~ msgid "LyX: LaTeX Information"
-#~ msgstr "Niets meer ongedaan te maken"
-
-#, fuzzy
-#~ msgid "LyX: Thesaurus"
-#~ msgstr "Tabelformaat"
-
-#, fuzzy
-#~ msgid "LyX: Table of Contents"
-#~ msgstr "Inhoudsopgave"
-
-#, fuzzy
-#~ msgid "LyX: URL"
-#~ msgstr "Afdrukken"
-
-#, fuzzy
-#~ msgid "LyX: Text Wrap Settings"
-#~ msgstr "streep minipagina"
-
-#, fuzzy
-#~ msgid "BibTeX Database"
-#~ msgstr "Database:"
-
-#, fuzzy
-#~ msgid "Add the selected entry to the current citation reference."
-#~ msgstr "Literatuurverwijzing invoegen"
-
-#, fuzzy
-#~ msgid "Delete the selected entry from the current citation reference."
-#~ msgstr "Literatuurverwijzing invoegen"
-
-#, fuzzy
-#~ msgid "To:|#T"
-#~ msgstr "t Boven|#T"
-
-#, fuzzy
-#~ msgid "&To:"
-#~ msgstr "t Boven|#T"
-
-#, fuzzy
-#~ msgid "&to"
-#~ msgstr " van "
-
-#, fuzzy
-#~ msgid "&Default"
-#~ msgstr "Standaard"
-
-#, fuzzy
-#~ msgid "Set all borders"
-#~ msgstr "Randen aan|#S"
-
-#, fuzzy
-#~ msgid "Unset all borders"
-#~ msgstr "u Randen uit|#U"
-
-#, fuzzy
-#~ msgid "Oval Box|O"
-#~ msgstr "Hoofddocument:"
-
-#, fuzzy
-#~ msgid "Double Box|D"
-#~ msgstr "Dubbel"
-
-#, fuzzy
-#~ msgid "Could not convert image"
-#~ msgstr "Kan niet naar bestand schrijven"
-
-#, fuzzy
-#~ msgid "Failed. Will use %1$s instead."
-#~ msgstr "Mislukt. Zal "
-
-#~ msgid "Warning: could not determine path of binary."
-#~ msgstr "Waarschuwing: kon programmapad niet bepalen."
-
-#~ msgid "If you have problems, try starting LyX with an absolute path."
-#~ msgstr "Als u problemen heeft, probeer dan LyX te starten als volledig pad."
-
-#, fuzzy
-#~ msgid "LYX_DIR_14x environment variable no good."
-#~ msgstr "LYX_DIR_11x omgevingsvariabele deugt niet."
-
-#~ msgid "System directory set to: "
-#~ msgstr "Systeemmap verwijst naar: "
-
-#, fuzzy
-#~ msgid "LyX Warning! Couldn't determine system directory. "
-#~ msgstr "LyX Waarschuwing! Kon systeemdirectory niet bepalen."
-
-#, fuzzy
-#~ msgid "Try the '-sysdir' command line parameter or "
-#~ msgstr "Probeer de '-sysdir' commandoparameter, of"
-
-#, fuzzy
-#~ msgid ""
-#~ "set the environment variable LYX_DIR_14x to the LyX system directory "
-#~ msgstr "zet de omgevingsvariablele LYX_DIR_11x gelijk aan de LyX systeemmap"
-
-#~ msgid "containing the file `chkconfig.ltx'."
-#~ msgstr "bevat het bestand `chkconfig.ltx'."
-
-#, fuzzy
-#~ msgid "Using built-in default %1$s but expect problems."
-#~ msgstr "Gebruik ingebouwde standaardwaarden."
-
-#~ msgid "Expect problems."
-#~ msgstr "Verwacht problemen."
-
-#, fuzzy
-#~ msgid "Sys UI|#S#s"
-#~ msgstr "u Gebruik Include|#"
-
-#, fuzzy
-#~ msgid "User UI|#U#u"
-#~ msgstr "Gebruiker2|#2"
-
-#, fuzzy
-#~ msgid "Key maps|#K#k"
-#~ msgstr "Toetsenkaarten"
-
-#, fuzzy
-#~ msgid "BibTeX style files (*.bst)"
-#~ msgstr "Database:"
-
-#, fuzzy
-#~ msgid "Select a file to print to"
-#~ msgstr "Kies document ter invoeging"
-
-#, fuzzy
-#~ msgid "Select Database"
-#~ msgstr "Database:"
-
-#, fuzzy
-#~ msgid "Select BibTeX-Style"
-#~ msgstr "TeX-stijl aan/uit"
