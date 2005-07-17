@@ -117,10 +117,11 @@ void FontInfo::query()
 	if (queried)
 		return;
 
+	queried = true;
+
 	if (pattern.empty()) {
 		lyxerr << "Cannot use empty font name for font query."
 		       << endl;
-		queried = true;
 		return;
 	}
 
@@ -155,7 +156,6 @@ void FontInfo::query()
 		};
 		XFreeFontNames(list);
 	}
-	queried = true;
 }
 
 
