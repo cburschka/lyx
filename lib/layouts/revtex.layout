@@ -104,7 +104,7 @@ End
 
 Style Date
 	LabelType             Static
-	LabelString           "Date: "
+	LabelString           "Date:"
 	LabelFont
 	  Shape               Italic
 	  Size                Large
@@ -123,7 +123,8 @@ Style Address
 	Align                 Center
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
-	LabelString           "Address: "
+	LabelSep              M
+	LabelString           "Address:"
 	LabelFont
 	  Shape               Italic
 	EndFont

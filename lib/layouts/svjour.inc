@@ -109,7 +109,7 @@ Style Headnote
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           "Headnote (optional): "
+	LabelString           "Headnote (optional):"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -175,7 +175,7 @@ Style Running_LaTeX_Title
 	CopyStyle             Headnote
 	LatexName             titlerunning
 	LeftMargin            "Running title:xxx"
-	LabelString           "Running title: "
+	LabelString           "Running title:"
 End
 
 
@@ -204,7 +204,7 @@ Style Author_Running
 	CopyStyle             Headnote
 	LatexName             authorrunning
 	LeftMargin            "Author Running:xxx"
-	LabelString           "Author Running: "
+	LabelString           "Author Running:"
 End
 
 
@@ -237,7 +237,7 @@ Style Mail
 	CopyStyle             Headnote
 	LatexName             mail
 	LeftMargin            "Corr Author:xx."
-	LabelString           "Corr Author: "
+	LabelString           "Corr Author:"
 End
 
 
@@ -245,7 +245,7 @@ Style Offprints
 	CopyStyle             Headnote
 	LatexName             offprints
 	LeftMargin            "Offprints:xx."
-	LabelString           "Offprints: "
+	LabelString           "Offprints:"
 End
 
 
@@ -284,7 +284,7 @@ Style  Keywords
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           "Key words: "
+	LabelString           "Key words:"
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -369,14 +369,14 @@ End
 Style Conjecture
 	CopyStyle             Claim
 	LatexName             conjecture
-	LabelString           "Conjecture #. "
+	LabelString           "Conjecture #."
 End
 
 
 Style Corollary
 	CopyStyle             Claim
 	LatexName             corollary
-	LabelString           "Corollary #. "
+	LabelString           "Corollary #."
 	Font
 	  Shape               Italic
 	EndFont
@@ -390,21 +390,21 @@ End
 Style Definition
 	CopyStyle             Corollary
 	LatexName             definition
-	LabelString           "Definition #. "
+	LabelString           "Definition #."
 End
 
 
 Style Example
 	CopyStyle             Claim
 	LatexName             example
-	LabelString           "Example #. "
+	LabelString           "Example #."
 End
 
 
 Style Exercise
 	CopyStyle             Claim
 	LatexName             exercise
-	LabelString           "Exercise #. "
+	LabelString           "Exercise #."
 	LabelFont
 	  Shape               Up
 	  Series              Bold
@@ -415,68 +415,68 @@ End
 Style Lemma
 	CopyStyle             Corollary
 	LatexName             lemma
-	LabelString           "Lemma #. "
+	LabelString           "Lemma #."
 End
 
 
 Style Note
 	CopyStyle             Claim
 	LatexName             note
-	LabelString           "Note #. "
+	LabelString           "Note #."
 End
 
 
 Style Problem
 	CopyStyle             Exercise
 	LatexName             problem
-	LabelString           "Problem #. "
+	LabelString           "Problem #."
 End
 
 
 Style Proof
 	CopyStyle             Claim
 	LatexName             proof
-	LabelString           "Proof. "
+	LabelString           "Proof."
 End
 
 
 Style Property
 	CopyStyle             Claim
 	LatexName             property
-	LabelString           "Property #. "
+	LabelString           "Property #."
 End
 
 
 Style Proposition
 	CopyStyle             Claim
 	LatexName             proposition
-	LabelString           "Proposition_#. "
+	LabelString           "Proposition #."
 End
 
 
 Style Question
 	CopyStyle             Claim
 	LatexName             question
-	LabelString           "Question #. "
+	LabelString           "Question #."
 End
 
 
 Style Remark
 	CopyStyle             Claim
 	LatexName             remark
-	LabelString           "Remark #. "
+	LabelString           "Remark #."
 End
 
 
 Style Solution
 	CopyStyle             Exercise
 	LatexName             solution
-	LabelString           "Solution #. "
+	LabelString           "Solution #."
 End
 
 
 Style Theorem
 	CopyStyle             Corollary
 	LatexName             theorem
-	LabelString           "Theorem #. "
+	LabelString           "Theorem #."
 End

@@ -42,7 +42,8 @@ Style Keywords
 	LatexType             Command
 	LatexName             keywords
 	LabelType             Static
-	LabelString           "Keywords: "
+	LabelSep              M
+	LabelString           "Keywords:"
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -60,7 +61,8 @@ Style Authorinfo
 	AlignPossible         Block, Left, Right, Center
 	BottomSep             1.5
 	LabelType             Static
-	LabelString           "Authorinfo: "
+	LabelSep              M
+	LabelString           "Authorinfo:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic

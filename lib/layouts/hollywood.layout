@@ -88,7 +88,8 @@ Style FADE_IN:
 	AlignPossible         Left
 	KeepEmpty             1
 	LabelType             Static
-	LabelString           "FADE IN: "
+	LabelSep              M
+	LabelString           "FADE IN:"
 End
 
 
@@ -107,7 +108,8 @@ Style INT.
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           "INT. "
+	LabelSep              M
+	LabelString           "INT."
 End
 
 
@@ -121,7 +123,8 @@ Style EXT.
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
-	LabelString           "EXT. "
+	LabelSep              M
+	LabelString           "EXT."
 End
 
 
@@ -249,7 +252,8 @@ Style TITLE_OVER:
 	AlignPossible         Left
 	KeepEmpty             1
 	LabelType             Static
-	LabelString           "TITLE OVER: "
+	LabelSep              M
+	LabelString           "TITLE OVER:"
 End
 
 
@@ -264,7 +268,8 @@ Style INTERCUT
 	AlignPossible         Left
 	KeepEmpty             1
 	LabelType             Static
-	LabelString           "INTERCUT WITH: "
+	LabelSep              M
+	LabelString           "INTERCUT WITH:"
 End
 
 
@@ -279,7 +284,8 @@ Style FADE_OUT
 	AlignPossible         Left
 	KeepEmpty             1
 	LabelType             Static
-	LabelString           "FADE OUT "
+	LabelSep              M
+	LabelString           "FADE OUT"
 End
 
 

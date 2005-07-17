@@ -121,7 +121,7 @@ End
 
 Style Date
 	LabelType             Static
-	LabelString           "Date: "
+	LabelString           "Date:"
 	LabelFont
 	  Shape               Italic
 	  Size                Large
@@ -140,7 +140,8 @@ Style Affiliation
 	Align                 Center
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
-	LabelString           "Affiliation: "
+	LabelSep              M
+	LabelString           "Affiliation:"
 
 	LabelFont
 	  Shape               Italic
@@ -153,14 +154,14 @@ End
 Style Address
 	CopyStyle             Affiliation
 	LatexName             address
-	LabelString           "Address: "
+	LabelString           "Address:"
 End
 
 
 Style Thanks
 	CopyStyle             Affiliation
 	LatexName             thanks
-	LabelString           "Thanks: "
+	LabelString           "Thanks:"
 End
 
 
@@ -168,7 +169,7 @@ Style Author_Email
 	CopyStyle             Affiliation
 	PassThru              1
 	LatexName             email
-	LabelString           "Electronic Address: "
+	LabelString           "Electronic Address:"
 	TextFont
 	  Family              Typewriter
 	EndFont
@@ -182,7 +183,7 @@ Style Author_URL
 	CopyStyle             Author_Email
 	PassThru              1
 	LatexName             homepage
-	LabelString           "URL: "
+	LabelString           "URL:"
 End
 
 
@@ -220,7 +221,8 @@ Style PACS
 	InTitle               1
 	LatexName             pacs
 	LabelType             Static
-	LabelString           "PACS number: "
+	LabelSep              M
+	LabelString           "PACS number:"
 End
 
 
@@ -228,7 +230,8 @@ Style Keywords
 	CopyStyle             PACS
 	InTitle               1
 	Latexname             keywords
-	LabelString           "Keywords: "
+	LabelSep              M
+	LabelString           "Keywords:"
 End
 
 

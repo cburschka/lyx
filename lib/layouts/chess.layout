@@ -33,9 +33,10 @@ Style Mainline
 	LatexType             Command
 	LatexName             mainline
 	Margin                Static
-	LeftMargin            MMMMMM
+	LeftMargin            MMMMMMM
 	Labeltype             Static
-	LabelString           "Mainline: "
+	LabelSep              M
+	LabelString           "Mainline:"
 	Newline               0
 	PassThru              1
 	TopSep                0.0
@@ -57,8 +58,8 @@ Style Variation
 	CopyStyle             Mainline
 	LatexType             Command
 	LatexName             lyxvariation[1]
-	LabelString           "Variation: "
-	LeftMargin            MMMMMMMM
+	LabelString           "Variation:"
+	LeftMargin            MMMMMMMMM
 End
 
 
@@ -66,8 +67,8 @@ End
 Style SubVariation
 	CopyStyle             Variation
 	LatexName             lyxvariation[2]
-	LabelString           "Subvariation: "
-	LeftMargin            MMMMMMMMMMM
+	LabelString           "Subvariation:"
+	LeftMargin            MMMMMMMMMMMM
 End
 
 
@@ -75,8 +76,8 @@ End
 Style SubVariation2
 	CopyStyle             Variation
 	LatexName             lyxvariation[3]
-	LabelString           "Subvariation(2): "
-	LeftMargin            MMMMMMMMMMMMMM
+	LabelString           "Subvariation(2):"
+	LeftMargin            MMMMMMMMMMMMMMM
 End
 
 
@@ -84,8 +85,8 @@ End
 Style SubVariation3
 	CopyStyle             Variation
 	LatexName             lyxvariation[4]
-	LabelString           "Subvariation(3): "
-	LeftMargin            MMMMMMMMMMMMMMMMM
+	LabelString           "Subvariation(3):"
+	LeftMargin            MMMMMMMMMMMMMMMMMM
 End
 
 
@@ -93,8 +94,8 @@ End
 Style SubVariation4
 	CopyStyle             Variation
 	LatexName             lyxvariation[5]
-	LabelString           "Subvariation(4): "
-	LeftMargin            MMMMMMMMMMMMMMMMMMMM
+	LabelString           "Subvariation(4):"
+	LeftMargin            MMMMMMMMMMMMMMMMMMMMM
 End
 
 
@@ -102,8 +103,8 @@ End
 Style SubVariation5
 	CopyStyle             Variation
 	LatexName             lyxvariation[6]
-	LabelString           "Subvariation(5): "
-	LeftMargin            MMMMMMMMMMMMMMMMMMMMMMM
+	LabelString           "Subvariation(5):"
+	LeftMargin            MMMMMMMMMMMMMMMMMMMMMMMM
 End
 
 
@@ -112,7 +113,9 @@ End
 Style HideMoves
 	CopyStyle             Mainline
 	LatexName             hidemoves
-	LabelString           "HideMoves: "
+	LeftMargin            "HideMoves:M"
+	LabelSep              M
+	LabelString           "HideMoves:"
 End
 
 
@@ -134,7 +137,7 @@ Style BoardCentered
 	CopyStyle              Mainline
 	LatexType              Command
 	LatexName              [\showboard\]
-	LeftMargin             MMMMMMMMMMMMM
+	LeftMargin             MMMMMMMMMMMMMM
 	LabelString            "[centered board]"
 	KeepEmpty              1
 	LabelFont
@@ -149,8 +152,8 @@ Style HighLight
 	CopyStyle             Mainline
 	LatexType             Command
 	LatexName             lyxhighlight
-	LeftMargin            MMMMMMM
-	LabelString           "Highlights: "
+	LeftMargin            MMMMMMMM
+	LabelString           "Highlights:"
 	LabelFont
 	  Color               black
 	  Series              Bold
@@ -169,8 +172,8 @@ Style Arrow
 	CopyStyle             HighLight
 	LatexType             Command
 	LatexName             lyxprintarrow
-	LeftMargin            MMMMMMM
-	LabelString           "Arrow: "
+	LeftMargin            MMMMMMMM
+	LabelString           "Arrow:"
 End
 
 
@@ -180,8 +183,8 @@ Style KnightMove
 	CopyStyle             Arrow
 	LatexType             Command
 	LatexName             lyxknightmove
-	LeftMargin            MMMMMMM
-	LabelString           "KnightMove: "
+	LeftMargin            MMMMMMMM
+	LabelString           "KnightMove:"
 End
 
 Input article.layout

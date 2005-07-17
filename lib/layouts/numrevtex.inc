@@ -6,7 +6,7 @@ Style Section
 	LabelType             Counter
 	LabelCounter          section
 	LabelString           "\Roman{section}."
-	LabelStringAppendix   "    Appendix \Alph{section}:"
+	LabelStringAppendix   "Appendix \Alph{section}:"
 	TocLevel              1
 End
 
@@ -14,8 +14,8 @@ End
 Style Subsection
 	LabelType             Counter
 	LabelCounter          subsection
-	LabelString           "   \Alph{subsection}."
-	LabelStringAppendix   "   \arabic{subsection}."
+	LabelString           "\Alph{subsection}."
+	LabelStringAppendix   "\arabic{subsection}."
 	TocLevel              2
 End
 
@@ -23,8 +23,8 @@ End
 Style Subsubsection
 	LabelType             Counter
 	LabelCounter          subsubsection
-	LabelString           "   \arabic{subsubsection}."
-	LabelStringAppendix   "   \alph{subsubsection}."
+	LabelString           "\arabic{subsubsection}."
+	LabelStringAppendix   "\alph{subsubsection}."
 	TocLevel              3
 End
 
@@ -32,7 +32,7 @@ End
 Style Paragraph
 	LabelType             Counter
 	LabelCounter          paragraph
-	LabelString           "   \alph{paragraph}."
-	LabelStringAppendix   "   \alph{paragraph}."
+	LabelString           "\alph{paragraph}."
+	LabelStringAppendix   "\alph{paragraph}."
 	TocLevel              4
 End
