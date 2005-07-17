@@ -1,3 +1,8 @@
+2005-07-17  José Matos  <jamatos@fc.up.pt>
+
+	* tabular.C (recalculateMulticolumns): fix handling of one column
+	tables.
+
 2005-07-17  Juergen Vigna  <jug@lyx.org>
 
 	* text.C (Delete, backspace): fixed so that paragraph with the
@@ -40,7 +45,7 @@
 
 	* paragraph.h: add parameter boundary for getRow() function
 
-2005-07-18  José Matos  <jamatos@fc.up.pt>
+2005-07-17  José Matos  <jamatos@fc.up.pt>
 
 	* buffer.C:
 	* bufferparams.[Ch]:

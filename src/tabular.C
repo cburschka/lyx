@@ -798,7 +798,7 @@ void LyXTabular::recalculateMulticolumnsOfColumn(col_type column)
 	// the last column does not have to be recalculated because all
 	// multicolumns will have here there last multicolumn cell which
 	// always will have the whole rest of the width of the cell.
-	if (column > (columns_ - 2))
+	if (columns_ < 2 || column > (columns_ - 2))
 		return;
 	for (row_type row = 0; row < rows_; ++row) {
 		int mc = cell_info[row][column].multicolumn;
