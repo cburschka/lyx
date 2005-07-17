@@ -44,7 +44,7 @@ ASPELL_DIR="${HOME}"/aspell-0.50.5
 # A space-separated string of directories
 # ASPELL_DICT_DIRS="${HOME}/aspell-en-0.50-2 ${HOME}/aspell-de-0.50-2 "
 ASPELL_DICT_DIRS="${HOME}/aspell-en-0.50-2"
-LYX_DIR="${HOME}"/lyx/13x
+LYX_DIR="../../.."
 
 # Everything from here on down should be OK "as is".
 PACKAGING_DIR="$LYX_DIR/development/Win32/packaging"
@@ -242,13 +242,13 @@ build_lyx()
 	# Check the line endings of configure.ac
 	# The configure script will be unable to create config.h if it
 	# contains Win32-style line endings.
-	rm -f ${LYX_DIR}/configure.ac
+	rm -f configure.ac
 	sed 's/
-$//' ${LYX_DIR}/config/configure.ac > configure.ac.$$
-	cmp -s ${LYX_DIR}/config/configure.ac configure.ac.$$ && {
+$//' config/configure.ac > configure.ac.$$
+	cmp -s config/configure.ac configure.ac.$$ && {
 	    rm -f configure.ac.$$
 	} || {
-	    mv -f configure.ac.$$ ${LYX_DIR}/config/configure.ac
+	    mv -f configure.ac.$$ config/configure.ac
 	    echo 'configure.ac has Win32-style line endings. Corrected' >&2
 	}
 
@@ -300,7 +300,7 @@ install_lyx()
 	}
 
 	make install || {
-	    echo "Failed to install $LYX_DIR" >&2
+	    echo "Failed to install" >&2
 	    exit 1
 	}
     )
