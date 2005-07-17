@@ -139,7 +139,7 @@ int width(char const * s, size_t ls, LyXFont const & f)
 		return smallcapswidth(s, ls, f);
 
 	Encoding const * encoding = fontencoding(f);
-	FontInfo & fi = fontloader.fontinfo(f);
+	QLFontInfo & fi = fontloader.fontinfo(f);
 
 	if (ls == 1) 
 		return fi.width(encoding->ucs(s[0]));

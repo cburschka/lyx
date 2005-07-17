@@ -1064,15 +1064,19 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		//lyxerr << "arg: " << cmd.argument << endl;
 		string const name = cmd.getArg(0);
 		if (name == "label") {
-			InsetCommandParams icp;
-			InsetCommandMailer::string2params(name, cmd.argument, icp);
-			string str = icp.getContents();
+			InsetCommandParams p;
+			InsetCommandMailer::string2params(name, cmd.argument, p);
+			string str = p.getContents();
 			recordUndoInset(cur);
 			row_type const r = (type_ == "multline") ? nrows() - 1 : cur.row();
 			str = lyx::support::trim(str);
 			if (!str.empty())
 				numbered(r, true);
-			label(r, str);
+			string old = label(r);
+			if (str != old) {
+				cur.bv().buffer()->changeRefsIfUnique(old, str);
+				label(r, str);
+			}
 		}
 		break;
 	}

@@ -30,9 +30,9 @@
  * Qt font loader for LyX. Matches LyXFonts against
  * actual QFont instances, and also caches metrics.
  */
-class FontInfo {
+class QLFontInfo {
 public:
-	FontInfo(LyXFont const & f);
+	QLFontInfo(LyXFont const & f);
 
 	/// Return pixel width for the given unicode char
 	int width(Uchar val) const;
@@ -79,17 +79,17 @@ public:
 	static void addToFontPath();
 
 	/// Get font info (font + metrics) for the given LyX font. 
-	FontInfo & fontinfo(LyXFont const & f) {
-		FontInfo * & fi =
+	QLFontInfo & fontinfo(LyXFont const & f) {
+		QLFontInfo * & fi =
 			fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
 		if (!fi)
-			fi = new FontInfo(f);
+			fi = new QLFontInfo(f);
 		return *fi;
 	}
 
 private:
 	/// BUTT ugly !
-	FontInfo * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
+	QLFontInfo * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
 };
 
 extern FontLoader fontloader;

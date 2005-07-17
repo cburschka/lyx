@@ -160,9 +160,8 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 
 	if (token[0] != '\\') {
 		string::const_iterator cit = token.begin();
-		for (; cit != token.end(); ++cit) {
+		for (; cit != token.end(); ++cit)
 			par.insertChar(par.size(), (*cit), font, change);
-		}
 	} else if (token == "\\begin_layout") {
 		lex.eatLine();
 		string layoutname = lex.getString();

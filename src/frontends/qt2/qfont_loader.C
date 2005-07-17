@@ -251,7 +251,7 @@ void FontLoader::update()
 /////////////////////////////////////////////////
 
 
-FontInfo::FontInfo(LyXFont const & f)
+QLFontInfo::QLFontInfo(LyXFont const & f)
 	: metrics(font)
 {
 
@@ -322,12 +322,12 @@ FontInfo::FontInfo(LyXFont const & f)
 }
 
 
-int FontInfo::width(Uchar val) const
+int QLFontInfo::width(Uchar val) const
 {
 // Starting with version 3.1.0, Qt/X11 does its own caching of
 // character width, so it is not necessary to provide ours.
 #if defined (USE_LYX_FONTCACHE)
-	FontInfo::WidthCache::const_iterator cit = widthcache.find(val);
+	QLFontInfo::WidthCache::const_iterator cit = widthcache.find(val);
 	if (cit != widthcache.end())
 		return cit->second;
 

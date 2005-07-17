@@ -58,37 +58,6 @@ string const InsetLabel::getScreenLabel(Buffer const &) const
 }
 
 
-namespace {
-
-void changeRefsIfUnique(BufferView & bv, string const & from, string const & to)
-{
-	// Check if the label 'from' appears more than once
-	vector<string> labels;
-	bv.buffer()->getLabelList(labels);
-
-	if (lyx::count(labels.begin(), labels.end(), from) > 1)
-		return;
-
-	InsetBase::Code code = InsetBase::REF_CODE;
-
-	ParIterator it = bv.buffer()->par_iterator_begin();
-	ParIterator end = bv.buffer()->par_iterator_end();
-	for ( ; it != end; ++it) {
-		for (InsetList::iterator it2 = it->insetlist.begin();
-		     it2 != it->insetlist.end(); ++it2) {
-			if (it2->inset->lyxCode() == code) {
-				InsetCommand * inset = static_cast<InsetCommand *>(it2->inset);
-				if (inset->getContents() == from) {
-					inset->setContents(to);
-				}
-			}
-		}
-	}
-}
-
-} // namespace anon
-
-
 void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
@@ -101,7 +70,7 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 		if (p.getContents() != params().getContents())
-			changeRefsIfUnique(cur.bv(), params().getContents(),
+			cur.bv().buffer()->changeRefsIfUnique(params().getContents(),
 						       p.getContents());
 		setParams(p);
 		break;

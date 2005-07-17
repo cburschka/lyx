@@ -333,6 +333,8 @@ public:
 	StableDocIterator getCursor() const { return cursor_; }
 	///
 	StableDocIterator getAnchor() const { return anchor_; }
+	///
+	void changeRefsIfUnique(std::string const & from, std::string const & to);
 
 private:
 	/** Inserts a file into a document

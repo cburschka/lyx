@@ -64,6 +64,7 @@
 
 #include "graphics/Previews.h"
 
+#include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "support/fs_extras.h"
 #ifdef USE_COMPRESSION
@@ -1543,8 +1544,40 @@ void Buffer::buildMacros()
 	}
 }
 
+
 void Buffer::saveCursor(StableDocIterator cur, StableDocIterator anc)
 {
 	cursor_ = cur;
 	anchor_ = anc;
 }
+
+
+void Buffer::changeRefsIfUnique(string const & from, string const & to)
+{
+	// Check if the label 'from' appears more than once
+	vector<string> labels;
+	getLabelList(labels);
+
+	if (lyx::count(labels.begin(), labels.end(), from) > 1)
+		return;
+
+	InsetBase::Code code = InsetBase::REF_CODE;
+
+	ParIterator it = par_iterator_begin();
+	ParIterator end = par_iterator_end();
+	for ( ; it != end; ++it) {
+		bool changed_inset = false;
+		for (InsetList::iterator it2 = it->insetlist.begin();
+		     it2 != it->insetlist.end(); ++it2) {
+			if (it2->inset->lyxCode() == code) {
+				InsetCommand * inset = static_cast<InsetCommand *>(it2->inset);
+				if (inset->getContents() == from) {
+					inset->setContents(to);
+					//inset->setButtonLabel();
+					changed_inset = true;
+				}
+			}
+		}
+	}
+}
+
