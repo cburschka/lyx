@@ -64,6 +64,7 @@ Style ACT
 	AlignPossible         Center
 	LabelType             Counter
 	LabelCounter          act
+	LabelSep              M
 	LabelString           "ACT \arabic{act}"
 End
 
@@ -80,6 +81,7 @@ Style SCENE
 	AlignPossible         Center
 	LabelType             Counter
 	LabelCounter          scene
+	LabelSep              M
 	LabelString           "SCENE \arabic{scene}"
 End
 
@@ -95,7 +97,8 @@ Style SCENE*
 	Align                 Center
 	AlignPossible         Center
 	LabelType             Static
-	LabelString           "SCENE "
+	LabelSep              M
+	LabelString           "SCENE"
 End
 
 
@@ -110,7 +113,8 @@ Style AT_RISE:
 	AlignPossible         Left
 	KeepEmpty             1
 	LabelType             Static
-	LabelString           "AT RISE: "
+	LabelSep              M
+	LabelString           "AT RISE:"
 End
 
 

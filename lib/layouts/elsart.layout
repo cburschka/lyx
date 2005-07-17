@@ -137,7 +137,8 @@ Style Author_Address
 	Align                 Center
 	AlignPossible         Center
 	Labeltype             Static
-	LabelString           "Address: "
+	LabelSep              M
+	LabelString           "Address:"
 	OptionalArgs          1
 	LabelFont
 	  Shape               Italic
@@ -154,7 +155,8 @@ Style Author_Email
 	Align                 Center
 	AlignPossible         Center
 	Labeltype             Static
-	LabelString           "Email: "
+	LabelSep              M
+	LabelString           "Email:"
 	TextFont
 	  Family              Typewriter
 	EndFont
@@ -175,7 +177,8 @@ Style Author_URL
 	Align                 Center
 	AlignPossible         Center
 	Labeltype             Static
-	LabelString           "URL: "
+	LabelSep              M
+	LabelString           "URL:"
 	TextFont
 	  Family              Typewriter
 	EndFont

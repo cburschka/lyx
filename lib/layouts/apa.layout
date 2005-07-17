@@ -55,7 +55,7 @@ Style RightHeader
 	  Shape               SmallCaps
 	EndFont
 	Labeltype             Static
-	LabelString           "Right header: "
+	LabelString           "Right header:"
 	Labelsep              M
 	LabelFont
 	  Series              Bold
@@ -79,7 +79,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	Labeltype             Static
-	LabelString           "Abstract: "
+	LabelString           "Abstract:"
 	Labelsep              M
 	LabelFont
 	  Series              Bold
@@ -96,7 +96,7 @@ Style ShortTitle
 	AlignPossible         Left, Right, Center
 	Margin                Dynamic
 	Labeltype             Static
-	LabelString           "Short title: "
+	LabelString           "Short title:"
 	Labelsep              M
 	Font
 	  Shape               SmallCaps
@@ -158,7 +158,7 @@ Style Affiliation
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
-	LabelString           "Affiliation: "
+	LabelString           "Affiliation:"
 	Labelsep              M
 	LabelFont
 	  Series              Bold
@@ -230,7 +230,7 @@ Style Acknowledgements
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	Labeltype             Static
-	LabelString           "Acknowledgements: "
+	LabelString           "Acknowledgements:"
 	Labelsep              M
 	LabelFont
 	  Series              Bold

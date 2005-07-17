@@ -110,7 +110,7 @@ Style Date
 	Align                 Center
 	AlignPossible         Center
 	LabelType             Static
-	LabelString           "Date: "
+	LabelString           "Date:"
 	Font
 	  Size                Large
 	EndFont
@@ -157,7 +157,8 @@ Style Address
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
-	LabelString           "Address: "
+	LabelString           "Address:"
+	LabelSep              M
 	LabelFont
 	  Shape               Italic
 	EndFont
@@ -167,7 +168,7 @@ End
 Style Current_Address
 	CopyStyle             Address
 	LatexName             curraddr
-	LabelString           "Current address: "
+	LabelString           "Current address:"
 End
 
 
@@ -175,7 +176,7 @@ Style Email
 	CopyStyle             Address
 	Margin                First_Dynamic
 	LatexName             email
-	LabelString           "E-mail address: "
+	LabelString           "E-mail address:"
 End
 
 
@@ -183,42 +184,42 @@ Style URL
 	CopyStyle             Address
 	Margin                First_Dynamic
 	LatexName             urladdr
-	LabelString           "URL: "
+	LabelString           "URL:"
 End
 
 
 Style Keywords
 	CopyStyle             Address
 	LatexName             keywords
-	LabelString           "Key words and phrases: "
+	LabelString           "Key words and phrases:"
 End
 
 
 Style Thanks
 	CopyStyle             Address
 	LatexName             thanks
-	LabelString           "Thanks: "
+	LabelString           "Thanks:"
 End
 
 
 Style Dedicatory
 	CopyStyle             Address
 	LatexName             dedicatory
-	LabelString           "Dedication: "
+	LabelString           "Dedication:"
 End
 
 
 Style Translator
 	CopyStyle             Address
 	LatexName             translator
-	LabelString           "Translator: "
+	LabelString           "Translator:"
 End
 
 
 Style Subjectclass
 	CopyStyle             Address
 	LatexName             subjclass
-	LabelString           "1991 Mathematics Subject Classification: "
+	LabelString           "1991 Mathematics Subject Classification:"
 End
 
 
