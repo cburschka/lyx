@@ -301,20 +301,6 @@ XFontStruct * xfont_loader::doLoad(LyXFont::FONT_FAMILY family,
 
 	getFontinfo(family, series, shape);
 
-	LyXFont f;
-	f.setFamily(family);
-	f.setSeries(series);
-	f.setShape(shape);
-	f.setSize(size);
-	// The rest of the attributes are not interesting
-	f.setEmph(LyXFont::INHERIT);
-	f.setUnderbar(LyXFont::INHERIT);
-	f.setNoun(LyXFont::INHERIT);
-	f.setColor(LColor::inherit);
-
-	if (f.isSymbolFont() && !fontinfo[family][series][shape]->exist())
-		return 0;
-
 	// FIXME! CHECK! Should we use 72.0 or 72.27? (Lgb)
 	int fsize = int((convert<double>(lyxrc.font_sizes[size]) * lyxrc.dpi *
 			  (lyxrc.zoom/100.0)) / 72.27 + 0.5);
@@ -341,6 +327,16 @@ XFontStruct * xfont_loader::doLoad(LyXFont::FONT_FAMILY family,
 		}
 	} else if (lyxerr.debugging(Debug::FONT)) {
 		// Tell user the font matching
+		LyXFont f;
+		f.setFamily(family);
+		f.setSeries(series);
+		f.setShape(shape);
+		f.setSize(size);
+		// The rest of the attributes are not interesting
+		f.setEmph(LyXFont::INHERIT);
+		f.setUnderbar(LyXFont::INHERIT);
+		f.setNoun(LyXFont::INHERIT);
+		f.setColor(LColor::inherit);
 		lyxerr << "Font '" << f.stateText(0)
 		       << "' matched by\n" << font << endl;
 	}
