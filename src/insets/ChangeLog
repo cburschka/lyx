@@ -1,3 +1,7 @@
+2005-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* insetbase.C (edit,editXY,index): supress some lyxerr messages
+
 2005-07-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insettabular.C (doDispatch): try to fix handling of cursor UP/DOWN.

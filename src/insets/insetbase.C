@@ -181,13 +181,16 @@ bool InsetBase::getStatus(LCursor &, FuncRequest const & cmd,
 
 void InsetBase::edit(LCursor &, bool)
 {
-	lyxerr << "InsetBase: edit left/right" << std::endl;
+	lyxerr[Debug::INSETS] << BOOST_CURRENT_FUNCTION
+                              << ": edit left/right" << std::endl;
 }
 
 
 InsetBase * InsetBase::editXY(LCursor &, int x, int y)
 {
-	lyxerr << "InsetBase: editXY x:" << x << " y: " << y << std::endl;
+	lyxerr[Debug::INSETS] << BOOST_CURRENT_FUNCTION
+                              << ": x=" << x << " y= " << y
+                              << std::endl;
 	return this;
 }
 
@@ -195,9 +198,11 @@ InsetBase * InsetBase::editXY(LCursor &, int x, int y)
 InsetBase::idx_type InsetBase::index(row_type row, col_type col) const
 {
 	if (row != 0)
-		lyxerr << "illegal row: " << row << std::endl;
+		lyxerr << BOOST_CURRENT_FUNCTION
+                       << ": illegal row: " << row << std::endl;
 	if (col != 0)
-		lyxerr << "illegal col: " << col << std::endl;
+		lyxerr << BOOST_CURRENT_FUNCTION
+                       << ": illegal col: " << col << std::endl;
 	return 0;
 }
 

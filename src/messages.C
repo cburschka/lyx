@@ -91,7 +91,8 @@ public:
 		// strip off any encoding suffix, i.e., assume 8-bit po files
 		string::size_type i = lang_.find(".");
 		lang_ = lang_.substr(0, i);
-		lyxerr << "Messages: language(" << lang_ << ")" << std::endl;
+		lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
+                                     << ": language(" << lang_ << ")" << std::endl;
 	}
 
 	~Pimpl() {}
@@ -121,10 +122,12 @@ public:
 		char const * c = bindtextdomain(PACKAGE, package().locale_dir().c_str());
 		int e = errno;
 		if (e) {
-			lyxerr << "Error code: " << errno << std::endl;
-			lyxerr << "Lang, mess: " << lang_ << " " << m << std::endl;
-			lyxerr << "Directory:  " << package().locale_dir() << std::endl;
-			lyxerr << "Rtn value:  " << c << std::endl;
+			lyxerr[Debug::DEBUG]
+                                << BOOST_CURRENT_FUNCTION << '\n'
+                                << "Error code: " << errno << '\n'
+                                << "Lang, mess: " << lang_ << " " << m << '\n'
+                                << "Directory : " << package().locale_dir() << '\n'
+                                << "Rtn value : " << c << std::endl;
 		}
 		textdomain(PACKAGE);
 		const char* msg = gettext(m.c_str());
