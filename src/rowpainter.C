@@ -81,15 +81,8 @@ private:
 	/// return left margin
 	int leftMargin() const;
 
-	/// return the font at the given pos
-	LyXFont const getFont(lyx::pos_type pos) const;
-
 	/// return the label font for this row
 	LyXFont const getLabelFont() const;
-
-	/// return pixel width for the given pos
-	int singleWidth(lyx::pos_type pos) const;
-	int singleWidth(lyx::pos_type pos, char c) const;
 
 	/// bufferview to paint on
 	BufferView const & bv_;
@@ -140,28 +133,6 @@ RowPainter::RowPainter(PainterInfo & pi,
 }
 
 
-/// "temporary"
-LyXFont const RowPainter::getFont(pos_type pos) const
-{
-	LyXFont pf(text_.getFont(par_, pos));
-	text_.applyOuterFont(pf);
-	return pf;
-}
-
-
-int RowPainter::singleWidth(lyx::pos_type pos) const
-{
-	return text_.singleWidth(par_, pos);
-}
-
-
-int RowPainter::singleWidth(lyx::pos_type pos, char c) const
-{
-	LyXFont const & font = text_.getFont(par_, pos);
-	return text_.singleWidth(par_, pos, c, font);
-}
-
-
 LyXFont const RowPainter::getLabelFont() const
 {
 	return text_.getLabelFont(par_);
@@ -206,7 +177,8 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 		c = par_.getChar(i);
 		if (!Encodings::IsComposeChar_hebrew(c)) {
 			if (IsPrintableNonspace(c)) {
-				int const width2 = singleWidth(i, c);
+				int const width2 =
+					text_.singleWidth(par_, i, c, text_.getFont(par_, i));
 				// dalet / resh
 				dx = (c == 'ø' || c == 'ã')
 					? width2 - width
@@ -239,7 +211,8 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 		c = par_.getChar(i);
 		if (!Encodings::IsComposeChar_arabic(c)) {
 			if (IsPrintableNonspace(c)) {
-				int const width2 = singleWidth(i, c);
+				int const width2 = 
+					text_.singleWidth(par_, i, c, text_.getFont(par_, i));
 				dx = (width2 - width) / 2;
 			}
 			break;
@@ -321,8 +294,8 @@ void RowPainter::paintForeignMark(double orig_x, LyXFont const & font)
 void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = text_.bidi.vis2log(vpos);
-
-	LyXFont const & orig_font = getFont(pos);
+	LyXFont orig_font = text_.getFont(par_, pos);
+	text_.applyOuterFont(orig_font);
 
 	double const orig_x = x_;
 
@@ -338,9 +311,9 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	// usual characters, no insets
 
 	// special case languages
-	bool const hebrew = (orig_font.language()->lang() == "hebrew");
-	bool const arabic =
-		orig_font.language()->lang() == "arabic" &&
+	std::string const & lang = orig_font.language()->lang();
+	bool const hebrew = lang == "hebrew";
+	bool const arabic = lang == "arabic" &&
 		(lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
 		lyxrc.font_norm_type == LyXRC::ISO_10646_1);
 
@@ -549,11 +522,10 @@ void RowPainter::paintFirst()
 		if (!par_.getLabelstring().empty()) {
 			string const str = par_.getLabelstring();
 			double spacing_val = 1.0;
-			if (!parparams.spacing().isDefault()) {
+			if (!parparams.spacing().isDefault())
 				spacing_val = parparams.spacing().getValue();
-			} else {
+			else
 				spacing_val = buffer.params().spacing().getValue();
-			}
 
 			int maxdesc =
 				int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val
@@ -629,6 +601,10 @@ void RowPainter::paintText()
 	bool is_struckout = false;
 	int last_strikeout_x = 0;
 
+	// Use font span to speed things up, see below 
+	FontSpan font_span;
+	LyXFont font;
+
 	for (pos_type vpos = row_.pos(); vpos < end; ) {
 		if (x_ > bv_.workWidth())
 			break;
@@ -640,7 +616,15 @@ void RowPainter::paintText()
 			continue;
 		}
 
-		const int width_pos = singleWidth(pos);
+		// Use font span to speed things up, see above
+		if (vpos < font_span.first || vpos > font_span.last) {
+			font_span = par_.fontSpan(vpos);
+			font = text_.getFont(par_, vpos);
+		}
+
+		const int width_pos =
+			text_.singleWidth(par_, vpos, par_.getChar(vpos), font);
+
 		if (x_ + width_pos < 0) {
 			x_ += width_pos;
 			++vpos;
@@ -657,10 +641,10 @@ void RowPainter::paintText()
 		bool const highly_editable_inset = par_.isInset(pos)
 			&& isHighlyEditableInset(par_.getInset(pos));
 
-		// if we reach the end of a struck out range, paint it
-		// we also don't paint across things like tables
+		// If we reach the end of a struck out range, paint it.
+		// We also don't paint across things like tables
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
-			// calculate 1/3 height of the buffer's default font
+			// Calculate 1/3 height of the buffer's default font
 			int const middle =
 				yo_ - font_metrics::maxAscent(text_.defaultfont_) / 3;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,

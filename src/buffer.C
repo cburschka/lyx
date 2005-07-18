@@ -1527,17 +1527,18 @@ void Buffer::buildMacros()
 	pimpl_->macros = MacroTable::globalMacros();
 
 	// Now add our own.
-	ParagraphList & pars = text().paragraphs();
+	ParagraphList const & pars = text().paragraphs();
 	for (size_t i = 0, n = pars.size(); i != n; ++i) {
 		//lyxerr << "searching main par " << i
 		//	<< " for macro definitions" << std::endl;
-		InsetList::iterator it = pars[i].insetlist.begin();
-		InsetList::iterator end = pars[i].insetlist.end();
+		InsetList const & insets = pars[i].insetlist;
+		InsetList::const_iterator it = insets.begin();
+		InsetList::const_iterator end = insets.end();
 		for ( ; it != end; ++it) {
 			//lyxerr << "found inset code " << it->inset->lyxCode() << std::endl;
 			if (it->inset->lyxCode() == InsetBase::MATHMACRO_CODE) {
-				MathMacroTemplate & mac
-					= static_cast<MathMacroTemplate &>(*it->inset);
+				MathMacroTemplate const & mac
+					= static_cast<MathMacroTemplate const &>(*it->inset);
 				insertMacro(mac.name(), mac.asMacroData());
 			}
 		}

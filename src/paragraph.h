@@ -48,10 +48,14 @@ class TexRow;
 
 class FontSpan {
 public:
-	FontSpan() : first(0), last(0) {}
+	/// Invalid font span containing no character
+	FontSpan() : first(0), last(-1) {}
+	/// Span including first and last
 	FontSpan(lyx::pos_type f, lyx::pos_type l) : first(f), last(l) {}
-	lyx::pos_type first;
-	lyx::pos_type last;
+
+public:
+	/// Range including first and last.
+	lyx::pos_type first, last;
 };
 
 	
