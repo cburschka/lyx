@@ -314,20 +314,22 @@ Is LyX really Open Source?
 \layout Standard
 
 Yes.
- Some may quibble that since the freely available X toolkit that LyX uses,
- xforms, is currently closed source, LyX is less than Pure and Holy.
- Nonsense.
- The LyX source itself is available under a slightly modified version of
- the GPL, so it qualifies.
- Also, the developers of LyX are working on making it toolkit independent,
- so that next major version 1.3.0 will have Qt2/3 support; and even if not,
- version 1.0 of xforms will be released under the LGPL (at the time of this
- writing, prereleases of version 1.0 are available in source form from 
-\begin_inset LatexCommand \url{ftp://ftp.lyx.org/pub/xforms/OpenSource/}
+ The freely available X toolkit that LyX uses, xforms, was until recently
+ closed source.
+ Also the other toolkit that LyX uses, Qt, although a proprietary product
+ of Troll Tech, is used in its open source variant.
+ The LyX source itself is available under the GPL, so it qualifies.
+ 
+\layout Standard
+
+Version 1.0 of xforms is available under the LGPL and its sources (and binaries)
+ can be found from 
+\begin_inset LatexCommand \url{http://savannah.nongnu.org/download/xforms/xforms-1.0.tar.gz}
 
 \end_inset 
 
-.
+, which however requires some tinkering to get running.
+ Qt tends to come with your distribution.
 \layout Section
 
 Internet Resources
@@ -504,8 +506,12 @@ Can I read/write LaTeX files?
 
 Yes.
  LyX outputs LaTeX files that are either machine or human friendly.
- The reLyX program that comes with LyX does a decent job of converting LaTeX
- into LyX.
+ The 
+\family typewriter 
+tex2lyx
+\family default 
+ program that comes with LyX does a decent job of converting LaTeX into
+ LyX.
  It's not perfect, but it will usually get at least 95% of the job done
  for you.
 \layout Subsection
@@ -558,11 +564,14 @@ Ted This is the editor to use when someone sends you an RTF file created
  Mail yourself the converted version (plain text or HTML).
 \layout Standard
 
-Finally, when all else fails, use any word processor (WordPerfect, StarOffice,
- ...) which understands Word.
+Finally, when all else fails, use any word processor (WordPerfect, StarOffice/Op
+enOffice, ...) which understands Word.
  Then export as the file as plain text and add the formatting by hand in
  LyX.
- For me personally, at least, it's faster doing this than cleaning up attempts
+ 
+\layout Standard
+
+For me personally, at least, it's faster doing this than cleaning up attempts
  at a conversion, though it is certainly unsatisfactory if you need to go
  back and forth a lot.
 \layout Subsection

@@ -2580,7 +2580,8 @@ Notice that these translations will work, but do contain a few flaws.
  keys for everything.
  Sometimes, there are simply not enough free letters to do it.
  Other times, the translator just hasn't got around to doing it yet.
- We'll try to fix these shortcomings in future versions of LyX.
+ Our localization team -- which you may wish to join -- will try to fix
+ these shortcomings in future versions of LyX.
 \layout Section
 
 Selecting an alternative language for the user interface
@@ -2627,10 +2628,6 @@ no
 
 On some systems, you may have to redefine 
 \family typewriter 
-LANGUAGE
-\family default 
-, 
-\family typewriter 
 LC_ALL
 \family default 
  or 
@@ -2641,7 +2638,21 @@ LC_MESSAGES
 \family typewriter 
 LANG
 \family default 
-, to override the system settings; their preference is in this order.
+, to override the system settings; their preference is in this order
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+The shell variable LANGUAGE has been disabled in LyX for technical reasons.
+ Don't use it.
+\end_inset 
+
+, which corresponds to the way GNU 
+\family typewriter 
+gettext
+\family default 
+ does it.
  Consult your system documentation.
  Normally, you'll want to put the appropriate line in a shell script run
  on start-up, so that the translation is on by default.
@@ -2649,7 +2660,7 @@ LANG
 \emph on 
 all
 \emph default 
- localized packages! 
+ localized packages, not only LyX! 
 \layout Standard
 
 If LyX is configured and compiled with 
@@ -2664,7 +2675,7 @@ If LyX is configured and compiled with
 \begin_inset Quotes erd
 \end_inset 
 
-, this will not work.
+, this mechanism will not work.
 \layout Section
 
 Translating LyX
