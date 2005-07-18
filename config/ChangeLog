@@ -1,5 +1,8 @@
 2005-07-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* lyxinclude.m4 (LYX_USE_FRONTENDS): require the user to select a
+	frontend. 
+
 	* qt.m4 (QT_DO_IT_ALL): define QT_NO_STL.
 
 2005-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>

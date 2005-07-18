@@ -9,10 +9,9 @@ These four steps will compile, test and install LyX:
 	0) Linux users beware: if compiling the Qt frontend, you need
            qt and qt-devel packages of the same version to compile LyX.
 
-	1) ./configure
-	   configures LyX to your system. By default, LyX configures
-           the xforms frontend, use --with-frontend=qt to build a Qt
-           version. You may have to set
+	1) ./configure --with-frontend=[qt or xforms]
+	   configures LyX according to your system. 
+	   When compiling for Qt, you may have to set
              --with-qt-dir=<path-to-your-qt-installation>
            if the environment variable QTDIR is not set. 
 
@@ -56,36 +55,11 @@ library to be able to compile this version of LyX. Users of gcc 2.95.x
 will have to install the STLPort version of these libraries as the
 ones that come with gcc 2.95.x are too broken for us to use.
 
-* xforms frontend
-
-Both an Xforms and Xpm libraries should be installed to compile LyX.
-It is imperative that you have the correct versions of these
-libraries, and their associated header files.
-
-The xforms library has been very recently updated to version 1.0.
-This version has been released under the LGPL (Lesser General Public
-License), and the availability of the source means that many bugs that
-have been plaguing LyX have been fixed in xforms. You are advised to
-upgrade to xforms 1.0 to enjoy all these new fixes.
-In fact, LyX 1.3.x no longer supports versions of xforms older than 0.89.5.
-
-You can get the source from
-	http://world.std.com/~xforms/
-	ftp://ncmir.ucsd.edu/pub/xforms/OpenSource/xforms-1.0-release.tgz
-	ftp://ftp.lyx.org/pub/xforms/OpenSource/xforms-1.0-release.tgz
-
-If you use a rpm-based linux distribution, such as RedHat or Mandrake,
-we recommend that you grab a version of xforms from
-	ftp://ftp.lyx.org/pub/lyx/contrib
-Look for the xforms-1.0-release.src.rpm or the binary libforms*.i386.rpm.
-
-In addition, you must have libXpm version 4.7 or newer.
-
 * Qt frontend
 
-LyX has been tested with both Qt 2.x and 3.x libraries. The only special
-point to make is that you must ensure that both LyX and the Qt libraries
-are compiled with the same C++ compiler.
+LyX has been tested with Qt 3.x, though Qt 2.x may happen to work too.
+The only special point to make is that you must ensure that both LyX
+and the Qt libraries are compiled with the same C++ compiler.
 
 Note that if Qt is using Xft2/fontconfig, you may need to install the
 latex-xft-fonts package (at ftp://ftp.lyx.org/pub/lyx/contrib/) to get
@@ -99,16 +73,36 @@ to use fontconfig.
 If, however, your version of Qt does not use fontconfig, then TeX
 fonts should be added to the font path. 'man xset' is your friend.
 
+* xforms frontend
+
+Both an Xforms and Xpm libraries should be installed to compile LyX.
+It is imperative that you have the correct versions of these
+libraries, and their associated header files.
+
+The xforms library has been very recently updated to version 1.0.
+This version has been released under the LGPL (Lesser General Public
+License), and the availability of the source means that many bugs that
+have been plaguing LyX have been fixed in xforms. You are advised to
+upgrade to xforms 1.0 to enjoy all these new fixes.
+In fact, LyX 1.4.x no longer supports versions of xforms older than 1.0.
+
+You can get the source from
+	http://savannah.nongnu.org/download/xforms/
+
+If you use a rpm-based linux distribution, such as RedHat or Mandrake,
+we recommend that you grab a version of xforms from
+	ftp://ftp.lyx.org/pub/lyx/contrib
+Look for the xforms-1.0-release.src.rpm or the binary libforms*.i386.rpm.
+
+In addition, you must have libXpm version 4.7 or newer.
+
 * Other things to note
 
 If you make modifications to files in src/ (for example by applying a
 patch), you will need to have the GNU gettext package installed, due
 to some dependencies in the makefiles. You can get the latest version
 from:
-	ftp://ftp.gnu.org/gnu/gettext/gettext-0.11.4.tar.gz
-
-LyX contains a hack to work around this, but you should not rely too
-much on it.
+	ftp://ftp.gnu.org/gnu/gettext/
 
 To use the thesaurus, you will need to install libAikSaurus, available
 from:
@@ -351,14 +345,6 @@ notify us.
   o if you are using RedHat Linux 7.x, you must make sure you have the
     latest updated gcc and related packages installed (at least -85),
     or LyX will not compile or will be mis-compiled.
-
-  o if you get an error message when compiling LyX that looks like this :
-
-    ../../src/minibuffer.h:17: using directive `Object' introduced
-    ambiguous type `_ObjectRec *'
-
-    then you need to upgrade the version of the xforms library you have
-    installed.
 
   o On SUN Sparc Solaris 8, you need gnumake. The LyX makefiles do not
     work with Solaris make.
