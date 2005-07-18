@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2005-07-18 01:38+0200\n"
-"PO-Revision-Date: 2005-07-18 10:48+0200\n"
+"PO-Revision-Date: 2005-07-18 11:21+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1652,7 +1652,7 @@ msgstr "roff-kommando:|#r"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3044
 msgid "Checktex:|#c"
-msgstr ""
+msgstr "Checktex:|#c"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3062
 msgid "DVI paper option:|#D"
@@ -2080,7 +2080,7 @@ msgstr "Referansestil:|#i"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:60
 msgid "&Jurabib"
-msgstr ""
+msgstr "&Jurabib"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:64
 msgid "Use the jurabib styles for law and humanities"
@@ -2503,7 +2503,7 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:66
 msgid "&Dummy"
-msgstr ""
+msgstr "&Dummy"
 
 #: src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/buffer_funcs.C:91
@@ -3676,7 +3676,7 @@ msgstr "Enkel"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:54
 msgid "1.5"
-msgstr ""
+msgstr "1.5"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:66
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:151
@@ -5917,7 +5917,7 @@ msgstr ""
 #: lib/layouts/egs.layout:175 lib/layouts/linuxdoc.layout:189
 #: lib/layouts/manpage.layout:95 lib/layouts/stdlists.inc:24
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: lib/layouts/apa.layout:329
 msgid "Seriate"
@@ -5925,7 +5925,7 @@ msgstr ""
 
 #: lib/layouts/apa.layout:345 lib/layouts/apa.layout:346
 msgid "(\\alph{enumii})"
-msgstr ""
+msgstr "(\\alph{enumii})"
 
 #: lib/layouts/article.layout:18 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -5984,11 +5984,11 @@ msgstr ""
 
 #: lib/layouts/broadway.layout:148 lib/layouts/hollywood.layout:177
 msgid "("
-msgstr ""
+msgstr "("
 
 #: lib/layouts/broadway.layout:150 lib/layouts/hollywood.layout:179
 msgid "\tEnd)"
-msgstr ""
+msgstr "        Slutt)"
 
 #: lib/layouts/broadway.layout:161 lib/layouts/broadway.layout:172
 msgid "CURTAIN"
@@ -6004,9 +6004,8 @@ msgid "Mainline"
 msgstr ""
 
 #: lib/layouts/chess.layout:39
-#, fuzzy
 msgid "Mainline:"
-msgstr "E-post:"
+msgstr ""
 
 #: lib/layouts/chess.layout:57
 msgid "Variation"
@@ -6474,7 +6473,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:96
 msgid "_/"
-msgstr ""
+msgstr "_/"
 
 #: lib/layouts/foils.layout:102
 msgid "CrossList"
@@ -6482,7 +6481,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:117
 msgid "><"
-msgstr ""
+msgstr "><"
 
 #: lib/layouts/foils.layout:163
 msgid "My Logo"
@@ -6588,15 +6587,15 @@ msgstr "Tekst:"
 
 #: lib/layouts/g-brief-de.layout:52
 msgid "Unterschrift"
-msgstr ""
+msgstr "Underskrift"
 
 #: lib/layouts/g-brief-de.layout:59
 msgid "Strasse"
-msgstr ""
+msgstr "Gate"
 
 #: lib/layouts/g-brief-de.layout:62
 msgid "Strasse:"
-msgstr ""
+msgstr "Gate:"
 
 #: lib/layouts/g-brief-de.layout:66
 msgid "Zusatz"
@@ -6608,11 +6607,11 @@ msgstr ""
 
 #: lib/layouts/g-brief-de.layout:73
 msgid "Ort"
-msgstr ""
+msgstr "Sted"
 
 #: lib/layouts/g-brief-de.layout:76
 msgid "Ort:"
-msgstr ""
+msgstr "Sted:"
 
 #: lib/layouts/g-brief-de.layout:80
 msgid "Land"
@@ -6765,7 +6764,7 @@ msgstr "Signatur:"
 
 #: lib/layouts/g-brief-en.layout:59
 msgid "Street"
-msgstr ""
+msgstr "Gate"
 
 #: lib/layouts/g-brief-en.layout:62
 msgid "Street:"
@@ -7408,11 +7407,11 @@ msgstr "Nummerering"
 
 #: lib/layouts/scrbook.layout:16
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
 #: lib/layouts/scrbook.layout:17
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/scrlettr.layout:25 lib/layouts/scrlttr2.layout:24
 #: lib/layouts/scrclass.inc:31
@@ -8032,7 +8031,7 @@ msgstr "Algoritme #."
 
 #: lib/layouts/amsmaths.inc:78
 msgid "Theorem @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Teorem @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:105
 msgid "Corollary @Section@.\\arabic{theorem}."
@@ -8040,7 +8039,7 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:127
 msgid "Lemma @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Lemma @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:149
 msgid "Proposition @Section@.\\arabic{theorem}."
@@ -8096,7 +8095,7 @@ msgstr "Forutsetning*"
 
 #: lib/layouts/amsmaths.inc:322
 msgid "Problem @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Problem @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:330
 msgid "Problem*"
@@ -8104,7 +8103,7 @@ msgstr "Problem*"
 
 #: lib/layouts/amsmaths.inc:344
 msgid "Exercise @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Øvelse @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:353
 msgid "Exercise*"
@@ -8112,7 +8111,7 @@ msgstr "Øvelse*"
 
 #: lib/layouts/amsmaths.inc:367
 msgid "Remark @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Merknad @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:383
 msgid "Remark*"
@@ -8120,7 +8119,7 @@ msgstr "Merknad*"
 
 #: lib/layouts/amsmaths.inc:398
 msgid "Claim @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Påstand @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:406
 msgid "Claim*"
@@ -8160,7 +8159,7 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:508
 msgid "Conclusion @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Konklusjon @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:516
 msgid "Conclusion*"
@@ -8365,7 +8364,7 @@ msgstr "Meningsløst!"
 
 #: lib/layouts/stdlists.inc:102
 msgid "#*"
-msgstr ""
+msgstr "#*"
 
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
@@ -10489,11 +10488,11 @@ msgstr "Dokumentet er ikke skrivbart."
 
 #: src/buffer.C:454
 msgid "\\begin_header is missing"
-msgstr ""
+msgstr "\\begin_header mangler"
 
 #: src/buffer.C:469
 msgid "\\begin_document is missing"
-msgstr ""
+msgstr "\\begin_document mangler"
 
 #: src/buffer.C:477
 msgid "Can't load document class"
@@ -11998,23 +11997,23 @@ msgstr "Preferanser"
 
 #: src/frontends/qt2/QPrefs.C:131
 msgid "ispell"
-msgstr ""
+msgstr "ispell"
 
 #: src/frontends/qt2/QPrefs.C:132
 msgid "aspell"
-msgstr ""
+msgstr "aspell"
 
 #: src/frontends/qt2/QPrefs.C:133
 msgid "hspell"
-msgstr ""
+msgstr "hspell"
 
 #: src/frontends/qt2/QPrefs.C:135
 msgid "pspell (library)"
-msgstr ""
+msgstr "pspell (bibliotek)"
 
 #: src/frontends/qt2/QPrefs.C:138
 msgid "aspell (library)"
-msgstr ""
+msgstr "aspell (bibliotek)"
 
 #: src/frontends/qt2/QPrefsDialog.C:94
 msgid "Look and feel"
@@ -12454,7 +12453,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:336
 msgid " Never | Automatically | Yes "
-msgstr ""
+msgstr " Aldri | Automatisk | Ja "
 
 #: src/frontends/xforms/FormDocument.C:367
 msgid ""
@@ -12973,7 +12972,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:1979
 msgid "Off|No math|On"
-msgstr ""
+msgstr "Av|Uten matte|På"
 
 #: src/frontends/xforms/FormPreferences.C:2102
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
