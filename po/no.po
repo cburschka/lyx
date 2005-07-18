@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2005-07-18 01:38+0200\n"
-"PO-Revision-Date: 2005-07-18 01:47+0200\n"
+"PO-Revision-Date: 2005-07-18 10:48+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2832,7 +2832,6 @@ msgid "Select your branch"
 msgstr "Velg dokumentgren"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:60
-#, fuzzy
 msgid "Change:"
 msgstr "Endring:"
 
@@ -6032,36 +6031,32 @@ msgid "SubVariation2"
 msgstr ""
 
 #: lib/layouts/chess.layout:79
-#, fuzzy
 msgid "Subvariation(2):"
-msgstr "Variasjon:"
+msgstr ""
 
 #: lib/layouts/chess.layout:85
 msgid "SubVariation3"
 msgstr ""
 
 #: lib/layouts/chess.layout:88
-#, fuzzy
 msgid "Subvariation(3):"
-msgstr "Variasjon:"
+msgstr ""
 
 #: lib/layouts/chess.layout:94
 msgid "SubVariation4"
 msgstr ""
 
 #: lib/layouts/chess.layout:97
-#, fuzzy
 msgid "Subvariation(4):"
-msgstr "Variasjon:"
+msgstr ""
 
 #: lib/layouts/chess.layout:103
 msgid "SubVariation5"
 msgstr ""
 
 #: lib/layouts/chess.layout:106
-#, fuzzy
 msgid "Subvariation(5):"
-msgstr "Variasjon:"
+msgstr ""
 
 #: lib/layouts/chess.layout:113
 msgid "HideMoves"
@@ -6101,7 +6096,6 @@ msgid "Arrow"
 msgstr "Pilspiss"
 
 #: lib/layouts/chess.layout:176
-#, fuzzy
 msgid "Arrow:"
 msgstr "Pilspiss:"
 
@@ -7316,56 +7310,48 @@ msgid "Conjecture #."
 msgstr ""
 
 #: lib/layouts/llncs.layout:343 lib/layouts/svjour.inc:400
-#, fuzzy
 msgid "Example #."
-msgstr "Eksempel #. "
+msgstr "Eksempel #."
 
 #: lib/layouts/llncs.layout:350 lib/layouts/svjour.inc:407
-#, fuzzy
 msgid "Exercise #."
-msgstr "Øvelse #. "
+msgstr "Øvelse #."
 
 #: lib/layouts/llncs.layout:363 lib/layouts/svjour.inc:425
-#, fuzzy
 msgid "Note #."
-msgstr "Notis #. "
+msgstr "Notis #."
 
 #: lib/layouts/llncs.layout:370 lib/layouts/svjour.inc:432
-#, fuzzy
 msgid "Problem #."
-msgstr "Problem #. "
+msgstr "Problem #."
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
 msgid "Property"
 msgstr "Egenskap"
 
 #: lib/layouts/llncs.layout:384 lib/layouts/svjour.inc:446
-#, fuzzy
 msgid "Property #."
-msgstr "Egenskap #. "
+msgstr "Egenskap #."
 
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
 msgid "Question"
 msgstr "Spørsmål"
 
 #: lib/layouts/llncs.layout:397 lib/layouts/svjour.inc:460
-#, fuzzy
 msgid "Question #."
-msgstr "Spørsmål #. "
+msgstr "Spørsmål #."
 
 #: lib/layouts/llncs.layout:404 lib/layouts/svjour.inc:467
-#, fuzzy
 msgid "Remark #."
-msgstr "Merknad #. "
+msgstr "Merknad #."
 
 #: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:471
 msgid "Solution"
 msgstr "Løsning"
 
 #: lib/layouts/llncs.layout:411 lib/layouts/svjour.inc:474
-#, fuzzy
 msgid "Solution #."
-msgstr "Løsning #. "
+msgstr "Løsning #."
 
 #: lib/layouts/memoir.layout:74
 msgid "Chapterprecis"
@@ -7404,9 +7390,8 @@ msgid "Thanks:"
 msgstr "Takk:"
 
 #: lib/layouts/revtex4.layout:172
-#, fuzzy
 msgid "Electronic Address:"
-msgstr "Elektronisk adresse: "
+msgstr "Elektronisk adresse:"
 
 #: lib/layouts/revtex4.layout:208
 msgid "acknowledgments"
@@ -7729,7 +7714,6 @@ msgid "Authorinfo"
 msgstr ""
 
 #: lib/layouts/spie.layout:65
-#, fuzzy
 msgid "Authorinfo:"
 msgstr "Forfatterinfo:"
 
@@ -8232,27 +8216,27 @@ msgstr ""
 
 #: lib/layouts/numarticle.inc:16
 msgid "\\Alph{section}"
-msgstr ""
+msgstr "\\Alph{section}"
 
 #: lib/layouts/numarticle.inc:24 lib/layouts/numarticle.inc:25
 msgid "@Section@.\\arabic{subsection}"
-msgstr ""
+msgstr "@Section@.\\arabic{subsection}"
 
 #: lib/layouts/numarticle.inc:33 lib/layouts/numarticle.inc:34
 msgid "@Subsection@.\\arabic{subsubsection}"
-msgstr ""
+msgstr "@Subsection@.\\arabic{subsubsection}"
 
 #: lib/layouts/numarticle.inc:42 lib/layouts/numarticle.inc:43
 msgid "@Subsubsection@.\\arabic{paragraph}"
-msgstr ""
+msgstr "@Subsubsection@.\\arabic{paragraph}"
 
 #: lib/layouts/numarticle.inc:51 lib/layouts/numarticle.inc:52
 msgid "@Paragraph@.\\arabic{subparagraph}"
-msgstr ""
+msgstr "@Paragraph@.\\arabic{subparagraph}"
 
 #: lib/layouts/numreport.inc:14
 msgid "Chapter \\arabic{chapter}"
-msgstr "Kapittel \\\\arabic{chapter}"
+msgstr "Kapittel \\arabic{chapter}"
 
 #: lib/layouts/numreport.inc:15
 msgid "Appendix \\Alph{chapter}"
@@ -8260,44 +8244,39 @@ msgstr ""
 
 #: lib/layouts/numreport.inc:21
 msgid "\\arabic{chapter}.\\arabic{section}"
-msgstr ""
+msgstr "\\arabic{chapter}.\\arabic{section}"
 
 #: lib/layouts/numreport.inc:22
 msgid "\\Alph{chapter}.\\arabic{section}"
-msgstr ""
+msgstr "\\Alph{chapter}.\\arabic{section}"
 
 #: lib/layouts/numrevtex.inc:8
 msgid "\\Roman{section}."
-msgstr ""
+msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:9
 msgid "Appendix \\Alph{section}:"
 msgstr ""
 
 #: lib/layouts/numrevtex.inc:17
-#, fuzzy
 msgid "\\Alph{subsection}."
-msgstr "UnderUnderSeksjon"
+msgstr "\\Alph{subsection}."
 
 #: lib/layouts/numrevtex.inc:18
-#, fuzzy
 msgid "\\arabic{subsection}."
-msgstr "\\arabic{section}"
+msgstr "\\arabic{subsection}."
 
 #: lib/layouts/numrevtex.inc:26
-#, fuzzy
 msgid "\\arabic{subsubsection}."
-msgstr "\\arabic{section}"
+msgstr "\\arabic{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:27
-#, fuzzy
 msgid "\\alph{subsubsection}."
-msgstr "UnderUnderSeksjon"
+msgstr "\\alph{subsubsection}."
 
 #: lib/layouts/numrevtex.inc:35 lib/layouts/numrevtex.inc:36
-#, fuzzy
 msgid "\\alph{paragraph}."
-msgstr "Underavsnitt"
+msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:97
 #, fuzzy
@@ -10744,9 +10723,8 @@ msgid "General information"
 msgstr "Generel informasjon"
 
 #: src/client/debug.C:43 src/debug.C:66
-#, fuzzy
 msgid "Developers' general debug messages"
-msgstr "Utvikleres generelle debug-meldinger"
+msgstr "Generelle debug-meldinger"
 
 #: src/client/debug.C:44 src/debug.C:67
 msgid "All debugging messages"
@@ -11074,9 +11052,8 @@ msgid "Select a BibTeX database to add"
 msgstr "Velg en BibTeX database som skal legges til"
 
 #: src/frontends/controllers/ControlBibtex.C:61
-#, fuzzy
 msgid "BibTeX Styles (*.bst)"
-msgstr "BibTeX database filer (*.bib)"
+msgstr "BibTeX stiler (*.bst"
 
 #: src/frontends/controllers/ControlBibtex.C:63
 msgid "Select a BibTeX style"
@@ -11302,9 +11279,8 @@ msgid "No year"
 msgstr "Uten årstall"
 
 #: src/frontends/controllers/biblio.C:797
-#, fuzzy
 msgid "before"
-msgstr "Tekst før:"
+msgstr "før"
 
 #: src/frontends/controllers/character.C:29
 #: src/frontends/controllers/character.C:59
@@ -11550,13 +11526,12 @@ msgid "Very wide margins"
 msgstr "Veldig vide marger"
 
 #: src/frontends/gtk/GERT.C:33
-#, fuzzy
 msgid "TeX Settings"
-msgstr "LaTeX innstillinger"
+msgstr "TeX innstillinger"
 
 #: src/frontends/gtk/GErrorList.C:32
 msgid "Errors"
-msgstr ""
+msgstr "Feil"
 
 #: src/frontends/gtk/GErrorList.C:82
 msgid "*** No Errors ***"
@@ -11647,9 +11622,8 @@ msgstr "Sett inn tabell"
 
 #: src/frontends/gtk/GTexinfo.C:37 src/frontends/qt2/QTexinfo.C:34
 #: src/frontends/xforms/FormTexinfo.C:35
-#, fuzzy
 msgid "TeX Information"
-msgstr "LaTeX Konfigurasjon|X"
+msgstr "TeX informasjon"
 
 #: src/frontends/gtk/GToc.C:33 src/frontends/qt2/QToc.C:41
 #: src/frontends/xforms/FormToc.C:36 src/insets/insettoc.C:42
@@ -12778,9 +12752,8 @@ msgid "Math Styles & Fonts"
 msgstr "Normal font:"
 
 #: src/frontends/xforms/FormParagraph.C:100
-#, fuzzy
 msgid "Default|Single|OneHalf|Double|Custom"
-msgstr " Enkel | Halvannen | Dobbel | Egen definert "
+msgstr "Enkel|Halvannen|Dobbel|Egen definert"
 
 #: src/frontends/xforms/FormParagraph.C:198
 #: src/frontends/xforms/FormParagraph.C:205
@@ -12883,13 +12856,10 @@ msgid "Add"
 msgstr "Legg til"
 
 #: src/frontends/xforms/FormPreferences.C:780
-#, fuzzy
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
-msgstr ""
-"Fjern den merkede konverteren fra listen over tilgjengelige konvertere. NB: "
-"du må så \"Bruk\"e endringe."
+msgstr "Fjern den merkede konverteren fra listen over tilgjengelige konvertere. NB: du må så \"Bruk\"e endringen."
 
 #: src/frontends/xforms/FormPreferences.C:783
 #, fuzzy
@@ -13002,23 +12972,20 @@ msgid "Monochrome|Grayscale|Color|Do not display"
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:1979
-#, fuzzy
 msgid "Off|No math|On"
-msgstr "matte"
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:2102
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 msgstr " Standard | USletter | USlegal | USexecutive | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2358
-#, fuzzy
 msgid "Default path"
-msgstr "Standard|t"
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:2363
-#, fuzzy
 msgid "Template path"
-msgstr "Mal:|#M"
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:2368
 #, fuzzy
@@ -13030,9 +12997,8 @@ msgid "Last files"
 msgstr "Siste filer"
 
 #: src/frontends/xforms/FormPreferences.C:2378
-#, fuzzy
 msgid "Backup path"
-msgstr "Standard|t"
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:2383
 #, fuzzy
@@ -13048,9 +13014,7 @@ msgstr "Fonter må være positive!"
 msgid ""
 "Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
 "> Large > Larger > Largest > Huge > Huger."
-msgstr ""
-"standad | bitteliten | minst | mindre | liten | normal | stor | større | "
-"størst | enorm | gigantisk"
+msgstr "standard | bitteliten | minst | mindre | liten | normal | stor | større | størst | enorm | gigantisk"
 
 #: src/frontends/xforms/FormPreferences.C:2988
 msgid " ispell | aspell "
@@ -13724,9 +13688,8 @@ msgid "Opened Wrap Inset"
 msgstr "Åpnet \"float inset\""
 
 #: src/insets/render_graphic.C:89 src/insets/render_graphic.C:93
-#, fuzzy
 msgid "Not shown."
-msgstr " ukjent"
+msgstr "Ikke vist."
 
 #: src/insets/render_graphic.C:95
 msgid "Loading..."
@@ -14072,7 +14035,7 @@ msgid "No user LyX directory. Exiting."
 msgstr "Ingen brukerkatalog for LyX. Avslutter."
 
 #: src/lyx_main.C:656
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Lager mappen %1$s"
 
@@ -14402,11 +14365,10 @@ msgid ""
 msgstr ""
 
 #: src/lyxrc.C:2083
-#, fuzzy
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr "Sett klasse innstillingene til standard verdier ved klasse bytte"
+msgstr ""
 
 #: src/lyxrc.C:2087
 #, fuzzy
@@ -14539,11 +14501,10 @@ msgid "The LaTeX command for local changing of the language."
 msgstr ""
 
 #: src/lyxrc.C:2211
-#, fuzzy
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr "Sett klasse innstillingene til standard verdier ved klasse bytte"
+msgstr ""
 
 #: src/lyxrc.C:2215
 msgid ""
@@ -14552,11 +14513,10 @@ msgid ""
 msgstr ""
 
 #: src/lyxrc.C:2219
-#, fuzzy
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
-msgstr "Sett klasse innstillingene til standard verdier ved klasse bytte"
+msgstr ""
 
 #: src/lyxrc.C:2223
 msgid "The file where the last-files information should be stored."
@@ -14617,9 +14577,8 @@ msgid "The option for specifying whether the copies should be collated."
 msgstr ""
 
 #: src/lyxrc.C:2278
-#, fuzzy
 msgid "The option for specifying the number of copies to print."
-msgstr "Skriv ut i omvendt rekkefølge."
+msgstr ""
 
 #: src/lyxrc.C:2282
 msgid ""
@@ -14647,19 +14606,16 @@ msgid "The option to print out in landscape."
 msgstr ""
 
 #: src/lyxrc.C:2302
-#, fuzzy
 msgid "The option to print only odd pages."
-msgstr "Skriv ut i omvendt rekkefølge."
+msgstr ""
 
 #: src/lyxrc.C:2306
-#, fuzzy
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr "Skriv ut i omvendt rekkefølge."
+msgstr ""
 
 #: src/lyxrc.C:2310
-#, fuzzy
 msgid "Option to specify the dimensions of the print paper."
-msgstr "Skriv ut i omvendt rekkefølge."
+msgstr ""
 
 #: src/lyxrc.C:2314
 msgid "The option to specify paper type."
@@ -14745,9 +14701,8 @@ msgid ""
 msgstr ""
 
 #: src/lyxrc.C:2389
-#, fuzzy
 msgid "De-select if you don't want the startup banner."
-msgstr "Sett klasse innstillingene til standard verdier ved klasse bytte"
+msgstr ""
 
 #: src/lyxrc.C:2393
 msgid "What command runs the spell checker?"
