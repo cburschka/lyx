@@ -1891,7 +1891,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		Row const & row1 = par1.getRow(beg.pos(), beg.boundary());
 		y1 = bv_funcs::getPos(beg, beg.boundary()).y_ - row1.ascent();
 		y2 = y1 + row1.height();
-		int const startx = cursorX(beg.top(), false);
+		int const startx = cursorX(beg.top(), beg.boundary());
 		x1 = !isRTL(par1) ? startx : 0;
 		x2 = !isRTL(par1) ? 0 + dim_.wid : startx;
 	}
@@ -1906,7 +1906,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		Row const & row2 = par2.getRow(end.pos(), end.boundary());
 		Y1 = bv_funcs::getPos(end, end.boundary()).y_ - row2.ascent();
 		Y2 = Y1 + row2.height();
-		int const endx = cursorX(end.top(), false);
+		int const endx = cursorX(end.top(), end.boundary());
 		X1 = !isRTL(par2) ? 0 : endx;
 		X2 = !isRTL(par2) ? endx : 0 + dim_.wid;
 	}
@@ -1919,6 +1919,10 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 				      LColor::selection);
 		return;
 	}
+
+	lyxerr[Debug::DEBUG] << " y1: " << y1 << " y2: " << y2
+	       << "X1:" << X1 << " x2: " << X2 << " wid: " << dim_.wid
+		<< endl;
 
 	// paint upper rectangle
 	pi.pain.fillRectangle(x + x1, y1, x2 - x1, y2 - y1,
