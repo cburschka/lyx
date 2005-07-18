@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = pch.h test-structure.tex test-insets.tex
+EXTRA_DIST = tex2lyx.man pch.h test-structure.tex test-insets.tex
 
 DISTCLEANFILES += tex2lyx.1 $(LINKED_SOURCES)
 
