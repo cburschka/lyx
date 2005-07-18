@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
+#include "support/os.h"
 
 #include <qapplication.h>
 #include <qclipboard.h>
@@ -36,6 +37,8 @@
 
 using std::endl;
 using std::string;
+
+namespace os = lyx::support::os;
 
 namespace {
 QWorkArea const * wa_ptr = 0;
@@ -225,7 +228,9 @@ void QWorkArea::dropEvent(QDropEvent* event)
 		lyxerr[Debug::GUI] << "QWorkArea::dropEvent: got URIs!"
 				   << endl;
 		for (QStringList::Iterator i = files.begin();
-		     i!=files.end(); ++i)
-			dispatch(FuncRequest(LFUN_FILE_OPEN, fromqstr(*i)));
+		     i!=files.end(); ++i) {
+			string const file = os::internal_path(fromqstr(*i));
+			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
+		}
 	}
 }

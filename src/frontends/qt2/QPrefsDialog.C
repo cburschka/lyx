@@ -552,8 +552,6 @@ void QPrefsDialog::switch_copierLB(int nr)
 {
 	std::string const browser_text =
 		fromqstr(copiersModule->AllCopiersLB->currentText());
-	lyxerr << "switch_copierLB(" << nr << ")\n"
-	       << "browser_text " << browser_text << std::endl;
 	Format const * fmt = getFormat(browser_text);
 	if (fmt == 0)
 		return;
@@ -561,11 +559,6 @@ void QPrefsDialog::switch_copierLB(int nr)
 	string const & fmt_name = fmt->name();
 	string const & gui_name = fmt->prettyname();
 	string const & command = form_->movers().command(fmt_name);
-
-	lyxerr << "switch_copierLB(" << nr << ")\n"
-	       << "fmt_name " << fmt_name << '\n'
-	       << "gui_name " << gui_name << '\n'
-	       << "command " << command << std::endl;
 
 	copiersModule->copierED->clear();
 	int const combo_size = copiersModule->copierFormatCO->count();
@@ -575,7 +568,6 @@ void QPrefsDialog::switch_copierLB(int nr)
 		if (text == gui_name) {
 			copiersModule->copierFormatCO->setCurrentItem(i);
 			copiersModule->copierED->setText(toqstr(command));
-			lyxerr << "found combo item " << i << std::endl;
 			break;
 		}
 	}
@@ -587,8 +579,6 @@ void QPrefsDialog::switch_copierCO(int nr)
 {
 	std::string const combo_text =
 		fromqstr(copiersModule->copierFormatCO->currentText());
-	lyxerr << "switch_copierCO(" << nr << ")\n"
-	       << "combo_text " << combo_text << std::endl;
 	Format const * fmt = getFormat(combo_text);
 	if (fmt == 0)
 		return;
@@ -596,11 +586,6 @@ void QPrefsDialog::switch_copierCO(int nr)
 	string const & fmt_name = fmt->name();
 	string const & gui_name = fmt->prettyname();
 	string const & command = form_->movers().command(fmt_name);
-
-	lyxerr << "switch_copierCO(" << nr << ")\n"
-	       << "fmt_name " << fmt_name << '\n'
-	       << "gui_name " << gui_name << '\n'
-	       << "command " << command << std::endl;
 
 	copiersModule->copierED->setText(toqstr(command));
 
