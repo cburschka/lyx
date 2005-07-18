@@ -868,7 +868,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 #endif
 
 	x = int(tmpx) + xo;
-	int const col = c - row.pos();
+	pos_type const col = c - row.pos();
 
         if (!c || end == par.size())
                 return col;
