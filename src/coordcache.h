@@ -42,7 +42,6 @@ public:
 	int x_, y_;
 };
 
-
 template <class T> class CoordCacheBase {
 public:
 	void clear()
@@ -122,6 +121,8 @@ public:
 	typedef std::map<lyx::pit_type, Point> InnerParPosCache;
 	/// A map from a LyXText to the map of paragraphs to screen points
 	typedef std::map<LyXText const *, InnerParPosCache> ParPosCache;
+	/// A map from a CursorSlice to screen points
+	typedef std::map<LyXText const *, InnerParPosCache> SliceCache;
 
 	/// A map from MathArray to position on the screen
 	CoordCacheBase<MathArray> & arrays() { BOOST_ASSERT(updating); return arrays_; }
@@ -132,14 +133,28 @@ public:
 	/// A map from (LyXText, paragraph) pair to screen positions
 	ParPosCache & parPos() { BOOST_ASSERT(updating); return pars_; }
 	ParPosCache const & getParPos() const { return pars_; }
+	///
+	SliceCache & slice(bool boundary)
+	{
+		BOOST_ASSERT(updating);
+		return boundary ? slices1_ : slices0_;
+	}
+	SliceCache const & getSlice(bool boundary) const
+	{
+		return boundary ? slices1_ : slices0_;
+	}
+	
 private:
+	/// MathArrays
 	CoordCacheBase<MathArray> arrays_;
-
-	// all insets
+	// All insets
 	CoordCacheBase<InsetBase> insets_;
-
-	// paragraph grouped by owning text
+	/// Paragraph grouped by owning text
 	ParPosCache pars_;
+	/// Used with boundary == 0
+	SliceCache slices0_;
+	/// Used with boundary == 1
+	SliceCache slices1_;
 
 	/**
 	 * Debugging flag only: Set to true while the cache is being built.

@@ -701,23 +701,20 @@ void LyXText::rowBreakPoint(pit_type const pit, Row & row) const
 	pos_type i = pos;
 	for ( ; i < end; ++i, ++fi) {
 		char const c = par.getChar(i);
+		int thiswidth = singleWidth(par, i, c, *fi);
 
-		{
-			int thiswidth = singleWidth(par, i, c, *fi);
+		// add the auto-hfill from label end to the body
+		if (body_pos && i == body_pos) {
+			int add = font_metrics::width(layout->labelsep, getLabelFont(par));
+			if (par.isLineSeparator(i - 1))
+				add -= singleWidth(par, i - 1);
 
-			// add the auto-hfill from label end to the body
-			if (body_pos && i == body_pos) {
-				int add = font_metrics::width(layout->labelsep, getLabelFont(par));
-				if (par.isLineSeparator(i - 1))
-					add -= singleWidth(par, i - 1);
-
-				add = std::max(add, labelEnd(pit) - x);
-				thiswidth += add;
-			}
-
-			x += thiswidth;
-			chunkwidth += thiswidth;
+			add = std::max(add, labelEnd(pit) - x);
+			thiswidth += add;
 		}
+
+		x += thiswidth;
+		chunkwidth += thiswidth;
 
 		// break before a character that will fall off
 		// the right of the row
@@ -2103,6 +2100,10 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 	    (body_pos > end || !par.isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
+	// Use font span to speed things up, see below
+	FontSpan font_span = par.fontSpan(row_pos);
+	LyXFont font = getFont(par, row_pos);
+
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
 		pos_type pos = bidi.vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
@@ -2113,7 +2114,13 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 				x -= singleWidth(par, body_pos - 1);
 		}
 
-		x += singleWidth(par, pos);
+		// Use font span to speed things up, see above
+		if (pos < font_span.first || pos > font_span.last) {
+			font_span = par.fontSpan(pos);
+			font = getFont(par, pos);
+		}
+
+		x += singleWidth(par, pos, par.getChar(pos), font);
 
 		if (hfillExpansion(par, row, pos))
 			x += (pos >= body_pos) ? m.hfill : m.label_hfill;

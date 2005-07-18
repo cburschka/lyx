@@ -255,8 +255,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
 	pos_type const end = row_.endpos();
-	std::pair<lyx::pos_type, lyx::pos_type> const font_span 
-		= par_.getFontSpan(pos);
+	FontSpan const font_span = par_.fontSpan(pos);
 	Change::Type const prev_change = par_.lookupChange(pos);
 
 	// first character
@@ -270,7 +269,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
 		pos = text_.bidi.vis2log(vpos);
-		if (pos < font_span.first || pos > font_span.second)
+		if (pos < font_span.first || pos > font_span.last)
 			break;
 
 		if (prev_change != par_.lookupChange(pos))

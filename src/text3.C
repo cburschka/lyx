@@ -1520,7 +1520,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	default:
 		lyxerr << BOOST_CURRENT_FUNCTION
-		       << " Not DISPATCHED by LyXText" << endl;
+					 << ": Command " << cmd << " not DISPATCHED by LyXText" << endl;
 		cur.undispatched();
 		break;
 	}

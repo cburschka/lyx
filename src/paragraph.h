@@ -27,7 +27,6 @@
 #include "support/types.h"
 
 #include <string>
-#include <utility>
 
 class Buffer;
 class BufferParams;
@@ -47,6 +46,15 @@ class ParagraphParameters;
 class TexRow;
 
 
+class FontSpan {
+public:
+	FontSpan() : first(0), last(0) {}
+	FontSpan(lyx::pos_type f, lyx::pos_type l) : first(f), last(l) {}
+	lyx::pos_type first;
+	lyx::pos_type last;
+};
+
+	
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph  {
 public:
@@ -279,11 +287,11 @@ public:
 	/**
 	 * The font returned by the above functions is the same in a
 	 * span of characters. This method will return the first and
-	 * the last last positions in the paragraph for which that
-	 * font is the same. This can be used to avoid unnecessary
-	 * calls to getFont.
+	 * the last positions in the paragraph for which that font is
+	 * the same. This can be used to avoid unnecessary calls to
+   * getFont.
 	 */
-	std::pair<lyx::pos_type, lyx::pos_type> getFontSpan(lyx::pos_type pos) const;
+	FontSpan fontSpan(lyx::pos_type pos) const;
 	///
 	/// this is a bottleneck.
 	value_type getChar(lyx::pos_type pos) const { return text_[pos]; }

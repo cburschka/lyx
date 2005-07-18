@@ -37,6 +37,8 @@ void CoordCache::clear()
 	arrays_.clear();
 	insets_.clear();
 	pars_.clear();
+	slices0_.clear();
+	slices1_.clear();
 }
 
 
