@@ -855,7 +855,7 @@ def convert_minipage(file):
         if file.body[i][:6] == "height":
             height = file.body[i][6:]
             # test for default value of 221 and convert it accordingly
-            if height == ' "0pt"':
+            if height == ' "0pt"' or height == ' "0"':
                 height = ' "1pt"'
             del file.body[i]
         else:
@@ -1112,7 +1112,6 @@ def convert_frameless_box(file):
 	if (params['use_parbox'] != '0' or
 	    params['has_inner_box'] != '1' or
 	    params['special'] != 'none' or
-	    inner_pos[params['inner_pos']] != pos[params['position']] or
 	    params['height_special'] != 'totalheight' or
 	    len2value(params['height']) != 1.0):
 
