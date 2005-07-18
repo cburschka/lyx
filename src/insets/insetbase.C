@@ -28,6 +28,8 @@
 
 #include "frontends/Painter.h"
 
+#include <boost/current_function.hpp>
+
 #include <map>
 #include <typeinfo>
 

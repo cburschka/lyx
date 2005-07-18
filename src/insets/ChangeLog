@@ -1,5 +1,9 @@
 2005-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* insetbase.C: include boost/current_function.hpp
+
+2005-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	* insetbase.C (edit,editXY,index): supress some lyxerr messages
 
 2005-07-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
